@@ -268,7 +268,7 @@
 #define VAR_RYU_NUZLOCKE_WAYSTONE_USES       0x40FB // Unused Var
 #define VAR_RYU_PRICE_MULTIPLIER             0x40FC // Unused Var
 #define VAR_RYU_WEATHER                      0x40FD // Unused Var
-#define VAR_UNUSED_0x40FE                    0x40FE // Unused Var
+#define VAR_RYU_DS_LANA_STAGE                0x40FE // Unused Var
 #define VAR_UNUSED_0x40FF                    0x40FF // Unused Var
 
 #define SPECIAL_VARS_START 0x8000
@@ -296,5 +296,11 @@
 #define VAR_MON_BOX_POS               0x8013
 #define VAR_UNUSED_0x8014             0x8014
 #define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of gTrainerBattleOpponent_A
+
+#define HEAD_DAWN 1
+#define HEAD_BRENDAN 2
+#define HEAD_LANA 3
+#define HEAD_GARY 4
+#define HEAD_LANETTE 5
 
 #endif // GUARD_CONSTANTS_VARS_H

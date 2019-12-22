@@ -187,7 +187,13 @@
     ],
     "gMapGroup18": [
         "Route111_WinstrateFamilysHouse",
-        "Route111_OldLadysRestStop"
+        "Route111_OldLadysRestStop",
+        "AncientTomb1F",
+        "AncientTomb2F",
+        "AncientTombCore",
+        "DesertTomb1F",
+        "DesertTomb2F",
+        "DesertTombCore"
     ],
     "gMapGroup19": [
         "Route112_CableCarStation",
@@ -584,7 +590,8 @@
         "SlateportCity_House",
         "SlateportCity_PokemonCenter_1F",
         "SlateportCity_PokemonCenter_2F",
-        "SlateportCity_Mart"
+        "SlateportCity_Mart",
+        "SlateportCity_LanasHouse"
     ],
     "group_order": [
         "gMapGroup0",

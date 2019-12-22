@@ -1121,3 +1121,17 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/text/birch_speech.inc"
 
 	.include "data/maps/Littleroot_Town_Rival_HouseQuest/scripts.inc"
+
+	.include "data/maps/AncientTomb1F/scripts.inc"
+
+	.include "data/maps/AncientTomb2F/scripts.inc"
+
+	.include "data/maps/AncientTombCore/scripts.inc"
+
+	.include "data/maps/DesertTomb1F/scripts.inc"
+
+	.include "data/maps/DesertTomb2F/scripts.inc"
+
+	.include "data/maps/DesertTombCore/scripts.inc"
+
+	.include "data/maps/SlateportCity_LanasHouse/scripts.inc"

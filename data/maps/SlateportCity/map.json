@@ -1,685 +1,550 @@
 {
-  "id": "MAP_SLATEPORT_CITY",
-  "name": "SlateportCity",
-  "layout": "LAYOUT_SLATEPORT_CITY",
-  "music": "MUS_FINECITY",
-  "region_map_section": "MAPSEC_SLATEPORT_CITY",
-  "requires_flash": false,
-  "weather": "WEATHER_SUNNY",
-  "map_type": "MAP_TYPE_CITY",
-  "allow_bike": true,
-  "allow_escape_rope": false,
-  "allow_running": true,
-  "show_map_name": true,
-  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": [
-    {
-      "direction": "up",
-      "offset": 0,
-      "map": "MAP_ROUTE110"
-    },
-    {
-      "direction": "down",
-      "offset": 0,
-      "map": "MAP_ROUTE109"
-    },
-    {
-      "direction": "right",
-      "offset": 0,
-      "map": "MAP_ROUTE134"
-    }
-  ],
-  "object_events": [
-    {
-      "graphics_id": "EVENT_OBJ_GFX_FAT_MAN",
-      "x": 21,
-      "y": 11,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_FatMan",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MAN_1",
-      "x": 34,
-      "y": 29,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Man1",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_RICH_BOY",
-      "x": 5,
-      "y": 13,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 2,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_RichBoy",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_WOMAN_4",
-      "x": 26,
-      "y": 29,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Woman1",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_F",
-      "x": 31,
-      "y": 27,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_AquaGrunt1",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_COOK",
-      "x": 5,
-      "y": 43,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Cook",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_OLD_WOMAN",
-      "x": 20,
-      "y": 37,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_OldWoman",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_GIRL_1",
-      "x": 8,
-      "y": 42,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Girl",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_CAMERAMAN",
-      "x": 29,
-      "y": 13,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Ty",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_REPORTER_F",
-      "x": 28,
-      "y": 14,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Gabby",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
-      "x": 28,
-      "y": 13,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_CaptStern",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_SAILOR",
-      "x": 37,
-      "y": 41,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Sailor1",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_SAILOR",
-      "x": 28,
-      "y": 46,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Sailor2",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_POKEFAN_F",
-      "x": 9,
-      "y": 50,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_PokefanF",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MAN_3",
-      "x": 16,
-      "y": 46,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Man2",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MANIAC",
-      "x": 8,
-      "y": 24,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Maniac",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
-      "x": 15,
-      "y": 31,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Woman2",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
-      "x": 30,
-      "y": 27,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_AquaGrunt2",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
-      "x": 29,
-      "y": 27,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_AquaGrunt3",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MART_EMPLOYEE",
-      "x": 6,
-      "y": 38,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_DecorClerk",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MART_EMPLOYEE",
-      "x": 5,
-      "y": 51,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_DollClerk",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MAN_5",
-      "x": 34,
-      "y": 51,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Man3",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
-      "x": 4,
-      "y": 47,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_EffortRibbonWoman",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MART_EMPLOYEE",
-      "x": 11,
-      "y": 47,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_PowerTMClerk",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_TM_SALESMAN"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_POKEFAN_M",
-      "x": 5,
-      "y": 47,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_EnergyGuru",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
-      "x": 22,
-      "y": 27,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_AquaGrunt4",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
-      "x": 23,
-      "y": 27,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_AquaGrunt5",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
-      "x": 24,
-      "y": 27,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_AquaGrunt6",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
-      "x": 21,
-      "y": 26,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_AquaGrunt7",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
-      "x": 20,
-      "y": 26,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_AquaGrunt8",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
-      "x": 26,
-      "y": 27,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_AquaGrunt9",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
-      "x": 28,
-      "y": 27,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_AquaGrunt10",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
-      "x": 25,
-      "y": 27,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_AquaGrunt11",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_POKEFAN_F",
-      "x": 11,
-      "y": 37,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 1,
-      "movement_range_y": 2,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_BerryPowderClerk",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_SCOTT",
-      "x": 10,
-      "y": 12,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 1,
-      "movement_range_y": 2,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_SCOTT"
-    }
-  ],
-  "warp_events": [
-    {
-      "x": 19,
-      "y": 19,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_POKEMON_CENTER_1F",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 13,
-      "y": 26,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_MART",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 26,
-      "y": 38,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_STERNS_SHIPYARD_1F",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 10,
-      "y": 12,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_BATTLE_TENT_LOBBY",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 4,
-      "y": 26,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_POKEMON_FAN_CLUB",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 30,
-      "y": 26,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 5,
-      "y": 19,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_NAME_RATERS_HOUSE",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 31,
-      "y": 26,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F",
-      "dest_warp_id": 1
-    },
-    {
-      "x": 28,
-      "y": 12,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_HARBOR",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 40,
-      "y": 7,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_HARBOR",
-      "dest_warp_id": 2
-    },
-    {
-      "x": 21,
-      "y": 44,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_HOUSE",
-      "dest_warp_id": 0
-    }
-  ],
-  "coord_events": [
-    {
-      "type": "trigger",
-      "x": 10,
-      "y": 13,
-      "elevation": 3,
-      "var": "VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE",
-      "var_value": "2",
-      "script": "SlateportCity_EventScript_ScottBattleTentScene"
-    }
-  ],
-  "bg_events": [
-    {
-      "type": "sign",
-      "x": 8,
-      "y": 19,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SlateportCity_EventScript_NameRatersHouseSign"
-    },
-    {
-      "type": "sign",
-      "x": 20,
-      "y": 19,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "Common_EventScript_ShowPokemonCenterSign"
-    },
-    {
-      "type": "sign",
-      "x": 21,
-      "y": 19,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "Common_EventScript_ShowPokemonCenterSign"
-    },
-    {
-      "type": "sign",
-      "x": 14,
-      "y": 26,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "Common_EventScript_ShowPokemartSign"
-    },
-    {
-      "type": "sign",
-      "x": 24,
-      "y": 12,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SlateportCity_EventScript_HarborSign"
-    },
-    {
-      "type": "sign",
-      "x": 15,
-      "y": 26,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "Common_EventScript_ShowPokemartSign"
-    },
-    {
-      "type": "sign",
-      "x": 14,
-      "y": 51,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SlateportCity_EventScript_MarketSign"
-    },
-    {
-      "type": "sign",
-      "x": 26,
-      "y": 26,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SlateportCity_EventScript_OceanicMuseumSign"
-    },
-    {
-      "type": "sign",
-      "x": 16,
-      "y": 22,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SlateportCity_EventScript_CitySign"
-    },
-    {
-      "type": "sign",
-      "x": 8,
-      "y": 26,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SlateportCity_EventScript_PokemonFanClubSign"
-    },
-    {
-      "type": "sign",
-      "x": 7,
-      "y": 13,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SlateportCity_EventScript_BattleTentSign"
-    },
-    {
-      "type": "sign",
-      "x": 23,
-      "y": 38,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SlateportCity_EventScript_SternsShipyardSign"
-    },
-    {
-      "type": "sign",
-      "x": 10,
-      "y": 36,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "SlateportCity_EventScript_BerryCrushRankingsSign"
-    }
-  ]
+    "allow_bike": true,
+    "allow_escape_rope": false,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "SlateportCity_EventScript_NameRatersHouseSign",
+            "type": "sign",
+            "x": 8,
+            "y": 19
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "Common_EventScript_ShowPokemonCenterSign",
+            "type": "sign",
+            "x": 20,
+            "y": 19
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "Common_EventScript_ShowPokemonCenterSign",
+            "type": "sign",
+            "x": 21,
+            "y": 19
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "Common_EventScript_ShowPokemartSign",
+            "type": "sign",
+            "x": 14,
+            "y": 26
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "SlateportCity_EventScript_HarborSign",
+            "type": "sign",
+            "x": 24,
+            "y": 12
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "Common_EventScript_ShowPokemartSign",
+            "type": "sign",
+            "x": 15,
+            "y": 26
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "SlateportCity_EventScript_MarketSign",
+            "type": "sign",
+            "x": 14,
+            "y": 51
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "SlateportCity_EventScript_OceanicMuseumSign",
+            "type": "sign",
+            "x": 26,
+            "y": 26
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "SlateportCity_EventScript_CitySign",
+            "type": "sign",
+            "x": 16,
+            "y": 22
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "SlateportCity_EventScript_PokemonFanClubSign",
+            "type": "sign",
+            "x": 8,
+            "y": 26
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "SlateportCity_EventScript_BattleTentSign",
+            "type": "sign",
+            "x": 7,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "SlateportCity_EventScript_SternsShipyardSign",
+            "type": "sign",
+            "x": 23,
+            "y": 38
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "SlateportCity_EventScript_BerryCrushRankingsSign",
+            "type": "sign",
+            "x": 10,
+            "y": 36
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "SC1_LeafHouseSold",
+            "type": "sign",
+            "x": 12,
+            "y": 19
+        }
+    ],
+    "connections": [
+        {
+            "direction": "up",
+            "map": "MAP_ROUTE110",
+            "offset": 0
+        },
+        {
+            "direction": "down",
+            "map": "MAP_ROUTE109",
+            "offset": 0
+        },
+        {
+            "direction": "right",
+            "map": "MAP_ROUTE134",
+            "offset": 0
+        }
+    ],
+    "coord_events": [
+        {
+            "elevation": 3,
+            "script": "SlateportCity_EventScript_ScottBattleTentScene",
+            "type": "trigger",
+            "var": "VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE",
+            "var_value": "2",
+            "x": 10,
+            "y": 13
+        }
+    ],
+    "id": "MAP_SLATEPORT_CITY",
+    "layout": "LAYOUT_SLATEPORT_CITY",
+    "map_type": "MAP_TYPE_CITY",
+    "music": "MUS_FINECITY",
+    "name": "SlateportCity",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_FAT_MAN",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "SlateportCity_EventScript_FatMan",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 21,
+            "y": 11
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_MAN_1",
+            "movement_range_x": 1,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+            "script": "SlateportCity_EventScript_Man1",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 34,
+            "y": 29
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_RICH_BOY",
+            "movement_range_x": 1,
+            "movement_range_y": 2,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "SlateportCity_EventScript_RichBoy",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 5,
+            "y": 13
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_WOMAN_4",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "SlateportCity_EventScript_Woman1",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 26,
+            "y": 29
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_COOK",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "SlateportCity_EventScript_Cook",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 5,
+            "y": 43
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_OLD_WOMAN",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "SlateportCity_EventScript_OldWoman",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 20,
+            "y": 37
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_GIRL_1",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "SlateportCity_EventScript_Girl",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 8,
+            "y": 42
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY",
+            "graphics_id": "EVENT_OBJ_GFX_CAMERAMAN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "SlateportCity_EventScript_Ty",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 29,
+            "y": 13
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY",
+            "graphics_id": "EVENT_OBJ_GFX_REPORTER_F",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "script": "SlateportCity_EventScript_Gabby",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 28,
+            "y": 14
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN",
+            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+            "script": "SlateportCity_EventScript_CaptStern",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 28,
+            "y": 13
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_SAILOR",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+            "script": "SlateportCity_EventScript_Sailor1",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 37,
+            "y": 41
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_SAILOR",
+            "movement_range_x": 1,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+            "script": "SlateportCity_EventScript_Sailor2",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 28,
+            "y": 46
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_POKEFAN_F",
+            "movement_range_x": 0,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
+            "script": "SlateportCity_EventScript_PokefanF",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 9,
+            "y": 50
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_MAN_3",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "SlateportCity_EventScript_Man2",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 16,
+            "y": 46
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_MANIAC",
+            "movement_range_x": 0,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
+            "script": "SlateportCity_EventScript_Maniac",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 8,
+            "y": 24
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "SlateportCity_EventScript_Woman2",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 15,
+            "y": 31
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_MART_EMPLOYEE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+            "script": "SlateportCity_EventScript_DecorClerk",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 6,
+            "y": 38
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_MART_EMPLOYEE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "SlateportCity_EventScript_DollClerk",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 5,
+            "y": 51
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_MAN_5",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "SlateportCity_EventScript_Man3",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 34,
+            "y": 51
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "SlateportCity_EventScript_EffortRibbonWoman",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 4,
+            "y": 47
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_SLATEPORT_CITY_TM_SALESMAN",
+            "graphics_id": "EVENT_OBJ_GFX_MART_EMPLOYEE",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "SlateportCity_EventScript_PowerTMClerk",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 11,
+            "y": 47
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_POKEFAN_M",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "SlateportCity_EventScript_EnergyGuru",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 5,
+            "y": 47
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_POKEFAN_F",
+            "movement_range_x": 1,
+            "movement_range_y": 2,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "SlateportCity_EventScript_BerryPowderClerk",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 11,
+            "y": 37
+        },
+        {
+            "elevation": 0,
+            "flag": "FLAG_HIDE_SLATEPORT_CITY_SCOTT",
+            "graphics_id": "EVENT_OBJ_GFX_SCOTT",
+            "movement_range_x": 1,
+            "movement_range_y": 2,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "0x0",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 10,
+            "y": 12
+        }
+    ],
+    "region_map_section": "MAPSEC_SLATEPORT_CITY",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_POKEMON_CENTER_1F",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 19,
+            "y": 19
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_MART",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 13,
+            "y": 26
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_STERNS_SHIPYARD_1F",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 26,
+            "y": 38
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_BATTLE_TENT_LOBBY",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 10,
+            "y": 12
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_POKEMON_FAN_CLUB",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 4,
+            "y": 26
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 30,
+            "y": 26
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_NAME_RATERS_HOUSE",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 5,
+            "y": 19
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F",
+            "dest_warp_id": 1,
+            "elevation": 0,
+            "x": 31,
+            "y": 26
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_HARBOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 28,
+            "y": 12
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_HARBOR",
+            "dest_warp_id": 2,
+            "elevation": 0,
+            "x": 40,
+            "y": 7
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_HOUSE",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 21,
+            "y": 44
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
 }

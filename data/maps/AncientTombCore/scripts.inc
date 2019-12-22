@@ -1,0 +1,2 @@
+AncientTombCore_MapScripts::
+	.byte 0

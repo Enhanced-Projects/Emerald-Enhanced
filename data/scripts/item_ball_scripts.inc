@@ -1,3 +1,14 @@
+Ryu_GiveItemScript::
+	giveitem_std VAR_TEMP_7
+	return
+
+Ryu_ItemGivenScript::
+	msgbox Ryu_BallEmpty MSGBOX_SIGN
+	return
+
+Ryu_BallEmpty:
+	.string "The item ball appears to be empty.$"
+
 Route102_EventScript_ItemPotion:: @ 8290CD8
 	giveitem_std ITEM_POTION, 1, 1
 	end

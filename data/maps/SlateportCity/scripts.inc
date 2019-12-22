@@ -6,33 +6,34 @@ SlateportCity_MapScripts:: @ 81DCC61
 SlateportCity_OnTransition: @ 81DCC6C
 	setvar VAR_SLATEPORT_MUSEUM_1F_STATE, 0
 	call SlateportCity_EventScript_EnterSlateport
-	compare VAR_SLATEPORT_CITY_STATE, 1
-	call_if_eq SlateportCity_EventScript_MovePeopleForSternInterview
 	compare VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1
 	call_if_eq SlateportCity_EventScript_SetReadyForScottScene
 	end
+	
+SC1_LeafHouseSold::
+	goto_if_set FLAG_RYU_DS_LEAF_LINE_CANCELLED SC1_LeafHouseVacant
+	msgbox SC1_LeafHouseSign1
+	release
+	end
+	
+SC1_LeafHouseVacant::
+	msgbox SC1_LeafHouseSign2
+	release
+	end
+	
+SC1_LeafHouseSign1:
+    .string " (The sign says the house was bought\n"
+    .string " recently. Wonder who moved in?)$"
+
+SC1_LeafHouseSign2:
+    .string " (The sign says the house is vacant\n"
+    .string " and up for sale.)$"
+
 
 SlateportCity_EventScript_EnterSlateport:: @ 81DCC8D
 	setflag FLAG_VISITED_SLATEPORT_CITY
 	setvar VAR_CONTEST_HALL_STATE, 0
 	setflag FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER
-	return
-
-SlateportCity_EventScript_MovePeopleForSternInterview:: @ 81DCC99
-	setobjectxyperm 11, 28, 13
-	setobjectxyperm 7, 25, 13
-	setobjectxyperm 3, 25, 14
-	setobjectxyperm 6, 27, 16
-	setobjectxyperm 8, 28, 16
-	setobjectxyperm 1, 29, 16
-	setobjectxyperm 2, 31, 14
-	setobjectmovementtype 11, MOVEMENT_TYPE_FACE_DOWN
-	setobjectmovementtype 7, MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT
-	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_UP_AND_RIGHT
-	setobjectmovementtype 6, MOVEMENT_TYPE_FACE_UP
-	setobjectmovementtype 8, MOVEMENT_TYPE_FACE_UP
-	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_UP
-	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_LEFT
 	return
 
 SlateportCity_EventScript_SetReadyForScottScene:: @ 81DCCE7

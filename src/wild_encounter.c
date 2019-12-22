@@ -470,10 +470,19 @@ static bool8 DoMassOutbreakEncounterTest(void)
 
 static bool8 DoWildEncounterRateDiceRoll(u16 encounterRate)
 {
-    if (Random() % 2880 < encounterRate)
-        return TRUE;
-    else
+    if (FlagGet(FLAG_RYU_DEV_DISENC) ==1 )
         return FALSE;
+    else
+    {
+        if (Random() % 2880 < encounterRate)
+        {
+            return TRUE;
+        }  
+        else
+        {
+            return FALSE;
+        }
+    }
 }
 
 static bool8 DoWildEncounterRateTest(u32 encounterRate, bool8 ignoreAbility)
@@ -596,17 +605,17 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
                 // try a regular wild land encounter
                 if (TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
                 {
-                    if (USE_BATTLE_DEBUG && !GetSafariZoneFlag() && GetMonsStateToDoubles() == PLAYER_HAS_TWO_USABLE_MONS)
-                    {
-                        struct Pokemon mon1 = gEnemyParty[0];
-                        TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_KEEN_EYE);
-                        gEnemyParty[1] = mon1;
-                        BattleSetup_StartDoubleWildBattle();
-                    }
-                    else
-                    {
-                        BattleSetup_StartWildBattle();
-                    }
+                    //if (USE_BATTLE_DEBUG && !GetSafariZoneFlag() && GetMonsStateToDoubles() == PLAYER_HAS_TWO_USABLE_MONS)
+                    //{
+                    //    struct Pokemon mon1 = gEnemyParty[0];
+                    //    TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_KEEN_EYE);
+                    //    gEnemyParty[1] = mon1;
+                    //    BattleSetup_StartDoubleWildBattle();
+                    //}
+                    //else
+                    //{
+                    BattleSetup_StartWildBattle();
+                    //
                     return TRUE;
                 }
 

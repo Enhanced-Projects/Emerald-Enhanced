@@ -146,6 +146,7 @@
 #define MAP_SLATEPORT_CITY_POKEMON_CENTER_1F       (11 | (9 << 8))
 #define MAP_SLATEPORT_CITY_POKEMON_CENTER_2F       (12 | (9 << 8))
 #define MAP_SLATEPORT_CITY_MART                    (13 | (9 << 8))
+#define MAP_SLATEPORT_CITY_LANAS_HOUSE             (14 | (9 << 8))
 
 // Map Group 10
 #define MAP_MAUVILLE_CITY_GYM               (0 | (10 << 8))
@@ -269,6 +270,12 @@
 // Map Group 18
 #define MAP_ROUTE111_WINSTRATE_FAMILYS_HOUSE (0 | (18 << 8))
 #define MAP_ROUTE111_OLD_LADYS_REST_STOP     (1 | (18 << 8))
+#define MAP_ANCIENT_TOMB1F                   (2 | (18 << 8))
+#define MAP_ANCIENT_TOMB2F                   (3 | (18 << 8))
+#define MAP_ANCIENT_TOMB_CORE                (4 | (18 << 8))
+#define MAP_DESERT_TOMB1F                    (5 | (18 << 8))
+#define MAP_DESERT_TOMB2F                    (6 | (18 << 8))
+#define MAP_DESERT_TOMB_CORE                 (7 | (18 << 8))
 
 // Map Group 19
 #define MAP_ROUTE112_CABLE_CAR_STATION   (0 | (19 << 8))
@@ -423,10 +430,10 @@
 #define MAP_SECRET_BASE_YELLOW_CAVE4        (21 | (25 << 8))
 #define MAP_SECRET_BASE_TREE4               (22 | (25 << 8))
 #define MAP_SECRET_BASE_SHRUB4              (23 | (25 << 8))
-#define MAP_BATTLE_COLOSSEUM_2P             (24 | (25 << 8))
+#define MAP_BATTLE_COLOSSEUM2P              (24 | (25 << 8))
 #define MAP_TRADE_CENTER                    (25 | (25 << 8))
 #define MAP_RECORD_CORNER                   (26 | (25 << 8))
-#define MAP_BATTLE_COLOSSEUM_4P             (27 | (25 << 8))
+#define MAP_BATTLE_COLOSSEUM4P              (27 | (25 << 8))
 #define MAP_CONTEST_HALL                    (28 | (25 << 8))
 #define MAP_UNKNOWN_LINK_CONTEST_ROOM_25_29 (29 | (25 << 8))
 #define MAP_UNKNOWN_LINK_CONTEST_ROOM_25_30 (30 | (25 << 8))

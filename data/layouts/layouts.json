@@ -4419,6 +4419,76 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_BrendansMaysHouse",
             "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/AncientTomb1F/map.bin",
+            "border_filepath": "data/layouts/AncientTomb1F/border.bin",
+            "height": 20,
+            "id": "LAYOUT_ANCIENT_TOMB1F",
+            "name": "AncientTomb1F_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_RusturfTunnel",
+            "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/AncientTomb2F/map.bin",
+            "border_filepath": "data/layouts/AncientTomb2F/border.bin",
+            "height": 20,
+            "id": "LAYOUT_ANCIENT_TOMB2F",
+            "name": "AncientTomb2F_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Cave",
+            "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/AncientTombCore/map.bin",
+            "border_filepath": "data/layouts/AncientTombCore/border.bin",
+            "height": 20,
+            "id": "LAYOUT_ANCIENT_TOMB_CORE",
+            "name": "AncientTombCore_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_MeteorFalls",
+            "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/DesertTomb1F/map.bin",
+            "border_filepath": "data/layouts/DesertTomb1F/border.bin",
+            "height": 50,
+            "id": "LAYOUT_DESERT_TOMB1F",
+            "name": "DesertTomb1F_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_RusturfTunnel",
+            "width": 45
+        },
+        {
+            "blockdata_filepath": "data/layouts/DesertTomb2F/map.bin",
+            "border_filepath": "data/layouts/DesertTomb2F/border.bin",
+            "height": 20,
+            "id": "LAYOUT_DESERT_TOMB2F",
+            "name": "DesertTomb2F_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Cave",
+            "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/DesertTombCore/map.bin",
+            "border_filepath": "data/layouts/DesertTombCore/border.bin",
+            "height": 20,
+            "id": "LAYOUT_DESERT_TOMB_CORE",
+            "name": "DesertTombCore_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_MeteorFalls",
+            "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/SlateportCity_LanasHouse/map.bin",
+            "border_filepath": "data/layouts/SlateportCity_LanasHouse/border.bin",
+            "height": 20,
+            "id": "LAYOUT_SLATEPORT_CITY_LANAS_HOUSE",
+            "name": "SlateportCity_LanasHouse_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Petalburg",
+            "width": 13
         }
     ],
     "layouts_table_label": "gMapLayouts"

@@ -1,0 +1,24 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_ANCIENT_TOMB2F",
+    "layout": "LAYOUT_ANCIENT_TOMB2F",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "music": "MUS_DAN02",
+    "name": "AncientTomb2F",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_ROUTE_111",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+    ],
+    "weather": "WEATHER_SUNNY"
+}
