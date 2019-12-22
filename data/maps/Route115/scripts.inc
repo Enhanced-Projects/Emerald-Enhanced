@@ -1,7 +1,7 @@
 Route115_MapScripts:: @ 81F2920
-	map_script MAP_SCRIPT_ON_LOAD, Route115_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, Route115_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route115_OnFrame
+	map_script ON_LOAD, Route115_OnLoad
+	map_script ON_TRANSITION, Route115_OnTransition
+	map_script ON_FRAME, Route115_OnFrame
 	.byte 0
 
 Route115_OnLoad: @ 81F2930
@@ -49,7 +49,7 @@ Route115_EventScript_RegisterTimothy:: @ 81F29BA
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route115_Text_TimothyRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_TIMOTHY_1
+	@nop Trainer_TIMOTHY_1
 	release
 	end
 
@@ -76,7 +76,7 @@ Route115_EventScript_RegisterNob:: @ 81F2A33
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route115_Text_NobRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_NOB_1
+	@nop Trainer_NOB_1
 	release
 	end
 
@@ -98,7 +98,7 @@ Route115_EventScript_RegisterCyndy:: @ 81F2A95
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route115_Text_CyndyRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_CYNDY_1
+	@nop Trainer_CYNDY_1
 	release
 	end
 

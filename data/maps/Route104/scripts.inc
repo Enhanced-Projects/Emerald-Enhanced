@@ -1,6 +1,6 @@
 Route104_MapScripts:: @ 81ECC32
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
-	map_script MAP_SCRIPT_ON_TRANSITION, Route104_OnTransition
+	map_script ON_FRAME, Route104_OnFrame
+	map_script ON_TRANSITION, Route104_OnTransition
 	.byte 0
 
 Route104_OnFrame: @ 81ECC3D
@@ -882,25 +882,23 @@ Route104_EventScript_Haley:: @ 81ED38D
 Route104_EventScript_TryRegisterHaleyAfterBattle:: @ 81ED3CE
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
-	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterHaleyAfterBattle
 	release
 	end
 
 Route104_EventScript_RegisterHaleyAfterBattle:: @ 81ED3DF
 	msgbox Route104_Text_HaleyRegister2, MSGBOX_DEFAULT
-	register_matchcall TRAINER_HALEY_1
+	@nop Trainer_HALEY_1
 	release
 	end
 
 Route104_EventScript_TryRegisterHaley:: @ 81ED3F8
-	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterHaley
 	msgbox Route104_Text_HaleyPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route104_EventScript_RegisterHaley:: @ 81ED40B
 	msgbox Route104_Text_HaleyRegister1, MSGBOX_DEFAULT
-	register_matchcall TRAINER_HALEY_1
+	@nop Trainer_HALEY_1
 	release
 	end
 
@@ -925,25 +923,23 @@ Route104_EventScript_Winston:: @ 81ED43B
 Route104_EventScript_TryRegisterWinstonAfterBattle:: @ 81ED47C
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
-	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterWinstonAfterBattle
 	release
 	end
 
 Route104_EventScript_RegisterWinstonAfterBattle:: @ 81ED48D
 	msgbox Route104_Text_WinstonRegister2, MSGBOX_DEFAULT
-	register_matchcall TRAINER_WINSTON_1
+	@nop Trainer_WINSTON_1
 	release
 	end
 
 Route104_EventScript_TryRegisterWinston:: @ 81ED4A6
-	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterWinston
 	msgbox Route104_Text_WinstonPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route104_EventScript_RegisterWinston:: @ 81ED4B9
 	msgbox Route104_Text_WinstonRegister1, MSGBOX_DEFAULT
-	register_matchcall TRAINER_WINSTON_1
+	@nop Trainer_WINSTON_1
 	release
 	end
 
@@ -968,25 +964,23 @@ Route104_EventScript_Cindy:: @ 81ED4E9
 Route104_EventScript_TryRegisterCindyAfterBattle:: @ 81ED52A
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
-	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterCindyAfterBattle
 	release
 	end
 
 Route104_EventScript_RegisterCindyAfterBattle:: @ 81ED53B
 	msgbox Route104_Text_CindyRegister2, MSGBOX_DEFAULT
-	register_matchcall TRAINER_CINDY_1
+	@nop Trainer_CINDY_1
 	release
 	end
 
 Route104_EventScript_TryRegisterCindy:: @ 81ED554
-	goto_if_set FLAG_HAS_MATCH_CALL, Route104_EventScript_RegisterCindy
 	msgbox Route104_Text_CindyPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route104_EventScript_RegisterCindy:: @ 81ED567
 	msgbox Route104_Text_CindyRegister1, MSGBOX_DEFAULT
-	register_matchcall TRAINER_CINDY_1
+	@nop Trainer_CINDY_1
 	release
 	end
 

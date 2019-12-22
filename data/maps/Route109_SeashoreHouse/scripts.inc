@@ -1,5 +1,5 @@
 Route109_SeashoreHouse_MapScripts:: @ 82693F4
-	map_script MAP_SCRIPT_ON_TRANSITION, Route109_SeashoreHouse_OnTransition
+	map_script ON_TRANSITION, Route109_SeashoreHouse_OnTransition
 	.byte 0
 
 Route109_SeashoreHouse_OnTransition: @ 82693FA
@@ -47,14 +47,14 @@ Route109_SeashoreHouse_EventScript_AlreadyReceivedSodaPop:: @ 8269460
 	end
 
 Route109_SeashoreHouse_EventScript_BuySodaPop:: @ 8269484
-	checkmoney 300, 0
+	checkmoney 300
 	compare VAR_RESULT, FALSE
 	goto_if_eq Route109_SeashoreHouse_EventScript_NotEnoughMoney
 	checkitemspace ITEM_SODA_POP, 1
 	compare VAR_RESULT, FALSE
 	goto_if_eq Route109_SeashoreHouse_EventScript_NotEnoughSpace
 	msgbox Route109_SeashoreHouse_Text_HereYouGo, MSGBOX_DEFAULT
-	takemoney 300, 0
+	takemoney 300
 	updatemoneybox 0, 0
 	giveitem_std ITEM_SODA_POP
 	hidemoneybox

@@ -1,6 +1,6 @@
 Route113_MapScripts:: @ 81F2153
-	map_script MAP_SCRIPT_ON_RESUME, Route113_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, Route113_OnTransition
+	map_script ON_RESUME, Route113_OnResume
+	map_script ON_TRANSITION, Route113_OnTransition
 	.byte 0
 
 Route113_OnResume: @ 81F215E
@@ -71,7 +71,7 @@ Route113_EventScript_RegisterMadeline:: @ 81F221A
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route113_Text_MadelineRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_MADELINE_1
+	@nop Trainer_MADELINE_1
 	release
 	end
 
@@ -93,7 +93,7 @@ Route113_EventScript_RegisterLao:: @ 81F227C
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route113_Text_LaoRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_LAO_1
+	@nop Trainer_LAO_1
 	release
 	end
 

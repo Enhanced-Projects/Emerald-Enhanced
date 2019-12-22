@@ -309,7 +309,6 @@ PlayersHouse_1F_EventScript_Mom:: @ 82929C5
 	goto_if_eq PlayersHouse_1F_EventScript_DontPushYourselfTooHard
 	compare VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 4
 	goto_if_eq PlayersHouse_1F_EventScript_DontPushYourselfTooHard
-	goto_if_set FLAG_HAS_MATCH_CALL, PlayersHouse_1F_EventScript_TryRegisterMom
 	goto_if_set FLAG_RESCUED_BIRCH, PlayersHouse_1F_EventScript_MomHealsParty
 	compare VAR_TEMP_1, 1
 	goto_if_eq PlayersHouse_1F_EventScript_SeeYouHoney

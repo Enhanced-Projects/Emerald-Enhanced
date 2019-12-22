@@ -1,6 +1,6 @@
 SlateportCity_MapScripts:: @ 81DCC61
-	map_script MAP_SCRIPT_ON_TRANSITION, SlateportCity_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SlateportCity_OnFrame
+	map_script ON_TRANSITION, SlateportCity_OnTransition
+	map_script ON_FRAME, SlateportCity_OnFrame
 	.byte 0
 
 SlateportCity_OnTransition: @ 81DCC6C

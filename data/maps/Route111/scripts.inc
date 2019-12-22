@@ -1,8 +1,8 @@
 Route111_MapScripts:: @ 81F0CA7
-	map_script MAP_SCRIPT_ON_LOAD, Route111_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, Route111_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Route111_OnWarp
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route111_OnFrame
+	map_script ON_LOAD, Route111_OnLoad
+	map_script ON_TRANSITION, Route111_OnTransition
+	map_script ON_WARP, Route111_OnWarp
+	map_script ON_FRAME, Route111_OnFrame
 	.byte 0
 
 Route111_OnLoad: @ 81F0CBC
@@ -481,7 +481,7 @@ Route111_EventScript_RegisterDusty:: @ 81F128C
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route111_Text_DustyRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_DUSTY_1
+	@nop Trainer_DUSTY_1
 	release
 	end
 
@@ -518,7 +518,7 @@ Route111_EventScript_RegisterWilton:: @ 81F1333
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route111_Text_WiltonRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_WILTON_1
+	@nop Trainer_WILTON_1
 	release
 	end
 
@@ -540,7 +540,7 @@ Route111_EventScript_RegisterBrooke:: @ 81F1395
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route111_Text_BrookeRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_BROOKE_1
+	@nop Trainer_BROOKE_1
 	release
 	end
 

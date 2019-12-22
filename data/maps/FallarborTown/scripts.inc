@@ -1,11 +1,10 @@
 FallarborTown_MapScripts:: @ 81EB1FA
-	map_script MAP_SCRIPT_ON_TRANSITION, FallarborTown_OnTransition
+	map_script ON_TRANSITION, FallarborTown_OnTransition
 	.byte 0
 
 FallarborTown_OnTransition: @ 81EB200
 	setflag FLAG_VISITED_FALLARBOR_TOWN
 	setvar VAR_CONTEST_HALL_STATE, 0
-	clearflag FLAG_CONTEST_SKETCH_CREATED
 	end
 
 FallarborTown_EventScript_ExpertM:: @ 81EB20C

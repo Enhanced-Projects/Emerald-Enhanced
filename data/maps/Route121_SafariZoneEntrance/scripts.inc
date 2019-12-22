@@ -1,5 +1,5 @@
 Route121_SafariZoneEntrance_MapScripts:: @ 822BBBB
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route121_SafariZoneEntrance_OnFrame
+	map_script ON_FRAME, Route121_SafariZoneEntrance_OnFrame
 	.byte 0
 
 Route121_SafariZoneEntrance_OnFrame: @ 822BBC1
@@ -61,12 +61,12 @@ Route121_SafariZoneEntrance_EventScript_TryEnterSafariZone:: @ 822BC48
 	compare VAR_RESULT, 0
 	goto_if_eq Route121_SafariZoneEntrance_EventScript_NoPokeblockCase
 	call Route121_SafariZoneEntrance_EventScript_CheckHasRoomForPokemon
-	checkmoney 500, 0
+	checkmoney 500
 	compare VAR_RESULT, 0
 	goto_if_eq Route121_SafariZoneEntrance_EventScript_NotEnoughMoney
 	playse SE_REGI
 	msgbox Route121_SafariZoneEntrance_Text_ThatWillBe500Please, MSGBOX_DEFAULT
-	takemoney 500, 0
+	takemoney 500
 	updatemoneybox 0, 0
 	msgbox Route121_SafariZoneEntrance_Text_HereAreYourSafariBalls, MSGBOX_DEFAULT
 	playfanfare MUS_FANFA4

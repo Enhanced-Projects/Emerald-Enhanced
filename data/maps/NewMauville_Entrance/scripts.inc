@@ -1,6 +1,6 @@
 NewMauville_Entrance_MapScripts:: @ 82372AD
-	map_script MAP_SCRIPT_ON_LOAD, NewMauville_Entrance_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, NewMauville_Entrance_OnTransition
+	map_script ON_LOAD, NewMauville_Entrance_OnLoad
+	map_script ON_TRANSITION, NewMauville_Entrance_OnTransition
 	.byte 0
 
 NewMauville_Entrance_OnLoad: @ 82372B8

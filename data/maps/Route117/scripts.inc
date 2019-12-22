@@ -1,5 +1,5 @@
 Route117_MapScripts:: @ 81F397D
-	map_script MAP_SCRIPT_ON_TRANSITION, Route117_OnTransition
+	map_script ON_TRANSITION, Route117_OnTransition
 	.byte 0
 
 Route117_OnTransition: @ 81F3983
@@ -49,7 +49,7 @@ Route117_EventScript_RegisterIsaac:: @ 81F39FC
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route117_Text_IsaacRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_ISAAC_1
+	@nop Trainer_ISAAC_1
 	release
 	end
 
@@ -71,7 +71,7 @@ Route117_EventScript_RegisterLydia:: @ 81F3A5E
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route117_Text_LydiaRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_LYDIA_1
+	@nop Trainer_LYDIA_1
 	release
 	end
 
@@ -93,7 +93,7 @@ Route117_EventScript_RegisterDylan:: @ 81F3AC0
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route117_Text_DylanRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_DYLAN_1
+	@nop Trainer_DYLAN_1
 	release
 	end
 
@@ -115,7 +115,7 @@ Route117_EventScript_RegisterMaria:: @ 81F3B22
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route117_Text_MariaRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_MARIA_1
+	@nop Trainer_MARIA_1
 	release
 	end
 
@@ -140,7 +140,7 @@ Route117_EventScript_Anna:: @ 81F3B6F
 
 Route117_EventScript_RegisterAnna:: @ 81F3B9F
 	msgbox Route117_Text_AnnaAndMegRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_ANNA_AND_MEG_1
+	@nop Trainer_ANNA_AND_MEG_1
 	release
 	end
 
@@ -160,7 +160,7 @@ Route117_EventScript_Meg:: @ 81F3BD3
 
 Route117_EventScript_RegisterMeg:: @ 81F3C03
 	msgbox Route117_Text_AnnaAndMegRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_ANNA_AND_MEG_1
+	@nop Trainer_ANNA_AND_MEG_1
 	release
 	end
 

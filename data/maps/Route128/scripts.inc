@@ -1,6 +1,6 @@
 Route128_MapScripts:: @ 81F6B38
-	map_script MAP_SCRIPT_ON_TRANSITION, Route128_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route128_OnFrame
+	map_script ON_TRANSITION, Route128_OnTransition
+	map_script ON_FRAME, Route128_OnFrame
 	.byte 0
 
 Route128_OnTransition: @ 81F6B43
@@ -189,7 +189,7 @@ Route128_EventScript_RegisterIsaiah:: @ 81F6CEA
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route128_Text_IsaiahRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_ISAIAH_1
+	@nop Trainer_ISAIAH_1
 	release
 	end
 
@@ -211,7 +211,7 @@ Route128_EventScript_RegisterKatelyn:: @ 81F6D4C
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route128_Text_KatelynRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_KATELYN_1
+	@nop Trainer_KATELYN_1
 	release
 	end
 

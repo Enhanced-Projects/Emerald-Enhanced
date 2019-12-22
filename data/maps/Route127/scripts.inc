@@ -1,7 +1,7 @@
 Route127_MapScripts:: @ 81F69D9
-	map_script MAP_SCRIPT_ON_TRANSITION, Route127_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD, Route127_OnLoad
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route127_OnFrame
+	map_script ON_TRANSITION, Route127_OnTransition
+	map_script ON_LOAD, Route127_OnLoad
+	map_script ON_FRAME, Route127_OnFrame
 	.byte 0
 
 Route127_OnTransition: @ 81F69E9
@@ -73,7 +73,7 @@ Route127_EventScript_RegisterKoji:: @ 81F6B02
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route127_Text_KojiRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_KOJI_1
+	@nop Trainer_KOJI_1
 	release
 	end
 

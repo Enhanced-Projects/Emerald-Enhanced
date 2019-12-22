@@ -33,6 +33,15 @@ void DoTimeBasedEvents(void)
     }
 }
 
+void UpdateBankBalance(void)
+{
+    u32 apr = VarGet(VAR_RYU_BANK_APR);
+    u32 balance = (GetGameStat(51));
+
+    balance = (balance + (balance / apr));
+    SetGameStat(51, balance);
+}
+
 static void UpdatePerDay(struct Time *localTime)
 {
     u16 *days = GetVarPointer(VAR_DAYS);

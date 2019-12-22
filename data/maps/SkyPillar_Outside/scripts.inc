@@ -1,7 +1,7 @@
 SkyPillar_Outside_MapScripts:: @ 82392A8
-	map_script MAP_SCRIPT_ON_TRANSITION, SkyPillar_Outside_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD, SkyPillar_Outside_OnLoad
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SkyPillar_Outside_OnFrame
+	map_script ON_TRANSITION, SkyPillar_Outside_OnTransition
+	map_script ON_LOAD, SkyPillar_Outside_OnLoad
+	map_script ON_FRAME, SkyPillar_Outside_OnFrame
 	.byte 0
 
 SkyPillar_Outside_OnTransition: @ 82392B8

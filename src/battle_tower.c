@@ -141,7 +141,13 @@ const u16 gBattleFrontierHeldItems[] =
     ITEM_METAL_POWDER,
     ITEM_PETAYA_BERRY,
     ITEM_LUCKY_PUNCH,
-    ITEM_GANLON_BERRY
+    ITEM_GANLON_BERRY,
+    ITEM_ASSAULT_VEST,
+    ITEM_CHOICE_SCARF,
+    ITEM_CHOICE_SPECS,
+    ITEM_EXPERT_BELT,
+    ITEM_FOCUS_SASH,
+    ITEM_LIFE_ORB
 };
 
 #include "data/battle_frontier/battle_frontier_trainer_mons.h"
@@ -3858,5 +3864,47 @@ void sub_8166188(void)
                 CalculateMonStats(&gEnemyParty[i]);
             }
         }
+    }
+}
+
+void RyuGiveFrontierMon(void)
+{
+    s32 count;
+    s32 evs[NUM_STATS];
+    u8 i, temp, party_id = CalculatePlayerPartyCount();
+
+    const struct FacilityMon *mon = &gBattleFrontierMons[Random() % 881];
+
+    temp = mon->evSpread;
+    count = 0;
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        evs[i] = temp & 1;
+        count += temp & 1;
+        temp >>= 1;
+    }
+
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        if (evs[i])
+            evs[i] = MAX_TOTAL_EVS / count;
+    }
+
+    if (party_id != 6)
+    {
+        CreateMonWithNature(&gPlayerParty[party_id], mon->species, 50, mon->ivs, mon->nature);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_MOVE1, &mon->moves[0]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_MOVE2, &mon->moves[1]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_MOVE3, &mon->moves[2]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_MOVE4, &mon->moves[3]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_HP_EV, &evs[0]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_ATK_EV, &evs[1]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_DEF_EV, &evs[2]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_SPATK_EV, &evs[3]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_SPDEF_EV, &evs[4]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_SPEED_EV, &evs[5]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_ABILITY_NUM, &mon->ability);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[mon->itemTableId]);
+        CalculateMonStats(&gPlayerParty[party_id]);
     }
 }

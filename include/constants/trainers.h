@@ -108,6 +108,12 @@
 #define TRAINER_PIC_LEAF                  90
 #define TRAINER_PIC_RS_BRENDAN            91
 #define TRAINER_PIC_RS_MAY                92
+#define TRAINER_PIC_DEVON_M               93
+#define TRAINER_PIC_LANCE                 94
+#define TRAINER_PIC_GIOVANNI              95
+#define TRAINER_PIC_LANETTE               96
+#define TRAINER_PIC_MINNIE                97
+#define TRAINER_PIC_MEWTWO                98
 
 #define TRAINER_BACK_PIC_BRENDAN                0
 #define TRAINER_BACK_PIC_MAY                    1
@@ -117,6 +123,9 @@
 #define TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY      5
 #define TRAINER_BACK_PIC_WALLY                  6
 #define TRAINER_BACK_PIC_STEVEN                 7
+#define TRAINER_BACK_PIC_MINNIE                 8
+#define TRAINER_BACK_PIC_LANETTE                9
+#define TRAINER_BACK_PIC_SHELLY                 10
 
 #define FACILITY_CLASS_HIKER                 0x0
 #define FACILITY_CLASS_AQUA_GRUNT_M          0x1

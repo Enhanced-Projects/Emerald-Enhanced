@@ -51,6 +51,7 @@
 #define GAME_STAT_USED_DAYCARE              47
 #define GAME_STAT_RODE_CABLE_CAR            48
 #define GAME_STAT_ENTERED_HOT_SPRINGS       49
-#define NUM_GAME_STATS                      50
+#define GAME_STAT_BANK_BALANCE              50
+#define NUM_GAME_STATS                      51
 
 #endif // GUARD_CONSTANTS_GAME_STAT_H

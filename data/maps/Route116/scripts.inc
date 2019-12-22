@@ -1,7 +1,7 @@
 Route116_MapScripts:: @ 81F2C0C
-	map_script MAP_SCRIPT_ON_TRANSITION, Route116_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD, Route116_OnLoad
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route116_OnFrame
+	map_script ON_TRANSITION, Route116_OnTransition
+	map_script ON_LOAD, Route116_OnLoad
+	map_script ON_FRAME, Route116_OnFrame
 	.byte 0
 
 Route116_OnTransition: @ 81F2C1C
@@ -267,7 +267,6 @@ Route116_EventScript_Jerry:: @ 81F2EB7
 	end
 
 Route116_EventScript_TryRegisterJerryAfterBattle:: @ 81F2EF8
-	goto_if_set FLAG_HAS_MATCH_CALL, Route116_EventScript_RegisterJerryAfterBattle
 	release
 	end
 
@@ -275,19 +274,18 @@ Route116_EventScript_RegisterJerryAfterBattle:: @ 81F2F03
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route116_Text_JerryRegister2, MSGBOX_DEFAULT
-	register_matchcall TRAINER_JERRY_1
+	@nop Trainer_JERRY_1
 	release
 	end
 
 Route116_EventScript_TryRegisterJerry:: @ 81F2F22
-	goto_if_set FLAG_HAS_MATCH_CALL, Route116_EventScript_RegisterJerry
 	msgbox Route116_Text_JerryPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route116_EventScript_RegisterJerry:: @ 81F2F35
 	msgbox Route116_Text_JerryRegister1, MSGBOX_DEFAULT
-	register_matchcall TRAINER_JERRY_1
+	@nop Trainer_JERRY_1
 	release
 	end
 
@@ -320,7 +318,6 @@ Route116_EventScript_Karen:: @ 81F2F93
 	end
 
 Route116_EventScript_TryRegisterKarenAfterBattle:: @ 81F2FD4
-	goto_if_set FLAG_HAS_MATCH_CALL, Route116_EventScript_RegisterKarenAfterBattle
 	release
 	end
 
@@ -328,19 +325,18 @@ Route116_EventScript_RegisterKarenAfterBattle:: @ 81F2FDF
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route116_Text_KarenRegister2, MSGBOX_DEFAULT
-	register_matchcall TRAINER_KAREN_1
+	@nop Trainer_KAREN_1
 	release
 	end
 
 Route116_EventScript_TryRegisterKaren:: @ 81F2FFE
-	goto_if_set FLAG_HAS_MATCH_CALL, Route116_EventScript_RegisterKaren
 	msgbox Route116_Text_KarenPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route116_EventScript_RegisterKaren:: @ 81F3011
 	msgbox Route116_Text_KarenRegister1, MSGBOX_DEFAULT
-	register_matchcall TRAINER_KAREN_1
+	@nop Trainer_KAREN_1
 	release
 	end
 

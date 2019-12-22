@@ -1,5 +1,5 @@
 Underwater_SealedChamber_MapScripts:: @ 82390C4
-	map_script MAP_SCRIPT_ON_DIVE_WARP, Underwater_SealedChamber_OnDive
+	map_script ON_DIVE_WARP, Underwater_SealedChamber_OnDive
 	.byte 0
 
 Underwater_SealedChamber_OnDive: @ 82390CA

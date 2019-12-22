@@ -68,6 +68,10 @@ Common_Movement_WalkInPlaceRight: @ 82725B8
 	walk_in_place_right
 	step_end
 
+Common_Movement_HeartEmote:
+	emote_heart
+	step_end
+
 Common_Movement_WalkUp6: @ 82725BA
 	walk_up
 	walk_up

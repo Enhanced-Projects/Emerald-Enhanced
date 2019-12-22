@@ -1,7 +1,7 @@
 RustboroCity_DevonCorp_3F_MapScripts:: @ 821242D
-	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_DevonCorp_3F_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, RustboroCity_DevonCorp_3F_OnWarp
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, RustboroCity_DevonCorp_3F_OnFrame
+	map_script ON_TRANSITION, RustboroCity_DevonCorp_3F_OnTransition
+	map_script ON_WARP, RustboroCity_DevonCorp_3F_OnWarp
+	map_script ON_FRAME, RustboroCity_DevonCorp_3F_OnFrame
 	.byte 0
 
 RustboroCity_DevonCorp_3F_OnTransition: @ 821243D

@@ -370,6 +370,30 @@ static const union AnimCmd *const sAnims_RubySapphireMay[] ={
     sAnim_GeneralFrame0,
 };
 
+const union AnimCmd *const gTrainerFrontAnims_RyuDevonM[] ={
+    sAnim_GeneralFrame0,
+};
+
+const union AnimCmd *const gTrainerFrontAnims_Lance[] ={
+    sAnim_GeneralFrame0,
+};
+
+const union AnimCmd *const gTrainerFrontAnims_Giovanni[] ={
+    sAnim_GeneralFrame0,
+};
+
+const union AnimCmd *const gTrainerFrontAnims_Lanette[] ={
+    sAnim_GeneralFrame0,
+};
+
+const union AnimCmd *const gTrainerFrontAnims_Minnie[] ={
+    sAnim_GeneralFrame0,
+};
+
+const union AnimCmd *const gTrainerFrontAnims_Mewtwo[] ={
+    sAnim_GeneralFrame0,
+};
+
 const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
 {
     [TRAINER_PIC_HIKER] = sAnims_Hiker,
@@ -465,4 +489,10 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_LEAF] = sAnims_Leaf,
     [TRAINER_PIC_RS_BRENDAN] = sAnims_RubySapphireBrendan,
     [TRAINER_PIC_RS_MAY] = sAnims_RubySapphireMay,
+    [TRAINER_PIC_DEVON_M] = gTrainerFrontAnims_RyuDevonM,
+    [TRAINER_PIC_LANCE] = gTrainerFrontAnims_Lance,
+    [TRAINER_PIC_GIOVANNI] = gTrainerFrontAnims_Giovanni,
+    [TRAINER_PIC_LANETTE] = gTrainerFrontAnims_Lanette,
+    [TRAINER_PIC_MINNIE] = gTrainerFrontAnims_Minnie,
+    [TRAINER_PIC_MEWTWO] = gTrainerFrontAnims_Mewtwo,
 };

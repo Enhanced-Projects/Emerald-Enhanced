@@ -568,6 +568,10 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/Route119_WeatherInstitute_2F/scripts.inc"
 	.include "data/maps/Route119_House/scripts.inc"
 	.include "data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc"
+	.include "data/scripts/RyuScripts.inc"
+	.include "data/scripts/RyuIntroScripts.inc"
+	.include "data/scripts/RyuSacrificeSystem.inc"
+	.include "data/scripts/RyuDevonLine.inc"
 
 @ Below could be split as std_msgbox.inc but autoclose straddles trainer_battle.inc
 Std_MsgboxNPC: @ 8271315
@@ -1115,3 +1119,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/text/frontier_brain.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+
+	.include "data/maps/Littleroot_Town_Rival_HouseQuest/scripts.inc"

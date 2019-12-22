@@ -1,7 +1,7 @@
 Route114_MapScripts:: @ 81F252F
-	map_script MAP_SCRIPT_ON_TRANSITION, Route114_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD, Route114_OnLoad
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route114_OnFrame
+	map_script ON_TRANSITION, Route114_OnTransition
+	map_script ON_LOAD, Route114_OnLoad
+	map_script ON_FRAME, Route114_OnFrame
 	.byte 0
 
 Route114_OnTransition: @ 81F253F
@@ -119,7 +119,7 @@ Route114_EventScript_RegisterSteve:: @ 81F26C8
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route114_Text_SteveRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_STEVE_1
+	@nop Trainer_STEVE_1
 	release
 	end
 
@@ -141,7 +141,7 @@ Route114_EventScript_RegisterBernie:: @ 81F272A
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route114_Text_BernieRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_BERNIE_1
+	@nop Trainer_BERNIE_1
 	release
 	end
 

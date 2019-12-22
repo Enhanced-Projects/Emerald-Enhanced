@@ -93,6 +93,12 @@ const struct MonCoords gTrainerFrontPicCoords[] =
     [TRAINER_PIC_LEAF] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_RS_BRENDAN] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_RS_MAY] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_DEVON_M] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_LANCE] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_GIOVANNI] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_LANETTE] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_MINNIE] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_MEWTWO] = {.size = 8, .y_offset = 1},
 };
 
 const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
@@ -189,7 +195,13 @@ const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
     TRAINER_SPRITE(RED, gTrainerFrontPic_Red, 0x800),
     TRAINER_SPRITE(LEAF, gTrainerFrontPic_Leaf, 0x800),
     TRAINER_SPRITE(RS_BRENDAN, gTrainerFrontPic_RubySapphireBrendan, 0x800),
-    TRAINER_SPRITE(RS_MAY, gTrainerFrontPic_RubySapphireMay, 0x800),
+    TRAINER_SPRITE(DEVON_M, gTrainerFrontPic_DevonM, 0x800),
+    TRAINER_SPRITE(LANCE, gTrainerFrontPic_Lance, 0x800),
+    TRAINER_SPRITE(GIOVANNI, gTrainerFrontPic_Giovanni, 0x800),
+    TRAINER_SPRITE(LANETTE, gTrainerFrontPic_Lanette, 0x800),
+    TRAINER_SPRITE(MINNIE, gTrainerFrontPic_Minnie, 0x800),
+    TRAINER_SPRITE(MEWTWO, gTrainerFrontPic_Mewtwo, 0x800),
+
 };
 
 const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
@@ -287,4 +299,10 @@ const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
     TRAINER_PAL(LEAF, gTrainerPalette_Leaf),
     TRAINER_PAL(RS_BRENDAN, gTrainerPalette_RubySapphireBrendan),
     TRAINER_PAL(RS_MAY, gTrainerPalette_RubySapphireMay),
+    TRAINER_PAL(DEVON_M, gTrainerPalette_DevonM),
+    TRAINER_PAL(LANCE, gTrainerPalette_Lance),
+    TRAINER_PAL(GIOVANNI, gTrainerPalette_Giovanni),
+    TRAINER_PAL(LANETTE, gTrainerPalette_Lanette),
+    TRAINER_PAL(MINNIE, gTrainerPalette_Minnie),
+    TRAINER_PAL(MEWTWO, gTrainerPalette_Mewtwo),
 };

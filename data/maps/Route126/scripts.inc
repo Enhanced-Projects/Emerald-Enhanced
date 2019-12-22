@@ -1,5 +1,5 @@
 Route126_MapScripts:: @ 81F68C6
-	map_script MAP_SCRIPT_ON_TRANSITION, Route126_OnTransition
+	map_script ON_TRANSITION, Route126_OnTransition
 	.byte 0
 
 Route126_OnTransition: @ 81F68CC
@@ -54,7 +54,7 @@ Route126_EventScript_RegisterPablo:: @ 81F69A3
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route126_Text_PabloRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_PABLO_1
+	@nop Trainer_PABLO_1
 	release
 	end
 

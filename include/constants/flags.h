@@ -37,54 +37,54 @@
 #define FLAG_TEMP_1E    0x1E
 #define FLAG_TEMP_1F    0x1F
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
-#define FLAG_UNUSED_0x036    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
-#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
-#define FLAG_UNUSED_0x03E    0x3E // Unused Flag
-#define FLAG_UNUSED_0x03F    0x3F // Unused Flag
-#define FLAG_UNUSED_0x040    0x40 // Unused Flag
-#define FLAG_UNUSED_0x041    0x41 // Unused Flag
-#define FLAG_UNUSED_0x042    0x42 // Unused Flag
-#define FLAG_UNUSED_0x043    0x43 // Unused Flag
-#define FLAG_UNUSED_0x044    0x44 // Unused Flag
-#define FLAG_UNUSED_0x045    0x45 // Unused Flag
-#define FLAG_UNUSED_0x046    0x46 // Unused Flag
-#define FLAG_UNUSED_0x047    0x47 // Unused Flag
-#define FLAG_UNUSED_0x048    0x48 // Unused Flag
-#define FLAG_UNUSED_0x049    0x49 // Unused Flag
-#define FLAG_UNUSED_0x04A    0x4A // Unused Flag
-#define FLAG_UNUSED_0x04B    0x4B // Unused Flag
-#define FLAG_UNUSED_0x04C    0x4C // Unused Flag
-#define FLAG_UNUSED_0x04D    0x4D // Unused Flag
-#define FLAG_UNUSED_0x04E    0x4E // Unused Flag
-#define FLAG_UNUSED_0x04F    0x4F // Unused Flag
+#define FLAG_RYU_LT_RIVAL2   0x20 // Unused Flag
+#define FLAG_RYU_LT_RIVAL    0x21 // Unused Flag
+#define FLAG_HIDE_CHAMPIONS_ROOM_STEVEN    0x22 // Unused Flag
+#define FLAG_RYU_STARTER_CHOSEN    0x23 // Unused Flag
+#define FLAG_RYU_MH_COURTNEY_DUOMODE    0x24 // Unused Flag
+#define FLAG_RYU_MH_COURTNEY_SOLOMODE    0x25 // Unused Flag
+#define FLAG_HIDE_BRENDANS_HOUSE_BRENDAN    0x26 // Unused Flag
+#define FLAG_RYU_HAS_WAYSTONE    0x27 // Unused Flag
+#define FLAG_HIDE_DAWNS_HOUSE_DAWN    0x28 // Unused Flag
+#define FLAG_RYU_KYOGRE    0x29 // Unused Flag
+#define FLAG_HIDE_103_TEST_TRAINER    0x2A // Unused Flag
+#define FLAG_LANA_AS_TOGGLE    0x2B // Unused Flag
+#define FLAG_PT_LANA_TOGGLE    0x2C // Unused Flag
+#define FLAG_RYU_HIDE_R120_LANA_AND_HIKER    0x2D // Unused Flag
+#define FLAG_RYU_HIDE_REL_OBJECTS    0x2E // Unused Flag
+#define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3    0x2F // Unused Flag
+#define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE    0x30 // Unused Flag
+#define FLAG_RYU_DEVON_CORPORATE_HIDE_SCIENTIST    0x31 // Unused Flag
+#define FLAG_RYU_DEVON_CORPORATE_HIDE_MSITO    0x32 // Unused Flag
+#define FLAG_RYU_WAYSTONE_DISABLED    0x33 // Unused Flag
+#define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE4    0x34 // Unused Flag
+#define FLAG_RYU_DEFEATED_SS    0x35 // Unused Flag
+#define FLAG_RYU_HIDE_LANETTE_BASEMENT    0x36 // Unused Flag
+#define FLAG_RYU_TEMPTP    0x37 // Unused Flag
+#define FLAG_RYU_HAS_FOLLOWER    0x38 // Unused Flag
+#define FLAG_RYU_DEV_MODE    0x39 // Unused Flag
+#define FLAG_RYU_AQUA_THIEF_SEEN    0x3A // Unused Flag
+#define FLAG_RYU_PLAYER_HELPING_DEVON    0x3B // Unused Flag
+#define FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO    0x3C // Unused Flag
+#define FLAG_RYU_DEVON_MISSION2START    0x3D // Unused Flag
+#define FLAG_RYU_DEVON_M1C    0x3E // Unused Flag
+#define FLAG_RYU_DEVON_MISSION1START    0x3F // Unused Flag
+#define FLAG_RYU_PLAYER_HELPING_AQUA    0x40 // Unused Flag
+#define FLAG_RYU_DEVON_MISSION6START    0x41 // Unused Flag
+#define FLAG_RYU_DEVON_MISSION5COMPLETE    0x42 // Unused Flag
+#define FLAG_RYU_DG_REWARD_RECEIVED    0x43 // Unused Flag
+#define FLAG_RYU_DEVON_MISSION5START    0x44 // Unused Flag
+#define FLAG_RYU_DEVON_MISSION_3_DONE    0x45 // Unused Flag
+#define FLAG_RYU_DEVON_MISSION3START    0x46 // Unused Flag
+#define FLAG_RYU_DEVON_MISSION4COMPLETE    0x47 // Unused Flag
+#define FLAG_RYU_DEVON_CORPORATE    0x48 // Unused Flag
+#define FLAG_RYU_STARTING_M3    0x49 // Unused Flag
+#define FLAG_RYU_STARTING_M4    0x4A // Unused Flag
+#define FLAG_RYU_AQUA_LINE_DONE    0x4B // Unused Flag
+#define FLAG_RYU_MISSION4COMPLETE    0x4C // Unused Flag
+#define FLAG_RYU_AQUA_MISSION2COMPLETE    0x4D // Unused Flag
+#define FLAG_RYU_AQUA_MISSION2REWARDED    0x4E // Unused Flag
+#define FLAG_RYU_AQUA_MISSION1REWARDED    0x4F // Unused Flag
 
 // Scripts
 #define FLAG_HIDE_RAYQUAZA_SKY_TOWER_SUMMIT  0x50
@@ -92,7 +92,7 @@
 #define FLAG_RESCUED_BIRCH                   0x52
 #define FLAG_LEGENDARIES_IN_SOOTOPOLIS       0x53
 
-#define FLAG_UNUSED_0x054                    0x54  // Unused Flag
+#define FLAG_RYU_JUKEBOX_ENABLED                    0x54  // Unused Flag
 #define FLAG_UNUSED_0x055                    0x55  // Unused Flag
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56  // Always set after new game, object it hides is added directly
@@ -114,7 +114,7 @@
 #define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66 //
 #define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
 
-#define FLAG_UNUSED_0x068                    0x68  // Unused Flag
+#define FLAG_RYU_PLAYER_AQUA_NECKLACE                    0x68  // Unused Flag
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_HM04                   0x6A
@@ -249,7 +249,7 @@
 #define FLAG_RECEIVED_TM05                   0xE7
 #define FLAG_RECEIVED_TM19                   0xE8
 
-#define FLAG_UNUSED_0x0E9                    0xE9 // Unused Flag
+#define FLAG_RYU_PLAYER_AQUA_STONE                    0xE9 // Unused Flag
 
 #define FLAG_RECEIVED_TM44                   0xEA
 #define FLAG_RECEIVED_TM45                   0xEB
@@ -287,7 +287,7 @@
 #define FLAG_RECEIVED_REVIVED_FOSSIL_MON     0x10B
 #define FLAG_SECRET_BASE_REGISTRY_ENABLED    0x10C
 #define FLAG_RECEIVED_TM46                   0x10D
-#define FLAG_CONTEST_SKETCH_CREATED          0x10E  // Set but never read
+#define FLAG_RYU_PLAYER_AQUA_ADMIN          0x10E  // Set but never read
 #define FLAG_EVIL_TEAM_ESCAPED_STERN_SPOKE   0x10F
 #define FLAG_RECEIVED_EXP_SHARE              0x110
 #define FLAG_POKERUS_EXPLAINED               0x111
@@ -320,7 +320,7 @@
 #define FLAG_MET_FANCLUB_YOUNGER_BROTHER     0x12C
 #define FLAG_RIVAL_LEFT_FOR_ROUTE103         0x12D
 #define FLAG_OMIT_DIVE_FROM_STEVEN_LETTER    0x12E
-#define FLAG_HAS_MATCH_CALL                  0x12F
+#define FLAG_UNUSED_0x12F                    0x12F
 #define FLAG_ADDED_MATCH_CALL_TO_POKENAV     0x130
 #define FLAG_REGISTERED_STEVEN_POKENAV       0x131
 #define FLAG_ENABLE_NORMAN_MATCH_CALL        0x132
@@ -334,23 +334,23 @@
 #define FLAG_RECEIVED_AURORA_TICKET          0x13A
 #define FLAG_RECEIVED_MYSTIC_TICKET          0x13B
 #define FLAG_RECEIVED_OLD_SEA_MAP            0x13C 
-#define FLAG_UNUSED_MYSTERY_GIFT_0x13D       0x13D
-#define FLAG_UNUSED_MYSTERY_GIFT_0x13E       0x13E
-#define FLAG_UNUSED_MYSTERY_GIFT_0x13F       0x13F
-#define FLAG_UNUSED_MYSTERY_GIFT_0x140       0x140
-#define FLAG_UNUSED_MYSTERY_GIFT_0x141       0x141
-#define FLAG_UNUSED_MYSTERY_GIFT_0x142       0x142
-#define FLAG_UNUSED_MYSTERY_GIFT_0x143       0x143
-#define FLAG_UNUSED_MYSTERY_GIFT_0x144       0x144
-#define FLAG_UNUSED_MYSTERY_GIFT_0x145       0x145
-#define FLAG_UNUSED_MYSTERY_GIFT_0x146       0x146
-#define FLAG_UNUSED_MYSTERY_GIFT_0x147       0x147
-#define FLAG_UNUSED_MYSTERY_GIFT_0x148       0x148
-#define FLAG_UNUSED_MYSTERY_GIFT_0x149       0x149
-#define FLAG_UNUSED_MYSTERY_GIFT_0x14A       0x14A
-#define FLAG_UNUSED_MYSTERY_GIFT_0x14B       0x14B
-#define FLAG_UNUSED_MYSTERY_GIFT_0x14C       0x14C
-#define FLAG_UNUSED_MYSTERY_GIFT_0x14D       0x14D
+#define FLAG_RYU_DS_SHELLY_ACQ               0x13D
+#define FLAG_RYU_DS_SHELLY_FRIENDS           0x13E
+#define FLAG_RYU_DS_SHELLY_CLOSEFRIENDS      0x13F
+#define FLAG_RYU_DS_SHELLY_LOVERS            0x140
+#define FLAG_RYU_DS_SHELLY_PARTNERS          0x141
+#define FLAG_RYU_DS_DAWN_ACQ                 0x142
+#define FLAG_RYU_DS_DAWN_FRIENDS             0x143
+#define FLAG_RYU_DS_DAWN_CLOSEFRIENDS        0x144
+#define FLAG_RYU_DS_DAWN_LOVERS              0x145
+#define FLAG_RYU_DS_DAWN_PARTNERS            0x146
+#define FLAG_RYU_DS_BRENDAN_ACQ              0x147
+#define FLAG_RYU_DS_BRENDAN_FRIENDS          0x148
+#define FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS     0x149
+#define FLAG_RYU_DS_BRENDAN_LOVERS           0x14A
+#define FLAG_RYU_DS_BRENDAN_PARTNERS         0x14B
+#define FLAG_RYU_ARCHIE_SUCCESSFUL           0x14C
+#define FLAG_RYU_DS_SHELLY_SCENE             0x14D
 
 #define FLAG_MIRAGE_TOWER_VISIBLE            0x14E
 #define FLAG_CHOSE_ROOT_FOSSIL               0x14F
@@ -450,8 +450,8 @@
 #define FLAG_REMATCH_DRAKE                   0x1A8
 #define FLAG_REMATCH_WALLACE                 0x1A9
 
-#define FLAG_UNUSED_0x1AA                    0x1AA // Unused Flag
-#define FLAG_UNUSED_0x1AB                    0x1AB // Unused Flag
+#define FLAG_RYU_AFTERSHELLYSTORY                    0x1AA // Unused Flag
+#define FLAG_RYU_DS_HAS_PARTNER                    0x1AB // Unused Flag
 
 #define FLAG_DEFEATED_DEOXYS                 0x1AC
 #define FLAG_BATTLED_DEOXYS                  0x1AD
@@ -506,12 +506,12 @@
 #define FLAG_DEFEATED_HO_OH                  0x1DC
 #define FLAG_DEFEATED_LUGIA                  0x1DD
 
-#define FLAG_UNUSED_0x1DE                    0x1DE // Unused Flag
-#define FLAG_UNUSED_0x1DF                    0x1DF // Unused Flag
-#define FLAG_UNUSED_0x1E0                    0x1E0 // Unused Flag
-#define FLAG_UNUSED_0x1E1                    0x1E1 // Unused Flag
-#define FLAG_UNUSED_0x1E2                    0x1E2 // Unused Flag
-#define FLAG_UNUSED_0x1E3                    0x1E3 // Unused Flag
+#define FLAG_LEAF_PC                         0x1DE // Unused Flag
+#define FLAG_RYU_DS_LEAF_ACQ                 0x1DF // Unused Flag
+#define FLAG_RYU_DS_LEAF_FRIENDS             0x1E0 // Unused Flag
+#define FLAG_RYU_DS_LEAF_CLOSEFRIENDS        0x1E1 // Unused Flag
+#define FLAG_RYU_DS_LEAF_LOVERS              0x1E2 // Unused Flag
+#define FLAG_RYU_DS_LEAF_PARTNERS            0x1E3 // Unused Flag
 
 // Mystery Gift Flags (Unknown)
 #define FLAG_MYSTERY_EVENT_DONE              0x1E4
@@ -648,54 +648,54 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_2             (FLAG_HIDDEN_ITEMS_START + 0x5D)
 #define FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_3             (FLAG_HIDDEN_ITEMS_START + 0x5E)
 
-#define FLAG_UNUSED_0x264  0x264 // Unused Flag
-#define FLAG_UNUSED_0x265  0x265 // Unused Flag
-#define FLAG_UNUSED_0x266  0x266 // Unused Flag
-#define FLAG_UNUSED_0x267  0x267 // Unused Flag
-#define FLAG_UNUSED_0x268  0x268 // Unused Flag
-#define FLAG_UNUSED_0x269  0x269 // Unused Flag
-#define FLAG_UNUSED_0x26A  0x26A // Unused Flag
-#define FLAG_UNUSED_0x26B  0x26B // Unused Flag
-#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
-#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
-#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
-#define FLAG_UNUSED_0x271  0x271 // Unused Flag
-#define FLAG_UNUSED_0x272  0x272 // Unused Flag
-#define FLAG_UNUSED_0x273  0x273 // Unused Flag
-#define FLAG_UNUSED_0x274  0x274 // Unused Flag
-#define FLAG_UNUSED_0x275  0x275 // Unused Flag
-#define FLAG_UNUSED_0x276  0x276 // Unused Flag
-#define FLAG_UNUSED_0x277  0x277 // Unused Flag
-#define FLAG_UNUSED_0x278  0x278 // Unused Flag
-#define FLAG_UNUSED_0x279  0x279 // Unused Flag
-#define FLAG_UNUSED_0x27A  0x27A // Unused Flag
-#define FLAG_UNUSED_0x27B  0x27B // Unused Flag
-#define FLAG_UNUSED_0x27C  0x27C // Unused Flag
-#define FLAG_UNUSED_0x27D  0x27D // Unused Flag
-#define FLAG_UNUSED_0x27E  0x27E // Unused Flag
-#define FLAG_UNUSED_0x27F  0x27F // Unused Flag
-#define FLAG_UNUSED_0x280  0x280 // Unused Flag
-#define FLAG_UNUSED_0x281  0x281 // Unused Flag
-#define FLAG_UNUSED_0x282  0x282 // Unused Flag
-#define FLAG_UNUSED_0x283  0x283 // Unused Flag
-#define FLAG_UNUSED_0x284  0x284 // Unused Flag
-#define FLAG_UNUSED_0x285  0x285 // Unused Flag
-#define FLAG_UNUSED_0x286  0x286 // Unused Flag
-#define FLAG_UNUSED_0x287  0x287 // Unused Flag
-#define FLAG_UNUSED_0x288  0x288 // Unused Flag
-#define FLAG_UNUSED_0x289  0x289 // Unused Flag
-#define FLAG_UNUSED_0x28A  0x28A // Unused Flag
-#define FLAG_UNUSED_0x28B  0x28B // Unused Flag
-#define FLAG_UNUSED_0x28C  0x28C // Unused Flag
-#define FLAG_UNUSED_0x28D  0x28D // Unused Flag
-#define FLAG_UNUSED_0x28E  0x28E // Unused Flag
-#define FLAG_UNUSED_0x28F  0x28F // Unused Flag
-#define FLAG_UNUSED_0x290  0x290 // Unused Flag
-#define FLAG_UNUSED_0x291  0x291 // Unused Flag
-#define FLAG_UNUSED_0x292  0x292 // Unused Flag
-#define FLAG_UNUSED_0x293  0x293 // Unused Flag
+#define FLAG_LH_EVENT2  0x264 // Unused Flag
+#define FLAG_LANA_EVENT2_DONE  0x265 // Unused Flag
+#define FLAG_LANA_EVENT3_DONE  0x266 // Unused Flag
+#define FLAG_LANA_EVENT_4  0x267 // Unused Flag
+#define FLAG_LANA_EVENT_5  0x268 // Unused Flag
+#define FLAG_LANA_EVENT_6  0x269 // Unused Flag
+#define FLAG_LANA_EVENT_7  0x26A // Unused Flag
+#define FLAG_LANA_EVENT_8  0x26B // Unused Flag
+#define FLAG_LANA_EVENT_9  0x26C // Unused Flag
+#define FLAG_LANA_EVENT_10  0x26D // Unused Flag
+#define FLAG_RYU_LANA_EVENT11  0x26E // Unused Flag
+#define FLAG_RYU_LANA_EVENT12  0x26F // Unused Flag
+#define FLAG_RYU_LANA_EVENT13  0x270 // Unused Flag
+#define FLAG_RYU_LANA_EVENT14  0x271 // Unused Flag
+#define FLAG_RYU_LEAF_ALTERNATE_LINE  0x272 // Unused Flag
+#define FLAG_RYU_LEAF_MTPYRE  0x273 // Unused Flag
+#define FLAG_RYU_DAYCARE_LEAFEVENTPC  0x274 // Unused Flag
+#define FLAG_RYU_LANA_ALTEVENT3  0x275 // Unused Flag
+#define FLAG_RYU_HIDE_LCC_DEPT_ROOF_NPC  0x276 // Unused Flag
+#define FLAG_RYU_LEAF_LCC_EVENT_DONE  0x277 // Unused Flag
+#define FLAG_LH_EVENT  0x278 // Unused Flag
+#define FLAG_RYU_TH_LANA_EVENT_1  0x279 // Unused Flag
+#define FLAG_LH_LANA_INTRO  0x27A // Unused Flag
+#define FLAG_LANA_EVENT1_DONE  0x27B // Unused Flag
+#define FLAG_RYU_LANA_ALTEVENT2  0x27C // Unused Flag
+#define FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO  0x27D // Unused Flag
+#define FLAG_RYU_DS_LEAF_LINE_CANCELLED  0x27E // Unused Flag
+#define FLAG_LEAF_EVENT_0  0x27F // Unused Flag
+#define FLAG_RYU_DAWN_GIFTPOKE_RECEIVED  0x280 // Unused Flag
+#define FLAG_RYU_DS_LANETTE_ACQ  0x281 // Unused Flag
+#define FLAG_RYU_DS_LANETTE_FRIENDS  0x282 // Unused Flag
+#define FLAG_RYU_DS_LANETTE_CLOSEFRIENDS  0x283 // Unused Flag
+#define FLAG_RYU_DS_LANETTE_LOVERS  0x284 // Unused Flag
+#define FLAG_RYU_DS_LANETTE_PARTNERS  0x285 // Unused Flag
+#define FLAG_RYU_GYM1HANDOUT 0x286
+#define FLAG_RYU_GYM2HANDOUT 0x287
+#define FLAG_RYU_GYM3HANDOUT 0x288
+#define FLAG_RYU_GYM4HANDOUT 0x289
+#define FLAG_RYU_GYM5HANDOUT 0x28A
+#define FLAG_RYU_GYM6HANDOUT 0x28B
+#define FLAG_RYU_GYM7HANDOUT 0x28C
+#define FLAG_RYU_GYM8HANDOUT 0x28D
+#define FLAG_RYU_USED_WIRELESSPC  0x28E // Unused Flag
+#define FLAG_RYU_HAS_WIRELESSPC  0x28F // Unused Flag
+#define FLAG_RYU_RANDOMBATTLE  0x290 // Unused Flag
+#define FLAG_RYU_LANETTE_EVENT1  0x291 // Unused Flag
+#define FLAG_RYU_LANETTE_INTRO  0x292 // Unused Flag
+#define FLAG_RYU_LANETTE_EVENT_0  0x293 // Unused Flag
 #define FLAG_UNUSED_0x294  0x294 // Unused Flag
 #define FLAG_UNUSED_0x295  0x295 // Unused Flag
 #define FLAG_UNUSED_0x296  0x296 // Unused Flag
@@ -1170,26 +1170,26 @@
 #define FLAG_ITEM_NEW_MAUVILLE_PARALYZE_HEAL                        0x463
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL                      0x464
 
-#define FLAG_UNUSED_0x465                                           0x465 // Unused Flag
-#define FLAG_UNUSED_0x466                                           0x466 // Unused Flag
-#define FLAG_UNUSED_0x467                                           0x467 // Unused Flag
-#define FLAG_UNUSED_0x468                                           0x468 // Unused Flag
+#define FLAG_RYU_MET_RIVAL_LITTLEROOT                               0x465 // Unused Flag
+#define FLAG_RYU_FRONTIER_MODE                                      0x466 // Unused Flag
+#define FLAG_RYU_NUZLOCKEMODE                                       0x467 // Unused Flag
+#define FLAG_RYU_HARDCORE_MODE                                      0x468 // Unused Flag
 
 #define FLAG_ITEM_MT_PYRE_2F_ULTRA_BALL                             0x469
 #define FLAG_ITEM_MT_PYRE_4F_SEA_INCENSE                            0x46A
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_WEST_MAX_REVIVE                 0x46B
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_NUGGET                           0x46C
 
-#define FLAG_UNUSED_0x46D                                           0x46D // Unused Flag
+#define FLAG_RYU_EXP_DRIVE_DISABLE_EARNING                          0x46D // Unused Flag
 
 #define FLAG_ITEM_ROUTE_119_NUGGET                                  0x46E
 #define FLAG_ITEM_ROUTE_104_POTION                                  0x46F
 
-#define FLAG_UNUSED_0x470                                           0x470 // Unused Flag
+#define FLAG_RYU_NUZLOCKEFAILED                                     0x470 // Unused Flag
 
 #define FLAG_ITEM_ROUTE_103_PP_UP                                   0x471
 
-#define FLAG_UNUSED_0x472                                           0x472 // Unused Flag
+#define FLAG_RYU_DEVELOPER_ITEM_MENU                                0x472 // Unused Flag
 
 #define FLAG_ITEM_ROUTE_108_STAR_PIECE                              0x473
 #define FLAG_ITEM_ROUTE_109_POTION                                  0x474
@@ -1198,7 +1198,7 @@
 #define FLAG_ITEM_ROUTE_113_HYPER_POTION                            0x477
 #define FLAG_ITEM_ROUTE_115_HEAL_POWDER                             0x478
 
-#define FLAG_UNUSED_0x479                                           0x479 // Unused Flag
+#define FLAG_RYU_DEVELOPER_POKEMON_MENU                             0x479 // Unused Flag
 
 #define FLAG_ITEM_ROUTE_116_POTION                                  0x47A
 #define FLAG_ITEM_ROUTE_119_ELIXIR_2                                0x47B
@@ -1226,22 +1226,22 @@
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
-#define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
-#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
-#define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
-#define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
-#define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
-#define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
-#define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
-#define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
-#define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag
-#define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag
-#define FLAG_UNUSED_0x49F                                           0x49F // Unused Flag
-#define FLAG_UNUSED_0x4A0                                           0x4A0 // Unused Flag
-#define FLAG_UNUSED_0x4A1                                           0x4A1 // Unused Flag
-#define FLAG_UNUSED_0x4A2                                           0x4A2 // Unused Flag
+#define FLAG_RYU_PASSCODE_MASTERBALL                                0x493 // Unused Flag
+#define FLAG_RYU_PASSCODE_TUTORVOUCHER                              0x494 // Unused Flag
+#define FLAG_RYU_PASSCODE_KOUTA                                     0x495 // Unused Flag
+#define FLAG_RYU_PASSCODE_GCMS_GIFT                                 0x496 // Unused Flag
+#define FLAG_RYU_DEV_DISENC                                         0x497 // Unused Flag
+#define FLAG_RYU_LANDMARK_MTPYRE                                    0x498 // Unused Flag
+#define FLAG_RYU_LANDMARK_LCCDEPTSTORE                              0x499 // Unused Flag
+#define FLAG_RYU_SKIPDIFFICULTYCHECK                                0x49A // Unused Flag
+#define FLAG_RYU_HAS_IMPRINTER                                      0x49B // Unused Flag
+#define FLAG_RYU_INTRO_COMPLETE                                     0x49C // Unused Flag
+#define FLAG_RYU_ON_DATE                                            0x49D // Unused Flag
+#define FLAG_RYU_ON_DATE_2                                          0x49E // Unused Flag
+#define FLAG_RYU_FORECASTER                                         0x49F // Unused Flag
+#define FLAG_RYU_HAS_FORECASTER                                     0x4A0 // Unused Flag
+#define FLAG_LANDMARK_AQUA_OFFICE                                   0x4A1 // Unused Flag
+#define FLAG_RYU_HAS_EXP_DRIVE                                      0x4A2 // Unused Flag
 #define FLAG_UNUSED_0x4A3                                           0x4A3 // Unused Flag
 #define FLAG_UNUSED_0x4A4                                           0x4A4 // Unused Flag
 #define FLAG_UNUSED_0x4A5                                           0x4A5 // Unused Flag

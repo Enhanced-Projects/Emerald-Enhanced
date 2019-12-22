@@ -2779,4 +2779,292 @@ extern const u8 gText_Smartness[];
 extern const u8 gText_Cuteness[];
 extern const u8 gText_Beauty3[];
 
+//RYU STRINGS======================================================================================
+extern const u8 gRyu_TempVarIntro[];
+
+extern const u8 gRyuJukeboxNibi[];
+extern const u8 gRyuJukeboxFuneKan[];
+extern const u8 gRyuJukeboxCycling[];
+extern const u8 gRyuJukeboxMinamo[];
+extern const u8 gRyuJukeboxAshroad[];
+extern const u8 gRyuJukeboxDeepDeep[];
+extern const u8 gRyuJukeboxCasino[];
+extern const u8 gRyuJukeboxAjito[];
+extern const u8 gRyuJukeboxMachupi[];
+extern const u8 gRyuJukeboxRGSantoan[];
+extern const u8 gRyuJukeboxField13[];
+extern const u8 gRyuJukeboxPyramid[];
+extern const u8 gRyuJukeboxGomachi[];
+extern const u8 gRyuJukeboxDefault[];
+extern const u8 gRyuJukeboxEnabled[];
+extern const u8 gRyuJukeboxDisabled[];
+extern const u8 gText_MenuJukebox[];
+extern const u8 gRyuJukeboxMute[];
+
+extern const u8 gText_RyuNewGameMenuEasyMode[];
+extern const u8 gText_RyuNewGameMenuNormalMode[];
+extern const u8 gText_RyuNewGameMenuHardMode[];
+extern const u8 gText_RyuNewGameNuzlockeMode[];
+extern const u8 gText_RyuNewGameHardcoreMode[];
+extern const u8 gText_NuzlockeName[];
+extern const u8 gText_RyuNewGameFrontierMode[];
+
+extern const u8 gText_RyuTeleportHome[];
+extern const u8 gText_RyuTeleportOldale[];
+extern const u8 gText_RyuTeleportPetalburg[];
+extern const u8 gText_RyuTeleportRustboro[];
+extern const u8 gText_RyuTeleportVerdanturf[];
+extern const u8 gText_RyuTeleportSlateport[];
+extern const u8 gText_RyuTeleportDewford[];
+extern const u8 gText_RyuTeleportPacifidlog[];
+extern const u8 gText_RyuTeleportLavaridge[];
+extern const u8 gText_RyuTeleportFallarbor[];
+extern const u8 gText_RyuTeleportFortree[];
+extern const u8 gText_RyuTeleportMauville[];
+extern const u8 gText_RyuTeleportLilycove[];
+extern const u8 gText_RyuTeleportSootopolis[];
+extern const u8 gText_RyuTeleportMossdeep[];
+extern const u8 gText_RyuTeleportEvergrande[];
+extern const u8 gText_RyuTeleportLandmarks[];
+extern const u8 gText_RyuTeleportBattleFrontier[];
+extern const u8 gText_RyuTeleportMtPyreExterior[];
+extern const u8 gText_RyuTeleportLCCDEPT[];
+extern const u8 gText_RyuTeleportMCMH[];
+extern const u8 gText_RyuTeleportAbandonedShip[];
+extern const u8 gText_RyuTeleportLCAH[];
+
+extern const u8 gText_RyuTeleportBattleFrontierGate[];
+extern const u8 gText_RyuTeleportBattleFrontierTower[];
+extern const u8 gText_RyuTeleportBattleFrontierPike[];
+extern const u8 gText_RyuTeleportBattleFrontierPalace[];
+extern const u8 gText_RyuTeleportBattleFrontierPyramid[];
+extern const u8 gText_RyuTeleportBattleFrontierFactory[];
+extern const u8 gText_RyuTeleportBattleFrontierArena[];
+extern const u8 gText_RyuTeleportBattleFrontierDome[];
+extern const u8 gText_RyuTeleportBattleFrontierCallback[];
+
+extern const u8 gText_RyuPasscodeMenu1[];
+extern const u8 gText_RyuPasscodeMenu2[];
+extern const u8 gText_RyuPasscodeMenu3[];
+extern const u8 gText_RyuPasscodeMenu4[];
+extern const u8 gText_RyuPasscodeMenu5[];
+extern const u8 gText_RyuPasscodeMenu6[];
+extern const u8 gText_RyuPasscodeMenu7[];
+extern const u8 gText_RyuPasscodeMenu8[];
+extern const u8 gText_RyuPasscodeMenu9[];
+extern const u8 gText_RyuPasscodeMenu0[];
+extern const u8 gText_RyuPasscodeMenu10[];
+
+extern const u8 gText_RyuRelationshipDawnMenuOption[];
+extern const u8 gText_RyuRelationshipShellyMenuOption[];
+extern const u8 gText_RyuRelationshipBrendanMenuOption[];
+extern const u8 gText_RyuRelationshipLanaMenuOption[];
+extern const u8 gText_RyuRelationshipLanetteMenuOption[];
+
+extern const u8 gText_Date1[];
+extern const u8 gText_Date2[];
+extern const u8 gText_Date3[];
+extern const u8 gText_DateCancel[];
+
+extern const u8 gText_RareCandies[];
+extern const u8 gText_Waystone[];
+extern const u8 gText_TownFlags[];
+extern const u8 gText_RelFlagsStatus[];
+extern const u8 gText_RelFlagsList[];
+extern const u8 gText_GodPoke[];
+extern const u8 gText_Money[];
+extern const u8 gText_DisEnc[];
+extern const u8 gText_Mirage[];
+extern const u8 gText_DebugCancel[];
+
+extern const u8 gText_HpEvMenu252[];
+extern const u8 gText_HpEvMenu126[];
+extern const u8 gText_AtkEvMenu252[];
+extern const u8 gText_AtkEvMenu126[];
+extern const u8 gText_DefEvMenu252[];
+extern const u8 gText_DefEvMenu126[];
+extern const u8 gText_SpAtkEvMenu252[];
+extern const u8 gText_SpAtkEvMenu126[];
+extern const u8 gText_SpDefEvMenu252[];
+extern const u8 gText_SpDefEvMenu126[];
+extern const u8 gText_SpeEvMenu252[];
+extern const u8 gText_SpeEvMenu126[];
+extern const u8 gText_ResetEvMenu[];
+extern const u8 gText_ExitEvMenu[];
+extern const u8 gText_ExitEvMenu2[];
+
+extern const u8 gText_NoRelationship[];
+extern const u8 gText_Stage1[];
+extern const u8 gText_Stage2[];
+extern const u8 gText_Stage3[];
+extern const u8 gText_Stage4[];
+extern const u8 gText_Stage5[];
+extern const u8 gText_RelCancel[];
+
+extern const u8 gText_PartySlot1[];
+extern const u8 gText_PartySlot2[];
+extern const u8 gText_PartySlot3[];
+extern const u8 gText_PartySlot4[];
+extern const u8 gText_PartySlot5[];
+extern const u8 gText_PartySlot6[];
+extern const u8 gText_PartySlotCancel[];
+
+extern const u8 gText_MoveSlot1[];
+extern const u8 gText_MoveSlot2[];
+extern const u8 gText_MoveSlot3[];
+extern const u8 gText_MoveSlot4[];
+extern const u8 gText_MoveSlotCancel[];
+
+extern const u8 gText_MoveDarkPulse[];
+extern const u8 gText_MoveScald[];
+extern const u8 gText_MoveDragonPulse[];
+extern const u8 gText_MoveDrainPunch[];
+extern const u8 gText_MoveStoneEdge[];
+extern const u8 gText_MoveRockSlide[];
+extern const u8 gText_MoveAvalanche[];
+extern const u8 gText_MoveThunderWave[];
+extern const u8 gText_MoveGigaImpact[];
+extern const u8 gText_MoveSilverWind[];
+extern const u8 gText_MoveBrine[];
+extern const u8 gText_MoveFlashCannon[];
+extern const u8 gText_MoveEnergyBall[];
+extern const u8 gText_MoveSignalBeam[];
+extern const u8 gText_MoveSeedBomb[];
+extern const u8 gText_MoveSuperpower[];
+extern const u8 gText_MoveEarthPower[];
+extern const u8 gText_MoveNastyPlot[];
+extern const u8 gText_MoveFocusBlast[];
+extern const u8 gText_MoveSwordsDance[];
+extern const u8 gText_MoveMenuExit[];
+
+extern const u8 gText_MusicAshroad[];
+extern const u8 gText_MusicCasino[];
+extern const u8 gText_MusicMtPyre[];
+extern const u8 gText_MusicMagmaHQ[];
+extern const u8 gText_MusicDive[];
+extern const u8 gText_MusicBiking[];
+extern const u8 gText_MusicField[];
+extern const u8 gText_MusicMuseum[];
+extern const u8 gText_MusicLilyCov[];
+extern const u8 gText_MusicViridia[];
+extern const u8 gText_MusicVermill[];
+extern const u8 gText_MusicCancel[];
+
+extern const  u8 gText_RyuViewEvMenuOption[];
+extern const  u8 gText_RyuViewIvMenuOption[];
+extern const  u8 gText_RyuViewOtherMenuOption[];
+extern const  u8 gText_RyuSetLevelMenuOption[];
+extern const  u8 gText_RyuSetExpMultMenuOption[];
+extern const  u8 gText_RyuSetEvMenuOption[];
+extern const  u8 gText_RyuMaxIvMenuOption[];
+extern const  u8 gText_RyuSetFriendshipMenuOption[];
+extern const  u8 gText_RyuExitPokeEditMenuOption[];
+
+extern const u8 gText_RyuLevel10MenuOption[];
+extern const u8 gText_RyuLevel20MenuOption[];
+extern const u8 gText_RyuLevel30MenuOption[];
+extern const u8 gText_RyuLevel40MenuOption[];
+extern const u8 gText_RyuLevel50MenuOption[];
+extern const u8 gText_RyuLevel60MenuOption[];
+extern const u8 gText_RyuLevel70MenuOption[];
+extern const u8 gText_RyuLevel80MenuOption[];
+extern const u8 gText_RyuLevel90MenuOption[];
+extern const u8 gText_RyuLevel100MenuOption[];
+extern const u8 gText_RyuExitLevelMenuOption[];
+
+extern const u8 gText_RyuSetMult1MenuOption[];
+extern const u8 gText_RyuSetMult15MenuOption[];
+extern const u8 gText_RyuSetMult2MenuOption[];
+extern const u8 gText_RyuSetMult4MenuOption[];
+extern const u8 gText_RyuSetMult8MenuOption[];
+extern const u8 gText_RyuExitExpMultMenuOption[];
+
+extern const u8 gText_RyuUserModeEvMenuHP[];
+extern const u8 gText_RyuUserModeEvMenuAtk[];
+extern const u8 gText_RyuUserModeEvMenuDef[];
+extern const u8 gText_RyuUserModeEvMenuSpAtk[];
+extern const u8 gText_RyuUserModeEvMenuSpDef[];
+extern const u8 gText_RyuUserModeEvMenuSpe[];
+
+extern const u8 gText_RyuBetaMenuResetDevon[];
+extern const u8 gText_RyuBetaMenuResetMagma[];
+extern const u8 gText_RyuBetaMenuResetAqua[];
+extern const u8 gText_RyuBetaMenuResetLeaf[];
+extern const u8 gText_RyuBetaMenuResetRival[];
+extern const u8 gText_RyuBetaMenuResetGCMS[];
+extern const u8 gText_RyuBetaMenuGoHome[];
+extern const u8 gText_RyuBetaMenuExit[];
+
+extern const u8 gText_RyuForecasterClear[];
+extern const u8 gText_RyuForecasterSprinkle[];
+extern const u8 gText_RyuForecasterHeavyStorm[];
+extern const u8 gText_RyuForecasterSunny[];
+extern const u8 gText_RyuForecasterSandstorm[];
+extern const u8 gText_RyuForecasterHail[];
+extern const u8 gText_RyuForecasterShade[];
+extern const u8 gText_RyuForecasterExit[];
+
+extern const u8 gText_CozmoOption1[];
+extern const u8 gText_CozmoOption2[];
+
+extern const u8 gText_diceGame100[];
+extern const u8 gText_diceGame1000[];
+extern const u8 gText_diceGame10000[];
+
+extern const u8 gText_BankWithdraw[];
+extern const u8 gText_BankDeposit[];
+extern const u8 gText_BankBalance[];
+
+extern const u8 gText_Bank10k[];
+extern const u8 gText_Bank50k[];
+extern const u8 gText_Bank100k[];
+extern const u8 gText_BankOneMil[];
+extern const u8 gText_BankCancel[];
+
+extern const u8 gText_HardyNature[];
+extern const u8 gText_LonelyNature[];
+extern const u8 gText_BraveNature[];
+extern const u8 gText_AdamantNature[];
+extern const u8 gText_NaughtyNature[];
+extern const u8 gText_BoldNature[];
+extern const u8 gText_DocileNature[];
+extern const u8 gText_RelaxedNature[];
+extern const u8 gText_ImpishNature[];
+extern const u8 gText_LaxNature[];
+extern const u8 gText_TimidNature[];
+extern const u8 gText_HastyNature[];
+extern const u8 gText_SeriousNature[];
+extern const u8 gText_JollyNature[];
+extern const u8 gText_NaiveNature[];
+extern const u8 gText_ModestNature[];
+extern const u8 gText_MildNature[];
+extern const u8 gText_QuietNature[];
+extern const u8 gText_BashfulNature[];
+extern const u8 gText_RashNature[];
+extern const u8 gText_CalmNature[];
+extern const u8 gText_GentleNature[];
+extern const u8 gText_SassyNature[];
+extern const u8 gText_CarefulNature[];
+extern const u8 gText_QuirkyNature[];
+
+extern const u8 gText_GCMSTutorial[];
+extern const u8 gText_GCMSConsign[];
+extern const u8 gText_GCMSCreate[];
+extern const u8 gText_GCMSStatus[];
+extern const u8 gText_GCMSCancel[];
+extern const u8 gText_GCMSSwapAbility[];
+
+ extern const u8 gText_BCPokeball[];
+ extern const u8 gText_BCGreatball[];
+ extern const u8 gText_BCUltraball[];
+ extern const u8 gText_BCLuxuryball[];
+ extern const u8 gText_BCPremierball[];
+ extern const u8 gText_BCRepeatball[];
+ extern const u8 gText_BCTimerball[];
+ extern const u8 gText_BCNestball[];
+ extern const u8 gText_BCNetball[];
+ extern const u8 gText_BCSafariball[];
+ extern const u8 gText_BCDiveball[];
+ extern const u8 gText_BCCancel[];
+
 #endif // GUARD_STRINGS_H

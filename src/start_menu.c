@@ -46,6 +46,10 @@
 #include "rom_8011DC0.h"
 #include "union_room.h"
 #include "constants/rgb.h"
+#include "field_message_box.h"
+
+extern u8 RyuDebugMenuScript[];
+extern u8 RyuDebugBetaMenuScript[];
 
 // Menu actions
 enum
@@ -281,14 +285,18 @@ static void BuildNormalStartMenu(void)
     }
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
     {
-        AddStartMenuAction(MENU_ACTION_POKEMON);
+        if (!(CalculatePlayerPartyCount() == 0))
+            AddStartMenuAction(MENU_ACTION_POKEMON);
     }
 
     AddStartMenuAction(MENU_ACTION_BAG);
 
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
     {
-        AddStartMenuAction(MENU_ACTION_POKENAV);
+        if (!(CalculatePlayerPartyCount() == 0))
+        {
+            AddStartMenuAction(MENU_ACTION_POKENAV);
+        }
     }
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
@@ -405,6 +413,34 @@ static void RemoveExtraStartMenuWindows(void)
         ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
+}
+
+EWRAM_DATA static u8 sPrintNumberWindowId = 1;
+void PrintNumberToScreen(s32 num)
+{
+    struct WindowTemplate template;
+
+    SetWindowTemplateFields(&template, 0, 1, 1, 4, 2, 15, 8);
+    sPrintNumberWindowId = AddWindow(&template);
+    FillWindowPixelBuffer(sPrintNumberWindowId, 0);
+    PutWindowTilemap(sPrintNumberWindowId);
+    CopyWindowToVram(sPrintNumberWindowId, 1);
+    DrawStdFrameWithCustomTileAndPalette(sPrintNumberWindowId, FALSE, 0x214, 14);
+
+    ConvertIntToDecimalStringN(gStringVar1, num, 0, 3);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 1, gStringVar1, 6, 1, 0, NULL);
+}
+
+void RemovePrintedNumber(void)
+{
+    ClearStdWindowAndFrameToTransparent(sPrintNumberWindowId, FALSE);
+    CopyWindowToVram(sPrintNumberWindowId, 2);
+    RemoveWindow(sPrintNumberWindowId);
+}
+
+void PrintSongNumber(u16 song)
+{
+    PrintNumberToScreen(song);
 }
 
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
@@ -547,12 +583,132 @@ void ShowStartMenu(void) // Called from overworld.c and field_control_avatar.s
         sub_808B864();
         sub_808BCF4();
     }
+
+    if (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1)
+    {
+        PrintSongNumber(VarGet(VAR_RYU_JUKEBOX));
+    }
+    else
+    {
+        PrintSongNumber(GetCurrentMapMusic());
+    }
+
     CreateStartMenuTask(sub_809FA34);
     ScriptContext2_Enable();
 }
 
+void PlayNextTrack(void)
+{
+    u16 song = (VarGet(VAR_RYU_JUKEBOX));
+    PlaySE(SE_PIN);
+    PlayBGM(song);
+    RemovePrintedNumber();
+    PrintSongNumber(song);
+}
+
 static bool8 HandleStartMenuInput(void)
 {
+     u16 song = VarGet(VAR_RYU_JUKEBOX);
+    if ((FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1) && gMain.newKeys & R_BUTTON)
+    {
+        PlaySE(SE_PIN);
+        song = song + 1;
+        if (song > 1000)
+            song = 557;
+
+        switch (song)//Now Playing
+        {
+        case 1:
+            VarSet(VAR_RYU_JUKEBOX, 350);
+            PlayNextTrack();
+            break;
+        case 352:
+            VarSet(VAR_RYU_JUKEBOX, 356);
+            PlayNextTrack();
+            break;
+	    case 367:
+            VarSet(VAR_RYU_JUKEBOX, 373);
+            PlayNextTrack();
+            break;
+	    case 376:
+            VarSet(VAR_RYU_JUKEBOX, 379);
+            PlayNextTrack();
+            break;
+	    case 387:
+            VarSet(VAR_RYU_JUKEBOX, 398);
+            PlayNextTrack();
+            break;
+	    case 410:
+            VarSet(VAR_RYU_JUKEBOX, 411);
+            PlayNextTrack();
+            break;
+	    case 412:
+            VarSet(VAR_RYU_JUKEBOX, 415);
+            PlayNextTrack();
+            break;
+	    case 424:
+            VarSet(VAR_RYU_JUKEBOX, 426);
+            PlayNextTrack();
+            break;
+	    case 439:
+            VarSet(VAR_RYU_JUKEBOX, 441);
+            PlayNextTrack();
+            break;
+	    case 459:
+            VarSet(VAR_RYU_JUKEBOX, 461);
+            PlayNextTrack();
+            break;
+	    case 464:
+            VarSet(VAR_RYU_JUKEBOX, 467);
+            PlayNextTrack();
+            break;
+	    case 488:
+            VarSet(VAR_RYU_JUKEBOX, 490);
+            PlayNextTrack();
+            break;
+        case 493:
+            VarSet(VAR_RYU_JUKEBOX, 494);
+            PlayNextTrack();
+            break;
+	    case 522:
+            VarSet(VAR_RYU_JUKEBOX, 525);
+            PlayNextTrack();
+            break;
+	    case 529:
+            VarSet(VAR_RYU_JUKEBOX, 538);
+            PlayNextTrack();
+            break;
+	    case 550:
+            VarSet(VAR_RYU_JUKEBOX, 551);
+            PlayNextTrack();
+            break;
+	    case 557:
+            VarSet(VAR_RYU_JUKEBOX, 350);
+            PlayNextTrack();
+            break;
+        case 999:
+            VarSet(VAR_RYU_JUKEBOX, 350);
+            PlayNextTrack();
+        default:
+            VarSet(VAR_RYU_JUKEBOX, song);
+            PlayNextTrack();
+            break;
+        }
+        
+
+    }
+
+    if (gMain.newKeys & SELECT_BUTTON && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+    {
+            //SetMainCallback2(CB2_ReturnToField);
+            RemoveExtraStartMenuWindows();
+            HideStartMenu();
+            HideFieldMessageBox();
+            ScriptContext2_Enable();
+            ScriptContext1_SetupScript(RyuDebugMenuScript);
+            return TRUE;
+    }
+
     if (gMain.newKeys & DPAD_UP)
     {
         PlaySE(SE_SELECT);
@@ -593,6 +749,40 @@ static bool8 HandleStartMenuInput(void)
         HideStartMenu();
         return TRUE;
     }
+
+        if (gMain.heldKeys & L_BUTTON && gMain.newKeys & R_BUTTON)
+        {   
+            u16 curmusic = 0;
+            u16 song = 350;
+            switch (FlagGet(FLAG_RYU_JUKEBOX_ENABLED))//0 for unset, 1 for set
+            {
+                case 0:
+                    FlagSet(FLAG_RYU_JUKEBOX_ENABLED);
+                    PlaySE(SE_PC_ON);
+                    
+                    if (VarGet(VAR_RYU_SAVED_BGM) > 350 && (VarGet(VAR_RYU_SAVED_BGM) < 558))
+                    {
+                        song = VarGet(VAR_RYU_SAVED_BGM);
+                        song --;
+                    }
+
+                    VarSet(VAR_RYU_JUKEBOX, song);
+                    PlayBGM(song);
+                    PrintSongNumber(song);
+                    break;
+                case 1:
+                    FlagClear(FLAG_RYU_JUKEBOX_ENABLED);
+                    VarSet(VAR_RYU_SAVED_BGM, VarGet(VAR_RYU_JUKEBOX));
+                    ResetMapMusic();
+                    Overworld_ChangeMusicToDefault();
+                    VarSet(VAR_RYU_JUKEBOX, 998);
+                    PlaySE(SE_PC_OFF);
+                    break;
+                default:
+                    break;
+            }
+
+        }
 
     return FALSE;
 }
@@ -707,9 +897,20 @@ static bool8 StartMenuOptionCallback(void)
 
 static bool8 StartMenuExitCallback(void)
 {
+    if (gMain.heldKeys & R_BUTTON)
+    {
+        HideStartMenu();
+        HideFieldMessageBox();
+        ScriptContext2_Enable();
+        ScriptContext1_SetupScript(RyuDebugBetaMenuScript);
+        return TRUE;
+    }
+    else
     RemoveExtraStartMenuWindows();
     HideStartMenu(); // Hide start menu
-
+    RemoveExtraStartMenuWindows();
+    HideFieldMessageBox();
+    RemovePrintedNumber();
     return TRUE;
 }
 

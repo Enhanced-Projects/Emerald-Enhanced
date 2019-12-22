@@ -1,0 +1,431 @@
+GameIntroSequencePart1::
+	goto GameModeSelect
+	
+LRT_IntroMsg1:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You awaken later than you wanted\n to. \p It seems like your clock's\nbattery died.)$"
+
+GameModeSelect:: @ 823BF04
+	lockall
+	goto_if_set FLAG_RYU_SKIPDIFFICULTYCHECK, Ryu_NewGamePlus
+	multichoicedefault 1, 2, 125, 0, 0
+	switch VAR_RESULT
+	case 0, IT_EasyMode
+	case 1, IT_NormalMode
+	case 2, IT_HardMode
+	case 3, IT_NuzlockeMode
+	case 4, IT_FrontierMode
+	case 127, IT_NormalMode
+	end
+
+Ryu_NewGamePlus::
+	msgbox RyuNGPInfo
+	closemessage
+	call_if_set FLAG_RYU_HAS_WAYSTONE, Ryu_NGP_Waystone
+	call_if_set FLAG_RYU_HAS_IMPRINTER, Ryu_NGP_Imprinter
+	call_if_set FLAG_RYU_HAS_FORECASTER, Ryu_NGP_Forecaster
+	call_if_set FLAG_RYU_HAS_EXP_DRIVE, Ryu_NGP_ExpDrive
+	call_if_set FLAG_RYU_HAS_WIRELESSPC, Ryu_NGP_WirelessPC
+	msgbox RyuNGP_DexInfo
+	closemessage
+	setflag FLAG_SYS_POKEDEX_GET
+	setflag FLAG_SYS_NATIONAL_DEX
+	special EnableNationalPokedex
+	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
+	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
+	special RyuGetCaughtMonsFromPCForDex
+	playse SE_EXPMAX
+	waitse
+	msgbox RyuNGP_DexSuccess
+	msgbox RyuNGP_HCQuery
+	multichoicedefault 1, 2, 142, 0, 0
+	switch VAR_RESULT
+	case 0, IT_NuzlockeMode
+    case 2, IT_HardcoreMode	
+	goto IT_HardMode
+
+RyuNGP_DexInfo:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}We will now attempt to restore the\n"
+	.string "pokedex from your existing boxes.\p"
+	.string "{COLOR DARK_GREY}{SHADOW RED}Note that previous evolutions\n"
+	.string "will not be registerred, unless\p"
+	.string "you have a copy stored.\p"
+	.string "One moment please... ... ...$"
+
+RyuNGP_DexSuccess:
+    .string "The dex rebuild appears to have\n"
+    .string "been successful. Please check at\l"
+    .string "your earliest convenience.$"
+	
+RyuNGP_HCQuery:
+	.string "Please select a difficulty.$"
+
+
+Ryu_NGP_Waystone:
+	giveitem ITEM_NUGGET, 1
+	return
+
+Ryu_NGP_Forecaster:
+	giveitem ITEM_VS_SEEKER, 1
+	return
+
+Ryu_NGP_ExpDrive:
+	giveitem ITEM_UP_GRADE, 1
+	return
+
+Ryu_NGP_Imprinter:
+	giveitem ITEM_POKE_FLUTE, 1
+	return
+
+Ryu_NGP_WirelessPC:
+	giveitem ITEM_TEACHY_TV, 1
+	return
+
+RyuNGPInfo:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Welcome to New Game +.\p"
+	.string "In this mode, you get to keep any\n"
+	.string "unique quest reward items, such as\l"
+	.string "the Waystone and the EXP Drive.\p"
+	.string "Your pokémon storage is still\n"
+	.string "intact, including any held items.$"
+
+RyuSetTime:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} put a new battery in the alarm.)$"
+
+IT_EasyMode::
+	setvar VAR_RYU_EXP_MULTIPLIER, 4000
+	setvar VAR_RYU_PRICE_MULTIPLIER, 50
+	setvar VAR_RYU_BANK_APR, 90
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq SetMaleStartingVariables
+	compare VAR_RESULT, FEMALE
+	goto_if_eq SetFemaleStartingVariables
+	end
+	
+IT_NormalMode::
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	setvar VAR_RYU_PRICE_MULTIPLIER, 100
+	setvar VAR_RYU_BANK_APR, 95
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq SetMaleStartingVariables
+	compare VAR_RESULT, FEMALE
+	goto_if_eq SetFemaleStartingVariables
+	end
+	
+IT_HardMode::
+	setvar VAR_RYU_EXP_MULTIPLIER, 1000
+	setvar VAR_RYU_PRICE_MULTIPLIER, 400
+	setvar VAR_RYU_BANK_APR, 100
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq SetMaleStartingVariables
+	compare VAR_RESULT, FEMALE
+	goto_if_eq SetFemaleStartingVariables
+	end
+	
+IT_NuzlockeMode::
+	msgbox IT_NuzlockeIntro MSGBOX_SIGN
+	setvar VAR_RYU_EXP_MULTIPLIER, 2000
+	setvar VAR_RYU_PRICE_MULTIPLIER, 150
+	setvar VAR_RYU_BANK_APR, 100
+	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
+	giveitem ITEM_POKE_BALL, 20
+	giveitem ITEM_POTION, 10
+	giveitem ITEM_SUPER_POTION, 2
+	giveitem ITEM_ELIXIR, 5
+	special RyuSetupNuzlocke
+	takemoney 3000
+	msgbox IT_NuzlockeOutro MSGBOX_SIGN
+	setflag FLAG_RYU_NUZLOCKEMODE
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	setvar VAR_RYU_PC_USES, 2
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq SetMaleStartingVariables
+	compare VAR_RESULT, FEMALE
+	goto_if_eq SetFemaleStartingVariables
+	end
+
+IT_FrontierMode::
+	msgbox IT_FrontierIntro
+	setvar VAR_RYU_EXP_MULTIPLIER, 0
+	setvar VAR_RYU_PRICE_MULTIPLIER 0
+	takemoney 3000
+	msgbox IT_FrontierOutro
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	setflag FLAG_RYU_FRONTIER_MODE
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq SetMaleStartingVariables
+	compare VAR_RESULT, FEMALE
+	goto_if_eq SetFemaleStartingVariables
+
+IT_HardcoreMode::
+	msgbox IT_HardcoreIntro
+	setvar VAR_RYU_EXP_MULTIPLIER, 1000
+	setvar VAR_RYU_PRICE_MULTIPLIER, 200
+	setflag FLAG_RYU_HARDCORE_MODE
+	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 1
+	takemoney 2500
+	msgbox IT_HardcoreOutro
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	setvar VAR_RYU_PC_USES, 5
+	special RyuSetupNuzlocke
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq SetMaleStartingVariables
+	compare VAR_RESULT, FEMALE
+	goto_if_eq SetFemaleStartingVariables
+	end
+
+IT_FrontierOutro:
+    .string "All game flags and variables have\n"
+    .string "been intialized.\p"
+    .string "You can spend your earned BP in the\n"
+    .string "frontier Pokemon Center to get\l"
+    .string "new pokemon for your team.$"
+
+IT_FrontierIntro:
+    .string "Welcome to frontier mode, trainer\p"
+    .string "In this mode you get no starter\n"
+    .string "and you don't do any of the normal\p"
+    .string "intro stuff. You must earn BP to\n"
+    .string "get mons for your team. You must\p"
+    .string "get all silver medals to be able\n"
+    .string "to leave the Frontier.$"
+
+	
+IT_HardcoreIntro:
+    .string "Hello, and welcome to HARDCORE\n"
+    .string "mode. In this mode, you are\p"
+    .string "restricted even further than in\n"
+    .string "Nuzlocke mode.\p"
+    .string "You will be dealing 20% less\n"
+    .string "damage and you will take 20% more\p"
+    .string "damage. You make 15% the money\n"
+    .string "you normally would. You may not\p"
+    .string "use pokecenters, and you\n"
+    .string "will not get healed or handouts\l"
+    .string "from gym leaders.$"
+	
+IT_HardcoreOutro:
+	.string "Welcome to the nightmare.$"
+
+IT_NuzlockeIntro:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You have opted to do Nuzlocke mode.\n"
+	.string "Emerald Enhanced uses a special set\p"
+	.string "of rules, and enforces them. They are:\p"
+	.string "1: No marts.\p"
+	.string "2: 3 uses per pokémon center.\p"
+	.string "3: You start with balls and potions.\p"
+	.string "4: Black-Out ends the game.\p"
+	.string "5: Gym Leaders heal and give items\p"
+	.string "6: Exp is doubled, to make up for the\n"
+	.string "difficulty of the game, overall.\p"
+	.string "Enjoy your challenge!\n"
+	.string "--Ryu, Creator of Emerald Enhanced$"
+	
+IT_NuzlockeOutro:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Nuzlocke rules are now active!\n"
+	.string "Starter Kit has been given!$"
+	
+
+SetMaleStartingVariables:: @ 823BF20
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F
+	setvar VAR_LITTLEROOT_INTRO_STATE, 1
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_MOM
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING
+	setflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
+	setflag FLAG_SYS_B_DASH
+	setflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_MOM
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_MOM
+	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1
+	goto_if_set FLAG_RYU_FRONTIER_MODE, Ryu_FrontierModeBegin
+	setdynamicwarp MAP_LITTLEROOT_TOWN, 255, 3, 10
+	msgbox LRT_IntroMsg1 MSGBOX_SIGN
+	msgbox RyuSetTime MSGBOX_SIGN
+	goto RyuSetRTC
+	releaseall
+	end
+
+SetFemaleStartingVariables:: @ 823BF46
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F
+	setvar VAR_LITTLEROOT_INTRO_STATE, 2
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_MOM
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_SIBLING
+	setflag FLAG_HIDE_DAWNS_HOUSE_DAWN
+	setflag FLAG_SYS_B_DASH
+	setflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_SIBLING
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM
+	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 1
+	goto_if_set FLAG_RYU_FRONTIER_MODE, Ryu_FrontierModeBegin
+	setdynamicwarp MAP_LITTLEROOT_TOWN, 255, 12, 10
+	msgbox LRT_IntroMsg1 MSGBOX_SIGN
+	msgbox RyuSetTime MSGBOX_SIGN
+	goto RyuSetRTC
+	releaseall
+	end
+
+Ryu_FrontierModeBegin::
+	call RyuSetRTCFrontier
+	end
+
+InsideOfTruck_EventScript_23BF6C:: @ 823BF6C
+	end
+
+RyuSetRTC::
+	goto_if_set FLAG_SET_WALL_CLOCK, ViewClock
+	msgbox ClockStopped, MSGBOX_DEFAULT
+	call SetClockStage1
+	delay 30
+	setvar VAR_LITTLEROOT_INTRO_STATE, 6
+	setflag FLAG_SET_WALL_CLOCK
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2
+	goto GameIntroSequencePart2
+	releaseall
+	end
+
+RyuSetRTCFrontier::
+	msgbox FrontierClockStopped, MSGBOX_DEFAULT
+	call SetClockStage1
+	delay 30
+	setvar VAR_LITTLEROOT_INTRO_STATE, 10
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_SYS_POKENAV_GET
+	setflag FLAG_RECEIVED_POKENAV
+	setflag FLAG_RECEIVED_GO_GOGGLES
+	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
+	giveitem ITEM_GO_GOGGLES, 1
+	setflag FLAG_SYS_B_DASH
+	setvar VAR_BIRCH_LAB_STATE, 5
+	setflag FLAG_ADVENTURE_STARTED
+	setvar VAR_OLDALE_TOWN_STATE, 1
+	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
+	setvar VAR_LITTLEROOT_TOWN_STATE, 3
+	setflag FLAG_RYU_INTRO_COMPLETE
+	setflag FLAG_HIDE_ROUTE_101_ZIGZAGOON
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+	setflag FLAG_HIDE_ROUTE_103_RIVAL
+	setflag FLAG_SYS_POKEDEX_GET
+	special sub_81AFDA0
+	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
+	setflag FLAG_SYS_NATIONAL_DEX
+	special EnableNationalPokedex
+	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
+	goto GameIntroSequenceFrontier
+	releaseall
+	end
+
+GameIntroSequenceFrontier::
+	msgbox FrontierModeBegin
+	setrespawn HEAL_LOCATION_BATTLE_FRONTIER_OUTSIDE_EAST
+	warpsilent MAP_BATTLE_FRONTIER_OUTSIDE_WEST, 255, 26, 65
+	releaseall
+	release
+	end
+
+FrontierModeBegin:
+	.string "Your frontier challenge begins now!$"
+
+FrontierClockStopped::
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Please set the time.)$"
+	
+ViewClock:: @ 829283F
+	incrementgamestat 45
+	fadescreen 1
+	special Special_ViewWallClock
+	waitstate
+	releaseall
+	end
+
+
+ClockStopped:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}The clock is stopped…\p"
+	.string "Better set it and start it!$"
+	
+SetClockStage1:: @ 8292849
+	fadescreen 1
+	special StartWallClock
+	waitstate
+	return
+	
+GameIntroSequencePart2::
+	lock
+    checkplayergender
+	compare VAR_RESULT, FEMALE
+	goto_if_eq GameIntroFemalePart2
+	applymovement EVENT_OBJ_ID_PLAYER, GI_Male_GetOutOfBed
+	waitmovement 0
+	playse SE_PC_ON
+	waitse
+	playse SE_PIN
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement 0
+	msgbox GI_CheckedEmail MSGBOX_SIGN
+	closemessage
+	playse SE_PC_OFF
+	waitse
+	msgbox GI_GoSeeRivalMaleMsg MSGBOX_SIGN
+	clearflag FLAG_HIDE_DAWNS_HOUSE_DAWN
+	releaseall
+	end
+	
+GameIntroFemalePart2::
+	applymovement EVENT_OBJ_ID_PLAYER, GI_Female_GetOutOfBed
+	waitmovement 0
+	playse SE_PC_ON
+	waitse
+	playse SE_PIN
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement 0
+	msgbox GI_CheckedEmail MSGBOX_SIGN
+	closemessage
+	playse SE_PC_OFF
+	checkplayergender
+	msgbox GI_GoSeeRivalFemaleMsg MSGBOX_SIGN
+	clearflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
+	releaseall
+	end
+	
+GI_Male_GetOutOfBed:
+	walk_right
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_in_place_up
+	step_end
+	
+GI_Female_GetOutOfBed:
+	walk_left
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_in_place_up
+	step_end
+	
+GI_CheckedEmail:
+	.string "{PLAYER} checked email.\pThere's 2 new emails.\pOne from the online market which says:\n 'The ordered item was delivered to\l your item box!'\pThere's another one here... \nIt's from Prof. Birch! It says: \p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}! I'm glad you decided to \nstart your journey!\pCome see me in my lab to get\nyour starting partner!\pI'm looking forward to meeting you!$"
+	
+GI_GoSeeRivalMaleMsg:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You remember that the professor\n has a daughter.\l Maybe you should go meet her?)$"
+	
+GI_GoSeeRivalFemaleMsg:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You remember that the professor\n has a son.\l Maybe you should go meet him?)$"
+
+

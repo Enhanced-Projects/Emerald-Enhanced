@@ -1,5 +1,5 @@
 ShoalCave_LowTideEntranceRoom_MapScripts:: @ 8236DBA
-	map_script MAP_SCRIPT_ON_TRANSITION, ShoalCave_LowTideEntranceRoom_OnTransition
+	map_script ON_TRANSITION, ShoalCave_LowTideEntranceRoom_OnTransition
 	.byte 0
 
 ShoalCave_LowTideEntranceRoom_OnTransition: @ 8236DC0

@@ -1,7 +1,7 @@
 SlateportCity_BattleTentBattleRoom_MapScripts:: @ 8209960
-	map_script MAP_SCRIPT_ON_TRANSITION, SlateportCity_BattleTentBattleRoom_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SlateportCity_BattleTentBattleRoom_MapScript2_20999A
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SlateportCity_BattleTentBattleRoom_MapScript2_2099B4
+	map_script ON_TRANSITION, SlateportCity_BattleTentBattleRoom_OnTransition
+	map_script ON_WARP, SlateportCity_BattleTentBattleRoom_MapScript2_20999A
+	map_script ON_FRAME, SlateportCity_BattleTentBattleRoom_MapScript2_2099B4
 	.byte 0
 
 SlateportCity_BattleTentBattleRoom_OnTransition: @ 8209970

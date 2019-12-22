@@ -1,5 +1,5 @@
 LilycoveCity_DepartmentStoreRooftop_MapScripts:: @ 8220207
-	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_DepartmentStoreRooftop_OnTransition
+	map_script ON_TRANSITION, LilycoveCity_DepartmentStoreRooftop_OnTransition
 	.byte 0
 
 LilycoveCity_DepartmentStoreRooftop_OnTransition: @ 822020D
@@ -102,27 +102,27 @@ LilycoveCity_DepartmentStoreRooftop_EventScript_Lemonade:: @ 82202FA
 	end
 
 LilycoveCity_DepartmentStoreRooftop_EventScript_CheckMoneyFreshWater:: @ 8220305
-	checkmoney 200, 0
+	checkmoney 200
 	return
 
 LilycoveCity_DepartmentStoreRooftop_EventScript_CheckMoneySodaPop:: @ 822030C
-	checkmoney 300, 0
+	checkmoney 300
 	return
 
 LilycoveCity_DepartmentStoreRooftop_EventScript_CheckMoneyLemonade:: @ 8220313
-	checkmoney 350, 0
+	checkmoney 350
 	return
 
 LilycoveCity_DepartmentStoreRooftop_EventScript_TakeMoneyFreshWater:: @ 822031A
-	takemoney 200, 0
+	takemoney 200
 	return
 
 LilycoveCity_DepartmentStoreRooftop_EventScript_TakeMoneySodaPop:: @ 8220321
-	takemoney 300, 0
+	takemoney 300
 	return
 
 LilycoveCity_DepartmentStoreRooftop_EventScript_TakeMoneyLemonade:: @ 8220328
-	takemoney 350, 0
+	takemoney 350
 	return
 
 LilycoveCity_DepartmentStoreRooftop_EventScript_TryBuyDrink:: @ 822032F

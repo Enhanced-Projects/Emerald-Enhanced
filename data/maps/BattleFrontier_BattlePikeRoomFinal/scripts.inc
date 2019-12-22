@@ -1,6 +1,6 @@
 BattleFrontier_BattlePikeRoomFinal_MapScripts:: @ 825E392
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattlePikeRoomFinal_OnFrame
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattlePikeRoomFinal_OnWarp
+	map_script ON_FRAME, BattleFrontier_BattlePikeRoomFinal_OnFrame
+	map_script ON_WARP, BattleFrontier_BattlePikeRoomFinal_OnWarp
 	.byte 0
 
 BattleFrontier_BattlePikeRoomFinal_OnFrame: @ 825E39D

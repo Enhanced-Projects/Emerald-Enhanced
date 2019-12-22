@@ -1,8 +1,8 @@
 BattleFrontier_BattleArenaBattleRoom_MapScripts:: @ 8257487
-	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattleArenaBattleRoom_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleArenaBattleRoom_OnFrame
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattleArenaBattleRoom_OnWarp
-	map_script MAP_SCRIPT_ON_RESUME, BattleFrontier_BattleArenaBattleRoom_OnResume
+	map_script ON_TRANSITION, BattleFrontier_BattleArenaBattleRoom_OnTransition
+	map_script ON_FRAME, BattleFrontier_BattleArenaBattleRoom_OnFrame
+	map_script ON_WARP, BattleFrontier_BattleArenaBattleRoom_OnWarp
+	map_script ON_RESUME, BattleFrontier_BattleArenaBattleRoom_OnResume
 	.byte 0
 
 	@ On this map the player (OBJ_EVENT_ID_PLAYER) is hidden

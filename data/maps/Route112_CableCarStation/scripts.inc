@@ -1,6 +1,6 @@
 Route112_CableCarStation_MapScripts:: @ 822AABE
-	map_script MAP_SCRIPT_ON_TRANSITION, Route112_CableCarStation_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route112_CableCarStation_OnFrame
+	map_script ON_TRANSITION, Route112_CableCarStation_OnTransition
+	map_script ON_FRAME, Route112_CableCarStation_OnFrame
 	.byte 0
 
 Route112_CableCarStation_OnTransition: @ 822AAC9

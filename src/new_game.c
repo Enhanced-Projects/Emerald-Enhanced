@@ -181,7 +181,7 @@ void NewGameInitData(void)
     InitLotadSizeRecord();
     gPlayerPartyCount = 0;
     ZeroPlayerPartyMons();
-    ResetPokemonStorageSystem();
+    //ResetPokemonStorageSystem();
     ClearRoamerData();
     ClearRoamerLocationData();
     gSaveBlock1Ptr->registeredItem = 0;
@@ -206,6 +206,45 @@ void NewGameInitData(void)
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
     ResetContestLinkResults();
+    VarSet(VAR_RYU_EXP_MULTIPLIER, 1);
+    VarSet(VAR_RYU_BANK_APR, 0);
+    FlagSet(FLAG_RYU_LT_RIVAL2);
+    FlagSet(FLAG_RYU_LT_RIVAL);
+    VarSet(VAR_RYU_JUKEBOX, 999);
+    FlagSet(FLAG_HIDE_CHAMPIONS_ROOM_STEVEN);
+    VarSet(VAR_RYU_SHELLY_STATUS, 0);
+    FlagSet(FLAG_RYU_STARTER_CHOSEN);
+    VarSet(VAR_METEOR_FALLS_STATE, 10);
+    FlagSet(FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA);
+    FlagSet(FLAG_HIDE_METEOR_FALLS_TEAM_AQUA);
+    FlagSet(FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO);
+    FlagSet(FLAG_RYU_MH_COURTNEY_DUOMODE);
+    FlagSet(FLAG_RYU_MH_COURTNEY_SOLOMODE);
+    VarSet(VAR_LITTLEROOT_INTRO_STATE, 4);
+    FlagSet(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
+    FlagSet(FLAG_HIDE_DAWNS_HOUSE_DAWN);
+    FlagSet(FLAG_RYU_KYOGRE);
+    FlagSet(FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN);
+    FlagSet(FLAG_HIDE_103_TEST_TRAINER);
+    FlagSet(FLAG_HIDE_GRANITE_CAVE_STEVEN);
+    FlagSet(FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA);
+    FlagSet(FLAG_LANA_AS_TOGGLE);
+    FlagSet(FLAG_PT_LANA_TOGGLE);
+    FlagSet(FLAG_RYU_HIDE_R120_LANA_AND_HIKER);
+    FlagSet(FLAG_RYU_HIDE_REL_OBJECTS);
+    FlagSet(FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3);
+    FlagSet(FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE);
+    FlagSet(FLAG_RYU_DEVON_CORPORATE_HIDE_SCIENTIST);
+    FlagSet(FLAG_RYU_DEVON_CORPORATE_HIDE_MSITO);
+    FlagSet(FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE4);
+    FlagSet(FLAG_RYU_DEFEATED_SS);
+    FlagSet(FLAG_RYU_HIDE_LANETTE_BASEMENT);
+    VarSet(VAR_RYU_GCMS_SPECIES, 0);
+    VarSet(VAR_RYU_GCMS_VALUE, 0);
+    VarSet(VAR_RYU_BANK_APR, 0);
+    FlagClear(FLAG_RYU_TEMPTP);
+    FlagClear(FLAG_RYU_HAS_FOLLOWER);
+    VarSet(VAR_WEATHER_INSTITUTE_STATE, 1);
 }
 
 static void ResetMiniGamesResults(void)

@@ -1,6 +1,6 @@
 RustboroCity_MapScripts:: @ 81E06BD
-	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, RustboroCity_OnFrame
+	map_script ON_TRANSITION, RustboroCity_OnTransition
+	map_script ON_FRAME, RustboroCity_OnFrame
 	.byte 0
 
 RustboroCity_OnTransition: @ 81E06C8
@@ -52,7 +52,6 @@ RustboroCity_EventScript_ScientistAddMatchCall:: @ 81E0715
 	waitmovement 0
 	msgbox RustboroCity_Text_DevelopedNewPokenavFeature, MSGBOX_DEFAULT
 	closemessage
-	setflag FLAG_HAS_MATCH_CALL
 	applymovement 15, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
 	playse SE_TK_KASYA

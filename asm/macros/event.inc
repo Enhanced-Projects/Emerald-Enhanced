@@ -1051,25 +1051,22 @@
 	.2byte \limit
 	.endm
 
-	@ If check is 0x00, this command adds value to the player's money.
-	.macro givemoney value:req, check:req
+	@ Adds value to the player's money. Any number over 16000 must be passed as a variable.
+	.macro givemoney value:req
 	.byte 0x90
 	.4byte \value
-	.byte \check
 	.endm
 
-	@ If check is 0x00, this command subtracts value from the player's money.
-	.macro takemoney value:req, check:req
+	@ Subtracts value from the player's money. Any number over 16000 must be passed as a variable.
+	.macro takemoney value:req
 	.byte 0x91
 	.4byte \value
-	.byte \check
 	.endm
 
 	@ If check is 0x00, this command will check if the player has value or more money; script variable 0x800D (LASTRESULT) is set to 0x0001 if the player has enough money, or 0x0000 if the do not.
-	.macro checkmoney value:req, check:req
+	.macro checkmoney value:req
 	.byte 0x92
 	.4byte \value
-	.byte \check
 	.endm
 
 	@ Spawns a secondary box showing how much money the player has.
@@ -1560,6 +1557,75 @@
 	.2byte \item
 	.2byte \quantity
 	.endm
+
+	@creates a follower using EVENT_OBJ_GFX_name, Script of said follower, and which direction they start at.
+	.macro createfollower graphicsId:req script:req direction:req
+	.byte 0xe3
+	.byte \graphicsId
+	.4byte \script
+	.byte \direction
+	.endm
+
+
+	@removes the generated follower.
+	.macro destroyfollower
+	.byte 0xe4
+	.endm
+
+	@puts the numerical direction in VAR_RESULT
+	.macro checkfacing
+	specialvar VAR_RESULT, GetPlayerFacingDirection
+	.endm
+
+	@ draws the specified headshot
+	.macro drawheadshot head:req
+	.byte 0xe5
+	.byte \head
+	.endm
+
+	@draws the user specified sprite. If mode is 1, Then supply a facility class id. (FACILITY_CLASS_RICH_GIRL)
+	.macro drawcustompic mode:req, id:req, x:req, y:req
+	.byte 0xe6
+	.byte \mode
+	.2byte \id
+	.2byte \x
+	.2byte \y
+	.endm
+
+	@removes sprites drawn with drawheadshot or drawcustompic
+	.macro removecutscenesprites
+	.byte 0xe7
+	.endm
+
+	@sets party mon index to happiness value
+	.macro addmonhappiness partyindex:req, value:req
+	.byte 0xe8
+	.2byte \partyindex
+	.2byte \value
+	.endm
+
+	@Takes battle points away from the player's balance
+	.macro takebp value:req
+	.byte 0xe9
+	.2byte \value
+	.endm
+
+	@gives value battle points to player
+	.macro givebp value:req
+	.byte 0xea
+	.2byte \value
+	.endm
+
+	@puts player's current bp in VAR_RESULT
+	.macro checkbp
+	.byte 0xeb
+	.endm
+
+	@puts the correct relative follower x/y coords in vars temp 1 and 2.
+	.macro gfec
+	.byte 0xec
+	.endm
+
 
 
 @ Supplementary

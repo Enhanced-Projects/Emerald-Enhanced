@@ -1,6 +1,6 @@
 ShoalCave_LowTideInnerRoom_MapScripts:: @ 8236EF5
-	map_script MAP_SCRIPT_ON_LOAD, ShoalCave_LowTideInnerRoom_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, ShoalCave_LowTideInnerRoom_OnTransition
+	map_script ON_LOAD, ShoalCave_LowTideInnerRoom_OnLoad
+	map_script ON_TRANSITION, ShoalCave_LowTideInnerRoom_OnTransition
 	.byte 0
 
 ShoalCave_LowTideInnerRoom_OnTransition: @ 8236F00

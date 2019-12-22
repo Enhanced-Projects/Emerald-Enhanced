@@ -1,6 +1,6 @@
 PetalburgCity_WallysHouse_MapScripts:: @ 8204229
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, PetalburgCity_WallysHouse_OnFrame
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, PetalburgCity_WallysHouse_OnWarp
+	map_script ON_FRAME, PetalburgCity_WallysHouse_OnFrame
+	map_script ON_WARP, PetalburgCity_WallysHouse_OnWarp
 	.byte 0
 
 PetalburgCity_WallysHouse_OnWarp: @ 8204234

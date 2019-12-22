@@ -1,5 +1,5 @@
 Route124_MapScripts:: @ 81F656C
-	map_script MAP_SCRIPT_ON_TRANSITION, Route124_OnTransition
+	map_script ON_TRANSITION, Route124_OnTransition
 	.byte 0
 
 Route124_OnTransition: @ 81F6572
@@ -33,7 +33,7 @@ Route124_EventScript_RegisterJenny:: @ 81F65DF
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route124_Text_JennyRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_JENNY_1
+	@nop Trainer_JENNY_1
 	release
 	end
 
@@ -63,7 +63,7 @@ Route124_EventScript_Lila:: @ 81F6643
 
 Route124_EventScript_RegisterLila:: @ 81F6673
 	msgbox Route124_Text_LilaRoyRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_LILA_AND_ROY_1
+	@nop Trainer_LILA_AND_ROY_1
 	release
 	end
 
@@ -83,7 +83,7 @@ Route124_EventScript_Roy:: @ 81F66A7
 
 Route124_EventScript_RegisterRoy:: @ 81F66D7
 	msgbox Route124_Text_LilaRoyRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_LILA_AND_ROY_1
+	@nop Trainer_LILA_AND_ROY_1
 	release
 	end
 

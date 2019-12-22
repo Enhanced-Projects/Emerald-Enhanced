@@ -1,7 +1,7 @@
 LittlerootTown_MapScripts:: @ 81E7DCB
-	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_OnFrame
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_OnWarp
+	map_script ON_TRANSITION, LittlerootTown_OnTransition
+	map_script ON_FRAME, LittlerootTown_OnFrame
+	map_script ON_WARP, LittlerootTown_OnWarp
 	.byte 0
 
 	@ State descriptions for VAR_LITTLEROOT_TOWN_STATE
@@ -1064,4 +1064,30 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab: @ 81E8DA2
 	.string "I gave you?\p"
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
+@==================================================================================================RYU LittlerootTown_MapScripts
+
+LRT_MinnieScript::
+	msgbox LRT_FollowerHeal MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq LRT_RemoveMinnie
+	closemessage
+	end
+
+LRT_RemoveMinnie:
+	msgbox LRT_MinnieLeave
+	closemessage
+	destroyfollower
+	msgbox RyuFollowerLeavesService
+	clearflag FLAG_RYU_HAS_FOLLOWER
+	release
+	end
+
+LRT_MinnieLeave:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Minnie: Okay! Have fun!$"
+	
+LRT_FollowerMinnie:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hi! I'm Minnie!\nMy sister guards the exit.\pI'm a bodyguard. Can I come with you?$"
+
+LRT_FollowerHeal:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Minnie: Do you want me to leave?$"
 

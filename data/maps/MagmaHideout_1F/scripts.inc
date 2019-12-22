@@ -1,5 +1,5 @@
 MagmaHideout_1F_MapScripts:: @ 8239880
-	map_script MAP_SCRIPT_ON_TRANSITION, MagmaHideout_1F_OnTransition
+	map_script ON_TRANSITION, MagmaHideout_1F_OnTransition
 	.byte 0
 
 MagmaHideout_1F_OnTransition: @ 8239886
@@ -51,3 +51,26 @@ MagmaHideout_1F_Text_Grunt2PostBattle: @ 8239ACD
 	.string "It'd be better if you saved surprises\n"
 	.string "to the end, don't you think?$"
 
+@==================================================================================================RYU MagmaHideout_1F_MapScripts
+MH_FollowerShellyScript::
+	msgbox ShellyOfferHeal MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq MH_ShellyHeal
+	msgbox MH_ShellyChatter
+	closemessage
+	end
+
+MH_ShellyHeal::
+	special HealPlayerParty
+	msgbox MH_ShellyAllBetter
+	closemessage
+	end
+
+MH_ShellyChatter:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Man, it's so dry here.\pThis is wreaking havok\non my hair!$"
+
+MH_ShellyAllBetter:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}There. All better.$"
+
+ShellyOfferHeal:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Need a pick-me-up?$"

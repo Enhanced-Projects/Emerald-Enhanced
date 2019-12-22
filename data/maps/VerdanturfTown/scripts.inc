@@ -1,5 +1,5 @@
 VerdanturfTown_MapScripts:: @ 81EB566
-	map_script MAP_SCRIPT_ON_TRANSITION, VerdanturfTown_OnTransition
+	map_script ON_TRANSITION, VerdanturfTown_OnTransition
 	.byte 0
 
 VerdanturfTown_OnTransition: @ 81EB56C

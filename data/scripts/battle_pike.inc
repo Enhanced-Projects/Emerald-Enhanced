@@ -1,6 +1,6 @@
 BattleFrontier_BattlePikeRoomNormal_MapScripts_2C3E1B: @ 82C3E1B
-	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattlePikeRoom_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattlePikeRoom_OnWarp
+	map_script ON_TRANSITION, BattleFrontier_BattlePikeRoom_OnTransition
+	map_script ON_WARP, BattleFrontier_BattlePikeRoom_OnWarp
 
 BattleFrontier_BattlePikeRoom_OnTransition: @ 82C3E25
 	pike_setroomobjects

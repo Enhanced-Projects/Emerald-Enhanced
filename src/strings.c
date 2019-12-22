@@ -1817,3 +1817,298 @@ const u8 gText_Answer[] = _("ANSWER");
 const u8 gText_PokeBalls[] = _("POKé BALLS");
 const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
+//===================================== RYU STRINGS==========================================
+
+const u8 gRyu_TempVarIntro[] = _("\n");
+
+const u8 gText_Date1[] = _("Slateport Beach");
+const u8 gText_Date2[] = _("CoveLily Motel");
+const u8 gText_Date3[] = _("Mossdeep Quays");
+const u8 gText_DateCancel[] = _("Cancel Date");
+
+const u8 gText_RareCandies[] = _("Passcode Menu...");
+const u8 gText_GodPoke[] = _("QuickStart");
+const u8 gText_Waystone[] = _("Open Pokeedit");
+const u8 gText_TownFlags[] = _("Enable Waystone");
+const u8 gText_Money[] = _("Give p250,000");
+const u8 gText_DisEnc[] = _("Dev Repel Toggle");
+const u8 gText_RelFlagsStatus[] = _("Utility Option 1");
+const u8 gText_Mirage[] = _("Give Items Kit");
+const u8 gText_RelFlagsList[] = _("Disable Dev Mode");
+const u8 gText_DebugCancel[] = _("Close Menu");
+
+const u8 gText_HpEvMenu252[] = _("252 HP");
+const u8 gText_HpEvMenu126[] = _("126 HP");
+const u8 gText_AtkEvMenu252[] = _("252 Atk ");
+const u8 gText_AtkEvMenu126[] = _("126 Atk");
+const u8 gText_DefEvMenu252[] = _("252 Def");
+const u8 gText_DefEvMenu126[] = _("126 Def");
+const u8 gText_SpAtkEvMenu252[] = _("252 SpA");
+const u8 gText_SpAtkEvMenu126[] = _("126 SpA");
+const u8 gText_SpDefEvMenu252[] = _("252 SpD");
+const u8 gText_SpDefEvMenu126[] = _("126 SpD");
+const u8 gText_SpeEvMenu252[] = _("252 Spe");
+const u8 gText_SpeEvMenu126[] = _("126 Spe");
+const u8 gText_ResetEvMenu[] = _("ResetEV");
+const u8 gText_ExitEvMenu[] = _("Exit");
+const u8 gText_ExitEvMenu2[] = _("");
+
+const u8 gText_NatureCancel[] = _("Exit");
+const u8 gText_RyuNatureMenu[] = _("Set Lead Nature");
+
+const u8 gText_NoRelationship[] = _("None");
+const u8 gText_Stage1[] = _("Acquaintances");
+const u8 gText_Stage2[] = _("Friends");
+const u8 gText_Stage3[] = _("Close Friends");
+const u8 gText_Stage4[] = _("Lovers");
+const u8 gText_Stage5[] = _("Partners");
+const u8 gText_RelCancel[] = _("No Change");
+
+const u8 gText_PartySlot1[] = _("Party Slot 1");
+const u8 gText_PartySlot2[] = _("Party Slot 2");
+const u8 gText_PartySlot3[] = _("Party Slot 3");
+const u8 gText_PartySlot4[] = _("Party Slot 4");
+const u8 gText_PartySlot5[] = _("Party Slot 5");
+const u8 gText_PartySlot6[] = _("Party Slot 6");
+const u8 gText_PartySlotCancel[] = _("Cancel Selection");
+
+const u8 gText_MoveSlot1[] = _("Top Left");
+const u8 gText_MoveSlot2[] = _("Top Right");
+const u8 gText_MoveSlot3[] = _("Bottom Left");
+const u8 gText_MoveSlot4[] = _("Bottom Right");
+const u8 gText_MoveSlotCancel[] = _("Cancel Tutoring");
+
+const u8 gText_MoveDarkPulse[] = _("DarkPulse");
+const u8 gText_MoveScald[] = _("Scald");
+const u8 gText_MoveDragonPulse[] = _("DragnPulse");
+const u8 gText_MoveDrainPunch[] = _("DrainPunch");
+const u8 gText_MoveStoneEdge[] = _("StoneEdge");
+const u8 gText_MoveRockSlide[] = _("RockSlide");
+const u8 gText_MoveAvalanche[] = _("Avalanche");
+const u8 gText_MoveThunderWave[] = _("ThnderWave");
+const u8 gText_MoveGigaImpact[] = _("GigaImpact");
+const u8 gText_MoveSilverWind[] = _("SilverWind");
+const u8 gText_MoveBrine[] = _("Brine");
+const u8 gText_MoveFlashCannon[] = _("FlashCanon");
+const u8 gText_MoveEnergyBall[] = _("EnergyBall");
+const u8 gText_MoveSignalBeam[] = _("SignalBeam");
+const u8 gText_MoveSeedBomb[] = _("SeedBomb");
+const u8 gText_MoveSuperpower[] = _("Superpower");
+const u8 gText_MoveEarthPower[] = _("EarthPower");
+const u8 gText_MoveNastyPlot[] = _("Nasty Plot");
+const u8 gText_MoveFocusBlast[] = _("FocusBlast");
+const u8 gText_MoveSwordsDance[] = _("SwordsDanc");
+const u8 gText_MoveMenuExit[] = _("Cancel");
+
+const u8 gText_MusicAshroad[] = _("Ashroad");
+const u8 gText_MusicCasino[] = _("Casino");
+const u8 gText_MusicMtPyre[] = _("Mt.Pyre");
+const u8 gText_MusicMagmaHQ[] = _("MagmaHQ");
+const u8 gText_MusicDive[] = _("Diving");
+const u8 gText_MusicBiking[] = _("Biking");
+const u8 gText_MusicField[] = _("Field13");
+const u8 gText_MusicMuseum[] = _("Museum");
+const u8 gText_MusicLilyCov[] = _("LilyCov");
+const u8 gText_MusicViridia[] = _("Viridia");
+const u8 gText_MusicVermill[] = _("Vermill");
+const u8 gText_MusicCancel[] = _("Disable");
+
+const u8 gText_RyuViewEvMenuOption[] = _("View EV's");
+const u8 gText_RyuViewIvMenuOption[] = _("View IV's");
+const u8 gText_RyuViewOtherMenuOption[] = _("View Other Data");
+const u8 gText_RyuSetLevelMenuOption[] = _("Utility 3");
+const u8 gText_RyuSetExpMultMenuOption[] = _("Set Exp Mult...");
+const u8 gText_RyuSetEvMenuOption[] = _("Set EV's");
+const u8 gText_RyuMaxIvMenuOption[] = _("Max Out IV's");
+const u8 gText_RyuSetFriendshipMenuOption[] = _("Set Friendliness");
+const u8 gText_RyuExitPokeEditMenuOption[] = _("Exit");
+
+const u8 gText_RyuLevel10MenuOption[] = _("Lv.10");
+const u8 gText_RyuLevel20MenuOption[] = _("Lv.20");
+const u8 gText_RyuLevel30MenuOption[] = _("Lv.30");
+const u8 gText_RyuLevel40MenuOption[] = _("Lv.40");
+const u8 gText_RyuLevel50MenuOption[] = _("Lv.50");
+const u8 gText_RyuLevel60MenuOption[] = _("Lv.60");
+const u8 gText_RyuLevel70MenuOption[] = _("Lv.70");
+const u8 gText_RyuLevel80MenuOption[] = _("Lv.80");
+const u8 gText_RyuLevel90MenuOption[] = _("Lv.90");
+const u8 gText_RyuLevel100MenuOption[] = _("Lv.100");
+const u8 gText_RyuExitLevelMenuOption[] = _("No Change");
+
+const u8 gText_RyuSetMult1MenuOption[] = _("Vanilla (Hard Mode)");
+const u8 gText_RyuSetMult15MenuOption[] =_("Autoscale(Normal Mode)");
+const u8 gText_RyuSetMult2MenuOption[] =_("x2.0(Easy Mode)");
+const u8 gText_RyuSetMult4MenuOption[] =_("x4.0(Quick Mode)");
+const u8 gText_RyuSetMult8MenuOption[] =_("x8.0(God Mode)");
+const u8 gText_RyuExitExpMultMenuOption[] =_("No Change");
+
+const u8 gText_RyuNewGameMenuEasyMode[] = _("Easy Mode(4.0x Exp)");
+const u8 gText_RyuNewGameMenuNormalMode[] = _("Normal Mode(Exp scales with badges)");
+const u8 gText_RyuNewGameMenuHardMode[] = _("Hard Mode(1.0x Exp)");
+const u8 gText_RyuNewGameNuzlockeMode[] = _("Nuzlocke Mode(Rules Enforced)");
+const u8 gText_RyuNewGameHardcoreMode[] = _("{COLOR RED}{SHADOW LIGHT_RED}HARDCORE");
+const u8 gText_RyuNewGameFrontierMode[] = _("{COLOR LIGHT_GREEN}{SHADOW LIGHT_GREY}Frontier Mode");
+
+const u8 gText_RyuTeleportHome[] = _(" Home");
+const u8 gText_RyuTeleportOldale[] = _(" Oldale");
+const u8 gText_RyuTeleportPetalburg[] = _("Petalburg");
+const u8 gText_RyuTeleportRustboro[] = _(" Rustburo");
+const u8 gText_RyuTeleportVerdanturf[] = _(" Verdanturf");
+const u8 gText_RyuTeleportSlateport[] = _("Slateport");
+const u8 gText_RyuTeleportDewford[] = _(" Dewford");
+const u8 gText_RyuTeleportPacifidlog[] = _(" Pacifidlog");
+const u8 gText_RyuTeleportLavaridge[] = _("Lavaridge");
+const u8 gText_RyuTeleportFallarbor[] = _(" Fallarbor");
+const u8 gText_RyuTeleportFortree[] = _(" Fortree");
+const u8 gText_RyuTeleportMauville[] = _("Mauville");
+const u8 gText_RyuTeleportLilycove[] = _(" Lilycove");
+const u8 gText_RyuTeleportSootopolis[] = _(" Sootopolis");
+const u8 gText_RyuTeleportMossdeep[] = _("Mossdeep");
+const u8 gText_RyuTeleportLandmarks[] = _(" Landmarks");
+const u8 gText_RyuTeleportEvergrande[] = _(" EverGrande");
+const u8 gText_RyuTeleportBattleFrontier[] = _(" B. Frontier");
+const u8 gText_RyuTeleportMtPyreExterior[] = _(" Mt.Pyre Ext");
+const u8 gText_RyuTeleportLCCDEPT[] = _(" LC DeptStore");
+const u8 gText_RyuTeleportMCMH[] = _(" MagmaOffice");
+const u8 gText_RyuTeleportLCAH[] = _(" AquaOffice");
+const u8 gText_RyuTeleportAbandonedShip[] = _(" Abdn. Ship");
+
+const u8 gText_RyuTeleportBattleFrontierGate[] = _(" Front Gate");
+const u8 gText_RyuTeleportBattleFrontierTower[] = _(" Battle Tower");
+const u8 gText_RyuTeleportBattleFrontierPike[] = _(" Battle Pike");
+const u8 gText_RyuTeleportBattleFrontierPalace[] = _(" Battle Palace");
+const u8 gText_RyuTeleportBattleFrontierPyramid[] = _(" Battle Pyramid");
+const u8 gText_RyuTeleportBattleFrontierFactory[] = _(" Battle Factory");
+const u8 gText_RyuTeleportBattleFrontierArena[] = _(" Battle Arena");
+const u8 gText_RyuTeleportBattleFrontierDome[] = _(" Battle Dome");
+const u8 gText_RyuTeleportBattleFrontierCallback[] = _(" Return");
+
+const u8 gRyuJukeboxMute[] = _("Muted all BGM");
+const u8 gRyuJukeboxNibi[] = _("Now Playing Nibi");
+const u8 gRyuJukeboxFuneKan[] = _("Now Playing Fune Kan");
+const u8 gRyuJukeboxCycling[] = _("Now Playing Cycling");
+const u8 gRyuJukeboxMinamo[] = _("Now Playing Minamo");
+const u8 gRyuJukeboxAshroad[] = _("Now Playing Ashroad");
+const u8 gRyuJukeboxDeepDeep[] = _("Now Playing Deep Deep");
+const u8 gRyuJukeboxCasino[] = _("Now Playing Casino");
+const u8 gRyuJukeboxAjito[] = _("Now Playing Ajito");
+const u8 gRyuJukeboxMachupi[] = _("Now Playing Machupi");
+const u8 gRyuJukeboxRGSantoan[] = _("Now Playing Santoan");
+const u8 gRyuJukeboxField13[] = _("Now Playing Field13");
+const u8 gRyuJukeboxPyramid[] = _("Now Playing Pyramid");
+const u8 gRyuJukeboxGomachi[] = _("Now Playing Gomachi");
+const u8 gRyuJukeboxDefault[] = _("Radio is enabled.\nPress L to disable.");
+const u8 gRyuJukeboxEnabled[] = _("Jukebox Enabled");
+const u8 gRyuJukeboxDisabled[] = _("Jukebox Disabled");
+const u8 gText_MenuJukebox[] = _("Jukebox");
+const u8 gText_NuzlockeName[] = _("Failure");
+const u8 gText_RyuMonDied[] = _("A pokemon died...");
+const u8 gText_RyuNuzlockeFailed[] = _("You have failed the nuzlocke challenge.");
+
+const u8 gText_RyuPasscodeMenu1[] = _("1");
+const u8 gText_RyuPasscodeMenu2[] = _("2");
+const u8 gText_RyuPasscodeMenu3[] = _("3 ");
+const u8 gText_RyuPasscodeMenu4[] = _("4");
+const u8 gText_RyuPasscodeMenu5[] = _("5");
+const u8 gText_RyuPasscodeMenu6[] = _("6 ");
+const u8 gText_RyuPasscodeMenu7[] = _("7");
+const u8 gText_RyuPasscodeMenu8[] = _("8");
+const u8 gText_RyuPasscodeMenu9[] = _("9 ");
+const u8 gText_RyuPasscodeMenu0[] = _("0");
+const u8 gText_RyuPasscodeMenu10[] = _("X");
+
+const u8 gText_RyuUserModeEvMenuHP[] = _("HP");
+const u8 gText_RyuUserModeEvMenuAtk[] = _("Attack");
+const u8 gText_RyuUserModeEvMenuDef[] = _("Defense");
+const u8 gText_RyuUserModeEvMenuSpAtk[] = _("Special Attack");
+const u8 gText_RyuUserModeEvMenuSpDef[] = _("Special Defense");
+const u8 gText_RyuUserModeEvMenuSpe[] = _("Speed");
+
+const u8 gText_RyuRelationshipDawnMenuOption[] = _("Dawn");
+const u8 gText_RyuRelationshipShellyMenuOption[] = _("Shelly");
+const u8 gText_RyuRelationshipBrendanMenuOption[] = _("Brendan");
+const u8 gText_RyuRelationshipLanaMenuOption[] = _("Lana");
+const u8 gText_RyuRelationshipLanetteMenuOption[] = _("Lanette");
+
+
+const u8 gText_RyuBetaMenuResetDevon[] = _("Reset Devon");
+const u8 gText_RyuBetaMenuResetMagma[] = _("{COLOR RED}{SHADOW DARK_GREY}Reset Magma");
+const u8 gText_RyuBetaMenuResetAqua[] = _("Reset Aqua");
+const u8 gText_RyuBetaMenuResetLeaf[] = _("Reset Leaf");
+const u8 gText_RyuBetaMenuResetRival[] = _("Reset Rival");
+const u8 gText_RyuBetaMenuResetGCMS[] = _("Reset GCMS");
+const u8 gText_RyuBetaMenuGoHome[] = _("Teleport Home");
+const u8 gText_RyuBetaMenuExit[] = _("Reset Nothing");
+
+const u8 gText_RyuForecasterClear[] = _("Clear");
+const u8 gText_RyuForecasterSprinkle[] = _("Light Sprinkle");
+const u8 gText_RyuForecasterHeavyStorm[] = _("Thunderstorm");
+const u8 gText_RyuForecasterSunny[] = _("Harsh Sunlight");
+const u8 gText_RyuForecasterSandstorm[] = _("Sandstorm");
+const u8 gText_RyuForecasterHail[] = _("Light Snow");
+const u8 gText_RyuForecasterShade[] = _("Overcast");
+const u8 gText_RyuForecasterExit[] = _("No Weather Change");
+
+const u8 gText_CozmoOption1[] = _("Well Actually...");
+const u8 gText_CozmoOption2[] = _("Alright then...");
+
+const u8 gText_diceGame100[] = _("100");
+const u8 gText_diceGame1000[] = _("1000");
+const u8 gText_diceGame10000[] = _("10000");
+
+const u8 gText_BankWithdraw[] = _("Make a Withdrawal");
+const u8 gText_BankDeposit[] = _("Make a Deposit");
+const u8 gText_BankBalance[] = _("Check Balance");
+
+const u8 gText_Bank10k[] = _("10,000");
+const u8 gText_Bank50k[] = _("50,000");
+const u8 gText_Bank100k[] = _("100,000");
+const u8 gText_BankOneMil[] = _("1,000,000");
+const u8 gText_BankCancel[] = _("No Value");
+
+const u8 gText_HardyNature[] = _("Hardy");
+const u8 gText_LonelyNature[] = _("Lonely");
+const u8 gText_BraveNature[] = _("Brave");
+const u8 gText_AdamantNature[] = _("Adamant");
+const u8 gText_NaughtyNature[] = _("Naughty");
+const u8 gText_BoldNature[] = _("Bold");
+const u8 gText_DocileNature[] = _("Docile");
+const u8 gText_RelaxedNature[] = _("Relaxed");
+const u8 gText_ImpishNature[] = _("Impish");
+const u8 gText_LaxNature[] = _("Lax");
+const u8 gText_TimidNature[] = _("Timid");
+const u8 gText_HastyNature[] = _("Hasty");
+const u8 gText_SeriousNature[] = _("Serious");
+const u8 gText_JollyNature[] = _("Jolly");
+const u8 gText_NaiveNature[] = _("Naive");
+const u8 gText_ModestNature[] = _("Modest");
+const u8 gText_MildNature[] = _("Mild");
+const u8 gText_QuietNature[] = _("Quiet");
+const u8 gText_BashfulNature[] = _("Bashful");
+const u8 gText_RashNature[] = _("Rash");
+const u8 gText_CalmNature[] = _("Calm");
+const u8 gText_GentleNature[] = _("Gentle");
+const u8 gText_SassyNature[] = _("Sassy");
+const u8 gText_CarefulNature[] = _("Careful");
+const u8 gText_QuirkyNature[] = _("Quirky");
+
+const u8 gText_GCMSTutorial[] = _("Read Tutorial");
+const u8 gText_GCMSConsign[] = _("Consign Mon");
+const u8 gText_GCMSCreate[] = _("Create Mon");
+const u8 gText_GCMSStatus[] = _("Check Status");
+const u8 gText_GCMSSwapAbility[] = _("Swap Ability");
+const u8 gText_GCMSCancel[] = _("Leave");
+
+const u8 gText_BCPokeball[] = _("Poke");
+const u8 gText_BCGreatball[] = _("Great");
+const u8 gText_BCUltraball[] = _("Ultra");
+const u8 gText_BCLuxuryball[] = _("Luxury");
+const u8 gText_BCPremierball[] = _("Premier");
+const u8 gText_BCRepeatball[] = _("Repeat");
+const u8 gText_BCTimerball[] = _("Timer");
+const u8 gText_BCNestball[] = _("Nest");
+const u8 gText_BCNetball[] = _("Net");
+const u8 gText_BCSafariball[] = _("Safari");
+const u8 gText_BCDiveball[] = _("Dive");
+const u8 gText_BCCancel[] = _("No Change");
+

@@ -292,25 +292,23 @@ PetalburgWoods_EventScript_James:: @ 822E284
 PetalburgWoods_EventScript_TryRegisterJames:: @ 822E2C5
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
-	goto_if_set FLAG_HAS_MATCH_CALL, PetalburgWoods_EventScript_RegisterJames
 	release
 	end
 
 PetalburgWoods_EventScript_RegisterJames:: @ 822E2D6
 	msgbox PetalburgWoods_Text_IWantRematch1, MSGBOX_DEFAULT
-	register_matchcall TRAINER_JAMES_1
+	@nop Trainer_JAMES_1
 	release
 	end
 
 PetalburgWoods_EventScript_TryRegisterJames2:: @ 822E2EF
-	goto_if_set FLAG_HAS_MATCH_CALL, PetalburgWoods_EventScript_RegisterJames2
 	msgbox PetalburgWoods_Text_PeopleRespectYou, MSGBOX_DEFAULT
 	release
 	end
 
 PetalburgWoods_EventScript_RegisterJames2:: @ 822E302
 	msgbox PetalburgWoods_Text_IWantRematch2, MSGBOX_DEFAULT
-	register_matchcall TRAINER_JAMES_1
+	@nop Trainer_JAMES_1
 	release
 	end
 

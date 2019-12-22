@@ -1,5 +1,5 @@
 Route110_SeasideCyclingRoadSouthEntrance_MapScripts:: @ 826EBA1
-	map_script MAP_SCRIPT_ON_TRANSITION, Route110_SeasideCyclingRoadSouthEntrance_OnTransition
+	map_script ON_TRANSITION, Route110_SeasideCyclingRoadSouthEntrance_OnTransition
 	.byte 0
 
 Route110_SeasideCyclingRoadSouthEntrance_OnTransition: @ 826EBA7

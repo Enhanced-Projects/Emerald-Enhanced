@@ -1,7 +1,7 @@
 JaggedPass_MapScripts:: @ 8230656
-	map_script MAP_SCRIPT_ON_RESUME, JaggedPass_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, JaggedPass_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD, JaggedPass_OnLoad
+	map_script ON_RESUME, JaggedPass_OnResume
+	map_script ON_TRANSITION, JaggedPass_OnTransition
+	map_script ON_LOAD, JaggedPass_OnLoad
 	.byte 0
 
 JaggedPass_OnResume: @ 8230666
@@ -113,7 +113,7 @@ JaggedPass_EventScript_Diana:: @ 823079C
 JaggedPass_EventScript_RegisterDiana:: @ 82307C8
 	special PlayerFaceTrainerAfterBattle
 	msgbox JaggedPass_Text_DianaRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_DIANA_1
+	@nop Trainer_DIANA_1
 	release
 	end
 
@@ -134,7 +134,7 @@ JaggedPass_EventScript_Ethan:: @ 82307FB
 JaggedPass_EventScript_RegisterEthan:: @ 8230827
 	special PlayerFaceTrainerAfterBattle
 	msgbox JaggedPass_Text_EthanRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_ETHAN_1
+	@nop Trainer_ETHAN_1
 	release
 	end
 

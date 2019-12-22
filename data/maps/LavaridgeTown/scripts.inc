@@ -1,6 +1,6 @@
 LavaridgeTown_MapScripts:: @ 81EA4D3
-	map_script MAP_SCRIPT_ON_TRANSITION, LavaridgeTown_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, LavaridgeTown_OnFrame
+	map_script ON_TRANSITION, LavaridgeTown_OnTransition
+	map_script ON_FRAME, LavaridgeTown_OnFrame
 	.byte 0
 
 LavaridgeTown_OnTransition: @ 81EA4DE

@@ -227,6 +227,16 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_warpE0
 	.4byte ScrCmd_buffercontesttype
 	.4byte ScrCmd_bufferitemnameplural
+	.4byte ScrCmd_createfollower
+	.4byte ScrCmd_destroyfollower
+	.4byte ScrCmd_drawheadshot
+	.4byte ScrCmd_drawcustompic
+	.4byte ScrCmd_removecutscenesprites
+	.4byte ScrCmd_addmonhappiness
+	.4byte ScrCmd_takebp
+	.4byte ScrCmd_givebp
+	.4byte ScrCmd_checkbp
+	.4byte ScrCmd_gfec
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop

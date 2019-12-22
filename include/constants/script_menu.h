@@ -122,6 +122,35 @@
 #define MULTI_SLATEPORT_TENT_RULES         111
 #define MULTI_FALLARBOR_TENT_RULES         112
 #define MULTI_TAG_MATCH_TYPE               113
+#define MULTI_UNUSED_DATE                  114
+#define MULTI_DEV_MENU_MAIN                115
+#define MULTI_DEV_EV_MENU                  116
+#define MULTI_UNUSED_REL_MENU              117
+#define MULTI_SELECT_PARTY_SLOT            118
+#define MULTI_SELECT_MOVE_SLOT             119
+#define MULTI_LTC_MOVE_TUTOR_MOVES         120
+#define MULTI_UNUSED_JUKEBOX               121
+#define MULTI_DEV_MODE_POKEEDIT_MENU       122
+#define MULTI_UNUSED_LEVEL_SELECT          123
+#define MULTI_DEV_MODE_EXP_MULT            124
+#define MULTI_SELECT_FRESH_NEW_GAME_MODE   125
+#define MULTI_WAYSTONE_MAIN_MENU           126
+#define MULTI_WAYSTONE_MENU_FRONTIER       127
+#define MULTI_WAYSTONE_MENU_LANDMARKS      128
+#define MULTI_PASSCODE_ENTRY               129
+#define MULTI_SELECT_PARTNER_MENU          130
+#define MULTI_GENETIC_IMPRINTER_MENU       131
+#define MULTI_SELECT_PARTNER_ALT_GENDER    132
+#define MULTI_BETA_MENU                    133
+#define MULTI_WEATHER_SELECT               134
+#define MULTI_DEVON_PATH_CHOICE            135
+#define MULTI_DICE_GAME_WAGER              136
+#define MULTI_FRONTIER_BANK_MENU           137
+#define MULTI_FRONTIER_BANK_AMT_SELECT     138
+#define MULTI_NATURE_SELECT_MENU           139
+#define MULTI_GCMS_MAIN_MENU               140
+#define MULTI_BALL_CHANGER_SELECT_MENU     141
+#define MULTI_SELECT_NEW_GAME_PLUS_MODE    142
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

@@ -771,6 +771,371 @@ static const struct MenuAction MultichoiceList_TagMatchType[] =
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_114[] =
+{
+    {gText_Date1},
+    {gText_Date2},
+    {gText_Date3},
+    {gText_DateCancel},
+};
+
+static const struct MenuAction MultichoiceList_115[] =
+{
+    {gText_RareCandies},
+    {gText_GodPoke},
+    {gText_Waystone},
+    {gText_TownFlags},
+    {gText_DisEnc},
+    {gText_RelFlagsStatus},
+    {gText_Mirage},
+    {gText_RelFlagsList},
+    {gText_DebugCancel},
+};
+
+static const struct MenuAction MultichoiceList_116[] =
+{
+    {gText_HpEvMenu252},
+    {gText_HpEvMenu126},
+    {gText_AtkEvMenu252},
+    {gText_AtkEvMenu126},
+    {gText_DefEvMenu252},
+    {gText_DefEvMenu126},
+    {gText_SpAtkEvMenu252},
+    {gText_SpAtkEvMenu126},
+    {gText_SpDefEvMenu252},
+    {gText_SpDefEvMenu126},
+    {gText_SpeEvMenu252},
+    {gText_SpeEvMenu126},
+    {gText_ResetEvMenu},
+    {gText_ExitEvMenu},
+    {gText_ExitEvMenu2},
+    {gText_ExitEvMenu2},
+};
+
+static const struct MenuAction MultichoiceList_117[] =
+{
+    {gText_NoRelationship},
+    {gText_Stage1},
+    {gText_Stage2},
+    {gText_Stage3},
+    {gText_Stage4},
+    {gText_Stage5},
+    {gText_RelCancel},
+};
+
+static const struct MenuAction MultichoiceList_118[] =
+{
+    {gText_PartySlot1},
+    {gText_PartySlot2},
+    {gText_PartySlot3},
+    {gText_PartySlot4},
+    {gText_PartySlot5},
+    {gText_PartySlot6},
+    {gText_PartySlotCancel},
+};
+
+static const struct MenuAction MultichoiceList_119[] =
+{
+    {gText_MoveSlot1},
+    {gText_MoveSlot2},
+    {gText_MoveSlot3},
+    {gText_MoveSlot4},
+    {gText_MoveSlotCancel},
+};
+
+static const struct MenuAction MultichoiceList_120[] =
+{
+    {gText_MoveDarkPulse},
+    {gText_MoveScald},
+    {gText_MoveDragonPulse},
+    {gText_MoveDrainPunch},
+    {gText_MoveStoneEdge},
+    {gText_MoveRockSlide},
+    {gText_MoveAvalanche},
+    {gText_MoveThunderWave},
+    {gText_MoveGigaImpact},
+    {gText_MoveSilverWind},
+    {gText_MoveBrine},
+    {gText_MoveFlashCannon},
+    {gText_MoveEnergyBall},
+    {gText_MoveSignalBeam},
+    {gText_MoveSeedBomb},
+    {gText_MoveSuperpower},
+    {gText_MoveEarthPower},
+    {gText_MoveNastyPlot},
+    {gText_MoveFocusBlast},
+    {gText_MoveSwordsDance},
+    {gText_MoveMenuExit},
+};
+
+static const struct MenuAction MultichoiceList_121[] =
+{
+    {gText_MusicAshroad},
+    {gText_MusicCasino},
+    {gText_MusicMtPyre},
+    {gText_MusicMagmaHQ},
+    {gText_MusicDive},
+    {gText_MusicBiking},
+    {gText_MusicField},
+    {gText_MusicMuseum},
+    {gText_MusicLilyCov},
+    {gText_MusicViridia},
+    {gText_MusicVermill},
+    {gText_MusicCancel},
+};
+
+static const struct MenuAction MultichoiceList_122[]=
+{
+    {gText_RyuViewEvMenuOption},
+    {gText_RyuViewIvMenuOption},
+    {gText_RyuViewOtherMenuOption},
+    {gText_RyuSetExpMultMenuOption},
+    {gText_RyuSetEvMenuOption},
+    {gText_RyuMaxIvMenuOption},
+    {gText_RyuSetFriendshipMenuOption},
+    {gText_RyuExitPokeEditMenuOption},
+};
+
+static const struct MenuAction MultichoiceList_123[]=
+{
+    {gText_RyuLevel10MenuOption},
+    {gText_RyuLevel20MenuOption},
+    {gText_RyuLevel30MenuOption},
+    {gText_RyuLevel40MenuOption},
+    {gText_RyuLevel50MenuOption},
+    {gText_RyuLevel60MenuOption},
+    {gText_RyuLevel70MenuOption},
+    {gText_RyuLevel80MenuOption},
+    {gText_RyuLevel90MenuOption},
+    {gText_RyuLevel100MenuOption},
+    {gText_RyuExitLevelMenuOption},
+    {gText_ExitEvMenu2},
+   
+};
+
+static const struct MenuAction MultichoiceList_124[]=
+{
+    {gText_RyuSetMult1MenuOption},
+    {gText_RyuSetMult15MenuOption},
+    {gText_RyuSetMult2MenuOption},
+    {gText_RyuSetMult4MenuOption},
+    {gText_RyuSetMult8MenuOption},
+    {gText_RyuExitExpMultMenuOption},
+};
+
+static const struct MenuAction MultichoiceList_125[]=
+{
+    {gText_RyuNewGameMenuEasyMode},
+    {gText_RyuNewGameMenuNormalMode},
+    {gText_RyuNewGameMenuHardMode},
+    {gText_RyuNewGameNuzlockeMode},
+    {gText_RyuNewGameFrontierMode},
+};
+
+static const struct MenuAction MultichoiceList_126[]=
+{
+    {gText_RyuTeleportHome},
+    {gText_RyuTeleportOldale},
+    {gText_RyuTeleportPetalburg},
+    {gText_RyuTeleportRustboro},
+    {gText_RyuTeleportVerdanturf},
+    {gText_RyuTeleportSlateport},
+    {gText_RyuTeleportDewford},
+    {gText_RyuTeleportPacifidlog},
+    {gText_RyuTeleportLavaridge},
+    {gText_RyuTeleportFallarbor},
+    {gText_RyuTeleportFortree},
+    {gText_RyuTeleportMauville},
+    {gText_RyuTeleportLilycove},
+    {gText_RyuTeleportSootopolis},
+    {gText_RyuTeleportMossdeep},
+    {gText_RyuTeleportEvergrande},
+    {gText_RyuTeleportLandmarks},
+    {gText_RyuExitPokeEditMenuOption},
+};
+
+static const struct MenuAction MultichoiceList_127[]=
+{
+    {gText_RyuTeleportBattleFrontierGate},
+    {gText_RyuTeleportBattleFrontierTower},
+    {gText_RyuTeleportBattleFrontierPike},
+    {gText_RyuTeleportBattleFrontierPalace},
+    {gText_RyuTeleportBattleFrontierPyramid},
+    {gText_RyuTeleportBattleFrontierFactory},
+    {gText_RyuTeleportBattleFrontierArena},
+    {gText_RyuTeleportBattleFrontierDome},
+    {gText_RyuTeleportBattleFrontierCallback},
+};
+
+static const struct MenuAction MultichoiceList_128[]=
+{
+    {gText_RyuTeleportBattleFrontier},
+    {gText_RyuTeleportMtPyreExterior},
+    {gText_RyuTeleportLCCDEPT},
+    {gText_RyuTeleportLCAH},
+    {gText_RyuTeleportMCMH},
+    {gText_RyuTeleportAbandonedShip},
+    {gText_RyuTeleportBattleFrontierCallback},  
+};
+
+static const struct MenuAction MultichoiceList_129[]=
+{
+    {gText_RyuPasscodeMenu1},
+    {gText_RyuPasscodeMenu2},
+    {gText_RyuPasscodeMenu3},
+    {gText_RyuPasscodeMenu4},
+    {gText_RyuPasscodeMenu5},
+    {gText_RyuPasscodeMenu6},
+    {gText_RyuPasscodeMenu7},
+    {gText_RyuPasscodeMenu8},
+    {gText_RyuPasscodeMenu9},
+    {gText_RyuPasscodeMenu0},
+    {gText_RyuPasscodeMenu10},
+    {gText_RyuPasscodeMenu10},
+};
+
+static const struct MenuAction MultichoiceList_130[]=
+{
+    {gText_RyuRelationshipDawnMenuOption},
+    {gText_RyuRelationshipShellyMenuOption},
+    {gText_RyuRelationshipLanaMenuOption},
+    {gText_RyuRelationshipLanetteMenuOption},
+};
+
+static const struct MenuAction MultichoiceList_131[]=
+{
+    {gText_RyuUserModeEvMenuHP},
+    {gText_RyuUserModeEvMenuAtk},
+    {gText_RyuUserModeEvMenuDef},
+    {gText_RyuUserModeEvMenuSpAtk},
+    {gText_RyuUserModeEvMenuSpDef},
+    {gText_RyuUserModeEvMenuSpe},
+    {gText_RyuExitPokeEditMenuOption},
+    {gText_ExitEvMenu2},
+};
+
+static const struct MenuAction MultichoiceList_132[]=
+{
+    {gText_RyuRelationshipBrendanMenuOption},
+    {gText_RyuRelationshipShellyMenuOption},
+    {gText_RyuRelationshipLanaMenuOption},
+    {gText_RyuRelationshipLanetteMenuOption},
+};
+
+static const struct MenuAction MultichoiceList_133[]=
+{
+    {gText_RyuBetaMenuResetDevon},
+    {gText_RyuBetaMenuResetMagma},
+    {gText_RyuBetaMenuResetAqua},
+    {gText_RyuBetaMenuResetLeaf},
+    {gText_RyuBetaMenuResetRival},
+    {gText_RyuBetaMenuResetGCMS},
+    {gText_RyuBetaMenuGoHome},
+    {gText_RyuBetaMenuExit},
+};
+
+static const struct MenuAction MultichoiceList_134[]=
+{
+    {gText_RyuForecasterClear},
+    {gText_RyuForecasterSprinkle},
+    {gText_RyuForecasterHeavyStorm},
+    {gText_RyuForecasterSunny},
+    {gText_RyuForecasterSandstorm},
+    {gText_RyuForecasterHail},
+    {gText_RyuForecasterShade},
+    {gText_RyuForecasterExit},
+};
+
+static const struct MenuAction MultichoiceList_135[]=
+{
+    {gText_CozmoOption1},
+    {gText_CozmoOption2},
+};
+
+static const struct MenuAction MultichoiceList_136[]=
+{
+    {gText_diceGame100},
+    {gText_diceGame1000},
+    {gText_diceGame10000},
+};
+
+static const struct MenuAction MultichoiceList_137[]=
+{
+    {gText_BankDeposit},
+    {gText_BankWithdraw},
+    {gText_BankBalance},
+};
+
+static const struct MenuAction MultichoiceList_138[]=
+{
+    {gText_Bank10k},
+    {gText_Bank50k},
+    {gText_Bank100k},
+    {gText_BankOneMil},
+    {gText_BankCancel},
+};
+
+static const struct MenuAction MultichoiceList_139[]=
+{
+    {gText_HardyNature},
+    {gText_LonelyNature},
+    {gText_BraveNature},
+    {gText_AdamantNature},
+    {gText_NaughtyNature},
+    {gText_BoldNature},
+    {gText_DocileNature},
+    {gText_RelaxedNature},
+    {gText_ImpishNature},
+    {gText_LaxNature},
+    {gText_TimidNature},
+    {gText_HastyNature},
+    {gText_SeriousNature},
+    {gText_JollyNature},
+    {gText_NaiveNature},
+    {gText_ModestNature},
+    {gText_MildNature},
+    {gText_QuietNature},
+    {gText_BashfulNature},
+    {gText_RashNature},
+    {gText_CalmNature},
+    {gText_GentleNature},
+    {gText_SassyNature},
+    {gText_CarefulNature},
+};
+
+static const struct MenuAction MultichoiceList_140[]=
+{
+    {gText_GCMSTutorial},
+    {gText_GCMSConsign},
+    {gText_GCMSCreate},
+    {gText_GCMSStatus},
+    {gText_GCMSSwapAbility},
+    {gText_GCMSCancel},
+};
+
+static const struct MenuAction MultichoiceList_141[]=
+{
+    {gText_BCPokeball},
+    {gText_BCGreatball},
+    {gText_BCUltraball},
+    {gText_BCLuxuryball},
+    {gText_BCPremierball},
+    {gText_BCRepeatball},
+    {gText_BCTimerball},
+    {gText_BCNestball},
+    {gText_BCNetball},
+    {gText_BCSafariball},
+    {gText_BCDiveball},
+    {gText_BCCancel},
+};
+
+static const struct MenuAction MultichoiceList_142[]=
+{
+    {gText_RyuNewGameNuzlockeMode},
+    {gText_RyuNewGameMenuHardMode},
+    {gText_RyuNewGameHardcoreMode},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -898,6 +1263,35 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_SLATEPORT_TENT_RULES]       = MULTICHOICE(MultichoiceList_SlateportTentRules),
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
+    [MULTI_UNUSED_DATE]                = MULTICHOICE(MultichoiceList_114),
+    [MULTI_DEV_MENU_MAIN]              = MULTICHOICE(MultichoiceList_115),
+    [MULTI_DEV_EV_MENU]                = MULTICHOICE(MultichoiceList_116),
+    [MULTI_UNUSED_REL_MENU]            = MULTICHOICE(MultichoiceList_117),
+    [MULTI_SELECT_PARTY_SLOT]          = MULTICHOICE(MultichoiceList_118),
+    [MULTI_SELECT_MOVE_SLOT]           = MULTICHOICE(MultichoiceList_119),
+    [MULTI_LTC_MOVE_TUTOR_MOVES]       = MULTICHOICE(MultichoiceList_120),
+    [MULTI_UNUSED_JUKEBOX]             = MULTICHOICE(MultichoiceList_121),
+    [MULTI_DEV_MODE_POKEEDIT_MENU]     = MULTICHOICE(MultichoiceList_122),
+    [MULTI_UNUSED_LEVEL_SELECT]        = MULTICHOICE(MultichoiceList_123),
+    [MULTI_DEV_MODE_EXP_MULT]          = MULTICHOICE(MultichoiceList_124),
+    [MULTI_SELECT_FRESH_NEW_GAME_MODE] = MULTICHOICE(MultichoiceList_125),
+    [MULTI_WAYSTONE_MAIN_MENU]         = MULTICHOICE(MultichoiceList_126),
+    [MULTI_WAYSTONE_MENU_FRONTIER]     = MULTICHOICE(MultichoiceList_127),
+    [MULTI_WAYSTONE_MENU_LANDMARKS]    = MULTICHOICE(MultichoiceList_128),
+    [MULTI_PASSCODE_ENTRY]             = MULTICHOICE(MultichoiceList_129),
+    [MULTI_SELECT_PARTNER_MENU]        = MULTICHOICE(MultichoiceList_130),
+    [MULTI_GENETIC_IMPRINTER_MENU]     = MULTICHOICE(MultichoiceList_131),
+    [MULTI_SELECT_PARTNER_ALT_GENDER]  = MULTICHOICE(MultichoiceList_132),
+    [MULTI_BETA_MENU]                  = MULTICHOICE(MultichoiceList_133),
+    [MULTI_WEATHER_SELECT]             = MULTICHOICE(MultichoiceList_134),
+    [MULTI_DEVON_PATH_CHOICE]          = MULTICHOICE(MultichoiceList_135),
+    [MULTI_DICE_GAME_WAGER]            = MULTICHOICE(MultichoiceList_136),
+    [MULTI_FRONTIER_BANK_MENU]         = MULTICHOICE(MultichoiceList_137),
+    [MULTI_FRONTIER_BANK_AMT_SELECT]   = MULTICHOICE(MultichoiceList_138),
+    [MULTI_NATURE_SELECT_MENU]         = MULTICHOICE(MultichoiceList_139),
+    [MULTI_GCMS_MAIN_MENU]             = MULTICHOICE(MultichoiceList_140),
+    [MULTI_BALL_CHANGER_SELECT_MENU]   = MULTICHOICE(MultichoiceList_141),
+    [MULTI_SELECT_NEW_GAME_PLUS_MODE]  = MULTICHOICE(MultichoiceList_142),
 };
 
 const u8 *const gStdStrings[] =
@@ -932,6 +1326,7 @@ const u8 *const gStdStrings[] =
     [STDSTRING_BATTLE_ARENA] = gText_BattleArena,
     [STDSTRING_BATTLE_PIKE] = gText_BattlePike,
     [STDSTRING_BATTLE_PYRAMID] = gText_BattlePyramid,
+    
 };
 
 static const u8 sLinkServicesMultichoiceIds[] = 

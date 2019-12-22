@@ -1,5 +1,5 @@
 EverGrandeCity_Hall4_MapScripts:: @ 82295A8
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, EverGrandeCity_Hall4_OnWarp
+	map_script ON_WARP, EverGrandeCity_Hall4_OnWarp
 	.byte 0
 
 EverGrandeCity_Hall4_OnWarp: @ 82295AE

@@ -1,7 +1,7 @@
 BattleFrontier_BattlePikeThreePathRoom_MapScripts:: @ 825C843
-	map_script MAP_SCRIPT_ON_RESUME, BattleFrontier_BattlePikeRoom_OnResume
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattlePikeThreePathRoom_OnFrame
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattlePikeThreePathRoom_OnWarp
+	map_script ON_RESUME, BattleFrontier_BattlePikeRoom_OnResume
+	map_script ON_FRAME, BattleFrontier_BattlePikeThreePathRoom_OnFrame
+	map_script ON_WARP, BattleFrontier_BattlePikeThreePathRoom_OnWarp
 	.byte 0
 
 BattleFrontier_BattlePikeThreePathRoom_OnFrame: @ 825C853

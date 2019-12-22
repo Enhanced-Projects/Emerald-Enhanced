@@ -1,6 +1,6 @@
 MtChimney_MapScripts:: @ 822EDC1
-	map_script MAP_SCRIPT_ON_RESUME, MtChimney_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, MtChimney_OnTransition
+	map_script ON_RESUME, MtChimney_OnResume
+	map_script ON_TRANSITION, MtChimney_OnTransition
 	.byte 0
 
 MtChimney_OnTransition: @ 822EDCC
@@ -104,7 +104,7 @@ MtChimney_EventScript_LavaCookieLady:: @ 822EEF3
 	msgbox MtChimney_Text_LavaCookiesJust200, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MtChimney_EventScript_DeclineLavaCookie
-	checkmoney 200, 0
+	checkmoney 200
 	compare VAR_RESULT, FALSE
 	goto_if_eq MtChimney_EventScript_NotEnoughMoney
 	msgbox MtChimney_Text_ThankYouDear, MSGBOX_DEFAULT
@@ -125,7 +125,7 @@ MtChimney_EventScript_BagIsFull:: @ 822EF51
 	end
 
 MtChimney_EventScript_TakeMoney:: @ 822EF5E
-	takemoney 200, 0
+	takemoney 200
 	updatemoneybox 0, 0
 	return
 
@@ -501,7 +501,7 @@ MtChimney_EventScript_DefeatedShelby:: @ 822F176
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox MtChimney_Text_ShelbyRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_SHELBY_1
+	@nop Trainer_SHELBY_1
 	release
 	end
 
@@ -543,7 +543,7 @@ MtChimney_EventScript_SawyerDefeated:: @ 822F234
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox MtChimney_Text_SawyerRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_SAWYER_1
+	@nop Trainer_SAWYER_1
 	release
 	end
 

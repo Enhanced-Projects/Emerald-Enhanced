@@ -1,7 +1,7 @@
 EverGrandeCity_DrakesRoom_MapScripts:: @ 822869C
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, EverGrandeCity_DrakesRoom_OnFrame
-	map_script MAP_SCRIPT_ON_LOAD, EverGrandeCity_DrakesRoom_OnLoad
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, EverGrandeCity_SidneysRoom_OnWarp
+	map_script ON_FRAME, EverGrandeCity_DrakesRoom_OnFrame
+	map_script ON_LOAD, EverGrandeCity_DrakesRoom_OnLoad
+	map_script ON_WARP, EverGrandeCity_SidneysRoom_OnWarp
 	.byte 0
 
 @ Unused, Drake uses Sidneys identical OnWarp for some reason

@@ -1,9 +1,9 @@
 ContestHall_MapScripts:: @ 823B781
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, ContestHall_OnWarp
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, ContestHall_OnFrame
-	map_script MAP_SCRIPT_ON_TRANSITION, ContestHall_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, ContestHall_OnResume
-	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, ContestHall_OnReturn
+	map_script ON_WARP, ContestHall_OnWarp
+	map_script ON_FRAME, ContestHall_OnFrame
+	map_script ON_TRANSITION, ContestHall_OnTransition
+	map_script ON_RESUME, ContestHall_OnResume
+	map_script ON_RETURN_TO_FIELD, ContestHall_OnReturn
 	.byte 0
 
 ContestHall_OnReturn: @ 823B79B

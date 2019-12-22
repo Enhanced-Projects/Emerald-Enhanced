@@ -1,7 +1,7 @@
 LittlerootTown_ProfessorBirchsLab_MapScripts:: @ 81F9C91
-	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_ProfessorBirchsLab_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_ProfessorBirchsLab_OnWarp
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_ProfessorBirchsLab_OnFrame
+	map_script ON_TRANSITION, LittlerootTown_ProfessorBirchsLab_OnTransition
+	map_script ON_WARP, LittlerootTown_ProfessorBirchsLab_OnWarp
+	map_script ON_FRAME, LittlerootTown_ProfessorBirchsLab_OnFrame
 	.byte 0
 
 	@ State descriptions for VAR_DEX_UPGRADE_JOHTO_STARTER_STATE
@@ -498,8 +498,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Birch:: @ 81FA25A
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_CanHaveAnyOneOfRarePokemon
 	compare VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting
-	goto_if_unset FLAG_HAS_MATCH_CALL, LittlerootTown_ProfessorBirchsLab_EventScript_TryRatePokedexOrRegister
-	goto_if_unset FLAG_ENABLE_PROF_BIRCH_MATCH_CALL, EventScript_RegisterProfBirch
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_TryRatePokedexOrRegister
 	end
 

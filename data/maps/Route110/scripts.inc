@@ -1,7 +1,7 @@
 Route110_MapScripts:: @ 81EF269
-	map_script MAP_SCRIPT_ON_RESUME, Route110_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, Route110_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route110_OnFrame
+	map_script ON_RESUME, Route110_OnResume
+	map_script ON_TRANSITION, Route110_OnTransition
+	map_script ON_FRAME, Route110_OnFrame
 	.byte 0
 
 Route110_OnResume: @ 81EF279
@@ -187,7 +187,7 @@ Route110_EventScript_EdwinRegisterMatchCallAfterBattle:: @ 81EF44C
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route110_Text_EdwinRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_EDWIN_1
+	@nop Trainer_EDWIN_1
 	release
 	end
 
@@ -224,7 +224,7 @@ Route110_EventScript_BenjaminRegisterMatchCallAfterBattle:: @ 81EF4F3
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route110_Text_BenjaminRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_BENJAMIN_1
+	@nop Trainer_BENJAMIN_1
 	release
 	end
 
@@ -251,7 +251,7 @@ Route110_EventScript_AbigailRegisterMatchCallAfterBattle:: @ 81EF56C
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route110_Text_AbigailRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_ABIGAIL_1
+	@nop Trainer_ABIGAIL_1
 	release
 	end
 
@@ -273,7 +273,7 @@ Route110_EventScript_IsabelRegisterMatchCallAfterBattle:: @ 81EF5CE
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route110_Text_IsabelRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_ISABEL_1
+	@nop Trainer_ISABEL_1
 	release
 	end
 

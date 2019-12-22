@@ -966,7 +966,7 @@ bool8 ScrCmd_fadedefaultbgm(struct ScriptContext *ctx)
 
 bool8 ScrCmd_fadenewbgm(struct ScriptContext *ctx)
 {
-    Overworld_ChangeMusicTo(ScriptReadHalfword(ctx));
+    Overworld_ChangeMusicTo(VarGet((ScriptReadHalfword(ctx))));
     return FALSE;
 }
 
@@ -1727,31 +1727,22 @@ bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
 
 bool8 ScrCmd_givemoney(struct ScriptContext *ctx)
 {
-    u32 amount = ScriptReadWord(ctx);
-    u8 ignore = ScriptReadByte(ctx);
-
-    if (!ignore)
-        AddMoney(&gSaveBlock1Ptr->money, amount);
+    u32 amount = (VarGet(ScriptReadWord(ctx)));
+    AddMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }
 
 bool8 ScrCmd_takemoney(struct ScriptContext *ctx)
 {
-    u32 amount = ScriptReadWord(ctx);
-    u8 ignore = ScriptReadByte(ctx);
-
-    if (!ignore)
-        RemoveMoney(&gSaveBlock1Ptr->money, amount);
+    u32 amount = (VarGet(ScriptReadWord(ctx)));
+    RemoveMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }
 
 bool8 ScrCmd_checkmoney(struct ScriptContext *ctx)
 {
     u32 amount = ScriptReadWord(ctx);
-    u8 ignore = ScriptReadByte(ctx);
-
-    if (!ignore)
-        gSpecialVar_Result = IsEnoughMoney(&gSaveBlock1Ptr->money, amount);
+    gSpecialVar_Result = IsEnoughMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }
 
@@ -2297,4 +2288,83 @@ bool8 ScrCmd_warpE0(struct ScriptContext *ctx)
     sub_80AF79C();
     ResetInitialPlayerAvatarState();
     return TRUE;
+}
+
+bool8 ScrCmd_createfollower(struct ScriptContext *ctx)
+{
+    u8 graphicsId = ScriptReadByte(ctx);
+    const void *script = (const void *)ScriptReadWord(ctx);
+    u8 direction = ScriptReadByte(ctx);
+    //CreateFollowerEventObject(graphicsId, script, direction);
+    return FALSE;
+}
+
+bool8 ScrCmd_destroyfollower(struct ScriptContext *ctx)
+{
+    //DestroyFollowerEventObject();
+    return FALSE;
+}
+
+bool8 ScrCmd_takebp(struct ScriptContext *ctx)//Currently working on
+{
+    u16 value = (VarGet(ScriptReadHalfword(ctx)));
+    gSaveBlock2Ptr->frontier.battlePoints = (gSaveBlock2Ptr->frontier.battlePoints - value);
+    return FALSE;
+}
+
+bool8 ScrCmd_givebp(struct ScriptContext *ctx)
+{
+    u16 value = (VarGet(ScriptReadHalfword(ctx)));
+    gSaveBlock2Ptr->frontier.battlePoints = (gSaveBlock2Ptr->frontier.battlePoints + value);
+    return FALSE;
+}
+
+bool8 ScrCmd_checkbp(struct ScriptContext *ctx)
+{
+    gSpecialVar_Result = gSaveBlock2Ptr->frontier.battlePoints;
+    return FALSE;
+}
+
+bool8 ScrCmd_gfec(struct ScriptContext *ctx)
+{
+    u8 dir = (GetPlayerFacingDirection());
+    u8 pX = (gSaveBlock1Ptr->pos.x);
+    u8 pY = (gSaveBlock1Ptr->pos.y);
+    u8 fX, fY;
+
+    switch (dir)
+    {
+        case DIR_NORTH:
+        {
+            fX = pX;
+            fY = pY + 1;
+            VarSet(VAR_TEMP_1, fX);
+            VarSet(VAR_TEMP_2, fY);
+            return FALSE;
+        }
+        case DIR_SOUTH:
+        {
+            fX = pX;
+            fY = pY - 1;
+            VarSet(VAR_TEMP_1, fX);
+            VarSet(VAR_TEMP_2, fY);
+            return FALSE;
+        }
+        case DIR_EAST:
+        {
+            fX = pX - 1;
+            fY = pY;
+            VarSet(VAR_TEMP_1, fX);
+            VarSet(VAR_TEMP_2, fY);
+            return FALSE;
+        }
+        case DIR_WEST:
+        {
+            fX = pX + 1;
+            fY = pY;
+            VarSet(VAR_TEMP_1, fX);
+            VarSet(VAR_TEMP_2, fY);
+            return FALSE;
+        }
+    }
 }

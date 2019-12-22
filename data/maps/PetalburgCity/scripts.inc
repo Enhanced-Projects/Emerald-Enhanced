@@ -1,6 +1,6 @@
 PetalburgCity_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, PetalburgCity_OnFrame
+	map_script ON_TRANSITION, PetalburgCity_OnTransition
+	map_script ON_FRAME, PetalburgCity_OnFrame
 	.byte 0
 
 PetalburgCity_OnTransition: @ 81DC2D7

@@ -1,6 +1,6 @@
 SouthernIsland_Interior_MapScripts:: @ 8242A45
-	map_script MAP_SCRIPT_ON_RESUME, SouthernIsland_Interior_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, SouthernIsland_Interior_OnTransition
+	map_script ON_RESUME, SouthernIsland_Interior_OnResume
+	map_script ON_TRANSITION, SouthernIsland_Interior_OnTransition
 	.byte 0
 
 SouthernIsland_Interior_OnResume: @ 8242A50
