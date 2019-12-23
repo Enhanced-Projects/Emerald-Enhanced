@@ -7,6 +7,207 @@ IslandCave_MapScripts:: @ 8238E2A
 IslandCave_OnResume: @ 8238E3A
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, IslandCave_EventScript_TryRemoveRegice
 	end
+	
+@==================================================================================================Lana Scripts
+
+IC_CaveCheck::
+	compare VAR_RYU_DS_LANA_STAGE, 55
+	goto_if_eq IC_Setup
+	compare VAR_RYU_DS_LANA_STAGE, 65
+	goto_if_eq ryu_end
+	msgbox r120_notReady MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_PLAYER, IC_Exit
+	waitmovement 0
+	release
+	end
+	
+IC_Setup::
+	clearflag FLAG_HIDE_IC_LANA
+	setvar VAR_RYU_DS_LANA_STAGE, 56
+	addobject 2
+	release
+	end
+	
+IC_Setup2::
+    lock
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	clearflag FLAG_HIDE_IC_LANA
+	addobject 3
+	setvar VAR_RYU_DS_LANA_STAGE, 59
+	warp MAP_ISLAND_CAVE, 255, 8, 11
+	release
+	end
+	
+IC_LeafEvent2::
+	setvar VAR_RYU_DS_LANA_STAGE, 60
+	lock
+	removeobject 1
+	playse SE_BOWA2
+	waitse
+	addobject 4
+	delay 50
+	applymovement 3, Common_Movement_FaceUp
+	waitmovement 3
+	removeobject 4
+	applymovement 3, DR_LeafToPlayer
+	waitmovement 3
+	msgbox IC_LeafMsg3 MSGBOX_DEFAULT
+	closemessage
+	drawheadshot HEAD_LANA
+	msgbox IC_LeafMsg32 MSGBOX_DEFAULT
+	closemessage
+	removecutscenesprites
+	applymovement EVENT_OBJ_ID_PLAYER, DR_StepRight
+	waitmovement 0
+	applymovement 3, IC_Exit
+	waitmovement 3
+	playse SE_KAIDAN @Stairs
+	removeobject 3
+	waitse
+	msgbox IC_PlayerMsg MSGBOX_DEFAULT
+	setflag FLAG_SYS_BRAILLE_REGICE_COMPLETED
+	setflag FLAG_HIDE_IC_LANA
+	setflag FLAG_DEFEATED_REGICE
+	setvar VAR_RYU_DS_LANA_STAGE, 65
+	release
+	end
+
+IC_LeafEvent::
+	setvar VAR_RYU_DS_LANA_STAGE, 57
+	lock
+	faceplayer
+	msgbox IC_LeafMsg1 MSGBOX_DEFAULT
+	closemessage
+	applymovement 2, Common_Movement_FaceUp
+	waitmovement 2
+	applymovement 2, IC_LeafOpenSequence
+	applymovement EVENT_OBJ_ID_PLAYER, IC_FollowLeaf
+	waitmovement 2
+	delay 25
+	fadeoutbgm 0
+	playse SE_W089
+	special DoSealedChamberShakingEffect1
+	waitse
+	call IC_LeafOpenDoor
+	applymovement 2, Common_Movement_ExclamationMark
+	playse SE_PIN
+	waitse
+	fadeinbgm 0
+	applymovement 2, IC_StepUp
+	playse SE_KAIDAN
+	waitmovement 2
+	delay 5
+	removeobject 2
+	setflag FLAG_HIDE_IC_LANA
+	msgbox IC_LeafMsg2 MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_RYU_DS_LANA_STAGE, 58
+	release
+	end
+	
+	
+IC_LeafOpenDoor::
+	setmetatile 7, 19, 554, 1
+	setmetatile 8, 19, 555, 1
+	setmetatile 9, 19, 556, 1
+	setmetatile 7, 20, 562, 1
+	setmetatile 8, 20, 563, 1
+	setmetatile 9, 20, 564, 1
+	special DrawWholeMapView
+	return
+	
+IC_LeafMsg1:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}So, you  know what these dots\nmean?\p{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Care to tell me what this on-$"
+	
+IC_LeafMsg2:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}...nevermind.$"
+	
+IC_LeafMsg3:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Seriously!?$"
+	
+IC_LeafMsg32:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Almost there....$"
+	
+IC_PlayerMsg:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ... ...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(She seems to be going after\n the Hoenn golems.\p You realize how much danger\n"
+	.string " she's putting herself in.)\p{COLOR LIGHT_BLUE}{SHADOW BLUE} I got to try to stop her!$"
+	
+IC_FollowLeaf:
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_left
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_down
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_right
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_up
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
+IC_LeafOpenSequence:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	delay_16
+	walk_in_place_up
+	step_end
+	
+IC_Exit:
+	walk_down
+	step_end
+	
+IC_StepUp:
+	walk_up
+	step_end
+
+
+@==================================================================================================End Lana Scripts
+
 
 IslandCave_EventScript_TryRemoveRegice:: @ 8238E44
 	specialvar VAR_RESULT, GetBattleOutcome

@@ -48,8 +48,8 @@
 #define FLAG_HIDE_DAWNS_HOUSE_DAWN    0x28 // Unused Flag
 #define FLAG_RYU_KYOGRE    0x29 // Unused Flag
 #define FLAG_HIDE_103_TEST_TRAINER    0x2A // Unused Flag
-#define FLAG_LANA_AS_TOGGLE    0x2B // Unused Flag
-#define FLAG_PT_LANA_TOGGLE    0x2C // Unused Flag
+#define FLAG_UNUSED_0x2B    0x2B // Unused Flag
+#define FLAG_UNUSED_0x2C    0x2C // Unused Flag
 #define FLAG_RYU_HIDE_R120_LANA_AND_HIKER    0x2D // Unused Flag
 #define FLAG_RYU_HIDE_REL_OBJECTS    0x2E // Unused Flag
 #define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3    0x2F // Unused Flag
@@ -648,20 +648,20 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_2             (FLAG_HIDDEN_ITEMS_START + 0x5D)
 #define FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_3             (FLAG_HIDDEN_ITEMS_START + 0x5E)
 
-#define FLAG_LH_EVENT2  0x264 // Unused Flag
-#define FLAG_LANA_EVENT2_DONE  0x265 // Unused Flag
+#define FLAG_HIDE_NM_LANA  0x264 // Unused Flag
+#define FLAG_HIDE_TRICK_HOUSE_LANA  0x265 // Unused Flag
 #define FLAG_LANA_EVENT3_DONE  0x266 // Unused Flag
-#define FLAG_LANA_EVENT_4  0x267 // Unused Flag
-#define FLAG_LANA_EVENT_5  0x268 // Unused Flag
-#define FLAG_LANA_EVENT_6  0x269 // Unused Flag
-#define FLAG_LANA_EVENT_7  0x26A // Unused Flag
-#define FLAG_LANA_EVENT_8  0x26B // Unused Flag
-#define FLAG_LANA_EVENT_9  0x26C // Unused Flag
-#define FLAG_LANA_EVENT_10  0x26D // Unused Flag
-#define FLAG_RYU_LANA_EVENT11  0x26E // Unused Flag
-#define FLAG_RYU_LANA_EVENT12  0x26F // Unused Flag
-#define FLAG_RYU_LANA_EVENT13  0x270 // Unused Flag
-#define FLAG_RYU_LANA_EVENT14  0x271 // Unused Flag
+#define FLAG_HIDE_PCF_TOWN_LANA  0x267 // removed from lana AbnShipEvt
+#define FLAG_HIDE_SCH_LANA  0x268 // Unused Flag
+#define FLAG_HIDE_DR_LANA  0x269 // Unused Flag
+#define FLAG_HIDE_R110_LANA  0x26A // Unused Flag
+#define FLAG_HIDE_AT1_LEAF  0x26B // Unused Flag
+#define NM_ZAPDOS_ENC  0x26C // Unused Flag
+#define FLAG_HIDE_IC_LANA  0x26D // Unused Flag
+#define FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED  0x26E // Unused Flag
+#define FLAG_RYU_BRENDAN_GIFT2  0x26F // Unused Flag
+#define FLAG_RYU_BRENDAN_GIFT1  0x270 // Unused Flag
+#define VAR_UNUSED_0x271  0x271 // Unused Flag
 #define FLAG_RYU_LEAF_ALTERNATE_LINE  0x272 // Unused Flag
 #define FLAG_RYU_LEAF_MTPYRE  0x273 // Unused Flag
 #define FLAG_RYU_DAYCARE_LEAFEVENTPC  0x274 // Unused Flag
@@ -669,9 +669,9 @@
 #define FLAG_RYU_HIDE_LCC_DEPT_ROOF_NPC  0x276 // Unused Flag
 #define FLAG_RYU_LEAF_LCC_EVENT_DONE  0x277 // Unused Flag
 #define FLAG_LH_EVENT  0x278 // Unused Flag
-#define FLAG_RYU_TH_LANA_EVENT_1  0x279 // Unused Flag
-#define FLAG_LH_LANA_INTRO  0x27A // Unused Flag
-#define FLAG_LANA_EVENT1_DONE  0x27B // Unused Flag
+#define FLAG_HIDE_ABN_SHIP_LANA  0x279 // Unused Flag
+#define FLAG_RYU_DO_NOT_AUTOSCALE  0x27A // Set this flag to make the game not autoscale until cleared.
+#define FLAG_RYU_DS_FEMALE_MOM_MET  0x27B // Unused Flag
 #define FLAG_RYU_LANA_ALTEVENT2  0x27C // Unused Flag
 #define FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO  0x27D // Unused Flag
 #define FLAG_RYU_DS_LEAF_LINE_CANCELLED  0x27E // Unused Flag
@@ -696,7 +696,7 @@
 #define FLAG_RYU_LANETTE_EVENT1  0x291 // Unused Flag
 #define FLAG_RYU_LANETTE_INTRO  0x292 // Unused Flag
 #define FLAG_RYU_LANETTE_EVENT_0  0x293 // Unused Flag
-#define FLAG_UNUSED_0x294  0x294 // Unused Flag
+#define FLAG_RYU_DS_MALE_MOM_MET  0x294 // Unused Flag
 #define FLAG_UNUSED_0x295  0x295 // Unused Flag
 #define FLAG_UNUSED_0x296  0x296 // Unused Flag
 #define FLAG_UNUSED_0x297  0x297 // Unused Flag

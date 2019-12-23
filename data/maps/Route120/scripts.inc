@@ -7,6 +7,170 @@ Route120_MapScripts:: @ 81F53EC
 Route120_OnResume: @ 81F53FC
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, Route120_EventScript_RemoveKecleonObject
 	end
+	
+	
+@=============================================LEAF EVENTS
+
+r120_SetupLeafHiker::
+	lock
+	clearflag FLAG_RYU_HIDE_R120_LANA_AND_HIKER
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	setvar VAR_RYU_DS_LANA_STAGE, 66
+	release
+	end
+	
+r120_SetupLeafGary::
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+	release
+	end
+	
+r120_normal::
+	lock
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	release
+	end
+
+r120_LeafEvent::
+	lock
+	setvar VAR_RYU_DS_LANA_STAGE, 67
+	special SpawnCameraObject
+	applymovement EVENT_OBJ_ID_CAMERA, r120_PanUp
+	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement 45, Common_Movement_ExclamationMark
+	msgbox r120_Story1 MSGBOX_DEFAULT
+	closemessage
+	applymovement 45, r120_PushHiker
+	applymovement 46 r120_PushedRight
+	waitmovement 45
+	removeobject 45
+	msgbox r120_HikerMiffed MSGBOX_DEFAULT
+	closemessage
+	applymovement 46, Common_Movement_FaceLeft
+	applymovement EVENT_OBJ_ID_CAMERA, r120_ReturnCamera
+	waitmovement EVENT_OBJ_ID_CAMERA
+	special RemoveCameraObject
+	applymovement EVENT_OBJ_ID_PLAYER, r120_FollowLeafIntoChamber
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox r120_HikerRequest MSGBOX_DEFAULT
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	clearflag FLAG_HIDE_AT1_LEAF
+	setvar VAR_RYU_DS_LANA_STAGE, 68
+	warp MAP_ANCIENT_TOMB1F, 255, 8, 29
+	release
+	end
+	
+r120_LanaNotReady::
+	msgbox r120_notReady
+	applymovement EVENT_OBJ_ID_PLAYER, r120_stepDown
+	applymovement EVENT_OBJ_ID_FOLLOWER, r120_stepDown
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
+	
+R120_dead::
+	msgbox R120_death MSGBOX_DEFAULT
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, r120_stepDown
+	applymovement EVENT_OBJ_ID_FOLLOWER, r120_stepDown
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
+	
+r120_Story1:
+	.string "You most certainly will not pass!\nNot until my investigation is com-$"
+	
+r120_HikerMiffed:
+	.string "The nerve of young people today...$"
+	
+r120_HikerRequest:
+    .string "Hmph. The nerve of young people\n"
+    .string "these days. Are you going to\l"
+    .string "waltz past me too?\p"
+    .string "{PLAYER}:{COLOR LIGHT_BLUE}{SHADOW BLUE} Yeah, sorry about that.\n"
+    .string "She's going through some stuff,\p"
+    .string "and I'm trying to help her work\n"
+    .string "through it.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I'm sorry to hear that, but that's\n"
+    .string "no reason to disrespect her elders\l"
+    .string "like that.\p"
+    .string "{PLAYER}:{COLOR LIGHT_BLUE}{SHADOW BLUE} Yeah... sorry again.$"
+	
+R120_death:
+	.string "The smell of rot and death\nassaults your nose as you approach...$"
+	
+r120_stepDown:
+	walk_down
+	walk_down
+	step_end
+
+
+r120_PanUp:
+	walk_up
+	walk_up
+	step_end
+	
+r120_PushHiker:
+	walk_left
+	walk_up
+	walk_in_place_right
+	walk_in_place_slow_right
+	walk_in_place_fastest_right
+	delay_16
+	delay_4
+	walk_right
+	walk_up
+	walk_in_place_up
+	step_end
+	
+r120_PushedRight:
+	delay_16
+	delay_16
+	walk_in_place_left
+	walk_in_place_fastest_right
+	walk_right
+	walk_in_place_left
+	step_end
+	
+r120_ReturnCamera:
+	walk_down
+	walk_down
+	step_end
+	
+r120_FollowLeafIntoChamber:
+	walk_up
+	walk_up
+	walk_in_place_right
+	step_end
+	
+r120_AT_SECOND_VISIT_SETUP::
+	compare VAR_RYU_DS_LANA_STAGE, 70
+	goto_if_ne ryu_end
+	lock
+	msgbox r120_SV_Intro MSGBOX_DEFAULT
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, r120_SV_walkup
+	waitmovement EVENT_OBJ_ID_PLAYER
+	warp MAP_ANCIENT_TOMB, 255, 8, 29
+	release
+	end
+	
+r120_notReady:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}There's no sign of Lana\nhaving been here.\pMaybe she's at another ruin?$"
+
+
+r120_SV_Intro:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Hmm. I bet Lana is inside.\pWelp, time to get this over with!\pI'll destroy that giant hunk of\nrust...$"
+
+r120_SV_walkup:
+	walk_in_place_up
+	walk_up
+	walk_in_place_fastest_up
+	step_end
+
+@==================================================================================================End Leaf Event
 
 Route120_EventScript_RemoveKecleonObject:: @ 81F5406
 	compare VAR_0x8009, 0
@@ -384,7 +548,7 @@ Route120_EventScript_Callie:: @ 81F5981
 	end
 
 Route120_Text_StevenGreeting: @ 81F5998
-	.string "STEVEN: Hm? {PLAYER}{KUN}, hi.\n"
+	.string "STEVEN: Hm? {PLAYER}, hi.\n"
 	.string "It's been a while.\p"
 	.string "There's something here that you can't\n"
 	.string "see, right?\p"
@@ -393,7 +557,7 @@ Route120_Text_StevenGreeting: @ 81F5998
 	.string "No, no. Rather than describing it,\n"
 	.string "I should just show you.\l"
 	.string "That would be more fun.\p"
-	.string "{PLAYER}{KUN}, are your POKéMON ready for\n"
+	.string "{PLAYER}, are your POKéMON ready for\n"
 	.string "battle?$"
 
 Route120_Text_StevenIllWaitHere: @ 81F5AAC
@@ -401,11 +565,11 @@ Route120_Text_StevenIllWaitHere: @ 81F5AAC
 	.string "I'll wait here, so you can get ready.$"
 
 Route120_Text_StevenReadyForBattle: @ 81F5ADE
-	.string "STEVEN: {PLAYER}{KUN}, are your POKéMON\n"
+	.string "STEVEN: {PLAYER}, are your POKéMON\n"
 	.string "ready for battle?$"
 
 Route120_Text_StevenShowMeYourPower: @ 81F5B0F
-	.string "STEVEN: {PLAYER}{KUN}, show me your true\n"
+	.string "STEVEN: {PLAYER}, show me your true\n"
 	.string "power as a TRAINER!$"
 
 Route120_Text_StevenUsedDevonScope: @ 81F5B43
@@ -425,7 +589,7 @@ Route120_Text_StevenGiveDevonScope: @ 81F5BAF
 	.string "concealed POKéMON.$"
 
 Route120_Text_StevenGoodbye: @ 81F5C7B
-	.string "STEVEN: {PLAYER}{KUN}.\p"
+	.string "STEVEN: {PLAYER}.\p"
 	.string "I enjoy seeing POKéMON and TRAINERS\n"
 	.string "who strive together.\p"
 	.string "I think you're doing great.\p"

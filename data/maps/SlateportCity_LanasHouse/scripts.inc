@@ -34,8 +34,8 @@ LH_Leaf_Home_chat::
 	lock
 	faceplayer
 	drawheadshot HEAD_LANA
-	switch VAR_RYU_DS_LANA_STAGE
-	case 4, LH_alreadytalked
+	compare VAR_RYU_DS_LANA_STAGE, 4
+	goto_if_eq LH_alreadytalked
 	call_if_set FLAG_RYU_DS_LEAF_PARTNERS, LH_Afterstory
 	goto_if_set FLAG_RYU_DS_LEAF_LINE_CANCELLED, LH_LeafBadEnd
 	goto_if_set FLAG_RYU_DS_LEAF_LOVERS, LH_StayTheNight

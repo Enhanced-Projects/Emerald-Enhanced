@@ -1,416 +1,355 @@
-LittlerootTown_MaysHouse_2F_MapScripts:: @ 81F9296
-	map_script ON_TRANSITION, LittlerootTown_MaysHouse_2F_OnTransition
-	map_script ON_WARP, LittlerootTown_MaysHouse_2F_OnWarp
+LittlerootTown_MaysHouse_2F_MapScripts:: @ 81F83E3
+	map_script ON_FRAME, GameIntroSequenceCheck
 	.byte 0
 
-LittlerootTown_MaysHouse_2F_OnTransition: @ 81F92A1
-	compare VAR_LITTLEROOT_RIVAL_STATE, 2
-	call_if_lt LittlerootTown_MaysHouse_2F_EventScript_CheckSetReadyToMeetMay
-	compare VAR_LITTLEROOT_RIVAL_STATE, 3
-	call_if_ge LittlerootTown_MaysHouse_2F_EventScript_CheckShouldUpdateMayPos
-	compare VAR_LITTLEROOT_INTRO_STATE, 4
-	call_if_eq PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet
-	call SecretBase_EventScript_SetDecorationFlags
-	setvar VAR_SECRET_BASE_INITIALIZED, 0
+LRT_DawnAfterLilycoveSequence:: @ 81F951D
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
+	compare VAR_LITTLEROOT_INTRO_STATE, 6
+	goto_if_eq LRT_DawnIntroductionScene
+	lock
+    drawheadshot HEAD_DAWN
+	faceplayer
+	goto_if_set FLAG_RYU_DS_DAWN_LOVERS, LRT_NIGHT2
+	goto_if_set FLAG_RYU_DS_DAWN_ACQ, LRT_FZ
+	specialvar VAR_RESULT, IsSneaselInParty
+	compare VAR_RESULT, 1
+	call_if_eq LRT_RivalsPokemonIsInParty
+	msgbox LRT_DAWN_SORRYKISSED, MSGBOX_DEFAULT
+	removecutscenesprites
+	msgbox LRT_DAWN_KISS, MSGBOX_YESNO
+	nop
+    drawheadshot HEAD_DAWN
+	compare VAR_RESULT, 1
+	goto_if_eq LRT_WONT_HAPPEN
+    setflag	FLAG_RYU_DS_DAWN_CLOSEFRIENDS
+	msgbox LRT_HAPPY, MSGBOX_DEFAULT
+	goto LRT_NIGHT
+	release
+	end
+	
+LRT_RivalsPokemonIsInParty::
+    goto_if_unset FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, LRT_NotReceived
+	setflag FLAG_RYU_DS_DAWN_CLOSEFRIENDS
+	msgbox LRT_RivalHappy MSGBOX_DEFAULT
+	removecutscenesprites
+	msgbox LRT_KeepQuery MSGBOX_YESNO
+	nop
+    drawheadshot HEAD_DAWN
+	compare VAR_RESULT, 0
+	goto_if_eq LRT_RivalLetDown
+	msgbox LRT_ThanksForRaisingPokemon MSGBOX_DEFAULT
+	goto LRT_NIGHT
+	
+LRT_NotReceived::
+	setflag FLAG_RYU_DAWN_GIFTPOKE_RECEIVED
+	msgbox LRT_DAWN_SORRYKISSED, MSGBOX_DEFAULT
+	removecutscenesprites
+	msgbox LRT_DAWN_KISS, MSGBOX_YESNO
+	nop
+    drawheadshot HEAD_DAWN
+	compare VAR_RESULT, 1
+	goto_if_eq LRT_WONT_HAPPEN
+    setflag	FLAG_RYU_DS_DAWN_CLOSEFRIENDS
+	msgbox LRT_HAPPY, MSGBOX_DEFAULT
+	goto LRT_NIGHT
+	release
+	end
+	
+LRT_RivalLetDown::
+	msgbox LRT_RLD MSGBOX_DEFAULT
+	goto LRT_NotReceived
+	
+LRT_RLD:
+	.string "Well at least it got to stretch a\n"
+	.string "little bit, I don't think I'd have\p"
+	.string "been able to train it at all. \n"
+	.string "thanks for keeping it company\p"
+	.string "So, anyways...$"
+	
+LRT_RivalHappy:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: I'm so glad you decided to\n"
+	.string "raise Sneasel. It really needed a\p"
+	.string "masculine touch.$"
+
+LRT_KeepQuery:
+	.string "Do you plan on keeping it for\p"
+	.string "the rest of your quest to \n"
+	.string "become the Hoenn Master?$"
+	
+LRT_ThanksForRaisingPokemon:
+	.string "Awesome. I think it'll be a great\n"
+	.string "addition to your team!\p"
+	.string "... ... ...\n"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(her face flushes a little)\p"
+	.string "umm...$"
+
+LRT_WONT_HAPPEN::
+	setflag FLAG_RYU_DAWN_GIFTPOKE_RECEIVED @Makes it impossible to get the sneasel after this event.
+    msgbox LRT_SORRY, MSGBOX_DEFAULT
+	setflag FLAG_RYU_DS_DAWN_ACQ @0x4A3
+	msgbox LRT_BADEND, MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_PLAYER LRT_TURN
+	waitmovement 0
+	release
 	end
 
-LittlerootTown_MaysHouse_2F_EventScript_CheckShouldUpdateMayPos:: @ 81F92CD
-	goto_if_set FLAG_MET_RIVAL_LILYCOVE, LittlerootTown_MaysHouse_2F_EventScript_TryUpdateMayPos
-	compare VAR_BIRCH_LAB_STATE, 2
-	goto_if_ge LittlerootTown_MaysHouse_2F_EventScript_Ret
-	goto LittlerootTown_MaysHouse_2F_EventScript_TryUpdateMayPos
-
-LittlerootTown_MaysHouse_2F_EventScript_TryUpdateMayPos:: @ 81F92E6
-	checkplayergender
-	compare VAR_RESULT, FEMALE
-	goto_if_eq LittlerootTown_MaysHouse_2F_EventScript_Ret
-	compare VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2
-	goto_if_ge LittlerootTown_MaysHouse_2F_EventScript_Ret
-	setobjectxyperm 1, 8, 2
-	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_UP
-	return
-
-LittlerootTown_MaysHouse_2F_EventScript_Ret:: @ 81F9309
-	return
-
-LittlerootTown_MaysHouse_2F_EventScript_CheckSetReadyToMeetMay:: @ 81F930A
-	checkplayergender
-	compare VAR_RESULT, MALE
-	goto_if_eq LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
-	return
-
-LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay:: @ 81F9317
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 2
-	return
-
-LittlerootTown_MaysHouse_2F_OnWarp: @ 81F931D
-	map_script_2 VAR_SECRET_BASE_INITIALIZED, 0, LittlerootTown_MaysHouse_2F_EventScript_CheckInitDecor
-	.2byte 0
-
-LittlerootTown_MaysHouse_2F_EventScript_CheckInitDecor:: @ 81F9327
-	checkplayergender
-	compare VAR_RESULT, FEMALE
-	goto_if_eq SecretBase_EventScript_InitDecorations
-	end
-
-LittlerootTown_MaysHouse_2F_EventScript_RivalsPokeBall:: @ 81F9334
-	lockall
-	compare VAR_LITTLEROOT_RIVAL_STATE, 2
-	goto_if_eq LittlerootTown_MaysHouse_2F_EventScript_MeetMay
-	msgbox RivalsHouse_2F_Text_ItsRivalsPokeBall, MSGBOX_DEFAULT
-	releaseall
-	end
-
-LittlerootTown_MaysHouse_2F_EventScript_MeetMay:: @ 81F934A
-	delay 10
-	addobject 1
-	applymovement 1, LittlerootTown_MaysHouse_2F_Movement_MayEnters
+LRT_NIGHT::
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
+	removecutscenesprites
+    msgbox LRT_STAY, MSGBOX_YESNO
+	nop
+    drawheadshot HEAD_DAWN
+	compare VAR_RESULT, 1
+	goto_if_ne LRT_CANCEL
+	msgbox LRT_ROMPre MSGBOX_DEFAULT
+ 	closemessage
+	applymovement 4, Common_Movement_HeartEmote
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
-	playse SE_PIN
-	applymovement 1, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 1, Common_Movement_Delay48
-	waitmovement 0
-	delay 10
-	playbgm MUS_GIRL_SUP, 1
-	compare VAR_FACING, DIR_NORTH
-	call_if_eq LittlerootTown_MaysHouse_2F_EventScript_MeetMayNorth
-	compare VAR_FACING, DIR_SOUTH
-	call_if_eq LittlerootTown_MaysHouse_2F_EventScript_MeetMaySouth
-	compare VAR_FACING, DIR_WEST
-	call_if_eq LittlerootTown_MaysHouse_2F_EventScript_MeetMayWest
-	compare VAR_FACING, DIR_EAST
-	call_if_eq LittlerootTown_MaysHouse_2F_EventScript_MeetMayEast
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 3
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_POKE_BALL
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
-	setvar VAR_LITTLEROOT_TOWN_STATE, 1
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	releaseall
-	end
-
-LittlerootTown_MaysHouse_2F_EventScript_MeetMayNorth:: @ 81F93BA
-	applymovement 1, LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerNorth
-	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
+	applymovement 4 LRT_HEART2
+	applymovement EVENT_OBJ_ID_PLAYER LRT_HEART
+	delay 20
+	fadescreen 1
+	fadeoutbgm 1
+	special HealPlayerParty
+	delay 20
+	removecutscenesprites
+	msgbox LRT_ROM, MSGBOX_DEFAULT
+	fadescreen 0
+	fadeinbgm 1
+	nop
+    drawheadshot HEAD_DAWN
+	msgbox LRT_DAWN_THANKS, MSGBOX_DEFAULT
+	setflag FLAG_RYU_DS_DAWN_LOVERS
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayNorth
-	applymovement 1, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCNorth
+	removecutscenesprites
+	applymovement EVENT_OBJ_ID_PLAYER LRT_HEART3
 	waitmovement 0
-	return
+	release
+	end
 
-LittlerootTown_MaysHouse_2F_EventScript_MeetMaySouth:: @ 81F93E9
-	applymovement 1, LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerSouth
-	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
+LRT_NIGHT2::
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
+	removecutscenesprites
+    msgbox LRT_STAY2, MSGBOX_YESNO
+	nop
+    drawheadshot HEAD_DAWN
+	compare VAR_RESULT, 1
+	goto_if_ne LRT_CANCEL
+	msgbox LRT_ROM2Pre MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMaySouth
-	applymovement 1, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCSouth
+	applymovement 4, Common_Movement_HeartEmote
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
-	return
-
-LittlerootTown_MaysHouse_2F_EventScript_MeetMayWest:: @ 81F9418
-	applymovement 1, LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerWest
-	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
-	waitmovement 0
-	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
+	applymovement 4, LRT_HEART2
+	applymovement EVENT_OBJ_ID_PLAYER, LRT_HEART
+	delay 20
+	removecutscenesprites
+	fadescreen 1
+	fadeoutbgm 1
+	special HealPlayerParty
+	delay 20
+	msgbox LRT_ROM2, MSGBOX_DEFAULT
+	fadescreen 0
 	closemessage
-	applymovement 1, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCWest
-	waitmovement 0
-	return
-
-LittlerootTown_MaysHouse_2F_EventScript_MeetMayEast:: @ 81F9440
-	applymovement 1, LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerEast
-	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	msgbox RivalsHouse_2F_Text_MayWhoAreYou, MSGBOX_DEFAULT
+	nop
+    drawheadshot HEAD_DAWN
+	setflag FLAG_RYU_DS_DAWN_PARTNERS
+	setflag FLAG_RYU_DS_HAS_PARTNER
+	fadeinbgm 1
+	msgbox LRT_DAWN_THANKS2 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayEast
-	applymovement 1, LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCEast
+	removecutscenesprites
+	applymovement EVENT_OBJ_ID_PLAYER LRT_HEART3
 	waitmovement 0
-	return
-
-LittlerootTown_MaysHouse_2F_Movement_MayEnters: @ 81F946F
-	walk_down
-	walk_down
-	walk_in_place_fastest_right
-	step_end
-
-LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerNorth: @ 81F9473
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_right
-	step_end
-
-LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCNorth: @ 81F9479
-	walk_up
-	walk_up
-	walk_up
-	walk_in_place_fastest_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_in_place_fastest_up
-	step_end
-
-LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayNorth: @ 81F9483
-	delay_16
-	walk_in_place_fastest_up
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	walk_in_place_fastest_right
-	step_end
-
-LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerSouth: @ 81F948B
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCSouth: @ 81F948F
-	walk_up
-	walk_in_place_fastest_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_in_place_fastest_up
-	step_end
-
-LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMaySouth: @ 81F9497
-	delay_16
-	walk_in_place_fastest_up
-	delay_16
-	delay_16
-	walk_in_place_fastest_right
-	step_end
-
-LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerWest: @ 81F949D
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_in_place_fastest_down
-	step_end
-
-LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCWest: @ 81F94A4
-	walk_up
-	walk_right
-	walk_right
-	walk_in_place_fastest_up
-	step_end
-
-@ Unused, the player is already facing this direction so its unneeded
-LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayWest: @ 81F94A9
-	delay_16
-	delay_16
-	walk_in_place_fastest_right
-	step_end
-
-LittlerootTown_MaysHouse_2F_Movement_MayApproachPlayerEast: @ 81F94AD
-	walk_right
-	walk_right
-	walk_down
-	walk_in_place_fastest_right
-	step_end
-
-LittlerootTown_MaysHouse_2F_Movement_MayWalkToPCEast: @ 81F94B2
-	walk_up
-	walk_up
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_in_place_fastest_up
-	step_end
-
-LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayEast: @ 81F94BB
-	delay_16
-	walk_in_place_fastest_up
-	delay_16
-	delay_16
-	walk_in_place_fastest_right
-	step_end
-
-RivalsHouse_2F_EventScript_Rival:: @ 81F94C1
-	lockall
-	goto_if_set FLAG_MET_RIVAL_LILYCOVE, RivalsHouse_2F_EventScript_RivalPostLilycove
-	checkplayergender
-	compare VAR_RESULT, MALE
-	goto_if_eq RivalsHouse_2F_EventScript_May
-	compare VAR_RESULT, FEMALE
-	goto_if_eq RivalsHouse_2F_EventScript_Brendan
+	release
 	end
 
-RivalsHouse_2F_EventScript_May:: @ 81F94E3
-	msgbox RivalsHouse_2F_Text_MayGettingReady, MSGBOX_DEFAULT
-	releaseall
+LRT_CANCEL::
+    msgbox LRT_DISPT MSGBOX_DEFAULT
+	closemessage
+	removecutscenesprites
+	release
 	end
 
-RivalsHouse_2F_EventScript_Brendan:: @ 81F94ED
-	msgbox RivalsHouse_2F_Text_BrendanGettingReady, MSGBOX_DEFAULT
-	releaseall
+LRT_FZ::
+    msgbox LRT_DS_FZ_DAWN MSGBOX_DEFAULT
+	closemessage
+	removecutscenesprites
+	release
 	end
 
-RivalsHouse_2F_EventScript_RivalPostLilycove:: @ 81F94F7
-	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
-	waitmovement 0
-	checkplayergender
-	compare VAR_RESULT, MALE
-	call_if_eq RivalsHouse_2F_EventScript_MayPostLilycove
-	compare VAR_RESULT, FEMALE
-	call_if_eq RivalsHouse_2F_EventScript_BrendanPostLilycove
-	setflag FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE
-	releaseall
-	end
+LRT_BADEND:
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You see sadness and disappointment in\n"
+	.string "her eyes as you turn away...)$"
 
-RivalsHouse_2F_EventScript_MayPostLilycove:: @ 81F951D
-	goto_if_set FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE, RivalsHouse_2F_EventScript_MayWhereShouldIGoNext
-	msgbox RivalsHouse_2F_Text_MayJustCheckingMyPokedex, MSGBOX_DEFAULT
-	return
+LRT_DAWN_KISS:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Did my kiss bother you? It just\n"
+	.string "felt right at the time...$"
 
-RivalsHouse_2F_EventScript_BrendanPostLilycove:: @ 81F952F
-	goto_if_set FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE, RivalsHouse_2F_EventScript_BrendanWhereShouldIGoNext
-	msgbox RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex, MSGBOX_DEFAULT
-	return
+LRT_DISPT:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She looks a little disappointed.)$"
 
-RivalsHouse_2F_EventScript_MayWhereShouldIGoNext:: @ 81F9541
-	msgbox RivalsHouse_2F_Text_MayWhereShouldIGoNext, MSGBOX_DEFAULT
-	return
+LRT_ROMPre:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Sorry, my bed might be a little small...$"
+	
+LRT_ROM:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {RIVAL}{COLOR LIGHT_GREEN}{SHADOW GREEN} cuddled together\n"
+	.string " and then enjoyed a long night's rest.)$"
+	
+LRT_ROM2Pre:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}It's so nice, snuggling with you,\n"
+	.string "forgetting everything else.\p"
+	.string "It always calms me down, no matter\n"
+	.string "how much stress I have.$"
 
-RivalsHouse_2F_EventScript_BrendanWhereShouldIGoNext:: @ 81F954A
-	msgbox RivalsHouse_2F_Text_BrendanWhereShouldIGoNext, MSGBOX_DEFAULT
-	return
+LRT_ROM2:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {RIVAL}{COLOR LIGHT_GREEN}{SHADOW GREEN} deviously cuddle\n"
+	.string " together for another night.)$"
 
-LittlerootTown_MaysHouse_2F_EventScript_PC:: @ 81F9553
+LRT_DS_FZ_DAWN:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Oh, hi, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}. What are you\n"
+	.string "up to today?$"
+
+LRT_HAPPY:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Oh, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, what am I going\n"
+	.string "to do with you.\p"
+	.string "I'm glad you're not\n"
+	.string "mad at me.$" 
+
+LRT_STAY:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}So, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, did you want to stay the\n"
+	.string "night with me?$"
+
+LRT_STAY2:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Did you come to stay\n"
+    .string "the night with me again?$"
+
+LRT_SORRY:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'm sorry {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, I thought you\n"
+	.string "liked me. It won't happen again.$"
+
+LRT_DAWN_SORRYKISSED:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}!\p"
+	.string "I'm sorry I kissed you.$"
+
+LRT_DAWN_THANKS:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: I've never slept so good in my\n"
+	.string "life. Thanks for spending the night\l"
+	.string "with me.$"
+
+LRT_DAWN_THANKS2:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Thanks for staying with me for another\n"
+	.string "night. You might get me addicted...\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(she gives a sheepish smile)$"
+
+LRT_HEART:
+	walk_down
+	walk_left
+	walk_down
+	walk_right
+	step_end
+
+LRT_HEART2:
+	walk_down
+	walk_down
+	walk_left
+	step_end
+
+LRT_HEART3:
+	walk_left
+	walk_left
+	face_right
+	delay_16
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	step_end
+
+LRT_TURN:
+    walk_left
+	step_end
+
+	@goto_if_set FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE, LittlerootTown_BrendansHouse_2F_EventScript_1F954A
+
+EventScript_PlayerPCFemale:: @ 81F9553
 	lockall
 	checkplayergender
 	compare VAR_RESULT, MALE
-	goto_if_eq LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq LittlerootTown_MaysHouse_2F_EventScript_1F956C
 	compare VAR_RESULT, FEMALE
-	goto_if_eq LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq LittlerootTown_MaysHouse_2F_EventScript_1F9576
 	end
 
-LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC:: @ 81F956C
-	msgbox gText_PokemonTrainerSchoolEmail, MSGBOX_DEFAULT
-	releaseall
-	end
-
-LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC:: @ 81F9576
+LRT_PlayerPC:: @ 81F9576
 	setvar VAR_0x8004, 2
 	special DoPCTurnOnEffect
 	playse SE_PC_ON
-	msgbox gText_PlayerHouseBootPC, MSGBOX_DEFAULT
+	msgbox gUnknown_08272D87, MSGBOX_DEFAULT
 	special BedroomPC
 	waitstate
 	releaseall
 	end
 
-LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC:: @ 81F958F
+LRT_PlayerPC2:: @ 81F958F
 	setvar VAR_0x8004, 2
 	playse SE_PC_OFF
 	special DoPCTurnOffEffect
 	releaseall
 	end
-
-RivalsHouse_2F_Text_MayWhoAreYou: @ 81F959C
-	.string "Huh?\n"
-	.string "Who… Who are you?\p"
-	.string "… … … … … … … …\n"
-	.string "… … … … … … … …\p"
-	.string "Oh, you're {PLAYER}{KUN}.\n"
-	.string "So your move was today.\p"
-	.string "Um… I'm MAY.\n"
-	.string "Glad to meet you!\p"
-	.string "I…\n"
-	.string "I have this dream of becoming friends\l"
-	.string "with POKéMON all over the world.\p"
-	.string "I… I heard about you, {PLAYER}{KUN}, from\n"
-	.string "my dad, PROF. BIRCH.\p"
-	.string "I was hoping that you would be nice,\n"
-	.string "{PLAYER}{KUN}, and that we could be friends.\p"
-	.string "Oh, this is silly, isn't it?\n"
-	.string "I… I've just met you, {PLAYER}{KUN}.\p"
-	.string "Eheheh…\p"
-	.string "Oh, no! I forgot!\p"
-	.string "I was supposed to go help Dad catch\n"
-	.string "some wild POKéMON!\p"
-	.string "{PLAYER}{KUN}, I'll catch you later!$"
-
-RivalsHouse_2F_Text_MayGettingReady: @ 81F978A
-	.string "POKéMON fully restored!\n"
-	.string "Items ready, and…$"
-
-RivalsHouse_2F_Text_BrendanWhoAreYou: @ 81F97B4
-	.string "Hey!\n"
-	.string "You…\p"
-	.string "Who are you?\p"
-	.string "Oh, you're {PLAYER}, aren't you?\n"
-	.string "Moved in next door, right?\p"
-	.string "I didn't know that you're a girl.\p"
-	.string "Dad, PROF. BIRCH, said that our new\n"
-	.string "next-door neighbor is a GYM LEADER's\l"
-	.string "kid, so I assumed you'd be a guy.\p"
-	.string "My name's BRENDAN.\n"
-	.string "So, hi, neighbor!\p"
-	.string "Huh? Hey, {PLAYER}, don't you have\n"
-	.string "a POKéMON?\p"
-	.string "Do you want me to go catch you one?\p"
-	.string "Aw, darn, I forgot…\p"
-	.string "I'm supposed to go help my dad catch\n"
-	.string "some wild POKéMON.\p"
-	.string "Some other time, okay?$"
-
-RivalsHouse_2F_Text_BrendanGettingReady: @ 81F9962
-	.string "POKéMON fully restored…\n"
-	.string "Items all packed, and…$"
-
-RivalsHouse_2F_Text_ItsRivalsPokeBall: @ 81F9991
-	.string "It's {RIVAL}'s POKé BALL!\p"
-	.string "Better leave it right where it is.$"
-
-RivalsHouse_2F_Text_MayJustCheckingMyPokedex: @ 81F99C9
-	.string "MAY: {PLAYER}{KUN}!\p"
-	.string "I was just checking my POKéDEX.\p"
-	.string "There's still a lot of POKéMON that\n"
-	.string "I've seen but haven't caught.\p"
-	.string "And there are many others that\n"
-	.string "I think will evolve.\p"
-	.string "I wonder where I should go catch\n"
-	.string "some POKéMON next?$"
-
-RivalsHouse_2F_Text_MayWhereShouldIGoNext: @ 81F9A9E
-	.string "MAY: I wonder where I should go catch\n"
-	.string "some POKéMON next?\p"
-	.string "Wouldn't it be funny if we ran into each\n"
-	.string "other, {PLAYER}{KUN}?$"
-
-RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex: @ 81F9B0D
-	.string "BRENDAN: Hey, it's {PLAYER}.\p"
-	.string "I was just checking out my POKéDEX.\p"
-	.string "There are still many POKéMON that\n"
-	.string "I need to catch, I know, but this\l"
-	.string "is looking pretty good.\p"
-	.string "Checking this POKéDEX out gives me\n"
-	.string "the urge to hit the road again.$"
-
-RivalsHouse_2F_Text_BrendanWhereShouldIGoNext: @ 81F9BE7
-	.string "BRENDAN: I'm having a hard time deciding\n"
-	.string "where I should catch POKéMON next.\p"
-	.string "Hey, {PLAYER}, if I see you while I'm out\n"
-	.string "catching POKéMON, I can pitch you a\l"
-	.string "battle if you'd like.$"
+	
+	
+LRT_DawnIntroductionScene::
+	lock
+	faceplayer
+	applymovement 2, Common_Movement_QuestionMark
+	waitmovement 0
+	nop
+    drawheadshot HEAD_DAWN
+	msgbox GI_DawnIntro MSGBOX_DEFAULT
+	closemessage
+	removecutscenesprites
+	applymovement 4, GI_LeavingForRoute103
+	waitmovement 0
+	playse SE_DOOR
+	removeobject 4
+	setflag FLAG_HIDE_DAWNS_HOUSE_DAWN
+	msgbox GI_DawnMetMsg
+	closemessage
+	setflag FLAG_RECEIVED_RUNNING_SHOES
+	giveitem ITEM_GO_GOGGLES, 1
+	setflag FLAG_RECEIVED_GO_GOGGLES
+	setflag FLAG_SYS_NATIONAL_DEX
+	setflag FLAG_RYU_LT_RIVAL
+	setflag FLAG_RYU_LT_RIVAL2
+	setflag FLAG_RIVAL_LEFT_FOR_ROUTE103
+	setvar VAR_OLDALE_RIVAL_STATE, 2
+	setflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+	special EnableNationalPokedex
+	setvar VAR_LITTLEROOT_INTRO_STATE, 8
+	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
+	release
+	end
+	
+GI_DawnIntro:
+	.string "{RIVAL}{COLOR LIGHT_RED}{SHADOW RED}: Oh? Who are you, and why\nare you in my room?\pOh, you're {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, Norman's son.\pI meant to say hi to you at some\npoint. I've been looking for a\lfriend to run around with when\ldoing tasks for my dad, Prof\lBirch.\pIt gets lonely at times.\p"
+    .string "So, did you want me to catch you\la pokémon?\pI can go grab you one\nfrom Route 101.\pOh! Shoot! I was supposed to go\nstudy pokémon behaviors at Route 103!!\pSorry, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, I have to run!$"
+	
+GI_DawnMetMsg:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN} (She seems like the outgoing sort.\p Not too shy, either.\n You can see yourself being good\l friends with her.)$"
+	
+GI_LeavingForRoute103:
+	emote_exclamation_mark
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	step_end

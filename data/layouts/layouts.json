@@ -1848,7 +1848,7 @@
             "name": "NewMauville_Inside_Layout",
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_BikeShop",
-            "width": 41
+            "width": 50
         },
         {
             "blockdata_filepath": "data/layouts/AbandonedShip_Deck/map.bin",
@@ -4423,12 +4423,12 @@
         {
             "blockdata_filepath": "data/layouts/AncientTomb1F/map.bin",
             "border_filepath": "data/layouts/AncientTomb1F/border.bin",
-            "height": 20,
+            "height": 33,
             "id": "LAYOUT_ANCIENT_TOMB1F",
             "name": "AncientTomb1F_Layout",
             "primary_tileset": "gTileset_General",
-            "secondary_tileset": "gTileset_RusturfTunnel",
-            "width": 20
+            "secondary_tileset": "gTileset_Cave",
+            "width": 17
         },
         {
             "blockdata_filepath": "data/layouts/AncientTomb2F/map.bin",
@@ -4486,9 +4486,9 @@
             "height": 20,
             "id": "LAYOUT_SLATEPORT_CITY_LANAS_HOUSE",
             "name": "SlateportCity_LanasHouse_Layout",
-            "primary_tileset": "gTileset_General",
-            "secondary_tileset": "gTileset_Petalburg",
-            "width": 13
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_GenericBuilding",
+            "width": 20
         }
     ],
     "layouts_table_label": "gMapLayouts"

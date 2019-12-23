@@ -3067,18 +3067,18 @@ bool32 sub_80168DC(struct UnkStruct_URoom *arg0)
 
 void InitUnionRoom(void)
 {
-    struct UnkStruct_URoom *ptr;
-
-    sUnionRoomPlayerName[0] = EOS;
-    CreateTask(sub_801697C, 0);
-    gUnknown_02022C30.uRoom = gUnknown_02022C30.uRoom; // Needed to match.
-    gUnknown_02022C30.uRoom = ptr = AllocZeroed(sizeof(struct UnkStruct_URoom));
-    gUnknown_03000DA8 = gUnknown_02022C30.uRoom;
-    ptr->state = 0;
-    ptr->textState = 0;
-    ptr->field_10 = 0;
-    ptr->field_12 = 0;
-    sUnionRoomPlayerName[0] = EOS;
+    //struct UnkStruct_URoom *ptr;
+//
+    //sUnionRoomPlayerName[0] = EOS;
+    //CreateTask(sub_801697C, 0);
+    //gUnknown_02022C30.uRoom = gUnknown_02022C30.uRoom; // Needed to match.
+    //gUnknown_02022C30.uRoom = ptr = AllocZeroed(sizeof(struct UnkStruct_URoom));
+    //gUnknown_03000DA8 = gUnknown_02022C30.uRoom;
+    //ptr->state = 0;
+    //ptr->textState = 0;
+    //ptr->field_10 = 0;
+    //ptr->field_12 = 0;
+    //sUnionRoomPlayerName[0] = EOS;
 }
 
 void sub_801697C(u8 taskId)

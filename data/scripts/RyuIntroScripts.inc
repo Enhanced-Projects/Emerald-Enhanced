@@ -379,6 +379,7 @@ GameIntroSequencePart2::
 	playse SE_PC_OFF
 	waitse
 	msgbox GI_GoSeeRivalMaleMsg MSGBOX_SIGN
+	closemessage
 	clearflag FLAG_HIDE_DAWNS_HOUSE_DAWN
 	releaseall
 	end
@@ -396,6 +397,7 @@ GameIntroFemalePart2::
 	playse SE_PC_OFF
 	checkplayergender
 	msgbox GI_GoSeeRivalFemaleMsg MSGBOX_SIGN
+	closemessage
 	clearflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
 	releaseall
 	end

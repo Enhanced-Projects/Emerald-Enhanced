@@ -201,6 +201,15 @@
             "var_value": "0",
             "x": 35,
             "y": 56
+        },
+        {
+            "elevation": 0,
+            "script": "R110_LanaSetup",
+            "type": "trigger",
+            "var": "VAR_RYU_DS_LANA_STAGE",
+            "var_value": "10",
+            "x": 11,
+            "y": 67
         }
     ],
     "id": "MAP_ROUTE110",
@@ -598,6 +607,19 @@
             "trainer_type": "0",
             "x": 6,
             "y": 38
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_R110_LANA",
+            "graphics_id": "EVENT_OBJ_GFX_LEAF",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 12,
+            "y": 67
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",

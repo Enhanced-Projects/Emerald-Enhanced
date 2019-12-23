@@ -275,3 +275,96 @@ NewMauville_Inside_Text_SteppedOnSwitchGeneratorStopped: @ 8237932
 	.string "… … … … … … … …\p"
 	.string "The generator appears to have\n"
 	.string "stopped…$"
+	
+@==================================================================================================LANA EVENTS
+
+NM_SpecCheck::
+	lock
+	addobject 10
+	release
+	end
+
+NM_DevShortcut::
+	special RyuDevCheck
+	compare VAR_RESULT, 69
+	goto_if_ne ryu_end
+	warpsilent MAP_NEW_MAUVILLE_INSIDE, 255, 21, 4
+	release
+	end
+
+NM_DevUp:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+NM_Leaf_Trigger::
+	lock
+	compare VAR_RYU_DS_LANA_STAGE, 15
+	goto_if_ne ryu_end
+	clearflag FLAG_HIDE_NM_LANA
+	setvar VAR_RYU_DS_LANA_STAGE, 17
+	release
+	end
+	
+NM_Leaf_Event::
+	lock
+	drawheadshot HEAD_LANA
+	compare VAR_NEW_MAUVILLE_STATE, 2
+	goto_if_ne NM_LeafNoGenerator
+	msgbox NM_LanaElipsis MSGBOX_DEFAULT
+	closemessage
+	removecutscenesprites
+	fadescreen 1
+	playse SE_TK_WARPOUT
+	waitse
+	removeobject 10
+	fadescreen 0
+	msgbox NM_LanaLeft MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement 0
+	msgbox NM_ScavengerHuntClue MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0
+	msgbox NM_ScavengerHuntClue2 MSGBOX_DEFAULT
+	setflag FLAG_HIDE_NM_LANA
+	setvar VAR_RYU_DS_LANA_STAGE, 20
+	return
+	
+NM_LeafNoGenerator:
+    faceplayer
+	msgbox NM_LanaElipsis2 MSGBOX_DEFAULT
+	closemessage
+	removecutscenesprites
+	release
+	end
+	
+NM_LanaElipsis:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ... ... ...\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Lana used an Escape Rope!$"
+	
+NM_LanaElipsis2:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ... ... ...$"
+	
+NM_LanaLeft:
+	.string "Not even a word...$"
+	
+NM_ScavengerHuntClue:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(A note seems to have been left\n behind...)\p {COLOR DARK_GREY}{SHADOW LIGHT_GREY}(This vessel of the sea was\n originally called the S.S. Cactus,\p used to carry both passengers and\n"
+	.string " cargo when it was in operation.)$"
+	
+NM_ScavengerHuntClue2:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(There seems to be something else\nwritten on the note...)\p{COLOR LIGHT_RED}{SHADOW RED}Why...this place is clearly\ndifferent, and yet...feels the\lsame...I can get through this...\lI need to...$"
+	
+NM_Warp1::
+	lock
+	warpteleport MAP_NEW_MAUVILLE_INSIDE, 255, 43, 38
+	release
+	end
+	
+NM_Warp2::
+	lock
+	warpteleport MAP_NEW_MAUVILLE_INSIDE, 255, 39, 5
+	release
+	end
+
+@==================================================================================================End Lana Events

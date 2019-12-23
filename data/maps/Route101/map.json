@@ -46,28 +46,10 @@
         },
         {
             "elevation": 3,
-            "script": "Route101_EventScript_PreventExitSouth",
-            "type": "trigger",
-            "var": "VAR_ROUTE101_STATE",
-            "var_value": "2",
-            "x": 10,
-            "y": 18
-        },
-        {
-            "elevation": 3,
-            "script": "Route101_EventScript_PreventExitSouth",
-            "type": "trigger",
-            "var": "VAR_ROUTE101_STATE",
-            "var_value": "2",
-            "x": 11,
-            "y": 18
-        },
-        {
-            "elevation": 3,
             "script": "Route101_EventScript_PreventExitWest",
             "type": "trigger",
-            "var": "VAR_ROUTE101_STATE",
-            "var_value": "2",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
             "x": 6,
             "y": 16
         },
@@ -75,8 +57,8 @@
             "elevation": 3,
             "script": "Route101_EventScript_PreventExitWest",
             "type": "trigger",
-            "var": "VAR_ROUTE101_STATE",
-            "var_value": "2",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
             "x": 6,
             "y": 15
         },
@@ -84,8 +66,8 @@
             "elevation": 3,
             "script": "Route101_EventScript_PreventExitWest",
             "type": "trigger",
-            "var": "VAR_ROUTE101_STATE",
-            "var_value": "2",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
             "x": 6,
             "y": 17
         },
@@ -93,8 +75,8 @@
             "elevation": 3,
             "script": "Route101_EventScript_PreventExitWest",
             "type": "trigger",
-            "var": "VAR_ROUTE101_STATE",
-            "var_value": "2",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
             "x": 6,
             "y": 18
         },
@@ -102,10 +84,64 @@
             "elevation": 3,
             "script": "Route101_EventScript_PreventExitNorth",
             "type": "trigger",
-            "var": "VAR_ROUTE101_STATE",
-            "var_value": "2",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
             "x": 7,
             "y": 13
+        },
+        {
+            "elevation": 0,
+            "script": "Route101_EventScript_PreventExitNorth",
+            "type": "trigger",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
+            "x": 11,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "script": "Route101_EventScript_PreventExitNorth",
+            "type": "trigger",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
+            "x": 10,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "script": "Route101_EventScript_PreventExitNorth",
+            "type": "trigger",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
+            "x": 9,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "script": "Route101_EventScript_PreventExitNorth",
+            "type": "trigger",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
+            "x": 8,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "script": "r101_MoveUp",
+            "type": "trigger",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
+            "x": 10,
+            "y": 18
+        },
+        {
+            "elevation": 0,
+            "script": "r101_MoveUp",
+            "type": "trigger",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
+            "x": 11,
+            "y": 18
         }
     ],
     "id": "MAP_ROUTE101",

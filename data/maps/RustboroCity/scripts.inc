@@ -1150,7 +1150,7 @@ RustboroCity_Text_PleaseComeWithMe: @ 81E1A21
 	.string "Please come with me!$"
 
 RustboroCity_Text_MayHiLetsRegister: @ 81E1A49
-	.string "MAY: Oh, hi, {PLAYER}{KUN}!\p"
+	.string "Dawn: Oh, hi, {PLAYER}!\p"
 	.string "You had a MATCH CALL feature put\n"
 	.string "on your POKéNAV!\p"
 	.string "Let's register each other so we can\n"
@@ -1162,37 +1162,37 @@ RustboroCity_Text_RegisteredMay: @ 81E1ADB
 	.string "in the POKéNAV.$"
 
 RustboroCity_Text_MayPassedBrineyWantToBattle: @ 81E1AFA
-	.string "MAY: Oh, by the way, I passed\n"
+	.string "Dawn: Oh, by the way, I passed\n"
 	.string "MR. BRINEY in PETALBURG WOODS.\p"
 	.string "I guess he's on his way home to his\n"
 	.string "cottage by the sea.\p"
 	.string "How's your POKéDEX coming along,\n"
-	.string "{PLAYER}{KUN}? Mine's looking pretty decent!\p"
+	.string "{PLAYER}? Mine's looking pretty decent!\p"
 	.string "So…\n"
 	.string "How about a little battle?$"
 
 RustboroCity_Text_MayOhHaventRaisedPokemonEnough: @ 81E1BD3
-	.string "MAY: Oh, what's the matter?\p"
+	.string "Dawn: Oh, what's the matter?\p"
 	.string "Haven't you caught or raised your\n"
 	.string "POKéMON very much?\p"
 	.string "That's not very good for a TRAINER!$"
 
 RustboroCity_Text_MayWantToBattle: @ 81E1C48
-	.string "MAY: So, what do you think?\n"
+	.string "Dawn: So, what do you think?\n"
 	.string "How about a little battle here?$"
 
 RustboroCity_Text_MayImNotGoingToLose: @ 81E1C84
-	.string "MAY: You just became a TRAINER,\n"
-	.string "{PLAYER}{KUN}. I'm not going to lose!$"
+	.string "Dawn: You just became a TRAINER,\n"
+	.string "{PLAYER}. I'm not going to lose!$"
 
 RustboroCity_Text_MayDefeat: @ 81E1CC1
 	.string "Yikes!\n"
 	.string "You're better than I expected!$"
 
 RustboroCity_Text_MayMrBrineyHint: @ 81E1CE7
-	.string "MAY: Oh, by the way, MR. BRINEY, who\n"
+	.string "Dawn: Oh, by the way, MR. BRINEY, who\n"
 	.string "I just passed…\p"
-	.string "{PLAYER}{KUN}, you just moved here so you\n"
+	.string "{PLAYER}, you just moved here so you\n"
 	.string "might not know this, but MR. BRINEY\l"
 	.string "was once a revered seafarer.$"
 

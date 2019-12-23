@@ -94,9 +94,9 @@ static void InitPlayerTrainerId(void)
 // L=A isnt set here for some reason.
 static void SetDefaultOptions(void)
 {
-    gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_MID;
-    gSaveBlock2Ptr->optionsWindowFrameType = 0;
-    gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_MONO;
+    gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
+    gSaveBlock2Ptr->optionsWindowFrameType = 13;
+    gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_STEREO;
     gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
@@ -128,8 +128,17 @@ static void ClearFrontierRecord(void)
 
 static void WarpToTruck(void)
 {
-    SetWarpDestination(MAP_GROUP(INSIDE_OF_TRUCK), MAP_NUM(INSIDE_OF_TRUCK), -1, -1, -1);
-    WarpIntoMap();
+    if (gSaveBlock2Ptr->playerGender == MALE)
+    {
+        SetWarpDestination(1, 1, -1, 1, 4);
+        WarpIntoMap();
+    }
+    else
+    {
+        SetWarpDestination(1, 3, -1, 7, 4);
+        WarpIntoMap();
+    }
+    
 }
 
 void Sav2_ClearSetDefault(void)
@@ -228,8 +237,6 @@ void NewGameInitData(void)
     FlagSet(FLAG_HIDE_103_TEST_TRAINER);
     FlagSet(FLAG_HIDE_GRANITE_CAVE_STEVEN);
     FlagSet(FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA);
-    FlagSet(FLAG_LANA_AS_TOGGLE);
-    FlagSet(FLAG_PT_LANA_TOGGLE);
     FlagSet(FLAG_RYU_HIDE_R120_LANA_AND_HIKER);
     FlagSet(FLAG_RYU_HIDE_REL_OBJECTS);
     FlagSet(FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3);
@@ -245,6 +252,15 @@ void NewGameInitData(void)
     FlagClear(FLAG_RYU_TEMPTP);
     FlagClear(FLAG_RYU_HAS_FOLLOWER);
     VarSet(VAR_WEATHER_INSTITUTE_STATE, 1);
+    FlagSet(FLAG_HIDE_TRICK_HOUSE_LANA);
+    FlagSet(FLAG_HIDE_NM_LANA);
+    FlagSet(FLAG_HIDE_ABN_SHIP_LANA);
+    FlagSet(FLAG_HIDE_PCF_TOWN_LANA);
+    FlagSet(FLAG_HIDE_SCH_LANA);
+    FlagSet(FLAG_HIDE_DR_LANA);
+    FlagSet(FLAG_HIDE_IC_LANA);
+    FlagSet(FLAG_HIDE_AT1_LEAF);
+    FlagSet(FLAG_HIDE_R110_LANA);
 }
 
 static void ResetMiniGamesResults(void)

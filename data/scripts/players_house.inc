@@ -3,7 +3,6 @@ PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet:: @ 82926FE
 	return
 
 PlayersHouse_1F_EventScript_EnterHouseMovingIn:: @ 8292704
-	msgbox PlayersHouse_1F_Text_IsntItNiceInHere, MSGBOX_DEFAULT
 	applymovement VAR_0x8004, Common_Movement_FacePlayer
 	waitmovement 0
 	compare VAR_0x8005, MALE

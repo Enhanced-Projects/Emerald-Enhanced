@@ -92,3 +92,163 @@ DesertRuins_EventScript_RanFromRegirock:: @ 822DA52
 	goto Common_EventScript_LegendaryFlewAway
 	end
 
+
+@==================================================================================================Leaf Events
+
+DR_SetStage::
+	lock
+	addobject 2
+	clearflag FLAG_HIDE_DR_LANA
+	setvar VAR_RYU_DS_LANA_STAGE, 46
+	goto DR_LeafEvent
+	
+	
+DR_LeafEvent::
+	lock
+	setvar VAR_RYU_DS_LANA_STAGE, 47
+	delay 25
+	special SpawnCameraObject
+	applymovement EVENT_OBJ_ID_CAMERA, DR_CameraSequence
+	waitmovement 0
+	applymovement 2 DR_OpenSequence
+	waitmovement 2
+	playse SE_W088
+	waitse
+	delay 25
+	fadeoutbgm 0
+	playse SE_W089
+	special DoSealedChamberShakingEffect1
+	waitse
+	call DR_LeafOpenDoor
+	applymovement 2, Common_Movement_ExclamationMark
+	fadeinbgm 0
+	playse SE_PIN
+	waitse
+	applymovement EVENT_OBJ_ID_CAMERA, DR_CameraFollowsLeaf
+	applymovement 2, DR_LeafToBackDoor
+	waitmovement 2
+	playse SE_KAIDAN
+	waitse
+	removeobject 2
+	applymovement EVENT_OBJ_ID_CAMERA, DR_CameraReturn
+	waitmovement 0
+	special RemoveCameraObject
+	setflag FLAG_SYS_REGIROCK_PUZZLE_COMPLETED
+	setvar VAR_RYU_DS_LANA_STAGE, 48
+	release
+	end
+	
+DR_LeafCheck2::
+	addobject 4
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	setvar VAR_RYU_DS_LANA_STAGE, 49
+	warp MAP_DESERT_RUINS, 255, 8, 11
+	release
+	end
+	
+	
+DR_LeafEvent2::
+	setvar VAR_RYU_DS_LANA_STAGE, 50
+	setflag FLAG_HIDE_REGIROCK
+	removeobject 1
+	playse SE_BOWA2
+	waitse
+	addobject 3
+	delay 50
+	applymovement 4, Common_Movement_FaceUp
+	waitmovement 4
+	removeobject 3
+	applymovement 4, DR_LeafToPlayer
+	waitmovement 4
+	drawheadshot HEAD_LANA
+	msgbox DR_LeafMsg MSGBOX_DEFAULT
+	closemessage
+	removecutscenesprites
+	applymovement EVENT_OBJ_ID_PLAYER, DR_StepRight
+	waitmovement 0
+	applymovement 4, DR_LeafLeaves
+	waitmovement 4
+	playse SE_KAIDAN @Stairs
+	removeobject 4
+	waitse
+	setvar VAR_RYU_DS_LANA_STAGE, 55
+	setflag FLAG_HIDE_DR_LANA
+	release
+	end
+	
+DR_Warp::
+	release
+	end
+	
+DR_LeafOpenDoor::
+	setmetatile 7, 19, 554, 1
+	setmetatile 8, 19, 555, 1
+	setmetatile 9, 19, 556, 1
+	setmetatile 7, 20, 562, 1
+	setmetatile 8, 20, 563, 1
+	setmetatile 9, 20, 564, 1
+	special DrawWholeMapView
+	return
+	
+DR_OpenSequence:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_in_place_down
+	walk_in_place_fast_down
+	step_end
+
+DR_CameraSequence:
+	walk_fast_up
+	walk_fast_up
+	walk_diag_northwest
+	walk_diag_northwest
+	step_end
+	
+DR_LeafToBackDoor:
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	
+DR_CameraFollowsLeaf:
+	walk_diag_northeast
+	walk_diag_northeast
+	walk_up
+	step_end
+
+DR_CameraReturn:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+	
+DR_LeafToPlayer:
+	walk_down
+	walk_in_place_down
+	step_end
+	
+DR_StepRight:
+	walk_right
+	walk_in_place_left
+	step_end
+	
+DR_LeafLeaves:
+	walk_down
+	walk_down
+	walk_down
+	step_end
+	
+DR_LeafMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Lana: One down...$"
+	
+@==================================================================================================End Leaf Events
+

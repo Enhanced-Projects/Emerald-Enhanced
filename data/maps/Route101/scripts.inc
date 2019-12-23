@@ -15,6 +15,13 @@ Route101_EventScript_HideMapNamePopup:: @ 81EBCD5
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setvar VAR_ROUTE101_STATE, 1
 	end
+	
+r101_MoveUp::
+	lock
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
 
 Route101_EventScript_StartBirchRescue:: @ 81EBCDE
 	lockall
@@ -279,7 +286,7 @@ Route101_Text_YouSavedMe: @ 81EBF12
 	.string "You saved me.\n"
 	.string "Thanks a lot!\p"
 	.string "Oh?\p"
-	.string "Hi, you're {PLAYER}{KUN}!\p"
+	.string "Hi, you're {PLAYER}!\p"
 	.string "This is not the place to chat, so come\n"
 	.string "by my POKéMON LAB later, okay?$"
 

@@ -209,7 +209,252 @@ Route110_TrickHouseEntrance_EventScript_SetTrickMasterInFrontOfDoor:: @ 8269CDF
 
 Route110_TrickHouseEntrance_OnFrame: @ 8269CEE
 	map_script_2 VAR_TRICK_HOUSE_FOUND_TRICK_MASTER, 1, Route110_TrickHouseEntrance_EventScript_BeginChallenge
+	map_script_2 VAR_RYU_DS_LANA_STAGE, 11, TH_LanaEvent1
+	map_script_2 VAR_RYU_DS_LANA_STAGE, 90, TH_Lana_Event2
 	.2byte 0
+	
+@================================================================================================== Lana
+
+TH_LanaEvent1::
+	setvar VAR_RYU_DS_LANA_STAGE, 12
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	savebgm MUS_DUMMY
+	special DrawWholeMapView
+	lockall
+	fadenewbgm MUS_DUMMY
+	applymovement EVENT_OBJ_ID_PLAYER, TH_StartLanaEventMove
+	waitmovement 0
+	msgbox TH_TM_1 MSGBOX_DEFAULT
+	closemessage
+	applymovement 2, Common_Movement_QuestionMark
+	waitmovement 2
+	msgbox TH_TM_2 MSGBOX_DEFAULT
+	closemessage
+	applymovement 3, TH_LanaBesidePlayer
+	waitmovement 3
+	msgbox TH_TM_3 MSGBOX_DEFAULT
+	closemessage
+	playfanfare MUS_RG_FAN6
+	savebgm MUS_KARAKURI
+	waitfanfare
+	fadenewbgm MUS_KARAKURI
+	applymovement 3, TH_LeafClap
+	waitmovement 3
+	msgbox TH_Event1 MSGBOX_DEFAULT
+	closemessage
+	applymovement 2, TH_TM_FaceRight
+	waitmovement 2
+	msgbox TH_Event2 MSGBOX_DEFAULT
+	closemessage
+	applymovement 2, TH_TM_FaceDown
+	waitmovement 2
+	msgbox TH_Event3 MSGBOX_DEFAULT
+	closemessage
+	applymovement 2, TH_TM_FaceRight
+	waitmovement 0
+	msgbox TH_Event4 MSGBOX_DEFAULT
+	closemessage
+	applymovement 2, TH_TM_FaceDown
+	waitmovement 2
+	msgbox TH_Event5 MSGBOX_DEFAULT
+	closemessage
+	applymovement 3, TH_LanaExit1
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement 3
+	removeobject 3
+	setflag FLAG_HIDE_TRICK_HOUSE_LANA
+	playse SE_DOOR
+	waitse
+	msgbox TH_Event6 MSGBOX_DEFAULT
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, TH_PlayerMoveUp
+	waitmovement 0
+	msgbox TH_Event7 MSGBOX_DEFAULT
+	closemessage
+	@setflag FLAG_LANA_EVENT1_DONE
+	@clearflag FLAG_LH_EVENT2
+	@clearflag FLAG_RYU_TH_LANA_EVENT_1
+	@setflag FLAG_HIDE_FALLORBOR_POKEMON_CENTER_LANETTE
+	@clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
+	setflag FLAG_RYU_HIDE_REL_OBJECTS
+	setvar VAR_RYU_DS_LANA_STAGE, 15
+	applymovement EVENT_OBJ_ID_PLAYER, TH_PlayerLeave
+	waitmovement 0
+	playse SE_DOOR
+	warpsilent MAP_ROUTE110, 255, 11, 67
+	release
+	end
+	
+TH_TM_1:
+	.string "Bahaha! You found me in record\ntime! You're sharp!$"
+	
+TH_TM_2:
+	.string "Another visitor?$"
+	
+TH_TM_3:
+	.string "Stranger: Ah,\nso you brought a friend along?\pSplendid! Welcome friend. This home\nbelongs to none other than the\lgreatest mystery man of all Hoenn.\pMe...the one and only\nTRICK MASTER!$"
+	
+TH_Event1:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana claps while you stand,\n contemplating life's choices...)\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Come now, why the blank face?\nSurely you've heard of me.\l"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ... ...\p... ... ... ...\p... ... ... ...\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Ah, nevermind. I don't blame you\nfor not knowing.$"
+
+TH_Event2:
+	.string "Trainers and other folk often pass\nby this place, but none come to\lpay a visit!\pSeriously, what's a guy to do\nto earn some recognition\laround here!?\p{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: But isn't that like,\nthe whole point of being\la mystery?$"
+
+TH_Event3:
+	.string "You'd think so, but if business\nkeeps going down like this, I'll\lbe sunk!\pThis is a mystery house,\nnot a haunted one!$"
+	
+TH_Event4:
+	.string "I thought I had it all figured out\n...before I knew it, I was at\lwit's end...\pThat is, until this\nlittle lass beside you showed up.$"
+	
+TH_Event5:
+	.string "I could easily tell she wasn't\nfrom around here, and then it hit\pme! Foreigners...tourism! That's\nwhere the cashflow is! If I can\padd that to my bag of tricks,\npeople will flock here from all\pover for the ultimate tourist\nexperience!\pHoenn will prosper\n"
+    .string "like never before, and yours truly\pwill be swimming in gold! Heheheh.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(The image of Scrooge McDuck\nimmediately comes to mind...)\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Ahem...yes, well that's pure\n"
+	.string "optimism, isn't it? Everything's\pgotta start somewhere...which\nleads me to you two.\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Us?\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Of course! You two would work\nperfectly as a trial run. And it's\pnot like I would give you nothing\p"
+	.string "in return.\pCome here for a sec, lass.$"
+	
+TH_Event6:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Wh-what was that all about?\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Oh, nothing. I just gave her the\nfirst assignment. Now your job is\pto follow through.\p{COLOR LIGHT_BLUE}{SHADOW BLUE}On... what, exactly?\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Here, I'll show you.$"
+
+	
+TH_Event7:
+	.string "There are several different sites\pin Hoenn that are sure to wow any\ntourist. But just plainly showing\pand telling about the place is\nrather unappealing. So, to make\pthings interesting, I turned it\ninto more of a scavenger hunt.\pThe lass is already headed to\n"
+	.string "the first destination. Your job is\pto find out where that is. Once\nyou find her, you'll be given info\ptowards the next location.\pUnderstood? Good. Now here's\nyour first clue.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(The purpose of this site was to\n"
+	.string "counteract an existing city of\lthe same name's issue of\loverpopulation.)$"
+	
+TH_StartLanaEventMove:
+	walk_up
+	step_end
+	
+TH_LanaBesidePlayer:
+	walk_down
+	walk_in_place_up
+	step_end
+	
+TH_LeafClap:
+	walk_in_place_fastest_up
+	step_end
+
+TH_TM_FaceRight:
+	walk_in_place_right
+	step_end
+	
+TH_TM_FaceDown:
+	walk_in_place_down
+	step_end
+	
+TH_LanaExit1:
+	walk_up
+	walk_in_place_slow_up
+	delay_16
+	delay_16
+	delay_8
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	step_end
+	
+TH_PlayerMoveUp:
+	walk_left
+	walk_up
+	walk_in_place_up
+	step_end
+	
+TH_PlayerLeave:
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	step_end
+	
+	
+TH_Lana_Event2::
+	lock
+	setvar VAR_RYU_DS_LANA_STAGE, 91
+	applymovement 3, Common_Movement_FaceUp
+	applymovement EVENT_OBJ_ID_PLAYER, TH_Player2move
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox TH_Outro1 MSGBOX_DEFAULT
+	closemessage
+	applymovement 2, Common_Movement_ExclamationMark
+	waitmovement 2
+	msgbox TH_Outro2 MSGBOX_DEFAULT
+	closemessage
+	drawheadshot HEAD_LANA
+	msgbox TH_Outro25 MSGBOX_DEFAULT
+	closemessage
+	removecutscenesprites
+	msgbox TH_Outro26 MSGBOX_DEFAULT
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceRight
+	applymovement 3, Common_Movement_FaceLeft
+	waitmovement 2
+	msgbox TH_Outro3 MSGBOX_DEFAULT
+	closemessage
+	drawheadshot HEAD_LANA
+	msgbox TH_Outro35 MSGBOX_DEFAULT
+	fadenewbgm MUS_RG_SLOWMASARA
+	closemessage
+	removecutscenesprites
+	msgbox TH_Outro36 MSGBOX_DEFAULT
+	closemessage
+	applymovement 3, TH_Lana2Leave
+	waitmovement 3
+	playse SE_DOOR
+	waitse
+	removeobject 3
+	applymovement EVENT_OBJ_ID_PLAYER, TH_Lana2Leave
+	waitmovement EVENT_OBJ_ID_PLAYER
+	fadescreen 1
+	delay 5
+	playse SE_DOOR
+	setvar VAR_RYU_DS_LANA_STAGE, 95
+	savebgm MUS_RG_SLOWMASARA
+	clearflag FLAG_HIDE_R110_LANA
+	warpsilent MAP_ROUTE110, 255, 11, 67
+	release
+	end
+	
+TH_Player2move:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+	
+TH_Lana2Leave:
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_in_place_down
+	step_end
+	
+TH_Outro1:
+	.string "So, how'd things go?\p{COLOR LIGHT_BLUE}{SHADOW BLUE}It was a success...\p{COLOR LIGHT_RED}{SHADOW RED}In more ways than one.$"
+	
+TH_Outro2:
+	.string "You...spoke!$"
+	
+TH_Outro25:	
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Well, y'know...being the new kid\non the block...it takes time to\lopen up.$"
+	
+TH_Outro26:
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Well I'm glad to hear it! Now as\nregards your payment...uh...\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...\p{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ... ...\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Don't look at me like that! These\nthings don't happen overnight!\p"
+	.string "You got me the data I need, now I\nneed to work my magic!$"
+	
+TH_Outro3: 
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Since when did the Trickmaster\nget converted to wizardry?$"
+	
+TH_Outro35:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I haven't the faintest idea...$"
+	
+TH_Outro36:
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Haha, very clever, now out ya go!$"
+	
+@==================================================================================================End Lana
 
 Route110_TrickHouseEntrance_EventScript_BeginChallenge:: @ 8269CF8
 	lockall

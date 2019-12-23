@@ -821,7 +821,7 @@
 #define TRAINER_EMPTY_26                      817
 #define TRAINER_EMPTY_27                      818
 #define TRAINER_EMPTY_28                      819
-#define TRAINER_EMPTY_29                     820
+#define TRAINER_STORY_LEAF                     820
 #define TRAINER_GRUNT_24                     821
 #define TRAINER_REL_LANA                     822
 #define TRAINER_REL_BRENDAN                     823

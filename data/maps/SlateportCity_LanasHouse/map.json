@@ -4,9 +4,53 @@
     "allow_running": false,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "LH_AltLeafStoryTrigger",
+            "type": "sign",
+            "x": 2,
+            "y": 10
+        }
     ],
     "connections": null,
     "coord_events": [
+        {
+            "elevation": 0,
+            "script": "LH_Intro",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 4,
+            "y": 10
+        },
+        {
+            "elevation": 0,
+            "script": "LH_Intro",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 5,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "script": "LH_Intro",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 6,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "script": "LH_Intro",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 7,
+            "y": 10
+        }
     ],
     "id": "MAP_SLATEPORT_CITY_LANAS_HOUSE",
     "layout": "LAYOUT_SLATEPORT_CITY_LANAS_HOUSE",
@@ -14,6 +58,32 @@
     "music": "MUS_DAN02",
     "name": "SlateportCity_LanasHouse",
     "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_BOY_1",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 6,
+            "y": 7
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_LEAF",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 15,
+            "y": 9
+        }
     ],
     "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
     "requires_flash": false,

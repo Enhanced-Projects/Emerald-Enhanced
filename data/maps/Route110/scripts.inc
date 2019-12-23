@@ -7,7 +7,15 @@ Route110_MapScripts:: @ 81EF269
 Route110_OnResume: @ 81EF279
 	special UpdateCyclingRoadState
 	end
-
+	
+R110_LanaSetup::
+	lock
+	clearflag FLAG_HIDE_TRICK_HOUSE_LANA
+	setvar VAR_RYU_DS_LANA_STAGE, 11
+	clearflag FLAG_RYU_HIDE_REL_OBJECTS
+	release
+	end
+	
 Route110_OnTransition: @ 81EF27D
 	call Common_EventScript_SetupRivalGfxId
 	call Common_EventScript_SetupRivalOnBikeGfxId
@@ -21,7 +29,85 @@ Route110_EventScript_SaveCyclingMusic:: @ 81EF293
 
 Route110_OnFrame: @ 81EF297
 	map_script_2 VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_BeginCylcingRoadChallenge
+	map_script_2 VAR_RYU_DS_LANA_STAGE, 95, R110_LeafEventKickstart
 	.2byte 0
+	
+@==================================================================================================Lana Ending
+r110_BGMChangeLeaf:
+	fadenewbgm MUS_RG_SLOWMASARA
+	return
+	
+R110_LeafEventKickstart::
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
+	goto r110_LeafSceneEnding
+	release
+	end
+	
+r110_LeafSceneEnding::
+	lock
+	setvar VAR_RYU_DS_LANA_STAGE, 96
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceRight
+	applymovement 31, Common_Movement_FaceLeft
+	waitmovement 31
+	msgbox r110_LeafSceneEndText MSGBOX_DEFAULT
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox r110_LeafSceneEndText2 MSGBOX_DEFAULT
+	closemessage
+	applymovement 31, Common_Movement_HeartEmote
+	waitmovement 31
+	msgbox r110_LeafSceneEndText3 MSGBOX_DEFAULT
+	closemessage
+	applymovement 31, r110_LeafExitSouth
+	applymovement EVENT_OBJ_ID_PLAYER, r110_PlayerExitSouth
+	delay 5
+	applymovement 31, Common_Movement_StepDown
+	fadescreenspeed 1, 5
+	setflag FLAG_RYU_DS_LEAF_PARTNERS
+	setflag FLAG_RYU_DS_HAS_PARTNER
+	setflag FLAG_RYU_HIDE_REL_OBJECTS
+	clearflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
+	delay 40
+	removeobject 31
+	setvar VAR_RYU_DS_LANA_STAGE, 100
+	warp MAP_SLATEPORT_CITY, 255, 14, 20
+	releaseall
+	end
+	
+r110_LeafExitSouth:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+	
+r110_PlayerExitSouth:
+	delay_16
+	delay_16
+	walk_down
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+	
+r110_LeafSceneEndText:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Honestly, babe...I think he pulled\na fast one on us.$"
+	
+r110_LeafSceneEndText2:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana affectionately gives a\n lingering kiss to {PLAYER}!)$"
+	
+r110_LeafSceneEndText3:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Nah, I think we got the better\ndeal. C'mon, let's go!$"
+
+@==================================================================================================
 
 Route110_EventScript_BeginCylcingRoadChallenge:: @ 81EF2A1
 	special Special_BeginCyclingRoadChallenge
@@ -784,7 +870,7 @@ Route110_Text_AquaActionsBringSmiles: @ 81EFC0D
 	.string "smiles to people's faces!$"
 
 Route110_Text_MayLetsBattle: @ 81EFC48
-	.string "MAY: Hi, {PLAYER}{KUN}, long time no see!\p"
+	.string "Dawn: Hi, {PLAYER}, long time no see!\p"
 	.string "While I was searching for other\n"
 	.string "POKéMON, my POKéMON grew stronger.\p"
 	.string "So…\n"
@@ -795,16 +881,16 @@ Route110_Text_MayDefeated: @ 81EFCCB
 	.string "You're better than I expected!$"
 
 Route110_Text_MayTakeThis: @ 81EFCF1
-	.string "MAY: {PLAYER}{KUN}, you've been busy\n"
+	.string "Dawn: {PLAYER}, you've been busy\n"
 	.string "training, too, haven't you?\p"
 	.string "I think you deserve a reward!\n"
 	.string "This is from me!$"
 
 Route110_Text_MayExplainItemfinder: @ 81EFD58
-	.string "MAY: That's an ITEMFINDER.\p"
+	.string "Dawn: That's an ITEMFINDER.\p"
 	.string "Try it out. If there is an item that's\n"
 	.string "not visible, it emits a sound.\p"
-	.string "Okay, {PLAYER}{KUN}, let's meet again!\p"
+	.string "Okay, {PLAYER}, let's meet again!\p"
 	.string "I know it's a little silly coming from\n"
 	.string "me, but I think you should train a lot\l"
 	.string "harder for the next time.$"
@@ -989,7 +1075,7 @@ Route110_Text_ThereIsNoRecord: @ 81F0A5E
 	.string "challenge. There is no record…$"
 
 Route110_Text_ImagineSeeingYouHere: @ 81F0AB5
-	.string "PROF. BIRCH: Oh, {PLAYER}{KUN}!\n"
+	.string "PROF. BIRCH: Oh, {PLAYER}!\n"
 	.string "Imagine seeing you here!\p"
 	.string "And where might my {RIVAL} be?$"
 
@@ -1010,9 +1096,9 @@ Route110_Text_RegisteredBirchInPokenav: @ 81F0C0C
 	.string "in the POKéNAV.$"
 
 Route110_Text_KeepAnEyeOutForRival: @ 81F0C33
-	.string "PROF. BIRCH: {PLAYER}{KUN}…\p"
+	.string "PROF. BIRCH: {PLAYER}…\p"
 	.string "Please keep an eye out for my {RIVAL}.\n"
 	.string "… … … … … …\p"
 	.string "Well, I had better get going.\n"
-	.string "See you again, {PLAYER}{KUN}!$"
+	.string "See you again, {PLAYER}!$"
 

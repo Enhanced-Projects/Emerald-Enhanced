@@ -254,6 +254,69 @@
             "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS",
             "x": 13,
             "y": 75
+        },
+        {
+            "elevation": 3,
+            "script": "r120_LeafEvent",
+            "type": "trigger",
+            "var": "VAR_RYU_DS_LANA_STAGE",
+            "var_value": "66",
+            "x": 7,
+            "y": 58
+        },
+        {
+            "elevation": 3,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 10,
+            "y": 54
+        },
+        {
+            "elevation": 3,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 10,
+            "y": 55
+        },
+        {
+            "elevation": 3,
+            "script": "r120_AT_SECOND_VISIT_SETUP",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 11,
+            "y": 64
+        },
+        {
+            "elevation": 3,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 10,
+            "y": 56
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 2,
+            "y": 46
+        },
+        {
+            "elevation": 3,
+            "script": "r120_SetupLeafHiker",
+            "type": "trigger",
+            "var": "VAR_RYU_DS_LANA_STAGE",
+            "var_value": "65",
+            "x": 12,
+            "y": 64
         }
     ],
     "id": "MAP_ROUTE120",
@@ -576,16 +639,16 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_HIDE_CHAMPIONS_ROOM_STEVEN",
             "graphics_id": "EVENT_OBJ_GFX_HIKER",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP_LEFT_AND_RIGHT",
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Route120_EventScript_Chip",
             "trainer_sight_or_berry_tree_id": "4",
             "trainer_type": "1",
-            "x": 9,
-            "y": 60
+            "x": 3,
+            "y": 57
         },
         {
             "elevation": 3,
@@ -833,6 +896,32 @@
             "trainer_type": "0",
             "x": 24,
             "y": 33
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_RYU_HIDE_R120_LANA_AND_HIKER",
+            "graphics_id": "EVENT_OBJ_GFX_LEAF",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 57
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_RYU_HIDE_R120_LANA_AND_HIKER",
+            "graphics_id": "EVENT_OBJ_GFX_HIKER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 56
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_120",

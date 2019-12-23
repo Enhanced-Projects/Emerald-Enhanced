@@ -292,11 +292,11 @@ Route103_EventScript_Isabelle:: @ 81EC78F
 	end
 
 Route103_Text_MayRoute103Pokemon: @ 81EC7A6
-	.string "MAY: Let's see… The POKéMON found\n"
+	.string "Dawn: Let's see… The POKéMON found\n"
 	.string "on ROUTE 103 include…$"
 
 Route103_Text_MayLetsBattle: @ 81EC7DE
-	.string "Oh, hi, {PLAYER}{KUN}!\p"
+	.string "Oh, hi, {PLAYER}!\p"
 	.string "…Oh, I see, my dad gave you\n"
 	.string "a POKéMON as a gift.\p"
 	.string "Since we're here, let's have a quick\n"
@@ -306,10 +306,10 @@ Route103_Text_MayLetsBattle: @ 81EC7DE
 
 Route103_Text_MayDefeated: @ 81EC881
 	.string "Wow! That's great!\n"
-	.string "{PLAYER}{KUN}, you're pretty good!$"
+	.string "{PLAYER}, you're pretty good!$"
 
 Route103_Text_MayTimeToHeadBack: @ 81EC8AE
-	.string "MAY: I think I know why my dad has\n"
+	.string "Dawn: I think I know why my dad has\n"
 	.string "an eye out for you now.\p"
 	.string "I mean, you just got that POKéMON,\n"
 	.string "but it already likes you.\p"

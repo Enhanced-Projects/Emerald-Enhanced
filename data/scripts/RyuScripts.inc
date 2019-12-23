@@ -881,31 +881,12 @@ RyuDebug_enableWaystone::
 	return
 
 RyuDebug_Utility1::
-	@special RyuCheckTempVars
-	@msgbox RDB_CTVMsg
-	@closemessage
-	@setflag FLAG_RYU_DS_SHELLY_PARTNERS
-	@setflag FLAG_BADGE01_GET
-	@setflag FLAG_BADGE02_GET
-	@setflag FLAG_BADGE03_GET
-	@setflag FLAG_BADGE04_GET
-	@setflag FLAG_BADGE05_GET
-	@setflag FLAG_BADGE06_GET
-	@setflag FLAG_BADGE07_GET
-	@setflag FLAG_BADGE08_GET
-	@buffernumberstring 0, VAR_RYU_DEVON_SCIENTIST_STAGE
-	@msgbox RDB_CTVMsg
-	@closemessage
 	setvar VAR_RECYCLE_GOODS, 45454
 	buffernumberstring 0, VAR_RECYCLE_GOODS
 	msgbox RDB_CTVMsg
 	closemessage
-	copyvar VAR_ROUTE111_STATE, VAR_RYU_EXP_BATTERY
-	buffernumberstring 0, VAR_ROUTE111_STATE
-	msgbox RDB_CTVMsg
-	closemessage
-	copyvar VAR_ROUTE112_STATE, VAR_RYU_PRICE_MULTIPLIER
-	buffernumberstring 0, VAR_ROUTE112_STATE
+	checkplayergender
+	buffernumberstring 0, VAR_RESULT
 	msgbox RDB_CTVMsg
 	releaseall
 	end
@@ -1050,7 +1031,7 @@ RyuDebug_SkipTutorial::
 	setflag FLAG_SYS_NATIONAL_DEX
 	special EnableNationalPokedex
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
-	msgbox LRT_GameStartInfoMsg MSGBOX_DEFAULT
+	msgbox LRT_GameStartVariablesInfoMsg MSGBOX_DEFAULT
 	closemessage
 	msgbox RyuDebug_GiveItemQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -1058,7 +1039,7 @@ RyuDebug_SkipTutorial::
 	release
 	end
 
-LRT_GameStartInfoMsg:
+LRT_GameStartVariablesInfoMsg:
 	.string "New Game Flags and Variables Set.$"
 
 RyuDebug_GiveItemQuery:
