@@ -3601,11 +3601,11 @@
             "width": 15
         },
         {
-            "blockdata_filepath": "data/layouts/BattleFrontier_BattlePyramidEmptySquare/map.bin",
-            "border_filepath": "data/layouts/BattleFrontier_BattlePyramidEmptySquare/border.bin",
+            "blockdata_filepath": "data/layouts/BattleFrontier_BattlePyramidFloor/map.bin",
+            "border_filepath": "data/layouts/BattleFrontier_BattlePyramidFloor/border.bin",
             "height": 8,
-            "id": "LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_EMPTY_SQUARE",
-            "name": "BattleFrontier_BattlePyramidEmptySquare_Layout",
+            "id": "LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR",
+            "name": "BattleFrontier_BattlePyramidEmptyFloor_Layout",
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_BattlePyramid",
             "width": 8

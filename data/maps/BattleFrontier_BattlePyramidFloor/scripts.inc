@@ -1,14 +1,7 @@
-<<<<<<< HEAD:data/maps/BattleFrontier_BattlePyramidEmptySquare/scripts.inc
-BattleFrontier_BattlePyramidEmptySquare_MapScripts:: @ 8252A33
-	map_script MAP_SCRIPT_ON_RESUME, BattleFrontier_BattlePyramidEmptySquare_MapScript1_252AA2
-	map_script MAP_SCRIPT_ON_FRAME, BattleFrontier_BattlePyramidEmptySquare_MapScript2_252A43
-	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattlePyramidEmptySquare_MapScript1_252BCA
-=======
 BattleFrontier_BattlePyramidFloor_MapScripts:: @ 8252A33
 	map_script MAP_SCRIPT_ON_RESUME, BattleFrontier_BattlePyramidFloor_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattlePyramidFloor_OnFrame
 	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattlePyramidFloor_OnTransition
->>>>>>> ea9109943dbfe35b1f861142e5d75aefaa437034:data/maps/BattleFrontier_BattlePyramidFloor/scripts.inc
 	.byte 0
 
 BattleFrontier_BattlePyramidFloor_OnFrame: @ 8252A43

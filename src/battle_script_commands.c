@@ -2153,7 +2153,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
             if (GetBattlerAbility(gEffectBattler) == ABILITY_VITAL_SPIRIT
                 || GetBattlerAbility(gEffectBattler) == ABILITY_INSOMNIA
                 || IsAbilityOnSide(gEffectBattler, ABILITY_SWEET_VEIL)
-                || IsFlowerVeilProtected(gEffectBattler))
+                || IsFlowerVeilProtected(gEffectBattler)
+                || IsLeafGuardProtected(gEffectBattler))
                 break;
 
             CancelMultiTurnMoves(gEffectBattler);
@@ -2196,7 +2197,9 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             if (gBattleMons[gEffectBattler].status1)
                 break;
-            if (GetBattlerAbility(gEffectBattler) == ABILITY_IMMUNITY || IsFlowerVeilProtected(gEffectBattler))
+            if (GetBattlerAbility(gEffectBattler) == ABILITY_IMMUNITY
+                || IsFlowerVeilProtected(gEffectBattler)
+                || IsLeafGuardProtected(gEffectBattler))
                 break;
 
             statusChanged = TRUE;
@@ -2233,7 +2236,9 @@ void SetMoveEffect(bool32 primary, u32 certain)
             }
             if (IS_BATTLER_OF_TYPE(gEffectBattler, TYPE_FIRE))
                 break;
-            if (GetBattlerAbility(gEffectBattler) == ABILITY_WATER_VEIL || IsFlowerVeilProtected(gEffectBattler))
+            if (GetBattlerAbility(gEffectBattler) == ABILITY_WATER_VEIL
+                || IsFlowerVeilProtected(gEffectBattler)
+                || IsLeafGuardProtected(gEffectBattler))
                 break;
             if (gBattleMons[gEffectBattler].status1)
                 break;
@@ -2249,7 +2254,9 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             if (noSunCanFreeze == 0)
                 break;
-            if (GetBattlerAbility(gEffectBattler) == ABILITY_MAGMA_ARMOR || IsFlowerVeilProtected(gEffectBattler))
+            if (GetBattlerAbility(gEffectBattler) == ABILITY_MAGMA_ARMOR
+                || IsFlowerVeilProtected(gEffectBattler)
+                || IsLeafGuardProtected(gEffectBattler))
                 break;
 
             CancelMultiTurnMoves(gEffectBattler);
@@ -2292,7 +2299,9 @@ void SetMoveEffect(bool32 primary, u32 certain)
             }
             if (IS_BATTLER_OF_TYPE(gEffectBattler, TYPE_ELECTRIC))
                 break;
-            if (GetBattlerAbility(gEffectBattler) == ABILITY_LIMBER || IsFlowerVeilProtected(gEffectBattler))
+            if (GetBattlerAbility(gEffectBattler) == ABILITY_LIMBER
+                || IsFlowerVeilProtected(gEffectBattler)
+                || IsLeafGuardProtected(gEffectBattler))
                 break;
             if (gBattleMons[gEffectBattler].status1)
                 break;
@@ -2333,7 +2342,9 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             if (!IS_BATTLER_OF_TYPE(gEffectBattler, TYPE_POISON) && !IS_BATTLER_OF_TYPE(gEffectBattler, TYPE_STEEL))
             {
-                if (GetBattlerAbility(gEffectBattler) == ABILITY_IMMUNITY || IsFlowerVeilProtected(gEffectBattler))
+                if (GetBattlerAbility(gEffectBattler) == ABILITY_IMMUNITY
+                    || IsFlowerVeilProtected(gEffectBattler)
+                    || IsLeafGuardProtected(gEffectBattler))
                     break;
 
                 // It's redundant, because at this point we know the status1 value is 0.
@@ -4264,7 +4275,8 @@ static void Cmd_playstatchangeanimation(void)
                         && ability != ABILITY_CLEAR_BODY
                         && ability != ABILITY_WHITE_SMOKE
                         && !(ability == ABILITY_KEEN_EYE && currStat == STAT_ACC)
-                        && !(ability == ABILITY_HYPER_CUTTER && currStat == STAT_ATK))
+                        && !(ability == ABILITY_HYPER_CUTTER && currStat == STAT_ATK)
+                        && !(ability == ABILITY_BIG_PECKS && currStat == STAT_DEF))
                 {
                     if (gBattleMons[gActiveBattler].statStages[currStat] > 0)
                     {
@@ -6222,7 +6234,7 @@ static void DrawLevelUpWindow1(void)
     u16 currStats[NUM_STATS];
 
     GetMonLevelUpWindowStats(&gPlayerParty[gBattleStruct->expGetterMonId], currStats);
-    DrawLevelUpWindowPg1(0xD, gBattleResources->beforeLvlUp->stats, currStats, 0xE, 0xD, 0xF);
+    DrawLevelUpWindowPg1(0xD, gBattleResources->beforeLvlUp->stats, currStats, TEXT_DYNAMIC_COLOR_5, TEXT_DYNAMIC_COLOR_4, TEXT_DYNAMIC_COLOR_6);
 }
 
 static void DrawLevelUpWindow2(void)
@@ -6230,7 +6242,7 @@ static void DrawLevelUpWindow2(void)
     u16 currStats[NUM_STATS];
 
     GetMonLevelUpWindowStats(&gPlayerParty[gBattleStruct->expGetterMonId], currStats);
-    DrawLevelUpWindowPg2(0xD, currStats, 0xE, 0xD, 0xF);
+    DrawLevelUpWindowPg2(0xD, currStats, TEXT_DYNAMIC_COLOR_5, TEXT_DYNAMIC_COLOR_4, TEXT_DYNAMIC_COLOR_6);
 }
 
 static void sub_804F17C(void)
@@ -6630,6 +6642,14 @@ u32 IsFlowerVeilProtected(u32 battler)
 {
     if (IS_BATTLER_OF_TYPE(battler, TYPE_GRASS))
         return IsAbilityOnSide(battler, ABILITY_FLOWER_VEIL);
+    else
+        return 0;
+}
+
+u32 IsLeafGuardProtected(u32 battler)
+{
+    if (WEATHER_HAS_EFFECT && (gBattleWeather & WEATHER_SUN_ANY))
+        return GetBattlerAbility(battler) == ABILITY_LEAF_GUARD;
     else
         return 0;
 }
@@ -7622,7 +7642,8 @@ static void Cmd_various(void)
         }
         break;
     case VARIOUS_SET_AURORA_VEIL:
-        if (gSideStatuses[GET_BATTLER_SIDE(gActiveBattler)] & SIDE_STATUS_AURORA_VEIL)
+        if (gSideStatuses[GET_BATTLER_SIDE(gActiveBattler)] & SIDE_STATUS_AURORA_VEIL
+            || !(WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_HAIL_ANY))
         {
             gMoveResultFlags |= MOVE_RESULT_MISSED;
             gBattleCommunication[MULTISTRING_CHOOSER] = 0;

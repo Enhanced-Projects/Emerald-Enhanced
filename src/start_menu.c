@@ -87,7 +87,7 @@ EWRAM_DATA static u8 sBattlePyramidFloorWindowId = 0;
 EWRAM_DATA static u8 sStartMenuCursorPos = 0;
 EWRAM_DATA static u8 sNumStartMenuActions = 0;
 EWRAM_DATA static u8 sCurrentStartMenuActions[9] = {0};
-EWRAM_DATA static u8 sUnknown_02037619[2] = {0};
+EWRAM_DATA static u8 sInitStartMenuData[2] = {0};
 
 EWRAM_DATA static u8 (*sSaveDialogCallback)(void) = NULL;
 EWRAM_DATA static u8 sSaveDialogTimer = 0;
@@ -139,9 +139,7 @@ static void StartMenuTask(u8 taskId);
 static void SaveGameTask(u8 taskId);
 static void sub_80A0550(u8 taskId);
 static void sub_80A08A4(u8 taskId);
-
-// Some other callback
-static bool8 sub_809FA00(void);
+static bool8 FieldCB_ReturnToFieldStartMenu(void);
 
 static const struct WindowTemplate sSafariBallsWindowTemplate = {0, 1, 1, 9, 4, 0xF, 8};
 
@@ -476,33 +474,33 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
 
 static bool32 InitStartMenuStep(void)
 {
-    s8 value = sUnknown_02037619[0];
+    s8 state = sInitStartMenuData[0];
 
-    switch (value)
+    switch (state)
     {
     case 0:
-        sUnknown_02037619[0]++;
+        sInitStartMenuData[0]++;
         break;
     case 1:
         BuildStartMenuActions();
-        sUnknown_02037619[0]++;
+        sInitStartMenuData[0]++;
         break;
     case 2:
         sub_81973A4();
         DrawStdWindowFrame(sub_81979C4(sNumStartMenuActions), FALSE);
-        sUnknown_02037619[1] = 0;
-        sUnknown_02037619[0]++;
+        sInitStartMenuData[1] = 0;
+        sInitStartMenuData[0]++;
         break;
     case 3:
         if (GetSafariZoneFlag())
             ShowSafariBallsWindow();
         if (InBattlePyramid())
             ShowPyramidFloorWindow();
-        sUnknown_02037619[0]++;
+        sInitStartMenuData[0]++;
         break;
     case 4:
-        if (PrintStartMenuActions(&sUnknown_02037619[1], 2))
-            sUnknown_02037619[0]++;
+        if (PrintStartMenuActions(&sInitStartMenuData[1], 2))
+            sInitStartMenuData[0]++;
         break;
     case 5:
         sStartMenuCursorPos = sub_81983AC(GetStartMenuWindowId(), 1, 0, 9, 16, sNumStartMenuActions, sStartMenuCursorPos);
@@ -515,8 +513,8 @@ static bool32 InitStartMenuStep(void)
 
 static void InitStartMenu(void)
 {
-    sUnknown_02037619[0] = 0;
-    sUnknown_02037619[1] = 0;
+    sInitStartMenuData[0] = 0;
+    sInitStartMenuData[1] = 0;
     while (!InitStartMenuStep())
         ;
 }
@@ -531,31 +529,31 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
 {
     u8 taskId;
 
-    sUnknown_02037619[0] = 0;
-    sUnknown_02037619[1] = 0;
+    sInitStartMenuData[0] = 0;
+    sInitStartMenuData[1] = 0;
     taskId = CreateTask(StartMenuTask, 0x50);
     SetTaskFuncWithFollowupFunc(taskId, StartMenuTask, followupFunc);
 }
 
-static bool8 sub_809FA00(void)
+static bool8 FieldCB_ReturnToFieldStartMenu(void)
 {
     if (InitStartMenuStep() == FALSE)
     {
         return FALSE;
     }
 
-    sub_80AF688();
+    ReturnToFieldOpenStartMenu();
     return TRUE;
 }
 
-void sub_809FA18(void) // Called from field_screen.s
+void ShowReturnToFieldStartMenu(void)
 {
-    sUnknown_02037619[0] = 0;
-    sUnknown_02037619[1] = 0;
-    gFieldCallback2 = sub_809FA00;
+    sInitStartMenuData[0] = 0;
+    sInitStartMenuData[1] = 0;
+    gFieldCallback2 = FieldCB_ReturnToFieldStartMenu;
 }
 
-void sub_809FA34(u8 taskId) // Referenced in field_screen.s and rom_8011DC0.s
+void Task_ShowStartMenu(u8 taskId)
 {
     struct Task* task = &gTasks[taskId];
 
@@ -575,7 +573,7 @@ void sub_809FA34(u8 taskId) // Referenced in field_screen.s and rom_8011DC0.s
     }
 }
 
-void ShowStartMenu(void) // Called from overworld.c and field_control_avatar.s
+void ShowStartMenu(void)
 {
     if (!IsUpdateLinkStateCBActive())
     {
@@ -593,7 +591,7 @@ void ShowStartMenu(void) // Called from overworld.c and field_control_avatar.s
         PrintSongNumber(GetCurrentMapMusic());
     }
 
-    CreateStartMenuTask(sub_809FA34);
+    CreateStartMenuTask(Task_ShowStartMenu);
     ScriptContext2_Enable();
 }
 
@@ -737,7 +735,7 @@ static bool8 HandleStartMenuInput(void)
             && gMenuCallback != StartMenuSafariZoneRetireCallback
             && gMenuCallback != StartMenuBattlePyramidRetireCallback)
         {
-           FadeScreen(1, 0);
+           FadeScreen(FADE_TO_BLACK, 0);
         }
 
         return FALSE;
@@ -946,11 +944,12 @@ static bool8 StartMenuBattlePyramidRetireCallback(void)
     return FALSE;
 }
 
-void sub_809FDD4(void)
+// Functionally unused
+void ShowBattlePyramidStartMenu(void)
 {
     ClearDialogWindowAndFrameToTransparent(0, FALSE);
     ScriptUnfreezeEventObjects();
-    CreateStartMenuTask(sub_809FA34);
+    CreateStartMenuTask(Task_ShowStartMenu);
     ScriptContext2_Enable();
 }
 
@@ -1030,7 +1029,7 @@ static bool8 BattlePyramidRetireCallback(void)
         ClearDialogWindowAndFrameToTransparent(0, TRUE);
         ScriptUnfreezeEventObjects();
         ScriptContext2_Disable();
-        ScriptContext1_SetupScript(BattleFrontier_BattlePyramidEmptySquare_EventScript_252C88);
+        ScriptContext1_SetupScript(BattlePyramid_Retire);
         return TRUE;
     }
 
@@ -1056,7 +1055,7 @@ static u8 RunSaveCallback(void)
     return sSaveDialogCallback();
 }
 
-void SaveGame(void) // Called from cable_club.s
+void SaveGame(void)
 {
     InitSave();
     CreateTask(SaveGameTask, 0x50);
@@ -1251,7 +1250,7 @@ static u8 SaveDoSaveCallback(void)
     u8 saveStatus;
 
     IncrementGameStat(GAME_STAT_SAVED_GAME);
-    sub_81A9E90();
+    PausePyramidChallenge();
 
     if (gDifferentSaveFile == TRUE)
     {
@@ -1405,7 +1404,7 @@ static bool32 sub_80A03E4(u8 *par1)
     return FALSE;
 }
 
-void sub_80A0514(void) // Called from cable_club.s
+void sub_80A0514(void)
 {
     if (sub_80A03E4(&gMain.state))
     {
@@ -1574,7 +1573,7 @@ static void sub_80A08A4(u8 taskId)
     }
 }
 
-void sub_80A08CC(void) // Referenced in data/specials.inc and data/scripts/maps/BattleFrontier_BattleTowerLobby.inc
+void sub_80A08CC(void)
 {
     u8 taskId = CreateTask(sub_8153688, 0x5);
     gTasks[taskId].data[2] = 1;
@@ -1589,7 +1588,7 @@ static void HideStartMenuWindow(void)
     ScriptContext2_Disable();
 }
 
-void HideStartMenu(void) // Called from map_name_popup.s
+void HideStartMenu(void)
 {
     PlaySE(SE_SELECT);
     HideStartMenuWindow();
