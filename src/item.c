@@ -1050,7 +1050,10 @@ u16 ItemId_GetId(u16 itemId)
 
 u16 ItemId_GetPrice(u16 itemId)
 {
-    return gItems[SanitizeItemId(itemId)].price;
+    u16 priceModifier = (VarGet(VAR_RYU_PRICE_MULTIPLIER));
+    u16 oldprice = gItems[SanitizeItemId(itemId)].price;
+    oldprice = (oldprice * priceModifier / 100);
+    return oldprice;
 }
 
 u8 ItemId_GetHoldEffect(u16 itemId)

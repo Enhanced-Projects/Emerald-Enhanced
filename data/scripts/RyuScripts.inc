@@ -766,28 +766,28 @@ RyuDebugMenuScript::
 	switch VAR_RESULT
 	case 0, RyuDebug_PasscodeMenu
 	case 1, RyuDebug_UtilitiesMenu
-	case 1, RyuDebug_quickstart
-	case 2, RyuDebug_pokeedit
-	case 3, RyuDebug_enableWaystone
-	case 6, RyuDebug_Init_GiveAllItems
-	case 7, RyuDebug_DisableDebug
-	case 8, RyuDebug_cancel
+	case 2, RyuDebug_quickstart
+	case 3, RyuDebug_pokeedit
+	case 4, RyuDebug_enableWaystone
+	case 5, RyuDebug_Init_GiveAllItems
+	case 6, RyuDebug_DisableDebug
+	case 7, RyuDebug_cancel
 	goto RyuDebug_cancel
 	releaseall
 	end
 	
 RyuDebug_menu_nodevcheck::
 	msgbox RyuDebug_msg MSGBOX_SIGN
-	multichoicedefault 0, 0, 115, 8, 0
+	multichoicedefault 0, 0, 115, 7, 0
 	switch VAR_RESULT
 	case 0, RyuDebug_PasscodeMenu
 	case 1, RyuDebug_UtilitiesMenu
-	case 1, RyuDebug_quickstart
-	case 2, RyuDebug_pokeedit
-	case 3, RyuDebug_enableWaystone
-	case 6, RyuDebug_Init_GiveAllItems
-	case 7, RyuDebug_DisableDebug
-	case 8, RyuDebug_cancel
+	case 2, RyuDebug_quickstart
+	case 3, RyuDebug_pokeedit
+	case 4, RyuDebug_enableWaystone
+	case 5, RyuDebug_Init_GiveAllItems
+	case 6, RyuDebug_DisableDebug
+	case 7, RyuDebug_cancel
 	releaseall
 	end
 
@@ -802,9 +802,13 @@ RyuDebug_UtilitiesMenu:
 	goto RyuDebug_cancel
 	
 RyuDebug_pokeedit::
+	msgbox OpeningPokeEdit
     goto RyuPokeEditMenu
 	release
 	end
+
+OpeningPokeEdit:
+	.string "Opening Poke Edit...$"
 
 RyuDebug_money::
 	setvar VAR_TEMP_A, 32000
@@ -925,7 +929,7 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Init_GiveAllItems::
-	setvar VAR_TEMP_2, 289
+	setvar VAR_TEMP_2, 531
 	msgbox RyuDebug_GiveAllItemsBeginMsg MSGBOX_DEFAULT
 	goto RyuDebug_GiveAllItems
 	
@@ -935,7 +939,7 @@ RyuDebug_GiveAllItems::
 	goto RyuDebug_ReturnCallItems
 	
 RyuDebug_ReturnCallItems::
-	compare VAR_TEMP_2, 347
+	compare VAR_TEMP_2, 581
 	goto_if_eq RyuDebugGiveItemsDone
 	goto RyuDebug_GiveAllItems
 	
@@ -1091,6 +1095,7 @@ RyuPokeEditMenu::
 	case 5, RyuSetIvDebugMenu@
 	case 6, RyuSetFriendshipDebugMenu@
 	case 7, RyuExitPokeEditMenu@
+	goto RyuExitPokeEditMenu
 	
 RyuExitPokeEditMenu::
 	release

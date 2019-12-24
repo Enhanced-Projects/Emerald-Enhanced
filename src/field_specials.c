@@ -5350,85 +5350,85 @@ void RyuWarp2()
 
 void RyuCheckTempVars(void)
 {
-    u8 v0 = VarGet(VAR_TEMP_0);
-    u8 v1 = VarGet(VAR_TEMP_1);
-    u8 v2 = VarGet(VAR_TEMP_2);
-    u8 v3 = VarGet(VAR_TEMP_3);
-    u8 v4 = VarGet(VAR_TEMP_4);
-    u8 v5 = VarGet(VAR_TEMP_5);
-    u8 v6 = VarGet(VAR_TEMP_6);
-    u8 v7 = VarGet(VAR_TEMP_7);
-    u8 v8 = VarGet(VAR_TEMP_8);
-    u8 v9 = VarGet(VAR_TEMP_9);
-    u8 vA = VarGet(VAR_TEMP_A);
-    u8 vB = VarGet(VAR_TEMP_B);
-    u8 vC = VarGet(VAR_TEMP_C);
-    u8 vD = VarGet(VAR_TEMP_D);
-    u8 vE = VarGet(VAR_TEMP_E);
-    u8 vF = VarGet(VAR_TEMP_F);
+    u16 v0 = VarGet(VAR_TEMP_0);
+    u16 v1 = VarGet(VAR_TEMP_1);
+    u16 v2 = VarGet(VAR_TEMP_2);
+    u16 v3 = VarGet(VAR_TEMP_3);
+    u16 v4 = VarGet(VAR_TEMP_4);
+    u16 v5 = VarGet(VAR_TEMP_5);
+    u16 v6 = VarGet(VAR_TEMP_6);
+    u16 v7 = VarGet(VAR_TEMP_7);
+    u16 v8 = VarGet(VAR_TEMP_8);
+    u16 v9 = VarGet(VAR_TEMP_9);
+    u16 vA = VarGet(VAR_TEMP_A);
+    u16 vB = VarGet(VAR_TEMP_B);
+    u16 vC = VarGet(VAR_TEMP_C);
+    u16 vD = VarGet(VAR_TEMP_D);
+    u16 vE = VarGet(VAR_TEMP_E);
+    u16 vF = VarGet(VAR_TEMP_F);
     //ConvertIntToDecimalStringN(gStringVar1, 0, STR_CONV_MODE_LEFT_ALIGN, 1);
 
     //1
-    ConvertIntToDecimalStringN(gStringVar1, v0, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar1, v0, STR_CONV_MODE_LEFT_ALIGN, 5);
     //2
-    ConvertIntToDecimalStringN(gStringVar3, v1, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, v1, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //3
-    ConvertIntToDecimalStringN(gStringVar3, v2, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, v2, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //4
-    ConvertIntToDecimalStringN(gStringVar3, v3, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, v3, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //5
-    ConvertIntToDecimalStringN(gStringVar3, v4, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, v4, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //6
-    ConvertIntToDecimalStringN(gStringVar3, v5, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, v5, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //7
-    ConvertIntToDecimalStringN(gStringVar3, v6, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, v6, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //8
-    ConvertIntToDecimalStringN(gStringVar3, v7, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, v7, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //adding linbreak
     StringAppend(gStringVar1, gRyu_TempVarIntro);
     //9
-    ConvertIntToDecimalStringN(gStringVar3, v8, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, v8, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gStringVar3);
     //10
-    ConvertIntToDecimalStringN(gStringVar3, v9, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, v9, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //11
-    ConvertIntToDecimalStringN(gStringVar3, vA, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, vA, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //12
-    ConvertIntToDecimalStringN(gStringVar3, vB, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, vB, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //13
-    ConvertIntToDecimalStringN(gStringVar3, vC, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, vC, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //14
-    ConvertIntToDecimalStringN(gStringVar3, vD, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, vD, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //15
-    ConvertIntToDecimalStringN(gStringVar3, vE, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, vE, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
     //16
-    ConvertIntToDecimalStringN(gStringVar3, vF, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, vF, STR_CONV_MODE_LEFT_ALIGN, 5);
     StringAppend(gStringVar1, gText_ThisIsAPokemon);
     StringAppend(gStringVar1, gStringVar3);
 }

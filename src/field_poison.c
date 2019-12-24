@@ -123,31 +123,31 @@ s32 DoPoisonFieldEffect(void)
     struct Pokemon *pokemon = gPlayerParty;
     u32 numPoisoned = 0;
     u32 numFainted = 0;
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        if (GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES) && GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN)
-        {
-            hp = GetMonData(pokemon, MON_DATA_HP);
-            if (hp == 0 || --hp == 0)
-            {
-                numFainted++;
-            }
-            SetMonData(pokemon, MON_DATA_HP, &hp);
-            numPoisoned++;
-        }
-        pokemon++;
-    }
-    if (numFainted != 0 || numPoisoned != 0)
-    {
-        FldEffPoison_Start();
-    }
-    if (numFainted != 0)
-    {
-        return FLDPSN_FNT;
-    }
-    if (numPoisoned != 0)
-    {
-        return FLDPSN_PSN;
-    }
+    //for (i = 0; i < PARTY_SIZE; i++)
+    //{
+    //    if (GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES) && GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN)
+    //    {
+    //        hp = GetMonData(pokemon, MON_DATA_HP);
+    //        if (hp == 0 || --hp == 0)
+    //        {
+    //            numFainted++;
+    //        }
+    //        SetMonData(pokemon, MON_DATA_HP, &hp);
+    //        numPoisoned++;
+    //    }
+    //    pokemon++;
+    //}
+    //if (numFainted != 0 || numPoisoned != 0)
+    //{
+    //    FldEffPoison_Start();
+    //}
+    //if (numFainted != 0)
+    //{
+    //    return FLDPSN_FNT;
+    //}
+    //if (numPoisoned != 0)
+    //{
+    //    return FLDPSN_PSN;
+    //}
     return FLDPSN_NONE;
 }

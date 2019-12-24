@@ -561,7 +561,7 @@ static void BuyMenuPrintPriceInList(u8 windowId, s32 item, u8 y)
         {
             ConvertIntToDecimalStringN(
                 gStringVar1,
-                ItemId_GetPrice(item) >> GetPriceReduction(POKENEWS_SLATEPORT),
+                ItemId_GetPrice(item),
                 STR_CONV_MODE_LEFT_ALIGN,
                 5);
         }
@@ -933,7 +933,7 @@ static void Task_BuyMenu(u8 taskId)
 
             if (gMartInfo.martType == MART_TYPE_NORMAL)
             {
-                gShopDataPtr->totalCost = (ItemId_GetPrice(itemId) >> GetPriceReduction(POKENEWS_SLATEPORT));
+                gShopDataPtr->totalCost = (ItemId_GetPrice(itemId));
             }
             else
             {

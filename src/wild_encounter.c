@@ -25,6 +25,7 @@
 #include "constants/species.h"
 
 extern const u8 EventScript_RepelWoreOff[];
+extern int CountBadges();
 
 #define NUM_FEEBAS_SPOTS    6
 
@@ -348,6 +349,27 @@ static u8 PickWildMonNature(void)
     return Random() % 25;
 }
 
+static const u16 sRange[9][2] = {//2d array for level ranges
+    {5,10},
+    {10,20},
+    {19,29},
+    {28,35},
+    {36,41},
+    {40,45},
+    {44,49}, 
+    {48,53},
+    {52,60},
+};
+
+int RyuChooseWildLevel(void)
+{
+    u8 badge = (CountBadges());
+    u8 level = (Random() % (sRange[badge][1] - sRange[badge][0])) + sRange[badge][0];
+    //sRange is the array declared above, [badge] is the index, [0] and [1] are the first and second values of the index listed.
+    //To get a range of random values, do (array[index][second value] minus array[index][first value]) plus array[index][first value]
+    return level;
+}
+
 static void CreateWildMon(u16 species, u8 level)
 {
     bool32 checkCuteCharm;
@@ -379,11 +401,11 @@ static void CreateWildMon(u16 species, u8 level)
         else
             gender = MON_FEMALE;
 
-        CreateMonWithGenderNatureLetter(&gEnemyParty[0], species, level, 32, gender, PickWildMonNature(), 0);
+        CreateMonWithGenderNatureLetter(&gEnemyParty[0], species, (RyuChooseWildLevel()), 32, gender, PickWildMonNature(), 0);
         return;
     }
 
-    CreateMonWithNature(&gEnemyParty[0], species, level, 32, PickWildMonNature());
+    CreateMonWithNature(&gEnemyParty[0], species, (RyuChooseWildLevel()), 32, PickWildMonNature());
 }
 
 enum

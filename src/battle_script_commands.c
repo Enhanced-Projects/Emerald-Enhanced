@@ -65,6 +65,9 @@ extern const u8* const gBattleScriptsForMoveEffects[];
 #define STAT_CHANGE_WORKED      0
 #define STAT_CHANGE_DIDNT_WORK  1
 
+extern void checkbadgecount(void);
+extern void RyuKillMon(void);
+
 static bool8 IsTwoTurnsMove(u16 move);
 static void TrySetDestinyBondToHappen(void);
 static u8 AttacksThisTurn(u8 battlerId, u16 move); // Note: returns 1 if it's a charging turn, otherwise 2.
@@ -3330,9 +3333,28 @@ static void Cmd_getexp(void)
     u16 item;
     s32 i; // also used as stringId
     u8 holdEffect;
+    u32 multiplier = (VarGet(VAR_RYU_EXP_MULTIPLIER));
     s32 sentIn;
     s32 viaExpShare = 0;
     u16 *exp = &gBattleStruct->expValue;
+    u32 RyuExpBatteryTemp = 0;
+
+    if ((VarGet(VAR_RYU_EXP_MULTIPLIER)) == 1)//If no multiplier is present, You get 12.5% exp per badge you own
+        {   
+            u16 badges = 0;
+            checkbadgecount();
+            badges = (gSpecialVar_Result);
+               
+
+            if (badges == 0)
+                {
+                    multiplier = 1000;
+                }
+            else
+                {
+                    multiplier = (1000+(badges*125));
+                }
+        }
 
     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
     sentIn = gSentPokesToOpponent[(gBattlerFainted & 2) >> 1];
@@ -3380,8 +3402,14 @@ static void Cmd_getexp(void)
                     viaExpShare++;
             }
 
-            calculatedExp = gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7;
-
+            calculatedExp = (((gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7) * multiplier) / 1000);
+            //RyuExpBatteryTemp = (VarGet(VAR_RYU_EXP_BATTERY));
+            RyuExpBatteryTemp = (((VarGet(VAR_RYU_EXP_BATTERY) + ((((gBattleMons[gBattlerFainted].level) * 5) * multiplier) / 1000))));
+            if (RyuExpBatteryTemp > 50000)
+            {
+                RyuExpBatteryTemp = 50000;
+            }
+            VarSet(VAR_RYU_EXP_BATTERY, RyuExpBatteryTemp);
             if (viaExpShare) // at least one mon is getting exp via exp share
             {
                 *exp = calculatedExp / 2 / viaSentIn;
@@ -5875,8 +5903,13 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
 static void Cmd_getmoneyreward(void)
 {
     u32 moneyReward = GetTrainerMoneyToGive(gTrainerBattleOpponent_A);
+    u32 MultMoney = VarGet(VAR_RYU_EXP_MULTIPLIER);
     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    {
         moneyReward += GetTrainerMoneyToGive(gTrainerBattleOpponent_B);
+    }
+        
+    moneyReward =(((moneyReward * MultMoney) / 1000) * 2);
 
     AddMoney(&gSaveBlock1Ptr->money, moneyReward);
     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, moneyReward);
