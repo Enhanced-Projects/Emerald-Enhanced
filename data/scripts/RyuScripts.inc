@@ -765,15 +765,14 @@ RyuDebugMenuScript::
 	multichoicedefault 0, 0, 115, 8, 0
 	switch VAR_RESULT
 	case 0, RyuDebug_PasscodeMenu
+	case 1, RyuDebug_UtilitiesMenu
 	case 1, RyuDebug_quickstart
 	case 2, RyuDebug_pokeedit
 	case 3, RyuDebug_enableWaystone
-	case 4, RyuDebug_DisableEncounters
-	case 5, RyuDebug_Utility1
 	case 6, RyuDebug_Init_GiveAllItems
 	case 7, RyuDebug_DisableDebug
 	case 8, RyuDebug_cancel
-	case 127, RyuDebug_cancel
+	goto RyuDebug_cancel
 	releaseall
 	end
 	
@@ -782,17 +781,25 @@ RyuDebug_menu_nodevcheck::
 	multichoicedefault 0, 0, 115, 8, 0
 	switch VAR_RESULT
 	case 0, RyuDebug_PasscodeMenu
+	case 1, RyuDebug_UtilitiesMenu
 	case 1, RyuDebug_quickstart
 	case 2, RyuDebug_pokeedit
 	case 3, RyuDebug_enableWaystone
-	case 4, RyuDebug_DisableEncounters
-	case 5, RyuDebug_Utility1
 	case 6, RyuDebug_Init_GiveAllItems
 	case 7, RyuDebug_DisableDebug
 	case 8, RyuDebug_cancel
-	case 127, RyuDebug_cancel
 	releaseall
 	end
+
+RyuDebug_UtilitiesMenu:
+	multichoicedefault 0, 0, 143, 5, 0
+	switch VAR_RESULT
+	case 0, RyuDebug_Phasing
+	case 1, RyuDebug_Encounters
+	case 2, RyuDebug_EnableSaveViewer
+	case 3, RyuDebug_ViewTempVars
+	case 4, RyuDebug_cancel
+	goto RyuDebug_cancel
 	
 RyuDebug_pokeedit::
     goto RyuPokeEditMenu
@@ -812,7 +819,7 @@ RyuDebug_money::
 	msgbox RyuDebug_money_text MSGBOX_DEFAULT
 	return
 
-RyuDebug_DisableEncounters::
+RyuDebug_Encounters::
 	goto_if_set FLAG_RYU_DEV_DISENC, RyuDebug_EnENC
 	setflag FLAG_RYU_DEV_DISENC
 	msgbox RyuEncDisabled
@@ -839,7 +846,35 @@ RyuDebug_DisableDebug::
 	msgbox DevModeDisabled MSGBOX_DEFAULT
 	releaseall
 	end
-	
+
+RyuDebug_EnableSaveViewer::
+	setvar VAR_RECYCLE_GOODS, 45454
+	msgbox Ryu_saveViewerEnabled
+	release
+	end
+
+Ryu_saveViewerEnabled:
+	.string "First variable set to beacon the\nsave viewer.\pSave the game twice to make sure\nboth save banks are the same!$"
+
+RyuDebug_Phasing::
+	goto_if_set FLAG_RYU_COLLISION_OFF, Ryu_DisablePhasing
+	setflag FLAG_RYU_COLLISION_OFF
+	msgbox Ryu_CollisionOffMsg
+	release
+	end
+
+Ryu_DisablePhasing::
+	clearflag FLAG_RYU_COLLISION_OFF
+	msgbox Ryu_CollisionOnMsg
+	release
+	end
+
+Ryu_CollisionOffMsg:
+	.string "Entered the Ethereal plane.$"
+
+Ryu_CollisionOnMsg:
+	.string "Returned to Material plane.$"
+
 DevModeDisabled:
 	.string "{PLAYER} is no longer a developer.$"
 	
@@ -880,13 +915,8 @@ RyuDebug_enableWaystone::
 	setflag FLAG_LANDMARK_AQUA_OFFICE
 	return
 
-RyuDebug_Utility1::
-	setvar VAR_RECYCLE_GOODS, 45454
-	buffernumberstring 0, VAR_RECYCLE_GOODS
-	msgbox RDB_CTVMsg
-	closemessage
-	checkplayergender
-	buffernumberstring 0, VAR_RESULT
+RyuDebug_ViewTempVars::
+	special RyuCheckTempVars
 	msgbox RDB_CTVMsg
 	releaseall
 	end

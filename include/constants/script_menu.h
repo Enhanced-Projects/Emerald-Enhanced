@@ -151,6 +151,7 @@
 #define MULTI_GCMS_MAIN_MENU               140
 #define MULTI_BALL_CHANGER_SELECT_MENU     141
 #define MULTI_SELECT_NEW_GAME_PLUS_MODE    142
+#define MULTI_DEV_UTILITY_SUBMENU          143
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

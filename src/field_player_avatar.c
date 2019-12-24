@@ -681,6 +681,9 @@ u8 CheckForEventObjectCollision(struct EventObject *eventObject, s16 x, s16 y, u
     if (collision == COLLISION_ELEVATION_MISMATCH && CanStopSurfing(x, y, direction))
         return COLLISION_STOP_SURFING;
 
+    if (FlagGet(FLAG_RYU_COLLISION_OFF) == 1)
+        return COLLISION_NONE;
+
     if (ShouldJumpLedge(x, y, direction))
     {
         IncrementGameStat(GAME_STAT_JUMPED_DOWN_LEDGES);

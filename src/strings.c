@@ -1829,15 +1829,13 @@ const u8 gText_Date2[] = _("CoveLily Motel");
 const u8 gText_Date3[] = _("Mossdeep Quays");
 const u8 gText_DateCancel[] = _("Cancel Date");
 
-const u8 gText_RareCandies[] = _("Passcode Menu...");
-const u8 gText_GodPoke[] = _("QuickStart");
-const u8 gText_Waystone[] = _("Open Pokeedit");
+const u8 gText_PasscodeMenu[] = _("Passcode Menu...");
+const u8 gText_Utilities[] = _("Utilities...");
+const u8 gText_QuickStart[] = _("QuickStart");
+const u8 gText_PokeEdit[] = _("Open Pokeedit");
 const u8 gText_TownFlags[] = _("Enable Waystone");
-const u8 gText_Money[] = _("Give p250,000");
-const u8 gText_DisEnc[] = _("Dev Repel Toggle");
-const u8 gText_RelFlagsStatus[] = _("Utility Option 1");
-const u8 gText_Mirage[] = _("Give Items Kit");
-const u8 gText_RelFlagsList[] = _("Disable Dev Mode");
+const u8 gText_ItemsKit[] = _("Give Items Kit");
+const u8 gText_DisableDevMode[] = _("Disable Dev Mode");
 const u8 gText_DebugCancel[] = _("Close Menu");
 
 const u8 gText_HpEvMenu252[] = _("252 HP");
@@ -2115,3 +2113,7 @@ const u8 gText_BCSafariball[] = _("Safari");
 const u8 gText_BCDiveball[] = _("Dive");
 const u8 gText_BCCancel[] = _("No Change");
 
+const u8 gText_RyuDevSubWalkThroughWalls[] = _("Phasing");
+const u8 gText_RyuDevSubDevRepelToggle[] = _("Dev Repel Toggle");
+const u8 gText_RyuDevSubEnableSaveView[] = _("Enable Save Viewer");
+const u8 gText_RyuDevSubViewTempVars[] = _("Check Temp Vars");

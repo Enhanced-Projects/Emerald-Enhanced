@@ -2866,15 +2866,13 @@ extern const u8 gText_Date2[];
 extern const u8 gText_Date3[];
 extern const u8 gText_DateCancel[];
 
-extern const u8 gText_RareCandies[];
-extern const u8 gText_Waystone[];
+extern const u8 gText_PasscodeMenu[];
+extern const u8 gText_PokeEdit[];
 extern const u8 gText_TownFlags[];
-extern const u8 gText_RelFlagsStatus[];
-extern const u8 gText_RelFlagsList[];
-extern const u8 gText_GodPoke[];
-extern const u8 gText_Money[];
-extern const u8 gText_DisEnc[];
-extern const u8 gText_Mirage[];
+extern const u8 gText_Utilities[];
+extern const u8 gText_DisableDevMode[];
+extern const u8 gText_QuickStart[];
+extern const u8 gText_ItemsKit[];
 extern const u8 gText_DebugCancel[];
 
 extern const u8 gText_HpEvMenu252[];
@@ -3066,5 +3064,10 @@ extern const u8 gText_GCMSSwapAbility[];
  extern const u8 gText_BCSafariball[];
  extern const u8 gText_BCDiveball[];
  extern const u8 gText_BCCancel[];
+
+extern const u8 gText_RyuDevSubWalkThroughWalls[];
+extern const u8 gText_RyuDevSubDevRepelToggle[];
+extern const u8 gText_RyuDevSubEnableSaveView[];
+extern const u8 gText_RyuDevSubViewTempVars[];
 
 #endif // GUARD_STRINGS_H

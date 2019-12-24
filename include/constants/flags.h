@@ -697,7 +697,7 @@
 #define FLAG_RYU_LANETTE_INTRO  0x292 // Unused Flag
 #define FLAG_RYU_LANETTE_EVENT_0  0x293 // Unused Flag
 #define FLAG_RYU_DS_MALE_MOM_MET  0x294 // Unused Flag
-#define FLAG_UNUSED_0x295  0x295 // Unused Flag
+#define FLAG_RYU_COLLISION_OFF  0x295 // Unused Flag
 #define FLAG_UNUSED_0x296  0x296 // Unused Flag
 #define FLAG_UNUSED_0x297  0x297 // Unused Flag
 #define FLAG_UNUSED_0x298  0x298 // Unused Flag

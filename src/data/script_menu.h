@@ -781,14 +781,13 @@ static const struct MenuAction MultichoiceList_114[] =
 
 static const struct MenuAction MultichoiceList_115[] =
 {
-    {gText_RareCandies},
-    {gText_GodPoke},
-    {gText_Waystone},
+    {gText_PasscodeMenu},
+    {gText_Utilities},
+    {gText_QuickStart},
+    {gText_PokeEdit},
     {gText_TownFlags},
-    {gText_DisEnc},
-    {gText_RelFlagsStatus},
-    {gText_Mirage},
-    {gText_RelFlagsList},
+    {gText_ItemsKit},
+    {gText_DisableDevMode},
     {gText_DebugCancel},
 };
 
@@ -1136,6 +1135,14 @@ static const struct MenuAction MultichoiceList_142[]=
     {gText_RyuNewGameHardcoreMode},
 };
 
+static const struct MenuAction MultichoiceList_UtilitySubMenu[]=
+{
+    {gText_RyuDevSubWalkThroughWalls},
+    {gText_RyuDevSubDevRepelToggle},
+    {gText_RyuDevSubEnableSaveView},
+    {gText_RyuDevSubViewTempVars},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1292,6 +1299,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_GCMS_MAIN_MENU]             = MULTICHOICE(MultichoiceList_140),
     [MULTI_BALL_CHANGER_SELECT_MENU]   = MULTICHOICE(MultichoiceList_141),
     [MULTI_SELECT_NEW_GAME_PLUS_MODE]  = MULTICHOICE(MultichoiceList_142),
+    [MULTI_DEV_UTILITY_SUBMENU]        = MULTICHOICE(MultichoiceList_UtilitySubMenu),
 };
 
 const u8 *const gStdStrings[] =

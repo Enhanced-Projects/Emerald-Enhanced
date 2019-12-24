@@ -747,6 +747,7 @@ static bool8 HandleStartMenuInput(void)
     {
         RemoveExtraStartMenuWindows();
         HideStartMenu();
+        RemovePrintedNumber();
         return TRUE;
     }
 
@@ -900,6 +901,7 @@ static bool8 StartMenuExitCallback(void)
     if (gMain.heldKeys & R_BUTTON)
     {
         HideStartMenu();
+        RemovePrintedNumber();
         HideFieldMessageBox();
         ScriptContext2_Enable();
         ScriptContext1_SetupScript(RyuDebugBetaMenuScript);
