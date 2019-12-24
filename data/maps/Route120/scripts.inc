@@ -1,7 +1,7 @@
 Route120_MapScripts:: @ 81F53EC
-	map_script ON_RESUME, Route120_OnResume
-	map_script ON_TRANSITION, Route120_OnTransition
-	map_script ON_LOAD, Route120_OnLoad
+	map_script MAP_SCRIPT_ON_RESUME, Route120_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Route120_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD , Route120_OnLoad
 	.byte 0
 
 Route120_OnResume: @ 81F53FC

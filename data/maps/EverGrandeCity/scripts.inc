@@ -1,5 +1,5 @@
 EverGrandeCity_MapScripts:: @ 81E7D1B
-	map_script ON_TRANSITION, EverGrandeCity_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, EverGrandeCity_OnTransition
 	.byte 0
 
 EverGrandeCity_OnTransition: @ 81E7D21

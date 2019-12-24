@@ -1,6 +1,6 @@
 MtChimney_CableCarStation_MapScripts:: @ 822ABFA
-	map_script ON_TRANSITION, MtChimney_CableCarStation_OnTransition
-	map_script ON_FRAME, MtChimney_CableCarStation_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, MtChimney_CableCarStation_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MtChimney_CableCarStation_OnFrame
 	.byte 0
 
 MtChimney_CableCarStation_OnTransition: @ 822AC05

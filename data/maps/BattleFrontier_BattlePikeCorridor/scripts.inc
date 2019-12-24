@@ -1,6 +1,6 @@
 BattleFrontier_BattlePikeCorridor_MapScripts:: @ 825C771
-	map_script ON_FRAME, BattleFrontier_BattlePikeCorridor_MapScript2_25C77C
-	map_script ON_WARP, BattleFrontier_BattlePikeCorridor_MapScript2_25C7F7
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattlePikeCorridor_MapScript2_25C77C
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattlePikeCorridor_MapScript2_25C7F7
 	.byte 0
 
 BattleFrontier_BattlePikeCorridor_MapScript2_25C77C: @ 825C77C

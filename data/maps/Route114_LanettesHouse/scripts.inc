@@ -1,5 +1,5 @@
 Route114_LanettesHouse_MapScripts:: @ 822B2C8
-	map_script ON_TRANSITION, Route114_LanettesHouse_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, Route114_LanettesHouse_OnTransition
 	.byte 0
 
 Route114_LanettesHouse_OnTransition: @ 822B2CE

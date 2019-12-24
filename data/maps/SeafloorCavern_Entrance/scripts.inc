@@ -1,5 +1,5 @@
 SeafloorCavern_Entrance_MapScripts:: @ 823446E
-	map_script ON_RESUME, SeafloorCavern_Entrance_OnResume
+	map_script MAP_SCRIPT_ON_RESUME, SeafloorCavern_Entrance_OnResume
 	.byte 0
 
 SeafloorCavern_Entrance_OnResume: @ 8234474

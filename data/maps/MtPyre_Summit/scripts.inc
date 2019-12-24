@@ -1,5 +1,5 @@
 MtPyre_Summit_MapScripts:: @ 8231FF7
-	map_script ON_TRANSITION, MtPyre_Summit_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, MtPyre_Summit_OnTransition
 	.byte 0
 
 MtPyre_Summit_OnTransition: @ 8231FFD

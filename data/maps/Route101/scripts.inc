@@ -1,6 +1,6 @@
 Route101_MapScripts:: @ 81EBCBA
-	map_script ON_TRANSITION, Route101_OnTransition
-	map_script ON_FRAME, Route101_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, Route101_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route101_OnFrame
 	.byte 0
 
 Route101_OnTransition: @ 81EBCC5

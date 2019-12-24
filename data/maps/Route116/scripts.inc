@@ -1,7 +1,7 @@
 Route116_MapScripts:: @ 81F2C0C
-	map_script ON_TRANSITION, Route116_OnTransition
-	map_script ON_LOAD, Route116_OnLoad
-	map_script ON_FRAME, Route116_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, Route116_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD , Route116_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route116_OnFrame
 	.byte 0
 
 Route116_OnTransition: @ 81F2C1C

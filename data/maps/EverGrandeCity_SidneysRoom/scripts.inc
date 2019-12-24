@@ -1,8 +1,8 @@
 EverGrandeCity_SidneysRoom_MapScripts:: @ 8227F01
-	map_script ON_LOAD, EverGrandeCity_SidneysRoom_OnLoad
-	map_script ON_WARP, EverGrandeCity_SidneysRoom_OnWarp
-	map_script ON_TRANSITION, EverGrandeCity_SidneysRoom_OnTransition
-	map_script ON_FRAME, EverGrandeCity_SidneysRoom_OnFrame
+	map_script MAP_SCRIPT_ON_LOAD , EverGrandeCity_SidneysRoom_OnLoad
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, EverGrandeCity_SidneysRoom_OnWarp
+	map_script MAP_SCRIPT_ON_TRANSITION, EverGrandeCity_SidneysRoom_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, EverGrandeCity_SidneysRoom_OnFrame
 	.byte 0
 
 EverGrandeCity_SidneysRoom_OnTransition: @ 8227F16

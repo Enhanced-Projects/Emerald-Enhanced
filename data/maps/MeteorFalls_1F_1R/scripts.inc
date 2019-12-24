@@ -1,5 +1,5 @@
 MeteorFalls_1F_1R_MapScripts:: @ 822BD2A
-	map_script ON_LOAD, MeteorFalls_1F_1R_OnLoad
+	map_script MAP_SCRIPT_ON_LOAD , MeteorFalls_1F_1R_OnLoad
 	.byte 0
 
 MeteorFalls_1F_1R_OnLoad: @ 822BD30

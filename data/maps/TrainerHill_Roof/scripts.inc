@@ -1,6 +1,6 @@
 TrainerHill_Roof_MapScripts:: @ 8268FA7
-	map_script ON_RESUME, TrainerHill_OnResume
-	map_script ON_FRAME, TrainerHill_OnFrame
+	map_script MAP_SCRIPT_ON_RESUME, TrainerHill_OnResume
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrainerHill_OnFrame
 	.byte 0
 
 TrainerHill_Roof_EventScript_Owner:: @ 8268FB2

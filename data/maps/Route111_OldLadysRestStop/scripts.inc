@@ -1,5 +1,5 @@
 Route111_OldLadysRestStop_MapScripts:: @ 822A916
-	map_script ON_TRANSITION, Route111_OldLadysRestStop_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, Route111_OldLadysRestStop_OnTransition
 	.byte 0
 
 Route111_OldLadysRestStop_OnTransition: @ 822A91C

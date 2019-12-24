@@ -1,5 +1,5 @@
 AbandonedShip_HiddenFloorRooms_MapScripts:: @ 8238C49
-	map_script ON_FRAME, AbandonedShip_HiddenFloorRooms_OnFrame
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, AbandonedShip_HiddenFloorRooms_OnFrame
 	.byte 0
 
 AbandonedShip_HiddenFloorRooms_OnFrame: @ 8238C4F

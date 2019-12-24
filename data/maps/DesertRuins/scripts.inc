@@ -1,7 +1,7 @@
 DesertRuins_MapScripts:: @ 822D95B
-	map_script ON_RESUME, DesertRuins_OnResume
-	map_script ON_LOAD, DesertRuins_OnLoad
-	map_script ON_TRANSITION, DesertRuins_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, DesertRuins_OnResume
+	map_script MAP_SCRIPT_ON_LOAD , DesertRuins_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, DesertRuins_OnTransition
 	.byte 0
 
 DesertRuins_OnResume: @ 822D96B

@@ -1,7 +1,7 @@
 Route125_MapScripts:: @ 81F6748
-	map_script ON_TRANSITION, Route125_OnTransition
-	map_script ON_LOAD, Route125_OnLoad
-	map_script ON_FRAME, Route125_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, Route125_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD , Route125_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route125_OnFrame
 	.byte 0
 
 Route125_OnTransition: @ 81F6758

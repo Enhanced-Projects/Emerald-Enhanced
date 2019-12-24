@@ -1,7 +1,7 @@
 SkyPillar_4F_MapScripts:: @ 8239671
-	map_script ON_FRAME, CaveHole_CheckFallDownHole
-	map_script ON_TRANSITION, SkyPillar_4F_OnTransition
-	map_script ON_RESUME, SkyPillar_4F_SetHoleWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, CaveHole_CheckFallDownHole
+	map_script MAP_SCRIPT_ON_TRANSITION, SkyPillar_4F_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, SkyPillar_4F_SetHoleWarp
 	.byte 0
 
 SkyPillar_4F_OnTransition: @ 8239681

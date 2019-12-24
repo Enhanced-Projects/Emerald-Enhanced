@@ -1,6 +1,6 @@
 BattleFrontier_BattleArenaLobby_MapScripts:: @ 8255C36
-	map_script ON_FRAME, BattleFrontier_BattleArenaLobby_OnFrame
-	map_script ON_WARP, BattleFrontier_BattleArenaLobby_OnWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleArenaLobby_OnFrame
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattleArenaLobby_OnWarp
 	.byte 0
 
 BattleFrontier_BattleArenaLobby_OnWarp: @ 8255C41

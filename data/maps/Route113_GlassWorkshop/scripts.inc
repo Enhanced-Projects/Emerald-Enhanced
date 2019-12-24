@@ -1,5 +1,5 @@
 Route113_GlassWorkshop_MapScripts:: @ 826ED03
-	map_script ON_TRANSITION, Route113_GlassWorkshop_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, Route113_GlassWorkshop_OnTransition
 	.byte 0
 
 	.set BLUE_FLUTE_PRICE,   250

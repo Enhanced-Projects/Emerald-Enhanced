@@ -1,8 +1,8 @@
 Route110_TrickHousePuzzle7_MapScripts:: @ 826E091
-	map_script ON_RESUME, Route110_TrickHousePuzzle7_OnResume
-	map_script ON_TRANSITION, Route110_TrickHousePuzzle7_OnTransition
-	map_script ON_LOAD, Route110_TrickHousePuzzle7_OnLoad
-	map_script ON_FRAME, Route110_TrickHousePuzzle7_OnFrame
+	map_script MAP_SCRIPT_ON_RESUME, Route110_TrickHousePuzzle7_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Route110_TrickHousePuzzle7_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD , Route110_TrickHousePuzzle7_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route110_TrickHousePuzzle7_OnFrame
 	.byte 0
 
 @ Puzzle Room 7 in RSE uses whatever puzzle Mossdeep Gym uses

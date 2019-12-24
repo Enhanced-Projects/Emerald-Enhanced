@@ -1,5 +1,5 @@
 BattleFrontier_OutsideWest_MapScripts:: @ 823D3E1
-	map_script ON_TRANSITION, BattleFrontier_OutsideWest_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_OutsideWest_OnTransition
 	.byte 0
 
 BattleFrontier_OutsideWest_OnTransition: @ 823D3E7

@@ -1,6 +1,6 @@
 Route104_MapScripts:: @ 81ECC32
-	map_script ON_FRAME, Route104_OnFrame
-	map_script ON_TRANSITION, Route104_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, Route104_OnTransition
 	.byte 0
 
 Route104_OnFrame: @ 81ECC3D

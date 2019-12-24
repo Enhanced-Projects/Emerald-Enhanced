@@ -1,6 +1,6 @@
 NavelRock_Bottom_MapScripts:: @ 8269255
-	map_script ON_TRANSITION, NavelRock_Bottom_OnTransition
-	map_script ON_RESUME, NavelRock_Bottom_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, NavelRock_Bottom_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, NavelRock_Bottom_OnResume
 	.byte 0
 
 NavelRock_Bottom_OnTransition: @ 8269260

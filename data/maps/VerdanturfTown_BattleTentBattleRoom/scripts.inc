@@ -1,7 +1,7 @@
 VerdanturfTown_BattleTentBattleRoom_MapScripts:: @ 82022FA
-	map_script ON_TRANSITION, VerdanturfTown_BattleTentBattleRoom_OnTransition
-	map_script ON_FRAME, VerdanturfTown_BattleTentBattleRoom_MapScript2_20233E
-	map_script ON_WARP, VerdanturfTown_BattleTentBattleRoom_MapScript2_202541
+	map_script MAP_SCRIPT_ON_TRANSITION, VerdanturfTown_BattleTentBattleRoom_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, VerdanturfTown_BattleTentBattleRoom_MapScript2_20233E
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, VerdanturfTown_BattleTentBattleRoom_MapScript2_202541
 	.byte 0
 
 VerdanturfTown_BattleTentBattleRoom_OnTransition: @ 820230A

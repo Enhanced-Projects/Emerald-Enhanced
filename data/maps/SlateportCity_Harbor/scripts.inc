@@ -1,5 +1,5 @@
 SlateportCity_Harbor_MapScripts:: @ 820C97D
-	map_script ON_TRANSITION, SlateportCity_Harbor_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, SlateportCity_Harbor_OnTransition
 	.byte 0
 
 SlateportCity_Harbor_OnTransition: @ 820C983

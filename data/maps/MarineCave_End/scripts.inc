@@ -1,6 +1,6 @@
 MarineCave_End_MapScripts:: @ 823AFDF
-	map_script ON_RESUME, MarineCave_End_OnResume
-	map_script ON_TRANSITION, MarineCave_End_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, MarineCave_End_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, MarineCave_End_OnTransition
 	.byte 0
 
 MarineCave_End_OnResume: @ 823AFEA

@@ -1,5 +1,5 @@
 SkyPillar_3F_MapScripts:: @ 823965B
-	map_script ON_TRANSITION, SkyPillar_3F_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, SkyPillar_3F_OnTransition
 	.byte 0
 
 SkyPillar_3F_OnTransition: @ 8239661

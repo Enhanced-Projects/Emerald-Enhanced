@@ -1,7 +1,7 @@
 Route118_MapScripts:: @ 81F3DBC
-	map_script ON_TRANSITION, Route118_OnTransition
-	map_script ON_LOAD, Route118_OnLoad
-	map_script ON_FRAME, Route118_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, Route118_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD , Route118_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route118_OnFrame
 	.byte 0
 
 Route118_OnTransition: @ 81F3DCC

@@ -1,5 +1,5 @@
 VictoryRoad_1F_MapScripts:: @ 8235D7A
-	map_script ON_TRANSITION, VictoryRoad_1F_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, VictoryRoad_1F_OnTransition
 	.byte 0
 
 VictoryRoad_1F_OnTransition: @ 8235D80

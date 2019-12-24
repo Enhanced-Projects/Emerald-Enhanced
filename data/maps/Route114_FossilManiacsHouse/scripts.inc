@@ -1,5 +1,5 @@
 Route114_FossilManiacsHouse_MapScripts:: @ 822AD30
-	map_script ON_TRANSITION, Route114_FossilManiacsHouse_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, Route114_FossilManiacsHouse_OnTransition
 	.byte 0
 
 Route114_FossilManiacsHouse_OnTransition: @ 822AD36

@@ -1,5 +1,5 @@
 Route119_WeatherInstitute_1F_MapScripts:: @ 826FA86
-	map_script ON_TRANSITION, Route119_WeatherInstitute_1F_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, Route119_WeatherInstitute_1F_OnTransition
 	.byte 0
 
 Route119_WeatherInstitute_1F_OnTransition: @ 826FA8C

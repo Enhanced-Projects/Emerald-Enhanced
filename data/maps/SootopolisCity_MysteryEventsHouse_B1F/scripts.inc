@@ -1,6 +1,6 @@
 SootopolisCity_MysteryEventsHouse_B1F_MapScripts:: @ 8227E4F
-	map_script ON_TRANSITION, SootopolisCity_MysteryEventsHouse_B1F_OnTransition
-	map_script ON_FRAME, SootopolisCity_MysteryEventsHouse_B1F_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, SootopolisCity_MysteryEventsHouse_B1F_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SootopolisCity_MysteryEventsHouse_B1F_OnFrame
 	.byte 0
 
 SootopolisCity_MysteryEventsHouse_B1F_OnTransition: @ 8227E5A

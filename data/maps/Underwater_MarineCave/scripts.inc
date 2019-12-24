@@ -1,6 +1,6 @@
 Underwater_MarineCave_MapScripts:: @ 823AFB8
-	map_script ON_RESUME, Underwater_MarineCave_OnResume
-	map_script ON_TRANSITION, Underwater_MarineCave_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, Underwater_MarineCave_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Underwater_MarineCave_OnTransition
 	.byte 0
 
 Underwater_MarineCave_OnTransition: @ 823AFC3

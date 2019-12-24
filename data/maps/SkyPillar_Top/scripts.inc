@@ -1,7 +1,7 @@
 SkyPillar_Top_MapScripts:: @ 82396B8
-	map_script ON_RESUME, SkyPillar_Top_OnResume
-	map_script ON_TRANSITION, SkyPillar_Top_OnTransition
-	map_script ON_WARP, SkyPillar_Top_OnWarp
+	map_script MAP_SCRIPT_ON_RESUME, SkyPillar_Top_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, SkyPillar_Top_OnTransition
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SkyPillar_Top_OnWarp
 	.byte 0
 
 SkyPillar_Top_OnResume: @ 82396C8

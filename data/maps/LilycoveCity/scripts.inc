@@ -1,6 +1,6 @@
 LilycoveCity_MapScripts:: @ 81E2B3C
-	map_script ON_TRANSITION, LilycoveCity_OnTransition
-	map_script ON_LOAD, LilycoveCity_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD , LilycoveCity_OnLoad
 	.byte 0
 
 LilycoveCity_OnTransition: @ 81E2B47

@@ -1,5 +1,5 @@
 Route110_TrickHousePuzzle5_MapScripts:: @ 826CAF0
-	map_script ON_TRANSITION, Route110_TrickHousePuzzle5_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, Route110_TrickHousePuzzle5_OnTransition
 	.byte 0
 
 Route110_TrickHousePuzzle5_OnTransition: @ 826CAF6

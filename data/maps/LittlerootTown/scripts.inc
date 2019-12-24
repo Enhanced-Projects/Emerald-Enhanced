@@ -1,7 +1,7 @@
 LittlerootTown_MapScripts:: @ 81E7DCB
-	map_script ON_TRANSITION, LittlerootTown_MapScript1_1E7DDB
-	@map_script ON_FRAME, LittlerootTown_MapScript2_1E7EC1
-	@map_script ON_WARP, LittlerootTown_MapScript2_1E7FE2
+	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_MapScript1_1E7DDB
+	@map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_MapScript2_1E7EC1
+	@map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_MapScript2_1E7FE2
 	.byte 0
 
 LittlerootTown_MapScript1_1E7DDB: @ 81E7DDB

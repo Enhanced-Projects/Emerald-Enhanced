@@ -1,5 +1,5 @@
 OldaleTown_MapScripts:: @ 81E8EA2
-	map_script ON_TRANSITION, OldaleTown_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, OldaleTown_OnTransition
 	.byte 0
 
 OldaleTown_OnTransition: @ 81E8EA8

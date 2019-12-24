@@ -1,7 +1,7 @@
 EverGrandeCity_ChampionsRoom_MapScripts:: @ 82289EF
-	map_script ON_TRANSITION, EverGrandeCity_ChampionsRoom_OnTransition
-	map_script ON_WARP, EverGrandeCity_ChampionsRoom_OnWarp
-	map_script ON_FRAME, EverGrandeCity_ChampionsRoom_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, EverGrandeCity_ChampionsRoom_OnTransition
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, EverGrandeCity_ChampionsRoom_OnWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, EverGrandeCity_ChampionsRoom_OnFrame
 	.byte 0
 
 EverGrandeCity_ChampionsRoom_OnTransition: @ 82289FF

@@ -1,7 +1,7 @@
 Route105_MapScripts:: @ 81EE1DB
-	map_script ON_LOAD, Route105_OnLoad
-	map_script ON_TRANSITION, Route105_OnTransition
-	map_script ON_FRAME, Route105_OnFrame
+	map_script MAP_SCRIPT_ON_LOAD , Route105_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, Route105_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route105_OnFrame
 	.byte 0
 
 Route105_OnLoad: @ 81EE1EB

@@ -1,5 +1,5 @@
 LilycoveCity_Harbor_MapScripts:: @ 821E000
-	map_script ON_TRANSITION, LilycoveCity_Harbor_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_Harbor_OnTransition
 	.byte 0
 
 LilycoveCity_Harbor_OnTransition: @ 821E006

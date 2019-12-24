@@ -1,8 +1,8 @@
 Route110_TrickHouseEnd_MapScripts:: @ 826ACAF
-	map_script ON_RESUME, Route110_TrickHouseEnd_OnResume
-	map_script ON_TRANSITION, Route110_TrickHouseEnd_OnTransition
-	map_script ON_FRAME, Route110_TrickHouseEnd_OnFrame
-	map_script ON_WARP, Route110_TrickHouseEnd_OnWarp
+	map_script MAP_SCRIPT_ON_RESUME, Route110_TrickHouseEnd_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Route110_TrickHouseEnd_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route110_TrickHouseEnd_OnFrame
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Route110_TrickHouseEnd_OnWarp
 	.byte 0
 
 Route110_TrickHouseEnd_OnResume: @ 826ACC4

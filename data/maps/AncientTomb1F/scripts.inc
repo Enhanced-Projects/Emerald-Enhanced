@@ -1,5 +1,5 @@
 AncientTomb1F_MapScripts::
-	map_script ON_FRAME, AT1_LeafEventRop
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, AT1_LeafEventRop
 	.byte 0
 	
 AT1_LeafEventRop::

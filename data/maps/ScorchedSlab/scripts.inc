@@ -1,5 +1,5 @@
 ScorchedSlab_MapScripts:: @ 8239291
-	map_script ON_TRANSITION, ScorchedSlab_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, ScorchedSlab_OnTransition
 	.byte 0
 
 ScorchedSlab_OnTransition: @ 8239297

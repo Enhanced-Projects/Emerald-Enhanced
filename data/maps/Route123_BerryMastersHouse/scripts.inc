@@ -1,5 +1,5 @@
 Route123_BerryMastersHouse_MapScripts:: @ 826F83B
-	map_script ON_TRANSITION, Route123_BerryMastersHouse_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, Route123_BerryMastersHouse_OnTransition
 	.byte 0
 
 Route123_BerryMastersHouse_OnTransition: @ 826F841

@@ -1,7 +1,7 @@
 MossdeepCity_StevensHouse_MapScripts:: @ 8222784
-	map_script ON_LOAD, MossdeepCity_StevensHouse_OnLoad
-	map_script ON_TRANSITION, MossdeepCity_StevensHouse_OnTransition
-	map_script ON_FRAME, MossdeepCity_StevensHouse_OnFrame
+	map_script MAP_SCRIPT_ON_LOAD , MossdeepCity_StevensHouse_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_StevensHouse_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_StevensHouse_OnFrame
 	.byte 0
 
 MossdeepCity_StevensHouse_OnLoad: @ 8222794

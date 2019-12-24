@@ -1,5 +1,5 @@
 SouthernIsland_Exterior_MapScripts:: @ 82429C8
-	map_script ON_TRANSITION, SouthernIsland_Exterior_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, SouthernIsland_Exterior_OnTransition
 	.byte 0
 
 SouthernIsland_Exterior_OnTransition: @ 82429CE

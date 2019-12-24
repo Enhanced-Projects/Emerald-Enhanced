@@ -1,5 +1,5 @@
 BattleFrontier_BattleArenaCorridor_MapScripts:: @ 82573B9
-	map_script ON_FRAME, BattleFrontier_BattleArenaCorridor_OnFrame
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleArenaCorridor_OnFrame
 	.byte 0
 
 BattleFrontier_BattleArenaCorridor_OnFrame: @ 82573BF

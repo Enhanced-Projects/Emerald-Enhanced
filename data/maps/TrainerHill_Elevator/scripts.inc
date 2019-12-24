@@ -1,5 +1,5 @@
 TrainerHill_Elevator_MapScripts:: @ 826934F
-	map_script ON_FRAME, TrainerHill_Elevator_OnFrame
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrainerHill_Elevator_OnFrame
 	.byte 0
 
 TrainerHill_Elevator_OnFrame: @ 8269355

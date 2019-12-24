@@ -1,5 +1,5 @@
 TerraCave_Entrance_MapScripts:: @ 823B0A6
-	map_script ON_TRANSITION, TerraCave_Entrance_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, TerraCave_Entrance_OnTransition
 	.byte 0
 
 TerraCave_Entrance_OnTransition: @ 823B0AC

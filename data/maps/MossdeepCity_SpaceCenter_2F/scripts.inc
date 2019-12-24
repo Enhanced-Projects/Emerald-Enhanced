@@ -1,6 +1,6 @@
 MossdeepCity_SpaceCenter_2F_MapScripts:: @ 8223D58
-	map_script ON_TRANSITION, MossdeepCity_SpaceCenter_2F_OnTransition
-	map_script ON_FRAME, MossdeepCity_SpaceCenter_2F_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_SpaceCenter_2F_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_SpaceCenter_2F_OnFrame
 	.byte 0
 
 MossdeepCity_SpaceCenter_2F_OnTransition: @ 8223D63

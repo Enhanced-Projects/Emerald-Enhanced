@@ -1,5 +1,5 @@
 FarawayIsland_Entrance_MapScripts:: @ 8267C8E
-	map_script ON_TRANSITION, FarawayIsland_Entrance_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, FarawayIsland_Entrance_OnTransition
 	.byte 0
 
 FarawayIsland_Entrance_OnTransition: @ 8267C94

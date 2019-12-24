@@ -1,6 +1,6 @@
 LilycoveCity_ContestLobby_MapScripts:: @ 821A211
-	map_script ON_TRANSITION, LilycoveCity_ContestLobby_OnTransition
-	map_script ON_FRAME, LilycoveCity_ContestLobby_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_ContestLobby_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, LilycoveCity_ContestLobby_OnFrame
 	.byte 0
 
 @ Some scripts for this room are split into data/scripts/contest_hall and data/scripts/berry_blender

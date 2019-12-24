@@ -1,5 +1,5 @@
 Route130_MapScripts:: @ 81F735F
-	map_script ON_TRANSITION, Route130_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, Route130_OnTransition
 	.byte 0
 
 Route130_OnTransition: @ 81F7365

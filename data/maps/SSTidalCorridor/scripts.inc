@@ -1,5 +1,5 @@
 SSTidalCorridor_MapScripts:: @ 823BFCF
-	map_script ON_FRAME, SSTidalCorridor_OnFrame
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SSTidalCorridor_OnFrame
 	.byte 0
 
 SSTidalCorridor_OnFrame: @ 823BFD5

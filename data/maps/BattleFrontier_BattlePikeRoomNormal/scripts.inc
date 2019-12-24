@@ -1,8 +1,8 @@
 BattleFrontier_BattlePikeRoomNormal_MapScripts:: @ 825D152
-	map_script ON_RESUME, BattleFrontier_BattlePikeRoom_OnResume
-	map_script ON_TRANSITION, BattleFrontier_BattlePikeRoom_OnTransition
-	map_script ON_FRAME, BattleFrontier_BattlePikeRoomNormal_OnFrame
-	map_script ON_WARP, BattleFrontier_BattlePikeRoom_OnWarp
+	map_script MAP_SCRIPT_ON_RESUME, BattleFrontier_BattlePikeRoom_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattlePikeRoom_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattlePikeRoomNormal_OnFrame
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattlePikeRoom_OnWarp
 	.byte 0
 
 BattleFrontier_BattlePikeRoomNormal_OnFrame: @ 825D167

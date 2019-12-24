@@ -1,5 +1,5 @@
 Littleroot_Town_Rival_HouseQuest_MapScripts::
-	map_script ON_FRAME, LRT_DateFinish
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, LRT_DateFinish
 	.byte 0
 
 

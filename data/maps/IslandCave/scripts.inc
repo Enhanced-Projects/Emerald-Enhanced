@@ -1,7 +1,7 @@
 IslandCave_MapScripts:: @ 8238E2A
-	map_script ON_RESUME, IslandCave_OnResume
-	map_script ON_LOAD, IslandCave_OnLoad
-	map_script ON_TRANSITION, IslandCave_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, IslandCave_OnResume
+	map_script MAP_SCRIPT_ON_LOAD , IslandCave_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, IslandCave_OnTransition
 	.byte 0
 
 IslandCave_OnResume: @ 8238E3A

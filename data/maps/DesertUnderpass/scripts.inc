@@ -1,5 +1,5 @@
 DesertUnderpass_MapScripts:: @ 823AF37
-	map_script ON_TRANSITION, DesertUnderpass_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, DesertUnderpass_OnTransition
 	.byte 0
 
 DesertUnderpass_OnTransition: @ 823AF3D

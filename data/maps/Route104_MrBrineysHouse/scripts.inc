@@ -1,5 +1,5 @@
 Route104_MrBrineysHouse_MapScripts:: @ 8229D2E
-	map_script ON_TRANSITION, Route104_MrBrineysHouse_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, Route104_MrBrineysHouse_OnTransition
 	.byte 0
 
 Route104_MrBrineysHouse_OnTransition: @ 8229D34

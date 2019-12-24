@@ -1,5 +1,5 @@
 LittlerootTown_BrendansHouse_2F_MapScripts:: @ 81F83E3
-	map_script ON_FRAME, GameIntroSequenceCheck
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, GameIntroSequenceCheck
 	.byte 0
 	
 GameIntroSequenceCheck::

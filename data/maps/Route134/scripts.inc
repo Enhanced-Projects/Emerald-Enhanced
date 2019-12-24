@@ -1,5 +1,5 @@
 Route134_MapScripts:: @ 81F7644
-	map_script ON_RESUME, Route134_OnResume
+	map_script MAP_SCRIPT_ON_RESUME, Route134_OnResume
 	.byte 0
 
 Route134_OnResume: @ 81F764A

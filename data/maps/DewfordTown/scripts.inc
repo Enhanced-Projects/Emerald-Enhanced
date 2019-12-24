@@ -1,5 +1,5 @@
 DewfordTown_MapScripts:: @ 81E9507
-	map_script ON_TRANSITION, DewfordTown_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, DewfordTown_OnTransition
 	.byte 0
 
 DewfordTown_OnTransition: @ 81E950D

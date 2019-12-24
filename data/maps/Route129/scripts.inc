@@ -1,7 +1,7 @@
 Route129_MapScripts:: @ 81F7284
-	map_script ON_TRANSITION, Route129_OnTransition
-	map_script ON_LOAD, Route129_OnLoad
-	map_script ON_FRAME, Route129_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, Route129_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD , Route129_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route129_OnFrame
 	.byte 0
 
 Route129_OnLoad: @ 81F7294

@@ -1,5 +1,5 @@
 LilycoveCity_DepartmentStore_5F_MapScripts:: @ 821FF7A
-	map_script ON_WARP, LilycoveCity_DepartmentStore_5F_OnWarp
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LilycoveCity_DepartmentStore_5F_OnWarp
 	.byte 0
 
 @ During the abnormal weather from Kyogre/Groudon awakening the dept store rooftop is inaccessible

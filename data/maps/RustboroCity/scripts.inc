@@ -1,6 +1,6 @@
 RustboroCity_MapScripts:: @ 81E06BD
-	map_script ON_TRANSITION, RustboroCity_OnTransition
-	map_script ON_FRAME, RustboroCity_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, RustboroCity_OnFrame
 	.byte 0
 
 RustboroCity_OnTransition: @ 81E06C8

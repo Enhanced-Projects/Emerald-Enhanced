@@ -1,5 +1,5 @@
 MauvilleCity_MapScripts:: @ 81DF385
-	map_script ON_TRANSITION, MauvilleCity_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, MauvilleCity_OnTransition
 	.byte 0
 
 MauvilleCity_OnTransition: @ 81DF38B
