@@ -30,6 +30,7 @@
 #include "apprentice.h"
 #include "frontier_util.h"
 #include "constants/maps.h"
+#include "constants/flags.h"
 #include "pokedex.h"
 #include "save.h"
 #include "link_rfu.h"

@@ -66,6 +66,9 @@
 #include "constants/species.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "item.h"
+#include "constants/items.h"
+#include "pokemon_storage_system.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -1534,8 +1537,61 @@ static bool8 map_post_load_hook_exec(void)
     return TRUE;
 }
 
+bool8 KeepKeyItem(u16 itemId)
+{
+    switch (itemId)
+    {
+    case ITEM_NUGGET:
+    case ITEM_POKE_FLUTE:
+    case ITEM_SUPER_ROD:
+    case ITEM_VS_SEEKER:
+    case ITEM_UP_GRADE:
+        return TRUE;
+    default:
+        return FALSE;    
+    }
+}
+
+void ClearKeyItems(void)
+{
+    int i;
+    for (i = 0; i < BAG_KEYITEMS_COUNT; i++)
+    {
+        if (!KeepKeyItem(gSaveBlock1Ptr->bagPocket_KeyItems[i].itemId))
+        {
+            gSaveBlock1Ptr->bagPocket_KeyItems[i].itemId = ITEM_NONE;
+            gSaveBlock1Ptr->bagPocket_KeyItems[i].quantity = 0;
+        }
+    }
+}
+
+
 void CB2_NewGame(void)
 {
+    bool8 isNGPlus = FALSE;
+    bool8 hasExpDrive = FALSE;
+    bool8 hasWaystone = FALSE;
+    bool8 hasForecaster = FALSE;
+    bool8 hasImprinter = FALSE;
+    bool8 hasWirelessPC = FALSE;
+    if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
+        isNGPlus = TRUE;
+
+    if (CheckBagHasItem(ITEM_NUGGET, 1))
+        hasWaystone = TRUE;
+
+    if (CheckBagHasItem(ITEM_UP_GRADE, 1))
+        hasExpDrive = TRUE;
+
+    if (CheckBagHasItem(ITEM_VS_SEEKER, 1))
+        hasForecaster = TRUE;
+
+    if (CheckBagHasItem(ITEM_POKE_FLUTE, 1))
+        hasImprinter = TRUE;
+
+    if (CheckBagHasItem(ITEM_TEACHY_TV, 1))
+        hasWirelessPC = TRUE;
+
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
     ResetSafariZoneFlag_();
@@ -1544,12 +1600,36 @@ void CB2_NewGame(void)
     PlayTimeCounter_Start();
     ScriptContext1_Init();
     ScriptContext2_Disable();
-    //gFieldCallback = ExecuteTruckSequence;
     gFieldCallback2 = NULL;
     do_load_map_stuff_loop(&gMain.state);
     SetFieldVBlankCallback();
     SetMainCallback1(CB1_Overworld);
     SetMainCallback2(CB2_Overworld);
+    if (isNGPlus == TRUE)
+    {
+        if (hasExpDrive == TRUE)
+            FlagSet(FLAG_RYU_HAS_EXP_DRIVE);
+
+        if (hasImprinter == TRUE)
+            FlagSet(FLAG_RYU_HAS_IMPRINTER);
+
+        if (hasForecaster == TRUE)
+            FlagSet(FLAG_RYU_HAS_FORECASTER);
+
+        if (hasWaystone == TRUE)
+            FlagSet(FLAG_RYU_HAS_WAYSTONE);
+
+        if (hasWirelessPC == TRUE)
+            FlagSet(FLAG_RYU_HAS_WIRELESSPC);
+
+        FlagSet(FLAG_SYS_POKEDEX_GET);
+        FlagSet(FLAG_SYS_NATIONAL_DEX);
+        FlagSet(FLAG_RYU_SKIPDIFFICULTYCHECK);
+    }
+    else
+    {
+        ResetPokemonStorageSystem();
+    }
 }
 
 void CB2_WhiteOut(void)

@@ -1099,7 +1099,7 @@ Route104_Text_MayWeShouldRegister: @ 81EDBFF
 	.string "can get in contact anytime.$"
 
 Route104_Text_RegisteredMay: @ 81EDC8F
-	.string "{PLAYER} registered MAY\n"
+	.string "{PLAYER} registered Dawn\n"
 	.string "in the POKéNAV.$"
 
 Route104_Text_MayHowsYourPokedex: @ 81EDCB1

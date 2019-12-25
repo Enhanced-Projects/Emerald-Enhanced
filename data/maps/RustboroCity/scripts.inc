@@ -1158,7 +1158,7 @@ RustboroCity_Text_MayHiLetsRegister: @ 81E1A49
 	.string "… … … … … …$"
 
 RustboroCity_Text_RegisteredMay: @ 81E1ADB
-	.string "Registered MAY\n"
+	.string "Registered Dawn\n"
 	.string "in the POKéNAV.$"
 
 RustboroCity_Text_MayPassedBrineyWantToBattle: @ 81E1AFA

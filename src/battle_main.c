@@ -1836,7 +1836,7 @@ int RyuChooseTrainerLevel(void)
     u8 gymlevel = (Random() % ((sGymRange[badge][1] - sGymRange[badge][0])) + sGymRange[badge][0]);
     //sRange is the array declared above, [badge] is the index, [0] and [1] are the first and second values of the index listed.
     //To get a range of random values, do (array[index][second value] minus array[index][first value]) plus array[index][first value]
-    if (FlagGet(FLAG_TEMP_B) == 1)
+    if (FlagGet(FLAG_RYU_ALTERNATE_SCALE) == 1)
     {
         return gymlevel;
     }
@@ -2679,12 +2679,12 @@ void SpriteCB_FaintOpponentMon(struct Sprite *sprite)
 
     GetMonData(&gEnemyParty[gBattlerPartyIndexes[battler]], MON_DATA_PERSONALITY);  // Unused return value.
 
-    if (species == SPECIES_UNOWN)
-    {
-        species = GetUnownSpeciesId(personality);
-        yOffset = gMonFrontPicCoords[species].y_offset;
-    }
-    else if (species == SPECIES_CASTFORM)
+    //if (species == SPECIES_UNOWN)
+    //{
+    //    species = GetUnownSpeciesId(personality);
+    //    yOffset = gMonFrontPicCoords[species].y_offset;
+    //}
+    if (species == SPECIES_CASTFORM)
     {
         yOffset = gCastformFrontSpriteCoords[gBattleMonForms[battler]].y_offset;
     }

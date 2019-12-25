@@ -1995,17 +1995,17 @@ u16 GetIconSpecies(u16 species, u32 personality)
 {
     u16 result;
 
-    if (species == SPECIES_UNOWN)
-    {
-        result = GetUnownSpeciesId(personality);
-    }
+    //if (species == SPECIES_UNOWN)
+    //{
+    //    result = GetUnownSpeciesId(personality);
+    //}
+    //else
+    //{
+    if (species > NUM_SPECIES)
+        result = 260;
     else
-    {
-        if (species > NUM_SPECIES)
-            result = 260;
-        else
-            result = species;
-    }
+        result = species;
+   // }
 
     return result;
 }
