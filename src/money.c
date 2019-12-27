@@ -10,7 +10,7 @@
 #include "strings.h"
 #include "decompress.h"
 
-#define MAX_MONEY 999999
+#define MAX_MONEY 10000000
 
 EWRAM_DATA static u8 sMoneyBoxWindowId = 0;
 EWRAM_DATA static u8 sMoneyLabelSpriteId = 0;

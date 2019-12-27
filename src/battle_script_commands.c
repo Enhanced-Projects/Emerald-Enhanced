@@ -846,7 +846,7 @@ static const u16 sPickupItems[] =
 static const u16 sRarePickupItems[] =
 {
     ITEM_HYPER_POTION,
-    ITEM_NUGGET,
+    ITEM_BIG_PEARL,
     ITEM_KINGS_ROCK,
     ITEM_FULL_RESTORE,
     ITEM_ETHER,
@@ -5909,7 +5909,7 @@ static void Cmd_getmoneyreward(void)
         moneyReward += GetTrainerMoneyToGive(gTrainerBattleOpponent_B);
     }
         
-    moneyReward =(((moneyReward * MultMoney) / 1000) * 2);
+    moneyReward =((moneyReward * MultMoney) / 1000);
 
     AddMoney(&gSaveBlock1Ptr->money, moneyReward);
     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, moneyReward);

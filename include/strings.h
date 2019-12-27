@@ -3242,5 +3242,6 @@ extern const u8 gText_RyuDevSubWalkThroughWalls[];
 extern const u8 gText_RyuDevSubDevRepelToggle[];
 extern const u8 gText_RyuDevSubEnableSaveView[];
 extern const u8 gText_RyuDevSubViewTempVars[];
+extern const u8 gText_RyuDevSubUtility1[];
 
 #endif // GUARD_STRINGS_H

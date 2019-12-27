@@ -579,9 +579,9 @@ static const u8 sStarPieceDesc[] = _(
     "very high price.");
 
 static const u8 sNuggetDesc[] = _(
-    "A nugget of pure\n"
-    "gold. Can be sold at\n"
-    "a high price.");
+    "A mysterious stone.\n"
+    "It lets you warp\n"
+    "to a known place.");
 
 static const u8 sHeartScaleDesc[] = _(
     "A lovely scale.\n"
@@ -1808,9 +1808,9 @@ static const u8 sOaksParcelDesc[] = _(
     "MART's clerk.");
 
 static const u8 sPokeFluteDesc[] = _(
-    "A sweet-sounding\n"
-    "flute that awakens\n"
-    "POKéMON.");
+    "A genetic imprint\n"
+    "application item.\n"
+    "Requires imprints.");
 
 static const u8 sSecretKeyDesc[] = _(
     "The key to the\n"
@@ -1898,9 +1898,9 @@ static const u8 sTownMapDesc[] = _(
     "present location.");
 
 static const u8 sVSSeekerDesc[] = _(
-    "A rechargeable unit\n"
-    "that flags battle-\n"
-    "ready TRAINERS.");
+    "A device that can\n"
+    "summon any type of\n"
+    "weather.");
 
 static const u8 sFameCheckerDesc[] = _(
     "Stores information\n"
@@ -1918,9 +1918,9 @@ static const u8 sBerryPouchDesc[] = _(
     "holds BERRIES.");
 
 static const u8 sTeachyTVDesc[] = _(
-    "A TV set tuned to\n"
-    "an advice program\n"
-    "for TRAINERS.");
+    "A high tech\n"
+    "device for wireless\n"
+    "access to the PC.");
 
 static const u8 sTriPassDesc[] = _(
     "A pass for ferries\n"

@@ -2905,8 +2905,15 @@ static void InitTradeBgInternal(void)
     InitWindows(sTradeSequenceWindowTemplates);
     DecompressAndLoadBgGfxUsingHeap(0, gBattleTextboxTiles, 0, 0, 0);
     LZDecompressWram(gBattleTextboxTilemap, gDecompressionBuffer);
-    CopyToBgTilemapBuffer(0, gDecompressionBuffer, 0x800, 0);
-    LoadCompressedPalette(gBattleTextboxPalette, 0, 0x20);
+    CopyToBgTilemapBuffer(0, gDecompressionBuffer, 0x800, 0);  
+    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        {
+            LoadCompressedPalette(gBattleTextboxDarkPalette, 0, 0x20);
+        }
+        else
+        {
+            LoadCompressedPalette(gBattleTextboxPalette, 0, 0x20);
+        }
 }
 
 static void CB2_InGameTrade(void)

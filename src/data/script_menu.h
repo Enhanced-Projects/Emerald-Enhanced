@@ -1141,6 +1141,7 @@ static const struct MenuAction MultichoiceList_UtilitySubMenu[]=
     {gText_RyuDevSubDevRepelToggle},
     {gText_RyuDevSubEnableSaveView},
     {gText_RyuDevSubViewTempVars},
+    {gText_RyuDevSubUtility1},
     {gText_DebugCancel},
 };
 

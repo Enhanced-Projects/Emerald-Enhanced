@@ -39,6 +39,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/tv.h"
+#include "event_data.h"
 
 EWRAM_DATA struct MartInfo gMartInfo = {0};
 EWRAM_DATA struct ShopData *gShopDataPtr = NULL;
@@ -673,9 +674,18 @@ static void BuyMenuInitBgs(void)
 
 static void BuyMenuDecompressBgGraphics(void)
 {
-    decompress_and_copy_tile_data_to_vram(1, gBuyMenuFrame_Gfx, 0x3A0, 0x3E3, 0);
-    LZDecompressWram(gBuyMenuFrame_Tilemap, gShopDataPtr->tilemapBuffers[0]);
-    LoadCompressedPalette(gMenuMoneyPal, 0xC0, 0x20);
+    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    {
+        decompress_and_copy_tile_data_to_vram(1, gBuyMenuFrameDark_Gfx, 0x3A0, 0x3E3, 0);
+        LZDecompressWram(gBuyMenuFrame_Tilemap, gShopDataPtr->tilemapBuffers[0]);
+        LoadCompressedPalette(gMenuMoneyDarkPal, 0xC0, 0x20);
+    }
+    else
+    {
+        decompress_and_copy_tile_data_to_vram(1, gBuyMenuFrame_Gfx, 0x3A0, 0x3E3, 0);
+        LZDecompressWram(gBuyMenuFrame_Tilemap, gShopDataPtr->tilemapBuffers[0]);
+        LoadCompressedPalette(gMenuMoneyPal, 0xC0, 0x20);
+    }
 }
 
 static void BuyMenuInitWindows(void)

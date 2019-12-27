@@ -163,8 +163,8 @@ DewfordTown_Gym_EventScript_Brawly:: @ 81FC7C2
 	case 4, brawly2
 	case 5, brawly3
 	case 6, brawly3
-	case 7, brawly3
-	case 8, brawly3
+	case 7, brawly4
+	case 8, brawly4
 
 DFG_Reset::
 	setflag FLAG_DEFEATED_DEWFORD_GYM
@@ -213,15 +213,15 @@ DFG_PartnerQuery::
 	
 DFG_RelDialog::
 	call RyuParterBattleMultichoice
-	@compare VAR_0x8006, TRAINER_REL_SHELLY
+	compare VAR_0x8006, TRAINER_REL_SHELLY
 	goto_if_eq DFG_GymBattleIntroShelly
-	@compare VAR_0x8006, TRAINER_REL_MAY
+	compare VAR_0x8006, TRAINER_REL_MAY
 	goto_if_eq DFG_GymBattleIntroDawn
-	@compare VAR_0x8006, TRAINER_REL_BRENDAN
-	@goto_if_eq DFG_GymBattleIntroBrendan
-	@compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	goto_if_eq DFG_GymBattleIntroBrendan
+	compare VAR_0x8006, TRAINER_REL_LANA
 	goto_if_eq DFG_GymBattleIntroLana
-	@compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8006, TRAINER_REL_LANETTE
 	goto_if_eq DFG_GymBattleIntroLanette
 	goto DFG_NoRelGymBattle
 	
@@ -309,15 +309,15 @@ DFG_AltGymBattle::
 	
 	
 DFG_GymBattleEnd::
-	@compare VAR_0x8006, TRAINER_REL_MAY
+	compare VAR_0x8006, TRAINER_REL_MAY
 	goto_if_eq DFG_GymBattleEndDawn
-	@compare VAR_0x8006, TRAINER_REL_SHELLY
+	compare VAR_0x8006, TRAINER_REL_SHELLY
 	goto_if_eq DFG_GymBattleEndShelly
-	@compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8006, TRAINER_REL_BRENDAN
 	goto_if_eq DFG_GymBattleEndBrendan
-	@compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8006, TRAINER_REL_LANA
 	goto_if_eq DFG_GymBattleEndLana
-	@compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8006, TRAINER_REL_LANETTE
 	goto_if_eq DFG_GymBattleEndLanette
 	release
 	end

@@ -673,7 +673,14 @@ static bool8 AllocPartyMenuBgGfx(void)
         }
         break;
     case 2:
-        LoadCompressedPalette(gPartyMenuBg_Pal, 0, 0x160);
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        {
+            LoadCompressedPalette(gPartyMenu_dark_Pal, 0, 0x160);
+        }
+        else
+        {
+            LoadCompressedPalette(gPartyMenuBg_Pal, 0, 0x160);
+        }
         CpuCopy16(gPlttBufferUnfaded, sPartyMenuInternal->palBuffer, 0x160);
         sPartyMenuInternal->data[0]++;
         break;

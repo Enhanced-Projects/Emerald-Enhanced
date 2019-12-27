@@ -86,7 +86,7 @@ Route111_EventScript_ItemElixir:: @ 8290DC2
 	end
 
 Route112_EventScript_ItemNugget:: @ 8290DCF
-	finditem_std ITEM_NUGGET
+	finditem_std ITEM_BIG_PEARL
 	end
 
 Route113_EventScript_ItemMaxEther:: @ 8290DDC
@@ -202,7 +202,7 @@ Route119_EventScript_ItemElixir2:: @ 8290F3B
 	end
 
 Route120_EventScript_ItemNugget:: @ 8290F48
-	finditem_std ITEM_NUGGET
+	finditem_std ITEM_BIG_PEARL
 	end
 
 Route120_EventScript_ItemFullHeal:: @ 8290F55
@@ -486,7 +486,7 @@ SafariZone_Southwest_EventScript_ItemMaxRevive:: @ 82912D6
 	end
 
 SafariZone_Northeast_EventScript_ItemNugget:: @ 82912E3
-	finditem_std ITEM_NUGGET
+	finditem_std ITEM_BIG_PEARL
 	end
 
 SafariZone_Southeast_EventScript_ItemBigPearl:: @ 82912F0
@@ -526,7 +526,7 @@ AquaHideout_B1F_EventScript_ItemMasterBall:: @ 8291358
 	end
 
 AquaHideout_B1F_EventScript_ItemNugget:: @ 8291365
-	finditem_std ITEM_NUGGET
+	finditem_std ITEM_BIG_PEARL
 	end
 
 AquaHideout_B1F_EventScript_ItemMaxElixir:: @ 8291372
@@ -542,7 +542,7 @@ AquaHideout_B2F_EventScript_ItemMasterBall:: @ 829138C
 	end
 
 Route119_EventScript_ItemNugget:: @ 8291399
-	finditem_std ITEM_NUGGET
+	finditem_std ITEM_BIG_PEARL
 	end
 
 Route119_EventScript_ItemMaxElixir:: @ 82913A6
@@ -654,7 +654,7 @@ MagmaHideout_2F_2R_EventScript_ItemFullRestore:: @ 82914F8
 	end
 
 MagmaHideout_3F_1R_EventScript_ItemNugget:: @ 8291505
-	finditem_std ITEM_NUGGET
+	finditem_std ITEM_BIG_PEARL
 	end
 
 MagmaHideout_3F_2R_EventScript_ItemPPMax:: @ 8291512

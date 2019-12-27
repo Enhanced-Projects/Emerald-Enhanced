@@ -1403,7 +1403,14 @@ static bool8 SummaryScreen_DecompressGraphics(void)
         sMonSummaryScreen->switchCounter++;
         break;
     case 6:
-        LoadCompressedPalette(gStatusScreenPalette, 0, 0x100);
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        {
+            LoadCompressedPalette(gStatusScreenDarkPalette, 0, 0x100);
+        }
+        else
+        {
+            LoadCompressedPalette(gStatusScreenPalette, 0, 0x100);
+        }
         LoadPalette(&gUnknown_08D85620, 0x81, 0x1E);
         sMonSummaryScreen->switchCounter++;
         break;

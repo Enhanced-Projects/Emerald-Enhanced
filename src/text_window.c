@@ -5,6 +5,7 @@
 #include "palette.h"
 #include "bg.h"
 #include "graphics.h"
+#include "event_data.h"
 
 // const rom data
 const u8 gTextWindowFrame1_Gfx[] = INCBIN_U8("graphics/text_window/1.4bpp");
@@ -49,6 +50,50 @@ static const u16 sTextWindowFrame18_Pal[] = INCBIN_U16("graphics/text_window/18.
 static const u16 sTextWindowFrame19_Pal[] = INCBIN_U16("graphics/text_window/19.gbapal");
 static const u16 sTextWindowFrame20_Pal[] = INCBIN_U16("graphics/text_window/20.gbapal");
 
+
+//dark theme windowframes
+const u16 gTextWindowFrame1d_Pal[] = INCBIN_U16("graphics/text_window/1d.gbapal");
+static const u16 sTextWindowFrame2d_Pal[] = INCBIN_U16("graphics/text_window/2d.gbapal");
+static const u16 sTextWindowFrame3d_Pal[] = INCBIN_U16("graphics/text_window/3d.gbapal");
+static const u16 sTextWindowFrame4d_Pal[] = INCBIN_U16("graphics/text_window/4d.gbapal");
+static const u16 sTextWindowFrame5d_Pal[] = INCBIN_U16("graphics/text_window/5d.gbapal");
+static const u16 sTextWindowFrame6d_Pal[] = INCBIN_U16("graphics/text_window/6d.gbapal");
+static const u16 sTextWindowFrame7d_Pal[] = INCBIN_U16("graphics/text_window/7d.gbapal");
+static const u16 sTextWindowFrame8d_Pal[] = INCBIN_U16("graphics/text_window/8d.gbapal");
+static const u16 sTextWindowFrame9d_Pal[] = INCBIN_U16("graphics/text_window/9d.gbapal");
+static const u16 sTextWindowFrame10d_Pal[] = INCBIN_U16("graphics/text_window/10d.gbapal");
+static const u16 sTextWindowFrame11d_Pal[] = INCBIN_U16("graphics/text_window/11d.gbapal");
+static const u16 sTextWindowFrame12d_Pal[] = INCBIN_U16("graphics/text_window/12d.gbapal");
+static const u16 sTextWindowFrame13d_Pal[] = INCBIN_U16("graphics/text_window/13d.gbapal");
+static const u16 sTextWindowFrame14d_Pal[] = INCBIN_U16("graphics/text_window/14d.gbapal");
+static const u16 sTextWindowFrame15d_Pal[] = INCBIN_U16("graphics/text_window/15d.gbapal");
+static const u16 sTextWindowFrame16d_Pal[] = INCBIN_U16("graphics/text_window/16d.gbapal");
+static const u16 sTextWindowFrame17d_Pal[] = INCBIN_U16("graphics/text_window/17d.gbapal");
+static const u16 sTextWindowFrame18d_Pal[] = INCBIN_U16("graphics/text_window/18d.gbapal");
+static const u16 sTextWindowFrame19d_Pal[] = INCBIN_U16("graphics/text_window/19d.gbapal");
+static const u16 sTextWindowFrame20d_Pal[] = INCBIN_U16("graphics/text_window/20d.gbapal");
+
+const u8 gTextWindowFrame1d_Gfx[] = INCBIN_U8("graphics/text_window/1.4bpp");
+static const u8 sTextWindowFrame2d_Gfx[] = INCBIN_U8("graphics/text_window/2d.4bpp");
+static const u8 sTextWindowFrame3d_Gfx[] = INCBIN_U8("graphics/text_window/3d.4bpp");
+static const u8 sTextWindowFrame4d_Gfx[] = INCBIN_U8("graphics/text_window/4d.4bpp");
+static const u8 sTextWindowFrame5d_Gfx[] = INCBIN_U8("graphics/text_window/5d.4bpp");
+static const u8 sTextWindowFrame6d_Gfx[] = INCBIN_U8("graphics/text_window/6d.4bpp");
+static const u8 sTextWindowFrame7d_Gfx[] = INCBIN_U8("graphics/text_window/7d.4bpp");
+static const u8 sTextWindowFrame8d_Gfx[] = INCBIN_U8("graphics/text_window/8d.4bpp");
+static const u8 sTextWindowFrame9d_Gfx[] = INCBIN_U8("graphics/text_window/9d.4bpp");
+static const u8 sTextWindowFrame10d_Gfx[] = INCBIN_U8("graphics/text_window/10d.4bpp");
+static const u8 sTextWindowFrame11d_Gfx[] = INCBIN_U8("graphics/text_window/11d.4bpp");
+static const u8 sTextWindowFrame12d_Gfx[] = INCBIN_U8("graphics/text_window/12d.4bpp");
+static const u8 sTextWindowFrame13d_Gfx[] = INCBIN_U8("graphics/text_window/13d.4bpp");
+static const u8 sTextWindowFrame14d_Gfx[] = INCBIN_U8("graphics/text_window/14d.4bpp");
+static const u8 sTextWindowFrame15d_Gfx[] = INCBIN_U8("graphics/text_window/15d.4bpp");
+static const u8 sTextWindowFrame16d_Gfx[] = INCBIN_U8("graphics/text_window/16d.4bpp");
+static const u8 sTextWindowFrame17d_Gfx[] = INCBIN_U8("graphics/text_window/17d.4bpp");
+static const u8 sTextWindowFrame18d_Gfx[] = INCBIN_U8("graphics/text_window/18d.4bpp");
+static const u8 sTextWindowFrame19d_Gfx[] = INCBIN_U8("graphics/text_window/19d.4bpp");
+static const u8 sTextWindowFrame20d_Gfx[] = INCBIN_U8("graphics/text_window/20d.4bpp");
+
 static const u16 sUnknown_0851017C[][16] =
 {
     INCBIN_U16("graphics/text_window/message_box.gbapal"),
@@ -82,13 +127,56 @@ static const struct TilesPal sWindowFrames[WINDOW_FRAMES_COUNT] =
     {sTextWindowFrame20_Gfx, sTextWindowFrame20_Pal}
 };
 
+static const struct TilesPal sWindowFramesDark[WINDOW_FRAMES_COUNT] =
+{
+    {gTextWindowFrame1d_Gfx, gTextWindowFrame1d_Pal},
+    {sTextWindowFrame2d_Gfx, sTextWindowFrame2d_Pal},
+    {sTextWindowFrame3d_Gfx, sTextWindowFrame3d_Pal},
+    {sTextWindowFrame4d_Gfx, sTextWindowFrame4d_Pal},
+    {sTextWindowFrame5d_Gfx, sTextWindowFrame5d_Pal},
+    {sTextWindowFrame6d_Gfx, sTextWindowFrame6d_Pal},
+    {sTextWindowFrame7d_Gfx, sTextWindowFrame7d_Pal},
+    {sTextWindowFrame8d_Gfx, sTextWindowFrame8d_Pal},
+    {sTextWindowFrame9d_Gfx, sTextWindowFrame9d_Pal},
+    {sTextWindowFrame10d_Gfx, sTextWindowFrame10d_Pal},
+    {sTextWindowFrame11d_Gfx, sTextWindowFrame11d_Pal},
+    {sTextWindowFrame12d_Gfx, sTextWindowFrame12d_Pal},
+    {sTextWindowFrame13d_Gfx, sTextWindowFrame13d_Pal},
+    {sTextWindowFrame14d_Gfx, sTextWindowFrame14d_Pal},
+    {sTextWindowFrame15d_Gfx, sTextWindowFrame15d_Pal},
+    {sTextWindowFrame16d_Gfx, sTextWindowFrame16d_Pal},
+    {sTextWindowFrame17d_Gfx, sTextWindowFrame17d_Pal},
+    {sTextWindowFrame18d_Gfx, sTextWindowFrame18d_Pal},
+    {sTextWindowFrame19d_Gfx, sTextWindowFrame19d_Pal},
+    {sTextWindowFrame20d_Gfx, sTextWindowFrame20d_Pal}
+};
+
 // code
 const struct TilesPal *GetWindowFrameTilesPal(u8 id)
 {
-    if (id >= WINDOW_FRAMES_COUNT)
-        return &sWindowFrames[0];
+    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    {
+        if (id >= WINDOW_FRAMES_COUNT)
+        {
+            return &sWindowFrames[0];
+        }
+        else
+        {
+            return &sWindowFrames[id];
+        }
+    }
     else
-        return &sWindowFrames[id];
+    {
+        if (id >= WINDOW_FRAMES_COUNT)
+        {
+            return &sWindowFramesDark[0];
+        }
+        else
+        {
+            return &sWindowFramesDark[id];
+        }
+    }
+    
 }
 
 void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
@@ -104,8 +192,17 @@ void LoadUserWindowBorderGfx_(u8 windowId, u16 destOffset, u8 palOffset)
 
 void LoadWindowGfx(u8 windowId, u8 frameId, u16 destOffset, u8 palOffset)
 {
-    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFrames[frameId].tiles, 0x120, destOffset);
-    LoadPalette(sWindowFrames[frameId].pal, palOffset, 0x20);
+    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    {
+        LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFramesDark[frameId].tiles, 0x120, destOffset);
+        LoadPalette(sWindowFramesDark[frameId].pal, palOffset, 0x20);
+    }
+    else
+    {
+        LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFrames[frameId].tiles, 0x120, destOffset);
+        LoadPalette(sWindowFrames[frameId].pal, palOffset, 0x20);
+    }
+    
 }
 
 void LoadUserWindowBorderGfx(u8 windowId, u16 destOffset, u8 palOffset)
@@ -187,7 +284,17 @@ const u16 *stdpal_get(u8 id)
 
 const u16 *GetOverworldTextboxPalettePtr(void)
 {
-    return gMessageBox_Pal;
+    u32 palette = VarGet(VAR_RYU_THEME_NUMBER);
+
+    switch (palette)
+    {
+        case 0:
+            return gMessageBox_Pal;
+        case 1:
+            return gRyuDarkTheme_Pal;
+        default:
+            return gMessageBox_Pal;
+    }
 }
 
 void sub_8098C6C(u8 bg, u16 destOffset, u8 palOffset)

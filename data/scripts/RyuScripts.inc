@@ -798,7 +798,8 @@ RyuDebug_UtilitiesMenu:
 	case 1, RyuDebug_Encounters
 	case 2, RyuDebug_EnableSaveViewer
 	case 3, RyuDebug_ViewTempVars
-	case 4, RyuDebug_cancel
+	case 4, RyuDebug_Utility1
+	case 5, RyuDebug_cancel
 	goto RyuDebug_cancel
 	
 RyuDebug_pokeedit::
@@ -928,8 +929,12 @@ RyuDebug_ViewTempVars::
 RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
+RyuDebug_Utility1::
+	goto Ryu_SwitchTheme
+	end
+
 RyuDebug_Init_GiveAllItems::
-	setvar VAR_TEMP_2, 531
+	setvar VAR_TEMP_2, 482
 	msgbox RyuDebug_GiveAllItemsBeginMsg MSGBOX_DEFAULT
 	goto RyuDebug_GiveAllItems
 	
@@ -1009,8 +1014,8 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
-    givemon SPECIES_SEVIPER, 124, ITEM_EXPERT_BELT
-	givemon SPECIES_AERODACTYL, 124, ITEM_HARD_STONE
+    givemon SPECIES_SEVIPER, 100, ITEM_EXPERT_BELT
+	givemon SPECIES_AERODACTYL, 100, ITEM_HARD_STONE
 	setmonmove 1, 0, MOVE_ROCK_SLIDE
 	setmonmove 1, 1, MOVE_ICE_SHARD
 	setmonmove 1, 2, MOVE_EXTREME_SPEED
@@ -3010,5 +3015,32 @@ ryu_return::
 ryu_end::
 	release
 	end
+
+@==================================================================================================Theme changer
+
+Ryu_SwitchTheme::
+	compare VAR_RYU_THEME_NUMBER, 0
+	goto_if_eq Ryu_SwitchToDarkTheme
+	compare VAR_RYU_THEME_NUMBER, 1
+	goto_if_eq Ryu_SwitchToDefaultTheme
+	end
+
+Ryu_SwitchToDarkTheme::
+	setvar VAR_RYU_THEME_NUMBER, 1
+	msgbox RyuNowUsingDarkTheme
+	release
+	end
+
+Ryu_SwitchToDefaultTheme::
+	setvar VAR_RYU_THEME_NUMBER, 0
+	msgbox RyuNowUsingDefaultTheme
+	release
+	end
+
+RyuNowUsingDarkTheme:
+	.string "You're now using the dark theme.$"
+
+RyuNowUsingDefaultTheme:
+	.string "Switched to default theme.$"
 
 

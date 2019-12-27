@@ -47,6 +47,13 @@
 extern u8 BerryTree_EventScript_ItemUsePlantBerry[];
 extern u8 BerryTree_EventScript_ItemUseWailmerPail[];
 extern u8 BattleFrontier_OutsideEast_EventScript_WaterSudowoodo[];
+extern u8 RyuTeleport[];
+extern u8 RyuUserModeEVMenu[];
+extern u8 RyuExpBattery[];
+extern u8 Ryu_Forecaster[];
+extern u8 Ryu_SoundTest[];
+extern u8 EventScript_PC[];
+extern u8 Ryu_CantUsePcCharging[];
 
 void SetUpItemUseCallback(u8 taskId);
 void MapPostLoadHook_UseItem(void);
@@ -763,6 +770,34 @@ void ItemUseOutOfBattle_RareCandy(u8 taskId)
     SetUpItemUseCallback(taskId);
 }
 
+void ItemUseOutOfBattle_Teleport(u8 taskId)
+{
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext2_Enable();
+    ScriptContext1_SetupScript(RyuTeleport);
+}
+
+void ItemUseOutOfBattle_RyuForecaster(u8 taskId)
+{
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext2_Enable();
+    ScriptContext1_SetupScript(Ryu_Forecaster);
+}
+
+void ItemUseOutOfBattle_RyuEvItemUse(u8 taskId)
+{
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext2_Enable();
+    ScriptContext1_SetupScript(RyuUserModeEVMenu);
+}
+
+void ItemUseOutOfBattle_RyuExpBattery(u8 taskId)
+{
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext2_Enable();
+    ScriptContext1_SetupScript(RyuExpBattery);
+}
+
 void ItemUseOutOfBattle_TMHM(u8 taskId)
 {
     if (gSpecialVar_ItemId >= ITEM_HM01_CUT)
@@ -1130,3 +1165,22 @@ void ItemUseOutOfBattle_CannotUse(u8 taskId)
     DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].data[3]);
 }
 
+void ItemUseOutOfBattle_RemotePC(u8 taskId)
+{
+    if (GetCurrentMapType() != 8)
+    {
+        if (FlagGet(FLAG_RYU_USED_WIRELESSPC) == 1)
+        {
+            SetMainCallback2(CB2_ReturnToField);
+            ScriptContext2_Enable();
+            ScriptContext1_SetupScript(Ryu_CantUsePcCharging);
+        }
+    else
+        {
+        FlagSet(FLAG_RYU_USED_WIRELESSPC);
+        SetMainCallback2(CB2_ReturnToField);
+        ScriptContext2_Enable();
+        ScriptContext1_SetupScript(EventScript_PC);
+        }
+    }
+}

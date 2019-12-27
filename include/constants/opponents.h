@@ -798,7 +798,7 @@
 #define TRAINER_TATE_AND_LIZA_2             794
 #define TRAINER_TATE_AND_LIZA_3             795
 #define TRAINER_TATE_AND_LIZA_4             796
-#define TRAINER_TATE_AND_LIZA_5             797
+#define TRAINER_TATE_AND_LIZA_SINGLE        797
 #define TRAINER_JUAN_2                      798
 #define TRAINER_JUAN_3                      799
 #define TRAINER_JUAN_4                      800

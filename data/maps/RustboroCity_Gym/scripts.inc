@@ -2,14 +2,295 @@ RustboroCity_Gym_MapScripts:: @ 8212F30
 	.byte 0
 
 RustboroCity_Gym_EventScript_Roxanne:: @ 8212F31
-	trainerbattle_single TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxannePreBattle, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq RustboroCity_Gym_EventScript_RoxanneRematch
-	goto_if_unset FLAG_RECEIVED_TM39, RustboroCity_Gym_EventScript_GiveRockTomb
-	msgbox RustboroCity_Gym_Text_RoxannePostBattle, MSGBOX_DEFAULT
+	lock
+	faceplayer
+	setflag FLAG_RYU_ALTERNATE_SCALE
+	special checkbadgecount
+    switch VAR_RESULT
+	case 0, ROXANNE1
+	case 1, ROXANNE1
+	case 2, ROXANNE1
+	case 3, ROXANNE2
+	case 4, ROXANNE2
+	case 5, ROXANNE3
+	case 6, ROXANNE3
+	case 7, ROXANNE4
+	case 8, ROXANNE4
+	end
+
+RG_Reset::
+	cleartrainerflag TRAINER_ROXANNE_1
+	cleartrainerflag TRAINER_ROXANNE_2
+	cleartrainerflag TRAINER_ROXANNE_3
+	cleartrainerflag TRAINER_ROXANNE_4
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_DEFEATED_RUSTBORO_GYM
+	msgbox RustboroCity_Gym_Text_RoxannePostBattle
+	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
+	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
+	call_if_unset FLAG_RYU_GYM1HANDOUT, RyuGymItemReward1
+	return
+
+ROXANNE1::
+	trainerbattle_single TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxannePreBattle, RustboroCity_Gym_Text_RoxanneDefeat, RG_Reset
 	release
 	end
+
+ROXANNE2::
+	trainerbattle_single TRAINER_ROXANNE_2, RustboroCity_Gym_Text_RoxannePreBattle, RustboroCity_Gym_Text_RoxanneDefeat, RG_Reset
+	release
+	end
+
+ROXANNE3::
+	trainerbattle_single TRAINER_ROXANNE_3, RustboroCity_Gym_Text_RoxannePreBattle, RustboroCity_Gym_Text_RoxanneDefeat, RG_Reset
+	release
+	end
+
+ROXANNE4::
+	call_if_set FLAG_RYU_DS_HAS_PARTNER, RG_PartnerQuery
+	trainerbattle_single TRAINER_ROXANNE_4, RustboroCity_Gym_Text_RoxannePreBattle, RustboroCity_Gym_Text_RoxanneDefeat, RG_Reset
+	release
+	end
+	
+RG_PartnerQuery::
+    msgbox RyuPartnerMultiText MSGBOX_YESNO
+	compare VAR_RESULT 1
+	goto_if_eq RG_RelDialog
+	goto RG_NoRelGymBattle
+	return
+	
+	
+RG_RelDialog::
+	call RyuParterBattleMultichoice
+	compare VAR_0x8006, TRAINER_REL_SHELLY
+	goto_if_eq RG_GymBattleIntroShelly
+	compare VAR_0x8006, TRAINER_REL_MAY
+	goto_if_eq RG_GymBattleIntroDawn
+	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	goto_if_eq RG_GymBattleIntroBrendan
+	compare VAR_0x8006, TRAINER_REL_LANA
+	goto_if_eq RG_GymBattleIntroLana
+	compare VAR_0x8006, TRAINER_REL_LANETTE
+	goto_if_eq RG_GymBattleIntroLanette
+	goto RG_NoRelGymBattle
+	
+RG_NoRelGymBattle::
+	trainerbattle_single TRAINER_ROXANNE_4, RustboroCity_Gym_Text_RoxannePreBattle, RustboroCity_Gym_Text_RoxanneDefeat, RG_Reset
+	release
+	end
+	
+RG_NoRelationship1::
+	msgbox Ryu_NOREL MSGBOX_DEFAULT
+	closemessage
+	goto RG_RelDialog
+	
+RG_GymBattleIntroShelly::
+	msgbox Ryu_PlayerCalledShelly MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	goto_if_unset FLAG_RYU_DS_SHELLY_PARTNERS, RG_NoRelationship1
+	addobject 7
+	playse SE_DOOR
+	applymovement 7, RG_PartnerEnter
+	waitmovement 0
+	msgbox RG_SHELLY_INTRO MSGBOX_DEFAULT
+	goto RG_AltGymBattle
+	
+RG_GymBattleIntroDawn::
+	goto_if_unset FLAG_RYU_DS_DAWN_PARTNERS, RG_NoRelationship1
+	msgbox Ryu_PlayerCalledDawn MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 6
+	playse SE_DOOR
+	applymovement 6, RG_PartnerEnter
+	waitmovement 0
+	msgbox RG_DAWN_INTRO MSGBOX_DEFAULT
+	goto RG_AltGymBattle
+	
+RG_GymBattleIntroBrendan::
+	goto_if_unset FLAG_RYU_DS_BRENDAN_PARTNERS, RG_NoRelationship1
+	msgbox Ryu_PlayerCalledBrendan MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 8
+	playse SE_DOOR
+	applymovement 8, RG_PartnerEnter
+	waitmovement 0
+	drawheadshot HEAD_BRENDAN
+	msgbox RG_BRENDAN_INTRO MSGBOX_DEFAULT
+	goto RG_AltGymBattle
+	
+RG_GymBattleIntroLana::
+	goto_if_unset FLAG_RYU_DS_LEAF_PARTNERS, RG_NoRelationship1
+	msgbox Ryu_PlayerCalledLana MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 9
+	playse SE_DOOR
+	applymovement 9, RG_PartnerEnter
+	waitmovement 9
+	msgbox RG_LANA_INTRO MSGBOX_DEFAULT
+	goto RG_AltGymBattle
+	
+RG_GymBattleIntroLanette::
+	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, RG_NoRelationship1
+	msgbox Ryu_PlayerCalledLanette MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 10
+	playse SE_DOOR
+	applymovement 10, RG_PartnerEnter
+	waitmovement 10
+	msgbox RG_LANETTE_INTRO MSGBOX_DEFAULT
+	goto RG_AltGymBattle
+	
+RG_AltGymBattle::
+	msgbox RG_PreBattleText MSGBOX_DEFAULT
+	removecutscenesprites
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_ROXANNE_4, 0, NULL, RG_DefeatText
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	delay 10
+	goto RG_GymBattleEnd
+	
+	
+RG_GymBattleEnd::
+	compare VAR_0x8006, TRAINER_REL_MAY
+	goto_if_eq RG_GymBattleEndDawn
+	compare VAR_0x8006, TRAINER_REL_SHELLY
+	goto_if_eq RG_GymBattleEndShelly
+	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	goto_if_eq RG_GymBattleEndBrendan
+	compare VAR_0x8006, TRAINER_REL_LANA
+	goto_if_eq RG_GymBattleEndLana
+	compare VAR_0x8006, TRAINER_REL_LANETTE
+	goto_if_eq RG_GymBattleEndLanette
+	release
+	end
+	
+RG_GymBattleEndShelly::
+	msgbox RG_ShellyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 7, RG_PartnerExit
+	waitmovement 0
+	playse SE_DOOR
+	removeobject 7
+	release
+	end
+	
+RG_GymBattleEndDawn::
+	msgbox RG_DawnGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 6, RG_PartnerExit
+	waitmovement 0
+	playse SE_DOOR
+	removeobject 6
+	release
+	end
+	
+RG_GymBattleEndBrendan::
+	msgbox RG_BrendanGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 8, RG_PartnerExit
+	waitmovement 0
+	playse SE_DOOR
+	removeobject 8
+	release
+	end
+	
+RG_GymBattleEndLana::
+	msgbox RG_LanaGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 9, RG_PartnerExit
+	waitmovement 9
+	playse SE_DOOR
+	removeobject 9
+	release
+	end
+	
+RG_GymBattleEndLanette::
+	msgbox RG_LanetteGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 10, RG_PartnerExit
+	waitmovement 10
+	playse SE_DOOR
+	removeobject 10
+	release
+	end
+	
+RG_SHELLY_INTRO:
+	.string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}, I'm glad you\ngot me out of the office for a while.\pLets show her our combined power!$"
+	
+RG_DAWN_INTRO:
+	.string "{RIVAL}: {PLAYER}! I flew in as soon as you called!\pLet's Show her how much we've\lgrown!!$"
+	
+RG_LANA_INTRO:
+    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}I love smashing rocks.\n"
+    .string "It's practically therapeutic!$"
+	
+RG_BRENDAN_INTRO:
+	.string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}! I flew in as soon as you called!\pLet's pound some novices!$"
+	
+RG_LANETTE_INTRO:
+	.string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}I'm... not very good\n"
+    .string "against rock types... But I love a\l"
+    .string "challenge!$"
+	
+RG_DefeatText:
+	.string "Roxanne: Maybe I should have\nrecorded that for the students...$"
+	
+RG_ShellyGymBattleComplete:
+	.string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}Right, well that was fun.\pI'm headed back to the office\nCall me if you want my help again!$"
+	
+RG_DawnGymBattleComplete:
+	.string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}I feel a little bad for this...\nOh well, It was fun.\lHave a nice day!$"
+	
+RG_BrendanGymBattleComplete:
+	.string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Yeah, that's right,\nwe're unstoppable!\pSee you later, {PLAYER}$"
+	
+RG_LanaGymBattleComplete:
+    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}I feel much better now.\n"
+    .string "I might go smash some more rocks\l"
+    .string "around Hoenn just for fun!$"
+	
+RG_LanetteGymBattleComplete:
+    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}That was pretty tough.\n"
+    .string "You saved me again, {PLAYER}!$"
+
+
+RG_PreBattleText:
+    .string "Roxanne: Nice to see you guys back.\n"
+    .string "I can tell you've grown...\p"
+    .string "Allow me to test your progress!$"
+
+	
+RG_PartnerEnter:
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_in_place_up
+	step_end
+
+RG_PartnerExit:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	step_end
 
 RustboroCity_Gym_EventScript_RoxanneDefeated:: @ 8212F66
 	message RustboroCity_Gym_Text_ReceivedStoneBadge
@@ -192,12 +473,7 @@ RustboroCity_Gym_Text_RoxanneDefeat: @ 821370B
 	.string "I lost…\p"
 	.string "It seems that I still have much more\n"
 	.string "to learn…\p"
-	.string "I understand.\p"
-	.string "The POKéMON LEAGUE's rules state\n"
-	.string "that TRAINERS are to be given this\l"
-	.string "if they defeat a GYM LEADER.\p"
-	.string "Please accept the official POKéMON\n"
-	.string "LEAGUE STONE BADGE.$"
+	.string "I understand...$"
 
 RustboroCity_Gym_Text_ReceivedStoneBadge: @ 82137EC
 	.string "{PLAYER} received the STONE BADGE\n"

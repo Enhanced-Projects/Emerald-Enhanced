@@ -74,16 +74,304 @@ MauvilleCity_Gym_EventScript_DeactivatePuzzle:: @ 820DEE7
 	end
 
 MauvilleCity_Gym_EventScript_Wattson:: @ 820DEEB
-	trainerbattle_single TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonPreBattle, MauvilleCity_Gym_Text_WattsonDefeat, MauvilleCity_Gym_EventScript_WattsonDefeated, NO_MUSIC
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq MauvilleCity_Gym_EventScript_WattsonRematch
-	goto_if_unset FLAG_RECEIVED_TM34, MauvilleCity_Gym_EventScript_GiveShockWave2
-	compare VAR_NEW_MAUVILLE_STATE, 2
-	goto_if_eq MauvilleCity_Gym_EventScript_CompletedNewMauville
-	msgbox MauvilleCity_Gym_Text_WattsonPostBattle, MSGBOX_DEFAULT
+	lock
+	faceplayer
+	setflag FLAG_RYU_ALTERNATE_SCALE
+	special checkbadgecount
+    switch VAR_RESULT
+	case 0, WATTSON1
+	case 1, WATTSON1
+	case 2, WATTSON1
+	case 3, WATTSON2
+	case 4, WATTSON2
+	case 5, WATTSON3
+	case 6, WATTSON3
+	case 7, WATTSON4
+	case 8, WATTSON4
+
+MG_Reset::
+	setflag FLAG_ENABLE_WATTSON_MATCH_CALL
+	setflag FLAG_DEFEATED_MAUVILLE_GYM
+	setflag FLAG_BADGE03_GET
+	cleartrainerflag TRAINER_WATTSON_1
+	cleartrainerflag TRAINER_WATTSON_2
+	cleartrainerflag TRAINER_WATTSON_3
+	cleartrainerflag TRAINER_WATTSON_4
+	msgbox MauvilleCity_Gym_Text_WattsonPostBattle
+	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
+	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
+	call_if_unset FLAG_RYU_GYM3HANDOUT, RyuGymItemReward3
 	release
 	end
+
+WATTSON1::
+	trainerbattle_single TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonPreBattle, MauvilleCity_Gym_Text_WattsonDefeat, MG_Reset
+	release
+	end
+
+WATTSON2::
+	trainerbattle_single TRAINER_WATTSON_2, MauvilleCity_Gym_Text_WattsonPreBattle, MauvilleCity_Gym_Text_WattsonDefeat, MG_Reset
+	release
+	end
+
+WATTSON3::
+	trainerbattle_single TRAINER_WATTSON_3, MauvilleCity_Gym_Text_WattsonPreBattle, MauvilleCity_Gym_Text_WattsonDefeat, MG_Reset
+	release
+	end
+
+WATTSON4::
+	goto_if_set FLAG_RYU_DS_HAS_PARTNER, MVG_PartnerQuery 
+	trainerbattle_single TRAINER_WATTSON_4, MauvilleCity_Gym_Text_WattsonPreBattle, MauvilleCity_Gym_Text_WattsonDefeat, MG_Reset
+	release
+	end
+	
+MVG_PartnerQuery::
+    msgbox RyuPartnerMultiText MSGBOX_YESNO
+	compare VAR_RESULT 1
+	goto_if_eq MVG_RelDialog
+	goto MVG_NoRelGymBattle
+	return
+	
+	
+MVG_RelDialog::
+	call RyuParterBattleMultichoice
+	compare VAR_0x8006, TRAINER_REL_SHELLY
+	goto_if_eq MVG_GymBattleIntroShelly
+	compare VAR_0x8006, TRAINER_REL_MAY
+	goto_if_eq MVG_GymBattleIntroDawn
+	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	goto_if_eq MVG_GymBattleIntroBrendan
+	compare VAR_0x8006, TRAINER_REL_LANA
+	goto_if_eq MVG_GymBattleIntroLana
+	compare VAR_0x8006, TRAINER_REL_LANETTE
+	goto_if_eq MVG_GymBattleIntroLanette
+	goto MVG_NoRelGymBattle
+	
+MVG_NoRelGymBattle::
+	trainerbattle_single TRAINER_WATTSON_4, MauvilleCity_Gym_Text_WattsonPreBattle, MauvilleCity_Gym_Text_WattsonDefeat, MG_Reset
+	release
+	end
+	
+MVG_NoRelationship1::
+	msgbox Ryu_NOREL MSGBOX_DEFAULT
+	closemessage
+	goto MVG_RelDialog
+	
+MVG_GymBattleIntroShelly::
+	msgbox Ryu_PlayerCalledShelly MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	goto_if_unset FLAG_RYU_DS_SHELLY_PARTNERS, MVG_NoRelationship1
+	addobject 10
+	playse SE_DOOR
+	applymovement 10, MVG_PartnerEnter
+	waitmovement 0
+	msgbox MVG_SHELLY_INTRO MSGBOX_DEFAULT
+	goto MVG_AltGymBattle
+	
+MVG_GymBattleIntroDawn::
+	goto_if_unset FLAG_RYU_DS_DAWN_PARTNERS, MVG_NoRelationship1
+	msgbox Ryu_PlayerCalledDawn MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 9
+	playse SE_DOOR
+	applymovement 9, MVG_PartnerEnter
+	waitmovement 0
+	msgbox MVG_DAWN_INTRO MSGBOX_DEFAULT
+	goto MVG_AltGymBattle
+	
+MVG_GymBattleIntroLana::
+	goto_if_unset FLAG_RYU_DS_LEAF_PARTNERS, MVG_NoRelationship1
+	msgbox Ryu_PlayerCalledLana MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 11
+	playse SE_DOOR
+	applymovement 11, MVG_PartnerEnter
+	waitmovement 11
+	msgbox MVG_LANA_INTRO MSGBOX_DEFAULT
+	goto MVG_AltGymBattle
+	
+MVG_GymBattleIntroBrendan::
+	goto_if_unset FLAG_RYU_DS_BRENDAN_PARTNERS, MVG_NoRelationship1
+	msgbox Ryu_PlayerCalledBrendan MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 8
+	playse SE_DOOR
+	applymovement 8, MVG_PartnerEnter
+	waitmovement 0
+	msgbox MVG_BRENDAN_INTRO MSGBOX_DEFAULT
+	goto MVG_AltGymBattle
+	
+MVG_GymBattleIntroLanette::
+	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, MVG_NoRelationship1
+	msgbox Ryu_PlayerCalledLanette MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 12
+	playse SE_DOOR
+	applymovement 12, MVG_PartnerEnter
+	waitmovement 12
+	msgbox MVG_LANETTE_INTRO MSGBOX_DEFAULT
+	goto MVG_AltGymBattle
+	
+MVG_AltGymBattle::
+	msgbox MVG_PreBattleText MSGBOX_DEFAULT
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_WATTSON_4, 0, NULL, MVG_DefeatText
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	delay 10
+	goto MVG_GymBattleEnd
+	
+	
+MVG_GymBattleEnd::
+	compare VAR_0x8006, TRAINER_REL_MAY
+	goto_if_eq MVG_GymBattleEndDawn
+	compare VAR_0x8006, TRAINER_REL_SHELLY
+	goto_if_eq MVG_GymBattleEndShelly
+	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	goto_if_eq MVG_GymBattleEndBrendan
+	compare VAR_0x8006, TRAINER_REL_LANA
+	goto_if_eq MVG_GymBattleEndLana
+	compare VAR_0x8006, TRAINER_REL_LANETTE
+	goto_if_eq MVG_GymBattleEndLanette
+	release
+	end
+	
+MVG_GymBattleEndShelly::
+	msgbox MVG_ShellyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 10, MVG_PartnerExit
+	waitmovement 0
+	playse SE_DOOR
+	removeobject 10
+	goto MG_Reset
+	release
+	end
+	
+MVG_GymBattleEndDawn::
+	msgbox MVG_DawnGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 9, MVG_PartnerExit
+	waitmovement 0
+	playse SE_DOOR
+	removeobject 9
+	goto MG_Reset
+	release
+	end
+	
+MVG_GymBattleEndBrendan::
+	msgbox MVG_BrendanGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 8, MVG_PartnerExit
+	waitmovement 0
+	playse SE_DOOR
+	removeobject 8
+	goto MG_Reset
+	release
+	end
+	
+MVG_GymBattleEndLana::
+	msgbox MVG_LanaGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 11, MVG_PartnerExit
+	waitmovement 11
+	playse SE_DOOR
+	removeobject 11
+	goto MG_Reset
+	release
+	end
+	
+MVG_GymBattleEndLanette::
+	msgbox MVG_LanetteGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 12, MVG_PartnerExit
+	waitmovement 12
+	playse SE_DOOR
+	removeobject 12
+	goto MG_Reset
+	release
+	end
+	
+MVG_SHELLY_INTRO:
+    .string "Shelly:{COLOR LIGHT_RED}{SHADOW RED} I'm not particularly\n"
+    .string "comfortable here...$"
+
+MVG_DAWN_INTRO:
+    .string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}You want me to help with\n"
+    .string "this guy? He's not that hard...$"
+	
+MVG_BRENDAN_INTRO:
+    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Hi, {PLAYER}! It's been\n"
+    .string "a while since I've been to Mauville.\l"
+    .string "This should be fun!$"
+	
+MVG_LANA_INTRO:
+    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}I fought Lieutenant Surge.\p"
+    .string "He's a REAL electric type user.\p"
+    .string "I wonder if this old codger can\n"
+    .string "keep up...$"
+	
+MVG_LANETTE_INTRO:
+    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}Oh, please. This guy\ndoesn't understand the potential\lof electric pokémon!$"
+	
+MVG_PreBattleText:
+	.string "Wattson: Ah! Two on one!\n"
+    .string "This is quite the shocking\l"
+    .string "revelation!$"
+	
+MVG_DefeatText:
+    .string "Ah! You grounded me!$"
+	
+MVG_ShellyGymBattleComplete:
+    .string "Shelly:{COLOR LIGHT_RED}{SHADOW RED} I barely pulled through\n"
+    .string "that one... I'd rather not come\l"
+    .string "back here!$"
+
+MVG_DawnGymBattleComplete:
+    .string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}That went pretty smooth.\n"
+    .string "It was a nice change of pace!$"
+	
+MVG_LanaGymBattleComplete:
+    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}Nope!\p"
+    .string "Not even close. Oh well.$"
+
+MVG_BrendanGymBattleComplete:
+    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} That was a little tougher\n"
+    .string "than I remember.\p"
+    .string "It was fun anyhow. See ya around!$"
+	
+MVG_LanetteGymBattleComplete:
+    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}Ha! That's how you use\n"
+    .string "electric pokémon to their full\lpotential.$"
+
+MVG_PartnerEnter:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_in_place_up
+	step_end
+
+MVG_PartnerExit:
+	walk_in_place_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
 
 MauvilleCity_Gym_EventScript_WattsonDefeated:: @ 820DF2B
 	message MauvilleCity_Gym_Text_ReceivedDynamoBadge
@@ -357,8 +645,7 @@ MauvilleCity_Gym_Text_WattsonPreBattle: @ 820E602
 MauvilleCity_Gym_Text_WattsonDefeat: @ 820E734
 	.string "Wahahahah!\n"
 	.string "Fine, I lost!\p"
-	.string "You ended up giving me a thrill!\n"
-	.string "Take this BADGE!$"
+	.string "You ended up giving me a thrill!$"
 
 MauvilleCity_Gym_Text_ReceivedDynamoBadge: @ 820E77F
 	.string "{PLAYER} received the DYNAMO BADGE\n"

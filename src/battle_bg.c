@@ -23,6 +23,8 @@
 #include "constants/map_types.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
+#include "event_data.h"
+#include "constants/vars.h"
 
 struct BattleBackground
 {
@@ -725,8 +727,15 @@ void InitBattleBgsVideo(void)
 void LoadBattleMenuWindowGfx(void)
 {
     LoadUserWindowBorderGfx(2, 0x12, 0x10);
-    LoadUserWindowBorderGfx(2, 0x22, 0x10);
-    LoadCompressedPalette(gBattleWindowTextPalette, 0x50, 0x20);
+    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    {
+        LoadCompressedPalette(gBattleWindowTextDarkPalette, 0x50, 0x20);
+    }
+    else
+    {
+        LoadCompressedPalette(gBattleWindowTextPalette, 0x50, 0x20);
+    }
+    
 
     if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
     {
@@ -839,10 +848,27 @@ void DrawMainBattleBackground(void)
 
 void LoadBattleTextboxAndBackground(void)
 {
-    LZDecompressVram(gBattleTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
+    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    {
+        LZDecompressVram(gBattleDarkTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
+    }
+    else
+    {
+        LZDecompressVram(gBattleTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
+    }
+    
     CopyToBgTilemapBuffer(0, gBattleTextboxTilemap, 0, 0);
     CopyBgTilemapBufferToVram(0);
-    LoadCompressedPalette(gBattleTextboxPalette, 0, 0x40);
+
+    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+    {
+        LoadCompressedPalette(gBattleTextboxDarkPalette, 0, 0x40);
+    }
+    else
+    {
+        LoadCompressedPalette(gBattleTextboxPalette, 0, 0x40);
+    }
+    
     LoadBattleMenuWindowGfx();
     DrawMainBattleBackground();
 }
@@ -1192,15 +1218,30 @@ bool8 LoadChosenBattleElement(u8 caseId)
     switch (caseId)
     {
     case 0:
-        LZDecompressVram(gBattleTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        {
+            LZDecompressVram(gBattleDarkTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
+        }
+        else
+        {
+            LZDecompressVram(gBattleTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
+        }
         break;
     case 1:
         CopyToBgTilemapBuffer(0, gBattleTextboxTilemap, 0, 0);
         CopyBgTilemapBufferToVram(0);
         break;
     case 2:
-        LoadCompressedPalette(gBattleTextboxPalette, 0, 0x40);
-        break;
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        {
+            LoadCompressedPalette(gBattleTextboxDarkPalette, 0, 0x40);
+            break;
+        }
+        else
+        {
+            LoadCompressedPalette(gBattleTextboxPalette, 0, 0x40);
+            break;
+        }
     case 3:
         if (gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_LINK | BATTLE_TYPE_x2000000 | BATTLE_TYPE_EREADER_TRAINER))
         {

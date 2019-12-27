@@ -16,13 +16,20 @@ FortreeCity_Gym_EventScript_InitRotatingGates:: @ 82165C4
 	end
 
 FortreeCity_Gym_EventScript_Winona:: @ 82165C8
-	trainerbattle_single TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaPreBattle, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq FortreeCity_Gym_EventScript_WinonaRematch
-	goto_if_unset FLAG_RECEIVED_TM40, FortreeCity_Gym_EventScript_GiveAerialAce2
-	msgbox FortreeCity_Gym_Text_WinonaPostBattle, MSGBOX_DEFAULT
-	release
+    lock
+    faceplayer
+	setflag FLAG_RYU_ALTERNATE_SCALE
+    special checkbadgecount
+    switch VAR_RESULT
+	case 0, WINONA1
+	case 1, WINONA1
+	case 2, WINONA1
+	case 3, WINONA2
+	case 4, WINONA2
+	case 5, WINONA3
+	case 6, WINONA3
+	case 7, WINONA4
+	case 8, WINONA4
 	end
 
 FortreeCity_Gym_EventScript_WinonaDefeated:: @ 82165FD
@@ -47,6 +54,290 @@ FortreeCity_Gym_EventScript_WinonaDefeated:: @ 82165FD
 	setflag FLAG_SCOTT_CALL_FORTREE_GYM
 	release
 	end
+
+FG_Reset::
+	setflag FLAG_DEFEATED_FORTREE_GYM
+	setflag FLAG_BADGE06_GET
+	cleartrainerflag TRAINER_WINONA_1
+	cleartrainerflag TRAINER_WINONA_2
+	cleartrainerflag TRAINER_WINONA_3
+	cleartrainerflag TRAINER_WINONA_4
+	msgbox FortreeCity_Gym_Text_WinonaPostBattle, MSGBOX_DEFAULT
+	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
+	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
+	call_if_unset FLAG_RYU_GYM6HANDOUT, RyuGymItemReward6
+	release
+	end
+
+WINONA1::
+	trainerbattle_single TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaPreBattle, FortreeCity_Gym_Text_WinonaDefeat, FG_Reset
+	release
+	end
+
+WINONA2::
+	trainerbattle_single TRAINER_WINONA_2, FortreeCity_Gym_Text_WinonaPreBattle, FortreeCity_Gym_Text_WinonaDefeat, FG_Reset
+	release
+	end
+
+WINONA3::
+	trainerbattle_single TRAINER_WINONA_3, FortreeCity_Gym_Text_WinonaPreBattle, FortreeCity_Gym_Text_WinonaDefeat, FG_Reset
+	release
+	end
+
+WINONA4::
+    goto_if_set FLAG_RYU_DS_HAS_PARTNER FG_PartnerQuery
+	trainerbattle_single TRAINER_WINONA_4, FortreeCity_Gym_Text_WinonaPreBattle, FortreeCity_Gym_Text_WinonaDefeat, FG_Reset
+	release
+	end
+
+FG_PartnerQuery::
+    msgbox RyuPartnerMultiText MSGBOX_YESNO
+	compare VAR_RESULT 1
+	goto_if_eq FG_RelDialog
+	goto FG_NoRelGymBattle
+	return
+	
+	
+FG_RelDialog::
+	call RyuParterBattleMultichoice
+	compare VAR_0x8006, TRAINER_REL_SHELLY
+	goto_if_eq FG_GymBattleIntroShelly
+	compare VAR_0x8006, TRAINER_REL_MAY
+	goto_if_eq FG_GymBattleIntroDawn
+	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	goto_if_eq FG_GymBattleIntroBrendan
+	compare VAR_0x8006, TRAINER_REL_LANA
+	goto_if_eq FG_GymBattleIntroLana
+	compare VAR_0x8006, TRAINER_REL_LANETTE
+	goto_if_eq FG_GymBattleIntroLanette
+	goto FG_NoRelGymBattle
+	
+FG_NoRelGymBattle::
+	trainerbattle_single TRAINER_WINONA_4, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_Text_WinonaPostBattle, FG_Reset
+	release
+	end
+	
+FG_NoRelationship1::
+	msgbox Ryu_NOREL MSGBOX_DEFAULT
+	closemessage
+	goto FG_RelDialog
+	
+FG_GymBattleIntroShelly::
+	msgbox Ryu_PlayerCalledShelly MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	goto_if_unset FLAG_RYU_DS_SHELLY_PARTNERS, FG_NoRelationship1
+	addobject 11
+	playse SE_DOOR
+	applymovement 11, FG_PartnerEnter
+	waitmovement 0
+	msgbox FG_SHELLY_INTRO MSGBOX_DEFAULT
+	goto FG_AltGymBattle
+	
+FG_GymBattleIntroDawn::
+	goto_if_unset FLAG_RYU_DS_DAWN_PARTNERS, FG_NoRelationship1
+	msgbox Ryu_PlayerCalledDawn MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 9
+	playse SE_DOOR
+	applymovement 9, FG_PartnerEnter
+	waitmovement 0
+	msgbox FG_DAWN_INTRO MSGBOX_DEFAULT
+	goto FG_AltGymBattle
+	
+FG_GymBattleIntroBrendan::
+	goto_if_unset FLAG_RYU_DS_BRENDAN_PARTNERS, FG_NoRelationship1
+	msgbox Ryu_PlayerCalledBrendan MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 10
+	playse SE_DOOR
+	applymovement 10, FG_PartnerEnter
+	waitmovement 0
+	msgbox FG_BRENDAN_INTRO MSGBOX_DEFAULT
+	goto FG_AltGymBattle
+	
+FG_GymBattleIntroLana::
+	goto_if_unset FLAG_RYU_DS_LEAF_PARTNERS, FG_NoRelationship1
+	msgbox Ryu_PlayerCalledLana MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 12
+	playse SE_DOOR
+	applymovement 12, FG_PartnerEnter
+	waitmovement 12
+	msgbox FG_LEAF_INTRO MSGBOX_DEFAULT
+	goto FG_AltGymBattle
+	
+FG_GymBattleIntroLanette::
+	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, FG_NoRelationship1
+	msgbox Ryu_PlayerCalledLanette MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 13
+	playse SE_DOOR
+	applymovement 13, FG_PartnerEnter
+	waitmovement 13
+	msgbox FG_LANETTE_INTRO MSGBOX_DEFAULT
+	goto FG_AltGymBattle
+	
+FG_AltGymBattle::
+	msgbox FG_PreBattleText MSGBOX_DEFAULT
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_WINONA_4, 0, NULL, FG_DefeatText
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	delay 10
+	goto FG_GymBattleEnd
+	
+	
+FG_GymBattleEnd::
+	compare VAR_0x8006, TRAINER_REL_MAY
+	goto_if_eq FG_GymBattleEndDawn
+	compare VAR_0x8006, TRAINER_REL_SHELLY
+	goto_if_eq FG_GymBattleEndShelly
+	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	goto_if_eq FG_GymBattleEndBrendan
+	compare VAR_0x8006, TRAINER_REL_LANA
+	goto_if_eq FG_GymBattleEndLeaf
+	compare VAR_0x8006, TRAINER_REL_LANETTE
+	goto_if_eq FG_GymBattleEndLanette
+	release
+	end
+	
+FG_GymBattleEndShelly::
+	msgbox FG_ShellyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 11, FG_PartnerExit
+	waitmovement 0
+	playse SE_DOOR
+	removeobject 11
+	goto FG_Reset
+	release
+	end
+	
+FG_GymBattleEndDawn::
+	msgbox FG_DawnGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 9, FG_PartnerExit
+	waitmovement 0
+	playse SE_DOOR
+	removeobject 9
+	goto FG_Reset
+	release
+	end
+	
+FG_GymBattleEndBrendan::
+	msgbox FG_BrendanGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 10, FG_PartnerExit
+	waitmovement 0
+	playse SE_DOOR
+	removeobject 10
+	goto FG_Reset
+	release
+	end
+	
+FG_GymBattleEndLeaf::
+	msgbox FG_LeafGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 12, FG_PartnerExit
+	waitmovement 12
+	playse SE_DOOR
+	removeobject 12
+	goto FG_Reset
+	release
+	end
+	
+FG_GymBattleEndLanette::
+	msgbox FG_LanetteGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 13, FG_PartnerExit
+	waitmovement 13
+	playse SE_DOOR
+	removeobject 13
+	goto FG_Reset
+	release
+	end
+	
+FG_SHELLY_INTRO:
+    .string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}This birdbrain should be\n"
+    .string "a piece of cake. Let's go!$"
+	
+FG_DAWN_INTRO:
+    .string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}She has some really cute\n"
+    .string "pokémon. It's fun to battle her!$"
+	
+FG_BRENDAN_INTRO:
+    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} I don't have the greatest\n"
+    .string "type matchups for this battle, but\l"
+    .string "we should be fine. $"
+	
+FG_LEAF_INTRO:
+    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}Huh, I've never seen a flying\n"
+    .string "type gym Leader before. This should\l"
+    .string "be interesting!$"
+	
+FG_LANETTE_INTRO:
+    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}This is certainly my\nwheelhouse. This'll be easy!$"
+	
+FG_PreBattleText:
+    .string "Winona: Oh, hi! I remember you. \n"
+    .string "Looks like you brought a friend!\p"
+    .string "Let us once again marvel at the\n"
+    .string "grace of my flying types!$"
+	
+FG_DefeatText:
+    .string "It seems you two are even more\n"
+    .string "graceful when working together!\p"
+    .string "It's a wonderful sight!$"
+	
+FG_ShellyGymBattleComplete:
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Shelly blushes and turns away\n"
+    .string " without a word)$"
+	
+FG_LeafGymBattleComplete:
+    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}It must be because of how weak\n"
+    .string "they are. Oh well, bye, {PLAYER}!$"
+	
+FG_DawnGymBattleComplete:
+    .string "Dawn:{COLOR LIGHT_RED}{SHADOW RED} That was really fun! Maybe\n"
+    .string "I should go get an Altaria, they're\l"
+    .string "so cuuuuute!$"
+	
+FG_BrendanGymBattleComplete:
+    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} It worked out in the end.\n"
+    .string "Nice seeing you again, Winona!\l"
+    .string "I'll catch you guys later!$"
+
+FG_LanetteGymBattleComplete:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lanette yawns)\p{COLOR LIGHT_RED}{SHADOW RED}Oh! the battle's over.$"
+
+FG_PartnerEnter:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_in_place_up
+	step_end
+
+FG_PartnerExit:
+	walk_in_place_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
 
 FortreeCity_Gym_EventScript_GiveAerialAce2:: @ 8216646
 	giveitem_std ITEM_TM40
@@ -246,9 +537,7 @@ FortreeCity_Gym_Text_WinonaPreBattle: @ 8216D75
 FortreeCity_Gym_Text_WinonaDefeat: @ 8216E60
 	.string "Never before have I seen a TRAINER\n"
 	.string "command POKéMON with more grace\l"
-	.string "than I…\p"
-	.string "In recognition of your prowess,\n"
-	.string "I present to you this GYM BADGE.$"
+	.string "than I…$"
 
 FortreeCity_Gym_Text_ReceivedFeatherBadge: @ 8216EEC
 	.string "{PLAYER} received the FEATHER BADGE\n"

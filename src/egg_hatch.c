@@ -520,7 +520,14 @@ static void CB2_EggHatch_0(void)
     case 2:
         DecompressAndLoadBgGfxUsingHeap(0, gBattleTextboxTiles, 0, 0, 0);
         CopyToBgTilemapBuffer(0, gBattleTextboxTilemap, 0, 0);
-        LoadCompressedPalette(gBattleTextboxPalette, 0, 0x20);
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        {
+            LoadCompressedPalette(gBattleTextboxDarkPalette, 0, 0x20);
+        }
+        else
+        {
+            LoadCompressedPalette(gBattleTextboxPalette, 0, 0x20);
+        }
         gMain.state++;
         break;
     case 3:

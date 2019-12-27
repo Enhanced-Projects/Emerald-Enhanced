@@ -50,13 +50,313 @@ MossdeepCity_Gym_EventScript_SetSwitch4Metatiles:: @ 8220885
 
 MossdeepCity_Gym_EventScript_TateAndLiza:: @ 8220898
 	trainerbattle_double TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaPreBattle, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MossdeepCity_Gym_EventScript_TateAndLizaDefeated, NO_MUSIC
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq MossdeepCity_Gym_EventScript_TateAndLizaRematch
-	goto_if_unset FLAG_RECEIVED_TM04, MossdeepCity_Gym_EventScript_GiveCalmMind2
-	msgbox MossdeepCity_Gym_Text_TateAndLizaPostBattle, MSGBOX_DEFAULT
+	lock
+	faceplayer
+	setflag FLAG_RYU_ALTERNATE_SCALE
+	special checkbadgecount
+	switch VAR_RESULT
+    case 0, SABRINA1
+	case 1, SABRINA1
+	case 2, SABRINA1
+	case 3, SABRINA2
+	case 4, SABRINA2
+	case 5, SABRINA3
+	case 6, SABRINA3
+	case 7, SABRINA4
+	case 8, SABRINA4
+	end
+
+MDG_Reset::
+	call_if_unset FLAG_BADGE07_GET, WorldStateUpdateMDG
+	setflag FLAG_BADGE07_GET
+	setflag FLAG_DEFEATED_MOSSDEEP_GYM
+	cleartrainerflag TRAINER_TATE_AND_LIZA_1
+	cleartrainerflag TRAINER_TATE_AND_LIZA_2
+	cleartrainerflag TRAINER_TATE_AND_LIZA_3
+	cleartrainerflag TRAINER_TATE_AND_LIZA_4
+	cleartrainerflag TRAINER_TATE_AND_LIZA_SINGLE
+	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
+	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
+	call_if_unset FLAG_RYU_GYM7HANDOUT, RyuGymItemReward7
 	release
 	end
+
+WorldStateUpdateMDG::
+	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS
+	setflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
+	setflag FLAG_ENABLE_WINONA_MATCH_CALL
+	clearflag FLAG_UNKNOWN_0x393
+	return
+
+SABRINA1::
+	trainerbattle_double TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaPreBattle, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MDG_Reset, NO_MUSIC
+	release
+	end
+
+SABRINA2::
+	trainerbattle_double TRAINER_TATE_AND_LIZA_2, MossdeepCity_Gym_Text_TateAndLizaPreBattle, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MDG_Reset, NO_MUSIC
+	release
+	end
+
+SABRINA3::
+	trainerbattle_double TRAINER_TATE_AND_LIZA_3, MossdeepCity_Gym_Text_TateAndLizaPreBattle, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MDG_Reset, NO_MUSIC
+	release
+	end
+
+SABRINA4::
+	goto_if_set FLAG_RYU_DS_HAS_PARTNER, MG_PartnerQuery
+	trainerbattle_double TRAINER_TATE_AND_LIZA_4, MossdeepCity_Gym_Text_TateAndLizaPreBattle, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MDG_Reset, NO_MUSIC
+	release
+	end
+	
+MG_PartnerQuery::
+    msgbox RyuPartnerMultiText MSGBOX_YESNO
+	compare VAR_RESULT 1
+	goto_if_eq MG_RelDialog
+	goto MG_NoRelGymBattle
+	return
+	
+	
+MG_RelDialog::
+	call RyuParterBattleMultichoice
+	compare VAR_0x8006, TRAINER_REL_SHELLY
+	goto_if_eq MG_GymBattleIntroShelly
+	compare VAR_0x8006, TRAINER_REL_MAY
+	goto_if_eq MG_GymBattleIntroDawn
+	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	goto_if_eq MG_GymBattleIntroBrendan
+	compare VAR_0x8006, TRAINER_REL_LANA
+	goto_if_eq MG_GymBattleIntroLana
+	compare VAR_0x8006, TRAINER_REL_LANETTE
+	goto_if_eq MG_GymBattleIntroLanette
+	goto MG_NoRelGymBattle
+	
+MG_NoRelGymBattle::
+	trainerbattle_double TRAINER_TATE_AND_LIZA_4, MossdeepCity_Gym_Text_TateAndLizaPreBattle, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MDG_Reset, NO_MUSIC
+	release
+	end
+	
+MG_NoRelationship1::
+	msgbox Ryu_NOREL MSGBOX_DEFAULT
+	closemessage
+	goto MG_RelDialog
+	
+MG_GymBattleIntroShelly::
+	msgbox Ryu_PlayerCalledShelly MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	goto_if_unset FLAG_RYU_DS_SHELLY_PARTNERS, MG_NoRelationship1
+	addobject 38
+	playse SE_TK_WARPIN
+	applymovement 38, MG_PartnerEnter
+	waitmovement 0
+	msgbox MG_SHELLY_INTRO MSGBOX_DEFAULT
+	goto MG_AltGymBattle
+	
+MG_GymBattleIntroDawn::
+	goto_if_unset FLAG_RYU_DS_DAWN_PARTNERS, MG_NoRelationship1
+	msgbox Ryu_PlayerCalledDawn MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 39
+	playse SE_TK_WARPIN
+	applymovement 39, MG_PartnerEnter
+	waitmovement 0
+	msgbox MG_DAWN_INTRO MSGBOX_DEFAULT
+	goto MG_AltGymBattle
+	
+MG_GymBattleIntroLana::
+	goto_if_unset FLAG_RYU_DS_LEAF_PARTNERS, MG_NoRelationship1
+	msgbox Ryu_PlayerCalledLana MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 41
+	playse SE_TK_WARPIN
+	applymovement 41, MG_PartnerEnter
+	waitmovement 41
+	msgbox MG_LEAF_INTRO MSGBOX_DEFAULT
+	goto MG_AltGymBattle
+	
+MG_GymBattleIntroLanette::
+	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, MG_NoRelationship1
+	msgbox Ryu_PlayerCalledLanette MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 42
+	playse SE_TK_WARPIN
+	applymovement 42, MG_PartnerEnter
+	waitmovement 42
+	msgbox MG_LANETTE_INTRO MSGBOX_DEFAULT
+	goto MG_AltGymBattle
+	
+MG_GymBattleIntroBrendan::
+	goto_if_unset FLAG_RYU_DS_BRENDAN_PARTNERS, MG_NoRelationship1
+	msgbox Ryu_PlayerCalledBrendan MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 40
+	playse SE_TK_WARPIN
+	applymovement 40, MG_PartnerEnter
+	waitmovement 0
+	msgbox MG_BRENDAN_INTRO MSGBOX_DEFAULT
+	goto MG_AltGymBattle
+	
+MG_AltGymBattle::
+	msgbox MG_PreBattleText MSGBOX_DEFAULT
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_TATE_AND_LIZA_SINGLE, 0, NULL, MG_DefeatText
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	delay 10
+	goto MG_GymBattleEnd
+	
+	
+MG_GymBattleEnd::
+	compare VAR_0x8006, TRAINER_REL_MAY
+	goto_if_eq MG_GymBattleEndDawn
+	compare VAR_0x8006, TRAINER_REL_SHELLY
+	goto_if_eq MG_GymBattleEndShelly
+	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	goto_if_eq MG_GymBattleEndBrendan
+	compare VAR_0x8006, TRAINER_REL_LANA
+	goto_if_eq MG_GymBattleEndLana
+	compare VAR_0x8006, TRAINER_REL_LANETTE
+	goto_if_eq MG_GymBattleEndLanette
+	release
+	end
+	
+MG_GymBattleEndShelly::
+	msgbox MG_ShellyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 38, MG_PartnerExit
+	waitmovement 0
+	playse SE_TK_WARPOUT
+	removeobject 38
+	goto MDG_Reset
+	release
+	end
+	
+MG_GymBattleEndDawn::
+	msgbox MG_DawnGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 39, MG_PartnerExit
+	waitmovement 0
+	playse SE_TK_WARPOUT
+	removeobject 39
+	goto MDG_Reset
+	release
+	end
+	
+MG_GymBattleEndLana::
+	msgbox MG_LanaGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 41, MG_PartnerExit
+	waitmovement 41
+	playse SE_TK_WARPOUT
+	removeobject 41
+	goto MDG_Reset
+	release
+	end
+	
+MG_GymBattleEndBrendan::
+	msgbox MG_BrendanGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 40, MG_PartnerExit
+	waitmovement 0
+	playse SE_TK_WARPOUT
+	removeobject 40
+	goto MDG_Reset
+	release
+	end
+	
+MG_GymBattleEndLanette::
+	msgbox MG_LanetteGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 42, MG_PartnerExit
+	waitmovement 42
+	playse SE_TK_WARPOUT
+	removeobject 42
+	goto MDG_Reset
+	release
+	end
+	
+MG_SHELLY_INTRO:
+    .string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}I've technically got an\n"
+    .string "edge here, but I can't help but\l"
+    .string "feel uncomfortable...$"
+	
+MG_DAWN_INTRO:
+    .string "Dawn:{COLOR LIGHT_RED}{SHADOW RED} This gym is so creepy...\n"
+    .string "I'll power through it!$"
+	
+MG_LEAF_INTRO:
+    .string "Lana: Hmm, I didn't know gym leaders\n"
+    .string "were allowed to be this young.\p"
+    .string "Oh well, I won't be nice about it.$"
+
+MG_LANETTE_INTRO:
+    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}This will be quite the\nbout. May the smartest team win!$"
+
+MG_BRENDAN_INTRO:
+    .string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}Brainpower really isn't\n"
+    .string "my specialty, So, you take the lead!$"
+	
+MG_PreBattleText:
+    .string "Tate: I see you levelled the\n"
+	.string "playing field. Smart thinking.\p"
+	.string "Liza: Our bond as twins is much\n"
+	.string "stronger than yours. You don't\l"
+	.string "stand a chance!$"
+
+MG_DefeatText:
+    .string "Both: How could you defeat\n"
+	.string "our bond?$"
+	
+MG_ShellyGymBattleComplete:
+    .string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}It worked itself out.\n"
+    .string "I'm glad I had dark types with me!$"
+
+MG_DawnGymBattleComplete:
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Dawn seems a little off...)$"
+	
+MG_LanaGymBattleComplete:
+    .string "Lana: Impressive teamwork, but you\n"
+	.string "should have known that the bond of\l"
+	.string "love is stronger than any other.$"
+	
+MG_LanetteGymBattleComplete:
+    .string "Lanette:{COLOR LIGHT_RED}{SHADOW RED} I had no doubts.\nLet's do this again sometime!$"
+
+MG_BrendanGymBattleComplete:
+    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Brute strength wins again!\n"
+    .string "Catch ya later, neighbor.$"
+	
+MG_PartnerEnter:
+	walk_in_place_down
+	walk_in_place_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_up
+	walk_in_place_up
+	walk_in_place_up
+	step_end
+
+MG_PartnerExit:
+	walk_in_place_down
+	walk_down
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_in_place_down
+	step_end
 
 MossdeepCity_Gym_EventScript_TateAndLizaDefeated:: @ 82208D1
 	message MossdeepCity_Gym_Text_ReceivedMindBadge

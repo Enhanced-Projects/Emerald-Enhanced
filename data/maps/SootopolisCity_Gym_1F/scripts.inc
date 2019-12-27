@@ -83,15 +83,303 @@ SootopolisCity_Gym_1F_Movement_FallThroughIce: @ 8224F42
 	step_end
 
 SootopolisCity_Gym_1F_EventScript_Juan:: @ 8224F44
-	trainerbattle_single TRAINER_JUAN_1, SootopolisCity_Gym_1F_Text_JuanPreBattle, SootopolisCity_Gym_1F_Text_JuanDefeat, SootopolisCity_Gym_1F_EventScript_JuanDefeated, NO_MUSIC
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq SootopolisCity_Gym_1F_EventScript_JuanRematch
-	goto_if_unset FLAG_RECEIVED_TM03, SootopolisCity_Gym_1F_EventScript_GiveWaterPulse2
-	goto_if_unset FLAG_BADGE06_GET, SootopolisCity_Gym_1F_EventScript_GoGetFortreeBadge
+	lock
+	faceplayer
+	setflag FLAG_RYU_ALTERNATE_SCALE
+	special checkbadgecount
+    switch VAR_RESULT
+    case 0, Juan1
+	case 1, Juan1
+	case 2, Juan1
+	case 3, Juan2
+	case 4, Juan2
+	case 5, Juan3
+	case 6, Juan3
+	case 7, Juan4
+	case 8, Juan4
+	end
+
+SG_Reset::
+	setflag FLAG_DEFEATED_SOOTOPOLIS_GYM 
+	setflag FLAG_BADGE08_GET
+	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1
+	cleartrainerflag TRAINER_JUAN_1
+	cleartrainerflag TRAINER_JUAN_2
+	cleartrainerflag TRAINER_JUAN_3
+	cleartrainerflag TRAINER_JUAN_4
 	msgbox SootopolisCity_Gym_1F_Text_JuanPostBattle, MSGBOX_DEFAULT
+	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
+	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
+	call_if_unset FLAG_RYU_GYM8HANDOUT, RyuGymItemReward8
 	release
 	end
+
+Juan1::
+	trainerbattle_single TRAINER_JUAN_1, SootopolisCity_Gym_1F_Text_JuanPreBattle, SootopolisCity_Gym_1F_Text_JuanDefeat, SG_Reset
+	release
+	end
+
+Juan2::
+	trainerbattle_single TRAINER_JUAN_2, SootopolisCity_Gym_1F_Text_JuanPreBattle, SootopolisCity_Gym_1F_Text_JuanDefeat, SG_Reset
+	release
+	end
+
+Juan3::
+	trainerbattle_single TRAINER_JUAN_3, SootopolisCity_Gym_1F_Text_JuanPreBattle, SootopolisCity_Gym_1F_Text_JuanDefeat, SG_Reset
+	release
+	end
+
+Juan4::
+	call_if_set FLAG_RYU_DS_HAS_PARTNER, SG_PartnerQuery
+	trainerbattle_single TRAINER_JUAN_4, SootopolisCity_Gym_1F_Text_JuanPreBattle, SootopolisCity_Gym_1F_Text_JuanDefeat, SG_Reset
+	release
+	end
+	
+SG_PartnerQuery::
+    msgbox RyuPartnerMultiText MSGBOX_YESNO
+	compare VAR_RESULT 1
+	goto_if_eq SG_RelDialog
+	goto SG_NoRelGymBattle
+	return
+	
+	
+SG_RelDialog::
+	call RyuParterBattleMultichoice
+	compare VAR_0x8006, TRAINER_REL_SHELLY
+	goto_if_eq SG_GymBattleIntroShelly
+	compare VAR_0x8006, TRAINER_REL_MAY
+	goto_if_eq SG_GymBattleIntroDawn
+	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	goto_if_eq SG_GymBattleIntroBrendan
+	compare VAR_0x8006, TRAINER_REL_LANA
+	goto_if_eq SG_GymBattleIntroLana
+	compare VAR_0x8006, TRAINER_REL_LANETTE
+	goto_if_eq SG_GymBattleIntroLanette
+	goto SG_NoRelGymBattle
+	
+SG_NoRelGymBattle::
+	trainerbattle_single TRAINER_JUAN_4, SootopolisCity_Gym_1F_Text_JuanPreBattle, SootopolisCity_Gym_1F_Text_JuanDefeat, SG_Reset
+	release
+	end
+	
+SG_NoRelationship1::
+	msgbox Ryu_NOREL MSGBOX_DEFAULT
+	closemessage
+	goto SG_RelDialog
+	
+SG_GymBattleIntroShelly::
+	msgbox Ryu_PlayerCalledShelly MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	goto_if_unset FLAG_RYU_DS_SHELLY_PARTNERS, SG_NoRelationship1
+	addobject 5
+	playse SE_TK_WARPIN
+	applymovement 5, SG_PartnerEnter
+	waitmovement 0
+	msgbox SG_SHELLY_INTRO MSGBOX_DEFAULT
+	goto SG_AltGymBattle
+	
+SG_GymBattleIntroDawn::
+	goto_if_unset FLAG_RYU_DS_DAWN_PARTNERS, SG_NoRelationship1
+	msgbox Ryu_PlayerCalledDawn MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 3
+	playse SE_TK_WARPIN
+	applymovement 3, SG_PartnerEnter
+	waitmovement 0
+	msgbox SG_DAWN_INTRO MSGBOX_DEFAULT
+	goto SG_AltGymBattle
+	
+SG_GymBattleIntroBrendan::
+	goto_if_unset FLAG_RYU_DS_BRENDAN_PARTNERS, SG_NoRelationship1
+	msgbox Ryu_PlayerCalledBrendan MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 4
+	playse SE_TK_WARPIN
+	applymovement 4, SG_PartnerEnter
+	waitmovement 0
+	msgbox SG_BRENDAN_INTRO MSGBOX_DEFAULT
+	goto SG_AltGymBattle
+	
+SG_GymBattleIntroLana::
+	goto_if_unset FLAG_RYU_DS_LEAF_PARTNERS, SG_NoRelationship1
+	msgbox Ryu_PlayerCalledLana MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 6
+	playse SE_TK_WARPIN
+	applymovement 6, SG_PartnerEnter
+	waitmovement 6
+	msgbox SG_LANA_INTRO MSGBOX_DEFAULT
+	goto SG_AltGymBattle
+	
+SG_GymBattleIntroLanette::
+	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, SG_NoRelationship1
+	msgbox Ryu_PlayerCalledLanette MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 7
+	playse SE_TK_WARPIN
+	applymovement 7, SG_PartnerEnter
+	waitmovement 7
+	msgbox SG_LANETTE_INTRO MSGBOX_DEFAULT
+	goto SG_AltGymBattle
+	
+SG_AltGymBattle::
+	msgbox SG_PreBattleText MSGBOX_DEFAULT
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_JUAN_4, 0, NULL, SG_DefeatText
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	delay 10
+	goto SG_GymBattleEnd
+	
+	
+SG_GymBattleEnd::
+	compare VAR_0x8006, TRAINER_REL_MAY
+	goto_if_eq SG_GymBattleEndDawn
+	compare VAR_0x8006, TRAINER_REL_SHELLY
+	goto_if_eq SG_GymBattleEndShelly
+	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	goto_if_eq SG_GymBattleEndBrendan
+	compare VAR_0x8006, TRAINER_REL_LANA
+	goto_if_eq SG_GymBattleEndLana
+	compare VAR_0x8006, TRAINER_REL_LANETTE
+	goto_if_eq SG_GymBattleEndLanette
+	release
+	end
+	
+SG_GymBattleEndShelly::
+	msgbox SG_ShellyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 5, SG_PartnerExit
+	waitmovement 0
+	playse SE_TK_WARPOUT
+	removeobject 5
+	goto SG_Reset
+	release
+	end
+	
+SG_GymBattleEndDawn::
+	msgbox SG_DawnGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 3, SG_PartnerExit
+	waitmovement 0
+	playse SE_TK_WARPOUT
+	removeobject 3
+	goto SG_Reset
+	release
+	end
+	
+SG_GymBattleEndBrendan::
+	msgbox SG_BrendanGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 4, SG_PartnerExit
+	waitmovement 0
+	playse SE_TK_WARPOUT
+	removeobject 4
+	goto SG_Reset
+	release
+	end
+	
+SG_GymBattleEndLana::
+	msgbox SG_LanaGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 6, SG_PartnerExit
+	waitmovement 6
+	playse SE_TK_WARPOUT
+	removeobject 6
+	special DrawWholeMapView
+	goto SG_Reset
+	release
+	end
+	
+SG_GymBattleEndLanette::
+	msgbox SG_LanetteGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 7, SG_PartnerExit
+	waitmovement 7
+	playse SE_TK_WARPOUT
+	removeobject 7
+	special DrawWholeMapView
+	goto SG_Reset
+	release
+	end
+	
+SG_SHELLY_INTRO:
+    .string "Shelly:{COLOR LIGHT_RED}{SHADOW RED} I'd say I probably wasn't\n"
+    .string "the best person to call, but I'll\l"
+    .string "support you any way I can!$"
+
+	
+SG_DAWN_INTRO:
+    .string "Dawn:{COLOR LIGHT_RED}{SHADOW RED} This guy's creepy...\p"
+    .string "Let's stomp him out of existence!$"
+	
+SG_LANA_INTRO:
+    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}This guy's annoying... can\n"
+    .string "we get this over with quickly?\l"
+    .string "He creeps me out...$"
+	
+SG_LANETTE_INTRO:
+	.string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}Hello, Juan. I see that\nyou are as flippant as ever$"
+
+SG_BRENDAN_INTRO:
+    .string "Brendan: This guy is wierd.. I\n"
+    .string "don't like him... Let's send him\l"
+    .string "packing!$"
+	
+SG_PreBattleText:
+	.string "Juan: Oh, I get to have two dance\npartners. This will be magical!$"
+	
+SG_DefeatText:
+	.string "You guys make a fantastic team!$"
+	
+SG_ShellyGymBattleComplete:
+    .string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}I got a little wetter than\n"
+    .string "I expected to.\p"
+    .string "Good thing I have my swimsuit on\n"
+    .string "underneath!$"
+
+SG_DawnGymBattleComplete:
+    .string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}I have the strangest urge\n"
+    .string "to take a long, hot shower...\p"
+    .string "You should join me after, {PLAYER}!$"
+	
+SG_BrendanGymBattleComplete:
+    .string "Brendan: Man, I really didn't feel\n"
+    .string "like swimming today...$"
+	
+SG_LanaGymBattleComplete:
+    .string "Lana: Normally I like getting wet,\n"
+    .string "but this was a little excessive...$"
+	
+SG_LanetteGymBattleComplete:
+    .string "Lanette: He almost shorted me out!$"
+
+
+	
+SG_PartnerEnter:
+	walk_in_place_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_in_place_up
+	step_end
+
+SG_PartnerExit:
+	walk_in_place_right
+	walk_right
+	walk_right
+	walk_in_place_down
+	walk_in_place_down
+	step_end
 
 SootopolisCity_Gym_1F_EventScript_JuanDefeated:: @ 8224F82
 	message SootopolisCity_Gym_1F_Text_ReceivedRainBadge
@@ -211,32 +499,13 @@ SootopolisCity_Gym_1F_Text_JuanPreBattle: @ 8225268
 	.string "In my place, I had entrusted WALLACE\n"
 	.string "with the GYM.\p"
 	.string "However, a compelling reason arose for\n"
-	.string "me to make a comeback.\p"
-	.string "Ah, but enough chatter.\n"
-	.string "Let us begin our match, shall we?\p"
-	.string "Please, you shall bear witness to\n"
-	.string "our artistry.\p"
-	.string "A grand illusion of water sculpted\n"
-	.string "by POKéMON and myself!$"
+	.string "me to make a comeback.$"
 
-@ NOTE: This defeat text actually causes a buffer overflow. It's about 50 bytes too long for
-@ the gDisplayedStringBattle buffer that it's put into, and it stomps all over the gBattleTextBuffs
-@ after, as well as the otherwise unused array after that. One wonders if that's the reason for
-@ the existence of that unused array of ints.
 SootopolisCity_Gym_1F_Text_JuanDefeat: @ 8225432
 	.string "Ahahaha, excellent!\n"
 	.string "Very well, you are the winner.\p"
 	.string "From you, I sense the brilliant shine\n"
-	.string "of skill that will overcome all.\p"
-	.string "However, compared with me or even\n"
-	.string "WALLACE, you are lacking in elegance.\p"
-	.string "Perhaps I should make you a loan\n"
-	.string "of my outfit?\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …\p"
-	.string "Hahaha, I merely jest!\p"
-	.string "Rather than my clothes, I shall reward\n"
-	.string "you with this, the RAIN BADGE!$"
+	.string "of skill that will overcome all.$"
 
 SootopolisCity_Gym_1F_Text_ReceivedRainBadge: @ 8225598
 	.string "{PLAYER} received the RAIN BADGE\n"

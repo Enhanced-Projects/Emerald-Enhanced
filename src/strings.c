@@ -2115,3 +2115,4 @@ const u8 gText_RyuDevSubWalkThroughWalls[] = _("Phasing");
 const u8 gText_RyuDevSubDevRepelToggle[] = _("Dev Repel Toggle");
 const u8 gText_RyuDevSubEnableSaveView[] = _("Enable Save Viewer");
 const u8 gText_RyuDevSubViewTempVars[] = _("Check Temp Vars");
+const u8 gText_RyuDevSubUtility1[] = _("Utility Option");

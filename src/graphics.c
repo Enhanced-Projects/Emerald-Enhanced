@@ -1,7 +1,9 @@
 #include "global.h"
 
 const u32 gBattleTextboxTiles[] = INCBIN_U32("graphics/battle_interface/textbox.4bpp.lz");
+const u32 gBattleDarkTextboxTiles[] = INCBIN_U32("graphics/battle_interface/darktextbox.4bpp.lz");
 const u32 gBattleTextboxPalette[] = INCBIN_U32("graphics/battle_interface/textbox.gbapal.lz");
+const u32 gBattleTextboxDarkPalette[] = INCBIN_U32("graphics/battle_interface/darktextbox.gbapal.lz");
 const u32 gBattleTextboxTilemap[] = INCBIN_U32("graphics/battle_interface/textbox_map.bin.lz");
 
 const u32 gUnusedGfx_OldCharmap[] = INCBIN_U32("graphics/unused/old_charmap.4bpp.lz"); // japanese table and bunch of stuff
@@ -418,8 +420,10 @@ const u32 gUnusedTilemap_BasicFrame[] = INCBIN_U32("graphics/unused/basic_frame.
 // Battle Interface
 
 const u16 gBattleInterface_BallStatusBarPal[] = INCBIN_U16("graphics/battle_interface/ball_status_bar.gbapal");
+const u16 gBattleInterface_BallStatusBarDarkPal[] = INCBIN_U16("graphics/battle_interface/ball_status_bar_dark.gbapal");
 
 const u16 gBattleInterface_BallDisplayPal[] = INCBIN_U16("graphics/battle_interface/ball_display.gbapal");
+const u16 gBattleInterface_BallDisplayDarkPal[] = INCBIN_U16("graphics/battle_interface/ball_display_dark.gbapal");
 
 //Originally an array?
 const u8 gHealthboxElementsGfxTable[] = INCBIN_U8("graphics/battle_interface/hpbar.4bpp");
@@ -1051,6 +1055,7 @@ const u32 gBattleArenaJudgementSymbolsGfx[] = INCBIN_U32("graphics/battle_fronti
 const u32 gBattleArenaJudgementSymbolsPalette[] = INCBIN_U32("graphics/battle_frontier/arena_judgement_symbols.gbapal.lz");
 
 const u32 gBattleWindowTextPalette[] = INCBIN_U32("graphics/battle_interface/text.gbapal.lz");
+const u32 gBattleWindowTextDarkPalette[] = INCBIN_U32("graphics/battle_interface/text_dark.gbapal.lz");
 const u16 gUnknown_08D85620[] = INCBIN_U16("graphics/battle_frontier/text_pp.gbapal");
 
 const u16 gTilesetAnims_BattleDomePals0_0[] = INCBIN_U16("graphics/battle_frontier/dome_anim1.gbapal");
@@ -1126,6 +1131,7 @@ const u32 gBattleAnimBackgroundImageMuddyWater_Pal[] = INCBIN_U32("graphics/batt
 const u32 gEnemyMonShadow_Gfx[] = INCBIN_U32("graphics/battle_interface/enemy_mon_shadow.4bpp.lz");
 
 const u32 gBattleInterface_BallStatusBarGfx[] = INCBIN_U32("graphics/battle_interface/ball_status_bar.4bpp.lz");
+const u32 gBattleInterface_BallStatusBarDarkGfx[] = INCBIN_U32("graphics/battle_interface/ball_status_bar_dark.4bpp.lz");
 
 const u32 gBattleAnimBgImage_Ghost[] = INCBIN_U32("graphics/battle_anims/backgrounds/ghost.4bpp.lz");
 const u32 gBattleAnimBgPalette_Ghost[] = INCBIN_U32("graphics/battle_anims/backgrounds/ghost.gbapal.lz");
@@ -1214,6 +1220,7 @@ const u32 gBattleAnimSpritePal_WhiteShadow[] = INCBIN_U32("graphics/battle_anims
 const u32 gPartyMenuBg_Gfx[] = INCBIN_U32("graphics/interface/party_menu_bg.4bpp.lz");
 const u32 gPartyMenuBg_Pal[] = INCBIN_U32("graphics/interface/party_menu_bg.gbapal.lz");
 const u32 gPartyMenuBg_Tilemap[] = INCBIN_U32("graphics/interface/party_menu_bg.bin.lz");
+const u32 gPartyMenu_dark_Pal[] = INCBIN_U32("graphics/interface/party_menu_dark.gbapal.lz");
 
 const u32 gPartyMenuPokeball_Gfx[] = INCBIN_U32("graphics/interface/party_menu_pokeball.4bpp.lz");
 const u32 gPartyMenuPokeballSmall_Gfx[] = INCBIN_U32("graphics/interface/party_menu_pokeball_small.4bpp.lz"); //unused
@@ -1230,6 +1237,7 @@ const u32 gUnknown_08D97CF4[] = INCBIN_U32("graphics/interface/summary_frames.gb
 
 const u32 gStatusScreenBitmap[] = INCBIN_U32("graphics/interface/status_screen.4bpp.lz");
 const u32 gStatusScreenPalette[] = INCBIN_U32("graphics/interface/status_screen.gbapal.lz");
+const u32 gStatusScreenDarkPalette[] = INCBIN_U32("graphics/interface/status_screen_dark.gbapal.lz");
 const u32 gPageInfoTilemap[] = INCBIN_U32("graphics/interface/status_screen.bin.lz");
 
 const u32 gPageSkillsTilemap[] = INCBIN_U32("graphics/interface/status_tilemap1.bin.lz");
@@ -1243,6 +1251,7 @@ const u32 gBagPalette[] = INCBIN_U32("graphics/misc/bag.gbapal.lz");
 
 const u32 gBagScreenMale_Pal[] = INCBIN_U32("graphics/interface/bag_screen_male.gbapal.lz");
 const u32 gBagScreenFemale_Pal[] = INCBIN_U32("graphics/interface/bag_screen_female.gbapal.lz");
+const u32 gBagScreenDarkTheme[] = INCBIN_U32("graphics/interface/ryubagscreendarktheme.gbapal.lz");
 
 const u32 gBagScreen_Gfx[] = INCBIN_U32("graphics/interface/bag_screen.4bpp.lz");
 const u32 gBagScreen_GfxTileMap[] = INCBIN_U32("graphics/interface/bag_screen_tilemap.bin.lz");
@@ -1257,8 +1266,11 @@ const u32 gBagSwapLineGfx[] = INCBIN_U32("graphics/interface/bag_swap.4bpp.lz");
 const u32 gBagSwapLinePal[] = INCBIN_U32("graphics/interface/bag_swap.gbapal.lz");
 
 const u32 gBuyMenuFrame_Gfx[] = INCBIN_U32("graphics/interface/mart_frame.4bpp.lz");
+const u32 gBuyMenuFrameDark_Gfx[] = INCBIN_U32("graphics/interface/mart_frame_dark.4bpp.lz");
 const u32 gMenuMoneyPal[] = INCBIN_U32("graphics/interface/mart_frame.gbapal.lz");
+const u32 gMenuMoneyDarkPal[] = INCBIN_U32("graphics/interface/mart_frame_dark.gbapal.lz");
 const u32 gBuyMenuFrame_Tilemap[] = INCBIN_U32("graphics/interface/mart_frame.bin.lz");
+const u32 gBuyMenuDarkFrame_Gfx[] = INCBIN_U32("graphics/interface/mart_frame_dark.4bpp.lz");
 
 const u32 gMenuMoneyGfx[] = INCBIN_U32("graphics/interface/money.4bpp.lz");
 
@@ -1504,6 +1516,7 @@ const u8 gUnknown_08DD1A18[] = INCBIN_U8("graphics/unknown/unknown_DD1A18.4bpp")
 // trainer card
 
 const u16 gEmeraldTrainerCard0Star_Pal[] = INCBIN_U16("graphics/trainer_card/0star.gbapal");
+const u16 gEmeraldTrainerCard0StarDark_Pal[] = INCBIN_U16("graphics/trainer_card/0star_dark.gbapal");
 const u32 gEmeraldTrainerCard_Gfx[] = INCBIN_U32("graphics/trainer_card/card.4bpp.lz");
 
 const u32 gUnknown_08DD1F78[] = INCBIN_U32("graphics/unknown/unknown_DD1F78.bin.lz");
@@ -1600,6 +1613,8 @@ const u16 gTradeMenuMonBox_Tilemap[] = INCBIN_U16("graphics/trade/menu_mon_box.b
 
 const u16 gMessageBox_Pal[] = INCBIN_U16("graphics/text_window/message_box.gbapal");
 const u8 gMessageBox_Gfx[] = INCBIN_U8("graphics/text_window/message_box.4bpp");
+
+const u16 gRyuDarkTheme_Pal[] = INCBIN_U16("graphics/text_window/ryudarktheme.gbapal");
 
 const u32 gWallpaperIcon_Cross[] = INCBIN_U32("graphics/pokemon_storage/cross_icon.4bpp.lz");
 const u32 gWallpaperIcon_Bolt[] = INCBIN_U32("graphics/pokemon_storage/bolt_icon.4bpp.lz");

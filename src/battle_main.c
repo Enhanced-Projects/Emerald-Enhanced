@@ -2188,7 +2188,16 @@ void sub_8038D64(void)
         gBattle_BG3_Y = 0;
 
         InitBattleBgsVideo();
-        LoadCompressedPalette(gBattleTextboxPalette, 0, 64);
+
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        {
+            LoadCompressedPalette(gBattleTextboxDarkPalette, 0, 64);
+        }
+        else
+        {
+            LoadCompressedPalette(gBattleTextboxPalette, 0, 64);
+        }
+        
         LoadBattleMenuWindowGfx();
         ResetSpriteData();
         ResetTasks();

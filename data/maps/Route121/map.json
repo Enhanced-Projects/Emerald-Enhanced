@@ -59,7 +59,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDDEN_ITEM_ROUTE_121_NUGGET",
-            "item": "ITEM_NUGGET",
+            "item": "ITEM_BIG_PEARL",
             "type": "hidden_item",
             "x": 58,
             "y": 3

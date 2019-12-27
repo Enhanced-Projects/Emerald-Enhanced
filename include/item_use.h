@@ -1,6 +1,12 @@
 #ifndef GUARD_ITEM_USE_H
 #define GUARD_ITEM_USE_H
 
+
+void ItemUseOutOfBattle_RyuEvItemUse(u8);
+void ItemUseOutOfBattle_RyuForecaster(u8);
+void ItemUseOutOfBattle_Teleport(u8);//done
+void ItemUseOutOfBattle_RyuExpBattery(u8);
+void ItemUseOutOfBattle_RemotePC(u8);
 void ItemUseOutOfBattle_Mail(u8);
 void ItemUseOutOfBattle_Bike(u8);
 void ItemUseOnFieldCB_Bike(u8);

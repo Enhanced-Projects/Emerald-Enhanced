@@ -707,9 +707,25 @@ bool8 LoadBagMenu_Graphics(void)
             break;
         case 2:
             if (!IsWallysBag() && gSaveBlock2Ptr->playerGender != MALE)
-                LoadCompressedPalette(gBagScreenFemale_Pal, 0, 0x40);
+                if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+                    {
+                        LoadCompressedPalette(gBagScreenDarkTheme, 0, 0x40);
+                    }
+                    else
+                    {
+                        LoadCompressedPalette(gBagScreenFemale_Pal, 0, 0x40);
+                    }
             else
-                LoadCompressedPalette(gBagScreenMale_Pal, 0, 0x40);
+            {
+                if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+                    {
+                        LoadCompressedPalette(gBagScreenDarkTheme, 0, 0x40);
+                    }
+                    else
+                    {
+                        LoadCompressedPalette(gBagScreenFemale_Pal, 0, 0x40);
+                    }
+            }
             gBagMenu->unk834++;
             break;
         case 3:

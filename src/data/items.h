@@ -1584,13 +1584,19 @@ const struct Item gItems[] =
 
     [ITEM_NUGGET] =
     {
-        .name = _("Nugget"),
+        .name = _("Waystone"),
         .itemId = ITEM_NUGGET,
-        .price = 10000,
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_NONE,
+        .holdEffectParam = 0,
         .description = sNuggetDesc,
-        .pocket = POCKET_ITEMS,
+        .importance = 2,
+        .unk19 = 0,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Teleport,
+        .battleUsage = 0,
+        .battleUseFunc = NULL,
         .secondaryId = 0,
     },
 
@@ -3328,14 +3334,19 @@ const struct Item gItems[] =
 
     [ITEM_UP_GRADE] =
     {
-        .name = _("Up-Grade"),
+        .name = _("EXP Drive"),
         .itemId = ITEM_UP_GRADE,
-        .price = 2100,
-        .holdEffect = HOLD_EFFECT_UP_GRADE,
+        .price = 32000,
+        .holdEffect = HOLD_EFFECT_NONE,
+        .holdEffectParam = 0,
         .description = sUpGradeDesc,
-        .pocket = POCKET_ITEMS,
+        .importance = 1,
+        .unk19 = 0,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_RyuExpBattery,
+        .battleUsage = 0,
+        .battleUseFunc = NULL,
         .secondaryId = 0,
     },
 
@@ -4757,14 +4768,19 @@ const struct Item gItems[] =
 
     [ITEM_POKE_FLUTE] =
     {
-        .name = _("Poké Flute"),
+        .name = _("Imprinter"),
         .itemId = ITEM_POKE_FLUTE,
-        .price = 0,
+        .price = 60000,
+        .holdEffect = HOLD_EFFECT_NONE,
+        .holdEffectParam = 0,
         .description = sPokeFluteDesc,
-        .importance = 1,
+        .importance = 2,
+        .unk19 = 0,
         .pocket = POCKET_KEY_ITEMS,
         .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_RyuEvItemUse,
+        .battleUsage = 0,
+        .battleUseFunc = NULL,
         .secondaryId = 0,
     },
 
@@ -5019,15 +5035,19 @@ const struct Item gItems[] =
 
     [ITEM_VS_SEEKER] =
     {
-        .name = _("Vs Seeker"),
+        .name = _("Forecaster"),
         .itemId = ITEM_VS_SEEKER,
         .price = 0,
+        .holdEffect = HOLD_EFFECT_NONE,
+        .holdEffectParam = 0,
         .description = sVSSeekerDesc,
-        .importance = 1,
+        .importance = 2,
         .unk19 = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = 2,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_RyuForecaster,
+        .battleUsage = 0,
+        .battleUseFunc = NULL,
         .secondaryId = 0,
     },
 
@@ -5075,15 +5095,19 @@ const struct Item gItems[] =
 
     [ITEM_TEACHY_TV] =
     {
-        .name = _("Teachy TV"),
+        .name = _("Wireless PC"),
         .itemId = ITEM_TEACHY_TV,
         .price = 0,
+        .holdEffect = HOLD_EFFECT_NONE,
+        .holdEffectParam = 0,
         .description = sTeachyTVDesc,
         .importance = 1,
         .unk19 = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = 2,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_RemotePC,
+        .battleUsage = 0,
+        .battleUseFunc = NULL,
         .secondaryId = 0,
     },
 

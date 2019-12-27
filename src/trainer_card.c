@@ -172,13 +172,18 @@ static void sub_80C41D8(void);
 static const u32 gUnknown_0856F018[] = INCBIN_U32("graphics/trainer_card/stickers_fr.4bpp.lz");
 static const u16 gUnknown_0856F18C[] = INCBIN_U16("graphics/trainer_card/unknown_56F18C.gbapal");
 static const u16 gEmeraldTrainerCard1Star_Pal[] = INCBIN_U16("graphics/trainer_card/one_star.gbapal");
-static const u16 gFireRedTrainerCard1Star_Pal[] = INCBIN_U16("graphics/trainer_card/one_star_fr.gbapal");
 static const u16 gEmeraldTrainerCard2Star_Pal[] = INCBIN_U16("graphics/trainer_card/two_stars.gbapal");
-static const u16 gFireRedTrainerCard2Star_Pal[] = INCBIN_U16("graphics/trainer_card/two_stars_fr.gbapal");
 static const u16 gEmeraldTrainerCard3Star_Pal[] = INCBIN_U16("graphics/trainer_card/three_stars.gbapal");
-static const u16 gFireRedTrainerCard3Star_Pal[] = INCBIN_U16("graphics/trainer_card/three_stars_fr.gbapal");
 static const u16 gEmeraldTrainerCard4Star_Pal[] = INCBIN_U16("graphics/trainer_card/four_stars.gbapal");
+static const u16 gFireRedTrainerCard1Star_Pal[] = INCBIN_U16("graphics/trainer_card/one_star_fr.gbapal");
+static const u16 gFireRedTrainerCard2Star_Pal[] = INCBIN_U16("graphics/trainer_card/two_stars_fr.gbapal");
+static const u16 gFireRedTrainerCard3Star_Pal[] = INCBIN_U16("graphics/trainer_card/three_stars_fr.gbapal");
 static const u16 gFireRedTrainerCard4Star_Pal[] = INCBIN_U16("graphics/trainer_card/four_stars_fr.gbapal");
+static const u16 gEmeraldTrainerCard1StarDark_Pal[] = INCBIN_U16("graphics/trainer_card/one_stardark.gbapal");
+static const u16 gEmeraldTrainerCard2StarDark_Pal[] = INCBIN_U16("graphics/trainer_card/two_starsdark.gbapal");
+static const u16 gEmeraldTrainerCard3StarDark_Pal[] = INCBIN_U16("graphics/trainer_card/three_starsdark.gbapal");
+static const u16 gEmeraldTrainerCard4StarDark_Pal[] = INCBIN_U16("graphics/trainer_card/four_starsdark.gbapal");
+
 static const u16 sEmeraldTrainerCardFemaleBackground_Pal[] = INCBIN_U16("graphics/trainer_card/female_bg.gbapal");
 static const u16 sFireRedTrainerCardFemaleBackground_Pal[] = INCBIN_U16("graphics/trainer_card/female_bg_fr.gbapal");
 static const u16 sEmeraldTrainerCardBadges_Pal[] = INCBIN_U16("graphics/trainer_card/badges.gbapal");
@@ -270,6 +275,11 @@ static const u16 *const gEmeraldTrainerCardStarPals[] =
     gEmeraldTrainerCard2Star_Pal,
     gEmeraldTrainerCard3Star_Pal,
     gEmeraldTrainerCard4Star_Pal,
+    gEmeraldTrainerCard0StarDark_Pal,
+    gEmeraldTrainerCard1StarDark_Pal,
+    gEmeraldTrainerCard2StarDark_Pal,
+    gEmeraldTrainerCard3StarDark_Pal,
+    gEmeraldTrainerCard4StarDark_Pal,
 };
 
 static const u16 *const gFireRedTrainerCardStarPals[] =
@@ -1010,7 +1020,7 @@ static void PrintMoneyOnCard(void)
     else
         AddTextPrinterParameterized3(1, 1, 16, 57, sTrainerCardTextColors, TEXT_SPEED_FF, gText_TrainerCardMoney);
 
-    ConvertIntToDecimalStringN(gStringVar1, sData->trainerCard.money, STR_CONV_MODE_LEFT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gStringVar1, sData->trainerCard.money, STR_CONV_MODE_LEFT_ALIGN, 7);
     StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
     if (!sData->isHoenn)
     {
@@ -1391,7 +1401,14 @@ static u8 SetCardBgsAndPals(void)
     case 2:
         if (sData->cardType != CARD_TYPE_FRLG)
         {
-            LoadPalette(gEmeraldTrainerCardStarPals[sData->trainerCard.stars], 0, 96);
+            if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+            {
+                LoadPalette(((gEmeraldTrainerCardStarPals[sData->trainerCard.stars]) + 5), 0, 96);
+            }
+            else
+            {
+                LoadPalette(gEmeraldTrainerCardStarPals[sData->trainerCard.stars], 0, 96);
+            }
             LoadPalette(sEmeraldTrainerCardBadges_Pal, 48, 32);
             if (sData->trainerCard.gender)
                 LoadPalette(sEmeraldTrainerCardFemaleBackground_Pal, 16, 32);
