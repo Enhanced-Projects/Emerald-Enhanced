@@ -15,6 +15,8 @@
 #include "strings.h"
 #include "gba/m4a_internal.h"
 #include "constants/rgb.h"
+#include "event_data.h"
+#include "constants/vars.h"
 
 // Task data
 enum
@@ -240,7 +242,7 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].data[TD_MENUSELECTION] = 0;
         gTasks[taskId].data[TD_TEXTSPEED] = gSaveBlock2Ptr->optionsTextSpeed;
         gTasks[taskId].data[TD_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleSceneOff;
-        gTasks[taskId].data[TD_BATTLESTYLE] = gSaveBlock2Ptr->optionsBattleStyle;
+        gTasks[taskId].data[TD_BATTLESTYLE] = VarGet(VAR_RYU_THEME_NUMBER);
         gTasks[taskId].data[TD_SOUND] = gSaveBlock2Ptr->optionsSound;
         gTasks[taskId].data[TD_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
         gTasks[taskId].data[TD_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
@@ -362,10 +364,11 @@ static void Task_OptionMenuSave(u8 taskId)
 {
     gSaveBlock2Ptr->optionsTextSpeed = gTasks[taskId].data[TD_TEXTSPEED];
     gSaveBlock2Ptr->optionsBattleSceneOff = gTasks[taskId].data[TD_BATTLESCENE];
-    gSaveBlock2Ptr->optionsBattleStyle = gTasks[taskId].data[TD_BATTLESTYLE];
+    VarSet(VAR_RYU_THEME_NUMBER, (gTasks[taskId].data[TD_BATTLESTYLE]));
     gSaveBlock2Ptr->optionsSound = gTasks[taskId].data[TD_SOUND];
     gSaveBlock2Ptr->optionsButtonMode = gTasks[taskId].data[TD_BUTTONMODE];
     gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].data[TD_FRAMETYPE];
+
 
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;

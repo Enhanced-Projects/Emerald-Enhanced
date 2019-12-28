@@ -879,7 +879,7 @@ static const u8 sTerrainToType[] =
 
 static const u8 sBallCatchBonuses[] =
 {
-    20, 15, 10, 15 // Ultra, Great, Poke, Safari
+    35, 25, 10, 15 // Ultra, Great, Poke, Safari
 };
 
 const ALIGNED(4) u8 gUnknown_0831C494[][4] =
@@ -11265,7 +11265,6 @@ static void Cmd_handleballthrow(void)
                 if (ballMultiplier > 40)
                     ballMultiplier = 40;
                 break;
-            case ITEM_LUXURY_BALL:
             case ITEM_PREMIER_BALL:
             case ITEM_FRIEND_BALL:
             case ITEM_HEAL_BALL:
@@ -11330,6 +11329,12 @@ static void Cmd_handleballthrow(void)
                 RtcCalcLocalTime();
                 if ((gLocalTime.hours >= 20 && gLocalTime.hours <= 3) || gMapHeader.cave || gMapHeader.mapType == MAP_TYPE_UNDERGROUND)
                     ballMultiplier = 30;
+                break;
+            case ITEM_LUXURY_BALL:
+                ballMultiplier = 50;
+                break;
+            case ITEM_PREMIER_BALL:
+                ballMultiplier = 30;
                 break;
             }
         }

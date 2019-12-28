@@ -262,6 +262,7 @@
 #define MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F (12 | (16 << 8))
 #define MAP_EVER_GRANDE_CITY_POKEMON_CENTER_2F (13 | (16 << 8))
 #define MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_2F (14 | (16 << 8))
+#define MAP_THRONE_ROOM                        (15 | (16 << 8))
 
 // Map Group 17
 #define MAP_ROUTE104_MR_BRINEYS_HOUSE         (0 | (17 << 8))

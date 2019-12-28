@@ -438,15 +438,15 @@ static void (* const sEndTurnFuncsTable[])(void) =
     [B_OUTCOME_MON_TELEPORTED] = HandleEndTurn_FinishBattle,
 };
 
-const u8 gStatusConditionString_PoisonJpn[8] = _("どく$$$$$");
-const u8 gStatusConditionString_SleepJpn[8] = _("ねむり$$$$");
-const u8 gStatusConditionString_ParalysisJpn[8] = _("まひ$$$$$");
-const u8 gStatusConditionString_BurnJpn[8] = _("やけど$$$$");
-const u8 gStatusConditionString_IceJpn[8] = _("こおり$$$$");
-const u8 gStatusConditionString_ConfusionJpn[8] = _("こんらん$$$");
-const u8 gStatusConditionString_LoveJpn[8] = _("メロメロ$$$");
+const u8 gStatusConditionString_PoisonJpn[] = _("どく$$$$$");
+const u8 gStatusConditionString_SleepJpn[] = _("ねむり$$$$");
+const u8 gStatusConditionString_ParalysisJpn[] = _("まひ$$$$$");
+const u8 gStatusConditionString_BurnJpn[] = _("やけど$$$$");
+const u8 gStatusConditionString_IceJpn[] = _("こおり$$$$");
+const u8 gStatusConditionString_ConfusionJpn[] = _("こんらん$$$");
+const u8 gStatusConditionString_LoveJpn[] = _("メロメロ$$$");
 
-const u8 * const gStatusConditionStringsTable[7][2] =
+const u8 * const gStatusConditionStringsTable[][2] =
 {
     {gStatusConditionString_PoisonJpn, gText_Poison},
     {gStatusConditionString_SleepJpn, gText_Sleep},
@@ -1865,6 +1865,8 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
     {
         if (firstTrainer == TRUE)
             ZeroEnemyPartyMons();
+
+        gSaveBlock2Ptr->optionsBattleStyle = gTrainers[trainerNum].preventSwitch;
 
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
         {

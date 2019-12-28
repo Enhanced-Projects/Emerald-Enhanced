@@ -1,15 +1,7 @@
 Common_EventScript_PkmnCenterNurse:: @ 827191E
     lock
     faceplayer
-    setvar VAR_0x8004, 0
-    specialvar VAR_RESULT, CountPlayerTrainerStars
-    compare VAR_RESULT, 4
-    goto_if_eq EventScript_PkmnCenterNurse_GoldCard
-    msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
-    compare VAR_RESULT, YES
-    goto_if_eq EventScript_PkmnCenterNurse_HealPkmn
-    compare VAR_RESULT, NO
-    goto_if_eq EventScript_PkmnCenterNurse_Goodbye
+    goto EventScript_PkmnCenterNurse_HealPkmn
     end
 
 EventScript_PkmnCenterNurse_Goodbye:: @ 8271954
@@ -25,8 +17,6 @@ EventScript_PkmnCenterNurse_HealPkmn:: @ 827195A
     call_if_eq EventScript_PkmnCenterNurse_IllTakeYourPkmn2
     waitmessage
     call EventScript_PkmnCenterNurse_TakeAndHealPkmn
-    goto_if_unset FLAG_POKERUS_EXPLAINED, EventScript_PkmnCenterNurse_CheckPokerus
-    goto EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom
     end
 
 EventScript_PkmnCenterNurse_IllTakeYourPkmn:: @ 8271987
@@ -45,7 +35,12 @@ EventScript_PkmnCenterNurse_TakeAndHealPkmn:: @ 8271993
     applymovement VAR_0x800B, Common_Movement_WalkInPlaceFastestDown
     waitmovement 0
     special HealPlayerParty
+    msgbox HaveANiceDay
+    closemessage
     return
+
+HaveANiceDay:
+    .string "Have a nice day!$"
 
 EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom:: @ 82719B1
     specialvar VAR_RESULT, PlayerNotAtTrainerHillEntrance
