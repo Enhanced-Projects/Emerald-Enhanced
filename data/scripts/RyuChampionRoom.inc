@@ -1,5 +1,5 @@
 @====map_script ON_FRAME, RyuThroneRoomCheckFollower
-	.byte 0
+	@.byte 0
 
 
 RyuThroneRoomCheckFollower::
@@ -219,7 +219,7 @@ RCR_ChallengerNorman::
 	msgbox RCR_Norman_Intro 
 	closemessage
 	special SavePlayerParty
-	trainerbattle 10 TRAINER_NORMAN_8, 0, NULL, RCR_Norman_DefeatText
+	trainerbattle 10 TRAINER_NORMAN_4, 0, NULL, RCR_Norman_DefeatText
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
 	setvar VAR_0x8005, 4|2
 	special DoSpecialTrainerBattle
@@ -325,7 +325,7 @@ RCR_ChallengerNormanSolo::
 	waitmovement EVENT_OBJ_ID_CAMERA
 	msgbox RCR_Norman_Intro
 	closemessage
-	trainerbattle_no_intro TRAINER_NORMAN_8, RCR_Norman_DefeatText
+	trainerbattle_no_intro TRAINER_NORMAN_4, RCR_Norman_DefeatText
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerJohnatanSolo::

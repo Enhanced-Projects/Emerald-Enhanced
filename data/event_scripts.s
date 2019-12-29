@@ -574,6 +574,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuSacrificeSystem.inc"
 	.include "data/scripts/RyuDevonLine.inc"
 	.include "data/scripts/JunkScripts.inc"
+	.include "data/scripts/RyuChampionRoom.inc"
 
 @ Below could be split as std_msgbox.inc but autoclose straddles trainer_battle.inc
 Std_MsgboxNPC: @ 8271315

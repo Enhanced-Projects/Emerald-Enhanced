@@ -2613,7 +2613,7 @@ static const u8* TryGetStatusString(u8 *src)
     chars1 = *(u32*)(&status[0]);
     chars2 = *(u32*)(&status[4]);
 
-    for (i = 0; i < ARRAY_COUNT(gStatusConditionStringsTable); i++)
+    for (i = 0; i < 7; i++)//ARRAY_COUNT(gStatusConditionStringsTable); i++)
     {
         if (chars1 == *(u32*)(&gStatusConditionStringsTable[i][0][0])
             && chars2 == *(u32*)(&gStatusConditionStringsTable[i][0][4]))

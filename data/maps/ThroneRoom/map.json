@@ -211,7 +211,7 @@
     "show_map_name": true,
     "warp_events": [
         {
-            "dest_map": "",
+            "dest_map": "MAP_EVER_GRANDE_CITY_HALL_OF_FAME",
             "dest_warp_id": 0,
             "elevation": 3,
             "x": 9,

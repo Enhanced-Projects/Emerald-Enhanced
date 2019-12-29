@@ -11265,7 +11265,6 @@ static void Cmd_handleballthrow(void)
                 if (ballMultiplier > 40)
                     ballMultiplier = 40;
                 break;
-            case ITEM_PREMIER_BALL:
             case ITEM_FRIEND_BALL:
             case ITEM_HEAL_BALL:
             case ITEM_CHERISH_BALL:
