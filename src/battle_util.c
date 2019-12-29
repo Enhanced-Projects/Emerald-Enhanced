@@ -3323,7 +3323,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
              && gBattleMons[gBattlerAttacker].statStages[STAT_SPEED] != 0
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && TARGET_TURN_DAMAGED
-             && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT))
+             && IsMoveMakingContact(move, gBattlerAttacker))
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_SPD_MINUS_1;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -3339,7 +3339,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
              && gBattleMons[gBattlerAttacker].hp != 0
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && TARGET_TURN_DAMAGED
-             && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT))
+             && IsMoveMakingContact(move, gBattlerAttacker))
             {
                 gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
                 if (gBattleMoveDamage == 0)
@@ -3347,6 +3347,20 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_RoughSkinActivates;
+                effect++;
+            }
+            break;
+        case ABILITY_AFTERMATH:
+            if (!IsAbilityOnField(ABILITY_DAMP)
+             && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && gBattleMons[gBattlerTarget].hp == 0
+             && IsMoveMakingContact(move, gBattlerAttacker))
+            {
+                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AftermathDmg;
                 effect++;
             }
             break;
@@ -5132,7 +5146,7 @@ static u16 CalcMoveBasePower(u16 move, u8 battlerAtk, u8 battlerDef)
         // todo
         break;
     case EFFECT_FLING:
-        // todo
+        // todo: program Fling + Unburden interaction
         break;
     case EFFECT_ERUPTION:
         basePower = gBattleMons[battlerAtk].hp * basePower / gBattleMons[battlerAtk].maxHP;
