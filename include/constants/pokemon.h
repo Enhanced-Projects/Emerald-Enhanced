@@ -208,7 +208,7 @@
 #define MON_DATA_SPDEF2            88
 
 #define MIN_LEVEL 1
-#define MAX_LEVEL 100
+#define MAX_LEVEL 125
 
 #define OT_ID_PLAYER_ID       0
 #define OT_ID_PRESET          1

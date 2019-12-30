@@ -75,7 +75,7 @@
     "id": "MAP_LITTLEROOT_TOWN",
     "layout": "LAYOUT_LITTLEROOT_TOWN",
     "map_type": "MAP_TYPE_TOWN",
-    "music": "MUS_MISHIRO",
+    "music": "350",
     "name": "LittlerootTown",
     "object_events": [
         {

@@ -2296,13 +2296,13 @@ bool8 ScrCmd_createfollower(struct ScriptContext *ctx)
     u8 graphicsId = ScriptReadByte(ctx);
     const void *script = (const void *)ScriptReadWord(ctx);
     u8 direction = ScriptReadByte(ctx);
-    //CreateFollowerEventObject(graphicsId, script, direction);
+    CreateFollowerEventObject(graphicsId, script, direction);
     return FALSE;
 }
 
 bool8 ScrCmd_destroyfollower(struct ScriptContext *ctx)
 {
-    //DestroyFollowerEventObject();
+    DestroyFollowerEventObject();
     return FALSE;
 }
 

@@ -160,7 +160,7 @@ void ResetMenuAndMonGlobals(void)
 
 void NewGameInitData(void)
 {
-    if (gSaveFileStatus == 0 || gSaveFileStatus == 2)
+    if (!(FlagGet(FLAG_SYS_GAME_CLEAR)))
         RtcReset();
 
     gDifferentSaveFile = 1;

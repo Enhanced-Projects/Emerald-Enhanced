@@ -6,6 +6,7 @@ EverGrandeCity_GlaciasRoom_MapScripts:: @ 8228412
 
 EverGrandeCity_GlaciasRoom_OnWarp: @ 8228422
 	map_script_2 VAR_TEMP_1, 0, EverGrandeCity_GlaciasRoom_EventScript_PlayerTurnNorth
+	map_script_2 VAR_TEMP_9, 0, LRT_ResetFollower
 	.2byte 0
 
 EverGrandeCity_GlaciasRoom_EventScript_PlayerTurnNorth:: @ 822842C
@@ -43,7 +44,40 @@ EverGrandeCity_GlaciasRoom_EventScript_Glacia:: @ 8228469
 	goto_if_set FLAG_DEFEATED_ELITE_4_GLACIA, EverGrandeCity_GlaciasRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
 	msgbox EverGrandeCity_GlaciasRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
+	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltGlacia
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerGlacia	
 	trainerbattle_no_intro TRAINER_GLACIA, EverGrandeCity_GlaciasRoom_Text_Defeat
+	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
+	end
+
+EGC_AltGlacia::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerGlaciaRematch
+	trainerbattle_no_intro TRAINER_GLACIA_REMATCH, EverGrandeCity_GlaciasRoom_Text_Defeat
+	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
+	end
+
+EGC_FollowerGlacia::
+	call RyuFollowerAllySelector
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_GLACIA, 0, NULL, EverGrandeCity_GlaciasRoom_Text_Defeat
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
+	end
+	
+EGC_FollowerGlaciaRematch::
+	call RyuFollowerAllySelector
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_GLACIA_REMATCH, 0, NULL, EverGrandeCity_GlaciasRoom_Text_Defeat
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
 	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
 	end
 

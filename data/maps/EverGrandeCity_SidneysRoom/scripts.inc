@@ -15,6 +15,14 @@ EverGrandeCity_SidneysRoom_OnLoad: @ 8227F1D
 	compare VAR_ELITE_4_STATE, 1
 	call_if_eq EverGrandeCity_SidneysRoom_EventScript_CloseDoor
 	end
+	
+EGC_SkipE4::
+	special RyuDevCheck
+	compare VAR_RESULT, 69
+	goto_if_ne ryu_end
+	warpsilent MAP_EVER_GRANDE_CITY_HALL4, 255, 5, 4
+	release
+	end
 
 EverGrandeCity_SidneysRoom_EventScript_ResetAdvanceToNextRoom:: @ 8227F32
 	call PokemonLeague_EliteFour_EventScript_ResetAdvanceToNextRoom
@@ -34,6 +42,7 @@ EverGrandeCity_SidneysRoom_EventScript_PlayerTurnNorth:: @ 8227F48
 
 EverGrandeCity_SidneysRoom_OnFrame: @ 8227F4D
 	map_script_2 VAR_ELITE_4_STATE, 0, EverGrandeCity_SidneysRoom_EventScript_WalkInCloseDoor
+	map_script_2 VAR_TEMP_9, 0, LRT_ResetFollower
 	.2byte 0
 
 EverGrandeCity_SidneysRoom_EventScript_WalkInCloseDoor:: @ 8227F57
@@ -49,7 +58,40 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney:: @ 8227F64
 	goto_if_set FLAG_DEFEATED_ELITE_4_SIDNEY, EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
 	msgbox EverGrandeCity_SidneysRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
+	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltSidney
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidney
 	trainerbattle_no_intro TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat
+	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
+	end
+
+EGC_FollowerSidney::
+	call RyuFollowerAllySelector
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_SIDNEY, 0, NULL, 	EverGrandeCity_SidneysRoom_EventScript_Defeated
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
+	end
+	
+EGC_FollowerSidneyRematch::
+	call RyuFollowerAllySelector
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_SIDNEY_REMATCH, 0, NULL, 	EverGrandeCity_SidneysRoom_EventScript_Defeated
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
+	end
+
+EGC_AltSidney::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidneyRematch
+	trainerbattle_no_intro TRAINER_SIDNEY_REMATCH, 	EverGrandeCity_SidneysRoom_EventScript_Defeated
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 

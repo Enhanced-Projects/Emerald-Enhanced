@@ -58,11 +58,37 @@ struct LockedAnimEventObjects
     u8 count;
 };
 
+enum
+{
+    FOLLOWUP_MOVEMENT_NONE,
+    FOLLOWUP_MOVEMENT_CROSS_LEDGE,
+};
+
+enum
+{
+    FOLLOWABLE_MOVEMENT_NONE,
+    FOLLOWABLE_MOVEMENT_WALK,
+    FOLLOWABLE_MOVEMENT_WALK_FAST,
+    FOLLOWABLE_MOVEMENT_WALK_FASTEST,
+    FOLLOWABLE_MOVEMENT_LEDGE_JUMP,
+};
+
+#define GET_FOLLOWUP_MOVEMENT_TYPE(sprite) ((sprite->data[7]) & 0x3F)
+#define GET_FOLLOWUP_REPEATS(sprite) (((sprite->data[7]) & 0xC0) >> 6)
+#define GET_FOLLOWUP_MOVEMENT_ACTION(sprite) (((sprite->data[7]) & 0xFF00) >> 8)
+#define SET_FOLLOWUP_MOVEMENT_TYPE(sprite, type) (sprite->data[7] = ((sprite->data[7]) & 0xFFC0) | ((type) & 0x3F))
+#define SET_FOLLOWUP_REPEATS(sprite, repeats) (sprite->data[7] = ((sprite->data[7]) & 0xFF3F) | (((repeats) & 0x3) << 6))
+#define SET_FOLLOWUP_MOVEMENT_ACTION(sprite, action) (sprite->data[7] = ((sprite->data[7]) & 0x00FF) | (((action) & 0xFF) << 8))
+#define CLEAR_FOLLOWUP_MOVEMENT(sprite) (sprite->data[7] = 0)
+
+
+
 extern const struct SpriteFrameImage gEventObjectPicTable_PechaBerryTree[];
 extern const struct OamData gEventObjectBaseOam_32x8;
 extern const struct OamData gEventObjectBaseOam_32x32;
 extern const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[];
 extern const u8 gReflectionEffectPaletteMap[];
+extern const u8 *gFollowerScript;
 
 extern const u8 *const gBerryTreeEventObjectGraphicsIdTablePointers[];
 extern const struct SpriteFrameImage *const gBerryTreePicTablePointers[];
@@ -89,6 +115,8 @@ void EventObjectClearHeldMovement(struct EventObject *);
 void EventObjectClearHeldMovementIfActive(struct EventObject *);
 void TrySpawnEventObjects(s16, s16);
 u8 sprite_new(u8 graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction);
+u8 CreateFollowerEventObject(u8 graphicsId, const u8 *script, int direction);
+void DestroyFollowerEventObject(void);
 u8 AddPseudoEventObject(u16, void (*)(struct Sprite *), s16 x, s16 y, u8 subpriority);
 u8 TrySpawnEventObject(u8, u8, u8);
 u8 SpawnSpecialEventObjectParameterized(u8 graphicsId, u8 movementBehavior, u8 localId, s16 x, s16 y, u8 z);
@@ -256,6 +284,7 @@ void MovementType_JogInPlace(struct Sprite *);
 void MovementType_RunInPlace(struct Sprite *);
 void MovementType_Invisible(struct Sprite *);
 void MovementType_WalkSlowlyInPlace(struct Sprite *);
+void MovementType_FollowPlayer(struct Sprite *);
 u8 GetSlideMovementAction(u32);
 u8 GetJumpInPlaceMovementAction(u32);
 u8 GetJumpMovementAction(u32);
@@ -417,6 +446,15 @@ u8 MovementType_RunInPlace_Step0(struct EventObject *, struct Sprite *);
 u8 MovementType_Invisible_Step0(struct EventObject *, struct Sprite *);
 u8 MovementType_Invisible_Step1(struct EventObject *, struct Sprite *);
 u8 MovementType_Invisible_Step2(struct EventObject *, struct Sprite *);
+u8 MovementType_FollowPlayer_Step0(struct EventObject *, struct Sprite *);
+u8 MovementType_FollowPlayer_Step1(struct EventObject *, struct Sprite *);
+u8 MovementType_FollowPlayer_Step2(struct EventObject *, struct Sprite *);
+bool8 FollowPlayerMovement_None(struct EventObject *, struct Sprite *, u8);
+bool8 FollowPlayerMovement_GoSpeed0(struct EventObject *, struct Sprite *, u8);
+bool8 FollowPlayerMovement_GoSpeed1(struct EventObject *, struct Sprite *, u8);
+bool8 FollowPlayerMovement_GoSpeed2(struct EventObject *, struct Sprite *, u8);
+bool8 FollowPlayerMovement_JumpLedge(struct EventObject *, struct Sprite *, u8);
+bool8 FollowPlayerMovement_CrossLedge(struct EventObject *, struct Sprite *, int);
 void sub_8097C44(u8 var, bool32 var2);
 bool32 sub_8097C8C(u8 var);
 void sub_8097BB4(u8 var1, u8 graphicsId);

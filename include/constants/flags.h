@@ -236,8 +236,7 @@
 #define FLAG_MET_WAILMER_TRAINER             0xDA
 #define FLAG_EVIL_LEADER_PLEASE_STOP         0xDB
 
-#define FLAG_NEVER_SET_0x0DC                 0xDC // This flag is read, but never written to
-
+#define FLAG_RYU_TITLE_DEFENSE               0xDC
 #define FLAG_RECEIVED_GO_GOGGLES             0xDD
 #define FLAG_WINGULL_SENT_ON_ERRAND          0xDE
 #define FLAG_RECEIVED_MENTAL_HERB            0xDF
@@ -700,7 +699,7 @@
 #define FLAG_RYU_LANETTE_EVENT_0  0x293 // Unused Flag
 #define FLAG_RYU_DS_MALE_MOM_MET  0x294 // Unused Flag
 #define FLAG_RYU_COLLISION_OFF  0x295 // Unused Flag
-#define FLAG_UNUSED_0x296  0x296 // Unused Flag
+#define FLAG_RYU_MINNIE_GAME_CLEAR  0x296 // Unused Flag
 #define FLAG_UNUSED_0x297  0x297 // Unused Flag
 #define FLAG_UNUSED_0x298  0x298 // Unused Flag
 #define FLAG_UNUSED_0x299  0x299 // Unused Flag

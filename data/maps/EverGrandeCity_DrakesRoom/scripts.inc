@@ -15,6 +15,7 @@ EverGrandeCity_DrakesRoom_EventScript_PlayerTurnNorth:: @ 82286B6
 
 EverGrandeCity_DrakesRoom_OnFrame: @ 82286BB
 	map_script_2 VAR_ELITE_4_STATE, 3, EverGrandeCity_DrakesRoom_EventScript_WalkInCloseDoor
+	map_script_2 VAR_TEMP_9, 0, LRT_ResetFollower
 	.2byte 0
 
 EverGrandeCity_DrakesRoom_EventScript_WalkInCloseDoor:: @ 82286C5
@@ -44,7 +45,41 @@ EverGrandeCity_DrakesRoom_EventScript_Drake:: @ 82286F3
 	goto_if_set FLAG_DEFEATED_ELITE_4_DRAKE, EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
 	msgbox EverGrandeCity_DrakesRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
+	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltDrake
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerDrake
 	trainerbattle_no_intro TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat
+	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
+	end
+
+EGC_AltDrake::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerDrakeRematch
+	trainerbattle_no_intro TRAINER_DRAKE_REMATCH, EverGrandeCity_DrakesRoom_Text_Defeat
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
+	end
+
+EGC_FollowerDrake::
+	call RyuFollowerAllySelector
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_DRAKE, 0, NULL, EverGrandeCity_DrakesRoom_Text_Defeat
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
+	end
+
+EGC_FollowerDrakeRematch::
+	call RyuFollowerAllySelector
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_DRAKE_REMATCH, 0, NULL, EverGrandeCity_DrakesRoom_Text_Defeat
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
 

@@ -47,6 +47,7 @@
 #include "union_room.h"
 #include "constants/rgb.h"
 #include "field_message_box.h"
+#include "constants/event_objects.h"
 
 extern u8 RyuDebugMenuScript[];
 extern u8 RyuDebugBetaMenuScript[];
@@ -717,6 +718,12 @@ static bool8 HandleStartMenuInput(void)
     {
         PlaySE(SE_SELECT);
         sStartMenuCursorPos = Menu_MoveCursor(1);
+    }
+
+        if (gMain.newKeys & (DPAD_LEFT | DPAD_RIGHT))
+    {
+        if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
+            TryMoveEventObjectToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 1));
     }
 
     if (gMain.newKeys & A_BUTTON)

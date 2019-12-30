@@ -16,7 +16,7 @@
 #define NAKED __attribute__((naked))
 
 // IDE support
-#if defined (__APPLE__) || defined (__CYGWIN__) || defined (_MSC_VER)
+#if defined (__APPLE__) || defined (__CYGWIN__) || defined (_MSC_VER) || defined(__VSCODE__)
 #define _(x) x
 #define __(x) x
 

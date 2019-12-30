@@ -662,7 +662,7 @@ static void AcroBikeTransition_SideJump(u8 direction)
     playerEventObj = &gEventObjects[gPlayerAvatar.eventObjectId];
     PlaySE(SE_JITE_PYOKO);
     playerEventObj->facingDirectionLocked = 1;
-    PlayerSetAnimId(GetJumpMovementAction(direction), 2);
+    PlayerSetAnimId(GetJumpMovementAction(direction), 2, 1);
 }
 
 static void AcroBikeTransition_TurnJump(u8 direction)

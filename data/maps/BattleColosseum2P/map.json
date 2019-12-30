@@ -26,7 +26,7 @@
             "y": 5
         }
     ],
-    "id": "MAP_BATTLE_COLOSSEUM2P",
+    "id": "MAP_BATTLE_COLOSSEUM_2P",
     "layout": "LAYOUT_BATTLE_COLOSSEUM_2P",
     "map_type": "MAP_TYPE_INDOOR",
     "music": "MUS_RAINBOW",

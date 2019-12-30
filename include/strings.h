@@ -2954,6 +2954,7 @@ extern const u8 gText_Beauty3[];
 
 //RYU STRINGS======================================================================================
 extern const u8 gRyu_TempVarIntro[];
+extern const u8 gText_MainMenuNewGamePlus[];
 
 extern const u8 gRyuJukeboxNibi[];
 extern const u8 gRyuJukeboxFuneKan[];

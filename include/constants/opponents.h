@@ -813,7 +813,7 @@
 #define TRAINER_NOLAND                      809
 #define TRAINER_LUCY                        810
 #define TRAINER_BRANDON                     811
-#define TRAINER_EMPTY_21                    812
+#define TRAINER_SIDNEY_REMATCH                    812
 #define TRAINER_CHALLENGER_SIGMA            813
 #define TRAINER_CHALLENGER_JUAN             814
 #define TRAINER_CHALLENGER_GIOVANNI         815
@@ -846,9 +846,9 @@
 #define TRAINER_EMPTY_15                    842
 #define TRAINER_EMPTY_16                    843
 #define TRAINER_EMPTY_17                    844
-#define TRAINER_EMPTY_18                    845
-#define TRAINER_EMPTY_19                    846
-#define TRAINER_EMPTY_20                    847
+#define TRAINER_PHOEBE_REMATCH                    845
+#define TRAINER_DRAKE_REMATCH                    846
+#define TRAINER_GLACIA_REMATCH                    847
 #define TRAINER_MARIELA                     848
 #define TRAINER_ALVARO                      849
 #define TRAINER_EVERETT                     850

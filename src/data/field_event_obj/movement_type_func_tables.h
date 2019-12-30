@@ -436,3 +436,17 @@ u8 (*const gMovementTypeFuncs_Invisible[])(struct EventObject *, struct Sprite *
     MovementType_Invisible_Step1,
     MovementType_Invisible_Step2,
 };
+
+bool8 (*const gFollowPlayer_SpeedFuncs[])(struct EventObject *, struct Sprite *, u8) = {
+    FollowPlayerMovement_None,
+    FollowPlayerMovement_GoSpeed0,
+    FollowPlayerMovement_GoSpeed1,
+    FollowPlayerMovement_GoSpeed2,
+    FollowPlayerMovement_JumpLedge,
+};
+
+u8 (*const gMovementTypeFuncs_FollowPlayer[])(struct EventObject *, struct Sprite *) = {
+    MovementType_FollowPlayer_Step0,
+    MovementType_FollowPlayer_Step1,
+    MovementType_FollowPlayer_Step2,
+};

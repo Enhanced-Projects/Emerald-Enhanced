@@ -678,6 +678,9 @@ static u8 sub_808B028(u8 direction)
 u8 CheckForEventObjectCollision(struct EventObject *eventObject, s16 x, s16 y, u8 direction, u8 metatileBehavior)
 {
     u8 collision = GetCollisionAtCoords(eventObject, x, y, direction);
+    if (collision == 5) // ignore follower collision
+        collision = 0;
+
     if (collision == COLLISION_ELEVATION_MISMATCH && CanStopSurfing(x, y, direction))
         return COLLISION_STOP_SURFING;
 
@@ -946,16 +949,27 @@ u8 PlayerGetCopyableMovement(void)
     return gEventObjects[gPlayerAvatar.eventObjectId].playerCopyableMovement;
 }
 
+static void PlayerSetFollowableMovement(u8 followableMovement)
+{
+    gEventObjects[gPlayerAvatar.eventObjectId].playerFollowableMovement = followableMovement;
+}
+
+u8 PlayerGetFollowableMovement(void)
+{
+    return gEventObjects[gPlayerAvatar.eventObjectId].playerFollowableMovement;
+}
+
 static void sub_808B6BC(u8 a)
 {
     EventObjectForceSetHeldMovement(&gEventObjects[gPlayerAvatar.eventObjectId], a);
 }
 
-void PlayerSetAnimId(u8 movementActionId, u8 copyableMovement)
+void PlayerSetAnimId(u8 movementActionId, u8 copyableMovement, u8 followableMovement)
 {
     if (!PlayerIsAnimActive())
     {
         PlayerSetCopyableMovement(copyableMovement);
+        PlayerSetFollowableMovement(followableMovement);
         EventObjectSetHeldMovement(&gEventObjects[gPlayerAvatar.eventObjectId], movementActionId);
     }
 }
@@ -963,67 +977,67 @@ void PlayerSetAnimId(u8 movementActionId, u8 copyableMovement)
 // normal speed (1 speed)
 void PlayerGoSpeed1(u8 a)
 {
-    PlayerSetAnimId(GetWalkNormalMovementAction(a), 2);
+    PlayerSetAnimId(GetWalkNormalMovementAction(a), 2, FOLLOWABLE_MOVEMENT_WALK);
 }
 
 // fast speed (2 speed)
 void PlayerGoSpeed2(u8 a)
 {
-    PlayerSetAnimId(GetWalkFastMovementAction(a), 2);
+    PlayerSetAnimId(GetWalkFastMovementAction(a), 2, FOLLOWABLE_MOVEMENT_WALK_FAST);
 }
 
 void PlayerRideWaterCurrent(u8 a)
 {
-    PlayerSetAnimId(GetRideWaterCurrentMovementAction(a), 2);
+        PlayerSetAnimId(GetRideWaterCurrentMovementAction(a), 2, FOLLOWABLE_MOVEMENT_WALK);
 }
 
 // fastest speed (4 speed)
 void PlayerGoSpeed4(u8 a)
 {
-    PlayerSetAnimId(GetWalkFastestMovementAction(a), 2);
+    PlayerSetAnimId(GetWalkFastestMovementAction(a), 2, FOLLOWABLE_MOVEMENT_WALK_FASTEST);
 }
 
 static void PlayerRun(u8 a)
 {
-    PlayerSetAnimId(GetPlayerRunMovementAction(a), 2);
+    PlayerSetAnimId(GetPlayerRunMovementAction(a), 2, FOLLOWABLE_MOVEMENT_WALK_FAST);
 }
 
 void PlayerOnBikeCollide(u8 a)
 {
     PlayCollisionSoundIfNotFacingWarp(a);
-    PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(a), 2);
+    PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(a), 2, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 void PlayerOnBikeCollideWithFarawayIslandMew(u8 a)
 {
-    PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(a), 2);
+     PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(a), 2, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 static void PlayerNotOnBikeCollide(u8 a)
 {
     PlayCollisionSoundIfNotFacingWarp(a);
-    PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(a), 2);
+    PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(a), 2, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 static void PlayerNotOnBikeCollideWithFarawayIslandMew(u8 a)
 {
-    PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(a), 2);
+    PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(a), 2, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 void PlayerFaceDirection(u8 direction)
 {
-    PlayerSetAnimId(GetFaceDirectionMovementAction(direction), 1);
+    PlayerSetAnimId(GetFaceDirectionMovementAction(direction), 1, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 void PlayerTurnInPlace(u8 direction)
 {
-    PlayerSetAnimId(GetWalkInPlaceFastMovementAction(direction), 1);
+    PlayerSetAnimId(GetWalkInPlaceFastMovementAction(direction), 1, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 void PlayerJumpLedge(u8 direction)
 {
     PlaySE(SE_DANSA);
-    PlayerSetAnimId(GetJump2MovementAction(direction), 8);
+    PlayerSetAnimId(GetJump2MovementAction(direction), 8, FOLLOWABLE_MOVEMENT_LEDGE_JUMP);
 }
 
 void sub_808B864(void)
@@ -1038,68 +1052,68 @@ void sub_808B864(void)
 // wheelie idle
 void PlayerIdleWheelie(u8 direction)
 {
-    PlayerSetAnimId(GetAcroWheelieFaceDirectionMovementAction(direction), 1);
+    PlayerSetAnimId(GetAcroWheelieFaceDirectionMovementAction(direction), 1, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 // normal to wheelie
 void PlayerStartWheelie(u8 direction)
 {
-    PlayerSetAnimId(GetAcroPopWheelieFaceDirectionMovementAction(direction), 1);
+    PlayerSetAnimId(GetAcroPopWheelieFaceDirectionMovementAction(direction), 1, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 // wheelie to normal
 void PlayerEndWheelie(u8 direction)
 {
-    PlayerSetAnimId(GetAcroEndWheelieFaceDirectionMovementAction(direction), 1);
+    PlayerSetAnimId(GetAcroEndWheelieFaceDirectionMovementAction(direction), 1, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 // wheelie hopping standing
 void PlayerStandingHoppingWheelie(u8 a)
 {
     PlaySE(SE_JITE_PYOKO);
-    PlayerSetAnimId(GetAcroWheelieHopFaceDirectionMovementAction(a), 1);
+    PlayerSetAnimId(GetAcroWheelieHopFaceDirectionMovementAction(a), 1, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 // wheelie hopping moving
 void PlayerMovingHoppingWheelie(u8 a)
 {
     PlaySE(SE_JITE_PYOKO);
-    PlayerSetAnimId(GetAcroWheelieHopDirectionMovementAction(a), 2);
+    PlayerSetAnimId(GetAcroWheelieHopDirectionMovementAction(a), 2, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 // wheelie hopping ledge
 void PlayerLedgeHoppingWheelie(u8 a)
 {
     PlaySE(SE_JITE_PYOKO);
-    PlayerSetAnimId(GetAcroWheelieJumpDirectionMovementAction(a), 8);
+    PlayerSetAnimId(GetAcroWheelieJumpDirectionMovementAction(a), 8, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 // acro turn jump
 void PlayerAcroTurnJump(u8 direction)
 {
     PlaySE(SE_JITE_PYOKO);
-    PlayerSetAnimId(GetJumpInPlaceTurnAroundMovementAction(direction), 1);
+    PlayerSetAnimId(GetJumpInPlaceTurnAroundMovementAction(direction), 1, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 void sub_808B980(u8 direction)
 {
     PlaySE(SE_WALL_HIT);
-    PlayerSetAnimId(GetAcroWheelieInPlaceDirectionMovementAction(direction), 2);
+     PlayerSetAnimId(GetAcroWheelieInPlaceDirectionMovementAction(direction), 2, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 void sub_808B9A4(u8 direction)
 {
-    PlayerSetAnimId(GetAcroPopWheelieMoveDirectionMovementAction(direction), 2);
+    PlayerSetAnimId(GetAcroPopWheelieMoveDirectionMovementAction(direction), 2, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 void sub_808B9BC(u8 direction)
 {
-    PlayerSetAnimId(GetAcroWheelieMoveDirectionMovementAction(direction), 2);
+    PlayerSetAnimId(GetAcroWheelieMoveDirectionMovementAction(direction), 2, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 void sub_808B9D4(u8 direction)
 {
-    PlayerSetAnimId(GetAcroEndWheelieMoveDirectionMovementAction(direction), 2);
+    PlayerSetAnimId(GetAcroEndWheelieMoveDirectionMovementAction(direction), 2, FOLLOWABLE_MOVEMENT_NONE);
 }
 
 static void PlayCollisionSoundIfNotFacingWarp(u8 a)

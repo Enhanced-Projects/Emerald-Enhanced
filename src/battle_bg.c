@@ -727,6 +727,7 @@ void InitBattleBgsVideo(void)
 void LoadBattleMenuWindowGfx(void)
 {
     LoadUserWindowBorderGfx(2, 0x12, 0x10);
+    LoadUserWindowBorderGfx(2, 0x22, 0x10);
     if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
     {
         LoadCompressedPalette(gBattleWindowTextDarkPalette, 0x50, 0x20);
@@ -1235,13 +1236,12 @@ bool8 LoadChosenBattleElement(u8 caseId)
         if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
         {
             LoadCompressedPalette(gBattleTextboxDarkPalette, 0, 0x40);
-            break;
         }
         else
         {
             LoadCompressedPalette(gBattleTextboxPalette, 0, 0x40);
-            break;
         }
+        break;
     case 3:
         if (gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_LINK | BATTLE_TYPE_x2000000 | BATTLE_TYPE_EREADER_TRAINER))
         {

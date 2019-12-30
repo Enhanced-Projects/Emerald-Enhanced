@@ -930,8 +930,35 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto Ryu_SwitchTheme
+	goto_if_set FLAG_RYU_ALTERNATE_SCALE, AltScaleOn
+	msgbox AltScaleOff
+	goto_if_set FLAG_RYU_DO_NOT_AUTOSCALE, ScalingOff
+	msgbox ScalingOn
+	release
 	end
+
+AltScaleOn::
+	msgbox ScaleAltMsg
+	release
+	end
+
+ScalingOff::
+	msgbox NotScaling
+	release
+	end
+
+ScaleAltMsg:
+	.string "Alternate Scaling Enabled.$"
+
+AltScaleOff:
+	.string "Alternat Scaling Disabled.$"
+
+ScalingOn:
+	.string "Autoscale is on.$"
+
+NotScaling:
+	.string "Autoscale is being prevented.$" 
+
 
 RyuDebug_Init_GiveAllItems::
 	setvar VAR_TEMP_2, 482
@@ -1014,15 +1041,15 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
-    givemon SPECIES_SEVIPER, 100, ITEM_EXPERT_BELT
-	givemon SPECIES_AERODACTYL, 100, ITEM_HARD_STONE
-	setmonmove 1, 0, MOVE_ROCK_SLIDE
-	setmonmove 1, 1, MOVE_ICE_SHARD
+    givemon SPECIES_PRIMARINA, 125, ITEM_EXPERT_BELT
+	givemon SPECIES_PHEROMOSA, 125, ITEM_BLACK_BELT
+	setmonmove 1, 0, MOVE_TRIPLE_KICK
+	setmonmove 1, 1, MOVE_WILD_CHARGE
 	setmonmove 1, 2, MOVE_EXTREME_SPEED
-	setmonmove 1, 3, MOVE_EARTHQUAKE
-	setmonmove 0, 0, MOVE_SLUDGE_BOMB
-	setmonmove 0, 1, MOVE_FLAMETHROWER
-	setmonmove 0, 2, MOVE_DARK_PULSE
+	setmonmove 1, 3, MOVE_MEGAHORN
+	setmonmove 0, 0, MOVE_SPARKLING_ARIA
+	setmonmove 0, 1, MOVE_MOONBLAST
+	setmonmove 0, 2, MOVE_SHADOW_BALL
 	setmonmove 0, 3, MOVE_ICE_BEAM
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 1

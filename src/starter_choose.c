@@ -24,7 +24,7 @@
 #include "constants/species.h"
 #include "constants/rgb.h"
 
-#define STARTER_MON_COUNT   3
+#define STARTER_MON_COUNT   7
 
 // Position of the sprite of the selected starter Pokemon
 #define STARTER_PKMN_POS_X 120
@@ -110,25 +110,41 @@ static const struct WindowTemplate gUnknown_085B1DE4 =
     .baseBlock = 0x0274
 };
 
-static const u8 sPokeballCoords[STARTER_MON_COUNT][2] =
+static const u8 sPokeballCoords[STARTER_MON_COUNT][6] =
 {
-    {60, 64},
-    {120, 88},
-    {180, 64},
+    {0x40, 0x2c},
+    {0x3c, 0x40},
+    {0x54, 0x52},
+    {0x78, 0x58},
+    {0x9c, 0x52},
+    {0xb4, 0x40},
+    {0xb0, 0x2c},
 };
 
 static const u8 sStarterLabelCoords[][2] =
 {
-    {0, 9},
-    {16, 10},
-    {8, 4},
+    {0x00, 0x09},
+    {0x10, 0x0a},
+    {0x08, 0x04},
+    {0x08, 0x02},
+    {0x08, 0x02},
+    {0x08, 0x02},
+    {0x08, 0x02},
+    {0x08, 0x02},
+    {0x08, 0x02},
+    {0x08, 0x02},
 };
 
 static const u16 sStarterMon[STARTER_MON_COUNT] =
 {
-    SPECIES_TREECKO,
-    SPECIES_TORCHIC,
-    SPECIES_MUDKIP,
+
+    SPECIES_VULPIX,
+    SPECIES_BELDUM,
+    SPECIES_MAREEP,
+    SPECIES_RALTS,
+    SPECIES_SPINARAK,
+    SPECIES_GASTLY,
+    SPECIES_TENTACOOL,
 };
 
 static const struct BgTemplate gUnknown_085B1E00[3] =
@@ -162,7 +178,7 @@ static const struct BgTemplate gUnknown_085B1E00[3] =
     },
 };
 
-static const u8 sTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GREY};
+static const u8 sTextColors[] = {TEXT_COLOR_TRANSPARENT, 0x02, 0x01};
 
 static const struct OamData gOamData_85B1E10 =
 {
@@ -217,9 +233,13 @@ static const struct OamData gOamData_85B1E20 =
 
 static const u8 sCursorCoords[][2] =
 {
-    {60, 32},
-    {120, 56},
-    {180, 32},
+    {0x40, 0xf},
+    {0x3c, 0x20},
+    {0x54, 0x20},
+    {0x78, 0x20},
+    {0x9c, 0x20},
+    {0xb4, 0x20},
+    {0xb0, 0xf},
 };
 
 static const union AnimCmd gSpriteAnim_85B1E30[] =
@@ -450,13 +470,13 @@ void CB2_ChooseStarter(void)
     ShowBg(3);
 
     taskId = CreateTask(Task_StarterChoose1, 0);
-    gTasks[taskId].tStarterSelection = 1;
+    gTasks[taskId].tStarterSelection = 0;
 
     // Create hand sprite
-    spriteId = CreateSprite(&sSpriteTemplate_Hand, 120, 56, 2);
+    spriteId = CreateSprite(&sSpriteTemplate_Hand, 120, 56, 0);
     gSprites[spriteId].data[0] = taskId;
 
-    // Create three Pokeball sprites
+    // Create seven Pokeball sprites
     spriteId = CreateSprite(&sSpriteTemplate_PokeBall, sPokeballCoords[0][0], sPokeballCoords[0][1], 2);
     gSprites[spriteId].data[0] = taskId;
     gSprites[spriteId].data[1] = 0;
@@ -468,6 +488,22 @@ void CB2_ChooseStarter(void)
     spriteId = CreateSprite(&sSpriteTemplate_PokeBall, sPokeballCoords[2][0], sPokeballCoords[2][1], 2);
     gSprites[spriteId].data[0] = taskId;
     gSprites[spriteId].data[1] = 2;
+
+    spriteId = CreateSprite(&sSpriteTemplate_PokeBall, sPokeballCoords[3][0], sPokeballCoords[3][1], 2);
+    gSprites[spriteId].data[0] = taskId;
+    gSprites[spriteId].data[1] = 3;
+
+    spriteId = CreateSprite(&sSpriteTemplate_PokeBall, sPokeballCoords[4][0], sPokeballCoords[4][1], 2);
+    gSprites[spriteId].data[0] = taskId;
+    gSprites[spriteId].data[1] = 4;
+
+    spriteId = CreateSprite(&sSpriteTemplate_PokeBall, sPokeballCoords[5][0], sPokeballCoords[5][1], 2);
+    gSprites[spriteId].data[0] = taskId;
+    gSprites[spriteId].data[1] = 5;
+
+    spriteId = CreateSprite(&sSpriteTemplate_PokeBall, sPokeballCoords[6][0], sPokeballCoords[6][1], 2);
+    gSprites[spriteId].data[0] = taskId;
+    gSprites[spriteId].data[1] = 6;
 
     sStarterChooseWindowId = 0xFF;
 }
@@ -513,15 +549,31 @@ static void Task_StarterChoose2(u8 taskId)
         gTasks[taskId].tPkmnSpriteId = spriteId;
         gTasks[taskId].func = Task_StarterChoose3;
     }
-    else if ((gMain.newKeys & DPAD_LEFT) && selection > 0)
+    else if (gMain.newKeys & DPAD_LEFT)
     {
-        gTasks[taskId].tStarterSelection--;
-        gTasks[taskId].func = Task_MoveStarterChooseCursor;
+        if (selection > 0)
+        {
+            gTasks[taskId].tStarterSelection--;
+            gTasks[taskId].func = Task_MoveStarterChooseCursor;
+        }
+        else
+        {
+            gTasks[taskId].tStarterSelection = 6;
+            gTasks[taskId].func = Task_MoveStarterChooseCursor;
+        }
     }
-    else if ((gMain.newKeys & DPAD_RIGHT) && selection < (STARTER_MON_COUNT - 1))
+    else if (gMain.newKeys & DPAD_RIGHT)
     {
-        gTasks[taskId].tStarterSelection++;
-        gTasks[taskId].func = Task_MoveStarterChooseCursor;
+        if (selection < (STARTER_MON_COUNT - 1))
+        {
+            gTasks[taskId].tStarterSelection++;
+            gTasks[taskId].func = Task_MoveStarterChooseCursor;
+        }
+        else
+        {
+            gTasks[taskId].tStarterSelection = 0;
+            gTasks[taskId].func = Task_MoveStarterChooseCursor;
+        }
     }
 }
 

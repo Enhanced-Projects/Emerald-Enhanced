@@ -6,6 +6,7 @@ EverGrandeCity_PhoebesRoom_MapScripts:: @ 8228174
 
 EverGrandeCity_PhoebesRoom_OnWarp: @ 8228184
 	map_script_2 VAR_TEMP_1, 0, EverGrandeCity_PhoebesRoom_EventScript_PlayerTurnNorth
+	map_script_2 VAR_TEMP_9, 0, LRT_ResetFollower
 	.2byte 0
 
 EverGrandeCity_PhoebesRoom_EventScript_PlayerTurnNorth:: @ 822818E
@@ -43,7 +44,40 @@ EverGrandeCity_PhoebesRoom_EventScript_Phoebe:: @ 82281CB
 	goto_if_set FLAG_DEFEATED_ELITE_4_PHOEBE, EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
 	msgbox EverGrandeCity_PhoebesRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
+	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltPhoebe
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerPhoebe
 	trainerbattle_no_intro TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat
+	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
+	end
+
+EGC_FollowerPhoebe::
+	call RyuFollowerAllySelector
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_PHOEBE, 0, NULL, EverGrandeCity_PhoebesRoom_Text_Defeat
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
+	end
+	
+EGC_FollowerPhoebeRematch::
+	call RyuFollowerAllySelector
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_PHOEBE_REMATCH, 0, NULL, EverGrandeCity_PhoebesRoom_Text_Defeat
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
+	end
+
+EGC_AltPhoebe::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerPhoebeRematch
+	trainerbattle_no_intro TRAINER_PHOEBE_REMATCH, EverGrandeCity_PhoebesRoom_Text_Defeat
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 	end
 

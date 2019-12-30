@@ -66,6 +66,7 @@
 #include "constants/species.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "constants/event_objects.h"
 #include "item.h"
 #include "constants/items.h"
 #include "pokemon_storage_system.h"
@@ -209,6 +210,7 @@ void (*gFieldCallback)(void);
 bool8 (*gFieldCallback2)(void);
 u8 gLocalLinkPlayerId; // This is our player id in a multiplayer mode.
 u8 gFieldLinkPlayerCount;
+extern u8 RyuFollowerSelectNPCScript[];
 
 // EWRAM vars
 EWRAM_DATA static u8 sUnknown_020322D8 = 0;
@@ -897,10 +899,40 @@ static void mli0_load_map(u32 a1)
     }
 }
 
+void RyuAddFollower(void)
+{
+    u8 graphicsId = (VarGet(VAR_RYU_FOLLOWER_ID));
+    u8 *script = RyuFollowerSelectNPCScript;
+
+    if ((GetPlayerFacingDirection()) == DIR_NORTH)
+    {
+        CreateFollowerEventObject(graphicsId, script, DIR_NORTH);
+    }
+    else
+    {
+        if (FlagGet(FLAG_RYU_TEMPTP) == 1)
+        {
+            CreateFollowerEventObject(graphicsId, script, DIR_NORTH);
+            FlagClear(FLAG_RYU_TEMPTP);
+            TryMoveEventObjectToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup,
+            gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 1));
+        }
+        else
+        {
+            CreateFollowerEventObject(graphicsId, script, DIR_SOUTH);
+            TryMoveEventObjectToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup,
+            gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 2));
+        }
+    }
+
+}
+
 void ResetInitialPlayerAvatarState(void)
 {
     gInitialPlayerAvatarState.direction = DIR_SOUTH;
     gInitialPlayerAvatarState.transitionFlags = PLAYER_AVATAR_FLAG_ON_FOOT;
+    if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
+        RyuAddFollower();
 }
 
 void StoreInitialPlayerAvatarState(void)

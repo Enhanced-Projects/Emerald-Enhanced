@@ -1866,7 +1866,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         if (firstTrainer == TRUE)
             ZeroEnemyPartyMons();
 
-        gSaveBlock2Ptr->optionsBattleStyle = gTrainers[trainerNum].preventSwitch;
+        gSaveBlock2Ptr->optionsBattleStyle = gTrainers[trainerNum].battleStyle;
 
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
         {

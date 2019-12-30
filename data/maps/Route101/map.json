@@ -30,8 +30,8 @@
             "elevation": 3,
             "script": "Route101_EventScript_StartBirchRescue",
             "type": "trigger",
-            "var": "VAR_ROUTE101_STATE",
-            "var_value": "1",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
             "x": 10,
             "y": 19
         },
@@ -39,8 +39,8 @@
             "elevation": 3,
             "script": "Route101_EventScript_StartBirchRescue",
             "type": "trigger",
-            "var": "VAR_ROUTE101_STATE",
-            "var_value": "1",
+            "var": "VAR_LITTLEROOT_INTRO_STATE",
+            "var_value": "8",
             "x": 11,
             "y": 19
         },

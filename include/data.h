@@ -3,6 +3,7 @@
 
 #include "constants/moves.h"
 #include "constants/species.h"
+#include "constants/vars.h"
 
 #define SPECIES_SHINY_TAG 5000
 
@@ -19,7 +20,6 @@ struct TrainerMonNoItemDefaultMoves
     u16 iv;
     u8 lvl;
     u16 species;
-    bool8 allowSwitching;
 };
 
 struct TrainerMonItemDefaultMoves
@@ -28,7 +28,6 @@ struct TrainerMonItemDefaultMoves
     u8 lvl;
     u16 species;
     u16 heldItem;
-    bool8 allowSwitching;
 };
 
 struct TrainerMonNoItemCustomMoves
@@ -38,7 +37,6 @@ struct TrainerMonNoItemCustomMoves
     u16 species;
     bool8 ability;
     u16 moves[4];
-    bool8 allowSwitching;
 };
 
 struct TrainerMonItemCustomMoves
@@ -49,7 +47,6 @@ struct TrainerMonItemCustomMoves
     u16 heldItem;
     bool8 ability;
     u16 moves[4];
-    bool8 allowSwitching;
 };
 
 union TrainerMonPtr
@@ -68,7 +65,7 @@ struct Trainer
     /*0x03*/ u8 trainerPic;
     /*0x04*/ u8 trainerName[12];
     /*0x10*/ u16 items[4];
-             bool8 preventSwitch;
+             bool8 battleStyle;
     /*0x18*/ bool8 doubleBattle;
     /*0x1C*/ u32 aiFlags;
     /*0x20*/ u8 partySize;

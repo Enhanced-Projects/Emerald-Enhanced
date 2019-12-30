@@ -306,6 +306,9 @@
 #define HEAD_LANA 3
 #define HEAD_GARY 4
 #define HEAD_LANETTE 5
+#define BS_SHIFT 0
+#define BS_SET 1
+
 #define SPECIAL_VARS_END              0x8015
 
 #endif // GUARD_CONSTANTS_VARS_H

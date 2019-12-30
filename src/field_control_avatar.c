@@ -35,6 +35,7 @@
 #include "constants/maps.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
+#include "constants/event_objects.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
@@ -305,6 +306,8 @@ static const u8 *GetInteractedEventObjectScript(struct MapPosition *position, u8
 
     if (InTrainerHill() == TRUE)
         script = GetTrainerHillTrainerScript();
+    else if (gEventObjects[eventObjectId].localId == EVENT_OBJ_ID_FOLLOWER)
+        script = gFollowerScript;
     else
         script = GetEventObjectScriptPointerByEventObjectId(eventObjectId);
 
