@@ -387,6 +387,8 @@ RCR_ChallengerJuanSolo::
 RCR_FinishChallenge::
 	msgbox RCR_PlayerRecordingInfo
 	closemessage
+	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	applymovement EVENT_OBJ_ID_PLAYER, RCR_ToHOF
 	applymovement EVENT_OBJ_ID_FOLLOWER, RCR_ToHOF
 	waitmovement EVENT_OBJ_ID_PLAYER

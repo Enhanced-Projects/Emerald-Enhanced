@@ -91,7 +91,9 @@ PetalburgCity_Gym_CheckNormanState::
 	end
 
 PBG_MoveNormanSouth::
+	addobject 1
 	setobjectxy 1, 4, 106
+	special DrawWholeMapView
 	release
 	end
 

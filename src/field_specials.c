@@ -99,6 +99,8 @@ extern const u16 gEventObjectPalette17[];
 extern const u16 gEventObjectPalette33[];
 extern const u16 gEventObjectPalette34[];
 
+extern void ApplyGammaShiftWithBlend();
+
 void TryLoseFansFromPlayTime(void);
 void SetPlayerGotFirstFans(void);
 u16 GetNumFansOfPlayerInTrainerFanClub(void);

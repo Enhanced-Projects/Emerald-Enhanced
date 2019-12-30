@@ -66,6 +66,7 @@ static u8 gBrailleWindowId;
 extern const SpecialFunc gSpecials[];
 extern const u8 *gStdScripts[];
 extern const u8 *gStdScripts_End[];
+extern const u8 RyuResetFollowerPosition[];
 
 static void CloseBrailleWindow(void);
 
@@ -1211,7 +1212,8 @@ bool8 ScrCmd_lockall(struct ScriptContext *ctx)
         return FALSE;
     }
     else
-    {
+    {  
+        ScriptContext2_RunNewScript(RyuResetFollowerPosition);
         ScriptFreezeEventObjects();
         SetupNativeScript(ctx, sub_80983C4);
         return TRUE;
@@ -1226,6 +1228,8 @@ bool8 ScrCmd_lock(struct ScriptContext *ctx)
     }
     else
     {
+        ScriptContext2_RunNewScript(RyuResetFollowerPosition);
+
         if (gEventObjects[gSelectedEventObject].active)
         {
             LockSelectedEventObject();
@@ -1699,7 +1703,7 @@ bool8 ScrCmd_setmonmove(struct ScriptContext *ctx)
 {
     u8 partyIndex = ScriptReadByte(ctx);
     u8 slot = ScriptReadByte(ctx);
-    u16 move = ScriptReadHalfword(ctx);
+    u16 move = (VarGet(ScriptReadHalfword(ctx)));
 
     ScriptSetMonMoveSlot(partyIndex, move, slot);
     return FALSE;

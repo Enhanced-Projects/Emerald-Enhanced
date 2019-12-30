@@ -11310,7 +11310,7 @@ static void Cmd_handleballthrow(void)
                     ballMultiplier = 20;
                 break;
             case ITEM_LURE_BALL:
-                if (gIsFishingEncounter)
+                if (gBattleMons[gBattlerTarget].type1 == TYPE_WATER || gBattleMons[gBattlerTarget].type2 == TYPE_WATER)
                     ballMultiplier = 30;
                 break;
             case ITEM_MOON_BALL:

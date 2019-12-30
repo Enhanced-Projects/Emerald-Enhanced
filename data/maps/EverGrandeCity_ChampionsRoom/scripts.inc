@@ -44,6 +44,7 @@ EverGrandeCity_ChampionsRoom_EventScript_Wallace:: @ 8228A45
 	playbgm MUS_DAIGO, 0
 	msgbox EverGrandeCity_ChampionsRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
 	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_AltWallaceFollower
 	trainerbattle_no_intro TRAINER_WALLACE, EverGrandeCity_ChampionsRoom_Text_Defeat
 	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated
@@ -57,6 +58,7 @@ EGC_AltWallaceFollower::
 	call RyuFollowerAllySelector
 	compare VAR_RYU_FOLLOWER_ID, EVENT_OBJ_GFX_TWIN
 	call_if_eq EGC_FollowerMinnieFlagSet
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	special SavePlayerParty
 	trainerbattle 10 TRAINER_WALLACE, 0, NULL, EverGrandeCity_ChampionsRoom_Text_Defeat
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
@@ -64,6 +66,7 @@ EGC_AltWallaceFollower::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
 	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated
 	end

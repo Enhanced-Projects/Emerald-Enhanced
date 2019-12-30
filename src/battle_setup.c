@@ -1308,6 +1308,9 @@ void BattleSetup_StartTrainerBattle(void)
 
 static void CB2_EndTrainerBattle(void)
 {
+    FlagClear(FLAG_RYU_DO_NOT_AUTOSCALE);
+    FlagClear(FLAG_RYU_ALTERNATE_SCALE);
+    
     if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
     {
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
@@ -1328,8 +1331,6 @@ static void CB2_EndTrainerBattle(void)
             SetBattledTrainersFlags();
         }
     }
-    FlagClear(FLAG_RYU_DO_NOT_AUTOSCALE);
-    FlagClear(FLAG_RYU_ALTERNATE_SCALE);
 }
 
 static void CB2_EndRematchBattle(void)
