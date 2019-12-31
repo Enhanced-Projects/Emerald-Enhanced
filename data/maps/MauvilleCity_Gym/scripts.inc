@@ -97,6 +97,7 @@ MG_Reset::
 	cleartrainerflag TRAINER_WATTSON_2
 	cleartrainerflag TRAINER_WATTSON_3
 	cleartrainerflag TRAINER_WATTSON_4
+	clearflag FLAG_RYU_ALTERNATE_SCALE
 	msgbox MauvilleCity_Gym_Text_WattsonPostBattle
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym

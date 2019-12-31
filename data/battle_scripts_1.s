@@ -4703,12 +4703,60 @@ BattleScript_FaintAttacker::
 	trytrainerslidefirstdownmsg BS_ATTACKER
 	return
 
-BattleScript_FaintTarget::
+BattleScript_FaintTarget::@If something gets added here, add to the 4 below!
 	tryillusionoff BS_TARGET
 	playfaintcry BS_TARGET
 	pause 0x40
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED
+	cleareffectsonfaint BS_TARGET
+	tryactivatemoxie BS_ATTACKER
+	tryactivatefellstinger BS_ATTACKER
+	trytrainerslidefirstdownmsg BS_TARGET
+	return
+
+BattleScript_FaintTarget2x::
+	tryillusionoff BS_TARGET
+	playfaintcry BS_TARGET
+	pause 0x40
+	dofaintanimation BS_TARGET
+	printstring STRINGID_TARGETFAINTED2X
+	cleareffectsonfaint BS_TARGET
+	tryactivatemoxie BS_ATTACKER
+	tryactivatefellstinger BS_ATTACKER
+	trytrainerslidefirstdownmsg BS_TARGET
+	return
+
+BattleScript_FaintTarget4x::
+	tryillusionoff BS_TARGET
+	playfaintcry BS_TARGET
+	pause 0x40
+	dofaintanimation BS_TARGET
+	printstring STRINGID_TARGETFAINTED4X
+	cleareffectsonfaint BS_TARGET
+	tryactivatemoxie BS_ATTACKER
+	tryactivatefellstinger BS_ATTACKER
+	trytrainerslidefirstdownmsg BS_TARGET
+	return
+
+BattleScript_FaintTarget10x::
+	tryillusionoff BS_TARGET
+	playfaintcry BS_TARGET
+	pause 0x40
+	dofaintanimation BS_TARGET
+	printstring STRINGID_TARGETFAINTED10X
+	cleareffectsonfaint BS_TARGET
+	tryactivatemoxie BS_ATTACKER
+	tryactivatefellstinger BS_ATTACKER
+	trytrainerslidefirstdownmsg BS_TARGET
+	return
+
+BattleScript_FaintTarget20x::
+	tryillusionoff BS_TARGET
+	playfaintcry BS_TARGET
+	pause 0x40
+	dofaintanimation BS_TARGET
+	printstring STRINGID_TARGETFAINTED20X
 	cleareffectsonfaint BS_TARGET
 	tryactivatemoxie BS_ATTACKER
 	tryactivatefellstinger BS_ATTACKER

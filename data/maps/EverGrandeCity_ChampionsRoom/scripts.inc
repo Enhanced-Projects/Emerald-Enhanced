@@ -68,6 +68,7 @@ EGC_AltWallaceFollower::
 	special LoadPlayerParty
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated
 	end
 

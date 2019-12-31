@@ -29,10 +29,17 @@ GCMS_AbilitySwap::
 	checkitem ITEM_BIG_PEARL, 1
 	compare VAR_RESULT, 1
 	goto_if_lt GCMS_SwapCancelledNoCurrency
+	specialvar VAR_RESULT RyuSwapAbility
+	compare VAR_RESULT, FALSE
+	goto_if_eq GCMS_AlreadyHasHiddenAbility
 	takeitem ITEM_BIG_PEARL, 1
-	special RyuSwapAbility
 	msgbox swapSuccess
 	release
+	end
+
+GCMS_AlreadyHasHiddenAbility::
+	msgbox GCMS_CantSwapHasHiddenMsg
+	goto GCMS_Intro
 	end
 
 GCMS_SwapCancelledNoCurrency::
@@ -44,6 +51,9 @@ GCMS_CancelAbilitySwap::
 	msgbox SwapCancelled
 	release
 	end
+
+GCMS_CantSwapHasHiddenMsg:
+	.string "The mon has its hidden ability.\nIt cannot be changed.$"
 
 GCMS_NotEnoughPearl:
 	.string "You do not have enough\nBig Pearls to perform the swap.$"

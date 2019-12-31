@@ -2,6 +2,7 @@ AncientTomb_MapScripts:: @ 8238FB3
 	map_script MAP_SCRIPT_ON_RESUME, AncientTomb_OnResume
 	map_script MAP_SCRIPT_ON_LOAD , AncientTomb_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, AncientTomb_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, AT_SetupLanaEvent2
 	.byte 0
 
 AncientTomb_OnResume: @ 8238FC3
@@ -96,12 +97,14 @@ AncientTomb_EventScript_RanFromRegisteel:: @ 82390AA
 
 
 AT_SetupLanaEvent2:;
-	map_script_2 VAR_RYU_DS_LANA_STAGE, 80, AT_LanaEvent2
+	map_script_2 VAR_RYU_DS_LANA_STAGE, 82, AT_LanaEvent2
 	.2byte 0
 	
 AT_LanaEvent2::
+	addobject 4
+	addobject 2
 	lock
-	setvar VAR_RYU_DS_LANA_STAGE, 81
+	setvar VAR_RYU_DS_LANA_STAGE, 83
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	applymovement EVENT_OBJ_ID_PLAYER, AT_SV_PlayerEntry
 	waitmovement EVENT_OBJ_ID_PLAYER
@@ -134,11 +137,11 @@ AT_LanaEvent2::
 	closemessage
 	removecutscenesprites
 	drawheadshot HEAD_GARY
-	setvar VAR_RYU_DS_LANA_STAGE, 82
+	setvar VAR_RYU_DS_LANA_STAGE, 83
 	goto AT_LanaEvent3
 
 AT_LanaEvent3::
-	setvar VAR_RYU_DS_LANA_STAGE, 83
+	setvar VAR_RYU_DS_LANA_STAGE, 84
 	msgbox AT_SV_Story32 MSGBOX_DEFAULT
 	closemessage
 	applymovement 4, AT_SV_Gary1
@@ -195,13 +198,14 @@ AT_LanaEvent3::
 	drawheadshot HEAD_LANA
 	msgbox AT_SV_Story9 MSGBOX_DEFAULT
 	closemessage
-	setvar VAR_RYU_DS_LANA_STAGE, 84
+	setvar VAR_RYU_DS_LANA_STAGE, 85
 	goto AT_SV_Battle
 	
 AT_SV_Battle::
-	setvar VAR_RYU_DS_LANA_STAGE, 85
+	setvar VAR_RYU_DS_LANA_STAGE, 86
 	removecutscenesprites
 	savebgm MUS_RG_NANADUNGEON
+	setflag FLAG_RYU_DO_NOT_AUTOSCALE
 	special SavePlayerParty
 	trainerbattle 10 TRAINER_RED, 0, NULL, AT_SV_GaryBattleDefeat
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
@@ -215,6 +219,7 @@ AT_SV_Battle::
 	
 AT_SV_ReturnFromBattle::
 	fadenewbgm MUS_RG_NANADUNGEON
+	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	drawheadshot HEAD_GARY
 	msgbox AT_SV_Story10 MSGBOX_DEFAULT
 	closemessage

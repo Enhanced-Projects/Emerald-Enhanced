@@ -662,7 +662,7 @@
 #define FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED  0x26E // Unused Flag
 #define FLAG_RYU_BRENDAN_GIFT2  0x26F // Unused Flag
 #define FLAG_RYU_BRENDAN_GIFT1  0x270 // Unused Flag
-#define VAR_UNUSED_0x271  0x271 // Unused Flag
+#define FLAG_RYU_NIGHT  0x271 // Unused Flag
 #define FLAG_RYU_LEAF_ALTERNATE_LINE  0x272 // Unused Flag
 #define FLAG_RYU_LEAF_MTPYRE  0x273 // Unused Flag
 #define FLAG_RYU_DAYCARE_LEAFEVENTPC  0x274 // Unused Flag

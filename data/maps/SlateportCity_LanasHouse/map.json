@@ -60,7 +60,7 @@
     "object_events": [
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO",
             "graphics_id": "EVENT_OBJ_GFX_BOY_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -73,12 +73,12 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO",
             "graphics_id": "EVENT_OBJ_GFX_LEAF",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
+            "script": "LH_Leaf_Home_chat",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 15,
@@ -89,6 +89,20 @@
     "requires_flash": false,
     "show_map_name": true,
     "warp_events": [
+        {
+            "dest_map": "MAP_SLATEPORT_CITY",
+            "dest_warp_id": 11,
+            "elevation": 3,
+            "x": 6,
+            "y": 10
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY",
+            "dest_warp_id": 11,
+            "elevation": 3,
+            "x": 5,
+            "y": 10
+        }
     ],
     "weather": "WEATHER_SUNNY"
 }

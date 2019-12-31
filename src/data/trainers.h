@@ -12331,17 +12331,17 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_REL_LANA] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_TRIATHLETE,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_SWIMMER,
-        .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
-        .trainerName = _("PABLO"),
-        .items = {},
-        .battleStyle = BS_SHIFT,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
+        .trainerPic = TRAINER_PIC_LEAF,
+        .trainerName = _("Lana"),
+        .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE},
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Pablo4),
-        .party = {.NoItemDefaultMoves = sParty_Pablo4},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY | AI_SCRIPT_HP_AWARE | AI_SCRIPT_PREFER_STRONGEST_MOVE,
+        .partySize = ARRAY_COUNT(sParty_RelLana),
+        .party = {.ItemCustomMoves = sParty_RelLana},
     },
 
     [TRAINER_REL_BRENDAN] =
@@ -12766,17 +12766,17 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_RED] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_RED,
-        .trainerName = _("RED"),
-        .items = {},
-        .battleStyle = BS_SHIFT,
+        .trainerName = _("Gary"),
+        .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE},
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = 0,
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY | AI_SCRIPT_RISKY,
         .partySize = ARRAY_COUNT(sParty_Red),
-        .party = {.NoItemDefaultMoves = sParty_Red},
+        .party = {.ItemCustomMoves = sParty_Red},
     },
 
     [TRAINER_LEAF] =

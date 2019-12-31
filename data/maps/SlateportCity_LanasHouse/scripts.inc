@@ -17,6 +17,8 @@ LH_AltLeafStoryTrigger::
 
 LH_Intro::
 	lock
+	compare VAR_RYU_DS_LANA_STAGE, 2
+	goto_if_eq ryu_end
 	setvar VAR_RYU_DS_LANA_STAGE, 1
 	applymovement 1, LH_bro_move
 	waitmovement 0
@@ -47,6 +49,7 @@ LH_Leaf_Home_chat::
 	setvar VAR_RYU_DS_LANA_STAGE, 4
 	applymovement 2, LH_read
 	waitmovement 0
+	removecutscenesprites
 	release
 	end
 
@@ -58,6 +61,7 @@ LH_Afterstory::
 	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
 	setflag FLAG_RECEIVED_MYSTIC_TICKET
 	msgbox LH_GIFT_GIVEN
+	removecutscenesprites
 	release
 	end
 	
@@ -73,8 +77,10 @@ LH_alreadytalked::
 	end
 	
 LH_EventStart::
+	drawheadshot HEAD_LANA
 	call_if_set FLAG_RYU_PLAYER_HELPING_AQUA, LH_AquaMember
 	msgbox LH_BeginQuest MSGBOX_DEFAULT
+	removecutscenesprites
 	applymovement EVENT_OBJ_ID_PLAYER, LH_PlayerShoved
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
 	applymovement 2, LH_LanaLeaves
@@ -84,6 +90,7 @@ LH_EventStart::
 	removeobject 2
 	special DrawWholeMapView
 	msgbox LH_QuestStarted MSGBOX_DEFAULT
+	closemessage
 	setvar VAR_RYU_DS_LANA_STAGE, 10
 	release
 	end
@@ -152,7 +159,7 @@ LH_LeafNightSceneMsg:
 LH_LeafNightSceneMsg2:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Lana: That was wonderful...I never\n"
     .string "thought I'd experience something\l"
-    .string "like this...thank you, my love.$"
+    .string "like this...thank you, {PLAYER}.$"
 
 LH_LeafBadEndMsgAqua:
     .string " (She sees the Aqua emblem on your\n"

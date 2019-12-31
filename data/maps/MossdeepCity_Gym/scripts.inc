@@ -75,6 +75,7 @@ MDG_Reset::
 	cleartrainerflag TRAINER_TATE_AND_LIZA_3
 	cleartrainerflag TRAINER_TATE_AND_LIZA_4
 	cleartrainerflag TRAINER_TATE_AND_LIZA_SINGLE
+	clearflag FLAG_RYU_ALTERNATE_SCALE
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
 	call_if_unset FLAG_RYU_GYM7HANDOUT, RyuGymItemReward7

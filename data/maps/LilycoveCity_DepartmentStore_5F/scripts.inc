@@ -18,78 +18,86 @@ LilycoveCity_DepartmentStore_5F_EventScript_BlockRoofStairs:: @ 821FF9A
 LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarLeft:: @ 821FFA6
 	lock
 	faceplayer
-	message gText_HowMayIServeYou
+	msgbox BallChangerQuery MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq RyuBallChanger
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, RyuMartsDisabledNuzlocke
+	message LCC_BALL_STORE_MSG
 	waitmessage
-	pokemartdecoration2 LilycoveCity_DepartmentStore_5F_Pokemart_Dolls
+	pokemart LCC_BallItemMart
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 
+BallChangerQuery:
+	.string "Would you like to change the ball\nyour lead pokemon is stored in?$"
+
 	.align 2
-LilycoveCity_DepartmentStore_5F_Pokemart_Dolls: @ 821FFC0
-	.2byte DECOR_PICHU_DOLL
-	.2byte DECOR_PIKACHU_DOLL
-	.2byte DECOR_MARILL_DOLL
-	.2byte DECOR_JIGGLYPUFF_DOLL
-	.2byte DECOR_DUSKULL_DOLL 
-	.2byte DECOR_WYNAUT_DOLL
-	.2byte DECOR_BALTOY_DOLL
-	.2byte DECOR_KECLEON_DOLL
-	.2byte DECOR_AZURILL_DOLL
-	.2byte DECOR_SKITTY_DOLL
-	.2byte DECOR_SWABLU_DOLL
-	.2byte DECOR_GULPIN_DOLL
-	.2byte DECOR_NONE
+LCC_EvoItemMart: @ 821FFC0
+	.2byte ITEM_SUN_STONE
+	.2byte ITEM_MOON_STONE
+	.2byte ITEM_FIRE_STONE
+	.2byte ITEM_THUNDER_STONE
+	.2byte ITEM_WATER_STONE
+	.2byte ITEM_LEAF_STONE
+	.2byte ITEM_NONE
 	release
 	end
 
 LilycoveCity_DepartmentStore_5F_EventScript_ClerkMidLeft:: @ 821FFDC
 	lock
 	faceplayer
-	message gText_HowMayIServeYou
+	message LCC_EVO_STORE_MSG
 	waitmessage
-	pokemartdecoration2 LilycoveCity_DepartmentStore_5F_Pokemart_Cushions
+	pokemart LCC_EvoItemMart
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 
 	.align 2
-LilycoveCity_DepartmentStore_5F_Pokemart_Cushions: @ 821FFF4
-	.2byte DECOR_PIKA_CUSHION
-	.2byte DECOR_ROUND_CUSHION
-	.2byte DECOR_ZIGZAG_CUSHION
-	.2byte DECOR_SPIN_CUSHION
-	.2byte DECOR_DIAMOND_CUSHION
-	.2byte DECOR_BALL_CUSHION
-	.2byte DECOR_GRASS_CUSHION
-	.2byte DECOR_FIRE_CUSHION
-	.2byte DECOR_WATER_CUSHION
-	.2byte DECOR_NONE
+LCC_BallItemMart: @ 821FFF4
+	.2byte ITEM_POKE_BALL
+	.2byte ITEM_GREAT_BALL
+	.2byte ITEM_PREMIER_BALL
+	.2byte ITEM_ULTRA_BALL
+	.2byte ITEM_LUXURY_BALL
+	.2byte ITEM_REPEAT_BALL
+	.2byte ITEM_TIMER_BALL
+	.2byte ITEM_NEST_BALL
+	.2byte ITEM_NET_BALL
+	.2byte ITEM_DIVE_BALL
+	.2byte ITEM_SAFARI_BALL
+	.2byte ITEM_NONE
 	release
 	end
 
 LilycoveCity_DepartmentStore_5F_EventScript_ClerkMidRight:: @ 822000A
 	lock
 	faceplayer
-	message gText_HowMayIServeYou
+	message LCC_BATTLE_ITEM_MSG
 	waitmessage
-	pokemartdecoration2 LilycoveCity_DepartmentStore_5F_Pokemart_Posters
+	pokemart LCC_BattleItemMart
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 
 	.align 2
-LilycoveCity_DepartmentStore_5F_Pokemart_Posters: @ 8220024
-	.2byte DECOR_BALL_POSTER
-	.2byte DECOR_GREEN_POSTER
-	.2byte DECOR_RED_POSTER
-	.2byte DECOR_BLUE_POSTER
-	.2byte DECOR_CUTE_POSTER
-	.2byte DECOR_PIKA_POSTER
-	.2byte DECOR_LONG_POSTER
-	.2byte DECOR_SEA_POSTER
-	.2byte DECOR_SKY_POSTER
-	.2byte DECOR_NONE
+LCC_BattleItemMart: @ 8220024
+	.2byte ITEM_ASSAULT_VEST
+	.2byte ITEM_CHOICE_BAND
+	.2byte ITEM_CHOICE_SCARF
+	.2byte ITEM_CHOICE_SPECS
+    .2byte ITEM_EXPERT_BELT
+	.2byte ITEM_FOCUS_BAND
+	.2byte ITEM_FOCUS_SASH
+	.2byte ITEM_IRON_BALL
+	.2byte ITEM_KINGS_ROCK
+	.2byte ITEM_LAGGING_TAIL
+	.2byte ITEM_LEFTOVERS
+	.2byte ITEM_QUICK_CLAW
+	.2byte ITEM_SCOPE_LENS
+	.2byte ITEM_LIFE_ORB
+	.2byte ITEM_NONE
 	release
 	end
 
@@ -98,24 +106,24 @@ LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarRight:: @ 822003A
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemartdecoration2 LilycoveCity_DepartmentStore_5F_Pokemart_Mats
+	pokemart LCC_ShardItemMarket
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 
 	.align 2
-LilycoveCity_DepartmentStore_5F_Pokemart_Mats: @ 8220054
-	.2byte DECOR_SURF_MAT
-	.2byte DECOR_THUNDER_MAT
-	.2byte DECOR_FIRE_BLAST_MAT
-	.2byte DECOR_POWDER_SNOW_MAT
-	.2byte DECOR_ATTRACT_MAT
-	.2byte DECOR_FISSURE_MAT
-	.2byte DECOR_SPIKES_MAT
-	.2byte DECOR_GLITTER_MAT
-	.2byte DECOR_JUMP_MAT
-	.2byte DECOR_SPIN_MAT
-	.2byte DECOR_NONE
+LCC_ShardItemMarket: @ 8220054
+	.2byte 59
+	.2byte 60
+	.2byte 61
+	.2byte 62
+	.2byte ITEM_HP_UP
+	.2byte ITEM_PROTEIN
+	.2byte ITEM_IRON
+	.2byte ITEM_RED_SHARD
+	.2byte ITEM_BLUE_SHARD
+	.2byte ITEM_YELLOW_SHARD
+	.2byte ITEM_NONE
 	release
 	end
 
@@ -169,3 +177,93 @@ LilycoveCity_DepartmentStore_5F_Text_SellManyCuteMatsHere: @ 822016B
 LilycoveCity_DepartmentStore_5F_Text_ClosedRooftopForWeather: @ 82201C4
 	.string "I think they closed the rooftop\n"
 	.string "because the weather is wild today.$"
+
+LCC_Jeweler::
+	goto_if_set FLAG_RYU_PLAYER_AQUA_STONE, LCC_Jeweler_Customwork
+	msgbox LCC_Jeweler_Welcome MSGBOX_DEFAULT
+	pokemart LCC_Jewels
+	msgbox LCC_Jeweler_exit MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+LCC_Jewels:
+	.2byte ITEM_PEARL
+	.2byte ITEM_BIG_PEARL
+	.2byte ITEM_STAR_PIECE
+	.2byte ITEM_NONE
+	
+LCC_Jeweler_Customwork::
+	msgbox LCC_Jeweler_MakeNecklace MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_ne LCC_JewelEnd
+	checkitem ITEM_STAR_PIECE, 1
+	compare VAR_RESULT, 1
+	goto_if_eq LCC_JewelerMakingNecklace
+	goto LCC_JewelEndNoItem
+	
+LCC_JewelerMakingNecklace::
+	msgbox LCC_JewelerMakingNecklaceMsg MSGBOX_DEFAULT
+	takeitem ITEM_STAR_PIECE, 1
+	msgbox LCC_NecklaceMade MSGBOX_DEFAULT
+	clearflag FLAG_RYU_PLAYER_AQUA_STONE
+	setflag FLAG_RYU_PLAYER_AQUA_NECKLACE
+	release
+	end
+	
+	
+LCC_Jeweler_Welcome:
+	.string "Welcome to my jewel gift shop.\n"
+	.string "Get that special item for that special\p"
+	.string "someone here!$"
+
+LCC_Jeweler_exit:
+	.string "Thanks for your patronage!$"
+	
+LCC_Jeweler_MakeNecklace:
+	.string "Oh, my, that's a high quality star\n"
+	.string "piece. Would you like me to turn it\p"
+	.string "into a necklace? It would be so\n"
+	.string "beautiful!$"
+	
+LCC_JewelEnd::
+	msgbox LCC_JewelEndMsg MSGBOX_DEFAULT
+	release
+	end
+
+LCC_JewelEndMsg:
+	.string "Oh, that's such a same. Any woman\n"
+	.string "would absolutely love it. My offer\p"
+	.string "to do this has a limited time window\n"
+	.string "come back if you change your mind!$"
+	
+LCC_JewelEndNoItem:
+	.string "Oh, I was mistaken. That's just a\n"
+	.string "mundane stone. I must be too\p"
+	.string "tired.$"
+	
+LCC_JewelerMakingNecklaceMsg:
+	.string "Give me a couple minutes to work\n"
+	.string "with this stone. It will be worth it,\p"
+	.string "I promise!$"
+	
+LCC_NecklaceMade:
+	.string "All done! It turned out even more\n"
+	.string "beautiful than I thought it would.\p"
+	.string "You're going to make a girl very\n"
+	.string "happy with this!$"
+
+LCC_BALL_STORE_MSG:
+    .string "Hello and welcome to the\n"
+	.string "Ball Market.\l"
+	.string "Get your balls here!$"
+
+LCC_BATTLE_ITEM_MSG:
+    .string "Hello and welcome to the Battle Item\n"
+	.string "store. We carry all the latest battle\l"
+	.string "tech and gear here!$"
+
+LCC_EVO_STORE_MSG:
+    .string "Hello and welcome to Darwin's market!\n"
+	.string "All evolution needs can be found here!$"
+

@@ -128,6 +128,7 @@ DR_LeafEvent::
 	applymovement 2, DR_LeafToBackDoor
 	waitmovement 2
 	playse SE_KAIDAN
+	setobjectxy 2, 16, 32
 	waitse
 	removeobject 2
 	applymovement EVENT_OBJ_ID_CAMERA, DR_CameraReturn
@@ -140,6 +141,7 @@ DR_LeafEvent::
 	
 DR_LeafCheck2::
 	addobject 4
+	removeobject 2
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
 	setvar VAR_RYU_DS_LANA_STAGE, 49
 	warp MAP_DESERT_RUINS, 255, 8, 11
@@ -151,6 +153,7 @@ DR_LeafEvent2::
 	setvar VAR_RYU_DS_LANA_STAGE, 50
 	setflag FLAG_HIDE_REGIROCK
 	removeobject 1
+	special DrawWholeMapView
 	playse SE_BOWA2
 	waitse
 	addobject 3

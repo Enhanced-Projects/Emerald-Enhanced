@@ -23,6 +23,7 @@
 #include "intro.h"
 #include "main.h"
 #include "trainer_hill.h"
+#include "mgba.h"
 
 static void VBlankIntr(void);
 static void HBlankIntr(void);
@@ -412,6 +413,7 @@ static void WaitForVBlank(void)
 {
     gMain.intrCheck &= ~INTR_FLAG_VBLANK;
     VBlankIntrWait();
+    //mgba_open();
 }
 
 void SetTrainerHillVBlankCounter(u32 *counter)

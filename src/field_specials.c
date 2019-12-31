@@ -5503,20 +5503,27 @@ void RyuGetPlayerBankBal(void)
     ConvertIntToDecimalStringN(gStringVar2, balance, STR_CONV_MODE_LEFT_ALIGN, 10);
 }
 
-void RyuSwapAbility(void)
+bool8 RyuSwapAbility(void)
 {
-    bool8 hasHiddenAbility = (GetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM));
+    u8 currentAbility = (GetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM));
 
-    if (hasHiddenAbility == 0)
+    if (currentAbility == 0)
     {
         u8 ability = 1;
         SetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM, &ability);
+        return TRUE;
     }
-    else
+    else if (currentAbility == 1)
     {
         u8 ability = 0;
         SetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM, &ability);
+        return TRUE;
     }
+    else
+    {
+        return FALSE;
+    }
+    
     
 }
 

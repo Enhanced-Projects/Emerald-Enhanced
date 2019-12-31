@@ -61,7 +61,6 @@ PT_PlayerMsg:
 PT_LanaLeaves:
 	walk_in_place_fast_right
 	walk_down
-	walk_down
 	walk_right
 	walk_right
 	walk_right

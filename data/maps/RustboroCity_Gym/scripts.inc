@@ -23,6 +23,7 @@ RG_Reset::
 	cleartrainerflag TRAINER_ROXANNE_2
 	cleartrainerflag TRAINER_ROXANNE_3
 	cleartrainerflag TRAINER_ROXANNE_4
+	clearflag FLAG_RYU_ALTERNATE_SCALE
 	setflag FLAG_BADGE01_GET
 	setflag FLAG_DEFEATED_RUSTBORO_GYM
 	msgbox RustboroCity_Gym_Text_RoxannePostBattle

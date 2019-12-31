@@ -33,9 +33,18 @@ Route110_OnFrame: @ 81EF297
 	.2byte 0
 	
 @==================================================================================================Lana Ending
-r110_BGMChangeLeaf:
+r110_BGMChangeLeaf::
 	fadenewbgm MUS_RG_SLOWMASARA
 	return
+
+r110_SetUpTrickHouseLanaEvent2::
+	lock
+	clearflag FLAG_HIDE_TRICK_HOUSE_LANA
+	clearflag FLAG_RYU_HIDE_REL_OBJECTS
+	setvar VAR_RYU_DS_LANA_STAGE, 91
+	release
+	end
+
 	
 R110_LeafEventKickstart::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
@@ -45,6 +54,7 @@ R110_LeafEventKickstart::
 	
 r110_LeafSceneEnding::
 	lock
+	fadenewbgm MUS_RG_SLOWMASARA
 	setvar VAR_RYU_DS_LANA_STAGE, 96
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceRight
 	applymovement 31, Common_Movement_FaceLeft

@@ -56,6 +56,7 @@
 #include "constants/rgb.h"
 #include "data.h"
 #include "constants/party_menu.h"
+#include "mgba.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
 
@@ -1348,6 +1349,7 @@ static void Cmd_attackstring(void)
         PrepareStringBattle(STRINGID_USEDMOVE, gBattlerAttacker);
         gHitMarker |= HITMARKER_ATTACKSTRING_PRINTED;
     }
+    //mgba_printf(MGBA_LOG_INFO, "Printing move use string.");
     gBattlescriptCurrInstr++;
     gBattleCommunication[MSG_DISPLAY] = 0;
 }
@@ -1704,6 +1706,11 @@ static void Cmd_healthbarupdate(void)
 static void Cmd_datahpupdate(void)
 {
     u32 moveType;
+    u16 targetHealth = 0;
+    u16 currentDmg = 0;
+    targetHealth = (gBattleMons[gActiveBattler].hp);
+
+    //mgba_printf(MGBA_LOG_INFO, "Initialized battle damage numbers.");
 
     if (gBattleControllerExecFlags)
         return;
@@ -1770,11 +1777,13 @@ static void Cmd_datahpupdate(void)
 
                 if (gBattleMons[gActiveBattler].hp > gBattleMoveDamage)
                 {
+                    //mgba_printf(MGBA_LOG_INFO, "Calculating normal damage.");
                     gBattleMons[gActiveBattler].hp -= gBattleMoveDamage;
                     gHpDealt = gBattleMoveDamage;
                 }
                 else
                 {
+                    //mgba_printf(MGBA_LOG_INFO, "Damage fainted target.");
                     gHpDealt = gBattleMons[gActiveBattler].hp;
                     gBattleMons[gActiveBattler].hp = 0;
                 }
@@ -1812,6 +1821,12 @@ static void Cmd_datahpupdate(void)
                         gSpecialStatuses[gActiveBattler].specialBattlerId = gBattlerTarget;
                     }
                 }
+                //mgba_printf(MGBA_LOG_INFO, "Converting damage numbers to strings...");
+                currentDmg = (gBattleMoveDamage - gHpDealt);
+                ConvertIntToDecimalStringN(gStringVar3, gHpDealt, STR_CONV_MODE_LEFT_ALIGN, 5);
+                ConvertIntToDecimalStringN(gStringVar2, currentDmg, STR_CONV_MODE_LEFT_ALIGN, 5);
+                ConvertIntToDecimalStringN(gStringVar1, targetHealth, STR_CONV_MODE_LEFT_ALIGN, 3);
+                //mgba_printf(MGBA_LOG_INFO, "Finished converting damage numbers to strings.");
             }
             gHitMarker &= ~(HITMARKER_x100000);
             BtlController_EmitSetMonData(0, REQUEST_HP_BATTLE, 0, 2, &gBattleMons[gActiveBattler].hp);
@@ -1824,6 +1839,9 @@ static void Cmd_datahpupdate(void)
         if (gSpecialStatuses[gActiveBattler].dmg == 0)
             gSpecialStatuses[gActiveBattler].dmg = 0xFFFF;
     }
+    //mgba_printf(MGBA_LOG_INFO, "Target fainted. %d damage dealt.", currentDmg);
+    //mgba_printf(MGBA_LOG_INFO, "Target had %d health.", gHpDealt);
+    
     gBattlescriptCurrInstr += 2;
 }
 
@@ -1833,8 +1851,17 @@ static void Cmd_critmessage(void)
     {
         if (gIsCriticalHit == TRUE && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
         {
-            PrepareStringBattle(STRINGID_CRITICALHIT, gBattlerAttacker);
-            gBattleCommunication[MSG_DISPLAY] = 1;
+            //mgba_printf(MGBA_LOG_INFO, "Printing critical message");
+            if (gBattleMoveDamage > gHpDealt)
+            {
+                PrepareStringBattle(STRINGID_ITDEALTOVERKILLDAMAGECRIT, gBattlerAttacker);
+                gBattleCommunication[MSG_DISPLAY] = 1;
+            }
+            else
+            {
+                PrepareStringBattle(STRINGID_ITDEALTDAMAGECRIT, gBattlerAttacker);
+                gBattleCommunication[MSG_DISPLAY] = 1;
+            }
         }
         gBattlescriptCurrInstr++;
     }
@@ -1885,18 +1912,21 @@ static void Cmd_effectivenesssound(void)
             break;
         }
     }
+    //mgba_printf(MGBA_LOG_INFO, "Played Effectiveness sound... going to result message.");
     gBattlescriptCurrInstr++;
 }
 
 static void Cmd_resultmessage(void)
 {
     u32 stringId = 0;
+    //mgba_printf(MGBA_LOG_INFO, "Begin choosing result message.");
 
     if (gBattleControllerExecFlags)
         return;
 
     if (gMoveResultFlags & MOVE_RESULT_MISSED && (!(gMoveResultFlags & MOVE_RESULT_DOESNT_AFFECT_FOE) || gBattleCommunication[6] > 2))
     {
+        //mgba_printf(MGBA_LOG_INFO, "Move missed.");
         stringId = gMissStringIds[gBattleCommunication[6]];
         gBattleCommunication[MSG_DISPLAY] = 1;
     }
@@ -1906,16 +1936,38 @@ static void Cmd_resultmessage(void)
         switch (gMoveResultFlags & (~MOVE_RESULT_MISSED))
         {
         case MOVE_RESULT_SUPER_EFFECTIVE:
-            stringId = STRINGID_SUPEREFFECTIVE;
+            if (gIsCriticalHit == FALSE)
+            {
+                //mgba_printf(MGBA_LOG_INFO, "Printing Super Effective message.");
+                if (gBattleMoveDamage > gHpDealt)
+                {
+                    stringId = STRINGID_ITDEALTSEOVERKILLDAMAGE;
+                }
+                else
+                {
+                    stringId = STRINGID_ITDEALTSEDAMAGE;
+                }
+            }
             break;
         case MOVE_RESULT_NOT_VERY_EFFECTIVE:
-            stringId = STRINGID_NOTVERYEFFECTIVE;
+            if (gIsCriticalHit == FALSE)
+            {
+                //mgba_printf(MGBA_LOG_INFO, "Printing Not Very Effective message.");
+                if (gBattleMoveDamage > gHpDealt)
+                {
+                    stringId = STRINGID_ITDEALTNVEOVERKILLDAMAGE;
+                }
+                else
+                {
+                    stringId = STRINGID_ITDEALTNVEDAMAGE;
+                }
+            }
             break;
         case MOVE_RESULT_ONE_HIT_KO:
-            stringId = STRINGID_ONEHITKO;
+            stringId = STRINGID_ITDEALTOHKOOVERKILLDAMAGE;
             break;
         case MOVE_RESULT_FOE_ENDURED:
-            stringId = STRINGID_PKMNENDUREDHIT;
+            stringId = STRINGID_ITDEALTDAMAGEHUNGON;
             break;
         case MOVE_RESULT_FAILED:
             stringId = STRINGID_BUTITFAILED;
@@ -1974,14 +2026,34 @@ static void Cmd_resultmessage(void)
             }
             else
             {
-                gBattleCommunication[MSG_DISPLAY] = 0;
+                if (gIsCriticalHit == FALSE)
+                {
+                    //mgba_printf(MGBA_LOG_INFO, "Printing default message");
+                    if (!gBattleMoveDamage == 0)
+                    {
+                        if (gBattleMoveDamage > gHpDealt)
+                            {
+                                stringId = STRINGID_ITDEALTOVERKILLDAMAGE;
+                            }
+                        else
+                            {
+                                stringId = STRINGID_ITDEALTDAMAGE;
+                            }
+                    }
+                    else
+                    {
+                        //mgba_printf(MGBA_LOG_INFO, "Printing no damage message");
+                        stringId = STRINGID_ITDEALTNODAMAGE;
+                    }
+                }
             }
         }
     }
 
     if (stringId)
         PrepareStringBattle(stringId, gBattlerAttacker);
-
+    
+    //mgba_printf(MGBA_LOG_INFO, "Finished choosing a string to print.");
     gBattlescriptCurrInstr++;
 
     // Print berry reducing message after result message.
@@ -3068,8 +3140,36 @@ static void Cmd_tryfaintmon(void)
         else
         {
             gActiveBattler = gBattlerTarget;
-            battlerId = gBattlerAttacker;
-            BS_ptr = BattleScript_FaintTarget;
+            battlerId = gBattlerTarget;
+            if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 20))
+            {
+                //mgba_printf(MGBA_LOG_INFO, "Fainting target mon 20x");
+                BS_ptr = BattleScript_FaintTarget20x;
+            }
+            else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 10))
+            {
+                //mgba_printf(MGBA_LOG_INFO, "Fainting target mon 10x");
+                BS_ptr = BattleScript_FaintTarget10x;
+            }
+            else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 4)) 
+            {
+                //mgba_printf(MGBA_LOG_INFO, "Fainting target mon 4x");
+                BS_ptr = BattleScript_FaintTarget4x;
+            }
+            else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 2)) 
+            {
+                //mgba_printf(MGBA_LOG_INFO, "Fainting target mon 2x");
+                BS_ptr = BattleScript_FaintTarget2x;
+            }
+            else if (gBattleMoveDamage <= (gBattleMons[gActiveBattler].maxHP)) 
+            {
+                //mgba_printf(MGBA_LOG_INFO, "Fainting target mon normally");
+                BS_ptr = BattleScript_FaintTarget;
+            }
+            else
+            {
+                BS_ptr = BattleScript_FaintTarget;
+            }
         }
         if (!(gAbsentBattlerFlags & gBitTable[gActiveBattler])
          && gBattleMons[gActiveBattler].hp == 0)

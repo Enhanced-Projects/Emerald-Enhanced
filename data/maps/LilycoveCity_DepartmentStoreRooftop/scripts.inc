@@ -232,3 +232,317 @@ LilycoveCity_DepartmentStoreRooftop_Text_NotEnoughMoney: @ 82205F1
 
 LilycoveCity_DepartmentStoreRooftop_Text_DecidedAgainstBuyingDrink: @ 8220603
 	.string "Decided against buying a drink.$"
+
+@++++++++++++++++++++++++++++++++++++++++++Leaf scripts
+
+LCC_LeafSetup::
+	goto_if_set FLAG_RYU_LEAF_LCC_EVENT_DONE, ryu_end
+	goto_if_unset FLAG_RYU_LEAF_MTPYRE, ryu_end
+	lock
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	setflag FLAG_RYU_HIDE_LCC_DEPT_ROOF_NPC
+	release
+	end
+
+LCC_LeafEvent::
+	goto_if_set FLAG_RYU_LEAF_LCC_EVENT_DONE, ryu_end
+	goto_if_unset FLAG_RYU_LEAF_MTPYRE, ryu_end
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	lock
+	special SpawnCameraObject
+	applymovement EVENT_OBJ_ID_CAMERA, LCC_Cam1
+	applymovement EVENT_OBJ_ID_PLAYER, LCC_Chase1
+	applymovement 5, LCC_Jump
+	waitmovement 5
+	fadenewbgm MUS_OOAME
+	delay 20
+	drawheadshot HEAD_LANA
+	msgbox LCC_Story1 MSGBOX_DEFAULT
+	closemessage
+	applymovement 5, Common_Movement_ExclamationMark
+	playse SE_PIN
+	msgbox LCC_Story2 MSGBOX_DEFAULT
+	closemessage
+	applymovement 5, Common_Movement_FaceRight
+	waitmovement 5
+	applymovement 5, LCC_PullRight2
+	waitmovement 5
+	msgbox LCC_Story3 MSGBOX_DEFAULT
+	closemessage
+	msgbox LCC_Story4 MSGBOX_DEFAULT
+	playse SE_RG_BAG1
+	waitse
+	msgbox LCC_Story5 MSGBOX_DEFAULT
+	savebgm MUS_DUMMY
+	trainerbattle_no_intro TRAINER_STORY_LEAF, LCC_Defeat
+	delay 20
+	applymovement 5, LCC_SneakLeft
+	msgbox LCC_Story6 MSGBOX_DEFAULT
+	closemessage
+	applymovement 5, LCC_RunLeft
+	applymovement EVENT_OBJ_ID_PLAYER, LCC_RunLeft2
+	delay 5
+	applymovement 5, Common_Movement_FaceRight
+	waitmovement 5
+	fadenewbgm MUS_THANKFOR
+	msgbox LCC_Story7 MSGBOX_DEFAULT
+	applymovement 5, Common_Movement_ExclamationMark
+	playse SE_PIN
+	waitse
+	msgbox LCC_Story8 MSGBOX_DEFAULT
+	closemessage
+	applymovement 5, Common_Movement_ExclamationMark
+	playse SE_PIN
+	waitse
+	applymovement 5 LCC_Right1
+	msgbox LCC_Story9 MSGBOX_DEFAULT
+	closemessage
+	removecutscenesprites
+	savebgm MUS_THANKFOR
+	delay 5
+	@setvar VAR_RYU_DS_LANA_STAGE, 1
+	setflag FLAG_RYU_ON_DATE
+	applymovement 5, LCC_PullRight
+	waitmovement 5
+	delay 10
+	warpsilent MAP_LILYCOVE_CITY, 255, 62, 37
+	release
+	end
+
+	
+	
+LCC_Story1:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}This is it...I'm...$"
+	
+LCC_Story2:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Lana!$"
+	
+LCC_Story3:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}!?$"
+	
+LCC_Story4:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}You shouldn't be here!\pYou shouldn't care!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Please, Lana...don't do this!$"
+	
+LCC_Story5:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Huh?\p... ... ... ...\p{COLOR LIGHT_RED}{SHADOW RED}It's no use...\nDon't try to stop me!$"
+	
+LCC_Defeat:
+	.string "Why...$"
+	
+LCC_Story6:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...$"
+	
+LCC_Story7:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Let me go! There's no reason for\nme to be here!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Of course there's a reason! I want\nyou here!\p{COLOR LIGHT_RED}{SHADOW RED}You're just saying that! I don't\n"
+	.string "belong...not in Kanto, not here...\pOr anywhere else!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Please...$"
+	
+LCC_Story8:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana sees {PLAYER} crying...)\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Lana...don't go...I don't know\nwhat I'd do without you. You might\lthink it makes no difference, but\pit's not that simple...\p"
+	.string "It's not like I can turn my\nrelationship with you off\llike a light switch,\pand I wouldn't want to anyway.\pIf you left...I'd never forgive\nmyself...it'd haunt me until the\lday I die.\pLana...you belong in my life.$"
+
+LCC_Story9:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Do you...truly...truly mean that?\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Of course I do! Why else would I\ngo through such great lengths to\lstop you!?\p"
+	.string "Look, you even made an adult\ncry!\p{COLOR LIGHT_RED}{SHADOW RED}Haha...I guess I did...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Tears flow down Lana's face, and\n"
+	.string " the two embrace each other in a\l long, drawn-out hug...)\p{COLOR LIGHT_RED}{SHADOW RED}Thank you, {PLAYER}...thank you...$"
+	
+LCL_Story1:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}What a great view...\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Yeah, too bad this wasn't on the\nto-do-list of places to find.\p{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...$"
+
+LCL_Story2:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Care to hear my life story?$"
+	
+LCL_Story3:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}You kidding? I've been waiting for\nthis moment!\p{COLOR LIGHT_RED}{SHADOW RED}Haha, okay then.$"
+	
+LCL_Story4:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I was raised in Kanto...grew up\n"
+	.string "alongside a boy the same age as\l"
+	.string "me.\p"
+	.string "We used to be close, until one day\n"
+	.string "we just...fell apart...the one\l"
+	.string "person I spoke to and liked the\p"
+	.string "most...completely shunned me...\n"
+	.string "I never knew the reason why, but I\l"
+	.string "started to blame myself for what\p"
+	.string "happened...that it was my fault it\n"
+	.string "came to be this way.\p"
+	.string "It tore me up inside...\p"
+	.string "'Shut up.'\p"
+	.string "That one phrase kept popping into\n"
+	.string "my head...to the point where I\l"
+	.string "just decided not to speak...to him\p"
+	.string "or to anyone else.\p"
+	.string "When we set out on our journey,\n"
+	.string "we would on occasion cross paths,\l"
+	.string "sometimes battling each other.\p"
+	.string "I thought it would be the perfect\n"
+	.string "opportunity for me to make things\l"
+	.string "right...but every battle I won, I\p"
+	.string "would see hatred in his eyes...\p"
+	.string "It really scared me, but I\n"
+	.string "continued to chase after him...\p"
+	.string "all the way to the Indigo Plateau.\p"
+	.string "... ... ... ...\p"
+	.string "I desperately wanted him to see\n"
+	.string "me...to acknowledge me as the\l"
+	.string "person closest to him...once I\p"
+	.string "showed my strength to him by\n"
+	.string "beating him as Champion, he'd\p"
+	.string "finally accept me for who I am...\n"
+	.string "or rather, who I wanted to be for\p"
+	.string "him.\p"
+	.string "However, the exact opposite\n"
+	.string "happened...upon his defeat, he\l"
+	.string "exclaimed:\p"
+	.string "'You think you're so special, huh?\p"
+	.string "What're you trying to prove? Like\n"
+	.string "anyone cares about a complete\l"
+	.string "nuisance like you...always getting\p"
+	.string "in my way of trying to be the\n"
+	.string "best...I won't accept this...\p"
+	.string "especially from a nobody like you!\p"
+	.string "I was speechless...I couldn't say\n"
+	.string "anything in response to him.\p"
+	.string "I couldn't believe it...the one\n"
+	.string "who was most important to me...\p"
+	.string "despised my very existence!\p"
+	.string "I never felt such anger and hate!\p"
+	.string "It plagued my mind, and I was\n"
+	.string "unable to cope or comprehend it.\p"
+	.string "I ran out of there, and soon left\n"
+	.string "Kanto altogether.\p"
+	.string "Even after coming to Hoenn, I\n"
+	.string "didn't want to make contact with\l"
+	.string "anyone...so when Mom would force\p"
+	.string "me to go and socialize, I went to\n"
+	.string "a place where few people visited.p"
+
+	
+LCL_Story4_5:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}The Museum...where you and I met.\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I didn't expect anyone to care\n"
+	.string "about me...but you did.\p"
+	.string "I thought you'd move on after\n"
+	.string "our initial encounter, and yet,\l"
+	.string "you kept searching for me...you\p"
+	.string "never grew tired of me or thought\n"
+	.string "that I was a nuisance. I was\l"
+	.string "conflicted...the emotions I felt\p"
+	.string "from you betrayed how I felt\n"
+	.string "about myself...but I wanted it to\l"
+	.string "continue...I wanted to make sure\p"
+	.string "you'd never view me as a nobody.\p"@<-----Main line deviates here
+	.string "... ... ... ...\p"
+	.string "And yet...everywhere I turned...\n"
+	.string "those memories kept coming back...\p"
+	.string "reminding me...taunting me.\n"
+	.string "It was overwhelming, and it nearly\l"
+	.string "took control of me to where I...$"
+	
+LCL_Story5:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} kisses Lana directly!)\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}No need to dwell on that any\p"
+	.string "longer, my dear. I'm here now.\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Yeah, you're right. Sorry about\n"
+	.string "that.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}That's not gonna fly.$"
+	
+LCL_Story6:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}C'mon, after giving me the literal\n"
+	.string "runaround across Hoenn...don't you\l"
+	.string "think I deserve a bit more than\p"
+	.string "just 'Sorry'?\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Well...I would get on my knees,\n"
+	.string "but...that's for a different time\l"
+	.string "and place, wouldn't you agree?\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana winks at {PLAYER} in a\p"
+	.string " suggestive manner)\n"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Wow...didn't know there was that\n"
+	.string "side of you too...turns me on.\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Stop by my place, and you'll be\p"
+	.string "surprised what a shy girl who\n"
+	.string "reads for a living can accomplish.$"
+	
+LCL_Story7:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}But first, let's head back to the\n"
+	.string "Trickmaster's House.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}You're such a tease.$"
+
+
+
+
+
+
+
+LCC_SneakLeft:
+	walk_slow_left
+	walk_in_place_right
+	step_end
+
+LCC_RunLeft:
+	walk_fast_left
+	step_end
+	
+LCC_RunLeft2:
+	walk_fastest_left
+	walk_in_place_left
+	step_end
+	
+LCC_PullRight:
+	walk_slow_right
+	walk_in_place_left
+	step_end
+
+LCC_PullRight2:
+	delay_16
+	delay_16
+	walk_slow_right
+	walk_in_place_slow_right
+	step_end
+	
+LCC_Right1:
+	walk_right
+	walk_in_place_right
+	step_end
+	
+LCC_Cam1:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	step_end
+	
+LCC_Chase1:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	step_end
+	
+LCC_Jump:
+	delay_16
+	delay_16
+	delay_16
+	walk_slow_left
+	walk_slow_left
+	step_end
+

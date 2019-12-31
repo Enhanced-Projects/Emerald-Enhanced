@@ -497,6 +497,7 @@ LRT_LeafEvent::
 	closemessage
 	fadenewbgm MUS_MISHIRO
 	setvar VAR_RYU_DS_LANA_STAGE, 80
+	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	setflag FLAG_RYU_DS_LEAF_LOVERS
 	clearflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
 	release

@@ -146,13 +146,15 @@ r120_FollowLeafIntoChamber:
 	step_end
 	
 r120_AT_SECOND_VISIT_SETUP::
-	compare VAR_RYU_DS_LANA_STAGE, 70
+	compare VAR_RYU_DS_LANA_STAGE, 80
 	goto_if_ne ryu_end
 	lock
 	msgbox r120_SV_Intro MSGBOX_DEFAULT
 	closemessage
 	applymovement EVENT_OBJ_ID_PLAYER, r120_SV_walkup
 	waitmovement EVENT_OBJ_ID_PLAYER
+	setvar VAR_RYU_DS_LANA_STAGE, 82
+	clearflag FLAG_HIDE_AT1_LEAF
 	warp MAP_ANCIENT_TOMB, 255, 8, 29
 	release
 	end

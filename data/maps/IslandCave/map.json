@@ -45,7 +45,7 @@
             "script": "IC_Setup2",
             "type": "trigger",
             "var": "VAR_RYU_DS_LANA_STAGE",
-            "var_value": "56",
+            "var_value": "58",
             "x": 8,
             "y": 21
         },
@@ -54,7 +54,7 @@
             "script": "IC_LeafEvent2",
             "type": "trigger",
             "var": "VAR_RYU_DS_LANA_STAGE",
-            "var_value": "57",
+            "var_value": "59",
             "x": 8,
             "y": 10
         }
@@ -106,7 +106,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,

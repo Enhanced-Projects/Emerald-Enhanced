@@ -107,6 +107,7 @@ SG_Reset::
 	cleartrainerflag TRAINER_JUAN_2
 	cleartrainerflag TRAINER_JUAN_3
 	cleartrainerflag TRAINER_JUAN_4
+	clearflag FLAG_RYU_ALTERNATE_SCALE
 	msgbox SootopolisCity_Gym_1F_Text_JuanPostBattle, MSGBOX_DEFAULT
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym

@@ -97,6 +97,7 @@ LG_Reset::
 	cleartrainerflag TRAINER_FLANNERY_2
 	cleartrainerflag TRAINER_FLANNERY_3
 	cleartrainerflag TRAINER_FLANNERY_4
+	clearflag FLAG_RYU_ALTERNATE_SCALE
 	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPostBattle, MSGBOX_DEFAULT
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym

@@ -50,7 +50,7 @@
             "y": 21
         },
         {
-            "elevation": 0,
+            "elevation": 3,
             "script": "DR_LeafEvent2",
             "type": "trigger",
             "var": "VAR_RYU_DS_LANA_STAGE",
@@ -66,7 +66,7 @@
     "name": "DesertRuins",
     "object_events": [
         {
-            "elevation": 3,
+            "elevation": 4,
             "flag": "FLAG_HIDE_REGIROCK",
             "graphics_id": "EVENT_OBJ_GFX_REGIROCK",
             "movement_range_x": 0,
@@ -93,7 +93,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -115,7 +115,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 8,
-            "y": 8
+            "y": 9
         }
     ],
     "region_map_section": "MAPSEC_DESERT_RUINS",

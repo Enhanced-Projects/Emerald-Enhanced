@@ -210,6 +210,15 @@
             "var_value": "10",
             "x": 11,
             "y": 67
+        },
+        {
+            "elevation": 0,
+            "script": "r110_SetUpTrickHouseLanaEvent2",
+            "type": "trigger",
+            "var": "VAR_RYU_DS_LANA_STAGE",
+            "var_value": "90",
+            "x": 11,
+            "y": 67
         }
     ],
     "id": "MAP_ROUTE110",

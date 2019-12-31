@@ -31,6 +31,7 @@ IC_Setup::
 IC_Setup2::
     lock
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	setobjectxy 2, 16, 32
 	clearflag FLAG_HIDE_IC_LANA
 	addobject 3
 	setvar VAR_RYU_DS_LANA_STAGE, 59

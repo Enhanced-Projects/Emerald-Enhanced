@@ -62,6 +62,7 @@ FG_Reset::
 	cleartrainerflag TRAINER_WINONA_2
 	cleartrainerflag TRAINER_WINONA_3
 	cleartrainerflag TRAINER_WINONA_4
+	clearflag FLAG_RYU_ALTERNATE_SCALE
 	msgbox FortreeCity_Gym_Text_WinonaPostBattle, MSGBOX_DEFAULT
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym

@@ -930,11 +930,16 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto_if_set FLAG_RYU_ALTERNATE_SCALE, AltScaleOn
-	msgbox AltScaleOff
-	goto_if_set FLAG_RYU_DO_NOT_AUTOSCALE, ScalingOff
-	msgbox ScalingOn
+	@goto_if_set FLAG_RYU_ALTERNATE_SCALE, AltScaleOn
+	@msgbox AltScaleOff
+	@goto_if_set FLAG_RYU_DO_NOT_AUTOSCALE, ScalingOff
+	@msgbox ScalingOn
+	@closemessage
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	buffernumberstring 0, VAR_RYU_DS_LANA_STAGE
+	msgbox RDB_CTVMsg
 	closemessage
+	@setflag FLAG_RYU_NIGHT
 	release
 	end
 

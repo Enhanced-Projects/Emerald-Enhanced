@@ -27,7 +27,7 @@ SCH_OpenDoors:: @ 82391F8
 	@closemessage
 	fadeinbgm 0
 	setflag FLAG_REGI_DOORS_OPENED
-	compare VAR_RYU_DS_LANA_STAGE, 35
+	compare VAR_RYU_DS_LANA_STAGE, 41
 	goto_if_ne ryu_end
 	return
 	releaseall
@@ -113,6 +113,7 @@ SCH_LanaEvent::
 	msgbox SCH_LanaMsg2 MSGBOX_DEFAULT
 	setflag FLAG_RYU_DO_NOT_AUTOSCALE
 	setvar VAR_RYU_DS_LANA_STAGE, 40
+	cleartrainerflag TRAINER_STORY_LEAF
 	trainerbattle_single TRAINER_STORY_LEAF, SCH_Ellipsis, SCH_Victory, SCH_AfterBattle
 	release
 	end
@@ -127,6 +128,7 @@ SCH_LanaDispt::
 SCH_AfterBattle::
 	setvar VAR_RYU_DS_LANA_STAGE, 41
 	applymovement 1, SCH_Fall
+	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	call SCH_OpenDoors
 	applymovement 1, SCH_diagonal
 	applymovement EVENT_OBJ_ID_PLAYER, SCH_diagonal

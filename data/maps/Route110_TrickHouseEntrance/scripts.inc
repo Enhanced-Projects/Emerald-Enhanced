@@ -208,9 +208,9 @@ Route110_TrickHouseEntrance_EventScript_SetTrickMasterInFrontOfDoor:: @ 8269CDF
 	end
 
 Route110_TrickHouseEntrance_OnFrame: @ 8269CEE
-	map_script_2 VAR_TRICK_HOUSE_FOUND_TRICK_MASTER, 1, Route110_TrickHouseEntrance_EventScript_BeginChallenge
 	map_script_2 VAR_RYU_DS_LANA_STAGE, 11, TH_LanaEvent1
-	map_script_2 VAR_RYU_DS_LANA_STAGE, 90, TH_Lana_Event2
+	map_script_2 VAR_RYU_DS_LANA_STAGE, 91, TH_Lana_Event2
+	map_script_2 VAR_TRICK_HOUSE_FOUND_TRICK_MASTER, 1, Route110_TrickHouseEntrance_EventScript_BeginChallenge
 	.2byte 0
 	
 @================================================================================================== Lana
@@ -271,11 +271,6 @@ TH_LanaEvent1::
 	waitmovement 0
 	msgbox TH_Event7 MSGBOX_DEFAULT
 	closemessage
-	@setflag FLAG_LANA_EVENT1_DONE
-	@clearflag FLAG_LH_EVENT2
-	@clearflag FLAG_RYU_TH_LANA_EVENT_1
-	@setflag FLAG_HIDE_FALLORBOR_POKEMON_CENTER_LANETTE
-	@clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	setvar VAR_RYU_DS_LANA_STAGE, 15
 	applymovement EVENT_OBJ_ID_PLAYER, TH_PlayerLeave
@@ -371,7 +366,7 @@ TH_PlayerLeave:
 	
 TH_Lana_Event2::
 	lock
-	setvar VAR_RYU_DS_LANA_STAGE, 91
+	setvar VAR_RYU_DS_LANA_STAGE, 92
 	applymovement 3, Common_Movement_FaceUp
 	applymovement EVENT_OBJ_ID_PLAYER, TH_Player2move
 	waitmovement EVENT_OBJ_ID_PLAYER
