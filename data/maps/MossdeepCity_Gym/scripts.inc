@@ -49,9 +49,9 @@ MossdeepCity_Gym_EventScript_SetSwitch4Metatiles:: @ 8220885
 	end
 
 MossdeepCity_Gym_EventScript_TateAndLiza:: @ 8220898
-	trainerbattle_double TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaPreBattle, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MossdeepCity_Gym_EventScript_TateAndLizaDefeated, NO_MUSIC
 	lock
 	faceplayer
+	setflag FLAG_RYU_IN_MOSSDEEP_GYM
 	setflag FLAG_RYU_ALTERNATE_SCALE
 	special checkbadgecount
 	switch VAR_RESULT
@@ -67,7 +67,6 @@ MossdeepCity_Gym_EventScript_TateAndLiza:: @ 8220898
 	end
 
 MDG_Reset::
-	call_if_unset FLAG_BADGE07_GET, WorldStateUpdateMDG
 	setflag FLAG_BADGE07_GET
 	setflag FLAG_DEFEATED_MOSSDEEP_GYM
 	cleartrainerflag TRAINER_TATE_AND_LIZA_1
@@ -76,18 +75,12 @@ MDG_Reset::
 	cleartrainerflag TRAINER_TATE_AND_LIZA_4
 	cleartrainerflag TRAINER_TATE_AND_LIZA_SINGLE
 	clearflag FLAG_RYU_ALTERNATE_SCALE
+	clearflag FLAG_RYU_IN_MOSSDEEP_GYM
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
 	call_if_unset FLAG_RYU_GYM7HANDOUT, RyuGymItemReward7
 	release
 	end
-
-WorldStateUpdateMDG::
-	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS
-	setflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
-	setflag FLAG_ENABLE_WINONA_MATCH_CALL
-	clearflag FLAG_UNKNOWN_0x393
-	return
 
 SABRINA1::
 	trainerbattle_double TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaPreBattle, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MDG_Reset, NO_MUSIC

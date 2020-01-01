@@ -918,8 +918,8 @@
 
 	.macro setmonmove index:req, slot:req, move:req
 	.byte 0x7b
-	.byte \index
-	.byte \slot
+	.2byte \index
+	.2byte \slot
 	.2byte \move
 	.endm
 

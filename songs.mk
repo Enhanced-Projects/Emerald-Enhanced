@@ -943,7 +943,7 @@ $(MID_SUBDIR)/se_kon4.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G128 -V100 -P4
 
 $(MID_SUBDIR)/se_kouka_h.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -V110 -P5
+	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -V180 -P5
 
 $(MID_SUBDIR)/se_kouka_l.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -V110 -P5
@@ -1072,7 +1072,7 @@ $(MID_SUBDIR)/se_seikai.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -V080 -P4
 
 $(MID_SUBDIR)/se_select.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -V080 -P5
+	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -V040 -P5
 
 $(MID_SUBDIR)/se_suikomu.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -V100 -P5

@@ -1685,7 +1685,7 @@ static void Cmd_healthbarupdate(void)
             s16 healthValue;
 
             s32 currDmg = gBattleMoveDamage;
-            s32 maxPossibleDmgValue = 10000; // not present in R/S, ensures that huge damage values don't change sign
+            s32 maxPossibleDmgValue = 32768; // not present in R/S, ensures that huge damage values don't change sign
 
             if (currDmg <= maxPossibleDmgValue)
                 healthValue = currDmg;

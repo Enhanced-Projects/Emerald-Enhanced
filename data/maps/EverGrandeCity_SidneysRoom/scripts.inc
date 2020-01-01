@@ -59,6 +59,7 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney:: @ 8227F64
 	playbgm MUS_SITENNOU, 0
 	msgbox EverGrandeCity_SidneysRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
 	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	setflag FLAG_RYU_WAYSTONE_DISABLED
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltSidney
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidney
 	trainerbattle_no_intro TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat
@@ -68,7 +69,7 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney:: @ 8227F64
 EGC_FollowerSidney::
 	call RyuFollowerAllySelector
 	special SavePlayerParty
-	trainerbattle 10 TRAINER_SIDNEY, 0, NULL, 	EverGrandeCity_SidneysRoom_EventScript_Defeated
+	trainerbattle 10 TRAINER_SIDNEY, 0, NULL, EverGrandeCity_SidneysRoom_Text_Defeat
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
 	setvar VAR_0x8005, 4|2
 	special DoSpecialTrainerBattle
@@ -80,7 +81,7 @@ EGC_FollowerSidney::
 EGC_FollowerSidneyRematch::
 	call RyuFollowerAllySelector
 	special SavePlayerParty
-	trainerbattle 10 TRAINER_SIDNEY_REMATCH, 0, NULL, 	EverGrandeCity_SidneysRoom_EventScript_Defeated
+	trainerbattle 10 TRAINER_SIDNEY_REMATCH, 0, NULL, EverGrandeCity_SidneysRoom_Text_Defeat
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
 	setvar VAR_0x8005, 4|2
 	special DoSpecialTrainerBattle
@@ -106,6 +107,9 @@ EverGrandeCity_SidneysRoom_EventScript_Defeated:: @ 8227F95
 	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	release
 	end
+
+EGC_SidneyPrebattle:
+	.string "Testing first NULL$"
 
 EverGrandeCity_SidneysRoom_Text_PreBattleSpeech: @ 8227FA7
 	.string "Welcome, challenger!\n"

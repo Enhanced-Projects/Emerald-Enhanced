@@ -203,7 +203,7 @@
             "y": 56
         },
         {
-            "elevation": 0,
+            "elevation": 3,
             "script": "R110_LanaSetup",
             "type": "trigger",
             "var": "VAR_RYU_DS_LANA_STAGE",
@@ -212,7 +212,7 @@
             "y": 67
         },
         {
-            "elevation": 0,
+            "elevation": 3,
             "script": "r110_SetUpTrickHouseLanaEvent2",
             "type": "trigger",
             "var": "VAR_RYU_DS_LANA_STAGE",

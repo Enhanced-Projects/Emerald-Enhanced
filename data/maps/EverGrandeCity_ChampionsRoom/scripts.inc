@@ -77,7 +77,6 @@ EverGrandeCity_ChampionsRoom_EventScript_Defeated:: @ 8228A61
 	setmetatile 6, 1, METATILE_EliteFour_OpenDoorChampion_Frame, 0
 	setmetatile 6, 2, METATILE_EliteFour_OpenDoorChampion_Opening, 0
 	special DrawWholeMapView
-	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	msgbox EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	closemessage
 	playse SE_DOOR
