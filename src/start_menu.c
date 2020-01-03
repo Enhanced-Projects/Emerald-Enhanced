@@ -206,7 +206,7 @@ static void BuildLinkModeStartMenu(void);
 static void BuildUnionRoomStartMenu(void);
 static void BuildBattlePikeStartMenu(void);
 static void BuildBattlePyramidStartMenu(void);
-static void BuildMultiBattleRoomStartMenu(void);
+static void BuildMultiPartnerRoomStartMenu(void);
 static void ShowSafariBallsWindow(void);
 static void ShowPyramidFloorWindow(void);
 static void RemoveExtraStartMenuWindows(void);
@@ -261,9 +261,9 @@ static void BuildStartMenuActions(void)
     {
         BuildBattlePyramidStartMenu();
     }
-    else if (InMultiBattleRoom())
+    else if (InMultiPartnerRoom())
     {
-        BuildMultiBattleRoomStartMenu();
+        BuildMultiPartnerRoomStartMenu();
     }
     else
     {
@@ -365,7 +365,7 @@ static void BuildBattlePyramidStartMenu(void)
     AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
-static void BuildMultiBattleRoomStartMenu(void)
+static void BuildMultiPartnerRoomStartMenu(void)
 {
     AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_PLAYER);
