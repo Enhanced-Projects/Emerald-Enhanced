@@ -939,13 +939,12 @@ RyuDebug_Utility1::
 	buffernumberstring 0, VAR_RYU_DS_LANA_STAGE
 	msgbox RDB_Readout
 	closemessage
-	setvar VAR_RYU_DS_LANA_STAGE, 90
 	@setflag FLAG_RYU_NIGHT
 	release
 	end
 
 RDB_Readout:
-	.string "You're on stage {STR_VAR_1} of Lana quest.\n variable will be set to 90.$"
+	.string "You're on stage {STR_VAR_1} of Lana quest.$"
 
 AltScaleOn::
 	msgbox ScaleAltMsg

@@ -356,3 +356,30 @@ Route103_Text_RouteSign: @ 81ECC1A
 	.string "ROUTE 103\n"
 	.string "{DOWN_ARROW} OLDALE TOWN$"
 
+
+@==================================================================================================DEBUG
+
+r103_OverlordBattle::
+	setflag FLAG_RYU_MAX_SCALE
+	trainerbattle_single TRAINER_OVERLORD_RYU, r103_ryu_intro, r103_ryu_defeat, r103_CheckBattleResult
+	release
+	end
+
+r103_CheckBattleResult::
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_ne ryu_end
+	cleartrainerflag TRAINER_OVERLORD_RYU
+	msgbox r103_lostToOverlordRyu
+	release
+	end
+
+r103_lostToOverlordRyu:
+	.string "You got rekt m8. I would say try\nagain later, but the result will\lbe the same.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Overlord Ryu\ngives you the finger.)$"
+
+r103_ryu_intro:
+	.string "Witness the power of a true\nOverlord. I pity you.$"
+
+r103_ryu_defeat:
+	.string "uwotm8$"
+

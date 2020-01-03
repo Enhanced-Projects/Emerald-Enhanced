@@ -33,6 +33,8 @@
 #include "constants/species.h"
 #include "constants/weather.h"
 
+extern const u8 gText_OverlordRyuBossNameBuffer[];
+extern const u8 gText_PokemonStringBuffer[];
 // rom const data
 
 static const u8 sAbilitiesAffectedByMoldBreaker[] =
@@ -1336,6 +1338,13 @@ u8 DoFieldEndTurnEffects(void)
     return (gBattleMainFunc != BattleTurnPassed);
 }
 
+void Ryu_LoadLegendaryOpponentName(void)
+{
+    StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
+    StringCopy(gStringVar2, gText_PokemonStringBuffer);
+}
+
+
 enum
 {
     ENDTURN_INGRAIN,
@@ -1369,7 +1378,9 @@ enum
 	ENDTURN_ELECTRIFY,
 	ENDTURN_POWDER,
 	ENDTURN_THROAT_CHOP,
-	ENDTURN_BATTLER_COUNT
+    ENDTURN_BOSSMODEHEAL,
+    ENDTURN_BOSSMODERAISESTAT,
+	ENDTURN_BATTLER_COUNT,
 };
 
 u8 DoBattlerEndTurnEffects(void)
@@ -1828,6 +1839,39 @@ u8 DoBattlerEndTurnEffects(void)
             }
             gBattleStruct->turnEffectsTracker++;
             break;
+        case ENDTURN_BOSSMODEHEAL:
+            {
+            if ((FlagGet(FLAG_RYU_MAX_SCALE) == 1) && !BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK) && gBattleMons[gActiveBattler].hp != 0 && ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
+            {
+                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 10;
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                gBattleMoveDamage *= -1;
+                Ryu_LoadLegendaryOpponentName();
+                BattleScriptExecute(BattleScript_BossModeHeal);
+                effect++;
+            }
+            gBattleStruct->turnEffectsTracker++;
+            break;
+            }
+        case ENDTURN_BOSSMODERAISESTAT:
+        {
+            if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1))
+                {
+                    u8 stat = (Random() % 4);
+                    Ryu_LoadLegendaryOpponentName();
+                    if (gBattleMons[gBattlerAttacker].statStages[stat] < 0xC)
+                        {
+                            gBattleMons[gBattlerAttacker].statStages[stat]++;
+                            gBattleScripting.animArg1 = 0x11;
+                            gBattleScripting.animArg2 = 0;
+                            BattleScriptPushCursorAndCallback(BattleScript_BossModeStatBoostActivates);
+                            effect++;
+                        }
+                }
+            gBattleStruct->turnEffectsTracker++;
+            break;
+        }
         case ENDTURN_BATTLER_COUNT:  // done
             gBattleStruct->turnEffectsTracker = 0;
             gBattleStruct->turnEffectsBattlerId++;
@@ -5972,6 +6016,19 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     dmg = ApplyModifier(finalModifier, dmg);
     if (dmg == 0)
         dmg = 1;
+
+    if (FlagGet(FLAG_RYU_MAX_SCALE) == 1)
+        if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
+        {
+            MulModifier(&finalModifier, UQ_4_12(0.2));
+        }
+
+    if (FlagGet(FLAG_RYU_MAX_SCALE) == 1)
+        if (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT)
+        {
+            MulModifier(&finalModifier, UQ_4_12(1.2));
+        }
+        
 
     return dmg;
 }

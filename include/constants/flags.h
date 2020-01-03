@@ -700,7 +700,7 @@
 #define FLAG_RYU_DS_MALE_MOM_MET  0x294 // Unused Flag
 #define FLAG_RYU_COLLISION_OFF  0x295 // Unused Flag
 #define FLAG_RYU_MINNIE_GAME_CLEAR  0x296 // Unused Flag
-#define FLAG_UNUSED_0x297  0x297 // Unused Flag
+#define FLAG_RYU_MAX_SCALE  0x297 // Unused Flag
 #define FLAG_UNUSED_0x298  0x298 // Unused Flag
 #define FLAG_UNUSED_0x299  0x299 // Unused Flag
 #define FLAG_UNUSED_0x29A  0x29A // Unused Flag

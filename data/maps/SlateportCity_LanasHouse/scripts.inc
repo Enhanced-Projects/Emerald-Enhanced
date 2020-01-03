@@ -18,7 +18,7 @@ LH_AltLeafStoryTrigger::
 LH_Intro::
 	lock
 	compare VAR_RYU_DS_LANA_STAGE, 2
-	goto_if_eq ryu_end
+	goto_if_ge ryu_end
 	setvar VAR_RYU_DS_LANA_STAGE, 1
 	applymovement 1, LH_bro_move
 	waitmovement 0
@@ -67,7 +67,6 @@ LH_Afterstory::
 	
 LH_alreadytalked::
 	goto_if_set FLAG_SYS_GAME_CLEAR, LH_EventStart
-	drawheadshot HEAD_LANA
 	msgbox LH_finished MSGBOX_SIGN
 	closemessage
 	removecutscenesprites
@@ -77,9 +76,9 @@ LH_alreadytalked::
 	end
 	
 LH_EventStart::
-	drawheadshot HEAD_LANA
 	call_if_set FLAG_RYU_PLAYER_HELPING_AQUA, LH_AquaMember
 	msgbox LH_BeginQuest MSGBOX_DEFAULT
+	closemessage
 	removecutscenesprites
 	applymovement EVENT_OBJ_ID_PLAYER, LH_PlayerShoved
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark

@@ -2934,7 +2934,7 @@ bool8 sub_80688F8(u8 caseId, u8 battlerId)
 static u16 GetDeoxysStat(struct Pokemon *mon, s32 statId)
 {
     s32 ivVal, evVal;
-    u16 statValue = 0;
+    u32 statValue = 0;
     u8 nature;
 
     if (gBattleTypeFlags & BATTLE_TYPE_20 || GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_DEOXYS)
@@ -5820,23 +5820,20 @@ u8 GetTrainerEncounterMusicId(u16 trainerOpponentId)
         return TRAINER_ENCOUNTER_MUSIC(trainerOpponentId);
 }
 
-u16 ModifyStatByNature(u8 nature, u16 n, u8 statIndex)
+u32 ModifyStatByNature(u8 nature, u32 n, u8 statIndex)
 {
     if (statIndex < 1 || statIndex > 5)
     {
         // Should just be "return n", but it wouldn't match without this.
-        u16 retVal = n;
-        retVal++;
-        retVal--;
-        return retVal;
+        return n;
     }
 
     switch (gNatureStatTable[nature][statIndex - 1])
     {
     case 1:
-        return (u16)(n * 110) / 100; // NOTE: will overflow for n > 595 because the intermediate value is cast to u16 before the division. Fix by removing (u16) cast
+        return (n * 110) / 100; // NOTE: will overflow for n > 595 because the intermediate value is cast to u16 before the division. Fix by removing (u16) cast
     case -1:
-        return (u16)(n * 90) / 100;  // NOTE: will overflow for n > 728, see above
+        return (n * 90) / 100;  // NOTE: will overflow for n > 728, see above
     }
 
     return n;
@@ -6376,6 +6373,8 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_PIKE_QUEEN:
         case TRAINER_CLASS_PYRAMID_KING:
             return MUS_VS_FRONT;
+        case TRAINER_CLASS_OVERLORD:
+            return MUS_RG_VS_DEN;
         default:
             return MUS_BATTLE20;
         }

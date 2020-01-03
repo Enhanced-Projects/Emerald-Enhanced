@@ -5775,6 +5775,17 @@ BattleScript_AquaRingHeal::
 	printstring STRINGID_AQUARINGHEAL
 	goto BattleScript_TurnHeal
 
+BattleScript_BossModeHeal::
+	playanimation BS_ATTACKER, B_ANIM_INGRAIN_HEAL, NULL
+	printstring STRINGID_BOSSMODEHEAL
+	goto BattleScript_TurnHeal
+
+BattleScript_BossModeStatBoostActivates::
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_BOSSRAISEDSTAT
+	waitmessage 0x40
+	end3
+
 BattleScript_PrintMonIsRooted::
 	pause 0x20
 	printstring STRINGID_PKMNANCHOREDITSELF

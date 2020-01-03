@@ -1836,6 +1836,9 @@ int RyuChooseTrainerLevel(void)
     u8 gymlevel = (Random() % ((sGymRange[badge][1] - sGymRange[badge][0])) + sGymRange[badge][0]);
     //sRange is the array declared above, [badge] is the index, [0] and [1] are the first and second values of the index listed.
     //To get a range of random values, do (array[index][second value] minus array[index][first value]) plus array[index][first value]
+    if (FlagGet(FLAG_RYU_MAX_SCALE) == 1)
+        return 125;
+    
     if (FlagGet(FLAG_RYU_ALTERNATE_SCALE) == 1)
     {
         return gymlevel;
@@ -1939,6 +1942,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
                 }
+                SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].ability);
                 break;
             }
             case F_TRAINER_PARTY_HELD_ITEM:
@@ -1981,9 +1985,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 {
                     CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 }
-                
-                break;
-
+                SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].ability);
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
 
                 for (j = 0; j < MAX_MON_MOVES; j++)

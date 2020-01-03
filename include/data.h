@@ -35,7 +35,7 @@ struct TrainerMonNoItemCustomMoves
     u16 iv;
     u8 lvl;
     u16 species;
-    bool8 ability;
+    u8 ability;
     u16 moves[4];
 };
 
@@ -45,7 +45,7 @@ struct TrainerMonItemCustomMoves
     u8 lvl;
     u16 species;
     u16 heldItem;
-    bool8 ability;
+    u8 ability;
     u16 moves[4];
 };
 

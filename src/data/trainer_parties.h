@@ -13090,17 +13090,55 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Gabrielle5[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Thalia2[] = {
-    {
-    .iv = 10,
-    .lvl = 34,
-    .species = SPECIES_WAILMER,
-    },
-    {
-    .iv = 10,
-    .lvl = 34,
-    .species = SPECIES_HORSEA,
-    }
+static const struct TrainerMonItemCustomMoves sParty_OverlordRyu[] = {
+	{
+	.iv = 255,
+	.lvl = 125,
+	.species = SPECIES_PRIMARINA,
+	.heldItem = ITEM_LEFTOVERS,
+	.ability = 2,
+	.moves = MOVE_HYPER_VOICE, MOVE_SHADOW_BALL, MOVE_ICE_BEAM, MOVE_MOONBLAST
+	},
+	{
+	.iv = 255,
+	.lvl = 125,
+	.species = SPECIES_WEAVILE,
+	.heldItem = ITEM_SCOPE_LENS,
+	.ability = 0,
+	.moves = MOVE_ICE_SHARD, MOVE_NIGHT_SLASH, MOVE_METAL_CLAW, MOVE_CLOSE_COMBAT
+	},
+	{
+	.iv = 255,
+	.lvl = 125,
+	.species = SPECIES_RHYPERIOR,
+	.heldItem = ITEM_LIFE_ORB,
+	.ability = 2,
+	.moves = MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_HORN_DRILL, MOVE_IRON_HEAD
+	},
+	{
+	.iv = 255,
+	.lvl = 125,
+	.species = SPECIES_ARIADOS,
+	.heldItem = ITEM_EXPERT_BELT,
+	.ability = 2,
+	.moves = MOVE_PIN_MISSILE, MOVE_SHADOW_SNEAK, MOVE_SUCKER_PUNCH, MOVE_POISON_FANG
+	},
+	{
+	.iv = 255,
+	.lvl = 125,
+	.species = SPECIES_MUDSDALE,
+	.heldItem = ITEM_LEFTOVERS,
+	.ability = 1,
+	.moves = MOVE_HIGH_HORSEPOWER, MOVE_BIDE, MOVE_TRIPLE_KICK, MOVE_EARTHQUAKE
+	},
+	{
+	.iv = 255,
+	.lvl = 125,
+	.species = SPECIES_MAWILE,
+	.heldItem = ITEM_EXPERT_BELT,
+	.ability = 0,
+	.moves = MOVE_PLAY_ROUGH, MOVE_POWER_UP_PUNCH, MOVE_CRUNCH, MOVE_IRON_HEAD
+	}
 };
 
 static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch[] = {

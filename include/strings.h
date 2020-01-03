@@ -3245,4 +3245,7 @@ extern const u8 gText_RyuDevSubEnableSaveView[];
 extern const u8 gText_RyuDevSubViewTempVars[];
 extern const u8 gText_RyuDevSubUtility1[];
 
+extern const u8 gText_OverlordRyuBossNameBuffer[];
+extern const u8 gText_PokemonStringBuffer[];
+
 #endif // GUARD_STRINGS_H

@@ -2722,9 +2722,6 @@ static void PlayerHandleCmd23(void)
 static void PlayerHandleHealthBarUpdate(void)
 {
     s16 hpVal;
-    s32 damage;
-    u32 tempMaxHp;
-    u32 tempCurHp;
 
     LoadBattleBarGfx(0);
     hpVal = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
@@ -2737,24 +2734,7 @@ static void PlayerHandleHealthBarUpdate(void)
         u32 maxHP = GetMonData(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], MON_DATA_MAX_HP);
         u32 curHP = GetMonData(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], MON_DATA_HP);
 
-        tempCurHp = curHP;
-        tempMaxHp = maxHP;
-        tempCurHp /= 8;
-        tempMaxHp /= 8;
-        damage /= 8;
-
-        //mgba_printf(MGBA_LOG_INFO, "max: %d, cur: %d, dmg: %d", tempMaxHp, tempCurHp, damage);
-        
-        if (gBattleMoveDamage > (maxHP * 2))
-        {
-            SetBattleBarStruct(gActiveBattler, gHealthboxSpriteIds[gActiveBattler], maxHP, 0, hpVal);
-            //mgba_printf(MGBA_LOG_INFO, "Instant Death!");
-        }
-        else
-        {
-            SetBattleBarStruct(gActiveBattler, gHealthboxSpriteIds[gActiveBattler], tempMaxHp, tempCurHp, damage);
-            //mgba_printf(MGBA_LOG_INFO, "Just Damage.");
-        }
+        SetBattleBarStruct(gActiveBattler, gHealthboxSpriteIds[gActiveBattler], maxHP, curHP, hpVal);
     }
     else
     {

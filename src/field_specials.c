@@ -6073,6 +6073,7 @@ bool8 ScrCmd_drawheadshot(struct ScriptContext *ctx)
             {
                 LoadSpriteSheet(&leafHeadshotSpriteSheet);
                 LoadSpritePalette(&leafScenePalette);
+                cutsceneSpriteId1 = 1;
                 cutsceneSpriteId1 = (CreateSprite(&leafSceneSpriteTemplate, 220, 83, 1));
                 return FALSE;
             }
@@ -6120,14 +6121,14 @@ bool8 ScrCmd_removecutscenesprites(struct ScriptContext *ctx)
 {
     if (!cutsceneSpriteId1 == 0)
     {
-        DestroySpriteAndFreeResources(&gSprites[cutsceneSpriteId1]);
+        DestroySprite(&gSprites[cutsceneSpriteId1]);
         cutsceneSpriteId1 = 0;
         return FALSE;
     }
 
     if (!cutsceneSpriteId2 == 0)
     {
-        DestroySpriteAndFreeResources(&gSprites[cutsceneSpriteId2]);
+        DestroySprite(&gSprites[cutsceneSpriteId2]);
         cutsceneSpriteId2 = 0;
         return FALSE;
     }

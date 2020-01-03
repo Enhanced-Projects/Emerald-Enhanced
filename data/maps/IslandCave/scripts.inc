@@ -14,7 +14,7 @@ IC_CaveCheck::
 	compare VAR_RYU_DS_LANA_STAGE, 55
 	goto_if_eq IC_Setup
 	compare VAR_RYU_DS_LANA_STAGE, 65
-	goto_if_eq ryu_end
+	goto_if_ge ryu_end
 	msgbox r120_notReady MSGBOX_DEFAULT
 	applymovement EVENT_OBJ_ID_PLAYER, IC_Exit
 	waitmovement 0
@@ -64,6 +64,7 @@ IC_LeafEvent2::
 	waitmovement 3
 	playse SE_KAIDAN @Stairs
 	removeobject 3
+	setobjectxy 2, 16, 32
 	waitse
 	msgbox IC_PlayerMsg MSGBOX_DEFAULT
 	setflag FLAG_SYS_BRAILLE_REGICE_COMPLETED
@@ -99,7 +100,7 @@ IC_LeafEvent::
 	waitmovement 2
 	delay 5
 	removeobject 2
-	setflag FLAG_HIDE_IC_LANA
+	setobjectxy 2, 16, 32
 	msgbox IC_LeafMsg2 MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_RYU_DS_LANA_STAGE, 58

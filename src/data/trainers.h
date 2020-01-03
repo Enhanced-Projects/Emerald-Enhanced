@@ -12659,19 +12659,19 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Gabrielle5},
     },
 
-    [TRAINER_EMPTY_17] =
+    [TRAINER_OVERLORD_RYU] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_BEAUTY,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_BEAUTY,
-        .trainerName = _("THALIA"),
-        .items = {},
-        .battleStyle = BS_SHIFT,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_OVERLORD,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
+        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerName = _("Ryu"),
+        .items = {ITEM_X_SP_ATK, ITEM_X_ATTACK, ITEM_X_SPEED, ITEM_X_ATTACK},
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Thalia2),
-        .party = {.NoItemDefaultMoves = sParty_Thalia2},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_HP_AWARE | AI_SCRIPT_PREFER_STRONGEST_MOVE | AI_SCRIPT_RISKY | AI_SCRIPT_TRY_TO_FAINT,
+        .partySize = ARRAY_COUNT(sParty_OverlordRyu),
+        .party = {.ItemCustomMoves = sParty_OverlordRyu},
     },
 
     [TRAINER_PHOEBE_REMATCH] =

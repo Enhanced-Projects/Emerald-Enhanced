@@ -286,7 +286,7 @@
             "elevation": 3,
             "script": "r120_AT_SECOND_VISIT_SETUP",
             "type": "trigger",
-            "var": "VAR_TEMP_0",
+            "var": "VAR_TEMP_B",
             "var_value": "0",
             "x": 7,
             "y": 57
@@ -315,7 +315,7 @@
             "type": "trigger",
             "var": "VAR_RYU_DS_LANA_STAGE",
             "var_value": "65",
-            "x": 13,
+            "x": 12,
             "y": 64
         }
     ],

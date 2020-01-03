@@ -149,6 +149,8 @@ NewMauville_Inside_EventScript_RedButton:: @ 8237725
 	msgbox NewMauville_Inside_Text_SteppedOnSwitchGeneratorStopped, MSGBOX_DEFAULT
 	call NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
 	setvar VAR_NEW_MAUVILLE_STATE, 2
+	compare VAR_RYU_DS_LANA_STAGE, 17
+	call_if_eq NM_Leaf_Event
 	releaseall
 	end
 
@@ -310,8 +312,6 @@ NM_Leaf_Trigger::
 NM_Leaf_Event::
 	lock
 	drawheadshot HEAD_LANA
-	compare VAR_NEW_MAUVILLE_STATE, 2
-	goto_if_ne NM_LeafNoGenerator
 	msgbox NM_LanaElipsis MSGBOX_DEFAULT
 	closemessage
 	removecutscenesprites

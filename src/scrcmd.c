@@ -1701,7 +1701,7 @@ bool8 ScrCmd_giveegg(struct ScriptContext *ctx)
 
 bool8 ScrCmd_setmonmove(struct ScriptContext *ctx)
 {
-    u16 partyIndex = (VarGet(ScriptReadByte(ctx)));
+    u16 partyIndex = (VarGet(ScriptReadHalfword(ctx)));
     u16 slot = (VarGet(ScriptReadHalfword(ctx)));
     u16 move = (VarGet(ScriptReadHalfword(ctx)));
 

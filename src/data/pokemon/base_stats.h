@@ -7647,11 +7647,11 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_MAWILE] =
     {
         .baseHP        = 50,
-        .baseAttack    = 85,
-        .baseDefense   = 85,
+        .baseAttack    = 105,
+        .baseDefense   = 125,
         .baseSpeed     = 50,
         .baseSpAttack  = 55,
-        .baseSpDefense = 55,
+        .baseSpDefense = 95,
         .type1 = TYPE_STEEL,
         .type2 = TYPE_FAIRY,
         .catchRate = 45,
@@ -7666,7 +7666,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FAIRY,
-        .abilities = {ABILITY_HYPER_CUTTER, ABILITY_INTIMIDATE},
+        .abilities = {ABILITY_HUGE_POWER, ABILITY_STRONG_JAW},
         .abilityHidden = ABILITY_SHEER_FORCE,
         .bodyColor = BODY_COLOR_BLACK,
     },

@@ -100,6 +100,7 @@ DR_SetStage::
 	addobject 2
 	clearflag FLAG_HIDE_DR_LANA
 	setvar VAR_RYU_DS_LANA_STAGE, 46
+	addobject 2
 	goto DR_LeafEvent
 	
 	
@@ -142,8 +143,11 @@ DR_LeafEvent::
 DR_LeafCheck2::
 	addobject 4
 	removeobject 2
+	special DrawWholeMapView
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
 	setvar VAR_RYU_DS_LANA_STAGE, 49
+	setobjectxy 2, 16, 32
+	clearflag FLAG_HIDE_DR_LANA
 	warp MAP_DESERT_RUINS, 255, 8, 11
 	release
 	end
@@ -173,6 +177,7 @@ DR_LeafEvent2::
 	waitmovement 4
 	playse SE_KAIDAN @Stairs
 	removeobject 4
+	setflag FLAG_HIDE_DR_LANA
 	waitse
 	setvar VAR_RYU_DS_LANA_STAGE, 55
 	setflag FLAG_HIDE_DR_LANA
