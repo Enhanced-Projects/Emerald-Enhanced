@@ -17,6 +17,7 @@ LT_CheckRivalGiftStatus::
 	.2byte 0
 
 LT_SetRivalPosForReGift::
+	setvar VAR_TEMP_0, 1
 	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
 	goto_if_set FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_end
 	goto_if_unset FLAG_RYU_INTERACTED_LAVARIDGE, ryu_end
