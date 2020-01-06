@@ -13,16 +13,30 @@ LavaridgeTown_OnTransition: @ 81EA4DE
 	end
 
 LT_CheckRivalGiftStatus::
-	map_script_2 VAR_TEMP_0, 0, LT_SetRivalPosForReGift
+	map_script_2 VAR_TEMP_D, 0, LT_SetRivalPosForReGift
 	.2byte 0
 
 LT_SetRivalPosForReGift::
-	setvar VAR_TEMP_0, 1
+	setvar VAR_TEMP_D, 1
+	checkplayergender
+	compare VAR_RESULT, MALE
+	call_if_eq LT_SetRivalFemale
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	call_if_eq LT_SetRivalMale
 	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
 	goto_if_set FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_end
 	goto_if_unset FLAG_RYU_INTERACTED_LAVARIDGE, ryu_end
 	setobjectxy 7, 9, 10
 	end
+
+LT_SetRivalFemale::
+	setvar EVENT_OBJ_GFX_VAR_3, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL
+	return
+
+LT_SetRivalMale::
+	setvar EVENT_OBJ_GFX_VAR_3, EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL
+	return
 
 LavaridgeTown_EventScript_ClearLavaridgeWhiteOut:: @ 81EA514
 	clearflag FLAG_WHITEOUT_TO_LAVARIDGE
@@ -210,11 +224,17 @@ LavaridgeTown_Text_HerbShopSign: @ 81EB1CB
 @=============================================================================================RIVAL STUFF
 LT_RivalEnter::
 	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	playse SE_PIN
 	goto_if_set FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_end
+	playse SE_PIN
 	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
+	playse SE_PIN
 	goto_if_set FLAG_TEMP_A, ryu_end
+	playse SE_PIN
 	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
+	playse SE_PIN
 	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	playse SE_PIN
 	checkplayergender
 	compare VAR_RESULT, FEMALE
 	goto_if_eq lrt_malerivalenter
@@ -478,7 +498,6 @@ LT_MaleGivePokeExplanation: @ 81EA897
 	.string "you soon!$"
 	
 LT_RivalLeavingPC:
-	walk_down
 	walk_down
 	walk_down
 	walk_down

@@ -87,7 +87,7 @@
             "y": 3
         },
         {
-            "elevation": 0,
+            "elevation": 3,
             "script": "LT_RivalEnter2",
             "type": "trigger",
             "var": "VAR_TEMP_0",
@@ -96,7 +96,7 @@
             "y": 13
         },
         {
-            "elevation": 0,
+            "elevation": 3,
             "script": "LT_RivalEnter",
             "type": "trigger",
             "var": "VAR_TEMP_0",
@@ -105,7 +105,7 @@
             "y": 13
         },
         {
-            "elevation": 0,
+            "elevation": 3,
             "script": "LT_RivalEnter3",
             "type": "trigger",
             "var": "VAR_TEMP_0",
@@ -169,8 +169,8 @@
             "script": "LavaridgeTown_EventScript_Twin",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 14,
-            "y": 10
+            "x": 18,
+            "y": 9
         },
         {
             "elevation": 3,
@@ -200,7 +200,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_LAVARIDGE_TOWN_RIVAL_ON_BIKE",
+            "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
             "graphics_id": "EVENT_OBJ_GFX_VAR_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -208,12 +208,12 @@
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 6,
-            "y": 16
+            "x": 9,
+            "y": 6
         },
         {
             "elevation": 0,
-            "flag": "FLAG_HIDE_LAVARIDGE_TOWN_RIVAL",
+            "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
             "graphics_id": "EVENT_OBJ_GFX_VAR_0",
             "movement_range_x": 0,
             "movement_range_y": 0,
