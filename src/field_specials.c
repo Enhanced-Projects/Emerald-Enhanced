@@ -73,6 +73,7 @@
 #include "constants/trainers.h"
 #include "pokedex.h"
 #include "money.h"
+#include "mgba.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -6195,3 +6196,15 @@ bool8 RyuFollowerToTrainerID(void)
             }
 
     }
+
+void FillTheDex(void)
+{
+    u16 i = 0;
+    u16 idno = 644;
+    for (i = 0; i < idno; i++)
+    {
+                GetSetPokedexFlag(i, FLAG_SET_CAUGHT);
+                GetSetPokedexFlag(i, FLAG_SET_SEEN);
+    }
+    
+}

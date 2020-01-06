@@ -413,7 +413,7 @@ static void WaitForVBlank(void)
 {
     gMain.intrCheck &= ~INTR_FLAG_VBLANK;
     VBlankIntrWait();
-    //mgba_open();
+    mgba_open();
 }
 
 void SetTrainerHillVBlankCounter(u32 *counter)

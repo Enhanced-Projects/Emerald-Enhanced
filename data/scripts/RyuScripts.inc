@@ -939,6 +939,7 @@ RyuDebug_Utility1::
 	buffernumberstring 0, VAR_RYU_DS_LANA_STAGE
 	msgbox RDB_Readout
 	closemessage
+	special FillTheDex
 	@setflag FLAG_RYU_NIGHT
 	release
 	end
