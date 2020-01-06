@@ -17,7 +17,7 @@ PacifidlogTown_House1_EventScript_Woman:: @ 8203666
 
 PacifidlogTown_House1_Text_RegiStory: @ 820366F
 	.string "In the HOENN region, there are three\n"
-	.string "POKéMON that represent the power of\l"
+	.string "Pokémon that represent the power of\l"
 	.string "rock, ice, and steel.\p"
 	.string "Each of them is said to hide away deep\n"
 	.string "inside caves.\p"

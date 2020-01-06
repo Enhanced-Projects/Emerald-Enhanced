@@ -164,7 +164,7 @@ JaggedPass_Text_EricDefeat: @ 82308FF
 	.string "Losing left me bitter!$"
 
 JaggedPass_Text_EricPostBattle: @ 8230916
-	.string "Yes, I did lose at POKéMON…\p"
+	.string "Yes, I did lose at Pokémon…\p"
 	.string "But, when it comes to the love of\n"
 	.string "the mountains, I have you beat!$"
 
@@ -187,7 +187,7 @@ JaggedPass_Text_DianaRegister: @ 8230A2C
 
 JaggedPass_Text_DianaRematchIntro: @ 8230A76
 	.string "Picnics are fun wherever you go.\n"
-	.string "Just like POKéMON!$"
+	.string "Just like Pokémon!$"
 
 JaggedPass_Text_DianaRematchDefeat: @ 8230AAA
 	.string "I only lost because the ground is\n"

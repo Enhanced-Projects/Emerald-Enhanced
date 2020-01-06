@@ -85,6 +85,33 @@
             "var_value": "0",
             "x": 6,
             "y": 3
+        },
+        {
+            "elevation": 0,
+            "script": "LT_RivalEnter2",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 8,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "script": "LT_RivalEnter",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 9,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "script": "LT_RivalEnter3",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 10,
+            "y": 13
         }
     ],
     "id": "MAP_LAVARIDGE_TOWN",
@@ -142,8 +169,8 @@
             "script": "LavaridgeTown_EventScript_Twin",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 10,
-            "y": 13
+            "x": 14,
+            "y": 10
         },
         {
             "elevation": 3,

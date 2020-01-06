@@ -213,14 +213,14 @@ Route119_WeatherInstitute_2F_EventScript_WeatherScientist:: @ 827018B
 
 Route119_WeatherInstitute_2F_Text_Grunt2Intro: @ 827019C
 	.string "The INSTITUTE created a type of\n"
-	.string "POKéMON that has something to do with\l"
+	.string "Pokémon that has something to do with\l"
 	.string "the weather. We're here to take them!$"
 
 Route119_WeatherInstitute_2F_Text_Grunt2Defeat: @ 8270208
 	.string "Our plan's being spoiled by a kid?$"
 
 Route119_WeatherInstitute_2F_Text_Grunt2PostBattle: @ 827022B
-	.string "If the POKéMON they made here can\n"
+	.string "If the Pokémon they made here can\n"
 	.string "control the weather freely, then we of\l"
 	.string "TEAM AQUA definitely need it!$"
 
@@ -239,12 +239,12 @@ Route119_WeatherInstitute_2F_Text_Grunt3PostBattle: @ 82702DA
 
 Route119_WeatherInstitute_2F_Text_Grunt5Intro: @ 8270335
 	.string "Don't tell me you're looking for that\n"
-	.string "weather POKéMON, too?\p"
+	.string "weather Pokémon, too?\p"
 	.string "That's a no-no!\n"
 	.string "We were here to get it first!$"
 
 Route119_WeatherInstitute_2F_Text_Grunt5Defeat: @ 827039F
-	.string "Oh, will you look at my POKéMON?$"
+	.string "Oh, will you look at my Pokémon?$"
 
 Route119_WeatherInstitute_2F_Text_Grunt5PostBattle: @ 82703C0
 	.string "Humph, so what?\n"
@@ -289,18 +289,18 @@ Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon: @ 8270650
 	.string "Thanks!\n"
 	.string "Thanks to you, we're safe!\p"
 	.string "It might be an odd way of thanking you,\n"
-	.string "but take this POKéMON.$"
+	.string "but take this Pokémon.$"
 
 @ Unused
 Route119_WeatherInstitute_2F_Text_NoRoomForPokemon: @ 82706B2
 	.string "Hm? You don't seem to have any room\n"
-	.string "for this POKéMON.$"
+	.string "for this Pokémon.$"
 
 Route119_WeatherInstitute_2F_Text_PlayerReceivedCastform: @ 82706E8
 	.string "{PLAYER} received CASTFORM!$"
 
 Route119_WeatherInstitute_2F_Text_PokemonChangesWithWeather: @ 82706FE
-	.string "That POKéMON changes shape according\n"
+	.string "That Pokémon changes shape according\n"
 	.string "to the weather conditions.\p"
 	.string "There're plenty of them in the\n"
 	.string "INSTITUTE--go ahead and take it.$"

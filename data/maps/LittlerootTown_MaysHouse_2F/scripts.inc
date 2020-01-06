@@ -336,7 +336,7 @@ LRT_DawnIntroductionScene::
 	
 GI_DawnIntro:
 	.string "{RIVAL}{COLOR LIGHT_RED}{SHADOW RED}: Oh? Who are you, and why\nare you in my room?\pOh, you're {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, Norman's son.\pI meant to say hi to you at some\npoint. I've been looking for a\lfriend to run around with when\ldoing tasks for my dad, Prof\lBirch.\pIt gets lonely at times.\p"
-    .string "So, did you want me to catch you\la pokémon?\pI can go grab you one\nfrom Route 101.\pOh! Shoot! I was supposed to go\nstudy pokémon behaviors at Route 103!!\pSorry, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, I have to run!$"
+    .string "So, did you want me to catch you\la Pokémon?\pI can go grab you one\nfrom Route 101.\pOh! Shoot! I was supposed to go\nstudy Pokémon behaviors at Route 103!!\pSorry, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, I have to run!$"
 	
 GI_DawnMetMsg:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN} (She seems like the outgoing sort.\p Not too shy, either.\n You can see yourself being good\l friends with her.)$"

@@ -320,7 +320,7 @@ MVG_LANA_INTRO:
     .string "keep up...$"
 	
 MVG_LANETTE_INTRO:
-    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}Oh, please. This guy\ndoesn't understand the potential\lof electric pokémon!$"
+    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}Oh, please. This guy\ndoesn't understand the potential\lof electric Pokémon!$"
 	
 MVG_PreBattleText:
 	.string "Wattson: Ah! Two on one!\n"
@@ -350,7 +350,7 @@ MVG_BrendanGymBattleComplete:
 	
 MVG_LanetteGymBattleComplete:
     .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}Ha! That's how you use\n"
-    .string "electric pokémon to their full\lpotential.$"
+    .string "electric Pokémon to their full\lpotential.$"
 
 MVG_PartnerEnter:
 	walk_up
@@ -558,9 +558,9 @@ MauvilleCity_Gym_Text_GymGuideAdvice: @ 820E17F
 	.string "Hey, how's it going, CHAMPION-\n"
 	.string "bound {PLAYER}?\p"
 	.string "WATTSON, the LEADER of MAUVILLE\n"
-	.string "GYM, uses ELECTRIC-type POKéMON.\p"
+	.string "GYM, uses ELECTRIC-type Pokémon.\p"
 	.string "If you challenge him with WATER-type\n"
-	.string "POKéMON, he'll zap them! Bzzt!\p"
+	.string "Pokémon, he'll zap them! Bzzt!\p"
 	.string "And, he's put in switch-controlled\n"
 	.string "doors all over his GYM! Eccentric!\p"
 	.string "Hey, go for it!$"
@@ -578,7 +578,7 @@ MauvilleCity_Gym_Text_KirkDefeat: @ 820E2FC
 	.string "over-driven electric, man!$"
 
 MauvilleCity_Gym_Text_KirkPostBattle: @ 820E336
-	.string "POKéMON and rock, it's all about heart,\n"
+	.string "Pokémon and rock, it's all about heart,\n"
 	.string "whoa-yeah!$"
 
 MauvilleCity_Gym_Text_ShawnPreBattle: @ 820E369
@@ -606,7 +606,7 @@ MauvilleCity_Gym_Text_BenPostBattle: @ 820E47E
 	.string "little traps with switches.$"
 
 MauvilleCity_Gym_Text_VivianPreBattle: @ 820E4BB
-	.string "With my charm and my POKéMON's moves,\n"
+	.string "With my charm and my Pokémon's moves,\n"
 	.string "you'll be shocked!$"
 
 MauvilleCity_Gym_Text_VivianDefeat: @ 820E4F4
@@ -653,9 +653,9 @@ MauvilleCity_Gym_Text_ReceivedDynamoBadge: @ 820E77F
 	.string "from WATTSON.$"
 
 MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis: @ 820E7AA
-	.string "With the DYNAMO BADGE, POKéMON can\n"
+	.string "With the DYNAMO BADGE, Pokémon can\n"
 	.string "use ROCK SMASH out of battle.\p"
-	.string "And, it will make your POKéMON a little\n"
+	.string "And, it will make your Pokémon a little\n"
 	.string "bit faster, too.\p"
 	.string "Hmm…\n"
 	.string "You should take this, too!$"
@@ -679,17 +679,17 @@ MauvilleCity_Gym_Text_WattsonGoForthAndEndeavor: @ 820E925
 	.string "Go forth and endeavor, youngster!$"
 
 MauvilleCity_Gym_Text_GymStatue: @ 820E952
-	.string "MAUVILLE CITY POKéMON GYM$"
+	.string "MAUVILLE CITY Pokémon GYM$"
 
 MauvilleCity_Gym_Text_GymStatueCertified: @ 820E96C
-	.string "MAUVILLE CITY POKéMON GYM\p"
+	.string "MAUVILLE CITY Pokémon GYM\p"
 	.string "WATTSON'S CERTIFIED TRAINERS:\n"
 	.string "{PLAYER}$"
 
 MauvilleCity_Gym_Text_WattsonPreRematch: @ 820E9A7
 	.string "WATTSON: Ah-ha! Here at last!\n"
 	.string "I know what you want.\l"
-	.string "You want to battle my POKéMON!\p"
+	.string "You want to battle my Pokémon!\p"
 	.string "Wahahahaha!\p"
 	.string "I'll make sparks fly from you!\n"
 	.string "Don't say I didn't warn you!$"
@@ -709,10 +709,10 @@ MauvilleCity_Gym_Text_WattsonPostRematch: @ 820EA5E
 MauvilleCity_Gym_Text_WattsonRematchNeedTwoMons: @ 820EAFD
 	.string "WATTSON: Ah-ha! Here at last!\n"
 	.string "I know what you want.\l"
-	.string "You want to battle my POKéMON!\p"
+	.string "You want to battle my Pokémon!\p"
 	.string "Wahahahaha!\p"
 	.string "Oops! Wait!\n"
-	.string "You've only one POKéMON with you!\p"
+	.string "You've only one Pokémon with you!\p"
 	.string "Come see me with two or more\n"
-	.string "POKéMON, all right?$"
+	.string "Pokémon, all right?$"
 

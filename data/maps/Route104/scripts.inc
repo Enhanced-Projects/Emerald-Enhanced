@@ -167,7 +167,7 @@ Route104_EventScript_RestoreMusic:: @ 81ECE31
 	return
 
 Route104_EventScript_BattleMayTreecko:: @ 81ECE36
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TREECKO, Route104_Text_MayDefeat
+	trainerbattle_no_intro TRAINER_DAWN_2, Route104_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
 	goto Route104_EventScript_MayDefeated
 	end
@@ -249,7 +249,7 @@ Route104_EventScript_BattleBrendanTorchic:: @ 81ECF60
 	end
 
 Route104_EventScript_BattleBrendanMudkip:: @ 81ECF73
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_MUDKIP, Route104_Text_BrendanDefeat
+	trainerbattle_no_intro TRAINER_BRENDAN_2, Route104_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
 	goto Route104_EventScript_BrendanDefeated
 	end
@@ -1021,15 +1021,15 @@ Route104_Text_WhatsItLikeAtBottomOfSea: @ 81ED662
 
 Route104_Text_ThrowBallAtWeakenedPokemon: @ 81ED6A2
 	.string "If you're going to throw a POKé BALL,\n"
-	.string "weaken the wild POKéMON first.\p"
+	.string "weaken the wild Pokémon first.\p"
 	.string "It will be easier to catch if it's been\n"
 	.string "poisoned, burned, or lulled to sleep.$"
 
 Route104_Text_OnlyThrowBallAtWildPokemon: @ 81ED735
 	.string "You're a thief if you try to steal\n"
-	.string "someone else's POKéMON.\p"
+	.string "someone else's Pokémon.\p"
 	.string "You should throw POKé BALLS only at\n"
-	.string "wild POKéMON.$"
+	.string "wild Pokémon.$"
 
 Route104_Text_ImNotATrainer: @ 81ED7A2
 	.string "Oh, no, I'm not a TRAINER.\p"
@@ -1042,7 +1042,7 @@ Route104_Text_LikeFillingMouthWithSeedsTakeThis: @ 81ED838
 	.string "I like filling my mouth with seeds,\n"
 	.string "then spitting them out fast!\p"
 	.string "You can have this, so you try it out!\p"
-	.string "Use it on a POKéMON, and it will learn\n"
+	.string "Use it on a Pokémon, and it will learn\n"
 	.string "a move for firing seeds rapidly.$"
 
 Route104_Text_TMsAreOneTimeUse: @ 81ED8E7
@@ -1084,12 +1084,12 @@ Route104_Text_TrainerTipsDoubleBattles: @ 81EDAEF
 	.string "TRAINER TIPS\p"
 	.string "In the HOENN region there are pairs\n"
 	.string "of TRAINERS who challenge others\l"
-	.string "for 2-on-2 POKéMON battles called\l"
+	.string "for 2-on-2 Pokémon battles called\l"
 	.string "DOUBLE BATTLES.\p"
 	.string "In a DOUBLE BATTLE, the TRAINER must\n"
-	.string "send out two POKéMON, the one at the\l"
+	.string "send out two Pokémon, the one at the\l"
 	.string "left of the list and the top one.\l"
-	.string "Watch how POKéMON are lined up.$"
+	.string "Watch how Pokémon are lined up.$"
 
 Route104_Text_MayWeShouldRegister: @ 81EDBFF
 	.string "Dawn: Oh, hi, {PLAYER}!\p"
@@ -1114,7 +1114,7 @@ Route104_Text_MayMinesDecentLetsBattle: @ 81EDCED
 Route104_Text_MayHaventRaisedPokemon: @ 81EDD2A
 	.string "Dawn: Oh, what's the matter?\p"
 	.string "Haven't you caught or raised your\n"
-	.string "POKéMON very much?\p"
+	.string "Pokémon very much?\p"
 	.string "That's not very good for a TRAINER!$"
 
 Route104_Text_MayLetsBattle: @ 81EDD9F
@@ -1131,11 +1131,11 @@ Route104_Text_MayDefeat: @ 81EDE18
 
 Route104_Text_MayPostBattle: @ 81EDE3E
 	.string "Dawn: I can tell you've gotten pretty\n"
-	.string "good with the way you handle POKéMON.\p"
+	.string "good with the way you handle Pokémon.\p"
 	.string "But instead of only making them\n"
 	.string "battle, you should be like MR. BRINEY.\p"
 	.string "It's important to become friends with\n"
-	.string "POKéMON, too.$"
+	.string "Pokémon, too.$"
 
 Route104_Text_BrendanWeShouldRegister: @ 81EDF04
 	.string "BRENDAN: Oh, hey, {PLAYER}!\p"
@@ -1159,7 +1159,7 @@ Route104_Text_BrendanDoingGreatLetsBattle: @ 81EE009
 
 Route104_Text_BrendanNoConfidence: @ 81EE04D
 	.string "BRENDAN: What's the matter? Don't have\n"
-	.string "any confidence in your POKéMON?$"
+	.string "any confidence in your Pokémon?$"
 
 Route104_Text_BrendanLetsBattle: @ 81EE094
 	.string "BRENDAN: What's up?\n"
@@ -1175,8 +1175,8 @@ Route104_Text_BrendanDefeat: @ 81EE107
 
 Route104_Text_BrendanPostBattle: @ 81EE120
 	.string "BRENDAN: You've gotten pretty decent\n"
-	.string "at handling POKéMON.\p"
+	.string "at handling Pokémon.\p"
 	.string "But, you know, you shouldn't just be\n"
-	.string "making POKéMON battle.\p"
+	.string "making Pokémon battle.\p"
 	.string "Like MR. BRINEY, it's important to\n"
-	.string "become friends with your POKéMON.$"
+	.string "become friends with your Pokémon.$"

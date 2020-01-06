@@ -177,27 +177,27 @@
         },
         {
             "elevation": 3,
-            "script": "Route110_EventScript_RivalTrigger1",
+            "script": "Route110_EventScript_RivalScene",
             "type": "trigger",
-            "var": "VAR_ROUTE110_STATE",
+            "var": "VAR_TEMP_0",
             "var_value": "0",
             "x": 33,
             "y": 56
         },
         {
             "elevation": 3,
-            "script": "Route110_EventScript_RivalTrigger2",
+            "script": "Route110_EventScript_RivalScene",
             "type": "trigger",
-            "var": "VAR_ROUTE110_STATE",
+            "var": "VAR_TEMP_0",
             "var_value": "0",
             "x": 34,
             "y": 56
         },
         {
             "elevation": 3,
-            "script": "Route110_EventScript_RivalTrigger3",
+            "script": "Route110_EventScript_RivalScene",
             "type": "trigger",
-            "var": "VAR_ROUTE110_STATE",
+            "var": "VAR_TEMP_0",
             "var_value": "0",
             "x": 35,
             "y": 56
@@ -219,6 +219,33 @@
             "var_value": "90",
             "x": 11,
             "y": 67
+        },
+        {
+            "elevation": 0,
+            "script": "Route110_EventScript_RivalScene",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 35,
+            "y": 52
+        },
+        {
+            "elevation": 0,
+            "script": "Route110_EventScript_RivalScene",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 34,
+            "y": 52
+        },
+        {
+            "elevation": 0,
+            "script": "Route110_EventScript_RivalScene",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 33,
+            "y": 52
         }
     ],
     "id": "MAP_ROUTE110",

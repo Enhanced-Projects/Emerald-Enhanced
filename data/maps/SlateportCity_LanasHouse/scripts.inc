@@ -273,7 +273,7 @@ LH_finished:
 LH_End:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}({COLOR LIGHT_RED}{SHADOW RED}Lana{COLOR LIGHT_GREEN}{SHADOW GREEN} sits down and starts\n"
 	.string " reading a magazine with a rare\p"
-	.string " pokémon on the cover. Guess\n"
+	.string " Pokémon on the cover. Guess\n"
 	.string " she's done talking.)$"
 	
 LH_chat1:

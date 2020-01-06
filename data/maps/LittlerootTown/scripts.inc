@@ -80,7 +80,7 @@ LittlerootSign:
 	.string "Littleroot Town\pThe town of humble beginnings.$"
 
 BirchsLabSign: @ 81E8D69
-	.string "Prof. Birch's pokémon Lab$"
+	.string "Prof. Birch's Pokémon Lab$"
 	
 LRT_LittleGirlChatter::
 	lock
@@ -120,7 +120,7 @@ LRT_cantLeaveFemale:
 	end
 	
 LRT_Girl_PreventLeaveFemale:
-	.string "Cute Girl: {COLOR LIGHT_RED}{SHADOW RED}Um! Lady!\pIt's dangerous to go out there\nwithout pokémon to protect you!$"
+	.string "Cute Girl: {COLOR LIGHT_RED}{SHADOW RED}Um! Lady!\pIt's dangerous to go out there\nwithout Pokémon to protect you!$"
 	
 	
 LRT_StepLeft:
@@ -134,7 +134,7 @@ LRT_StepRight:
 	step_end
 
 LRT_Girl_PreventLeave:
-	.string "Cute Girl: {COLOR LIGHT_RED}{SHADOW RED}Um! Mister!\pIt's dangerous to go out there\nwithout pokémon to protect you!$"
+	.string "Cute Girl: {COLOR LIGHT_RED}{SHADOW RED}Um! Mister!\pIt's dangerous to go out there\nwithout Pokémon to protect you!$"
 	
 LRT_CantLeave:
 	walk_down
@@ -187,7 +187,7 @@ LRT_StopGoingSouth::
 	end
 	
 LRT_CantExitSouthYet:
-	.string "You have no pokémon, you probably\ndon't want to go down here yet.$"
+	.string "You have no Pokémon, you probably\ndon't want to go down here yet.$"
 	
 LRT_BoyChatter::
 	lock
@@ -217,7 +217,7 @@ LRT_FatManChatter::
 	
 LRT_FM1:
 	.string "Man: It's hard to take a nap out\n"
-    .string "here. I keep hearing the pokémon\p"
+    .string "here. I keep hearing the Pokémon\p"
     .string "that professor has preserved south\n"
     .string "of town making noises all the time\l"
     .string "Listen!$"

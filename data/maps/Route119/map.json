@@ -167,18 +167,18 @@
     "coord_events": [
         {
             "elevation": 0,
-            "script": "Route119_EventScript_RivalTrigger1",
+            "script": "r119_RivalEncounterSouth",
             "type": "trigger",
-            "var": "VAR_ROUTE119_STATE",
+            "var": "VAR_TEMP_0",
             "var_value": "0",
             "x": 25,
             "y": 31
         },
         {
             "elevation": 0,
-            "script": "Route119_EventScript_RivalTrigger2",
+            "script": "r119_RivalEncounterSouth",
             "type": "trigger",
-            "var": "VAR_ROUTE119_STATE",
+            "var": "VAR_TEMP_0",
             "var_value": "0",
             "x": 26,
             "y": 31
@@ -329,6 +329,24 @@
             "weather": "COORD_EVENT_WEATHER_ROUTE119_CYCLE",
             "x": 34,
             "y": 13
+        },
+        {
+            "elevation": 0,
+            "script": "r119_RivalEncounterNorth",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 27,
+            "y": 27
+        },
+        {
+            "elevation": 0,
+            "script": "r119_RivalEncounterNorth",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 28,
+            "y": 27
         }
     ],
     "id": "MAP_ROUTE119",
@@ -542,8 +560,8 @@
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 25,
-            "y": 32
+            "x": 17,
+            "y": 33
         },
         {
             "elevation": 3,
@@ -633,8 +651,8 @@
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 17,
-            "y": 33
+            "x": 39,
+            "y": 37
         },
         {
             "elevation": 3,
@@ -868,7 +886,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 28,
-            "y": 25
+            "y": 18
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_119",

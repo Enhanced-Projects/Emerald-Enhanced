@@ -463,7 +463,7 @@ BattleFrontier_BattlePalaceBattleRoom_Movement_SpenserEnter: @ 824FEF2
 
 BattleFrontier_BattlePalaceBattleRoom_Text_LetMeRestoreYourMons: @ 824FF00
 	.string "Excellent…\n"
-	.string "Let me restore your POKéMON.$"
+	.string "Let me restore your Pokémon.$"
 
 BattleFrontier_BattlePalaceBattleRoom_Text_PreparedFor2ndOpponent: @ 824FF28
 	.string "The 2nd opponent is next.\n"
@@ -520,18 +520,18 @@ BattleFrontier_BattlePalaceBattleRoom_Text_AnnounceArrivalOfSpenser: @ 825017C
 
 BattleFrontier_BattlePalaceBattleRoom_Text_SpenserFirstIntro: @ 82501C1
 	.string "SPENSER: My physical being is with\n"
-	.string "POKéMON always!\p"
+	.string "Pokémon always!\p"
 	.string "My heart beats as one with\n"
-	.string "POKéMON always!\p"
+	.string "Pokémon always!\p"
 	.string "Young one of a TRAINER!\n"
-	.string "Do you believe in your POKéMON?\p"
+	.string "Do you believe in your Pokémon?\p"
 	.string "Can you believe them through\n"
 	.string "and through?\p"
 	.string "If your bonds of trust are frail,\n"
 	.string "you will never beat my brethren!$"
 
 BattleFrontier_BattlePalaceBattleRoom_Text_ProveYourBondWithMons: @ 82502C4
-	.string "The bond you share with your POKéMON!\n"
+	.string "The bond you share with your Pokémon!\n"
 	.string "Prove it to me here!$"
 
 BattleFrontier_BattlePalaceBattleRoom_Text_SpenserPostSilverBattle: @ 82502FF
@@ -552,7 +552,7 @@ BattleFrontier_BattlePalaceBattleRoom_Text_ReceivedSpiritsSymbol: @ 82503DC
 	.string "the FRONTIER PASS!$"
 
 BattleFrontier_BattlePalaceBattleRoom_Text_SpenserAwaitNextTime: @ 8250412
-	.string "SPENSER: Your POKéMON's eyes are \n"
+	.string "SPENSER: Your Pokémon's eyes are \n"
 	.string "truly clear and unclouded.\p"
 	.string "I will eagerly await the next\n"
 	.string "opportunity to see you.$"
@@ -561,7 +561,7 @@ BattleFrontier_BattlePalaceBattleRoom_Text_SpenserThisTimeWontHoldBack: @ 825048
 	.string "SPENSER: Gwahahah!\n"
 	.string "You've battled your way up again?\p"
 	.string "You must have developed a truly\n"
-	.string "formidable bond with your POKéMON.\p"
+	.string "formidable bond with your Pokémon.\p"
 	.string "So be it!\p"
 	.string "This time, I won't bluster or hold back.\n"
 	.string "This time, there's no fooling around.\p"

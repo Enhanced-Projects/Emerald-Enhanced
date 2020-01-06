@@ -50,8 +50,8 @@ FallarborTown_ContestHall_Text_DoAllRightInPreliminary: @ 8200704
 @ Unused
 FallarborTown_ContestHall_Text_MonAllTheseRibbons: @ 8200791
 	.string "See!\n"
-	.string "My POKéMON won all these RIBBONS!\p"
-	.string "Have your POKéMON earned any RIBBONS?\n"
+	.string "My Pokémon won all these RIBBONS!\p"
+	.string "Have your Pokémon earned any RIBBONS?\n"
 	.string "You can check them on your POKéNAV.$"
 
 @ Unused
@@ -63,6 +63,6 @@ FallarborTown_ContestHall_Text_CantWinEverywhere: @ 8200802
 
 @ Unused
 FallarborTown_ContestHall_Text_SuperRankStage: @ 8200876
-	.string "POKéMON CONTESTS\n"
+	.string "Pokémon CONTESTS\n"
 	.string "SUPER RANK STAGE!$"
 

@@ -27,7 +27,7 @@ Route103_EventScript_Rival:: @ 81EC3C1
 	end
 
 Route103_EventScript_RivalMay:: @ 81EC3DA
-	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
+	msgbox r103_femaleRivalTalkSelf, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_GIRL_SUP, 1
 	applymovement 2, Common_Movement_FacePlayer
@@ -36,15 +36,14 @@ Route103_EventScript_RivalMay:: @ 81EC3DA
 	waitmovement 0
 	applymovement 2, Common_Movement_Delay48
 	waitmovement 0
-	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route103_EventScript_StartMayBattleTreecko
-	case 1, Route103_EventScript_StartMayBattleTorchic
-	case 2, Route103_EventScript_StartMayBattleMudkip
+	drawheadshot HEAD_DAWN
+	msgbox r103_femaleRivalIntro, MSGBOX_DEFAULT
+	closemessage
+	goto r103_femaleRivalBattle
 	end
 
 Route103_EventScript_RivalBrendan:: @ 81EC434
-	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
+	msgbox r103_maleRivalTalkSelf, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_BOY_SUP, 1
 	applymovement 2, Common_Movement_FacePlayer
@@ -53,55 +52,38 @@ Route103_EventScript_RivalBrendan:: @ 81EC434
 	waitmovement 0
 	applymovement 2, Common_Movement_Delay48
 	waitmovement 0
-	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route103_EventScript_StartBrendanBattleTreecko
-	case 1, Route103_EventScript_StartBrendanBattleTorchic
-	case 2, Route103_EventScript_StartBrendanBattleMudkip
+	drawheadshot HEAD_BRENDAN
+	msgbox r103_maleRivalIntro, MSGBOX_DEFAULT
+	closemessage
+	goto r103_maleRivalBattle
 	end
 
-Route103_EventScript_StartMayBattleTreecko:: @ 81EC48E
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TREECKO, Route103_Text_MayDefeated
+r103_femaleRivalBattle:: @ 81EC48E
+	trainerbattle_no_intro TRAINER_DAWN_1, r103_femaleRivalDefeat
 	goto Route103_EventScript_AfterMayBattle
 	end
 
-Route103_EventScript_StartMayBattleTorchic:: @ 81EC49E
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TORCHIC, Route103_Text_MayDefeated
-	goto Route103_EventScript_AfterMayBattle
-	end
-
-Route103_EventScript_StartMayBattleMudkip:: @ 81EC4AE
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_MUDKIP, Route103_Text_MayDefeated
-	goto Route103_EventScript_AfterMayBattle
-	end
-
-Route103_EventScript_StartBrendanBattleTreecko:: @ 81EC4BE
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TREECKO, Route103_Text_BrendanDefeated
-	goto Route103_EventScript_AfterBrendanBattle
-	end
-
-Route103_EventScript_StartBrendanBattleTorchic:: @ 81EC4CE
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TORCHIC, Route103_Text_BrendanDefeated
-	goto Route103_EventScript_AfterBrendanBattle
-	end
-
-Route103_EventScript_StartBrendanBattleMudkip:: @ 81EC4DE
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_MUDKIP, Route103_Text_BrendanDefeated
+r103_maleRivalBattle:: @ 81EC49E
+	trainerbattle_no_intro TRAINER_BRENDAN_1, r103_maleRivalDefeatText
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_AfterMayBattle:: @ 81EC4EE
-	msgbox Route103_Text_MayTimeToHeadBack, MSGBOX_DEFAULT
+	drawheadshot HEAD_DAWN
+	msgbox r103_femaleRivalChat, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
+	closemessage
 	end
 
 Route103_EventScript_AfterBrendanBattle:: @ 81EC4FC
-	msgbox Route103_Text_BrendanTimeToHeadBack, MSGBOX_DEFAULT
+	drawheadshot HEAD_BRENDAN
+	msgbox r103_maleRivalChat, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
 
 Route103_EventScript_RivalExit:: @ 81EC50A
 	closemessage
+	removecutscenesprites
 	switch VAR_FACING
 	case DIR_SOUTH, Route103_EventScript_RivalExitFacingSouth
 	case DIR_NORTH, Route103_EventScript_RivalExitFacingNorth
@@ -291,60 +273,53 @@ Route103_EventScript_Isabelle:: @ 81EC78F
 	msgbox Route103_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route103_Text_MayRoute103Pokemon: @ 81EC7A6
-	.string "Dawn: Let's see… The POKéMON found\n"
-	.string "on ROUTE 103 include…$"
+r103_femaleRivalTalkSelf: @ 81EC7A6
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Let's see… The Pokémon found\n"
+	.string "on Route 103 include…$"
 
-Route103_Text_MayLetsBattle: @ 81EC7DE
-	.string "Oh, hi, {PLAYER}!\p"
-	.string "…Oh, I see, my dad gave you\n"
-	.string "a POKéMON as a gift.\p"
-	.string "Since we're here, let's have a quick\n"
-	.string "battle!\p"
-	.string "I'll give you a taste of what being\n"
-	.string "a TRAINER is like.$"
+r103_femaleRivalIntro: @ 81EC7DE
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, hi, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}!\p"
+	.string "It seems like you decided to become\n"
+	.string "a Pokémon Trainer. That's awesome.\l"
+	.string "I didn't have any friends, so it's\l"
+	.string "nice to have someone who's doing\l"
+	.string "the same thing as me.\l"
+	.string "Let's have a battle for fun!$"
 
-Route103_Text_MayDefeated: @ 81EC881
-	.string "Wow! That's great!\n"
-	.string "{PLAYER}, you're pretty good!$"
+r103_femaleRivalDefeat: @ 81EC881
+	.string "Wow! It's like you were born to be\n"
+	.string "a trainer. I think we're going to\l"
+	.string "be great friends.$"
 
-Route103_Text_MayTimeToHeadBack: @ 81EC8AE
-	.string "Dawn: I think I know why my dad has\n"
-	.string "an eye out for you now.\p"
-	.string "I mean, you just got that POKéMON,\n"
-	.string "but it already likes you.\p"
-	.string "You might be able to befriend any\n"
-	.string "kind of POKéMON easily.\p"
-	.string "Well, it's time to head back to\n"
-	.string "the LAB.$"
+r103_femaleRivalChat: @ 81EC8AE
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: I think I know why your\n"
+	.string "Pokémon likes you already. It tried\l"
+	.string "really hard for you. I hope you\l"
+	.string "continue to grow with your Pokémon.\l"
+	.string "Let's head back to the lab!$"
 
-Route103_Text_BrendanRoute103Pokemon: @ 81EC989
-	.string "BRENDAN: Okay, so it's this one and\n"
-	.string "that one that live on ROUTE 103…$"
+r103_maleRivalTalkSelf: @ 81EC989
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Okay, so it's this one and\n"
+	.string "that one that live on Route 103…$"
 
-Route103_Text_BrendanLetsBattle: @ 81EC9CE
-	.string "Hey, it's {PLAYER}!\p"
-	.string "…Oh, yeah, Dad gave you a POKéMON.\p"
-	.string "Since we're here, how about a little\n"
-	.string "battle?\p"
-	.string "I'll teach you what being a TRAINER's\n"
-	.string "about!$"
+r103_maleRivalIntro: @ 81EC9CE
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Hey there, {PLAYER}!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}…Oh, yeah?\nSo Dad gave you a Pokémon.\pWell since we're here, how about\na little battle?\pI'll teach you what being a trainer's\nall about!$"
 
-Route103_Text_BrendanDefeated: @ 81ECA59
+r103_maleRivalDefeatText: @ 81ECA59
 	.string "Huh, {PLAYER}, you're not too shabby.$"
 
-Route103_Text_BrendanTimeToHeadBack: @ 81ECA79
-	.string "BRENDAN: I think I get it.\n"
+r103_maleRivalChat: @ 81ECA79
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: I think I get it.\n"
 	.string "I think I know why my dad has his eye\l"
 	.string "out for you now.\p"
-	.string "Look, your POKéMON already likes you,\n"
+	.string "Look, your Pokémon already likes you,\n"
 	.string "even though you just got it.\p"
-	.string "{PLAYER}, I get the feeling that you\n"
-	.string "could befriend any POKéMON with ease.\p"
-	.string "We should head back to the LAB.$"
+	.string "{PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}, I get the feeling that you\n"
+	.string "could befriend any Pokémon with ease.\p"
+	.string "We should head back to the lab.$"
 
 Route103_Text_ShouldHaveBroughtPotion: @ 81ECB73
-	.string "My POKéMON is staggeringly tired…\n"
+	.string "My Pokémon is staggeringly tired…\n"
 	.string "I should have brought a POTION…$"
 
 Route103_Text_ShortcutToOldale: @ 81ECBB5

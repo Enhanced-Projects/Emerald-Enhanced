@@ -254,7 +254,7 @@ LRT_BH_RcvGift2::
 	return
 	
 LRT_BH_HopeItsDoingWell:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I hope you and my pokémon are doing\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I hope you and my Pokémon are doing\n"
     .string "well together!$"
 
 	
@@ -345,21 +345,21 @@ LRT_BH_WastedPotential:
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I see you evolved it into Glalie.\p"
     .string "That's cool, but it doesn't have\n"
     .string "a good nature for that. Thanks for\p"
-    .string "taking care of my pokémon, anyways\n"
+    .string "taking care of my Pokémon, anyways\n"
     .string "It looks quite happy!$"
 
 LRT_BH_BeautifulPokemon:
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Oh, you evolved it into\p"
     .string "Froslass! That's Awesome!\n"
-    .string "It's a beautiful pokémon, befitting\l"
-    .string "a beautiful pokémon trainer!$"	
+    .string "It's a beautiful Pokémon, befitting\l"
+    .string "a beautiful Pokémon trainer!$"	
 	
 LRT_BH_FroslassChampionMsg:
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Oh wow, It has the champion ribbon too!\n"
     .string "I bet it worked real hard for you\l"
     .string "to get that!\p"
 	.string "Here, take this. From me!\n"
-	.string "When holding this item, the pokémon\p"
+	.string "When holding this item, the Pokémon\p"
 	.string "will do a lot more damage if it\n"
 	.string "really likes you!$"
 	

@@ -191,7 +191,7 @@ AT1_Story6:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Lana, stop! You're gonna get hurt!\p{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...\pGo!$"
 	
 AT1_Story7:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana sends out another pokémon,\n only for it to be defeated moments\l later.)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana sends out another Pokémon,\n only for it to be defeated moments\l later.)$"
 	
 AT1_Story8:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Look out!$"

@@ -1,6 +1,6 @@
 LavaridgeTown_MapScripts:: @ 81EA4D3
 	map_script MAP_SCRIPT_ON_TRANSITION, LavaridgeTown_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, LavaridgeTown_OnFrame
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, LT_CheckRivalGiftStatus
 	.byte 0
 
 LavaridgeTown_OnTransition: @ 81EA4DE
@@ -8,11 +8,19 @@ LavaridgeTown_OnTransition: @ 81EA4DE
 	call_if_set FLAG_WHITEOUT_TO_LAVARIDGE, LavaridgeTown_EventScript_ClearLavaridgeWhiteOut
 	call_if_set FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, LavaridgeTown_EventScript_ShowMtChimneyTrainers
 	call Common_EventScript_SetupRivalGfxId
-	call Common_EventScript_SetupRivalOnBikeGfxId
-	compare VAR_LAVARIDGE_TOWN_STATE, 1
-	call_if_eq LavaridgeTown_EventScript_CheckSetRivalPos
 	compare VAR_LAVARIDGE_TOWN_STATE, 1
 	call_if_eq LavaridgeTown_EventScript_HideMapNamePopup
+	end
+
+LT_CheckRivalGiftStatus::
+	map_script_2 VAR_TEMP_0, 0, LT_SetRivalPosForReGift
+	.2byte 0
+
+LT_SetRivalPosForReGift::
+	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	goto_if_set FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_end
+	goto_if_unset FLAG_RYU_INTERACTED_LAVARIDGE, ryu_end
+	setobjectxy 7, 9, 10
 	end
 
 LavaridgeTown_EventScript_ClearLavaridgeWhiteOut:: @ 81EA514
@@ -20,16 +28,6 @@ LavaridgeTown_EventScript_ClearLavaridgeWhiteOut:: @ 81EA514
 	return
 
 LavaridgeTown_EventScript_CheckSetRivalPos:: @ 81EA518
-	getplayerxy VAR_0x8004, VAR_0x8005
-	compare VAR_0x8004, 9
-	goto_if_eq LavaridgeTown_EventScript_SetRivalPos
-	return
-
-LavaridgeTown_EventScript_SetRivalPos:: @ 81EA529
-	setobjectxyperm 8, 11, 9
-	setobjectxyperm 7, 9, 8
-	setobjectmovementtype 7, MOVEMENT_TYPE_FACE_UP
-	clearflag FLAG_HIDE_LAVARIDGE_TOWN_RIVAL
 	return
 
 LavaridgeTown_EventScript_ShowMtChimneyTrainers:: @ 81EA53F
@@ -39,175 +37,6 @@ LavaridgeTown_EventScript_ShowMtChimneyTrainers:: @ 81EA53F
 LavaridgeTown_EventScript_HideMapNamePopup:: @ 81EA543
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	return
-
-LavaridgeTown_OnFrame: @ 81EA547
-	map_script_2 VAR_LAVARIDGE_TOWN_STATE, 1, LavaridgeTown_EventScript_RivalGiveGoGoggles
-	.2byte 0
-
-LavaridgeTown_EventScript_RivalGiveGoGoggles:: @ 81EA551
-	lockall
-	getplayerxy VAR_0x8008, VAR_0x8009
-	compare VAR_0x8008, 9
-	call_if_eq LavaridgeTown_EventScript_RivalNoticePlayer
-	compare VAR_0x8008, 9
-	call_if_ne LavaridgeTown_EventScript_RivalExitHerbShop
-	delay 20
-	checkplayergender
-	compare VAR_RESULT, MALE
-	call_if_eq LavaridgeTown_EventScript_PlayMayMusic
-	compare VAR_RESULT, FEMALE
-	call_if_eq LavaridgeTown_EventScript_PlayBrendanMusic
-	compare VAR_0x8008, 9
-	call_if_eq LavaridgeTown_EventScript_RivalApproachPlayer1
-	compare VAR_0x8008, 9
-	call_if_ne LavaridgeTown_EventScript_RivalApproachPlayer2
-	checkplayergender
-	compare VAR_RESULT, MALE
-	goto_if_eq LavaridgeTown_EventScript_MayGiveGoGoggles
-	compare VAR_RESULT, FEMALE
-	goto_if_eq LavaridgeTown_EventScript_BrendanGiveGoGoggles
-	end
-
-LavaridgeTown_EventScript_MayGiveGoGoggles:: @ 81EA5B5
-	msgbox LavaridgeTown_Text_MayNiceBadgesTakeThis, MSGBOX_DEFAULT
-	giveitem_std ITEM_GO_GOGGLES
-	setflag FLAG_RECEIVED_GO_GOGGLES
-	msgbox LavaridgeTown_Text_MayExplainGoGogglesChallengeDad, MSGBOX_DEFAULT
-	goto LavaridgeTown_EventScript_RivalExit
-	end
-
-LavaridgeTown_EventScript_BrendanGiveGoGoggles:: @ 81EA5DA
-	msgbox LavaridgeTown_Text_BrendanNiceBadgesTakeThis, MSGBOX_DEFAULT
-	giveitem_std ITEM_GO_GOGGLES
-	setflag FLAG_RECEIVED_GO_GOGGLES
-	msgbox LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad, MSGBOX_DEFAULT
-	goto LavaridgeTown_EventScript_RivalExit
-	end
-
-LavaridgeTown_EventScript_RivalExit:: @ 81EA5FF
-	closemessage
-	removeobject 8
-	addobject 7
-	delay 30
-	compare VAR_0x8008, 9
-	call_if_eq LavaridgeTown_EventScript_RivalExit1
-	compare VAR_0x8008, 9
-	call_if_ne LavaridgeTown_EventScript_RivalExit2
-	removeobject 7
-	setvar VAR_LAVARIDGE_TOWN_STATE, 2
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	releaseall
-	end
-
-LavaridgeTown_EventScript_PlayMayMusic:: @ 81EA630
-	playbgm MUS_GIRL_SUP, 1
-	return
-
-LavaridgeTown_EventScript_PlayBrendanMusic:: @ 81EA635
-	playbgm MUS_BOY_SUP, 1
-	return
-
-LavaridgeTown_EventScript_RivalNoticePlayer:: @ 81EA63A
-	applymovement 8, Common_Movement_WalkInPlaceFastestUp
-	waitmovement 0
-	playse SE_PIN
-	applymovement 8, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 8, Common_Movement_Delay48
-	waitmovement 0
-	return
-
-LavaridgeTown_EventScript_RivalExitHerbShop:: @ 81EA65C
-	opendoor 12, 15
-	waitdooranim
-	addobject 8
-	applymovement 8, LavaridgeTown_Movement_RivalExitHerbShop
-	waitmovement 0
-	closedoor 12, 15
-	waitdooranim
-	applymovement 8, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	playse SE_PIN
-	applymovement 8, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 8, Common_Movement_Delay48
-	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	return
-
-LavaridgeTown_EventScript_RivalApproachPlayer1:: @ 81EA6A1
-	applymovement 8, LavaridgeTown_Movement_RivalApproachPlayer1
-	waitmovement 0
-	return
-
-LavaridgeTown_EventScript_RivalApproachPlayer2:: @ 81EA6AC
-	applymovement 8, LavaridgeTown_Movement_RivalApproachPlayer2
-	waitmovement 0
-	return
-
-LavaridgeTown_EventScript_RivalExit1:: @ 81EA6B7
-	applymovement EVENT_OBJ_ID_PLAYER, LavaridgeTown_Movement_PlayerWatchRivalExit
-	applymovement 7, LavaridgeTown_Movement_RivalExit1
-	waitmovement 0
-	return
-
-LavaridgeTown_EventScript_RivalExit2:: @ 81EA6C9
-	applymovement 7, LavaridgeTown_Movement_RivalExit2
-	waitmovement 0
-	return
-
-LavaridgeTown_Movement_RivalExit2: @ 81EA6D4
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	step_end
-
-LavaridgeTown_Movement_PlayerWatchRivalExit: @ 81EA6DF
-	delay_16
-	delay_8
-	walk_in_place_fastest_right
-	step_end
-
-LavaridgeTown_Movement_RivalExit1: @ 81EA6E3
-	walk_fast_down
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	step_end
-
-LavaridgeTown_Movement_RivalApproachPlayer2: @ 81EA6ED
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-LavaridgeTown_Movement_RivalApproachPlayer1: @ 81EA6F4
-	walk_left
-	walk_left
-	walk_up
-	step_end
-
-LavaridgeTown_Movement_RivalExitHerbShop: @ 81EA6F8
-	walk_down
-	step_end
 
 LavaridgeTown_EventScript_HotSpringsTrigger:: @ 81EA6FA
 	specialvar VAR_RESULT, GetPlayerFacingDirection
@@ -289,60 +118,16 @@ LavaridgeTown_EventScript_HerbShopSign:: @ 81EA7B7
 	msgbox LavaridgeTown_Text_HerbShopSign, MSGBOX_SIGN
 	end
 
-LavaridgeTown_Text_MayNiceBadgesTakeThis: @ 81EA7C0
-	.string "Dawn: {PLAYER}! Long time no see!\p"
-	.string "Oh? While I visited the hot springs,\n"
-	.string "you got the LAVARIDGE GYM BADGE.\p"
-	.string "You must have collected\n"
-	.string "good POKéMON…\l"
-	.string "No, I believe you raised some.\p"
-	.string "I guess it would be okay for you to\n"
-	.string "have this.$"
-
-LavaridgeTown_Text_MayExplainGoGogglesChallengeDad: @ 81EA897
-	.string "Dawn: With those GO-GOGGLES, you'll\n"
-	.string "have no trouble getting through the\l"
-	.string "desert near ROUTE 111.\p"
-	.string "But, wow, {PLAYER}…\n"
-	.string "Challenging GYMS…\p"
-	.string "You're trying hard because you don't\n"
-	.string "want to lose to me, I bet!\p"
-	.string "{PLAYER}, I think I should challenge\n"
-	.string "your dad in PETALBURG GYM.\p"
-	.string "See you again!$"
-
-LavaridgeTown_Text_BrendanNiceBadgesTakeThis: @ 81EA9A2
-	.string "BRENDAN: {PLAYER}, hey, it's been a while.\n"
-	.string "How's it going?\p"
-	.string "Hmm…\n"
-	.string "That's a decent collection of BADGES.\p"
-	.string "All right, then.\n"
-	.string "You may as well have this.$"
-
-LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad: @ 81EAA2E
-	.string "BRENDAN: Keep those with you if you're\n"
-	.string "planning on going into that desert near\l"
-	.string "ROUTE 111.\p"
-	.string "There should be some POKéMON that\n"
-	.string "are exclusively desert-dwellers.\l"
-	.string "You might look around for those.\p"
-	.string "As for me…\n"
-	.string "I'm considering challenging NORMAN,\l"
-	.string "the GYM LEADER of PETALBURG.\p"
-	.string "Unlike you, {PLAYER}, your dad looks like\n"
-	.string "he really is tough.\p"
-	.string "See you around!$"
-
 LavaridgeTown_Text_HaveEggWillYouTakeIt: @ 81EAB80
 	.string "I have here an EGG.\p"
 	.string "I'd hoped to hatch it by covering it in\n"
 	.string "hot sand by the hot springs.\l"
 	.string "But that doesn't seem to be enough…\p"
 	.string "I've heard it would be best if it were\n"
-	.string "kept together with POKéMON and\l"
+	.string "kept together with Pokémon and\l"
 	.string "carried about.\p"
 	.string "You are a TRAINER, yes?\n"
-	.string "And your POKéMON radiate vitality.\p"
+	.string "And your Pokémon radiate vitality.\p"
 	.string "So, what say you?\n"
 	.string "Will you take this EGG to hatch?$"
 
@@ -354,7 +139,7 @@ LavaridgeTown_Text_ReceivedTheEgg: @ 81EACF4
 	.string "{PLAYER} received the EGG.$"
 
 LavaridgeTown_Text_NoRoomForThisEgg: @ 81EAD09
-	.string "Oh? You've too many POKéMON.\n"
+	.string "Oh? You've too many Pokémon.\n"
 	.string "There's no room for this EGG…$"
 
 LavaridgeTown_Text_AsYouWishThen: @ 81EAD44
@@ -364,7 +149,7 @@ LavaridgeTown_Text_AsYouWishThen: @ 81EAD44
 
 LavaridgeTown_Text_EverySoOftenEggFoundAtDayCare: @ 81EAD9E
 	.string "Every so often, an EGG will be found at\n"
-	.string "the POKéMON DAY CARE.\p"
+	.string "the Pokémon DAY CARE.\p"
 	.string "Or at least that's how the rumor goes.$"
 
 LavaridgeTown_Text_HotSpringsNeverRunDry: @ 81EAE03
@@ -381,7 +166,7 @@ LavaridgeTown_Text_PokemonNippedBackside: @ 81EAEE1
 	.string "Sigh…\p"
 	.string "So warm and heavenly…\p"
 	.string "Eh? Gyaah! Ouch!\p"
-	.string "A POKéMON nipped my backside!$"
+	.string "A Pokémon nipped my backside!$"
 
 LavaridgeTown_Text_OhYouLikeHotSprings: @ 81EAF4E
 	.string "Oh, you like hot springs, do you?\p"
@@ -394,7 +179,7 @@ LavaridgeTown_Text_BatheInHotSpringsEveryDay: @ 81EAF9B
 	.string "GYM LEADER like FLANNERY.$"
 
 LavaridgeTown_Text_IfPokemonInHotSprings: @ 81EB003
-	.string "If people put POKéMON in hot springs,\n"
+	.string "If people put Pokémon in hot springs,\n"
 	.string "it might be seriously strange.\p"
 	.string "Why, it might be an electric bath, or\n"
 	.string "a bubble bath, or even a lava bath…$"
@@ -408,15 +193,311 @@ LavaridgeTown_Text_HotSpringsClaims: @ 81EB092
 
 LavaridgeTown_Text_TownSign: @ 81EB12B
 	.string "LAVARIDGE TOWN\p"
-	.string "“POKéMON CENTER HOT SPRINGS\n"
+	.string "“Pokémon CENTER HOT SPRINGS\n"
 	.string "An excellent place for relaxing!”$"
 
 LavaridgeTown_Text_GymSign: @ 81EB178
-	.string "LAVARIDGE TOWN POKéMON GYM\n"
+	.string "LAVARIDGE TOWN Pokémon GYM\n"
 	.string "LEADER: FLANNERY\l"
 	.string "“One with a fiery passion that burns!”$"
 
 LavaridgeTown_Text_HerbShopSign: @ 81EB1CB
-	.string "POKéMON HERB SHOP\n"
+	.string "Pokémon HERB SHOP\n"
 	.string "“Bitter taste--better cure!”$"
+
+
+@=============================================================================================RIVAL STUFF
+LT_RivalEnter::
+	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	goto_if_set FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_end
+	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
+	goto_if_set FLAG_TEMP_A, ryu_end
+	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
+	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	goto_if_eq lrt_malerivalenter
+	playbgm MUS_GIRL_SUP, 1
+	lock
+	playse SE_DOOR
+	waitse
+	addobject 7
+	playse SE_PIN
+	waitse
+	applymovement 7, LT_RivalLeavingPC
+	waitmovement 0
+	goto LT_FemaleRivalInteraction
+	
+lrt_malerivalenter::
+	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	goto_if_set FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_end
+	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
+	goto_if_set FLAG_TEMP_A, ryu_end
+	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
+	playbgm MUS_BOY_SUP, 1
+	lock
+	playse SE_DOOR
+	waitse
+	addobject 7
+	playse SE_PIN
+	waitse
+	applymovement 7, LT_RivalLeavingPC
+	waitmovement 0
+	goto LT_MaleRivalInteraction
+	
+LT_FemaleRivalInteraction:: @ 81EA5B5
+	lockall
+	faceplayer
+	nop
+    drawheadshot HEAD_DAWN
+	msgbox LT_FemaleRivalIntro, MSGBOX_DEFAULT
+	waitmessage
+	closemessage
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq LT_FemalRivalGiftPokeNoSpace
+	special RyuDawnGiftPoke
+	setflag FLAG_RYU_DAWN_GIFTPOKE_RECEIVED
+	showmonpic SPECIES_SNEASEL, 10, 3
+	playmoncry SPECIES_SNEASEL, 0
+	waitmoncry
+	playfanfare MUS_FANFA4
+	waitfanfare
+	hidemonpic
+	msgbox LT_RECEIVEDPOKE, MSGBOX_SIGN
+	msgbox LT_GivePokeExplanation, MSGBOX_DEFAULT
+	closemessage
+	removecutscenesprites
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	goto_if_unset FLAG_RYU_LT_RIVAL, LT_Rival2Leave
+	applymovement 7, LT_RivalLeavesTown
+	waitmovement 0
+	removeobject 7
+	release
+	end
+	
+LT_MaleRivalInteraction:: @ 81EA5B5
+	lockall
+	faceplayer
+	drawheadshot HEAD_BRENDAN
+	msgbox LT_MaleRivalIntro, MSGBOX_DEFAULT
+	waitmessage
+	closemessage
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq LT_MaleRivalGiftPokeNoSpace
+	special RyuBrendanGiftPoke
+	playse SE_EXPMAX
+	waitse
+	setflag FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED
+	showmonpic SPECIES_SNORUNT, 10, 3
+	playmoncry SPECIES_SNORUNT, 0
+	waitmoncry
+	playfanfare MUS_FANFA4
+	waitfanfare
+	hidemonpic
+	msgbox LT_MaleRECEIVEDPOKE, MSGBOX_SIGN
+	msgbox LT_MaleGivePokeExplanation, MSGBOX_DEFAULT
+	waitmessage
+	savebgm MUS_DUMMY
+	removecutscenesprites
+	fadedefaultbgm
+	goto_if_unset FLAG_RYU_LT_RIVAL2, LT_maleRival2Leave
+	applymovement 7, LT_RivalLeavesTown
+	waitmovement 0
+	removeobject 7
+	special DrawWholeMapView
+	release
+	end
+
+LT_RivalEnter2::
+	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
+	goto_if_set FLAG_TEMP_A, ryu_end
+	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
+	applymovement EVENT_OBJ_ID_PLAYER, LT_stepright
+	goto LT_RivalEnter
+	
+LT_MaleRivalEnter2::
+	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
+	goto_if_set FLAG_TEMP_A, ryu_end
+	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
+	applymovement EVENT_OBJ_ID_PLAYER, LT_stepright
+	goto LT_RivalEnter
+	
+LT_RivalEnter3::
+	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
+	goto_if_set FLAG_TEMP_A, ryu_end
+	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
+	applymovement EVENT_OBJ_ID_PLAYER, LT_stepleft
+	goto LT_RivalEnter
+	
+LT_MaleRivalEnter3::
+	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
+	goto_if_set FLAG_TEMP_A, ryu_end
+	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
+	applymovement EVENT_OBJ_ID_PLAYER, LT_stepleft
+	goto LT_RivalEnter
+	
+LT_stepright:
+	walk_right
+	face_up
+	step_end
+	
+LT_stepleft:
+	walk_left
+	face_up
+	step_end
+	
+LT_HasSpace::
+	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	goto_if_eq LT_HasSpace2
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq LT_FemalRivalGiftPokeNoSpace
+	setflag FLAG_RYU_LT_RIVAL
+	goto LT_FemaleRivalInteraction
+	
+LT_HasSpace2::
+	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq ryu_end
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq LT_MaleRivalGiftPokeNoSpace
+	setflag FLAG_RYU_LT_RIVAL2
+	goto LT_MaleRivalInteraction
+	
+LT_RECEIVEDPOKE:
+	.string "{PLAYER} received a Sneasel!$"
+	
+LT_MaleRECEIVEDPOKE:
+	.string "{PLAYER} received a Snorunt!$"
+	
+LT_Rival2Leave::
+	applymovement 7, LT_RivalLeavesTown
+	waitmovement 0
+	removeobject 7
+	release
+	end
+	
+LT_maleRival2Leave::
+	applymovement 7, LT_RivalLeavesTown
+	waitmovement 0
+	removeobject 7
+	release
+	end
+
+LT_FemalRivalGiftPokeNoSpace::
+	setflag FLAG_TEMP_A
+	msgbox LT_NoSpace MSGBOX_NPC
+	removecutscenesprites
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	setflag FLAG_RYU_INTERACTED_LAVARIDGE
+	clearflag FLAG_RYU_LT_RIVAL
+	release
+	end
+
+LT_MaleRivalGiftPokeNoSpace::
+	setflag FLAG_TEMP_A
+	msgbox LT_MaleNoSpace MSGBOX_NPC
+	savebgm MUS_DUMMY
+	removecutscenesprites
+	fadedefaultbgm
+	setflag FLAG_RYU_INTERACTED_LAVARIDGE
+	clearflag FLAG_RYU_LT_RIVAL2
+	release
+	end
+
+LT_MaleNoSpace:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Yo! Come chat with me when you\n"
+	.string "have space in your group!\p"
+	.string "Trust me!$"
+
+LT_NoSpace:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey! Come back when you have space\n"
+	.string "in your party... Just trust me!\p"
+	.string "I'll wait here!$"
+
+LT_FemaleRivalIntro: @ 81EA7C0
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}! Long time no see!\p"
+	.string "Oh? I was in the hot springs.\n"
+	.string "It's a shame you couldn't join me...\p"
+    .string "You might have gotten a good show...\n"
+	.string "Anyways, I want you to have this\p"
+	.string "pokémon. It is a little too...\n"
+	.string "facetious for my training methods.$"
+	
+LT_MaleRivalIntro: @ 81EA9A2
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}, hey, it's been a while.\n"
+	.string "How's it going?\p"
+	.string "Hmm…\n"
+	.string "You look different... Did you change\p"
+	.string "your hair? I like it!\n"
+	.string "...\p"
+	.string "Hey, so I caught this pokémon a while\n"
+	.string "back, and I can't train it. It gets really\p"
+	.string "shy, and doesn't like to train with the\n"
+	.string "rest of my team. I think it needs a\p"
+	.string "softer touch.$"
+
+LT_GivePokeExplanation: @ 81EA897
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: It's a Sneasel! They're\n"
+	.string "known to be little pranksters\p"
+	.string "but extremely strong when trained\n"
+	.string "for battle. This one is especially\p"
+	.string "bull-headed. Probably has a nature\n"
+	.string "well oriented for battle.\p"
+	.string "If you're trying to impress me...\n"
+	.string "It's working! I'm going to go\p"
+	.string "challenge your father in Petalburg.\n"
+	.string "Hope to see you and Sneasel soon!$"
+
+LT_MaleGivePokeExplanation: @ 81EA897
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: It's a Snorunt! They're\n"
+	.string "known to require patience and a\p"
+	.string "light touch to evolve into a rare\n"
+	.string "pokémon called Froslass.\p"
+	.string "This one's kinda shy. I bet\n"
+	.string "it can really cause some one\p"
+	.string "a bad time in battle.\n"
+	.string "I wish I could spend more time\p"
+	.string "with you and Snorunt, but I have\n"
+	.string "to help my dad. Honestly, he's so\p"
+	.string "lost without me! Anyways, Nice\n"
+	.string "chatting with you, hope to see\p"
+	.string "you soon!$"
+	
+LT_RivalLeavingPC:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+	
+LT_RivalLeavesTown:
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
 

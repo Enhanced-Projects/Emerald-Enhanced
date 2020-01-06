@@ -457,26 +457,13 @@ Route110_EventScript_EndChallenge:: @ 81EF743
 	fadedefaultbgm
 	return
 
-Route110_EventScript_RivalTrigger1:: @ 81EF74D
-	setvar VAR_0x8008, 1
-	goto Route110_EventScript_RivalScene
-	end
-
-Route110_EventScript_RivalTrigger2:: @ 81EF758
-	setvar VAR_0x8008, 2
-	goto Route110_EventScript_RivalScene
-	end
-
-Route110_EventScript_RivalTrigger3:: @ 81EF763
-	setvar VAR_0x8008, 3
-	goto Route110_EventScript_RivalScene
-	end
-
-Route110_EventScript_RivalScene:: @ 81EF76E
+Route110_EventScript_RivalScene:: @ 81EF76E	
+	goto_if_set FLAG_RYU_INTERACTED_RIVAL_R110, ryu_end
 	lockall
+	faceplayer
 	checkplayergender
 	compare VAR_RESULT, MALE
-	call_if_eq Route110_EventScript_PlayMayMusic
+	call_if_eq Route110_EventScript_PlayDawnMusic
 	compare VAR_RESULT, FEMALE
 	call_if_eq Route110_EventScript_PlayBrendanMusic
 	applymovement 28, Common_Movement_WalkInPlaceFastestDown
@@ -486,21 +473,15 @@ Route110_EventScript_RivalScene:: @ 81EF76E
 	applymovement 28, Common_Movement_Delay48
 	waitmovement 0
 	delay 30
-	compare VAR_0x8008, 1
-	call_if_eq Route110_EventScript_RivalApproachPlayer1
-	compare VAR_0x8008, 2
-	call_if_eq Route110_EventScript_RivalApproachPlayer2
-	compare VAR_0x8008, 3
-	call_if_eq Route110_EventScript_RivalApproachPlayer3
 	checkplayergender
 	compare VAR_RESULT, MALE
-	goto_if_eq Route110_EventScript_MayBattle
+	goto_if_eq Route110_EventScript_DawnBattle
 	compare VAR_RESULT, FEMALE
 	goto_if_eq Route110_EventScript_BrendanBattle
 	releaseall
 	end
 
-Route110_EventScript_PlayMayMusic:: @ 81EF7E1
+Route110_EventScript_PlayDawnMusic:: @ 81EF7E1
 	playbgm MUS_GIRL_SUP, 1
 	return
 
@@ -508,68 +489,42 @@ Route110_EventScript_PlayBrendanMusic:: @ 81EF7E6
 	playbgm MUS_BOY_SUP, 1
 	return
 
-Route110_EventScript_MayBattle:: @ 81EF7EB
-	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route110_EventScript_MayBattleTreecko
-	case 1, Route110_EventScript_MayBattleTorchic
-	case 2, Route110_EventScript_MayBattleMudkip
+Route110_EventScript_DawnBattle:: @ 81EF7EB
+	msgbox Route110_Text_DawnLetsBattle, MSGBOX_DEFAULT
+	goto Route110_EventScript_DawnBattleTreecko
 	end
 
-Route110_EventScript_MayBattleTreecko:: @ 81EF81A
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TREECKO, Route110_Text_MayDefeated
-	goto Route110_EventScript_MayDefeated
+Route110_EventScript_DawnBattleTreecko:: @ 81EF81A
+	trainerbattle_no_intro TRAINER_DAWN_3, Route110_Text_DawnDefeated
+	goto Route110_EventScript_DawnDefeated
 	end
 
-Route110_EventScript_MayBattleTorchic:: @ 81EF82A
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TORCHIC, Route110_Text_MayDefeated
-	goto Route110_EventScript_MayDefeated
-	end
-
-Route110_EventScript_MayBattleMudkip:: @ 81EF83A
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_MUDKIP, Route110_Text_MayDefeated
-	goto Route110_EventScript_MayDefeated
-	end
-
-Route110_EventScript_MayDefeated:: @ 81EF84A
-	msgbox Route110_Text_MayTakeThis, MSGBOX_DEFAULT
-	call Route110_EventScript_GiveItemfinder
-	msgbox Route110_Text_MayExplainItemfinder, MSGBOX_DEFAULT
+Route110_EventScript_DawnDefeated:: @ 81EF84A
+	msgbox Route110_Text_DawnTakeThis, MSGBOX_DEFAULT
+	call Route110_EventScript_GiveWaystone
+	msgbox Route110_Text_DawnExplainWaystone, MSGBOX_DEFAULT
 	goto Route110_EventScript_RivalExit
 	end
 
 Route110_EventScript_BrendanBattle:: @ 81EF865
 	msgbox Route110_Text_BrendayLetsBattle, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route110_EventScript_BrendanBattleTreecko
-	case 1, Route110_EventScript_BrendanBattleTorchic
-	case 2, Route110_EventScript_BrendanBattleMudkip
-	end
-
-Route110_EventScript_BrendanBattleTreecko:: @ 81EF894
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TREECKO, Route110_Text_BrendanDefeated
-	goto Route110_EventScript_BrendanDefeated
-	end
-
-Route110_EventScript_BrendanBattleTorchic:: @ 81EF8A4
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TORCHIC, Route110_Text_BrendanDefeated
-	goto Route110_EventScript_BrendanDefeated
+	goto Route110_EventScript_BrendanBattleMudkip
 	end
 
 Route110_EventScript_BrendanBattleMudkip:: @ 81EF8B4
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_MUDKIP, Route110_Text_BrendanDefeated
+	trainerbattle_no_intro TRAINER_BRENDAN_3, Route110_Text_BrendanDefeated
 	goto Route110_EventScript_BrendanDefeated
 	end
 
 Route110_EventScript_BrendanDefeated:: @ 81EF8C4
 	msgbox Route110_Text_BrendanTakeThis, MSGBOX_DEFAULT
-	call Route110_EventScript_GiveItemfinder
-	msgbox Route110_Text_BrendanExplainItemfinder, MSGBOX_DEFAULT
+	call Route110_EventScript_GiveWaystone
+	msgbox Route110_Text_BrendanExplainWaystone, MSGBOX_DEFAULT
 	goto Route110_EventScript_RivalExit
 	end
 
-Route110_EventScript_GiveItemfinder:: @ 81EF8DF
-	giveitem_std ITEM_ITEMFINDER
+Route110_EventScript_GiveWaystone:: @ 81EF8DF
+	giveitem_std ITEM_NUGGET
 	return
 
 Route110_EventScript_RivalExit:: @ 81EF8EC
@@ -592,7 +547,7 @@ Route110_EventScript_RivalExit:: @ 81EF8EC
 	compare VAR_0x8008, 3
 	call_if_eq Route110_EventScript_RivalExit3
 	removeobject 29
-	setvar VAR_ROUTE110_STATE, 1
+	setflag FLAG_RYU_INTERACTED_RIVAL_R110
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	releaseall
@@ -879,57 +834,61 @@ Route110_Text_AquaActionsBringSmiles: @ 81EFC0D
 	.string "TEAM AQUA's actions should bring\n"
 	.string "smiles to people's faces!$"
 
-Route110_Text_MayLetsBattle: @ 81EFC48
+Route110_Text_DawnLetsBattle: @ 81EFC48
 	.string "Dawn: Hi, {PLAYER}, long time no see!\p"
 	.string "While I was searching for other\n"
-	.string "POKéMON, my POKéMON grew stronger.\p"
+	.string "Pokémon, my Pokémon grew stronger.\p"
 	.string "So…\n"
 	.string "How about a little battle?$"
 
-Route110_Text_MayDefeated: @ 81EFCCB
-	.string "Yikes!\n"
-	.string "You're better than I expected!$"
+Route110_Text_DawnDefeated: @ 81EFCCB
+	.string "Ow!\n"
+	.string "You really had your way with me!$"
 
-Route110_Text_MayTakeThis: @ 81EFCF1
+Route110_Text_DawnTakeThis: @ 81EFCF1
 	.string "Dawn: {PLAYER}, you've been busy\n"
 	.string "training, too, haven't you?\p"
 	.string "I think you deserve a reward!\n"
 	.string "This is from me!$"
 
-Route110_Text_MayExplainItemfinder: @ 81EFD58
-	.string "Dawn: That's an ITEMFINDER.\p"
-	.string "Try it out. If there is an item that's\n"
-	.string "not visible, it emits a sound.\p"
+Route110_Text_DawnExplainWaystone: @ 81EFD58
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: That's a Waystone.\p"
+	.string "It lets you teleport to any city\n"
+	.string "you have visited.\p"
 	.string "Okay, {PLAYER}, let's meet again!\p"
 	.string "I know it's a little silly coming from\n"
 	.string "me, but I think you should train a lot\l"
 	.string "harder for the next time.$"
 
 Route110_Text_BrendayLetsBattle: @ 81EFE3F
-	.string "BRENDAN: Hey, {PLAYER}.\n"
-	.string "So this is where you were.\l"
-	.string "How's it going?\p"
-	.string "Have you been raising your POKéMON?\n"
-	.string "I'll check for you.$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Hey, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}. Fancy\n"
+	.string "meeting you here.\p"
+	.string "How's it going? Have you been\n"
+	.string "raising your pokémon?\lI'll check for you.$"
+
+r110_maleRivalIntroText2:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}How? With a battle, of course.\p"
+	.string "Show me your stuff!$"
 
 Route110_Text_BrendanDefeated: @ 81EFEB4
-	.string "Hmm…\n"
-	.string "You're pretty good.$"
+	.string "Hmm… not gonna lie, I'm pretty miffed.\n"
+	.string "And maybe a little turned on.$"
 
 Route110_Text_BrendanTakeThis: @ 81EFECD
-	.string "BRENDAN: {PLAYER}, you've trained\n"
-	.string "without me noticing…\p"
-	.string "Good enough!\n"
-	.string "Here, take this.$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Jeez, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}, You've\n"
+	.string "trained up... \n"
+	.string "I like that.\l"
+	.string "Here, you can have this.$"
 
-Route110_Text_BrendanExplainItemfinder: @ 81EFF1C
-	.string "BRENDAN: That's an ITEMFINDER.\p"
-	.string "Use it to root around for items that\n"
-	.string "aren't visible.\p"
-	.string "If it senses something, it emits\n"
-	.string "a sound.\p"
-	.string "Anyway, I'm off to look for new\n"
-	.string "POKéMON.$"
+Route110_Text_BrendanExplainWaystone: @ 81EFF1C
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: That thing's called a\n"
+	.string "Waystone.\p"
+	.string "Rub it the right way to travel\n"
+	.string "anywhere you've been to before.\p"
+	.string "… … …\p"
+	.string "Well, I'll be heading off now.\n"
+	.string "See ya around, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}.\l"
+	.string "Keep training!$"
 
 Route110_Text_RideBikeAtFullSpeed: @ 81EFFC3
 	.string "Wouldn't it be great to ride a BIKE\n"
@@ -959,7 +918,7 @@ Route110_Text_YouGotBikeFromRydel: @ 81F006A
 
 Route110_Text_TwoRoads: @ 81F0261
 	.string "The two roads, one above, one below…\p"
-	.string "A road each for people and POKéMON.\n"
+	.string "A road each for people and Pokémon.\n"
 	.string "Perhaps that is right and fair.$"
 
 Route110_Text_WalkOnTheLowRoad: @ 81F02CA
@@ -976,7 +935,7 @@ Route110_Text_WhichShouldIChoose: @ 81F0390
 	.string "Which should I choose?\p"
 	.string "Make a beeline for MAUVILLE on\n"
 	.string "CYCLING ROAD, or take the low road\l"
-	.string "and look for POKéMON?$"
+	.string "and look for Pokémon?$"
 
 Route110_Text_CyclingChallengeResultSummary: @ 81F03FF
 	.string "Number of collisions:\n"
@@ -1063,7 +1022,7 @@ Route110_Text_TrainerTipsPrlzSleep: @ 81F090D
 	.string "The foe can be made helpless by\n"
 	.string "paralyzing it or causing it to sleep.\p"
 	.string "It is an important technique for\n"
-	.string "POKéMON battles.$"
+	.string "Pokémon battles.$"
 
 Route110_Text_TrainerTipsRegisterItems: @ 81F0992
 	.string "TRAINER TIPS\p"

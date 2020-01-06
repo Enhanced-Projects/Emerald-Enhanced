@@ -54,7 +54,7 @@ RyuExpBatteryStored:
 	.string "You have {STR_VAR_1} Exp. Points stored.$"
 
 RyuExpBatteryUseOnPokemon:
-	.string "Would you like to give {STR_VAR_1}\nExp Points to a pokémon?$"
+	.string "Would you like to give {STR_VAR_1}\nExp Points to a Pokémon?$"
 
 RyuExpBatterySuccess:
 	.string "Success! {STR_VAR_1} Exp. Points\nwere given to {STR_VAR_2}!$"
@@ -296,7 +296,7 @@ MC_GC_DEV_GiftIntro:
 	.string "Welcome to the item Dev Menu.\pPlease enter the ID of the item\nyou want.$"
 
 MC_GC_DEV_PokeGiftIntro:
-	.string "Welcome to the pokémon Dev Menu.\pPlease enter the ID of the pokémon\nyou want.$"
+	.string "Welcome to the Pokémon Dev Menu.\pPlease enter the ID of the Pokémon\nyou want.$"
 	
 MC_GC_MENU::
 	multichoicegrid 17, 3, 129, 3, 0
@@ -353,7 +353,7 @@ MC_GC_DevModePokemonGive::
 	end
 
 MC_GC_GivePokeMsg:
-	.string "You've been given the pokémon with\nthe ID number {STR_VAR_1}.$"
+	.string "You've been given the Pokémon with\nthe ID number {STR_VAR_1}.$"
 
 MC_GC_RyuGiveItemDevMode:
 	.string "You've been given 99 of item ID {STR_VAR_1}.$"
@@ -1015,7 +1015,7 @@ RyuDebug_GiveAllItemsBeginMsg:
 	.string "Giving all tms...$"
 
 RyuDebug_givemonsquery:
-	.string "Would you like to be given\nall the pokémon in the game?$"
+	.string "Would you like to be given\nall the Pokémon in the game?$"
 
 RyuDebug_cancel::
     closemessage
@@ -1599,7 +1599,7 @@ RyuUserEvNoImprint::
 RyuUserEVInfo:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Imprinter\p"
 	.string "{SHADOW LIGHT_GREY}Select a stat to reduce to\n"
-	.string "0 for the first pokémon\l"
+	.string "0 for the first Pokémon\l"
 	.string "in your party.\pThis operation cannot be\n"
 	.string "undone.$"
 
@@ -1849,7 +1849,7 @@ RyuGymItemReward8::
 	return
 
 RyuHealedGymMsg:
-	.string "I've restored your pokémon to\n"
+	.string "I've restored your Pokémon to\n"
 	.string "full health.$"
 
 RyuGameClearedMsg:
@@ -1878,7 +1878,7 @@ NuzlockeFail:
 	.string "pity.$"
 	
 NormalModeStart:
-	.string "You've been given a pokémon.\n"
+	.string "You've been given a Pokémon.\n"
 	.string "You may now play the game normally.$"
 	
 	

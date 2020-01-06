@@ -108,7 +108,7 @@ NM10_CrystalOnix::
 	end
 	
 NM10_CrystalOnixSpeech:
-    .string "It is the most beautiful pokémon\n"
+    .string "It is the most beautiful Pokémon\n"
     .string "statue you've ever seen.\p"
 	.string "It has a faint yellow glow to it.\n"
     .string "... ... ... ...\p"

@@ -85,7 +85,7 @@ RyuNGPInfo:
 	.string "In this mode, you get to keep any\n"
 	.string "unique quest reward items, such as\l"
 	.string "the Waystone and the EXP Drive.\p"
-	.string "Your pokémon storage is still\n"
+	.string "Your Pokémon storage is still\n"
 	.string "intact, including any held items.$"
 
 RyuSetTime:
@@ -219,7 +219,7 @@ IT_NuzlockeIntro:
 	.string "Emerald Enhanced uses a special set\p"
 	.string "of rules, and enforces them. They are:\p"
 	.string "1: No marts.\p"
-	.string "2: 3 uses per pokémon center.\p"
+	.string "2: 3 uses per Pokémon center.\p"
 	.string "3: You start with balls and potions.\p"
 	.string "4: Black-Out ends the game.\p"
 	.string "5: Gym Leaders heal and give items\p"

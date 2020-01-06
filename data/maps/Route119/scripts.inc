@@ -28,301 +28,6 @@ Route119_EventScript_MoveInstituteWorkersDownstairs:: @ 81F4466
 	setvar VAR_WEATHER_INSTITUTE_STATE, 2
 	return
 
-Route119_EventScript_RivalTrigger1:: @ 81F4472
-	setvar VAR_TEMP_1, 1
-	goto Route119_EventScript_RivalEncounter
-	end
-
-Route119_EventScript_RivalTrigger2:: @ 81F447D
-	setvar VAR_TEMP_1, 2
-	goto Route119_EventScript_RivalEncounter
-	end
-
-Route119_EventScript_RivalEncounter:: @ 81F4488
-	lockall
-	addobject 25  @ Rival on bike
-	checkplayergender
-	compare VAR_RESULT, MALE
-	call_if_eq Route119_EventScript_PlayMayMusic
-	compare VAR_RESULT, FEMALE
-	call_if_eq Route119_EventScript_PlayBrendanMusic
-	delay 65
-	compare VAR_TEMP_1, 1
-	call_if_eq Route119_EventScript_RivalEnter1
-	compare VAR_TEMP_1, 2
-	call_if_eq Route119_EventScript_RivalEnter2
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	delay 30
-	compare VAR_TEMP_1, 1
-	call_if_eq Route119_EventScript_SetRivalPos1
-	compare VAR_TEMP_1, 2
-	call_if_eq Route119_EventScript_SetRivalPos2
-	removeobject 25
-	addobject 16  @ Rival on foot
-	delay 30
-	checkplayergender
-	compare VAR_RESULT, MALE
-	goto_if_eq Route119_EventScript_BattleMay
-	compare VAR_RESULT, FEMALE
-	goto_if_eq Route119_EventScript_BattleBrendan
-	releaseall
-	end
-
-Route119_EventScript_PlayMayMusic:: @ 81F4501
-	playbgm MUS_GIRL_SUP, 1
-	return
-
-Route119_EventScript_PlayBrendanMusic:: @ 81F4506
-	playbgm MUS_BOY_SUP, 1
-	return
-
-Route119_EventScript_BattleMay:: @ 81F450B
-	msgbox Route119_Text_MayIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route119_EventScript_BattleMayTreecko
-	case 1, Route119_EventScript_BattleMayTorchic
-	case 2, Route119_EventScript_BattleMayMudkip
-	end
-
-Route119_EventScript_BattleMayTreecko:: @ 81F453A
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TREECKO, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
-	end
-
-Route119_EventScript_BattleMayTorchic:: @ 81F454A
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TORCHIC, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
-	end
-
-Route119_EventScript_BattleMayMudkip:: @ 81F455A
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_MUDKIP, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
-	end
-
-Route119_EventScript_DefeatedMay:: @ 81F456A
-	msgbox Route119_Text_MayPresentForYou, MSGBOX_DEFAULT
-	call Route119_EventScript_GiveFlyHM
-	msgbox Route119_Text_MayExplainFly, MSGBOX_DEFAULT
-	goto Route119_EventScript_RivalExitScottArrive
-	end
-
-Route119_EventScript_BattleBrendan:: @ 81F4585
-	msgbox Route119_Text_BrendanIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route119_EventScript_BattleBrendanTreecko
-	case 1, Route119_EventScript_BattleBrendanTorchic
-	case 2, Route119_EventScript_BattleBrendanMudkip
-	end
-
-Route119_EventScript_BattleBrendanTreecko:: @ 81F45B4
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TREECKO, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_BattleBrendanTorchic:: @ 81F45C4
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TORCHIC, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_BattleBrendanMudkip:: @ 81F45D4
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_MUDKIP, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_DefeatedBrendan:: @ 81F45E4
-	msgbox Route119_Text_BrendanIllGiveYouThis, MSGBOX_DEFAULT
-	call Route119_EventScript_GiveFlyHM
-	msgbox Route119_Text_BrendanExplainFly, MSGBOX_DEFAULT
-	goto Route119_EventScript_RivalExitScottArrive
-	end
-
-Route119_EventScript_GiveFlyHM:: @ 81F45FF
-	giveitem_std ITEM_HM02
-	setflag FLAG_RECEIVED_HM02
-	return
-
-Route119_EventScript_RivalExitScottArrive:: @ 81F460F
-	closemessage
-	compare VAR_TEMP_1, 1
-	call_if_eq Route119_EventScript_SetRivalPos1
-	compare VAR_TEMP_1, 2
-	call_if_eq Route119_EventScript_SetRivalPos2
-	removeobject 16  @ Rival on foot
-	addobject 25     @ Rival on bike
-	delay 30
-	compare VAR_TEMP_1, 1
-	call_if_eq Route119_EventScript_RivalExit1
-	compare VAR_TEMP_1, 2
-	call_if_eq Route119_EventScript_RivalExit2
-	removeobject 25
-	setvar VAR_ROUTE119_STATE, 1
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	delay 60
-	compare VAR_TEMP_1, 1
-	call_if_eq Route119_EventScript_SetScottPos1
-	compare VAR_TEMP_1, 2
-	call_if_eq Route119_EventScript_SetScottPos2
-	addobject 43  @ Scott
-	applymovement 43, Route119_Movement_ScottEnter
-	waitmovement 0
-	addvar VAR_SCOTT_STATE, 1
-	msgbox Route119_Text_ScottWayToGoBeSeeingYou, MSGBOX_DEFAULT
-	closemessage
-	compare VAR_TEMP_1, 1
-	call_if_eq Route119_EventScript_ScottExit1
-	compare VAR_TEMP_1, 2
-	call_if_eq Route119_EventScript_ScottExit2
-	removeobject 43
-	releaseall
-	end
-
-Route119_EventScript_SetScottPos1:: @ 81F46A0
-	setobjectxyperm 43, 27, 25
-	return
-
-Route119_EventScript_SetScottPos2:: @ 81F46A8
-	setobjectxyperm 43, 28, 25
-	return
-
-Route119_EventScript_ScottExit1:: @ 81F46B0
-	applymovement 43, Route119_Movement_ScottExit1
-	waitmovement 0
-	return
-
-Route119_EventScript_ScottExit2:: @ 81F46BB
-	applymovement 43, Route119_Movement_ScottExit2
-	waitmovement 0
-	return
-
-Route119_EventScript_RivalEnter1:: @ 81F46C6
-	applymovement 25, Route119_Movement_RivalEnter1
-	waitmovement 0
-	return
-
-Route119_EventScript_RivalEnter2:: @ 81F46D1
-	applymovement 25, Route119_Movement_RivalEnter2
-	waitmovement 0
-	return
-
-Route119_EventScript_RivalExit1:: @ 81F46DC
-	applymovement EVENT_OBJ_ID_PLAYER, Route119_Movement_PlayerWatchRivalExit1
-	applymovement 25, Route119_Movement_RivalExit1
-	waitmovement 0
-	return
-
-Route119_EventScript_RivalExit2:: @ 81F46EE
-	applymovement EVENT_OBJ_ID_PLAYER, Route119_Movement_PlayerWatchRivalExit2
-	applymovement 25, Route119_Movement_RivalExit2
-	waitmovement 0
-	return
-
-Route119_EventScript_SetRivalPos1:: @ 81F4700
-	setobjectxyperm 16, 25, 32
-	setobjectxyperm 25, 25, 32
-	return
-
-Route119_EventScript_SetRivalPos2:: @ 81F470F
-	setobjectxyperm 16, 26, 32
-	setobjectxyperm 25, 26, 32
-	return
-
-Route119_Movement_PlayerWatchRivalExit1: @ 81F471E
-	delay_16
-	walk_in_place_fastest_right
-	delay_8
-	walk_in_place_fastest_up
-	step_end
-
-Route119_Movement_PlayerWatchRivalExit2: @ 81F4723
-	delay_16
-	walk_in_place_fastest_left
-	delay_8
-	walk_in_place_fastest_up
-	step_end
-
-Route119_Movement_RivalEnter1: @ 81F4728
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	step_end
-
-Route119_Movement_RivalEnter2: @ 81F4732
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	step_end
-
-Route119_Movement_RivalExit1: @ 81F473D
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	step_end
-
-Route119_Movement_RivalExit2: @ 81F4747
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	step_end
-
-Route119_Movement_ScottEnter: @ 81F4752
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_down
-	step_end
-
-Route119_Movement_ScottExit1: @ 81F475A
-	walk_up
-	walk_right
-	walk_right
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-Route119_Movement_ScottExit2: @ 81F4763
-	walk_up
-	walk_right
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
 Route119_EventScript_CyclingTriathleteM:: @ 81F476B
 	msgbox Route119_Text_TallGrassSnaresBikeTires, MSGBOX_NPC
 	end
@@ -487,101 +192,8 @@ Route119_EventScript_TrainerTipsDecoration:: @ 81F49E3
 	end
 
 Route119_EventScript_ScottWonAtFortreeGymCall:: @ 81F49EC
-	lockall
-	pokenavcall Route119_Text_ScottYouWonAtFortreeGym
-	waitmessage
-	clearflag FLAG_SCOTT_CALL_FORTREE_GYM
-	addvar VAR_SCOTT_STATE, 1
 	releaseall
 	end
-
-Route119_Text_MayIntro: @ 81F49FD
-	.string "Dawn: {PLAYER}!\n"
-	.string "Where were you? I was looking for you!\p"
-	.string "How much stronger have you gotten?\n"
-	.string "Let me check for you!\p"
-	.string "Ready with your POKéMON?\n"
-	.string "Of course you are! Go!$"
-
-Route119_Text_MayDefeat: @ 81F4A98
-	.string "Achah!\n"
-	.string "{PLAYER}, you're strong!\p"
-	.string "I was worried that you might be\n"
-	.string "struggling with your training.$"
-
-Route119_Text_MayPresentForYou: @ 81F4AF3
-	.string "Dawn: But I had absolutely nothing to\n"
-	.string "worry about! Keep it up!\p"
-	.string "And, here! I have a present for you.$"
-
-Route119_Text_MayExplainFly: @ 81F4B56
-	.string "Dawn: Use FLY, and your POKéMON will\n"
-	.string "instantly carry you to any town you've\l"
-	.string "already visited.\p"
-	.string "But, to use FLY, you have to get\n"
-	.string "the GYM BADGE from FORTREE CITY.\l"
-	.string "That's important, so don't forget.\p"
-	.string "You should FLY home and visit\n"
-	.string "LITTLEROOT for a change.\p"
-	.string "I bet your mom's worried about you,\n"
-	.string "{PLAYER}.\p"
-	.string "Well, let's meet again somewhere!$"
-
-Route119_Text_BrendanIntro: @ 81F4C9A
-	.string "BRENDAN: {PLAYER}! So this is where\n"
-	.string "you've been looking for POKéMON?\p"
-	.string "Let me see how good you got.\n"
-	.string "I'll test you!\p"
-	.string "Now!\n"
-	.string "It's a battle, so battle!$"
-
-Route119_Text_BrendanDefeat: @ 81F4D24
-	.string "Hmm…\n"
-	.string "You've gotten pretty darn decent.$"
-
-Route119_Text_BrendanIllGiveYouThis: @ 81F4D4B
-	.string "BRENDAN: I'd say you're good enough\n"
-	.string "to search for POKéMON anywhere.\p"
-	.string "Here, I'll give you this.\n"
-	.string "Try it out.$"
-
-Route119_Text_BrendanExplainFly: @ 81F4DB5
-	.string "BRENDAN: Use FLY, and your POKéMON\n"
-	.string "instantly carries you to any town\l"
-	.string "you've already visited.\p"
-	.string "But you need the FORTREE GYM BADGE \n"
-	.string "to do that.\p"
-	.string "Anyway, I have to move along.$"
-
-Route119_Text_ScottWayToGoBeSeeingYou: @ 81F4E60
-	.string "SCOTT: Hahahah!\n"
-	.string "Way to go, {PLAYER}!\p"
-	.string "I just passed by a TRAINER riding\n"
-	.string "a BIKE.\p"
-	.string "You just beat that TRAINER, didn't you?\n"
-	.string "It was pretty obvious that you did.\p"
-	.string "The kid looked really upset with\n"
-	.string "a face all red from anger.\p"
-	.string "I sure seem to run into you often.\n"
-	.string "Are you off to FORTREE GYM next?\p"
-	.string "I expect that you'll do well at the GYM.\n"
-	.string "Well, I'll be seeing you!$"
-
-
-Route119_Text_ScottYouWonAtFortreeGym: @ 81F4FBA
-	.string "… … … … … …\n"
-	.string "… … … … … Beep!\p"
-	.string "SCOTT: Hiya, {PLAYER}, it's me!\p"
-	.string "Just as I thought, you won at\n"
-	.string "the FORTREE GYM.\p"
-	.string "Your strength…\n"
-	.string "Perhaps you really are the TRAINER\l"
-	.string "that I've been searching for.\p"
-	.string "Remember, you have a fan in me.\n"
-	.string "I'll be cheering from the sidelines.\l"
-	.string "Keep up the great work!\p"
-	.string "… … … … … …\n"
-	.string "… … … … … Click!$"
 
 Route119_Text_StayAwayFromWeatherInstitute: @ 81F50EB
 	.string "We're standing lookout here.\p"
@@ -595,7 +207,7 @@ Route119_Text_DontGoNearWeatherInstitute: @ 81F5147
 
 Route119_Text_ThoughtFlyByCatchingBirdMons: @ 81F51A2
 	.string "I thought you FLY by catching a whole\n"
-	.string "flock of BIRD POKéMON, and then\l"
+	.string "flock of BIRD Pokémon, and then\l"
 	.string "hanging on to them somehow.\p"
 	.string "But it turns out there's an HM move\n"
 	.string "called FLY!\p"
@@ -609,7 +221,7 @@ Route119_Text_TallGrassSnaresBikeTires: @ 81F5261
 	.string "There's no way you can cycle here.$"
 
 Route119_Text_CanYourMonMakeSecretBase: @ 81F52B9
-	.string "Can your POKéMON use its SECRET POWER\n"
+	.string "Can your Pokémon use its SECRET POWER\n"
 	.string "on a big pile of grass and make a\l"
 	.string "SECRET BASE?$"
 
@@ -628,3 +240,338 @@ Route119_Text_TrainerTipsDecoration: @ 81F5339
 	.string "Pick your favorite items and create\n"
 	.string "your very own SECRET BASE exactly the\l"
 	.string "way you want.$"
+
+@==================================================================================================RIVAL ENCOUNTER
+
+r119_RivalEncounterNorth::
+	goto_if_set FLAG_RYU_R119_RIVAL, ryu_end
+	lock
+	setvar VAR_TEMP_5, 1
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq r119_DawnEncounter
+	goto r119_BrendanEncounter
+
+r119_RivalEncounterSouth::
+	goto_if_set FLAG_RYU_R119_RIVAL, ryu_end
+	lock
+	setvar VAR_TEMP_5, 2
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq r119_DawnEncounter
+	goto r119_BrendanEncounter
+	
+r119_DawnEncounter::
+	lock
+	playbgm MUS_GIRL_SUP, 0
+	addobject 16
+	compare VAR_TEMP_5, 1
+	call_if_eq r119_DawnNorthMovement
+	call_if_ne r119_DawnSouthMovement
+	goto r119_RivalInteractionFemale
+
+r119_BrendanEncounter::
+	lock
+	playbgm MUS_BOY_SUP, 0
+	addobject 16
+	compare VAR_TEMP_5, 1
+	call_if_eq r119_BrendanNorthMovement
+	call_if_ne r119_BrendanSouthMovement
+	goto r119_RivalInteractionMale
+
+r119_DawnNorthMovement:
+	applymovement 16, r119_RivalNorthSteps
+	waitmovement 16
+	return
+
+r119_DawnSouthMovement:
+	setobjectxy 16, 28, 22
+	applymovement 16, r119_RivalSouthSteps
+	waitmovement 40
+	return
+	
+r119_BrendanNorthMovement:
+	applymovement 16, r119_RivalNorthSteps
+	waitmovement 16
+	return
+
+r119_BrendanSouthMovement:
+	setobjectxy 16, 28, 22
+	applymovement 16, r119_RivalSouthSteps
+	waitmovement 16
+	return
+	
+r119_RivalNorthSteps:
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_in_place_up
+	emote_exclamation_mark
+	delay_8
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_in_place_up
+	step_end
+	
+r119_RivalSouthSteps:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_in_place_down
+	emote_exclamation_mark
+	step_end
+
+r119_RivalInteractionFemale:: @ 81F450B
+	drawheadshot HEAD_DAWN
+	msgbox R119_DawnIntroMsg, MSGBOX_DEFAULT
+    goto r119_RivalBattleFemale
+	end
+
+r119_RivalBattleFemale:: @ Female Rival Battle #4
+	trainerbattle_no_intro TRAINER_DAWN_4, r119_femaleRivalDefeated
+	goto r119_femaleRivalOutro
+	end
+
+r119_femaleRivalOutro:: @ 81F456A
+	drawheadshot HEAD_DAWN
+	msgbox r119_FemaleDefeatText, MSGBOX_DEFAULT
+	call r119_giveItemfinder
+	msgbox R119_ExplainItemfinderFemale, MSGBOX_DEFAULT
+	removecutscenesprites
+	closemessage
+	call r119_DawnExit
+	goto r119_scottEncounter
+	end
+	
+r119_DawnExit::
+	compare VAR_TEMP_5, 1
+	call_if_eq r119_DawnExitNorth
+	call_if_ne r119_DawnExitSouth
+
+r119_DawnExitNorth::
+	applymovement 16, r119_RivalExitStepsNorth
+	waitmovement 16
+	removeobject 16
+	return
+	
+r119_DawnExitSouth::
+	applymovement 16, r119_RivalExitStepsSouth
+	waitmovement 16
+	removeobject 16
+	return
+	
+r119_RivalExitStepsSouth:
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	
+r119_RivalExitStepsNorth:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+r119_RivalInteractionMale:: @ 81F4585
+	drawheadshot HEAD_BRENDAN
+	msgbox r119_maleRivaIntro, MSGBOX_DEFAULT
+    goto r119_RivalBattleMale
+	end
+
+r119_RivalBattleMale:: @ Male Rival battle #4
+	trainerbattle_no_intro TRAINER_BRENDAN_4, r119_maleRivalDefeated
+	goto r119_maleRivalOutro
+	end
+
+r119_maleRivalOutro:: @ 81F45E4
+	drawheadshot HEAD_BRENDAN
+	msgbox r119_maleRivalOutroText1, MSGBOX_DEFAULT
+	call r119_giveItemfinder
+	msgbox r119_maleRivalGivesItemfinder, MSGBOX_DEFAULT
+	removecutscenesprites
+	closemessage
+	call r119_BrendanExit
+	goto r119_scottEncounter
+	end
+	
+r119_BrendanExit::
+	compare VAR_TEMP_5, 1
+	call_if_eq r119_BrendanExitNorth
+	call_if_ne r119_BrendanExitSouth
+
+r119_BrendanExitNorth::
+	applymovement 16, r119_RivalExitStepsNorth
+	waitmovement 16
+	removeobject 16
+	return
+	
+r119_BrendanExitSouth::
+	applymovement 16, r119_RivalExitStepsSouth
+	waitmovement 16
+	removeobject 16
+	return
+
+r119_giveItemfinder:: @ 81F45FF
+	giveitem_std ITEM_ITEMFINDER
+	setflag FLAG_RECEIVED_HM02
+	return
+
+r119_scottEncounter:: @ 81F460F
+	closemessage
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	addobject 41
+	compare VAR_TEMP_5, 1
+	call_if_eq R119_ScottEnterNorth
+	call_if_ne R119_ScottEnterSouth
+	checkplayergender
+	compare VAR_RESULT, 1
+	call_if_eq r119_malefinish
+	call_if_ne r119_femalefinish
+	closemessage
+	applymovement 41, r119_ScottLeaves
+	waitmovement 41
+	removeobject 41
+	setflag FLAG_RYU_R119_RIVAL
+	releaseall
+	end
+	
+R119_ScottEnterNorth:
+	applymovement 41, r119_ScottEntersNorth
+	waitmovement 41
+	return
+	
+R119_ScottEnterSouth:
+	applymovement 41, r119_ScottEntersSouth
+	waitmovement 41
+	return
+	
+r119_ScottEntersNorth:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_down
+	walk_down
+	step_end
+	
+r119_ScottEntersSouth:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_in_place_down
+	step_end
+	
+r119_ScottLeaves:
+	walk_up
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+r119_malefinish::
+msgbox r119_scottIntroFemalePlayer, MSGBOX_DEFAULT
+return
+
+r119_femalefinish::
+msgbox r119_scottIntroMalePlayer, MSGBOX_DEFAULT
+return
+
+R119_DawnIntroMsg: @ 81F49FD
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: {PLAYER}!\n"
+	.string "Where were you? I missed you!\p"
+	.string "How have you been? \n"
+	.string "...\p"
+	.string "Wanna fight real quick?\n"
+	.string "Of course you do! Go!$"
+
+r119_femaleRivalDefeated: @ 81F4A98
+	.string "Ow, I can barely stand!\n"
+	.string "{PLAYER}, you're great!$"
+
+r119_FemaleDefeatText: @ 81F4AF3
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I can't wait to see you crowned\n"
+	.string "as Hoenn's Master.\pYou'll definetly\n"
+	.string "succeed.\pHere, another gift for you!$"
+
+R119_ExplainItemfinderFemale: @ 81F4B56
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: It's an Itemfinder!\n"
+	.string "Use it to sense hidden items.\p"
+	.string "Come visit me in Littleroot sometime!\n"
+	.string "We'll have a fun night!\p"
+	.string "See you later, {PLAYER}!$"
+
+r119_maleRivaIntro: @ 81F4C9A
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Yo, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}!\pI've been looking all over for ya!\nDoing good? You know I am!\pSay...since we're here, how about\na quick one?\pA battle, right here and now!\nAlright, here we go!$"
+
+r119_maleRivalDefeated: @ 81F4D24
+	.string "That was rough... \n"
+	.string "I'm not used to being smashed.$"
+
+r119_maleRivalOutroText1: @ 81F4D4B
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: It's a nice change. I'm\nwierdly turned on.\pYou...being strong enough to\ntopple the current Champion…\lThat'll be a day I'm definitely\llooking forward to seeing!\pHere, something else for you!$"
+
+r119_maleRivalGivesItemfinder: @ 81F4DB5
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: This is an Itemfinder.\pIt'll scan and find hidden items.\pI'm gonna head back home soon.\nDrop by my place sometime!\lI'll make it worth your while!\pTake care, {PLAYER}!$"
+
+r119_scottIntroFemalePlayer: @ 81F4E60
+	.string "Scott: Hahahah!\n"
+	.string "Way to go, {PLAYER}!\p"
+	.string "I just spotted a Trainer going\n"
+	.string "back to town at a speedy clip!\p"
+	.string "You just beat that trainer, didn't you?\n"
+	.string "It was pretty obvious that you did.\p"
+	.string "He looked really upset with\n"
+	.string "a face all red from embarassment.\p"
+	.string "I sure seem to run into you often.\n"
+	.string "Well, I'll be seeing you!$"
+
+r119_scottIntroMalePlayer:	
+    .string "Scott: Hahahah!\n"
+	.string "Way to go, {PLAYER}!\p"
+	.string "I just spotted a Trainer going\n"
+	.string "back to town at a speedy clip!\p"
+	.string "You're quite the lady-killer, eh?\n"
+	.string "It was pretty obvious that you are.\p"
+	.string "She looked really flushed.\n"
+	.string "It's obvious that she likes you.\p"
+	.string "I sure seem to run into you often.\n"
+	.string "Well, I'll be seeing you!$"

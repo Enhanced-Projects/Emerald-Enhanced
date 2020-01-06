@@ -314,69 +314,6 @@ RustboroCity_EventScript_StolenGoodsScene:: @ 81E09CD
 	releaseall
 	end
 
-@ Unused
-RustboroCity_EventScript_ShadyCharacterTookOff:: @ 81E0A3B
-	msgbox RustboroCity_Text_ShadyCharacterTookOffTowardsTunnel, MSGBOX_DEFAULT
-	return
-
-@ Unused
-RustboroCity_EventScript_YouGotItThankYou:: @ 81E0A44
-	msgbox RustboroCity_Text_YouGotItThankYou, MSGBOX_DEFAULT
-	return
-
-@ Unknown, unused employee movements. Based on the differences in movement theyre for approaching an object (probably the player) in different positions
-RustboroCity_EventScript_EmployeeApproachUp:: @ 81E0A4D
-	applymovement 9, RustboroCity_Movement_EmployeeApproachUp
-	waitmovement 0
-	return
-
-@ Unused, see above
-RustboroCity_EventScript_EmployeeApproachLeft:: @ 81E0A58
-	applymovement 9, RustboroCity_Movement_EmployeeApproachLeft
-	waitmovement 0
-	return
-
-@ Unused, see above
-RustboroCity_EventScript_EmployeeApproachRight:: @ 81E0A63
-	applymovement 9, RustboroCity_Movement_EmployeeApproachRight
-	waitmovement 0
-	return
-
-@ Unused, see above
-RustboroCity_EventScript_EmployeeApproachDown:: @ 81E0A6E
-	applymovement 9, RustboroCity_Movement_EmployeeApproachDown
-	waitmovement 0
-	return
-
-@ Unused, similar movement to the above scripts
-RustboroCity_EventScript_EmployeeApproachPlayerFar:: @ 81E0A79
-	applymovement 9, RustboroCity_Movement_EmployeeApproachPlayerFar
-	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
-	waitmovement 0
-	return
-
-@ Unused
-RustboroCity_Movement_GruntEscapeExtended: @ 81E0A8E
-	walk_fastest_right
-	walk_fastest_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	step_end
-
 RustboroCity_Movement_GruntEscape: @ 81E0AA0
 	walk_fastest_right
 	walk_fastest_right
@@ -414,49 +351,6 @@ RustboroCity_Movement_EmployeeChaseGrunt2: @ 81E0AB9
 	walk_up
 	walk_up
 	walk_up
-	step_end
-
-@ Functionally unused
-RustboroCity_Movement_EmployeeApproachUp: @ 81E0AC1
-	walk_down
-	walk_right
-	walk_right
-	step_end
-
-@ Functionally unused
-RustboroCity_Movement_EmployeeApproachLeft: @ 81E0AC5
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	step_end
-
-@ Functionally unused
-RustboroCity_Movement_EmployeeApproachRight: @ 81E0ACA
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	step_end
-
-@ Functionally unused
-RustboroCity_Movement_EmployeeApproachDown: @ 81E0ACF
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	step_end
-
-@ Functionally unused
-RustboroCity_Movement_EmployeeApproachPlayerFar: @ 81E0AD5
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_in_place_fastest_down
 	step_end
 
 RustboroCity_EventScript_DevonEmployee1:: @ 81E0ADD
@@ -842,48 +736,24 @@ RustboroCity_EventScript_RivalEncounter:: @ 81E0FF3
 	end
 
 RustboroCity_EventScript_MayEncounter:: @ 81E100B
-	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_MayBrineyHint
-	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_MayAskToBattle
-	setflag FLAG_MET_RIVAL_RUSTBORO
-	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_CleanWater
+	drawheadshot HEAD_DAWN
+	msgbox rc_femaleRivalIntro, MSGBOX_DEFAULT
 	closemessage
-	delay 30
-	playfanfare MUS_ME_TORE_EYE
-	msgbox RustboroCity_Text_RegisteredMay, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
 	setvar VAR_RUSTBORO_CITY_STATE, 8
 	setvar VAR_ROUTE104_STATE, 2
 	setvar VAR_0x8008, 0
-	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq RustboroCity_EventScript_BattleMay
-	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
-	call RustboroCity_EventScript_RestoreBgm
+	msgbox rc_femaleRivalBattleIntro
+	goto RustboroCity_EventScript_BattleDawn
 	releaseall
 	end
 
-RustboroCity_EventScript_MayAskToBattle:: @ 81E1070
-	setvar VAR_0x8008, 1
-	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq RustboroCity_EventScript_BattleMay
-	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
-	releaseall
-	end
+RustboroCity_EventScript_BattleDawn:: @ 81E1092
+	msgbox rc_femaleRivalBattleStart, MSGBOX_DEFAULT
+	goto RustboroCity_EventScript_BattleDawn2
 
-RustboroCity_EventScript_BattleMay:: @ 81E1092
-	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleMayTreecko
-	case 1, RustboroCity_EventScript_BattleMayTorchic
-	case 2, RustboroCity_EventScript_BattleMayMudkip
-	end
-
-RustboroCity_EventScript_MayBrineyHint:: @ 81E10C1
-	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
+RustboroCity_EventScript_CleanWater:: @ 81E10C1
+	msgbox RustboroCity_Text_HoennWater, MSGBOX_DEFAULT
 	compare VAR_0x8008, 0
 	call_if_eq RustboroCity_EventScript_RestoreBgm
 	releaseall
@@ -894,37 +764,14 @@ RustboroCity_EventScript_RestoreBgm:: @ 81E10D6
 	fadedefaultbgm
 	return
 
-RustboroCity_EventScript_BattleMayTreecko:: @ 81E10DB
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleDawn2:: @ 81E10DB
+	trainerbattle_no_intro TRAINER_DAWN_2, RustboroCity_Text_DawnDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-RustboroCity_EventScript_BattleMayTorchic:: @ 81E10EE
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-RustboroCity_EventScript_BattleMayMudkip:: @ 81E1101
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
+	goto RustboroCity_EventScript_CleanWater
 	end
 
 RustboroCity_EventScript_BrendanEncounter:: @ 81E1114
 	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_BrendanBrineyHint
-	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_BrendanAskToBattle
-	setflag FLAG_MET_RIVAL_RUSTBORO
-	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playfanfare MUS_ME_TORE_EYE
-	msgbox RustboroCity_Text_RegisteredBrendan, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
 	setvar VAR_RUSTBORO_CITY_STATE, 8
 	setvar VAR_ROUTE104_STATE, 2
 	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
@@ -945,35 +792,24 @@ RustboroCity_EventScript_BrendanAskToBattle:: @ 81E1174
 
 RustboroCity_EventScript_BattleBrendan:: @ 81E1191
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleBrendanTreecko
-	case 1, RustboroCity_EventScript_BattleBrendanTorchic
-	case 2, RustboroCity_EventScript_BattleBrendanMudkip
-	end
+	goto RustboroCity_EventScript_BattleBrendanMudkip
 
 RustboroCity_EventScript_BrendanBrineyHint:: @ 81E11C0
-	msgbox RustboroCity_Text_BrendanMrBrineyHint, MSGBOX_DEFAULT
+	msgbox RC_BrendanYouCanSwimAnywhere, MSGBOX_DEFAULT
 	compare VAR_0x8008, 0
 	call_if_eq RustboroCity_EventScript_RestoreBgm
 	releaseall
 	end
 
-RustboroCity_EventScript_BattleBrendanTreecko:: @ 81E11D5
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanTorchic:: @ 81E11E8
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
 RustboroCity_EventScript_BattleBrendanMudkip:: @ 81E11FB
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
+	trainerbattle_no_intro TRAINER_BRENDAN_2, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+	
+RustboroCity_EventScript_Boy1:: @ 81E1236
+	msgbox RustboroCity_Text_YouCanHave2On2Battle, MSGBOX_NPC
 	end
 
 RustboroCity_Movement_RivalApproachPlayer0: @ 81E120E
@@ -1032,9 +868,24 @@ RustboroCity_Movement_RivalApproachPlayer7: @ 81E1230
 	walk_down
 	step_end
 
-RustboroCity_EventScript_Boy1:: @ 81E1236
-	msgbox RustboroCity_Text_YouCanHave2On2Battle, MSGBOX_NPC
-	end
+RustboroCity_Text_HoennWater:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Oh, by the way, {PLAYER},\n"
+	.string "Hoenn's water is super clean.\p"
+	.string "You can go swimming basically\n"
+	.string "anywhere! Try it sometime!$"
+
+RustboroCity_Text_DawnDefeat:
+	.string "Oof... You bit harder.\n"
+	.string "I'm just going to have to\p"
+	.string "sharpen my teeth some more.$"
+
+
+rc_femaleRivalBattleIntro: @ 81E1AFA
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Hi {PLAYER}, how are you doing?\n"
+	.string "How's your Pokédex coming along,\l"
+	.string "{PLAYER}? Mine's looking pretty decent!\p"
+	.string "So…\n"
+	.string "How about a little battle?$"
 
 RustboroCity_Text_WeShortenItToDevon: @ 81E123F
 	.string "The DEVON CORPORATION…\n"
@@ -1048,7 +899,7 @@ RustboroCity_Text_SneakyLookingManWentAroundCorner: @ 81E12AC
 	.string "looking guy went around the corner.$"
 
 RustboroCity_Text_HaveYouChallengedGym: @ 81E130D
-	.string "Have you taken the POKéMON GYM\n"
+	.string "Have you taken the Pokémon GYM\n"
 	.string "challenge?\p"
 	.string "When you get that shiny GYM BADGE\n"
 	.string "in hand, I guess TRAINERS begin to\l"
@@ -1056,21 +907,21 @@ RustboroCity_Text_HaveYouChallengedGym: @ 81E130D
 
 RustboroCity_Text_HeyThatsRustborosGymBadge: @ 81E139E
 	.string "Hey, that's RUSTBORO's GYM BADGE!\p"
-	.string "Out of all the POKéMON GYM BADGES,\n"
+	.string "Out of all the Pokémon GYM BADGES,\n"
 	.string "RUSTBORO's is the coolest, I'd say.$"
 
 RustboroCity_Text_YoureNewAroundHere: @ 81E1407
 	.string "Oh? Who might you be?\n"
 	.string "You're a new face around these parts.\p"
 	.string "Have you just transferred into the\n"
-	.string "POKéMON TRAINER'S SCHOOL?$"
+	.string "Pokémon TRAINER'S SCHOOL?$"
 
 RustboroCity_Text_GymLeaderIsntEasyWithFire: @ 81E1480
 	.string "I challenged the GYM LEADER, but…\p"
 	.string "It's not going to be easy winning with\n"
-	.string "my FIRE-type POKéMON…\p"
-	.string "FIRE-type POKéMON don't match up\n"
-	.string "well against ROCK-type POKéMON…$"
+	.string "my FIRE-type Pokémon…\p"
+	.string "FIRE-type Pokémon don't match up\n"
+	.string "well against ROCK-type Pokémon…$"
 
 RustboroCity_Text_MrBrineyWalksInTheTunnel: @ 81E1520
 	.string "The old sailor MR. BRINEY lives in\n"
@@ -1087,26 +938,26 @@ RustboroCity_Text_MrBrineyLovesPeeko: @ 81E1589
 	.string "that PEEKO.$"
 
 RustboroCity_Text_WowYouHavePokemon: @ 81E1633
-	.string "Wow, you have POKéMON with you, too.\p"
+	.string "Wow, you have Pokémon with you, too.\p"
 	.string "When I get bigger, I'm going to go\n"
-	.string "places with POKéMON, too.$"
+	.string "places with Pokémon, too.$"
 
 RustboroCity_Text_CatchRarePokemonIfIGoToSchool: @ 81E1695
-	.string "POKéMON TRAINER'S SCHOOL!\p"
+	.string "Pokémon TRAINER'S SCHOOL!\p"
 	.string "If I go to this school, will I be able\n"
-	.string "to catch rare POKéMON easily?$"
+	.string "to catch rare Pokémon easily?$"
 
 RustboroCity_Text_PokemonCanChangeLookFromExp: @ 81E16F4
-	.string "If a POKéMON gains experience in\n"
+	.string "If a Pokémon gains experience in\n"
 	.string "battles, it can sometimes change in\l"
 	.string "the way it looks.$"
 
 RustboroCity_Text_PokemonChangeShape: @ 81E174B
-	.string "A POKéMON changes shape?\n"
+	.string "A Pokémon changes shape?\n"
 	.string "If one did that, I would be shocked!$"
 
 RustboroCity_Text_TradePokemonGrowFast: @ 81E1789
-	.string "A POKéMON you get in a trade from\n"
+	.string "A Pokémon you get in a trade from\n"
 	.string "someone grows fast.\p"
 	.string "But if you don't have certain GYM\n"
 	.string "BADGES, it may not obey you…$"
@@ -1149,70 +1000,27 @@ RustboroCity_Text_PleaseComeWithMe: @ 81E1A21
 	.string "Excuse me, please!\n"
 	.string "Please come with me!$"
 
-RustboroCity_Text_MayHiLetsRegister: @ 81E1A49
-	.string "Dawn: Oh, hi, {PLAYER}!\p"
-	.string "You had a MATCH CALL feature put\n"
-	.string "on your POKéNAV!\p"
-	.string "Let's register each other so we can\n"
-	.string "contact one another anytime!\p"
-	.string "… … … … … …$"
+rc_femaleRivalBattleStart: @ 81E1C84
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: I'll try not to bite you\n"
+	.string "too hard...$"
 
-RustboroCity_Text_RegisteredMay: @ 81E1ADB
-	.string "Registered Dawn\n"
-	.string "in the POKéNAV.$"
-
-RustboroCity_Text_MayPassedBrineyWantToBattle: @ 81E1AFA
-	.string "Dawn: Oh, by the way, I passed\n"
-	.string "MR. BRINEY in PETALBURG WOODS.\p"
-	.string "I guess he's on his way home to his\n"
-	.string "cottage by the sea.\p"
-	.string "How's your POKéDEX coming along,\n"
+rc_femaleRivalIntro: @ 81E1A49
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Hi {PLAYER}, how are you doing?\n"
+	.string "How's your Pokédex coming along,\l"
 	.string "{PLAYER}? Mine's looking pretty decent!\p"
 	.string "So…\n"
 	.string "How about a little battle?$"
 
-RustboroCity_Text_MayOhHaventRaisedPokemonEnough: @ 81E1BD3
-	.string "Dawn: Oh, what's the matter?\p"
-	.string "Haven't you caught or raised your\n"
-	.string "POKéMON very much?\p"
-	.string "That's not very good for a TRAINER!$"
-
-RustboroCity_Text_MayWantToBattle: @ 81E1C48
-	.string "Dawn: So, what do you think?\n"
-	.string "How about a little battle here?$"
-
-RustboroCity_Text_MayImNotGoingToLose: @ 81E1C84
-	.string "Dawn: You just became a TRAINER,\n"
-	.string "{PLAYER}. I'm not going to lose!$"
-
 RustboroCity_Text_MayDefeat: @ 81E1CC1
-	.string "Yikes!\n"
-	.string "You're better than I expected!$"
-
-RustboroCity_Text_MayMrBrineyHint: @ 81E1CE7
-	.string "Dawn: Oh, by the way, MR. BRINEY, who\n"
-	.string "I just passed…\p"
-	.string "{PLAYER}, you just moved here so you\n"
-	.string "might not know this, but MR. BRINEY\l"
-	.string "was once a revered seafarer.$"
-
-RustboroCity_Text_BrendanHiLetsRegister: @ 81E1D7D
-	.string "BRENDAN: Oh, hey, {PLAYER}!\p"
-	.string "You had a MATCH CALL feature put\n"
-	.string "on your POKéNAV! Cool!\p"
-	.string "Let's register each other so we can\n"
-	.string "get in touch anytime!\p"
-	.string "… … … … … …$"
+	.string "Oof... You bit harder.\n"
+	.string "I'm just going to have to\p"
+	.string "sharpen my teeth some more.$"
 
 RustboroCity_Text_RegisteredBrendan: @ 81E1E11
 	.string "Registered BRENDAN\n"
 	.string "in the POKéNAV.$"
 
 RustboroCity_Text_BrendanPassedBrineyWantToBattle: @ 81E1E34
-	.string "BRENDAN: By the way, {PLAYER}, I walked\n"
-	.string "by MR. BRINEY in PETALBURG WOODS.\p"
-	.string "I bet he was on his way home to his\n"
-	.string "cottage by the sea.\p"
 	.string "{PLAYER}, how's your POKéDEX?\n"
 	.string "Have you filled in any pages yet?\p"
 	.string "Mine rules.\p"
@@ -1221,7 +1029,7 @@ RustboroCity_Text_BrendanPassedBrineyWantToBattle: @ 81E1E34
 
 RustboroCity_Text_BrendanNoConfidenceInPokemon: @ 81E1F2F
 	.string "BRENDAN: What's the matter? Don't have\n"
-	.string "any confidence in your POKéMON?$"
+	.string "any confidence in your Pokémon?$"
 
 RustboroCity_Text_BrendanWantToBattle: @ 81E1F76
 	.string "BRENDAN: What's up?\n"
@@ -1235,12 +1043,11 @@ RustboroCity_Text_BrendanDefeat: @ 81E1FE9
 	.string "Hmm…\n"
 	.string "You're pretty good.$"
 
-RustboroCity_Text_BrendanMrBrineyHint: @ 81E2002
-	.string "BRENDAN: By the way, you know\n"
-	.string "MR. BRINEY? The guy I just passed?\p"
-	.string "I bet you didn't know this, since you\n"
-	.string "just moved here, {PLAYER}, but\l"
-	.string "MR. BRINEY was once a great sailor.$"
+RC_BrendanYouCanSwimAnywhere: @ 81E2002
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: You know, you can swim anywhere\n"
+	.string "in Hoenn. Part of Hoenn's charm\p"
+	.string "is how clean it is. I'd like to\n"
+	.string "see you in a swimsuit sometime.$"
 
 RustboroCity_Text_TunnelNearingCompletion: @ 81E20A6
 	.string "“Timesaving tunnel nearing\n"
@@ -1255,7 +1062,7 @@ RustboroCity_Text_DevonCorpSign: @ 81E2128
 	.string "it all.”$"
 
 RustboroCity_Text_GymSign: @ 81E2167
-	.string "RUSTBORO CITY POKéMON GYM\n"
+	.string "RUSTBORO CITY Pokémon GYM\n"
 	.string "LEADER: ROXANNE\p"
 	.string "“The ROCK-loving honors student!”$"
 
@@ -1270,9 +1077,9 @@ RustboroCity_Text_CitySign: @ 81E220B
 	.string "nature and science.”$"
 
 RustboroCity_Text_TrainersSchoolSign: @ 81E2253
-	.string "POKéMON TRAINER'S SCHOOL\p"
+	.string "Pokémon TRAINER'S SCHOOL\p"
 	.string "“We'll teach you anything about\n"
-	.string "POKéMON!”$"
+	.string "Pokémon!”$"
 
 RustboroCity_Text_CuttersHouse: @ 81E2296
 	.string "CUTTER'S HOUSE$"
@@ -1308,7 +1115,7 @@ RustboroCity_Text_YouCanHave2On2Battle: @ 81E249D
 	.string "You can have a 2-on-2 battle even\n"
 	.string "if you're not with another TRAINER.\p"
 	.string "If you catch the eyes of two TRAINERS\n"
-	.string "when you have two or more POKéMON,\l"
+	.string "when you have two or more Pokémon,\l"
 	.string "they'll both challenge you.\p"
 	.string "Don't you think it'd be cool if you\n"
 	.string "could beat two TRAINERS by yourself?$"

@@ -290,7 +290,7 @@ BattleFrontier_BattleDomePreBattleRoom_Text_24B6E3: @ 824B6E3
 	.string "Are you ready?$"
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24B70C: @ 824B70C
-	.string "Please choose the two POKéMON\n"
+	.string "Please choose the two Pokémon\n"
 	.string "that are to appear in battle.$"
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24B748: @ 824B748
@@ -298,7 +298,7 @@ BattleFrontier_BattleDomePreBattleRoom_Text_24B748: @ 824B748
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24B760: @ 824B760
 	.string "Thank you for competing!\p"
-	.string "I'll restore your POKéMON to\n"
+	.string "I'll restore your Pokémon to\n"
 	.string "full health.$"
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24B7A3: @ 824B7A3

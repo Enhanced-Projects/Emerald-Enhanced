@@ -272,7 +272,7 @@ gBattleDomeOpponentStatsText42::
 	.string "Neglects SP. DEFENSE.$"
 
 gBattleDomeOpponentStatsText43::
-	.string "Raises POKéMON in a well-balanced way.$"
+	.string "Raises Pokémon in a well-balanced way.$"
 
 gBattleDomeWinText1::
 	.string "Let the battle begin!$"

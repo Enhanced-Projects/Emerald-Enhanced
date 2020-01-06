@@ -230,7 +230,7 @@ SeafloorCavern_Room9_Text_ArchieSoItWasYou: @ 823507C
 SeafloorCavern_Room9_Text_ArchieBeholdKyogre: @ 82350A6
 	.string "ARCHIE: Behold!\p"
 	.string "See how beautiful it is, the sleeping\n"
-	.string "form of the ancient POKéMON KYOGRE!\p"
+	.string "form of the ancient Pokémon KYOGRE!\p"
 	.string "I have waited so long for this day to\n"
 	.string "come…$"
 

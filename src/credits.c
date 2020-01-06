@@ -213,7 +213,7 @@ static const u8 sTheEnd_LetterDMap[] =
 };
 
 static const u8 gCreditsText_EmptyString[] = _("");
-static const u8 gCreditsText_PkmnEmeraldVersion[] = _("POKéMON EMERALD VERSION");
+static const u8 gCreditsText_PkmnEmeraldVersion[] = _("Pokémon EMERALD VERSION");
 static const u8 gCreditsText_Credits[] = _("Credits");
 static const u8 gCreditsText_ExecutiveDirector[] = _("Executive Director");
 static const u8 gCreditsText_Director[] = _("Director");
@@ -225,9 +225,9 @@ static const u8 gCreditsText_FieldSystemPgrms[] = _("Field System Programmer");
 static const u8 gCreditsText_Programmers[] = _("Programmers");
 static const u8 gCreditsText_MainGraphicDesigner[] = _("Main Graphic Designer");
 static const u8 gCreditsText_GraphicDesigners[] = _("Graphic Designers");
-static const u8 gCreditsText_PkmnDesigners[] = _("POKéMON Designers");
+static const u8 gCreditsText_PkmnDesigners[] = _("Pokémon Designers");
 static const u8 gCreditsText_MusicComposition[] = _("Music Composition");
-static const u8 gCreditsText_SoundEffectsAndPkmnVoices[] = _("Sound Effects & POKéMON Voices");
+static const u8 gCreditsText_SoundEffectsAndPkmnVoices[] = _("Sound Effects & Pokémon Voices");
 static const u8 gCreditsText_GameDesigners[] = _("Game Designers");
 static const u8 gCreditsText_ScenarioPlot[] = _("Scenario Plot");
 static const u8 gCreditsText_Scenario[] = _("Scenario");

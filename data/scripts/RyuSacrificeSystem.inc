@@ -403,10 +403,10 @@ GCMS_ReturnWithSpecimen:
 
 GCMS_ConsignQuery:
     .string "Would you like to consign a\n"
-    .string "pokémon to be researched?$"
+    .string "Pokémon to be researched?$"
 
 GCMS_CreateMonMsg:
-    .string "Would you like to create a pokémon\n"
+    .string "Would you like to create a Pokémon\n"
     .string "using the genetic code mapping\l"
     .string "you have so far?$"
 
@@ -454,7 +454,7 @@ GCMS_PartyCantBeEmpty:
     .string "party mon. Please return with more.$"
 	
 GCMS_ConsignSuccess:
-    .string "You have consigned the pokémon in\n"
+    .string "You have consigned the Pokémon in\n"
     .string "slot number {STR_VAR_1}.$"
 	
 GCMS_CreationCancelled:
@@ -463,7 +463,7 @@ GCMS_CreationCancelled:
 GCMS_Tutorial1:
     .string "This PC program allows you to\n"
     .string "have much more control over the\l"
-    .string "genetic viability of your pokémon.\p"
+    .string "genetic viability of your Pokémon.\p"
     .string "The first part is where you store\n"
     .string "the species you want to work on.\p"
     .string "The second part is where you\n"

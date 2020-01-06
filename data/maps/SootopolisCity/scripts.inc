@@ -166,7 +166,7 @@ SootopolisCity_EventScript_Maniac:: @ 81E6411
 	end
 
 SootopolisCity_Text_GymSign: @ 81E656F
-	.string "SOOTOPOLIS CITY POKéMON GYM\n"
+	.string "SOOTOPOLIS CITY Pokémon GYM\n"
 	.string "LEADER: JUAN\p"
 	.string "“The GYM LEADER with the beauty\n"
 	.string "of pure water!”$"
@@ -185,7 +185,7 @@ SootopolisCity_Text_PhysicallyFitLivingHere: @ 81E6618
 SootopolisCity_Text_CaveOfOriginPleaseLeave: @ 81E6D77
 	.string "Who might you be?\p"
 	.string "This is the CAVE OF ORIGIN.\p"
-	.string "The spirits of POKéMON, becalmed at\n"
+	.string "The spirits of Pokémon, becalmed at\n"
 	.string "MT. PYRE, are said to be revived here.\p"
 	.string "Please leave.$"
 
@@ -193,7 +193,7 @@ SootopolisCity_Text_LeadSuperiorTrainerToCave: @ 81E6DFE
 	.string "A person with a strong will and\n"
 	.string "superior talent…\p"
 	.string "A TRAINER who has knowledge and\n"
-	.string "experience of many kinds of POKéMON…\p"
+	.string "experience of many kinds of Pokémon…\p"
 	.string "If such a person were to appear, I was\n"
 	.string "instructed by WALLACE to lead that\l"
 	.string "TRAINER to this CAVE.$"
@@ -222,7 +222,7 @@ SootopolisCity_Text_NightSkyFavoriteScenery: @ 81E710B
 SootopolisCity_Text_ExplainWaterfallGoToGym: @ 81E7B86
 	.string "That HIDDEN MACHINE contains\n"
 	.string "WATERFALL.\p"
-	.string "If you have the RAIN BADGE, a POKéMON\n"
+	.string "If you have the RAIN BADGE, a Pokémon\n"
 	.string "that has learned that HM move can\l"
 	.string "force its way up waterfalls.\p"
 	.string "And where does one get the RAIN BADGE?\n"

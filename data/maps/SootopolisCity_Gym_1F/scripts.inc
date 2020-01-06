@@ -474,7 +474,7 @@ SootopolisCity_Gym_1F_Text_GymGuideAdvice: @ 8225093
 	.string "Yo! How's it going, CHAMPION-\n"
 	.string "bound {PLAYER}?\p"
 	.string "SOOTOPOLIS's GYM LEADER JUAN is\n"
-	.string "a master of WATER-type POKéMON.\p"
+	.string "a master of WATER-type Pokémon.\p"
 	.string "And, to get to JUAN, an icy floor\n"
 	.string "will hamper your progress…\p"
 	.string "Listen, I'm sorry, but that's all the\n"
@@ -487,14 +487,14 @@ SootopolisCity_Gym_1F_Text_GymGuidePostVictory: @ 82251AF
 	.string "was supposedly the best in all HOENN!\p"
 	.string "Okay! Check out your TRAINER CARD.\p"
 	.string "If you've gotten all the BADGES, you're\n"
-	.string "set for the POKéMON LEAGUE challenge!$"
+	.string "set for the Pokémon LEAGUE challenge!$"
 
 SootopolisCity_Gym_1F_Text_JuanPreBattle: @ 8225268
 	.string "Let me ask you.\n"
 	.string "Did you know?\l"
 	.string "Ah, I should not be so coy.\p"
 	.string "It was I who taught WALLACE everything\n"
-	.string "there is to know about POKéMON.\p"
+	.string "there is to know about Pokémon.\p"
 	.string "Once, I had given up my position as\n"
 	.string "the GYM LEADER.\p"
 	.string "In my place, I had entrusted WALLACE\n"
@@ -514,7 +514,7 @@ SootopolisCity_Gym_1F_Text_ReceivedRainBadge: @ 8225598
 
 SootopolisCity_Gym_1F_Text_ExplainRainBadgeTakeThis: @ 82255BE
 	.string "Having the RAIN BADGE shall assure you\n"
-	.string "the full obedience of all your POKéMON\l"
+	.string "the full obedience of all your Pokémon\l"
 	.string "to your every command.\p"
 	.string "The RAIN BADGE also allows the use\n"
 	.string "of the HM move WATERFALL to scale\l"
@@ -537,24 +537,24 @@ SootopolisCity_Gym_1F_Text_JuanPostBattle: @ 8225778
 	.string "The TRAINERS who have gathered all\n"
 	.string "the GYM BADGES of HOENN should make\l"
 	.string "way to the ultimate destination.\p"
-	.string "The POKéMON LEAGUE.\p"
+	.string "The Pokémon LEAGUE.\p"
 	.string "Travel to the easternmost reaches\n"
 	.string "of HOENN, to the island EVER GRANDE.\p"
-	.string "There, you shall find the POKéMON\n"
+	.string "There, you shall find the Pokémon\n"
 	.string "LEAGUE.$"
 
 SootopolisCity_Gym_1F_Text_GoGetFortreeBadge: @ 8225865
 	.string "There remains but one BADGE to\n"
 	.string "obtain in HOENN.\p"
-	.string "If you wish to challenge the POKéMON\n"
+	.string "If you wish to challenge the Pokémon\n"
 	.string "LEAGUE, you must obtain the last\l"
 	.string "BADGE from the GYM in FORTREE.$"
 
 SootopolisCity_Gym_1F_Text_GymStatue: @ 82258FA
-	.string "SOOTOPOLIS CITY POKéMON GYM$"
+	.string "SOOTOPOLIS CITY Pokémon GYM$"
 
 SootopolisCity_Gym_1F_Text_GymStatueCertified: @ 8225916
-	.string "SOOTOPOLIS CITY POKéMON GYM\p"
+	.string "SOOTOPOLIS CITY Pokémon GYM\p"
 	.string "JUAN'S CERTIFIED TRAINERS:\n"
 	.string "{PLAYER}$"
 
@@ -589,7 +589,7 @@ SootopolisCity_Gym_1F_Text_JuanRematchNeedTwoMons: @ 8225B48
 	.string "Well, my friend, most certainly!\n"
 	.string "I shall be delighted to dance with you…\p"
 	.string "Ah, no, no, no.\n"
-	.string "You have with you but one POKéMON.\p"
+	.string "You have with you but one Pokémon.\p"
 	.string "I wish that you would return with\n"
-	.string "two, perhaps more, POKéMON, please.$"
+	.string "two, perhaps more, Pokémon, please.$"
 
