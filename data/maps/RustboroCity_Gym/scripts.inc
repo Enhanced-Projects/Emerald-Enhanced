@@ -27,6 +27,7 @@ RG_Reset::
 	setflag FLAG_BADGE01_GET
 	setflag FLAG_DEFEATED_RUSTBORO_GYM
 	msgbox RustboroCity_Gym_Text_RoxannePostBattle
+	closemessage
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
 	call_if_unset FLAG_RYU_GYM1HANDOUT, RyuGymItemReward1

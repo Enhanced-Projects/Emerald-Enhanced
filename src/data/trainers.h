@@ -7945,8 +7945,8 @@ const struct Trainer gTrainers[] = {
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_MayRoute103Mudkip),
-        .party = {.NoItemDefaultMoves = sParty_MayRoute103Mudkip},
+        .partySize = 2,
+        .party = {.NoItemDefaultMoves = sParty_Dawn1 }
     },
 
     [TRAINER_EMPTY_23] =
@@ -7975,8 +7975,8 @@ const struct Trainer gTrainers[] = {
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_MayRoute119Mudkip),
-        .party = {.NoItemDefaultMoves = sParty_MayRoute119Mudkip},
+        .partySize = ARRAY_COUNT(sParty_Dawn4),
+        .party = {.ItemCustomMoves = sParty_Dawn4},
     },
 
     [TRAINER_EMPTY_24] =
@@ -11521,7 +11521,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_DAWN_2] =
     {
-        .partyFlags = 0,
+                .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_MAY,
@@ -11530,8 +11530,8 @@ const struct Trainer gTrainers[] = {
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_MayRustboroTreecko),
-        .party = {.NoItemDefaultMoves = sParty_MayRustboroTreecko},
+        .partySize = 3,
+        .party = {.NoItemDefaultMoves =  sParty_Dawn2},
     },
 
     [TRAINER_MAY_RUSTBORO_TORCHIC] =

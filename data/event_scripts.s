@@ -1140,3 +1140,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/SlateportCity_LanasHouse/scripts.inc"
 
 	.include "data/maps/ThroneRoom/scripts.inc"
+
+	.include "data/maps/LilycoveCity_TrainingCenter/scripts.inc"

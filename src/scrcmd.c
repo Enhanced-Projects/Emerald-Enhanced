@@ -1860,7 +1860,7 @@ bool8 ScrCmd_cleartrainerflag(struct ScriptContext *ctx)
 bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
 {
     u16 species = ScriptReadHalfword(ctx);
-    u8 level = ScriptReadByte(ctx);
+    u16 level = (VarGet(ScriptReadHalfword(ctx)));
     u16 item = ScriptReadHalfword(ctx);
 
     CreateScriptedWildMon(species, level, item);
@@ -2372,4 +2372,18 @@ bool8 ScrCmd_gfec(struct ScriptContext *ctx)
             return FALSE;
         }
     }
+}
+
+bool8 ScrCmd_multvar(struct ScriptContext *ctx)
+{
+    u16 *ptr = GetVarPointer(ScriptReadHalfword(ctx));
+    *ptr *= ScriptReadHalfword(ctx);
+    return FALSE;
+}
+
+bool8 ScrCmd_divvar(struct ScriptContext *ctx)
+{
+    u16 *ptr = GetVarPointer(ScriptReadHalfword(ctx));
+    *ptr /= ScriptReadHalfword(ctx);
+    return FALSE;
 }

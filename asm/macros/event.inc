@@ -1292,7 +1292,7 @@
 	.macro setwildbattle species:req, level:req, item:req
 	.byte 0xb6
 	.2byte \species
-	.byte \level
+	.2byte \level
 	.2byte \item
 	.endm
 
@@ -1622,6 +1622,20 @@
 	@puts the correct relative follower x/y coords in vars temp 1 and 2.
 	.macro gfec
 	.byte 0xec
+	.endm
+
+	@multiplies var by value.
+	.macro multvar var:req, value:req
+	.byte 0xed
+	.2byte \var
+	.2byte \value
+	.endm
+
+	@divides var by value.
+	.macro divvar var:req, value:req
+	.byte 0xee
+	.2byte \var
+	.2byte \value
 	.endm
 
 

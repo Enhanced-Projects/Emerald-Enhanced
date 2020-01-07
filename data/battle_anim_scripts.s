@@ -1881,6 +1881,32 @@ Move_POISON_JAB:
 	end
 	
 Move_DARK_PULSE:
+	loadspritegfx ANIM_TAG_GHOSTLY_SPIRIT
+	loadspritegfx ANIM_TAG_BLUE_RING_2
+	monbg ANIM_TARGET
+	monbgprio_28 ANIM_TARGET
+	playsewithpan SE_W060, SOUND_PAN_ATTACKER
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 0, 0, 7, RGB(0, 2, 4)
+	delay 10
+	createsprite gUnknown_085952F8, ANIM_ATTACKER, 66, 100, 100, 8, 1, 20, 40, 0
+	createsprite gUnknown_085952F8, ANIM_ATTACKER, 66, 20, 100, 16, 2, 10, 35, 1
+	createsprite gUnknown_085952F8, ANIM_ATTACKER, 66, 200, 80, 8, 1, 40, 20, 0
+	createsprite gUnknown_085952F8, ANIM_ATTACKER, 66, 80, 60, 10, 3, 20, 50, 0
+	createsprite gUnknown_085952F8, ANIM_ATTACKER, 66, 140, 100, 16, 1, 20, 30, 1
+	waitforvisualfinish
+	createsprite gWaterPulseRingSpriteTemplate, ANIM_TARGET, 2, 0, 0, 40, 15
+	delay 5
+	createsprite gWaterPulseRingSpriteTemplate, ANIM_TARGET, 2, 0, 0, 40, 15
+	delay 5
+	playsewithpan SE_W171, SOUND_PAN_ATTACKER
+	createsprite gWaterPulseRingSpriteTemplate, ANIM_TARGET, 2, 0, 0, 40, 15
+	delay 13
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, 8, 18, 1
+	waitforvisualfinish
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 1, 7, 0, RGB(0, 2, 4)
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	end
 	end
 	
 Move_NIGHT_SLASH:
@@ -13308,8 +13334,6 @@ Move_SNATCH:
 Move_DIVE:
 	loadspritegfx ANIM_TAG_SPLASH
 	loadspritegfx ANIM_TAG_SWEAT_BEAD
-	choosetwoturnanim DiveSetUp, DiveAttack
-DiveSetUp:
 	loadspritegfx ANIM_TAG_ROUND_SHADOW
 	playsewithpan SE_W029, SOUND_PAN_ATTACKER
 	createsprite gUnknown_08596490, ANIM_ATTACKER, 2, 0, 0, 13, 336
@@ -13321,12 +13345,7 @@ DiveSetUp:
 	call DiveSetUp1
 	call DiveSetUp1
 	call DiveSetUp1
-	end
-DiveSetUp1:
-	createsprite gUnknown_085964E4, ANIM_ATTACKER, 5, 0, 0
-	createsprite gUnknown_085964E4, ANIM_ATTACKER, 5, 1, 0
-	return
-DiveAttack:
+	delay 60
 	loadspritegfx ANIM_TAG_WATER_IMPACT
 	loadspritegfx ANIM_TAG_SMALL_BUBBLES
 	monbg ANIM_DEF_PARTNER
@@ -13345,6 +13364,10 @@ DiveAttack:
 	clearmonbg ANIM_DEF_PARTNER
 	blendoff
 	end
+DiveSetUp1:
+	createsprite gUnknown_085964E4, ANIM_ATTACKER, 5, 0, 0
+	createsprite gUnknown_085964E4, ANIM_ATTACKER, 5, 1, 0
+	return
 DiveAttack1:
 	createsprite gUnknown_085964E4, ANIM_TARGET, 5, 0, 1
 	createsprite gUnknown_085964E4, ANIM_TARGET, 5, 1, 1

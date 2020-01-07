@@ -4499,6 +4499,16 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_EliteFour",
             "width": 19
+        },
+        {
+            "blockdata_filepath": "data/layouts/LilycoveCity_TrainingCenter/map.bin",
+            "border_filepath": "data/layouts/LilycoveCity_TrainingCenter/border.bin",
+            "height": 22,
+            "id": "LAYOUT_LILYCOVE_CITY_TRAINING_CENTER",
+            "name": "LilycoveCity_TrainingCenter_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Facility",
+            "width": 20
         }
     ],
     "layouts_table_label": "gMapLayouts"

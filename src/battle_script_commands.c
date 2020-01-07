@@ -1218,6 +1218,13 @@ static bool32 AccuracyCalcHelper(u16 move)
             RecordAbilityBattle(gBattlerTarget, ABILITY_NO_GUARD);
         return TRUE;
     }
+    else if ((GetBattlerAbility(gBattlerAttacker) == ABILITY_PRIMAL) &&
+    ((gBattleMons[gBattlerAttacker].type1 == TYPE_ICE ||(gBattleMons[gBattlerAttacker].type1 == TYPE_FIRE) || (gBattleMons[gBattlerAttacker].type1 == TYPE_ELECTRIC))) &&
+    (gBattleMons[gBattlerAttacker].type2 == TYPE_FLYING))
+    {
+        JumpIfMoveFailed(7, move);
+        return TRUE;
+    }
 
     if (!(gHitMarker & HITMARKER_IGNORE_ON_AIR) && gStatuses3[gBattlerTarget] & STATUS3_ON_AIR)
     {
@@ -10481,9 +10488,6 @@ static void Cmd_setsemiinvulnerablebit(void)
         break;
     case MOVE_DIG:
         gStatuses3[gBattlerAttacker] |= STATUS3_UNDERGROUND;
-        break;
-    case MOVE_DIVE:
-        gStatuses3[gBattlerAttacker] |= STATUS3_UNDERWATER;
         break;
     case MOVE_PHANTOM_FORCE:
     case MOVE_SHADOW_FORCE:

@@ -7119,12 +7119,17 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute119Torchic[]
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute103Mudkip[] = {
-    {
-    .iv = 0,
-    .lvl = 5,
-    .species = SPECIES_TREECKO,
-    }
+static const struct TrainerMonNoItemDefaultMoves sParty_Dawn1[] = {
+	{
+	.iv = 0,
+	.lvl = 10,
+	.species = SPECIES_ROSELIA,
+	},
+	{
+	.iv = 0,
+	.lvl = 8,
+	.species = SPECIES_TOGEPI,
+	}
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute110Mudkip[] = {
@@ -7145,22 +7150,39 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute110Mudkip[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute119Mudkip[] = {
-    {
-    .iv = 100,
-    .lvl = 29,
-    .species = SPECIES_SLUGMA,
-    },
-    {
-    .iv = 100,
-    .lvl = 29,
-    .species = SPECIES_LOMBRE,
-    },
-    {
-    .iv = 150,
-    .lvl = 31,
-    .species = SPECIES_GROVYLE,
-    }
+static const struct TrainerMonItemCustomMoves sParty_Dawn4[] = {
+	{
+	.iv = 100,
+	.lvl = 45,
+	.species = SPECIES_TOGEKISS,
+	.heldItem = ITEM_KINGS_ROCK,
+	.ability = 0,
+	.moves = MOVE_DAZZLING_GLEAM, MOVE_AURA_SPHERE, MOVE_AIR_SLASH, MOVE_ROOST
+	},
+	{
+	.iv = 100,
+	.lvl = 44,
+	.species = SPECIES_FROSLASS,
+	.heldItem = ITEM_EXPERT_BELT,
+	.ability = 1,
+	.moves = MOVE_ICE_BEAM, MOVE_SHADOW_BALL, MOVE_WILL_O_WISP, MOVE_DRAINING_KISS
+	},
+	{
+	.iv = 100,
+	.lvl = 43,
+	.species = SPECIES_SYLVEON,
+	.heldItem = ITEM_LEFTOVERS,
+	.ability = 1,
+	.moves = MOVE_HYPER_VOICE, MOVE_PSYSHOCK, MOVE_SHADOW_BALL, MOVE_PROTECT
+	},
+	{
+	.iv = 100,
+	.lvl = 45,
+	.species = SPECIES_MAWILE,
+	.heldItem = ITEM_EXPERT_BELT,
+	.ability = 0,
+	.moves = MOVE_IRON_HEAD, MOVE_PLAY_ROUGH, MOVE_CRUNCH, MOVE_BRICK_BREAK
+	},
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute103Treecko[] = {
@@ -10532,17 +10554,22 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Cristin1[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_MayRustboroTreecko[] = {//May14
-    {
-    .iv = 25,
-    .lvl = 13,
-    .species = SPECIES_LOTAD,
-    },
-    {
-    .iv = 50,
-    .lvl = 15,
-    .species = SPECIES_TORCHIC,
-    }
+static const struct TrainerMonNoItemDefaultMoves sParty_Dawn2[] = {//May14
+	{
+	.iv = 50,
+	.lvl = 24,
+	.species = SPECIES_ROSELIA,
+	},
+	{
+	.iv = 50,
+	.lvl = 22,
+	.species = SPECIES_TOGEPI,
+	},
+	{
+	.iv = 100,
+	.lvl = 30,
+	.species = SPECIES_FEEBAS,
+	}
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_MayRustboroTorchic[] = {//May15

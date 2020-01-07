@@ -704,7 +704,7 @@
 #define FLAG_RYU_R119_RIVAL  0x298 // Unused Flag
 #define FLAG_RYU_INTERACTED_RIVAL_R110  0x299 // Unused Flag
 #define FLAG_RYU_INTERACTED_LAVARIDGE  0x29A // Unused Flag
-#define FLAG_UNUSED_0x29B  0x29B // Unused Flag
+#define FLAG_RYU_TC_ENTERED  0x29B // Unused Flag
 #define FLAG_UNUSED_0x29C  0x29C // Unused Flag
 #define FLAG_UNUSED_0x29D  0x29D // Unused Flag
 #define FLAG_UNUSED_0x29E  0x29E // Unused Flag

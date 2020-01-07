@@ -282,8 +282,8 @@
             "script": "LilycoveCity_EventScript_AquaGrunt4",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 43,
-            "y": 18
+            "x": 42,
+            "y": 16
         },
         {
             "elevation": 3,
@@ -334,8 +334,8 @@
             "script": "LilycoveCity_EventScript_BerryGentleman",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 50,
-            "y": 7
+            "x": 54,
+            "y": 10
         },
         {
             "elevation": 5,
@@ -517,6 +517,13 @@
             "elevation": 0,
             "x": 12,
             "y": 5
+        },
+        {
+            "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 46,
+            "y": 19
         }
     ],
     "weather": "WEATHER_SUNNY"

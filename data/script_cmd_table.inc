@@ -237,6 +237,8 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_givebp
 	.4byte ScrCmd_checkbp
 	.4byte ScrCmd_gfec
+	.4byte ScrCmd_multvar
+	.4byte ScrCmd_divvar
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop
