@@ -269,7 +269,7 @@ SSTidalCorridor_Text_ScottBattleFrontierInvite: @ 823C28F
 	.string "{PLAYER}, {PLAYER}!\p"
 	.string "Something's come up, so I have to\n"
 	.string "disembark, but am I glad to see you!\p"
-	.string "Congratulations, LEAGUE CHAMPION!\p"
+	.string "Congratulations, League Champion!\p"
 	.string "There's a place I'd like to invite\n"
 	.string "someone like you.\p"
 	.string "It's the…\n"
@@ -315,7 +315,7 @@ SSTidalCorridor_Text_WeveArrived: @ 823C64F
 
 SSTidalCorridor_Text_VisitOtherCabins: @ 823C65E
 	.string "Go visit other cabins.\n"
-	.string "TRAINERS bored of the boat trip will\l"
+	.string "Trainers bored of the boat trip will\l"
 	.string "be itching to battle.$"
 
 SSTidalCorridor_Text_EnjoyYourCruise: @ 823C6B0

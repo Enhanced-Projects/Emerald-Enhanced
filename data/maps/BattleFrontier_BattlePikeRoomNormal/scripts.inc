@@ -764,7 +764,7 @@ BattleFrontier_BattlePikeRoomNormal_Text_Silence: @ 825DDE6
 BattleFrontier_BattlePikeRoomNormal_Text_BattleSomewhatToughTrainer: @ 825DDFE
 	.string "Welcome…\p"
 	.string "Here, we will have you battle\n"
-	.string "a somewhat-tough TRAINER…$"
+	.string "a somewhat-tough Trainer…$"
 
 BattleFrontier_BattlePikeRoomNormal_Text_RestoreToFullHealth: @ 825DE3F
 	.string "How wonderful…\p"

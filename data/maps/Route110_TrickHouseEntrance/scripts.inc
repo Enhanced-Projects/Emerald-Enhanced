@@ -1040,7 +1040,7 @@ Route110_TrickHouseEntrance_Text_ConcealedBeneathCushion: @ 826A6B6
 Route110_TrickHouseEntrance_Text_TheyCallMeTrickMaster: @ 826A709
 	.string "Behold!\p"
 	.string "For I am the greatest living mystery\n"
-	.string "of a man in all of HOENN!\l"
+	.string "of a man in all of Hoenn!\l"
 	.string "They call me…\p"
 	.string "The TRICK MASTER!\n"
 	.string "Wahahaha! Glad to meet you!$"

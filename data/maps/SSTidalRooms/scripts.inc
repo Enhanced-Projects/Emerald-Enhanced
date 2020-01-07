@@ -69,7 +69,7 @@ SSTidalRooms_Text_TakeRestOnBed: @ 823CAF2
 
 SSTidalRooms_Text_ColtonIntro: @ 823CB14
 	.string "I often sail to LILYCOVE CITY.\p"
-	.string "I enjoy attending CONTESTS,\n"
+	.string "I enjoy attending Contests,\n"
 	.string "you see.$"
 
 SSTidalRooms_Text_ColtonDefeat: @ 823CB58
@@ -78,7 +78,7 @@ SSTidalRooms_Text_ColtonDefeat: @ 823CB58
 SSTidalRooms_Text_ColtonPostBattle: @ 823CB75
 	.string "I get so excited imagining what kinds\n"
 	.string "of Pokémon I'll get to see in the next\l"
-	.string "CONTEST. The anticipation of it thrills!$"
+	.string "Contest. The anticipation of it thrills!$"
 
 SSTidalRooms_Text_MicahIntro: @ 823CBEB
 	.string "Are your friends strong?$"
@@ -112,7 +112,7 @@ SSTidalRooms_Text_JedDefeat: @ 823CD54
 SSTidalRooms_Text_JedPostBattle: @ 823CD5F
 	.string "JED: It's the first time that our lovey-\n"
 	.string "dovey power couldn't prevail!\l"
-	.string "You must be an awesome TRAINER!$"
+	.string "You must be an awesome Trainer!$"
 
 SSTidalRooms_Text_JedNotEnoughMons: @ 823CDC6
 	.string "JED: You only have one Pokémon?\n"
@@ -128,7 +128,7 @@ SSTidalRooms_Text_LeaDefeat: @ 823CE4B
 SSTidalRooms_Text_LeaPostBattle: @ 823CE59
 	.string "LEA: I can't believe it!\n"
 	.string "Our lovey-dovey power failed…\l"
-	.string "You must be an awesome TRAINER!$"
+	.string "You must be an awesome Trainer!$"
 
 SSTidalRooms_Text_LeaNotEnoughMons: @ 823CEB0
 	.string "LEA: I wanted to battle…\n"
@@ -148,7 +148,7 @@ SSTidalRooms_Text_GarretPostBattle: @ 823CF45
 	.string "A yacht for me and Pokémon!$"
 
 SSTidalRooms_Text_NaomiIntro: @ 823CF97
-	.string "Oh, you're such an adorable TRAINER.\n"
+	.string "Oh, you're such an adorable Trainer.\n"
 	.string "Would you like to have tea?\l"
 	.string "Or would you rather battle?$"
 
@@ -160,7 +160,7 @@ SSTidalRooms_Text_NaomiPostBattle: @ 823D013
 	.string "A world cruise on a luxury liner has its\n"
 	.string "charms, I must say…\p"
 	.string "But, I will admit there is an appealing\n"
-	.string "side to touring HOENN by ferry.$"
+	.string "side to touring Hoenn by ferry.$"
 
 SSTidalRooms_Text_NotSuspiciousTakeThis: @ 823D098
 	.string "Uh… Hi! I… I'm not acting suspicious!\n"

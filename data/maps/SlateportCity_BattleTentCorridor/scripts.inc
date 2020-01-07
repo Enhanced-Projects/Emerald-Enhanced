@@ -161,7 +161,7 @@ SlateportCity_BattleTentCorridor_Movement_AttendantExit: @ 8209068
 @ Unused
 SlateportCity_ContestHall_Text_AdviceForContests: @ 820906B
 	.string "Want a tasty little bit of advice\n"
-	.string "for CONTESTS?\p"
+	.string "for Contests?\p"
 	.string "Using a certain move after another\n"
 	.string "certain kind of move sometimes gets\l"
 	.string "you extra attention.\p"
@@ -172,9 +172,9 @@ SlateportCity_ContestHall_Text_AdviceForContests: @ 820906B
 
 @ Unused
 SlateportCity_ContestHall_Text_MyPapaIsContestJudge: @ 820917A
-	.string "My papa, he's a CONTEST JUDGE.\p"
+	.string "My papa, he's a Contest JUDGE.\p"
 	.string "I wonder what I should be when I\n"
-	.string "grow up, a JUDGE or a GYM LEADER?$"
+	.string "grow up, a JUDGE or a Gym Leader?$"
 
 @ Unused
 SlateportCity_ContestHall_Text_ImLikeMajorlyCheesed: @ 82091DC
@@ -203,17 +203,17 @@ SlateportCity_ContestHall_Text_MCStepUpTakePartInContest: @ 82093ED
 	.string "MC: Oh, my, my!\n"
 	.string "Now isn't that a dandy of a Pokémon?\p"
 	.string "Please! Do step right up and take\n"
-	.string "part in our splendid CONTESTS!\p"
+	.string "part in our splendid Contests!\p"
 	.string "You'll do well! I'm sure of it!\n"
 	.string "My eyes have never failed me!$"
 
 @ Unused
 SlateportCity_ContestHall_Text_JudgeWouldntDoToMissContest: @ 82094A1
 	.string "JUDGE: Well, hello there!\n"
-	.string "I see that you're a TRAINER!\p"
+	.string "I see that you're a Trainer!\p"
 	.string "Then, it just wouldn't do for you\n"
-	.string "to miss a Pokémon CONTEST!\p"
-	.string "Get a CONTEST PASS in VERDANTURF\n"
+	.string "to miss a Pokémon Contest!\p"
+	.string "Get a Contest PASS in VERDANTURF\n"
 	.string "CITY and enter anytime!$"
 
 @ Unused
@@ -249,7 +249,7 @@ SlateportCity_ContestHall_Text_MoreFreakedOutThanMon: @ 8209718
 
 @ Unused
 SlateportCity_ContestHall_Text_BattleAndContestAlike: @ 8209775
-	.string "A battle and a CONTEST aren't the\n"
+	.string "A battle and a Contest aren't the\n"
 	.string "same, but they are alike, too.\p"
 	.string "You need to work hard and believe\n"
 	.string "in the Pokémon you've raised.$"
@@ -276,6 +276,6 @@ SlateportCity_ContestHall_Text_GetUrgeToMoveWithMon: @ 82098E6
 
 @ Unused
 SlateportCity_ContestHall_Text_HyperRankStage: @ 820993D
-	.string "Pokémon CONTESTS\n"
+	.string "Pokémon Contests\n"
 	.string "HYPER RANK STAGE!$"
 

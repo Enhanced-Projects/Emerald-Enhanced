@@ -35,7 +35,7 @@ RyuChampionThroneStart::
 	goto_if_ne RCR_SoloChamp
 	call RyuParterBattleMultichoice
 	switch VAR_0x8006
-	case TRAINER_REL_MAY, RCR_Dawn
+	case TRAINER_REL_DAWN, RCR_Dawn
 	case TRAINER_REL_SHELLY, RCR_Shelly
 	case TRAINER_REL_BRENDAN, RCR_Brendan
 	case TRAINER_REL_LANA, RCR_Lana

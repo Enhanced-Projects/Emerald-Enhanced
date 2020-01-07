@@ -720,18 +720,18 @@ PetalburgCity_Text_WhereIsWally: @ 81DC837
 
 PetalburgCity_Text_AreYouRookieTrainer: @ 81DC881
 	.string "Hiya! Are you maybe…\n"
-	.string "A rookie TRAINER?\p"
-	.string "Do you know what Pokémon TRAINERS\n"
+	.string "A rookie Trainer?\p"
+	.string "Do you know what Pokémon Trainers\n"
 	.string "do when they reach a new town?\p"
-	.string "They first check what kind of GYM\n"
+	.string "They first check what kind of Gym\n"
 	.string "is in the town.$"
 
 PetalburgCity_Text_ThisIsPetalburgGym: @ 81DC91B
-	.string "See? This is PETALBURG CITY's GYM.$"
+	.string "See? This is PETALBURG CITY's Gym.$"
 
 PetalburgCity_Text_ThisIsGymSign: @ 81DC93E
-	.string "This is the GYM's sign. Look for it\n"
-	.string "whenever you're looking for a GYM.$"
+	.string "This is the Gym's sign. Look for it\n"
+	.string "whenever you're looking for a Gym.$"
 
 PetalburgCity_Text_WaterReflection: @ 81DC985
 	.string "My face is reflected in the water.\p"
@@ -747,8 +747,8 @@ PetalburgCity_Text_FullPartyExplanation: @ 81DCA30
 	.string "BOX over a PC connection.$"
 
 PetalburgCity_Text_GymSign: @ 81DCAAA
-	.string "PETALBURG CITY Pokémon GYM\n"
-	.string "LEADER: NORMAN\l"
+	.string "PETALBURG CITY Pokémon Gym\n"
+	.string "LEADER: Norman\l"
 	.string "“A man in pursuit of power!”$"
 
 PetalburgCity_Text_CitySign: @ 81DCAF1
@@ -756,21 +756,21 @@ PetalburgCity_Text_CitySign: @ 81DCAF1
 	.string "“Where people mingle with nature.”$"
 
 PetalburgCity_Text_WallyHouseSign: @ 81DCB23
-	.string "WALLY'S HOUSE$"
+	.string "WALLY's HOUSE$"
 
 PetalburgCity_Text_AreYouATrainer: @ 81DCB31
 	.string "Excuse me!\p"
 	.string "Let me guess, from the way you're\n"
-	.string "dressed, are you a Pokémon TRAINER?$"
+	.string "dressed, are you a Pokémon Trainer?$"
 
 PetalburgCity_Text_WellMaybeNot: @ 81DCB82
 	.string "… … … … … …\p"
 	.string "Well, maybe not.\n"
 	.string "Your clothes aren't all that dirty.\p"
-	.string "You're either a rookie TRAINER,\n"
+	.string "You're either a rookie Trainer,\n"
 	.string "or maybe you're just an ordinary kid.$"
 
 PetalburgCity_Text_ImLookingForTalentedTrainers: @ 81DCC09
 	.string "I'm roaming the land in search of\n"
-	.string "talented TRAINERS.\p"
+	.string "talented Trainers.\p"
 	.string "I'm sorry to have taken your time.$"

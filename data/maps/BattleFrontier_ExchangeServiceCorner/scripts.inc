@@ -590,7 +590,7 @@ BattleFrontier_ExchangeServiceCorner_Text_ConfirmChoiceBand: @ 825FD59
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmKingsRock: @ 825FD89
-	.string "You've chosen the KING'S ROCK.\n"
+	.string "You've chosen the KING's ROCK.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmFocusBand: @ 825FDB9

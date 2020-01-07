@@ -212,7 +212,7 @@ JaggedPass_Text_EthanPostBattle: @ 8230B93
 JaggedPass_Text_EthanRegister: @ 8230BC6
 	.string "When I get more used to this bumpiness,\n"
 	.string "I'll be sure to win!\p"
-	.string "Can you register me in your POKéNAV?$"
+	.string "Can you register me in your Pokénav?$"
 
 JaggedPass_Text_EthanRematchIntro: @ 8230C28
 	.string "I got used to this bumpiness.\n"

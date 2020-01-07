@@ -17,7 +17,7 @@ SlateportCity_House_Text_NatureToDoWithStatGains: @ 820D9C1
 	.string "do with the stat gains of Pokémon.$"
 
 SlateportCity_House_Text_MustBeGoingToBattleTent: @ 820DA59
-	.string "You're a TRAINER, aren't you?\p"
+	.string "You're a Trainer, aren't you?\p"
 	.string "Since you came to SLATEPORT CITY,\n"
 	.string "you must be going to the BATTLE TENT.$"
 

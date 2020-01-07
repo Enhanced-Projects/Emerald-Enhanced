@@ -62,11 +62,11 @@ CaveOfOrigin_B1F_EventScript_AtSkyPillar:: @ 823584D
 CaveOfOrigin_B1F_Text_WallaceStory: @ 823586E
 	.string "Ah, so you are {PLAYER}?\n"
 	.string "I've heard tales of your exploits.\p"
-	.string "My name is WALLACE.\p"
-	.string "I was once the GYM LEADER of\n"
+	.string "My name is Wallace.\p"
+	.string "I was once the Gym Leader of\n"
 	.string "SOOTOPOLIS, but something came up.\p"
-	.string "So now, I've entrusted my mentor JUAN\n"
-	.string "with the GYM's operation.\p"
+	.string "So now, I've entrusted my mentor Juan\n"
+	.string "with the Gym's operation.\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "GROUDON and KYOGRE, the two Pokémon\n"
@@ -84,19 +84,19 @@ CaveOfOrigin_B1F_Text_WallaceStory: @ 823586E
 	.string "RAYQUAZA's whereabouts…$"
 
 CaveOfOrigin_B1F_Text_WhereIsRayquaza: @ 8235ACE
-	.string "WALLACE: {PLAYER}, do you perhaps\n"
+	.string "Wallace: {PLAYER}, do you perhaps\n"
 	.string "know where RAYQUAZA is now?\p"
 	.string "If you do, please tell me.$"
 
 CaveOfOrigin_B1F_Text_ButWereInCaveOfOrigin: @ 8235B23
-	.string "WALLACE: The CAVE OF ORIGIN?\p"
+	.string "Wallace: The CAVE OF ORIGIN?\p"
 	.string "But that's right here!\n"
 	.string "I need you to do better than that!\p"
 	.string "Please, I need you to think about\n"
 	.string "where RAYQUAZA might be right now.$"
 
 CaveOfOrigin_B1F_Text_OldLadyDidntMentionThat: @ 8235BBF
-	.string "WALLACE: MT. PYRE?\p"
+	.string "Wallace: MT. PYRE?\p"
 	.string "But when I met the old lady there\n"
 	.string "earlier, she made no mention of it.\p"
 	.string "I very much doubt that the old lady\n"
@@ -105,12 +105,12 @@ CaveOfOrigin_B1F_Text_OldLadyDidntMentionThat: @ 8235BBF
 	.string "more carefully for me?$"
 
 CaveOfOrigin_B1F_Text_CantYouRememberSomehow: @ 8235C99
-	.string "WALLACE: Huh? You don't remember?\n"
+	.string "Wallace: Huh? You don't remember?\n"
 	.string "Hmm… That's a problem…\p"
 	.string "Can't you remember somehow?$"
 
 CaveOfOrigin_B1F_Text_WellHeadToSkyPillar: @ 8235CEE
-	.string "WALLACE: The SKY PILLAR?\p"
+	.string "Wallace: The SKY PILLAR?\p"
 	.string "That's it!\n"
 	.string "It must be the SKY PILLAR!\p"
 	.string "{PLAYER}, there's not a moment to lose!\n"

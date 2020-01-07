@@ -607,11 +607,11 @@ Route111_Text_VictorDefeat: @ 81F1542
 
 Route111_Text_VictorPostBattle: @ 81F156F
 	.string "Hey, all!\n"
-	.string "I've found a pretty strong TRAINER!$"
+	.string "I've found a pretty strong Trainer!$"
 
 Route111_Text_VictoriaIntro: @ 81F159D
 	.string "Oh, my goodness! Aren't you young?\p"
-	.string "You must be quite the TRAINER to beat\n"
+	.string "You must be quite the Trainer to beat\n"
 	.string "my husband, though.\p"
 	.string "It's my turn to battle now!$"
 
@@ -620,7 +620,7 @@ Route111_Text_VictoriaDefeat: @ 81F1616
 	.string "I can't get over how strong you are!$"
 
 Route111_Text_VictoriaPostBattle: @ 81F1645
-	.string "There's a strong TRAINER here!\n"
+	.string "There's a strong Trainer here!\n"
 	.string "This one's really strong!$"
 
 Route111_Text_ViviIntro: @ 81F167E
@@ -653,9 +653,9 @@ Route111_Text_ToughToKeepWinningUpTheRanks: @ 81F17BA
 	.string "If you don't raise your Pokémon some\n"
 	.string "more, it could be tough to keep winning\l"
 	.string "up through the ranks.\p"
-	.string "I've heard the Pokémon LEAGUE's\n"
+	.string "I've heard the Pokémon League's\n"
 	.string "ELITE FOUR are far stronger than\l"
-	.string "any GYM LEADER.$"
+	.string "any Gym Leader.$"
 
 Route111_Text_WinstrateFamilyDestroyedMe: @ 81F186E
 	.string "I challenged the WINSTRATE family,\n"
@@ -668,7 +668,7 @@ Route111_Text_RouteSignMauville: @ 81F18CE
 
 Route111_Text_WinstrateHouseSign: @ 81F18E8
 	.string "“Our family's hearts beat as one!”\n"
-	.string "THE WINSTRATE'S HOUSE$"
+	.string "THE WINSTRATE's HOUSE$"
 
 Route111_Text_RouteSign112: @ 81F1921
 	.string "ROUTE 111\n"
@@ -679,11 +679,11 @@ Route111_Text_RouteSign113: @ 81F1937
 	.string "{LEFT_ARROW} ROUTE 113$"
 
 Route111_Text_OldLadysRestStopSign: @ 81F194D
-	.string "OLD LADY'S REST STOP\n"
+	.string "OLD LADY's REST STOP\n"
 	.string "“Come in and rest your tired bones.”$"
 
 Route111_Text_TrainerTipsSpAtkSpDef: @ 81F1987
-	.string "TRAINER TIPS\p"
+	.string "Trainer TIPS\p"
 	.string "One of the indicators of a Pokémon's\n"
 	.string "powerfulness is SP. ATK. It stands for\l"
 	.string "“SPECIAL ATTACK.”\p"
@@ -738,7 +738,7 @@ Route111_Text_MauvilleUncleToldMeToTakeRockSmash: @ 81F1CCA
 	.string "the bike shop in MAUVILLE.$"
 
 Route111_Text_TrainerHillSign: @ 81F1D61
-	.string "{RIGHT_ARROW} TRAINER HILL ENTRANCE\p"
+	.string "{RIGHT_ARROW} Trainer HILL ENTRANCE\p"
 	.string "“Scale the heights, you hot-blooded\n"
-	.string "TRAINERS!”$"
+	.string "Trainers!”$"
 

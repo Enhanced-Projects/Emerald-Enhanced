@@ -87,7 +87,7 @@ Route102_Text_WallyIDidIt: @ 81EC271
 
 Route102_Text_LetsGoBack: @ 81EC297
 	.string "{PLAYER}, thank you!\n"
-	.string "Let's go back to the GYM!$"
+	.string "Let's go back to the Gym!$"
 
 Route102_Text_ImNotVeryTall: @ 81EC2C0
 	.string "I'm…not very tall, so I sink right\n"

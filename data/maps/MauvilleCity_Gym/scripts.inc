@@ -138,7 +138,7 @@ MVG_RelDialog::
 	call RyuParterBattleMultichoice
 	compare VAR_0x8006, TRAINER_REL_SHELLY
 	goto_if_eq MVG_GymBattleIntroShelly
-	compare VAR_0x8006, TRAINER_REL_MAY
+	compare VAR_0x8006, TRAINER_REL_DAWN
 	goto_if_eq MVG_GymBattleIntroDawn
 	compare VAR_0x8006, TRAINER_REL_BRENDAN
 	goto_if_eq MVG_GymBattleIntroBrendan
@@ -232,7 +232,7 @@ MVG_AltGymBattle::
 	
 	
 MVG_GymBattleEnd::
-	compare VAR_0x8006, TRAINER_REL_MAY
+	compare VAR_0x8006, TRAINER_REL_DAWN
 	goto_if_eq MVG_GymBattleEndDawn
 	compare VAR_0x8006, TRAINER_REL_SHELLY
 	goto_if_eq MVG_GymBattleEndShelly
@@ -555,14 +555,14 @@ MauvilleCity_Gym_EventScript_GymStatue:: @ 820E175
 	end
 
 MauvilleCity_Gym_Text_GymGuideAdvice: @ 820E17F
-	.string "Hey, how's it going, CHAMPION-\n"
+	.string "Hey, how's it going, Champion-\n"
 	.string "bound {PLAYER}?\p"
-	.string "WATTSON, the LEADER of MAUVILLE\n"
-	.string "GYM, uses ELECTRIC-type Pokémon.\p"
+	.string "Wattson, the LEADER of MAUVILLE\n"
+	.string "Gym, uses ELECTRIC-type Pokémon.\p"
 	.string "If you challenge him with WATER-type\n"
 	.string "Pokémon, he'll zap them! Bzzt!\p"
 	.string "And, he's put in switch-controlled\n"
-	.string "doors all over his GYM! Eccentric!\p"
+	.string "doors all over his Gym! Eccentric!\p"
 	.string "Hey, go for it!$"
 
 MauvilleCity_Gym_Text_GymGuidePostVictory: @ 820E283
@@ -582,27 +582,27 @@ MauvilleCity_Gym_Text_KirkPostBattle: @ 820E336
 	.string "whoa-yeah!$"
 
 MauvilleCity_Gym_Text_ShawnPreBattle: @ 820E369
-	.string "I trained under WATTSON!\n"
+	.string "I trained under Wattson!\n"
 	.string "There ain't no way I'll lose easily!$"
 
 MauvilleCity_Gym_Text_ShawnDefeat: @ 820E3A7
 	.string "Unplugged and turned off…$"
 
 MauvilleCity_Gym_Text_ShawnPostBattle: @ 820E3C1
-	.string "WATTSON, our GYM LEADER, has been\n"
+	.string "Wattson, our Gym Leader, has been\n"
 	.string "around for a long, long time.\p"
 	.string "He was battling even before your\n"
 	.string "daddy was born, that tough coot.$"
 
 MauvilleCity_Gym_Text_BenPreBattle: @ 820E443
-	.string "This GYM's got puzzles!\n"
+	.string "This Gym's got puzzles!\n"
 	.string "Isn't it fun?$"
 
 MauvilleCity_Gym_Text_BenDefeat: @ 820E469
 	.string "It's no fun to lose…$"
 
 MauvilleCity_Gym_Text_BenPostBattle: @ 820E47E
-	.string "WATTSON says he likes setting up\n"
+	.string "Wattson says he likes setting up\n"
 	.string "little traps with switches.$"
 
 MauvilleCity_Gym_Text_VivianPreBattle: @ 820E4BB
@@ -614,9 +614,9 @@ MauvilleCity_Gym_Text_VivianDefeat: @ 820E4F4
 
 MauvilleCity_Gym_Text_VivianPostBattle: @ 820E50F
 	.string "I've heard that MAUVILLE was founded\n"
-	.string "by WATTSON.\p"
-	.string "He was a TRAINER long before we\n"
-	.string "became TRAINERS.\l"
+	.string "by Wattson.\p"
+	.string "He was a Trainer long before we\n"
+	.string "became Trainers.\l"
 	.string "He must know all sorts of things!$"
 
 MauvilleCity_Gym_Text_AngeloPreBattle: @ 820E593
@@ -627,21 +627,21 @@ MauvilleCity_Gym_Text_AngeloDefeat: @ 820E5A8
 	.string "My eyes are frazzled…$"
 
 MauvilleCity_Gym_Text_AngeloPostBattle: @ 820E5C2
-	.string "MAUVILLE GYM's WATTSON has a shiny\n"
+	.string "MAUVILLE Gym's Wattson has a shiny\n"
 	.string "forehead. It makes me happy!$"
 
 MauvilleCity_Gym_Text_WattsonPreBattle: @ 820E602
 	.string "I've given up on my plans to convert\n"
 	.string "the city, I have.\p"
 	.string "And so, I put my time into making\n"
-	.string "door traps in my GYM.\p"
+	.string "door traps in my Gym.\p"
 	.string "Oh? Now, what are you doing here?\p"
 	.string "What's that? You say you've gotten\n"
 	.string "past all my rigged doors?\p"
 	.string "Wahahahah!\n"
 	.string "Now, that is amusing!\p"
-	.string "Then, I, WATTSON, the LEADER of\n"
-	.string "MAUVILLE GYM, shall electrify you!$"
+	.string "Then, I, Wattson, the LEADER of\n"
+	.string "MAUVILLE Gym, shall electrify you!$"
 
 MauvilleCity_Gym_Text_WattsonDefeat: @ 820E734
 	.string "Wahahahah!\n"
@@ -649,11 +649,11 @@ MauvilleCity_Gym_Text_WattsonDefeat: @ 820E734
 	.string "You ended up giving me a thrill!$"
 
 MauvilleCity_Gym_Text_ReceivedDynamoBadge: @ 820E77F
-	.string "{PLAYER} received the DYNAMO BADGE\n"
-	.string "from WATTSON.$"
+	.string "{PLAYER} received the DYNAMO badge\n"
+	.string "from Wattson.$"
 
 MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis: @ 820E7AA
-	.string "With the DYNAMO BADGE, Pokémon can\n"
+	.string "With the DYNAMO badge, Pokémon can\n"
 	.string "use ROCK SMASH out of battle.\p"
 	.string "And, it will make your Pokémon a little\n"
 	.string "bit faster, too.\p"
@@ -667,27 +667,27 @@ MauvilleCity_Gym_Text_ExplainShockWave: @ 820E844
 	.string "… … … … … …$"
 
 MauvilleCity_Gym_Text_RegisteredWattson: @ 820E8B5
-	.string "Registered GYM LEADER WATTSON\n"
-	.string "in the POKéNAV.$"
+	.string "Registered Gym Leader Wattson\n"
+	.string "in the Pokénav.$"
 
 MauvilleCity_Gym_Text_WattsonPostBattle: @ 820E8E3
 	.string "I swell with optimism, seeing a promising\n"
-	.string "young TRAINER like you!$"
+	.string "young Trainer like you!$"
 
 MauvilleCity_Gym_Text_WattsonGoForthAndEndeavor: @ 820E925
 	.string "Wahahahah!\n"
 	.string "Go forth and endeavor, youngster!$"
 
 MauvilleCity_Gym_Text_GymStatue: @ 820E952
-	.string "MAUVILLE CITY Pokémon GYM$"
+	.string "MAUVILLE CITY Pokémon Gym$"
 
 MauvilleCity_Gym_Text_GymStatueCertified: @ 820E96C
-	.string "MAUVILLE CITY Pokémon GYM\p"
-	.string "WATTSON'S CERTIFIED TRAINERS:\n"
+	.string "MAUVILLE CITY Pokémon Gym\p"
+	.string "Wattson's Certified Trainers:\n"
 	.string "{PLAYER}$"
 
 MauvilleCity_Gym_Text_WattsonPreRematch: @ 820E9A7
-	.string "WATTSON: Ah-ha! Here at last!\n"
+	.string "Wattson: Ah-ha! Here at last!\n"
 	.string "I know what you want.\l"
 	.string "You want to battle my Pokémon!\p"
 	.string "Wahahahaha!\p"
@@ -699,7 +699,7 @@ MauvilleCity_Gym_Text_WattsonRematchDefeat: @ 820EA42
 	.string "Our batteries ran dry…$"
 
 MauvilleCity_Gym_Text_WattsonPostRematch: @ 820EA5E
-	.string "WATTSON: We'll have to recharge our\n"
+	.string "Wattson: We'll have to recharge our\n"
 	.string "batteries again.\p"
 	.string "When we're fully charged up, we'll\n"
 	.string "gladly accept your challenge.\p"
@@ -707,7 +707,7 @@ MauvilleCity_Gym_Text_WattsonPostRematch: @ 820EA5E
 	.string "won't you?$"
 
 MauvilleCity_Gym_Text_WattsonRematchNeedTwoMons: @ 820EAFD
-	.string "WATTSON: Ah-ha! Here at last!\n"
+	.string "Wattson: Ah-ha! Here at last!\n"
 	.string "I know what you want.\l"
 	.string "You want to battle my Pokémon!\p"
 	.string "Wahahahaha!\p"

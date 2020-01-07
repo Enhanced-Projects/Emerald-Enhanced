@@ -141,7 +141,7 @@ LavaridgeTown_Text_HaveEggWillYouTakeIt: @ 81EAB80
 	.string "I've heard it would be best if it were\n"
 	.string "kept together with Pokémon and\l"
 	.string "carried about.\p"
-	.string "You are a TRAINER, yes?\n"
+	.string "You are a Trainer, yes?\n"
 	.string "And your Pokémon radiate vitality.\p"
 	.string "So, what say you?\n"
 	.string "Will you take this EGG to hatch?$"
@@ -191,7 +191,7 @@ LavaridgeTown_Text_OhYouLikeHotSprings: @ 81EAF4E
 LavaridgeTown_Text_BatheInHotSpringsEveryDay: @ 81EAF9B
 	.string "I bathe in the hot springs every day.\p"
 	.string "I want to become a beautiful and strong\n"
-	.string "GYM LEADER like FLANNERY.$"
+	.string "Gym Leader like Flannery.$"
 
 LavaridgeTown_Text_IfPokemonInHotSprings: @ 81EB003
 	.string "If people put Pokémon in hot springs,\n"
@@ -212,8 +212,8 @@ LavaridgeTown_Text_TownSign: @ 81EB12B
 	.string "An excellent place for relaxing!”$"
 
 LavaridgeTown_Text_GymSign: @ 81EB178
-	.string "LAVARIDGE TOWN Pokémon GYM\n"
-	.string "LEADER: FLANNERY\l"
+	.string "LAVARIDGE TOWN Pokémon Gym\n"
+	.string "LEADER: Flannery\l"
 	.string "“One with a fiery passion that burns!”$"
 
 LavaridgeTown_Text_HerbShopSign: @ 81EB1CB

@@ -328,7 +328,7 @@ MossdeepCity_SpaceCenter_1F_Text_FoundThisYouCanHaveIt: @ 8223540
 	.string "have it.$"
 
 MossdeepCity_SpaceCenter_1F_Text_HoennFamousForMeteorShowers: @ 82235A6
-	.string "The HOENN region has been famous for \n"
+	.string "The Hoenn region has been famous for \n"
 	.string "its meteor showers for a long time.$"
 
 MossdeepCity_SpaceCenter_1F_Text_MagmaCantStealFuelTakeThis: @ 82235F0

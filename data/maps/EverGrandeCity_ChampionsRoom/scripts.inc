@@ -293,7 +293,7 @@ EverGrandeCity_ChampionsRoom_Text_Defeat: @ 8228EAC
 	.string "trainer!$"
 
 EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech: @ 8228F66
-	.string "WALLACE: The Pokémon you sent into\n"
+	.string "Wallace: The Pokémon you sent into\n"
 	.string "battle…\p"
 	.string "At times they danced like a spring\n"
 	.string "breeze, and at times they struck\l"
@@ -303,7 +303,7 @@ EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech: @ 8228F66
 	.string "Even I felt bedazzled by your\n"
 	.string "masterful performance!\p"
 	.string "You now stand at the glorious peak\n"
-	.string "of the Pokémon LEAGUE.\p"
+	.string "of the Pokémon League.\p"
 	.string "I now proclaim you to be the new\n"
 	.string "Hoenn region…$"
 
@@ -330,14 +330,14 @@ EverGrandeCity_ChampionsRoom_Text_BrendanYouveWon: @ 82291A2
 	.string "You've beaten the Champion?$"
 
 EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex: @ 82291E6
-	.string "PROF. BIRCH: See?\n"
+	.string "Prof. Birch: See?\n"
 	.string "What did I tell you, {RIVAL}?\p"
 	.string "Didn't I tell you that you don't need\n"
 	.string "to worry about {PLAYER}?\p"
 	.string "… … … … … … … …\n"
 	.string "{PLAYER}, you've finally done it.\p"
 	.string "When I heard that you defeated your\n"
-	.string "own father at the PETALBURG GYM,\l"
+	.string "own father at the PETALBURG Gym,\l"
 	.string "I thought perhaps you had a chance…\p"
 	.string "But to think you've actually become\n"
 	.string "the Champion!\p"
@@ -346,22 +346,22 @@ EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex: @ 82291E6
 	.string "Here, let me see.$"
 
 EverGrandeCity_ChampionsRoom_Text_BirchCongratulations: @ 822934D
-	.string "PROF. BIRCH: Anyways,\n"
+	.string "Prof. Birch: Anyways,\n"
 	.string "congratulations!\p"
 	.string "Now, go proudly into the final room!$"
 
 EverGrandeCity_ChampionsRoom_Text_WallaceComeWithMe: @ 8229399
-	.string "WALLACE: {PLAYER}…\p"
+	.string "Wallace: {PLAYER}…\p"
 	.string "No, let me rephrase that properly.\p"
 	.string "The new Champion!\p"
 	.string "Come with me.$"
 
 EverGrandeCity_ChampionsRoom_Text_WallaceWaitOutside: @ 82293EB
-	.string "WALLACE: I'm sorry, but…\p"
-	.string "From here on, only those trainerS who\n"
+	.string "Wallace: I'm sorry, but…\p"
+	.string "From here on, only those Trainers who\n"
 	.string "have become ChampionS may enter.\p"
 	.string "You'll have to wait outside with\n"
-	.string "PROF. BIRCH.$"
+	.string "Prof. Birch.$"
 
 EverGrandeCity_ChampionsRoom_Text_MayCongratulations: @ 8229479
 	.string "Dawn: Groan…\p"
@@ -564,7 +564,7 @@ EGC_DAWNFZ_TEXT_NO:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You see a familiar look of hurt and sadness\l"
 	.string " in her eyes)$"
 	.string "Prof Birch: Now, now, {RIVAL}, there's plenty\n"
-	.string "of other trainers out there you can befriend.\p"
+	.string "of other Trainers out there you can befriend.\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(The Prof. shoots you an angry look as {RIVAL}\n"
 	.string " runs back out the door...)$"
 	

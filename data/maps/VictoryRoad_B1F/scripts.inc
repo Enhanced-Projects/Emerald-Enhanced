@@ -35,12 +35,12 @@ VictoryRoad_B1F_Text_SamuelDefeat: @ 82365AD
 	.string "I couldn't do a thing…$"
 
 VictoryRoad_B1F_Text_SamuelPostBattle: @ 82365C4
-	.string "The Pokémon LEAGUE became distant\n"
+	.string "The Pokémon League became distant\n"
 	.string "again… What a letdown…$"
 
 VictoryRoad_B1F_Text_ShannonIntro: @ 82365FD
 	.string "To win your way through the Pokémon\n"
-	.string "LEAGUE, you need the trust of your\l"
+	.string "League, you need the trust of your\l"
 	.string "Pokémon.$"
 
 VictoryRoad_B1F_Text_ShannonDefeat: @ 823664D
@@ -49,11 +49,11 @@ VictoryRoad_B1F_Text_ShannonDefeat: @ 823664D
 
 VictoryRoad_B1F_Text_ShannonPostBattle: @ 8236678
 	.string "By being together all the time, trust\n"
-	.string "grows between Pokémon and TRAINERS.$"
+	.string "grows between Pokémon and Trainers.$"
 
 VictoryRoad_B1F_Text_MichelleIntro: @ 82366C2
 	.string "This isn't the goal. It's only a place\n"
-	.string "on the way to the Pokémon LEAGUE.$"
+	.string "on the way to the Pokémon League.$"
 
 VictoryRoad_B1F_Text_MichelleDefeat: @ 823670B
 	.string "That's the way!$"

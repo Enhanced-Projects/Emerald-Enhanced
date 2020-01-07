@@ -899,25 +899,25 @@ RustboroCity_Text_SneakyLookingManWentAroundCorner: @ 81E12AC
 	.string "looking guy went around the corner.$"
 
 RustboroCity_Text_HaveYouChallengedGym: @ 81E130D
-	.string "Have you taken the Pokémon GYM\n"
+	.string "Have you taken the Pokémon Gym\n"
 	.string "challenge?\p"
-	.string "When you get that shiny GYM BADGE\n"
-	.string "in hand, I guess TRAINERS begin to\l"
+	.string "When you get that shiny Gym Badge\n"
+	.string "in hand, I guess Trainers begin to\l"
 	.string "realize what is required of them.$"
 
 RustboroCity_Text_HeyThatsRustborosGymBadge: @ 81E139E
-	.string "Hey, that's RUSTBORO's GYM BADGE!\p"
-	.string "Out of all the Pokémon GYM BADGES,\n"
+	.string "Hey, that's RUSTBORO's Gym Badge!\p"
+	.string "Out of all the Pokémon Gym Badges,\n"
 	.string "RUSTBORO's is the coolest, I'd say.$"
 
 RustboroCity_Text_YoureNewAroundHere: @ 81E1407
 	.string "Oh? Who might you be?\n"
 	.string "You're a new face around these parts.\p"
 	.string "Have you just transferred into the\n"
-	.string "Pokémon TRAINER'S SCHOOL?$"
+	.string "Pokémon Trainer's SCHOOL?$"
 
 RustboroCity_Text_GymLeaderIsntEasyWithFire: @ 81E1480
-	.string "I challenged the GYM LEADER, but…\p"
+	.string "I challenged the Gym Leader, but…\p"
 	.string "It's not going to be easy winning with\n"
 	.string "my FIRE-type Pokémon…\p"
 	.string "FIRE-type Pokémon don't match up\n"
@@ -943,7 +943,7 @@ RustboroCity_Text_WowYouHavePokemon: @ 81E1633
 	.string "places with Pokémon, too.$"
 
 RustboroCity_Text_CatchRarePokemonIfIGoToSchool: @ 81E1695
-	.string "Pokémon TRAINER'S SCHOOL!\p"
+	.string "Pokémon Trainer's SCHOOL!\p"
 	.string "If I go to this school, will I be able\n"
 	.string "to catch rare Pokémon easily?$"
 
@@ -959,8 +959,8 @@ RustboroCity_Text_PokemonChangeShape: @ 81E174B
 RustboroCity_Text_TradePokemonGrowFast: @ 81E1789
 	.string "A Pokémon you get in a trade from\n"
 	.string "someone grows fast.\p"
-	.string "But if you don't have certain GYM\n"
-	.string "BADGES, it may not obey you…$"
+	.string "But if you don't have certain Gym\n"
+	.string "badges, it may not obey you…$"
 
 RustboroCity_Text_OutOfTheWay: @ 81E17FE
 	.string "Get out!\n"
@@ -972,7 +972,7 @@ RustboroCity_Text_WaitDontTakeMyGoods: @ 81E1817
 
 RustboroCity_Text_HelpMeIWasRobbed: @ 81E183E
 	.string "Oh, it's you!\p"
-	.string "You're that fantastic TRAINER who\n"
+	.string "You're that fantastic Trainer who\n"
 	.string "helped me in PETALBURG WOODS!\p"
 	.string "Help me! I was robbed by TEAM AQUA!\n"
 	.string "I have to get the DEVON GOODS back!\p"
@@ -988,7 +988,7 @@ RustboroCity_Text_YouGotItThankYou: @ 81E194D
 	.string "The DEVON GOODS?\p"
 	.string "You did!\n"
 	.string "You got them back!\p"
-	.string "You really are a great TRAINER!\p"
+	.string "You really are a great Trainer!\p"
 	.string "I know! As my thanks, I'll give you\n"
 	.string "another GREAT BALL!$"
 
@@ -1018,7 +1018,7 @@ RustboroCity_Text_MayDefeat: @ 81E1CC1
 
 RustboroCity_Text_RegisteredBrendan: @ 81E1E11
 	.string "Registered BRENDAN\n"
-	.string "in the POKéNAV.$"
+	.string "in the Pokénav.$"
 
 RustboroCity_Text_BrendanPassedBrineyWantToBattle: @ 81E1E34
 	.string "{PLAYER}, how's your POKéDEX?\n"
@@ -1037,7 +1037,7 @@ RustboroCity_Text_BrendanWantToBattle: @ 81E1F76
 
 RustboroCity_Text_BrendanIWontGoEasy: @ 81E1FA9
 	.string "BRENDAN: I know you just became\n"
-	.string "a TRAINER, but I won't go easy!$"
+	.string "a Trainer, but I won't go easy!$"
 
 RustboroCity_Text_BrendanDefeat: @ 81E1FE9
 	.string "Hmm…\n"
@@ -1062,8 +1062,8 @@ RustboroCity_Text_DevonCorpSign: @ 81E2128
 	.string "it all.”$"
 
 RustboroCity_Text_GymSign: @ 81E2167
-	.string "RUSTBORO CITY Pokémon GYM\n"
-	.string "LEADER: ROXANNE\p"
+	.string "RUSTBORO CITY Pokémon Gym\n"
+	.string "LEADER: Roxanne\p"
 	.string "“The ROCK-loving honors student!”$"
 
 RustboroCity_Text_DevonCorpBranchOfficeSign: @ 81E21B3
@@ -1077,34 +1077,34 @@ RustboroCity_Text_CitySign: @ 81E220B
 	.string "nature and science.”$"
 
 RustboroCity_Text_TrainersSchoolSign: @ 81E2253
-	.string "Pokémon TRAINER'S SCHOOL\p"
+	.string "Pokémon Trainer's SCHOOL\p"
 	.string "“We'll teach you anything about\n"
 	.string "Pokémon!”$"
 
 RustboroCity_Text_CuttersHouse: @ 81E2296
-	.string "CUTTER'S HOUSE$"
+	.string "CUTTER's HOUSE$"
 
 RustboroCity_Text_DevelopedNewPokenavFeature: @ 81E22A5
 	.string "I've been developing an added feature\n"
-	.string "for the POKéNAV…\p"
+	.string "for the Pokénav…\p"
 	.string "And it turned out great!\p"
-	.string "{PLAYER}, may I see that POKéNAV?\n"
+	.string "{PLAYER}, may I see that Pokénav?\n"
 	.string "The one our PRESIDENT gave you?$"
 
 RustboroCity_Text_AddedMatchCallPleaseCallMrStone: @ 81E2331
 	.string "There you go, {PLAYER}!\p"
 	.string "I added a new feature named\n"
-	.string "MATCH CALL to your POKéNAV.\p"
+	.string "MATCH CALL to your Pokénav.\p"
 	.string "Using the MATCH CALL feature,\n"
 	.string "you can chat with people who have\l"
-	.string "been registered in your POKéNAV.\p"
+	.string "been registered in your Pokénav.\p"
 	.string "{PLAYER}, our PRESIDENT STONE should\n"
-	.string "be registered in your POKéNAV.\p"
+	.string "be registered in your Pokénav.\p"
 	.string "Test it out.\n"
 	.string "Please give our PRESIDENT a call.$"
 
 RustboroCity_Text_PleaseSelectPokenav: @ 81E2449
-	.string "Please select the POKéNAV.$"
+	.string "Please select the Pokénav.$"
 
 RustboroCity_Text_IdBetterGetBackToWork: @ 81E2464
 	.string "Okay, I'd better get back to work.\n"
@@ -1113,9 +1113,9 @@ RustboroCity_Text_IdBetterGetBackToWork: @ 81E2464
 RustboroCity_Text_YouCanHave2On2Battle: @ 81E249D
 	.string "Did you know this?\p"
 	.string "You can have a 2-on-2 battle even\n"
-	.string "if you're not with another TRAINER.\p"
-	.string "If you catch the eyes of two TRAINERS\n"
+	.string "if you're not with another Trainer.\p"
+	.string "If you catch the eyes of two Trainers\n"
 	.string "when you have two or more Pokémon,\l"
 	.string "they'll both challenge you.\p"
 	.string "Don't you think it'd be cool if you\n"
-	.string "could beat two TRAINERS by yourself?$"
+	.string "could beat two Trainers by yourself?$"

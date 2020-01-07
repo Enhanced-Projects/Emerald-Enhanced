@@ -115,7 +115,7 @@ MtPyre_2F_Text_LeahDefeat: @ 8231645
 	.string "You're durable.$"
 
 MtPyre_2F_Text_LeahPostBattle: @ 823165A
-	.string "Our family has been TRAINERS here\n"
+	.string "Our family has been Trainers here\n"
 	.string "since my great-grandmother's time…\p"
 	.string "It is my duty to protect this\n"
 	.string "mountain…$"

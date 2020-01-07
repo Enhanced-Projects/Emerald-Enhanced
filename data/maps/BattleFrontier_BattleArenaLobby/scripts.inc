@@ -358,7 +358,7 @@ BattleFrontier_BattleArenaLobby_EventScript_ExitRules:: @ 8256164
 	end
 
 BattleFrontier_BattleArenaLobby_Text_WelcomeToBattleArena: @ 8256166
-	.string "Where the battling spirit of TRAINERS\n"
+	.string "Where the battling spirit of Trainers\n"
 	.string "is put to the test!\p"
 	.string "I welcome you to the BATTLE ARENA!\p"
 	.string "I am your guide to the Set KO Tourney!$"
@@ -389,7 +389,7 @@ BattleFrontier_BattleArenaLobby_Text_ExplainChallenge: @ 825624C
 	.string "If you don't save, you will not be able\n"
 	.string "to continue with your challenge.\p"
 	.string "If you pull off the feat of beating\n"
-	.string "seven TRAINERS in succession,\l"
+	.string "seven Trainers in succession,\l"
 	.string "we will present you with Battle Points.$"
 
 BattleFrontier_BattleArenaLobby_Text_OkayToSave: @ 82564CE
@@ -447,7 +447,7 @@ BattleFrontier_BattleArenaLobby_Text_DidntSaveBeforeShuttingDown: @ 8256811
 
 BattleFrontier_BattleArenaLobby_Text_CongratsOnSevenWins: @ 82568E7
 	.string "We congratulate you for your splendid\n"
-	.string "string of wins over seven TRAINERS!$"
+	.string "string of wins over seven Trainers!$"
 
 BattleFrontier_BattleArenaLobby_Text_RecordAchievement: @ 8256931
 	.string "Your achievement will be recorded.\n"
@@ -539,7 +539,7 @@ BattleFrontier_BattleArenaLobby_Text_ExplainMindRules: @ 8256F43
 	.string "This factor evaluates how aggressive\l"
 	.string "the battlers were.\p"
 	.string "The judging is based on how often\n"
-	.string "the TRAINERS ordered the use of\l"
+	.string "the Trainers ordered the use of\l"
 	.string "offensive moves.$"
 
 BattleFrontier_BattleArenaLobby_Text_ExplainSkillRules: @ 8256FF2
@@ -571,7 +571,7 @@ BattleFrontier_BattleArenaLobby_Text_ExplainBodyRules: @ 8257202
 
 BattleFrontier_BattleArenaLobby_Text_CongratsOnDefeatingTycoon: @ 82572D9
 	.string "A victory snatched from the ARENA\n"
-	.string "TYCOON, and a seven-TRAINER sweep!\p"
+	.string "TYCOON, and a seven-Trainer sweep!\p"
 	.string "We congratulate you on your most\n"
 	.string "splendid challenge!$"
 

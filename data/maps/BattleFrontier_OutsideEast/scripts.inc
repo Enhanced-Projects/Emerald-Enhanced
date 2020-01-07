@@ -238,7 +238,7 @@ BattleFrontier_OutsideEast_EventScript_Camper:: @ 8242E08
 BattleFrontier_OutsideEast_Text_BattleTowerSign: @ 8242E11
 	.string "This is the BATTLE TOWER!\n"
 	.string "Keep the win streak as the toughest\l"
-	.string "TRAINER!$"
+	.string "Trainer!$"
 
 BattleFrontier_OutsideEast_Text_BattlePalaceSign: @ 8242E58
 	.string "This is the BATTLE PALACE!\n"
@@ -269,7 +269,7 @@ BattleFrontier_OutsideEast_Text_BattleTowerFeelsSpecial: @ 8242F8C
 BattleFrontier_OutsideEast_Text_ConquerLeagueAndFrontier: @ 8242FDC
 	.string "My grand ambition is to conquer both\n"
 	.string "the BATTLE FRONTIER and the Pokémon\l"
-	.string "LEAGUE.\p"
+	.string "League.\p"
 	.string "And if my dream comes true…\p"
 	.string "I… I'm going to ask MIMI next door\n"
 	.string "if she will be friends with me!$"
@@ -297,7 +297,7 @@ BattleFrontier_OutsideEast_Text_DidScottBringYouHere: @ 8243230
 	.string "Did SCOTT bring you here, too?\n"
 	.string "What is it with that guy?\p"
 	.string "It sounds like he really does know\n"
-	.string "how to spot talented TRAINERS, but…\p"
+	.string "how to spot talented Trainers, but…\p"
 	.string "I've never seen him battling in person\n"
 	.string "ever.$"
 
@@ -321,7 +321,7 @@ BattleFrontier_OutsideEast_Text_PeopleCallMeBusybody: @ 8243363
 
 BattleFrontier_OutsideEast_Text_OnceBeatGymLeader: @ 8243425
 	.string "I may not look that impressive now,\n"
-	.string "but I once beat a GYM LEADER.\p"
+	.string "but I once beat a Gym Leader.\p"
 	.string "Who knows, maybe I should give it\n"
 	.string "another shot at glory.$"
 
@@ -359,7 +359,7 @@ BattleFrontier_OutsideEast_Text_SometimesImportantOldManInThere: @ 8243668
 BattleFrontier_OutsideEast_Text_LegendOfBattlePyramid: @ 82436F2
 	.string "Do you know it?\n"
 	.string "The legend of the BATTLE PYRAMID?\p"
-	.string "When there comes a confident TRAINER\n"
+	.string "When there comes a confident Trainer\n"
 	.string "reaching for the golden pinnacle,\l"
 	.string "there shall appear a man among men.\p"
 	.string "Don't know that legend?\n"
@@ -378,7 +378,7 @@ BattleFrontier_OutsideEast_Text_GotWipedOut: @ 8243809
 
 BattleFrontier_OutsideEast_Text_ToughTrainerInBattleTower: @ 8243895
 	.string "This guy ran into a horribly tough\n"
-	.string "TRAINER while he was on the BATTLE\l"
+	.string "Trainer while he was on the BATTLE\l"
 	.string "TOWER challenge.\p"
 	.string "Now look at him…\p"
 	.string "You need to be cautious if you ever\n"
@@ -413,7 +413,7 @@ BattleFrontier_OutsideEast_Text_PowerOfOurLoveWillOvercome: @ 8243A53
 
 BattleFrontier_OutsideEast_Text_FrontierNotExclusivelyForToughTrainers: @ 8243B68
 	.string "The BATTLE FRONTIER isn't exclusively\n"
-	.string "for tough TRAINERS.\p"
+	.string "for tough Trainers.\p"
 	.string "Many people with special abilities\n"
 	.string "have been invited, it seems.\p"
 	.string "That man SCOTT…\p"

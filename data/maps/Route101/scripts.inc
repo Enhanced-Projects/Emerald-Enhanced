@@ -280,7 +280,7 @@ Route101_Text_DontLeaveMe: @ 81EBEDF
 	.string "Don't leave me like this!$"
 
 Route101_Text_YouSavedMe: @ 81EBF12
-	.string "PROF. BIRCH: Whew…\p"
+	.string "Prof. Birch: Whew…\p"
 	.string "I was in the tall grass studying wild\n"
 	.string "Pokémon when I was jumped.\p"
 	.string "You saved me.\n"

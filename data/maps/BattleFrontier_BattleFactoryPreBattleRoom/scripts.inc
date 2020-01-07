@@ -537,75 +537,75 @@ BattleFrontier_BattleFactoryPreBattleRoom_Text_InvestigatedUpcomingOpponent: @ 8
 	.string "about your upcoming opponent.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInNormalType: @ 825A3F8
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the NORMAL type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInFireType: @ 825A43E
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the FIRE type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInWaterType: @ 825A482
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the WATER type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInElectricType: @ 825A4C7
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the ELECTRIC type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInGrassType: @ 825A50F
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the GRASS type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInIceType: @ 825A554
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the ICE type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInFightingType: @ 825A597
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the FIGHTING type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInPoisonType: @ 825A5DF
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the POISON type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInGroundType: @ 825A625
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the GROUND type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInFlyingType: @ 825A66B
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the FLYING type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInPsychicType: @ 825A6B1
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the PSYCHIC type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInBugType: @ 825A6F8
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the BUG type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInRockType: @ 825A73B
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the ROCK type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInGhostType: @ 825A77F
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the GHOST type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInDragonType: @ 825A7C4
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the DRAGON type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInDarkType: @ 825A80A
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the DARK type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerSkilledInSteelType: @ 825A84E
-	.string "The TRAINER is apparently skilled\n"
+	.string "The Trainer is apparently skilled\n"
 	.string "in the handling of the STEEL type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_TrainerHasNoClearFavorite: @ 825A893
-	.string "The TRAINER appears to have no clear\n"
+	.string "The Trainer appears to have no clear\n"
 	.string "favorites when it comes to type.$"
 
 BattleFrontier_BattleFactoryPreBattleRoom_Text_StyleSlowAndSteady: @ 825A8D9

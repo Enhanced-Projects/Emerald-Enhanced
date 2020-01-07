@@ -404,9 +404,9 @@ SlateportCity_OceanicMuseum_2F_Text_PressureExperiment: @ 820C5C6
 	.string "thousands of tons on a small area.”$"
 
 SlateportCity_OceanicMuseum_2F_Text_HoennModel: @ 820C6C7
-	.string "“MODEL OF HOENN REGION”\p"
+	.string "“MODEL OF Hoenn REGION”\p"
 	.string "It's a miniature diorama of the\n"
-	.string "HOENN region.\p"
+	.string "Hoenn region.\p"
 	.string "Where is LITTLEROOT TOWN on this?$"
 
 SlateportCity_OceanicMuseum_2F_Text_DeepSeawaterDisplay: @ 820C72F
@@ -423,7 +423,7 @@ SlateportCity_OceanicMuseum_2F_Text_SurfaceSeawaterDisplay: @ 820C7C1
 SlateportCity_OceanicMuseum_2F_Text_SSTidalReplica: @ 820C82F
 	.string "“THE FERRY S.S. TIDAL\p"
 	.string "“A scale replica of the ship under\n"
-	.string "construction at STERN'S SHIPYARD.”$"
+	.string "construction at STERN's SHIPYARD.”$"
 
 SlateportCity_OceanicMuseum_2F_Text_SubmarineReplica: @ 820C88B
 	.string "“SUBMARINE EXPLORER 1\p"

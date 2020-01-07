@@ -281,7 +281,7 @@ BattleFrontier_BattleTowerMultiPartnerRoom_EventScript_Partner8:: @ 8244049
 
 BattleFrontier_BattleTowerMultiPartnerRoom_Text_PleaseFindPartner: @ 8244056
 	.string "Please find a partner from out of\n"
-	.string "the TRAINERS gathered here.$"
+	.string "the Trainers gathered here.$"
 
 BattleFrontier_BattleTowerMultiPartnerRoom_Text_QuitLookingForPartner: @ 8244094
 	.string "{PLAYER}, you have not found a partner\n"
@@ -291,7 +291,7 @@ BattleFrontier_BattleTowerMultiPartnerRoom_Text_QuitLookingForPartner: @ 8244094
 
 BattleFrontier_BattleTowerMultiPartnerRoom_Text_PleaseFindPartner2: @ 824410C
 	.string "Then, please find a partner from\n"
-	.string "the TRAINERS gathered here.$"
+	.string "the Trainers gathered here.$"
 
 BattleFrontier_BattleTowerMultiPartnerRoom_Text_ThankYouForChoosingPartner:: @ 8244149
 	.string "Thank you for choosing a partner.\p"

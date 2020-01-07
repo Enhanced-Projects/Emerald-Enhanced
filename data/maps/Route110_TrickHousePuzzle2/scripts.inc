@@ -134,7 +134,7 @@ Route110_TrickHousePuzzle2_Text_PaulPostBattle: @ 826BDEC
 	.string "in this house all by himself.$"
 
 Route110_TrickHousePuzzle2_Text_GeorgiaIntro: @ 826BE31
-	.string "I want to make my own GYM one day.\n"
+	.string "I want to make my own Gym one day.\n"
 	.string "So, I'm studying how to set traps.$"
 
 Route110_TrickHousePuzzle2_Text_GeorgiaDefeat: @ 826BE77
@@ -142,5 +142,5 @@ Route110_TrickHousePuzzle2_Text_GeorgiaDefeat: @ 826BE77
 
 Route110_TrickHousePuzzle2_Text_GeorgiaPostBattle: @ 826BE97
 	.string "You're strong, aren't you?\n"
-	.string "Maybe even enough to be a GYM LEADER!$"
+	.string "Maybe even enough to be a Gym Leader!$"
 

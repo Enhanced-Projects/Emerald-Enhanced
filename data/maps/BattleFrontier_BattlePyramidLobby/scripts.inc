@@ -532,7 +532,7 @@ BattleFrontier_BattlePyramidLobby_EventScript_ExitRules:: @ 8250F2F
 	end
 
 BattleFrontier_BattlePyramidLobby_Text_WelcomeToBattlePyramid: @ 8250F31
-	.string "Where the courage of TRAINERS\n"
+	.string "Where the courage of Trainers\n"
 	.string "is put to the test!\p"
 	.string "Welcome to the BATTLE PYRAMID!\p"
 	.string "I am your guide to\n"
@@ -551,7 +551,7 @@ BattleFrontier_BattlePyramidLobby_Text_ExplainBattlePyramid: @ 825100C
 	.string "the PYRAMID and try to reach the top.\p"
 	.string "In the PYRAMID are seven floors of\n"
 	.string "mazes, all of them filled with not only\l"
-	.string "skilled TRAINERS but also wild Pokémon.\p"
+	.string "skilled Trainers but also wild Pokémon.\p"
 	.string "You must enter with three Pokémon,\n"
 	.string "none of them holding an item.\p"
 	.string "On your ascent, you will be provided\n"
@@ -845,9 +845,9 @@ BattleFrontier_BattlePyramidLobby_Text_BelieveMyFortunesOrNot: @ 8252461
 
 BattleFrontier_BattlePyramidLobby_Text_TrainersNoticeRunning: @ 82524DA
 	.string "Did you know?\p"
-	.string "If you run fast, TRAINERS may notice\n"
+	.string "If you run fast, Trainers may notice\n"
 	.string "and come after you for a battle.\p"
-	.string "So, if you want to avoid TRAINERS,\n"
+	.string "So, if you want to avoid Trainers,\n"
 	.string "don't catch their eyes, but sneak\l"
 	.string "cautiously and quietly past them.$"
 
@@ -882,11 +882,11 @@ BattleFrontier_BattlePyramidLobby_Text_ExplainMonRules: @ 82526FC
 	.string "of wild Pokémon you may encounter.$"
 
 BattleFrontier_BattlePyramidLobby_Text_ExplainTrainerRules: @ 82527A9
-	.string "TRAINERS are lying in wait for you\n"
+	.string "Trainers are lying in wait for you\n"
 	.string "inside the PYRAMID.\p"
 	.string "On each floor, there are up to\n"
-	.string "eight TRAINERS.\p"
-	.string "When you defeat a TRAINER, you will\n"
+	.string "eight Trainers.\p"
+	.string "When you defeat a Trainer, you will\n"
 	.string "get a helpful hint for your adventure.$"
 
 BattleFrontier_BattlePyramidLobby_Text_ExplainMazeRules: @ 825285A
@@ -895,7 +895,7 @@ BattleFrontier_BattlePyramidLobby_Text_ExplainMazeRules: @ 825285A
 	.string "The mazes are poorly lit.\n"
 	.string "You must advance with caution.\p"
 	.string "The light grows brighter whenever you\n"
-	.string "defeat a wild Pokémon or a TRAINER.$"
+	.string "defeat a wild Pokémon or a Trainer.$"
 
 BattleFrontier_BattlePyramidLobby_Text_ExplainBagRules: @ 8252924
 	.string "The BATTLE BAG serves as your BAG\n"

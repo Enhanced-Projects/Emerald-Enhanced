@@ -166,9 +166,9 @@ SootopolisCity_EventScript_Maniac:: @ 81E6411
 	end
 
 SootopolisCity_Text_GymSign: @ 81E656F
-	.string "SOOTOPOLIS CITY Pokémon GYM\n"
-	.string "LEADER: JUAN\p"
-	.string "“The GYM LEADER with the beauty\n"
+	.string "SOOTOPOLIS CITY Pokémon Gym\n"
+	.string "LEADER: Juan\p"
+	.string "“The Gym Leader with the beauty\n"
 	.string "of pure water!”$"
 
 SootopolisCity_Text_CitySign: @ 81E65C8
@@ -192,11 +192,11 @@ SootopolisCity_Text_CaveOfOriginPleaseLeave: @ 81E6D77
 SootopolisCity_Text_LeadSuperiorTrainerToCave: @ 81E6DFE
 	.string "A person with a strong will and\n"
 	.string "superior talent…\p"
-	.string "A TRAINER who has knowledge and\n"
+	.string "A Trainer who has knowledge and\n"
 	.string "experience of many kinds of Pokémon…\p"
 	.string "If such a person were to appear, I was\n"
-	.string "instructed by WALLACE to lead that\l"
-	.string "TRAINER to this CAVE.$"
+	.string "instructed by Wallace to lead that\l"
+	.string "Trainer to this CAVE.$"
 
 SootopolisCity_Text_CaveOfOriginSleepsToo: @ 81E6F38
 	.string "This is the CAVE OF ORIGIN…\p"
@@ -222,17 +222,17 @@ SootopolisCity_Text_NightSkyFavoriteScenery: @ 81E710B
 SootopolisCity_Text_ExplainWaterfallGoToGym: @ 81E7B86
 	.string "That HIDDEN MACHINE contains\n"
 	.string "WATERFALL.\p"
-	.string "If you have the RAIN BADGE, a Pokémon\n"
+	.string "If you have the RAIN badge, a Pokémon\n"
 	.string "that has learned that HM move can\l"
 	.string "force its way up waterfalls.\p"
-	.string "And where does one get the RAIN BADGE?\n"
+	.string "And where does one get the RAIN badge?\n"
 	.string "You know, don't you?\p"
 	.string "That's right! You have to beat\n"
-	.string "the SOOTOPOLIS GYM LEADER.\p"
+	.string "the SOOTOPOLIS Gym Leader.\p"
 	.string "When you're all set to go, step through\n"
 	.string "that door.$"
 
 SootopolisCity_Text_DazzledByMentor: @ 81E7CBC
-	.string "WALLACE: I'm sure that you will be\n"
+	.string "Wallace: I'm sure that you will be\n"
 	.string "dazzled by my mentor's breathtakingly\l"
 	.string "elegant battle style.$"

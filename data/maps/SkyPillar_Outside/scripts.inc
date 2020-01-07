@@ -143,7 +143,7 @@ SkyPillar_Outside_Text_DoorIsClosed: @ 8239402
 	.string "The door is closed.$"
 
 SkyPillar_Outside_Text_OpenedDoorToSkyPillar: @ 8239416
-	.string "WALLACE: Oh, my, I'm terribly sorry!\p"
+	.string "Wallace: Oh, my, I'm terribly sorry!\p"
 	.string "In my haste, I didn't notice that\n"
 	.string "I'd left you behind!\p"
 	.string "I've opened the locked door of\n"
@@ -151,16 +151,16 @@ SkyPillar_Outside_Text_OpenedDoorToSkyPillar: @ 8239416
 	.string "{PLAYER}, let's be on our way!$"
 
 SkyPillar_Outside_Text_EarthquakeNotMomentToWaste: @ 82394BC
-	.string "WALLACE: It's an earthquake!\p"
+	.string "Wallace: It's an earthquake!\p"
 	.string "There's not a moment to waste!\n"
 	.string "We've got to hurry!$"
 
 SkyPillar_Outside_Text_SituationGettingWorse: @ 823950C
-	.string "WALLACE: Hmm…\n"
+	.string "Wallace: Hmm…\n"
 	.string "The situation is getting worse…$"
 
 SkyPillar_Outside_Text_GotToGoBackForSootopolis: @ 823953A
-	.string "WALLACE: This isn't good…\p"
+	.string "Wallace: This isn't good…\p"
 	.string "The weather distortion is spreading\n"
 	.string "even here…\p"
 	.string "{PLAYER}.\p"

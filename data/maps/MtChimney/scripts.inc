@@ -849,7 +849,7 @@ MtChimney_Text_SawyerPostBattle: @ 8230519
 
 MtChimney_Text_SawyerRegister: @ 8230557
 	.string "I like little fireballs like you.\n"
-	.string "Let me register you in my POKéNAV.$"
+	.string "Let me register you in my Pokénav.$"
 
 MtChimney_Text_SawyerRematchIntro: @ 823059C
 	.string "I'm happily surrounded by hot people\n"

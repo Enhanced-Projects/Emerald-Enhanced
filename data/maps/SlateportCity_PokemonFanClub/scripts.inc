@@ -274,7 +274,7 @@ SlateportCity_PokemonFanClub_Text_MeetChairman: @ 820A233
 	.string "No one can best me when it comes\n"
 	.string "to raising Pokémon. No one!\p"
 	.string "Well, let me tell you about\n"
-	.string "Pokémon CONTESTS.\p"
+	.string "Pokémon Contests.\p"
 	.string "They're events where one can show off\n"
 	.string "Pokémon for the world to see!\p"
 	.string "However, they're held in far-off towns,\n"
@@ -284,20 +284,20 @@ SlateportCity_PokemonFanClub_Text_MeetChairman: @ 820A233
 	.string "show us theirs.$"
 
 SlateportCity_PokemonFanClub_Text_LikeToSeeEnteredContestPokemon: @ 820A3EE
-	.string "The Pokémon of a TRAINER who has\n"
+	.string "The Pokémon of a Trainer who has\n"
 	.string "entered a Pokémon CONTEST…\l"
 	.string "That, I would like to see.$"
 
 SlateportCity_PokemonFanClub_Text_AllowMeToExamineYourPokemon: @ 820A445
 	.string "Er-hem! I see you've participated in\n"
-	.string "a Pokémon CONTEST!\p"
+	.string "a Pokémon Contest!\p"
 	.string "Please! Allow me to examine how you\n"
 	.string "have raised your Pokémon.\p"
 	.string "It delights me no end to see Pokémon\n"
-	.string "raised by other TRAINERS.\p"
+	.string "raised by other Trainers.\p"
 	.string "The happy expressions of Pokémon\n"
 	.string "raised with proper care…\p"
-	.string "The kindly eyes of the TRAINER that\n"
+	.string "The kindly eyes of the Trainer that\n"
 	.string "nurtured and raised the Pokémon…\p"
 	.string "The very thought fills my heart to\n"
 	.string "overwhelming with joy.\p"
@@ -317,7 +317,7 @@ SlateportCity_PokemonFanClub_Text_HmHmISee: @ 820A65F
 SlateportCity_PokemonFanClub_Text_GiveMonMorePokeblocks: @ 820A66E
 	.string "Hmmm… It's not bad, but it's not\n"
 	.string "good, either…\p"
-	.string "You, the TRAINER, must put more\n"
+	.string "You, the Trainer, must put more\n"
 	.string "effort into raising this Pokémon!\p"
 	.string "For instance, may I suggest that\n"
 	.string "you give it more {POKEBLOCK}S?$"
@@ -370,9 +370,9 @@ SlateportCity_PokemonFanClub_Text_NothingElseToGiveYou: @ 820A9E1
 
 SlateportCity_PokemonFanClub_Text_ShowMePokemonThatLoveYou: @ 820AA77
 	.string "I love seeing Pokémon that love\n"
-	.string "their TRAINERS.\p"
+	.string "their Trainers.\p"
 	.string "Pokémon are very sensitive to\n"
-	.string "the feelings of their TRAINERS.\p"
+	.string "the feelings of their Trainers.\p"
 	.string "If you treat your Pokémon with love\n"
 	.string "and care, they'll love you back.\p"
 	.string "When your Pokémon grow to love you,\n"
@@ -381,11 +381,11 @@ SlateportCity_PokemonFanClub_Text_ShowMePokemonThatLoveYou: @ 820AA77
 SlateportCity_PokemonFanClub_Text_PokemonAdoresYou: @ 820AB63
 	.string "Your Pokémon really adores you.\p"
 	.string "For you, a most compassionate\n"
-	.string "TRAINER, a gift from the FAN CLUB!$"
+	.string "Trainer, a gift from the FAN CLUB!$"
 
 SlateportCity_PokemonFanClub_Text_TreatPokemonWithLove: @ 820ABC4
 	.string "Pokémon are very sensitive to\n"
-	.string "the feelings of their TRAINERS.\p"
+	.string "the feelings of their Trainers.\p"
 	.string "If you treat your Pokémon with love\n"
 	.string "and care, they'll love you back.$"
 
@@ -393,7 +393,7 @@ SlateportCity_PokemonFanClub_Text_PokemonDontLikeFainting: @ 820AC47
 	.string "If you keep letting a Pokémon faint\n"
 	.string "in battle, it'll come to resent it.\p"
 	.string "Soon, it will become less trusting\n"
-	.string "of the TRAINER.\p"
+	.string "of the Trainer.\p"
 	.string "In other words, it certainly won't\n"
 	.string "like you very much.$"
 

@@ -282,7 +282,7 @@ LilycoveCity_Text_GetLostMessingUpTraining: @ 81E3D4A
 	.string "so can you, like, get lost?$"
 
 LilycoveCity_Text_ContestHallInTown: @ 81E3D9E
-	.string "There's a Pokémon CONTEST HALL\n"
+	.string "There's a Pokémon Contest HALL\n"
 	.string "right in this here town. \p"
 	.string "That means well-raised Pokémon will\n"
 	.string "come from all over the country.\p"
@@ -294,13 +294,13 @@ LilycoveCity_Text_StrangeCaveInCove: @ 81E3E3C
 
 LilycoveCity_Text_GoingToMoveDeleterForHMs: @ 81E3E7D
 	.string "I'm going to teach my Pokémon some new\n"
-	.string "moves for entering a CONTEST.\p"
+	.string "moves for entering a Contest.\p"
 	.string "So, I'm going to see the MOVE DELETER\n"
 	.string "and make it forget HM moves.$"
 
 LilycoveCity_Text_ImFromKanto: @ 81E3F05
 	.string "I came from KANTO.\p"
-	.string "The HOENN region is beautiful with\n"
+	.string "The Hoenn region is beautiful with\n"
 	.string "all its water and verdant nature.\p"
 	.string "Hunh? Wait a second…\p"
 	.string "Could there be rare Pokémon that live\n"
@@ -373,8 +373,8 @@ LilycoveCity_Text_CitySign: @ 81E448B
 	.string "sea begins.”$"
 
 LilycoveCity_Text_ContestHallSign: @ 81E44C3
-	.string "Pokémon CONTEST HALL\n"
-	.string "“The gathering place for TRAINERS!”$"
+	.string "Pokémon Contest HALL\n"
+	.string "“The gathering place for Trainers!”$"
 
 LilycoveCity_Text_MotelSign: @ 81E44FC
 	.string "COVE LILY MOTEL\p"
@@ -404,8 +404,8 @@ LilycoveCity_Text_HarborSign: @ 81E4624
 	.string "the ferry S.S. TIDAL.”$"
 
 LilycoveCity_Text_TrainerFanClubSign: @ 81E466E
-	.string "Pokémon TRAINER FAN CLUB\p"
-	.string "The names of TRAINERS are scribbled\n"
+	.string "Pokémon Trainer FAN CLUB\p"
+	.string "The names of Trainers are scribbled\n"
 	.string "all over the sign…$"
 
 LilycoveCity_Text_DepartmentStoreSign: @ 81E46BE
@@ -416,7 +416,7 @@ LilycoveCity_Text_DepartmentStoreSign: @ 81E46BE
 	.string "you need!”$"
 
 LilycoveCity_Text_MoveDeletersHouseSign: @ 81E473D
-	.string "MOVE DELETER'S HOUSE\p"
+	.string "MOVE DELETER's HOUSE\p"
 	.string "“Unwanted Pokémon moves deleted.”$"
 
 LilycoveCity_Text_DoYouKnowAboutBerryBlender: @ 81E4774
@@ -451,7 +451,7 @@ LilycoveCity_Text_JustArrivedAndSawRarePokemon: @ 81E494D
 	.string "We happened to see a DRAGON-type\n"
 	.string "Pokémon flying way up in the sky.\p"
 	.string "Do cool Pokémon like that live in\n"
-	.string "the HOENN region?$"
+	.string "the Hoenn region?$"
 
 LilycoveCity_Text_HoneymoonVowToSeeRarePokemon: @ 81E49F4
 	.string "On our honeymoon, we vowed to see as\n"

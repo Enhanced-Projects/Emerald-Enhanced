@@ -1120,13 +1120,13 @@ SlateportCity_Text_GetNameRaterToHelpYou: @ 81DE10E
 SlateportCity_Text_CantChangeTradeMonName: @ 81DE16C
 	.string "Any Pokémon you get in a trade,\n"
 	.string "you can't change its nickname.\p"
-	.string "The original TRAINER's love for that\n"
+	.string "The original Trainer's love for that\n"
 	.string "Pokémon is in the nickname.$"
 
 SlateportCity_Text_BattleTentBuiltRecently: @ 81DE1EC
 	.string "Recently, a BATTLE TENT was built\n"
 	.string "in SLATEPORT.\p"
-	.string "GYMS are fun, but the BATTLE TENT's\n"
+	.string "Gyms are fun, but the BATTLE TENT's\n"
 	.string "awesome in its own way.\p"
 	.string "You should go find tough Pokémon\n"
 	.string "for the BATTLE TENT!$"
@@ -1227,18 +1227,18 @@ SlateportCity_Text_BattleTentSign: @ 81DE8BC
 	.string "“Find it! The ultimate Pokémon!”$"
 
 SlateportCity_Text_SternsShipyardWantedSign: @ 81DE8F8
-	.string "STERN'S SHIPYARD\p"
+	.string "STERN's SHIPYARD\p"
 	.string "“Wanted: A sailor capable of sailing\n"
 	.string "in all currents.”$"
 
 SlateportCity_Text_SternsShipyardNearsCompletion: @ 81DE940
-	.string "STERN'S SHIPYARD\p"
+	.string "STERN's SHIPYARD\p"
 	.string "“The ferry S.S. TIDAL nears\n"
 	.string "completion for serving the ports of\l"
 	.string "SLATEPORT and LILYCOVE.”$"
 
 SlateportCity_Text_SternsShipyardFerryComplete: @ 81DE9AA
-	.string "STERN'S SHIPYARD\p"
+	.string "STERN's SHIPYARD\p"
 	.string "“Boarding of the SLATEPORT-LILYCOVE\n"
 	.string "ferry S.S. TIDAL is handled at the\l"
 	.string "HARBOR.”$"
@@ -1274,7 +1274,7 @@ SlateportCity_Text_HarborSign: @ 81DEB5A
 	.string "the ferry S.S. TIDAL.”$"
 
 SlateportCity_Text_NameRatersHouseSign: @ 81DEBA0
-	.string "NAME RATER'S HOUSE\n"
+	.string "NAME RATER's HOUSE\n"
 	.string "“Pokémon nicknames rated.”$"
 
 SlateportCity_Text_ExplainBerries: @ 81DEBCE
@@ -1346,7 +1346,7 @@ SlateportCity_Text_YouDroveTeamAquaAway: @ 81DF032
 
 SlateportCity_Text_MaybeThisTrainer: @ 81DF0FE
 	.string "SCOTT: Hmm…\n"
-	.string "Maybe, just maybe, this TRAINER…$"
+	.string "Maybe, just maybe, this Trainer…$"
 
 SlateportCity_Text_LetsRegisterEachOther: @ 81DF12B
 	.string "SCOTT: All right! I think you're going\n"
@@ -1357,7 +1357,7 @@ SlateportCity_Text_LetsRegisterEachOther: @ 81DF12B
 
 SlateportCity_Text_RegisteredScott: @ 81DF1A6
 	.string "Registered this SCOTT person\n"
-	.string "in the POKéNAV.$"
+	.string "in the Pokénav.$"
 
 SlateportCity_Text_KeepEyeOnTrainersBeSeeingYou: @ 81DF1D3
 	.string "SCOTT: What I'd like to do is tag along\n"
@@ -1374,6 +1374,6 @@ SlateportCity_Text_TakingBattleTentChallenge: @ 81DF28C
 	.string "to take the BATTLE TENT challenge?\p"
 	.string "Yeah! That's a good idea!\n"
 	.string "That's a really great idea!\p"
-	.string "After all, a tough TRAINER is\n"
+	.string "After all, a tough Trainer is\n"
 	.string "the perfect fit for the BATTLE TENT!\p"
 	.string "Give it your best effort!$"

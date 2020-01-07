@@ -315,20 +315,20 @@ RustboroCity_DevonCorp_2F_Text_WeFinallyMadeNewBalls: @ 8211C99
 	.string "Please give them a try!$"
 
 RustboroCity_DevonCorp_2F_Text_IMadePokenav: @ 8211D9F
-	.string "I made the POKéNAV!\p"
+	.string "I made the Pokénav!\p"
 	.string "As an engineer, I feel blessed to have\n"
 	.string "made something so great!$"
 
 RustboroCity_DevonCorp_2F_Text_WowThatsAPokenav: @ 8211DF3
 	.string "Oh, wow!\n"
-	.string "That's a POKéNAV!\p"
+	.string "That's a Pokénav!\p"
 	.string "It came about as a result of our\n"
 	.string "PRESIDENT's desire to learn about\l"
 	.string "the feelings of Pokémon.\p"
 	.string "Would you like me to describe its\n"
 	.string "features in detail?\p"
 	.string "No, no. I think you'll find out just by\n"
-	.string "trying the POKéNAV out.$"
+	.string "trying the Pokénav out.$"
 
 RustboroCity_DevonCorp_2F_Text_DeviceToVisualizePokemonDreams: @ 8211EE0
 	.string "I'm trying to develop a device that\n"
@@ -394,7 +394,7 @@ RustboroCity_DevonCorp_2F_Text_TooManyPokemon: @ 82122F5
 
 RustboroCity_DevonCorp_2F_Text_DevelopNewPokenavFeature: @ 8212338
 	.string "I'm trying to develop a new feature\n"
-	.string "for the POKéNAV…\p"
+	.string "for the Pokénav…\p"
 	.string "But it's not going well.$"
 
 RustboroCity_DevonCorp_2F_Text_WhatToWorkOnNext: @ 8212386

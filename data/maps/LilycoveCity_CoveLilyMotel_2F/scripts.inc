@@ -93,7 +93,7 @@ LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer: @ 82188D6
 
 LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist: @ 821892B
 	.string "I'm the GRAPHIC ARTIST! Aren't the\n"
-	.string "Pokémon of HOENN interesting?$"
+	.string "Pokémon of Hoenn interesting?$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute: @ 821896C
 	.string "The girl TUBERS, they're cute, hey?\n"
@@ -119,19 +119,19 @@ LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles: @ 8218ACF
 	.string "… … … … … Huh?!\n"
 	.string "Oh, sorry, sorry! I was snoozing!\p"
 	.string "I came to check out this Pokémon\n"
-	.string "CONTEST thing.\p"
+	.string "Contest thing.\p"
 	.string "I have to admit, it does look quite\n"
 	.string "entertaining, but…\p"
 	.string "Consider me a purist--I prefer\n"
-	.string "battles and tough TRAINERS.\p"
+	.string "battles and tough Trainers.\p"
 	.string "But that's just me.\p"
 	.string "{PLAYER}, I hope you'll enjoy everything\n"
-	.string "like the GYMS, CONTESTS, BATTLE TENT,\l"
+	.string "like the Gyms, Contests, BATTLE TENT,\l"
 	.string "the whole works!$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy: @ 8218C33
 	.string "SCOTT: I think it does take strategy\n"
-	.string "to win a CONTEST.\p"
-	.string "Devising CONTEST strategies is one way\n"
-	.string "of becoming a better TRAINER, I'd say.$"
+	.string "to win a Contest.\p"
+	.string "Devising Contest strategies is one way\n"
+	.string "of becoming a better Trainer, I'd say.$"
 

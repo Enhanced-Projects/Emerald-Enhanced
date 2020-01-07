@@ -646,8 +646,8 @@ DewfordTown_Text_TownSign: @ 81E9A0F
 	.string "“A tiny island in the blue sea.”$"
 
 DewfordTown_Text_GymSign: @ 81E9A3D
-	.string "DEWFORD TOWN Pokémon GYM\n"
-	.string "LEADER: BRAWLY\l"
+	.string "DEWFORD TOWN Pokémon Gym\n"
+	.string "LEADER: Brawly\l"
 	.string "“A big wave in fighting!”$"
 
 DewfordTown_Text_HallSign: @ 81E9A7F

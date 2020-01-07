@@ -987,7 +987,7 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CA86: @ 824CA86
 	.string "What an unbelievable finish!\n"
 	.string "We have a double knockout!\p"
 	.string "In this event, the Battle Tournament\n"
-	.string "rules call for a REFEREE'S decision.\p"
+	.string "rules call for a REFEREE's decision.\p"
 	.string "Please wait while the judging\n"
 	.string "is under way.$"
 
@@ -1016,7 +1016,7 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CC1C: @ 824CC1C
 	.string "$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24CC2E: @ 824CC2E
-	.string "Will this TRAINER race to\n"
+	.string "Will this Trainer race to\n"
 	.string "the championship?\p"
 	.string "$"
 
@@ -1031,12 +1031,12 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CC99: @ 824CC99
 	.string "$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24CCC5: @ 824CCC5
-	.string "The TRAINER is on fire for\n"
+	.string "The Trainer is on fire for\n"
 	.string "the first championship try!\p"
 	.string "$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24CCFD: @ 824CCFD
-	.string "A win here means this TRAINER\n"
+	.string "A win here means this Trainer\n"
 	.string "advances to the final!\p"
 	.string "$"
 
@@ -1051,12 +1051,12 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CD72: @ 824CD72
 
 BattleFrontier_BattleDomeBattleRoom_Text_24CD8C: @ 824CD8C
 	.string "Can anyone hope to beat this\n"
-	.string "TRAINER?\p"
+	.string "Trainer?\p"
 	.string "$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24CDB3: @ 824CDB3
 	.string "Do battles exist solely for\n"
-	.string "this TRAINER?\p"
+	.string "this Trainer?\p"
 	.string "$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24CDDE: @ 824CDDE
@@ -1073,7 +1073,7 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CE33: @ 824CE33
 	.string "$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24CE57: @ 824CE57
-	.string "Will this TRAINER do as expected\n"
+	.string "Will this Trainer do as expected\n"
 	.string "and advance to the finals?\p"
 	.string "$"
 
@@ -1086,7 +1086,7 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CEBE: @ 824CEBE
 	.string "Feel the glow of a true master!$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24CEDE: @ 824CEDE
-	.string "And now… The TRAINER standing in\n"
+	.string "And now… The Trainer standing in\n"
 	.string "{PLAYER}'s record-setting path…\p"
 	.string "Yes! The one and only!\n"
 	.string "The BATTLE DOME COMMISSIONER!\l"

@@ -1018,14 +1018,14 @@ Route110_Text_MauvilleCitySign: @ 81F08F3
 	.string "{UP_ARROW} MAUVILLE CITY$"
 
 Route110_Text_TrainerTipsPrlzSleep: @ 81F090D
-	.string "TRAINER TIPS\p"
+	.string "Trainer TIPS\p"
 	.string "The foe can be made helpless by\n"
 	.string "paralyzing it or causing it to sleep.\p"
 	.string "It is an important technique for\n"
 	.string "Pokémon battles.$"
 
 Route110_Text_TrainerTipsRegisterItems: @ 81F0992
-	.string "TRAINER TIPS\p"
+	.string "Trainer TIPS\p"
 	.string "The items in the BAG can be reorganized\n"
 	.string "by pressing SELECT.$"
 
@@ -1044,7 +1044,7 @@ Route110_Text_ThereIsNoRecord: @ 81F0A5E
 	.string "challenge. There is no record…$"
 
 Route110_Text_ImagineSeeingYouHere: @ 81F0AB5
-	.string "PROF. BIRCH: Oh, {PLAYER}!\n"
+	.string "Prof. Birch: Oh, {PLAYER}!\n"
 	.string "Imagine seeing you here!\p"
 	.string "And where might my {RIVAL} be?$"
 
@@ -1052,20 +1052,20 @@ Route110_Text_HeardYouInstallMatchCall: @ 81F0AFF
 	.string "Oh, I see!\n"
 	.string "You two are running separately.\l"
 	.string "Well, that's fine.\p"
-	.string "Oh, yes, I heard that your POKéNAV\n"
+	.string "Oh, yes, I heard that your Pokénav\n"
 	.string "had the MATCH CALL system installed.\p"
 	.string "Well, then, I should register you in\n"
-	.string "my POKéNAV as well.\p"
+	.string "my Pokénav as well.\p"
 	.string "That way, even when we're apart,\n"
 	.string "I can rate your POKéDEX anytime.\p"
 	.string "… … … … … …$"
 
 Route110_Text_RegisteredBirchInPokenav: @ 81F0C0C
-	.string "Registered PROF. BIRCH\n"
-	.string "in the POKéNAV.$"
+	.string "Registered Prof. Birch\n"
+	.string "in the Pokénav.$"
 
 Route110_Text_KeepAnEyeOutForRival: @ 81F0C33
-	.string "PROF. BIRCH: {PLAYER}…\p"
+	.string "Prof. Birch: {PLAYER}…\p"
 	.string "Please keep an eye out for my {RIVAL}.\n"
 	.string "… … … … … …\p"
 	.string "Well, I had better get going.\n"

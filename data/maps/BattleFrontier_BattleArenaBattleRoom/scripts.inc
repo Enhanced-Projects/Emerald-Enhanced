@@ -504,11 +504,11 @@ BattleFrontier_BattleArenaBattleRoom_Movement_GretaWalkBackToCenter: @ 8257C3A
 	step_end
 
 BattleFrontier_BattleArenaBattleRoom_Text_PlayerStepForward: @ 8257C3D
-	.string "REFEREE: TRAINER {PLAYER}!\n"
+	.string "REFEREE: Trainer {PLAYER}!\n"
 	.string "Step forward, please!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_OpponentStepForward: @ 8257C68
-	.string "REFEREE: TRAINER {STR_VAR_1}!\n"
+	.string "REFEREE: Trainer {STR_VAR_1}!\n"
 	.string "Step forward, please!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_SetKOTourneyBegin: @ 8257C93

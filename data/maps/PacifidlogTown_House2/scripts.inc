@@ -115,7 +115,7 @@ PacifidlogTown_House2_Text_AdoringPokemonTakeThis: @ 820396D
 PacifidlogTown_House2_Text_PutInSomeMoreEffort: @ 82039CE
 	.string "Hmm…\n"
 	.string "It's not bad, but it's also not good.\p"
-	.string "You, as the TRAINER, need to put in\n"
+	.string "You, as the Trainer, need to put in\n"
 	.string "some more effort.$"
 
 PacifidlogTown_House2_Text_ViciousPokemonTakeThis: @ 8203A2F
@@ -141,12 +141,12 @@ PacifidlogTown_House2_Text_Rurii: @ 8203B8D
 
 PacifidlogTown_House2_Text_VeryFriendlyWithTrainer: @ 8203B9D
 	.string "It appears to be very friendly with the\n"
-	.string "TRAINER.$"
+	.string "Trainer.$"
 
 PacifidlogTown_House2_Text_Rururi: @ 8203BCE
 	.string "AZURILL: Rururi!$"
 
 PacifidlogTown_House2_Text_DoesntLikeTrainerVeryMuch: @ 8203BDF
-	.string "It doesn't appear to like the TRAINER\n"
+	.string "It doesn't appear to like the Trainer\n"
 	.string "very much.$"
 

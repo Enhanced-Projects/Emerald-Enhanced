@@ -1015,7 +1015,7 @@ Route110_TrickHousePuzzle5_Text_WaitForNextChallenge: @ 826D8C9
 Route110_TrickHousePuzzle5_Text_Mechadoll2Intro: @ 826D8EA
 	.string "CLICKETY-CLACK…\n"
 	.string "MECHADOLL 2 AM I!\p"
-	.string "MECHADOLL 1'S QUIZ DIFFICULTY LEVEL\n"
+	.string "MECHADOLL 1's QUIZ DIFFICULTY LEVEL\n"
 	.string "IS SET TOO LOW.$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz1: @ 826D940
@@ -1026,7 +1026,7 @@ Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz1: @ 826D940
 Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz2: @ 826D98C
 	.string "MECHADOLL 2 QUIZ.\p"
 	.string "Which of these Pokémon was chasing\n"
-	.string "PROF. BIRCH?$"
+	.string "Prof. Birch?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz3: @ 826D9CE
 	.string "MECHADOLL 2 QUIZ.\p"
@@ -1070,13 +1070,13 @@ Route110_TrickHousePuzzle5_Text_Mechadoll4Quiz2: @ 826DBD7
 
 Route110_TrickHousePuzzle5_Text_Mechadoll4Quiz3: @ 826DC2A
 	.string "MECHADOLL 4 QUIZ.\p"
-	.string "In the TRAINER'S SCHOOL, how many\n"
+	.string "In the Trainer's SCHOOL, how many\n"
 	.string "girl students were there?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll5Intro: @ 826DC78
 	.string "CLICKETY-CLACK…\n"
 	.string "MECHADOLL 5 AM I!\p"
-	.string "THE MASTER'S BEST AND PROUDEST\n"
+	.string "THE MASTER's BEST AND PROUDEST\n"
 	.string "ACHIEVEMENT AM I.$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll5Quiz1: @ 826DCCB

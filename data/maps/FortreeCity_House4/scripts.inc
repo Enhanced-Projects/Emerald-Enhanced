@@ -84,7 +84,7 @@ FortreeCity_House4_Text_WelcomeWingullTakeMentalHerb: @ 8217E05
 	.string "What is it holding?\p"
 	.string "A MENTAL HERB?\n"
 	.string "It must have picked it up somewhere.\p"
-	.string "But I'm not a TRAINER, so you can\n"
+	.string "But I'm not a Trainer, so you can\n"
 	.string "have it.$"
 
 FortreeCity_House4_Text_FriendsFarAwayThanksToWingull: @ 8217EA8

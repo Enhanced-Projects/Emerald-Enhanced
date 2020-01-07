@@ -336,7 +336,7 @@ BattleFrontier_BattleDomePreBattleRoom_Text_24B94E: @ 824B94E
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24B9B5: @ 824B9B5
 	.string "{PLAYER}'s next opponent\n"
-	.string "is this TRAINER.$"
+	.string "is this Trainer.$"
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24B9D9: @ 824B9D9
 	.string "The tournament is in the 1st round.$"

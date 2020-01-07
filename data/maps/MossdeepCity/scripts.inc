@@ -310,7 +310,7 @@ MossdeepCity_Movement_ScottExitEast: @ 81E4CE2
 MossdeepCity_Text_WantKingsRockStevenGaveMe: @ 81E4CED
 	.string "I got this from STEVEN, but I don't\n"
 	.string "know what it's good for.\p"
-	.string "I think it's called KING'S ROCK.\n"
+	.string "I think it's called KING's ROCK.\n"
 	.string "Do you want it?$"
 
 MossdeepCity_Text_YouCanKeepIt: @ 81E4D5B
@@ -395,8 +395,8 @@ MossdeepCity_Text_ItsAWhiteRock: @ 81E5396
 	.string "It's a white rock.$"
 
 MossdeepCity_Text_GymSign: @ 81E53A9
-	.string "MOSSDEEP CITY Pokémon GYM\n"
-	.string "LEADERS: LIZA & TATE\p"
+	.string "MOSSDEEP CITY Pokémon Gym\n"
+	.string "LEADERS: Liza & Tate\p"
 	.string "“The mystic combination!”$"
 
 MossdeepCity_Text_CitySign: @ 81E53F2
@@ -410,7 +410,7 @@ MossdeepCity_Text_SpaceCenterSign: @ 81E541F
 MossdeepCity_Text_ScottSomethingWrongWithTown: @ 81E5453
 	.string "SCOTT: {PLAYER}, feeling good?\n"
 	.string "I'm doing great!\p"
-	.string "I'd heard MOSSDEEP's GYM LEADER is\n"
+	.string "I'd heard MOSSDEEP's Gym Leader is\n"
 	.string "pretty strong, so I decided to come\l"
 	.string "take a look-see for myself.\p"
 	.string "But there's something wrong about\n"
@@ -425,8 +425,8 @@ MossdeepCity_Text_SootopolisNewGymLeader: @ 81E5581
 	.string "wash over my feet…\p"
 	.string "Speaking of the waves, you know that\n"
 	.string "island city SOOTOPOLIS?\p"
-	.string "I think the GYM there had a new\n"
+	.string "I think the Gym there had a new\n"
 	.string "LEADER come in.\p"
 	.string "People tell me the new LEADER once\n"
-	.string "mentored WALLACE.$"
+	.string "mentored Wallace.$"
 

@@ -36,15 +36,15 @@ Route110_TrickHousePuzzle8_EventScript_WroteSecretCodeLockOpened:: @ 826E864
 	.string "The lock clicked open!$"
 
 Route110_TrickHousePuzzle8_Text_VincentIntro: @ 826E8CD
-	.string "Not many TRAINERS have made it\n"
+	.string "Not many Trainers have made it\n"
 	.string "this far.$"
 
 Route110_TrickHousePuzzle8_Text_VincentDefeat: @ 826E8F6
 	.string "That must mean you're tough, too…$"
 
 Route110_TrickHousePuzzle8_Text_VincentPostBattle: @ 826E918
-	.string "You've beaten the Pokémon LEAGUE\n"
-	.string "CHAMPION? That's too much!$"
+	.string "You've beaten the Pokémon League\n"
+	.string "Champion? That's too much!$"
 
 Route110_TrickHousePuzzle8_Text_KeiraIntro: @ 826E954
 	.string "Consider yourself lucky to be\n"

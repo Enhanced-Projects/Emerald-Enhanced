@@ -214,7 +214,7 @@ BattleFrontier_Lounge3_Text_CantYouSeeWereBusyHere:: @ 8261FFE
 
 BattleFrontier_Lounge3_Text_YouLookToughExplainGambling:: @ 8262061
 	.string "…Huh?\n"
-	.string "You look to me like a tough TRAINER.\p"
+	.string "You look to me like a tough Trainer.\p"
 	.string "Heheh…\n"
 	.string "Listen, I have this proposition.\p"
 	.string "We have a little group going here,\n"
@@ -223,97 +223,97 @@ BattleFrontier_Lounge3_Text_YouLookToughExplainGambling:: @ 8262061
 	.string "The rules are really simple.\p"
 	.string "First, we pick one of the facilities\n"
 	.string "in the BATTLE FRONTIER.\p"
-	.string "Then, we each pick a different TRAINER\n"
+	.string "Then, we each pick a different Trainer\n"
 	.string "who's taking that facility's challenge,\l"
 	.string "and bet with our Battle Points.\p"
-	.string "The guy who bet on the TRAINER with\n"
+	.string "The guy who bet on the Trainer with\n"
 	.string "the best record takes all the Battle\l"
 	.string "Points in the pool.\p"
 	.string "Sounds simple, huh?\n"
 	.string "So, anyway…$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleTowerSingle:: @ 8262261
-	.string "What I'm looking for is a TRAINER who's\n"
+	.string "What I'm looking for is a Trainer who's\n"
 	.string "going to be challenging the BATTLE\l"
 	.string "TOWER's SINGLE BATTLE ROOMS.\p"
-	.string "But so far, I haven't seen a TRAINER\n"
+	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleTowerDouble:: @ 826230D
-	.string "What I'm looking for is a TRAINER who's\n"
+	.string "What I'm looking for is a Trainer who's\n"
 	.string "going to be challenging the BATTLE\l"
 	.string "TOWER's DOUBLE BATTLE ROOMS.\p"
-	.string "But so far, I haven't seen a TRAINER\n"
+	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleTowerMulti:: @ 82623B9
-	.string "What I'm looking for is a TRAINER who's\n"
+	.string "What I'm looking for is a Trainer who's\n"
 	.string "going to be challenging the BATTLE\l"
 	.string "TOWER's MULTI BATTLE ROOMS.\p"
-	.string "But so far, I haven't seen a TRAINER\n"
+	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleDomeSingle:: @ 8262464
-	.string "What I'm looking for is a TRAINER who's\n"
+	.string "What I'm looking for is a Trainer who's\n"
 	.string "going to be entering the BATTLE\l"
 	.string "DOME's SINGLE BATTLE Tourney.\p"
-	.string "But so far, I haven't seen a TRAINER\n"
+	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleDomeDouble:: @ 826250E
-	.string "What I'm looking for is a TRAINER who's\n"
+	.string "What I'm looking for is a Trainer who's\n"
 	.string "going to be entering the BATTLE\l"
 	.string "DOME's DOUBLE BATTLE Tourney.\p"
-	.string "But so far, I haven't seen a TRAINER\n"
+	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleFactorySingle:: @ 82625B8
-	.string "What I'm looking for is a TRAINER who's\n"
+	.string "What I'm looking for is a Trainer who's\n"
 	.string "going to be entering the BATTLE\l"
 	.string "FACTORY's Battle Swap Single Tourney.\p"
-	.string "But so far, I haven't seen a TRAINER\n"
+	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleFactoryDouble:: @ 826266A
-	.string "What I'm looking for is a TRAINER who's\n"
+	.string "What I'm looking for is a Trainer who's\n"
 	.string "going to be entering the BATTLE\l"
 	.string "FACTORY's Battle Swap Double Tourney.\p"
-	.string "But so far, I haven't seen a TRAINER\n"
+	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattlePalaceSingle:: @ 826271C
-	.string "What I'm looking for is a TRAINER who's\n"
+	.string "What I'm looking for is a Trainer who's\n"
 	.string "going to be challenging the BATTLE\l"
 	.string "PALACE's SINGLE BATTLE HALLS.\p"
-	.string "But so far, I haven't seen a TRAINER\n"
+	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattlePalaceDouble:: @ 82627C9
-	.string "What I'm looking for is a TRAINER who's\n"
+	.string "What I'm looking for is a Trainer who's\n"
 	.string "going to be challenging the BATTLE\l"
 	.string "PALACE's DOUBLE BATTLE HALLS.\p"
-	.string "But so far, I haven't seen a TRAINER\n"
+	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleArena:: @ 8262876
-	.string "What I'm looking for is a TRAINER who's\n"
+	.string "What I'm looking for is a Trainer who's\n"
 	.string "going to be entering the BATTLE\l"
 	.string "ARENA's Set KO Tourney.\p"
-	.string "But so far, I haven't seen a TRAINER\n"
+	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattlePike:: @ 826291A
-	.string "What I'm looking for is a TRAINER who's\n"
+	.string "What I'm looking for is a Trainer who's\n"
 	.string "going to be entering the BATTLE PIKE's\l"
 	.string "Battle Choice.\p"
-	.string "But so far, I haven't seen a TRAINER\n"
+	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattlePyramid:: @ 82629BC
-	.string "What I'm looking for is a TRAINER who's\n"
+	.string "What I'm looking for is a Trainer who's\n"
 	.string "going to be entering the BATTLE\l"
 	.string "PYRAMID's Battle Quest.\p"
-	.string "But so far, I haven't seen a TRAINER\n"
+	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_HowAboutEnteringEventForMe:: @ 8262A60
@@ -459,12 +459,12 @@ BattleFrontier_Lounge3_Text_Oh:: @ 826346B
 	.string "Oh…$"
 
 BattleFrontier_Lounge3_Text_BackedWrongTrainer:: @ 826346F
-	.string "I backed the wrong TRAINER again!\p"
+	.string "I backed the wrong Trainer again!\p"
 	.string "Maybe I should be battling normally\n"
 	.string "like everyone else…$"
 
 BattleFrontier_Lounge3_Text_TrainerGoodButRattled:: @ 82634C9
-	.string "That TRAINER…\p"
+	.string "That Trainer…\p"
 	.string "He's good, but he gets rattled too\n"
 	.string "easily to survive the BATTLE DOME…$"
 
@@ -473,6 +473,6 @@ BattleFrontier_Lounge3_Text_KnowWinnerWhenISeeOne:: @ 826351D
 	.string "I know a winner when I see one!$"
 
 BattleFrontier_Lounge3_Text_ShouldBeTakingChallenges:: @ 8263545
-	.string "Those TRAINERS…\n"
+	.string "Those Trainers…\n"
 	.string "What are they doing?\l"
 	.string "They should be taking challenges.$"

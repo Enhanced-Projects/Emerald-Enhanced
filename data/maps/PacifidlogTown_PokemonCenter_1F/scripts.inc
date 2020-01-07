@@ -29,7 +29,7 @@ PacifidlogTown_PokemonCenter_1F_EventScript_OldMan:: @ 82034D6
 	end
 
 PacifidlogTown_PokemonCenter_1F_Text_WhatColorTrainerCard: @ 82034DF
-	.string "What color is your TRAINER CARD?\n"
+	.string "What color is your Trainer Card?\n"
 	.string "Mine's copper!$"
 
 PacifidlogTown_PokemonCenter_1F_Text_OnColonyOfCorsola: @ 820350F

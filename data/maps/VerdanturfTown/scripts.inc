@@ -111,7 +111,7 @@ VerdanturfTown_Text_TownSign: @ 81EB9C4
 	.string "sweet fragrance of grass.”$"
 
 VerdanturfTown_Text_WandasHouse: @ 81EBA11
-	.string "WANDA'S HOUSE$"
+	.string "WANDA's HOUSE$"
 
 VerdanturfTown_Text_BattleTentSign: @ 81EBA1F
 	.string "BATTLE TENT VERDANTURF SITE\n"

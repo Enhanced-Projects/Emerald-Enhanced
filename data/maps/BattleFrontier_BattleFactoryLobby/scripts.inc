@@ -331,7 +331,7 @@ BattleFrontier_BattleFactoryLobby_EventScript_ExitRules:: @ 82588EC
 	end
 
 BattleFrontier_BattleFactoryLobby_Text_WelcomeForSingleBattle: @ 82588EE
-	.string "Where the intelligence of TRAINERS\n"
+	.string "Where the intelligence of Trainers\n"
 	.string "is put to the test!\p"
 	.string "Welcome to the BATTLE FACTORY!\p"
 	.string "I am your guide to the Battle Swap\n"
@@ -427,7 +427,7 @@ BattleFrontier_BattleFactoryLobby_Text_ReceivedPrizeItem: @ 8258F79
 	.string "{STR_VAR_1}.$"
 
 BattleFrontier_BattleFactoryLobby_Text_WelcomeForDoubleBattle: @ 8258F93
-	.string "Where the intelligence of TRAINERS\n"
+	.string "Where the intelligence of Trainers\n"
 	.string "is put to the test!\p"
 	.string "Welcome to the BATTLE FACTORY!\p"
 	.string "I am your guide to the Battle Swap\n"
@@ -530,16 +530,16 @@ BattleFrontier_BattleFactoryLobby_Text_ExplainBasicRules: @ 8259766
 
 BattleFrontier_BattleFactoryLobby_Text_ExplainSwapPartnerRules: @ 82597FB
 	.string "You may swap Pokémon only with\n"
-	.string "the TRAINER you have just defeated.\p"
+	.string "the Trainer you have just defeated.\p"
 	.string "You may swap for only those Pokémon\n"
-	.string "used by the beaten TRAINER.$"
+	.string "used by the beaten Trainer.$"
 
 BattleFrontier_BattleFactoryLobby_Text_ExplainSwapNumberRules: @ 825987E
 	.string "After every battle you win, you may\n"
 	.string "swap for one of your defeated\l"
 	.string "opponent's Pokémon.\p"
 	.string "You will not be able to swap Pokémon\n"
-	.string "with the seventh TRAINER in the event.$"
+	.string "with the seventh Trainer in the event.$"
 
 BattleFrontier_BattleFactoryLobby_Text_ExplainSwapNotesRules: @ 8259920
 	.string "There are two key points to be aware\n"
@@ -555,5 +555,5 @@ BattleFrontier_BattleFactoryLobby_Text_ExplainSwapNotesRules: @ 8259920
 
 BattleFrontier_BattleFactoryLobby_Text_ExplainOpenLvRules: @ 8259A5E
 	.string "In the Open Level, the rental Pokémon\n"
-	.string "and the opposing TRAINERS' Pokémon\l"
+	.string "and the opposing Trainers' Pokémon\l"
 	.string "are all Level 100.$"

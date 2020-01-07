@@ -54,7 +54,7 @@ Route110_TrickHousePuzzle6_Text_SophiaIntro: @ 826DE93
 	.string "house, I had to check it out.$"
 
 Route110_TrickHousePuzzle6_Text_SophiaDefeat: @ 826DED2
-	.string "I've discovered a tough TRAINER!$"
+	.string "I've discovered a tough Trainer!$"
 
 Route110_TrickHousePuzzle6_Text_SophiaPostBattle: @ 826DEF3
 	.string "I'm sure having a good time checking\n"

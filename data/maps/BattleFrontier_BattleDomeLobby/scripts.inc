@@ -456,7 +456,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249EB5:: @ 8249EB5
 	end
 
 BattleFrontier_BattleDomeLobby_Text_249EB7: @ 8249EB7
-	.string "Where the strategies of TRAINERS\n"
+	.string "Where the strategies of Trainers\n"
 	.string "are put to the test!\p"
 	.string "Welcome to the BATTLE DOME!\p"
 	.string "I am your guide to the SINGLE BATTLE\n"
@@ -473,7 +473,7 @@ BattleFrontier_BattleDomeLobby_Text_249F8E: @ 8249F8E
 	.string "The SINGLE BATTLE Tournament\n"
 	.string "is exactly as the name suggests--\l"
 	.string "a tournament of SINGLE BATTLES.\p"
-	.string "All participating TRAINERS must\n"
+	.string "All participating Trainers must\n"
 	.string "enter three Pokémon each.\p"
 	.string "In each battle, one of the three\n"
 	.string "Pokémon must be held in reserve.\p"
@@ -482,7 +482,7 @@ BattleFrontier_BattleDomeLobby_Text_249F8E: @ 8249F8E
 	.string "Choose the two battling Pokémon after\n"
 	.string "examining the opponent's trio.\p"
 	.string "You win the tournament by defeating\n"
-	.string "four TRAINERS.\p"
+	.string "four Trainers.\p"
 	.string "Battle Points are awarded to\n"
 	.string "the tournament winner.\p"
 	.string "If you want to interrupt your\n"
@@ -565,7 +565,7 @@ BattleFrontier_BattleDomeLobby_Text_24A61A: @ 824A61A
 	.string "I must save the data. Is that okay?$"
 
 BattleFrontier_BattleDomeLobby_Text_24A664: @ 824A664
-	.string "Where the strategies of TRAINERS\n"
+	.string "Where the strategies of Trainers\n"
 	.string "are put to the test!\p"
 	.string "Welcome to the BATTLE DOME!\p"
 	.string "I am your guide to the DOUBLE BATTLE\n"
@@ -579,7 +579,7 @@ BattleFrontier_BattleDomeLobby_Text_24A721: @ 824A721
 	.string "The DOUBLE BATTLE Tournament\n"
 	.string "is exactly as the name suggests--\l"
 	.string "a tournament of DOUBLE BATTLES.\p"
-	.string "All participating TRAINERS must\n"
+	.string "All participating Trainers must\n"
 	.string "enter three Pokémon each.\p"
 	.string "In each battle, one of the three\n"
 	.string "Pokémon must be held in reserve.\p"
@@ -588,7 +588,7 @@ BattleFrontier_BattleDomeLobby_Text_24A721: @ 824A721
 	.string "Choose the two battling Pokémon after\n"
 	.string "examining the opponent's trio.\p"
 	.string "You win the tournament by defeating\n"
-	.string "four TRAINERS.\p"
+	.string "four Trainers.\p"
 	.string "Battle Points are awarded to\n"
 	.string "the tournament winner.\p"
 	.string "If you want to interrupt your\n"
@@ -633,12 +633,12 @@ BattleFrontier_OutsideWest_Text_QuestionMarkUnderConstruction: @ 824AB75
 	.string "Under Construction!$"
 
 BattleFrontier_BattleDomeLobby_Text_24AB94: @ 824AB94
-	.string "When a TRAINER chains tournament\n"
+	.string "When a Trainer chains tournament\n"
 	.string "wins at the BATTLE DOME, he or she\l"
 	.string "gains a reputation as a star.\p"
-	.string "Tough TRAINERS are drawn by that\n"
+	.string "Tough Trainers are drawn by that\n"
 	.string "reputation to the BATTLE DOME.\p"
-	.string "A true superstar is a TRAINER who\n"
+	.string "A true superstar is a Trainer who\n"
 	.string "can keep winning tournaments.$"
 
 BattleFrontier_BattleDomeLobby_Text_24AC76: @ 824AC76
@@ -678,9 +678,9 @@ BattleFrontier_BattleDomeLobby_Text_24AE8B: @ 824AE8B
 BattleFrontier_BattleDomeLobby_Text_24AEAE: @ 824AEAE
 	.string "The tournament matchups are drawn up\n"
 	.string "based on the toughness of Pokémon\l"
-	.string "held by TRAINERS.\p"
+	.string "held by Trainers.\p"
 	.string "The matchups avoid having tough\n"
-	.string "TRAINERS face each other right away.$"
+	.string "Trainers face each other right away.$"
 
 BattleFrontier_BattleDomeLobby_Text_24AF4C: @ 824AF4C
 	.string "The tournament chart, or as we call it,\n"
@@ -690,8 +690,8 @@ BattleFrontier_BattleDomeLobby_Text_24AF4C: @ 824AF4C
 	.string "several kinds of data.\p"
 	.string "The data on view includes the previous\n"
 	.string "tournament's results, the Pokémon held\l"
-	.string "by TRAINERS, and the battle styles of\l"
-	.string "TRAINERS.$"
+	.string "by Trainers, and the battle styles of\l"
+	.string "Trainers.$"
 
 BattleFrontier_BattleDomeLobby_Text_24B073: @ 824B073
 	.string "If battling Pokémon faint at the same\n"

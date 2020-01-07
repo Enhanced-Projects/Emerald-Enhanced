@@ -74,12 +74,12 @@ Route104_EventScript_RivalTrigger:: @ 81ECCB3
 Route104_EventScript_PlayRivalMusic:: @ 81ECD11
 	checkplayergender
 	compare VAR_RESULT, MALE
-	goto_if_eq Route104_EventScript_PlayMayMusic
+	goto_if_eq Route104_EventScript_PlayDawnMusic
 	compare VAR_RESULT, FEMALE
 	goto_if_eq Route104_EventScript_PlayBrendanMusic
 	return
 
-Route104_EventScript_PlayMayMusic:: @ 81ECD29
+Route104_EventScript_PlayDawnMusic:: @ 81ECD29
 	playbgm MUS_GIRL_SUP, 1
 	return
 
@@ -90,36 +90,36 @@ Route104_EventScript_PlayBrendanMusic:: @ 81ECD2E
 Route104_EventScript_RivalEncounter:: @ 81ECD33
 	checkplayergender
 	compare VAR_RESULT, MALE
-	goto_if_eq Route104_EventScript_MayEncounter
+	goto_if_eq Route104_EventScript_DawnEncounter
 	compare VAR_RESULT, FEMALE
 	goto_if_eq Route104_EventScript_BrendanEncounter
 	end
 
-Route104_EventScript_MayEncounter:: @ 81ECD4B
-	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE_104, Route104_EventScript_MayDefeated
-	goto_if_set FLAG_REGISTER_RIVAL_POKENAV, Route104_EventScript_MayAskToBattle
+Route104_EventScript_DawnEncounter:: @ 81ECD4B
+	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE_104, Route104_EventScript_DawnDefeated
+	goto_if_set FLAG_REGISTER_RIVAL_POKENAV, Route104_EventScript_DawnAskToBattle
 	setflag FLAG_REGISTER_RIVAL_POKENAV
-	msgbox Route104_Text_MayWeShouldRegister, MSGBOX_DEFAULT
+	msgbox Route104_Text_DawnWeShouldRegister, MSGBOX_DEFAULT
 	closemessage
 	delay 30
 	playfanfare MUS_ME_TORE_EYE
-	msgbox Route104_Text_RegisteredMay, MSGBOX_DEFAULT
+	msgbox Route104_Text_RegisteredDawn, MSGBOX_DEFAULT
 	waitfanfare
 	closemessage
 	delay 30
 	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
 	applymovement EVENT_OBJ_ID_PLAYER, Route104_Movement_PlayerFaceRival
 	applymovement 34, Route104_Movement_RivalWalkSlowLeft
-	msgbox Route104_Text_MayHowsYourPokedex, MSGBOX_DEFAULT
+	msgbox Route104_Text_DawnHowsYourPokedex, MSGBOX_DEFAULT
 	closemessage
 	waitmovement 0
 	applymovement 34, Route104_Movement_RivalApproachPlayer
 	waitmovement 0
 	copyobjectxytoperm 34
-	msgbox Route104_Text_MayMinesDecentLetsBattle, MSGBOX_YESNO
+	msgbox Route104_Text_DawnMinesDecentLetsBattle, MSGBOX_YESNO
 	compare VAR_RESULT, YES
-	goto_if_eq Route104_EventScript_BattleMay
-	msgbox Route104_Text_MayHaventRaisedPokemon, MSGBOX_DEFAULT
+	goto_if_eq Route104_EventScript_BattleDawn
+	msgbox Route104_Text_DawnHaventRaisedPokemon, MSGBOX_DEFAULT
 	call Route104_EventScript_RestoreMusic
 	releaseall
 	end
@@ -138,24 +138,21 @@ Route104_Movement_PlayerFaceRival: @ 81ECDCD
 	walk_in_place_fastest_left
 	step_end
 
-Route104_EventScript_MayAskToBattle:: @ 81ECDD0
-	msgbox Route104_Text_MayLetsBattle, MSGBOX_YESNO
+Route104_EventScript_DawnAskToBattle:: @ 81ECDD0
+	msgbox Route104_Text_DawnLetsBattle, MSGBOX_YESNO
 	compare VAR_RESULT, YES
-	goto_if_eq Route104_EventScript_BattleMay
-	msgbox Route104_Text_MayHaventRaisedPokemon, MSGBOX_DEFAULT
+	goto_if_eq Route104_EventScript_BattleDawn
+	msgbox Route104_Text_DawnHaventRaisedPokemon, MSGBOX_DEFAULT
 	releaseall
 	end
 
-Route104_EventScript_BattleMay:: @ 81ECDED
-	msgbox Route104_Text_MayIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route104_EventScript_BattleMayTreecko
-	case 1, Route104_EventScript_BattleMayTorchic
-	case 2, Route104_EventScript_BattleMayMudkip
+Route104_EventScript_BattleDawn:: @ 81ECDED
+	msgbox Route104_Text_DawnIntro, MSGBOX_DEFAULT
+	goto Route104_EventScript_BattleDawn2
 	end
 
-Route104_EventScript_MayDefeated:: @ 81ECE1C
-	msgbox Route104_Text_MayPostBattle, MSGBOX_DEFAULT
+Route104_EventScript_DawnDefeated:: @ 81ECE1C
+	msgbox Route104_Text_DawnPostBattle, MSGBOX_DEFAULT
 	compare VAR_0x8008, 0
 	call_if_eq Route104_EventScript_RestoreMusic
 	releaseall
@@ -166,22 +163,10 @@ Route104_EventScript_RestoreMusic:: @ 81ECE31
 	fadedefaultbgm
 	return
 
-Route104_EventScript_BattleMayTreecko:: @ 81ECE36
-	trainerbattle_no_intro TRAINER_DAWN_2, Route104_Text_MayDefeat
+Route104_EventScript_BattleDawn2:: @ 81ECE36
+	trainerbattle_no_intro TRAINER_DAWN_2, Route104_Text_DawnDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
-Route104_EventScript_BattleMayTorchic:: @ 81ECE49
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TORCHIC, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
-Route104_EventScript_BattleMayMudkip:: @ 81ECE5C
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_MUDKIP, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
+	goto Route104_EventScript_DawnDefeated
 	end
 
 Route104_EventScript_BrendanEncounter:: @ 81ECE6F
@@ -237,13 +222,13 @@ Route104_EventScript_BrendanDefeated:: @ 81ECF38
 	end
 
 Route104_EventScript_BattleBrendanTreecko:: @ 81ECF4D
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TREECKO, Route104_Text_BrendanDefeat
+	trainerbattle_no_intro TRAINER_EMPTY_33, Route104_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
 	goto Route104_EventScript_BrendanDefeated
 	end
 
 Route104_EventScript_BattleBrendanTorchic:: @ 81ECF60
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TORCHIC, Route104_Text_BrendanDefeat
+	trainerbattle_no_intro TRAINER_EMPTY_34, Route104_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
 	goto Route104_EventScript_BrendanDefeated
 	end
@@ -1032,8 +1017,8 @@ Route104_Text_OnlyThrowBallAtWildPokemon: @ 81ED735
 	.string "wild Pokémon.$"
 
 Route104_Text_ImNotATrainer: @ 81ED7A2
-	.string "Oh, no, I'm not a TRAINER.\p"
-	.string "But that's right, if TRAINERS lock eyes,\n"
+	.string "Oh, no, I'm not a Trainer.\p"
+	.string "But that's right, if Trainers lock eyes,\n"
 	.string "it's a challenge to battle.\p"
 	.string "If you don't want to battle, stay out\n"
 	.string "of their sight.$"
@@ -1067,7 +1052,7 @@ Route104_Text_FlowerShopSellingSaplings: @ 81EDA0F
 	.string "shopping. Where should I put them?$"
 
 Route104_Text_MrBrineysCottage: @ 81EDA8C
-	.string "MR. BRINEY'S COTTAGE$"
+	.string "MR. BRINEY's COTTAGE$"
 
 Route104_Text_RouteSignPetalburg: @ 81EDAA1
 	.string "ROUTE 1O4\n"
@@ -1081,55 +1066,55 @@ Route104_Text_PrettyPetalFlowShop: @ 81EDAD6
 	.string "PRETTY PETAL FLOWER SHOP$"
 
 Route104_Text_TrainerTipsDoubleBattles: @ 81EDAEF
-	.string "TRAINER TIPS\p"
-	.string "In the HOENN region there are pairs\n"
-	.string "of TRAINERS who challenge others\l"
+	.string "Trainer TIPS\p"
+	.string "In the Hoenn region there are pairs\n"
+	.string "of Trainers who challenge others\l"
 	.string "for 2-on-2 Pokémon battles called\l"
 	.string "DOUBLE BATTLES.\p"
-	.string "In a DOUBLE BATTLE, the TRAINER must\n"
+	.string "In a DOUBLE BATTLE, the Trainer must\n"
 	.string "send out two Pokémon, the one at the\l"
 	.string "left of the list and the top one.\l"
 	.string "Watch how Pokémon are lined up.$"
 
-Route104_Text_MayWeShouldRegister: @ 81EDBFF
+Route104_Text_DawnWeShouldRegister: @ 81EDBFF
 	.string "Dawn: Oh, hi, {PLAYER}!\p"
-	.string "DEVON upgraded your POKéNAV with\n"
+	.string "DEVON upgraded your Pokénav with\n"
 	.string "the MATCH CALL system, huh?\p"
 	.string "We should register each other so we\n"
 	.string "can get in contact anytime.$"
 
-Route104_Text_RegisteredMay: @ 81EDC8F
+Route104_Text_RegisteredDawn: @ 81EDC8F
 	.string "{PLAYER} registered Dawn\n"
-	.string "in the POKéNAV.$"
+	.string "in the Pokénav.$"
 
-Route104_Text_MayHowsYourPokedex: @ 81EDCB1
+Route104_Text_DawnHowsYourPokedex: @ 81EDCB1
 	.string "Dawn: Oh, by the way, {PLAYER},\n"
 	.string "how's your POKéDEX coming along?$"
 
-Route104_Text_MayMinesDecentLetsBattle: @ 81EDCED
+Route104_Text_DawnMinesDecentLetsBattle: @ 81EDCED
 	.string "Mine's looking pretty decent.\n"
 	.string "So…\l"
 	.string "How about a little battle?$"
 
-Route104_Text_MayHaventRaisedPokemon: @ 81EDD2A
+Route104_Text_DawnHaventRaisedPokemon: @ 81EDD2A
 	.string "Dawn: Oh, what's the matter?\p"
 	.string "Haven't you caught or raised your\n"
 	.string "Pokémon very much?\p"
-	.string "That's not very good for a TRAINER!$"
+	.string "That's not very good for a Trainer!$"
 
-Route104_Text_MayLetsBattle: @ 81EDD9F
+Route104_Text_DawnLetsBattle: @ 81EDD9F
 	.string "Dawn: So, what do you think?\n"
 	.string "How about a little battle here?$"
 
-Route104_Text_MayIntro: @ 81EDDDB
-	.string "Dawn: You just became a TRAINER,\n"
+Route104_Text_DawnIntro: @ 81EDDDB
+	.string "Dawn: You just became a Trainer,\n"
 	.string "{PLAYER}. I'm not going to lose!$"
 
-Route104_Text_MayDefeat: @ 81EDE18
+Route104_Text_DawnDefeat: @ 81EDE18
 	.string "Yikes!\n"
 	.string "You're better than I expected!$"
 
-Route104_Text_MayPostBattle: @ 81EDE3E
+Route104_Text_DawnPostBattle: @ 81EDE3E
 	.string "Dawn: I can tell you've gotten pretty\n"
 	.string "good with the way you handle Pokémon.\p"
 	.string "But instead of only making them\n"
@@ -1140,13 +1125,13 @@ Route104_Text_MayPostBattle: @ 81EDE3E
 Route104_Text_BrendanWeShouldRegister: @ 81EDF04
 	.string "BRENDAN: Oh, hey, {PLAYER}!\p"
 	.string "Cool, you had DEVON install the MATCH\n"
-	.string "CALL system on your POKéNAV!\p"
+	.string "CALL system on your Pokénav!\p"
 	.string "Let's register each other in our\n"
 	.string "POKéNAVS so we can keep in touch.$"
 
 Route104_Text_RegisteredBrendan: @ 81EDFA0
 	.string "{PLAYER} registered BRENDAN\n"
-	.string "in the POKéNAV.$"
+	.string "in the Pokénav.$"
 
 Route104_Text_BrendanHowsYourPokedex: @ 81EDFC6
 	.string "BRENDAN: {PLAYER}, how's your POKéDEX?\n"
@@ -1167,7 +1152,7 @@ Route104_Text_BrendanLetsBattle: @ 81EE094
 
 Route104_Text_BrendanIntro: @ 81EE0C7
 	.string "BRENDAN: I know you just became\n"
-	.string "a TRAINER, but I won't go easy!$"
+	.string "a Trainer, but I won't go easy!$"
 
 Route104_Text_BrendanDefeat: @ 81EE107
 	.string "Hmm…\n"

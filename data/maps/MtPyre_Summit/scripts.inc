@@ -573,12 +573,12 @@ MtPyre_Summit_Text_WillYouHearOutMyTale: @ 8232E0C
 	.string "MT. PYRE is where we calm the spirits\n"
 	.string "of Pokémon that have passed on…\p"
 	.string "This is a high place where one can\n"
-	.string "see all of HOENN…\p"
+	.string "see all of Hoenn…\p"
 	.string "The disembodied spirits of Pokémon\n"
 	.string "must find solace here…\p"
 	.string "Is it coincidence that you are here…\p"
 	.string "Will you hear out my tale? A tale long\n"
-	.string "told in the HOENN region?$"
+	.string "told in the Hoenn region?$"
 
 MtPyre_Summit_Text_GroudonKyogreTale: @ 8232F27
 	.string "It happened long, long ago…\p"
@@ -611,11 +611,11 @@ MtPyre_Summit_Text_MaxieSilence: @ 8233183
 
 MtPyre_Summit_Text_HearTheNewLegendOfHoenn: @ 82331A6
 	.string "It is my role to pass on the legends\n"
-	.string "of HOENN to future generations.\p"
+	.string "of Hoenn to future generations.\p"
 	.string "And the crisis that just ended in\n"
 	.string "SOOTOPOLIS rewrote a legend…\p"
 	.string "Have you the time to hear the new\n"
-	.string "legend of HOENN?$"
+	.string "legend of Hoenn?$"
 
 MtPyre_Summit_Text_HoennTrioTale: @ 823325D
 	.string "It happened long, long ago…\p"

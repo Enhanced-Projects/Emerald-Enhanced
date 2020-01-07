@@ -109,7 +109,7 @@ Route109_SeashoreHouse_Text_SeashoreHouseIntro: @ 8269555
 	.string "What I love above all is to see hot\n"
 	.string "Pokémon battles.\p"
 	.string "Let me see that your heart burns hot!\p"
-	.string "If you can defeat all the TRAINERS\n"
+	.string "If you can defeat all the Trainers\n"
 	.string "here, I'll reward your efforts.$"
 
 Route109_SeashoreHouse_Text_ShowMeSomeHotMatches: @ 8269635
@@ -148,7 +148,7 @@ Route109_SeashoreHouse_Text_ThatsTooBad: @ 82697EF
 Route109_SeashoreHouse_Text_DwayneIntro: @ 8269803
 	.string "If you're looking for a battle in the\n"
 	.string "SEASHORE HOUSE, you'll find no\l"
-	.string "hotter TRAINER than me, matey!$"
+	.string "hotter Trainer than me, matey!$"
 
 Route109_SeashoreHouse_Text_DwayneDefeated: @ 8269867
 	.string "That was a hot battle!\n"
@@ -161,7 +161,7 @@ Route109_SeashoreHouse_Text_DwaynePostBattle: @ 826989D
 Route109_SeashoreHouse_Text_JohannaIntro: @ 82698E3
 	.string "Boring battles aren't worth the effort.\p"
 	.string "Fiery hot battles are what toughen up\n"
-	.string "TRAINERS and Pokémon!$"
+	.string "Trainers and Pokémon!$"
 
 Route109_SeashoreHouse_Text_JohannaDefeated: @ 8269947
 	.string "That's hot!$"

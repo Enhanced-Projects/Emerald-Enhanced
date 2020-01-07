@@ -312,7 +312,7 @@ Route119_WeatherInstitute_2F_Text_ChangingWeatherRidiculous: @ 827077E
 
 Route119_WeatherInstitute_2F_Text_GroudonWeather: @ 82707F1
 	.string "I track weather patterns over\n"
-	.string "the HOENN region.\p"
+	.string "the Hoenn region.\p"
 	.string "Presently, a drought has been recorded\n"
 	.string "in {STR_VAR_1}.\p"
 	.string "Could that mean, somewhere near\n"
@@ -320,7 +320,7 @@ Route119_WeatherInstitute_2F_Text_GroudonWeather: @ 82707F1
 
 Route119_WeatherInstitute_2F_Text_KyogreWeather: @ 8270873
 	.string "I track weather patterns over\n"
-	.string "the HOENN region.\p"
+	.string "the Hoenn region.\p"
 	.string "Presently, heavy rainfall has been\n"
 	.string "recorded over {STR_VAR_1}.\p"
 	.string "Could that mean, somewhere near\n"

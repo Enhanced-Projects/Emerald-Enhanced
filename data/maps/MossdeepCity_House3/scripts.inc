@@ -26,7 +26,7 @@ MossdeepCity_House3_EventScript_DeclineSuperRod:: @ 822260C
 	end
 
 MossdeepCity_House3_Text_YouWantSuperRod: @ 8222616
-	.string "Hey there, TRAINER!\n"
+	.string "Hey there, Trainer!\n"
 	.string "A SUPER ROD really is super!\p"
 	.string "Say all you want, but this baby can\n"
 	.string "catch Pokémon off the seafloor!\p"
