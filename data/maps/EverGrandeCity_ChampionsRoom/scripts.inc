@@ -5,8 +5,15 @@ EverGrandeCity_ChampionsRoom_MapScripts:: @ 82289EF
 	.byte 0
 
 EverGrandeCity_ChampionsRoom_OnTransition: @ 82289FF
-	call Common_EventScript_SetupRivalGfxId
 	end
+
+EGC_SetBrendan::
+	setvar EVENT_OBJ_GFX_VAR_0, EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL
+	return
+
+EGC_SetDawn::
+	setvar EVENT_OBJ_GFX_VAR_0, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL
+	return
 
 EverGrandeCity_ChampionsRoom_OnWarp: @ 8228A05
 	map_script_2 VAR_TEMP_1, 0, EverGrandeCity_ChampionsRoom_EventScript_PlayerTurnNorth
@@ -85,7 +92,6 @@ EverGrandeCity_ChampionsRoom_EventScript_Defeated:: @ 8228A61
 	call_if_eq EverGrandeCity_ChampionsRoom_EventScript_PlayMayMusic
 	compare VAR_RESULT, FEMALE
 	call_if_eq EverGrandeCity_ChampionsRoom_EventScript_PlayBrendanMusic
-	addobject 2
 	call EverGrandeCity_ChampionsRoom_EventScript_RivalApproachPlayer
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -95,10 +101,12 @@ EverGrandeCity_ChampionsRoom_EventScript_Defeated:: @ 8228A61
 	end
 
 EverGrandeCity_ChampionsRoom_EventScript_PlayMayMusic:: @ 8228ABC
+	addobject 3
 	playbgm MUS_GIRL_SUP, 0
 	return
 
 EverGrandeCity_ChampionsRoom_EventScript_PlayBrendanMusic:: @ 8228AC1
+	addobject 4
 	playbgm MUS_BOY_SUP, 0
 	return
 
@@ -107,9 +115,9 @@ EverGrandeCity_ChampionsRoom_EventScript_MayAdvice:: @ 8228AC6
 	msgbox EGC_DawnIntro, MSGBOX_DEFAULT
 	delay 40
 	playse SE_PIN
-	applymovement 2, Common_Movement_ExclamationMark
+	applymovement 3, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement 2, Common_Movement_Delay48
+	applymovement 3, Common_Movement_Delay48
 	waitmovement 0
 	call EverGrandeCity_ChampionsRoom_EventScript_RivalLookBackAndForth
 	msgbox EGC_DawnIntro2, MSGBOX_DEFAULT
@@ -135,8 +143,8 @@ EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice:: @ 8228AFB
 EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF:: @ 8228B30
 	closemessage
 	removecutscenesprites
-	addobject 3
-	applymovement 3, EverGrandeCity_ChampionsRoom_Movement_BirchArrives
+	addobject 2
+	applymovement 2, EverGrandeCity_ChampionsRoom_Movement_BirchArrives
 	waitmovement 0
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
@@ -154,24 +162,22 @@ EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF:: @ 8228B30
 	applymovement 1, EverGrandeCity_ChampionsRoom_Movement_WallaceExitStart
 	applymovement EVENT_OBJ_ID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExitStart
 	applymovement EVENT_OBJ_ID_FOLLOWER, EverGrandeCity_ChampionsRoom_Movement_PlayerExitStart
-	applymovement 3, Common_Movement_WalkInPlaceFastestUp
-	applymovement 2, EverGrandeCity_ChampionsRoom_Movement_RivalFollows
+	applymovement 2, Common_Movement_WalkInPlaceFastestUp
+	applymovement 3, EverGrandeCity_ChampionsRoom_Movement_RivalFollows
 	waitmovement 0
 	delay 20
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
 	waitmovement 0
 	msgbox EverGrandeCity_ChampionsRoom_Text_WallaceWaitOutside, MSGBOX_DEFAULT
-	checkplayergender
-	compare VAR_RESULT, MALE
-	call_if_eq EGC_DAWNREL_QUERY
-	compare VAR_RESULT, FEMALE
-	call_if_eq EGC_DAWNFZ_QUERY
+	closemessage
+	call_if_set FLAG_RYU_DS_BRENDAN_FRIENDS, EGC_BRENDANFZ_QUERY
+	call_if_set FLAG_RYU_DS_DAWN_FRIENDS, EGC_DAWNFZ_QUERY
+	removecutscenesprites
 	closemessage
 	applymovement 1, EverGrandeCity_ChampionsRoom_Movement_WallaceExit
 	applymovement EVENT_OBJ_ID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExit
 	applymovement EVENT_OBJ_ID_FOLLOWER, EverGrandeCity_ChampionsRoom_Movement_PlayerExit
 	waitmovement 0
-	setflag FLAG_HIDE_PETALBURG_GYM_GREETER
 	warp MAP_EVER_GRANDE_CITY_HALL_OF_FAME, 255, 7, 16
 	waitstate
 	releaseall
@@ -186,14 +192,14 @@ EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations:: @ 8228BF4
 	return
 
 EverGrandeCity_ChampionsRoom_EventScript_RivalApproachPlayer:: @ 8228BFD
-	applymovement 2, EverGrandeCity_ChampionsRoom_Movement_RivalApproachPlayer
+	applymovement 3, EverGrandeCity_ChampionsRoom_Movement_RivalApproachPlayer
 	waitmovement 0
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
 	return
 
 EverGrandeCity_ChampionsRoom_EventScript_RivalLookBackAndForth:: @ 8228C12
-	applymovement 2, EverGrandeCity_ChampionsRoom_Movement_RivalLookBackAndForth
+	applymovement 3, EverGrandeCity_ChampionsRoom_Movement_RivalLookBackAndForth
 	waitmovement 0
 	return
 
@@ -387,32 +393,58 @@ EGC_DAWNREL_QUERY::
     msgbox EGC_DS_LoversToPartners MSGBOX_YESNO
     drawheadshot HEAD_DAWN
 	compare VAR_RESULT 1
-	call_if_eq EGC_DAWNREL_YES
-	call_if_ne EGC_DAWNREL_NO
+	goto_if_eq EGC_DAWNREL_YES
+	goto_if_ne EGC_DAWNREL_NO
 	return
 
 EGC_DAWNFZ_QUERY::
+	goto_if_set FLAG_RYU_DS_DAWN_PARTNERS, EGC_MAXDSRANK_DAWN
+	goto_if_set FLAG_RYU_DS_DAWN_LOVERS, EGC_DAWNREL_QUERY
 	removecutscenesprites
     msgbox EGC_DAWN_QUERY, MSGBOX_YESNO
     drawheadshot HEAD_DAWN
 	compare VAR_RESULT 1
-	call_if_eq EGC_DAWNFZ_YES
-	call_if_ne EGC_DAWNFZ_NO
+	goto_if_eq EGC_DAWNFZ_YES
+	goto_if_ne EGC_DAWNFZ_NO
 	return
 	
 EGC_BRENDANREL_QUERY::
+    removecutscenesprites
 	msgbox EGC_DS_LoversToPartnersFemalePlayer MSGBOX_YESNO
+	drawheadshot HEAD_BRENDAN
 	compare VAR_RESULT 1
-	call_if_eq EGC_BRENDANREL_YES
-	call_if_ne EGC_BRENDANREL_NO
+	goto_if_eq EGC_BRENDANREL_YES
+	goto_if_ne EGC_BRENDANREL_NO
 	return
 	
 EGC_BRENDANFZ_QUERY::
+	goto_if_set FLAG_RYU_DS_BRENDAN_PARTNERS, EGC_MAXDSRANK_BRENDAN
+	goto_if_set FLAG_RYU_DS_BRENDAN_LOVERS, EGC_BRENDANREL_QUERY
     msgbox EGC_BRENDAN_QUERY, MSGBOX_YESNO
 	compare VAR_RESULT 1
-	call_if_eq EGC_BRENDANFZ_YES
-	call_if_ne EGC_BRENDANFZ_NO
+	goto_if_eq EGC_BRENDANFZ_YES
+	goto_if_ne EGC_BRENDANFZ_NO
 	return
+
+EGC_MAXDSRANK_BRENDAN::
+	drawheadshot HEAD_BRENDAN
+	msgbox EGC_MAXDS_MALE_MSG
+	closemessage
+	removecutscenesprites
+	return
+
+EGC_MAXDS_MALE_MSG:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{RIVAL}: I'll see you outside!$"
+
+EGC_MAXDSRANK_DAWN::
+	drawheadshot HEAD_DAWN
+	msgbox EGC_MAXDS_FEMALE_MSG
+	closemessage
+	removecutscenesprites
+	return
+
+EGC_MAXDS_FEMALE_MSG:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{RIVAL}:I'll wait for you at the door!$"
 
 EGC_DAWNREL_NO::
     msgbox EGC_DAWNREL_TEXT_NO

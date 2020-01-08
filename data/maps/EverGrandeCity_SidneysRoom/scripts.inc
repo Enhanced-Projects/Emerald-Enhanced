@@ -92,7 +92,7 @@ EGC_FollowerSidneyRematch::
 
 EGC_AltSidney::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidneyRematch
-	trainerbattle_no_intro TRAINER_SIDNEY_REMATCH, 	EverGrandeCity_SidneysRoom_EventScript_Defeated
+	trainerbattle_no_intro TRAINER_SIDNEY_REMATCH, 	EverGrandeCity_SidneysRoom_Text_Defeat
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 
