@@ -9,4 +9,12 @@
 #define MAP_SCRIPT_ON_DIVE_WARP 6
 #define MAP_SCRIPT_ON_RETURN_TO_FIELD 7
 
+
+#define ON_LOAD 1
+#define ON_FRAME 2
+#define ON_TRANSITION 3
+#define ON_WARP 4
+#define ON_RESUME 5
+#define ON_DIVE_WARP 6
+#define ON_RETURN_TO_FIELD 7
 #endif // GUARD_CONSTANTS_MAP_SCRIPTS_H

@@ -1148,3 +1148,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/RustburoCity_DevonCorp2fStoryMap/scripts.inc"
 
 	.include "data/maps/RustburoCity_DevonCorp1fStoryMap/scripts.inc"
+
+	.include "data/maps/VictoryRoad_Cove/scripts.inc"
+
+	.include "data/maps/SafariZone_HiddenGrotto/scripts.inc"

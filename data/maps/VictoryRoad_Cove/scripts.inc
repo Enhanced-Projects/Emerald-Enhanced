@@ -1,0 +1,62 @@
+VictoryRoad_Cove_MapScripts::
+	.byte 0
+
+	
+NM16_Mewtwo::
+	lockall
+	faceplayer
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 1075
+	applymovement EVENT_OBJ_ID_PLAYER, NM16_PlayerEntry
+	waitmovement EVENT_OBJ_ID_PLAYER
+	trainerbattle_single TRAINER_STORY_MEWTWO, NM16_M2Intro, NM16_M2Defeat, NM16_Continue
+	release
+	end
+	
+NM16_Continue::
+	msgbox NM16_ItSeems
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 108
+	closemessage
+	playse SE_TK_WARPOUT
+	waitse
+	fadescreen 1
+	delay 20
+	removeobject 1
+	setflag FLAG_RYU_SCI_MEWTWO1
+	delay 20
+	fadescreen 0
+	release
+	end
+	
+NM16_ItSeems:
+	.string "It seems your pokémon were right\n"
+	.string "in trusting you. I suppose I shall\l"
+	.string "do the same...you may leave.$"
+
+NM16_M2Defeat:
+	.string "I see...so that's how you...$"
+	
+NM16_M2Intro:
+	.string "It is time...to see what sort of\n"
+	.string "human you truly are.$"
+
+NM16_PlayerEntry:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_in_place_up
+	step_end
+
+NM16_exit:
+	walk_down
+	walk_down
+	walk_down
+	walk_in_place_up
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_down
+	walk_down
+	walk_down
+	step_end

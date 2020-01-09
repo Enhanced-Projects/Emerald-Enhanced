@@ -1,0 +1,44 @@
+{
+    "allow_bike": true,
+    "allow_escape_rope": false,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_SAFARI_ZONE_HIDDEN_GROTTO",
+    "layout": "LAYOUT_SAFARI_ZONE_HIDDEN_GROTTO",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "music": "MUS_RG_POKEYASHI",
+    "name": "SafariZone_HiddenGrotto",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_RYU_MEWTWO_OBTAINED",
+            "graphics_id": "EVENT_OBJ_GFX_TRUCK",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "SZ_HG_MewtwoFight2",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 5,
+            "y": 6
+        }
+    ],
+    "region_map_section": "MAPSEC_SAFARI_ZONE",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_VICTORY_ROAD_1F",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 5,
+            "y": 9
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

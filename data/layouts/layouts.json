@@ -4539,6 +4539,26 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Facility",
             "width": 19
+        },
+        {
+            "blockdata_filepath": "data/layouts/VictoryRoad_Cove/map.bin",
+            "border_filepath": "data/layouts/VictoryRoad_Cove/border.bin",
+            "height": 13,
+            "id": "LAYOUT_VICTORY_ROAD_COVE",
+            "name": "VictoryRoad_Cove_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Cave",
+            "width": 13
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_HiddenGrotto/map.bin",
+            "border_filepath": "data/layouts/SafariZone_HiddenGrotto/border.bin",
+            "height": 11,
+            "id": "LAYOUT_SAFARI_ZONE_HIDDEN_GROTTO",
+            "name": "SafariZone_HiddenGrotto_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Cave",
+            "width": 11
         }
     ],
     "layouts_table_label": "gMapLayouts"

@@ -1,6 +1,22 @@
 VictoryRoad_1F_MapScripts:: @ 8235D7A
 	map_script MAP_SCRIPT_ON_TRANSITION, VictoryRoad_1F_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, VR1_CloseMewTwoDoor
 	.byte 0
+
+VR1_CloseMewTwoDoor::
+	map_script_2 VAR_TEMP_7, 0, VR1_CloseDoor
+	
+VR1_CloseDoor::
+	setvar VAR_TEMP_7, 1
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 107
+	goto_if_eq ryu_end
+	setmetatile  9, 19, 537, 1
+	setmetatile 10, 19, 537, 1
+	setmetatile 11, 19, 537, 1
+	setmetatile  9, 20, 537, 1
+	setmetatile 10, 20, 537, 1
+	setmetatile 11, 20, 537, 1
+	end
 
 VictoryRoad_1F_OnTransition: @ 8235D80
 	compare VAR_VICTORY_ROAD_1F_STATE, 1

@@ -333,7 +333,8 @@
         "TerraCave_Entrance",
         "TerraCave_End",
         "AlteringCave",
-        "MeteorFalls_StevensCave"
+        "MeteorFalls_StevensCave",
+        "VictoryRoad_Cove"
     ],
     "gMapGroup25": [
         "SecretBase_RedCave1",
@@ -487,7 +488,8 @@
         "NavelRock_Down10",
         "NavelRock_Down11",
         "NavelRock_Bottom",
-        "TrainerHill_Elevator"
+        "TrainerHill_Elevator",
+        "SafariZone_HiddenGrotto"
     ],
     "gMapGroup27": [
         "Route104_Prototype",

@@ -409,6 +409,7 @@
 #define MAP_TERRA_CAVE_END                           (105 | (24 << 8))
 #define MAP_ALTERING_CAVE                            (106 | (24 << 8))
 #define MAP_METEOR_FALLS_STEVENS_CAVE                (107 | (24 << 8))
+#define MAP_VICTORY_ROAD_COVE                        (108 | (24 << 8))
 
 // Map Group 25
 #define MAP_SECRET_BASE_RED_CAVE1           (0 | (25 << 8))
@@ -435,10 +436,10 @@
 #define MAP_SECRET_BASE_YELLOW_CAVE4        (21 | (25 << 8))
 #define MAP_SECRET_BASE_TREE4               (22 | (25 << 8))
 #define MAP_SECRET_BASE_SHRUB4              (23 | (25 << 8))
-#define MAP_BATTLE_COLOSSEUM_2P             (24 | (25 << 8))
+#define MAP_BATTLE_COLOSSEUM2P              (24 | (25 << 8))
 #define MAP_TRADE_CENTER                    (25 | (25 << 8))
 #define MAP_RECORD_CORNER                   (26 | (25 << 8))
-#define MAP_BATTLE_COLOSSEUM_4P             (27 | (25 << 8))
+#define MAP_BATTLE_COLOSSEUM4P              (27 | (25 << 8))
 #define MAP_CONTEST_HALL                    (28 | (25 << 8))
 #define MAP_UNKNOWN_LINK_CONTEST_ROOM_25_29 (29 | (25 << 8))
 #define MAP_UNKNOWN_LINK_CONTEST_ROOM_25_30 (30 | (25 << 8))
@@ -563,6 +564,7 @@
 #define MAP_NAVEL_ROCK_DOWN11                               (86 | (26 << 8))
 #define MAP_NAVEL_ROCK_BOTTOM                               (87 | (26 << 8))
 #define MAP_TRAINER_HILL_ELEVATOR                           (88 | (26 << 8))
+#define MAP_SAFARI_ZONE_HIDDEN_GROTTO                       (89 | (26 << 8))
 
 // Map Group 27
 #define MAP_ROUTE104_PROTOTYPE                          (0 | (27 << 8))

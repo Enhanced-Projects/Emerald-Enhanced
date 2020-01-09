@@ -1,154 +1,157 @@
 {
-  "id": "MAP_SAFARI_ZONE_NORTH",
-  "name": "SafariZone_North",
-  "layout": "LAYOUT_SAFARI_ZONE_NORTH",
-  "music": "MUS_SAFARI",
-  "region_map_section": "MAPSEC_SAFARI_ZONE",
-  "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_ROUTE",
-  "allow_bike": true,
-  "allow_escape_rope": false,
-  "allow_running": true,
-  "show_map_name": true,
-  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": [
-    {
-      "direction": "left",
-      "offset": 0,
-      "map": "MAP_SAFARI_ZONE_NORTHWEST"
-    },
-    {
-      "direction": "down",
-      "offset": 0,
-      "map": "MAP_SAFARI_ZONE_SOUTH"
-    },
-    {
-      "direction": "right",
-      "offset": 0,
-      "map": "MAP_SAFARI_ZONE_NORTHEAST"
-    }
-  ],
-  "object_events": [
-    {
-      "graphics_id": "EVENT_OBJ_GFX_FISHERMAN",
-      "x": 22,
-      "y": 9,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SafariZone_North_EventScript_Fisherman",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MAN_4",
-      "x": 6,
-      "y": 29,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SafariZone_North_EventScript_Man",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
-      "x": 25,
-      "y": 10,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_11"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
-      "x": 25,
-      "y": 13,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_12"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
-      "x": 28,
-      "y": 14,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_13"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
-      "x": 23,
-      "y": 6,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_14"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
-      "x": 20,
-      "y": 7,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_15"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
-      "x": 27,
-      "y": 7,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_16"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
-      "x": 7,
-      "y": 6,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SafariZone_North_EventScript_ItemCalcium",
-      "flag": "FLAG_ITEM_SAFARI_ZONE_NORTH_CALCIUM"
-    }
-  ],
-  "warp_events": [],
-  "coord_events": [],
-  "bg_events": []
+    "allow_bike": true,
+    "allow_escape_rope": false,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": [
+        {
+            "direction": "left",
+            "map": "MAP_SAFARI_ZONE_NORTHWEST",
+            "offset": 0
+        },
+        {
+            "direction": "down",
+            "map": "MAP_SAFARI_ZONE_SOUTH",
+            "offset": 0
+        },
+        {
+            "direction": "right",
+            "map": "MAP_SAFARI_ZONE_NORTHEAST",
+            "offset": 0
+        }
+    ],
+    "coord_events": [
+    ],
+    "id": "MAP_SAFARI_ZONE_NORTH",
+    "layout": "LAYOUT_SAFARI_ZONE_NORTH",
+    "map_type": "MAP_TYPE_ROUTE",
+    "music": "MUS_SAFARI",
+    "name": "SafariZone_North",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_FISHERMAN",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "SafariZone_North_EventScript_Fisherman",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 22,
+            "y": 9
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_MAN_4",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "SafariZone_North_EventScript_Man",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 6,
+            "y": 29
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_11",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "EventScript_RockSmash",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 25,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_12",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "EventScript_RockSmash",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 25,
+            "y": 13
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_13",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "EventScript_RockSmash",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 28,
+            "y": 14
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_14",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "EventScript_RockSmash",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 23,
+            "y": 6
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_15",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "EventScript_RockSmash",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 20,
+            "y": 7
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_16",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "EventScript_RockSmash",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 27,
+            "y": 7
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_ITEM_SAFARI_ZONE_NORTH_CALCIUM",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "SafariZone_North_EventScript_ItemCalcium",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 6
+        }
+    ],
+    "region_map_section": "MAPSEC_SAFARI_ZONE",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+    ],
+    "weather": "WEATHER_NONE"
 }
