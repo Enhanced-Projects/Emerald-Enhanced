@@ -892,7 +892,7 @@ const struct CompressedSpriteSheet gMonFrontPicTable[] =
     SPECIES_SPRITE(ALOLAN_EXEGGUTOR, gMonFrontPic_AlolanExeggutor),
     SPECIES_SPRITE(ALOLAN_MAROWAK, gMonFrontPic_AlolanMarowak),
 
-    SPECIES_SPRITE(SHAYMIN_SKY, gMonFrontPic_ShayminSky),
+    SPECIES_SPRITE(SHAYMIN_SKY, gMonFrontPic_ShayminSky),//??
     SPECIES_SPRITE(GIRATINA_ORIGIN, gMonFrontPic_GiratinaOrigin),
     SPECIES_SPRITE(DARMANITAN_ZEN, gMonFrontPic_DarmanitanZen),
     SPECIES_SPRITE(TORNADUS_THERIAN, gMonFrontPic_TornadusTherian),
@@ -931,7 +931,7 @@ const struct CompressedSpriteSheet gMonFrontPicTable[] =
     SPECIES_SPRITE(UNOWN_W, gMonFrontPic_UnownW),
     SPECIES_SPRITE(UNOWN_X, gMonFrontPic_UnownX),
     SPECIES_SPRITE(UNOWN_Y, gMonFrontPic_UnownY),
-    SPECIES_SPRITE(UNOWN_Z, gMonFrontPic_UnownZ),
+    SPECIES_SPRITE(UNOWN_Z, gMonFrontPic_UnownZ),S
     SPECIES_SPRITE(UNOWN_EMARK, gMonFrontPic_UnownExclamationMark),
     SPECIES_SPRITE(UNOWN_QMARK, gMonFrontPic_UnownQuestionMark),
 };
