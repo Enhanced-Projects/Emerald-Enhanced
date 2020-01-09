@@ -12,7 +12,6 @@
 #include "main_menu.h"
 #include "palette.h"
 #include "reset_rtc_screen.h"
-#include "berry_fix_program.h"
 #include "sound.h"
 #include "sprite.h"
 #include "task.h"
@@ -794,7 +793,7 @@ static void CB2_GoToBerryFixScreen(void)
     if (!UpdatePaletteFade())
     {
         m4aMPlayAllStop();
-        SetMainCallback2(CB2_InitBerryFixProgram);
+        //SetMainCallback2(CB2_InitBerryFixProgram);
     }
 }
 

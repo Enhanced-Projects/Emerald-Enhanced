@@ -9696,7 +9696,7 @@ const struct PokedexEntry gPokedexEntries[] =
 		.trainerOffset = 0,
 	},
 
-	[NATIONAL_DEX_MELTAN] =
+	/*[NATIONAL_DEX_MELTAN] =
 	{
 		.categoryName = _("Hex Nut"),
 		.height = 2,
@@ -9718,5 +9718,5 @@ const struct PokedexEntry gPokedexEntries[] =
 		.pokemonOffset = 1,
 		.trainerScale = 387,
 		.trainerOffset = 2,
-	},
+	},*/
 };

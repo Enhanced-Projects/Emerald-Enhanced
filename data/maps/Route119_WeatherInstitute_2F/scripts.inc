@@ -86,12 +86,12 @@ Route119_WeatherInstitute_2F_EventScript_ReceiveCastform:: @ 827004D
 	goto_if_ge WI_AfterCozmo
 	msgbox Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon, MSGBOX_DEFAULT
 	setvar VAR_TEMP_1, 385
-	givemon SPECIES_CASTFORM, 25, ITEM_MYSTIC_WATER, 0x0, 0x0, 0
+	givemon SPECIES_CASTFORM, 25, ITEM_MYSTIC_WATER
 	closemessage
 	playmoncry SPECIES_CASTFORM, 0
-	drawmonpic SPECIES_CASTFORM, 10, 3
+	showmonpic SPECIES_CASTFORM, 10, 3
 	waitmoncry
-	erasemonpic
+	hidemonpic
 	playfanfare MUS_FANFA4
 	msgbox WI_ObtainedCastform
 	waitfanfare
@@ -166,7 +166,7 @@ WI_AfterDesert::
 	msgbox WI_YouAndCastform
 	closemessage
 	playmoncry SPECIES_CASTFORM, 0
-	setvar VAR_0x405D, 2
+	setvar VAR_MOSSDEEP_CITY_STATE, 2
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
 	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 1

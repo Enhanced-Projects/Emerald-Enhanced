@@ -1,6 +1,6 @@
 Route119_WeatherInstitute_1F_MapScripts:: @ 826FA86
 	map_script MAP_SCRIPT_ON_TRANSITION, Route119_WeatherInstitute_1F_OnTransition
-	map_script ON_FRAME, WI_CheckQuestStatus
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, WI_CheckQuestStatus
 	.byte 0
 
 WI_CheckQuestStatus::
