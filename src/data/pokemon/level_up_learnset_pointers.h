@@ -820,6 +820,8 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_STAKATAKA] = sStakatakaLevelUpLearnset,
     [SPECIES_BLACEPHALON] = sBlacephalonLevelUpLearnset,
     [SPECIES_ZERAORA] = sZeraoraLevelUpLearnset,
+    [SPECIES_MELTAN] = sMeltanLevelUpLearnset,
+    [SPECIES_MELMETAL] = sMelmetalLevelUpLearnset,
     // Megas have the same learnsets
     [SPECIES_MEGA_VENUSAUR] = sVenusaurLevelUpLearnset,
     [SPECIES_MEGA_CHARIZARD_X] = sCharizardLevelUpLearnset,
@@ -890,4 +892,16 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_ALOLAN_MUK] = sAlolanMukLevelUpLearnset,
     [SPECIES_ALOLAN_EXEGGUTOR] = sAlolanExeggutorLevelUpLearnset,
     [SPECIES_ALOLAN_MAROWAK] = sAlolanMarowakLevelUpLearnset,
+    // Forms
+    [SPECIES_SHAYMIN_SKY] = sShayminLevelUpLearnset,
+    [SPECIES_GIRATINA_ORIGIN] = sGiratinaLevelUpLearnset,
+    [SPECIES_DARMANITAN_ZEN] = sDarmanitanLevelUpLearnset,
+    [SPECIES_TORNADUS_THERIAN] = sTornadusLevelUpLearnset,
+    [SPECIES_THUNDURUS_THERIAN] = sThundurusLevelUpLearnset,
+    [SPECIES_LANDORUS_THERIAN] = sLandorusLevelUpLearnset,
+    [SPECIES_MELOETTA_PIROUETTE] = sMeloettaLevelUpLearnset,
+    [SPECIES_AEGISLASH_BLADE] = sAegislashLevelUpLearnset,
+    [SPECIES_HOOPA_UNBOUND] = sHoopaLevelUpLearnset,
+    [SPECIES_MINIOR_CORE] = sMiniorLevelUpLearnset,
+    [SPECIES_WISHIWASHI_SCHOOL] = sWishiwashiLevelUpLearnset,
 };
