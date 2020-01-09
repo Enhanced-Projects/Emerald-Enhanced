@@ -82,15 +82,257 @@ Route119_WeatherInstitute_2F_EventScript_ShellyDefeated:: @ 826FFC8
 	end
 
 Route119_WeatherInstitute_2F_EventScript_ReceiveCastform:: @ 827004D
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 103
+	goto_if_ge WI_AfterCozmo
 	msgbox Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon, MSGBOX_DEFAULT
-	setvar VAR_TEMP_1, SPECIES_CASTFORM
-	givemon SPECIES_CASTFORM, 25, ITEM_MYSTIC_WATER
-	compare VAR_RESULT, 0
-	goto_if_eq Route119_WeatherInstitute_2F_EventScript_ReceiveCastformParty
-	compare VAR_RESULT, 1
-	goto_if_eq Route119_WeatherInstitute_2F_EventScript_ReceiveCastformPC
-	goto Common_EventScript_NoMoreRoomForPokemon
+	setvar VAR_TEMP_1, 385
+	givemon SPECIES_CASTFORM, 25, ITEM_MYSTIC_WATER, 0x0, 0x0, 0
+	closemessage
+	playmoncry SPECIES_CASTFORM, 0
+	drawmonpic SPECIES_CASTFORM, 10, 3
+	waitmoncry
+	erasemonpic
+	playfanfare MUS_FANFA4
+	msgbox WI_ObtainedCastform
+	waitfanfare
+	closemessage
+	special SpawnCameraObject
+	addobject 9
+	playse SE_DOOR
+	applymovement EVENT_OBJ_ID_CAMERA, WI_CameraToCozmoFast
+	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement 9, WI_MoveCozmoIn @10 left, 1 up, face down
+	applymovement EVENT_OBJ_ID_CAMERA, WI_MoveCozmoIn
+	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement EVENT_OBJ_ID_CAMERA, WI_Diag
+	waitmovement EVENT_OBJ_ID_CAMERA
+	special RemoveCameraObject
+	closemessage
+	goto WI_CozmoScene
 	end
+
+WI_CozmoScene::
+	applymovement 5, Common_Movement_FaceUp
+	waitmovement 5
+	msgbox WI_OhCozmo
+	closemessage
+	msgbox WI_BeenAWhile
+	closemessage
+	applymovement 5 Common_Movement_ExclamationMark
+	waitmovement 5
+	msgbox WI_OhYouCameHere
+	closemessage
+	applymovement 5, Common_Movement_FaceRight
+	waitmovement 5
+	msgbox WI_YesWell
+	closemessage
+	applymovement 5, Common_Movement_FaceRight
+	waitmovement 5
+	msgbox WI_wonderfulNews
+	closemessage
+	applymovement 5, Common_Movement_FaceRight
+	applymovement 9, Common_Movement_FaceRight
+	waitmovement 9
+	msgbox WI_SeemsLike
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox WI_GuessSo
+	closemessage
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 103
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	release
+	end
+	
+WI_AfterCozmo::
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 104
+	goto_if_ge WI_AfterDesert
+	msgbox WI_GoToDesert
+	release
+	end
+	
+WI_AfterDesert::
+	lock
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 105
+	goto_if_ge WI_GoToMossdeep
+	msgbox WI_WelcomeBack
+	closemessage
+	msgbox WI_TriedItsBest
+	playmoncry SPECIES_CASTFORM, 5
+	waitmoncry
+	closemessage
+	msgbox WI_AttemptFailed
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 105
+	msgbox WI_YouAndCastform
+	closemessage
+	playmoncry SPECIES_CASTFORM, 0
+	setvar VAR_0x405D, 2
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 1
+	release
+	end
+	
+WI_GoToMossdeep::
+	msgbox WI_GoToMossdeepMsg
+	setvar VAR_MOSSDEEP_CITY_STATE, 2
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 1
+	closemessage
+	release
+	end
+	
+WI_OhCozmo:
+	.string "Oh, Cozmo, what are you doing\nhere?$"
+	
+WI_BeenAWhile:
+	.string "It's been a while! How's\n"
+	.string "your research coming along?\p"
+	.string "It's had its ups and downs, but\n"
+	.string "progress is still going, mainly\l"
+	.string "thanks to this young one.$"
+
+WI_OhYouCameHere:
+	.string "Oh, {PLAYER} You came here with\n"
+	.string "Cozmo! That makes this easy,\l"
+	.string "then. $"
+
+WI_YesWell:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Yes, well, I was interested in\n"
+	.string "working as an understudy.$"
+	
+WI_wonderfulNews:
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Bart: Really? That's wonderful news! I'd\n"
+	.string "be delighted if you joined us. We\p"
+	.string "could use an extra pair of hands\n"
+	.string "around here.\p"
+	.string "Cozmo: By the way Bart, how's\n"
+	.string "progress on your end?\p"
+	.string "Bart: I hate to admit it, but it has\n"
+	.string "slowed to a crawl.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: What're you working on?\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}We've begun initial development on\n"
+	.string "a device dubbed the Forecaster. An\p"
+	.string "artificial attempt to simulate and\n"
+	.string "recreate multiple weather patterns\p"
+	.string "by utilizing Castform's ability as\n"
+	.string "a guide...but as I said, it's not\l"
+	.string "going so well.\p"
+	.string "Cozmo: What seems to be the issue?\p"
+	.string "Bart: Strictly speaking, there are 4\n"
+	.string "weather conditions in Hoenn...of\p"
+	.string "those 4, only 3 can be emulated\n"
+	.string "thru Castform thanks to its\l"
+	.string "associated forms.\p"
+	.string "As far as we know, there isn't one\n"
+	.string "for Sandstorm conditions, although\p"
+	.string "strangely enough, it can learn the\n"
+	.string "move.\p"
+	.string "Cozmo: Quite a conundrum indeed...\n"
+	.string "Perhaps if it visited such a\p"
+	.string "location, we might receive better\n"
+	.string "results.$"
+
+WI_SeemsLike:
+	.string "Seems like your first assignment\n"
+	.string "is already underway.$"
+
+WI_GuessSo:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Guess so.\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Would you? Thanks, this'll be a\n"
+	.string "huge help. All you have to do is\p"
+	.string "take Castform to the deepest part\n"
+	.string "of the Desert Area. Monitor its\p"
+	.string "response and record any behavioral\n"
+	.string "changes it may display. Who knows,\p"
+	.string "if it turns out a success, it\n"
+	.string "might unveil a version of Castform\l"
+	.string "no one has ever witnessed!\p"
+	.string "What a discovery that would be!$"
+	
+WI_ObtainedCastform:
+	.string "{PLAYER} Received the Castform!$"
+	
+WI_GoToDesert:
+	.string "Bart: You should be headed to the\ndesert on Route 111.$"
+	
+WI_WelcomeBack:
+	.string "Welcome back, {PLAYER}! How'd it\n"
+	.string "go out in the field?$"
+
+WI_TriedItsBest:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Castform tried its' best, however\n"
+	.string "the environment was too harsh for\l"
+	.string "it to undergo a form change.$"
+
+
+WI_AttemptFailed:
+	.string "I see...so the attempt ended in\n"
+	.string "failure. Perhaps it simply needs\p"
+	.string "to get used to the feeling of its'\n"
+	.string "own Sandstorm before being exposed\l"
+	.string "to a natural one.\p"
+	.string "A test of endurance, then? Sounds\n"
+	.string "plausible, however this facility\p"
+	.string "currently lacks the equipment\n"
+	.string "necessary to make such an\p"
+	.string "evaluation. We should ask Mossdeep\l"
+	.string "for help.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}You think they'll take on the task\n"
+	.string "when they're already busy with the\l"
+	.string "their space endeavors?\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I'd say it's worth a shot. I'll\n"
+	.string "give them a call.$"
+
+
+WI_YouAndCastform:
+	.string "In the meantime, {PLAYER},\n"
+	.string "you and Castform should\p"
+	.string "visit the Mossdeep Space Center. I\n"
+	.string "I'm certain they'll be able to\p"
+	.string "help.$"
+
+
+WI_GoToMossdeepMsg:
+	.string "Bart: I've already called Mossdeep.\p"
+	.string "You should head there soon.$"
+	
+WI_MoveCozmoIn:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_in_place_down
+	step_end
+	
+WI_CameraToCozmoFast:
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	step_end
+	
+WI_Diag:
+	walk_diag_southeast
+	step_end
+
 
 Route119_WeatherInstitute_2F_EventScript_ReceiveCastformParty:: @ 8270085
 	call Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfare

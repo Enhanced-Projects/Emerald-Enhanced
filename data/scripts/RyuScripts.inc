@@ -203,7 +203,7 @@ RDBM_ResetLeaf::
 	msgbox RDBM_Leaf_msg MSGBOX_DEFAULT
 	delay 60
 	closemessage
-	cleartrainerflag TRAINER_GRUNT_24
+	cleartrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_24
 	special RyuResetLeafFlags
 	playse SE_EXPMAX
 	waitse
@@ -930,17 +930,9 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	@goto_if_set FLAG_RYU_ALTERNATE_SCALE, AltScaleOn
-	@msgbox AltScaleOff
-	@goto_if_set FLAG_RYU_DO_NOT_AUTOSCALE, ScalingOff
-	@msgbox ScalingOn
-	@closemessage
-	clearflag FLAG_RYU_WAYSTONE_DISABLED
-	buffernumberstring 0, VAR_RYU_DS_LANA_STAGE
-	msgbox RDB_Readout
-	closemessage
 	special FillTheDex
 	@setflag FLAG_RYU_NIGHT
+	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
 	release
 	end
 

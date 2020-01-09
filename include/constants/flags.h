@@ -67,7 +67,7 @@
 #define FLAG_RYU_DEV_MODE    0x39 // Unused Flag
 #define FLAG_RYU_AQUA_THIEF_SEEN    0x3A // Unused Flag
 #define FLAG_RYU_PLAYER_HELPING_DEVON    0x3B // Unused Flag
-#define FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO    0x3C // Unused Flag
+#define FLAG_UNUSED_0x3c    0x3C // Unused Flag
 #define FLAG_RYU_DEVON_MISSION2START    0x3D // Unused Flag
 #define FLAG_RYU_DEVON_M1C    0x3E // Unused Flag
 #define FLAG_RYU_DEVON_MISSION1START    0x3F // Unused Flag
@@ -705,11 +705,11 @@
 #define FLAG_RYU_INTERACTED_RIVAL_R110  0x299 // Unused Flag
 #define FLAG_RYU_INTERACTED_LAVARIDGE  0x29A // Unused Flag
 #define FLAG_RYU_TC_ENTERED  0x29B // Unused Flag
-#define FLAG_UNUSED_0x29C  0x29C // Unused Flag
-#define FLAG_UNUSED_0x29D  0x29D // Unused Flag
-#define FLAG_UNUSED_0x29E  0x29E // Unused Flag
-#define FLAG_UNUSED_0x29F  0x29F // Unused Flag
-#define FLAG_UNUSED_0x2A0  0x2A0 // Unused Flag
+#define FLAG_HAS_ENTERED_BATTLE_FRONTIER  0x29C // Unused Flag
+#define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2  0x29D // Unused Flag
+#define FLAG_RYU_DEVON_LINE_FINISHED  0x29E // Unused Flag
+#define FLAG_RYU_DEVON_SCIENTIST  0x29F // Unused Flag
+#define FLAG_RYU_DEVON_CEO_INTRO  0x2A0 // Unused Flag
 #define FLAG_UNUSED_0x2A1  0x2A1 // Unused Flag
 #define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
 #define FLAG_UNUSED_0x2A3  0x2A3 // Unused Flag
@@ -969,7 +969,7 @@
 #define FLAG_HIDE_LILCOVE_MOTEL_GAME_DESIGNERS                      0x39D
 #define FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA                              0x39E
 #define FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA                             0x39F
-#define FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO                        0x3A0
+#define FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO                      0x3A0
 #define FLAG_HIDE_LAVARIDGE_TOWN_RIVAL                              0x3A1
 #define FLAG_HIDE_LAVARIDGE_TOWN_RIVAL_ON_BIKE                      0x3A2
 #define FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1                             0x3A3
@@ -1252,12 +1252,12 @@
 #define FLAG_RYU_NM8_MAXELIX                                        0x4A9 // Unused Flag
 #define FLAG_RYU_NM8_BIGPEARL                                       0x4AA // Unused Flag
 #define FLAG_RYU_HIDE_CRYSTALONIX_OW                                0x4AB // Unused Flag
-#define FLAG_UNUSED_0x4AC                                           0x4AC // Unused Flag
-#define FLAG_UNUSED_0x4AD                                           0x4AD // Unused Flag
-#define FLAG_UNUSED_0x4AE                                           0x4AE // Unused Flag
-#define FLAG_UNUSED_0x4AF                                           0x4AF // Unused Flag
-#define FLAG_UNUSED_0x4B0                                           0x4B0 // Unused Flag
-#define FLAG_UNUSED_0x4B1                                           0x4B1 // Unused Flag
+#define FLAG_RYU_AQUA_MISSION3COMPLETE                              0x4AC // Unused Flag
+#define FLAG_RYU_AQUA_INTRO                                         0x4AD // Unused Flag
+#define FLAG_RYU_PLAYER_ARCHIE_ACQ                                  0x4AE // Unused Flag
+#define FLAG_RYU_AQUA_MISSION1COMPLETE                              0x4AF // Unused Flag
+#define FLAG_RYU_DS_LANETTE_BADEND                                  0x4B0 // Unused Flag
+#define FLAG_MET_PROF_COSMO                                         0x4B1 // Unused Flag
 #define FLAG_UNUSED_0x4B2                                           0x4B2 // Unused Flag
 #define FLAG_UNUSED_0x4B3                                           0x4B3 // Unused Flag
 #define FLAG_UNUSED_0x4B4                                           0x4B4 // Unused Flag

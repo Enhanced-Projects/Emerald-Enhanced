@@ -1739,85 +1739,85 @@ const struct Item gItems[] =
 
     [ITEM_WAVE_MAIL] =
     {
-        .name = _("Wave Mail"),
+        .name = _("HP Imprint"),
         .itemId = ITEM_WAVE_MAIL,
         .price = 50,
         .description = sWaveMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 5,
     },
 
     [ITEM_BEAD_MAIL] =
     {
-        .name = _("Bead Mail"),
+        .name = _("Atk Imprint"),
         .itemId = ITEM_BEAD_MAIL,
         .price = 50,
         .description = sBeadMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 6,
     },
 
     [ITEM_SHADOW_MAIL] =
     {
-        .name = _("Shadow Mail"),
+        .name = _("Def Imprint"),
         .itemId = ITEM_SHADOW_MAIL,
         .price = 50,
         .description = sShadowMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 7,
     },
 
     [ITEM_TROPIC_MAIL] =
     {
-        .name = _("Tropic Mail"),
+        .name = _("SpAtk Imprint"),
         .itemId = ITEM_TROPIC_MAIL,
         .price = 50,
         .description = sTropicMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 8,
     },
 
     [ITEM_DREAM_MAIL] =
     {
-        .name = _("Dream Mail"),
+        .name = _("SpDef Imprint"),
         .itemId = ITEM_DREAM_MAIL,
         .price = 50,
         .description = sDreamMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 9,
     },
 
     [ITEM_FAB_MAIL] =
     {
-        .name = _("Fab Mail"),
+        .name = _("Speed Imprint"),
         .itemId = ITEM_FAB_MAIL,
         .price = 50,
         .description = sFabMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 10,
     },
 
     [ITEM_RETRO_MAIL] =
     {
-        .name = _("Retro Mail"),
+        .name = _("Tutor Voucher"),
         .itemId = ITEM_RETRO_MAIL,
         .price = 0,
         .description = sRetroMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 11,
     },
 
@@ -4838,7 +4838,7 @@ const struct Item gItems[] =
 
     [ITEM_CARD_KEY] =
     {
-        .name = _("Card Key"),
+        .name = _("Archie's Note"),
         .itemId = ITEM_CARD_KEY,
         .price = 0,
         .description = sCardKeyDesc,
@@ -5021,7 +5021,7 @@ const struct Item gItems[] =
 
     [ITEM_TOWN_MAP] =
     {
-        .name = _("Town Map"),
+        .name = _("TC GuestPass"),
         .itemId = ITEM_TOWN_MAP,
         .price = 0,
         .description = sTownMapDesc,
@@ -5053,7 +5053,7 @@ const struct Item gItems[] =
 
     [ITEM_FAME_CHECKER] =
     {
-        .name = _("Fame Checker"),
+        .name = _("Rad. Sensor"),
         .itemId = ITEM_FAME_CHECKER,
         .price = 0,
         .description = sFameCheckerDesc,
@@ -5113,7 +5113,7 @@ const struct Item gItems[] =
 
     [ITEM_TRI_PASS] =
     {
-        .name = _("Tri-Pass"),
+        .name = _("Devon Card"),
         .itemId = ITEM_TRI_PASS,
         .price = 0,
         .description = sTriPassDesc,

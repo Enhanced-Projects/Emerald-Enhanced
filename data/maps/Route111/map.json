@@ -464,6 +464,42 @@
             "var_value": "0",
             "x": 11,
             "y": 44
+        },
+        {
+            "elevation": 3,
+            "script": "r111_ScientistCastformEvent",
+            "type": "trigger",
+            "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+            "var_value": "103",
+            "x": 32,
+            "y": 100
+        },
+        {
+            "elevation": 3,
+            "script": "r111_ScientistCastformEvent",
+            "type": "trigger",
+            "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+            "var_value": "103",
+            "x": 31,
+            "y": 99
+        },
+        {
+            "elevation": 3,
+            "script": "r111_ScientistCastformEvent",
+            "type": "trigger",
+            "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+            "var_value": "103",
+            "x": 30,
+            "y": 98
+        },
+        {
+            "elevation": 3,
+            "script": "r111_TrainerHillBlockEntry",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 31,
+            "y": 114
         }
     ],
     "id": "MAP_ROUTE111",

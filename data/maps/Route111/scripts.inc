@@ -742,3 +742,76 @@ Route111_Text_TrainerHillSign: @ 81F1D61
 	.string "“Scale the heights, you hot-blooded\n"
 	.string "Trainers!”$"
 
+@==================================================================================================nuzlocke/hardcore
+r111_TrainerHillBlockEntry::
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, r111_blockEntry
+	goto_if_set FLAG_RYU_HARDCORE_MODE, r111_blockEntry
+	release
+	end
+	
+r111_blockEntry::
+	lock
+	msgbox r111_trainerHill_cantEnter
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepDown
+	applymovement EVENT_OBJ_ID_FOLLOWER, Common_Movement_StepDown
+	waitmovement EVENT_OBJ_ID_FOLLOWER
+	release
+	end
+	
+r111_trainerHill_cantEnter:
+	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You can't enter here due to being\non a restrictive difficulty setting.$"
+	
+
+@==================================================================================================scientist
+
+r111_ScientistCastformEvent::
+	lock
+	setvar VAR_TEMP_7, SPECIES_CASTFORM
+	setvar VAR_TEMP_8, 2
+	setvar VAR_TEMP_9, 208
+	setvar VAR_TEMP_A, 94
+	drawcustompic 2, SPECIES_CASTFORM, 208, 104
+	msgbox r111_ThisSeemsToBe
+	closemessage
+	playmoncry SPECIES_CASTFORM, 0
+	waitmoncry
+	msgbox r111_Sandstorm
+	closemessage
+	fadescreen 1
+	msgbox r111_timePassage
+	closemessage
+	delay 40
+	msgbox r111_CastformTired
+	playmoncry SPECIES_CASTFORM, 5
+	fadescreen 0
+	msgbox r111_IKnewItWouldnt
+	closemessage
+	removecutscenesprites
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 104
+	release
+	end
+	
+r111_ThisSeemsToBe:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}This seems to be the place. \p"
+	.string "Ready, Castform?$"
+
+r111_Sandstorm:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Use Sandstorm!$"
+
+r111_timePassage:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ryu and Castform work for about an\n"
+	.string "hour...$"
+
+r111_CastformTired:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Castform is looking really tired.$"
+
+r111_IKnewItWouldnt:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Hm...I knew it wouldn't be easy,\n"
+	.string " but we've been out here for some\p"
+	.string " time, and Castform's starting to\n"
+	.string " get exhausted. It won't have\p"
+	.string " enough strength to transform at\n"
+	.string " this point. I better head back to\l"
+	.string " the Institute and report this.)$"
+
+	

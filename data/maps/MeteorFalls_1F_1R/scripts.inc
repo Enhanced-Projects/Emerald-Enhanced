@@ -1,309 +1,800 @@
 MeteorFalls_1F_1R_MapScripts:: @ 822BD2A
-	map_script MAP_SCRIPT_ON_LOAD , MeteorFalls_1F_1R_OnLoad
+	@map_script ON_LOAD, MeteorFalls_1F_1R_MapScript1_22BD30
 	.byte 0
-
-MeteorFalls_1F_1R_OnLoad: @ 822BD30
-	call_if_set FLAG_SYS_GAME_CLEAR, MeteorFalls_1F_1R_EventScript_OpenStevensCave
+	
+MF_DevMovement::
+	special RyuDevCheck
+	compare VAR_RESULT, 69
+	goto_if_ne ryu_end
+	lock
+	applymovement EVENT_OBJ_ID_PLAYER, MF_RyuDevMove
+	waitmovement 0
+	release
 	end
-
-MeteorFalls_1F_1R_EventScript_OpenStevensCave:: @ 822BD3A
-	setmetatile 4, 1, METATILE_MeteorFalls_CaveEntrance_Top, 1
-	setmetatile 3, 2, METATILE_MeteorFalls_CaveEntrance_Left, 1
-	setmetatile 4, 2, METATILE_MeteorFalls_CaveEntrance_Bottom, 0
-	setmetatile 5, 2, METATILE_MeteorFalls_CaveEntrance_Right, 1
-	return
-
-MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene:: @ 822BD5F
-	lockall
+	
+MF_DevonToAquaSwitch::
+	special RyuDevCheck
+	compare VAR_RESULT, 69
+	goto_if_ne ryu_end
+	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	clearflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	setvar VAR_METEOR_FALLS_STATE, 2
+	clearflag FLAG_RYU_DEVON_MISSION1START
+	setflag FLAG_RYU_PLAYER_HELPING_AQUA
+	clearflag FLAG_RYU_PLAYER_HELPING_DEVON
+	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	release
+	end
+	
+	
+MF_RyuDevMove:
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_right
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	step_end
+	
+MF_SetStage::
+	goto_if_set FLAG_MET_ARCHIE_METEOR_FALLS, ryu_end
+	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, MF_SS_Devon
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, MF_SS_Devon
+	goto_if_set FLAG_RYU_DEVON_M1C, ryu_end
+	goto_if_set FLAG_RYU_AQUA_MISSION1COMPLETE, ryu_end
+	release
+	end
+	
+MF_SS_Devon::
+	lock
+	goto_if_set FLAG_MET_ARCHIE_METEOR_FALLS, ryu_end
+	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	clearflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setvar VAR_METEOR_FALLS_STATE, 2
+	special DrawWholeMapView
+	release
+	end
+	
+MF_Event1start::
+	setvar VAR_TEMP_8, 1
+	goto MF_MainEvent
+	
+MF_Event2start::
+	setvar VAR_TEMP_8, 2
+	goto MF_MainEvent
+	
+MF_MainEvent::
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, MF_AquaEventNorth
+	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, MF_DevonEventNorth
+	release
+	end
+	
+MF_AquaEventNorth::
+	compare VAR_TEMP_8, 1
+	goto_if_eq MF_AquaEventSouth
+	special SpawnCameraObject
 	playbgm MUS_MGM0, 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement 0
-	delay 30
-	applymovement 5, Common_Movement_WalkInPlaceDown
-	waitmovement 0
-	msgbox MeteorFalls_1F_1R_Text_WithThisMeteorite, MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_CAMERA, MH_cameraPanDown
+    applymovement 5, MF_Magma2Down
+	applymovement 6, MF_Magma1Down
+	msgbox MF_MagmaMsg1 MSGBOX_DEFAULT
 	closemessage
-	applymovement 5, Common_Movement_WalkInPlaceFastestUp
-	applymovement 6, Common_Movement_WalkInPlaceFastestUp
-	waitmovement 0
-	playse SE_PIN
 	applymovement 5, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 5, Common_Movement_Delay48
-	waitmovement 0
-	msgbox MeteorFalls_1F_1R_Text_DontExpectMercyFromMagma, MSGBOX_DEFAULT
-	closemessage
-	applymovement 5, MeteorFalls_1F_1R_Movement_MagmaGruntApproachPlayer
-	waitmovement 0
-	msgbox MeteorFalls_1F_1R_Text_HoldItRightThereMagma, MSGBOX_DEFAULT
-	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
-	applymovement 5, Common_Movement_WalkInPlaceFastestLeft
-	applymovement 6, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	addobject 7
-	addobject 8
-	addobject 9
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 5
 	playbgm MUS_AQA_0, 0
-	applymovement 7, MeteorFalls_1F_1R_Movement_ArchieArrive
-	applymovement 8, MeteorFalls_1F_1R_Movement_AquaGrunt1Arrive
-	applymovement 9, MeteorFalls_1F_1R_Movement_AquaGrunt2Arrive
-	waitmovement 0
-	applymovement 5, Common_Movement_WalkInPlaceFastestLeft
-	applymovement 6, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	msgbox MeteorFalls_1F_1R_Text_BeSeeingYouTeamAqua, MSGBOX_DEFAULT
-	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, MeteorFalls_1F_1R_Movement_PushPlayerOutOfWay
-	applymovement 5, MeteorFalls_1F_1R_Movement_MagmaGrunt1Exit
-	applymovement 6, MeteorFalls_1F_1R_Movement_MagmaGrunt2Exit
-	waitmovement 0
+	applymovement 8, MF_AquaRight @(6 right)
+	applymovement 7, MF_AquaRight
+	msgbox MF_Archie1 MSGBOX_DEFAULT
+	applymovement 5, Common_Movement_ExclamationMark
+	applymovement 5, MF_MagmaBackUp
+	waitmovement 5
+	msgbox MF_MagmaRetreat MSGBOX_DEFAULT
+	applymovement 5, MF_FaceOther2
+	applymovement 6, MF_FaceOther
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 5	
+	msgbox MF_MagmaRetreat1 MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_PLAYER, MF_PlayerStepLeft
+	applymovement 5, MF_MagmaEscape
+	applymovement 6, MF_MagmaEscape2
+	waitmovement 6
 	removeobject 5
 	removeobject 6
-	applymovement 7, MeteorFalls_1F_1R_Movement_ArchieApproachPlayer
-	waitmovement 0
-	msgbox MeteorFalls_1F_1R_Text_ArchieSeenYouBefore, MSGBOX_DEFAULT
+	special RemoveCameraObject
+	compare VAR_TEMP_8, 1
+	goto_if_eq MF_continue_aqua_south
+	goto MF_continue_aqua_north
+	
+MF_AquaEventSouth::
+	playbgm MUS_MGM0, 0
+    applymovement 5, MF_Magma2Down
+	applymovement 6, MF_Magma1Down
+	msgbox MF_MagmaMsg1 MSGBOX_DEFAULT
 	closemessage
-	applymovement 8, MeteorFalls_1F_1R_Movement_AquaGrunt1ApproachArchie
-	applymovement 9, MeteorFalls_1F_1R_Movement_AquaGrunt2ApproachArchie
-	waitmovement 0
-	msgbox MeteorFalls_1F_1R_Text_BossWeShouldChaseMagma, MSGBOX_DEFAULT
-	applymovement 7, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	msgbox MeteorFalls_1F_1R_Text_ArchieYesNoTellingWhatMagmaWillDo, MSGBOX_DEFAULT
-	applymovement 7, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	msgbox MeteorFalls_1F_1R_Text_ArchieFarewell, MSGBOX_DEFAULT
-	closemessage
-	applymovement 7, MeteorFalls_1F_1R_Movement_ArchieExit
-	applymovement 8, MeteorFalls_1F_1R_Movement_AquaGrunt1Exit
-	applymovement 9, MeteorFalls_1F_1R_Movement_AquaGrunt2Exit
-	waitmovement 0
-	fadedefaultbgm
+	applymovement 5, Common_Movement_ExclamationMark
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 5
+	playbgm MUS_AQA_0, 0
+	applymovement 8, MF_AquaRight @(6 right)
+	applymovement 7, MF_AquaRight
+	msgbox MF_Archie1 MSGBOX_DEFAULT
+	applymovement 5, Common_Movement_ExclamationMark
+	applymovement 5, MF_MagmaBackUp
+	waitmovement 5
+	msgbox MF_MagmaRetreat MSGBOX_DEFAULT
+	applymovement 5, MF_FaceOther2
+	applymovement 6, MF_FaceOther
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 5	
+	msgbox MF_MagmaRetreat1 MSGBOX_DEFAULT
+	applymovement 5, MF_MagmaEscape
+	applymovement 6, MF_MagmaEscape2
+	waitmovement 6
+	removeobject 5
+	removeobject 6
+	compare VAR_TEMP_8, 1
+	goto_if_eq MF_continue_aqua_south
+	goto MF_continue_aqua_north
+	
+MF_continue_aqua_south::
+	applymovement 7, MF_ArchieMeetPlayerSouth
+	waitmovement 7
+	msgbox MF_ArchieRecognizesPlayer MSGBOX_DEFAULT
+	msgbox MF_ArchiKnowsPlayer MSGBOX_DEFAULT
+	msgbox MF_PlayerAqua2 MSGBOX_DEFAULT
+	msgbox MF_AquaGruntWarnsChaseMagma MSGBOX_DEFAULT
+	applymovement 7, MF_ArchieLeavesSouth
+	applymovement 8, MF_AquaLeaves
+	waitmovement 8
 	removeobject 7
 	removeobject 8
-	removeobject 9
+	fadedefaultbgm
+	setvar VAR_METEOR_FALLS_STATE, 1
 	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
 	setflag FLAG_MET_ARCHIE_METEOR_FALLS
 	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
-	setvar VAR_METEOR_FALLS_STATE, 1
-	releaseall
+	setflag FLAG_RYU_AQUA_MISSION1COMPLETE
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	release
 	end
 
-MeteorFalls_1F_1R_Movement_MagmaGruntApproachPlayer: @ 822BEC0
-	walk_right
-	walk_right
-	walk_in_place_fastest_up
+MF_continue_aqua_north::
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
+	applymovement 7, MF_ArchieMeetPlayerNorth
+	waitmovement 7
+	special SpawnCameraObject
+	applymovement EVENT_OBJ_ID_CAMERA, MH_CamerabackUpAqua
+	msgbox MF_ArchieRecognizesPlayer MSGBOX_DEFAULT
+	msgbox MF_ArchiKnowsPlayer MSGBOX_DEFAULT
+	msgbox MF_PlayerAqua2 MSGBOX_DEFAULT
+	applymovement 7, MF_ArchieLeavesNorth
+	applymovement 8, MF_AquaLeaves
+	waitmovement 8
+	removeobject 7
+	fadedefaultbgm
+	removeobject 8
+	applymovement EVENT_OBJ_ID_CAMERA, MH_CameraResetAquaDone
+	waitmovement 0
+	special RemoveCameraObject
+	setvar VAR_METEOR_FALLS_STATE, 1
+	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
+	setflag FLAG_MET_ARCHIE_METEOR_FALLS
+	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
+	setflag FLAG_RYU_AQUA_MISSION1COMPLETE
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	release
+	end
+	
+MH_CamerabackUpAqua:
+	walk_diag_northeast
+	walk_diag_northeast
 	step_end
-
-MeteorFalls_1F_1R_Movement_MagmaGrunt1Exit: @ 822BEC4
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	step_end
-
-MeteorFalls_1F_1R_Movement_MagmaGrunt2Exit: @ 822BECE
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	step_end
-
-MeteorFalls_1F_1R_Movement_ArchieArrive: @ 822BED9
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-MeteorFalls_1F_1R_Movement_AquaGrunt1Arrive: @ 822BEE0
-	delay_16
-	delay_16
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-MeteorFalls_1F_1R_Movement_AquaGrunt2Arrive: @ 822BEE8
-	delay_16
-	delay_16
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-MeteorFalls_1F_1R_Movement_ArchieExit: @ 822BEF0
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-MeteorFalls_1F_1R_Movement_ArchieApproachPlayer: @ 822BEF8
-	walk_right
-	walk_right
-	walk_up
-	walk_up
-	walk_in_place_fastest_left
-	step_end
-
-MeteorFalls_1F_1R_Movement_AquaGrunt1Exit: @ 822BEFE
-	walk_up
-	walk_up
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-MeteorFalls_1F_1R_Movement_AquaGrunt1ApproachArchie: @ 822BF08
-	walk_right
-	walk_right
-	walk_right
-	walk_in_place_fastest_up
-	step_end
-
-MeteorFalls_1F_1R_Movement_AquaGrunt2Exit: @ 822BF0D
+	
+MH_CameraResetAquaDone:
 	walk_up
 	walk_up
 	walk_up
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-MeteorFalls_1F_1R_Movement_AquaGrunt2ApproachArchie: @ 822BF18
-	walk_right
-	walk_right
-	walk_right
-	walk_in_place_fastest_up
-	step_end
-
-MeteorFalls_1F_1R_Movement_PushPlayerOutOfWay: @ 822BF1D
-	walk_in_place_fastest_down
-	delay_4
-	walk_in_place_fastest_right
-	lock_facing_direction
+	walk_up
 	walk_left
-	unlock_facing_direction
-	face_right
+	step_end
+	
+MH_cameraPanDown:
+	walk_diag_southwest
+	walk_diag_southwest
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+	
+MH_CamerPanUp:
+	walk_diag_northeast
+	walk_diag_northeast
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	
+MH_PlayerDownIntoScene:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_down
 	step_end
 
-MeteorFalls_1F_1R_EventScript_ProfCozmo:: @ 822BF25
+	
+MF_DevonEventNorth::
+    compare VAR_TEMP_8, 1
+	goto_if_eq MF_DevonEventSouth
+	special SpawnCameraObject
+	playbgm MUS_MGM0, 0
+	delay 20
+	applymovement EVENT_OBJ_ID_CAMERA, MH_cameraPanDown
+	delay 30
+    applymovement 5, MF_Magma2Down
+	applymovement 6, MF_Magma1Down
+	msgbox MF_MagmaMsg2 MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_GOTOWN, 0
+	msgbox MF_PlayerStepsIn MSGBOX_DEFAULT
+	applymovement 5, Common_Movement_ExclamationMark
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement EVENT_OBJ_ID_PLAYER, MH_PlayerDownIntoScene
+	applymovement 5, Common_Movement_FaceUp
+	applymovement 6, Common_Movement_FaceUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	special RemoveCameraObject
+	msgbox MF_PlayerAttacksMagma MSGBOX_DEFAULT
+	cleartrainerflag TRAINER_GRUNT_16
+	savebgm MUS_GOTOWN
+	trainerbattle_single TRAINER_GRUNT_16, MF_MagmaFightIntro, MF_ellipsis, MF_DevonContd
+	
+MF_DevonEventSouth::
+	playbgm MUS_MGM0, 0
+    applymovement 5, MF_Magma2Down
+	applymovement 6, MF_Magma1Down
+	msgbox MF_MagmaMsg2 MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_GOTOWN, 0
+	msgbox MF_PlayerStepsIn MSGBOX_DEFAULT
+	applymovement 5, Common_Movement_ExclamationMark
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 5
+	msgbox MF_PlayerAttacksMagma MSGBOX_DEFAULT
+	cleartrainerflag TRAINER_GRUNT_16
+	savebgm MUS_GOTOWN
+	trainerbattle_single TRAINER_GRUNT_16, MF_MagmaFightIntro, MF_ellipsis, MF_DevonContd
+	
+MF_DevonContd::
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	bufferpartymonnick 0, 0
+	msgbox MF_PlayerWonVsMagma MSGBOX_DEFAULT
+	closemessage
+	compare VAR_TEMP_8, 1
+	goto_if_eq MF_continue_magma_south
+	goto MF_continue_magma_north
+
+MH_camera2Move:
+	walk_fast_up
+	walk_fast_up
+	step_end
+	
+MF_continue_magma_south:
+	applymovement 5, MF_MagmaEscape
+	applymovement 6, MF_MagmaEscape2
+	waitmovement 6
+	removeobject 6
+	removeobject 5
+	playbgm MUS_AQA_0, 0
+	applymovement 8, MF_AquaRight @(6 right)
+	applymovement 7, MF_AquaRight
+	goto MF_continue_devon_south
+	
+MF_continue_magma_north:
+	applymovement EVENT_OBJ_ID_PLAYER, MF_PlayerStepLeft
+	waitmovement 0
+	applymovement 5, MF_MagmaEscape
+	applymovement 6, MF_MagmaEscape2
+	waitmovement 6
+	removeobject 6
+	removeobject 5
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	special SpawnCameraObject
+	applymovement EVENT_OBJ_ID_CAMERA, MH_camera2Move
+	waitmovement EVENT_OBJ_ID_CAMERA
+	special RemoveCameraObject
+	delay 20
+	playbgm MUS_AQA_0, 0
+	applymovement 8, MF_AquaRight @(6 right)
+	applymovement 7, MF_AquaRight
+	goto MF_continue_devon_north
+	
+MF_continue_devon_south::
+	applymovement 7, MF_ArchieMeetPlayerSouth
+	waitmovement 7
+	applymovement 7, Common_Movement_FaceDown
+	waitmovement 7
+	msgbox MF_Archie2 MSGBOX_DEFAULT
+	msgbox MF_ArchieWarned MSGBOX_DEFAULT
+	applymovement 8, Common_Movement_ExclamationMark
+	waitmovement 8
+	closemessage
+	applymovement 8, MF_GruntToPlayerSouth
+	waitmovement 0
+	cleartrainerflag TRAINER_GRUNT_15
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	trainerbattle_single TRAINER_GRUNT_15, MF_GruntAttacks, MF_ellipsis, MF_PlayerDevonContdSouth
+	release
+	end
+	
+MF_continue_devon_north::
+	applymovement 7, MF_ArchieMeetPlayerNorth
+	waitmovement 7
+	msgbox MF_ArchieWarned MSGBOX_DEFAULT
+	closemessage
+	applymovement 8, Common_Movement_ExclamationMark
+	waitmovement 8
+	applymovement 8, MF_GruntToPlayerNorth
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	cleartrainerflag TRAINER_GRUNT_15
+	savebgm MUS_GOTOWN
+	trainerbattle_single TRAINER_GRUNT_15, MF_GruntAttacks, MF_ellipsis, MF_PlayerDevonContdNorth
+	release
+	end
+	
+MF_PlayerDevonContdNorth::
+	msgbox MF_GruntLost MSGBOX_DEFAULT
+	closemessage
+	applymovement 8, MF_AquaLeavesNorth
+	applymovement 7, MF_ArchieLeavesNorth
+	waitmovement 7
+	removeobject 8
+	removeobject 7
+	setflag FLAG_RYU_DEVON_M1C
+	clearflag FLAG_RYU_DEVON_MISSION1START
+	setvar VAR_METEOR_FALLS_STATE, 1
+	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
+	setflag FLAG_MET_ARCHIE_METEOR_FALLS
+	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	applymovement 9, MF_CozmoToPlayerNorth
+	waitmovement 9
+	applymovement EVENT_OBJ_ID_PLAYER Common_Movement_FaceRight
+	msgbox MF_DM1_Cozmo MSGBOX_DEFAULT
+	closemessage
+	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
+	savebgm MUS_DAN03
+	applymovement 9, MF_CozmoLeavesNorth
+	waitmovement 9
+	removeobject 9
+	fadedefaultbgm
+	release
+	end
+	
+MF_PlayerDevonContdSouth::
+	delay 10
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox MF_GruntLost MSGBOX_DEFAULT
+	closemessage
+	applymovement 8, MF_AquaLeavesSouth
+	applymovement 7, MF_ArchieLeavesSouth
+	waitmovement 7
+	removeobject 8
+	removeobject 7
+	setflag FLAG_RYU_DEVON_M1C
+	clearflag FLAG_RYU_DEVON_MISSION1START
+	setvar VAR_METEOR_FALLS_STATE, 1
+	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
+	setflag FLAG_MET_ARCHIE_METEOR_FALLS
+	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	applymovement 9, MF_CozmoToPlayerSouth
+	waitmovement 9
+	msgbox MF_DM1_Cozmo MSGBOX_DEFAULT
+	closemessage
+	savebgm MUS_DAN03
+	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
+	applymovement 9, MF_CozmoLeavesSouth
+	waitmovement 9
+	removeobject 9
+	fadedefaultbgm
+	release
+	end
+
+MeteorFalls_1F_1R_EventScript_22BF25:: @ 822BF25
 	lock
 	faceplayer
-	goto_if_set FLAG_MET_PROF_COZMO, MeteorFalls_1F_1R_EventScript_MetCozmo
-	setflag FLAG_MET_PROF_COZMO
-	msgbox MeteorFalls_1F_1R_Text_MeetProfCozmo, MSGBOX_DEFAULT
+	goto_if_set FLAG_MET_PROF_COSMO, MeteorFalls_1F_1R_EventScript_22BF3D
+	setflag FLAG_MET_PROF_COSMO
+	msgbox MF_AquaCozmo, MSGBOX_DEFAULT
 	release
 	end
 
-MeteorFalls_1F_1R_EventScript_MetCozmo:: @ 822BF3D
-	msgbox MeteorFalls_1F_1R_Text_WhatsTeamMagmaDoingAtMtChimney, MSGBOX_DEFAULT
+MeteorFalls_1F_1R_EventScript_22BF3D:: @ 822BF3D
+	msgbox MF_AfterEventCozmo MSGBOX_DEFAULT
 	release
-	end
+	end	
+	
+MF_Magma2Down:
+	walk_down
+	walk_down
+	step_end
+	
+MF_Magma1Down:
+	walk_down
+	step_end
+	
+MF_AquaRight:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
 
-MeteorFalls_1F_1R_Text_WithThisMeteorite: @ 822BF47
-	.string "Hehehe!\p"
-	.string "With this METEORITE, that thing in\n"
-	.string "MT. CHIMNEY will…$"
+MF_MagmaBackUp:
+	walk_right
+	walk_in_place_left
+	step_end
+	
+MF_FaceOther:
+	walk_in_place_right
+	delay_16
+	delay_8
+	walk_in_place_left
+	step_end
+	
+MF_FaceOther2:
+	walk_in_place_left
+	delay_16
+	delay_8
+	walk_in_place_right
+	step_end
+	
+MF_MagmaEscape:
+	delay_16
+	delay_16
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	step_end
+	
+MF_MagmaEscape2:
+	delay_16
+	delay_16
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	step_end
+	
+MF_ArchieMeetPlayerSouth:
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	step_end
+	
+MF_ArchieLeavesSouth:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+	
+MF_AquaLeaves:
+	delay_16
+	delay_16
+	delay_16
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_fast_right
+	step_end
 
-MeteorFalls_1F_1R_Text_DontExpectMercyFromMagma: @ 822BF84
-	.string "Heh?\p"
-	.string "I don't know who you are, but if you get\n"
-	.string "in the way of TEAM MAGMA, don't\l"
-	.string "expect any mercy!$"
+MF_ArchieMeetPlayerNorth:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_in_place_up
+	step_end
+	
+MF_ArchieLeavesNorth:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	step_end
 
-MeteorFalls_1F_1R_Text_HoldItRightThereMagma: @ 822BFE4
-	.string "Hold it right there, TEAM MAGMA!\p"
-	.string "You're badly mistaken if you think you\n"
-	.string "can have your way with the world!$"
+MF_PlayerStepLeft:
+	walk_left
+	walk_in_place_right
+	step_end
 
-MeteorFalls_1F_1R_Text_BeSeeingYouTeamAqua: @ 822C04E
-	.string "Hehehe!\n"
-	.string "Even TEAM AQUA joins us!\p"
-	.string "But it's too much trouble to deal with\n"
-	.string "you all…\p"
-	.string "Heh, it doesn't matter!\p"
-	.string "We've got the METEORITE, so off to\n"
-	.string "MT. CHIMNEY we go!\p"
-	.string "Hehehe! Be seeing you, you TEAM\n"
-	.string "AQUA dingbats!$"
+MF_GruntToPlayerSouth:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_in_place_down
+	step_end
+	
+MF_GruntToPlayerNorth:
+	walk_right
+	walk_in_place_down
+	step_end
+	
+MF_AquaLeavesNorth:
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+	
+MF_AquaLeavesSouth:
+	delay_16
+	delay_16
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+	
+MF_CozmoToPlayerNorth:
+	walk_up
+	walk_up
+	walk_left
+	step_end
+	
+MF_CozmoLeavesNorth:
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
 
-MeteorFalls_1F_1R_Text_ArchieSeenYouBefore: @ 822C11C
-	.string "ARCHIE: Didn't I see you before?\n"
-	.string "At SLATEPORT's MUSEUM?\p"
-	.string "Ah, so your name is {PLAYER}.\p"
-	.string "At the time, I thought you were one\n"
-	.string "of TEAM MAGMA's goons.\p"
-	.string "Humph…\n"
-	.string "You're one odd kid.\p"
-	.string "TEAM MAGMA is a dangerous group of\n"
-	.string "total fanatics.\p"
-	.string "They engage in destruction, claiming\n"
-	.string "to expand the land mass.\p"
-	.string "They are the rivals to us,\n"
-	.string "the sea-loving TEAM AQUA!$"
+MF_CozmoToPlayerSouth:
+	walk_left
+	walk_in_place_down
+	step_end
+	
+MF_CozmoLeavesSouth:
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+	
+MF_MagmaMsg2:
+    .string "Magma Grunt: Thanks for the rock,\n"
+    .string "old man. This will help us compl-\l"
+    .string "ete our goals for Hoenn. Now\p"
+    .string "I've got to silence you. Can't have\n"
+    .string "you blabbing to everyone now, can\l"
+    .string "we!$"
+	
+MF_PlayerStepsIn:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: HOLD IT!$"
+	
+MF_PlayerAttacksMagma:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}What the hell do you think you're\n"
+    .string "doing? You degenerates should\p"
+    .string "at least have the decency to treat\n"
+    .string "your elders better than this.\p"
+    .string "I am going to grind you both into\n"
+    .string "a fine powder and sprinkle you on\l"
+    .string "your Leader's grave.$"
+	
+MF_MagmaFightIntro:
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Magma Grunt: I'll use my Leader's\n"
+    .string "most generously lent, extremely\l"
+    .string "powerful pokémon to crush you!$"
 
-MeteorFalls_1F_1R_Text_BossWeShouldChaseMagma: @ 822C268
-	.string "BOSS, we should give chase to\n"
-	.string "TEAM MAGMA…$"
+MF_PlayerWonVsMagma:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: I should have known you\n"
+    .string "wouldn't put on much of a fight.\p"
+    .string "You avoid people your own size\n"
+    .string "because you KNOW you will get\p"
+    .string "destroyed. Get out of here before\n"
+    .string "I have my {STR_VAR_1} turn you\l"
+    .string "into a fine red mist.\p"
+    .string "... ... ...\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Magma Grunt: I can't believe it...\n"
+    .string "The Leader's prized Charizard...\p"
+    .string "Okay! You win! We'll be leaving\l"
+    .string "now!$"
+	
+MF_Archie2:
+	.string "Archie: Well, {PLAYER}, I see you\p"
+    .string "made it here before us, and\n"
+    .string "interfered with our plans again.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Yes, Well they were\n"
+    .string "picking on this nice gentleman\p"
+    .string "over here. If you have the same\n"
+    .string "intent, I will cream you like I\l"
+    .string "did those Magma twats.$"
+	
+MF_ellipsis:
+	.string "...$"
+	
+MF_GruntLost:
+	.string "Grunt: Sorry, boss...\pArchie: You useless knave.\nYour pay will be docked.\pAs for you, {PLAYER}, I will\nfind a way to make you suffer...$"
 
-MeteorFalls_1F_1R_Text_ArchieYesNoTellingWhatMagmaWillDo: @ 822C292
-	.string "ARCHIE: Yes, yes, we must!\n"
-	.string "We've got to hurry.\p"
-	.string "There's no telling what TEAM MAGMA\n"
-	.string "will do at MT. CHIMNEY!$"
+MF_ArchieWarned: 
+	.string "{PLAYER}, Didn't I warn you not to \ninterfere with us again? Maybe it\lis time I teach you a lesson.\p... ... ... ... ... ...\pYou there, Grunt, Take out this\nannoying trainer.$"
+	
+MF_GruntAttacks:
+	.string "Grunt: Sorry, I got to\nwipe you out.\pIt's nothing personal. Just busi-\nness. Here we go!$"
 
-MeteorFalls_1F_1R_Text_ArchieFarewell: @ 822C2FC
-	.string "ARCHIE: {PLAYER}, you should keep\n"
-	.string "an eye out for TEAM MAGMA, too.\p"
-	.string "Farewell!$"
+	
+MF_AquaGruntWarnsChaseMagma:
+    .string "Grunt: Boss, We really need to\n"
+    .string "give chase. We need to know what\l"
+    .string "they are up to at Mt. Chimney!\p"
+	.string "Archie: Yes, indeed, let's go.$"
 
-MeteorFalls_1F_1R_Text_MeetProfCozmo: @ 822C342
-	.string "I… I'm COZMO…\n"
-	.string "I'm a PROFESSOR…\p"
-	.string "TEAM MAGMA asked me to guide them\n"
-	.string "to METEOR FALLS…\p"
-	.string "But they tricked me.\n"
-	.string "They even took my METEORITE away…\p"
-	.string "And then another similar bunch,\n"
-	.string "TEAM AQUA showed up.\p"
-	.string "After that…\n"
-	.string "I don't understand any of it.\p"
-	.string "But that TEAM MAGMA…\p"
-	.string "What are they going to do with that\n"
-	.string "METEORITE at MT. CHIMNEY?$"
+	
+MF_MagmaMsg1:
+    .string "Magma Grunt: Thanks for the meteor,\n"
+    .string "professor. We'll have to silence\p"
+    .string "you now, though. We can't have\n"
+    .string "anyone knowing our plans, can we?$"
 
-MeteorFalls_1F_1R_Text_WhatsTeamMagmaDoingAtMtChimney: @ 822C47D
-	.string "PROF. COZMO: But that TEAM MAGMA…\p"
-	.string "What are they going to do with that\n"
-	.string "METEORITE at MT. CHIMNEY?$"
+MF_Archie1:
+    .string "Archie: Not so fast, Magma Scum!\p"
+    .string "Resorting to picking on gullible\n"
+    .string "old men now, are we?$"
+	
+MF_MagmaRetreat:
+    .string "Magma Grunt: What?! How did you\n"
+    .string "know we were here? Who tipped you\p"
+    .string "off?\n"
+    .string "Archie: No one, it was easy to\l"
+    .string "predict your movements, you swine!$"
+
+MF_MagmaRetreat1:
+    .string "Magma Grunt: Hmph, it's too much\n"
+    .string "work to deal with you now. We'll\l"
+    .string "be on our way...$"
+	
+MF_ArchieRecognizesPlayer:
+	.string "Archie: Wait... I know you...$"
+	
+PlayerisAqua:
+	.string "If you could direct your attention at\n"
+	.string "Magma, that'd be great. We need\p" 
+	.string "all the help we can get to wipe out\n"
+	.string "those fanatics. I have my own\p" 
+	.string "dreams to realize, and they're going\n"
+	.string "to ruin it completely.$"
+	
+MF_ArchiKnowsPlayer:
+	.string "Oh you're the new recruit that\n"
+	.string "Shelly hired in. She's been saying\p"
+	.string "great things about you, I hope you\n"
+	.string "can live up to my expectations,\p"
+	.string "at the very least.$"
+
+	
+MF_PlayerAqua2:
+	.string "Archie: {PLAYER}, I'm glad you're with us.\n"
+	.string "We've got to give chase.\p" 
+	.string "Shelly sees promise in you, so I'll trust\n"
+    .string	"her judgement.\p"
+	.string "Report back to Shelly. We're done here.\p"
+	.string "Waves be with you, {PLAYER}!$"
+
+MF_AquaCozmo:
+    .string "Cozmo: Those goons took my prized\n"
+    .string "meteorite... How am I to finish my\l"
+    .string "research now?$"
+	
+MF_AfterEventCozmo:
+    .string "Cozmo: Where am I going to find\n"
+    .string "another meteorite? ... ... ...$"
+	
+MF_DM1_Cozmo:
+    .string "Cozmo: Wow, you really showed them\p"
+    .string "what for. Unfortunately they still\n"
+    .string "got away with my Meteorite.\p"
+    .string "Thanks anyways, though. There's no\n"
+    .string "telling what they would have done\p"
+    .string "to me if you weren't here.\n"
+    .string "You've made a couple of powerful\l"
+    .string "enemies, haven't you?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Yeah, but they're really\n"
+    .string "weak, so I'm not particularly\l"
+    .string "concerned.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Cozmo: Well anyways, meet me at my\n"
+    .string "house in Fallarbor. I'll have a\l"
+    .string "reward for you there.$"

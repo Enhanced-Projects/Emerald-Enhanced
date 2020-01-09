@@ -76,7 +76,7 @@
       "movement_range_y": 1,
       "trainer_type": "1",
       "trainer_sight_or_berry_tree_id": "4",
-      "script": "MagmaHideout_4F_EventScript_Tabitha",
+      "script": "MagmaHideout_4F_EventScript_Courtney",
       "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
     },
     {

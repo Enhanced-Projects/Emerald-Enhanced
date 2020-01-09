@@ -1,12 +1,73 @@
 MossdeepCity_SpaceCenter_1F_MapScripts:: @ 8222F41
 	map_script MAP_SCRIPT_ON_LOAD , MossdeepCity_SpaceCenter_1F_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_SpaceCenter_1F_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SPC_CheckDevonQuest
 	.byte 0
+
+SPC_CheckDevonQuest::
+	map_script_2 VAR_RYU_DEVON_SCIENTIST_STAGE, 105, SPC_StevenApproach
+	.2byte 0
 
 MossdeepCity_SpaceCenter_1F_OnTransition: @ 8222F4C
 	compare VAR_MOSSDEEP_CITY_STATE, 2
 	goto_if_eq MossdeepCity_SpaceCenter_1F_EventScript_MoveObjectsForTeamMagma
 	end
+
+@==================================================================================================Scientist devon
+
+SPC_StevenApproach::
+	lock
+	call_if_set FLAG_RYU_PLAYER_HELPING_AQUA, SPC_FixMagmaMaybe1F
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, ryu_end
+	setflag FLAG_RYU_WAYSTONE_DISABLED
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 106
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
+	applymovement 11, Common_Movement_StepDown
+	waitmovement 11
+	applymovement 11, Common_Movement_QuestionMark
+	waitmovement 11
+	msgbox SPC_ItsBeenAwhile
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
+	release
+	end
+	
+SPC_FixMagmaMaybe1F::
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+	removeobject 6
+	removeobject 7
+	removeobject 8
+	removeobject 9
+	special DrawWholeMapView
+	return
+	
+SPC_PreventLeaveTillDone::
+	lock
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 106
+	goto_if_ne ryu_end
+	msgbox SPC_CantLeave
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
+	
+SPC_ItsBeenAwhile:
+	.string "Ah, {PLAYER}, it's been a while.\p"
+	.string "Come for a tour?\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ...\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see, then you'll want to go\n"
+	.string "upstairs. Unfortunately, Magma\l"
+	.string "seems to have invaded this place.\p"
+	.string "I'm sure you can handle them.\n"
+	.string "They are too weak for me.\p"
+	.string "I'd prefer to watch you wipe\n"
+	.string "them out.$"
+	
+SPC_CantLeave::
+	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You must clear out Magma\nbefore you may leave.$"
+
+@+=================================================================================================end custom
 
 MossdeepCity_SpaceCenter_1F_EventScript_MoveObjectsForTeamMagma:: @ 8222F58
 	setobjectxyperm 3, 1, 9
@@ -221,7 +282,7 @@ MossdeepCity_SpaceCenter_1F_EventScript_Grunt3:: @ 82231DA
 	end
 
 MossdeepCity_SpaceCenter_1F_EventScript_Grunt1:: @ 82231F1
-	trainerbattle_single TRAINER_GRUNT_SPACE_CENTER_1, MossdeepCity_SpaceCenter_1F_Text_Grunt1Intro, MossdeepCity_SpaceCenter_1F_Text_Grunt1Defeat
+	trainerbattle_single TRAINER_GRUNT_16, MossdeepCity_SpaceCenter_1F_Text_Grunt1Intro, MossdeepCity_SpaceCenter_1F_Text_Grunt1Defeat
 	msgbox MossdeepCity_SpaceCenter_1F_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
 	end
 

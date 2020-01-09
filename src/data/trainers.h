@@ -44,7 +44,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntAquaHideout1},
     },
 
-    [TRAINER_GRUNT_AQUA_HIDEOUT_2] =
+    [TRAINER_GRUNT_2] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
@@ -74,7 +74,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntAquaHideout3},
     },
 
-    [TRAINER_GRUNT_AQUA_HIDEOUT_4] =
+    [TRAINER_GRUNT_4] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
@@ -299,7 +299,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntWeatherInst3},
     },
 
-    [TRAINER_GRUNT_MUSEUM_1] =
+    [TRAINER_GRUNT_14] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
@@ -314,7 +314,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntMuseum1},
     },
 
-    [TRAINER_GRUNT_MUSEUM_2] =
+    [TRAINER_GRUNT_15] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
@@ -329,7 +329,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntMuseum2},
     },
 
-    [TRAINER_GRUNT_SPACE_CENTER_1] =
+    [TRAINER_GRUNT_16] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
@@ -404,7 +404,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntWeatherInst4},
     },
 
-    [TRAINER_GRUNT_AQUA_HIDEOUT_5] =
+    [TRAINER_GRUNT_21] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
@@ -419,7 +419,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntAquaHideout5},
     },
 
-    [TRAINER_GRUNT_AQUA_HIDEOUT_6] =
+    [TRAINER_GRUNT_22] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
@@ -494,7 +494,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_ShellyWeatherInstitute},
     },
 
-    [TRAINER_SHELLY_SEAFLOOR_CAVERN] =
+    [TRAINER_SHELLY_2] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
@@ -2879,7 +2879,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemCustomMoves = sParty_Kirk},
     },
 
-    [TRAINER_GRUNT_AQUA_HIDEOUT_7] =
+    [TRAINER_GRUNT_25] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
@@ -2894,7 +2894,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntAquaHideout7},
     },
 
-    [TRAINER_GRUNT_AQUA_HIDEOUT_8] =
+    [TRAINER_GRUNT_26] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_TEAM_AQUA,
@@ -7709,19 +7709,19 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Hector},
     },
 
-    [TRAINER_TABITHA_MOSSDEEP] =
+    [TRAINER_COURTNEY_MOSSDEEP] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MAGMA,
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
-        .trainerName = _("TABITHA"),
+        .trainerName = _("Courtney"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_TabithaMossdeep),
-        .party = {.NoItemDefaultMoves = sParty_TabithaMossdeep},
+        .partySize = ARRAY_COUNT(sParty_CourtneyMossdeep),
+        .party = {.NoItemDefaultMoves = sParty_CourtneyMossdeep},
     },
 
     [TRAINER_EDWIN_2] =
@@ -8954,19 +8954,19 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntWeatherInst5},
     },
 
-    [TRAINER_TABITHA_MT_CHIMNEY] =
+    [TRAINER_COURTNEY_MT_CHIMNEY] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MAGMA,
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
-        .trainerName = _("TABITHA"),
+        .trainerName = _("Courtney"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_TabithaMtChimney),
-        .party = {.NoItemDefaultMoves = sParty_TabithaMtChimney},
+        .partySize = ARRAY_COUNT(sParty_CourtneyMtChimney),
+        .party = {.NoItemDefaultMoves = sParty_CourtneyMtChimney},
     },
 
     [TRAINER_JONATHAN] =
@@ -10979,19 +10979,19 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntMagmaHideout16},
     },
 
-    [TRAINER_TABITHA_MAGMA_HIDEOUT] =
+    [TRAINER_COURTNEY_3] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MAGMA,
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
-        .trainerName = _("TABITHA"),
+        .trainerName = _("Courtney"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_TabithaMagmaHideout),
-        .party = {.NoItemDefaultMoves = sParty_TabithaMagmaHideout},
+        .partySize = ARRAY_COUNT(sParty_CourtneyMagmaHideout),
+        .party = {.NoItemDefaultMoves = sParty_CourtneyMagmaHideout},
     },
 
     [TRAINER_DARCY] =
@@ -12314,7 +12314,7 @@ const struct Trainer gTrainers[] = {
         .party = {.ItemCustomMoves = gTrainerParty_StoryLana }
     },
 
-    [TRAINER_GRUNT_24] =
+    [TRAINER_GRUNT_AQUA_HIDEOUT_24] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_TRIATHLETE,

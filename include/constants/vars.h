@@ -161,7 +161,7 @@
 #define VAR_BOARD_BRINEY_BOAT_STATE          0x408E
 #define VAR_DEVON_CORP_3F_STATE              0x408F
 #define VAR_BRINEY_HOUSE_STATE               0x4090
-#define VAR_UNUSED_0x4091                    0x4091 // Unused Var
+#define VAR_RYU_DEVON_SCIENTIST_STAGE        0x4091 // Unused Var
 #define VAR_LITTLEROOT_INTRO_STATE           0x4092
 #define VAR_MAUVILLE_GYM_STATE               0x4093
 #define VAR_LILYCOVE_MUSEUM_2F_STATE         0x4094
@@ -224,7 +224,7 @@
 #define VAR_CABLE_CLUB_TUTORIAL_STATE        0x40CD
 #define VAR_FRONTIER_BATTLE_MODE             0x40CE
 #define VAR_FRONTIER_FACILITY                0x40CF
-#define VAR_HAS_ENTERED_BATTLE_FRONTIER      0x40D0 // Var is used like a flag.
+#define VAR_RYU_DEVON_MAIN_QUEST_VAR         0x40D0 // devon main
 #define VAR_SCOTT_STATE                      0x40D1
 #define VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE   0x40D2
 #define VAR_DEX_UPGRADE_JOHTO_STARTER_STATE  0x40D3

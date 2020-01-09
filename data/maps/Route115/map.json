@@ -119,6 +119,15 @@
         }
     ],
     "coord_events": [
+        {
+            "elevation": 3,
+            "script": "r115_StartDevon",
+            "type": "trigger",
+            "var": "VAR_RYU_DEVON_MAIN_QUEST_VAR",
+            "var_value": "16",
+            "x": 22,
+            "y": 75
+        }
     ],
     "id": "MAP_ROUTE115",
     "layout": "LAYOUT_ROUTE115",
@@ -424,6 +433,45 @@
             "trainer_type": "0",
             "x": 12,
             "y": 14
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_DEOXYS_TRIANGLE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 6,
+            "y": 6
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_RYU_DEVON_CORPORATE_HIDE_MSITO",
+            "graphics_id": "EVENT_OBJ_GFX_WOMAN_3",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "script": "R115_DevonScene",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 61
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_RYU_DEVON_CORPORATE_HIDE_MSITO",
+            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 8,
+            "y": 61
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_115",

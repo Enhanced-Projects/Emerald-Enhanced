@@ -1142,3 +1142,9 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/ThroneRoom/scripts.inc"
 
 	.include "data/maps/LilycoveCity_TrainingCenter/scripts.inc"
+
+	.include "data/maps/LilycoveCity_AquaCorporateOffice/scripts.inc"
+
+	.include "data/maps/RustburoCity_DevonCorp2fStoryMap/scripts.inc"
+
+	.include "data/maps/RustburoCity_DevonCorp1fStoryMap/scripts.inc"

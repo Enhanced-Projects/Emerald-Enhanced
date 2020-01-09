@@ -93,7 +93,9 @@
         "RustboroCity_Flat2_1F",
         "RustboroCity_Flat2_2F",
         "RustboroCity_Flat2_3F",
-        "RustboroCity_House3"
+        "RustboroCity_House3",
+        "RustburoCity_DevonCorp2fStoryMap",
+        "RustburoCity_DevonCorp1fStoryMap"
     ],
     "gMapGroup12": [
         "FortreeCity_House1",
@@ -131,7 +133,8 @@
         "LilycoveCity_DepartmentStore_5F",
         "LilycoveCity_DepartmentStoreRooftop",
         "LilycoveCity_DepartmentStoreElevator",
-        "LilycoveCity_TrainingCenter"
+        "LilycoveCity_TrainingCenter",
+        "LilycoveCity_AquaCorporateOffice"
     ],
     "gMapGroup14": [
         "MossdeepCity_Gym",

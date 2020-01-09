@@ -5,12 +5,12 @@ MossdeepCity_SpaceCenter_2F_MapScripts:: @ 8223D58
 
 MossdeepCity_SpaceCenter_2F_OnTransition: @ 8223D63
 	compare VAR_MOSSDEEP_CITY_STATE, 2
-	call_if_eq MossdeepCity_SpaceCenter_2F_EventScript_MoveStevenMaxieTabitha
+	call_if_eq MossdeepCity_SpaceCenter_2F_EventScript_MoveStevenMaxieCourtney
 	compare VAR_MOSSDEEP_SPACE_CENTER_STATE, 2
 	call_if_eq MossdeepCity_SpaceCenter_2F_EventScript_MoveDefeatedGrunts
 	end
 
-MossdeepCity_SpaceCenter_2F_EventScript_MoveStevenMaxieTabitha:: @ 8223D7A
+MossdeepCity_SpaceCenter_2F_EventScript_MoveStevenMaxieCourtney:: @ 8223D7A
 	clearflag FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER
 	setobjectxyperm 3, 5, 3
 	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_RIGHT
@@ -170,7 +170,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_Grunt5:: @ 8223F50
 	msgbox MossdeepCity_SpaceCenter_2F_Text_Grunt5PostBattle, MSGBOX_NPC
 	end
 
-MossdeepCity_SpaceCenter_2F_EventScript_Tabitha:: @ 8223F59
+MossdeepCity_SpaceCenter_2F_EventScript_Courtney:: @ 8223F59
 	lock
 	faceplayer
 	msgbox MossdeepCity_SpaceCenter_2F_Text_WellTakeCareOfYou, MSGBOX_DEFAULT
@@ -266,12 +266,12 @@ MossdeepCity_SpaceCenter_2F_EventScript_DoStevenMultiBattle:: @ 8224032
 	frontier_saveparty
 	special LoadPlayerParty
 	switch VAR_RESULT
-	case 1, MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha
+	case 1, MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieCourtney
 	fadescreen FADE_TO_BLACK
 	special SetCB2WhiteOut
 	waitstate
 
-MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha:: @ 8224071
+MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieCourtney:: @ 8224071
 	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieWeFailedIsAquaAlsoMisguided, MSGBOX_DEFAULT
 	closemessage
 	delay 20
@@ -340,8 +340,8 @@ MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer:: @ 8224157
 	trainerbattle TRAINER_BATTLE_SET_TRAINER_A, TRAINER_MAXIE_MOSSDEEP, 0, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand
 	end
 
-MossdeepCity_SpaceCenter_2F_EventScript_TabithaTrainer:: @ 8224166
-	trainerbattle TRAINER_BATTLE_SET_TRAINER_B, TRAINER_TABITHA_MOSSDEEP, 0, MossdeepCity_SpaceCenter_Text_TabithaDefeat, MossdeepCity_SpaceCenter_Text_TabithaDefeat
+MossdeepCity_SpaceCenter_2F_EventScript_CourtneyTrainer:: @ 8224166
+	trainerbattle TRAINER_BATTLE_SET_TRAINER_B, TRAINER_COURTNEY_MOSSDEEP, 0, MossdeepCity_SpaceCenter_Text_CourtneyDefeat, MossdeepCity_SpaceCenter_Text_CourtneyDefeat
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall:: @ 8224175
@@ -482,7 +482,7 @@ MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand: @ 822487C
 	.string "All I want…\n"
 	.string "I just want to expand the land mass…$"
 
-MossdeepCity_SpaceCenter_Text_TabithaDefeat: @ 82248AD
+MossdeepCity_SpaceCenter_Text_CourtneyDefeat: @ 82248AD
 	.string "I'm with our leader…$"
 
 MossdeepCity_SpaceCenter_2F_Text_MaxieWeFailedIsAquaAlsoMisguided: @ 82248C2

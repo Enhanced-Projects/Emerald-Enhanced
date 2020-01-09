@@ -1,6 +1,4 @@
 RustboroCity_DevonCorp_3F_MapScripts:: @ 821242D
-	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_DevonCorp_3F_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, RustboroCity_DevonCorp_3F_OnWarp
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, RustboroCity_DevonCorp_3F_OnFrame
 	.byte 0
 
@@ -19,66 +17,761 @@ RustboroCity_DevonCorp_3F_OnWarp: @ 8212455
 	.2byte 0
 
 RustboroCity_DevonCorp_3F_EventScript_PlayerFaceEast:: @ 821245F
-	turnobject EVENT_OBJ_ID_PLAYER, DIR_EAST
 	end
 
 RustboroCity_DevonCorp_3F_OnFrame: @ 8212464
-	map_script_2 VAR_DEVON_CORP_3F_STATE, 0, RustboroCity_DevonCorp_3F_EventScript_MeetPresident
+	map_script_2 VAR_RYU_DEVON_MAIN_QUEST_VAR, 22, DC_CorporateInterrogation
 	.2byte 0
+@==================================================================================================RYU DEVON
+DC_QuestCheck::
+	lock
+	goto_if_set FLAG_RYU_DEVON_LINE_FINISHED, ryu_end
+	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
+	compare VAR_RYU_DEVON_MAIN_QUEST_VAR, 30
+	goto_if_eq ryu_end
+	goto_if_set FLAG_RYU_DEVON_CORPORATE, DC_BeginCorporate
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, DC_ENEMY
+	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
+	checkitem ITEM_DEVON_GOODS, 1
+	compare VAR_RESULT, 1
+	goto_if_eq DC_BeginQuest
+	msgbox DC_NoQuest MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_PLAYER DC_Turnaround
+	waitmovement 0
+	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
+	release
+	end
+	
+DC_BeginCorporate::
+	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE
+	setflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
+	setflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE4
+	setvar VAR_TEMP_9, 4
+	special DrawWholeMapView
+	release
+	end
+	
+DC_ENEMY::
+	msgbox DC_NoQuest MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_PLAYER DC_Turnaround
+	waitmovement 0
+	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
+	release
+	end
+	
+DC_QuestCheck1::
+	lock
+	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
+	compare VAR_RYU_DEVON_MAIN_QUEST_VAR, 30
+	goto_if_eq ryu_end
+	goto_if_set FLAG_RYU_DEVON_CORPORATE, DC_BeginCorporate
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, DC_ENEMY
+	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
+	checkitem ITEM_DEVON_GOODS, 1
+	compare VAR_RESULT, 1
+	goto_if_eq DC_BeginQuest
+	msgbox DC_NoQuest MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_PLAYER DC_Turnaround1
+	waitmovement 0
+	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
+	release
+	end
+	
+DC_QuestCheck2::
+	lock
+	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
+	compare VAR_RYU_DEVON_MAIN_QUEST_VAR, 30
+	goto_if_eq ryu_end
+	goto_if_set FLAG_RYU_DEVON_CORPORATE, DC_BeginCorporate
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, DC_ENEMY
+	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
+	checkitem ITEM_DEVON_GOODS, 1
+	compare VAR_RESULT, 1
+	goto_if_eq DC_BeginQuest
+	msgbox DC_NoQuest MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_PLAYER DC_Turnaround2
+	waitmovement 0
+	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
+	release
+	end
+
+DC_NoQuest:
+	.string "I'm sorry, but the CEO is busy.\n"
+	.string "Please come back later.$"
+	
+
+DC_Turnaround:
+	face_up
+	walk_up
+	step_end
+	
+DC_Turnaround1:
+	walk_left
+	walk_up
+	step_end
+	
+DC_Turnaround2:
+	walk_right
+	walk_up
+	step_end
+
+DC_Release::
+	release
+	end
+
+DC_CorporateLine::
+	lock
+	setflag FLAG_RYU_WAYSTONE_DISABLED
+	applymovement 5, DC_FranticPace
+	msgbox DC_WhatToDo MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_PLAYER, DC_ApproachStone
+	waitmovement EVENT_OBJ_ID_PLAYER
+	closemessage
+	applymovement 5, Common_Movement_FaceLeft
+	waitmovement 5
+	msgbox DC_PlayerReturned
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_SituationCritical
+	closemessage
+	applymovement 5, Common_Movement_FaceDown
+	waitmovement 5
+	msgbox DC_RightToKnow
+	closemessage
+	applymovement 5, Common_Movement_FaceLeft
+	waitmovement 5
+	msgbox DC_StoneExpShareDriveInfo
+	closemessage
+	applymovement 5, Common_Movement_FaceUp
+	waitmovement 5
+	msgbox DC_LeakInfo
+	closemessage
+	applymovement 5, Common_Movement_FaceLeft
+	waitmovement 5
+	msgbox DC_NewsMediaLeak
+	closemessage
+	applymovement 5, Common_Movement_FaceRight
+	waitmovement 5
+	msgbox DC_StufStolenTwice
+	closemessage
+	applymovement 5, Common_Movement_StepLeft
+	waitmovement 5
+	msgbox DC_Turncoat
+	closemessage
+	applymovement 5, Common_Movement_StepRight
+	waitmovement 5
+	msgbox DC_DireSituation
+	closemessage
+	playse SE_PIN
+	applymovement 5, Common_Movement_ExclamationMark
+	waitmovement 5
+	msgbox DC_SplendidIdea
+	closemessage
+	applymovement 5, Common_Movement_FaceLeft
+	waitmovement 5
+	msgbox DC_Internment
+	closemessage
+	giveitem_std ITEM_TRI_PASS
+	msgbox DC_OfficialEmployee
+	closemessage
+	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 4
+	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3
+	warpsilent MAP_RUSTBURO_CITY_DEVON_CORP2F_STORY_MAP, 255, 9, 2
+	release
+	end
+	
+	
+DC_IntroDone::
+	msgbox DC_INTROQUEST_MSG MSGBOX_DEFAULT
+	clearflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN
+	release
+	end
+	
+DC_INTROQUEST_MSG:
+	.string "Steven was last spotted in Dewford,\nand Captain Stern likes to spend time\lin his museum.$"
+	
+DC_WhatToDo:
+	.string "Oh, what to do...what am I going\nto do?$"
+	
+DC_PlayerReturned:
+	.string "{PLAYER}, you've returned...\n... ... ...$"
+	
+DC_SituationCritical:
+	.string "Honestly, now's not the best time.\nThe situation is critical.$"
+	
+DC_RightToKnow:
+	.string "... ... ...\pYou've assisted us time and time\nagain, even becoming a devout\pmember of the corporation, so I\nbelieve you've earned the right to\lknow.$"
+	
+DC_StoneExpShareDriveInfo:
+	.string "The corporation has recently been \n"
+	.string "making several strides towards\p"
+	.string "production of a one-of-a-kind item\n"
+	.string "...technically speaking however,\p"
+	.string "it's essentially a variant of the\n"
+	.string "EXP Share I gifted you not too\l"
+	.string "long ago.\p"
+	.string "Dubbed the EXP Drive, its\n"
+	.string "function is to accumulate\p"
+	.string "experience gained from pokémon\n"
+	.string "battles, to which it can then be\p"
+	.string "applied to a pokémon of your\n"
+	.string "choosing.\p"
+	.string "We're still working out the\n"
+	.string "specifics...however, any trainer\p"
+	.string "can see how much of a boon such a\n"
+	.string "device would be for them.$"
+	
+DC_LeakInfo:
+	.string "It was a closely guarded secret...\p"
+	.string "only those who were actively\n"
+	.string "involved on the project from the\p"
+	.string "very initiation of its' conception\n"
+	.string "knew about its' existence.\p"
+	.string "Not even Steven knew!\p"
+	.string "It was going to be the epitomé of\n"
+	.string "Devon technology, an invention\p"
+	.string "that would forever alter the scope\n"
+	.string "of pokémon practice...and yet...$"
+	
+DC_NewsMediaLeak:
+	.string "Like moths to a flame, news media\n"
+	.string "came in droves! They demanded\p"
+	.string "further information of a rumored\n"
+	.string "device said to revolutionize\p"
+	.string "pokémon battling and training.\n"
+	.string "I was flabbergasted...how'd they\p"
+	.string "know about it? How could ANYONE\n"
+	.string "ELSE know about it!?\p"
+	.string "... ... ...$"
+	
+DC_StufStolenTwice:
+	.string "Not once, but TWICE now has our\n"
+	.string "products been snatched right from\l"
+	.string "under our noses...\p"
+	.string "I didn't want to admit it, however\n"
+	.string "there's no other feasible\l"
+	.string "explanation...$"
+	
+DC_Turncoat:
+	.string "There's a turncoat within the\n"
+	.string "company. And I have reason to\p"
+	.string "believe this individual was also\n"
+	.string "the one involved with the Devon\p"
+	.string "goods being stolen.$"
+	
+DC_DireSituation:
+	.string "This is a dire situation indeed...\pHow can this be resolved...?\p... ... ...$"
+	
+DC_SplendidIdea:
+	.string "Oh ho! I just had a splendid idea!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}I don't like where this is going.$"
+	
+DC_Internment:
+	.string "Come now, at least hear me out.\pUp 'til now, you've been hired to\nwork as an...intern of sorts. I\pthink it's high time you move on\nto become an in-house employee of\pthe corporation.\pHere, take this.$"
+	
+DC_OfficialEmployee:
+	.string "Having risen to become an official\n"
+	.string "employee of Devon, you'll be able\p"
+	.string "to utilize our facility's PCs, as\n"
+	.string "well as be able to closely\p"
+	.string "associate with the other workers\n"
+	.string "without suspicion.\p"
+	.string "... ... ...\p"
+	.string "It really hurts that I have to\n"
+	.string "resort to this...I trust the\p"
+	.string "people here. They're family in a\n"
+	.string "way. Please assist me in this\p"
+	.string "matter so it can be quickly put\n"
+	.string "behind us.\p"
+	.string "Follow me, I'll formally introduce\n"
+	.string "you to the staff.$"
+	
+DC_ApproachStone:
+	walk_right
+	walk_down
+	walk_down
+	walk_in_place_right
+	step_end
+	
+DC_FranticPace:
+	walk_up
+	walk_up
+	walk_down
+	walk_down
+    walk_down	
+	walk_down
+	walk_up
+	walk_up
+	step_end
+
+DC_CorporateInterrogation:: @Due to size limitations, all dialogue and movement are in data/scripts/RyuDevonLine.inc
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement EVENT_OBJ_ID_PLAYER
+	playbgm 438, 1
+	applymovement 6, Common_Movement_StepLeft
+	waitmovement 6
+	msgbox DC_ThanksForJoining
+	closemessage
+	applymovement 6, Common_Movement_FaceUp
+	waitmovement 6
+	msgbox DC_BeforeIGoFurther
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_FirstIMustSay
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_AfterTalking
+	closemessage
+	applymovement 8, Common_Movement_FaceRight
+	waitmovement 8
+	msgbox DC_WhatsThis
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_YouHaventLetMeFinish
+	closemessage
+	applymovement 11, Common_Movement_FaceDown
+	waitmovement 11
+	msgbox DC_CanSomeonePlease
+	closemessage
+	applymovement 7, Common_Movement_FaceLeft
+	waitmovement 7
+	msgbox DC_ToMakeALongStory
+	closemessage
+	applymovement 7, Common_Movement_FaceUp
+	waitmovement 7
+	msgbox DC_HasAConclusion
+	closemessage
+	applymovement 6, Common_Movement_FaceLeft
+	waitmovement 6
+	msgbox DC_ItHasInFact
+	closemessage
+	applymovement 6, Common_Movement_FaceUp
+	waitmovement 6
+	msgbox DC_IfYouWill
+	goto DC_CorporateInterrogation2
+	release
+	end
+	
+DC_CorporateInterrogation2::
+	playbgm 443, 1
+	msgbox DC_InOrderToMake
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepRight
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_NoDoubt
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, DC_ToHajio@Red Suit Worker to the right
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_NowMrHajio
+	closemessage
+	applymovement 9, Common_Movement_FaceRight
+	waitmovement 9
+	msgbox DC_ThoseTwo
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_AhYesTheNews
+	closemessage
+	playse SE_PIN
+	applymovement 10, Common_Movement_ExclamationMark
+	waitmovement 10
+	msgbox DC_HoldOnASec
+	closemessage
+	applymovement 10, Common_Movement_FaceLeft
+	waitmovement 10
+	msgbox DC_IfMsIto
+	closemessage
+	playse SE_PIN
+	applymovement 11, Common_Movement_ExclamationMark
+	waitmovement 11
+	applymovement 11, Common_Movement_FaceRight
+	waitmovement 11
+	msgbox DC_ExcuseMe
+	closemessage
+	applymovement 9, Common_Movement_FaceDown
+	waitmovement 9
+	msgbox DC_AndImDiabetic
+	closemessage
+	applymovement 10, Common_Movement_FaceDown
+	waitmovement 10
+	msgbox DC_ISuppose
+	closemessage
+	applymovement 11, Common_Movement_FaceDown
+    waitmovement 11
+	msgbox DC_AtLeastImResponsible
+	closemessage
+	applymovement 8, Common_Movement_FaceUp
+	waitmovement 8
+	msgbox DC_HoweverJustLikeToday
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement 6, Common_Movement_FaceLeft
+	applymovement 7, Common_Movement_FaceLeft
+	waitmovement 7
+	msgbox DC_IfIRecall
+	closemessage
+	applymovement 8, Common_Movement_FaceRight
+	waitmovement 8
+	msgbox DC_AreYouSerious
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, DC_ReturnToPrez
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_SoIfImUnderstanding
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_ItsNoLonger
+	closemessage
+	applymovement 6, Common_Movement_FaceUp
+	waitmovement 6
+	msgbox DC_Negligence
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_AccordingToPrez
+	closemessage
+	goto DC_CorporateInterrogation3
+	
+DC_CorporateInterrogation3::
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_YouAndYourPartner
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_ChainOfEvents
+	closemessage
+	applymovement 7, Common_Movement_FaceUp
+	waitmovement 7
+	msgbox DC_YouExpectMe
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement 6, Common_Movement_FaceLeft
+	waitmovement 6
+	msgbox DC_OthersAddress
+	closemessage
+	playbgm 373, 1
+	applymovement 10, Common_Movement_StepDown
+	waitmovement 10
+	msgbox DC_ForgiveUs
+	closemessage
+	applymovement 9, Common_Movement_StepDown
+	waitmovement 9
+	msgbox DC_WhatHeSaid
+	closemessage
+	applymovement 8, Common_Movement_StepRight
+	waitmovement 8
+	msgbox DC_ItsNotJust
+	closemessage
+	applymovement 11, Common_Movement_StepDown
+	waitmovement 11
+	msgbox DC_AndINeed
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_WellThereYaGo
+	closemessage
+	playbgm 392, 1
+	applymovement 6, Common_Movement_QuestionMark
+	waitmovement 6
+	msgbox DC_IsThatARing
+	closemessage
+	playse SE_PIN
+	applymovement 11, Common_Movement_ExclamationMark
+	waitmovement 11
+	msgbox DC_WellThats
+	closemessage
+	applymovement 6, Common_Movement_FaceLeft
+	waitmovement 6
+	msgbox DC_Shyness
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, DC_Chuckle
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_OhBoy
+	goto DC_CorporateInterrogation4
+	
+DC_CorporateInterrogation4::
+	fadescreen 1
+	setflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE4
+	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
+	removeobject 6
+	removeobject 7
+	removeobject 8
+	removeobject 9
+	removeobject 10
+	removeobject 11
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepRight
+	waitmovement EVENT_OBJ_ID_PLAYER
+	fadedefaultbgm
+	delay 10
+	fadescreen 0
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_ToThinkThe
+	closemessage
+	giveitem_std ITEM_UP_GRADE
+	setvar VAR_RYU_EXP_BATTERY, 1
+	closemessage
+	giveitem_std ITEM_OLD_SEA_MAP
+	setflag FLAG_ENABLE_SHIP_FARAWAY_ISLAND
+	closemessage
+	msgbox DC_TheExpDrive
+	closemessage
+	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 30
+	setflag FLAG_RYU_DEVON_LINE_FINISHED
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	releaseall
+	end
+	
+DC_Chuckle:
+	walk_in_place_fast_down
+	step_end
+
+RustboroCity_DevonCorp_3F_Movement_212534: @ 8212534
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_in_place_fastest_left
+	step_end
+
+RustboroCity_DevonCorp_3F_Movement_212543: @ 8212543
+	delay_16
+	walk_in_place_fastest_down
+	step_end
+
+RustboroCity_DevonCorp_3F_Movement_212546: @ 8212546
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+RustboroCity_DevonCorp_3F_Movement_21254F: @ 821254F
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+RustboroCity_DevonCorp_3F_Movement_212558: @ 8212558
+    walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+RustboroCity_DevonCorp_3F_Movement_212566: @ 8212566
+	delay_16
+	delay_16
+	walk_down
+	walk_down
+	walk_in_place_fastest_right
+	step_end
+
+DC_Scientist:
+	lock
+	msgbox DC_YouAreScientist
+	closemessage
+	release
+	end
+
+DC_YouAreScientist:
+	.string "I heard you became Cozmo's\nunderstudy. Congratulations!$"
+	
+DC_BeginQuest::
+	lock
+	msgbox DC_WorkForDevon MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq DC_HelpingDevon
+	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
+	
+
+DC_HelpingDevon::
+	applymovement 2, Common_Movement_ExclamationMark
+	waitmovement 0
+	msgbox DC_TalkToCEO MSGBOX_DEFAULT
+	setflag FLAG_RYU_PLAYER_HELPING_DEVON 
+	clearflag FLAG_HIDE_GRANITE_CAVE_STEVEN
+	release
+	end
+	
+DC_Mission1Done::
+	msgbox DC_M1CMSG MSGBOX_DEFAULT
+	goto DC_Mission2
+	release
+	end
+	
+DC_Mission2::
+	msgbox DC_M2Msg MSGBOX_DEFAULT
+	setflag FLAG_RYU_DEVON_MISSION2START
+	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
+	release
+	end
+	
+DC_OnMission2:
+	msgbox DC_GoSeeCozmo MSGBOX_DEFAULT
+	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
+	release
+	end
+
+DC_DeliveredLetterCheck:: @ 8212595
+	goto_if_set FLAG_RECEIVED_EXP_SHARE, RC_ES_Recieved
+	msgbox DC_CEO_DeliveredLetter, MSGBOX_DEFAULT
+	giveitem_std ITEM_EXP_SHARE
+	compare VAR_RESULT, 0
+	goto_if_eq Common_EventScript_ShowBagIsFull
+	setflag FLAG_RECEIVED_EXP_SHARE
+	msgbox DC_CEO_ExpShareDesc, MSGBOX_DEFAULT
+	closemessage
+	goto_if_set FLAG_DELIVERED_DEVON_GOODS RC_DevonGoodsReward
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceDown
+	waitmovement 0
+	release
+	end
+	
+RC_ES_Recieved::
+	msgbox RC_AlreadyDeliveredLetter MSGBOX_DEFAULT
+	clearflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN
+	release
+	end
+
+RustboroCity_DevonCorp_3F_EventScript_2125CC:: @ 82125CC
+    goto_if_set FLAG_RYU_DG_REWARD_RECEIVED RC_GoodsRcv
+	msgbox DC_Msg_StoneLookingAtPaperwork, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceDown
+	waitmovement 0
+	goto_if_set FLAG_DELIVERED_DEVON_GOODS RC_DevonGoodsReward
+	release
+	end
+
+RC_DevonGoodsReward::
+	msgbox RC_DG_Delivered MSGBOX_DEFAULT
+	goto_if_set FLAG_RYU_DG_REWARD_RECEIVED RC_GoodsRcv
+	setflag FLAG_RYU_DG_REWARD_RECEIVED
+	msgbox RC_DevonThanks MSGBOX_DEFAULT
+	giveitem_std ITEM_MASTER_BALL
+	release
+	end
+	
+RC_AlreadyDeliveredLetter:
+	.string "Mr Stone: Thanks for delivering\nmy letter. My son already replied.\pHave you had a chance to visit\nSlateport yet?$"
+
+	
+DC_WorkForDevon:
+	.string "Devon Employee: Oh, hi!\ndid you come here for a job?\p {COLOR LIGHT_GREEN} {SHADOW GREEN}(Are you sure you want to\n work for Devon Corp? You won't be\l able to pursue any other main line\l if you do!)$"
+	
+RC_DG_Delivered:
+	.string "I heard you managed to get the\p"
+	.string "trade secret to Stern, and protect\n"
+    .string "him from the Aqua thugs.$"
+	
+RC_DevonThanks:
+	.string "It's a proprietary LIDAR system!\p"
+	.string "top of the line! Almost priceless!\n"
+	.string "Here, take this Master Ball, it's the only\p"
+	.string "thing I can give that's equal in value.$"
+
+DC_CEO_DeliveredLetter: @ 8212A29
+	.string "Mr. Stone: You delivered my letter?\n"
+	.string "Thank you kindly!\p"
+	.string "This is my way of thanking you.\n"
+	.string "It should help you, a trainer.$"
+
+DC_TalkToCEO: @ 8212C37
+	.string "I can't tell you how much I'm\n"
+	.string "grateful for what you've done.\p"
+	.string "Oh, that's right.\n"
+	.string "Could you go talk to the CEO?\p"
+	.string "He's behind his desk to our right.$"
+	
+DC_M1CMSG:
+	.string "Mr Stone: {PLAYER}! Thanks for\nhelping cozmo.$"
+	
+DC_M2Msg:
+	.string "Prof. Cozmo wanted to thank you, \nso go visit him at his house\land chat with him.\pHe might have other tasks for you.\pPlease treat him with the\nsame respect you treat me.$"
+	
+DC_GoSeeCozmo:
+	.string "Mr. Stone: {PLAYER}! Please go visit Cozmo,\nhe's waiting for you.$"
+
+
+RC_GoodsRcv:
+	goto_if_set FLAG_RYU_DEVON_MISSION1START, DC_OnQuest1
+	msgbox DC_Msg_StoneLookingAtPaperwork MSGBOX_DEFAULT
+	goto DC_MFQuest
+	release
+	end
+	
+DC_OnQuest1::
+	msgbox DC_M1Desc MSGBOX_DEFAULT
+	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	clearflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	setvar VAR_METEOR_FALLS_STATE, 2
+	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	release
+	end
+	
+DC_MFQuest::
+	msgbox DC_MFQuestdescription MSGBOX_DEFAULT
+	setflag FLAG_RYU_DEVON_MISSION1START
+	release
+	end
+
 
 RustboroCity_DevonCorp_3F_EventScript_MeetPresident:: @ 821246E
 	lockall
-	msgbox RustboroCity_DevonCorp_3F_Text_ThisIs3rdFloorWaitHere, MSGBOX_DEFAULT
-	closemessage
-	applymovement 2, RustboroCity_DevonCorp_3F_Movement_EmployeeWalkOffscreen
-	waitmovement 0
-	delay 80
-	applymovement 2, RustboroCity_DevonCorp_3F_Movement_EmployeeReturnToPlayer
-	waitmovement 0
-	msgbox RustboroCity_DevonCorp_3F_Text_WordWithPresidentComeWithMe, MSGBOX_DEFAULT
-	closemessage
-	playbgm MUS_TSURETEK, 0
-	applymovement 2, RustboroCity_DevonCorp_3F_Movement_LeadPlayerToPresident
-	applymovement EVENT_OBJ_ID_PLAYER, RustboroCity_DevonCorp_3F_Movement_PlayerFollowToPresident
-	waitmovement 0
-	msgbox RustboroCity_DevonCorp_3F_Text_PleaseGoAhead, MSGBOX_DEFAULT
-	closemessage
-	fadedefaultbgm
-	applymovement 2, RustboroCity_DevonCorp_3F_Movement_EmployeeFaceDesk
-	applymovement EVENT_OBJ_ID_PLAYER, RustboroCity_DevonCorp_3F_Movement_PlayerApproachDesk
-	waitmovement 0
-	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor, MSGBOX_DEFAULT
+	call_if_set FLAG_RYU_DS_LANETTE_ACQ, DC_CheckLanette
+	call_if_set FLAG_RYU_DS_LANETTE_ACQ, DC_CheckLanette2
+	goto_if_set FLAG_RYU_DEVON_CEO_INTRO, DC_IntroDone
+	msgbox DC_CEOIntro, MSGBOX_DEFAULT
 	giveitem_std ITEM_LETTER
-	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis, MSGBOX_DEFAULT
 	playfanfare MUS_FANFA4
-	message RustboroCity_DevonCorp_3F_Text_ReceivedPokenav
+	msgbox DC_CEO_GivesPokenav, MSGBOX_DEFAULT
 	waitfanfare
+	closemessage
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV
 	setflag FLAG_HIDE_RUSTBORO_CITY_POKEMON_SCHOOL_SCOTT
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp, MSGBOX_DEFAULT
 	closemessage
-	call Common_EventScript_OutOfCenterPartyHeal
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare, MSGBOX_DEFAULT
-	setflag FLAG_HIDE_ROUTE_116_WANDAS_BOYFRIEND
-	clearflag FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
-	clearflag FLAG_HIDE_RUSTURF_TUNNEL_WANDA
-	clearflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
-	clearflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
-	setvar VAR_BRINEY_LOCATION, 1
+	closemessage
 	clearflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	setvar VAR_DEVON_CORP_3F_STATE, 1
-	setvar VAR_RUSTBORO_CITY_STATE, 6
+	setflag FLAG_RYU_DEVON_CEO_INTRO
+	clearflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN
 	releaseall
 	end
-
-@ Unused
-RustboroCity_DevonCorp_3F_Movement_21252F: @ 821252F
-	walk_up
-	walk_up
-	walk_up
-	walk_in_place_fastest_left
-	step_end
 
 RustboroCity_DevonCorp_3F_Movement_LeadPlayerToPresident: @ 8212534
 	walk_right
@@ -151,12 +844,14 @@ RustboroCity_DevonCorp_3F_Movement_PlayerApproachDesk: @ 8212566
 RustboroCity_DevonCorp_3F_EventScript_MrStone:: @ 821256C
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_EXP_SHARE, RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor
-	goto_if_set FLAG_DELIVERED_STEVEN_LETTER, RustboroCity_DevonCorp_3F_EventScript_GiveExpShare
-	msgbox RustboroCity_DevonCorp_3F_Text_CountingOnYou, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
+	goto_if_set FLAG_RYU_DEVON_SCIENTIST, DC_Scientist
+	goto_if_set FLAG_RYU_DEVON_LINE_FINISHED, DC_Afterstory
+	goto_if_set FLAG_RYU_DEVON_MISSION2START, DC_OnMission2
+	goto_if_set FLAG_RYU_DEVON_M1C, DC_Mission1Done
+	goto_if_set FLAG_RYU_DG_REWARD_RECEIVED, RustboroCity_DevonCorp_3F_EventScript_2125CC
+	goto_if_set FLAG_DELIVERED_DEVON_GOODS,  RC_DevonGoodsReward
+	goto_if_set FLAG_DELIVERED_STEVEN_LETTER, DC_DeliveredLetterCheck
+	goto_if_set FLAG_RECOVERED_DEVON_GOODS, RustboroCity_DevonCorp_3F_EventScript_MeetPresident
 	release
 	end
 
@@ -166,7 +861,7 @@ RustboroCity_DevonCorp_3F_EventScript_GiveExpShare:: @ 8212595
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_EXP_SHARE
-	msgbox RustboroCity_DevonCorp_3F_Text_ExplainExpShare, MSGBOX_DEFAULT
+	msgbox DC_CEO_ExpShareDesc, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -174,10 +869,12 @@ RustboroCity_DevonCorp_3F_EventScript_GiveExpShare:: @ 8212595
 	end
 
 RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor:: @ 82125CC
+	goto_if_set FLAG_RYU_DG_REWARD_RECEIVED RC_GoodsRcv
 	msgbox RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
+	goto_if_set FLAG_DELIVERED_DEVON_GOODS RC_DevonGoodsReward
 	release
 	end
 
@@ -198,7 +895,61 @@ RustboroCity_DevonCorp_3F_EventScript_RareRocksDisplay:: @ 8212600
 	msgbox RustboroCity_DevonCorp_3F_Text_RareRocksDisplay, MSGBOX_SIGN
 	end
 
-RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor: @ 8212609
+DC_Afterstory:
+	goto_if_set FLAG_DEFEATED_RAYQUAZA, DC_AfterAfterStory
+	goto_if_unset FLAG_SYS_GAME_CLEAR, DC_NotReadyYet
+	msgbox DC_AfterstoryMsg
+	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 69
+	release
+	end
+	
+DC_NotReadyYet::
+	msgbox DC_NRYMsg
+	closemessage
+	release
+	end
+	
+	
+DC_AfterAfterStory::
+	msgbox DC_AASMsg
+	closemessage
+	release
+	end
+
+DC_CheckLanette::
+	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, DC_FinishQuestFirst
+	return
+
+DC_CheckLanette2::
+	goto_if_unset FLAG_RYU_DS_LANETTE_BADEND, DC_FinishQuestFirst
+	return
+	
+DC_FinishQuestFirst::
+	msgbox FT_MustFinishLanette
+	closemessage
+	release
+	end
+
+DC_Msg_StoneLookingAtPaperwork: @ 8212B78
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Mr. Stone appears to be looking over some\npaperwork.)$"
+
+
+DC_MFQuestdescription:
+	.string "Mr. Stone: One of our associates\nreached out.\pProf. Cozmo is having trouble with\lcriminals interfering with his work\l in Meteor Falls.\pDo you think you can go over there\nand provide some help for him there?$"
+	
+DC_M1Desc:
+	.string "Mr. Stone: {PLAYER}! Hurry to Meteor Falls\nand help Prof. Cozmo!$"
+
+DC_AASMsg:
+	.string "Mr Stone: I heard you encountered\nRayquaza. I hope that went well for you.\pWell, Best of luck on your other plans!$"
+	
+DC_AfterstoryMsg:
+	.string "You've more than proven yourself\na capable Trainer. I've had a guardian\passigned to Sky Pillar since we discovered\nit's significance.\pJust show him your Devon Card,\n and he'll allow you entry!$"
+	
+DC_NRYMsg:
+	.string "You've been very valuable to us as\nan employee of Devon.\pWhen you amass more power, I\nwill give you access to a special\pplace that we have been researching.$"
+	
+DC_CEOIntro: @ 8212609
 	.string "I'm MR. STONE, the PRESIDENT of\n"
 	.string "the DEVON CORPORATION.\p"
 	.string "I'd just got word about you!\p"
@@ -220,20 +971,20 @@ RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis: @ 821277C
 	.string "a favor for nothing in return.\p"
 	.string "That's why I want you to have this!$"
 
-RustboroCity_DevonCorp_3F_Text_ReceivedPokenav: @ 8212820
+RustboroCity_DevonCorp_3F_Text_ReceivedPokenav:
+DC_CEO_GivesPokenav: @ 8212820
 	.string "{PLAYER} received a Pokénav.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp: @ 8212837
-	.string "MR. STONE: That device…\p"
-	.string "It's a Pokémon NAVIGATOR, or Pokénav\n"
-	.string "for short.\p"
+	.string "Mr. Stone: That device…\p"
+	.string "It's a Pokénav\p"
 	.string "It's an indispensable tool for any\n"
-	.string "Trainer on an adventure.\p"
+	.string "trainer on an adventure.\p"
 	.string "It has a map of the Hoenn region.\p"
 	.string "You can check the locations of\n"
-	.string "DEWFORD and SLATEPORT easily!\p"
+	.string "Dewford and Slateport easily!\p"
 	.string "By the way, I've heard that sinister\n"
-	.string "criminals--MAGMA and AQUA, I believe--\l"
+	.string "criminals--Magma and Aqua, I believe--\l"
 	.string "have been making trouble far and wide.\p"
 	.string "I think it would be best if you rested\n"
 	.string "up before you go on your way.$"
@@ -251,7 +1002,7 @@ RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter: @ 8212A29
 	.string "This is my way of thanking you.\n"
 	.string "It should help you, a Trainer.$"
 
-RustboroCity_DevonCorp_3F_Text_ExplainExpShare: @ 8212A9E
+DC_CEO_ExpShareDesc: @ 8212A9E
 	.string "MR. STONE: A Pokémon holding that\n"
 	.string "EXP. SHARE will be given some of the\l"
 	.string "EXP Points from battle.\p"

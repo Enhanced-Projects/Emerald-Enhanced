@@ -14,6 +14,8 @@ MtChimney_OnResume: @ 822EDD2
 MtChimney_EventScript_Archie:: @ 822EDD5
 	lock
 	faceplayer
+	goto_if_set FLAG_RYU_DEVON_MISSION3START, MC_ArchieEnemyIntro
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, MC_ArchiIntro
 	call_if_unset FLAG_EVIL_LEADER_PLEASE_STOP, MtChimney_EventScript_ArchieGoStopTeamMagma
 	call_if_set FLAG_EVIL_LEADER_PLEASE_STOP, MtChimney_EventScript_ArchieBusyFighting
 	closemessage
@@ -22,6 +24,36 @@ MtChimney_EventScript_Archie:: @ 822EDD5
 	setflag FLAG_EVIL_LEADER_PLEASE_STOP
 	release
 	end
+
+MC_ArchieEnemyIntro::
+	msgbox MC_EnemyArchieSpeech MSGBOX_DEFAULT
+	release
+	end
+	
+MC_EnemyArchieSpeech:
+	.string "Archie: Oh, great,\nnow you're here too.\pWhy don't you do something\nconstructive... like fighting off\lteam Magma...$"
+
+MC_ArchiIntro::
+	goto_if_set FLAG_EVIL_LEADER_PLEASE_STOP, MC_ArchieOrders
+	msgbox MC_ArchieIntroMsg MSGBOX_DEFAULT
+	setflag FLAG_EVIL_LEADER_PLEASE_STOP
+	release
+	end
+	
+MC_ArchieOrders::
+	msgbox ArchieOrdersMsg MSGBOX_DEFAULT
+	release
+	end
+
+ArchieOrdersMsg:
+	.string "Archie: {PLAYER}! You have your orders.\l"
+	.string "GET IT DONE!$"
+	
+MC_ArchieIntroMsg:
+	.string "Archie: {PLAYER}! I'm glad you're here...\n"
+	.string "Maxie is over there with that machine, \p"
+	.string "trying to erupt the volcano.\p"
+	.string "we MUST stop him! Do whatever it takes!$"
 
 MtChimney_EventScript_ArchieGoStopTeamMagma:: @ 822EDF9
 	msgbox MtChimney_Text_ArchieGoStopTeamMagma, MSGBOX_DEFAULT
@@ -62,20 +94,73 @@ MtChimney_EventScript_Maxie:: @ 822EE0B
 	call_if_eq MtChimney_EventScript_ArchieApproachPlayerNorth
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, MC_PlayerAqua
+	goto MC_PlayerNotAqua
+
+MC_PlayerNotAqua::
 	msgbox MtChimney_Text_ArchieThankYou, MSGBOX_DEFAULT
 	closemessage
-	compare VAR_FACING, DIR_EAST
+	compare VAR_FACING, 4
 	call_if_eq MtChimney_EventScript_ArchieExitEast
-	compare VAR_FACING, DIR_NORTH
+	compare VAR_FACING, 2
 	call_if_eq MtChimney_EventScript_ArchieExitNorth
 	removeobject 1
 	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
 	setflag FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY
-	clearflag FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO
+	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
 	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	clearflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
+	setflag FLAG_RYU_DEVON_MISSION_3_DONE
 	releaseall
 	end
+	
+MC_PlayerAqua::
+	msgbox MC_PlayerHelpedAqua, MSGBOX_DEFAULT
+	closemessage
+	compare VAR_FACING, 4
+	call_if_eq MtChimney_EventScript_ArchieExitEast
+	compare VAR_FACING, 2
+	call_if_eq MtChimney_EventScript_ArchieExitNorth
+	removeobject 1
+	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
+	setflag FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY
+	setflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	clearflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
+	setflag FLAG_RYU_PLAYER_AQUA_ADMIN
+	setflag FLAG_RYU_AQUA_MISSION2COMPLETE
+	goto MC_FoundStone
+	releaseall
+	end
+	
+MC_PlayerHelpedAqua:
+	.string "Nice job, {PLAYER}, you managed to beat\n"
+	.string "Maxie on your own! Who was that girl\p"
+	.string "back there crying? The one with\n"
+	.string "purple hair? ... ... ... \p"
+	.string "Oh well, it doesn't matter. What does\n"
+	.string "matter is that we're done here. Report\p"
+	.string "back to Shelly. I'm very impressed with\n"
+	.string "your work for us so far. I now oficially\p"
+	.string "promote you to Lieutenant. You'll\n"
+	.string "be working alongside Shelly as an\p"
+	.string "equal now. Congratulations.$"
+	
+MC_FoundStone::
+	goto_if_set FLAG_RYU_PLAYER_ARCHIE_ACQ, ryu_end
+	msgbox MC_DroppedFragment MSGBOX_DEFAULT
+	giveitem_std ITEM_STAR_PIECE, 1
+	setflag FLAG_RYU_PLAYER_AQUA_STONE
+	release
+	end
+	
+MC_DroppedFragment:
+	.string "You see something sparkling on the\n"
+	.string "ground. It's a glowing white gemstone\p"
+	.string "{PLAYER} pocketed the star fragment.\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You vaguely remember that there's a\n"
+	.string " jeweler in Lilycove gift corner that\p"
+	.string " can turn a stone into a necklace.)$"
 
 MtChimney_EventScript_ArchieApproachPlayerEast:: @ 822EEC7
 	applymovement 1, MtChimney_Movement_ArchieApproachPlayerEast
@@ -184,224 +269,6 @@ MtChimney_Movement_ArchieExitNorth: @ 822EF9C
 	walk_down
 	step_end
 
-@ Unused
-MtChimney_Movement_22EFA6: @ 822EFA6
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22EFB8: @ 822EFB8
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22EFC1: @ 822EFC1
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22EFD0: @ 822EFD0
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22EFE9: @ 822EFE9
-	delay_16
-	delay_16
-	delay_16
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22EFF4: @ 822EFF4
-	delay_16
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22F004: @ 822F004
-	delay_16
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22F015: @ 822F015
-	delay_16
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_in_place_fastest_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22F01D: @ 822F01D
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22F02B: @ 822F02B
-	walk_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22F02D: @ 822F02D
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22F035: @ 822F035
-	delay_16
-	delay_16
-	walk_in_place_fastest_left
-	delay_16
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22F03F: @ 822F03F
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	walk_in_place_fastest_left
-	delay_16
-	walk_down
-	walk_down
-	step_end
-
-@ Unused
-MtChimney_Movement_22F04A: @ 822F04A
-	lock_facing_direction
-	walk_fast_left
-	unlock_facing_direction
-	face_right
-	step_end
-
-@ Unused
-MtChimney_Movement_22F04F: @ 822F04F
-	walk_left
-	walk_in_place_fastest_right
-	delay_16
-	step_end
-
 MtChimney_EventScript_BusyAquaGrunt1:: @ 822F053
 	msgbox MtChimney_Text_MagmaOutnumbersUs, MSGBOX_SIGN
 	end
@@ -414,9 +281,9 @@ MtChimney_EventScript_BusyAquaGrunt3:: @ 822F065
 	msgbox MtChimney_Text_MagmasNameSimilar, MSGBOX_SIGN
 	end
 
-MtChimney_EventScript_Tabitha:: @ 822F06E
-	trainerbattle_single TRAINER_TABITHA_MT_CHIMNEY, MtChimney_Text_TabithaIntro, MtChimney_Text_TabithaDefeat
-	msgbox MtChimney_Text_TabithaPostBattle, MSGBOX_AUTOCLOSE
+MtChimney_EventScript_Courtney:: @ 822F06E
+	trainerbattle_single TRAINER_COURTNEY_MT_CHIMNEY, MtChimney_Text_CourtneyIntro, MtChimney_Text_CourtneyDefeat
+	msgbox MtChimney_Text_CourtneyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MtChimney_EventScript_Grunt2:: @ 822F085
@@ -543,7 +410,6 @@ MtChimney_EventScript_SawyerDefeated:: @ 822F234
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox MtChimney_Text_SawyerRegister, MSGBOX_DEFAULT
-	@nop Trainer_SAWYER_1
 	release
 	end
 
@@ -602,22 +468,23 @@ MtChimney_Text_MaxieYouHaventSeenLastOfMagma: @ 822F5F7
 	.string "Even without the METEORITE, if we\n"
 	.string "obtain that ORB… Fufufu…$"
 
-MtChimney_Text_TabithaIntro: @ 822F6AA
-	.string "Hehehe!\p"
+MtChimney_Text_CourtneyIntro: @ 822F6AA
+	.string "Courtney: Hehehe!\p"
 	.string "So you've come all the way here!\p"
-	.string "But you're too late!\n"
-	.string "I've already delivered the METEORITE\l"
-	.string "from METEOR FALLS to the BOSS!$"
+	.string "But it's too late!\n"
+	.string "When we finish our work in Hoenn,\p"
+	.string "I'll get to spend even more time with\n"
+	.string "Maxie...$"
 
-MtChimney_Text_TabithaDefeat: @ 822F72C
-	.string "Hehehe…\p"
-	.string "Even though I've lost, if our leader\n"
-	.string "awakens that thing…$"
+MtChimney_Text_CourtneyDefeat: @ 822F72C
+	.string "No... NO... NO! This isn't how it's\p"
+	.string "supposed to be! I wanted to\n"
+	.string "impress Maxie!$"
 
-MtChimney_Text_TabithaPostBattle: @ 822F76D
-	.string "BOSS, hurry!\n"
-	.string "Give it the METEORITE's energy!\p"
-	.string "Hehehe…$"
+MtChimney_Text_CourtneyPostBattle: @ 822F76D
+	.string "Maxie.... I'm sorry I've failed you.\n"
+	.string "I hope you had enough time...\p"
+	.string "…$"
 
 MtChimney_Text_Grunt2Intro: @ 822F7A2
 	.string "We of TEAM MAGMA are working hard for\n"
@@ -631,7 +498,7 @@ MtChimney_Text_Grunt2Defeat: @ 822F83A
 	.string "What do you mean I lost?$"
 
 MtChimney_Text_Grunt2PostBattle: @ 822F859
-	.string "Our BOSS says, “It will make everyone\n"
+	.string "Our boss says, “It will make everyone\n"
 	.string "happy.”\p"
 	.string "But why does everyone keep getting\n"
 	.string "in our way?$"
@@ -653,7 +520,7 @@ MtChimney_Text_TeamAquaAlwaysMessingWithPlans: @ 822F978
 	.string "They always mess with our plans!$"
 
 MtChimney_Text_MeteoritesPackAmazingPower: @ 822F9B2
-	.string "METEORITES pack amazing power!$"
+	.string "Meteorites pack amazing power!$"
 
 MtChimney_Text_YouBetterNotMessWithUs: @ 822F9D1
 	.string "You'd better not mess with us!\p"
@@ -862,4 +729,3 @@ MtChimney_Text_SawyerRematchDefeat: @ 82305E3
 MtChimney_Text_SawyerPostRematch: @ 8230614
 	.string "Actually, it really is hot here.\n"
 	.string "I'm overdressed for these parts.$"
-

@@ -14,6 +14,22 @@ SkyPillar_Top_EventScript_TryRemoveRayquaza:: @ 82396D2
 	goto_if_ne Common_EventScript_NopReturn
 	removeobject VAR_LAST_TALKED
 	return
+	
+SP_RyuRayEnc::
+	lockall
+	playmoncry SPECIES_RAYQUAZA, 2
+	delay 40
+	waitmoncry
+	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 100
+	setwildbattle SPECIES_RAYQUAZA, 70, ITEM_NONE
+	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_2
+	removeobject 1
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setflag FLAG_DEFEATED_RAYQUAZA
+	releaseall
+	end
 
 SkyPillar_Top_OnTransition: @ 82396E6
 	compare VAR_SKY_PILLAR_STATE, 2

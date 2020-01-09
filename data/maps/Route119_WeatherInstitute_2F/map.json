@@ -117,6 +117,19 @@
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route119_WeatherInstitute_2F_EventScript_Grunt5",
       "flag": "FLAG_HIDE_ROUTE_119_TEAM_AQUA"
+    },
+    {
+      "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
+      "x": 17,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "0",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
     }
   ],
   "warp_events": [

@@ -1,6 +1,43 @@
 Route119_WeatherInstitute_1F_MapScripts:: @ 826FA86
 	map_script MAP_SCRIPT_ON_TRANSITION, Route119_WeatherInstitute_1F_OnTransition
+	map_script ON_FRAME, WI_CheckQuestStatus
 	.byte 0
+
+WI_CheckQuestStatus::
+	map_script_2 VAR_RYU_DEVON_SCIENTIST_STAGE, 101, WI_StartDSCI
+	.2byte 0
+
+WI_StartDSCI::
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 102
+	addobject 6
+	playse SE_PIN
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 6
+	msgbox WI_CozmoIntro
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
+	
+WI_CantLeave::
+	lock
+	msgbox WI_NotAllowedToLeave
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
+
+
+WI_NotAllowedToLeave:
+	.string "You must finish what you started\nhere.$"
+	
+WI_CozmoIntro:
+	.string "Cozmo: This is very strange indeed.\nThere should be more noise than there\lis.\pYou should go check it out.$"
+
 
 Route119_WeatherInstitute_1F_OnTransition: @ 826FA8C
 	compare VAR_WEATHER_INSTITUTE_STATE, 0

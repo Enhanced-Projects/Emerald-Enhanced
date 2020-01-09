@@ -286,10 +286,8 @@ RusturfTunnel_EventScript_AquaGruntBackUp:: @ 822D083
 	msgbox RusturfTunnel_Text_ComeAndGetSome, MSGBOX_DEFAULT
 	closemessage
 	applymovement 6, RusturfTunnel_Movement_GruntAndPeekoBackUp
-	applymovement 7, RusturfTunnel_Movement_GruntAndPeekoBackUp
 	waitmovement 0
 	copyobjectxytoperm 6
-	copyobjectxytoperm 7
 	setvar VAR_RUSTURF_TUNNEL_STATE, 3
 	releaseall
 	end
@@ -324,33 +322,19 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	waitmovement 0
 	removeobject 6
 	delay 50
-	addobject 5
-	applymovement 5, RusturfTunnel_Movement_BrineyApproachPeeko1
-	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, RusturfTunnel_Movement_PlayerMoveAsideForBriney
-	applymovement 5, RusturfTunnel_Movement_BrineyApproachPeeko2
-	waitmovement 0
-	msgbox RusturfTunnel_Text_PeekoGladToSeeYouSafe, MSGBOX_DEFAULT
-	applymovement 5, Common_Movement_FacePlayer
-	waitmovement 0
-	message RusturfTunnel_Text_ThankYouLetsGoHomePeeko
-	waitmessage
-	waitse
-	playmoncry SPECIES_WINGULL, 0
-	waitbuttonpress
-	waitmoncry
-	closemessage
 	applymovement EVENT_OBJ_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBrineyExit
-	applymovement 5, RusturfTunnel_Movement_BrineyExit
-	applymovement 7, RusturfTunnel_Movement_PeekoExit
-	waitmovement 0
-	removeobject 5
-	removeobject 7
 	clearflag FLAG_DEVON_GOODS_STOLEN
 	setflag FLAG_RECOVERED_DEVON_GOODS
 	setvar VAR_RUSTBORO_CITY_STATE, 4
 	setvar VAR_BRINEY_HOUSE_STATE, 1
 	setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
+	msgbox RT_ThiefLeftMsg MSGBOX_DEFAULT
+	waitmessage
+	closemessage
+	playse SE_PIN
+	waitse
+	msgbox RT_ThiefNote MSGBOX_DEFAULT
+	setflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
 	release
 	end
 
@@ -432,6 +416,20 @@ RusturfTunnel_EventScript_Mike:: @ 822D1B1
 	msgbox RusturfTunnel_Text_MikePostBattle, MSGBOX_AUTOCLOSE
 	end
 
+RT_ThiefLeftMsg:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You read the label on the package.)\n"
+	.string "It would appear that this package\p"
+	.string "belongs to Devon Corporation\n"
+	.string "in Rustboro.There's probably a reward\p"
+	.string "for returning it.$"
+	
+RT_ThiefNote:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} sees a note on the ground\n presumably dropped by the soldier.)\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}It says:\p"
+	.string "{COLOR DARK_GREY}{SHADOW BLUE}Your instructions are to obtain the\nnew LIDAR tech developed by Devon.\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}It seems like Aqua would be happy\n"
+	.string "to recover this package. They'll\pprobably pay well too.\pYou will have to decide where to\ntake the package.$"
+
+
 RusturfTunnel_Text_ComeAndGetSome: @ 822D1C8
 	.string "What, are you coming?\n"
 	.string "Come and get some, then!$"
@@ -440,9 +438,6 @@ RusturfTunnel_Text_Peeko: @ 822D1F7
 	.string "PEEKO: Pii pihyoh!$"
 
 RusturfTunnel_Text_GruntIntro: @ 822D20A
-	.string "Grah, keelhaul it all!\p"
-	.string "That hostage Pokémon turned out to\n"
-	.string "be worthless!\p"
 	.string "And to think I made a getaway…\n"
 	.string "In this tunnel to nowhere!\p"
 	.string "Hey! You!\n"
@@ -454,10 +449,10 @@ RusturfTunnel_Text_GruntDefeat: @ 822D2B0
 
 RusturfTunnel_Text_GruntTakePackage: @ 822D2E1
 	.string "This is plain not right…\p"
-	.string "The BOSS told me this would be a\n"
+	.string "The admin told me this would be a\n"
 	.string "slick-and-easy job to pull.\p"
 	.string "All I had to do was steal some package\n"
-	.string "from DEVON.\p"
+	.string "from Devon.\p"
 	.string "Tch!\n"
 	.string "You want it back that badly, take it!$"
 

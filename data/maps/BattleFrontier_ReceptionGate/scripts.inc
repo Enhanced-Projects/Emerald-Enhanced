@@ -8,12 +8,12 @@ BattleFrontier_ReceptionGate_OnTransition: @ 82661E5
 	end
 
 BattleFrontier_ReceptionGate_OnFrame: @ 82661E9
-	map_script_2 VAR_HAS_ENTERED_BATTLE_FRONTIER, 0, BattleFrontier_ReceptionGate_EventScript_FirstTimeEntering
+	map_script_2 FLAG_HAS_ENTERED_BATTLE_FRONTIER, 0, BattleFrontier_ReceptionGate_EventScript_FirstTimeEntering
 	.2byte 0
 
 BattleFrontier_ReceptionGate_EventScript_FirstTimeEntering:: @ 82661F3
 	lockall
-	setvar VAR_HAS_ENTERED_BATTLE_FRONTIER, 1
+	setvar FLAG_HAS_ENTERED_BATTLE_FRONTIER, 1
 	playse SE_PIN
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0

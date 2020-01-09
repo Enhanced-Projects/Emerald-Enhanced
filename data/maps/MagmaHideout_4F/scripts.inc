@@ -120,9 +120,9 @@ MagmaHideout_4F_EventScript_Grunt13:: @ 823A6BA
 	msgbox MagmaHideout_4F_Text_Grunt13PostBattle, MSGBOX_AUTOCLOSE
 	end
 
-MagmaHideout_4F_EventScript_Tabitha:: @ 823A6D1
-	trainerbattle_single TRAINER_TABITHA_MAGMA_HIDEOUT, MagmaHideout_4F_Text_TabithaIntro, MagmaHideout_4F_Text_TabithaDefeat
-	msgbox MagmaHideout_4F_Text_TabithaPostBattle, MSGBOX_AUTOCLOSE
+MagmaHideout_4F_EventScript_Courtney:: @ 823A6D1
+	trainerbattle_single TRAINER_COURTNEY_3, MagmaHideout_4F_Text_CourtneyIntro, MagmaHideout_4F_Text_CourtneyDefeat
+	msgbox MagmaHideout_4F_Text_CourtneyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MagmaHideout_4F_Text_Grunt11Intro: @ 823A6E8
@@ -162,7 +162,7 @@ MagmaHideout_4F_Text_Grunt13Defeat: @ 823A8A7
 MagmaHideout_4F_Text_Grunt13PostBattle: @ 823A8C6
 	.string "C-come on, one more match…$"
 
-MagmaHideout_4F_Text_TabithaIntro: @ 823A8E1
+MagmaHideout_4F_Text_CourtneyIntro: @ 823A8E1
 	.string "Hehehe!\n"
 	.string "You made it this far, so I'll tell you!\p"
 	.string "That's right!\n"
@@ -172,11 +172,11 @@ MagmaHideout_4F_Text_TabithaIntro: @ 823A8E1
 	.string "It's going to awaken real soon!\n"
 	.string "Hehe! Hehehe!$"
 
-MagmaHideout_4F_Text_TabithaDefeat: @ 823A994
+MagmaHideout_4F_Text_CourtneyDefeat: @ 823A994
 	.string "Taken down again…\n"
 	.string "Hehe…$"
 
-MagmaHideout_4F_Text_TabithaPostBattle: @ 823A9AC
+MagmaHideout_4F_Text_CourtneyPostBattle: @ 823A9AC
 	.string "…And while you wasted time with me,\n"
 	.string "MAXIE should have awakened GROUDON…$"
 

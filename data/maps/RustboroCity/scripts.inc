@@ -131,14 +131,6 @@ RustboroCity_Movement_ScientistLeave: @ 81E085D
 	walk_up
 	step_end
 
-RustboroCity_EventScript_FatMan:: @ 81E085F
-	lock
-	faceplayer
-	goto_if_set FLAG_DEVON_GOODS_STOLEN, RustboroCity_EventScript_FatManSawGrunt
-	msgbox RustboroCity_Text_WeShortenItToDevon, MSGBOX_DEFAULT
-	release
-	end
-
 RustboroCity_EventScript_FatManSawGrunt:: @ 81E0874
 	msgbox RustboroCity_Text_SneakyLookingManWentAroundCorner, MSGBOX_DEFAULT
 	release
@@ -1119,3 +1111,153 @@ RustboroCity_Text_YouCanHave2On2Battle: @ 81E249D
 	.string "they'll both challenge you.\p"
 	.string "Don't you think it'd be cool if you\n"
 	.string "could beat two Trainers by yourself?$"
+	
+@==================================================================================================RyuAqua line
+
+RC_Aqua_Thief_Check::
+    lock
+	goto_if_set FLAG_DEFEATED_RUSTBORO_GYM, RC_Aqua_Thief_Spawn
+	release
+	end
+
+RC_Aqua_Thief_Spawn::
+	goto_if_set FLAG_RYU_AQUA_THIEF_SEEN, ryu_end
+    lock
+	addobject 10
+	applymovement 10, RC_Thief_Running
+	waitmovement 0
+	msgbox RC_Thief_Msg MSGBOX_SIGN
+	clearflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	setflag FLAG_RYU_AQUA_THIEF_SEEN
+	setvar VAR_RUSTURF_TUNNEL_STATE, 2
+	release
+	end
+
+RC_Thief_Msg:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You notice a guilty-looking aqua\n"
+    .string " member running up to Route 116)$"
+	
+RC_Thief_Running:
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	step_end
+	
+@==================================================================================================RyuDevon line
+
+RC_NoDevonEntry::
+	lock
+	msgbox RC_LookForIto
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepDown
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
+	
+RC_LookForIto:
+	.string " (I wonder where Ms. Ito could be.\n She should have been back by now.\p I should go find her.)$"
+	
+RustboroCity_EventScript_FatMan::
+	lock
+	faceplayer
+	compare VAR_RYU_DEVON_MAIN_QUEST_VAR, 16
+	goto_if_eq DC_FatManHelpText
+	msgbox RustboroCity_Text_WeShortenItToDevon, MSGBOX_DEFAULT
+	release
+	end
+
+	
+RC_CantExitOnQuest::
+	lock
+	msgbox RC_CantExitMsg
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
+
+RC_CantExitOnQuest2::
+	lock
+	msgbox RC_CantExitMsg
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
+	
+RC_CantExitMsg:
+	.string " {COLOR LIGHT_BLUE}{SHADOW BLUE}(I Don't think Ms. Ito went\n this way.)$"
+	
+DC_FatManHelpText:
+	lock
+	faceplayer
+	savebgm 468
+	fadenewbgm 468
+	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MSITO
+	msgbox DC_HaveISeen
+	closemessage
+	playse SE_PIN
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_HowLongAgo
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement 2, Common_Movement_FaceUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox DC_StrolledThatWay
+	closemessage
+	faceplayer
+	msgbox DC_WithSomeGuy
+	closemessage
+	playse SE_PIN
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement EVENT_OBJ_ID_PLAYER
+	closemessage
+	fadedefaultbgm
+	release
+	end
+	
+	
+DC_HaveISeen:
+	.string "... ... ...\p"
+	.string "Hm? Have I seen Ms.Ito around?\n"
+	.string "You should know...nothing gets\l"
+	.string "past me!\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}(Really now...)\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}As a matter of fact, I saw Ms. Ito\n"
+	.string "come through this way not too long\l"
+	.string "ago.$"
+	
+DC_HowLongAgo:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}How long ago was it?\p"
+	.string "Oh, I don't know...maybe half-an-\n"
+	.string "hour ago?$"
+
+DC_StrolledThatWay:
+	.string "They strolled in that direction,\n"
+	.string "probably headed to someplace a\p"
+	.string "little more quiet...don't blame\n"
+	.string "them though. The city can often\l"
+	.string "get rowdy.$"
+
+DC_WithSomeGuy:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}'They'?\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Yeah, she was with some guy...\p"
+	.string "Come to think of it, that man of\n"
+	.string "the sea ran up this way not too\l"
+	.string "long ago.\p"
+	.string " {COLOR LIGHT_BLUE}{SHADOW BLUE}(Nah, it couldn't be...)$"

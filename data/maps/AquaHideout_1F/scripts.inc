@@ -5,11 +5,29 @@ AquaHideout_1F_MapScripts:: @ 8233493
 AquaHideout_1F_EventScript_HideoutEntranceGrunt1:: @ 8233494
 	lock
 	faceplayer
-	goto_if_set FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, AquaHideout_1F_EventScript_SlateportHint1
-	goto_if_set FLAG_RECEIVED_RED_OR_BLUE_ORB, AquaHideout_1F_EventScript_MagmaHideoutHint1
+	checkitem ITEM_CARD_KEY, 1
+	compare VAR_RESULT, 1
+	goto_if_eq AHQ_PlayerOwnsHideout
 	msgbox AquaHideout_1F_Text_OurBossIsSnatchingSomething, MSGBOX_DEFAULT
 	release
 	end
+
+AHQ_PlayerOwnsHideout::
+	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE
+	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	setflag FLAG_ITEM_AQUA_HIDEOUT_B1F_NUGGET
+	msgbox AHQ_PlayerOwnsHideoutMsg MSGBOX_DEFAULT
+	fadescreen 1
+	removeobject 1
+	removeobject 2
+	fadescreen 0
+	release
+	end
+
+AHQ_PlayerOwnsHideoutMsg:
+	.string "I see you have the certificate.\nWelcome to your new hideout.\pWe'll see our way out.$"
+
 
 AquaHideout_1F_EventScript_MagmaHideoutHint1:: @ 82334B2
 	msgbox AquaHideout_1F_Text_WhereMightMagmaHideoutBe, MSGBOX_DEFAULT
@@ -24,9 +42,10 @@ AquaHideout_1F_EventScript_SlateportHint1:: @ 82334BC
 AquaHideout_1F_EventScript_HideoutEntranceGrunt2:: @ 82334C6
 	lock
 	faceplayer
-	goto_if_set FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, AquaHideout_1F_EventScript_SlateportHint2
-	goto_if_set FLAG_RECEIVED_RED_OR_BLUE_ORB, AquaHideout_1F_EventScript_MagmaHideoutHint2
-	msgbox AquaHideout_1F_Text_BossIsOnRoute122, MSGBOX_DEFAULT
+	checkitem ITEM_CARD_KEY, 1
+	compare VAR_RESULT, 1
+	goto_if_eq AHQ_PlayerOwnsHideout
+	msgbox AquaHideout_1F_Text_OurBossIsSnatchingSomething, MSGBOX_DEFAULT
 	release
 	end
 
@@ -117,3 +136,11 @@ AquaHideout_1F_Text_Grunt1PostBattle: @ 8233977
 	.string "I took the loss for the TEAM,\n"
 	.string "but I did my job…$"
 
+AH_PlayerMember:	
+	.string "Soldier: Stop right there, I need\n"
+	.string "to see some credentials, you're not\p"
+	.string "wearing the uniform.\p"
+	.string "{PLAYER} showed Shelly's card... ...\p"
+	.string "Looks like its all in order. \n"
+	.string "Unfortunately security is higher than\p"
+	.string "usual because ofour new project.$"

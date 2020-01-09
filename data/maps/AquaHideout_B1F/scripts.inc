@@ -82,7 +82,7 @@ AquaHideout_B1F_EventScript_DefeatedElectrode2:: @ 8233A7C
 	end
 
 AquaHideout_B1F_EventScript_Grunt2:: @ 8233A85
-	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_2, AquaHideout_B1F_Text_Grunt2Intro, AquaHideout_B1F_Text_Grunt2Defeat, AquaHideout_B1F_EventScript_Grunt2Defeated
+	trainerbattle_single TRAINER_GRUNT_2, AquaHideout_B1F_Text_Grunt2Intro, AquaHideout_B1F_Text_Grunt2Defeat, AquaHideout_B1F_EventScript_Grunt2Defeated
 	msgbox AquaHideout_B1F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -104,12 +104,12 @@ AquaHideout_B1F_EventScript_Grunt3Defeated:: @ 8233ACB
 	end
 
 AquaHideout_B1F_EventScript_Grunt5:: @ 8233AD5
-	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_5, AquaHideout_B1F_Text_Grunt5Intro, AquaHideout_B1F_Text_Grunt5Defeat
+	trainerbattle_single TRAINER_GRUNT_21, AquaHideout_B1F_Text_Grunt5Intro, AquaHideout_B1F_Text_Grunt5Defeat
 	msgbox AquaHideout_B1F_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 AquaHideout_B1F_EventScript_Grunt7:: @ 8233AEC
-	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_7, AquaHideout_B1F_Text_Grunt7Intro, AquaHideout_B1F_Text_Grunt7Defeat
+	trainerbattle_single TRAINER_GRUNT_25, AquaHideout_B1F_Text_Grunt7Intro, AquaHideout_B1F_Text_Grunt7Defeat
 	msgbox AquaHideout_B1F_Text_Grunt7PostBattle, MSGBOX_AUTOCLOSE
 	end
 

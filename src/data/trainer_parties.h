@@ -6935,7 +6935,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Hector[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_TabithaMossdeep[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_CourtneyMossdeep[] = {
     {
     .iv = 100,
     .lvl = 36,
@@ -8208,7 +8208,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntWeatherInst5[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_TabithaMtChimney[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_CourtneyMtChimney[] = {
     {
     .iv = 50,
     .lvl = 18,
@@ -10159,7 +10159,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntMagmaHideout16[] = 
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_TabithaMagmaHideout[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_CourtneyMagmaHideout[] = {
     {
     .iv = 75,
     .lvl = 26,

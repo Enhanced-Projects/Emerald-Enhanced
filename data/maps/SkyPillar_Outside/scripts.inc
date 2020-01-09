@@ -1,139 +1,66 @@
 SkyPillar_Outside_MapScripts:: @ 82392A8
-	map_script MAP_SCRIPT_ON_TRANSITION, SkyPillar_Outside_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD , SkyPillar_Outside_OnLoad
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SkyPillar_Outside_OnFrame
 	.byte 0
 
 SkyPillar_Outside_OnTransition: @ 82392B8
-	compare VAR_SOOTOPOLIS_CITY_STATE, 3
-	call_if_eq SkyPillar_Outside_EventScript_HideMapNamePopup
-	compare VAR_SOOTOPOLIS_CITY_STATE, 4
-	call_if_ge SkyPillar_Outside_EventScript_CheckSetAbnormalWeather
 	end
 
-SkyPillar_Outside_EventScript_HideMapNamePopup:: @ 82392CF
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	return
-
-SkyPillar_Outside_EventScript_CheckSetAbnormalWeather:: @ 82392D3
-	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
-	return
-
-SkyPillar_Outside_OnLoad: @ 82392DD
-	call_if_set FLAG_WALLACE_GOES_TO_SKY_PILLAR, SkyPillar_Outside_EventScript_OpenDoor
-	end
-
-SkyPillar_Outside_EventScript_OpenDoor:: @ 82392E7
-	setmetatile 14, 4, METATILE_Pacifidlog_SkyPillar_DoorOpen_Top, 0
-	setmetatile 14, 5, METATILE_Pacifidlog_SkyPillar_DoorOpen_Bottom, 0
-	return
-
-SkyPillar_Outside_OnFrame: @ 82392FA
-	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 3, SkyPillar_Outside_EventScript_WallaceScene
-	.2byte 0
-
-SkyPillar_Outside_EventScript_WallaceScene:: @ 8239304
+SP_Guardian::
 	lockall
-	applymovement 1, SkyPillar_Outside_Movement_WallaceApproachPlayer
-	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	msgbox SkyPillar_Outside_Text_OpenedDoorToSkyPillar, MSGBOX_DEFAULT
+	goto_if_unset FLAG_RYU_DEVON_LINE_FINISHED, SP_NoEntryDevonNotDone
+	checkitem ITEM_TRI_PASS, 1
+	compare VAR_RESULT, 1
+	goto_if_ne SP_NoEntryNoDevonCard
+	msgbox SP_YouMayEnter1
 	closemessage
-	delay 30
-	setvar VAR_0x8004, 1  @ vertical pan
-	setvar VAR_0x8005, 1  @ horizontal pan
-	setvar VAR_0x8006, 8  @ num shakes
-	setvar VAR_0x8007, 3  @ shake delay
-	special ShakeCamera
-	waitstate
-	delay 40
-	msgbox SkyPillar_Outside_Text_EarthquakeNotMomentToWaste, MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement EVENT_OBJ_ID_PLAYER, SP_Delay
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	msgbox SP_YouMayEnter2
+	setmetatile 14, 5, 690, 0
+	setmetatile 14, 4, 682, 0
+	special DrawWholeMapView
+	applymovement 2, Common_Movement_StepLeft
+	waitmovement 2
+	applymovement 2, Common_Movement_FaceDown
+	waitmovement 2
+	release
+	end
+	
+SP_Delay:
+	delay_16
+	step_end
+	
+SP_NoEntryNoDevonCard::
+	msgbox SP_NoOneAllowed
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, SkyPillar_Outside_Movement_PlayerClimbSkyPillar
-	applymovement 1, SkyPillar_Outside_Movement_WallaceClimbSkyPillar
-	waitmovement 0
-	setvar VAR_0x8004, 1   @ vertical pan
-	setvar VAR_0x8005, 3   @ horizontal pan
-	setvar VAR_0x8006, 20  @ num shakes
-	setvar VAR_0x8007, 5   @ shake delay
-	special ShakeCamera
-	waitstate
-	delay 20
-	applymovement 1, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	delay 10
-	applymovement 1, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	delay 20
-	applymovement 1, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	delay 30
-	msgbox SkyPillar_Outside_Text_SituationGettingWorse, MSGBOX_DEFAULT
+	msgbox SP_NotPermittedNoCard
 	closemessage
-	setflag FLAG_SYS_WEATHER_CTRL
-	setweather WEATHER_ABNORMAL
-	doweather
-	special WaitWeather
-	waitstate
-	delay 30
-	msgbox SkyPillar_Outside_Text_GotToGoBackForSootopolis, MSGBOX_DEFAULT
-	closemessage
-	playse SE_KAIDAN
-	fadescreenswapbuffers FADE_TO_BLACK
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	setvar VAR_SOOTOPOLIS_CITY_STATE, 4
-	removeobject 1
-	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
-	fadescreenswapbuffers FADE_FROM_BLACK
 	releaseall
 	end
-
-SkyPillar_Outside_Movement_WallaceApproachPlayer: @ 82393D3
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-SkyPillar_Outside_Movement_WallaceClimbSkyPillar: @ 82393DE
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_right
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-SkyPillar_Outside_Movement_PlayerClimbSkyPillar: @ 82393EB
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_right
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-SkyPillar_Outside_EventScript_Wallace:: @ 82393F8
+	
+SP_NoEntryDevonNotDone::
+	msgbox SP_NoOneAllowed
+	closemessage
+	msgbox SP_NotPermittedNoDevonMsg
+	closemessage
+	releaseall
 	end
+	
+SP_NoOneAllowed:
+	.string "I'm sorry but no one is permitted\nto enter without written consent from\lDevon Corp.$"
+	
+SP_NotPermittedNoCard:
+	.string "You do not have valid\nidentification.\pPlease return when you do.$"
+	
+SP_NotPermittedNoDevonMsg:
+	.string "This place is\noff-limits to anyone not explicitly\lgiven permission to be here.\pHave a nice day!$"
+	
+SP_YouMayEnter1:
+	.string "Hello, {PLAYER}!\pI have been given explicit\ninstructions to let you through.\pPlease show me your ID!$"
+	
+SP_YouMayEnter2:
+	.string "... ... ... ...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} showed the Devon Card.)\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}... ... ... ...\nThanks! that's all I needed!$"
 
 SkyPillar_Outside_EventScript_ClosedDoor:: @ 82393F9
 	msgbox SkyPillar_Outside_Text_DoorIsClosed, MSGBOX_SIGN
@@ -141,32 +68,3 @@ SkyPillar_Outside_EventScript_ClosedDoor:: @ 82393F9
 
 SkyPillar_Outside_Text_DoorIsClosed: @ 8239402
 	.string "The door is closed.$"
-
-SkyPillar_Outside_Text_OpenedDoorToSkyPillar: @ 8239416
-	.string "Wallace: Oh, my, I'm terribly sorry!\p"
-	.string "In my haste, I didn't notice that\n"
-	.string "I'd left you behind!\p"
-	.string "I've opened the locked door of\n"
-	.string "the SKY PILLAR.\p"
-	.string "{PLAYER}, let's be on our way!$"
-
-SkyPillar_Outside_Text_EarthquakeNotMomentToWaste: @ 82394BC
-	.string "Wallace: It's an earthquake!\p"
-	.string "There's not a moment to waste!\n"
-	.string "We've got to hurry!$"
-
-SkyPillar_Outside_Text_SituationGettingWorse: @ 823950C
-	.string "Wallace: Hmm…\n"
-	.string "The situation is getting worse…$"
-
-SkyPillar_Outside_Text_GotToGoBackForSootopolis: @ 823953A
-	.string "Wallace: This isn't good…\p"
-	.string "The weather distortion is spreading\n"
-	.string "even here…\p"
-	.string "{PLAYER}.\p"
-	.string "RAYQUAZA should be farther up\n"
-	.string "from here.\p"
-	.string "I'm worried about SOOTOPOLIS.\n"
-	.string "I've got to go back.\p"
-	.string "Everything is in your hands now.\n"
-	.string "Don't fail us!$"
