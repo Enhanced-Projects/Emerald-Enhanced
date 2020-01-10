@@ -8257,17 +8257,37 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRustboroTorchic[]
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_MayRustboroMudkip[] = {//May10
-    {
-    .iv = 25,
-    .lvl = 13,
-    .species = SPECIES_WINGULL,
-    },
-    {
-    .iv = 50,
-    .lvl = 15,
-    .species = SPECIES_TREECKO,
-    }
+static const struct TrainerMonNoItemDefaultMoves sParty_StoryMewtwo[] = {
+	{
+	.iv = 130,
+	.lvl = 50,
+	.species = SPECIES_GOLDUCK,
+	},
+	{
+	.iv = 130,
+	.lvl = 50,
+	.species = SPECIES_NINETALES,
+	},
+	{
+	.iv = 100,
+	.lvl = 50,
+	.species = SPECIES_VILEPLUME,
+	},
+	{
+	.iv = 130,
+	.lvl = 50,
+	.species = SPECIES_PIDGEOT,
+	},
+	{
+	.iv = 130,
+	.lvl = 50,
+	.species = SPECIES_SANDSLASH,
+	},
+	{
+	.iv = 130,
+	.lvl = 50,
+	.species = SPECIES_SCYTHER,
+	}
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_MaxieMagmaHideout[] = {//Maxie1
@@ -12229,55 +12249,37 @@ static const struct TrainerMonItemCustomMoves sParty_Juan4[] = {
 	}
 };
 
-static const struct TrainerMonItemCustomMoves sParty_Juan5[] = {//unused
-    {
-    .iv = 255,
-    .lvl = 61,
-    .species = SPECIES_LAPRAS,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = MOVE_HYDRO_PUMP, MOVE_PERISH_SONG, MOVE_ICE_BEAM, MOVE_CONFUSE_RAY
-    },
-    {
-    .iv = 255,
-    .lvl = 63,
-    .species = SPECIES_WHISCASH,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = MOVE_RAIN_DANCE, MOVE_WATER_PULSE, MOVE_DOUBLE_TEAM, MOVE_FISSURE
-    },
-    {
-    .iv = 255,
-    .lvl = 61,
-    .species = SPECIES_POLITOED,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = MOVE_HYPNOSIS, MOVE_RAIN_DANCE, MOVE_HYDRO_PUMP, MOVE_PERISH_SONG
-    },
-    {
-    .iv = 255,
-    .lvl = 63,
-    .species = SPECIES_WALREIN,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = MOVE_WATER_PULSE, MOVE_BODY_SLAM, MOVE_PROTECT, MOVE_SHEER_COLD
-    },
-    {
-    .iv = 255,
-    .lvl = 63,
-    .species = SPECIES_CRAWDAUNT,
-    .heldItem = ITEM_CHESTO_BERRY,
-    .ability = 0,
-    .moves = MOVE_REST, MOVE_GUILLOTINE, MOVE_TAUNT, MOVE_DOUBLE_TEAM
-    },
-    {
-    .iv = 255,
-    .lvl = 66,
-    .species = SPECIES_KINGDRA,
-    .heldItem = ITEM_CHESTO_BERRY,
-    .ability = 0,
-    .moves = MOVE_WATER_PULSE, MOVE_DOUBLE_TEAM, MOVE_ICE_BEAM, MOVE_REST
-    }
+static const struct TrainerMonNoItemDefaultMoves sParty_StoryMewtwo2[] = {
+	{
+	.iv = 130,
+	.lvl = 50,
+	.species = SPECIES_PIKACHU,
+	},
+	{
+	.iv = 130,
+	.lvl = 50,
+	.species = SPECIES_GYARADOS,
+	},
+	{
+	.iv = 100,
+	.lvl = 50,
+	.species = SPECIES_RHYDON,
+	},
+	{
+	.iv = 130,
+	.lvl = 50,
+	.species = SPECIES_NIDOKING,
+	},
+	{
+	.iv = 130,
+	.lvl = 50,
+	.species = SPECIES_TENTACRUEL,
+	},
+	{
+	.iv = 130,
+	.lvl = 50,
+	.species = SPECIES_DEWGONG,
+	}
 };
 
 static const struct TrainerMonItemCustomMoves sParty_Angelo[] = {

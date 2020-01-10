@@ -932,7 +932,11 @@ RDB_CTVMsg:
 RyuDebug_Utility1::
 	special FillTheDex
 	@setflag FLAG_RYU_NIGHT
-	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
+	setflag FLAG_RYU_DS_SHELLY_PARTNERS
+	setflag FLAG_RYU_DS_LEAF_PARTNERS
+	setflag FLAG_RYU_DS_LANETTE_PARTNERS
+	setflag FLAG_RYU_DS_DAWN_PARTNERS
+	setflag FLAG_RYU_DS_HAS_PARTNER
 	release
 	end
 

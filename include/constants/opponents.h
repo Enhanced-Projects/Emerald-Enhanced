@@ -601,7 +601,7 @@
 #define TRAINER_COURTNEY_MT_CHIMNEY          597
 #define TRAINER_JONATHAN                    598
 #define TRAINER_EMPTY_34    599
-#define TRAINER_EMPTY_36         600
+#define TRAINER_STORY_MEWTWO         600
 #define TRAINER_MAXIE_MAGMA_HIDEOUT         601
 #define TRAINER_MAXIE_MT_CHIMNEY            602
 #define TRAINER_TIANA                       603
@@ -802,7 +802,7 @@
 #define TRAINER_JUAN_2                      798
 #define TRAINER_JUAN_3                      799
 #define TRAINER_JUAN_4                      800
-#define TRAINER_EMPTY_43                      801
+#define TRAINER_STORY_MEWTWO_2                      801
 #define TRAINER_ANGELO                      802
 #define TRAINER_DARIUS                      803
 #define TRAINER_STEVEN                      804

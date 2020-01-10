@@ -501,7 +501,7 @@
 #define FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL 0x1D8
 #define FLAG_ENABLE_JUAN_MATCH_CALL          0x1D9
 
-#define FLAG_UNUSED_0x1DA                    0x1DA // Unused Flag
+#define FLAG_RYU_SCI_MEWTWO1                    0x1DA // Unused Flag
 
 #define FLAG_HAS_MYSTIC_TICKET               0x1DB
 #define FLAG_DEFEATED_HO_OH                  0x1DC
@@ -710,7 +710,7 @@
 #define FLAG_RYU_DEVON_LINE_FINISHED  0x29E // Unused Flag
 #define FLAG_RYU_DEVON_SCIENTIST  0x29F // Unused Flag
 #define FLAG_RYU_DEVON_CEO_INTRO  0x2A0 // Unused Flag
-#define FLAG_UNUSED_0x2A1  0x2A1 // Unused Flag
+#define FLAG_RYU_MEWTWO_OBTAINED  0x2A1 // Unused Flag
 #define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
 #define FLAG_UNUSED_0x2A3  0x2A3 // Unused Flag
 #define FLAG_UNUSED_0x2A4  0x2A4 // Unused Flag
