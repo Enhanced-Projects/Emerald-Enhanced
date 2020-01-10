@@ -285,7 +285,7 @@ RusturfTunnel_EventScript_AquaGruntBackUp:: @ 822D083
 	lockall
 	msgbox RusturfTunnel_Text_ComeAndGetSome, MSGBOX_DEFAULT
 	closemessage
-	applymovement 6, RusturfTunnel_Movement_GruntAndPeekoBackUp
+	applymovement 3, RusturfTunnel_Movement_GruntAndPeekoBackUp
 	waitmovement 0
 	copyobjectxytoperm 6
 	setvar VAR_RUSTURF_TUNNEL_STATE, 3
@@ -318,15 +318,14 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	giveitem_std ITEM_DEVON_GOODS
 	closemessage
 	applymovement EVENT_OBJ_ID_PLAYER, RusturfTunnel_Movement_PushPlayerAsideForGrunt
-	applymovement 6, RusturfTunnel_Movement_GruntEscape
+	applymovement 3, RusturfTunnel_Movement_GruntEscape
 	waitmovement 0
-	removeobject 6
+	removeobject 3
 	delay 50
 	applymovement EVENT_OBJ_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBrineyExit
 	clearflag FLAG_DEVON_GOODS_STOLEN
 	setflag FLAG_RECOVERED_DEVON_GOODS
 	setvar VAR_RUSTBORO_CITY_STATE, 4
-	setvar VAR_BRINEY_HOUSE_STATE, 1
 	setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
 	msgbox RT_ThiefLeftMsg MSGBOX_DEFAULT
 	waitmessage

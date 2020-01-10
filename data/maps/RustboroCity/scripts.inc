@@ -1130,6 +1130,7 @@ RC_Aqua_Thief_Spawn::
 	clearflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	setflag FLAG_RYU_AQUA_THIEF_SEEN
+	removeobject 10
 	setvar VAR_RUSTURF_TUNNEL_STATE, 2
 	release
 	end
