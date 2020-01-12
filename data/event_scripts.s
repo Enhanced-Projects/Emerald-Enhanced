@@ -575,6 +575,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuDevonLine.inc"
 	.include "data/scripts/JunkScripts.inc"
 	.include "data/scripts/RyuChampionRoom.inc"
+	.include "data/scripts/RyuDiceGame.inc"
 
 @ Below could be split as std_msgbox.inc but autoclose straddles trainer_battle.inc
 Std_MsgboxNPC: @ 8271315
@@ -986,6 +987,9 @@ gText_SorryWirelessClubAdjustments:: @ 827306F
 gText_UndergoingAdjustments:: @ 82730BC
 	.string "It appears to be undergoing\n"
 	.string "adjustments…$"
+
+gBallBlackMarket::
+	.string "Psst... Hurry up!\pI don't want caught!$"
 
 @ Unused
 gText_SorryTradeCenterInspections:: @ 82730E5

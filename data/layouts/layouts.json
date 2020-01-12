@@ -2758,7 +2758,7 @@
             "name": "MossdeepCity_SpaceCenter_2F_Layout",
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Facility",
-            "width": 16
+            "width": 24
         },
         {
             "blockdata_filepath": "data/layouts/SSTidalCorridor/map.bin",

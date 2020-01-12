@@ -9007,7 +9007,7 @@ const struct Trainer gTrainers[] = {
         .trainerPic = TRAINER_PIC_MEWTWO,
         .trainerName = _("{PKMN} Mewtwo"),
         .items = {ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE},
-        .battleStyle = BS_SHIFT,
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_SETUP_FIRST_TURN,
         .partySize = ARRAY_COUNT(sParty_StoryMewtwo),
@@ -11009,7 +11009,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Darcy},
     },
 
-    [TRAINER_MAXIE_MOSSDEEP] =
+    [TRAINER_MAXIE_3] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_MAGMA_LEADER,

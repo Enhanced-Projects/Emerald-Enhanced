@@ -679,6 +679,7 @@ static const u8 sText_RyuItDealtDamageHungOn[] = _("{B_ATK_NAME_WITH_PREFIX} dea
 static const u8 sText_RyuItDealtNoDamage[] = _("{B_ATK_NAME_WITH_PREFIX} didn't do any damage.");
 static const u8 sText_RyuBossModeHeal[] = _("{STR_VAR_1}'s legendary status\nrecovers health for their {STR_VAR_2}.");
 static const u8 sText_RyuBossRaisedStats[] = _("{STR_VAR_1}'s legendary status\nraises a random stat for their {STR_VAR_2}.");
+static const u8 sText_RyuBossWildStatBoost[] = _("The wild Pokémon emits an\nopressive aura...");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1226,6 +1227,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ITDEALTNODAMAGE - 12] = sText_RyuItDealtNoDamage,
     [STRINGID_BOSSMODEHEAL - 12] = sText_RyuBossModeHeal,
     [STRINGID_BOSSRAISEDSTAT - 12] = sText_RyuBossRaisedStats,
+    [STRINGID_BOSSWILDPRESENCE - 12] = sText_RyuBossWildStatBoost,
 };
 
 const u16 gTerrainStringIds[] =

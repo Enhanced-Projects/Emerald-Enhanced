@@ -50,7 +50,7 @@
 #define FLAG_HIDE_DAWNS_HOUSE_DAWN    0x28 // Unused Flag
 #define FLAG_RYU_KYOGRE    0x29 // Unused Flag
 #define FLAG_HIDE_103_TEST_TRAINER    0x2A // Unused Flag
-#define FLAG_UNUSED_0x2B    0x2B // Unused Flag
+#define FLAG_RYU_SCIENTIST_DONE    0x2B // Unused Flag
 #define FLAG_UNUSED_0x2C    0x2C // Unused Flag
 #define FLAG_RYU_HIDE_R120_LANA_AND_HIKER    0x2D // Unused Flag
 #define FLAG_RYU_HIDE_REL_OBJECTS    0x2E // Unused Flag
@@ -1386,7 +1386,7 @@
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
-#define FLAG_UNUSED_0x881                           (SYSTEM_FLAGS + 0x21) // Unused Flag
+#define FLAG_RYU_BOSS_WILD                          (SYSTEM_FLAGS + 0x21) // Unused Flag
 #define FLAG_UNUSED_0x882                           (SYSTEM_FLAGS + 0x22) // Unused Flag
 #define FLAG_UNUSED_0x883                           (SYSTEM_FLAGS + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag

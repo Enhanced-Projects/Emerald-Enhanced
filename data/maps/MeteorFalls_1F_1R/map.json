@@ -182,19 +182,6 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_METEOR_FALLS_TEAM_AQUA",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "0x0",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 6,
-            "y": 21
-        },
-        {
-            "elevation": 3,
             "flag": "FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO",
             "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
             "movement_range_x": 0,

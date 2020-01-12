@@ -1240,6 +1240,7 @@ const u8 gText_Round2Results[] = _("Round 2 results!");
 const u8 gText_Var1sVar2Won[] = _("{STR_VAR_1}'s {STR_VAR_2} won!");
 const u8 gText_CommunicationStandby[] = _("Communication standby…");
 const u8 gText_ColorDarkGrey[] = _("{COLOR DARK_GREY}");
+const u8 gText_ColorShadowRedLightRed[] = _("{COLOR DYNAMIC_COLOR5}");//for battle only
 const u8 gText_ColorDynamic6WhiteDynamic5[] = _("{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR6 WHITE DYNAMIC_COLOR5}"); // Unused
 const u8 gText_HighlightDarkGrey[] = _("{HIGHLIGHT DARK_GREY}");
 const u8 gText_EmptySpace2[] = _(" "); // Unused
@@ -2121,3 +2122,5 @@ const u8 gText_RyuDevSubUtility1[] = _("Utility Option");
 
 const u8 gText_OverlordRyuBossNameBuffer[] = _("Ryu");
 const u8 gText_PokemonStringBuffer[] = _("Pokémon");
+
+const u8 gText_PowerfulWildAppears[] = _("A powerful wild Pokémon appears...");

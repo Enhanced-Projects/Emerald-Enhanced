@@ -113,6 +113,8 @@ extern const struct MapHeader *const *const gMapGroups[];
 extern const int gMaxFlashLevel;
 extern const u16 gOverworldBackgroundLayerFlags[];
 
+extern void RyuKillMon(void);
+
 static void Overworld_ResetStateAfterWhiteOut(void);
 static void c2_80567AC(void);
 static void CB2_LoadMap2(void);
@@ -389,6 +391,13 @@ static void (*const gMovementStatusHandler[])(struct LinkPlayerEventObject *, st
 // code
 void DoWhiteOut(void)
 {
+    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+        RyuKillMon();
+
+    if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
+        RyuKillMon();
+
+    FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
     ScriptContext2_RunNewScript(EventScript_WhiteOut);
     SetMoney(&gSaveBlock1Ptr->money, GetMoney(&gSaveBlock1Ptr->money) / 2);
     HealPlayerParty();
@@ -1135,8 +1144,8 @@ u16 GetLocationMusic(struct WarpData *warp)
         return 0xFFFF;
     else if (ShouldLegendaryMusicPlayAtLocation(warp) == TRUE)
         return MUS_OOAME;
-    else if (IsInflitratedSpaceCenter(warp) == TRUE)
-        return MUS_MGM0;
+    else if (FlagGet(FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA) == 0 && (FlagGet(FLAG_RYU_PLAYER_HELPING_DEVON) == 1))
+        return MUS_AJITO;
     else if (IsInfiltratedWeatherInstitute(warp) == TRUE)
         return MUS_TOZAN;
     else

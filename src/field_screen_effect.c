@@ -75,17 +75,17 @@ static void FillPalBufferBlack(void)
 
 void WarpFadeInScreen(void)
 {
-    u8 previousMapType = GetLastUsedWarpMapType();
-    switch (GetMapPairFadeFromType(previousMapType, GetCurrentMapType()))
-    {
-    case 0:
-        FillPalBufferBlack();
-        FadeScreen(FADE_FROM_BLACK, 0);
-        break;
-    case 1:
-        FillPalBufferWhite();
-        FadeScreen(FADE_FROM_WHITE, 0);
-    }
+ //   u8 previousMapType = GetLastUsedWarpMapType();
+ //   switch (GetMapPairFadeFromType(previousMapType, GetCurrentMapType()))
+ //   {
+ //   case 0:
+ //       FillPalBufferBlack();
+ //       FadeScreen(FADE_FROM_BLACK, 0);
+ //       break;
+ //   case 1:
+ //       FillPalBufferWhite();
+ //       FadeScreen(FADE_FROM_WHITE, 0);
+ //   }
 }
 
 void FadeInFromWhite(void)
@@ -550,8 +550,8 @@ void DoLavaridgeGym1FWarp(void)
 void DoTeleportWarp(void)
 {
     ScriptContext2_Enable();
-    TryFadeOutOldMapMusic();
-    WarpFadeOutScreen();
+    //TryFadeOutOldMapMusic();
+    //WarpFadeOutScreen();
     PlaySE(SE_TK_WARPIN);
     CreateTask(Task_WarpAndLoadMap, 10);
     gFieldCallback = FieldCB_TeleportWarpExit;

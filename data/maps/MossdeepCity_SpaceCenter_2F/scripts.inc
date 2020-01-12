@@ -12,11 +12,11 @@ MossdeepCity_SpaceCenter_2F_OnTransition: @ 8223D63
 
 MossdeepCity_SpaceCenter_2F_EventScript_MoveStevenMaxieCourtney:: @ 8223D7A
 	clearflag FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER
-	setobjectxyperm 3, 5, 3
+	setobjectxyperm 3, 16, 9
 	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectxyperm 1, 3, 2
+	setobjectxyperm 1, 14, 2
 	setobjectmovementtype 1, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectxyperm 2, 1, 3
+	setobjectxyperm 2, 12, 5
 	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_RIGHT
 	return
 
@@ -53,6 +53,8 @@ MossdeepCity_SpaceCenter_2F_Movement_PlayerExit: @ 8223E07
 	step_end
 
 MossdeepCity_SpaceCenter_2F_EventScript_BattleThreeMagmaGrunts:: @ 8223E09
+	call_if_set FLAG_RYU_PLAYER_HELPING_AQUA, SPC_RemoveGruntsCuzAqua
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, ryu_end
 	msgbox MossdeepCity_SpaceCenter_2F_Text_Grunt5Intro, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_GRUNT_SPACE_CENTER_5, MossdeepCity_SpaceCenter_2F_Text_Grunt5Defeat
 	applymovement 6, MossdeepCity_SpaceCenter_2F_Movement_Grunt5Defeated
@@ -70,11 +72,21 @@ MossdeepCity_SpaceCenter_2F_EventScript_BattleThreeMagmaGrunts:: @ 8223E09
 	applymovement 7, MossdeepCity_SpaceCenter_2F_Movement_Grunt7Defeated
 	waitmovement 0
 	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 2
-	copyobjectxytoperm 5
-	copyobjectxytoperm 7
-	copyobjectxytoperm 6
+	removeobject 5
+	removeobject 7
+	removeobject 6
 	releaseall
 	end
+	
+SPC_RemoveGruntsCuzAqua:
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+	removeobject 5
+	removeobject 6
+	removeobject 7
+	removeobject 8
+	removeobject 9
+	special DrawWholeMapView
+	return
 
 MossdeepCity_SpaceCenter_2F_Movement_Grunt6Defeated: @ 8223E81
 	lock_facing_direction
@@ -178,10 +190,481 @@ MossdeepCity_SpaceCenter_2F_EventScript_Courtney:: @ 8223F59
 	waitmovement 0
 	release
 	end
+	
+@===================================================================================================Scientist Devon
+
+SPC_MaxieIntro:
+	.string "I think you're in a little\nover your head.\lNo one can stop me now!$"
+	
+SPC_MaxieDefeat:
+	.string "What?! NO! Why?!$"
+
+SPC_Maxie::
+	trainerbattle_single TRAINER_MAXIE_3, SPC_MaxieIntro, SPC_MaxieDefeat, SPC_MaxieDefeated
+	goto SPC_MaxieDefeated
+	end
+	
+SPC_MaxieDefeated:: @ 8224071
+	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieWeFailedIsAquaAlsoMisguided, MSGBOX_DEFAULT
+	closemessage
+	delay 20
+	applymovement 9, Common_Movement_WalkInPlaceFastestLeft
+	applymovement 8, Common_Movement_WalkInPlaceFastestDown
+	waitmovement 0
+	delay 60
+	applymovement 9, Common_Movement_WalkInPlaceFastestUp
+	applymovement 8, Common_Movement_WalkInPlaceFastestRight
+	delay 20
+	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieWeWillGiveUp, MSGBOX_DEFAULT
+	closemessage
+	fadedefaultbgm
+	fadescreen 1
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+	setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
+	removeobject 5
+	removeobject 7
+	removeobject 6
+	removeobject 8
+	removeobject 9
+	setobjectxy 3, 5, 6
+	turnobject 3, 1
+	setobjectxy 2, 11, 8
+	turnobject 2, 2
+	setobjectxy 1, 6, 2
+	turnobject 1, 2
+	setflag FLAG_DEFEATED_MAGMA_SPACE_CENTER
+	setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SCOTT
+	fadescreen 0
+	goto SPC_AfterMaxie
+	end
+	
+SPC_AfterMaxie::
+	lockall
+	addobject 3
+	setobjectxy 3, 16, 6
+	applymovement 3 SPC_ScientistToRight
+	waitmovement 3
+	msgbox SPC_ScientistIntro
+	closemessage
+	playse SE_DOOR
+	addobject 12
+	setobjectxy 12, 21, 1
+	applymovement 12, SPC_StevenEnters@down, right, down, face down.
+	waitmovement 12
+	msgbox SPC_WeveBeenExpecting
+	closemessage
+	msgbox SPC_WereSorryYouHad
+	closemessage
+	msgbox SPC_WeWereTold
+	closemessage
+	applymovement 3, Common_Movement_StepDown
+	waitmovement 3
+	msgbox SPC_AsItIs
+	closemessage
+	applymovement 3, Common_Movement_FaceUp
+	waitmovement 3
+	playse SE_PIN
+	applymovement 12, Common_Movement_ExclamationMark
+	waitmovement 12
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox SPC_ActuallyThatMight
+	closemessage
+	msgbox SPC_WhatsThat
+	closemessage
+	applymovement 3, Common_Movement_StepUp
+	waitmovement 3
+	msgbox SPC_NotOnlyThat
+	closemessage
+	fadenewbgm MUS_DUMMY
+	closemessage
+	msgbox SPC_MewtwoIntervenes
+	goto SPC_AfterMaxie2
+
+SPC_AfterMaxie2::
+	fadenewbgm 501
+	fadescreen 1
+	playse SE_TK_WARPIN
+	addobject 10
+	delay 20
+	fadescreen 2
+	playse SE_PIN
+	applymovement 12, Common_Movement_ExclamationMark
+	waitmovement 12
+	applymovement 12, SPC_StepBack
+	waitmovement 12
+	msgbox SPC_MewtwoIntro
+	playse SE_PIN
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement 12, Common_Movement_FaceUp
+	waitmovement 12
+	playse SE_PIN
+	applymovement 3, Common_Movement_ExclamationMark
+	waitmovement 3
+	msgbox SPC_WhoreYouNameUnimportant
+	closemessage
+	playse SE_W089
+	special DoSealedChamberShakingEffect1
+	msgbox SPC_NoChoice
+	closemessage
+	delay 60
+	special DrawWholeMapView
+	drawcustompic 2, SPECIES_CASTFORM, 208, 104
+	playmoncry SPECIES_CASTFORM, 5
+	waitmoncry
+	applymovement 10, Common_Movement_QuestionMark
+	waitmovement 10
+	msgbox SPC_YouAgreed
+	closemessage
+	playmoncry SPECIES_CASTFORM, 0
+	waitmoncry
+	msgbox SPC_YouStillSide
+	closemessage
+	removecutscenesprites
+	fadedefaultbgm
+	playse SE_TK_WARPOUT
+	removeobject 10
+	msgbox SPC_APlaceOnlyStrong
+	closemessage
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 107
+	release
+	end
+	
+SPC_SetSecondScene::
+	lock
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 109
+	setobjectxyperm 3, 16, 9
+	release
+	end
+	
+SPC_Scientist::
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 107
+	goto_if_eq SPC_headToVictoryRoad
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 109
+	goto_if_eq SPC_MewtwoDefeated
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 115
+	goto_if_eq SPC_Afterstory
+	goto_if_set FLAG_RYU_SCIENTIST_DONE, SPC_Afterstory
+	release
+	end
+	
+SPC_headToVictoryRoad::
+	msgbox SPC_YouShouldBeHeaded
+	closemessage
+	release
+	end
+	
+SPC_MewtwoDefeated::
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 110
+	goto_if_eq SPC_GoCheckSafariZone
+	msgbox SPC_MeetMeAtTable
+	closemessage
+	applymovement 3, SPC_Sci2Desk
+	delay 20
+	applymovement EVENT_OBJ_ID_PLAYER, SPC_Pl2Desk
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox SPC_WaitForOthers
+	playse SE_DOOR
+	delay 10
+	addobject 12
+	playse SE_DOOR
+	addobject 11
+	applymovement 12, SPC_StevenToDesk
+	applymovement 11, SPC_NewSciToDesk
+	waitmovement 11
+	msgbox SPC_SoYouveReturned
+	closemessage
+	giveitem_std ITEM_VS_SEEKER
+	delay 20
+	playse SE_PIN
+	applymovement 11, Common_Movement_ExclamationMark
+	waitmovement 11
+	msgbox SPC_YourNextAssignment
+	closemessage
+	applymovement 3, Common_Movement_FaceDown
+	waitmovement 3
+	msgbox SPC_SomethingTheMatter
+	closemessage
+	applymovement 11, Common_Movement_FaceLeft
+	waitmovement 11
+	msgbox SPC_ImPickingUp
+	closemessage
+	applymovement 3, Common_Movement_FaceRight
+	waitmovement 3
+	msgbox SPC_WellOffYou
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 110
+	setflag FLAG_RYU_SCIENTIST_DONE
+	release
+	end
+	
+SPC_GoCheckSafariZone::
+	lock
+	msgbox SPC_GoCheckSafariZoneMsg
+	release
+	end
+	
+SPC_Afterstory:
+	msgbox SPC_LineCompleted
+	release
+	end
+	
+SPC_LineCompleted:
+	.string "Ah, so the anomaly was Mewtwo.\nWell, that's settled then.\pIn other news...\pCongratulations, You've officially\ncompleted your apprenticeship.\lOnce you get older, you can\pjoin us as a space researcher\nor work on other projects.$"
+
+SPC_GoCheckSafariZoneMsg:
+	.string "Bart: You should go check out the\n"
+	.string "energy signature Cozmo's Rad\l"
+	.string "Sensor picked up.$"
+	
+SPC_MeetMeAtTable:
+	.string "Bart: Come to the empty\ndesk over here.$"
+	
+SPC_WaitForOthers:
+	.string "Let's wait for the others, they\nshould be here soon.$"
+	
+SPC_SoYouveReturned:
+	.string "Bart: So, you've returned. I trust\n"
+	.string "things went well?\p"
+	.string "Cozmo: {PLAYER}, we have news\n"
+	.string "to share!\p"
+	.string "Bart: Although Castform's still\n"
+	.string "unable to form change in a\p"
+	.string "sandstorm, we were able to obtain\n"
+	.string "enough data to emulate the\p"
+	.string "conditions necessary to simulate\n"
+	.string "for our immediate use. As a result\l"
+	.string "the Forecaster is now complete!\p"
+	.string "Take it, my fellow scientist, as a\n"
+	.string "reward for your contribution to\l"
+	.string "the project.$"
+
+SPC_YourNextAssignment:
+	.string "Cozmo: Now, as to your next assignment...\n"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Hm?$"
+
+SPC_SomethingTheMatter:
+	.string "Bart: Problem, Cozmo?$"
+
+SPC_ImPickingUp:
+	.string "I'm picking up a high energy\n"
+	.string "reading near the Safari Zone.\p"
+	.string "Strange...that place hasn't been\n"
+	.string "traversed since it shut down years\l"
+	.string "ago...$"
+
+SPC_WellOffYou:
+	.string "Well, off you go, {PLAYER}! Your\n"
+	.string "research continues!$"
+
+SPC_YouShouldBeHeaded:
+	.string "You should go face Mewtwo in\nVictory Road.$"
+	
+SPC_ScientistIntro:
+	.string "Greetings. Who might you be?\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I'm {PLAYER}, and understudy to\n"
+	.string "Prof. Cozmo.$"
+
+SPC_WeveBeenExpecting:
+	.string "Ah yes. We've been\n"
+	.string "expecting you.$"
+
+SPC_WereSorryYouHad:
+	.string "We're sorry you had to deal with\n"
+	.string "Magma. Steven could have done it\p"
+	.string "but I guess he wanted to see you\n"
+	.string "work.$"
+
+SPC_WeWereTold:
+	.string "We were told of the\n"
+	.string "situation, and we are willing to\p"
+	.string "lend you a hand, however,\n"
+	.string "according to the report, the\p"
+	.string "problem lies with just how long\n"
+	.string "Castform can sustain the sandstorm\p"
+	.string "in order for its' cells to respond\n"
+	.string "to the change.$"
+
+SPC_AsItIs:
+	.string "As it is, Castform cannot build up\n"
+	.string "the energy necessary to change for\p"
+	.string "form, and at the same time keep\l"
+	.string "the sandstorm going.$"
+
+SPC_ActuallyThatMight:
+	.string "If there was a way for us to\n"
+	.string "prolong the sandstorm while it\l"
+	.string "concentrates on changing form...$"
+
+	.string "Steven: Actually, that might be\n"
+	.string "possible. Take a look.$"
+
+SPC_WhatsThat:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}What's that?\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Its called a Smooth Rock. I\n"
+	.string "found it during my travels in\p"
+	.string "another region. From what I heard,\n"
+	.string "it extends the caster's duration\p"
+	.string "of Sandstorm. All your Castform\n"
+	.string "would need to do is use the move.\p "
+	.string "This stone should handle the rest.$"
+
+SPC_NotOnlyThat:
+	.string "Not only that, we'd also be able\n"
+	.string "to monitor its' responses to a\p"
+	.string "greater degree, all the while\n"
+	.string "cutting down significantly on time\p"
+	.string "spent. Steven, you're a genius!\n"
+	.string "Let's get started right away!$"
+
+SPC_MewtwoIntervenes:
+	.string "{COLOR LIGHT_BLUE}{SHADOW RED}Experimentation...on a pokémon?$"
+
+SPC_MewtwoIntro:
+	.string "{COLOR LIGHT_BLUE}{SHADOW RED}I thought the human race had learned\n"
+	.string "from their mistakes...$"
+
+SPC_WhoreYouNameUnimportant:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Who're you?\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW RED}My name is unimportant. What I\n"
+	.string "won't stand for, however, is\p"
+	.string "experimenting on pokémon simply to\n"
+	.string "satisfy your own curiosity. Such\p"
+	.string "thinking is what led to my\n"
+	.string "creation, along with the pain and\p"
+	.string "strife that followed. I suggest\n"
+	.string "you put an end to this now,\l"
+	.string "otherwise...$"
+
+SPC_NoChoice:
+	.string "{COLOR DARK_GREY}{SHADOW RED}I'll have no choice but to bring\n"
+	.string "this building and everyone in it\l"
+	.string "to the ground.$"
+
+SPC_YouAgreed:
+	.string "{COLOR DARK_GREY}{SHADOW RED}What? You...agreed to this?\p"
+	.string "That's absurd! It's clearly\n"
+	.string "obvious that humans willingly\p"
+	.string "repeat their past mistakes, expect\n"
+	.string "expecting a different outcome.\p"
+	.string "I know better...they never learn.$"
+
+SPC_YouStillSide:
+	.string "{COLOR DARK_GREY}{SHADOW RED}You still side with them...then\n"
+	.string "I'll show you firsthand...\p"
+	.string "Trainer! What is your name?\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}.\p"
+	.string "{COLOR DARK_GREY}{SHADOW RED}{PLAYER}...you will show me your\n"
+	.string "true intentions. Come and find me.\p"
+	.string "To the place where only the strong\n"
+	.string "may enter. We'll settle things\l"
+	.string "there.$"
+
+SPC_APlaceOnlyStrong:
+	.string "'A place where only the strong may\n"
+	.string "enter...' The only location I can\p"
+	.string "think of is Victory Road. You\n"
+	.string "better head on over there. Don't\l"
+	.string "worry, I'll handle things here.$"
+
+SPC_ScientistToRight:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+	
+SPC_Sci2Desk:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_in_place_right
+	step_end
+	
+SPC_Pl2Desk:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_in_place_up
+	step_end
+
+SPC_StevenToDesk:
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_left
+	walk_fastest_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_in_place_down
+	step_end
+	
+SPC_NewSciToDesk:
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_left
+	walk_fastest_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_in_place_up
+	step_end
+	
+SPC_StevenEnters:
+	walk_down
+	walk_right
+	walk_down
+	walk_down
+	walk_in_place_down
+	step_end
+
+SPC_StepBack::
+	walk_diag_southwest
+	walk_in_place_up
+	step_end
+
+@==================================================================================================end devon
+
 
 MossdeepCity_SpaceCenter_2F_EventScript_Maxie:: @ 8223F6F
 	lockall
-	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieDontInterfere, MSGBOX_DEFAULT
+	goto SPC_Maxie
 	releaseall
 	end
 
@@ -337,7 +820,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayerWest:: @ 8224152
 	return
 
 MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer:: @ 8224157
-	trainerbattle TRAINER_BATTLE_SET_TRAINER_A, TRAINER_MAXIE_MOSSDEEP, 0, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand
+	trainerbattle TRAINER_BATTLE_SET_TRAINER_A, TRAINER_MAXIE_3, 0, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_CourtneyTrainer:: @ 8224166

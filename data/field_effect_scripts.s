@@ -312,7 +312,7 @@ gFieldEffectScript_ShowCutGrass:: @ 82DBCC2
 	field_eff_end
 
 gFieldEffectScript_FieldMoveShowMonInit:: @ 82DBCCC
-	field_eff_callnative FldEff_FieldMoveShowMonInit
+	@field_eff_callnative FldEff_FieldMoveShowMonInit
 	field_eff_end
 
 gFieldEffectScript_UsePuzzleEffect:: @ 82DBCD2

@@ -21,8 +21,6 @@ Route119_WeatherInstitute_2F_EventScript_SetScientistPosAquaGone:: @ 826FF50
 	return
 
 Route119_WeatherInstitute_2F_EventScript_SetScientistPosGameClear:: @ 826FF5C
-	setobjectxyperm 5, 2, 2
-	setobjectmovementtype 5, MOVEMENT_TYPE_FACE_UP
 	return
 
 Route119_WeatherInstitute_2F_EventScript_Grunt5:: @ 826FF68
@@ -97,6 +95,7 @@ Route119_WeatherInstitute_2F_EventScript_ReceiveCastform:: @ 827004D
 	waitfanfare
 	closemessage
 	special SpawnCameraObject
+	clearflag FLAG_RYU_HIDE_REL_OBJECTS
 	addobject 9
 	playse SE_DOOR
 	applymovement EVENT_OBJ_ID_CAMERA, WI_CameraToCozmoFast
@@ -141,6 +140,7 @@ WI_CozmoScene::
 	closemessage
 	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 103
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	release
 	end
 	

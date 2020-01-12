@@ -301,13 +301,23 @@
 #define VAR_UNUSED_0x8014             0x8014
 #define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of gTrainerBattleOpponent_A
 
+//drawheadshot defines
+
 #define HEAD_DAWN 1
 #define HEAD_BRENDAN 2
 #define HEAD_LANA 3
 #define HEAD_GARY 4
 #define HEAD_LANETTE 5
+
+//battle style defines
 #define BS_SHIFT 0
 #define BS_SET 1
+
+//dice game defines
+
+#define DRAW 1
+#define LOSS 2
+#define WIN 3
 
 #define SPECIAL_VARS_END              0x8015
 

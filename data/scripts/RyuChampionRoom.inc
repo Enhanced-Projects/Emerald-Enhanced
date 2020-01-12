@@ -10,6 +10,7 @@ RyuThroneRoomCheckFollower::
 
 RyuChampionThrone::
 	lock
+	setflag FLAG_RYU_DO_NOT_AUTOSCALE
 	applymovement EVENT_OBJ_ID_PLAYER, RCR_EnterThrone
 	waitmovement EVENT_OBJ_ID_PLAYER
 	specialvar VAR_RESULT, RyuFollowerToTrainerID

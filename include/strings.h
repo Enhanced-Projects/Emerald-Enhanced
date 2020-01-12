@@ -3247,5 +3247,8 @@ extern const u8 gText_RyuDevSubUtility1[];
 
 extern const u8 gText_OverlordRyuBossNameBuffer[];
 extern const u8 gText_PokemonStringBuffer[];
+extern const u8 gText_PowerfulWildAppears[];
+
+extern const u8 gText_ColorShadowRedLightRed[];
 
 #endif // GUARD_STRINGS_H

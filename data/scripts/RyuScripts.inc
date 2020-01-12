@@ -931,17 +931,13 @@ RDB_CTVMsg:
 
 RyuDebug_Utility1::
 	special FillTheDex
-	@setflag FLAG_RYU_NIGHT
-	setflag FLAG_RYU_DS_SHELLY_PARTNERS
-	setflag FLAG_RYU_DS_LEAF_PARTNERS
-	setflag FLAG_RYU_DS_LANETTE_PARTNERS
-	setflag FLAG_RYU_DS_DAWN_PARTNERS
-	setflag FLAG_RYU_DS_HAS_PARTNER
+	buffernumberstring 0, VAR_ELITE_4_STATE
+	msgbox RDB_Readout
 	release
 	end
 
 RDB_Readout:
-	.string "You're on stage {STR_VAR_1} of Lana quest.$"
+	.string " {STR_VAR_1} $"
 
 AltScaleOn::
 	msgbox ScaleAltMsg
@@ -2211,6 +2207,7 @@ RT_NOFLAGMSG:
 	.string "You haven't been here yet.$"
 	
 RT_PokemonLeague::
+	setvar VAR_ELITE_4_STATE, 0
 	warpteleport MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F, 255, 9, 6
 	release
 	end

@@ -23,6 +23,9 @@
 #include "constants/layouts.h"
 #include "constants/maps.h"
 #include "constants/species.h"
+#include "field_message_box.h"
+#include "strings.h"
+#include "pokemon.h"
 
 extern const u8 EventScript_RepelWoreOff[];
 extern int CountBadges();
@@ -423,6 +426,9 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
 {
     u8 wildMonIndex = 0;
     u8 level;
+    u8 iv = 31;
+    u8 ability = 2;
+    u8 newLevel = 0;
 
     switch (area)
     {
@@ -452,6 +458,22 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
         return FALSE;
 
     CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
+    if ((Random() % 512) == 256)
+    {
+        newLevel = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
+        newLevel += 5;
+        ShowFieldMessage(gText_PowerfulWildAppears);
+        SetMonData(&gEnemyParty[0], MON_DATA_HP_IV, &iv);
+        SetMonData(&gEnemyParty[0], MON_DATA_ATK_IV, &iv);
+        SetMonData(&gEnemyParty[0], MON_DATA_DEF_IV, &iv);
+        SetMonData(&gEnemyParty[0], MON_DATA_SPATK_IV, &iv);
+        SetMonData(&gEnemyParty[0], MON_DATA_SPDEF_IV, &iv);
+        SetMonData(&gEnemyParty[0], MON_DATA_SPEED_IV, &iv);
+        SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &ability);
+        SetMonData(&gEnemyParty[0], MON_DATA_LEVEL, &newLevel);
+        FlagSet(FLAG_RYU_BOSS_WILD);
+        CalculateMonStats(&gEnemyParty[0]);
+    }
     return TRUE;
 }
 

@@ -5793,6 +5793,10 @@ BattleScript_BossModeStatBoostActivates::
 	waitmessage 0x40
 	end3
 
+BattleScript_WildBossStatsRaise::
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	end3
+
 BattleScript_PrintMonIsRooted::
 	pause 0x20
 	printstring STRINGID_PKMNANCHOREDITSELF

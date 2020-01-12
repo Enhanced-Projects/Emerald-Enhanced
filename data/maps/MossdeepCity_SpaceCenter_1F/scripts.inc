@@ -29,6 +29,7 @@ SPC_StevenApproach::
 	waitmovement 11
 	msgbox SPC_ItsBeenAwhile
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN
 	release
 	end
 	

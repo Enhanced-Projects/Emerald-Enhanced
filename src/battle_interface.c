@@ -28,6 +28,7 @@
 #include "constants/battle_config.h"
 #include "data.h"
 #include "pokemon_summary_screen.h"
+#include "event_data.h"
 
 enum
 {   // Corresponds to gHealthboxElementsGfxTable (and the tables after it) in graphics.c
@@ -155,6 +156,7 @@ enum
 // strings
 extern const u8 gText_Slash[];
 extern const u8 gText_HighlightDarkGrey[];
+extern const u8 gText_ColorShadowRedLightRed[];
 extern const u8 gText_DynColor2[];
 extern const u8 gText_DynColor2Male[];
 extern const u8 gText_DynColor1Female[];
@@ -1995,10 +1997,30 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     if (illusionMon != NULL)
         mon = illusionMon;
 
+    if (GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_OPPONENT)
+    {
     StringCopy(gDisplayedStringBattle, gText_HighlightDarkGrey);
     GetMonData(mon, MON_DATA_NICKNAME, nickname);
     StringGetEnd10(nickname);
     ptr = StringAppend(gDisplayedStringBattle, nickname);
+    }
+
+    if ((FlagGet(FLAG_RYU_BOSS_WILD) == 1) && (GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_OPPONENT))
+    {
+    StringCopy(gDisplayedStringBattle, gText_ColorShadowRedLightRed);
+    GetMonData(mon, MON_DATA_NICKNAME, nickname);
+    StringGetEnd10(nickname);
+    ptr = StringAppend(gDisplayedStringBattle, nickname);
+    }
+
+    if ((GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_PLAYER))
+    {
+    StringCopy(gDisplayedStringBattle, gText_HighlightDarkGrey);
+    GetMonData(mon, MON_DATA_NICKNAME, nickname);
+    StringGetEnd10(nickname);
+    ptr = StringAppend(gDisplayedStringBattle, nickname);
+    }
+
 
     gender = GetMonGender(mon);
     species = GetMonData(mon, MON_DATA_SPECIES);

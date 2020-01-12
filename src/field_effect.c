@@ -2987,8 +2987,6 @@ u8 FldEff_UseSurf(void)
 {
     u8 taskId = CreateTask(sub_80B8D84, 0xff);
     gTasks[taskId].data[15] = gFieldEffectArguments[0];
-    Overworld_ClearSavedMusic();
-    Overworld_ChangeMusicTo(MUS_NAMINORI);
     return FALSE;
 }
 
