@@ -1156,3 +1156,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/VictoryRoad_Cove/scripts.inc"
 
 	.include "data/maps/SafariZone_HiddenGrotto/scripts.inc"
+
+	.include "data/maps/Route66/scripts.inc"

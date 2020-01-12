@@ -4559,6 +4559,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Cave",
             "width": 11
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route66/map.bin",
+            "border_filepath": "data/layouts/Route66/border.bin",
+            "height": 22,
+            "id": "LAYOUT_ROUTE66",
+            "name": "Route66_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Fortree",
+            "width": 48
         }
     ],
     "layouts_table_label": "gMapLayouts"

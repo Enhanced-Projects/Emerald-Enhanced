@@ -3,7 +3,7 @@ Route112_MapScripts:: @ 81F1DA8
 	.byte 0
 
 Route112_OnTransition: @ 81F1DAE
-	clearflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
+	setflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 0
 	end
 

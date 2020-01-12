@@ -4,7 +4,7 @@ EventScript_CutTree:: @ 82906BB
 	msgbox Text_WantToCut, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq EventScript_CancelCut
-	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
+	msgbox Text_PulledWeed, MSGBOX_DEFAULT
 	closemessage
 	dofieldeffect FLDEFF_USE_CUT_ON_TREE
 	waitstate
@@ -42,14 +42,17 @@ EventScript_CancelCut:: @ 829072B
 Text_WantToCut: @ 829072E
 	.string "This weed is blocking your way.\nWould you like to pull it out?$"
 
-Text_MonUsedFieldMove: @ 8290771
+Text_PulledWeed: @ 8290771
+	.string "{PLAYER} yanked out the weed.$"
+
+Text_MonUsedFieldMove:
 	.string "{STR_VAR_1} used {STR_VAR_2}!$"
 
 Text_CantCut: @ 829077D
 	.string "This weed looks like it can be\npulled out.$"
 
 Text_SmashedBoulder:
-	.string "{PLAYER} used FALCON PUNCH!?$"
+	.string "{PLAYER} smahed the rock.$"
 
 EventScript_RockSmash:: @ 82907A6
 	lockall

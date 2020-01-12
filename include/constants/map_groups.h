@@ -281,6 +281,7 @@
 #define MAP_DESERT_TOMB1F                    (5 | (18 << 8))
 #define MAP_DESERT_TOMB2F                    (6 | (18 << 8))
 #define MAP_DESERT_TOMB_CORE                 (7 | (18 << 8))
+#define MAP_ROUTE66                          (8 | (18 << 8))
 
 // Map Group 19
 #define MAP_ROUTE112_CABLE_CAR_STATION   (0 | (19 << 8))

@@ -118,14 +118,6 @@
         },
         {
             "elevation": 0,
-            "flag": "FLAG_HIDDEN_ITEM_ROUTE_111_PROTEIN",
-            "item": "ITEM_PROTEIN",
-            "type": "hidden_item",
-            "x": 19,
-            "y": 55
-        },
-        {
-            "elevation": 0,
             "flag": "FLAG_HIDDEN_ITEM_ROUTE_111_RARE_CANDY",
             "item": "ITEM_RARE_CANDY",
             "type": "hidden_item",
@@ -156,6 +148,11 @@
             "direction": "left",
             "map": "MAP_ROUTE112",
             "offset": 20
+        },
+        {
+            "direction": "right",
+            "map": "MAP_ROUTE66",
+            "offset": -4
         }
     ],
     "coord_events": [
@@ -692,32 +689,6 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_TEMP_11",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "EventScript_RockSmash",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 18,
-            "y": 101
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_TEMP_12",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "EventScript_RockSmash",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 19,
-            "y": 100
-        },
-        {
-            "elevation": 3,
             "flag": "0",
             "graphics_id": "EVENT_OBJ_GFX_GIRL_1",
             "movement_range_x": 1,
@@ -1066,45 +1037,6 @@
             "trainer_type": "0",
             "x": 14,
             "y": 56
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_ROUTE_111_DESERT_FOSSIL",
-            "graphics_id": "EVENT_OBJ_GFX_FOSSIL",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "0x0",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 20,
-            "y": 53
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_ROUTE_111_PLAYER_DESCENT",
-            "graphics_id": "EVENT_OBJ_GFX_VAR_0",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "0x0",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 19,
-            "y": 53
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_ROUTE_111_ROCK_SMASH_TIP_GUY",
-            "graphics_id": "EVENT_OBJ_GFX_FAT_MAN",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "Route111_EventScript_RockSmashTipFatMan",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 19,
-            "y": 101
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_111",

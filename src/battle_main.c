@@ -5075,6 +5075,41 @@ void RunBattleScriptCommands(void)
         gBattleScriptingCommandsTable[gBattlescriptCurrInstr[0]]();
 }
 
+static const u16 sHPTypes[32] = {
+    TYPE_NORMAL,
+    TYPE_DARK,
+    TYPE_DRAGON,
+    TYPE_PSYCHIC,
+    TYPE_GHOST,
+    TYPE_FLYING,
+    TYPE_POISON,
+    TYPE_STEEL,
+    TYPE_BUG,
+    TYPE_WATER,
+    TYPE_FAIRY,
+    TYPE_ROCK,
+    TYPE_ELECTRIC,
+    TYPE_FIGHTING,
+    TYPE_NORMAL,
+    TYPE_DARK,
+    TYPE_DRAGON,
+    TYPE_PSYCHIC,
+    TYPE_GHOST,
+    TYPE_FLYING,
+    TYPE_POISON,
+    TYPE_STEEL,
+    TYPE_BUG,
+    TYPE_WATER,
+    TYPE_FAIRY,
+    TYPE_ROCK,
+    TYPE_ELECTRIC,
+    TYPE_FIGHTING,
+    TYPE_GRASS,
+    TYPE_GROUND,
+    TYPE_FIRE,
+    TYPE_ICE,
+};
+
 void SetTypeBeforeUsingMove(u16 move, u8 battlerAtk)
 {
     u32 moveType, ateType, attackerAbility;
@@ -5100,17 +5135,17 @@ void SetTypeBeforeUsingMove(u16 move, u8 battlerAtk)
     }
     else if (gBattleMoves[move].effect == EFFECT_HIDDEN_POWER)
     {
-        u8 typeBits  = ((gBattleMons[battlerAtk].hpIV & 1) << 0)
-                     | ((gBattleMons[battlerAtk].attackIV & 1) << 1)
-                     | ((gBattleMons[battlerAtk].defenseIV & 1) << 2)
-                     | ((gBattleMons[battlerAtk].speedIV & 1) << 3)
-                     | ((gBattleMons[battlerAtk].spAttackIV & 1) << 4)
-                     | ((gBattleMons[battlerAtk].spDefenseIV & 1) << 5);
+        u8 total = 0;
+        u8 hpIv = gBattleMons[gBattlerAttacker].hpIV;
+        u8 atkIv = gBattleMons[gBattlerAttacker].attackIV;
+        u8 defIv = gBattleMons[gBattlerAttacker].defenseIV;
+        u8 spatkIv = gBattleMons[gBattlerAttacker].spAttackIV;
+        u8 spdefIv = gBattleMons[gBattlerAttacker].spDefenseIV;
+        u8 speIv = gBattleMons[gBattlerAttacker].speedIV;
 
-        gBattleStruct->dynamicMoveType = (15 * typeBits) / 63 + 1;
-        if (gBattleStruct->dynamicMoveType >= TYPE_MYSTERY)
-            gBattleStruct->dynamicMoveType++;
-        gBattleStruct->dynamicMoveType |= 0xC0;
+        total = ((hpIv + atkIv + defIv + spatkIv + spdefIv + speIv) / 6);
+
+        gBattleStruct->dynamicMoveType = sHPTypes[(total)];
     }
     else if (gBattleMoves[move].effect == EFFECT_TECHNO_BLAST)
     {

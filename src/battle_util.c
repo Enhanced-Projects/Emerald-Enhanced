@@ -5945,6 +5945,8 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
         else if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
+        else if (moveType == TYPE_GRASS)
+            dmg = ApplyModifier(UQ_4_12(1.1), dmg);
     }
     else if (WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_SUN_ANY)
     {
@@ -5952,7 +5954,21 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
         else if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
+        else if (moveType == TYPE_GRASS)
+            dmg = ApplyModifier(UQ_4_12(1.1), dmg);
     }
+
+    else if (WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_HAIL_ANY)
+    {
+        if (moveType == TYPE_ICE)
+            dmg = ApplyModifier(UQ_4_12(1.5), dmg);
+        else if (moveType == TYPE_WATER)
+            dmg = ApplyModifier(UQ_4_12(1.2), dmg);
+        else if (moveType == TYPE_GRASS)
+            dmg = ApplyModifier(UQ_4_12(0.9), dmg);
+        else if (moveType == TYPE_DRAGON)
+            dmg = ApplyModifier(UQ_4_12(0.5), dmg);
+    }   
 
     // check stab
     if (IS_BATTLER_OF_TYPE(battlerAtk, moveType) && move != MOVE_STRUGGLE)
