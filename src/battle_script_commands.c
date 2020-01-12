@@ -1342,7 +1342,7 @@ static void Cmd_accuracycheck(void)
         if (defAbility == ABILITY_SAND_VEIL && WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_SANDSTORM_ANY)
             calc = (calc * 80) / 100; // 1.2 sand veil loss
         else if (defAbility == ABILITY_SNOW_CLOAK && WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_HAIL_ANY)
-            calc = (calc * 80) / 100; // 1.2 snow cloak loss
+            calc = (calc * 50) / 100; // 1.5 snow cloak loss
         else if (defAbility == ABILITY_TANGLED_FEET && gBattleMons[gBattlerTarget].status2 & STATUS2_CONFUSION)
             calc = (calc * 50) / 100; // 1.5 tangled feet loss
 
