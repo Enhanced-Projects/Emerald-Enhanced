@@ -51,6 +51,8 @@ static void Task_WarpAndLoadMap(u8 taskId);
 static void Task_DoDoorWarp(u8 taskId);
 static void Task_EnableScriptAfterMusicFade(u8 taskId);
 
+extern void LoadMapMusic(void);
+
 // const
 static const u16 sFlashLevelPixelRadii[] = { 200, 72, 64, 56, 48, 40, 32, 24, 0 };
 const s32 gMaxFlashLevel = ARRAY_COUNT(sFlashLevelPixelRadii) - 1;
@@ -488,7 +490,7 @@ static bool32 WaitForWeatherFadeIn(void)
 void DoWarp(void)
 {
     ScriptContext2_Enable();
-    TryFadeOutOldMapMusic();
+    LoadMapMusic();
     WarpFadeOutScreen();
     PlayRainStoppingSoundEffect();
     PlaySE(SE_KAIDAN);
@@ -499,7 +501,7 @@ void DoWarp(void)
 void DoDiveWarp(void)
 {
     ScriptContext2_Enable();
-    TryFadeOutOldMapMusic();
+    LoadMapMusic();
     WarpFadeOutScreen();
     PlayRainStoppingSoundEffect();
     gFieldCallback = FieldCB_DefaultWarpExit;

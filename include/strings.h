@@ -3250,5 +3250,6 @@ extern const u8 gText_PokemonStringBuffer[];
 extern const u8 gText_PowerfulWildAppears[];
 
 extern const u8 gText_ColorShadowRedLightRed[];
+extern const u8 gText_ryuJukeboxLabel[];
 
 #endif // GUARD_STRINGS_H

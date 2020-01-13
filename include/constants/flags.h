@@ -51,7 +51,7 @@
 #define FLAG_RYU_KYOGRE    0x29 // Unused Flag
 #define FLAG_HIDE_103_TEST_TRAINER    0x2A // Unused Flag
 #define FLAG_RYU_SCIENTIST_DONE    0x2B // Unused Flag
-#define FLAG_UNUSED_0x2C    0x2C // Unused Flag
+#define FLAG_RYU_RANDOMIZE_MUSIC    0x2C // Unused Flag
 #define FLAG_RYU_HIDE_R120_LANA_AND_HIKER    0x2D // Unused Flag
 #define FLAG_RYU_HIDE_REL_OBJECTS    0x2E // Unused Flag
 #define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3    0x2F // Unused Flag

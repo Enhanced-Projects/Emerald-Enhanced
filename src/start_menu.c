@@ -419,15 +419,18 @@ void PrintNumberToScreen(s32 num)
 {
     struct WindowTemplate template;
 
-    SetWindowTemplateFields(&template, 0, 1, 1, 4, 2, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 1, 7, 2, 15, 8);
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
     CopyWindowToVram(sPrintNumberWindowId, 1);
-    DrawStdFrameWithCustomTileAndPalette(sPrintNumberWindowId, FALSE, 0x214, 14);
+    //DrawStdFrameWithCustomTileAndPalette(sPrintNumberWindowId, FALSE, 0x214, 14);
 
-    ConvertIntToDecimalStringN(gStringVar1, num, 0, 3);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 1, gStringVar1, 6, 1, 0, NULL);
+    StringCopy(gStringVar1, gText_ryuJukeboxLabel);
+    ConvertIntToDecimalStringN(gStringVar2, num, 0, 3);
+
+    StringAppend(gStringVar1, gStringVar2);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 1, gStringVar1, 0, 0, 0, NULL);
 }
 
 void RemovePrintedNumber(void)

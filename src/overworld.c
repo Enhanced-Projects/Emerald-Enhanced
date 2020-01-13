@@ -70,6 +70,7 @@
 #include "item.h"
 #include "constants/items.h"
 #include "pokemon_storage_system.h"
+#include "mgba.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -187,7 +188,6 @@ static void CB1_UpdateLinkState(void);
 static void SetKeyInterceptCallback(u16 (*func)(u32));
 static void SetFieldVBlankCallback(void);
 static void FieldClearVBlankHBlankCallbacks(void);
-static void sub_8085810(void);
 static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *playerStruct, u16 a2, u8 a3);
 static u8 GetAdjustedInitialDirection(struct InitialPlayerAvatarState *playerStruct, u8 a2, u16 a3, u8 a4);
 static u16 GetCenterScreenMetatileBehavior(void);
@@ -246,6 +246,24 @@ static const u8 sUnusedData[] =
     0x50, 0x00, 0x00, 0x00,
     0xD4, 0xFF, 0xFF, 0xFF,
     0x2C, 0x00, 0x00, 0x00,
+};
+
+static const u16 sRouteMusicSelection[15] = {
+    359,
+    361,
+    401,
+    402,
+    409,
+    411,
+    431,
+    434,
+    491,
+    504,
+    505,
+    506,
+    526,
+    545,
+    547,
 };
 
 const struct UCoords32 gDirectionToVectors[] =
@@ -823,8 +841,6 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     s32 paletteIndex;
 
     SetWarpDestination(mapGroup, mapNum, -1, -1, -1);
-    if (gMapHeader.regionMapSectionId != 0x3A)
-        sub_8085810();
 
     ApplyCurrentWarp();
     LoadCurrentMapData();
@@ -838,6 +854,10 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     SetSav1WeatherFromCurrMapHeader();
     ChooseAmbientCrySpecies();
     SetDefaultFlashLevel();
+
+    if (gMapHeader.regionMapSectionId != 0x3A)
+        LoadMapMusic();
+
     Overworld_ClearSavedMusic();
     RunOnTransitionMapScript();
     InitMap();
@@ -1140,45 +1160,22 @@ static bool16 IsInflitratedSpaceCenter(struct WarpData *warp)
 
 u16 GetLocationMusic(struct WarpData *warp)
 {
-    if (NoMusicInSotopolisWithLegendaries(warp) == TRUE)
-        return 0xFFFF;
-    else if (ShouldLegendaryMusicPlayAtLocation(warp) == TRUE)
-        return MUS_OOAME;
-    else if (FlagGet(FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA) == 0 && (FlagGet(FLAG_RYU_PLAYER_HELPING_DEVON) == 1))
-        return MUS_AJITO;
-    else if (IsInfiltratedWeatherInstitute(warp) == TRUE)
-        return MUS_TOZAN;
-    else
-        return Overworld_GetMapHeaderByGroupAndId(warp->mapGroup, warp->mapNum)->music;
+    return Overworld_GetMapHeaderByGroupAndId(warp->mapGroup, warp->mapNum)->music;    
 }
 
 u16 GetCurrLocationDefaultMusic(void)
 {
     u16 music;
-
-    // Play the desert music only when the sandstorm is active on Route 111.
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE111)
-     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE111)
-     && GetSav1Weather() == WEATHER_SANDSTORM)
-        return MUS_ASHROAD;
-
     music = GetLocationMusic(&gSaveBlock1Ptr->location);
-    if (music != MUS_ROUTE_118)
-    {
-        return music;
-    }
-    else
-    {
-        if (gSaveBlock1Ptr->pos.x < 24)
-            return MUS_DOORO_X1;
-        else
-            return MUS_GRANROAD;
-    }
+    return music;
 }
 
 u16 GetWarpDestinationMusic(void)
 {
     u16 music = GetLocationMusic(&sWarpDestination);
+
+    mgba_printf(MGBA_LOG_INFO, "Getting Warp Destination Music");
+
     if (music != MUS_ROUTE_118)
     {
         return music;
@@ -1194,26 +1191,13 @@ u16 GetWarpDestinationMusic(void)
 }
 
 void Overworld_ResetMapMusic(void)
-{
+{   
     ResetMapMusic();
 }
 
 void Overworld_PlaySpecialMapMusic(void)
 {
-    u16 music = GetCurrLocationDefaultMusic();
-
-    if (music != MUS_OOAME && music != 0xFFFF)
-    {
-        if (gSaveBlock1Ptr->savedMusic)
-            music = gSaveBlock1Ptr->savedMusic;
-        else if (GetCurrentMapType() == MAP_TYPE_UNDERWATER)
-            music = MUS_DEEPDEEP;
-        else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
-            music = MUS_NAMINORI;
-    }
-
-    if (music != GetCurrentMapMusic())
-        PlayNewMapMusic(music);
+    LoadMapMusic();
 }
 
 void Overworld_SetSavedMusic(u16 songNum)
@@ -1226,25 +1210,56 @@ void Overworld_ClearSavedMusic(void)
     gSaveBlock1Ptr->savedMusic = 0;
 }
 
-static void sub_8085810(void)
+void LoadMapMusic(void)
 {
-    if (FlagGet(FLAG_DONT_TRANSITION_MUSIC) != TRUE)
+    u16 newMusic = 0;
+    u16 currentMusic = GetCurrentMapMusic();
+    u16 randomMusic = (sRouteMusicSelection[(Random() % ARRAY_COUNT(sRouteMusicSelection))]);
+    u8 step = 1;
+    if (GetCurrentMapType() == (MAP_TYPE_CITY || MAP_TYPE_TOWN))
     {
-        u16 newMusic = GetWarpDestinationMusic();
-        u16 currentMusic = GetCurrentMapMusic();
-        if (newMusic != MUS_OOAME && newMusic != 0xFFFF)
+        newMusic = GetCurrLocationDefaultMusic();
+        step = 1;
+    }
+    if ((GetCurrentMapType() == MAP_TYPE_ROUTE) && (FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == 1))
+    {
+        step = 2;
+        newMusic = randomMusic;
+    }
+    if (GetCurrentMapType() == (MAP_TYPE_INDOOR || MAP_TYPE_UNDERGROUND))
+    {
+        step = 3;
+        newMusic = GetCurrLocationDefaultMusic();
+    }
+    if (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1)
+    {
+        step = 4;
+        newMusic = (VarGet(VAR_RYU_JUKEBOX));
+    }
+    if (newMusic == 0)
+    {
+        step = 5;
+        newMusic = GetCurrLocationDefaultMusic();
+    }
+    if (newMusic != currentMusic)
+    {
+        switch (step)
         {
-            if (currentMusic == MUS_DEEPDEEP || currentMusic == MUS_NAMINORI)
-                return;
-            if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
-                newMusic = MUS_NAMINORI;
-        }
-        if (newMusic != currentMusic)
-        {
-            if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))
-                FadeOutAndFadeInNewMapMusic(newMusic, 4, 4);
-            else
-                FadeOutAndPlayNewMapMusic(newMusic, 8);
+            case 1:
+            case 3:
+            case 5:
+                FadeOutAndPlayNewMapMusic(GetCurrLocationDefaultMusic(), 4);
+                break;
+            case 2:
+            {
+                FadeOutAndPlayNewMapMusic(randomMusic, 4);
+                break;
+            }
+            case 4:
+            {
+                FadeOutAndPlayNewMapMusic((VarGet(VAR_RYU_JUKEBOX)), 4);
+                break;
+            }
         }
     }
 }

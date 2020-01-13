@@ -931,6 +931,7 @@ RDB_CTVMsg:
 
 RyuDebug_Utility1::
 	special FillTheDex
+	setflag FLAG_RYU_RANDOMIZE_MUSIC
 	buffernumberstring 0, VAR_ELITE_4_STATE
 	msgbox RDB_Readout
 	release
@@ -1615,126 +1616,6 @@ RyuEvSuccessMsgSpeed:
 
 EvNoImprints:
 	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough imprints.\pObtain more at Lilycove\nTraining Center.$"
-	
-@@MUSIC DEBUG MENU=================================================================================
-	
-RyuDebugMenu2::
-	call_if_unset FLAG_RYU_JUKEBOX_ENABLED, RyuMusicFlagOff
-	call_if_set FLAG_RYU_JUKEBOX_ENABLED, RyuMusicFlagOn
-	msgbox RyuJukeboxIntro MSGBOX_DEFAULT
-	multichoicegrid 3, 0, 121, 3, 0
-	switch VAR_RESULT
-	case 0, RyuBGMAshroad @MUS_ASHROAD
-	case 1, RyuBGMCasino @MUS_CASINO
-	case 2, RyuBGMMtPyre @MUS_MACHUPI
-	case 3, RyuBGMMagmaHQ @MUS_AJITO
-	case 4, RyuBGMDive @MUS_DEEPDEEP
-	case 5, RyuBGMBiking @MUS_CYCLING
-	case 6, RyuBGMField @MUS_FIELD13
-	case 7, RyuBGMMuseum @MUS_FUNE_KAN
-	case 8, RyuBGMLilyCov @MUS_MINAMO
-	case 9, RyuBGMViridia @MUS_NIBI
-	case 10, RyuBGMVermill @mus_rg_santoan
-	case 11, RyuJukeboxCancel
-	case 127, RyuJukeboxCancel
-	
-RyuMusicFlagOn:
-	playse SE_EXPMAX
-	waitse
-	return
-	
-RyuMusicFlagOff:
-	playse SE_PIN
-	waitse
-	return
-	
-RyuJukeboxIntro:
-	.string "Pick a song to use in the overworld.\n"
-	.string "It will play when normal BGM would.$"
-	
-RyuBGMAshroad::
-	fadenewbgm MUS_ASHROAD
-	setvar VAR_RYU_JUKEBOX, MUS_ASHROAD
-	setflag FLAG_RYU_JUKEBOX_ENABLED
-	release
-	end
-	
-RyuBGMVermill::
-	fadenewbgm MUS_RG_SANTOAN
-	setvar VAR_RYU_JUKEBOX, MUS_RG_SANTOAN
-	setflag FLAG_RYU_JUKEBOX_ENABLED
-	release
-	end
-	
-RyuBGMViridia::
-	fadenewbgm MUS_NIBI
-	setvar VAR_RYU_JUKEBOX, MUS_NIBI
-	setflag FLAG_RYU_JUKEBOX_ENABLED
-	release
-	end
-	
-RyuBGMLilyCov::
-	fadenewbgm MUS_MINAMO
-	setvar VAR_RYU_JUKEBOX, MUS_MINAMO
-	setflag FLAG_RYU_JUKEBOX_ENABLED
-	release
-	end
-	
-RyuBGMMuseum::
-	fadenewbgm MUS_FUNE_KAN
-	setvar VAR_RYU_JUKEBOX, MUS_FUNE_KAN
-	setflag FLAG_RYU_JUKEBOX_ENABLED
-	release
-	end
-	
-RyuBGMField::
-	fadenewbgm MUS_FIELD13
-	setvar VAR_RYU_JUKEBOX, MUS_FIELD13
-	setflag FLAG_RYU_JUKEBOX_ENABLED
-	release
-	end
-	
-RyuBGMBiking::
-	fadenewbgm MUS_CYCLING
-	setvar VAR_RYU_JUKEBOX, MUS_CYCLING
-	setflag FLAG_RYU_JUKEBOX_ENABLED
-	release
-	end
-
-RyuBGMDive::
-	fadenewbgm MUS_DEEPDEEP
-	setvar VAR_RYU_JUKEBOX, MUS_DEEPDEEP
-	setflag FLAG_RYU_JUKEBOX_ENABLED
-	release
-	end
-
-RyuBGMMagmaHQ::
-	fadenewbgm MUS_AJITO
-	setvar VAR_RYU_JUKEBOX, MUS_AJITO
-	setflag FLAG_RYU_JUKEBOX_ENABLED
-	release
-	end
-
-RyuBGMMtPyre::
-	fadenewbgm MUS_MACHUPI
-	setvar VAR_RYU_JUKEBOX, MUS_MACHUPI
-	setflag FLAG_RYU_JUKEBOX_ENABLED
-	release
-	end
-	
-RyuBGMCasino::
-	fadenewbgm MUS_CASINO
-	setvar VAR_RYU_JUKEBOX, MUS_CASINO
-	setflag FLAG_RYU_JUKEBOX_ENABLED
-	release
-	end
-	
-RyuJukeboxCancel::
-	fadedefaultbgm
-	clearflag FLAG_RYU_JUKEBOX_ENABLED
-	setvar VAR_RYU_JUKEBOX, 999
-	release
-	end
 
 @@------------------------------------------------------------------------------------------------- NUZLOCKE CHALLENGE RELATED
 RyuMartsDisabledNuzlocke::
