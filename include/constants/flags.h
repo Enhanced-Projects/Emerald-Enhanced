@@ -67,7 +67,7 @@
 #define FLAG_RYU_DEV_MODE    0x39 // Unused Flag
 #define FLAG_RYU_AQUA_THIEF_SEEN    0x3A // Unused Flag
 #define FLAG_RYU_PLAYER_HELPING_DEVON    0x3B // Unused Flag
-#define FLAG_UNUSED_0x3c    0x3C // Unused Flag
+#define FLAG_MAGMA_HIDEOUT_EVENT_DONE    0x3C // Unused Flag
 #define FLAG_RYU_DEVON_MISSION2START    0x3D // Unused Flag
 #define FLAG_RYU_DEVON_M1C    0x3E // Unused Flag
 #define FLAG_RYU_DEVON_MISSION1START    0x3F // Unused Flag
@@ -711,7 +711,7 @@
 #define FLAG_RYU_DEVON_SCIENTIST  0x29F // Unused Flag
 #define FLAG_RYU_DEVON_CEO_INTRO  0x2A0 // Unused Flag
 #define FLAG_RYU_MEWTWO_OBTAINED  0x2A1 // Unused Flag
-#define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
+#define FLAG_RYU_GROUDON_ENCOUNTERED  0x2A2 // Unused Flag
 #define FLAG_UNUSED_0x2A3  0x2A3 // Unused Flag
 #define FLAG_UNUSED_0x2A4  0x2A4 // Unused Flag
 #define FLAG_UNUSED_0x2A5  0x2A5 // Unused Flag

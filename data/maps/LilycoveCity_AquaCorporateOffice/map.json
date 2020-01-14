@@ -136,6 +136,20 @@
     "requires_flash": false,
     "show_map_name": true,
     "warp_events": [
+        {
+            "dest_map": "MAP_LILYCOVE_CITY",
+            "dest_warp_id": 15,
+            "elevation": 0,
+            "x": 7,
+            "y": 15
+        },
+        {
+            "dest_map": "MAP_LILYCOVE_CITY",
+            "dest_warp_id": 15,
+            "elevation": 0,
+            "x": 8,
+            "y": 15
+        }
     ],
     "weather": "WEATHER_NONE"
 }

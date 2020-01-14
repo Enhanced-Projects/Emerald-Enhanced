@@ -69,11 +69,17 @@ LC_AH_SecurityStop3::
 	end
 	
 LC_AH_SecurityStop2::
+	call_if_set FLAG_RYU_STARTING_M3, LC_AH_SETUPM3
 	msgbox LC_AH_OnWayM3 MSGBOX_DEFAULT
 	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_PlayerLeave
 	waitmovement 0
 	release
 	end
+
+LC_AH_SETUPM3::
+	goto_if_set FLAG_RYU_AQUA_MISSION3COMPLETE, ryu_return
+	setvar VAR_JAGGED_PASS_STATE, 1
+	return
 	
 LC_AH_SecurityStop::
 	msgbox LC_AH_KickedOut MSGBOX_DEFAULT
@@ -272,7 +278,7 @@ LC_AH_mission3::
 	setflag FLAG_RYU_STARTING_M3
 	applymovement EVENT_OBJ_ID_PLAYER, LH_M3Exit
 	waitmovement 0
-	setvar VAR_JAGGED_PASS_STATE, 0
+	setvar VAR_JAGGED_PASS_STATE, 1
 	warpsilent MAP_LILYCOVE_CITY, 15, 49, 8
 	release
 	end

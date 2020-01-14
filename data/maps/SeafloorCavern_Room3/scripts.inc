@@ -31,7 +31,7 @@ SeafloorCavern_Room3_Text_ShellyPostBattle: @ 8234A8A
 	.string "Ahahahaha!\n"
 	.string "You're so darn strong.\p"
 	.string "It's terribly disappointing that you're\n"
-	.string "not a TEAM AQUA member.\p"
+	.string "not a Team Aqua member.\p"
 	.string "You could have enjoyed the fabulous\n"
 	.string "world our BOSS has promised as\l"
 	.string "one of us…$"

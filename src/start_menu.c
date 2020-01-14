@@ -430,7 +430,7 @@ void PrintNumberToScreen(s32 num)
     ConvertIntToDecimalStringN(gStringVar2, num, 0, 3);
 
     StringAppend(gStringVar1, gStringVar2);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 1, gStringVar1, 0, 0, 0, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 0, 0, NULL);
 }
 
 void RemovePrintedNumber(void)

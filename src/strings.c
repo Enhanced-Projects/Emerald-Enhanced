@@ -2124,4 +2124,4 @@ const u8 gText_OverlordRyuBossNameBuffer[] = _("Ryu");
 const u8 gText_PokemonStringBuffer[] = _("Pokémon");
 
 const u8 gText_PowerfulWildAppears[] = _("A powerful wild Pokémon appears...");
-const u8 gText_ryuJukeboxLabel[] = _("{SHADOW 1}{COLOR 10}{HIGHLIGHT TRANSPARENT}Song: ");
+const u8 gText_ryuJukeboxLabel[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}{HIGHLIGHT TRANSPARENT}Song: ");

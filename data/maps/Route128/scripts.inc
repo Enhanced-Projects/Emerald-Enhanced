@@ -246,7 +246,7 @@ Route128_EventScript_Carlee:: @ 81F6DDE
 	end
 
 Route128_Text_ArchieWhatHappened: @ 81F6DF5
-	.string "ARCHIE: What happened…\n"
+	.string "Archie: What happened…\n"
 	.string "What is this wretched scene…\p"
 	.string "Did I…make a horrible mistake?$"
 
@@ -255,7 +255,7 @@ Route128_Text_ArchieIOnlyWanted: @ 81F6E48
 	.string "I only wanted…$"
 
 Route128_Text_MaxieDoYouUnderstandNow: @ 81F6E5A
-	.string "MAXIE: Do you understand now,\n"
+	.string "Maxie: Do you understand now,\n"
 	.string "ARCHIE?\p"
 	.string "Do you finally see how disastrous\n"
 	.string "your dream turned out to be?\p"
@@ -264,7 +264,7 @@ Route128_Text_MaxieDoYouUnderstandNow: @ 81F6E5A
 	.string "completely out of control!$"
 
 Route128_Text_MaxieResposibilityFallsToArchieAndMe: @ 81F6F1E
-	.string "MAXIE: {PLAYER}, don't say anything.\p"
+	.string "Maxie: {PLAYER}, don't say anything.\p"
 	.string "I know that I have no right to be\n"
 	.string "critical of ARCHIE…\p"
 	.string "But the way things are now, I doubt\n"
@@ -276,7 +276,7 @@ Route128_Text_MaxieResposibilityFallsToArchieAndMe: @ 81F6F1E
 	.string "to this falls to ARCHIE and me…$"
 
 Route128_Text_MaxieThisDefiesBelief: @ 81F704F
-	.string "MAXIE: This defies belief…\p"
+	.string "Maxie: This defies belief…\p"
 	.string "Those super-ancient Pokémon…\p"
 	.string "Their power is unbelievable.\n"
 	.string "They've upset the balance of nature…$"

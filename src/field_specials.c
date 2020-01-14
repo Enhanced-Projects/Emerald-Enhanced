@@ -5528,8 +5528,6 @@ bool8 RyuSwapAbility(void)
     {
         return FALSE;
     }
-    
-    
 }
 
 #define DRAW 1

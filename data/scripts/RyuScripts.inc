@@ -931,9 +931,13 @@ RDB_CTVMsg:
 
 RyuDebug_Utility1::
 	special FillTheDex
+	goto_if_unset FLAG_RYU_RANDOMIZE_MUSIC, RDB_u1_EnableRandomize
+	clearflag FLAG_RYU_RANDOMIZE_MUSIC
+	release
+	end
+
+RDB_u1_EnableRandomize::
 	setflag FLAG_RYU_RANDOMIZE_MUSIC
-	buffernumberstring 0, VAR_ELITE_4_STATE
-	msgbox RDB_Readout
 	release
 	end
 

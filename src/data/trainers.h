@@ -11894,19 +11894,19 @@ const struct Trainer gTrainers[] = {
         .party = {.ItemCustomMoves = sParty_Winona4},
     },
 
-    [TRAINER_EMPTY_42] =
+    [TRAINER_SHELLY_3] =
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
-        .trainerClass = TRAINER_CLASS_LEADER,
+        .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_LEADER_WINONA,
-        .trainerName = _("TRUE"),
+        .trainerPic = TRAINER_PIC_AQUA_ADMIN_F,
+        .trainerName = _("Shelly"),
         .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY | AI_SCRIPT_RISKY,
-        .partySize = ARRAY_COUNT(sParty_Winona5),
-        .party = {.ItemCustomMoves = sParty_Winona5},
+        .partySize = ARRAY_COUNT(sParty_ShellyPyre),
+        .party = {.ItemCustomMoves = sParty_ShellyPyre},
     },
 
     [TRAINER_TATE_AND_LIZA_2] =

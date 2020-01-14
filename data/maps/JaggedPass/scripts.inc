@@ -68,8 +68,6 @@ JaggedPass_EventScript_OpenMagmaHideout:: @ 82306BB
 
 JaggedPass_EventScript_MagmaHideoutGuard:: @ 8230718
 	lockall
-	goto_if_set FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS, JaggedPass_EventScript_GuardDefeated
-	waitse
 	playse SE_PIN
 	applymovement 5, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -81,10 +79,16 @@ JaggedPass_EventScript_MagmaHideoutGuard:: @ 8230718
 	closemessage
 	trainerbattle_no_intro TRAINER_GRUNT_JAGGED_PASS, JaggedPass_Text_GruntDefeat
 	setflag FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS
-	applymovement 5, Common_Movement_FaceOriginalDirection
+	applymovement 5, JP_MagmaRunInside
 	waitmovement 0
+	removeobject 5
 	releaseall
 	end
+
+JP_MagmaRunInside:
+	walk_up
+	walk_in_place_fastest_up
+	step_end
 
 JaggedPass_EventScript_GuardDefeated:: @ 8230766
 	applymovement 5, Common_Movement_FacePlayer
@@ -245,7 +249,7 @@ JaggedPass_Text_GoWhereverYouWant: @ 8230D65
 
 JaggedPass_Text_BoulderShakingInResponseToEmblem: @ 8230DBA
 	.string "Oh! This boulder is shaking in response\n"
-	.string "to the MAGMA EMBLEM!$"
+	.string "to you approaching!$"
 
 JaggedPass_Text_JulioIntro: @ 8230DF7
 	.string "Aiyeeh! It's awfully scary to shoot\n"

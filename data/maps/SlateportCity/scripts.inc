@@ -1039,7 +1039,7 @@ SlateportCity_Text_QuitPushing: @ 81DDC4F
 	.string "This is the line, can't you see?$"
 
 SlateportCity_Text_AquaHasPolicy: @ 81DDC8A
-	.string "TEAM AQUA has a policy of\n"
+	.string "Team Aqua has a policy of\n"
 	.string "assembling and dispersing at\l"
 	.string "the operation site.$"
 
@@ -1199,7 +1199,7 @@ SlateportCity_Text_OhPlayerWeMadeDiscovery: @ 81DE64F
 SlateportCity_Text_AquaWillAssumeControlOfSubmarine: @ 81DE724
 	.string "Fufufu…\n"
 	.string "CAPT. STERN, I presume.\p"
-	.string "We of TEAM AQUA will assume\n"
+	.string "We of Team Aqua will assume\n"
 	.string "control of your submarine!\p"
 	.string "Your objections are meaningless!\n"
 	.string "We expect your total cooperation!\p"
@@ -1340,7 +1340,7 @@ SlateportCity_Text_YouDroveTeamAquaAway: @ 81DF032
 	.string "I'm sure I met you somewhere before.\p"
 	.string "Have I introduced myself to you?\n"
 	.string "If not, my name's SCOTT.\p"
-	.string "I just saw TEAM AQUA run away from\n"
+	.string "I just saw Team Aqua run away from\n"
 	.string "here like they were stung.\p"
 	.string "Let me guess--you drove them away?$"
 

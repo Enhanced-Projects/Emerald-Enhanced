@@ -1030,7 +1030,7 @@ Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz2: @ 826D98C
 
 Route110_TrickHousePuzzle5_Text_Mechadoll2Quiz3: @ 826D9CE
 	.string "MECHADOLL 2 QUIZ.\p"
-	.string "Which of these Pokémon did TEAM AQUA\n"
+	.string "Which of these Pokémon did Team Aqua\n"
 	.string "use in PETALBURG FOREST?$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll3Intro: @ 826DA1E

@@ -93,7 +93,7 @@
         {
             "blockdata_filepath": "data/layouts/LittlerootTown/map.bin",
             "border_filepath": "data/layouts/LittlerootTown/border.bin",
-            "height": 20,
+            "height": 34,
             "id": "LAYOUT_LITTLEROOT_TOWN",
             "name": "LittlerootTown_Layout",
             "primary_tileset": "gTileset_General",

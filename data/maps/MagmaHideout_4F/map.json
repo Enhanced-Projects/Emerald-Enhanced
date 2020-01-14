@@ -1,140 +1,213 @@
 {
-  "id": "MAP_MAGMA_HIDEOUT_4F",
-  "name": "MagmaHideout_4F",
-  "layout": "LAYOUT_MAGMA_HIDEOUT_4F",
-  "music": "MUS_AJITO",
-  "region_map_section": "MAPSEC_MAGMA_HIDEOUT",
-  "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_UNDERGROUND",
-  "allow_bike": true,
-  "allow_escape_rope": true,
-  "allow_running": true,
-  "show_map_name": true,
-  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
-  "object_events": [
-    {
-      "graphics_id": "EVENT_OBJ_GFX_GROUDON_1",
-      "x": 16,
-      "y": 17,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
-      "x": 31,
-      "y": 22,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "1",
-      "trainer_sight_or_berry_tree_id": "3",
-      "script": "MagmaHideout_4F_EventScript_Grunt11",
-      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
-      "x": 30,
-      "y": 13,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "1",
-      "trainer_sight_or_berry_tree_id": "3",
-      "script": "MagmaHideout_4F_EventScript_Grunt12",
-      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
-      "x": 26,
-      "y": 13,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "1",
-      "trainer_sight_or_berry_tree_id": "3",
-      "script": "MagmaHideout_4F_EventScript_Grunt13",
-      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
-      "x": 22,
-      "y": 4,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "1",
-      "trainer_sight_or_berry_tree_id": "4",
-      "script": "MagmaHideout_4F_EventScript_Courtney",
-      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_MAXIE",
-      "x": 16,
-      "y": 21,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "MagmaHideout_4F_EventScript_Maxie",
-      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_GROUDON_2",
-      "x": 16,
-      "y": 17,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2"
-    },
-    {
-      "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
-      "x": 3,
-      "y": 7,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "MagmaHideout_4F_EventScript_MaxRevive",
-      "flag": "FLAG_ITEM_MAGMA_HIDEOUT_4F_MAX_REVIVE"
-    }
-  ],
-  "warp_events": [
-    {
-      "x": 46,
-      "y": 7,
-      "elevation": 0,
-      "dest_map": "MAP_MAGMA_HIDEOUT_3F_1R",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 20,
-      "y": 21,
-      "elevation": 0,
-      "dest_map": "MAP_MAGMA_HIDEOUT_3F_3R",
-      "dest_warp_id": 1
-    }
-  ],
-  "coord_events": [],
-  "bg_events": []
+    "allow_bike": true,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+        {
+            "elevation": 0,
+            "script": "MH_RyuBossFight",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 0,
+            "y": 22
+        },
+        {
+            "elevation": 3,
+            "script": "MH_RyuBossFight",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 9,
+            "y": 19
+        },
+        {
+            "elevation": 0,
+            "script": "MH_RyuBossFight",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 0,
+            "y": 22
+        },
+        {
+            "elevation": 0,
+            "script": "MH_Groudon_Enc",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 17,
+            "y": 21
+        },
+        {
+            "elevation": 0,
+            "script": "MH_CheckForStatus",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 38,
+            "y": 22
+        }
+    ],
+    "id": "MAP_MAGMA_HIDEOUT_4F",
+    "layout": "LAYOUT_MAGMA_HIDEOUT_4F",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "music": "MUS_AJITO",
+    "name": "MagmaHideout_4F",
+    "object_events": [
+        {
+            "elevation": 0,
+            "flag": "FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1",
+            "graphics_id": "EVENT_OBJ_GFX_GROUDON_1",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "0x0",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 16,
+            "y": 17
+        },
+        {
+            "elevation": 0,
+            "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS",
+            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+            "script": "MagmaHideout_4F_EventScript_Grunt11",
+            "trainer_sight_or_berry_tree_id": "3",
+            "trainer_type": "1",
+            "x": 31,
+            "y": 22
+        },
+        {
+            "elevation": 0,
+            "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS",
+            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "MagmaHideout_4F_EventScript_Grunt12",
+            "trainer_sight_or_berry_tree_id": "3",
+            "trainer_type": "1",
+            "x": 30,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS",
+            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+            "script": "MagmaHideout_4F_EventScript_Grunt13",
+            "trainer_sight_or_berry_tree_id": "3",
+            "trainer_type": "1",
+            "x": 26,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "flag": "FLAG_RYU_MH_COURTNEY_SOLOMODE",
+            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_F",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "MagmaHideout_4F_EventScript_Courtney",
+            "trainer_sight_or_berry_tree_id": "4",
+            "trainer_type": "1",
+            "x": 12,
+            "y": 4
+        },
+        {
+            "elevation": 0,
+            "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS",
+            "graphics_id": "EVENT_OBJ_GFX_MAXIE",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "MagmaHideout_4F_EventScript_Maxie",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 12,
+            "y": 20
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2",
+            "graphics_id": "EVENT_OBJ_GFX_GROUDON_2",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "0x0",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 16,
+            "y": 17
+        },
+        {
+            "elevation": 0,
+            "flag": "FLAG_ITEM_MAGMA_HIDEOUT_4F_MAX_REVIVE",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "MagmaHideout_4F_EventScript_MaxRevive",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 3,
+            "y": 7
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
+            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_F",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "MH_ShellyAfterFight",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 4,
+            "y": 14
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_RYU_MH_COURTNEY_DUOMODE",
+            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_F",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "MH_RyuBossFight",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 12,
+            "y": 19
+        }
+    ],
+    "region_map_section": "MAPSEC_MAGMA_HIDEOUT",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_MAGMA_HIDEOUT_3F_1R",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 46,
+            "y": 7
+        },
+        {
+            "dest_map": "MAP_MAGMA_HIDEOUT_3F_3R",
+            "dest_warp_id": 1,
+            "elevation": 0,
+            "x": 20,
+            "y": 21
+        }
+    ],
+    "weather": "WEATHER_NONE"
 }

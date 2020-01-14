@@ -248,7 +248,7 @@ SlateportCity_OceanicMuseum_1F_Text_CatchUpWithYourGroup: @ 820B075
 	.string "You'd better go catch up to them!$"
 
 SlateportCity_OceanicMuseum_1F_Text_AquaExistForGoodOfAll: @ 820B0E8
-	.string "We, TEAM AQUA, exist for the good\n"
+	.string "We, Team Aqua, exist for the good\n"
 	.string "of all!$"
 
 SlateportCity_OceanicMuseum_1F_Text_OurBossIsntHere: @ 820B112
@@ -296,7 +296,7 @@ SlateportCity_OceanicMuseum_1F_Text_WantSeaPokemon: @ 820B369
 SlateportCity_OceanicMuseum_1F_Text_RememberMeTakeThis: @ 820B3AB
 	.string "Aiyeeeh!\n"
 	.string "What are you doing here?\p"
-	.string "Me? I'm the TEAM AQUA member\n"
+	.string "Me? I'm the Team Aqua member\n"
 	.string "you thumped before, remember?\l"
 	.string "Back in RUSTURF TUNNEL?\p"
 	.string "Here, take this!\n"
