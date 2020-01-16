@@ -259,6 +259,7 @@ RDBM_ExitResetMenu::
 	end
 
 RDBM_TeleportHome:
+	call_if_set FLAG_RYU_FRONTIER_MODE, Ryu_FrontierModeCheckLeave
 	msgbox RGBM_TPHOME MSGBOX_DEFAULT
 	closemessage
 	goto RT_Home

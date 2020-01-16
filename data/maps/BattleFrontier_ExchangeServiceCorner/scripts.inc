@@ -1,5 +1,78 @@
 BattleFrontier_ExchangeServiceCorner_MapScripts:: @ 825F070
 	.byte 0
+	
+BF_GetRandomMon::
+	goto_if_unset FLAG_RYU_FRONTIER_MODE, BF_NoFrontierModeIntro
+	msgbox WelcomeToFrontierMonStore
+	checkbp
+	buffernumberstring 0, VAR_RESULT
+	msgbox YouCurrentlyHave
+	closemessage
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq BF_PartyFull
+	msgbox FrontierMonQuery  MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_ne BF_RandomMonDeclined
+	checkbp
+	compare VAR_RESULT, 50
+	goto_if_lt BF_CantAffordMon
+	takebp 50
+	special RyuGiveFrontierMon
+	delay 50
+	msgbox gratz
+	release
+	end
+	
+BF_CantAffordMon::
+    msgbox BF_CantAfford 
+	release
+	end
+
+BF_PartyFull::
+	msgbox PartyIsFull
+	release
+	end
+	
+BF_NoFrontierModeIntro::
+	msgbox WelcomeToExchangeCorner
+	release
+	end
+	
+BF_RandomMonDeclined::
+	msgbox OkayBye
+	release
+	end
+
+BF_CantAfford:
+    .string "I'm sorry but you do not have enough\n"
+    .string "battle points to make this purchase.\p"
+    .string "Come back with more.$"
+
+PartyIsFull:
+	.string "We're sorry, but your party is\ncurrently full.\pPlease make space and\ncome back later.$"
+	
+WelcomeToExchangeCorner:
+	.string "Welcome to the Battle Point\nExchange Center.\pI hope we have what you're\llooking for!"
+	
+gratz:
+	.string "Thank you for your purchase!$"
+
+YouCurrentlyHave:
+	.string "You currently have {STR_VAR_1} BP.$"
+	
+OkayBye:
+	.string "Very well. Return when you want\nto make the exchange!$"
+	
+WelcomeToFrontierMonStore:
+    .string "Welcome to the Frontier Mon\n"
+    .string "Exchange. Here you can exchange \p"
+    .string "50 BP to get a random competetive\n"
+    .string "pokemon.$"
+	
+FrontierMonQuery:
+    .string "Would you like to make an exchange\n"
+	.string "your points?$"
 
 BattleFrontier_ExchangeServiceCorner_EventScript_ClerkWelcome:: @ 825F071
 	msgbox BattleFrontier_ExchangeServiceCorner_Text_WelcomePleaseChoosePrize, MSGBOX_DEFAULT

@@ -1781,6 +1781,11 @@ void CB2_ReturnToField(void)
     {
         FieldClearVBlankHBlankCallbacks();
         SetMainCallback2(CB2_ReturnToFieldLocal);
+        
+        if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+        {
+            RyuKillMon();
+        }
     }
 }
 

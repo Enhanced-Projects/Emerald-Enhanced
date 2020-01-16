@@ -10,6 +10,7 @@ BattleFrontier_OutsideWest_OnTransition: @ 823D3E7
 BattleFrontier_OutsideWest_EventScript_FerryAttendant:: @ 823D3F0
 	lock
 	faceplayer
+	call_if_set FLAG_RYU_FRONTIER_MODE, Ryu_FrontierModeCheckLeave
 	msgbox BattleFrontier_OutsideWest_Text_MayISeeYourTicket, MSGBOX_DEFAULT
 	checkitem ITEM_SS_TICKET, 1
 	compare VAR_RESULT, FALSE
@@ -18,6 +19,21 @@ BattleFrontier_OutsideWest_EventScript_FerryAttendant:: @ 823D3F0
 	waitmessage
 	goto BattleFrontier_OutsideWest_EventScript_ChooseFerryDestination
 	end
+
+Ryu_FrontierModeCheckLeave::
+	goto_if_unset FLAG_COLLECTED_ALL_SILVER_SYMBOLS, RyuFrontierModeUnlockHoenn
+	return
+	end
+	
+RyuFrontierModeUnlockHoenn::
+	msgbox BF_CantLeaveNoSymbols
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
+	
+BF_CantLeaveNoSymbols:
+	.string "You must collect all of the\nsilver symbols in order to leave.$"
 
 BattleFrontier_OutsideWest_EventScript_ChooseFerryDestination:: @ 823D416
 	multichoicedefault 18, 6, MULTI_SSTIDAL_BATTLE_FRONTIER, 2, 0

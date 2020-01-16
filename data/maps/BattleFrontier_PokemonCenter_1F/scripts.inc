@@ -9,12 +9,23 @@ BattleFrontier_PokemonCenter_1F_OnTransition: @ 8267904
 
 @ VAR_0x800B is the Nurse's object event id
 BattleFrontier_PokemonCenter_1F_EventScript_Nurse:: @ 8267908
+	getpartysize
+	compare VAR_RESULT, 0
+	goto_if_eq CantHealNoPokemon
 	setvar VAR_0x800B, 1
 	call Common_EventScript_PkmnCenterNurse
 	waitmessage
 	waitbuttonpress
 	release
 	end
+	
+CantHealNoPokemon::
+	msgbox CantHealZeroPokemon
+	release
+	end
+	
+CantHealZeroPokemon:
+	.string "You don't have any pokemon.\nYou can't heal here.$"
 
 BattleFrontier_PokemonCenter_1F_EventScript_SchoolKid:: @ 8267916
 	msgbox BattleFrontier_PokemonCenter_1F_Text_NeverSeenPokemon, MSGBOX_NPC

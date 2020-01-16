@@ -7,6 +7,20 @@ BattleFrontier_OutsideEast_OnResume: @ 8242C0F
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, BattleFrontier_OutsideEast_EventScript_TryRemoveSudowoodo
 	end
 
+BF_CheckPartyForArtisanCave::
+	lock
+	getpartysize
+	compare VAR_RESULT, 0
+	goto_if_ne ryu_end
+	msgbox CantEnterNoPkmn
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepDown
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
+	
+CantEnterNoPkmn:
+	.string "You don't have any pokemon.\nYou cannot enter here.$"
+
 BattleFrontier_OutsideEast_EventScript_TryRemoveSudowoodo:: @ 8242C19
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_CAUGHT

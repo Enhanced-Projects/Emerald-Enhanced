@@ -4715,7 +4715,7 @@ void RyuKillMon(void)
 
             for (i = 0; i < partyCount; i++)
             {
-                if (GetMonData(&gPlayerParty[i], MON_DATA_HP, NULL) == 0)
+                if (GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
                 {
                     ZeroMonData(&gPlayerParty[i]);
                     CompactPartySlots();
