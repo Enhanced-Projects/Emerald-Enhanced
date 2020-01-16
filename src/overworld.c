@@ -1174,20 +1174,11 @@ u16 GetWarpDestinationMusic(void)
 {
     u16 music = GetLocationMusic(&sWarpDestination);
 
-    mgba_printf(MGBA_LOG_INFO, "Getting Warp Destination Music");
-
-    if (music != MUS_ROUTE_118)
-    {
-        return music;
-    }
-    else
-    {
-        if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAUVILLE_CITY)
-         && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAUVILLE_CITY))
+        if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAUVILLE_CITY) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAUVILLE_CITY))
             return MUS_DOORO_X1;
         else
             return MUS_GRANROAD;
-    }
+
 }
 
 void Overworld_ResetMapMusic(void)
@@ -1216,6 +1207,12 @@ void LoadMapMusic(void)
     u16 currentMusic = GetCurrentMapMusic();
     u16 randomMusic = (sRouteMusicSelection[(Random() % ARRAY_COUNT(sRouteMusicSelection))]);
     u8 step = 1;
+
+    if (currentMusic > 557)
+    {
+        newMusic = 350;
+    }
+
     if (GetCurrentMapType() == (MAP_TYPE_CITY || MAP_TYPE_TOWN))
     {
         newMusic = GetCurrLocationDefaultMusic();
@@ -1248,18 +1245,29 @@ void LoadMapMusic(void)
             case 1:
             case 3:
             case 5:
+            {
                 FadeOutAndPlayNewMapMusic(GetCurrLocationDefaultMusic(), 4);
+                mgba_printf(MGBA_LOG_INFO, "1,3,5");
                 break;
+            }
             case 2:
             {
                 FadeOutAndPlayNewMapMusic(randomMusic, 4);
+                mgba_printf(MGBA_LOG_INFO, "2");
                 break;
             }
             case 4:
             {
                 FadeOutAndPlayNewMapMusic((VarGet(VAR_RYU_JUKEBOX)), 4);
+                mgba_printf(MGBA_LOG_INFO, "4");
                 break;
             }
+            default:
+            {
+                mgba_printf(MGBA_LOG_INFO, "-1");
+                FadeOutAndPlayNewMapMusic(350, 4);
+                break;
+            }    
         }
     }
 }

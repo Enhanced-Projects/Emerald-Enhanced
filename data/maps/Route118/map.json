@@ -121,7 +121,7 @@
     "id": "MAP_ROUTE118",
     "layout": "LAYOUT_ROUTE118",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_ROUTE_118",
+    "music": "MUS_RG_LOAD03",
     "name": "Route118",
     "object_events": [
         {
