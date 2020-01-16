@@ -249,6 +249,10 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_LANETTE_BASEMENT);
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
     VarSet(VAR_RYU_GCMS_VALUE, 0);
+    VarSet(VAR_RYU_GCMS_MOVE1, 0);
+    VarSet(VAR_RYU_GCMS_MOVE2, 0);
+    VarSet(VAR_RYU_GCMS_MOVE3, 0);
+    VarSet(VAR_RYU_GCMS_MOVE4, 0);
     VarSet(VAR_RYU_BANK_APR, 0);
     FlagClear(FLAG_RYU_TEMPTP);
     FlagClear(FLAG_RYU_HAS_FOLLOWER);

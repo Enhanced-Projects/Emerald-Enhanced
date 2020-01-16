@@ -2710,9 +2710,9 @@ static const u8 sBeedrilliteDesc[] = _(
     "Evolve in battle.");
 
 static const u8 sMegaBraceletDesc[] = _(
-    "Allows Pokémon holding\n"
-    "a Mega Stone to Mega\n"
-    "Evolve in battle.");
+    "Allows Poéemon/n"
+    "with a mega stone/n"
+    "to mega evolve.");
 
 static const u8 sProtectPadsDesc[] = _(
     "Guard the holder\n"

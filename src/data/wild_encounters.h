@@ -85,7 +85,7 @@ const struct WildPokemonInfo gLittlerootTown_LandMonsInfo = {20, gLittlerootTown
 
 const struct WildPokemon gRoute101_LandMons[] =
 {
-	{5, 5,SPECIES_WURMPLE},
+	{5, 5,SPECIES_STARLY},
 	{5, 5,SPECIES_POOCHYENA},
 	{5, 5,SPECIES_WURMPLE},
 	{5, 5,SPECIES_SEEDOT},
@@ -103,12 +103,12 @@ const struct WildPokemonInfo gRoute101_LandMonsInfo = {20, gRoute101_LandMons};
 
 const struct WildPokemon gRoute102_LandMons[] =
 {
-	{5, 5,SPECIES_POOCHYENA},
+	{5, 5,SPECIES_BUNEARY},
 	{5, 5,SPECIES_WURMPLE},
 	{5, 6,SPECIES_HOOTHOOT},
 	{5, 6,SPECIES_WURMPLE},
 	{5, 5,SPECIES_LOTAD},
-	{5, 6,SPECIES_HOOTHOOT},
+	{5, 6,SPECIES_STARLY},
 	{5, 5,SPECIES_RATTATA},
 	{5, 5,SPECIES_AIPOM},
 	{5, 6,SPECIES_ZIGZAGOON},
@@ -150,7 +150,7 @@ const struct WildPokemon gRoute103_LandMons[] =
 {
 	{5, 5,SPECIES_POOCHYENA},
 	{5, 5,SPECIES_RATTATA},
-	{5, 5,SPECIES_POOCHYENA},
+	{5, 5,SPECIES_STARLY},
 	{5, 6,SPECIES_YANMA},
 	{5, 5,SPECIES_WINGULL},
 	{5, 5,SPECIES_HOOTHOOT},
@@ -200,7 +200,7 @@ const struct WildPokemon gRoute104_LandMons[] =
 	{10, 12,SPECIES_KRABBY},
 	{10, 10, SPECIES_VENONAT},
 	{10, 12,SPECIES_TAILLOW},
-	{10, 10, SPECIES_TAILLOW},
+	{10, 10, SPECIES_MINCCINO},
 	{10, 12,SPECIES_FARFETCHD},
 	{10, 12,SPECIES_PIDGEY},
 	{10, 10,SPECIES_MANKEY},
@@ -272,20 +272,20 @@ const struct WildPokemon gRoute110_LandMons[] =
 	{23, 23, SPECIES_MINUN},
 	{23, 23, SPECIES_ODDISH},
 	{23, 23, SPECIES_MINUN},
-	{23, 23, SPECIES_GULPIN},
+	{23, 23, SPECIES_SHINX},
 	{22, 22, SPECIES_MAREEP},
 	{22, 22, SPECIES_WINGULL},
 	{22, 22, SPECIES_PLUSLE},
-	{23, 23, SPECIES_FLAAFFY},
+	{23, 23, SPECIES_LUXIO},
 };
 
 const struct WildPokemonInfo gRoute110_LandMonsInfo = {20, gRoute110_LandMons};
 
 const struct WildPokemon gRoute110_WaterMons[] =
 {
-	{5, 35, SPECIES_TENTACOOL},
+	{5, 35, SPECIES_TYNAMO},
 	{20, 25, SPECIES_WINGULL},
-	{15, 25, SPECIES_WAILMER},
+	{15, 25, SPECIES_EELEKTRIK},
 	{25, 30, SPECIES_REMORAID},
 	{25, 30, SPECIES_PELIPPER},
 };
@@ -312,14 +312,14 @@ const struct WildPokemon gRoute111_LandMons[] =
 {
 	{30, 30, SPECIES_SANDSHREW},
 	{30, 30, SPECIES_TRAPINCH},
-	{31, 31, SPECIES_MAWILE},
+	{31, 31, SPECIES_ROGGENROLA},
 	{31, 31, SPECIES_TRAPINCH},
 	{39, 39, SPECIES_DIGLETT},
 	{31, 31, SPECIES_BALTOY},
-	{39, 39, SPECIES_SUNKERN},
+	{39, 39, SPECIES_HIPPOPOTAS},
 	{39, 39, SPECIES_RHYDON},
-	{30, 30, SPECIES_BALTOY},
-	{30, 30, SPECIES_BELLSPROUT},
+	{30, 30, SPECIES_DRILBUR},
+	{30, 30, SPECIES_MARACTUS},
 	{32, 32, SPECIES_MAWILE},
 	{32, 32, SPECIES_CACNEA},
 };
@@ -373,7 +373,7 @@ const struct WildPokemon gRoute112_LandMons[] =
 	{14, 14, SPECIES_PONYTA},
 	{14, 14, SPECIES_MARILL},
 	{16, 16, SPECIES_NUMEL},
-	{16, 16, SPECIES_MARILL},
+	{16, 16, SPECIES_AXEW},
 	{16, 16, SPECIES_GROWLITHE},
 	{16, 16, SPECIES_ABRA},
 	{16, 16, SPECIES_MAGBY},
@@ -385,7 +385,7 @@ const struct WildPokemonInfo gRoute112_LandMonsInfo = {20, gRoute112_LandMons};
 const struct WildPokemon gRoute113_LandMons[] =
 {
 	{15, 15, SPECIES_SPINDA},
-	{15, 15, SPECIES_MEOWTH},
+	{15, 15, SPECIES_ROCKRUFF},
 	{15, 15, SPECIES_SLUGMA},
 	{14, 14, SPECIES_SCYTHER},
 	{14, 14, SPECIES_SHUCKLE},
@@ -393,7 +393,7 @@ const struct WildPokemon gRoute113_LandMons[] =
 	{16, 16, SPECIES_NOSEPASS},
 	{16, 16, SPECIES_MAGBY},
 	{16, 16, SPECIES_PHANPY},
-	{16, 16, SPECIES_LEDYBA},
+	{16, 16, SPECIES_ROCKRUFF},
 	{16, 16, SPECIES_LARVITAR},
 	{16, 16, SPECIES_SKARMORY},
 };
@@ -405,13 +405,13 @@ const struct WildPokemon gRoute114_LandMons[] =
 	{16, 16, SPECIES_SWABLU},
 	{16, 16, SPECIES_LOTAD},
 	{17, 17, SPECIES_SWABLU},
-	{15, 15, SPECIES_SWABLU},
+	{15, 15, SPECIES_BOUNSWEET},
 	{15, 15, SPECIES_LEDYBA},
 	{16, 16, SPECIES_LOMBRE},
 	{16, 16, SPECIES_ZANGOOSE},
 	{18, 18, SPECIES_LOMBRE},
 	{17, 17, SPECIES_EEVEE},
-	{15, 15, SPECIES_EEVEE},
+	{15, 15, SPECIES_GOOMY},
 	{28, 32, SPECIES_SEVIPER},
 	{35, 45, SPECIES_ZANGOOSE},
 };
@@ -466,10 +466,10 @@ const struct WildPokemon gRoute116_LandMons[] =
 	{16, 16, SPECIES_TAILLOW},
 	{17, 17, SPECIES_TEDDIURSA},
 	{18, 18, SPECIES_TAILLOW},
-	{17, 17, SPECIES_POOCHYENA},
+	{17, 17, SPECIES_PURRLOIN},
 	{18, 18, SPECIES_MEOWTH},
 	{17, 17, SPECIES_SKITTY},
-	{18, 18, SPECIES_DITTO},
+	{18, 18, SPECIES_PURRLOIN},
 };
 
 const struct WildPokemonInfo gRoute116_LandMonsInfo = {20, gRoute116_LandMons};
@@ -523,14 +523,14 @@ const struct WildPokemon gRoute118_LandMons[] =
 {
 	{33, 33, SPECIES_ZIGZAGOON},
 	{33, 33, SPECIES_ELECTRIKE},
-	{26, 26, SPECIES_ZIGZAGOON},
+	{26, 26, SPECIES_BLITZLE},
 	{26, 26, SPECIES_LICKITUNG},
 	{26, 26, SPECIES_LINOONE},
 	{26, 26, SPECIES_MANECTRIC},
 	{25, 25, SPECIES_HOOTHOOT},
-	{25, 25, SPECIES_NATU},
+	{25, 25, SPECIES_GALVANTULA},
 	{26, 26, SPECIES_MURKROW},
-	{26, 26, SPECIES_EKANS},
+	{26, 26, SPECIES_ZEBSTRIKA},
 	{27, 27, SPECIES_KECLEON},
 	{35, 45, SPECIES_SNORLAX},
 };
@@ -598,12 +598,12 @@ const struct WildPokemon gPetalburgWoods_LandMons[] =
 	{10, 15, SPECIES_SHROOMISH},
 	{10, 15, SPECIES_CATERPIE},
 	{10, 15, SPECIES_WEEDLE},
-	{10, 15, SPECIES_PIDGEY},
+	{10, 15, SPECIES_FLETCHLING},
 	{10, 15, SPECIES_RATTATA},
 	{10, 15, SPECIES_SPEAROW},
 	{10, 15, SPECIES_TAILLOW},
 	{10, 15, SPECIES_EKANS},
-	{10, 15, SPECIES_TAILLOW},
+	{10, 15, SPECIES_VENIPEDE},
 	{10, 15, SPECIES_SLAKOTH},
 };
 
@@ -615,10 +615,10 @@ const struct WildPokemon gRusturfTunnel_LandMons[] =
 	{21, 21, SPECIES_CLEFAIRY},
 	{20, 20, SPECIES_JIGGLYPUFF},
 	{20, 20, SPECIES_HERACROSS},
-	{21, 21, SPECIES_MEDITITE},
+	{21, 21, SPECIES_PANCHAM},
 	{21, 21, SPECIES_TYROGUE},
 	{20, 20, SPECIES_MR_MIME},
-	{21, 21, SPECIES_KADABRA},
+	{21, 21, SPECIES_ZORUA},
 	{20, 20, SPECIES_SPOINK},
 	{21, 21, SPECIES_WOBBUFFET},
 	{15, 20, SPECIES_DROWZEE},
@@ -636,9 +636,9 @@ const struct WildPokemon gGraniteCave_1F_LandMons[] =
 	{21, 21, SPECIES_CACNEA},
 	{21, 21, SPECIES_ABRA},
 	{24, 24, SPECIES_MAKUHITA},
-	{20, 20, SPECIES_MAKUHITA},
+	{20, 20, SPECIES_GURDURR},
 	{21, 21, SPECIES_GEODUDE},
-	{21, 21, SPECIES_DELIBIRD},
+	{21, 21, SPECIES_RIOLU},
 	{20, 20, SPECIES_SCYTHER},
 	{21, 21, SPECIES_ONIX},
 };
@@ -650,7 +650,7 @@ const struct WildPokemon gGraniteCave_B1F_LandMons[] =
 	{21, 21, SPECIES_ZUBAT},
 	{24, 24, SPECIES_ARON},
 	{21, 21, SPECIES_ARON},
-	{24, 24, SPECIES_ARON},
+	{24, 24, SPECIES_RIOLU},
 	{24, 24, SPECIES_ZUBAT},
 	{21, 21, SPECIES_ABRA},
 	{24, 24, SPECIES_MAKUHITA},
@@ -658,7 +658,7 @@ const struct WildPokemon gGraniteCave_B1F_LandMons[] =
 	{24, 24, SPECIES_MEDITITE},
 	{24, 24, SPECIES_SWINUB},
 	{21, 21, SPECIES_SABLEYE},
-	{24, 24, SPECIES_GLIGAR},
+	{24, 24, SPECIES_GURDURR},
 };
 
 const struct WildPokemonInfo gGraniteCave_B1F_LandMonsInfo = {10, gGraniteCave_B1F_LandMons};
@@ -676,7 +676,7 @@ const struct WildPokemon gMtPyre_1F_LandMons[] =
 	{29, 29, SPECIES_GASTLY},
 	{33, 33, SPECIES_DUSKULL},
 	{29, 29, SPECIES_DUSKULL},
-	{33, 33, SPECIES_PINECO},
+	{33, 33, SPECIES_LITWICK},
 };
 
 const struct WildPokemonInfo gMtPyre_1F_LandMonsInfo = {10, gMtPyre_1F_LandMons};
@@ -701,13 +701,13 @@ const struct WildPokemonInfo gVictoryRoad_1F_LandMonsInfo = {10, gVictoryRoad_1F
 
 const struct WildPokemon gSafariZone_South_LandMons[] =
 {
-	{25, 25, SPECIES_ODDISH},
+	{25, 25, SPECIES_GLOOM},
 	{27, 27, SPECIES_VENONAT},
 	{25, 25, SPECIES_GIRAFARIG},
 	{27, 27, SPECIES_CLEFAIRY},
 	{25, 25, SPECIES_NATU},
 	{25, 25, SPECIES_DODUO},
-	{25, 25, SPECIES_GLOOM},
+	{25, 25, SPECIES_SKORUPI},
 	{27, 27, SPECIES_WOBBUFFET},
 	{25, 25, SPECIES_PIKACHU},
 	{27, 27, SPECIES_WOBBUFFET},
@@ -723,7 +723,7 @@ const struct WildPokemon gUnderwater2_WaterMons[] =
 	{20, 30, SPECIES_CHINCHOU},
 	{30, 35, SPECIES_CLAMPERL},
 	{30, 35, SPECIES_RELICANTH},
-	{30, 35, SPECIES_POLITOED},
+	{30, 35, SPECIES_SKRELP},
 };
 
 const struct WildPokemonInfo gUnderwater2_WaterMonsInfo = {4, gUnderwater2_WaterMons};
@@ -745,12 +745,12 @@ const struct WildPokemon gAbandonedShip_Rooms_B1F_FishingMons[] =
 	{15, 20, SPECIES_TENTACOOL},
 	{20, 25, SPECIES_MAGIKARP},
 	{20, 25, SPECIES_TENTACOOL},
-	{20, 25, SPECIES_TENTACOOL},
-	{25, 30, SPECIES_TENTACOOL},
-	{30, 35, SPECIES_TENTACOOL},
+	{20, 25, SPECIES_FRILLISH},
+	{25, 30, SPECIES_FRILLISH},
+	{30, 35, SPECIES_FRILLISH},
 	{30, 35, SPECIES_TENTACRUEL},
 	{25, 30, SPECIES_TENTACRUEL},
-	{20, 25, SPECIES_TENTACRUEL},
+	{20, 25, SPECIES_JELLICENT},
 };
 
 const struct WildPokemonInfo gAbandonedShip_Rooms_B1F_FishingMonsInfo = {20, gAbandonedShip_Rooms_B1F_FishingMons};
@@ -761,7 +761,7 @@ const struct WildPokemon gGraniteCave_B2F_LandMons[] =
 	{24, 24, SPECIES_CUBONE},
 	{22, 22, SPECIES_ARON},
 	{24, 24, SPECIES_ZUBAT},
-	{22, 22, SPECIES_ARON},
+	{22, 22, SPECIES_SCRAGGY},
 	{22, 22, SPECIES_ABRA},
 	{22, 22, SPECIES_SANDSHREW},
 	{24, 24, SPECIES_DIGLETT},
@@ -793,11 +793,11 @@ const struct WildPokemon gFieryPath_LandMons[] =
 	{15, 15, SPECIES_TORKOAL},
 	{15, 15, SPECIES_SLUGMA},
 	{16, 16, SPECIES_KOFFING},
-	{16, 16, SPECIES_MACHOP},
+	{16, 16, SPECIES_SALANDIT},
 	{14, 14, SPECIES_HOUNDOUR},
-	{16, 16, SPECIES_HOUNDOUR},
+	{16, 16, SPECIES_SALANDIT},
 	{14, 14, SPECIES_GRIMER},
-	{14, 14, SPECIES_GRIMER},
+	{14, 14, SPECIES_TURTONATOR},
 };
 
 const struct WildPokemonInfo gFieryPath_LandMonsInfo = {10, gFieryPath_LandMons};
@@ -812,8 +812,8 @@ const struct WildPokemon gMeteorFalls_B1F_2R_LandMons[] =
 	{37, 37, SPECIES_LUNATONE},
 	{25, 25, SPECIES_BAGON},
 	{39, 39, SPECIES_DRATINI},
-	{48, 48, SPECIES_MAGMAR},
-	{50, 50, SPECIES_MAGMAR},
+	{48, 48, SPECIES_JANGMO_O},
+	{50, 50, SPECIES_JANGMO_O},
 	{48, 48, SPECIES_LARVITAR},
 	{50, 50, SPECIES_SHUCKLE},
 };
@@ -860,7 +860,7 @@ const struct WildPokemon gJaggedPass_LandMons[] =
 	{22, 22, SPECIES_NUMEL},
 	{22, 22, SPECIES_VENOMOTH},
 	{22, 22, SPECIES_ARIADOS},
-	{22, 22, SPECIES_BUTTERFREE},
+	{22, 22, SPECIES_TORRACAT},
 };
 
 const struct WildPokemonInfo gJaggedPass_LandMonsInfo = {20, gJaggedPass_LandMons};
@@ -983,10 +983,10 @@ const struct WildPokemon gRoute115_LandMons[] =
 	{25, 25, SPECIES_SWELLOW},
 	{33, 33, SPECIES_JIGGLYPUFF},
 	{25, 25, SPECIES_JIGGLYPUFF},
-	{33, 33, SPECIES_WINGULL},
-	{33, 33, SPECIES_WINGULL},
-	{26, 26, SPECIES_WINGULL},
-	{25, 25, SPECIES_WINGULL},
+	{33, 33, SPECIES_PIKIPEK},
+	{33, 33, SPECIES_PIKIPEK},
+	{26, 26, SPECIES_PIKIPEK},
+	{25, 25, SPECIES_PIKIPEK},
 };
 
 const struct WildPokemonInfo gRoute115_LandMonsInfo = {20, gRoute115_LandMons};
@@ -1000,10 +1000,10 @@ const struct WildPokemonInfo gRoute115_LandMonsInfo = {20, gRoute115_LandMons};
 	{35, 44,SPECIES_SHIFTRY},
 	{35, 45,SPECIES_VILEPLUME},
 	{35, 45,SPECIES_EXEGGUTOR},
-	{35, 45,SPECIES_HOPPIP},
+	{35, 45,SPECIES_MEGANIUM},
 	{35, 45,SPECIES_TROPIUS},
 	{35, 45,SPECIES_SUNFLORA},
-	{35, 45,SPECIES_SUNFLORA},
+	{35, 45,SPECIES_WHIMSICOTT},
 	{35, 45,SPECIES_LEAFEON},
 };
 
@@ -1044,10 +1044,10 @@ const struct WildPokemon gNewMauville_Inside_LandMons[] =
 	{25, 25, SPECIES_ELEKID},
 	{33, 33, SPECIES_VOLTORB},
 	{33, 33, SPECIES_PORYGON},
-	{26, 26, SPECIES_VOLTORB},
+	{26, 26, SPECIES_TOGEDEMARU},
 	{26, 26, SPECIES_MAGNEMITE},
-	{22, 22, SPECIES_VOLTORB},
-	{22, 22, SPECIES_MAGNEMITE},
+	{22, 22, SPECIES_CHARJABUG},
+	{22, 22, SPECIES_CHARJABUG},
 	{26, 26, SPECIES_ELECTRODE},
 	{26, 26, SPECIES_MAGNETON},
 };
@@ -1061,12 +1061,12 @@ const struct WildPokemon gRoute119_LandMons[] =
 	{27, 27, SPECIES_ZIGZAGOON},
 	{25, 25, SPECIES_ODDISH},
 	{27, 27, SPECIES_LINOONE},
-	{26, 26, SPECIES_ODDISH},
-	{27, 27, SPECIES_ODDISH},
-	{33, 33, SPECIES_ODDISH},
+	{26, 26, SPECIES_CROAGUNK},
+	{27, 27, SPECIES_DEWPIDER},
+	{33, 33, SPECIES_CROAGUNK},
 	{25, 25, SPECIES_TROPIUS},
 	{26, 26, SPECIES_TROPIUS},
-	{27, 27, SPECIES_TROPIUS},
+	{27, 27, SPECIES_DARTRIX},
 	{25, 25, SPECIES_KECLEON},
 };
 
@@ -1074,11 +1074,11 @@ const struct WildPokemonInfo gRoute119_LandMonsInfo = {15, gRoute119_LandMons};
 
 const struct WildPokemon gRoute119_WaterMons[] =
 {
-	{5, 35, SPECIES_TENTACOOL},
+	{5, 35, SPECIES_TYMPOLE},
 	{20, 25, SPECIES_WINGULL},
-	{15, 25, SPECIES_WINGULL},
+	{15, 25, SPECIES_SHELLOS},
 	{25, 30, SPECIES_PELIPPER},
-	{25, 30, SPECIES_PELIPPER},
+	{25, 30, SPECIES_GASTRODON},
 };
 
 const struct WildPokemonInfo gRoute119_WaterMonsInfo = {4, gRoute119_WaterMons};
@@ -1092,9 +1092,9 @@ const struct WildPokemon gRoute119_FishingMons[] =
 	{20, 25, SPECIES_CARVANHA},
 	{25, 30, SPECIES_CARVANHA},
 	{30, 35, SPECIES_CARVANHA},
-	{20, 25, SPECIES_CARVANHA},
-	{35, 40, SPECIES_CARVANHA},
-	{40, 45, SPECIES_CARVANHA},
+	{20, 25, SPECIES_SHELLOS},
+	{35, 40, SPECIES_SHELLOS},
+	{40, 45, SPECIES_SHELLOS},
 };
 
 const struct WildPokemonInfo gRoute119_FishingMonsInfo = {30, gRoute119_FishingMons};
@@ -1103,16 +1103,16 @@ const struct WildPokemon gRoute120_LandMons[] =
 {
 	{25, 25, SPECIES_POOCHYENA},
 	{25, 25, SPECIES_MIGHTYENA},
-	{27, 27, SPECIES_MIGHTYENA},
+	{27, 27, SPECIES_EMOLGA},
 	{25, 25, SPECIES_ODDISH},
 	{25, 25, SPECIES_MARILL},
-	{26, 26, SPECIES_ODDISH},
-	{27, 27, SPECIES_ODDISH},
+	{26, 26, SPECIES_ARAQUANID},
+	{27, 27, SPECIES_PETILIL},
 	{27, 27, SPECIES_MARILL},
 	{25, 25, SPECIES_ABSOL},
-	{27, 27, SPECIES_ABSOL},
-	{25, 25, SPECIES_KECLEON},
-	{25, 25, SPECIES_SEEDOT},
+	{27, 27, SPECIES_KECLEON},
+	{25, 25, SPECIES_FERROSEED},
+	{25, 25, SPECIES_VIRIZION},
 };
 
 const struct WildPokemonInfo gRoute120_LandMonsInfo = {20, gRoute120_LandMons};
@@ -1171,11 +1171,11 @@ const struct WildPokemon gRoute121_LandMons[] =
 	{28, 28, SPECIES_SHUPPET},
 	{28, 28, SPECIES_MAREEP},
 	{26, 26, SPECIES_SUNKERN},
-	{28, 28, SPECIES_ODDISH},
+	{28, 28, SPECIES_PHANTUMP},
 	{28, 28, SPECIES_GLOOM},
 	{26, 26, SPECIES_WINGULL},
-	{27, 27, SPECIES_WINGULL},
-	{28, 28, SPECIES_WINGULL},
+	{27, 27, SPECIES_HAWLUCHA},
+	{28, 28, SPECIES_HAWLUCHA},
 	{25, 25, SPECIES_KECLEON},
 };
 
@@ -1238,16 +1238,16 @@ const struct WildPokemonInfo gRoute122_FishingMonsInfo = {30, gRoute122_FishingM
 const struct WildPokemon gRoute123_LandMons[] =
 {
 	{26, 26, SPECIES_POOCHYENA},
-	{26, 26, SPECIES_SHUPPET},
+	{26, 26, SPECIES_SKIDDO},
 	{26, 26, SPECIES_MIGHTYENA},
-	{28, 28, SPECIES_SHUPPET},
-	{28, 28, SPECIES_MIGHTYENA},
-	{26, 26, SPECIES_ODDISH},
-	{28, 28, SPECIES_ODDISH},
+	{28, 28, SPECIES_PAWNIARD},
+	{28, 28, SPECIES_BISHARP},
+	{26, 26, SPECIES_FOMANTIS},
+	{28, 28, SPECIES_CHERUBI},
 	{28, 28, SPECIES_GLOOM},
 	{26, 26, SPECIES_WINGULL},
-	{27, 27, SPECIES_WINGULL},
-	{28, 28, SPECIES_WINGULL},
+	{27, 27, SPECIES_GOGOAT},
+	{28, 28, SPECIES_CHERUBI},
 	{25, 25, SPECIES_KECLEON},
 };
 
@@ -1290,10 +1290,10 @@ const struct WildPokemon gMtPyre_2F_LandMons[] =
 	{33, 33, SPECIES_SHUPPET},
 	{33, 33, SPECIES_SHUPPET},
 	{22, 22, SPECIES_SHUPPET},
-	{29, 29, SPECIES_SHUPPET},
-	{33, 33, SPECIES_SHUPPET},
-	{29, 29, SPECIES_SHUPPET},
-	{33, 33, SPECIES_SHUPPET},
+	{29, 29, SPECIES_LAMPENT},
+	{33, 33, SPECIES_LAMPENT},
+	{29, 29, SPECIES_LAMPENT},
+	{33, 33, SPECIES_LAMPENT},
 };
 
 const struct WildPokemonInfo gMtPyre_2F_LandMonsInfo = {10, gMtPyre_2F_LandMons};
@@ -1308,10 +1308,10 @@ const struct WildPokemon gMtPyre_3F_LandMons[] =
 	{33, 33, SPECIES_SHUPPET},
 	{33, 33, SPECIES_SHUPPET},
 	{22, 22, SPECIES_SHUPPET},
-	{29, 29, SPECIES_SHUPPET},
-	{33, 33, SPECIES_SHUPPET},
+	{29, 29, SPECIES_ELGYEM},
+	{33, 33, SPECIES_ELGYEM},
 	{29, 29, SPECIES_SABLEYE},
-	{33, 33, SPECIES_SHUPPET},
+	{33, 33, SPECIES_SABLEYE},
 };
 
 const struct WildPokemonInfo gMtPyre_3F_LandMonsInfo = {10, gMtPyre_3F_LandMons};
@@ -1326,8 +1326,8 @@ const struct WildPokemon gMtPyre_4F_LandMons[] =
 	{33, 33, SPECIES_SNEASEL},
 	{33, 33, SPECIES_SHUPPET},
 	{22, 22, SPECIES_SNEASEL},
-	{27, 27, SPECIES_DUSKULL},
-	{27, 27, SPECIES_DUSKULL},
+	{27, 27, SPECIES_GOLETT},
+	{27, 27, SPECIES_GOLETT},
 	{25, 25, SPECIES_WYNAUT},
 	{29, 29, SPECIES_SPOINK},
 };
@@ -1344,9 +1344,9 @@ const struct WildPokemon gMtPyre_5F_LandMons[] =
 	{33, 33, SPECIES_SHUPPET},
 	{33, 33, SPECIES_GASTLY},
 	{22, 22, SPECIES_SHUPPET},
-	{27, 27, SPECIES_DUSKULL},
-	{27, 27, SPECIES_DUSKULL},
-	{25, 25, SPECIES_DUSKULL},
+	{27, 27, SPECIES_GOLETT},
+	{27, 27, SPECIES_GOLETT},
+	{25, 25, SPECIES_GOLETT},
 	{29, 29, SPECIES_ABRA},
 };
 
@@ -1714,9 +1714,9 @@ const struct WildPokemonInfo gRoute134_FishingMonsInfo = {30, gRoute134_FishingM
 
 const struct WildPokemon gAbandonedShip_HiddenFloorCorridors_WaterMons[] =
 {
-	{5, 35, SPECIES_TENTACOOL},
-	{5, 35, SPECIES_TENTACOOL},
-	{5, 35, SPECIES_TENTACOOL},
+	{5, 35, SPECIES_FRILLISH},
+	{5, 35, SPECIES_FRILLISH},
+	{5, 35, SPECIES_FRILLISH},
 	{5, 35, SPECIES_TENTACOOL},
 	{30, 35, SPECIES_TENTACRUEL},
 };
@@ -1728,11 +1728,11 @@ const struct WildPokemon gAbandonedShip_HiddenFloorCorridors_FishingMons[] =
 	{15, 20, SPECIES_MAGIKARP},
 	{15, 20, SPECIES_TENTACOOL},
 	{20, 25, SPECIES_MAGIKARP},
-	{20, 25, SPECIES_TENTACOOL},
-	{20, 25, SPECIES_TENTACOOL},
-	{25, 30, SPECIES_TENTACOOL},
+	{20, 25, SPECIES_FRILLISH},
+	{20, 25, SPECIES_FRILLISH},
+	{25, 30, SPECIES_FRILLISH},
 	{30, 35, SPECIES_TENTACOOL},
-	{30, 35, SPECIES_TENTACRUEL},
+	{30, 35, SPECIES_JELLICENT},
 	{25, 30, SPECIES_TENTACRUEL},
 	{20, 25, SPECIES_TENTACRUEL},
 };
@@ -2062,12 +2062,12 @@ const struct WildPokemon gNewMauville_Entrance_LandMons[] =
 	{25, 25, SPECIES_MAGNEMITE},
 	{33, 33, SPECIES_VOLTORB},
 	{33, 33, SPECIES_MAGNEMITE},
-	{26, 26, SPECIES_VOLTORB},
-	{26, 26, SPECIES_MAGNEMITE},
-	{22, 22, SPECIES_VOLTORB},
-	{22, 22, SPECIES_MAGNEMITE},
-	{22, 22, SPECIES_VOLTORB},
-	{22, 22, SPECIES_MAGNEMITE},
+	{26, 26, SPECIES_GRUBBIN},
+	{26, 26, SPECIES_GRUBBIN},
+	{22, 22, SPECIES_GRUBBIN},
+	{22, 22, SPECIES_GRUBBIN},
+	{22, 22, SPECIES_CHARJABUG},
+	{22, 22, SPECIES_CHARJABUG},
 };
 
 const struct WildPokemonInfo gNewMauville_Entrance_LandMonsInfo = {10, gNewMauville_Entrance_LandMons};
@@ -2140,8 +2140,8 @@ const struct WildPokemon gSafariZone_North_RockSmashMons[] =
 	{10, 15, SPECIES_GEODUDE},
 	{15, 20, SPECIES_GEODUDE},
 	{15, 20, SPECIES_GEODUDE},
-	{20, 25, SPECIES_GEODUDE},
-	{25, 30, SPECIES_GEODUDE},
+	{20, 25, SPECIES_ROGGENROLA},
+	{25, 30, SPECIES_ROGGENROLA},
 };
 
 const struct WildPokemonInfo gSafariZone_North_RockSmashMonsInfo = {25, gSafariZone_North_RockSmashMons};
@@ -2196,14 +2196,14 @@ const struct WildPokemon gVictoryRoad_B1F_LandMons[] =
 	{50, 50, SPECIES_GOLBAT},
 	{50, 50, SPECIES_HARIYAMA},
 	{50, 50, SPECIES_LAIRON},
-	{50, 50, SPECIES_LAIRON},
+	{50, 50, SPECIES_DARMANITAN},
 	{48, 48, SPECIES_GOLBAT},
 	{48, 48, SPECIES_HARIYAMA},
-	{42, 42, SPECIES_GOLBAT},
+	{42, 42, SPECIES_GIBLE},
 	{42, 42, SPECIES_LARVITAR},
 	{42, 42, SPECIES_MR_MIME},
 	{48, 48, SPECIES_MAWILE},
-	{42, 42, SPECIES_KANGASKHAN},
+	{42, 42, SPECIES_GABITE},
 	{48, 48, SPECIES_TOGEPI},
 };
 
@@ -2214,8 +2214,8 @@ const struct WildPokemon gVictoryRoad_B1F_RockSmashMons[] =
 	{30, 40, SPECIES_GRAVELER},
 	{30, 40, SPECIES_GEODUDE},
 	{35, 40, SPECIES_LARVITAR},
-	{35, 40, SPECIES_GRAVELER},
-	{35, 40, SPECIES_GRAVELER},
+	{35, 40, SPECIES_BOLDORE},
+	{35, 40, SPECIES_BOLDORE},
 };
 
 const struct WildPokemonInfo gVictoryRoad_B1F_RockSmashMonsInfo = {20, gVictoryRoad_B1F_RockSmashMons};
@@ -2230,10 +2230,10 @@ const struct WildPokemon gVictoryRoad_B2F_LandMons[] =
 	{42, 42, SPECIES_SABLEYE},
 	{44, 44, SPECIES_GOLBAT},
 	{44, 44, SPECIES_SABLEYE},
-	{42, 42, SPECIES_LAIRON},
+	{42, 42, SPECIES_DEINO},
 	{42, 42, SPECIES_MAWILE},
-	{44, 44, SPECIES_LAIRON},
-	{44, 44, SPECIES_MAWILE},
+	{44, 44, SPECIES_ZWEILOUS},
+	{44, 44, SPECIES_COBALION},
 };
 
 const struct WildPokemonInfo gVictoryRoad_B2F_LandMonsInfo = {10, gVictoryRoad_B2F_LandMons};
@@ -2275,10 +2275,10 @@ const struct WildPokemon gMeteorFalls_1F_1R_LandMons[] =
 	{16, 16, SPECIES_SOLROCK},
 	{18, 18, SPECIES_SOLROCK},
 	{14, 14, SPECIES_SOLROCK},
-	{19, 19, SPECIES_ZUBAT},
-	{20, 20, SPECIES_ZUBAT},
-	{19, 19, SPECIES_ZUBAT},
-	{20, 20, SPECIES_ZUBAT},
+	{19, 19, SPECIES_SOLOSIS},
+	{20, 20, SPECIES_SOLOSIS},
+	{19, 19, SPECIES_DUOSION},
+	{20, 20, SPECIES_DUOSION},
 };
 
 const struct WildPokemonInfo gMeteorFalls_1F_1R_LandMonsInfo = {10, gMeteorFalls_1F_1R_LandMons};
@@ -2441,9 +2441,9 @@ const struct WildPokemon gShoalCave_LowTideInnerRoom_LandMons[] =
 	{26, 26, SPECIES_ZUBAT},
 	{26, 26, SPECIES_SPHEAL},
 	{28, 28, SPECIES_KRABBY},
-	{28, 28, SPECIES_SPHEAL},
+	{28, 28, SPECIES_POPPLIO},
 	{30, 30, SPECIES_STARYU},
-	{30, 30, SPECIES_SPHEAL},
+	{30, 30, SPECIES_POPPLIO},
 	{32, 32, SPECIES_CORPHISH},
 	{32, 32, SPECIES_SPHEAL},
 	{32, 32, SPECIES_SLOWPOKE},
@@ -2457,7 +2457,7 @@ const struct WildPokemonInfo gShoalCave_LowTideInnerRoom_LandMonsInfo = {10, gSh
 const struct WildPokemon gShoalCave_LowTideInnerRoom_WaterMons[] =
 {
 	{5, 35, SPECIES_TENTACOOL},
-	{5, 35, SPECIES_ZUBAT},
+	{5, 35, SPECIES_POPPLIO},
 	{25, 30, SPECIES_CORSOLA},
 	{25, 30, SPECIES_MANTINE},
 	{25, 35, SPECIES_CHINCHOU},
@@ -2486,9 +2486,9 @@ const struct WildPokemon gShoalCave_LowTideEntranceRoom_LandMons[] =
 	{26, 26, SPECIES_ZUBAT},
 	{26, 26, SPECIES_SPHEAL},
 	{28, 28, SPECIES_ZUBAT},
-	{28, 28, SPECIES_SPHEAL},
+	{28, 28, SPECIES_POPPLIO},
 	{30, 30, SPECIES_ZUBAT},
-	{30, 30, SPECIES_SPHEAL},
+	{30, 30, SPECIES_POPPLIO},
 	{32, 32, SPECIES_ZUBAT},
 	{32, 32, SPECIES_SPHEAL},
 	{32, 32, SPECIES_GOLBAT},
@@ -2582,9 +2582,9 @@ const struct WildPokemonInfo gDewfordTown_FishingMonsInfo = {10, gDewfordTown_Fi
 
 const struct WildPokemon gSlateportCity_WaterMons[] =
 {
-	{5, 35, SPECIES_TENTACOOL},
-	{20, 25, SPECIES_WINGULL},
-	{15, 25, SPECIES_WINGULL},
+	{5, 35, SPECIES_SANDYGAST},
+	{20, 25, SPECIES_WIMPOD},
+	{15, 25, SPECIES_WIMPOD},
 	{25, 30, SPECIES_PELIPPER},
 	{25, 30, SPECIES_PELIPPER},
 };
@@ -2720,8 +2720,8 @@ const struct WildPokemon gUnderwater1_WaterMons[] =
 	{20, 30, SPECIES_CLAMPERL},
 	{20, 30, SPECIES_CHINCHOU},
 	{30, 35, SPECIES_SHELLDER},
-	{30, 35, SPECIES_RELICANTH},
-	{30, 35, SPECIES_RELICANTH},
+	{30, 35, SPECIES_MAREANIE},
+	{30, 35, SPECIES_CLAUNCHER},
 };
 
 const struct WildPokemonInfo gUnderwater1_WaterMonsInfo = {4, gUnderwater1_WaterMons};
@@ -2735,11 +2735,11 @@ const struct WildPokemon gShoalCave_LowTideIceRoom_LandMons[] =
 	{30, 30, SPECIES_SWINUB},
 	{30, 30, SPECIES_SPHEAL},
 	{26, 26, SPECIES_SNORUNT},
-	{32, 32, SPECIES_SPHEAL},
-	{30, 30, SPECIES_GOLBAT},
+	{32, 32, SPECIES_VANILLITE},
+	{30, 30, SPECIES_DELIBIRD},
 	{28, 28, SPECIES_SNORUNT},
-	{32, 32, SPECIES_GOLBAT},
-	{30, 30, SPECIES_SNORUNT},
+	{32, 32, SPECIES_DELIBIRD},
+	{30, 30, SPECIES_AURORUS},
 };
 
 const struct WildPokemonInfo gShoalCave_LowTideIceRoom_LandMonsInfo = {10, gShoalCave_LowTideIceRoom_LandMons};
@@ -2755,7 +2755,7 @@ const struct WildPokemon gSkyPillar_1F_LandMons[] =
 	{48, 48, SPECIES_BANETTE},
 	{46, 46, SPECIES_SWINUB},
 	{37, 37, SPECIES_SNEASEL},
-	{48, 48, SPECIES_HERACROSS},
+	{48, 48, SPECIES_DOUBLADE},
 	{37, 37, SPECIES_STEELIX},
 	{48, 48, SPECIES_CLAYDOL},
 };
@@ -2801,8 +2801,8 @@ const struct WildPokemon gSkyPillar_3F_LandMons[] =
 	{46, 46, SPECIES_CLAYDOL},
 	{37, 37, SPECIES_CLAYDOL},
 	{48, 48, SPECIES_CLAYDOL},
-	{37, 37, SPECIES_CLAYDOL},
-	{48, 48, SPECIES_CLAYDOL},
+	{37, 37, SPECIES_DOUBLADE},
+	{48, 48, SPECIES_DOUBLADE},
 };
 
 const struct WildPokemonInfo gSkyPillar_3F_LandMonsInfo = {10, gSkyPillar_3F_LandMons};
@@ -2837,7 +2837,7 @@ const struct WildPokemon gSafariZone_Southeast_LandMons[] =
 	{33, 33, SPECIES_SNUBBULL},
 	{46, 46, SPECIES_STANTLER},
 	{37, 37, SPECIES_GLIGAR},
-	{39, 39, SPECIES_STANTLER},
+	{39, 39, SPECIES_KANGASKHAN},
 	{50, 50, SPECIES_GLIGAR},
 };
 
@@ -2877,8 +2877,8 @@ const struct WildPokemon gSafariZone_Northeast_LandMons[] =
 	{35, 35, SPECIES_AIPOM},
 	{46, 46, SPECIES_TEDDIURSA},
 	{33, 33, SPECIES_SUNKERN},
-	{33, 33, SPECIES_LEDYBA},
-	{35, 35, SPECIES_HOOTHOOT},
+	{33, 33, SPECIES_MUDBRAY},
+	{35, 35, SPECIES_MUDBRAY},
 	{33, 33, SPECIES_PINECO},
 	{46, 46, SPECIES_HOUNDOUR},
 	{37, 37, SPECIES_MILTANK},
@@ -2948,7 +2948,7 @@ const struct WildPokemon gMagmaHideout_2F_2R_LandMons[] =
 	{30, 30, SPECIES_GRAVELER},
 	{31, 31, SPECIES_GRAVELER},
 	{32, 32, SPECIES_GRAVELER},
-	{33, 33, SPECIES_GRAVELER},
+	{33, 33, SPECIES_VOLCANION},
 };
 
 const struct WildPokemonInfo gMagmaHideout_2F_2R_LandMonsInfo = {10, gMagmaHideout_2F_2R_LandMons};
@@ -2984,7 +2984,7 @@ const struct WildPokemon gMagmaHideout_3F_2R_LandMons[] =
 	{30, 30, SPECIES_GRAVELER},
 	{31, 31, SPECIES_GRAVELER},
 	{32, 32, SPECIES_GRAVELER},
-	{33, 33, SPECIES_GRAVELER},
+	{33, 33, SPECIES_VOLCANION},
 };
 
 const struct WildPokemonInfo gMagmaHideout_3F_2R_LandMonsInfo = {10, gMagmaHideout_3F_2R_LandMons};
@@ -3050,9 +3050,9 @@ const struct WildPokemon gMirageTower_1F_LandMons[] =
 	{20, 20, SPECIES_SANDSHREW},
 	{20, 20, SPECIES_TRAPINCH},
 	{20, 20, SPECIES_SANDSHREW},
-	{20, 20, SPECIES_SWINUB},
-	{22, 22, SPECIES_GLIGAR},
-	{22, 22, SPECIES_GLIGAR},
+	{20, 20, SPECIES_TYRUNT},
+	{22, 22, SPECIES_TYRUNT},
+	{22, 22, SPECIES_CRANIDOS},
 	{33, 33, SPECIES_OMASTAR},
 	{33, 33, SPECIES_KABUTO},
 	{33, 33, SPECIES_LILEEP},
@@ -3070,7 +3070,7 @@ const struct WildPokemon gMirageTower_2F_LandMons[] =
 	{33, 33, SPECIES_OMASTAR},
 	{33, 33, SPECIES_KABUTO},
 	{33, 33, SPECIES_LILEEP},
-	{33, 33, SPECIES_ANORITH},
+	{33, 33, SPECIES_SHIELDON},
 	{33, 33, SPECIES_OMASTAR},
 	{33, 33, SPECIES_KABUTO},
 	{33, 33, SPECIES_LILEEP},
@@ -3108,7 +3108,7 @@ const struct WildPokemon gMirageTower_4F_LandMons[] =
 	{22, 22, SPECIES_SANDSHREW},
 	{22, 22, SPECIES_TRAPINCH},
 	{33, 33, SPECIES_SANDSHREW},
-	{33, 33, SPECIES_AERODACTYL},
+	{33, 33, SPECIES_ARCHEN},
 	{33, 33, SPECIES_AERODACTYL},
 	{33, 33, SPECIES_AERODACTYL},
 };
@@ -3127,8 +3127,8 @@ const struct WildPokemon gDesertUnderpass_LandMons[] =
 	{42, 42, SPECIES_DITTO},
 	{48, 48, SPECIES_WHISMUR},
 	{43, 43, SPECIES_DITTO},
-	{44, 44, SPECIES_ANORITH},
-	{45, 45, SPECIES_LILEEP},
+	{44, 44, SPECIES_NOIBAT},
+	{45, 45, SPECIES_NOIBAT},
 };
 
 const struct WildPokemonInfo gDesertUnderpass_LandMonsInfo = {10, gDesertUnderpass_LandMons};
@@ -3359,11 +3359,11 @@ const struct WildPokemonInfo gMeteorFalls_StevensCave_LandMonsInfo = {10, gMeteo
 	{55, 64,SPECIES_ONIX},
 	{55, 64,SPECIES_SCIZOR},
 	{55, 65,SPECIES_GOLBAT},
-	{55, 65,SPECIES_GOLBAT},
+	{55, 65,SPECIES_SANDILE},
 	{55, 65,SPECIES_NOCTOWL},
 	{55, 65,SPECIES_DUGTRIO},
 	{55, 65,SPECIES_AGGRON},
-	{55, 65,SPECIES_TANGELA},
+	{55, 65,SPECIES_KROKOROK},
 	{55, 65,SPECIES_STEELIX},
 };
 const struct WildPokemonInfo gNewMap8_LandMonsInfo = {10, gNewMap8_LandMons};
@@ -3380,8 +3380,8 @@ const struct WildPokemon gNewMap11_LandMons[] =
 	{55, 65,SPECIES_VIBRAVA},
 	{55, 65,SPECIES_HOUNDOOM},
 	{55, 65,SPECIES_AGGRON},
-	{55, 65,SPECIES_GOLBAT},
-	{55, 65,SPECIES_GOLBAT},
+	{55, 65,SPECIES_DURANT},
+	{55, 65,SPECIES_DURANT},
 	{55, 65,SPECIES_GOLEM},
 };
 
@@ -3393,16 +3393,16 @@ const struct WildPokemon gNewMap10_LandMons[] =
 {
 	{55, 65,SPECIES_ONIX},
 	{55, 65,SPECIES_ONIX},
-	{55, 65,SPECIES_GLIGAR},
+	{55, 65,SPECIES_DURANT},
 	{55, 64,SPECIES_OMANYTE},
 	{55, 64,SPECIES_VIBRAVA},
 	{55, 65,SPECIES_GOLEM},
 	{55, 65,SPECIES_GOLBAT},
 	{55, 65,SPECIES_SUDOWOODO},
 	{55, 65,SPECIES_LILEEP},
-	{55, 65,SPECIES_WEEPINBELL},
 	{55, 65,SPECIES_BANETTE},
 	{55, 65,SPECIES_MISMAGIUS},
+	{55, 65,SPECIES_TERRAKION},
 };
 const struct WildPokemonInfo gNewMap10_LandMonsInfo = {5, gNewMap10_LandMons};
 

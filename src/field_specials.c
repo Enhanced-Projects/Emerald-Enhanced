@@ -4442,6 +4442,10 @@ void GivePlayerModdedMon(void)
     bool8 isEgg = TRUE;
     u8 slot = (VarGet(VAR_TEMP_8));
     u8 ball = ITEM_LUXURY_BALL;
+    u16 move1 =  (VarGet(VAR_RYU_GCMS_MOVE1));
+    u16 move2 =  (VarGet(VAR_RYU_GCMS_MOVE2));
+    u16 move3 =  (VarGet(VAR_RYU_GCMS_MOVE3));
+    u16 move4 =  (VarGet(VAR_RYU_GCMS_MOVE4));
 
     if (fixedIv > 31)
         fixedIv = 31;
@@ -4450,6 +4454,11 @@ void GivePlayerModdedMon(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &isEgg);
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
     SetMonData(&gPlayerParty[slot], MON_DATA_POKEBALL, &ball);
+    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE1, &move1);
+    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE2, &move2);
+    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE3, &move3);
+    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE4, &move4);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 bool8 RyuGiveMewtwo(void)
@@ -4719,6 +4728,10 @@ bool8 RyuSacrificeMon(void)
     {
         u8 slot = (VarGet(VAR_TEMP_9));
         u16 species = 0;
+        u16 move1 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE1);
+        u16 move2 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE2);
+        u16 move3 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE3);
+        u16 move4 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE4);
 
         if (FlagGet(FLAG_TEMP_5) == 1)
         {
@@ -4726,6 +4739,10 @@ bool8 RyuSacrificeMon(void)
             ZeroMonData(&gPlayerParty[slot]);
             CompactPartySlots();
             VarSet(VAR_RYU_GCMS_SPECIES, species);
+            VarSet(VAR_RYU_GCMS_MOVE1, move1);
+            VarSet(VAR_RYU_GCMS_MOVE2, move2);
+            VarSet(VAR_RYU_GCMS_MOVE3, move3);
+            VarSet(VAR_RYU_GCMS_MOVE4, move4);
             FlagClear(FLAG_TEMP_5);
             return TRUE;
         }

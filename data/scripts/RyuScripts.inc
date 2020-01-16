@@ -992,6 +992,7 @@ RyuDebugGiveItemsDone::
 	giveitem ITEM_LUXURY_BALL, 64
 	giveitem ITEM_MASTER_BALL, 64
 	giveitem ITEM_MAX_REPEL, 64
+	giveitem ITEM_MEGA_BRACELET, 1
 	msgbox RyuDebug_GiveAllItemsDoneMsg MSGBOX_DEFAULT
 	msgbox RyuDebug_givemonsquery MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -2958,5 +2959,3 @@ RyuNowUsingDarkTheme:
 
 RyuNowUsingDefaultTheme:
 	.string "Switched to default theme.$"
-
-
