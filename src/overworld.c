@@ -108,6 +108,7 @@ extern const u8 EventScript_TradeCenter_Chair1[];
 extern const u8 EventScript_TradeCenter_Chair0[];
 extern const u8 EventScript_ConfirmLeaveTradeRoom[];
 extern const u8 EventScript_TerminateLink[];
+extern const u8 RyuFailedNuzlocke[];
 
 extern const struct MapLayout *const gMapLayouts[];
 extern const struct MapHeader *const *const gMapGroups[];
@@ -422,6 +423,7 @@ void DoWhiteOut(void)
     Overworld_ResetStateAfterWhiteOut();
     SetWarpDestinationToLastHealLocation();
     WarpIntoMap();
+    ScriptContext2_RunNewScript(RyuFailedNuzlocke);
 }
 
 void Overworld_ResetStateAfterFly(void)
@@ -1773,20 +1775,14 @@ static void c2_80567AC(void)
 
 void CB2_ReturnToField(void)
 {
-    if (IsUpdateLinkStateCBActive() == TRUE)
-    {
-        SetMainCallback2(CB2_ReturnToFieldLink);
-    }
-    else
-    {
         FieldClearVBlankHBlankCallbacks();
         SetMainCallback2(CB2_ReturnToFieldLocal);
-        
+
         if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
-        {
             RyuKillMon();
-        }
-    }
+
+        if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
+            RyuKillMon();
 }
 
 void CB2_ReturnToFieldLocal(void)

@@ -1,7 +1,78 @@
 LilycoveCity_MapScripts:: @ 81E2B3C
 	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD , LilycoveCity_OnLoad
+	map_script ON_FRAME, LeafScene
 	.byte 0
+
+LeafScene::
+    map_script_2 VAR_RYU_DS_LANA_STAGE, 1, LeafSceneResume
+	map_script_2 VAR_TEMP_9, 0, RyuResetFollowerPosition
+    .2byte 0
+
+LeafSceneResume::
+	call RyuResetFollowerPositionAR
+    goto_if_unset FLAG_RYU_ON_DATE ryu_end
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	fadenewbgm MUS_THANKFOR
+	drawheadshot HEAD_LANA
+	msgbox LCL_Story1 MSGBOX_DEFAULT
+	closemessage
+	applymovement 23, Common_Movement_FaceRight
+	waitmovement 23
+	msgbox LCL_Story2 MSGBOX_DEFAULT
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement EVENT_OBJ_ID_PLAYER
+	msgbox LCL_Story3 MSGBOX_DEFAULT
+	closemessage
+	applymovement 23, Common_Movement_FaceDown
+	waitmovement 23
+	msgbox LCL_Story4 MSGBOX_DEFAULT
+	closemessage
+	applymovement 23, Common_Movement_FaceRight
+	waitmovement 23
+	msgbox LCL_Story4_5 MSGBOX_DEFAULT
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement 23, Common_Movement_ExclamationMark
+	playse SE_PIN
+	waitmovement 23
+	msgbox LCL_Story5 MSGBOX_DEFAULT
+	closemessage
+	applymovement 23, Common_Movement_QuestionMark
+	waitmovement 23
+	msgbox LCL_Story6 MSGBOX_DEFAULT
+	closemessage
+	applymovement 23, Common_Movement_HeartEmote
+	waitmovement 23
+	msgbox LCL_Story7 MSGBOX_DEFAULT
+	closemessage
+	removecutscenesprites
+	applymovement 23, LCL_LeafLeaving
+	waitmovement 23
+	removeobject 23
+	fadedefaultbgm
+	clearflag FLAG_RYU_ON_DATE
+	setvar VAR_RYU_DS_LANA_STAGE, 80
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	setflag FLAG_RYU_LEAF_LCC_EVENT_DONE
+	clearflag FLAG_RYU_HIDE_LCC_DEPT_ROOF_NPC
+	setflag FLAG_RYU_LANA_EVENT14
+	setflag FLAG_RYU_DS_LEAF_LOVERS
+	clearflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
+	release
+	end
+	
+LCL_LeafLeaving:
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
 
 LilycoveCity_OnTransition: @ 81E2B47
 	setflag FLAG_VISITED_LILYCOVE_CITY

@@ -68,3 +68,106 @@ MtPyre_6F_Text_CedricPostBattle: @ 8231F5C
 	.string "would be panicked and easy to beat.\p"
 	.string "It's dirty and I won't try it again…$"
 
+@===================================================================== Leaf Scripts
+MP_SetupLeafEvent::
+	lock
+	goto_if_unset FLAG_RYU_LEAF_ALTERNATE_LINE, ryu_end
+	special SpawnCameraObject
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	addobject 4
+	applymovement EVENT_OBJ_ID_CAMERA, MP_CameraMovement1
+	waitmovement EVENT_OBJ_ID_CAMERA
+	delay 20
+	applymovement 4 Common_Movement_FaceUp
+	waitmovement 4
+	delay 20
+	applymovement EVENT_OBJ_ID_CAMERA, MP_CameraMovement2
+	waitmovement EVENT_OBJ_ID_CAMERA
+	special RemoveCameraObject
+	release
+	end
+	
+MP_LeafAltStory1::
+	lock
+	faceplayer
+	drawheadshot HEAD_LANA
+	msgbox MP_Story1 MSGBOX_DEFAULT
+	closemessage
+	fadenewbgm MUS_HIDERI
+	msgbox MP_Story1_5 MSGBOX_DEFAULT
+	closemessage
+	removecutscenesprites
+	applymovement 4 MP_LeafLeave
+	waitmovement 4
+	playse SE_TK_WARPOUT
+	removeobject 4
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	setflag FLAG_RYU_LEAF_MTPYRE
+	setflag FLAG_RYU_HIDE_LCC_DEPT_ROOF_NPC
+	fadedefaultbgm
+	release
+	end
+	
+MP_HexerTalksToPlayer::
+	lock
+	goto_if_unset FLAG_RYU_LEAF_MTPYRE, ryu_end
+	applymovement 5, MP_ToPlayer
+	waitmovement 5
+	faceplayer
+	msgbox MP_Story2 MSGBOX_DEFAULT
+	closemessage
+	applymovement 5 MP_AwayFromPlayer
+	waitmovement 5
+	release
+	end
+	
+MP_CameraMovement1:
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_down
+	walk_down
+	step_end
+	
+MP_CameraMovement2:
+	walk_up
+	walk_up
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	step_end
+	
+MP_LeafLeave:
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_in_place_fastest_down
+	step_end
+	
+MP_ToPlayer:
+	walk_down
+	step_end
+	
+MP_AwayFromPlayer:
+	walk_up
+	walk_in_place_fast_down
+	step_end
+	
+MP_Story1:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}This place also...brings back\nthose unpleasant memories.\pI won't let that frighten me\nthough...I've made my decision,\land I won't turn back.\p... ... ... ...$"
+	
+	
+MP_Story1_5:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ironic, isn't it {PLAYER}? This is\n"
+	.string "the most you've heard me speak,\nand yet...\p... ... ... ...\pForget it, it doesn't matter.\pNothing matters anymore.$"
+	
+MP_Story2:
+	.string "I couldn't help but overhear what\nthat girl said...\pThat look on her face...I've seen\nit all too often in a place like\lthis...\pIt's not a pleasant one.\nBut...she's a pokémon trainer,\pisn't she? Surely she wouldn't\ntake them with her...I'd rather\p"
+	.string "leave them at a place where they'd\nbe treated well...to those who\ldeal with many different pokémon\lon a regular basis.\p... ... ... ...\pAnyways, clock's ticking.$"
+
+

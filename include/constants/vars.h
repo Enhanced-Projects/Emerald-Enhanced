@@ -142,12 +142,12 @@
 #define VAR_ROUTE128_STATE                   0x407B
 #define VAR_ROUTE129_STATE                   0x407C // Unused Var
 #define VAR_ROUTE130_STATE                   0x407D // Unused Var
-#define VAR_RYU_NUZLOCKE_PC_USES_FALLARBOR   0x407E // Unused Var
-#define VAR_RYU_NUZLOCKE_PC_USES_SOOTOPOLIS  0x407F // Unused Var
-#define VAR_RYU_NUZLOCKE_PC_USES_PACIFIDLOG  0x4080 // Unused Var
-#define VAR_RYU_NUZLOCKE_PC_USES_LAVARIDGE   0x4081 // Unused Var
+#define VAR_UNUSED_0x407E                    0x407E // Unused Var
+#define VAR_UNUSED_0x407F                    0x407F // Unused Var
+#define VAR_UNUSED_0x4080                    0x4080 // Unused Var
+#define VAR_UNUSED_0x4081                    0x4081 // Unused Var
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY      0x4082
-#define VAR_RYU_NUZLOCKE_PC_USES_EVERGRANDE  0x4083 // Unused Var
+#define VAR_UNUSED_0x4083                    0x4083 // Unused Var
 #define VAR_BIRCH_LAB_STATE                  0x4084
 #define VAR_PETALBURG_GYM_STATE              0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman 
 #define VAR_CONTEST_HALL_STATE               0x4086
@@ -155,7 +155,7 @@
 #define VAR_CONTEST_TYPE                     0x4088
 #define VAR_SECRET_BASE_INITIALIZED          0x4089
 #define VAR_CONTEST_PRIZE_PICKUP             0x408A
-#define VAR_RYU_NUZLOCKE_PC_USES_MOSSDEEP    0x408B // Unused Var
+#define VAR_UNUSED_0x408B                    0x408B // Unused Var
 #define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN  0x408C
 #define VAR_LITTLEROOT_RIVAL_STATE           0x408D
 #define VAR_BOARD_BRINEY_BOAT_STATE          0x408E
@@ -184,7 +184,7 @@
 #define VAR_TRICK_HOUSE_BEING_WATCHED_STATE  0x40A5
 #define VAR_TRICK_HOUSE_FOUND_TRICK_MASTER   0x40A6
 #define VAR_TRICK_HOUSE_ENTRANCE_STATE       0x40A7
-#define VAR_RYU_NUZLOCKE_PC_USES_LILYCOVE    0x40A8 // Unused Var
+#define VAR_UNUSED_0x40A8                    0x40A8 // Unused Var
 #define VAR_CYCLING_CHALLENGE_STATE          0x40A9
 #define VAR_SLATEPORT_MUSEUM_1F_STATE        0x40AA
 #define VAR_TRICK_HOUSE_PUZZLE_1_STATE       0x40AB
@@ -200,7 +200,7 @@
 #define VAR_TRICK_HOUSE_ENTER_FROM_CORRIDOR  0x40B5
 #define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     0x40B6 // Leftover from RS, never set
 #define VAR_SLATEPORT_FAN_CLUB_STATE         0x40B7
-#define VAR_RYU_NUZLOCKE_PC_USES_FORTREE     0x40B8 // Unused Var
+#define VAR_UNUSED_0x40B8                    0x40B8 // Unused Var
 #define VAR_MT_PYRE_STATE                    0x40B9
 #define VAR_NEW_MAUVILLE_STATE               0x40BA
 #define VAR_RYU_SHELLY_STATUS                0x40BB // Unused Var
@@ -238,14 +238,14 @@
 #define VAR_RYU_FOLLOWER_ID                  0x40DB // Unused Var
 #define VAR_RYU_SAVED_BGM                    0x40DC // Unused Var
 #define VAR_EVENT_PICHU_SLOT                 0x40DD
-#define VAR_RYU_NUZLOCKE_PC_USES_PETALBURG   0x40DE // Var is written to, but never read
-#define VAR_RYU_NUZLOCKE_PC_USES_OLDALE      0x40DF // Var is written to, but never read
-#define VAR_RYU_NUZLOCKE_PC_USES_LITTLEROOT  0x40E0 // Var is written to, but never read
-#define VAR_RYU_NUZLOCKE_PC_USES_RUSTBORO    0x40E1 // Var is written to, but never read
-#define VAR_RYU_NUZLOCKE_PC_USES_VERDANTURF  0x40E2 // Var is written to, but never read
-#define VAR_RYU_NUZLOCKE_PC_USES_MAUVILLE    0x40E3 // Var is written to, but never read
-#define VAR_RYU_NUZLOCKE_PC_USES_SLATEPORT   0x40E4 // var is written to, but never read
-#define VAR_RYU_NUZLOCKE_PC_USES_DEWFORD     0x40E5 // Unused Var
+#define VAR_RYU_LANETTE_VAR                    0x40DE // Var is written to, but never read
+#define VAR_UNUSED_0x40DF                     0x40DF // Var is written to, but never read
+#define VAR_UNUSED_0x40E0                     0x40E0 // Var is written to, but never read
+#define VAR_UNUSED_0x40E1                     0x40E1 // Var is written to, but never read
+#define VAR_UNUSED_0x40E2                     0x40E2 // Var is written to, but never read
+#define VAR_UNUSED_0x40E3                     0x40E3 // Var is written to, but never read
+#define VAR_UNUSED_0x40E4                     0x40E4 // var is written to, but never read
+#define VAR_UNUSED_0x40E5                     0x40E5 // Unused Var
 #define VAR_DAILY_SLOTS                      0x40E6
 #define VAR_DAILY_WILDS                      0x40E7
 #define VAR_DAILY_BLENDER                    0x40E8

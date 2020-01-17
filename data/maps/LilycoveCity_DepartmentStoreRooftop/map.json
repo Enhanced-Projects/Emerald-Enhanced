@@ -23,6 +23,24 @@
     ],
     "connections": null,
     "coord_events": [
+        {
+            "elevation": 3,
+            "script": "LCC_LeafEvent",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 12,
+            "y": 4
+        },
+        {
+            "elevation": 3,
+            "script": "LCC_LeafEvent",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 13,
+            "y": 5
+        }
     ],
     "id": "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP",
     "layout": "LAYOUT_LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP",
@@ -81,6 +99,19 @@
             "trainer_type": "0",
             "x": 15,
             "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
+            "graphics_id": "EVENT_OBJ_GFX_LEAF",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 2,
+            "y": 4
         }
     ],
     "region_map_section": "MAPSEC_LILYCOVE_CITY",

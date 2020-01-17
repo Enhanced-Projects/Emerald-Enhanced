@@ -301,7 +301,7 @@ LCC_LeafEvent::
 	removecutscenesprites
 	savebgm MUS_THANKFOR
 	delay 5
-	@setvar VAR_RYU_DS_LANA_STAGE, 1
+	setvar VAR_RYU_DS_LANA_STAGE, 1
 	setflag FLAG_RYU_ON_DATE
 	applymovement 5, LCC_PullRight
 	waitmovement 5
@@ -545,4 +545,3 @@ LCC_Jump:
 	walk_slow_left
 	walk_slow_left
 	step_end
-

@@ -132,16 +132,15 @@ IT_NuzlockeMode::
 	setvar VAR_RYU_PRICE_MULTIPLIER, 150
 	setvar VAR_RYU_BANK_APR, 100
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	giveitem ITEM_POKE_BALL, 20
-	giveitem ITEM_POTION, 10
+	setvar VAR_RYU_PC_USES, 3
+	giveitem ITEM_POKE_BALL, 10
+	giveitem ITEM_POTION, 5
 	giveitem ITEM_SUPER_POTION, 2
-	giveitem ITEM_ELIXIR, 5
-	special RyuSetupNuzlocke
+	giveitem ITEM_ELIXIR, 2
 	takemoney 3000
 	msgbox IT_NuzlockeOutro MSGBOX_SIGN
 	setflag FLAG_RYU_NUZLOCKEMODE
 	setflag FLAG_HIDE_MAP_NAME_POPUP
-	setvar VAR_RYU_PC_USES, 2
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq SetMaleStartingVariables
@@ -151,8 +150,8 @@ IT_NuzlockeMode::
 
 IT_FrontierMode::
 	msgbox IT_FrontierIntro
-	setvar VAR_RYU_EXP_MULTIPLIER, 0
-	setvar VAR_RYU_PRICE_MULTIPLIER 0
+	setvar VAR_RYU_EXP_MULTIPLIER, 1
+	setvar VAR_RYU_PRICE_MULTIPLIER 100
 	takemoney 3000
 	msgbox IT_FrontierOutro
 	setflag FLAG_HIDE_MAP_NAME_POPUP
@@ -169,11 +168,9 @@ IT_HardcoreMode::
 	setvar VAR_RYU_PRICE_MULTIPLIER, 200
 	setflag FLAG_RYU_HARDCORE_MODE
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 1
-	takemoney 2500
+	takemoney 2750
 	msgbox IT_HardcoreOutro
 	setflag FLAG_HIDE_MAP_NAME_POPUP
-	setvar VAR_RYU_PC_USES, 5
-	special RyuSetupNuzlocke
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq SetMaleStartingVariables
@@ -219,12 +216,15 @@ IT_NuzlockeIntro:
 	.string "Emerald Enhanced uses a special set\p"
 	.string "of rules, and enforces them. They are:\p"
 	.string "1: No marts.\p"
-	.string "2: 3 uses per Pokémon center.\p"
+	.string "2: Can use PC 3 times between\n"
+	.string "  badges. Clear a gym to restore.\p"
 	.string "3: You start with balls and potions.\p"
 	.string "4: Black-Out ends the game.\p"
 	.string "5: Gym Leaders heal and give items\p"
 	.string "6: Exp is doubled, to make up for the\n"
-	.string "difficulty of the game, overall.\p"
+	.string "difficulty of the game.\p"
+	.string "Finally: Any mon that faints is\n"
+	.string "deleted from your party.\p"
 	.string "Enjoy your challenge!\n"
 	.string "--Ryu, Creator of Emerald Enhanced$"
 	

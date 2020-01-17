@@ -414,6 +414,19 @@
             "trainer_type": "0",
             "x": 16,
             "y": 35
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
+            "graphics_id": "EVENT_OBJ_GFX_LEAF",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 61,
+            "y": 37
         }
     ],
     "region_map_section": "MAPSEC_LILYCOVE_CITY",

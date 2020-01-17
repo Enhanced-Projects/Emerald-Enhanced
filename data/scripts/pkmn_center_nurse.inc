@@ -10,6 +10,7 @@ EventScript_PkmnCenterNurse_Goodbye:: @ 8271954
 
 @ VAR_0x8004 is 1 when player has Gold Card; jumps are identical
 EventScript_PkmnCenterNurse_HealPkmn:: @ 827195A
+    call Ryu_CheckHealPermissions
     incrementgamestat GAME_STAT_USED_POKECENTER
     compare VAR_0x8004, 0
     call_if_eq EventScript_PkmnCenterNurse_IllTakeYourPkmn
@@ -18,6 +19,11 @@ EventScript_PkmnCenterNurse_HealPkmn:: @ 827195A
     waitmessage
     call EventScript_PkmnCenterNurse_TakeAndHealPkmn
     end
+
+Ryu_CheckHealPermissions::
+    goto_if_set FLAG_RYU_HARDCORE_MODE, Ryu_NoPcUsesHardcore
+    goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_CheckSetNuzlockPCUseVar
+    return
 
 EventScript_PkmnCenterNurse_IllTakeYourPkmn:: @ 8271987
     message gText_IllTakeYourPkmn

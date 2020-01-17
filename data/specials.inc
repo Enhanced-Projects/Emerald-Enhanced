@@ -566,7 +566,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuLevelSetter
 	def_special RyuSetFriendship
 	def_special RyuResetEvs
-	def_special RyuSetupNuzlocke
 	def_special RyuCalculateCurrentExpCoefficient
 	def_special RyuGenerateReward
 	def_special RyuGiveKoutaMawile

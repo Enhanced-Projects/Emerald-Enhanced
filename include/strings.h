@@ -3251,5 +3251,6 @@ extern const u8 gText_PowerfulWildAppears[];
 
 extern const u8 gText_ColorShadowRedLightRed[];
 extern const u8 gText_ryuJukeboxLabel[];
+extern const u8 gText_BattleHighlightTransparent[];
 
 #endif // GUARD_STRINGS_H

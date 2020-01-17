@@ -995,9 +995,6 @@ RyuDebugGiveItemsDone::
 	giveitem ITEM_MAX_REPEL, 64
 	giveitem ITEM_MEGA_BRACELET, 1
 	msgbox RyuDebug_GiveAllItemsDoneMsg MSGBOX_DEFAULT
-	msgbox RyuDebug_givemonsquery MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RyuDebug_Init_GiveAll
 	msgbox RyuDebug_MoneyMsg MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	call_if_eq RyuDebug_money
@@ -1024,7 +1021,7 @@ RyuDebug_msg:
     .string "What would you like to activate?$"
 	
 RyuDebug_Init_GiveAll::
-	setvar VAR_TEMP_0, 1
+	setvar VAR_TEMP_0, 387
 	msgbox RyuDebug_GiveAllBeginMsg MSGBOX_DEFAULT
 	goto RyuDebug_GiveAllMons
 	
@@ -1034,7 +1031,7 @@ RyuDebug_GiveAllMons::
 	goto RyuDebug_ReturnCall
 	
 RyuDebug_ReturnCall::
-	compare VAR_TEMP_0, 410
+	compare VAR_TEMP_0, 644
 	goto_if_eq RyuDebugGivePokeDone
 	goto RyuDebug_GiveAllMons
 	
@@ -1624,6 +1621,31 @@ EvNoImprints:
 	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough imprints.\pObtain more at Lilycove\nTraining Center.$"
 
 @@------------------------------------------------------------------------------------------------- NUZLOCKE CHALLENGE RELATED
+
+Ryu_CheckSetNuzlockPCUseVar::
+	compare VAR_RYU_PC_USES, 0
+    goto_if_eq Ryu_OutOfPcUses
+    subvar VAR_RYU_PC_USES, 1
+	return
+	release
+	end
+
+Ryu_OutOfPcUses::
+	msgbox Ryu_SorryCantHeal
+	release
+	end
+
+Ryu_NoPcUsesHardcore::
+	msgbox Ryu_SorryHardcore
+	release
+	end
+
+Ryu_SorryCantHeal:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I'm terribly sorry, but you have\nused up all of your heals until\lyou get a new badge.$"
+
+Ryu_SorryHardcore:
+	.string "This service is restricted by\ngame rules. Sorry!$"
+
 RyuMartsDisabledNuzlocke::
 	msgbox RyuMartsDisabledNuzlockeMsg MSGBOX_DEFAULT
 	release
@@ -1676,6 +1698,11 @@ RyuGymItemReward1::
 	giveitem ITEM_GREAT_BALL, 1
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	setflag FLAG_RYU_GYM1HANDOUT
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
+	return
+
+Ryu_ResetPcUses::
+	setvar VAR_RYU_PC_USES, 3
 	return
 
 RyuGymItemReward2::
@@ -1683,6 +1710,7 @@ RyuGymItemReward2::
 	giveitem ITEM_GREAT_BALL, 2
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	setflag FLAG_RYU_GYM2HANDOUT
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward3::
@@ -1690,6 +1718,7 @@ RyuGymItemReward3::
 	giveitem ITEM_GREAT_BALL, 3
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	setflag FLAG_RYU_GYM3HANDOUT
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward4::
@@ -1697,6 +1726,7 @@ RyuGymItemReward4::
 	giveitem ITEM_GREAT_BALL, 4
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	setflag FLAG_RYU_GYM4HANDOUT
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward5::
@@ -1704,6 +1734,7 @@ RyuGymItemReward5::
 	giveitem ITEM_GREAT_BALL, 5
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	setflag FLAG_RYU_GYM5HANDOUT
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward6::
@@ -1711,6 +1742,7 @@ RyuGymItemReward6::
 	giveitem ITEM_GREAT_BALL, 6
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	setflag FLAG_RYU_GYM6HANDOUT
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward7::
@@ -1718,6 +1750,7 @@ RyuGymItemReward7::
 	giveitem ITEM_GREAT_BALL, 7
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	setflag FLAG_RYU_GYM7HANDOUT
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward8::
@@ -1725,6 +1758,7 @@ RyuGymItemReward8::
 	giveitem ITEM_GREAT_BALL, 8
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	setflag FLAG_RYU_GYM8HANDOUT
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuHealedGymMsg:
@@ -1747,19 +1781,16 @@ RyuEmptySpace:
 RyuFailedNuzlocke::
 	msgbox NuzlockeFail MSGBOX_DEFAULT
 	closemessage
-	msgbox NormalModeStart MSGBOX_DEFAULT
+	clearflag FLAG_RYU_NUZLOCKEMODE
+	setvar VAR_RYU_EXP_MULTIPLIER, 1000
+	setvar VAR_RYU_PRICE_MULTIPLIER, 100
 	release
 	end
 	
 NuzlockeFail:
 	.string "You have failed this nuzlocke\n"
-	.string "challenge. Take this token of\p"
-	.string "pity.$"
-	
-NormalModeStart:
-	.string "You've been given a Pokémon.\n"
-	.string "You may now play the game normally.$"
-	
+	.string "challenge. Game will now go to\l."
+	.string "Normal mode.$"
 	
 @==================================================================================================PLAYER IS HELPING AQUA
 
@@ -1820,6 +1851,7 @@ RyuTeleport::
 	lock
 	goto_if_set FLAG_RYU_WAYSTONE_DISABLED, RyuTeleportDisabled
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuTeleportUseCheck
+	call_if_set FLAG_RYU_HARDCORE_MODE, RyuTeleportUseCheck
 	setflag FLAG_RYU_TEMPTP
 	msgbox MSG_Teleport MSGBOX_SIGN
 	multichoicegrid 0, 0, 126, 3, 0

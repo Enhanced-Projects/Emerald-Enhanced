@@ -1,5 +1,6 @@
 Route114_LanettesHouse_MapScripts:: @ 822B2C8
 	map_script MAP_SCRIPT_ON_TRANSITION, Route114_LanettesHouse_OnTransition
+	map_script ON_FRAME, Ryu_LNH_RomChek
 	.byte 0
 
 Route114_LanettesHouse_OnTransition: @ 822B2CE
@@ -9,6 +10,8 @@ Route114_LanettesHouse_OnTransition: @ 822B2CE
 Route114_LanettesHouse_EventScript_Lanette:: @ 822B2D2
 	lock
 	faceplayer
+	goto_if_set FLAG_RYU_LANETTE_EVENT1, LNH_Outro
+	goto_if_set FLAG_RYU_LANETTE_INTRO, LNH_StillLooking
 	goto_if_set FLAG_RECEIVED_DOLL_LANETTE, Route114_LanettesHouse_EventScript_OfferAdvice
 	setflag FLAG_SYS_PC_LANETTE
 	msgbox Route114_LanettesHouse_Text_EverythingClutteredKeepThis, MSGBOX_DEFAULT
@@ -18,6 +21,259 @@ Route114_LanettesHouse_EventScript_Lanette:: @ 822B2D2
 	setflag FLAG_RECEIVED_DOLL_LANETTE
 	release
 	end
+
+Ryu_LNH_RomChek::
+	map_script_2 VAR_RYU_LANETTE_VAR, 101, Ryu_LNH_RomQuest 
+	.2byte 0
+	
+LNH_RelCheck::
+	goto_if_unset FLAG_RYU_DS_LANETTE_ACQ, ryu_end
+	clearflag FLAG_RYU_HIDE_LANETTE_BASEMENT
+	release
+	end
+	
+Ryu_LNH_RomQuest::
+	setvar VAR_RYU_LANETTE_VAR, 0
+	lock
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	drawheadshot HEAD_LANETTE
+	msgbox LNH_RomStart
+	closemessage
+	applymovement 1, Common_Movement_FaceDown
+	waitmovement 1
+	setflag FLAG_RYU_DS_LANETTE_FRIENDS
+	msgbox LNH_mynameis
+	closemessage
+	msgbox LNH_myjobis
+	specialvar VAR_RESULT, RyuNumberOfFullBoxes
+	compare VAR_RESULT, 4
+	goto_if_ge LNH_PlayerHasCollection
+	msgbox LNH_StillLookingMsg
+	removecutscenesprites
+	setflag FLAG_RYU_LANETTE_INTRO
+	release
+	end
+	
+LNH_PlayerHasCollection::
+	buffernumberstring 0, VAR_RESULT
+	msgbox LNH_youhavexboxes
+	playfanfare MUS_FANFA5
+	waitfanfare
+	closemessage
+	setflag FLAG_RYU_DS_LANETTE_CLOSEFRIENDS
+	msgbox LNH_sizeableCollection
+	closemessage
+	applymovement 1, LNH_ToPokeballs
+	waitmovement 1
+	delay 20
+	applymovement 1, LNH_BackToPlayerFromDesk
+	waitmovement 1
+	giveitem ITEM_LUXURY_BALL, 10
+	msgbox LNH_GiveBalls
+	closemessage
+	playfanfare MUS_FANFA1
+	waitfanfare
+	msgbox LNH_RepairRequest
+	closemessage
+	removecutscenesprites
+	applymovement EVENT_OBJ_ID_PLAYER, LNH_MoveOutOfWay
+	applymovement 1, LNH_LanetteExitHouse
+	waitmovement 1
+	playse SE_DOOR
+	removeobject 1
+	setflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
+	setflag FLAG_RYU_LANETTE_EVENT_0
+	setflag FLAG_TEMP_1
+	release
+	end
+
+LNH_RomanceEvent::
+	lock
+	goto_if_set FLAG_RYU_DS_LANETTE_PARTNERS, ryu_end
+	goto_if_set FLAG_TEMP_1, ryu_end
+	setflag FLAG_TEMP_1
+	msgbox LNH_youHearASound
+	setvar VAR_RYU_LANETTE_VAR, 104
+	release
+	end
+	
+LNH_Outro::
+	drawheadshot HEAD_LANETTE
+	goto_if_set FLAG_RYU_DS_LANETTE_PARTNERS, LNH_PartnerStayTheNight
+	msgbox LNH_NewTechnology
+	giveitem_std ITEM_TEACHY_TV
+	msgbox LNH_AboutRemotePc
+	closemessage
+	setflag FLAG_RYU_DS_LANETTE_PARTNERS
+	setflag FLAG_RYU_DS_HAS_PARTNER
+	msgbox LNH_TakeMeToBattleSometime
+	goto LNH_PartnerStayTheNight
+	release
+	end
+	
+LNH_PartnerStayTheNight::
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
+	msgbox LNH_PartnerStayover MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq LNH_Staying
+	removecutscenesprites
+	msgbox LNH_DISPT
+	release
+	end
+	
+LNH_Staying:
+	msgbox LNH_Rel_Lanette_stayingScene
+	closemessage
+	removecutscenesprites
+	setvar VAR_RYU_LANETTE_VAR, 105
+	fadescreen 1
+	clearflag FLAG_RYU_HIDE_LANETTE_BASEMENT
+	warpsilent MAP_ROUTE114_LANETTES_HOUSE_BASEMENT, 255, 8, 6
+	closemessage
+	release
+	end
+	
+LNH_Rel_Lanette_stayingScene:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I picked up a new movie for us\n"
+	.string "to watch. It's got really good\l"
+	.string "reviews on Rotten Tomatoes!\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You have no idea what that\n"
+	.string " is, but you DO know that you will\l"
+	.string " be watching from her bed...)$"
+	
+LNH_DISPT:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh... Okay, we're both busy\n"
+    .string "people... I get it...\p"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She looks crestfallen...)$"
+
+LNH_PartnerStayover::
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Lanette: Oh! Hi, {PLAYER}!\n"
+    .string "How's the Wireless PC working out\l"
+    .string "for you?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ... ...\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Good! Hey, so, did you want to\n"
+    .string "spend the night? We can watch a\l"
+    .string "movie before going to sleep!$"
+
+LNH_NewTechnology:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Lanette: I've been working on this\n"
+    .string "device for a very long time.\p"
+    .string "I'd like for you to field test it.$"
+	
+LNH_AboutRemotePc:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}There may be some... er... strange\n"
+    .string "effects when you use it.\p"
+    .string "Basically, It lets you access\n"
+    .string "my computer remotely. You should,\p"
+    .string "in theory, be able to use it from\n"
+    .string "anywhere... But it is beta tech.$"
+
+LNH_TakeMeToBattleSometime:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Anyways... I hope it will be useful\n"
+    .string "to you! By the way, I love to\l"
+    .string "battle.\p"
+    .string "You can call me anytime and I'll\n"
+    .string "find you, wherever you are, to\l"
+    .string "back you up!$"
+	
+LNH_youHearASound:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You hear a loud crash coming\n"
+    .string " from somewhere to the east.)$"
+
+LNH_RepairRequest:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I have to go complete a repair\n"
+    .string "request, but please come back\l"
+    .string "later to visit!$"
+	
+LNH_GiveBalls:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}You have a pretty large collection\n"
+    .string "already, but, please, take these\l"
+    .string "to expand it even more!\p"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} reveived 10 Luxury Balls.$"
+	
+LNH_sizeableCollection:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}What an amazing collection!\n"
+    .string "... ... ...\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Yes, I've been a little busy.\p"
+    .string "Your PC organization has made it so\n"
+    .string "easy for me to keep them sorted.\p"
+    .string "I can't picture a PC system without\n"
+    .string "a modern interface like yours.\p"
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lanette blushes.)$"
+	
+LNH_RomStart:
+    .string "Lanette:{COLOR LIGHT_RED}{SHADOW RED} Thanks for walking me\n"
+    .string "home. Most people tend to ignore\p"
+    .string "me, and I usually have to do things\n"
+    .string "on my own. It's a nice change of\l"
+    .string "pace.\p"
+    .string "Oh! Silly me. I never asked your\n"
+    .string "name. Sorry, I get caught up in\p"
+    .string "the moment pretty often.$"
+	
+LNH_youhavexboxes:
+    .string "Lanette:{COLOR LIGHT_RED}{SHADOW RED} Oh, my! You have a sizable\n"
+    .string "collection of pokémon.\p"
+    .string "You have {STR_VAR_1} full boxes!$"
+
+LNH_mynameis:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I'm {PLAYER}. Nice to meet you!$"
+	
+LNH_myjobis:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Okay! So, I gave you a short\n"
+    .string "description of what I do. But more\p"
+    .string "specifically, I created the user\n"
+    .string "interface that makes moving your\p"
+    .string "pokémon around in boxes much more\n"
+    .string "simple. I'm an interface code guru!\p"
+    .string "Unfortunately, I don't have much\n"
+    .string "of a user base. I need someone\p"
+    .string "with a large collection of pokémon\n"
+    .string "to fully test it.$"
+	
+LNH_StillLookingMsg:
+    .string "Lanette:{COLOR LIGHT_RED}{SHADOW RED} I'm still looking for\n"
+    .string "someone with a large enough\l"
+    .string "collection for me to use with my\l"
+    .string "new beta interface.$"
+
+	
+LNH_StillLooking:
+	specialvar VAR_RESULT, RyuNumberOfFullBoxes
+	compare VAR_RESULT, 4
+	goto_if_ge LNH_PlayerHasCollection
+	msgbox LNH_StillLookingMsg
+	release
+	end
+	
+LNH_MoveOutOfWay:
+	walk_down
+	walk_right
+	walk_in_place_down
+	step_end
+	
+LNH_ToPokeballs:
+	walk_up
+	walk_up
+	delay_8
+	walk_in_place_fastest_up
+	delay_4
+	walk_in_place_up
+	step_end
+	
+LNH_BackToPlayerFromDesk:
+	walk_down
+	walk_down
+	walk_in_place_down
+	step_end
+	
+LNH_LanetteExitHouse:
+	delay_16
+	delay_16
+	walk_down
+	walk_down
+	walk_down
+	step_end
 
 Route114_LanettesHouse_EventScript_OfferAdvice:: @ 822B2FF
 	msgbox Route114_LanettesHouse_Text_OrganizeYourBoxes, MSGBOX_DEFAULT
@@ -104,4 +360,81 @@ Route114_LanettesHouse_Text_EmailFromBill: @ 822B6FC
 	.string "research in Storage Systems.\p"
 	.string "“From BILL\n"
 	.string "… … … … … … … …”$"
+
+	@========================================================LEAF EVENTS
+
+LNH_LeafEvent::
+	goto_if_set FLAG_RYU_LANETTE_EVENT1, ryu_end
+	goto_if_set FLAG_RYU_DS_LANETTE_CLOSEFRIENDS, LNH_RomanceEvent
+	goto_if_set FLAG_RYU_LANA_ALTEVENT3, ryu_end
+	goto_if_unset FLAG_RYU_DAYCARE_LEAFEVENTPC, ryu_end
+	goto_if_unset FLAG_RYU_LANA_ALTEVENT2, ryu_end
+	lock
+	msgbox LNH_StoryMsg1 MSGBOX_DEFAULT
+	closemessage
+	drawheadshot HEAD_LANA
+	msgbox LNH_StoryMsg11
+	closemessage
+	applymovement 2, Common_Movement_FaceDown
+	waitmovement 2
+	msgbox LNH_StoryMsg2 MSGBOX_DEFAULT
+	applymovement 2, LNH_LeafLeave
+	applymovement EVENT_OBJ_ID_PLAYER, LNH_LeafShovesPlayer
+	waitmovement 2
+	playse SE_DOOR
+	removeobject 2
+	waitse
+	applymovement EVENT_OBJ_ID_PLAYER, LNH_Return
+	waitmovement EVENT_OBJ_ID_PLAYER
+	removecutscenesprites
+	msgbox LNH_StoryMsg3 MSGBOX_DEFAULT
+	applymovement 1, LNH_LanetteWalkDown
+	waitmovement 1
+	msgbox LNH_StoryMsg4 MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_RYU_LANA_ALTEVENT3
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	release
+	end
+	
+LNH_StoryMsg1:
+	.string "I'm terribly sorry, but I can't\njust take them!\pI manage pokémon\nstorage, not the pokémon\lthemselves!$"
+	
+LNH_StoryMsg11:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Why...everyone's getting in my way...!$"
+
+LNH_StoryMsg2:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Even you, {PLAYER}...don't follow\nme!$"
+	
+LNH_StoryMsg3:
+	.string "Poor girl...I wonder what's gotten\nher so worked up...\pOh, she seems to have dropped\nthis...$"
+	
+LNH_StoryMsg4:
+	.string "... ... ... ...\pIt seems to be a magazine about\nLilycove...I hear their Department\lStore houses all kinds of neat\pitems for both people and pokémon.\pMaybe I should stop by sometime...$"
+	
+LNH_LeafLeave:
+	walk_in_place_down
+	delay_16
+	delay_16
+	walk_down
+	walk_down
+	step_end
+	
+LNH_LeafShovesPlayer:
+	walk_right
+	walk_in_place_left
+	step_end
+	
+LNH_Return:
+	walk_left
+	walk_in_place_down
+	walk_in_place_up
+	step_end
+	
+LNH_LanetteWalkDown:
+	walk_down
+	delay_16
+	walk_in_place_down
+	step_end
+
 

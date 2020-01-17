@@ -712,7 +712,7 @@
 #define FLAG_RYU_DEVON_CEO_INTRO  0x2A0 // Unused Flag
 #define FLAG_RYU_MEWTWO_OBTAINED  0x2A1 // Unused Flag
 #define FLAG_RYU_GROUDON_ENCOUNTERED  0x2A2 // Unused Flag
-#define FLAG_UNUSED_0x2A3  0x2A3 // Unused Flag
+#define FLAG_RYU_LANA_EVENT14  0x2A3 // Unused Flag
 #define FLAG_UNUSED_0x2A4  0x2A4 // Unused Flag
 #define FLAG_UNUSED_0x2A5  0x2A5 // Unused Flag
 #define FLAG_UNUSED_0x2A6  0x2A6 // Unused Flag

@@ -1208,7 +1208,7 @@
             "name": "Route114_LanettesHouse_Layout",
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_Lab",
-            "width": 11
+            "width": 17
         },
         {
             "blockdata_filepath": "data/layouts/Route116_TunnelersRestHouse/map.bin",
@@ -4569,6 +4569,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Fortree",
             "width": 48
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route114_LanettesHouse_Basement/map.bin",
+            "border_filepath": "data/layouts/Route114_LanettesHouse_Basement/border.bin",
+            "height": 7,
+            "id": "LAYOUT_ROUTE114_LANETTES_HOUSE_BASEMENT",
+            "name": "Route114_LanettesHouse_Basement_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Lab",
+            "width": 13
         }
     ],
     "layouts_table_label": "gMapLayouts"
