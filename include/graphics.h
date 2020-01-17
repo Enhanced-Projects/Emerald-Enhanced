@@ -6857,6 +6857,7 @@ extern const u32 gSubstituteDollTilemap[];
 extern const u32 gSubstituteDollGfx[];
 extern const u32 gSubstituteDollPal[];
 extern const u32 gHealthboxSinglesPlayerGfx[];
+extern const u32 gHealthboxSinglesPlayerDarkGfx[];
 extern const u32 gHealthboxSinglesOpponentGfx[];
 extern const u32 gHealthboxDoublesPlayerGfx[];
 extern const u32 gHealthboxDoublesOpponentGfx[];

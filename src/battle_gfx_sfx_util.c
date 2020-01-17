@@ -45,12 +45,17 @@ static void sub_805D7EC(struct Sprite *sprite);
 static bool8 ShouldAnimBeDoneRegardlessOfSubsitute(u8 animId);
 static void Task_ClearBitWhenBattleTableAnimDone(u8 taskId);
 static void Task_ClearBitWhenSpecialAnimDone(u8 taskId);
-static void ClearSpritesBattlerHealthboxAnimData(void);
+static void ClearSpritesBattlerHealthboxAnimData(void);  
 
 // const rom data
-static const struct CompressedSpriteSheet sSpriteSheet_SinglesPlayerHealthbox =
+static const struct CompressedSpriteSheet sSpriteSheet_SinglesPlayerHealthbox =  
 {
     gHealthboxSinglesPlayerGfx, 0x1000, TAG_HEALTHBOX_PLAYER1_TILE
+};
+
+static const struct CompressedSpriteSheet sSpriteSheet_SinglesPlayerHealthboxDark =  
+{
+    gHealthboxSinglesPlayerDarkGfx, 0x1000, TAG_HEALTHBOX_PLAYER1_TILE
 };
 
 static const struct CompressedSpriteSheet sSpriteSheet_SinglesOpponentHealthbox =
@@ -635,7 +640,15 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
     LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
     if (!IsDoubleBattle())
     {
-        LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthbox);
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        {
+            LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthboxDark);
+        }
+        else
+        {
+            LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthbox);
+        }
+
         LoadCompressedSpriteSheet(&sSpriteSheet_SinglesOpponentHealthbox);
         numberOfBattlers = 2;
     }
@@ -675,9 +688,18 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
             if (state == 2)
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
+                {
                     LoadCompressedSpriteSheet(&sSpriteSheet_SafariHealthbox);
+                }
+                else if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+                {
+                    LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthboxDark);
+                }
                 else
+                {
                     LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthbox);
+                }
+                
             }
             else if (state == 3)
                 LoadCompressedSpriteSheet(&sSpriteSheet_SinglesOpponentHealthbox);
