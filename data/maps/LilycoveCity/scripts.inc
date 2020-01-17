@@ -83,7 +83,6 @@ LilycoveCity_OnTransition: @ 81E2B47
 	end
 
 LilycoveCity_OnLoad: @ 81E2B61
-	call_if_unset FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, LilycoveCity_EventScript_SetWailmerMetatiles
 	end
 
 LilycoveCity_EventScript_SetWailmerMetatiles:: @ 81E2B6B
