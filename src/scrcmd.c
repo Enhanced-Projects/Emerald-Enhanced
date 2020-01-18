@@ -49,6 +49,9 @@
 #include "tv.h"
 #include "window.h"
 #include "constants/event_objects.h"
+#include "battle_tower.h"
+#include "load_save.h"
+#include "battle_setup.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);

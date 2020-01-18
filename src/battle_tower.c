@@ -78,7 +78,7 @@ static void SetEReaderTrainerChecksum(struct BattleTowerEReaderTrainer *ereaderT
 static u8 SetTentPtrsGetLevel(void);
 
 // Const rom data.
-const u16 gBattleFrontierHeldItems[] =
+const u16 gBattleFrontierHeldItems[] =//FRONTIER_ITEM_TABLE
 {
     ITEM_NONE,
     ITEM_KINGS_ROCK,
@@ -148,7 +148,14 @@ const u16 gBattleFrontierHeldItems[] =
     ITEM_CHOICE_SPECS,
     ITEM_EXPERT_BELT,
     ITEM_FOCUS_SASH,
-    ITEM_LIFE_ORB
+    ITEM_LIFE_ORB,
+    ITEM_FLAME_ORB,
+    ITEM_TOXIC_ORB,
+    ITEM_WEAKNESS_POLICY,
+    ITEM_BLACK_SLUDGE,
+    ITEM_FLYING_GEM,
+    ITEM_ROCKY_HELMET,
+    ITEM_AIR_BALLOON
 };
 
 #include "data/battle_frontier/battle_frontier_trainer_mons.h"

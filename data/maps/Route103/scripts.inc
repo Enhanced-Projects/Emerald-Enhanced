@@ -334,66 +334,8 @@ Route103_Text_RouteSign: @ 81ECC1A
 
 @==================================================================================================DEBUG
 
-r103_OverlordBattle::
-	setflag FLAG_RYU_MAX_SCALE
-	trainerbattle_single TRAINER_OVERLORD_RYU, r103_ryu_intro, r103_ryu_defeat, r103_CheckBattleResult
+r103_SpecialBattleTest::
 	release
 	end
 
-r103_CheckBattleResult::
-	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_ne ryu_end
-	cleartrainerflag TRAINER_OVERLORD_RYU
-	msgbox r103_lostToOverlordRyu
-	release
-	end
-
-r103_lostToOverlordRyu:
-	.string "You got rekt m8. I would say try\nagain later, but the result will\lbe the same.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Overlord Ryu\ngives you the finger.)$"
-
-r103_ryu_intro:
-	.string "Witness the power of a true\nOverlord. I pity you.$"
-
-r103_ryu_defeat:
-	.string "uwotm8$"
-
-Script_StartCustomBattle::
-    special SavePlayerParty
-    trainerbattle TRAINER_BATTLE_SET_TRAINER_A, TRAINER_WALLACE, 0, NULL, NULL
-    trainerbattle TRAINER_BATTLE_SET_TRAINER_B, TRAINER_SIDNEY, 0, NULL, NULL
-    goto Script_Select3Mons
-
-Script_Select3Mons::
-    fadescreen 1
-    special ChooseHalfPartyForBattle
-    waitstate
-    goto Script_CheckPartyForCustomBattle
-
-Script_CheckPartyForCustomBattle::
-    compare VAR_RESULT, 1
-    goto_if_eq Script_BeginCustomBattle
-    msgbox Warning_NotEnoughMons, MSGBOX_DEFAULT
-    goto Script_Select3Mons
-
-Script_BeginCustomBattle::
-    special ReducePlayerPartyToSelectedMons
-    setvar VAR_0x8004, FRONTIER_UTIL_FUNC_SET_DATA
-    setvar VAR_0x8005, FRONTIER_DATA_SELECTED_MON_ORDER
-    special CallFrontierUtilFunc
-    setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-    setvar VAR_0x8005, MULTI_BATTLE_2_VS_2 | MULTI_BATTLE_CHOOSE_MONS
-	setvar VAR_0x8006, TRAINER_STEVEN
-    setvar VAR_0x8007, TRAINER_BACK_PIC_STEVEN
-    special DoSpecialTrainerBattle
-    waitstate
-    setvar VAR_0x8004 FRONTIER_UTIL_FUNC_SAVE_PARTY
-    special CallFrontierUtilFunc
-    special LoadPlayerParty
-    release
-    end
-
-Warning_NotEnoughMons:
-	.string "You do not have enough party\n"
-	.string "members for the battle.$"
 

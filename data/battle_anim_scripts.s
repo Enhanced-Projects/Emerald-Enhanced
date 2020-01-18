@@ -9333,6 +9333,7 @@ SandAttack1:
 	delay 2
 	return
 
+Move_GRAVEL_STORM:
 Move_MUD_SLAP:
 	loadspritegfx ANIM_TAG_MUD_SAND
 	playsewithpan SE_W028, SOUND_PAN_ATTACKER
