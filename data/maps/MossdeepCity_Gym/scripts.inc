@@ -334,8 +334,8 @@ MG_PartnerEnter:
 	walk_down
 	walk_down
 	walk_down
-	walk_left
-	walk_left
+	walk_right
+	walk_right
 	walk_up
 	walk_in_place_up
 	walk_in_place_up
@@ -344,8 +344,8 @@ MG_PartnerEnter:
 MG_PartnerExit:
 	walk_in_place_down
 	walk_down
-	walk_right
-	walk_right
+	walk_left
+	walk_left
 	walk_up
 	walk_up
 	walk_up

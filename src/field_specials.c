@@ -73,7 +73,6 @@
 #include "constants/trainers.h"
 #include "pokedex.h"
 #include "money.h"
-#include "mgba.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -5592,25 +5591,25 @@ static const u16 sRotomForms[6] = {
 };
 
 static const u16 sRotomMoves[6] = {
-    MOVE_THUNDER,
-    MOVE_OVERHEAT,
-    MOVE_HYDRO_PUMP,
-    MOVE_HURRICANE,
-    MOVE_ICE_BEAM,
-    MOVE_LEAF_STORM,
+    87,//MOVE_THUNDER,
+    315,//MOVE_OVERHEAT,
+    56,//MOVE_HYDRO_PUMP,
+    542,//MOVE_HURRICANE,
+    58,//MOVE_ICE_BEAM,
+    437,//MOVE_LEAF_STORM,
 };
 
 int RyuSwapRotomForm(void)
 {
-    u8 i = 0;
+    u16 i = 0;
     u16 j = 0;
-    u8 b = 0;
-    u8 m = 0;
-    u8 rotomSpecies = 0;
+    u16 b = 0;
+    u16 m = 0;
+    u16 rotomSpecies = 0;
     u16 rotomMove = 0;
-    u8 moveSlot = 0;
+    u16 moveSlot = 0;
     bool8 hasMon = FALSE;
-    u8 monSlot = 0;
+    u16 monSlot = 0;
     u16 move = 0;
     u16 species = 0;
 

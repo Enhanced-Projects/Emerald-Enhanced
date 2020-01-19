@@ -33,7 +33,6 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "trainer_hill.h"
-#include "mgba.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
 

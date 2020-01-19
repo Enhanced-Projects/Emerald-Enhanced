@@ -70,7 +70,6 @@
 #include "item.h"
 #include "constants/items.h"
 #include "pokemon_storage_system.h"
-#include "mgba.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -423,7 +422,6 @@ void DoWhiteOut(void)
     Overworld_ResetStateAfterWhiteOut();
     SetWarpDestinationToLastHealLocation();
     WarpIntoMap();
-    ScriptContext2_RunNewScript(RyuFailedNuzlocke);
 }
 
 void Overworld_ResetStateAfterFly(void)
@@ -939,6 +937,12 @@ void RyuAddFollower(void)
     {
         CreateFollowerEventObject(graphicsId, script, DIR_NORTH);
     }
+    else if((GetPlayerFacingDirection()) == DIR_SOUTH)
+    {
+        CreateFollowerEventObject(graphicsId, script, DIR_SOUTH);
+        TryMoveEventObjectToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup,
+        gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 2));
+    }
     else
     {
         if (FlagGet(FLAG_RYU_TEMPTP) == 1)
@@ -1249,24 +1253,20 @@ void LoadMapMusic(void)
             case 5:
             {
                 FadeOutAndPlayNewMapMusic(GetCurrLocationDefaultMusic(), 4);
-                mgba_printf(MGBA_LOG_INFO, "1,3,5");
                 break;
             }
             case 2:
             {
                 FadeOutAndPlayNewMapMusic(randomMusic, 4);
-                mgba_printf(MGBA_LOG_INFO, "2");
                 break;
             }
             case 4:
             {
                 FadeOutAndPlayNewMapMusic((VarGet(VAR_RYU_JUKEBOX)), 4);
-                mgba_printf(MGBA_LOG_INFO, "4");
                 break;
             }
             default:
             {
-                mgba_printf(MGBA_LOG_INFO, "-1");
                 FadeOutAndPlayNewMapMusic(350, 4);
                 break;
             }    

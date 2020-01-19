@@ -219,11 +219,17 @@ LNH_LanetteMulti::
 	goto_if_unset FLAG_RYU_STAYED_2_NIGHTS_AT_LANETTE, ryu_return
 	multichoicegrid 0, 110, MULTI_LANETTE_REL_DIALOG, 3, 1
 	switch VAR_RESULT
-	case 0, RF_LanetteSetupFollower @
+	case 0, LNH_LanettePrepareFollower @
 	case 1, LNH_Romance @
 	case 2, LNH_ChangeRotom
 	release
 	end
+
+LNH_LanettePrepareFollower::
+	msgbox RF_LanetteSetupFollower
+	goto LNH_Follower
+	end
+
 
 LNH_Nothing::
 	msgbox LNH_DISPT
