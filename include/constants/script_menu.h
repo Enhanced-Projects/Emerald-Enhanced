@@ -152,6 +152,8 @@
 #define MULTI_BALL_CHANGER_SELECT_MENU     141
 #define MULTI_SELECT_NEW_GAME_PLUS_MODE    142
 #define MULTI_DEV_UTILITY_SUBMENU          143
+#define MULTI_LANETTE_REL_DIALOG           144
+#define MULTI_LANETTE_ROTOM_DIALOG         145
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

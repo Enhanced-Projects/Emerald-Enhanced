@@ -713,8 +713,8 @@
 #define FLAG_RYU_MEWTWO_OBTAINED  0x2A1 // Unused Flag
 #define FLAG_RYU_GROUDON_ENCOUNTERED  0x2A2 // Unused Flag
 #define FLAG_RYU_LANA_EVENT14  0x2A3 // Unused Flag
-#define FLAG_UNUSED_0x2A4  0x2A4 // Unused Flag
-#define FLAG_UNUSED_0x2A5  0x2A5 // Unused Flag
+#define FLAG_RYU_RECIEVED_ROTOM  0x2A4 // Unused Flag
+#define FLAG_RYU_STAYED_2_NIGHTS_AT_LANETTE  0x2A5 // Unused Flag
 #define FLAG_UNUSED_0x2A6  0x2A6 // Unused Flag
 #define FLAG_UNUSED_0x2A7  0x2A7 // Unused Flag
 #define FLAG_UNUSED_0x2A8  0x2A8 // Unused Flag

@@ -934,6 +934,7 @@ RyuDebug_Utility1::
 	special FillTheDex
 	goto_if_unset FLAG_RYU_RANDOMIZE_MUSIC, RDB_u1_EnableRandomize
 	clearflag FLAG_RYU_RANDOMIZE_MUSIC
+	goto RyuDebug_Init_GiveAll
 	release
 	end
 
@@ -1021,7 +1022,7 @@ RyuDebug_msg:
     .string "What would you like to activate?$"
 	
 RyuDebug_Init_GiveAll::
-	setvar VAR_TEMP_0, 387
+	setvar VAR_TEMP_0, 1
 	msgbox RyuDebug_GiveAllBeginMsg MSGBOX_DEFAULT
 	goto RyuDebug_GiveAllMons
 	
@@ -1031,7 +1032,7 @@ RyuDebug_GiveAllMons::
 	goto RyuDebug_ReturnCall
 	
 RyuDebug_ReturnCall::
-	compare VAR_TEMP_0, 644
+	compare VAR_TEMP_0, 151
 	goto_if_eq RyuDebugGivePokeDone
 	goto RyuDebug_GiveAllMons
 	
@@ -2931,12 +2932,18 @@ RF_FollowerLeaveCall::
 	return
 	
 RF_FollowerLeave:
+	compare VAR_RYU_FOLLOWER_ID, EVENT_OBJ_GFX_WOMAN_2
+	call_if_eq Ryu_RestoreLanetteAtHouse
 	clearflag FLAG_RYU_HAS_FOLLOWER
 	destroyfollower
 	msgbox RyuFollowerLeavesService
 	clearflag FLAG_RYU_HAS_FOLLOWER
 	release
 	end
+
+Ryu_RestoreLanetteAtHouse::
+	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
+	return
 
 RyuFollowerAllySelector::
 	special RyuFollowerToTrainerID

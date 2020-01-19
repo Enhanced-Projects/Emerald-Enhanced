@@ -110,13 +110,122 @@ LNH_Outro::
 	goto LNH_PartnerStayTheNight
 	release
 	end
-	
+
+
+LNH_ChangeRotom::
+	msgbox LNH_WhatRotom
+	multichoice 0, 0, MULTI_LANETTE_ROTOM_DIALOG, 1
+	switch VAR_RESULT
+	case 0, LNH_RotomFire
+	case 1, LNH_RotomWater
+	case 2, LNH_RotomIce
+	case 3, LNH_RotomFlying
+	case 4, LNH_RotomGrass
+	case 5, LNH_RotomElectric
+	goto ryu_end
+
+LNH_WhatRotom:
+    .string "Lanette:{COLOR LIGHT_RED}{SHADOW RED} Hey! I'm glad Rotom fits\n"
+    .string "in! What form would you like to\l"
+    .string "swap it to?$"
+
+LNH_RotomFire::
+	setvar VAR_TEMP_4, MOVE_OVERHEAT
+	setvar VAR_TEMP_5, 862
+	goto LNH_DoRotomSwap
+
+LNH_RotomWater::
+	setvar VAR_TEMP_4, MOVE_HYDRO_PUMP
+	setvar VAR_TEMP_5, 863
+	goto LNH_DoRotomSwap
+
+LNH_RotomIce::
+	setvar VAR_TEMP_4, MOVE_ICE_BEAM
+	setvar VAR_TEMP_5, 864
+	goto LNH_DoRotomSwap
+
+LNH_RotomFlying::
+	setvar VAR_TEMP_4, MOVE_HURRICANE
+	setvar VAR_TEMP_5, 865
+	goto LNH_DoRotomSwap
+
+LNH_RotomGrass::
+	setvar VAR_TEMP_4, MOVE_LEAF_STORM
+	setvar VAR_TEMP_5, 866
+	goto LNH_DoRotomSwap
+
+LNH_RotomElectric::
+	setvar VAR_TEMP_4, MOVE_THUNDER
+	setvar VAR_TEMP_5, 479
+	goto LNH_DoRotomSwap
+
+
+LNH_DoRotomSwap::
+	specialvar VAR_RESULT, RyuSwapRotomForm
+	compare VAR_RESULT, 0
+	goto_if_eq LNH_RotomNotInParty
+	compare VAR_RESULT, 1
+	goto_if_eq LNH_RotomSwapped
+	compare VAR_RESULT, 2
+	goto_if_eq LNH_NoSpecialMove
+	removecutscenesprites
+	goto ryu_end
+
+LNH_RotomNotInParty::
+	msgbox LNH_NoRotom
+	removecutscenesprites
+	release
+	end
+
+LNH_RotomSwapped::
+	msgbox LNH_RotomSwapSuccessful
+	removecutscenesprites
+	release
+	end
+
+LNH_NoSpecialMove::
+	msgbox LNH_RotomNoSpecialMoveMsg
+	removecutscenesprites
+	release
+	end
+
+LNH_NoRotom:
+	.string "Rotom isn't with you.$"
+
+LNH_RotomNoSpecialMoveMsg:
+	.string "Rotom must know its special\nmove before I can change it!$"
+
+LNH_RotomSwapSuccessful:
+	.string "The form was successfully changed!$"
+
 LNH_PartnerStayTheNight::
+	call_if_set FLAG_RYU_RECIEVED_ROTOM, LNH_LanetteMulti
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
+	goto LNH_Romance
+	removecutscenesprites
+	release
+	end
+
+LNH_Romance::
 	msgbox LNH_PartnerStayover MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq LNH_Staying
 	removecutscenesprites
+	closemessage
+	release
+	end
+
+LNH_LanetteMulti::
+	goto_if_unset FLAG_RYU_STAYED_2_NIGHTS_AT_LANETTE, ryu_return
+	multichoicegrid 0, 110, MULTI_LANETTE_REL_DIALOG, 3, 1
+	switch VAR_RESULT
+	case 0, RF_LanetteSetupFollower @
+	case 1, LNH_Romance @
+	case 2, LNH_ChangeRotom
+	release
+	end
+
+LNH_Nothing::
 	msgbox LNH_DISPT
 	release
 	end

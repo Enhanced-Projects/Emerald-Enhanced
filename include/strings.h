@@ -3253,4 +3253,15 @@ extern const u8 gText_ColorShadowRedLightRed[];
 extern const u8 gText_ryuJukeboxLabel[];
 extern const u8 gText_BattleHighlightTransparent[];
 
+extern const u8 gText_RyuLanetteChatMenu[];
+extern const u8 gText_RyuLanetteStayMenu[];
+extern const u8 gText_RyuLanetteRotomMenu[];
+
+extern const u8 gText_RyuRotomHeat[];
+extern const u8 gText_RyuRotomWater[];
+extern const u8 gText_RyuRotomIce[];
+extern const u8 gText_RyuRotomFlying[];
+extern const u8 gText_RyuRotomGrass[];
+extern const u8 gText_RyuRotomNormal[];
+
 #endif // GUARD_STRINGS_H

@@ -2125,3 +2125,14 @@ const u8 gText_PokemonStringBuffer[] = _("Pokémon");
 
 const u8 gText_PowerfulWildAppears[] = _("A powerful wild Pokémon appears...");
 const u8 gText_ryuJukeboxLabel[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}{HIGHLIGHT TRANSPARENT}Song: ");
+
+const u8 gText_RyuLanetteChatMenu[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}Recruit...");
+const u8 gText_RyuLanetteStayMenu[] = _("{COLOR LIGHT_RED}{SHADOW RED} Stay Over");
+const u8 gText_RyuLanetteRotomMenu[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}Swap Rotom");
+
+const u8 gText_RyuRotomHeat[] = _("Heat");
+const u8 gText_RyuRotomWater[] = _("Wash");
+const u8 gText_RyuRotomIce[] = _("Frost");
+const u8 gText_RyuRotomFlying[] = _("Fan");
+const u8 gText_RyuRotomGrass[] = _("Mow");
+const u8 gText_RyuRotomNormal[] = _("Normal");

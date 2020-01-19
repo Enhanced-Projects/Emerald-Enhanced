@@ -5582,6 +5582,137 @@ int RyuNumberOfFullBoxes(void)
     return fullBoxes;
 }
 
+static const u16 sRotomForms[6] = {
+    SPECIES_ROTOM_HEAT,
+    SPECIES_ROTOM_WASH,
+    SPECIES_ROTOM_FROST,
+    SPECIES_ROTOM_FAN,
+    SPECIES_ROTOM_MOW,
+    SPECIES_ROTOM,
+};
+
+static const u16 sRotomMoves[6] = {
+    MOVE_THUNDER,
+    MOVE_OVERHEAT,
+    MOVE_HYDRO_PUMP,
+    MOVE_HURRICANE,
+    MOVE_ICE_BEAM,
+    MOVE_LEAF_STORM,
+};
+
+int RyuSwapRotomForm(void)
+{
+    u8 i = 0;
+    u16 j = 0;
+    u8 b = 0;
+    u8 m = 0;
+    u8 rotomSpecies = 0;
+    u16 rotomMove = 0;
+    u8 moveSlot = 0;
+    bool8 hasMon = FALSE;
+    u8 monSlot = 0;
+    u16 move = 0;
+    u16 species = 0;
+
+    for (i = 0; i < (CalculatePlayerPartyCount()); i++)
+        {
+            for (j = 0; j < ARRAY_COUNT(sRotomForms); j++)
+            {
+                if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == (sRotomForms[j]))
+                {
+                    hasMon = TRUE;
+                    monSlot = i;
+                }
+            }
+        }
+
+   if (hasMon == FALSE)
+        {
+            return 0;
+        }
+
+    for (b = 0; b < MAX_MON_MOVES; b++)
+    {
+        for (m = 0; m < ARRAY_COUNT(sRotomMoves); m++)
+        {
+            switch (b)
+            {
+                case 0:
+                {
+                    if (GetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE1) == (sRotomMoves[m]))
+                    {
+                        moveSlot = 1;
+                        break;
+                    }
+                }
+                case 1:
+                {
+                    if (GetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE2) == (sRotomMoves[m]))
+                    {
+                        moveSlot = 2;
+                        break;
+                    }
+                }
+                case 2:
+                {
+                    if (GetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE3) == (sRotomMoves[m]))
+                    {
+                        moveSlot = 3;
+                        break;
+                    }
+                }
+                case 3: 
+                {
+                    if (GetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE4) == (sRotomMoves[m]))
+                    {
+                        moveSlot = 4;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    move = (VarGet(VAR_TEMP_4));
+    species = (VarGet(VAR_TEMP_5));
+
+    switch (moveSlot)
+    {
+        case 0:
+            {
+                return 2;
+                break;
+            }
+        case 1:
+            {
+                SetMonMoveSlot(&gPlayerParty[monSlot], move, moveSlot);
+                SetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE1, &move);
+                break;
+            }
+        case 2:
+            {
+                SetMonMoveSlot(&gPlayerParty[monSlot], move, moveSlot);
+                SetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE2, &move);
+                break;
+            }
+        case 3:
+            {
+                SetMonMoveSlot(&gPlayerParty[monSlot], move, moveSlot);
+                SetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE3, &move);
+                break;
+            }
+        case 4:
+            {
+                SetMonMoveSlot(&gPlayerParty[monSlot], move, moveSlot);
+                SetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE4, &move);
+                break;
+            }
+    }
+
+    SetMonData(&gPlayerParty[monSlot], MON_DATA_SPECIES, &species);
+    return 1;
+}
+
+
 
 //Cutscene image defines
 

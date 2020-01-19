@@ -598,3 +598,4 @@ gSpecials:: @ 81DBA64
 	def_special RemoveDice
 	def_special RyuGiveFrontierMon
 	def_special FillTheDex
+	def_special RyuSwapRotomForm

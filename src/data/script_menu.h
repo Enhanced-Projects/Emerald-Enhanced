@@ -1145,6 +1145,25 @@ static const struct MenuAction MultichoiceList_UtilitySubMenu[]=
     {gText_DebugCancel},
 };
 
+static const struct MenuAction MultichoiceList_LaneteMultiDialog[]=
+{
+    {gText_RyuLanetteChatMenu},
+    {gText_RyuLanetteStayMenu},
+    {gText_RyuLanetteRotomMenu},
+};
+
+static const struct MenuAction MultichoiceList_LaneteRotomDialog[]=
+{
+    {gText_RyuRotomHeat},
+    {gText_RyuRotomWater},
+    {gText_RyuRotomIce},
+    {gText_RyuRotomFlying},
+    {gText_RyuRotomGrass},
+    {gText_RyuRotomNormal},
+};
+
+
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1302,6 +1321,9 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BALL_CHANGER_SELECT_MENU]   = MULTICHOICE(MultichoiceList_141),
     [MULTI_SELECT_NEW_GAME_PLUS_MODE]  = MULTICHOICE(MultichoiceList_142),
     [MULTI_DEV_UTILITY_SUBMENU]        = MULTICHOICE(MultichoiceList_UtilitySubMenu),
+    [MULTI_LANETTE_REL_DIALOG]         = MULTICHOICE(MultichoiceList_LaneteMultiDialog),
+    [MULTI_LANETTE_ROTOM_DIALOG]       = MULTICHOICE(MultichoiceList_LaneteRotomDialog),
+
 };
 
 const u8 *const gStdStrings[] =

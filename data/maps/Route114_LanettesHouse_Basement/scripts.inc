@@ -63,9 +63,6 @@ LNH_AfterStory::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
 	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, ryu_end
 	lock
-	msgbox RF_LanetteSetupFollower MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq LNH_Follower
 	drawheadshot HEAD_LANETTE
 	msgbox LNH_StayingNightAfterStory
 	closemessage
@@ -89,13 +86,72 @@ LNH_AfterStory::
 	waitmovement EVENT_OBJ_ID_PLAYER
 	msgbox LNH_AS_YouWakeUp
 	closemessage
+	fadedefaultbgm
 	applymovement EVENT_OBJ_ID_PLAYER, LNH_ExitBed
 	waitmovement EVENT_OBJ_ID_PLAYER
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
-	msgbox LNH_SheLooksBusy
-	setflag FLAG_RYU_DS_LANETTE_PARTNERS
+	applymovement 1, LNH_MoveToPlayerFromPCDesk
+	waitmovement 1
+	drawheadshot HEAD_LANETTE
+	setflag FLAG_RYU_HIDE_LANETTE_BASEMENT
+	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
+	goto_if_set FLAG_RYU_RECIEVED_ROTOM, LNH_WaitHowIsRotom
+	msgbox LNH_Rotom
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq LNH_GiveRotomFullParty
+	closemessage
+	givemon SPECIES_ROTOM, 21, ITEM_NONE
+	playfanfare MUS_FANFA4
+	msgbox LNH_ReceivedRotom
+	waitfanfare
+	setflag FLAG_RYU_STAYED_2_NIGHTS_AT_LANETTE
+	setflag FLAG_RYU_RECIEVED_ROTOM
+	removecutscenesprites
 	release
 	end
+
+LNH_Rotom:
+    .string "Lanette:{COLOR LIGHT_RED}{SHADOW RED} I have a gift for you!\p"
+    .string "It's a special pokemon that can\n"
+    .string "change forms!\p"
+    .string "You can talk to me upstairs and I\n"
+    .string "can change it's form for you.$"
+
+
+LNH_ReceivedRotom:
+	.string "{PLAYER} received a Rotom!$"
+
+LNH_WaitHowIsRotom::
+	msgbox LNH_HowIsRotomMsg
+	removecutscenesprites
+	setflag FLAG_RYU_HIDE_LANETTE_BASEMENT
+	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
+	release
+	end
+
+LNH_HowIsRotomMsg:
+	.string "Wait, how is Rotom doing?\pI see, well talk to me upstairs\lsometime to change its form!$"
+
+LNH_GiveRotomFullParty::
+	msgbox GiveRotomInPc
+	givemon SPECIES_ROTOM, 21, ITEM_NONE
+	playfanfare MUS_FANFA4
+	setflag FLAG_RYU_DS_LANETTE_PARTNERS
+	setflag FLAG_RYU_RECIEVED_ROTOM
+	removecutscenesprites
+	release
+	end
+
+GiveRotomInPc:
+	.string "I've sent Rotom to your PC\nbecause your party is full!$"
+
+LNH_MoveToPlayerFromPCDesk:
+	emote_exclamation_mark
+	walk_up
+	walk_right
+	walk_up
+	step_end
 
 RF_LanetteSetupFollower:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Lanette: Can I roam around with\nyou, please?\lI'm bored!$"
