@@ -1178,24 +1178,24 @@ gTVTodaysRivalTrainerText07:: @ 082846D2
 	.string "Today's rival TRAINER is {STR_VAR_1},\n"
 	.string "who's around {STR_VAR_3} now.\p"
 	.string "{STR_VAR_1} has so far registered\n"
-	.string "{STR_VAR_2} Pokémon in the POKéDEX.$"
+	.string "{STR_VAR_2} Pokémon in the Pokédex.$"
 
 gTVTodaysRivalTrainerText08:: @ 08284738
 	.string "Today's rival TRAINER is {STR_VAR_1},\n"
 	.string "who's in a SECRET BASE now.\p"
 	.string "{STR_VAR_1} has so far registered\n"
-	.string "{STR_VAR_2} Pokémon in the POKéDEX.$"
+	.string "{STR_VAR_2} Pokémon in the Pokédex.$"
 
 gTVTodaysRivalTrainerText09:: @ 082847A5
 	.string "Today's rival TRAINER is {STR_VAR_1}.\p"
 	.string "So far, {STR_VAR_1} has registered\n"
-	.string "{STR_VAR_2} Pokémon in the POKéDEX.$"
+	.string "{STR_VAR_2} Pokémon in the Pokédex.$"
 
 gTVTodaysRivalTrainerText10:: @ 082847F7
 	.string "Today's rival TRAINER is {STR_VAR_1},\n"
 	.string "who's on a ferry now.\p"
 	.string "{STR_VAR_1} has so far registered\n"
-	.string "{STR_VAR_2} Pokémon in the POKéDEX.$"
+	.string "{STR_VAR_2} Pokémon in the Pokédex.$"
 
 	.string "$"
 

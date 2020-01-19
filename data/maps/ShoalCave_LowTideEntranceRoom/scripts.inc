@@ -45,7 +45,7 @@ ShoalCave_LowTideEntranceRoom_EventScript_ShellBellExpert:: @ 8236DD9
 	release
 	end
 
-@ If the bag is full, check if a slot will be freed when 4 Shoal Salt or Shells are given
+@ If the Pack is full, check if a slot will be freed when 4 Shoal Salt or Shells are given
 ShoalCave_LowTideEntranceRoom_EventScript_CheckSpaceWillBeFreed:: @ 8236E69
 	checkitem ITEM_SHOAL_SALT, 5
 	compare VAR_RESULT, TRUE

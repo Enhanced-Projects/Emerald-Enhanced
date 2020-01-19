@@ -466,7 +466,7 @@ BattleFrontier_BattleArenaLobby_Text_ReceivedPrize: @ 82569BE
 @ Unused
 BattleFrontier_BattleArenaLobby_Text_BagFullReturnForPrize: @ 82569D8
 	.string "Oh?\n"
-	.string "Your BAG seems to be full.\p"
+	.string "Your Pack seems to be full.\p"
 	.string "I urge you to clear space and\n"
 	.string "return for your prize.$"
 

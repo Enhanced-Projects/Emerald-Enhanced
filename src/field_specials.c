@@ -5591,12 +5591,12 @@ static const u16 sRotomForms[6] = {
 };
 
 static const u16 sRotomMoves[6] = {
-    87,//MOVE_THUNDER,
-    315,//MOVE_OVERHEAT,
-    56,//MOVE_HYDRO_PUMP,
-    542,//MOVE_HURRICANE,
-    58,//MOVE_ICE_BEAM,
-    437,//MOVE_LEAF_STORM,
+    87,
+    315,
+    56,
+    542,
+    58,
+    437,
 };
 
 int RyuSwapRotomForm(void)

@@ -1013,7 +1013,7 @@ RustboroCity_Text_RegisteredBrendan: @ 81E1E11
 	.string "in the Pokénav.$"
 
 RustboroCity_Text_BrendanPassedBrineyWantToBattle: @ 81E1E34
-	.string "{PLAYER}, how's your POKéDEX?\n"
+	.string "{PLAYER}, how's your Pokédex?\n"
 	.string "Have you filled in any pages yet?\p"
 	.string "Mine rules.\p"
 	.string "Want to have a battle to test how\n"

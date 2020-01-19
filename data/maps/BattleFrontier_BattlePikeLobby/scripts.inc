@@ -417,7 +417,7 @@ BattleFrontier_BattlePikeLobby_Text_ReadWhichHeading: @ 825C621
 	.string "Which heading do you want to read?$"
 
 BattleFrontier_BattlePikeLobby_Text_ExplainPokenavBagRules: @ 825C644
-	.string "The BAG and Pokénav may not be used\n"
+	.string "The Pack and Pokénav may not be used\n"
 	.string "during a Battle Choice challenge.$"
 
 BattleFrontier_BattlePikeLobby_Text_ExplainHeldItemRules: @ 825C68A

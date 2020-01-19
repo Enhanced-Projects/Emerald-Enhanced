@@ -126,7 +126,7 @@ Route109_SeashoreHouse_Text_TakeTheseSodaPopBottles: @ 8269685
 	.string "It's half a dozen bottles of SODA POP!$"
 
 Route109_SeashoreHouse_Text_BagFull: @ 826973A
-	.string "Oh, but hey, your BAG's jammed full.\n"
+	.string "Oh, but hey, your Pack's jammed full.\n"
 	.string "I'll hang on to these for you.$"
 
 Route109_SeashoreHouse_Text_WantToBuySodaPop: @ 826977E

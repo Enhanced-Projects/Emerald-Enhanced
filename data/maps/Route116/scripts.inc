@@ -422,7 +422,7 @@ Route116_Text_NewBallAvailableAtMart: @ 81F3521
 	.string "Thank you and bye-bye!$"
 
 Route116_Text_BagIsJamPacked: @ 81F3593
-	.string "Your BAG is jam-packed.\n"
+	.string "Your Pack is jam-packed.\n"
 	.string "I can't give you this REPEAT BALL.$"
 
 Route116_Text_TokenOfAppreciation: @ 81F35CE
@@ -479,9 +479,9 @@ Route116_Text_TrainerTipsBToStopEvolution: @ 81F3825
 
 Route116_Text_TrainerTipsBagHasPockets: @ 81F38D4
 	.string "Trainer TIPS\p"
-	.string "Your BAG has several POCKETS.\p"
+	.string "Your Pack has several POCKETS.\p"
 	.string "Items you obtain are automatically\n"
 	.string "placed in the appropriate POCKETS.\p"
 	.string "No Trainer can afford to be without\n"
-	.string "a BAG of their own.$"
+	.string "a Pack of their own.$"
 

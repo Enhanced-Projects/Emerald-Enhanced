@@ -383,7 +383,7 @@ Route113_GlassWorkshop_Text_IveFinishedGlassItem: @ 826F688
 
 Route113_GlassWorkshop_Text_NoRoomInBag: @ 826F6B7
 	.string "Oh?\n"
-	.string "You've no room in your BAG, huff-puff.\p"
+	.string "You've no room in your Pack, huff-puff.\p"
 	.string "I'll hold on to it, so come back later,\n"
 	.string "huff-puff.$"
 

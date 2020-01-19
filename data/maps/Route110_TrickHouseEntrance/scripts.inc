@@ -7,11 +7,11 @@ Route110_TrickHouseEntrance_MapScripts:: @ 8269A50
 	@ State descriptions for VAR_TRICK_HOUSE_ENTRANCE_STATE
 	@ 0: Trick Master is hiding
 	@ 1: Trick Master has left at start of challenge
-	@ 2: Trick Master ready to give normal reward from previous challenge (if bag was full)
+	@ 2: Trick Master ready to give normal reward from previous challenge (if Pack was full)
 	@ 3: Trick Master still making next puzzle
 	@ 4: Finished final puzzle
 	@ 5: Completed previous challenge
-	@ 6: 'Trick Master' mechadoll ready to give Tent reward from final challenge (if bag was full)
+	@ 6: 'Trick Master' mechadoll ready to give Tent reward from final challenge (if Pack was full)
 
 Route110_TrickHouseEntrance_OnTransition: @ 8269A60
 	setflag FLAG_LANDMARK_TRICK_HOUSE
@@ -303,7 +303,7 @@ TH_Event4:
 	.string "I thought I had it all figured out\n...before I knew it, I was at\lwit's end...\pThat is, until this\nlittle lass beside you showed up.$"
 	
 TH_Event5:
-	.string "I could easily tell she wasn't\nfrom around here, and then it hit\pme! Foreigners...tourism! That's\nwhere the cashflow is! If I can\padd that to my bag of tricks,\npeople will flock here from all\pover for the ultimate tourist\nexperience!\pHoenn will prosper\n"
+	.string "I could easily tell she wasn't\nfrom around here, and then it hit\pme! Foreigners...tourism! That's\nwhere the cashflow is! If I can\padd that to my Pack of tricks,\npeople will flock here from all\pover for the ultimate tourist\nexperience!\pHoenn will prosper\n"
     .string "like never before, and yours truly\pwill be swimming in gold! Heheheh.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(The image of Scrooge McDuck\nimmediately comes to mind...)\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Ahem...yes, well that's pure\n"
 	.string "optimism, isn't it? Everything's\pgotta start somewhere...which\nleads me to you two.\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Us?\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Of course! You two would work\nperfectly as a trial run. And it's\pnot like I would give you nothing\p"
 	.string "in return.\pCome here for a sec, lass.$"

@@ -85,7 +85,7 @@ PacifidlogTown_House3_Text_ReallyWantedToGetBagon: @ 8203E7F
 	.string "that another Trainer caught…$"
 
 PacifidlogTown_House3_Text_IsThatAPokedex: @ 8203EF1
-	.string "Is that a POKéDEX?\p"
+	.string "Is that a Pokédex?\p"
 	.string "Did you get to meet a lot of different\n"
 	.string "Pokémon?\p"
 	.string "I wish I was like you.$"

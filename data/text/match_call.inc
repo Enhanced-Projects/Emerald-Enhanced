@@ -2438,7 +2438,7 @@ MatchCall_Text_May12:: @ 2B414B
 MatchCall_Text_May13:: @ 2B4228
 	.string "Dawn: Hi, {PLAYER}{KUN}!\p"
 	.string "How's it going?\n"
-	.string "Are you filling your POKéDEX?\p"
+	.string "Are you filling your Pokédex?\p"
 	.string "I heard a rumor that there are\n"
 	.string "super-ancient Pokémon out there.\l"
 	.string "And there are three of them!\p"
@@ -2565,7 +2565,7 @@ MatchCall_Text_Brendan12:: @ 2B4B28
 MatchCall_Text_Brendan13:: @ 2B4C15
 	.string "BRENDAN: Hey there, {PLAYER}!\p"
 	.string "How's it going? Filling up your\n"
-	.string "POKéDEX successfully?\p"
+	.string "Pokédex successfully?\p"
 	.string "I heard a rumor that there are\n"
 	.string "super-ancient Pokémon out there.\l"
 	.string "And not just one--three!\p"
@@ -2838,7 +2838,7 @@ MatchCall_Text_BirchRegisterCall: @ 82B5F52
 	.string "upgraded with MATCH CALL.\p"
 	.string "Well, I should register, too!\p"
 	.string "That way, I'd be able to examine\n"
-	.string "your POKéDEX even while you're\l"
+	.string "your Pokédex even while you're\l"
 	.string "out in the field.\p"
 	.string "… … … … … …$"
 
@@ -2848,7 +2848,7 @@ MatchCall_Text_RegisteredBirch: @ 82B603A
 
 MatchCall_Text_UnusedProfBirch:
 	.string "PROF. BIRCH: When one has both\n"
-	.string "the POKéDEX and POKéNAV, studying\l"
+	.string "the Pokédex and POKéNAV, studying\l"
 	.string "Pokémon becomes more fun, eh?$"
 
 MatchCall_Text_MrStone1:: @ 82B60C0

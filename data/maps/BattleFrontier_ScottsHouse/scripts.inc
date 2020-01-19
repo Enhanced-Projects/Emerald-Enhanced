@@ -294,7 +294,7 @@ BattleFrontier_ScottsHouse_Text_MayFindWildMonsInFrontier: @ 8263FFE
 	.string "SCOTT: You don't just train for battle,\n"
 	.string "right?\p"
 	.string "I think I remember you working on\n"
-	.string "a POKéDEX as well.\p"
+	.string "a Pokédex as well.\p"
 	.string "Well, guess what?\p"
 	.string "You may run into wild Pokémon in\n"
 	.string "the BATTLE FRONTIER somewhere…\l"

@@ -458,7 +458,7 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
         return FALSE;
 
     CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
-    if ((Random() % 512) == 256)
+    if ((Random() % 128) == 69)
     {
         newLevel = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
         newLevel += 5;

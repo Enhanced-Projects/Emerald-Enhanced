@@ -493,7 +493,7 @@ BattleFrontier_BattlePalaceLobby_Text_NoSpaceForPrize: @ 824E57B
 	.string "You seem to have no space for\n"
 	.string "our prize.\p"
 	.string "You should return when you have\n"
-	.string "organized your BAG.$"
+	.string "organized your Pack.$"
 
 BattleFrontier_BattlePalaceLobby_Text_WeHaveBeenWaiting: @ 824E5D8
 	.string "We have been waiting for you…$"

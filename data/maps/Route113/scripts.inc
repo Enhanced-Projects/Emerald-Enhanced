@@ -160,7 +160,7 @@ Route113_Text_RouteSignFallarbor: @ 81F2456
 Route113_Text_TrainerTipsRegisterKeyItems: @ 81F2471
 	.string "Trainer TIPS\p"
 	.string "You may register one of the KEY ITEMS\n"
-	.string "in your BAG as SELECT.\p"
+	.string "in your Pack as SELECT.\p"
 	.string "Simply press SELECT to use\n"
 	.string "the registered item conveniently.$"
 

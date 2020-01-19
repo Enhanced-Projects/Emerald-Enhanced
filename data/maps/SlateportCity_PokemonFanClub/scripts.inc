@@ -285,7 +285,7 @@ SlateportCity_PokemonFanClub_Text_MeetChairman: @ 820A233
 
 SlateportCity_PokemonFanClub_Text_LikeToSeeEnteredContestPokemon: @ 820A3EE
 	.string "The Pokémon of a Trainer who has\n"
-	.string "entered a Pokémon CONTEST…\l"
+	.string "entered a Pokémon Contest…\l"
 	.string "That, I would like to see.$"
 
 SlateportCity_PokemonFanClub_Text_AllowMeToExamineYourPokemon: @ 820A445
@@ -327,7 +327,7 @@ SlateportCity_PokemonFanClub_Text_NoSpaceForReward: @ 820A719
 	.string "Your Pokémon is growing quite well,\n"
 	.string "so you deserve a reward.\p"
 	.string "Unfortunately, you have no space for\n"
-	.string "this in your BAG.$"
+	.string "this in your Pack.$"
 
 SlateportCity_PokemonFanClub_Text_MonMostImpressiveGiveItThis: @ 820A795
 	.string "Your {STR_VAR_1}, it is growing in\n"

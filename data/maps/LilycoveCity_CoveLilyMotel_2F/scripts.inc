@@ -70,7 +70,7 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott:: @ 821876A
 LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex: @ 8218774
 	.string "I'm the GAME DESIGNER.\p"
 	.string "Oh, is that right?\n"
-	.string "You're working on a POKéDEX?\p"
+	.string "You're working on a Pokédex?\p"
 	.string "It's tough trying to complete it,\n"
 	.string "but don't give up.\p"
 	.string "If you do complete it, please come\n"
@@ -79,7 +79,7 @@ LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex: @ 8218774
 LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis: @ 821881C
 	.string "Wow! That's awesome!\n"
 	.string "Yep, it's totally awesome!\p"
-	.string "This POKéDEX is completely filled!\n"
+	.string "This Pokédex is completely filled!\n"
 	.string "You really must love Pokémon!\p"
 	.string "I'm so impressed!\p"
 	.string "Let me give you something in\n"

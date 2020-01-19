@@ -1026,7 +1026,7 @@ Route110_Text_TrainerTipsPrlzSleep: @ 81F090D
 
 Route110_Text_TrainerTipsRegisterItems: @ 81F0992
 	.string "Trainer TIPS\p"
-	.string "The items in the BAG can be reorganized\n"
+	.string "The items in the Pack can be reorganized\n"
 	.string "by pressing SELECT.$"
 
 Route110_Text_TrickHouseSign: @ 81F09DB
@@ -1057,7 +1057,7 @@ Route110_Text_HeardYouInstallMatchCall: @ 81F0AFF
 	.string "Well, then, I should register you in\n"
 	.string "my Pokénav as well.\p"
 	.string "That way, even when we're apart,\n"
-	.string "I can rate your POKéDEX anytime.\p"
+	.string "I can rate your Pokédex anytime.\p"
 	.string "… … … … … …$"
 
 Route110_Text_RegisteredBirchInPokenav: @ 81F0C0C
