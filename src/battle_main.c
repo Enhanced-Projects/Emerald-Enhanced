@@ -63,6 +63,7 @@
 #include "constants/trainers.h"
 #include "cable_club.h"
 #include "pokemon.h"
+#include "mgba.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_SE1;
 extern struct MusicPlayerInfo gMPlayInfo_SE2;
@@ -1975,6 +1976,8 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 for (j = 0; gSpeciesNames[partyData[i].species][j] != EOS; j++)
                     nameHash += gSpeciesNames[partyData[i].species][j];
 
+                mgba_printf(MGBA_LOG_INFO, "species: %d, ability: %d", (partyData[i].species), (partyData[i].ability));
+
                 personalityValue += nameHash << 8;
                 fixedIV = partyData[i].iv * 31 / 255;
                 if (FlagGet(FLAG_RYU_DO_NOT_AUTOSCALE) == 0)
@@ -1985,13 +1988,16 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 {
                     CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 }
+                mgba_printf(MGBA_LOG_INFO, "Scaled level is %d", (GetMonData(&party[i], MON_DATA_LEVEL)));
                 SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].ability);
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+                mgba_printf(MGBA_LOG_INFO, "Holding item: %d", (GetMonData(&party[i], MON_DATA_HELD_ITEM)));
 
                 for (j = 0; j < MAX_MON_MOVES; j++)
                 {
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
+                    mgba_printf(MGBA_LOG_INFO, "adding move: %d", (partyData[i].moves[j]));
                 }
                 break;
             }

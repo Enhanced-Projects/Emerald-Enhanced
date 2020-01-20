@@ -400,6 +400,7 @@ GCMSReward:
 	goto_if_set FLAG_RYU_PASSCODE_GCMS_GIFT, MC_GC_Received
 	setvar VAR_RYU_GCMS_VALUE, 31
 	msgbox GCMSRewardMsg
+	setflag FLAG_RYU_PASSCODE_GCMS_GIFT
 	release
 	end
 
@@ -2999,3 +3000,83 @@ RyuNowUsingDarkTheme:
 
 RyuNowUsingDefaultTheme:
 	.string "Switched to default theme.$"
+
+@========================================================================Random "Stepped On" encounter
+
+SB_SetupRandomSteppedOnEncounter::
+	compare VAR_REPEL_STEP_COUNT, 0
+	goto_if_ne ryu_end
+	random 5
+	switch VAR_RESULT
+	case 0, SB_Random0
+	case 1, SB_Random1
+	case 2, SB_Random2
+	case 3, SB_Random3
+	case 4, SB_Random4
+	goto  ryu_end
+
+SB_Random0::
+	setwildbattle SPECIES_PYUKUMUKU, 20, ITEM_NONE
+	playse SE_PIN
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement EVENT_OBJ_ID_PLAYER
+	bufferspeciesname 0, SPECIES_PYUKUMUKU
+	msgbox Ryu_YouSteppedOn
+	closemessage
+	dowildbattle
+	release
+	end
+
+SB_Random1::
+	setwildbattle SPECIES_SANDYGAST, 20, ITEM_NONE
+	playse SE_PIN
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement EVENT_OBJ_ID_PLAYER
+	bufferspeciesname 0, SPECIES_SANDYGAST
+	msgbox Ryu_YouSteppedOn
+	closemessage
+	dowildbattle
+	release
+	end
+
+SB_Random2::
+	setwildbattle SPECIES_SHELLDER, 20, ITEM_NONE
+	playse SE_PIN
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement EVENT_OBJ_ID_PLAYER
+	bufferspeciesname 0, SPECIES_SHELLDER
+	msgbox Ryu_YouSteppedOn
+	closemessage
+	dowildbattle
+	release
+	end
+
+SB_Random3::
+	setwildbattle SPECIES_MAREANIE, 20, ITEM_NONE
+	playse SE_PIN
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement EVENT_OBJ_ID_PLAYER
+	bufferspeciesname 0, SPECIES_MAREANIE
+	msgbox Ryu_YouSteppedOn
+	closemessage
+	dowildbattle
+	release
+	end
+
+SB_Random4::
+	setwildbattle SPECIES_SKRELP, 20, ITEM_NONE
+	playse SE_PIN
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement EVENT_OBJ_ID_PLAYER
+	bufferspeciesname 0, SPECIES_SKRELP
+	msgbox Ryu_YouSteppedOn
+	closemessage
+	dowildbattle
+	release
+	end
+
+Ryu_YouSteppedOn:
+	.string "You stepped on a wild {STR_VAR_1}!$"
+
+
+

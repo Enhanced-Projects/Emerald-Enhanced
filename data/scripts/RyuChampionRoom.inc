@@ -220,7 +220,7 @@ RCR_ChallengerNorman::
 	msgbox RCR_Norman_Intro 
 	closemessage
 	special SavePlayerParty
-	trainerbattle 10 TRAINER_NORMAN_4, 0, NULL, RCR_Norman_DefeatText
+	trainerbattle 10 TRAINER_CHALLENGER_NORMAN, 0, NULL, RCR_Norman_DefeatText
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
 	setvar VAR_0x8005, 4|2
 	special DoSpecialTrainerBattle

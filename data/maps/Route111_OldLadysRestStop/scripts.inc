@@ -9,12 +9,30 @@ Route111_OldLadysRestStop_OnTransition: @ 822A91C
 Route111_OldLadysRestStop_EventScript_OldLady:: @ 822A920
 	lock
 	faceplayer
+	goto_if_set FLAG_RYU_HARDCORE_MODE, OLRS_Hardcore
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, OLRS_Nuzlocke
 	msgbox Route111_OldLadysRestStop_Text_RestUpHere, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq Route111_OldLadysRestStop_EventScript_Rest
 	compare VAR_RESULT, NO
 	goto_if_eq Route111_OldLadysRestStop_EventScript_DeclineRest
 	end
+
+OLRS_Hardcore::
+	msgbox HCM_OLRS
+	release
+	end
+	
+OLRS_Nuzlocke::
+	msgbox NZM_OLRS
+	release
+	end
+	
+NZM_OLRS:
+	.string "I'm not taking guests any more.\nSorry!$"
+	
+HCM_OLRS:
+	.string "Old Lady: You git ye ass\nout of my house!$"
 
 Route111_OldLadysRestStop_EventScript_Rest:: @ 822A941
 	msgbox Route111_OldLadysRestStop_Text_TakeYourTimeRestUp, MSGBOX_DEFAULT

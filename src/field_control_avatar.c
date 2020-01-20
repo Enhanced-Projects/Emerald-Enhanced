@@ -36,11 +36,15 @@
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/event_objects.h"
+#include "random.h"
+#include "mgba.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
 
 u8 gSelectedEventObject;
+
+extern const u8 SB_SetupRandomSteppedOnEncounter[];
 
 static void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -138,6 +142,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     struct MapPosition position;
     u8 playerDirection;
     u16 metatileBehavior;
+    u16 rand = 0;
 
     gSpecialVar_LastTalked = 0;
     gSelectedEventObject = 0;
@@ -160,6 +165,14 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         IncrementBirthIslandRockStepCount();
         if (TryStartStepBasedScript(&position, metatileBehavior, playerDirection) == TRUE)
             return TRUE;
+        if (MetatileBehavior_IsSandOrDeepSand(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)))
+            if (!(gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE111)))
+            {
+                if ((rand = Random() % 128) == 69)
+                {
+                    ScriptContext1_SetupScript(SB_SetupRandomSteppedOnEncounter);
+                }
+            }
     }
     if (input->checkStandardWildEncounter && CheckStandardWildEncounter(metatileBehavior) == TRUE)
         return TRUE;

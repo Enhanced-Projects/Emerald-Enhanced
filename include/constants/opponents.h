@@ -790,7 +790,7 @@
 #define TRAINER_NORMAN_2                    786
 #define TRAINER_NORMAN_3                    787
 #define TRAINER_NORMAN_4                    788
-#define TRAINER_EMPTY_41                    789
+#define TRAINER_CHALLENGER_NORMAN                    789
 #define TRAINER_WINONA_2                    790
 #define TRAINER_WINONA_3                    791
 #define TRAINER_WINONA_4                    792

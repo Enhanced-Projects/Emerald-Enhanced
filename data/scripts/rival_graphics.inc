@@ -7,11 +7,11 @@ Common_EventScript_SetupRivalGfxId:: @ 8271ED7
 	end
 
 EventScript_SetupRivalGfxIdFemale:: @ 8271EEF
-	setvar EVENT_OBJ_GFX_VAR_0, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL
+	setvar VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL
 	return
 
 EventScript_SetupRivalGfxIdMale:: @ 8271EF5
-	setvar EVENT_OBJ_GFX_VAR_0, EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL
+	setvar VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL
 	return
 
 Common_EventScript_SetupRivalOnBikeGfxId:: @ 8271EFB

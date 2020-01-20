@@ -2582,7 +2582,7 @@ const struct WildPokemonInfo gDewfordTown_FishingMonsInfo = {10, gDewfordTown_Fi
 
 const struct WildPokemon gSlateportCity_WaterMons[] =
 {
-	{5, 35, SPECIES_SANDYGAST},
+	{5, 35, SPECIES_JELLICENT},
 	{20, 25, SPECIES_WIMPOD},
 	{15, 25, SPECIES_WIMPOD},
 	{25, 30, SPECIES_PELIPPER},

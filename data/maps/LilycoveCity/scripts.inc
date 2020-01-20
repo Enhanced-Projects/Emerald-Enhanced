@@ -606,6 +606,7 @@ LilycoveCity_EventScript_1E2ECD:: @ 81E2ECD
 
 LCC_FemalRivalStartBattle:: @ 81E2EFE
 	removecutscenesprites
+	setflag FLAG_RYU_DO_NOT_AUTOSCALE
 	trainerbattle_no_intro TRAINER_DAWN_5, lcc_femaleRivalBattleDefeat
 	goto LCC_FemalRivalBattleFinished
 	end
