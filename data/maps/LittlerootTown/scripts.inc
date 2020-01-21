@@ -179,7 +179,13 @@ LRT_GameStartInfoMsg:
 	.string "New Game Flags and Variables Set.$"
 	
 LRT_StopGoingSouth::
-	goto_if_set FLAG_RYU_INTRO_COMPLETE, ryu_end
+	getpartysize
+	compare VAR_RESULT, 0
+	goto_if_eq LRT_StopPlayer
+	release
+	end
+
+LRT_StopPlayer::
 	msgbox LRT_CantExitSouthYet MSGBOX_DEFAULT
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
 	waitmovement 0

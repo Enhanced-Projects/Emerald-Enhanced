@@ -144,7 +144,7 @@ static const u16 sStarterMon[STARTER_MON_COUNT] =
     SPECIES_RALTS,
     SPECIES_SPINARAK,
     SPECIES_GASTLY,
-    SPECIES_TENTACOOL,
+    SPECIES_HORSEA,
 };
 
 static const struct BgTemplate gUnknown_085B1E00[3] =

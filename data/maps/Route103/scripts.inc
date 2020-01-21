@@ -138,8 +138,8 @@ Route103_Movement_RivalExitFacingNorth1: @ 81EC5BE
 	step_end
 
 Route103_EventScript_RivalExitFacingNorth2: @ 81EC5C1
-	jump_2_down
-	delay_16
+	walk_down
+	walk_down
 	walk_down
 	walk_down
 	walk_down
@@ -159,8 +159,8 @@ Route103_Movement_RivalExit1: @ 81EC5CE
 	step_end
 
 Route103_Movement_RivalExit2: @ 81EC5D0
-	jump_2_down
-	delay_16
+	walk_down
+	walk_down
 	walk_down
 	walk_down
 	walk_down

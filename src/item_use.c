@@ -964,7 +964,7 @@ bool8 CanUseEscapeRopeOnCurrMap(void)
 
 void ItemUseOutOfBattle_EscapeRope(u8 taskId)
 {
-    if (CanUseEscapeRopeOnCurrMap() == TRUE)
+    if ((CanUseEscapeRopeOnCurrMap() == TRUE) && (!(FlagGet(FLAG_RYU_WAYSTONE_DISABLED))))
     {
         sItemUseOnFieldCB = ItemUseOnFieldCB_EscapeRope;
         SetUpItemUseOnFieldCallback(taskId);

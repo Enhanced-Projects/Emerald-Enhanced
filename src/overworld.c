@@ -1214,7 +1214,7 @@ void LoadMapMusic(void)
     u16 randomMusic = (sRouteMusicSelection[(Random() % ARRAY_COUNT(sRouteMusicSelection))]);
     u8 step = 1;
 
-    if (currentMusic > 557)
+    if ((currentMusic > 557) || (currentMusic < 350))
     {
         newMusic = 350;
     }

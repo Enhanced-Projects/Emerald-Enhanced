@@ -4807,7 +4807,7 @@ static void Task_LearnedMove(u8 taskId)
     if (move[1] == 0)
     {
         AdjustFriendship(mon, 4);
-        if (item < ITEM_HM01_CUT)
+        if ((item < ITEM_TM01) || (item > ITEM_HM08_DIVE))
             RemoveBagItem(item, 1);
     }
     GetMonNickname(mon, gStringVar1);

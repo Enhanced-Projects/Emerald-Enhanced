@@ -773,6 +773,7 @@ static void Task_EvolutionScene(u8 taskID)
             Free(sEvoStructPtr);
             sEvoStructPtr = NULL;
             FreeAllWindowBuffers();
+            PlayNewMapMusic((GetCurrLocationDefaultMusic()));
             SetMainCallback2(gCB2_AfterEvolution);
         }
         break;

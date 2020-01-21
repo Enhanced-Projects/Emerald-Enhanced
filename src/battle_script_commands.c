@@ -3491,7 +3491,7 @@ static void Cmd_getexp(void)
                 }
             else
                 {
-                    multiplier = (1000+(badges*125));
+                    multiplier = (1000+(badges*250));
                 }
         }
 
@@ -6047,12 +6047,23 @@ static void Cmd_getmoneyreward(void)
 {
     u32 moneyReward = GetTrainerMoneyToGive(gTrainerBattleOpponent_A);
     u32 MultMoney = VarGet(VAR_RYU_EXP_MULTIPLIER);
+    u16 badges = 0;
+            
+    checkbadgecount();
+    badges = (gSpecialVar_Result);
+
     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
         moneyReward += GetTrainerMoneyToGive(gTrainerBattleOpponent_B);
     }
-        
-    moneyReward =((moneyReward * MultMoney) / 1000);
+
+    if (MultMoney == 1)
+    {
+        MultMoney = (1000+(badges*175));
+    }
+    
+    moneyReward = ((moneyReward * MultMoney) / 1000);
+    
 
     AddMoney(&gSaveBlock1Ptr->money, moneyReward);
     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, moneyReward);
