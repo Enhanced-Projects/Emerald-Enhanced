@@ -218,7 +218,7 @@ MauvilleCity_PokemonCenter_1F_EventScript_DontHaveAnyDecor:: @ 828E57A
 
 MauvilleCity_PokemonCenter_1F_EventScript_PickDecorToGive:: @ 828E584
 	msgbox MauvilleCity_PokemonCenter_1F_Text_PickTheDecorToTrade, MSGBOX_DEFAULT
-	special ScrSpecial_TraderMenuGiveDecoration
+	special ScrSpecial_TraderMenuremovedecoration
 	waitstate
 	compare VAR_0x8006, 0
 	goto_if_eq MauvilleCity_PokemonCenter_1F_EventScript_CancelGiveDecor

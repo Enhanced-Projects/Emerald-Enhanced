@@ -20,11 +20,11 @@ LC_AH_Security1::
 	msgbox LC_AH_ShellyQuery MSGBOX_YESNO
 	compare VAR_RESULT 0
 	goto_if_eq LC_AH_Leave
-	takeitem ITEM_DEVON_GOODS 1
+	removeitem ITEM_DEVON_GOODS 1
 	msgbox LC_AH_TS_Given MSGBOX_DEFAULT
 	waitmessage
 	msgbox LC_AH_Shelly_Welcome MSGBOX_DEFAULT
-	giveitem_std ITEM_EXPERT_BELT
+	giveitem ITEM_EXPERT_BELT
 	playfanfare MUS_FANFA4
 	call RyuGivePokenav
 	givemoney 50000
@@ -285,7 +285,7 @@ LC_AH_mission3::
 	
 LC_AH_Mission3Done::
 	msgbox LC_AH_M3DoneMsg MSGBOX_DEFAULT
-	giveitem_std ITEM_MASTER_BALL, 1
+	giveitem ITEM_MASTER_BALL, 1
 	msgbox LC_AH_M3DoneMsg2 MSGBOX_DEFAULT
 	setflag FLAG_RYU_AQUA_MISSION3COMPLETE
 	release

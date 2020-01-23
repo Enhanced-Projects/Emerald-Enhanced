@@ -531,7 +531,7 @@ Route110_EventScript_BrendanDefeated:: @ 81EF8C4
 	end
 
 Route110_EventScript_GiveWaystone:: @ 81EF8DF
-	giveitem_std ITEM_NUGGET
+	giveitem ITEM_NUGGET
 	return
 
 Route110_EventScript_RivalExit:: @ 81EF8EC

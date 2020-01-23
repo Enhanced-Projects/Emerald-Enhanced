@@ -5,7 +5,7 @@ BattleFrontier_BattleDomeLobby_MapScripts:: @ 82497E2
 	.byte 0
 
 BattleFrontier_BattleDomeLobby_MapScript1_2497F2: @ 82497F2
-	dome_21
+	dome_initresultstree
 	end
 
 BattleFrontier_BattleDomeLobby_OnWarp: @ 82497FB
@@ -35,7 +35,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249842:: @ 8249842
 	closemessage
 	dome_set DOME_DATA_WIN_STREAK, 0
 	dome_set DOME_DATA_WIN_STREAK_ACTIVE, FALSE
-	dome_set DOME_DATA_6, 1
+	dome_set DOME_DATA_ATTEMPTED_CHALLENGE     , 1
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, 0
 	setvar VAR_TEMP_0, 255
 	releaseall
@@ -62,8 +62,8 @@ BattleFrontier_BattleDomeLobby_EventScript_2498C9:: @ 82498C9
 	special LoadPlayerParty
 	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	frontier_checkairshow
-	dome_set DOME_DATA_6, 1
-	dome_set DOME_DATA_7, 1
+	dome_set DOME_DATA_ATTEMPTED_CHALLENGE     , 1
+	dome_set DOME_DATA_HAS_WON_CHALLENGE            , 1
 	dome_set DOME_DATA_WIN_STREAK_ACTIVE, TRUE
 	special LoadPlayerParty
 	special HealPlayerParty
@@ -78,7 +78,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249940:: @ 8249940
 	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	frontier_checkairshow
 	dome_set DOME_DATA_WIN_STREAK_ACTIVE, FALSE
-	dome_set DOME_DATA_6, 1
+	dome_set DOME_DATA_ATTEMPTED_CHALLENGE     , 1
 	special LoadPlayerParty
 	special HealPlayerParty
 
@@ -358,7 +358,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249D6B:: @ 8249D6B
 	end
 
 BattleFrontier_BattleDomeLobby_EventScript_249D84:: @ 8249D84
-	dome_get DOME_DATA_9
+	dome_get DOME_DATA_PREV_TOURNEY_TYPE       
 	compare VAR_RESULT, 0
 	call_if_eq BattleFrontier_BattleDomeLobby_EventScript_249DC9
 	compare VAR_RESULT, 1
@@ -368,7 +368,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249D84:: @ 8249D84
 	compare VAR_RESULT, 3
 	call_if_eq BattleFrontier_BattleDomeLobby_EventScript_249DE4
 	fadescreen FADE_TO_BLACK
-	dome_showresultstree
+	dome_showprevtourneytree
 	waitstate
 	end
 

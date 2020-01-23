@@ -1,6 +1,6 @@
-const struct FacilityMon gBattleFrontierMons[] =
+const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
 {
-    [0] = {
+    [FRONTIER_MON_SUNKERN] = {
         .species = SPECIES_SUNKERN,
         .moves = {MOVE_ENDEAVOR, MOVE_LEECH_SEED, MOVE_SEED_BOMB, MOVE_TOXIC},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -9,7 +9,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [1] = {
+    [FRONTIER_MON_AZURILL] = {
         .species = SPECIES_AZURILL,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_KNOCK_OFF, MOVE_WATERFALL, MOVE_RETURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -18,7 +18,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [2] = {
+    [FRONTIER_MON_CATERPIE] = {
         .species = SPECIES_CATERPIE,
         .moves = {MOVE_BUG_BITE, MOVE_TACKLE, MOVE_ELECTROWEB, MOVE_STRING_SHOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -27,7 +27,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [3] = {
+    [FRONTIER_MON_WEEDLE] = {
         .species = SPECIES_WEEDLE,
         .moves = {MOVE_BUG_BITE, MOVE_POISON_STING, MOVE_ELECTROWEB, MOVE_STRING_SHOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -36,7 +36,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [4] = {
+    [FRONTIER_MON_WURMPLE] = {
         .species = SPECIES_WURMPLE,
         .moves = {MOVE_BUG_BITE, MOVE_POISON_STING, MOVE_TACKLE, MOVE_STRING_SHOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -45,7 +45,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [5] = {
+    [FRONTIER_MON_RALTS] = {
         .species = SPECIES_RALTS,
         .moves = {MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_CALM_MIND, MOVE_DISABLE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -54,7 +54,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [6] = {
+    [FRONTIER_MON_MAGIKARP] = {
         .species = SPECIES_MAGIKARP,
         .moves = {MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -63,7 +63,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [7] = {
+    [FRONTIER_MON_FEEBAS] = {
         .species = SPECIES_FEEBAS,
         .moves = {MOVE_MIRROR_COAT, MOVE_FLAIL, MOVE_LIGHT_SCREEN, MOVE_TOXIC},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -72,7 +72,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [8] = {
+    [FRONTIER_MON_METAPOD] = {
         .species = SPECIES_METAPOD,
         .moves = {MOVE_BUG_BITE, MOVE_TACKLE, MOVE_IRON_DEFENSE, MOVE_STRING_SHOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -81,7 +81,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [9] = {
+    [FRONTIER_MON_KAKUNA] = {
         .species = SPECIES_KAKUNA,
         .moves = {MOVE_BUG_BITE, MOVE_POISON_STING, MOVE_IRON_DEFENSE, MOVE_STRING_SHOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -90,7 +90,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [10] = {
+    [FRONTIER_MON_PICHU] = {
         .species = SPECIES_PICHU,
         .moves = {MOVE_THUNDERBOLT, MOVE_GRASS_KNOT, MOVE_HIDDEN_POWER, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -99,7 +99,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [11] = {
+    [FRONTIER_MON_SILCOON] = {
         .species = SPECIES_SILCOON,
         .moves = {MOVE_BUG_BITE, MOVE_POISON_STING, MOVE_TACKLE, MOVE_STRING_SHOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -108,7 +108,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [12] = {
+    [FRONTIER_MON_CASCOON] = {
         .species = SPECIES_CASCOON,
         .moves = {MOVE_BUG_BITE, MOVE_POISON_STING, MOVE_TACKLE, MOVE_STRING_SHOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -117,7 +117,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [13] = {
+    [FRONTIER_MON_IGGLYBUFF] = {
         .species = SPECIES_IGGLYBUFF,
         .moves = {MOVE_HYPER_VOICE, MOVE_DAZZLING_GLEAM, MOVE_FIRE_BLAST, MOVE_THUNDERBOLT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -126,7 +126,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [14] = {
+    [FRONTIER_MON_WOOPER] = {
         .species = SPECIES_WOOPER,
         .moves = {MOVE_DIVE, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -135,7 +135,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [15] = {
+    [FRONTIER_MON_TYROGUE] = {
         .species = SPECIES_TYROGUE,
         .moves = {MOVE_FAKE_OUT, MOVE_MACH_PUNCH, MOVE_HI_JUMP_KICK, MOVE_BULLET_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -144,7 +144,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [16] = {
+    [FRONTIER_MON_SENTRET] = {
         .species = SPECIES_SENTRET,
         .moves = {MOVE_HYPER_VOICE, MOVE_FLAMETHROWER, MOVE_SHADOW_BALL, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -153,7 +153,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [17] = {
+    [FRONTIER_MON_CLEFFA] = {
         .species = SPECIES_CLEFFA,
         .moves = {MOVE_MOONBLAST, MOVE_THUNDERBOLT, MOVE_FLAMETHROWER, MOVE_SOFT_BOILED},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -162,7 +162,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [18] = {
+    [FRONTIER_MON_SEEDOT] = {
         .species = SPECIES_SEEDOT,
         .moves = {MOVE_SOLAR_BEAM, MOVE_HIDDEN_POWER, MOVE_GROWTH, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -171,7 +171,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 0
     },
-    [19] = {
+    [FRONTIER_MON_LOTAD] = {
         .species = SPECIES_LOTAD,
         .moves = {MOVE_SURF, MOVE_GIGA_DRAIN, MOVE_ICE_BEAM, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -180,7 +180,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [20] = {
+    [FRONTIER_MON_POOCHYENA] = {
         .species = SPECIES_POOCHYENA,
         .moves = {MOVE_CRUNCH, MOVE_PLAY_ROUGH, MOVE_POISON_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -189,7 +189,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [21] = {
+    [FRONTIER_MON_SHEDINJA] = {
         .species = SPECIES_SHEDINJA,
         .moves = {MOVE_X_SCISSOR, MOVE_SHADOW_SNEAK, MOVE_TOXIC, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -198,7 +198,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [22] = {
+    [FRONTIER_MON_MAKUHITA] = {
         .species = SPECIES_MAKUHITA,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_KNOCK_OFF, MOVE_BULLET_PUNCH, MOVE_BELLY_DRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_SITRUS_BERRY,
@@ -207,7 +207,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [23] = {
+    [FRONTIER_MON_WHISMUR] = {
         .species = SPECIES_WHISMUR,
         .moves = {MOVE_HYPER_VOICE, MOVE_FIRE_BLAST, MOVE_SHADOW_BALL, MOVE_ICE_BEAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -216,7 +216,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [24] = {
+    [FRONTIER_MON_ZIGZAGOON] = {
         .species = SPECIES_ZIGZAGOON,
         .moves = {MOVE_EXTREME_SPEED, MOVE_SEED_BOMB, MOVE_SUBSTITUTE, MOVE_BELLY_DRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_SALAC_BERRY,
@@ -225,7 +225,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [25] = {
+    [FRONTIER_MON_ZUBAT] = {
         .species = SPECIES_ZUBAT,
         .moves = {MOVE_BRAVE_BIRD, MOVE_POISON_FANG, MOVE_PURSUIT, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -234,7 +234,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [26] = {
+    [FRONTIER_MON_TOGEPI] = {
         .species = SPECIES_TOGEPI,
         .moves = {MOVE_DAZZLING_GLEAM, MOVE_FIRE_BLAST, MOVE_SOFT_BOILED, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -243,7 +243,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [27] = {
+    [FRONTIER_MON_SPINARAK] = {
         .species = SPECIES_SPINARAK,
         .moves = {MOVE_STICKY_WEB, MOVE_TOXIC_SPIKES, MOVE_MEGAHORN, MOVE_TOXIC_THREAD},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -252,7 +252,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [28] = {
+    [FRONTIER_MON_MARILL] = {
         .species = SPECIES_MARILL,
         .moves = {MOVE_AQUA_JET, MOVE_PLAY_ROUGH, MOVE_KNOCK_OFF, MOVE_BELLY_DRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_SITRUS_BERRY,
@@ -261,7 +261,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [29] = {
+    [FRONTIER_MON_HOPPIP] = {
         .species = SPECIES_HOPPIP,
         .moves = {MOVE_SLEEP_POWDER, MOVE_STRENGTH_SAP, MOVE_LEECH_SEED, MOVE_SUBSTITUTE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -270,7 +270,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [30] = {
+    [FRONTIER_MON_SLUGMA] = {
         .species = SPECIES_SLUGMA,
         .moves = {MOVE_FIRE_BLAST, MOVE_MUD_BOMB, MOVE_EARTH_POWER, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -279,7 +279,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [31] = {
+    [FRONTIER_MON_SWINUB] = {
         .species = SPECIES_SWINUB,
         .moves = {MOVE_ICE_SHARD, MOVE_EARTHQUAKE, MOVE_SUPERPOWER, MOVE_AVALANCHE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -288,7 +288,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [32] = {
+    [FRONTIER_MON_SMEARGLE] = {
         .species = SPECIES_SMEARGLE,
         .moves = {MOVE_EXTREME_SPEED, MOVE_SPORE, MOVE_BATON_PASS, MOVE_BELLY_DRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LUM_BERRY,
@@ -297,7 +297,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [33] = {
+    [FRONTIER_MON_PIDGEY] = {
         .species = SPECIES_PIDGEY,
         .moves = {MOVE_HURRICANE, MOVE_HEAT_WAVE, MOVE_UPROAR, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -306,7 +306,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [34] = {
+    [FRONTIER_MON_RATTATA] = {
         .species = SPECIES_RATTATA,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_CRUNCH, MOVE_FLAME_WHEEL, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -315,7 +315,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [35] = {
+    [FRONTIER_MON_WYNAUT] = {
         .species = SPECIES_WYNAUT,
         .moves = {MOVE_COUNTER, MOVE_MIRROR_COAT, MOVE_ENCORE, MOVE_SAFEGUARD},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -324,7 +324,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [36] = {
+    [FRONTIER_MON_SKITTY] = {
         .species = SPECIES_SKITTY,
         .moves = {MOVE_HYPER_VOICE, MOVE_MOONBLAST, MOVE_THUNDERBOLT, MOVE_ICE_BEAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -333,7 +333,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [37] = {
+    [FRONTIER_MON_SPEAROW] = {
         .species = SPECIES_SPEAROW,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_DRILL_PECK, MOVE_DRILL_RUN, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -342,7 +342,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [38] = {
+    [FRONTIER_MON_HOOTHOOT] = {
         .species = SPECIES_HOOTHOOT,
         .moves = {MOVE_HURRICANE, MOVE_HYPER_VOICE, MOVE_HEAT_WAVE, MOVE_AIR_SLASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -351,7 +351,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [39] = {
+    [FRONTIER_MON_DIGLETT] = {
         .species = SPECIES_DIGLETT,
         .moves = {MOVE_EARTHQUAKE, MOVE_REVERSAL, MOVE_ROCK_SLIDE, MOVE_SUCKER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -360,7 +360,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [40] = {
+    [FRONTIER_MON_LEDYBA] = {
         .species = SPECIES_LEDYBA,
         .moves = {MOVE_ENCORE, MOVE_SWORDS_DANCE, MOVE_AGILITY, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -369,7 +369,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [41] = {
+    [FRONTIER_MON_NINCADA] = {
         .species = SPECIES_NINCADA,
         .moves = {MOVE_LEECH_LIFE, MOVE_DIG, MOVE_TOXIC, MOVE_SUBSTITUTE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -378,7 +378,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [42] = {
+    [FRONTIER_MON_SURSKIT] = {
         .species = SPECIES_SURSKIT,
         .moves = {MOVE_STICKY_WEB, MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_GIGA_DRAIN},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -387,7 +387,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [43] = {
+    [FRONTIER_MON_JIGGLYPUFF] = {
         .species = SPECIES_JIGGLYPUFF,
         .moves = {MOVE_HYPER_VOICE, MOVE_DAZZLING_GLEAM, MOVE_FIRE_BLAST, MOVE_THUNDERBOLT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -396,7 +396,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [44] = {
+    [FRONTIER_MON_TAILLOW] = {
         .species = SPECIES_TAILLOW,
         .moves = {MOVE_BOOMBURST, MOVE_HEAT_WAVE, MOVE_AIR_SLASH, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -405,7 +405,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1    
     },
-    [45] = {
+    [FRONTIER_MON_WINGULL] = {
         .species = SPECIES_WINGULL,
         .moves = {MOVE_HURRICANE, MOVE_SCALD, MOVE_HIDDEN_POWER, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -414,7 +414,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 1,
     },
-    [46] = {
+    [FRONTIER_MON_NIDORAN_M] = {
         .species = SPECIES_NIDORAN_M,
         .moves = {MOVE_POISON_JAB, MOVE_DRILL_RUN, MOVE_HORN_DRILL, MOVE_TOXIC_SPIKES},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -423,7 +423,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [47] = {
+    [FRONTIER_MON_NIDORAN_F] = {
         .species = SPECIES_NIDORAN_F,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_TOXIC_SPIKES},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -432,7 +432,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [48] = {
+    [FRONTIER_MON_KIRLIA] = {
         .species = SPECIES_KIRLIA,
         .moves = {MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_CALM_MIND, MOVE_DISABLE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -441,7 +441,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [49] = {
+    [FRONTIER_MON_MAREEP] = {
         .species = SPECIES_MAREEP,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_AGILITY, MOVE_TAIL_GLOW},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -450,7 +450,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [50] = {
+    [FRONTIER_MON_MEDITITE] = {
         .species = SPECIES_MEDITITE,
         .moves = {MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_BULLET_PUNCH, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -459,7 +459,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [51] = {
+    [FRONTIER_MON_SLAKOTH] = {
         .species = SPECIES_SLAKOTH,
         .moves = {MOVE_ROAR_OF_TIME, MOVE_NONE, MOVE_NONE, MOVE_NONE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -468,7 +468,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [52] = {
+    [FRONTIER_MON_PARAS] = {
         .species = SPECIES_PARAS,
         .moves = {MOVE_SPORE, MOVE_LEECH_LIFE, MOVE_SEED_BOMB, MOVE_KNOCK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -477,7 +477,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [53] = {
+    [FRONTIER_MON_EKANS] = {
         .species = SPECIES_EKANS,
         .moves = {MOVE_GUNK_SHOT, MOVE_EARTHQUAKE, MOVE_GLARE, MOVE_COIL},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -486,7 +486,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [54] = {
+    [FRONTIER_MON_DITTO] = {
         .species = SPECIES_DITTO,
         .moves = {MOVE_TRANSFORM, MOVE_NONE, MOVE_NONE, MOVE_NONE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -495,7 +495,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [55] = {
+    [FRONTIER_MON_BARBOACH] = {
         .species = SPECIES_BARBOACH,
         .moves = {MOVE_EARTHQUAKE, MOVE_WATERFALL, MOVE_BOUNCE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -504,7 +504,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [56] = {
+    [FRONTIER_MON_MEOWTH] = {
         .species = SPECIES_MEOWTH,
         .moves = {MOVE_FAKE_OUT, MOVE_KNOCK_OFF, MOVE_PLAY_ROUGH, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -513,7 +513,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [57] = {
+    [FRONTIER_MON_PINECO] = {
         .species = SPECIES_PINECO,
         .moves = {MOVE_TOXIC_SPIKES, MOVE_SPIKES, MOVE_STEALTH_ROCK, MOVE_REFLECT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -522,7 +522,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [58] = {
+    [FRONTIER_MON_TRAPINCH] = {
         .species = SPECIES_TRAPINCH,
         .moves = {MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_SUPERPOWER, MOVE_CRUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -531,7 +531,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [59] = {
+    [FRONTIER_MON_SPHEAL] = {
         .species = SPECIES_SPHEAL,
         .moves = {MOVE_SHEER_COLD, MOVE_FISSURE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -540,7 +540,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [60] = {
+    [FRONTIER_MON_HORSEA] = {
         .species = SPECIES_HORSEA,
         .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -549,7 +549,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [61] = {
+    [FRONTIER_MON_SHROOMISH] = {
         .species = SPECIES_SHROOMISH,
         .moves = {MOVE_SPORE, MOVE_LEECH_SEED, MOVE_SYNTHESIS, MOVE_SUBSTITUTE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -558,7 +558,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [62] = {
+    [FRONTIER_MON_SHUPPET] = {
         .species = SPECIES_SHUPPET,
         .moves = {MOVE_KNOCK_OFF, MOVE_SHADOW_SNEAK, MOVE_CURSE, MOVE_TRICK_ROOM},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -567,7 +567,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [63] = {
+    [FRONTIER_MON_DUSKULL] = {
         .species = SPECIES_DUSKULL,
         .moves = {MOVE_TOXIC, MOVE_DISABLE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -576,7 +576,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [64] = {
+    [FRONTIER_MON_ELECTRIKE] = {
         .species = SPECIES_ELECTRIKE,
         .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_FLAMETHROWER, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -585,7 +585,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [65] = {
+    [FRONTIER_MON_VULPIX] = {
         .species = SPECIES_VULPIX,
         .moves = {MOVE_FLAMETHROWER, MOVE_OVERHEAT, MOVE_ENERGY_BALL, MOVE_WILL_O_WISP},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -594,7 +594,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [66] = {
+    [FRONTIER_MON_PIKACHU] = {
         .species = SPECIES_PIKACHU,
         .moves = {MOVE_THUNDERBOLT, MOVE_SURF, MOVE_GRASS_KNOT, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIGHT_BALL,
@@ -603,7 +603,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [67] = {
+    [FRONTIER_MON_SANDSHREW] = {
         .species = SPECIES_SANDSHREW,
         .moves = {MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_SWORDS_DANCE, MOVE_SANDSTORM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -612,7 +612,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [68] = {
+    [FRONTIER_MON_POLIWAG] = {
         .species = SPECIES_POLIWAG,
         .moves = {MOVE_WATERFALL, MOVE_RETURN, MOVE_BELLY_DRUM, MOVE_HYPNOSIS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -621,7 +621,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [69] = {
+    [FRONTIER_MON_BELLSPROUT] = {
         .species = SPECIES_BELLSPROUT,
         .moves = {MOVE_SOLAR_BEAM, MOVE_SLUDGE_BOMB, MOVE_WEATHER_BALL, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -630,7 +630,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [70] = {
+    [FRONTIER_MON_GEODUDE] = {
         .species = SPECIES_GEODUDE,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SUCKER_PUNCH, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -639,7 +639,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [71] = {
+    [FRONTIER_MON_DRATINI] = {
         .species = SPECIES_DRATINI,
         .moves = {MOVE_DRACO_METEOR, MOVE_ICE_BEAM, MOVE_FLAMETHROWER, MOVE_THUNDERBOLT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -648,7 +648,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [72] = {
+    [FRONTIER_MON_SNUBBULL] = {
         .species = SPECIES_SNUBBULL,
         .moves = {MOVE_PLAY_ROUGH, MOVE_EARTHQUAKE, MOVE_FIRE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -657,7 +657,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [73] = {
+    [FRONTIER_MON_REMORAID] = {
         .species = SPECIES_REMORAID,
         .moves = {MOVE_WATER_SPOUT, MOVE_ICE_BEAM, MOVE_SEED_BOMB, MOVE_HYDRO_PUMP},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -666,7 +666,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [74] = {
+    [FRONTIER_MON_LARVITAR] = {
         .species = SPECIES_LARVITAR,
         .moves = {MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_SUPERPOWER, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -675,7 +675,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [75] = {
+    [FRONTIER_MON_BALTOY] = {
         .species = SPECIES_BALTOY,
         .moves = {MOVE_EARTH_POWER, MOVE_ICE_BEAM, MOVE_PSYCHIC, MOVE_SHADOW_BALL},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -684,7 +684,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [76] = {
+    [FRONTIER_MON_SNORUNT] = {
         .species = SPECIES_SNORUNT,
         .moves = {MOVE_ICE_SHARD, MOVE_CRUNCH, MOVE_BODY_SLAM, MOVE_AVALANCHE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -693,7 +693,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [77] = {
+    [FRONTIER_MON_BAGON] = {
         .species = SPECIES_BAGON,
         .moves = {MOVE_DRAGON_RUSH, MOVE_FIRE_FANG, MOVE_THUNDER_FANG, MOVE_HONE_CLAWS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -702,7 +702,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [78] = {
+    [FRONTIER_MON_BELDUM] = {
         .species = SPECIES_BELDUM,
         .moves = {MOVE_IRON_HEAD, MOVE_ZEN_HEADBUTT, MOVE_TAKE_DOWN, MOVE_IRON_DEFENSE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -711,7 +711,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [79] = {
+    [FRONTIER_MON_GULPIN] = {
         .species = SPECIES_GULPIN,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_TOXIC, MOVE_SLUDGE_BOMB, MOVE_STOCKPILE},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -720,7 +720,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [80] = {
+    [FRONTIER_MON_VENONAT] = {
         .species = SPECIES_VENONAT,
         .moves = {MOVE_TOXIC_SPIKES, MOVE_SLEEP_POWDER, MOVE_LEECH_LIFE, MOVE_MORNING_SUN},
         .itemTableId = BATTLE_FRONTIER_ITEM_SITRUS_BERRY,
@@ -729,7 +729,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [81] = {
+    [FRONTIER_MON_MANKEY] = {
         .species = SPECIES_MANKEY,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_U_TURN, MOVE_ROCK_SLIDE, MOVE_GUNK_SHOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -738,7 +738,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [82] = {
+    [FRONTIER_MON_MACHOP] = {
         .species = SPECIES_MACHOP,
         .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_BULLET_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -747,7 +747,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [83] = {
+    [FRONTIER_MON_SHELLDER] = {
         .species = SPECIES_SHELLDER,
         .moves = {MOVE_LIQUIDATION, MOVE_ICICLE_SPEAR, MOVE_ROCK_BLAST, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -756,7 +756,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [84] = {
+    [FRONTIER_MON_SMOOCHUM] = {
         .species = SPECIES_SMOOCHUM,
         .moves = {MOVE_ICE_BEAM, MOVE_PSYSHOCK, MOVE_SHADOW_BALL, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -765,7 +765,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [85] = {
+    [FRONTIER_MON_NUMEL] = {
         .species = SPECIES_NUMEL,
         .moves = {MOVE_ERUPTION, MOVE_FIRE_BLAST, MOVE_EARTH_POWER, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -774,7 +774,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [86] = {
+    [FRONTIER_MON_CARVANHA] = {
         .species = SPECIES_CARVANHA,
         .moves = {MOVE_CRUNCH, MOVE_AQUA_JET, MOVE_EARTHQUAKE, MOVE_ICE_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -783,7 +783,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [87] = {
+    [FRONTIER_MON_CORPHISH] = {
         .species = SPECIES_CORPHISH,
         .moves = {MOVE_AQUA_JET, MOVE_KNOCK_OFF, MOVE_GUILLOTINE, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -792,7 +792,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [88] = {
+    [FRONTIER_MON_CHARMANDER] = {
         .species = SPECIES_CHARMANDER,
         .moves = {MOVE_FLARE_BLITZ, MOVE_THUNDER_PUNCH, MOVE_FLAME_CHARGE, MOVE_ROCK_SLIDE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -801,7 +801,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [89] = {
+    [FRONTIER_MON_CYNDAQUIL] = {
         .species = SPECIES_CYNDAQUIL,
         .moves = {MOVE_ERUPTION, MOVE_FLAMETHROWER, MOVE_EXTRASENSORY, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -810,7 +810,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [90] = {
+    [FRONTIER_MON_ABRA] = {
         .species = SPECIES_ABRA,
         .moves = {MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_SHADOW_BALL, MOVE_COUNTER},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -819,7 +819,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [91] = {
+    [FRONTIER_MON_DODUO] = {
         .species = SPECIES_DODUO,
         .moves = {MOVE_BRAVE_BIRD, MOVE_RETURN, MOVE_JUMP_KICK, MOVE_KNOCK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -828,7 +828,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [92] = {
+    [FRONTIER_MON_GASTLY] = {
         .species = SPECIES_GASTLY,
         .moves = {MOVE_SHADOW_BALL, MOVE_SLUDGE_WAVE, MOVE_THUNDERBOLT, MOVE_DAZZLING_GLEAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -837,7 +837,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [93] = {
+    [FRONTIER_MON_SWABLU] = {
         .species = SPECIES_SWABLU,
         .moves = {MOVE_HYPER_VOICE, MOVE_HEAT_WAVE, MOVE_COTTON_GUARD, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -846,7 +846,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [94] = {
+    [FRONTIER_MON_TREECKO] = {
         .species = SPECIES_TREECKO,
         .moves = {MOVE_SEED_BOMB, MOVE_DRAIN_PUNCH, MOVE_ROCK_SLIDE, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -855,7 +855,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [95] = {
+    [FRONTIER_MON_TORCHIC] = {
         .species = SPECIES_TORCHIC,
         .moves = {MOVE_FLAME_CHARGE, MOVE_SWORDS_DANCE, MOVE_PROTECT, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -864,7 +864,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [96] = {
+    [FRONTIER_MON_MUDKIP] = {
         .species = SPECIES_MUDKIP,
         .moves = {MOVE_DIVE, MOVE_AVALANCHE, MOVE_SUPERPOWER, MOVE_DOUBLE_EDGE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -873,7 +873,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [97] = {
+    [FRONTIER_MON_SQUIRTLE] = {
         .species = SPECIES_SQUIRTLE,
         .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_AURA_SPHERE, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_WHITE_HERB,
@@ -882,7 +882,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [98] = {
+    [FRONTIER_MON_TOTODILE] = {
         .species = SPECIES_TOTODILE,
         .moves = {MOVE_AQUA_JET, MOVE_ICE_FANG, MOVE_CRUNCH, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -891,7 +891,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [99] = {
+    [FRONTIER_MON_SLOWPOKE] = {
         .species = SPECIES_SLOWPOKE,
         .moves = {MOVE_SCALD, MOVE_PSYSHOCK, MOVE_CALM_MIND, MOVE_SLACK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -900,7 +900,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [100] = {
+    [FRONTIER_MON_BULBASAUR] = {
         .species = SPECIES_BULBASAUR,
         .moves = {MOVE_SOLAR_BEAM, MOVE_SLUDGE_BOMB, MOVE_HIDDEN_POWER, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -909,7 +909,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 1
     },
-    [101] = {
+    [FRONTIER_MON_CHIKORITA] = {
         .species = SPECIES_CHIKORITA,
         .moves = {MOVE_GIGA_DRAIN, MOVE_LEECH_SEED, MOVE_AROMATHERAPY, MOVE_SYNTHESIS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -918,7 +918,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [102] = {
+    [FRONTIER_MON_ODDISH] = {
         .species = SPECIES_ODDISH,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_GIGA_DRAIN, MOVE_HIDDEN_POWER, MOVE_STRENGTH_SAP},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -927,7 +927,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 29,
         .ability = 1
     },
-    [103] = {
+    [FRONTIER_MON_PSYDUCK] = {
         .species = SPECIES_PSYDUCK,
         .moves = {MOVE_HYDRO_PUMP, MOVE_PSYCHIC, MOVE_ICE_BEAM, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -936,7 +936,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [104] = {
+    [FRONTIER_MON_CUBONE] = {
         .species = SPECIES_CUBONE,
         .moves = {MOVE_BONEMERANG, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_FIRE_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_THICK_CLUB,
@@ -945,7 +945,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [105] = {
+    [FRONTIER_MON_GOLDEEN] = {
         .species = SPECIES_GOLDEEN,
         .moves = {MOVE_HORN_DRILL, MOVE_DIVE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -954,7 +954,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [106] = {
+    [FRONTIER_MON_NATU] = {
         .species = SPECIES_NATU,
         .moves = {MOVE_STORED_POWER, MOVE_CALM_MIND, MOVE_ROOST, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -963,7 +963,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [107] = {
+    [FRONTIER_MON_CLEFAIRY] = {
         .species = SPECIES_CLEFAIRY,
         .moves = {MOVE_MOONBLAST, MOVE_THUNDERBOLT, MOVE_FLAMETHROWER, MOVE_SOFT_BOILED},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -972,7 +972,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [108] = {
+    [FRONTIER_MON_MAGNEMITE] = {
         .species = SPECIES_MAGNEMITE,
         .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_FLASH_CANNON, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -981,7 +981,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [109] = {
+    [FRONTIER_MON_SEEL] = {
         .species = SPECIES_SEEL,
         .moves = {MOVE_HORN_DRILL, MOVE_SHEER_COLD, MOVE_RAIN_DANCE, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -990,7 +990,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [110] = {
+    [FRONTIER_MON_GRIMER] = {
         .species = SPECIES_GRIMER,
         .moves = {MOVE_POISON_JAB, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -999,7 +999,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [111] = {
+    [FRONTIER_MON_KRABBY] = {
         .species = SPECIES_KRABBY,
         .moves = {MOVE_GUILLOTINE, MOVE_KNOCK_OFF, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1008,7 +1008,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [112] = {
+    [FRONTIER_MON_EXEGGCUTE] = {
         .species = SPECIES_EXEGGCUTE,
         .moves = {MOVE_PSYCHIC, MOVE_GIGA_DRAIN, MOVE_HIDDEN_POWER, MOVE_TRICK_ROOM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1017,7 +1017,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 1
     },
-    [113] = {
+    [FRONTIER_MON_EEVEE] = {
         .species = SPECIES_EEVEE,
         .moves = {MOVE_RETURN, MOVE_QUICK_ATTACK, MOVE_BITE, MOVE_DIG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1026,7 +1026,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [114] = {
+    [FRONTIER_MON_DROWZEE] = {
         .species = SPECIES_DROWZEE,
         .moves = {MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_SHADOW_BALL, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1035,7 +1035,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [115] = {
+    [FRONTIER_MON_VOLTORB] = {
         .species = SPECIES_VOLTORB,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH, MOVE_SIGNAL_BEAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -1044,7 +1044,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [116] = {
+    [FRONTIER_MON_CHINCHOU] = {
         .species = SPECIES_CHINCHOU,
         .moves = {MOVE_SURF, MOVE_THUNDERBOLT, MOVE_ICE_BEAM, MOVE_VOLT_SWITCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -1053,7 +1053,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [117] = {
+    [FRONTIER_MON_TEDDIURSA] = {
         .species = SPECIES_TEDDIURSA,
         .moves = {MOVE_RETURN, MOVE_CRUNCH, MOVE_CLOSE_COMBAT, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1062,7 +1062,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [118] = {
+    [FRONTIER_MON_DELIBIRD] = {
         .species = SPECIES_DELIBIRD,
         .moves = {MOVE_AERIAL_ACE, MOVE_ICE_SHARD, MOVE_BRICK_BREAK, MOVE_SEED_BOMB},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1071,7 +1071,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [119] = {
+    [FRONTIER_MON_HOUNDOUR] = {
         .species = SPECIES_HOUNDOUR,
         .moves = {MOVE_FIRE_BLAST, MOVE_DARK_PULSE, MOVE_COUNTER, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1080,7 +1080,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [120] = {
+    [FRONTIER_MON_PHANPY] = {
         .species = SPECIES_PHANPY,
         .moves = {MOVE_EARTHQUAKE, MOVE_ICE_SHARD, MOVE_ROCK_TOMB, MOVE_FISSURE},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -1089,7 +1089,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [121] = {
+    [FRONTIER_MON_SPOINK] = {
         .species = SPECIES_SPOINK,
         .moves = {MOVE_PSYCHIC, MOVE_SHADOW_BALL, MOVE_GRASS_KNOT, MOVE_POWER_GEM},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -1098,7 +1098,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [122] = {
+    [FRONTIER_MON_ARON] = {
         .species = SPECIES_ARON,
         .moves = {MOVE_HEAD_SMASH, MOVE_HEAVY_SLAM, MOVE_EARTHQUAKE, MOVE_SUPERPOWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1107,7 +1107,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [123] = {
+    [FRONTIER_MON_LUVDISC] = {
         .species = SPECIES_LUVDISC,
         .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1116,7 +1116,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [124] = {
+    [FRONTIER_MON_TENTACOOL] = {
         .species = SPECIES_TENTACOOL,
         .moves = {MOVE_HYDRO_PUMP, MOVE_SLUDGE_BOMB, MOVE_ICE_BEAM, MOVE_TOXIC_SPIKES},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1125,7 +1125,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [125] = {
+    [FRONTIER_MON_CACNEA] = {
         .species = SPECIES_CACNEA,
         .moves = {MOVE_NEEDLE_ARM, MOVE_KNOCK_OFF, MOVE_DRAIN_PUNCH, MOVE_SANDSTORM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1134,7 +1134,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [126] = {
+    [FRONTIER_MON_UNOWN] = {
         .species = SPECIES_UNOWN,
         .moves = {MOVE_HIDDEN_POWER, MOVE_NONE, MOVE_NONE, MOVE_NONE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -1143,7 +1143,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 17,
         .ability = 0
     },
-    [127] = {
+    [FRONTIER_MON_KOFFING] = {
         .species = SPECIES_KOFFING,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_FIRE_BLAST, MOVE_THUNDERBOLT, MOVE_SHADOW_BALL},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -1152,7 +1152,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [128] = {
+    [FRONTIER_MON_STARYU] = {
         .species = SPECIES_STARYU,
         .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_POWER_GEM},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -1161,7 +1161,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [129] = {
+    [FRONTIER_MON_SKIPLOOM] = {
         .species = SPECIES_SKIPLOOM,
         .moves = {MOVE_SLEEP_POWDER, MOVE_STRENGTH_SAP, MOVE_LEECH_SEED, MOVE_SUBSTITUTE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1170,7 +1170,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [130] = {
+    [FRONTIER_MON_NUZLEAF] = {
         .species = SPECIES_NUZLEAF,
         .moves = {MOVE_SOLAR_BEAM, MOVE_DARK_PULSE, MOVE_SUNNY_DAY, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1179,7 +1179,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [131] = {
+    [FRONTIER_MON_LOMBRE] = {
         .species = SPECIES_LOMBRE,
         .moves = {MOVE_SURF, MOVE_GIGA_DRAIN, MOVE_ICE_BEAM, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1188,7 +1188,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [132] = {
+    [FRONTIER_MON_VIBRAVA] = {
         .species = SPECIES_VIBRAVA,
         .moves = {MOVE_EARTHQUAKE, MOVE_OUTRAGE, MOVE_U_TURN, MOVE_SUPERPOWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1197,7 +1197,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [133] = {
+    [FRONTIER_MON_RHYHORN] = {
         .species = SPECIES_RHYHORN,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_MEGAHORN, MOVE_ICE_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1206,7 +1206,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [134] = {
+    [FRONTIER_MON_CLAMPERL] = {
         .species = SPECIES_CLAMPERL,
         .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER, MOVE_BRINE},
         .itemTableId = BATTLE_FRONTIER_ITEM_DEEP_SEA_TOOTH,
@@ -1215,7 +1215,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 1
     },
-    [135] = {
+    [FRONTIER_MON_PIDGEOTTO] = {
         .species = SPECIES_PIDGEOTTO,
         .moves = {MOVE_HURRICANE, MOVE_HEAT_WAVE, MOVE_UPROAR, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -1224,7 +1224,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [136] = {
+    [FRONTIER_MON_GROWLITHE] = {
         .species = SPECIES_GROWLITHE,
         .moves = {MOVE_FLARE_BLITZ, MOVE_WILD_CHARGE, MOVE_FLAME_CHARGE, MOVE_CLOSE_COMBAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1233,7 +1233,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [137] = {
+    [FRONTIER_MON_FARFETCHD] = {
         .species = SPECIES_FARFETCHD,
         .moves = {MOVE_SLASH, MOVE_LEAF_BLADE, MOVE_NIGHT_SLASH, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_STICK,
@@ -1242,7 +1242,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [138] = {
+    [FRONTIER_MON_OMANYTE] = {
         .species = SPECIES_OMANYTE,
         .moves = {MOVE_HYDRO_PUMP, MOVE_MUD_BOMB, MOVE_ICE_BEAM, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1251,7 +1251,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [139] = {
+    [FRONTIER_MON_KABUTO] = {
         .species = SPECIES_KABUTO,
         .moves = {MOVE_AQUA_JET, MOVE_ROCK_SLIDE, MOVE_KNOCK_OFF, MOVE_DIG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1260,7 +1260,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [140] = {
+    [FRONTIER_MON_LILEEP] = {
         .species = SPECIES_LILEEP,
         .moves = {MOVE_GIGA_DRAIN, MOVE_MUD_BOMB, MOVE_EARTH_POWER, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1269,7 +1269,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [141] = {
+    [FRONTIER_MON_ANORITH] = {
         .species = SPECIES_ANORITH,
         .moves = {MOVE_X_SCISSOR, MOVE_ROCK_SLIDE, MOVE_KNOCK_OFF, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1278,7 +1278,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [142] = {
+    [FRONTIER_MON_AIPOM] = {
         .species = SPECIES_AIPOM,
         .moves = {MOVE_FAKE_OUT, MOVE_RETURN, MOVE_BRICK_BREAK, MOVE_SHADOW_CLAW},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1287,7 +1287,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [143] = {
+    [FRONTIER_MON_ELEKID] = {
         .species = SPECIES_ELEKID,
         .moves = {MOVE_THUNDER_PUNCH, MOVE_ICE_PUNCH, MOVE_FIRE_PUNCH, MOVE_CROSS_CHOP},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -1296,7 +1296,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [144] = {
+    [FRONTIER_MON_LOUDRED] = {
         .species = SPECIES_LOUDRED,
         .moves = {MOVE_RETURN, MOVE_HAMMER_ARM, MOVE_SHADOW_BALL, MOVE_OVERHEAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1305,7 +1305,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [145] = {
+    [FRONTIER_MON_SPINDA] = {
         .species = SPECIES_SPINDA,
         .moves = {MOVE_SUPERPOWER, MOVE_RETURN, MOVE_SUCKER_PUNCH, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1314,7 +1314,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [146] = {
+    [FRONTIER_MON_NIDORINA] = {
         .species = SPECIES_NIDORINA,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_TOXIC_SPIKES},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1323,7 +1323,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [147] = {
+    [FRONTIER_MON_NIDORINO] = {
         .species = SPECIES_NIDORINO,
         .moves = {MOVE_POISON_JAB, MOVE_DRILL_RUN, MOVE_HORN_DRILL, MOVE_TOXIC_SPIKES},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1332,7 +1332,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [148] = {
+    [FRONTIER_MON_FLAAFFY] = {
         .species = SPECIES_FLAAFFY,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_AGILITY, MOVE_TAIL_GLOW},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1341,7 +1341,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [149] = {
+    [FRONTIER_MON_MAGBY] = {
         .species = SPECIES_MAGBY,
         .moves = {MOVE_FIRE_PUNCH, MOVE_THUNDER_PUNCH, MOVE_MACH_PUNCH, MOVE_BELLY_DRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1350,7 +1350,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [150] = {
+    [FRONTIER_MON_NOSEPASS] = {
         .species = SPECIES_NOSEPASS,
         .moves = {MOVE_STONE_EDGE, MOVE_FIRE_PUNCH, MOVE_THUNDER_WAVE, MOVE_PAIN_SPLIT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1359,7 +1359,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [151] = {
+    [FRONTIER_MON_CORSOLA] = {
         .species = SPECIES_CORSOLA,
         .moves = {MOVE_HEAD_SMASH, MOVE_LIQUIDATION, MOVE_EARTHQUAKE, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1368,7 +1368,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [152] = {
+    [FRONTIER_MON_MAWILE] = {
         .species = SPECIES_MAWILE,
         .moves = {MOVE_ICE_FANG, MOVE_FIRE_FANG, MOVE_THUNDER_FANG, MOVE_CRUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -1377,7 +1377,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [153] = {
+    [FRONTIER_MON_BUTTERFREE] = {
         .species = SPECIES_BUTTERFREE,
         .moves = {MOVE_BUG_BUZZ, MOVE_ENERGY_BALL, MOVE_QUIVER_DANCE, MOVE_SLEEP_POWDER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1386,7 +1386,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [154] = {
+    [FRONTIER_MON_BEEDRILL] = {
         .species = SPECIES_BEEDRILL,
         .moves = {MOVE_U_TURN, MOVE_POISON_JAB, MOVE_DRILL_RUN, MOVE_KNOCK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1395,7 +1395,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [155] = {
+    [FRONTIER_MON_POLIWHIRL] = {
         .species = SPECIES_POLIWHIRL,
         .moves = {MOVE_WATERFALL, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH, MOVE_BELLY_DRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1404,7 +1404,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [156] = {
+    [FRONTIER_MON_ONIX] = {
         .species = SPECIES_ONIX,
         .moves = {MOVE_HEAD_SMASH, MOVE_EARTHQUAKE, MOVE_SUBSTITUTE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIECHI_BERRY,
@@ -1413,7 +1413,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [157] = {
+    [FRONTIER_MON_BEAUTIFLY] = {
         .species = SPECIES_BEAUTIFLY,
         .moves = {MOVE_BUG_BUZZ, MOVE_HIDDEN_POWER, MOVE_SLEEP_POWDER, MOVE_QUIVER_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1422,7 +1422,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 29,
         .ability = 1
     },
-    [158] = {
+    [FRONTIER_MON_DUSTOX] = {
         .species = SPECIES_DUSTOX,
         .moves = {MOVE_GUNK_SHOT, MOVE_LEECH_LIFE, MOVE_WHIRLWIND, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1431,7 +1431,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [159] = {
+    [FRONTIER_MON_LEDIAN] = {
         .species = SPECIES_LEDIAN,
         .moves = {MOVE_ENCORE, MOVE_SWORDS_DANCE, MOVE_AGILITY, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1440,7 +1440,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [160] = {
+    [FRONTIER_MON_ARIADOS] = {
         .species = SPECIES_ARIADOS,
         .moves = {MOVE_STICKY_WEB, MOVE_TOXIC_SPIKES, MOVE_MEGAHORN, MOVE_TOXIC_THREAD},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1449,7 +1449,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [161] = {
+    [FRONTIER_MON_YANMA] = {
         .species = SPECIES_YANMA,
         .moves = {MOVE_BUG_BUZZ, MOVE_AIR_SLASH, MOVE_GIGA_DRAIN, MOVE_SHADOW_BALL},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -1458,7 +1458,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [162] = {
+    [FRONTIER_MON_DELCATTY_1] = {
         .species = SPECIES_DELCATTY,
         .moves = {MOVE_HYPER_VOICE, MOVE_ENERGY_BALL, MOVE_THUNDERBOLT, MOVE_ICE_BEAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -1467,7 +1467,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [163] = {
+    [FRONTIER_MON_SABLEYE_1] = {
         .species = SPECIES_SABLEYE,
         .moves = {MOVE_DARK_PULSE, MOVE_PROTECT, MOVE_CALM_MIND, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1476,7 +1476,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [164] = {
+    [FRONTIER_MON_LICKITUNG_1] = {
         .species = SPECIES_LICKITUNG,
         .moves = {MOVE_WRING_OUT, MOVE_FIRE_BLAST, MOVE_ICE_BEAM, MOVE_WISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1485,7 +1485,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [165] = {
+    [FRONTIER_MON_WEEPINBELL_1] = {
         .species = SPECIES_WEEPINBELL,
         .moves = {MOVE_SOLAR_BEAM, MOVE_SLUDGE_BOMB, MOVE_WEATHER_BALL, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1494,7 +1494,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [166] = {
+    [FRONTIER_MON_GRAVELER_1] = {
         .species = SPECIES_GRAVELER,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_EXPLOSION, MOVE_AUTOTOMIZE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1503,7 +1503,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [167] = {
+    [FRONTIER_MON_GLOOM_1] = {
         .species = SPECIES_GLOOM,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_GIGA_DRAIN, MOVE_HIDDEN_POWER, MOVE_STRENGTH_SAP},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1512,7 +1512,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 29,
         .ability = 1
     },
-    [168] = {
+    [FRONTIER_MON_PORYGON_1] = {
         .species = SPECIES_PORYGON,
         .moves = {MOVE_TRI_ATTACK, MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_TRICK_ROOM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1521,7 +1521,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [169] = {
+    [FRONTIER_MON_KADABRA_1] = {
         .species = SPECIES_KADABRA,
         .moves = {MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_SHADOW_BALL, MOVE_COUNTER},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1530,7 +1530,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [170] = {
+    [FRONTIER_MON_WAILMER_1] = {
         .species = SPECIES_WAILMER,
         .moves = {MOVE_SCALD, MOVE_ROAR, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1539,7 +1539,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [171] = {
+    [FRONTIER_MON_ROSELIA_1] = {
         .species = SPECIES_ROSELIA,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_SOLAR_BEAM, MOVE_WEATHER_BALL, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1548,7 +1548,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [172] = {
+    [FRONTIER_MON_VOLBEAT_1] = {
         .species = SPECIES_VOLBEAT,
         .moves = {MOVE_BUG_BUZZ, MOVE_THUNDERBOLT, MOVE_TAIL_GLOW, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1557,7 +1557,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [173] = {
+    [FRONTIER_MON_ILLUMISE_1] = {
         .species = SPECIES_ILLUMISE,
         .moves = {MOVE_BUG_BUZZ, MOVE_THUNDERBOLT, MOVE_GIGA_DRAIN, MOVE_DAZZLING_GLEAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -1566,7 +1566,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [174] = {
+    [FRONTIER_MON_IVYSAUR_1] = {
         .species = SPECIES_IVYSAUR,
         .moves = {MOVE_GIGA_DRAIN, MOVE_SLUDGE_BOMB, MOVE_HIDDEN_POWER, MOVE_EARTH_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -1575,7 +1575,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 0
     },
-    [175] = {
+    [FRONTIER_MON_CHARMELEON_1] = {
         .species = SPECIES_CHARMELEON,
         .moves = {MOVE_FLARE_BLITZ, MOVE_THUNDER_PUNCH, MOVE_FLAME_CHARGE, MOVE_ROCK_SLIDE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1584,7 +1584,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [176] = {
+    [FRONTIER_MON_WARTORTLE_1] = {
         .species = SPECIES_WARTORTLE,
         .moves = {MOVE_AQUA_JET, MOVE_ICE_PUNCH, MOVE_POWER_UP_PUNCH, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_WHITE_HERB,
@@ -1593,7 +1593,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [177] = {
+    [FRONTIER_MON_PARASECT_1] = {
         .species = SPECIES_PARASECT,
         .moves = {MOVE_SPORE, MOVE_LEECH_LIFE, MOVE_SEED_BOMB, MOVE_KNOCK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1602,7 +1602,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [178] = {
+    [FRONTIER_MON_MACHOKE_1] = {
         .species = SPECIES_MACHOKE,
         .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_BULLET_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -1611,7 +1611,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [179] = {
+    [FRONTIER_MON_HAUNTER_1] = {
         .species = SPECIES_HAUNTER,
         .moves = {MOVE_SHADOW_BALL, MOVE_SLUDGE_WAVE, MOVE_THUNDERBOLT, MOVE_DAZZLING_GLEAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1620,7 +1620,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [180] = {
+    [FRONTIER_MON_BAYLEEF_1] = {
         .species = SPECIES_BAYLEEF,
         .moves = {MOVE_GIGA_DRAIN, MOVE_LEECH_SEED, MOVE_AROMATHERAPY, MOVE_SYNTHESIS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1629,7 +1629,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [181] = {
+    [FRONTIER_MON_QUILAVA_1] = {
         .species = SPECIES_QUILAVA,
         .moves = {MOVE_ERUPTION, MOVE_FLAMETHROWER, MOVE_OVERHEAT, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -1638,7 +1638,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [182] = {
+    [FRONTIER_MON_CROCONAW_1] = {
         .species = SPECIES_CROCONAW,
         .moves = {MOVE_AQUA_JET, MOVE_ICE_FANG, MOVE_CRUNCH, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1647,7 +1647,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [183] = {
+    [FRONTIER_MON_TOGETIC_1] = {
         .species = SPECIES_TOGETIC,
         .moves = {MOVE_AIR_SLASH, MOVE_THUNDER_WAVE, MOVE_ROOST, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1656,7 +1656,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [184] = {
+    [FRONTIER_MON_MURKROW_1] = {
         .species = SPECIES_MURKROW,
         .moves = {MOVE_BRAVE_BIRD, MOVE_SUCKER_PUNCH, MOVE_SUPERPOWER, MOVE_PURSUIT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1665,7 +1665,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [185] = {
+    [FRONTIER_MON_WOBBUFFET_1] = {
         .species = SPECIES_WOBBUFFET,
         .moves = {MOVE_COUNTER, MOVE_MIRROR_COAT, MOVE_ENCORE, MOVE_SAFEGUARD},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1674,7 +1674,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [186] = {
+    [FRONTIER_MON_PLUSLE_1] = {
         .species = SPECIES_PLUSLE,
         .moves = {MOVE_THUNDERBOLT, MOVE_GRASS_KNOT, MOVE_ENCORE, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1683,7 +1683,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [187] = {
+    [FRONTIER_MON_MINUN_1] = {
         .species = SPECIES_MINUN,
         .moves = {MOVE_THUNDERBOLT, MOVE_ENCORE, MOVE_TOXIC, MOVE_SUBSTITUTE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1692,7 +1692,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [188] = {
+    [FRONTIER_MON_GROVYLE_1] = {
         .species = SPECIES_GROVYLE,
         .moves = {MOVE_LEAF_BLADE, MOVE_DRAIN_PUNCH, MOVE_ROCK_SLIDE, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1701,7 +1701,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [189] = {
+    [FRONTIER_MON_COMBUSKEN_1] = {
         .species = SPECIES_COMBUSKEN,
         .moves = {MOVE_FOCUS_BLAST, MOVE_FLAMETHROWER, MOVE_HIDDEN_POWER, MOVE_OVERHEAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -1710,7 +1710,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [190] = {
+    [FRONTIER_MON_MARSHTOMP_1] = {
         .species = SPECIES_MARSHTOMP,
         .moves = {MOVE_EARTHQUAKE, MOVE_DIVE, MOVE_ICE_PUNCH, MOVE_SUPERPOWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1719,7 +1719,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [191] = {
+    [FRONTIER_MON_PONYTA_1] = {
         .species = SPECIES_PONYTA,
         .moves = {MOVE_FLARE_BLITZ, MOVE_HIGH_HORSEPOWER, MOVE_WILD_CHARGE, MOVE_LOW_KICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1728,7 +1728,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [192] = {
+    [FRONTIER_MON_AZUMARILL_1] = {
         .species = SPECIES_AZUMARILL,
         .moves = {MOVE_AQUA_JET, MOVE_PLAY_ROUGH, MOVE_KNOCK_OFF, MOVE_BELLY_DRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_SITRUS_BERRY,
@@ -1737,7 +1737,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [193] = {
+    [FRONTIER_MON_SUDOWOODO_1] = {
         .species = SPECIES_SUDOWOODO,
         .moves = {MOVE_HEAD_SMASH, MOVE_WOOD_HAMMER, MOVE_EARTHQUAKE, MOVE_SUCKER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1746,7 +1746,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [194] = {
+    [FRONTIER_MON_MAGCARGO_1] = {
         .species = SPECIES_MAGCARGO,
         .moves = {MOVE_FIRE_BLAST, MOVE_MUD_BOMB, MOVE_EARTH_POWER, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1755,7 +1755,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [195] = {
+    [FRONTIER_MON_PUPITAR_1] = {
         .species = SPECIES_PUPITAR,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SUBSTITUTE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIECHI_BERRY,
@@ -1764,7 +1764,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [196] = {
+    [FRONTIER_MON_SEALEO_1] = {
         .species = SPECIES_SEALEO,
         .moves = {MOVE_ICE_BEAM, MOVE_SHEER_COLD, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1773,7 +1773,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [197] = {
+    [FRONTIER_MON_RATICATE_1] = {
         .species = SPECIES_RATICATE,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_CRUNCH, MOVE_STOMPING_TANTRUM, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1782,7 +1782,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [198] = {
+    [FRONTIER_MON_MASQUERAIN_1] = {
         .species = SPECIES_MASQUERAIN,
         .moves = {MOVE_BUG_BUZZ, MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_QUIVER_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1791,7 +1791,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [199] = {
+    [FRONTIER_MON_FURRET_1] = {
         .species = SPECIES_FURRET,
         .moves = {MOVE_DYNAMIC_PUNCH, MOVE_COIL, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -1800,7 +1800,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [200] = {
+    [FRONTIER_MON_DUNSPARCE_1] = {
         .species = SPECIES_DUNSPARCE,
         .moves = {MOVE_BODY_SLAM, MOVE_ROCK_SLIDE, MOVE_COIL, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1809,7 +1809,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [201] = {
+    [FRONTIER_MON_DRAGONAIR_1] = {
         .species = SPECIES_DRAGONAIR,
         .moves = {MOVE_OUTRAGE, MOVE_DRAGON_DANCE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1818,7 +1818,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [202] = {
+    [FRONTIER_MON_MIGHTYENA_1] = {
         .species = SPECIES_MIGHTYENA,
         .moves = {MOVE_CRUNCH, MOVE_ICE_FANG, MOVE_FIRE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -1827,7 +1827,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [203] = {
+    [FRONTIER_MON_LINOONE_1] = {
         .species = SPECIES_LINOONE,
         .moves = {MOVE_EXTREME_SPEED, MOVE_SHADOW_CLAW, MOVE_SUBSTITUTE, MOVE_BELLY_DRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_SALAC_BERRY,
@@ -1836,7 +1836,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [204] = {
+    [FRONTIER_MON_CASTFORM_1] = {
         .species = SPECIES_CASTFORM,
         .moves = {MOVE_FIRE_BLAST, MOVE_HYDRO_PUMP, MOVE_THUNDERBOLT, MOVE_ICE_BEAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1845,7 +1845,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [205] = {
+    [FRONTIER_MON_SHELGON_1] = {
         .species = SPECIES_SHELGON,
         .moves = {MOVE_OUTRAGE, MOVE_FIRE_FANG, MOVE_CRUNCH, MOVE_ROCK_SLIDE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1854,7 +1854,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [206] = {
+    [FRONTIER_MON_METANG_1] = {
         .species = SPECIES_METANG,
         .moves = {MOVE_METEOR_MASH, MOVE_EARTHQUAKE, MOVE_ZEN_HEADBUTT, MOVE_THUNDER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1863,7 +1863,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [207] = {
+    [FRONTIER_MON_WIGGLYTUFF_1] = {
         .species = SPECIES_WIGGLYTUFF,
         .moves = {MOVE_DAZZLING_GLEAM, MOVE_THUNDERBOLT, MOVE_FIRE_BLAST, MOVE_FOCUS_BLAST},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -1872,7 +1872,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [208] = {
+    [FRONTIER_MON_SUNFLORA_1] = {
         .species = SPECIES_SUNFLORA,
         .moves = {MOVE_SOLAR_BEAM, MOVE_FIRE_BLAST, MOVE_EARTH_POWER, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1881,7 +1881,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [209] = {
+    [FRONTIER_MON_KADABRA_3] = {
         .species = SPECIES_KADABRA,
         .moves = {MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_SHADOW_BALL, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -1890,7 +1890,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [210] = {
+    [FRONTIER_MON_GLIGAR_1] = {
         .species = SPECIES_GLIGAR,
         .moves = {MOVE_GUILLOTINE, MOVE_EARTHQUAKE, MOVE_THUNDER_FANG, MOVE_ICE_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -1899,7 +1899,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [211] = {
+    [FRONTIER_MON_QWILFISH_1] = {
         .species = SPECIES_QWILFISH,
         .moves = {MOVE_LIQUIDATION, MOVE_POISON_JAB, MOVE_TOXIC_SPIKES, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1908,7 +1908,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [212] = {
+    [FRONTIER_MON_SNEASEL_1] = {
         .species = SPECIES_SNEASEL,
         .moves = {MOVE_ICE_SHARD, MOVE_KNOCK_OFF, MOVE_LOW_KICK, MOVE_PURSUIT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1917,7 +1917,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [213] = {
+    [FRONTIER_MON_PELIPPER_1] = {
         .species = SPECIES_PELIPPER,
         .moves = {MOVE_SURF, MOVE_HURRICANE, MOVE_ICE_BEAM, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -1926,7 +1926,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [214] = {
+    [FRONTIER_MON_SWELLOW_1] = {
         .species = SPECIES_SWELLOW,
         .moves = {MOVE_BOOMBURST, MOVE_HEAT_WAVE, MOVE_AIR_SLASH, MOVE_WORK_UP},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1935,7 +1935,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [215] = {
+    [FRONTIER_MON_LAIRON_1] = {
         .species = SPECIES_LAIRON,
         .moves = {MOVE_HEAD_SMASH, MOVE_EARTHQUAKE, MOVE_IRON_HEAD, MOVE_DOUBLE_EDGE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -1944,7 +1944,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [216] = {
+    [FRONTIER_MON_TANGELA_1] = {
         .species = SPECIES_TANGELA,
         .moves = {MOVE_GIGA_DRAIN, MOVE_HIDDEN_POWER, MOVE_MORNING_SUN, MOVE_LEECH_SEED},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1953,7 +1953,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 0
     },
-    [217] = {
+    [FRONTIER_MON_ARBOK_1] = {
         .species = SPECIES_ARBOK,
         .moves = {MOVE_GUNK_SHOT, MOVE_EARTHQUAKE, MOVE_GLARE, MOVE_COIL},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -1962,7 +1962,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [218] = {
+    [FRONTIER_MON_PERSIAN_1] = {
         .species = SPECIES_PERSIAN,
         .moves = {MOVE_FAKE_OUT, MOVE_KNOCK_OFF, MOVE_PLAY_ROUGH, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1971,7 +1971,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [219] = {
+    [FRONTIER_MON_SEADRA_1] = {
         .species = SPECIES_SEADRA,
         .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER, MOVE_FOCUS_ENERGY},
         .itemTableId = BATTLE_FRONTIER_ITEM_SCOPE_LENS,
@@ -1980,7 +1980,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 1
     },
-    [220] = {
+    [FRONTIER_MON_KECLEON_1] = {
         .species = SPECIES_KECLEON,
         .moves = {MOVE_KNOCK_OFF, MOVE_DRAIN_PUNCH, MOVE_SHADOW_SNEAK, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -1989,7 +1989,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [221] = {
+    [FRONTIER_MON_VIGOROTH_1] = {
         .species = SPECIES_VIGOROTH,
         .moves = {MOVE_FLAIL, MOVE_REVERSAL, MOVE_SHADOW_CLAW, MOVE_ENDURE},
         .itemTableId = BATTLE_FRONTIER_ITEM_SALAC_BERRY,
@@ -1998,7 +1998,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [222] = {
+    [FRONTIER_MON_LUNATONE_1] = {
         .species = SPECIES_LUNATONE,
         .moves = {MOVE_PSYCHIC, MOVE_POWER_GEM, MOVE_EARTH_POWER, MOVE_ROCK_POLISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -2007,7 +2007,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [223] = {
+    [FRONTIER_MON_SOLROCK_1] = {
         .species = SPECIES_SOLROCK,
         .moves = {MOVE_STONE_EDGE, MOVE_ZEN_HEADBUTT, MOVE_EARTHQUAKE, MOVE_ROCK_TOMB},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -2016,7 +2016,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [224] = {
+    [FRONTIER_MON_NOCTOWL_1] = {
         .species = SPECIES_NOCTOWL,
         .moves = {MOVE_HURRICANE, MOVE_HYPER_VOICE, MOVE_HEAT_WAVE, MOVE_AIR_SLASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -2025,7 +2025,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [225] = {
+    [FRONTIER_MON_SANDSLASH_1] = {
         .species = SPECIES_SANDSLASH,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SWORDS_DANCE, MOVE_SANDSTORM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2034,7 +2034,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [226] = {
+    [FRONTIER_MON_VENOMOTH_1] = {
         .species = SPECIES_VENOMOTH,
         .moves = {MOVE_BUG_BUZZ, MOVE_ROOST, MOVE_SLEEP_POWDER, MOVE_QUIVER_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2043,7 +2043,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [227] = {
+    [FRONTIER_MON_CHANSEY_1] = {
         .species = SPECIES_CHANSEY,
         .moves = {MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_CALM_MIND, MOVE_SOFT_BOILED},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2052,7 +2052,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [228] = {
+    [FRONTIER_MON_SEAKING_1] = {
         .species = SPECIES_SEAKING,
         .moves = {MOVE_HORN_DRILL, MOVE_DIVE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2061,7 +2061,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [229] = {
+    [FRONTIER_MON_JUMPLUFF_1] = {
         .species = SPECIES_JUMPLUFF,
         .moves = {MOVE_ACROBATICS, MOVE_SEED_BOMB, MOVE_SLEEP_POWDER, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_NONE,
@@ -2070,7 +2070,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [230] = {
+    [FRONTIER_MON_PILOSWINE_1] = {
         .species = SPECIES_PILOSWINE,
         .moves = {MOVE_ICE_SHARD, MOVE_EARTHQUAKE, MOVE_KNOCK_OFF, MOVE_SUPERPOWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -2079,7 +2079,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [231] = {
+    [FRONTIER_MON_GOLBAT_1] = {
         .species = SPECIES_GOLBAT,
         .moves = {MOVE_BRAVE_BIRD, MOVE_POISON_FANG, MOVE_PURSUIT, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -2088,7 +2088,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [232] = {
+    [FRONTIER_MON_PRIMEAPE_1] = {
         .species = SPECIES_PRIMEAPE,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_U_TURN, MOVE_STONE_EDGE, MOVE_GUNK_SHOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -2097,7 +2097,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [233] = {
+    [FRONTIER_MON_HITMONLEE_1] = {
         .species = SPECIES_HITMONLEE,
         .moves = {MOVE_HI_JUMP_KICK, MOVE_KNOCK_OFF, MOVE_STONE_EDGE, MOVE_ICE_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -2106,7 +2106,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [234] = {
+    [FRONTIER_MON_HITMONCHAN_1] = {
         .species = SPECIES_HITMONCHAN,
         .moves = {MOVE_DRAIN_PUNCH, MOVE_MACH_PUNCH, MOVE_ICE_PUNCH, MOVE_THUNDER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -2115,7 +2115,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [235] = {
+    [FRONTIER_MON_GIRAFARIG_1] = {
         .species = SPECIES_GIRAFARIG,
         .moves = {MOVE_PSYCHIC, MOVE_CALM_MIND, MOVE_SUBSTITUTE, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_SALAC_BERRY,
@@ -2124,7 +2124,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [236] = {
+    [FRONTIER_MON_HITMONTOP_1] = {
         .species = SPECIES_HITMONTOP,
         .moves = {MOVE_FAKE_OUT, MOVE_MACH_PUNCH, MOVE_BULLET_PUNCH, MOVE_CLOSE_COMBAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -2133,7 +2133,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [237] = {
+    [FRONTIER_MON_BANETTE_1] = {
         .species = SPECIES_BANETTE,
         .moves = {MOVE_SHADOW_FORCE, MOVE_GUNK_SHOT, MOVE_WILL_O_WISP, MOVE_SHADOW_SNEAK},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2142,7 +2142,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [238] = {
+    [FRONTIER_MON_NINJASK_1] = {
         .species = SPECIES_NINJASK,
         .moves = {MOVE_LEECH_LIFE, MOVE_AERIAL_ACE, MOVE_SWORDS_DANCE, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -2151,7 +2151,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [239] = {
+    [FRONTIER_MON_SEVIPER_1] = {
         .species = SPECIES_SEVIPER,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_DARK_PULSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2160,7 +2160,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [240] = {
+    [FRONTIER_MON_ZANGOOSE_1] = {
         .species = SPECIES_ZANGOOSE,
         .moves = {MOVE_RETURN, MOVE_CLOSE_COMBAT, MOVE_SHADOW_CLAW, MOVE_QUICK_ATTACK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -2169,7 +2169,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [241] = {
+    [FRONTIER_MON_CAMERUPT_1] = {
         .species = SPECIES_CAMERUPT,
         .moves = {MOVE_ERUPTION, MOVE_OVERHEAT, MOVE_EARTH_POWER, MOVE_FLAMETHROWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -2178,7 +2178,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [242] = {
+    [FRONTIER_MON_SHARPEDO_1] = {
         .species = SPECIES_SHARPEDO,
         .moves = {MOVE_CRUNCH, MOVE_AQUA_JET, MOVE_EARTHQUAKE, MOVE_ICE_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -2187,7 +2187,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [243] = {
+    [FRONTIER_MON_TROPIUS_1] = {
         .species = SPECIES_TROPIUS,
         .moves = {MOVE_FLY, MOVE_EARTHQUAKE, MOVE_ROOST, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2196,7 +2196,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [244] = {
+    [FRONTIER_MON_MAGNETON_1] = {
         .species = SPECIES_MAGNETON,
         .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_FLASH_CANNON, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -2205,7 +2205,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [245] = {
+    [FRONTIER_MON_MANTINE_1] = {
         .species = SPECIES_MANTINE,
         .moves = {MOVE_HURRICANE, MOVE_HYDRO_PUMP, MOVE_ROOST, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2214,7 +2214,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [246] = {
+    [FRONTIER_MON_STANTLER_1] = {
         .species = SPECIES_STANTLER,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_SUCKER_PUNCH, MOVE_JUMP_KICK, MOVE_MEGAHORN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -2223,7 +2223,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [247] = {
+    [FRONTIER_MON_ABSOL_1] = {
         .species = SPECIES_ABSOL,
         .moves = {MOVE_KNOCK_OFF, MOVE_PLAY_ROUGH, MOVE_SUPERPOWER, MOVE_SUCKER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -2232,7 +2232,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [248] = {
+    [FRONTIER_MON_SWALOT_1] = {
         .species = SPECIES_SWALOT,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_GIGA_DRAIN, MOVE_ICE_BEAM, MOVE_EARTHQUAKE},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -2241,7 +2241,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [249] = {
+    [FRONTIER_MON_CRAWDAUNT_1] = {
         .species = SPECIES_CRAWDAUNT,
         .moves = {MOVE_GUILLOTINE, MOVE_KNOCK_OFF, MOVE_CRABHAMMER, MOVE_AQUA_JET},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -2250,7 +2250,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [250] = {
+    [FRONTIER_MON_PIDGEOT_1] = {
         .species = SPECIES_PIDGEOT,
         .moves = {MOVE_HURRICANE, MOVE_HEAT_WAVE, MOVE_HYPER_BEAM, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -2259,7 +2259,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [251] = {
+    [FRONTIER_MON_GRUMPIG_1] = {
         .species = SPECIES_GRUMPIG,
         .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_SHADOW_BALL, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -2268,7 +2268,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [252] = {
+    [FRONTIER_MON_TORKOAL_1] = {
         .species = SPECIES_TORKOAL,
         .moves = {MOVE_FIRE_BLAST, MOVE_SOLAR_BEAM, MOVE_EARTH_POWER, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2277,7 +2277,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [253] = {
+    [FRONTIER_MON_KINGLER_1] = {
         .species = SPECIES_KINGLER,
         .moves = {MOVE_GUILLOTINE, MOVE_CRABHAMMER, MOVE_METEOR_MASH, MOVE_KNOCK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -2286,7 +2286,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [254] = {
+    [FRONTIER_MON_CACTURNE_1] = {
         .species = SPECIES_CACTURNE,
         .moves = {MOVE_NEEDLE_ARM, MOVE_KNOCK_OFF, MOVE_SWORDS_DANCE, MOVE_SANDSTORM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2295,7 +2295,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [255] = {
+    [FRONTIER_MON_BELLOSSOM_1] = {
         .species = SPECIES_BELLOSSOM,
         .moves = {MOVE_GIGA_DRAIN, MOVE_MOONBLAST, MOVE_QUIVER_DANCE, MOVE_STRENGTH_SAP},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2304,7 +2304,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [256] = {
+    [FRONTIER_MON_OCTILLERY_1] = {
         .species = SPECIES_OCTILLERY,
         .moves = {MOVE_SURF, MOVE_FIRE_BLAST, MOVE_ICE_BEAM, MOVE_ENERGY_BALL},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -2313,7 +2313,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [257] = {
+    [FRONTIER_MON_HUNTAIL_1] = {
         .species = SPECIES_HUNTAIL,
         .moves = {MOVE_WATERFALL, MOVE_ICE_FANG, MOVE_SUCKER_PUNCH, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_WHITE_HERB,
@@ -2322,7 +2322,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [258] = {
+    [FRONTIER_MON_GOREBYSS_1] = {
         .species = SPECIES_GOREBYSS,
         .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_PSYCHIC, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_WHITE_HERB,
@@ -2331,7 +2331,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [259] = {
+    [FRONTIER_MON_RELICANTH_1] = {
         .species = SPECIES_RELICANTH,
         .moves = {MOVE_HEAD_SMASH, MOVE_WATERFALL, MOVE_EARTHQUAKE, MOVE_ZEN_HEADBUTT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -2340,7 +2340,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [260] = {
+    [FRONTIER_MON_OMASTAR_1] = {
         .species = SPECIES_OMASTAR,
         .moves = {MOVE_HYDRO_PUMP, MOVE_MUD_BOMB, MOVE_ICE_BEAM, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -2349,7 +2349,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [261] = {
+    [FRONTIER_MON_KABUTOPS_1] = {
         .species = SPECIES_KABUTOPS,
         .moves = {MOVE_AQUA_JET, MOVE_STONE_EDGE, MOVE_RAIN_DANCE, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2358,7 +2358,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [262] = {
+    [FRONTIER_MON_POLIWRATH_1] = {
         .species = SPECIES_POLIWRATH,
         .moves = {MOVE_FOCUS_BLAST, MOVE_SCALD, MOVE_ICE_BEAM, MOVE_VACUUM_WAVE},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -2367,7 +2367,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [263] = {
+    [FRONTIER_MON_SCYTHER_1] = {
         .species = SPECIES_SCYTHER,
         .moves = {MOVE_AERIAL_ACE, MOVE_U_TURN, MOVE_BRICK_BREAK, MOVE_BUG_BITE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -2376,7 +2376,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [264] = {
+    [FRONTIER_MON_PINSIR_1] = {
         .species = SPECIES_PINSIR,
         .moves = {MOVE_GUILLOTINE, MOVE_X_SCISSOR, MOVE_KNOCK_OFF, MOVE_EARTHQUAKE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -2385,7 +2385,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [265] = {
+    [FRONTIER_MON_POLITOED_1] = {
         .species = SPECIES_POLITOED,
         .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_FOCUS_BLAST, MOVE_PSYCHIC},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -2394,7 +2394,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [266] = {
+    [FRONTIER_MON_CLOYSTER_1] = {
         .species = SPECIES_CLOYSTER,
         .moves = {MOVE_ICICLE_SPEAR, MOVE_HYDRO_PUMP, MOVE_ROCK_BLAST, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -2403,7 +2403,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [267] = {
+    [FRONTIER_MON_DELCATTY_2] = {
         .species = SPECIES_DELCATTY,
         .moves = {MOVE_MOONBLAST, MOVE_HYPER_VOICE, MOVE_THUNDERBOLT, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2412,7 +2412,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [268] = {
+    [FRONTIER_MON_SABLEYE_2] = {
         .species = SPECIES_SABLEYE,
         .moves = {MOVE_FOUL_PLAY, MOVE_WILL_O_WISP, MOVE_SEISMIC_TOSS, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2421,7 +2421,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [269] = {
+    [FRONTIER_MON_LICKITUNG_2] = {
         .species = SPECIES_LICKITUNG,
         .moves = {MOVE_BODY_SLAM, MOVE_EARTHQUAKE, MOVE_CURSE, MOVE_WISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2430,7 +2430,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [270] = {
+    [FRONTIER_MON_WEEPINBELL_2] = {
         .species = SPECIES_WEEPINBELL,
         .moves = {MOVE_SOLAR_BLADE, MOVE_POISON_JAB, MOVE_WEATHER_BALL, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2439,7 +2439,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [271] = {
+    [FRONTIER_MON_GRAVELER_2] = {
         .species = SPECIES_GRAVELER,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SUCKER_PUNCH, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -2448,7 +2448,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [272] = {
+    [FRONTIER_MON_GLOOM_2] = {
         .species = SPECIES_GLOOM,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_GIGA_DRAIN, MOVE_STRENGTH_SAP, MOVE_SLEEP_POWDER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2457,7 +2457,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [273] = {
+    [FRONTIER_MON_PORYGON_2] = {
         .species = SPECIES_PORYGON,
         .moves = {MOVE_ICE_BEAM, MOVE_DISCHARGE, MOVE_THUNDER_WAVE, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2466,7 +2466,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [274] = {
+    [FRONTIER_MON_KADABRA_2] = {
         .species = SPECIES_KADABRA,
         .moves = {MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_SHADOW_BALL, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2475,7 +2475,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [275] = {
+    [FRONTIER_MON_WAILMER_2] = {
         .species = SPECIES_WAILMER,
         .moves = {MOVE_WATER_SPOUT, MOVE_ICE_BEAM, MOVE_HYDRO_PUMP, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -2484,7 +2484,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 1
     },
-    [276] = {
+    [FRONTIER_MON_ROSELIA_2] = {
         .species = SPECIES_ROSELIA,
         .moves = {MOVE_TOXIC_SPIKES, MOVE_SLUDGE_BOMB, MOVE_LEAF_STORM, MOVE_SYNTHESIS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2493,7 +2493,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [277] = {
+    [FRONTIER_MON_VOLBEAT_2] = {
         .species = SPECIES_VOLBEAT,
         .moves = {MOVE_TAIL_GLOW, MOVE_BATON_PASS, MOVE_SUBSTITUTE, MOVE_THUNDER_WAVE},
         .itemTableId = BATTLE_FRONTIER_ITEM_SALAC_BERRY,
@@ -2502,7 +2502,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [278] = {
+    [FRONTIER_MON_ILLUMISE_2] = {
         .species = SPECIES_ILLUMISE,
         .moves = {MOVE_THUNDER_WAVE, MOVE_ENCORE, MOVE_ROOST, MOVE_BUG_BUZZ},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2511,7 +2511,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [279] = {
+    [FRONTIER_MON_IVYSAUR_2] = {
         .species = SPECIES_IVYSAUR,
         .moves = {MOVE_SOLAR_BEAM, MOVE_SLUDGE_BOMB, MOVE_HIDDEN_POWER, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2520,7 +2520,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 1
     },
-    [280] = {
+    [FRONTIER_MON_CHARMELEON_2] = {
         .species = SPECIES_CHARMELEON,
         .moves = {MOVE_FLARE_BLITZ, MOVE_THUNDER_PUNCH, MOVE_FLAME_CHARGE, MOVE_BELLY_DRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2529,7 +2529,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [281] = {
+    [FRONTIER_MON_WARTORTLE_2] = {
         .species = SPECIES_WARTORTLE,
         .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_AURA_SPHERE, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_WHITE_HERB,
@@ -2538,7 +2538,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [282] = {
+    [FRONTIER_MON_PARASECT_2] = {
         .species = SPECIES_PARASECT,
         .moves = {MOVE_SPORE, MOVE_LEECH_LIFE, MOVE_KNOCK_OFF, MOVE_SYNTHESIS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2547,7 +2547,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [283] = {
+    [FRONTIER_MON_MACHOKE_2] = {
         .species = SPECIES_MACHOKE,
         .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_BULLET_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -2556,7 +2556,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [284] = {
+    [FRONTIER_MON_HAUNTER_2] = {
         .species = SPECIES_HAUNTER,
         .moves = {MOVE_SHADOW_BALL, MOVE_SLUDGE_WAVE, MOVE_THUNDERBOLT, MOVE_DAZZLING_GLEAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -2565,7 +2565,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [285] = {
+    [FRONTIER_MON_BAYLEEF_2] = {
         .species = SPECIES_BAYLEEF,
         .moves = {MOVE_GIGA_DRAIN, MOVE_LEECH_SEED, MOVE_AROMATHERAPY, MOVE_SYNTHESIS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2574,7 +2574,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [286] = {
+    [FRONTIER_MON_QUILAVA_2] = {
         .species = SPECIES_QUILAVA,
         .moves = {MOVE_ERUPTION, MOVE_FLAMETHROWER, MOVE_EXTRASENSORY, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -2583,7 +2583,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [287] = {
+    [FRONTIER_MON_CROCONAW_2] = {
         .species = SPECIES_CROCONAW,
         .moves = {MOVE_LIQUIDATION, MOVE_ICE_FANG, MOVE_CRUNCH, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2592,7 +2592,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [288] = {
+    [FRONTIER_MON_TOGETIC_2] = {
         .species = SPECIES_TOGETIC,
         .moves = {MOVE_AIR_SLASH, MOVE_AURA_SPHERE, MOVE_FLAMETHROWER, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -2601,7 +2601,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [289] = {
+    [FRONTIER_MON_MURKROW_2] = {
         .species = SPECIES_MURKROW,
         .moves = {MOVE_BRAVE_BIRD, MOVE_NIGHT_SLASH, MOVE_SUPERPOWER, MOVE_DRILL_PECK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -2610,7 +2610,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [290] = {
+    [FRONTIER_MON_WOBBUFFET_2] = {
         .species = SPECIES_WOBBUFFET,
         .moves = {MOVE_COUNTER, MOVE_MIRROR_COAT, MOVE_ENCORE, MOVE_SAFEGUARD},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2619,7 +2619,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [291] = {
+    [FRONTIER_MON_PLUSLE_2] = {
         .species = SPECIES_PLUSLE,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_GRASS_KNOT, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -2628,7 +2628,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [292] = {
+    [FRONTIER_MON_MINUN_2] = {
         .species = SPECIES_MINUN,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_NUZZLE, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -2637,7 +2637,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [293] = {
+    [FRONTIER_MON_GROVYLE_2] = {
         .species = SPECIES_GROVYLE,
         .moves = {MOVE_LEAF_STORM, MOVE_HIDDEN_POWER, MOVE_ENERGY_BALL, MOVE_GIGA_DRAIN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -2646,7 +2646,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 0
     },
-    [294] = {
+    [FRONTIER_MON_COMBUSKEN_2] = {
         .species = SPECIES_COMBUSKEN,
         .moves = {MOVE_FLARE_BLITZ, MOVE_SKY_UPPERCUT, MOVE_THUNDER_PUNCH, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -2655,7 +2655,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [295] = {
+    [FRONTIER_MON_MARSHTOMP_2] = {
         .species = SPECIES_MARSHTOMP,
         .moves = {MOVE_WATERFALL, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2664,7 +2664,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [296] = {
+    [FRONTIER_MON_PONYTA_2] = {
         .species = SPECIES_PONYTA,
         .moves = {MOVE_FLARE_BLITZ, MOVE_HIGH_HORSEPOWER, MOVE_WILD_CHARGE, MOVE_FLAME_CHARGE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2673,7 +2673,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [297] = {
+    [FRONTIER_MON_AZUMARILL_2] = {
         .species = SPECIES_AZUMARILL,
         .moves = {MOVE_AQUA_JET, MOVE_PLAY_ROUGH, MOVE_KNOCK_OFF, MOVE_SUPERPOWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -2682,7 +2682,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [298] = {
+    [FRONTIER_MON_SUDOWOODO_2] = {
         .species = SPECIES_SUDOWOODO,
         .moves = {MOVE_HEAD_SMASH, MOVE_WOOD_HAMMER, MOVE_EARTHQUAKE, MOVE_SUCKER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -2691,7 +2691,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [299] = {
+    [FRONTIER_MON_MAGCARGO_2] = {
         .species = SPECIES_MAGCARGO,
         .moves = {MOVE_FIRE_BLAST, MOVE_MUD_BOMB, MOVE_EARTH_POWER, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -2700,7 +2700,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [300] = {
+    [FRONTIER_MON_PUPITAR_2] = {
         .species = SPECIES_PUPITAR,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SUPERPOWER, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2709,7 +2709,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [301] = {
+    [FRONTIER_MON_SEALEO_2] = {
         .species = SPECIES_SEALEO,
         .moves = {MOVE_SURF, MOVE_FREEZE_DRY, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2718,7 +2718,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [302] = {
+    [FRONTIER_MON_RATICATE_2] = {
         .species = SPECIES_RATICATE,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_CRUNCH, MOVE_STOMPING_TANTRUM, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -2727,7 +2727,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [303] = {
+    [FRONTIER_MON_MASQUERAIN_2] = {
         .species = SPECIES_MASQUERAIN,
         .moves = {MOVE_BUG_BUZZ, MOVE_HYDRO_PUMP, MOVE_QUIVER_DANCE, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2736,7 +2736,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [304] = {
+    [FRONTIER_MON_FURRET_2] = {
         .species = SPECIES_FURRET,
         .moves = {MOVE_RETURN, MOVE_DYNAMIC_PUNCH, MOVE_COIL, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -2745,7 +2745,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [305] = {
+    [FRONTIER_MON_DUNSPARCE_2] = {
         .species = SPECIES_DUNSPARCE,
         .moves = {MOVE_HEADBUTT, MOVE_GLARE, MOVE_COIL, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2754,7 +2754,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [306] = {
+    [FRONTIER_MON_DRAGONAIR_2] = {
         .species = SPECIES_DRAGONAIR,
         .moves = {MOVE_OUTRAGE, MOVE_EXTREME_SPEED, MOVE_AQUA_JET, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2763,7 +2763,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [307] = {
+    [FRONTIER_MON_MIGHTYENA_2] = {
         .species = SPECIES_MIGHTYENA,
         .moves = {MOVE_CRUNCH, MOVE_PLAY_ROUGH, MOVE_POISON_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -2772,7 +2772,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [308] = {
+    [FRONTIER_MON_LINOONE_2] = {
         .species = SPECIES_LINOONE,
         .moves = {MOVE_EXTREME_SPEED, MOVE_SEED_BOMB, MOVE_SHADOW_CLAW, MOVE_BELLY_DRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2781,7 +2781,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [309] = {
+    [FRONTIER_MON_CASTFORM_2] = {
         .species = SPECIES_CASTFORM,
         .moves = {MOVE_WEATHER_BALL, MOVE_HURRICANE, MOVE_THUNDER, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2790,7 +2790,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [310] = {
+    [FRONTIER_MON_SHELGON_2] = {
         .species = SPECIES_SHELGON,
         .moves = {MOVE_OUTRAGE, MOVE_DRAGON_CLAW, MOVE_FIRE_FANG, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2799,7 +2799,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [311] = {
+    [FRONTIER_MON_METANG_2] = {
         .species = SPECIES_METANG,
         .moves = {MOVE_METEOR_MASH, MOVE_EARTHQUAKE, MOVE_BULLET_PUNCH, MOVE_THUNDER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -2808,7 +2808,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [312] = {
+    [FRONTIER_MON_WIGGLYTUFF_2] = {
         .species = SPECIES_WIGGLYTUFF,
         .moves = {MOVE_HYPER_VOICE, MOVE_DAZZLING_GLEAM, MOVE_FIRE_BLAST, MOVE_FOCUS_BLAST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -2817,7 +2817,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [313] = {
+    [FRONTIER_MON_SUNFLORA_2] = {
         .species = SPECIES_SUNFLORA,
         .moves = {MOVE_SOLAR_BEAM, MOVE_WEATHER_BALL, MOVE_EARTH_POWER, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2835,7 +2835,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [315] = {
+    [FRONTIER_MON_GLIGAR_2] = {
         .species = SPECIES_GLIGAR,
         .moves = {MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_THUNDER_FANG, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -2844,7 +2844,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [316] = {
+    [FRONTIER_MON_QWILFISH_2] = {
         .species = SPECIES_QWILFISH,
         .moves = {MOVE_LIQUIDATION, MOVE_POISON_JAB, MOVE_SWORDS_DANCE, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2853,7 +2853,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [317] = {
+    [FRONTIER_MON_SNEASEL_2] = {
         .species = SPECIES_SNEASEL,
         .moves = {MOVE_ICE_BEAM, MOVE_DARK_PULSE, MOVE_FOCUS_BLAST, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -2862,7 +2862,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [318] = {
+    [FRONTIER_MON_PELIPPER_2] = {
         .species = SPECIES_PELIPPER,
         .moves = {MOVE_SURF, MOVE_HURRICANE, MOVE_ICE_BEAM, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -2871,7 +2871,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [319] = {
+    [FRONTIER_MON_SWELLOW_2] = {
         .species = SPECIES_SWELLOW,
         .moves = {MOVE_BOOMBURST, MOVE_HEAT_WAVE, MOVE_AIR_SLASH, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -2880,7 +2880,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [320] = {
+    [FRONTIER_MON_LAIRON_2] = {
         .species = SPECIES_LAIRON,
         .moves = {MOVE_HEAD_SMASH, MOVE_EARTHQUAKE, MOVE_IRON_HEAD, MOVE_AUTOTOMIZE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2889,7 +2889,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [321] = {
+    [FRONTIER_MON_TANGELA_2] = {
         .species = SPECIES_TANGELA,
         .moves = {MOVE_SOLAR_BEAM, MOVE_HIDDEN_POWER, MOVE_MORNING_SUN, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2898,7 +2898,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 0
     },
-    [322] = {
+    [FRONTIER_MON_ARBOK_2] = {
         .species = SPECIES_ARBOK,
         .moves = {MOVE_GUNK_SHOT, MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_COIL},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2907,7 +2907,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [323] = {
+    [FRONTIER_MON_PERSIAN_2] = {
         .species = SPECIES_PERSIAN,
         .moves = {MOVE_THUNDER_WAVE, MOVE_SWAGGER, MOVE_FOUL_PLAY, MOVE_SUBSTITUTE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2916,7 +2916,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [324] = {
+    [FRONTIER_MON_SEADRA_2] = {
         .species = SPECIES_SEADRA,
         .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER, MOVE_AGILITY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2925,7 +2925,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [325] = {
+    [FRONTIER_MON_KECLEON_2] = {
         .species = SPECIES_KECLEON,
         .moves = {MOVE_KNOCK_OFF, MOVE_DRAIN_PUNCH, MOVE_SHADOW_SNEAK, MOVE_SUCKER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -2934,7 +2934,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [326] = {
+    [FRONTIER_MON_VIGOROTH_2] = {
         .species = SPECIES_VIGOROTH,
         .moves = {MOVE_BODY_SLAM, MOVE_EARTHQUAKE, MOVE_BULK_UP, MOVE_SLACK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2943,7 +2943,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [327] = {
+    [FRONTIER_MON_LUNATONE_2] = {
         .species = SPECIES_LUNATONE,
         .moves = {MOVE_PSYCHIC, MOVE_POWER_GEM, MOVE_EARTH_POWER, MOVE_ROCK_POLISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2952,7 +2952,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [328] = {
+    [FRONTIER_MON_SOLROCK_2] = {
         .species = SPECIES_SOLROCK,
         .moves = {MOVE_STONE_EDGE, MOVE_ZEN_HEADBUTT, MOVE_EARTHQUAKE, MOVE_MORNING_SUN},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2961,7 +2961,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [329] = {
+    [FRONTIER_MON_NOCTOWL_2] = {
         .species = SPECIES_NOCTOWL,
         .moves = {MOVE_HURRICANE, MOVE_HYPER_VOICE, MOVE_HEAT_WAVE, MOVE_AIR_SLASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -2970,7 +2970,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [330] = {
+    [FRONTIER_MON_SANDSLASH_2] = {
         .species = SPECIES_SANDSLASH,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SWORDS_DANCE, MOVE_SANDSTORM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -2979,7 +2979,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [331] = {
+    [FRONTIER_MON_VENOMOTH_2] = {
         .species = SPECIES_VENOMOTH,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_BUG_BUZZ, MOVE_SLEEP_POWDER, MOVE_QUIVER_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -2988,7 +2988,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [332] = {
+    [FRONTIER_MON_CHANSEY_2] = {
         .species = SPECIES_CHANSEY,
         .moves = {MOVE_SEISMIC_TOSS, MOVE_AROMATHERAPY, MOVE_SOFT_BOILED, MOVE_TOXIC},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -2997,7 +2997,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [333] = {
+    [FRONTIER_MON_SEAKING_2] = {
         .species = SPECIES_SEAKING,
         .moves = {MOVE_DIVE, MOVE_MEGAHORN, MOVE_DRILL_RUN, MOVE_KNOCK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -3006,7 +3006,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [334] = {
+    [FRONTIER_MON_JUMPLUFF_2] = {
         .species = SPECIES_JUMPLUFF,
         .moves = {MOVE_ACROBATICS, MOVE_SLEEP_POWDER, MOVE_SWORDS_DANCE, MOVE_STRENGTH_SAP},
         .itemTableId = BATTLE_FRONTIER_ITEM_NONE,
@@ -3015,7 +3015,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [335] = {
+    [FRONTIER_MON_PILOSWINE_2] = {
         .species = SPECIES_PILOSWINE,
         .moves = {MOVE_AVALANCHE, MOVE_EARTHQUAKE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3024,7 +3024,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [336] = {
+    [FRONTIER_MON_GOLBAT_2] = {
         .species = SPECIES_GOLBAT,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_HEAT_WAVE, MOVE_AIR_SLASH, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3033,7 +3033,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [337] = {
+    [FRONTIER_MON_PRIMEAPE_2] = {
         .species = SPECIES_PRIMEAPE,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_U_TURN, MOVE_STONE_EDGE, MOVE_GUNK_SHOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -3042,7 +3042,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [338] = {
+    [FRONTIER_MON_HITMONLEE_2] = {
         .species = SPECIES_HITMONLEE,
         .moves = {MOVE_HI_JUMP_KICK, MOVE_KNOCK_OFF, MOVE_MACH_PUNCH, MOVE_SUCKER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3051,7 +3051,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [339] = {
+    [FRONTIER_MON_HITMONCHAN_2] = {
         .species = SPECIES_HITMONCHAN,
         .moves = {MOVE_DRAIN_PUNCH, MOVE_MACH_PUNCH, MOVE_ICE_PUNCH, MOVE_THUNDER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3060,7 +3060,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [340] = {
+    [FRONTIER_MON_GIRAFARIG_2] = {
         .species = SPECIES_GIRAFARIG,
         .moves = {MOVE_RETURN, MOVE_PSYCHIC_FANGS, MOVE_EARTHQUAKE, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -3069,7 +3069,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [341] = {
+    [FRONTIER_MON_HITMONTOP_2] = {
         .species = SPECIES_HITMONTOP,
         .moves = {MOVE_FAKE_OUT, MOVE_MACH_PUNCH, MOVE_BULLET_PUNCH, MOVE_REVENGE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3078,7 +3078,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [342] = {
+    [FRONTIER_MON_BANETTE_2] = {
         .species = SPECIES_BANETTE,
         .moves = {MOVE_SHADOW_FORCE, MOVE_SHADOW_SNEAK, MOVE_WAKE_UP_SLAP, MOVE_HYPNOSIS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3087,7 +3087,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [343] = {
+    [FRONTIER_MON_NINJASK_2] = {
         .species = SPECIES_NINJASK,
         .moves = {MOVE_U_TURN, MOVE_AERIAL_ACE, MOVE_LEECH_LIFE, MOVE_NIGHT_SLASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -3096,7 +3096,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [344] = {
+    [FRONTIER_MON_SEVIPER_2] = {
         .species = SPECIES_SEVIPER,
         .moves = {MOVE_SLUDGE_WAVE, MOVE_DARK_PULSE, MOVE_FLAMETHROWER, MOVE_GIGA_DRAIN},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -3105,7 +3105,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [345] = {
+    [FRONTIER_MON_ZANGOOSE_2] = {
         .species = SPECIES_ZANGOOSE,
         .moves = {MOVE_RETURN, MOVE_CLOSE_COMBAT, MOVE_SHADOW_CLAW, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3114,7 +3114,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [346] = {
+    [FRONTIER_MON_CAMERUPT_2] = {
         .species = SPECIES_CAMERUPT,
         .moves = {MOVE_ERUPTION, MOVE_FIRE_BLAST, MOVE_EARTH_POWER, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -3123,7 +3123,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [347] = {
+    [FRONTIER_MON_SHARPEDO_2] = {
         .species = SPECIES_SHARPEDO,
         .moves = {MOVE_CRUNCH, MOVE_AQUA_JET, MOVE_EARTHQUAKE, MOVE_ICE_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -3132,7 +3132,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [348] = {
+    [FRONTIER_MON_TROPIUS_2] = {
         .species = SPECIES_TROPIUS,
         .moves = {MOVE_SOLAR_BEAM, MOVE_AIR_SLASH, MOVE_SYNTHESIS, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3141,7 +3141,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [349] = {
+    [FRONTIER_MON_MAGNETON_2] = {
         .species = SPECIES_MAGNETON,
         .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_FLASH_CANNON, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -3150,7 +3150,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [350] = {
+    [FRONTIER_MON_MANTINE_2] = {
         .species = SPECIES_MANTINE,
         .moves = {MOVE_SCALD, MOVE_AIR_SLASH, MOVE_TOXIC, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3159,7 +3159,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [351] = {
+    [FRONTIER_MON_STANTLER_2] = {
         .species = SPECIES_STANTLER,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_SUCKER_PUNCH, MOVE_JUMP_KICK, MOVE_EARTHQUAKE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3168,7 +3168,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [352] = {
+    [FRONTIER_MON_ABSOL_2] = {
         .species = SPECIES_ABSOL,
         .moves = {MOVE_NIGHT_SLASH, MOVE_STONE_EDGE, MOVE_PSYCHO_CUT, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_SCOPE_LENS,
@@ -3177,7 +3177,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [353] = {
+    [FRONTIER_MON_SWALOT_2] = {
         .species = SPECIES_SWALOT,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_EARTHQUAKE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3186,7 +3186,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [354] = {
+    [FRONTIER_MON_CRAWDAUNT_2] = {
         .species = SPECIES_CRAWDAUNT,
         .moves = {MOVE_AQUA_JET, MOVE_KNOCK_OFF, MOVE_GUILLOTINE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3195,7 +3195,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [355] = {
+    [FRONTIER_MON_PIDGEOT_2] = {
         .species = SPECIES_PIDGEOT,
         .moves = {MOVE_HURRICANE, MOVE_HEAT_WAVE, MOVE_HYPER_BEAM, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -3204,7 +3204,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [356] = {
+    [FRONTIER_MON_GRUMPIG_2] = {
         .species = SPECIES_GRUMPIG,
         .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_SHADOW_BALL, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3213,7 +3213,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [357] = {
+    [FRONTIER_MON_TORKOAL_2] = {
         .species = SPECIES_TORKOAL,
         .moves = {MOVE_FLAMETHROWER, MOVE_SOLAR_BEAM, MOVE_EARTH_POWER, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -3222,7 +3222,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [358] = {
+    [FRONTIER_MON_KINGLER_2] = {
         .species = SPECIES_KINGLER,
         .moves = {MOVE_GUILLOTINE, MOVE_KNOCK_OFF, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3231,7 +3231,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [359] = {
+    [FRONTIER_MON_CACTURNE_2] = {
         .species = SPECIES_CACTURNE,
         .moves = {MOVE_NEEDLE_ARM, MOVE_KNOCK_OFF, MOVE_DRAIN_PUNCH, MOVE_SANDSTORM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3240,7 +3240,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [360] = {
+    [FRONTIER_MON_BELLOSSOM_2] = {
         .species = SPECIES_BELLOSSOM,
         .moves = {MOVE_GIGA_DRAIN, MOVE_SLEEP_POWDER, MOVE_QUIVER_DANCE, MOVE_STRENGTH_SAP},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3249,7 +3249,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [361] = {
+    [FRONTIER_MON_OCTILLERY_2] = {
         .species = SPECIES_OCTILLERY,
         .moves = {MOVE_SURF, MOVE_FIRE_BLAST, MOVE_ICE_BEAM, MOVE_ENERGY_BALL},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -3258,7 +3258,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [362] = {
+    [FRONTIER_MON_HUNTAIL_2] = {
         .species = SPECIES_HUNTAIL,
         .moves = {MOVE_WATERFALL, MOVE_ICE_FANG, MOVE_BATON_PASS, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_WHITE_HERB,
@@ -3267,7 +3267,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [363] = {
+    [FRONTIER_MON_GOREBYSS_2] = {
         .species = SPECIES_GOREBYSS,
         .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3276,7 +3276,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [364] = {
+    [FRONTIER_MON_RELICANTH_2] = {
         .species = SPECIES_RELICANTH,
         .moves = {MOVE_HEAD_SMASH, MOVE_WATERFALL, MOVE_EARTHQUAKE, MOVE_ROCK_POLISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3285,7 +3285,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [365] = {
+    [FRONTIER_MON_OMASTAR_2] = {
         .species = SPECIES_OMASTAR,
         .moves = {MOVE_HYDRO_PUMP, MOVE_MUD_BOMB, MOVE_ICE_BEAM, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_WHITE_HERB,
@@ -3294,7 +3294,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [366] = {
+    [FRONTIER_MON_KABUTOPS_2] = {
         .species = SPECIES_KABUTOPS,
         .moves = {MOVE_LIQUIDATION, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_SUPERPOWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -3303,7 +3303,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [367] = {
+    [FRONTIER_MON_POLIWRATH_2] = {
         .species = SPECIES_POLIWRATH,
         .moves = {MOVE_CIRCLE_THROW, MOVE_SCALD, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3312,7 +3312,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [368] = {
+    [FRONTIER_MON_SCYTHER_2] = {
         .species = SPECIES_SCYTHER,
         .moves = {MOVE_AERIAL_ACE, MOVE_U_TURN, MOVE_BRICK_BREAK, MOVE_KNOCK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -3321,7 +3321,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [369] = {
+    [FRONTIER_MON_PINSIR_2] = {
         .species = SPECIES_PINSIR,
         .moves = {MOVE_X_SCISSOR, MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3330,7 +3330,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [370] = {
+    [FRONTIER_MON_POLITOED_2] = {
         .species = SPECIES_POLITOED,
         .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_FOCUS_BLAST, MOVE_PSYCHIC},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -3339,7 +3339,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [371] = {
+    [FRONTIER_MON_CLOYSTER_2] = {
         .species = SPECIES_CLOYSTER,
         .moves = {MOVE_ICICLE_SPEAR, MOVE_LIQUIDATION, MOVE_ROCK_BLAST, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -3348,7 +3348,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [372] = {
+    [FRONTIER_MON_DUGTRIO_1] = {
         .species = SPECIES_DUGTRIO,
         .moves = {MOVE_EARTHQUAKE, MOVE_REVERSAL, MOVE_STONE_EDGE, MOVE_SUCKER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -3357,7 +3357,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [373] = {
+    [FRONTIER_MON_MEDICHAM_1] = {
         .species = SPECIES_MEDICHAM,
         .moves = {MOVE_REVERSAL, MOVE_ZEN_HEADBUTT, MOVE_ENDURE, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_SALAC_BERRY,
@@ -3366,7 +3366,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [374] = {
+    [FRONTIER_MON_MISDREAVUS_1] = {
         .species = SPECIES_MISDREAVUS,
         .moves = {MOVE_SHADOW_BALL, MOVE_POWER_GEM, MOVE_DAZZLING_GLEAM, MOVE_ENERGY_BALL},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -3375,7 +3375,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [375] = {
+    [FRONTIER_MON_FEAROW_1] = {
         .species = SPECIES_FEAROW,
         .moves = {MOVE_RETURN, MOVE_DRILL_PECK, MOVE_DRILL_RUN, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -3384,7 +3384,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [376] = {
+    [FRONTIER_MON_GRANBULL_1] = {
         .species = SPECIES_GRANBULL,
         .moves = {MOVE_PLAY_ROUGH, MOVE_EARTHQUAKE, MOVE_BULK_UP, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -3393,7 +3393,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [377] = {
+    [FRONTIER_MON_JYNX_1] = {
         .species = SPECIES_JYNX,
         .moves = {MOVE_ICE_BEAM, MOVE_FOCUS_BLAST, MOVE_NASTY_PLOT, MOVE_LOVELY_KISS},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -3402,7 +3402,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [378] = {
+    [FRONTIER_MON_DUSCLOPS_1] = {
         .species = SPECIES_DUSCLOPS,
         .moves = {MOVE_SHADOW_SNEAK, MOVE_POWER_UP_PUNCH, MOVE_WILL_O_WISP, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3411,7 +3411,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [379] = {
+    [FRONTIER_MON_DODRIO_1] = {
         .species = SPECIES_DODRIO,
         .moves = {MOVE_FLAIL, MOVE_DRILL_PECK, MOVE_JUMP_KICK, MOVE_ENDURE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIECHI_BERRY,
@@ -3420,7 +3420,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [380] = {
+    [FRONTIER_MON_MR_MIME_1] = {
         .species = SPECIES_MR_MIME,
         .moves = {MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_FOCUS_BLAST, MOVE_HEALING_WISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -3429,7 +3429,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [381] = {
+    [FRONTIER_MON_LANTURN_1] = {
         .species = SPECIES_LANTURN,
         .moves = {MOVE_SCALD, MOVE_VOLT_SWITCH, MOVE_ICE_BEAM, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -3438,7 +3438,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [382] = {
+    [FRONTIER_MON_BRELOOM_1] = {
         .species = SPECIES_BRELOOM,
         .moves = {MOVE_BULLET_SEED, MOVE_FORCE_PALM, MOVE_ROCK_TOMB, MOVE_SPORE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -3447,7 +3447,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [383] = {
+    [FRONTIER_MON_FORRETRESS_1] = {
         .species = SPECIES_FORRETRESS,
         .moves = {MOVE_GYRO_BALL, MOVE_EARTHQUAKE, MOVE_COUNTER, MOVE_TOXIC_SPIKES},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3456,7 +3456,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [384] = {
+    [FRONTIER_MON_WHISCASH_1] = {
         .species = SPECIES_WHISCASH,
         .moves = {MOVE_EARTHQUAKE, MOVE_WATERFALL, MOVE_STONE_EDGE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3465,7 +3465,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [385] = {
+    [FRONTIER_MON_XATU_1] = {
         .species = SPECIES_XATU,
         .moves = {MOVE_PSYCHIC, MOVE_HEAT_WAVE, MOVE_CALM_MIND, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3474,7 +3474,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [386] = {
+    [FRONTIER_MON_SKARMORY_1] = {
         .species = SPECIES_SKARMORY,
         .moves = {MOVE_SPIKES, MOVE_STEALTH_ROCK, MOVE_WHIRLWIND, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3492,7 +3492,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [388] = {
+    [FRONTIER_MON_QUAGSIRE_1] = {
         .species = SPECIES_QUAGSIRE,
         .moves = {MOVE_EARTHQUAKE, MOVE_DIVE, MOVE_ICE_PUNCH, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3501,7 +3501,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [389] = {
+    [FRONTIER_MON_CLEFABLE_1] = {
         .species = SPECIES_CLEFABLE,
         .moves = {MOVE_MOONBLAST, MOVE_FLAMETHROWER, MOVE_CALM_MIND, MOVE_SOFT_BOILED},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3510,7 +3510,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [390] = {
+    [FRONTIER_MON_HARIYAMA_1] = {
         .species = SPECIES_HARIYAMA,
         .moves = {MOVE_REVENGE, MOVE_KNOCK_OFF, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3519,7 +3519,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [391] = {
+    [FRONTIER_MON_RAICHU_1] = {
         .species = SPECIES_RAICHU,
         .moves = {MOVE_THUNDERBOLT, MOVE_SURF, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -3528,7 +3528,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [392] = {
+    [FRONTIER_MON_DEWGONG_1] = {
         .species = SPECIES_DEWGONG,
         .moves = {MOVE_PERISH_SONG, MOVE_WHIRLPOOL, MOVE_RAIN_DANCE, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3537,7 +3537,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [393] = {
+    [FRONTIER_MON_MANECTRIC_1] = {
         .species = SPECIES_MANECTRIC,
         .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_OVERHEAT, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -3546,7 +3546,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [394] = {
+    [FRONTIER_MON_VILEPLUME_1] = {
         .species = SPECIES_VILEPLUME,
         .moves = {MOVE_PETAL_BLIZZARD, MOVE_GUNK_SHOT, MOVE_DRAIN_PUNCH, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3555,7 +3555,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [395] = {
+    [FRONTIER_MON_VICTREEBEL_1] = {
         .species = SPECIES_VICTREEBEL,
         .moves = {MOVE_SOLAR_BLADE, MOVE_POISON_JAB, MOVE_WEATHER_BALL, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3564,7 +3564,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [396] = {
+    [FRONTIER_MON_ELECTRODE_1] = {
         .species = SPECIES_ELECTRODE,
         .moves = {MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_EXPLOSION, MOVE_VOLT_SWITCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -3573,7 +3573,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [397] = {
+    [FRONTIER_MON_EXPLOUD_1] = {
         .species = SPECIES_EXPLOUD,
         .moves = {MOVE_BOOMBURST, MOVE_FOCUS_BLAST, MOVE_FIRE_BLAST, MOVE_SURF},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3582,7 +3582,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [398] = {
+    [FRONTIER_MON_SHIFTRY_1] = {
         .species = SPECIES_SHIFTRY,
         .moves = {MOVE_LEAF_STORM, MOVE_DARK_PULSE, MOVE_FOCUS_BLAST, MOVE_HURRICANE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -3591,7 +3591,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [399] = {
+    [FRONTIER_MON_GLALIE_1] = {
         .species = SPECIES_GLALIE,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_CRUNCH, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -3600,7 +3600,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [400] = {
+    [FRONTIER_MON_LUDICOLO_1] = {
         .species = SPECIES_LUDICOLO,
         .moves = {MOVE_SCALD, MOVE_GIGA_DRAIN, MOVE_LEECH_SEED, MOVE_SYNTHESIS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3609,7 +3609,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [401] = {
+    [FRONTIER_MON_HYPNO_1] = {
         .species = SPECIES_HYPNO,
         .moves = {MOVE_ZEN_HEADBUTT, MOVE_DRAIN_PUNCH, MOVE_HYPNOSIS, MOVE_BELLY_DRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3618,7 +3618,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [402] = {
+    [FRONTIER_MON_GOLEM_1] = {
         .species = SPECIES_GOLEM,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3627,7 +3627,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [403] = {
+    [FRONTIER_MON_RHYDON_1] = {
         .species = SPECIES_RHYDON,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SWORDS_DANCE, MOVE_ROCK_POLISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3636,7 +3636,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [404] = {
+    [FRONTIER_MON_ALAKAZAM_1] = {
         .species = SPECIES_ALAKAZAM,
         .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_SHADOW_BALL, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -3645,7 +3645,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 1
     },
-    [405] = {
+    [FRONTIER_MON_WEEZING_1] = {
         .species = SPECIES_WEEZING,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_FLAMETHROWER, MOVE_TOXIC_SPIKES, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3654,7 +3654,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [406] = {
+    [FRONTIER_MON_KANGASKHAN_1] = {
         .species = SPECIES_KANGASKHAN,
         .moves = {MOVE_RETURN, MOVE_FOCUS_PUNCH, MOVE_SUBSTITUTE, MOVE_FAKE_OUT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3663,7 +3663,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [407] = {
+    [FRONTIER_MON_ELECTABUZZ_1] = {
         .species = SPECIES_ELECTABUZZ,
         .moves = {MOVE_THUNDER_PUNCH, MOVE_ICE_PUNCH, MOVE_EARTHQUAKE, MOVE_FIRE_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3672,7 +3672,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [408] = {
+    [FRONTIER_MON_TAUROS_1] = {
         .species = SPECIES_TAUROS,
         .moves = {MOVE_HEAD_CHARGE, MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_ZEN_HEADBUTT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -3681,7 +3681,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [409] = {
+    [FRONTIER_MON_SLOWBRO_1] = {
         .species = SPECIES_SLOWBRO,
         .moves = {MOVE_SCALD, MOVE_CALM_MIND, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3690,7 +3690,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [410] = {
+    [FRONTIER_MON_SLOWKING_1] = {
         .species = SPECIES_SLOWKING,
         .moves = {MOVE_DIVE, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3699,7 +3699,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [411] = {
+    [FRONTIER_MON_MILTANK_1] = {
         .species = SPECIES_MILTANK,
         .moves = {MOVE_BODY_SLAM, MOVE_BRICK_BREAK, MOVE_CURSE, MOVE_MILK_DRINK},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3708,7 +3708,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [412] = {
+    [FRONTIER_MON_ALTARIA_1] = {
         .species = SPECIES_ALTARIA,
         .moves = {MOVE_DRACO_METEOR, MOVE_FIRE_BLAST, MOVE_DRAGON_PULSE, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -3717,7 +3717,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [413] = {
+    [FRONTIER_MON_NIDOQUEEN_1] = {
         .species = SPECIES_NIDOQUEEN,
         .moves = {MOVE_EARTH_POWER, MOVE_ICE_BEAM, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3726,7 +3726,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [414] = {
+    [FRONTIER_MON_NIDOKING_1] = {
         .species = SPECIES_NIDOKING,
         .moves = {MOVE_EARTHQUAKE, MOVE_POISON_FANG, MOVE_ICE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -3735,7 +3735,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [415] = {
+    [FRONTIER_MON_MAGMAR_1] = {
         .species = SPECIES_MAGMAR,
         .moves = {MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST, MOVE_HIDDEN_POWER, MOVE_OVERHEAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -3744,7 +3744,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 1
     },
-    [416] = {
+    [FRONTIER_MON_CRADILY_1] = {
         .species = SPECIES_CRADILY,
         .moves = {MOVE_GIGA_DRAIN, MOVE_MUD_BOMB, MOVE_EARTH_POWER, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3753,7 +3753,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [417] = {
+    [FRONTIER_MON_ARMALDO_1] = {
         .species = SPECIES_ARMALDO,
         .moves = {MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3762,7 +3762,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [418] = {
+    [FRONTIER_MON_GOLDUCK_1] = {
         .species = SPECIES_GOLDUCK,
         .moves = {MOVE_HYDRO_PUMP, MOVE_PSYCHIC, MOVE_ICE_BEAM, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3771,7 +3771,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [419] = {
+    [FRONTIER_MON_RAPIDASH_1] = {
         .species = SPECIES_RAPIDASH,
         .moves = {MOVE_FIRE_BLAST, MOVE_SOLAR_BEAM, MOVE_HIGH_HORSEPOWER, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -3780,7 +3780,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [420] = {
+    [FRONTIER_MON_MUK_1] = {
         .species = SPECIES_MUK,
         .moves = {MOVE_GUNK_SHOT, MOVE_SHADOW_SNEAK, MOVE_FIRE_PUNCH, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -3789,7 +3789,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [421] = {
+    [FRONTIER_MON_GENGAR_1] = {
         .species = SPECIES_GENGAR,
         .moves = {MOVE_SLUDGE_WAVE, MOVE_HEX, MOVE_FOCUS_BLAST, MOVE_WILL_O_WISP},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -3798,7 +3798,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [422] = {
+    [FRONTIER_MON_AMPHAROS_1] = {
         .species = SPECIES_AMPHAROS,
         .moves = {MOVE_DISCHARGE, MOVE_HIDDEN_POWER, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3807,7 +3807,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [423] = {
+    [FRONTIER_MON_SCIZOR_1] = {
         .species = SPECIES_SCIZOR,
         .moves = {MOVE_BULLET_PUNCH, MOVE_BUG_BITE, MOVE_BRICK_BREAK, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3816,7 +3816,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [424] = {
+    [FRONTIER_MON_HERACROSS_1] = {
         .species = SPECIES_HERACROSS,
         .moves = {MOVE_DRAIN_PUNCH, MOVE_STONE_EDGE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3825,7 +3825,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [425] = {
+    [FRONTIER_MON_URSARING_1] = {
         .species = SPECIES_URSARING,
         .moves = {MOVE_RETURN, MOVE_EARTHQUAKE, MOVE_SUBSTITUTE, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3834,7 +3834,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [426] = {
+    [FRONTIER_MON_HOUNDOOM_1] = {
         .species = SPECIES_HOUNDOOM,
         .moves = {MOVE_CRUNCH, MOVE_FIRE_FANG, MOVE_THUNDER_FANG, MOVE_SUCKER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -3843,7 +3843,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [427] = {
+    [FRONTIER_MON_DONPHAN_1] = {
         .species = SPECIES_DONPHAN,
         .moves = {MOVE_EARTHQUAKE, MOVE_ICE_SHARD, MOVE_FIRE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -3852,7 +3852,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [428] = {
+    [FRONTIER_MON_CLAYDOL_1] = {
         .species = SPECIES_CLAYDOL,
         .moves = {MOVE_EARTHQUAKE, MOVE_ZEN_HEADBUTT, MOVE_STONE_EDGE, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -3861,7 +3861,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [429] = {
+    [FRONTIER_MON_WAILORD_1] = {
         .species = SPECIES_WAILORD,
         .moves = {MOVE_WATER_SPOUT, MOVE_ICE_BEAM, MOVE_HYDRO_PUMP, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -3870,7 +3870,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 1
     },
-    [430] = {
+    [FRONTIER_MON_NINETALES_1] = {
         .species = SPECIES_NINETALES,
         .moves = {MOVE_HYPNOSIS, MOVE_MORNING_SUN, MOVE_HEX, MOVE_FLAMETHROWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3879,7 +3879,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [431] = {
+    [FRONTIER_MON_MACHAMP_1] = {
         .species = SPECIES_MACHAMP,
         .moves = {MOVE_FOCUS_PUNCH, MOVE_SUBSTITUTE, MOVE_STONE_EDGE, MOVE_BULK_UP},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3888,7 +3888,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [432] = {
+    [FRONTIER_MON_SHUCKLE_1] = {
         .species = SPECIES_SHUCKLE,
         .moves = {MOVE_ROLLOUT, MOVE_DEFENSE_CURL, MOVE_STICKY_WEB, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3897,7 +3897,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [433] = {
+    [FRONTIER_MON_STEELIX_1] = {
         .species = SPECIES_STEELIX,
         .moves = {MOVE_GYRO_BALL, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3906,7 +3906,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [434] = {
+    [FRONTIER_MON_TENTACRUEL_1] = {
         .species = SPECIES_TENTACRUEL,
         .moves = {MOVE_WATERFALL, MOVE_POISON_JAB, MOVE_TOXIC_SPIKES, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3915,7 +3915,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [435] = {
+    [FRONTIER_MON_AERODACTYL_1] = {
         .species = SPECIES_AERODACTYL,
         .moves = {MOVE_HEAD_SMASH, MOVE_BRAVE_BIRD, MOVE_EARTHQUAKE, MOVE_DOUBLE_EDGE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -3924,7 +3924,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [436] = {
+    [FRONTIER_MON_PORYGON2_1] = {
         .species = SPECIES_PORYGON2,
         .moves = {MOVE_TRI_ATTACK, MOVE_DARK_PULSE, MOVE_NASTY_PLOT, MOVE_AGILITY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3933,7 +3933,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [437] = {
+    [FRONTIER_MON_GARDEVOIR_1] = {
         .species = SPECIES_GARDEVOIR,
         .moves = {MOVE_MOONBLAST, MOVE_PSYSHOCK, MOVE_FOCUS_BLAST, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3942,7 +3942,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [438] = {
+    [FRONTIER_MON_EXEGGUTOR_1] = {
         .species = SPECIES_EXEGGUTOR,
         .moves = {MOVE_PSYCHIC, MOVE_SOLAR_BEAM, MOVE_HIDDEN_POWER, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3951,7 +3951,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 0
     },
-    [439] = {
+    [FRONTIER_MON_STARMIE_1] = {
         .species = SPECIES_STARMIE,
         .moves = {MOVE_SURF, MOVE_THUNDERBOLT, MOVE_ICE_BEAM, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -3960,7 +3960,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [440] = {
+    [FRONTIER_MON_FLYGON_1] = {
         .species = SPECIES_FLYGON,
         .moves = {MOVE_EARTHQUAKE, MOVE_DRAGON_RUSH, MOVE_IRON_TAIL, MOVE_HONE_CLAWS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3969,7 +3969,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [441] = {
+    [FRONTIER_MON_VENUSAUR_1] = {
         .species = SPECIES_VENUSAUR,
         .moves = {MOVE_GIGA_DRAIN, MOVE_SLUDGE_BOMB, MOVE_HIDDEN_POWER, MOVE_EARTH_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -3978,7 +3978,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 1
     },
-    [442] = {
+    [FRONTIER_MON_VAPOREON_1] = {
         .species = SPECIES_VAPOREON,
         .moves = {MOVE_SCALD, MOVE_WISH, MOVE_TOXIC, MOVE_ACID_ARMOR},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -3987,7 +3987,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [443] = {
+    [FRONTIER_MON_JOLTEON_1] = {
         .species = SPECIES_JOLTEON,
         .moves = {MOVE_THUNDERBOLT, MOVE_BATON_PASS, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -3996,7 +3996,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [444] = {
+    [FRONTIER_MON_FLAREON_1] = {
         .species = SPECIES_FLAREON,
         .moves = {MOVE_FLARE_BLITZ, MOVE_SUPERPOWER, MOVE_EARTHQUAKE, MOVE_QUICK_ATTACK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -4005,7 +4005,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [445] = {
+    [FRONTIER_MON_MEGANIUM_1] = {
         .species = SPECIES_MEGANIUM,
         .moves = {MOVE_GIGA_DRAIN, MOVE_LEECH_SEED, MOVE_AROMATHERAPY, MOVE_SYNTHESIS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4014,7 +4014,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [446] = {
+    [FRONTIER_MON_ESPEON_1] = {
         .species = SPECIES_ESPEON,
         .moves = {MOVE_PSYCHIC, MOVE_BATON_PASS, MOVE_MORNING_SUN, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4023,7 +4023,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [447] = {
+    [FRONTIER_MON_UMBREON_1] = {
         .species = SPECIES_UMBREON,
         .moves = {MOVE_FOUL_PLAY, MOVE_WISH, MOVE_DOUBLE_TEAM, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4032,7 +4032,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [448] = {
+    [FRONTIER_MON_BLASTOISE_1] = {
         .species = SPECIES_BLASTOISE,
         .moves = {MOVE_AQUA_JET, MOVE_AVALANCHE, MOVE_EARTHQUAKE, MOVE_DRAGON_TAIL},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -4041,7 +4041,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [449] = {
+    [FRONTIER_MON_FERALIGATR_1] = {
         .species = SPECIES_FERALIGATR,
         .moves = {MOVE_SCALD, MOVE_ICE_BEAM, MOVE_FOCUS_BLAST, MOVE_AGILITY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4050,7 +4050,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [450] = {
+    [FRONTIER_MON_AGGRON_1] = {
         .species = SPECIES_AGGRON,
         .moves = {MOVE_HEAD_SMASH, MOVE_IRON_TAIL, MOVE_EARTHQUAKE, MOVE_HONE_CLAWS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4059,7 +4059,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [451] = {
+    [FRONTIER_MON_BLAZIKEN_1] = {
         .species = SPECIES_BLAZIKEN,
         .moves = {MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST, MOVE_HIDDEN_POWER, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4068,7 +4068,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [452] = {
+    [FRONTIER_MON_WALREIN_1] = {
         .species = SPECIES_WALREIN,
         .moves = {MOVE_ICE_SHARD, MOVE_DIVE, MOVE_BELLY_DRUM, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -4077,7 +4077,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [453] = {
+    [FRONTIER_MON_SCEPTILE_1] = {
         .species = SPECIES_SCEPTILE,
         .moves = {MOVE_LEAF_BLADE, MOVE_DRAIN_PUNCH, MOVE_ROCK_SLIDE, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -4086,7 +4086,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [454] = {
+    [FRONTIER_MON_CHARIZARD_1] = {
         .species = SPECIES_CHARIZARD,
         .moves = {MOVE_EMBER, MOVE_NONE, MOVE_NONE, MOVE_NONE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -4095,7 +4095,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [455] = {
+    [FRONTIER_MON_TYPHLOSION_1] = {
         .species = SPECIES_TYPHLOSION,
         .moves = {MOVE_FLAMETHROWER, MOVE_EARTH_POWER, MOVE_SUNNY_DAY, MOVE_SUBSTITUTE},
         .itemTableId = BATTLE_FRONTIER_ITEM_PETAYA_BERRY,
@@ -4104,7 +4104,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [456] = {
+    [FRONTIER_MON_LAPRAS_1] = {
         .species = SPECIES_LAPRAS,
         .moves = {MOVE_WATERFALL, MOVE_ICE_SHARD, MOVE_SHEER_COLD, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4113,7 +4113,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [457] = {
+    [FRONTIER_MON_CROBAT_1] = {
         .species = SPECIES_CROBAT,
         .moves = {MOVE_BRAVE_BIRD, MOVE_POISON_FANG, MOVE_TAUNT, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4122,7 +4122,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [458] = {
+    [FRONTIER_MON_SWAMPERT_1] = {
         .species = SPECIES_SWAMPERT,
         .moves = {MOVE_WATERFALL, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4131,7 +4131,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [459] = {
+    [FRONTIER_MON_GYARADOS_1] = {
         .species = SPECIES_GYARADOS,
         .moves = {MOVE_WATERFALL, MOVE_OUTRAGE, MOVE_EARTHQUAKE, MOVE_ICE_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -4140,7 +4140,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [460] = {
+    [FRONTIER_MON_SNORLAX_1] = {
         .species = SPECIES_SNORLAX,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_CRUNCH, MOVE_SELF_DESTRUCT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -4149,7 +4149,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [461] = {
+    [FRONTIER_MON_KINGDRA_1] = {
         .species = SPECIES_KINGDRA,
         .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_DRAGON_PULSE, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4158,7 +4158,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [462] = {
+    [FRONTIER_MON_BLISSEY_1] = {
         .species = SPECIES_BLISSEY,
         .moves = {MOVE_SEISMIC_TOSS, MOVE_AROMATHERAPY, MOVE_WISH, MOVE_THUNDER_WAVE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4167,7 +4167,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [463] = {
+    [FRONTIER_MON_MILOTIC_1] = {
         .species = SPECIES_MILOTIC,
         .moves = {MOVE_SCALD, MOVE_ICE_BEAM, MOVE_RECOVER, MOVE_MIRROR_COAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4176,7 +4176,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [464] = {
+    [FRONTIER_MON_ARCANINE_1] = {
         .species = SPECIES_ARCANINE,
         .moves = {MOVE_FLARE_BLITZ, MOVE_THUNDER_FANG, MOVE_EXTREME_SPEED, MOVE_CLOSE_COMBAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4185,7 +4185,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [465] = {
+    [FRONTIER_MON_SALAMENCE_1] = {
         .species = SPECIES_SALAMENCE,
         .moves = {MOVE_DRAGON_ASCENT, MOVE_OUTRAGE, MOVE_THUNDER_FANG, MOVE_EARTHQUAKE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -4203,7 +4203,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [467] = {
+    [FRONTIER_MON_SLAKING_1] = {
         .species = SPECIES_SLAKING,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_PLAY_ROUGH, MOVE_SHADOW_CLAW},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -4212,7 +4212,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [468] = {
+    [FRONTIER_MON_DUGTRIO_2] = {
         .species = SPECIES_DUGTRIO,
         .moves = {MOVE_EARTHQUAKE, MOVE_SUCKER_PUNCH, MOVE_STONE_EDGE, MOVE_GIGA_IMPACT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -4221,7 +4221,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [469] = {
+    [FRONTIER_MON_MEDICHAM_2] = {
         .species = SPECIES_MEDICHAM,
         .moves = {MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_ICE_PUNCH, MOVE_THUNDER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -4230,7 +4230,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [470] = {
+    [FRONTIER_MON_MAROWAK_2] = {
         .species = SPECIES_MAROWAK,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_THICK_CLUB,
@@ -4239,7 +4239,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [471] = {
+    [FRONTIER_MON_QUAGSIRE_2] = {
         .species = SPECIES_QUAGSIRE,
         .moves = {MOVE_DIVE, MOVE_EARTHQUAKE, MOVE_CURSE, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4248,7 +4248,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [472] = {
+    [FRONTIER_MON_MISDREAVUS_2] = {
         .species = SPECIES_MISDREAVUS,
         .moves = {MOVE_HEX, MOVE_WILL_O_WISP, MOVE_TAUNT, MOVE_PAIN_SPLIT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4257,7 +4257,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [473] = {
+    [FRONTIER_MON_FEAROW_2] = {
         .species = SPECIES_FEAROW,
         .moves = {MOVE_RETURN, MOVE_DRILL_RUN, MOVE_AGILITY, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIECHI_BERRY,
@@ -4266,7 +4266,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [474] = {
+    [FRONTIER_MON_GRANBULL_2] = {
         .species = SPECIES_GRANBULL,
         .moves = {MOVE_PLAY_ROUGH, MOVE_EARTHQUAKE, MOVE_FIRE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -4275,7 +4275,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [475] = {
+    [FRONTIER_MON_JYNX_2] = {
         .species = SPECIES_JYNX,
         .moves = {MOVE_ICE_BEAM, MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -4284,7 +4284,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [476] = {
+    [FRONTIER_MON_DUSCLOPS_2] = {
         .species = SPECIES_DUSCLOPS,
         .moves = {MOVE_WILL_O_WISP, MOVE_FOUL_PLAY, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4293,7 +4293,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [477] = {
+    [FRONTIER_MON_DODRIO_2] = {
         .species = SPECIES_DODRIO,
         .moves = {MOVE_BRAVE_BIRD, MOVE_RETURN, MOVE_JUMP_KICK, MOVE_QUICK_ATTACK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -4302,7 +4302,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [478] = {
+    [FRONTIER_MON_MR_MIME_2] = {
         .species = SPECIES_MR_MIME,
         .moves = {MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_FOCUS_BLAST, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -4311,7 +4311,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [479] = {
+    [FRONTIER_MON_LANTURN_2] = {
         .species = SPECIES_LANTURN,
         .moves = {MOVE_SCALD, MOVE_DISCHARGE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4320,7 +4320,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [480] = {
+    [FRONTIER_MON_BRELOOM_2] = {
         .species = SPECIES_BRELOOM,
         .moves = {MOVE_BULLET_SEED, MOVE_LOW_SWEEP, MOVE_MACH_PUNCH, MOVE_ROCK_TOMB},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -4329,7 +4329,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [481] = {
+    [FRONTIER_MON_FORRETRESS_2] = {
         .species = SPECIES_FORRETRESS,
         .moves = {MOVE_STEALTH_ROCK, MOVE_TOXIC_SPIKES, MOVE_SPIKES, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -4338,7 +4338,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [482] = {
+    [FRONTIER_MON_SKARMORY_2] = {
         .species = SPECIES_SKARMORY,
         .moves = {MOVE_SPIKES, MOVE_TOXIC, MOVE_WHIRLWIND, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4347,7 +4347,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [483] = {
+    [FRONTIER_MON_WHISCASH_2] = {
         .species = SPECIES_WHISCASH,
         .moves = {MOVE_SCALD, MOVE_FISSURE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4356,7 +4356,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [484] = {
+    [FRONTIER_MON_XATU_2] = {
         .species = SPECIES_XATU,
         .moves = {MOVE_PSYCHIC, MOVE_AIR_SLASH, MOVE_HEAT_WAVE, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4374,7 +4374,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [486] = {
+    [FRONTIER_MON_HARIYAMA_2] = {
         .species = SPECIES_HARIYAMA,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_KNOCK_OFF, MOVE_FAKE_OUT, MOVE_BULLET_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -4383,7 +4383,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [487] = {
+    [FRONTIER_MON_RAICHU_2] = {
         .species = SPECIES_RAICHU,
         .moves = {MOVE_THUNDERBOLT, MOVE_SURF, MOVE_HIDDEN_POWER, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4401,7 +4401,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 29,
         .ability = 0
     },
-    [489] = {
+    [FRONTIER_MON_MANECTRIC_2] = {
         .species = SPECIES_MANECTRIC,
         .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_OVERHEAT, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4410,7 +4410,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [490] = {
+    [FRONTIER_MON_VILEPLUME_2] = {
         .species = SPECIES_VILEPLUME,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_GIGA_DRAIN, MOVE_STRENGTH_SAP, MOVE_SLEEP_POWDER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4419,7 +4419,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [491] = {
+    [FRONTIER_MON_VICTREEBEL_2] = {
         .species = SPECIES_VICTREEBEL,
         .moves = {MOVE_LEAF_STORM, MOVE_SLUDGE_BOMB, MOVE_HIDDEN_POWER, MOVE_STRENGTH_SAP},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4428,7 +4428,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 0
     },
-    [492] = {
+    [FRONTIER_MON_ELECTRODE_2] = {
         .species = SPECIES_ELECTRODE,
         .moves = {MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_EXPLOSION, MOVE_TAUNT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -4437,7 +4437,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [493] = {
+    [FRONTIER_MON_EXPLOUD_2] = {
         .species = SPECIES_EXPLOUD,
         .moves = {MOVE_BOOMBURST, MOVE_FOCUS_BLAST, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4446,7 +4446,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [494] = {
+    [FRONTIER_MON_SHIFTRY_2] = {
         .species = SPECIES_SHIFTRY,
         .moves = {MOVE_SOLAR_BEAM, MOVE_DARK_PULSE, MOVE_SUNNY_DAY, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -4464,7 +4464,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [496] = {
+    [FRONTIER_MON_LUDICOLO_2] = {
         .species = SPECIES_LUDICOLO,
         .moves = {MOVE_DIVE, MOVE_SEED_BOMB, MOVE_ICE_PUNCH, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4473,7 +4473,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [497] = {
+    [FRONTIER_MON_HYPNO_2] = {
         .species = SPECIES_HYPNO,
         .moves = {MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_BATON_PASS, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4482,7 +4482,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [498] = {
+    [FRONTIER_MON_GOLEM_2] = {
         .species = SPECIES_GOLEM,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SUCKER_PUNCH, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -4491,7 +4491,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [499] = {
+    [FRONTIER_MON_RHYDON_2] = {
         .species = SPECIES_RHYDON,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_ICE_FANG, MOVE_ROCK_POLISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4500,7 +4500,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [500] = {
+    [FRONTIER_MON_ALAKAZAM_2] = {
         .species = SPECIES_ALAKAZAM,
         .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_SHADOW_BALL, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -4509,7 +4509,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [501] = {
+    [FRONTIER_MON_WEEZING_2] = {
         .species = SPECIES_WEEZING,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_FIRE_BLAST, MOVE_THUNDERBOLT, MOVE_SHADOW_BALL},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -4518,7 +4518,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [502] = {
+    [FRONTIER_MON_KANGASKHAN_2] = {
         .species = SPECIES_KANGASKHAN,
         .moves = {MOVE_TOXIC, MOVE_SUBSTITUTE, MOVE_RETURN, MOVE_POWER_UP_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4527,7 +4527,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [503] = {
+    [FRONTIER_MON_ELECTABUZZ_2] = {
         .species = SPECIES_ELECTABUZZ,
         .moves = {MOVE_THUNDER_PUNCH, MOVE_ICE_PUNCH, MOVE_EARTHQUAKE, MOVE_FIRE_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -4536,7 +4536,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [504] = {
+    [FRONTIER_MON_TAUROS_2] = {
         .species = SPECIES_TAUROS,
         .moves = {MOVE_RETURN, MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SUBSTITUTE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIECHI_BERRY,
@@ -4545,7 +4545,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [505] = {
+    [FRONTIER_MON_SLOWBRO_2] = {
         .species = SPECIES_SLOWBRO,
         .moves = {MOVE_SCALD, MOVE_PSYCHIC, MOVE_CALM_MIND, MOVE_SLACK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4554,7 +4554,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [506] = {
+    [FRONTIER_MON_SLOWKING_2] = {
         .species = SPECIES_SLOWKING,
         .moves = {MOVE_SCALD, MOVE_PSYSHOCK, MOVE_ICE_BEAM, MOVE_SLACK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4563,7 +4563,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [507] = {
+    [FRONTIER_MON_MILTANK_2] = {
         .species = SPECIES_MILTANK,
         .moves = {MOVE_BODY_SLAM, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4572,7 +4572,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [508] = {
+    [FRONTIER_MON_ALTARIA_2] = {
         .species = SPECIES_ALTARIA,
         .moves = {MOVE_DRAGON_CLAW, MOVE_COTTON_GUARD, MOVE_ROOST, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4581,7 +4581,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [509] = {
+    [FRONTIER_MON_NIDOQUEEN_2] = {
         .species = SPECIES_NIDOQUEEN,
         .moves = {MOVE_SLUDGE_WAVE, MOVE_EARTH_POWER, MOVE_ICE_BEAM, MOVE_TOXIC_SPIKES},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -4590,7 +4590,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [510] = {
+    [FRONTIER_MON_NIDOKING_2] = {
         .species = SPECIES_NIDOKING,
         .moves = {MOVE_EARTHQUAKE, MOVE_POISON_FANG, MOVE_ICE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -4599,7 +4599,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [511] = {
+    [FRONTIER_MON_MAGMAR_2] = {
         .species = SPECIES_MAGMAR,
         .moves = {MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST, MOVE_HIDDEN_POWER, MOVE_OVERHEAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -4608,7 +4608,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 1
     },
-    [512] = {
+    [FRONTIER_MON_CRADILY_2] = {
         .species = SPECIES_CRADILY,
         .moves = {MOVE_MUD_BOMB, MOVE_EARTH_POWER, MOVE_TOXIC, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4617,7 +4617,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [513] = {
+    [FRONTIER_MON_ARMALDO_2] = {
         .species = SPECIES_ARMALDO,
         .moves = {MOVE_STONE_EDGE, MOVE_AQUA_JET, MOVE_SWORDS_DANCE, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4626,7 +4626,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [514] = {
+    [FRONTIER_MON_GOLDUCK_2] = {
         .species = SPECIES_GOLDUCK,
         .moves = {MOVE_AQUA_JET, MOVE_CROSS_CHOP, MOVE_ZEN_HEADBUTT, MOVE_HONE_CLAWS},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -4635,7 +4635,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [515] = {
+    [FRONTIER_MON_RAPIDASH_2] = {
         .species = SPECIES_RAPIDASH,
         .moves = {MOVE_FIRE_BLAST, MOVE_SOLAR_BEAM, MOVE_HIDDEN_POWER, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -4644,7 +4644,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 25,
         .ability = 1
     },
-    [516] = {
+    [FRONTIER_MON_MUK_2] = {
         .species = SPECIES_MUK,
         .moves = {MOVE_GUNK_SHOT, MOVE_SHADOW_SNEAK, MOVE_FIRE_PUNCH, MOVE_ICE_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -4653,7 +4653,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [517] = {
+    [FRONTIER_MON_GENGAR_2] = {
         .species = SPECIES_GENGAR,
         .moves = {MOVE_SHADOW_BALL, MOVE_SLUDGE_WAVE, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -4662,7 +4662,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [518] = {
+    [FRONTIER_MON_AMPHAROS_2] = {
         .species = SPECIES_AMPHAROS,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_REST, MOVE_TAIL_GLOW},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -4671,7 +4671,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [519] = {
+    [FRONTIER_MON_SCIZOR_2] = {
         .species = SPECIES_SCIZOR,
         .moves = {MOVE_BULLET_PUNCH, MOVE_BATON_PASS, MOVE_AGILITY, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4680,7 +4680,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [520] = {
+    [FRONTIER_MON_HERACROSS_2] = {
         .species = SPECIES_HERACROSS,
         .moves = {MOVE_MEGAHORN, MOVE_CLOSE_COMBAT, MOVE_KNOCK_OFF, MOVE_EARTHQUAKE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -4689,7 +4689,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [521] = {
+    [FRONTIER_MON_URSARING_2] = {
         .species = SPECIES_URSARING,
         .moves = {MOVE_FRUSTRATION, MOVE_CLOSE_COMBAT, MOVE_CRUNCH, MOVE_PLAY_ROUGH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -4698,7 +4698,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [522] = {
+    [FRONTIER_MON_HOUNDOOM_2] = {
         .species = SPECIES_HOUNDOOM,
         .moves = {MOVE_FLAMETHROWER, MOVE_DARK_PULSE, MOVE_HIDDEN_POWER, MOVE_OVERHEAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -4707,7 +4707,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [523] = {
+    [FRONTIER_MON_DONPHAN_2] = {
         .species = SPECIES_DONPHAN,
         .moves = {MOVE_EARTHQUAKE, MOVE_ICE_SHARD, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4716,7 +4716,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [524] = {
+    [FRONTIER_MON_CLAYDOL_2] = {
         .species = SPECIES_CLAYDOL,
         .moves = {MOVE_EARTH_POWER, MOVE_ICE_BEAM, MOVE_PSYCHIC, MOVE_STEALTH_ROCK},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4725,7 +4725,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [525] = {
+    [FRONTIER_MON_WAILORD_2] = {
         .species = SPECIES_WAILORD,
         .moves = {MOVE_SCALD, MOVE_ROAR, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4734,7 +4734,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [526] = {
+    [FRONTIER_MON_NINETALES_2] = {
         .species = SPECIES_NINETALES,
         .moves = {MOVE_FLAMETHROWER, MOVE_SHADOW_BALL, MOVE_ENERGY_BALL, MOVE_OVERHEAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -4743,7 +4743,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [527] = {
+    [FRONTIER_MON_MACHAMP_2] = {
         .species = SPECIES_MACHAMP,
         .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_BULK_UP, MOVE_SUBSTITUTE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4752,7 +4752,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [528] = {
+    [FRONTIER_MON_SHUCKLE_2] = {
         .species = SPECIES_SHUCKLE,
         .moves = {MOVE_STICKY_WEB, MOVE_INFESTATION, MOVE_TOXIC, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4761,7 +4761,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [529] = {
+    [FRONTIER_MON_STEELIX_2] = {
         .species = SPECIES_STEELIX,
         .moves = {MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_CURSE, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -4770,7 +4770,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [530] = {
+    [FRONTIER_MON_TENTACRUEL_2] = {
         .species = SPECIES_TENTACRUEL,
         .moves = {MOVE_WATERFALL, MOVE_POISON_JAB, MOVE_KNOCK_OFF, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4779,7 +4779,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [531] = {
+    [FRONTIER_MON_AERODACTYL_2] = {
         .species = SPECIES_AERODACTYL,
         .moves = {MOVE_HEAD_SMASH, MOVE_BRAVE_BIRD, MOVE_EARTHQUAKE, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4788,7 +4788,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [532] = {
+    [FRONTIER_MON_PORYGON2_2] = {
         .species = SPECIES_PORYGON2,
         .moves = {MOVE_TRI_ATTACK, MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_TRICK_ROOM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4806,7 +4806,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [534] = {
+    [FRONTIER_MON_EXEGGUTOR_2] = {
         .species = SPECIES_EXEGGUTOR,
         .moves = {MOVE_LEAF_STORM, MOVE_PSYCHIC, MOVE_HIDDEN_POWER, MOVE_GIGA_DRAIN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -4815,7 +4815,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 0
     },
-    [535] = {
+    [FRONTIER_MON_STARMIE_2] = {
         .species = SPECIES_STARMIE,
         .moves = {MOVE_SURF, MOVE_THUNDERBOLT, MOVE_ICE_BEAM, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -4824,7 +4824,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [536] = {
+    [FRONTIER_MON_FLYGON_2] = {
         .species = SPECIES_FLYGON,
         .moves = {MOVE_EARTHQUAKE, MOVE_OUTRAGE, MOVE_U_TURN, MOVE_DRAGON_CLAW},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -4833,7 +4833,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [537] = {
+    [FRONTIER_MON_VENUSAUR_2] = {
         .species = SPECIES_VENUSAUR,
         .moves = {MOVE_SOLAR_BEAM, MOVE_SLUDGE_BOMB, MOVE_EARTH_POWER, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4842,7 +4842,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [538] = {
+    [FRONTIER_MON_VAPOREON_2] = {
         .species = SPECIES_VAPOREON,
         .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER, MOVE_WISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4851,7 +4851,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [539] = {
+    [FRONTIER_MON_JOLTEON_2] = {
         .species = SPECIES_JOLTEON,
         .moves = {MOVE_THUNDERBOLT, MOVE_SHADOW_BALL, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4860,7 +4860,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [540] = {
+    [FRONTIER_MON_FLAREON_2] = {
         .species = SPECIES_FLAREON,
         .moves = {MOVE_FLARE_BLITZ, MOVE_EARTHQUAKE, MOVE_CURSE, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -4878,7 +4878,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [542] = {
+    [FRONTIER_MON_ESPEON_2] = {
         .species = SPECIES_ESPEON,
         .moves = {MOVE_PSYCHIC, MOVE_SHADOW_BALL, MOVE_DAZZLING_GLEAM, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -4887,7 +4887,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [543] = {
+    [FRONTIER_MON_UMBREON_2] = {
         .species = SPECIES_UMBREON,
         .moves = {MOVE_SWAGGER, MOVE_PSYCH_UP, MOVE_WISH, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4896,7 +4896,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [544] = {
+    [FRONTIER_MON_BLASTOISE_2] = {
         .species = SPECIES_BLASTOISE,
         .moves = {MOVE_WATER_SPOUT, MOVE_ICE_BEAM, MOVE_FOCUS_BLAST, MOVE_HYDRO_PUMP},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -4905,7 +4905,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [545] = {
+    [FRONTIER_MON_FERALIGATR_2] = {
         .species = SPECIES_FERALIGATR,
         .moves = {MOVE_AQUA_JET, MOVE_ICE_FANG, MOVE_CRUNCH, MOVE_EARTHQUAKE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -4914,7 +4914,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [546] = {
+    [FRONTIER_MON_AGGRON_2] = {
         .species = SPECIES_AGGRON,
         .moves = {MOVE_HEAD_SMASH, MOVE_HEAVY_SLAM, MOVE_EARTHQUAKE, MOVE_AQUA_TAIL},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -4923,7 +4923,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [547] = {
+    [FRONTIER_MON_BLAZIKEN_2] = {
         .species = SPECIES_BLAZIKEN,
         .moves = {MOVE_HI_JUMP_KICK, MOVE_FIRE_PUNCH, MOVE_BATON_PASS, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -4932,7 +4932,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [548] = {
+    [FRONTIER_MON_WALREIN_2] = {
         .species = SPECIES_WALREIN,
         .moves = {MOVE_AVALANCHE, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -4941,7 +4941,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [549] = {
+    [FRONTIER_MON_SCEPTILE_2] = {
         .species = SPECIES_SCEPTILE,
         .moves = {MOVE_LEAF_BLADE, MOVE_DRAIN_PUNCH, MOVE_ROCK_SLIDE, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4950,7 +4950,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [550] = {
+    [FRONTIER_MON_CHARIZARD_2] = {
         .species = SPECIES_CHARIZARD,
         .moves = {MOVE_BELLY_DRUM, MOVE_ACROBATICS, MOVE_OVERHEAT, MOVE_SUBSTITUTE},
         .itemTableId = BATTLE_FRONTIER_ITEM_SALAC_BERRY,
@@ -4959,7 +4959,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [551] = {
+    [FRONTIER_MON_TYPHLOSION_2] = {
         .species = SPECIES_TYPHLOSION,
         .moves = {MOVE_FLAMETHROWER, MOVE_SOLAR_BEAM, MOVE_FOCUS_BLAST, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -4968,7 +4968,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [552] = {
+    [FRONTIER_MON_LAPRAS_2] = {
         .species = SPECIES_LAPRAS,
         .moves = {MOVE_ICE_SHARD, MOVE_AQUA_JET, MOVE_CURSE, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -4977,7 +4977,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [553] = {
+    [FRONTIER_MON_CROBAT_2] = {
         .species = SPECIES_CROBAT,
         .moves = {MOVE_BRAVE_BIRD, MOVE_POISON_FANG, MOVE_FIRE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -4986,7 +4986,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [554] = {
+    [FRONTIER_MON_SWAMPERT_2] = {
         .species = SPECIES_SWAMPERT,
         .moves = {MOVE_DIVE, MOVE_EARTHQUAKE, MOVE_AVALANCHE, MOVE_MIRROR_COAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -4995,7 +4995,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [555] = {
+    [FRONTIER_MON_GYARADOS_2] = {
         .species = SPECIES_GYARADOS,
         .moves = {MOVE_AQUA_TAIL, MOVE_DRAGON_RUSH, MOVE_COIL, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -5004,7 +5004,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [556] = {
+    [FRONTIER_MON_SNORLAX_2] = {
         .species = SPECIES_SNORLAX,
         .moves = {MOVE_BODY_SLAM, MOVE_EARTHQUAKE, MOVE_BELLY_DRUM, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -5013,7 +5013,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [557] = {
+    [FRONTIER_MON_KINGDRA_2] = {
         .species = SPECIES_KINGDRA,
         .moves = {MOVE_DRACO_METEOR, MOVE_SURF, MOVE_SUBSTITUTE, MOVE_FOCUS_ENERGY},
         .itemTableId = BATTLE_FRONTIER_ITEM_SCOPE_LENS,
@@ -5022,7 +5022,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [558] = {
+    [FRONTIER_MON_BLISSEY_2] = {
         .species = SPECIES_BLISSEY,
         .moves = {MOVE_SEISMIC_TOSS, MOVE_AROMATHERAPY, MOVE_SOFT_BOILED, MOVE_TOXIC},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5031,7 +5031,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [559] = {
+    [FRONTIER_MON_MILOTIC_2] = {
         .species = SPECIES_MILOTIC,
         .moves = {MOVE_SCALD, MOVE_DRAGON_TAIL, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5040,7 +5040,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [560] = {
+    [FRONTIER_MON_ARCANINE_2] = {
         .species = SPECIES_ARCANINE,
         .moves = {MOVE_WILL_O_WISP, MOVE_FLARE_BLITZ, MOVE_MORNING_SUN, MOVE_EXTREME_SPEED},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5049,7 +5049,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [561] = {
+    [FRONTIER_MON_SALAMENCE_2] = {
         .species = SPECIES_SALAMENCE,
         .moves = {MOVE_DRAGON_PULSE, MOVE_DRACO_METEOR, MOVE_FLAMETHROWER, MOVE_HYDRO_PUMP},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -5058,7 +5058,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [562] = {
+    [FRONTIER_MON_METAGROSS_2] = {
         .species = SPECIES_METAGROSS,
         .moves = {MOVE_METEOR_MASH, MOVE_BULLET_PUNCH, MOVE_EARTHQUAKE, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -5067,7 +5067,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [563] = {
+    [FRONTIER_MON_SLAKING_2] = {
         .species = SPECIES_SLAKING,
         .moves = {MOVE_HYPER_VOICE, MOVE_ICE_BEAM, MOVE_FIRE_BLAST, MOVE_THUNDERBOLT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -5076,7 +5076,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [564] = {
+    [FRONTIER_MON_DUGTRIO_3] = {
         .species = SPECIES_DUGTRIO,
         .moves = {MOVE_EARTHQUAKE, MOVE_REVERSAL, MOVE_STONE_EDGE, MOVE_SCREECH},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -5085,7 +5085,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [565] = {
+    [FRONTIER_MON_MEDICHAM_3] = {
         .species = SPECIES_MEDICHAM,
         .moves = {MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_ICE_PUNCH, MOVE_THUNDER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -5094,7 +5094,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [566] = {
+    [FRONTIER_MON_MISDREAVUS_3] = {
         .species = SPECIES_MISDREAVUS,
         .moves = {MOVE_HEX, MOVE_POWER_GEM, MOVE_WILL_O_WISP, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5103,7 +5103,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [567] = {
+    [FRONTIER_MON_FEAROW_3] = {
         .species = SPECIES_FEAROW,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_DRILL_PECK, MOVE_DRILL_RUN, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -5112,7 +5112,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [568] = {
+    [FRONTIER_MON_GRANBULL_3] = {
         .species = SPECIES_GRANBULL,
         .moves = {MOVE_PLAY_ROUGH, MOVE_EARTHQUAKE, MOVE_FIRE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -5121,7 +5121,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [569] = {
+    [FRONTIER_MON_JYNX_3] = {
         .species = SPECIES_JYNX,
         .moves = {MOVE_ICE_BEAM, MOVE_PSYSHOCK, MOVE_FOCUS_BLAST, MOVE_LOVELY_KISS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5130,7 +5130,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [570] = {
+    [FRONTIER_MON_DUSCLOPS_3] = {
         .species = SPECIES_DUSCLOPS,
         .moves = {MOVE_EARTHQUAKE, MOVE_SHADOW_SNEAK, MOVE_POWER_UP_PUNCH, MOVE_PAIN_SPLIT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5139,7 +5139,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [571] = {
+    [FRONTIER_MON_DODRIO_3] = {
         .species = SPECIES_DODRIO,
         .moves = {MOVE_BRAVE_BIRD, MOVE_RETURN, MOVE_JUMP_KICK, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5148,7 +5148,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [572] = {
+    [FRONTIER_MON_MR_MIME_3] = {
         .species = SPECIES_MR_MIME,
         .moves = {MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_FOCUS_BLAST, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -5157,7 +5157,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [573] = {
+    [FRONTIER_MON_LANTURN_3] = {
         .species = SPECIES_LANTURN,
         .moves = {MOVE_SCALD, MOVE_THUNDERBOLT, MOVE_ICE_BEAM, MOVE_VOLT_SWITCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -5166,7 +5166,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [574] = {
+    [FRONTIER_MON_BRELOOM_3] = {
         .species = SPECIES_BRELOOM,
         .moves = {MOVE_BULLET_SEED, MOVE_MACH_PUNCH, MOVE_SWORDS_DANCE, MOVE_SPORE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -5175,7 +5175,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [575] = {
+    [FRONTIER_MON_FORRETRESS_3] = {
         .species = SPECIES_FORRETRESS,
         .moves = {MOVE_STEALTH_ROCK, MOVE_TOXIC_SPIKES, MOVE_SPIKES, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -5184,7 +5184,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [576] = {
+    [FRONTIER_MON_WHISCASH_3] = {
         .species = SPECIES_WHISCASH,
         .moves = {MOVE_HYDRO_PUMP, MOVE_EARTH_POWER, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -5193,7 +5193,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 26,
         .ability = 1
     },
-    [577] = {
+    [FRONTIER_MON_XATU_3] = {
         .species = SPECIES_XATU,
         .moves = {MOVE_STORED_POWER, MOVE_HEAT_WAVE, MOVE_CALM_MIND, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5202,7 +5202,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [578] = {
+    [FRONTIER_MON_SKARMORY_3] = {
         .species = SPECIES_SKARMORY,
         .moves = {MOVE_BRAVE_BIRD, MOVE_TOXIC, MOVE_WHIRLWIND, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5220,7 +5220,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [580] = {
+    [FRONTIER_MON_QUAGSIRE_3] = {
         .species = SPECIES_QUAGSIRE,
         .moves = {MOVE_EARTHQUAKE, MOVE_SCALD, MOVE_TOXIC, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5229,7 +5229,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [581] = {
+    [FRONTIER_MON_CLEFABLE_3] = {
         .species = SPECIES_CLEFABLE,
         .moves = {MOVE_MOONBLAST, MOVE_THUNDERBOLT, MOVE_FLAMETHROWER, MOVE_SOFT_BOILED},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5238,7 +5238,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [582] = {
+    [FRONTIER_MON_HARIYAMA_3] = {
         .species = SPECIES_HARIYAMA,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_KNOCK_OFF, MOVE_HEAVY_SLAM, MOVE_STONE_EDGE},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -5247,7 +5247,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [583] = {
+    [FRONTIER_MON_RAICHU_3] = {
         .species = SPECIES_RAICHU,
         .moves = {MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST, MOVE_GRASS_KNOT, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5256,7 +5256,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [584] = {
+    [FRONTIER_MON_DEWGONG_3] = {
         .species = SPECIES_DEWGONG,
         .moves = {MOVE_HORN_DRILL, MOVE_SHEER_COLD, MOVE_RAIN_DANCE, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5265,7 +5265,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [585] = {
+    [FRONTIER_MON_MANECTRIC_3] = {
         .species = SPECIES_MANECTRIC,
         .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_OVERHEAT, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -5274,7 +5274,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [586] = {
+    [FRONTIER_MON_VILEPLUME_3] = {
         .species = SPECIES_VILEPLUME,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_GIGA_DRAIN, MOVE_HIDDEN_POWER, MOVE_STRENGTH_SAP},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5283,7 +5283,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 29,
         .ability = 1
     },
-    [587] = {
+    [FRONTIER_MON_VICTREEBEL_3] = {
         .species = SPECIES_VICTREEBEL,
         .moves = {MOVE_SOLAR_BLADE, MOVE_POISON_JAB, MOVE_KNOCK_OFF, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5292,7 +5292,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [588] = {
+    [FRONTIER_MON_ELECTRODE_3] = {
         .species = SPECIES_ELECTRODE,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH, MOVE_SIGNAL_BEAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5301,7 +5301,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [589] = {
+    [FRONTIER_MON_EXPLOUD_3] = {
         .species = SPECIES_EXPLOUD,
         .moves = {MOVE_BOOMBURST, MOVE_FOCUS_BLAST, MOVE_FIRE_BLAST, MOVE_SURF},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -5310,7 +5310,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [590] = {
+    [FRONTIER_MON_SHIFTRY_3] = {
         .species = SPECIES_SHIFTRY,
         .moves = {MOVE_LEAF_BLADE, MOVE_KNOCK_OFF, MOVE_ROCK_SLIDE, MOVE_LOW_KICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -5319,7 +5319,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [591] = {
+    [FRONTIER_MON_GLALIE_3] = {
         .species = SPECIES_GLALIE,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_CRUNCH, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -5328,7 +5328,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [592] = {
+    [FRONTIER_MON_LUDICOLO_3] = {
         .species = SPECIES_LUDICOLO,
         .moves = {MOVE_HYDRO_PUMP, MOVE_ENERGY_BALL, MOVE_ICE_BEAM, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5337,7 +5337,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [593] = {
+    [FRONTIER_MON_HYPNO_3] = {
         .species = SPECIES_HYPNO,
         .moves = {MOVE_PSYCHIC, MOVE_BATON_PASS, MOVE_SUBSTITUTE, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5346,7 +5346,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [594] = {
+    [FRONTIER_MON_GOLEM_3] = {
         .species = SPECIES_GOLEM,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_EXPLOSION, MOVE_AUTOTOMIZE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5355,7 +5355,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [595] = {
+    [FRONTIER_MON_RHYDON_3] = {
         .species = SPECIES_RHYDON,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_ICE_FANG, MOVE_METAL_BURST},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -5364,7 +5364,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [596] = {
+    [FRONTIER_MON_ALAKAZAM_3] = {
         .species = SPECIES_ALAKAZAM,
         .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_CALM_MIND, MOVE_ENCORE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5373,7 +5373,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [597] = {
+    [FRONTIER_MON_WEEZING_3] = {
         .species = SPECIES_WEEZING,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_FLAMETHROWER, MOVE_WILL_O_WISP, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5382,7 +5382,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [598] = {
+    [FRONTIER_MON_KANGASKHAN_3] = {
         .species = SPECIES_KANGASKHAN,
         .moves = {MOVE_FAKE_OUT, MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_SUCKER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -5391,7 +5391,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [599] = {
+    [FRONTIER_MON_ELECTABUZZ_3] = {
         .species = SPECIES_ELECTABUZZ,
         .moves = {MOVE_THUNDER_PUNCH, MOVE_ICE_PUNCH, MOVE_EARTHQUAKE, MOVE_FIRE_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -5400,7 +5400,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [600] = {
+    [FRONTIER_MON_TAUROS_3] = {
         .species = SPECIES_TAUROS,
         .moves = {MOVE_HEAD_CHARGE, MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SUBSTITUTE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5409,7 +5409,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [601] = {
+    [FRONTIER_MON_SLOWBRO_3] = {
         .species = SPECIES_SLOWBRO,
         .moves = {MOVE_SCALD, MOVE_PSYSHOCK, MOVE_CALM_MIND, MOVE_SLACK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5418,7 +5418,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [602] = {
+    [FRONTIER_MON_SLOWKING_3] = {
         .species = SPECIES_SLOWKING,
         .moves = {MOVE_SCALD, MOVE_PSYCHIC, MOVE_CALM_MIND, MOVE_SLACK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5427,7 +5427,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [603] = {
+    [FRONTIER_MON_MILTANK_3] = {
         .species = SPECIES_MILTANK,
         .moves = {MOVE_BODY_SLAM, MOVE_CURSE, MOVE_HEAL_BELL, MOVE_MILK_DRINK},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5436,7 +5436,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [604] = {
+    [FRONTIER_MON_ALTARIA_3] = {
         .species = SPECIES_ALTARIA,
         .moves = {MOVE_DRACO_METEOR, MOVE_FIRE_BLAST, MOVE_ROOST, MOVE_TAILWIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5463,7 +5463,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [607] = {
+    [FRONTIER_MON_MAGMAR_3] = {
         .species = SPECIES_MAGMAR,
         .moves = {MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST, MOVE_HIDDEN_POWER, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5472,7 +5472,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [608] = {
+    [FRONTIER_MON_CRADILY_3] = {
         .species = SPECIES_CRADILY,
         .moves = {MOVE_GIGA_DRAIN, MOVE_MUD_BOMB, MOVE_EARTH_POWER, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5481,7 +5481,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [609] = {
+    [FRONTIER_MON_ARMALDO_3] = {
         .species = SPECIES_ARMALDO,
         .moves = {MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_AQUA_JET, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5490,7 +5490,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [610] = {
+    [FRONTIER_MON_GOLDUCK_3] = {
         .species = SPECIES_GOLDUCK,
         .moves = {MOVE_HYDRO_PUMP, MOVE_PSYCHIC, MOVE_ICE_BEAM, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5499,7 +5499,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [611] = {
+    [FRONTIER_MON_RAPIDASH_3] = {
         .species = SPECIES_RAPIDASH,
         .moves = {MOVE_FLARE_BLITZ, MOVE_HIGH_HORSEPOWER, MOVE_WILD_CHARGE, MOVE_MEGAHORN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -5508,7 +5508,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [612] = {
+    [FRONTIER_MON_MUK_3] = {
         .species = SPECIES_MUK,
         .moves = {MOVE_GUNK_SHOT, MOVE_SHADOW_SNEAK, MOVE_FIRE_PUNCH, MOVE_ICE_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -5517,7 +5517,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [613] = {
+    [FRONTIER_MON_GENGAR_3] = {
         .species = SPECIES_GENGAR,
         .moves = {MOVE_SHADOW_BALL, MOVE_SLUDGE_WAVE, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -5526,7 +5526,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [614] = {
+    [FRONTIER_MON_AMPHAROS_3] = {
         .species = SPECIES_AMPHAROS,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_AGILITY, MOVE_TAIL_GLOW},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5535,7 +5535,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [615] = {
+    [FRONTIER_MON_SCIZOR_3] = {
         .species = SPECIES_SCIZOR,
         .moves = {MOVE_BULLET_PUNCH, MOVE_BUG_BITE, MOVE_KNOCK_OFF, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5544,7 +5544,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [616] = {
+    [FRONTIER_MON_HERACROSS_3] = {
         .species = SPECIES_HERACROSS,
         .moves = {MOVE_MEGAHORN, MOVE_CLOSE_COMBAT, MOVE_KNOCK_OFF, MOVE_STONE_EDGE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -5553,7 +5553,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [617] = {
+    [FRONTIER_MON_URSARING_3] = {
         .species = SPECIES_URSARING,
         .moves = {MOVE_FRUSTRATION, MOVE_CLOSE_COMBAT, MOVE_CRUNCH, MOVE_PLAY_ROUGH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -5562,7 +5562,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [618] = {
+    [FRONTIER_MON_HOUNDOOM_3] = {
         .species = SPECIES_HOUNDOOM,
         .moves = {MOVE_FLAMETHROWER, MOVE_DARK_PULSE, MOVE_HIDDEN_POWER, MOVE_OVERHEAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -5571,7 +5571,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [619] = {
+    [FRONTIER_MON_DONPHAN_3] = {
         .species = SPECIES_DONPHAN,
         .moves = {MOVE_EARTHQUAKE, MOVE_ICE_SHARD, MOVE_FIRE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -5580,7 +5580,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [620] = {
+    [FRONTIER_MON_CLAYDOL_3] = {
         .species = SPECIES_CLAYDOL,
         .moves = {MOVE_EARTH_POWER, MOVE_ICE_BEAM, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5589,7 +5589,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [621] = {
+    [FRONTIER_MON_WAILORD_3] = {
         .species = SPECIES_WAILORD,
         .moves = {MOVE_WATER_SPOUT, MOVE_ICE_BEAM, MOVE_HYDRO_PUMP, MOVE_FISSURE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -5598,7 +5598,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [622] = {
+    [FRONTIER_MON_NINETALES_3] = {
         .species = SPECIES_NINETALES,
         .moves = {MOVE_FLAMETHROWER, MOVE_HEX, MOVE_ENERGY_BALL, MOVE_WILL_O_WISP},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5607,7 +5607,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [623] = {
+    [FRONTIER_MON_MACHAMP_3] = {
         .species = SPECIES_MACHAMP,
         .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_BULLET_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -5616,7 +5616,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [624] = {
+    [FRONTIER_MON_SHUCKLE_3] = {
         .species = SPECIES_SHUCKLE,
         .moves = {MOVE_STICKY_WEB, MOVE_STEALTH_ROCK, MOVE_TOXIC, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -5625,7 +5625,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [625] = {
+    [FRONTIER_MON_STEELIX_3] = {
         .species = SPECIES_STEELIX,
         .moves = {MOVE_EARTHQUAKE, MOVE_HEAVY_SLAM, MOVE_THUNDER_FANG, MOVE_ICE_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -5634,7 +5634,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [626] = {
+    [FRONTIER_MON_TENTACRUEL_3] = {
         .species = SPECIES_TENTACRUEL,
         .moves = {MOVE_SCALD, MOVE_SLUDGE_BOMB, MOVE_ICE_BEAM, MOVE_TOXIC_SPIKES},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5643,7 +5643,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [627] = {
+    [FRONTIER_MON_AERODACTYL_3] = {
         .species = SPECIES_AERODACTYL,
         .moves = {MOVE_STONE_EDGE, MOVE_FIRE_FANG, MOVE_ICE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -5652,7 +5652,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [628] = {
+    [FRONTIER_MON_PORYGON2_3] = {
         .species = SPECIES_PORYGON2,
         .moves = {MOVE_TRI_ATTACK, MOVE_DARK_PULSE, MOVE_HIDDEN_POWER, MOVE_AGILITY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5661,7 +5661,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 27,
         .ability = 0
     },
-    [629] = {
+    [FRONTIER_MON_GARDEVOIR_3] = {
         .species = SPECIES_GARDEVOIR,
         .moves = {MOVE_PSYCHIC, MOVE_MOONBLAST, MOVE_FOCUS_BLAST, MOVE_SHADOW_BALL},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -5670,7 +5670,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [630] = {
+    [FRONTIER_MON_EXEGGUTOR_3] = {
         .species = SPECIES_EXEGGUTOR,
         .moves = {MOVE_PSYCHIC, MOVE_LEAF_STORM, MOVE_SLEEP_POWDER, MOVE_TRICK_ROOM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5679,7 +5679,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 1
     },
-    [631] = {
+    [FRONTIER_MON_STARMIE_3] = {
         .species = SPECIES_STARMIE,
         .moves = {MOVE_SURF, MOVE_PSYSHOCK, MOVE_ICE_BEAM, MOVE_THUNDERBOLT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -5688,7 +5688,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [632] = {
+    [FRONTIER_MON_FLYGON_3] = {
         .species = SPECIES_FLYGON,
         .moves = {MOVE_EARTHQUAKE, MOVE_DRAGON_CLAW, MOVE_SUBSTITUTE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5697,7 +5697,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [633] = {
+    [FRONTIER_MON_VENUSAUR_3] = {
         .species = SPECIES_VENUSAUR,
         .moves = {MOVE_POWER_WHIP, MOVE_EARTHQUAKE, MOVE_KNOCK_OFF, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5706,7 +5706,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [634] = {
+    [FRONTIER_MON_VAPOREON_3] = {
         .species = SPECIES_VAPOREON,
         .moves = {MOVE_SCALD, MOVE_WISH, MOVE_ACID_ARMOR, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5715,7 +5715,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [635] = {
+    [FRONTIER_MON_JOLTEON_3] = {
         .species = SPECIES_JOLTEON,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_SUBSTITUTE, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5724,7 +5724,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [636] = {
+    [FRONTIER_MON_FLAREON_3] = {
         .species = SPECIES_FLAREON,
         .moves = {MOVE_FLARE_BLITZ, MOVE_SUPERPOWER, MOVE_FLAME_CHARGE, MOVE_EARTHQUAKE},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -5733,7 +5733,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [637] = {
+    [FRONTIER_MON_MEGANIUM_3] = {
         .species = SPECIES_MEGANIUM,
         .moves = {MOVE_GIGA_DRAIN, MOVE_LEECH_SEED, MOVE_DRAGON_TAIL, MOVE_SYNTHESIS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5742,7 +5742,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [638] = {
+    [FRONTIER_MON_ESPEON_3] = {
         .species = SPECIES_ESPEON,
         .moves = {MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_SHADOW_BALL, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -5751,7 +5751,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 1
     },
-    [639] = {
+    [FRONTIER_MON_UMBREON_3] = {
         .species = SPECIES_UMBREON,
         .moves = {MOVE_FOUL_PLAY, MOVE_WISH, MOVE_HEAL_BELL, MOVE_TOXIC},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5760,7 +5760,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [640] = {
+    [FRONTIER_MON_BLASTOISE_3] = {
         .species = SPECIES_BLASTOISE,
         .moves = {MOVE_LIQUIDATION, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_WHITE_HERB,
@@ -5769,7 +5769,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [641] = {
+    [FRONTIER_MON_FERALIGATR_3] = {
         .species = SPECIES_FERALIGATR,
         .moves = {MOVE_AQUA_JET, MOVE_ICE_FANG, MOVE_CRUNCH, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5778,7 +5778,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [642] = {
+    [FRONTIER_MON_AGGRON_3] = {
         .species = SPECIES_AGGRON,
         .moves = {MOVE_HEAD_SMASH, MOVE_HEAVY_SLAM, MOVE_EARTHQUAKE, MOVE_ROCK_POLISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5787,7 +5787,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [643] = {
+    [FRONTIER_MON_BLAZIKEN_3] = {
         .species = SPECIES_BLAZIKEN,
         .moves = {MOVE_FLARE_BLITZ, MOVE_HI_JUMP_KICK, MOVE_STONE_EDGE, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5796,7 +5796,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [644] = {
+    [FRONTIER_MON_WALREIN_3] = {
         .species = SPECIES_WALREIN,
         .moves = {MOVE_BLIZZARD, MOVE_SURF, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5805,7 +5805,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [645] = {
+    [FRONTIER_MON_SCEPTILE_3] = {
         .species = SPECIES_SCEPTILE,
         .moves = {MOVE_LEAF_BLADE, MOVE_DRAIN_PUNCH, MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -5814,7 +5814,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [646] = {
+    [FRONTIER_MON_CHARIZARD_3] = {
         .species = SPECIES_CHARIZARD,
         .moves = {MOVE_FIRE_BLAST, MOVE_AIR_SLASH, MOVE_FOCUS_BLAST, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -5823,7 +5823,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [647] = {
+    [FRONTIER_MON_TYPHLOSION_3] = {
         .species = SPECIES_TYPHLOSION,
         .moves = {MOVE_ERUPTION, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -5832,7 +5832,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [648] = {
+    [FRONTIER_MON_LAPRAS_3] = {
         .species = SPECIES_LAPRAS,
         .moves = {MOVE_SHEER_COLD, MOVE_HORN_DRILL, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5841,7 +5841,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [649] = {
+    [FRONTIER_MON_CROBAT_3] = {
         .species = SPECIES_CROBAT,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_HEAT_WAVE, MOVE_GIGA_DRAIN, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5850,7 +5850,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [650] = {
+    [FRONTIER_MON_SWAMPERT_3] = {
         .species = SPECIES_SWAMPERT,
         .moves = {MOVE_EARTHQUAKE, MOVE_DIVE, MOVE_ICE_PUNCH, MOVE_HAMMER_ARM},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -5859,7 +5859,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [651] = {
+    [FRONTIER_MON_GYARADOS_3] = {
         .species = SPECIES_GYARADOS,
         .moves = {MOVE_WATERFALL, MOVE_OUTRAGE, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5868,7 +5868,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [652] = {
+    [FRONTIER_MON_SNORLAX_3] = {
         .species = SPECIES_SNORLAX,
         .moves = {MOVE_BODY_SLAM, MOVE_EARTHQUAKE, MOVE_CURSE, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5877,7 +5877,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [653] = {
+    [FRONTIER_MON_KINGDRA_3] = {
         .species = SPECIES_KINGDRA,
         .moves = {MOVE_DRACO_METEOR, MOVE_SURF, MOVE_AGILITY, MOVE_FOCUS_ENERGY},
         .itemTableId = BATTLE_FRONTIER_ITEM_SCOPE_LENS,
@@ -5886,7 +5886,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [654] = {
+    [FRONTIER_MON_BLISSEY_3] = {
         .species = SPECIES_BLISSEY,
         .moves = {MOVE_ICE_BEAM, MOVE_PROTECT, MOVE_CALM_MIND, MOVE_SOFT_BOILED},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5895,7 +5895,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [655] = {
+    [FRONTIER_MON_MILOTIC_3] = {
         .species = SPECIES_MILOTIC,
         .moves = {MOVE_AQUA_TAIL, MOVE_COIL, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5904,7 +5904,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [656] = {
+    [FRONTIER_MON_ARCANINE_3] = {
         .species = SPECIES_ARCANINE,
         .moves = {MOVE_WILL_O_WISP, MOVE_FLARE_BLITZ, MOVE_MORNING_SUN, MOVE_ROAR},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -5913,7 +5913,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [657] = {
+    [FRONTIER_MON_SALAMENCE_3] = {
         .species = SPECIES_SALAMENCE,
         .moves = {MOVE_DRAGON_ASCENT, MOVE_OUTRAGE, MOVE_THUNDER_FANG, MOVE_EARTHQUAKE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -5922,7 +5922,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [658] = {
+    [FRONTIER_MON_METAGROSS_3] = {
         .species = SPECIES_METAGROSS,
         .moves = {MOVE_IRON_HEAD, MOVE_EARTHQUAKE, MOVE_THUNDER_PUNCH, MOVE_AGILITY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LUM_BERRY,
@@ -5931,7 +5931,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [659] = {
+    [FRONTIER_MON_SLAKING_3] = {
         .species = SPECIES_SLAKING,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_PLAY_ROUGH, MOVE_SHADOW_CLAW},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -5940,7 +5940,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [660] = {
+    [FRONTIER_MON_DUGTRIO_4] = {
         .species = SPECIES_DUGTRIO,
         .moves = {MOVE_EARTHQUAKE, MOVE_REVERSAL, MOVE_STONE_EDGE, MOVE_HONE_CLAWS},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -5949,7 +5949,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [661] = {
+    [FRONTIER_MON_MEDICHAM_4] = {
         .species = SPECIES_MEDICHAM,
         .moves = {MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_BULLET_PUNCH, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -5958,7 +5958,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [662] = {
+    [FRONTIER_MON_MISDREAVUS_4] = {
         .species = SPECIES_MISDREAVUS,
         .moves = {MOVE_SHADOW_BALL, MOVE_POWER_GEM, MOVE_DAZZLING_GLEAM, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -5967,7 +5967,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [663] = {
+    [FRONTIER_MON_FEAROW_4] = {
         .species = SPECIES_FEAROW,
         .moves = {MOVE_RETURN, MOVE_DRILL_PECK, MOVE_DRILL_RUN, MOVE_FOCUS_ENERGY},
         .itemTableId = BATTLE_FRONTIER_ITEM_SCOPE_LENS,
@@ -5976,7 +5976,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [664] = {
+    [FRONTIER_MON_GRANBULL_4] = {
         .species = SPECIES_GRANBULL,
         .moves = {MOVE_PLAY_ROUGH, MOVE_EARTHQUAKE, MOVE_FIRE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -5985,7 +5985,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [665] = {
+    [FRONTIER_MON_JYNX_4] = {
         .species = SPECIES_JYNX,
         .moves = {MOVE_ICE_BEAM, MOVE_PSYSHOCK, MOVE_FOCUS_BLAST, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -5994,7 +5994,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [666] = {
+    [FRONTIER_MON_DUSCLOPS_4] = {
         .species = SPECIES_DUSCLOPS,
         .moves = {MOVE_EARTHQUAKE, MOVE_SHADOW_SNEAK, MOVE_ICE_PUNCH, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6003,7 +6003,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [667] = {
+    [FRONTIER_MON_DODRIO_4] = {
         .species = SPECIES_DODRIO,
         .moves = {MOVE_BRAVE_BIRD, MOVE_RETURN, MOVE_JUMP_KICK, MOVE_KNOCK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -6012,7 +6012,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [668] = {
+    [FRONTIER_MON_MR_MIME_4] = {
         .species = SPECIES_MR_MIME,
         .moves = {MOVE_PSYSHOCK, MOVE_DAZZLING_GLEAM, MOVE_FOCUS_BLAST, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6021,7 +6021,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [669] = {
+    [FRONTIER_MON_LANTURN_4] = {
         .species = SPECIES_LANTURN,
         .moves = {MOVE_SURF, MOVE_THUNDERBOLT, MOVE_ICE_BEAM, MOVE_VOLT_SWITCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -6030,7 +6030,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [670] = {
+    [FRONTIER_MON_BRELOOM_4] = {
         .species = SPECIES_BRELOOM,
         .moves = {MOVE_BULLET_SEED, MOVE_MACH_PUNCH, MOVE_ROCK_TOMB, MOVE_SPORE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -6039,7 +6039,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [671] = {
+    [FRONTIER_MON_FORRETRESS_4] = {
         .species = SPECIES_FORRETRESS,
         .moves = {MOVE_GYRO_BALL, MOVE_TOXIC_SPIKES, MOVE_SPIKES, MOVE_STEALTH_ROCK},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6048,7 +6048,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [672] = {
+    [FRONTIER_MON_WHISCASH_4] = {
         .species = SPECIES_WHISCASH,
         .moves = {MOVE_EARTHQUAKE, MOVE_WATERFALL, MOVE_BOUNCE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6057,7 +6057,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [673] = {
+    [FRONTIER_MON_XATU_4] = {
         .species = SPECIES_XATU,
         .moves = {MOVE_STORED_POWER, MOVE_CALM_MIND, MOVE_ROOST, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6066,7 +6066,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [674] = {
+    [FRONTIER_MON_SKARMORY_4] = {
         .species = SPECIES_SKARMORY,
         .moves = {MOVE_BRAVE_BIRD, MOVE_TOXIC, MOVE_WHIRLWIND, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6075,7 +6075,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [675] = {
+    [FRONTIER_MON_MAROWAK_4] = {
         .species = SPECIES_MAROWAK,
         .moves = {MOVE_BONEMERANG, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_THICK_CLUB,
@@ -6084,7 +6084,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [676] = {
+    [FRONTIER_MON_QUAGSIRE_4] = {
         .species = SPECIES_QUAGSIRE,
         .moves = {MOVE_DIVE, MOVE_EARTHQUAKE, MOVE_CURSE, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6102,7 +6102,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [678] = {
+    [FRONTIER_MON_HARIYAMA_4] = {
         .species = SPECIES_HARIYAMA,
         .moves = {MOVE_REVENGE, MOVE_KNOCK_OFF, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6111,7 +6111,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [679] = {
+    [FRONTIER_MON_RAICHU_4] = {
         .species = SPECIES_RAICHU,
         .moves = {MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST, MOVE_HIDDEN_POWER, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6129,7 +6129,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 29,
         .ability = 0
     },
-    [681] = {
+    [FRONTIER_MON_MANECTRIC_4] = {
         .species = SPECIES_MANECTRIC,
         .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_OVERHEAT, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -6138,7 +6138,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [682] = {
+    [FRONTIER_MON_VILEPLUME_4] = {
         .species = SPECIES_VILEPLUME,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_GIGA_DRAIN, MOVE_STRENGTH_SAP, MOVE_SLEEP_POWDER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6147,7 +6147,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [683] = {
+    [FRONTIER_MON_VICTREEBEL_4] = {
         .species = SPECIES_VICTREEBEL,
         .moves = {MOVE_SOLAR_BEAM, MOVE_SLUDGE_BOMB, MOVE_WEATHER_BALL, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6156,7 +6156,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [684] = {
+    [FRONTIER_MON_ELECTRODE_4] = {
         .species = SPECIES_ELECTRODE,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH, MOVE_SIGNAL_BEAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -6165,7 +6165,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [685] = {
+    [FRONTIER_MON_EXPLOUD_4] = {
         .species = SPECIES_EXPLOUD,
         .moves = {MOVE_BOOMBURST, MOVE_FOCUS_BLAST, MOVE_FIRE_BLAST, MOVE_SURF},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -6174,7 +6174,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [686] = {
+    [FRONTIER_MON_SHIFTRY_4] = {
         .species = SPECIES_SHIFTRY,
         .moves = {MOVE_SOLAR_BLADE, MOVE_KNOCK_OFF, MOVE_SUNNY_DAY, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -6192,7 +6192,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [688] = {
+    [FRONTIER_MON_LUDICOLO_4] = {
         .species = SPECIES_LUDICOLO,
         .moves = {MOVE_SURF, MOVE_GIGA_DRAIN, MOVE_ICE_BEAM, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6201,7 +6201,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [689] = {
+    [FRONTIER_MON_HYPNO_4] = {
         .species = SPECIES_HYPNO,
         .moves = {MOVE_PSYCHIC, MOVE_BATON_PASS, MOVE_SUBSTITUTE, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6210,7 +6210,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [690] = {
+    [FRONTIER_MON_GOLEM_4] = {
         .species = SPECIES_GOLEM,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_SUCKER_PUNCH, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6219,7 +6219,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [691] = {
+    [FRONTIER_MON_RHYDON_4] = {
         .species = SPECIES_RHYDON,
         .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_MEGAHORN, MOVE_ROCK_WRECKER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6228,7 +6228,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [692] = {
+    [FRONTIER_MON_ALAKAZAM_4] = {
         .species = SPECIES_ALAKAZAM,
         .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_SHADOW_BALL, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -6237,7 +6237,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [693] = {
+    [FRONTIER_MON_WEEZING_4] = {
         .species = SPECIES_WEEZING,
         .moves = {MOVE_SLUDGE_BOMB, MOVE_WILL_O_WISP, MOVE_TOXIC_SPIKES, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6246,7 +6246,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [694] = {
+    [FRONTIER_MON_KANGASKHAN_4] = {
         .species = SPECIES_KANGASKHAN,
         .moves = {MOVE_FAKE_OUT, MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_SUCKER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6255,7 +6255,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [695] = {
+    [FRONTIER_MON_ELECTABUZZ_4] = {
         .species = SPECIES_ELECTABUZZ,
         .moves = {MOVE_THUNDER_PUNCH, MOVE_ICE_PUNCH, MOVE_EARTHQUAKE, MOVE_FIRE_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -6264,7 +6264,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [696] = {
+    [FRONTIER_MON_TAUROS_4] = {
         .species = SPECIES_TAUROS,
         .moves = {MOVE_HEAD_CHARGE, MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_ZEN_HEADBUTT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6273,7 +6273,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [697] = {
+    [FRONTIER_MON_SLOWBRO_4] = {
         .species = SPECIES_SLOWBRO,
         .moves = {MOVE_SCALD, MOVE_PSYSHOCK, MOVE_THUNDER_WAVE, MOVE_SLACK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6282,7 +6282,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [698] = {
+    [FRONTIER_MON_SLOWKING_4] = {
         .species = SPECIES_SLOWKING,
         .moves = {MOVE_SCALD, MOVE_FUTURE_SIGHT, MOVE_NASTY_PLOT, MOVE_SLACK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6291,7 +6291,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [699] = {
+    [FRONTIER_MON_MILTANK_4] = {
         .species = SPECIES_MILTANK,
         .moves = {MOVE_BODY_SLAM, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6300,7 +6300,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [700] = {
+    [FRONTIER_MON_ALTARIA_4] = {
         .species = SPECIES_ALTARIA,
         .moves = {MOVE_DRAGON_CLAW, MOVE_EARTHQUAKE, MOVE_ROOST, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6309,7 +6309,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [701] = {
+    [FRONTIER_MON_NIDOQUEEN_4] = {
         .species = SPECIES_NIDOQUEEN,
         .moves = {MOVE_SLUDGE_WAVE, MOVE_EARTH_POWER, MOVE_ICE_BEAM, MOVE_THUNDERBOLT},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -6318,7 +6318,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [702] = {
+    [FRONTIER_MON_NIDOKING_4] = {
         .species = SPECIES_NIDOKING,
         .moves = {MOVE_EARTHQUAKE, MOVE_POISON_FANG, MOVE_ICE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -6327,7 +6327,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [703] = {
+    [FRONTIER_MON_MAGMAR_4] = {
         .species = SPECIES_MAGMAR,
         .moves = {MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST, MOVE_HIDDEN_POWER, MOVE_OVERHEAT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6336,7 +6336,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 1
     },
-    [704] = {
+    [FRONTIER_MON_CRADILY_4] = {
         .species = SPECIES_CRADILY,
         .moves = {MOVE_GIGA_DRAIN, MOVE_MUD_BOMB, MOVE_EARTH_POWER, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6345,7 +6345,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [705] = {
+    [FRONTIER_MON_ARMALDO_4] = {
         .species = SPECIES_ARMALDO,
         .moves = {MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_X_SCISSOR, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6354,7 +6354,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [706] = {
+    [FRONTIER_MON_GOLDUCK_4] = {
         .species = SPECIES_GOLDUCK,
         .moves = {MOVE_AQUA_JET, MOVE_CROSS_CHOP, MOVE_ZEN_HEADBUTT, MOVE_HONE_CLAWS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6363,7 +6363,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [707] = {
+    [FRONTIER_MON_RAPIDASH_4] = {
         .species = SPECIES_RAPIDASH,
         .moves = {MOVE_FLARE_BLITZ, MOVE_HIGH_HORSEPOWER, MOVE_WILD_CHARGE, MOVE_MEGAHORN},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6372,7 +6372,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [708] = {
+    [FRONTIER_MON_MUK_4] = {
         .species = SPECIES_MUK,
         .moves = {MOVE_POISON_JAB, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6381,7 +6381,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [709] = {
+    [FRONTIER_MON_GENGAR_4] = {
         .species = SPECIES_GENGAR,
         .moves = {MOVE_SHADOW_BALL, MOVE_SLUDGE_WAVE, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -6390,7 +6390,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [710] = {
+    [FRONTIER_MON_AMPHAROS_4] = {
         .species = SPECIES_AMPHAROS,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_FOCUS_BLAST, MOVE_TAIL_GLOW},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6399,7 +6399,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [711] = {
+    [FRONTIER_MON_SCIZOR_4] = {
         .species = SPECIES_SCIZOR,
         .moves = {MOVE_BULLET_PUNCH, MOVE_U_TURN, MOVE_KNOCK_OFF, MOVE_SUPERPOWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6408,7 +6408,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [712] = {
+    [FRONTIER_MON_HERACROSS_4] = {
         .species = SPECIES_HERACROSS,
         .moves = {MOVE_MEGAHORN, MOVE_REVERSAL, MOVE_KNOCK_OFF, MOVE_ENDURE},
         .itemTableId = BATTLE_FRONTIER_ITEM_SALAC_BERRY,
@@ -6417,7 +6417,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [713] = {
+    [FRONTIER_MON_URSARING_4] = {
         .species = SPECIES_URSARING,
         .moves = {MOVE_BODY_SLAM, MOVE_BULK_UP, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6426,7 +6426,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [714] = {
+    [FRONTIER_MON_HOUNDOOM_4] = {
         .species = SPECIES_HOUNDOOM,
         .moves = {MOVE_FIRE_BLAST, MOVE_DARK_PULSE, MOVE_COUNTER, MOVE_NASTY_PLOT},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -6435,7 +6435,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [715] = {
+    [FRONTIER_MON_DONPHAN_4] = {
         .species = SPECIES_DONPHAN,
         .moves = {MOVE_EARTHQUAKE, MOVE_ICE_SHARD, MOVE_FIRE_FANG, MOVE_THUNDER_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6444,7 +6444,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [716] = {
+    [FRONTIER_MON_CLAYDOL_4] = {
         .species = SPECIES_CLAYDOL,
         .moves = {MOVE_EARTH_POWER, MOVE_ICE_BEAM, MOVE_PSYCHIC, MOVE_SHADOW_BALL},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -6453,7 +6453,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [717] = {
+    [FRONTIER_MON_WAILORD_4] = {
         .species = SPECIES_WAILORD,
         .moves = {MOVE_WATER_SPOUT, MOVE_ICE_BEAM, MOVE_HYDRO_PUMP, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -6462,7 +6462,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 1
     },
-    [718] = {
+    [FRONTIER_MON_NINETALES_4] = {
         .species = SPECIES_NINETALES,
         .moves = {MOVE_FLAMETHROWER, MOVE_MORNING_SUN, MOVE_HEX, MOVE_HYPNOSIS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6471,7 +6471,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [719] = {
+    [FRONTIER_MON_MACHAMP_4] = {
         .species = SPECIES_MACHAMP,
         .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_HEAVY_SLAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6480,7 +6480,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [720] = {
+    [FRONTIER_MON_SHUCKLE_4] = {
         .species = SPECIES_SHUCKLE,
         .moves = {MOVE_STICKY_WEB, MOVE_STEALTH_ROCK, MOVE_TOXIC, MOVE_KNOCK_OFF},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6489,7 +6489,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [721] = {
+    [FRONTIER_MON_STEELIX_4] = {
         .species = SPECIES_STEELIX,
         .moves = {MOVE_EARTHQUAKE, MOVE_HEAVY_SLAM, MOVE_HEAD_SMASH, MOVE_ICE_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6498,7 +6498,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [722] = {
+    [FRONTIER_MON_TENTACRUEL_4] = {
         .species = SPECIES_TENTACRUEL,
         .moves = {MOVE_HYDRO_PUMP, MOVE_SLUDGE_BOMB, MOVE_ICE_BEAM, MOVE_TOXIC_SPIKES},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6507,7 +6507,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [723] = {
+    [FRONTIER_MON_AERODACTYL_4] = {
         .species = SPECIES_AERODACTYL,
         .moves = {MOVE_HEAD_SMASH, MOVE_BRAVE_BIRD, MOVE_EARTHQUAKE, MOVE_DOUBLE_EDGE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6516,7 +6516,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [724] = {
+    [FRONTIER_MON_PORYGON2_4] = {
         .species = SPECIES_PORYGON2,
         .moves = {MOVE_ICE_BEAM, MOVE_DISCHARGE, MOVE_THUNDER_WAVE, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6534,7 +6534,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [726] = {
+    [FRONTIER_MON_EXEGGUTOR_4] = {
         .species = SPECIES_EXEGGUTOR,
         .moves = {MOVE_PSYCHIC, MOVE_GIGA_DRAIN, MOVE_HIDDEN_POWER, MOVE_TRICK_ROOM},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6543,7 +6543,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 1
     },
-    [727] = {
+    [FRONTIER_MON_STARMIE_4] = {
         .species = SPECIES_STARMIE,
         .moves = {MOVE_SURF, MOVE_PSYSHOCK, MOVE_ICE_BEAM, MOVE_THUNDERBOLT},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6552,7 +6552,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [728] = {
+    [FRONTIER_MON_FLYGON_4] = {
         .species = SPECIES_FLYGON,
         .moves = {MOVE_EARTHQUAKE, MOVE_OUTRAGE, MOVE_U_TURN, MOVE_DRAGON_CLAW},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6561,7 +6561,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [729] = {
+    [FRONTIER_MON_VENUSAUR_4] = {
         .species = SPECIES_VENUSAUR,
         .moves = {MOVE_SOLAR_BEAM, MOVE_SLUDGE_BOMB, MOVE_HIDDEN_POWER, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6570,7 +6570,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 1
     },
-    [730] = {
+    [FRONTIER_MON_VAPOREON_4] = {
         .species = SPECIES_VAPOREON,
         .moves = {MOVE_SCALD, MOVE_WISH, MOVE_TOXIC, MOVE_BATON_PASS},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6579,7 +6579,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [731] = {
+    [FRONTIER_MON_JOLTEON_4] = {
         .species = SPECIES_JOLTEON,
         .moves = {MOVE_THUNDERBOLT, MOVE_SIGNAL_BEAM, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -6588,7 +6588,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [732] = {
+    [FRONTIER_MON_FLAREON_4] = {
         .species = SPECIES_FLAREON,
         .moves = {MOVE_FLARE_BLITZ, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6606,7 +6606,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [734] = {
+    [FRONTIER_MON_ESPEON_4] = {
         .species = SPECIES_ESPEON,
         .moves = {MOVE_PSYCHIC, MOVE_SHADOW_BALL, MOVE_MORNING_SUN, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6615,7 +6615,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [735] = {
+    [FRONTIER_MON_UMBREON_4] = {
         .species = SPECIES_UMBREON,
         .moves = {MOVE_FOUL_PLAY, MOVE_WISH, MOVE_HEAL_BELL, MOVE_TOXIC},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6624,7 +6624,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [736] = {
+    [FRONTIER_MON_BLASTOISE_4] = {
         .species = SPECIES_BLASTOISE,
         .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_FOCUS_BLAST, MOVE_SHELL_SMASH},
         .itemTableId = BATTLE_FRONTIER_ITEM_WHITE_HERB,
@@ -6633,7 +6633,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [737] = {
+    [FRONTIER_MON_FERALIGATR_4] = {
         .species = SPECIES_FERALIGATR,
         .moves = {MOVE_LIQUIDATION, MOVE_ICE_FANG, MOVE_CRUNCH, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6642,7 +6642,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [738] = {
+    [FRONTIER_MON_AGGRON_4] = {
         .species = SPECIES_AGGRON,
         .moves = {MOVE_HEAD_SMASH, MOVE_HEAVY_SLAM, MOVE_EARTHQUAKE, MOVE_AQUA_TAIL},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6651,7 +6651,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [739] = {
+    [FRONTIER_MON_BLAZIKEN_4] = {
         .species = SPECIES_BLAZIKEN,
         .moves = {MOVE_FLARE_BLITZ, MOVE_HI_JUMP_KICK, MOVE_BATON_PASS, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6660,7 +6660,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [740] = {
+    [FRONTIER_MON_WALREIN_4] = {
         .species = SPECIES_WALREIN,
         .moves = {MOVE_ICE_BEAM, MOVE_SHEER_COLD, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6669,7 +6669,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [741] = {
+    [FRONTIER_MON_SCEPTILE_4] = {
         .species = SPECIES_SCEPTILE,
         .moves = {MOVE_LEAF_BLADE, MOVE_DRAIN_PUNCH, MOVE_ROCK_SLIDE, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6678,7 +6678,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [742] = {
+    [FRONTIER_MON_CHARIZARD_4] = {
         .species = SPECIES_CHARIZARD,
         .moves = {MOVE_FIRE_BLAST, MOVE_SOLAR_BEAM, MOVE_FOCUS_BLAST, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6687,7 +6687,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [743] = {
+    [FRONTIER_MON_TYPHLOSION_4] = {
         .species = SPECIES_TYPHLOSION,
         .moves = {MOVE_ERUPTION, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST, MOVE_HIDDEN_POWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -6696,7 +6696,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [744] = {
+    [FRONTIER_MON_LAPRAS_4] = {
         .species = SPECIES_LAPRAS,
         .moves = {MOVE_ICE_BEAM, MOVE_HYDRO_PUMP, MOVE_FREEZE_DRY, MOVE_SURF},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -6705,7 +6705,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [745] = {
+    [FRONTIER_MON_CROBAT_4] = {
         .species = SPECIES_CROBAT,
         .moves = {MOVE_BRAVE_BIRD, MOVE_POISON_FANG, MOVE_PURSUIT, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6714,7 +6714,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [746] = {
+    [FRONTIER_MON_SWAMPERT_4] = {
         .species = SPECIES_SWAMPERT,
         .moves = {MOVE_WATERFALL, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6723,7 +6723,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [747] = {
+    [FRONTIER_MON_GYARADOS_4] = {
         .species = SPECIES_GYARADOS,
         .moves = {MOVE_WATERFALL, MOVE_OUTRAGE, MOVE_EARTHQUAKE, MOVE_ICE_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -6732,7 +6732,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [748] = {
+    [FRONTIER_MON_SNORLAX_4] = {
         .species = SPECIES_SNORLAX,
         .moves = {MOVE_BODY_SLAM, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6741,7 +6741,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [749] = {
+    [FRONTIER_MON_KINGDRA_4] = {
         .species = SPECIES_KINGDRA,
         .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_DRACO_METEOR, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6750,7 +6750,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [750] = {
+    [FRONTIER_MON_BLISSEY_4] = {
         .species = SPECIES_BLISSEY,
         .moves = {MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_CALM_MIND, MOVE_SOFT_BOILED},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6759,7 +6759,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [751] = {
+    [FRONTIER_MON_MILOTIC_4] = {
         .species = SPECIES_MILOTIC,
         .moves = {MOVE_SCALD, MOVE_ICE_BEAM, MOVE_RECOVER, MOVE_DRAGON_TAIL},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6768,7 +6768,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [752] = {
+    [FRONTIER_MON_ARCANINE_4] = {
         .species = SPECIES_ARCANINE,
         .moves = {MOVE_FLARE_BLITZ, MOVE_THUNDER_FANG, MOVE_EXTREME_SPEED, MOVE_MORNING_SUN},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6777,7 +6777,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [753] = {
+    [FRONTIER_MON_SALAMENCE_4] = {
         .species = SPECIES_SALAMENCE,
         .moves = {MOVE_DRAGON_ASCENT, MOVE_DRAGON_CLAW, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LUM_BERRY,
@@ -6786,7 +6786,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [754] = {
+    [FRONTIER_MON_METAGROSS_4] = {
         .species = SPECIES_METAGROSS,
         .moves = {MOVE_METEOR_MASH, MOVE_BULLET_PUNCH, MOVE_EARTHQUAKE, MOVE_THUNDER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -6795,7 +6795,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [755] = {
+    [FRONTIER_MON_SLAKING_4] = {
         .species = SPECIES_SLAKING,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_PLAY_ROUGH, MOVE_SHADOW_CLAW},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -6804,7 +6804,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [756] = {
+    [FRONTIER_MON_ARTICUNO_1] = {
         .species = SPECIES_ARTICUNO,
         .moves = {MOVE_BLIZZARD, MOVE_HURRICANE, MOVE_ROAR, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6813,7 +6813,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [757] = {
+    [FRONTIER_MON_ZAPDOS_1] = {
         .species = SPECIES_ZAPDOS,
         .moves = {MOVE_ZAP_CANNON, MOVE_HIDDEN_POWER, MOVE_DETECT, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6822,7 +6822,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [758] = {
+    [FRONTIER_MON_MOLTRES_1] = {
         .species = SPECIES_MOLTRES,
         .moves = {MOVE_FIRE_BLAST, MOVE_HURRICANE, MOVE_HIDDEN_POWER, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -6831,7 +6831,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [759] = {
+    [FRONTIER_MON_RAIKOU_1] = {
         .species = SPECIES_RAIKOU,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_AURA_SPHERE, MOVE_VOLT_SWITCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -6840,7 +6840,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [760] = {
+    [FRONTIER_MON_ENTEI_1] = {
         .species = SPECIES_ENTEI,
         .moves = {MOVE_SACRED_FIRE, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6849,7 +6849,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [761] = {
+    [FRONTIER_MON_SUICUNE_1] = {
         .species = SPECIES_SUICUNE,
         .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6858,7 +6858,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [762] = {
+    [FRONTIER_MON_REGIROCK_1] = {
         .species = SPECIES_REGIROCK,
         .moves = {MOVE_ROCK_SLIDE, MOVE_DRAIN_PUNCH, MOVE_EARTHQUAKE, MOVE_ROCK_POLISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6867,7 +6867,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [763] = {
+    [FRONTIER_MON_REGICE_1] = {
         .species = SPECIES_REGICE,
         .moves = {MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST, MOVE_THUNDER_WAVE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6876,7 +6876,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [764] = {
+    [FRONTIER_MON_REGISTEEL_1] = {
         .species = SPECIES_REGISTEEL,
         .moves = {MOVE_SEISMIC_TOSS, MOVE_TOXIC, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6885,7 +6885,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [765] = {
+    [FRONTIER_MON_LATIAS_1] = {
         .species = SPECIES_LATIAS,
         .moves = {MOVE_DRACO_METEOR, MOVE_PSYSHOCK, MOVE_SURF, MOVE_HEALING_WISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -6894,7 +6894,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [766] = {
+    [FRONTIER_MON_LATIOS_1] = {
         .species = SPECIES_LATIOS,
         .moves = {MOVE_DRAGON_PULSE, MOVE_PSYCHIC, MOVE_HIDDEN_POWER, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6903,7 +6903,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 0
     },
-    [767] = {
+    [FRONTIER_MON_ARTICUNO_2] = {
         .species = SPECIES_ARTICUNO,
         .moves = {MOVE_BLIZZARD, MOVE_HURRICANE, MOVE_HIDDEN_POWER, MOVE_AGILITY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6912,7 +6912,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 27,
         .ability = 0
     },
-    [768] = {
+    [FRONTIER_MON_ZAPDOS_2] = {
         .species = SPECIES_ZAPDOS,
         .moves = {MOVE_ZAP_CANNON, MOVE_HEAT_WAVE, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -6921,7 +6921,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [769] = {
+    [FRONTIER_MON_MOLTRES_2] = {
         .species = SPECIES_MOLTRES,
         .moves = {MOVE_OVERHEAT, MOVE_HURRICANE, MOVE_U_TURN, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6930,7 +6930,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [770] = {
+    [FRONTIER_MON_RAIKOU_2] = {
         .species = SPECIES_RAIKOU,
         .moves = {MOVE_THUNDERBOLT, MOVE_AURA_SPHERE, MOVE_HIDDEN_POWER, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -6939,7 +6939,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [771] = {
+    [FRONTIER_MON_ENTEI_2] = {
         .species = SPECIES_ENTEI,
         .moves = {MOVE_SACRED_FIRE, MOVE_STONE_EDGE, MOVE_FLAME_CHARGE, MOVE_STOMPING_TANTRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -6948,7 +6948,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [772] = {
+    [FRONTIER_MON_SUICUNE_2] = {
         .species = SPECIES_SUICUNE,
         .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_CALM_MIND, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -6957,7 +6957,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [773] = {
+    [FRONTIER_MON_REGIROCK_2] = {
         .species = SPECIES_REGIROCK,
         .moves = {MOVE_STEALTH_ROCK, MOVE_STONE_EDGE, MOVE_HAMMER_ARM, MOVE_TOXIC},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6966,7 +6966,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [774] = {
+    [FRONTIER_MON_REGICE_2] = {
         .species = SPECIES_REGICE,
         .moves = {MOVE_ICE_BEAM, MOVE_CHARGE_BEAM, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6975,7 +6975,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [775] = {
+    [FRONTIER_MON_REGISTEEL_2] = {
         .species = SPECIES_REGISTEEL,
         .moves = {MOVE_IRON_HEAD, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6984,7 +6984,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [776] = {
+    [FRONTIER_MON_LATIAS_2] = {
         .species = SPECIES_LATIAS,
         .moves = {MOVE_DRAGON_PULSE, MOVE_CALM_MIND, MOVE_CHARM, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -6993,7 +6993,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [777] = {
+    [FRONTIER_MON_LATIOS_2] = {
         .species = SPECIES_LATIOS,
         .moves = {MOVE_DRAGON_PULSE, MOVE_SURF, MOVE_ROOST, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7002,7 +7002,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [778] = {
+    [FRONTIER_MON_ARTICUNO_3] = {
         .species = SPECIES_ARTICUNO,
         .moves = {MOVE_BLIZZARD, MOVE_HURRICANE, MOVE_U_TURN, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7011,7 +7011,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [779] = {
+    [FRONTIER_MON_ZAPDOS_3] = {
         .species = SPECIES_ZAPDOS,
         .moves = {MOVE_ZAP_CANNON, MOVE_HIDDEN_POWER, MOVE_HEAT_WAVE, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7020,7 +7020,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [780] = {
+    [FRONTIER_MON_MOLTRES_3] = {
         .species = SPECIES_MOLTRES,
         .moves = {MOVE_FIRE_BLAST, MOVE_HURRICANE, MOVE_SOLAR_BEAM, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHARCOAL,
@@ -7029,7 +7029,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [781] = {
+    [FRONTIER_MON_RAIKOU_3] = {
         .species = SPECIES_RAIKOU,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_CALM_MIND, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -7038,7 +7038,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [782] = {
+    [FRONTIER_MON_ENTEI_3] = {
         .species = SPECIES_ENTEI,
         .moves = {MOVE_SACRED_FIRE, MOVE_STONE_EDGE, MOVE_FLARE_BLITZ, MOVE_EXTREME_SPEED},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -7047,7 +7047,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [783] = {
+    [FRONTIER_MON_SUICUNE_3] = {
         .species = SPECIES_SUICUNE,
         .moves = {MOVE_SCALD, MOVE_SLEEP_TALK, MOVE_CALM_MIND, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7056,7 +7056,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [784] = {
+    [FRONTIER_MON_REGIROCK_3] = {
         .species = SPECIES_REGIROCK,
         .moves = {MOVE_STONE_EDGE, MOVE_DRAIN_PUNCH, MOVE_EARTHQUAKE, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -7065,7 +7065,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [785] = {
+    [FRONTIER_MON_REGICE_3] = {
         .species = SPECIES_REGICE,
         .moves = {MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST, MOVE_ROCK_POLISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -7074,7 +7074,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [786] = {
+    [FRONTIER_MON_REGISTEEL_3] = {
         .species = SPECIES_REGISTEEL,
         .moves = {MOVE_SEISMIC_TOSS, MOVE_TOXIC, MOVE_STEALTH_ROCK, MOVE_COUNTER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7083,7 +7083,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [787] = {
+    [FRONTIER_MON_LATIAS_3] = {
         .species = SPECIES_LATIAS,
         .moves = {MOVE_THUNDERBOLT, MOVE_ICE_BEAM, MOVE_RECOVER, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7092,7 +7092,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [788] = {
+    [FRONTIER_MON_LATIOS_3] = {
         .species = SPECIES_LATIOS,
         .moves = {MOVE_OUTRAGE, MOVE_EARTHQUAKE, MOVE_DRACO_METEOR, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -7101,7 +7101,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [789] = {
+    [FRONTIER_MON_ARTICUNO_4] = {
         .species = SPECIES_ARTICUNO,
         .moves = {MOVE_BLIZZARD, MOVE_HURRICANE, MOVE_ROAR, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7110,7 +7110,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [790] = {
+    [FRONTIER_MON_ZAPDOS_4] = {
         .species = SPECIES_ZAPDOS,
         .moves = {MOVE_ZAP_CANNON, MOVE_HIDDEN_POWER, MOVE_DETECT, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7119,7 +7119,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [791] = {
+    [FRONTIER_MON_MOLTRES_4] = {
         .species = SPECIES_MOLTRES,
         .moves = {MOVE_FIRE_BLAST, MOVE_HURRICANE, MOVE_HIDDEN_POWER, MOVE_U_TURN},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -7128,7 +7128,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [792] = {
+    [FRONTIER_MON_RAIKOU_4] = {
         .species = SPECIES_RAIKOU,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_AURA_SPHERE, MOVE_VOLT_SWITCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -7137,7 +7137,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [793] = {
+    [FRONTIER_MON_ENTEI_4] = {
         .species = SPECIES_ENTEI,
         .moves = {MOVE_SACRED_FIRE, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7146,7 +7146,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [794] = {
+    [FRONTIER_MON_SUICUNE_4] = {
         .species = SPECIES_SUICUNE,
         .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_HIDDEN_POWER, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -7155,7 +7155,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [795] = {
+    [FRONTIER_MON_REGIROCK_4] = {
         .species = SPECIES_REGIROCK,
         .moves = {MOVE_ROCK_SLIDE, MOVE_DRAIN_PUNCH, MOVE_EARTHQUAKE, MOVE_ROCK_POLISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -7164,7 +7164,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [796] = {
+    [FRONTIER_MON_REGICE_4] = {
         .species = SPECIES_REGICE,
         .moves = {MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST, MOVE_THUNDER_WAVE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7173,7 +7173,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [797] = {
+    [FRONTIER_MON_REGISTEEL_4] = {
         .species = SPECIES_REGISTEEL,
         .moves = {MOVE_SEISMIC_TOSS, MOVE_TOXIC, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7182,7 +7182,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [798] = {
+    [FRONTIER_MON_LATIAS_4] = {
         .species = SPECIES_LATIAS,
         .moves = {MOVE_DRACO_METEOR, MOVE_PSYSHOCK, MOVE_HIDDEN_POWER, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7191,7 +7191,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 0
     },
-    [799] = {
+    [FRONTIER_MON_LATIOS_4] = {
         .species = SPECIES_LATIOS,
         .moves = {MOVE_PSYCHIC, MOVE_DRACO_METEOR, MOVE_SURF, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -7200,7 +7200,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [800] = {
+    [FRONTIER_MON_GENGAR_5] = {
         .species = SPECIES_GENGAR,
         .moves = {MOVE_SLUDGE_WAVE, MOVE_HEX, MOVE_FOCUS_BLAST, MOVE_HYPNOSIS},
         .itemTableId = BATTLE_FRONTIER_ITEM_FOCUS_SASH,
@@ -7209,7 +7209,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [801] = {
+    [FRONTIER_MON_GENGAR_6] = {
         .species = SPECIES_GENGAR,
         .moves = {MOVE_SHADOW_BALL, MOVE_SLUDGE_WAVE, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -7218,7 +7218,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [802] = {
+    [FRONTIER_MON_GENGAR_7] = {
         .species = SPECIES_GENGAR,
         .moves = {MOVE_SHADOW_BALL, MOVE_SLUDGE_WAVE, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -7227,7 +7227,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [803] = {
+    [FRONTIER_MON_GENGAR_8] = {
         .species = SPECIES_GENGAR,
         .moves = {MOVE_SHADOW_BALL, MOVE_SLUDGE_WAVE, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -7236,7 +7236,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [804] = {
+    [FRONTIER_MON_URSARING_5] = {
         .species = SPECIES_URSARING,
         .moves = {MOVE_RETURN, MOVE_EARTHQUAKE, MOVE_SUBSTITUTE, MOVE_SWORDS_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7245,7 +7245,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [805] = {
+    [FRONTIER_MON_URSARING_6] = {
         .species = SPECIES_URSARING,
         .moves = {MOVE_FRUSTRATION, MOVE_CLOSE_COMBAT, MOVE_CRUNCH, MOVE_PLAY_ROUGH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -7254,7 +7254,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [806] = {
+    [FRONTIER_MON_URSARING_7] = {
         .species = SPECIES_URSARING,
         .moves = {MOVE_FRUSTRATION, MOVE_CLOSE_COMBAT, MOVE_CRUNCH, MOVE_PLAY_ROUGH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -7263,7 +7263,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [807] = {
+    [FRONTIER_MON_URSARING_8] = {
         .species = SPECIES_URSARING,
         .moves = {MOVE_BODY_SLAM, MOVE_BULK_UP, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7272,7 +7272,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [808] = {
+    [FRONTIER_MON_MACHAMP_5] = {
         .species = SPECIES_MACHAMP,
         .moves = {MOVE_FOCUS_PUNCH, MOVE_SUBSTITUTE, MOVE_STONE_EDGE, MOVE_BULK_UP},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7281,7 +7281,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [809] = {
+    [FRONTIER_MON_MACHAMP_6] = {
         .species = SPECIES_MACHAMP,
         .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_BULK_UP, MOVE_SUBSTITUTE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7290,7 +7290,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [810] = {
+    [FRONTIER_MON_MACHAMP_7] = {
         .species = SPECIES_MACHAMP,
         .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_BULLET_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -7299,7 +7299,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [811] = {
+    [FRONTIER_MON_MACHAMP_8] = {
         .species = SPECIES_MACHAMP,
         .moves = {MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_KNOCK_OFF, MOVE_HEAVY_SLAM},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -7317,7 +7317,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [813] = {
+    [FRONTIER_MON_GARDEVOIR_6] = {
         .species = SPECIES_GARDEVOIR,
         .moves = {MOVE_MOONBLAST, MOVE_PSYSHOCK, MOVE_FOCUS_BLAST, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7335,7 +7335,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [815] = {
+    [FRONTIER_MON_GARDEVOIR_8] = {
         .species = SPECIES_GARDEVOIR,
         .moves = {MOVE_PSYCHIC, MOVE_MOONBLAST, MOVE_FOCUS_BLAST, MOVE_SHADOW_BALL},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -7344,7 +7344,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [816] = {
+    [FRONTIER_MON_STARMIE_5] = {
         .species = SPECIES_STARMIE,
         .moves = {MOVE_SURF, MOVE_THUNDERBOLT, MOVE_ICE_BEAM, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -7353,7 +7353,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [817] = {
+    [FRONTIER_MON_STARMIE_6] = {
         .species = SPECIES_STARMIE,
         .moves = {MOVE_SURF, MOVE_THUNDERBOLT, MOVE_ICE_BEAM, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -7362,7 +7362,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [818] = {
+    [FRONTIER_MON_STARMIE_7] = {
         .species = SPECIES_STARMIE,
         .moves = {MOVE_SURF, MOVE_PSYSHOCK, MOVE_ICE_BEAM, MOVE_THUNDERBOLT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -7371,7 +7371,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [819] = {
+    [FRONTIER_MON_STARMIE_8] = {
         .species = SPECIES_STARMIE,
         .moves = {MOVE_SURF, MOVE_PSYSHOCK, MOVE_ICE_BEAM, MOVE_THUNDERBOLT},
         .itemTableId = BATTLE_FRONTIER_ITEM_EXPERT_BELT,
@@ -7380,7 +7380,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [820] = {
+    [FRONTIER_MON_LAPRAS_5] = {
         .species = SPECIES_LAPRAS,
         .moves = {MOVE_WATERFALL, MOVE_ICE_SHARD, MOVE_SHEER_COLD, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -7389,7 +7389,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [821] = {
+    [FRONTIER_MON_LAPRAS_6] = {
         .species = SPECIES_LAPRAS,
         .moves = {MOVE_ICE_SHARD, MOVE_AQUA_JET, MOVE_CURSE, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -7398,7 +7398,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [822] = {
+    [FRONTIER_MON_LAPRAS_7] = {
         .species = SPECIES_LAPRAS,
         .moves = {MOVE_SHEER_COLD, MOVE_HORN_DRILL, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7407,7 +7407,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [823] = {
+    [FRONTIER_MON_LAPRAS_8] = {
         .species = SPECIES_LAPRAS,
         .moves = {MOVE_ICE_BEAM, MOVE_HYDRO_PUMP, MOVE_FREEZE_DRY, MOVE_SURF},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -7416,7 +7416,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [824] = {
+    [FRONTIER_MON_SNORLAX_5] = {
         .species = SPECIES_SNORLAX,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_CRUNCH, MOVE_SELF_DESTRUCT},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -7425,7 +7425,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [825] = {
+    [FRONTIER_MON_SNORLAX_6] = {
         .species = SPECIES_SNORLAX,
         .moves = {MOVE_BODY_SLAM, MOVE_EARTHQUAKE, MOVE_BELLY_DRUM, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -7434,7 +7434,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [826] = {
+    [FRONTIER_MON_SNORLAX_7] = {
         .species = SPECIES_SNORLAX,
         .moves = {MOVE_BODY_SLAM, MOVE_EARTHQUAKE, MOVE_CURSE, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7443,7 +7443,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [827] = {
+    [FRONTIER_MON_SNORLAX_8] = {
         .species = SPECIES_SNORLAX,
         .moves = {MOVE_BODY_SLAM, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7452,7 +7452,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [828] = {
+    [FRONTIER_MON_SALAMENCE_5] = {
         .species = SPECIES_SALAMENCE,
         .moves = {MOVE_DRAGON_ASCENT, MOVE_OUTRAGE, MOVE_THUNDER_FANG, MOVE_EARTHQUAKE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -7461,7 +7461,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [829] = {
+    [FRONTIER_MON_SALAMENCE_6] = {
         .species = SPECIES_SALAMENCE,
         .moves = {MOVE_DRAGON_PULSE, MOVE_DRACO_METEOR, MOVE_FLAMETHROWER, MOVE_HYDRO_PUMP},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -7470,7 +7470,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [830] = {
+    [FRONTIER_MON_SALAMENCE_7] = {
         .species = SPECIES_SALAMENCE,
         .moves = {MOVE_DRAGON_ASCENT, MOVE_OUTRAGE, MOVE_THUNDER_FANG, MOVE_EARTHQUAKE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -7479,7 +7479,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [831] = {
+    [FRONTIER_MON_SALAMENCE_8] = {
         .species = SPECIES_SALAMENCE,
         .moves = {MOVE_DRAGON_ASCENT, MOVE_DRAGON_CLAW, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LUM_BERRY,
@@ -7488,7 +7488,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [832] = {
+    [FRONTIER_MON_METAGROSS_5] = {
         .species = SPECIES_METAGROSS,
         .moves = {MOVE_IRON_HEAD, MOVE_ZEN_HEADBUTT, MOVE_EARTHQUAKE, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -7497,7 +7497,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [833] = {
+    [FRONTIER_MON_METAGROSS_6] = {
         .species = SPECIES_METAGROSS,
         .moves = {MOVE_METEOR_MASH, MOVE_BULLET_PUNCH, MOVE_EARTHQUAKE, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -7506,7 +7506,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [834] = {
+    [FRONTIER_MON_METAGROSS_7] = {
         .species = SPECIES_METAGROSS,
         .moves = {MOVE_IRON_HEAD, MOVE_EARTHQUAKE, MOVE_THUNDER_PUNCH, MOVE_AGILITY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LUM_BERRY,
@@ -7515,7 +7515,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [835] = {
+    [FRONTIER_MON_METAGROSS_8] = {
         .species = SPECIES_METAGROSS,
         .moves = {MOVE_METEOR_MASH, MOVE_BULLET_PUNCH, MOVE_EARTHQUAKE, MOVE_THUNDER_PUNCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -7524,7 +7524,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [836] = {
+    [FRONTIER_MON_REGIROCK_5] = {
         .species = SPECIES_REGIROCK,
         .moves = {MOVE_STEALTH_ROCK, MOVE_STONE_EDGE, MOVE_HAMMER_ARM, MOVE_TOXIC},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7533,7 +7533,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [837] = {
+    [FRONTIER_MON_REGIROCK_6] = {
         .species = SPECIES_REGIROCK,
         .moves = {MOVE_STONE_EDGE, MOVE_DRAIN_PUNCH, MOVE_EARTHQUAKE, MOVE_EXPLOSION},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -7542,7 +7542,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [838] = {
+    [FRONTIER_MON_REGICE_5] = {
         .species = SPECIES_REGICE,
         .moves = {MOVE_ICE_BEAM, MOVE_CHARGE_BEAM, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7551,7 +7551,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [839] = {
+    [FRONTIER_MON_REGICE_6] = {
         .species = SPECIES_REGICE,
         .moves = {MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST, MOVE_ROCK_POLISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -7560,7 +7560,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [840] = {
+    [FRONTIER_MON_REGISTEEL_5] = {
         .species = SPECIES_REGISTEEL,
         .moves = {MOVE_IRON_HEAD, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7569,7 +7569,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [841] = {
+    [FRONTIER_MON_REGISTEEL_6] = {
         .species = SPECIES_REGISTEEL,
         .moves = {MOVE_SEISMIC_TOSS, MOVE_TOXIC, MOVE_STEALTH_ROCK, MOVE_COUNTER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7578,7 +7578,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [842] = {
+    [FRONTIER_MON_LATIAS_5] = {
         .species = SPECIES_LATIAS,
         .moves = {MOVE_DRACO_METEOR, MOVE_PSYSHOCK, MOVE_SURF, MOVE_HEALING_WISH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -7587,7 +7587,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [843] = {
+    [FRONTIER_MON_LATIAS_6] = {
         .species = SPECIES_LATIAS,
         .moves = {MOVE_DRAGON_PULSE, MOVE_CALM_MIND, MOVE_CHARM, MOVE_RECOVER},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7596,7 +7596,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [844] = {
+    [FRONTIER_MON_LATIAS_7] = {
         .species = SPECIES_LATIAS,
         .moves = {MOVE_THUNDERBOLT, MOVE_ICE_BEAM, MOVE_RECOVER, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7605,7 +7605,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [845] = {
+    [FRONTIER_MON_LATIAS_8] = {
         .species = SPECIES_LATIAS,
         .moves = {MOVE_DRACO_METEOR, MOVE_PSYSHOCK, MOVE_HIDDEN_POWER, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7614,7 +7614,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 0
     },
-    [846] = {
+    [FRONTIER_MON_LATIOS_5] = {
         .species = SPECIES_LATIOS,
         .moves = {MOVE_DRAGON_PULSE, MOVE_PSYCHIC, MOVE_HIDDEN_POWER, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -7623,7 +7623,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 30,
         .ability = 0
     },
-    [847] = {
+    [FRONTIER_MON_LATIOS_6] = {
         .species = SPECIES_LATIOS,
         .moves = {MOVE_DRAGON_PULSE, MOVE_SURF, MOVE_ROOST, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7632,7 +7632,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [848] = {
+    [FRONTIER_MON_LATIOS_7] = {
         .species = SPECIES_LATIOS,
         .moves = {MOVE_OUTRAGE, MOVE_EARTHQUAKE, MOVE_DRACO_METEOR, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -7641,7 +7641,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [849] = {
+    [FRONTIER_MON_LATIOS_8] = {
         .species = SPECIES_LATIOS,
         .moves = {MOVE_PSYCHIC, MOVE_DRACO_METEOR, MOVE_SURF, MOVE_TRICK},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -7650,7 +7650,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [850] = {
+    [FRONTIER_MON_DRAGONITE_1] = {
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_DRAGON_TAIL, MOVE_ROOST, MOVE_SUBSTITUTE, MOVE_THUNDER_WAVE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7659,7 +7659,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [851] = {
+    [FRONTIER_MON_DRAGONITE_2] = {
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_HURRICANE, MOVE_THUNDER, MOVE_ROOST, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7668,7 +7668,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [852] = {
+    [FRONTIER_MON_DRAGONITE_3] = {
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_FLY, MOVE_DRAGON_DANCE, MOVE_SUBSTITUTE, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7677,7 +7677,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [853] = {
+    [FRONTIER_MON_DRAGONITE_4] = {
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_HORN_DRILL, MOVE_BARRIER, MOVE_DETECT, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7686,7 +7686,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [854] = {
+    [FRONTIER_MON_DRAGONITE_5] = {
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_EXTREME_SPEED, MOVE_AQUA_JET, MOVE_ROOST, MOVE_CURSE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7695,7 +7695,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [855] = {
+    [FRONTIER_MON_DRAGONITE_6] = {
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_DRACO_METEOR, MOVE_HURRICANE, MOVE_THUNDERBOLT, MOVE_FLAMETHROWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -7704,7 +7704,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [856] = {
+    [FRONTIER_MON_DRAGONITE_7] = {
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_OUTRAGE, MOVE_DRAGON_ASCENT, MOVE_EARTHQUAKE, MOVE_AQUA_JET},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -7713,7 +7713,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [857] = {
+    [FRONTIER_MON_DRAGONITE_8] = {
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_DRAGON_CLAW, MOVE_FLY, MOVE_EARTHQUAKE, MOVE_EXTREME_SPEED},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -7722,7 +7722,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [858] = {
+    [FRONTIER_MON_DRAGONITE_9] = {
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_HURRICANE, MOVE_THUNDER, MOVE_SURF, MOVE_RAIN_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7731,7 +7731,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [859] = {
+    [FRONTIER_MON_DRAGONITE_10] = {
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_OUTRAGE, MOVE_DRAGON_ASCENT, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -7740,7 +7740,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 1
     },
-    [860] = {
+    [FRONTIER_MON_TYRANITAR_1] = {
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_ROCK_SLIDE, MOVE_CRUNCH, MOVE_BRICK_BREAK, MOVE_ICE_FANG},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SCARF,
@@ -7749,7 +7749,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [861] = {
+    [FRONTIER_MON_TYRANITAR_2] = {
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_CRUNCH, MOVE_ROCK_SLIDE, MOVE_REVENGE, MOVE_EARTHQUAKE},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -7758,7 +7758,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [862] = {
+    [FRONTIER_MON_TYRANITAR_3] = {
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_CRUNCH, MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_SUPERPOWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -7767,7 +7767,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [863] = {
+    [FRONTIER_MON_TYRANITAR_4] = {
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_DARK_PULSE, MOVE_MUD_BOMB, MOVE_THUNDERBOLT, MOVE_FLAMETHROWER},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -7776,7 +7776,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [864] = {
+    [FRONTIER_MON_TYRANITAR_5] = {
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_CRUNCH, MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LUM_BERRY,
@@ -7785,7 +7785,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [865] = {
+    [FRONTIER_MON_TYRANITAR_6] = {
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_CURSE, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -7794,7 +7794,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [866] = {
+    [FRONTIER_MON_TYRANITAR_7] = {
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_CRUNCH, MOVE_STONE_EDGE, MOVE_REST, MOVE_CURSE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7803,7 +7803,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [867] = {
+    [FRONTIER_MON_TYRANITAR_8] = {
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_CRUNCH, MOVE_STONE_EDGE, MOVE_DRAGON_DANCE, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -7812,7 +7812,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [868] = {
+    [FRONTIER_MON_TYRANITAR_9] = {
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_CRUNCH, MOVE_STEALTH_ROCK, MOVE_STONE_EDGE, MOVE_THUNDER_WAVE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7821,7 +7821,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [869] = {
+    [FRONTIER_MON_TYRANITAR_10] = {
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_CRUNCH, MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
         .itemTableId = BATTLE_FRONTIER_ITEM_LUM_BERRY,
@@ -7830,7 +7830,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [870] = {
+    [FRONTIER_MON_ARTICUNO_5] = {
         .species = SPECIES_ARTICUNO,
         .moves = {MOVE_BLIZZARD, MOVE_HURRICANE, MOVE_HIDDEN_POWER, MOVE_AGILITY},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7839,7 +7839,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 27,
         .ability = 0
     },
-    [871] = {
+    [FRONTIER_MON_ARTICUNO_6] = {
         .species = SPECIES_ARTICUNO,
         .moves = {MOVE_BLIZZARD, MOVE_HURRICANE, MOVE_U_TURN, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7848,7 +7848,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [872] = {
+    [FRONTIER_MON_ZAPDOS_5] = {
         .species = SPECIES_ZAPDOS,
         .moves = {MOVE_ZAP_CANNON, MOVE_HEAT_WAVE, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_SPECS,
@@ -7857,7 +7857,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [873] = {
+    [FRONTIER_MON_ZAPDOS_6] = {
         .species = SPECIES_ZAPDOS,
         .moves = {MOVE_ZAP_CANNON, MOVE_HIDDEN_POWER, MOVE_HEAT_WAVE, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7866,7 +7866,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [874] = {
+    [FRONTIER_MON_MOLTRES_5] = {
         .species = SPECIES_MOLTRES,
         .moves = {MOVE_OVERHEAT, MOVE_HURRICANE, MOVE_HIDDEN_POWER, MOVE_ROOST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,
@@ -7875,7 +7875,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 28,
         .ability = 0
     },
-    [875] = {
+    [FRONTIER_MON_MOLTRES_6] = {
         .species = SPECIES_MOLTRES,
         .moves = {MOVE_FIRE_BLAST, MOVE_HURRICANE, MOVE_SOLAR_BEAM, MOVE_SUNNY_DAY},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHARCOAL,
@@ -7884,7 +7884,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [876] = {
+    [FRONTIER_MON_RAIKOU_5] = {
         .species = SPECIES_RAIKOU,
         .moves = {MOVE_THUNDERBOLT, MOVE_AURA_SPHERE, MOVE_HIDDEN_POWER, MOVE_CALM_MIND},
         .itemTableId = BATTLE_FRONTIER_ITEM_LIFE_ORB,
@@ -7893,7 +7893,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [877] = {
+    [FRONTIER_MON_RAIKOU_6] = {
         .species = SPECIES_RAIKOU,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_CALM_MIND, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -7902,7 +7902,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [878] = {
+    [FRONTIER_MON_ENTEI_5] = {
         .species = SPECIES_ENTEI,
         .moves = {MOVE_SACRED_FIRE, MOVE_STONE_EDGE, MOVE_FLAME_CHARGE, MOVE_STOMPING_TANTRUM},
         .itemTableId = BATTLE_FRONTIER_ITEM_ASSAULT_VEST,
@@ -7911,7 +7911,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [879] = {
+    [FRONTIER_MON_ENTEI_6] = {
         .species = SPECIES_ENTEI,
         .moves = {MOVE_SACRED_FIRE, MOVE_STONE_EDGE, MOVE_FLARE_BLITZ, MOVE_EXTREME_SPEED},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHOICE_BAND,
@@ -7920,7 +7920,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [880] = {
+    [FRONTIER_MON_SUICUNE_5] = {
         .species = SPECIES_SUICUNE,
         .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_CALM_MIND, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_CHESTO_BERRY,
@@ -7929,7 +7929,7 @@ const struct FacilityMon gBattleFrontierMons[] =
         .ivs = 31,
         .ability = 0
     },
-    [881] = {
+    [FRONTIER_MON_SUICUNE_6] = {
         .species = SPECIES_SUICUNE,
         .moves = {MOVE_SCALD, MOVE_SLEEP_TALK, MOVE_CALM_MIND, MOVE_REST},
         .itemTableId = BATTLE_FRONTIER_ITEM_LEFTOVERS,

@@ -147,7 +147,7 @@ BattleFrontier_BattleDomePreBattleRoom_EventScript_24B46D:: @ 824B46D
 	frontier_resetsketch
 	compare VAR_RESULT, 0
 	goto_if_eq BattleFrontier_BattleDomePreBattleRoom_EventScript_24B24F
-	dome_set DOME_DATA_8
+	dome_set DOME_DATA_SELECTED_MONS       
 	dome_reduceparty
 	dome_setopponent
 	msgbox BattleFrontier_BattleDomePreBattleRoom_Text_24B748, MSGBOX_DEFAULT

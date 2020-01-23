@@ -18,7 +18,7 @@ FallarborTown_CozmosHouse_EventScript_ProfCozmo:: @ 8200F13
 	goto_if_set FLAG_RYU_DEVON_MISSION_3_DONE, FT_DM3Done
 	goto_if_set FLAG_RYU_DEVON_MISSION3START, FT_OnMission3
 	msgbox FT_CozmoIntro MSGBOX_DEFAULT
-	giveitem_std ITEM_BIG_PEARL, 1
+	giveitem ITEM_BIG_PEARL, 1
 	msgbox FT_OnMission3Msg MSGBOX_DEFAULT
 	checkitem ITEM_METEORITE, 1
 	compare VAR_RESULT, 1
@@ -46,7 +46,7 @@ FT_DM3Done::
     lock
 	faceplayer
 	msgbox FT_MeteorReward1 MSGBOX_DEFAULT
-	takeitem ITEM_METEORITE, 1
+	removeitem ITEM_METEORITE, 1
 	givemoney 40000
 	setflag FLAG_RYU_DEVON_MISSION4COMPLETE
 	goto FT_Mission4
@@ -63,8 +63,8 @@ FT_Mission4::
 	
 FT_Mission5Done::
 	msgbox FT_M5Done MSGBOX_DEFAULT
-	takeitem ITEM_FAME_CHECKER, 1
-	giveitem_std ITEM_CHOICE_SCARF
+	removeitem ITEM_FAME_CHECKER, 1
+	giveitem ITEM_CHOICE_SCARF
 	msgbox FT_M5RewardDesc MSGBOX_DEFAULT
 	setflag FLAG_RYU_DEVON_MISSION6START
 	goto FT_Mission6
@@ -240,7 +240,7 @@ FT_Mission4Intro:
 	
 FT_AlreadyHaveMeteorite::
 	msgbox FT_AlreadyhaveMsg MSGBOX_DEFAULT
-	takeitem ITEM_METEORITE, 1
+	removeitem ITEM_METEORITE, 1
 	givemoney 60000
 	msgbox FT_MeteorReward1 MSGBOX_DEFAULT
 	goto FT_Mission4

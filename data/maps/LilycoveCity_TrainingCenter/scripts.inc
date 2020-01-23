@@ -372,7 +372,7 @@ TC_StatShopGiveImprinter::
 	compare VAR_RESULT, 0
 	goto_if_eq TC_StatShopCantAffordImprinter
 	takemoney VAR_TEMP_0
-	giveitem_std ITEM_POKE_FLUTE
+	giveitem ITEM_POKE_FLUTE
 	msgbox TC_BoughtImprinter MSGBOX_DEFAULT
 	waitmessage
 	closemessage
@@ -656,7 +656,7 @@ TC_VoucherUse::
 	return
 	
 TC_TeachMoveQueryVoucher::
-	takeitem ITEM_RETRO_MAIL, 1
+	removeitem ITEM_RETRO_MAIL, 1
 	special RyuSetMonMove
 	msgbox TC_PkmnLearnedMove MSGBOX_DEFAULT
 	release

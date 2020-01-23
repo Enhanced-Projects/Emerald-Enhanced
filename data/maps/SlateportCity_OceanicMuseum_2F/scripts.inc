@@ -81,7 +81,7 @@ OM_Normal::
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	clearflag FLAG_RYU_PLAYER_HELPING_DEVON
 	setflag FLAG_RYU_DS_SHELLY_ACQ
-	takeitem ITEM_DEVON_GOODS, 1
+	removeitem ITEM_DEVON_GOODS, 1
 	msgbox OM_ArchieLeaving MSGBOX_DEFAULT
 	closemessage
 	savebgm MUS_DUMMY
@@ -119,7 +119,7 @@ OM_Declined::
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	msgbox SlateportCity_OceanicMuseum_2F_Text_SternThankYouForSavingUs, MSGBOX_DEFAULT
-	takeitem ITEM_DEVON_GOODS, 1
+	removeitem ITEM_DEVON_GOODS, 1
 	setvar VAR_0x8004, 269
 	closemessage
 	fadescreen 1

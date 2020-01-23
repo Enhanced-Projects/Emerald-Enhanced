@@ -32,7 +32,7 @@ GCMS_AbilitySwap::
 	specialvar VAR_RESULT RyuSwapAbility
 	compare VAR_RESULT, FALSE
 	goto_if_eq GCMS_AlreadyHasHiddenAbility
-	takeitem ITEM_BIG_PEARL, 1
+	removeitem ITEM_BIG_PEARL, 1
 	msgbox swapSuccess
 	release
 	end

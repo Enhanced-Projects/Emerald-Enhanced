@@ -1026,7 +1026,7 @@ u16 GetWeekCount(void)
 u8 GetLeadMonFriendshipScore(void)
 {
     struct Pokemon *pokemon = &gPlayerParty[GetLeadMonIndex()];
-    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) == 255)
+    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) == MAX_FRIENDSHIP)
     {
         return 6;
     }
@@ -1252,18 +1252,18 @@ void EndLotteryCornerComputerEffect(void)
     DrawWholeMapView();
 }
 
-void SetTrickHouseEndRoomFlag(void)
+void SetTrickHouseNuggetFlag(void)
 {
     u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_TRICK_HOUSE_END_ROOM;
+    u16 flag = FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET;
     *specVar = flag;
     FlagSet(flag);
 }
 
-void ResetTrickHouseEndRoomFlag(void)
+void ResetTrickHouseNuggetFlag(void)
 {
     u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_TRICK_HOUSE_END_ROOM;
+    u16 flag = FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET;
     *specVar = flag;
     FlagClear(flag);
 }

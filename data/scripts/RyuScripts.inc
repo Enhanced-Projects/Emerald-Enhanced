@@ -890,7 +890,7 @@ EGC_CLEARGAMECLEARFLAG::
 	end
 
 RyuDebug_waystone::
-	giveitem_std ITEM_NUGGET, 1
+	giveitem ITEM_NUGGET, 1
 	closemessage
 	goto RyuDebug_menu_nodevcheck
 	releaseall
@@ -1512,7 +1512,7 @@ RyuUserEVHp::
 	goto_if_ne RyuUserEvNoImprint
 	special RyuSetEVHP
 	addmonhappiness VAR_TEMP_2, 25
-	takeitem ITEM_WAVE_MAIL, 1
+	removeitem ITEM_WAVE_MAIL, 1
 	msgbox RyuEvSuccessMsgHP MSGBOX_DEFAULT
 	release
 	end
@@ -1525,7 +1525,7 @@ RyuUserEVAtk::
 	goto_if_lt RyuUserEvNoImprint
 	special RyuSetEVATK
 	addmonhappiness VAR_TEMP_2, 25
-	takeitem ITEM_BEAD_MAIL, 1
+	removeitem ITEM_BEAD_MAIL, 1
 	msgbox RyuEvSuccessMsgAtk MSGBOX_DEFAULT
 	release
 	end
@@ -1538,7 +1538,7 @@ RyuUserEVDef::
 	goto_if_ne RyuUserEvNoImprint
 	special RyuSetEVDEF
 	addmonhappiness VAR_TEMP_2, 25
-	takeitem ITEM_SHADOW_MAIL, 1
+	removeitem ITEM_SHADOW_MAIL, 1
 	msgbox RyuEvSuccessMsgDef MSGBOX_DEFAULT
 	release
 	end
@@ -1551,7 +1551,7 @@ RyuUserEVSpatk::
 	goto_if_ne RyuUserEvNoImprint
 	special RyuSetEVSPATK
 	addmonhappiness VAR_TEMP_2, 25
-	takeitem ITEM_TROPIC_MAIL, 1
+	removeitem ITEM_TROPIC_MAIL, 1
 	msgbox RyuEvSuccessMsgSpatk MSGBOX_DEFAULT
 	release
 	end
@@ -1564,7 +1564,7 @@ RyuUserEVSpdef::
 	goto_if_ne RyuUserEvNoImprint
 	special RyuSetEVSPDEF
 	addmonhappiness VAR_TEMP_2, 25
-	takeitem ITEM_DREAM_MAIL, 1
+	removeitem ITEM_DREAM_MAIL, 1
 	msgbox RyuEvSuccessMsgSpdef MSGBOX_DEFAULT
 	release
 	end
@@ -1577,7 +1577,7 @@ RyuUserEVSpeed::
 	goto_if_ne RyuUserEvNoImprint
 	special RyuSetEVSPE
 	addmonhappiness VAR_TEMP_2, 25
-	takeitem ITEM_FAB_MAIL, 1
+	removeitem ITEM_FAB_MAIL, 1
 	msgbox RyuEvSuccessMsgSpeed MSGBOX_DEFAULT
 	release
 	end
@@ -2685,7 +2685,7 @@ BCPokeball::
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 4
-	takeitem ITEM_POKE_BALL, 1
+	removeitem ITEM_POKE_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
@@ -2700,7 +2700,7 @@ BCGreatball::
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 3
-	takeitem ITEM_GREAT_BALL, 1
+	removeitem ITEM_GREAT_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
@@ -2715,7 +2715,7 @@ BCUltraball::
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 2
-	takeitem ITEM_ULTRA_BALL, 1
+	removeitem ITEM_ULTRA_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
@@ -2730,7 +2730,7 @@ BCLuxuryball::
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 11
-	takeitem ITEM_LUXURY_BALL, 1
+	removeitem ITEM_LUXURY_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
@@ -2745,7 +2745,7 @@ BCPremierball::
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 12
-	takeitem ITEM_PREMIER_BALL, 1
+	removeitem ITEM_PREMIER_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
@@ -2760,7 +2760,7 @@ BCRepeatball::
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 9
-	takeitem ITEM_REPEAT_BALL, 1
+	removeitem ITEM_REPEAT_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
@@ -2775,7 +2775,7 @@ BCTimerball::
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 10
-	takeitem ITEM_TIMER_BALL, 1
+	removeitem ITEM_TIMER_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
@@ -2790,7 +2790,7 @@ BCNestball::
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 8
-	takeitem ITEM_NEST_BALL, 1
+	removeitem ITEM_NEST_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
@@ -2805,7 +2805,7 @@ BCNetball::
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 6
-	takeitem ITEM_NET_BALL, 1
+	removeitem ITEM_NET_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
@@ -2820,7 +2820,7 @@ BCSafariball::
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 5
-	takeitem ITEM_SAFARI_BALL, 1
+	removeitem ITEM_SAFARI_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
@@ -2835,7 +2835,7 @@ BCDiveball::
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 7
-	takeitem ITEM_DIVE_BALL, 1
+	removeitem ITEM_DIVE_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
 	msgbox BC_Success

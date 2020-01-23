@@ -149,7 +149,7 @@ MC_PlayerHelpedAqua:
 MC_FoundStone::
 	goto_if_set FLAG_RYU_PLAYER_ARCHIE_ACQ, ryu_end
 	msgbox MC_DroppedFragment MSGBOX_DEFAULT
-	giveitem_std ITEM_STAR_PIECE, 1
+	giveitem ITEM_STAR_PIECE, 1
 	setflag FLAG_RYU_PLAYER_AQUA_STONE
 	release
 	end
@@ -196,7 +196,7 @@ MtChimney_EventScript_LavaCookieLady:: @ 822EEF3
 	checkitemspace ITEM_LAVA_COOKIE, 1
 	compare VAR_RESULT, TRUE
 	call_if_eq MtChimney_EventScript_TakeMoney
-	giveitem_std ITEM_LAVA_COOKIE
+	giveitem ITEM_LAVA_COOKIE
 	compare VAR_RESULT, FALSE
 	goto_if_eq MtChimney_EventScript_BagIsFull
 	hidemoneybox
@@ -331,7 +331,7 @@ MtChimney_EventScript_MeteoriteMachine:: @ 822F0E4
 	compare VAR_RESULT, NO
 	goto_if_eq MtChimney_EventScript_LeaveMeteoriteAlone
 	msgbox MtChimney_Text_PlayerRemovedMeteorite, MSGBOX_DEFAULT
-	giveitem_std ITEM_METEORITE
+	giveitem ITEM_METEORITE
 	setflag FLAG_RECEIVED_METEORITE
 	releaseall
 	end

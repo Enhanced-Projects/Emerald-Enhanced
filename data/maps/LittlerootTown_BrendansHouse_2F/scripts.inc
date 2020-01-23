@@ -309,7 +309,7 @@ LRT_BH_Froslass::
 LRT_BH_SnoruntIsChampionGlalie::
 	msgbox LRT_BH_GlalieChampionMsg
 	closemessage
-	giveitem_std ITEM_SCOPE_LENS
+	giveitem ITEM_SCOPE_LENS
 	hidemonpic
 	clearflag FLAG_RYU_DS_BRENDAN_ACQ
 	setflag FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS
@@ -319,7 +319,7 @@ LRT_BH_SnoruntIsChampionGlalie::
 LRT_BH_SnoruntIsChampionFroslass::
 	msgbox LRT_BH_FroslassChampionMsg
 	closemessage
-	giveitem_std ITEM_LIFE_ORB
+	giveitem ITEM_LIFE_ORB
 	hidemonpic
 	clearflag FLAG_RYU_DS_BRENDAN_ACQ
 	setflag FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS

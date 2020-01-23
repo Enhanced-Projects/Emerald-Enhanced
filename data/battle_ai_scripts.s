@@ -2926,7 +2926,6 @@ AI_CV_Sandstorm_End:
 AI_CV_Facade:
 	if_not_status AI_USER, STATUS1_POISON | STATUS1_BURN | STATUS1_PARALYSIS | STATUS1_TOXIC_POISON, AI_CV_Facade_End
 	score +1
-
 AI_CV_Facade_End:
 	end
 

@@ -13,7 +13,7 @@ MtPyre_Summit_EventScript_TeamAquaTrigger0:: @ 8232018
 	goto_if_unset FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD, ryu_end
 	goto_if_set FLAG_HAS_EON_TICKET, ryu_end
 	msgbox MP_OldPeopleGiveEonTicket MSGBOX_DEFAULT
-	giveitem_std ITEM_EON_TICKET
+	giveitem ITEM_EON_TICKET
 	setflag FLAG_HAS_EON_TICKET
 	end
 
@@ -74,7 +74,7 @@ MtPyre_Summit_EventScript_TeamAquaExits:: @ 823203C
 	applymovement EVENT_OBJ_ID_PLAYER, MP_PlayerReturnToTop
 	waitmovement 0
 	msgbox MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis, MSGBOX_DEFAULT
-	giveitem_std ITEM_EON_TICKET
+	giveitem ITEM_EON_TICKET
 	setflag FLAG_HAS_EON_TICKET
 	setflag FLAG_RECEIVED_RED_OR_BLUE_ORB
 	setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
