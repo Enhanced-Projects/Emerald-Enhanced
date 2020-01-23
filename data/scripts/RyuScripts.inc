@@ -346,7 +346,7 @@ MC_GC_DevModeItemGive::
 	end
 
 MC_GC_DevModePokemonGive::
-	givemon VAR_RESULT, 100, 0
+	givemon VAR_RESULT, 5, 0
 	clearflag FLAG_RYU_DEVELOPER_POKEMON_MENU
 	msgbox MC_GC_GivePokeMsg MSGBOX_DEFAULT
 	clearflag FLAG_RYU_DEVELOPER_POKEMON_MENU
@@ -932,10 +932,9 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	special FillTheDex
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto_if_unset FLAG_RYU_RANDOMIZE_MUSIC, RDB_u1_EnableRandomize
 	clearflag FLAG_RYU_RANDOMIZE_MUSIC
-	goto RyuDebug_Init_GiveAll
 	release
 	end
 

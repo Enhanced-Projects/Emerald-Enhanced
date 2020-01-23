@@ -75,4 +75,8 @@
 #define FANCLUB_MEMBER7        14
 #define FANCLUB_MEMBER8        15
 
+//Cutscene BG's
+
+#define CutsceneBGDawn 1
+
 #endif // GUARD_CONSTANTS_FIELD_SPECIALS_H

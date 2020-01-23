@@ -2136,3 +2136,8 @@ const u8 gText_RyuRotomIce[] = _("Frost");
 const u8 gText_RyuRotomFlying[] = _("Fan");
 const u8 gText_RyuRotomGrass[] = _("Mow");
 const u8 gText_RyuRotomNormal[] = _("Normal");
+
+const u8 gText_HighlightTransparent[] = _("{HIGHLIGHT 0}");
+
+const u8 gText_Buffer1Contents[] = _("{STR_VAR_1}");
+const u8 gText_DawnHi[] = _("{COLOR LIGHT_RED}{SHADOW RED}Dawn: Hi, {PLAYER}");

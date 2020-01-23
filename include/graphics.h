@@ -6861,6 +6861,9 @@ extern const u32 gHealthboxSinglesPlayerDarkGfx[];
 extern const u32 gHealthboxSinglesOpponentGfx[];
 extern const u32 gHealthboxDoublesPlayerGfx[];
 extern const u32 gHealthboxDoublesOpponentGfx[];
+extern const u32 gHealthboxSinglesOpponentDarkGfx[];
+extern const u32 gHealthboxDoublesPlayerDarkGfx[];
+extern const u32 gHealthboxDoublesOpponentDarkGfx[];
 extern const u32 gHealthboxSafariGfx[];
 extern const u32 gBlankGfxCompressed[];
 extern const u16 gBattleInterface_BallStatusBarPal[];
@@ -7785,5 +7788,11 @@ extern const u32 gPokenavMessageBox_Tilemap[];
 extern const u16 gPokenavMessageBox_Pal[];
 extern const u32 gPokenavOptions_Gfx[];
 extern const u16 gPokenavOptions_Pal[];
+
+//Fullscreen Cutscenes
+
+extern const u8 gDawnCutsceneBgTiles[];
+extern const u8 gDawnCutsceneBgMap[];
+extern const u8 gDawnCutsceneBGPalette[];
 
 #endif //GUARD_GRAPHICS_H

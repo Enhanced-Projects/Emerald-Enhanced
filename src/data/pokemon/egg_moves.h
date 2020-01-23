@@ -3581,6 +3581,7 @@ const u16 gEggMoves[] = {
 		MOVE_ROCK_CLIMB,
 		MOVE_BATON_PASS,
 		MOVE_THUNDER_FANG,
+        MOVE_ICE_FANG,
 		MOVE_FAINT_ATTACK),
 
 	egg_moves(DEINO,

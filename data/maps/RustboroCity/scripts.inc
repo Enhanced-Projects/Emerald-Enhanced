@@ -745,7 +745,12 @@ RustboroCity_EventScript_BattleDawn:: @ 81E1092
 	goto RustboroCity_EventScript_BattleDawn2
 
 RustboroCity_EventScript_CleanWater:: @ 81E10C1
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	msgbox RustboroCity_Text_HoennWater, MSGBOX_DEFAULT
+	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	compare VAR_0x8008, 0
 	call_if_eq RustboroCity_EventScript_RestoreBgm
 	releaseall

@@ -466,11 +466,11 @@ Route110_EventScript_RivalScene:: @ 81EF76E
 	call_if_eq Route110_EventScript_PlayDawnMusic
 	compare VAR_RESULT, FEMALE
 	call_if_eq Route110_EventScript_PlayBrendanMusic
-	applymovement 28, Common_Movement_WalkInPlaceFastestDown
+	applymovement 23, Common_Movement_WalkInPlaceFastestDown
 	waitmovement 0
-	applymovement 28, Common_Movement_ExclamationMark
+	applymovement 23, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement 28, Common_Movement_Delay48
+	applymovement 23, Common_Movement_Delay48
 	waitmovement 0
 	delay 30
 	checkplayergender
@@ -490,6 +490,9 @@ Route110_EventScript_PlayBrendanMusic:: @ 81EF7E6
 	return
 
 Route110_EventScript_DawnBattle:: @ 81EF7EB
+	delay 5
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	msgbox Route110_Text_DawnLetsBattle, MSGBOX_DEFAULT
 	goto Route110_EventScript_DawnBattleTreecko
 	end
@@ -500,9 +503,13 @@ Route110_EventScript_DawnBattleTreecko:: @ 81EF81A
 	end
 
 Route110_EventScript_DawnDefeated:: @ 81EF84A
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	msgbox Route110_Text_DawnTakeThis, MSGBOX_DEFAULT
 	call Route110_EventScript_GiveWaystone
 	msgbox Route110_Text_DawnExplainWaystone, MSGBOX_DEFAULT
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	goto Route110_EventScript_RivalExit
 	end
 
@@ -535,10 +542,10 @@ Route110_EventScript_RivalExit:: @ 81EF8EC
 	call_if_eq Route110_EventScript_MoveRival2
 	compare VAR_0x8008, 3
 	call_if_eq Route110_EventScript_MoveRival3
-	setobjectmovementtype 28, MOVEMENT_TYPE_FACE_RIGHT
-	setobjectmovementtype 29, MOVEMENT_TYPE_FACE_RIGHT
-	removeobject 28
-	addobject 29
+	setobjectmovementtype 23, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectmovementtype 24, MOVEMENT_TYPE_FACE_RIGHT
+	removeobject 23
+	addobject 24
 	delay 45
 	compare VAR_0x8008, 1
 	call_if_eq Route110_EventScript_RivalExit1
@@ -546,7 +553,7 @@ Route110_EventScript_RivalExit:: @ 81EF8EC
 	call_if_eq Route110_EventScript_RivalExit2
 	compare VAR_0x8008, 3
 	call_if_eq Route110_EventScript_RivalExit3
-	removeobject 29
+	removeobject 24
 	setflag FLAG_RYU_INTERACTED_RIVAL_R110
 	savebgm MUS_DUMMY
 	fadedefaultbgm
@@ -554,45 +561,45 @@ Route110_EventScript_RivalExit:: @ 81EF8EC
 	end
 
 Route110_EventScript_RivalApproachPlayer1:: @ 81EF94E
-	applymovement 28, Route110_Movement_RivalApproachPlayer1
+	applymovement 23, Route110_Movement_RivalApproachPlayer1
 	waitmovement 0
 	return
 
 Route110_EventScript_RivalApproachPlayer2:: @ 81EF959
-	applymovement 28, Route110_Movement_RivalApproachPlayer2
+	applymovement 23, Route110_Movement_RivalApproachPlayer2
 	waitmovement 0
 	return
 
 Route110_EventScript_RivalApproachPlayer3:: @ 81EF964
-	applymovement 28, Route110_Movement_RivalApproachPlayer3
+	applymovement 23, Route110_Movement_RivalApproachPlayer3
 	waitmovement 0
 	return
 
 Route110_EventScript_RivalExit1:: @ 81EF96F
-	applymovement 29, Route110_Movement_RivalExit1
+	applymovement 24, Route110_Movement_RivalExit1
 	waitmovement 0
 	return
 
 Route110_EventScript_RivalExit2:: @ 81EF97A
-	applymovement 29, Route110_Movement_RivalExit2
+	applymovement 24, Route110_Movement_RivalExit2
 	waitmovement 0
 	return
 
 Route110_EventScript_RivalExit3:: @ 81EF985
-	applymovement 29, Route110_Movement_RivalExit3
+	applymovement 24, Route110_Movement_RivalExit3
 	waitmovement 0
 	return
 
 Route110_EventScript_MoveRival1:: @ 81EF990
-	setobjectxyperm 29, 33, 55
+	setobjectxyperm 24, 33, 55
 	return
 
 Route110_EventScript_MoveRival2:: @ 81EF998
-	setobjectxyperm 29, 34, 55
+	setobjectxyperm 24, 34, 55
 	return
 
 Route110_EventScript_MoveRival3:: @ 81EF9A0
-	setobjectxyperm 29, 35, 55
+	setobjectxyperm 24, 35, 55
 	return
 
 Route110_Movement_RivalApproachPlayer1: @ 81EF9A8

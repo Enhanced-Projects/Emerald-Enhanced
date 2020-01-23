@@ -3264,4 +3264,7 @@ extern const u8 gText_RyuRotomFlying[];
 extern const u8 gText_RyuRotomGrass[];
 extern const u8 gText_RyuRotomNormal[];
 
+extern const u8 gText_Buffer1Contents[];
+extern const u8 gText_DawnHi[];
+
 #endif // GUARD_STRINGS_H

@@ -160,6 +160,7 @@ extern const u8 gText_ColorShadowRedLightRed[];
 extern const u8 gText_DynColor2[];
 extern const u8 gText_DynColor2Male[];
 extern const u8 gText_DynColor1Female[];
+extern const u8 gText_HighlightTransparent[];
 
 // this file's functions
 
@@ -954,25 +955,25 @@ void GetBattlerHealthboxCoords(u8 battler, s16 *x, s16 *y)
     if (!IsDoubleBattle())
     {
         if (GetBattlerSide(battler) != B_SIDE_PLAYER)
-            *x = 44, *y = 30;
+            *x = 36, *y = 12;
         else
-            *x = 158, *y = 88;
+            *x = 168, *y = 88;
     }
     else
     {
         switch (GetBattlerPosition(battler))
         {
         case B_POSITION_PLAYER_LEFT:
-            *x = 159, *y = 76;
+            *x = 159, *y = 80;
             break;
         case B_POSITION_PLAYER_RIGHT:
             *x = 171, *y = 101;
             break;
         case B_POSITION_OPPONENT_LEFT:
-            *x = 44, *y = 19;
+            *x = 44, *y = 11;
             break;
         case B_POSITION_OPPONENT_RIGHT:
-            *x = 32, *y = 44;
+            *x = 32, *y = 32;
             break;
         }
     }
@@ -994,6 +995,10 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
     u32 xPos, var1;
     void *objVram;
     u8 battler = gSprites[healthboxSpriteId].hMain_Battler;
+    u8 bgThemeColor = 2;
+
+    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        bgThemeColor = 0;
 
     // Don't print Lv char if mon is mega evolved.
     if (gBattleStruct->mega.evolvedPartyIds[GetBattlerSide(battler)] & gBitTable[gBattlerPartyIndexes[battler]])
@@ -1017,7 +1022,7 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
     xPos = 4 * var1;
     xPos += var1;
 
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, xPos, 3, 2, &windowId);
+    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, xPos, 3, bgThemeColor, &windowId);
     spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
 
     if (GetBattlerSide(battler) == B_SIDE_PLAYER)
@@ -1042,7 +1047,11 @@ void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
     u32 windowId, spriteTileNum;
     u8 *windowTileData;
     u8 text[32];
+    u8 bgThemeColor = 2;
     void *objVram;
+
+    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        bgThemeColor = 2;
 
     if (GetBattlerSide(gSprites[healthboxSpriteId].hMain_Battler) == B_SIDE_PLAYER && !IsDoubleBattle())
     {
@@ -1050,7 +1059,7 @@ void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
         if (maxOrCurrent != HP_CURRENT) // singles, max
         {
             ConvertIntToDecimalStringN(text, value, STR_CONV_MODE_RIGHT_ALIGN, 3);
-            windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 0, 5, 2, &windowId);
+            windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 0, 5, bgThemeColor, &windowId);
             objVram = (void*)(OBJ_VRAM0);
             objVram += spriteTileNum + 0xB40;
             HpTextIntoHealthboxObject(objVram, windowTileData, 2);
@@ -1061,7 +1070,7 @@ void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
             ConvertIntToDecimalStringN(text, value, STR_CONV_MODE_RIGHT_ALIGN, 3);
             text[3] = CHAR_SLASH;
             text[4] = EOS;
-            windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 4, 5, 2, &windowId);
+            windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 4, 5, bgThemeColor, &windowId);
             objVram = (void*)(OBJ_VRAM0);
             objVram += spriteTileNum + 0x3E0;
             HpTextIntoHealthboxObject(objVram, windowTileData, 1);
@@ -1460,7 +1469,7 @@ void DestroyMegaTriggerSprite(void)
 
 static const s8 sIndicatorPosSingles[][2] =
 {
-    [B_POSITION_PLAYER_LEFT] = {53, -8},
+    [B_POSITION_PLAYER_LEFT] = {51, -8},
     [B_POSITION_OPPONENT_LEFT] = {45, -8},
 };
 
@@ -1993,13 +2002,17 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     u32 windowId, spriteTileNum, species;
     u8 *windowTileData;
     u8 gender;
+    u8 bgThemeColor = 2;
     struct Pokemon *illusionMon = GetIllusionMonPtr(gSprites[healthboxSpriteId].hMain_Battler);
     if (illusionMon != NULL)
         mon = illusionMon;
 
+    if ((VarGet(VAR_RYU_THEME_NUMBER) == 1))
+        bgThemeColor = 0;
+
     if (GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_OPPONENT)
     {
-    StringCopy(gDisplayedStringBattle, gText_HighlightDarkGrey);
+    StringCopy(gDisplayedStringBattle, gText_HighlightTransparent);
     GetMonData(mon, MON_DATA_NICKNAME, nickname);
     StringGetEnd10(nickname);
     ptr = StringAppend(gDisplayedStringBattle, nickname);
@@ -2015,7 +2028,7 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 
     if ((GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_PLAYER))
     {
-    StringCopy(gDisplayedStringBattle, gText_HighlightDarkGrey);
+    StringCopy(gDisplayedStringBattle, gText_HighlightTransparent);
     GetMonData(mon, MON_DATA_NICKNAME, nickname);
     StringGetEnd10(nickname);
     ptr = StringAppend(gDisplayedStringBattle, nickname);
@@ -2034,15 +2047,15 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     {
     default:
         StringCopy(ptr, gText_DynColor2);
-        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, 2, &windowId);
+        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, bgThemeColor, &windowId);
         break;
     case MON_MALE:
         StringCopy(ptr, gText_DynColor2Male);
-        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, 2, &windowId);
+        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, bgThemeColor, &windowId);
         break;
     case MON_FEMALE:
         StringCopy(ptr, gText_DynColor1Female);
-        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, 2, &windowId);
+        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gDisplayedStringBattle, 0, 3, bgThemeColor, &windowId);
         break;
     }
 
@@ -2234,8 +2247,12 @@ static void UpdateSafariBallsTextOnHealthbox(u8 healthboxSpriteId)
 {
     u32 windowId, spriteTileNum;
     u8 *windowTileData;
+    u8 bgThemeColor = 2;
 
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gText_SafariBalls, 0, 3, 2, &windowId);
+    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        bgThemeColor = 1;
+
+    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(gText_SafariBalls, 0, 3, bgThemeColor, &windowId);
     spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
     TextIntoHealthboxObject((void*)(OBJ_VRAM0 + 0x40) + spriteTileNum, windowTileData, 6);
     TextIntoHealthboxObject((void*)(OBJ_VRAM0 + 0x800) + spriteTileNum, windowTileData + 0xC0, 2);
@@ -2248,11 +2265,15 @@ static void UpdateLeftNoOfBallsTextOnHealthbox(u8 healthboxSpriteId)
     u8 *txtPtr;
     u32 windowId, spriteTileNum;
     u8 *windowTileData;
+    u8 bgThemeColor = 2;
+
+    if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        bgThemeColor = 1;
 
     txtPtr = StringCopy(text, gText_SafariBallLeft);
     ConvertIntToDecimalStringN(txtPtr, gNumSafariBalls, STR_CONV_MODE_LEFT_ALIGN, 2);
 
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, GetStringRightAlignXOffset(0, text, 0x2F), 3, 2, &windowId);
+    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, GetStringRightAlignXOffset(0, text, 0x2F), 3, bgThemeColor, &windowId);
     spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
     SafariTextIntoHealthboxObject((void*)(OBJ_VRAM0 + 0x2C0) + spriteTileNum, windowTileData, 2);
     SafariTextIntoHealthboxObject((void*)(OBJ_VRAM0 + 0xA00) + spriteTileNum, windowTileData + 0x40, 4);

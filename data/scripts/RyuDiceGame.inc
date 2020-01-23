@@ -91,7 +91,7 @@ DiceGame::
 	buffernumberstring 1, VAR_TEMP_2
 	msgbox playerRolled
 	closemessage
-	special RemoveDice
+	special RemoveBothCutsceneSpriteIds
 	copyvar VAR_TEMP_9, VAR_TEMP_3
 	copyvar VAR_TEMP_F, VAR_TEMP_4
 	special RyuDrawDicePics
@@ -99,7 +99,7 @@ DiceGame::
 	buffernumberstring 1, VAR_TEMP_4
 	msgbox aiRolled
 	closemessage
-	special RemoveDice
+	special RemoveBothCutsceneSpriteIds
 	compare VAR_TEMP_8, WIN
 	goto_if_eq diceGameWin
 	compare VAR_TEMP_8, LOSS
@@ -173,7 +173,7 @@ diceGameDoubleDown::
 	buffernumberstring 1, VAR_TEMP_2
 	msgbox playerRolled
 	closemessage
-	special RemoveDice
+	special RemoveBothCutsceneSpriteIds
 	copyvar VAR_TEMP_9, VAR_TEMP_3
 	copyvar VAR_TEMP_F, VAR_TEMP_4
 	special RyuDrawDicePics
@@ -181,7 +181,7 @@ diceGameDoubleDown::
 	buffernumberstring 1, VAR_TEMP_4
 	msgbox aiRolled
 	closemessage
-	special RemoveDice
+	special RemoveBothCutsceneSpriteIds
 	compare VAR_TEMP_8, WIN
 	goto_if_eq diceGameDDWin
 	compare VAR_TEMP_8, LOSS

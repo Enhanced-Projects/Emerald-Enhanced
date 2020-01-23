@@ -319,6 +319,9 @@
 #define LOSS 2
 #define WIN 3
 
+//drawFullscreenImage defines
+#define SCENEBGDAWN 0
+
 #define SPECIAL_VARS_END              0x8015
 
 #endif // GUARD_CONSTANTS_VARS_H

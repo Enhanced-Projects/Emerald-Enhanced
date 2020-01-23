@@ -543,7 +543,8 @@ LilycoveCity_EventScript_Rival:: @ 81E2DDE
 	end
 
 LCC_FemalRivalIntroScript:: @ 81E2DF8
-	drawheadshot HEAD_DAWN
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	playbgm MUS_GIRL_SUP, 1
 	msgbox lcc_femaleRivalBattleIntro, MSGBOX_DEFAULT
 	goto LCC_FemalRivalStartBattle
@@ -605,7 +606,6 @@ LilycoveCity_EventScript_1E2ECD:: @ 81E2ECD
 	end
 
 LCC_FemalRivalStartBattle:: @ 81E2EFE
-	removecutscenesprites
 	setflag FLAG_RYU_DO_NOT_AUTOSCALE
 	trainerbattle_no_intro TRAINER_DAWN_5, lcc_femaleRivalBattleDefeat
 	goto LCC_FemalRivalBattleFinished
@@ -618,7 +618,8 @@ LCC_MaleRivalStartBattle:: @ 81E2F2E
 	end
 
 LCC_FemalRivalBattleFinished:: @ 81E2F3E
-    drawheadshot HEAD_DAWN
+    fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	msgbox lcc_femaleRivalChat, MSGBOX_DEFAULT
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_PICHU_DOLL
@@ -665,9 +666,7 @@ lcc_playerLookUp:
 
 lcc_femaleRivalRelChoice1:: @ 81E3006
 	closemessage
-	removecutscenesprites
 	msgbox lcc_dawnRelQuery1 MSGBOX_YESNO
-    drawheadshot HEAD_DAWN
 	compare VAR_RESULT, 1
 	goto_if_ne lcc_dawn_declined
 	setflag FLAG_RYU_DS_DAWN_CLOSEFRIENDS
@@ -675,19 +674,22 @@ lcc_femaleRivalRelChoice1:: @ 81E3006
 	giveitem_std ITEM_TOWN_MAP
 	msgbox LCC_Dawn_DS_TC_MEM MSGBOX_DEFAULT
 	delay 60
-	removecutscenesprites
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	setfieldeffectargument 0, 1
-	applymovement VAR_LAST_TALKED, LCC_DAWN_KISS
+	applymovement 17, LCC_DAWN_KISS
 	waitmovement 0
 	delay 20
 	msgbox LCC_DAWN_MSG MSGBOX_DEFAULT
 	dofieldeffect 30
 	delay 15
-	removeobject VAR_LAST_TALKED
+	removeobject 17
 	waitfieldeffect 30
+	setobjectxy 17, 0, 10 
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	setflag FLAG_MET_RIVAL_LILYCOVE
+	setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
 	clearflag FLAG_HIDE_DAWNS_HOUSE_DAWN
 	closemessage
 	release
@@ -800,7 +802,8 @@ lcc_dawn_declined::
     setflag FLAG_RYU_DS_DAWN_ACQ
     msgbox lcc_dawn_declined_msg MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	delay 20
 	setfieldeffectargument 0, 1
 	delay 20
@@ -812,6 +815,7 @@ lcc_dawn_declined::
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	setflag FLAG_MET_RIVAL_LILYCOVE
+	setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
 	closemessage
 	release
 	end

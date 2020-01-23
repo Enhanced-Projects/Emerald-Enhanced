@@ -30,6 +30,8 @@ Route103_EventScript_RivalMay:: @ 81EC3DA
 	msgbox r103_femaleRivalTalkSelf, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_GIRL_SUP, 1
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	applymovement 2, Common_Movement_FacePlayer
 	waitmovement 0
 	applymovement 2, Common_Movement_ExclamationMark
@@ -69,7 +71,8 @@ r103_maleRivalBattle:: @ 81EC49E
 	end
 
 Route103_EventScript_AfterMayBattle:: @ 81EC4EE
-	drawheadshot HEAD_DAWN
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	msgbox r103_femaleRivalChat, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	closemessage
@@ -84,6 +87,8 @@ Route103_EventScript_AfterBrendanBattle:: @ 81EC4FC
 Route103_EventScript_RivalExit:: @ 81EC50A
 	closemessage
 	removecutscenesprites
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	switch VAR_FACING
 	case DIR_SOUTH, Route103_EventScript_RivalExitFacingSouth
 	case DIR_NORTH, Route103_EventScript_RivalExitFacingNorth
@@ -335,7 +340,14 @@ Route103_Text_RouteSign: @ 81ECC1A
 @==================================================================================================DEBUG
 
 r103_SpecialBattleTest::
-	release
+	drawfullscreenimage CutsceneBGDawn
+	msgbox dawnhi
+	closemessage
+	setvar VAR_TEMP_5, 100
+	releaseall
 	end
+
+dawnhi:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Hi, {PLAYER}.$"
 
 

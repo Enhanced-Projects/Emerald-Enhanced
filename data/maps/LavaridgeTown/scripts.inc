@@ -224,17 +224,11 @@ LavaridgeTown_Text_HerbShopSign: @ 81EB1CB
 @=============================================================================================RIVAL STUFF
 LT_RivalEnter::
 	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
-	playse SE_PIN
 	goto_if_set FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_end
-	playse SE_PIN
 	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
-	playse SE_PIN
 	goto_if_set FLAG_TEMP_A, ryu_end
-	playse SE_PIN
 	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
-	playse SE_PIN
 	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
-	playse SE_PIN
 	checkplayergender
 	compare VAR_RESULT, FEMALE
 	goto_if_eq lrt_malerivalenter
@@ -269,8 +263,8 @@ lrt_malerivalenter::
 LT_FemaleRivalInteraction:: @ 81EA5B5
 	lockall
 	faceplayer
-	nop
-    drawheadshot HEAD_DAWN
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	msgbox LT_FemaleRivalIntro, MSGBOX_DEFAULT
 	waitmessage
 	closemessage
@@ -279,7 +273,7 @@ LT_FemaleRivalInteraction:: @ 81EA5B5
 	goto_if_eq LT_FemalRivalGiftPokeNoSpace
 	special RyuDawnGiftPoke
 	setflag FLAG_RYU_DAWN_GIFTPOKE_RECEIVED
-	showmonpic SPECIES_SNEASEL, 10, 3
+	drawcustompic 2, SPECIES_SNEASEL, 10, 3
 	playmoncry SPECIES_SNEASEL, 0
 	waitmoncry
 	playfanfare MUS_FANFA4
@@ -288,7 +282,8 @@ LT_FemaleRivalInteraction:: @ 81EA5B5
 	msgbox LT_RECEIVEDPOKE, MSGBOX_SIGN
 	msgbox LT_GivePokeExplanation, MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	goto_if_unset FLAG_RYU_LT_RIVAL, LT_Rival2Leave

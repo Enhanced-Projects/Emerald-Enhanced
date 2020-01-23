@@ -73,6 +73,7 @@
 #include "constants/trainers.h"
 #include "pokedex.h"
 #include "money.h"
+#include "menu_helpers.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -145,6 +146,27 @@ static u8 DidPlayerGetFirstFans(void);
 static void SetInitialFansOfPlayer(void);
 static u16 PlayerGainRandomTrainerFan(void);
 static void BufferFanClubTrainerName_(struct LinkBattleRecords *linkRecords, u8 a, u8 b);
+
+extern const u8 gDawnCutsceneBgTiles[];
+extern const u8 gDawnCutsceneBgMap[];
+extern const u8 gDawnCutsceneBGPalette[];
+
+struct CutsceneBG
+{
+    const void *tileset;
+    const void *tilemap;
+    const void *palette;
+};
+
+static const struct CutsceneBG gCutsceneBgTable[] =
+{
+    [CutsceneBGDawn] = 
+    {
+        .tileset = gDawnCutsceneBgTiles,
+        .tilemap = gDawnCutsceneBgMap,
+        .palette = gDawnCutsceneBGPalette
+    }
+};
 
 void Special_ShowDiploma(void)
 {
@@ -6228,6 +6250,45 @@ bool8 ScrCmd_drawheadshot(struct ScriptContext *ctx)
     }
 }
 
+static const struct BgTemplate sDawnBgTemplate = {
+        .bg = 1,
+        .charBaseIndex = 0,
+        .mapBaseIndex = 12,
+        .screenSize = 0,
+        .paletteMode = 1,
+        .priority = 0,
+        .baseTile = 0
+    };
+
+bool8 ScrCmd_drawfullscreenimage(struct ScriptContext *ctx)
+{
+    u8 index = ScriptReadByte(ctx);
+
+    SetVBlankCallback(NULL);
+    InitBgFromTemplate(&sDawnBgTemplate);
+    ResetAllBgsCoordinates();
+    ShowBg(0);
+    ShowBg(1);    
+
+    switch (index)
+    {
+        case 0:
+        {
+            LoadBgTilemap(1, gDawnCutsceneBgMap, 0x580, 0);
+            LoadBgTiles(1, gDawnCutsceneBgTiles, 0x3200, 0);
+            Unused_LoadBgPalette(1, gDawnCutsceneBGPalette, 0x200, 0);
+        }
+    }
+    return TRUE;   
+}
+
+bool8 ScrCmd_clearfullscreenimage(struct ScriptContext *ctx)
+{
+    SetVBlankCallback(NULL);
+    SetMainCallback2(CB2_ReturnToFieldLocal);
+    return TRUE;
+}
+
 bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)
 {
     u8 mode = ScriptReadByte(ctx);
@@ -6236,7 +6297,10 @@ bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)
     u16 y = VarGet(ScriptReadHalfword(ctx));
 
     if (mode == 1)
+    {
         cutsceneSpriteId2 = (CreateTrainerSprite(FacilityClassToPicIndex(id), x, y, 0, &gDecompressionBuffer[0x800]));
+        return FALSE;
+    }
 
     if (mode == 2)
     {
@@ -6264,7 +6328,7 @@ bool8 ScrCmd_removecutscenesprites(struct ScriptContext *ctx)
     }
 } 
 
-void RemoveDice(void)
+void RemoveBothCutsceneSpriteIds(void)
 {
     DestroySpriteAndFreeResources(&gSprites[cutsceneSpriteId1]);
     DestroySpriteAndFreeResources(&gSprites[cutsceneSpriteId2]);

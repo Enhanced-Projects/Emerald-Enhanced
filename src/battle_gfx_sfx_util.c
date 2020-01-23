@@ -53,7 +53,7 @@ static const struct CompressedSpriteSheet sSpriteSheet_SinglesPlayerHealthbox =
     gHealthboxSinglesPlayerGfx, 0x1000, TAG_HEALTHBOX_PLAYER1_TILE
 };
 
-static const struct CompressedSpriteSheet sSpriteSheet_SinglesPlayerHealthboxDark =  
+static const struct SpriteSheet sSpriteSheet_SinglesPlayerHealthboxDark =  
 {
     gHealthboxSinglesPlayerDarkGfx, 0x1000, TAG_HEALTHBOX_PLAYER1_TILE
 };
@@ -61,6 +61,11 @@ static const struct CompressedSpriteSheet sSpriteSheet_SinglesPlayerHealthboxDar
 static const struct CompressedSpriteSheet sSpriteSheet_SinglesOpponentHealthbox =
 {
     gHealthboxSinglesOpponentGfx, 0x1000, TAG_HEALTHBOX_OPPONENT1_TILE
+};
+
+static const struct CompressedSpriteSheet sSpriteSheet_SinglesOpponentHealthboxDark =
+{
+    gHealthboxSinglesOpponentDarkGfx, 0x1000, TAG_HEALTHBOX_OPPONENT1_TILE
 };
 
 static const struct CompressedSpriteSheet sSpriteSheets_DoublesPlayerHealthbox[2] =
@@ -73,6 +78,17 @@ static const struct CompressedSpriteSheet sSpriteSheets_DoublesOpponentHealthbox
 {
     {gHealthboxDoublesOpponentGfx, 0x800, TAG_HEALTHBOX_OPPONENT1_TILE},
     {gHealthboxDoublesOpponentGfx, 0x800, TAG_HEALTHBOX_OPPONENT2_TILE}
+};
+static const struct SpriteSheet sSpriteSheets_DoublesPlayerHealthboxDark[2] =
+{
+    {gHealthboxDoublesPlayerDarkGfx, 0x800, TAG_HEALTHBOX_PLAYER1_TILE},
+    {gHealthboxDoublesPlayerDarkGfx, 0x800, TAG_HEALTHBOX_PLAYER2_TILE}
+};
+
+static const struct CompressedSpriteSheet sSpriteSheets_DoublesOpponentHealthboxDark[2] =
+{
+    {gHealthboxDoublesOpponentDarkGfx, 0x800, TAG_HEALTHBOX_OPPONENT1_TILE},
+    {gHealthboxDoublesOpponentDarkGfx, 0x800, TAG_HEALTHBOX_OPPONENT2_TILE}
 };
 
 static const struct CompressedSpriteSheet sSpriteSheet_SafariHealthbox =
@@ -636,28 +652,45 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
     u8 numberOfBattlers = 0;
     u8 i;
 
-    LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[0]);
-    LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
+
+
+    
     if (!IsDoubleBattle())
     {
         if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
         {
-            LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthboxDark);
+            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[2]);
+            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[3]);
+            LoadSpriteSheet(&sSpriteSheet_SinglesPlayerHealthboxDark);
+            LoadCompressedSpriteSheet(&sSpriteSheet_SinglesOpponentHealthboxDark);
         }
         else
         {
+            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[0]);
+            LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[1]);
             LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthbox);
+            LoadCompressedSpriteSheet(&sSpriteSheet_SinglesOpponentHealthbox);
         }
 
-        LoadCompressedSpriteSheet(&sSpriteSheet_SinglesOpponentHealthbox);
         numberOfBattlers = 2;
     }
     else
     {
-        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[0]);
-        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[1]);
-        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[0]);
-        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[1]);
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        {
+            LoadSpriteSheet(&sSpriteSheets_DoublesPlayerHealthboxDark[0]);
+            LoadSpriteSheet(&sSpriteSheets_DoublesPlayerHealthboxDark[1]);
+            LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthboxDark[0]);
+            LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthboxDark[1]);
+        }
+        else
+        {
+            LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[0]);
+            LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[1]);
+            LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[0]);
+            LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[1]);
+        }
+
         numberOfBattlers = MAX_BATTLERS_COUNT;
     }
     for (i = 0; i < numberOfBattlers; i++)
@@ -693,7 +726,7 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
                 }
                 else if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
                 {
-                    LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthboxDark);
+                    LoadSpriteSheet(&sSpriteSheet_SinglesPlayerHealthboxDark);
                 }
                 else
                 {
@@ -702,7 +735,14 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
                 
             }
             else if (state == 3)
-                LoadCompressedSpriteSheet(&sSpriteSheet_SinglesOpponentHealthbox);
+                if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+                {
+                    LoadCompressedSpriteSheet(&sSpriteSheet_SinglesOpponentHealthboxDark);
+                }
+                else
+                {
+                    LoadCompressedSpriteSheet(&sSpriteSheet_SinglesOpponentHealthbox);
+                }
             else if (state == 4)
                 LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[0]]);
             else if (state == 5)
@@ -712,24 +752,49 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
         }
         else
         {
-            if (state == 2)
-                LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[0]);
-            else if (state == 3)
-                LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[1]);
-            else if (state == 4)
-                LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[0]);
-            else if (state == 5)
-                LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[1]);
-            else if (state == 6)
-                LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[0]]);
-            else if (state == 7)
-                LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[1]]);
-            else if (state == 8)
-                LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[2]]);
-            else if (state == 9)
-                LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[3]]);
-            else
-                retVal = TRUE;
+                if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+                {
+                    if (state == 2)
+                        LoadSpriteSheet(&sSpriteSheets_DoublesPlayerHealthboxDark[0]);
+                    else if (state == 3)
+                        LoadSpriteSheet(&sSpriteSheets_DoublesPlayerHealthboxDark[1]);
+                    else if (state == 4)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthboxDark[0]);
+                    else if (state == 5)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthboxDark[1]);
+                    else if (state == 6)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[0]]);
+                    else if (state == 7)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[1]]);
+                    else if (state == 8)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[2]]);
+                    else if (state == 9)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[3]]);
+                    else
+                        retVal = TRUE;
+                }
+                else
+                {
+                    if (state == 2)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[0]);
+                    else if (state == 3)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[1]);
+                    else if (state == 4)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[0]);
+                    else if (state == 5)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[1]);
+                    else if (state == 6)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[0]]);
+                    else if (state == 7)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[1]]);
+                    else if (state == 8)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[2]]);
+                    else if (state == 9)
+                        LoadCompressedSpriteSheet(&sSpriteSheets_HealthBar[gBattlerPositions[3]]);
+                    else
+                        retVal = TRUE;
+                }
+                
         }
     }
 

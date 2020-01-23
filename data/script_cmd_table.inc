@@ -239,6 +239,8 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_gfec
 	.4byte ScrCmd_multvar
 	.4byte ScrCmd_divvar
+	.4byte ScrCmd_drawfullscreenimage
+	.4byte ScrCmd_clearfullscreenimage
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop

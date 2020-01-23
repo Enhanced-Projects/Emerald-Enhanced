@@ -714,10 +714,13 @@ const u32 gBattleAnimSpriteGfx_Tendrils[] = INCBIN_U32("graphics/battle_anims/sp
 const u32 gBattleAnimSpritePal_Tendrils[] = INCBIN_U32("graphics/battle_anims/sprites/tendrils.gbapal.lz");
 
 const u32 gHealthboxSinglesPlayerGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_player.4bpp.lz");
-const u32 gHealthboxSinglesPlayerDarkGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_player_dark.4bpp.lz");
+const u32 gHealthboxSinglesPlayerDarkGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_player_dark.4bpp");
 const u32 gHealthboxSinglesOpponentGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_opponent.4bpp.lz");
 const u32 gHealthboxDoublesPlayerGfx[] = INCBIN_U32( "graphics/battle_interface/healthbox_doubles_player.4bpp.lz");
 const u32 gHealthboxDoublesOpponentGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_doubles_opponent.4bpp.lz");
+const u32 gHealthboxSinglesOpponentDarkGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_singles_opponent_dark.4bpp.lz");
+const u32 gHealthboxDoublesPlayerDarkGfx[] = INCBIN_U32( "graphics/battle_interface/healthbox_doubles_player_dark.4bpp");
+const u32 gHealthboxDoublesOpponentDarkGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_doubles_opponent_dark.4bpp.lz");
 const u32 gHealthboxSafariGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_safari.4bpp.lz");
 
 const u32 gUnusedGfx_Shadow[] = INCBIN_U32("graphics/unused/shadow.4bpp.lz");
@@ -1684,6 +1687,12 @@ const u16 gUnknown_08DE3374[] = INCBIN_U16("graphics/frontier_pass/tilemap2.bin"
 const u16 gUnknown_08DE3398[] = INCBIN_U16("graphics/berry_crusher/tiles.gbapal");
 const u32 gUnknown_08DE34B8[] = INCBIN_U32("graphics/berry_crusher/tiles.4bpp.lz");
 const u32 gUnknown_08DE3FD4[] = INCBIN_U32("graphics/berry_crusher/tiles.bin.lz");
+
+//Fullscreen cutscenes
+
+const u8 gDawnCutsceneBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/tiles.8bpp");
+const u8 gDawnCutsceneBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/map.bin");
+const u8 gDawnCutsceneBGPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/palette.gbapal");
 
 // random garbage at the end.
 asm(".space 0x54BAC \n\

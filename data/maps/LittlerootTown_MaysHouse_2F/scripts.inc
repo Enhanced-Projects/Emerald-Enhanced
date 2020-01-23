@@ -307,11 +307,12 @@ LRT_DawnIntroductionScene::
 	faceplayer
 	applymovement 2, Common_Movement_QuestionMark
 	waitmovement 0
-	nop
-    drawheadshot HEAD_DAWN
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	msgbox GI_DawnIntro MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	applymovement 4, GI_LeavingForRoute103
 	waitmovement 0
 	playse SE_DOOR

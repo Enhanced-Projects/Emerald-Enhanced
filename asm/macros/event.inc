@@ -1638,6 +1638,17 @@
 	.2byte \value
 	.endm
 
+	@displays a fullscreen bg image.
+	.macro drawfullscreenimage index:req
+	.byte 0xef
+	.byte \index
+	.endm
+
+	@clears the drawn fullscreen image.
+	.macro clearfullscreenimage
+	.byte 0xf0
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

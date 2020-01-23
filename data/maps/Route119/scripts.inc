@@ -267,6 +267,7 @@ r119_DawnEncounter::
 	addobject 16
 	compare VAR_TEMP_5, 1
 	call_if_eq r119_DawnNorthMovement
+	compare VAR_TEMP_5, 1
 	call_if_ne r119_DawnSouthMovement
 	goto r119_RivalInteractionFemale
 
@@ -276,6 +277,7 @@ r119_BrendanEncounter::
 	addobject 16
 	compare VAR_TEMP_5, 1
 	call_if_eq r119_BrendanNorthMovement
+	compare VAR_TEMP_5, 1
 	call_if_ne r119_BrendanSouthMovement
 	goto r119_RivalInteractionMale
 
@@ -287,7 +289,7 @@ r119_DawnNorthMovement:
 r119_DawnSouthMovement:
 	setobjectxy 16, 28, 22
 	applymovement 16, r119_RivalSouthSteps
-	waitmovement 40
+	waitmovement 16
 	return
 	
 r119_BrendanNorthMovement:
@@ -335,7 +337,8 @@ r119_RivalSouthSteps:
 	step_end
 
 r119_RivalInteractionFemale:: @ 81F450B
-	drawheadshot HEAD_DAWN
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	msgbox R119_DawnIntroMsg, MSGBOX_DEFAULT
     goto r119_RivalBattleFemale
 	end
@@ -346,11 +349,13 @@ r119_RivalBattleFemale:: @ Female Rival Battle #4
 	end
 
 r119_femaleRivalOutro:: @ 81F456A
-	drawheadshot HEAD_DAWN
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	msgbox r119_FemaleDefeatText, MSGBOX_DEFAULT
 	call r119_giveItemfinder
 	msgbox R119_ExplainItemfinderFemale, MSGBOX_DEFAULT
-	removecutscenesprites
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	closemessage
 	call r119_DawnExit
 	goto r119_scottEncounter

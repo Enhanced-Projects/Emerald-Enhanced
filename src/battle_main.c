@@ -558,7 +558,7 @@ static void CB2_InitBattleInternal(void)
     LoadBattleTextboxAndBackground();
     ResetSpriteData();
     ResetTasks();
-    DrawBattleEntryBackground();
+    //DrawBattleEntryBackground();
     FreeAllSpritePalettes();
     gReservedSpritePaletteCount = 4;
     SetVBlankCallback(VBlankCB_Battle);
