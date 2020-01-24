@@ -932,7 +932,12 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	gettime
+	buffernumberstring 0, VAR_0x8000
+	buffernumberstring 1, VAR_0x8001
+	buffernumberstring 2, VAR_0x8002
+	msgbox RDB_Readout
+	setvar VAR_RYU_TITLE_DEFENSE_WINS, 20
 	goto_if_unset FLAG_RYU_RANDOMIZE_MUSIC, RDB_u1_EnableRandomize
 	clearflag FLAG_RYU_RANDOMIZE_MUSIC
 	release
@@ -944,7 +949,7 @@ RDB_u1_EnableRandomize::
 	end
 
 RDB_Readout:
-	.string " {STR_VAR_1} $"
+	.string "It is currently: {STR_VAR_1}:{STR_VAR_2}::{STR_VAR_3}  $"
 
 AltScaleOn::
 	msgbox ScaleAltMsg
@@ -1695,6 +1700,7 @@ RyuScripts_HardcoreGymReward::
 	end
 
 RyuGymItemReward1::
+	call_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem ITEM_SUPER_POTION, 1
 	giveitem ITEM_GREAT_BALL, 1
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
@@ -1707,6 +1713,7 @@ Ryu_ResetPcUses::
 	return
 
 RyuGymItemReward2::
+	call_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem ITEM_SUPER_POTION, 2
 	giveitem ITEM_GREAT_BALL, 2
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
@@ -1715,6 +1722,7 @@ RyuGymItemReward2::
 	return
 
 RyuGymItemReward3::
+	call_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem ITEM_SUPER_POTION, 3
 	giveitem ITEM_GREAT_BALL, 3
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
@@ -1723,6 +1731,7 @@ RyuGymItemReward3::
 	return
 
 RyuGymItemReward4::
+	call_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem ITEM_SUPER_POTION, 4
 	giveitem ITEM_GREAT_BALL, 4
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
@@ -1731,6 +1740,7 @@ RyuGymItemReward4::
 	return
 
 RyuGymItemReward5::
+	call_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem ITEM_SUPER_POTION, 5
 	giveitem ITEM_GREAT_BALL, 5
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
@@ -1739,6 +1749,7 @@ RyuGymItemReward5::
 	return
 
 RyuGymItemReward6::
+	call_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem ITEM_SUPER_POTION, 6
 	giveitem ITEM_GREAT_BALL, 6
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
@@ -1747,6 +1758,7 @@ RyuGymItemReward6::
 	return
 
 RyuGymItemReward7::
+	call_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem ITEM_SUPER_POTION, 7
 	giveitem ITEM_GREAT_BALL, 7
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
@@ -1755,6 +1767,7 @@ RyuGymItemReward7::
 	return
 
 RyuGymItemReward8::
+	call_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem ITEM_SUPER_POTION, 8
 	giveitem ITEM_GREAT_BALL, 8
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
@@ -3077,5 +3090,107 @@ SB_Random4::
 Ryu_YouSteppedOn:
 	.string "You stepped on a wild {STR_VAR_1}!$"
 
+@==================================================================================================MEGA STONE REWARDS
 
+
+RyuTier8GymMegaStoneReward::
+	switch VAR_TEMP_8
+	case 1, RoxanneMegaReward
+	case 2, BrawlyMegaReward
+	case 3, WattsonMegaReward
+	case 4, FlanneryMegaReward
+	case 5, NormanMegaReward
+	case 6, WinonaMegaReward
+	case 7, TateandLizaMegaReward
+	case 8, JuanMegaReward
+	return
+
+
+RoxanneMegaReward::
+	goto_if_set FLAG_RYU_ROXANNE_MEGA_REWARD, ryu_return
+	msgbox RoxanneMega
+	giveitem ITEM_AERODACTYLITE
+	setflag FLAG_RYU_ROXANNE_MEGA_REWARD
+	closemessage
+	return
+
+RoxanneMega:
+	.string "Roxanne: Congratulations! You have\nbeaten me at my strongest.\lHere's a special gift from me!$"
+
+BrawlyMegaReward::
+	goto_if_set FLAG_RYU_BRAWLY_MEGA_REWARD, ryu_return
+	msgbox BrawlyMega
+	giveitem ITEM_MEDICHAMITE
+	setflag FLAG_RYU_BRAWLY_MEGA_REWARD
+	closemessage
+	return
+
+BrawlyMega:
+	.string "Brawly: You've totally outclassed\nme in battle. I feel comfortable\ltrusting you with this.$"
+
+WattsonMegaReward::
+	goto_if_set FLAG_RYU_WATTSON_MEGA_REWARD, ryu_return
+	msgbox WattsonMega
+	giveitem ITEM_MANECTITE
+	setflag FLAG_RYU_WATTSON_MEGA_REWARD
+	closemessage
+	return
+
+WattsonMega:
+	.string "Wattson: Color me shocked, you\nreally got me!\pHere's a gift from me!$"
+
+FlanneryMegaReward::
+	goto_if_set FLAG_RYU_FLANNERY_MEGA_REWARD, ryu_return
+	msgbox FlanneryMega
+	giveitem ITEM_BLAZIKENITE
+	setflag FLAG_RYU_FLANNERY_MEGA_REWARD
+	closemessage
+	return
+
+FlanneryMega:
+	.string "Flannery: You're too hot for\nme to handle, but I bet\lyou can handle this!$"
+
+NormanMegaReward::
+	goto_if_set FLAG_RYU_NORMAN_MEGA_REWARD, ryu_return
+	msgbox NormanMega
+	giveitem ITEM_KANGASKHANITE
+	setflag FLAG_RYU_NORMAN_MEGA_REWARD
+	closemessage
+	return
+
+NormanMega:
+	.string "Dad: I'm very proud of you!\nTake this gift from me,\lYou can put it to good use!$"
+
+WinonaMegaReward::
+	goto_if_set FLAG_RYU_WINONA_MEGA_REWARD, ryu_return
+	msgbox WinonaMega
+	giveitem ITEM_PIDGEOTITE
+	setflag FLAG_RYU_WINONA_MEGA_REWARD
+	closemessage
+	return
+
+WinonaMega:
+	.string "Winona: Your grace exceeds my own,\nso it's only right for you to\lhave this!$"
+
+TateandLizaMegaReward::
+	goto_if_set FLAG_RYU_TAL_MEGA_REWARD, ryu_return
+	msgbox TateandLizaMega
+	giveitem ITEM_ALAKAZITE
+	setflag FLAG_RYU_TAL_MEGA_REWARD
+	closemessage
+	return
+
+TateandLizaMega:
+	.string "Liza: You overcame our impossible\nto beat combo!\pYou can use this to it's\nfullest power!$"
+
+JuanMegaReward::
+	goto_if_set FLAG_RYU_JUAN_MEGA_REWARD, ryu_return
+	msgbox JuanMega
+	giveitem ITEM_SWAMPERTITE
+	setflag FLAG_RYU_JUAN_MEGA_REWARD
+	closemessage
+	return
+
+JuanMega:
+	.string "Juan: You're even more fabulous\nthan I. I thought this wasn't\ppossible until now. As a token\nof your dedication to the art\lof battle, take this stone!$"
 

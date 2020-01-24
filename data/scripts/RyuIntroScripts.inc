@@ -430,4 +430,106 @@ GI_GoSeeRivalMaleMsg:
 GI_GoSeeRivalFemaleMsg:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You remember that the professor\n has a son.\l Maybe you should go meet him?)$"
 
+LRT_MOM::
+	lock
+	faceplayer
+	msgbox MomIntro
+	closemessage
+	special checkbadgecount
+	compare VAR_RESULT, 4
+	goto_if_ge LRT_Mom_4Badges
+	goto LRT_Mom_base
 
+LRT_Mom_4Badges::
+	goto_if_set FLAG_RYU_MOM_AMULET_COIN, LRT_Check6B
+	msgbox mom4badgesmsg
+	giveitem ITEM_AMULET_COIN
+	setflag FLAG_RYU_MOM_AMULET_COIN
+	goto LRT_Mom_base
+
+LRT_Check6B::
+	special checkbadgecount
+	compare VAR_RESULT, 6
+	goto_if_ge LRT_Mom_6badges
+	goto LRT_Mom_base
+
+LRT_Mom_6badges::
+	goto_if_set FLAG_RYU_MOM_LOPUNNITE, LRT_Check8B
+	msgbox mom6badgesmsg
+	giveitem ITEM_LOPUNNITE
+	setflag FLAG_RYU_MOM_LOPUNNITE
+	goto LRT_Mom_base
+
+LRT_Check8B::
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	goto_if_ge LRT_Mom_8badges
+	goto LRT_Mom_base
+
+LRT_Mom_8badges::
+	goto_if_set FLAG_RYU_MOM_EXP_SHARE, LRT_Mom_base
+	msgbox mom8badgesmsg
+	giveitem ITEM_EXP_SHARE
+	setflag FLAG_RYU_MOM_EXP_SHARE
+	goto LRT_Mom_base
+
+LRT_Mom_base::
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, LRT_MOM_Restricted
+	goto_if_set FLAG_RYU_HARDCORE_MODE, LRT_MOM_Restricted
+	msgbox Momwouldyouliketoheal, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq LRT_Mom_Heal
+	msgbox MomGoGetThem
+
+LRT_MOM_Restricted::
+	msgbox Mom_IBelieveInYou
+	release
+	end
+
+LRT_Mom_Heal::
+	playbgm MUS_DUMMY, 1
+	fadescreen FADE_TO_BLACK
+	delay 30
+	special HealPlayerParty
+	delay 30
+	fadescreen FADE_FROM_BLACK
+	fadedefaultbgm
+	msgbox Mom_IBelieveInYou
+	release
+	end
+
+MomIntro:
+	.string "Mom: Hi, {PLAYER}! Did you come to visit\n"
+	.string "dear old mom?$"
+
+Momwouldyouliketoheal:
+	.string "Would you like to rest\nin your old room?$"
+
+mom4badgesmsg:
+	.string "Mom: I see you've been moving\n"
+	.string "up in the world. Here! take\l"
+	.string "this from me!\p"
+	.string "It was a gift from your father\n"
+	.string "when we were dating.\p"
+	.string "I don't actively battle anymore,\n"
+	.string "so I don't need it!$"
+
+mom6badgesmsg:
+	.string "Mom: Oh, {PLAYER}, I saw a cute\n"
+	.string "Pokémon on TV recently, and I\p"
+	.string "ordered this stone, but I guess\n"
+	.string "it only works if you have a Mega\l"
+	.string "Bracelet. So here, you can have it!$"
+
+mom8badgesmsg:
+	.string "Oh, you're off to the Hoenn\n"
+	.string "League soon, aren't you?\p"
+	.string "Well you're going to need to\n"
+	.string "train up! This should help.$"
+
+MomGoGetThem:
+	.string "Mom: I believe in you, {PLAYER}!\n"
+	.string "Teach your father some humility!$"
+
+Mom_IBelieveInYou:
+	.string "Mom: Keep at it, {PLAYER}!$"

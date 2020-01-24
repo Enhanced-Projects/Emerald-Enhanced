@@ -59,11 +59,16 @@ RCR_SoloChamp::
 	case 11, RCR_ChallengerGiovanniSolo
 	case 12, RCR_ChallengerSigmaSolo
 	case 13, RCR_ChallengerJuanSolo
+	case 15, RCR_BOSSMODE
 
 RCR_ChooseOpponent::
+	specialvar VAR_RESULT, checkForOverlordRyuEncounter
+	compare VAR_RESULT, 1
+	goto_if_eq RCR_OverlordRyuBossFight
 	special SpawnCameraObject
 	applymovement EVENT_OBJ_ID_CAMERA, RCR_CameraMove
 	waitmovement EVENT_OBJ_ID_CAMERA
+	goto_if_set FLAG_TEMP_A, RCR_BOSSMODE
 	random 9
 	switch VAR_RESULT
 	case 0, RCR_Opponent1
@@ -75,6 +80,15 @@ RCR_ChooseOpponent::
 	case 6, RCR_Opponent7
 	case 7, RCR_Opponent8
 	case 8, RCR_Opponent9
+	return
+
+RCR_OverlordRyuBossFight::
+	playbgm MUS_REKKUU_KOURIN, 1
+	setflag FLAG_TEMP_A
+	setvar VAR_TEMP_5, 15
+	special SpawnCameraObject
+	applymovement EVENT_OBJ_ID_CAMERA, RCR_CameraMove
+	waitmovement EVENT_OBJ_ID_CAMERA
 	return
 	
 RCR_Opponent1::
@@ -384,9 +398,27 @@ RCR_ChallengerJuanSolo::
 	closemessage
 	trainerbattle_no_intro TRAINER_CHALLENGER_JUAN, RCR_Juan_DefeatText
 	goto RCR_FinishChallenge
+
+RCR_BOSSMODE::
+	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement EVENT_OBJ_ID_CAMERA
+	msgbox RCR_RYU_Intro
+	closemessage
+	setflag FLAG_RYU_MAX_SCALE
+	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
+	trainerbattle_no_intro TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText
+	call_if_unset FLAG_RYU_DEFEATED_OVERLORD, MawileMegaReward
+	goto RCR_FinishChallenge
+
+MawileMegaReward::
+	msgbox RyuGivesMawilite
+	giveitem ITEM_MAWILITE
+	setflag FLAG_RYU_DEFEATED_OVERLORD
+	return
 	
 RCR_FinishChallenge::
 	msgbox RCR_PlayerRecordingInfo
+	addvar VAR_RYU_TITLE_DEFENSE_WINS, 1
 	closemessage
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
@@ -480,7 +512,20 @@ RCR_FollowerLanetteIntro::
 
 
 @==================challenger Text
-	
+
+RCR_RYU_Intro:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ryu: I'd say your chances of winning\nare about one in 8192.\lTime for you to learn your place!$"
+RyuGivesMawilite:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ryu: Nice! I was cheating and\n"
+	.string "you still won!\p"
+	.string "Congratulations on beating the final\n"
+	.string "boss of EMERALD ENHANCED.\p"
+	.string "Here, take this mega stone, it's\n"
+	.string "for my favorite pokemon!$"
+
+RCR_RYU_DefeatText:
+	.string "Even with my devhax...$"
+
 RCR_PlayerRecordingInfo:
 	.string "{PLAYER}:{COLOR LIGHT_BLUE}{SHADOW BLUE} You have lost the match.\pI will now go put the data\ninto the system.\pPlease come challenge me again!$"
 

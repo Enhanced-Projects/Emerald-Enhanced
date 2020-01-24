@@ -19,6 +19,10 @@ RustboroCity_Gym_EventScript_Roxanne:: @ 8212F31
 	end
 
 RG_Reset::
+	setvar VAR_TEMP_8, 1
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	call_if_eq RyuTier8GymMegaStoneReward
 	cleartrainerflag TRAINER_ROXANNE_1
 	cleartrainerflag TRAINER_ROXANNE_2
 	cleartrainerflag TRAINER_ROXANNE_3

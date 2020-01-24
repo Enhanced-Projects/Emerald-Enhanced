@@ -167,6 +167,10 @@ DewfordTown_Gym_EventScript_Brawly:: @ 81FC7C2
 	case 8, brawly4
 
 DFG_Reset::
+	setvar VAR_TEMP_8, 2
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_DEFEATED_DEWFORD_GYM
 	setflag FLAG_BADGE02_GET
 	msgbox DewfordTown_Gym_Text_BrawlyPostBattle
@@ -199,7 +203,7 @@ brawly3::
 
 brawly4::
 	goto_if_set FLAG_RYU_DS_HAS_PARTNER, DFG_PartnerQuery
-	trainerbattle_single TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, DewfordTown_Gym_Text_BrawlyPreBattle, DFG_Reset
+	trainerbattle_single TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, DewfordTown_Gym_Text_BrawlyDefeat, DFG_Reset
 	release
 	end
 

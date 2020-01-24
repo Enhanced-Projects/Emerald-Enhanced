@@ -600,3 +600,4 @@ gSpecials:: @ 81DBA64
 	def_special FillTheDex
 	def_special RyuSwapRotomForm
 	def_special TrySetBattleTowerLinkType
+	def_special checkForOverlordRyuEncounter

@@ -5733,6 +5733,22 @@ int RyuSwapRotomForm(void)
     return 1;
 }
 
+bool8 checkForOverlordRyuEncounter(void)
+{
+    if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10)
+    {
+        //if ((Random() % 100) <= 10)
+        //{
+            return TRUE;
+        //}
+        //else
+        //{
+            //return FALSE;
+        //}
+    }
+        
+}
+
 
 
 //Cutscene image defines
@@ -6275,7 +6291,7 @@ bool8 ScrCmd_drawfullscreenimage(struct ScriptContext *ctx)
         case 0:
         {
             LoadBgTilemap(1, gDawnCutsceneBgMap, 0x580, 0);
-            LoadBgTiles(1, gDawnCutsceneBgTiles, 0x3200, 0);
+            LoadBgTiles(1, gDawnCutsceneBgTiles, 0x3C00, 0);
             Unused_LoadBgPalette(1, gDawnCutsceneBGPalette, 0x200, 0);
         }
     }

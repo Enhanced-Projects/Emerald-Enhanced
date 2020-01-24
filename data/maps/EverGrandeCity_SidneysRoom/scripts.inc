@@ -87,14 +87,26 @@ EGC_FollowerSidneyRematch::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	goto Ryu_CheckForMega
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 
 EGC_AltSidney::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidneyRematch
 	trainerbattle_no_intro TRAINER_SIDNEY_REMATCH, 	EverGrandeCity_SidneysRoom_Text_Defeat
-	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
+	goto Ryu_CheckForMega
 	end
+
+Ryu_CheckForMega::
+	goto_if_set FLAG_RYU_SIDNEY_MEGA EverGrandeCity_SidneysRoom_EventScript_Defeated
+	msgbox SidneyAbsolGiftMsg
+	giveitem ITEM_ABSOLITE
+	setflag FLAG_RYU_SIDNEY_MEGA
+	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
+
+SidneyAbsolGiftMsg::
+	.string "You've got talent, kid. Take\nthis gift from me, You should\lbe able to put it to good use!$"
+
 
 EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech:: @ 8227F8B
 	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT

@@ -90,6 +90,10 @@ MauvilleCity_Gym_EventScript_Wattson:: @ 820DEEB
 	case 8, WATTSON4
 
 MG_Reset::
+	setvar VAR_TEMP_8, 3
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_ENABLE_WATTSON_MATCH_CALL
 	setflag FLAG_DEFEATED_MAUVILLE_GYM
 	setflag FLAG_BADGE03_GET

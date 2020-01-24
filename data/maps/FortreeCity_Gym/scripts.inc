@@ -56,6 +56,10 @@ FortreeCity_Gym_EventScript_WinonaDefeated:: @ 82165FD
 	end
 
 FG_Reset::
+	setvar VAR_TEMP_8, 6
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_DEFEATED_FORTREE_GYM
 	setflag FLAG_BADGE06_GET
 	cleartrainerflag TRAINER_WINONA_1

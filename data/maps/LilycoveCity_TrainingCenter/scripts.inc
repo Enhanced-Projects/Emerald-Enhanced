@@ -367,11 +367,10 @@ TC_StatShopGiveImprinter::
 	msgbox BuyImprinter MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne TC_StatShopNoBuyImprinter
-	setvar VAR_TEMP_0, 60000
-	checkmoney VAR_TEMP_0
+	checkmoney 65000
 	compare VAR_RESULT, 0
 	goto_if_eq TC_StatShopCantAffordImprinter
-	takemoney VAR_TEMP_0
+	takemoney 65000
 	giveitem ITEM_POKE_FLUTE
 	msgbox TC_BoughtImprinter MSGBOX_DEFAULT
 	waitmessage

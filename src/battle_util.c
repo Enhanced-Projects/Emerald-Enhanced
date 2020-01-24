@@ -1847,7 +1847,7 @@ u8 DoBattlerEndTurnEffects(void)
             {
             if ((FlagGet(FLAG_RYU_MAX_SCALE) == 1) && !BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK) && gBattleMons[gActiveBattler].hp != 0 && ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
             {
-                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 10;
+                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 gBattleMoveDamage *= -1;
@@ -1866,7 +1866,7 @@ u8 DoBattlerEndTurnEffects(void)
                     Ryu_LoadLegendaryOpponentName();
                     if (gBattleMons[gBattlerAttacker].statStages[stat] < 0xC)
                         {
-                            gBattleMons[gBattlerAttacker].statStages[stat]++;
+                            gBattleMons[gBattlerAttacker].statStages[stat] + 2;
                             gBattleScripting.animArg1 = 0x11;
                             gBattleScripting.animArg2 = 0;
                             BattleScriptPushCursorAndCallback(BattleScript_BossModeStatBoostActivates);

@@ -323,7 +323,7 @@
 #define FLAG_MET_FANCLUB_YOUNGER_BROTHER     0x12C
 #define FLAG_RIVAL_LEFT_FOR_ROUTE103         0x12D
 #define FLAG_OMIT_DIVE_FROM_STEVEN_LETTER    0x12E
-#define FLAG_UNUSED_0x12F                    0x12F
+#define FLAG_RYU_RECEIVED_MEGA_BRACELET      0x12F
 #define FLAG_ADDED_MATCH_CALL_TO_POKENAV     0x130
 #define FLAG_REGISTERED_STEVEN_POKENAV       0x131
 #define FLAG_ENABLE_NORMAN_MATCH_CALL        0x132
@@ -715,24 +715,24 @@
 #define FLAG_RYU_LANA_EVENT14  0x2A3 // Unused Flag
 #define FLAG_RYU_RECIEVED_ROTOM  0x2A4 // Unused Flag
 #define FLAG_RYU_STAYED_2_NIGHTS_AT_LANETTE  0x2A5 // Unused Flag
-#define FLAG_UNUSED_0x2A6  0x2A6 // Unused Flag
-#define FLAG_UNUSED_0x2A7  0x2A7 // Unused Flag
-#define FLAG_UNUSED_0x2A8  0x2A8 // Unused Flag
-#define FLAG_UNUSED_0x2A9  0x2A9 // Unused Flag
-#define FLAG_UNUSED_0x2AA  0x2AA // Unused Flag
-#define FLAG_UNUSED_0x2AB  0x2AB // Unused Flag
-#define FLAG_UNUSED_0x2AC  0x2AC // Unused Flag
-#define FLAG_UNUSED_0x2AD  0x2AD // Unused Flag
-#define FLAG_UNUSED_0x2AE  0x2AE // Unused Flag
-#define FLAG_UNUSED_0x2AF  0x2AF // Unused Flag
-#define FLAG_UNUSED_0x2B0  0x2B0 // Unused Flag
-#define FLAG_UNUSED_0x2B1  0x2B1 // Unused Flag
-#define FLAG_UNUSED_0x2B2  0x2B2 // Unused Flag
-#define FLAG_UNUSED_0x2B3  0x2B3 // Unused Flag
-#define FLAG_UNUSED_0x2B4  0x2B4 // Unused Flag
-#define FLAG_UNUSED_0x2B5  0x2B5 // Unused Flag
-#define FLAG_UNUSED_0x2B6  0x2B6 // Unused Flag
-#define FLAG_UNUSED_0x2B7  0x2B7 // Unused Flag
+#define FLAG_RYU_ROXANNE_MEGA_REWARD  0x2A6 // Unused Flag
+#define FLAG_RYU_BRAWLY_MEGA_REWARD  0x2A7 // Unused Flag
+#define FLAG_RYU_WATTSON_MEGA_REWARD  0x2A8 // Unused Flag
+#define FLAG_RYU_FLANNERY_MEGA_REWARD  0x2A9 // Unused Flag
+#define FLAG_RYU_NORMAN_MEGA_REWARD  0x2AA // Unused Flag
+#define FLAG_RYU_WINONA_MEGA_REWARD  0x2AB // Unused Flag
+#define FLAG_RYU_TAL_MEGA_REWARD  0x2AC // Unused Flag
+#define FLAG_RYU_JUAN_MEGA_REWARD  0x2AD // Unused Flag
+#define FLAG_RYU_SIDNEY_MEGA  0x2AE // Unused Flag
+#define FLAG_RYU_PHOEBE_MEGA  0x2AF // Unused Flag
+#define FLAG_RYU_GLACIA_MEGA  0x2B0 // Unused Flag
+#define FLAG_RYU_DRAKE_MEGA  0x2B1 // Unused Flag
+#define FLAG_RYU_AURORATICKET  0x2B2 // Unused Flag
+#define FLAG_RYU_DEFEATED_OVERLORD  0x2B3 // Unused Flag
+#define FLAG_RYU_MOM_AMULET_COIN  0x2B4 // Unused Flag
+#define FLAG_RYU_MOM_LOPUNNITE  0x2B5 // Unused Flag
+#define FLAG_RYU_MOM_EXP_SHARE  0x2B6 // Unused Flag
+#define FLAG_RYU_HIDE_MINNIE  0x2B7 // Unused Flag
 #define FLAG_UNUSED_0x2B8  0x2B8 // Unused Flag
 #define FLAG_UNUSED_0x2B9  0x2B9 // Unused Flag
 #define FLAG_UNUSED_0x2BA  0x2BA // Unused Flag

@@ -67,6 +67,10 @@ MossdeepCity_Gym_EventScript_TateAndLiza:: @ 8220898
 	end
 
 MDG_Reset::
+	setvar VAR_TEMP_8, 7
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_BADGE07_GET
 	setflag FLAG_DEFEATED_MOSSDEEP_GYM
 	cleartrainerflag TRAINER_TATE_AND_LIZA_1

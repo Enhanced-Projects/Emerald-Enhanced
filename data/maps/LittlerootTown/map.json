@@ -155,7 +155,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_TEMP_3",
+            "flag": "FLAG_RYU_HIDE_MINNIE",
             "graphics_id": "EVENT_OBJ_GFX_TWIN",
             "movement_range_x": 0,
             "movement_range_y": 0,

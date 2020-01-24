@@ -129,6 +129,13 @@ PBG_PlayerNotReadyText:
     .string "it! Come back when you are stronger!$"
 
 PG_Reset::
+	setvar VAR_TEMP_8, 5
+	special checkbadgecount
+	compare VAR_RESULT, 4
+	call_if_eq PG_GiveMegaBracelet
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	call_if_eq RyuTier8GymMegaStoneReward
 	msgbox PetalburgCity_Gym_Text_NormanPostRematch, MSGBOX_DEFAULT
 	setflag FLAG_BADGE05_GET
 	setflag FLAG_DEFEATED_PETALBURG_GYM
@@ -146,6 +153,22 @@ PG_Reset::
 	special InitBirchState
 	release
 	end
+
+PG_GiveMegaBracelet::
+	goto_if_set FLAG_RYU_RECEIVED_MEGA_BRACELET, ryu_return
+	msgbox NormanGivesMB
+	giveitem ITEM_MEGA_BRACELET
+	closemessage
+	msgbox NormanfinishGiveBracelet
+	return
+
+NormanGivesMB:
+	.string "Dad: Ahh, by the way, {PLAYER},\n"
+	.string "I got this for you, you should be\p"
+	.string "strong enough to use it.$"
+
+NormanfinishGiveBracelet:
+	.string "While you have that item with\nyou, your Pokémon that have mega\pstones can mega-evolve in battle.\pMake good use of it!$"
 
 norman1::
 	msgbox PBG_AreYouSure, MSGBOX_YESNO

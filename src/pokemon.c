@@ -5260,12 +5260,12 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem)
                 break;
             case EVO_LEVEL_NIGHT:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 19 && gLocalTime.hours < 6 && gEvolutionTable[species][i].param <= level)
+                if (gLocalTime.hours >= 17 && gLocalTime.hours < 6 && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_ITEM_HOLD_NIGHT:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 19 && gLocalTime.hours < 6 && heldItem == gEvolutionTable[species][i].param)
+                if (gLocalTime.hours >= 18 && gLocalTime.hours < 6 && heldItem == gEvolutionTable[species][i].param)
                 {
                     heldItem = 0;
                     SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
@@ -6214,7 +6214,7 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_PYRAMID_KING:
             return MUS_VS_FRONT;
         case TRAINER_CLASS_OVERLORD:
-            return MUS_RG_VS_DEN;
+            return MUS_VS_REKKU;
         default:
             return MUS_BATTLE20;
         }

@@ -90,6 +90,10 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated:: @ 81FE7C1
 	end
 	
 LG_Reset::
+	setvar VAR_TEMP_8, 4
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	call_if_eq RyuTier8GymMegaStoneReward
 	clearflag FLAG_HIDE_MAUVILLE_CITY_WATTSON
     setflag FLAG_BADGE04_GET
 	setflag FLAG_DEFEATED_LAVARIDGE_GYM

@@ -15,7 +15,8 @@ LRT_FollowerTest::
 	goto_if_ne LRT_CancelFollower
 	setflag FLAG_TEMP_3
 	closemessage
-	removeobject 7
+	setflag FLAG_RYU_HIDE_MINNIE
+	removeobject 4
 	createfollower EVENT_OBJ_GFX_TWIN, RyuFollowerSelectNPCScript, 1
 	setflag FLAG_RYU_HAS_FOLLOWER
 	setvar VAR_RYU_FOLLOWER_ID, EVENT_OBJ_GFX_TWIN
@@ -41,6 +42,7 @@ LRT_RemoveMinnie:
 	msgbox LRT_MinnieLeave
 	closemessage
 	destroyfollower
+	clearflag FLAG_RYU_HIDE_MINNIE
 	msgbox RyuFollowerLeavesService
 	clearflag FLAG_RYU_HAS_FOLLOWER
 	release

@@ -100,6 +100,10 @@ SootopolisCity_Gym_1F_EventScript_Juan:: @ 8224F44
 	end
 
 SG_Reset::
+	setvar VAR_TEMP_8, 8
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_DEFEATED_SOOTOPOLIS_GYM 
 	setflag FLAG_BADGE08_GET
 	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1
