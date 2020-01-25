@@ -194,10 +194,10 @@ const struct WildPokemonInfo gRoute103_FishingMonsInfo = {30, gRoute103_FishingM
 const struct WildPokemon gRoute104_LandMons[] =
 {
 	{10, 12,SPECIES_POOCHYENA},
-	{10, 12,SPECIES_WURMPLE},
+	{10, 12,SPECIES_CHESPIN},
 	{10, 11, SPECIES_POOCHYENA},
 	{10, 10, SPECIES_MARILL},
-	{10, 12,SPECIES_KRABBY},
+	{10, 12,SPECIES_CHESPIN},
 	{10, 10, SPECIES_VENONAT},
 	{10, 12,SPECIES_TAILLOW},
 	{10, 10, SPECIES_MINCCINO},
@@ -317,7 +317,7 @@ const struct WildPokemon gRoute111_LandMons[] =
 	{39, 39, SPECIES_DIGLETT},
 	{31, 31, SPECIES_BALTOY},
 	{39, 39, SPECIES_HIPPOPOTAS},
-	{39, 39, SPECIES_RHYDON},
+	{39, 39, SPECIES_FENNEKIN},
 	{30, 30, SPECIES_DRILBUR},
 	{30, 30, SPECIES_MARACTUS},
 	{32, 32, SPECIES_MAWILE},
@@ -368,10 +368,10 @@ const struct WildPokemon gRoute112_LandMons[] =
 {
 	{15, 15, SPECIES_NUMEL},
 	{15, 15, SPECIES_PONYTA},
-	{15, 15, SPECIES_MARILL},
+	{15, 15, SPECIES_CHIMCHAR},
 	{14, 14, SPECIES_GROWLITHE},
 	{14, 14, SPECIES_PONYTA},
-	{14, 14, SPECIES_MARILL},
+	{14, 14, SPECIES_CHIMCHAR},
 	{16, 16, SPECIES_NUMEL},
 	{16, 16, SPECIES_AXEW},
 	{16, 16, SPECIES_GROWLITHE},
@@ -388,11 +388,11 @@ const struct WildPokemon gRoute113_LandMons[] =
 	{15, 15, SPECIES_ROCKRUFF},
 	{15, 15, SPECIES_SLUGMA},
 	{14, 14, SPECIES_SCYTHER},
-	{14, 14, SPECIES_SHUCKLE},
+	{14, 14, SPECIES_TEPIG},
 	{14, 14, SPECIES_RHYHORN},
 	{16, 16, SPECIES_NOSEPASS},
 	{16, 16, SPECIES_MAGBY},
-	{16, 16, SPECIES_PHANPY},
+	{16, 16, SPECIES_TEPIG},
 	{16, 16, SPECIES_ROCKRUFF},
 	{16, 16, SPECIES_LARVITAR},
 	{16, 16, SPECIES_SKARMORY},
@@ -420,8 +420,8 @@ const struct WildPokemonInfo gRoute114_LandMonsInfo = {20, gRoute114_LandMons};
 
 const struct WildPokemon gRoute114_WaterMons[] =
 {
-	{20, 30, SPECIES_MARILL},
-	{10, 20, SPECIES_MARILL},
+	{20, 30, SPECIES_OSHAWOTT},
+	{10, 20, SPECIES_OSHAWOTT},
 	{30, 35, SPECIES_POLIWAG},
 	{15, 20, SPECIES_POLIWAG},
 	{20, 30, SPECIES_GOLDEEN},
@@ -432,9 +432,9 @@ const struct WildPokemonInfo gRoute114_WaterMonsInfo = {4, gRoute114_WaterMons};
 const struct WildPokemon gRoute114_RockSmashMons[] =
 {
 	{10, 15, SPECIES_GEODUDE},
-	{15, 20, SPECIES_GEODUDE},
-	{15, 20, SPECIES_GEODUDE},
-	{15, 20, SPECIES_GEODUDE},
+	{15, 20, SPECIES_ROGGENROLA},
+	{15, 20, SPECIES_ROGGENROLA},
+	{15, 20, SPECIES_ROGGENROLA},
 	{15, 20, SPECIES_GEODUDE},
 };
 
@@ -480,8 +480,8 @@ const struct WildPokemon gRoute117_LandMons[] =
 	{33, 33, SPECIES_ODDISH},
 	{33, 33, SPECIES_NIDORAN_F},
 	{33, 33, SPECIES_NIDORAN_M},
-	{33, 33, SPECIES_MARILL},
-	{33, 33, SPECIES_ODDISH},
+	{33, 33, SPECIES_TURTWIG},
+	{33, 33, SPECIES_TURTWIG},
 	{33, 33, SPECIES_ILLUMISE},
 	{33, 33, SPECIES_ROSELIA},
 	{33, 33, SPECIES_ILLUMISE},
@@ -495,10 +495,10 @@ const struct WildPokemonInfo gRoute117_LandMonsInfo = {20, gRoute117_LandMons};
 const struct WildPokemon gRoute117_WaterMons[] =
 {
 	{20, 30, SPECIES_MARILL},
-	{10, 20, SPECIES_MARILL},
+	{10, 20, SPECIES_FROAKIE},
 	{30, 35, SPECIES_MANTINE},
 	{15, 20, SPECIES_STARYU},
-	{20, 30, SPECIES_GOLDEEN},
+	{20, 30, SPECIES_FROAKIE},
 };
 
 const struct WildPokemonInfo gRoute117_WaterMonsInfo = {4, gRoute117_WaterMons};
@@ -978,8 +978,8 @@ const struct WildPokemon gRoute115_LandMons[] =
 	{33, 33, SPECIES_SWABLU},
 	{33, 33, SPECIES_TAILLOW},
 	{25, 25, SPECIES_SWABLU},
-	{33, 33, SPECIES_TAILLOW},
-	{25, 25, SPECIES_TAILLOW},
+	{33, 33, SPECIES_SNIVY},
+	{25, 25, SPECIES_SNIVY},
 	{25, 25, SPECIES_SWELLOW},
 	{33, 33, SPECIES_JIGGLYPUFF},
 	{25, 25, SPECIES_JIGGLYPUFF},
@@ -1144,24 +1144,6 @@ const struct WildPokemon gRoute120_FishingMons[] =
 };
 
 const struct WildPokemonInfo gRoute120_FishingMonsInfo = {30, gRoute120_FishingMons};
-
- const struct WildPokemon gNewMap6_LandMons[] =
-{
-	{35, 45,SPECIES_PARAS},
-	{35, 45,SPECIES_LOMBRE},
-	{35, 45,SPECIES_LOMBRE},
-	{35, 44,SPECIES_EKANS},
-	{35, 44,SPECIES_GULPIN},
-	{35, 45,SPECIES_NIDORINO},
-	{35, 45,SPECIES_NIDORINA},
-	{35, 45,SPECIES_FEAROW},
-	{35, 45,SPECIES_MURKROW},
-	{35, 45,SPECIES_YANMA},
-	{35, 45,SPECIES_TOGEPI},
-	{35, 45,SPECIES_TOGETIC},
-};
-
-const struct WildPokemonInfo gNewMap6_LandMonsInfo = {20, gNewMap6_LandMons};
 
 const struct WildPokemon gRoute121_LandMons[] =
 {
@@ -2411,8 +2393,8 @@ const struct WildPokemon gShoalCave_LowTideStairsRoom_LandMons[] =
 	{32, 32, SPECIES_JYNX},
 	{32, 32, SPECIES_SPHEAL},
 	{32, 32, SPECIES_DEWGONG},
-	{32, 32, SPECIES_SPHEAL},
-	{32, 32, SPECIES_GOLBAT},
+	{32, 32, SPECIES_PRINPLUP},
+	{32, 32, SPECIES_PRINPLUP},
 	{32, 32, SPECIES_LAPRAS},
 };
 
@@ -2423,7 +2405,7 @@ const struct WildPokemon gShoalCave_LowTideLowerRoom_LandMons[] =
 	{26, 26, SPECIES_ZUBAT},
 	{26, 26, SPECIES_SPHEAL},
 	{28, 28, SPECIES_SWINUB},
-	{28, 28, SPECIES_SEEL},
+	{28, 28, SPECIES_PIPLUP},
 	{30, 30, SPECIES_SNORUNT},
 	{30, 30, SPECIES_SNEASEL},
 	{32, 32, SPECIES_JYNX},
@@ -2438,7 +2420,7 @@ const struct WildPokemonInfo gShoalCave_LowTideLowerRoom_LandMonsInfo = {10, gSh
 
 const struct WildPokemon gShoalCave_LowTideInnerRoom_LandMons[] =
 {
-	{26, 26, SPECIES_ZUBAT},
+	{26, 26, SPECIES_PIPLUP},
 	{26, 26, SPECIES_SPHEAL},
 	{28, 28, SPECIES_KRABBY},
 	{28, 28, SPECIES_POPPLIO},
@@ -2483,15 +2465,15 @@ const struct WildPokemonInfo gShoalCave_LowTideInnerRoom_FishingMonsInfo = {10, 
 
 const struct WildPokemon gShoalCave_LowTideEntranceRoom_LandMons[] =
 {
-	{26, 26, SPECIES_ZUBAT},
+	{26, 26, SPECIES_PIPLUP},
 	{26, 26, SPECIES_SPHEAL},
-	{28, 28, SPECIES_ZUBAT},
+	{28, 28, SPECIES_PIPLUP},
 	{28, 28, SPECIES_POPPLIO},
-	{30, 30, SPECIES_ZUBAT},
+	{30, 30, SPECIES_PIPLUP},
 	{30, 30, SPECIES_POPPLIO},
 	{32, 32, SPECIES_ZUBAT},
 	{32, 32, SPECIES_SPHEAL},
-	{32, 32, SPECIES_GOLBAT},
+	{32, 32, SPECIES_PRINPLUP},
 	{32, 32, SPECIES_SPHEAL},
 	{32, 32, SPECIES_GOLBAT},
 	{32, 32, SPECIES_SPHEAL},
@@ -3350,8 +3332,7 @@ const struct WildPokemonInfo gMeteorFalls_StevensCave_LandMonsInfo = {10, gMeteo
 
 //Custom Encounters List
 
-//Large r111 cave
- const struct WildPokemon gNewMap8_LandMons[] =
+ const struct WildPokemon gDesertTomb1f_LandMons[] =
 {
 	{55, 65,SPECIES_GRAVELER},
 	{55, 65,SPECIES_PUPITAR},
@@ -3366,10 +3347,11 @@ const struct WildPokemonInfo gMeteorFalls_StevensCave_LandMonsInfo = {10, gMeteo
 	{55, 65,SPECIES_KROKOROK},
 	{55, 65,SPECIES_STEELIX},
 };
-const struct WildPokemonInfo gNewMap8_LandMonsInfo = {10, gNewMap8_LandMons};
 
-// large r111 cave base floor
-const struct WildPokemon gNewMap11_LandMons[] =
+const struct WildPokemonInfo gDesertTomb1f_LandMonsInfo = {20, gDesertTomb1f_LandMons};
+
+// large r111 cave second floor
+const struct WildPokemon gDesertTomb2f_LandMons[] =
 {
 	{55, 65,SPECIES_ONIX},
 	{55, 65,SPECIES_ANORITH},
@@ -3385,11 +3367,11 @@ const struct WildPokemon gNewMap11_LandMons[] =
 	{55, 65,SPECIES_GOLEM},
 };
 
-const struct WildPokemonInfo gNewMap11_LandMonsInfo = {10, gNewMap11_LandMons};
+const struct WildPokemonInfo gDesertTomb2f_LandMonsInfo = {10, gDesertTomb2f_LandMons};
 
 //Large r111 cave boss floor
 
-const struct WildPokemon gNewMap10_LandMons[] =
+const struct WildPokemon gDesertTombCore_LandMons[] =
 {
 	{55, 65,SPECIES_ONIX},
 	{55, 65,SPECIES_ONIX},
@@ -3404,7 +3386,8 @@ const struct WildPokemon gNewMap10_LandMons[] =
 	{55, 65,SPECIES_MISMAGIUS},
 	{55, 65,SPECIES_TERRAKION},
 };
-const struct WildPokemonInfo gNewMap10_LandMonsInfo = {5, gNewMap10_LandMons};
+const struct WildPokemonInfo gDesertTombCore_LandMonsInfo = {5, gDesertTombCore_LandMons};
+
 
 //End custom Encounters
 
@@ -3487,7 +3470,7 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 	{
 		.mapGroup = MAP_GROUP(DESERT_TOMB1F),
 		.mapNum = MAP_NUM(DESERT_TOMB1F),
-		.landMonsInfo = &gNewMap6_LandMonsInfo,
+		.landMonsInfo = &gDesertTomb1f_LandMonsInfo,
 		.waterMonsInfo = NULL,
 		.rockSmashMonsInfo = NULL,
 		.fishingMonsInfo = NULL,
@@ -3495,7 +3478,7 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 	{
 		.mapGroup = MAP_GROUP(DESERT_TOMB_CORE),
 		.mapNum = MAP_NUM(DESERT_TOMB_CORE),
-		.landMonsInfo = &gNewMap10_LandMonsInfo,
+		.landMonsInfo = &gDesertTombCore_LandMonsInfo,
 		.waterMonsInfo = NULL,
 		.rockSmashMonsInfo = NULL,
 		.fishingMonsInfo = NULL,
@@ -3503,7 +3486,7 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 	{
 		.mapGroup = MAP_GROUP(DESERT_TOMB2F),
 		.mapNum = MAP_NUM(DESERT_TOMB2F),
-		.landMonsInfo = &gNewMap11_LandMonsInfo,
+		.landMonsInfo = &gDesertTomb2f_LandMonsInfo,
 		.waterMonsInfo = NULL,
 		.rockSmashMonsInfo = NULL,
 		.fishingMonsInfo = NULL,

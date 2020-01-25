@@ -5737,14 +5737,14 @@ bool8 checkForOverlordRyuEncounter(void)
 {
     if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10)
     {
-        //if ((Random() % 100) <= 10)
-        //{
+        if ((Random() % 100) <= 10)
+        {
             return TRUE;
-        //}
-        //else
-        //{
-            //return FALSE;
-        //}
+        }
+        else
+        {
+            return FALSE;
+        }
     }
         
 }

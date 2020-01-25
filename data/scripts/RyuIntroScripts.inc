@@ -444,6 +444,7 @@ LRT_Mom_4Badges::
 	goto_if_set FLAG_RYU_MOM_AMULET_COIN, LRT_Check6B
 	msgbox mom4badgesmsg
 	giveitem ITEM_AMULET_COIN
+	setvar VAR_RYU_TITLE_DEFENSE_WINS, 0
 	setflag FLAG_RYU_MOM_AMULET_COIN
 	goto LRT_Mom_base
 

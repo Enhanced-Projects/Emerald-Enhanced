@@ -1172,6 +1172,9 @@ u8 DoFieldEndTurnEffects(void)
                     gBattleCommunication[MULTISTRING_CHOOSER] = 0;
                 }
 
+                VarSet(VAR_RYU_WEATHER, WEATHER_RAIN);
+                FlagSet(FLAG_RYU_PERSISTENT_WEATHER);
+
                 BattleScriptExecute(BattleScript_RainContinuesOrEnds);
                 effect++;
             }
@@ -1189,6 +1192,8 @@ u8 DoFieldEndTurnEffects(void)
                 {
                     gBattlescriptCurrInstr = BattleScript_DamagingWeatherContinues;
                 }
+                VarSet(VAR_RYU_WEATHER, WEATHER_SANDSTORM);
+                FlagSet(FLAG_RYU_PERSISTENT_WEATHER);
 
                 gBattleScripting.animArg1 = B_ANIM_SANDSTORM_CONTINUES;
                 gBattleCommunication[MULTISTRING_CHOOSER] = 0;
@@ -1210,6 +1215,9 @@ u8 DoFieldEndTurnEffects(void)
                     gBattlescriptCurrInstr = BattleScript_SunlightContinues;
                 }
 
+                VarSet(VAR_RYU_WEATHER, WEATHER_DROUGHT);
+                FlagSet(FLAG_RYU_PERSISTENT_WEATHER);
+
                 BattleScriptExecute(gBattlescriptCurrInstr);
                 effect++;
             }
@@ -1227,6 +1235,9 @@ u8 DoFieldEndTurnEffects(void)
                 {
                     gBattlescriptCurrInstr = BattleScript_DamagingWeatherContinues;
                 }
+
+                VarSet(VAR_RYU_WEATHER, WEATHER_SNOW);
+                FlagSet(FLAG_RYU_PERSISTENT_WEATHER);
 
                 gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
                 gBattleCommunication[MULTISTRING_CHOOSER] = 1;
@@ -2848,6 +2859,15 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                         effect++;
                     }
                     break;
+                case WEATHER_SNOW://If VAR_RYU_WEATHER previously set it to Snow outside and a new battle starts
+                    if (!(gBattleWeather & WEATHER_HAIL_ANY))
+                    {   
+                        gBattleWeather = (WEATHER_HAIL_PERMANENT | WEATHER_HAIL_TEMPORARY);
+                        gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
+                        gBattleScripting.battler = battler;
+                        effect++;
+                        break;
+                    }
                 }
             }
             if (effect)

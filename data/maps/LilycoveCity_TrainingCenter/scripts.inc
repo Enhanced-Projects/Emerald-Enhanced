@@ -394,7 +394,7 @@ TC_StatShopCantAffordImprinter::
 	end
 	
 TC_CantaffordImprinterMsg:
-	.string "You can't afford the Imprinter.\nYou need ¥60000 to buy it."
+	.string "You can't afford the Imprinter.\nYou need ¥65000 to buy it.$"
 	
 TC_BoughtImprinter:
 	.string "Enjoy your Imprinter!$"
