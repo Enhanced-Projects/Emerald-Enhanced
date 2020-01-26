@@ -49,6 +49,7 @@
 #include "constants/species.h"
 #include "constants/trainers.h"
 #include "constants/weather.h"
+#include "mgba.h"
 
 struct SpeciesItem
 {
@@ -5221,6 +5222,8 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem)
     u16 upperPersonality = personality >> 16;
     u8 holdEffect;
 
+    mgba_printf(MGBA_LOG_INFO, "Beginning evolution check...");
+
     if (heldItem == ITEM_ENIGMA_BERRY)
         holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
     else
@@ -5264,12 +5267,16 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_ITEM_HOLD_NIGHT:
+                mgba_printf(MGBA_LOG_INFO, "%d", ((heldItem == gEvolutionTable[species][i].param) << 2) | ((gLocalTime.hours < 6) << 1) | (gLocalTime.hours >= 19));
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 18 && gLocalTime.hours < 6 && heldItem == gEvolutionTable[species][i].param)
+                mgba_printf(MGBA_LOG_INFO, "Checked item hold night case, time is %dh:%dm::%ds", gLocalTime.hours, gLocalTime.minutes, gLocalTime.seconds);
+                if ((gLocalTime.hours >= 18 || gLocalTime.hours < 10) && heldItem == gEvolutionTable[species][i].param)
                 {
+                    mgba_printf(MGBA_LOG_INFO, "It is currently night, mon is holding %d", heldItem);
                     heldItem = 0;
                     SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                    mgba_printf(MGBA_LOG_INFO, "evo check completed");
                 }
                 break;
             case EVO_ITEM_HOLD_DAY:

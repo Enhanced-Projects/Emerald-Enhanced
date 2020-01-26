@@ -147,9 +147,9 @@ LRT_BrendansHouseSign:: @ 81E818F
 	lockall
 	checkplayergender
 	compare VAR_RESULT, MALE
-	call_if_eq LRT_MalePlayerHouseSign
+	goto_if_eq LRT_MalePlayerHouseSign
 	compare VAR_RESULT, FEMALE
-	call_if_eq LRT_FemalePlayerHouseSign
+	goto_if_eq LRT_FemalePlayerHouseSign
 	releaseall
 	end
 	
@@ -157,9 +157,9 @@ LRT_DawnsHouseSign::
 	lockall
 	checkplayergender
 	compare VAR_RESULT, FEMALE
-	call_if_eq LRT_MalePlayerHouseSign
+	goto_if_eq LRT_FemalePlayerHouseSign
 	compare VAR_RESULT, MALE
-	call_if_eq LRT_FemalePlayerHouseSign
+	goto_if_eq LRT_MalePlayerHouseSign
 	releaseall
 	end
 

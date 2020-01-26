@@ -55,39 +55,6 @@ SlateportCity_OnFrame: @ 81DCD12
 	.2byte 0
 
 SlateportCity_EventScript_ScottScene:: @ 81DCD1C
-	lockall
-	addobject 35
-	applymovement EVENT_OBJ_ID_PLAYER, SlateportCity_Movement_PlayerFaceScott
-	applymovement 35, SlateportCity_Movement_ScottApproachPlayer
-	waitmovement 0
-	msgbox SlateportCity_Text_YouDroveTeamAquaAway, MSGBOX_DEFAULT
-	closemessage
-	applymovement 35, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	delay 60
-	msgbox SlateportCity_Text_MaybeThisTrainer, MSGBOX_DEFAULT
-	applymovement 35, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	msgbox SlateportCity_Text_LetsRegisterEachOther, MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playfanfare MUS_ME_TORE_EYE
-	msgbox SlateportCity_Text_RegisteredScott, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_SCOTT_MATCH_CALL
-	msgbox SlateportCity_Text_KeepEyeOnTrainersBeSeeingYou, MSGBOX_DEFAULT
-	closemessage
-	applymovement 35, SlateportCity_Movement_ScottExit
-	waitmovement 0
-	removeobject 35
-	setobjectxyperm 35, 10, 12
-	setobjectmovementtype 35, MOVEMENT_TYPE_FACE_DOWN
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	setvar VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 2
-	addvar VAR_SCOTT_STATE, 1
-	releaseall
 	end
 
 SlateportCity_Movement_PlayerFaceScott: @ 81DCDA8

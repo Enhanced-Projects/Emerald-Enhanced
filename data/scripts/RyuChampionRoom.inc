@@ -441,7 +441,7 @@ RCR_BOSSMODE::
 
 MawileMegaReward::
 	msgbox RyuGivesMawilite
-	giveitem ITEM_MAWILITE
+	giveitem_silent ITEM_MAWILITE
 	setflag FLAG_RYU_DEFEATED_OVERLORD
 	return
 	
@@ -460,7 +460,7 @@ RCR_FinishChallenge::
 EGC_RYU_PLAYER_LOST::
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	playse SE_DOOR
-	fadescreenspeed FADE_TO_BLACK, 24
+	fadescreenspeed FADE_TO_BLACK, 12
 	addobject 16
 	setobjectxy 16, 10, 8
 	applymovement 16, Common_Movement_FaceLeft

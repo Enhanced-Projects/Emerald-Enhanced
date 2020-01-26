@@ -345,7 +345,7 @@ FG_PartnerExit:
 	step_end
 
 FortreeCity_Gym_EventScript_GiveAerialAce2:: @ 8216646
-	giveitem ITEM_TM40
+	giveitem_silent ITEM_TM40
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT
@@ -354,7 +354,7 @@ FortreeCity_Gym_EventScript_GiveAerialAce2:: @ 8216646
 	end
 
 FortreeCity_Gym_EventScript_GiveAerialAce:: @ 821666A
-	giveitem ITEM_TM40
+	giveitem_silent ITEM_TM40
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_BagIsFull
 	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT

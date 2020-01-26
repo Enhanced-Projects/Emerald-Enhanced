@@ -149,7 +149,7 @@ MC_PlayerHelpedAqua:
 MC_FoundStone::
 	goto_if_set FLAG_RYU_PLAYER_ARCHIE_ACQ, ryu_end
 	msgbox MC_DroppedFragment MSGBOX_DEFAULT
-	giveitem ITEM_STAR_PIECE, 1
+	giveitem_silent ITEM_STAR_PIECE, 1
 	setflag FLAG_RYU_PLAYER_AQUA_STONE
 	release
 	end

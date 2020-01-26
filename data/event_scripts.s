@@ -576,7 +576,9 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/JunkScripts.inc"
 	.include "data/scripts/RyuChampionRoom.inc"
 	.include "data/scripts/RyuDiceGame.inc"
-
+	.include "data/scripts/RyuTeleportationMenu.inc"
+	.include "data/scripts/RyuPasscodeMenu.inc"
+	.include "data/scripts/RyuDebugMenu.inc"
 	.include "data/scripts/std_msgbox.inc"
 	.include "data/scripts/trainer_battle.inc"
 	.include "data/scripts/new_game.inc"

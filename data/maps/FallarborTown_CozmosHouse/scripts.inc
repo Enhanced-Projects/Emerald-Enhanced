@@ -18,7 +18,7 @@ FallarborTown_CozmosHouse_EventScript_ProfCozmo:: @ 8200F13
 	goto_if_set FLAG_RYU_DEVON_MISSION_3_DONE, FT_DM3Done
 	goto_if_set FLAG_RYU_DEVON_MISSION3START, FT_OnMission3
 	msgbox FT_CozmoIntro MSGBOX_DEFAULT
-	giveitem ITEM_BIG_PEARL, 1
+	giveitem_silent ITEM_BIG_PEARL, 1
 	msgbox FT_OnMission3Msg MSGBOX_DEFAULT
 	checkitem ITEM_METEORITE, 1
 	compare VAR_RESULT, 1
@@ -64,7 +64,7 @@ FT_Mission4::
 FT_Mission5Done::
 	msgbox FT_M5Done MSGBOX_DEFAULT
 	removeitem ITEM_FAME_CHECKER, 1
-	giveitem ITEM_CHOICE_SCARF
+	giveitem_silent ITEM_CHOICE_SCARF
 	msgbox FT_M5RewardDesc MSGBOX_DEFAULT
 	setflag FLAG_RYU_DEVON_MISSION6START
 	goto FT_Mission6

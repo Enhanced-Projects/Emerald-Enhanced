@@ -61,23 +61,23 @@ RyuNGP_HCQuery:
 
 
 Ryu_NGP_Waystone:
-	giveitem ITEM_NUGGET, 1
+	giveitem_silent ITEM_NUGGET, 1
 	return
 
 Ryu_NGP_Forecaster:
-	giveitem ITEM_VS_SEEKER, 1
+	giveitem_silent ITEM_VS_SEEKER, 1
 	return
 
 Ryu_NGP_ExpDrive:
-	giveitem ITEM_UP_GRADE, 1
+	giveitem_silent ITEM_UP_GRADE, 1
 	return
 
 Ryu_NGP_Imprinter:
-	giveitem ITEM_POKE_FLUTE, 1
+	giveitem_silent ITEM_POKE_FLUTE, 1
 	return
 
 Ryu_NGP_WirelessPC:
-	giveitem ITEM_TEACHY_TV, 1
+	giveitem_silent ITEM_TEACHY_TV, 1
 	return
 
 RyuNGPInfo:
@@ -133,10 +133,10 @@ IT_NuzlockeMode::
 	setvar VAR_RYU_BANK_APR, 100
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	setvar VAR_RYU_PC_USES, 3
-	giveitem ITEM_POKE_BALL, 10
-	giveitem ITEM_POTION, 5
-	giveitem ITEM_SUPER_POTION, 2
-	giveitem ITEM_ELIXIR, 2
+	giveitem_silent ITEM_POKE_BALL, 10
+	giveitem_silent ITEM_POTION, 5
+	giveitem_silent ITEM_SUPER_POTION, 2
+	giveitem_silent ITEM_ELIXIR, 2
 	takemoney 3000
 	msgbox IT_NuzlockeOutro MSGBOX_SIGN
 	setflag FLAG_RYU_NUZLOCKEMODE
@@ -307,7 +307,7 @@ RyuSetRTCFrontier::
 	setflag FLAG_RECEIVED_POKENAV
 	setflag FLAG_RECEIVED_GO_GOGGLES
 	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
-	giveitem ITEM_GO_GOGGLES, 1
+	giveitem_silent ITEM_GO_GOGGLES, 1
 	setflag FLAG_SYS_B_DASH
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED
@@ -443,7 +443,7 @@ LRT_MOM::
 LRT_Mom_4Badges::
 	goto_if_set FLAG_RYU_MOM_AMULET_COIN, LRT_Check6B
 	msgbox mom4badgesmsg
-	giveitem ITEM_AMULET_COIN
+	giveitem_silent ITEM_AMULET_COIN
 	setvar VAR_RYU_TITLE_DEFENSE_WINS, 0
 	setflag FLAG_RYU_MOM_AMULET_COIN
 	goto LRT_Mom_base
@@ -457,7 +457,7 @@ LRT_Check6B::
 LRT_Mom_6badges::
 	goto_if_set FLAG_RYU_MOM_LOPUNNITE, LRT_Check8B
 	msgbox mom6badgesmsg
-	giveitem ITEM_LOPUNNITE
+	giveitem_silent ITEM_LOPUNNITE
 	setflag FLAG_RYU_MOM_LOPUNNITE
 	goto LRT_Mom_base
 
@@ -470,7 +470,7 @@ LRT_Check8B::
 LRT_Mom_8badges::
 	goto_if_set FLAG_RYU_MOM_EXP_SHARE, LRT_Mom_base
 	msgbox mom8badgesmsg
-	giveitem ITEM_EXP_SHARE
+	giveitem_silent ITEM_EXP_SHARE
 	setflag FLAG_RYU_MOM_EXP_SHARE
 	goto LRT_Mom_base
 

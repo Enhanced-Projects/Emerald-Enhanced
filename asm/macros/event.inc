@@ -1649,6 +1649,14 @@
 	.byte 0xf0
 	.endm
 
+	@gives an item silently
+	.macro giveitem_silent item:req, quantity=1
+	.byte 0xf1
+	.2byte \item
+	.2byte \quantity
+	.endm
+
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

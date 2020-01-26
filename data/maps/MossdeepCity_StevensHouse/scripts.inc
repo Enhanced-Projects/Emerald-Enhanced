@@ -88,7 +88,7 @@ MossdeepCity_StevensHouse_EventScript_GiveBeldum:: @ 8222865
 	msgbox MC_QUERY_TEXT, MSGBOX_YESNO
 	compare VAR_RESULT 1
 	goto_if_eq MC_DECLINED
-	giveitem ITEM_AURORA_TICKET
+	giveitem_silent ITEM_AURORA_TICKET
 	waitfanfare
 	setflag FLAG_RYU_AURORATICKET
     setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND

@@ -2390,3 +2390,15 @@ bool8 ScrCmd_divvar(struct ScriptContext *ctx)
     *ptr /= ScriptReadHalfword(ctx);
     return FALSE;
 }
+
+bool8 ScrCmd_giveitem_silent(struct ScriptContext *ctx)
+{
+    u16 item = (VarGet(ScriptReadHalfword(ctx)));
+    u16 quantity = (VarGet(ScriptReadHalfword(ctx)));
+
+    if (quantity == 0)
+        quantity = 1;
+
+    AddBagItem(item, quantity);
+    return FALSE;
+}

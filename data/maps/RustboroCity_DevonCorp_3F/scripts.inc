@@ -172,7 +172,7 @@ DC_CorporateLine::
 	waitmovement 5
 	msgbox DC_Internment
 	closemessage
-	giveitem ITEM_TRI_PASS
+	giveitem_silent ITEM_TRI_PASS
 	msgbox DC_OfficialEmployee
 	closemessage
 	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 4
@@ -512,10 +512,10 @@ DC_CorporateInterrogation4::
 	waitmovement EVENT_OBJ_ID_PLAYER
 	msgbox DC_ToThinkThe
 	closemessage
-	giveitem ITEM_UP_GRADE
+	giveitem_silent ITEM_UP_GRADE
 	setvar VAR_RYU_EXP_BATTERY, 1
 	closemessage
-	giveitem ITEM_OLD_SEA_MAP
+	giveitem_silent ITEM_OLD_SEA_MAP
 	setflag FLAG_ENABLE_SHIP_FARAWAY_ISLAND
 	closemessage
 	msgbox DC_TheExpDrive
@@ -647,7 +647,7 @@ DC_OnMission2:
 DC_DeliveredLetterCheck:: @ 8212595
 	goto_if_set FLAG_RECEIVED_EXP_SHARE, RC_ES_Recieved
 	msgbox DC_CEO_DeliveredLetter, MSGBOX_DEFAULT
-	giveitem ITEM_EXP_SHARE
+	giveitem_silent ITEM_EXP_SHARE
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_EXP_SHARE
@@ -680,7 +680,7 @@ RC_DevonGoodsReward::
 	goto_if_set FLAG_RYU_DG_REWARD_RECEIVED RC_GoodsRcv
 	setflag FLAG_RYU_DG_REWARD_RECEIVED
 	msgbox RC_DevonThanks MSGBOX_DEFAULT
-	giveitem ITEM_MASTER_BALL
+	giveitem_silent ITEM_MASTER_BALL
 	release
 	end
 	
@@ -754,7 +754,7 @@ RustboroCity_DevonCorp_3F_EventScript_MeetPresident:: @ 821246E
 	call_if_set FLAG_RYU_DS_LANETTE_ACQ, DC_CheckLanette2
 	goto_if_set FLAG_RYU_DEVON_CEO_INTRO, DC_IntroDone
 	msgbox DC_CEOIntro, MSGBOX_DEFAULT
-	giveitem ITEM_LETTER
+	giveitem_silent ITEM_LETTER
 	playfanfare MUS_FANFA4
 	msgbox DC_CEO_GivesPokenav, MSGBOX_DEFAULT
 	waitfanfare
@@ -857,7 +857,7 @@ RustboroCity_DevonCorp_3F_EventScript_MrStone:: @ 821256C
 
 RustboroCity_DevonCorp_3F_EventScript_GiveExpShare:: @ 8212595
 	msgbox RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter, MSGBOX_DEFAULT
-	giveitem ITEM_EXP_SHARE
+	giveitem_silent ITEM_EXP_SHARE
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_EXP_SHARE

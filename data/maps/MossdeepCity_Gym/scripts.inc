@@ -389,7 +389,7 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated:: @ 82208D1
 	end
 
 MossdeepCity_Gym_EventScript_GiveCalmMind2:: @ 8220937
-	giveitem ITEM_TM04
+	giveitem_silent ITEM_TM04
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	msgbox MossdeepCity_Gym_Text_ExplainCalmMind, MSGBOX_DEFAULT
@@ -398,7 +398,7 @@ MossdeepCity_Gym_EventScript_GiveCalmMind2:: @ 8220937
 	end
 
 MossdeepCity_Gym_EventScript_GiveCalmMind:: @ 822095B
-	giveitem ITEM_TM04
+	giveitem_silent ITEM_TM04
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_BagIsFull
 	msgbox MossdeepCity_Gym_Text_ExplainCalmMind, MSGBOX_DEFAULT

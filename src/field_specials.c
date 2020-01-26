@@ -6356,7 +6356,7 @@ bool8 ScrCmd_addmonhappiness(struct ScriptContext *ctx)
 {
     u16 index = VarGet(ScriptReadHalfword(ctx));
     u16 value = VarGet(ScriptReadByte(ctx));
-    u8 current = GetMonData(&gPlayerParty[index], MON_DATA_FRIENDSHIP);
+    u16 current = GetMonData(&gPlayerParty[index], MON_DATA_FRIENDSHIP);
 
     value = value + current;
 
