@@ -323,7 +323,6 @@ PlayersHouse_1F_EventScript_DontPushYourselfTooHard:: @ 8292A0F
 	end
 
 PlayersHouse_1F_EventScript_TryRegisterMom:: @ 8292A19
-	goto_if_set FLAG_ENABLE_MOM_MATCH_CALL, PlayersHouse_1F_EventScript_CheckGiveAmuletCoin
 	msgbox PlayersHouse_1F_Text_IsThatAPokenav, MSGBOX_DEFAULT
 	closemessage
 	delay 30
@@ -332,7 +331,6 @@ PlayersHouse_1F_EventScript_TryRegisterMom:: @ 8292A19
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_MOM_MATCH_CALL
 	release
 	end
 

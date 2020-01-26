@@ -318,15 +318,15 @@ static const struct ScanlineEffectParams gUnknown_08620384 =
 
 static bool32 sub_81C98D4(void)
 {
-    s32 i;
-
-    for (i = 0; i < REMATCH_TABLE_ENTRIES; i++)
-    {
-        if (sub_81CB0C8(i) == gMapHeader.regionMapSectionId
-            && IsRematchEntryRegistered(i)
-            && gSaveBlock1Ptr->trainerRematches[i])
-            return TRUE;
-    }
+    //s32 i;
+    //
+    //for (i = 0; i < REMATCH_TABLE_ENTRIES; i++)
+    //{
+    //    if (sub_81CB0C8(i) == gMapHeader.regionMapSectionId
+    //        && IsRematchEntryRegistered(i)
+    //        && gSaveBlock1Ptr->trainerRematches[i])
+    //        return TRUE;
+    //}
 
     return FALSE;
 }

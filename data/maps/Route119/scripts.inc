@@ -439,7 +439,7 @@ r119_BrendanExitSouth::
 
 r119_giveItemfinder:: @ 81F45FF
 	giveitem ITEM_ITEMFINDER
-	setflag FLAG_RECEIVED_HM02
+	setflag FLAG_RECEIVED_TM52
 	return
 
 r119_scottEncounter:: @ 81F460F

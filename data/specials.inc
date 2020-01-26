@@ -433,7 +433,6 @@ gSpecials:: @ 81DBA64
 	def_special sub_801DC20
 	def_special ChooseMonForWirelessMinigame
 	def_special Script_ResetUnionRoomTrade
-	def_special IsBadEggInParty
 	def_special ValidateReceivedWonderCard
 	def_special HasAtLeastOneBerry
 	def_special IsPokemonJumpSpeciesInParty

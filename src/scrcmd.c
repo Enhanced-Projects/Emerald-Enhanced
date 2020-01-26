@@ -1210,27 +1210,14 @@ bool8 ScrCmd_turnvobject(struct ScriptContext *ctx)
 
 bool8 ScrCmd_lockall(struct ScriptContext *ctx)
 {
-    if (IsUpdateLinkStateCBActive())
-    {
-        return FALSE;
-    }
-    else
-    {  
         ScriptContext2_RunNewScript(RyuResetFollowerPosition);
         ScriptFreezeEventObjects();
         SetupNativeScript(ctx, sub_80983C4);
         return TRUE;
-    }
 }
 
 bool8 ScrCmd_lock(struct ScriptContext *ctx)
 {
-    if (IsUpdateLinkStateCBActive())
-    {
-        return FALSE;
-    }
-    else
-    {
         ScriptContext2_RunNewScript(RyuResetFollowerPosition);
 
         if (gEventObjects[gSelectedEventObject].active)
@@ -1243,8 +1230,8 @@ bool8 ScrCmd_lock(struct ScriptContext *ctx)
             ScriptFreezeEventObjects();
             SetupNativeScript(ctx, sub_80983C4);
         }
-        return TRUE;
-    }
+
+    return TRUE;
 }
 
 bool8 ScrCmd_releaseall(struct ScriptContext *ctx)

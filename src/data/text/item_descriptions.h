@@ -1760,46 +1760,68 @@ static const u8 sTM50Desc[] = _(
     "attack, but sharply\n"
     "lowers SP. ATK.");
 
+static const u8 sTM51Desc[] = _(
+	"Sets floating stones\n"
+	"that hurt a foe\n"
+    "switching in.");
 
-static const u8 sHM01Desc[] = _(
-    "Attacks the foe\n"
-    "with sharp blades\n"
-    "or claws.");
+static const u8 sTM52Desc[] = _(
+    "Flies up and then\n"
+    "divebombs the foe.");
 
-static const u8 sHM02Desc[] = _(
-    "Flies up on the\n"
-    "first turn, then\n"
-    "attacks next turn.");
-
-static const u8 sHM03Desc[] = _(
-    "Creates a huge\n"
-    "wave, then crashes\n"
-    "it down on the foe.");
-
-static const u8 sHM04Desc[] = _(
-    "Builds enormous\n"
-    "power, then slams\n"
+static const u8 sTM53Desc[] = _(
+	"A barrage of hard\n"
+	"seeds is fired at\n"
     "the foe.");
 
-static const u8 sHM05Desc[] = _(
-    "Looses a powerful\n"
-    "blast of light that\n"
-    "reduces accuracy.");
+static const u8 sTM54Desc[] = _(
+	"Strikes first if the\n"
+	"foe is preparing an\n"
+    "attack.");
 
-static const u8 sHM06Desc[] = _(
-    "A rock-crushingly\n"
-    "tough attack that\n"
-    "may lower DEFENSE.");
+static const u8 sTM55Desc[] = _(
+	"Generates a shock\n"
+	"wave to damage the\n"
+    "foe.");
 
-static const u8 sHM07Desc[] = _(
-    "Attacks the foe\n"
-    "with enough power\n"
-    "to climb waterfalls.");
+static const u8 sTM56Desc[] = _(
+	"Makes the ground\n"
+    "erupt with power.\n"
+    "May lower Sp. Def.");
 
-static const u8 sHM08Desc[] = _(
+static const u8 sTM57Desc[] = _(
+    "Knocks down the\n"
+    "foe's held item to\n"
+    "prevent its use.");
+
+static const u8 sTM58Desc[] = _(
     "Dives underwater\n"
-    "the 1st turn, then\n"
-    "attacks next turn.");
+    "and attacks the foe\n"
+    "from below.");
+
+static const u8 sTM59Desc[] = _(
+	"Slams the foe with a\n"
+    "hard head.\n"
+    "May cause flinching.");
+
+static const u8 sTM60Desc[] = _(
+    "Boosts strength\n"
+    "sharply, but lowers\n"
+    "abilities.");
+
+static const u8 sTM61Desc[] = _(
+	"Summons and flings\n"
+    "gravel at enemies.\n"
+    " May Flinch.");
+
+static const u8 sTM62Desc[] = _(
+    "contains nothing");
+
+static const u8 sTM63Desc[] = _(
+    "contains nothing");
+
+static const u8 sTM64Desc[] = _(
+    "contains nothing");
 
 // FireRed/LeafGreen key items
 static const u8 sOaksParcelDesc[] = _(

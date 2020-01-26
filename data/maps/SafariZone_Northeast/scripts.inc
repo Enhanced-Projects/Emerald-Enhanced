@@ -4,7 +4,6 @@ SafariZone_Northeast_MapScripts:: @ 8242C02
 	
 SZ_CheckMewtwo::
 	map_script_2 VAR_TEMP_4, 0, SZ_SetWall
-	map_script_2 VAR_TEMP_A, 0, Ryu_RandomizeRTMusic
 	.2byte 0
 	
 	

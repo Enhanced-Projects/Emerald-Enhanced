@@ -220,17 +220,17 @@ NotScaling:
 
 
 RyuDebug_Init_GiveAllItems::
-	setvar VAR_TEMP_2, 482
+	setvar VAR_TEMP_2, 1
 	msgbox RyuDebug_GiveAllItemsBeginMsg MSGBOX_DEFAULT
 	goto RyuDebug_GiveAllItems
 	
 RyuDebug_GiveAllItems::
-	additem VAR_TEMP_2, 1
+	additem VAR_TEMP_2, 500
 	addvar VAR_TEMP_2, 1
 	goto RyuDebug_ReturnCallItems
 	
 RyuDebug_ReturnCallItems::
-	compare VAR_TEMP_2, 581
+	compare VAR_TEMP_2, 100
 	goto_if_eq RyuDebugGiveItemsDone
 	goto RyuDebug_GiveAllItems
 	

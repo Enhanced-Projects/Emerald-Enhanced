@@ -679,7 +679,7 @@ NuzlockeFail:
 	.string "challenge. Game will now go to\l."
 	.string "Normal mode.$"
 
-@======================================== Forecaster
+@============================================================================================================================= Forecaster
 
 Ryu_Forecaster::
 	msgbox RyuForecasterIntro MSGBOX_SIGN
@@ -765,161 +765,7 @@ Ryu_FCExit::
 	release
 	end
 
-@Random pokecenter music===========================================================================
 
-PCCheckForMusicChange::
-	map_script_2 VAR_TEMP_0, 0, Ryu_RandomizePCMusic
-	.2byte 0
-
-Ryu_RandomizePCMusic::
-	setvar VAR_TEMP_0, 20
-	gfec
-	setobjectxy EVENT_OBJ_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
-	call_if_set FLAG_RYU_JUKEBOX_ENABLED, RyuRtMusicOverride
-	random 6
-	switch VAR_RESULT
-	case 0, PCPlay1
-	case 1, PCPlay2
-	case 2, PCPlay3
-	case 3, PCPlay1
-	case 4, PCPlay2
-	case 5, PCPlay3
-	fadenewbgm MUS_NAMINORI
-	release
-	end
-	
-PCPlay1:
-	fadenewbgm MUS_POKECEN
-	release
-	end
-	
-PCPlay2:
-	fadenewbgm MUS_PCC
-	release
-	end
-	
-PCPlay3:
-	fadenewbgm MUS_RG_POKECEN
-	release
-	end
-	
-PCPlay4:
-	fadenewbgm MUS_NAMINORI
-	release
-	end
-	
-@==================================================Route Randomized Music==========================
-
-RTCheckForMusicChange::
-	call Ryu_RandomizeRTMusic
-	.2byte 0
-	
-Ryu_RandomizeRTMusic::
-	setvar VAR_TEMP_A, 20
-	random 13
-	call_if_set FLAG_RYU_JUKEBOX_ENABLED, RyuRtMusicOverride
-	switch VAR_RESULT
-	case 0, RTPlay1
-	case 1, RTPlay2
-	case 2, RTPlay3
-	case 3, RTPlay4
-	case 4, RTPlay5
-	case 5, RTPlay6
-	case 6, RTPlay7
-	case 7, RTPlay8
-	case 8, RTPlay9
-	case 9, RTPlay10
-	case 10, RTPlay11
-	case 11, RTPlay12
-	case 12, RTPlay13
-	release
-	end
-
-RyuRtMusicOverride::
-	savebgm VAR_RYU_JUKEBOX
-	fadenewbgm VAR_RYU_JUKEBOX
-	release
-	end
-	
-RTPlay1::
-	playbgm MUS_DOORO1, 0
-	setvar VAR_TEMP_F, MUS_DOORO1
-	release
-	end
-	
-RTPlay2::
-	playbgm MUS_DOORO_X1, 0
-	setvar VAR_TEMP_F, MUS_DOORO_X1
-	release
-	end
-	
-RTPlay3::
-	playbgm MUS_DOORO_X3, 0
-	setvar VAR_TEMP_F, MUS_DOORO_X3
-	release
-	end
-	
-RTPlay4::
-	playbgm MUS_DOORO_X4, 0
-	setvar VAR_TEMP_F, MUS_DOORO_X4
-	release
-	end
-	
-RTPlay5::
-	playbgm MUS_NEXTROAD, 0
-	setvar VAR_TEMP_F, MUS_NEXTROAD
-	release
-	end
-	
-RTPlay6::
-	playbgm MUS_GRANROAD, 0
-	setvar VAR_TEMP_F, MUS_GRANROAD
-	release
-	end
-	
-RTPlay7::
-	playbgm MUS_ASHROAD, 0
-	setvar VAR_TEMP_F, MUS_ASHROAD
-	release
-	end
-	
-RTPlay8::
-	playbgm MUS_KAZANBAI, 0
-	setvar VAR_TEMP_F, MUS_KAZANBAI
-	release
-	end
-	
-RTPlay9::
-	playbgm MUS_RG_LOAD01, 0
-	setvar VAR_TEMP_F, MUS_RG_LOAD01
-	release
-	end
-	
-RTPlay10::
-	playbgm MUS_RG_OPENING, 0
-	setvar VAR_TEMP_F, MUS_RG_OPENING
-	release
-	end
-	
-	
-RTPlay11:;
-	playbgm MUS_RG_LOAD02, 0
-	setvar VAR_TEMP_F, MUS_RG_LOAD02
-	release
-	end
-	
-	
-RTPlay12::
-	playbgm MUS_RG_LOAD03, 0
-	setvar VAR_TEMP_F, MUS_RG_LOAD03
-	release
-	end
-	
-RTPlay13::
-	playbgm MUS_RG_NANASHIMA, 0
-	setvar VAR_TEMP_F, MUS_RG_NANASHIMA
-	release
-	end
 
 Ryu_CantUsePcCharging::
 	msgbox RyuCantUsePCCHARGING 
@@ -931,7 +777,7 @@ RyuCantUsePCCHARGING:
 	.string "The Wireless PC needs to recharge.\nPlease try again later.$"
 	
 
-@+=================================================================================================Player RyuSetLevelBlankOption
+@+=================================================================================================Player Bank
 
 BF_PlayerBank::
 	msgbox Ryu_WTB
@@ -1198,7 +1044,7 @@ BF_Processing:
 BF_TransSuccessful:
 	.string "The transaction was successful.\pYour new balance is:\n{COLOR LIGHT_GREEN}{SHADOW GREEN}{STR_VAR_2}$"
 
-@=================================================Ball checkplayergender
+@=================================================Ball changer
 
 
 RyuBallChanger::

@@ -914,9 +914,6 @@ CableClub_EventScript_UnionRoomAttendant:: @ 827751B
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FACILITY_UNION_ROOM
 	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
-	specialvar VAR_RESULT, IsBadEggInParty
-	compare VAR_RESULT, TRUE
-	goto_if_eq CableClub_EventScript_AbortLinkPlayerHasBadEgg
 	copyvar VAR_0x8007, VAR_LAST_TALKED
 	specialvar VAR_RESULT, IsWirelessAdapterConnected
 	compare VAR_RESULT, FALSE
@@ -1022,9 +1019,6 @@ CableClub_EventScript_DirectCornerAttendant:: @ 82776A4
 	faceplayer
 	setvar VAR_FRONTIER_FACILITY, FACILITY_MULTI_OR_EREADER  @ Set preemptively for multi battles, ignored otherwise
 	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
-	specialvar VAR_RESULT, IsBadEggInParty
-	compare VAR_RESULT, TRUE
-	goto_if_eq CableClub_EventScript_AbortLinkPlayerHasBadEgg
 	specialvar VAR_RESULT, IsWirelessAdapterConnected
 	compare VAR_RESULT, FALSE
 	goto_if_eq CableClub_EventScript_WelcomeToCableClub

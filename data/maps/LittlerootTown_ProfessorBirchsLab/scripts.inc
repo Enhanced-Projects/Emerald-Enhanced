@@ -533,7 +533,6 @@ EventScript_RegisterProfBirch:: @ 81FA2D2
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_PROF_BIRCH_MATCH_CALL
 	setvar VAR_REGISTER_BIRCH_STATE, 2
 	release
 	end

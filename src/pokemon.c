@@ -2182,11 +2182,6 @@ static const s8 gUnknown_08329ECE[][3] =
     {-5, -5, -10},
 };
 
-static const u16 sHMMoves[] =
-{
-    MOVE_NONE, 0xFFFF
-};
-
 static const struct SpeciesItem sAlteringCaveWildMonHeldItems[] =
 {
     {SPECIES_NONE,      ITEM_NONE},
@@ -6308,16 +6303,6 @@ const struct CompressedSpritePalette *GetMonSpritePalStructFromOtIdPersonality(u
         return &gMonPaletteTable[species];
 }
 
-bool32 IsHMMove2(u16 move)
-{
-    int i = 0;
-    while (sHMMoves[i] != 0xFFFF)
-    {
-        if (sHMMoves[i++] == move)
-            return TRUE;
-    }
-    return FALSE;
-}
 
 bool8 IsMonSpriteNotFlipped(u16 species)
 {

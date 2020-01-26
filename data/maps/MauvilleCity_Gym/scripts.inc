@@ -94,7 +94,6 @@ MG_Reset::
 	special checkbadgecount
 	compare VAR_RESULT, 8
 	call_if_eq RyuTier8GymMegaStoneReward
-	setflag FLAG_ENABLE_WATTSON_MATCH_CALL
 	setflag FLAG_DEFEATED_MAUVILLE_GYM
 	setflag FLAG_BADGE03_GET
 	cleartrainerflag TRAINER_WATTSON_1
@@ -403,7 +402,6 @@ MauvilleCity_Gym_EventScript_WattsonDefeated:: @ 820DF2B
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_WATTSON_MATCH_CALL
 	release
 	end
 

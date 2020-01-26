@@ -1710,24 +1710,10 @@ u16 GetMysteryEventCardVal(void)
 
 bool8 BufferTMHMMoveName(void)
 {
-    if (gSpecialVar_0x8004 >= ITEM_TM01 && gSpecialVar_0x8004 <= ITEM_HM08)
+    if (gSpecialVar_0x8004 >= ITEM_TM01 && gSpecialVar_0x8004 <= ITEM_TM64)
     {
         StringCopy(gStringVar2, gMoveNames[ItemIdToBattleMoveId(gSpecialVar_0x8004)]);
         return TRUE;
-    }
-
-    return FALSE;
-}
-
-bool8 IsBadEggInParty(void)
-{
-    u8 partyCount = CalculatePlayerPartyCount();
-    u8 i;
-
-    for (i = 0; i < partyCount; i++)
-    {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SANITY_IS_BAD_EGG) == TRUE)
-            return TRUE;
     }
 
     return FALSE;
@@ -3758,12 +3744,12 @@ u32 GetMartEmployeeObjectEventId(void)
 
 bool32 IsTrainerRegistered(void)
 {
-    int index = GetRematchIdxByTrainerIdx(gSpecialVar_0x8004);
-    if (index >= 0)
-    {
-        if (FlagGet(FLAG_MATCH_CALL_REGISTERED + index) == TRUE)
-            return TRUE;
-    }
+    //int index = GetRematchIdxByTrainerIdx(gSpecialVar_0x8004);
+    //if (index >= 0)
+    //{
+    //    if (FlagGet(FLAG_MATCH_CALL_REGISTERED + index) == TRUE)
+    //        return TRUE;
+    //}
     return FALSE;
 }
 

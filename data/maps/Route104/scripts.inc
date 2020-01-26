@@ -107,7 +107,6 @@ Route104_EventScript_DawnEncounter:: @ 81ECD4B
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
 	applymovement EVENT_OBJ_ID_PLAYER, Route104_Movement_PlayerFaceRival
 	applymovement 34, Route104_Movement_RivalWalkSlowLeft
 	msgbox Route104_Text_DawnHowsYourPokedex, MSGBOX_DEFAULT
@@ -181,7 +180,6 @@ Route104_EventScript_BrendanEncounter:: @ 81ECE6F
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
 	applymovement EVENT_OBJ_ID_PLAYER, Route104_Movement_PlayerFaceRival
 	applymovement 34, Route104_Movement_RivalWalkSlowLeft
 	msgbox Route104_Text_BrendanHowsYourPokedex, MSGBOX_DEFAULT
@@ -351,8 +349,6 @@ Route104_EventScript_SailToDewford:: @ 81ED099
 	waitmovement 0
 	hideobjectat EVENT_OBJ_ID_PLAYER, MAP_ROUTE104
 	call Common_EventScript_PlayBrineysBoatMusic
-	goto_if_set FLAG_ENABLE_NORMAN_MATCH_CALL, Route104_EventScript_SailToDewfordNoCall
-	goto_if_unset FLAG_ENABLE_NORMAN_MATCH_CALL, Route104_EventScript_SailToDewfordDadCalls
 	end
 
 Route104_EventScript_SailToDewfordNoCall:: @ 81ED0D9
@@ -373,7 +369,6 @@ Route104_EventScript_SailToDewfordDadCalls:: @ 81ED0EF
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_NORMAN_MATCH_CALL
 	applymovement EVENT_OBJ_ID_PLAYER, Route104_Movement_SailToDewfordAfterDadCalls
 	applymovement 7, Route104_Movement_SailToDewfordAfterDadCalls, MAP_ROUTE104
 	waitmovement 7, MAP_ROUTE104

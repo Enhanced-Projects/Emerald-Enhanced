@@ -512,15 +512,19 @@ PetalburgCity_EventScript_Scott0:: @ 81DC691
 	end
 
 PetalburgCity_EventScript_Scott1:: @ 81DC6A7
+	releaseall
 	end
 
 PetalburgCity_EventScript_Scott2:: @ 81DC6BD
+	releaseall
 	end
 
 PetalburgCity_EventScript_Scott3:: @ 81DC6D3
+	releaseall
 	end
 
 PetalburgCity_EventScript_Scott:: @ 81DC6E9
+	releaseall
 	end
 
 PetalburgCity_EventScript_ScottExit0:: @ 81DC78E

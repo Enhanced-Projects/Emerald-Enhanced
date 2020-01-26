@@ -268,10 +268,10 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_FLY] =
     {
-        .effect = EFFECT_SEMI_INVULNERABLE,
-        .power = 90,
+        .effect = EFFECT_HIT,
+        .power = 80,
         .type = TYPE_FLYING,
-        .accuracy = 95,
+        .accuracy = 100,
         .pp = 15,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -9444,7 +9444,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     {
         .effect = EFFECT_FLINCH_HIT,
         .power = 75,
-        .type = TYPE_NORMAL,
+        .type = TYPE_ROCK,
         .accuracy = 95,
         .pp = 15,
         .secondaryEffectChance = 20,

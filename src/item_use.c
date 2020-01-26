@@ -823,7 +823,7 @@ void ItemUseOutOfBattle_RyuExpBattery(u8 taskId)
 
 void ItemUseOutOfBattle_TMHM(u8 taskId)
 {
-    if (gSpecialVar_ItemId >= ITEM_HM01_CUT)
+    if (gSpecialVar_ItemId >= ITEM_TM51_STEALTH_ROCK)
         DisplayItemMessage(taskId, 1, gText_BootedUpHM, BootUpSoundTMHM); // HM
     else
         DisplayItemMessage(taskId, 1, gText_BootedUpTM, BootUpSoundTMHM); // TM

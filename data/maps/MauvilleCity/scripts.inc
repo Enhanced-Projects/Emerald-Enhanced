@@ -461,8 +461,6 @@ MauvilleCity_EventScript_RegisterWallyCall:: @ 81DF7BA
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_WALLY_MATCH_CALL
-	clearflag FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL
 	releaseall
 	end
 

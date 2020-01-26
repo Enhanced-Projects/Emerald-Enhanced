@@ -76,7 +76,6 @@ RustboroCity_EventScript_PleaseSelectPokenav:: @ 81E07AC
 	goto RustboroCity_EventScript_MatchCallTutorial
 
 RustboroCity_EventScript_MatchCallTutorial:: @ 81E07BD
-	setflag FLAG_ADDED_MATCH_CALL_TO_POKENAV
 	special ScriptMenu_CreateStartMenuForPokenavTutorial
 	waitstate
 	switch VAR_RESULT
