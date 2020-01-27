@@ -182,11 +182,16 @@ RyuDebug_Utility1::
 	buffernumberstring 1, VAR_0x8001
 	buffernumberstring 2, VAR_0x8002
 	msgbox RDB_Readout
-	setvar VAR_RYU_TITLE_DEFENSE_WINS, 20
+	special CheckSaveFileSize
+	msgbox sizeofmsg
+	closemessage
 	goto_if_unset FLAG_RYU_RANDOMIZE_MUSIC, RDB_u1_EnableRandomize
 	clearflag FLAG_RYU_RANDOMIZE_MUSIC
 	release
 	end
+
+sizeofmsg::
+	.string "SavBlock1 size: {STR_VAR_1}$"
 
 RDB_u1_EnableRandomize::
 	setflag FLAG_RYU_RANDOMIZE_MUSIC
@@ -220,31 +225,31 @@ NotScaling:
 
 
 RyuDebug_Init_GiveAllItems::
-	setvar VAR_TEMP_2, 1
+	setvar VAR_TEMP_2, 482
 	msgbox RyuDebug_GiveAllItemsBeginMsg MSGBOX_DEFAULT
 	goto RyuDebug_GiveAllItems
 	
 RyuDebug_GiveAllItems::
-	additem VAR_TEMP_2, 500
+	giveitem_silent VAR_TEMP_2, 100
 	addvar VAR_TEMP_2, 1
 	goto RyuDebug_ReturnCallItems
 	
 RyuDebug_ReturnCallItems::
-	compare VAR_TEMP_2, 100
+	compare VAR_TEMP_2, 546
 	goto_if_eq RyuDebugGiveItemsDone
 	goto RyuDebug_GiveAllItems
 	
 RyuDebugGiveItemsDone::
-	additem ITEM_FULL_RESTORE, 64
-	additem ITEM_MAX_ELIXIR, 64
-	additem ITEM_MAX_REVIVE, 64
-	additem ITEM_HEART_SCALE, 64
-	additem ITEM_PP_MAX, 64
-	additem ITEM_RARE_CANDY, 200
-	additem ITEM_LUXURY_BALL, 64
-	additem ITEM_MASTER_BALL, 64
-	additem ITEM_MAX_REPEL, 64
-	additem ITEM_MEGA_BRACELET, 1
+	giveitem_silent ITEM_FULL_RESTORE, 100
+	giveitem_silent ITEM_MAX_ELIXIR, 100
+	giveitem_silent ITEM_MAX_REVIVE, 100
+	giveitem_silent ITEM_HEART_SCALE, 100
+	giveitem_silent ITEM_PP_MAX, 100
+	giveitem_silent ITEM_RARE_CANDY, 200
+	giveitem_silent ITEM_LUXURY_BALL, 100
+	giveitem_silent ITEM_MASTER_BALL, 100
+	giveitem_silent ITEM_MAX_REPEL, 100
+	giveitem_silent ITEM_MEGA_BRACELET, 1
 	msgbox RyuDebug_GiveAllItemsDoneMsg MSGBOX_DEFAULT
 	msgbox RyuDebug_MoneyMsg MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -735,3 +740,4 @@ RyuSetLevelBlankOption::
 RyuSetIvDebugMenu::
 	special RyuIvSetter
 	goto RyuPokeEditMenu
+

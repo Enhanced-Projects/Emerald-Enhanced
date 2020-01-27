@@ -1,5 +1,122 @@
 RustboroCity_PokemonSchool_MapScripts:: @ 8213EA8
+	map_script ON_FRAME, CheckMinniePresence
 	.byte 0
+@==================================================================================================FOLLOWER STUFF	
+CheckMinniePresence::
+	map_script_2 VAR_TEMP_0, 0, PS_minnieInteract
+	.2byte 0
+
+PS_minnieInteract::
+	setvar VAR_TEMP_0, 1
+	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_end
+	goto_if_set FLAG_RYU_MINNIE_POKEMON_SCHOOL, ryu_end
+	setobjectxy EVENT_OBJ_ID_FOLLOWER, 6, 10
+	delay 5
+	compare VAR_RYU_FOLLOWER_ID, EVENT_OBJ_GFX_TWIN
+	goto_if_eq PS_MinnieInteraction
+	goto ryu_end
+	
+PS_MinnieInteraction::
+	@lockall
+	playbgm MUS_HUTAGO, 0
+	applymovement EVENT_OBJ_ID_FOLLOWER, PS_MinnieToTeacher
+	applymovement 6, Common_Movement_FaceLeft
+	waitmovement EVENT_OBJ_ID_FOLLOWER
+	applymovement EVENT_OBJ_ID_PLAYER, PS_PlayerToMinnie
+	waitmovement EVENT_OBJ_ID_PLAYER
+	playse SE_PIN
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 6
+	delay 60
+	msgbox PS_Teacher1
+	closemessage
+	msgbox PS_Minnie1
+	closemessage
+	call_if_set FLAG_RYU_MINNIE_GAME_CLEAR, PS_MinnieHelpedE4
+	msgbox MinnieOutro
+	applymovement EVENT_OBJ_ID_FOLLOWER, PS_ReturnFollowerBehindPlayer
+	waitmovement EVENT_OBJ_ID_FOLLOWER
+	applymovement 6, Common_Movement_FaceDown
+	waitmovement 6
+	fadedefaultbgm
+	release
+	end
+	
+PS_MinnieHelpedE4::
+	setflag FLAG_RYU_MINNIE_POKEMON_SCHOOL
+	msgbox MinnieHelpedE4
+	closemessage
+	msgbox PlayerConfirms
+	closemessage
+	return
+	
+PS_MinnieToTeacher:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_in_place_right
+	step_end
+	
+PS_PlayerToMinnie:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	
+PS_ReturnFollowerBehindPlayer:
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_in_place_up
+	step_end
+
+
+PS_Teacher1:
+    .string "Teacher: Well! If it isn't my star\n"
+    .string "pupil! How have you been doing?\p"
+    .string "Still guarding the exit to\n"
+    .string "Littleroot?$"
+	
+PS_Minnie1:
+    .string "Minnie:{COLOR LIGHT_RED}{SHADOW RED} Well, my sister is, so I\n"
+    .string "can run around helping people!\p"
+    .string "I make a great bodyguard! It's\n"
+    .string "been really fun!$"
+	
+MinnieHelpedE4:
+    .string "Minnie:{COLOR LIGHT_RED}{SHADOW RED} {PLAYER} took me with to\n"
+    .string "the Elite Four and we really beat\p"
+    .string "them up good! I used all the\n"
+    .string "stuff I learned here and we won!$"
+
+PlayerConfirms:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Yeah, she's an excellent\n"
+    .string "bodyguard. And she's good company,\p"
+    .string "too! She makes everything much\n"
+    .string "more interesting.\p"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Minnie Blushes)\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Minnie: {PLAYER}, I hope we can\n"
+    .string "be best friends forever!\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: You can bet on it!$"
+
+MinnieOutro:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Minnie: Well, teacher, nice to see\n"
+    .string "you! We really gotta get going,\l"
+    .string "though. Bye!$"
+
+	
+	
+	
+@==================================================================================================END FOLLOWER STUFF
 
 RustboroCity_PokemonSchool_EventScript_Blackboard:: @ 8213EA9
 	lockall

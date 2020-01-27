@@ -734,7 +734,7 @@
 #define FLAG_RYU_MOM_EXP_SHARE  0x2B6 // Unused Flag
 #define FLAG_RYU_HIDE_MINNIE  0x2B7 // Unused Flag
 #define FLAG_RYU_PERSISTENT_WEATHER  0x2B8 // Unused Flag
-#define FLAG_UNUSED_0x2B9  0x2B9 // Unused Flag
+#define FLAG_RYU_MINNIE_POKEMON_SCHOOL  0x2B9 // Unused Flag
 #define FLAG_UNUSED_0x2BA  0x2BA // Unused Flag
 #define FLAG_UNUSED_0x2BB  0x2BB // Unused Flag
 

@@ -74,6 +74,7 @@
 #include "pokedex.h"
 #include "money.h"
 #include "menu_helpers.h"
+#include "mgba.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -5733,6 +5734,14 @@ bool8 checkForOverlordRyuEncounter(void)
         }
     }
         
+}
+
+void CheckSaveFileSize(void)
+{
+    u32 size = (sizeof(struct SaveBlock1));
+    mgba_printf(MGBA_LOG_INFO, "Saveblock size is: %d", size);
+    ConvertIntToDecimalStringN(gStringVar1, size, STR_CONV_MODE_LEFT_ALIGN, 6);
+    ClearBag();
 }
 
 
