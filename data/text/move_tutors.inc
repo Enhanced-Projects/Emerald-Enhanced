@@ -1,58 +1,54 @@
 MoveTutor_Text_ThisMoveCanOnlyBeLearnedOnce: @ 82C6E05
 	.string "This move can be learned only\n"
-	.string "once. Is that okay?$"
+	.string "by exchanging {STR_VAR_1}.\l"
+	.string "Is this okay?$"
 
 MoveTutor_Text_SwaggerTeach: @ 82C6E37
-	.string "Heh! My Pokémon totally rules!\n"
-	.string "It's cooler than any Pokémon!\p"
-	.string "I was lipping off with a swagger in\n"
-	.string "my step like that when the CHAIRMAN\l"
-	.string "chewed me out.\p"
-	.string "That took the swagger out of my step.\p"
-	.string "If you'd like, I'll teach the move\n"
-	.string "SWAGGER to a Pokémon of yours.$"
+	.string "Heh! My Pokémon's totally\n"
+	.string "a screamer!\p"
+	.string "I can make yours scream too!\p"
+	.string "... ... ... ...\p"
+	.string "Should I teach Hyper Voice?$"
 
 MoveTutor_Text_SwaggerDeclined: @ 82C6F33
 	.string "What, no? Can't you get into\n"
-	.string "the spirit of things?$"
+	.string "it?$"
 
 MoveTutor_Text_SwaggerWhichMon: @ 82C6F66
 	.string "All right, which Pokémon wants to\n"
-	.string "learn how to SWAGGER?$"
+	.string "turn into a screamer?$"
 
 MoveTutor_Text_SwaggerTaught: @ 82C6F9E
-	.string "I'll just praise my Pokémon from now\n"
-	.string "on without the swagger.$"
+	.string "I'll just make my own Pokémon\n"
+	.string "scream, I guess.$"
 
 MoveTutor_Text_RolloutTeach: @ 82C6FDB
-	.string "Did you know that you can go from\n"
-	.string "here a long way in that direction\l"
-	.string "without changing direction?\p"
-	.string "I might even be able to roll\n"
-	.string "that way.\p"
-	.string "Do you think your Pokémon will\n"
-	.string "want to roll, too?\p"
-	.string "I can teach one the move ROLLOUT\n"
-	.string "if you'd like.$"
+    .string "You ever line up a move only to have\n"
+    .string "it frustratingly blocked?\p"
+    .string "Well this move will help relieve\n"
+    .string "some of that frustration.\p"
+    .string "It's called Stomping Tantrum!\n"
+	.string "Would you like me to teach it?$"
 
 MoveTutor_Text_RolloutDeclined: @ 82C70C4
-	.string "You don't need to be shy about it.\n"
-	.string "Let's roll!$"
+	.string "Oh well, Maybe your anger\n"
+	.string "management is better than\l"
+	.string "mine.$"
 
 MoveTutor_Text_RolloutWhichMon: @ 82C70F3
-	.string "Ehehe, sure thing! It'd be great if\n"
-	.string "the Pokémon looked like me.$"
+	.string "Who do you think can stomp\n"
+	.string "the hardest?$"
 
 MoveTutor_Text_RolloutTaught: @ 82C7133
-	.string "Rolling around in the grass makes me\n"
-	.string "happy. Come on, let's roll!$"
+	.string "Stomping around makes it all\n"
+	.string "better.$"
 
 MoveTutor_Text_FuryCutterTeach: @ 82C7174
-	.string "There's a move that gets stronger\n"
-	.string "when you keep using it in a row.\p"
+	.string "There's a move that uses a\n"
+	.string "peculiar beam to attack with...\p"
 	.string "It's a BUG-type move, and it is\n"
 	.string "wickedly cool.\p"
-	.string "It's called FURY CUTTER.\n"
+	.string "It's called Signal Beam.\n"
 	.string "Want me to teach it to a Pokémon?$"
 
 MoveTutor_Text_FuryCutterDeclined: @ 82C7221
@@ -64,20 +60,18 @@ MoveTutor_Text_FuryCutterWhichMon: @ 82C7243
 
 MoveTutor_Text_FuryCutterTaught: @ 82C726E
 	.string "I get a thrill watching to see if\n"
-	.string "the move keeps hitting in succession!$"
+	.string "the target gets confused!$"
 
 MoveTutor_MimicTeach: @ 82C72B6
 	.string "Ah, young one!\p"
-	.string "I am also a young one, but I mimic\n"
-	.string "the styles and speech of the elderly\l"
-	.string "folks of this town.\p"
-	.string "What do you say, young one?\n"
-	.string "Would you agree to it if I were to\l"
-	.string "offer to teach the move MIMIC?$"
+	.string "I tricked you into thinking\n"
+	.string "I was a young one!\p"
+	.string "Would you like to learn to\n"
+	.string "Trick people too?$"
 
 MoveTutor_MimicDeclined: @ 82C737F
-	.string "Oh, boo! I wanted to teach MIMIC\n"
-	.string "to your Pokémon!$"
+	.string "I guess you're too nice\n"
+	.string "to Trick people.$"
 
 MoveTutor_Text_MimicWhichMon: @ 82C73B1
 	.string "Fwofwo! And so I shall!\n"
@@ -85,7 +79,7 @@ MoveTutor_Text_MimicWhichMon: @ 82C73B1
 	.string "you wish me to teach.$"
 
 MoveTutor_Text_MimicTaught: @ 82C73F6
-	.string "MIMIC is a move of great depth.\p"
+	.string "Trick is a move of great depth.\p"
 	.string "Could you execute it to perfection\n"
 	.string "as well as me…?$"
 
@@ -141,22 +135,22 @@ MoveTutor_Text_SubstituteTeach: @ 82C77C6
 	.string "When I see the wide world from up\n"
 	.string "here on the roof…\p"
 	.string "I think about how nice it would be\n"
-	.string "if there were more than just one me\l"
-	.string "so I could enjoy all sorts of lives.\p"
+	.string "if I could sprout wings and fly\l"
+	.string "like the wind.\p"
 	.string "Of course it's not possible.\n"
 	.string "Giggle…\p"
 	.string "I know! Would you be interested in\n"
-	.string "having a Pokémon learn SUBSTITUTE?$"
+	.string "having a Pokémon learn Tailwind?$"
 
 MoveTutor_Text_SubstituteDeclined: @ 82C78D1
 	.string "Oh, no?\p"
-	.string "A Pokémon can make a copy of\n"
-	.string "itself using it, you know.$"
+	.string "A flying Pokémon can get a speed\n"
+	.string "boost using it, you know.$"
 
 MoveTutor_Text_SubstituteWhichMon: @ 82C7911
 	.string "Giggle…\n"
 	.string "Which Pokémon do you want me to\l"
-	.string "teach SUBSTITUTE?$"
+	.string "teach Tailwind?$"
 
 MoveTutor_Text_SubstituteTaught: @ 82C794B
 	.string "We human beings should enjoy our\n"

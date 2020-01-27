@@ -19,26 +19,18 @@ BattleFrontier_Lounge7_EventScript_AlreadyMetLeftTutor:: @ 8265276
 BattleFrontier_Lounge7_EventScript_ChooseLeftTutorMove:: @ 8265284
 	message BattleFrontier_Lounge7_Text_TeachWhichMove
 	waitmessage
-	special ShowBattlePointsWindow
 	setvar VAR_TEMP_E, 0
 	setvar VAR_0x8004, SCROLL_MULTI_BF_MOVE_TUTOR_1
 	setvar VAR_0x8006, 0
 	special ShowScrollableMultichoice
 	waitstate
 	copyvar VAR_TEMP_D, VAR_RESULT
-	switch VAR_RESULT
-	case 0, BattleFrontier_Lounge7_EventScript_Softboiled
-	case 1, BattleFrontier_Lounge7_EventScript_SeismicToss
-	case 2, BattleFrontier_Lounge7_EventScript_DreamEater
-	case 3, BattleFrontier_Lounge7_EventScript_MegaPunch
-	case 4, BattleFrontier_Lounge7_EventScript_MegaKick
-	case 5, BattleFrontier_Lounge7_EventScript_BodySlam
-	case 6, BattleFrontier_Lounge7_EventScript_RockSlide
-	case 7, BattleFrontier_Lounge7_EventScript_Counter
-	case 8, BattleFrontier_Lounge7_EventScript_ThunderWave
-	case 9, BattleFrontier_Lounge7_EventScript_SwordsDance
-	case 10, BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
-	case MULTI_B_PRESSED, BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
+	compare VAR_RESULT, 9
+	goto_if_le BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
+	compare VAR_RESULT, 10
+	goto_if_eq BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
+	compare VAR_RESULT, MULTI_B_PRESSED
+	goto_if_eq BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
 	end
 
 BattleFrontier_Lounge7_EventScript_ChooseNewLeftTutorMove:: @ 826532F
@@ -47,72 +39,16 @@ BattleFrontier_Lounge7_EventScript_ChooseNewLeftTutorMove:: @ 826532F
 	setvar VAR_TEMP_E, 0
 	setvar VAR_0x8004, SCROLL_MULTI_BF_MOVE_TUTOR_1
 	setvar VAR_0x8006, 1
+	setvar VAR_TEMP_2, ITEM_SWEET_HEART
 	special ShowScrollableMultichoice
 	waitstate
 	copyvar VAR_TEMP_D, VAR_RESULT
-	switch VAR_RESULT
-	case 0, BattleFrontier_Lounge7_EventScript_Softboiled
-	case 1, BattleFrontier_Lounge7_EventScript_SeismicToss
-	case 2, BattleFrontier_Lounge7_EventScript_DreamEater
-	case 3, BattleFrontier_Lounge7_EventScript_MegaPunch
-	case 4, BattleFrontier_Lounge7_EventScript_MegaKick
-	case 5, BattleFrontier_Lounge7_EventScript_BodySlam
-	case 6, BattleFrontier_Lounge7_EventScript_RockSlide
-	case 7, BattleFrontier_Lounge7_EventScript_Counter
-	case 8, BattleFrontier_Lounge7_EventScript_ThunderWave
-	case 9, BattleFrontier_Lounge7_EventScript_SwordsDance
-	case 10, BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
-	case MULTI_B_PRESSED, BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
-	end
-
-BattleFrontier_Lounge7_EventScript_Softboiled:: @ 82653D7
-	setvar VAR_0x8008, 16
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_SeismicToss:: @ 82653E2
-	setvar VAR_0x8008, 24
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_DreamEater:: @ 82653ED
-	setvar VAR_0x8008, 24
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_MegaPunch:: @ 82653F8
-	setvar VAR_0x8008, 24
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_MegaKick:: @ 8265403
-	setvar VAR_0x8008, 48
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_BodySlam:: @ 826540E
-	setvar VAR_0x8008, 48
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_RockSlide:: @ 8265419
-	setvar VAR_0x8008, 48
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_Counter:: @ 8265424
-	setvar VAR_0x8008, 48
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_ThunderWave:: @ 826542F
-	setvar VAR_0x8008, 48
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_SwordsDance:: @ 826543A
-	setvar VAR_0x8008, 48
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
+	compare VAR_RESULT, 9
+	goto_if_le BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
+	compare VAR_RESULT, 10
+	goto_if_eq BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
+	compare VAR_RESULT, MULTI_B_PRESSED
+	goto_if_eq BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
 	end
 
 BattleFrontier_Lounge7_EventScript_RightMoveTutor:: @ 8265445
@@ -133,26 +69,19 @@ BattleFrontier_Lounge7_EventScript_AlreadyMetRightTutor:: @ 8265466
 BattleFrontier_Lounge7_EventScript_ChooseRightTutorMove:: @ 8265474
 	message BattleFrontier_Lounge7_Text_TeachWhichMove
 	waitmessage
-	special ShowBattlePointsWindow
 	setvar VAR_TEMP_E, 1
 	setvar VAR_0x8004, SCROLL_MULTI_BF_MOVE_TUTOR_2
 	setvar VAR_0x8006, 0
+	setvar VAR_TEMP_2, ITEM_OLD_GATEAU
 	special ShowScrollableMultichoice
 	waitstate
 	copyvar VAR_TEMP_D, VAR_RESULT
-	switch VAR_RESULT
-	case 0, BattleFrontier_Lounge7_EventScript_DefenseCurl
-	case 1, BattleFrontier_Lounge7_EventScript_Snore
-	case 2, BattleFrontier_Lounge7_EventScript_MudSlap
-	case 3, BattleFrontier_Lounge7_EventScript_Swift
-	case 4, BattleFrontier_Lounge7_EventScript_IcyWind
-	case 5, BattleFrontier_Lounge7_EventScript_Endure
-	case 6, BattleFrontier_Lounge7_EventScript_PsychUp
-	case 7, BattleFrontier_Lounge7_EventScript_IcePunch
-	case 8, BattleFrontier_Lounge7_EventScript_ThunderPunch
-	case 9, BattleFrontier_Lounge7_EventScript_FirePunch
-	case 10, BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
-	case MULTI_B_PRESSED, BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
+	compare VAR_RESULT, 9
+	goto_if_le BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
+	compare VAR_RESULT, 10
+	goto_if_eq BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
+	compare VAR_RESULT, MULTI_B_PRESSED
+	goto_if_eq BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
 	end
 
 BattleFrontier_Lounge7_EventScript_ChooseNewRightTutorMove:: @ 826551F
@@ -164,74 +93,16 @@ BattleFrontier_Lounge7_EventScript_ChooseNewRightTutorMove:: @ 826551F
 	special ShowScrollableMultichoice
 	waitstate
 	copyvar VAR_TEMP_D, VAR_RESULT
-	switch VAR_RESULT
-	case 0, BattleFrontier_Lounge7_EventScript_DefenseCurl
-	case 1, BattleFrontier_Lounge7_EventScript_Snore
-	case 2, BattleFrontier_Lounge7_EventScript_MudSlap
-	case 3, BattleFrontier_Lounge7_EventScript_Swift
-	case 4, BattleFrontier_Lounge7_EventScript_IcyWind
-	case 5, BattleFrontier_Lounge7_EventScript_Endure
-	case 6, BattleFrontier_Lounge7_EventScript_PsychUp
-	case 7, BattleFrontier_Lounge7_EventScript_IcePunch
-	case 8, BattleFrontier_Lounge7_EventScript_ThunderPunch
-	case 9, BattleFrontier_Lounge7_EventScript_FirePunch
-	case 10, BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
-	case MULTI_B_PRESSED, BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
-	end
-
-BattleFrontier_Lounge7_EventScript_DefenseCurl:: @ 82655C7
-	setvar VAR_0x8008, 16
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_Snore:: @ 82655D2
-	setvar VAR_0x8008, 24
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_MudSlap:: @ 82655DD
-	setvar VAR_0x8008, 24
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_Swift:: @ 82655E8
-	setvar VAR_0x8008, 24
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_IcyWind:: @ 82655F3
-	setvar VAR_0x8008, 24
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_Endure:: @ 82655FE
-	setvar VAR_0x8008, 48
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_PsychUp:: @ 8265609
-	setvar VAR_0x8008, 48
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_IcePunch:: @ 8265614
-	setvar VAR_0x8008, 48
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_ThunderPunch:: @ 826561F
-	setvar VAR_0x8008, 48
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
-	end
-
-BattleFrontier_Lounge7_EventScript_FirePunch:: @ 826562A
-	setvar VAR_0x8008, 48
-	goto BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
+	compare VAR_RESULT, 9
+	goto_if_le BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
+	compare VAR_RESULT, 10
+	goto_if_eq BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
+	compare VAR_RESULT, MULTI_B_PRESSED
+	goto_if_eq BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect
 	end
 
 BattleFrontier_Lounge7_EventScript_ExitTutorMoveSelect:: @ 8265635
 	special CloseBattleFrontierTutorWindow
-	special CloseBattlePointsWindow
 	msgbox BattleFrontier_Lounge7_Text_YouDontWantTo, MSGBOX_DEFAULT
 	release
 	end
@@ -249,31 +120,25 @@ BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection:: @ 826564F
 	copyvar VAR_0x8004, VAR_TEMP_D
 	copyvar VAR_0x8005, VAR_TEMP_E
 	special BufferBattleFrontierTutorMoveName
-	buffernumberstring 1, VAR_0x8008
 	copyvar VAR_0x8004, VAR_TEMP_C
-	msgbox BattleFrontier_Lounge7_Text_MoveWillBeXBattlePoints, MSGBOX_YESNO
+	bufferitemname 1, VAR_TEMP_2
+	msgbox MoveTutorListWillRequireX, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq BattleFrontier_Lounge7_EventScript_ChooseNewMove
-	specialvar VAR_TEMP_1, GetFrontierBattlePoints
-	compare VAR_TEMP_1, VAR_0x8008
-	goto_if_ge BattleFrontier_Lounge7_EventScript_TeachTutorMove
-	msgbox BattleFrontier_Lounge7_Text_HaventGotEnoughPoints, MSGBOX_DEFAULT
-	goto BattleFrontier_Lounge7_EventScript_ChooseNewMove
+	goto BattleFrontier_Lounge7_EventScript_TeachTutorMove
 	end
 
 BattleFrontier_Lounge7_EventScript_TeachTutorMove:: @ 8265696
 	msgbox BattleFrontier_Lounge7_Text_TeachMoveToWhichMon, MSGBOX_DEFAULT
 	special GetBattleFrontierTutorMoveIndex
 	fadescreen FADE_TO_BLACK
-	special CloseBattlePointsWindow
 	special CloseBattleFrontierTutorWindow
 	special ChooseMonForMoveTutor
 	waitstate
 	compare VAR_RESULT, FALSE
 	goto_if_eq BattleFrontier_Lounge7_EventScript_CancelChooseMon
 	msgbox BattleFrontier_Lounge7_Text_IllTakeBattlePoints, MSGBOX_DEFAULT
-	copyvar VAR_0x8004, VAR_0x8008
-	special TakeFrontierBattlePoints
+	removeitem VAR_TEMP_2, 1
 	release
 	end
 
@@ -303,36 +168,33 @@ BattleFrontier_Lounge7_Text_LeftTutorIntro: @ 82656ED
 	.string "I'm not like that blowhard woman over\n"
 	.string "there. I'm actually talented!\p"
 	.string "Let me prove it to you.\n"
-	.string "I can teach your Pokémon special and\l"
-	.string "yet cute moves.\p"
+	.string "I can teach your Pokémon some\p"
+	.string "smart moves.\p"
 	.string "But my lessons don't come free.\n"
-	.string "How about paying for the moves I teach\l"
-	.string "with a wee bit of Battle Points?$"
+	.string "How about exchanging a Sweet\l"
+	.string "Heart or two?$"
 
 BattleFrontier_Lounge7_Text_LeftTutorWelcomeBack: @ 82658AB
 	.string "Buhahaha!\p"
-	.string "Are you back to learn special and\n"
-	.string "yet cute Pokémon moves?$"
+	.string "Are you back to learn strong\n"
+	.string "Pokémon moves?$"
 
 BattleFrontier_Lounge7_Text_TeachWhichMove: @ 82658EF
 	.string "Fine, fine, look here!\n"
 	.string "Which move should I teach?$"
 
-BattleFrontier_Lounge7_Text_MoveWillBeXBattlePoints: @ 8265921
+MoveTutorListWillRequireX: @ 8265921
 	.string "The move {STR_VAR_1}, is it?\n"
-	.string "That will be {STR_VAR_2} Battle Points, okay?$"
+	.string "I will need a {STR_VAR_2}\l"
+	.string "in exchange. Is that okay?$"
 
 BattleFrontier_Lounge7_Text_TeachMoveToWhichMon: @ 826595A
 	.string "Fine, fine, now pick the Pokémon\n"
 	.string "I should teach the move to.$"
 
-BattleFrontier_Lounge7_Text_HaventGotEnoughPoints: @ 8265997
-	.string "What the…\n"
-	.string "You haven't got enough Battle Points!$"
-
 BattleFrontier_Lounge7_Text_IllTakeBattlePoints: @ 82659C7
 	.string "Do you see how skilled I am now?\n"
-	.string "I'll take your Battle Points, thanks!$"
+	.string "I'll take the {STR_VAR_2}, now.$"
 
 BattleFrontier_Lounge7_Text_YouDontWantTo: @ 8265A0E
 	.string "What's that?\n"
@@ -352,16 +214,16 @@ BattleFrontier_Lounge7_Text_RightTutorIntro: @ 8265A6C
 	.string "I'm not like that buffoonish woman over\n"
 	.string "there. I'm actually experienced!\p"
 	.string "I can prove it to you.\n"
-	.string "I can teach your Pokémon hard and\l"
-	.string "yet pretty moves.\p"
+	.string "I can teach your Pokémon strong and\l"
+	.string "impactful moves.\p"
 	.string "But my lessons don't come free.\n"
-	.string "How about paying for the moves I teach\l"
-	.string "with a wee bit of Battle Points?$"
+	.string "How about exchanging an Old\l"
+	.string "Gateau or two?$"
 
 BattleFrontier_Lounge7_Text_RightTutorWelcomeBack: @ 8265C2C
 	.string "Ihihihi!\p"
-	.string "Have you come to learn hard and\n"
-	.string "yet pretty Pokémon moves?$"
+	.string "Have you come to learn smart and\n"
+	.string "impactful Pokémon moves?$"
 
 BattleFrontier_Lounge7_Text_ThinkLadiesDontGetAlong: @ 8265C6F
 	.string "Those ladies, the way they bad-mouth\n"
@@ -382,90 +244,88 @@ BattleFrontier_Lounge7_Text_LadiesWereStrongAndBeautiful: @ 8265D17
 	.string "but feel this…\p"
 	.string "Time is so cruel…$"
 
-BattleFrontier_Lounge7_Text_SoftboiledDesc:: @ 8265E30
-	.string "Recovers up to\n"
-	.string "half the user's\n"
-	.string "maximum HP.$"
+BattleFrontier_Lounge7_Text_Liquidation:: @ 8265E30
+	.string "Slams the foe\n"
+	.string "with water. Can\n"
+	.string "lower defense.$"
 
 BattleFrontier_Lounge7_Text_SeismicTossDesc:: @ 8265E5B
 	.string "Inflicts damage\n"
 	.string "identical to the\n"
 	.string "user's level.$"
 
-BattleFrontier_Lounge7_Text_DreamEaterDesc:: @ 8265E8A
-	.string "Recovers half the\n"
-	.string "damage inflicted\n"
-	.string "on a sleeping foe.$"
+BattleFrontier_Lounge7_Text_ZenHeadbutt:: @ 8265E8A
+	.string "Focuses power\n"
+	.string "and hits with a\n"
+	.string "strong headbutt.$"
 
-BattleFrontier_Lounge7_Text_MegaPunchDesc:: @ 8265EC0
-	.string "A strong punch\n"
-	.string "thrown with\n"
-	.string "incredible power.$"
+BattleFrontier_Lounge7_Text_PainSplit:: @ 8265EC0
+	.string "Shares the pain\n"
+	.string "with the foe$"
 
-BattleFrontier_Lounge7_Text_MegaKickDesc:: @ 8265EED
-	.string "An extremely\n"
-	.string "powerful kick with\n"
-	.string "intense force.$"
+BattleFrontier_Lounge7_Text_Recycle:: @ 8265EED
+	.string "Allows the user\n"
+	.string "to re-use its\n"
+	.string "held item.$"
 
 BattleFrontier_Lounge7_Text_BodySlamDesc:: @ 8265F1C
 	.string "A full-body slam\n"
 	.string "that may cause\n"
 	.string "paralysis.$"
 
-BattleFrontier_Lounge7_Text_RockSlideDesc:: @ 8265F47
-	.string "Large boulders\n"
-	.string "are hurled. May\n"
-	.string "cause flinching.$"
+BattleFrontier_Lounge7_Text_LowKick:: @ 8265F47
+	.string "Deals more dam-\n"
+	.string "age to heavier\n"
+	.string "foes.$"
 
-BattleFrontier_Lounge7_Text_CounterDesc:: @ 8265F77
-	.string "Retaliates any\n"
-	.string "physical hit with\n"
-	.string "double the power.$"
+BattleFrontier_Lounge7_Text_MagicCoat:: @ 8265F77
+	.string "Reflects special\n"
+	.string "effects back at\n"
+	.string "the foe.$"
 
-BattleFrontier_Lounge7_Text_ThunderWaveDesc:: @ 8265FAA
-	.string "A weak jolt of\n"
-	.string "electricity that\n"
-	.string "paralyzes the foe.$"
+BattleFrontier_Lounge7_Text_HealBell:: @ 8265FAA
+	.string "Chimes in a\n"
+	.string "soothing way to\n"
+	.string "clear statuses.$"
 
-BattleFrontier_Lounge7_Text_SwordsDanceDesc:: @ 8265FDD
-	.string "A fighting dance\n"
-	.string "that sharply\n"
-	.string "raises ATTACK.$"
+BattleFrontier_Lounge7_Text_Bounce:: @ 8265FDD
+	.string "User jumps high up\n"
+	.string "then crashes down\n"
+	.string "on the foe. May Prz.$"
 
-BattleFrontier_Lounge7_Text_DefenseCurlDesc:: @ 826600A
-	.string "Curls up to con-\n"
-	.string "ceal weak spots\n"
-	.string "and raise DEFENSE.$"
+BattleFrontier_Lounge7_Text_Outrage:: @ 826600A
+	.string "Rampages for 2-3\n"
+	.string "turns then gets\n"
+	.string "confused.$"
 
-BattleFrontier_Lounge7_Text_SnoreDesc:: @ 826603E
-	.string "A loud attack\n"
-	.string "that can be used\n"
-	.string "only while asleep.$"
+BattleFrontier_Lounge7_Text_HeatWave:: @ 826603E
+	.string "A hot breath\n"
+	.string "attack that may\n"
+	.string "burn the foe.$"
 
-BattleFrontier_Lounge7_Text_MudSlapDesc:: @ 8266070
-	.string "Hurls mud in the\n"
-	.string "foe's face to re-\n"
-	.string "duce its accuracy.$"
+BattleFrontier_Lounge7_Text_GunkShot:: @ 8266070
+	.string "Hurls filthy trash\n"
+	.string "at the foe for dmg.\n"
+	.string "May poison.$"
 
-BattleFrontier_Lounge7_Text_SwiftDesc:: @ 82660A6
-	.string "Sprays star-\n"
-	.string "shaped rays\n"
-	.string "that never miss.$"
+BattleFrontier_Lounge7_Text_Synthesis:: @ 82660A6
+	.string "Restores health.\n"
+	.string "Amount varies by\n"
+	.string "active weather.$"
 
-BattleFrontier_Lounge7_Text_IcyWindDesc:: @ 82660D0
-	.string "A chilling attack\n"
-	.string "that lowers the\n"
-	.string "foe's SPEED.$"
+BattleFrontier_Lounge7_Text_HelpingHand:: @ 82660D0
+	.string "Boosts power of\n"
+	.string "ally's moves.$"
 
 BattleFrontier_Lounge7_Text_EndureDesc:: @ 82660FF
 	.string "Endures any at-\n"
 	.string "tack for 1 turn,\n"
 	.string "leaving 1HP.$"
 
-BattleFrontier_Lounge7_Text_PsychUpDesc:: @ 826612D
-	.string "Copies the foe's\n"
-	.string "effect(s) and\n"
-	.string "gives to the user.$"
+BattleFrontier_Lounge7_Text_FoulPlay:: @ 826612D
+	.string "Deals damage\n"
+	.string "based on target's\n"
+	.string "Attack boosts.$"
 
 BattleFrontier_Lounge7_Text_IcePunchDesc:: @ 826615F
 	.string "An icy punch\n"
