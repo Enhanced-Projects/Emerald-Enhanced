@@ -294,7 +294,6 @@ SECTIONS {
         src/multiboot.o(.text);
         src/battle_controller_player_partner.o(.text);
         src/mirage_tower.o(.text);
-
         src/pokemon_summary_screen.o(.text);
         src/unk_pokedex_area_screen_helper.o(.text);
         src/battle_pyramid_bag.o(.text);
@@ -323,6 +322,7 @@ SECTIONS {
         src/gym_leader_rematch.o(.text);
         src/unk_transition.o(.text);
         src/international_string_util.o(.text);
+        src/cutscene.o(.text);
     } =0
 
     script_data :
@@ -682,6 +682,7 @@ SECTIONS {
         data/mystery_event.o(.rodata);
         src/m4a_tables.o(.rodata);
         data/sound_data.o(.rodata);
+		src/cutscene.o(.rodata);
     } =0
 
     song_data :

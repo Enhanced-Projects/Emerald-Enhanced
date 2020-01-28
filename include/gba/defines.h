@@ -11,7 +11,7 @@
 #define EWRAM_DATA __attribute__((section("ewram_data")))
 
 #if MODERN
-#define NOINLINE __attribute__((noinline))
+#define NOINLINE __attribute__((noinline)) __attribute__((noclone))
 #else
 #define NOINLINE
 #endif

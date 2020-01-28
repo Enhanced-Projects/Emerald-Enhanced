@@ -3,6 +3,7 @@
 #include "battle.h"
 #include "battle_tower.h"
 #include "cable_club.h"
+#include "cutscene.h"
 #include "data.h"
 #include "decoration.h"
 #include "diploma.h"
@@ -16,6 +17,7 @@
 #include "field_screen_effect.h"
 #include "field_specials.h"
 #include "field_weather.h"
+#include "graphics.h"
 #include "international_string_util.h"
 #include "item_icon.h"
 #include "link.h"
@@ -67,6 +69,7 @@
 #include "constants/battle_frontier.h"
 #include "constants/weather.h"
 #include "constants/metatile_labels.h"
+#include "constants/rgb.h"
 #include "palette.h"
 #include "item.h"
 #include "decompress.h"
@@ -74,6 +77,7 @@
 #include "pokedex.h"
 #include "money.h"
 #include "menu_helpers.h"
+#include "mgba.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -146,27 +150,6 @@ static u8 DidPlayerGetFirstFans(void);
 static void SetInitialFansOfPlayer(void);
 static u16 PlayerGainRandomTrainerFan(void);
 static void BufferFanClubTrainerName_(struct LinkBattleRecords *linkRecords, u8 a, u8 b);
-
-extern const u8 gDawnCutsceneBgTiles[];
-extern const u8 gDawnCutsceneBgMap[];
-extern const u8 gDawnCutsceneBGPalette[];
-
-struct CutsceneBG
-{
-    const void *tileset;
-    const void *tilemap;
-    const void *palette;
-};
-
-static const struct CutsceneBG gCutsceneBgTable[] =
-{
-    [CutsceneBGDawn] = 
-    {
-        .tileset = gDawnCutsceneBgTiles,
-        .tilemap = gDawnCutsceneBgMap,
-        .palette = gDawnCutsceneBGPalette
-    }
-};
 
 void Special_ShowDiploma(void)
 {
@@ -6250,36 +6233,19 @@ bool8 ScrCmd_drawheadshot(struct ScriptContext *ctx)
     }
 }
 
-static const struct BgTemplate sDawnBgTemplate = {
-        .bg = 1,
-        .charBaseIndex = 0,
-        .mapBaseIndex = 12,
-        .screenSize = 0,
-        .paletteMode = 1,
-        .priority = 0,
-        .baseTile = 0
-    };
+void VBCB_FullscreenCutscene(void) 
+{
+	UpdatePidgeyPaletteFade();
+	UpdateBgPan();
+}
 
 bool8 ScrCmd_drawfullscreenimage(struct ScriptContext *ctx)
 {
     u8 index = ScriptReadByte(ctx);
-
-    SetVBlankCallback(NULL);
-    InitBgFromTemplate(&sDawnBgTemplate);
-    ResetAllBgsCoordinates();
-    ShowBg(0);
-    ShowBg(1);    
-
-    switch (index)
-    {
-        case 0:
-        {
-            LoadBgTilemap(1, gDawnCutsceneBgMap, 0x580, 0);
-            LoadBgTiles(1, gDawnCutsceneBgTiles, 0x3200, 0);
-            Unused_LoadBgPalette(1, gDawnCutsceneBGPalette, 0x200, 0);
-        }
-    }
-    return TRUE;   
+	SetVBlankCallback(NULL);
+	StartBGCutscene(index);
+    SetVBlankCallback(VBCB_FullscreenCutscene);
+	return TRUE;   
 }
 
 bool8 ScrCmd_clearfullscreenimage(struct ScriptContext *ctx)

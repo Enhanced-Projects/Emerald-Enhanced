@@ -19,6 +19,7 @@
 #include "main.h"
 #include "overworld.h"
 #include "m4a.h"
+#include "mgba.h"
 #include "party_menu.h"
 #include "pokedex.h"
 #include "pokeblock.h"
