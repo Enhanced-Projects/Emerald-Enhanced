@@ -77,6 +77,6 @@
 
 //Cutscene BG's
 
-#define CutsceneBGDawn 1
+#define CutsceneBGDawn 0
 
 #endif // GUARD_CONSTANTS_FIELD_SPECIALS_H

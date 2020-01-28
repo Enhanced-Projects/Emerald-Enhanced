@@ -1555,9 +1555,13 @@ void CB2_OverworldBasic(void)
     OverworldBasic();
 }
 
+//
+void VBCB_FullscreenCutscene(void);
+//
+
 void CB2_Overworld(void)
 {
-    bool32 fading = (gPaletteFade.active != 0);
+    bool32 fading = (gPaletteFade.active != 0) && gMain.vblankCallback != VBCB_FullscreenCutscene;
     if (fading)
         SetVBlankCallback(NULL);
     OverworldBasic();

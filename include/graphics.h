@@ -7792,10 +7792,4 @@ extern const u16 gPokenavMessageBox_Pal[];
 extern const u32 gPokenavOptions_Gfx[];
 extern const u16 gPokenavOptions_Pal[];
 
-//Fullscreen Cutscenes
-
-extern const u8 gDawnCutsceneBgTiles[];
-extern const u8 gDawnCutsceneBgMap[];
-extern const u8 gDawnCutsceneBGPalette[];
-
 #endif //GUARD_GRAPHICS_H

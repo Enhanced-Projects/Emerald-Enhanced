@@ -1682,12 +1682,6 @@ const u16 gUnknown_08DE3398[] = INCBIN_U16("graphics/berry_crusher/tiles.gbapal"
 const u32 gUnknown_08DE34B8[] = INCBIN_U32("graphics/berry_crusher/tiles.4bpp.lz");
 const u32 gUnknown_08DE3FD4[] = INCBIN_U32("graphics/berry_crusher/tiles.bin.lz");
 
-//Fullscreen cutscenes
-
-const u8 gDawnCutsceneBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/tiles.8bpp");
-const u8 gDawnCutsceneBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/map.bin");
-const u8 gDawnCutsceneBGPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/palette.gbapal");
-
 // random garbage at the end.
 asm(".space 0x54BAC \n\
      .byte 0x0D, 0x00, 0x58, 0x02 \n\
