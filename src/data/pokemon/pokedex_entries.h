@@ -4296,15 +4296,15 @@ const struct PokedexEntry gPokedexEntries[] =
         .trainerOffset = 7,
     },
 
-    [NATIONAL_DEX_CHIMECHO] =
+    [NATIONAL_DEX_CRYSTAL_ONIX] =
     {
-        .categoryName = _("WIND CHIME"),
-        .height = 6,
-        .weight = 10,
+        .categoryName = _("Resplendent"),
+        .height = 88,
+        .weight = 1450,
         .description = gChimechoPokedexText,
-        .pokemonScale = 505,
+        .pokemonScale = 256,
         .pokemonOffset = 0,
-        .trainerScale = 256,
+        .trainerScale = 515,
         .trainerOffset = 0,
     },
 

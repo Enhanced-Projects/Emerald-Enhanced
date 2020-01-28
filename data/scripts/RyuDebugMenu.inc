@@ -40,14 +40,15 @@ RyuDebug_menu_nodevcheck::
 	end
 
 RyuDebug_UtilitiesMenu:
-	multichoicedefault 0, 0, 143, 5, 0
+	multichoicedefault 0, 0, 143, 0, 0
 	switch VAR_RESULT
 	case 0, RyuDebug_Phasing
 	case 1, RyuDebug_Encounters
 	case 2, RyuDebug_EnableSaveViewer
 	case 3, RyuDebug_ViewTempVars
 	case 4, RyuDebug_Utility1
-	case 5, RyuDebug_cancel
+	case 5, RyuDebug_setTime
+	case 6, RyuDebug_cancel
 	goto RyuDebug_cancel
 	
 RyuDebug_pokeedit::
@@ -177,14 +178,10 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	gettime
-	buffernumberstring 0, VAR_0x8000
-	buffernumberstring 1, VAR_0x8001
-	buffernumberstring 2, VAR_0x8002
-	msgbox RDB_Readout
 	special CheckSaveFileSize
 	msgbox sizeofmsg
 	closemessage
+	special FillTheDex
 	goto_if_unset FLAG_RYU_RANDOMIZE_MUSIC, RDB_u1_EnableRandomize
 	clearflag FLAG_RYU_RANDOMIZE_MUSIC
 	release
@@ -201,28 +198,32 @@ RDB_u1_EnableRandomize::
 RDB_Readout:
 	.string "It is currently: {STR_VAR_1}:{STR_VAR_2}::{STR_VAR_3}  $"
 
-AltScaleOn::
-	msgbox ScaleAltMsg
+RyuDebug_setTime::
+	gettime
+	buffernumberstring 0, VAR_0x8000
+	buffernumberstring 1, VAR_0x8001
+	buffernumberstring 2, VAR_0x8002
+	msgbox RDB_Readout
+	closemessage
+	msgbox settimequery MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_ne ryu_end
+	fadescreen 1
+	special StartWallClock
+	waitstate
+	gettime
+	buffernumberstring 0, VAR_0x8000
+	buffernumberstring 1, VAR_0x8001
+	buffernumberstring 2, VAR_0x8002
+	msgbox RDB_Readout_2
 	release
 	end
 
-ScalingOff::
-	msgbox NotScaling
-	release
-	end
+settimequery:
+	.string "Would you like to change the time?$"
 
-ScaleAltMsg:
-	.string "Alternate Scaling Enabled.$"
-
-AltScaleOff:
-	.string "Alternate Scaling Disabled.$"
-
-ScalingOn:
-	.string "Autoscale is on.$"
-
-NotScaling:
-	.string "Autoscale is being prevented.$" 
-
+RDB_Readout_2:
+	.string "Time was changed to: {STR_VAR_1}{STR_VAR_2}:{STR_VAR_3}  $"
 
 RyuDebug_Init_GiveAllItems::
 	setvar VAR_TEMP_2, 482

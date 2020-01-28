@@ -14396,7 +14396,7 @@ gCryTable:: @ 869DCF4
 	cry Cry_Duskull
 	cry Cry_Dusclops
 	cry Cry_Tropius
-	cry Cry_Chimecho
+	cry Cry_CrystalOnix
 	cry Cry_Absol
 	cry Cry_Wynaut
 	cry Cry_Snorunt
@@ -15206,7 +15206,7 @@ gCryTable2:: @ 869EF24
 	cry2 Cry_Duskull
 	cry2 Cry_Dusclops
 	cry2 Cry_Tropius
-	cry2 Cry_Chimecho
+	cry2 Cry_CrystalOnix
 	cry2 Cry_Absol
 	cry2 Cry_Wynaut
 	cry2 Cry_Snorunt

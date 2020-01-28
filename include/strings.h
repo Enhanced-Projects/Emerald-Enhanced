@@ -3242,6 +3242,9 @@ extern const u8 gText_RyuDevSubDevRepelToggle[];
 extern const u8 gText_RyuDevSubEnableSaveView[];
 extern const u8 gText_RyuDevSubViewTempVars[];
 extern const u8 gText_RyuDevSubUtility1[];
+extern const u8 gText_RyuDevSubTimeMenu[];
+
+extern const u8 gText_NightTimeApproaches[];
 
 extern const u8 gText_OverlordRyuBossNameBuffer[];
 extern const u8 gText_PokemonStringBuffer[];
@@ -3264,5 +3267,17 @@ extern const u8 gText_RyuRotomNormal[];
 
 extern const u8 gText_Buffer1Contents[];
 extern const u8 gText_DawnHi[];
+extern const u8 gText_HighlightTransparent[];
+
+extern const u8 gText_SpaceTime[];
+extern const u8 gText_Night[];
+extern const u8 gText_RyuDay[];
+extern const u8 gText_Dusk[];
+extern const u8 gText_RyuDawn[];
+extern const u8 gText_colon[];
+extern const u8 gText_ColorLightBlueShadowBlue[];
+extern const u8 gText_ColorLightRedShadowRed[];
+extern const u8 gText_ColorLightRedShadowDarkGrey[];
+extern const u8 gText_ColorLightBlueShadowDarkGrey[];
 
 #endif // GUARD_STRINGS_H

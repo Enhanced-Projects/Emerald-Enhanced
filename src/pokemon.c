@@ -243,7 +243,7 @@ const u16 gSpeciesToHoennPokedexNum[NUM_SPECIES] = // Assigns all species to the
     SPECIES_TO_HOENN(DUSKNOIR),
     SPECIES_TO_HOENN(TROPIUS),
     SPECIES_TO_HOENN(CHINGLING),
-    SPECIES_TO_HOENN(CHIMECHO),
+    SPECIES_TO_HOENN(CRYSTAL_ONIX),
     SPECIES_TO_HOENN(ABSOL),
     SPECIES_TO_HOENN(VULPIX),
     SPECIES_TO_HOENN(NINETALES),
@@ -658,7 +658,7 @@ const u16 gSpeciesToNationalPokedexNum[NUM_SPECIES] = // Assigns all species to 
 	SPECIES_TO_NATIONAL(DUSKULL),
 	SPECIES_TO_NATIONAL(DUSCLOPS),
 	SPECIES_TO_NATIONAL(TROPIUS),
-	SPECIES_TO_NATIONAL(CHIMECHO),
+	SPECIES_TO_NATIONAL(CRYSTAL_ONIX),
 	SPECIES_TO_NATIONAL(ABSOL),
 	SPECIES_TO_NATIONAL(WYNAUT),
 	SPECIES_TO_NATIONAL(SNORUNT),
@@ -1105,7 +1105,7 @@ const u16 gHoennToNationalOrder[HOENN_DEX_COUNT] = // Assigns Hoenn Dex Pokémon
     HOENN_TO_NATIONAL(DUSKNOIR),
     HOENN_TO_NATIONAL(TROPIUS),
     HOENN_TO_NATIONAL(CHINGLING),
-    HOENN_TO_NATIONAL(CHIMECHO),
+    HOENN_TO_NATIONAL(CRYSTAL_ONIX),
     HOENN_TO_NATIONAL(ABSOL),
     HOENN_TO_NATIONAL(VULPIX),
     HOENN_TO_NATIONAL(NINETALES),
@@ -1598,7 +1598,7 @@ static const u8 sMonFrontAnimIdsTable[NUM_SPECIES - 1] =
     [SPECIES_LATIOS - 1] = 0x10,
     [SPECIES_JIRACHI - 1] = 0x0d,
     [SPECIES_DEOXYS - 1] = 0x1b,
-    [SPECIES_CHIMECHO - 1] = 0x1d,
+    [SPECIES_CRYSTAL_ONIX - 1] = 0x1d,
 
     // Gen 4
     [SPECIES_TURTWIG - 1] = 0x04,
@@ -5243,40 +5243,36 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem)
                 break;
             case EVO_FRIENDSHIP_DAY:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 12 && gLocalTime.hours < 24 && friendship >= 220)
+                if (gLocalTime.hours >= 6 && gLocalTime.hours < 18 && friendship >= 220)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_DAY:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 12 && gLocalTime.hours < 24 && gEvolutionTable[species][i].param <= level)
+                if (gLocalTime.hours >= 6 && gLocalTime.hours < 18 && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_FRIENDSHIP_NIGHT:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 19 && gLocalTime.hours < 6 && friendship >= 220)
+                if (gLocalTime.hours >= 18 && gLocalTime.hours < 6 && friendship >= 220)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_NIGHT:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 17 && gLocalTime.hours < 6 && gEvolutionTable[species][i].param <= level)
+                if (gLocalTime.hours >= 18 && gLocalTime.hours < 6 && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_ITEM_HOLD_NIGHT:
-                mgba_printf(MGBA_LOG_INFO, "%d", ((heldItem == gEvolutionTable[species][i].param) << 2) | ((gLocalTime.hours < 6) << 1) | (gLocalTime.hours >= 19));
                 RtcCalcLocalTime();
-                mgba_printf(MGBA_LOG_INFO, "Checked item hold night case, time is %dh:%dm::%ds", gLocalTime.hours, gLocalTime.minutes, gLocalTime.seconds);
-                if ((gLocalTime.hours >= 18 || gLocalTime.hours < 10) && heldItem == gEvolutionTable[species][i].param)
+                if ((gLocalTime.hours >= 18 || gLocalTime.hours < 6) && heldItem == gEvolutionTable[species][i].param)
                 {
-                    mgba_printf(MGBA_LOG_INFO, "It is currently night, mon is holding %d", heldItem);
                     heldItem = 0;
                     SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                    mgba_printf(MGBA_LOG_INFO, "evo check completed");
                 }
                 break;
             case EVO_ITEM_HOLD_DAY:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 12 && gLocalTime.hours < 24 && heldItem == gEvolutionTable[species][i].param)
+                if (gLocalTime.hours >= 6 && gLocalTime.hours < 18 && heldItem == gEvolutionTable[species][i].param)
                 {
                     heldItem = 0;
                     SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);

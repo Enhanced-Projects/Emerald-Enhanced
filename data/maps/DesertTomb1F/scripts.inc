@@ -99,9 +99,9 @@ NM10_CrystalOnix::
 	playmoncry SPECIES_ONIX, 0
 	delay 10
 	waitmoncry
-	setwildbattle SPECIES_ONIX, 75, ITEM_METAL_COAT
+	setwildbattle SPECIES_CRYSTAL_ONIX, 75, ITEM_METAL_COAT
 	setflag FLAG_RYU_HIDE_CRYSTALONIX_OW
-	removeobject 2
+	removeobject 1
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	releaseall

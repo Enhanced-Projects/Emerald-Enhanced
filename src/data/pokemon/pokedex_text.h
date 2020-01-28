@@ -2315,10 +2315,10 @@ const u8 gDeoxysPokedexText[] = _(
     "organ on its chest.");
 
 const u8 gChimechoPokedexText[] = _(
-    "They fly about very actively when the hot\n"
-    "season arrives. They communicate among\n"
-    "themselves using seven different and\n"
-    "distinguishing cries.");
+    "This is an extremely ancient Onix that\n"
+    "has been under Earth's surface for so\n"
+    "long that its rock body turned into\n"
+    "diamond.");
 
 const u8 gTurtwigPokedexText[] = _(
     "The shell on its back is made of soil. \n"

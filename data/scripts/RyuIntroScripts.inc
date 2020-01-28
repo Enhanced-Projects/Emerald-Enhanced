@@ -533,4 +533,4 @@ MomGoGetThem:
 	.string "Teach your father some humility!$"
 
 Mom_IBelieveInYou:
-	.string "Mom: Keep at it, {PLAYER}!$"
+	.string "Mom: Keep at it!$"

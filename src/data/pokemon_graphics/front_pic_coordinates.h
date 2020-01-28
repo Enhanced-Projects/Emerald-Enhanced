@@ -1925,7 +1925,7 @@ const struct MonCoords gMonFrontPicCoords[] =
         .size = 0x88,
         .y_offset = 0x0,
     },
-    [SPECIES_CHIMECHO] =
+    [SPECIES_CRYSTAL_ONIX] =
     {
         .size = 0x37,
         .y_offset = 0xb,

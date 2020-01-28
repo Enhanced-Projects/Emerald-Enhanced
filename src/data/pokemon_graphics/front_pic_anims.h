@@ -4566,7 +4566,7 @@ static const union AnimCmd sAnim_DEOXYS_2[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_CHIMECHO_1[] =
+static const union AnimCmd sAnim_CRYSTAL_ONIX_1[] =
 {
     ANIMCMD_FRAME(0, 15),
     ANIMCMD_FRAME(1, 15),
@@ -10381,9 +10381,9 @@ static const union AnimCmd *const sAnims_DEOXYS[] ={
     sAnim_DEOXYS_2,
 };
 
-static const union AnimCmd *const sAnims_CHIMECHO[] ={
+static const union AnimCmd *const sAnims_CRYSTAL_ONIX[] ={
     sAnim_GeneralFrame0,
-    sAnim_CHIMECHO_1,
+    sAnim_CRYSTAL_ONIX_1,
 };
 
 static const union AnimCmd *const sAnims_EGG[] ={
@@ -13462,7 +13462,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
     ANIM_CMD(LATIOS),
     ANIM_CMD(JIRACHI),
     ANIM_CMD(DEOXYS),
-    ANIM_CMD(CHIMECHO),
+    ANIM_CMD(CRYSTAL_ONIX),
     ANIM_CMD(TURTWIG),
     ANIM_CMD(GROTLE),
     ANIM_CMD(TORTERRA),

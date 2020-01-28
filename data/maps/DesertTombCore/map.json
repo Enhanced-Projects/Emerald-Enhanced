@@ -47,7 +47,7 @@
     "warp_events": [
         {
             "dest_map": "MAP_DESERT_TOMB1F",
-            "dest_warp_id": 0,
+            "dest_warp_id": 3,
             "elevation": 0,
             "x": 14,
             "y": 2

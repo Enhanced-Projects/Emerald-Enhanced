@@ -1,19 +1,6 @@
 FortreeCity_Gym_MapScripts:: @ 82165AB
-	map_script MAP_SCRIPT_ON_TRANSITION, FortreeCity_Gym_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, FortreeCity_Gym_OnWarp
 	.byte 0
 
-FortreeCity_Gym_OnTransition: @ 82165B6
-	special RotatingGate_InitPuzzle
-	end
-
-FortreeCity_Gym_OnWarp: @ 82165BA
-	map_script_2 VAR_TEMP_0, VAR_TEMP_0, FortreeCity_Gym_EventScript_InitRotatingGates
-	.2byte 0
-
-FortreeCity_Gym_EventScript_InitRotatingGates:: @ 82165C4
-	special RotatingGate_InitPuzzleAndGraphics
-	end
 
 FortreeCity_Gym_EventScript_Winona:: @ 82165C8
     lock

@@ -1935,8 +1935,8 @@ Cry_Deoxys::
 	.incbin "sound/direct_sound_samples/cry_deoxys.bin"
 
 	.align 2
-Cry_Chimecho::
-	.incbin "sound/direct_sound_samples/cry_chimecho.bin"
+Cry_CrystalOnix::
+	.incbin "sound/direct_sound_samples/cry_onix.bin"
 
 	.align 2
 Cry_Turtwig::

@@ -48,6 +48,7 @@
 #include "constants/rgb.h"
 #include "field_message_box.h"
 #include "constants/event_objects.h"
+#include "rtc.h"
 
 extern u8 RyuDebugMenuScript[];
 extern u8 RyuDebugBetaMenuScript[];
@@ -419,18 +420,64 @@ void PrintNumberToScreen(s32 num)
 {
     struct WindowTemplate template;
 
-    SetWindowTemplateFields(&template, 0, 1, 1, 7, 2, 15, 8);
+    //prepare window
+    SetWindowTemplateFields(&template, 0, 1, 1, 14, 3, 15, 8);
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
     CopyWindowToVram(sPrintNumberWindowId, 1);
-    //DrawStdFrameWithCustomTileAndPalette(sPrintNumberWindowId, FALSE, 0x214, 14);
+    DrawStdFrameWithCustomTileAndPalette(sPrintNumberWindowId, FALSE, 0x214, 14);
 
-    StringCopy(gStringVar1, gText_ryuJukeboxLabel);
+    //song readout
+    StringCopy(gStringVar1, gText_HighlightTransparent);
+    StringAppend(gStringVar1, gText_ryuJukeboxLabel);
     ConvertIntToDecimalStringN(gStringVar2, num, 0, 3);
-
     StringAppend(gStringVar1, gStringVar2);
+
+    //time readout
+    RtcCalcLocalTime();
+    StringCopy(gStringVar3, gText_HighlightTransparent);
+    StringAppend(gStringVar3, gText_SpaceTime);
+    ConvertIntToDecimalStringN(gStringVar2, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gStringVar3, gStringVar2);
+    StringAppend(gStringVar3, gText_colon);
+    ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gStringVar3, gStringVar2);
+    StringAppend(gStringVar3, gText_colon);
+    ConvertIntToDecimalStringN(gStringVar2, gLocalTime.seconds, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gStringVar3, gStringVar2);
+    //print 'day', 'dusk', 'night' or 'dawn' in reference to evolution
+    if (gLocalTime.hours >= 18 || gLocalTime.hours < 6)
+    {
+        if (gLocalTime.hours == 18)
+        {
+            StringAppend(gStringVar3, gText_ColorLightBlueShadowDarkGrey);
+            StringAppend(gStringVar3, gText_Dusk);   
+        }
+        else
+        {
+            StringAppend(gStringVar3, gText_ColorLightBlueShadowBlue);
+            StringAppend(gStringVar3, gText_Night);
+        }
+    }
+    else
+    {   
+        if (gLocalTime.hours == 6)
+        {
+            StringAppend(gStringVar3, gText_ColorLightRedShadowDarkGrey);
+            StringAppend(gStringVar3, gText_RyuDawn);
+        }        
+        else
+        {
+            StringAppend(gStringVar3, gText_ColorLightRedShadowRed);
+            StringAppend(gStringVar3, gText_RyuDay);
+        }
+    }
+
+    //print all text
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 0, 0, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 0, 10, 0, NULL);
+
 }
 
 void RemovePrintedNumber(void)

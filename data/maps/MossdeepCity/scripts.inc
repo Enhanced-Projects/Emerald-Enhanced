@@ -7,7 +7,9 @@ MossdeepCity_OnTransition: @ 81E4A9C
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_2
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_3
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_4
-	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
+	setweather WEATHER_SHADE
+	doweather
+	setflag FLAG_VISITED_MOSSDEEP_CITY
 	end
 
 MossdeepCity_EventScript_PokefanF:: @ 81E4AB2
@@ -70,7 +72,9 @@ MossdeepCity_EventScript_SpaceCenterSign:: @ 81E4B2F
 
 MossdeepCity_EventScript_VisitedMossdeep:: @ 81E4B38
 	setflag FLAG_VISITED_MOSSDEEP_CITY
-	setvar VAR_TEMP_1, 1
+	setweather WEATHER_SHADE
+	doweather
+	setvar VAR_TEMP_5, 1
 	end
 
 MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter:: @ 81E4B41
