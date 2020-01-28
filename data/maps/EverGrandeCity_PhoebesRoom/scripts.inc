@@ -60,8 +60,19 @@ EGC_FollowerPhoebe::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	goto RyuPhoebeMegaReward
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 	end
+
+RyuPhoebeMegaReward::
+	goto_if_set FLAG_RYU_PHOEBE_MEGA, EverGrandeCity_PhoebesRoom_EventScript_Defeated
+	giveitem_silent ITEM_SABLENITE
+	msgbox PhoebeMegaRewardMsg
+	setflag FLAG_RYU_PHOEBE_MEGA
+	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
+
+PhoebeMegaRewardMsg::
+	.string "My ghosts didn't give you a\nhard time at all!\pYou should be able to use this.$"
 	
 EGC_FollowerPhoebeRematch::
 	call RyuFollowerAllySelector
@@ -78,6 +89,7 @@ EGC_FollowerPhoebeRematch::
 EGC_AltPhoebe::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerPhoebeRematch
 	trainerbattle_no_intro TRAINER_PHOEBE_REMATCH, EverGrandeCity_PhoebesRoom_Text_Defeat
+	goto RyuPhoebeMegaReward
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 	end
 

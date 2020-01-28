@@ -167,6 +167,10 @@ DewfordTown_Gym_EventScript_Brawly:: @ 81FC7C2
 	case 8, brawly4
 
 DFG_Reset::
+	setvar VAR_TEMP_8, 2
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_DEFEATED_DEWFORD_GYM
 	setflag FLAG_BADGE02_GET
 	msgbox DewfordTown_Gym_Text_BrawlyPostBattle
@@ -199,7 +203,7 @@ brawly3::
 
 brawly4::
 	goto_if_set FLAG_RYU_DS_HAS_PARTNER, DFG_PartnerQuery
-	trainerbattle_single TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, DewfordTown_Gym_Text_BrawlyPreBattle, DFG_Reset
+	trainerbattle_single TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, DewfordTown_Gym_Text_BrawlyDefeat, DFG_Reset
 	release
 	end
 
@@ -475,14 +479,12 @@ DewfordTown_Gym_EventScript_BrawlyDefeated:: @ 81FC7F7
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_BRAWLY_MATCH_CALL
 	setvar VAR_ROXANNE_CALL_STEP_COUNTER, 0
-	setflag FLAG_ENABLE_ROXANNE_FIRST_CALL
 	release
 	end
 
 DewfordTown_Gym_EventScript_GiveBulkUp:: @ 81FC855
-	giveitem_std ITEM_TM08
+	giveitem_silent ITEM_TM08
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_BagIsFull
 	msgbox DewfordTown_Gym_Text_ExplainBulkUp, MSGBOX_DEFAULT
@@ -490,7 +492,7 @@ DewfordTown_Gym_EventScript_GiveBulkUp:: @ 81FC855
 	return
 
 DewfordTown_Gym_EventScript_GiveBulkUp2: @ 81FC878
-	giveitem_std ITEM_TM08
+	giveitem_silent ITEM_TM08
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	msgbox DewfordTown_Gym_Text_ExplainBulkUp, MSGBOX_DEFAULT

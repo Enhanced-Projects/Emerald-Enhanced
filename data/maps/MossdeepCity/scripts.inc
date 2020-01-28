@@ -13,7 +13,7 @@ MossdeepCity_OnTransition: @ 81E4A9C
 MossdeepCity_EventScript_PokefanF:: @ 81E4AB2
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_HM08, MossdeepCity_EventScript_PokefanFMagmaGone
+	goto_if_set FLAG_RECEIVED_TM58, MossdeepCity_EventScript_PokefanFMagmaGone
 	msgbox MossdeepCity_Text_SpaceCenterReceivedLetter, MSGBOX_DEFAULT
 	release
 	end
@@ -26,7 +26,7 @@ MossdeepCity_EventScript_PokefanFMagmaGone:: @ 81E4AC7
 MossdeepCity_EventScript_Sailor:: @ 81E4AD1
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_HM08, MossdeepCity_EventScript_SailorMagmaGone
+	goto_if_set FLAG_RECEIVED_TM58, MossdeepCity_EventScript_SailorMagmaGone
 	msgbox MossdeepCity_Text_MossdeepTargetedByMagma, MSGBOX_DEFAULT
 	release
 	end
@@ -229,7 +229,7 @@ MossdeepCity_EventScript_KingsRockBoy:: @ 81E4C26
 	compare VAR_RESULT, NO
 	goto_if_eq MossdeepCity_EventScript_DeclineKingsRock
 	msgbox MossdeepCity_Text_YouCanKeepIt, MSGBOX_DEFAULT
-	giveitem_std ITEM_KINGS_ROCK
+	giveitem_silent ITEM_KINGS_ROCK
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_KINGS_ROCK

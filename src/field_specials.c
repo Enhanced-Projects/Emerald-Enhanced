@@ -1009,7 +1009,7 @@ u16 GetWeekCount(void)
 u8 GetLeadMonFriendshipScore(void)
 {
     struct Pokemon *pokemon = &gPlayerParty[GetLeadMonIndex()];
-    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) == 255)
+    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) == MAX_FRIENDSHIP)
     {
         return 6;
     }
@@ -1235,18 +1235,18 @@ void EndLotteryCornerComputerEffect(void)
     DrawWholeMapView();
 }
 
-void SetTrickHouseEndRoomFlag(void)
+void SetTrickHouseNuggetFlag(void)
 {
     u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_TRICK_HOUSE_END_ROOM;
+    u16 flag = FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET;
     *specVar = flag;
     FlagSet(flag);
 }
 
-void ResetTrickHouseEndRoomFlag(void)
+void ResetTrickHouseNuggetFlag(void)
 {
     u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_TRICK_HOUSE_END_ROOM;
+    u16 flag = FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET;
     *specVar = flag;
     FlagClear(flag);
 }
@@ -1693,24 +1693,10 @@ u16 GetMysteryEventCardVal(void)
 
 bool8 BufferTMHMMoveName(void)
 {
-    if (gSpecialVar_0x8004 >= ITEM_TM01 && gSpecialVar_0x8004 <= ITEM_HM08)
+    if (gSpecialVar_0x8004 >= ITEM_TM01 && gSpecialVar_0x8004 <= ITEM_TM64)
     {
         StringCopy(gStringVar2, gMoveNames[ItemIdToBattleMoveId(gSpecialVar_0x8004)]);
         return TRUE;
-    }
-
-    return FALSE;
-}
-
-bool8 IsBadEggInParty(void)
-{
-    u8 partyCount = CalculatePlayerPartyCount();
-    u8 i;
-
-    for (i = 0; i < partyCount; i++)
-    {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SANITY_IS_BAD_EGG) == TRUE)
-            return TRUE;
     }
 
     return FALSE;
@@ -2572,7 +2558,7 @@ static const u8 *const sScrollableMultichoiceOptions[][MAX_SCROLL_MULTI_LENGTH] 
     },
     [SCROLL_MULTI_BF_MOVE_TUTOR_2] = 
     {
-        gText_DefenseCurl16BP,
+        gText_RightTutorOutrage,
         gText_Snore24BP,
         gText_MudSlap24BP,
         gText_Swift24BP,
@@ -3162,27 +3148,27 @@ static void HideFrontierExchangeCornerItemIcon(u16 menu, u16 unused)
 
 static const u16 sBattleFrontier_TutorMoves1[] =
 { 
-    MOVE_SOFT_BOILED, 
+    MOVE_LIQUIDATION, 
     MOVE_SEISMIC_TOSS, 
-    MOVE_DREAM_EATER, 
-    MOVE_MEGA_PUNCH, 
-    MOVE_MEGA_KICK, 
+    MOVE_ZEN_HEADBUTT, 
+    MOVE_PAIN_SPLIT, 
+    MOVE_RECYCLE, 
     MOVE_BODY_SLAM, 
-    MOVE_ROCK_SLIDE, 
-    MOVE_COUNTER, 
-    MOVE_THUNDER_WAVE, 
-    MOVE_SWORDS_DANCE 
+    MOVE_LOW_KICK, 
+    MOVE_MAGIC_COAT, 
+    MOVE_HEAL_BELL, 
+    MOVE_BOUNCE 
 };
 
 static const u16 sBattleFrontier_TutorMoves2[] =
 { 
-    MOVE_DEFENSE_CURL, 
-    MOVE_SNORE, 
-    MOVE_MUD_SLAP, 
-    MOVE_SWIFT, 
-    MOVE_ICY_WIND, 
+    MOVE_OUTRAGE, 
+    MOVE_HEAT_WAVE, 
+    MOVE_GUNK_SHOT, 
+    MOVE_SYNTHESIS, 
+    MOVE_HELPING_HAND, 
     MOVE_ENDURE, 
-    MOVE_PSYCH_UP, 
+    MOVE_FOUL_PLAY, 
     MOVE_ICE_PUNCH, 
     MOVE_THUNDER_PUNCH, 
     MOVE_FIRE_PUNCH 
@@ -3228,28 +3214,28 @@ static void ShowBattleFrontierTutorMoveDescription(u8 menu, u16 selection)
 {
     static const u8 *const sBattleFrontier_TutorMoveDescriptions1[] = 
     {
-        BattleFrontier_Lounge7_Text_SoftboiledDesc,
+        BattleFrontier_Lounge7_Text_Liquidation,
         BattleFrontier_Lounge7_Text_SeismicTossDesc,
-        BattleFrontier_Lounge7_Text_DreamEaterDesc,
-        BattleFrontier_Lounge7_Text_MegaPunchDesc,
-        BattleFrontier_Lounge7_Text_MegaKickDesc,
+        BattleFrontier_Lounge7_Text_ZenHeadbutt,
+        BattleFrontier_Lounge7_Text_PainSplit,
+        BattleFrontier_Lounge7_Text_Recycle,
         BattleFrontier_Lounge7_Text_BodySlamDesc,
-        BattleFrontier_Lounge7_Text_RockSlideDesc,
-        BattleFrontier_Lounge7_Text_CounterDesc,
-        BattleFrontier_Lounge7_Text_ThunderWaveDesc,
-        BattleFrontier_Lounge7_Text_SwordsDanceDesc,
+        BattleFrontier_Lounge7_Text_LowKick,
+        BattleFrontier_Lounge7_Text_MagicCoat,
+        BattleFrontier_Lounge7_Text_HealBell,
+        BattleFrontier_Lounge7_Text_Bounce,
         gText_Exit,
     };
 
     static const u8 *const sBattleFrontier_TutorMoveDescriptions2[] = 
     {
-        BattleFrontier_Lounge7_Text_DefenseCurlDesc,
-        BattleFrontier_Lounge7_Text_SnoreDesc,
-        BattleFrontier_Lounge7_Text_MudSlapDesc,
-        BattleFrontier_Lounge7_Text_SwiftDesc,
-        BattleFrontier_Lounge7_Text_IcyWindDesc,
+        BattleFrontier_Lounge7_Text_Outrage,
+        BattleFrontier_Lounge7_Text_HeatWave,
+        BattleFrontier_Lounge7_Text_GunkShot,
+        BattleFrontier_Lounge7_Text_Synthesis,
+        BattleFrontier_Lounge7_Text_HelpingHand,
         BattleFrontier_Lounge7_Text_EndureDesc,
-        BattleFrontier_Lounge7_Text_PsychUpDesc,
+        BattleFrontier_Lounge7_Text_FoulPlay,
         BattleFrontier_Lounge7_Text_IcePunchDesc,
         BattleFrontier_Lounge7_Text_ThunderPunchDesc,
         BattleFrontier_Lounge7_Text_FirePunchDesc,
@@ -3741,12 +3727,12 @@ u32 GetMartEmployeeObjectEventId(void)
 
 bool32 IsTrainerRegistered(void)
 {
-    int index = GetRematchIdxByTrainerIdx(gSpecialVar_0x8004);
-    if (index >= 0)
-    {
-        if (FlagGet(FLAG_MATCH_CALL_REGISTERED + index) == TRUE)
-            return TRUE;
-    }
+    //int index = GetRematchIdxByTrainerIdx(gSpecialVar_0x8004);
+    //if (index >= 0)
+    //{
+    //    if (FlagGet(FLAG_MATCH_CALL_REGISTERED + index) == TRUE)
+    //        return TRUE;
+    //}
     return FALSE;
 }
 
@@ -5716,6 +5702,30 @@ int RyuSwapRotomForm(void)
     return 1;
 }
 
+bool8 checkForOverlordRyuEncounter(void)
+{
+    if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10)
+    {
+        if ((Random() % 100) <= 10)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+        
+}
+
+void CheckSaveFileSize(void)
+{
+    u32 size = (sizeof(struct SaveBlock1));
+    mgba_printf(MGBA_LOG_INFO, "Saveblock size is: %d", size);
+    ConvertIntToDecimalStringN(gStringVar1, size, STR_CONV_MODE_LEFT_ALIGN, 6);
+    ClearBag();
+}
+
 
 
 //Cutscene image defines
@@ -6306,7 +6316,7 @@ bool8 ScrCmd_addmonhappiness(struct ScriptContext *ctx)
 {
     u16 index = VarGet(ScriptReadHalfword(ctx));
     u16 value = VarGet(ScriptReadByte(ctx));
-    u8 current = GetMonData(&gPlayerParty[index], MON_DATA_FRIENDSHIP);
+    u16 current = GetMonData(&gPlayerParty[index], MON_DATA_FRIENDSHIP);
 
     value = value + current;
 

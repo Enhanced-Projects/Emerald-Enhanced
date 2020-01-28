@@ -3619,7 +3619,7 @@ static void Cmd_getexp(void)
                         gBattleMoveDamage += gExpShareExp;
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
-                    if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+                    if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && B_TRAINER_BATTLE_MULTIPLIER != GEN_7)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
 
                     if (IsTradedMon(&gPlayerParty[gBattleStruct->expGetterMonId]))
@@ -5872,12 +5872,6 @@ static void Cmd_yesnoboxlearnmove(void)
             else
             {
                 u16 moveId = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_MOVE1 + movePosition);
-                if (IsHMMove2(moveId))
-                {
-                    PrepareStringBattle(STRINGID_HMMOVESCANTBEFORGOTTEN, gActiveBattler);
-                    gBattleScripting.learnMoveState = 6;
-                }
-                else
                 {
                     gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
 
@@ -6773,14 +6767,11 @@ bool32 CanUseLastResort(u8 battlerId)
     {
         if (gBattleMons[battlerId].moves[i] != MOVE_NONE)
             knownMovesCount++;
-        if (gDisableStructs[battlerId].usedMoves & gBitTable[i])
+        if (i != gCurrMovePos && gDisableStructs[battlerId].usedMoves & gBitTable[i]) // Increment used move count for all moves except current Last Resort.
             usedMovesCount++;
     }
 
-    if (knownMovesCount >= 2 && usedMovesCount >= knownMovesCount - 1)
-        return TRUE;
-    else
-        return FALSE;
+    return (knownMovesCount >= 2 && usedMovesCount >= knownMovesCount - 1);
 }
 
 #define DEFOG_CLEAR(status, structField, battlescript, move)\
@@ -9094,11 +9085,8 @@ static void Cmd_setsandstorm(void)
 
 static void Cmd_weatherdamage(void)
 {
-    if (!IsBattlerAlive(gBattlerAttacker) || !WEATHER_HAS_EFFECT)
-    {
-        gBattleMoveDamage = 0;
-    }
-    else
+    gBattleMoveDamage = 0;
+    if (IsBattlerAlive(gBattlerAttacker) && WEATHER_HAS_EFFECT)
     {
         u32 ability = GetBattlerAbility(gBattlerAttacker);
         if (gBattleWeather & WEATHER_SANDSTORM_ANY)
@@ -9110,27 +9098,22 @@ static void Cmd_weatherdamage(void)
                 && ability != ABILITY_SAND_FORCE
                 && ability != ABILITY_SAND_RUSH
                 && ability != ABILITY_OVERCOAT
-                && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERGROUND)
-                && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERWATER)
+                && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
                 && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOOGLES)
             {
                 gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
             }
-            else
-            {
-                gBattleMoveDamage = 0;
-            }
         }
         if (gBattleWeather & WEATHER_HAIL_ANY)
         {
             if (ability == ABILITY_ICE_BODY
-                && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERGROUND)
-                && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERWATER)
+                && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
                 && !BATTLER_MAX_HP(gBattlerAttacker)
-                && !gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK)
+                && !(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK))
             {
+                gBattlerAbility = gBattlerAttacker;
                 gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
@@ -9140,17 +9123,12 @@ static void Cmd_weatherdamage(void)
                 && ability != ABILITY_SNOW_CLOAK
                 && ability != ABILITY_OVERCOAT
                 && ability != ABILITY_ICE_BODY
-                && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERGROUND)
-                && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERWATER)
+                && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
                 && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOOGLES)
             {
                 gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
-            }
-            else
-            {
-                gBattleMoveDamage = 0;
             }
         }
     }

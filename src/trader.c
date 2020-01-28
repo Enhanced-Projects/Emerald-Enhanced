@@ -162,7 +162,7 @@ void ScrSpecial_IsDecorationFull(void)
     }
 }
 
-void ScrSpecial_TraderMenuGiveDecoration(void)
+void ScrSpecial_TraderMenuremovedecoration(void)
 {
     CreateTask(ShowDecorationCategoriesWindow, 0);
 }

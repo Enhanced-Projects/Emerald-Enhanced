@@ -15,7 +15,7 @@ Route114_LanettesHouse_EventScript_Lanette:: @ 822B2D2
 	goto_if_set FLAG_RECEIVED_DOLL_LANETTE, Route114_LanettesHouse_EventScript_OfferAdvice
 	setflag FLAG_SYS_PC_LANETTE
 	msgbox Route114_LanettesHouse_Text_EverythingClutteredKeepThis, MSGBOX_DEFAULT
-	givedecoration_std DECOR_LOTAD_DOLL
+	removedecoration DECOR_LOTAD_DOLL
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowNoRoomForDecor
 	setflag FLAG_RECEIVED_DOLL_LANETTE
@@ -68,7 +68,7 @@ LNH_PlayerHasCollection::
 	delay 20
 	applymovement 1, LNH_BackToPlayerFromDesk
 	waitmovement 1
-	giveitem ITEM_LUXURY_BALL, 10
+	giveitem_silent ITEM_LUXURY_BALL, 10
 	msgbox LNH_GiveBalls
 	closemessage
 	playfanfare MUS_FANFA1
@@ -101,7 +101,7 @@ LNH_Outro::
 	drawheadshot HEAD_LANETTE
 	goto_if_set FLAG_RYU_DS_LANETTE_PARTNERS, LNH_PartnerStayTheNight
 	msgbox LNH_NewTechnology
-	giveitem_std ITEM_TEACHY_TV
+	giveitem_silent ITEM_TEACHY_TV
 	msgbox LNH_AboutRemotePc
 	closemessage
 	setflag FLAG_RYU_DS_LANETTE_PARTNERS

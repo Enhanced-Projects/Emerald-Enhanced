@@ -176,7 +176,7 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_24BF96:: @ 824BF96
 	msgbox BattleFrontier_BattleDomeBattleRoom_Text_24CA44, MSGBOX_DEFAULT
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_24BF9E:: @ 824BF9E
-	special sub_8175280
+	special DoConfettiEffect
 	playse SE_W227B
 	call BattleFrontier_BattleDomeBattleRoom_EventScript_24C82E
 	delay 60
@@ -192,10 +192,10 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_24BFCC:: @ 824BFCC
 	return
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_24BFD5:: @ 824BFD5
-	dome_get DOME_DATA_6
+	dome_get DOME_DATA_ATTEMPTED_CHALLENGE     
 	compare VAR_RESULT, 0
 	goto_if_eq BattleFrontier_BattleDomeBattleRoom_EventScript_24C023
-	dome_get DOME_DATA_7
+	dome_get DOME_DATA_HAS_WON_CHALLENGE            
 	compare VAR_RESULT, 0
 	goto_if_eq BattleFrontier_BattleDomeBattleRoom_EventScript_24C076
 	dome_get DOME_DATA_WIN_STREAK_ACTIVE

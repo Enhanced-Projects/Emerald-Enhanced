@@ -733,7 +733,7 @@ struct
     [MENU_CANCEL1] = {gText_Cancel2, CursorCb_Cancel1},
     [MENU_ITEM] = {gText_Item, CursorCb_Item},
     [MENU_GIVE] = {gMenuText_Give, CursorCb_Give},
-    [MENU_TAKE_ITEM] = {gText_Take, CursorCb_TakeItem},
+    [MENU_TAKE_ITEM] = {gText_Take, CursorCb_removeitem},
     [MENU_MAIL] = {gText_Mail, CursorCb_Mail},
     [MENU_TAKE_MAIL] = {gText_Take2, CursorCb_TakeMail},
     [MENU_READ] = {gText_Read2, CursorCb_Read},
@@ -770,12 +770,12 @@ static const u8 sPartyMenuAction_SummaryCancel[] = {MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_EnterSummaryCancel[] = {MENU_ENTER, MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_NoEntrySummaryCancel[] = {MENU_NO_ENTRY, MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_StoreSummaryCancel[] = {MENU_STORE, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_GiveTakeItemCancel[] = {MENU_GIVE, MENU_TAKE_ITEM, MENU_CANCEL2};
+static const u8 sPartyMenuAction_GiveremoveitemCancel[] = {MENU_GIVE, MENU_TAKE_ITEM, MENU_CANCEL2};
 static const u8 sPartyMenuAction_ReadTakeMailCancel[] = {MENU_READ, MENU_TAKE_MAIL, MENU_CANCEL2};
 static const u8 sPartyMenuAction_RegisterSummaryCancel[] = {MENU_REGISTER, MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_TradeSummaryCancel1[] = {MENU_TRADE1, MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_TradeSummaryCancel2[] = {MENU_TRADE2, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_TakeItemTossCancel[] = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
+static const u8 sPartyMenuAction_removeitemTossCancel[] = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
 
 // IDs for the action lists that appear when a party mon is selected
 enum
@@ -793,7 +793,7 @@ enum
     ACTIONS_REGISTER,
     ACTIONS_TRADE,
     ACTIONS_SPIN_TRADE,
-    ACTIONS_TAKEITEM_TOSS
+    ACTIONS_removeitem_TOSS
 };
 
 static const u8 *const sPartyMenuActions[] =
@@ -806,12 +806,12 @@ static const u8 *const sPartyMenuActions[] =
     [ACTIONS_NO_ENTRY]      = sPartyMenuAction_NoEntrySummaryCancel,
     [ACTIONS_STORE]         = sPartyMenuAction_StoreSummaryCancel,
     [ACTIONS_SUMMARY_ONLY]  = sPartyMenuAction_SummaryCancel,
-    [ACTIONS_ITEM]          = sPartyMenuAction_GiveTakeItemCancel,
+    [ACTIONS_ITEM]          = sPartyMenuAction_GiveremoveitemCancel,
     [ACTIONS_MAIL]          = sPartyMenuAction_ReadTakeMailCancel,
     [ACTIONS_REGISTER]      = sPartyMenuAction_RegisterSummaryCancel,
     [ACTIONS_TRADE]         = sPartyMenuAction_TradeSummaryCancel1,
     [ACTIONS_SPIN_TRADE]    = sPartyMenuAction_TradeSummaryCancel2,
-    [ACTIONS_TAKEITEM_TOSS] = sPartyMenuAction_TakeItemTossCancel,
+    [ACTIONS_removeitem_TOSS] = sPartyMenuAction_removeitemTossCancel,
 };
 
 static const u8 sPartyMenuActionCounts[] =
@@ -824,12 +824,12 @@ static const u8 sPartyMenuActionCounts[] =
     [ACTIONS_NO_ENTRY]      = ARRAY_COUNT(sPartyMenuAction_NoEntrySummaryCancel),
     [ACTIONS_STORE]         = ARRAY_COUNT(sPartyMenuAction_StoreSummaryCancel),
     [ACTIONS_SUMMARY_ONLY]  = ARRAY_COUNT(sPartyMenuAction_SummaryCancel),
-    [ACTIONS_ITEM]          = ARRAY_COUNT(sPartyMenuAction_GiveTakeItemCancel),
+    [ACTIONS_ITEM]          = ARRAY_COUNT(sPartyMenuAction_GiveremoveitemCancel),
     [ACTIONS_MAIL]          = ARRAY_COUNT(sPartyMenuAction_ReadTakeMailCancel),
     [ACTIONS_REGISTER]      = ARRAY_COUNT(sPartyMenuAction_RegisterSummaryCancel),
     [ACTIONS_TRADE]         = ARRAY_COUNT(sPartyMenuAction_TradeSummaryCancel1),
     [ACTIONS_SPIN_TRADE]    = ARRAY_COUNT(sPartyMenuAction_TradeSummaryCancel2),
-    [ACTIONS_TAKEITEM_TOSS] = ARRAY_COUNT(sPartyMenuAction_TakeItemTossCancel)
+    [ACTIONS_removeitem_TOSS] = ARRAY_COUNT(sPartyMenuAction_removeitemTossCancel)
 };
 
 static const u16 sFieldMoves[] =
@@ -1192,7 +1192,7 @@ static const u8 *const sUnused_StatStrings[] =
     gText_Speed2
 };
 
-static const u16 sTMHMMoves[] =
+static const u16 sTMHMMoves[] = //TM MOVE TABLE
 {
     MOVE_FOCUS_PUNCH,
     MOVE_DRAGON_CLAW,
@@ -1244,12 +1244,18 @@ static const u16 sTMHMMoves[] =
     MOVE_SKILL_SWAP,
     MOVE_SNATCH,
     MOVE_OVERHEAT,
-    MOVE_CUT,
+    MOVE_STEALTH_ROCK,
     MOVE_FLY,
-    MOVE_SURF,
-    MOVE_STRENGTH,
-    MOVE_FLASH,
-    MOVE_ROCK_SMASH,
-    MOVE_WATERFALL,
+    MOVE_SEED_BOMB,
+    MOVE_SUCKER_PUNCH,
+    MOVE_DRAGON_PULSE,
+    MOVE_EARTH_POWER,
+    MOVE_KNOCK_OFF,
     MOVE_DIVE,
+    MOVE_IRON_HEAD,
+    MOVE_SUPERPOWER,
+    MOVE_GRAVEL_STORM,
+    MOVE_NONE,
+    MOVE_NONE,
+    MOVE_NONE,
 };

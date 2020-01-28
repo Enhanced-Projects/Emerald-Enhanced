@@ -59,11 +59,16 @@ RCR_SoloChamp::
 	case 11, RCR_ChallengerGiovanniSolo
 	case 12, RCR_ChallengerSigmaSolo
 	case 13, RCR_ChallengerJuanSolo
+	case 15, RCR_BOSSMODE
 
 RCR_ChooseOpponent::
+	specialvar VAR_RESULT, checkForOverlordRyuEncounter
+	compare VAR_RESULT, 1
+	call_if_eq RCR_OverlordRyuBossFight
 	special SpawnCameraObject
 	applymovement EVENT_OBJ_ID_CAMERA, RCR_CameraMove
 	waitmovement EVENT_OBJ_ID_CAMERA
+	goto_if_set FLAG_TEMP_A, RCR_BOSSMODE
 	random 9
 	switch VAR_RESULT
 	case 0, RCR_Opponent1
@@ -75,6 +80,13 @@ RCR_ChooseOpponent::
 	case 6, RCR_Opponent7
 	case 7, RCR_Opponent8
 	case 8, RCR_Opponent9
+	return
+
+RCR_OverlordRyuBossFight::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_return
+	playbgm MUS_REKKUU_KOURIN, 1
+	setflag FLAG_TEMP_A
+	setvar VAR_TEMP_5, 15
 	return
 	
 RCR_Opponent1::
@@ -214,6 +226,9 @@ RCR_ChallengerSteven::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	special GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerNorman::
@@ -226,6 +241,9 @@ RCR_ChallengerNorman::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	special GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerJohnatan::
@@ -238,6 +256,9 @@ RCR_ChallengerJohnatan::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	special GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerRobert::
@@ -250,6 +271,9 @@ RCR_ChallengerRobert::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	special GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerLance::
@@ -262,6 +286,9 @@ RCR_ChallengerLance::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	special GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerZod::
@@ -274,6 +301,9 @@ RCR_ChallengerZod::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	special GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerGiovanni::
@@ -286,6 +316,9 @@ RCR_ChallengerGiovanni::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	special GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 
 RCR_ChallengerSigma::
@@ -298,6 +331,9 @@ RCR_ChallengerSigma::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	special GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 
 RCR_ChallengerJuan::
@@ -310,8 +346,10 @@ RCR_ChallengerJuan::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	special GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
-
 	
 RCR_ChallengerStevenSolo::
 	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
@@ -384,9 +422,32 @@ RCR_ChallengerJuanSolo::
 	closemessage
 	trainerbattle_no_intro TRAINER_CHALLENGER_JUAN, RCR_Juan_DefeatText
 	goto RCR_FinishChallenge
+
+RCR_BOSSMODE::
+	applymovement 15, RCR_ChallengerApproach
+	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement EVENT_OBJ_ID_CAMERA
+	msgbox RCR_RYU_Intro
+	closemessage
+	setflag FLAG_RYU_MAX_SCALE
+	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
+	trainerbattle_no_intro TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText
+	special GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
+	clearflag FLAG_RYU_MAX_SCALE
+	call_if_unset FLAG_RYU_DEFEATED_OVERLORD, MawileMegaReward
+	goto RCR_FinishChallenge
+
+MawileMegaReward::
+	msgbox RyuGivesMawilite
+	giveitem_silent ITEM_MAWILITE
+	setflag FLAG_RYU_DEFEATED_OVERLORD
+	return
 	
 RCR_FinishChallenge::
 	msgbox RCR_PlayerRecordingInfo
+	addvar VAR_RYU_TITLE_DEFENSE_WINS, 1
 	closemessage
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
@@ -395,6 +456,46 @@ RCR_FinishChallenge::
 	waitmovement EVENT_OBJ_ID_PLAYER
 	warp MAP_EVER_GRANDE_CITY_HALL_OF_FAME, 255, 7, 16
 	end
+
+EGC_RYU_PLAYER_LOST::
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	playse SE_DOOR
+	fadescreenspeed FADE_TO_BLACK, 12
+	addobject 16
+	setobjectxy 16, 10, 8
+	applymovement 16, Common_Movement_FaceLeft
+	waitmovement 16
+	delay 10
+	fadescreen FADE_FROM_BLACK
+	applymovement 16, NurseTriage
+	waitmovement 16
+	delay 12
+	fadescreen FADE_TO_BLACK
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	clearflag FLAG_RYU_MAX_SCALE
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
+	msgbox EGC_PlayerLostMsg
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	goto_if_eq AT1_AltTeleport
+	delay 5
+	special RyuWarp
+	release
+	end
+
+NurseTriage:
+	walk_in_place_left
+	walk_in_place_up
+	walk_in_place_left
+	emote_exclamation_mark
+	step_end
+
+EGC_PlayerLostMsg:
+	.string " (The last thing you see is the\n nurse rushing to your aid before\l passing out...$"
+
+
+
 @==================Movement
 
 RCR_EnterThrone:
@@ -480,7 +581,20 @@ RCR_FollowerLanetteIntro::
 
 
 @==================challenger Text
-	
+
+RCR_RYU_Intro:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ryu: I'd say your chances of winning\nare about one in 8192.\lTime for you to learn your place!$"
+RyuGivesMawilite:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ryu: Nice! I was cheating and\n"
+	.string "you still won!\p"
+	.string "Congratulations on beating the final\n"
+	.string "boss of EMERALD ENHANCED.\p"
+	.string "Here, take this mega stone, it's\n"
+	.string "for my favorite pokemon!$"
+
+RCR_RYU_DefeatText:
+	.string "Even with my devhax...$"
+
 RCR_PlayerRecordingInfo:
 	.string "{PLAYER}:{COLOR LIGHT_BLUE}{SHADOW BLUE} You have lost the match.\pI will now go put the data\ninto the system.\pPlease come challenge me again!$"
 

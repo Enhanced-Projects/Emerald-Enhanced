@@ -45,12 +45,9 @@ static const u8 sDescriptionIds[][6] =
 static u8 GetPokenavMainMenuType(void)
 {
     u8 retVal = 0;
-    if (FlagGet(FLAG_ADDED_MATCH_CALL_TO_POKENAV))
-    { 
-        retVal = 1;
+
         if (FlagGet(FLAG_SYS_RIBBON_GET))
             retVal = 2;
-    }
     
     return retVal;
 }

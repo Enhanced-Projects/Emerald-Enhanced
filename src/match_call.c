@@ -115,854 +115,22 @@ static void PopulateBattleFrontierStreak(int, u8 *);
 
 static const struct MatchCallTrainerTextInfo sMatchCallTrainers[] =
 {
+    
     {
-        .trainerId = TRAINER_ROSE_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 8), TEXT_ID(2, 8), TEXT_ID(3, 8) },
-        .generalTextId = TEXT_ID(1, 3),
-        .battleFrontierRecordStreakTextIndex = 8,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 8),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 8),
+        .trainerId = 0,
     },
-    {
-        .trainerId = TRAINER_ANDRES_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 12), TEXT_ID(2, 12), TEXT_ID(3, 12) },
-        .generalTextId = TEXT_ID(1, 62),
-        .battleFrontierRecordStreakTextIndex = 12,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 12),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 12),
-    },
-    {
-        .trainerId = TRAINER_DUSTY_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 12), TEXT_ID(2, 12), TEXT_ID(3, 12) },
-        .generalTextId = TEXT_ID(1, 4),
-        .battleFrontierRecordStreakTextIndex = 12,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 12),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 12),
-    },
-    {
-        .trainerId = TRAINER_LOLA_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 2), TEXT_ID(2, 2), TEXT_ID(3, 2) },
-        .generalTextId = TEXT_ID(1, 5),
-        .battleFrontierRecordStreakTextIndex = 2,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 2),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 2),
-    },
-    {
-        .trainerId = TRAINER_RICKY_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 1), TEXT_ID(2, 1), TEXT_ID(3, 1) },
-        .generalTextId = TEXT_ID(1, 6),
-        .battleFrontierRecordStreakTextIndex = 1,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 1),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 1),
-    },
-    {
-        .trainerId = TRAINER_LILA_AND_ROY_1,
-        .unused = 4,
-        .battleTopicTextIds = { TEXT_ID(1, 1), TEXT_ID(2, 1), TEXT_ID(3, 1) },
-        .generalTextId = TEXT_ID(1, 61),
-        .battleFrontierRecordStreakTextIndex = 1,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 1),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 1),
-    },
-    {
-        .trainerId = TRAINER_CRISTIN_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 10), TEXT_ID(2, 10), TEXT_ID(3, 10) },
-        .generalTextId = TEXT_ID(1, 64),
-        .battleFrontierRecordStreakTextIndex = 10,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 10),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 10),
-    },
-    {
-        .trainerId = TRAINER_BROOKE_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 9), TEXT_ID(2, 9), TEXT_ID(3, 9) },
-        .generalTextId = TEXT_ID(1, 8),
-        .battleFrontierRecordStreakTextIndex = 9,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 9),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 9),
-    },
-    {
-        .trainerId = TRAINER_WILTON_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 6), TEXT_ID(2, 6), TEXT_ID(3, 6) },
-        .generalTextId = TEXT_ID(1, 7),
-        .battleFrontierRecordStreakTextIndex = 6,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 6),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 6),
-    },
-    {
-        .trainerId = TRAINER_VALERIE_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 8), TEXT_ID(2, 8), TEXT_ID(3, 8) },
-        .generalTextId = TEXT_ID(1, 9),
-        .battleFrontierRecordStreakTextIndex = 8,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 8),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 8),
-    },
-    {
-        .trainerId = TRAINER_CINDY_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 8), TEXT_ID(2, 8), TEXT_ID(3, 8) },
-        .generalTextId = TEXT_ID(1, 10),
-        .battleFrontierRecordStreakTextIndex = 8,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 8),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 8),
-    },
-    {
-        .trainerId = TRAINER_THALIA_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 8), TEXT_ID(2, 10), TEXT_ID(3, 10) },
-        .generalTextId = TEXT_ID(1, 14),
-        .battleFrontierRecordStreakTextIndex = 10,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 8),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 10),
-    },
-    {
-        .trainerId = TRAINER_JESSICA_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 10), TEXT_ID(2, 10), TEXT_ID(3, 10) },
-        .generalTextId = TEXT_ID(1, 11),
-        .battleFrontierRecordStreakTextIndex = 10,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 8),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 10),
-    },
-    {
-        .trainerId = TRAINER_WINSTON_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 4), TEXT_ID(2, 4), TEXT_ID(3, 4) },
-        .generalTextId = TEXT_ID(1, 12),
-        .battleFrontierRecordStreakTextIndex = 4,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 4),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 4),
-    },
-    {
-        .trainerId = TRAINER_STEVE_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 7), TEXT_ID(2, 7), TEXT_ID(3, 7) },
-        .generalTextId = TEXT_ID(1, 13),
-        .battleFrontierRecordStreakTextIndex = 7,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 7),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 7),
-    },
-    {
-        .trainerId = TRAINER_TONY_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 5), TEXT_ID(2, 5), TEXT_ID(3, 5) },
-        .generalTextId = TEXT_ID(1, 15),
-        .battleFrontierRecordStreakTextIndex = 5,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 5),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 5),
-    },
-    {
-        .trainerId = TRAINER_NOB_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 3), TEXT_ID(2, 3), TEXT_ID(3, 3) },
-        .generalTextId = TEXT_ID(1, 16),
-        .battleFrontierRecordStreakTextIndex = 3,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 3),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 3),
-    },
-    {
-        .trainerId = TRAINER_KOJI_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 3), TEXT_ID(2, 3), TEXT_ID(3, 3) },
-        .generalTextId = TEXT_ID(1, 59),
-        .battleFrontierRecordStreakTextIndex = 3,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 3),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 3),
-    },
-    {
-        .trainerId = TRAINER_FERNANDO_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 6), TEXT_ID(2, 6), TEXT_ID(3, 6) },
-        .generalTextId = TEXT_ID(1, 17),
-        .battleFrontierRecordStreakTextIndex = 6,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 6),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 6),
-    },
-    {
-        .trainerId = TRAINER_DALTON_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 4), TEXT_ID(2, 4), TEXT_ID(3, 4) },
-        .generalTextId = TEXT_ID(1, 18),
-        .battleFrontierRecordStreakTextIndex = 4,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 4),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 4),
-    },
-    {
-        .trainerId = TRAINER_BERNIE_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 11), TEXT_ID(2, 11), TEXT_ID(3, 11) },
-        .generalTextId = TEXT_ID(1, 19),
-        .battleFrontierRecordStreakTextIndex = 11,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 11),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 11),
-    },
-    {
-        .trainerId = TRAINER_ETHAN_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 1), TEXT_ID(2, 1), TEXT_ID(3, 1) },
-        .generalTextId = TEXT_ID(1, 20),
-        .battleFrontierRecordStreakTextIndex = 1,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 1),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 1),
-    },
-    {
-        .trainerId = TRAINER_JOHN_AND_JAY_1,
-        .unused = 3,
-        .battleTopicTextIds = { TEXT_ID(1, 12), TEXT_ID(2, 12), TEXT_ID(3, 12) },
-        .generalTextId = TEXT_ID(1, 60),
-        .battleFrontierRecordStreakTextIndex = 12,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 12),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 12),
-    },
-    {
-        .trainerId = TRAINER_JEFFREY_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 7), TEXT_ID(2, 7), TEXT_ID(3, 7) },
-        .generalTextId = TEXT_ID(1, 21),
-        .battleFrontierRecordStreakTextIndex = 7,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 7),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 7),
-    },
-    {
-        .trainerId = TRAINER_CAMERON_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 4), TEXT_ID(2, 4), TEXT_ID(3, 4) },
-        .generalTextId = TEXT_ID(1, 22),
-        .battleFrontierRecordStreakTextIndex = 1,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 4),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 4),
-    },
-    {
-        .trainerId = TRAINER_JACKI_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 8), TEXT_ID(2, 8), TEXT_ID(3, 8) },
-        .generalTextId = TEXT_ID(1, 23),
-        .battleFrontierRecordStreakTextIndex = 8,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 8),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 8),
-    },
-    {
-        .trainerId = TRAINER_WALTER_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 12), TEXT_ID(2, 12), TEXT_ID(3, 12) },
-        .generalTextId = TEXT_ID(1, 24),
-        .battleFrontierRecordStreakTextIndex = 12,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 12),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 12),
-    },
-    {
-        .trainerId = TRAINER_KAREN_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 2), TEXT_ID(2, 2), TEXT_ID(3, 2) },
-        .generalTextId = TEXT_ID(1, 26),
-        .battleFrontierRecordStreakTextIndex = 2,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 2),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 2),
-    },
-    {
-        .trainerId = TRAINER_JERRY_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 1), TEXT_ID(2, 1), TEXT_ID(3, 1) },
-        .generalTextId = TEXT_ID(1, 25),
-        .battleFrontierRecordStreakTextIndex = 1,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 1),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 1),
-    },
-    {
-        .trainerId = TRAINER_ANNA_AND_MEG_1,
-        .unused = 6,
-        .battleTopicTextIds = { TEXT_ID(1, 9), TEXT_ID(2, 9), TEXT_ID(3, 9) },
-        .generalTextId = TEXT_ID(1, 27),
-        .battleFrontierRecordStreakTextIndex = 9,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 9),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 9),
-    },
-    {
-        .trainerId = TRAINER_ISABEL_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 14), TEXT_ID(2, 14), TEXT_ID(3, 14) },
-        .generalTextId = TEXT_ID(1, 29),
-        .battleFrontierRecordStreakTextIndex = 14,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 14),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 14),
-    },
-    {
-        .trainerId = TRAINER_MIGUEL_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 11), TEXT_ID(2, 11), TEXT_ID(3, 11) },
-        .generalTextId = TEXT_ID(1, 28),
-        .battleFrontierRecordStreakTextIndex = 11,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 11),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 11),
-    },
-    {
-        .trainerId = TRAINER_TIMOTHY_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 12), TEXT_ID(2, 12), TEXT_ID(3, 12) },
-        .generalTextId = TEXT_ID(1, 30),
-        .battleFrontierRecordStreakTextIndex = 12,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 12),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 12),
-    },
-    {
-        .trainerId = TRAINER_SHELBY_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 13), TEXT_ID(2, 13), TEXT_ID(3, 13) },
-        .generalTextId = TEXT_ID(1, 31),
-        .battleFrontierRecordStreakTextIndex = 13,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 13),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 13),
-    },
-    {
-        .trainerId = TRAINER_CALVIN_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 1), TEXT_ID(2, 1), TEXT_ID(3, 1) },
-        .generalTextId = TEXT_ID(1, 32),
-        .battleFrontierRecordStreakTextIndex = 1,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 1),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 1),
-    },
-    {
-        .trainerId = TRAINER_ELLIOT_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 3), TEXT_ID(2, 3), TEXT_ID(3, 3) },
-        .generalTextId = TEXT_ID(1, 33),
-        .battleFrontierRecordStreakTextIndex = 3,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 3),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 3),
-    },
-    {
-        .trainerId = TRAINER_ISAIAH_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 5), TEXT_ID(2, 5), TEXT_ID(3, 5) },
-        .generalTextId = TEXT_ID(1, 38),
-        .battleFrontierRecordStreakTextIndex = 5,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 5),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 5),
-    },
-    {
-        .trainerId = TRAINER_MARIA_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 9), TEXT_ID(2, 9), TEXT_ID(3, 9) },
-        .generalTextId = TEXT_ID(1, 37),
-        .battleFrontierRecordStreakTextIndex = 9,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 9),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 9),
-    },
-    {
-        .trainerId = TRAINER_ABIGAIL_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 9), TEXT_ID(2, 9), TEXT_ID(3, 9) },
-        .generalTextId = TEXT_ID(1, 35),
-        .battleFrontierRecordStreakTextIndex = 9,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 9),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 9),
-    },
-    {
-        .trainerId = TRAINER_DYLAN_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 5), TEXT_ID(2, 5), TEXT_ID(3, 5) },
-        .generalTextId = TEXT_ID(1, 36),
-        .battleFrontierRecordStreakTextIndex = 5,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 5),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 5),
-    },
-    {
-        .trainerId = TRAINER_KATELYN_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 9), TEXT_ID(2, 9), TEXT_ID(3, 9) },
-        .generalTextId = TEXT_ID(1, 40),
-        .battleFrontierRecordStreakTextIndex = 9,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 9),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 9),
-    },
-    {
-        .trainerId = TRAINER_BENJAMIN_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 5), TEXT_ID(2, 5), TEXT_ID(3, 5) },
-        .generalTextId = TEXT_ID(1, 34),
-        .battleFrontierRecordStreakTextIndex = 5,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 5),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 5),
-    },
-    {
-        .trainerId = TRAINER_PABLO_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 5), TEXT_ID(2, 5), TEXT_ID(3, 5) },
-        .generalTextId = TEXT_ID(1, 39),
-        .battleFrontierRecordStreakTextIndex = 5,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 5),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 5),
-    },
-    {
-        .trainerId = TRAINER_NICOLAS_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 4), TEXT_ID(2, 4), TEXT_ID(3, 4) },
-        .generalTextId = TEXT_ID(1, 41),
-        .battleFrontierRecordStreakTextIndex = 4,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 4),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 4),
-    },
-    {
-        .trainerId = TRAINER_ROBERT_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 6), TEXT_ID(2, 6), TEXT_ID(3, 6) },
-        .generalTextId = TEXT_ID(1, 42),
-        .battleFrontierRecordStreakTextIndex = 6,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 6),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 6),
-    },
-    {
-        .trainerId = TRAINER_LAO_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 1), TEXT_ID(2, 1), TEXT_ID(3, 1) },
-        .generalTextId = TEXT_ID(1, 43),
-        .battleFrontierRecordStreakTextIndex = 1,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 1),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 1),
-    },
-    {
-        .trainerId = TRAINER_CYNDY_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 9), TEXT_ID(2, 9), TEXT_ID(3, 9) },
-        .generalTextId = TEXT_ID(1, 44),
-        .battleFrontierRecordStreakTextIndex = 9,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 9),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 9),
-    },
-    {
-        .trainerId = TRAINER_MADELINE_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 8), TEXT_ID(2, 8), TEXT_ID(3, 8) },
-        .generalTextId = TEXT_ID(1, 45),
-        .battleFrontierRecordStreakTextIndex = 8,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 8),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 8),
-    },
-    {
-        .trainerId = TRAINER_JENNY_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 9), TEXT_ID(2, 9), TEXT_ID(3, 9) },
-        .generalTextId = TEXT_ID(1, 46),
-        .battleFrontierRecordStreakTextIndex = 9,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 9),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 9),
-    },
-    {
-        .trainerId = TRAINER_DIANA_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 2), TEXT_ID(2, 2), TEXT_ID(3, 2) },
-        .generalTextId = TEXT_ID(1, 47),
-        .battleFrontierRecordStreakTextIndex = 2,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 2),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 2),
-    },
-    {
-        .trainerId = TRAINER_AMY_AND_LIV_1,
-        .unused = 2,
-        .battleTopicTextIds = { TEXT_ID(1, 2), TEXT_ID(2, 2), TEXT_ID(3, 2) },
-        .generalTextId = TEXT_ID(1, 48),
-        .battleFrontierRecordStreakTextIndex = 1,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 2),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 2),
-    },
-    {
-        .trainerId = TRAINER_ERNEST_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 3), TEXT_ID(2, 3), TEXT_ID(3, 3) },
-        .generalTextId = TEXT_ID(1, 49),
-        .battleFrontierRecordStreakTextIndex = 3,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 3),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 3),
-    },
-    {
-        .trainerId = TRAINER_CORY_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 3), TEXT_ID(2, 3), TEXT_ID(3, 3) },
-        .generalTextId = TEXT_ID(1, 63),
-        .battleFrontierRecordStreakTextIndex = 3,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 3),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 3),
-    },
-    {
-        .trainerId = TRAINER_EDWIN_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 7), TEXT_ID(2, 7), TEXT_ID(3, 7) },
-        .generalTextId = TEXT_ID(1, 50),
-        .battleFrontierRecordStreakTextIndex = 7,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 7),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 7),
-    },
-    {
-        .trainerId = TRAINER_LYDIA_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 8), TEXT_ID(2, 8), TEXT_ID(3, 8) },
-        .generalTextId = TEXT_ID(1, 52),
-        .battleFrontierRecordStreakTextIndex = 8,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 8),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 8),
-    },
-    {
-        .trainerId = TRAINER_ISAAC_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 5), TEXT_ID(2, 5), TEXT_ID(3, 5) },
-        .generalTextId = TEXT_ID(1, 51),
-        .battleFrontierRecordStreakTextIndex = 5,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 5),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 5),
-    },
-    {
-        .trainerId = TRAINER_GABRIELLE_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 8), TEXT_ID(2, 8), TEXT_ID(3, 8) },
-        .generalTextId = TEXT_ID(1, 2),
-        .battleFrontierRecordStreakTextIndex = 8,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 8),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 8),
-    },
-    {
-        .trainerId = TRAINER_CATHERINE_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 9), TEXT_ID(2, 9), TEXT_ID(3, 9) },
-        .generalTextId = TEXT_ID(1, 54),
-        .battleFrontierRecordStreakTextIndex = 9,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 9),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 9),
-    },
-    {
-        .trainerId = TRAINER_JACKSON_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 5), TEXT_ID(2, 5), TEXT_ID(3, 5) },
-        .generalTextId = TEXT_ID(1, 53),
-        .battleFrontierRecordStreakTextIndex = 5,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 5),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 5),
-    },
-    {
-        .trainerId = TRAINER_HALEY_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 2), TEXT_ID(2, 2), TEXT_ID(3, 2) },
-        .generalTextId = TEXT_ID(1, 55),
-        .battleFrontierRecordStreakTextIndex = 2,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 2),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 2),
-    },
-    {
-        .trainerId = TRAINER_JAMES_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 1), TEXT_ID(2, 1), TEXT_ID(3, 1) },
-        .generalTextId = TEXT_ID(1, 56),
-        .battleFrontierRecordStreakTextIndex = 1,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 1),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 1),
-    },
-    {
-        .trainerId = TRAINER_TRENT_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 3), TEXT_ID(2, 3), TEXT_ID(3, 3) },
-        .generalTextId = TEXT_ID(1, 57),
-        .battleFrontierRecordStreakTextIndex = 3,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 3),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 3),
-    },
-    {
-        .trainerId = TRAINER_SAWYER_1,
-        .unused = 0,
-        .battleTopicTextIds = { TEXT_ID(1, 15), TEXT_ID(2, 3), TEXT_ID(3, 3) },
-        .generalTextId = TEXT_ID(1, 1),
-        .battleFrontierRecordStreakTextIndex = 3,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 3),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 3),
-    },
-    {
-        .trainerId = TRAINER_KIRA_AND_DAN_1,
-        .unused = 1,
-        .battleTopicTextIds = { TEXT_ID(1, 9), TEXT_ID(2, 9), TEXT_ID(3, 9) },
-        .generalTextId = TEXT_ID(1, 58),
-        .battleFrontierRecordStreakTextIndex = 9,
-        .sameRouteMatchCallTextId = TEXT_ID(1, 9),
-        .differentRouteMatchCallTextId = TEXT_ID(2, 9),
-    },
-};
-
-static const struct MatchCallText sMatchCallWildBattleTexts[] =
-{
-    { .text = MatchCall_WildBattleText1,  .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText2,  .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText3,  .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText4,  .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText5,  .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText6,  .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText7,  .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText8,  .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText9,  .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText10, .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText11, .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText12, .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText13, .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText14, .stringVarFuncIds = { 0, 2, -1 } },
-    { .text = MatchCall_WildBattleText15, .stringVarFuncIds = { 0, 2, -1 } },
-};
-
- static const struct MatchCallText sMatchCallNegativeBattleTexts[] =
- {
-    { .text = MatchCall_NegativeBattleText1,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText2,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText3,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText4,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText5,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText6,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText7,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText8,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText9,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText10, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText11, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText12, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText13, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_NegativeBattleText14, .stringVarFuncIds = { 0, -1, -1 } },
-};
-
-static const struct MatchCallText sMatchCallPositiveBattleTexts[] =
-{
-    { .text = MatchCall_PositiveBattleText1,  .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText2,  .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText3,  .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText4,  .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText5,  .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText6,  .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText7,  .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText8,  .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText9,  .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText10, .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText11, .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText12, .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText13, .stringVarFuncIds = { 0, 3, -1 } },
-    { .text = MatchCall_PositiveBattleText14, .stringVarFuncIds = { 0, 3, -1 } },
-};
-
-static const struct MatchCallText sMatchCallSameRouteBattleRequestTexts[] =
-{
-    { .text = MatchCall_SameRouteBattleRequestText1,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText2,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText3,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText4,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText5,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText6,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText7,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText8,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText9,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText10, .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText11, .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText12, .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText13, .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_SameRouteBattleRequestText14, .stringVarFuncIds = { 0, 1, -1 } },
-};
-
-static const struct MatchCallText sMatchCallDifferentRouteBattleRequestTexts[] =
-{
-    { .text = MatchCall_DifferentRouteBattleRequestText1,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText2,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText3,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText4,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText5,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText6,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText7,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText8,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText9,  .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText10, .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText11, .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText12, .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText13, .stringVarFuncIds = { 0, 1, -1 } },
-    { .text = MatchCall_DifferentRouteBattleRequestText14, .stringVarFuncIds = { 0, 1, -1 } },
-};
-
-static const struct MatchCallText sMatchCallPersonalizedTexts[] =
-{
-    { .text = MatchCall_PersonalizedText1,  .stringVarFuncIds = { 0,  1, -1 } },
-    { .text = MatchCall_PersonalizedText2,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText3,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText4,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText5,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText6,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText7,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText8,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText9,  .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText10, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText11, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText12, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText13, .stringVarFuncIds = { 0,  2, -1 } },
-    { .text = MatchCall_PersonalizedText14, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText15, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText16, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText17, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText18, .stringVarFuncIds = { 0,  3, -1 } },
-    { .text = MatchCall_PersonalizedText19, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText20, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText21, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText22, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText23, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText24, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText25, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText26, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText27, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText28, .stringVarFuncIds = { 0,  3, -1 } },
-    { .text = MatchCall_PersonalizedText29, .stringVarFuncIds = { 0,  3, -1 } },
-    { .text = MatchCall_PersonalizedText30, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText31, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText32, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText33, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText34, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText35, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText36, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText37, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText38, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText39, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText40, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText41, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText42, .stringVarFuncIds = { 0,  3, -1 } },
-    { .text = MatchCall_PersonalizedText43, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText44, .stringVarFuncIds = { 0,  3, -1 } },
-    { .text = MatchCall_PersonalizedText45, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText46, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText47, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText48, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText49, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText50, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText51, .stringVarFuncIds = { 0,  1, -1 } },
-    { .text = MatchCall_PersonalizedText52, .stringVarFuncIds = { 0,  3, -1 } },
-    { .text = MatchCall_PersonalizedText53, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText54, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText55, .stringVarFuncIds = { 0,  1, -1 } },
-    { .text = MatchCall_PersonalizedText56, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText57, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText58, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText59, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText60, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText61, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText62, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText63, .stringVarFuncIds = { 0, -1, -1 } },
-    { .text = MatchCall_PersonalizedText64, .stringVarFuncIds = { 0, -1, -1 } },
-};
-
-static const struct MatchCallText sMatchCallBattleFrontierStreakTexts[] =
-{
-    { .text = MatchCall_BattleFrontierStreakText1,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText2,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText3,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText4,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText5,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText6,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText7,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText8,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText9,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText10, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText11, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText12, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText13, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierStreakText14, .stringVarFuncIds = { 0, 4, 5 } },
-};
-
-static const struct MatchCallText sMatchCallBattleFrontierRecordStreakTexts[] =
-{
-    { .text = MatchCall_BattleFrontierRecordStreakText1,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText2,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText3,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText4,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText5,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText6,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText7,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText8,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText9,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText10, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText11, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText12, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText13, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleFrontierRecordStreakText14, .stringVarFuncIds = { 0, 4, 5 } },
-};
-
-static const struct MatchCallText sMatchCallBattleDomeTexts[] =
-{
-    { .text = MatchCall_BattleDomeText1,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText2,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText3,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText4,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText5,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText6,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText7,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText8,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText9,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText10, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText11, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText12, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText13, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattleDomeText14, .stringVarFuncIds = { 0, 4, 5 } },
-};
-
-static const struct MatchCallText sMatchCallBattlePikeTexts[] =
-{
-    { .text = MatchCall_BattlePikeText1,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText2,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText3,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText4,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText5,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText6,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText7,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText8,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText9,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText10, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText11, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText12, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText13, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePikeText14, .stringVarFuncIds = { 0, 4, 5 } },
-};
-
-static const struct MatchCallText sMatchCallBattlePyramidTexts[] =
-{
-    { .text = MatchCall_BattlePyramidText1,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText2,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText3,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText4,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText5,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText6,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText7,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText8,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText9,  .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText10, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText11, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText12, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText13, .stringVarFuncIds = { 0, 4, 5 } },
-    { .text = MatchCall_BattlePyramidText14, .stringVarFuncIds = { 0, 4, 5 } },
 };
 
 static const struct MatchCallText *const sMatchCallBattleTopics[] =
 {
-    sMatchCallWildBattleTexts,
-    sMatchCallNegativeBattleTexts,
-    sMatchCallPositiveBattleTexts,
 };
 
 static const struct MatchCallText *const sMatchCallBattleRequestTopics[] =
 {
-    sMatchCallSameRouteBattleRequestTexts,
-    sMatchCallDifferentRouteBattleRequestTexts,
 };
 
 static const struct MatchCallText *const sMatchCallGeneralTopics[] =
 {
-    sMatchCallPersonalizedTexts,
-    sMatchCallBattleFrontierStreakTexts,
-    sMatchCallBattleFrontierRecordStreakTexts,
-    sMatchCallBattleDomeTexts,
-    sMatchCallBattlePikeTexts,
-    sMatchCallBattlePyramidTexts,
 };
 
 extern const u8 gBirchDexRatingText_AreYouCurious[];
@@ -971,9 +139,9 @@ extern const u8 gBirchDexRatingText_OnANationwideBasis[];
 
 void InitMatchCallCounters(void)
 {
-    RtcCalcLocalTime();
-    gMatchCallState.minutes = GetCurrentTotalMinutes(&gLocalTime) + 10;
-    gMatchCallState.stepCounter = 0;
+    //RtcCalcLocalTime();
+    //gMatchCallState.minutes = GetCurrentTotalMinutes(&gLocalTime) + 10;
+    //gMatchCallState.stepCounter = 0;
 }
 
 static u32 GetCurrentTotalMinutes(struct Time *time)
@@ -983,106 +151,106 @@ static u32 GetCurrentTotalMinutes(struct Time *time)
 
 static bool32 UpdateMatchCallMinutesCounter(void)
 {
-    int curMinutes;
-    RtcCalcLocalTime();
-    curMinutes = GetCurrentTotalMinutes(&gLocalTime);
-    if (gMatchCallState.minutes > curMinutes || curMinutes - gMatchCallState.minutes > 9)
-    {
-        gMatchCallState.minutes = curMinutes;
-        return TRUE;
-    }
-
+    //int curMinutes;
+    //RtcCalcLocalTime();
+    //curMinutes = GetCurrentTotalMinutes(&gLocalTime);
+    //if (gMatchCallState.minutes > curMinutes || curMinutes - gMatchCallState.minutes > 9)
+    //{
+    //    gMatchCallState.minutes = curMinutes;
+    //    return TRUE;
+    //}
+    //
     return FALSE;
 }
 
 static bool32 CheckMatchCallChance(void)
 {
-    int callChance = 1;
-    if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG) && GetMonAbility(&gPlayerParty[0]) == ABILITY_LIGHTNING_ROD)
-        callChance = 2;
-    
-    if (Random() % 10 < callChance * 3) 
-        return TRUE;
-    else
-        return FALSE;
+    //int callChance = 1;
+    //if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG) && GetMonAbility(&gPlayerParty[0]) == ABILITY_LIGHTNING_ROD)
+    //    callChance = 2;
+    //
+    //if (Random() % 10 < callChance * 3) 
+    //    return TRUE;
+    //else
+    return FALSE;
 }
 
 static bool32 MapAllowsMatchCall(void)
 {
-    if (!Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) || gMapHeader.regionMapSectionId == MAPSEC_SAFARI_ZONE)
-        return FALSE;
-    
-    if (gMapHeader.regionMapSectionId == MAPSEC_SOOTOPOLIS_CITY
-     && FlagGet(FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA) == TRUE)
-        return FALSE;
-
-    if (gMapHeader.regionMapSectionId == MAPSEC_MT_CHIMNEY
-     && FlagGet(FLAG_MET_ARCHIE_METEOR_FALLS) == TRUE
-     && FlagGet(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY) == FALSE)
-        return FALSE;
-
-    return TRUE;
+    //if (!Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) || gMapHeader.regionMapSectionId == MAPSEC_SAFARI_ZONE)
+    //    return FALSE;
+    //
+    //if (gMapHeader.regionMapSectionId == MAPSEC_SOOTOPOLIS_CITY
+    // && FlagGet(FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA) == TRUE)
+    //    return FALSE;
+    //
+    //if (gMapHeader.regionMapSectionId == MAPSEC_MT_CHIMNEY
+    // && FlagGet(FLAG_MET_ARCHIE_METEOR_FALLS) == TRUE
+    // && FlagGet(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY) == FALSE)
+    //    return FALSE;
+    //
+    return FALSE;
 }
 
 static bool32 UpdateMatchCallStepCounter(void)
 {
-    if (++gMatchCallState.stepCounter >= 10)
-    {
-        gMatchCallState.stepCounter = 0;
-        return TRUE;
-    }
-    else
-    {
-        return FALSE;
-    }
+    //if (++gMatchCallState.stepCounter >= 10)
+    //{
+    //    gMatchCallState.stepCounter = 0;
+    //    return TRUE;
+    //}
+    //else
+    //{
+    return FALSE;
+    //}
 }
 
 static bool32 SelectMatchCallTrainer(void)
 {
-    u32 matchCallId;
-    u32 numRegistered = GetNumRegisteredNPCs();
-    if (!numRegistered)
-        return FALSE;
-
-    gMatchCallState.trainerId = GetActiveMatchCallTrainerId(Random() % numRegistered);
-    gMatchCallState.triggeredFromScript = 0;
-    if (gMatchCallState.trainerId == REMATCH_TABLE_ENTRIES)
-        return FALSE;
-
-    matchCallId = GetTrainerMatchCallId(gMatchCallState.trainerId);
-    if (GetRematchTrainerLocation(matchCallId) == gMapHeader.regionMapSectionId && !TrainerIsEligibleForRematch(matchCallId))
-        return FALSE;
-
-    return TRUE;
+    //u32 matchCallId;
+    //u32 numRegistered = GetNumRegisteredNPCs();
+    //if (!numRegistered)
+    //    return FALSE;
+    //
+    //gMatchCallState.trainerId = GetActiveMatchCallTrainerId(Random() % numRegistered);
+    //gMatchCallState.triggeredFromScript = 0;
+    //if (gMatchCallState.trainerId == REMATCH_TABLE_ENTRIES)
+    //    return FALSE;
+    //
+    //matchCallId = GetTrainerMatchCallId(gMatchCallState.trainerId);
+    //if (GetRematchTrainerLocation(matchCallId) == gMapHeader.regionMapSectionId && !TrainerIsEligibleForRematch(matchCallId))
+    //    return FALSE;
+    //
+    return FALSE;
 }
 
 static u32 GetNumRegisteredNPCs(void)
 {
-    u32 i, count;
-    for (i = 0, count = 0; i < REMATCH_SPECIAL_TRAINER_START; i++)
-    {
-        if (FlagGet(FLAG_MATCH_CALL_REGISTERED + i))
-            count++;
-    }
-
-    return count;
+    //u32 i, count;
+    //for (i = 0, count = 0; i < REMATCH_SPECIAL_TRAINER_START; i++)
+    //{
+    //    if (FlagGet(FLAG_MATCH_CALL_REGISTERED + i))
+    //        count++;
+    //}
+    //
+    return 0;
 }
 
 static u32 GetActiveMatchCallTrainerId(u32 activeMatchCallId)
 {
-    u32 i;
-    for (i = 0; i < REMATCH_SPECIAL_TRAINER_START; i++)
-    {
-        if (FlagGet(FLAG_MATCH_CALL_REGISTERED + i))
-        {
-            if (!activeMatchCallId)
-                return gRematchTable[i].trainerIds[0];
-
-            activeMatchCallId--;
-        }
-    }
-
-    return REMATCH_TABLE_ENTRIES;
+    //u32 i;
+    //for (i = 0; i < REMATCH_SPECIAL_TRAINER_START; i++)
+    //{
+    //    if (FlagGet(FLAG_MATCH_CALL_REGISTERED + i))
+    //    {
+    //        if (!activeMatchCallId)
+    //            return gRematchTable[i].trainerIds[0];
+    //
+    //        activeMatchCallId--;
+    //    }
+    //}
+    //
+    return 0;
 }
 
 bool32 TryStartMatchCall(void)
@@ -1364,7 +532,7 @@ static void sub_8196694(u8 taskId)
 
 static bool32 TrainerIsEligibleForRematch(int matchCallId)
 {
-    return gSaveBlock1Ptr->trainerRematches[matchCallId] > 0;
+    return 0; //gSaveBlock1Ptr->trainerRematches[matchCallId] > 0;
 }
 
 static u16 GetRematchTrainerLocation(int matchCallId)
@@ -1375,14 +543,14 @@ static u16 GetRematchTrainerLocation(int matchCallId)
 
 static u32 GetNumRematchTrainersFought(void)
 {
-    u32 i, count;
-    for (i = 0, count = 0; i < REMATCH_SPECIAL_TRAINER_START; i++)
-    {
-        if (HasTrainerBeenFought(gRematchTable[i].trainerIds[0]))
-            count++;
-    }
+    //u32 i, count;
+    //for (i = 0, count = 0; i < REMATCH_SPECIAL_TRAINER_START; i++)
+    //{
+    //    if (HasTrainerBeenFought(gRematchTable[i].trainerIds[0]))
+    //        count++;
+    //}
 
-    return count;
+    return 0;
 }
 
 static u32 sub_8196774(int arg0)

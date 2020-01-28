@@ -62,8 +62,8 @@ RusturfTunnel_EventScript_ClearTunnelScene:: @ 822CEAE
 	call_if_eq RusturfTunnel_EventScript_WandasBoyfriendApproachPlayer
 	compare VAR_TEMP_1, 3
 	call_if_eq RusturfTunnel_EventScript_WandasBoyfriendApproachPlayer
-	giveitem_std ITEM_HM04
-	setflag FLAG_RECEIVED_HM04
+	giveitem ITEM_TM54
+	setflag FLAG_RECEIVED_TM54
 	msgbox RusturfTunnel_Text_ExplainStrength, MSGBOX_DEFAULT
 	closemessage
 	compare VAR_TEMP_1, 1
@@ -315,7 +315,7 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	msgbox RusturfTunnel_Text_GruntIntro, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, RusturfTunnel_Text_GruntDefeat
 	msgbox RusturfTunnel_Text_GruntTakePackage, MSGBOX_DEFAULT
-	giveitem_std ITEM_DEVON_GOODS
+	giveitem_silent ITEM_DEVON_GOODS
 	closemessage
 	applymovement EVENT_OBJ_ID_PLAYER, RusturfTunnel_Movement_PushPlayerAsideForGrunt
 	applymovement 3, RusturfTunnel_Movement_GruntEscape

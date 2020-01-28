@@ -490,7 +490,7 @@ bool8 ScrCmd_random(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_giveitem(struct ScriptContext *ctx)
+bool8 ScrCmd_additem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
     u32 quantity = VarGet(ScriptReadHalfword(ctx));
@@ -499,7 +499,7 @@ bool8 ScrCmd_giveitem(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_takeitem(struct ScriptContext *ctx)
+bool8 ScrCmd_removeitem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
     u32 quantity = VarGet(ScriptReadHalfword(ctx));
@@ -534,7 +534,7 @@ bool8 ScrCmd_checkitemtype(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_givepcitem(struct ScriptContext *ctx)
+bool8 ScrCmd_addpcitem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
     u16 quantity = VarGet(ScriptReadHalfword(ctx));
@@ -552,7 +552,7 @@ bool8 ScrCmd_checkpcitem(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_givedecoration(struct ScriptContext *ctx)
+bool8 ScrCmd_adddecoration(struct ScriptContext *ctx)
 {
     u32 decorId = VarGet(ScriptReadHalfword(ctx));
 
@@ -560,7 +560,7 @@ bool8 ScrCmd_givedecoration(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_takedecoration(struct ScriptContext *ctx)
+bool8 ScrCmd_removedecoration(struct ScriptContext *ctx)
 {
     u32 decorId = VarGet(ScriptReadHalfword(ctx));
 
@@ -1210,27 +1210,14 @@ bool8 ScrCmd_turnvobject(struct ScriptContext *ctx)
 
 bool8 ScrCmd_lockall(struct ScriptContext *ctx)
 {
-    if (IsUpdateLinkStateCBActive())
-    {
-        return FALSE;
-    }
-    else
-    {  
         ScriptContext2_RunNewScript(RyuResetFollowerPosition);
         ScriptFreezeEventObjects();
         SetupNativeScript(ctx, sub_80983C4);
         return TRUE;
-    }
 }
 
 bool8 ScrCmd_lock(struct ScriptContext *ctx)
 {
-    if (IsUpdateLinkStateCBActive())
-    {
-        return FALSE;
-    }
-    else
-    {
         ScriptContext2_RunNewScript(RyuResetFollowerPosition);
 
         if (gEventObjects[gSelectedEventObject].active)
@@ -1243,8 +1230,8 @@ bool8 ScrCmd_lock(struct ScriptContext *ctx)
             ScriptFreezeEventObjects();
             SetupNativeScript(ctx, sub_80983C4);
         }
-        return TRUE;
-    }
+
+    return TRUE;
 }
 
 bool8 ScrCmd_releaseall(struct ScriptContext *ctx)
@@ -1733,14 +1720,14 @@ bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_givemoney(struct ScriptContext *ctx)
+bool8 ScrCmd_addmoney(struct ScriptContext *ctx)
 {
     u32 amount = (VarGet(ScriptReadWord(ctx)));
     AddMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }
 
-bool8 ScrCmd_takemoney(struct ScriptContext *ctx)
+bool8 ScrCmd_removemoney(struct ScriptContext *ctx)
 {
     u32 amount = (VarGet(ScriptReadWord(ctx)));
     RemoveMoney(&gSaveBlock1Ptr->money, amount);
@@ -2125,22 +2112,22 @@ bool8 ScrCmd_checkcoins(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_givecoins(struct ScriptContext *ctx)
+bool8 ScrCmd_addcoins(struct ScriptContext *ctx)
 {
     u16 coins = VarGet(ScriptReadHalfword(ctx));
 
-    if (GiveCoins(coins) == TRUE)
+    if (AddCoins(coins) == TRUE)
         gSpecialVar_Result = 0;
     else
         gSpecialVar_Result = 1;
     return FALSE;
 }
 
-bool8 ScrCmd_takecoins(struct ScriptContext *ctx)
+bool8 ScrCmd_removecoins(struct ScriptContext *ctx)
 {
     u16 coins = VarGet(ScriptReadHalfword(ctx));
 
-    if (TakeCoins(coins) == TRUE)
+    if (RemoveCoins(coins) == TRUE)
         gSpecialVar_Result = 0;
     else
         gSpecialVar_Result = 1;
@@ -2388,5 +2375,17 @@ bool8 ScrCmd_divvar(struct ScriptContext *ctx)
 {
     u16 *ptr = GetVarPointer(ScriptReadHalfword(ctx));
     *ptr /= ScriptReadHalfword(ctx);
+    return FALSE;
+}
+
+bool8 ScrCmd_giveitem_silent(struct ScriptContext *ctx)
+{
+    u16 item = (VarGet(ScriptReadHalfword(ctx)));
+    u16 quantity = (VarGet(ScriptReadHalfword(ctx)));
+
+    if (quantity == 0)
+        quantity = 1;
+
+    AddBagItem(item, quantity);
     return FALSE;
 }

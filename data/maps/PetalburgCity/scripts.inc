@@ -508,72 +508,22 @@ PetalburgCity_Movement_PlayerWalkToGym3: @ 81DC686
 	step_end
 
 PetalburgCity_EventScript_Scott0:: @ 81DC691
-	lockall
-	addobject 9
-	setvar VAR_0x8008, 0
-	setobjectxy 9, 13, 10
 	goto PetalburgCity_EventScript_Scott
 	end
 
 PetalburgCity_EventScript_Scott1:: @ 81DC6A7
-	lockall
-	addobject 9
-	setvar VAR_0x8008, 1
-	setobjectxy 9, 13, 11
-	goto PetalburgCity_EventScript_Scott
+	releaseall
 	end
 
 PetalburgCity_EventScript_Scott2:: @ 81DC6BD
-	lockall
-	addobject 9
-	setvar VAR_0x8008, 2
-	setobjectxy 9, 13, 12
-	goto PetalburgCity_EventScript_Scott
+	releaseall
 	end
 
 PetalburgCity_EventScript_Scott3:: @ 81DC6D3
-	lockall
-	addobject 9
-	setvar VAR_0x8008, 3
-	setobjectxy 9, 13, 13
-	goto PetalburgCity_EventScript_Scott
+	releaseall
 	end
 
 PetalburgCity_EventScript_Scott:: @ 81DC6E9
-	applymovement 9, PetalburgCity_Movement_ScottStartWalkLeft
-	waitmovement 0
-	playse SE_PIN
-	applymovement 9, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 9, Common_Movement_Delay48
-	waitmovement 0
-	applymovement 9, PetalburgCity_Movement_ScottApproachPlayer
-	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	setvar VAR_SCOTT_STATE, 1
-	msgbox PetalburgCity_Text_AreYouATrainer, MSGBOX_DEFAULT
-	closemessage
-	applymovement 9, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	delay 30
-	msgbox PetalburgCity_Text_WellMaybeNot, MSGBOX_DEFAULT
-	closemessage
-	applymovement 9, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	delay 30
-	msgbox PetalburgCity_Text_ImLookingForTalentedTrainers, MSGBOX_DEFAULT
-	closemessage
-	compare VAR_0x8008, 0
-	call_if_eq PetalburgCity_EventScript_ScottExit0
-	compare VAR_0x8008, 1
-	call_if_eq PetalburgCity_EventScript_ScottExit1
-	compare VAR_0x8008, 2
-	call_if_eq PetalburgCity_EventScript_ScottExit2
-	compare VAR_0x8008, 3
-	call_if_eq PetalburgCity_EventScript_ScottExit3
-	setvar VAR_SCOTT_PETALBURG_ENCOUNTER, 1
-	removeobject 9
 	releaseall
 	end
 

@@ -389,7 +389,7 @@ static void CursorCb_Switch(u8);
 static void CursorCb_Cancel1(u8);
 static void CursorCb_Item(u8);
 static void CursorCb_Give(u8);
-static void CursorCb_TakeItem(u8);
+static void CursorCb_removeitem(u8);
 static void CursorCb_Mail(u8);
 static void CursorCb_Read(u8);
 static void CursorCb_TakeMail(u8);
@@ -1758,7 +1758,7 @@ static u8 TryTakeMonItem(struct Pokemon* mon)
     return 2;
 }
 
-static void BufferBagFullCantTakeItemMessage(u16 itemUnused)
+static void BufferBagFullCantremoveitemMessage(u16 itemUnused)
 {
     StringExpandPlaceholders(gStringVar4, gText_BagFullCouldNotRemoveItem);
 }
@@ -2614,7 +2614,7 @@ static u8 GetPartyMenuActionsType(struct Pokemon *mon)
         actionType = ACTIONS_SPIN_TRADE;
         break;
     case PARTY_MENU_TYPE_STORE_PYRAMID_HELD_ITEMS:
-        actionType = ACTIONS_TAKEITEM_TOSS;
+        actionType = ACTIONS_removeitem_TOSS;
         break;
     // The following have no selection actions (i.e. they exit immediately upon selection)
     // PARTY_MENU_TYPE_CONTEST
@@ -3108,7 +3108,7 @@ static void Task_HandleSwitchItemsYesNoInput(u8 taskId)
         if (AddBagItem(sPartyMenuItemId, 1) == FALSE)
         {
             AddBagItem(gSpecialVar_ItemId, 1);
-            BufferBagFullCantTakeItemMessage(sPartyMenuItemId);
+            BufferBagFullCantremoveitemMessage(sPartyMenuItemId);
             DisplayPartyMenuMessage(gStringVar4, FALSE);
             gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
         }
@@ -3207,7 +3207,7 @@ static void Task_UpdateHeldItemSprite(u8 taskId)
     }
 }
 
-static void CursorCb_TakeItem(u8 taskId)
+static void CursorCb_removeitem(u8 taskId)
 {
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
     u16 item = GetMonData(mon, MON_DATA_HELD_ITEM);
@@ -3223,7 +3223,7 @@ static void CursorCb_TakeItem(u8 taskId)
         DisplayPartyMenuMessage(gStringVar4, TRUE);
         break;
     case 1: // No room to take item
-        BufferBagFullCantTakeItemMessage(item);
+        BufferBagFullCantremoveitemMessage(item);
         DisplayPartyMenuMessage(gStringVar4, TRUE);
         break;
     default: // Took item
@@ -3402,7 +3402,7 @@ static void Task_HandleLoseMailMessageYesNoInput(u8 taskId)
         }
         else
         {
-            BufferBagFullCantTakeItemMessage(item);
+            BufferBagFullCantremoveitemMessage(item);
             DisplayPartyMenuMessage(gStringVar4, FALSE);
             gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
         }
@@ -4723,18 +4723,6 @@ u16 ItemIdToBattleMoveId(u16 item)
     return sTMHMMoves[tmNumber];
 }
 
-bool8 IsMoveHm(u16 move)
-{
-    u8 i;
-
-    for (i = 0; i < NUM_HIDDEN_MACHINES; i++)
-    {
-        if (sTMHMMoves[i + NUM_TECHNICAL_MACHINES] == move)
-            return TRUE;
-    }
-    return FALSE;
-}
-
 bool8 MonKnowsMove(struct Pokemon *mon, u16 move)
 {
     u8 i;
@@ -4807,7 +4795,7 @@ static void Task_LearnedMove(u8 taskId)
     if (move[1] == 0)
     {
         AdjustFriendship(mon, 4);
-        if ((item < ITEM_TM01) || (item > ITEM_HM08_DIVE))
+        if ((item < ITEM_TM01) || (item > ITEM_TM64))
             RemoveBagItem(item, 1);
     }
     GetMonNickname(mon, gStringVar1);
@@ -5517,7 +5505,7 @@ static void Task_HandleSwitchItemsFromBagYesNoInput(u8 taskId)
         if (AddBagItem(sPartyMenuItemId, 1) == FALSE)
         {
             ReturnGiveItemToBagOrPC(item);
-            BufferBagFullCantTakeItemMessage(sPartyMenuItemId);
+            BufferBagFullCantremoveitemMessage(sPartyMenuItemId);
             DisplayPartyMenuMessage(gStringVar4, FALSE);
             gTasks[taskId].func = Task_UpdateHeldItemSpriteAndClosePartyMenu;
         }

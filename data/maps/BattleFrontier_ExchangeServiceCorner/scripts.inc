@@ -113,7 +113,7 @@ BattleFrontier_ExchangeServiceCorner_EventScript_TryGiveDecor:: @ 825F0E5
 	goto_if_eq BattleFrontier_ExchangeServiceCorner_EventScript_NoRoomForDecor
 	copyvar VAR_0x8004, VAR_0x8008
 	special TakeFrontierBattlePoints
-	givedecoration VAR_0x8009
+	removedecoration VAR_0x8009
 	special UpdateBattlePointsWindow
 	playse SE_REGI
 	msgbox BattleFrontier_ExchangeServiceCorner_Text_WellSendItToPC, MSGBOX_DEFAULT

@@ -2,6 +2,7 @@
 #include "rtc.h"
 #include "string_util.h"
 #include "text.h"
+#include "mgba.h"
 
 // iwram bss
 static u16 sErrorStatus;
@@ -285,6 +286,7 @@ void RtcCalcTimeDifference(struct SiiRtcInfo *rtc, struct Time *result, struct T
         result->hours += 24;
         --result->days;
     }
+    //mgba_printf(MGBA_LOG_INFO, "Calulated time %dh, %dm, %ds", result->seconds, result->minutes, result->hours);
 }
 
 void RtcCalcLocalTime(void)

@@ -340,14 +340,12 @@ Route103_Text_RouteSign: @ 81ECC1A
 @==================================================================================================DEBUG
 
 r103_SpecialBattleTest::
-	drawfullscreenimage CutsceneBGDawn
-	msgbox dawnhi
-	closemessage
-	setvar VAR_TEMP_5, 100
+	setflag FLAG_RYU_MAX_SCALE
+	trainerbattle_no_intro TRAINER_OVERLORD_RYU, dawnhi 
 	releaseall
 	end
 
 dawnhi:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Hi, {PLAYER}.$"
+	.string "$"
 
 

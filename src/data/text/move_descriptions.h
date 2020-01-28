@@ -2537,6 +2537,75 @@ static const u8 sGRAVEL_STORMDescription[] = _(
 	"Summons and flings gravel\n"
 	"at enemies. May Flinch.");
 
+static const u8 sNIGHT_SLASHDescription[] = _(
+    "Attacks the foe with\n"
+    "a blade of darkness.\n"
+    "High Critical chance.");
+
+static const u8 sROOSTDescription[] = _(
+    "User lands and quickly\n"
+    "nests to recover health.\n");
+
+static const u8 sDRAIN_PUNCHDescription[] = _(
+    "User punches foe with a\n"
+    "hit that drains the life\n"
+    "from it.");
+
+static const u8 sGIGA_IMPACTDescription[] = _(
+    "User attacks with massive\n"
+    "force, and is required to\n"
+    "rest nextr turn.");
+
+static const u8 sBULLET_PUNCHDescription[] = _(
+    "User attacks with an\n"
+    "extremely quick punch.\n"
+    "Has high priority.");
+
+static const u8 sSHADOW_CLAWDescription[] = _(
+    "User attacks with ghostly\n"
+    "blades.\n"
+    "High Critical chance.");
+
+static const u8 sAVALANCHEDescription[] = _(
+    "User causes an avalanche\n"
+    "of snow and rock to fall\n"
+    "on the target.");
+
+static const u8 sZEN_HEADBUTTDescription[] = _(
+    "User focuses power and\n"
+    "hits the foe with a\n"
+    "strong headbutt.");
+
+static const u8 sDRACO_METEORDescription[] = _(
+    "User summons comets to hurt\n"
+    "the foe. Sharply lowers\n"
+    "Sp. Atk.");
+
+static const u8 sDISCHARGEDescription[] = _(
+    "User discharges stored\n"
+    "electrical energy to the\n"
+    "battlefield. May paralyze.");
+
+static const u8 sLEAF_STORMDescription[] = _(
+    "User summons a storm of\n"
+    "leaves to damage the foe.\n"
+    "Sharply lowers Sp. Atk.");
+
+static const u8 sCROSS_POISONDescription[] = _(
+    "User slices target with\n"
+    "poisonous blades. May\n"
+    "poison. High crit chance.");
+
+static const u8 sWOOD_HAMMERDescription[] = _(
+    "User slams target with its\n"
+    "rugged body. The user takes\n"
+    "recoil damage.");
+
+static const u8 sAQUA_JETDescription[] = _(
+    "User swims at lightning\n"
+    "speeds and slams the target\n"
+    "before they can react.");
+
 static const u8 sNotDoneYetDescription[] = _(
 	"Not done yet.");
 
@@ -2898,7 +2967,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_WATER_PULSE - 1] = sWaterPulseDescription,
     [MOVE_DOOM_DESIRE - 1] = sDoomDesireDescription,
     [MOVE_PSYCHO_BOOST - 1] = sPsychoBoostDescription,
-    [MOVE_ROOST - 1] = sNotDoneYetDescription,
+    [MOVE_ROOST - 1] = sROOSTDescription,
     [MOVE_GRAVITY - 1] = sGRAVITYDescription,
     [MOVE_MIRACLE_EYE - 1] = sNotDoneYetDescription,
     [MOVE_WAKE_UP_SLAP - 1] = sWAKE_UP_SLAPDescription,
@@ -2943,7 +3012,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_ROCK_POLISH - 1] = sROCK_POLISHDescription,
     [MOVE_POISON_JAB - 1] = sPOISON_JABDescription,
     [MOVE_DARK_PULSE - 1] = sDARK_PULSEDescription,
-    [MOVE_NIGHT_SLASH - 1] = sNotDoneYetDescription,
+    [MOVE_NIGHT_SLASH - 1] = sNIGHT_SLASHDescription,
     [MOVE_AQUA_TAIL - 1] = sAQUA_TAILDescription,
     [MOVE_SEED_BOMB - 1] = sSEED_BOMBDescription,
     [MOVE_AIR_SLASH - 1] = sAIR_SLASHDescription,
@@ -2952,38 +3021,38 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_DRAGON_PULSE - 1] = sDRAGON_PULSEDescription,
     [MOVE_DRAGON_RUSH - 1] = sDRAGON_RUSHDescription,
     [MOVE_POWER_GEM - 1] = sPOWER_GEMDescription,
-    [MOVE_DRAIN_PUNCH - 1] = sNotDoneYetDescription,
+    [MOVE_DRAIN_PUNCH - 1] = sDRAIN_PUNCHDescription,
     [MOVE_VACUUM_WAVE - 1] = sVACUUM_WAVEDescription,
     [MOVE_FOCUS_BLAST - 1] = sFOCUS_BLASTDescription,
     [MOVE_ENERGY_BALL - 1] = sENERGY_BALLDescription,
     [MOVE_BRAVE_BIRD - 1] = sBRAVE_BIRDDescription,
     [MOVE_EARTH_POWER - 1] = sEARTH_POWERDescription,
     [MOVE_SWITCHEROO - 1] = sSWITCHEROODescription,
-    [MOVE_GIGA_IMPACT - 1] = sNotDoneYetDescription,
+    [MOVE_GIGA_IMPACT - 1] = sGIGA_IMPACTDescription,
     [MOVE_NASTY_PLOT - 1] = sNASTY_PLOTDescription,
-    [MOVE_BULLET_PUNCH - 1] = sNotDoneYetDescription,
-    [MOVE_AVALANCHE - 1] = sNotDoneYetDescription,
+    [MOVE_BULLET_PUNCH - 1] = sBULLET_PUNCHDescription,
+    [MOVE_AVALANCHE - 1] = sAVALANCHEDescription,
     [MOVE_ICE_SHARD - 1] = sICE_SHARDDescription,
-    [MOVE_SHADOW_CLAW - 1] = sNotDoneYetDescription,
+    [MOVE_SHADOW_CLAW - 1] = sSHADOW_CLAWDescription,
     [MOVE_THUNDER_FANG - 1] = sTHUNDER_FANGDescription,
     [MOVE_ICE_FANG - 1] = sICE_FANGDescription,
     [MOVE_FIRE_FANG - 1] = sFIRE_FANGDescription,
     [MOVE_SHADOW_SNEAK - 1] = sSHADOW_SNEAKDescription,
     [MOVE_MUD_BOMB - 1] = sMUD_BOMBDescription,
     [MOVE_PSYCHO_CUT - 1] = sPSYCHO_CUTDescription,
-    [MOVE_ZEN_HEADBUTT - 1] = sNotDoneYetDescription,
+    [MOVE_ZEN_HEADBUTT - 1] = sZEN_HEADBUTTDescription,
     [MOVE_MIRROR_SHOT - 1] = sMIRROR_SHOTDescription,
     [MOVE_FLASH_CANNON - 1] = sFLASH_CANNONDescription,
     [MOVE_ROCK_CLIMB - 1] = sROCK_CLIMBDescription,
     [MOVE_DEFOG - 1] = sDEFOGDescription,
     [MOVE_TRICK_ROOM - 1] = sTRICK_ROOMDescription,
-    [MOVE_DRACO_METEOR - 1] = sNotDoneYetDescription,
-    [MOVE_DISCHARGE - 1] = sNotDoneYetDescription,
+    [MOVE_DRACO_METEOR - 1] = sDRACO_METEORDescription,
+    [MOVE_DISCHARGE - 1] = sDISCHARGEDescription,
     [MOVE_LAVA_PLUME - 1] = sLAVA_PLUMEDescription,
-    [MOVE_LEAF_STORM - 1] = sNotDoneYetDescription,
+    [MOVE_LEAF_STORM - 1] = sLEAF_STORMDescription,
     [MOVE_POWER_WHIP - 1] = sPOWER_WHIPDescription,
     [MOVE_ROCK_WRECKER - 1] = sNotDoneYetDescription,
-    [MOVE_CROSS_POISON - 1] = sNotDoneYetDescription,
+    [MOVE_CROSS_POISON - 1] = sCROSS_POISONDescription,
     [MOVE_GUNK_SHOT - 1] = sGUNK_SHOTDescription,
     [MOVE_IRON_HEAD - 1] = sIRON_HEADDescription,
     [MOVE_MAGNET_BOMB - 1] = sMAGNET_BOMBDescription,
@@ -2995,8 +3064,8 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_JUDGMENT - 1] = sJUDGMENTDescription,
     [MOVE_BUG_BITE - 1] = sPLUCKDescription,
     [MOVE_CHARGE_BEAM - 1] = sCHARGE_BEAMDescription,
-    [MOVE_WOOD_HAMMER - 1] = sNotDoneYetDescription,
-    [MOVE_AQUA_JET - 1] = sNotDoneYetDescription,
+    [MOVE_WOOD_HAMMER - 1] = sWOOD_HAMMERDescription,
+    [MOVE_AQUA_JET - 1] = sAQUA_JETDescription,
     [MOVE_ATTACK_ORDER - 1] = sATTACK_ORDERDescription,
     [MOVE_DEFEND_ORDER - 1] = sDEFEND_ORDERDescription,
     [MOVE_HEAL_ORDER - 1] = sNotDoneYetDescription,

@@ -1172,6 +1172,9 @@ u8 DoFieldEndTurnEffects(void)
                     gBattleCommunication[MULTISTRING_CHOOSER] = 0;
                 }
 
+                VarSet(VAR_RYU_WEATHER, WEATHER_RAIN);
+                FlagSet(FLAG_RYU_PERSISTENT_WEATHER);
+
                 BattleScriptExecute(BattleScript_RainContinuesOrEnds);
                 effect++;
             }
@@ -1189,6 +1192,8 @@ u8 DoFieldEndTurnEffects(void)
                 {
                     gBattlescriptCurrInstr = BattleScript_DamagingWeatherContinues;
                 }
+                VarSet(VAR_RYU_WEATHER, WEATHER_SANDSTORM);
+                FlagSet(FLAG_RYU_PERSISTENT_WEATHER);
 
                 gBattleScripting.animArg1 = B_ANIM_SANDSTORM_CONTINUES;
                 gBattleCommunication[MULTISTRING_CHOOSER] = 0;
@@ -1210,6 +1215,9 @@ u8 DoFieldEndTurnEffects(void)
                     gBattlescriptCurrInstr = BattleScript_SunlightContinues;
                 }
 
+                VarSet(VAR_RYU_WEATHER, WEATHER_DROUGHT);
+                FlagSet(FLAG_RYU_PERSISTENT_WEATHER);
+
                 BattleScriptExecute(gBattlescriptCurrInstr);
                 effect++;
             }
@@ -1227,6 +1235,9 @@ u8 DoFieldEndTurnEffects(void)
                 {
                     gBattlescriptCurrInstr = BattleScript_DamagingWeatherContinues;
                 }
+
+                VarSet(VAR_RYU_WEATHER, WEATHER_SNOW);
+                FlagSet(FLAG_RYU_PERSISTENT_WEATHER);
 
                 gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
                 gBattleCommunication[MULTISTRING_CHOOSER] = 1;
@@ -1847,7 +1858,7 @@ u8 DoBattlerEndTurnEffects(void)
             {
             if ((FlagGet(FLAG_RYU_MAX_SCALE) == 1) && !BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK) && gBattleMons[gActiveBattler].hp != 0 && ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
             {
-                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 10;
+                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 gBattleMoveDamage *= -1;
@@ -1866,7 +1877,7 @@ u8 DoBattlerEndTurnEffects(void)
                     Ryu_LoadLegendaryOpponentName();
                     if (gBattleMons[gBattlerAttacker].statStages[stat] < 0xC)
                         {
-                            gBattleMons[gBattlerAttacker].statStages[stat]++;
+                            gBattleMons[gBattlerAttacker].statStages[stat] + 2;
                             gBattleScripting.animArg1 = 0x11;
                             gBattleScripting.animArg2 = 0;
                             BattleScriptPushCursorAndCallback(BattleScript_BossModeStatBoostActivates);
@@ -2848,6 +2859,15 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                         effect++;
                     }
                     break;
+                case WEATHER_SNOW://If VAR_RYU_WEATHER previously set it to Snow outside and a new battle starts
+                    if (!(gBattleWeather & WEATHER_HAIL_ANY))
+                    {   
+                        gBattleWeather = (WEATHER_HAIL_PERMANENT | WEATHER_HAIL_TEMPORARY);
+                        gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
+                        gBattleScripting.battler = battler;
+                        effect++;
+                        break;
+                    }
                 }
             }
             if (effect)
@@ -6000,6 +6020,10 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     case ABILITY_SNIPER:
         if (isCrit)
             MulModifier(&finalModifier, UQ_4_12(1.5));
+        break;
+    case ABILITY_NEUROFORCE:
+        if (typeEffectivenessModifier >= UQ_4_12(2.0))
+            MulModifier(&finalModifier, UQ_4_12(1.25));
         break;
     }
 

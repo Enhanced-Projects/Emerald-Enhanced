@@ -108,7 +108,7 @@ LilycoveCity_EventScript_BerryGentleman:: @ 81E2BD8
 	msgbox LilycoveCity_Text_BerrySuitsYou, MSGBOX_DEFAULT
 	random 10
 	addvar VAR_RESULT, FIRST_BERRY_INDEX
-	giveitem_std VAR_RESULT
+	giveitem VAR_RESULT
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	setflag FLAG_DAILY_LILYCOVE_RECEIVED_BERRY
@@ -606,7 +606,6 @@ LilycoveCity_EventScript_1E2ECD:: @ 81E2ECD
 	end
 
 LCC_FemalRivalStartBattle:: @ 81E2EFE
-	setflag FLAG_RYU_DO_NOT_AUTOSCALE
 	trainerbattle_no_intro TRAINER_DAWN_5, lcc_femaleRivalBattleDefeat
 	goto LCC_FemalRivalBattleFinished
 	end
@@ -671,7 +670,7 @@ lcc_femaleRivalRelChoice1:: @ 81E3006
 	goto_if_ne lcc_dawn_declined
 	setflag FLAG_RYU_DS_DAWN_CLOSEFRIENDS
 	delay 50
-	giveitem_std ITEM_TOWN_MAP
+	giveitem_silent ITEM_TOWN_MAP
 	msgbox LCC_Dawn_DS_TC_MEM MSGBOX_DEFAULT
 	delay 60
 	clearfullscreenimage
@@ -702,7 +701,7 @@ lcc_maleRivalRelChoice1::
 	goto_if_ne lcc_brendan_declined
 	setflag FLAG_RYU_DS_BRENDAN_FRIENDS
 	delay 50
-	giveitem_std ITEM_TOWN_MAP
+	giveitem_silent ITEM_TOWN_MAP
 	msgbox LCC_BRENDAN_DS_TC_MEM MSGBOX_DEFAULT
 	msgbox lcc_brendan_scene MSGBOX_DEFAULT
 	waitmessage

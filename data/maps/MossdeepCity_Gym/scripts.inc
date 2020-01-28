@@ -67,6 +67,10 @@ MossdeepCity_Gym_EventScript_TateAndLiza:: @ 8220898
 	end
 
 MDG_Reset::
+	setvar VAR_TEMP_8, 7
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_BADGE07_GET
 	setflag FLAG_DEFEATED_MOSSDEEP_GYM
 	cleartrainerflag TRAINER_TATE_AND_LIZA_1
@@ -380,12 +384,11 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated:: @ 82208D1
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL
 	release
 	end
 
 MossdeepCity_Gym_EventScript_GiveCalmMind2:: @ 8220937
-	giveitem_std ITEM_TM04
+	giveitem_silent ITEM_TM04
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	msgbox MossdeepCity_Gym_Text_ExplainCalmMind, MSGBOX_DEFAULT
@@ -394,7 +397,7 @@ MossdeepCity_Gym_EventScript_GiveCalmMind2:: @ 8220937
 	end
 
 MossdeepCity_Gym_EventScript_GiveCalmMind:: @ 822095B
-	giveitem_std ITEM_TM04
+	giveitem_silent ITEM_TM04
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_BagIsFull
 	msgbox MossdeepCity_Gym_Text_ExplainCalmMind, MSGBOX_DEFAULT

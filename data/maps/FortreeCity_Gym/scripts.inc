@@ -49,13 +49,15 @@ FortreeCity_Gym_EventScript_WinonaDefeated:: @ 82165FD
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_WINONA_MATCH_CALL
 	setvar VAR_SCOTT_FORTREE_CALL_STEP_COUNTER, 0
-	setflag FLAG_SCOTT_CALL_FORTREE_GYM
 	release
 	end
 
 FG_Reset::
+	setvar VAR_TEMP_8, 6
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_DEFEATED_FORTREE_GYM
 	setflag FLAG_BADGE06_GET
 	cleartrainerflag TRAINER_WINONA_1
@@ -341,7 +343,7 @@ FG_PartnerExit:
 	step_end
 
 FortreeCity_Gym_EventScript_GiveAerialAce2:: @ 8216646
-	giveitem_std ITEM_TM40
+	giveitem_silent ITEM_TM40
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT
@@ -350,7 +352,7 @@ FortreeCity_Gym_EventScript_GiveAerialAce2:: @ 8216646
 	end
 
 FortreeCity_Gym_EventScript_GiveAerialAce:: @ 821666A
-	giveitem_std ITEM_TM40
+	giveitem_silent ITEM_TM40
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_BagIsFull
 	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT

@@ -56,8 +56,19 @@ EGC_AltDrake::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerDrakeRematch
 	trainerbattle_no_intro TRAINER_DRAKE_REMATCH, EverGrandeCity_DrakesRoom_Text_Defeat
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	goto Ryu_DrakeMegaReward
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
+
+Ryu_DrakeMegaReward::
+	goto_if_set FLAG_RYU_DRAKE_MEGA, EverGrandeCity_DrakesRoom_EventScript_Defeated
+	giveitem_silent ITEM_SALAMENCITE
+	msgbox DrakeMegaRewardMsg
+	setflag FLAG_RYU_DRAKE_MEGA
+	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
+
+DrakeMegaRewardMsg::
+	.string "You have the heart of a\ntrue dragon master. You should\phave no trouble controlling\nthe power of a mega Dragon.$"
 
 EGC_FollowerDrake::
 	call RyuFollowerAllySelector
@@ -68,6 +79,7 @@ EGC_FollowerDrake::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	goto Ryu_DrakeMegaReward
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
 

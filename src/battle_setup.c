@@ -102,6 +102,8 @@ EWRAM_DATA static u8 *sTrainerBBattleScriptRetAddr = NULL;
 EWRAM_DATA static bool8 sShouldCheckTrainerBScript = FALSE;
 EWRAM_DATA static u8 sNoOfPossibleTrainerRetScripts = 0;
 
+extern int CountBadges();
+
 // const rom data
 
 // The first transition is used if the enemy pokemon are lower level than our pokemon.
@@ -239,84 +241,7 @@ static const struct TrainerBattleParameter sTrainerBContinueScriptBattleParams[]
 
 const struct RematchTrainer gRematchTable[REMATCH_TABLE_ENTRIES] =
 {
-    [REMATCH_ROSE] = REMATCH(TRAINER_ROSE_1, TRAINER_ROSE_2, TRAINER_ROSE_3, TRAINER_ROSE_4, TRAINER_ROSE_5, ROUTE118),
-    [REMATCH_ANDRES] = REMATCH(TRAINER_ANDRES_1, TRAINER_SIDNEY_REMATCH, TRAINER_CHALLENGER_SIGMA, TRAINER_CHALLENGER_JUAN, TRAINER_CHALLENGER_GIOVANNI, ROUTE105),
-    [REMATCH_DUSTY] = REMATCH(TRAINER_DUSTY_1, TRAINER_DUSTY_2, TRAINER_DUSTY_3, TRAINER_DUSTY_4, TRAINER_DUSTY_5, ROUTE111),
-    [REMATCH_LOLA] = REMATCH(TRAINER_LOLA_1, TRAINER_LOLA_2, TRAINER_LOLA_3, TRAINER_LOLA_4, TRAINER_LOLA_5, ROUTE109),
-    [REMATCH_RICKY] = REMATCH(TRAINER_RICKY_1, TRAINER_RICKY_2, TRAINER_RICKY_3, TRAINER_RICKY_4, TRAINER_RICKY_5, ROUTE109),
-    [REMATCH_LILA_AND_ROY] = REMATCH(TRAINER_LILA_AND_ROY_1, TRAINER_LILA_AND_ROY_2, TRAINER_LILA_AND_ROY_3, TRAINER_LILA_AND_ROY_4, TRAINER_LILA_AND_ROY_5, ROUTE124),
-    [REMATCH_CRISTIN] = REMATCH(TRAINER_CRISTIN_1, TRAINER_EMPTY_1, TRAINER_EMPTY_2, TRAINER_EMPTY_4, TRAINER_EMPTY_3, ROUTE121),
-    [REMATCH_BROOKE] = REMATCH(TRAINER_BROOKE_1, TRAINER_BROOKE_2, TRAINER_BROOKE_3, TRAINER_BROOKE_4, TRAINER_BROOKE_5, ROUTE111),
-    [REMATCH_WILTON] = REMATCH(TRAINER_WILTON_1, TRAINER_WILTON_2, TRAINER_WILTON_3, TRAINER_WILTON_4, TRAINER_WILTON_5, ROUTE111),
-    [REMATCH_VALERIE] = REMATCH(TRAINER_VALERIE_1, TRAINER_VALERIE_2, TRAINER_VALERIE_3, TRAINER_VALERIE_4, TRAINER_VALERIE_5, MT_PYRE_6F),
-    [REMATCH_CINDY] = REMATCH(TRAINER_CINDY_1, TRAINER_CINDY_3, TRAINER_CINDY_4, TRAINER_CINDY_5, TRAINER_CINDY_6, ROUTE104),
-    [REMATCH_THALIA] = REMATCH(TRAINER_THALIA_1, TRAINER_OVERLORD_RYU, TRAINER_PHOEBE_REMATCH, TRAINER_DRAKE_REMATCH, TRAINER_GLACIA_REMATCH, ABANDONED_SHIP_ROOMS_1F),
-    [REMATCH_JESSICA] = REMATCH(TRAINER_JESSICA_1, TRAINER_JESSICA_2, TRAINER_JESSICA_3, TRAINER_JESSICA_4, TRAINER_JESSICA_5, ROUTE121),
-    [REMATCH_WINSTON] = REMATCH(TRAINER_WINSTON_1, TRAINER_WINSTON_2, TRAINER_WINSTON_3, TRAINER_WINSTON_4, TRAINER_WINSTON_5, ROUTE104),
-    [REMATCH_STEVE] = REMATCH(TRAINER_STEVE_1, TRAINER_STEVE_2, TRAINER_STEVE_3, TRAINER_STEVE_4, TRAINER_STEVE_5, ROUTE114),
-    [REMATCH_TONY] = REMATCH(TRAINER_TONY_1, TRAINER_TONY_2, TRAINER_TONY_3, TRAINER_TONY_4, TRAINER_TONY_5, ROUTE107),
-    [REMATCH_NOB] = REMATCH(TRAINER_NOB_1, TRAINER_NOB_2, TRAINER_NOB_3, TRAINER_NOB_4, TRAINER_NOB_5, ROUTE115),
-    [REMATCH_KOJI] = REMATCH(TRAINER_KOJI_1, TRAINER_REL_DAWN, TRAINER_REL_SHELLY, TRAINER_REL_LANETTE, TRAINER_REL_MINNIE, ROUTE127),
-    [REMATCH_FERNANDO] = REMATCH(TRAINER_FERNANDO_1, TRAINER_EMPTY_5, TRAINER_EMPTY_6, TRAINER_EMPTY_7, TRAINER_EMPTY_8, ROUTE123),
-    [REMATCH_DALTON] = REMATCH(TRAINER_DALTON_1, TRAINER_DALTON_2, TRAINER_DALTON_3, TRAINER_DALTON_4, TRAINER_DALTON_5, ROUTE118),
-    [REMATCH_BERNIE] = REMATCH(TRAINER_BERNIE_1, TRAINER_BERNIE_2, TRAINER_BERNIE_3, TRAINER_BERNIE_4, TRAINER_BERNIE_5, ROUTE114),
-    [REMATCH_ETHAN] = REMATCH(TRAINER_ETHAN_1, TRAINER_ETHAN_2, TRAINER_ETHAN_3, TRAINER_ETHAN_4, TRAINER_ETHAN_5, JAGGED_PASS),
-    [REMATCH_JOHN_AND_JAY] = REMATCH(TRAINER_JOHN_AND_JAY_1, TRAINER_JOHN_AND_JAY_2, TRAINER_JOHN_AND_JAY_3, TRAINER_JOHN_AND_JAY_4, TRAINER_JOHN_AND_JAY_5, METEOR_FALLS_1F_2R),
-    [REMATCH_JEFFREY] = REMATCH(TRAINER_JEFFREY_1, TRAINER_JEFFREY_2, TRAINER_JEFFREY_3, TRAINER_JEFFREY_4, TRAINER_JEFFREY_5, ROUTE120),
-    [REMATCH_CAMERON] = REMATCH(TRAINER_CAMERON_1, TRAINER_CAMERON_2, TRAINER_CAMERON_3, TRAINER_CAMERON_4, TRAINER_CAMERON_5, ROUTE123),
-    [REMATCH_JACKI] = REMATCH(TRAINER_JACKI_1, TRAINER_JACKI_2, TRAINER_JACKI_3, TRAINER_JACKI_4, TRAINER_JACKI_5, ROUTE123),
-    [REMATCH_WALTER] = REMATCH(TRAINER_WALTER_1, TRAINER_WALTER_2, TRAINER_WALTER_3, TRAINER_WALTER_4, TRAINER_WALTER_5, ROUTE121),
-    [REMATCH_KAREN] = REMATCH(TRAINER_KAREN_1, TRAINER_KAREN_2, TRAINER_KAREN_3, TRAINER_KAREN_4, TRAINER_KAREN_5, ROUTE116),
-    [REMATCH_JERRY] = REMATCH(TRAINER_JERRY_1, TRAINER_JERRY_2, TRAINER_JERRY_3, TRAINER_JERRY_4, TRAINER_JERRY_5, ROUTE116),
-    [REMATCH_ANNA_AND_MEG] = REMATCH(TRAINER_ANNA_AND_MEG_1, TRAINER_ANNA_AND_MEG_2, TRAINER_ANNA_AND_MEG_3, TRAINER_ANNA_AND_MEG_4, TRAINER_ANNA_AND_MEG_5, ROUTE117),
-    [REMATCH_ISABEL] = REMATCH(TRAINER_ISABEL_1, TRAINER_ISABEL_2, TRAINER_ISABEL_3, TRAINER_ISABEL_4, TRAINER_ISABEL_5, ROUTE110),
-    [REMATCH_MIGUEL] = REMATCH(TRAINER_MIGUEL_1, TRAINER_MIGUEL_2, TRAINER_MIGUEL_3, TRAINER_MIGUEL_4, TRAINER_MIGUEL_5, ROUTE103),
-    [REMATCH_TIMOTHY] = REMATCH(TRAINER_TIMOTHY_1, TRAINER_TIMOTHY_2, TRAINER_TIMOTHY_3, TRAINER_TIMOTHY_4, TRAINER_TIMOTHY_5, ROUTE115),
-    [REMATCH_SHELBY] = REMATCH(TRAINER_SHELBY_1, TRAINER_SHELBY_2, TRAINER_SHELBY_3, TRAINER_SHELBY_4, TRAINER_SHELBY_5, MT_CHIMNEY),
-    [REMATCH_CALVIN] = REMATCH(TRAINER_CALVIN_1, TRAINER_CALVIN_2, TRAINER_CALVIN_3, TRAINER_CALVIN_4, TRAINER_CALVIN_5, ROUTE102),
-    [REMATCH_ELLIOT] = REMATCH(TRAINER_ELLIOT_1, TRAINER_ELLIOT_2, TRAINER_ELLIOT_3, TRAINER_ELLIOT_4, TRAINER_ELLIOT_5, ROUTE106),
-    [REMATCH_ISAIAH] = REMATCH(TRAINER_ISAIAH_1, TRAINER_ISAIAH_2, TRAINER_ISAIAH_3, TRAINER_ISAIAH_4, TRAINER_ISAIAH_5, ROUTE128),
-    [REMATCH_MARIA] = REMATCH(TRAINER_MARIA_1, TRAINER_MARIA_2, TRAINER_MARIA_3, TRAINER_MARIA_4, TRAINER_MARIA_5, ROUTE117),
-    [REMATCH_ABIGAIL] = REMATCH(TRAINER_ABIGAIL_1, TRAINER_ABIGAIL_2, TRAINER_ABIGAIL_3, TRAINER_ABIGAIL_4, TRAINER_ABIGAIL_5, ROUTE110),
-    [REMATCH_DYLAN] = REMATCH(TRAINER_DYLAN_1, TRAINER_DYLAN_2, TRAINER_DYLAN_3, TRAINER_DYLAN_4, TRAINER_DYLAN_5, ROUTE117),
-    [REMATCH_KATELYN] = REMATCH(TRAINER_KATELYN_1, TRAINER_KATELYN_2, TRAINER_KATELYN_3, TRAINER_KATELYN_4, TRAINER_KATELYN_5, ROUTE128),
-    [REMATCH_BENJAMIN] = REMATCH(TRAINER_BENJAMIN_1, TRAINER_BENJAMIN_2, TRAINER_BENJAMIN_3, TRAINER_BENJAMIN_4, TRAINER_BENJAMIN_5, ROUTE110),
-    [REMATCH_PABLO] = REMATCH(TRAINER_PABLO_1, TRAINER_STORY_LEAF, TRAINER_GRUNT_AQUA_HIDEOUT_24, TRAINER_REL_LANA, TRAINER_REL_BRENDAN, ROUTE126),
-    [REMATCH_NICOLAS] = REMATCH(TRAINER_NICOLAS_1, TRAINER_NICOLAS_2, TRAINER_NICOLAS_3, TRAINER_NICOLAS_4, TRAINER_NICOLAS_5, METEOR_FALLS_1F_2R),
-    [REMATCH_ROBERT] = REMATCH(TRAINER_ROBERT_1, TRAINER_ROBERT_2, TRAINER_ROBERT_3, TRAINER_ROBERT_4, TRAINER_ROBERT_5, ROUTE120),
-    [REMATCH_LAO] = REMATCH(TRAINER_LAO_1, TRAINER_LAO_2, TRAINER_LAO_3, TRAINER_LAO_4, TRAINER_LAO_5, ROUTE113),
-    [REMATCH_CYNDY] = REMATCH(TRAINER_CYNDY_1, TRAINER_CYNDY_2, TRAINER_CYNDY_3, TRAINER_CYNDY_4, TRAINER_CYNDY_5, ROUTE115),
-    [REMATCH_MADELINE] = REMATCH(TRAINER_MADELINE_1, TRAINER_MADELINE_2, TRAINER_MADELINE_3, TRAINER_MADELINE_4, TRAINER_MADELINE_5, ROUTE113),
-    [REMATCH_JENNY] = REMATCH(TRAINER_JENNY_1, TRAINER_JENNY_2, TRAINER_JENNY_3, TRAINER_JENNY_4, TRAINER_JENNY_5, ROUTE124),
-    [REMATCH_DIANA] = REMATCH(TRAINER_DIANA_1, TRAINER_DIANA_2, TRAINER_DIANA_3, TRAINER_DIANA_4, TRAINER_DIANA_5, JAGGED_PASS),
-    [REMATCH_AMY_AND_LIV] = REMATCH(TRAINER_AMY_AND_LIV_1, TRAINER_AMY_AND_LIV_2, TRAINER_AMY_AND_LIV_4, TRAINER_AMY_AND_LIV_5, TRAINER_AMY_AND_LIV_6, ROUTE103),
-    [REMATCH_ERNEST] = REMATCH(TRAINER_ERNEST_1, TRAINER_ERNEST_2, TRAINER_ERNEST_3, TRAINER_ERNEST_4, TRAINER_ERNEST_5, ROUTE125),
-    [REMATCH_CORY] = REMATCH(TRAINER_CORY_1, TRAINER_CHALLENGER_ZOD, TRAINER_CHALLENGER_LANCE, TRAINER_CHALLENGER_ROBERT, TRAINER_CHALLENGER_JOHNATAN, ROUTE108),
-    [REMATCH_EDWIN] = REMATCH(TRAINER_EDWIN_1, TRAINER_EDWIN_2, TRAINER_EDWIN_3, TRAINER_EDWIN_4, TRAINER_EDWIN_5, ROUTE110),
-    [REMATCH_LYDIA] = REMATCH(TRAINER_LYDIA_1, TRAINER_LYDIA_2, TRAINER_LYDIA_3, TRAINER_LYDIA_4, TRAINER_LYDIA_5, ROUTE117),
-    [REMATCH_ISAAC] = REMATCH(TRAINER_ISAAC_1, TRAINER_ISAAC_2, TRAINER_ISAAC_3, TRAINER_ISAAC_4, TRAINER_ISAAC_5, ROUTE117),
-    [REMATCH_GABRIELLE] = REMATCH(TRAINER_GABRIELLE_1, TRAINER_EMPTY_13, TRAINER_EMPTY_14, TRAINER_EMPTY_15, TRAINER_EMPTY_16, MT_PYRE_3F),
-    [REMATCH_CATHERINE] = REMATCH(TRAINER_CATHERINE_1, TRAINER_CATHERINE_2, TRAINER_CATHERINE_3, TRAINER_CATHERINE_4, TRAINER_CATHERINE_5, ROUTE119),
-    [REMATCH_JACKSON] = REMATCH(TRAINER_JACKSON_1, TRAINER_JACKSON_2, TRAINER_JACKSON_3, TRAINER_JACKSON_4, TRAINER_JACKSON_5, ROUTE119),
-    [REMATCH_HALEY] = REMATCH(TRAINER_HALEY_1, TRAINER_HALEY_2, TRAINER_HALEY_3, TRAINER_HALEY_4, TRAINER_HALEY_5, ROUTE104),
-    [REMATCH_JAMES] = REMATCH(TRAINER_JAMES_1, TRAINER_JAMES_2, TRAINER_JAMES_3, TRAINER_JAMES_4, TRAINER_JAMES_5, PETALBURG_WOODS),
-    [REMATCH_TRENT] = REMATCH(TRAINER_TRENT_1, TRAINER_TRENT_2, TRAINER_TRENT_3, TRAINER_TRENT_4, TRAINER_TRENT_5, ROUTE112),
-    [REMATCH_SAWYER] = REMATCH(TRAINER_SAWYER_1, TRAINER_EMPTY_9, TRAINER_EMPTY_10, TRAINER_EMPTY_11, TRAINER_EMPTY_12, MT_CHIMNEY),
-    [REMATCH_KIRA_AND_DAN] = REMATCH(TRAINER_KIRA_AND_DAN_1, TRAINER_KIRA_AND_DAN_2, TRAINER_KIRA_AND_DAN_3, TRAINER_KIRA_AND_DAN_4, TRAINER_KIRA_AND_DAN_5, ABANDONED_SHIP_ROOMS2_1F),
-    [REMATCH_WALLY_3] = REMATCH(TRAINER_WALLY_VR_2, TRAINER_WALLY_VR_3, TRAINER_WALLY_VR_4, TRAINER_WALLY_VR_5, TRAINER_WALLY_VR_5, VICTORY_ROAD_1F),
-    [REMATCH_ROXANNE] = REMATCH(TRAINER_ROXANNE_1, TRAINER_ROXANNE_2, TRAINER_ROXANNE_3, TRAINER_ROXANNE_4, TRAINER_EMPTY_37, RUSTBORO_CITY),
-    [REMATCH_BRAWLY] = REMATCH(TRAINER_BRAWLY_1, TRAINER_BRAWLY_2, TRAINER_BRAWLY_3, TRAINER_BRAWLY_4, TRAINER_EMPTY_38, DEWFORD_TOWN),
-    [REMATCH_WATTSON] = REMATCH(TRAINER_WATTSON_1, TRAINER_WATTSON_2, TRAINER_WATTSON_3, TRAINER_WATTSON_4, TRAINER_EMPTY_39, MAUVILLE_CITY),
-    [REMATCH_FLANNERY] = REMATCH(TRAINER_FLANNERY_1, TRAINER_FLANNERY_2, TRAINER_FLANNERY_3, TRAINER_FLANNERY_4, TRAINER_EMPTY_40, LAVARIDGE_TOWN),
-    [REMATCH_NORMAN] = REMATCH(TRAINER_NORMAN_1, TRAINER_NORMAN_2, TRAINER_NORMAN_3, TRAINER_NORMAN_4, TRAINER_CHALLENGER_NORMAN, PETALBURG_CITY),
-    [REMATCH_WINONA] = REMATCH(TRAINER_WINONA_1, TRAINER_WINONA_2, TRAINER_WINONA_3, TRAINER_WINONA_4, TRAINER_SHELLY_3, FORTREE_CITY),
-    [REMATCH_TATE_AND_LIZA] = REMATCH(TRAINER_TATE_AND_LIZA_1, TRAINER_TATE_AND_LIZA_2, TRAINER_TATE_AND_LIZA_3, TRAINER_TATE_AND_LIZA_4, TRAINER_TATE_AND_LIZA_SINGLE, MOSSDEEP_CITY),
-    [REMATCH_JUAN] = REMATCH(TRAINER_JUAN_1, TRAINER_JUAN_2, TRAINER_JUAN_3, TRAINER_JUAN_4, TRAINER_STORY_MEWTWO_2, SOOTOPOLIS_CITY),
-    [REMATCH_SIDNEY] = REMATCH(TRAINER_SIDNEY, TRAINER_SIDNEY, TRAINER_SIDNEY, TRAINER_SIDNEY, TRAINER_SIDNEY, EVER_GRANDE_CITY),
-    [REMATCH_PHOEBE] = REMATCH(TRAINER_PHOEBE, TRAINER_PHOEBE, TRAINER_PHOEBE, TRAINER_PHOEBE, TRAINER_PHOEBE, EVER_GRANDE_CITY),
-    [REMATCH_GLACIA] = REMATCH(TRAINER_GLACIA, TRAINER_GLACIA, TRAINER_GLACIA, TRAINER_GLACIA, TRAINER_GLACIA, EVER_GRANDE_CITY),
-    [REMATCH_DRAKE] = REMATCH(TRAINER_DRAKE, TRAINER_DRAKE, TRAINER_DRAKE, TRAINER_DRAKE, TRAINER_DRAKE, EVER_GRANDE_CITY),
-    [REMATCH_WALLACE] = REMATCH(TRAINER_WALLACE, TRAINER_WALLACE, TRAINER_WALLACE, TRAINER_WALLACE, TRAINER_WALLACE, EVER_GRANDE_CITY),
+
 };
 
 static const u16 sBadgeFlags[8] =
@@ -966,12 +891,12 @@ static u8 TrainerBattleLoadArg8(const u8 *ptr)
 
 static u16 GetTrainerAFlag(void)
 {
-    return FLAG_TRAINER_FLAG_START + gTrainerBattleOpponent_A;
+    return TRAINER_FLAGS_START + gTrainerBattleOpponent_A;
 }
 
 static u16 GetTrainerBFlag(void)
 {
-    return FLAG_TRAINER_FLAG_START + gTrainerBattleOpponent_B;
+    return TRAINER_FLAGS_START + gTrainerBattleOpponent_B;
 }
 
 static bool32 IsPlayerDefeated(u32 battleOutcome)
@@ -1199,7 +1124,7 @@ void SetUpTwoTrainersBattle(void)
 bool32 GetTrainerFlagFromScriptPointer(const u8 *data)
 {
     u32 flag = TrainerBattleLoadArg16(data + 2);
-    return FlagGet(FLAG_TRAINER_FLAG_START + flag);
+    return FlagGet(TRAINER_FLAGS_START + flag);
 }
 
 void SetUpTrainerMovement(void)
@@ -1238,17 +1163,17 @@ static void SetBattledTrainerFlag(void)
 
 bool8 HasTrainerBeenFought(u16 trainerId)
 {
-    return FlagGet(FLAG_TRAINER_FLAG_START + trainerId);
+    return FlagGet(TRAINER_FLAGS_START + trainerId);
 }
 
 void SetTrainerFlag(u16 trainerId)
 {
-    FlagSet(FLAG_TRAINER_FLAG_START + trainerId);
+    FlagSet(TRAINER_FLAGS_START + trainerId);
 }
 
 void ClearTrainerFlag(u16 trainerId)
 {
-    FlagClear(FLAG_TRAINER_FLAG_START + trainerId);
+    FlagClear(TRAINER_FLAGS_START + trainerId);
 }
 
 void BattleSetup_StartTrainerBattle(void)
@@ -1561,29 +1486,29 @@ static s32 TrainerIdToRematchTableId(const struct RematchTrainer *table, u16 tra
 
 static bool32 sub_80B1D94(s32 rematchTableId)
 {
-    if (rematchTableId >= REMATCH_ELITE_FOUR_ENTRIES)
-        return TRUE;
-    else if (rematchTableId == REMATCH_WALLY_3)
-        return (FlagGet(FLAG_DEFEATED_WALLY_VICTORY_ROAD) == FALSE);
-    else
+    //if (rematchTableId >= REMATCH_ELITE_FOUR_ENTRIES)
+    //    return TRUE;
+    //else if (rematchTableId == REMATCH_WALLY_3)
+    //    return (FlagGet(FLAG_DEFEATED_WALLY_VICTORY_ROAD) == FALSE);
+    //else
         return FALSE;
 }
 
 static void SetRematchIdForTrainer(const struct RematchTrainer *table, u32 tableId)
 {
-    s32 i;
-
-    for (i = 1; i < REMATCHES_COUNT; i++)
-    {
-        u16 trainerId = table[tableId].trainerIds[i];
-
-        if (trainerId == 0)
-            break;
-        if (!HasTrainerBeenFought(trainerId))
-            break;
-    }
-
-    gSaveBlock1Ptr->trainerRematches[tableId] = i;
+    //s32 i;
+    //
+    //for (i = 1; i < REMATCHES_COUNT; i++)
+    //{
+    //    u16 trainerId = table[tableId].trainerIds[i];
+    //
+    //    if (trainerId == 0)
+    //        break;
+    //    if (!HasTrainerBeenFought(trainerId))
+    //        break;
+    //}
+    //
+    //gSaveBlock1Ptr->trainerRematches[tableId] = i;
 }
 
 static bool32 UpdateRandomTrainerRematches(const struct RematchTrainer *table, u16 mapGroup, u16 mapNum)
@@ -1591,24 +1516,24 @@ static bool32 UpdateRandomTrainerRematches(const struct RematchTrainer *table, u
     s32 i;
     bool32 ret = FALSE;
 
-    for (i = 0; i <= REMATCH_SPECIAL_TRAINER_START; i++)
-    {
-        if (table[i].mapGroup == mapGroup && table[i].mapNum == mapNum && !sub_80B1D94(i))
-        {
-            if (gSaveBlock1Ptr->trainerRematches[i] != 0)
-            {
-                // Trainer already wants a rematch. Don't bother updating it.
-                ret = TRUE;
-            }
-            else if (FlagGet(FLAG_MATCH_CALL_REGISTERED + i)
-             && (Random() % 100) <= 30)  // 31% chance of getting a rematch.
-            {
-                SetRematchIdForTrainer(table, i);
-                ret = TRUE;
-            }
-        }
-    }
-
+    //for (i = 0; i <= REMATCH_SPECIAL_TRAINER_START; i++)
+    //{
+    //    if (table[i].mapGroup == mapGroup && table[i].mapNum == mapNum && !sub_80B1D94(i))
+    //    {
+    //        if (gSaveBlock1Ptr->trainerRematches[i] != 0)
+    //        {
+    //            // Trainer already wants a rematch. Don't bother updating it.
+    //            ret = TRUE;
+    //        }
+    //        else if (FlagGet(FLAG_MATCH_CALL_REGISTERED + i)
+    //         && (Random() % 100) <= 30)  // 31% chance of getting a rematch.
+    //        {
+    //            SetRematchIdForTrainer(table, i);
+    //            ret = TRUE;
+    //        }
+    //    }
+    //}
+    //
     return ret;
 }
 
@@ -1620,118 +1545,118 @@ void UpdateRematchIfDefeated(s32 rematchTableId)
 
 static bool32 DoesSomeoneWantRematchIn_(const struct RematchTrainer *table, u16 mapGroup, u16 mapNum)
 {
-    s32 i;
-
-    for (i = 0; i < REMATCH_TABLE_ENTRIES; i++)
-    {
-        if (table[i].mapGroup == mapGroup && table[i].mapNum == mapNum && gSaveBlock1Ptr->trainerRematches[i] != 0)
-            return TRUE;
-    }
+    //s32 i;
+    //
+    //for (i = 0; i < REMATCH_TABLE_ENTRIES; i++)
+    //{
+    //    if (table[i].mapGroup == mapGroup && table[i].mapNum == mapNum && gSaveBlock1Ptr->trainerRematches[i] != 0)
+    //        return TRUE;
+    //}
 
     return FALSE;
 }
 
 static bool32 IsRematchTrainerIn_(const struct RematchTrainer *table, u16 mapGroup, u16 mapNum)
 {
-    s32 i;
+    //s32 i;
 
-    for (i = 0; i < REMATCH_TABLE_ENTRIES; i++)
-    {
-        if (table[i].mapGroup == mapGroup && table[i].mapNum == mapNum)
-            return TRUE;
-    }
+    //for (i = 0; i < REMATCH_TABLE_ENTRIES; i++)
+    //{
+    //    if (table[i].mapGroup == mapGroup && table[i].mapNum == mapNum)
+    //        return TRUE;
+    //}
 
     return FALSE;
 }
 
 static bool8 IsFirstTrainerIdReadyForRematch(const struct RematchTrainer *table, u16 firstBattleTrainerId)
 {
-    s32 tableId = FirstBattleTrainerIdToRematchTableId(table, firstBattleTrainerId);
-
-    if (tableId == -1)
+    //s32 tableId = FirstBattleTrainerIdToRematchTableId(table, firstBattleTrainerId);
+    //
+    //if (tableId == -1)
+    //    return FALSE;
+    //if (tableId >= MAX_REMATCH_ENTRIES)
+    //    return FALSE;
+    //if (gSaveBlock1Ptr->trainerRematches[tableId] == 0)
         return FALSE;
-    if (tableId >= MAX_REMATCH_ENTRIES)
-        return FALSE;
-    if (gSaveBlock1Ptr->trainerRematches[tableId] == 0)
-        return FALSE;
-
-    return TRUE;
+    //
+    //return TRUE;
 }
 
 static bool8 IsTrainerReadyForRematch_(const struct RematchTrainer *table, u16 trainerId)
 {
-    s32 tableId = TrainerIdToRematchTableId(table, trainerId);
-
-    if (tableId == -1)
-        return FALSE;
-    if (tableId >= MAX_REMATCH_ENTRIES)
-        return FALSE;
-    if (gSaveBlock1Ptr->trainerRematches[tableId] == 0)
-        return FALSE;
-
-    return TRUE;
+    //s32 tableId = TrainerIdToRematchTableId(table, trainerId);
+    //
+    //if (tableId == -1)
+    return FALSE;
+    //if (tableId >= MAX_REMATCH_ENTRIES)
+    //    return FALSE;
+    //if (gSaveBlock1Ptr->trainerRematches[tableId] == 0)
+    //    return FALSE;
+    //
+    //return TRUE;
 }
 
 static u16 GetRematchTrainerIdFromTable(const struct RematchTrainer *table, u16 firstBattleTrainerId)
 {
-    const struct RematchTrainer *trainerEntry;
-    s32 i;
-    s32 tableId = FirstBattleTrainerIdToRematchTableId(table, firstBattleTrainerId);
-
-    if (tableId == -1)
-        return FALSE;
-
-    trainerEntry = &table[tableId];
-    for (i = 1; i < REMATCHES_COUNT; i++)
-    {
-        if (trainerEntry->trainerIds[i] == 0) // previous entry was this trainer's last one
-            return trainerEntry->trainerIds[i - 1];
-        if (!HasTrainerBeenFought(trainerEntry->trainerIds[i]))
-            return trainerEntry->trainerIds[i];
-    }
-
-    return trainerEntry->trainerIds[REMATCHES_COUNT - 1]; // already beaten at max stage
+    //const struct RematchTrainer *trainerEntry;
+    //s32 i;
+    //s32 tableId = FirstBattleTrainerIdToRematchTableId(table, firstBattleTrainerId);
+    //
+    //if (tableId == -1)
+    return FALSE;
+    //
+    //trainerEntry = &table[tableId];
+    //for (i = 1; i < REMATCHES_COUNT; i++)
+    //{
+    //    if (trainerEntry->trainerIds[i] == 0) // previous entry was this trainer's last one
+    //        return trainerEntry->trainerIds[i - 1];
+    //    if (!HasTrainerBeenFought(trainerEntry->trainerIds[i]))
+    //        return trainerEntry->trainerIds[i];
+    //}
+//
+    //return trainerEntry->trainerIds[REMATCHES_COUNT - 1]; // already beaten at max stage
 }
 
 static u16 GetLastBeatenRematchTrainerIdFromTable(const struct RematchTrainer *table, u16 firstBattleTrainerId)
 {
-    const struct RematchTrainer *trainerEntry;
-    s32 i;
-    s32 tableId = FirstBattleTrainerIdToRematchTableId(table, firstBattleTrainerId);
-
-    if (tableId == -1)
-        return FALSE;
-
-    trainerEntry = &table[tableId];
-    for (i = 1; i < REMATCHES_COUNT; i++)
-    {
-        if (trainerEntry->trainerIds[i] == 0) // previous entry was this trainer's last one
-            return trainerEntry->trainerIds[i - 1];
-        if (!HasTrainerBeenFought(trainerEntry->trainerIds[i]))
-            return trainerEntry->trainerIds[i - 1];
-    }
-
-    return trainerEntry->trainerIds[REMATCHES_COUNT - 1]; // already beaten at max stage
+    //const struct RematchTrainer *trainerEntry;
+    //s32 i;
+    //s32 tableId = FirstBattleTrainerIdToRematchTableId(table, firstBattleTrainerId);
+    //
+    //if (tableId == -1)
+    //    return FALSE;
+    //
+    //trainerEntry = &table[tableId];
+    //for (i = 1; i < REMATCHES_COUNT; i++)
+    //{
+    //    if (trainerEntry->trainerIds[i] == 0) // previous entry was this trainer's last one
+    //        return trainerEntry->trainerIds[i - 1];
+    //    if (!HasTrainerBeenFought(trainerEntry->trainerIds[i]))
+    //        return trainerEntry->trainerIds[i - 1];
+    //}
+    //
+    return FALSE;//trainerEntry->trainerIds[REMATCHES_COUNT - 1]; // already beaten at max stage
 }
 
 static void ClearTrainerWantRematchState(const struct RematchTrainer *table, u16 firstBattleTrainerId)
 {
-    s32 tableId = TrainerIdToRematchTableId(table, firstBattleTrainerId);
-
-    if (tableId != -1)
-        gSaveBlock1Ptr->trainerRematches[tableId] = 0;
+    //s32 tableId = TrainerIdToRematchTableId(table, firstBattleTrainerId);
+    //
+    //if (tableId != -1)
+        //gSaveBlock1Ptr->trainerRematches[tableId] = 0;
 }
 
 static u32 GetTrainerMatchCallFlag(u32 trainerId)
 {
-    s32 i;
-
-    for (i = 0; i < REMATCH_TABLE_ENTRIES; i++)
-    {
-        if (gRematchTable[i].trainerIds[0] == trainerId)
-            return FLAG_MATCH_CALL_REGISTERED + i;
-    }
-
+    //s32 i;
+    //
+    //for (i = 0; i < REMATCH_TABLE_ENTRIES; i++)
+    //{
+    //    if (gRematchTable[i].trainerIds[0] == trainerId)
+    //        return FLAG_MATCH_CALL_REGISTERED + i;
+    //}
+    //
     return 0xFFFF;
 }
 
@@ -1742,57 +1667,51 @@ static void RegisterTrainerInMatchCall(void)
 
 static bool8 WasSecondRematchWon(const struct RematchTrainer *table, u16 firstBattleTrainerId)
 {
-    s32 tableId = FirstBattleTrainerIdToRematchTableId(table, firstBattleTrainerId);
-
-    if (tableId == -1)
-        return FALSE;
-    if (!HasTrainerBeenFought(table[tableId].trainerIds[1]))
-        return FALSE;
-
-    return TRUE;
+    //s32 tableId = FirstBattleTrainerIdToRematchTableId(table, firstBattleTrainerId);
+    //
+    //if (tableId == -1)
+    //    return FALSE;
+    //if (!HasTrainerBeenFought(table[tableId].trainerIds[1]))
+    //    return FALSE;
+    //
+    return FALSE;
 }
 
 static bool32 HasAtLeastFiveBadges(void)
 {
-    s32 i, count;
+    u8 count = (CountBadges());
+    
+    if (count < 5)
+        return FALSE;
 
-    for (count = 0, i = 0; i < ARRAY_COUNT(sBadgeFlags); i++)
-    {
-        if (FlagGet(sBadgeFlags[i]) == TRUE)
-        {
-            if (++count >= 5)
-                return TRUE;
-        }
-    }
-
-    return FALSE;
-}
+    return TRUE;
+};
 
 #define STEP_COUNTER_MAX 255
 
 void IncrementRematchStepCounter(void)
 {
-    if (HasAtLeastFiveBadges())
-    {
-        if (gSaveBlock1Ptr->trainerRematchStepCounter >= STEP_COUNTER_MAX)
-            gSaveBlock1Ptr->trainerRematchStepCounter = STEP_COUNTER_MAX;
-        else
-            gSaveBlock1Ptr->trainerRematchStepCounter++;
-    }
+    //if (HasAtLeastFiveBadges())
+    //{
+    //    if (gSaveBlock1Ptr->trainerRematchStepCounter >= STEP_COUNTER_MAX)
+    //        gSaveBlock1Ptr->trainerRematchStepCounter = STEP_COUNTER_MAX;
+    //    else
+    //        gSaveBlock1Ptr->trainerRematchStepCounter++;
+    //}
 }
 
 static bool32 IsRematchStepCounterMaxed(void)
 {
-    if (HasAtLeastFiveBadges() && gSaveBlock1Ptr->trainerRematchStepCounter >= STEP_COUNTER_MAX)
-        return TRUE;
-    else
-        return FALSE;
+    //if (HasAtLeastFiveBadges() && gSaveBlock1Ptr->trainerRematchStepCounter >= STEP_COUNTER_MAX)
+    //    return TRUE;
+    //else
+    //    return FALSE;
 }
 
 void TryUpdateRandomTrainerRematches(u16 mapGroup, u16 mapNum)
 {
-    if (IsRematchStepCounterMaxed() && UpdateRandomTrainerRematches(gRematchTable, mapGroup, mapNum) == TRUE)
-        gSaveBlock1Ptr->trainerRematchStepCounter = 0;
+    //if (IsRematchStepCounterMaxed() && UpdateRandomTrainerRematches(gRematchTable, mapGroup, mapNum) == TRUE)
+    //    gSaveBlock1Ptr->trainerRematchStepCounter = 0;
 }
 
 bool32 DoesSomeoneWantRematchIn(u16 mapGroup, u16 mapNum)
@@ -1817,20 +1736,21 @@ u16 GetLastBeatenRematchTrainerId(u16 trainerId)
 
 bool8 ShouldTryRematchBattle(void)
 {
-    if (IsFirstTrainerIdReadyForRematch(gRematchTable, gTrainerBattleOpponent_A))
-        return TRUE;
-
-    return WasSecondRematchWon(gRematchTable, gTrainerBattleOpponent_A);
+    //if (IsFirstTrainerIdReadyForRematch(gRematchTable, gTrainerBattleOpponent_A))
+    //   return TRUE;
+    //
+    //return WasSecondRematchWon(gRematchTable, gTrainerBattleOpponent_A);
+    return FALSE;
 }
 
 bool8 IsTrainerReadyForRematch(void)
 {
-    return IsTrainerReadyForRematch_(gRematchTable, gTrainerBattleOpponent_A);
+    return FALSE; //IsTrainerReadyForRematch_(gRematchTable, gTrainerBattleOpponent_A);
 }
 
 static void HandleRematchVarsOnBattleEnd(void)
 {
-    ClearTrainerWantRematchState(gRematchTable, gTrainerBattleOpponent_A);
+    //ClearTrainerWantRematchState(gRematchTable, gTrainerBattleOpponent_A);
     SetBattledTrainersFlags();
 }
 
@@ -1851,18 +1771,18 @@ void ShouldTryGetTrainerScript(void)
 
 u16 CountBattledRematchTeams(u16 trainerId)
 {
-    s32 i;
-
-    if (HasTrainerBeenFought(gRematchTable[trainerId].trainerIds[0]) != TRUE)
-        return 0;
-
-    for (i = 1; i < REMATCHES_COUNT; i++)
-    {
-        if (gRematchTable[trainerId].trainerIds[i] == 0)
-            break;
-        if (!HasTrainerBeenFought(gRematchTable[trainerId].trainerIds[i]))
-            break;
-    }
-
-    return i;
+    //s32 i;
+    //
+    //if (HasTrainerBeenFought(gRematchTable[trainerId].trainerIds[0]) != TRUE)
+    //    return 0;
+    //
+    //for (i = 1; i < REMATCHES_COUNT; i++)
+    //{
+    //    if (gRematchTable[trainerId].trainerIds[i] == 0)
+    //        break;
+    //    if (!HasTrainerBeenFought(gRematchTable[trainerId].trainerIds[i]))
+    //        break;
+    //}
+    //
+    return 0;
 }

@@ -598,14 +598,14 @@ static void Cb_DepositMenu(u8 taskId);
 static void Cb_MoveMon(u8 taskId);
 static void Cb_GiveMovingItemToMon(u8 taskId);
 static void Cb_SwitchSelectedItem(u8 taskId);
-static void Cb_TakeItemForMoving(u8 taskId);
+static void Cb_removeitemForMoving(u8 taskId);
 static void Cb_WithdrawMon(u8 taskId);
 static void Cb_ShiftMon(u8 taskId);
 static void Cb_ShowPartyPokemon(u8 taskId);
 static void Cb_ShowItemInfo(u8 taskId);
 static void Cb_GiveItemFromBag(u8 taskId);
 static void Cb_ItemToBag(u8 taskId);
-static void Cb_TakeItemForMoving(u8 taskId);
+static void Cb_removeitemForMoving(u8 taskId);
 static void Cb_ShowMarkMenu(u8 taskId);
 static void Cb_ShowMonSummary(u8 taskId);
 static void Cb_ReleaseMon(u8 taskId);
@@ -2536,7 +2536,7 @@ static void Cb_MainPSS(u8 taskId)
             break;
         case 16:
             PlaySE(SE_SELECT);
-            SetPSSCallback(Cb_TakeItemForMoving);
+            SetPSSCallback(Cb_removeitemForMoving);
             break;
         case 17:
             PlaySE(SE_SELECT);
@@ -2819,7 +2819,7 @@ static void Cb_OnSelectedMon(u8 taskId)
             break;
         case 12:
             PlaySE(SE_SELECT);
-            SetPSSCallback(Cb_TakeItemForMoving);
+            SetPSSCallback(Cb_removeitemForMoving);
             break;
         case 13:
             PlaySE(SE_SELECT);
@@ -3195,7 +3195,7 @@ static void Cb_ShowMarkMenu(u8 taskId)
     }
 }
 
-static void Cb_TakeItemForMoving(u8 taskId)
+static void Cb_removeitemForMoving(u8 taskId)
 {
     switch (sPSSData->state)
     {

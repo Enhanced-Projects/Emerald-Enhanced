@@ -93,16 +93,16 @@ extern const u8 EventScript_DoLinkRoomExit[];
 extern const u8 CableClub_EventScript_TooBusyToNotice[];
 extern const u8 CableClub_EventScript_ReadTrainerCard[];
 extern const u8 CableClub_EventScript_ReadTrainerCardColored[];
-extern const u8 EventScript_BattleColosseum4P_PlayerSpot0[];
-extern const u8 EventScript_BattleColosseum4P_PlayerSpot1[];
-extern const u8 EventScript_BattleColosseum4P_PlayerSpot2[];
-extern const u8 EventScript_BattleColosseum4P_PlayerSpot3[];
+extern const u8 EventScript_BattleColosseum_4P_PlayerSpot0[];
+extern const u8 EventScript_BattleColosseum_4P_PlayerSpot1[];
+extern const u8 EventScript_BattleColosseum_4P_PlayerSpot2[];
+extern const u8 EventScript_BattleColosseum_4P_PlayerSpot3[];
 extern const u8 EventScript_RecordCenter_Spot0[];
 extern const u8 EventScript_RecordCenter_Spot1[];
 extern const u8 EventScript_RecordCenter_Spot2[];
 extern const u8 EventScript_RecordCenter_Spot3[];
-extern const u8 EventScript_BattleColosseum2P_PlayerSpot0[];
-extern const u8 EventScript_BattleColosseum2P_PlayerSpot1[];
+extern const u8 EventScript_BattleColosseum_2P_PlayerSpot0[];
+extern const u8 EventScript_BattleColosseum_2P_PlayerSpot1[];
 extern const u8 EventScript_TradeCenter_Chair1[];
 extern const u8 EventScript_TradeCenter_Chair0[];
 extern const u8 EventScript_ConfirmLeaveTradeRoom[];
@@ -897,7 +897,7 @@ static void mli0_load_map(u32 a1)
     isOutdoors = IsMapTypeOutdoors(gMapHeader.mapType);
     isIndoors = IsMapTypeIndoors(gMapHeader.mapType);
 
-    sub_80EB218();
+    CheckLeftFriendsSecretBase();
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
     ResetCyclingRoadChallengeData();
@@ -1730,13 +1730,22 @@ void CB2_LoadMap(void)
     ScriptContext1_Init();
     ScriptContext2_Disable();
     SetMainCallback1(NULL);
-    SetMainCallback2(c2_change_map);
+    SetMainCallback2(CB2_DoChangeMap);
     gMain.savedCallback = CB2_LoadMap2;
 }
 
 static void CB2_LoadMap2(void)
 {
     do_load_map_stuff_loop(&gMain.state);
+
+    if (FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1)
+    {
+        SetWeather((VarGet(VAR_RYU_WEATHER)));
+        DoCurrentWeather();
+        VarSet(VAR_RYU_WEATHER, 0);
+        FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
+    }
+    
     SetFieldVBlankCallback();
     SetMainCallback1(CB1_Overworld);
     SetMainCallback2(CB2_Overworld);
@@ -1781,12 +1790,6 @@ void CB2_ReturnToField(void)
 {
         FieldClearVBlankHBlankCallbacks();
         SetMainCallback2(CB2_ReturnToFieldLocal);
-
-        if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
-            RyuKillMon();
-
-        if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
-            RyuKillMon();
 }
 
 void CB2_ReturnToFieldLocal(void)
@@ -1795,6 +1798,20 @@ void CB2_ReturnToFieldLocal(void)
     {
         SetFieldVBlankCallback();
         SetMainCallback2(CB2_Overworld);
+    }
+
+    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+        RyuKillMon();
+
+    if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
+        RyuKillMon();
+
+    if (FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1)
+    {
+        SetWeather((VarGet(VAR_RYU_WEATHER)));
+        DoCurrentWeather();
+        VarSet(VAR_RYU_WEATHER, 0);
+        FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
     }
 }
 
@@ -1863,7 +1880,7 @@ void CB2_ContinueSavedGame(void)
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
     ResetSafariZoneFlag_();
-    if (gSaveFileStatus == 0xFF)
+    if (gSaveFileStatus == SAVE_STATUS_ERROR)
         ResetWinStreaks();
 
     LoadSaveblockMapHeader();
@@ -2931,13 +2948,13 @@ static const u8 *TryInteractWithPlayer(struct TradeRoomPlayer *player)
 // these event scripts runs.
 static u16 GetDirectionForEventScript(const u8 *script)
 {
-    if (script == EventScript_BattleColosseum4P_PlayerSpot0)
+    if (script == EventScript_BattleColosseum_4P_PlayerSpot0)
         return FACING_FORCED_RIGHT;
-    else if (script == EventScript_BattleColosseum4P_PlayerSpot1)
+    else if (script == EventScript_BattleColosseum_4P_PlayerSpot1)
         return FACING_FORCED_LEFT;
-    else if (script == EventScript_BattleColosseum4P_PlayerSpot2)
+    else if (script == EventScript_BattleColosseum_4P_PlayerSpot2)
         return FACING_FORCED_RIGHT;
-    else if (script == EventScript_BattleColosseum4P_PlayerSpot3)
+    else if (script == EventScript_BattleColosseum_4P_PlayerSpot3)
         return FACING_FORCED_LEFT;
     else if (script == EventScript_RecordCenter_Spot0)
         return FACING_FORCED_RIGHT;
@@ -2947,9 +2964,9 @@ static u16 GetDirectionForEventScript(const u8 *script)
         return FACING_FORCED_RIGHT;
     else if (script == EventScript_RecordCenter_Spot3)
         return FACING_FORCED_LEFT;
-    else if (script == EventScript_BattleColosseum2P_PlayerSpot0)
+    else if (script == EventScript_BattleColosseum_2P_PlayerSpot0)
         return FACING_FORCED_RIGHT;
-    else if (script == EventScript_BattleColosseum2P_PlayerSpot1)
+    else if (script == EventScript_BattleColosseum_2P_PlayerSpot1)
         return FACING_FORCED_LEFT;
     else if (script == EventScript_TradeCenter_Chair0)
         return FACING_FORCED_RIGHT;

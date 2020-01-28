@@ -531,7 +531,7 @@ Route110_EventScript_BrendanDefeated:: @ 81EF8C4
 	end
 
 Route110_EventScript_GiveWaystone:: @ 81EF8DF
-	giveitem_std ITEM_NUGGET
+	giveitem ITEM_NUGGET
 	return
 
 Route110_EventScript_RivalExit:: @ 81EF8EC
@@ -706,7 +706,6 @@ Route110_EventScript_BirchScene:: @ 81EF9F7
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_PROF_BIRCH_MATCH_CALL
 	msgbox Route110_Text_KeepAnEyeOutForRival, MSGBOX_DEFAULT
 	closemessage
 	compare VAR_0x8008, 1

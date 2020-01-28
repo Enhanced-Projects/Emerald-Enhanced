@@ -323,7 +323,6 @@ PlayersHouse_1F_EventScript_DontPushYourselfTooHard:: @ 8292A0F
 	end
 
 PlayersHouse_1F_EventScript_TryRegisterMom:: @ 8292A19
-	goto_if_set FLAG_ENABLE_MOM_MATCH_CALL, PlayersHouse_1F_EventScript_CheckGiveAmuletCoin
 	msgbox PlayersHouse_1F_Text_IsThatAPokenav, MSGBOX_DEFAULT
 	closemessage
 	delay 30
@@ -332,7 +331,6 @@ PlayersHouse_1F_EventScript_TryRegisterMom:: @ 8292A19
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_MOM_MATCH_CALL
 	release
 	end
 
@@ -343,7 +341,7 @@ PlayersHouse_1F_EventScript_CheckGiveAmuletCoin:: @ 8292A43
 PlayersHouse_1F_EventScript_TryGiveAmuletCoin:: @ 8292A51
 	goto_if_set FLAG_RECEIVED_AMULET_COIN, PlayersHouse_1F_EventScript_MomHealsParty
 	msgbox PlayersHouse_1F_Text_GotDadsBadgeHeresSomethingFromMom, MSGBOX_DEFAULT
-	giveitem_std ITEM_AMULET_COIN
+	giveitem_silent ITEM_AMULET_COIN
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	msgbox PlayersHouse_1F_Text_DontPushYourselfTooHard, MSGBOX_DEFAULT
@@ -446,7 +444,7 @@ PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV:: @ 8292AF2
 	compare VAR_0x8008, FEMALE
 	call_if_eq PlayersHouse_1F_EventScript_DadApproachPlayerFemale
 	msgbox PlayersHouse_1F_Text_TicketFromBrineyCameForYou, MSGBOX_DEFAULT
-	giveitem_std ITEM_SS_TICKET
+	giveitem_silent ITEM_SS_TICKET
 	msgbox PlayersHouse_1F_Text_PortsInSlateportLilycove, MSGBOX_DEFAULT
 	closemessage
 	delay 20

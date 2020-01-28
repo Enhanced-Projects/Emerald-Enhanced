@@ -358,10 +358,10 @@ SlateportCity_Harbor_EventScript_DeepSeaTooth:: @ 820CD7B
 	msgbox SlateportCity_Harbor_Text_TradeForDeepSeaTooth, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq SlateportCity_Harbor_EventScript_ChooseDifferentTrade
-	giveitem_std ITEM_DEEP_SEA_TOOTH
+	giveitem ITEM_DEEP_SEA_TOOTH
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
-	takeitem ITEM_SCANNER, 1
+	removeitem ITEM_SCANNER, 1
 	msgbox SlateportCity_Harbor_Text_HandedScannerToStern, MSGBOX_DEFAULT
 	setflag FLAG_EXCHANGED_SCANNER
 	goto SlateportCity_Harbor_EventScript_TradedScanner
@@ -371,10 +371,10 @@ SlateportCity_Harbor_EventScript_DeepSeaScale:: @ 820CDBB
 	msgbox SlateportCity_Harbor_Text_TradeForDeepSeaScale, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq SlateportCity_Harbor_EventScript_ChooseDifferentTrade
-	giveitem_std ITEM_DEEP_SEA_SCALE
+	giveitem ITEM_DEEP_SEA_SCALE
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
-	takeitem ITEM_SCANNER, 1
+	removeitem ITEM_SCANNER, 1
 	msgbox SlateportCity_Harbor_Text_HandedScannerToStern, MSGBOX_DEFAULT
 	setflag FLAG_EXCHANGED_SCANNER
 	goto SlateportCity_Harbor_EventScript_TradedScanner

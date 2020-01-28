@@ -13403,8 +13403,8 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyu[] = {
 	{
 	.iv = 255,
 	.lvl = 125,
-	.species = SPECIES_RHYPERIOR,
-	.heldItem = ITEM_LIFE_ORB,
+	.species = SPECIES_TYRANTRUM,
+	.heldItem = ITEM_ASSAULT_VEST,
 	.ability = 2,
 	.moves = {MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_HORN_DRILL, MOVE_IRON_HEAD},
 	},
@@ -13428,7 +13428,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyu[] = {
 	.iv = 255,
 	.lvl = 125,
 	.species = SPECIES_MAWILE,
-	.heldItem = ITEM_EXPERT_BELT,
+	.heldItem = ITEM_MAWILITE,
 	.ability = 0,
 	.moves = {MOVE_PLAY_ROUGH, MOVE_POWER_UP_PUNCH, MOVE_CRUNCH, MOVE_IRON_HEAD},
 	}

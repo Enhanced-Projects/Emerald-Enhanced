@@ -14,6 +14,7 @@
 #include "battle_pyramid_bag.h"
 #include "constants/items.h"
 #include "constants/hold_effects.h"
+#include "constants/tv.h"
 
 extern u16 gUnknown_0203CF30[];
 
@@ -201,9 +202,9 @@ bool8 CheckBagHasSpace(u16 itemId, u16 count)
 
         pocket = ItemId_GetPocket(itemId) - 1;
         if (pocket != BERRIES_POCKET)
-            slotCapacity = 99;
+            slotCapacity = MAX_BAG_ITEM_CAPACITY;
         else
-            slotCapacity = 999;
+            slotCapacity = MAX_BERRY_CAPACITY;
 
         // Check space in any existing item slots that already contain this item
         for (i = 0; i < gBagPockets[pocket].capacity; i++)
@@ -421,9 +422,9 @@ bool8 AddBagItem(u16 itemId, u16 count)
         memcpy(newItems, itemPocket->itemSlots, itemPocket->capacity * sizeof(struct ItemSlot));
 
         if (pocket != BERRIES_POCKET)
-            slotCapacity = 99;
+            slotCapacity = MAX_BAG_ITEM_CAPACITY;
         else
-            slotCapacity = 999;
+            slotCapacity = MAX_BERRY_CAPACITY;
 
         for (i = 0; i < itemPocket->capacity; i++)
         {
@@ -542,7 +543,7 @@ bool8 RemoveBagItem(u16 itemId, u16 count)
 
         if (CurMapIsSecretBase() == TRUE)
         {
-            VarSet(VAR_SECRET_BASE_LOW_TV_FLAGS, VarGet(VAR_SECRET_BASE_LOW_TV_FLAGS) | 0x200);
+            VarSet(VAR_SECRET_BASE_LOW_TV_FLAGS, VarGet(VAR_SECRET_BASE_LOW_TV_FLAGS) | SECRET_BASE_USED_BAG);
             VarSet(VAR_SECRET_BASE_LAST_ITEM_USED, itemId);
         }
 

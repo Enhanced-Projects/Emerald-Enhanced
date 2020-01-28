@@ -1,7 +1,10 @@
 SlateportCity_PokemonFanClub_EventScript_SwaggerTutor:: @ 82C7F16
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_SWAGGER, MoveTutor_EventScript_SwaggerTaught
+	checkitem ITEM_BIG_PEARL, 1
+	compare VAR_RESULT, 1
+	goto_if_ne SC_MT_Hypervoice_nopearl
+	setvar VAR_TEMP_5, ITEM_BIG_PEARL
 	msgbox MoveTutor_Text_SwaggerTeach, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_SwaggerDeclined
@@ -9,13 +12,23 @@ SlateportCity_PokemonFanClub_EventScript_SwaggerTutor:: @ 82C7F16
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_SwaggerDeclined
 	msgbox MoveTutor_Text_SwaggerWhichMon, MSGBOX_DEFAULT
-	setvar VAR_0x8005, TUTOR_MOVE_SWAGGER
+	setvar VAR_0x8005, TUTOR_MOVE_HYPER_VOICE
 	call MoveTutor_EventScript_OpenPartyMenu
 	compare VAR_RESULT, 0
 	goto_if_eq MoveTutor_EventScript_SwaggerDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_SWAGGER
+	removeitem ITEM_BIG_PEARL, 1
 	goto MoveTutor_EventScript_SwaggerTaught
 	end
+
+SC_MT_Hypervoice_nopearl::
+	msgbox nopearlmsg
+	release
+	end
+
+nopearlmsg:
+    .string "Hey! You got to give me a Big Pearl\n"
+    .string "before I'll show you a good time...$"
+
 
 MoveTutor_EventScript_SwaggerDeclined:: @ 82C7F6A
 	msgbox MoveTutor_Text_SwaggerDeclined, MSGBOX_DEFAULT
@@ -30,7 +43,10 @@ MoveTutor_EventScript_SwaggerTaught:: @ 82C7F74
 MauvilleCity_EventScript_RolloutTutor:: @ 82C7F7E
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_ROLLOUT, MoveTutor_EventScript_RolloutTaught
+	checkitem ITEM_BIG_MALASADA, 1
+	compare VAR_RESULT, 1
+	goto_if_ne MC_MT_Declined_nomalasada
+	setvar VAR_TEMP_5, ITEM_BIG_MALASADA
 	msgbox MoveTutor_Text_RolloutTeach, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_RolloutDeclined
@@ -38,13 +54,22 @@ MauvilleCity_EventScript_RolloutTutor:: @ 82C7F7E
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_RolloutDeclined
 	msgbox MoveTutor_Text_RolloutWhichMon, MSGBOX_DEFAULT
-	setvar VAR_0x8005, TUTOR_MOVE_ROLLOUT
+	setvar VAR_0x8005, TUTOR_MOVE_STOMPING_TANTRUM
 	call MoveTutor_EventScript_OpenPartyMenu
 	compare VAR_RESULT, 0
 	goto_if_eq MoveTutor_EventScript_RolloutDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_ROLLOUT
+	removeitem ITEM_BIG_MALASADA, 1
 	goto MoveTutor_EventScript_RolloutTaught
 	end
+
+MC_MT_Declined_nomalasada::
+	msgbox YouDontHaveMalasada
+	release
+	end
+
+YouDontHaveMalasada::
+    .string "I'm hungry!\n"
+    .string "I need a Big Malasada for motivation.$"
 
 MoveTutor_EventScript_RolloutDeclined:: @ 82C7FD2
 	msgbox MoveTutor_Text_RolloutDeclined, MSGBOX_DEFAULT
@@ -59,7 +84,10 @@ MoveTutor_EventScript_RolloutTaught:: @ 82C7FDC
 VerdanturfTown_PokemonCenter_1F_EventScript_FuryCutterTutor:: @ 82C7FE6
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_FURY_CUTTER, MoveTutor_EventScript_FuryCutterTaught
+	checkitem ITEM_BERRY_JUICE, 1
+	compare VAR_RESULT, 1
+	goto_if_ne VT_Tutor_cost_declined
+	setvar VAR_TEMP_5, ITEM_BERRY_JUICE
 	msgbox MoveTutor_Text_FuryCutterTeach, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_FuryCutterDeclined
@@ -67,13 +95,22 @@ VerdanturfTown_PokemonCenter_1F_EventScript_FuryCutterTutor:: @ 82C7FE6
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_FuryCutterDeclined
 	msgbox MoveTutor_Text_FuryCutterWhichMon, MSGBOX_DEFAULT
-	setvar VAR_0x8005, TUTOR_MOVE_FURY_CUTTER
+	setvar VAR_0x8005, TUTOR_MOVE_SIGNAL_BEAM
 	call MoveTutor_EventScript_OpenPartyMenu
 	compare VAR_RESULT, 0
 	goto_if_eq MoveTutor_EventScript_FuryCutterDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_FURY_CUTTER
+	removeitem ITEM_BERRY_JUICE, 1
 	goto MoveTutor_EventScript_FuryCutterTaught
 	end
+
+VT_Tutor_cost_declined::
+	msgbox NoBerryJuice
+	release
+	end
+
+NoBerryJuice::
+	.string "I'm wickedly thirsty, I need some Berry\n"
+	.string "Juice to slake my thirst!$"
 
 MoveTutor_EventScript_FuryCutterDeclined:: @ 82C803A
 	msgbox MoveTutor_Text_FuryCutterDeclined, MSGBOX_DEFAULT
@@ -88,7 +125,10 @@ MoveTutor_EventScript_FuryCutterTaught:: @ 82C8044
 LavaridgeTown_House_EventScript_MimicTutor:: @ 82C804E
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_MIMIC, MoveTutor_EventScript_MimicTaught
+	checkitem ITEM_BERRY_JUICE, 1
+	compare VAR_RESULT, 1
+	goto_if_ne LT_MT_NoBerryJuice
+	setvar VAR_TEMP_5, ITEM_BERRY_JUICE
 	msgbox MoveTutor_MimicTeach, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_MimicDeclined
@@ -96,13 +136,23 @@ LavaridgeTown_House_EventScript_MimicTutor:: @ 82C804E
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_MimicDeclined
 	msgbox MoveTutor_Text_MimicWhichMon, MSGBOX_DEFAULT
-	setvar VAR_0x8005, TUTOR_MOVE_MIMIC
+	setvar VAR_0x8005, TUTOR_MOVE_TRICK
 	call MoveTutor_EventScript_OpenPartyMenu
 	compare VAR_RESULT, 0
 	goto_if_eq MoveTutor_EventScript_MimicDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_MIMIC
+	removeitem ITEM_BERRY_JUICE, 1
 	goto MoveTutor_EventScript_MimicTaught
 	end
+
+LT_MT_NoBerryJuice::
+	msgbox LT_MT_NoBerryJuiceMsg
+	release
+	end
+
+LT_MT_NoBerryJuiceMsg:
+	.string "I need Berry Juice to\n"
+	.string "maintain my guise. Please\l"
+	.string "return with it!$"
 
 MoveTutor_EventScript_MimicDeclined:: @ 82C80A2
 	msgbox MoveTutor_MimicDeclined, MSGBOX_DEFAULT
@@ -175,7 +225,10 @@ MoveTutor_EventScript_SleepTalkTaught:: @ 82C817C
 LilycoveCity_DepartmentStoreRooftop_EventScript_SubstituteTutor:: @ 82C8186
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_SUBSTITUTE, MoveTutor_EventScript_SubstituteTaught
+	checkitem ITEM_QUICK_CLAW, 1
+	compare VAR_RESULT, 1
+	goto_if_ne LCC_MT_Sub_noqc
+	setvar VAR_TEMP_5, ITEM_QUICK_CLAW
 	msgbox MoveTutor_Text_SubstituteTeach, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_SubstituteDeclined
@@ -183,13 +236,24 @@ LilycoveCity_DepartmentStoreRooftop_EventScript_SubstituteTutor:: @ 82C8186
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_SubstituteDeclined
 	msgbox MoveTutor_Text_SubstituteWhichMon, MSGBOX_DEFAULT
-	setvar VAR_0x8005, TUTOR_MOVE_SUBSTITUTE
+	setvar VAR_0x8005, TUTOR_MOVE_TAILWIND
 	call MoveTutor_EventScript_OpenPartyMenu
 	compare VAR_RESULT, 0
 	goto_if_eq MoveTutor_EventScript_SubstituteDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_SUBSTITUTE
+	removeitem ITEM_QUICK_CLAW, 1
 	goto MoveTutor_EventScript_SubstituteTaught
 	end
+
+LCC_MT_Sub_noqc::
+	msgbox noquickclaw
+	release
+	end
+
+noquickclaw:
+    .string "I need a Quick Claw in order to teach\n"
+    .string "the move Tailwind. Please return\l"
+    .string "with one...$"
+
 
 MoveTutor_EventScript_SubstituteDeclined:: @ 82C81DA
 	msgbox MoveTutor_Text_SubstituteDeclined, MSGBOX_DEFAULT
@@ -296,5 +360,6 @@ MoveTutor_EventScript_OpenPartyMenu:: @ 82C8326
 	return
 
 MoveTutor_EventScript_CanOnlyBeLearnedOnce:: @ 82C832D
+	bufferitemname 0, VAR_TEMP_5
 	msgbox MoveTutor_Text_ThisMoveCanOnlyBeLearnedOnce, MSGBOX_YESNO
 	return

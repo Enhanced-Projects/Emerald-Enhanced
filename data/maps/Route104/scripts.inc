@@ -107,7 +107,6 @@ Route104_EventScript_DawnEncounter:: @ 81ECD4B
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
 	applymovement EVENT_OBJ_ID_PLAYER, Route104_Movement_PlayerFaceRival
 	applymovement 34, Route104_Movement_RivalWalkSlowLeft
 	msgbox Route104_Text_DawnHowsYourPokedex, MSGBOX_DEFAULT
@@ -181,7 +180,6 @@ Route104_EventScript_BrendanEncounter:: @ 81ECE6F
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
 	applymovement EVENT_OBJ_ID_PLAYER, Route104_Movement_PlayerFaceRival
 	applymovement 34, Route104_Movement_RivalWalkSlowLeft
 	msgbox Route104_Text_BrendanHowsYourPokedex, MSGBOX_DEFAULT
@@ -254,7 +252,7 @@ Route104_EventScript_ExpertF:: @ 81ECF8C
 	faceplayer
 	goto_if_set FLAG_RECEIVED_CHESTO_BERRY_ROUTE_104, Route104_EventScript_ReceivedBerry
 	msgbox Route104_Text_PlantBerriesInSoilTakeThis, MSGBOX_DEFAULT
-	giveitem_std ITEM_CHESTO_BERRY
+	giveitem ITEM_CHESTO_BERRY
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_CHESTO_BERRY_ROUTE_104
@@ -272,7 +270,7 @@ Route104_EventScript_WhiteHerbFlorist:: @ 81ECFCD
 	faceplayer
 	goto_if_set FLAG_RECEIVED_WHITE_HERB, Route104_EventScript_ReceivedWhiteHerb
 	msgbox Route104_Text_DontNeedThisTakeIt, MSGBOX_DEFAULT
-	giveitem_std ITEM_WHITE_HERB
+	giveitem ITEM_WHITE_HERB
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_WHITE_HERB
@@ -325,7 +323,7 @@ Route104_EventScript_Boy2:: @ 81ED057
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM09, Route104_EventScript_ReceivedBulletSeed
 	msgbox Route104_Text_LikeFillingMouthWithSeedsTakeThis, MSGBOX_DEFAULT
-	giveitem_std ITEM_TM09
+	giveitem ITEM_TM09
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM09
@@ -351,8 +349,6 @@ Route104_EventScript_SailToDewford:: @ 81ED099
 	waitmovement 0
 	hideobjectat EVENT_OBJ_ID_PLAYER, MAP_ROUTE104
 	call Common_EventScript_PlayBrineysBoatMusic
-	goto_if_set FLAG_ENABLE_NORMAN_MATCH_CALL, Route104_EventScript_SailToDewfordNoCall
-	goto_if_unset FLAG_ENABLE_NORMAN_MATCH_CALL, Route104_EventScript_SailToDewfordDadCalls
 	end
 
 Route104_EventScript_SailToDewfordNoCall:: @ 81ED0D9
@@ -373,7 +369,6 @@ Route104_EventScript_SailToDewfordDadCalls:: @ 81ED0EF
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_NORMAN_MATCH_CALL
 	applymovement EVENT_OBJ_ID_PLAYER, Route104_Movement_SailToDewfordAfterDadCalls
 	applymovement 7, Route104_Movement_SailToDewfordAfterDadCalls, MAP_ROUTE104
 	waitmovement 7, MAP_ROUTE104

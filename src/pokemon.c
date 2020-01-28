@@ -50,6 +50,7 @@
 #include "constants/species.h"
 #include "constants/trainers.h"
 #include "constants/weather.h"
+#include "mgba.h"
 
 struct SpeciesItem
 {
@@ -1171,7 +1172,7 @@ const struct SpindaSpot gSpindaSpotGraphics[] =
 
 #include "data/pokemon/item_effects.h"
 
-const s8 gNatureStatTable[][5] =
+const s8 gNatureStatTable[][NUM_EV_STATS] =
 {
     // Atk Def Spd Sp.Atk Sp.Def
     {    0,  0,  0,     0,     0}, // Hardy
@@ -2180,11 +2181,6 @@ static const s8 gUnknown_08329ECE[][3] =
     {-1, -1, -1},
     {-5, -5, -10},
     {-5, -5, -10},
-};
-
-static const u16 sHMMoves[] =
-{
-    MOVE_NONE, 0xFFFF
 };
 
 static const struct SpeciesItem sAlteringCaveWildMonHeldItems[] =
@@ -4944,8 +4940,8 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             }
                             if (friendship < 0)
                                 friendship = 0;
-                            if (friendship > 255)
-                                friendship = 255;
+                            if (friendship > MAX_FRIENDSHIP)
+                                friendship = MAX_FRIENDSHIP;
                             SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
                             retVal = FALSE;
                         }
@@ -4970,8 +4966,8 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             }
                             if (friendship < 0)
                                 friendship = 0;
-                            if (friendship > 255)
-                                friendship = 255;
+                            if (friendship > MAX_FRIENDSHIP)
+                                friendship = MAX_FRIENDSHIP;
                             SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
                             retVal = FALSE;
                         }
@@ -4995,8 +4991,8 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             }
                             if (friendship < 0)
                                 friendship = 0;
-                            if (friendship > 255)
-                                friendship = 255;
+                            if (friendship > MAX_FRIENDSHIP)
+                                friendship = MAX_FRIENDSHIP;
                             SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
                             retVal = FALSE;
                         }
@@ -5222,6 +5218,8 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem)
     u16 upperPersonality = personality >> 16;
     u8 holdEffect;
 
+    mgba_printf(MGBA_LOG_INFO, "Beginning evolution check...");
+
     if (heldItem == ITEM_ENIGMA_BERRY)
         holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
     else
@@ -5261,16 +5259,20 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem)
                 break;
             case EVO_LEVEL_NIGHT:
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 19 && gLocalTime.hours < 6 && gEvolutionTable[species][i].param <= level)
+                if (gLocalTime.hours >= 17 && gLocalTime.hours < 6 && gEvolutionTable[species][i].param <= level)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_ITEM_HOLD_NIGHT:
+                mgba_printf(MGBA_LOG_INFO, "%d", ((heldItem == gEvolutionTable[species][i].param) << 2) | ((gLocalTime.hours < 6) << 1) | (gLocalTime.hours >= 19));
                 RtcCalcLocalTime();
-                if (gLocalTime.hours >= 19 && gLocalTime.hours < 6 && heldItem == gEvolutionTable[species][i].param)
+                mgba_printf(MGBA_LOG_INFO, "Checked item hold night case, time is %dh:%dm::%ds", gLocalTime.hours, gLocalTime.minutes, gLocalTime.seconds);
+                if ((gLocalTime.hours >= 18 || gLocalTime.hours < 10) && heldItem == gEvolutionTable[species][i].param)
                 {
+                    mgba_printf(MGBA_LOG_INFO, "It is currently night, mon is holding %d", heldItem);
                     heldItem = 0;
                     SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                    mgba_printf(MGBA_LOG_INFO, "evo check completed");
                 }
                 break;
             case EVO_ITEM_HOLD_DAY:
@@ -5662,7 +5664,8 @@ u8 GetTrainerEncounterMusicId(u16 trainerOpponentId)
 
 u32 ModifyStatByNature(u8 nature, u32 n, u8 statIndex)
 {
-    if (statIndex < 1 || statIndex > 5)
+    // Dont modify HP, Accuracy, or Evasion by nature
+    if (statIndex <= STAT_HP || statIndex > NUM_EV_STATS)
     {
         // Should just be "return n", but it wouldn't match without this.
         return n;
@@ -5730,8 +5733,8 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
             }
             if (friendship < 0)
                 friendship = 0;
-            if (friendship > 255)
-                friendship = 255;
+            if (friendship > MAX_FRIENDSHIP)
+                friendship = MAX_FRIENDSHIP;
             SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
         }
     }
@@ -6214,7 +6217,7 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_PYRAMID_KING:
             return MUS_VS_FRONT;
         case TRAINER_CLASS_OVERLORD:
-            return MUS_RG_VS_DEN;
+            return MUS_VS_REKKU;
         default:
             return MUS_BATTLE20;
         }
@@ -6301,16 +6304,6 @@ const struct CompressedSpritePalette *GetMonSpritePalStructFromOtIdPersonality(u
         return &gMonPaletteTable[species];
 }
 
-bool32 IsHMMove2(u16 move)
-{
-    int i = 0;
-    while (sHMMoves[i] != 0xFFFF)
-    {
-        if (sHMMoves[i++] == move)
-            return TRUE;
-    }
-    return FALSE;
-}
 
 bool8 IsMonSpriteNotFlipped(u16 species)
 {

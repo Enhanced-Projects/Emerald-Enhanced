@@ -220,7 +220,7 @@ LCC_Jeweler_Customwork::
 	
 LCC_JewelerMakingNecklace::
 	msgbox LCC_JewelerMakingNecklaceMsg MSGBOX_DEFAULT
-	takeitem ITEM_STAR_PIECE, 1
+	removeitem ITEM_STAR_PIECE, 1
 	msgbox LCC_NecklaceMade MSGBOX_DEFAULT
 	clearflag FLAG_RYU_PLAYER_AQUA_STONE
 	setflag FLAG_RYU_PLAYER_AQUA_NECKLACE

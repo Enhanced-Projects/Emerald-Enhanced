@@ -54,8 +54,19 @@ EverGrandeCity_GlaciasRoom_EventScript_Glacia:: @ 8228469
 EGC_AltGlacia::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerGlaciaRematch
 	trainerbattle_no_intro TRAINER_GLACIA_REMATCH, EverGrandeCity_GlaciasRoom_Text_Defeat
+	goto RyuGlaciaMegaReward
 	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
 	end
+
+RyuGlaciaMegaReward::
+	goto_if_set FLAG_RYU_GLACIA_MEGA, EverGrandeCity_GlaciasRoom_EventScript_Defeated
+	giveitem_silent ITEM_GLALITITE
+	msgbox GlaciaMegaRewardMsg
+	setflag FLAG_RYU_GLACIA_MEGA
+	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
+
+GlaciaMegaRewardMsg::
+	.string "You chilled me to the core.\pYou know the essence of Ice\nPokemon. This stone would be\lwell utilized by you.$"
 
 EGC_FollowerGlacia::
 	call RyuFollowerAllySelector
@@ -66,6 +77,7 @@ EGC_FollowerGlacia::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
+	goto RyuGlaciaMegaReward
 	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
 	end
 	

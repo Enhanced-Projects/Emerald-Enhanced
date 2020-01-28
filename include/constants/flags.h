@@ -1,6 +1,8 @@
 #ifndef GUARD_CONSTANTS_FLAGS_H
 #define GUARD_CONSTANTS_FLAGS_H
 
+#include "constants/opponents.h"
+
 // Temporary Flags
 // These temporary flags are are cleared every time a map is loaded. They are used
 // for things like shortening an NPCs introduction text if the player already spoke
@@ -119,11 +121,11 @@
 #define FLAG_RYU_PLAYER_AQUA_NECKLACE                    0x68  // Unused Flag
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
-#define FLAG_RECEIVED_HM04                   0x6A
-#define FLAG_RECEIVED_HM06                   0x6B
+#define FLAG_RECEIVED_TM54                   0x6A
+#define FLAG_RECEIVED_TM56                   0x6B
 #define FLAG_WHITEOUT_TO_LAVARIDGE           0x6C // Set after defeating Flannery, so the player cant white out from poison before receiving Go Goggles
-#define FLAG_RECEIVED_HM05                   0x6D
-#define FLAG_RECEIVED_HM02                   0x6E
+#define FLAG_RECEIVED_TM55                   0x6D
+#define FLAG_RECEIVED_TM52                   0x6E
 #define FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT  0x6F
 #define FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE  0x70
 #define FLAG_RYU_IN_MOSSDEEP_GYM 0x71 // Unused Flag. Used in R/S to indicate whether player defeated or caught Groudon/Kyogre in Cave of Origin.
@@ -137,8 +139,8 @@
 
 #define FLAG_LANDMARK_MIRAGE_TOWER           0x78
 #define FLAG_RECEIVED_TM31                   0x79
-#define FLAG_RECEIVED_HM03                   0x7A
-#define FLAG_RECEIVED_HM08                   0x7B
+#define FLAG_RECEIVED_TM53                   0x7A
+#define FLAG_RECEIVED_TM58                   0x7B
 #define FLAG_REGISTER_RIVAL_POKENAV          0x7C
 #define FLAG_DEFEATED_RIVAL_ROUTE_104        0x7D
 #define FLAG_DEFEATED_WALLY_VICTORY_ROAD     0x7E
@@ -152,7 +154,7 @@
 #define FLAG_PENDING_DAYCARE_EGG             0x86
 #define FLAG_THANKED_FOR_PLAYING_WITH_WALLY  0x87
 #define FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0x88 // Set after defeating Wally outside Mauville Gym. Will activate a call later to register Wally.
-#define FLAG_RECEIVED_HM01                   0x89
+#define FLAG_RECEIVED_TM51                   0x89
 #define FLAG_SCOTT_CALL_FORTREE_GYM          0x8A // Triggers call from Scott after defeating Winona
 #define FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY   0x8B
 #define FLAG_RECEIVED_6_SODA_POP             0x8C
@@ -321,7 +323,7 @@
 #define FLAG_MET_FANCLUB_YOUNGER_BROTHER     0x12C
 #define FLAG_RIVAL_LEFT_FOR_ROUTE103         0x12D
 #define FLAG_OMIT_DIVE_FROM_STEVEN_LETTER    0x12E
-#define FLAG_UNUSED_0x12F                    0x12F
+#define FLAG_RYU_RECEIVED_MEGA_BRACELET      0x12F
 #define FLAG_ADDED_MATCH_CALL_TO_POKENAV     0x130
 #define FLAG_REGISTERED_STEVEN_POKENAV       0x131
 #define FLAG_ENABLE_NORMAN_MATCH_CALL        0x132
@@ -330,7 +332,7 @@
 #define FLAG_MET_MAXIE_SOOTOPOLIS            0x135
 #define FLAG_MET_SCOTT_RUSTBORO              0x136
 #define FLAG_WALLACE_GOES_TO_SKY_PILLAR      0x137 // Set after speaking to Wallace within the Cave of Origin.
-#define FLAG_RECEIVED_HM07                   0x138
+#define FLAG_RECEIVED_TM57                   0x138
 #define FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS    0x139
 #define FLAG_RECEIVED_AURORA_TICKET          0x13A
 #define FLAG_RECEIVED_MYSTIC_TICKET          0x13B
@@ -532,8 +534,6 @@
 #define FLAG_MYSTERY_EVENT_14                0x1F2
 #define FLAG_MYSTERY_EVENT_15                0x1F3
 
-#define FLAG_TRICK_HOUSE_END_ROOM            0x1F5 // Trick House End Room Flag
-
 // Hidden Items -- sorted by location
 #define FLAG_HIDDEN_ITEMS_START                                                         0x1F4
 #define FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET                  (FLAG_HIDDEN_ITEMS_START + 0x01)
@@ -715,26 +715,26 @@
 #define FLAG_RYU_LANA_EVENT14  0x2A3 // Unused Flag
 #define FLAG_RYU_RECIEVED_ROTOM  0x2A4 // Unused Flag
 #define FLAG_RYU_STAYED_2_NIGHTS_AT_LANETTE  0x2A5 // Unused Flag
-#define FLAG_UNUSED_0x2A6  0x2A6 // Unused Flag
-#define FLAG_UNUSED_0x2A7  0x2A7 // Unused Flag
-#define FLAG_UNUSED_0x2A8  0x2A8 // Unused Flag
-#define FLAG_UNUSED_0x2A9  0x2A9 // Unused Flag
-#define FLAG_UNUSED_0x2AA  0x2AA // Unused Flag
-#define FLAG_UNUSED_0x2AB  0x2AB // Unused Flag
-#define FLAG_UNUSED_0x2AC  0x2AC // Unused Flag
-#define FLAG_UNUSED_0x2AD  0x2AD // Unused Flag
-#define FLAG_UNUSED_0x2AE  0x2AE // Unused Flag
-#define FLAG_UNUSED_0x2AF  0x2AF // Unused Flag
-#define FLAG_UNUSED_0x2B0  0x2B0 // Unused Flag
-#define FLAG_UNUSED_0x2B1  0x2B1 // Unused Flag
-#define FLAG_UNUSED_0x2B2  0x2B2 // Unused Flag
-#define FLAG_UNUSED_0x2B3  0x2B3 // Unused Flag
-#define FLAG_UNUSED_0x2B4  0x2B4 // Unused Flag
-#define FLAG_UNUSED_0x2B5  0x2B5 // Unused Flag
-#define FLAG_UNUSED_0x2B6  0x2B6 // Unused Flag
-#define FLAG_UNUSED_0x2B7  0x2B7 // Unused Flag
-#define FLAG_UNUSED_0x2B8  0x2B8 // Unused Flag
-#define FLAG_UNUSED_0x2B9  0x2B9 // Unused Flag
+#define FLAG_RYU_ROXANNE_MEGA_REWARD  0x2A6 // Unused Flag
+#define FLAG_RYU_BRAWLY_MEGA_REWARD  0x2A7 // Unused Flag
+#define FLAG_RYU_WATTSON_MEGA_REWARD  0x2A8 // Unused Flag
+#define FLAG_RYU_FLANNERY_MEGA_REWARD  0x2A9 // Unused Flag
+#define FLAG_RYU_NORMAN_MEGA_REWARD  0x2AA // Unused Flag
+#define FLAG_RYU_WINONA_MEGA_REWARD  0x2AB // Unused Flag
+#define FLAG_RYU_TAL_MEGA_REWARD  0x2AC // Unused Flag
+#define FLAG_RYU_JUAN_MEGA_REWARD  0x2AD // Unused Flag
+#define FLAG_RYU_SIDNEY_MEGA  0x2AE // Unused Flag
+#define FLAG_RYU_PHOEBE_MEGA  0x2AF // Unused Flag
+#define FLAG_RYU_GLACIA_MEGA  0x2B0 // Unused Flag
+#define FLAG_RYU_DRAKE_MEGA  0x2B1 // Unused Flag
+#define FLAG_RYU_AURORATICKET  0x2B2 // Unused Flag
+#define FLAG_RYU_DEFEATED_OVERLORD  0x2B3 // Unused Flag
+#define FLAG_RYU_MOM_AMULET_COIN  0x2B4 // Unused Flag
+#define FLAG_RYU_MOM_LOPUNNITE  0x2B5 // Unused Flag
+#define FLAG_RYU_MOM_EXP_SHARE  0x2B6 // Unused Flag
+#define FLAG_RYU_HIDE_MINNIE  0x2B7 // Unused Flag
+#define FLAG_RYU_PERSISTENT_WEATHER  0x2B8 // Unused Flag
+#define FLAG_RYU_MINNIE_POKEMON_SCHOOL  0x2B9 // Unused Flag
 #define FLAG_UNUSED_0x2BA  0x2BA // Unused Flag
 #define FLAG_UNUSED_0x2BB  0x2BB // Unused Flag
 
@@ -1341,12 +1341,16 @@
 
 #define FLAG_UNUSED_0x4FF                                           0x4FF // Unused Flag
 
-#define FLAG_TRAINER_FLAG_START                                     0x500
-#define TRAINERS_FLAG_NO                                            0x356
+// Trainer Flags
+// Trainer flags occupy 0x500 - 0x85F, the last 9 of which are unused
+// See constants/opponents.h. The values there + FLAG_TRAINER_FLAG_START are the flag IDs
 
-#define SYSTEM_FLAGS   (FLAG_TRAINER_FLAG_START + TRAINERS_FLAG_NO + 0xA) // 0x860
+#define TRAINER_FLAGS_START                                         0x500
+#define TRAINER_FLAGS_END                                           (TRAINER_FLAGS_START + MAX_TRAINERS_COUNT - 1) // 0x85F
 
 // System Flags
+
+#define SYSTEM_FLAGS                                   (TRAINER_FLAGS_END + 1) // 0x860
 
 #define FLAG_SYS_POKEMON_GET                           (SYSTEM_FLAGS + 0) // FLAG_0x860
 #define FLAG_SYS_POKEDEX_GET                           (SYSTEM_FLAGS + 1)

@@ -90,7 +90,10 @@ MauvilleCity_Gym_EventScript_Wattson:: @ 820DEEB
 	case 8, WATTSON4
 
 MG_Reset::
-	setflag FLAG_ENABLE_WATTSON_MATCH_CALL
+	setvar VAR_TEMP_8, 3
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	call_if_eq RyuTier8GymMegaStoneReward
 	setflag FLAG_DEFEATED_MAUVILLE_GYM
 	setflag FLAG_BADGE03_GET
 	cleartrainerflag TRAINER_WATTSON_1
@@ -399,12 +402,11 @@ MauvilleCity_Gym_EventScript_WattsonDefeated:: @ 820DF2B
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_ENABLE_WATTSON_MATCH_CALL
 	release
 	end
 
 MauvilleCity_Gym_EventScript_GiveShockWave2:: @ 820DF8D
-	giveitem_std ITEM_TM34
+	giveitem_silent ITEM_TM34
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
@@ -413,7 +415,7 @@ MauvilleCity_Gym_EventScript_GiveShockWave2:: @ 820DF8D
 	end
 
 MauvilleCity_Gym_EventScript_GiveShockWave:: @ 820DFB1
-	giveitem_std ITEM_TM34
+	giveitem_silent ITEM_TM34
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_BagIsFull
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT

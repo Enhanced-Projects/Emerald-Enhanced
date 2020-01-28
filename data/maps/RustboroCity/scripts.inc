@@ -76,7 +76,6 @@ RustboroCity_EventScript_PleaseSelectPokenav:: @ 81E07AC
 	goto RustboroCity_EventScript_MatchCallTutorial
 
 RustboroCity_EventScript_MatchCallTutorial:: @ 81E07BD
-	setflag FLAG_ADDED_MATCH_CALL_TO_POKENAV
 	special ScriptMenu_CreateStartMenuForPokenavTutorial
 	waitstate
 	switch VAR_RESULT
@@ -490,7 +489,7 @@ RustboroCity_EventScript_ReturnGoods:: @ 81E0C5B
 	compare VAR_TEMP_1, 4
 	call_if_eq RustboroCity_EventScript_EmployeeFacePlayerRight
 	msgbox RustboroCity_Text_YouGotItThankYou, MSGBOX_DEFAULT
-	giveitem_std ITEM_GREAT_BALL
+	giveitem ITEM_GREAT_BALL
 	compare VAR_RESULT, FALSE
 	call_if_eq RustboroCity_EventScript_BagFull
 	msgbox RustboroCity_Text_PleaseComeWithMe, MSGBOX_DEFAULT
@@ -729,13 +728,13 @@ RustboroCity_EventScript_RivalEncounter:: @ 81E0FF3
 
 RustboroCity_EventScript_MayEncounter:: @ 81E100B
 	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_CleanWater
-	drawheadshot HEAD_DAWN
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	msgbox rc_femaleRivalIntro, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_RUSTBORO_CITY_STATE, 8
 	setvar VAR_ROUTE104_STATE, 2
 	setvar VAR_0x8008, 0
-	msgbox rc_femaleRivalBattleIntro
 	goto RustboroCity_EventScript_BattleDawn
 	releaseall
 	end
@@ -753,6 +752,7 @@ RustboroCity_EventScript_CleanWater:: @ 81E10C1
 	fadescreen FADE_FROM_BLACK
 	compare VAR_0x8008, 0
 	call_if_eq RustboroCity_EventScript_RestoreBgm
+	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	releaseall
 	end
 
@@ -795,6 +795,7 @@ RustboroCity_EventScript_BrendanBrineyHint:: @ 81E11C0
 	msgbox RC_BrendanYouCanSwimAnywhere, MSGBOX_DEFAULT
 	compare VAR_0x8008, 0
 	call_if_eq RustboroCity_EventScript_RestoreBgm
+	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	releaseall
 	end
 

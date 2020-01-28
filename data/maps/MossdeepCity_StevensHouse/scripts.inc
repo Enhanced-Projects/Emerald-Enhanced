@@ -38,8 +38,8 @@ MossdeepCity_StevensHouse_EventScript_StevenGivesDive:: @ 82227CA
 	applymovement 1, MossdeepCity_StevensHouse_Movement_StevenApproachPlayer
 	waitmovement 0
 	msgbox MossdeepCity_StevensHouse_Text_YouveEarnedHMDive, MSGBOX_DEFAULT
-	giveitem_std ITEM_HM08
-	setflag FLAG_RECEIVED_HM08
+	giveitem ITEM_TM58
+	setflag FLAG_RECEIVED_TM58
 	setflag FLAG_OMIT_DIVE_FROM_STEVEN_LETTER
 	msgbox MossdeepCity_StevensHouse_Text_ExplainDive, MSGBOX_DEFAULT
 	closemessage
@@ -84,14 +84,49 @@ MossdeepCity_StevensHouse_EventScript_LeaveBeldum:: @ 822285B
 	end
 
 MossdeepCity_StevensHouse_EventScript_GiveBeldum:: @ 8222865
-	setvar VAR_TEMP_1, SPECIES_BELDUM
-	givemon SPECIES_BELDUM, 5, ITEM_NONE
-	compare VAR_RESULT, 0
-	goto_if_eq MossdeepCity_StevensHouse_EventScript_SendBeldumParty
-	compare VAR_RESULT, 1
-	goto_if_eq MossdeepCity_StevensHouse_EventScript_SendBeldumPC
-	goto Common_EventScript_NoMoreRoomForPokemon
+	goto_if_set FLAG_RYU_AURORATICKET MC_ALREADY_HAVE
+	msgbox MC_QUERY_TEXT, MSGBOX_YESNO
+	compare VAR_RESULT 1
+	goto_if_eq MC_DECLINED
+	giveitem_silent ITEM_AURORA_TICKET
+	waitfanfare
+	setflag FLAG_RYU_AURORATICKET
+    setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
+	msgbox MC_OBTAINED_TEXT, MSGBOX_DEFAULT
+	closemessage
 	end
+
+MC_ALREADY_HAVE::
+    msgbox MC_TEXT_HAVE, MSGBOX_DEFAULT
+	closemessage
+	end
+
+MC_DECLINED::
+    msgbox MC_DECLINED_TEXT, MSGBOX_DEFAULT
+	closemessage
+	end
+
+MC_OBTAINED::
+    msgbox MC_OBTAINED_TEXT, MSGBOX_DEFAULT
+	closemessage
+	end
+
+MC_QUERY_TEXT: @ 8222B9E
+	.string "{PLAYER} checked the Item Ball.\p"
+	.string "It contains an Aurora\n"
+	.string "Ticket.\l"
+	.string "Take the Ticket?$"
+
+MC_OBTAINED_TEXT: @ 8222BED
+	.string "{PLAYER} obtained the\n"
+	.string "Aurora Ticket.\p$"
+
+MC_DECLINED_TEXT: @ 8222C2A
+	.string "{PLAYER} left the ticket where\n"
+	.string "it was.$"
+	
+MC_TEXT_HAVE:
+    .string "The ball is empty.$"
 
 MossdeepCity_StevensHouse_EventScript_SendBeldumParty:: @ 8222895
 	call MossdeepCity_StevensHouse_EventScript_ReceivedBeldumFanfare
@@ -149,8 +184,8 @@ MossdeepCity_StevensHouse_EventScript_Letter:: @ 822291B
 
 @ Unused, leftover from RS
 MossdeepCity_StevensHouse_EventScript_DiveItemBall:: @ 8222926
-	finditem_std ITEM_HM08
-	setflag FLAG_RECEIVED_HM08
+	finditem ITEM_TM58
+	setflag FLAG_RECEIVED_TM58
 	end
 
 MossdeepCity_StevensHouse_Text_YouveEarnedHMDive: @ 8222936

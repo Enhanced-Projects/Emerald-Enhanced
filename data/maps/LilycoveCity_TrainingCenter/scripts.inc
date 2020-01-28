@@ -367,12 +367,11 @@ TC_StatShopGiveImprinter::
 	msgbox BuyImprinter MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne TC_StatShopNoBuyImprinter
-	setvar VAR_TEMP_0, 60000
-	checkmoney VAR_TEMP_0
+	checkmoney 65000
 	compare VAR_RESULT, 0
 	goto_if_eq TC_StatShopCantAffordImprinter
-	takemoney VAR_TEMP_0
-	giveitem_std ITEM_POKE_FLUTE
+	takemoney 65000
+	giveitem_silent ITEM_POKE_FLUTE
 	msgbox TC_BoughtImprinter MSGBOX_DEFAULT
 	waitmessage
 	closemessage
@@ -395,7 +394,7 @@ TC_StatShopCantAffordImprinter::
 	end
 	
 TC_CantaffordImprinterMsg:
-	.string "You can't afford the Imprinter.\nYou need ¥60000 to buy it."
+	.string "You can't afford the Imprinter.\nYou need ¥65000 to buy it.$"
 	
 TC_BoughtImprinter:
 	.string "Enjoy your Imprinter!$"
@@ -656,7 +655,7 @@ TC_VoucherUse::
 	return
 	
 TC_TeachMoveQueryVoucher::
-	takeitem ITEM_RETRO_MAIL, 1
+	removeitem ITEM_RETRO_MAIL, 1
 	special RyuSetMonMove
 	msgbox TC_PkmnLearnedMove MSGBOX_DEFAULT
 	release
