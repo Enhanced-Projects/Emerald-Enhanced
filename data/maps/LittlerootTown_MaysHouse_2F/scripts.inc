@@ -7,7 +7,6 @@ LRT_DawnAfterLilycoveSequence:: @ 81F951D
 	compare VAR_LITTLEROOT_INTRO_STATE, 6
 	goto_if_eq LRT_DawnIntroductionScene
 	lock
-    drawheadshot HEAD_DAWN
 	faceplayer
 	goto_if_set FLAG_RYU_DS_DAWN_LOVERS, LRT_NIGHT2
 	goto_if_set FLAG_RYU_DS_DAWN_ACQ, LRT_FZ
@@ -15,10 +14,7 @@ LRT_DawnAfterLilycoveSequence:: @ 81F951D
 	compare VAR_RESULT, 1
 	call_if_eq LRT_RivalsPokemonIsInParty
 	msgbox LRT_DAWN_SORRYKISSED, MSGBOX_DEFAULT
-	removecutscenesprites
 	msgbox LRT_DAWN_KISS, MSGBOX_YESNO
-	nop
-    drawheadshot HEAD_DAWN
 	compare VAR_RESULT, 1
 	goto_if_eq LRT_WONT_HAPPEN
     setflag	FLAG_RYU_DS_DAWN_CLOSEFRIENDS
@@ -31,10 +27,7 @@ LRT_RivalsPokemonIsInParty::
     goto_if_unset FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, LRT_NotReceived
 	setflag FLAG_RYU_DS_DAWN_CLOSEFRIENDS
 	msgbox LRT_RivalHappy MSGBOX_DEFAULT
-	removecutscenesprites
 	msgbox LRT_KeepQuery MSGBOX_YESNO
-	nop
-    drawheadshot HEAD_DAWN
 	compare VAR_RESULT, 0
 	goto_if_eq LRT_RivalLetDown
 	msgbox LRT_ThanksForRaisingPokemon MSGBOX_DEFAULT
@@ -94,11 +87,10 @@ LRT_WONT_HAPPEN::
 	end
 
 LRT_NIGHT::
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
-	removecutscenesprites
     msgbox LRT_STAY, MSGBOX_YESNO
-	nop
-    drawheadshot HEAD_DAWN
 	compare VAR_RESULT, 1
 	goto_if_ne LRT_CANCEL
 	msgbox LRT_ROMPre MSGBOX_DEFAULT
@@ -113,16 +105,12 @@ LRT_NIGHT::
 	fadeoutbgm 1
 	special HealPlayerParty
 	delay 20
-	removecutscenesprites
 	msgbox LRT_ROM, MSGBOX_DEFAULT
 	fadescreen 0
 	fadeinbgm 1
-	nop
-    drawheadshot HEAD_DAWN
 	msgbox LRT_DAWN_THANKS, MSGBOX_DEFAULT
 	setflag FLAG_RYU_DS_DAWN_LOVERS
 	closemessage
-	removecutscenesprites
 	applymovement EVENT_OBJ_ID_PLAYER LRT_HEART3
 	waitmovement 0
 	release
@@ -130,10 +118,9 @@ LRT_NIGHT::
 
 LRT_NIGHT2::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
-	removecutscenesprites
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
     msgbox LRT_STAY2, MSGBOX_YESNO
-	nop
-    drawheadshot HEAD_DAWN
 	compare VAR_RESULT, 1
 	goto_if_ne LRT_CANCEL
 	msgbox LRT_ROM2Pre MSGBOX_DEFAULT
@@ -144,7 +131,6 @@ LRT_NIGHT2::
 	applymovement 4, LRT_HEART2
 	applymovement EVENT_OBJ_ID_PLAYER, LRT_HEART
 	delay 20
-	removecutscenesprites
 	fadescreen 1
 	fadeoutbgm 1
 	special HealPlayerParty
@@ -152,14 +138,11 @@ LRT_NIGHT2::
 	msgbox LRT_ROM2, MSGBOX_DEFAULT
 	fadescreen 0
 	closemessage
-	nop
-    drawheadshot HEAD_DAWN
 	setflag FLAG_RYU_DS_DAWN_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
 	fadeinbgm 1
 	msgbox LRT_DAWN_THANKS2 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	applymovement EVENT_OBJ_ID_PLAYER LRT_HEART3
 	waitmovement 0
 	release
@@ -168,7 +151,7 @@ LRT_NIGHT2::
 LRT_CANCEL::
     msgbox LRT_DISPT MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
+	clearfullscreenimage
 	release
 	end
 
