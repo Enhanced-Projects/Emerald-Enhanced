@@ -90,7 +90,7 @@ MoveTutor_Text_MetronomeTeach: @ 82C7449
 	.string "a spell that made money appear when\l"
 	.string "you waggle a finger?\p"
 	.string "If you want, I can teach your Pokémon\n"
-	.string "the move METRONOME.\p"
+	.string "the move Metronome.\p"
 	.string "Money won't appear, but your Pokémon\n"
 	.string "will waggle a finger. Yes?$"
 
@@ -104,32 +104,29 @@ MoveTutor_Text_MetronomeWhichMon: @ 82C7582
 
 MoveTutor_Text_MetronomeTaught: @ 82C75B5
 	.string "When a Pokémon waggles its finger\n"
-	.string "like a METRONOME, all sorts of nice\l"
+	.string "like a Metronome, all sorts of nice\l"
 	.string "things happen.\p"
 	.string "Wouldn't it be nice if we could\n"
 	.string "use it, too?$"
 
 MoveTutor_Text_SleepTalkTeach: @ 82C7637
-	.string "Humph! My wife relies on HIDDEN\n"
-	.string "POWER to stay awake.\p"
-	.string "She should just take a nap like I do,\n"
-	.string "and SLEEP TALK.\p"
-	.string "I can teach your Pokémon how to\n"
-	.string "SLEEP TALK instead. Interested?$"
+	.string "Humph! My wife tries to use\n"
+	.string "Slack Off to avoid me at night.\p"
+	.string "I use the power of Draco Meteor\n"
+	.string "to keep her up all night.$"
 
 MoveTutor_Text_SleepTalkDeclined: @ 82C76E2
-	.string "Oh, fine, fine. You want to stay awake\n"
-	.string "with HIDDEN POWER, too…$"
+	.string "Oh, would you like to learn\n"
+	.string "the legendary power of\l"
+	.string "Draco Meteor?$"
 
 MoveTutor_Text_SleepTalkWhichMon: @ 82C7721
-	.string "Ah, an appreciative child!\n"
+	.string "Ah, another person of culture!\n"
 	.string "Which Pokémon should I teach?$"
 
 MoveTutor_Text_SleepTalkTaught: @ 82C775A
-	.string "I've never once gotten my wife's\n"
-	.string "coin trick right.\p"
-	.string "I would be happy if I got it right\n"
-	.string "even as I SLEEP TALK…$"
+	.string "After I harness the power, my\n"
+	.string "wife goes to being a Defeatist...$"
 
 MoveTutor_Text_SubstituteTeach: @ 82C77C6
 	.string "When I see the wide world from up\n"
@@ -160,15 +157,15 @@ MoveTutor_Text_SubstituteTaught: @ 82C794B
 MoveTutor_Text_DynamicPunchTeach: @ 82C79A6
 	.string "I can't do this anymore!\p"
 	.string "It's utterly hopeless!\p"
-	.string "I'm a FIGHTING-type TRAINER,\n"
-	.string "so I can't win at the MOSSDEEP GYM\l"
+	.string "I'm a Fighting-type Trainer,\n"
+	.string "so I can't win at the Mossdeep Gym\l"
 	.string "no matter how hard I try!\p"
 	.string "Argh! Punch! Punch! Punch!\n"
 	.string "Punch! Punch! Punch!\p"
 	.string "What, don't look at me that way!\n"
 	.string "I'm only hitting the ground!\p"
 	.string "Or do you want me to teach your\n"
-	.string "Pokémon DYNAMICPUNCH?$"
+	.string "Pokémon Drain Punch?$"
 
 MoveTutor_Text_DynamicPunchDeclined: @ 82C7AD4
 	.string "Darn! You're even making fun of me?\n"
@@ -179,19 +176,19 @@ MoveTutor_Text_DynamicPunchWhichMon: @ 82C7B0D
 	.string "Which Pokémon should I teach?$"
 
 MoveTutor_Text_DynamicPunchTaught: @ 82C7B4F
-	.string "I want you to win at the MOSSDEEP GYM\n"
-	.string "using that DYNAMICPUNCH!$"
+	.string "I want you to win at the Mossdeep Gym\n"
+	.string "using that Drain Punch!$"
 
 MoveTutor_Text_DoubleEdgeTeach: @ 82C7B8E
 	.string "Sigh…\p"
-	.string "SOOTOPOLIS's GYM LEADER is really\n"
+	.string "Sootopolis's Gym Leader is really\n"
 	.string "lovably admirable.\p"
 	.string "But that also means I have many\n"
 	.string "rivals for his attention.\p"
-	.string "He's got appeal with a DOUBLE-EDGE.\n"
+	.string "He's got appeal with a Double-Edge.\n"
 	.string "I couldn't even catch his eye.\p"
 	.string "Please, let me teach your Pokémon\n"
-	.string "the move DOUBLE-EDGE!$"
+	.string "the move Double-Eedge!$"
 
 MoveTutor_Text_DoubleEdgeDeclined: @ 82C7C7E
 	.string "Oh…\n"
@@ -199,7 +196,7 @@ MoveTutor_Text_DoubleEdgeDeclined: @ 82C7C7E
 
 MoveTutor_Text_DoubleEdgeWhichMon: @ 82C7C98
 	.string "Okay, which Pokémon should I teach\n"
-	.string "DOUBLE-EDGE?$"
+	.string "Double-Edge?$"
 
 MoveTutor_Text_DoubleEdgeTaught: @ 82C7CC8
 	.string "I won't live for love anymore!\n"
@@ -211,21 +208,21 @@ MoveTutor_Text_ExplosionTeach: @ 82C7CFA
 	.string "You watch me, I'll get out to the city\n"
 	.string "and become a huge hit.\p"
 	.string "Seriously, I'm going to cause\n"
-	.string "a huge EXPLOSION of popularity!\p"
+	.string "a huge Explosion of popularity!\p"
 	.string "If you overheard that, I'll happily\n"
-	.string "teach EXPLOSION to your Pokémon!$"
+	.string "teach Explosion to your Pokémon!$"
 
 MoveTutor_Text_ExplosionDeclined: @ 82C7E04
 	.string "Gaah! You're turning me down because\n"
 	.string "I live in the country?$"
 
 MoveTutor_Text_ExplosionWhichMon: @ 82C7E40
-	.string "Fine! An EXPLOSION it is!\n"
+	.string "Fine! An Explosion it is!\n"
 	.string "Which Pokémon wants to blow up?$"
 
 MoveTutor_Text_ExplosionTaught: @ 82C7E7A
 	.string "For a long time, I've taught Pokémon\n"
-	.string "how to use EXPLOSION, but I've yet\l"
-	.string "to ignite my own EXPLOSION…\p"
+	.string "how to use Explosion, but I've yet\l"
+	.string "to ignite my own Explosion...\p"
 	.string "Maybe it's because deep down,\n"
 	.string "I would rather stay here…$"

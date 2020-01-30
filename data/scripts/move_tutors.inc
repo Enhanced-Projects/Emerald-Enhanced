@@ -167,7 +167,10 @@ MoveTutor_EventScript_MimicTaught:: @ 82C80AC
 FallarborTown_Mart_EventScript_MetronomeTutor:: @ 82C80B6
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_METRONOME, MoveTutor_EventScript_MetronomeTaught
+	checkitem ITEM_BIG_PEARL, 1
+	compare VAR_RESULT, 1
+	goto_if_ne FT_MT_NoPearl
+	setvar VAR_TEMP_5, ITEM_BIG_PEARL
 	msgbox MoveTutor_Text_MetronomeTeach, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_MetronomeDeclined
@@ -179,9 +182,19 @@ FallarborTown_Mart_EventScript_MetronomeTutor:: @ 82C80B6
 	call MoveTutor_EventScript_OpenPartyMenu
 	compare VAR_RESULT, 0
 	goto_if_eq MoveTutor_EventScript_MetronomeDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_METRONOME
+	removeitem ITEM_BIG_PEARL, 1
 	goto MoveTutor_EventScript_MetronomeTaught
 	end
+
+FT_MT_NoPearl::
+	msgbox FT_MT_NoPearlMsg
+	release
+	end
+
+FT_MT_NoPearlMsg::
+	.string "I need a Big Pearl to gaze\n"
+	.string "into while teaching. Come back\l"
+	.string "with one!$"
 
 MoveTutor_EventScript_MetronomeDeclined:: @ 82C810A
 	msgbox MoveTutor_Text_MetronomeDeclined, MSGBOX_DEFAULT
@@ -196,7 +209,10 @@ MoveTutor_EventScript_MetronomeTaught:: @ 82C8114
 FortreeCity_House2_EventScript_SleepTalkTutor:: @ 82C811E
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK, MoveTutor_EventScript_SleepTalkTaught
+	checkitem ITEM_DRAGON_SCALE, 1
+	compare VAR_RESULT, 1
+	goto_if_ne FC_MT_NoDragonScale 
+	setvar VAR_TEMP_5, ITEM_DRAGON_SCALE
 	msgbox MoveTutor_Text_SleepTalkTeach, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_SleepTalkDeclined
@@ -204,13 +220,23 @@ FortreeCity_House2_EventScript_SleepTalkTutor:: @ 82C811E
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_SleepTalkDeclined
 	msgbox MoveTutor_Text_SleepTalkWhichMon, MSGBOX_DEFAULT
-	setvar VAR_0x8005, TUTOR_MOVE_SLEEP_TALK
+	setvar VAR_0x8005, TUTOR_MOVE_DRACO_METEOR
 	call MoveTutor_EventScript_OpenPartyMenu
 	compare VAR_RESULT, 0
 	goto_if_eq MoveTutor_EventScript_SleepTalkDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK
+	removeitem ITEM_DRAGON_SCALE, 1
 	goto MoveTutor_EventScript_SleepTalkTaught
 	end
+
+FC_MT_NoDragonScale::
+	msgbox FC_MT_NoDragonScaleMsg
+	release
+	end
+
+FC_MT_NoDragonScaleMsg:
+	.string "I need a Dragon Scale to be able\n"
+	.string "to tutor Draco Meteor. I use it as\l"
+	.string "inspiration.$"
 
 MoveTutor_EventScript_SleepTalkDeclined:: @ 82C8172
 	msgbox MoveTutor_Text_SleepTalkDeclined, MSGBOX_DEFAULT
@@ -268,7 +294,10 @@ MoveTutor_EventScript_SubstituteTaught:: @ 82C81E4
 MossdeepCity_EventScript_DynamicPunchTutor:: @ 82C81EE
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH, MoveTutor_EventScript_DynamicPunchTaught
+	checkitem ITEM_EXPERT_BELT, 1
+	compare VAR_RESULT, 1
+	goto_if_ne MD_MT_NoExpertBelt
+	setvar VAR_TEMP_5, ITEM_EXPERT_BELT
 	msgbox MoveTutor_Text_DynamicPunchTeach, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_DynamicPunchDeclined
@@ -276,13 +305,23 @@ MossdeepCity_EventScript_DynamicPunchTutor:: @ 82C81EE
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_DynamicPunchDeclined
 	msgbox MoveTutor_Text_DynamicPunchWhichMon, MSGBOX_DEFAULT
-	setvar VAR_0x8005, TUTOR_MOVE_DYNAMIC_PUNCH
+	setvar VAR_0x8005, TUTOR_MOVE_DRAIN_PUNCH
 	call MoveTutor_EventScript_OpenPartyMenu
 	compare VAR_RESULT, 0
 	goto_if_eq MoveTutor_EventScript_DynamicPunchDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH
+	removeitem ITEM_EXPERT_BELT, 1
 	goto MoveTutor_EventScript_DynamicPunchTaught
 	end
+
+MD_MT_NoExpertBelt::
+	msgbox noExpertBelt
+	release
+	end
+
+noExpertBelt:
+	.string "Maybe if I had an Expert Belt,\n"
+	.string "I would have a better chance at\l"
+	.string "beating the twins...$"
 
 MoveTutor_EventScript_DynamicPunchDeclined:: @ 82C8242
 	msgbox MoveTutor_Text_DynamicPunchDeclined, MSGBOX_DEFAULT
@@ -297,7 +336,10 @@ MoveTutor_EventScript_DynamicPunchTaught:: @ 82C824C
 SootopolisCity_PokemonCenter_1F_EventScript_DoubleEdgeTutor:: @ 82C8256
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_DOUBLE_EDGE, MoveTutor_EventScript_DoubleEdgeTaught
+	checkitem ITEM_LIFE_ORB, 1
+	compare VAR_RESULT, 1
+	goto_if_ne SC1nolifeorb
+	setvar VAR_TEMP_5, ITEM_LIFE_ORB
 	msgbox MoveTutor_Text_DoubleEdgeTeach, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_DoubleEdgeDeclined
@@ -309,9 +351,19 @@ SootopolisCity_PokemonCenter_1F_EventScript_DoubleEdgeTutor:: @ 82C8256
 	call MoveTutor_EventScript_OpenPartyMenu
 	compare VAR_RESULT, 0
 	goto_if_eq MoveTutor_EventScript_DoubleEdgeDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_DOUBLE_EDGE
+	removeitem ITEM_LIFE_ORB, 1
 	goto MoveTutor_EventScript_DoubleEdgeTaught
 	end
+
+SC1_PC_MT_NoLifeOrb::
+	msgbox SC1nolifeorb
+	release 
+	end
+
+SC1nolifeorb:
+	.string "I'm feeling really edgy, I need\n"
+	.string "a Life Orb. That item is also\l"
+	.string "sort of double-edged, too, huh?$"
 
 MoveTutor_EventScript_DoubleEdgeDeclined:: @ 82C82AA
 	msgbox MoveTutor_Text_DoubleEdgeDeclined, MSGBOX_DEFAULT
@@ -326,7 +378,10 @@ MoveTutor_EventScript_DoubleEdgeTaught:: @ 82C82B4
 PacifidlogTown_PokemonCenter_1F_EventScript_ExplosionTutor:: @ 82C82BE
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_EXPLOSION, MoveTutor_EventScript_ExplosionTaught
+	checkitem ITEM_LIFE_ORB, 1
+	compare VAR_RESULT, 1
+	goto_if_ne PT_MT_NoLifeOrb
+	setvar VAR_TEMP_5, ITEM_LIFE_ORB
 	msgbox MoveTutor_Text_ExplosionTeach, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_ExplosionDeclined
@@ -338,9 +393,20 @@ PacifidlogTown_PokemonCenter_1F_EventScript_ExplosionTutor:: @ 82C82BE
 	call MoveTutor_EventScript_OpenPartyMenu
 	compare VAR_RESULT, 0
 	goto_if_eq MoveTutor_EventScript_ExplosionDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_EXPLOSION
+	removeitem ITEM_LIFE_ORB, 1
 	goto MoveTutor_EventScript_ExplosionTaught
 	end
+
+PT_MT_NoLifeOrb::
+	msgbox PT1nolifeorb
+	release
+	end
+
+PT1nolifeorb::
+	.string "Life Orb is something I require\n"
+	.string "to become popular. Please bring me\l"
+	.string "one!$"
+
 
 MoveTutor_EventScript_ExplosionDeclined:: @ 82C8312
 	msgbox MoveTutor_Text_ExplosionDeclined, MSGBOX_DEFAULT

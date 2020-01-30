@@ -913,14 +913,14 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_DRILL_PECK] =
     {
         .effect = EFFECT_HIT,
-        .power = 80,
+        .power = 90,
         .type = TYPE_FLYING,
         .accuracy = 100,
         .pp = 20,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_HIGH_CRIT,
         .split = SPLIT_PHYSICAL,
     },
 

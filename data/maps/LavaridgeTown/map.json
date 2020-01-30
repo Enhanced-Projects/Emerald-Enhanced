@@ -201,7 +201,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
-            "graphics_id": "EVENT_OBJ_GFX_VAR_3",
+            "graphics_id": "EVENT_OBJ_GFX_VAR_0",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",

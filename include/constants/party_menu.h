@@ -25,7 +25,7 @@
 #define TUTOR_MOVE_EXPLOSION            12
 #define TUTOR_MOVE_LOW_KICK             13
 #define TUTOR_MOVE_TAILWIND             14
-#define TUTOR_MOVE_DYNAMIC_PUNCH        15
+#define TUTOR_MOVE_DRAIN_PUNCH          15
 #define TUTOR_MOVE_STOMPING_TANTRUM     16
 #define TUTOR_MOVE_FOUL_PLAY            17
 #define TUTOR_MOVE_HEAT_WAVE            18
@@ -34,7 +34,7 @@
 #define TUTOR_MOVE_GUNK_SHOT            21
 #define TUTOR_MOVE_ICE_PUNCH            22
 #define TUTOR_MOVE_HYPER_VOICE          23
-#define TUTOR_MOVE_SLEEP_TALK           24
+#define TUTOR_MOVE_DRACO_METEOR         24
 #define TUTOR_MOVE_SYNTHESIS            25
 #define TUTOR_MOVE_OUTRAGE              26
 #define TUTOR_MOVE_THUNDER_PUNCH        27

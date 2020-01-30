@@ -18,15 +18,10 @@ LT_CheckRivalGiftStatus::
 
 LT_SetRivalPosForReGift::
 	setvar VAR_TEMP_D, 1
-	checkplayergender
-	compare VAR_RESULT, MALE
-	call_if_eq LT_SetRivalFemale
-	checkplayergender
-	compare VAR_RESULT, FEMALE
-	call_if_eq LT_SetRivalMale
 	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
 	goto_if_set FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_end
 	goto_if_unset FLAG_RYU_INTERACTED_LAVARIDGE, ryu_end
+	call Common_EventScript_SetupRivalGfxId
 	setobjectxy 7, 9, 10
 	end
 

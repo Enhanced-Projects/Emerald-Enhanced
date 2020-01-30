@@ -1742,7 +1742,6 @@ static void CB2_LoadMap2(void)
     {
         SetWeather((VarGet(VAR_RYU_WEATHER)));
         DoCurrentWeather();
-        VarSet(VAR_RYU_WEATHER, 0);
         FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
     }
     
@@ -1810,7 +1809,6 @@ void CB2_ReturnToFieldLocal(void)
     {
         SetWeather((VarGet(VAR_RYU_WEATHER)));
         DoCurrentWeather();
-        VarSet(VAR_RYU_WEATHER, 0);
         FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
     }
 }

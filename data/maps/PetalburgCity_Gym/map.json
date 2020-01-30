@@ -25,7 +25,7 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "PetalburgCity_Gym_EventScript_ConfusionRoomDoor",
             "type": "sign",
-            "x": 1,
+            "x": 10,
             "y": 79
         },
         {
@@ -33,7 +33,7 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "PetalburgCity_Gym_EventScript_LeftDefenseRoomDoor",
             "type": "sign",
-            "x": 7,
+            "x": 10,
             "y": 79
         },
         {
@@ -41,7 +41,7 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "PetalburgCity_Gym_EventScript_RightDefenseRoomDoor",
             "type": "sign",
-            "x": 1,
+            "x": 10,
             "y": 92
         },
         {
@@ -49,7 +49,7 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "PetalburgCity_Gym_EventScript_RecoveryRoomDoor",
             "type": "sign",
-            "x": 7,
+            "x": 10,
             "y": 92
         },
         {
@@ -57,7 +57,7 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "PetalburgCity_Gym_EventScript_LeftStrengthRoomDoor",
             "type": "sign",
-            "x": 7,
+            "x": 10,
             "y": 40
         },
         {
@@ -65,7 +65,7 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "PetalburgCity_Gym_EventScript_RightStrengthRoomDoor",
             "type": "sign",
-            "x": 1,
+            "x": 10,
             "y": 53
         },
         {
@@ -73,7 +73,7 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "PetalburgCity_Gym_EventScript_LeftOHKORoomDoor",
             "type": "sign",
-            "x": 7,
+            "x": 10,
             "y": 53
         },
         {
@@ -81,7 +81,7 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "PetalburgCity_Gym_EventScript_RightOHKORoomDoor",
             "type": "sign",
-            "x": 1,
+            "x": 10,
             "y": 66
         },
         {
@@ -89,7 +89,7 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "PetalburgCity_Gym_EventScript_LeftGymLeadersRoomDoor",
             "type": "sign",
-            "x": 7,
+            "x": 10,
             "y": 14
         },
         {
@@ -97,7 +97,7 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "PetalburgCity_Gym_EventScript_RightGymLeadersRoomDoor",
             "type": "sign",
-            "x": 1,
+            "x": 10,
             "y": 27
         },
         {

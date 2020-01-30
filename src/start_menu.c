@@ -750,6 +750,7 @@ static bool8 HandleStartMenuInput(void)
     if (gMain.newKeys & SELECT_BUTTON && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {
             //SetMainCallback2(CB2_ReturnToField);
+            RemovePrintedNumber();
             RemoveExtraStartMenuWindows();
             HideStartMenu();
             HideFieldMessageBox();
@@ -1635,6 +1636,7 @@ void sub_80A08CC(void)
 
 static void HideStartMenuWindow(void)
 {
+    RemovePrintedNumber();
     ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
     RemoveStartMenuWindow();
     ScriptUnfreezeEventObjects();

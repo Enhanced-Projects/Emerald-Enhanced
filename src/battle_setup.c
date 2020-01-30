@@ -863,14 +863,14 @@ static void CB2_EndFirstBattle(void)
 
 static void TryUpdateGymLeaderRematchFromWild(void)
 {
-    if (GetGameStat(GAME_STAT_WILD_BATTLES) % 60 == 0)
-        UpdateGymLeaderRematch();
+    //if (GetGameStat(GAME_STAT_WILD_BATTLES) % 60 == 0)
+        //UpdateGymLeaderRematch();
 }
 
 static void TryUpdateGymLeaderRematchFromTrainer(void)
 {
-    if (GetGameStat(GAME_STAT_TRAINER_BATTLES) % 20 == 0)
-        UpdateGymLeaderRematch();
+    //if (GetGameStat(GAME_STAT_TRAINER_BATTLES) % 20 == 0)
+        //UpdateGymLeaderRematch();
 }
 
 // why not just use the macros? maybe its because they didnt want to uncast const every time?
@@ -1235,6 +1235,7 @@ static void CB2_EndTrainerBattle(void)
 {
     FlagClear(FLAG_RYU_DO_NOT_AUTOSCALE);
     FlagClear(FLAG_RYU_ALTERNATE_SCALE);
+    FlagClear(FLAG_RYU_MAX_SCALE);
     
     if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
     {
