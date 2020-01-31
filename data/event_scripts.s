@@ -585,6 +585,8 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/hall_of_fame.inc"
 
 EventScript_WhiteOut:: @ 8271857
+	clearflag FLAG_RYU_TC_ENTERED
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	call EverGrandeCity_HallOfFame_EventScript_ResetEliteFour
 	goto EventScript_ResetMrBriney
 	end

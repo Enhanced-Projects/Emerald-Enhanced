@@ -132,7 +132,7 @@ void SubtractMoneyFromVar0x8005(void)
 
 void PrintMoneyAmountInMoneyBox(u8 windowId, int amount, u8 speed)
 {
-    PrintMoneyAmount(windowId, 0x26, 1, amount, speed);
+    PrintMoneyAmount(windowId, 0x1A, 1, amount, speed);
 }
 
 void PrintMoneyAmount(u8 windowId, u8 x, u8 y, int amount, u8 speed)
@@ -140,9 +140,9 @@ void PrintMoneyAmount(u8 windowId, u8 x, u8 y, int amount, u8 speed)
     u8 *txtPtr;
     s32 strLength;
 
-    ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, 8);
 
-    strLength = 6 - StringLength(gStringVar1);
+    strLength = 8 - StringLength(gStringVar1);
     txtPtr = gStringVar4;
 
     while (strLength-- > 0)
@@ -167,7 +167,7 @@ void DrawMoneyBox(int amount, u8 x, u8 y)
 {
     struct WindowTemplate template;
 
-    SetWindowTemplateFields(&template, 0, x + 1, y + 1, 10, 2, 15, 8);
+    SetWindowTemplateFields(&template, 0, x + 1, y + 1, 18, 2, 15, 8);
     sMoneyBoxWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sMoneyBoxWindowId, PIXEL_FILL(0));
     PutWindowTilemap(sMoneyBoxWindowId);

@@ -2018,7 +2018,7 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     ptr = StringAppend(gDisplayedStringBattle, nickname);
     }
 
-    if ((FlagGet(FLAG_RYU_BOSS_WILD) == 1) && (GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_OPPONENT))
+    if ((GetMonData(mon, MON_DATA_GIFT_RIBBON_7, NULL) == TRUE))
     {
     StringCopy(gDisplayedStringBattle, gText_ColorShadowRedLightRed);
     GetMonData(mon, MON_DATA_NICKNAME, nickname);
@@ -2028,7 +2028,15 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 
     if ((GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_PLAYER))
     {
-    StringCopy(gDisplayedStringBattle, gText_HighlightTransparent);
+        if ((GetMonData(mon, MON_DATA_GIFT_RIBBON_7, NULL) == TRUE))
+        {
+            StringCopy(gDisplayedStringBattle, gText_ColorShadowRedLightRed);
+            StringAppend(gDisplayedStringBattle, gText_HighlightTransparent);
+        }
+        else
+        {
+            StringCopy(gDisplayedStringBattle, gText_HighlightTransparent);
+        }
     GetMonData(mon, MON_DATA_NICKNAME, nickname);
     StringGetEnd10(nickname);
     ptr = StringAppend(gDisplayedStringBattle, nickname);

@@ -67,7 +67,7 @@ MC_GC_GetReward::
 	end
 
 MC_GC_DevModeItemGive::
-	giveitem VAR_RESULT, 99
+	giveitem VAR_RESULT, 100
 	msgbox MC_GC_RyuGiveItemDevMode
 	clearflag FLAG_RYU_DEVELOPER_ITEM_MENU
 	release

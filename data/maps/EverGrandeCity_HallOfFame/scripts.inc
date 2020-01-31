@@ -121,7 +121,7 @@ EverGrandeCity_HallOfFame_EventScript_GameClearFemale:: @ 82298F5
 
 EGC_NLGameClear::
 	clearflag FLAG_RYU_NUZLOCKEMODE
-	setvar VAR_RYU_PRICE_MULTIPLIER, 100
+	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
 	setvar VAR_RYU_EXP_MULTIPLIER, 2000
 	msgbox RyuGameClearedMsg MSGBOX_DEFAULT
 	closemessage
@@ -129,7 +129,7 @@ EGC_NLGameClear::
 
 EGC_HCGameClear::
 	clearflag FLAG_RYU_HARDCORE_MODE
-	setvar VAR_RYU_PRICE_MULTIPLIER, 100
+	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
 	setvar VAR_RYU_EXP_MULTIPLIER, 2000
 	goto_if_set FLAG_RYU_DEV_MODE, EGC_HCGameClearDev
 	msgbox RyuGameClearedHCMessage

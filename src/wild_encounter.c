@@ -458,8 +458,9 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
         return FALSE;
 
     CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
-    if ((Random() % 128) == 69)
+    if (((Random() % 128) == 69) || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {
+        u8 val[1] = {TRUE};
         newLevel = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
         newLevel += 5;
         ShowFieldMessage(gText_PowerfulWildAppears);
@@ -471,6 +472,7 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
         SetMonData(&gEnemyParty[0], MON_DATA_SPEED_IV, &iv);
         SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &ability);
         SetMonData(&gEnemyParty[0], MON_DATA_LEVEL, &newLevel);
+        SetMonData(&gEnemyParty[0], MON_DATA_GIFT_RIBBON_7, val);
         FlagSet(FLAG_RYU_BOSS_WILD);
         CalculateMonStats(&gEnemyParty[0]);
     }

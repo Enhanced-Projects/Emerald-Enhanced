@@ -18,7 +18,7 @@ RyuDiceGame::
 RDG_BallBlackMarket::
 	lock
 	faceplayer
-	setvar VAR_RYU_PRICE_MULTIPLIER, 800
+	setvar VAR_RYU_PRICE_MULTIPLIER, 8000
 	clearflag FLAG_RYU_NUZLOCKEMODE
 	msgbox BBM_intro, MSGBOX_DEFAULT
 	message gBallBlackMarket
@@ -26,7 +26,7 @@ RDG_BallBlackMarket::
 	pokemart RyuDiceGame_BallBlackMarket
 	msgbox BBM_Outro
 	setflag FLAG_RYU_NUZLOCKEMODE
-	setvar VAR_RYU_PRICE_MULTIPLIER, 150
+	setvar VAR_RYU_PRICE_MULTIPLIER, 1500
 	release
 	end
 

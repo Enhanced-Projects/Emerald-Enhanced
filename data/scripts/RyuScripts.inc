@@ -573,11 +573,12 @@ RyuScripts_HardcoreGymReward::
 	end
 
 RyuGymItemReward1::
+	giveitem_silent ITEM_TM39
+	setflag FLAG_RYU_GYM1HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem_silent ITEM_SUPER_POTION, 1
 	giveitem_silent ITEM_GREAT_BALL, 1
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	setflag FLAG_RYU_GYM1HANDOUT
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
@@ -586,24 +587,27 @@ Ryu_ResetPcUses::
 	return
 
 RyuGymItemReward2::
+	giveitem_silent ITEM_TM60
+	setflag FLAG_RYU_GYM2HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem_silent ITEM_SUPER_POTION, 2
 	giveitem_silent ITEM_GREAT_BALL, 2
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	setflag FLAG_RYU_GYM2HANDOUT
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward3::
+	giveitem_silent ITEM_TM34
+	setflag FLAG_RYU_GYM3HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem_silent ITEM_SUPER_POTION, 3
 	giveitem_silent ITEM_GREAT_BALL, 3
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	setflag FLAG_RYU_GYM3HANDOUT
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward4::
+	giveitem_silent ITEM_TM50
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem_silent ITEM_SUPER_POTION, 4
 	giveitem_silent ITEM_GREAT_BALL, 4
@@ -613,38 +617,42 @@ RyuGymItemReward4::
 	return
 
 RyuGymItemReward5::
+	giveitem_silent ITEM_TM42
+	setflag FLAG_RYU_GYM5HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem_silent ITEM_SUPER_POTION, 5
 	giveitem_silent ITEM_GREAT_BALL, 5
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	setflag FLAG_RYU_GYM5HANDOUT
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward6::
+	giveitem_silent ITEM_TM40
+	setflag FLAG_RYU_GYM6HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem_silent ITEM_SUPER_POTION, 6
 	giveitem_silent ITEM_GREAT_BALL, 6
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	setflag FLAG_RYU_GYM6HANDOUT
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward7::
+	giveitem_silent ITEM_TM04
+	setflag FLAG_RYU_GYM7HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem_silent ITEM_SUPER_POTION, 7
 	giveitem_silent ITEM_GREAT_BALL, 7
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	setflag FLAG_RYU_GYM7HANDOUT
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward8::
+	giveitem_silent ITEM_TM03
+	setflag FLAG_RYU_GYM8HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	giveitem_silent ITEM_SUPER_POTION, 8
 	giveitem_silent ITEM_GREAT_BALL, 8
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	setflag FLAG_RYU_GYM8HANDOUT
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
@@ -670,7 +678,7 @@ RyuFailedNuzlocke::
 	closemessage
 	clearflag FLAG_RYU_NUZLOCKEMODE
 	setvar VAR_RYU_EXP_MULTIPLIER, 1000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 100
+	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
 	release
 	end
 	

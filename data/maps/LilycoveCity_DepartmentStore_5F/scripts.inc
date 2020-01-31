@@ -113,6 +113,13 @@ LCC_BattleItemMart: @ 8220024
 	.2byte ITEM_QUICK_CLAW
 	.2byte ITEM_SCOPE_LENS
 	.2byte ITEM_LIFE_ORB
+	.2byte ITEM_FLAME_ORB
+	.2byte ITEM_TOXIC_ORB
+	.2byte ITEM_WEAKNESS_POLICY
+	.2byte ITEM_BLACK_SLUDGE
+	.2byte ITEM_FLYING_GEM
+	.2byte ITEM_ROCKY_HELMET
+	.2byte ITEM_AIR_BALLOON
 	.2byte ITEM_NONE
 	release
 	end
@@ -129,16 +136,14 @@ LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarRight:: @ 822003A
 
 	.align 2
 LCC_ShardItemMarket: @ 8220054
-	.2byte 59
-	.2byte 60
-	.2byte 61
-	.2byte 62
-	.2byte ITEM_HP_UP
-	.2byte ITEM_PROTEIN
-	.2byte ITEM_IRON
+	.2byte ITEM_BERRY_JUICE
+	.2byte ITEM_SWEET_HEART
+	.2byte ITEM_BIG_MALASADA
+	.2byte ITEM_OLD_GATEAU
 	.2byte ITEM_RED_SHARD
 	.2byte ITEM_BLUE_SHARD
 	.2byte ITEM_YELLOW_SHARD
+	.2byte ITEM_GREEN_SHARD
 	.2byte ITEM_NONE
 	release
 	end

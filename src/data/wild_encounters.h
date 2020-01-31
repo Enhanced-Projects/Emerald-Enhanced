@@ -625,7 +625,7 @@ const struct WildPokemon gRusturfTunnel_LandMons[] =
 	{26, 29, SPECIES_HYPNO},
 };
 
-const struct WildPokemonInfo gRusturfTunnel_LandMonsInfo = {10, gRusturfTunnel_LandMons};
+const struct WildPokemonInfo gRusturfTunnel_LandMonsInfo = {0, gRusturfTunnel_LandMons};
 
 const struct WildPokemon gGraniteCave_1F_LandMons[] =
 {
@@ -643,7 +643,7 @@ const struct WildPokemon gGraniteCave_1F_LandMons[] =
 	{21, 21, SPECIES_ONIX},
 };
 
-const struct WildPokemonInfo gGraniteCave_1F_LandMonsInfo = {10, gGraniteCave_1F_LandMons};
+const struct WildPokemonInfo gGraniteCave_1F_LandMonsInfo = {30, gGraniteCave_1F_LandMons};
 
 const struct WildPokemon gGraniteCave_B1F_LandMons[] =
 {
@@ -661,7 +661,7 @@ const struct WildPokemon gGraniteCave_B1F_LandMons[] =
 	{24, 24, SPECIES_GURDURR},
 };
 
-const struct WildPokemonInfo gGraniteCave_B1F_LandMonsInfo = {10, gGraniteCave_B1F_LandMons};
+const struct WildPokemonInfo gGraniteCave_B1F_LandMonsInfo = {30, gGraniteCave_B1F_LandMons};
 
 const struct WildPokemon gMtPyre_1F_LandMons[] =
 {

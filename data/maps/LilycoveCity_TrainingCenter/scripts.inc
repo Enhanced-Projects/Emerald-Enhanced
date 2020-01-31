@@ -52,17 +52,17 @@ TC_FSShow:
 @================================================================================================== Training Center Entry
 	
 TC_Entry::
+	lockall
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, TC_ENTRY_NUZLOCKE
 	goto_if_set FLAG_RYU_HARDCORE_MODE, TC_ENTRY_NUZLOCKE
 	goto_if_set FLAG_RYU_TC_ENTERED, TC_Exiting
-    lockall
 	applymovement 2, TC_FacePlayer
 	goto_if_set FLAG_RYU_DEV_MODE, TC_DevEntry
 	msgbox TC_Entry_Cost MSGBOX_DEFAULT
 	waitmessage
 	msgbox TC_EnterQuery MSGBOX_YESNO
 	compare VAR_RESULT 1
-	goto_if 1, TC_Entering
+	goto_if_eq TC_Entering
 	goto TC_Exiting
 
 TC_ENTRY_NUZLOCKE::
@@ -119,6 +119,7 @@ TC_Discount_entering::
 	applymovement EVENT_OBJ_ID_PLAYER, TC_WalkIn
 	waitmovement 0
 	takemoney 6000
+	setflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_TC_ENTERED
 	releaseall
 	end

@@ -93,7 +93,7 @@ RyuSetTime:
 
 IT_EasyMode::
 	setvar VAR_RYU_EXP_MULTIPLIER, 4000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 50
+	setvar VAR_RYU_PRICE_MULTIPLIER, 500
 	setvar VAR_RYU_BANK_APR, 90
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	checkplayergender
@@ -105,7 +105,7 @@ IT_EasyMode::
 	
 IT_NormalMode::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
-	setvar VAR_RYU_PRICE_MULTIPLIER, 100
+	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
 	setvar VAR_RYU_BANK_APR, 95
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -116,7 +116,7 @@ IT_NormalMode::
 	
 IT_HardMode::
 	setvar VAR_RYU_EXP_MULTIPLIER, 1000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 400
+	setvar VAR_RYU_PRICE_MULTIPLIER, 4000
 	setvar VAR_RYU_BANK_APR, 100
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	checkplayergender
@@ -129,7 +129,7 @@ IT_HardMode::
 IT_NuzlockeMode::
 	msgbox IT_NuzlockeIntro MSGBOX_SIGN
 	setvar VAR_RYU_EXP_MULTIPLIER, 2000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 150
+	setvar VAR_RYU_PRICE_MULTIPLIER, 1500
 	setvar VAR_RYU_BANK_APR, 100
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	setvar VAR_RYU_PC_USES, 3
@@ -151,7 +151,7 @@ IT_NuzlockeMode::
 IT_FrontierMode::
 	msgbox IT_FrontierIntro
 	setvar VAR_RYU_EXP_MULTIPLIER, 1
-	setvar VAR_RYU_PRICE_MULTIPLIER 100
+	setvar VAR_RYU_PRICE_MULTIPLIER 1000
 	takemoney 3000
 	msgbox IT_FrontierOutro
 	setflag FLAG_HIDE_MAP_NAME_POPUP
@@ -165,7 +165,7 @@ IT_FrontierMode::
 IT_HardcoreMode::
 	msgbox IT_HardcoreIntro
 	setvar VAR_RYU_EXP_MULTIPLIER, 1000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 200
+	setvar VAR_RYU_PRICE_MULTIPLIER, 2000
 	setflag FLAG_RYU_HARDCORE_MODE
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 1
 	takemoney 2750

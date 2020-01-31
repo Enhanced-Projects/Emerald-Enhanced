@@ -333,7 +333,7 @@ const struct WindowTemplate gUnknown_086141AC[] =
         .bg = 1,
         .tilemapLeft = 22,
         .tilemapTop = 17,
-        .width = 7,
+        .width = 8,
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 0x21D,
@@ -342,7 +342,7 @@ const struct WindowTemplate gUnknown_086141AC[] =
         .bg = 1,
         .tilemapLeft = 22,
         .tilemapTop = 15,
-        .width = 7,
+        .width = 8,
         .height = 4,
         .paletteNum = 15,
         .baseBlock = 0x21D,
@@ -405,7 +405,7 @@ const struct WindowTemplate gUnknown_086141AC[] =
         .bg = 1,
         .tilemapLeft = 18,
         .tilemapTop = 11,
-        .width = 10,
+        .width = 11,
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 0x245,
@@ -2017,7 +2017,7 @@ void BagMenu_ConfirmSell(u8 taskId)
     s16* data = gTasks[taskId].data;
 
     CopyItemName(gSpecialVar_ItemId, gStringVar2);
-    ConvertIntToDecimalStringN(gStringVar1, (ItemId_GetPrice(gSpecialVar_ItemId) / 2) * data[8], STR_CONV_MODE_LEFT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gStringVar1, (ItemId_GetPrice(gSpecialVar_ItemId) / 2) * data[8], STR_CONV_MODE_LEFT_ALIGN, 8);
     StringExpandPlaceholders(gStringVar4, gText_TurnedOverVar1ForVar2);
     DisplayItemMessage(taskId, 1, gStringVar4, sub_81AD8C8);
 }

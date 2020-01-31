@@ -147,34 +147,32 @@ LRT_BrendansHouseSign:: @ 81E818F
 	lockall
 	checkplayergender
 	compare VAR_RESULT, MALE
-	goto_if_eq LRT_MalePlayerHouseSign
-	compare VAR_RESULT, FEMALE
-	goto_if_eq LRT_FemalePlayerHouseSign
-	releaseall
+	goto_if_eq LRT_PlayerHouseSign
+	goto LRT_RivalHouseSign
 	end
 	
 LRT_DawnsHouseSign::
 	lockall
 	checkplayergender
 	compare VAR_RESULT, FEMALE
-	goto_if_eq LRT_FemalePlayerHouseSign
-	compare VAR_RESULT, MALE
-	goto_if_eq LRT_MalePlayerHouseSign
+	goto_if_eq LRT_PlayerHouseSign
+	goto LRT_RivalHouseSign
+	end
+
+LRT_RivalHouseSign:: @ 81E81A9
+	msgbox LRT_RIVALHOUSESIGNMSG, MSGBOX_DEFAULT
 	releaseall
 	end
 
-LRT_MalePlayerHouseSign:: @ 81E81A9
-	msgbox LRT_MALEHOUSESIGN, MSGBOX_DEFAULT
-	return
-
-LRT_FemalePlayerHouseSign:: @ 81E81B2
-	msgbox LRT_FEMALEHOUSESIGN, MSGBOX_DEFAULT
-	return
+LRT_PlayerHouseSign:: @ 81E81B2
+	msgbox LRT_PLAYERHOUSESIGNMSG, MSGBOX_DEFAULT
+	releaseall
+	end
 	
-LRT_FEMALEHOUSESIGN:
+LRT_PLAYERHOUSESIGNMSG:
 	.string "{PLAYER}'s House$"
 	
-LRT_MALEHOUSESIGN:
+LRT_RIVALHOUSESIGNMSG:
 	.string "{RIVAL}'s House$"
 
 LRT_GameStartInfoMsg:

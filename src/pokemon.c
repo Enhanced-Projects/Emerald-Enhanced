@@ -6456,11 +6456,24 @@ void SetWildMonHeldItem(void)
     }
 }
 
-bool8 IsMonShiny(struct Pokemon *mon)
+bool8 IsMonBoss(struct Pokemon *mon)
+    {
+        if (GetMonData(mon, MON_DATA_GIFT_RIBBON_7, NULL) == 1)
+            return TRUE;
+
+        return FALSE;
+    }
+
+u8 IsMonShiny(struct Pokemon *mon)
 {
     u32 otId = GetMonData(mon, MON_DATA_OT_ID, 0);
     u32 personality = GetMonData(mon, MON_DATA_PERSONALITY, 0);
-    return IsShinyOtIdPersonality(otId, personality);
+
+    if (IsShinyOtIdPersonality(otId, personality))
+        return 1;
+    if (IsMonBoss(mon) == TRUE)
+        return 2;
+    return 0;
 }
 
 bool8 IsShinyOtIdPersonality(u32 otId, u32 personality)

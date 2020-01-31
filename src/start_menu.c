@@ -1636,9 +1636,9 @@ void sub_80A08CC(void)
 
 static void HideStartMenuWindow(void)
 {
-    RemovePrintedNumber();
     ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
     RemoveStartMenuWindow();
+    RemovePrintedNumber();
     ScriptUnfreezeEventObjects();
     ScriptContext2_Disable();
 }

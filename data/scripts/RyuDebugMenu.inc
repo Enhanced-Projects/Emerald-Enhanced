@@ -633,7 +633,7 @@ RyuCurrentExpMult:
 	
 RyuSetExpMult1::@@exp is vanilla
 	setvar VAR_RYU_EXP_MULTIPLIER, 1000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 200
+	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
 	msgbox ExpMult1 MSGBOX_DEFAULT
 	closemessage
 	goto RyuPokeEditMenu
@@ -645,7 +645,7 @@ ExpMult1:
 RyuSetExpMultAuto::@@exp is increased by 12.5% per gym badge
 	msgbox ExpMultAuto MSGBOX_DEFAULT
 	setvar VAR_RYU_EXP_MULTIPLIER, 1
-	setvar VAR_RYU_PRICE_MULTIPLIER, 100
+	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
 	closemessage
 	goto RyuPokeEditMenu
 	
@@ -655,7 +655,7 @@ ExpMultAuto:
 	
 RyuSetExpMult2::@@exp is multiplied by 2
 	setvar VAR_RYU_EXP_MULTIPLIER, 2000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 75
+	setvar VAR_RYU_PRICE_MULTIPLIER, 750
 	msgbox ExpMult2 MSGBOX_DEFAULT
 	closemessage
 	goto RyuPokeEditMenu
@@ -665,7 +665,7 @@ ExpMult2:
 	
 RyuSetExpMult4::@@exp is multiplied by 4
 	setvar VAR_RYU_EXP_MULTIPLIER, 4000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 50
+	setvar VAR_RYU_PRICE_MULTIPLIER, 500
 	msgbox ExpMult4 MSGBOX_DEFAULT
 	closemessage
 	goto RyuPokeEditMenu
@@ -675,7 +675,7 @@ ExpMult4:
 	
 RyuSetExpMult8::@@exp is multiplied by 8
 	setvar VAR_RYU_EXP_MULTIPLIER, 8000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 25
+	setvar VAR_RYU_PRICE_MULTIPLIER, 250
 	msgbox ExpMult8 MSGBOX_DEFAULT
 	closemessage
 	goto RyuPokeEditMenu

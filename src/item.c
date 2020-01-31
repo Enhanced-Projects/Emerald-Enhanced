@@ -1049,11 +1049,11 @@ u16 ItemId_GetId(u16 itemId)
     return gItems[SanitizeItemId(itemId)].itemId;
 }
 
-u16 ItemId_GetPrice(u16 itemId)
+u32 ItemId_GetPrice(u32 itemId)
 {
-    u16 priceModifier = (VarGet(VAR_RYU_PRICE_MULTIPLIER));
-    u16 oldprice = gItems[SanitizeItemId(itemId)].price;
-    oldprice = (oldprice * priceModifier / 100);
+    u32 priceModifier = (VarGet(VAR_RYU_PRICE_MULTIPLIER));
+    u32 oldprice = gItems[SanitizeItemId(itemId)].price;
+    oldprice = (oldprice * priceModifier / 1000);
     return oldprice;
 }
 

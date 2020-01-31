@@ -88,7 +88,7 @@ LRT_WONT_HAPPEN::
 
 LRT_NIGHT::
 	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGDAWN
+	drawfullscreenimage SCENEBGNIGHTDAWN
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
     msgbox LRT_STAY, MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -119,7 +119,7 @@ LRT_NIGHT::
 LRT_NIGHT2::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
 	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGDAWN
+	drawfullscreenimage SCENEBGNIGHTDAWN
     msgbox LRT_STAY2, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne LRT_CANCEL
