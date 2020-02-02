@@ -199,14 +199,9 @@ MossdeepCity_StevensHouse_Text_YouveEarnedHMDive: @ 8222936
 	.string "this HM.$"
 
 MossdeepCity_StevensHouse_Text_ExplainDive: @ 8222A0E
-	.string "STEVEN: While you're using SURF, you\n"
-	.string "should notice dark patches of water.\p"
-	.string "Use DIVE if you come to deep water\n"
-	.string "like it. You'll drop to the seafloor.\p"
-	.string "When you want to come back up, use\n"
-	.string "DIVE again.\p"
-	.string "In some places, it won't be possible\n"
-	.string "for you to surface, though.$"
+	.string "Steven: Dive is a strong Water-\n"
+	.string "Type move that uses a Pokémon's\l"
+	.string "swimming strength to attack.$"
 
 MossdeepCity_StevensHouse_Text_UnderwateCavernBetweenMossdeepSootopolis: @ 8222B11
 	.string "STEVEN: Apparently, there's an\n"

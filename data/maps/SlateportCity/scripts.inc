@@ -1,13 +1,10 @@
 SlateportCity_MapScripts:: @ 81DCC61
 	map_script MAP_SCRIPT_ON_TRANSITION, SlateportCity_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SlateportCity_OnFrame
+	@map_script MAP_SCRIPT_ON_FRAME_TABLE, SlateportCity_OnFrame
 	.byte 0
 
 SlateportCity_OnTransition: @ 81DCC6C
-	setvar VAR_SLATEPORT_MUSEUM_1F_STATE, 0
 	call SlateportCity_EventScript_EnterSlateport
-	compare VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1
-	call_if_eq SlateportCity_EventScript_SetReadyForScottScene
 	end
 	
 SC1_LeafHouseSold::
@@ -32,57 +29,10 @@ SC1_LeafHouseSign2:
 
 SlateportCity_EventScript_EnterSlateport:: @ 81DCC8D
 	setflag FLAG_VISITED_SLATEPORT_CITY
-	setvar VAR_CONTEST_HALL_STATE, 0
-	setflag FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER
 	return
 
-SlateportCity_EventScript_SetReadyForScottScene:: @ 81DCCE7
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	getplayerxy VAR_0x8004, VAR_0x8005
-	compare VAR_0x8004, 30
-	goto_if_eq SlateportCity_EventScript_MoveScottLeft
-	setobjectxyperm 35, 23, 27
-	setobjectmovementtype 35, MOVEMENT_TYPE_FACE_RIGHT
-	return
-
-SlateportCity_EventScript_MoveScottLeft:: @ 81DCD06
-	setobjectxyperm 35, 22, 27
-	setobjectmovementtype 35, MOVEMENT_TYPE_FACE_RIGHT
-	return
-
-SlateportCity_OnFrame: @ 81DCD12
-	map_script_2 VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1, SlateportCity_EventScript_ScottScene
-	.2byte 0
-
-SlateportCity_EventScript_ScottScene:: @ 81DCD1C
-	end
-
-SlateportCity_Movement_PlayerFaceScott: @ 81DCDA8
-	delay_16
-	delay_8
-	walk_in_place_fastest_left
-	step_end
-
-SlateportCity_Movement_ScottApproachPlayer: @ 81DCDAC
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-SlateportCity_Movement_ScottExit: @ 81DCDB4
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
+@SlateportCity_OnFrame: @ 81DCD12
+	@.2byte 0
 
 SlateportCity_EventScript_EnergyGuru:: @ 81DCDBD
 	lock
@@ -1301,38 +1251,6 @@ SlateportCity_Text_ComeBackToTradeBerryPowder: @ 81DEFBC
 	.string "BERRY POWDER for some medicine.\p"
 	.string "I'm always running a bazaar here.\p"
 	.string "Did you know?$"
-
-SlateportCity_Text_YouDroveTeamAquaAway: @ 81DF032
-	.string "SCOTT: Huh?\n"
-	.string "I'm sure I met you somewhere before.\p"
-	.string "Have I introduced myself to you?\n"
-	.string "If not, my name's SCOTT.\p"
-	.string "I just saw Team Aqua run away from\n"
-	.string "here like they were stung.\p"
-	.string "Let me guess--you drove them away?$"
-
-SlateportCity_Text_MaybeThisTrainer: @ 81DF0FE
-	.string "SCOTT: Hmm…\n"
-	.string "Maybe, just maybe, this Trainer…$"
-
-SlateportCity_Text_LetsRegisterEachOther: @ 81DF12B
-	.string "SCOTT: All right! I think you're going\n"
-	.string "to become a good friend.\p"
-	.string "So, let's register each other in our\n"
-	.string "POKéNAVS.\p"
-	.string "… … … … … …$"
-
-SlateportCity_Text_RegisteredScott: @ 81DF1A6
-	.string "Registered this SCOTT person\n"
-	.string "in the Pokénav.$"
-
-SlateportCity_Text_KeepEyeOnTrainersBeSeeingYou: @ 81DF1D3
-	.string "SCOTT: What I'd like to do is tag along\n"
-	.string "with you, but I do want to keep an eye\l"
-	.string "on the talents of other people, too.\p"
-	.string "So, I'll be off to roam other towns\n"
-	.string "a bit more.\p"
-	.string "Be seeing you, {PLAYER}!$"
 
 SlateportCity_Text_TakingBattleTentChallenge: @ 81DF28C
 	.string "SCOTT: Oh, hey!\n"

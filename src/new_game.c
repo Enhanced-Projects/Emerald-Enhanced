@@ -267,6 +267,8 @@ void NewGameInitData(void)
     FlagSet(FLAG_HIDE_AT1_LEAF);
     FlagSet(FLAG_HIDE_R110_LANA);
     FlagSet(FLAG_FORCE_MIRAGE_TOWER_VISIBLE);
+    VarSet(VAR_CONTEST_HALL_STATE, 0);
+    FlagSet(FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER);
 }
 
 static void ResetMiniGamesResults(void)

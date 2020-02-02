@@ -132,7 +132,7 @@ PG_Reset::
 	setvar VAR_TEMP_8, 5
 	special checkbadgecount
 	compare VAR_RESULT, 4
-	call_if_eq PG_GiveMegaBracelet
+	call_if_ge PG_GiveMegaBracelet
 	special checkbadgecount
 	compare VAR_RESULT, 8
 	call_if_eq RyuTier8GymMegaStoneReward

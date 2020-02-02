@@ -200,6 +200,19 @@
             "trainer_type": "1",
             "x": 18,
             "y": 25
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_JAGGED_PASS_TM54",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "JP_SuckerPunch",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 11,
+            "y": 25
         }
     ],
     "region_map_section": "MAPSEC_JAGGED_PASS",

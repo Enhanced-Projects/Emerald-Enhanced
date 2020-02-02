@@ -156,6 +156,13 @@ JaggedPass_EventScript_Autumn:: @ 8230871
 	trainerbattle_single TRAINER_AUTUMN, JaggedPass_Text_AutumnIntro, JaggedPass_Text_AutumnDefeat
 	msgbox JaggedPass_Text_AutumnPostBattle, MSGBOX_AUTOCLOSE
 	end
+	
+JP_SuckerPunch::
+	finditem ITEM_TM54
+	setflag FLAG_JAGGED_PASS_TM54
+	removeobject 8
+	release
+	end
 
 JaggedPass_Text_EricIntro: @ 8230888
 	.string "MT. CHIMNEY's JAGGED PASS…\p"
