@@ -31,12 +31,15 @@ LRT_RivalsPokemonIsInParty::
 	compare VAR_RESULT, 0
 	goto_if_eq LRT_RivalLetDown
 	msgbox LRT_ThanksForRaisingPokemon MSGBOX_DEFAULT
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	goto LRT_NIGHT
 	
 LRT_NotReceived::
 	setflag FLAG_RYU_DAWN_GIFTPOKE_RECEIVED
 	msgbox LRT_DAWN_SORRYKISSED, MSGBOX_DEFAULT
-	removecutscenesprites
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	msgbox LRT_DAWN_KISS, MSGBOX_YESNO
 	nop
     drawheadshot HEAD_DAWN
@@ -152,13 +155,13 @@ LRT_CANCEL::
     msgbox LRT_DISPT MSGBOX_DEFAULT
 	closemessage
 	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	release
 	end
 
 LRT_FZ::
     msgbox LRT_DS_FZ_DAWN MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	release
 	end
 

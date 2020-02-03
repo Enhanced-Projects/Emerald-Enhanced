@@ -66,7 +66,7 @@ FallarborTown_MoveRelearnersHouse_Text_ImTheMoveTutor: @ 820145C
 	.string "I've travelled far and wide to\p"
 	.string "learn every move in the world.\n"
 	.string "I pass on my knowledge for a\l"
-	.string "small fee."
+	.string "small fee.$"
 
 FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove: @ 8201541
 	.string "I charge one Heart Scale for my\n"

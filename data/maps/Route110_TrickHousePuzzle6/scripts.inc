@@ -4,7 +4,6 @@ Route110_TrickHousePuzzle6_MapScripts:: @ 826DDA7
 	.byte 0
 
 Route110_TrickHousePuzzle6_OnTransition: @ 826DDB2
-	special RotatingGate_InitPuzzle
 	end
 
 Route110_TrickHousePuzzle6_OnWarp: @ 826DDB6
@@ -12,7 +11,6 @@ Route110_TrickHousePuzzle6_OnWarp: @ 826DDB6
 	.2byte 0
 
 Route110_TrickHousePuzzle6_EventScript_InitPuzzle:: @ 826DDC0
-	special RotatingGate_InitPuzzleAndGraphics
 	end
 
 Route110_TrickHousePuzzle6_EventScript_Scroll:: @ 826DDC4

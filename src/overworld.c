@@ -2349,7 +2349,6 @@ static void mli4_mapscripts_and_other(void)
 static void sub_8086A68(void)
 {
     sub_808E16C(0, 0);
-    RotatingGate_InitPuzzleAndGraphics();
     RunOnReturnToFieldMapScript();
 }
 

@@ -927,31 +927,12 @@ static u8 RotatingGate_GetRotationInfo(u8 direction, s16 x, s16 y)
     return ptr[y * 4 + x];
 }
 
-void RotatingGate_InitPuzzle(void)
-{
-    if (GetCurrentMapRotatingGatePuzzleType())
-    {
-        RotatingGate_LoadPuzzleConfig();
-        RotatingGate_ResetAllGateOrientations();
-    }
-}
-
 void RotatingGatePuzzleCameraUpdate(u16 deltaX, u16 deltaY)
 {
     if (GetCurrentMapRotatingGatePuzzleType())
     {
         RotatingGate_CreateGatesWithinViewport(deltaX, deltaY);
         RotatingGate_DestroyGatesOutsideViewport();
-    }
-}
-
-void RotatingGate_InitPuzzleAndGraphics(void)
-{
-    if (GetCurrentMapRotatingGatePuzzleType())
-    {
-        LoadRotatingGatePics();
-        RotatingGate_LoadPuzzleConfig();
-        RotatingGate_CreateGatesWithinViewport(0, 0);
     }
 }
 
