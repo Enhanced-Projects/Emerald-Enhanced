@@ -380,7 +380,7 @@ SPC_MewtwoDefeated::
 	waitmovement 11
 	msgbox SPC_SoYouveReturned
 	closemessage
-	giveitem_silent ITEM_VS_SEEKER
+	additem ITEM_VS_SEEKER
 	delay 20
 	playse SE_PIN
 	applymovement 11, Common_Movement_ExclamationMark

@@ -441,7 +441,7 @@ RCR_BOSSMODE::
 
 MawileMegaReward::
 	msgbox RyuGivesMawilite
-	giveitem_silent ITEM_MAWILITE
+	additem ITEM_MAWILITE
 	setflag FLAG_RYU_DEFEATED_OVERLORD
 	return
 	

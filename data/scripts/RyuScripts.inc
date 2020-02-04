@@ -573,11 +573,11 @@ RyuScripts_HardcoreGymReward::
 	end
 
 RyuGymItemReward1::
-	giveitem_silent ITEM_TM39
+	additem ITEM_TM39
 	setflag FLAG_RYU_GYM1HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
-	giveitem_silent ITEM_SUPER_POTION, 1
-	giveitem_silent ITEM_GREAT_BALL, 1
+	additem ITEM_SUPER_POTION, 1
+	additem ITEM_GREAT_BALL, 1
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
@@ -587,71 +587,71 @@ Ryu_ResetPcUses::
 	return
 
 RyuGymItemReward2::
-	giveitem_silent ITEM_TM60
+	additem ITEM_TM60
 	setflag FLAG_RYU_GYM2HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
-	giveitem_silent ITEM_SUPER_POTION, 2
-	giveitem_silent ITEM_GREAT_BALL, 2
+	additem ITEM_SUPER_POTION, 2
+	additem ITEM_GREAT_BALL, 2
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward3::
-	giveitem_silent ITEM_TM34
+	additem ITEM_TM34
 	setflag FLAG_RYU_GYM3HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
-	giveitem_silent ITEM_SUPER_POTION, 3
-	giveitem_silent ITEM_GREAT_BALL, 3
+	additem ITEM_SUPER_POTION, 3
+	additem ITEM_GREAT_BALL, 3
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward4::
-	giveitem_silent ITEM_TM50
+	additem ITEM_TM50
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
-	giveitem_silent ITEM_SUPER_POTION, 4
-	giveitem_silent ITEM_GREAT_BALL, 4
+	additem ITEM_SUPER_POTION, 4
+	additem ITEM_GREAT_BALL, 4
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	setflag FLAG_RYU_GYM4HANDOUT
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward5::
-	giveitem_silent ITEM_TM42
+	additem ITEM_TM42
 	setflag FLAG_RYU_GYM5HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
-	giveitem_silent ITEM_SUPER_POTION, 5
-	giveitem_silent ITEM_GREAT_BALL, 5
+	additem ITEM_SUPER_POTION, 5
+	additem ITEM_GREAT_BALL, 5
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward6::
-	giveitem_silent ITEM_TM40
+	additem ITEM_TM40
 	setflag FLAG_RYU_GYM6HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
-	giveitem_silent ITEM_SUPER_POTION, 6
-	giveitem_silent ITEM_GREAT_BALL, 6
+	additem ITEM_SUPER_POTION, 6
+	additem ITEM_GREAT_BALL, 6
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward7::
-	giveitem_silent ITEM_TM04
+	additem ITEM_TM04
 	setflag FLAG_RYU_GYM7HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
-	giveitem_silent ITEM_SUPER_POTION, 7
-	giveitem_silent ITEM_GREAT_BALL, 7
+	additem ITEM_SUPER_POTION, 7
+	additem ITEM_GREAT_BALL, 7
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 
 RyuGymItemReward8::
-	giveitem_silent ITEM_TM03
+	additem ITEM_TM03
 	setflag FLAG_RYU_GYM8HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
-	giveitem_silent ITEM_SUPER_POTION, 8
-	giveitem_silent ITEM_GREAT_BALL, 8
+	additem ITEM_SUPER_POTION, 8
+	additem ITEM_GREAT_BALL, 8
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
@@ -1492,7 +1492,7 @@ RyuTier8GymMegaStoneReward::
 RoxanneMegaReward::
 	goto_if_set FLAG_RYU_ROXANNE_MEGA_REWARD, ryu_return
 	msgbox RoxanneMega
-	giveitem_silent ITEM_AERODACTYLITE
+	additem ITEM_AERODACTYLITE
 	setflag FLAG_RYU_ROXANNE_MEGA_REWARD
 	closemessage
 	return
@@ -1503,7 +1503,7 @@ RoxanneMega:
 BrawlyMegaReward::
 	goto_if_set FLAG_RYU_BRAWLY_MEGA_REWARD, ryu_return
 	msgbox BrawlyMega
-	giveitem_silent ITEM_MEDICHAMITE
+	additem ITEM_MEDICHAMITE
 	setflag FLAG_RYU_BRAWLY_MEGA_REWARD
 	closemessage
 	return
@@ -1514,7 +1514,7 @@ BrawlyMega:
 WattsonMegaReward::
 	goto_if_set FLAG_RYU_WATTSON_MEGA_REWARD, ryu_return
 	msgbox WattsonMega
-	giveitem_silent ITEM_MANECTITE
+	additem ITEM_MANECTITE
 	setflag FLAG_RYU_WATTSON_MEGA_REWARD
 	closemessage
 	return
@@ -1525,7 +1525,7 @@ WattsonMega:
 FlanneryMegaReward::
 	goto_if_set FLAG_RYU_FLANNERY_MEGA_REWARD, ryu_return
 	msgbox FlanneryMega
-	giveitem_silent ITEM_BLAZIKENITE
+	additem ITEM_BLAZIKENITE
 	setflag FLAG_RYU_FLANNERY_MEGA_REWARD
 	closemessage
 	return
@@ -1536,7 +1536,7 @@ FlanneryMega:
 NormanMegaReward::
 	goto_if_set FLAG_RYU_NORMAN_MEGA_REWARD, ryu_return
 	msgbox NormanMega
-	giveitem_silent ITEM_KANGASKHANITE
+	additem ITEM_KANGASKHANITE
 	setflag FLAG_RYU_NORMAN_MEGA_REWARD
 	closemessage
 	return
@@ -1547,7 +1547,7 @@ NormanMega:
 WinonaMegaReward::
 	goto_if_set FLAG_RYU_WINONA_MEGA_REWARD, ryu_return
 	msgbox WinonaMega
-	giveitem_silent ITEM_PIDGEOTITE
+	additem ITEM_PIDGEOTITE
 	setflag FLAG_RYU_WINONA_MEGA_REWARD
 	closemessage
 	return
@@ -1558,7 +1558,7 @@ WinonaMega:
 TateandLizaMegaReward::
 	goto_if_set FLAG_RYU_TAL_MEGA_REWARD, ryu_return
 	msgbox TateandLizaMega
-	giveitem_silent ITEM_ALAKAZITE
+	additem ITEM_ALAKAZITE
 	setflag FLAG_RYU_TAL_MEGA_REWARD
 	closemessage
 	return
@@ -1569,7 +1569,7 @@ TateandLizaMega:
 JuanMegaReward::
 	goto_if_set FLAG_RYU_JUAN_MEGA_REWARD, ryu_return
 	msgbox JuanMega
-	giveitem_silent ITEM_SWAMPERTITE
+	additem ITEM_SWAMPERTITE
 	setflag FLAG_RYU_JUAN_MEGA_REWARD
 	closemessage
 	return

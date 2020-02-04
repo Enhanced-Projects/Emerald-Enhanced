@@ -157,7 +157,7 @@ PG_Reset::
 PG_GiveMegaBracelet::
 	goto_if_set FLAG_RYU_RECEIVED_MEGA_BRACELET, ryu_return
 	msgbox NormanGivesMB
-	giveitem_silent ITEM_MEGA_BRACELET
+	additem ITEM_MEGA_BRACELET
 	closemessage
 	msgbox NormanfinishGiveBracelet
 	return

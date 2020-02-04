@@ -1163,7 +1163,13 @@ static const struct MenuAction MultichoiceList_LaneteRotomDialog[]=
     {gText_RyuRotomNormal},
 };
 
-
+static const struct MenuAction MultichoiceList_OWRepelList[]=
+{
+    {gText_ItemRepel},
+    {gText_ItemSuperRepel},
+    {gText_ItemMaxRepel},
+    {gText_MoveMenuExit},
+};
 
 static const struct MenuAction MultichoiceList_Exit[] =
 {
@@ -1324,6 +1330,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_DEV_UTILITY_SUBMENU]        = MULTICHOICE(MultichoiceList_UtilitySubMenu),
     [MULTI_LANETTE_REL_DIALOG]         = MULTICHOICE(MultichoiceList_LaneteMultiDialog),
     [MULTI_LANETTE_ROTOM_DIALOG]       = MULTICHOICE(MultichoiceList_LaneteRotomDialog),
+    [MULTI_OW_REPEL_DLG]               = MULTICHOICE(MultichoiceList_OWRepelList),
 
 };
 

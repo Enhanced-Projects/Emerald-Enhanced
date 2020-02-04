@@ -137,13 +137,13 @@ EGC_CLEARGAMECLEARFLAG::
 	end
 
 RyuDebug_waystone::
-	giveitem_silent ITEM_NUGGET, 1
+	additem ITEM_NUGGET, 1
 	goto RyuDebug_menu_nodevcheck
 	releaseall
 	end
 
 RyuDebug_enableWaystone::
-	giveitem_silent ITEM_NUGGET, 1
+	additem ITEM_NUGGET, 1
     setflag FLAG_VISITED_LITTLEROOT_TOWN
     setflag FLAG_VISITED_OLDALE_TOWN
     setflag FLAG_VISITED_DEWFORD_TOWN
@@ -231,7 +231,7 @@ RyuDebug_Init_GiveAllItems::
 	goto RyuDebug_GiveAllItems
 	
 RyuDebug_GiveAllItems::
-	giveitem_silent VAR_TEMP_2, 100
+	additem VAR_TEMP_2, 100
 	addvar VAR_TEMP_2, 1
 	goto RyuDebug_ReturnCallItems
 	
@@ -241,16 +241,16 @@ RyuDebug_ReturnCallItems::
 	goto RyuDebug_GiveAllItems
 	
 RyuDebugGiveItemsDone::
-	giveitem_silent ITEM_FULL_RESTORE, 100
-	giveitem_silent ITEM_MAX_ELIXIR, 100
-	giveitem_silent ITEM_MAX_REVIVE, 100
-	giveitem_silent ITEM_HEART_SCALE, 100
-	giveitem_silent ITEM_PP_MAX, 100
-	giveitem_silent ITEM_RARE_CANDY, 200
-	giveitem_silent ITEM_LUXURY_BALL, 100
-	giveitem_silent ITEM_MASTER_BALL, 100
-	giveitem_silent ITEM_MAX_REPEL, 100
-	giveitem_silent ITEM_MEGA_BRACELET, 1
+	additem ITEM_FULL_RESTORE, 100
+	additem ITEM_MAX_ELIXIR, 100
+	additem ITEM_MAX_REVIVE, 100
+	additem ITEM_HEART_SCALE, 100
+	additem ITEM_PP_MAX, 100
+	additem ITEM_RARE_CANDY, 200
+	additem ITEM_LUXURY_BALL, 100
+	additem ITEM_MASTER_BALL, 100
+	additem ITEM_MAX_REPEL, 100
+	additem ITEM_MEGA_BRACELET, 1
 	msgbox RyuDebug_GiveAllItemsDoneMsg MSGBOX_DEFAULT
 	msgbox RyuDebug_MoneyMsg MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -322,7 +322,7 @@ RyuDebug_quickstart::
 	special RyuSetEVSPATK
 	special RyuSetEVHP
 	special RyuSetIVs
-	giveitem_silent ITEM_NUGGET 1
+	additem ITEM_NUGGET 1
     setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV
@@ -342,7 +342,7 @@ RyuDebug_SkipTutorial::
 	setvar VAR_LITTLEROOT_INTRO_STATE, 10
 	setflag FLAG_RECEIVED_GO_GOGGLES
 	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
-	giveitem_silent ITEM_GO_GOGGLES, 1
+	additem ITEM_GO_GOGGLES, 1
 	setflag FLAG_SYS_B_DASH
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED

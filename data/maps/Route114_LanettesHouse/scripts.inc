@@ -68,7 +68,7 @@ LNH_PlayerHasCollection::
 	delay 20
 	applymovement 1, LNH_BackToPlayerFromDesk
 	waitmovement 1
-	giveitem_silent ITEM_LUXURY_BALL, 10
+	additem ITEM_LUXURY_BALL, 10
 	msgbox LNH_GiveBalls
 	closemessage
 	playfanfare MUS_FANFA1
@@ -101,7 +101,7 @@ LNH_Outro::
 	drawheadshot HEAD_LANETTE
 	goto_if_set FLAG_RYU_DS_LANETTE_PARTNERS, LNH_PartnerStayTheNight
 	msgbox LNH_NewTechnology
-	giveitem_silent ITEM_TEACHY_TV
+	additem ITEM_TEACHY_TV
 	msgbox LNH_AboutRemotePc
 	closemessage
 	setflag FLAG_RYU_DS_LANETTE_PARTNERS

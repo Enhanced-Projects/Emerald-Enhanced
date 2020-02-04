@@ -523,7 +523,7 @@ MtPyre_Exterior_EventScript_ItemTM48:: @ 829134B
 
 AquaHideout_B1F_EventScript_ItemMasterBall:: @ 8291358
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, AQH_AltItemBall
-	giveitem_silent ITEM_FAME_CHECKER, 1
+	additem ITEM_FAME_CHECKER, 1
 	setflag FLAG_RYU_DEVON_MISSION5COMPLETE
 	setflag FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL
 	playfanfare MUS_FANFA4
@@ -533,7 +533,7 @@ AquaHideout_B1F_EventScript_ItemMasterBall:: @ 8291358
 	end
 
 AQH_AltItemBall::
-	giveitem_silent ITEM_RETRO_MAIL
+	additem ITEM_RETRO_MAIL
 	setflag FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL
 	removeobject 5
 	special DrawWholeMapView

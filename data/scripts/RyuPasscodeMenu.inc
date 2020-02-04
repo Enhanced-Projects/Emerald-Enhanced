@@ -93,7 +93,7 @@ MasterBallReward::
 	playfanfare MUS_ME_BACHI
 	waitfanfare
 	closemessage
-	giveitem_silent ITEM_MASTER_BALL, 1
+	additem ITEM_MASTER_BALL, 1
 	setflag FLAG_RYU_PASSCODE_MASTERBALL
 	release
 	end
@@ -104,7 +104,7 @@ TutorVoucherReward::
 	playfanfare MUS_ME_BACHI
 	waitfanfare
 	closemessage
-	giveitem_silent ITEM_RETRO_MAIL, 4
+	additem ITEM_RETRO_MAIL, 4
 	setflag FLAG_RYU_PASSCODE_TUTORVOUCHER
 	release
 	end
@@ -117,7 +117,7 @@ KoutaMawileReward::
 	setmonmove VAR_TEMP_3, 1, MOVE_BRICK_BREAK
 	setmonmove VAR_TEMP_3, 2, MOVE_IRON_HEAD
 	setmonmove VAR_TEMP_3, 3, MOVE_PLAY_ROUGH
-	giveitem_silent ITEM_EXPERT_BELT, 1
+	additem ITEM_EXPERT_BELT, 1
 	buffernumberstring 0, VAR_TEMP_3
 	msgbox MSG_KOUTA_GIFT MSGBOX_DEFAULT
 	release

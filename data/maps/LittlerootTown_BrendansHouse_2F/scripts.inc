@@ -78,7 +78,7 @@ LRT_BrendanIntroductionScene::
 	removecutscenesprites
 	msgbox GI_BrendanMetMsg
 	setflag FLAG_RECEIVED_RUNNING_SHOES
-	giveitem_silent ITEM_GO_GOGGLES, 1
+	additem ITEM_GO_GOGGLES, 1
 	setflag FLAG_RECEIVED_GO_GOGGLES
 	setflag FLAG_SYS_NATIONAL_DEX
 	setflag FLAG_RYU_LT_RIVAL
@@ -274,7 +274,7 @@ LRT_BH_Glalie::
 	msgbox LRT_BH_Thanks1
 	goto_if_set FLAG_RYU_BRENDAN_GIFT1, LRT_BH_RcvGift1
 	msgbox LRT_BH_Vouchers
-	giveitem_silent ITEM_RETRO_MAIL, 4
+	additem ITEM_RETRO_MAIL, 4
 	setflag FLAG_RYU_BRENDAN_GIFT1
 	hidemonpic
 	return
@@ -301,7 +301,7 @@ LRT_BH_Froslass::
 	closemessage
 	goto_if_set FLAG_RYU_BRENDAN_GIFT1, LRT_BH_RcvGift1
 	msgbox LRT_BH_Vouchers
-	giveitem_silent ITEM_RETRO_MAIL, 4
+	additem ITEM_RETRO_MAIL, 4
 	setflag FLAG_RYU_BRENDAN_GIFT1
 	hidemonpic
 	return
@@ -309,7 +309,7 @@ LRT_BH_Froslass::
 LRT_BH_SnoruntIsChampionGlalie::
 	msgbox LRT_BH_GlalieChampionMsg
 	closemessage
-	giveitem_silent ITEM_SCOPE_LENS
+	additem ITEM_SCOPE_LENS
 	hidemonpic
 	clearflag FLAG_RYU_DS_BRENDAN_ACQ
 	setflag FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS
@@ -319,7 +319,7 @@ LRT_BH_SnoruntIsChampionGlalie::
 LRT_BH_SnoruntIsChampionFroslass::
 	msgbox LRT_BH_FroslassChampionMsg
 	closemessage
-	giveitem_silent ITEM_LIFE_ORB
+	additem ITEM_LIFE_ORB
 	hidemonpic
 	clearflag FLAG_RYU_DS_BRENDAN_ACQ
 	setflag FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS

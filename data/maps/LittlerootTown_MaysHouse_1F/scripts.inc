@@ -28,7 +28,7 @@ LRT_GameClearTriggerFemale::
 	waitmovement 0
 	msgbox LRT_FemalePlayerDadMsg MSGBOX_DEFAULT
 	closemessage
-	giveitem_silent ITEM_SS_TICKET
+	additem ITEM_SS_TICKET
 	setflag FLAG_RECEIVED_SS_TICKET
 	clearflag FLAG_SYS_TV_LATIAS_LATIOS
 	setflag FLAG_LATIOS_OR_LATIAS_ROAMING

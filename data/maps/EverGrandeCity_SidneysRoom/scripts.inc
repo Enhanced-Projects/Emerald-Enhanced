@@ -100,7 +100,7 @@ EGC_AltSidney::
 Ryu_CheckForMega::
 	goto_if_set FLAG_RYU_SIDNEY_MEGA EverGrandeCity_SidneysRoom_EventScript_Defeated
 	msgbox SidneyAbsolGiftMsg
-	giveitem_silent ITEM_ABSOLITE
+	additem ITEM_ABSOLITE
 	setflag FLAG_RYU_SIDNEY_MEGA
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 

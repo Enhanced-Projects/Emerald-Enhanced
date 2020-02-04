@@ -57,7 +57,7 @@ LH_Afterstory::
 	goto_if_set FLAG_RECEIVED_MYSTIC_TICKET, LH_StayTheNight
 	msgbox LH_Lana_MysticTicketGift
 	closemessage
-	giveitem_silent ITEM_MYSTIC_TICKET
+	additem ITEM_MYSTIC_TICKET
 	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
 	setflag FLAG_RECEIVED_MYSTIC_TICKET
 	msgbox LH_GIFT_GIVEN

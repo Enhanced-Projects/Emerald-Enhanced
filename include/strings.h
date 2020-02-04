@@ -3280,4 +3280,8 @@ extern const u8 gText_ColorLightRedShadowRed[];
 extern const u8 gText_ColorLightRedShadowDarkGrey[];
 extern const u8 gText_ColorLightBlueShadowDarkGrey[];
 
+extern const u8 gText_ItemRepel[];
+extern const u8 gText_ItemSuperRepel[];
+extern const u8 gText_ItemMaxRepel[];
+
 #endif // GUARD_STRINGS_H

@@ -315,7 +315,7 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	msgbox RusturfTunnel_Text_GruntIntro, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, RusturfTunnel_Text_GruntDefeat
 	msgbox RusturfTunnel_Text_GruntTakePackage, MSGBOX_DEFAULT
-	giveitem_silent ITEM_DEVON_GOODS
+	additem ITEM_DEVON_GOODS
 	closemessage
 	applymovement EVENT_OBJ_ID_PLAYER, RusturfTunnel_Movement_PushPlayerAsideForGrunt
 	applymovement 3, RusturfTunnel_Movement_GruntEscape

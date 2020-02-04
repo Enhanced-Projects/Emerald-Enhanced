@@ -66,7 +66,7 @@ EGC_FollowerPhoebe::
 
 RyuPhoebeMegaReward::
 	goto_if_set FLAG_RYU_PHOEBE_MEGA, EverGrandeCity_PhoebesRoom_EventScript_Defeated
-	giveitem_silent ITEM_SABLENITE
+	additem ITEM_SABLENITE
 	msgbox PhoebeMegaRewardMsg
 	setflag FLAG_RYU_PHOEBE_MEGA
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated

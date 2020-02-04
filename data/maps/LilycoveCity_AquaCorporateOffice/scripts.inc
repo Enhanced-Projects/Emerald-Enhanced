@@ -24,7 +24,7 @@ LC_AH_Security1::
 	msgbox LC_AH_TS_Given MSGBOX_DEFAULT
 	waitmessage
 	msgbox LC_AH_Shelly_Welcome MSGBOX_DEFAULT
-	giveitem_silent ITEM_EXPERT_BELT
+	additem ITEM_EXPERT_BELT
 	playfanfare MUS_FANFA4
 	call RyuGivePokenav
 	givemoney 50000
@@ -262,7 +262,7 @@ LC_AH_Mission2Complete::
 	waitmovement 0
 	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_FaceUp
 	waitmovement 0
-	giveitem_silent ITEM_RARE_CANDY, 10
+	additem ITEM_RARE_CANDY, 10
 	msgbox LC_AH_m2Reward MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_RYU_AQUA_MISSION2REWARDED
@@ -285,7 +285,7 @@ LC_AH_mission3::
 	
 LC_AH_Mission3Done::
 	msgbox LC_AH_M3DoneMsg MSGBOX_DEFAULT
-	giveitem_silent ITEM_MASTER_BALL, 1
+	additem ITEM_MASTER_BALL, 1
 	msgbox LC_AH_M3DoneMsg2 MSGBOX_DEFAULT
 	setflag FLAG_RYU_AQUA_MISSION3COMPLETE
 	release
@@ -313,7 +313,7 @@ LC_AH_NoRelConclusion::
 	waitmovement 0
 	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_FaceUp
 	waitmovement 0
-	giveitem_silent ITEM_CARD_KEY, 1
+	additem ITEM_CARD_KEY, 1
 	msgbox LC_AH_ShellyGivesCardKey MSGBOX_DEFAULT
 	msgbox LC_AH_ArchieWasSuccessful MSGBOX_DEFAULT
 	setflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
@@ -598,7 +598,7 @@ LC_AH_ShellySetUpFollower::
 	
 LC_AH_Shelly_Afterstory_Note::
 	msgbox LC_AH_RelShellyGivesCardKey MSGBOX_DEFAULT
-	giveitem_silent ITEM_CARD_KEY, 1
+	additem ITEM_CARD_KEY, 1
 	msgbox LC_AH_RelShellyAfterStoryCardKeyMsg MSGBOX_DEFAULT
 	setflag FLAG_RYU_AFTERSHELLYSTORY
 	setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE

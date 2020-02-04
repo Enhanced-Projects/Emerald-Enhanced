@@ -24,7 +24,7 @@ Route109_SeashoreHouse_EventScript_AlreadyGaveIntroduction:: @ 8269428
 
 Route109_SeashoreHouse_EventScript_DefeatedTrainers:: @ 8269432
 	msgbox Route109_SeashoreHouse_Text_TakeTheseSodaPopBottles, MSGBOX_DEFAULT
-	giveitem_silent ITEM_SODA_POP, 6
+	additem ITEM_SODA_POP, 6
 	compare VAR_RESULT, 0
 	goto_if_eq Route109_SeashoreHouse_EventScript_BagFull
 	setflag FLAG_RECEIVED_6_SODA_POP
@@ -56,7 +56,7 @@ Route109_SeashoreHouse_EventScript_BuySodaPop:: @ 8269484
 	msgbox Route109_SeashoreHouse_Text_HereYouGo, MSGBOX_DEFAULT
 	takemoney 300
 	updatemoneybox 0, 0
-	giveitem_silent ITEM_SODA_POP
+	additem ITEM_SODA_POP
 	hidemoneybox
 	release
 	end

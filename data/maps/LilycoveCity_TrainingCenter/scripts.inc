@@ -372,7 +372,7 @@ TC_StatShopGiveImprinter::
 	compare VAR_RESULT, 0
 	goto_if_eq TC_StatShopCantAffordImprinter
 	takemoney 65000
-	giveitem_silent ITEM_POKE_FLUTE
+	additem ITEM_POKE_FLUTE
 	msgbox TC_BoughtImprinter MSGBOX_DEFAULT
 	waitmessage
 	closemessage
