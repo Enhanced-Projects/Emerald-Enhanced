@@ -280,6 +280,30 @@ GCMS_GiveModdedMon::
 GCMS_DevModeMonGive::
 	special PasscodeGiveMonWithNature
 	bufferspeciesname 0, VAR_TEMP_4
+	msgbox GCMS_DMPG_Ability
+	multichoicedefault 0, 6, MULTI_DEV_GIVE_MON_ABILITY, 0, 1
+	switch VAR_RESULT
+	case 0, DevModeMonAbility1
+	case 1, DevModeMonAbility2
+	case 2, DevModeMonAbility3
+	goto ryu_return
+
+GCMS_DMPG_Ability:
+	.string "Please choose an Ability.$"
+
+DevModeMonAbility1::
+	setvar VAR_TEMP_7, 0
+	special SetMonAbility 
+	goto ryu_return
+
+DevModeMonAbility2::
+	setvar VAR_TEMP_7, 1
+	special SetMonAbility 
+	goto ryu_return
+
+DevModeMonAbility3::
+	setvar VAR_TEMP_7, 2
+	special SetMonAbility 
 	goto ryu_return
 	
 GCMS_Consignment::

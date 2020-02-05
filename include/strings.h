@@ -3131,6 +3131,10 @@ extern const  u8 gText_RyuAccessMoveRelearner[];
 extern const  u8 gText_RyuSetFriendshipMenuOption[];
 extern const  u8 gText_RyuExitPokeEditMenuOption[];
 
+extern const u8 gText_DevMonGiveAbility1[];
+extern const u8 gText_DevMonGiveAbility2[];
+extern const u8 gText_DevMonGiveAbility3[];
+
 extern const u8 gText_RyuLevel10MenuOption[];
 extern const u8 gText_RyuLevel20MenuOption[];
 extern const u8 gText_RyuLevel30MenuOption[];

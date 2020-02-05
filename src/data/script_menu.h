@@ -1173,6 +1173,13 @@ static const struct MenuAction MultichoiceList_OWRepelList[]=
     {gText_MoveMenuExit},
 };
 
+static const struct MenuAction MultichoiceList_DevMonGiveAbilityMenu[]=
+{
+    {gText_DevMonGiveAbility1},
+    {gText_DevMonGiveAbility2},
+    {gText_DevMonGiveAbility3},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1333,6 +1340,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_LANETTE_REL_DIALOG]         = MULTICHOICE(MultichoiceList_LaneteMultiDialog),
     [MULTI_LANETTE_ROTOM_DIALOG]       = MULTICHOICE(MultichoiceList_LaneteRotomDialog),
     [MULTI_OW_REPEL_DLG]               = MULTICHOICE(MultichoiceList_OWRepelList),
+    [MULTI_DEV_GIVE_MON_ABILITY]       = MULTICHOICE(MultichoiceList_DevMonGiveAbilityMenu),
 
 };
 

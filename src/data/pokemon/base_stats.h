@@ -14098,7 +14098,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_GRASS,
         .eggGroup2 = EGG_GROUP_GRASS,
         .abilities = {ABILITY_CHLOROPHYLL, ABILITY_OWN_TEMPO},
-        .abilityHidden = ABILITY_LEAF_GUARD,
+        .abilityHidden = ABILITY_FLOWER_VEIL,
         .bodyColor = BODY_COLOR_GREEN,
     },
 

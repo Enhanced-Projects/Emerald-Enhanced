@@ -213,18 +213,8 @@ void ItemUseOutOfBattle_Bike(u8 taskId)
     u8 behavior;
     PlayerGetDestCoords(&coordsX, &coordsY);
     behavior = MapGridGetMetatileBehaviorAt(coordsX, coordsY);
-    if (FlagGet(FLAG_SYS_CYCLING_ROAD) == TRUE || MetatileBehavior_IsVerticalRail(behavior) == TRUE || MetatileBehavior_IsHorizontalRail(behavior) == TRUE || MetatileBehavior_IsIsolatedVerticalRail(behavior) == TRUE || MetatileBehavior_IsIsolatedHorizontalRail(behavior) == TRUE)
-        DisplayCannotDismountBikeMessage(taskId, tUsingRegisteredKeyItem);
-    else
-    {
-        if (Overworld_IsBikingAllowed() == TRUE && IsBikingDisallowedByPlayer() == 0)
-        {
-            sItemUseOnFieldCB = ItemUseOnFieldCB_Bike;
-            SetUpItemUseOnFieldCallback(taskId);
-        }
-        else
-            DisplayDadsAdviceCannotUseItemMessage(taskId, tUsingRegisteredKeyItem);
-    }
+    sItemUseOnFieldCB = ItemUseOnFieldCB_Bike;
+    SetUpItemUseOnFieldCallback(taskId);
 }
 
 static void ItemUseOnFieldCB_Bike(u8 taskId)

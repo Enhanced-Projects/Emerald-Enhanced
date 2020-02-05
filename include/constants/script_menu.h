@@ -155,6 +155,7 @@
 #define MULTI_LANETTE_REL_DIALOG           144
 #define MULTI_LANETTE_ROTOM_DIALOG         145
 #define MULTI_OW_REPEL_DLG                 146
+#define MULTI_DEV_GIVE_MON_ABILITY         147
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

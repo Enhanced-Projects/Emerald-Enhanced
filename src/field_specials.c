@@ -4464,6 +4464,14 @@ void PasscodeGiveMonWithNature(void)
     CalculateMonStats(&gPlayerParty[slot]);
 }
 
+void SetMonAbility(void)
+{
+    u8 slot = (VarGet(VAR_TEMP_8));
+    u8 ability = (VarGet(VAR_TEMP_7));
+
+    SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
+}
+
 bool8 RyuGiveMewtwo(void)
 {
     u8 iv = 252;

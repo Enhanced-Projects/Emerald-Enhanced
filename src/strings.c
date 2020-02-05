@@ -1925,6 +1925,10 @@ const u8 gText_RyuAccessMoveRelearner[] = _("Move Relearner...");
 const u8 gText_RyuSetFriendshipMenuOption[] = _("Set Friendliness");
 const u8 gText_RyuExitPokeEditMenuOption[] = _("Exit");
 
+const u8 gText_DevMonGiveAbility1[] = _("Ability 1");
+const u8 gText_DevMonGiveAbility2[] = _("Ability 2");
+const u8 gText_DevMonGiveAbility3[] = _("Hidden Ability");
+
 const u8 gText_RyuLevel10MenuOption[] = _("Lv.10");
 const u8 gText_RyuLevel20MenuOption[] = _("Lv.20");
 const u8 gText_RyuLevel30MenuOption[] = _("Lv.30");

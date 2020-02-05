@@ -1997,7 +1997,6 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 }
                 break;
                 }
-                gBattleTypeFlags |= gTrainers[trainerNum].doubleBattle;
             }
         }
         if (FlagGet(FLAG_RYU_BATTLE_SIMULATION) == 1)
@@ -2008,14 +2007,12 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 ZeroMonData(&gPlayerParty[3]);
                 ZeroMonData(&gPlayerParty[4]);
                 ZeroMonData(&gPlayerParty[5]);
-                
+                FlagClear(FLAG_RYU_BATTLE_SIMULATION);
                 return 3;
             }
-                else
-                {
-                    return gTrainers[trainerNum].partySize;
-                }
     }
+    gBattleTypeFlags |= gTrainers[trainerNum].doubleBattle;
+    return gTrainers[trainerNum].partySize;
 }
 
 void VBlankCB_Battle(void)
