@@ -48,7 +48,9 @@ RyuDebug_UtilitiesMenu:
 	case 3, RyuDebug_ViewTempVars
 	case 4, RyuDebug_Utility1
 	case 5, RyuDebug_setTime
-	case 6, RyuDebug_cancel
+	case 6, RyuDebug_BattleSim
+	case 7, RyuSetExpMultMenu
+	case 8, RyuDebug_cancel
 	goto RyuDebug_cancel
 	
 RyuDebug_pokeedit::
@@ -385,7 +387,7 @@ RyuPokeEditMenu::
 	case 0, RyuViewEvDebugMenu@
 	case 1, RyuViewIvDebugMenu@
 	case 2, RyuViewOtherDebugMenu@
-	case 3, RyuSetExpMultMenu@
+	case 3, RyuAccessDevMoveRelearner@
 	case 4, RyuSetEvDebugMenu@
 	case 5, RyuSetIvDebugMenu@
 	case 6, RyuSetFriendshipDebugMenu@
@@ -403,7 +405,28 @@ RyuViewIvDebugMenu::
 	msgbox RyuIvDebug2 MSGBOX_DEFAULT
 	closemessage
 	goto RyuPokeEditMenu
-	
+
+RyuAccessDevMoveRelearner::
+	msgbox RyuActivateRelearner MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq RyuPokeEditMenu
+	additem ITEM_HEART_SCALE, 1
+	setflag FLAG_TEMP_4
+	call FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon
+	goto RyuAskToUseTutorAgain
+
+RyuAskToUseTutorAgain::
+	msgbox retutor MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq RyuPokeEditMenu
+	goto RyuAccessDevMoveRelearner
+	end
+
+RyuActivateRelearner:
+	.string "Activate the move relearner?$"
+
+retutor:
+	.string "Relearn another move?$"
 	
 RyuViewEvDebugMenu::
 	special RyuEvCheckerDef
@@ -741,4 +764,36 @@ RyuSetLevelBlankOption::
 RyuSetIvDebugMenu::
 	special RyuIvSetter
 	goto RyuPokeEditMenu
+
+RyuDebug_BattleSim::
+	setflag FLAG_RYU_BATTLE_SIMULATION
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_ne RDB_BattleSimFemale
+	special SavePlayerParty
+	delay 60
+	trainerbattle_single TRAINER_DOPPELGANGER_M, BS_Intro, BS_Defeat
+	waitstate
+	delay 60
+	special LoadPlayerParty
+	clearflag FLAG_RYU_BATTLE_SIMULATION
+	release
+	end
+
+RDB_BattleSimFemale::
+	special SavePlayerParty
+	delay 60
+	trainerbattle_single TRAINER_DOPPELGANGER_F, BS_Intro, BS_Defeat
+	waitstate
+	delay 60
+	special LoadPlayerParty
+	clearflag FLAG_RYU_BATTLE_SIMULATION
+	release
+	end
+
+BS_Defeat:
+	.string "Simualtion over.$"
+
+BS_Intro:
+	.string "Starting Simulation.$"
 

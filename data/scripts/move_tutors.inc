@@ -209,10 +209,10 @@ MoveTutor_EventScript_MetronomeTaught:: @ 82C8114
 FortreeCity_House2_EventScript_SleepTalkTutor:: @ 82C811E
 	lock
 	faceplayer
-	checkitem ITEM_DRAGON_SCALE, 1
+	checkitem ITEM_PP_UP, 1
 	compare VAR_RESULT, 1
 	goto_if_ne FC_MT_NoDragonScale 
-	setvar VAR_TEMP_5, ITEM_DRAGON_SCALE
+	setvar VAR_TEMP_5, ITEM_PP_UP
 	msgbox MoveTutor_Text_SleepTalkTeach, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MoveTutor_EventScript_SleepTalkDeclined
@@ -224,7 +224,7 @@ FortreeCity_House2_EventScript_SleepTalkTutor:: @ 82C811E
 	call MoveTutor_EventScript_OpenPartyMenu
 	compare VAR_RESULT, 0
 	goto_if_eq MoveTutor_EventScript_SleepTalkDeclined
-	removeitem ITEM_DRAGON_SCALE, 1
+	removeitem ITEM_PP_UP, 1
 	goto MoveTutor_EventScript_SleepTalkTaught
 	end
 
@@ -234,9 +234,15 @@ FC_MT_NoDragonScale::
 	end
 
 FC_MT_NoDragonScaleMsg:
-	.string "I need a Dragon Scale to be able\n"
-	.string "to tutor Draco Meteor. I use it as\l"
-	.string "inspiration.$"
+	.string "PP Ups give pokemon more\n"
+	.string "stamina in battle. But, did\p"
+	.string "you know that it can do things\n"
+	.string "for people, too?\p"
+	.string "My wife loves it when I take\n"
+	.string "PP Up to improve my own stamina\l"
+	.string "in bed.\p"
+	.string "Bring me some PP Up and we can\n"
+	.string "make a deal.$"
 
 MoveTutor_EventScript_SleepTalkDeclined:: @ 82C8172
 	msgbox MoveTutor_Text_SleepTalkDeclined, MSGBOX_DEFAULT

@@ -19,7 +19,6 @@
 #include "main.h"
 #include "overworld.h"
 #include "m4a.h"
-#include "mgba.h"
 #include "party_menu.h"
 #include "pokedex.h"
 #include "pokeblock.h"
@@ -50,7 +49,6 @@
 #include "constants/species.h"
 #include "constants/trainers.h"
 #include "constants/weather.h"
-#include "mgba.h"
 
 struct SpeciesItem
 {
@@ -5217,8 +5215,6 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem)
     u8 beauty = GetMonData(mon, MON_DATA_BEAUTY, 0);
     u16 upperPersonality = personality >> 16;
     u8 holdEffect;
-
-    mgba_printf(MGBA_LOG_INFO, "Beginning evolution check...");
 
     if (heldItem == ITEM_ENIGMA_BERRY)
         holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;

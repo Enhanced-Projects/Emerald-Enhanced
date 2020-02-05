@@ -736,7 +736,7 @@
 #define FLAG_RYU_PERSISTENT_WEATHER  0x2B8 // Unused Flag
 #define FLAG_RYU_MINNIE_POKEMON_SCHOOL  0x2B9 // Unused Flag
 #define FLAG_JAGGED_PASS_TM54  0x2BA // Unused Flag
-#define FLAG_UNUSED_0x2BB  0x2BB // Unused Flag
+#define FLAG_RYU_BATTLE_SIMULATION  0x2BB // Unused Flag
 
 // Event Flags
 #define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
@@ -769,7 +769,7 @@
 #define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY   0x2D7
 #define FLAG_HIDE_PETALBURG_CITY_WALLYS_AUNT                        0x2D8
 
-#define FLAG_UNUSED_0x2D9                                           0x2D9 // Unused Flag
+#define FLAG_RYU_PASSCODE_FRONTIER_MON_DEV                                           0x2D9 // Unused Flag
 
 #define FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER                     0x2DA
 #define FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT                          0x2DB

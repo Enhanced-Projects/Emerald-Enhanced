@@ -599,3 +599,4 @@ gSpecials:: @ 81DBA64
 	def_special TrySetBattleTowerLinkType
 	def_special checkForOverlordRyuEncounter
 	def_special CheckSaveFileSize
+	def_special PasscodeGiveMonWithNature

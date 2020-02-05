@@ -1921,6 +1921,7 @@ const u8 gText_RyuSetLevelMenuOption[] = _("Utility 3");
 const u8 gText_RyuSetExpMultMenuOption[] = _("Set Exp Mult...");
 const u8 gText_RyuSetEvMenuOption[] = _("Set EV's");
 const u8 gText_RyuMaxIvMenuOption[] = _("Max Out IV's");
+const u8 gText_RyuAccessMoveRelearner[] = _("Move Relearner...");
 const u8 gText_RyuSetFriendshipMenuOption[] = _("Set Friendliness");
 const u8 gText_RyuExitPokeEditMenuOption[] = _("Exit");
 
@@ -2119,6 +2120,7 @@ const u8 gText_RyuDevSubEnableSaveView[] = _("Enable Save Viewer");
 const u8 gText_RyuDevSubViewTempVars[] = _("Check Temp Vars");
 const u8 gText_RyuDevSubUtility1[] = _("Utility Option");
 const u8 gText_RyuDevSubTimeMenu[] = _("Set Time");
+const u8 gText_RyuDevSubSimulator[] = _("Battle Sim");
 
 const u8 gText_NightTimeApproaches[] = _("Night approaches...{CLEAR_TO 22}");
 

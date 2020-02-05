@@ -573,7 +573,7 @@ RyuScripts_HardcoreGymReward::
 	end
 
 RyuGymItemReward1::
-	additem ITEM_TM39
+	giveitem ITEM_TM39
 	setflag FLAG_RYU_GYM1HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 1
@@ -587,7 +587,7 @@ Ryu_ResetPcUses::
 	return
 
 RyuGymItemReward2::
-	additem ITEM_TM60
+	giveitem ITEM_TM60
 	setflag FLAG_RYU_GYM2HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 2
@@ -597,7 +597,7 @@ RyuGymItemReward2::
 	return
 
 RyuGymItemReward3::
-	additem ITEM_TM34
+	giveitem ITEM_TM34
 	setflag FLAG_RYU_GYM3HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 3
@@ -607,7 +607,7 @@ RyuGymItemReward3::
 	return
 
 RyuGymItemReward4::
-	additem ITEM_TM50
+	giveitem ITEM_TM50
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 4
 	additem ITEM_GREAT_BALL, 4
@@ -617,7 +617,7 @@ RyuGymItemReward4::
 	return
 
 RyuGymItemReward5::
-	additem ITEM_TM42
+	giveitem ITEM_TM42
 	setflag FLAG_RYU_GYM5HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 5
@@ -627,7 +627,7 @@ RyuGymItemReward5::
 	return
 
 RyuGymItemReward6::
-	additem ITEM_TM40
+	giveitem ITEM_TM40
 	setflag FLAG_RYU_GYM6HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 6
@@ -637,7 +637,7 @@ RyuGymItemReward6::
 	return
 
 RyuGymItemReward7::
-	additem ITEM_TM04
+	giveitem ITEM_TM04
 	setflag FLAG_RYU_GYM7HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 7
@@ -647,7 +647,7 @@ RyuGymItemReward7::
 	return
 
 RyuGymItemReward8::
-	additem ITEM_TM03
+	giveitem ITEM_TM03
 	setflag FLAG_RYU_GYM8HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 8

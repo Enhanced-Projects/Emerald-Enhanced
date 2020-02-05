@@ -41,6 +41,7 @@ FallarborTown_MoveRelearnersHouse_EventScript_ChooseMove:: @ 820140C
 	waitstate
 	compare VAR_0x8004, 0
 	goto_if_eq FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon
+	goto_if_set FLAG_TEMP_4, ryu_return
 	msgbox FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale, MSGBOX_DEFAULT
 	removeitem ITEM_HEART_SCALE, 1
 	goto FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale

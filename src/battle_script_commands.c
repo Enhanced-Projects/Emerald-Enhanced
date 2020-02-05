@@ -1747,6 +1747,7 @@ static void Cmd_datahpupdate(void)
     u32 moveType;
     u16 targetHealth = 0;
     u16 currentDmg = 0;
+    u32 totaldamage = 0;
     targetHealth = (gBattleMons[gActiveBattler].hp);
 
     if (gBattleControllerExecFlags)
@@ -1857,9 +1858,10 @@ static void Cmd_datahpupdate(void)
                     }
                 }
                 currentDmg = (gBattleMoveDamage - gHpDealt);
+                totaldamage = gBattleMoveDamage;
                 ConvertIntToDecimalStringN(gStringVar3, gHpDealt, STR_CONV_MODE_LEFT_ALIGN, 5);
                 ConvertIntToDecimalStringN(gStringVar2, currentDmg, STR_CONV_MODE_LEFT_ALIGN, 5);
-                ConvertIntToDecimalStringN(gStringVar1, targetHealth, STR_CONV_MODE_LEFT_ALIGN, 3);
+                ConvertIntToDecimalStringN(gStringVar1, totaldamage, STR_CONV_MODE_LEFT_ALIGN, 6);
             }
             gHitMarker &= ~(HITMARKER_x100000);
             BtlController_EmitSetMonData(0, REQUEST_HP_BATTLE, 0, 2, &gBattleMons[gActiveBattler].hp);
@@ -1882,7 +1884,12 @@ static void Cmd_critmessage(void)
     {
         if (gIsCriticalHit == TRUE && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
         {
-            if (gBattleMoveDamage > gHpDealt)
+            if (FlagGet(FLAG_RYU_BATTLE_SIMULATION) == 1)
+            {
+                PrepareStringBattle(STRINGID_SIMULATIONCRITDAMAGE, gBattlerAttacker);
+                gBattleCommunication[MSG_DISPLAY] = 1;
+            }
+            else if (gBattleMoveDamage > gHpDealt)
             {
                 PrepareStringBattle(STRINGID_ITDEALTOVERKILLDAMAGECRIT, gBattlerAttacker);
                 gBattleCommunication[MSG_DISPLAY] = 1;
@@ -1965,7 +1972,11 @@ static void Cmd_resultmessage(void)
         case MOVE_RESULT_SUPER_EFFECTIVE:
             if (gIsCriticalHit == FALSE)
             {
-                if (gBattleMoveDamage > gHpDealt)
+                if (FlagGet(FLAG_RYU_BATTLE_SIMULATION) == 1)
+                {
+                    stringId = STRINGID_SIMULATIONDAMAGE;
+                }
+                else if (gBattleMoveDamage > gHpDealt)
                 {
                     stringId = STRINGID_ITDEALTSEOVERKILLDAMAGE;
                 }
@@ -1978,7 +1989,11 @@ static void Cmd_resultmessage(void)
         case MOVE_RESULT_NOT_VERY_EFFECTIVE:
             if (gIsCriticalHit == FALSE)
             {
-                if (gBattleMoveDamage > gHpDealt)
+                if (FlagGet(FLAG_RYU_BATTLE_SIMULATION) == 1)
+                {
+                    stringId = STRINGID_SIMULATIONDAMAGE;
+                }
+                else if (gBattleMoveDamage > gHpDealt)
                 {
                     stringId = STRINGID_ITDEALTNVEOVERKILLDAMAGE;
                 }
@@ -2055,7 +2070,11 @@ static void Cmd_resultmessage(void)
                 {
                     if (!gBattleMoveDamage == 0)
                     {
-                        if (gBattleMoveDamage > gHpDealt)
+                        if (FlagGet(FLAG_RYU_BATTLE_SIMULATION) == 1)
+                        {
+                            stringId = STRINGID_SIMULATIONDAMAGE;
+                        }
+                        else if (gBattleMoveDamage > gHpDealt)
                             {
                                 stringId = STRINGID_ITDEALTOVERKILLDAMAGE;
                             }

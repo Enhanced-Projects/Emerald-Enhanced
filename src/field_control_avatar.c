@@ -37,7 +37,6 @@
 #include "constants/trainer_hill.h"
 #include "constants/event_objects.h"
 #include "random.h"
-#include "mgba.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;

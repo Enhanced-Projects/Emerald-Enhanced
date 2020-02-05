@@ -4451,6 +4451,19 @@ void GivePlayerModdedMon(void)
     CalculateMonStats(&gPlayerParty[slot]);
 }
 
+void PasscodeGiveMonWithNature(void)
+{
+    u8 slot = (VarGet(VAR_TEMP_8));
+    u16 species = (VarGet(VAR_TEMP_4));
+    u8 nature = (VarGet(VAR_TEMP_C));
+    u8 fixedIv = 31;
+    u8 level = 100;
+    mgba_printf(MGBA_LOG_INFO, "giving species # %d, at level %d with nature %d and fixed IV value of %d in slot %d", species, level, nature, fixedIv, slot);
+
+    CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
+    CalculateMonStats(&gPlayerParty[slot]);
+}
+
 bool8 RyuGiveMewtwo(void)
 {
     u8 iv = 252;
@@ -5105,6 +5118,7 @@ void RyuGenerateReward(void)
     u8 v2 = VarGet(VAR_TEMP_2);
     u8 v3 = VarGet(VAR_TEMP_3);
     gSpecialVar_Result = (v1 * 100) + (v2 * 10) + v3;
+    VarSet(VAR_TEMP_6, gSpecialVar_Result);
     ConvertIntToDecimalStringN(gStringVar1, gSpecialVar_Result, STR_CONV_MODE_RIGHT_ALIGN, 3);
 }
 
@@ -5721,7 +5735,7 @@ bool8 checkForOverlordRyuEncounter(void)
 void CheckSaveFileSize(void)
 {
     u32 size = (sizeof(struct SaveBlock1));
-    mgba_printf(MGBA_LOG_INFO, "Saveblock size is: %d", size);
+    //mgba_printf(MGBA_LOG_INFO, "Saveblock size is: %d", size);
     ConvertIntToDecimalStringN(gStringVar1, size, STR_CONV_MODE_LEFT_ALIGN, 6);
     ClearBag();
 }

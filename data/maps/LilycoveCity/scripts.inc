@@ -830,7 +830,7 @@ lcc_dawnLeave:
 
 lcc_dawn_declined_msg:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, okay, I see. Well, I'm going to\n"
-	.string "head out. Talk to you later, {PLAYER}."
+	.string "head out. Talk to you later, {PLAYER}.$"
 
 LCC_DAWN_KISS:
     walk_in_place_down

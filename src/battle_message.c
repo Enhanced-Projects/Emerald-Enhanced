@@ -677,9 +677,11 @@ static const u8 sText_RyuItDealtNVEOverkillDamage[] = _("Its move wasn't very ef
 static const u8 sText_RyuItDealtOHKOOverkillDamage[] = _("{B_ATK_NAME_WITH_PREFIX} executed {B_DEF_NAME_WITH_PREFIX}\nfor {STR_VAR_3} damage!");
 static const u8 sText_RyuItDealtDamageHungOn[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_3} damage but\n{B_DEF_NAME_WITH_PREFIX} barely clung to life anyway!");
 static const u8 sText_RyuItDealtNoDamage[] = _("{B_ATK_NAME_WITH_PREFIX} didn't do any damage.");
+static const u8 sText_RyuSimulationDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_1} damage.");
 static const u8 sText_RyuBossModeHeal[] = _("{STR_VAR_1}'s legendary status\nrecovers health for their {STR_VAR_2}.");
 static const u8 sText_RyuBossRaisedStats[] = _("{STR_VAR_1}'s legendary status\nraises a random stat for their {STR_VAR_2}.");
 static const u8 sText_RyuBossWildStatBoost[] = _("The wild Pokémon emits an\nopressive aura...");
+static const u8 sText_RyuSimulationCritDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_1} damage\nwith a critical hit.");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1228,6 +1230,9 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_BOSSMODEHEAL - 12] = sText_RyuBossModeHeal,
     [STRINGID_BOSSRAISEDSTAT - 12] = sText_RyuBossRaisedStats,
     [STRINGID_BOSSWILDPRESENCE - 12] = sText_RyuBossWildStatBoost,
+    [STRINGID_SIMULATIONDAMAGE - 12] = sText_RyuSimulationDamage,
+    [STRINGID_SIMULATIONCRITDAMAGE - 12] = sText_RyuSimulationCritDamage,
+
 };
 
 const u16 gTerrainStringIds[] =

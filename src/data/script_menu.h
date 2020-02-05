@@ -888,7 +888,7 @@ static const struct MenuAction MultichoiceList_122[]=
     {gText_RyuViewEvMenuOption},
     {gText_RyuViewIvMenuOption},
     {gText_RyuViewOtherMenuOption},
-    {gText_RyuSetExpMultMenuOption},
+    {gText_RyuAccessMoveRelearner},  
     {gText_RyuSetEvMenuOption},
     {gText_RyuMaxIvMenuOption},
     {gText_RyuSetFriendshipMenuOption},
@@ -1143,6 +1143,8 @@ static const struct MenuAction MultichoiceList_UtilitySubMenu[]=
     {gText_RyuDevSubViewTempVars},
     {gText_RyuDevSubUtility1},
     {gText_RyuDevSubTimeMenu},
+    {gText_RyuDevSubSimulator},
+    {gText_RyuSetExpMultMenuOption},
     {gText_DebugCancel},
 };
 

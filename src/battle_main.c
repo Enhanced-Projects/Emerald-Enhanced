@@ -63,7 +63,6 @@
 #include "constants/trainers.h"
 #include "cable_club.h"
 #include "pokemon.h"
-#include "mgba.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_SE1;
 extern struct MusicPlayerInfo gMPlayInfo_SE2;
@@ -76,6 +75,7 @@ extern const u8 *const gBattlescriptsForRunningByItem[];
 extern const u8 *const gBattlescriptsForUsingItem[];
 extern const u8 *const gBattlescriptsForSafariActions[];
 extern int CountBadges();
+extern void CompactPartySlots();
 
 // this file's functions
 #if !defined(NONMATCHING) && MODERN
@@ -1996,14 +1996,26 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
                 }
                 break;
-            }
+                }
+                gBattleTypeFlags |= gTrainers[trainerNum].doubleBattle;
             }
         }
-
-        gBattleTypeFlags |= gTrainers[trainerNum].doubleBattle;
+        if (FlagGet(FLAG_RYU_BATTLE_SIMULATION) == 1)
+            {
+                gEnemyParty[0] = gPlayerParty[3];
+                gEnemyParty[1] = gPlayerParty[4];
+                gEnemyParty[2] = gPlayerParty[5];
+                ZeroMonData(&gPlayerParty[3]);
+                ZeroMonData(&gPlayerParty[4]);
+                ZeroMonData(&gPlayerParty[5]);
+                
+                return 3;
+            }
+                else
+                {
+                    return gTrainers[trainerNum].partySize;
+                }
     }
-
-    return gTrainers[trainerNum].partySize;
 }
 
 void VBlankCB_Battle(void)

@@ -96,6 +96,9 @@ GCMS_CreateMon::
 	msgbox GCMS_CreateConfirm MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne GCMS_CancelCreate
+	goto GCMS_NatureMenu
+
+GCMS_NatureMenu::
 	msgbox GCMS_ChooseNatureMsg
 	closemessage
 	multichoicegrid 0, 0, 139, 4, 1
@@ -141,105 +144,129 @@ GCMS_NoSpace::
 	
 GCMS_ChooseNature0::
 	setvar VAR_TEMP_C, 0
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature1::
 	setvar VAR_TEMP_C, 1
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 
 GCMS_ChooseNature2::
 	setvar VAR_TEMP_C, 2
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature3::
 	setvar VAR_TEMP_C, 3
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 
 GCMS_ChooseNature4::
 	setvar VAR_TEMP_C, 4
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature5::
 	setvar VAR_TEMP_C, 5
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature6::
 	setvar VAR_TEMP_C, 6
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature7::
 	setvar VAR_TEMP_C, 7
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature8::
 	setvar VAR_TEMP_C, 8
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature9::
 	setvar VAR_TEMP_C, 9
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature10::
 	setvar VAR_TEMP_C, 10
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature11::
 	setvar VAR_TEMP_C, 11
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature12::
 	setvar VAR_TEMP_C, 12
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature13::
 	setvar VAR_TEMP_C, 13
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature14::
 	setvar VAR_TEMP_C, 14
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature15::
 	setvar VAR_TEMP_C, 15
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature16::
 	setvar VAR_TEMP_C, 16
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature17:
 	setvar VAR_TEMP_C, 17
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature18::
 	setvar VAR_TEMP_C, 18
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature19::
 	setvar VAR_TEMP_C, 19
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature20::
 	setvar VAR_TEMP_C, 20
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature21::
 	setvar VAR_TEMP_C, 21
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature22::
 	setvar VAR_TEMP_C, 22
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature23::
 	setvar VAR_TEMP_C, 23
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 	
 GCMS_ChooseNature24::
 	setvar VAR_TEMP_C, 24
+	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, GCMS_DevModeMonGive
 	goto GCMS_GiveModdedMon
 
-	
 GCMS_GiveModdedMon::
 	special GivePlayerModdedMon
 	bufferspeciesname 0, VAR_RYU_GCMS_SPECIES
@@ -249,6 +276,11 @@ GCMS_GiveModdedMon::
 	closemessage
 	release
 	end
+
+GCMS_DevModeMonGive::
+	special PasscodeGiveMonWithNature
+	bufferspeciesname 0, VAR_TEMP_4
+	goto ryu_return
 	
 GCMS_Consignment::
 	getpartysize

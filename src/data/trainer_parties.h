@@ -11237,54 +11237,30 @@ static const struct TrainerMonItemCustomMoves sParty_Wattson4[] = {
 	}
 };
 
-static const struct TrainerMonItemCustomMoves sParty_Wattson5[] = {//unused
+static const struct TrainerMonItemCustomMoves sParty_DoppelF[] = {//unused
     {
     .iv = 255,
-    .lvl = 50,
-    .species = SPECIES_ELECTABUZZ,
+    .lvl = 125,
+    .species = SPECIES_BULBASAUR,
     .heldItem = ITEM_NONE,
     .ability = 0,
     .moves = {MOVE_SWIFT, MOVE_FOCUS_PUNCH, MOVE_THUNDER_PUNCH, MOVE_LIGHT_SCREEN},
     },
     {
     .iv = 255,
-    .lvl = 51,
-    .species = SPECIES_RAICHU,
+    .lvl = 125,
+    .species = SPECIES_BULBASAUR,
     .heldItem = ITEM_NONE,
     .ability = 0,
     .moves = {MOVE_THUNDER, MOVE_SLAM, MOVE_RAIN_DANCE, MOVE_PROTECT},
     },
     {
     .iv = 255,
-    .lvl = 51,
-    .species = SPECIES_AMPHAROS,
+    .lvl = 125,
+    .species = SPECIES_BULBASAUR,
     .heldItem = ITEM_NONE,
     .ability = 0,
     .moves = {MOVE_THUNDER, MOVE_PROTECT, MOVE_THUNDER_WAVE, MOVE_LIGHT_SCREEN},
-    },
-    {
-    .iv = 255,
-    .lvl = 53,
-    .species = SPECIES_ELECTRODE,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = {MOVE_ROLLOUT, MOVE_THUNDER, MOVE_EXPLOSION, MOVE_RAIN_DANCE},
-    },
-    {
-    .iv = 255,
-    .lvl = 53,
-    .species = SPECIES_MAGNETON,
-    .heldItem = ITEM_SITRUS_BERRY,
-    .ability = 0,
-    .moves = {MOVE_SUPERSONIC, MOVE_PROTECT, MOVE_THUNDER, MOVE_RAIN_DANCE},
-    },
-    {
-    .iv = 255,
-    .lvl = 55,
-    .species = SPECIES_MANECTRIC,
-    .heldItem = ITEM_SITRUS_BERRY,
-    .ability = 0,
-    .moves = {MOVE_BITE, MOVE_THUNDER_WAVE, MOVE_THUNDER, MOVE_PROTECT},
     }
 };
 
@@ -11442,54 +11418,30 @@ static const struct TrainerMonItemCustomMoves sParty_Flannery4[] = {
 
 };
 
-static const struct TrainerMonItemCustomMoves sParty_Flannery5[] = {//unused
+static const struct TrainerMonItemCustomMoves sParty_DoppelM[] = {//unused
     {
     .iv = 255,
-    .lvl = 51,
-    .species = SPECIES_ARCANINE,
+    .lvl = 125,
+    .species = SPECIES_BULBASAUR,
     .heldItem = ITEM_NONE,
     .ability = 0,
     .moves = {MOVE_HELPING_HAND, MOVE_FLAMETHROWER, MOVE_SUNNY_DAY, MOVE_ROAR},
     },
     {
     .iv = 255,
-    .lvl = 53,
-    .species = SPECIES_MAGCARGO,
+    .lvl = 125,
+    .species = SPECIES_BULBASAUR,
     .heldItem = ITEM_WHITE_HERB,
     .ability = 0,
     .moves = {MOVE_OVERHEAT, MOVE_ATTRACT, MOVE_LIGHT_SCREEN, MOVE_ROCK_SLIDE},
     },
     {
     .iv = 255,
-    .lvl = 51,
-    .species = SPECIES_HOUNDOOM,
+    .lvl = 125,
+    .species = SPECIES_BULBASAUR,
     .heldItem = ITEM_NONE,
     .ability = 0,
     .moves = {MOVE_ROAR, MOVE_SOLAR_BEAM, MOVE_TAUNT, MOVE_SUNNY_DAY},
-    },
-    {
-    .iv = 255,
-    .lvl = 51,
-    .species = SPECIES_RAPIDASH,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = {MOVE_FLAMETHROWER, MOVE_ATTRACT, MOVE_SOLAR_BEAM, MOVE_BOUNCE},
-    },
-    {
-    .iv = 255,
-    .lvl = 53,
-    .species = SPECIES_CAMERUPT,
-    .heldItem = ITEM_WHITE_HERB,
-    .ability = 0,
-    .moves = {MOVE_OVERHEAT, MOVE_SUNNY_DAY, MOVE_EARTHQUAKE, MOVE_ATTRACT},
-    },
-    {
-    .iv = 255,
-    .lvl = 55,
-    .species = SPECIES_TORKOAL,
-    .heldItem = ITEM_WHITE_HERB,
-    .ability = 0,
-    .moves = {MOVE_OVERHEAT, MOVE_SUNNY_DAY, MOVE_EXPLOSION, MOVE_ATTRACT},
     }
 };
 

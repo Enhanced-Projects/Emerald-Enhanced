@@ -11714,19 +11714,19 @@ const struct Trainer gTrainers[] = {
         .party = {.ItemCustomMoves = sParty_Wattson4},
     },
 
-    [TRAINER_EMPTY_39] =
+    [TRAINER_DOPPELGANGER_F] =
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
-        .trainerClass = TRAINER_CLASS_LEADER,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
-        .trainerPic = TRAINER_PIC_LEADER_WATTSON,
-        .trainerName = _("Wattson"),
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
+        .trainerPic = TRAINER_PIC_MAY,
+        .trainerName = _("{PLAYER}"),
         .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE},
         .battleStyle = BS_SET,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_Wattson5),
-        .party = {.ItemCustomMoves = sParty_Wattson5},
+        .partySize = ARRAY_COUNT(sParty_DoppelF),
+        .party = {.ItemCustomMoves = sParty_DoppelF},
     },
 
     [TRAINER_FLANNERY_2] =
@@ -11774,19 +11774,19 @@ const struct Trainer gTrainers[] = {
         .party = {.ItemCustomMoves = sParty_Flannery4},
     },
 
-    [TRAINER_EMPTY_40] =
+    [TRAINER_DOPPELGANGER_M] =
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
-        .trainerClass = TRAINER_CLASS_LEADER,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_LEADER_FLANNERY,
-        .trainerName = _("Flannery"),
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
+        .trainerPic = TRAINER_PIC_BRENDAN,
+        .trainerName = _("{PLAYER}"),
         .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE},
         .battleStyle = BS_SET,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_Flannery5),
-        .party = {.ItemCustomMoves = sParty_Flannery5},
+        .partySize = ARRAY_COUNT(sParty_DoppelM),
+        .party = {.ItemCustomMoves = sParty_DoppelM},
     },
 
     [TRAINER_NORMAN_2] =

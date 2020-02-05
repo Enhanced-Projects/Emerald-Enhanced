@@ -782,11 +782,11 @@
 #define TRAINER_WATTSON_2                   778
 #define TRAINER_WATTSON_3                   779
 #define TRAINER_WATTSON_4                   780
-#define TRAINER_EMPTY_39                   781
+#define TRAINER_DOPPELGANGER_F                   781
 #define TRAINER_FLANNERY_2                  782
 #define TRAINER_FLANNERY_3                  783
 #define TRAINER_FLANNERY_4                  784
-#define TRAINER_EMPTY_40                  785
+#define TRAINER_DOPPELGANGER_M                  785
 #define TRAINER_NORMAN_2                    786
 #define TRAINER_NORMAN_3                    787
 #define TRAINER_NORMAN_4                    788

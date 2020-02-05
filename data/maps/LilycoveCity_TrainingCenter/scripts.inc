@@ -68,6 +68,7 @@ TC_Entry::
 TC_ENTRY_NUZLOCKE::
 	msgbox TC_CantEnterNuzlockeHardcore
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepDown
+	applymovement EVENT_OBJ_ID_FOLLOWER, Common_Movement_StepDown
 	release
 	end
 
@@ -82,6 +83,7 @@ TC_DevEntry::
 	closemessage
 	setflag FLAG_RYU_TC_ENTERED
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
+	applymovement EVENT_OBJ_ID_FOLLOWER, Common_Movement_StepUp
 	waitmovement EVENT_OBJ_ID_PLAYER
 	release
 	end
@@ -103,6 +105,7 @@ TC_Entering::
 	msgbox TC_Welcome MSGBOX_DEFAULT
 	waitmessage
 	applymovement EVENT_OBJ_ID_PLAYER, TC_WalkIn
+	applymovement EVENT_OBJ_ID_FOLLOWER, TC_WalkIn
 	waitmovement 0
 	takemoney VAR_TEMP_0
 	setflag FLAG_RYU_TC_ENTERED
@@ -117,6 +120,7 @@ TC_Discount_entering::
 	goto_if_eq TC_Disc_Broke
 	waitmessage
 	applymovement EVENT_OBJ_ID_PLAYER, TC_WalkIn
+	applymovement EVENT_OBJ_ID_FOLLOWER, TC_WalkIn
 	waitmovement 0
 	takemoney 6000
 	setflag FLAG_RYU_WAYSTONE_DISABLED
@@ -132,6 +136,9 @@ TC_Discount_Welcome:
 	
 TC_Disc_Broke::
 	msgbox TC_Leave_Disc_broke, MSGBOX_DEFAULT
+	applymovement EVENT_OBJ_ID_PLAYER, TC_WalkOut
+	applymovement EVENT_OBJ_ID_FOLLOWER, TC_WalkOut
+	waitmovement EVENT_OBJ_ID_PLAYER
 	releaseall
 	end
 
@@ -177,6 +184,7 @@ TC_BallCheck::
 TC_Exiting_Nomoney::
 	msgbox TC_Broke MSGBOX_DEFAULT
 	applymovement EVENT_OBJ_ID_PLAYER, TC_WalkOut
+	applymovement EVENT_OBJ_ID_FOLLOWER, TC_WalkOut
 	waitmovement 0
 	releaseall
 	end
@@ -194,6 +202,7 @@ TC_Exiting::
 	msgbox TC_Leave MSGBOX_DEFAULT
 	waitmessage
 	applymovement EVENT_OBJ_ID_PLAYER, TC_WalkOut
+	applymovement EVENT_OBJ_ID_FOLLOWER, TC_WalkOut
 	waitmovement 0
 	clearflag FLAG_RYU_TC_ENTERED
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
@@ -208,12 +217,14 @@ TC_InvalidExitCheck::
 
 TC_WelcomeBack::
 	applymovement EVENT_OBJ_ID_PLAYER, TC_Reentry
+	applymovement EVENT_OBJ_ID_FOLLOWER, TC_Reentry
 	waitmovement 0
 	applymovement 2, TC_FacePlayer
 	waitmovement 0
 	msgbox TC_WB_TEXT MSGBOX_DEFAULT
 	call TC_BallCheck
 	applymovement EVENT_OBJ_ID_PLAYER, TC_WalkIn
+	applymovement EVENT_OBJ_ID_FOLLOWER, TC_WalkIn
 	waitmovement 0
 	releaseall
 	end
@@ -228,6 +239,7 @@ TC_Exiting_pokeballs::
 	msgbox TC_Leave_Balls MSGBOX_DEFAULT
 	waitmessage
 	applymovement EVENT_OBJ_ID_PLAYER, TC_WalkOut
+	applymovement EVENT_OBJ_ID_FOLLOWER, TC_WalkOut
 	waitmovement 0
 	releaseall
 	end

@@ -3643,9 +3643,16 @@ void RyuGiveFrontierMon(void)
 {
     s32 count;
     s32 evs[NUM_STATS];
+    u8 level = 50;
     u8 i, temp, party_id = CalculatePlayerPartyCount();
 
     const struct FacilityMon *mon = &gBattleFrontierMons[Random() % 881];
+
+    if ((FlagGet(FLAG_RYU_PASSCODE_FRONTIER_MON_DEV) ==1 ) && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+    {
+        mon = &gBattleFrontierMons[(VarGet(VAR_TEMP_6))];
+        level = 100;
+    }
 
     temp = mon->evSpread;
     count = 0;
@@ -3664,7 +3671,7 @@ void RyuGiveFrontierMon(void)
 
     if (party_id != 6)
     {
-        CreateMonWithNature(&gPlayerParty[party_id], mon->species, 50, mon->ivs, mon->nature);
+        CreateMonWithNature(&gPlayerParty[party_id], mon->species, level, mon->ivs, mon->nature);
         SetMonData(&gPlayerParty[party_id], MON_DATA_MOVE1, &mon->moves[0]);
         SetMonData(&gPlayerParty[party_id], MON_DATA_MOVE2, &mon->moves[1]);
         SetMonData(&gPlayerParty[party_id], MON_DATA_MOVE3, &mon->moves[2]);

@@ -3127,6 +3127,7 @@ extern const  u8 gText_RyuSetLevelMenuOption[];
 extern const  u8 gText_RyuSetExpMultMenuOption[];
 extern const  u8 gText_RyuSetEvMenuOption[];
 extern const  u8 gText_RyuMaxIvMenuOption[];
+extern const  u8 gText_RyuAccessMoveRelearner[];
 extern const  u8 gText_RyuSetFriendshipMenuOption[];
 extern const  u8 gText_RyuExitPokeEditMenuOption[];
 
@@ -3243,6 +3244,7 @@ extern const u8 gText_RyuDevSubEnableSaveView[];
 extern const u8 gText_RyuDevSubViewTempVars[];
 extern const u8 gText_RyuDevSubUtility1[];
 extern const u8 gText_RyuDevSubTimeMenu[];
+extern const u8 gText_RyuDevSubSimulator[];
 
 extern const u8 gText_NightTimeApproaches[];
 

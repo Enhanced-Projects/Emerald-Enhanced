@@ -51,17 +51,48 @@ MC_GC_PrepareReward::
 	special RyuGenerateReward
 	goto_if_set FLAG_RYU_DEVELOPER_ITEM_MENU, MC_GC_DevModeItemGive
 	goto_if_set FLAG_RYU_DEVELOPER_POKEMON_MENU, MC_GC_DevModePokemonGive
+	goto_if_set FLAG_RYU_PASSCODE_FRONTIER_MON_DEV, MC_GC_FrontierMonGive
 	setvar VAR_TEMP_0, 0
 	msgbox MC_GC_RewardReceived MSGBOX_DEFAULT
 	goto MC_GC_GetReward
 	
 MC_GC_GetReward::
 	switch VAR_RESULT
+	case 111, FrontierMonDev
 	case 649, MasterBallReward
 	case 910, TutorVoucherReward
 	case 622, KoutaMawileReward
 	case 842, GCMSReward
 	msgbox MC_GC_NOREWARD MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+MC_GC_FrontierMonGive::
+	special RyuGiveFrontierMon
+	buffernumberstring 0, VAR_TEMP_6
+	msgbox MC_GC_YouveBeenGiven
+	clearflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
+	closemessage
+	release
+	end
+
+MC_GC_YouveBeenGiven::
+	.string "You've been given the Frontier\nMon with id {STR_VAR_1}.$"
+
+
+FrontierMonDev::
+	goto_if_unset FLAG_RYU_DEV_MODE, NorewardNotDevmode
+	msgbox pleaseEnterFID
+	setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
+	goto MC_GC_MENU
+
+pleaseEnterFID:
+	.string "Please enter the frontier mon ID.$"
+
+
+NorewardNotDevmode::
+	msgbox MC_GC_NOREWARD
 	closemessage
 	release
 	end
@@ -74,15 +105,28 @@ MC_GC_DevModeItemGive::
 	end
 
 MC_GC_DevModePokemonGive::
-	givemon VAR_RESULT, 5, 0
+	copyvar VAR_TEMP_4, VAR_RESULT
+	bufferspeciesname 0, VAR_TEMP_4
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq MC_GC_DevPokeNoSpace
+	copyvar VAR_TEMP_8, VAR_RESULT
+	call GCMS_NatureMenu
 	clearflag FLAG_RYU_DEVELOPER_POKEMON_MENU
 	msgbox MC_GC_GivePokeMsg MSGBOX_DEFAULT
-	clearflag FLAG_RYU_DEVELOPER_POKEMON_MENU
 	release
 	end
 
+MC_GC_DevPokeNoSpace::
+	msgbox donthavespaceformon
+	release
+	end
+
+donthavespaceformon:
+	.string "You don't have space for\n a {STR_VAR_1}.$"
+
 MC_GC_GivePokeMsg:
-	.string "You've been given the Pokémon with\nthe ID number {STR_VAR_1}.$"
+	.string "You've been given a tamed\n{STR_VAR_1}.$"
 
 MC_GC_RyuGiveItemDevMode:
 	.string "You've been given 99 of item ID {STR_VAR_1}.$"
