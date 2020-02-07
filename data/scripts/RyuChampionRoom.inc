@@ -230,6 +230,15 @@ RCR_ChallengerSteven::
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
+
+RCR_ChallengerStevenAggroniteReward::
+	msgbox RCR_StevenExplainAggronite
+	additem ITEM_AGGRONITE
+	closemessage
+	return
+
+RCR_StevenExplainAggronite:
+	.string "Steven: Nice work, {PLAYER}!\pI have a gift for you, it should\nbe good for you!\pIt's an Aggronite. Enjoy!$"
 	
 RCR_ChallengerNorman::
 	msgbox RCR_Norman_Intro 
@@ -447,6 +456,7 @@ MawileMegaReward::
 	
 RCR_FinishChallenge::
 	msgbox RCR_PlayerRecordingInfo
+	call_if_unset FLAG_CHALLENGER_STEVEN_AGGRONITE, RCR_ChallengerStevenAggroniteReward
 	addvar VAR_RYU_TITLE_DEFENSE_WINS, 1
 	closemessage
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE

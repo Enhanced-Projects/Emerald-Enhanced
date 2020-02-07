@@ -33,6 +33,7 @@
 #include "constants/species.h"
 #include "constants/weather.h"
 #include "data.h"
+#include "mgba.h"
 
 extern const u8 gText_OverlordRyuBossNameBuffer[];
 extern const u8 gText_PokemonStringBuffer[];
@@ -6040,6 +6041,10 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
         if (typeEffectivenessModifier >= UQ_4_12(2.0))
             MulModifier(&finalModifier, UQ_4_12(0.75));
         break;
+    case ABILITY_STEELY_RESOLVE:
+        if (moveType == (TYPE_ROCK || TYPE_ICE || TYPE_NORMAL))
+            MulModifier(&finalModifier, UQ_4_12(0.75));
+        break;
     }
 
     // target's ally's abilities
@@ -6105,8 +6110,8 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
         {
             MulModifier(&finalModifier, UQ_4_12(1.2));
         }
-        
-
+    mgba_open();
+    mgba_printf(MGBA_LOG_FATAL, "Dealt %d damage.", dmg);
     return dmg;
 }
 

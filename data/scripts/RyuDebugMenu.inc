@@ -180,10 +180,7 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	special CheckSaveFileSize
-	msgbox sizeofmsg
-	closemessage
-	special FillTheDex
+	clearflag FLAG_CHALLENGER_STEVEN_AGGRONITE
 	goto_if_unset FLAG_RYU_RANDOMIZE_MUSIC, RDB_u1_EnableRandomize
 	clearflag FLAG_RYU_RANDOMIZE_MUSIC
 	release

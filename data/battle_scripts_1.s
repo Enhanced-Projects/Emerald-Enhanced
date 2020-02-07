@@ -984,6 +984,7 @@ BattleScript_EffectHitSwitchTarget:
 	resultmessage
 	waitmessage 0x40
 	tryfaintmon BS_TARGET, FALSE, NULL
+	@(Add if a move exists that does this) jumpifability BS_TARGET, ABILITY_STEELY_RESOLVE, BattleScript_ResolvedMsg
 	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_AbilityPreventsPhasingOut
 	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted
 	tryhitswitchtarget BattleScript_EffectHitSwitchTargetMoveEnd
@@ -2381,6 +2382,7 @@ BattleScript_EffectRoar::
 	attackstring
 	ppreduce
 	jumpifroarfails BattleScript_ButItFailed
+	jumpifability BS_TARGET, ABILITY_STEELY_RESOLVE, BattleScript_ResolvedMsg
 	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_AbilityPreventsPhasingOut
 	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted
 	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
@@ -6595,6 +6597,13 @@ BattleScript_AbilityPreventsPhasingOut::
 	pause 0x20
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNANCHORSITSELFWITH
+	waitmessage 0x40
+	goto BattleScript_MoveEnd
+
+BattleScript_ResolvedMsg::
+	pause 0x20
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNISRESOLVED
 	waitmessage 0x40
 	goto BattleScript_MoveEnd
 

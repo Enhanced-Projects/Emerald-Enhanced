@@ -1644,6 +1644,7 @@ void CB2_NewGame(void)
     bool8 hasForecaster = FALSE;
     bool8 hasImprinter = FALSE;
     bool8 hasWirelessPC = FALSE;
+    bool8 hasExpShare = FALSE;
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
         isNGPlus = TRUE;
 
@@ -1661,6 +1662,9 @@ void CB2_NewGame(void)
 
     if (CheckBagHasItem(ITEM_TEACHY_TV, 1))
         hasWirelessPC = TRUE;
+
+    if (CheckBagHasItem(ITEM_EXP_SHARE, 1))
+        hasExpShare = TRUE;
 
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
@@ -1691,6 +1695,9 @@ void CB2_NewGame(void)
 
         if (hasWirelessPC == TRUE)
             FlagSet(FLAG_RYU_HAS_WIRELESSPC);
+
+        if (hasExpShare == TRUE)
+            FlagSet(FLAG_RYU_HAS_EXPSHARE);
 
         FlagSet(FLAG_SYS_POKEDEX_GET);
         FlagSet(FLAG_SYS_NATIONAL_DEX);

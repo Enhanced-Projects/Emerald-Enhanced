@@ -10498,7 +10498,7 @@ WhirlpoolEffect:
 Move_FLY:
 	loadspritegfx ANIM_TAG_ROUND_SHADOW
 	loadspritegfx ANIM_TAG_IMPACT
-	choosetwoturnanim FlySetUp, FlyUnleash
+	goto FlySetUp
 FlyEnd:
 	waitforvisualfinish
 	end
@@ -10506,7 +10506,8 @@ FlyEnd:
 FlySetUp:
 	playsewithpan SE_W019, SOUND_PAN_ATTACKER
 	createsprite gUnknown_08596340, ANIM_ATTACKER, 2, 0, 0, 13, 336
-	goto FlyEnd
+	delay 60
+	goto FlyUnleash
 
 FlyUnleash:
 	monbg ANIM_DEF_PARTNER

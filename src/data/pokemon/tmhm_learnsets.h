@@ -306,6 +306,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM06_TOXIC)),
 
     [SPECIES_PIDGEOTTO]   = TMHM_LEARNSET(TMHM(TM40_AERIAL_ACE)
+											| TMHM(TM08_BULK_UP)
 											| TMHM(TM45_ATTRACT)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM42_FACADE)

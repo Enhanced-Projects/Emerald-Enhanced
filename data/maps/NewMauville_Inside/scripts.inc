@@ -12,6 +12,13 @@ NewMauville_Inside_OnResume: @ 82373E7
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, NewMauville_Inside_EventScript_TryRemoveVoltorb
 	end
 
+NMV_Ampharosite::
+	finditem ITEM_AMPHAROSITE
+	setflag FLAG_ITEM_BALL_AMPHAROSITE
+	removeobject 11
+	release
+	end
+
 NewMauville_Inside_EventScript_TryRemoveVoltorb:: @ 8237407
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_CAUGHT

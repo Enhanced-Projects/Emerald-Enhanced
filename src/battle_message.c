@@ -682,6 +682,7 @@ static const u8 sText_RyuBossModeHeal[] = _("{STR_VAR_1}'s legendary status\nrec
 static const u8 sText_RyuBossRaisedStats[] = _("{STR_VAR_1}'s legendary status\nraises a random stat for their {STR_VAR_2}.");
 static const u8 sText_RyuBossWildStatBoost[] = _("The wild Pokémon emits an\nopressive aura...");
 static const u8 sText_RyuSimulationCritDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_1} damage\nwith a critical hit.");
+static const u8 sText_RyuPkmnResolvedToFight[] = _("{B_DEF_NAME_WITH_PREFIX} has resolved to stick\nthis fight out.");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1232,6 +1233,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_BOSSWILDPRESENCE - 12] = sText_RyuBossWildStatBoost,
     [STRINGID_SIMULATIONDAMAGE - 12] = sText_RyuSimulationDamage,
     [STRINGID_SIMULATIONCRITDAMAGE - 12] = sText_RyuSimulationCritDamage,
+    [STRINGID_PKMNISRESOLVED - 12] = sText_RyuPkmnResolvedToFight,
 
 };
 

@@ -25,6 +25,7 @@ Ryu_NewGamePlus::
 	call_if_set FLAG_RYU_HAS_FORECASTER, Ryu_NGP_Forecaster
 	call_if_set FLAG_RYU_HAS_EXP_DRIVE, Ryu_NGP_ExpDrive
 	call_if_set FLAG_RYU_HAS_WIRELESSPC, Ryu_NGP_WirelessPC
+	call_if_set FLAG_RYU_HAS_EXPSHARE, Ryu_NGP_ExpShare
 	msgbox RyuNGP_DexInfo
 	closemessage
 	setflag FLAG_SYS_POKEDEX_GET
@@ -78,6 +79,10 @@ Ryu_NGP_Imprinter:
 
 Ryu_NGP_WirelessPC:
 	additem ITEM_TEACHY_TV, 1
+	return
+
+Ryu_NGP_ExpShare::
+	additem ITEM_EXP_SHARE, 1
 	return
 
 RyuNGPInfo:
@@ -441,11 +446,11 @@ LRT_MOM::
 	goto LRT_Mom_base
 
 LRT_Mom_4Badges::
-	goto_if_set FLAG_RYU_MOM_AMULET_COIN, LRT_Check6B
+	goto_if_set  FLAG_RYU_MOM_EXP_SHARE, LRT_Check6B
 	msgbox mom4badgesmsg
-	additem ITEM_AMULET_COIN
+	giveitem ITEM_EXP_SHARE
 	setvar VAR_RYU_TITLE_DEFENSE_WINS, 0
-	setflag FLAG_RYU_MOM_AMULET_COIN
+	setflag FLAG_RYU_MOM_EXP_SHARE
 	goto LRT_Mom_base
 
 LRT_Check6B::
@@ -468,10 +473,10 @@ LRT_Check8B::
 	goto LRT_Mom_base
 
 LRT_Mom_8badges::
-	goto_if_set FLAG_RYU_MOM_EXP_SHARE, LRT_Mom_base
+	goto_if_set FLAG_RYU_MOM_AMULET_COIN, LRT_Mom_base
 	msgbox mom8badgesmsg
-	additem ITEM_EXP_SHARE
-	setflag FLAG_RYU_MOM_EXP_SHARE
+	giveitem ITEM_AMULET_COIN
+	setflag FLAG_RYU_MOM_AMULET_COIN
 	goto LRT_Mom_base
 
 LRT_Mom_base::
@@ -507,13 +512,10 @@ Momwouldyouliketoheal:
 	.string "Would you like to rest\nin your old room?$"
 
 mom4badgesmsg:
-	.string "Mom: I see you've been moving\n"
-	.string "up in the world. Here! take\l"
-	.string "this from me!\p"
-	.string "It was a gift from your father\n"
-	.string "when we were dating.\p"
-	.string "I don't actively battle anymore,\n"
-	.string "so I don't need it!$"
+	.string "Oh, you're off to the Hoenn\n"
+	.string "League soon, aren't you?\p"
+	.string "Well you're going to need to\n"
+	.string "train up! This should help.$"
 
 mom6badgesmsg:
 	.string "Mom: Oh, {PLAYER}, I saw a cute\n"
@@ -523,10 +525,13 @@ mom6badgesmsg:
 	.string "Bracelet. So here, you can have it!$"
 
 mom8badgesmsg:
-	.string "Oh, you're off to the Hoenn\n"
-	.string "League soon, aren't you?\p"
-	.string "Well you're going to need to\n"
-	.string "train up! This should help.$"
+	.string "Mom: I see you've been moving\n"
+	.string "up in the world. Here! take\l"
+	.string "this from me!\p"
+	.string "It was a gift from your father\n"
+	.string "when we were dating.\p"
+	.string "I don't actively battle anymore,\n"
+	.string "so I don't need it!$"
 
 MomGoGetThem:
 	.string "Mom: I believe in you, {PLAYER}!\n"

@@ -108,9 +108,9 @@ const u8 gPidgeottoPokedexText[] = _(
 
 const u8 gPidgeotPokedexText[] = _(
     "This Pokémon has gorgeous, glossy\n"
-    "feathers. Many Trainers are so captivated\n"
-    "by the beautiful feathers on its head that\n"
-    "they choose Pidgeot as their Pokémon.");
+    "feathers. It is fiercely loyal\n"
+    "to its trainer and is sturdier than\n"
+    "most flying-type Pokémon.");
 
 const u8 gRattataPokedexText[] = _(
     "A Rattata is cautious in the extreme.\n"
@@ -227,10 +227,10 @@ const u8 gVulpixPokedexText[] = _(
     "as if on fire.");
 
 const u8 gNinetalesPokedexText[] = _(
-    "It has long been said that each of the\n"
-    "nine tails embody an enchanted power.\n"
-    "A long-lived Ninetales will have fur that\n"
-    "shines like gold.");
+    "This Pokémon defends itself and its\n"
+    "trainer with mystical power. A long\n"
+    "lived Ninetales is said to have fur\n"
+    "that shines like gold.");
 
 const u8 gJigglypuffPokedexText[] = _(
     "Nothing can avoid falling asleep hearing a\n"

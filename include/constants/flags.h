@@ -1077,7 +1077,7 @@
 #define FLAG_ITEM_ROUTE_120_FULL_HEAL                               0x407
 #define FLAG_ITEM_ROUTE_123_CALCIUM                                 0x408
 
-#define FLAG_UNUSED_0x409                                           0x409 // Unused Flag
+#define FLAG_ITEM_BALL_AMPHAROSITE                                  0x409 // Unused Flag
 
 #define FLAG_ITEM_ROUTE_127_ZINC                                    0x40A
 #define FLAG_ITEM_ROUTE_127_CARBOS                                  0x40B
@@ -1258,8 +1258,8 @@
 #define FLAG_RYU_AQUA_MISSION1COMPLETE                              0x4AF // Unused Flag
 #define FLAG_RYU_DS_LANETTE_BADEND                                  0x4B0 // Unused Flag
 #define FLAG_MET_PROF_COSMO                                         0x4B1 // Unused Flag
-#define FLAG_UNUSED_0x4B2                                           0x4B2 // Unused Flag
-#define FLAG_UNUSED_0x4B3                                           0x4B3 // Unused Flag
+#define FLAG_CHALLENGER_STEVEN_AGGRONITE                            0x4B2 // Unused Flag
+#define FLAG_RYU_HAS_EXPSHARE                                       0x4B3 // Unused Flag
 #define FLAG_UNUSED_0x4B4                                           0x4B4 // Unused Flag
 #define FLAG_UNUSED_0x4B5                                           0x4B5 // Unused Flag
 #define FLAG_UNUSED_0x4B6                                           0x4B6 // Unused Flag

@@ -1721,10 +1721,10 @@ static void Cmd_healthbarupdate(void)
         }
         else
         {
-            s16 healthValue;
+            s32 healthValue;
 
             s32 currDmg = gBattleMoveDamage;
-            s32 maxPossibleDmgValue = 32768; // not present in R/S, ensures that huge damage values don't change sign
+            s32 maxPossibleDmgValue = 1000000000; // not present in R/S, ensures that huge damage values don't change sign
 
             if (currDmg <= maxPossibleDmgValue)
                 healthValue = currDmg;
@@ -1745,8 +1745,8 @@ static void Cmd_healthbarupdate(void)
 static void Cmd_datahpupdate(void)
 {
     u32 moveType;
-    u16 targetHealth = 0;
-    u16 currentDmg = 0;
+    u32 targetHealth = 0;
+    u32 currentDmg = 0;
     u32 totaldamage = 0;
     targetHealth = (gBattleMons[gActiveBattler].hp);
 
@@ -1859,9 +1859,9 @@ static void Cmd_datahpupdate(void)
                 }
                 currentDmg = (gBattleMoveDamage - gHpDealt);
                 totaldamage = gBattleMoveDamage;
-                ConvertIntToDecimalStringN(gStringVar3, gHpDealt, STR_CONV_MODE_LEFT_ALIGN, 5);
-                ConvertIntToDecimalStringN(gStringVar2, currentDmg, STR_CONV_MODE_LEFT_ALIGN, 5);
-                ConvertIntToDecimalStringN(gStringVar1, totaldamage, STR_CONV_MODE_LEFT_ALIGN, 6);
+                ConvertIntToDecimalStringN(gStringVar3, gHpDealt, STR_CONV_MODE_LEFT_ALIGN, 8);
+                ConvertIntToDecimalStringN(gStringVar2, currentDmg, STR_CONV_MODE_LEFT_ALIGN, 8);
+                ConvertIntToDecimalStringN(gStringVar1, totaldamage, STR_CONV_MODE_LEFT_ALIGN, 8);
             }
             gHitMarker &= ~(HITMARKER_x100000);
             BtlController_EmitSetMonData(0, REQUEST_HP_BATTLE, 0, 2, &gBattleMons[gActiveBattler].hp);
