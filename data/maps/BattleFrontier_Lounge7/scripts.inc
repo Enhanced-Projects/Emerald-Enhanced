@@ -24,6 +24,7 @@ BattleFrontier_Lounge7_EventScript_ChooseLeftTutorMove:: @ 8265284
 	setvar VAR_0x8006, 0
 	special ShowScrollableMultichoice
 	waitstate
+	setvar VAR_TEMP_2, ITEM_SWEET_HEART
 	copyvar VAR_TEMP_D, VAR_RESULT
 	compare VAR_RESULT, 9
 	goto_if_le BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
@@ -39,9 +40,9 @@ BattleFrontier_Lounge7_EventScript_ChooseNewLeftTutorMove:: @ 826532F
 	setvar VAR_TEMP_E, 0
 	setvar VAR_0x8004, SCROLL_MULTI_BF_MOVE_TUTOR_1
 	setvar VAR_0x8006, 1
-	setvar VAR_TEMP_2, ITEM_SWEET_HEART
 	special ShowScrollableMultichoice
 	waitstate
+	setvar VAR_TEMP_2, ITEM_SWEET_HEART
 	copyvar VAR_TEMP_D, VAR_RESULT
 	compare VAR_RESULT, 9
 	goto_if_le BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
@@ -72,9 +73,9 @@ BattleFrontier_Lounge7_EventScript_ChooseRightTutorMove:: @ 8265474
 	setvar VAR_TEMP_E, 1
 	setvar VAR_0x8004, SCROLL_MULTI_BF_MOVE_TUTOR_2
 	setvar VAR_0x8006, 0
-	setvar VAR_TEMP_2, ITEM_OLD_GATEAU
 	special ShowScrollableMultichoice
 	waitstate
+	setvar VAR_TEMP_2, ITEM_OLD_GATEAU
 	copyvar VAR_TEMP_D, VAR_RESULT
 	compare VAR_RESULT, 9
 	goto_if_le BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
@@ -92,6 +93,7 @@ BattleFrontier_Lounge7_EventScript_ChooseNewRightTutorMove:: @ 826551F
 	setvar VAR_0x8006, 1
 	special ShowScrollableMultichoice
 	waitstate
+	setvar VAR_TEMP_2, ITEM_OLD_GATEAU
 	copyvar VAR_TEMP_D, VAR_RESULT
 	compare VAR_RESULT, 9
 	goto_if_le BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection
@@ -121,7 +123,7 @@ BattleFrontier_Lounge7_EventScript_ConfirmMoveSelection:: @ 826564F
 	copyvar VAR_0x8005, VAR_TEMP_E
 	special BufferBattleFrontierTutorMoveName
 	copyvar VAR_0x8004, VAR_TEMP_C
-	bufferitemname 1, VAR_TEMP_2
+	bufferitemname 2, VAR_TEMP_2
 	msgbox MoveTutorListWillRequireX, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq BattleFrontier_Lounge7_EventScript_ChooseNewMove
@@ -185,7 +187,7 @@ BattleFrontier_Lounge7_Text_TeachWhichMove: @ 82658EF
 
 MoveTutorListWillRequireX: @ 8265921
 	.string "The move {STR_VAR_1}, is it?\n"
-	.string "I will need a {STR_VAR_2}\l"
+	.string "I will need a {STR_VAR_3}\l"
 	.string "in exchange. Is that okay?$"
 
 BattleFrontier_Lounge7_Text_TeachMoveToWhichMon: @ 826595A
@@ -194,7 +196,7 @@ BattleFrontier_Lounge7_Text_TeachMoveToWhichMon: @ 826595A
 
 BattleFrontier_Lounge7_Text_IllTakeBattlePoints: @ 82659C7
 	.string "Do you see how skilled I am now?\n"
-	.string "I'll take the {STR_VAR_2}, now.$"
+	.string "I'll take the {STR_VAR_3}, now.$"
 
 BattleFrontier_Lounge7_Text_YouDontWantTo: @ 8265A0E
 	.string "What's that?\n"

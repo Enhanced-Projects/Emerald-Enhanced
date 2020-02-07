@@ -344,7 +344,7 @@ SootopolisCity_PokemonCenter_1F_EventScript_DoubleEdgeTutor:: @ 82C8256
 	faceplayer
 	checkitem ITEM_LIFE_ORB, 1
 	compare VAR_RESULT, 1
-	goto_if_ne SC1nolifeorb
+	goto_if_ne SC1_PC_MT_NoLifeOrb
 	setvar VAR_TEMP_5, ITEM_LIFE_ORB
 	msgbox MoveTutor_Text_DoubleEdgeTeach, MSGBOX_YESNO
 	compare VAR_RESULT, NO

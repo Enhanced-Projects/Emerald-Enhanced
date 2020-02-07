@@ -421,7 +421,7 @@ void PrintNumberToScreen(s32 num)
     struct WindowTemplate template;
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 1, 1, 14, 3, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 1, 13, 3, 15, 8);
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
@@ -771,7 +771,7 @@ static bool8 HandleStartMenuInput(void)
         sStartMenuCursorPos = Menu_MoveCursor(1);
     }
 
-        if (gMain.newKeys & (DPAD_LEFT | DPAD_RIGHT))
+    if (gMain.newKeys & (DPAD_LEFT || DPAD_RIGHT))
     {
         if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
             TryMoveEventObjectToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 1));

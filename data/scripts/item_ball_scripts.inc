@@ -523,7 +523,7 @@ MtPyre_Exterior_EventScript_ItemTM48:: @ 829134B
 
 AquaHideout_B1F_EventScript_ItemMasterBall:: @ 8291358
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, AQH_AltItemBall
-	additem ITEM_FAME_CHECKER, 1
+	giveitem ITEM_FAME_CHECKER, 1
 	setflag FLAG_RYU_DEVON_MISSION5COMPLETE
 	setflag FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL
 	playfanfare MUS_FANFA4

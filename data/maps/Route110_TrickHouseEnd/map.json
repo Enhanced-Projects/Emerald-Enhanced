@@ -61,7 +61,7 @@
       "x": 4,
       "y": 5,
       "elevation": 3,
-      "item": "ITEM_NUGGET",
+      "item": "ITEM_BIG_PEARL",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET"
     }
   ]

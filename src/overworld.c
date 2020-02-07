@@ -902,15 +902,18 @@ static void mli0_load_map(u32 a1)
     ClearTempFieldEventData();
     ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
-    TryUpdateRandomTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+    //TryUpdateRandomTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);//ryumark
     if (a1 != 1)
         DoTimeBasedEvents();
     SetSav1WeatherFromCurrMapHeader();
     ChooseAmbientCrySpecies();
+
     if (isOutdoors)
-        FlagClear(FLAG_SYS_USE_FLASH);
+        if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
+            RyuAddFollower();
+
     SetDefaultFlashLevel();
-    Overworld_ClearSavedMusic();
+    //Overworld_ClearSavedMusic();
     RunOnTransitionMapScript();
     UpdateLocationHistoryForRoamer();
     RoamerMoveToOtherLocationSet();
@@ -937,27 +940,15 @@ void RyuAddFollower(void)
     {
         CreateFollowerEventObject(graphicsId, script, DIR_NORTH);
     }
-    else if((GetPlayerFacingDirection()) == DIR_SOUTH)
+    else if ((GetPlayerFacingDirection()) == DIR_SOUTH)
     {
         CreateFollowerEventObject(graphicsId, script, DIR_SOUTH);
-        TryMoveEventObjectToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup,
-        gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 2));
+        //TryMoveEventObjectToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup,
+        //gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 2));
     }
     else
-    {
-        if (FlagGet(FLAG_RYU_TEMPTP) == 1)
-        {
-            CreateFollowerEventObject(graphicsId, script, DIR_NORTH);
-            FlagClear(FLAG_RYU_TEMPTP);
-            TryMoveEventObjectToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup,
-            gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 1));
-        }
-        else
-        {
+    { 
             CreateFollowerEventObject(graphicsId, script, DIR_SOUTH);
-            TryMoveEventObjectToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup,
-            gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 2));
-        }
     }
 
 }
@@ -1616,6 +1607,7 @@ bool8 KeepKeyItem(u16 itemId)
     case ITEM_SUPER_ROD:
     case ITEM_VS_SEEKER:
     case ITEM_UP_GRADE:
+    case ITEM_EXP_SHARE:
         return TRUE;
     default:
         return FALSE;    

@@ -341,7 +341,7 @@ static void Task_ExitDoor(u8 taskId)
             u8 eventObjId;
             SetPlayerVisibility(TRUE);
             eventObjId = GetEventObjectIdByLocalIdAndMap(EVENT_OBJ_ID_PLAYER, 0, 0);
-            EventObjectSetHeldMovement(&gEventObjects[eventObjId], MOVEMENT_ACTION_WALK_NORMAL_DOWN);
+            EventObjectSetHeldMovement(&gEventObjects[eventObjId], MOVEMENT_ACTION_WALK_IN_PLACE_NORMAL_DOWN);
             task->data[0] = 2;
         }
         break;
@@ -552,8 +552,8 @@ void DoLavaridgeGym1FWarp(void)
 void DoTeleportWarp(void)
 {
     ScriptContext2_Enable();
-    //TryFadeOutOldMapMusic();
-    //WarpFadeOutScreen();
+    TryFadeOutOldMapMusic();
+    WarpFadeOutScreen();
     PlaySE(SE_TK_WARPIN);
     CreateTask(Task_WarpAndLoadMap, 10);
     gFieldCallback = FieldCB_TeleportWarpExit;

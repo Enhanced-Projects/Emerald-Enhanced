@@ -188,7 +188,7 @@ MoveTutor_Text_DoubleEdgeTeach: @ 82C7B8E
 	.string "He's got appeal with a Double-Edge.\n"
 	.string "I couldn't even catch his eye.\p"
 	.string "Please, let me teach your Pokémon\n"
-	.string "the move Double-Eedge!$"
+	.string "the move Double-Edge!$"
 
 MoveTutor_Text_DoubleEdgeDeclined: @ 82C7C7E
 	.string "Oh…\n"

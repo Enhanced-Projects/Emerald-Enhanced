@@ -63,7 +63,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDDEN_ITEM_FALLARBOR_TOWN_NUGGET",
-            "item": "ITEM_NUGGET",
+            "item": "ITEM_BIG_PEARL",
             "type": "hidden_item",
             "x": 2,
             "y": 15

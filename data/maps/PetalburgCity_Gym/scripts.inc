@@ -58,13 +58,6 @@ PetalburgCity_Gym_EventScript_MoveNormanToEntrance:: @ 8204955
 	return
 
 PetalburgCity_Gym_EventScript_CheckNormanForRematch:: @ 820495D
-	setorcopyvar VAR_TRAINER_BATTLE_OPPONENT_A, TRAINER_NORMAN_1
-	specialvar VAR_RESULT, IsTrainerReadyForRematch
-	compare VAR_RESULT, TRUE
-	goto_if_eq PetalburgCity_Gym_EventScript_DontMoveNormanToFront
-	compare VAR_PETALBURG_GYM_STATE, 8
-	goto_if_eq PetalburgCity_Gym_EventScript_DontMoveNormanToFront
-	setobjectxyperm 1, 4, 107
 	return
 
 PetalburgCity_Gym_EventScript_DontMoveNormanToFront:: @ 8204985
@@ -835,60 +828,33 @@ PetalburgCity_Gym_EventScript_OpenOHKORoomDoors:: @ 8205645
 	return
 
 PetalburgCity_Gym_EventScript_SetEntranceRoomDoorMetatiles:: @ 8205666
-	setmetatile 6, 85, METATILE_PetalburgGym_RoomEntrance_Left, 0
-	setmetatile 7, 85, METATILE_PetalburgGym_RoomEntrance_Right, 0
-	setmetatile 1, 98, METATILE_PetalburgGym_RoomEntrance_Left, 0
-	setmetatile 2, 98, METATILE_PetalburgGym_RoomEntrance_Right, 0
 	return
 
 PetalburgCity_Gym_EventScript_SetSpeedRoomDoorMetatiles:: @ 820568B
-	setmetatile 6, 46, METATILE_PetalburgGym_RoomEntrance_Left, 0
-	setmetatile 7, 46, METATILE_PetalburgGym_RoomEntrance_Right, 0
-	setmetatile 1, 59, METATILE_PetalburgGym_RoomEntrance_Left, 0
-	setmetatile 2, 59, METATILE_PetalburgGym_RoomEntrance_Right, 0
 	return
 
 PetalburgCity_Gym_EventScript_SetAccuracyRoomDoorMetatiles:: @ 82056B0
-	setmetatile 6, 59, METATILE_PetalburgGym_RoomEntrance_Left, 0
-	setmetatile 7, 59, METATILE_PetalburgGym_RoomEntrance_Right, 0
-	setmetatile 1, 72, METATILE_PetalburgGym_RoomEntrance_Left, 0
-	setmetatile 2, 72, METATILE_PetalburgGym_RoomEntrance_Right, 0
 	return
 
 PetalburgCity_Gym_EventScript_SetConfusionRoomDoorMetatiles:: @ 82056D5
-	setmetatile 1, 20, METATILE_PetalburgGym_RoomEntrance_Left, 0
-	setmetatile 2, 20, METATILE_PetalburgGym_RoomEntrance_Right, 0
 	return
 
 PetalburgCity_Gym_EventScript_SetDefenseRoomDoorMetatiles:: @ 82056E8
-	setmetatile 6, 20, METATILE_PetalburgGym_RoomEntrance_Left, 0
-	setmetatile 7, 20, METATILE_PetalburgGym_RoomEntrance_Right, 0
-	setmetatile 1, 33, METATILE_PetalburgGym_RoomEntrance_Left, 0
-	setmetatile 2, 33, METATILE_PetalburgGym_RoomEntrance_Right, 0
 	return
 
 PetalburgCity_Gym_EventScript_SetRecoveryRoomDoorMetatiles:: @ 820570D
-	setmetatile 6, 33, METATILE_PetalburgGym_RoomEntrance_Left, 0
-	setmetatile 7, 33, METATILE_PetalburgGym_RoomEntrance_Right, 0
 	return
 
 PetalburgCity_Gym_EventScript_SetStrengthRoomDoorMetatiles:: @ 8205720
-	setmetatile 1, 7, METATILE_PetalburgGym_RoomEntrance_Left, 0
-	setmetatile 2, 7, METATILE_PetalburgGym_RoomEntrance_Right, 0
 	return
 
 PetalburgCity_Gym_EventScript_SetOHKORoomDoorMetatiles:: @ 8205733
-	setmetatile 6, 7, METATILE_PetalburgGym_RoomEntrance_Left, 0
-	setmetatile 7, 7, METATILE_PetalburgGym_RoomEntrance_Right, 0
 	return
 
 PetalburgCity_Gym_EventScript_SlideOpenRoomDoors:: @ 8205746
-	special PetalburgGymSlideOpenRoomDoors
-	waitstate
 	return
 
 PetalburgCity_Gym_EventScript_UnlockRoomDoors:: @ 820574B
-	special PetalburgGymUnlockRoomDoors
 	return
 
 PetalburgCity_Gym_EventScript_GymGuide:: @ 820574F

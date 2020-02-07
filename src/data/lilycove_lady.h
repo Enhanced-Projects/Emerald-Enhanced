@@ -368,7 +368,7 @@ static const u16 sFavorLadyAcceptedItems_Shiny[] =
     ITEM_RED_FLUTE,
     ITEM_BLACK_FLUTE,
     ITEM_WHITE_FLUTE,
-    ITEM_NUGGET,
+    ITEM_BIG_PEARL,
     ITEM_SUN_STONE,
     ITEM_STARDUST,
     ITEM_STAR_PIECE,
@@ -425,7 +425,7 @@ static const u16 *const sFavorLadyAcceptedItemLists[] =
 static const u16 sFavorLadyPrizes[] =
 {
     ITEM_LUXURY_BALL,
-    ITEM_NUGGET,
+    ITEM_BIG_PEARL,
     ITEM_PROTEIN,
     ITEM_HEART_SCALE,
     ITEM_RARE_CANDY,
