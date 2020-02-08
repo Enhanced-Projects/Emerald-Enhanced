@@ -38,6 +38,7 @@
 
 extern const u8 gText_OverlordRyuBossNameBuffer[];
 extern const u8 gText_PokemonStringBuffer[];
+EWRAM_DATA bool8 gHasAmuletEffectActive = FALSE;
 // rom const data
 
 static const u8 sAbilitiesAffectedByMoldBreaker[] =
@@ -1858,7 +1859,7 @@ u8 DoBattlerEndTurnEffects(void)
             break;
         case ENDTURN_BOSSMODEHEAL:
             {
-            if ((FlagGet(FLAG_RYU_MAX_SCALE) == 1) && !BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK) && gBattleMons[gActiveBattler].hp != 0 && ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
+            if ((FlagGet(FLAG_TEMP_3) == 1) && !BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK) && gBattleMons[gActiveBattler].hp != 0 && ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
             {
                 gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
                 if (gBattleMoveDamage == 0)
@@ -1873,13 +1874,15 @@ u8 DoBattlerEndTurnEffects(void)
             }
         case ENDTURN_BOSSMODERAISESTAT:
         {
-            if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1))
+            if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_TEMP_3) == 1))
                 {
-                    u8 stat = (Random() % 4);
                     Ryu_LoadLegendaryOpponentName();
-                    if (gBattleMons[gBattlerAttacker].statStages[stat] < 0xC)
+                    if (gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] < 0xC)
                         {
-                            gBattleMons[gBattlerAttacker].statStages[stat] + 2;
+                            gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] = 9;
+                            gBattleMons[gBattlerAttacker].statStages[STAT_ATK] = 9;
+                            gBattleMons[gBattlerAttacker].statStages[STAT_DEF] = 9;
+                            gBattleMons[gBattlerAttacker].statStages[STAT_SPDEF] = 9;
                             gBattleScripting.animArg1 = 0x11;
                             gBattleScripting.animArg2 = 0;
                             BattleScriptPushCursorAndCallback(BattleScript_BossModeStatBoostActivates);
@@ -2820,6 +2823,21 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 effect++;
             }
         PrepareStringBattle(STRINGID_BOSSWILDPRESENCE, gBattlerAttacker);
+    }
+
+    if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1))
+    {
+        Ryu_LoadLegendaryOpponentName();
+        gBattleMons[gBattlerAttacker].statStages[STAT_SPDEF] = 9;
+        gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] = 9;
+        gBattleMons[gBattlerAttacker].statStages[STAT_ATK] = 9;
+        gBattleMons[gBattlerAttacker].statStages[STAT_DEF] = 9;
+        gBattleScripting.animArg1 = 0x11;
+        gBattleScripting.animArg2 = 0;
+        BattleScriptExecute(BattleScript_WildBossStatsRaise);
+        FlagClear(FLAG_RYU_MAX_SCALE);
+        effect++;
+        PrepareStringBattle(STRINGID_BOSSRAISEDSTAT, gBattlerAttacker);
     }
 
     switch (caseID)
@@ -3983,7 +4001,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
             {
             case HOLD_EFFECT_DOUBLE_PRIZE:
                 if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
-                    gBattleStruct->moneyMultiplier *= 2;
+                    gHasAmuletEffectActive = TRUE;
                 break;
             case HOLD_EFFECT_RESTORE_STATS:
                 for (i = 0; i < NUM_BATTLE_STATS; i++)

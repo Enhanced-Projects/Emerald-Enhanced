@@ -44,6 +44,9 @@ RyuChampionThroneStart::
 	
 RCR_SoloChamp::
 	closemessage
+	specialvar VAR_RESULT, checkForOverlordRyuEncounter
+	compare VAR_RESULT, 1
+	goto_if_eq RCR_OverlordRyuBossFight
 	call RCR_ChooseOpponent
 	playse SE_DOOR
 	addobject VAR_TEMP_5
@@ -59,16 +62,40 @@ RCR_SoloChamp::
 	case 11, RCR_ChallengerGiovanniSolo
 	case 12, RCR_ChallengerSigmaSolo
 	case 13, RCR_ChallengerJuanSolo
-	case 15, RCR_BOSSMODE
+	
+RCR_OverlordRyuBossFight::
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	playbgm MUS_REKKUU_KOURIN, 1
+	special SpawnCameraObject
+	applymovement EVENT_OBJ_ID_CAMERA, Common_Movement_StepDown
+	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement EVENT_OBJ_ID_CAMERA, Common_Movement_StepDown
+	waitmovement EVENT_OBJ_ID_CAMERA
+	addobject 15
+	applymovement 15, RCR_ChallengerApproach
+	waitmovement 15
+	msgbox RCR_RYU_Intro
+	closemessage
+	setflag FLAG_TEMP_3
+	setflag FLAG_RYU_MAX_SCALE
+	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
+	trainerbattle_no_intro TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText
+	special GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
+	clearflag FLAG_RYU_MAX_SCALE
+	call_if_unset FLAG_RYU_DEFEATED_OVERLORD, MawileMegaReward
+	goto RCR_OverlordRyuEndMatch
+	
+RCR_OverlordRyuEndMatch::
+    goto AT1_Warp
+	end
+
 
 RCR_ChooseOpponent::
-	specialvar VAR_RESULT, checkForOverlordRyuEncounter
-	compare VAR_RESULT, 1
-	call_if_eq RCR_OverlordRyuBossFight
 	special SpawnCameraObject
 	applymovement EVENT_OBJ_ID_CAMERA, RCR_CameraMove
 	waitmovement EVENT_OBJ_ID_CAMERA
-	goto_if_set FLAG_TEMP_A, RCR_BOSSMODE
 	random 9
 	switch VAR_RESULT
 	case 0, RCR_Opponent1
@@ -80,13 +107,6 @@ RCR_ChooseOpponent::
 	case 6, RCR_Opponent7
 	case 7, RCR_Opponent8
 	case 8, RCR_Opponent9
-	return
-
-RCR_OverlordRyuBossFight::
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_return
-	playbgm MUS_REKKUU_KOURIN, 1
-	setflag FLAG_TEMP_A
-	setvar VAR_TEMP_5, 15
 	return
 	
 RCR_Opponent1::
@@ -234,6 +254,7 @@ RCR_ChallengerSteven::
 RCR_ChallengerStevenAggroniteReward::
 	msgbox RCR_StevenExplainAggronite
 	additem ITEM_AGGRONITE
+	setflag FLAG_CHALLENGER_STEVEN_AGGRONITE
 	closemessage
 	return
 
@@ -366,6 +387,7 @@ RCR_ChallengerStevenSolo::
 	msgbox RCR_Steven_Intro
 	closemessage
 	trainerbattle_no_intro TRAINER_STEVEN, RCR_Steven_DefeatText
+	setflag FLAG_TEMP_B
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerNormanSolo::
@@ -433,19 +455,9 @@ RCR_ChallengerJuanSolo::
 	goto RCR_FinishChallenge
 
 RCR_BOSSMODE::
-	applymovement 15, RCR_ChallengerApproach
 	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
 	waitmovement EVENT_OBJ_ID_CAMERA
-	msgbox RCR_RYU_Intro
-	closemessage
-	setflag FLAG_RYU_MAX_SCALE
-	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
-	trainerbattle_no_intro TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText
-	special GetBattleOutcome
-	compare VAR_RESULT, 2
-	goto_if_eq EGC_RYU_PLAYER_LOST
-	clearflag FLAG_RYU_MAX_SCALE
-	call_if_unset FLAG_RYU_DEFEATED_OVERLORD, MawileMegaReward
+	
 	goto RCR_FinishChallenge
 
 MawileMegaReward::
@@ -454,9 +466,13 @@ MawileMegaReward::
 	setflag FLAG_RYU_DEFEATED_OVERLORD
 	return
 	
+RCR_CheckStevenGift::
+	call_if_unset FLAG_CHALLENGER_STEVEN_AGGRONITE, RCR_ChallengerStevenAggroniteReward
+	return
+	
 RCR_FinishChallenge::
 	msgbox RCR_PlayerRecordingInfo
-	call_if_unset FLAG_CHALLENGER_STEVEN_AGGRONITE, RCR_ChallengerStevenAggroniteReward
+	goto_if_set FLAG_TEMP_B, RCR_CheckStevenGift
 	addvar VAR_RYU_TITLE_DEFENSE_WINS, 1
 	closemessage
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE

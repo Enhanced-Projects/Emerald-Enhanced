@@ -82,9 +82,9 @@ OLRS_DontHaveOldGateau:
 	release
 	end
 
-CancellingTutorNoItemOldGateau::
+CancellingTutorNoItemOldGateau:
 	.string "Dearie, I need an Old Gateau for\n"
-	.string "my services. Please go get some."
+	.string "my services. Please go get some.$"
 
 BattleFrontier_Lounge7_EventScript_AlreadyMetRightTutor:: @ 8265466
 	msgbox BattleFrontier_Lounge7_Text_RightTutorWelcomeBack, MSGBOX_DEFAULT

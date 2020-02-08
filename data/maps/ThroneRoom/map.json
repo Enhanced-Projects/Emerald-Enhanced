@@ -220,7 +220,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_CHAMPIONS_ROOM_STEVEN",
+            "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
             "graphics_id": "EVENT_OBJ_GFX_NURSE",
             "movement_range_x": 0,
             "movement_range_y": 0,

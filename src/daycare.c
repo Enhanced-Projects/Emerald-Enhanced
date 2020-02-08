@@ -805,15 +805,29 @@ static void _GiveEggFromDaycare(struct DayCare *daycare)
     u16 species;
     u8 parentSlots[DAYCARE_MON_COUNT];
     bool8 isEgg;
+    u8 ability = 0;
 
     species = DetermineEggSpeciesAndParentSlots(daycare, parentSlots);
     AlterEggSpeciesWithIncenseItem(&species, daycare);
     SetInitialEggData(&egg, species, daycare);
     InheritIVs(&egg, daycare);
     BuildEggMoveset(&egg, &daycare->mons[parentSlots[1]].mon, &daycare->mons[parentSlots[0]].mon);
+    ability = (GetBoxMonData(&daycare->mons[parentSlots[0]], MON_DATA_ABILITY_NUM));
 
     if (species == SPECIES_PICHU)
         GiveVoltTackleIfLightBall(&egg, daycare);
+
+    if (ability == 2)
+    {
+        if (Random() % 100 < 60)
+        {
+            SetMonData(&egg, MON_DATA_ABILITY_NUM, &ability);
+        }
+    }
+    else if (Random() % 100 < 80)
+    {
+        SetMonData(&egg, MON_DATA_ABILITY_NUM, &ability);
+    }
 
     isEgg = TRUE;
     SetMonData(&egg, MON_DATA_IS_EGG, &isEgg);

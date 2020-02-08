@@ -58,6 +58,8 @@
 #include "constants/party_menu.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
+extern bool8 gHasAmuletEffectActive;
+extern int CountBadges();
 
 extern const u8* const gBattleScriptsForMoveEffects[];
 
@@ -6070,31 +6072,28 @@ static void Cmd_getmoneyreward(void)
 {
     u32 moneyReward = 200;
     u32 MultMoney = VarGet(VAR_RYU_EXP_MULTIPLIER);
-    u16 badges = 0;
-    u16 randomComponent = ((Random() % 400) + 100);
-            
-    checkbadgecount();
-    badges = (gSpecialVar_Result);
+    u32 badges = (CountBadges());
+    u32 randomComponent = ((Random() % 400) + 100);
 
     if (badges == 0)
         badges = 1;
 
     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-    {
         moneyReward += 200;
-    }
 
     if (MultMoney == 1)
-        MultMoney == 1000;
-    
+        MultMoney = 1000;
+
     moneyReward = ((moneyReward * MultMoney) / 1000);
     moneyReward += randomComponent;
     moneyReward *= badges;
-    
+
+    if (gHasAmuletEffectActive == TRUE)
+        moneyReward *= 2;
 
     AddMoney(&gSaveBlock1Ptr->money, moneyReward);
-    PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, moneyReward);
 
+    PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, moneyReward);
     gBattlescriptCurrInstr++;
 }
 

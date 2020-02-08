@@ -121,13 +121,12 @@ AT1_LeafStoryEvent2::
 	msgbox AT1_BlackedOut MSGBOX_DEFAULT
 	closemessage
 	clearflag FLAG_RYU_HIDE_REL_OBJECTS
-	setvar VAR_RYU_DS_LANA_STAGE, 74
+	setvar VAR_RYU_DS_LANA_STAGE, 75
 	call AT1_Warp
 	release
 	end
 
 AT1_Warp::
-	setvar VAR_RYU_DS_LANA_STAGE, 75
 	checkplayergender
 	compare VAR_RESULT, FEMALE
 	goto_if_eq AT1_AltTeleport

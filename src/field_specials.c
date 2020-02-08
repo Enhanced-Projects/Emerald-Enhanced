@@ -4436,6 +4436,7 @@ void GivePlayerModdedMon(void)
     u16 move2 =  (VarGet(VAR_RYU_GCMS_MOVE2));
     u16 move3 =  (VarGet(VAR_RYU_GCMS_MOVE3));
     u16 move4 =  (VarGet(VAR_RYU_GCMS_MOVE4));
+    u8 ability = (VarGet(VAR_RYU_GCMS_ABILITY));
 
     if (fixedIv > 31)
         fixedIv = 31;
@@ -4448,6 +4449,7 @@ void GivePlayerModdedMon(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE2, &move2);
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE3, &move3);
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE4, &move4);
+    SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
     CalculateMonStats(&gPlayerParty[slot]);
 }
 
@@ -4743,6 +4745,7 @@ bool8 RyuSacrificeMon(void)
         u16 move2 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE2);
         u16 move3 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE3);
         u16 move4 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE4);
+        u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
 
         if (FlagGet(FLAG_TEMP_5) == 1)
         {
@@ -4754,6 +4757,7 @@ bool8 RyuSacrificeMon(void)
             VarSet(VAR_RYU_GCMS_MOVE2, move2);
             VarSet(VAR_RYU_GCMS_MOVE3, move3);
             VarSet(VAR_RYU_GCMS_MOVE4, move4);
+            VarSet(VAR_RYU_GCMS_ABILITY, ability);
             FlagClear(FLAG_TEMP_5);
             return TRUE;
         }
@@ -5085,14 +5089,14 @@ void RyuSetMonMove(void)
 
 }
 
-void RyuCalculateCurrentExpCoefficient(void)
+int RyuCalculateCurrentExpCoefficient(void)
 {
     u16 calc = 0;
     u16 badges = 0;
     checkbadgecount();
     badges = gSpecialVar_Result;
-    calc = (1000 + (badges * 125));
-    VarSet(VAR_TEMP_2, calc);
+    calc = (1000 + (badges * 250));
+    return calc;
 }
 
 void RyuOtherDataChecker(void)
@@ -5726,16 +5730,23 @@ int RyuSwapRotomForm(void)
 
 bool8 checkForOverlordRyuEncounter(void)
 {
-    if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10)
+    if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10 && (FlagGet(FLAG_RYU_DEFEATED_OVERLORD) == 1))
+    {
+        if ((Random() % 100) <= 5)
+        {
+            return TRUE;
+        }
+    }
+    else if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10)
     {
         if ((Random() % 100) <= 10)
         {
             return TRUE;
         }
-        else
-        {
-            return FALSE;
-        }
+    }
+    else
+    {
+        return FALSE;
     }
         
 }
@@ -5745,7 +5756,6 @@ void CheckSaveFileSize(void)
     u32 size = (sizeof(struct SaveBlock1));
     //mgba_printf(MGBA_LOG_INFO, "Saveblock size is: %d", size);
     ConvertIntToDecimalStringN(gStringVar1, size, STR_CONV_MODE_LEFT_ALIGN, 6);
-    ClearBag();
 }
 
 

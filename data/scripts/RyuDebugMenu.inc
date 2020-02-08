@@ -637,8 +637,9 @@ RyuSetExpMultMenu::
 RyuSetExpMultMenu2::
 	playse SE_EXPMAX
 	waitse
-	special RyuCalculateCurrentExpCoefficient
-	buffernumberstring 0, VAR_TEMP_2
+	specialvar VAR_RESULT, RyuCalculateCurrentExpCoefficient
+	buffernumberstring 0, VAR_RESULT
+	buffernumberstring 1, VAR_RYU_EXP_MULTIPLIER
 	msgbox RyuCurrentExpMult MSGBOX_DEFAULT
 	multichoicedefault 5, 0, 124, 0, 0
 	switch VAR_RESULT
@@ -651,8 +652,8 @@ RyuSetExpMultMenu2::
 	case 127, RyuExitSetLevel
 
 RyuCurrentExpMult:
-	.string "The multiplier coefficient is currently\n"
-	.string "{STR_VAR_1}.$"
+	.string "The coefficient is currently {STR_VAR_1}.\n"
+	.string "The base multiplier is {STR_VAR_2}.$"
 	
 RyuSetExpMult1::@@exp is vanilla
 	setvar VAR_RYU_EXP_MULTIPLIER, 1000

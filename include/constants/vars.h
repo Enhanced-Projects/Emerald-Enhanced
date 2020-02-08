@@ -120,7 +120,7 @@
 #define VAR_RYU_GCMS_MOVE2                   0x4065 // Unused Var
 #define VAR_RYU_GCMS_MOVE3                   0x4066 // Unused Var
 #define VAR_RYU_GCMS_MOVE4                   0x4067 // Unused Var
-#define VAR_ROUTE109_STATE                   0x4068 // Unused Var
+#define VAR_RYU_GCMS_ABILITY                 0x4068 // Unused Var
 #define VAR_ROUTE110_STATE                   0x4069
 #define VAR_ROUTE111_STATE                   0x406A // Unused Var
 #define VAR_ROUTE112_STATE                   0x406B // Unused Var

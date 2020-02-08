@@ -73,8 +73,9 @@ FT_LanetteRomanceBegin::
 	end
 
 FT_CheckOtherQuestActive::
-	goto_if_unset FLAG_RYU_SCIENTIST_DONE, FT_QuestIsActive
-	return
+	goto_if_set FLAG_RYU_DEVON_LINE_FINISHED, ryu_return
+	goto_if_set FLAG_RYU_SCIENTIST_DONE, ryu_return
+	goto FT_QuestIsActive
 	
 FT_CheckOtherQuestActive2::
 	goto_if_unset FLAG_RYU_DEVON_LINE_FINISHED, FT_QuestIsActive
@@ -83,7 +84,6 @@ FT_CheckOtherQuestActive2::
 FT_QuestIsActive:
 	msgbox FT_CurrentlyBusy
 	closemessage
-	removecutscenesprites
 	release
 	end
 	
