@@ -18,10 +18,6 @@ static const u8 sDawnCutsceneBgNewNightTiles[] = INCBIN_U8("graphics/cutscene/fs
 static const u8 sDawnCutsceneBgNewNightMap[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/new_night_map.bin");
 static const u8 sDawnCutsceneBgNewNightPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/new_night_tiles.gbapal");
 
-static const u8 sSekireiTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/sekirei-tiles.8bpp");
-static const u8 sSekireiMap[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/sekirei-map.bin");
-static const u8 sSekireiPal[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/sekirei-pal.gbapal");
-
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
     [SCENEBGDAWN] = 
@@ -57,21 +53,10 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .palette = sDawnCutsceneBgNewNightPalette,
 		.palIdxCnt = 240
     },
-	[SCENEBGSEKIREI] = 
-    {
-		.mode = 2,
-		.scrollMode = 0,
-        .tiles = sSekireiTiles,
-		.tileSize = sizeof(sSekireiTiles),
-        .map = sSekireiMap,
-		.mapSize = sizeof(sSekireiMap),
-        .palette = sSekireiPal,
-		.palIdxCnt = 240
-    }
 };
 
 static const struct BgTemplate sCutsceneBackground8bpp = {
-	.bg = 2,
+	.bg = 1,
 	.charBaseIndex = 0,
 	.mapBaseIndex = 26,
 	.screenSize = 0,
@@ -214,7 +199,7 @@ void StartBGCutscene(u8 id)
 		InitBgFromTemplate(&sCutsceneBackground4bpp);
 	ResetAllBgsCoordinates();
     ShowBg(0);
-    ShowBg(2);
+    ShowBg(1);
 	switch(gCutsceneBgTable[id].mode)
 	{
 		case 0:
@@ -234,8 +219,8 @@ void StartBGCutscene(u8 id)
 			}
 			break;
 		case 2:
-			LoadBgTilemap(2, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
-			LoadBgTiles(2, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
+			LoadBgTilemap(1, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
+			LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
 			break;
 		case 3:
 			if(gCutsceneBgTable[id].scrollMode == 0)
