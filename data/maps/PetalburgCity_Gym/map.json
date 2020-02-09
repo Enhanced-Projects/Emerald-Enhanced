@@ -106,7 +106,7 @@
             "script": "PetalburgCity_Gym_EventScript_LeftGymStatue",
             "type": "sign",
             "x": 1,
-            "y": 110
+            "y": 112
         },
         {
             "elevation": 3,
@@ -114,7 +114,7 @@
             "script": "PetalburgCity_Gym_EventScript_RightGymStatue",
             "type": "sign",
             "x": 7,
-            "y": 110
+            "y": 112
         }
     ],
     "connections": null,

@@ -2389,3 +2389,11 @@ bool8 ScrCmd_giveitem_silent(struct ScriptContext *ctx)
     AddBagItem(item, quantity);
     return FALSE;
 }
+
+bool8 ScrCmd_readgamestat(struct ScriptContext *ctx)
+{
+    u16 stat = (VarGet(ScriptReadHalfword(ctx)));
+
+    gSpecialVar_Result = (GetGameStat(stat));
+    return FALSE;
+}

@@ -1,82 +1,83 @@
 {
-  "id": "MAP_ARTISAN_CAVE_B1F",
-  "name": "ArtisanCave_B1F",
-  "layout": "LAYOUT_ARTISAN_CAVE_B1F",
-  "music": "MUS_DAN01",
-  "region_map_section": "MAPSEC_ARTISAN_CAVE",
-  "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_UNDERGROUND",
-  "allow_bike": true,
-  "allow_escape_rope": true,
-  "allow_running": true,
-  "show_map_name": true,
-  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
-  "object_events": [
-    {
-      "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
-      "x": 32,
-      "y": 38,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "ArtisanCave_B1F_EventScript_ItemHPUp",
-      "flag": "FLAG_ITEM_ARTISAN_CAVE_B1F_HP_UP"
-    }
-  ],
-  "warp_events": [
-    {
-      "x": 8,
-      "y": 48,
-      "elevation": 0,
-      "dest_map": "MAP_BATTLE_FRONTIER_OUTSIDE_WEST",
-      "dest_warp_id": 10
-    },
-    {
-      "x": 38,
-      "y": 5,
-      "elevation": 0,
-      "dest_map": "MAP_ARTISAN_CAVE_1F",
-      "dest_warp_id": 1
-    }
-  ],
-  "coord_events": [],
-  "bg_events": [
-    {
-      "type": "hidden_item",
-      "x": 32,
-      "y": 29,
-      "elevation": 0,
-      "item": "ITEM_ZINC",
-      "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_ZINC"
-    },
-    {
-      "type": "hidden_item",
-      "x": 27,
-      "y": 8,
-      "elevation": 0,
-      "item": "ITEM_CALCIUM",
-      "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_CALCIUM"
-    },
-    {
-      "type": "hidden_item",
-      "x": 7,
-      "y": 5,
-      "elevation": 0,
-      "item": "ITEM_PROTEIN",
-      "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_PROTEIN"
-    },
-    {
-      "type": "hidden_item",
-      "x": 19,
-      "y": 43,
-      "elevation": 0,
-      "item": "ITEM_IRON",
-      "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_IRON"
-    }
-  ]
+    "allow_bike": true,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 0,
+            "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_ZINC",
+            "item": "ITEM_ZINC",
+            "type": "hidden_item",
+            "x": 32,
+            "y": 29
+        },
+        {
+            "elevation": 0,
+            "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_CALCIUM",
+            "item": "ITEM_CALCIUM",
+            "type": "hidden_item",
+            "x": 27,
+            "y": 8
+        },
+        {
+            "elevation": 0,
+            "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_PROTEIN",
+            "item": "ITEM_PROTEIN",
+            "type": "hidden_item",
+            "x": 7,
+            "y": 5
+        },
+        {
+            "elevation": 0,
+            "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_IRON",
+            "item": "ITEM_IRON",
+            "type": "hidden_item",
+            "x": 19,
+            "y": 43
+        }
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_ARTISAN_CAVE_B1F",
+    "layout": "LAYOUT_ARTISAN_CAVE_B1F",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "music": "MUS_DAN01",
+    "name": "ArtisanCave_B1F",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_ITEM_ARTISAN_CAVE_B1F_HP_UP",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "ArtisanCave_B1F_EventScript_ItemHPUp",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 32,
+            "y": 38
+        }
+    ],
+    "region_map_section": "MAPSEC_ARTISAN_CAVE",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_BATTLE_FRONTIER_OUTSIDE_WEST",
+            "dest_warp_id": 10,
+            "elevation": 0,
+            "x": 8,
+            "y": 48
+        },
+        {
+            "dest_map": "MAP_ARTISAN_CAVE_1F",
+            "dest_warp_id": 1,
+            "elevation": 0,
+            "x": 38,
+            "y": 5
+        }
+    ],
+    "weather": "WEATHER_NONE"
 }

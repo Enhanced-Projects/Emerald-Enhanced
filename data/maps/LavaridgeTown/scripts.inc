@@ -409,7 +409,7 @@ LT_maleRival2Leave::
 LT_FemalRivalGiftPokeNoSpace::
 	setflag FLAG_TEMP_A
 	msgbox LT_NoSpace MSGBOX_NPC
-	removecutscenesprites
+	clearfullscreenimage
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	setflag FLAG_RYU_INTERACTED_LAVARIDGE
@@ -421,7 +421,7 @@ LT_MaleRivalGiftPokeNoSpace::
 	setflag FLAG_TEMP_A
 	msgbox LT_MaleNoSpace MSGBOX_NPC
 	savebgm MUS_DUMMY
-	removecutscenesprites
+	clearfullscreenimage
 	fadedefaultbgm
 	setflag FLAG_RYU_INTERACTED_LAVARIDGE
 	clearflag FLAG_RYU_LT_RIVAL2

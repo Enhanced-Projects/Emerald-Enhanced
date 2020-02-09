@@ -38,7 +38,6 @@ Route103_EventScript_RivalMay:: @ 81EC3DA
 	waitmovement 0
 	applymovement 2, Common_Movement_Delay48
 	waitmovement 0
-	drawheadshot HEAD_DAWN
 	msgbox r103_femaleRivalIntro, MSGBOX_DEFAULT
 	closemessage
 	goto r103_femaleRivalBattle

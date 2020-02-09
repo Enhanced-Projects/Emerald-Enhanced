@@ -180,9 +180,12 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	clearflag FLAG_CHALLENGER_STEVEN_AGGRONITE
-	goto_if_unset FLAG_RYU_RANDOMIZE_MUSIC, RDB_u1_EnableRandomize
-	clearflag FLAG_RYU_RANDOMIZE_MUSIC
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGSEKIREI
+	bufferstring 0, gText_ThisIsAPokemon
+	msgbox RDB_CTVMsg
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	release
 	end
 

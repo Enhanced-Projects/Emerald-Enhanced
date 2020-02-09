@@ -12,6 +12,9 @@ EventScript_PkmnCenterNurse_Goodbye:: @ 8271954
 EventScript_PkmnCenterNurse_HealPkmn:: @ 827195A
     call Ryu_CheckHealPermissions
     incrementgamestat GAME_STAT_USED_POKECENTER
+    readgamestat GAME_STAT_USED_POKECENTER
+    compare VAR_RESULT, 256
+    call_if_eq PkmnCenterNurse_MegaAudinite
     compare VAR_0x8004, 0
     call_if_eq EventScript_PkmnCenterNurse_IllTakeYourPkmn
     compare VAR_0x8004, 1
@@ -19,6 +22,23 @@ EventScript_PkmnCenterNurse_HealPkmn:: @ 827195A
     waitmessage
     call EventScript_PkmnCenterNurse_TakeAndHealPkmn
     end
+
+PkmnCenterNurse_MegaAudinite::
+    goto_if_set FLAG_RYU_GOT_AUDINITE, ryu_return
+    setflag FLAG_RYU_GOT_AUDINITE
+    giveitem ITEM_AUDINITE, 1
+    msgbox PCN_AudiniteExplain
+    closemessage
+    return
+
+PCN_AudiniteExplain:
+    .string "Nurse: I sure see you a lot,\n"
+    .string "{PLAYER}. If I didn't know better,\p"
+    .string "I'd say you were {COLOR LIGHT_GREY}{SHADOW DARK_GREY} trying\n"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}to come visit me.\p"
+    .string "Here! take this stone.\n"
+    .string "If you have an Audino, it can\l"
+    .string "heal you!$"
 
 Ryu_CheckHealPermissions::
     goto_if_set FLAG_RYU_HARDCORE_MODE, Ryu_NoPcUsesHardcore

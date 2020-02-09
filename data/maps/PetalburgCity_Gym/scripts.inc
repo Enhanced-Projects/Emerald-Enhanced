@@ -3,50 +3,17 @@ PetalburgCity_Gym_MapScripts:: @ 8204889
 	.byte 0
 
 PetalburgCity_Gym_OnLoad: @ 820489E
-	compare VAR_PETALBURG_GYM_STATE, 6
-	goto_if_eq PetalburgCity_Gym_EventScript_OpenUnlockedDoors
-	compare VAR_PETALBURG_GYM_STATE, 7
-	call_if_ge PetalburgCity_Gym_EventScript_UnlockAllDoors
 	end
 
 @ NOTE: Strength and OHKO rooms are misleading. Both are more accurately Critical-Hit
 PetalburgCity_Gym_EventScript_OpenUnlockedDoors:: @ 82048B5
-	setvar VAR_0x8005, 1
-	call PetalburgCity_Gym_EventScript_OpenGymEntranceDoors
-	checktrainerflag TRAINER_RANDALL
-	call_if_eq PetalburgCity_Gym_EventScript_OpenSpeedRoomDoors
-	checktrainerflag TRAINER_MARY
-	call_if_eq PetalburgCity_Gym_EventScript_OpenAccuracyRoomDoors
-	checktrainerflag TRAINER_PARKER
-	call_if_eq PetalburgCity_Gym_EventScript_OpenConfusionRoomDoors
-	checktrainerflag TRAINER_ALEXIA
-	call_if_eq PetalburgCity_Gym_EventScript_OpenDefenseRoomDoors
-	checktrainerflag TRAINER_GEORGE
-	call_if_eq PetalburgCity_Gym_EventScript_OpenRecoveryRoomDoors
-	checktrainerflag TRAINER_JODY
-	call_if_eq PetalburgCity_Gym_EventScript_OpenStrengthRoomDoors
-	checktrainerflag TRAINER_BERKE
-	call_if_eq PetalburgCity_Gym_EventScript_OpenOHKORoomDoors
 	end
 
 PetalburgCity_Gym_EventScript_UnlockAllDoors:: @ 82048FF
 	setvar VAR_0x8005, 1
-	call PetalburgCity_Gym_EventScript_OpenGymEntranceDoors
-	call PetalburgCity_Gym_EventScript_OpenSpeedRoomDoors
-	call PetalburgCity_Gym_EventScript_OpenAccuracyRoomDoors
-	call PetalburgCity_Gym_EventScript_OpenConfusionRoomDoors
-	call PetalburgCity_Gym_EventScript_OpenDefenseRoomDoors
-	call PetalburgCity_Gym_EventScript_OpenRecoveryRoomDoors
-	call PetalburgCity_Gym_EventScript_OpenStrengthRoomDoors
-	call PetalburgCity_Gym_EventScript_OpenOHKORoomDoors
 	return
 
 PetalburgCity_Gym_OnTransition: @ 820492D
-	compare VAR_PETALBURG_GYM_STATE, 1
-	call_if_eq PetalburgCity_Gym_EventScript_MoveWallyToEntrance
-	compare VAR_PETALBURG_GYM_STATE, 6
-	call_if_lt PetalburgCity_Gym_EventScript_MoveNormanToEntrance
-	call_if_set FLAG_SYS_GAME_CLEAR, PetalburgCity_Gym_EventScript_CheckNormanForRematch
 	end
 
 PetalburgCity_Gym_EventScript_MoveWallyToEntrance:: @ 820494D

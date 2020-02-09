@@ -238,9 +238,9 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntMuseum2[] = {
 
 static const struct TrainerMonNoItemDefaultMoves sParty_GruntSpaceCenter1[] = {
     {
-    .iv = 0,
+    .iv = 255,
     .lvl = 32,
-    .species = SPECIES_NUMEL,
+    .species = SPECIES_CHARIZARD,
     }
 };
 

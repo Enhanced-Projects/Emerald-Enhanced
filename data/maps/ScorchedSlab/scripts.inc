@@ -5,4 +5,12 @@ ScorchedSlab_MapScripts:: @ 8239291
 ScorchedSlab_OnTransition: @ 8239297
 	setflag FLAG_LANDMARK_SCORCHED_SLAB
 	end
+	
+SS_CHY::
+	lock
+	finditem ITEM_CHARIZARDITE_Y, 1
+	setflag FLAG_RYU_CHAR_Y_MEGA
+	removeobject 2
+	release
+	end
 

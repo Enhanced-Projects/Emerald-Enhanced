@@ -1261,8 +1261,8 @@
 #define FLAG_CHALLENGER_STEVEN_AGGRONITE                            0x4B2 // Unused Flag
 #define FLAG_RYU_HAS_EXPSHARE                                       0x4B3 // Unused Flag
 #define FLAG_RYU_DEVON_HIDE_MATT_SUB                                0x4B4 // Unused Flag
-#define FLAG_UNUSED_0x4B5                                           0x4B5 // Unused Flag
-#define FLAG_UNUSED_0x4B6                                           0x4B6 // Unused Flag
+#define FLAG_RYU_CHAR_Y_MEGA                                        0x4B5 // Unused Flag
+#define FLAG_RYU_GOT_AUDINITE                                       0x4B6 // Unused Flag
 #define FLAG_UNUSED_0x4B7                                           0x4B7 // Unused Flag
 #define FLAG_UNUSED_0x4B8                                           0x4B8 // Unused Flag
 #define FLAG_UNUSED_0x4B9                                           0x4B9 // Unused Flag

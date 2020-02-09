@@ -91,20 +91,22 @@ LRT_WONT_HAPPEN::
 
 LRT_NIGHT::
 	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGNIGHTDAWN
+	drawfullscreenimage SCENEBGNEWNIGHTDAWN
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
     msgbox LRT_STAY, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne LRT_CANCEL
 	msgbox LRT_ROMPre MSGBOX_DEFAULT
  	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	applymovement 4, Common_Movement_HeartEmote
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
 	applymovement 4 LRT_HEART2
 	applymovement EVENT_OBJ_ID_PLAYER LRT_HEART
+	fadescreen FADE_TO_BLACK
 	delay 20
-	fadescreen 1
 	fadeoutbgm 1
 	special HealPlayerParty
 	delay 20
@@ -122,30 +124,36 @@ LRT_NIGHT::
 LRT_NIGHT2::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
 	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGNIGHTDAWN
+	drawfullscreenimage SCENEBGNEWNIGHTDAWN
     msgbox LRT_STAY2, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne LRT_CANCEL
 	msgbox LRT_ROM2Pre MSGBOX_DEFAULT
 	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	delay 10
 	applymovement 4, Common_Movement_HeartEmote
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
 	applymovement 4, LRT_HEART2
 	applymovement EVENT_OBJ_ID_PLAYER, LRT_HEART
 	delay 20
-	fadescreen 1
+	fadescreen FADE_TO_BLACK
 	fadeoutbgm 1
 	special HealPlayerParty
 	delay 20
 	msgbox LRT_ROM2, MSGBOX_DEFAULT
-	fadescreen 0
 	closemessage
 	setflag FLAG_RYU_DS_DAWN_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGNEWNIGHTDAWN
 	fadeinbgm 1
 	msgbox LRT_DAWN_THANKS2 MSGBOX_DEFAULT
 	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	applymovement EVENT_OBJ_ID_PLAYER LRT_HEART3
 	waitmovement 0
 	release

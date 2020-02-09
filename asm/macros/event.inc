@@ -1656,6 +1656,11 @@
 	.2byte \quantity
 	.endm
 
+	@gets gamestat and puts it in VAR_RESULT
+	.macro readgamestat stat:req
+	.byte 0xf2
+	.2byte \stat
+	.endm
 
 @ Supplementary
 
