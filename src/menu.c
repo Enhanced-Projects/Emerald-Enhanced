@@ -898,7 +898,7 @@ void sub_8198314(void)
     }
 }
 
-u8 sub_8198348(u8 windowId, u8 fontId, u8 left, u8 top, u8 cursorHeight, u8 numChoices, u8 initialCursorPos, u8 a7)
+u8 Menu_InitCursorInternal(u8 windowId, u8 fontId, u8 left, u8 top, u8 cursorHeight, u8 numChoices, u8 initialCursorPos, u8 a7)
 {
     s32 pos;
 
@@ -922,15 +922,15 @@ u8 sub_8198348(u8 windowId, u8 fontId, u8 left, u8 top, u8 cursorHeight, u8 numC
     return sMenu.cursorPos;
 }
 
-u8 sub_81983AC(u8 windowId, u8 fontId, u8 left, u8 top, u8 cursorHeight, u8 numChoices, u8 initialCursorPos)
+u8 Menu_InitCursor(u8 windowId, u8 fontId, u8 left, u8 top, u8 cursorHeight, u8 numChoices, u8 initialCursorPos)
 {
-    return sub_8198348(windowId, fontId, left, top, cursorHeight, numChoices, initialCursorPos, 0);
+    return Menu_InitCursorInternal(windowId, fontId, left, top, cursorHeight, numChoices, initialCursorPos, 0);
 }
 
 u8 sub_81983EC(u8 windowId, u8 fontId, u8 left, u8 top, u8 numChoices, u8 initialCursorPos)
 {
     u8 cursorHeight = GetMenuCursorDimensionByFont(fontId, 1);
-    return sub_81983AC(windowId, fontId, left, top, cursorHeight, numChoices, initialCursorPos);
+    return Menu_InitCursor(windowId, fontId, left, top, cursorHeight, numChoices, initialCursorPos);
 }
 
 void RedrawMenuCursor(u8 oldPos, u8 newPos)
@@ -1201,7 +1201,7 @@ void sub_8198AF8(const struct WindowTemplate *window, u8 fontId, u8 left, u8 top
 
     AddTextPrinter(&printer, 0xFF, NULL);
 
-    sub_81983AC(sYesNoWindowId, fontId, left, top, GetFontAttribute(fontId, FONTATTR_MAX_LETTER_HEIGHT), 2, initialCursorPos);
+    Menu_InitCursor(sYesNoWindowId, fontId, left, top, GetFontAttribute(fontId, FONTATTR_MAX_LETTER_HEIGHT), 2, initialCursorPos);
 }
 
 void sub_8198C34(const struct WindowTemplate *window, u8 fontId, u16 baseTileNum, u8 paletteNum)

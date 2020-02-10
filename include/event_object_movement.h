@@ -84,7 +84,7 @@ void sub_808E16C(s16, s16);
 void OverrideSecretBaseDecorationSpriteScript(u8 localId, u8 mapNum, u8 mapGroup, u8 decorCat);
 void sub_8092FF0(s16, s16, s16 *, s16 *);
 u8 GetFaceDirectionAnimNum(u8);
-void sub_80930E0(s16 *, s16 *, s16, s16);
+void LogCoordsCameraRelative(s16 *, s16 *, s16, s16);
 void EventObjectClearHeldMovement(struct EventObject *);
 void EventObjectClearHeldMovementIfActive(struct EventObject *);
 void TrySpawnEventObjects(s16, s16);
@@ -422,5 +422,6 @@ bool32 sub_8097C8C(u8 var);
 void sub_8097BB4(u8 var1, u8 graphicsId);
 void sub_8097CC4(u8 var1, u8 var2);
 bool32 sub_8097D9C(u8 var);
+bool8 MovementAction_EmoteExclamationMark_Step0(struct EventObject *eventObject, struct Sprite *sprite);
 
 #endif //GUARD_FIELD_EVENT_OBJ_H

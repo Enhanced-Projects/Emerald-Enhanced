@@ -1534,7 +1534,7 @@ u8 sprite_new(u8 graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction)
     *(u16 *)&spriteTemplate.paletteTag = 0xFFFF;
     x += 7;
     y += 7;
-    sub_80930E0(&x, &y, 8, 16);
+    LogCoordsCameraRelative(&x, &y, 8, 16);
     spriteId = CreateSpriteAtEnd(&spriteTemplate, x, y, 0);
     if (spriteId != MAX_SPRITES)
     {
@@ -4874,7 +4874,7 @@ void SetSpritePosToMapCoords(s16 mapX, s16 mapY, s16 *destX, s16 *destY)
     *destY = ((mapY - gSaveBlock1Ptr->pos.y) << 4) + dy;
 }
 
-void sub_80930E0(s16 *x, s16 *y, s16 dx, s16 dy)
+void LogCoordsCameraRelative(s16 *x, s16 *y, s16 dx, s16 dy)
 {
     SetSpritePosToMapCoords(*x, *y, x, y);
     *x += dx;

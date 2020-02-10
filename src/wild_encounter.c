@@ -270,7 +270,7 @@ static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon)
     return min + rand;
 }
 
-static u16 GetCurrentMapWildMonHeaderId(void)
+u16 GetCurrentMapWildMonHeaderId(void)
 {
     u16 i;
 
@@ -346,7 +346,7 @@ static u8 PickWildMonNature(void)
     return Random() % 25;
 }
 
-static void CreateWildMon(u16 species, u8 level)
+void CreateWildMon(u16 species, u8 level)
 {
     bool32 checkCuteCharm;
 

@@ -2675,7 +2675,7 @@ static void sub_80203B0(void)
     FillWindowPixelBuffer(3, PIXEL_FILL(1));
     DrawTextBorderOuter(3, 1, 13);
     PrintTextArray(3, 2, 8, 1, 14, 5, gUnknown_082F2DC8);
-    sub_81983AC(3, 2, 0, 1, 14, 5, GetCurrentKeyboardPage());
+    Menu_InitCursor(3, 2, 0, 1, 14, 5, GetCurrentKeyboardPage());
     PutWindowTilemap(3);
 }
 

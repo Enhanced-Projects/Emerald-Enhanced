@@ -1165,7 +1165,6 @@ void FreeMonIconPalettes(void)
         FreeSpritePaletteByTag(gMonIconPaletteTable[i].tag);
 }
 
-// unused
 void SafeFreeMonIconPalette(u16 species)
 {
     u8 palIndex;

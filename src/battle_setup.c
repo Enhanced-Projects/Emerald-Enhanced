@@ -68,7 +68,7 @@ struct TrainerBattleParameter
 // this file's functions
 static void DoBattlePikeWildBattle(void);
 static void DoSafariBattle(void);
-static void DoStandardWildBattle(void);
+//static void DoStandardWildBattle(void);
 static void CB2_EndWildBattle(void);
 static void CB2_EndScriptedWildBattle(void);
 static u8 GetWildBattleTransition(void);
@@ -381,7 +381,7 @@ void BattleSetup_StartBattlePikeWildBattle(void)
     DoBattlePikeWildBattle();
 }
 
-static void DoStandardWildBattle(void)
+void DoStandardWildBattle(void)
 {
     ScriptContext2_Enable();
     FreezeEventObjects();

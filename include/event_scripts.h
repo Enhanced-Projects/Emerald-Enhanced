@@ -587,4 +587,7 @@ extern u8 BerryTree_EventScript_ItemUsePlantBerry[];
 extern u8 BerryTree_EventScript_ItemUseWailmerPail[];
 extern u8 BattleFrontier_OutsideEast_EventScript_WaterSudowoodo[];
 
+// Dexnav
+extern const u8 EventScript_StartDexNavBattle[];
+
 #endif // GUARD_EVENT_SCRIPTS_H
