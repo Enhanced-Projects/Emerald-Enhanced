@@ -336,5 +336,6 @@ extern const u8 BattleScript_BossModeHeal[];
 extern const u8 BattleScript_BossModeStatBoostActivates[];
 extern const u8 BattleScript_StanceChangeActivates[];
 extern const u8 BattleScript_WildBossStatsRaise[];
+extern const u8 BattleScript_DisguiseBustedActivates[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H
