@@ -556,6 +556,14 @@ static bool32 InitStartMenuStep(void)
     case 5:
         sStartMenuCursorPos = sub_81983AC(GetStartMenuWindowId(), 1, 0, 9, 16, sNumStartMenuActions, sStartMenuCursorPos);
         CopyWindowToVram(GetStartMenuWindowId(), TRUE);
+		if (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1)
+		{
+			PrintSongNumber(VarGet(VAR_RYU_JUKEBOX));
+		}
+		else
+		{
+			PrintSongNumber(GetCurrentMapMusic());
+		}
         return TRUE;
     }
 
@@ -631,15 +639,6 @@ void ShowStartMenu(void)
         FreezeEventObjects();
         sub_808B864();
         sub_808BCF4();
-    }
-
-    if (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1)
-    {
-        PrintSongNumber(VarGet(VAR_RYU_JUKEBOX));
-    }
-    else
-    {
-        PrintSongNumber(GetCurrentMapMusic());
     }
 
     CreateStartMenuTask(Task_ShowStartMenu);
