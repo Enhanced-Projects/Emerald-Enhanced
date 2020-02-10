@@ -15,24 +15,6 @@
     ],
     "connections": null,
     "coord_events": [
-        {
-            "elevation": 4,
-            "script": "VictoryRoad_1F_EventScript_WallyBattleTrigger1",
-            "type": "trigger",
-            "var": "VAR_VICTORY_ROAD_1F_STATE",
-            "var_value": "0",
-            "x": 2,
-            "y": 23
-        },
-        {
-            "elevation": 4,
-            "script": "VictoryRoad_1F_EventScript_WallyBattleTrigger2",
-            "type": "trigger",
-            "var": "VAR_VICTORY_ROAD_1F_STATE",
-            "var_value": "0",
-            "x": 3,
-            "y": 23
-        }
     ],
     "id": "MAP_VICTORY_ROAD_1F",
     "layout": "LAYOUT_VICTORY_ROAD_1F",
@@ -80,19 +62,6 @@
             "y": 34
         },
         {
-            "elevation": 4,
-            "flag": "FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY",
-            "graphics_id": "EVENT_OBJ_GFX_WALLY",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "VictoryRoad_1F_EventScript_EntranceWally",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 12,
-            "y": 25
-        },
-        {
             "elevation": 3,
             "flag": "FLAG_ITEM_VICTORY_ROAD_1F_MAX_ELIXIR",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
@@ -117,19 +86,6 @@
             "trainer_type": "0",
             "x": 37,
             "y": 39
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY",
-            "graphics_id": "EVENT_OBJ_GFX_WALLY",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "VictoryRoad_1F_EventScript_ExitWally",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 31,
-            "y": 9
         },
         {
             "elevation": 3,

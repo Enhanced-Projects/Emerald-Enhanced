@@ -14,10 +14,6 @@ static const u8 sDawnCutsceneBgNightTiles[] = INCBIN_U8("graphics/cutscene/fscut
 static const u8 sDawnCutsceneBgNightMap[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/night_map.bin");
 static const u8 sDawnCutsceneBgNightPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/night_tiles.gbapal");
 
-static const u8 sDawnCutsceneBgNewNightTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/new_night_tiles.8bpp");
-static const u8 sDawnCutsceneBgNewNightMap[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/new_night_map.bin");
-static const u8 sDawnCutsceneBgNewNightPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/new_night_tiles.gbapal");
-
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
     [SCENEBGDAWN] = 
@@ -41,18 +37,7 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sDawnCutsceneBgNightMap),
         .palette = sDawnCutsceneBgNightPalette,
 		.palIdxCnt = 240
-    },
-	[SCENEBGNEWNIGHTDAWN] = 
-    {
-		.mode = 2,
-		.scrollMode = 0,
-        .tiles = sDawnCutsceneBgNewNightTiles,
-		.tileSize = sizeof(sDawnCutsceneBgNewNightTiles),
-        .map = sDawnCutsceneBgNewNightMap,
-		.mapSize = sizeof(sDawnCutsceneBgNewNightMap),
-        .palette = sDawnCutsceneBgNewNightPalette,
-		.palIdxCnt = 240
-    },
+    }
 };
 
 static const struct BgTemplate sCutsceneBackground8bpp = {

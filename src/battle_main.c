@@ -1996,22 +1996,13 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
                 }
                 break;
-                }
+            }
             }
         }
-        if (FlagGet(FLAG_RYU_BATTLE_SIMULATION) == 1)
-            {
-                gEnemyParty[0] = gPlayerParty[3];
-                gEnemyParty[1] = gPlayerParty[4];
-                gEnemyParty[2] = gPlayerParty[5];
-                ZeroMonData(&gPlayerParty[3]);
-                ZeroMonData(&gPlayerParty[4]);
-                ZeroMonData(&gPlayerParty[5]);
-                FlagClear(FLAG_RYU_BATTLE_SIMULATION);
-                return 3;
-            }
+
+        gBattleTypeFlags |= gTrainers[trainerNum].doubleBattle;
     }
-    gBattleTypeFlags |= gTrainers[trainerNum].doubleBattle;
+
     return gTrainers[trainerNum].partySize;
 }
 

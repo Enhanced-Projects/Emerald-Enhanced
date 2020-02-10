@@ -323,7 +323,6 @@
 //drawFullscreenImage defines
 #define SCENEBGDAWN 0
 #define SCENEBGNIGHTDAWN 1
-#define SCENEBGNEWNIGHTDAWN 2
 
 #define SPECIAL_VARS_END              0x8015
 

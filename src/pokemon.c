@@ -2908,6 +2908,7 @@ void CalculateMonStats(struct Pokemon *mon)
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     s32 level = GetLevelFromMonExp(mon);
     s32 newMaxHP;
+    u8 newAbility = (Random() %2);
 
     SetMonData(mon, MON_DATA_LEVEL, &level);
 
@@ -2949,6 +2950,8 @@ void CalculateMonStats(struct Pokemon *mon)
         else
             return;
     }
+    if (GetMonAbility(mon) == ABILITY_NONE)
+        SetMonData(mon, MON_DATA_ABILITY_NUM, &newAbility);
 
     SetMonData(mon, MON_DATA_HP, &currentHP);
 }

@@ -461,6 +461,7 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
     if (((Random() % 128) == 69) || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {
         u8 val[1] = {TRUE};
+        u8 newAbility = (Random() %2);
         newLevel = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
         newLevel += 5;
         ShowFieldMessage(gText_PowerfulWildAppears);
@@ -470,9 +471,19 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
         SetMonData(&gEnemyParty[0], MON_DATA_SPATK_IV, &iv);
         SetMonData(&gEnemyParty[0], MON_DATA_SPDEF_IV, &iv);
         SetMonData(&gEnemyParty[0], MON_DATA_SPEED_IV, &iv);
-        SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &ability);
         SetMonData(&gEnemyParty[0], MON_DATA_LEVEL, &newLevel);
         SetMonData(&gEnemyParty[0], MON_DATA_GIFT_RIBBON_7, val);
+        SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &ability);
+        if (GetMonAbility(&gEnemyParty[0]) == ABILITY_NONE)
+            {
+                SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &newAbility);
+            }
+
+        if (GetMonAbility(&gEnemyParty[0]) == ABILITY_NONE)
+            {
+                SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &newAbility);
+            }
+        
         FlagSet(FLAG_RYU_BOSS_WILD);
         CalculateMonStats(&gEnemyParty[0]);
     }
