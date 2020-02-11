@@ -2,7 +2,7 @@
     "allow_bike": false,
     "allow_escape_rope": false,
     "allow_running": false,
-    "battle_scene": "MAP_BATTLE_SCENE_DRAKE",
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
     ],
     "connections": null,

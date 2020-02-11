@@ -10,7 +10,7 @@
     ],
     "id": "MAP_EVER_GRANDE_CITY_CHAMPIONS_ROOM",
     "layout": "LAYOUT_EVER_GRANDE_CITY_CHAMPIONS_ROOM",
-    "map_type": "MAP_TYPE_INDOOR",
+    "map_type": "MAP_TYPE_TOWN",
     "music": "MUS_C_ROAD",
     "name": "EverGrandeCity_ChampionsRoom",
     "object_events": [
@@ -86,5 +86,5 @@
             "y": 2
         }
     ],
-    "weather": "WEATHER_NONE"
+    "weather": "WEATHER_RAIN"
 }

@@ -4,7 +4,7 @@ AncientTomb1F_MapScripts::
 	
 AT1_LeafEventRop::
 	map_script_2 VAR_RYU_DS_LANA_STAGE, 68, AT1_LeafStoryEvent
-	map_script_2 VAR_RYU_DS_LANA_STAGE, 72, AT1_LeafStoryEvent2
+	@map_script_2 VAR_RYU_DS_LANA_STAGE, 72, AT1_LeafStoryEvent2
 	.2byte 0
 	
 AT1_LeafStoryEvent::
@@ -65,11 +65,29 @@ AT1_LeafStoryEvent15::
 	waitmovement EVENT_OBJ_ID_PLAYER
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	setvar VAR_RYU_DS_LANA_STAGE, 72
-	warp MAP_ANCIENT_TOMB1F, 255, 8, 11
-	release
+	fadescreen FADE_TO_BLACK
+	applymovement EVENT_OBJ_ID_PLAYER, AT1_FakeWarp
+	waitmovement EVENT_OBJ_ID_PLAYER
+	clearflag FLAG_HIDE_AT1_LEAF
+	addobject 3
+	fadescreen FADE_FROM_BLACK
+	goto AT1_LeafStoryEvent2
 	end
 	
+AT1_FakeWarp:
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	step_end
+	
 AT1_LeafStoryEvent2::
+	fadescreen FADE_FROM_BLACK
 	setvar VAR_RYU_DS_LANA_STAGE, 73
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	special DrawWholeMapView
@@ -77,6 +95,8 @@ AT1_LeafStoryEvent2::
 	lock
 	msgbox AT1_Story5 MSGBOX_DEFAULT
 	closemessage
+	applymovement 3, Common_Movement_FaceUp
+	waitmovement 3
 	msgbox AT1_Story6 MSGBOX_DEFAULT
 	playse SE_NAGERU
 	waitse
@@ -85,7 +105,9 @@ AT1_LeafStoryEvent2::
 	waitmoncry
 	msgbox AT1_Story7 MSGBOX_DEFAULT
 	playmoncry SPECIES_REGISTEEL, 2
-	delay 20
+	applymovement 3, Common_Movement_FaceUp
+	waitmovement 3
+	delay 10
 	waitmoncry
 	applymovement 3, Common_Movement_ExclamationMark
 	playse SE_PIN
@@ -95,7 +117,7 @@ AT1_LeafStoryEvent2::
 	applymovement EVENT_OBJ_ID_PLAYER, AT1_SaveLana
 	waitmovement EVENT_OBJ_ID_PLAYER
 	playse SE_W120
-	fadescreen 1
+	fadescreen FADE_TO_WHITE
 	msgbox AT1_BlackedOut MSGBOX_DEFAULT
 	closemessage
 	clearflag FLAG_RYU_HIDE_REL_OBJECTS

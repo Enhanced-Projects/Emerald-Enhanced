@@ -6068,24 +6068,28 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
 
 static void Cmd_getmoneyreward(void)
 {
-    u32 moneyReward = GetTrainerMoneyToGive(gTrainerBattleOpponent_A);
+    u32 moneyReward = 200;
     u32 MultMoney = VarGet(VAR_RYU_EXP_MULTIPLIER);
     u16 badges = 0;
+    u16 randomComponent = ((Random() % 400) + 100);
             
     checkbadgecount();
     badges = (gSpecialVar_Result);
 
+    if (badges == 0)
+        badges = 1;
+
     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
-        moneyReward += GetTrainerMoneyToGive(gTrainerBattleOpponent_B);
+        moneyReward += 200;
     }
 
     if (MultMoney == 1)
-    {
-        MultMoney = (1000+(badges*175));
-    }
+        MultMoney == 1000;
     
     moneyReward = ((moneyReward * MultMoney) / 1000);
+    moneyReward += randomComponent;
+    moneyReward *= badges;
     
 
     AddMoney(&gSaveBlock1Ptr->money, moneyReward);

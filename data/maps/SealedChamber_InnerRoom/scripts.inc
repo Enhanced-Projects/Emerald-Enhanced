@@ -114,7 +114,8 @@ SCH_LanaEvent::
 	setflag FLAG_RYU_DO_NOT_AUTOSCALE
 	setvar VAR_RYU_DS_LANA_STAGE, 40
 	cleartrainerflag TRAINER_STORY_LEAF
-	trainerbattle_single TRAINER_STORY_LEAF, SCH_Ellipsis, SCH_Victory, SCH_AfterBattle
+	trainerbattle_no_intro TRAINER_STORY_LEAF, SCH_Victory
+	goto SCH_AfterBattle
 	release
 	end
 	

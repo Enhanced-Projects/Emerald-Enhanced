@@ -10,6 +10,21 @@ SSTidalLowerDeck_EventScript_Leonard:: @ 823C830
 	trainerbattle_single TRAINER_LEONARD, SSTidalLowerDeck_Text_LeonardIntro, SSTidalLowerDeck_Text_LeonardDefeat
 	msgbox SSTidalLowerDeck_Text_LeonardPostBattle, MSGBOX_AUTOCLOSE
 	end
+	
+SST_Basement_CharizarditeX::
+	goto_if_set FLAG_RYU_SST_CHDX, SST_CHDX_Found
+	finditem ITEM_CHARIZARDITE_X
+	setflag FLAG_RYU_SST_CHDX
+	release
+	end
+	
+SST_CHDX_Found::
+	msgbox SST_ItsEmpty
+	release
+	end
+	
+SST_ItsEmpty:
+	.string "It's empty."
 
 SSTidalLowerDeck_Text_PhillipIntro: @ 823C847
 	.string "Arrrgh! I'm fed up and dog-tired of\n"

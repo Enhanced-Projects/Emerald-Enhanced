@@ -4,12 +4,24 @@ BattleFrontier_Lounge7_MapScripts:: @ 8265254
 BattleFrontier_Lounge7_EventScript_LeftMoveTutor:: @ 8265255
 	lock
 	faceplayer
+	checkitem ITEM_SWEET_HEART, 1
+	compare VAR_RESULT, 1
+	goto_if_ne OLRS_DontHaveSweetHeart
 	setvar VAR_TEMP_C, SCROLL_MULTI_BF_MOVE_TUTOR_1
 	goto_if_set FLAG_MET_FRONTIER_BEAUTY_MOVE_TUTOR, BattleFrontier_Lounge7_EventScript_AlreadyMetLeftTutor
 	msgbox BattleFrontier_Lounge7_Text_LeftTutorIntro, MSGBOX_DEFAULT
 	setflag FLAG_MET_FRONTIER_BEAUTY_MOVE_TUTOR
 	goto BattleFrontier_Lounge7_EventScript_ChooseLeftTutorMove
 	end
+
+OLRS_DontHaveSweetHeart::
+	msgbox CancellingTutorNoItemSweetHeart
+	release
+	end
+
+CancellingTutorNoItemSweetHeart:
+	.string "Darling, I need a Sweet Heart for\n"
+	.string "my services. Please go get some.$"
 
 BattleFrontier_Lounge7_EventScript_AlreadyMetLeftTutor:: @ 8265276
 	msgbox BattleFrontier_Lounge7_Text_LeftTutorWelcomeBack, MSGBOX_DEFAULT
@@ -55,12 +67,24 @@ BattleFrontier_Lounge7_EventScript_ChooseNewLeftTutorMove:: @ 826532F
 BattleFrontier_Lounge7_EventScript_RightMoveTutor:: @ 8265445
 	lock
 	faceplayer
+	checkitem ITEM_OLD_GATEAU, 1
+	compare VAR_RESULT, 1
+	goto_if_ne OLRS_DontHaveOldGateau 
 	setvar VAR_TEMP_C, SCROLL_MULTI_BF_MOVE_TUTOR_2
 	goto_if_set FLAG_MET_FRONTIER_SWIMMER_MOVE_TUTOR, BattleFrontier_Lounge7_EventScript_AlreadyMetRightTutor
 	msgbox BattleFrontier_Lounge7_Text_RightTutorIntro, MSGBOX_DEFAULT
 	setflag FLAG_MET_FRONTIER_SWIMMER_MOVE_TUTOR
 	goto BattleFrontier_Lounge7_EventScript_ChooseRightTutorMove
 	end
+
+OLRS_DontHaveOldGateau:
+	msgbox CancellingTutorNoItemOldGateau
+	release
+	end
+
+CancellingTutorNoItemOldGateau::
+	.string "Dearie, I need an Old Gateau for\n"
+	.string "my services. Please go get some."
 
 BattleFrontier_Lounge7_EventScript_AlreadyMetRightTutor:: @ 8265466
 	msgbox BattleFrontier_Lounge7_Text_RightTutorWelcomeBack, MSGBOX_DEFAULT

@@ -26,7 +26,7 @@
     ],
     "id": "MAP_SOOTOPOLIS_CITY_GYM_1F",
     "layout": "LAYOUT_SOOTOPOLIS_CITY_GYM_1F",
-    "map_type": "MAP_TYPE_INDOOR",
+    "map_type": "MAP_TYPE_TOWN",
     "music": "MUS_GIM",
     "name": "SootopolisCity_Gym_1F",
     "object_events": [
@@ -148,5 +148,5 @@
             "y": 22
         }
     ],
-    "weather": "WEATHER_NONE"
+    "weather": "WEATHER_RAIN"
 }

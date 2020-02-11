@@ -1,5 +1,15 @@
 LilycoveCity_DepartmentStore_1F_MapScripts:: @ 821F692
+	map_script ON_FRAME, LCCDS_SetWaypoint
 	.byte 0
+	
+LCCDS_SetWaypoint::
+	map_script_2 VAR_TEMP_0, 0, LCC_SET_VISITED
+	.2byte 0
+	
+LCC_SET_VISITED::
+	setvar VAR_TEMP_0, 4
+	setflag FLAG_RYU_LANDMARK_LCCDEPTSTORE
+	end
 
 LilycoveCity_DepartmentStore_1F_EventScript_Greeter:: @ 821F693
 	msgbox LilycoveCity_DepartmentStore_1F_Text_WelcomeToDeptStore, MSGBOX_NPC

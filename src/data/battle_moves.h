@@ -1936,7 +1936,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     {
         .effect = EFFECT_DREAM_EATER,
         .power = 100,
-        .type = TYPE_PSYCHIC,
+        .type = TYPE_GHOST,
         .accuracy = 100,
         .pp = 15,
         .secondaryEffectChance = 0,

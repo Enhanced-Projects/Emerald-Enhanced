@@ -98,7 +98,7 @@ NorewardNotDevmode::
 	end
 
 MC_GC_DevModeItemGive::
-	giveitem VAR_RESULT, 100
+	additem VAR_RESULT, 100
 	msgbox MC_GC_RyuGiveItemDevMode
 	clearflag FLAG_RYU_DEVELOPER_ITEM_MENU
 	release
@@ -129,7 +129,7 @@ MC_GC_GivePokeMsg:
 	.string "You've been given a tamed\n{STR_VAR_1}.$"
 
 MC_GC_RyuGiveItemDevMode:
-	.string "You've been given 99 of item ID {STR_VAR_1}.$"
+	.string "You've been given 100 of item ID {STR_VAR_1}.$"
 	
 MasterBallReward::
 	goto_if_set FLAG_RYU_PASSCODE_MASTERBALL, MC_GC_Received
