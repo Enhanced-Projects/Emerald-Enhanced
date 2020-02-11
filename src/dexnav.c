@@ -100,6 +100,7 @@ static void ExecDexNavHUD(void);
 static void PrintDexNavError(u8 caseId);
 static void DexNavGuiExitNoSearch(void);
 static void DexNavDrawIcons(void);
+static void DexNavLoadAreaNames(void);
 // HUD funcs
 static void InitDexNavHUD(u16 species, u8 environment);
 static void DexNavHudDrawSpeciesIcon(u16 species, u8* objIdAddr);
@@ -110,7 +111,7 @@ static void DexNavDrawMove(u16 move, u8 searchLevel, u8* objidAddr);
 static void DexNavDrawPotential(u8 potential, u8* objidAddr);
 static void DexNavIconsVisionUpdate(u8 proximity, u8 searchLevel);
 static bool8 ShakingGrass(u8 environment, u8 xSize, u8 ySize, bool8 smallScan);
-
+static void DexNavFreeHUD(void);
 
 // Mon Generation Functions
 static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel, u16* moveLoc);
@@ -138,9 +139,9 @@ static u8 DexNavPickTile(u8 environment, u8 xSize, u8 ySize, bool8 smallScan);
 
 static void DexNavProximityUpdate(void);
 static void NullSubHBlank(void);
-static void DexNavFreeHUD(void);
+
 static void DexNavShowMessage(u8 id);
-//static void OutlinedFontDraw(u8 objId, u8 tileNum, u16 size);
+static void OutlinedFontDraw(u8 objId, u8 tileNum, u16 size);
 static void DexNavSightUpdate(u8 sight);
 
 static void DexNavManageHUD(u8 taskId);
@@ -148,14 +149,6 @@ static void DexNavManageHUD(u8 taskId);
 
 
 
-
-
-
-
-
-
-
-static void DexNavLoadAreaNames(void);
 
 
 
@@ -191,7 +184,7 @@ static const u32 sDexNavGuiCavePal[] = INCBIN_U32("graphics/dexnav/gui_palettes/
 static const u32 sDexNavGuiDarkerCavePal[] = INCBIN_U32("graphics/dexnav/gui_palettes/dark_cave.gbapal.lz");
 static const u32 sDexNavGuiIndoorPal[] = INCBIN_U32("graphics/dexnav/gui_palettes/indoor.gbapal.lz");
 
-static const u16 sDexnavStarsTiles[] = INCBIN_U16("graphics/dexnav/stars.4bpp");
+static const u8 sDexnavStarsTiles[] = INCBIN_U8("graphics/dexnav/stars.4bpp");
 static const u16 sDexnavStarsPal[] = INCBIN_U16("graphics/dexnav/stars.gbapal");
 
 static const u32 gInterfaceGfx_selectionCursorTiles[] = INCBIN_U32("graphics/dexnav/cursor.4bpp");
@@ -621,37 +614,13 @@ static const struct CompressedSpriteSheet sIconTiles =
     .tag = ICON_GFX_TAG
 };
 
-/*
-static const struct SpriteSheet sCaveGfx[4] =
-{
-    {
-        .data = (const u8*)gInterfaceGfx_caveSmokeTiles[128 * 0],
-        .size = 0x80,
-        .tag = 0xFFFF,
-    },
-    {
-        .data = (const u8*)gInterfaceGfx_caveSmokeTiles[128 * 1],
-        .size = 0x80,
-        .tag = 0xFFFF,
-    },
-    {
-        .data = (const u8*)gInterfaceGfx_caveSmokeTiles[128 * 2],
-        .size = 0x80,
-        .tag = 0xFFFF,
-    },
-    {
-        .data = (const u8*)gInterfaceGfx_caveSmokeTiles[128 * 3],
-        .size = 0x80,
-        .tag = 0xFFFF,
-    },
-};
-*/
+
 static const struct SpriteFrameImage sCaveGfx[] =
 {
-    {
-        .data = gInterfaceGfx_caveSmokeTiles,
-        .size = 0x80 * 4,
-    },
+    overworld_frame(gInterfaceGfx_caveSmokeTiles, 2, 2, 0),
+    overworld_frame(gInterfaceGfx_caveSmokeTiles, 2, 2, 1),
+    overworld_frame(gInterfaceGfx_caveSmokeTiles, 2, 2, 2),
+    overworld_frame(gInterfaceGfx_caveSmokeTiles, 2, 2, 3),
 };
 
 static const struct SpriteTemplate ObjtCave =
@@ -774,14 +743,14 @@ static const struct SpriteTemplate FontTempMove =
 //19 tiles per row, stars are on the 4th row. 1 tile is 32 bytes. Hence 19 * 4 *32
 static const struct SpriteSheet StarIconLit = 
 {
-    .data = &sDexnavStarsTiles[19 * 4 * 32],
+    .data = (const u16*)&sDexnavStarsTiles[19 * 4 * 32],
     .size = 64,
     .tag = 0x61
 };
 
 static const struct SpriteSheet StarIconOff = 
 {
-    .data = &sDexnavStarsTiles[((19 * 4) + 1) * 32],
+    .data = (const u16*)&sDexnavStarsTiles[((19 * 4) + 1) * 32],
     .size = 32 * 2 * (19 * 4),
     .tag = 0x2613
 };
@@ -1074,279 +1043,168 @@ static void DexHUDHBlank(void)
 }
 */
 
-#define sSpriteTileAllocBitmap ((u8*) 0x2021B48)
-#define FREE_SPRITE_TILE(n) (sSpriteTileAllocBitmap[(n) / 8] &= ~(1 << ((n) % 8)))
-static void DexNavFreeHUD(void)
-{
-    u16 i, tile;
-    u8 *tiles;
-    
-    switch (sDNavState->environment)
-    {
-        case 0:
-            if (!IsMapTypeOutdoors(GetCurrentMapType()))
-                FieldEffectStop(&gSprites[sDNavState->objIdShakingGrass], 0x1A); //cave
-            else
-                FieldEffectStop(&gSprites[sDNavState->objIdShakingGrass], 0x13);
-            break;
-        case 1:
-            FieldEffectStop(&gSprites[sDNavState->objIdShakingGrass], 0x13);
-            break;
-    }
 
-    //Clear mon icon sprite
-    SafeFreeMonIconPalette(sDNavState->species);
-    tile = gSprites[sDNavState->objIdSpecies].oam.tileNum;
-    tiles = (u8*)((tile * TILE_SIZE_4BPP) + OBJ_VRAM0);
-    memset(tiles, 0, 0x200);
-
-    for (i = tile; i < tile + 16; i++)
-        FREE_SPRITE_TILE(i);
-
-    ResetSprite(&gSprites[sDNavState->objIdSpecies]);
-
-    //Clear black bars
-    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdBlackBar[0]]);
-    ResetSprite(&gSprites[sDNavState->objIdBlackBar[0]]);
-    ResetSprite(&gSprites[sDNavState->objIdBlackBar[1]]);
-    ResetSprite(&gSprites[sDNavState->objIdBlackBar[2]]);
-    ResetSprite(&gSprites[sDNavState->objIdBlackBar[3]]);
-
-    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdSight]);
-    ResetSprite(&gSprites[sDNavState->objIdSight]);
-
-    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdAbility]);
-    ResetSprite(&gSprites[sDNavState->objIdAbility]);
-
-    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdMove]);
-    ResetSprite(&gSprites[sDNavState->objIdMove]);
-
-    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdItem]);
-    ResetSprite(&gSprites[sDNavState->objIdItem]);
-
-    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdPotential[0]]);
-    ResetSprite(&gSprites[sDNavState->objIdPotential[0]]);
-
-    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdPotential[1]]);
-    ResetSprite(&gSprites[sDNavState->objIdPotential[1]]);
-
-    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdPotential[2]]);
-    ResetSprite(&gSprites[sDNavState->objIdPotential[2]]);
-
-    //FreeSpriteTilesByTag(0x4736);
-    FreeSpriteTilesByTag(0x61);
-    FreeSpriteTilesByTag(0x2613);
-    FreeSpriteTilesByTag(0x5424);
-    FreeSpriteTilesByTag(0x8472);
-    FreeSpriteTilesByTag(0x1EE7); //Font Sprite
-    FreeSpriteTilesByTag(0xFDF1); //Black Bars
-    FreeSpriteTilesByTag(0x3039);
-    FreeSpritePaletteByTag(0x8472);
-    FreeSpritePaletteByTag(0x3039);
-
-    ResetSprite(&gSprites[sDNavState->objIdMove]);
-
-    Free(sDNavState);
-    DisableInterrupts(2);
-    SetHBlankCallback(NullSubHBlank);
-
-/*
-    // WRITE_REG_WININ(0x1F1F);
-    REG_WININ = WININ_BUILD(WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ, WIN_BG0 |
-                            WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ);
-    //WRITE_REG_BLDCNT(0x401E);
-    REG_BLDCNT = BLDALPHA_BLEND(BLDCNT_TGT1_BG1 | BLDCNT_TGT1_BG2 | BLDCNT_TGT1_BG3 | BLDCNT_TGT1_OBJ, 0);
-
-
-    // WRITE_REG_WININ(0x1F1F);
-    REG_WININ = WININ_BUILD(WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ, WIN_BG0 |
-        WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ);
-    //WRITE_REG_BLDCNT(0x401E);
-    REG_BLDCNT = BLDALPHA_BLEND(BLDCNT_TGT1_BG1 | BLDCNT_TGT1_BG2 | BLDCNT_TGT1_BG3 | BLDCNT_TGT1_OBJ, 0);*/
-}
-
-/*
 static void OutlinedFontDraw(u8 objId, u8 tileNum, u16 size)
 {
-    //return;
+	u8 tile = gSprites[objId].oam.tileNum + tileNum;
+	u8* toWrite = (u8*)((tile * TILE_SIZE_4BPP) + OBJ_VRAM0);
+	u8* originalDst;
+    u8* dst;
+    u8* prevLetter;
+	u8* strPtr = gStringVar4;
+	u8 counter = 1;
+	u16 index = 320;
+	u16 prevIndex;
+	u8 element = *strPtr;
     
-    //
-    //CopyGlyphToWindow
-    //DecompressGlyphFont9
-    //RenderTextFont9 **
-        //gMonSpritesGfxPtr->barFontGfx
-    
-
-    u8 *prevLetter;
-    u8 tile = gSprites[objId].oam.tileNum + tileNum;
-    u8* toWrite = (u8*)((tile * TILE_SIZE_4BPP) + OBJ_VRAM0);
-    //u8* dst = (u8*)Malloc(size + TILE_SIZE_4BPP);
-    //u8* dst = &gEnemyParty[0];
-
-    u8* originalDst, *dst;
-    //originalDst = dst = calloc(size + TILE_SIZE_4BPP);
-    u8* strPtr = gStringVar4;
-
-    u8 counter = 1;
-    u16 index = 320;
-    u16 prevIndex;
-
-    //u8 element = *gStringVar4;
-
-    u8 element = *strPtr;
-    //u8 i = 0;
-
     originalDst = dst = AllocZeroed(size + TILE_SIZE_4BPP);
 
-    while (element != 0xFF)
-    {
-        prevIndex = index;
-        if ((element <= 0xEE) && (element >= 0xD5))
-        {
-            // lower case letters
-            index = (((element - 0xD5) * TILE_SIZE_4BPP) + 1600);
-        }
-        else if ((element <= 0xD4) && (element >= 0xBB))
-        {
-            // upper case letters
-            index = (((element - 0xBB) * TILE_SIZE_4BPP) + 768);
-        }
-        else if ((element <= 0xAA) && (element >= 0xA1))
-        {
-            // numbers
-            index = (element - 0xA1) * TILE_SIZE_4BPP;
-        }
-        else
-        {
-            // misc pchars
-            u8 symbolId = 0;
-            switch (element)
-            {
-                case 0xF0: // colon
-                case 0x0: // space bar
-                    symbolId = 1;
-                    break;
-                case 0x36: // semi colon used indication of str end
-                    symbolId = 2;
-                    break;
-                case 0xAC: // question mark
-                    symbolId = 3;
-                    break;
-                case 0xAE: // dash
-                    symbolId = 4;
-                    break;
-                case 0xAD: // period
-                    symbolId = 5;
-                    break;
-                case 0xBA: // slash
-                    symbolId = 6;
-                    break;
-                case 0xB1: // open double quote
-                    symbolId = 7;
-                    break;
-                case 0xB2: // close double quote
-                    symbolId = 8;
-                    break;
-                case 0xB3: // open single quote
-                    symbolId = 9;
-                    break;
-                case 0xB4: // close single quote
-                    symbolId = 10;
-                    break;
-                case 0xB0: // elipsis ...
-                    symbolId = 11;
-                    break;
-                case 0xB8: // comma
-                    symbolId = 12;
-                    break;
-                case 0xB5: // male
-                    symbolId = 13;
-                    //dst =
-                    break;
-                case 0xB6: // f
-                    symbolId = 14;
-                    break;
-                case 0xFF: // empty
-                    symbolId = 1;
-                    break;
-            }
-            index = (symbolId + 9) * TILE_SIZE_4BPP;
-        }
+	while (element != 0xFF)
+	{
+		prevIndex = index;
+		if ((element <= 0xEE) && (element >= 0xD5))
+		{
+			// lower case letters
+			index = (((element - 0xD5) * TILE_SIZE_4BPP) + 1600);
+		}
+		else if ((element <= 0xD4) && (element >= 0xBB))
+		{
+			// upper case letters
+			index = (((element - 0xBB) * TILE_SIZE_4BPP) + 768);
+		}
+		else if ((element <= 0xAA) && (element >= 0xA1))
+		{
+			// numbers
+			index = (element - 0xA1) * TILE_SIZE_4BPP;
+		}
+		else
+		{
+			// misc pchars
+			u8 symbolId = 0;
+			switch (element)
+			{
+				case 0xF0: // colon
+				case 0x0: // space bar
+					symbolId = 1;
+					break;
+				case 0x36: // semi colon used indication of str end
+					symbolId = 2;
+					break;
+				case 0xAC: // question mark
+					symbolId = 3;
+					break;
+				case 0xAE: // dash
+					symbolId = 4;
+					break;
+				case 0xAD: // period
+					symbolId = 5;
+					break;
+				case 0xBA: // slash
+					symbolId = 6;
+					break;
+				case 0xB1: // open double quote
+					symbolId = 7;
+					break;
+				case 0xB2: // close double quote
+					symbolId = 8;
+					break;
+				case 0xB3: // open single quote
+					symbolId = 9;
+					break;
+				case 0xB4: // close single quote
+					symbolId = 10;
+					break;
+				case 0xB0: // elipsis ...
+					symbolId = 11;
+					break;
+				case 0xB8: // comma
+					symbolId = 12;
+					break;
+				case 0xB5: // male
+					symbolId = 13;
+					//dst =
+					break;
+				case 0xB6: // f
+					symbolId = 14;
+					break;
+				case 0xFF: // empty
+					symbolId = 1;
+					break;
+			};
+			index = (symbolId + 9) * TILE_SIZE_4BPP;
+		}
 
-        // TODO: Use macros here //
+		// TODO: Use macros here //
 
-        if ((counter == 0) || (*(strPtr + 1) == 0xFF))
-        {
-            // first or last pcharacters don't need pixel merging
-            memcpy(dst, &sDexnavStarsTiles + index, TILE_SIZE_4BPP);
-        }
-        else if ((element == 0x0))
-        {
-            memcpy(dst, &sDexnavStarsTiles + index, TILE_SIZE_4BPP);
-            *prevLetter = &sDexnavStarsTiles + prevIndex;
-            *(dst + 0) = *(prevLetter + 2);
-            *(dst + 4) = *(prevLetter + 6);
-            *(dst + 8) = *(prevLetter + 10);
-            *(dst + 12) = *(prevLetter + 14);
-            *(dst + 16) = *(prevLetter + 18);
-            *(dst + 20) = *(prevLetter + 22);
-            *(dst + 24) = *(prevLetter + 26);
-            *(dst + 28) = *(prevLetter + 30);
-        }
-        else if ((*(strPtr + 1) != 0xFF))
-        {
-            // pcharacter in middle, if blank space fill blank with previous pcharacter's last pixel row IFF previous pchar's last pixel row non-empty
-            memcpy(dst, &sDexnavStarsTiles + index, TILE_SIZE_4BPP);
-            *prevLetter = &sDexnavStarsTiles + prevIndex;
-            *(dst) |= (((*(prevLetter + 0) & 0xF) == 0) ? (*(dst + 0) & 0xF) : (*(prevLetter + 0) & 0xF));
-            *(dst + 4) |= (((*(prevLetter + 4) & 0xF) == 0) ? (*(dst + 4) & 0xF) : (*(prevLetter + 4) & 0xF));
-            *(dst + 8) |= (((*(prevLetter + 8) & 0xF) == 0) ? (*(dst + 8) & 0xF) : (*(prevLetter + 8) & 0xF));
-            *(dst + 12) |= (((*(prevLetter + 12) & 0xF) == 0) ? (*(dst + 12) & 0xF) : (*(prevLetter + 12) & 0xF));
-            *(dst + 16) |= (((*(prevLetter + 16) & 0xF) == 0) ? (*(dst + 16) & 0xF) : (*(prevLetter + 16) & 0xF));
-            *(dst + 20) |= (((*(prevLetter + 20) & 0xF) == 0) ? (*(dst + 20) & 0xF) : (*(prevLetter + 20) & 0xF));
-            *(dst + 24) |= (((*(prevLetter + 24) & 0xF) == 0) ? (*(dst + 24) & 0xF) : (*(prevLetter + 24) & 0xF));
-            *(dst + 28) |= (((*(prevLetter + 28) & 0xF) == 0) ? (*(dst + 28) & 0xF) : (*(prevLetter + 28) & 0xF));
-        }
+		if ((counter == 0) || (*(strPtr + 1) == 0xFF))
+		{
+			// first or last pcharacters don't need pixel merging
+			memcpy(dst, &sDexnavStarsTiles[index], TILE_SIZE_4BPP);
+		}
+		else if ((element == 0x0))
+		{
+			memcpy(dst, &sDexnavStarsTiles[index], TILE_SIZE_4BPP);
+			prevLetter = (u8*)(&sDexnavStarsTiles[prevIndex]);
+			*(dst + 0) = *(prevLetter + 2);
+			*(dst + 4) = *(prevLetter + 6);
+			*(dst + 8) = *(prevLetter + 10);
+			*(dst + 12) = *(prevLetter + 14);
+			*(dst + 16) = *(prevLetter + 18);
+			*(dst + 20) = *(prevLetter + 22);
+			*(dst + 24) = *(prevLetter + 26);
+			*(dst + 28) = *(prevLetter + 30);
+		}
+		else if ((*(strPtr + 1) != 0xFF))
+		{
+			// pcharacter in middle, if blank space fill blank with previous pcharacter's last pixel row IFF previous pchar's last pixel row non-empty
+			memcpy((void*)dst, &sDexnavStarsTiles[index], TILE_SIZE_4BPP);
+			prevLetter = (u8*)(&sDexnavStarsTiles[prevIndex]);
+			*(dst) |= (((*(prevLetter + 0) & 0xF) == 0) ? (*(dst + 0) & 0xF) : (*(prevLetter + 0) & 0xF));
+			*(dst + 4) |= (((*(prevLetter + 4) & 0xF) == 0) ? (*(dst + 4) & 0xF) : (*(prevLetter + 4) & 0xF));
+			*(dst + 8) |= (((*(prevLetter + 8) & 0xF) == 0) ? (*(dst + 8) & 0xF) : (*(prevLetter + 8) & 0xF));
+			*(dst + 12) |= (((*(prevLetter + 12) & 0xF) == 0) ? (*(dst + 12) & 0xF) : (*(prevLetter + 12) & 0xF));
+			*(dst + 16) |= (((*(prevLetter + 16) & 0xF) == 0) ? (*(dst + 16) & 0xF) : (*(prevLetter + 16) & 0xF));
+			*(dst + 20) |= (((*(prevLetter + 20) & 0xF) == 0) ? (*(dst + 20) & 0xF) : (*(prevLetter + 20) & 0xF));
+			*(dst + 24) |= (((*(prevLetter + 24) & 0xF) == 0) ? (*(dst + 24) & 0xF) : (*(prevLetter + 24) & 0xF));
+			*(dst + 28) |= (((*(prevLetter + 28) & 0xF) == 0) ? (*(dst + 28) & 0xF) : (*(prevLetter + 28) & 0xF));
+		}
 
-        if ((counter == 2) && (*(strPtr + 1) != 0xFF))
-        {
-            // every two pchars, we need to merge
-            // 8x8px made of 4x8px from previous pchar and 4x8px of this pchar
-            *(dst - 30) = (((*(dst - 30) & 0x0F) == 0) ? (*(dst) & 0xF) :(*(dst - 30) & 0x0F)) | (*(dst) & 0xF0);
-            *(dst - 26) = (((*(dst - 26) & 0x0F) == 0) ? (*(dst + 4) & 0xF): (*(dst - 26) & 0x0F))  | (*(dst + 4) & 0xF0);
-            *(dst - 22) = (((*(dst - 22) & 0x0F) == 0) ? (*(dst + 8) & 0xF): (*(dst - 22) & 0x0F)) | (*(dst + 8) & 0xF0);
-            *(dst - 18) = (((*(dst - 18) & 0x0F) == 0) ? (*(dst + 12) & 0xF): (*(dst - 18) & 0x0F)) | (*(dst + 12) & 0xF0);
-            *(dst - 14) = (((*(dst - 14) & 0x0F) == 0) ? (*(dst + 16) & 0xF): (*(dst - 14) & 0x0F)) | (*(dst + 16) & 0xF0);
-            *(dst - 10) = (((*(dst - 10) & 0x0F) == 0) ? (*(dst + 20) & 0xF): (*(dst - 10) & 0x0F)) | (*(dst + 20) & 0xF0);
-            *(dst - 6) = (((*(dst - 6) & 0x0F) == 0) ? (*(dst + 24) & 0xF): (*(dst - 6) & 0x0F)) | (*(dst + 24) & 0xF0);
-            *(dst - 2) = (((*(dst - 2) & 0x0F) == 0) ? (*(dst + 28) & 0xF): (*(dst - 2) & 0x0F)) | (*(dst + 28) & 0xF0);
+		if ((counter == 2) && (*(strPtr + 1) != 0xFF))
+		{
+			// every two pchars, we need to merge
+			// 8x8px made of 4x8px from previous pchar and 4x8px of this pchar
+			*(dst - 30) = (((*(dst - 30) & 0x0F) == 0) ? (*(dst) & 0xF) :(*(dst - 30) & 0x0F)) | (*(dst) & 0xF0);
+			*(dst - 26) = (((*(dst - 26) & 0x0F) == 0) ? (*(dst + 4) & 0xF): (*(dst - 26) & 0x0F))  | (*(dst + 4) & 0xF0);
+			*(dst - 22) = (((*(dst - 22) & 0x0F) == 0) ? (*(dst + 8) & 0xF): (*(dst - 22) & 0x0F)) | (*(dst + 8) & 0xF0);
+			*(dst - 18) = (((*(dst - 18) & 0x0F) == 0) ? (*(dst + 12) & 0xF): (*(dst - 18) & 0x0F)) | (*(dst + 12) & 0xF0);
+			*(dst - 14) = (((*(dst - 14) & 0x0F) == 0) ? (*(dst + 16) & 0xF): (*(dst - 14) & 0x0F)) | (*(dst + 16) & 0xF0);
+			*(dst - 10) = (((*(dst - 10) & 0x0F) == 0) ? (*(dst + 20) & 0xF): (*(dst - 10) & 0x0F)) | (*(dst + 20) & 0xF0);
+			*(dst - 6) = (((*(dst - 6) & 0x0F) == 0) ? (*(dst + 24) & 0xF): (*(dst - 6) & 0x0F)) | (*(dst + 24) & 0xF0);
+			*(dst - 2) = (((*(dst - 2) & 0x0F) == 0) ? (*(dst + 28) & 0xF): (*(dst - 2) & 0x0F)) | (*(dst + 28) & 0xF0);
 
-            // last two pixels unconditional
-            *(dst - 29) |= *(dst + 1);
-            *(dst - 25) |= *(dst + 5);
-            *(dst - 21) |= *(dst + 9);
-            *(dst - 17) |= *(dst + 13);
-            *(dst - 13) |= *(dst + 17);
-            *(dst - 9) |= *(dst + 21);
-            *(dst - 5) |= *(dst + 25);
-            *(dst - 1) |= *(dst + 29);
+			// last two pixels unconditional
+			*(dst - 29) |= *(dst + 1);
+			*(dst - 25) |= *(dst + 5);
+			*(dst - 21) |= *(dst + 9);
+			*(dst - 17) |= *(dst + 13);
+			*(dst - 13) |= *(dst + 17);
+			*(dst - 9) |= *(dst + 21);
+			*(dst - 5) |= *(dst + 25);
+			*(dst - 1) |= *(dst + 29);
 
-            dst -= TILE_SIZE_4BPP;
-            counter = 0;
-        }
-        counter++;
-        dst += TILE_SIZE_4BPP; // next tile
-        //gStringVar4++;
-        //element = *gStringVar4;
-        //i++;
-        strPtr++;
-        element = *strPtr;
-    }
+			dst -= TILE_SIZE_4BPP;
+			counter = 0;
+		}
+        
+		counter++;
+		dst += TILE_SIZE_4BPP; // next tile
+		strPtr++;
+		element = *strPtr;
+	}
 
-    memcpy((void*) toWrite, originalDst, size);
-    Free(originalDst);
+	memcpy((void*) toWrite, originalDst, size);
+	Free(originalDst);
 }
-*/
 
 
 
@@ -1651,6 +1509,7 @@ static void DexNavGuiHandler(void)
                             }
                             */
                             
+                            /*
                             // check error cases
                             s16 x = gEventObjects[gPlayerAvatar.eventObjectId].currentCoords.x;
                             s16 y = gEventObjects[gPlayerAvatar.eventObjectId].currentCoords.y;
@@ -1677,6 +1536,7 @@ static void DexNavGuiHandler(void)
                                 }
                                 break;
                             }
+                            */
                             
                             
                             //Species was valid, save and enter OW HUD mode
@@ -2563,7 +2423,7 @@ static void InitDexNavHUD(u16 species, u8 environment)
     //SetHBlankCallback(DexHUDHBlank);
 
     // task update HUD
-    taskId = CreateTask(DexNavManageHUD, 0x1);
+    //to do: taskId = CreateTask(DexNavManageHUD, 0x1);
     gTasks[taskId].data[0] = gSprites[gPlayerAvatar.spriteId].pos1.x;
 }
 
@@ -2630,7 +2490,7 @@ static void DexNavDrawAbility(u8 ability, u8* objidAddr)
     }
 
     // write name to object
-    // to do: OutlinedFontDraw(objId, 0, 32 * 8);
+    OutlinedFontDraw(objId, 0, 32 * 8);
     gSprites[objId].oam.objMode = 1;
     return;
 }
@@ -2653,7 +2513,7 @@ static void DexNavDrawMove(u16 move, u8 searchLevel, u8* objidAddr)
 
     if (searchLevel > 2)
     {
-        *ptr = 0xBA;
+        *ptr = 0xBA;    // '/'
         len++;
     }
 
@@ -2673,7 +2533,7 @@ static void DexNavDrawMove(u16 move, u8 searchLevel, u8* objidAddr)
     }
 
     // write name to object
-    // to do: OutlinedFontDraw(objId, 0, 32 * 8);
+    OutlinedFontDraw(objId, 0, 32 * 8);
     gSprites[objId].oam.objMode = 1;
 }
 
@@ -2747,7 +2607,7 @@ static void DexNavSightUpdate(u8 sight)
     // draw info text on the 5th tile
     //pchar back[] = _(" Back  ");
     StringCopy(gStringVar4, sText_DexNavBack);
-    //to do: OutlinedFontDraw(objId, 5, 32 * 8);
+    OutlinedFontDraw(objId, 5, 32 * 8);
 }
 
 
@@ -2857,7 +2717,7 @@ static void DexNavManageHUD(u8 taskId)
         switch(sDNavState->environment)
         {
             case ENCOUNTER_TYPE_LAND:
-                FieldEffectStop(&gSprites[sDNavState->objIdShakingGrass], FLDEFF_CAVE_DUST); // 1a
+                FieldEffectStop(&gSprites[sDNavState->objIdShakingGrass], FLDEFF_CAVE_DUST);
                 break;
             case ENCOUNTER_TYPE_WATER:
                 FieldEffectStop(&gSprites[sDNavState->objIdShakingGrass], FLDEFF_SPLASHING_WATER);
@@ -3167,4 +3027,95 @@ static void DexNavProximityUpdate(void)
 
 static void NullSubHBlank(void)
 {
+}
+
+#define sSpriteTileAllocBitmap ((u8*) 0x2021B48)
+#define FREE_SPRITE_TILE(n) (sSpriteTileAllocBitmap[(n) / 8] &= ~(1 << ((n) % 8)))
+static void DexNavFreeHUD(void)
+{
+    u16 i, tile;
+    u8 *tiles;
+    
+    switch (sDNavState->environment)
+    {
+        case ENCOUNTER_TYPE_LAND:
+            if (!IsMapTypeOutdoors(GetCurrentMapType()))
+                FieldEffectStop(&gSprites[sDNavState->objIdShakingGrass], FLDEFF_CAVE_DUST); //cave
+            else
+                FieldEffectStop(&gSprites[sDNavState->objIdShakingGrass], FLDEFF_SHAKING_GRASS);
+            break;
+        case ENCOUNTER_TYPE_WATER:
+            FieldEffectStop(&gSprites[sDNavState->objIdShakingGrass], FLDEFF_SPLASHING_WATER);
+            break;
+    }
+
+    //Clear mon icon sprite
+    SafeFreeMonIconPalette(sDNavState->species);
+    tile = gSprites[sDNavState->objIdSpecies].oam.tileNum;
+    tiles = (u8*)((tile * TILE_SIZE_4BPP) + OBJ_VRAM0);
+    memset(tiles, 0, 0x200);
+
+    for (i = tile; i < tile + 16; i++)
+        FREE_SPRITE_TILE(i);
+
+    ResetSprite(&gSprites[sDNavState->objIdSpecies]);
+
+    //Clear black bars
+    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdBlackBar[0]]);
+    ResetSprite(&gSprites[sDNavState->objIdBlackBar[0]]);
+    ResetSprite(&gSprites[sDNavState->objIdBlackBar[1]]);
+    ResetSprite(&gSprites[sDNavState->objIdBlackBar[2]]);
+    ResetSprite(&gSprites[sDNavState->objIdBlackBar[3]]);
+
+    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdSight]);
+    ResetSprite(&gSprites[sDNavState->objIdSight]);
+
+    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdAbility]);
+    ResetSprite(&gSprites[sDNavState->objIdAbility]);
+
+    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdMove]);
+    ResetSprite(&gSprites[sDNavState->objIdMove]);
+
+    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdItem]);
+    ResetSprite(&gSprites[sDNavState->objIdItem]);
+
+    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdPotential[0]]);
+    ResetSprite(&gSprites[sDNavState->objIdPotential[0]]);
+
+    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdPotential[1]]);
+    ResetSprite(&gSprites[sDNavState->objIdPotential[1]]);
+
+    FieldEffectFreeGraphicsResources(&gSprites[sDNavState->objIdPotential[2]]);
+    ResetSprite(&gSprites[sDNavState->objIdPotential[2]]);
+
+    //FreeSpriteTilesByTag(0x4736);
+    FreeSpriteTilesByTag(0x61);
+    FreeSpriteTilesByTag(0x2613);
+    FreeSpriteTilesByTag(0x5424);
+    FreeSpriteTilesByTag(0x8472);
+    FreeSpriteTilesByTag(0x1EE7); //Font Sprite
+    FreeSpriteTilesByTag(0xFDF1); //Black Bars
+    FreeSpriteTilesByTag(0x3039);
+    FreeSpritePaletteByTag(0x8472);
+    FreeSpritePaletteByTag(0x3039);
+
+    ResetSprite(&gSprites[sDNavState->objIdMove]);
+
+    Free(sDNavState);
+    DisableInterrupts(2);
+    SetHBlankCallback(NullSubHBlank);
+
+/*
+    // WRITE_REG_WININ(0x1F1F);
+    REG_WININ = WININ_BUILD(WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ, WIN_BG0 |
+                            WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ);
+    //WRITE_REG_BLDCNT(0x401E);
+    REG_BLDCNT = BLDALPHA_BLEND(BLDCNT_TGT1_BG1 | BLDCNT_TGT1_BG2 | BLDCNT_TGT1_BG3 | BLDCNT_TGT1_OBJ, 0);
+
+
+    // WRITE_REG_WININ(0x1F1F);
+    REG_WININ = WININ_BUILD(WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ, WIN_BG0 |
+        WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ);
+    //WRITE_REG_BLDCNT(0x401E);
+    REG_BLDCNT = BLDALPHA_BLEND(BLDCNT_TGT1_BG1 | BLDCNT_TGT1_BG2 | BLDCNT_TGT1_BG3 | BLDCNT_TGT1_OBJ, 0);*/
 }
