@@ -181,9 +181,8 @@ RDB_CTVMsg:
 
 RyuDebug_Utility1::
 	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGNIGHTDAWN
-	bufferstring 0, gText_ThisIsAPokemon
-	msgbox RDB_CTVMsg
+	drawfullscreenimage SCENEBGSUNSET
+	waitbuttonpress
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	release
