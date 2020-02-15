@@ -601,3 +601,4 @@ gSpecials:: @ 81DBA64
 	def_special CheckSaveFileSize
 	def_special PasscodeGiveMonWithNature
 	def_special SetMonAbility
+	def_special RyuCheckContestMastery

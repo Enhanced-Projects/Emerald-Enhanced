@@ -184,6 +184,12 @@ RDB_CTVMsg:
 RyuDebug_Utility1::
 	fadescreen FADE_TO_BLACK
 	drawfullscreenimage SCENEBGSUNSET
+	setflag FLAG_RYU_CLEARED_COOL
+	setflag FLAG_RYU_CLEARED_BEAUTY
+	setflag FLAG_RYU_CLEARED_TOUGH
+	setflag FLAG_RYU_CLEARED_SMART
+	setflag FLAG_RYU_CLEARED_CUTE
+	clearflag FLAG_RYU_GIVEN_DIANCIE
 	waitbuttonpress
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK

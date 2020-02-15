@@ -5545,7 +5545,7 @@ bool8 RyuSwapAbility(void)
 
 bool8 RyuCheckContestMastery(void)
 {
-    u8 i = 0
+    u8 i = 0;
 
     if (FlagGet(FLAG_RYU_CLEARED_COOL) == 1)
         i++;

@@ -1222,6 +1222,9 @@ ContestHall_EventScript_GiveContestPrizes:: @ 827AC77
 	specialvar VAR_RESULT, HasMonWonThisContestBefore
 	compare VAR_RESULT, FALSE
 	goto_if_eq ContestHall_EventScript_ReceiveContestRibbon
+	specialvar VAR_RESULT RyuCheckContestMastery
+	compare VAR_RESULT, TRUE
+	call_if_eq CH_GiveDiancie
 	compare VAR_CONTEST_RANK, CONTEST_RANK_MASTER
 	goto_if_eq ContestHall_EventScript_GiveLuxuryBall
 	lockall
@@ -1317,9 +1320,6 @@ ContestHall_EventScript_GiveLuxuryBall:: @ 827ACBD
 	case TOUGH, SetMasterRankClearedTough
 	case SMART, SetMasterRankClearedSmart
 	case CUTE, SetMasterRankClearedCute
-	specialvar VAR_RESULT RyuCheckContestMastery
-	compare VAR_RESULT, TRUE
-	call_if_eq CH_GiveDiancie
 	giveitem ITEM_LUXURY_BALL
 	compare VAR_RESULT, FALSE
 	goto_if_eq ContestHall_EventScript_NoRoomForLuxuryBall
@@ -1350,13 +1350,21 @@ SetMasterRankClearedCute::
 
 CH_GiveDiancie::
 	msgbox CH_WhyReceivedDiancie
+	showmonpic SPECIES_DIANCIE, 10, 3
+	playmoncry SPECIES_DIANCIE, 0
+	waitmoncry
+	hidemonpic
 	givemon SPECIES_DIANCIE, 80, ITEM_NONE
 	setflag FLAG_RYU_GIVEN_DIANCIE
 	return
 
+CH_WhyReceivedDiancie::
+	.string "As recognition of your mastery\n"
+	.string "of contests, we confer upon you\p"
+	.string "this Pokémon. Please take good\n"
+	.string "care of it!$"
+
 ContestHall_EventScript_ReceiveContestRibbon:: @ 827ACDF
-	buffernumberstring 0, VAR_RYU_CONTEST_TYPE
-	msgbox RDB_CTVMsg
 	closemessage
 	special GiveMonContestRibbon
 	incrementgamestat GAME_STAT_RECEIVED_RIBBONS
@@ -1368,8 +1376,7 @@ ContestHall_EventScript_ReceiveContestRibbon:: @ 827ACDF
 	waitfanfare
 	special BufferContestWinnerMonName
 	msgbox ContestHall_Text_PutRibbonOnMon, MSGBOX_DEFAULT
-	compare VAR_RYU_CONTEST_TYPE, BEAUTY
-	call_if_eq CH_CheckForGardevoirMegaGift
+	call CH_CheckForMegaGift
 	releaseall
 	return
 
