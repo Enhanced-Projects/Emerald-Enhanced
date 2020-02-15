@@ -1,6 +1,7 @@
 @@MAIN DEBUG MENU==================================================================================
 RyuDevSwitch::
 	setflag FLAG_RYU_DEV_MODE
+	setflag FLAG_RYU_CHEATS_USED
 	clearflag FLAG_HIDE_103_TEST_TRAINER
 	msgbox RyuNowDeveloper MSGBOX_SIGN
 	end
@@ -99,6 +100,7 @@ RyuDebug_money_text:
 
 RyuDebug_DisableDebug::
 	clearflag FLAG_RYU_DEV_MODE
+	setflag FLAG_HIDE_103_TEST_TRAINER
 	msgbox DevModeDisabled MSGBOX_DEFAULT
 	releaseall
 	end

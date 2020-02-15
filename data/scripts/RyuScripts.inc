@@ -141,6 +141,7 @@ RS_ExpWillStillBeEarned:
 @==================================================================================================Beta Menu
 
 RyuDebugBetaMenuScript::
+	setflag FLAG_RYU_BETA_MENU_USED
 	msgbox BetaMenuIntro MSGBOX_DEFAULT
 	closemessage
 	multichoicedefault 30, 0, 133, 7, 0

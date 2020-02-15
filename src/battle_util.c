@@ -6146,7 +6146,6 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
         {
             MulModifier(&finalModifier, UQ_4_12(1.2));
         }
-    mgba_open();
     mgba_printf(MGBA_LOG_FATAL, "Dealt %d damage.", dmg);
     return dmg;
 }

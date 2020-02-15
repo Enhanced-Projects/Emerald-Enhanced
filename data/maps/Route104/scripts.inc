@@ -206,10 +206,7 @@ Route104_EventScript_BrendanAskToBattle:: @ 81ECEEC
 
 Route104_EventScript_BattleBrendan:: @ 81ECF09
 	msgbox Route104_Text_BrendanIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route104_EventScript_BattleBrendanTreecko
-	case 1, Route104_EventScript_BattleBrendanTorchic
-	case 2, Route104_EventScript_BattleBrendanMudkip
+	goto Route104_EventScript_BattleBrendanTreecko
 	end
 
 Route104_EventScript_BrendanDefeated:: @ 81ECF38
@@ -221,18 +218,6 @@ Route104_EventScript_BrendanDefeated:: @ 81ECF38
 
 Route104_EventScript_BattleBrendanTreecko:: @ 81ECF4D
 	trainerbattle_no_intro TRAINER_EMPTY_33, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
-	end
-
-Route104_EventScript_BattleBrendanTorchic:: @ 81ECF60
-	trainerbattle_no_intro TRAINER_EMPTY_34, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
-	end
-
-Route104_EventScript_BattleBrendanMudkip:: @ 81ECF73
-	trainerbattle_no_intro TRAINER_BRENDAN_2, Route104_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
 	goto Route104_EventScript_BrendanDefeated
 	end

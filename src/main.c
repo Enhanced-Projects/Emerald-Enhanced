@@ -24,6 +24,7 @@
 #include "main.h"
 #include "trainer_hill.h"
 #include "mgba.h"
+#include "event_data.h"
 
 static void VBlankIntr(void);
 static void HBlankIntr(void);
@@ -168,6 +169,7 @@ void AgbMain()
         }
 
         PlayTimeCounter_Update();
+        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 623);
         MapMusicMain();
         WaitForVBlank();
     }

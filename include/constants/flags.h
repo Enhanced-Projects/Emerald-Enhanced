@@ -1264,8 +1264,8 @@
 #define FLAG_RYU_CHAR_Y_MEGA                                        0x4B5 // Unused Flag
 #define FLAG_RYU_GOT_AUDINITE                                       0x4B6 // Unused Flag
 #define FLAG_RYU_SST_CHDX                                           0x4B7 // Unused Flag
-#define FLAG_UNUSED_0x4B8                                           0x4B8 // Unused Flag
-#define FLAG_UNUSED_0x4B9                                           0x4B9 // Unused Flag
+#define FLAG_RYU_CHEATS_USED                                        0x4B8 // Unused Flag
+#define FLAG_RYU_BETA_MENU_USED                                     0x4B9 // Unused Flag
 #define FLAG_UNUSED_0x4BA                                           0x4BA // Unused Flag
 #define FLAG_UNUSED_0x4BB                                           0x4BB // Unused Flag
 #define FLAG_UNUSED_0x4BC                                           0x4BC // Unused Flag

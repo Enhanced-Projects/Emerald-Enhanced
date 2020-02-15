@@ -36,11 +36,6 @@ PetalburgCity_PokemonCenter_1F_EventScript_Woman:: @ 8207A1C
 	end
 
 PetalburgCity_PokemonCenter_1F_EventScript_SayStarterTypeInfo:: @ 8207A38
-	compare VAR_STARTER_MON, 0
-	call_if_eq PetalburgCity_PokemonCenter_1F_EventScript_SayTreeckoType
-	compare VAR_STARTER_MON, 1
-	call_if_eq PetalburgCity_PokemonCenter_1F_EventScript_SayTorchicType
-	compare VAR_STARTER_MON, 2
 	call_if_eq PetalburgCity_PokemonCenter_1F_EventScript_SayMudkipType
 	release
 	end

@@ -5,7 +5,7 @@
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
         {
-            "elevation": 3,
+            "elevation": 4,
             "flag": "FLAG_HIDDEN_ITEM_JAGGED_PASS_FULL_HEAL",
             "item": "ITEM_FULL_HEAL",
             "type": "hidden_item",
