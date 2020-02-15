@@ -7,6 +7,13 @@ MtPyre_Summit_OnTransition: @ 8231FFD
 
 MtPyre_Summit_EventScript_SetArchieMaxiePositions:: @ 8232009
 	end
+	
+MP_Gengarite::
+	finditem ITEM_GENGARITE, 1
+	setflag FLAG_RYU_OBTAINED_GENGARITE
+	removeobject 13
+	release
+	end
 
 MtPyre_Summit_EventScript_TeamAquaTrigger0:: @ 8232018
 	lockall

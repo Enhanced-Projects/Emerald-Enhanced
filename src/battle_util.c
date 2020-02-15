@@ -34,7 +34,6 @@
 #include "constants/species.h"
 #include "constants/weather.h"
 #include "data.h"
-#include "mgba.h"
 
 extern const u8 gText_OverlordRyuBossNameBuffer[];
 extern const u8 gText_PokemonStringBuffer[];
@@ -6146,7 +6145,7 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
         {
             MulModifier(&finalModifier, UQ_4_12(1.2));
         }
-    mgba_printf(MGBA_LOG_FATAL, "Dealt %d damage.", dmg);
+    //mgba_printf(MGBA_LOG_INFO, "Dealt %d damage.", dmg);
     return dmg;
 }
 

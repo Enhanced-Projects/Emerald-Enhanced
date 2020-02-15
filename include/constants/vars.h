@@ -101,7 +101,7 @@
 #define VAR_LAST_KNOWN_GAME_VERSION          0x4052 // current game version
 #define VAR_LAVARIDGE_TOWN_STATE             0x4053
 #define VAR_CURRENT_SECRET_BASE              0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
-#define VAR_VERDANTURF_TOWN_STATE            0x4055 // Unused Var
+#define VAR_RYU_CONTEST_TYPE            0x4055 //Contest type
 #define VAR_PACIFIDLOG_TOWN_STATE            0x4056 // Unused Var
 #define VAR_PETALBURG_CITY_STATE             0x4057
 #define VAR_SLATEPORT_CITY_STATE             0x4058
@@ -308,6 +308,14 @@
 #define HEAD_LANA 3
 #define HEAD_GARY 4
 #define HEAD_LANETTE 5
+
+//Contest type defines for code usage
+#define COOL 0
+#define BEAUTY 1
+#define CUTE 2
+#define SMART 3
+#define TOUGH 4
+
 
 //battle style defines
 #define BS_SHIFT 0

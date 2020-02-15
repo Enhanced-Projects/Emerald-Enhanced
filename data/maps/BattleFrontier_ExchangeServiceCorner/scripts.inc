@@ -15,9 +15,9 @@ BF_GetRandomMon::
 	compare VAR_RESULT, 1
 	goto_if_ne BF_RandomMonDeclined
 	checkbp
-	compare VAR_RESULT, 50
+	compare VAR_RESULT, 40
 	goto_if_lt BF_CantAffordMon
-	takebp 50
+	takebp 40
 	special RyuGiveFrontierMon
 	delay 50
 	msgbox gratz

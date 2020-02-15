@@ -7206,7 +7206,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Dawn1[] = {
 	{
 	.iv = 0,
 	.lvl = 10,
-	.species = SPECIES_ROSELIA,
+	.species = SPECIES_BUDEW,
 	},
 	{
 	.iv = 0,

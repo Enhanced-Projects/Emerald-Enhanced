@@ -145,6 +145,7 @@ LilycoveCity_ContestLobby_EventScript_ChooseContestType:: @ 8279EE1
 	case 5, LilycoveCity_ContestLobby_EventScript_CancelEnterContest
 	case MULTI_B_PRESSED, LilycoveCity_ContestLobby_EventScript_CancelEnterContest
 	copyvar VAR_CONTEST_CATEGORY, VAR_RESULT
+	copyvar VAR_RYU_CONTEST_TYPE, VAR_CONTEST_CATEGORY
 	goto LilycoveCity_ContestLobby_EventScript_ChooseContestMon
 	end
 
@@ -207,6 +208,7 @@ ContestHall_EventScript_DoContest:: @ 8279F97
 	call ContestHall_EventScript_ContestResults
 	call ContestHall_EventScript_GetWinnerObjEventId
 	call ContestHall_EventScript_CongratulateWinner
+	setvar VAR_TEMP_4, 0
 	call ContestHall_EventScript_AudienceLookAround
 	call ContestHall_EventScript_GiveWinnerPrize
 	setvar VAR_CONTEST_HALL_STATE, 2
@@ -413,6 +415,7 @@ ContestHall_EventScript_AudienceVote:: @ 827A230
 	call ContestHall_EventScript_VotingUnderWay
 	playse SE_W227B
 	waitmessage
+	setvar VAR_TEMP_4, 0
 	call ContestHall_EventScript_AudienceLookAround
 	applymovement 1, ContestHall_Movement_MCFaceJudge2
 	waitmovement 0
@@ -1005,7 +1008,7 @@ ContestHall_EventScript_CongratsWinnerLink:: @ 827AA14
 	return
 
 ContestHall_EventScript_AudienceLookAround:: @ 827AA1B
-	addvar VAR_TEMP_1, 1
+	addvar VAR_TEMP_4, 1
 	lockall
 	compare VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_NORMAL
 	call_if_gt ContestHall_EventScript_VObjectAudienceLookAround
@@ -1017,7 +1020,7 @@ ContestHall_EventScript_AudienceLookAround:: @ 827AA1B
 	applymovement 11, ContestHall_Movement_AudienceMemberLookDown
 	applymovement 6, ContestHall_Movement_AudienceMemberLookUp
 	applymovement 8, ContestHall_Movement_AudienceMemberLookLeft
-	compare VAR_TEMP_1, 4
+	compare VAR_TEMP_4, 4
 	goto_if_ne ContestHall_EventScript_AudienceLookAround
 	delay 30
 	return
@@ -1102,7 +1105,7 @@ ContestHall_EventScript_GiveWinnerPrize:: @ 827AB36
 	call ContestHall_EventScript_WinnerApproachForPrize
 	call ContestHall_EventScript_GivePrizeIfWinner
 	playse SE_W227B
-	setvar VAR_TEMP_1, 0
+	setvar VAR_TEMP_4, 0
 	call ContestHall_EventScript_AudienceLookAround
 	delay 30
 	special ShouldReadyContestArtist
@@ -1226,6 +1229,79 @@ ContestHall_EventScript_GiveContestPrizes:: @ 827AC77
 	releaseall
 	return
 
+CH_CheckForMegaGift::
+	switch VAR_RYU_CONTEST_TYPE
+	case COOL, CH_CoolMegaReward
+	case BEAUTY, CH_BeautyMegaReward
+	case CUTE, CH_CuteMegaReward
+	case SMART, CH_SmartMegaReward
+	case TOUGH, CH_ToughMegaReward
+	goto ryu_return
+
+CH_CoolMegaReward::
+	goto_if_set FLAG_RYU_OBTAINED_SCEPTILITE, ryu_return
+	setflag FLAG_RYU_OBTAINED_SCEPTILITE
+	additem ITEM_SCEPTILITE
+	msgbox CH_CoolMegaRewardMSG
+	closemessage
+	return
+
+CH_CoolMegaRewardMSG::
+	.string "Your Pokémon is so cool! Here,\n"
+	.string "take this Sceptilite for showing\l"
+	.string "us such a cool Pokémon!$"
+
+CH_BeautyMegaReward::
+	goto_if_set FLAG_RYU_OBTAINED_GARDEVOIRITE, ryu_return
+	setflag FLAG_RYU_OBTAINED_GARDEVOIRITE
+	additem ITEM_GARDEVOIRITE
+	msgbox CH_BeautyMegaRewardMSG
+	closemessage
+	return
+
+CH_BeautyMegaRewardMSG::
+	.string "You've obtained a Gardevoirite for\n"
+	.string "training such a beautiful Pokémon!$"
+
+CH_ToughMegaReward::
+	goto_if_set FLAG_RYU_OBTAINED_GARCHOMPITE, ryu_return
+	setflag FLAG_RYU_OBTAINED_GARCHOMPITE
+	additem ITEM_GARCHOMPITE
+	msgbox CH_ToughMegaRewardMSG
+	closemessage
+	return
+
+CH_ToughMegaRewardMSG::
+	.string "As a reward for your amazingly\n"
+	.string "tough Pokémon winning the contest,\l"
+	.string "take this Garchompite!$"
+
+CH_SmartMegaReward::
+	goto_if_set FLAG_RYU_OBTAINED_GALLADITE, ryu_return
+	setflag FLAG_RYU_OBTAINED_GALLADITE
+	additem ITEM_GALLADITE
+	msgbox CH_SmartMegaRewardMSG
+	closemessage
+	return
+
+CH_SmartMegaRewardMSG::
+	.string "You've obtained a Galladite for\n"
+	.string "training such an intelligent\l"
+	.string "Pokémon!$"
+
+CH_CuteMegaReward::
+	goto_if_set FLAG_RYU_OBTAINED_DIANCITE, ryu_return
+	setflag FLAG_RYU_OBTAINED_DIANCITE
+	additem ITEM_DIANCITE
+	msgbox CH_CuteMegaRewardMSG
+	closemessage
+	return
+
+CH_CuteMegaRewardMSG::
+	.string "Oh, My! Your Pokémon is so cute!\n"
+	.string "Here, take this Diancite for\l"
+	.string "blessing us with it's appearance!$"
+
 ContestHall_EventScript_NoRoomForLuxuryBall:: @ 827ACA8
 	lockall
 	call Common_EventScript_BagIsFull
@@ -1235,6 +1311,15 @@ ContestHall_EventScript_NoRoomForLuxuryBall:: @ 827ACA8
 	return
 
 ContestHall_EventScript_GiveLuxuryBall:: @ 827ACBD
+	switch VAR_RYU_CONTEST_TYPE
+	case COOL, SetMasterRankClearedCool
+	case BEAUTY, SetMasterRankClearedBeauty
+	case TOUGH, SetMasterRankClearedTough
+	case SMART, SetMasterRankClearedSmart
+	case CUTE, SetMasterRankClearedCute
+	specialvar VAR_RESULT RyuCheckContestMastery
+	compare VAR_RESULT, TRUE
+	call_if_eq CH_GiveDiancie
 	giveitem ITEM_LUXURY_BALL
 	compare VAR_RESULT, FALSE
 	goto_if_eq ContestHall_EventScript_NoRoomForLuxuryBall
@@ -1243,7 +1328,36 @@ ContestHall_EventScript_GiveLuxuryBall:: @ 827ACBD
 	releaseall
 	return
 
+SetMasterRankClearedCool::
+	setflag FLAG_RYU_CLEARED_COOL
+	return
+
+SetMasterRankClearedBeauty::
+	setflag FLAG_RYU_CLEARED_BEAUTY
+	return
+	
+SetMasterRankClearedTough::
+	setflag FLAG_RYU_CLEARED_TOUGH
+	return
+	
+SetMasterRankClearedSmart::
+	setflag FLAG_RYU_CLEARED_SMART
+	return
+	
+SetMasterRankClearedCute::
+	setflag FLAG_RYU_CLEARED_CUTE
+	return
+
+CH_GiveDiancie::
+	msgbox CH_WhyReceivedDiancie
+	givemon SPECIES_DIANCIE, 80, ITEM_NONE
+	setflag FLAG_RYU_GIVEN_DIANCIE
+	return
+
 ContestHall_EventScript_ReceiveContestRibbon:: @ 827ACDF
+	buffernumberstring 0, VAR_RYU_CONTEST_TYPE
+	msgbox RDB_CTVMsg
+	closemessage
 	special GiveMonContestRibbon
 	incrementgamestat GAME_STAT_RECEIVED_RIBBONS
 	setflag FLAG_SYS_RIBBON_GET
@@ -1254,6 +1368,8 @@ ContestHall_EventScript_ReceiveContestRibbon:: @ 827ACDF
 	waitfanfare
 	special BufferContestWinnerMonName
 	msgbox ContestHall_Text_PutRibbonOnMon, MSGBOX_DEFAULT
+	compare VAR_RYU_CONTEST_TYPE, BEAUTY
+	call_if_eq CH_CheckForGardevoirMegaGift
 	releaseall
 	return
 

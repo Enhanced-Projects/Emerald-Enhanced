@@ -187,6 +187,7 @@ RyuDebug_Utility1::
 	waitbuttonpress
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
+	clearflag FLAG_RYU_OBTAINED_GARDEVOIRITE
 	release
 	end
 
