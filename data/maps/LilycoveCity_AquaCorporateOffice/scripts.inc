@@ -252,6 +252,7 @@ LC_AH_NoJoin:
 	
 LC_AH_Mission2::
 	msgbox LC_AH_Shelly_mission2msg MSGBOX_DEFAULT
+	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
 	release
 	end
 	

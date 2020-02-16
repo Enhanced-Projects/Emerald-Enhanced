@@ -53,7 +53,7 @@ PartyIsFull:
 	.string "We're sorry, but your party is\ncurrently full.\pPlease make space and\ncome back later.$"
 	
 WelcomeToExchangeCorner:
-	.string "Welcome to the Battle Point\nExchange Center.\pI hope we have what you're\llooking for!"
+	.string "Welcome to the Battle Point\nExchange Center.\pI hope we have what you're\llooking for!$"
 	
 gratz:
 	.string "Thank you for your purchase!$"

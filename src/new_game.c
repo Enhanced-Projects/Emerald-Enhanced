@@ -269,6 +269,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_FORCE_MIRAGE_TOWER_VISIBLE);
     VarSet(VAR_CONTEST_HALL_STATE, 0);
     FlagSet(FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER);
+    FlagSet(FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA);
 }
 
 static void ResetMiniGamesResults(void)
