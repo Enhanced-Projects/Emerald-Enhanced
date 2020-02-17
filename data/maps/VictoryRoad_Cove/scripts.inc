@@ -15,6 +15,7 @@ NM16_Mewtwo::
 NM16_Continue::
 	msgbox NM16_ItSeems
 	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 108
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
 	closemessage
 	playse SE_TK_WARPOUT
 	waitse

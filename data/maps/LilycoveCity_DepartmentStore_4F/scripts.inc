@@ -30,6 +30,7 @@ LilycoveCity_DepartmentStore_4F_Pokemart_AttackTMs: @ 821FE20
 	.2byte ITEM_TM14  @ Blizzard
 	.2byte ITEM_TM15  @ Hyper Beam
 	.2byte ITEM_TM35
+	.2byte ITEM_TM36
 	.2byte ITEM_TM55
 	.2byte ITEM_TM56
 	.2byte ITEM_TM61
@@ -55,6 +56,7 @@ LilycoveCity_DepartmentStore_4F_Pokemart_DefenseTMs: @ 821FE44
 	.2byte ITEM_TM16 @ Light Screen
 	.2byte ITEM_TM52
 	.2byte ITEM_TM53
+	.2byte ITEM_TM57
 	.2byte ITEM_TM58
 	.2byte ITEM_TM59
 	.2byte ITEM_TM08

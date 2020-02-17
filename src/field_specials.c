@@ -5092,9 +5092,7 @@ void RyuSetMonMove(void)
 int RyuCalculateCurrentExpCoefficient(void)
 {
     u16 calc = 0;
-    u16 badges = 0;
-    checkbadgecount();
-    badges = gSpecialVar_Result;
+    u16 badges = (CountBadges());
     calc = (1000 + (badges * 250));
     return calc;
 }

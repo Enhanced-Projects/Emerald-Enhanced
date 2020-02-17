@@ -721,7 +721,7 @@ const struct WildPokemon gUnderwater2_WaterMons[] =
 {
 	{20, 30, SPECIES_CLAMPERL},
 	{20, 30, SPECIES_CHINCHOU},
-	{30, 35, SPECIES_CLAMPERL},
+	{30, 35, SPECIES_FEEBAS},
 	{30, 35, SPECIES_RELICANTH},
 	{30, 35, SPECIES_SKRELP},
 };
