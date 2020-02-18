@@ -6241,6 +6241,8 @@ extern const u32 gItemIcon_NormalGem[];
 extern const u32 gItemIconPalette_NormalGem[];
 extern const u32 gItemIcon_FairyGem[];
 extern const u32 gItemIconPalette_FairyGem[];
+extern const u32 gItemIcon_ShinyCharm[];
+extern const u32 gItemIconPalette_ShinyCharm[];
 // Gen 6 Items
 extern const u32 gItemIcon_AssaultVest[];
 extern const u32 gItemIconPalette_AssaultVest[];
