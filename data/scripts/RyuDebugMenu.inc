@@ -182,16 +182,7 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGSUNSET
-	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
-	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 106
-	cleartrainerflag TRAINER_STORY_MEWTWO
-	waitbuttonpress
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
-	clearflag FLAG_RYU_OBTAINED_GARDEVOIRITE
+	special HealPlayerParty
 	release
 	end
 

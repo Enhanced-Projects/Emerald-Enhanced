@@ -127,12 +127,12 @@ BattleFrontier_BattlePikeThreePathRoom_EventScript_WarpWildMonRoom:: @ 82C4049
 
 BattleFrontier_BattlePikeThreePathRoom_EventScript_SetEnteredRoom:: @ 82C4062
 	setvar VAR_TEMP_3, 1
-	setvar VAR_TEMP_2, 1
+	setvar VAR_TEMP_8, 1
 	end
 
 BattleFrontier_BattlePikeThreePathRoom_EventScript_NoTurningBack:: @ 82C406D
 	setvar VAR_TEMP_3, 0
-	setvar VAR_TEMP_2, 0
+	setvar VAR_TEMP_8, 0
 	lockall
 	msgbox BattleFrontier_BattlePike_Text_PathBlockedNoTurningBack, MSGBOX_DEFAULT
 	closemessage
@@ -140,12 +140,12 @@ BattleFrontier_BattlePikeThreePathRoom_EventScript_NoTurningBack:: @ 82C406D
 
 BattleFrontier_BattlePikeRoomNormal_EventScript_SetEnteredRoom:: @ 82C4082
 	setvar VAR_TEMP_3, 1
-	setvar VAR_TEMP_2, 1
+	setvar VAR_TEMP_7, 1
 	end
 
 BattleFrontier_BattlePikeRoomNormal_EventScript_NoTurningBack:: @ 82C408D
 	setvar VAR_TEMP_3, 0
-	setvar VAR_TEMP_2, 0
+	setvar VAR_TEMP_7, 1
 	lockall
 	msgbox BattleFrontier_BattlePike_Text_PathBlockedNoTurningBack, MSGBOX_DEFAULT
 	closemessage
@@ -216,12 +216,12 @@ BattleFrontier_BattlePikeRoomWildMons_EventScript_Exit:: @ 82C4174
 
 BattleFrontier_BattlePikeRoomWildMons_EventScript_SetEnteredRoom:: @ 82C4202
 	setvar VAR_TEMP_3, 1
-	setvar VAR_TEMP_2, 1
+	setvar VAR_TEMP_8, 1
 	end
 
 BattleFrontier_BattlePikeRoomWildMons_EventScript_NoTurningBack:: @ 82C420D
 	setvar VAR_TEMP_3, 0
-	setvar VAR_TEMP_2, 0
+	setvar VAR_TEMP_8, 0
 	lockall
 	msgbox BattleFrontier_BattlePike_Text_PathBlockedNoTurningBack, MSGBOX_DEFAULT
 	closemessage
