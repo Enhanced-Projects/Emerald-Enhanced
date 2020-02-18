@@ -74,8 +74,8 @@ static const u8 sWhirlwindDescription[] = _(
     "wind and ends the battle.");
 
 static const u8 sFlyDescription[] = _(
-    "Flies up on the first turn,\n"
-    "then strikes the next turn.");
+    "Flies up in the air to\n"
+    "strike from above.");
 
 static const u8 sBindDescription[] = _(
     "Binds and squeezes the foe\n"
@@ -258,8 +258,8 @@ static const u8 sPeckDescription[] = _(
     "jabbing beak, etc.");
 
 static const u8 sDrillPeckDescription[] = _(
-    "A corkscrewing attack with\n"
-    "the beak acting as a drill.");
+    "A corkscrewing beak attack.\n"
+    "High critical-hit ratio.");
 
 static const u8 sSubmissionDescription[] = _(
     "A reckless body slam that\n"
@@ -427,7 +427,7 @@ static const u8 sHardenDescription[] = _(
 
 static const u8 sMinimizeDescription[] = _(
     "Minimizes the user's size\n"
-    "to raise evasiveness.");
+    "to raise SPEED.");
 
 static const u8 sSmokescreenDescription[] = _(
     "Lowers the foe's accuracy\n"
@@ -726,8 +726,8 @@ static const u8 sPowderSnowDescription[] = _(
     "gust. May cause freezing.");
 
 static const u8 sProtectDescription[] = _(
-    "Evades attack, but may fail\n"
-    "if used in succession.");
+    "The user protects itself,\n"
+    "sharply raising Defense");
 
 static const u8 sMachPunchDescription[] = _(
     "A punch is thrown at wicked\n"
@@ -786,8 +786,8 @@ static const u8 sIcyWindDescription[] = _(
     "lowers the foe's SPEED.");
 
 static const u8 sDetectDescription[] = _(
-    "Evades attack, but may fail\n"
-    "if used in succession.");
+    "Prepares the mind to sharply\n"
+    "raise Special Defense");
 
 static const u8 sBoneRushDescription[] = _(
     "Strikes the foe with a bone\n"
@@ -958,11 +958,11 @@ static const u8 sTwisterDescription[] = _(
     "to tear at the foe.");
 
 static const u8 sRainDanceDescription[] = _(
-    "Boosts the power of WATER-\n"
+    "Boosts the power of Water-\n"
     "type moves for 5 turns.");
 
 static const u8 sSunnyDayDescription[] = _(
-    "Boosts the power of FIRE-\n"
+    "Boosts the power of Fire-\n"
     "type moves for 5 turns.");
 
 static const u8 sCrunchDescription[] = _(
@@ -1030,8 +1030,8 @@ static const u8 sHeatWaveDescription[] = _(
     "foe. May inflict a burn.");
 
 static const u8 sHailDescription[] = _(
-    "Summons a hailstorm that\n"
-    "strikes every turn.");
+    "Boosts the power of Ice-\n"
+    "type moves for 5 turns.");
 
 static const u8 sTormentDescription[] = _(
     "Torments the foe and stops\n"
@@ -1162,8 +1162,8 @@ static const u8 sSecretPowerDescription[] = _(
     "that vary by location.");
 
 static const u8 sDiveDescription[] = _(
-    "Dives underwater the first\n"
-    "turn and strikes next turn.");
+    "Dives deep underwater to\n"
+    "strike from below.");
 
 static const u8 sArmThrustDescription[] = _(
     "Straight-arm punches that\n"
@@ -1650,16 +1650,16 @@ static const u8 sICE_SHARDDescription[] = _(
 	"always strike first.");
 
 static const u8 sTHUNDER_FANGDescription[] = _(
-	"May cause flinching or\n"
-	"leave the foe paralyzed.");
+	"Bites with vicious fangs.\n"
+	"May cause flinching.");
 
 static const u8 sICE_FANGDescription[] = _(
-	"May cause flinching or\n"
-	"leave the foe frozen.");
+	"Bites with vicious fangs.\n"
+	"May cause flinching.");
 
 static const u8 sFIRE_FANGDescription[] = _(
-	"May cause flinching or\n"
-	"leave the foe with a burn.");
+	"Bites with vicious fangs.\n"
+	"May cause flinching.");
 
 static const u8 sSHADOW_SNEAKDescription[] = _(
 	"Extends the user's shadow\n"
