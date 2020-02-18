@@ -5124,12 +5124,14 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_ZEN_HEADBUTT)
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_HYPER_VOICE)
+											| TUTOR(MOVE_DRACO_METEOR)
 											| TUTOR(MOVE_OUTRAGE)),
 
     [SPECIES_AURORUS]       = TUTOR_LEARNSET(TUTOR(MOVE_METRONOME)
 											| TUTOR(MOVE_ZEN_HEADBUTT)
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_HYPER_VOICE)
+											| TUTOR(MOVE_DRACO_METEOR)
 											| TUTOR(MOVE_OUTRAGE)),
 
     [SPECIES_SYLVEON]       = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)
