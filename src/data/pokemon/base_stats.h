@@ -11991,7 +11991,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_LEAF_GUARD, ABILITY_NONE},
+        .abilities = {ABILITY_LEAF_GUARD, ABILITY_LEAF_GUARD},
         .abilityHidden = ABILITY_CHLOROPHYLL,
         .bodyColor = BODY_COLOR_GREEN,
     },
@@ -12015,7 +12015,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_SNOW_CLOAK, ABILITY_NONE},
+        .abilities = {ABILITY_SNOW_CLOAK, ABILITY_SNOW_CLOAK},
         .abilityHidden = ABILITY_ICE_BODY,
         .bodyColor = BODY_COLOR_BLUE,
     },
@@ -17918,7 +17918,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_CUTE_CHARM, ABILITY_NONE},
+        .abilities = {ABILITY_CUTE_CHARM, ABILITY_CUTE_CHARM},
         .abilityHidden = ABILITY_PIXILATE,
         .bodyColor = BODY_COLOR_PINK,
     },
@@ -20597,7 +20597,7 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_MELTAN] =
     {
-        .baseHP        = 46, 
+        .baseHP        = 46,
         .baseAttack    = 65,
         .baseDefense   = 65,
         .baseSpeed     = 34,
@@ -20617,10 +20617,10 @@ const struct BaseStats gBaseStats[] =
         .abilities = {ABILITY_MAGNET_PULL, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
     },
-    
+
     [SPECIES_MELMETAL] =
     {
-        .baseHP        = 135, 
+        .baseHP        = 135,
         .baseAttack    = 143,
         .baseDefense   = 143,
         .baseSpeed     = 34,
