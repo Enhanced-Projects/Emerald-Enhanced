@@ -10,7 +10,7 @@ static const u8 sMasterBallDesc[] = _(
 static const u8 sUltraBallDesc[] = _(
     "A better ball with\n"
     "a higher catch rate\n"
-    "than a Great Ball.");
+    "than a Premier Ball.");
 
 static const u8 sGreatBallDesc[] = _(
     "A good ball with a\n"
@@ -58,9 +58,9 @@ static const u8 sLuxuryBallDesc[] = _(
     "more friendly.");
 
 static const u8 sPremierBallDesc[] = _(
-    "A rare ball made\n"
-    "in commemoration\n"
-    "of some event.");
+    "A decent ball with\n"
+    "a higher catch rate\n"
+    "than a Great Ball.");
 
 static const u8 sLevelBallDesc[] = _(
     "A ball that works\n"
