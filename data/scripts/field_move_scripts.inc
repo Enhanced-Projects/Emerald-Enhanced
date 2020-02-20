@@ -52,7 +52,7 @@ Text_CantCut: @ 829077D
 	.string "This weed looks like it can be\npulled out.$"
 
 Text_SmashedBoulder:
-	.string "{PLAYER} smahed the rock.$"
+	.string "{PLAYER} smashed the rock.$"
 
 EventScript_RockSmash:: @ 82907A6
 	lockall
