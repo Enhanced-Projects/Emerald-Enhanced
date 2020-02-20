@@ -4300,7 +4300,7 @@ const struct PokedexEntry gPokedexEntries[] =
     {
         .categoryName = _("Resplendent"),
         .height = 88,
-        .weight = 1450,
+        .weight = 2450,
         .description = gChimechoPokedexText,
         .pokemonScale = 256,
         .pokemonOffset = 0,
