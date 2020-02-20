@@ -1239,8 +1239,8 @@ static const u8 sSilkScarfDesc[] = _(
 
 static const u8 sUpGradeDesc[] = _(
     "A device made by\n"
-    "Devon that saves up\n"
-    "Exp. points.");
+    "Devon that saves\n"
+    "up Exp. points.");
 
 static const u8 sShellBellDesc[] = _(
     "A hold item that\n"
@@ -1803,8 +1803,8 @@ static const u8 sTM58Desc[] = _(
 
 static const u8 sTM59Desc[] = _(
 	"Slams the foe with\n"
-    "a hard head.\n"
-    "May cause flinching.");
+    "a hard head. May\n"
+    "cause flinching.");
 
 static const u8 sTM60Desc[] = _(
     "A very powerful\n"
@@ -1917,8 +1917,8 @@ static const u8 sBicycleDesc[] = _(
     "the Running Shoes.");
 
 static const u8 sTownMapDesc[] = _(
-    "A pass that grants a\n"
-    "discount at the\n"
+    "A pass that grants\n"
+    "a discount at the\n"
     "Training Center.");
 
 static const u8 sVSSeekerDesc[] = _(
@@ -1947,8 +1947,9 @@ static const u8 sTeachyTVDesc[] = _(
     "access to the PC.");
 
 static const u8 sTriPassDesc[] = _(
-    "An identity card for\n"
-    "employees of Devon.");
+    "An identity card\n"
+    "for employees of\n"
+    "Devon.");
 
 static const u8 sRainbowPassDesc[] = _(
     "For ferries serving\n"
