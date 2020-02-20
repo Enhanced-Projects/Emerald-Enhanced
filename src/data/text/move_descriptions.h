@@ -74,8 +74,8 @@ static const u8 sWhirlwindDescription[] = _(
     "wind and ends the battle.");
 
 static const u8 sFlyDescription[] = _(
-    "Flies up in the air to\n"
-    "strike from above.");
+    "Flies up in the air to strike\n"
+    "the foe from above.");
 
 static const u8 sBindDescription[] = _(
     "Binds and squeezes the foe\n"
