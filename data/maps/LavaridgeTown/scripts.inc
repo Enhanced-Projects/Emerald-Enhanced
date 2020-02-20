@@ -97,7 +97,7 @@ LavaridgeTown_EventScript_EggWoman:: @ 81EA744
 	playfanfare MUS_FANFA4
 	message LavaridgeTown_Text_ReceivedTheEgg
 	waitfanfare
-	giveegg SPECIES_WYNAUT
+	giveegg SPECIES_LARVESTA
 	release
 	end
 
