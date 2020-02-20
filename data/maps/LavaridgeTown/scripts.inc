@@ -267,13 +267,11 @@ LT_FemaleRivalInteraction:: @ 81EA5B5
 	compare VAR_RESULT, 6
 	goto_if_eq LT_FemalRivalGiftPokeNoSpace
 	special RyuDawnGiftPoke
-	setflag FLAG_RYU_DAWN_GIFTPOKE_RECEIVED
-	drawcustompic 2, SPECIES_SNEASEL, 10, 3
+	@showmonpic SPECIES_SNEASEL, 10, 3
 	playmoncry SPECIES_SNEASEL, 0
 	waitmoncry
-	playfanfare MUS_FANFA4
-	waitfanfare
-	hidemonpic
+	@hidemonpic
+	setflag FLAG_RYU_DAWN_GIFTPOKE_RECEIVED
 	msgbox LT_RECEIVEDPOKE, MSGBOX_SIGN
 	msgbox LT_GivePokeExplanation, MSGBOX_DEFAULT
 	closemessage

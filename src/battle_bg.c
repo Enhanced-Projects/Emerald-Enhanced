@@ -691,6 +691,15 @@ static const struct BattleBackground gBattleTerrainTable[] =
         .entryTilemap = gBattleTerrainAnimTilemap_Building,
         .palette = gBattleTerrainPalette_Plain,
     },
+
+    [BATTLE_TERRAIN_BATTLEFRONTIER] =
+    {
+        .tileset = gBattleTerrainTiles_FrontierTiles,
+        .tilemap = gBattleTerrainTilemap_FrontierMap,
+        .entryTileset = gBattleTerrainTiles_FrontierTiles,
+        .entryTilemap = gBattleTerrainTilemap_FrontierMap,
+        .palette = gBattleTerrainPalette_FrontierPalette,
+    },
 };
 
 void BattleInitBgsAndWindows(void)
@@ -750,11 +759,17 @@ void LoadBattleMenuWindowGfx(void)
 
 void DrawMainBattleBackground(void)
 {
-    if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_x2000000))
+    if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_x2000000))
     {
         LZDecompressVram(gBattleTerrainTiles_Building, (void*)(BG_CHAR_ADDR(2)));
         LZDecompressVram(gBattleTerrainTilemap_Building, (void*)(BG_SCREEN_ADDR(26)));
         LoadCompressedPalette(gBattleTerrainPalette_Frontier, 0x20, 0x60);
+    }
+    else if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
+    {
+        LZDecompressVram(gBattleTerrainTiles_FrontierTiles, (void*)(BG_CHAR_ADDR(2)));
+        LZDecompressVram(gBattleTerrainTilemap_FrontierMap, (void*)(BG_SCREEN_ADDR(26)));
+        LoadCompressedPalette(gBattleTerrainPalette_FrontierPalette, 0x20, 0x60);
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_GROUDON)
     {

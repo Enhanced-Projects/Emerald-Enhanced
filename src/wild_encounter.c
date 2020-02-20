@@ -26,7 +26,7 @@
 #include "field_message_box.h"
 #include "strings.h"
 #include "pokemon.h"
-#include "mgba.h"
+//#include "mgba.h"
 
 extern const u8 EventScript_RepelWoreOff[];
 extern int CountBadges();
@@ -528,14 +528,12 @@ static bool8 DoWildEncounterRateDiceRoll(u16 encounterRate)
 {
     if (FlagGet(FLAG_RYU_DEV_DISENC) == 1)
     {
-        mgba_printf(MGBA_LOG_INFO, "Wild repelled by dev aura.");
         return FALSE;
     }
     else if (VarGet(VAR_REPEL_STEP_COUNT) >= 1)
     {
         if ((RyuChooseWildLevel()) < (GetMonData(&gPlayerParty[0], MON_DATA_LEVEL)))
         {
-            mgba_printf(MGBA_LOG_INFO, "Wild encounter Repelled. Step Count is %d", (VarGet(VAR_REPEL_STEP_COUNT)));
             return FALSE;
         }
     }
@@ -547,7 +545,6 @@ static bool8 DoWildEncounterRateDiceRoll(u16 encounterRate)
         }  
         else
         {
-            mgba_printf(MGBA_LOG_INFO, "Wild Encounter did not roll.");
             return FALSE;
         }
     }
@@ -658,14 +655,12 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
                 roamer = &gSaveBlock1Ptr->roamer;
                     if (FlagGet(FLAG_RYU_DEV_DISENC) ==1 )
                     {
-                        mgba_printf(MGBA_LOG_INFO, "Wild repelled by dev aura.");
                         return FALSE;
                     }
                     else if (!(VarGet(VAR_REPEL_STEP_COUNT == 0)))
                     {
                         if ((RyuChooseWildLevel()) < (GetMonData(&gPlayerParty[0], MON_DATA_LEVEL)))
                         {
-                            mgba_printf(MGBA_LOG_INFO, "Wild encounter Repelled. Step Count is %d", (VarGet(VAR_REPEL_STEP_COUNT)));
                             return FALSE;
                         }
                     }
@@ -720,21 +715,18 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
                 {
                         if (FlagGet(FLAG_RYU_DEV_DISENC) ==1 )
                         {
-                            mgba_printf(MGBA_LOG_INFO, "Wild repelled by dev aura.");
                             return FALSE;
                         }
                         else if (!(VarGet(VAR_REPEL_STEP_COUNT == 0)))
                         {
                             if ((RyuChooseWildLevel()) < (GetMonData(&gPlayerParty[0], MON_DATA_LEVEL)))
                             {
-                                mgba_printf(MGBA_LOG_INFO, "Wild encounter Repelled. Step Count is %d", (VarGet(VAR_REPEL_STEP_COUNT)));
                                 return FALSE;
                             }
                         }
                 }
 
                 BattleSetup_StartRoamerBattle();
-                mgba_printf(MGBA_LOG_INFO, "Wild encounter succeeded random roll... starting encounter.");
                 return TRUE;
             }
             else // try a regular surfing encounter

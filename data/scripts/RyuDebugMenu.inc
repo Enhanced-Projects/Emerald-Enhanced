@@ -182,9 +182,19 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	special checksymbolcount
+	buffernumberstring 0, VAR_RESULT
+	msgbox RDB_CTVMsg
+	setflag FLAG_SYS_FRONTIER_PASS
 	special HealPlayerParty
 	release
 	end
+
+rdb_hassymbols::
+playse SE_EXPMAX
+waitse
+release
+end
 
 sizeofmsg::
 	.string "SavBlock1 size: {STR_VAR_1}$"

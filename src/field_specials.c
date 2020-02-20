@@ -77,7 +77,7 @@
 #include "pokedex.h"
 #include "money.h"
 #include "menu_helpers.h"
-//#include "mgba.h"
+#include "mgba.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -4460,7 +4460,7 @@ void PasscodeGiveMonWithNature(void)
     u8 nature = (VarGet(VAR_TEMP_C));
     u8 fixedIv = 31;
     u8 level = 100;
-    //mgba_printf(MGBA_LOG_INFO, "giving species # %d, at level %d with nature %d and fixed IV value of %d in slot %d", species, level, nature, fixedIv, slot);
+    mgba_printf(MGBA_LOG_INFO, "giving species # %d, at level %d with nature %d and fixed IV value of %d in slot %d", species, level, nature, fixedIv, slot);
 
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
     CalculateMonStats(&gPlayerParty[slot]);
@@ -4832,89 +4832,26 @@ u8 WhatStageIsGiftPoke(void)
 void RyuDawnGiftPoke(void)
 {
     u8 iv = 126;
-    u8 partycount = 0;
+    u8 partycount = (CalculatePlayerPartyCount());
     u8 friendship = 70;
-    partycount = VarGet(gSpecialVar_Result);
-    switch (partycount)
-    {
-        case 0: break;
-        case 1:
-            CreateMonWithNature(&gPlayerParty[1], SPECIES_SNEASEL, 24, 31, 3);
-            SetMonData(&gPlayerParty[1], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[1], MON_DATA_SPEED_EV, &iv);
-            SetMonData(&gPlayerParty[1], MON_DATA_FRIENDSHIP, &friendship);
-            break;
-        case 2:
-            CreateMonWithNature(&gPlayerParty[2], SPECIES_SNEASEL, 24, 31, 3);
-            SetMonData(&gPlayerParty[2], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[2], MON_DATA_SPEED_EV, &iv);
-            SetMonData(&gPlayerParty[2], MON_DATA_FRIENDSHIP, &friendship);
-            break;
-        case 3:
-            CreateMonWithNature(&gPlayerParty[3], SPECIES_SNEASEL, 24, 31, 3);
-            SetMonData(&gPlayerParty[3], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[3], MON_DATA_SPEED_EV, &iv);
-            SetMonData(&gPlayerParty[3], MON_DATA_FRIENDSHIP, &friendship);
-            break;
-        case 4:
-            CreateMonWithNature(&gPlayerParty[4], SPECIES_SNEASEL, 24, 31, 3);
-            SetMonData(&gPlayerParty[4], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[4], MON_DATA_SPEED_EV, &iv);
-            SetMonData(&gPlayerParty[4], MON_DATA_FRIENDSHIP, &friendship);
-            break;
-        case 5:
-            CreateMonWithNature(&gPlayerParty[5], SPECIES_SNEASEL, 24, 31, 3);
-            SetMonData(&gPlayerParty[5], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[5], MON_DATA_SPEED_EV, &iv);
-            SetMonData(&gPlayerParty[5], MON_DATA_FRIENDSHIP, &friendship);
-            break;
-        case 6: break;
-        default: break;
-    }
+
+    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNEASEL, 24, 31, MON_FEMALE, NATURE_ADAMANT, 0);
+    SetMonData(&gPlayerParty[partycount], MON_DATA_ATK_EV, &iv);
+    SetMonData(&gPlayerParty[partycount], MON_DATA_SPEED_EV, &iv);
+    SetMonData(&gPlayerParty[partycount], MON_DATA_FRIENDSHIP, &friendship);
 }
 
 void RyuBrendanGiftPoke(void)
 {
     u8 iv = 126;
-    u8 partycount = 0;
-    u8 friendship = 35;
+    u8 partycount = (CalculatePlayerPartyCount());
+    u8 friendship = 70;
+
     partycount = VarGet(gSpecialVar_Result);
-    switch (partycount)
-    {
-        case 0: break;
-        case 1:
-            CreateMonWithNature(&gPlayerParty[1], SPECIES_SNORUNT, 24, 31, 15);
-            SetMonData(&gPlayerParty[1], MON_DATA_SPATK_EV, &iv);
-            SetMonData(&gPlayerParty[1], MON_DATA_SPEED_EV, &iv);
-            SetMonData(&gPlayerParty[1], MON_DATA_FRIENDSHIP, &friendship);
-            break;
-        case 2:
-            CreateMonWithNature(&gPlayerParty[2], SPECIES_SNORUNT, 24, 31, 15);
-            SetMonData(&gPlayerParty[2], MON_DATA_SPATK_EV, &iv);
-            SetMonData(&gPlayerParty[2], MON_DATA_SPEED_EV, &iv);
-            SetMonData(&gPlayerParty[2], MON_DATA_FRIENDSHIP, &friendship);
-            break;
-        case 3:
-            CreateMonWithNature(&gPlayerParty[3], SPECIES_SNORUNT, 24, 31, 15);
-            SetMonData(&gPlayerParty[3], MON_DATA_SPATK_EV, &iv);
-            SetMonData(&gPlayerParty[3], MON_DATA_SPEED_EV, &iv);
-            SetMonData(&gPlayerParty[3], MON_DATA_FRIENDSHIP, &friendship);
-            break;
-        case 4:
-            CreateMonWithNature(&gPlayerParty[4], SPECIES_SNORUNT, 24, 31, 15);
-            SetMonData(&gPlayerParty[4], MON_DATA_SPATK_EV, &iv);
-            SetMonData(&gPlayerParty[4], MON_DATA_SPEED_EV, &iv);
-            SetMonData(&gPlayerParty[4], MON_DATA_FRIENDSHIP, &friendship);
-            break;
-        case 5:
-            CreateMonWithNature(&gPlayerParty[5], SPECIES_SNORUNT, 24, 31, 15);
-            SetMonData(&gPlayerParty[5], MON_DATA_SPATK_EV, &iv);
-            SetMonData(&gPlayerParty[5], MON_DATA_SPEED_EV, &iv);
-            SetMonData(&gPlayerParty[5], MON_DATA_FRIENDSHIP, &friendship);
-            break;
-        case 6: break;
-        default: break;
-    }
+    CreateMonWithGenderNatureLetter(&gPlayerParty[partycount], SPECIES_SNORUNT, 24, 31, MON_FEMALE, NATURE_MODEST, 0);
+    SetMonData(&gPlayerParty[partycount], MON_DATA_SPATK_EV, &iv);
+    SetMonData(&gPlayerParty[partycount], MON_DATA_SPEED_EV, &iv);
+    SetMonData(&gPlayerParty[partycount], MON_DATA_FRIENDSHIP, &friendship);
 }
 
 void RyuDevCheck(void)
@@ -4935,6 +4872,20 @@ void checkbadgecount(void)
             badgeCount++;
     }
     gSpecialVar_Result = badgeCount;
+}
+
+void checksymbolcount(void)
+{
+    s32 i;
+    s32 symbolcount = 0;
+
+    for(i = FLAG_SYS_TOWER_SILVER; i < FLAG_SYS_PYRAMID_GOLD; i += 2)
+    {
+        if(FlagGet(i))
+            symbolcount++;
+    }
+
+    gSpecialVar_Result = symbolcount;
 }
 
 int CountBadges(void)

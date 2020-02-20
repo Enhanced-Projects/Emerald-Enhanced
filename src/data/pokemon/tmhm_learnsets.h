@@ -8645,8 +8645,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM11_SUNNY_DAY)
 											| TMHM(TM06_TOXIC)),
 
-    [SPECIES_CRYSTAL_ONIX]    = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
-											| TMHM(TM08_BULK_UP)
+    [SPECIES_CRYSTAL_ONIX]    = TMHM_LEARNSET(TMHM(TM08_BULK_UP)
 											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM28_DIG)
 											| TMHM(TM32_DOUBLE_TEAM)

@@ -159,6 +159,7 @@ IT_FrontierMode::
 	setvar VAR_RYU_PRICE_MULTIPLIER 1000
 	takemoney 3000
 	msgbox IT_FrontierOutro
+	setflag FLAG_SYS_FRONTIER_PASS
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setflag FLAG_RYU_FRONTIER_MODE
 	checkplayergender

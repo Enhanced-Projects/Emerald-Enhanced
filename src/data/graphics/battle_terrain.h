@@ -37,6 +37,10 @@ const u32 gBattleTerrainTiles_Building[] = INCBIN_U32("graphics/battle_terrain/b
 const u32 gBattleTerrainPalette_Frontier[] = INCBIN_U32("graphics/battle_terrain/stadium/battle_frontier.gbapal.lz"); // this is also used for link battles
 const u32 gBattleTerrainTilemap_Building[] = INCBIN_U32("graphics/battle_terrain/building/map.bin.lz");
 
+const u32 gBattleTerrainTilemap_FrontierMap[] = INCBIN_U32("graphics/battle_terrain/building/FrontierBattleSceneMap.bin.lz");
+const u32 gBattleTerrainPalette_FrontierPalette[] = INCBIN_U32("graphics/battle_terrain/building/FrontierBattleScenePalette.gbapal.lz");
+const u32 gBattleTerrainTiles_FrontierTiles[] = INCBIN_U32("graphics/battle_terrain/building/FrontierBattleSceneTiles.4bpp.lz");
+
 const u32 gBattleTerrainTiles_Stadium[] = INCBIN_U32("graphics/battle_terrain/stadium/tiles.4bpp.lz");
 const u32 gBattleTerrainTilemap_Stadium[] = INCBIN_U32("graphics/battle_terrain/stadium/map.bin.lz");
 

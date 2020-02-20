@@ -169,7 +169,7 @@ void AgbMain()
         }
 
         PlayTimeCounter_Update();
-        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 625);
+        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 6255);
         mgba_open();
         MapMusicMain();
         WaitForVBlank();
