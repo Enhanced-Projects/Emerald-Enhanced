@@ -609,11 +609,11 @@ RyuGymItemReward3::
 
 RyuGymItemReward4::
 	giveitem ITEM_TM50
+	setflag FLAG_RYU_GYM4HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 4
 	additem ITEM_GREAT_BALL, 4
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
-	setflag FLAG_RYU_GYM4HANDOUT
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
 

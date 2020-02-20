@@ -27,6 +27,19 @@ Route119_EventScript_MoveInstituteWorkersDownstairs:: @ 81F4466
 	clearflag FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS
 	setvar VAR_WEATHER_INSTITUTE_STATE, 2
 	return
+	
+r119_CheckOnQuest::
+	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
+	lockall
+	msgbox WIClosed, MSGBOX_SIGN
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepDown
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
+	
+WIClosed:
+	.string "{COLOR DARK_GREY}{SHADOW RED}Unauthorised individual detected.\nAccess Denied.$"
 
 Route119_EventScript_CyclingTriathleteM:: @ 81F476B
 	msgbox Route119_Text_TallGrassSnaresBikeTires, MSGBOX_NPC

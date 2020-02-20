@@ -378,6 +378,7 @@ LG_PartnerExit:
 	step_end
 
 LavaridgeTown_Gym_1F_EventScript_GiveOverheat2:: @ 81FE81D
+	goto_if_set FLAG_RECEIVED_TM50, ryu_end
 	giveitem ITEM_TM50
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_ShowBagIsFull

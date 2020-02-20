@@ -77,7 +77,7 @@
 #include "pokedex.h"
 #include "money.h"
 #include "menu_helpers.h"
-#include "mgba.h"
+//#include "mgba.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -4460,7 +4460,7 @@ void PasscodeGiveMonWithNature(void)
     u8 nature = (VarGet(VAR_TEMP_C));
     u8 fixedIv = 31;
     u8 level = 100;
-    mgba_printf(MGBA_LOG_INFO, "giving species # %d, at level %d with nature %d and fixed IV value of %d in slot %d", species, level, nature, fixedIv, slot);
+    //mgba_printf(MGBA_LOG_INFO, "giving species # %d, at level %d with nature %d and fixed IV value of %d in slot %d", species, level, nature, fixedIv, slot);
 
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
     CalculateMonStats(&gPlayerParty[slot]);

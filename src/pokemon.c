@@ -49,7 +49,7 @@
 #include "constants/species.h"
 #include "constants/trainers.h"
 #include "constants/weather.h"
-#include "mgba.h"
+//#include "mgba.h"
 struct SpeciesItem
 {
     u16 species;

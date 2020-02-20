@@ -39,6 +39,8 @@ FT_DevonMission3::
 	lock
 	faceplayer
 	msgbox FT_OnMission3Msg MSGBOX_DEFAULT
+	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
 	release
 	end
 	

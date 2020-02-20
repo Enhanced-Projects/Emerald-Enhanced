@@ -212,11 +212,6 @@ MtPyre_Summit_EventScript_OldManNewTale:: @ 8232199
 MtPyre_Summit_EventScript_OldLady:: @ 82321A2
 	lock
 	faceplayer
-	goto_if_set FLAG_RETURNED_RED_OR_BLUE_ORB, MtPyre_Summit_EventScript_OldLadyAfterOrbsReturned
-	compare VAR_MT_PYRE_STATE, 3
-	call_if_ge MtPyre_Summit_EventScript_OldLadyOrbsReturned
-	goto_if_set FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, MtPyre_Summit_EventScript_OldLadyLegendariesAwake
-	msgbox MtPyre_Summit_Text_OrbsHaveBeenTaken, MSGBOX_DEFAULT
 	release
 	end
 

@@ -253,6 +253,7 @@ LC_AH_NoJoin:
 LC_AH_Mission2::
 	msgbox LC_AH_Shelly_mission2msg MSGBOX_DEFAULT
 	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
 	release
 	end
 	
@@ -298,6 +299,7 @@ LC_AH_Mission4::
 	closemessage
 	applymovement EVENT_OBJ_ID_PLAYER, LH_M3Exit
 	waitmovement 0
+	setvar VAR_MT_PYRE_STATE, 2
     settrainerflag TRAINER_GRUNT_MT_PYRE_1
     settrainerflag TRAINER_GRUNT_MT_PYRE_2
     settrainerflag TRAINER_GRUNT_MT_PYRE_3

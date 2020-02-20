@@ -21,7 +21,9 @@ BattleFrontier_OutsideWest_EventScript_FerryAttendant:: @ 823D3F0
 	end
 
 Ryu_FrontierModeCheckLeave::
-	goto_if_unset FLAG_COLLECTED_ALL_SILVER_SYMBOLS, RyuFrontierModeUnlockHoenn
+	special checksymbolcount
+	compare VAR_RESULT, 7
+	goto_if_ne RyuFrontierModeUnlockHoenn
 	return
 	end
 	

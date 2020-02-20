@@ -23,7 +23,7 @@
 #include "intro.h"
 #include "main.h"
 #include "trainer_hill.h"
-#include "mgba.h"
+//#include "mgba.h"
 #include "event_data.h"
 
 static void VBlankIntr(void);
@@ -170,7 +170,7 @@ void AgbMain()
 
         PlayTimeCounter_Update();
         VarSet(VAR_LAST_KNOWN_GAME_VERSION, 6255);
-        mgba_open();
+        //mgba_open();
         MapMusicMain();
         WaitForVBlank();
     }
