@@ -806,6 +806,7 @@ static void _GiveEggFromDaycare(struct DayCare *daycare)
     u8 parentSlots[DAYCARE_MON_COUNT];
     bool8 isEgg;
     u8 ability = 0;
+    u8 genderless = 0xFF;
 
     species = DetermineEggSpeciesAndParentSlots(daycare, parentSlots);
     AlterEggSpeciesWithIncenseItem(&species, daycare);
@@ -813,6 +814,18 @@ static void _GiveEggFromDaycare(struct DayCare *daycare)
     InheritIVs(&egg, daycare);
     BuildEggMoveset(&egg, &daycare->mons[parentSlots[1]].mon, &daycare->mons[parentSlots[0]].mon);
     ability = (GetBoxMonData(&daycare->mons[parentSlots[0]], MON_DATA_ABILITY_NUM));
+        if (GetBoxMonData(&daycare->mons[parentSlots[0]], MON_DATA_SPECIES) == SPECIES_DITTO)
+            if (GetBoxMonData(&daycare->mons[parentSlots[1]], MON_DATA_ABILITY_NUM) == 2)
+            {
+                if (Random() % 100 <= 60)
+                {
+                    ability = 2;
+                }
+                else
+                {
+                    ability = (Random() % 2);
+                }
+            }       
 
     if (species == SPECIES_PICHU)
         GiveVoltTackleIfLightBall(&egg, daycare);

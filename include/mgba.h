@@ -24,9 +24,6 @@
 
 #include "gba/types.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 #define MGBA_LOG_FATAL 0
 #define MGBA_LOG_ERROR 1
@@ -37,9 +34,5 @@ extern "C" {
 void mgba_printf(int level, const char* string, ...);
 bool8 mgba_open(void);
 void mgba_close(void);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

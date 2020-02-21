@@ -4437,10 +4437,11 @@ void GivePlayerModdedMon(void)
     u16 move3 =  (VarGet(VAR_RYU_GCMS_MOVE3));
     u16 move4 =  (VarGet(VAR_RYU_GCMS_MOVE4));
     u8 ability = (VarGet(VAR_RYU_GCMS_ABILITY));
+    //mgba_printf(MGBA_LOG_INFO, "%d %d %d %d %d %d %d %d %d %d %d %d %d", species, nature, fixedIv, level, isEgg, slot, ball, move1, move2, move3, move4, ability);
 
     if (fixedIv > 31)
         fixedIv = 31;
-
+    //mgba_printf(MGBA_LOG_INFO, "Creating mon in slot %d. Species is %d, at level %d, with IV's of %d, and nature of %d");
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
     SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &isEgg);
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
