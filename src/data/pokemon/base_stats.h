@@ -3637,7 +3637,7 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_ARTICUNO] =
     {
         .baseHP        = 100,
-        .baseAttack    = 55,
+        .baseAttack    = 65,
         .baseDefense   = 120,
         .baseSpeed     = 50,
         .baseSpAttack  = 125,
@@ -3662,7 +3662,7 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_ZAPDOS] =
     {
         .baseHP        = 90,
-        .baseAttack    = 90,
+        .baseAttack    = 75,
         .baseDefense   = 120,
         .baseSpeed     = 100,
         .baseSpAttack  = 125,
@@ -3686,7 +3686,7 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_MOLTRES] =
     {
         .baseHP        = 90,
-        .baseAttack    = 100,
+        .baseAttack    = 90,
         .baseDefense   = 120,
         .baseSpeed     = 90,
         .baseSpAttack  = 125,

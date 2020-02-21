@@ -172,7 +172,7 @@ const struct Item gItems[] =
     {
         .name = _("Premier Ball"),
         .itemId = ITEM_PREMIER_BALL,
-        .price = 200,
+        .price = 800,
         .description = sPremierBallDesc,
         .pocket = POCKET_POKE_BALLS,
         .type = 11,
@@ -2763,7 +2763,7 @@ const struct Item gItems[] =
     {
         .name = _("Choice Band"),
         .itemId = ITEM_CHOICE_BAND,
-        .price = 30000,
+        .price = 20000,
         .holdEffect = HOLD_EFFECT_CHOICE_BAND,
         .description = sChoiceBandDesc,
         .pocket = POCKET_ITEMS,
