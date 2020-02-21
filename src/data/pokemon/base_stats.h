@@ -14255,10 +14255,10 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_MARACTUS] =
     {
         .baseHP        = 75,
-        .baseAttack    = 86,
-        .baseDefense   = 67,
+        .baseAttack    = 40,
+        .baseDefense   = 87,
         .baseSpeed     = 60,
-        .baseSpAttack  = 106,
+        .baseSpAttack  = 125,
         .baseSpDefense = 67,
         .type1 = TYPE_GRASS,
         .type2 = TYPE_GRASS,
@@ -14272,7 +14272,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_GRASS,
         .eggGroup2 = EGG_GROUP_GRASS,
-        .abilities = {ABILITY_WATER_ABSORB, ABILITY_CHLOROPHYLL},
+        .abilities = {ABILITY_WATER_ABSORB, ABILITY_SAND_RUSH},
         .abilityHidden = ABILITY_STORM_DRAIN,
         .bodyColor = BODY_COLOR_GREEN,
     },
