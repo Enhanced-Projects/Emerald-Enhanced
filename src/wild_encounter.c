@@ -39,6 +39,7 @@ static void FeebasSeedRng(u16 seed);
 static bool8 IsWildLevelAllowedByRepel(u8 level);
 static void ApplyFluteEncounterRateMod(u32 *encRate);
 static void ApplyCleanseTagEncounterRateMod(u32 *encRate);
+static bool8 TryGetAbilityInfluencedWildMonIndexFromTable(const struct WildPokemon *wildMon, u8 *monIndex, u8 encounterType);
 static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, u8 type, u8 ability, u8 *monIndex);
 static bool8 IsAbilityAllowingEncounter(u8 level);
 
@@ -423,6 +424,47 @@ enum
 #define WILD_CHECK_REPEL    0x1
 #define WILD_CHECK_KEEN_EYE 0x2
 
+static u8 sTypeAttractionTable[ABILITIES_COUNT][2] =
+{
+        [ABILITY_NORMALIZE] = {TYPE_NORMAL, TYPE_NONE},
+        [ABILITY_SIMPLE] = {TYPE_NORMAL, TYPE_NONE},
+        [ABILITY_DROUGHT] = {TYPE_FIRE, TYPE_NONE},
+        [ABILITY_BLAZE] = {TYPE_FIRE, TYPE_NONE},
+        [ABILITY_DRIZZLE] = {TYPE_WATER, TYPE_WATER},
+        [ABILITY_DAMP] = {TYPE_WATER, TYPE_WATER},
+        [ABILITY_FLOWER_VEIL] = {TYPE_GRASS, TYPE_NONE},
+        [ABILITY_OVERGROW] = {TYPE_GRASS, TYPE_NONE},
+        [ABILITY_GRASSY_SURGE] = {TYPE_GRASS, TYPE_NONE},
+        [ABILITY_STATIC] = {TYPE_ELECTRIC, TYPE_ELECTRIC},
+        [ABILITY_LIGHTNING_ROD] = {TYPE_ELECTRIC, TYPE_ELECTRIC},
+        [ABILITY_ELECTRIC_SURGE] = {TYPE_ELECTRIC, TYPE_ELECTRIC},
+        [ABILITY_SNOW_WARNING] = {TYPE_ICE, TYPE_ICE},
+        [ABILITY_REFRIGERATE] = {TYPE_ICE, TYPE_ICE},
+        [ABILITY_SCRAPPY] = {TYPE_FIGHTING, TYPE_NONE},
+        [ABILITY_DEFIANT] = {TYPE_FIGHTING, TYPE_NONE},
+        [ABILITY_HUSTLE] = {TYPE_FIGHTING, TYPE_NONE},
+        [ABILITY_STENCH] = {TYPE_POISON, TYPE_POISON},
+        [ABILITY_POISON_TOUCH] = {TYPE_POISON, TYPE_POISON},
+        [ABILITY_SAND_FORCE] = {TYPE_GROUND, TYPE_GROUND},
+        [ABILITY_EARLY_BIRD] = {TYPE_FLYING, TYPE_FLYING},
+        [ABILITY_AERILATE] = {TYPE_FLYING, TYPE_FLYING},
+        [ABILITY_TELEPATHY] = {TYPE_PSYCHIC, TYPE_PSYCHIC},
+        [ABILITY_PSYCHIC_SURGE] = {TYPE_PSYCHIC, TYPE_PSYCHIC},
+        [ABILITY_SWARM] = {TYPE_BUG, TYPE_BUG},
+        [ABILITY_SAND_STREAM] = {TYPE_ROCK, TYPE_ROCK},
+        [ABILITY_SHADOW_TAG] = {TYPE_GHOST, TYPE_GHOST},
+        [ABILITY_CURSED_BODY] = {TYPE_GHOST, TYPE_GHOST},
+        [ABILITY_STEELY_RESOLVE] = {TYPE_DRAGON, TYPE_NONE},
+        [ABILITY_PRANKSTER] = {TYPE_DARK, TYPE_NONE},
+        [ABILITY_BAD_DREAMS] = {TYPE_DARK, TYPE_NONE},
+        [ABILITY_DARK_AURA] = {TYPE_DARK, TYPE_NONE},
+        [ABILITY_MAGNET_PULL] = {TYPE_STEEL, TYPE_STEEL},
+        [ABILITY_PIXILATE] = {TYPE_FAIRY, TYPE_FAIRY},
+        [ABILITY_SWEET_VEIL] = {TYPE_FAIRY, TYPE_FAIRY},
+        [ABILITY_MISTY_SURGE] = {TYPE_FAIRY, TYPE_FAIRY},
+        [ABILITY_FAIRY_AURA] = {TYPE_FAIRY, TYPE_FAIRY}
+};
+
 static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 area, u8 flags)
 {
     u8 wildMonIndex = 0;
@@ -434,93 +476,13 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
     switch (area)
     {
     case WILD_AREA_LAND:
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_NORMAL, ABILITY_NORMALIZE, &wildMonIndex))
+        if (TryGetAbilityInfluencedWildMonIndexFromTable(wildMonInfo->wildPokemon, &wildMonIndex, 0))
             break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_NORMAL, ABILITY_SIMPLE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_FIRE, ABILITY_DROUGHT, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_FIRE, ABILITY_BLAZE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_DRIZZLE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_DAMP, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_GRASS, ABILITY_FLOWER_VEIL, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_GRASS, ABILITY_OVERGROW, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_GRASS, ABILITY_GRASSY_SURGE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_STATIC, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_LIGHTNING_ROD, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_ELECTRIC_SURGE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_ICE, ABILITY_SNOW_WARNING, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_ICE, ABILITY_REFRIGERATE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_FIGHTING, ABILITY_SCRAPPY, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_FIGHTING, ABILITY_DEFIANT, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_FIGHTING, ABILITY_HUSTLE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_POISON, ABILITY_STENCH, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_POISON, ABILITY_POISON_TOUCH, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_GROUND, ABILITY_SAND_FORCE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_FLYING, ABILITY_EARLY_BIRD, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_FLYING, ABILITY_AERILATE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_PSYCHIC, ABILITY_TELEPATHY, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_PSYCHIC, ABILITY_PSYCHIC_SURGE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_BUG, ABILITY_SWARM, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_ROCK, ABILITY_SAND_STREAM, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_GHOST, ABILITY_SHADOW_TAG, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_GHOST, ABILITY_CURSED_BODY, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_DRAGON, ABILITY_STEELY_RESOLVE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_DARK, ABILITY_PRANKSTER, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_DARK, ABILITY_BAD_DREAMS, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_DARK, ABILITY_DARK_AURA, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_STEEL, ABILITY_MAGNET_PULL, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_FAIRY, ABILITY_PIXILATE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_FAIRY, ABILITY_SWEET_VEIL, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_FAIRY, ABILITY_MISTY_SURGE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_FAIRY, ABILITY_FAIRY_AURA, &wildMonIndex))
-            break;
-
+        
         wildMonIndex = ChooseWildMonIndex_Land();
         break;
     case WILD_AREA_WATER:
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_NORMAL, ABILITY_NORMALIZE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_NORMAL, ABILITY_SIMPLE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_DRIZZLE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_DAMP, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_BUG, ABILITY_SWARM, &wildMonIndex))
+        if (TryGetAbilityInfluencedWildMonIndexFromTable(wildMonInfo->wildPokemon, &wildMonIndex, 1))
             break;
 
         wildMonIndex = ChooseWildMonIndex_WaterRock();
@@ -1091,6 +1053,22 @@ static bool8 TryGetRandomWildMonIndexByType(const struct WildPokemon *wildMon, u
     *monIndex = validIndexes[Random() % validMonCount];
     return TRUE;
 }
+
+static bool8 TryGetAbilityInfluencedWildMonIndexFromTable(const struct WildPokemon *wildMon, u8 *monIndex, u8 encounterType)
+{
+    // marill, pooch, pooch, marill, marill, marill, marill, marill
+    // mank, chesp, farfetched, pooch, venonat, chesp, pooch
+    u16 type = sTypeAttractionTable[GetMonAbility(&gPlayerParty[0])][encounterType];
+    if (GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
+        return FALSE;
+    else if (type == TYPE_NONE)
+        return FALSE;
+    else if (Random() % 2 != 0)
+        return FALSE;
+
+    return TryGetRandomWildMonIndexByType(wildMon, type, LAND_WILD_COUNT, monIndex);
+}
+
 
 static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, u8 type, u8 ability, u8 *monIndex)
 {
