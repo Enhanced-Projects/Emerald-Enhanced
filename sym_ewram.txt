@@ -146,6 +146,7 @@
 	.include "src/trainer_hill.o"
 	.include "src/rayquaza_scene.o"
 	.include "src/cutscene.o"
+	.include "src/battle_util.c"
 
 	gSoundInfo:
         .space 0xFB0
