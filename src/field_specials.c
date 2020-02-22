@@ -5606,7 +5606,7 @@ int RyuSwapRotomForm(void)
     u16 m = 0;
     u16 rotomSpecies = 0;
     u16 rotomMove = 0;
-    u16 moveSlot = 0;
+    u16 moveSlot = 69;
     bool8 hasMon = FALSE;
     u16 monSlot = 0;
     u16 move = 0;
@@ -5625,87 +5625,28 @@ int RyuSwapRotomForm(void)
         }
 
    if (hasMon == FALSE)
-        {
-            return 0;
-        }
+    {
+        return 0;
+    }
 
     for (b = 0; b < MAX_MON_MOVES; b++)
     {
         for (m = 0; m < ARRAY_COUNT(sRotomMoves); m++)
         {
-            switch (b)
+            if (GetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE1 + b) == (sRotomMoves[m]))
             {
-                case 0:
-                {
-                    if (GetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE1) == (sRotomMoves[m]))
-                    {
-                        moveSlot = 1;
-                        break;
-                    }
-                }
-                case 1:
-                {
-                    if (GetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE2) == (sRotomMoves[m]))
-                    {
-                        moveSlot = 2;
-                        break;
-                    }
-                }
-                case 2:
-                {
-                    if (GetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE3) == (sRotomMoves[m]))
-                    {
-                        moveSlot = 3;
-                        break;
-                    }
-                }
-                case 3: 
-                {
-                    if (GetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE4) == (sRotomMoves[m]))
-                    {
-                        moveSlot = 4;
-                        break;
-                    }
-                }
+                moveSlot = b;
             }
         }
     }
     move = (VarGet(VAR_TEMP_4));
     species = (VarGet(VAR_TEMP_5));
 
-    switch (moveSlot)
+    if (moveSlot == 69)
     {
-        case 0:
-            {
-                return 2;
-                break;
-            }
-        case 1:
-            {
-                SetMonMoveSlot(&gPlayerParty[monSlot], move, moveSlot);
-                SetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE1, &move);
-                break;
-            }
-        case 2:
-            {
-                SetMonMoveSlot(&gPlayerParty[monSlot], move, moveSlot);
-                SetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE2, &move);
-                break;
-            }
-        case 3:
-            {
-                SetMonMoveSlot(&gPlayerParty[monSlot], move, moveSlot);
-                SetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE3, &move);
-                break;
-            }
-        case 4:
-            {
-                SetMonMoveSlot(&gPlayerParty[monSlot], move, moveSlot);
-                SetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE4, &move);
-                break;
-            }
+        return 2;
     }
-
+    SetMonMoveSlot(&gPlayerParty[monSlot], move, moveSlot);
     SetMonData(&gPlayerParty[monSlot], MON_DATA_SPECIES, &species);
     return 1;
 }
