@@ -6089,8 +6089,10 @@ static void Cmd_getmoneyreward(void)
     moneyReward *= badges;
 
     if (gHasAmuletEffectActive == TRUE)
-        moneyReward *= 2;
-
+    {
+        moneyReward *= 2;   
+        gHasAmuletEffectActive = FALSE;
+    }
     AddMoney(&gSaveBlock1Ptr->money, moneyReward);
 
     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, moneyReward);
