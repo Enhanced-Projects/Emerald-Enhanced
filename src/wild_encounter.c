@@ -424,45 +424,45 @@ enum
 #define WILD_CHECK_REPEL    0x1
 #define WILD_CHECK_KEEN_EYE 0x2
 
-static u8 sTypeAttractionTable[ABILITIES_COUNT][2] =
+static u8 sTypeAttractionTable[ABILITIES_COUNT][2][2] =
 {
-        [ABILITY_NORMALIZE] = {TYPE_NORMAL, TYPE_NONE},
-        [ABILITY_SIMPLE] = {TYPE_NORMAL, TYPE_NONE},
-        [ABILITY_DROUGHT] = {TYPE_FIRE, TYPE_NONE},
-        [ABILITY_BLAZE] = {TYPE_FIRE, TYPE_NONE},
-        [ABILITY_DRIZZLE] = {TYPE_WATER, TYPE_WATER},
-        [ABILITY_DAMP] = {TYPE_WATER, TYPE_WATER},
-        [ABILITY_FLOWER_VEIL] = {TYPE_GRASS, TYPE_NONE},
-        [ABILITY_OVERGROW] = {TYPE_GRASS, TYPE_NONE},
-        [ABILITY_GRASSY_SURGE] = {TYPE_GRASS, TYPE_NONE},
-        [ABILITY_STATIC] = {TYPE_ELECTRIC, TYPE_ELECTRIC},
-        [ABILITY_LIGHTNING_ROD] = {TYPE_ELECTRIC, TYPE_ELECTRIC},
-        [ABILITY_ELECTRIC_SURGE] = {TYPE_ELECTRIC, TYPE_ELECTRIC},
-        [ABILITY_SNOW_WARNING] = {TYPE_ICE, TYPE_ICE},
-        [ABILITY_REFRIGERATE] = {TYPE_ICE, TYPE_ICE},
-        [ABILITY_SCRAPPY] = {TYPE_FIGHTING, TYPE_NONE},
-        [ABILITY_DEFIANT] = {TYPE_FIGHTING, TYPE_NONE},
-        [ABILITY_HUSTLE] = {TYPE_FIGHTING, TYPE_NONE},
-        [ABILITY_STENCH] = {TYPE_POISON, TYPE_POISON},
-        [ABILITY_POISON_TOUCH] = {TYPE_POISON, TYPE_POISON},
-        [ABILITY_SAND_FORCE] = {TYPE_GROUND, TYPE_GROUND},
-        [ABILITY_EARLY_BIRD] = {TYPE_FLYING, TYPE_FLYING},
-        [ABILITY_AERILATE] = {TYPE_FLYING, TYPE_FLYING},
-        [ABILITY_TELEPATHY] = {TYPE_PSYCHIC, TYPE_PSYCHIC},
-        [ABILITY_PSYCHIC_SURGE] = {TYPE_PSYCHIC, TYPE_PSYCHIC},
-        [ABILITY_SWARM] = {TYPE_BUG, TYPE_BUG},
-        [ABILITY_SAND_STREAM] = {TYPE_ROCK, TYPE_ROCK},
-        [ABILITY_SHADOW_TAG] = {TYPE_GHOST, TYPE_GHOST},
-        [ABILITY_CURSED_BODY] = {TYPE_GHOST, TYPE_GHOST},
-        [ABILITY_STEELY_RESOLVE] = {TYPE_DRAGON, TYPE_NONE},
-        [ABILITY_PRANKSTER] = {TYPE_DARK, TYPE_NONE},
-        [ABILITY_BAD_DREAMS] = {TYPE_DARK, TYPE_NONE},
-        [ABILITY_DARK_AURA] = {TYPE_DARK, TYPE_NONE},
-        [ABILITY_MAGNET_PULL] = {TYPE_STEEL, TYPE_STEEL},
-        [ABILITY_PIXILATE] = {TYPE_FAIRY, TYPE_FAIRY},
-        [ABILITY_SWEET_VEIL] = {TYPE_FAIRY, TYPE_FAIRY},
-        [ABILITY_MISTY_SURGE] = {TYPE_FAIRY, TYPE_FAIRY},
-        [ABILITY_FAIRY_AURA] = {TYPE_FAIRY, TYPE_FAIRY}
+        [ABILITY_NORMALIZE] = {{TYPE_NORMAL, TYPE_NONE}, {TRUE}},
+        [ABILITY_SIMPLE] = {{TYPE_NORMAL, TYPE_NONE}, {TRUE}},
+        [ABILITY_DROUGHT] = {{TYPE_FIRE, TYPE_NONE}, {TRUE}},
+        [ABILITY_BLAZE] = {{TYPE_FIRE, TYPE_NONE}, {TRUE}},
+        [ABILITY_DRIZZLE] = {{TYPE_WATER, TYPE_WATER}, {TRUE}},
+        [ABILITY_DAMP] = {{TYPE_WATER, TYPE_WATER}, {TRUE}},
+        [ABILITY_FLOWER_VEIL] = {{TYPE_GRASS, TYPE_NONE}, {TRUE}},
+        [ABILITY_OVERGROW] = {{TYPE_GRASS, TYPE_NONE}, {TRUE}},
+        [ABILITY_GRASSY_SURGE] = {{TYPE_GRASS, TYPE_NONE}, {TRUE}},
+        [ABILITY_STATIC] = {{TYPE_ELECTRIC, TYPE_ELECTRIC}, {TRUE}},
+        [ABILITY_LIGHTNING_ROD] = {{TYPE_ELECTRIC, TYPE_ELECTRIC}, {TRUE}},
+        [ABILITY_ELECTRIC_SURGE] = {{TYPE_ELECTRIC, TYPE_ELECTRIC}, {TRUE}},
+        [ABILITY_SNOW_WARNING] = {{TYPE_ICE, TYPE_ICE}, {TRUE}},
+        [ABILITY_REFRIGERATE] = {{TYPE_ICE, TYPE_ICE}, {TRUE}},
+        [ABILITY_SCRAPPY] = {{TYPE_FIGHTING, TYPE_NONE}, {TRUE}},
+        [ABILITY_DEFIANT] = {{TYPE_FIGHTING, TYPE_NONE}, {TRUE}},
+        [ABILITY_HUSTLE] = {{TYPE_FIGHTING, TYPE_NONE}, {TRUE}},
+        [ABILITY_STENCH] = {{TYPE_POISON, TYPE_POISON}, {TRUE}},
+        [ABILITY_POISON_TOUCH] = {{TYPE_POISON, TYPE_POISON}, {TRUE}},
+        [ABILITY_SAND_FORCE] = {{TYPE_GROUND, TYPE_GROUND}, {TRUE}},
+        [ABILITY_EARLY_BIRD] = {{TYPE_FLYING, TYPE_FLYING}, {TRUE}},
+        [ABILITY_AERILATE] = {{TYPE_FLYING, TYPE_FLYING}, {TRUE}},
+        [ABILITY_TELEPATHY] = {{TYPE_PSYCHIC, TYPE_PSYCHIC}, {TRUE}},
+        [ABILITY_PSYCHIC_SURGE] = {{TYPE_PSYCHIC, TYPE_PSYCHIC}, {TRUE}},
+        [ABILITY_SWARM] = {{TYPE_BUG, TYPE_BUG}, {TRUE}},
+        [ABILITY_SAND_STREAM] = {{TYPE_ROCK, TYPE_ROCK}, {TRUE}},
+        [ABILITY_SHADOW_TAG] = {{TYPE_GHOST, TYPE_GHOST}, {TRUE}},
+        [ABILITY_CURSED_BODY] = {{TYPE_GHOST, TYPE_GHOST}, {TRUE}},
+        [ABILITY_STEELY_RESOLVE] = {{TYPE_DRAGON, TYPE_NONE}, {TRUE}},
+        [ABILITY_PRANKSTER] = {{TYPE_DARK, TYPE_NONE}, {TRUE}},
+        [ABILITY_BAD_DREAMS] = {{TYPE_DARK, TYPE_NONE}, {TRUE}},
+        [ABILITY_DARK_AURA] = {{TYPE_DARK, TYPE_NONE}, {TRUE}},
+        [ABILITY_MAGNET_PULL] = {{TYPE_STEEL, TYPE_STEEL}, {TRUE}},
+        [ABILITY_PIXILATE] = {{TYPE_FAIRY, TYPE_FAIRY}, {TRUE}},
+        [ABILITY_SWEET_VEIL] = {{TYPE_FAIRY, TYPE_FAIRY}, {TRUE}},
+        [ABILITY_MISTY_SURGE] = {{TYPE_FAIRY, TYPE_FAIRY}, {TRUE}},
+        [ABILITY_FAIRY_AURA] = {{TYPE_FAIRY, TYPE_FAIRY}, {TRUE}}
 };
 
 static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 area, u8 flags)
@@ -1058,15 +1058,17 @@ static bool8 TryGetAbilityInfluencedWildMonIndexFromTable(const struct WildPokem
 {
     // marill, pooch, pooch, marill, marill, marill, marill, marill
     // mank, chesp, farfetched, pooch, venonat, chesp, pooch
-    u16 type = sTypeAttractionTable[GetMonAbility(&gPlayerParty[0])][encounterType];
+    
+    // using a pointer here is risky please be careful with UB 
+    u8 * table = sTypeAttractionTable[GetMonAbility(&gPlayerParty[0])][encounterType];
     if (GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
         return FALSE;
-    else if (type == TYPE_NONE)
+    else if (table[0] == TYPE_NONE || (table[0] == 0 && table[1] == FALSE))
         return FALSE;
     else if (Random() % 2 != 0)
         return FALSE;
 
-    return TryGetRandomWildMonIndexByType(wildMon, type, LAND_WILD_COUNT, monIndex);
+    return TryGetRandomWildMonIndexByType(wildMon, table[0], LAND_WILD_COUNT, monIndex);
 }
 
 

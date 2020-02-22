@@ -5602,8 +5602,6 @@ int RyuSwapRotomForm(void)
 {
     u16 i = 0;
     u16 j = 0;
-    u16 b = 0;
-    u16 m = 0;
     u16 rotomSpecies = 0;
     u16 rotomMove = 0;
     u16 moveSlot = 69;
@@ -5613,29 +5611,29 @@ int RyuSwapRotomForm(void)
     u16 species = 0;
 
     for (i = 0; i < (CalculatePlayerPartyCount()); i++)
+    {
+        for (j = 0; j < ARRAY_COUNT(sRotomForms); j++)
         {
-            for (j = 0; j < ARRAY_COUNT(sRotomForms); j++)
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == (sRotomForms[j]))
             {
-                if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == (sRotomForms[j]))
-                {
-                    hasMon = TRUE;
-                    monSlot = i;
-                }
+                hasMon = TRUE;
+                monSlot = i;
             }
         }
+    }
 
-   if (hasMon == FALSE)
+    if (hasMon == FALSE)
     {
         return 0;
     }
 
-    for (b = 0; b < MAX_MON_MOVES; b++)
+    for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        for (m = 0; m < ARRAY_COUNT(sRotomMoves); m++)
+        for (j = 0; j < ARRAY_COUNT(sRotomMoves); j++)
         {
-            if (GetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE1 + b) == (sRotomMoves[m]))
+            if (GetMonData(&gPlayerParty[monSlot], MON_DATA_MOVE1 + i) == (sRotomMoves[j]))
             {
-                moveSlot = b;
+                moveSlot = i;
             }
         }
     }
