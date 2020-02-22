@@ -355,6 +355,7 @@ TC_Drugs_Mart:
 	.2byte ITEM_ZINC
 	.2byte ITEM_CALCIUM
 	.2byte ITEM_CARBOS
+	.2byte ITEM_ABILITY_CAPSULE
 	.2byte ITEM_NONE
 	release
 	end

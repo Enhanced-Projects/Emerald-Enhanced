@@ -182,14 +182,7 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	removeitem ITEM_SHINY_CHARM, 100
-	removeitem ITEM_SHINY_CHARM, 100
-	removeitem ITEM_SHINY_CHARM, 100
-	removeitem ITEM_SHINY_CHARM, 100
-	special checksymbolcount
-	buffernumberstring 0, VAR_RESULT
-	msgbox RDB_CTVMsg
-	setflag FLAG_SYS_FRONTIER_PASS
+	goto RyuDebug_Init_GiveAll
 	special HealPlayerParty
 	release
 	end

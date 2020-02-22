@@ -77,6 +77,7 @@
 #include "constants/songs.h"
 #include "constants/species.h"
 #include "constants/vars.h"
+#include "random.h"
 
 #define PARTY_PAL_SELECTED     (1 << 0)
 #define PARTY_PAL_FAINTED      (1 << 1)
@@ -4399,18 +4400,16 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
 
 void Task_AbilityCapsule(u8 taskId)
 {
-    static const u8 askText[] = _("Would you like to change {STR_VAR_1}'s\nability to {STR_VAR_2}?");
-    static const u8 doneText[] = _("{STR_VAR_1}'s ability became\n{STR_VAR_2}!{PAUSE_UNTIL_PRESS}");
+    static const u8 askText[] = _("Would you like to remove {STR_VAR_1}'s\nHidden Ability?");
+    static const u8 doneText[] = _("{STR_VAR_1}'s ability was removed!");
     s16 *data = gTasks[taskId].data;
+    tAbilityNum = (Random() % 2);
 
     switch (tState)
     {
     case 0:
         // Can't use.
-        if (gBaseStats[tSpecies].abilities[0] == gBaseStats[tSpecies].abilities[1]
-            || gBaseStats[tSpecies].abilities[1] == 0
-            || tAbilityNum > 1
-            || !tSpecies)
+        if (!(GetMonData(&gPlayerParty[tMonId], MON_DATA_ABILITY_NUM) == 2))
         {
             gPartyMenuUseExitCallback = FALSE;
             PlaySE(SE_SELECT);

@@ -10,15 +10,10 @@ Route114_LanettesHouse_OnTransition: @ 822B2CE
 Route114_LanettesHouse_EventScript_Lanette:: @ 822B2D2
 	lock
 	faceplayer
+	setflag FLAG_SYS_PC_LANETTE
 	goto_if_set FLAG_RYU_LANETTE_EVENT1, LNH_Outro
 	goto_if_set FLAG_RYU_LANETTE_INTRO, LNH_StillLooking
-	goto_if_set FLAG_RECEIVED_DOLL_LANETTE, Route114_LanettesHouse_EventScript_OfferAdvice
-	setflag FLAG_SYS_PC_LANETTE
-	msgbox Route114_LanettesHouse_Text_EverythingClutteredKeepThis, MSGBOX_DEFAULT
-	removedecoration DECOR_LOTAD_DOLL
-	compare VAR_RESULT, FALSE
-	goto_if_eq Common_EventScript_ShowNoRoomForDecor
-	setflag FLAG_RECEIVED_DOLL_LANETTE
+	goto Route114_LanettesHouse_EventScript_OfferAdvice
 	release
 	end
 
