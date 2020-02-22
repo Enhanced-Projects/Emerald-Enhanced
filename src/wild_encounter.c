@@ -424,7 +424,7 @@ enum
 #define WILD_CHECK_REPEL    0x1
 #define WILD_CHECK_KEEN_EYE 0x2
 
-static u8 sTypeAttractionTable[ABILITIES_COUNT][2][2] =
+static const u8 sTypeAttractionTable[ABILITIES_COUNT][2][2] =
 {
         [ABILITY_NORMALIZE] = {{TYPE_NORMAL, TYPE_NONE}, {TRUE}},
         [ABILITY_SIMPLE] = {{TYPE_NORMAL, TYPE_NONE}, {TRUE}},
@@ -1054,21 +1054,41 @@ static bool8 TryGetRandomWildMonIndexByType(const struct WildPokemon *wildMon, u
     return TRUE;
 }
 
+static const u8 sWildCount[] =
+{
+    LAND_WILD_COUNT,
+    WATER_WILD_COUNT,
+    ROCK_WILD_COUNT,
+    FISH_WILD_COUNT
+};
+
+//#include "mgba.h"
+
 static bool8 TryGetAbilityInfluencedWildMonIndexFromTable(const struct WildPokemon *wildMon, u8 *monIndex, u8 encounterType)
 {
-    // marill, pooch, pooch, marill, marill, marill, marill, marill
-    // mank, chesp, farfetched, pooch, venonat, chesp, pooch
-    
-    // using a pointer here is risky please be careful with UB 
-    u8 * table = sTypeAttractionTable[GetMonAbility(&gPlayerParty[0])][encounterType];
-    if (GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
-        return FALSE;
-    else if (table[0] == TYPE_NONE || (table[0] == 0 && table[1] == FALSE))
-        return FALSE;
-    else if (Random() % 2 != 0)
-        return FALSE;
+    u32 ability = GetMonAbility(&gPlayerParty[0]);
 
-    return TryGetRandomWildMonIndexByType(wildMon, table[0], LAND_WILD_COUNT, monIndex);
+    //mgba_open();
+
+    if (GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
+    {
+        //mgba_printf(MGBA_LOG_DEBUG, "Attraction Debug, Mon is an Egg");
+        return FALSE;
+    }   
+    else if (sTypeAttractionTable[ability][0][encounterType] == TYPE_NONE || (sTypeAttractionTable[ability][0][encounterType] == 0 && sTypeAttractionTable[ability][1][0] == FALSE))
+    {
+        //mgba_printf(MGBA_LOG_DEBUG, "Attraction Debug, No Attr, eT = %d, a = %d, arrAcceT = %d, arrAcc2 = %d", encounterType, ability, sTypeAttractionTable[ability][0][encounterType], sTypeAttractionTable[ability][1][0]);
+        return FALSE;
+    }   
+    else if (Random() % 2 != 0)
+    {
+        //mgba_printf(MGBA_LOG_DEBUG, "Attraction Debug, I lost the run to RNG dude");
+        return FALSE;
+    }   
+    
+    //mgba_printf(MGBA_LOG_DEBUG, "Attraction Debug, Attr, eT = %d, a = %d, arrAcceT = %d, arrAcc2 = %d, wc = %d", encounterType, ability, sTypeAttractionTable[ability][0][encounterType], sTypeAttractionTable[ability][1][0], sWildCount[encounterType]);
+
+    return TryGetRandomWildMonIndexByType(wildMon, sTypeAttractionTable[ability][0][encounterType], sWildCount[encounterType], monIndex);
 }
 
 
