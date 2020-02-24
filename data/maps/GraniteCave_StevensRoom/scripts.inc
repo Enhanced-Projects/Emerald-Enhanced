@@ -122,3 +122,56 @@ GraniteCave_StevensRoom_Text_OhBagIsFull: @ 822DFAA
 	.string "Oh, your Pack is full…\n"
 	.string "That's too bad, then.$"
 
+GC_JIRACHI_ENC::
+    goto_if_unset FLAG_SYS_GAME_CLEAR, GC1_NOTWORTHY
+    goto_if_set FLAG_RYU_JIRACHI, GC1_RYUSCR2
+	msgbox GC1_RYUMSG_TOUCHQ, MSGBOX_YESNO
+	compare VAR_RESULT 1
+	goto_if_ne GC1_RYUSCR3
+	msgbox GC1_RYUMSG_TOUCHED
+	playmoncry SPECIES_JIRACHI, 0
+	closemessage
+	delay 10
+	waitmoncry
+	setwildbattle SPECIES_JIRACHI, 40, ITEM_KINGS_ROCK
+	setflag FLAG_RYU_JIRACHI
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	releaseall
+	end
+	
+GC1_NOTWORTHY::
+	msgbox GC1_NotAvailable MSGBOX_DEFAULT
+	release
+	end
+
+GC1_NotAvailable:
+    .string "The wall sparkles strangely.$"
+
+GC1_RYUSCR2::
+    msgbox GC1_RYUMSG_DEAD MSGBOX_DEFAULT
+	closemessage
+	releaseall
+	end
+
+GC1_RYUSCR3::
+    msgbox GC1_RYUMSG_NOTOUCH MSGBOX_DEFAULT
+	closemessage
+	releaseall
+	end
+
+GC1_RYUMSG_TOUCHQ:
+    .string "{PLAYER}: This wall sparkles beautifully.\n"
+	.string "as if it was touched by a sky spirit.\p"
+	.string "touch the wall?$"
+
+GC1_RYUMSG_DEAD:
+    .string "The wall shows ancient text.$"
+
+GC1_RYUMSG_NOTOUCH:
+    .string "Seems too creepy.$"
+
+GC1_RYUMSG_TOUCHED:
+    .string "{PLAYER} touched the wall.\p"
+	.string "You hear the sound of startust falling.$"
+

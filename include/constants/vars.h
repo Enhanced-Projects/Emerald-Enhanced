@@ -142,7 +142,7 @@
 #define VAR_ROUTE128_STATE                   0x407B
 #define VAR_ROUTE129_STATE                   0x407C // Unused Var
 #define VAR_ROUTE130_STATE                   0x407D // Unused Var
-#define VAR_UNUSED_0x407E                    0x407E // Unused Var
+#define FLAG_RYU_MOLTRES                     0x407E // Unused Var
 #define VAR_UNUSED_0x407F                    0x407F // Unused Var
 #define VAR_UNUSED_0x4080                    0x4080 // Unused Var
 #define VAR_UNUSED_0x4081                    0x4081 // Unused Var

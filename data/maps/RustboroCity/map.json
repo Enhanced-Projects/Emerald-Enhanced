@@ -154,8 +154,8 @@
             "type": "trigger",
             "var": "VAR_RUSTBORO_CITY_STATE",
             "var_value": "2",
-            "x": 30,
-            "y": 9
+            "x": 28,
+            "y": 6
         },
         {
             "elevation": 3,
@@ -163,8 +163,8 @@
             "type": "trigger",
             "var": "VAR_RUSTBORO_CITY_STATE",
             "var_value": "2",
-            "x": 29,
-            "y": 10
+            "x": 28,
+            "y": 6
         },
         {
             "elevation": 3,
@@ -172,8 +172,8 @@
             "type": "trigger",
             "var": "VAR_RUSTBORO_CITY_STATE",
             "var_value": "2",
-            "x": 30,
-            "y": 11
+            "x": 28,
+            "y": 6
         },
         {
             "elevation": 3,
@@ -181,8 +181,8 @@
             "type": "trigger",
             "var": "VAR_RUSTBORO_CITY_STATE",
             "var_value": "2",
-            "x": 30,
-            "y": 12
+            "x": 28,
+            "y": 6
         },
         {
             "elevation": 3,
@@ -190,8 +190,8 @@
             "type": "trigger",
             "var": "VAR_RUSTBORO_CITY_STATE",
             "var_value": "4",
-            "x": 30,
-            "y": 9
+            "x": 28,
+            "y": 6
         },
         {
             "elevation": 3,
@@ -199,8 +199,8 @@
             "type": "trigger",
             "var": "VAR_RUSTBORO_CITY_STATE",
             "var_value": "4",
-            "x": 31,
-            "y": 10
+            "x": 28,
+            "y": 6
         },
         {
             "elevation": 3,
@@ -208,8 +208,8 @@
             "type": "trigger",
             "var": "VAR_RUSTBORO_CITY_STATE",
             "var_value": "4",
-            "x": 30,
-            "y": 11
+            "x": 28,
+            "y": 6
         },
         {
             "elevation": 3,
@@ -217,8 +217,8 @@
             "type": "trigger",
             "var": "VAR_RUSTBORO_CITY_STATE",
             "var_value": "4",
-            "x": 30,
-            "y": 12
+            "x": 28,
+            "y": 6
         },
         {
             "elevation": 3,
@@ -413,8 +413,8 @@
             "script": "RustboroCity_EventScript_DevonEmployee1",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 30,
-            "y": 10
+            "x": 0,
+            "y": 7
         },
         {
             "elevation": 3,

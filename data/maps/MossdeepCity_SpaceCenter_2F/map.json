@@ -15,6 +15,15 @@
             "var_value": "108",
             "x": 21,
             "y": 3
+        },
+        {
+            "elevation": 3,
+            "script": "SPC_PREVENT2fEXIT",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 21,
+            "y": 2
         }
     ],
     "id": "MAP_MOSSDEEP_CITY_SPACE_CENTER_2F",
@@ -69,7 +78,7 @@
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "MossdeepCity_SpaceCenter_2F_EventScript_Steven",
+            "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 5,
@@ -125,7 +134,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 21,
-            "y": 6
+            "y": 7
         },
         {
             "elevation": 3,
@@ -138,7 +147,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 23,
-            "y": 6
+            "y": 7
         },
         {
             "elevation": 3,

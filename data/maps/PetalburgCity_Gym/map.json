@@ -245,32 +245,6 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_VAR_C",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 0,
-            "y": 120
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_VAR_E",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 0,
-            "y": 120
-        },
-        {
-            "elevation": 3,
             "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
             "graphics_id": "EVENT_OBJ_GFX_RIVAL_MAY_NORMAL",
             "movement_range_x": 0,

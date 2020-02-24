@@ -617,3 +617,29 @@ Route120_Text_RouteSignFortree: @ 81F5DCB
 Route120_Text_RouteSign121: @ 81F5DE4
 	.string "{RIGHT_ARROW} ROUTE 121\n"
 	.string "{LEFT_ARROW} ROUTE 120$"
+@==================================================================================================
+
+R120_Suicune::
+	goto_if_set FLAG_RYU_SUICUNE, RyuLegendary_Stoneisdull
+	msgbox R120_TouchQuery, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	call_if_ne RyuLegendary_LeftStoneAlone
+	msgbox R120_TouchedStone
+	playmoncry SPECIES_SUICUNE, 0
+	closemessage
+	waitmoncry
+	setwildbattle SPECIES_SUICUNE, 90, ITEM_NONE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	call RyuLegendary_CheckCaught
+	setflag FLAG_RYU_SUICUNE
+	release
+	end
+	
+	R120_TouchedStone:
+    .string "{PLAYER} touched the stone.\p"
+	.string "Ewww... Its gross!$"
+	
+	R120_TouchQuery:
+    .string "{PLAYER}: The stone is slimy and wet.\p"
+	.string "Touch the stone?$"

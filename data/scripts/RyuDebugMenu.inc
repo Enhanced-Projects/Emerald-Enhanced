@@ -182,7 +182,9 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto RyuDebug_Init_GiveAll
+	setwildbattle SPECIES_KYOGRE, 80, ITEM_NONE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
 	special HealPlayerParty
 	release
 	end

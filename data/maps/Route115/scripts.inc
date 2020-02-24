@@ -479,3 +479,29 @@ r115_StepLeft:
 	walk_left
 	step_end
 
+
+R115_Raikou::
+	goto_if_set FLAG_RYU_RAIKOU, RyuLegendary_Stoneisdull
+	msgbox R115_Raikou_TouchQuery, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	call_if_ne RyuLegendary_LeftStoneAlone
+	msgbox R115_Raikou_TouchedStone
+	playmoncry SPECIES_RAIKOU, 0
+	closemessage
+	waitmoncry
+	setwildbattle SPECIES_RAIKOU, 90, ITEM_NONE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	call RyuLegendary_CheckCaught
+	setflag FLAG_RYU_RAIKOU
+	release
+	end
+
+R115_Raikou_TouchedStone:
+	.string "{PLAYER} touched the stone.\p"
+	.string "A thunderous cry is heard...$"
+
+R115_Raikou_TouchQuery:
+	.string "{PLAYER}: This stone looks funny.\n"
+	.string "Small electric bolts are coursing\p"
+	.string "all over it.$"
