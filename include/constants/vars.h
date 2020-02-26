@@ -332,6 +332,7 @@
 #define SCENEBGDAWN 0
 #define SCENEBGNIGHTDAWN 1
 #define SCENEBGSUNSET 2
+#define SCENEBGMINNIE 3
 
 #define SPECIAL_VARS_END              0x8015
 

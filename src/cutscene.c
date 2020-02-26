@@ -18,6 +18,10 @@ static const u8 sSunsetBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/sunse
 static const u8 sSunsetBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/sunset/sunset_map.bin");
 static const u8 sSunsetBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/sunset/sunset_palette.gbapal");
 
+static const u8 sMinnieBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/minnie/minnie_tiles.8bpp");
+static const u8 sMinnieBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/minnie/minnie_map.bin");
+static const u8 sMinnieBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/minnie/minnie_palette.gbapal");
+
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
     [SCENEBGDAWN] = 
@@ -52,6 +56,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sSunsetBgMap),
         .palette = sSunsetBgPalette,
 		.palIdxCnt = 16
+    },
+	[SCENEBGMINNIE] = 
+    {
+		.mode = 2,
+		.scrollMode = 0,
+        .tiles = sMinnieBgTiles,
+		.tileSize = sizeof(sMinnieBgTiles),
+        .map = sMinnieBgMap,
+		.mapSize = sizeof(sMinnieBgMap),
+        .palette = sMinnieBgPalette,
+		.palIdxCnt = 36
     },
 };
 

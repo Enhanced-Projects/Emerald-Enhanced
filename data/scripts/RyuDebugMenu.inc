@@ -182,9 +182,12 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setwildbattle SPECIES_KYOGRE, 80, ITEM_NONE
-	special BattleSetup_StartLegendaryBattle
-	waitstate
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGMINNIE
+	bufferstring 0, gText_ThisIsAPokemon
+	msgbox RDB_CTVMsg
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	special HealPlayerParty
 	release
 	end
