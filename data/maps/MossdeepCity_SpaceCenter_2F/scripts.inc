@@ -3,6 +3,24 @@ MossdeepCity_SpaceCenter_2F_MapScripts:: @ 8223D58
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_SpaceCenter_2F_OnFrame
 	.byte 0
 
+SPC_PREVENT2fEXIT::
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 106
+	goto_if_eq SPC_CANTLEAVE
+	release
+	end
+
+SPC_CANTLEAVE::
+	lockall
+	msgbox spc_cantleavemsg
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepDown
+	waitmovement EVENT_OBJ_ID_PLAYER
+	release
+	end
+
+spc_cantleavemsg:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} You can't leave yet.\pYou have to deal with Magma's\npresence.$"
+
 MossdeepCity_SpaceCenter_2F_OnTransition: @ 8223D63
 	compare VAR_MOSSDEEP_CITY_STATE, 2
 	call_if_eq MossdeepCity_SpaceCenter_2F_EventScript_MoveStevenMaxieCourtney
@@ -411,6 +429,7 @@ SPC_GoCheckSafariZone::
 	
 SPC_Afterstory:
 	msgbox SPC_LineCompleted
+	setflag FLAG_RYU_DEVON_LINE_FINISHED
 	release
 	end
 	
@@ -668,28 +687,6 @@ MossdeepCity_SpaceCenter_2F_EventScript_Maxie:: @ 8223F6F
 	releaseall
 	end
 
-MossdeepCity_SpaceCenter_2F_EventScript_Steven:: @ 8223F7A
-	lockall
-	goto_if_set FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER, MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt
-	setflag FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER
-	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenWhyStealRocketFuel, MSGBOX_DEFAULT
-	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieUseFuelToEruptVolcano, MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playse SE_KOUKA_L
-	switch VAR_FACING
-	case DIR_SOUTH, MossdeepCity_SpaceCenter_2F_EventScript_StevenFightMovementSouth
-	applymovement 4, MossdeepCity_SpaceCenter_2F_Movement_StevenFight
-	waitmovement 0
-	releaseall
-	end
-
-MossdeepCity_SpaceCenter_2F_EventScript_StevenFightMovementSouth:: @ 8223FBA
-	applymovement 4, MossdeepCity_SpaceCenter_2F_Movement_StevenFightSouth
-	waitmovement 0
-	releaseall
-	end
-
 MossdeepCity_SpaceCenter_2F_Movement_StevenFight: @ 8223FC6
 	lock_facing_direction
 	walk_fast_up
@@ -713,111 +710,6 @@ MossdeepCity_SpaceCenter_2F_Movement_StevenFightSouth: @ 8223FCF
 	walk_slow_left
 	face_down
 	step_end
-
-MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt:: @ 8223FDA
-	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenAreYouReadyToBattle, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq MossdeepCity_SpaceCenter_2F_EventScript_ChoosePartyForMultiBattle
-	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenHurryGetReadyQuickly, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	releaseall
-	end
-
-MossdeepCity_SpaceCenter_2F_EventScript_ChoosePartyForMultiBattle:: @ 822400C
-	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	special SavePlayerParty
-	fadescreen FADE_TO_BLACK
-	special ChooseHalfPartyForBattle
-	waitstate
-	compare VAR_RESULT, 0
-	goto_if_ne MossdeepCity_SpaceCenter_2F_EventScript_DoStevenMultiBattle
-	special LoadPlayerParty
-	goto MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt
-
-MossdeepCity_SpaceCenter_2F_EventScript_DoStevenMultiBattle:: @ 8224032
-	special ReducePlayerPartyToSelectedMons
-	frontier_set FRONTIER_DATA_SELECTED_MON_ORDER
-	setvar VAR_0x8004, SPECIAL_BATTLE_STEVEN
-	setvar VAR_0x8005, 0
-	special DoSpecialTrainerBattle
-	waitstate
-	frontier_saveparty
-	special LoadPlayerParty
-	switch VAR_RESULT
-	case 1, MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieCourtney
-	fadescreen FADE_TO_BLACK
-	special SetCB2WhiteOut
-	waitstate
-
-MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieCourtney:: @ 8224071
-	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieWeFailedIsAquaAlsoMisguided, MSGBOX_DEFAULT
-	closemessage
-	delay 20
-	applymovement 9, Common_Movement_WalkInPlaceFastestLeft
-	applymovement 8, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	delay 60
-	applymovement 9, Common_Movement_WalkInPlaceFastestUp
-	applymovement 8, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	delay 20
-	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieWeWillGiveUp, MSGBOX_DEFAULT
-	closemessage
-	setvar VAR_MOSSDEEP_CITY_STATE, 3
-	fadedefaultbgm
-	fadescreen FADE_TO_BLACK
-	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 3
-	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
-	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
-	setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
-	removeobject 5
-	removeobject 7
-	removeobject 6
-	removeobject 8
-	removeobject 9
-	setobjectxy 3, 5, 6
-	turnobject 3, DIR_SOUTH
-	setobjectxy 2, 11, 8
-	turnobject 2, DIR_NORTH
-	setobjectxy 1, 6, 2
-	turnobject 1, DIR_NORTH
-	call MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayer
-	fadescreen FADE_FROM_BLACK
-	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome, MSGBOX_DEFAULT
-	closemessage
-	fadescreen FADE_TO_BLACK
-	setflag FLAG_DEFEATED_MAGMA_SPACE_CENTER
-	setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
-	removeobject 4
-	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE
-	clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
-	setvar VAR_STEVENS_HOUSE_STATE, 1
-	setflag FLAG_HIDE_MOSSDEEP_CITY_SCOTT
-	removeobject 3
-	setobjectxyperm 3, 5, 6
-	setobjectmovementtype 3, MOVEMENT_TYPE_WANDER_AROUND
-	addobject 3
-	fadescreen FADE_FROM_BLACK
-	end
-
-MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayer:: @ 8224131
-	switch VAR_FACING
-	case DIR_SOUTH, MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayerSouth
-	case DIR_WEST, MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayerWest
-	return
-
-MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayerSouth:: @ 822414D
-	turnobject 4, DIR_NORTH
-	return
-
-MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayerWest:: @ 8224152
-	turnobject 4, DIR_EAST
-	return
 
 MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer:: @ 8224157
 	trainerbattle TRAINER_BATTLE_SET_TRAINER_A, TRAINER_MAXIE_3, 0, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand

@@ -27,7 +27,6 @@ FallarborTown_PokemonCenter_1F_EventScript_ExpertM:: @ 8200BF8
 
 FallarborTown_PokemonCenter_1F_EventScript_Lanette:: @ 8200C01
 	call_if_set FLAG_RYU_PLAYER_HELPING_DEVON, FT_CheckOtherQuestActive
-	call_if_set FLAG_RYU_PLAYER_HELPING_DEVON, FT_CheckOtherQuestActive2
 	lock
 	faceplayer
 	msgbox FT_LanetteNormalIntro, MSGBOX_DEFAULT
@@ -73,8 +72,7 @@ FT_LanetteRomanceBegin::
 	end
 
 FT_CheckOtherQuestActive::
-	goto_if_set FLAG_RYU_DEVON_LINE_FINISHED, ryu_return
-	goto_if_set FLAG_RYU_SCIENTIST_DONE, ryu_return
+	goto_if_unset FLAG_RYU_DEVON_LINE_FINISHED, ryu_return
 	goto FT_QuestIsActive
 	
 FT_CheckOtherQuestActive2::

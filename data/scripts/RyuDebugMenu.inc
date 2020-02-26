@@ -182,7 +182,12 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto RyuDebug_Init_GiveAll
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGMINNIE
+	bufferstring 0, gText_ThisIsAPokemon
+	msgbox RDB_CTVMsg
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	special HealPlayerParty
 	release
 	end

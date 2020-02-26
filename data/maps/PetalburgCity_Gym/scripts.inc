@@ -47,11 +47,11 @@ PetalburgCity_Gym_CheckNormanState::
 	setvar VAR_TEMP_1, 10
 	special checkbadgecount
 	compare VAR_RESULT, 4
-	goto_if_le PBG_MoveNormanSouth
+	goto_if_lt PBG_MoveNormanSouth
 	end
 
 PBG_MoveNormanSouth::
-	addobject 1
+	@addobject 1
 	setobjectxy 1, 4, 106
 	special DrawWholeMapView
 	release
@@ -194,9 +194,9 @@ PG_GymBattleIntroShelly::
 	closemessage
 	delay 30
 	goto_if_unset FLAG_RYU_DS_SHELLY_PARTNERS, PG_NoRelationship1
-	addobject 13
+	addobject 11
 	playse SE_DOOR
-	applymovement 13, PG_PartnerEnter
+	applymovement 11, PG_PartnerEnter
 	waitmovement 0
 	msgbox PG_SHELLY_INTRO MSGBOX_DEFAULT
 	goto PG_AltGymBattle
@@ -206,9 +206,9 @@ PG_GymBattleIntroLana::
 	closemessage
 	delay 30
 	goto_if_unset FLAG_RYU_DS_LEAF_PARTNERS, PG_NoRelationship1
-	addobject 15
+	addobject 13
 	playse SE_DOOR
-	applymovement 15, PG_PartnerEnter
+	applymovement 13, PG_PartnerEnter
 	waitmovement 0
 	msgbox PG_LANA_INTRO MSGBOX_DEFAULT
 	goto PG_AltGymBattle
@@ -218,9 +218,9 @@ PG_GymBattleIntroDawn::
 	msgbox Ryu_PlayerCalledDawn MSGBOX_DEFAULT
 	closemessage
 	delay 30
-	addobject 12
+	addobject 10
 	playse SE_DOOR
-	applymovement 12, PG_PartnerEnter
+	applymovement 10, PG_PartnerEnter
 	waitmovement 0
 	msgbox PG_DAWN_INTRO MSGBOX_DEFAULT
 	goto PG_AltGymBattle
@@ -230,9 +230,9 @@ PG_GymBattleIntroBrendan::
 	msgbox Ryu_PlayerCalledBrendan MSGBOX_DEFAULT
 	closemessage
 	delay 30
-	addobject 14
+	addobject 12
 	playse SE_DOOR
-	applymovement 14, PG_PartnerEnter
+	applymovement 12, PG_PartnerEnter
 	waitmovement 0
 	msgbox PG_BRENDAN_INTRO MSGBOX_DEFAULT
 	goto PG_AltGymBattle
@@ -242,10 +242,10 @@ PG_GymBattleIntroLanette::
 	closemessage
 	delay 30
 	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, PG_NoRelationship1
-	addobject 16
+	addobject 14
 	playse SE_DOOR
-	applymovement 16, PG_PartnerEnter
-	waitmovement 16
+	applymovement 14, PG_PartnerEnter
+	waitmovement 14
 	msgbox PG_LANETTE_INTRO MSGBOX_DEFAULT
 	goto PG_AltGymBattle
 	
@@ -279,16 +279,27 @@ PG_GymBattleEnd::
 PG_GymBattleEndShelly::
 	msgbox PG_ShellyGymBattleComplete MSGBOX_DEFAULT
 	closemessage
-	applymovement 13, PG_PartnerExit
+	applymovement 11, PG_PartnerExit
 	waitmovement 0
 	playse SE_DOOR
-	removeobject 13
+	removeobject 11
 	goto PG_Reset
 	release
 	end
 
 PG_GymBattleEndDawn::
 	msgbox PG_DawnGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 10, PG_PartnerExit
+	waitmovement 0
+	playse SE_DOOR
+	removeobject 10
+	goto PG_Reset
+	release
+	end
+	
+PG_GymBattleEndBrendan::
+	msgbox PG_BrendanGymBattleComplete MSGBOX_DEFAULT
 	closemessage
 	applymovement 12, PG_PartnerExit
 	waitmovement 0
@@ -298,24 +309,13 @@ PG_GymBattleEndDawn::
 	release
 	end
 	
-PG_GymBattleEndBrendan::
-	msgbox PG_BrendanGymBattleComplete MSGBOX_DEFAULT
-	closemessage
-	applymovement 14, PG_PartnerExit
-	waitmovement 0
-	playse SE_DOOR
-	removeobject 14
-	goto PG_Reset
-	release
-	end
-	
 PG_GymBattleEndLana::
 	msgbox PG_LeafGymBattleComplete MSGBOX_DEFAULT
 	closemessage
-	applymovement 15, PG_PartnerExit
-	waitmovement 15
+	applymovement 13, PG_PartnerExit
+	waitmovement 13
 	playse SE_DOOR
-	removeobject 15
+	removeobject 13
 	goto PG_Reset
 	release
 	end
@@ -323,10 +323,10 @@ PG_GymBattleEndLana::
 PG_GymBattleEndLanette::
 	msgbox PG_LanetteGymBattleComplete MSGBOX_DEFAULT
 	closemessage
-	applymovement 16, PG_PartnerExit
-	waitmovement 16
+	applymovement 14, PG_PartnerExit
+	waitmovement 14
 	playse SE_DOOR
-	removeobject 16
+	removeobject 14
 	goto PG_Reset
 	release
 	end

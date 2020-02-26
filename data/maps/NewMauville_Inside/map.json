@@ -73,87 +73,6 @@
     "coord_events": [
         {
             "elevation": 3,
-            "script": "NewMauville_Inside_EventScript_BlueButton",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 30,
-            "y": 38
-        },
-        {
-            "elevation": 3,
-            "script": "NewMauville_Inside_EventScript_GreenButton",
-            "type": "trigger",
-            "var": "VAR_TEMP_2",
-            "var_value": "0",
-            "x": 18,
-            "y": 36
-        },
-        {
-            "elevation": 3,
-            "script": "NewMauville_Inside_EventScript_BlueButton",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 4,
-            "y": 26
-        },
-        {
-            "elevation": 3,
-            "script": "NewMauville_Inside_EventScript_BlueButton",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 16,
-            "y": 22
-        },
-        {
-            "elevation": 3,
-            "script": "NewMauville_Inside_EventScript_GreenButton",
-            "type": "trigger",
-            "var": "VAR_TEMP_2",
-            "var_value": "0",
-            "x": 25,
-            "y": 18
-        },
-        {
-            "elevation": 3,
-            "script": "NewMauville_Inside_EventScript_GreenButton",
-            "type": "trigger",
-            "var": "VAR_TEMP_2",
-            "var_value": "0",
-            "x": 2,
-            "y": 11
-        },
-        {
-            "elevation": 3,
-            "script": "NewMauville_Inside_EventScript_BlueButton",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 6,
-            "y": 11
-        },
-        {
-            "elevation": 3,
-            "script": "NewMauville_Inside_EventScript_BlueButton",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 13,
-            "y": 10
-        },
-        {
-            "elevation": 3,
-            "script": "NewMauville_Inside_EventScript_GreenButton",
-            "type": "trigger",
-            "var": "VAR_TEMP_2",
-            "var_value": "0",
-            "x": 17,
-            "y": 10
-        },
-        {
-            "elevation": 3,
             "script": "NewMauville_Inside_EventScript_RedButton",
             "type": "trigger",
             "var": "VAR_NEW_MAUVILLE_STATE",
@@ -196,24 +115,6 @@
             "var_value": "0",
             "x": 43,
             "y": 38
-        },
-        {
-            "elevation": 0,
-            "script": "NM_DevShortcut",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 35,
-            "y": 33
-        },
-        {
-            "elevation": 0,
-            "script": "NM_DevShortcut",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 35,
-            "y": 22
         }
     ],
     "id": "MAP_NEW_MAUVILLE_INSIDE",
@@ -333,7 +234,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NM_ZAPDOS_ENC",
+            "script": "NewMauville_Zapdos",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 47,
@@ -346,7 +247,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
+            "script": "NM_Leaf_Event_PostWattson",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 33,

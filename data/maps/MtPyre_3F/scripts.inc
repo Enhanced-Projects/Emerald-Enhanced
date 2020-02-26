@@ -1,5 +1,13 @@
 MtPyre_3F_MapScripts:: @ 8231752
 	.byte 0
+	
+MP_Bannetite::
+	setflag FLAG_HIDE_MTPYRE_BANNETITE
+	removeobject 5
+	finditem ITEM_BANETTITE
+	closemessage
+	release
+	end
 
 MtPyre_3F_EventScript_William:: @ 8231753
 	trainerbattle_single TRAINER_WILLIAM, MtPyre_3F_Text_WilliamIntro, MtPyre_3F_Text_WilliamDefeat

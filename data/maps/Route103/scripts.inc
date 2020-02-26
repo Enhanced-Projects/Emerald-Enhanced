@@ -336,10 +336,17 @@ Route103_Text_RouteSign: @ 81ECC1A
 @==================================================================================================DEBUG
 
 r103_SpecialBattleTest::
-	setflag FLAG_RYU_MAX_SCALE
-	trainerbattle_no_intro TRAINER_OVERLORD_RYU, dawnhi 
+	choose_mons
+	multi_2_vs_2 TRAINER_WALLACE, Text1, TRAINER_SIDNEY, Text2, TRAINER_REL_MINNIE, TRAINER_BACK_PIC_MINNIE
 	releaseall
 	end
+
+Text1:
+	.string "testing multi 2v2$"
+
+Text2:
+	.string "You win$"
+
 
 dawnhi:
 	.string "$"

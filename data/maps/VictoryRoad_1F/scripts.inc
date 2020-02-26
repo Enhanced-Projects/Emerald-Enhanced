@@ -233,3 +233,32 @@ VictoryRoad_1F_Text_KatelynnDefeat: @ 82364A7
 VictoryRoad_1F_Text_KatelynnPostBattle: @ 82364BB
 	.string "Humph, go right on ahead.\n"
 	.string "See if I care.$"
+@==================================================================================================
+
+VR1_Moltres::
+	goto_if_set FLAG_RYU_MOLTRES, RyuLegendary_Stoneisdull
+	msgbox NewMauville_Moltres_TouchQuery, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	call_if_ne RyuLegendary_LeftStoneAlone
+	msgbox NewMauville_Moltres_TouchedStone
+	playmoncry SPECIES_MOLTRES, 0
+	closemessage
+	waitmoncry
+	setwildbattle SPECIES_MOLTRES, 90, ITEM_BRIGHT_POWDER
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	call RyuLegendary_CheckCaught
+	setflag FLAG_RYU_MOLTRES
+	release
+	end
+
+NewMauville_Moltres_TouchedStone:
+	.string "{PLAYER} touched the stone.\p"
+	.string "{PLAYER} OH SH-!$"
+
+NewMauville_Moltres_TouchQuery:
+	.string "{PLAYER}: This stone looks like it\n"
+	.string "was torched!\p"
+	.string "Touch the stone?$"
+
+

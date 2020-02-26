@@ -31,6 +31,8 @@ FT_OnMission3:
 	lock
 	faceplayer
 	msgbox M3InProgress MSGBOX_DEFAULT
+	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
 	release
 	end
 	

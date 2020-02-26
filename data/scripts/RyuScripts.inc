@@ -575,10 +575,12 @@ RyuScripts_HardcoreGymReward::
 
 RyuGymItemReward1::
 	giveitem ITEM_TM39
+	closemessage
 	setflag FLAG_RYU_GYM1HANDOUT
 	goto_if_unset FLAG_RYU_NUZLOCKEMODE, ryu_return
 	additem ITEM_SUPER_POTION, 1
 	additem ITEM_GREAT_BALL, 1
+	closemessage
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_ResetPcUses
 	return
@@ -1577,4 +1579,27 @@ JuanMegaReward::
 
 JuanMega:
 	.string "Juan: You're even more fabulous\nthan I. I thought this wasn't\ppossible until now. As a token\nof your dedication to the art\lof battle, take this stone!$"
+
+@Legendaries common scripts
+
+RyuLegendary_LeftStoneAlone::
+	msgbox RyuLegendary_LeftStoneAloneMsg
+	release
+	end
+
+RyuLegendary_LeftStoneAloneMsg:
+	.string "{PLAYER} left the stone alone.$"
+
+RyuLegendary_CheckCaught::
+	compare VAR_RESULT, B_OUTCOME_CAUGHT
+	goto_if_ne ryu_end
+	return
+
+RyuLegendary_Stoneisdull::
+	msgbox RyuLegendary_StoneIsDullMsg
+	release
+	end
+
+RyuLegendary_StoneIsDullMsg:
+	.string "The stone is dull and lifeless.$"
 

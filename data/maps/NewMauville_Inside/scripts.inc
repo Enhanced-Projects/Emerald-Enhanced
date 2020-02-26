@@ -315,6 +315,12 @@ NM_Leaf_Trigger::
 	setvar VAR_RYU_DS_LANA_STAGE, 17
 	release
 	end
+
+NM_Leaf_Event_PostWattson::
+	goto_if_set FLAG_GOT_TM24_FROM_WATTSON, NM_Leaf_Event
+	msgbox lanadoesntlookatyou
+	release
+	end
 	
 NM_Leaf_Event::
 	lock
@@ -345,6 +351,9 @@ NM_LeafNoGenerator:
 	removecutscenesprites
 	release
 	end
+
+lanadoesntlookatyou:
+	.string "Lana is staring inquisitively\nat the generator.$"
 	
 NM_LanaElipsis:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ... ... ...\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Lana used an Escape Rope!$"
@@ -374,4 +383,31 @@ NM_Warp2::
 	release
 	end
 
+
 @==================================================================================================End Lana Events
+
+NewMauville_Zapdos::
+	goto_if_set FLAG_RYU_ZAPDOS, RyuLegendary_Stoneisdull
+	msgbox NewMauville_Zapdos_TouchQuery, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	call_if_ne RyuLegendary_LeftStoneAlone
+	msgbox NewMauville_Zapdos_TouchedStone
+	playmoncry SPECIES_ZAPDOS, 0
+	closemessage
+	waitmoncry
+	setwildbattle SPECIES_ZAPDOS, 90, ITEM_BRIGHT_POWDER
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	call RyuLegendary_CheckCaught
+	setflag FLAG_RYU_ZAPDOS
+	release
+	end
+
+NewMauville_Zapdos_TouchedStone:
+	.string "{PLAYER} touched the stone.\p"
+	.string "{COLOR RED}OUCH! {COLOR DARK_GREY}{PLAYER} got shocked!$"
+
+NewMauville_Zapdos_TouchQuery:
+	.string "{PLAYER}: This stone looks funny,\n"
+	.string "as if it was charged up!\p"
+	.string "Touch the stone?$"
