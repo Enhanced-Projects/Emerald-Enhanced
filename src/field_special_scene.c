@@ -14,7 +14,7 @@
 #include "sprite.h"
 #include "task.h"
 #include "constants/event_objects.h"
-#include "constants/event_object_movement_constants.h"
+#include "constants/event_object_movement.h"
 #include "constants/field_specials.h"
 #include "constants/songs.h"
 #include "constants/vars.h"
@@ -326,7 +326,7 @@ void Task_HandlePorthole(u8 taskId)
 
 static void ShowSSTidalWhileSailing(void)
 {
-    u8 spriteId = AddPseudoEventObject(EVENT_OBJ_GFX_SS_TIDAL, SpriteCallbackDummy, 112, 80, 0);
+    u8 spriteId = AddPseudoObjectEvent(EVENT_OBJ_GFX_SS_TIDAL, SpriteCallbackDummy, 112, 80, 0);
 
     gSprites[spriteId].coordOffsetEnabled = FALSE;
 
@@ -339,7 +339,7 @@ static void ShowSSTidalWhileSailing(void)
 void FieldCB_ShowPortholeView(void)
 {
     ShowSSTidalWhileSailing();
-    gEventObjects[gPlayerAvatar.eventObjectId].invisible = TRUE;
+    gObjectEvents[gPlayerAvatar.objectEventId].invisible = TRUE;
     FadeInFromBlack();
     CreateTask(Task_HandlePorthole, 80);
     ScriptContext2_Enable();

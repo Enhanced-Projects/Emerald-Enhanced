@@ -4,7 +4,7 @@ BattleFrontier_BattleTowerMultiCorridor_MapScripts:: @ 8248D4A
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleTowerMultiCorridor_OnFrame
 	.byte 0
 
-	@ On this map the player (OBJ_EVENT_ID_PLAYER) is hidden
+	@ On this map the player (EVENT_OBJ_ID_PLAYER) is hidden
 	@ The player is represented instead by object event 1, which has the gfx id VAR_OBJ_GFX_ID_F
 	@ The multi partner is represented by object event 4, which has the gfx id VAR_OBJ_GFX_ID_E
 

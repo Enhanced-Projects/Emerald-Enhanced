@@ -5,7 +5,7 @@ BattleFrontier_BattleArenaBattleRoom_MapScripts:: @ 8257487
 	map_script MAP_SCRIPT_ON_RESUME, BattleFrontier_BattleArenaBattleRoom_OnResume
 	.byte 0
 
-	@ On this map the player (OBJ_EVENT_ID_PLAYER) is hidden
+	@ On this map the player (EVENT_OBJ_ID_PLAYER) is hidden
 	@ The player is represented instead by object event 8, which has the gfx id VAR_OBJ_GFX_ID_1
 
 BattleFrontier_BattleArenaBattleRoom_OnResume: @ 825749C
