@@ -4,7 +4,7 @@ SlateportCity_BattleTentBattleRoom_MapScripts:: @ 8209960
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, SlateportCity_BattleTentBattleRoom_OnFrame
 	.byte 0
 
-	@ On this map the player (OBJ_EVENT_ID_PLAYER) is hidden
+	@ On this map the player (EVENT_OBJ_ID_PLAYER) is hidden
 	@ The player is represented instead by object event 3, which has the gfx id VAR_OBJ_GFX_ID_1
 
 SlateportCity_BattleTentBattleRoom_OnTransition: @ 8209970

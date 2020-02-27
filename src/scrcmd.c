@@ -13,6 +13,7 @@
 #include "event_data.h"
 #include "field_door.h"
 #include "field_effect.h"
+#include "event_object_lock.h"
 #include "event_object_movement.h"
 #include "field_message_box.h"
 #include "field_player_avatar.h"
@@ -24,7 +25,6 @@
 #include "item.h"
 #include "lilycove_lady.h"
 #include "main.h"
-#include "event_obj_lock.h"
 #include "menu.h"
 #include "money.h"
 #include "mystery_event_script.h"
@@ -1057,7 +1057,7 @@ bool8 ScrCmd_removeobject(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
 
-    RemoveEventObjectByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    RemoveObjectEventByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
     return FALSE;
 }
 
@@ -1067,7 +1067,7 @@ bool8 ScrCmd_removeobject_at(struct ScriptContext *ctx)
     u8 mapGroup = ScriptReadByte(ctx);
     u8 mapNum = ScriptReadByte(ctx);
 
-    RemoveEventObjectByLocalIdAndMap(objectId, mapNum, mapGroup);
+    RemoveObjectEventByLocalIdAndMap(objectId, mapNum, mapGroup);
     return FALSE;
 }
 
@@ -1075,7 +1075,7 @@ bool8 ScrCmd_addobject(struct ScriptContext *ctx)
 {
     u16 objectId = VarGet(ScriptReadHalfword(ctx));
 
-    TrySpawnEventObject(objectId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    TrySpawnObjectEvent(objectId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
     return FALSE;
 }
 
@@ -1085,7 +1085,7 @@ bool8 ScrCmd_addobject_at(struct ScriptContext *ctx)
     u8 mapGroup = ScriptReadByte(ctx);
     u8 mapNum = ScriptReadByte(ctx);
 
-    TrySpawnEventObject(objectId, mapNum, mapGroup);
+    TrySpawnObjectEvent(objectId, mapNum, mapGroup);
     return FALSE;
 }
 
@@ -1095,7 +1095,7 @@ bool8 ScrCmd_setobjectxy(struct ScriptContext *ctx)
     u16 x = VarGet(ScriptReadHalfword(ctx));
     u16 y = VarGet(ScriptReadHalfword(ctx));
 
-    TryMoveEventObjectToMapCoords(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, x, y);
+    TryMoveObjectEventToMapCoords(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, x, y);
     return FALSE;
 }
 
@@ -1105,7 +1105,7 @@ bool8 ScrCmd_setobjectxyperm(struct ScriptContext *ctx)
     u16 x = VarGet(ScriptReadHalfword(ctx));
     u16 y = VarGet(ScriptReadHalfword(ctx));
 
-    Overworld_SetEventObjTemplateCoords(localId, x, y);
+    Overworld_SetObjEventTemplateCoords(localId, x, y);
     return FALSE;
 }
 
@@ -1113,7 +1113,7 @@ bool8 ScrCmd_copyobjectxytoperm(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
 
-    TryOverrideEventObjectTemplateCoords(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    TryOverrideObjectEventTemplateCoords(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
     return FALSE;
 }
 
@@ -1160,9 +1160,9 @@ bool8 ScrCmd_resetobjectpriority(struct ScriptContext *ctx)
 
 bool8 ScrCmd_faceplayer(struct ScriptContext *ctx)
 {
-    if (gEventObjects[gSelectedEventObject].active)
+    if (gObjectEvents[gSelectedObjectEvent].active)
     {
-        EventObjectFaceOppositeDirection(&gEventObjects[gSelectedEventObject],
+        ObjectEventFaceOppositeDirection(&gObjectEvents[gSelectedObjectEvent],
           GetPlayerFacingDirection());
     }
     return FALSE;
@@ -1173,7 +1173,7 @@ bool8 ScrCmd_turnobject(struct ScriptContext *ctx)
     u16 localId = VarGet(ScriptReadHalfword(ctx));
     u8 direction = ScriptReadByte(ctx);
 
-    EventObjectTurnByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, direction);
+    ObjectEventTurnByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, direction);
     return FALSE;
 }
 
@@ -1182,7 +1182,7 @@ bool8 ScrCmd_setobjectmovementtype(struct ScriptContext *ctx)
     u16 localId = VarGet(ScriptReadHalfword(ctx));
     u8 movementType = ScriptReadByte(ctx);
 
-    Overworld_SetEventObjTemplateMovementType(localId, movementType);
+    Overworld_SetObjEventTemplateMovementType(localId, movementType);
     return FALSE;
 }
 
@@ -1210,26 +1210,26 @@ bool8 ScrCmd_turnvobject(struct ScriptContext *ctx)
 
 bool8 ScrCmd_lockall(struct ScriptContext *ctx)
 {
-        ScriptContext2_RunNewScript(RyuResetFollowerPosition);
-        ScriptFreezeEventObjects();
-        SetupNativeScript(ctx, sub_80983C4);
-        return TRUE;
+    ScriptContext2_RunNewScript(RyuResetFollowerPosition);
+    ScriptFreezeObjectEvents();
+    SetupNativeScript(ctx, sub_80983C4);
+    return TRUE;
 }
 
 bool8 ScrCmd_lock(struct ScriptContext *ctx)
 {
-        ScriptContext2_RunNewScript(RyuResetFollowerPosition);
+    ScriptContext2_RunNewScript(RyuResetFollowerPosition);
 
-        if (gEventObjects[gSelectedEventObject].active)
-        {
-            LockSelectedEventObject();
-            SetupNativeScript(ctx, sub_809847C);
-        }
-        else
-        {
-            ScriptFreezeEventObjects();
-            SetupNativeScript(ctx, sub_80983C4);
-        }
+    if (gObjectEvents[gSelectedObjectEvent].active)
+    {
+        LockSelectedObjectEvent();
+        SetupNativeScript(ctx, sub_809847C);
+    }
+    else
+    {
+        ScriptFreezeObjectEvents();
+        SetupNativeScript(ctx, sub_80983C4);
+    }
 
     return TRUE;
 }
@@ -1239,10 +1239,10 @@ bool8 ScrCmd_releaseall(struct ScriptContext *ctx)
     u8 playerObjectId;
 
     HideFieldMessageBox();
-    playerObjectId = GetEventObjectIdByLocalIdAndMap(EVENT_OBJ_ID_PLAYER, 0, 0);
-    EventObjectClearHeldMovementIfFinished(&gEventObjects[playerObjectId]);
-    ScriptMovement_UnfreezeEventObjects();
-    UnfreezeEventObjects();
+    playerObjectId = GetObjectEventIdByLocalIdAndMap(EVENT_OBJ_ID_PLAYER, 0, 0);
+    ObjectEventClearHeldMovementIfFinished(&gObjectEvents[playerObjectId]);
+    ScriptMovement_UnfreezeObjectEvents();
+    UnfreezeObjectEvents();
     return FALSE;
 }
 
@@ -1251,12 +1251,12 @@ bool8 ScrCmd_release(struct ScriptContext *ctx)
     u8 playerObjectId;
 
     HideFieldMessageBox();
-    if (gEventObjects[gSelectedEventObject].active)
-        EventObjectClearHeldMovementIfFinished(&gEventObjects[gSelectedEventObject]);
-    playerObjectId = GetEventObjectIdByLocalIdAndMap(EVENT_OBJ_ID_PLAYER, 0, 0);
-    EventObjectClearHeldMovementIfFinished(&gEventObjects[playerObjectId]);
-    ScriptMovement_UnfreezeEventObjects();
-    UnfreezeEventObjects();
+    if (gObjectEvents[gSelectedObjectEvent].active)
+        ObjectEventClearHeldMovementIfFinished(&gObjectEvents[gSelectedObjectEvent]);
+    playerObjectId = GetObjectEventIdByLocalIdAndMap(EVENT_OBJ_ID_PLAYER, 0, 0);
+    ObjectEventClearHeldMovementIfFinished(&gObjectEvents[playerObjectId]);
+    ScriptMovement_UnfreezeObjectEvents();
+    UnfreezeObjectEvents();
     return FALSE;
 }
 
@@ -1298,7 +1298,7 @@ bool8 ScrCmd_cmdDB(struct ScriptContext *ctx)
 
     if (msg == NULL)
         msg = (const u8 *)ctx->data[0];
-    sub_81973A4();
+    LoadMessageBoxAndBorderGfx();
     DrawDialogueFrame(0, 1);
     AddTextPrinterParameterized(0, 1, msg, 0, 1, 0, 0);
     return FALSE;
@@ -2164,7 +2164,7 @@ bool8 ScrCmd_freerotatingtilepuzzle(struct ScriptContext *ctx)
 
 bool8 ScrCmd_cmdD8(struct ScriptContext *ctx)
 {
-    gSelectedEventObject = GetCurrentApproachingTrainerEventObjectId();
+    gSelectedObjectEvent = GetCurrentApproachingTrainerObjectEventId();
     return FALSE;
 }
 
@@ -2176,7 +2176,7 @@ bool8 ScrCmd_cmdD9(struct ScriptContext *ctx)
     }
     else
     {
-        if (gEventObjects[gSelectedEventObject].active)
+        if (gObjectEvents[gSelectedObjectEvent].active)
         {
             sub_8098630();
             SetupNativeScript(ctx, sub_8098734);
@@ -2290,13 +2290,13 @@ bool8 ScrCmd_createfollower(struct ScriptContext *ctx)
     u8 graphicsId = ScriptReadByte(ctx);
     const void *script = (const void *)ScriptReadWord(ctx);
     u8 direction = ScriptReadByte(ctx);
-    CreateFollowerEventObject(graphicsId, script, direction);
+    CreateFollowerObjectEvent(graphicsId, script, direction);
     return FALSE;
 }
 
 bool8 ScrCmd_destroyfollower(struct ScriptContext *ctx)
 {
-    DestroyFollowerEventObject();
+    DestroyFollowerObjectEvent();
     return FALSE;
 }
 

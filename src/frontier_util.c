@@ -71,7 +71,7 @@ static void RestoreHeldItems(void);
 static void SaveRecordBattle(void);
 static void BufferFrontierTrainerName(void);
 static void ResetSketchedMoves(void);
-static void SetFacilityBrainEventObject(void);
+static void SetFacilityBrainObjectEvent(void);
 static void ShowTowerResultsWindow(u8);
 static void ShowDomeResultsWindow(u8);
 static void ShowPalaceResultsWindow(u8);
@@ -628,7 +628,7 @@ static void (* const sFrontierUtilFuncs[])(void) =
     [FRONTIER_UTIL_FUNC_SAVE_BATTLE]           = SaveRecordBattle,
     [FRONTIER_UTIL_FUNC_BUFFER_TRAINER_NAME]   = BufferFrontierTrainerName,
     [FRONTIER_UTIL_FUNC_RESET_SKETCH_MOVES]    = ResetSketchedMoves,
-    [FRONTIER_UTIL_FUNC_SET_BRAIN_OBJECT]      = SetFacilityBrainEventObject,
+    [FRONTIER_UTIL_FUNC_SET_BRAIN_OBJECT]      = SetFacilityBrainObjectEvent,
 };
 
 static const struct WindowTemplate sFrontierResultsWindowTemplate =
@@ -2217,9 +2217,9 @@ static void ResetSketchedMoves(void)
     }
 }
 
-static void SetFacilityBrainEventObject(void)
+static void SetFacilityBrainObjectEvent(void)
 {
-    SetFrontierBrainEventObjGfx(VarGet(VAR_FRONTIER_FACILITY));
+    SetFrontierBrainObjEventGfx(VarGet(VAR_FRONTIER_FACILITY));
 }
 
 // Battle Frontier Ranking Hall records.
@@ -2481,7 +2481,7 @@ bool8 IsFrontierBrainFemale(void)
     return sFrontierBrainObjEventGfx[facility][1];
 }
 
-void SetFrontierBrainEventObjGfx_2(void)
+void SetFrontierBrainObjEventGfx_2(void)
 {
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
     VarSet(VAR_OBJ_GFX_ID_0, sFrontierBrainObjEventGfx[facility][0]);
@@ -2784,7 +2784,7 @@ u16 GetFrontierBrainMonSpecies(u8 monId)
     return sFrontierBrainsMons[facility][symbol][monId].species;
 }
 
-void SetFrontierBrainEventObjGfx(u8 facility)
+void SetFrontierBrainObjEventGfx(u8 facility)
 {
     gTrainerBattleOpponent_A = TRAINER_FRONTIER_BRAIN;
     VarSet(VAR_OBJ_GFX_ID_0, sFrontierBrainObjEventGfx[facility][0]);
