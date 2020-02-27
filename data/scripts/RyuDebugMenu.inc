@@ -179,16 +179,14 @@ RyuDebug_ViewTempVars::
 	end
 
 RDB_CTVMsg:
-	.string "{STR_VAR_1}$"
+	.string "Used sound moves {STR_VAR_1} times.$"
 
 RyuDebug_Utility1::
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGMINNIE
-	bufferstring 0, gText_ThisIsAPokemon
+	readgamestat GAME_STAT_USED_SOUND_MOVE
+	buffernumberstring 0, VAR_RESULT
 	msgbox RDB_CTVMsg
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
 	special HealPlayerParty
+	closemessage
 	release
 	end
 

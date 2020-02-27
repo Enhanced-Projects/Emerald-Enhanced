@@ -6238,6 +6238,11 @@ bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)
         cutsceneSpriteId2 = CreateMonSpriteFromNationalDexNumber(id, x, y, 15);
         return FALSE;
     }
+
+    if (mode == 3)
+    {
+        CreateMonSprite_PicBox(id, x, y, 0);
+    }
 }
 
 bool8 ScrCmd_removecutscenesprites(struct ScriptContext *ctx)

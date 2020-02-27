@@ -44,6 +44,9 @@ static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
 u8 gSelectedObjectEvent;
 
 extern const u8 SB_SetupRandomSteppedOnEncounter[];
+extern const u8 SB_CheckMeloettaEncounter[];
+extern const u8 Ryu_BeingWatched[];
+extern const u8 Ryu_MeloettaWatchingMsg[];
 
 static void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -141,7 +144,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     struct MapPosition position;
     u8 playerDirection;
     u16 metatileBehavior;
-    u16 rand = 0;
+    u16 rand = (Random() % 128);
 
     gSpecialVar_LastTalked = 0;
     gSelectedObjectEvent = 0;
@@ -165,13 +168,32 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         if (TryStartStepBasedScript(&position, metatileBehavior, playerDirection) == TRUE)
             return TRUE;
         if (MetatileBehavior_IsSandOrDeepSand(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)))
+        {
             if (!(gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE111)))
             {
-                if ((rand = Random() % 128) == 69)
+                if (rand == 69)
                 {
                     ScriptContext1_SetupScript(SB_SetupRandomSteppedOnEncounter);
                 }
             }
+        }
+        
+        if (MetatileBehavior_IsTallGrass(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)))
+        {
+            if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 255 && (FlagGet(FLAG_RYU_CAPTURED_MELOETTA) == 0))
+            {
+                ScriptContext1_SetupScript(SB_CheckMeloettaEncounter);
+            }
+            else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 200)
+            {
+                ScriptContext1_SetupScript(Ryu_MeloettaWatchingMsg);
+            }
+            else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 100)
+            {
+                ScriptContext1_SetupScript(Ryu_BeingWatched);
+            }
+        }
+
     }
     if (input->checkStandardWildEncounter && CheckStandardWildEncounter(metatileBehavior) == TRUE)
         return TRUE;

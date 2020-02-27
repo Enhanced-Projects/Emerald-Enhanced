@@ -22,6 +22,10 @@ static const u8 sMinnieBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/minni
 static const u8 sMinnieBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/minnie/minnie_map.bin");
 static const u8 sMinnieBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/minnie/minnie_palette.gbapal");
 
+static const u8 sMeloettaBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/meloetta/meloetta_tiles.4bpp");
+static const u8 sMeloettaBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/meloetta/meloetta_map.bin");
+static const u8 sMeloettaBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/meloetta/meloetta_palette.gbapal");
+
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
     [SCENEBGDAWN] = 
@@ -67,6 +71,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sMinnieBgMap),
         .palette = sMinnieBgPalette,
 		.palIdxCnt = 36
+    },
+	[SCENEBGMELOETTA] = 
+    {
+		.mode = 0,
+		.scrollMode = 0,
+        .tiles = sMeloettaBgTiles,
+		.tileSize = sizeof(sMeloettaBgTiles),
+        .map = sMeloettaBgMap,
+		.mapSize = sizeof(sMeloettaBgMap),
+        .palette = sMeloettaBgPalette,
+		.palIdxCnt = 16
     },
 };
 

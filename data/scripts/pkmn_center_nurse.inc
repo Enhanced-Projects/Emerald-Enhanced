@@ -26,7 +26,7 @@ EventScript_PkmnCenterNurse_HealPkmn:: @ 827195A
 PkmnCenterNurse_MegaAudinite::
     goto_if_set FLAG_RYU_GOT_AUDINITE, ryu_return
     setflag FLAG_RYU_GOT_AUDINITE
-    giveitem ITEM_AUDINITE, 1
+    givemon SPECIES_AUDINO, 50, ITEM_AUDINITE
     msgbox PCN_AudiniteExplain
     closemessage
     return
@@ -36,9 +36,11 @@ PCN_AudiniteExplain:
     .string "{PLAYER}. If I didn't know better,\p"
     .string "I'd say you were {COLOR LIGHT_GREY}{SHADOW DARK_GREY} trying\n"
     .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}to come visit me.\p"
-    .string "Here! take this stone.\n"
-    .string "If you have an Audino, it can\l"
-    .string "heal you!$"
+    .string "Why don't you take this Audino\n"
+    .string "and have it heal you while you're\p"
+    .string "out adventuring? Audino love to\n"
+    .string "support others. I think this one\l"
+    .string "would be happy to help you!$"
 
 Ryu_CheckHealPermissions::
     goto_if_set FLAG_RYU_HARDCORE_MODE, Ryu_NoPcUsesHardcore

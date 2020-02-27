@@ -1527,6 +1527,8 @@ static void Cmd_damagecalc(void)
 
     GET_MOVE_TYPE(gCurrentMove, moveType);
     gBattleMoveDamage = CalculateMoveDamage(gCurrentMove, gBattlerAttacker, gBattlerTarget, moveType, 0, gIsCriticalHit, TRUE, TRUE);
+    if (gBattleMoves[gCurrentMove].flags & FLAG_SOUND && (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER))
+        IncrementGameStat(GAME_STAT_USED_SOUND_MOVE);
     gBattlescriptCurrInstr++;
 }
 
