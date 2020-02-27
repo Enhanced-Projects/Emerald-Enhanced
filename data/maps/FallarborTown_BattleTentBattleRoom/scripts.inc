@@ -4,7 +4,7 @@ FallarborTown_BattleTentBattleRoom_MapScripts:: @ 8200899
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, FallarborTown_BattleTentBattleRoom_OnWarp
 	.byte 0
 
-	@ On this map the player (OBJ_EVENT_ID_PLAYER) is hidden
+	@ On this map the player (EVENT_OBJ_ID_PLAYER) is hidden
 	@ The player is represented instead by object event 1, which has the gfx id VAR_OBJ_GFX_ID_1
 	@ The opponent is represented by object event 3, which has the gfx id VAR_OBJ_GFX_ID_0
 

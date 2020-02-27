@@ -2921,7 +2921,11 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 }
                 break;
             case MOVE_EFFECT_KNOCK_OFF:
-                if (GetBattlerAbility(gEffectBattler) == ABILITY_STICKY_HOLD)
+                if (!CanBattlerGetOrLoseItem(gEffectBattler, gBattleMons[gEffectBattler].item))
+                {
+                    gBattlescriptCurrInstr++;
+                }
+                else if (GetBattlerAbility(gEffectBattler) == ABILITY_STICKY_HOLD)
                 {
                     if (gBattleMons[gEffectBattler].item == 0)
                     {
@@ -2933,9 +2937,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                         gBattlescriptCurrInstr = BattleScript_StickyHoldActivates;
                         RecordAbilityBattle(gEffectBattler, ABILITY_STICKY_HOLD);
                     }
-                    break;
                 }
-                if (gBattleMons[gEffectBattler].item)
+                else if (gBattleMons[gEffectBattler].item)
                 {
                     side = GetBattlerSide(gEffectBattler);
 
@@ -4926,6 +4929,7 @@ static void Cmd_moveend(void)
             gSpecialStatuses[gBattlerAttacker].gemBoost = 0;
             gSpecialStatuses[gBattlerAttacker].damagedMons = 0;
             gSpecialStatuses[gBattlerTarget].berryReduced = 0;
+            gBattleScripting.moveEffect = 0;
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_COUNT:
@@ -6745,7 +6749,7 @@ static bool32 HasAttackerFaintedTarget(void)
         && gBattleStruct->moveTarget[gBattlerAttacker] == gBattlerTarget
         && gBattlerTarget != gBattlerAttacker
         && gCurrentTurnActionNumber == GetBattlerTurnOrderNum(gBattlerAttacker)
-        && gChosenMove == gChosenMoveByBattler[gBattlerAttacker])
+        && (gChosenMove == gChosenMoveByBattler[gBattlerAttacker] || gChosenMove == gBattleMons[gBattlerAttacker].moves[gChosenMovePos]))
         return TRUE;
     else
         return FALSE;

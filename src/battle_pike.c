@@ -53,7 +53,7 @@ static void SetRoomType(void);
 static void GetBattlePikeData(void);
 static void SetBattlePikeData(void);
 static void IsNextRoomFinal(void);
-static void SetupRoomEventObjects(void);
+static void SetupRoomObjectEvents(void);
 static void GetRoomType(void);
 static void SetInWildMonRoom(void);
 static void ClearInWildMonRoom(void);
@@ -484,7 +484,7 @@ static void (* const sBattlePikeFunctions[])(void) =
     [BATTLE_PIKE_FUNC_GET_DATA]                = GetBattlePikeData,
     [BATTLE_PIKE_FUNC_SET_DATA]                = SetBattlePikeData,
     [BATTLE_PIKE_FUNC_IS_FINAL_ROOM]           = IsNextRoomFinal,
-    [BATTLE_PIKE_FUNC_SET_ROOM_OBJECTS]        = SetupRoomEventObjects,
+    [BATTLE_PIKE_FUNC_SET_ROOM_OBJECTS]        = SetupRoomObjectEvents,
     [BATTLE_PIKE_FUNC_GET_ROOM_TYPE]           = GetRoomType,
     [BATTLE_PIKE_FUNC_SET_IN_WILD_MON_ROOM]    = SetInWildMonRoom,
     [BATTLE_PIKE_FUNC_CLEAR_IN_WILD_MON_ROOM]  = ClearInWildMonRoom,
@@ -552,7 +552,7 @@ static void SetRoomType(void)
     sRoomType = roomType;
 }
 
-static void SetupRoomEventObjects(void)
+static void SetupRoomObjectEvents(void)
 {
     bool32 setObjGfx1, setObjGfx2;
     u32 objGfx1;
@@ -602,7 +602,7 @@ static void SetupRoomEventObjects(void)
         setObjGfx1 = FALSE;
         break;
     case PIKE_ROOM_BRAIN:
-        SetFrontierBrainEventObjGfx(FRONTIER_FACILITY_PIKE);
+        SetFrontierBrainObjEventGfx(FRONTIER_FACILITY_PIKE);
         objGfx2 = EVENT_OBJ_GFX_LINK_RECEPTIONIST;
         setObjGfx1 = FALSE;
         setObjGfx2 = TRUE;

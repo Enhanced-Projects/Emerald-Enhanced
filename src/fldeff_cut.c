@@ -1,5 +1,5 @@
 #include "global.h"
-#include "event_obj_lock.h"
+#include "event_object_lock.h"
 #include "event_object_movement.h"
 #include "faraway_island.h"
 #include "field_camera.h"
@@ -580,7 +580,7 @@ static void CutGrassSpriteCallbackEnd(struct Sprite *sprite)
 
     FieldEffectStop(&gSprites[sCutGrassSpriteArrayPtr[0]], FLDEFF_CUT_GRASS);
     FREE_AND_SET_NULL(sCutGrassSpriteArrayPtr);
-    ScriptUnfreezeEventObjects();
+    ScriptUnfreezeObjectEvents();
     ScriptContext2_Disable();
 
     if (IsMewPlayingHideAndSeek() == TRUE)
