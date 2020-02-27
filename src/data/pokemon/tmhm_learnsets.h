@@ -3134,6 +3134,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM58_DIVE)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM55_DRAGON_PULSE)
+											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM42_FACADE)
 											| TMHM(TM21_FRUSTRATION)
 											| TMHM(TM07_HAIL)
