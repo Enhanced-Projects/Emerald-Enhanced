@@ -996,20 +996,20 @@ static const struct InGameTrade sIngameTrades[] =
     }, 
     [INGAME_TRADE_PLUSLE] = 
     {
-        .nickname = _("PLUSES"), 
-        .species = SPECIES_PLUSLE,
-        .ivs = {4, 4, 4, 5, 5, 4},
+        .nickname = _("Stuffy"), 
+        .species = SPECIES_STUFFUL,
+        .ivs = {4, 5, 5, 4, 4, 4},
         .abilityNum = 0, 
         .otId = 73996,
         .conditions = {5, 5, 30, 5, 5},
-        .personality = 0x6F,
+        .personality = 0x7F,
         .heldItem = ITEM_WOOD_MAIL, 
         .mailNum = 0,
-        .otName = _("ROMAN"), 
+        .otName = _("Roman"), 
         .otGender = MALE, 
         .sheen = 10,
         .requestedSpecies = SPECIES_VOLBEAT
-    }, 
+    },
     [INGAME_TRADE_HORSEA] = 
     {
         .nickname = _("SEASOR"),
@@ -1050,7 +1050,7 @@ static const u16 sIngameTradeMail[][MAIL_WORDS_COUNT + 1] =
         EC_WORD_BE,
         EC_WORD_NICE,
         EC_WORD_TO,
-        EC_POKEMON(PLUSLE),
+        EC_POKEMON(STUFFUL),
         EC_WORD_EXCL,
         EC_POKEMON(VOLBEAT),
         EC_WORD_WILL,

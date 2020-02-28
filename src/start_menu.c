@@ -770,11 +770,26 @@ static bool8 HandleStartMenuInput(void)
         sStartMenuCursorPos = Menu_MoveCursor(1);
     }
 
-    if (gMain.newKeys & (DPAD_LEFT || DPAD_RIGHT))
+    if (gMain.newKeys & DPAD_LEFT)
     {
         if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
             TryMoveObjectEventToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 1));
     }
+
+    if ((gMain.newKeys & DPAD_RIGHT) && (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 0))
+    {
+        if (FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == 1)
+        {
+            FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
+            PlaySE(SE_PIN);
+        }
+        else
+        {
+            FlagSet(FLAG_RYU_RANDOMIZE_MUSIC);
+            PlaySE(SE_EXPMAX);
+        }
+    }
+
 
     if (gMain.newKeys & A_BUTTON)
     {

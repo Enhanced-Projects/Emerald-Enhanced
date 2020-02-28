@@ -26,6 +26,10 @@ static const u8 sMeloettaBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/mel
 static const u8 sMeloettaBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/meloetta/meloetta_map.bin");
 static const u8 sMeloettaBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/meloetta/meloetta_palette.gbapal");
 
+static const u8 sShellyBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_tiles.8bpp");
+static const u8 sShellyBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_map.bin");
+static const u8 sShellyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_palette.gbapal");
+
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
     [SCENEBGDAWN] = 
@@ -82,6 +86,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sMeloettaBgMap),
         .palette = sMeloettaBgPalette,
 		.palIdxCnt = 16
+    },
+	[SCENEBGSHELLY] = 
+    {
+		.mode = 2,
+		.scrollMode = 0,
+        .tiles = sShellyBgTiles,
+		.tileSize = sizeof(sShellyBgTiles),
+        .map = sShellyBgMap,
+		.mapSize = sizeof(sShellyBgMap),
+        .palette = sShellyBgPalette,
+		.palIdxCnt = 240
     },
 };
 

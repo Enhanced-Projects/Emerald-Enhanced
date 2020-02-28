@@ -6355,6 +6355,9 @@ bool32 CanMegaEvolve(u8 battlerId)
             return FALSE;
     }
 
+    if ((GetBattlerSide(battlerId) == B_SIDE_PLAYER) && (CheckBagHasItem(ITEM_MEGA_BRACELET, 1) == FALSE))//check for mega bracelet
+        return FALSE;
+
     // Check if the pokemon holds an appropriate item.
     if (GetBattlerSide(battlerId) == B_SIDE_OPPONENT)
         mon = &gEnemyParty[gBattlerPartyIndexes[battlerId]];

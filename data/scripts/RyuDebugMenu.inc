@@ -182,9 +182,18 @@ RDB_CTVMsg:
 	.string "Used sound moves {STR_VAR_1} times.$"
 
 RyuDebug_Utility1::
-	readgamestat GAME_STAT_USED_SOUND_MOVE
-	buffernumberstring 0, VAR_RESULT
-	msgbox RDB_CTVMsg
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGSHELLY
+	waitbuttonpress
+	@readgamestat GAME_STAT_USED_SOUND_MOVE
+	@buffernumberstring 0, VAR_RESULT
+	@msgbox RDB_CTVMsg
+	clearfullscreenimage 
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGMELOETTA
+	waitbuttonpress
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	special HealPlayerParty
 	closemessage
 	release

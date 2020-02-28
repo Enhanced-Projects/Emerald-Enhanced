@@ -98,8 +98,7 @@ TC_Entering::
 	checkitem ITEM_TOWN_MAP, 0
 	compare VAR_RESULT, 1
 	goto_if_eq TC_Discount_entering
-	setvar VAR_TEMP_0, 65000
-	checkmoney VAR_TEMP_0
+	checkmoney 65000
 	compare VAR_RESULT, 0
 	goto_if_eq TC_Exiting_Nomoney
 	msgbox TC_Welcome MSGBOX_DEFAULT
@@ -115,14 +114,14 @@ TC_Entering::
 	
 TC_Discount_entering::
 	msgbox TC_Discount_Welcome MSGBOX_DEFAULT
-	checkmoney 6000
+	checkmoney 6500
 	compare VAR_RESULT, 0
 	goto_if_eq TC_Disc_Broke
 	waitmessage
 	applymovement EVENT_OBJ_ID_PLAYER, TC_WalkIn
 	applymovement EVENT_OBJ_ID_FOLLOWER, TC_WalkIn
 	waitmovement 0
-	takemoney 6000
+	takemoney 6500
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_TC_ENTERED
 	releaseall
@@ -258,10 +257,7 @@ TC_EnterQuery:
 	
 TC_Welcome:
 	.string "We hope you have a fruitful training\n"
-	.string "session!\p"
-	.string "We have Evolution and Individual\n"
-	.string "value scanners outside of each\p"
-	.string "room for your convenience!$"
+	.string "session!$"
 	
 TC_Leave:
 	.string "Thanks for using the Lilycove\p"
