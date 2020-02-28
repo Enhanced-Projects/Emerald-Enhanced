@@ -1401,6 +1401,80 @@ RyuNowUsingDefaultTheme:
 
 @========================================================================Random "Stepped On" encounter
 
+SB_CheckMeloettaEncounter::
+	goto_if_set FLAG_RYU_CAPTURED_MELOETTA, ryu_end
+	readgamestat GAME_STAT_USED_SOUND_MOVE
+	switch VAR_RESULT
+	case 255, Ryu_DoMeloettaRoll
+    case 200, Ryu_MeloettaWatchingMsg
+	case 100, Ryu_BeingWatched
+	release
+	end
+
+Ryu_MeloettaWatchingMsg::
+	goto_if_set FLAG_RYU_SECOND_MELOETTA_MSG, ryu_end
+	playmoncry SPECIES_MELOETTA, 0
+	msgbox Ryu_HearAMelodyFromSomewhere
+	setflag FLAG_RYU_SECOND_MELOETTA_MSG
+	waitmoncry
+	closemessage
+	release
+	end
+
+Ryu_HearAMelodyFromSomewhere:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You hear a delightful melody from\n"
+	.string " somewhere nearby...)$"
+
+Ryu_BeingWatched::
+	goto_if_set FLAG_RYU_FIRST_MELOETTA_MSG, ryu_end
+	msgbox Ryu_Feelslikebeingwatchedmsg
+	setflag FLAG_RYU_FIRST_MELOETTA_MSG
+	closemessage
+	release
+	end
+
+Ryu_Feelslikebeingwatchedmsg:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You get the strangest feeling...\n"
+	.string " as if someone or something is\l"
+	.string " watching over you...)$"
+
+Ryu_DoMeloettaRoll::
+	random 10
+	compare VAR_RESULT, 1
+	goto_if_eq Ryu_DoMeloettaEncounter
+	release
+	end
+
+Ryu_DoMeloettaEncounter::
+	playse SE_PIN
+	applymovement EVENT_OBJ_ID_FOLLOWER, Common_Movement_ExclamationMark
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement EVENT_OBJ_ID_PLAYER
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGMELOETTA
+	msgbox Ryu_MeloettaApproaches
+	closemessage
+	playmoncry SPECIES_MELOETTA, 0
+	msgbox Ryu_ItsSingingBeautifully
+	setwildbattle SPECIES_MELOETTA, 80, ITEM_STAR_PIECE
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	special GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_CAUGHT
+	goto_if_ne ryu_end
+	setflag FLAG_RYU_CAPTURED_MELOETTA
+	release
+	end
+
+Ryu_MeloettaApproaches:
+	.string "A cute looking Pokemon approaches!$"
+
+Ryu_ItsSingingBeautifully::
+	.string "It starts singing a nice tune...\p"
+	.string "It finishes its tune and attacks!$"
+
 SB_SetupRandomSteppedOnEncounter::
 	compare VAR_REPEL_STEP_COUNT, 0
 	goto_if_ne ryu_end

@@ -1286,9 +1286,9 @@
 #define FLAG_RYU_SUICUNE                                            0x4CB // Unused Flag
 #define FLAG_RYU_JIRACHI                                            0x4CC // Unused Flag
 #define FLAG_RYU_ENTEI                                              0x4CD // Unused Flag
-#define FLAG_UNUSED_0x4CE                                           0x4CE // Unused Flag
-#define FLAG_UNUSED_0x4CF                                           0x4CF // Unused Flag
-#define FLAG_UNUSED_0x4D0                                           0x4D0 // Unused Flag
+#define FLAG_RYU_CAPTURED_MELOETTA                                  0x4CE // Unused Flag
+#define FLAG_RYU_FIRST_MELOETTA_MSG                                 0x4CF // Unused Flag
+#define FLAG_RYU_SECOND_MELOETTA_MSG                                0x4D0 // Unused Flag
 #define FLAG_UNUSED_0x4D1                                           0x4D1 // Unused Flag
 #define FLAG_UNUSED_0x4D2                                           0x4D2 // Unused Flag
 #define FLAG_UNUSED_0x4D3                                           0x4D3 // Unused Flag
