@@ -22,6 +22,7 @@ MtPyre_Summit_EventScript_TeamAquaTrigger0:: @ 8232018
 	msgbox MP_OldPeopleGiveEonTicket MSGBOX_DEFAULT
 	additem ITEM_EON_TICKET
 	setflag FLAG_HAS_EON_TICKET
+	setflag FLAG_SYS_HAS_EON_TICKET
 	end
 
 MtPyre_Summit_EventScript_TeamAquaTrigger1:: @ 8232024
@@ -82,6 +83,7 @@ MtPyre_Summit_EventScript_TeamAquaExits:: @ 823203C
 	waitmovement 0
 	msgbox MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis, MSGBOX_DEFAULT
 	additem ITEM_EON_TICKET
+	setflag FLAG_SYS_HAS_EON_TICKET
 	setflag FLAG_HAS_EON_TICKET
 	setflag FLAG_RECEIVED_RED_OR_BLUE_ORB
 	setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
@@ -179,7 +181,6 @@ MtPyre_Summit_Movement_ArchieFacePlayer2: @ 8232139
 MtPyre_Summit_EventScript_OldMan:: @ 823213C
 	lock
 	faceplayer
-	goto_if_set FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, MtPyre_Summit_EventScript_OldManAfterRayquaza
 	msgbox MtPyre_Summit_Text_WillYouHearOutMyTale, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	call_if_eq MtPyre_Summit_EventScript_OldManTale
@@ -212,8 +213,12 @@ MtPyre_Summit_EventScript_OldManNewTale:: @ 8232199
 MtPyre_Summit_EventScript_OldLady:: @ 82321A2
 	lock
 	faceplayer
+	msgbox Normal_old_lady
 	release
 	end
+
+Normal_old_lady:
+	.string "Have you met our grandkids?\nThey run the gym in that eastern island.\pIf you see them, tell them to\nvisit us sometime!$"
 
 MtPyre_Summit_EventScript_OldLadyOrbsReturned:: @ 82321CB
 	msgbox MtPyre_Summit_Text_ThoseTwoMenReturnedOrbs, MSGBOX_DEFAULT

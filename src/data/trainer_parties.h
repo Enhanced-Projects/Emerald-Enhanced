@@ -11240,27 +11240,27 @@ static const struct TrainerMonItemCustomMoves sParty_Wattson4[] = {
 static const struct TrainerMonItemCustomMoves sParty_DoppelF[] = {//unused
     {
     .iv = 255,
-    .lvl = 125,
-    .species = SPECIES_BULBASAUR,
+    .lvl = 80,
+    .species = SPECIES_PORYGON2,
     .heldItem = ITEM_NONE,
     .ability = 0,
-    .moves = {MOVE_SWIFT, MOVE_FOCUS_PUNCH, MOVE_THUNDER_PUNCH, MOVE_LIGHT_SCREEN},
+    .moves = {MOVE_HELPING_HAND, MOVE_FLAMETHROWER, MOVE_SUNNY_DAY, MOVE_ROAR},
     },
     {
     .iv = 255,
-    .lvl = 125,
-    .species = SPECIES_BULBASAUR,
-    .heldItem = ITEM_NONE,
+    .lvl = 80,
+    .species = SPECIES_PORYGON2,
+    .heldItem = ITEM_WHITE_HERB,
     .ability = 0,
-    .moves = {MOVE_THUNDER, MOVE_SLAM, MOVE_RAIN_DANCE, MOVE_PROTECT},
+    .moves = {MOVE_OVERHEAT, MOVE_ATTRACT, MOVE_LIGHT_SCREEN, MOVE_ROCK_SLIDE},
     },
     {
     .iv = 255,
-    .lvl = 125,
-    .species = SPECIES_BULBASAUR,
+    .lvl = 80,
+    .species = SPECIES_PORYGON2,
     .heldItem = ITEM_NONE,
     .ability = 0,
-    .moves = {MOVE_THUNDER, MOVE_PROTECT, MOVE_THUNDER_WAVE, MOVE_LIGHT_SCREEN},
+    .moves = {MOVE_ROAR, MOVE_SOLAR_BEAM, MOVE_TAUNT, MOVE_SUNNY_DAY},
     }
 };
 
@@ -11421,24 +11421,24 @@ static const struct TrainerMonItemCustomMoves sParty_Flannery4[] = {
 static const struct TrainerMonItemCustomMoves sParty_DoppelM[] = {//unused
     {
     .iv = 255,
-    .lvl = 125,
-    .species = SPECIES_BULBASAUR,
+    .lvl = 80,
+    .species = SPECIES_DUGTRIO,
     .heldItem = ITEM_NONE,
     .ability = 0,
     .moves = {MOVE_HELPING_HAND, MOVE_FLAMETHROWER, MOVE_SUNNY_DAY, MOVE_ROAR},
     },
     {
     .iv = 255,
-    .lvl = 125,
-    .species = SPECIES_BULBASAUR,
+    .lvl = 80,
+    .species = SPECIES_DUGTRIO,
     .heldItem = ITEM_WHITE_HERB,
     .ability = 0,
     .moves = {MOVE_OVERHEAT, MOVE_ATTRACT, MOVE_LIGHT_SCREEN, MOVE_ROCK_SLIDE},
     },
     {
     .iv = 255,
-    .lvl = 125,
-    .species = SPECIES_BULBASAUR,
+    .lvl = 80,
+    .species = SPECIES_DUGTRIO,
     .heldItem = ITEM_NONE,
     .ability = 0,
     .moves = {MOVE_ROAR, MOVE_SOLAR_BEAM, MOVE_TAUNT, MOVE_SUNNY_DAY},

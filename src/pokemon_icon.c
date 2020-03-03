@@ -2139,10 +2139,10 @@ void SpriteCB_MonIcon(struct Sprite *sprite)
 const u8* GetMonIconTiles(u16 species, bool32 handleDeoxys)
 {
     const u8* iconSprite = gMonIconTable[species];
-    if (species == SPECIES_DEOXYS && handleDeoxys == TRUE)
-    {
-        iconSprite = (const u8*)(0x400 + (u32)iconSprite); // use the specific Deoxys form icon (Speed in this case)
-    }
+    //if (species == SPECIES_DEOXYS && handleDeoxys == TRUE)
+    //{
+    //    iconSprite = (const u8*)(0x400 + (u32)iconSprite); // use the specific Deoxys form icon (Speed in this case)
+    //}
     return iconSprite;
 }
 

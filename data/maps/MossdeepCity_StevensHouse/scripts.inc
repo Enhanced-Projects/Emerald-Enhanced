@@ -70,30 +70,29 @@ MossdeepCity_StevensHouse_Movement_StevenReturn: @ 822283B
 	walk_in_place_fastest_up
 	step_end
 
-MossdeepCity_StevensHouse_EventScript_BeldumPokeball:: @ 8222841
-	lockall
-	msgbox MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq MossdeepCity_StevensHouse_EventScript_LeaveBeldum
-	goto MossdeepCity_StevensHouse_EventScript_GiveBeldum
-	end
-
-MossdeepCity_StevensHouse_EventScript_LeaveBeldum:: @ 822285B
-	msgbox MossdeepCity_StevensHouse_Text_LeftPokeBallWhereItWas, MSGBOX_DEFAULT
-	releaseall
+MossdeepCity_StevensHouse_EventScript_BeldumPokeball::
+	release
 	end
 
 MossdeepCity_StevensHouse_EventScript_GiveBeldum:: @ 8222865
 	goto_if_set FLAG_RYU_AURORATICKET MC_ALREADY_HAVE
 	msgbox MC_QUERY_TEXT, MSGBOX_YESNO
-	compare VAR_RESULT 1
+	compare VAR_RESULT 0
 	goto_if_eq MC_DECLINED
 	additem ITEM_AURORA_TICKET
-	waitfanfare
+	playfanfare MUS_FANFA4
+	setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
+	removeobject 2
 	setflag FLAG_RYU_AURORATICKET
     setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
 	msgbox MC_OBTAINED_TEXT, MSGBOX_DEFAULT
+	waitfanfare
 	closemessage
+	end
+
+MossdeepCity_StevensHouse_EventScript_LeaveBeldum:: @ 822285B
+	msgbox MossdeepCity_StevensHouse_Text_LeftPokeBallWhereItWas, MSGBOX_DEFAULT
+	releaseall
 	end
 
 MC_ALREADY_HAVE::
@@ -119,7 +118,7 @@ MC_QUERY_TEXT: @ 8222B9E
 
 MC_OBTAINED_TEXT: @ 8222BED
 	.string "{PLAYER} obtained the\n"
-	.string "Aurora Ticket.\p$"
+	.string "Aurora Ticket.$"
 
 MC_DECLINED_TEXT: @ 8222C2A
 	.string "{PLAYER} left the ticket where\n"
@@ -236,13 +235,13 @@ MossdeepCity_StevensHouse_Text_LetterFromSteven: @ 8222C4E
 	.string "I don't plan to return home for some\n"
 	.string "time.\p"
 	.string "I have a favor to ask of you.\p"
-	.string "I want you to take the POKé BALL on\n"
-	.string "the desk.\p"
-	.string "Inside it is a BELDUM, my favorite\n"
-	.string "Pokémon.\p"
-	.string "I'm counting on you.\p"
-	.string "May our paths cross someday.\p"
-	.string "STEVEN STONE$"
+	.string "I want you to take the\n"
+	.string "ticket on the desk.\p"
+	.string "It is an Aurora Ticket.\n"
+	.string "Go meet the Legendary\p"
+	.string "Pokémon on Birth Island.\p"
+	.string "it will test your resolve.\p"
+	.string "- STEVEN STONE$"
 
 MossdeepCity_StevensHouse_Text_CollectionOfRareRocks: @ 8222D97
 	.string "It's a collection of rare rocks and\n"

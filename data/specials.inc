@@ -603,3 +603,4 @@ gSpecials:: @ 81DBA64
 	def_special SetMonAbility
 	def_special RyuCheckContestMastery
 	def_special checksymbolcount
+	def_special resetSoundGameStat

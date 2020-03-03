@@ -22418,7 +22418,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_SLOW,
         .eggGroup1 = EGG_GROUP_UNDISCOVERED,
         .eggGroup2 = EGG_GROUP_UNDISCOVERED,
-        .abilities = {ABILITY_SERENE_GRACE, ABILITY_VITAL_SPIRIT},
+        .abilities = {ABILITY_VITAL_SPIRIT, ABILITY_VITAL_SPIRIT},
         .bodyColor = BODY_COLOR_WHITE,
     },
 
