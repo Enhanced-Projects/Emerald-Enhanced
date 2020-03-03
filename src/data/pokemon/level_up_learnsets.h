@@ -12958,7 +12958,6 @@ static const struct LevelUpMove sVigorothLevelUpLearnset[] = {
 static const struct LevelUpMove sSlakingLevelUpLearnset[] = {
     // Gen 7 TM's
     LEVEL_UP_MOVE( 1, MOVE_WORK_UP),
-    LEVEL_UP_MOVE( 1, MOVE_ROAR),
     LEVEL_UP_MOVE( 1, MOVE_TOXIC),
     LEVEL_UP_MOVE( 1, MOVE_BULK_UP),
     LEVEL_UP_MOVE( 1, MOVE_HIDDEN_POWER),
