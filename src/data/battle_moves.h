@@ -832,7 +832,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .power = 110,
         .type = TYPE_ICE,
         .accuracy = 70,
-        .pp = 7,
+        .pp = 5,
         .secondaryEffectChance = 10,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
@@ -2551,15 +2551,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_PROTECT] =
     {
-        .effect = EFFECT_DEFENSE_UP_2,
+        .effect = EFFECT_PROTECT,
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,
-        .pp = 20,
+        .pp = 10,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_USER,
-        .priority = 0,
-        .flags = FLAG_SNATCH_AFFECTED,
+        .priority = 3,
+        .flags = 0,
         .split = SPLIT_STATUS,
     },
 
@@ -2761,15 +2761,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_DETECT] =
     {
-        .effect = EFFECT_SPECIAL_DEFENSE_UP_2,
+        .effect = EFFECT_PROTECT,
         .power = 0,
         .type = TYPE_FIGHTING,
         .accuracy = 0,
-        .pp = 20,
+        .pp = 10,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_USER,
-        .priority = 0,
-        .flags = FLAG_SNATCH_AFFECTED,
+        .priority = 3,
+        .flags = 0,
         .split = SPLIT_STATUS,
     },
 
