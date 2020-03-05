@@ -6016,12 +6016,15 @@ static const struct LevelUpMove sHoothootLevelUpLearnset[] = {
     LEVEL_UP_MOVE(40, MOVE_MOONBLAST),
     LEVEL_UP_MOVE(43, MOVE_SYNCHRONOISE),
     LEVEL_UP_MOVE(46, MOVE_DREAM_EATER),
+    LEVEL_UP_MOVE(50, MOVE_STORED_POWER),
     LEVEL_UP_END
 };
 
 static const struct LevelUpMove sNoctowlLevelUpLearnset[] = {
     // Gen 7 TM's
     LEVEL_UP_MOVE( 1, MOVE_WORK_UP),
+    LEVEL_UP_MOVE( 1, MOVE_PSYSHOCK),
+    LEVEL_UP_MOVE( 1, MOVE_CALM_MIND),
     LEVEL_UP_MOVE( 1, MOVE_TOXIC),
     LEVEL_UP_MOVE( 1, MOVE_HIDDEN_POWER),
     LEVEL_UP_MOVE( 1, MOVE_SUNNY_DAY),
@@ -6073,6 +6076,7 @@ static const struct LevelUpMove sNoctowlLevelUpLearnset[] = {
     LEVEL_UP_MOVE(47, MOVE_MOONBLAST),
     LEVEL_UP_MOVE(51, MOVE_SYNCHRONOISE),
     LEVEL_UP_MOVE(55, MOVE_DREAM_EATER),
+    LEVEL_UP_MOVE(59, MOVE_STORED_POWER),
     LEVEL_UP_END
 };
 
