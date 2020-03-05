@@ -4000,6 +4000,7 @@ const u32 gTMHMLearnsets[][2] =
 
     [SPECIES_HOOTHOOT]    = TMHM_LEARNSET(TMHM(TM40_AERIAL_ACE)
 											| TMHM(TM45_ATTRACT)
+											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM42_FACADE)
 											| TMHM(TM52_FLY)
@@ -4020,6 +4021,7 @@ const u32 gTMHMLearnsets[][2] =
 
     [SPECIES_NOCTOWL]     = TMHM_LEARNSET(TMHM(TM40_AERIAL_ACE)
 											| TMHM(TM45_ATTRACT)
+											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM42_FACADE)
 											| TMHM(TM52_FLY)
