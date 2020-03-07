@@ -16,6 +16,7 @@
 #include "palette.h"
 #include "random.h"
 #include "main.h"
+#include "graphics.h"
 #include "overworld.h"
 #include "task.h"
 #include "malloc.h"
@@ -130,7 +131,7 @@ static void DexNavGUICallback2(void);
 static void ResetPalSettings(void);
 static void ResetBgSettings(void);
 static void Setup(void);
-static bool8 SpeciesInArray(u16 species, u8 indexCount, u8 unownLetter);
+static bool8 SpeciesInArray(u16 species, u8 indexCount);
 static void DexNavGetMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16* moves);
 //static u8 FindHeaderIndexWithLetter(u16 species, u8 letter);
 static u8 GetPlayerDistance(s16 x, s16 y);
@@ -835,15 +836,15 @@ static void MsgNormal(const u8* str)
 
 u8 PickUnownLetter(u16 species, u8 headerIndex)
 {
-	return 0;
+    return 0;
 }
 
 u32 MathMin(u32 num1, u32 num2)
 {
-	if (num1 < num2)
-		return num1;
+    if (num1 < num2)
+        return num1;
 
-	return num2;
+    return num2;
 }
 
 u16 RandRange(u16 min, u16 max)
@@ -914,53 +915,6 @@ static void Setup(void)
     CpuFastSet((void*)&set, (void*)VRAM, CPUModeFS(0x10000, CPUFSSET));     // VRAM clear
     InitHeap((void*) 0x2000000, 0x1C000);
     ResetTasks();
-}
-
-static bool8 SpeciesInArray(u16 species, u8 indexCount, u8 unownLetter)
-{
-    u16 dexNum = SpeciesToNationalPokedexNum(species);
-    u8 i;
-
-    //Disallow species not seen
-    if (!GetSetPokedexFlag(dexNum, FLAG_GET_SEEN))
-    {
-        for (i = 0; i < NUM_LAND_MONS; i++)
-        {
-            if (sDNavState->hiddenSpecies[i] == SPECIES_TABLES_TERMIN)
-            {
-                sDNavState->hiddenSpecies[i] = dexNum;
-                sDNavState->hiddenSpecies[i + 1] = SPECIES_TABLES_TERMIN;
-                break;
-            }
-            else if (sDNavState->hiddenSpecies[i] == dexNum) //Already in array
-            {
-                return TRUE;
-            }
-        }
-
-        if (indexCount == NUM_LAND_MONS)
-            sDNavState->numHiddenLandMons++; //Increase how many question marks to print
-        else
-            sDNavState->numHiddenWaterMons++;
-
-        return TRUE;
-    }
-
-    for (i = 0; i < indexCount; i++)
-    {
-        if (indexCount == NUM_LAND_MONS)
-        {
-            if (SpeciesToNationalPokedexNum(sDNavState->grassSpecies[i]) == dexNum)
-                return TRUE;
-        }
-        else
-        {
-            if (SpeciesToNationalPokedexNum(sDNavState->waterSpecies[i]) == dexNum)
-                return TRUE;
-        }
-    }
-
-    return FALSE;
 }
 
 
@@ -1046,164 +1000,164 @@ static void DexHUDHBlank(void)
 
 static void OutlinedFontDraw(u8 objId, u8 tileNum, u16 size)
 {
-	u8 tile = gSprites[objId].oam.tileNum + tileNum;
-	u8* toWrite = (u8*)((tile * TILE_SIZE_4BPP) + OBJ_VRAM0);
-	u8* originalDst;
+    u8 tile = gSprites[objId].oam.tileNum + tileNum;
+    u8* toWrite = (u8*)((tile * TILE_SIZE_4BPP) + OBJ_VRAM0);
+    u8* originalDst;
     u8* dst;
     u8* prevLetter;
-	u8* strPtr = gStringVar4;
-	u8 counter = 1;
-	u16 index = 320;
-	u16 prevIndex;
-	u8 element = *strPtr;
+    u8* strPtr = gStringVar4;
+    u8 counter = 1;
+    u16 index = 320;
+    u16 prevIndex;
+    u8 element = *strPtr;
     
     originalDst = dst = AllocZeroed(size + TILE_SIZE_4BPP);
 
-	while (element != 0xFF)
-	{
-		prevIndex = index;
-		if ((element <= 0xEE) && (element >= 0xD5))
-		{
-			// lower case letters
-			index = (((element - 0xD5) * TILE_SIZE_4BPP) + 1600);
-		}
-		else if ((element <= 0xD4) && (element >= 0xBB))
-		{
-			// upper case letters
-			index = (((element - 0xBB) * TILE_SIZE_4BPP) + 768);
-		}
-		else if ((element <= 0xAA) && (element >= 0xA1))
-		{
-			// numbers
-			index = (element - 0xA1) * TILE_SIZE_4BPP;
-		}
-		else
-		{
-			// misc pchars
-			u8 symbolId = 0;
-			switch (element)
-			{
-				case 0xF0: // colon
-				case 0x0: // space bar
-					symbolId = 1;
-					break;
-				case 0x36: // semi colon used indication of str end
-					symbolId = 2;
-					break;
-				case 0xAC: // question mark
-					symbolId = 3;
-					break;
-				case 0xAE: // dash
-					symbolId = 4;
-					break;
-				case 0xAD: // period
-					symbolId = 5;
-					break;
-				case 0xBA: // slash
-					symbolId = 6;
-					break;
-				case 0xB1: // open double quote
-					symbolId = 7;
-					break;
-				case 0xB2: // close double quote
-					symbolId = 8;
-					break;
-				case 0xB3: // open single quote
-					symbolId = 9;
-					break;
-				case 0xB4: // close single quote
-					symbolId = 10;
-					break;
-				case 0xB0: // elipsis ...
-					symbolId = 11;
-					break;
-				case 0xB8: // comma
-					symbolId = 12;
-					break;
-				case 0xB5: // male
-					symbolId = 13;
-					//dst =
-					break;
-				case 0xB6: // f
-					symbolId = 14;
-					break;
-				case 0xFF: // empty
-					symbolId = 1;
-					break;
-			};
-			index = (symbolId + 9) * TILE_SIZE_4BPP;
-		}
+    while (element != 0xFF)
+    {
+        prevIndex = index;
+        if ((element <= 0xEE) && (element >= 0xD5))
+        {
+            // lower case letters
+            index = (((element - 0xD5) * TILE_SIZE_4BPP) + 1600);
+        }
+        else if ((element <= 0xD4) && (element >= 0xBB))
+        {
+            // upper case letters
+            index = (((element - 0xBB) * TILE_SIZE_4BPP) + 768);
+        }
+        else if ((element <= 0xAA) && (element >= 0xA1))
+        {
+            // numbers
+            index = (element - 0xA1) * TILE_SIZE_4BPP;
+        }
+        else
+        {
+            // misc pchars
+            u8 symbolId = 0;
+            switch (element)
+            {
+                case 0xF0: // colon
+                case 0x0: // space bar
+                    symbolId = 1;
+                    break;
+                case 0x36: // semi colon used indication of str end
+                    symbolId = 2;
+                    break;
+                case 0xAC: // question mark
+                    symbolId = 3;
+                    break;
+                case 0xAE: // dash
+                    symbolId = 4;
+                    break;
+                case 0xAD: // period
+                    symbolId = 5;
+                    break;
+                case 0xBA: // slash
+                    symbolId = 6;
+                    break;
+                case 0xB1: // open double quote
+                    symbolId = 7;
+                    break;
+                case 0xB2: // close double quote
+                    symbolId = 8;
+                    break;
+                case 0xB3: // open single quote
+                    symbolId = 9;
+                    break;
+                case 0xB4: // close single quote
+                    symbolId = 10;
+                    break;
+                case 0xB0: // elipsis ...
+                    symbolId = 11;
+                    break;
+                case 0xB8: // comma
+                    symbolId = 12;
+                    break;
+                case 0xB5: // male
+                    symbolId = 13;
+                    //dst =
+                    break;
+                case 0xB6: // f
+                    symbolId = 14;
+                    break;
+                case 0xFF: // empty
+                    symbolId = 1;
+                    break;
+            };
+            index = (symbolId + 9) * TILE_SIZE_4BPP;
+        }
 
-		// TODO: Use macros here //
+        // TODO: Use macros here //
 
-		if ((counter == 0) || (*(strPtr + 1) == 0xFF))
-		{
-			// first or last pcharacters don't need pixel merging
-			memcpy(dst, &sDexnavStarsTiles[index], TILE_SIZE_4BPP);
-		}
-		else if ((element == 0x0))
-		{
-			memcpy(dst, &sDexnavStarsTiles[index], TILE_SIZE_4BPP);
-			prevLetter = (u8*)(&sDexnavStarsTiles[prevIndex]);
-			*(dst + 0) = *(prevLetter + 2);
-			*(dst + 4) = *(prevLetter + 6);
-			*(dst + 8) = *(prevLetter + 10);
-			*(dst + 12) = *(prevLetter + 14);
-			*(dst + 16) = *(prevLetter + 18);
-			*(dst + 20) = *(prevLetter + 22);
-			*(dst + 24) = *(prevLetter + 26);
-			*(dst + 28) = *(prevLetter + 30);
-		}
-		else if ((*(strPtr + 1) != 0xFF))
-		{
-			// pcharacter in middle, if blank space fill blank with previous pcharacter's last pixel row IFF previous pchar's last pixel row non-empty
-			memcpy((void*)dst, &sDexnavStarsTiles[index], TILE_SIZE_4BPP);
-			prevLetter = (u8*)(&sDexnavStarsTiles[prevIndex]);
-			*(dst) |= (((*(prevLetter + 0) & 0xF) == 0) ? (*(dst + 0) & 0xF) : (*(prevLetter + 0) & 0xF));
-			*(dst + 4) |= (((*(prevLetter + 4) & 0xF) == 0) ? (*(dst + 4) & 0xF) : (*(prevLetter + 4) & 0xF));
-			*(dst + 8) |= (((*(prevLetter + 8) & 0xF) == 0) ? (*(dst + 8) & 0xF) : (*(prevLetter + 8) & 0xF));
-			*(dst + 12) |= (((*(prevLetter + 12) & 0xF) == 0) ? (*(dst + 12) & 0xF) : (*(prevLetter + 12) & 0xF));
-			*(dst + 16) |= (((*(prevLetter + 16) & 0xF) == 0) ? (*(dst + 16) & 0xF) : (*(prevLetter + 16) & 0xF));
-			*(dst + 20) |= (((*(prevLetter + 20) & 0xF) == 0) ? (*(dst + 20) & 0xF) : (*(prevLetter + 20) & 0xF));
-			*(dst + 24) |= (((*(prevLetter + 24) & 0xF) == 0) ? (*(dst + 24) & 0xF) : (*(prevLetter + 24) & 0xF));
-			*(dst + 28) |= (((*(prevLetter + 28) & 0xF) == 0) ? (*(dst + 28) & 0xF) : (*(prevLetter + 28) & 0xF));
-		}
+        if ((counter == 0) || (*(strPtr + 1) == 0xFF))
+        {
+            // first or last pcharacters don't need pixel merging
+            memcpy(dst, &sDexnavStarsTiles[index], TILE_SIZE_4BPP);
+        }
+        else if ((element == 0x0))
+        {
+            memcpy(dst, &sDexnavStarsTiles[index], TILE_SIZE_4BPP);
+            prevLetter = (u8*)(&sDexnavStarsTiles[prevIndex]);
+            *(dst + 0) = *(prevLetter + 2);
+            *(dst + 4) = *(prevLetter + 6);
+            *(dst + 8) = *(prevLetter + 10);
+            *(dst + 12) = *(prevLetter + 14);
+            *(dst + 16) = *(prevLetter + 18);
+            *(dst + 20) = *(prevLetter + 22);
+            *(dst + 24) = *(prevLetter + 26);
+            *(dst + 28) = *(prevLetter + 30);
+        }
+        else if ((*(strPtr + 1) != 0xFF))
+        {
+            // pcharacter in middle, if blank space fill blank with previous pcharacter's last pixel row IFF previous pchar's last pixel row non-empty
+            memcpy((void*)dst, &sDexnavStarsTiles[index], TILE_SIZE_4BPP);
+            prevLetter = (u8*)(&sDexnavStarsTiles[prevIndex]);
+            *(dst) |= (((*(prevLetter + 0) & 0xF) == 0) ? (*(dst + 0) & 0xF) : (*(prevLetter + 0) & 0xF));
+            *(dst + 4) |= (((*(prevLetter + 4) & 0xF) == 0) ? (*(dst + 4) & 0xF) : (*(prevLetter + 4) & 0xF));
+            *(dst + 8) |= (((*(prevLetter + 8) & 0xF) == 0) ? (*(dst + 8) & 0xF) : (*(prevLetter + 8) & 0xF));
+            *(dst + 12) |= (((*(prevLetter + 12) & 0xF) == 0) ? (*(dst + 12) & 0xF) : (*(prevLetter + 12) & 0xF));
+            *(dst + 16) |= (((*(prevLetter + 16) & 0xF) == 0) ? (*(dst + 16) & 0xF) : (*(prevLetter + 16) & 0xF));
+            *(dst + 20) |= (((*(prevLetter + 20) & 0xF) == 0) ? (*(dst + 20) & 0xF) : (*(prevLetter + 20) & 0xF));
+            *(dst + 24) |= (((*(prevLetter + 24) & 0xF) == 0) ? (*(dst + 24) & 0xF) : (*(prevLetter + 24) & 0xF));
+            *(dst + 28) |= (((*(prevLetter + 28) & 0xF) == 0) ? (*(dst + 28) & 0xF) : (*(prevLetter + 28) & 0xF));
+        }
 
-		if ((counter == 2) && (*(strPtr + 1) != 0xFF))
-		{
-			// every two pchars, we need to merge
-			// 8x8px made of 4x8px from previous pchar and 4x8px of this pchar
-			*(dst - 30) = (((*(dst - 30) & 0x0F) == 0) ? (*(dst) & 0xF) :(*(dst - 30) & 0x0F)) | (*(dst) & 0xF0);
-			*(dst - 26) = (((*(dst - 26) & 0x0F) == 0) ? (*(dst + 4) & 0xF): (*(dst - 26) & 0x0F))  | (*(dst + 4) & 0xF0);
-			*(dst - 22) = (((*(dst - 22) & 0x0F) == 0) ? (*(dst + 8) & 0xF): (*(dst - 22) & 0x0F)) | (*(dst + 8) & 0xF0);
-			*(dst - 18) = (((*(dst - 18) & 0x0F) == 0) ? (*(dst + 12) & 0xF): (*(dst - 18) & 0x0F)) | (*(dst + 12) & 0xF0);
-			*(dst - 14) = (((*(dst - 14) & 0x0F) == 0) ? (*(dst + 16) & 0xF): (*(dst - 14) & 0x0F)) | (*(dst + 16) & 0xF0);
-			*(dst - 10) = (((*(dst - 10) & 0x0F) == 0) ? (*(dst + 20) & 0xF): (*(dst - 10) & 0x0F)) | (*(dst + 20) & 0xF0);
-			*(dst - 6) = (((*(dst - 6) & 0x0F) == 0) ? (*(dst + 24) & 0xF): (*(dst - 6) & 0x0F)) | (*(dst + 24) & 0xF0);
-			*(dst - 2) = (((*(dst - 2) & 0x0F) == 0) ? (*(dst + 28) & 0xF): (*(dst - 2) & 0x0F)) | (*(dst + 28) & 0xF0);
+        if ((counter == 2) && (*(strPtr + 1) != 0xFF))
+        {
+            // every two pchars, we need to merge
+            // 8x8px made of 4x8px from previous pchar and 4x8px of this pchar
+            *(dst - 30) = (((*(dst - 30) & 0x0F) == 0) ? (*(dst) & 0xF) :(*(dst - 30) & 0x0F)) | (*(dst) & 0xF0);
+            *(dst - 26) = (((*(dst - 26) & 0x0F) == 0) ? (*(dst + 4) & 0xF): (*(dst - 26) & 0x0F))  | (*(dst + 4) & 0xF0);
+            *(dst - 22) = (((*(dst - 22) & 0x0F) == 0) ? (*(dst + 8) & 0xF): (*(dst - 22) & 0x0F)) | (*(dst + 8) & 0xF0);
+            *(dst - 18) = (((*(dst - 18) & 0x0F) == 0) ? (*(dst + 12) & 0xF): (*(dst - 18) & 0x0F)) | (*(dst + 12) & 0xF0);
+            *(dst - 14) = (((*(dst - 14) & 0x0F) == 0) ? (*(dst + 16) & 0xF): (*(dst - 14) & 0x0F)) | (*(dst + 16) & 0xF0);
+            *(dst - 10) = (((*(dst - 10) & 0x0F) == 0) ? (*(dst + 20) & 0xF): (*(dst - 10) & 0x0F)) | (*(dst + 20) & 0xF0);
+            *(dst - 6) = (((*(dst - 6) & 0x0F) == 0) ? (*(dst + 24) & 0xF): (*(dst - 6) & 0x0F)) | (*(dst + 24) & 0xF0);
+            *(dst - 2) = (((*(dst - 2) & 0x0F) == 0) ? (*(dst + 28) & 0xF): (*(dst - 2) & 0x0F)) | (*(dst + 28) & 0xF0);
 
-			// last two pixels unconditional
-			*(dst - 29) |= *(dst + 1);
-			*(dst - 25) |= *(dst + 5);
-			*(dst - 21) |= *(dst + 9);
-			*(dst - 17) |= *(dst + 13);
-			*(dst - 13) |= *(dst + 17);
-			*(dst - 9) |= *(dst + 21);
-			*(dst - 5) |= *(dst + 25);
-			*(dst - 1) |= *(dst + 29);
+            // last two pixels unconditional
+            *(dst - 29) |= *(dst + 1);
+            *(dst - 25) |= *(dst + 5);
+            *(dst - 21) |= *(dst + 9);
+            *(dst - 17) |= *(dst + 13);
+            *(dst - 13) |= *(dst + 17);
+            *(dst - 9) |= *(dst + 21);
+            *(dst - 5) |= *(dst + 25);
+            *(dst - 1) |= *(dst + 29);
 
-			dst -= TILE_SIZE_4BPP;
-			counter = 0;
-		}
+            dst -= TILE_SIZE_4BPP;
+            counter = 0;
+        }
         
-		counter++;
-		dst += TILE_SIZE_4BPP; // next tile
-		strPtr++;
-		element = *strPtr;
-	}
+        counter++;
+        dst += TILE_SIZE_4BPP; // next tile
+        strPtr++;
+        element = *strPtr;
+    }
 
-	memcpy((void*) toWrite, originalDst, size);
-	Free(originalDst);
+    memcpy((void*) toWrite, originalDst, size);
+    Free(originalDst);
 }
 
 
@@ -1346,7 +1300,7 @@ static bool8 IsCurrentAreaAutumn(void)
 
 static bool8 IsCurrentAreaWinter(void)
 {
-		return FALSE;
+        return FALSE;
 }
 
 static bool8 IsCurrentAreaDarkCave(void)
@@ -1356,7 +1310,7 @@ static bool8 IsCurrentAreaDarkCave(void)
 
 static bool8 InTanobyRuins(void)
 {
-	return FALSE;
+    return FALSE;
 }
 
 #define priv0 gTasks[taskId].data[0]
@@ -1458,10 +1412,11 @@ static void DexNavGuiHandler(void)
                 LoadCompressedPalette(sDexNavGuiWinterPal, 0, 32);
             else
                 LoadCompressedPalette(sDexnavGuiPal, 0, 32);
-
-            LZ77UnCompWram(sDexnavGuiTilemap, DexNav_gbackBuffer);
+			
+			LZ77UnCompWram(sDexnavGuiTilemap, DexNav_gbackBuffer);
             LZ77UnCompVram(sDexnavGuiTiles, (void *)VRAM);
-            SetBgTilemapBuffer(1, DexNav_gbackBuffer);
+            			
+			SetBgTilemapBuffer(1, DexNav_gbackBuffer);
             schedule_bg_copy_tilemap_to_vram(1);
             schedule_bg_copy_tilemap_to_vram(0);
             gMain.state++;
@@ -1684,6 +1639,51 @@ static void DexNavGuiSetup(void)
     SetVBlankCallback(VblackCallbackSeq);
 }
 
+static bool8 SpeciesInArray(u16 species, u8 indexCount)
+{
+	u16 dexNum = SpeciesToNationalPokedexNum(species);
+    u8 i;
+
+	//Disallow species not seen
+	if (!GetSetPokedexFlag(dexNum, FLAG_GET_SEEN))
+	{
+		for (i = 0; i < NUM_LAND_MONS; ++i)
+		{
+			if (sDNavState->hiddenSpecies[i] == SPECIES_TABLES_TERMIN)
+			{
+				sDNavState->hiddenSpecies[i] = dexNum;
+				sDNavState->hiddenSpecies[i + 1] = SPECIES_TABLES_TERMIN;
+				break;
+			}
+			else if (sDNavState->hiddenSpecies[i] == dexNum) //Already in array
+				return TRUE;
+		}
+
+		if (indexCount == NUM_LAND_MONS)
+			sDNavState->numHiddenLandMons++; //Increase how many question marks to print
+		else
+			sDNavState->numHiddenWaterMons++;
+
+		return TRUE;
+	}
+
+	for (i = 0; i < indexCount; ++i)
+	{
+		if (indexCount == NUM_LAND_MONS)
+		{
+			if (SpeciesToNationalPokedexNum(sDNavState->grassSpecies[i]) == dexNum)
+				return TRUE;
+		}
+		else
+		{
+			if (SpeciesToNationalPokedexNum(sDNavState->waterSpecies[i]) == dexNum)
+				return TRUE;
+		}
+	}
+
+	return FALSE;
+}
+
 static void DexNavPopulateEncounterList(void)
 {
     // populate unique wild grass encounters
@@ -1710,11 +1710,12 @@ static void DexNavPopulateEncounterList(void)
         for (i = 0; i < NUM_LAND_MONS; i++)
         {
             species = landMonsInfo->wildPokemon[i].species;
-            if (species != SPECIES_NONE && !SpeciesInArray(species, NUM_LAND_MONS, PickUnownLetter(species, i)))
+            if (species != SPECIES_NONE && !SpeciesInArray(species, NUM_LAND_MONS))
             {
             //if (species != SPECIES_NONE)
-                sDNavState->grassSpecies[grassIndex] = landMonsInfo->wildPokemon[i].species;
-                grassIndex++;
+                //sDNavState->grassSpecies[grassIndex] = landMonsInfo->wildPokemon[i].species;
+                //grassIndex++;
+                sDNavState->grassSpecies[grassIndex++] = landMonsInfo->wildPokemon[i].species;
             }
         }
     }
@@ -1726,7 +1727,7 @@ static void DexNavPopulateEncounterList(void)
         for (i = 0; i < NUM_WATER_MONS; i++)
         {
             species = waterMonsInfo->wildPokemon[i].species;
-            if (species != SPECIES_NONE && !SpeciesInArray(species, NUM_WATER_MONS, PickUnownLetter(species, i)))
+            if (species != SPECIES_NONE && !SpeciesInArray(species, NUM_WATER_MONS))
             {
             //if (species != SPECIES_NONE)
                 sDNavState->waterSpecies[waterIndex] = waterMonsInfo->wildPokemon[i].species;
@@ -1831,57 +1832,47 @@ static void DexNavLoadNames(u8 status)
 static void DexNavLoadPokeIcons(void)
 {
     s16 x, y;
-    u8 i;
-    u8 letter;
+    //u8 letter;
     u32 pid = 0xFFFFFFFF;
     u8 hiddenLandMons = sDNavState->numHiddenLandMons;
     u8 hiddenWaterMons = sDNavState->numHiddenWaterMons;
+	u8 i;
+	u16 species;
 
     LoadMonIconPalettes();
 
-    for (i = 0; i < NUM_LAND_MONS; i++)
+    for (i = 0; i < NUM_LAND_MONS; ++i)
     {
-        u16 species = sDNavState->grassSpecies[i];
+        species = sDNavState->grassSpecies[i];
         x = 20 + (24 * (i % 6));
         y = 92 + (i > 5 ? 28 : 0);
 
         if (species == SPECIES_NONE)
         {
-            CreateNoDataIcon(x, y);
-            continue;
-            /*
             if (hiddenLandMons == 0)
             {
                 CreateNoDataIcon(x, y);
                 continue;
             }
             else
-            {
                 hiddenLandMons--;
-            }
-            */
         }
-        else
-        {
-            //letter = sDNavState->unownFormsByDNavIndices[i];
-            //if (letter > 0)
-            //    pid = GenerateUnownPersonality(sDNavState->unownFormsByDNavIndices[i] - 1);
 
-            CreateMonIcon(species, SpriteCB_MonIcon, x, y, 0, pid, 0);
-        }
+        //letter = sDNavState->unownFormsByDNavIndices[i];
+        //if (letter > 0)
+        //    pid = GenerateUnownPersonality(sDNavState->unownFormsByDNavIndices[i] - 1);
+
+        CreateMonIcon(species, SpriteCB_MonIcon, x, y, 0, pid, 0);
     }
 
-    for (i = 0; i < NUM_WATER_MONS; i++)
+    for (i = 0; i < NUM_WATER_MONS; ++i)
     {
-        u16 species = sDNavState->waterSpecies[i];
+        species = sDNavState->waterSpecies[i];
         x = 30 + 24 * i;
         y = 48;
 
         if (species == SPECIES_NONE)
         {
-            CreateNoDataIcon(x, y);
-            continue;
-            /*
             if (hiddenWaterMons == 0)
             {
                 CreateNoDataIcon(x, y);
@@ -1889,16 +1880,13 @@ static void DexNavLoadPokeIcons(void)
             }
             else
                 hiddenWaterMons--;
-            */
         }
-        else
-        {
-            //letter = PickUnownLetter(species, i);
-            //if (letter > 0)
-            //    pid = GenerateUnownPersonality(letter - 1);
 
-            CreateMonIcon(species, SpriteCB_MonIcon, x, y, 0, pid, 0);
-        }
+        //letter = PickUnownLetter(species, i);
+        //if (letter > 0)
+        //    pid = GenerateUnownPersonality(letter - 1);
+
+        CreateMonIcon(species, SpriteCB_MonIcon, x, y, 0, pid, 0);
     }
 }
 
@@ -2048,8 +2036,6 @@ static void PrintDexNavError(u8 caseId)
             }
             break;
     }
-
-
 }
 
 static void DexNavGuiExitNoSearch(void)
