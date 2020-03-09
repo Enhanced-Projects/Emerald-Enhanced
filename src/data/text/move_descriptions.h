@@ -726,8 +726,8 @@ static const u8 sPowderSnowDescription[] = _(
     "gust. May cause freezing.");
 
 static const u8 sProtectDescription[] = _(
-    "The user protects itself,\n"
-    "sharply raising Defense");
+    "Evades attack, but may fail\n"
+    "if used in succession.");
 
 static const u8 sMachPunchDescription[] = _(
     "A punch is thrown at wicked\n"
@@ -786,8 +786,8 @@ static const u8 sIcyWindDescription[] = _(
     "lowers the foe's Speed.");
 
 static const u8 sDetectDescription[] = _(
-    "Prepares the mind to sharply\n"
-    "raise Special Defense");
+    "Evades attack, but may fail\n"
+    "if used in succession.");
 
 static const u8 sBoneRushDescription[] = _(
     "Strikes the foe with a bone\n"

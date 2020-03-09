@@ -2562,8 +2562,6 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_METRONOME)
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_GUNK_SHOT)
-											| TUTOR(MOVE_ICE_PUNCH)
-											| TUTOR(MOVE_THUNDER_PUNCH)
 											| TUTOR(MOVE_FIRE_PUNCH)),
 
     [SPECIES_VIGOROTH]      = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)
@@ -2571,10 +2569,9 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_SEISMIC_TOSS)
 											| TUTOR(MOVE_METRONOME)
 											| TUTOR(MOVE_LOW_KICK)
+											| TUTOR(MOVE_DRAIN_PUNCH)
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_GUNK_SHOT)
-											| TUTOR(MOVE_ICE_PUNCH)
-											| TUTOR(MOVE_THUNDER_PUNCH)
 											| TUTOR(MOVE_FIRE_PUNCH)),
 
     [SPECIES_SLAKING]       = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)
@@ -2582,11 +2579,10 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_SEISMIC_TOSS)
 											| TUTOR(MOVE_METRONOME)
 											| TUTOR(MOVE_LOW_KICK)
+											| TUTOR(MOVE_DRAIN_PUNCH)
 											| TUTOR(MOVE_STOMPING_TANTRUM)
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_GUNK_SHOT)
-											| TUTOR(MOVE_ICE_PUNCH)
-											| TUTOR(MOVE_THUNDER_PUNCH)
 											| TUTOR(MOVE_FIRE_PUNCH)),
 
     [SPECIES_NINCADA]       = TUTOR_LEARNSET(TUTOR(MOVE_DOUBLE_EDGE)

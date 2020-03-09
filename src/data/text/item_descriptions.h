@@ -1594,9 +1594,9 @@ static const u8 sTM16Desc[] = _(
     "Sp. Atk damage.");
 
 static const u8 sTM17Desc[] = _(
-    "Protects itself to\n"
-    "sharply raise the\n"
-    "Defense stat.");
+    "Negates all damage,\n"
+    "but may fail if used\n"
+    "in succession.");
 
 static const u8 sTM18Desc[] = _(
     "Raises the power of\n"
@@ -2051,8 +2051,8 @@ static const u8 sQuickPowderDesc[] = _(
 
 static const u8 sFocusSashDesc[] = _(
     "If the holder has\n"
-    "full HP, it endures\n"
-    "any attack with 1 HP.");
+    "full HP, it barely\n"
+    "endures any attack.");
 
 static const u8 sZoomLensDesc[] = _(
     "If the holder moves\n"
