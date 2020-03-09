@@ -34,6 +34,7 @@
 #include "constants/species.h"
 #include "constants/weather.h"
 #include "data.h"
+#include "mgba.h"
 
 extern const u8 gText_OverlordRyuBossNameBuffer[];
 extern const u8 gText_PokemonStringBuffer[];
@@ -5805,6 +5806,75 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
     return ApplyModifier(modifier, atkStat);
 }
 
+static const u16 sMegaBaseForms[46] = {
+    SPECIES_AMPHAROS,
+    SPECIES_VENUSAUR,
+    SPECIES_CHARIZARD,
+    SPECIES_MEWTWO,
+    SPECIES_BLAZIKEN,
+    SPECIES_MEDICHAM,
+    SPECIES_HOUNDOOM,
+    SPECIES_AGGRON,
+    SPECIES_BANETTE,
+    SPECIES_TYRANITAR,
+    SPECIES_SCIZOR,
+    SPECIES_PINSIR,
+    SPECIES_AERODACTYL,
+    SPECIES_LUCARIO,
+    SPECIES_ABOMASNOW,
+    SPECIES_BLASTOISE,
+    SPECIES_KANGASKHAN,
+    SPECIES_GYARADOS,
+    SPECIES_ABSOL,
+    SPECIES_ALAKAZAM,
+    SPECIES_HERACROSS,
+    SPECIES_MAWILE,
+    SPECIES_MANECTRIC,
+    SPECIES_GARCHOMP,
+    SPECIES_LATIOS,
+    SPECIES_LATIAS,
+    SPECIES_SWAMPERT,
+    SPECIES_SCEPTILE,
+    SPECIES_SABLEYE,
+    SPECIES_ALTARIA,
+    SPECIES_GALLADE,
+    SPECIES_AUDINO,
+    SPECIES_SHARPEDO,
+    SPECIES_SLOWBRO,
+    SPECIES_STEELIX,
+    SPECIES_PIDGEOT,
+    SPECIES_GLALIE,
+    SPECIES_DIANCIE,
+    SPECIES_METAGROSS,
+    SPECIES_RAYQUAZA,
+    SPECIES_CAMERUPT,
+    SPECIES_LOPUNNY,
+    SPECIES_SALAMENCE,
+    SPECIES_BEEDRILL,
+    SPECIES_GENGAR,
+    SPECIES_GARDEVOIR,
+};
+
+bool8 IsMonEvolutionValidForEviolite(u16 mon)
+{
+    u16 i;
+    u16 monEvo = (gEvolutionTable[mon][0].targetSpecies);
+
+    for (i = 0; i < 45; i++)
+    {
+        if (mon == sMegaBaseForms[i])
+            return FALSE;
+    }
+
+    if (monEvo == SPECIES_NONE)
+        return FALSE;
+
+    if (monEvo != SPECIES_NONE)
+        return TRUE;
+
+    return FALSE;
+}
+
 static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 isCrit)
 {
     bool32 usesDefStat;
@@ -5864,7 +5934,7 @@ static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, 
             MulModifier(&modifier, UQ_4_12(2.0));
         break;
     case ABILITY_GRASS_PELT:
-        if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && usesDefStat)
+        if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN)
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_FLOWER_GIFT:
@@ -5897,7 +5967,8 @@ static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, 
             MulModifier(&modifier, UQ_4_12(2.0));
         break;
     case HOLD_EFFECT_EVIOLITE:
-        // todo
+        if (IsMonEvolutionValidForEviolite(gBattleMons[battlerDef].species) == TRUE)
+            MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case HOLD_EFFECT_ASSAULT_VEST:
         if (!usesDefStat)
