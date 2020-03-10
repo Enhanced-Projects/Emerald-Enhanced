@@ -2860,6 +2860,7 @@ const struct BaseStats gBaseStats[] =
         .evYield_HP        = 2,
         .evYield_SpAttack  = 0,
         .item1 = ITEM_LUCKY_PUNCH,
+        .item2 = ITEM_LUCKY_EGG,
         .genderRatio = MON_FEMALE,
         .eggCycles = 40,
         .friendship = 140,
