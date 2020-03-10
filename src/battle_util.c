@@ -5860,19 +5860,16 @@ bool8 IsMonEvolutionValidForEviolite(u16 mon)
     u16 i;
     u16 monEvo = (gEvolutionTable[mon][0].targetSpecies);
 
-    for (i = 0; i < 45; i++)
+    if (monEvo == SPECIES_NONE)
+        return FALSE;
+
+    for (i = 0; i < ARRAY_COUNT(sMegaBaseForms); i++)
     {
         if (mon == sMegaBaseForms[i])
             return FALSE;
     }
 
-    if (monEvo == SPECIES_NONE)
-        return FALSE;
-
-    if (monEvo != SPECIES_NONE)
-        return TRUE;
-
-    return FALSE;
+    return TRUE;
 }
 
 static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 isCrit)
