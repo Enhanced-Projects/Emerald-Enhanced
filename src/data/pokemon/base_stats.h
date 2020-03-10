@@ -13942,8 +13942,8 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroup1 = EGG_GROUP_BUG,
         .eggGroup2 = EGG_GROUP_BUG,
-        .abilities = {ABILITY_POISON_POINT, ABILITY_SWARM},
-        .abilityHidden = ABILITY_SPEED_BOOST,
+        .abilities = {ABILITY_SPEED_BOOST, ABILITY_SWARM},
+        .abilityHidden = ABILITY_POISON_POINT,
         .bodyColor = BODY_COLOR_RED,
     },
 
@@ -13968,8 +13968,8 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroup1 = EGG_GROUP_BUG,
         .eggGroup2 = EGG_GROUP_BUG,
-        .abilities = {ABILITY_POISON_POINT, ABILITY_SWARM},
-        .abilityHidden = ABILITY_SPEED_BOOST,
+        .abilities = {ABILITY_SPEED_BOOST, ABILITY_SWARM},
+        .abilityHidden = ABILITY_POISON_POINT,
         .bodyColor = BODY_COLOR_GRAY,
     },
 
@@ -13994,8 +13994,8 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroup1 = EGG_GROUP_BUG,
         .eggGroup2 = EGG_GROUP_BUG,
-        .abilities = {ABILITY_POISON_POINT, ABILITY_SWARM},
-        .abilityHidden = ABILITY_SPEED_BOOST,
+        .abilities = {ABILITY_SPEED_BOOST, ABILITY_SWARM},
+        .abilityHidden = ABILITY_POISON_POINT,
         .bodyColor = BODY_COLOR_RED,
     },
 
