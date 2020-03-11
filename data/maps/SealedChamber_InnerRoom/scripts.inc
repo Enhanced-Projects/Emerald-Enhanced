@@ -2,6 +2,8 @@ SealedChamber_InnerRoom_MapScripts:: @ 82391F7
 	.byte 0
 
 SCH_OpenDoors:: @ 82391F8
+	compare VAR_RYU_DS_LANA_STAGE, 35
+	goto_if_eq ryu_end
 	fadeoutbgm 0
 	playse SE_W089
 	msgbox SCH_LanaMsgEQ MSGBOX_AUTOCLOSE

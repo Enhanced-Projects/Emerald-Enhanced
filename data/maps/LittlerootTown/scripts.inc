@@ -10,27 +10,36 @@ LittlerootTown_MapScript1_1E7DDB: @ 81E7DDB
 	
 LRT_FollowerTest::
 	lock
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGMINNIE
 	msgbox LRT_FollowerMinnie MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne LRT_CancelFollower
-	setflag FLAG_TEMP_3
 	closemessage
 	setflag FLAG_RYU_HIDE_MINNIE
 	removeobject 4
 	createfollower EVENT_OBJ_GFX_TWIN, RyuFollowerSelectNPCScript, 1
 	setflag FLAG_RYU_HAS_FOLLOWER
 	setvar VAR_RYU_FOLLOWER_ID, EVENT_OBJ_GFX_TWIN
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	release
 	end
 	
 LRT_CancelFollower::
 	msgbox LRT_NoFollower
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	closemessage
 	end
 	
 LRT_MinnieScript::
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGMINNIE
 	msgbox LRT_FollowerHeal MSGBOX_YESNO
 	compare VAR_RESULT, 1
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	goto_if_eq LRT_RemoveMinnie
 	closemessage
 	end

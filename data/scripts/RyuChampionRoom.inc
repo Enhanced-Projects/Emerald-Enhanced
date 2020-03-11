@@ -472,7 +472,7 @@ RCR_CheckStevenGift::
 	
 RCR_FinishChallenge::
 	msgbox RCR_PlayerRecordingInfo
-	goto_if_set FLAG_TEMP_B, RCR_CheckStevenGift
+	call_if_set FLAG_TEMP_B, RCR_CheckStevenGift
 	addvar VAR_RYU_TITLE_DEFENSE_WINS, 1
 	closemessage
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE

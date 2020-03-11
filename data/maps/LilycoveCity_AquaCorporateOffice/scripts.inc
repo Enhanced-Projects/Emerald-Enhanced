@@ -63,6 +63,14 @@ LCGuard:
 	
 LC_AH_SecurityStop3::
 	msgbox LC_AH_OnWay4 MSGBOX_DEFAULT
+	setvar VAR_MT_PYRE_STATE, 2
+    settrainerflag TRAINER_GRUNT_MT_PYRE_1
+    settrainerflag TRAINER_GRUNT_MT_PYRE_2
+    settrainerflag TRAINER_GRUNT_MT_PYRE_3
+    settrainerflag TRAINER_GRUNT_MT_PYRE_4
+	cleartrainerflag TRAINER_MAXIE_MAGMA_HIDEOUT
+	cleartrainerflag TRAINER_COURTNEY_3
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_PlayerLeave
 	waitmovement 0
 	release
@@ -307,6 +315,8 @@ LC_AH_Mission4::
 	cleartrainerflag TRAINER_MAXIE_MAGMA_HIDEOUT
 	cleartrainerflag TRAINER_COURTNEY_3
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
+	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
 	release
 	end
 	
@@ -511,6 +521,14 @@ LC_AH_M4Reldesc::
 	waitmovement 0
 	cleartrainerflag TRAINER_ARCHIE
 	cleartrainerflag TRAINER_MATT
+	setvar VAR_MT_PYRE_STATE, 2
+    settrainerflag TRAINER_GRUNT_MT_PYRE_1
+    settrainerflag TRAINER_GRUNT_MT_PYRE_2
+    settrainerflag TRAINER_GRUNT_MT_PYRE_3
+    settrainerflag TRAINER_GRUNT_MT_PYRE_4
+	cleartrainerflag TRAINER_MAXIE_MAGMA_HIDEOUT
+	cleartrainerflag TRAINER_COURTNEY_3
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	release
 	end
 	

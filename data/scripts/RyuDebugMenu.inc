@@ -179,12 +179,17 @@ RyuDebug_ViewTempVars::
 	end
 
 RDB_CTVMsg:
-	.string "Used sound moves {STR_VAR_1} times.$"
+	.string "{STR_VAR_1} NFE's exist.$"
 
 RyuDebug_Utility1::
-	readgamestat GAME_STAT_USED_SOUND_MOVE
-	buffernumberstring 0, VAR_RESULT
-	msgbox RDB_CTVMsg
+	giveitem ITEM_EON_TICKET
+	setflag FLAG_SYS_HAS_EON_TICKET
+	setflag FLAG_HAS_EON_TICKET
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGMELOETTA
+	waitbuttonpress
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	special HealPlayerParty
 	closemessage
 	release
@@ -778,24 +783,14 @@ RyuDebug_BattleSim::
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_ne RDB_BattleSimFemale
-	special SavePlayerParty
-	delay 60
 	trainerbattle_single TRAINER_DOPPELGANGER_M, BS_Intro, BS_Defeat
 	waitstate
-	delay 60
-	special LoadPlayerParty
-	clearflag FLAG_RYU_BATTLE_SIMULATION
 	release
 	end
 
 RDB_BattleSimFemale::
-	special SavePlayerParty
-	delay 60
 	trainerbattle_single TRAINER_DOPPELGANGER_F, BS_Intro, BS_Defeat
 	waitstate
-	delay 60
-	special LoadPlayerParty
-	clearflag FLAG_RYU_BATTLE_SIMULATION
 	release
 	end
 

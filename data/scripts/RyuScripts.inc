@@ -1463,8 +1463,13 @@ Ryu_DoMeloettaEncounter::
 	waitstate
 	special GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_CAUGHT
-	goto_if_ne ryu_end
+	goto_if_ne Ryu_MeloettaNotCaught
 	setflag FLAG_RYU_CAPTURED_MELOETTA
+	release
+	end
+
+Ryu_MeloettaNotCaught::
+	special resetSoundGameStat
 	release
 	end
 

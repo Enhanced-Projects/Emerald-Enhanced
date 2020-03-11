@@ -213,8 +213,32 @@ static const u8 sTheEnd_LetterDMap[] =
 };
 
 static const u8 gCreditsText_EmptyString[] = _("");
-static const u8 gCreditsText_PkmnEmeraldVersion[] = _("Pokémon EMERALD VERSION");
 static const u8 gCreditsText_Credits[] = _("Credits");
+static const u8 gCreditsText_PkmnEmeraldVersion[] = _("Pokémon Emerald");
+static const u8 gCreditsText_EmeraldEnhanced [] = _("Emerald Enhanced");
+static const u8 gCreditsText_CreatedBy [] = _("Created by:");
+static const u8 gCreditsText_Ryuhouji []= _("Ryuhouji");
+static const u8 gCreditsText_Donors[] = _("Donors:");
+static const u8 gCreditsText_Donorsp1[] = _("Kouta    Rascal");
+static const u8 gCreditsText_Donorsp2[] = _("PKB    Ludi");
+static const u8 gCreditsText_Donorsp3[] = _("Swap    Yuzu");
+static const u8 gCreditsText_Donorsp4[] = _("ustaN    Vexy");
+static const u8 gCreditsText_StoryboardingBy[] = _("Storyboarding by:");
+static const u8 gCreditsText_Kouta[] = _("Kouta Xenova");
+static const u8 gCreditsText_GraphicsBy[] = _("Custom art by:");
+static const u8 gCreditsText_EEGraphics1[] = _("EvilPanda");
+static const u8 gCreditsText_EEGraphics2[] = _("Rayan");
+static const u8 gCreditsText_EEGraphics3[] = _("Wind King Luca");
+static const u8 gCreditsText_EEGraphics4[] = _("Zavytar");
+static const u8 gCreditsText_DocumentationBy[] = _("Documentation By:");
+static const u8 gCreditsText_Toby[] = _("Toby");
+static const u8 gCreditsText_QADirectors[] = _("QA Directors:");
+static const u8 gCreditsText_Pidgey[] = _("Pidgey");
+static const u8 gCreditsText_BaseGameCredits[] = _("Base Game Credits:");
+static const u8 gCreditsText_Consultation[] = _("Consultants:");
+static const u8 gCreditsText_GriffinR[] = _("GriffinR");
+static const u8 gCreditsText_DizzyEggg[] = _("DizzyEggg");
+
 static const u8 gCreditsText_ExecutiveDirector[] = _("Executive Director");
 static const u8 gCreditsText_Director[] = _("Director");
 static const u8 gCreditsText_ArtDirector[] = _("Art Director");
@@ -371,6 +395,39 @@ static const u8 gCreditsText_MotoyasuTojima[] = _("Motoyasu Tojima");
 static const u8 gCreditsText_NicolaPrattBarlow[] = _("Nicola Pratt-Barlow");
 static const u8 gCreditsText_ShellieDow[] = _("Shellie Dow");
 static const u8 gCreditsText_ErikJohnson[] = _("Erik Johnson");
+
+static const struct CreditsEntry gCreditsEntry_PkmnEmeraldVersion[];
+static const struct CreditsEntry gCreditsEntry_EmeraldEnhanced[] = {0, TRUE, gCreditsText_EmeraldEnhanced};
+//page
+static const struct CreditsEntry gCreditsEntry_CreatedBy[] = {0, TRUE, gCreditsText_CreatedBy};
+static const struct CreditsEntry gCreditsEntry_Ryuhouji[] =  {0, FALSE, gCreditsText_Ryuhouji};
+//page
+static const struct CreditsEntry gCreditsEntry_Donors[] =  {0, TRUE, gCreditsText_Donors};
+static const struct CreditsEntry gCreditsEntry_Donorsp1[] = {0, FALSE, gCreditsText_Donorsp1};
+static const struct CreditsEntry gCreditsEntry_Donorsp2[] = {0, FALSE, gCreditsText_Donorsp2};
+static const struct CreditsEntry gCreditsEntry_Donorsp3[] = {0, FALSE, gCreditsText_Donorsp3};
+static const struct CreditsEntry gCreditsEntry_Donorsp4[] = {0, FALSE, gCreditsText_Donorsp4};
+//page
+static const struct CreditsEntry gCreditsEntry_StoryboardingBy[] = {0, TRUE, gCreditsText_StoryboardingBy};
+static const struct CreditsEntry gCreditsEntry_Kouta[] = {0, FALSE, gCreditsText_Kouta};
+//page
+static const struct CreditsEntry gCreditsEntry_GraphicsBy[] = {0, TRUE, gCreditsText_GraphicsBy};
+static const struct CreditsEntry gCreditsEntry_EEGraphics1[] = {0, FALSE, gCreditsText_EEGraphics1};
+static const struct CreditsEntry gCreditsEntry_EEGraphics2[] = {0, FALSE, gCreditsText_EEGraphics2};
+static const struct CreditsEntry gCreditsEntry_EEGraphics3[] = {0, FALSE, gCreditsText_EEGraphics3};
+static const struct CreditsEntry gCreditsEntry_EEGraphics4[] = {0, FALSE, gCreditsText_EEGraphics4};
+//page
+static const struct CreditsEntry gCreditsEntry_DocumentationBy[] = {0, TRUE, gCreditsText_DocumentationBy};
+static const struct CreditsEntry gCreditsEntry_Toby[] = {0, FALSE, gCreditsText_Toby};
+//page
+static const struct CreditsEntry gCreditsEntry_QADirectors[] = {0, TRUE, gCreditsText_QADirectors};
+static const struct CreditsEntry gCreditsEntry_Pidgey[] = {0, FALSE, gCreditsText_Pidgey};
+static const struct CreditsEntry gCreditsEntry_BaseGameCredits[] = {0, FALSE, gCreditsText_BaseGameCredits};
+
+static const struct CreditsEntry gCreditsEntry_Consultation[] ={0, TRUE, gCreditsText_Consultation};
+static const struct CreditsEntry gCreditsEntry_GriffinR[] = {0, FALSE, gCreditsText_GriffinR};
+static const struct CreditsEntry gCreditsEntry_DizzyEggg[] = {0, FALSE, gCreditsText_DizzyEggg};
+
 static const struct CreditsEntry gCreditsEntry_EmptyString[] = {0, FALSE, gCreditsText_EmptyString};
 static const struct CreditsEntry gCreditsEntry_PkmnEmeraldVersion[] = {7, TRUE, gCreditsText_PkmnEmeraldVersion};
 static const struct CreditsEntry gCreditsEntry_Credits[] = {11, TRUE, gCreditsText_Credits};
@@ -534,6 +591,70 @@ static const struct CreditsEntry gCreditsEntry_ErikJohnson[] = {0, FALSE, gCredi
 #define _ gCreditsEntry_EmptyString
 static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
 {
+    {
+        gCreditsEntry_EmeraldEnhanced,
+        _,
+        _,
+        _,
+        _
+    },
+    {
+        gCreditsEntry_CreatedBy,
+        _,
+        gCreditsEntry_Ryuhouji,
+        _,
+        _
+    },
+    {
+        gCreditsEntry_Donors,
+        gCreditsEntry_Donorsp1,
+        gCreditsEntry_Donorsp2,
+        gCreditsEntry_Donorsp3,
+        gCreditsEntry_Donorsp4
+    },
+    {
+        gCreditsEntry_StoryboardingBy,
+        _,
+        gCreditsEntry_Kouta,
+        _,
+        _
+    },
+    {
+        gCreditsEntry_GraphicsBy,
+        gCreditsEntry_EEGraphics1,
+        gCreditsEntry_EEGraphics2,
+        gCreditsEntry_EEGraphics3,
+        gCreditsEntry_EEGraphics4
+    },
+    {
+        gCreditsEntry_DocumentationBy,
+        _,
+        gCreditsEntry_Toby,
+        _,
+        _
+    },
+    {
+        gCreditsEntry_QADirectors,
+        _,
+        gCreditsEntry_Toby,
+        gCreditsEntry_Pidgey,
+        _
+
+    },
+    {
+        gCreditsEntry_Consultation,
+        _,
+        gCreditsEntry_GriffinR,
+        gCreditsEntry_DizzyEggg,
+        _
+    },
+    {
+        gCreditsEntry_BaseGameCredits,
+        _,
+        _,
+        _,
+        _
+    },
     {
         _,
         gCreditsEntry_PkmnEmeraldVersion,
