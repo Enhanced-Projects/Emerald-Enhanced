@@ -14,9 +14,8 @@ static void AnimOverheatFlame(struct Sprite *);
 static void AnimOverheatFlame_Step(struct Sprite *);
 static void AnimTask_DragonDanceWaver_Step(u8);
 static void sub_8113574(struct Task *);
-static void sub_811369C(struct Sprite *);
 static void AnimDragonRushStep(struct Sprite *sprite);
-void AnimSpinningDracoMeteor(struct Sprite *sprite);
+static void AnimSpinningDracoMeteor(struct Sprite *sprite);
 static void AnimSpinningDracoMeteorFinish(struct Sprite *sprite);
 
 EWRAM_DATA static u16 gUnknown_0203A100[7] = {0};
@@ -311,7 +310,7 @@ static void AnimSpinningDracoMeteorFinish(struct Sprite *sprite)
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
 
-void AnimSpinningDracoMeteor(struct Sprite *sprite)
+static void AnimSpinningDracoMeteor(struct Sprite *sprite)
 {
     InitSpritePosToAnimTarget(sprite, TRUE);
     StartSpriteAnim(sprite, gBattleAnimArgs[2]);
@@ -321,7 +320,7 @@ void AnimSpinningDracoMeteor(struct Sprite *sprite)
     StoreSpriteCallbackInData6(sprite, AnimSpinningDracoMeteorFinish);
 }
 
-void sub_8113064(struct Sprite *sprite)
+static void AnimOutrageFlame(struct Sprite *sprite)
 {
     sprite->pos1.x = GetBattlerSpriteCoord(gBattleAnimAttacker, 2);
     sprite->pos1.y = GetBattlerSpriteCoord(gBattleAnimAttacker, 3);

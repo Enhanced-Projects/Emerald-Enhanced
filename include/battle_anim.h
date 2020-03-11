@@ -221,6 +221,7 @@ void sub_8117854(u8 taskId, int unused, u16 arg2, u8 battler1, u8 arg4, u8 arg5,
 // battle_anim_effects_1.c
 void SetSpriteNextToMonHead(u8 battler, struct Sprite* sprite);
 void AnimMoveTwisterParticle(struct Sprite* sprite);
+void AnimParticleBurst(struct Sprite *);
 void AnimPowerAbsorptionOrb(struct Sprite* sprite);
 void AnimNeedleArmSpike(struct Sprite *);
 extern const union AnimCmd *const gRazorLeafParticleAnimTable[];
@@ -230,18 +231,21 @@ extern const union AffineAnimCmd *const gPowerAbsorptionOrbAffineAnimTable[];
 // battle_anim_water.c
 void AnimWaterPulseRing(struct Sprite *sprite);
 
+// battle_anim_flying.c
+void DestroyAnimSpriteAfterTimer(struct Sprite *sprite);
 void sub_810E2C8(struct Sprite *sprite);
-extern const union AnimCmd *const gUnknown_085962D0[];
-void sub_810E044(struct Sprite *sprite);
+void AnimAirWaveCrescent(struct Sprite *sprite);
+extern const union AnimCmd *const gAffineAnims_AirWaveCrescent[];
 
-//poison.c
-extern const union AffineAnimCmd *const gUnknown_085961A0[];
+// battle_anim_poison.c
+void AnimSludgeBombHitParticle(struct Sprite *);
+extern const union AffineAnimCmd *const gAffineAnims_PoisonProjectile[];
 
-// ghost.c
-void sub_8112B78(struct Sprite *sprite);
+// battle_anim_ghost.c
+void AnimGhostStatusSprite(struct Sprite *sprite);
 
-// psychic.c
-extern const union AffineAnimCmd *const gUnknown_08596894[];
+// battle_anim_psychic.c
+extern const union AffineAnimCmd *const gAffineAnims_LusterPurgeCircle[];
 
 
 u8 GetBattlerSpriteFinal_Y(u8, u16, u8);

@@ -23,8 +23,8 @@ static void AnimTask_MoveAttackerMementoShadow_Step(u8);
 static void AnimTask_MoveTargetMementoShadow_Step(u8);
 static void sub_8114244(struct Task *);
 static void sub_8114374(u8);
-static void sub_8114748(u8);
-void AnimPunishment(struct Sprite *sprite);
+static void AnimPunishment(struct Sprite *sprite);
+static void AnimTask_MetallicShine_Step(u8);
 
 // Unused
 const struct SpriteTemplate gUnknown_08596FC8 =
@@ -260,7 +260,7 @@ const struct SpriteTemplate gPunishmentImpactSpriteTemplate =
     .callback = AnimPunishment,
 };
 
-void AnimPunishment(struct Sprite *sprite)
+static void AnimPunishment(struct Sprite *sprite)
 {
     StartSpriteAffineAnim(sprite, gBattleAnimArgs[3]);
     if (gBattleAnimArgs[2] == 0)
@@ -272,7 +272,7 @@ void AnimPunishment(struct Sprite *sprite)
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
 
-void sub_81136E8(u8 taskId)
+void AnimTask_AttackerFadeToInvisible(u8 taskId)
 {
     int battler;
     gTasks[taskId].data[0] = gBattleAnimArgs[0];

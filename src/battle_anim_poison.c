@@ -3,24 +3,21 @@
 #include "trig.h"
 #include "constants/rgb.h"
 
-void sub_810DBAC(struct Sprite *);
-void sub_810DC2C(struct Sprite *);
-void sub_810DCD0(struct Sprite *);
-void sub_810DD50(struct Sprite *);
-void AnimBubbleEffect(struct Sprite *);
-static void sub_810DC10(struct Sprite *);
-static void sub_810DCB4(struct Sprite *);
-static void sub_810DD24(struct Sprite *);
-static void AnimBubbleEffectStep(struct Sprite *);
+static void AnimSludgeProjectile(struct Sprite *);
+static void AnimSludgeProjectile_Step(struct Sprite *);
+static void AnimAcidPoisonBubble(struct Sprite *);
+static void AnimAcidPoisonBubble_Step(struct Sprite *);
+static void AnimSludgeBombHitParticle_Step(struct Sprite *);
+static void AnimAcidPoisonDroplet(struct Sprite *);
+static void AnimBubbleEffect(struct Sprite *);
+static void AnimBubbleEffect_Step(struct Sprite *);
 static void AnimSuckerPunchStep(struct Sprite *sprite);
-void AnimSuckerPunch(struct Sprite *sprite);
-void AnimGunkShotParticlesStep(struct Sprite *sprite);
-void AnimGunkShotParticles(struct Sprite *sprite);
-void AnimGunkShotImpact(struct Sprite *sprite);
+static void AnimSuckerPunch(struct Sprite *sprite);
+static void AnimGunkShotParticlesStep(struct Sprite *sprite);
+static void AnimGunkShotParticles(struct Sprite *sprite);
+static void AnimGunkShotImpact(struct Sprite *sprite);
 
-extern const union AnimCmd *const gUnknown_08595200[];
-
-const union AnimCmd gUnknown_0859611C[] =
+static const union AnimCmd sAnim_ToxicBubble[] =
 {
     ANIMCMD_FRAME(0, 5),
     ANIMCMD_FRAME(8, 5),
@@ -92,7 +89,7 @@ static const union AffineAnimCmd sAffineAnim_SludgeBombHit[] =
     AFFINEANIMCMD_END,
 };
 
-static const union AffineAnimCmd *const sAffineAnims_PoisonProjectile[] =
+const union AffineAnimCmd *const gAffineAnims_PoisonProjectile[] =
 {
     sAffineAnim_PoisonProjectile,
 };
@@ -109,7 +106,7 @@ const struct SpriteTemplate gSludgeProjectileSpriteTemplate =
     .oam = &gOamData_AffineDouble_ObjNormal_16x16,
     .anims = sAnims_PoisonProjectile,
     .images = NULL,
-    .affineAnims = sAffineAnims_PoisonProjectile,
+    .affineAnims = gAffineAnims_PoisonProjectile,
     .callback = AnimSludgeProjectile,
 };
 
@@ -120,7 +117,7 @@ const struct SpriteTemplate gAcidPoisonBubbleSpriteTemplate =
     .oam = &gOamData_AffineDouble_ObjNormal_16x16,
     .anims = sAnims_PoisonProjectile,
     .images = NULL,
-    .affineAnims = sAffineAnims_PoisonProjectile,
+    .affineAnims = gAffineAnims_PoisonProjectile,
     .callback = AnimAcidPoisonBubble,
 };
 
@@ -197,10 +194,10 @@ const struct SpriteTemplate gGreenPoisonDrip =
 	.tileTag = ANIM_TAG_GREEN_POISON_BUBBLE,
 	.paletteTag = ANIM_TAG_GREEN_POISON_BUBBLE,
 	.oam = &gOamData_AffineDouble_ObjNormal_16x16,
-	.anims = gUnknown_08596168,
+	.anims = sAnims_AcidPoisonDroplet,
 	.images = NULL,
-	.affineAnims = gUnknown_08596208,
-	.callback = sub_810DD50,
+	.affineAnims = gAffineAnims_Droplet,
+	.callback = AnimAcidPoisonDroplet,
 };
 
 const struct SpriteTemplate gGreenPoisonBubble =
@@ -208,10 +205,10 @@ const struct SpriteTemplate gGreenPoisonBubble =
 	.tileTag = ANIM_TAG_GREEN_POISON_BUBBLE,
 	.paletteTag = ANIM_TAG_GREEN_POISON_BUBBLE,
 	.oam = &gOamData_AffineDouble_ObjNormal_16x16,
-	.anims = gUnknown_08596164,
+	.anims = sAnims_PoisonProjectile,
 	.images = NULL,
-	.affineAnims = gUnknown_085961A0,
-	.callback = sub_810DC2C,
+	.affineAnims = gAffineAnims_PoisonProjectile,
+	.callback = AnimAcidPoisonBubble,
 };
 
 const union AnimCmd gSuckerPunchAnimCmd[] =
@@ -310,7 +307,7 @@ const struct SpriteTemplate gGunkShotImpactSpriteTemplate =
     .callback = AnimGunkShotImpact,
 };
 
-void AnimGunkShotImpact(struct Sprite *sprite)
+static void AnimGunkShotImpact(struct Sprite *sprite)
 {
     StartSpriteAffineAnim(sprite, gBattleAnimArgs[3]);
     if (gBattleAnimArgs[2] == 0)
@@ -322,7 +319,7 @@ void AnimGunkShotImpact(struct Sprite *sprite)
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
 
-void AnimGunkShotParticles(struct Sprite *sprite)
+static void AnimGunkShotParticles(struct Sprite *sprite)
 {
     u16 retArg;
 
@@ -349,7 +346,7 @@ void AnimGunkShotParticles(struct Sprite *sprite)
     sprite->callback(sprite);
 }
 
-void AnimGunkShotParticlesStep(struct Sprite *sprite)
+static void AnimGunkShotParticlesStep(struct Sprite *sprite)
 {
     if (AnimTranslateLinear(sprite))
         DestroyAnimSprite(sprite);
@@ -365,7 +362,7 @@ void AnimGunkShotParticlesStep(struct Sprite *sprite)
     }
 }
 
-void AnimSuckerPunch(struct Sprite *sprite)
+static void AnimSuckerPunch(struct Sprite *sprite)
 {
     if (BATTLE_PARTNER(gBattleAnimAttacker) == gBattleAnimTarget && GetBattlerPosition(gBattleAnimTarget) < B_POSITION_PLAYER_RIGHT)
         gBattleAnimArgs[0] *= -1;
@@ -403,7 +400,7 @@ static void AnimSuckerPunchStep(struct Sprite *sprite)
     }
 }
 
-void sub_810DBAC(struct Sprite *sprite)
+static void AnimSludgeProjectile(struct Sprite *sprite)
 {
     if (!gBattleAnimArgs[3])
         StartSpriteAnim(sprite, 2);
@@ -454,7 +451,7 @@ static void AnimAcidPoisonBubble_Step(struct Sprite *sprite)
         DestroyAnimSprite(sprite);
 }
 
-static void AnimSludgeBombHitParticle(struct Sprite *sprite)
+void AnimSludgeBombHitParticle(struct Sprite *sprite)
 {
     sprite->data[0] = gBattleAnimArgs[2];
     sprite->data[1] = sprite->pos1.x;

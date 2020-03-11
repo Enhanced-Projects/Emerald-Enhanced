@@ -14,30 +14,30 @@ static void AnimConfuseRayBallBounce(struct Sprite *);
 static void AnimConfuseRayBallBounce_Step1(struct Sprite *);
 static void AnimConfuseRayBallBounce_Step2(struct Sprite *);
 static void sub_8111764(struct Sprite *);
-static void sub_81117F4(struct Sprite *);
-static void sub_8111814(struct Sprite *);
-static void sub_8111914(u8 taskId);
-static void sub_811196C(u8 taskId);
-static void InitAnimShadowBall(struct Sprite *);
-static void AnimShadowBallStep(struct Sprite *);
-static void sub_8111B9C(struct Sprite *);
-static void sub_8111BB4(struct Sprite *);
-static void sub_8111D78(u8 taskId);
-static void sub_8111E78(u8 taskId);
-static void sub_81120DC(u8 taskId);
-static void sub_8112170(u8 taskId);
-static void sub_8112264(struct Sprite *);
-static void sub_8112384(struct Sprite *);
-static void sub_81125E0(u8 taskId);
-static void sub_811280C(u8 taskId);
-static void sub_8112994(u8 taskId);
-static void sub_81129F0(struct Sprite *);
-static void sub_8112A4C(struct Sprite *);
-static void sub_8112ACC(struct Sprite *);
-static void sub_8112B44(struct Sprite *);
-static void sub_8112C4C(struct Sprite *);
-static void sub_8112D10(u8 taskId);
-static void sub_8112E9C(struct Sprite *);
+static void AnimConfuseRayBallSpiral(struct Sprite *);
+static void AnimConfuseRayBallSpiral_Step(struct Sprite *);
+static void AnimTask_NightShadeClone_Step1(u8 taskId);
+static void AnimTask_NightShadeClone_Step2(u8 taskId);
+static void AnimShadowBall(struct Sprite *);
+static void AnimShadowBall_Step(struct Sprite *);
+static void AnimLick(struct Sprite *);
+static void AnimLick_Step(struct Sprite *);
+static void AnimTask_NightmareClone_Step(u8 taskId);
+static void AnimTask_SpiteTargetShadow_Step1(u8 taskId);
+static void AnimTask_SpiteTargetShadow_Step2(u8 taskId);
+static void AnimTask_SpiteTargetShadow_Step3(u8 taskId);
+static void AnimDestinyBondWhiteShadow(struct Sprite *);
+static void AnimDestinyBondWhiteShadow_Step(struct Sprite *);
+static void AnimTask_DestinyBondWhiteShadow_Step(u8 taskId);
+static void AnimTask_CurseStretchingBlackBg_Step1(u8 taskId);
+static void AnimTask_CurseStretchingBlackBg_Step2(u8 taskId);
+static void AnimCurseNail(struct Sprite *);
+static void AnimCurseNail_Step1(struct Sprite *);
+static void AnimCurseNail_Step2(struct Sprite *);
+static void AnimCurseNail_End(struct Sprite *);
+static void AnimGhostStatusSprite_Step(struct Sprite *);
+static void AnimTask_GrudgeFlames_Step(u8 taskId);
+static void AnimGrudgeFlame(struct Sprite *);
 static void sub_8112F60(struct Sprite *);
 static void sub_8112FB8(struct Sprite *);
 
@@ -104,8 +104,8 @@ const struct SpriteTemplate gEnergyBallSpriteTemplate =
     .oam = &gOamData_AffineNormal_ObjNormal_32x32,
     .anims = gDummySpriteAnimTable,
     .images = NULL,
-    .affineAnims = gUnknown_08596D54,
-    .callback = InitAnimShadowBall,
+    .affineAnims = sAffineAnims_ShadowBall,
+    .callback = AnimShadowBall,
 };
 
 const struct SpriteTemplate gBattleAnimSpriteTemplate_LeafStorm =
@@ -113,10 +113,10 @@ const struct SpriteTemplate gBattleAnimSpriteTemplate_LeafStorm =
     .tileTag = ANIM_TAG_RAZOR_LEAF,
     .paletteTag = ANIM_TAG_RAZOR_LEAF,
     .oam = &gOamData_AffineOff_ObjNormal_32x16,
-    .anims = gUnknown_085962D0,
+    .anims = gAffineAnims_AirWaveCrescent,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = sub_810E044,
+    .callback = AnimAirWaveCrescent,
 };
 
 const struct SpriteTemplate gBattleAnimSpriteTemplate_LeafStorm2 =
@@ -126,11 +126,11 @@ const struct SpriteTemplate gBattleAnimSpriteTemplate_LeafStorm2 =
     .oam = &gOamData_AffineDouble_ObjNormal_16x16,
     .anims = gRazorLeafParticleAnimTable,
     .images = NULL,
-    .affineAnims = gUnknown_085961A0,
+    .affineAnims = gAffineAnims_PoisonProjectile,
     .callback = AnimNeedleArmSpike,
 };
 
-const union AnimCmd gUnknown_08596D70[] =
+static const union AnimCmd sAnim_Lick[] =
 {
     ANIMCMD_FRAME(0, 2),
     ANIMCMD_FRAME(8, 2),
@@ -1157,7 +1157,7 @@ static void AnimCurseNail_End(struct Sprite *sprite)
     DestroyAnimSprite(sprite);
 }
 
-void sub_8112B78(struct Sprite *sprite)
+void AnimGhostStatusSprite(struct Sprite *sprite)
 {
     u16 coeffB;
     u16 coeffA;

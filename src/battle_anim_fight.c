@@ -36,14 +36,7 @@ static void AnimArmThrustHit_Step(struct Sprite *sprite);
 static void AnimRevengeScratch(struct Sprite *);
 static void AnimFocusPunchFist(struct Sprite *);
 static void AnimSpinningKickOrPunchFinish(struct Sprite *);
-static void AnimStompFootStep(struct Sprite *);
-static void AnimStompFootEnd(struct Sprite *);
-static void sub_810D47C(struct Sprite *);
-static void sub_810D5DC(struct Sprite *);
-static void sub_810D6A8(struct Sprite *);
-static void sub_810D770(struct Sprite *);
-static void sub_810D830(struct Sprite *);
-void forcePalmAnimCallback(struct Sprite *sprite);
+static void AnimForcePalm(struct Sprite *sprite);
 
 extern struct SpriteTemplate gBasicHitSplatSpriteTemplate;
 
@@ -430,7 +423,7 @@ const struct SpriteTemplate gPalmSpriteTemplate =
 	.tileTag = ANIM_TAG_PURPLE_HAND_OUTLINE,
 	.paletteTag = ANIM_TAG_PURPLE_HAND_OUTLINE,
 	.oam = &gOamData_AffineOff_ObjNormal_32x32,
-	.anims = gUnknown_08595E54,
+	.anims = sAnims_HandOrFoot,
 	.images = NULL,
 	.affineAnims = gDummySpriteAffineAnimTable,
 	.callback = AnimBasicFistOrFoot,
@@ -444,7 +437,7 @@ const struct SpriteTemplate gAuraSphereBlast =
 	.anims = gDummySpriteAnimTable,
 	.images = NULL,
 	.affineAnims = gDummySpriteAffineAnimTable,
-	.callback = sub_810D874,
+	.callback = AnimSuperpowerFireball,
 };
 
 const union AffineAnimCmd gForcePalmAffineAnimCmd_1[] =
@@ -490,10 +483,10 @@ const struct SpriteTemplate gForcePalmSpriteTemplate =
     .anims = gDummySpriteAnimTable,
     .images = NULL,
     .affineAnims = gForcePalmAffineAnims,
-    .callback = forcePalmAnimCallback,
+    .callback = AnimForcePalm,
 };
 
-void forcePalmAnimCallback(struct Sprite *sprite)
+static void AnimForcePalm(struct Sprite *sprite)
 {
     StartSpriteAffineAnim(sprite, gBattleAnimArgs[3]);
     if (gBattleAnimArgs[2] == 0)
@@ -505,7 +498,7 @@ void forcePalmAnimCallback(struct Sprite *sprite)
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
 
-void unc_080B08A0(struct Sprite *sprite)
+static void unc_080B08A0(struct Sprite *sprite)
 {
     SetAnimSpriteInitialXOffset(sprite, gBattleAnimArgs[0]);
     sprite->pos1.y += gBattleAnimArgs[1];

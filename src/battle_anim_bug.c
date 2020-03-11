@@ -324,7 +324,7 @@ static void AnimStringWrap_Step(struct Sprite *sprite)
 // arg0: x
 // arg1: y
 // arg2: targets both
-void sub_811067C(struct Sprite *sprite)
+static void AnimSpiderWeb(struct Sprite *sprite)
 {
     SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT2_ALL | BLDCNT_EFFECT_BLEND);
     SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(16, 0));

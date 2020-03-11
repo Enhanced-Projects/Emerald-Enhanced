@@ -13,55 +13,51 @@
 #include "constants/battle.h"
 #include "constants/rgb.h"
 
-void sub_810721C(struct Sprite *);
-void sub_8107228(struct Sprite *);
-void sub_8107260(struct Sprite *);
-void sub_8107380(struct Sprite *);
-void sub_8107408(struct Sprite *);
-void sub_8107430(struct Sprite *);
-void sub_810744C(struct Sprite *);
-void sub_81074E4(struct Sprite *);
-void sub_81075EC(struct Sprite *);
-void sub_8107674(struct Sprite *);
-void sub_8107730(struct Sprite *);
-void sub_81077A4(struct Sprite *);
-void sub_81077C0(struct Sprite *);
-void sub_8107894(struct Sprite *);
-void sub_81078D0(struct Sprite *);
-void sub_810790C(struct Sprite *);
-void sub_8108034(struct Sprite *);
-void sub_8108098(struct Sprite *);
-void sub_810851C(struct Sprite *);
-void sub_81087C0(struct Sprite *);
-void sub_810886C(struct Sprite *);
-void sub_8108B2C(struct Sprite *);
-void sub_8108B94(struct Sprite *);
-void sub_8108BE0(struct Sprite *);
-void sub_8108C08(struct Sprite *);
-void sub_8108C54(struct Sprite *);
-void AnimWaterPulseRing_Step(struct Sprite *);
-void sub_810756C(u8);
-void sub_81076F4(u8);
-void sub_8107B84(u8);
-void sub_8107CC4(u8);
-void sub_8107D58(u8);
-void sub_8108140(u8);
-void sub_810862C(u8);
-void sub_8108978(u8);
-u8 sub_8108384(void);
-void sub_8108408(struct Task*, u8);
-void sub_810871C(struct Task*, u8);
-void sub_8108AC0(struct Task*);
-void sub_8108D54(struct Sprite*, int, int);
-void AnimAquaTail(struct Sprite *sprite);
+static void AnimRainDrop(struct Sprite *);
+static void AnimRainDrop_Step(struct Sprite *);
+static void AnimWaterBubbleProjectile(struct Sprite *);
+static void AnimWaterBubbleProjectile_Step1(struct Sprite *);
+static void AnimWaterBubbleProjectile_Step2(struct Sprite *);
+static void AnimWaterBubbleProjectile_Step3(struct Sprite *);
+static void AnimAuroraBeamRings(struct Sprite *);
+static void AnimAuroraBeamRings_Step(struct Sprite *);
+static void AnimToTargetInSinWave(struct Sprite *);
+static void AnimToTargetInSinWave_Step(struct Sprite *);
+static void AnimHydroCannonCharge(struct Sprite *);
+static void AnimHydroCannonCharge_Step(struct Sprite *);
+static void AnimHydroCannonBeam(struct Sprite *);
+static void AnimWaterGunDroplet(struct Sprite *);
+static void AnimSmallBubblePair(struct Sprite *);
+static void AnimSmallBubblePair_Step(struct Sprite *);
+static void AnimSmallDriftingBubbles(struct Sprite *);
+static void AnimSmallDriftingBubbles_Step(struct Sprite *);
+static void AnimSmallWaterOrb(struct Sprite *);
+static void AnimWaterSpoutRain(struct Sprite *);
+static void AnimWaterSpoutRainHit(struct Sprite *);
+static void AnimWaterSportDroplet(struct Sprite *);
+static void AnimWaterSportDroplet_Step(struct Sprite *);
+static void AnimWaterPulseBubble(struct Sprite *);
+static void AnimWaterPulseBubble_Step(struct Sprite *);
+static void AnimWaterPulseRingBubble(struct Sprite *);
+static void AnimWaterPulseRing_Step(struct Sprite *);
+static void AnimTask_RotateAuroraRingColors_Step(u8);
+static void AnimTask_RunSinAnimTimer(u8);
+static void AnimTask_CreateSurfWave_Step1(u8);
+static void AnimTask_CreateSurfWave_Step2(u8);
+static void AnimTask_SurfWaveScanlineEffect(u8);
+static void AnimTask_WaterSpoutLaunch_Step(u8);
+static void AnimTask_WaterSpoutRain_Step(u8);
+static u8 GetWaterSpoutPowerForAnim(void);
+static void CreateWaterSpoutLaunchDroplets(struct Task*, u8);
+static void CreateWaterSpoutRainDroplet(struct Task*, u8);
+static void AnimTask_WaterSport_Step(u8);
+static void CreateWaterSportDroplet(struct Task*);
+static void CreateWaterPulseRingBubbles(struct Sprite*, int, int);
+static void AnimAquaTail(struct Sprite *sprite);
+static void AnimKnockOffAquaTail(struct Sprite *sprite);
 static void AnimKnockOffAquaTailStep(struct Sprite *sprite);
-void AnimKnockOffAquaTail(struct Sprite *sprite);
 
-extern const union AffineAnimCmd *const gGrowingRingAffineAnimTable[];
-extern const union AffineAnimCmd *const gUnknown_08596208[];
-extern const union AnimCmd *const gUnknown_08595AB8[];
-
-// what is this?
+// Both unused
 const u8 gUnknown_8593C80[] = INCBIN_U8("graphics/unknown/unknown_593C80.4bpp");
 const u8 gUnknown_8593FFC[] = INCBIN_U8("graphics/unknown/unknown_593FFC.bin");
 
@@ -481,8 +477,6 @@ const struct SpriteTemplate gWeatherBallWaterDownSpriteTemplate =
     .callback = AnimWeatherBallDown,
 };
 
-extern const struct SpriteTemplate gUnknown_08597388;
-
 const union AffineAnimCmd gAquaTailHitAffineAnimCmd_1[] =
 {
     AFFINEANIMCMD_FRAME(0x0, 0x0, 0, 8),
@@ -572,7 +566,7 @@ const struct SpriteTemplate gAquaTailHitSpriteTemplate =
     .callback = AnimAquaTail,
 };
 
-void AnimAquaTail(struct Sprite *sprite)
+static void AnimAquaTail(struct Sprite *sprite)
 {
     StartSpriteAffineAnim(sprite, gBattleAnimArgs[3]);
     if (gBattleAnimArgs[2] == 0)
@@ -584,7 +578,7 @@ void AnimAquaTail(struct Sprite *sprite)
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
 
-void AnimKnockOffAquaTail(struct Sprite *sprite)
+static void AnimKnockOffAquaTail(struct Sprite *sprite)
 {
     if (GetBattlerSide(gBattleAnimTarget) == B_SIDE_PLAYER)
     {

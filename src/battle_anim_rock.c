@@ -25,16 +25,10 @@ static void AnimParticleInVortex(struct Sprite *);
 static void AnimParticleInVortex_Step(struct Sprite *sprite);
 static void AnimTask_LoadSandstormBackground_Step(u8 taskId);
 static void sub_8111214(struct Task *task);
-static u8 sub_811135C(void);
-static void sub_81113C8(struct Sprite *sprite);
-static void sub_811149C(struct Sprite *sprite);
-static void AnimPowerGemOrbitFastStep(struct Sprite *sprite);
-void AnimPowerGemOrbitFast(struct Sprite *sprite);
-static void AnimPowerGemScatterStep(struct Sprite *sprite);
-void AnimPowerGemScatter(struct Sprite *sprite);
 static void AnimStealthRockStep2(struct Sprite *sprite);
 static void AnimStealthRockStep(struct Sprite *sprite);
-void AnimStealthRock(struct Sprite *sprite);
+static void AnimStealthRock(struct Sprite *sprite);
+static u8 GetRolloutCounter(void);
 
 static const union AnimCmd sAnim_FlyingRock_0[] =
 {
@@ -316,10 +310,10 @@ const struct SpriteTemplate gStoneEdgeSpriteTemplate =
     .tileTag = ANIM_TAG_STONE_EDGE,
     .paletteTag = ANIM_TAG_STONE_EDGE,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
-    .anims = gUnknown_085954D0,
+    .anims = gAnims_BasicFire,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = sub_8110B38,
+    .callback = AnimParticleInVortex,
 };
 
 const struct SpriteTemplate gStealthRockSpriteTemplate =
@@ -333,7 +327,7 @@ const struct SpriteTemplate gStealthRockSpriteTemplate =
     .callback = AnimStealthRock,
 };
 
-void AnimStealthRock(struct Sprite *sprite)
+static void AnimStealthRock(struct Sprite *sprite)
 {
     u16 x;
     u16 y;
@@ -373,7 +367,7 @@ static void AnimStealthRockStep2(struct Sprite *sprite)
         DestroyAnimSprite(sprite);
 }
 
-void sub_81109F0(struct Sprite *sprite)
+static void AnimFallingRock(struct Sprite *sprite)
 {
     if (gBattleAnimArgs[3] != 0)
         SetAverageBattlerPositions(gBattleAnimTarget, 0, &sprite->pos1.x, &sprite->pos1.y);

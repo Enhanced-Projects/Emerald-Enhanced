@@ -13,11 +13,11 @@ extern struct MusicPlayerInfo gMPlayInfo_SE1;
 // this file's functions
 static void sub_8158B98(u8 taskId);
 static void sub_8158C04(u8 taskId);
-static void sub_8158D08(u8 taskId);
-static void sub_8158FF4(u8 taskId);
-static void sub_815913C(u8 taskId);
-static void sub_8159308(u8 taskId);
-static void AnimTask_SeVolumeChange(u8 taskId);
+static void SoundTask_LoopSEAdjustPanning_Step(u8 taskId);
+static void SoundTask_PlayDoubleCry_Step(u8 taskId);
+static void SoundTask_PlayCryWithEcho_Step(u8 taskId);
+static void SoundTask_AdjustPanningVar_Step(u8 taskId);
+static void SoundTask_SeVolumeChange(u8 taskId);
 
 // task start
 void sub_8158B30(u8 taskId)
@@ -354,7 +354,7 @@ void SoundTask_PlaySE2WithPanning(u8 taskId)
     DestroyAnimVisualTask(taskId);
 }
 
-// Adjusts panning and assigns it to gAnimCustomPanning. Doesnt play sound. 
+// Adjusts panning and assigns it to gAnimCustomPanning. Doesnt play sound.
 // Used by Confuse Ray and Will-O-Wisp (see uses of gAnimCustomPanning)
 void SoundTask_AdjustPanningVar(u8 taskId)
 {
@@ -404,7 +404,7 @@ static void SoundTask_AdjustPanningVar_Step(u8 taskId)
 #define tFrameCounter   data[6]
 #define tInitialVolume  data[7]
 
-void AnimTask_PlaySeChangingVolume(u8 taskId)
+void SoundTask_PlaySeChangingVolume(u8 taskId)
 {
     gTasks[taskId].tSongNum = gBattleAnimArgs[0];
     gTasks[taskId].tPan = BattleAnimAdjustPanning(gBattleAnimArgs[1]);
@@ -418,10 +418,10 @@ void AnimTask_PlaySeChangingVolume(u8 taskId)
     if (gTasks[taskId].tIncrementVal == 0) // Either increase or decrease volume.
         DestroyAnimSoundTask(taskId);
     else
-        gTasks[taskId].func = AnimTask_SeVolumeChange;
+        gTasks[taskId].func = SoundTask_SeVolumeChange;
 }
 
-static void AnimTask_SeVolumeChange(u8 taskId)
+static void SoundTask_SeVolumeChange(u8 taskId)
 {
     bool32 destroyTask = FALSE;
 

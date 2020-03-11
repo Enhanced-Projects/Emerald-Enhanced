@@ -21,37 +21,37 @@ struct HailStruct {
 };
 
 static void sub_810B6C4(struct Sprite *);
-void sub_810B848(struct Sprite *);
-void AnimIcePunchSwirlingParticle(struct Sprite *);
-void AnimIceBeamParticle(struct Sprite *);
-void AnimIceEffectParticle(struct Sprite *);
-void AnimFlickerIceEffectParticle(struct Sprite *);
-void AnimSwirlingSnowball_Step1(struct Sprite *);
-void AnimSwirlingSnowball_Step2(struct Sprite *);
-void AnimSwirlingSnowball_Step3(struct Sprite *);
-void AnimSwirlingSnowball_End(struct Sprite *);
-void AnimMoveParticleBeyondTarget(struct Sprite *);
-void AnimWiggleParticleTowardsTarget(struct Sprite *);
-void AnimWaveFromCenterOfTarget(struct Sprite *);
-void InitSwirlingFogAnim(struct Sprite *);
-void AnimSwirlingFogAnim(struct Sprite *);
-void AnimThrowMistBall(struct Sprite *);
-void InitPoisonGasCloudAnim(struct Sprite *);
-void MovePoisonGasCloud(struct Sprite *);
-void AnimHailBegin(struct Sprite *);
-void AnimHailContinue(struct Sprite *);
-void InitIceBallAnim(struct Sprite *);
-void AnimThrowIceBall(struct Sprite *);
-void InitIceBallParticle(struct Sprite *);
-void AnimIceBallParticle(struct Sprite *);
-void AnimTask_Haze2(u8);
-void AnimTask_OverlayFogTiles(u8);
-void AnimTask_Hail2(u8);
-bool8 GenerateHailParticle(u8 hailStructId, u8 affineAnimNum, u8 taskId, u8 c);
+static void sub_810B848(struct Sprite *);
+static void AnimIcePunchSwirlingParticle(struct Sprite *);
+static void AnimIceBeamParticle(struct Sprite *);
+static void AnimIceEffectParticle(struct Sprite *);
+static void AnimFlickerIceEffectParticle(struct Sprite *);
+static void AnimSwirlingSnowball(struct Sprite *);
+static void AnimSwirlingSnowball_Step1(struct Sprite *);
+static void AnimSwirlingSnowball_Step2(struct Sprite *);
+static void AnimSwirlingSnowball_End(struct Sprite *);
+static void AnimMoveParticleBeyondTarget(struct Sprite *);
+static void AnimWiggleParticleTowardsTarget(struct Sprite *);
+static void AnimWaveFromCenterOfTarget(struct Sprite *);
+static void InitSwirlingFogAnim(struct Sprite *);
+static void AnimSwirlingFogAnim(struct Sprite *);
+static void AnimThrowMistBall(struct Sprite *);
+static void InitPoisonGasCloudAnim(struct Sprite *);
+static void MovePoisonGasCloud(struct Sprite *);
+static void AnimHailBegin(struct Sprite *);
+static void AnimHailContinue(struct Sprite *);
+static void InitIceBallAnim(struct Sprite *);
+static void AnimThrowIceBall(struct Sprite *);
+static void InitIceBallParticle(struct Sprite *);
+static void AnimIceBallParticle(struct Sprite *);
+static void AnimTask_Haze2(u8);
+static void AnimTask_OverlayFogTiles(u8);
+static void AnimTask_Hail2(u8);
+static bool8 GenerateHailParticle(u8 hailStructId, u8 affineAnimNum, u8 taskId, u8 c);
+static void AvalancheAnim_Step(struct Sprite *sprite);
 static void AvalancheAnim_Step2(struct Sprite *sprite);
-void AvalancheAnim_Step(struct Sprite *sprite);
 
-const union AnimCmd gUnknown_08595A48[] =
+static const union AnimCmd gUnknown_08595A48[] =
 {
     ANIMCMD_FRAME(0, 5, .hFlip = TRUE),
     ANIMCMD_FRAME(1, 5, .hFlip = TRUE),
@@ -561,7 +561,7 @@ const struct SpriteTemplate gAvalancheSpriteTemplate =
     .callback = AvalancheAnim_Step,
 };
 
-void AvalancheAnim_Step(struct Sprite *sprite)
+static void AvalancheAnim_Step(struct Sprite *sprite)
 {
     if (gBattleAnimArgs[3] != 0)
         SetAverageBattlerPositions(gBattleAnimTarget, 0, &sprite->pos1.x, &sprite->pos1.y);
@@ -599,7 +599,7 @@ static void AvalancheAnim_Step2(struct Sprite *sprite)
     sprite->callback(sprite);
 }
 
-// probably unused
+// Unused
 static void sub_810B6C4(struct Sprite *sprite)
 {
     s16 targetX, targetY, attackerX, attackerY;

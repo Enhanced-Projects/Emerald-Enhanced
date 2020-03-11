@@ -6,32 +6,28 @@
 #include "trig.h"
 #include "constants/rgb.h"
 
-void AnimBonemerangProjectile(struct Sprite *);
-void AnimBoneHitProjectile(struct Sprite *);
-void AnimDirtScatter(struct Sprite *);
-void AnimMudSportDirt(struct Sprite *);
-void AnimFissureDirtPlumeParticle(struct Sprite *);
-void AnimDigDirtMound(struct Sprite *);
-void MudBombParticles(struct Sprite *);
-void MudBombBall(struct Sprite *);
-static void AnimBonemerangProjectileStep(struct Sprite *);
-static void AnimBonemerangProjectileEnd(struct Sprite *);
+static void AnimBonemerangProjectile(struct Sprite *);
+static void AnimBoneHitProjectile(struct Sprite *);
+static void AnimDirtScatter(struct Sprite *);
+static void AnimMudSportDirt(struct Sprite *);
+static void AnimDirtPlumeParticle(struct Sprite *);
+static void AnimDirtPlumeParticle_Step(struct Sprite *);
+static void AnimDigDirtMound(struct Sprite *);
+static void AnimBonemerangProjectile_Step(struct Sprite *);
+static void AnimBonemerangProjectile_End(struct Sprite *);
 static void AnimMudSportDirtRising(struct Sprite *);
 static void AnimMudSportDirtFalling(struct Sprite *);
-static void MudBombParticles_Callback(struct Sprite *);
-static void MudBombBall_Callback(struct Sprite *);
-static void sub_8114CFC(u8);
-static void sub_8114EB4(u8);
-static void sub_8114F54(u8);
-static void sub_8114FD8(u8);
+static void AnimTask_DigBounceMovement(u8);
+static void AnimTask_DigEndBounceMovementSetInvisible(u8);
+static void AnimTask_DigSetVisibleUnderground(u8);
+static void AnimTask_DigRiseUpFromHole(u8);
 static void sub_81150E0(u8, s16, s16);
 static void AnimTask_ShakeTerrain(u8);
 static void AnimTask_ShakeBattlers(u8);
 static void SetBattlersXOffsetForShake(struct Task *);
 static void sub_81156D0(u8);
 
-
-const union AffineAnimCmd gUnknown_08597150[] =
+static const union AffineAnimCmd sAffineAnim_Bonemerang[] =
 {
     AFFINEANIMCMD_FRAME(0x0, 0x0, 15, 1),
     AFFINEANIMCMD_JUMP(0),
@@ -149,18 +145,18 @@ const struct SpriteTemplate gMudBombSplash =
     .anims = gDummySpriteAnimTable,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = MudBombParticles,
+    .callback = AnimSludgeBombHitParticle,
 };
 
 const struct SpriteTemplate gMudBombToss =
 {
-    .tileTag = ANIM_TAG_MUD_SAND ,
+    .tileTag = ANIM_TAG_MUD_SAND,
     .paletteTag = ANIM_TAG_MUD_SAND,
     .oam = &gOamData_AffineOff_ObjNormal_16x16,
-    .anims = gUnknown_085971C8,
+    .anims = sAnims_MudSlapMud,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = MudBombBall,
+    .callback = AnimThrowProjectile,
 };
 
 // Moves a bone projectile towards the target mon, which moves like
@@ -583,54 +579,21 @@ static void AnimDigDirtMound(struct Sprite *sprite)
     sprite->callback = WaitAnimForDuration;
 }
 
-//Lifted from sludge bomb
-void MudBombParticles(struct Sprite *sprite)
-{
-    sprite->data[0] = gBattleAnimArgs[2];
-    sprite->data[1] = sprite->pos1.x;
-    sprite->data[2] = sprite->pos1.x + gBattleAnimArgs[0];
-    sprite->data[3] = sprite->pos1.y;
-    sprite->data[4] = sprite->pos1.y + gBattleAnimArgs[1];
+#define tState               data[0]
+#define tDelay               data[1]
+#define tTimer               data[2]
+#define tMaxTime             data[3]
+#define tbattlerSpriteIds(i) data[9 + (i)]
+#define tNumBattlers         data[13] // AnimTask_ShakeBattlers
+#define tInitialX            data[13] // AnimTask_ShakeTerrain
+#define tHorizOffset         data[14]
+#define tInitHorizOffset     data[15]
 
-    InitSpriteDataForLinearTranslation(sprite);
-
-    sprite->data[5] = sprite->data[1] / gBattleAnimArgs[2];
-    sprite->data[6] = sprite->data[2] / gBattleAnimArgs[2];
-
-    sprite->callback = MudBombParticles_Callback;
-}
-//also lifted from sludge bomb
-static void MudBombParticles_Callback(struct Sprite *sprite)
-{
-    TranslateSpriteLinearFixedPoint(sprite);
-
-    sprite->data[1] -= sprite->data[5];
-    sprite->data[2] -= sprite->data[6];
-
-    if (!sprite->data[0])
-        DestroyAnimSprite(sprite);
-}
-//lifted from smokescreen
-void MudBombBall(struct Sprite *sprite)
-{
-    InitSpritePosToAnimAttacker(sprite, 1);
-    if (GetBattlerSide(gBattleAnimAttacker))
-        gBattleAnimArgs[2] = -gBattleAnimArgs[2];
-    sprite->data[0] = gBattleAnimArgs[4];
-    sprite->data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) + gBattleAnimArgs[2];
-    sprite->data[4] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + gBattleAnimArgs[3];
-    sprite->data[5] = gBattleAnimArgs[5];
-    InitAnimArcTranslation(sprite);
-
-    sprite->callback = MudBombBall_Callback;
-}
-//Also lifted form smokescreen
-static void MudBombBall_Callback(struct Sprite *sprite)
-{
-    if (TranslateAnimHorizontalArc(sprite))
-        DestroyAnimSprite(sprite);
-}
-void sub_81152DC(u8 taskId)
+// Shakes battler(s) or the battle terrain back and forth horizontally. Used by e.g. Earthquake, Eruption
+// arg0: What to shake. 0-3 for any specific battler, MAX_BATTLERS_COUNT for all battlers, MAX_BATTLERS_COUNT + 1 for the terrain
+// arg1: Shake intensity, used to calculate horizontal pixel offset (if 0, use move power instead)
+// arg2: Length of time to shake for
+void AnimTask_HorizontalShake(u8 taskId)
 {
     u16 i;
     struct Task *task = &gTasks[taskId];

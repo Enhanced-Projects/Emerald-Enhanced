@@ -8,30 +8,30 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
-void sub_810F1EC(struct Sprite *);
-void sub_810F58C(struct Sprite *);
-void sub_810F634(struct Sprite *);
-void sub_810F6B0(struct Sprite *);
-void sub_810FBA8(struct Sprite *);
-void sub_810FDF0(struct Sprite *);
-void sub_8110240(struct Sprite *);
-static void sub_810F340(struct Sprite *);
-static void sub_810F3C8(struct Sprite *);
-static void sub_810F400(struct Sprite *);
-static void sub_810F46C(struct Sprite *);
-static void sub_810F524(struct Sprite *);
-static void sub_810F740(struct Sprite *);
-static void sub_810F774(struct Sprite *);
-static void sub_810F810(u8);
-static void sub_810F898(u8);
-static void sub_810F9D4(u8);
-static void sub_810FD3C(u8);
-static void sub_810FF34(u8);
-static void sub_8110134(u8);
-void AnimateZenHeadbutt(struct Sprite *sprite);
-void AnimPsychoCut(struct Sprite *sprite);
+static void AnimDefensiveWall(struct Sprite *);
+static void AnimDefensiveWall_Step1(struct Sprite *);
+static void AnimDefensiveWall_Step2(struct Sprite *);
+static void AnimDefensiveWall_Step3(struct Sprite *);
+static void AnimDefensiveWall_Step4(struct Sprite *);
+static void AnimDefensiveWall_Step5(struct Sprite *);
+static void AnimWallSparkle(struct Sprite *);
+static void AnimBentSpoon(struct Sprite *);
+static void AnimQuestionMark(struct Sprite *);
+static void AnimQuestionMark_Step1(struct Sprite *);
+static void AnimQuestionMark_Step2(struct Sprite *);
+static void AnimRedX(struct Sprite *);
+static void AnimSkillSwapOrb(struct Sprite *);
+static void AnimPsychoBoost(struct Sprite *);
+static void AnimTask_MeditateStretchAttacker_Step(u8);
+static void AnimTask_Teleport_Step(u8);
+static void AnimTask_ImprisonOrbs_Step(u8);
+static void AnimTask_SkillSwap_Step(u8);
+static void AnimTask_ExtrasensoryDistortion_Step(u8);
+static void AnimTask_TransparentCloneGrowAndShrink_Step(u8);
+static void AnimateZenHeadbutt(struct Sprite *sprite);
+static void AnimPsychoCut(struct Sprite *sprite);
 
-const union AffineAnimCmd gUnknown_0859652C[] =
+static const union AffineAnimCmd sAffineAnim_PsychUpSpiral[] =
 {
     AFFINEANIMCMD_FRAME(0x100, 0x100, 0, 0),
     AFFINEANIMCMD_FRAME(0xFFFE, 0xFFFE, -10, 120),
@@ -367,7 +367,7 @@ static const union AffineAnimCmd sAffineAnim_LusterPurgeCircle[] =
     AFFINEANIMCMD_END_ALT(1),
 };
 
-static const union AffineAnimCmd *const sAffineAnims_LusterPurgeCircle[] =
+const union AffineAnimCmd *const gAffineAnims_LusterPurgeCircle[] =
 {
     sAffineAnim_LusterPurgeCircle,
 };
@@ -379,7 +379,7 @@ const struct SpriteTemplate gLusterPurgeCircleSpriteTemplate =
     .oam = &gOamData_AffineDouble_ObjBlend_64x64,
     .anims = gDummySpriteAnimTable,
     .images = NULL,
-    .affineAnims = sAffineAnims_LusterPurgeCircle,
+    .affineAnims = gAffineAnims_LusterPurgeCircle,
     .callback = AnimSpriteOnMonPos,
 };
 
@@ -455,7 +455,7 @@ const struct SpriteTemplate gPsychoCutSpiralSpriteTemplate =
     .oam = &gOamData_AffineNormal_ObjBlend_64x64,
     .anims = gDummySpriteAnimTable,
     .images = NULL,
-    .affineAnims = gUnknown_08596544,
+    .affineAnims = sAffineAnims_PsychUpSpiral,
     .callback = AnimSpriteOnMonPos,
 };
 
@@ -470,7 +470,7 @@ const struct SpriteTemplate gPsychoCutSpriteTemplate =
     .callback = AnimPsychoCut,
 };
 
-void AnimPsychoCut(struct Sprite *sprite)
+static void AnimPsychoCut(struct Sprite *sprite)
 {
     s16 lVarX, lVarY;
     u16 rot;
@@ -520,7 +520,7 @@ void AnimPsychoCut(struct Sprite *sprite)
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
 
-void AnimateZenHeadbutt(struct Sprite *sprite)
+static void AnimateZenHeadbutt(struct Sprite *sprite)
 {
     if (gBattleAnimArgs[0] == 0)
     {
@@ -537,7 +537,8 @@ void AnimateZenHeadbutt(struct Sprite *sprite)
     sprite->callback = RunStoredCallbackWhenAffineAnimEnds;
 }
 
-void sub_810F1EC(struct Sprite *sprite)
+// For the rectangular wall sprite used by Reflect, Mirror Coat, etc
+static void AnimDefensiveWall(struct Sprite *sprite)
 {
     u8 isContest = IsContest();
 
@@ -609,7 +610,7 @@ static void AnimDefensiveWall_Step1(struct Sprite *sprite)
     }
 
     if (IsBattlerSpriteVisible(battler))
-        gSprites[gBattlerSpriteIds[battler]].invisible = 1;
+        gSprites[gBattlerSpriteIds[battler]].invisible = TRUE;
 
     battler = BATTLE_PARTNER(battler);
     if (IsBattlerSpriteVisible(battler))

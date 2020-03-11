@@ -6,38 +6,37 @@
 #include "trig.h"
 #include "constants/rgb.h"
 
-void AnimConfusionDuck(struct Sprite *);
-void AnimSimplePaletteBlend(struct Sprite *);
-u32 UnpackSelectedBattleAnimPalettes(s16);
-void sub_81158A4(struct Sprite *);
-void sub_81159B4(struct Sprite *);
-void sub_81160A4(struct Sprite *);
-void sub_8116388(struct Sprite *);
-void sub_8116420(struct Sprite *);
-void sub_8116458(struct Sprite *);
-void sub_81164F0(struct Sprite *);
-void sub_8116560(struct Sprite *);
-void sub_81165A8(struct Sprite *);
-static void AnimConfusionDuckStep(struct Sprite *);
-static void AnimSimplePaletteBlendStep(struct Sprite *);
-static void sub_81158F8(struct Sprite *);
-static void sub_8115984(struct Sprite *);
-static void sub_8115A54(u8, u8, u8);
-static void sub_8115AA4(u8);
-static void sub_8115BC8(u8, u8, u8);
-static void sub_8115C18(u8);
-static void sub_8115CD0(u8, u8, u8);
-static void sub_8115D2C(u8);
-static void sub_8115E00(u8);
-static void sub_8115EB8(u8);
-static void sub_8116148(struct Sprite *);
-static void sub_81161F4(void);
-static void sub_81162F8(u8);
-static void sub_81163D0(struct Sprite *);
-static void sub_81165E4(struct Sprite *);
+static void AnimConfusionDuck(struct Sprite *);
+static void AnimSimplePaletteBlend(struct Sprite *);
+static void AnimSimplePaletteBlend_Step(struct Sprite *);
+static void AnimComplexPaletteBlend(struct Sprite *);
+static void AnimComplexPaletteBlend_Step1(struct Sprite *);
+static void AnimComplexPaletteBlend_Step2(struct Sprite *);
+static void sub_81159B4(struct Sprite *);
+static void AnimShakeMonOrBattleTerrain(struct Sprite *);
+static void AnimShakeMonOrBattleTerrain_Step(struct Sprite *);
+static void AnimShakeMonOrBattleTerrain_UpdateCoordOffsetEnabled(void);
+static void AnimHitSplatBasic(struct Sprite *);
+static void AnimHitSplatPersistent(struct Sprite *);
+static void AnimHitSplatHandleInvert(struct Sprite *);
+static void AnimHitSplatRandom(struct Sprite *);
+static void AnimHitSplatOnMonEdge(struct Sprite *);
+static void AnimCrossImpact(struct Sprite *);
+static void AnimFlashingHitSplat(struct Sprite *);
+static void AnimFlashingHitSplat_Step(struct Sprite *);
+static void AnimConfusionDuck_Step(struct Sprite *);
+static void BlendColorCycle(u8, u8, u8);
+static void AnimTask_BlendColorCycleLoop(u8);
+static void BlendColorCycleExclude(u8, u8, u8);
+static void AnimTask_BlendColorCycleExcludeLoop(u8);
+static void BlendColorCycleByTag(u8, u8, u8);
+static void AnimTask_BlendColorCycleByTagLoop(u8);
+static void AnimTask_FlashAnimTagWithColor_Step1(u8);
+static void AnimTask_FlashAnimTagWithColor_Step2(u8);
+static void AnimTask_ShakeBattleTerrain_Step(u8);
 static void AnimMovePowerSwapGuardSwap(struct Sprite *);
 
-const union AnimCmd gUnknown_0859722C[] =
+static const union AnimCmd sAnim_ConfusionDuck_0[] =
 {
     ANIMCMD_FRAME(0, 8),
     ANIMCMD_FRAME(4, 8),
@@ -151,7 +150,7 @@ const struct SpriteTemplate gPowerSwapGuardSwapSpriteTemplate =
     .callback = AnimMovePowerSwapGuardSwap
 };
 
-const union AnimCmd gUnknown_085972A4[] =
+static const union AnimCmd gUnknown_085972A4[] =
 {
     ANIMCMD_FRAME(0, 3),
     ANIMCMD_FRAME(16, 3),
@@ -517,7 +516,7 @@ static void sub_81159B4(struct Sprite *sprite)
 #define tPalSelectorHi data[9]
 #define tPalSelectorLo data[10]
 
-// Blends mon/screen to designated color or back alternately tNumBlends times 
+// Blends mon/screen to designated color or back alternately tNumBlends times
 // Many uses of this task only set a tNumBlends of 2, which has the effect of blending to a color and back once
 void AnimTask_BlendColorCycle(u8 taskId)
 {
@@ -1051,7 +1050,7 @@ static void AnimHitSplatHandleInvert(struct Sprite *sprite)
     if (GetBattlerSide(gBattleAnimAttacker) != B_SIDE_PLAYER && !IsContest())
         gBattleAnimArgs[1] = -gBattleAnimArgs[1];
 
-    sub_8116388(sprite);
+    AnimHitSplatBasic(sprite);
 }
 
 static void AnimHitSplatRandom(struct Sprite *sprite)
