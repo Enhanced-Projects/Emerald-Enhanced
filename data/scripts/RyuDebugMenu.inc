@@ -183,8 +183,8 @@ RDB_CTVMsg:
 
 RyuDebug_Utility1::
 	giveitem ITEM_EON_TICKET
-	setflag FLAG_SYS_HAS_EON_TICKET
-	setflag FLAG_HAS_EON_TICKET
+	setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
+	setflag FLAG_SHOWN_EON_TICKET
 	fadescreen FADE_TO_BLACK
 	drawfullscreenimage SCENEBGMELOETTA
 	waitbuttonpress
