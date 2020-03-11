@@ -1228,6 +1228,11 @@ static bool32 AccuracyCalcHelper(u16 move)
         JumpIfMoveFailed(7, move);
         return TRUE;
     }
+    else if (GetBattlerAbility(gBattlerAttacker) == ABILITY_KEEN_EYE)
+    {
+        JumpIfMoveFailed(7, move);
+        return TRUE;
+    }
 
     if (!(gHitMarker & HITMARKER_IGNORE_ON_AIR) && gStatuses3[gBattlerTarget] & STATUS3_ON_AIR)
     {

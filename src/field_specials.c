@@ -5493,6 +5493,11 @@ bool8 RyuSwapAbility(void)
     }
 }
 
+void resetSoundGameStat(void)
+{
+    SetGameStat(GAME_STAT_USED_SOUND_MOVE, 200);
+}
+
 bool8 RyuCheckContestMastery(void)
 {
     u8 i = 0;

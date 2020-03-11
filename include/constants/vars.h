@@ -334,6 +334,7 @@
 #define SCENEBGSUNSET 2
 #define SCENEBGMINNIE 3
 #define SCENEBGMELOETTA 4
+#define SCENEBGSHELLY 5
 
 #define SPECIAL_VARS_END              0x8015
 

@@ -23,7 +23,7 @@
 #include "intro.h"
 #include "main.h"
 #include "trainer_hill.h"
-//#include "mgba.h"
+#include "mgba.h"
 #include "event_data.h"
 
 static void VBlankIntr(void);
@@ -124,7 +124,7 @@ void AgbMain()
     ResetBgs();
     SetDefaultFontsPointer();
     InitHeap(gHeap, HEAP_SIZE);
-    //mgba_open();
+    mgba_open();
 
     gSoftResetDisabled = FALSE;
 
@@ -169,7 +169,8 @@ void AgbMain()
         }
 
         PlayTimeCounter_Update();
-        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 6255);
+        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 635);
+        VarSet(VAR_RECYCLE_GOODS, 45454);
         //mgba_open();
         MapMusicMain();
         WaitForVBlank();
