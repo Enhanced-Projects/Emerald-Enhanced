@@ -143,8 +143,8 @@ static const u16 sStarterMon[STARTER_MON_COUNT] =
     SPECIES_SHINX,
     SPECIES_RALTS,
     SPECIES_TIMBURR,
-    SPECIES_GASTLY,
-    SPECIES_HORSEA,
+    SPECIES_VENIPEDE,
+    SPECIES_SPHEAL,
 };
 
 static const struct BgTemplate gUnknown_085B1E00[3] =
