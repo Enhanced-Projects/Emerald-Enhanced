@@ -1,10 +1,25 @@
 #include "global.h"
 #include "menu.h"
+#include "window.h"
 #include "string.h"
 #include "string_util.h"
 #include "task.h"
 #include "text.h"
 #include "match_call.h"
+
+static const struct WindowTemplate sSceneBgTextBox_WindowTemplate[] =
+{
+    {
+        .bg = 0,
+        .tilemapLeft = 2,
+        .tilemapTop = 16,
+        .width = 27,
+        .height = 3,
+        .paletteNum = 15,
+        .baseBlock = 0x194
+    },
+    DUMMY_WIN_TEMPLATE
+};
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
 
@@ -64,6 +79,18 @@ bool8 ShowFieldMessage(u8 *str)
     return TRUE;
 }
 
+bool8 ShowFieldMessageOneLine(u8 *str)
+{
+    if (sFieldMessageBoxMode != 0)
+        return FALSE;
+    ClearWindowTilemap(0);
+    InitWindows(sSceneBgTextBox_WindowTemplate);
+    StringExpandPlaceholders(gStringVar4, str);
+    AddTextPrinterForMessage(TRUE);
+    task_add_textbox();
+    sFieldMessageBoxMode = 2;
+    return TRUE;
+}
 void sub_8098214(u8 taskId)
 {
     if (!IsMatchCallTaskActive())

@@ -1662,6 +1662,11 @@
 	.2byte \stat
 	.endm
 
+	.macro messageoneline text:req
+	.byte 0xf3
+	.4byte \text
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req
@@ -1786,7 +1791,8 @@
 	MSGBOX_YESNO = 5
 	MSGBOX_AUTOCLOSE = 6
 	MSGBOX_GETPOINTS = 9
-
+	MSGBOX_ONELINE = 11
+	
 	YES = 1
 	NO  = 0
 

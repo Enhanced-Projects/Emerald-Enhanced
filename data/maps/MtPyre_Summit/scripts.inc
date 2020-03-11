@@ -18,11 +18,11 @@ MP_Gengarite::
 MtPyre_Summit_EventScript_TeamAquaTrigger0:: @ 8232018
 	lockall
 	goto_if_unset FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD, ryu_end
-	goto_if_set FLAG_HAS_EON_TICKET, ryu_end
+	goto_if_set FLAG_SHOWN_EON_TICKET, ryu_end
 	msgbox MP_OldPeopleGiveEonTicket MSGBOX_DEFAULT
 	additem ITEM_EON_TICKET
-	setflag FLAG_HAS_EON_TICKET
-	setflag FLAG_SYS_HAS_EON_TICKET
+	setflag FLAG_SHOWN_EON_TICKET
+	setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
 	end
 
 MtPyre_Summit_EventScript_TeamAquaTrigger1:: @ 8232024
@@ -83,8 +83,8 @@ MtPyre_Summit_EventScript_TeamAquaExits:: @ 823203C
 	waitmovement 0
 	msgbox MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis, MSGBOX_DEFAULT
 	additem ITEM_EON_TICKET
-	setflag FLAG_SYS_HAS_EON_TICKET
-	setflag FLAG_HAS_EON_TICKET
+	setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
+	setflag FLAG_SHOWN_EON_TICKET
 	setflag FLAG_RECEIVED_RED_OR_BLUE_ORB
 	setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
