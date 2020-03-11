@@ -243,6 +243,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_clearfullscreenimage
 	.4byte ScrCmd_giveitem_silent
 	.4byte ScrCmd_readgamestat
+	.4byte ScrCmd_messageoneline
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop
