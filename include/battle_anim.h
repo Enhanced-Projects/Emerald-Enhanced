@@ -247,6 +247,10 @@ void AnimGhostStatusSprite(struct Sprite *sprite);
 // battle_anim_psychic.c
 extern const union AffineAnimCmd *const gAffineAnims_LusterPurgeCircle[];
 
+// battle_anim_smokescreen.c
+u8 SmokescreenImpact(s16 x, s16 y, u8 a3);
+
+u32 UnpackSelectedBattleAnimPalettes(s16);
 
 u8 GetBattlerSpriteFinal_Y(u8, u16, u8);
 

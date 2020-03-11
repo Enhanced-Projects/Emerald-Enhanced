@@ -1888,11 +1888,11 @@ Move_DARK_PULSE:
 	playsewithpan SE_W060, SOUND_PAN_ATTACKER
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 0, 0, 7, RGB(0, 2, 4)
 	delay 10
-	createsprite gUnknown_085952F8, ANIM_ATTACKER, 66, 100, 100, 8, 1, 20, 40, 0
-	createsprite gUnknown_085952F8, ANIM_ATTACKER, 66, 20, 100, 16, 2, 10, 35, 1
-	createsprite gUnknown_085952F8, ANIM_ATTACKER, 66, 200, 80, 8, 1, 40, 20, 0
-	createsprite gUnknown_085952F8, ANIM_ATTACKER, 66, 80, 60, 10, 3, 20, 50, 0
-	createsprite gUnknown_085952F8, ANIM_ATTACKER, 66, 140, 100, 16, 1, 20, 30, 1
+	createsprite gWaterPulseBubbleSpriteTemplate, ANIM_ATTACKER, 66, 100, 100, 8, 1, 20, 40, 0
+	createsprite gWaterPulseBubbleSpriteTemplate, ANIM_ATTACKER, 66, 20, 100, 16, 2, 10, 35, 1
+	createsprite gWaterPulseBubbleSpriteTemplate, ANIM_ATTACKER, 66, 200, 80, 8, 1, 40, 20, 0
+	createsprite gWaterPulseBubbleSpriteTemplate, ANIM_ATTACKER, 66, 80, 60, 10, 3, 20, 50, 0
+	createsprite gWaterPulseBubbleSpriteTemplate, ANIM_ATTACKER, 66, 140, 100, 16, 1, 20, 30, 1
 	waitforvisualfinish
 	createsprite gWaterPulseRingSpriteTemplate, ANIM_TARGET, 2, 0, 0, 40, 15
 	delay 5
@@ -1906,7 +1906,6 @@ Move_DARK_PULSE:
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 1, 7, 0, RGB(0, 2, 4)
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
-	end
 	end
 	
 Move_NIGHT_SLASH:
