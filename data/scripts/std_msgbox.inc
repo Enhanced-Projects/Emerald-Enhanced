@@ -39,6 +39,12 @@ Std_10: @ 8271347
 	waitmessage
 	return
 
+Std_MsgboxOneLine: @ 827132A
+	messageoneline 0x0
+	waitmessage
+	waitbuttonpress
+	return
+
 EventScript_UnusedReturn: @ 827134E
 	return
 

@@ -1270,6 +1270,16 @@ bool8 ScrCmd_message(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_messageoneline(struct ScriptContext *ctx)
+{
+    const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+
+    if (msg == NULL)
+        msg = (const u8 *)ctx->data[0];
+    ShowFieldMessageOneLine(msg);
+    return FALSE;
+}
+
 bool8 ScrCmd_pokenavcall(struct ScriptContext *ctx)
 {
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);
