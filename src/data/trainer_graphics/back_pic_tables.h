@@ -33,15 +33,15 @@ const struct CompressedSpriteSheet gTrainerBackPicTable[] =
 
 const struct CompressedSpritePalette gTrainerBackPicPaletteTable[] =
 {
-    TRAINER_BACK_PAL(BRENDAN, gTrainerPalette_Brendan),
-    TRAINER_BACK_PAL(MAY, gTrainerPalette_May),
+    TRAINER_BACK_PAL(BRENDAN, gTrainerBackPicPal_Brendan),
+    TRAINER_BACK_PAL(MAY, gTrainerBackPicPal_May),
     TRAINER_BACK_PAL(RED, gTrainerBackPicPalette_Red),
     TRAINER_BACK_PAL(LEAF, gTrainerBackPicPalette_Leaf),
-    TRAINER_BACK_PAL(RUBY_SAPPHIRE_BRENDAN, gTrainerPalette_RubySapphireBrendan),
-    TRAINER_BACK_PAL(RUBY_SAPPHIRE_MAY, gTrainerPalette_RubySapphireMay),
-    TRAINER_BACK_PAL(WALLY, gTrainerPalette_Wally),
-    TRAINER_BACK_PAL(STEVEN, gTrainerPalette_Steven),
-    TRAINER_BACK_PAL(SHELLY, gTrainerPalette_AquaAdminF),
-    TRAINER_BACK_PAL(LANETTE, gTrainerPalette_Lanette),
-    TRAINER_BACK_PAL(MINNIE, gTrainerPalette_Minnie),
+    TRAINER_BACK_PAL(RUBY_SAPPHIRE_BRENDAN, gTrainerBackPicPal_RubySapphireBrendan),
+    TRAINER_BACK_PAL(RUBY_SAPPHIRE_MAY, gTrainerBackPicPal_RubySapphireMay),
+    TRAINER_BACK_PAL(WALLY, gTrainerBackPicPal_Wally),
+    TRAINER_BACK_PAL(STEVEN, gTrainerBackPicPal_Steven),
+    TRAINER_BACK_PAL(SHELLY, gTrainerBackPicPal_Shelly),
+    TRAINER_BACK_PAL(LANETTE, gTrainerBackPicPal_Lanette),
+    TRAINER_BACK_PAL(MINNIE, gTrainerBackPicPal_Minnie),
 };

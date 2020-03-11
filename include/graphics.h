@@ -5286,6 +5286,18 @@ extern const u8 gTrainerBackPic_Lanette[];
 extern const u8 gTrainerBackPic_Minnie[];
 extern const u8 gTrainerBackPic_Shelly[];
 
+extern const u32 gTrainerBackPicPal_Brendan[];
+extern const u32 gTrainerBackPicPal_May[];
+extern const u32 gTrainerBackPicPal_Red[];
+extern const u32 gTrainerBackPicPal_Leaf[];
+extern const u32 gTrainerBackPicPal_RubySapphireBrendan[];
+extern const u32 gTrainerBackPicPal_RubySapphireMay[];
+extern const u32 gTrainerBackPicPal_Wally[];
+extern const u32 gTrainerBackPicPal_Steven[];
+extern const u32 gTrainerBackPicPal_Shelly[];
+extern const u32 gTrainerBackPicPal_Lanette[];
+extern const u32 gTrainerBackPicPal_Minnie[];
+
 extern const u32 gTrainerBackPicPalette_Red[];
 extern const u32 gTrainerBackPicPalette_Leaf[];
 

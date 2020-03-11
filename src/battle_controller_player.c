@@ -2964,7 +2964,7 @@ static void PlayerHandleIntroSlide(void)
 
 static void PlayerHandleIntroTrainerBallThrow(void)
 {
-    u8 paletteNum;
+    u32 paletteNum;
     u8 taskId;
 
     SetSpritePrimaryCoordsFromSecondaryCoords(&gSprites[gBattlerSpriteIds[gActiveBattler]]);
