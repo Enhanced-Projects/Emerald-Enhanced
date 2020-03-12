@@ -3,6 +3,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/moves.h"
+#include "constants/pokemon.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/battle_anim_script.inc"
 	.include "constants/constants.inc"
@@ -13752,16 +13753,26 @@ Move_SKY_UPPERCUT:
 	end
 
 Move_SECRET_POWER:
-	createvisualtask AnimTask_GetBattleTerrain, 5
-	jumpargeq 0, BATTLE_TERRAIN_GRASS,      Move_NEEDLE_ARM
-	jumpargeq 0, BATTLE_TERRAIN_LONG_GRASS, Move_MAGICAL_LEAF
-	jumpargeq 0, BATTLE_TERRAIN_SAND,       Move_MUD_SHOT
-	jumpargeq 0, BATTLE_TERRAIN_UNDERWATER, Move_WATERFALL
-	jumpargeq 0, BATTLE_TERRAIN_WATER,      Move_SURF
-	jumpargeq 0, BATTLE_TERRAIN_POND,       Move_BUBBLE_BEAM
-	jumpargeq 0, BATTLE_TERRAIN_MOUNTAIN,   Move_ROCK_THROW
-	jumpargeq 0, BATTLE_TERRAIN_CAVE,       Move_BITE
-	jumpargeq 0, BATTLE_TERRAIN_BUILDING,   Move_STRENGTH
+	@setarg 7, 0xFFFF
+	createvisualtask AnimTask_GetMoveType, 7
+	jumpargeq 0, TYPE_GRASS,                Move_NEEDLE_ARM
+	jumpargeq 0, TYPE_GROUND,               Move_EARTHQUAKE
+	jumpargeq 0, TYPE_WATER,                Move_WATERFALL
+	jumpargeq 0, TYPE_ROCK,                 Move_ROCK_THROW
+	jumpargeq 0, TYPE_DARK,                 Move_FAINT_ATTACK
+	jumpargeq 0, TYPE_NORMAL,               Move_STRENGTH
+	jumpargeq 0, TYPE_ICE,                  Move_ICE_PUNCH 
+	jumpargeq 0, TYPE_FIGHTING,             Move_KARATE_CHOP 
+	jumpargeq 0, TYPE_FLYING,               Move_FLY
+	jumpargeq 0, TYPE_POISON,               Move_POISON_JAB
+	jumpargeq 0, TYPE_BUG,                  Move_FURY_CUTTER
+	jumpargeq 0, TYPE_GHOST,                Move_SHADOW_PUNCH
+	jumpargeq 0, TYPE_STEEL,                Move_IRON_TAIL
+	jumpargeq 0, TYPE_FIRE,                 Move_FIRE_PUNCH
+	jumpargeq 0, TYPE_ELECTRIC,             Move_THUNDER_PUNCH
+	jumpargeq 0, TYPE_PSYCHIC,              Move_ZEN_HEADBUTT
+	jumpargeq 0, TYPE_DRAGON,               Move_DRAGON_CLAW
+	jumpargeq 0, TYPE_FAIRY,                Move_COVET
 	goto Move_SLAM
 
 Move_TWISTER:

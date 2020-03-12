@@ -11,6 +11,7 @@
 #include "util.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "mgba.h"
 
 struct AnimStatsChangeData
 {
@@ -900,6 +901,12 @@ static void sub_8117A60(u8 taskId)
         }
         break;
     }
+}
+
+void AnimTask_GetMoveType(u8 taskId)
+{
+    gBattleAnimArgs[0] = gBattleStruct->dynamicMoveType;
+    DestroyAnimVisualTask(taskId);
 }
 
 void AnimTask_GetBattleTerrain(u8 taskId)

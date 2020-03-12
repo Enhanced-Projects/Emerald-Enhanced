@@ -120,6 +120,7 @@ LCC_BattleItemMart: @ 8220024
 	.2byte ITEM_FLYING_GEM
 	.2byte ITEM_ROCKY_HELMET
 	.2byte ITEM_AIR_BALLOON
+	.2byte ITEM_EVIOLITE
 	.2byte ITEM_NONE
 	release
 	end
