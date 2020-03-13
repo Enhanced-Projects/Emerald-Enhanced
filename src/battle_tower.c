@@ -1758,7 +1758,7 @@ static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
                                              gFacilityTrainerMons[monId].species,
                                              level,
                                              gFacilityTrainerMons[monId].nature,
-                                             fixedIV,
+                                             gFacilityTrainerMons[monId].ivs,
                                              gFacilityTrainerMons[monId].evSpread,
                                              otID);
 
@@ -1850,7 +1850,7 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
     u8 i, j;
     u8 friendship;
     u8 level;
-    u8 fixedIV;
+    u8 fixedIV = gFacilityTrainerMons[firstMonId].ivs;
     u32 otID;
 
     if (trainerId < FRONTIER_TRAINERS_COUNT)
@@ -1858,10 +1858,6 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
         u8 lvlMode = gSaveBlock2Ptr->frontier.lvlMode; // Unused variable.
         u8 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
         u8 challengeNum = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][0] / 7;
-        if (gSaveBlock2Ptr->frontier.curChallengeBattleNum < 6)
-            fixedIV = GetFactoryMonFixedIV(challengeNum, 0);
-        else
-            fixedIV = GetFactoryMonFixedIV(challengeNum, 1);
     }
     else if (trainerId == TRAINER_EREADER)
     {
@@ -1876,7 +1872,6 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
     }
     else
     {
-        fixedIV = 31;
     }
 
     level = SetFacilityPtrsGetLevel();

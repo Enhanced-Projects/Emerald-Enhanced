@@ -1217,8 +1217,6 @@ ContestHall_EventScript_GivePrizeIfWinner:: @ 827AC5E
 	return
 
 ContestHall_EventScript_GiveContestPrizes:: @ 827AC77
-	compare VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_SUPER
-	call_if_eq ContestHall_EventScript_SetSketchFlag
 	specialvar VAR_RESULT, HasMonWonThisContestBefore
 	compare VAR_RESULT, FALSE
 	goto_if_eq ContestHall_EventScript_ReceiveContestRibbon

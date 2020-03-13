@@ -711,7 +711,7 @@ void FillFactoryBrainParty(void)
     u16 heldItems[FRONTIER_PARTY_SIZE];
     u8 friendship;
     int monLevel;
-    u8 fixedIV;
+    u8 fixedIV = 31;
     u32 otId;
 
     u8 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;

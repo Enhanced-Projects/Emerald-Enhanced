@@ -182,18 +182,50 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1} NFE's exist.$"
 
 RyuDebug_Utility1::
-	giveitem ITEM_EON_TICKET
-	setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
-	setflag FLAG_SHOWN_EON_TICKET
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGMELOETTA
-	waitbuttonpress
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
-	special HealPlayerParty
+	call_if_unset FLAG_RYU_CLEARED_COOL, nocool
+	call_if_unset FLAG_RYU_CLEARED_SMART, nosmart
+	call_if_unset FLAG_RYU_CLEARED_BEAUTY, nobeauty
+	call_if_unset FLAG_RYU_CLEARED_TOUGH, notough
+	call_if_unset FLAG_RYU_CLEARED_CUTE, nocute
 	closemessage
 	release
 	end
+
+nocool::
+	msgbox nocoolmsg
+	return
+
+nosmart::
+	msgbox nosmartmsg
+	return
+	
+nobeauty::
+	msgbox nobeautymsg
+	return
+	
+notough::
+	msgbox notoughmsg
+	return
+	
+nocute::
+	msgbox nocutemsg
+	return
+
+
+nocoolmsg:
+	.string "No COOL master ribbon.$"
+
+nosmartmsg:
+	.string "No SMART master ribbon.$"
+
+nobeautymsg:
+	.string "No BEAUTY master ribbon.$"
+
+notoughmsg:
+	.string "No TOUGH master ribbon.$"
+
+nocutemsg:
+	.string "No CUTE master ribbon.$"
 
 rdb_hassymbols::
 playse SE_EXPMAX
