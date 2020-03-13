@@ -70,6 +70,7 @@
 #include "item.h"
 #include "constants/items.h"
 #include "pokemon_storage_system.h"
+#include "rgb.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -1736,14 +1737,6 @@ void CB2_LoadMap(void)
 static void CB2_LoadMap2(void)
 {
     do_load_map_stuff_loop(&gMain.state);
-
-    if (FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1)
-    {
-        SetWeather((VarGet(VAR_RYU_WEATHER)));
-        DoCurrentWeather();
-        FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
-    }
-    
     SetFieldVBlankCallback();
     SetMainCallback1(CB1_Overworld);
     SetMainCallback2(CB2_Overworld);
@@ -1804,7 +1797,7 @@ void CB2_ReturnToFieldLocal(void)
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuKillMon();
 
-    if (FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1)
+    if ((FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1))
     {
         SetWeather((VarGet(VAR_RYU_WEATHER)));
         DoCurrentWeather();
