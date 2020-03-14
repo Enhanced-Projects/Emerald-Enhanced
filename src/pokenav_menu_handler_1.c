@@ -36,7 +36,7 @@ static const u8 sLastCursorPositions[] =
 {
     [POKENAV_MENU_TYPE_DEFAULT]           = 2, 
     [POKENAV_MENU_TYPE_UNLOCK_MC]         = 3, 
-    [POKENAV_MENU_TYPE_UNLOCK_MC_RIBBONS] = 4, 
+    [POKENAV_MENU_TYPE_UNLOCK_MC_RIBBONS] = 3, 
     [POKENAV_MENU_TYPE_CONDITION]         = 2, 
     [POKENAV_MENU_TYPE_CONDITION_SEARCH]  = 5
 };
@@ -60,9 +60,9 @@ static const u8 sMenuItems[][6] =
     { 
         POKENAV_MENUITEM_MAP, 
         POKENAV_MENUITEM_CONDITION,  
-        POKENAV_MENUITEM_MATCH_CALL,  
+        //POKENAV_MENUITEM_MATCH_CALL,  
         POKENAV_MENUITEM_RIBBONS,  
-        [4 ... 5] = POKENAV_MENUITEM_SWITCH_OFF
+        [3 ... 5] = POKENAV_MENUITEM_SWITCH_OFF
     },
     [POKENAV_MENU_TYPE_CONDITION] = 
     { 
@@ -86,13 +86,13 @@ static u8 GetPokenavMainMenuType(void)
 {
     u8 menuType = POKENAV_MENU_TYPE_DEFAULT;
 
-    if (FlagGet(FLAG_ADDED_MATCH_CALL_TO_POKENAV))
-    { 
-        menuType = POKENAV_MENU_TYPE_UNLOCK_MC;
+    //if (FlagGet(FLAG_ADDED_MATCH_CALL_TO_POKENAV))
+    //{ 
+       // menuType = POKENAV_MENU_TYPE_UNLOCK_MC;
 
         if (FlagGet(FLAG_SYS_RIBBON_GET))
             menuType = POKENAV_MENU_TYPE_UNLOCK_MC_RIBBONS;
-    }
+    //}
     
     return menuType;
 }
@@ -132,7 +132,7 @@ bool32 PokenavCallback_Init_5(void)
         return FALSE;
     
     state->menuType = GetPokenavMainMenuType();
-    state->cursorPos = 3;
+    state->cursorPos = 2;
     state->currMenuItem = POKENAV_MENUITEM_RIBBONS;
     SetMenuInputHandler(state);
     return TRUE;

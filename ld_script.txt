@@ -13,8 +13,7 @@ SECTIONS {
 
         . = 0x1C000;
 
-        src/*.o(ewram_data);
-        gflib/*.o(ewram_data);
+        INCLUDE "sym_ewram.ld"
 
         . = 0x40000;
     }

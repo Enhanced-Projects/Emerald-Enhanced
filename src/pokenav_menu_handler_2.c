@@ -197,7 +197,7 @@ static const struct UnkStruct_08620240 gUnknown_08620240[POKENAV_MENU_TYPE_COUNT
     {
         0x2A,
         0x14,
-        {gUnknown_0862020C, gUnknown_08620210, gUnknown_08620214, gUnknown_08620218, gUnknown_0862021C}
+        {gUnknown_0862020C, gUnknown_08620210, gUnknown_08620218, gUnknown_0862021C}
     },
     [POKENAV_MENU_TYPE_CONDITION] = 
     {

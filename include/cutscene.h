@@ -12,13 +12,13 @@ struct BGPanState {
 
 struct PidgeyPaletteFade 
 {
+	bool32 active;
+	u16 palOffset;
+	u16 color;
 	u8 startCoeff;
 	u8 endCoeff;
 	u8 currentCoeff;
-	bool8 active;
 	u8 numEntries;
-	u16 palOffset;
-	u16 color;
 };
 
 struct CutsceneBG

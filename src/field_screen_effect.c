@@ -76,17 +76,17 @@ static void FillPalBufferBlack(void)
 
 void WarpFadeInScreen(void)
 {
- //   u8 previousMapType = GetLastUsedWarpMapType();
- //   switch (GetMapPairFadeFromType(previousMapType, GetCurrentMapType()))
- //   {
- //   case 0:
- //       FillPalBufferBlack();
- //       FadeScreen(FADE_FROM_BLACK, 0);
- //       break;
- //   case 1:
- //       FillPalBufferWhite();
- //       FadeScreen(FADE_FROM_WHITE, 0);
- //   }
+   u8 previousMapType = GetLastUsedWarpMapType();
+   switch (GetMapPairFadeFromType(previousMapType, GetCurrentMapType()))
+   {
+   case 0:
+       FillPalBufferBlack();
+       FadeScreen(FADE_FROM_BLACK, 0);
+       break;
+   case 1:
+       FillPalBufferWhite();
+       FadeScreen(FADE_FROM_WHITE, 0);
+   }
 }
 
 void FadeInFromWhite(void)

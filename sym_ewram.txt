@@ -149,6 +149,4 @@
 	.include "src/rayquaza_scene.o"
 	.include "src/cutscene.o"
 	.include "src/battle_util.o"
-
-	gSoundInfo:
-        .space 0xFB0
+	.include "src/m4a.o"
