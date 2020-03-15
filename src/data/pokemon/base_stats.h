@@ -611,10 +611,10 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_PIKACHU] =
     {
         .baseHP        = 35,
-        .baseAttack    = 55,
+        .baseAttack    = 60,
         .baseDefense   = 40,
-        .baseSpeed     = 90,
-        .baseSpAttack  = 50,
+        .baseSpeed     = 100,
+        .baseSpAttack  = 60,
         .baseSpDefense = 50,
         .type1 = TYPE_ELECTRIC,
         .type2 = TYPE_ELECTRIC,
@@ -637,10 +637,10 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_RAICHU] =
     {
         .baseHP        = 60,
-        .baseAttack    = 90,
+        .baseAttack    = 100,
         .baseDefense   = 55,
-        .baseSpeed     = 110,
-        .baseSpAttack  = 90,
+        .baseSpeed     = 120,
+        .baseSpAttack  = 100,
         .baseSpDefense = 80,
         .type1 = TYPE_ELECTRIC,
         .type2 = TYPE_ELECTRIC,
@@ -654,7 +654,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FAIRY,
-        .abilities = {ABILITY_STATIC, ABILITY_STATIC},
+        .abilities = {ABILITY_GALVANIZE, ABILITY_GALVANIZE},
         .abilityHidden = ABILITY_LIGHTNING_ROD,
         .bodyColor = BODY_COLOR_YELLOW,
     },
