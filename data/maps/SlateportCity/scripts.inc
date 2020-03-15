@@ -481,9 +481,16 @@ SlateportCity_EventScript_PowerTMClerk:: @ 81DD1D8
 
 	.align 2
 SlateportCity_Pokemart_PowerTMs: @ 81DD1F0
-	.2byte ITEM_TM10  @ Hidden Power
-	.2byte ITEM_TM43  @ Secret Power
-	.2byte ITEM_NONE
+	.2byte DECOR_BALL_POSTER
+	.2byte DECOR_GREEN_POSTER
+	.2byte DECOR_RED_POSTER
+	.2byte DECOR_BLUE_POSTER
+	.2byte DECOR_CUTE_POSTER
+	.2byte DECOR_PIKA_POSTER
+	.2byte DECOR_LONG_POSTER
+	.2byte DECOR_SEA_POSTER
+	.2byte DECOR_SKY_POSTER
+	.2byte DECOR_NONE
 	release
 	end
 
