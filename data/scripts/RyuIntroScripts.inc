@@ -91,7 +91,7 @@ Ryu_NGP_AcroBike::
 	additem ITEM_ACRO_BIKE 1
 	return
 
-Ryu_NGP_MachBike
+Ryu_NGP_MachBike::
 	additem ITEM_MACH_BIKE, 1
 	return
 
