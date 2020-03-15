@@ -1736,15 +1736,6 @@ void CB2_LoadMap(void)
 static void CB2_LoadMap2(void)
 {
     do_load_map_stuff_loop(&gMain.state);
-    // TODO: fix
-    /*
-    if (FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1)
-    {
-        SetWeather((VarGet(VAR_RYU_WEATHER)));
-        DoCurrentWeather();
-        FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
-    }
-    */
     SetFieldVBlankCallback();
     SetMainCallback1(CB1_Overworld);
     SetMainCallback2(CB2_Overworld);
@@ -1804,15 +1795,6 @@ void CB2_ReturnToFieldLocal(void)
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuKillMon();
-    // TODO: fix
-    /*
-    if (FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1)
-    {
-        SetWeather((VarGet(VAR_RYU_WEATHER)));
-        DoCurrentWeather();
-        FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
-    }
-    */
 }
 
 void CB2_ReturnToFieldLink(void)

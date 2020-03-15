@@ -418,8 +418,18 @@ SlateportCity_EventScript_DollClerk:: @ 81DD16A
 	.align 2
 SlateportCity_PokemartDecor_Dolls: @ 81DD184
 	.2byte DECOR_AZURILL_DOLL
+	.2byte DECOR_PICHU_DOLL
+	.2byte DECOR_PIKACHU_DOLL
 	.2byte DECOR_MARILL_DOLL
+	.2byte DECOR_JIGGLYPUFF_DOLL
+	.2byte DECOR_DUSKULL_DOLL 
+	.2byte DECOR_WYNAUT_DOLL
+	.2byte DECOR_BALTOY_DOLL
+	.2byte DECOR_KECLEON_DOLL
+	.2byte DECOR_AZURILL_DOLL
 	.2byte DECOR_SKITTY_DOLL
+	.2byte DECOR_SWABLU_DOLL
+	.2byte DECOR_GULPIN_DOLL
 	.2byte DECOR_NONE
 	release
 	end
@@ -471,9 +481,16 @@ SlateportCity_EventScript_PowerTMClerk:: @ 81DD1D8
 
 	.align 2
 SlateportCity_Pokemart_PowerTMs: @ 81DD1F0
-	.2byte ITEM_TM10  @ Hidden Power
-	.2byte ITEM_TM43  @ Secret Power
-	.2byte ITEM_NONE
+	.2byte DECOR_BALL_POSTER
+	.2byte DECOR_GREEN_POSTER
+	.2byte DECOR_RED_POSTER
+	.2byte DECOR_BLUE_POSTER
+	.2byte DECOR_CUTE_POSTER
+	.2byte DECOR_PIKA_POSTER
+	.2byte DECOR_LONG_POSTER
+	.2byte DECOR_SEA_POSTER
+	.2byte DECOR_SKY_POSTER
+	.2byte DECOR_NONE
 	release
 	end
 
