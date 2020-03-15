@@ -1289,9 +1289,9 @@
 #define FLAG_RYU_CAPTURED_MELOETTA                                  0x4CE // Unused Flag
 #define FLAG_RYU_FIRST_MELOETTA_MSG                                 0x4CF // Unused Flag
 #define FLAG_RYU_SECOND_MELOETTA_MSG                                0x4D0 // Unused Flag
-#define FLAG_UNUSED_0x4D1                                           0x4D1 // Unused Flag
-#define FLAG_UNUSED_0x4D2                                           0x4D2 // Unused Flag
-#define FLAG_UNUSED_0x4D3                                           0x4D3 // Unused Flag
+#define FLAG_RYU_REGIGIGAS                                          0x4D1 // Unused Flag
+#define FLAG_HAS_ACRO_BIKE                                          0x4D2 // Unused Flag
+#define FLAG_HAS_MACH_BIKE                                          0x4D3 // Unused Flag
 #define FLAG_UNUSED_0x4D4                                           0x4D4 // Unused Flag
 #define FLAG_UNUSED_0x4D5                                           0x4D5 // Unused Flag
 #define FLAG_UNUSED_0x4D6                                           0x4D6 // Unused Flag

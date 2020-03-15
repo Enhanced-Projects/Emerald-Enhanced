@@ -31,10 +31,13 @@ TerraCave_End_EventScript_Groudon:: @ 823B0EC
 	waitmovement 0
 	waitse
 	playmoncry SPECIES_GROUDON, 2
-	delay 40
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	waitmoncry
 	setvar VAR_LAST_TALKED, 1
-	setwildbattle SPECIES_GROUDON, 70, ITEM_NONE
+	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_NONE
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate

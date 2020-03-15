@@ -13,13 +13,17 @@ SFC_AltKyogre::
 	msgbox SFC_KyogreStaringIntently MSGBOX_DEFAULT
 	playmoncry SPECIES_KYOGRE, 0
 	closemessage
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	waitmoncry
 	delay 10
 	fadescreen 1
 	removeobject 7
 	removeobject 1
 	fadescreen 0
-	setwildbattle SPECIES_KYOGRE, 80, ITEM_MYSTIC_WATER
+	setwildbattle SPECIES_KYOGRE, VAR_RESULT, ITEM_MYSTIC_WATER
 	setflag FLAG_RYU_KYOGRE
 	special BattleSetup_StartLegendaryBattle
 	waitstate

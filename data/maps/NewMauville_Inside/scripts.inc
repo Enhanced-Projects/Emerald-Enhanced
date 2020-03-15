@@ -393,9 +393,13 @@ NewMauville_Zapdos::
 	call_if_ne RyuLegendary_LeftStoneAlone
 	msgbox NewMauville_Zapdos_TouchedStone
 	playmoncry SPECIES_ZAPDOS, 0
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	closemessage
 	waitmoncry
-	setwildbattle SPECIES_ZAPDOS, 90, ITEM_BRIGHT_POWDER
+	setwildbattle SPECIES_ZAPDOS, VAR_RESULT, ITEM_BRIGHT_POWDER
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught

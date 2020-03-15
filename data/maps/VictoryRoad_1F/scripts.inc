@@ -243,8 +243,12 @@ VR1_Moltres::
 	msgbox NewMauville_Moltres_TouchedStone
 	playmoncry SPECIES_MOLTRES, 0
 	closemessage
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	waitmoncry
-	setwildbattle SPECIES_MOLTRES, 90, ITEM_BRIGHT_POWDER
+	setwildbattle SPECIES_MOLTRES, VAR_RESULT, ITEM_BRIGHT_POWDER
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught

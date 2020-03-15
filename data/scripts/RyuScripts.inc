@@ -1456,7 +1456,11 @@ Ryu_DoMeloettaEncounter::
 	closemessage
 	playmoncry SPECIES_MELOETTA, 0
 	msgbox Ryu_ItsSingingBeautifully
-	setwildbattle SPECIES_MELOETTA, 80, ITEM_STAR_PIECE
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
+	setwildbattle SPECIES_MELOETTA, VAR_RESULT, ITEM_STAR_PIECE
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	special BattleSetup_StartLegendaryBattle

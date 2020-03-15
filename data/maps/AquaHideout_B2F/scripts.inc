@@ -207,10 +207,14 @@ AHQ_KyogreTrigger::
 	fadescreen 1
 	setflag FLAG_RYU_KYOGRE
 	removeobject 7
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	fadescreen 0
 	waitmoncry
 	delay 10
-	setwildbattle SPECIES_KYOGRE, 80, ITEM_MYSTIC_WATER
+	setwildbattle SPECIES_KYOGRE, VAR_RESULT, ITEM_MYSTIC_WATER
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	setvar VAR_SKY_PILLAR_STATE, 3

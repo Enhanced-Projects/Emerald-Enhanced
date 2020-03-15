@@ -26,6 +26,8 @@ Ryu_NewGamePlus::
 	call_if_set FLAG_RYU_HAS_EXP_DRIVE, Ryu_NGP_ExpDrive
 	call_if_set FLAG_RYU_HAS_WIRELESSPC, Ryu_NGP_WirelessPC
 	call_if_set FLAG_RYU_HAS_EXPSHARE, Ryu_NGP_ExpShare
+	call_if_set FLAG_HAS_ACRO_BIKE, Ryu_NGP_AcroBike
+	call_if_set FLAG_HAS_MACH_BIKE, Ryu_NGP_MachBike
 	msgbox RyuNGP_DexInfo
 	closemessage
 	setflag FLAG_SYS_POKEDEX_GET
@@ -83,6 +85,14 @@ Ryu_NGP_WirelessPC:
 
 Ryu_NGP_ExpShare::
 	additem ITEM_EXP_SHARE, 1
+	return
+
+Ryu_NGP_AcroBike::
+	additem ITEM_ACRO_BIKE 1
+	return
+
+Ryu_NGP_MachBike
+	additem ITEM_MACH_BIKE, 1
 	return
 
 RyuNGPInfo:

@@ -549,7 +549,11 @@ MH_Groudon_Enc::
 	special ShakeCamera
 	waitstate
 	delay 30
-	setwildbattle SPECIES_GROUDON, 80, ITEM_HARD_STONE
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
+	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_HARD_STONE
 	msgbox MH_GroudonMsg MSGBOX_AUTOCLOSE
 	special BattleSetup_StartLegendaryBattle
 	removeobject 7

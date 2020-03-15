@@ -1638,6 +1638,8 @@ void CB2_NewGame(void)
     bool8 hasImprinter = FALSE;
     bool8 hasWirelessPC = FALSE;
     bool8 hasExpShare = FALSE;
+    bool8 hasMachBike = FALSE;
+    bool8 hasAcroBike = FALSE;
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
         isNGPlus = TRUE;
 
@@ -1658,6 +1660,12 @@ void CB2_NewGame(void)
 
     if (CheckBagHasItem(ITEM_EXP_SHARE, 1))
         hasExpShare = TRUE;
+
+    if (CheckBagHasItem(ITEM_MACH_BIKE, 1))
+        hasMachBike = TRUE;
+        
+    if (CheckBagHasItem(ITEM_ACRO_BIKE, 1))
+        hasAcroBike = TRUE;
 
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();

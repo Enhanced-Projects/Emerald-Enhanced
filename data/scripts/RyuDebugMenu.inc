@@ -188,8 +188,8 @@ RyuDebug_Utility1::
 	call_if_unset FLAG_RYU_CLEARED_TOUGH, notough
 	call_if_unset FLAG_RYU_CLEARED_CUTE, nocute
 	closemessage
+	clearflag FLAG_RYU_REGIGIGAS
 	release
-	setflag FLAG_SYS_RIBBON_GET
 	end
 
 nocool::

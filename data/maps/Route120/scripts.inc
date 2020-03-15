@@ -626,9 +626,13 @@ R120_Suicune::
 	call_if_ne RyuLegendary_LeftStoneAlone
 	msgbox R120_TouchedStone
 	playmoncry SPECIES_SUICUNE, 0
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	closemessage
 	waitmoncry
-	setwildbattle SPECIES_SUICUNE, 90, ITEM_NONE
+	setwildbattle SPECIES_SUICUNE, VAR_RESULT, ITEM_NONE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught

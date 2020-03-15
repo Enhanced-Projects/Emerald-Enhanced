@@ -488,8 +488,12 @@ R115_Raikou::
 	msgbox R115_Raikou_TouchedStone
 	playmoncry SPECIES_RAIKOU, 0
 	closemessage
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	waitmoncry
-	setwildbattle SPECIES_RAIKOU, 90, ITEM_NONE
+	setwildbattle SPECIES_RAIKOU, VAR_RESULT, ITEM_NONE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught
