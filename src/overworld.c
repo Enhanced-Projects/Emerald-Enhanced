@@ -2314,8 +2314,11 @@ static void sub_8086988(u32 a1)
         InitObjectEventPalettes(1);
 
     FieldEffectActiveListClear();
+    if (FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1 && (GetSav1Weather() != VarGet(VAR_RYU_WEATHER)))
+        SetWeather(VarGet(VAR_RYU_WEATHER));
     StartWeather();
     ResumePausedWeather();
+    FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
     if (!a1)
         SetUpFieldTasks();
     RunOnResumeMapScript();
