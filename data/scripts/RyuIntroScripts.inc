@@ -384,12 +384,12 @@ GameIntroSequencePart2::
     checkplayergender
 	compare VAR_RESULT, FEMALE
 	goto_if_eq GameIntroFemalePart2
-	applymovement EVENT_OBJ_ID_PLAYER, GI_Male_GetOutOfBed
+	applymovement OBJ_EVENT_ID_PLAYER, GI_Male_GetOutOfBed
 	waitmovement 0
 	playse SE_PC_ON
 	waitse
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	waitmovement 0
 	msgbox GI_CheckedEmail MSGBOX_SIGN
 	closemessage
@@ -402,12 +402,12 @@ GameIntroSequencePart2::
 	end
 	
 GameIntroFemalePart2::
-	applymovement EVENT_OBJ_ID_PLAYER, GI_Female_GetOutOfBed
+	applymovement OBJ_EVENT_ID_PLAYER, GI_Female_GetOutOfBed
 	waitmovement 0
 	playse SE_PC_ON
 	waitse
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	waitmovement 0
 	msgbox GI_CheckedEmail MSGBOX_SIGN
 	closemessage

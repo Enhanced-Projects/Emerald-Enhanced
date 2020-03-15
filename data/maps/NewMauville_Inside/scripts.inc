@@ -334,10 +334,10 @@ NM_Leaf_Event::
 	removeobject 10
 	fadescreen 0
 	msgbox NM_LanaLeft MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	waitmovement 0
 	msgbox NM_ScavengerHuntClue MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox NM_ScavengerHuntClue2 MSGBOX_DEFAULT
 	setflag FLAG_HIDE_NM_LANA

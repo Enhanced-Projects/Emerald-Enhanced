@@ -68,7 +68,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_2",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
             "movement_range_x": 1,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
@@ -81,7 +81,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN",
-            "graphics_id": "EVENT_OBJ_GFX_EXPERT_M",
+            "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
             "movement_range_x": 0,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -94,7 +94,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_FISHERMAN",
+            "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
             "movement_range_x": 1,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
@@ -107,7 +107,7 @@
         {
             "elevation": 1,
             "flag": "FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN",
-            "graphics_id": "EVENT_OBJ_GFX_MR_BRINEYS_BOAT",
+            "graphics_id": "OBJ_EVENT_GFX_MR_BRINEYS_BOAT",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -120,7 +120,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BOY_1",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",

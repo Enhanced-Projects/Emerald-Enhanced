@@ -418,8 +418,18 @@ SlateportCity_EventScript_DollClerk:: @ 81DD16A
 	.align 2
 SlateportCity_PokemartDecor_Dolls: @ 81DD184
 	.2byte DECOR_AZURILL_DOLL
+	.2byte DECOR_PICHU_DOLL
+	.2byte DECOR_PIKACHU_DOLL
 	.2byte DECOR_MARILL_DOLL
+	.2byte DECOR_JIGGLYPUFF_DOLL
+	.2byte DECOR_DUSKULL_DOLL 
+	.2byte DECOR_WYNAUT_DOLL
+	.2byte DECOR_BALTOY_DOLL
+	.2byte DECOR_KECLEON_DOLL
+	.2byte DECOR_AZURILL_DOLL
 	.2byte DECOR_SKITTY_DOLL
+	.2byte DECOR_SWABLU_DOLL
+	.2byte DECOR_GULPIN_DOLL
 	.2byte DECOR_NONE
 	release
 	end
@@ -471,9 +481,16 @@ SlateportCity_EventScript_PowerTMClerk:: @ 81DD1D8
 
 	.align 2
 SlateportCity_Pokemart_PowerTMs: @ 81DD1F0
-	.2byte ITEM_TM10  @ Hidden Power
-	.2byte ITEM_TM43  @ Secret Power
-	.2byte ITEM_NONE
+	.2byte DECOR_BALL_POSTER
+	.2byte DECOR_GREEN_POSTER
+	.2byte DECOR_RED_POSTER
+	.2byte DECOR_BLUE_POSTER
+	.2byte DECOR_CUTE_POSTER
+	.2byte DECOR_PIKA_POSTER
+	.2byte DECOR_LONG_POSTER
+	.2byte DECOR_SEA_POSTER
+	.2byte DECOR_SKY_POSTER
+	.2byte DECOR_NONE
 	release
 	end
 
@@ -490,7 +507,7 @@ SlateportCity_EventScript_CaptStern:: @ 81DD1F8
 	waitmovement 0
 	delay 25
 	applymovement 11, SlateportCity_Movement_SternWatchGabbyAndTyExit
-	applymovement EVENT_OBJ_ID_PLAYER, SlateportCity_Movement_PlayerFaceStern
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PlayerFaceStern
 	applymovement 10, SlateportCity_Movement_GabbyExit
 	applymovement 9, SlateportCity_Movement_TyExit
 	waitmovement 0
@@ -522,7 +539,7 @@ SlateportCity_EventScript_CaptStern:: @ 81DD1F8
 	msgbox SlateportCity_Text_PleaseComeWithMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement 11, SlateportCity_Movement_SternEnterHarbor
-	applymovement EVENT_OBJ_ID_PLAYER, SlateportCity_Movement_PlayerEnterHarbor
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PlayerEnterHarbor
 	waitmovement 0
 	removeobject 11
 	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN
@@ -806,19 +823,19 @@ SlateportCity_EventScript_NotEnoughBerryPowder:: @ 81DD5CE
 
 SlateportCity_EventScript_ScottBattleTentScene:: @ 81DD5DC
 	lockall
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	opendoor 10, 12
 	waitdooranim
 	addobject 35
-	applymovement EVENT_OBJ_ID_PLAYER, SlateportCity_Movement_PushPlayerDown
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PushPlayerDown
 	applymovement 35, SlateportCity_Movement_ScottExitBattleTent
 	waitmovement 0
 	closedoor 10, 12
 	waitdooranim
 	msgbox SlateportCity_Text_TakingBattleTentChallenge, MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, SlateportCity_Movement_PlayerWatchScottExit
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PlayerWatchScottExit
 	applymovement 35, SlateportCity_Movement_ScottExitAfterBattleTent
 	waitmovement 0
 	removeobject 35

@@ -17,7 +17,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_SKY_PILLAR_WALLACE",
-            "graphics_id": "EVENT_OBJ_GFX_WALLACE",
+            "graphics_id": "OBJ_EVENT_GFX_WALLACE",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -30,7 +30,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",

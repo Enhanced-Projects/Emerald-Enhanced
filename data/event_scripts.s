@@ -797,11 +797,11 @@ RusturfTunnel_EventScript_SetRusturfTunnelOpen:: @ 8272216
 
 EventScript_UnusedBoardFerry:: @ 827222B
 	delay 30
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
-	showobjectat EVENT_OBJ_ID_PLAYER, 0
+	showobjectat OBJ_EVENT_ID_PLAYER, 0
 	delay 30
-	applymovement EVENT_OBJ_ID_PLAYER, Movement_UnusedBoardFerry
+	applymovement OBJ_EVENT_ID_PLAYER, Movement_UnusedBoardFerry
 	waitmovement 0
 	delay 30
 	return
@@ -816,7 +816,7 @@ Common_EventScript_FerryDepartIsland:: @ 8272250
 	compare VAR_FACING, DIR_WEST
 	call_if_eq Ferry_EventScript_DepartIslandWest
 	delay 30
-	hideobjectat EVENT_OBJ_ID_PLAYER, 0
+	hideobjectat OBJ_EVENT_ID_PLAYER, 0
 	call Common_EventScript_FerryDepart
 	return
 

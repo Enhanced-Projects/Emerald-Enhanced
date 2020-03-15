@@ -4,7 +4,7 @@ BattleFrontier_BattleTowerMultiBattleRoom_MapScripts:: @ 8248EE8
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleTowerMultiBattleRoom_OnFrame
 	.byte 0
 
-	@ On this map the player (EVENT_OBJ_ID_PLAYER) is hidden
+	@ On this map the player (OBJ_EVENT_ID_PLAYER) is hidden
 	@ The player is represented instead by object event 5, which has the gfx id VAR_OBJ_GFX_ID_F
 	@ The multi partner is represented by object event 6, which has the gfx id VAR_OBJ_GFX_ID_E
 
@@ -20,11 +20,11 @@ BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetObjGfx:: @ 8248F0F
 	checkplayergender
 	compare VAR_RESULT, FEMALE
 	goto_if_eq BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxFemale
-	setvar VAR_OBJ_GFX_ID_F, EVENT_OBJ_GFX_BRENDAN_NORMAL
+	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_BRENDAN_NORMAL
 	return
 
 BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxFemale:: @ 8248F29
-	setvar VAR_OBJ_GFX_ID_F, EVENT_OBJ_GFX_MAY_NORMAL
+	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_MAY_NORMAL
 	return
 
 BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetLinkPlayerGfx:: @ 8248F2F
@@ -36,7 +36,7 @@ BattleFrontier_BattleTowerMultiBattleRoom_OnWarp: @ 8248F33
 	.2byte 0
 
 BattleFrontier_BattleTowerMultiBattleRoom_EventScript_HidePlayerObj:: @ 8248F3D
-	hideobjectat EVENT_OBJ_ID_PLAYER, MAP_BATTLE_FRONTIER_BATTLE_TOWER_MULTI_BATTLE_ROOM
+	hideobjectat OBJ_EVENT_ID_PLAYER, MAP_BATTLE_FRONTIER_BATTLE_TOWER_MULTI_BATTLE_ROOM
 	end
 
 BattleFrontier_BattleTowerMultiBattleRoom_OnFrame: @ 8248F43

@@ -109,7 +109,7 @@ SCH_LanaEvent::
 	playse SE_PIN
 	waitmovement 1
 	msgbox SCH_LanaMsg MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	playse SE_PIN
 	waitmovement 0
 	msgbox SCH_LanaMsg2 MSGBOX_DEFAULT
@@ -134,10 +134,10 @@ SCH_AfterBattle::
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	call SCH_OpenDoors
 	applymovement 1, SCH_diagonal
-	applymovement EVENT_OBJ_ID_PLAYER, SCH_diagonal
+	applymovement OBJ_EVENT_ID_PLAYER, SCH_diagonal
 	waitmovement 1
 	msgbox SCH_LanaMsg3 MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	playse SE_PIN
 	waitmovement 0
 	drawheadshot HEAD_LANA
@@ -163,7 +163,7 @@ SCH_AlternateStoryTrigger::
 	setflag FLAG_RYU_LEAF_ALTERNATE_LINE
 	fadenewbgm MUS_RG_NANADUNGEON
 	msgbox SCH_AltStory1 MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	msgbox SCH_AltStory2 MSGBOX_DEFAULT
 	drawheadshot HEAD_LANA
 	msgbox SCH_AltStory22 MSGBOX_DEFAULT
@@ -178,7 +178,7 @@ Ryu_CancelLeafLanetteQuest::
 	fadenewbgm MUS_RG_NANADUNGEON
 	msgbox SCH_AltStory1 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	msgbox SCH_AltAnotherNote
 	setflag FLAG_RYU_DS_LEAF_LINE_CANCELLED
 	setvar VAR_RYU_DS_LANA_STAGE, 666

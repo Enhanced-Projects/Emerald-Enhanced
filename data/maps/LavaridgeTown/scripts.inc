@@ -26,11 +26,11 @@ LT_SetRivalPosForReGift::
 	end
 
 LT_SetRivalFemale::
-	setvar EVENT_OBJ_GFX_VAR_3, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL
+	setvar OBJ_EVENT_GFX_VAR_3, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
 	return
 
 LT_SetRivalMale::
-	setvar EVENT_OBJ_GFX_VAR_3, EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL
+	setvar OBJ_EVENT_GFX_VAR_3, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
 	return
 
 LavaridgeTown_EventScript_ClearLavaridgeWhiteOut:: @ 81EA514
@@ -325,7 +325,7 @@ LT_RivalEnter2::
 	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
 	goto_if_set FLAG_TEMP_A, ryu_end
 	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
-	applymovement EVENT_OBJ_ID_PLAYER, LT_stepright
+	applymovement OBJ_EVENT_ID_PLAYER, LT_stepright
 	goto LT_RivalEnter
 	
 LT_MaleRivalEnter2::
@@ -333,7 +333,7 @@ LT_MaleRivalEnter2::
 	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
 	goto_if_set FLAG_TEMP_A, ryu_end
 	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
-	applymovement EVENT_OBJ_ID_PLAYER, LT_stepright
+	applymovement OBJ_EVENT_ID_PLAYER, LT_stepright
 	goto LT_RivalEnter
 	
 LT_RivalEnter3::
@@ -341,7 +341,7 @@ LT_RivalEnter3::
 	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
 	goto_if_set FLAG_TEMP_A, ryu_end
 	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
-	applymovement EVENT_OBJ_ID_PLAYER, LT_stepleft
+	applymovement OBJ_EVENT_ID_PLAYER, LT_stepleft
 	goto LT_RivalEnter
 	
 LT_MaleRivalEnter3::
@@ -349,7 +349,7 @@ LT_MaleRivalEnter3::
 	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
 	goto_if_set FLAG_TEMP_A, ryu_end
 	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
-	applymovement EVENT_OBJ_ID_PLAYER, LT_stepleft
+	applymovement OBJ_EVENT_ID_PLAYER, LT_stepleft
 	goto LT_RivalEnter
 	
 LT_stepright:

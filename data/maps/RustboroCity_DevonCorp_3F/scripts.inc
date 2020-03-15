@@ -36,7 +36,7 @@ DC_QuestCheck::
 	compare VAR_RESULT, 1
 	goto_if_eq DC_BeginQuest
 	msgbox DC_NoQuest MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER DC_Turnaround
+	applymovement OBJ_EVENT_ID_PLAYER DC_Turnaround
 	waitmovement 0
 	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
 	release
@@ -53,7 +53,7 @@ DC_BeginCorporate::
 	
 DC_ENEMY::
 	msgbox DC_NoQuest MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER DC_Turnaround
+	applymovement OBJ_EVENT_ID_PLAYER DC_Turnaround
 	waitmovement 0
 	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
 	release
@@ -71,7 +71,7 @@ DC_QuestCheck1::
 	compare VAR_RESULT, 1
 	goto_if_eq DC_BeginQuest
 	msgbox DC_NoQuest MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER DC_Turnaround1
+	applymovement OBJ_EVENT_ID_PLAYER DC_Turnaround1
 	waitmovement 0
 	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
 	release
@@ -89,7 +89,7 @@ DC_QuestCheck2::
 	compare VAR_RESULT, 1
 	goto_if_eq DC_BeginQuest
 	msgbox DC_NoQuest MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER DC_Turnaround2
+	applymovement OBJ_EVENT_ID_PLAYER DC_Turnaround2
 	waitmovement 0
 	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
 	release
@@ -124,15 +124,15 @@ DC_CorporateLine::
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	applymovement 5, DC_FranticPace
 	msgbox DC_WhatToDo MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, DC_ApproachStone
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, DC_ApproachStone
+	waitmovement OBJ_EVENT_ID_PLAYER
 	closemessage
 	applymovement 5, Common_Movement_FaceLeft
 	waitmovement 5
 	msgbox DC_PlayerReturned
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_SituationCritical
 	closemessage
 	applymovement 5, Common_Movement_FaceDown
@@ -305,8 +305,8 @@ DC_FranticPace:
 	step_end
 
 DC_CorporateInterrogation:: @Due to size limitations, all dialogue and movement are in data/scripts/RyuDevonLine.inc
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playbgm 438, 1
 	applymovement 6, Common_Movement_StepLeft
 	waitmovement 6
@@ -316,20 +316,20 @@ DC_CorporateInterrogation:: @Due to size limitations, all dialogue and movement 
 	waitmovement 6
 	msgbox DC_BeforeIGoFurther
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_FirstIMustSay
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_AfterTalking
 	closemessage
 	applymovement 8, Common_Movement_FaceRight
 	waitmovement 8
 	msgbox DC_WhatsThis
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_YouHaventLetMeFinish
 	closemessage
 	applymovement 11, Common_Movement_FaceDown
@@ -359,20 +359,20 @@ DC_CorporateInterrogation2::
 	playbgm 443, 1
 	msgbox DC_InOrderToMake
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepRight
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_NoDoubt
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, DC_ToHajio@Red Suit Worker to the right
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, DC_ToHajio@Red Suit Worker to the right
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_NowMrHajio
 	closemessage
 	applymovement 9, Common_Movement_FaceRight
 	waitmovement 9
 	msgbox DC_ThoseTwo
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_AhYesTheNews
 	closemessage
 	playse SE_PIN
@@ -407,7 +407,7 @@ DC_CorporateInterrogation2::
 	waitmovement 8
 	msgbox DC_HoweverJustLikeToday
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	applymovement 6, Common_Movement_FaceLeft
 	applymovement 7, Common_Movement_FaceLeft
 	waitmovement 7
@@ -417,38 +417,38 @@ DC_CorporateInterrogation2::
 	waitmovement 8
 	msgbox DC_AreYouSerious
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, DC_ReturnToPrez
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, DC_ReturnToPrez
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_SoIfImUnderstanding
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_ItsNoLonger
 	closemessage
 	applymovement 6, Common_Movement_FaceUp
 	waitmovement 6
 	msgbox DC_Negligence
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_AccordingToPrez
 	closemessage
 	goto DC_CorporateInterrogation3
 	
 DC_CorporateInterrogation3::
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_YouAndYourPartner
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_ChainOfEvents
 	closemessage
 	applymovement 7, Common_Movement_FaceUp
 	waitmovement 7
 	msgbox DC_YouExpectMe
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	applymovement 6, Common_Movement_FaceLeft
 	waitmovement 6
 	msgbox DC_OthersAddress
@@ -470,8 +470,8 @@ DC_CorporateInterrogation3::
 	waitmovement 11
 	msgbox DC_AndINeed
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_WellThereYaGo
 	closemessage
 	playbgm 392, 1
@@ -488,8 +488,8 @@ DC_CorporateInterrogation3::
 	waitmovement 6
 	msgbox DC_Shyness
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, DC_Chuckle
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, DC_Chuckle
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_OhBoy
 	goto DC_CorporateInterrogation4
 	
@@ -503,13 +503,13 @@ DC_CorporateInterrogation4::
 	removeobject 9
 	removeobject 10
 	removeobject 11
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepRight
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_PLAYER
 	fadedefaultbgm
 	delay 10
 	fadescreen 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_ToThinkThe
 	closemessage
 	additem ITEM_UP_GRADE

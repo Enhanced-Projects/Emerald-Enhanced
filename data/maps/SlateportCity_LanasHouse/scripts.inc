@@ -80,8 +80,8 @@ LH_EventStart::
 	msgbox LH_BeginQuest MSGBOX_DEFAULT
 	closemessage
 	removecutscenesprites
-	applymovement EVENT_OBJ_ID_PLAYER, LH_PlayerShoved
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, LH_PlayerShoved
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	applymovement 2, LH_LanaLeaves
 	waitmovement 2
 	playse SE_DOOR
@@ -119,7 +119,7 @@ LH_StayTheNight::
 LH_LeafNight:
 	msgbox LH_LeafNightMsg1 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, LH_PlayerToBed
+	applymovement OBJ_EVENT_ID_PLAYER, LH_PlayerToBed
 	applymovement 2, LH_LeafToBed
 	waitmovement 2
 	fadenewbgm MUS_DUMMY
@@ -133,8 +133,8 @@ LH_LeafNight:
 	msgbox LH_LeafNightSceneMsg2 MSGBOX_DEFAULT
 	closemessage
 	removecutscenesprites
-	applymovement EVENT_OBJ_ID_PLAYER, LH_RelSceneEnd
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, LH_RelSceneEnd
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 	

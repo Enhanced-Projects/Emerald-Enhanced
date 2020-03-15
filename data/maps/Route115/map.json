@@ -138,7 +138,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_2",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -151,7 +151,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_EXPERT_M",
+            "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -164,7 +164,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BLACK_BELT",
+            "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
@@ -177,7 +177,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -190,7 +190,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -203,7 +203,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -216,7 +216,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GIRL_3",
+            "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
@@ -229,7 +229,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BLACK_BELT",
+            "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
             "movement_range_x": 5,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
@@ -242,7 +242,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MANIAC",
+            "graphics_id": "OBJ_EVENT_GFX_MANIAC",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
@@ -255,7 +255,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_115_SUPER_POTION",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -268,7 +268,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_115_TM_01",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -281,7 +281,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_115_IRON",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -294,7 +294,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -307,7 +307,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -320,7 +320,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_11",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -333,7 +333,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_115_GREAT_BALL",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -346,7 +346,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_RUNNING_TRIATHLETE_F",
+            "graphics_id": "OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F",
             "movement_range_x": 3,
             "movement_range_y": 3,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_RIGHT_UP_LEFT",
@@ -359,7 +359,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_TREE_DISGUISE",
@@ -372,7 +372,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GIRL_3",
+            "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -385,7 +385,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_LASS",
+            "graphics_id": "OBJ_EVENT_GFX_LASS",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -398,7 +398,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_LASS",
+            "graphics_id": "OBJ_EVENT_GFX_LASS",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -411,7 +411,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_115_PP_UP",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -424,7 +424,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_115_HEAL_POWDER",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -437,7 +437,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_DEOXYS_TRIANGLE",
+            "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -450,7 +450,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_DEVON_CORPORATE_HIDE_MSITO",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -463,7 +463,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_DEVON_CORPORATE_HIDE_MSITO",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",

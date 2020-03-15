@@ -142,7 +142,7 @@ Route110_TrickHouseEntrance_EventScript_TrickMasterFound:: @ 8269C15
 	addobject 1
 	showobjectat 1, MAP_ROUTE110_TRICK_HOUSE_ENTRANCE
 	turnobject 1, DIR_EAST
-	turnobject EVENT_OBJ_ID_PLAYER, DIR_WEST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	end
 
 Route110_TrickHouseEntrance_EventScript_SetTrickMasterHidingSpot:: @ 8269C26
@@ -222,7 +222,7 @@ TH_LanaEvent1::
 	special DrawWholeMapView
 	lockall
 	fadenewbgm MUS_DUMMY
-	applymovement EVENT_OBJ_ID_PLAYER, TH_StartLanaEventMove
+	applymovement OBJ_EVENT_ID_PLAYER, TH_StartLanaEventMove
 	waitmovement 0
 	msgbox TH_TM_1 MSGBOX_DEFAULT
 	closemessage
@@ -259,7 +259,7 @@ TH_LanaEvent1::
 	msgbox TH_Event5 MSGBOX_DEFAULT
 	closemessage
 	applymovement 3, TH_LanaExit1
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	waitmovement 3
 	removeobject 3
 	setflag FLAG_HIDE_TRICK_HOUSE_LANA
@@ -267,13 +267,13 @@ TH_LanaEvent1::
 	waitse
 	msgbox TH_Event6 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, TH_PlayerMoveUp
+	applymovement OBJ_EVENT_ID_PLAYER, TH_PlayerMoveUp
 	waitmovement 0
 	msgbox TH_Event7 MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	setvar VAR_RYU_DS_LANA_STAGE, 15
-	applymovement EVENT_OBJ_ID_PLAYER, TH_PlayerLeave
+	applymovement OBJ_EVENT_ID_PLAYER, TH_PlayerLeave
 	waitmovement 0
 	playse SE_DOOR
 	warpsilent MAP_ROUTE110, 255, 11, 67
@@ -368,8 +368,8 @@ TH_Lana_Event2::
 	lock
 	setvar VAR_RYU_DS_LANA_STAGE, 92
 	applymovement 3, Common_Movement_FaceUp
-	applymovement EVENT_OBJ_ID_PLAYER, TH_Player2move
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, TH_Player2move
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox TH_Outro1 MSGBOX_DEFAULT
 	closemessage
 	applymovement 2, Common_Movement_ExclamationMark
@@ -382,7 +382,7 @@ TH_Lana_Event2::
 	removecutscenesprites
 	msgbox TH_Outro26 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement 3, Common_Movement_FaceLeft
 	waitmovement 2
 	msgbox TH_Outro3 MSGBOX_DEFAULT
@@ -399,8 +399,8 @@ TH_Lana_Event2::
 	playse SE_DOOR
 	waitse
 	removeobject 3
-	applymovement EVENT_OBJ_ID_PLAYER, TH_Lana2Leave
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, TH_Lana2Leave
+	waitmovement OBJ_EVENT_ID_PLAYER
 	fadescreen 1
 	delay 5
 	playse SE_DOOR
@@ -485,9 +485,9 @@ Route110_TrickHouseEntrance_EventScript_TrickMaster:: @ 8269D3B
 
 Route110_TrickHouseEntrance_EventScript_FoundTrickMaster:: @ 8269D6E
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_Delay48
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
 	waitmovement 0
 	compare VAR_TRICK_HOUSE_LEVEL, 0
 	call_if_eq Route110_TrickHouseEntrance_EventScript_FoundBeneathDesk
@@ -753,9 +753,9 @@ Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom:: @ 826A126
 	setmetatile 5, 1, METATILE_GenericBuilding_TrickHouse_Stairs_Down, 0
 	special DrawWholeMapView
 	delay 20
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Route110_TrickHouseEntrance_Movement_EnterRoom
+	applymovement OBJ_EVENT_ID_PLAYER, Route110_TrickHouseEntrance_Movement_EnterRoom
 	waitmovement 0
 	switch VAR_TRICK_HOUSE_LEVEL
 	case 0, Route110_TrickHouseEntrance_EventScript_EnterPuzzleRoom1

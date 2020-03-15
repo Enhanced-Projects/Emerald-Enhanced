@@ -83,7 +83,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_11",
-            "graphics_id": "EVENT_OBJ_GFX_CUTTABLE_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -96,7 +96,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_12",
-            "graphics_id": "EVENT_OBJ_GFX_CUTTABLE_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -109,7 +109,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -122,7 +122,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_2",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -135,7 +135,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_PETALBURG_WOODS_GREAT_BALL",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -148,7 +148,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_PETALBURG_WOODS_X_ATTACK",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -161,7 +161,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_PETALBURG_WOODS_ETHER",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -174,7 +174,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BOY_2",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_2",
             "movement_range_x": 1,
             "movement_range_y": 2,
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
@@ -187,7 +187,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BUG_CATCHER",
+            "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
@@ -200,7 +200,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BUG_CATCHER",
+            "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_UP_AND_RIGHT",
@@ -213,7 +213,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BOY_3",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_3",
             "movement_range_x": 2,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -226,7 +226,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_PETALBURD_WOODS_PARALYZE_HEAL",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -239,7 +239,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GIRL_2",
+            "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",

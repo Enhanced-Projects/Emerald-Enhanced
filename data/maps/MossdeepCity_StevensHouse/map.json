@@ -49,7 +49,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN",
-            "graphics_id": "EVENT_OBJ_GFX_STEVEN",
+            "graphics_id": "OBJ_EVENT_GFX_STEVEN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -62,7 +62,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -75,7 +75,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY",
-            "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",

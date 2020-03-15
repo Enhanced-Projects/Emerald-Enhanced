@@ -149,7 +149,7 @@ LRT_BrendanWONT_HAPPEN::
 	clearflag FLAG_RYU_DS_BRENDAN_FRIENDS
 	clearflag FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS
 	msgbox LRT_BrendanBADEND, MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER LRT_BrendanTURN
+	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanTURN
 	waitmovement 0
 	release
 	end
@@ -165,10 +165,10 @@ LRT_BrendanNIGHT::
 	msgbox LRT_BrendanROMPre MSGBOX_DEFAULT
  	closemessage
 	applymovement 2, Common_Movement_HeartEmote
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
 	applymovement 2 LRT_BrendanHEART2
-	applymovement EVENT_OBJ_ID_PLAYER LRT_BrendanHEART
+	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART
 	removecutscenesprites
 	delay 20
 	fadescreen 1
@@ -183,7 +183,7 @@ LRT_BrendanNIGHT::
 	setflag FLAG_RYU_DS_BRENDAN_LOVERS
 	closemessage
 	removecutscenesprites
-	applymovement EVENT_OBJ_ID_PLAYER LRT_BrendanHEART3
+	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
 	waitmovement 0
 	release
 	end
@@ -199,10 +199,10 @@ LRT_BrendanNight2::
 	closemessage
 	removecutscenesprites
 	applymovement 2, Common_Movement_HeartEmote
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 2
 	applymovement 2, LRT_BrendanHEART2
-	applymovement EVENT_OBJ_ID_PLAYER, LRT_BrendanHEART
+	applymovement OBJ_EVENT_ID_PLAYER, LRT_BrendanHEART
 	delay 20
 	fadescreen 1
 	fadeoutbgm 1
@@ -218,7 +218,7 @@ LRT_BrendanNight2::
 	msgbox LRT_BRENDAN_THANKS2 MSGBOX_DEFAULT
 	closemessage
 	removecutscenesprites
-	applymovement EVENT_OBJ_ID_PLAYER LRT_BrendanHEART3
+	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
 	waitmovement 0
 	release
 	end
@@ -457,20 +457,20 @@ LRT_LeafEvent::
 	setvar VAR_RYU_DS_LANA_STAGE, 76
 	msgbox LRT_Story1 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement EVENT_OBJ_ID_PLAYER
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	msgbox LRT_Story2 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
 	drawheadshot HEAD_LANA
 	msgbox LRT_Story3 MSGBOX_DEFAULT
 	closemessage
 	msgbox LRT_PlayerKiss MSGBOX_DEFAULT
 	applymovement 3, Common_Movement_ExclamationMark
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
+	waitmovement OBJ_EVENT_ID_PLAYER
 	closemessage
 	msgbox LRT_Story4 MSGBOX_DEFAULT
 	closemessage

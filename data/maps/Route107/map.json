@@ -28,7 +28,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_M",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
@@ -41,7 +41,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_M",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
             "movement_range_x": 6,
             "movement_range_y": 2,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_DOWN_LEFT_UP",
@@ -54,7 +54,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_F",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_UP",
@@ -67,7 +67,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_F",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
@@ -80,7 +80,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_F",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -93,7 +93,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TUBER_M_SWIMMING",
+            "graphics_id": "OBJ_EVENT_GFX_TUBER_M_SWIMMING",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -106,7 +106,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_M",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",

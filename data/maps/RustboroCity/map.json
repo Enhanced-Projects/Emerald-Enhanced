@@ -302,7 +302,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 0,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
@@ -315,7 +315,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_FAT_MAN",
+            "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -328,7 +328,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -341,7 +341,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TWIN",
+            "graphics_id": "OBJ_EVENT_GFX_TWIN",
             "movement_range_x": 0,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
@@ -354,7 +354,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BOY_2",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -367,7 +367,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -380,7 +380,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_LITTLE_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -393,7 +393,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_LITTLE_GIRL",
+            "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -406,7 +406,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_2",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_2",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -419,7 +419,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -432,7 +432,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_DEVON_EMPLOYEE",
+            "graphics_id": "OBJ_EVENT_GFX_DEVON_EMPLOYEE",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -445,7 +445,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_RUSTBORO_CITY_X_DEFEND",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -458,7 +458,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_4",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_4",
             "movement_range_x": 0,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -471,7 +471,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_RUSTBORO_CITY_RIVAL",
-            "graphics_id": "EVENT_OBJ_GFX_VAR_0",
+            "graphics_id": "OBJ_EVENT_GFX_VAR_0",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -484,7 +484,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BOY_1",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_1",
             "movement_range_x": 0,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",

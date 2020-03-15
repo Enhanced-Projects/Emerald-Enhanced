@@ -154,7 +154,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_FAT_MAN",
+            "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -167,7 +167,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_1",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_1",
             "movement_range_x": 1,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
@@ -180,7 +180,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_RICH_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_RICH_BOY",
             "movement_range_x": 1,
             "movement_range_y": 2,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -193,7 +193,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_4",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -206,7 +206,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_COOK",
+            "graphics_id": "OBJ_EVENT_GFX_COOK",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -219,7 +219,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_OLD_WOMAN",
+            "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -232,7 +232,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GIRL_1",
+            "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -245,7 +245,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY",
-            "graphics_id": "EVENT_OBJ_GFX_CAMERAMAN",
+            "graphics_id": "OBJ_EVENT_GFX_CAMERAMAN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -258,7 +258,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY",
-            "graphics_id": "EVENT_OBJ_GFX_REPORTER_F",
+            "graphics_id": "OBJ_EVENT_GFX_REPORTER_F",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -271,7 +271,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN",
-            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -284,7 +284,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SAILOR",
+            "graphics_id": "OBJ_EVENT_GFX_SAILOR",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -297,7 +297,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SAILOR",
+            "graphics_id": "OBJ_EVENT_GFX_SAILOR",
             "movement_range_x": 1,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
@@ -310,7 +310,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_POKEFAN_F",
+            "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
             "movement_range_x": 0,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
@@ -323,7 +323,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -336,7 +336,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MANIAC",
+            "graphics_id": "OBJ_EVENT_GFX_MANIAC",
             "movement_range_x": 0,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
@@ -349,7 +349,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -362,7 +362,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MART_EMPLOYEE",
+            "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -375,7 +375,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MART_EMPLOYEE",
+            "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -388,7 +388,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_5",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -401,7 +401,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -414,7 +414,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_SLATEPORT_CITY_TM_SALESMAN",
-            "graphics_id": "EVENT_OBJ_GFX_MART_EMPLOYEE",
+            "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -427,7 +427,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_POKEFAN_M",
+            "graphics_id": "OBJ_EVENT_GFX_POKEFAN_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -440,7 +440,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_POKEFAN_F",
+            "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
             "movement_range_x": 1,
             "movement_range_y": 2,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -453,7 +453,7 @@
         {
             "elevation": 0,
             "flag": "FLAG_HIDE_SLATEPORT_CITY_SCOTT",
-            "graphics_id": "EVENT_OBJ_GFX_SCOTT",
+            "graphics_id": "OBJ_EVENT_GFX_SCOTT",
             "movement_range_x": 1,
             "movement_range_y": 2,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
