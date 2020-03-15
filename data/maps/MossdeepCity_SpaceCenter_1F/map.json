@@ -61,7 +61,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -74,7 +74,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -87,7 +87,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SAILOR",
+            "graphics_id": "OBJ_EVENT_GFX_SAILOR",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -100,7 +100,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_OLD_MAN",
+            "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -113,7 +113,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_4",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
@@ -126,7 +126,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA",
-            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_F",
+            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -139,7 +139,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA",
-            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -152,7 +152,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA",
-            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -165,7 +165,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA",
-            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -178,7 +178,7 @@
         {
             "elevation": 0,
             "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE",
-            "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -191,7 +191,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN",
-            "graphics_id": "EVENT_OBJ_GFX_STEVEN",
+            "graphics_id": "OBJ_EVENT_GFX_STEVEN",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",

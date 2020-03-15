@@ -15,7 +15,7 @@ MagmaHideout_4F_EventScript_Maxie:: @ 823A560
 	playfanfare MUS_ME_TAMA
 	playse SE_TAMA
 	special DoOrbEffect
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
 	delay 150
 	removeobject 7  @ sleeping Groudon
@@ -47,7 +47,7 @@ MagmaHideout_4F_EventScript_Maxie:: @ 823A560
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_MaxieGroudonWhatsWrong, MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	delay 30
 	applymovement 6, Common_Movement_FacePlayer
@@ -268,8 +268,8 @@ MH_RyuBossFight::
 	
 MH_CourtneyMaxieAltBattle::
 	fadenewbgm MUS_MGM0
-	applymovement EVENT_OBJ_ID_FOLLOWER, MH_FollowerToStatic
-	waitmovement EVENT_OBJ_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, MH_FollowerToStatic
+	waitmovement OBJ_EVENT_ID_FOLLOWER
 	goto_if_set FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS, ryu_end
 	applymovement 6, Common_Movement_ExclamationMark
 	applymovement 10, Common_Movement_ExclamationMark
@@ -346,7 +346,7 @@ MH_RelGroudonScene::
 	clearflag FLAG_RYU_STARTING_M3
 	fadescreen 0
 	applymovement 9, MH_Facedown
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
 	msgbox MH_ShellyRelOutro MSGBOX_DEFAULT
 	closemessage
@@ -523,7 +523,7 @@ MH_Groudon_Enc::
 	playmoncry SPECIES_GROUDON, 0
 	waitmoncry
 	special DoOrbEffect
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	delay 150
 	waitstate

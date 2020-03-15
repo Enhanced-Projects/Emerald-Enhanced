@@ -17,7 +17,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_NURSE",
+            "graphics_id": "OBJ_EVENT_GFX_NURSE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -30,7 +30,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GIRL_3",
+            "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -43,7 +43,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_EXPERT_M",
+            "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -56,7 +56,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_FALLORBOR_POKEMON_CENTER_LANETTE",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_2",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",

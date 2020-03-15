@@ -41,7 +41,7 @@
         {
             "elevation": 4,
             "flag": "FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_PICHU_DOLL",
-            "graphics_id": "EVENT_OBJ_GFX_PICHU_DOLL",
+            "graphics_id": "OBJ_EVENT_GFX_PICHU_DOLL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -54,7 +54,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
-            "graphics_id": "EVENT_OBJ_GFX_RIVAL_MAY_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_RIVAL_MAY_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -67,7 +67,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
-            "graphics_id": "EVENT_OBJ_GFX_LEAF",
+            "graphics_id": "OBJ_EVENT_GFX_LEAF",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -80,7 +80,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_DAWNS_HOUSE_DAWN",
-            "graphics_id": "EVENT_OBJ_GFX_RIVAL_MAY_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_RIVAL_MAY_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",

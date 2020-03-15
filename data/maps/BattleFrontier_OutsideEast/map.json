@@ -96,7 +96,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
             "movement_range_x": 3,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
@@ -109,7 +109,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
             "movement_range_x": 1,
             "movement_range_y": 3,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -122,7 +122,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_HIKER",
+            "graphics_id": "OBJ_EVENT_GFX_HIKER",
             "movement_range_x": 2,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -135,7 +135,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_HEX_MANIAC",
+            "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
             "movement_range_x": 2,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -148,7 +148,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BLACK_BELT",
+            "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -161,7 +161,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_COOK",
+            "graphics_id": "OBJ_EVENT_GFX_COOK",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -174,7 +174,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_EXPERT_F",
+            "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -187,7 +187,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_RUNNING_TRIATHLETE_M",
+            "graphics_id": "OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M",
             "movement_range_x": 3,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT",
@@ -200,7 +200,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_RICH_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_RICH_BOY",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -213,7 +213,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_CYCLING_TRIATHLETE_F",
+            "graphics_id": "OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F",
             "movement_range_x": 1,
             "movement_range_y": 6,
             "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
@@ -226,7 +226,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TWIN",
+            "graphics_id": "OBJ_EVENT_GFX_TWIN",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -239,7 +239,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_1",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_1",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -252,7 +252,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_ZIGZAGOON_2",
+            "graphics_id": "OBJ_EVENT_GFX_ZIGZAGOON_2",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -265,7 +265,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_BATTLE_FRONTIER_SUDOWOODO",
-            "graphics_id": "EVENT_OBJ_GFX_SUDOWOODO",
+            "graphics_id": "OBJ_EVENT_GFX_SUDOWOODO",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -278,7 +278,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MANIAC",
+            "graphics_id": "OBJ_EVENT_GFX_MANIAC",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -291,7 +291,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GIRL_3",
+            "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -304,7 +304,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PSYCHIC_M",
+            "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
             "movement_range_x": 2,
             "movement_range_y": 6,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_RIGHT_UP_LEFT",
@@ -317,7 +317,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -330,7 +330,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -343,7 +343,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 3,
             "movement_range_y": 2,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -356,7 +356,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BLACK_BELT",
+            "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -369,7 +369,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MANIAC",
+            "graphics_id": "OBJ_EVENT_GFX_MANIAC",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -382,7 +382,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_4",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -395,7 +395,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_OLD_WOMAN",
+            "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
@@ -408,7 +408,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GENTLEMAN",
+            "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -421,7 +421,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_CAMPER",
+            "graphics_id": "OBJ_EVENT_GFX_CAMPER",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",

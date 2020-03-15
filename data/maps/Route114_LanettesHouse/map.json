@@ -59,7 +59,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_LANETTES_HOUSE_LANETTE",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_2",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",

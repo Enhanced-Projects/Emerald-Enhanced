@@ -7,7 +7,7 @@ MF_DevMovement::
 	compare VAR_RESULT, 69
 	goto_if_ne ryu_end
 	lock
-	applymovement EVENT_OBJ_ID_PLAYER, MF_RyuDevMove
+	applymovement OBJ_EVENT_ID_PLAYER, MF_RyuDevMove
 	waitmovement 0
 	release
 	end
@@ -79,7 +79,7 @@ MF_AquaEventNorth::
 	goto_if_eq MF_AquaEventSouth
 	special SpawnCameraObject
 	playbgm MUS_MGM0, 0
-	applymovement EVENT_OBJ_ID_CAMERA, MH_cameraPanDown
+	applymovement OBJ_EVENT_ID_CAMERA, MH_cameraPanDown
     applymovement 5, MF_Magma2Down
 	applymovement 6, MF_Magma1Down
 	msgbox MF_MagmaMsg1 MSGBOX_DEFAULT
@@ -100,7 +100,7 @@ MF_AquaEventNorth::
 	applymovement 6, Common_Movement_ExclamationMark
 	waitmovement 5	
 	msgbox MF_MagmaRetreat1 MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, MF_PlayerStepLeft
+	applymovement OBJ_EVENT_ID_PLAYER, MF_PlayerStepLeft
 	applymovement 5, MF_MagmaEscape
 	applymovement 6, MF_MagmaEscape2
 	waitmovement 6
@@ -167,11 +167,11 @@ MF_continue_aqua_south::
 	end
 
 MF_continue_aqua_north::
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 7, MF_ArchieMeetPlayerNorth
 	waitmovement 7
 	special SpawnCameraObject
-	applymovement EVENT_OBJ_ID_CAMERA, MH_CamerabackUpAqua
+	applymovement OBJ_EVENT_ID_CAMERA, MH_CamerabackUpAqua
 	msgbox MF_ArchieRecognizesPlayer MSGBOX_DEFAULT
 	msgbox MF_ArchiKnowsPlayer MSGBOX_DEFAULT
 	msgbox MF_PlayerAqua2 MSGBOX_DEFAULT
@@ -181,7 +181,7 @@ MF_continue_aqua_north::
 	removeobject 7
 	fadedefaultbgm
 	removeobject 8
-	applymovement EVENT_OBJ_ID_CAMERA, MH_CameraResetAquaDone
+	applymovement OBJ_EVENT_ID_CAMERA, MH_CameraResetAquaDone
 	waitmovement 0
 	special RemoveCameraObject
 	setvar VAR_METEOR_FALLS_STATE, 1
@@ -241,7 +241,7 @@ MF_DevonEventNorth::
 	special SpawnCameraObject
 	playbgm MUS_MGM0, 0
 	delay 20
-	applymovement EVENT_OBJ_ID_CAMERA, MH_cameraPanDown
+	applymovement OBJ_EVENT_ID_CAMERA, MH_cameraPanDown
 	delay 30
     applymovement 5, MF_Magma2Down
 	applymovement 6, MF_Magma1Down
@@ -252,10 +252,10 @@ MF_DevonEventNorth::
 	applymovement 5, Common_Movement_ExclamationMark
 	applymovement 6, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, MH_PlayerDownIntoScene
+	applymovement OBJ_EVENT_ID_PLAYER, MH_PlayerDownIntoScene
 	applymovement 5, Common_Movement_FaceUp
 	applymovement 6, Common_Movement_FaceUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	waitmovement OBJ_EVENT_ID_PLAYER
 	special RemoveCameraObject
 	msgbox MF_PlayerAttacksMagma MSGBOX_DEFAULT
 	cleartrainerflag TRAINER_GRUNT_16
@@ -279,7 +279,7 @@ MF_DevonEventSouth::
 	trainerbattle_single TRAINER_GRUNT_16, MF_MagmaFightIntro, MF_ellipsis, MF_DevonContd
 	
 MF_DevonContd::
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	bufferpartymonnick 0, 0
 	msgbox MF_PlayerWonVsMagma MSGBOX_DEFAULT
 	closemessage
@@ -304,17 +304,17 @@ MF_continue_magma_south:
 	goto MF_continue_devon_south
 	
 MF_continue_magma_north:
-	applymovement EVENT_OBJ_ID_PLAYER, MF_PlayerStepLeft
+	applymovement OBJ_EVENT_ID_PLAYER, MF_PlayerStepLeft
 	waitmovement 0
 	applymovement 5, MF_MagmaEscape
 	applymovement 6, MF_MagmaEscape2
 	waitmovement 6
 	removeobject 6
 	removeobject 5
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	special SpawnCameraObject
-	applymovement EVENT_OBJ_ID_CAMERA, MH_camera2Move
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, MH_camera2Move
+	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
 	delay 20
 	playbgm MUS_AQA_0, 0
@@ -335,7 +335,7 @@ MF_continue_devon_south::
 	applymovement 8, MF_GruntToPlayerSouth
 	waitmovement 0
 	cleartrainerflag TRAINER_GRUNT_15
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	trainerbattle_single TRAINER_GRUNT_15, MF_GruntAttacks, MF_ellipsis, MF_PlayerDevonContdSouth
 	release
 	end
@@ -348,7 +348,7 @@ MF_continue_devon_north::
 	applymovement 8, Common_Movement_ExclamationMark
 	waitmovement 8
 	applymovement 8, MF_GruntToPlayerNorth
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	cleartrainerflag TRAINER_GRUNT_15
 	savebgm MUS_GOTOWN
 	trainerbattle_single TRAINER_GRUNT_15, MF_GruntAttacks, MF_ellipsis, MF_PlayerDevonContdNorth
@@ -374,7 +374,7 @@ MF_PlayerDevonContdNorth::
 	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	applymovement 9, MF_CozmoToPlayerNorth
 	waitmovement 9
-	applymovement EVENT_OBJ_ID_PLAYER Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_FaceRight
 	msgbox MF_DM1_Cozmo MSGBOX_DEFAULT
 	closemessage
 	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
@@ -388,8 +388,8 @@ MF_PlayerDevonContdNorth::
 	
 MF_PlayerDevonContdSouth::
 	delay 10
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox MF_GruntLost MSGBOX_DEFAULT
 	closemessage
 	applymovement 8, MF_AquaLeavesSouth

@@ -11,8 +11,8 @@ RyuThroneRoomCheckFollower::
 RyuChampionThrone::
 	lock
 	setflag FLAG_RYU_DO_NOT_AUTOSCALE
-	applymovement EVENT_OBJ_ID_PLAYER, RCR_EnterThrone
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, RCR_EnterThrone
+	waitmovement OBJ_EVENT_ID_PLAYER
 	specialvar VAR_RESULT, RyuFollowerToTrainerID
 	compare VAR_RESULT, 1
 	goto_if_ne RyuChampionThroneStart
@@ -23,9 +23,9 @@ RyuChampionThrone::
 
 RCR_FollowerIntroSetup::
 	switch VAR_RYU_FOLLOWER_ID
-	case EVENT_OBJ_GFX_TWIN, RCR_FollowerMinnieIntro
-	case EVENT_OBJ_GFX_AQUA_MEMBER_F, RCR_FollowerShellyIntro
-	case EVENT_OBJ_GFX_WOMAN_2, RCR_FollowerLanetteIntro
+	case OBJ_EVENT_GFX_TWIN, RCR_FollowerMinnieIntro
+	case OBJ_EVENT_GFX_AQUA_MEMBER_F, RCR_FollowerShellyIntro
+	case OBJ_EVENT_GFX_WOMAN_2, RCR_FollowerLanetteIntro
 	return
 
 
@@ -67,10 +67,10 @@ RCR_OverlordRyuBossFight::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	playbgm MUS_REKKUU_KOURIN, 1
 	special SpawnCameraObject
-	applymovement EVENT_OBJ_ID_CAMERA, Common_Movement_StepDown
-	waitmovement EVENT_OBJ_ID_CAMERA
-	applymovement EVENT_OBJ_ID_CAMERA, Common_Movement_StepDown
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_CAMERA
 	addobject 15
 	applymovement 15, RCR_ChallengerApproach
 	waitmovement 15
@@ -94,8 +94,8 @@ RCR_OverlordRyuEndMatch::
 
 RCR_ChooseOpponent::
 	special SpawnCameraObject
-	applymovement EVENT_OBJ_ID_CAMERA, RCR_CameraMove
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_CameraMove
+	waitmovement OBJ_EVENT_ID_CAMERA
 	random 9
 	switch VAR_RESULT
 	case 0, RCR_Opponent1
@@ -222,8 +222,8 @@ RCR_SetUpBattle::
 	playse SE_DOOR
 	addobject VAR_TEMP_5
 	applymovement VAR_TEMP_5, RCR_ChallengerApproach
-	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
 	waitmovement VAR_TEMP_5
 	switch VAR_TEMP_5
 	case 1, RCR_ChallengerSteven
@@ -382,8 +382,8 @@ RCR_ChallengerJuan::
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerStevenSolo::
-	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
 	msgbox RCR_Steven_Intro
 	closemessage
 	trainerbattle_no_intro TRAINER_STEVEN, RCR_Steven_DefeatText
@@ -391,72 +391,72 @@ RCR_ChallengerStevenSolo::
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerNormanSolo::
-	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
 	msgbox RCR_Norman_Intro
 	closemessage
 	trainerbattle_no_intro TRAINER_NORMAN_4, RCR_Norman_DefeatText
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerJohnatanSolo::
-	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
 	msgbox RCR_Johnatan_Intro
 	closemessage
 	trainerbattle_no_intro TRAINER_CHALLENGER_JOHNATAN, RCR_Johnatan_DefeatText
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerRobertSolo::
-	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
 	msgbox RCR_Robert_Intro
 	closemessage
 	trainerbattle_no_intro TRAINER_CHALLENGER_ROBERT, RCR_Robert_DefeatText
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerLanceSolo::
-	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
 	msgbox RCR_Lance_Intro
 	closemessage
 	trainerbattle_no_intro TRAINER_CHALLENGER_LANCE, RCR_Lance_DefeatText
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerZodSolo::
-	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
 	msgbox RCR_Zod_Intro
 	closemessage
 	trainerbattle_no_intro TRAINER_CHALLENGER_ZOD, RCR_Zod_DefeatText
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerGiovanniSolo::
-	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
 	msgbox RCR_Giovanni_Intro
 	closemessage
 	trainerbattle_no_intro TRAINER_CHALLENGER_GIOVANNI, RCR_Giovanni_DefeatText
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerSigmaSolo::
-	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
 	msgbox RCR_Sigma_Intro
 	closemessage
 	trainerbattle_no_intro TRAINER_CHALLENGER_SIGMA, RCR_Sigma_DefeatText
 	goto RCR_FinishChallenge
 
 RCR_ChallengerJuanSolo::
-	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
 	msgbox RCR_Juan_Intro
 	closemessage
 	trainerbattle_no_intro TRAINER_CHALLENGER_JUAN, RCR_Juan_DefeatText
 	goto RCR_FinishChallenge
 
 RCR_BOSSMODE::
-	applymovement EVENT_OBJ_ID_CAMERA, RCR_ReturnToPlayer
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
 	
 	goto RCR_FinishChallenge
 
@@ -477,9 +477,9 @@ RCR_FinishChallenge::
 	closemessage
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
-	applymovement EVENT_OBJ_ID_PLAYER, RCR_ToHOF
-	applymovement EVENT_OBJ_ID_FOLLOWER, RCR_ToHOF
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, RCR_ToHOF
+	applymovement OBJ_EVENT_ID_FOLLOWER, RCR_ToHOF
+	waitmovement OBJ_EVENT_ID_PLAYER
 	warp MAP_EVER_GRANDE_CITY_HALL_OF_FAME, 255, 7, 16
 	end
 
@@ -585,22 +585,22 @@ RCR_ChallengerApproach:
 	step_end
 
 RCR_FollowerMinnieIntro::
-	applymovement EVENT_OBJ_ID_FOLLOWER, Common_Movement_HeartEmote
-	waitmovement EVENT_OBJ_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
+	waitmovement OBJ_EVENT_ID_FOLLOWER
 	msgbox FMinnieMsg
 	closemessage
 	return
 
 RCR_FollowerShellyIntro::
-	applymovement EVENT_OBJ_ID_FOLLOWER, Common_Movement_HeartEmote
-	waitmovement EVENT_OBJ_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
+	waitmovement OBJ_EVENT_ID_FOLLOWER
 	msgbox FShellyMsg
 	closemessage
 	return
 
 RCR_FollowerLanetteIntro::
-	applymovement EVENT_OBJ_ID_FOLLOWER, Common_Movement_HeartEmote
-	waitmovement EVENT_OBJ_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
+	waitmovement OBJ_EVENT_ID_FOLLOWER
 	msgbox FLanetteMsg
 	closemessage
 	return

@@ -33,7 +33,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_M",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
             "movement_range_x": 10,
             "movement_range_y": 3,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_RIGHT_DOWN",
@@ -46,7 +46,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_M",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
             "movement_range_x": 9,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT",
@@ -59,7 +59,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_F",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
@@ -72,7 +72,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_F",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -85,7 +85,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_126_GREEN_SHARD",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -98,7 +98,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_F",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
@@ -111,7 +111,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_M",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
@@ -124,7 +124,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_F",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
@@ -137,7 +137,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_M",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",

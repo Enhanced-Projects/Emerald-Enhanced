@@ -99,7 +99,7 @@ MtChimney_EventScript_Maxie:: @ 822EE0B
 	call_if_eq MtChimney_EventScript_ArchieApproachPlayerEast
 	compare VAR_FACING, DIR_NORTH
 	call_if_eq MtChimney_EventScript_ArchieApproachPlayerNorth
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, MC_PlayerAqua
 	goto MC_PlayerNotAqua

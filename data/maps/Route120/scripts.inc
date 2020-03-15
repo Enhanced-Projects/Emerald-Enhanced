@@ -35,8 +35,8 @@ r120_LeafEvent::
 	lock
 	setvar VAR_RYU_DS_LANA_STAGE, 67
 	special SpawnCameraObject
-	applymovement EVENT_OBJ_ID_CAMERA, r120_PanUp
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, r120_PanUp
+	waitmovement OBJ_EVENT_ID_CAMERA
 	applymovement 45, Common_Movement_ExclamationMark
 	msgbox r120_Story1 MSGBOX_DEFAULT
 	closemessage
@@ -47,15 +47,15 @@ r120_LeafEvent::
 	msgbox r120_HikerMiffed MSGBOX_DEFAULT
 	closemessage
 	applymovement 46, Common_Movement_FaceLeft
-	applymovement EVENT_OBJ_ID_CAMERA, r120_ReturnCamera
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, r120_ReturnCamera
+	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
-	applymovement EVENT_OBJ_ID_PLAYER, r120_FollowLeafIntoChamber
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, r120_FollowLeafIntoChamber
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox r120_HikerRequest MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	clearflag FLAG_HIDE_AT1_LEAF
 	setvar VAR_RYU_DS_LANA_STAGE, 68
 	warp MAP_ANCIENT_TOMB1F, 255, 8, 29
@@ -64,18 +64,18 @@ r120_LeafEvent::
 	
 r120_LanaNotReady::
 	msgbox r120_notReady
-	applymovement EVENT_OBJ_ID_PLAYER, r120_stepDown
-	applymovement EVENT_OBJ_ID_FOLLOWER, r120_stepDown
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, r120_stepDown
+	applymovement OBJ_EVENT_ID_FOLLOWER, r120_stepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 	
 R120_dead::
 	msgbox R120_death MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, r120_stepDown
-	applymovement EVENT_OBJ_ID_FOLLOWER, r120_stepDown
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, r120_stepDown
+	applymovement OBJ_EVENT_ID_FOLLOWER, r120_stepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 	
@@ -151,8 +151,8 @@ r120_AT_SECOND_VISIT_SETUP::
 	lock
 	msgbox r120_SV_Intro MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, r120_SV_walkup
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, r120_SV_walkup
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_RYU_DS_LANA_STAGE, 82
 	clearflag FLAG_HIDE_AT1_LEAF
 	warp MAP_ANCIENT_TOMB, 255, 8, 29
@@ -400,7 +400,7 @@ Route120_EventScript_RemoveBridgeKecleonPostBattle:: @ 81F571C
 
 Route120_EventScript_StevenGiveDeconScope:: @ 81F572C
 	applymovement 31, Common_Movement_WalkInPlaceFastestDown
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
 	msgbox Route120_Text_StevenGiveDevonScope, MSGBOX_DEFAULT
 	giveitem ITEM_DEVON_SCOPE
@@ -424,12 +424,12 @@ Route120_EventScript_StevenGiveDeconScope:: @ 81F572C
 	end
 
 Route120_EventScript_PlayerApproachKecleonNorth:: @ 81F57A3
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
 	return
 
 Route120_EventScript_PlayerApproachKecleonWest:: @ 81F57AE
-	applymovement EVENT_OBJ_ID_PLAYER, Route120_Movement_ApproachKecleonWest
+	applymovement OBJ_EVENT_ID_PLAYER, Route120_Movement_ApproachKecleonWest
 	waitmovement 0
 	return
 

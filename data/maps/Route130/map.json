@@ -28,7 +28,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_M",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
             "movement_range_x": 3,
             "movement_range_y": 6,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_RIGHT_DOWN",
@@ -41,7 +41,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_F",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
             "movement_range_x": 1,
             "movement_range_y": 4,
             "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
@@ -54,7 +54,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_11",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -67,7 +67,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_M",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
             "movement_range_x": 1,
             "movement_range_y": 4,
             "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",

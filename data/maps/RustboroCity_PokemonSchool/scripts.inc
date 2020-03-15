@@ -10,20 +10,20 @@ PS_minnieInteract::
 	setvar VAR_TEMP_0, 1
 	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_end
 	goto_if_set FLAG_RYU_MINNIE_POKEMON_SCHOOL, ryu_end
-	setobjectxy EVENT_OBJ_ID_FOLLOWER, 6, 10
+	setobjectxy OBJ_EVENT_ID_FOLLOWER, 6, 10
 	delay 5
-	compare VAR_RYU_FOLLOWER_ID, EVENT_OBJ_GFX_TWIN
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
 	goto_if_eq PS_MinnieInteraction
 	goto ryu_end
 	
 PS_MinnieInteraction::
 	@lockall
 	playbgm MUS_HUTAGO, 0
-	applymovement EVENT_OBJ_ID_FOLLOWER, PS_MinnieToTeacher
+	applymovement OBJ_EVENT_ID_FOLLOWER, PS_MinnieToTeacher
 	applymovement 6, Common_Movement_FaceLeft
-	waitmovement EVENT_OBJ_ID_FOLLOWER
-	applymovement EVENT_OBJ_ID_PLAYER, PS_PlayerToMinnie
-	waitmovement EVENT_OBJ_ID_PLAYER
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_PLAYER, PS_PlayerToMinnie
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playse SE_PIN
 	applymovement 6, Common_Movement_ExclamationMark
 	waitmovement 6
@@ -34,8 +34,8 @@ PS_MinnieInteraction::
 	closemessage
 	call_if_set FLAG_RYU_MINNIE_GAME_CLEAR, PS_MinnieHelpedE4
 	msgbox MinnieOutro
-	applymovement EVENT_OBJ_ID_FOLLOWER, PS_ReturnFollowerBehindPlayer
-	waitmovement EVENT_OBJ_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, PS_ReturnFollowerBehindPlayer
+	waitmovement OBJ_EVENT_ID_FOLLOWER
 	applymovement 6, Common_Movement_FaceDown
 	waitmovement 6
 	fadedefaultbgm

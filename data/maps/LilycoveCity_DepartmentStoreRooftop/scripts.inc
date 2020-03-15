@@ -251,8 +251,8 @@ LCC_LeafEvent::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	lock
 	special SpawnCameraObject
-	applymovement EVENT_OBJ_ID_CAMERA, LCC_Cam1
-	applymovement EVENT_OBJ_ID_PLAYER, LCC_Chase1
+	applymovement OBJ_EVENT_ID_CAMERA, LCC_Cam1
+	applymovement OBJ_EVENT_ID_PLAYER, LCC_Chase1
 	applymovement 5, LCC_Jump
 	waitmovement 5
 	fadenewbgm MUS_OOAME
@@ -281,7 +281,7 @@ LCC_LeafEvent::
 	msgbox LCC_Story6 MSGBOX_DEFAULT
 	closemessage
 	applymovement 5, LCC_RunLeft
-	applymovement EVENT_OBJ_ID_PLAYER, LCC_RunLeft2
+	applymovement OBJ_EVENT_ID_PLAYER, LCC_RunLeft2
 	delay 5
 	applymovement 5, Common_Movement_FaceRight
 	waitmovement 5

@@ -13,8 +13,8 @@ BF_CheckPartyForArtisanCave::
 	compare VAR_RESULT, 0
 	goto_if_ne ryu_end
 	msgbox CantEnterNoPkmn
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepDown
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 	

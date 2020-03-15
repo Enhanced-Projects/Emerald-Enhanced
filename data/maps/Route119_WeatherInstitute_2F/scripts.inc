@@ -48,7 +48,7 @@ Route119_WeatherInstitute_2F_EventScript_ShellyDefeated:: @ 826FFC8
 	closemessage
 	addobject 7  @ Aqua grunt
 	applymovement 7, Route119_WeatherInstitute_2F_Movement_GruntApproachShelly
-	applymovement EVENT_OBJ_ID_PLAYER, Route119_WeatherInstitute_2F_Movement_ShovePlayerOutOfWay
+	applymovement OBJ_EVENT_ID_PLAYER, Route119_WeatherInstitute_2F_Movement_ShovePlayerOutOfWay
 	waitmovement 0
 	msgbox Route119_WeatherInstitute_2F_Text_TeamMagmaJustPassedBy, MSGBOX_DEFAULT
 	closemessage
@@ -70,7 +70,7 @@ Route119_WeatherInstitute_2F_EventScript_ShellyDefeated:: @ 826FFC8
 	removeobject 3
 	removeobject 8
 	removeobject 7
-	applymovement EVENT_OBJ_ID_PLAYER, Route119_WeatherInstitute_2F_Movement_PlayerReturnToPosition
+	applymovement OBJ_EVENT_ID_PLAYER, Route119_WeatherInstitute_2F_Movement_PlayerReturnToPosition
 	waitmovement 0
 	fadescreen FADE_FROM_BLACK
 	applymovement 5, Route119_WeatherInstitute_2F_Movement_ScientistApproachPlayer
@@ -98,13 +98,13 @@ Route119_WeatherInstitute_2F_EventScript_ReceiveCastform:: @ 827004D
 	clearflag FLAG_RYU_HIDE_REL_OBJECTS
 	addobject 9
 	playse SE_DOOR
-	applymovement EVENT_OBJ_ID_CAMERA, WI_CameraToCozmoFast
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, WI_CameraToCozmoFast
+	waitmovement OBJ_EVENT_ID_CAMERA
 	applymovement 9, WI_MoveCozmoIn @10 left, 1 up, face down
-	applymovement EVENT_OBJ_ID_CAMERA, WI_MoveCozmoIn
-	waitmovement EVENT_OBJ_ID_CAMERA
-	applymovement EVENT_OBJ_ID_CAMERA, WI_Diag
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, WI_MoveCozmoIn
+	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, WI_Diag
+	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
 	closemessage
 	goto WI_CozmoScene
@@ -134,8 +134,8 @@ WI_CozmoScene::
 	waitmovement 9
 	msgbox WI_SeemsLike
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox WI_GuessSo
 	closemessage
 	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 103

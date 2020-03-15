@@ -16,7 +16,7 @@ IC_CaveCheck::
 	compare VAR_RYU_DS_LANA_STAGE, 65
 	goto_if_ge ryu_end
 	msgbox r120_notReady MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, IC_Exit
+	applymovement OBJ_EVENT_ID_PLAYER, IC_Exit
 	waitmovement 0
 	release
 	end
@@ -30,7 +30,7 @@ IC_Setup::
 	
 IC_Setup2::
     lock
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	setobjectxy 2, 16, 32
 	clearflag FLAG_HIDE_IC_LANA
 	addobject 3
@@ -58,7 +58,7 @@ IC_LeafEvent2::
 	msgbox IC_LeafMsg32 MSGBOX_DEFAULT
 	closemessage
 	removecutscenesprites
-	applymovement EVENT_OBJ_ID_PLAYER, DR_StepRight
+	applymovement OBJ_EVENT_ID_PLAYER, DR_StepRight
 	waitmovement 0
 	applymovement 3, IC_Exit
 	waitmovement 3
@@ -83,7 +83,7 @@ IC_LeafEvent::
 	applymovement 2, Common_Movement_FaceUp
 	waitmovement 2
 	applymovement 2, IC_LeafOpenSequence
-	applymovement EVENT_OBJ_ID_PLAYER, IC_FollowLeaf
+	applymovement OBJ_EVENT_ID_PLAYER, IC_FollowLeaf
 	waitmovement 2
 	delay 25
 	fadeoutbgm 0

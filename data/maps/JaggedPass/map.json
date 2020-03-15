@@ -113,7 +113,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_HIKER",
+            "graphics_id": "OBJ_EVENT_GFX_HIKER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -126,7 +126,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_CAMPER",
+            "graphics_id": "OBJ_EVENT_GFX_CAMPER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -139,7 +139,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_JAGGED_PASS_BURN_HEAL",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -152,7 +152,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PICNICKER",
+            "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
@@ -165,7 +165,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD",
-            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -178,7 +178,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PICNICKER",
+            "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -191,7 +191,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_CYCLING_TRIATHLETE_M",
+            "graphics_id": "OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -204,7 +204,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_JAGGED_PASS_TM54",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",

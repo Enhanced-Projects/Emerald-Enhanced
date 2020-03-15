@@ -1283,13 +1283,13 @@ RyuCancelFollowerForQuest::  @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollow
 
 RyuResetFollowerPosition::
 	gfec
-	setobjectxy EVENT_OBJ_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
+	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
 	setvar VAR_TEMP_9, 1
 	end
 
 RyuResetFollowerPositionAR::
 	gfec
-	setobjectxy EVENT_OBJ_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
+	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
 	setvar VAR_TEMP_9, 1
 	return
 
@@ -1299,9 +1299,9 @@ RyuForceCancelFollowerForQuest:: @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCan
 
 RyuFollowerSelectNPCScript::
 	switch VAR_RYU_FOLLOWER_ID
-	case EVENT_OBJ_GFX_TWIN, LRT_MinnieScript
-	case EVENT_OBJ_GFX_AQUA_MEMBER_F, RyuFollower_ShellyScript
-	case EVENT_OBJ_GFX_WOMAN_2, RyuFollower_LanetteScript
+	case OBJ_EVENT_GFX_TWIN, LRT_MinnieScript
+	case OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollower_ShellyScript
+	case OBJ_EVENT_GFX_WOMAN_2, RyuFollower_LanetteScript
 	end
 
 RyuFollower_ShellyScript::
@@ -1331,7 +1331,7 @@ RF_FollowerLeaveCall::
 	return
 	
 RF_FollowerLeave:
-	compare VAR_RYU_FOLLOWER_ID, EVENT_OBJ_GFX_WOMAN_2
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
 	call_if_eq Ryu_RestoreLanetteAtHouse
 	clearflag FLAG_RYU_HAS_FOLLOWER
 	destroyfollower
@@ -1447,9 +1447,9 @@ Ryu_DoMeloettaRoll::
 
 Ryu_DoMeloettaEncounter::
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_FOLLOWER, Common_Movement_ExclamationMark
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	fadescreen FADE_TO_BLACK
 	drawfullscreenimage SCENEBGMELOETTA
 	msgbox Ryu_MeloettaApproaches
@@ -1495,8 +1495,8 @@ SB_SetupRandomSteppedOnEncounter::
 SB_Random0::
 	setwildbattle SPECIES_PYUKUMUKU, 20, ITEM_NONE
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	bufferspeciesname 0, SPECIES_PYUKUMUKU
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -1507,8 +1507,8 @@ SB_Random0::
 SB_Random1::
 	setwildbattle SPECIES_SANDYGAST, 20, ITEM_NONE
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	bufferspeciesname 0, SPECIES_SANDYGAST
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -1519,8 +1519,8 @@ SB_Random1::
 SB_Random2::
 	setwildbattle SPECIES_SHELLDER, 20, ITEM_NONE
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	bufferspeciesname 0, SPECIES_SHELLDER
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -1531,8 +1531,8 @@ SB_Random2::
 SB_Random3::
 	setwildbattle SPECIES_MAREANIE, 20, ITEM_NONE
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	bufferspeciesname 0, SPECIES_MAREANIE
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -1543,8 +1543,8 @@ SB_Random3::
 SB_Random4::
 	setwildbattle SPECIES_SKRELP, 20, ITEM_NONE
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	bufferspeciesname 0, SPECIES_SKRELP
 	msgbox Ryu_YouSteppedOn
 	closemessage

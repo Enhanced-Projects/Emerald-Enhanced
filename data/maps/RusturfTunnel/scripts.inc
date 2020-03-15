@@ -85,13 +85,13 @@ RusturfTunnel_EventScript_ClearTunnelScene:: @ 822CEAE
 	end
 
 RusturfTunnel_EventScript_BoyfriendApproachWanda1:: @ 822CF5D
-	applymovement EVENT_OBJ_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend1
+	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend1
 	applymovement 1, RusturfTunnel_Movement_BoyfriendApproachWanda1
 	waitmovement 0
 	return
 
 RusturfTunnel_EventScript_BoyfriendApproachWanda2:: @ 822CF6F
-	applymovement EVENT_OBJ_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
+	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
 	applymovement 1, RusturfTunnel_Movement_BoyfriendApproachWanda
 	waitmovement 0
 	applymovement 10, Common_Movement_WalkInPlaceFastestDown
@@ -99,7 +99,7 @@ RusturfTunnel_EventScript_BoyfriendApproachWanda2:: @ 822CF6F
 	return
 
 RusturfTunnel_EventScript_BoyfriendApproachWanda3:: @ 822CF8B
-	applymovement EVENT_OBJ_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
+	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
 	applymovement 1, RusturfTunnel_Movement_BoyfriendApproachWanda
 	waitmovement 0
 	applymovement 10, Common_Movement_WalkInPlaceFastestDown
@@ -109,7 +109,7 @@ RusturfTunnel_EventScript_BoyfriendApproachWanda3:: @ 822CF8B
 RusturfTunnel_EventScript_FaceWandasBoyfriend1:: @ 822CFA7
 	applymovement 1, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
 	waitmovement 0
 	return
 
@@ -134,7 +134,7 @@ RusturfTunnel_EventScript_WandaAndBoyfriendExit1:: @ 822CFD4
 	return
 
 RusturfTunnel_EventScript_WandaAndBoyfriendExit:: @ 822CFE6
-	applymovement EVENT_OBJ_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchWandaExit
+	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchWandaExit
 	applymovement 10, RusturfTunnel_Movement_WandaExit
 	applymovement 1, RusturfTunnel_Movement_WandasBoyfriendExit
 	waitmovement 0
@@ -317,12 +317,12 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	msgbox RusturfTunnel_Text_GruntTakePackage, MSGBOX_DEFAULT
 	additem ITEM_DEVON_GOODS
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, RusturfTunnel_Movement_PushPlayerAsideForGrunt
+	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PushPlayerAsideForGrunt
 	applymovement 3, RusturfTunnel_Movement_GruntEscape
 	waitmovement 0
 	removeobject 3
 	delay 50
-	applymovement EVENT_OBJ_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBrineyExit
+	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBrineyExit
 	clearflag FLAG_DEVON_GOODS_STOLEN
 	setflag FLAG_RECOVERED_DEVON_GOODS
 	setvar VAR_RUSTBORO_CITY_STATE, 4

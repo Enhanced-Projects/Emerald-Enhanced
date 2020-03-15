@@ -157,8 +157,8 @@ r115_StartDevon::
 	lock
 	msgbox r115_ISeeThemThere
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, r115_toMsIto
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, r115_toMsIto
+	waitmovement OBJ_EVENT_ID_PLAYER
 	goto R115_DevonScene
 
 R115_DevonScene::
@@ -189,7 +189,7 @@ R115_DevonScene::
 	applymovement 26, Common_Movement_FaceLeft
 	waitmovement 26
 	cleartrainerflag TRAINER_GRUNT_2
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	trainerbattle_single TRAINER_GRUNT_2, r115_GruntIntro, r115_LostAgain, r115_scenePart2
 
 	
@@ -197,16 +197,16 @@ R115_DevonScene::
 r115_scenePart2::
 	msgbox r115_CaseClosed
 	fadedefaultbgm
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox r115_YourBestInterest
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox r115_BackThen
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox r115_HowMeetUp
 	closemessage
 	applymovement 25, Common_Movement_StepRight
@@ -247,8 +247,8 @@ r115_scenePart3::
 	msgbox r115_itsAllGood
 	closemessage
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox r115_ThatRemindsMe
 	closemessage
 	savebgm 432
@@ -258,8 +258,8 @@ r115_scenePart3::
 	msgbox r115_stationedAtFrontDesk
 	closemessage
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox r115_FiguredSomethingOut
 	closemessage
 	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 22
@@ -470,7 +470,7 @@ r115_toMsIto:
 @end devon scene
 	
 r115_DevPhase::
-	applymovement EVENT_OBJ_ID_PLAYER, r115_StepLeft
+	applymovement OBJ_EVENT_ID_PLAYER, r115_StepLeft
 	release
 	end
 	
