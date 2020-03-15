@@ -318,11 +318,7 @@ TC_Tut_Query:
 	.string "like a guide on how to use this place?$"
 	
 TC_TutorialText:
-	.string "Okay, so there's rooms for every 10\p"
-	.string "experience levels. The Pokemon in\n"
-	.string "each room are the level shown in the\p"
-	.string "tiles on the floor.\n"
-	.string "Inside each room you will find 6 dittos.\p"
+	.string "Inside this room you will find 6 dittos.\p"
 	.string "each one will transform into a pokémon\n"
 	.string "suitable for the kind of Evolution Value\p"
 	.string "you're trying to get.\n"
@@ -352,6 +348,8 @@ TC_Drugs_Mart:
 	.2byte ITEM_CALCIUM
 	.2byte ITEM_CARBOS
 	.2byte ITEM_ABILITY_CAPSULE
+	.2byte ITEM_PP_UP
+	.2byte ITEM_PP_MAX
 	.2byte ITEM_NONE
 	release
 	end

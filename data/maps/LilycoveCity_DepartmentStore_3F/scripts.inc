@@ -12,15 +12,17 @@ LilycoveCity_DepartmentStore_3F_EventScript_ClerkLeft:: @ 821FC65
 	end
 
 LilycoveCity_DepartmentStore_3F_Pokemart_Vitamins: @ 821FC7C
-	.2byte ITEM_PROTEIN
-	.2byte ITEM_CALCIUM
-	.2byte ITEM_IRON
-	.2byte ITEM_ZINC
-	.2byte ITEM_CARBOS
-	.2byte ITEM_HP_UP
-	.2byte ITEM_PP_UP
-	.2byte ITEM_PP_MAX
-	.2byte ITEM_NONE
+	.2byte DECOR_SURF_MAT
+	.2byte DECOR_THUNDER_MAT
+	.2byte DECOR_FIRE_BLAST_MAT
+	.2byte DECOR_POWDER_SNOW_MAT
+	.2byte DECOR_ATTRACT_MAT
+	.2byte DECOR_FISSURE_MAT
+	.2byte DECOR_SPIKES_MAT
+	.2byte DECOR_GLITTER_MAT
+	.2byte DECOR_JUMP_MAT
+	.2byte DECOR_SPIN_MAT
+	.2byte DECOR_NONE
 	release
 	end
 
@@ -36,14 +38,16 @@ LilycoveCity_DepartmentStore_3F_EventScript_ClerkRight:: @ 821FC8C
 
 	.align 2
 LilycoveCity_DepartmentStore_3F_Pokemart_StatBoosters: @ 821FCA4
-	.2byte ITEM_X_SPEED
-	.2byte ITEM_X_SP_ATK
-	.2byte ITEM_X_ATTACK
-	.2byte ITEM_X_DEFENSE
-	.2byte ITEM_DIRE_HIT
-	.2byte ITEM_GUARD_SPEC
-	.2byte ITEM_X_ACCURACY
-	.2byte ITEM_NONE
+	.2byte DECOR_PIKA_CUSHION
+	.2byte DECOR_ROUND_CUSHION
+	.2byte DECOR_ZIGZAG_CUSHION
+	.2byte DECOR_SPIN_CUSHION
+	.2byte DECOR_DIAMOND_CUSHION
+	.2byte DECOR_BALL_CUSHION
+	.2byte DECOR_GRASS_CUSHION
+	.2byte DECOR_FIRE_CUSHION
+	.2byte DECOR_WATER_CUSHION
+	.2byte DECOR_NONE
 	release
 	end
 
@@ -60,18 +64,17 @@ LilycoveCity_DepartmentStore_3F_EventScript_Woman:: @ 821FCC8
 	end
 
 LilycoveCity_DepartmentStore_3F_Text_ItemsBestForTougheningPokemon: @ 821FCD1
-	.string "For quickly toughening up Pokémon,\n"
-	.string "items are the best.\p"
-	.string "PROTEIN boosts ATTACK,\n"
-	.string "and CALCIUM raises SP. ATK.$"
+	.string "I came here to toughen up my\n"
+	.string "pokemon, but maybe I'll buy some.\p"
+	.string "nice Mats too.$"
 
 LilycoveCity_DepartmentStore_3F_Text_WantMoreEndurance: @ 821FD3B
-	.string "I want my Pokémon to have more\n"
-	.string "endurance.\p"
-	.string "I'm trying to decide whether to raise\n"
-	.string "DEFENSE with IRON, or SP. DEF with ZINC.$"
+	.string "This place is full of cute Cushions.\p"
+	.string "I should buy some for me, instead of\n"
+	.string "just for my children.$"
 
 LilycoveCity_DepartmentStore_3F_Text_GaveCarbosToSpeedUpMon: @ 821FDB4
-	.string "I gave a CARBOS to my Pokémon,\n"
-	.string "and its SPEED went up.$"
+	.string "They sell many cute Mats here.\p"
+	.string "I wonder which one I should get?\n"
+	.string "Maybe I'll buy them all…$"
 
