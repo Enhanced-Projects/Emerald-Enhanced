@@ -35,7 +35,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -48,7 +48,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -61,7 +61,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_AQUA_HIDEOUT_B1F_MAX_ELIXIR",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -74,7 +74,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_F",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
             "movement_range_x": 4,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_ROTATE_COUNTERCLOCKWISE",
@@ -87,7 +87,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -100,7 +100,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_B1F_ELECTRODE_1",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -113,7 +113,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_AQUA_HIDEOUT_B1F_NUGGET",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -126,7 +126,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_B1F_ELECTRODE_2",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -139,7 +139,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_F",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -152,7 +152,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",

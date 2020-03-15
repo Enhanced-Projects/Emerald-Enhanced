@@ -71,7 +71,7 @@ LC_AH_SecurityStop3::
 	cleartrainerflag TRAINER_MAXIE_MAGMA_HIDEOUT
 	cleartrainerflag TRAINER_COURTNEY_3
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
-	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_PlayerLeave
+	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_PlayerLeave
 	waitmovement 0
 	release
 	end
@@ -79,7 +79,7 @@ LC_AH_SecurityStop3::
 LC_AH_SecurityStop2::
 	call_if_set FLAG_RYU_STARTING_M3, LC_AH_SETUPM3
 	msgbox LC_AH_OnWayM3 MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_PlayerLeave
+	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_PlayerLeave
 	waitmovement 0
 	release
 	end
@@ -91,7 +91,7 @@ LC_AH_SETUPM3::
 	
 LC_AH_SecurityStop::
 	msgbox LC_AH_KickedOut MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_PlayerLeave
+	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_PlayerLeave
 	waitmovement 0
 	release
 	end
@@ -137,14 +137,14 @@ LC_AH_ShellyIntroDoneFirstMission:
 
 LC_AH_Leave::
 	msgbox LC_AH_NoReward MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_PlayerLeave
+	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_PlayerLeave
 	waitmovement 0
 	release
 	end
 	
 LC_AH_Declined::
 	msgbox LC_AH_NoJoin MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_PlayerLeave
+	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_PlayerLeave
 	waitmovement 0
 	release
 	end
@@ -270,7 +270,7 @@ LC_AH_Mission2Complete::
 	closemessage
 	applymovement 1, LC_AH_AroundDesk
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_FaceUp
 	waitmovement 0
 	additem ITEM_RARE_CANDY, 10
 	msgbox LC_AH_m2Reward MSGBOX_DEFAULT
@@ -286,7 +286,7 @@ LC_AH_mission3::
 	msgbox LC_AH_M3Desc MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_RYU_STARTING_M3
-	applymovement EVENT_OBJ_ID_PLAYER, LH_M3Exit
+	applymovement OBJ_EVENT_ID_PLAYER, LH_M3Exit
 	waitmovement 0
 	setvar VAR_JAGGED_PASS_STATE, 1
 	warpsilent MAP_LILYCOVE_CITY, 15, 49, 8
@@ -305,7 +305,7 @@ LC_AH_Mission4::
 	goto_if_set FLAG_RYU_DS_SHELLY_CLOSEFRIENDS, LC_AH_M4Reldesc
 	msgbox LC_AH_M4DescMsg MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, LH_M3Exit
+	applymovement OBJ_EVENT_ID_PLAYER, LH_M3Exit
 	waitmovement 0
 	setvar VAR_MT_PYRE_STATE, 2
     settrainerflag TRAINER_GRUNT_MT_PYRE_1
@@ -324,7 +324,7 @@ LC_AH_NoRelConclusion::
 	goto_if_set FLAG_RYU_DS_SHELLY_PARTNERS, LC_AH_ShellyRelScene
 	applymovement 1, LC_AH_AroundDesk
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_FaceUp
 	waitmovement 0
 	additem ITEM_CARD_KEY, 1
 	msgbox LC_AH_ShellyGivesCardKey MSGBOX_DEFAULT
@@ -500,7 +500,7 @@ LC_AH_DeclinedShelly::
 	msgbox LC_AH_ShellyDispt MSGBOX_DEFAULT
 	msgbox LC_AH_ShellyDispt2 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, LH_M3Exit
+	applymovement OBJ_EVENT_ID_PLAYER, LH_M3Exit
 	waitmovement 0
 	clearflag FLAG_RYU_PLAYER_HELPING_AQUA
 	msgbox LC_AH_BADEND MSGBOX_DEFAULT
@@ -517,7 +517,7 @@ LC_AH_M4Reldesc::
 	msgbox LC_AH_ShellyRelMission1Msg MSGBOX_DEFAULT
 	setflag FLAG_RYU_STARTING_M4
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, LH_M3Exit
+	applymovement OBJ_EVENT_ID_PLAYER, LH_M3Exit
 	waitmovement 0
 	cleartrainerflag TRAINER_ARCHIE
 	cleartrainerflag TRAINER_MATT
@@ -538,27 +538,27 @@ LC_AH_ShellyRelScene::
 	goto_if_set FLAG_RYU_DS_SHELLY_SCENE, LC_AH_Shelly_Afterstory
 	lock
 	msgbox LC_AH_FirstNight MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_FaceUp
 	applymovement 1, LC_AH_AroundDesk
 	waitmovement 0
 	msgbox LC_AH_GoToQuarters MSGBOX_DEFAULT
 	closemessage
 	applymovement 1, LC_AH_TOQUARTERS
-	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_TOQUARTERS2
+	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_TOQUARTERS2
 	waitmovement 0
 	applymovement 3, LC_AH_MoveAway
 	waitmovement 0
 	applymovement 1, LC_AH_TOQUARTERS3
-	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_TOQUARTERS4
+	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_TOQUARTERS4
 	waitmovement 0
 	applymovement 1, Common_Movement_HeartEmote
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
 	msgbox LC_AH_QuartersScene MSGBOX_DEFAULT
 	closemessage
 	special SpawnCameraObject
 	fadeoutbgm 2
-	applymovement EVENT_OBJ_ID_CAMERA, LC_AH_CameraPan
+	applymovement OBJ_EVENT_ID_CAMERA, LC_AH_CameraPan
 	msgbox LC_AH_QuartersScene2 MSGBOX_DEFAULT
 	applymovement 1, LC_AH_ShellySLide
 	msgbox LC_AH_CONCLUSION MSGBOX_AUTOCLOSE
@@ -568,7 +568,7 @@ LC_AH_ShellyRelScene::
 	delay 40
 	removeobject 1
 	addobject 1
-	applymovement EVENT_OBJ_ID_CAMERA, LC_AH_CameraPan2
+	applymovement OBJ_EVENT_ID_CAMERA, LC_AH_CameraPan2
 	waitmovement 0
 	special RemoveCameraObject
 	msgbox LC_AH_TRANSITION MSGBOX_DEFAULT
@@ -593,11 +593,11 @@ LC_AH_Shelly_Afterstory:
 	lock
 	msgbox LC_AH_AfterStoryIntro MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, LC_AH_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_FaceUp
 	applymovement 1, LC_AH_AroundDesk
 	waitmovement 0
 	applymovement 1, Common_Movement_HeartEmote
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
 	msgbox LC_AH_ShellyFollowerQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -611,9 +611,9 @@ LC_AH_Shelly_Afterstory:
 	end
 
 LC_AH_ShellySetUpFollower::
-	createfollower EVENT_OBJ_GFX_AQUA_MEMBER_F, RyuFollowerSelectNPCScript, 1
+	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollowerSelectNPCScript, 1
 	setflag FLAG_RYU_HAS_FOLLOWER
-	setvar VAR_RYU_FOLLOWER_ID, EVENT_OBJ_GFX_AQUA_MEMBER_F
+	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_AQUA_MEMBER_F
 	release
 	end
 	

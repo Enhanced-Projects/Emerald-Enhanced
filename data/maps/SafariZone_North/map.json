@@ -33,7 +33,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_FISHERMAN",
+            "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -46,7 +46,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_4",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_4",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -59,7 +59,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_11",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -72,7 +72,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_12",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -85,7 +85,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_13",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -98,7 +98,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_14",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -111,7 +111,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_15",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -124,7 +124,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_16",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -137,7 +137,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_SAFARI_ZONE_NORTH_CALCIUM",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",

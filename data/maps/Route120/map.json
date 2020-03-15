@@ -328,7 +328,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -341,7 +341,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -354,7 +354,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -367,7 +367,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -380,7 +380,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -393,7 +393,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -406,7 +406,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -419,7 +419,7 @@
         {
             "elevation": 5,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -432,7 +432,7 @@
         {
             "elevation": 5,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -445,7 +445,7 @@
         {
             "elevation": 5,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -458,7 +458,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_5",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT_AND_RIGHT",
@@ -471,7 +471,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_5",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -484,7 +484,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_CAMPER",
+            "graphics_id": "OBJ_EVENT_GFX_CAMPER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -497,7 +497,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PICNICKER",
+            "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -510,7 +510,7 @@
         {
             "elevation": 5,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MANIAC",
+            "graphics_id": "OBJ_EVENT_GFX_MANIAC",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
@@ -523,7 +523,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_120_NUGGET",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -536,7 +536,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1",
-            "graphics_id": "EVENT_OBJ_GFX_CAMERAMAN",
+            "graphics_id": "OBJ_EVENT_GFX_CAMERAMAN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -549,7 +549,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1",
-            "graphics_id": "EVENT_OBJ_GFX_REPORTER_F",
+            "graphics_id": "OBJ_EVENT_GFX_REPORTER_F",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -562,7 +562,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2",
-            "graphics_id": "EVENT_OBJ_GFX_REPORTER_F",
+            "graphics_id": "OBJ_EVENT_GFX_REPORTER_F",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -575,7 +575,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2",
-            "graphics_id": "EVENT_OBJ_GFX_CAMERAMAN",
+            "graphics_id": "OBJ_EVENT_GFX_CAMERAMAN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -588,7 +588,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_11",
-            "graphics_id": "EVENT_OBJ_GFX_CUTTABLE_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -601,7 +601,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_120_FULL_HEAL",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -614,7 +614,7 @@
         {
             "elevation": 5,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BEAUTY",
+            "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
             "movement_range_x": 1,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
@@ -627,7 +627,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
@@ -640,7 +640,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_CHAMPIONS_ROOM_STEVEN",
-            "graphics_id": "EVENT_OBJ_GFX_HIKER",
+            "graphics_id": "OBJ_EVENT_GFX_HIKER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -653,7 +653,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_ROTATE_COUNTERCLOCKWISE",
@@ -666,7 +666,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -679,7 +679,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_120_NEST_BALL",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -692,7 +692,7 @@
         {
             "elevation": 5,
             "flag": "FLAG_ITEM_ROUTE_120_HYPER_POTION",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -705,7 +705,7 @@
         {
             "elevation": 4,
             "flag": "FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_INVISIBLE",
-            "graphics_id": "EVENT_OBJ_GFX_KECLEON_1",
+            "graphics_id": "OBJ_EVENT_GFX_KECLEON_1",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -718,7 +718,7 @@
         {
             "elevation": 4,
             "flag": "FLAG_HIDE_ROUTE_120_STEVEN",
-            "graphics_id": "EVENT_OBJ_GFX_STEVEN",
+            "graphics_id": "OBJ_EVENT_GFX_STEVEN",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -731,7 +731,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_14",
-            "graphics_id": "EVENT_OBJ_GFX_CUTTABLE_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -744,7 +744,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_12",
-            "graphics_id": "EVENT_OBJ_GFX_CUTTABLE_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -757,7 +757,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_MOUNTAIN_DISGUISE",
@@ -770,7 +770,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_TREE_DISGUISE",
@@ -783,7 +783,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_VISIBLE",
-            "graphics_id": "EVENT_OBJ_GFX_KECLEON_2",
+            "graphics_id": "OBJ_EVENT_GFX_KECLEON_2",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -796,7 +796,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_120_KECLEON_1",
-            "graphics_id": "EVENT_OBJ_GFX_KECLEON_1",
+            "graphics_id": "OBJ_EVENT_GFX_KECLEON_1",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -809,7 +809,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_120_KECLEON_2",
-            "graphics_id": "EVENT_OBJ_GFX_KECLEON_1",
+            "graphics_id": "OBJ_EVENT_GFX_KECLEON_1",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -822,7 +822,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_120_KECLEON_3",
-            "graphics_id": "EVENT_OBJ_GFX_KECLEON_1",
+            "graphics_id": "OBJ_EVENT_GFX_KECLEON_1",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -835,7 +835,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_120_KECLEON_5",
-            "graphics_id": "EVENT_OBJ_GFX_KECLEON_1",
+            "graphics_id": "OBJ_EVENT_GFX_KECLEON_1",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -848,7 +848,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_120_KECLEON_4",
-            "graphics_id": "EVENT_OBJ_GFX_KECLEON_1",
+            "graphics_id": "OBJ_EVENT_GFX_KECLEON_1",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -861,7 +861,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GIRL_3",
+            "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -874,7 +874,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -887,7 +887,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_120_REVIVE",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -900,7 +900,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_HIDE_R120_LANA_AND_HIKER",
-            "graphics_id": "EVENT_OBJ_GFX_LEAF",
+            "graphics_id": "OBJ_EVENT_GFX_LEAF",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -913,7 +913,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_HIDE_R120_LANA_AND_HIKER",
-            "graphics_id": "EVENT_OBJ_GFX_HIKER",
+            "graphics_id": "OBJ_EVENT_GFX_HIKER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -926,7 +926,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_DEOXYS_TRIANGLE",
+            "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",

@@ -75,14 +75,14 @@ MP_SetupLeafEvent::
 	special SpawnCameraObject
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	addobject 4
-	applymovement EVENT_OBJ_ID_CAMERA, MP_CameraMovement1
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, MP_CameraMovement1
+	waitmovement OBJ_EVENT_ID_CAMERA
 	delay 20
 	applymovement 4 Common_Movement_FaceUp
 	waitmovement 4
 	delay 20
-	applymovement EVENT_OBJ_ID_CAMERA, MP_CameraMovement2
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, MP_CameraMovement2
+	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
 	release
 	end

@@ -12,10 +12,10 @@ SP_Guardian::
 	goto_if_ne SP_NoEntryNoDevonCard
 	msgbox SP_YouMayEnter1
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement EVENT_OBJ_ID_PLAYER
-	applymovement EVENT_OBJ_ID_PLAYER, SP_Delay
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, SP_Delay
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	msgbox SP_YouMayEnter2
 	setmetatile 14, 5, 690, 0
 	setmetatile 14, 4, 682, 0

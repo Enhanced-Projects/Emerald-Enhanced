@@ -33,8 +33,8 @@ r119_CheckOnQuest::
 	lockall
 	msgbox WIClosed, MSGBOX_SIGN
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepDown
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 	

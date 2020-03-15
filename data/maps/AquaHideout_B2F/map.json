@@ -44,7 +44,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_DEVON_HIDE_MATT_SUB",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -57,7 +57,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 4,
             "movement_range_y": 3,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_LEFT_DOWN_RIGHT",
@@ -70,7 +70,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -83,7 +83,7 @@
         {
             "elevation": 1,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW",
-            "graphics_id": "EVENT_OBJ_GFX_SUBMARINE_SHADOW",
+            "graphics_id": "OBJ_EVENT_GFX_SUBMARINE_SHADOW",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -96,7 +96,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_F",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -109,7 +109,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -122,7 +122,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_KYOGRE",
-            "graphics_id": "EVENT_OBJ_GFX_KYOGRE_1",
+            "graphics_id": "OBJ_EVENT_GFX_KYOGRE_1",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -135,7 +135,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_F",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",

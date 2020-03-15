@@ -773,7 +773,7 @@ static bool8 HandleStartMenuInput(void)
     if (gMain.newKeys & DPAD_LEFT)
     {
         if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
-            TryMoveObjectEventToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 1));
+            TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 1));
     }
 
     if ((gMain.newKeys & DPAD_RIGHT) && (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 0))

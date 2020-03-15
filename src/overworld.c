@@ -70,7 +70,6 @@
 #include "item.h"
 #include "constants/items.h"
 #include "pokemon_storage_system.h"
-#include "rgb.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -944,7 +943,7 @@ void RyuAddFollower(void)
     else if ((GetPlayerFacingDirection()) == DIR_SOUTH)
     {
         CreateFollowerObjectEvent(graphicsId, script, DIR_SOUTH);
-        //TryMoveObjectEventToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup,
+        //TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup,
         //gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 2));
     }
     else
@@ -1737,6 +1736,15 @@ void CB2_LoadMap(void)
 static void CB2_LoadMap2(void)
 {
     do_load_map_stuff_loop(&gMain.state);
+    // TODO: fix
+    /*
+    if (FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1)
+    {
+        SetWeather((VarGet(VAR_RYU_WEATHER)));
+        DoCurrentWeather();
+        FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
+    }
+    */
     SetFieldVBlankCallback();
     SetMainCallback1(CB1_Overworld);
     SetMainCallback2(CB2_Overworld);
@@ -1796,13 +1804,15 @@ void CB2_ReturnToFieldLocal(void)
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuKillMon();
-
-    if ((FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1))
+    // TODO: fix
+    /*
+    if (FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1)
     {
         SetWeather((VarGet(VAR_RYU_WEATHER)));
         DoCurrentWeather();
         FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
     }
+    */
 }
 
 void CB2_ReturnToFieldLink(void)

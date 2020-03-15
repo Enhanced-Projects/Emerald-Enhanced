@@ -590,21 +590,21 @@ void SpawnLinkPartnerObjectEvent(void)
                 case VERSION_RUBY:
                 case VERSION_SAPPHIRE:
                     if (gLinkPlayers[i].gender == 0)
-                        linkSpriteId = EVENT_OBJ_GFX_LINK_RS_BRENDAN;
+                        linkSpriteId = OBJ_EVENT_GFX_LINK_RS_BRENDAN;
                     else
-                        linkSpriteId = EVENT_OBJ_GFX_LINK_RS_MAY;
+                        linkSpriteId = OBJ_EVENT_GFX_LINK_RS_MAY;
                     break;
                 case VERSION_EMERALD:
                     if (gLinkPlayers[i].gender == 0)
-                        linkSpriteId = EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL;
+                        linkSpriteId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
                     else
-                        linkSpriteId = EVENT_OBJ_GFX_RIVAL_MAY_NORMAL;
+                        linkSpriteId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
                     break;
                 default:
                     if (gLinkPlayers[i].gender == 0)
-                        linkSpriteId = EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL;
+                        linkSpriteId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
                     else
-                        linkSpriteId = EVENT_OBJ_GFX_RIVAL_MAY_NORMAL;
+                        linkSpriteId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
                     break;
             }
             SpawnSpecialObjectEventParameterized(linkSpriteId, movementTypes[j], 240 - i, coordOffsets[j][0] + x + 7, coordOffsets[j][1] + y + 7, 0);
@@ -623,10 +623,10 @@ static void LoadLinkPartnerObjectEventSpritePalette(u8 graphicsId, u8 localEvent
     u8 adjustedPaletteNum;
     // Note: This temp var is necessary; paletteNum += 6 doesn't match.
     adjustedPaletteNum = paletteNum + 6;
-    if (graphicsId == EVENT_OBJ_GFX_LINK_RS_BRENDAN ||
-        graphicsId == EVENT_OBJ_GFX_LINK_RS_MAY ||
-        graphicsId == EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL ||
-        graphicsId == EVENT_OBJ_GFX_RIVAL_MAY_NORMAL)
+    if (graphicsId == OBJ_EVENT_GFX_LINK_RS_BRENDAN ||
+        graphicsId == OBJ_EVENT_GFX_LINK_RS_MAY ||
+        graphicsId == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL ||
+        graphicsId == OBJ_EVENT_GFX_RIVAL_MAY_NORMAL)
     {
         u8 obj = GetObjectEventIdByLocalIdAndMap(localEventId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
         if (obj != OBJECT_EVENTS_COUNT)
@@ -637,16 +637,16 @@ static void LoadLinkPartnerObjectEventSpritePalette(u8 graphicsId, u8 localEvent
 
             switch (graphicsId)
             {
-                case EVENT_OBJ_GFX_LINK_RS_BRENDAN:
+                case OBJ_EVENT_GFX_LINK_RS_BRENDAN:
                     LoadPalette(gObjectEventPalette33, 0x100 + (adjustedPaletteNum << 4), 0x20);
                     break;
-                case EVENT_OBJ_GFX_LINK_RS_MAY:
+                case OBJ_EVENT_GFX_LINK_RS_MAY:
                     LoadPalette(gObjectEventPalette34, 0x100 + (adjustedPaletteNum << 4), 0x20);
                     break;
-                case EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL:
+                case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
                     LoadPalette(gObjectEventPalette8, 0x100 + (adjustedPaletteNum << 4), 0x20);
                     break;
-                case EVENT_OBJ_GFX_RIVAL_MAY_NORMAL:
+                case OBJ_EVENT_GFX_RIVAL_MAY_NORMAL:
                     LoadPalette(gObjectEventPalette17, 0x100 + (adjustedPaletteNum << 4), 0x20);
                     break;
             }
@@ -1319,7 +1319,7 @@ void IsGrassTypeInParty(void)
 
 void SpawnCameraObject(void)
 {
-    u8 obj = SpawnSpecialObjectEventParameterized(EVENT_OBJ_GFX_BOY_1, MOVEMENT_TYPE_FACE_DOWN, EVENT_OBJ_ID_CAMERA, gSaveBlock1Ptr->pos.x + 7, gSaveBlock1Ptr->pos.y + 7, 3);
+    u8 obj = SpawnSpecialObjectEventParameterized(OBJ_EVENT_GFX_BOY_1, MOVEMENT_TYPE_FACE_DOWN, OBJ_EVENT_ID_CAMERA, gSaveBlock1Ptr->pos.x + 7, gSaveBlock1Ptr->pos.y + 7, 3);
     gObjectEvents[obj].invisible = TRUE;
     CameraObjectSetFollowedObjectId(gObjectEvents[obj].spriteId);
 }
@@ -1327,7 +1327,7 @@ void SpawnCameraObject(void)
 void RemoveCameraObject(void)
 {
     CameraObjectSetFollowedObjectId(GetPlayerAvatarObjectId());
-    RemoveObjectEventByLocalIdAndMap(EVENT_OBJ_ID_CAMERA, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    RemoveObjectEventByLocalIdAndMap(OBJ_EVENT_ID_CAMERA, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
 }
 
 u8 GetPokeblockNameByMonNature(void)
@@ -2844,11 +2844,11 @@ void SetBattleTowerLinkPlayerGfx(void)
     {
         if (gLinkPlayers[i].gender == MALE)
         {
-            VarSet(VAR_OBJ_GFX_ID_F - i, EVENT_OBJ_GFX_BRENDAN_NORMAL);
+            VarSet(VAR_OBJ_GFX_ID_F - i, OBJ_EVENT_GFX_BRENDAN_NORMAL);
         }
         else
         {
-            VarSet(VAR_OBJ_GFX_ID_F - i, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL);
+            VarSet(VAR_OBJ_GFX_ID_F - i, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL);
         }
     }
 }
@@ -6298,21 +6298,21 @@ bool8 RyuFollowerToTrainerID(void)
             {
                 switch (VarGet(VAR_RYU_FOLLOWER_ID))
                 {
-                case EVENT_OBJ_GFX_TWIN:
+                case OBJ_EVENT_GFX_TWIN:
                     {
                         gSpecialVar_0x8006 = TRAINER_REL_MINNIE;
 	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_MINNIE;
                         return TRUE;
                         break;
                     }
-                case EVENT_OBJ_GFX_WOMAN_2:
+                case OBJ_EVENT_GFX_WOMAN_2:
                     {
                         gSpecialVar_0x8006 = TRAINER_REL_LANETTE;
 	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_LANETTE; 
                         return TRUE;
                         break;
                     }
-                case EVENT_OBJ_GFX_AQUA_MEMBER_F:
+                case OBJ_EVENT_GFX_AQUA_MEMBER_F:
                     {
                         gSpecialVar_0x8006 = TRAINER_REL_SHELLY;
 	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_SHELLY;

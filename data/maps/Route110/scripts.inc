@@ -56,13 +56,13 @@ r110_LeafSceneEnding::
 	lock
 	fadenewbgm MUS_RG_SLOWMASARA
 	setvar VAR_RYU_DS_LANA_STAGE, 96
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement 31, Common_Movement_FaceLeft
 	waitmovement 31
 	msgbox r110_LeafSceneEndText MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox r110_LeafSceneEndText2 MSGBOX_DEFAULT
 	closemessage
 	applymovement 31, Common_Movement_HeartEmote
@@ -70,7 +70,7 @@ r110_LeafSceneEnding::
 	msgbox r110_LeafSceneEndText3 MSGBOX_DEFAULT
 	closemessage
 	applymovement 31, r110_LeafExitSouth
-	applymovement EVENT_OBJ_ID_PLAYER, r110_PlayerExitSouth
+	applymovement OBJ_EVENT_ID_PLAYER, r110_PlayerExitSouth
 	delay 5
 	applymovement 31, Common_Movement_StepDown
 	fadescreenspeed 1, 5

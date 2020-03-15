@@ -15,9 +15,9 @@ WI_StartDSCI::
 	waitmovement 6
 	msgbox WI_CozmoIntro
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 	
@@ -25,9 +25,9 @@ WI_CantLeave::
 	lock
 	msgbox WI_NotAllowedToLeave
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 

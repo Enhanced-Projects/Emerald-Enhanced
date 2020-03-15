@@ -4,13 +4,13 @@ LittlerootTown_BrendansHouse_1F_MapScripts:: @ 81F7755
 
 LRT_leftSideTrigger::
 	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
-	applymovement EVENT_OBJ_ID_PLAYER, Lrt_trigger_moveRight
+	applymovement OBJ_EVENT_ID_PLAYER, Lrt_trigger_moveRight
 	waitmovement 0
 	goto LRT_GameClearTriggerMale
 	
 LRT_rightSideTrigger::
 	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
-	applymovement EVENT_OBJ_ID_PLAYER, Lrt_trigger_moveLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Lrt_trigger_moveLeft
 	waitmovement 0
 	goto LRT_GameClearTriggerMale
 	
@@ -97,7 +97,7 @@ LRT_maleRivalDSStage3::
 LRT_MRDSS3::
 	applymovement 2, LRT_MeetFemalePlayer
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, LRT_facedown
+	applymovement OBJ_EVENT_ID_PLAYER, LRT_facedown
 	msgbox LRT_maleRivalMomCuteCouple MSGBOX_DEFAULT
 	setflag FLAG_RYU_DS_MALE_MOM_MET
 	applymovement 2, LRT_ReturnToTable2

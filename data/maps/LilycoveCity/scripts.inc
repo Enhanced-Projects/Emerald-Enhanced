@@ -21,8 +21,8 @@ LeafSceneResume::
 	waitmovement 23
 	msgbox LCL_Story2 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox LCL_Story3 MSGBOX_DEFAULT
 	closemessage
 	applymovement 23, Common_Movement_FaceDown
@@ -33,7 +33,7 @@ LeafSceneResume::
 	waitmovement 23
 	msgbox LCL_Story4_5 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	applymovement 23, Common_Movement_ExclamationMark
 	playse SE_PIN
 	waitmovement 23
@@ -627,12 +627,12 @@ LCC_FemalRivalBattleFinished:: @ 81E2F3E
 
 LCC_MaleRivalBattleFinished:: @ 81E2FAA
 	applymovement 17, lcc_brendanStepRight
-	applymovement EVENT_OBJ_ID_PLAYER, lcc_playerStepRight
+	applymovement OBJ_EVENT_ID_PLAYER, lcc_playerStepRight
 	waitmovement 0
 	msgbox lcc_brendanOutro1, MSGBOX_DEFAULT
 	closemessage
 	applymovement 17 lcc_brendanStepLeft
-	applymovement EVENT_OBJ_ID_PLAYER, lcc_playerLookUp
+	applymovement OBJ_EVENT_ID_PLAYER, lcc_playerLookUp
 	waitmovement 0 
 	msgbox lcc_brendanOutro2 MSGBOX_DEFAULT
 	closemessage
@@ -710,7 +710,7 @@ lcc_maleRivalRelChoice1::
 	msgbox LCC_BRENDAN_MSG MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, LCC_BrendanLeaves
-	applymovement EVENT_OBJ_ID_PLAYER, lcc_playerFaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, lcc_playerFaceDown
 	delay 40
 	fadescreen 0
 	delay 50

@@ -17,7 +17,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WALLACE",
+            "graphics_id": "OBJ_EVENT_GFX_WALLACE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -30,7 +30,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_CHAMPIONS_ROOM_BIRCH",
-            "graphics_id": "EVENT_OBJ_GFX_PROF_BIRCH",
+            "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -43,7 +43,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
-            "graphics_id": "EVENT_OBJ_GFX_RIVAL_MAY_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_RIVAL_MAY_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -56,7 +56,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
-            "graphics_id": "EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",

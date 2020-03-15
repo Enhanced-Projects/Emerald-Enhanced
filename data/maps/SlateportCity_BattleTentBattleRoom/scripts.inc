@@ -4,7 +4,7 @@ SlateportCity_BattleTentBattleRoom_MapScripts:: @ 8209960
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, SlateportCity_BattleTentBattleRoom_OnFrame
 	.byte 0
 
-	@ On this map the player (EVENT_OBJ_ID_PLAYER) is hidden
+	@ On this map the player (OBJ_EVENT_ID_PLAYER) is hidden
 	@ The player is represented instead by object event 3, which has the gfx id VAR_OBJ_GFX_ID_1
 
 SlateportCity_BattleTentBattleRoom_OnTransition: @ 8209970
@@ -20,11 +20,11 @@ SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfx:: @ 8209976
 	return
 
 SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale:: @ 820998E
-	setvar VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
 	return
 
 SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale:: @ 8209994
-	setvar VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
 	return
 
 SlateportCity_BattleTentBattleRoom_OnWarp: @ 820999A
@@ -33,7 +33,7 @@ SlateportCity_BattleTentBattleRoom_OnWarp: @ 820999A
 
 SlateportCity_BattleTentBattleRoom_EventScript_SetUpObjects:: @ 82099A4
 	setvar VAR_TEMP_1, 1
-	hideobjectat EVENT_OBJ_ID_PLAYER, MAP_FALLARBOR_TOWN_BATTLE_TENT_BATTLE_ROOM
+	hideobjectat OBJ_EVENT_ID_PLAYER, MAP_FALLARBOR_TOWN_BATTLE_TENT_BATTLE_ROOM
 	hideobjectat 2, MAP_SLATEPORT_CITY_BATTLE_TENT_BATTLE_ROOM
 	end
 

@@ -47,9 +47,9 @@ Ryu_LNH_RomSceneStart::
 	closemessage
 	fadescreen 0
 	delay 10
-	applymovement EVENT_OBJ_ID_PLAYER, LNH_ExitBed
-	waitmovement EVENT_OBJ_ID_PLAYER
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, LNH_ExitBed
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	msgbox LNH_SheLooksBusy
 	closemessage
 	setflag FLAG_RYU_DS_LANETTE_PARTNERS
@@ -68,9 +68,9 @@ LNH_AfterStory::
 	closemessage
 	removecutscenesprites
 	applymovement 1, LNH_AS_LanetteToBed
-	applymovement EVENT_OBJ_ID_PLAYER, LNH_AS_PlayerToBed
+	applymovement OBJ_EVENT_ID_PLAYER, LNH_AS_PlayerToBed
 	waitmovement 1
-	waitmovement EVENT_OBJ_ID_PLAYER
+	waitmovement OBJ_EVENT_ID_PLAYER
 	fadescreen 1
 	fadenewbgm MUS_DUMMY
 	delay 5
@@ -82,14 +82,14 @@ LNH_AfterStory::
 	applymovement 1, Common_Movement_FaceRight
 	waitmovement 1
 	fadescreen 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox LNH_AS_YouWakeUp
 	closemessage
 	fadedefaultbgm
-	applymovement EVENT_OBJ_ID_PLAYER, LNH_ExitBed
-	waitmovement EVENT_OBJ_ID_PLAYER
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, LNH_ExitBed
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 1, LNH_MoveToPlayerFromPCDesk
 	waitmovement 1
 	drawheadshot HEAD_LANETTE
@@ -157,8 +157,8 @@ RF_LanetteSetupFollower:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Lanette: Can I roam around with\nyou, please?\lI'm bored!$"
 
 LNH_Follower::
-	createfollower EVENT_OBJ_GFX_WOMAN_2, RyuFollowerSelectNPCScript, DIR_NORTH
-	setvar VAR_RYU_FOLLOWER_ID, EVENT_OBJ_GFX_WOMAN_2
+	createfollower OBJ_EVENT_GFX_WOMAN_2, RyuFollowerSelectNPCScript, DIR_NORTH
+	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
 	setflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
 	setflag FLAG_RYU_HIDE_LANETTE_BASEMENT
 	setflag FLAG_RYU_HAS_FOLLOWER
@@ -173,11 +173,11 @@ LNH_BasementScene::
 	goto_if_unset FLAG_RYU_LANETTE_EVENT_0, LNH_ShouldntBeHere
 	addobject 1
 	clearflag FLAG_RYU_HIDE_LANETTE_BASEMENT
-	applymovement EVENT_OBJ_ID_PLAYER, LNH_ToLanetteBasement
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, LNH_ToLanetteBasement
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox LNH_LanetteDialog2 MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq LNH_HelpLanette
@@ -194,8 +194,8 @@ LNH_Acquaintance::
 LNH_ShouldntBeHere:
 	msgbox LNH_ShouldntBeHereMsg
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 	
@@ -236,11 +236,11 @@ LNH_WaitForLanette::
 	
 LNH_HelpLanette::
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, LNH_ToLanette
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, LNH_ToLanette
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox LNH_HelpGetUp
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, LNH_Help1
+	applymovement OBJ_EVENT_ID_PLAYER, LNH_Help1
 	applymovement 1, LNH_Help2
 	waitmovement 1
 	msgbox LNH_looksflushed
@@ -257,12 +257,12 @@ LNH_HelpLanette::
 	msgbox LNH_tryingToMakeBed2
 	closemessage
 	applymovement 1, Common_Movement_HeartEmote
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
+	waitmovement OBJ_EVENT_ID_PLAYER
 	removecutscenesprites
 	applymovement 1, LNH_ToBed1
-	applymovement EVENT_OBJ_ID_PLAYER, LNH_ToBed2
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, LNH_ToBed2
+	waitmovement OBJ_EVENT_ID_PLAYER
 	fadenewbgm MUS_DUMMY
 	fadescreen 1
 	delay 80

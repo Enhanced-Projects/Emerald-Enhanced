@@ -3,13 +3,13 @@ LittlerootTown_MaysHouse_1F_MapScripts:: @ 81F88A5
 
 LRT_leftSideTriggerFemale::
 	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
-	applymovement EVENT_OBJ_ID_PLAYER, Lrt_trigger_moveRight
+	applymovement OBJ_EVENT_ID_PLAYER, Lrt_trigger_moveRight
 	waitmovement 0
 	goto LRT_GameClearTriggerFemale
 	
 LRT_rightSideTriggerFemale::
 	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
-	applymovement EVENT_OBJ_ID_PLAYER, Lrt_trigger_moveLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Lrt_trigger_moveLeft
 	waitmovement 0
 	goto LRT_GameClearTriggerFemale
 
@@ -87,7 +87,7 @@ LRT_FemaleRivalDSStage3::
 LRT_FRDSS3::
 	applymovement 2, LRT_MeetMalePlayer
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, LRT_facedown
+	applymovement OBJ_EVENT_ID_PLAYER, LRT_facedown
 	msgbox LRT_FemaleRivalMomCuteCouple MSGBOX_DEFAULT
 	setflag FLAG_RYU_DS_FEMALE_MOM_MET
 	applymovement 2, LRT_ReturnToTable

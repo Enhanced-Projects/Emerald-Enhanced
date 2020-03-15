@@ -129,7 +129,7 @@
         {
             "elevation": 0,
             "flag": "FLAG_HIDE_PETALBURG_GYM_NORMAN",
-            "graphics_id": "EVENT_OBJ_GFX_NORMAN",
+            "graphics_id": "OBJ_EVENT_GFX_NORMAN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -142,7 +142,7 @@
         {
             "elevation": 3,
             "flag": "5",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -155,7 +155,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -168,7 +168,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -181,7 +181,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -194,7 +194,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -207,7 +207,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -220,7 +220,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -233,7 +233,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_PETALBURG_GYM_GREETER",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_2",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -246,7 +246,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
-            "graphics_id": "EVENT_OBJ_GFX_RIVAL_MAY_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_RIVAL_MAY_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -259,7 +259,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_F",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -272,7 +272,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
-            "graphics_id": "EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -285,7 +285,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
-            "graphics_id": "EVENT_OBJ_GFX_LEAF",
+            "graphics_id": "OBJ_EVENT_GFX_LEAF",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -298,7 +298,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_2",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",

@@ -62,7 +62,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_M",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
             "movement_range_x": 5,
             "movement_range_y": 5,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_UP_LEFT_DOWN",
@@ -75,7 +75,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_F",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
             "movement_range_x": 5,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT",
@@ -88,7 +88,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_128_STEVEN",
-            "graphics_id": "EVENT_OBJ_GFX_STEVEN",
+            "graphics_id": "OBJ_EVENT_GFX_STEVEN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -101,7 +101,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_128_ARCHIE",
-            "graphics_id": "EVENT_OBJ_GFX_ARCHIE",
+            "graphics_id": "OBJ_EVENT_GFX_ARCHIE",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -114,7 +114,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_ROUTE_128_MAXIE",
-            "graphics_id": "EVENT_OBJ_GFX_MAXIE",
+            "graphics_id": "OBJ_EVENT_GFX_MAXIE",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -127,7 +127,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_FISHERMAN",
+            "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -140,7 +140,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -153,7 +153,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
@@ -166,7 +166,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_F",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
             "movement_range_x": 1,
             "movement_range_y": 3,
             "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
@@ -179,7 +179,7 @@
         {
             "elevation": 1,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_M",
+            "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
             "movement_range_x": 1,
             "movement_range_y": 3,
             "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",

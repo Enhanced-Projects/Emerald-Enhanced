@@ -6,8 +6,8 @@ NM16_Mewtwo::
 	lockall
 	faceplayer
 	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 1075
-	applymovement EVENT_OBJ_ID_PLAYER, NM16_PlayerEntry
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, NM16_PlayerEntry
+	waitmovement OBJ_EVENT_ID_PLAYER
 	trainerbattle_single TRAINER_STORY_MEWTWO, NM16_M2Intro, NM16_M2Defeat, NM16_Continue
 	release
 	end
