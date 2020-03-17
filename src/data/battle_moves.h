@@ -7473,7 +7473,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_SACRED_SWORD] =
     {
         .effect = EFFECT_HIT,
-        .power = 90,
+        .power = 100,
         .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 15,

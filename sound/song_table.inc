@@ -353,10 +353,10 @@ gSongTable:: @ 86B49F0
 	song dummy_song_header, 0, 0
 	song mus_tetsuji, 0, 0          @ Unused - TETSUJI
 	song mus_field13, 0, 0          @ Unused - Route 38
-	song mus_kachi22, 0, 0          @ Victory! (Wild Pokémon) (No Intro)
-	song mus_kachi2, 0, 0           @ Victory! (Wild Pokémon)
-	song mus_kachi3, 0, 0           @ Victory! (Gym Leader)
-	song mus_kachi5, 0, 0           @ Victory! (Wallace)
+	song mus_kachi22, 0, 2          @ Victory! (Wild Pokémon) (No Intro)
+	song mus_kachi2, 0, 2           @ Victory! (Wild Pokémon)
+	song mus_kachi3, 0, 2           @ Victory! (Gym Leader)
+	song mus_kachi5, 0, 2           @ Victory! (Wallace)
 	song mus_pcc, 0, 0              @ Unused - Pokémon Center (2)
 	song mus_nibi, 0, 0             @ Unused - Viridian City
 	song mus_suikun, 0, 0           @ Unused - Battle! (Entei/Raikou/Suicune)
@@ -378,7 +378,7 @@ gSongTable:: @ 86B49F0
 	song mus_dooro_x4, 0, 0         @ Introductions
 	song mus_fune_kan, 0, 0         @ Oceanic Museum
 	song mus_me_shinka, 2, 2        @ Evolution (Intro)
-	song mus_shinka, 0, 0           @ Evolution
+	song mus_shinka, 0, 2           @ Evolution
 	song mus_me_wasure, 2, 2        @ Move Deleted
 	song mus_syoujoeye, 0, 0        @ Trainers' Eyes Meet (Tuber♀)
 	song mus_boyeye, 0, 0           @ Trainers' Eyes Meet (Youngster)
@@ -393,12 +393,12 @@ gSongTable:: @ 86B49F0
 	song mus_me_b_big, 2, 2         @ Jackpot
 	song mus_me_b_small, 2, 2       @ Win
 	song mus_me_zannen, 2, 2        @ Lose
-	song mus_bd_time, 0, 0          @ Reel Time
-	song mus_test1, 0, 0            @ Pokémon Contest! (Multiplayer - Player 1)
-	song mus_test2, 0, 0            @ Pokémon Contest! (Multiplayer - Player 2)
-	song mus_test3, 0, 0            @ Pokémon Contest! (Multiplayer - Player 3)
-	song mus_test4, 0, 0            @ Pokémon Contest! (Multiplayer - Player 4)
-	song mus_test, 0, 0             @ Trainers' Eyes Meet (Gentleman)
+	song mus_bd_time, 0, 2          @ Reel Time
+	song mus_test1, 0, 2            @ Pokémon Contest! (Multiplayer - Player 1)
+	song mus_test2, 0, 2            @ Pokémon Contest! (Multiplayer - Player 2)
+	song mus_test3, 0, 2            @ Pokémon Contest! (Multiplayer - Player 3)
+	song mus_test4, 0, 2            @ Pokémon Contest! (Multiplayer - Player 4)
+	song mus_test, 0, 2             @ Trainers' Eyes Meet (Gentleman)
 	song mus_gomachi0, 0, 0         @ Verdanturf Town
 	song mus_gotown, 0, 0           @ Rustboro City
 	song mus_pokecen, 0, 0          @ Pokémon Center
@@ -411,11 +411,11 @@ gSongTable:: @ 86B49F0
 	song mus_girleye, 0, 0          @ Trainers' Eyes Meet (Lass)
 	song mus_minamo, 0, 0           @ Lilycove City
 	song mus_ashroad, 0, 0          @ Route 111
-	song mus_event0, 0, 0           @ H-Help Me!
+	song mus_event0, 0, 2           @ H-Help Me!
 	song mus_deepdeep, 0, 0         @ Dive
-	song mus_kachi1, 0, 0           @ Victory! (Trainer Battle)
-	song mus_title3, 0, 0           @ Title Screen
-	song mus_demo1, 0, 0            @ Opening Movie: Setting out on a Journey in the Hoenn Region
+	song mus_kachi1, 0, 2           @ Victory! (Trainer Battle)
+	song mus_title3, 0, 2           @ Title Screen
+	song mus_demo1, 0, 2            @ Opening Movie: Setting out on a Journey in the Hoenn Region
 	song mus_girl_sup, 0, 0         @ May
 	song mus_hageshii, 0, 0         @ Trainers' Eyes Meet (Psychic)
 	song mus_kakkoii, 0, 0          @ Trainers' Eyes Meet (Cooltrainer)
@@ -425,8 +425,8 @@ gSongTable:: @ 86B49F0
 	song mus_boy_sup, 0, 0          @ Brendan
 	song mus_rainbow, 0, 0          @ Evergrande City
 	song mus_ayasii, 0, 0           @ Trainers' Eyes Meet (Hex Maniac)
-	song mus_kachi4, 0, 0           @ Victory! (Team Aqua / Team Magma)
-	song mus_ropeway, 0, 0          @ Cable Car
+	song mus_kachi4, 0, 2           @ Victory! (Team Aqua / Team Magma)
+	song mus_ropeway, 0, 2          @ Cable Car
 	song mus_casino, 0, 0           @ Game Corner
 	song mus_hightown, 0, 0         @ Dewford Town
 	song mus_safari, 0, 0           @ Safari Zone
@@ -440,8 +440,8 @@ gSongTable:: @ 86B49F0
 	song mus_dendou, 0, 0           @ The Hall of Fame
 	song mus_tonekusa, 0, 0         @ Fallarbor Town
 	song mus_maborosi, 0, 0         @ Sealed Chamber
-	song mus_con_fan, 0, 0          @ Contest Winner
-	song mus_contest0, 0, 0         @ Pokémon Contest!
+	song mus_con_fan, 0, 2          @ Contest Winner
+	song mus_contest0, 0, 2         @ Pokémon Contest!
 	song mus_mgm0, 0, 0             @ Team Magma Appears!
 	song mus_t_battle, 0, 0         @ Opening Movie: Double Battles
 	song mus_ooame, 0, 0            @ Heavy Rain
@@ -465,8 +465,8 @@ gSongTable:: @ 86B49F0
 	song mus_pyramid, 0, 0          @ Battle Pyramid
 	song mus_pyramid_top, 0, 0      @ Battle Pyramid Summit
 	song mus_b_palace, 0, 0         @ Battle Palace
-	song mus_rekkuu_kourin, 0, 0    @ Rayquaza Enters!
-	song mus_sattower, 0, 0         @ Battle Tower
+	song mus_rekkuu_kourin, 0, 2    @ Rayquaza Enters!
+	song mus_sattower, 0, 2         @ Battle Tower
 	song mus_me_symbolget, 2, 2     @ Obtained a Frontier Symbol!
 	song mus_b_dome, 0, 0           @ Battle Dome
 	song mus_b_tube, 0, 0           @ Battle Pike
@@ -490,11 +490,11 @@ gSongTable:: @ 86B49F0
 	song mus_rg_ajito, 0, 0         @ Rocket Hideout (FRLG)
 	song mus_rg_gym, 0, 0           @ Pokémon Gym (FRLG)
 	song mus_rg_purin, 2, 2         @ Jigglypuff's Song (FRLG)
-	song mus_rg_demo, 0, 0          @ Opening Movie (FRLG)
+	song mus_rg_demo, 0, 2          @ Opening Movie (FRLG)
 	song mus_rg_title, 0, 0         @ Title Screen (FRLG)
 	song mus_rg_guren, 0, 0         @ Cinnabar Island Theme (FRLG)
 	song mus_rg_shion, 0, 0         @ Lavender Town Theme (FRLG)
-	song mus_rg_kaihuku, 0, 0       @ Pokémon Healed (FRLG)
+	song mus_rg_kaihuku, 0, 2       @ Pokémon Healed (FRLG)
 	song mus_rg_cycling, 0, 0       @ Cycling (FRLG)
 	song mus_rg_rocket, 0, 0        @ A Trainer Appears (Bad Guy Version) (FRLG)
 	song mus_rg_shoujo, 0, 0        @ A Trainer Appears (Girl Version) (FRLG)
@@ -523,9 +523,9 @@ gSongTable:: @ 86B49F0
 	song mus_rg_shiruhu, 0, 0       @ Silph Co. (FRLG)
 	song mus_rg_hanada, 0, 0        @ Fuchsia City Theme (FRLG)
 	song mus_rg_tamamusi, 0, 0      @ Celadon City Theme (FRLG)
-	song mus_rg_win_tre, 0, 0       @ Victory! (Trainer Battle) (FRLG)
-	song mus_rg_win_yasei, 0, 0     @ Victory! (Wild Pokémon) (FRLG)
-	song mus_rg_win_gym, 0, 0       @ Victory! (Gym Leader Battle) (FRLG)
+	song mus_rg_win_tre, 0, 2       @ Victory! (Trainer Battle) (FRLG)
+	song mus_rg_win_yasei, 0, 2     @ Victory! (Wild Pokémon) (FRLG)
+	song mus_rg_win_gym, 0, 2       @ Victory! (Gym Leader Battle) (FRLG)
 	song mus_rg_kuchiba, 0, 0       @ Vermillion City Theme (FRLG)
 	song mus_rg_nibi, 0, 0          @ Pewter City Theme (FRLG)
 	song mus_rg_rival1, 0, 0        @ A Rival Appears (FRLG)
@@ -534,11 +534,11 @@ gSongTable:: @ 86B49F0
 	song mus_rg_fan5, 2, 2          @ Fanfare: Pokémon Obtained (FRLG)
 	song mus_rg_fan6, 2, 2          @ Fanfare: Pokémon Caught
 	song mus_me_rg_photo, 2, 2      @ Pokémon Printer (FRLG)
-	song mus_rg_titlerog, 0, 0      @ Game Freak Logo (FRLG)
-	song mus_rg_get_yasei, 0, 0     @ Fanfare: Pokémon Caught (No Intro) (FRLG)
-	song mus_rg_sousa, 0, 0         @ Game Tutorial (1) (FRLG)
-	song mus_rg_sekaikan, 0, 0      @ Game Tutorial (2) (FRLG)
-	song mus_rg_seibetu, 0, 0       @ Game Tutorial (3) (FRLG)
+	song mus_rg_titlerog, 0, 2      @ Game Freak Logo (FRLG)
+	song mus_rg_get_yasei, 0, 2     @ Fanfare: Pokémon Caught (No Intro) (FRLG)
+	song mus_rg_sousa, 0, 2         @ Game Tutorial (1) (FRLG)
+	song mus_rg_sekaikan, 0, 2      @ Game Tutorial (2) (FRLG)
+	song mus_rg_seibetu, 0, 2       @ Game Tutorial (3) (FRLG)
 	song mus_rg_jump, 0, 0          @ Pokémon Jump (FRLG)
 	song mus_rg_union, 0, 0         @ The Union Room (FRLG)
 	song mus_rg_network, 0, 0       @ Pokémon Net Center (FRLG)

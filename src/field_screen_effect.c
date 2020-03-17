@@ -81,11 +81,11 @@ void WarpFadeInScreen(void)
    {
    case 0:
        FillPalBufferBlack();
-       FadeScreen(FADE_FROM_BLACK, 0);
+       FadeScreen(FADE_FROM_BLACK, -13);
        break;
    case 1:
        FillPalBufferWhite();
-       FadeScreen(FADE_FROM_WHITE, 0);
+       FadeScreen(FADE_FROM_WHITE, -4);
    }
 }
 
@@ -98,7 +98,7 @@ void FadeInFromWhite(void)
 void FadeInFromBlack(void)
 {
     FillPalBufferBlack();
-    FadeScreen(FADE_FROM_BLACK, 0);
+    FadeScreen(FADE_FROM_BLACK, -13);
 }
 
 void WarpFadeOutScreen(void)
@@ -107,10 +107,10 @@ void WarpFadeOutScreen(void)
     switch (GetMapPairFadeToType(currentMapType, GetDestinationWarpMapHeader()->mapType))
     {
     case 0:
-        FadeScreen(FADE_TO_BLACK, 0);
+        FadeScreen(FADE_TO_BLACK, -13);
         break;
     case 1:
-        FadeScreen(FADE_TO_WHITE, 0);
+        FadeScreen(FADE_TO_WHITE, -4);
     }
 }
 

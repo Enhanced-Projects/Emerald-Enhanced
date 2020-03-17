@@ -49,6 +49,7 @@
 #include "field_message_box.h"
 #include "constants/event_objects.h"
 #include "rtc.h"
+#include "gba/m4a_internal.h"
 
 extern u8 RyuDebugMenuScript[];
 extern u8 RyuDebugBetaMenuScript[];
@@ -657,93 +658,33 @@ void PlayNextTrack(void)
 static bool8 HandleStartMenuInput(void)
 {
     u16 song = VarGet(VAR_RYU_JUKEBOX);
+    song = song + 1;
+    switch(song)
+    {
+        case 1:
+        case 999:
+        case 557:
+            song = 350;
+            break;
+        default:
+            break;
+    }
+    if(song > 1000)
+    {
+        song = 350;
+    }
     if ((FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1) && gMain.newKeys & R_BUTTON)
     {
         PlaySE(SE_PIN);
-        song = song + 1;
-        if (song > 1000)
-            song = 557;
-
-        switch (song)//Now Playing
+        if(gSongTable[song].me != 0) // if second number in this songtable entry is not zero
         {
-        case 1:
-            VarSet(VAR_RYU_JUKEBOX, 350);
-            PlayNextTrack();
-            break;
-        case 352:
-            VarSet(VAR_RYU_JUKEBOX, 356);
-            PlayNextTrack();
-            break;
-	    case 367:
-            VarSet(VAR_RYU_JUKEBOX, 373);
-            PlayNextTrack();
-            break;
-	    case 376:
-            VarSet(VAR_RYU_JUKEBOX, 379);
-            PlayNextTrack();
-            break;
-	    case 387:
-            VarSet(VAR_RYU_JUKEBOX, 398);
-            PlayNextTrack();
-            break;
-	    case 410:
-            VarSet(VAR_RYU_JUKEBOX, 411);
-            PlayNextTrack();
-            break;
-	    case 412:
-            VarSet(VAR_RYU_JUKEBOX, 415);
-            PlayNextTrack();
-            break;
-	    case 424:
-            VarSet(VAR_RYU_JUKEBOX, 426);
-            PlayNextTrack();
-            break;
-	    case 439:
-            VarSet(VAR_RYU_JUKEBOX, 441);
-            PlayNextTrack();
-            break;
-	    case 459:
-            VarSet(VAR_RYU_JUKEBOX, 461);
-            PlayNextTrack();
-            break;
-	    case 464:
-            VarSet(VAR_RYU_JUKEBOX, 467);
-            PlayNextTrack();
-            break;
-	    case 488:
-            VarSet(VAR_RYU_JUKEBOX, 490);
-            PlayNextTrack();
-            break;
-        case 493:
-            VarSet(VAR_RYU_JUKEBOX, 494);
-            PlayNextTrack();
-            break;
-	    case 522:
-            VarSet(VAR_RYU_JUKEBOX, 525);
-            PlayNextTrack();
-            break;
-	    case 529:
-            VarSet(VAR_RYU_JUKEBOX, 538);
-            PlayNextTrack();
-            break;
-	    case 550:
-            VarSet(VAR_RYU_JUKEBOX, 551);
-            PlayNextTrack();
-            break;
-	    case 557:
-            VarSet(VAR_RYU_JUKEBOX, 350);
-            PlayNextTrack();
-            break;
-        case 999:
-            VarSet(VAR_RYU_JUKEBOX, 350);
-            PlayNextTrack();
-        default:
-            VarSet(VAR_RYU_JUKEBOX, song);
-            PlayNextTrack();
-            break;
-        }
-        
+            for(;gSongTable[song].me != 0; song = song + 1) // skip songs that are like that until we find one that isn't 
+            {
 
+            }
+        }
+        VarSet(VAR_RYU_JUKEBOX, song);
+        PlayNextTrack();
     }
 
     if (gMain.newKeys & SELECT_BUTTON && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
