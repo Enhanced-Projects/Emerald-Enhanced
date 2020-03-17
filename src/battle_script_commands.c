@@ -3138,9 +3138,9 @@ static void Cmd_seteffectwithchance(void)
              && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
     {
         if (percentChance >= 100)
-            SetMoveEffect(0, MOVE_EFFECT_CERTAIN);
+            SetMoveEffect(FALSE, MOVE_EFFECT_CERTAIN);
         else
-            SetMoveEffect(0, 0);
+            SetMoveEffect(FALSE, 0);
     }
     else
     {
