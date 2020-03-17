@@ -430,6 +430,9 @@ SlateportCity_PokemartDecor_Dolls: @ 81DD184
 	.2byte DECOR_SKITTY_DOLL
 	.2byte DECOR_SWABLU_DOLL
 	.2byte DECOR_GULPIN_DOLL
+	.2byte DECOR_REGIROCK_DOLL
+	.2byte DECOR_REGICE_DOLL
+	.2byte DECOR_REGISTEEL_DOLL
 	.2byte DECOR_NONE
 	release
 	end
