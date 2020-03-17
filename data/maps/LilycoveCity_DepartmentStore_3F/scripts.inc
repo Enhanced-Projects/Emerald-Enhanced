@@ -65,16 +65,17 @@ LilycoveCity_DepartmentStore_3F_EventScript_Woman:: @ 821FCC8
 
 LilycoveCity_DepartmentStore_3F_Text_ItemsBestForTougheningPokemon: @ 821FCD1
 	.string "I came here to toughen up my\n"
-	.string "pokemon, but maybe I'll buy some.\p"
-	.string "nice Mats too.$"
+	.string "pokemon,\p"
+	.string "but maybe I'll buy some nice\n"
+	.string "mats too.$"
 
 LilycoveCity_DepartmentStore_3F_Text_WantMoreEndurance: @ 821FD3B
-	.string "This place is full of cute Cushions.\p"
+	.string "This place is full of cute cushions.\p"
 	.string "I should buy some for me, instead of\n"
 	.string "just for my children.$"
 
 LilycoveCity_DepartmentStore_3F_Text_GaveCarbosToSpeedUpMon: @ 821FDB4
-	.string "They sell many cute Mats here.\p"
+	.string "They sell many cute mats here.\p"
 	.string "I wonder which one I should get?\n"
 	.string "Maybe I'll buy them all…$"
 
