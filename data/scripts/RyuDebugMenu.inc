@@ -188,7 +188,7 @@ RyuDebug_Utility1::
 	call_if_unset FLAG_RYU_CLEARED_TOUGH, notough
 	call_if_unset FLAG_RYU_CLEARED_CUTE, nocute
 	closemessage
-	clearflag FLAG_RYU_REGIGIGAS
+	setflag FLAG_RYU_RANDOMBATTLE
 	release
 	end
 

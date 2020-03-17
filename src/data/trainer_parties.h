@@ -11041,54 +11041,37 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly4[] = {
 	}
 };
 
-static const struct TrainerMonItemCustomMoves sParty_Brawly5[] = {//unused
+static const struct TrainerMonNoItemDefaultMoves sParty_Random[] = {//unused
     {
     .iv = 255,
-    .lvl = 46,
-    .species = SPECIES_HITMONLEE,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = {MOVE_MEGA_KICK, MOVE_FOCUS_PUNCH, MOVE_EARTHQUAKE, MOVE_BULK_UP},
+    .lvl = 100,
+    .species = SPECIES_BULBASAUR,
     },
     {
     .iv = 255,
-    .lvl = 46,
-    .species = SPECIES_HITMONCHAN,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = {MOVE_SKY_UPPERCUT, MOVE_MACH_PUNCH, MOVE_FIRE_PUNCH, MOVE_ICE_PUNCH},
+    .lvl = 100,
+    .species = SPECIES_BULBASAUR,
     },
     {
     .iv = 255,
-    .lvl = 48,
-    .species = SPECIES_MACHAMP,
-    .heldItem = ITEM_SITRUS_BERRY,
-    .ability = 1,
-    .moves = {MOVE_CROSS_CHOP, MOVE_ROCK_SLIDE, MOVE_FOCUS_PUNCH, MOVE_BULK_UP},
+    .lvl = 100,
+    .species = SPECIES_BULBASAUR,
     },
     {
     .iv = 255,
-    .lvl = 48,
-    .species = SPECIES_MEDICHAM,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = {MOVE_FOCUS_PUNCH, MOVE_LIGHT_SCREEN, MOVE_REFLECT, MOVE_PSYCHIC},
+    .lvl = 100,
+    .species = SPECIES_BULBASAUR,
+
     },
     {
     .iv = 255,
-    .lvl = 50,
-    .species = SPECIES_HITMONTOP,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = {MOVE_PURSUIT, MOVE_COUNTER, MOVE_MACH_PUNCH, MOVE_TRIPLE_KICK},
+    .lvl = 100,
+    .species = SPECIES_BULBASAUR,
     },
     {
     .iv = 255,
-    .lvl = 52,
-    .species = SPECIES_HARIYAMA,
-    .heldItem = ITEM_SITRUS_BERRY,
-    .ability = 0,
-    .moves = {MOVE_FAKE_OUT, MOVE_FOCUS_PUNCH, MOVE_BELLY_DRUM, MOVE_EARTHQUAKE},
+    .lvl = 100,
+    .species = SPECIES_BULBASAUR,
     }
 };
 

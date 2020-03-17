@@ -11654,19 +11654,19 @@ const struct Trainer gTrainers[] = {
         .party = {.ItemCustomMoves = sParty_Brawly4},
     },
 
-    [TRAINER_EMPTY_38] =
+    [TRAINER_RANDOM_PARTY] =
     {
-        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
-        .trainerClass = TRAINER_CLASS_LEADER,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
-        .trainerPic = TRAINER_PIC_LEADER_BRAWLY,
-        .trainerName = _("Brawly"),
-        .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE},
+        .partyFlags = 0,
+        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
+        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerName = _("Selene"),
+        .items = {ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .battleStyle = BS_SET,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_Brawly5),
-        .party = {.ItemCustomMoves = sParty_Brawly5},
+        .partySize = ARRAY_COUNT(sParty_Random),
+        .party = {.NoItemDefaultMoves = sParty_Random},
     },
 
     [TRAINER_WATTSON_2] =

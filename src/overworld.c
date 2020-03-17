@@ -213,6 +213,7 @@ bool8 (*gFieldCallback2)(void);
 u8 gLocalLinkPlayerId; // This is our player id in a multiplayer mode.
 u8 gFieldLinkPlayerCount;
 extern u8 RyuFollowerSelectNPCScript[];
+extern u8 Ryu_StartRandomBattle[];
 
 // EWRAM vars
 EWRAM_DATA static u8 sUnknown_020322D8 = 0;
@@ -409,6 +410,11 @@ static void (*const gMovementStatusHandler[])(struct LinkPlayerObjectEvent *, st
 // code
 void DoWhiteOut(void)
 {
+    if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
+    {
+        FlagClear(FLAG_RYU_RANDOMBATTLE);
+        DoSoftReset();
+    }
     if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
         RyuKillMon();
 
@@ -1803,7 +1809,7 @@ void CB2_ReturnToFieldLocal(void)
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuKillMon();
-}
+} 
 
 void CB2_ReturnToFieldLink(void)
 {
@@ -1897,6 +1903,11 @@ void CB2_ContinueSavedGame(void)
     ScriptContext1_Init();
     ScriptContext2_Disable();
     InitMatchCallCounters();
+    if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
+    {
+        ScriptContext2_Enable();
+        ScriptContext1_SetupScript(Ryu_StartRandomBattle);
+    }
     if (UseContinueGameWarp() == TRUE)
     {
         ClearContinueGameWarpStatus();

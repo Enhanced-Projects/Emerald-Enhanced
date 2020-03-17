@@ -656,7 +656,7 @@ void PlayNextTrack(void)
 
 static bool8 HandleStartMenuInput(void)
 {
-     u16 song = VarGet(VAR_RYU_JUKEBOX);
+    u16 song = VarGet(VAR_RYU_JUKEBOX);
     if ((FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1) && gMain.newKeys & R_BUTTON)
     {
         PlaySE(SE_PIN);

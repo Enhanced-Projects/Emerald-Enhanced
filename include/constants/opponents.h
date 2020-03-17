@@ -778,7 +778,7 @@
 #define TRAINER_BRAWLY_2                    774
 #define TRAINER_BRAWLY_3                    775
 #define TRAINER_BRAWLY_4                    776
-#define TRAINER_EMPTY_38                    777
+#define TRAINER_RANDOM_PARTY                    777
 #define TRAINER_WATTSON_2                   778
 #define TRAINER_WATTSON_3                   779
 #define TRAINER_WATTSON_4                   780

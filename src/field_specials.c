@@ -5684,6 +5684,47 @@ void CheckSaveFileSize(void)
     ConvertIntToDecimalStringN(gStringVar1, size, STR_CONV_MODE_LEFT_ALIGN, 6);
 }
 
+void ForceSoftReset(void)
+{
+    DoSoftReset();
+}
+
+int RyuMeloettaFormSwitcher(void)
+{
+    u8 i;
+    u8 partyCount = CalculatePlayerPartyCount();
+    u16 m1 = 648;
+    u16 m2 = 896;
+    
+    for (i = 0; i < partyCount; i++)
+        {
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_MELOETTA)
+            {
+                SetMonData(&gPlayerParty[i], MON_DATA_SPECIES, &m2);
+                VarSet(VAR_TEMP_9, i);
+                VarSet(VAR_TEMP_A, SPECIES_MELOETTA_PIROUETTE);
+                return 2;
+            }
+
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_MELOETTA_PIROUETTE)
+            {
+                SetMonData(&gPlayerParty[i], MON_DATA_SPECIES, &m1);
+                VarSet(VAR_TEMP_9, i);
+                VarSet(VAR_TEMP_A, SPECIES_MELOETTA);
+                return 2;
+            }
+        }
+
+    if (GetSetPokedexFlag(NATIONAL_DEX_MELOETTA, FLAG_GET_CAUGHT) == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 
 
 //Cutscene image defines

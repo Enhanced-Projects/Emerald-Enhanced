@@ -604,3 +604,5 @@ gSpecials:: @ 81DBA64
 	def_special RyuCheckContestMastery
 	def_special checksymbolcount
 	def_special resetSoundGameStat
+	def_special ForceSoftReset
+	def_special RyuMeloettaFormSwitcher

@@ -5339,34 +5339,27 @@ Move_CUT:
 	end
 
 Move_HIDDEN_POWER:
-	loadspritegfx ANIM_TAG_RED_ORB
-	playsewithpan SE_W036, SOUND_PAN_ATTACKER
-	createvisualtask AnimTask_ScaleMonAndRestore, 5, -7, -7, 11, ANIM_ATTACKER, 0
-	waitforvisualfinish
-	delay 30
-	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_ATTACKER, RGB(31, 31, 19), 12, 5, 1
-	delay 4
-	createvisualtask AnimTask_ScaleMonAndRestore, 5, -7, -7, 11, ANIM_ATTACKER, 0
-	playsewithpan SE_W179, SOUND_PAN_ATTACKER
-	createsprite gHiddenPowerOrbSpriteTemplate, ANIM_ATTACKER, 2, 26, 0
-	createsprite gHiddenPowerOrbSpriteTemplate, ANIM_ATTACKER, 2, 26, 42
-	createsprite gHiddenPowerOrbSpriteTemplate, ANIM_ATTACKER, 2, 26, 84
-	createsprite gHiddenPowerOrbSpriteTemplate, ANIM_ATTACKER, 2, 26, 126
-	createsprite gHiddenPowerOrbSpriteTemplate, ANIM_ATTACKER, 2, 26, 168
-	createsprite gHiddenPowerOrbSpriteTemplate, ANIM_ATTACKER, 2, 26, 210
-	delay 52
-	setarg 7, 0xFFFF
-	playsewithpan SE_W115, SOUND_PAN_ATTACKER
-	createvisualtask AnimTask_ScaleMonAndRestore, 5, -7, -7, 11, ANIM_ATTACKER, 0
-	createsprite gHiddenPowerOrbScatterSpriteTemplate, ANIM_TARGET, 2, 0
-	createsprite gHiddenPowerOrbScatterSpriteTemplate, ANIM_TARGET, 2, 32
-	createsprite gHiddenPowerOrbScatterSpriteTemplate, ANIM_TARGET, 2, 64
-	createsprite gHiddenPowerOrbScatterSpriteTemplate, ANIM_TARGET, 2, 96
-	createsprite gHiddenPowerOrbScatterSpriteTemplate, ANIM_TARGET, 2, 128
-	createsprite gHiddenPowerOrbScatterSpriteTemplate, ANIM_TARGET, 2, 160
-	createsprite gHiddenPowerOrbScatterSpriteTemplate, ANIM_TARGET, 2, 192
-	createsprite gHiddenPowerOrbScatterSpriteTemplate, ANIM_TARGET, 2, 224
-	end
+    setarg 7, 0xFFFF
+    createvisualtask AnimTask_GetMoveType, 5
+    jumpargeq 0, TYPE_GRASS,                Move_MAGICAL_LEAF
+    jumpargeq 0, TYPE_GROUND,               Move_EARTH_POWER
+    jumpargeq 0, TYPE_WATER,                Move_HYDRO_PUMP
+    jumpargeq 0, TYPE_ROCK,                 Move_ANCIENT_POWER
+    jumpargeq 0, TYPE_DARK,                 Move_DARK_PULSE
+    jumpargeq 0, TYPE_NORMAL,               Move_HYPER_VOICE
+    jumpargeq 0, TYPE_ICE,                  Move_POWDER_SNOW
+    jumpargeq 0, TYPE_FIGHTING,             Move_FOCUS_BLAST 
+    jumpargeq 0, TYPE_FLYING,               Move_GUST
+    jumpargeq 0, TYPE_POISON,               Move_SLUDGE
+    jumpargeq 0, TYPE_BUG,                  Move_SIGNAL_BEAM
+    jumpargeq 0, TYPE_GHOST,                Move_SHADOW_BALL
+    jumpargeq 0, TYPE_STEEL,                Move_MIRROR_SHOT
+    jumpargeq 0, TYPE_FIRE,                 Move_HEAT_WAVE
+    jumpargeq 0, TYPE_ELECTRIC,             Move_THUNDER_SHOCK
+    jumpargeq 0, TYPE_PSYCHIC,              Move_PSYCHIC
+    jumpargeq 0, TYPE_DRAGON,               Move_DRAGON_PULSE
+    jumpargeq 0, TYPE_FAIRY,                Move_SWIFT
+    goto Move_HYPER_VOICE
 
 Move_REVERSAL:
 	loadspritegfx ANIM_TAG_BLUE_ORB
