@@ -116,8 +116,8 @@ LCC_BattleItemMart: @ 8220024
 	.2byte ITEM_QUICK_CLAW
 	.2byte ITEM_IRON_BALL
 	.2byte ITEM_LAGGING_TAIL
-	.2byte ITEM_FLYING_GEM
 	.2byte ITEM_AIR_BALLOON
+	.2byte ITEM_FLYING_GEM
 	.2byte ITEM_NONE
 	release
 	end
@@ -180,18 +180,19 @@ LilycoveCity_DepartmentStore_5F_EventScript_LittleGirl:: @ 82200BC
 	end
 
 LilycoveCity_DepartmentStore_5F_Text_PlaceFullOfCuteDolls: @ 82200C5
-	.string "This place is full of cute DOLLS.\p"
-	.string "I should buy some for me, instead of\n"
-	.string "just for my children.$"
+	.string "This place sells so many balls.\p"
+	.string "Which will be most fitting for my\n"
+	.string "darling Azumarill?$"
 
 LilycoveCity_DepartmentStore_5F_Text_GettingDollInsteadOfPokemon: @ 8220122
-	.string "I'm not big enough to raise Pokémon,\n"
-	.string "so I'm getting a cute DOLL instead.$"
+	.string "I'm going to buy a Moon Stone to\n"
+	.string "evolve my sweet Skitty.$"
 
 LilycoveCity_DepartmentStore_5F_Text_SellManyCuteMatsHere: @ 822016B
-	.string "They sell many cute MATS here.\p"
-	.string "I wonder which one I should get?\n"
-	.string "Maybe I'll buy them all…$"
+	.string "They sell many powerfull battle\n"
+	.string "items here.\p"
+	.string "I wonder which one will improve my\n"
+	.string "Wigglytuff the most?$"
 
 LilycoveCity_DepartmentStore_5F_Text_ClosedRooftopForWeather: @ 82201C4
 	.string "I think they closed the rooftop\n"
@@ -232,8 +233,8 @@ LCC_JewelerMakingNecklace::
 	
 	
 LCC_Jeweler_Welcome:
-	.string "Welcome to my jewel gift shop.\n"
-	.string "Get that special item for that special\p"
+	.string "Welcome to my jewel gift shop.\p"
+	.string "Get that special item for that special\n"
 	.string "someone here!$"
 
 LCC_Jeweler_exit:
@@ -241,9 +242,9 @@ LCC_Jeweler_exit:
 	
 LCC_Jeweler_MakeNecklace:
 	.string "Oh, my, that's a high quality star\n"
-	.string "piece. Would you like me to turn it\p"
-	.string "into a necklace? It would be so\n"
-	.string "beautiful!$"
+	.string "piece.\p"
+	.string "Would you like me to turn it into a\n"
+	.string "necklace? It would be so beautiful!$"
 	
 LCC_JewelEnd::
 	msgbox LCC_JewelEndMsg MSGBOX_DEFAULT
@@ -258,13 +259,13 @@ LCC_JewelEndMsg:
 	
 LCC_JewelEndNoItem:
 	.string "Oh, I was mistaken. That's just a\n"
-	.string "mundane stone. I must be too\p"
-	.string "tired.$"
+	.string "mundane stone.\p"
+	.string "I must be too tired.$"
 	
 LCC_JewelerMakingNecklaceMsg:
 	.string "Give me a couple minutes to work\n"
-	.string "with this stone. It will be worth it,\p"
-	.string "I promise!$"
+	.string "with this stone.\p"
+	.string "It will be worth it, I promise!$"
 	
 LCC_NecklaceMade:
 	.string "All done! It turned out even more\n"
