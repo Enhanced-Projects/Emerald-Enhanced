@@ -17,7 +17,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_11",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -30,7 +30,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_12",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -43,7 +43,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_13",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -56,7 +56,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -69,7 +69,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",

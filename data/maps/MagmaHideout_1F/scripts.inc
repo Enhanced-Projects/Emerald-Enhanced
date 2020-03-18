@@ -87,9 +87,9 @@ MH_ShellyCF::
 	msgbox MH_observation MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_RYU_HAS_FOLLOWER
-	createfollower EVENT_OBJ_GFX_AQUA_MEMBER_F, MH_FollowerShellyScript, 2
+	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, MH_FollowerShellyScript, 2
 	setflag FLAG_RYU_WAYSTONE_DISABLED
-	setvar VAR_RYU_FOLLOWER_ID, EVENT_OBJ_GFX_AQUA_MEMBER_F
+	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_AQUA_MEMBER_F
 	removeobject 7
 	setflag FLAG_MAGMA_HIDEOUT_EVENT_DONE
 	clearflag FLAG_RYU_MH_COURTNEY_DUOMODE
@@ -116,9 +116,9 @@ MH_ExitPrevention::
 	goto_if_unset FLAG_RYU_DS_SHELLY_CLOSEFRIENDS, ryu_end
 	lock
 	msgbox MH_Cantleavenotdone
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
-	applymovement EVENT_OBJ_ID_FOLLOWER, Common_Movement_StepUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 

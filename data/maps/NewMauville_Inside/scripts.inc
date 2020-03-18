@@ -334,10 +334,10 @@ NM_Leaf_Event::
 	removeobject 10
 	fadescreen 0
 	msgbox NM_LanaLeft MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	waitmovement 0
 	msgbox NM_ScavengerHuntClue MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox NM_ScavengerHuntClue2 MSGBOX_DEFAULT
 	setflag FLAG_HIDE_NM_LANA
@@ -393,9 +393,13 @@ NewMauville_Zapdos::
 	call_if_ne RyuLegendary_LeftStoneAlone
 	msgbox NewMauville_Zapdos_TouchedStone
 	playmoncry SPECIES_ZAPDOS, 0
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	closemessage
 	waitmoncry
-	setwildbattle SPECIES_ZAPDOS, 90, ITEM_BRIGHT_POWDER
+	setwildbattle SPECIES_ZAPDOS, VAR_RESULT, ITEM_BRIGHT_POWDER
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught

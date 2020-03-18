@@ -63,8 +63,8 @@ FT_LanetteRelChoice:: @ 8200C48
 FT_LanetteRomanceBegin::
 	msgbox FT_PlayerStartsFollowing
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, FT_FollowLanette
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, FT_FollowLanette
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_RYU_LANETTE_VAR, 101
 	playse SE_JIDO_DOA
 	warpsilent MAP_ROUTE114_LANETTES_HOUSE, 255, 5, 5

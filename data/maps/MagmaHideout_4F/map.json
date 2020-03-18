@@ -62,7 +62,7 @@
         {
             "elevation": 0,
             "flag": "FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1",
-            "graphics_id": "EVENT_OBJ_GFX_GROUDON_1",
+            "graphics_id": "OBJ_EVENT_GFX_GROUDON_1",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -75,7 +75,7 @@
         {
             "elevation": 0,
             "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -88,7 +88,7 @@
         {
             "elevation": 0,
             "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -101,7 +101,7 @@
         {
             "elevation": 0,
             "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -114,7 +114,7 @@
         {
             "elevation": 0,
             "flag": "FLAG_RYU_MH_COURTNEY_SOLOMODE",
-            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_F",
+            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -127,7 +127,7 @@
         {
             "elevation": 0,
             "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_MAXIE",
+            "graphics_id": "OBJ_EVENT_GFX_MAXIE",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -140,7 +140,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2",
-            "graphics_id": "EVENT_OBJ_GFX_GROUDON_2",
+            "graphics_id": "OBJ_EVENT_GFX_GROUDON_2",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -153,7 +153,7 @@
         {
             "elevation": 0,
             "flag": "FLAG_ITEM_MAGMA_HIDEOUT_4F_MAX_REVIVE",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -166,7 +166,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_F",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -179,7 +179,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_MH_COURTNEY_DUOMODE",
-            "graphics_id": "EVENT_OBJ_GFX_MAGMA_MEMBER_F",
+            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",

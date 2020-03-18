@@ -15,7 +15,7 @@ AquaHideout_B2F_EventScript_MattNoticePlayer:: @ 8233DE5
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, AC_DevonTrigger
 	goto_if_set FLAG_RYU_ARCHIE_SUCCESSFUL, ryu_end
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
-	applymovement EVENT_OBJ_ID_PLAYER, AC_MoveLeft
+	applymovement OBJ_EVENT_ID_PLAYER, AC_MoveLeft
 	setvar VAR_0x8008, 1  @ Matt object event id
 	playse SE_PIN
 	applymovement VAR_0x8008, Common_Movement_ExclamationMark
@@ -135,7 +135,7 @@ AC_MattTrigger::
 AC_MatOutro::
 	msgbox AC_MattDefeated MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, AC_PlayerMove
+	applymovement OBJ_EVENT_ID_PLAYER, AC_PlayerMove
 	applymovement 10, AC_MattExit
 	waitmovement 10
 	playse SE_TK_WARPOUT
@@ -207,10 +207,14 @@ AHQ_KyogreTrigger::
 	fadescreen 1
 	setflag FLAG_RYU_KYOGRE
 	removeobject 7
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	fadescreen 0
 	waitmoncry
 	delay 10
-	setwildbattle SPECIES_KYOGRE, 80, ITEM_MYSTIC_WATER
+	setwildbattle SPECIES_KYOGRE, VAR_RESULT, ITEM_MYSTIC_WATER
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	setvar VAR_SKY_PILLAR_STATE, 3

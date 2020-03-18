@@ -84,7 +84,7 @@ LRT_WONT_HAPPEN::
     msgbox LRT_SORRY, MSGBOX_DEFAULT
 	setflag FLAG_RYU_DS_DAWN_ACQ @0x4A3
 	msgbox LRT_BADEND, MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER LRT_TURN
+	applymovement OBJ_EVENT_ID_PLAYER LRT_TURN
 	waitmovement 0
 	release
 	end
@@ -101,10 +101,10 @@ LRT_NIGHT::
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	applymovement 4, Common_Movement_HeartEmote
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
 	applymovement 4 LRT_HEART2
-	applymovement EVENT_OBJ_ID_PLAYER LRT_HEART
+	applymovement OBJ_EVENT_ID_PLAYER LRT_HEART
 	fadescreen FADE_TO_BLACK
 	delay 20
 	fadeoutbgm 1
@@ -116,7 +116,7 @@ LRT_NIGHT::
 	msgbox LRT_DAWN_THANKS, MSGBOX_DEFAULT
 	setflag FLAG_RYU_DS_DAWN_LOVERS
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER LRT_HEART3
+	applymovement OBJ_EVENT_ID_PLAYER LRT_HEART3
 	waitmovement 0
 	release
 	end
@@ -134,10 +134,10 @@ LRT_NIGHT2::
 	fadescreen FADE_FROM_BLACK
 	delay 10
 	applymovement 4, Common_Movement_HeartEmote
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
 	applymovement 4, LRT_HEART2
-	applymovement EVENT_OBJ_ID_PLAYER, LRT_HEART
+	applymovement OBJ_EVENT_ID_PLAYER, LRT_HEART
 	delay 20
 	fadescreen FADE_TO_BLACK
 	fadeoutbgm 1
@@ -154,7 +154,7 @@ LRT_NIGHT2::
 	closemessage
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
-	applymovement EVENT_OBJ_ID_PLAYER LRT_HEART3
+	applymovement OBJ_EVENT_ID_PLAYER LRT_HEART3
 	waitmovement 0
 	release
 	end

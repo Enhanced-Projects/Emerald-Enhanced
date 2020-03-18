@@ -1556,7 +1556,7 @@
 	.2byte \quantity
 	.endm
 
-	@creates a follower using EVENT_OBJ_GFX_name, Script of said follower, and which direction they start at.
+	@creates a follower using OBJ_EVENT_GFX_name, Script of said follower, and which direction they start at.
 	.macro createfollower graphicsId:req script:req direction:req
 	.byte 0xe3
 	.byte \graphicsId

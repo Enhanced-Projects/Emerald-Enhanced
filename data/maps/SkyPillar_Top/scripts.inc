@@ -18,10 +18,13 @@ SkyPillar_Top_EventScript_TryRemoveRayquaza:: @ 82396D2
 SP_RyuRayEnc::
 	lockall
 	playmoncry SPECIES_RAYQUAZA, 2
-	delay 40
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	waitmoncry
 	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 100
-	setwildbattle SPECIES_RAYQUAZA, 70, ITEM_NONE
+	setwildbattle SPECIES_RAYQUAZA, VAR_RESULT, ITEM_NONE
 	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_2
 	removeobject 1
 	special BattleSetup_StartLegendaryBattle
@@ -63,9 +66,12 @@ SkyPillar_Top_EventScript_Rayquaza:: @ 8239722
 	lockall
 	waitse
 	playmoncry SPECIES_RAYQUAZA, 2
-	delay 40
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	waitmoncry
-	setwildbattle SPECIES_RAYQUAZA, 70, ITEM_NONE
+	setwildbattle SPECIES_RAYQUAZA, VAR_RESULT, ITEM_NONE
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -110,10 +116,10 @@ SkyPillar_Top_EventScript_RanFromRayquaza2:: @ 8239785
 SkyPillar_Top_EventScript_AwakenRayquaza:: @ 823979A
 	lockall
 	fadeoutbgm 1
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	special SpawnCameraObject
-	applymovement EVENT_OBJ_ID_CAMERA, SkyPillar_Top_Movement_CameraPanUp
+	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_CameraPanUp
 	waitmovement 0
 	special RemoveCameraObject
 	applymovement 1, SkyPillar_Top_Movement_RayquazaStir
@@ -143,7 +149,7 @@ SkyPillar_Top_EventScript_AwakenRayquaza:: @ 823979A
 	delay 20
 	fadeinbgm 1
 	special SpawnCameraObject
-	applymovement EVENT_OBJ_ID_CAMERA, SkyPillar_Top_Movement_CameraPanDown
+	applymovement OBJ_EVENT_ID_CAMERA, SkyPillar_Top_Movement_CameraPanDown
 	waitmovement 0
 	special RemoveCameraObject
 	setvar VAR_SOOTOPOLIS_CITY_STATE, 5

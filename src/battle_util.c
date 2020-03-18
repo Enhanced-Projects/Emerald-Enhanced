@@ -1708,7 +1708,7 @@ u8 DoBattlerEndTurnEffects(void)
                     if (!(gBattleMons[gActiveBattler].status2 & STATUS2_CONFUSION))
                     {
                         gBattleScripting.moveEffect = MOVE_EFFECT_CONFUSION | MOVE_EFFECT_AFFECTS_USER;
-                        SetMoveEffect(1, 0);
+                        SetMoveEffect(TRUE, 0);
                         if (gBattleMons[gActiveBattler].status2 & STATUS2_CONFUSION)
                             BattleScriptExecute(BattleScript_ThrashConfuses);
                         effect++;
@@ -3732,8 +3732,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
 
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityCuredStatus;
-                gBattleScripting.battler = battler;
-                gActiveBattler = battler;
+                gBattleScripting.battler = gActiveBattler = gBattlerAbility = battler;
                 BtlController_EmitSetMonData(0, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[gActiveBattler].status1);
                 MarkBattlerForControllerExec(gActiveBattler);
                 return effect;
@@ -4635,7 +4634,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                 {
                     gBattleScripting.moveEffect = MOVE_EFFECT_FLINCH;
                     BattleScriptPushCursor();
-                    SetMoveEffect(0, 0);
+                    SetMoveEffect(FALSE, 0);
                     BattleScriptPop();
                 }
                 break;
@@ -5806,70 +5805,16 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
     return ApplyModifier(modifier, atkStat);
 }
 
-static const u16 sMegaBaseForms[46] = {
-    SPECIES_AMPHAROS,
-    SPECIES_VENUSAUR,
-    SPECIES_CHARIZARD,
-    SPECIES_MEWTWO,
-    SPECIES_BLAZIKEN,
-    SPECIES_MEDICHAM,
-    SPECIES_HOUNDOOM,
-    SPECIES_AGGRON,
-    SPECIES_BANETTE,
-    SPECIES_TYRANITAR,
-    SPECIES_SCIZOR,
-    SPECIES_PINSIR,
-    SPECIES_AERODACTYL,
-    SPECIES_LUCARIO,
-    SPECIES_ABOMASNOW,
-    SPECIES_BLASTOISE,
-    SPECIES_KANGASKHAN,
-    SPECIES_GYARADOS,
-    SPECIES_ABSOL,
-    SPECIES_ALAKAZAM,
-    SPECIES_HERACROSS,
-    SPECIES_MAWILE,
-    SPECIES_MANECTRIC,
-    SPECIES_GARCHOMP,
-    SPECIES_LATIOS,
-    SPECIES_LATIAS,
-    SPECIES_SWAMPERT,
-    SPECIES_SCEPTILE,
-    SPECIES_SABLEYE,
-    SPECIES_ALTARIA,
-    SPECIES_GALLADE,
-    SPECIES_AUDINO,
-    SPECIES_SHARPEDO,
-    SPECIES_SLOWBRO,
-    SPECIES_STEELIX,
-    SPECIES_PIDGEOT,
-    SPECIES_GLALIE,
-    SPECIES_DIANCIE,
-    SPECIES_METAGROSS,
-    SPECIES_RAYQUAZA,
-    SPECIES_CAMERUPT,
-    SPECIES_LOPUNNY,
-    SPECIES_SALAMENCE,
-    SPECIES_BEEDRILL,
-    SPECIES_GENGAR,
-    SPECIES_GARDEVOIR,
-};
-
-bool8 IsMonEvolutionValidForEviolite(u16 mon)
+static bool32 CanEvolve(u32 species)
 {
-    u16 i;
-    u16 monEvo = (gEvolutionTable[mon][0].targetSpecies);
+    u32 i;
 
-    if (monEvo == SPECIES_NONE)
-        return FALSE;
-
-    for (i = 0; i < ARRAY_COUNT(sMegaBaseForms); i++)
+    for (i = 0; i < EVOS_PER_MON; i++)
     {
-        if (mon == sMegaBaseForms[i])
-            return FALSE;
+        if (gEvolutionTable[species][i].method && gEvolutionTable[species][i].method != EVO_MEGA_EVOLUTION)
+            return TRUE;
     }
-
-    return TRUE;
+    return FALSE;
 }
 
 static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 isCrit)
@@ -5964,7 +5909,7 @@ static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, 
             MulModifier(&modifier, UQ_4_12(2.0));
         break;
     case HOLD_EFFECT_EVIOLITE:
-        if (IsMonEvolutionValidForEviolite(gBattleMons[battlerDef].species) == TRUE)
+        if (CanEvolve(gBattleMons[battlerDef].species))
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case HOLD_EFFECT_ASSAULT_VEST:

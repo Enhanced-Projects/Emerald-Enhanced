@@ -48,16 +48,16 @@ AS_Leaf_Event::
 	removecutscenesprites
 	msgbox AS_LeafMsg12 MSGBOX_DEFAULT
 	applymovement 3, AS_PushingDown
-	applymovement EVENT_OBJ_ID_PLAYER, AS_PushedDown
+	applymovement OBJ_EVENT_ID_PLAYER, AS_PushedDown
 	waitmovement 3
 	removeobject 3
 	playse SE_DOOR
 	waitse
 	msgbox AS_PlayerMsg1 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox AS_PlayerMsg2 MSGBOX_DEFAULT
 	@setflag FLAG_LANA_EVENT_4

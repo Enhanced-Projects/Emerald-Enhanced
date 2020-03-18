@@ -8,15 +8,15 @@ LRT_DateFinish::
 	.2byte 0
 
 LRT_date1end::
-	applymovement EVENT_OBJ_ID_PLAYER, lrtmh_faceright
+	applymovement OBJ_EVENT_ID_PLAYER, lrtmh_faceright
 	fadescreenspeed 2, 5
     addobject 1
 	applymovement 1, Common_Movement_HeartEmote
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_HeartEmote
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
 	msgbox LRT_DATEEND, MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, LRT_EXITDATE
+	applymovement OBJ_EVENT_ID_PLAYER, LRT_EXITDATE
 	waitmovement 0
 	clearflag FLAG_RYU_ON_DATE
 	clearflag FLAG_RYU_ON_DATE_2

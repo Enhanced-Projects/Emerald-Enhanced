@@ -26,7 +26,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_LITTLE_GIRL",
+            "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -39,7 +39,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_POKEFAN_F",
+            "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
@@ -52,7 +52,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -65,7 +65,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -78,7 +78,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -91,7 +91,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -104,7 +104,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_2",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -117,7 +117,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_2",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",

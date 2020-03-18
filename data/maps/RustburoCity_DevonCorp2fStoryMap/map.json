@@ -35,7 +35,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3",
-            "graphics_id": "EVENT_OBJ_GFX_GENTLEMAN",
+            "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -48,7 +48,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -61,7 +61,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_2",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -74,7 +74,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -87,7 +87,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -100,7 +100,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_RYU_DEVON_CORPORATE_HIDE_SCIENTIST",
-            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_2",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -113,7 +113,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_2",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",

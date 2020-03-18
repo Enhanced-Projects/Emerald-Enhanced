@@ -25,16 +25,19 @@ MarineCave_End_EventScript_ShowKyogre:: @ 823B012
 
 MarineCave_End_EventScript_Kyogre:: @ 823B01B
 	lockall
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	applymovement 1, MarineCave_End_Movement_KyogreApproach
 	waitmovement 0
 	waitse
 	playmoncry SPECIES_KYOGRE, 2
-	delay 40
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	waitmoncry
 	setvar VAR_LAST_TALKED, 1
-	setwildbattle SPECIES_KYOGRE, 70, ITEM_NONE
+	setwildbattle SPECIES_KYOGRE, VAR_RESULT, ITEM_NONE
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate

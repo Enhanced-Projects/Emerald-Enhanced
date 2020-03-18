@@ -18,8 +18,8 @@ Route101_EventScript_HideMapNamePopup:: @ 81EBCD5
 	
 r101_MoveUp::
 	lock
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 
@@ -30,7 +30,7 @@ Route101_EventScript_StartBirchRescue:: @ 81EBCDE
 	closemessage
 	setobjectxy 2, 0, 15
 	setobjectxy 4, 0, 16
-	applymovement EVENT_OBJ_ID_PLAYER, Route101_Movement_EnterScene
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_EnterScene
 	applymovement 2, Route101_Movement_BirchRunAway1
 	applymovement 4, Route101_Movement_PoochyenaChase1
 	waitmovement 0
@@ -52,7 +52,7 @@ Route101_EventScript_PreventExitSouth:: @ 81EBD4E
 	lockall
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Route101_Movement_PreventExitSouth
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitSouth
 	waitmovement 0
 	releaseall
 	end
@@ -61,7 +61,7 @@ Route101_EventScript_PreventExitWest:: @ 81EBD64
 	lockall
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Route101_Movement_PreventExitWest
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitWest
 	waitmovement 0
 	releaseall
 	end
@@ -70,7 +70,7 @@ Route101_EventScript_PreventExitNorth:: @ 81EBD7A
 	lockall
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Route101_Movement_PreventExitNorth
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitNorth
 	waitmovement 0
 	releaseall
 	end
@@ -229,8 +229,8 @@ Route101_EventScript_BirchsBag:: @ 81EBE16
 	setflag FLAG_RESCUED_BIRCH
 	fadescreen FADE_TO_BLACK
 	removeobject 4
-	setobjectxy EVENT_OBJ_ID_PLAYER, 6, 13
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	setobjectxy OBJ_EVENT_ID_PLAYER, 6, 13
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
 	special ChooseStarter
 	waitstate

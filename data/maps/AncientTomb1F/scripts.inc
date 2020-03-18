@@ -11,16 +11,16 @@ AT1_LeafStoryEvent::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	setvar VAR_RYU_DS_LANA_STAGE, 69
 	special SpawnCameraObject
-	applymovement EVENT_OBJ_ID_CAMERA, AT1_Cam1
-	waitmovement EVENT_OBJ_ID_CAMERA
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_CAMERA, AT1_Cam1
+	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox AT1_Story1 MSGBOX_DEFAULT
 	closemessage
 	applymovement 2, AT1_WalkUp
-	applymovement EVENT_OBJ_ID_CAMERA, AT1_WalkUp
-	applymovement EVENT_OBJ_ID_PLAYER, AT1_RunUp
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, AT1_WalkUp
+	applymovement OBJ_EVENT_ID_PLAYER, AT1_RunUp
+	waitmovement OBJ_EVENT_ID_CAMERA
 	applymovement 2, Common_Movement_ExclamationMark
 	playse SE_PIN
 	waitmovement 2
@@ -50,7 +50,7 @@ AT1_LeafStoryEvent15::
 	waitse
 	call IC_LeafOpenDoor
 	fadenewbgm MUS_MABOROSI
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	msgbox AT1_Story4 MSGBOX_DEFAULT
 	closemessage
 	applymovement 2, AT1_LanaWalkUp2
@@ -58,16 +58,16 @@ AT1_LeafStoryEvent15::
 	removeobject 2
 	setflag FLAG_RYU_HIDE_R120_LANA_AND_HIKER
 	setflag FLAG_HIDE_AT1_LEAF
-	applymovement EVENT_OBJ_ID_CAMERA, AT1_Cam2
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, AT1_Cam2
+	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
-	applymovement EVENT_OBJ_ID_PLAYER, AT1_PlayerFollow
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, AT1_PlayerFollow
+	waitmovement OBJ_EVENT_ID_PLAYER
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	setvar VAR_RYU_DS_LANA_STAGE, 72
 	fadescreen FADE_TO_BLACK
-	applymovement EVENT_OBJ_ID_PLAYER, AT1_FakeWarp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, AT1_FakeWarp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	clearflag FLAG_HIDE_AT1_LEAF
 	addobject 3
 	fadescreen FADE_FROM_BLACK
@@ -114,8 +114,8 @@ AT1_LeafStoryEvent2::
 	waitmovement 3
 	msgbox AT1_Story8 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, AT1_SaveLana
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, AT1_SaveLana
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playse SE_W120
 	fadescreen FADE_TO_WHITE
 	msgbox AT1_BlackedOut MSGBOX_DEFAULT

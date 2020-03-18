@@ -1283,13 +1283,13 @@ RyuCancelFollowerForQuest::  @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollow
 
 RyuResetFollowerPosition::
 	gfec
-	setobjectxy EVENT_OBJ_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
+	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
 	setvar VAR_TEMP_9, 1
 	end
 
 RyuResetFollowerPositionAR::
 	gfec
-	setobjectxy EVENT_OBJ_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
+	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
 	setvar VAR_TEMP_9, 1
 	return
 
@@ -1299,9 +1299,9 @@ RyuForceCancelFollowerForQuest:: @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCan
 
 RyuFollowerSelectNPCScript::
 	switch VAR_RYU_FOLLOWER_ID
-	case EVENT_OBJ_GFX_TWIN, LRT_MinnieScript
-	case EVENT_OBJ_GFX_AQUA_MEMBER_F, RyuFollower_ShellyScript
-	case EVENT_OBJ_GFX_WOMAN_2, RyuFollower_LanetteScript
+	case OBJ_EVENT_GFX_TWIN, LRT_MinnieScript
+	case OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollower_ShellyScript
+	case OBJ_EVENT_GFX_WOMAN_2, RyuFollower_LanetteScript
 	end
 
 RyuFollower_ShellyScript::
@@ -1331,7 +1331,7 @@ RF_FollowerLeaveCall::
 	return
 	
 RF_FollowerLeave:
-	compare VAR_RYU_FOLLOWER_ID, EVENT_OBJ_GFX_WOMAN_2
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
 	call_if_eq Ryu_RestoreLanetteAtHouse
 	clearflag FLAG_RYU_HAS_FOLLOWER
 	destroyfollower
@@ -1447,16 +1447,20 @@ Ryu_DoMeloettaRoll::
 
 Ryu_DoMeloettaEncounter::
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_FOLLOWER, Common_Movement_ExclamationMark
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	fadescreen FADE_TO_BLACK
 	drawfullscreenimage SCENEBGMELOETTA
 	msgbox Ryu_MeloettaApproaches
 	closemessage
 	playmoncry SPECIES_MELOETTA, 0
 	msgbox Ryu_ItsSingingBeautifully
-	setwildbattle SPECIES_MELOETTA, 80, ITEM_STAR_PIECE
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
+	setwildbattle SPECIES_MELOETTA, VAR_RESULT, ITEM_STAR_PIECE
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	special BattleSetup_StartLegendaryBattle
@@ -1495,8 +1499,8 @@ SB_SetupRandomSteppedOnEncounter::
 SB_Random0::
 	setwildbattle SPECIES_PYUKUMUKU, 20, ITEM_NONE
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	bufferspeciesname 0, SPECIES_PYUKUMUKU
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -1507,8 +1511,8 @@ SB_Random0::
 SB_Random1::
 	setwildbattle SPECIES_SANDYGAST, 20, ITEM_NONE
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	bufferspeciesname 0, SPECIES_SANDYGAST
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -1519,8 +1523,8 @@ SB_Random1::
 SB_Random2::
 	setwildbattle SPECIES_SHELLDER, 20, ITEM_NONE
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	bufferspeciesname 0, SPECIES_SHELLDER
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -1531,8 +1535,8 @@ SB_Random2::
 SB_Random3::
 	setwildbattle SPECIES_MAREANIE, 20, ITEM_NONE
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	bufferspeciesname 0, SPECIES_MAREANIE
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -1543,8 +1547,8 @@ SB_Random3::
 SB_Random4::
 	setwildbattle SPECIES_SKRELP, 20, ITEM_NONE
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	bufferspeciesname 0, SPECIES_SKRELP
 	msgbox Ryu_YouSteppedOn
 	closemessage
@@ -1682,3 +1686,141 @@ RyuLegendary_Stoneisdull::
 RyuLegendary_StoneIsDullMsg:
 	.string "The stone is dull and lifeless.$"
 
+@==================================================================================================Randombattle
+
+Ryu_StartRandomBattle::
+	msgbox StartingRandomBattleMsg
+	cleartrainerflag TRAINER_RANDOM_PARTY
+	trainerbattle_single TRAINER_RANDOM_PARTY, BF_battleintro, BF_battledefeat, BF_RandomBattleCleanup
+	end
+
+StartingRandomBattleMsg:
+	.string "Starting Random Battle...$"
+
+BF_RandomBattleCleanup::
+	msgbox BattleAgain, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq Ryu_StartRandomBattle
+	clearflag FLAG_RYU_RANDOMBATTLE
+	special ForceSoftReset
+	release
+	end
+	
+BF_NoBattle::
+	msgbox BF_NoBattleMsg
+	closemessage
+	release
+	end
+
+BattleAgain:
+	.string "Would you like to battle again?$"
+	
+BF_NoBattleMsg:
+    .string "Very well. Talk with me again if\n"
+    .string "you change your mind!$"
+
+BF_Starting:
+    .string "Hold on... Let me put your party\n"
+    .string "aside...\p"
+    .string "... ... ... ...\n"
+    .string "... ... ... ...\p"
+    .string "There. All set... Here we go!$"
+
+	
+BF_RandomIntro:
+    .string "Selene: Hi! I like to do random\n"
+    .string "battles.\p"
+    .string "Would you like to battle with me?$"
+
+BF_battleintro:
+	.string "I will try my very hardest to win!$"
+	
+BF_battledefeat:
+	.string "Good fight.\nLet's do it again!$"
+
+@==================================================================================================Meloetta Switcher
+
+CLM_MeloettaSwitcher::
+	msgbox CLM_MSIntro
+	closemessage
+	lockall
+	playse SE_PIN
+	applymovement 2, Common_Movement_ExclamationMark
+	waitmovement 2
+	faceplayer
+	msgbox CLM_MS_OhHiSorry
+	closemessage
+	specialvar VAR_RESULT, RyuMeloettaFormSwitcher
+	switch VAR_RESULT
+	case 2, CLM_MeloettaFinished @ form was sucessfully switched
+	case 0, CLM_NoMeloetta @Player hasn't caught meloetta
+	case 1, CLM_MeloettaNotInParty @Player caught it but doesn't have it with them
+	end
+	
+CLM_MeloettaFinished::
+	playmoncry SPECIES_MELOETTA, 0
+	bufferpartymonnick 0, VAR_TEMP_9
+	msgbox CLM_MeloettaCriesFromBall
+	waitmoncry
+	closemessage
+	msgbox CLM_FinishedMsg
+	closemessage
+	showmonpic VAR_TEMP_A, 10, 3
+	msgbox CLM_MeloettaSwitcherLadyOutro
+	closemessage
+	hidemonpic
+	applymovement 2, Common_Movement_FaceRight
+	waitmovement 2
+	release
+	end
+
+CLM_MeloettaNotInParty::
+	msgbox CLM_NotInPartyMsg
+	closemessage
+	applymovement 2, Common_Movement_FaceRight
+	waitmovement 2
+	release
+	end
+
+CLM_NoMeloetta::
+	msgbox CLM_NoMeloettaMsg
+	closemessage
+	applymovement 2, Common_Movement_FaceRight
+	waitmovement 2
+	release
+	end
+
+CLM_MSIntro:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(The woman is quietly humming to\n"
+    .string " herself as she watches the tv across\l"
+    .string " the room.)$"
+	
+CLM_MS_OhHiSorry:
+    .string "Oh! Hi! Sorry! I was just thinking\n"
+    .string "about this tune I heard\l"
+	.string "when I was young.$"
+
+CLM_MeloettaCriesFromBall:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}Your {STR_VAR_1} cries out from her\n"
+    .string " ball, as if she knew this person a\l"
+    .string " long time ago...)$"
+
+CLM_MeloettaSwitcherLadyOutro:
+    .string "Oh, wow, it was this Pokémon that I\n"
+    .string "heard so many years ago! Wait... She\l"
+    .string "changed colors! What could it mean?!$"
+
+CLM_NoMeloettaMsg:
+    .string "This tune has been stuck in my head\n"
+    .string "for so many years. I wish I knew\l"
+    .string "where I heard it.$"
+
+CLM_FinishedMsg:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It appears that your {STR_VAR_1}\n"
+    .string " took on a new form!)$"
+
+CLM_NotInPartyMsg:
+    .string "Oh!, I think you've heard it too! Do\n"
+    .string "you know where it came from?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Yes, it's from a Pokémon.\n"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}You have to show me, Please!$"

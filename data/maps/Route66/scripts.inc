@@ -9,9 +9,13 @@ r66_Celebi::
 	call_if_ne RyuLegendary_LeftStoneAlone
 	msgbox r66_Celebi_TouchedStone
 	playmoncry SPECIES_CELEBI, 0
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	closemessage
 	waitmoncry
-	setwildbattle SPECIES_CELEBI, 90, ITEM_NONE
+	setwildbattle SPECIES_CELEBI, VAR_RESULT, ITEM_NONE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught

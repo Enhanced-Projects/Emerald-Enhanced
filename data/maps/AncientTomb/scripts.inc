@@ -106,13 +106,13 @@ AT_LanaEvent2::
 	lock
 	setvar VAR_RYU_DS_LANA_STAGE, 83
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
-	applymovement EVENT_OBJ_ID_PLAYER, AT_SV_PlayerEntry
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, AT_SV_PlayerEntry
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playse SE_PIN
 	waitse
 	special SpawnCameraObject
-	applymovement EVENT_OBJ_ID_CAMERA, AT_SV_Cam1
-    waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, AT_SV_Cam1
+    waitmovement OBJ_EVENT_ID_CAMERA
 	drawheadshot HEAD_LANA
 	msgbox AT_SV_Story2 MSGBOX_DEFAULT
 	closemessage
@@ -146,8 +146,8 @@ AT_LanaEvent3::
 	closemessage
 	applymovement 4, AT_SV_Gary1
 	applymovement 2, AT_SV_Lana1
-	applymovement EVENT_OBJ_ID_PLAYER, AT_SV_Player1
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, AT_SV_Player1
+	waitmovement OBJ_EVENT_ID_PLAYER
 	special RemoveCameraObject
 	fadenewbgm MUS_RG_EXEYE
 	msgbox AT_SV_Story4 MSGBOX_DEFAULT
@@ -159,12 +159,12 @@ AT_LanaEvent3::
 	msgbox AT_SV_Story42 MSGBOX_DEFAULT
 	closemessage
 	removecutscenesprites
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox AT_SV_Story5 MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox AT_SV_Story6 MSGBOX_DEFAULT
 	closemessage
 	drawheadshot HEAD_GARY
@@ -228,7 +228,7 @@ AT_SV_ReturnFromBattle::
 	waitmoncry
 	applymovement 4, Common_Movement_ExclamationMark
 	waitmovement 4
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	applymovement 2, Common_Movement_FaceUp
 	applymovement 4, Common_Movement_FaceUp
 	waitmovement 4
@@ -242,13 +242,13 @@ AT_SV_ReturnFromBattle::
 	msgbox AT_SV_Story11 MSGBOX_DEFAULT
 	applymovement 2, Common_Movement_FaceLeft
 	waitmovement 2
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	msgbox AT_SV_Story12 MSGBOX_DEFAULT
 	closemessage
 	removecutscenesprites
 	msgbox AT_SV_Story121
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox AT_SV_Story13 MSGBOX_DEFAULT
 	drawheadshot HEAD_LANA
 	msgbox AT_SV_Story131 MSGBOX_DEFAULT
@@ -262,7 +262,7 @@ AT_SV_ReturnFromBattle::
 	closemessage
 	removecutscenesprites
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	applymovement 2, Common_Movement_HeartEmote
 	waitmovement 2
 	msgbox AT_SV_Story15 MSGBOX_DEFAULT
@@ -276,8 +276,8 @@ AT_SV_ReturnFromBattle::
 	playse SE_DOOR
 	removeobject 2
 	fadenewbgm MUS_MABOROSI
-	applymovement EVENT_OBJ_ID_PLAYER, AT_SV_Exit
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, AT_SV_Exit
+	waitmovement OBJ_EVENT_ID_PLAYER
 	warp MAP_ROUTE120, 255, 7, 56
 	releaseall
 	end

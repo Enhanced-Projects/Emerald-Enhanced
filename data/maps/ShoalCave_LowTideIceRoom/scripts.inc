@@ -9,8 +9,12 @@ SC1_Articuno::
 	msgbox SC1_Articuno_TouchedStone
 	playmoncry SPECIES_ARTICUNO, 0
 	closemessage
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	waitmoncry
-	setwildbattle SPECIES_ARTICUNO, 90, ITEM_NONE
+	setwildbattle SPECIES_ARTICUNO, VAR_RESULT, ITEM_NONE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught

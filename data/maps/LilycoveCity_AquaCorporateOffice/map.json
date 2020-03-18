@@ -43,7 +43,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_F",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -56,7 +56,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_2",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -69,7 +69,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -82,7 +82,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -95,7 +95,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_4",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_4",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -108,7 +108,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_4",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_4",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -121,7 +121,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_F",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",

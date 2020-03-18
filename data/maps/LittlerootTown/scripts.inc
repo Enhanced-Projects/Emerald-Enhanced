@@ -18,9 +18,9 @@ LRT_FollowerTest::
 	closemessage
 	setflag FLAG_RYU_HIDE_MINNIE
 	removeobject 4
-	createfollower EVENT_OBJ_GFX_TWIN, RyuFollowerSelectNPCScript, 1
+	createfollower OBJ_EVENT_GFX_TWIN, RyuFollowerSelectNPCScript, 1
 	setflag FLAG_RYU_HAS_FOLLOWER
-	setvar VAR_RYU_FOLLOWER_ID, EVENT_OBJ_GFX_TWIN
+	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	release
@@ -116,7 +116,7 @@ LRT_PreventLeave::
 	compare VAR_RESULT, FEMALE
 	goto_if_eq LRT_cantLeaveFemale
 	msgbox LRT_Girl_PreventLeave MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, LRT_CantLeave
+	applymovement OBJ_EVENT_ID_PLAYER, LRT_CantLeave
 	applymovement 1, LRT_StepLeft
 	waitmovement 0
 	release
@@ -124,7 +124,7 @@ LRT_PreventLeave::
 	
 LRT_cantLeaveFemale:
 	msgbox LRT_Girl_PreventLeaveFemale MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, LRT_CantLeave
+	applymovement OBJ_EVENT_ID_PLAYER, LRT_CantLeave
 	applymovement 1, LRT_StepLeft
 	waitmovement 0
 	release
@@ -196,7 +196,7 @@ LRT_StopGoingSouth::
 
 LRT_StopPlayer::
 	msgbox LRT_CantExitSouthYet MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
 	waitmovement 0
 	release
 	end
@@ -229,9 +229,28 @@ LRT_FatManChatter::
 	closemessage
 	release
 	end
-	
+
+Pidgey_NPC::
+	lock
+	faceplayer
+	msgbox Pidgey_NPCText MSGBOX_ONELINE
+	closemessage
+	release
+	end
+
+Pidgey_NPCText:
+    .string "Hello my name is Pidgey.\p"
+    .string "i'm not actually a Pidgey but that's\p"
+    .string "what most people on Discord call me!\p"
+    .string "I added this NPC as an easter egg\p"
+    .string "without the permission of Ryuhouji!\p"
+    .string "Anyways i wanted to know if this\p"
+    .string "would slip under his radar or not.\p"
+    .string "If you see this message chances are\p"
+    .string "that it did.$"
+
 LRT_FM1:
-	.string "Man: It's hard to take a nap out\n"
+    .string "Man: It's hard to take a nap out\n"
     .string "here. I keep hearing the Pokémon\p"
     .string "that professor has preserved south\n"
     .string "of town making noises all the time\l"

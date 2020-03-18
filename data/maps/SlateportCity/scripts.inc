@@ -510,7 +510,7 @@ SlateportCity_EventScript_CaptStern:: @ 81DD1F8
 	waitmovement 0
 	delay 25
 	applymovement 11, SlateportCity_Movement_SternWatchGabbyAndTyExit
-	applymovement EVENT_OBJ_ID_PLAYER, SlateportCity_Movement_PlayerFaceStern
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PlayerFaceStern
 	applymovement 10, SlateportCity_Movement_GabbyExit
 	applymovement 9, SlateportCity_Movement_TyExit
 	waitmovement 0
@@ -542,7 +542,7 @@ SlateportCity_EventScript_CaptStern:: @ 81DD1F8
 	msgbox SlateportCity_Text_PleaseComeWithMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement 11, SlateportCity_Movement_SternEnterHarbor
-	applymovement EVENT_OBJ_ID_PLAYER, SlateportCity_Movement_PlayerEnterHarbor
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PlayerEnterHarbor
 	waitmovement 0
 	removeobject 11
 	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN
@@ -826,19 +826,19 @@ SlateportCity_EventScript_NotEnoughBerryPowder:: @ 81DD5CE
 
 SlateportCity_EventScript_ScottBattleTentScene:: @ 81DD5DC
 	lockall
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	opendoor 10, 12
 	waitdooranim
 	addobject 35
-	applymovement EVENT_OBJ_ID_PLAYER, SlateportCity_Movement_PushPlayerDown
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PushPlayerDown
 	applymovement 35, SlateportCity_Movement_ScottExitBattleTent
 	waitmovement 0
 	closedoor 10, 12
 	waitdooranim
 	msgbox SlateportCity_Text_TakingBattleTentChallenge, MSGBOX_DEFAULT
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, SlateportCity_Movement_PlayerWatchScottExit
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PlayerWatchScottExit
 	applymovement 35, SlateportCity_Movement_ScottExitAfterBattleTent
 	waitmovement 0
 	removeobject 35

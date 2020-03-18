@@ -30,7 +30,7 @@ LNH_RelCheck::
 Ryu_LNH_RomQuest::
 	setvar VAR_RYU_LANETTE_VAR, 0
 	lock
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	drawheadshot HEAD_LANETTE
 	msgbox LNH_RomStart
 	closemessage
@@ -71,7 +71,7 @@ LNH_PlayerHasCollection::
 	msgbox LNH_RepairRequest
 	closemessage
 	removecutscenesprites
-	applymovement EVENT_OBJ_ID_PLAYER, LNH_MoveOutOfWay
+	applymovement OBJ_EVENT_ID_PLAYER, LNH_MoveOutOfWay
 	applymovement 1, LNH_LanetteExitHouse
 	waitmovement 1
 	playse SE_DOOR
@@ -489,13 +489,13 @@ LNH_LeafEvent::
 	waitmovement 2
 	msgbox LNH_StoryMsg2 MSGBOX_DEFAULT
 	applymovement 2, LNH_LeafLeave
-	applymovement EVENT_OBJ_ID_PLAYER, LNH_LeafShovesPlayer
+	applymovement OBJ_EVENT_ID_PLAYER, LNH_LeafShovesPlayer
 	waitmovement 2
 	playse SE_DOOR
 	removeobject 2
 	waitse
-	applymovement EVENT_OBJ_ID_PLAYER, LNH_Return
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, LNH_Return
+	waitmovement OBJ_EVENT_ID_PLAYER
 	removecutscenesprites
 	msgbox LNH_StoryMsg3 MSGBOX_DEFAULT
 	applymovement 1, LNH_LanetteWalkDown

@@ -26,6 +26,8 @@ Ryu_NewGamePlus::
 	call_if_set FLAG_RYU_HAS_EXP_DRIVE, Ryu_NGP_ExpDrive
 	call_if_set FLAG_RYU_HAS_WIRELESSPC, Ryu_NGP_WirelessPC
 	call_if_set FLAG_RYU_HAS_EXPSHARE, Ryu_NGP_ExpShare
+	call_if_set FLAG_HAS_ACRO_BIKE, Ryu_NGP_AcroBike
+	call_if_set FLAG_HAS_MACH_BIKE, Ryu_NGP_MachBike
 	msgbox RyuNGP_DexInfo
 	closemessage
 	setflag FLAG_SYS_POKEDEX_GET
@@ -83,6 +85,14 @@ Ryu_NGP_WirelessPC:
 
 Ryu_NGP_ExpShare::
 	additem ITEM_EXP_SHARE, 1
+	return
+
+Ryu_NGP_AcroBike::
+	additem ITEM_ACRO_BIKE 1
+	return
+
+Ryu_NGP_MachBike::
+	additem ITEM_MACH_BIKE, 1
 	return
 
 RyuNGPInfo:
@@ -374,12 +384,12 @@ GameIntroSequencePart2::
     checkplayergender
 	compare VAR_RESULT, FEMALE
 	goto_if_eq GameIntroFemalePart2
-	applymovement EVENT_OBJ_ID_PLAYER, GI_Male_GetOutOfBed
+	applymovement OBJ_EVENT_ID_PLAYER, GI_Male_GetOutOfBed
 	waitmovement 0
 	playse SE_PC_ON
 	waitse
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	waitmovement 0
 	msgbox GI_CheckedEmail MSGBOX_SIGN
 	closemessage
@@ -392,12 +402,12 @@ GameIntroSequencePart2::
 	end
 	
 GameIntroFemalePart2::
-	applymovement EVENT_OBJ_ID_PLAYER, GI_Female_GetOutOfBed
+	applymovement OBJ_EVENT_ID_PLAYER, GI_Female_GetOutOfBed
 	waitmovement 0
 	playse SE_PC_ON
 	waitse
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_QuestionMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	waitmovement 0
 	msgbox GI_CheckedEmail MSGBOX_SIGN
 	closemessage

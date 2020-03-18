@@ -22,7 +22,7 @@ SPC_StevenApproach::
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 106
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
 	applymovement 11, Common_Movement_StepDown
 	waitmovement 11
 	applymovement 11, Common_Movement_QuestionMark
@@ -48,8 +48,8 @@ SPC_PreventLeaveTillDone::
 	goto_if_ne ryu_end
 	msgbox SPC_CantLeave
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 	

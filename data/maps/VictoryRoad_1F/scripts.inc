@@ -54,7 +54,7 @@ VictoryRoad_1F_EventScript_WallyBattleTrigger2:: @ 8235DC8
 	end
 
 VictoryRoad_1F_EventScript_WallyEntranceBattle:: @ 8235DE1
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
 	waitmovement 0
 	msgbox VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_WALLY_VR_1, VictoryRoad_1F_Text_WallyEntranceDefeat
@@ -243,8 +243,12 @@ VR1_Moltres::
 	msgbox NewMauville_Moltres_TouchedStone
 	playmoncry SPECIES_MOLTRES, 0
 	closemessage
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
 	waitmoncry
-	setwildbattle SPECIES_MOLTRES, 90, ITEM_BRIGHT_POWDER
+	setwildbattle SPECIES_MOLTRES, VAR_RESULT, ITEM_BRIGHT_POWDER
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught

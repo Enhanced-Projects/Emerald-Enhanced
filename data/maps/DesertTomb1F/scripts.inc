@@ -97,9 +97,12 @@ NM10_CrystalOnix::
 	msgbox NM10_CrystalOnixSpeech
 	closemessage
 	playmoncry SPECIES_ONIX, 0
-	delay 10
+	special checkbadgecount
+	compare VAR_RESULT, 8
+	goto_if_lt ryu_end
+	msgbox NM10_NotTooWeak
 	waitmoncry
-	setwildbattle SPECIES_CRYSTAL_ONIX, 75, ITEM_METAL_COAT
+	setwildbattle SPECIES_CRYSTAL_ONIX, 90, ITEM_METAL_COAT
 	setflag FLAG_RYU_HIDE_CRYSTALONIX_OW
 	removeobject 1
 	special BattleSetup_StartLegendaryBattle
@@ -111,6 +114,8 @@ NM10_CrystalOnixSpeech:
     .string "It is the most beautiful Pokémon\n"
     .string "statue you've ever seen.\p"
 	.string "It has a faint yellow glow to it.\n"
+
+NM10_NotTooWeak:
     .string "... ... ... ...\p"
     .string "Wait...\p"
     .string "IT MOVED!?$"

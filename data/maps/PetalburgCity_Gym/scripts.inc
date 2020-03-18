@@ -36,7 +36,7 @@ PetalburgCity_Gym_OnWarp: @ 820498B
 	.2byte 0
 
 PetalburgCity_Gym_EventScript_TurnPlayerNorth:: @ 8204995
-	turnobject EVENT_OBJ_ID_PLAYER, DIR_NORTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	end
 
 PetalburgCity_Gym_OnFrame: @ 820499A

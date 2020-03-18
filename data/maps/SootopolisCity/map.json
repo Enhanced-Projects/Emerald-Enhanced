@@ -65,7 +65,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_EXPERT_M",
+            "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -78,7 +78,7 @@
         {
             "elevation": 0,
             "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_4",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -91,7 +91,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GIRL_2",
+            "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
             "movement_range_x": 1,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
@@ -104,7 +104,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -117,7 +117,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BOY_1",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -130,7 +130,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_1",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_1",
             "movement_range_x": 1,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
@@ -143,7 +143,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
@@ -156,7 +156,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS",
-            "graphics_id": "EVENT_OBJ_GFX_MANIAC",
+            "graphics_id": "OBJ_EVENT_GFX_MANIAC",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -169,7 +169,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS",
-            "graphics_id": "EVENT_OBJ_GFX_GIRL_3",
+            "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -182,7 +182,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS",
-            "graphics_id": "EVENT_OBJ_GFX_BLACK_BELT",
+            "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -195,7 +195,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS",
-            "graphics_id": "EVENT_OBJ_GFX_BOY_2",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_2",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",

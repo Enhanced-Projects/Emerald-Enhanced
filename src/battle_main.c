@@ -1903,6 +1903,18 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
             {
                 const struct TrainerMonNoItemDefaultMoves *partyData = gTrainers[trainerNum].party.NoItemDefaultMoves;
 
+                if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
+                {
+                    u16 em1 = (Random() % 902);
+                    u16 pm1 = (Random() % 902);
+                    u8 level = 100;
+                    em1++;
+                    pm1++;
+                    CreateMon(&gEnemyParty[i], em1, level, 31, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
+                    CreateMon(&gPlayerParty[i], pm1, level, 31, FALSE, 0, OT_ID_PLAYER_ID, 0);
+                    break;
+                }
+
                 for (j = 0; gSpeciesNames[partyData[i].species][j] != EOS; j++)
                     nameHash += gSpeciesNames[partyData[i].species][j];
 

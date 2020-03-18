@@ -4,13 +4,13 @@ RustburoCity_DevonCorp1fStoryMap_MapScripts::
 	
 DC_FirstFloorSceneStart::
 	lock
-	applymovement EVENT_OBJ_ID_PLAYER, DC_FirstFloorPlayerEntry
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, DC_FirstFloorPlayerEntry
+	waitmovement OBJ_EVENT_ID_PLAYER
 	special SpawnCameraObject
 	msgbox DC_YouHearNoise
 	closemessage
-	applymovement EVENT_OBJ_ID_CAMERA, DC_FirstFloorCamera1
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, DC_FirstFloorCamera1
+	waitmovement OBJ_EVENT_ID_CAMERA
 	savebgm 423
 	fadenewbgm 423
 	msgbox DC_BeenThroughThis
@@ -22,18 +22,18 @@ DC_FirstFloorSceneStart::
 	playse SE_PIN
 	applymovement 4, Common_Movement_ExclamationMark
 	waitmovement 4
-	applymovement EVENT_OBJ_ID_CAMERA, DC_ReturnCameraToPlayer
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, DC_ReturnCameraToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
-	applymovement EVENT_OBJ_ID_PLAYER, DC_PlayerToEmployees
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, DC_PlayerToEmployees
+	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 4, Common_Movement_FaceUp
 	waitmovement 4
 	msgbox DC_DoMeAFavor
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MSITO
 	closemessage
-	applymovement EVENT_OBJ_ID_PLAYER, DC_ExitFirstFloor
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, DC_ExitFirstFloor
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playse SE_DOOR
 	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 16
 	fadescreen 1

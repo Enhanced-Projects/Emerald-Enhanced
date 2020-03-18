@@ -17,7 +17,7 @@
         {
             "elevation": 4,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
@@ -30,7 +30,7 @@
         {
             "elevation": 4,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GIRL_3",
+            "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
@@ -43,7 +43,7 @@
         {
             "elevation": 4,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_RICH_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_RICH_BOY",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
@@ -56,7 +56,7 @@
         {
             "elevation": 4,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BOY_2",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_2",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -69,7 +69,7 @@
         {
             "elevation": 4,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -82,7 +82,7 @@
         {
             "elevation": 4,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -95,7 +95,7 @@
         {
             "elevation": 4,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",

@@ -33,7 +33,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_DEVON_EMPLOYEE",
+            "graphics_id": "OBJ_EVENT_GFX_DEVON_EMPLOYEE",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -46,7 +46,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_DEVON_EMPLOYEE",
+            "graphics_id": "OBJ_EVENT_GFX_DEVON_EMPLOYEE",
             "movement_range_x": 2,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -59,7 +59,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",

@@ -117,7 +117,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -130,7 +130,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -143,7 +143,7 @@
         {
             "elevation": 7,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_HIKER",
+            "graphics_id": "OBJ_EVENT_GFX_HIKER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -156,7 +156,7 @@
         {
             "elevation": 5,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_HIKER",
+            "graphics_id": "OBJ_EVENT_GFX_HIKER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -169,7 +169,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_CAMPER",
+            "graphics_id": "OBJ_EVENT_GFX_CAMPER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -182,7 +182,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PICNICKER",
+            "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -195,7 +195,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MANIAC",
+            "graphics_id": "OBJ_EVENT_GFX_MANIAC",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -208,7 +208,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -221,7 +221,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_114_RARE_CANDY",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -234,7 +234,7 @@
         {
             "elevation": 4,
             "flag": "FLAG_ITEM_ROUTE_114_PROTEIN",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -247,7 +247,7 @@
         {
             "elevation": 4,
             "flag": "FLAG_TEMP_11",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -260,7 +260,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GENTLEMAN",
+            "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -273,7 +273,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_POOCHYENA",
+            "graphics_id": "OBJ_EVENT_GFX_POOCHYENA",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -286,7 +286,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_4",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_4",
             "movement_range_x": 0,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
@@ -299,7 +299,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_FISHERMAN",
+            "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -312,7 +312,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_FISHERMAN",
+            "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -325,7 +325,7 @@
         {
             "elevation": 5,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAN_5",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_5",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_ROTATE_COUNTERCLOCKWISE",
@@ -338,7 +338,7 @@
         {
             "elevation": 5,
             "flag": "FLAG_TEMP_12",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -351,7 +351,7 @@
         {
             "elevation": 5,
             "flag": "FLAG_TEMP_13",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -364,7 +364,7 @@
         {
             "elevation": 7,
             "flag": "FLAG_TEMP_14",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -377,7 +377,7 @@
         {
             "elevation": 5,
             "flag": "FLAG_TEMP_15",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -390,7 +390,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_LASS",
+            "graphics_id": "OBJ_EVENT_GFX_LASS",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -403,7 +403,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_LASS",
+            "graphics_id": "OBJ_EVENT_GFX_LASS",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -416,7 +416,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PICNICKER",
+            "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -429,7 +429,7 @@
         {
             "elevation": 5,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PICNICKER",
+            "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
@@ -442,7 +442,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_ROUTE_114_ENERGY_POWDER",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -455,7 +455,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_FISHERMAN",
+            "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",

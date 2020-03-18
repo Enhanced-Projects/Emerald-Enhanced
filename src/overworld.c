@@ -70,7 +70,6 @@
 #include "item.h"
 #include "constants/items.h"
 #include "pokemon_storage_system.h"
-#include "rgb.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -214,6 +213,7 @@ bool8 (*gFieldCallback2)(void);
 u8 gLocalLinkPlayerId; // This is our player id in a multiplayer mode.
 u8 gFieldLinkPlayerCount;
 extern u8 RyuFollowerSelectNPCScript[];
+extern u8 Ryu_StartRandomBattle[];
 
 // EWRAM vars
 EWRAM_DATA static u8 sUnknown_020322D8 = 0;
@@ -410,6 +410,11 @@ static void (*const gMovementStatusHandler[])(struct LinkPlayerObjectEvent *, st
 // code
 void DoWhiteOut(void)
 {
+    if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
+    {
+        FlagClear(FLAG_RYU_RANDOMBATTLE);
+        DoSoftReset();
+    }
     if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
         RyuKillMon();
 
@@ -944,7 +949,7 @@ void RyuAddFollower(void)
     else if ((GetPlayerFacingDirection()) == DIR_SOUTH)
     {
         CreateFollowerObjectEvent(graphicsId, script, DIR_SOUTH);
-        //TryMoveObjectEventToMapCoords(EVENT_OBJ_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup,
+        //TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup,
         //gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 2));
     }
     else
@@ -1638,6 +1643,8 @@ void CB2_NewGame(void)
     bool8 hasImprinter = FALSE;
     bool8 hasWirelessPC = FALSE;
     bool8 hasExpShare = FALSE;
+    bool8 hasMachBike = FALSE;
+    bool8 hasAcroBike = FALSE;
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
         isNGPlus = TRUE;
 
@@ -1658,6 +1665,12 @@ void CB2_NewGame(void)
 
     if (CheckBagHasItem(ITEM_EXP_SHARE, 1))
         hasExpShare = TRUE;
+
+    if (CheckBagHasItem(ITEM_MACH_BIKE, 1))
+        hasMachBike = TRUE;
+        
+    if (CheckBagHasItem(ITEM_ACRO_BIKE, 1))
+        hasAcroBike = TRUE;
 
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
@@ -1796,14 +1809,7 @@ void CB2_ReturnToFieldLocal(void)
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuKillMon();
-
-    if ((FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1))
-    {
-        SetWeather((VarGet(VAR_RYU_WEATHER)));
-        DoCurrentWeather();
-        FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
-    }
-}
+} 
 
 void CB2_ReturnToFieldLink(void)
 {
@@ -1897,6 +1903,11 @@ void CB2_ContinueSavedGame(void)
     ScriptContext1_Init();
     ScriptContext2_Disable();
     InitMatchCallCounters();
+    if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
+    {
+        ScriptContext2_Enable();
+        ScriptContext1_SetupScript(Ryu_StartRandomBattle);
+    }
     if (UseContinueGameWarp() == TRUE)
     {
         ClearContinueGameWarpStatus();
@@ -2304,8 +2315,11 @@ static void sub_8086988(u32 a1)
         InitObjectEventPalettes(1);
 
     FieldEffectActiveListClear();
+    if (FlagGet(FLAG_RYU_PERSISTENT_WEATHER) == 1 && (GetSav1Weather() != VarGet(VAR_RYU_WEATHER)))
+        SetWeather(VarGet(VAR_RYU_WEATHER));
     StartWeather();
     ResumePausedWeather();
+    FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
     if (!a1)
         SetUpFieldTasks();
     RunOnResumeMapScript();

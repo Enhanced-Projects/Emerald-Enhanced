@@ -20,7 +20,7 @@ DC_MainDevonLineContinued::
 	msgbox DC_ThisWay
 	closemessage
 	applymovement 1, DC_WalkToComputer1
-	applymovement EVENT_OBJ_ID_PLAYER, DC_WalkToComputer2
+	applymovement OBJ_EVENT_ID_PLAYER, DC_WalkToComputer2
 	waitmovement 1
 	msgbox DC_questions
 	closemessage
@@ -28,8 +28,8 @@ DC_MainDevonLineContinued::
 	waitmovement 1
 	setflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3
 	removeobject 1
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	addobject 6
 	applymovement 6, DC_LateEmployee
 	waitmovement 6
@@ -75,8 +75,8 @@ DC_ProgressCheck::
 	
 DC_CantLeaveYet::
 	msgbox DC_CantLeave
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepDown
-	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 	

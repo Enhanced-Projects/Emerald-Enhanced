@@ -17,7 +17,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -30,7 +30,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -43,7 +43,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS",
-            "graphics_id": "EVENT_OBJ_GFX_AQUA_MEMBER_M",
+            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
             "movement_range_x": 13,
             "movement_range_y": 5,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT",
