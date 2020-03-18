@@ -5919,12 +5919,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_SMEARGLE] =
     {
-        .baseHP        = 55,
-        .baseAttack    = 20,
-        .baseDefense   = 35,
-        .baseSpeed     = 75,
-        .baseSpAttack  = 20,
-        .baseSpDefense = 45,
+        .baseHP        = 45,
+        .baseAttack    = 60,
+        .baseDefense   = 30,
+        .baseSpeed     = 80,
+        .baseSpAttack  = 45,
+        .baseSpDefense = 30,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_NORMAL,
         .catchRate = 45,
@@ -5937,7 +5937,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_OWN_TEMPO, ABILITY_TECHNICIAN},
+        .abilities = {ABILITY_SIMPLE, ABILITY_TECHNICIAN},
         .abilityHidden = ABILITY_MOODY,
         .bodyColor = BODY_COLOR_WHITE,
     },
