@@ -1024,7 +1024,6 @@ static const u32 sTutorLearnsets[] =
 
     [SPECIES_KANGASKHAN]    = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)
 											| TUTOR(MOVE_DOUBLE_EDGE)
-											| TUTOR(MOVE_SEISMIC_TOSS)
 											| TUTOR(MOVE_METRONOME)
 											| TUTOR(MOVE_LOW_KICK)
 											| TUTOR(MOVE_DRAIN_PUNCH)
