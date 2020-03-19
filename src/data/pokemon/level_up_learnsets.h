@@ -14377,6 +14377,7 @@ static const struct LevelUpMove sSalamenceLevelUpLearnset[] = {
     LEVEL_UP_MOVE(42, MOVE_SCARY_FACE),
     LEVEL_UP_MOVE(49, MOVE_FLAMETHROWER),
     LEVEL_UP_MOVE(63, MOVE_DOUBLE_EDGE),
+    LEVEL_UP_MOVE(69, MOVE_AEROBLAST),
     LEVEL_UP_END
 };
 
