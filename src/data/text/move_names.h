@@ -674,4 +674,6 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_NATURES_MADNESS] = _("Nature's Mad"),
     [MOVE_MULTI_ATTACK] = _("Multi-Attack"),
     [MOVE_GRAVEL_STORM] = _("Gravel Storm"),
+    [MOVE_REAPING_BLOW] = _("Reaping Blow"),
+    [MOVE_BLAST_OFF] = _("Blast Off"),
 };
