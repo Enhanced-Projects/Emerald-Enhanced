@@ -17434,10 +17434,10 @@ const struct BaseStats gBaseStats[] =
     {
         .baseHP        = 60,
         .baseAttack    = 50,
-        .baseDefense   = 150,
+        .baseDefense   = 140,
         .baseSpeed     = 60,
         .baseSpAttack  = 50,
-        .baseSpDefense = 150,
+        .baseSpDefense = 140,
         .type1 = TYPE_STEEL,
         .type2 = TYPE_GHOST,
         .catchRate = 45,
@@ -21075,8 +21075,8 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_HUMAN_LIKE,
-        .abilities = {ABILITY_ADAPTABILITY, ABILITY_ADAPTABILITY},
-        .abilityHidden = ABILITY_ADAPTABILITY,
+        .abilities = {ABILITY_MOXIE, ABILITY_MOXIE},
+        .abilityHidden = ABILITY_MOXIE,
         .bodyColor = BODY_COLOR_BLUE,
     },
 
@@ -22428,10 +22428,10 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_AEGISLASH_BLADE] =
     {
         .baseHP        = 60,
-        .baseAttack    = 150,
+        .baseAttack    = 140,
         .baseDefense   = 50,
         .baseSpeed     = 60,
-        .baseSpAttack  = 150,
+        .baseSpAttack  = 140,
         .baseSpDefense = 50,
         .type1 = TYPE_STEEL,
         .type2 = TYPE_GHOST,

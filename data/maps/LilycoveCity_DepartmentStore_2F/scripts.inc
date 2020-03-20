@@ -25,9 +25,6 @@ LilycoveCity_DepartmentStore_2F_EventScript_ClerkLeft:: @ 821FB48
 
 	.align 2
 LilycoveCity_DepartmentStore_2F_Pokemart1: @ 821FB60
-	.2byte ITEM_POKE_BALL
-	.2byte ITEM_GREAT_BALL
-	.2byte ITEM_ULTRA_BALL
 	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_FULL_HEAL
 	.2byte ITEM_ANTIDOTE
