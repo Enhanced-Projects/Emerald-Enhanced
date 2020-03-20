@@ -63,15 +63,14 @@ FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale:: @ 8201452
 	end
 
 FallarborTown_MoveRelearnersHouse_Text_ImTheMoveTutor: @ 820145C
-	.string "I'm the Universalist!\n"
-	.string "I've travelled far and wide to\p"
-	.string "learn every move in the world.\n"
-	.string "I pass on my knowledge for a\l"
-	.string "small fee.$"
+	.string "I'm the Universalist!\p"
+	.string "I've travelled far and wide to\n"
+	.string "learn every move in the world.\p"
+	.string "I pass on my knowledge for a\n"
+	.string "Heart Scale.$"
 
 FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove: @ 8201541
-	.string "I charge one Heart Scale for my\n"
-	.string "services. It looks like you have\l"
+	.string "It looks like you have\n"
 	.string "some. Should I teach a move?$"
 
 FallarborTown_MoveRelearnersHouse_Text_TutorWhichMon: @ 82015A5
@@ -86,7 +85,7 @@ FallarborTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon: @ 82015DE
 	.string "unknown to me.$"
 
 FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale: @ 8201627
-	.string "{PLAYER} handed over one HEART SCALE\n"
+	.string "{PLAYER} handed over one Heart Scale\n"
 	.string "in exchange.$"
 
 FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale: @ 8201653
@@ -95,5 +94,5 @@ FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale: @ 8201653
 
 FallarborTown_MoveRelearnersHouse_Text_CantTeachEgg: @ 8201697
 	.string "Hunh? There isn't a single move that\n"
-	.string "I can teach an EGG.$"
+	.string "I can teach an egg.$"
 
