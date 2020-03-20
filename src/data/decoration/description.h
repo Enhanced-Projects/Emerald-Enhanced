@@ -348,7 +348,7 @@ const u8 DecorDesc_KISS_POSTER[] = _(
         "a SMOOCHUM print.");
 
 const u8 DecorDesc_PICHU_DOLL[] = _(
-    "A PICHU doll.\n"
+    "A Slakoth doll.\n"
         "Place it on a mat\n"
         "or a desk.");
 

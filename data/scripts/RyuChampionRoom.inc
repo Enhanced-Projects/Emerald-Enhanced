@@ -3,7 +3,7 @@
 
 
 RyuThroneRoomCheckFollower::
-	map_script_2 VAR_TEMP_9, 0, RyuResetFollowerPosition
+	map_script_2 VAR_TEMP_D, 0, RyuResetFollowerPosition
 	.2byte 0
 
 @Alternate champion room 

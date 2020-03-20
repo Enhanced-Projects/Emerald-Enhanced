@@ -2343,32 +2343,32 @@ bool8 ScrCmd_gfec(struct ScriptContext *ctx)
         {
             fX = pX;
             fY = pY + 1;
-            VarSet(VAR_TEMP_1, fX);
-            VarSet(VAR_TEMP_2, fY);
+            VarSet(VAR_TEMP_E, fX);
+            VarSet(VAR_TEMP_F, fY);
             return FALSE;
         }
         case DIR_SOUTH:
         {
             fX = pX;
             fY = pY - 1;
-            VarSet(VAR_TEMP_1, fX);
-            VarSet(VAR_TEMP_2, fY);
+            VarSet(VAR_TEMP_E, fX);
+            VarSet(VAR_TEMP_F, fY);
             return FALSE;
         }
         case DIR_EAST:
         {
             fX = pX - 1;
             fY = pY;
-            VarSet(VAR_TEMP_1, fX);
-            VarSet(VAR_TEMP_2, fY);
+            VarSet(VAR_TEMP_E, fX);
+            VarSet(VAR_TEMP_F, fY);
             return FALSE;
         }
         case DIR_WEST:
         {
             fX = pX + 1;
             fY = pY;
-            VarSet(VAR_TEMP_1, fX);
-            VarSet(VAR_TEMP_2, fY);
+            VarSet(VAR_TEMP_E, fX);
+            VarSet(VAR_TEMP_F, fY);
             return FALSE;
         }
     }

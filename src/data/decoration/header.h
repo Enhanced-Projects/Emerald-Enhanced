@@ -685,9 +685,9 @@ const struct Decoration gDecorations[] = {
         DecorGfx_KISS_POSTER
     }, {
         DECOR_PICHU_DOLL,
-        _("PICHU DOLL"),
+        _("Slakoth Doll"),
         DECORPERM_SPRITE,
-        DECORSHAPE_1x1,
+        DECORSHAPE_1x2,
         DECORCAT_DOLL,
         3000,
         DecorDesc_PICHU_DOLL,

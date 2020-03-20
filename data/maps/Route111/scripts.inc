@@ -799,7 +799,7 @@ r111_Sandstorm:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Use Sandstorm!$"
 
 r111_timePassage:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ryu and Castform work for about an\n"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} and Castform work for about an\n"
 	.string "hour...$"
 
 r111_CastformTired:

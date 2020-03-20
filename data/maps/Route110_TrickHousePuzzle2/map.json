@@ -54,7 +54,7 @@
     ],
     "id": "MAP_ROUTE110_TRICK_HOUSE_PUZZLE2",
     "layout": "LAYOUT_ROUTE110_TRICK_HOUSE_PUZZLE2",
-    "map_type": "MAP_TYPE_INDOOR",
+    "map_type": "MAP_TYPE_UNUSED_1",
     "music": "MUS_KARAKURI",
     "name": "Route110_TrickHousePuzzle2",
     "object_events": [
@@ -128,27 +128,6 @@
     "requires_flash": false,
     "show_map_name": false,
     "warp_events": [
-        {
-            "dest_map": "MAP_ROUTE110_TRICK_HOUSE_ENTRANCE",
-            "dest_warp_id": 2,
-            "elevation": 3,
-            "x": 0,
-            "y": 21
-        },
-        {
-            "dest_map": "MAP_ROUTE110_TRICK_HOUSE_ENTRANCE",
-            "dest_warp_id": 2,
-            "elevation": 3,
-            "x": 1,
-            "y": 21
-        },
-        {
-            "dest_map": "MAP_ROUTE110_TRICK_HOUSE_END",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 13,
-            "y": 1
-        }
     ],
     "weather": "WEATHER_NONE"
 }

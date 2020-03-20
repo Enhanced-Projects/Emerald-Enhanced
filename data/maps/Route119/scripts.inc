@@ -29,7 +29,7 @@ Route119_EventScript_MoveInstituteWorkersDownstairs:: @ 81F4466
 	return
 	
 r119_CheckOnQuest::
-	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
+	goto_if_set FLAG_RYU_DEVON_SCIENTIST, ryu_end
 	lockall
 	msgbox WIClosed, MSGBOX_SIGN
 	closemessage

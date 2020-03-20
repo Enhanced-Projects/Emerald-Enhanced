@@ -477,7 +477,7 @@ SlateportCity_EventScript_PowerTMClerk:: @ 81DD1D8
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemart SlateportCity_Pokemart_PowerTMs
+	pokemartdecoration SlateportCity_Pokemart_PowerTMs
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end

@@ -4537,10 +4537,6 @@ bool8 RyuGiveMewtwo(void)
 
 void RyuIncrementLapCount(void)
 {
-    u16 v = VarGet(VAR_TEMP_2);
-    v = (v + 1);
-    VarSet(VAR_TEMP_2, v);
-    PlaySE(SE_EXPMAX);
 }
 
 bool8 IsSneaselInParty(void)

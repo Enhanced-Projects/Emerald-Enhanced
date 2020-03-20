@@ -1283,14 +1283,14 @@ RyuCancelFollowerForQuest::  @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollow
 
 RyuResetFollowerPosition::
 	gfec
-	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
-	setvar VAR_TEMP_9, 1
+	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_E, VAR_TEMP_F
+	setvar VAR_TEMP_D, 1
 	end
 
 RyuResetFollowerPositionAR::
 	gfec
-	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
-	setvar VAR_TEMP_9, 1
+	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_E, VAR_TEMP_F
+	setvar VAR_TEMP_D, 1
 	return
 
 RyuForceCancelFollowerForQuest:: @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
