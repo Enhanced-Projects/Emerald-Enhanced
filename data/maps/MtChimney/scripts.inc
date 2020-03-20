@@ -91,7 +91,8 @@ MtChimney_EventScript_Maxie:: @ 822EE0B
 	removeobject 29
 	removeobject 3
 	removeobject 22
-	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA 
+	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
 	fadescreen FADE_FROM_BLACK
 	setobjectxyperm 1, 10, 12
 	addobject 1

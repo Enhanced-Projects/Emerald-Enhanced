@@ -62,9 +62,17 @@ EventScript_PkmnCenterNurse_TakeAndHealPkmn:: @ 8271993
     waitfieldeffect FLDEFF_POKECENTER_HEAL
     applymovement VAR_0x800B, Common_Movement_WalkInPlaceFastestDown
     waitmovement 0
+    call_if_set FLAG_RYU_HIDE_MINNIE, CheckRestoreMinnie
     special HealPlayerParty
     msgbox HaveANiceDay
     closemessage
+    return
+
+CheckRestoreMinnie::
+    goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_return
+    compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
+    goto_if_ne ryu_return
+    clearflag FLAG_RYU_HIDE_MINNIE
     return
 
 HaveANiceDay:

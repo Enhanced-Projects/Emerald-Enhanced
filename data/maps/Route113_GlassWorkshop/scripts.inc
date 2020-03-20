@@ -226,7 +226,7 @@ Route113_GlassWorkshop_EventScript_GiveGlassFlute:: @ 826F047
 	return
 
 Route113_GlassWorkshop_EventScript_GiveGlassDecor:: @ 826F05F
-	removedecoration VAR_0x8008
+	adddecoration VAR_0x8008
 	compare VAR_RESULT, FALSE
 	goto_if_eq Route113_GlassWorkshop_EventScript_NoRoomForDecor
 	return

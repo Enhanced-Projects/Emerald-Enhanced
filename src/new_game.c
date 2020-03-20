@@ -275,6 +275,7 @@ void NewGameInitData(void)
     VarSet(VAR_CONTEST_HALL_STATE, 0);
     FlagSet(FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER);
     FlagSet(FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA);
+    FlagSet(FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA);
 }
 
 static void ResetMiniGamesResults(void)

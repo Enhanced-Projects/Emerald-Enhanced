@@ -926,7 +926,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_SUBMISSION] =
     {
-        .effect = EFFECT_RECOIL_33,
+        .effect = EFFECT_DOUBLE_EDGE,
         .power = 120,
         .type = TYPE_FIGHTING,
         .accuracy = 100,

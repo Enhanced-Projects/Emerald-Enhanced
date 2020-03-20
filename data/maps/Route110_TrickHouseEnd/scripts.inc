@@ -182,11 +182,11 @@ Route110_TrickHouseEnd_EventScript_ChooseTent:: @ 826AFA5
 	goto Route110_TrickHouseEnd_EventScript_GiveBlueTent
 
 Route110_TrickHouseEnd_EventScript_GiveRedTent:: @ 826AFBF
-	removedecoration DECOR_RED_TENT
+	adddecoration DECOR_RED_TENT
 	return
 
 Route110_TrickHouseEnd_EventScript_GiveBlueTent:: @ 826AFC7
-	removedecoration DECOR_BLUE_TENT
+	adddecoration DECOR_BLUE_TENT
 	return
 
 Route110_TrickHouseEnd_EventScript_TrickMasterExit:: @ 826AFCF

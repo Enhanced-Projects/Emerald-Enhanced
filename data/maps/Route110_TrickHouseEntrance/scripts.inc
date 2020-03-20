@@ -704,11 +704,11 @@ Route110_TrickHouseEntrance_EventScript_ChooseTent:: @ 826A070
 	goto Route110_TrickHouseEntrance_EventScript_GiveBlueTent
 
 Route110_TrickHouseEntrance_EventScript_GiveRedTent:: @ 826A08A
-	removedecoration DECOR_RED_TENT
+	adddecoration DECOR_RED_TENT
 	return
 
 Route110_TrickHouseEntrance_EventScript_GiveBlueTent:: @ 826A092
-	removedecoration DECOR_BLUE_TENT
+	adddecoration DECOR_BLUE_TENT
 	return
 
 Route110_TrickHouseEntrance_EventScript_ReceivedTent:: @ 826A09A

@@ -1324,6 +1324,10 @@ RyuFollower_LanetteScript::
 	end
 
 RF_FollowerLeaveCall::
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
+	goto_if_eq Ryu_RestoreLanetteAtHouse
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
+	goto_if_eq Ryu_RestoreMinnie
 	clearflag FLAG_RYU_HAS_FOLLOWER
 	destroyfollower
 	msgbox RyuFollowerLeavesService
@@ -1333,6 +1337,8 @@ RF_FollowerLeaveCall::
 RF_FollowerLeave:
 	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
 	call_if_eq Ryu_RestoreLanetteAtHouse
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
+	call_if_eq Ryu_RestoreMinnie
 	clearflag FLAG_RYU_HAS_FOLLOWER
 	destroyfollower
 	msgbox RyuFollowerLeavesService
@@ -1342,6 +1348,10 @@ RF_FollowerLeave:
 
 Ryu_RestoreLanetteAtHouse::
 	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
+	return
+
+Ryu_RestoreMinnie::
+	clearflag FLAG_RYU_HIDE_MINNIE
 	return
 
 RyuFollowerAllySelector::

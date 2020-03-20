@@ -2164,3 +2164,4 @@ const u8 gText_ItemRepel[] = _("Repel (100 steps)");
 const u8 gText_ItemSuperRepel[] = _("Super Repel (200 steps)");
 const u8 gText_ItemMaxRepel[] = _("Max Repel (250 steps)");
 
+const u8 gText_RyuVersion[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}Ver: ");

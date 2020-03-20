@@ -51,8 +51,12 @@
 #include "rtc.h"
 #include "gba/m4a_internal.h"
 
+static EWRAM_DATA u8 MenuSpriteId1 = 0;
+static EWRAM_DATA u8 MenuSpriteId2 = 0;
+
 extern u8 RyuDebugMenuScript[];
 extern u8 RyuDebugBetaMenuScript[];
+extern const u8 gText_RyuVersion[];
 
 // Menu actions
 enum
@@ -474,9 +478,16 @@ void PrintNumberToScreen(s32 num)
             StringAppend(gStringVar3, gText_RyuDay);
         }
     }
+    
+    //print version number
+    StringCopy(gStringVar2, gText_RyuVersion);
+    ConvertIntToDecimalStringN(gStringVar4, VarGet(VAR_LAST_KNOWN_GAME_VERSION), STR_CONV_MODE_LEFT_ALIGN, 4);
+    StringAppend(gStringVar2, gStringVar4);
+
 
     //print all text
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 0, 0, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 56, 0, 0, NULL);
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 0, 10, 0, NULL);
 
 }
@@ -524,6 +535,170 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
     return FALSE;
 }
 
+
+
+//Start menu logo display defines
+
+
+static const u32 DevonLogoGfx[] = INCBIN_U32("graphics/cutscene/devonLogo.4bpp");
+static const u16 DevonLogoPal[] = INCBIN_U16("graphics/cutscene/devonLogo.gbapal");
+static const u32 DevonScientistLogoGfx[] = INCBIN_U32("graphics/cutscene/devonScientistLogo.4bpp");
+static const u32 AquaLogoGfx[] = INCBIN_U32("graphics/cutscene/aquaLogo.4bpp");
+static const u16 AquaLogoPal[] = INCBIN_U16("graphics/cutscene/aquaLogo.gbapal");
+static const u32 AquaShellyLogoGfx[] = INCBIN_U32("graphics/cutscene/aquaShellyLogo.4bpp");
+static const u32 MagmaLogoGfx[] = INCBIN_U32("graphics/cutscene/magmaLogo.4bpp");
+static const u16 MagmaLogoPal[] = INCBIN_U16("graphics/cutscene/magmaLogo.gbapal");
+
+const struct SpriteSheet DevonLogoSheet =
+{
+    .data = DevonLogoGfx,
+    .size = sizeof(DevonLogoGfx),
+    .tag = 2652
+};
+
+const struct SpritePalette DevonLogoPalette =
+{
+    .data = DevonLogoPal, 
+	.tag = 2652
+};
+
+static const struct OamData DevonLogoOamData =
+{
+    .y = 0,
+    .shape = SPRITE_SHAPE(32x32),
+    .size = SPRITE_SIZE(32x32),
+    .priority = 0
+};
+
+const struct SpriteTemplate DevonLogoSpriteTemplate =
+{
+    .tileTag = 2652,
+    .paletteTag = 2652,
+    .oam = &DevonLogoOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
+
+const struct SpriteSheet DevonScientistLogoSheet =
+{
+    .data = DevonScientistLogoGfx,
+    .size = sizeof(DevonScientistLogoGfx),
+    .tag = 2652
+};
+
+static const struct OamData DevonScientistLogoOamData =
+{
+    .y = 0,
+    .shape = SPRITE_SHAPE(32x32),
+    .size = SPRITE_SIZE(32x32),
+    .priority = 0
+};
+
+const struct SpriteTemplate DevonScientistLogoSpriteTemplate =
+{
+    .tileTag = 2652,
+    .paletteTag = 2652,
+    .oam = &DevonScientistLogoOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
+
+const struct SpriteSheet AquaLogoSheet =
+{
+    .data = AquaLogoGfx,
+    .size = sizeof(AquaLogoGfx),
+    .tag = 1254
+};
+
+const struct SpritePalette AquaLogoPalette =
+{
+    .data = AquaLogoPal, 
+	.tag = 1254
+};
+
+static const struct OamData AquaLogoOamData =
+{
+    .y = 0,
+    .shape = SPRITE_SHAPE(32x32),
+    .size = SPRITE_SIZE(32x32),
+    .priority = 0
+};
+
+const struct SpriteTemplate AquaLogoSpriteTemplate =
+{
+    .tileTag = 1254,
+    .paletteTag = 1254,
+    .oam = &AquaLogoOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
+
+const struct SpriteSheet AquaShellyLogoSheet =
+{
+    .data = AquaLogoGfx,
+    .size = sizeof(AquaLogoGfx),
+    .tag = 1254
+};
+
+static const struct OamData AquaShellyLogoOamData =
+{
+    .y = 0,
+    .shape = SPRITE_SHAPE(32x32),
+    .size = SPRITE_SIZE(32x32),
+    .priority = 0
+};
+
+const struct SpriteTemplate AquaShellyLogoSpriteTemplate =
+{
+    .tileTag = 1254,
+    .paletteTag = 1254,
+    .oam = &AquaShellyLogoOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
+
+void DrawDevonLogo(void)
+{
+    if (FlagGet(FLAG_RYU_DEVON_SCIENTIST) == 1)
+    {
+        LoadSpriteSheet(&DevonScientistLogoSheet);
+        LoadSpritePalette(&DevonLogoPalette);
+        MenuSpriteId1 = (CreateSprite(&DevonLogoSpriteTemplate, 16, 54, 0));
+    }
+    else
+    {
+        LoadSpriteSheet(&DevonLogoSheet);
+        LoadSpritePalette(&DevonLogoPalette);
+        MenuSpriteId1 = (CreateSprite(&DevonScientistLogoSpriteTemplate, 16, 54, 0));
+    }
+}
+
+void DrawAquaLogo(void)
+{
+    if (FlagGet(FLAG_RYU_PLAYER_ARCHIE_ACQ) == 1)
+    {
+        LoadSpriteSheet(&AquaShellyLogoSheet);
+        LoadSpritePalette(&AquaLogoPalette);
+        MenuSpriteId1 = (CreateSprite(&AquaShellyLogoSpriteTemplate, 16, 54, 0));
+    }
+    else
+    {
+        LoadSpriteSheet(&AquaLogoSheet);
+        LoadSpritePalette(&AquaLogoPalette);
+        MenuSpriteId1 = (CreateSprite(&AquaLogoSpriteTemplate, 16, 54, 0));
+    }
+}
+void DrawMagmaLogo(void)
+{}
+
 static bool32 InitStartMenuStep(void)
 {
     s8 state = sInitStartMenuData[0];
@@ -565,6 +740,17 @@ static bool32 InitStartMenuStep(void)
 		{
 			PrintSongNumber(GetCurrentMapMusic());
 		}
+
+        if (FlagGet(FLAG_RYU_PLAYER_HELPING_DEVON) == 1)
+        {
+            DrawDevonLogo();
+        }
+        else if (FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA) == 1)
+        {
+            DrawAquaLogo();
+        }
+        else{}
+        
         return TRUE;
     }
 
@@ -924,6 +1110,7 @@ static bool8 StartMenuExitCallback(void)
     RemoveExtraStartMenuWindows();
     HideFieldMessageBox();
     RemovePrintedNumber();
+    DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
     return TRUE;
 }
 

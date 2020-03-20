@@ -1,5 +1,5 @@
 RyuTeleport::
-	lock
+	lockall
 	goto_if_set FLAG_RYU_WAYSTONE_DISABLED, RyuTeleportDisabled
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuTeleportUseCheck
 	call_if_set FLAG_RYU_HARDCORE_MODE, RyuTeleportUseCheck
