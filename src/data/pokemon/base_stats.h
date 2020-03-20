@@ -21075,8 +21075,8 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_HUMAN_LIKE,
-        .abilities = {ABILITY_ADAPTABILITY, ABILITY_ADAPTABILITY},
-        .abilityHidden = ABILITY_ADAPTABILITY,
+        .abilities = {ABILITY_MOXIE, ABILITY_MOXIE},
+        .abilityHidden = ABILITY_MOXIE,
         .bodyColor = BODY_COLOR_BLUE,
     },
 
