@@ -2606,6 +2606,15 @@ static const u8 sAQUA_JETDescription[] = _(
     "speeds and slams the target\n"
     "before they can react.");
 
+static const u8 sREAPING_BLOWDescription[] = _(
+    "Reaps part of the foe's soul\n"
+    "to restore health");
+
+static const u8 sBLAST_OFFDescription[] = _(
+    "Departs like a rocket,\n"
+    "hitting everything with \n"
+    "the blast.");
+
 static const u8 sNotDoneYetDescription[] = _(
 	"Not done yet.");
 
@@ -3286,4 +3295,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_NATURES_MADNESS - 1] = sNATURES_MADNESSDescription,
     [MOVE_MULTI_ATTACK - 1] = sMULTI_ATTACKDescription,
     [MOVE_GRAVEL_STORM - 1] = sGRAVEL_STORMDescription,
+    [MOVE_REAPING_BLOW - 1] = sREAPING_BLOWDescription,
+    [MOVE_BLAST_OFF - 1] = sBLAST_OFFDescription,
 };
