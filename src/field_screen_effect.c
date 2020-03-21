@@ -326,6 +326,8 @@ static void Task_ExitDoor(u8 taskId)
     s16 *y = &task->data[3];
     int followerX;
     int followerY;
+    int dx;
+    int dy;
     switch (task->data[0])
     {
     case 0:
@@ -338,8 +340,32 @@ static void Task_ExitDoor(u8 taskId)
         {
             u8 objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
             struct ObjectEvent playerObjEv = gObjectEvents[objEventId];
-            playerObjEv.currentCoords.y++;
-            GetSafeCoordsForFollower(&playerObjEv, gSaveBlock1Ptr->pos.x, gSaveBlock1Ptr->pos.y+1, DIR_NORTH, &followerX, &followerY);
+            switch (playerObjEv.facingDirection)
+            {
+            case DIR_SOUTH:
+                dx = 0;
+                dy = 1;
+                break;
+            case DIR_NORTH:
+                dx = 0;
+                dy = -1;
+                break;
+            case DIR_WEST:
+                dx = -1;
+                dy = 0;
+                break;
+            case DIR_EAST:
+                dx = 1;
+                dy = 0;
+                break;
+            default:
+                dx = 1;
+                dy = 0;
+                break;
+            }
+            playerObjEv.currentCoords.y += dy;
+            playerObjEv.currentCoords.x += dx;
+            GetSafeCoordsForFollower(&playerObjEv, gSaveBlock1Ptr->pos.x+dx, gSaveBlock1Ptr->pos.y+dy, playerObjEv.facingDirection, &followerX, &followerY);
             TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, followerX, followerY);
         }
         task->data[0] = 1;
@@ -386,6 +412,8 @@ static void Task_ExitNonAnimDoor(u8 taskId)
     s16 *y = &task->data[3];
     int followerX;
     int followerY;
+    int dx;
+    int dy;
     switch (task->data[0])
     {
     case 0:
@@ -397,8 +425,32 @@ static void Task_ExitNonAnimDoor(u8 taskId)
         {
             u8 objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
             struct ObjectEvent playerObjEv = gObjectEvents[objEventId];
-            playerObjEv.currentCoords.y++;
-            GetSafeCoordsForFollower(&playerObjEv, gSaveBlock1Ptr->pos.x, gSaveBlock1Ptr->pos.y+1, DIR_NORTH, &followerX, &followerY);
+            switch (playerObjEv.facingDirection)
+            {
+            case DIR_SOUTH:
+                dx = 0;
+                dy = 1;
+                break;
+            case DIR_NORTH:
+                dx = 0;
+                dy = -1;
+                break;
+            case DIR_WEST:
+                dx = -1;
+                dy = 0;
+                break;
+            case DIR_EAST:
+                dx = 1;
+                dy = 0;
+                break;
+            default:
+                dx = 1;
+                dy = 0;
+                break;
+            }
+            playerObjEv.currentCoords.y += dy;
+            playerObjEv.currentCoords.x += dx;
+            GetSafeCoordsForFollower(&playerObjEv, gSaveBlock1Ptr->pos.x+dx, gSaveBlock1Ptr->pos.y+dy, playerObjEv.facingDirection, &followerX, &followerY);
             TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, followerX, followerY);
         }
         task->data[0] = 1;
@@ -430,10 +482,19 @@ static void Task_ExitNonAnimDoor(u8 taskId)
 
 static void Task_ExitNonDoor(u8 taskId)
 {
+    int followerX;
+    int followerY;
     switch (gTasks[taskId].data[0])
     {
     case 0:
         FreezeObjectEvents();
+        if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
+        {
+            u8 objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            struct ObjectEvent playerObjEv = gObjectEvents[objEventId];
+            GetSafeCoordsForFollower(&playerObjEv, gSaveBlock1Ptr->pos.x, gSaveBlock1Ptr->pos.y, playerObjEv.facingDirection, &followerX, &followerY);
+            TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, followerX, followerY);
+        }
         ScriptContext2_Enable();
         gTasks[taskId].data[0]++;
         break;
