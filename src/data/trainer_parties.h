@@ -3361,7 +3361,7 @@ static const struct TrainerMonItemCustomMoves sParty_Phoebe[] = {
 	.species = SPECIES_BANETTE,
 	.heldItem = ITEM_SPELL_TAG,
 	.ability = 0,
-	.moves = {MOVE_PHANTOM_FORCE, MOVE_SHADOW_SNEAK, MOVE_GUNK_SHOT, MOVE_WILL_O_WISP},
+	.moves = {MOVE_REAPING_BLOW, MOVE_SHADOW_SNEAK, MOVE_GUNK_SHOT, MOVE_WILL_O_WISP},
 	},
 	{
 	.iv = 255,
@@ -3369,7 +3369,7 @@ static const struct TrainerMonItemCustomMoves sParty_Phoebe[] = {
 	.species = SPECIES_DUSKNOIR,
 	.heldItem = ITEM_LEFTOVERS,
 	.ability = 0,
-	.moves = {MOVE_SHADOW_SNEAK, MOVE_WILL_O_WISP, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH},
+	.moves = {MOVE_SHADOW_SNEAK, MOVE_WILL_O_WISP, MOVE_EARTHQUAKE, MOVE_REAPING_BLOW},
 	},
 	{
 	.iv = 255,
@@ -13398,9 +13398,9 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch[] = {
 	.iv = 250,
 	.lvl = 100,
 	.species = SPECIES_AEGISLASH,
-	.heldItem = ITEM_LEFTOVERS,
+	.heldItem = ITEM_ASSAULT_VEST,
 	.ability = 0,
-	.moves = {MOVE_SHADOW_BALL, MOVE_IRON_HEAD, MOVE_SACRED_SWORD, MOVE_KING_S_SHIELD},
+	.moves = {MOVE_REAPING_BLOW, MOVE_IRON_HEAD, MOVE_SACRED_SWORD, MOVE_SHADOW_SNEAK},
 	},
 	{
 	.iv = 255,
@@ -13408,7 +13408,7 @@ static const struct TrainerMonItemCustomMoves sParty_PhoebeRematch[] = {
 	.species = SPECIES_MIMIKYU,
 	.heldItem = ITEM_LIFE_ORB,
 	.ability = 0,
-	.moves = {MOVE_PLAY_ROUGH, MOVE_SHADOW_CLAW, MOVE_SHADOW_SNEAK, MOVE_SWORDS_DANCE},
+	.moves = {MOVE_PLAY_ROUGH, MOVE_REAPING_BLOW, MOVE_SHADOW_SNEAK, MOVE_SWORDS_DANCE},
 	},
 	{
 	.iv = 255,
@@ -13459,7 +13459,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch[] = {
 	.species = SPECIES_SALAMENCE,
 	.heldItem = ITEM_SALAMENCITE,
 	.ability = 0,
-	.moves = {MOVE_DRACO_METEOR, MOVE_HURRICANE, MOVE_FIRE_BLAST, MOVE_HYDRO_PUMP},
+	.moves = {MOVE_DRAGON_PULSE, MOVE_AEROBLAST, MOVE_BLAST_OFF, MOVE_HYDRO_PUMP},
 	},
 	{
 	.iv = 250,
@@ -13467,7 +13467,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch[] = {
 	.species = SPECIES_DRAGONITE,
 	.heldItem = ITEM_ASSAULT_VEST,
 	.ability = 2,
-	.moves = {MOVE_DRAGON_CLAW, MOVE_DRAGON_ASCENT, MOVE_EXTREME_SPEED, MOVE_EARTHQUAKE},
+	.moves = {MOVE_DRAGON_CLAW, MOVE_FLY, MOVE_EXTREME_SPEED, MOVE_EARTHQUAKE},
 	},
 };
 
