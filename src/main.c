@@ -169,7 +169,7 @@ void AgbMain()
         }
 
         PlayTimeCounter_Update();
-        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 651);
+        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 652);
         VarSet(VAR_RECYCLE_GOODS, 45454);
         //mgba_open();
         (FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE));

@@ -878,6 +878,7 @@ static bool8 HandleStartMenuInput(void)
             //SetMainCallback2(CB2_ReturnToField);
             RemovePrintedNumber();
             RemoveExtraStartMenuWindows();
+            DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
             HideStartMenu();
             HideFieldMessageBox();
             ScriptContext2_Enable();
@@ -945,6 +946,7 @@ static bool8 HandleStartMenuInput(void)
         RemoveExtraStartMenuWindows();
         HideStartMenu();
         RemovePrintedNumber();
+        DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
         return TRUE;
     }
 
@@ -1072,6 +1074,7 @@ static bool8 StartMenuSaveCallback(void)
     if (InBattlePyramid())
         RemoveExtraStartMenuWindows();
 
+    DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
     gMenuCallback = SaveStartCallback; // Display save menu
 
     return FALSE;
@@ -1110,7 +1113,6 @@ static bool8 StartMenuExitCallback(void)
     RemoveExtraStartMenuWindows();
     HideFieldMessageBox();
     RemovePrintedNumber();
-    DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
     return TRUE;
 }
 
@@ -1781,6 +1783,7 @@ static void HideStartMenuWindow(void)
     ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
     RemoveStartMenuWindow();
     RemovePrintedNumber();
+    DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
     ScriptUnfreezeObjectEvents();
     ScriptContext2_Disable();
 }

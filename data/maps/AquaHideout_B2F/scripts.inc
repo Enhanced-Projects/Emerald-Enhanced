@@ -27,6 +27,7 @@ AquaHideout_B2F_EventScript_MattNoticePlayer:: @ 8233DE5
 	end
 
 AC_DevonTrigger:
+	goto_if_set FLAG_RYU_SUB_ROOM_SHELLY, ryu_end
 	addobject 8
 	applymovement 8, AC_ShellyAttacksPlayer
 	waitmovement 8
@@ -44,6 +45,7 @@ AC_AfterFight:
 	waitse
 	removeobject 8
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	setflag FLAG_RYU_SUB_ROOM_SHELLY
 	release
 	end
 	
