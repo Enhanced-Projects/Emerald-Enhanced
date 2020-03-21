@@ -5711,6 +5711,7 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_LOW_KICK)
 											| TUTOR(MOVE_DRAIN_PUNCH)
 											| TUTOR(MOVE_ENDURE)
+											| TUTOR(MOVE_ICE_PUNCH)
 											| TUTOR(MOVE_OUTRAGE)
 											| TUTOR(MOVE_THUNDER_PUNCH)
 											| TUTOR(MOVE_FIRE_PUNCH)),
