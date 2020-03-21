@@ -1577,7 +1577,30 @@ u8 sprite_new(u8 graphicsId, u8 eventObjectId, s16 x, s16 y, u8 z, u8 direction)
     return spriteId;
 }
 
-static void GetSafeCoordsForFollower(struct ObjectEvent *playerObjectEvent, int playerX, int playerY, int direction, int *followerX, int *followerY)
+u32 GetSafeDirectionForFollower(struct ObjectEvent *playerObjectEvent, s16 xOffset, s16 yOffset)
+{
+    struct ObjectEvent playerCopy = *playerObjectEvent;
+    playerCopy.currentCoords.x += xOffset;
+    playerCopy.currentCoords.y += yOffset;
+    if (!GetCollisionInDirection(&playerCopy, DIR_SOUTH))
+    {
+        return DIR_SOUTH;
+    }
+    else if (!GetCollisionInDirection(&playerCopy, DIR_NORTH))
+    {
+        return DIR_NORTH;
+    }
+    else if (!GetCollisionInDirection(&playerCopy, DIR_WEST))
+    {
+        return DIR_WEST;
+    }
+    else
+    {
+        return DIR_EAST;
+    }
+}
+
+void GetSafeCoordsForFollower(struct ObjectEvent *playerObjectEvent, int playerX, int playerY, int direction, int *followerX, int *followerY)
 {
     int dx, dy;
     if (!GetCollisionInDirection(playerObjectEvent, direction))

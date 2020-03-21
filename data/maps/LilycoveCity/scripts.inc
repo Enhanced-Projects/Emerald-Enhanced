@@ -6,7 +6,7 @@ LilycoveCity_MapScripts:: @ 81E2B3C
 
 LeafScene::
     map_script_2 VAR_RYU_DS_LANA_STAGE, 1, LeafSceneResume
-	map_script_2 VAR_TEMP_D, 0, RyuResetFollowerPosition
+	@map_script_2 VAR_TEMP_D, 0, RyuResetFollowerPosition
     .2byte 0
 
 LeafSceneResume::
