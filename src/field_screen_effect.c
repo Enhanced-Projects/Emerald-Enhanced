@@ -324,23 +324,34 @@ static void Task_ExitDoor(u8 taskId)
     struct Task *task = &gTasks[taskId];
     s16 *x = &task->data[2];
     s16 *y = &task->data[3];
-
+    int followerX;
+    int followerY;
     switch (task->data[0])
     {
     case 0:
+    {
         SetPlayerVisibility(FALSE);
         FreezeObjectEvents();
         PlayerGetDestCoords(x, y);
         FieldSetDoorOpened(*x, *y);
+        if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
+        {
+            u8 objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            struct ObjectEvent playerObjEv = gObjectEvents[objEventId];
+            playerObjEv.currentCoords.y++;
+            GetSafeCoordsForFollower(&playerObjEv, gSaveBlock1Ptr->pos.x, gSaveBlock1Ptr->pos.y+1, DIR_NORTH, &followerX, &followerY);
+            TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, followerX, followerY);
+        }
         task->data[0] = 1;
         break;
+    }
     case 1:
         if (WaitForWeatherFadeIn())
         {
             u8 objEventId;
             SetPlayerVisibility(TRUE);
             objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
-            ObjectEventSetHeldMovement(&gObjectEvents[objEventId], MOVEMENT_ACTION_WALK_IN_PLACE_NORMAL_DOWN);
+            ObjectEventSetHeldMovement(&gObjectEvents[objEventId], MOVEMENT_ACTION_WALK_NORMAL_DOWN);
             task->data[0] = 2;
         }
         break;
@@ -373,15 +384,26 @@ static void Task_ExitNonAnimDoor(u8 taskId)
     struct Task *task = &gTasks[taskId];
     s16 *x = &task->data[2];
     s16 *y = &task->data[3];
-
+    int followerX;
+    int followerY;
     switch (task->data[0])
     {
     case 0:
+    {
         SetPlayerVisibility(FALSE);
         FreezeObjectEvents();
         PlayerGetDestCoords(x, y);
+        if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
+        {
+            u8 objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            struct ObjectEvent playerObjEv = gObjectEvents[objEventId];
+            playerObjEv.currentCoords.y++;
+            GetSafeCoordsForFollower(&playerObjEv, gSaveBlock1Ptr->pos.x, gSaveBlock1Ptr->pos.y+1, DIR_NORTH, &followerX, &followerY);
+            TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, followerX, followerY);
+        }
         task->data[0] = 1;
         break;
+    }
     case 1:
         if (WaitForWeatherFadeIn())
         {

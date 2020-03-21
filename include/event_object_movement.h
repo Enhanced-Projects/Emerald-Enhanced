@@ -457,5 +457,6 @@ bool32 sub_8097C8C(u8 var);
 void sub_8097BB4(u8 var1, u8 graphicsId);
 void sub_8097CC4(u8 var1, u8 var2);
 bool32 sub_8097D9C(u8 var);
-
+u32 GetSafeDirectionForFollower(struct ObjectEvent *, s16, s16);
+void GetSafeCoordsForFollower(struct ObjectEvent *playerObjectEvent, int playerX, int playerY, int direction, int *followerX, int *followerY);
 #endif //GUARD_EVENT_OBJECT_MOVEMENT_H
