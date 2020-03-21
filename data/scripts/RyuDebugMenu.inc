@@ -351,15 +351,15 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
-    givemon SPECIES_PRIMARINA, 125, ITEM_EXPERT_BELT
-	givemon SPECIES_PHEROMOSA, 125, ITEM_BLACK_BELT
-	setmonmove 1, 0, MOVE_TRIPLE_KICK
+    givemon SPECIES_NAGANADEL, 125, ITEM_EXPERT_BELT
+	givemon SPECIES_ZERAORA, 125, ITEM_BLACK_BELT
+	setmonmove 1, 0, MOVE_CLOSE_COMBAT
 	setmonmove 1, 1, MOVE_WILD_CHARGE
 	setmonmove 1, 2, MOVE_EXTREME_SPEED
-	setmonmove 1, 3, MOVE_MEGAHORN
-	setmonmove 0, 0, MOVE_SPARKLING_ARIA
-	setmonmove 0, 1, MOVE_MOONBLAST
-	setmonmove 0, 2, MOVE_SHADOW_BALL
+	setmonmove 1, 3, MOVE_ICE_PUNCH
+	setmonmove 0, 0, MOVE_SLUDGE_BOMB
+	setmonmove 0, 1, MOVE_DRAGON_PULSE
+	setmonmove 0, 2, MOVE_THUNDERBOLT
 	setmonmove 0, 3, MOVE_ICE_BEAM
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 1

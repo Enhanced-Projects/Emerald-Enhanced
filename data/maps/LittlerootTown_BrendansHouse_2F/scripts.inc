@@ -6,12 +6,12 @@ GameIntroSequenceCheck::
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 4, GameIntroSequencePart1
 	map_script_2 VAR_RYU_DS_LANA_STAGE, 75, LRT_LeafEvent
 	map_script_2 VAR_TEMP_0, 0, LRT_CheckIfRemoveRival
-	map_script_2 VAR_TEMP_9, 0, LRT_ResetFollower
+	@map_script_2 VAR_TEMP_D, 0, LRT_ResetFollower
 	.2byte 0
 
 LRT_ResetFollower::
-	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuResetFollowerPosition
-	setvar VAR_TEMP_9, 1
+	@call_if_set FLAG_RYU_HAS_FOLLOWER, RyuResetFollowerPosition
+	@setvar VAR_TEMP_D, 1
 	end
 	
 LRT_CheckIfRemoveRival::

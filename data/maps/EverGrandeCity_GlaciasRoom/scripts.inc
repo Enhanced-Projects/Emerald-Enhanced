@@ -6,7 +6,7 @@ EverGrandeCity_GlaciasRoom_MapScripts:: @ 8228412
 
 EverGrandeCity_GlaciasRoom_OnWarp: @ 8228422
 	map_script_2 VAR_TEMP_1, 0, EverGrandeCity_GlaciasRoom_EventScript_PlayerTurnNorth
-	map_script_2 VAR_TEMP_9, 0, LRT_ResetFollower
+	@map_script_2 VAR_TEMP_D, 0, LRT_ResetFollower
 	.2byte 0
 
 EverGrandeCity_GlaciasRoom_EventScript_PlayerTurnNorth:: @ 822842C

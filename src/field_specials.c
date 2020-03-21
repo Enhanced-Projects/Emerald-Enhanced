@@ -5138,6 +5138,8 @@ void RyuSetIVs(void)
     SetMonData(&gPlayerParty[1], MON_DATA_SPATK_IV, &iv);
     SetMonData(&gPlayerParty[1], MON_DATA_SPDEF_IV, &iv);
     SetMonData(&gPlayerParty[1], MON_DATA_SPEED_IV, &iv);
+    CalculateMonStats(&gPlayerParty[1]);
+    CalculateMonStats(&gPlayerParty[0]);
 }
 
 void RyuResetDevonFlags(void)

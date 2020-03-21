@@ -25,7 +25,7 @@ EverGrandeCity_ChampionsRoom_EventScript_PlayerTurnNorth:: @ 8228A0F
 
 EverGrandeCity_ChampionsRoom_OnFrame: @ 8228A14
 	map_script_2 VAR_TEMP_1, 0, EverGrandeCity_ChampionsRoom_EventScript_EnterRoom
-	map_script_2 VAR_TEMP_9, 0, LRT_ResetFollower
+	@map_script_2 VAR_TEMP_D, 0, LRT_ResetFollower
 	.2byte 0
 
 EverGrandeCity_ChampionsRoom_EventScript_EnterRoom:: @ 8228A1E

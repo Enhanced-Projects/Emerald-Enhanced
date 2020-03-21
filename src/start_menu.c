@@ -875,10 +875,14 @@ static bool8 HandleStartMenuInput(void)
 
     if (gMain.newKeys & SELECT_BUTTON && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {
-            //SetMainCallback2(CB2_ReturnToField);
             RemovePrintedNumber();
             RemoveExtraStartMenuWindows();
-            DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
+            if (!(MenuSpriteId1 == 0))
+            {
+                DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
+                MenuSpriteId1 = 0;
+            }
+
             HideStartMenu();
             HideFieldMessageBox();
             ScriptContext2_Enable();
@@ -946,7 +950,11 @@ static bool8 HandleStartMenuInput(void)
         RemoveExtraStartMenuWindows();
         HideStartMenu();
         RemovePrintedNumber();
-        DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
+        if (!(MenuSpriteId1 == 0))
+        {
+            DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
+            MenuSpriteId1 = 0;
+        }
         return TRUE;
     }
 
@@ -1074,7 +1082,11 @@ static bool8 StartMenuSaveCallback(void)
     if (InBattlePyramid())
         RemoveExtraStartMenuWindows();
 
-    DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
+    if (!(MenuSpriteId1 == 0))
+    {
+        DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
+        MenuSpriteId1 = 0;
+    }
     gMenuCallback = SaveStartCallback; // Display save menu
 
     return FALSE;
@@ -1783,7 +1795,11 @@ static void HideStartMenuWindow(void)
     ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
     RemoveStartMenuWindow();
     RemovePrintedNumber();
-    DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
+    if (!(MenuSpriteId1 == 0))
+        {
+            DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
+            MenuSpriteId1 = 0;
+        }
     ScriptUnfreezeObjectEvents();
     ScriptContext2_Disable();
 }

@@ -12956,7 +12956,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_RelMinnie[] = {
 	{
 	.iv = 255,
 	.lvl = 108,
-	.species = SPECIES_SLAKOTH,
+	.species = SPECIES_BEWEAR,
 	},
 	{
 	.iv = 255,
@@ -12966,7 +12966,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_RelMinnie[] = {
 	{
 	.iv = 255,
 	.lvl = 105,
-	.species = SPECIES_STUFFUL,
+	.species = SPECIES_ALTARIA,
 	},
 	{
 	.iv = 255,

@@ -438,7 +438,7 @@ MauvilleCity_EventScript_BegunNewMauville:: @ 81DF77A
 
 MauvilleCity_EventScript_CompletedNewMauville:: @ 81DF784
 	msgbox MauvilleCity_Text_WattsonThanksTakeTM, MSGBOX_DEFAULT
-	giveitem ITEM_TM24
+	giveegg SPECIES_ZERAORA
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	setflag FLAG_GOT_TM24_FROM_WATTSON
@@ -602,12 +602,13 @@ MauvilleCity_Text_WattsonWontBeChallenge: @ 81E0154
 	.string "Wahahahaha!$"
 
 MauvilleCity_Text_WattsonThanksTakeTM: @ 81E020E
-	.string "Wattson: Wahahahaha!\p"
-	.string "I knew it, {PLAYER}! I knew I'd made\n"
-	.string "the right choice asking you!\p"
-	.string "This is my thanks--a TM containing\n"
-	.string "THUNDERBOLT!\p"
-	.string "Go on, you've earned it!$"
+    .string "Wattson: Wahahahaha!\p"
+    .string "I knew it, {PLAYER}! I knew I'd made\n"
+    .string "the right choice asking you!\p"
+    .string "This is my thanks--an egg!\p"
+    .string "I found it in a magnetic field,\n"
+    .string "maybe a special pokemon is inside?\p"
+    .string "Go on, you've earned it!$
 
 MauvilleCity_Text_WattsonYoungTakeCharge: @ 81E02AA
 	.string "Wattson: Wahahahaha!\p"
