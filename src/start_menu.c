@@ -50,6 +50,7 @@
 #include "constants/event_objects.h"
 #include "rtc.h"
 #include "gba/m4a_internal.h"
+#include "mgba.h"
 
 static EWRAM_DATA u8 MenuSpriteId1 = 0;
 static EWRAM_DATA u8 MenuSpriteId2 = 0;
@@ -895,6 +896,8 @@ static bool8 HandleStartMenuInput(void)
     {
         PlaySE(SE_SELECT);
         sStartMenuCursorPos = Menu_MoveCursor(1);
+        //gSaveBlock1Ptr->test1++;
+        //mgba_printf(MGBA_LOG_DEBUG, "test1 = %d", gSaveBlock1Ptr->test1);
     }
 
     if (gMain.newKeys & DPAD_LEFT)
