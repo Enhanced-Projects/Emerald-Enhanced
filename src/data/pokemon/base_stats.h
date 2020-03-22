@@ -2671,10 +2671,10 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_HITMONLEE] =
     {
-        .baseHP        = 50,
+        .baseHP        = 70,
         .baseAttack    = 120,
         .baseDefense   = 53,
-        .baseSpeed     = 87,
+        .baseSpeed     = 97,
         .baseSpAttack  = 35,
         .baseSpDefense = 110,
         .type1 = TYPE_FIGHTING,
@@ -2696,9 +2696,9 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_HITMONCHAN] =
     {
-        .baseHP        = 50,
+        .baseHP        = 70,
         .baseAttack    = 105,
-        .baseDefense   = 79,
+        .baseDefense   = 89,
         .baseSpeed     = 76,
         .baseSpAttack  = 35,
         .baseSpDefense = 110,
@@ -5969,10 +5969,10 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_HITMONTOP] =
     {
-        .baseHP        = 50,
-        .baseAttack    = 95,
-        .baseDefense   = 95,
-        .baseSpeed     = 70,
+        .baseHP        = 70,
+        .baseAttack    = 105,
+        .baseDefense   = 105,
+        .baseSpeed     = 60,
         .baseSpAttack  = 35,
         .baseSpDefense = 110,
         .type1 = TYPE_FIGHTING,
