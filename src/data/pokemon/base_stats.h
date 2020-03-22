@@ -12152,7 +12152,7 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_DUSKNOIR] =
     {
         .baseHP        = 45,
-        .baseAttack    = 100,
+        .baseAttack    = 115,
         .baseDefense   = 135,
         .baseSpeed     = 45,
         .baseSpAttack  = 65,
