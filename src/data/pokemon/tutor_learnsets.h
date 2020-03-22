@@ -4058,6 +4058,7 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_DOUBLE_EDGE)
 											| TUTOR(MOVE_SEISMIC_TOSS)
 											| TUTOR(MOVE_METRONOME)
+											| TUTOR(MOVE_DRAIN_PUNCH)
 											| TUTOR(MOVE_HELPING_HAND)
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_ICE_PUNCH)
