@@ -638,6 +638,9 @@ gBattleAnims_Moves::
 	.4byte Move_PRECIPICE_BLADES
 	.4byte Move_DRAGON_ASCENT
 	.4byte Move_HYPERSPACE_FURY
+	.4byte Move_GRAVEL_STORM
+	.4byte Move_REAPING_BLOW
+	.4byte Move_BLAST_OFF
 	.4byte Move_COUNT @ cannot be reached, because last move is Psycho Boost
 
 	.align 2
@@ -2186,6 +2189,7 @@ Move_POWER_GEM: @ Copy of Hidden Power with background blackened
 	waitforvisualfinish
 	end
 	
+Move_REAPING_BLOW:
 Move_DRAIN_PUNCH:
 	loadspritegfx ANIM_TAG_HANDS_AND_FEET
 	loadspritegfx ANIM_TAG_IMPACT
@@ -2997,6 +3001,7 @@ Move_DISCHARGE:
 	waitforvisualfinish 
 	end
 	
+Move_BLAST_OFF:
 Move_LAVA_PLUME:
 	loadspritegfx ANIM_TAG_FIRE_PLUME 
 	loopsewithpan 152, SOUND_PAN_ATTACKER, 9, 2
@@ -9327,7 +9332,6 @@ SandAttackDirt:
 	delay 2
 	return
 
-Move_GRAVEL_STORM:
 Move_MUD_SLAP:
 	loadspritegfx ANIM_TAG_MUD_SAND
 	playsewithpan SE_W028, SOUND_PAN_ATTACKER
@@ -12790,6 +12794,7 @@ DragonClawFireSpiral:
 	return
 	end
 
+Move_GRAVEL_STORM:
 Move_MUD_SHOT:
 	loadspritegfx ANIM_TAG_BROWN_ORB
 	monbg ANIM_DEF_PARTNER
