@@ -2593,7 +2593,7 @@ static const u8 sLEAF_STORMDescription[] = _(
 
 static const u8 sCROSS_POISONDescription[] = _(
     "User slices target with\n"
-    "poisonous blades. May\n"
+    "poisonous blades. Dawn\n"
     "poison. High crit chance.");
 
 static const u8 sWOOD_HAMMERDescription[] = _(

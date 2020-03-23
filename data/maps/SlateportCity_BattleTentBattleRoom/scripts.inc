@@ -24,7 +24,7 @@ SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale:: @ 820998E
 	return
 
 SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale:: @ 8209994
-	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
 	return
 
 SlateportCity_BattleTentBattleRoom_OnWarp: @ 820999A

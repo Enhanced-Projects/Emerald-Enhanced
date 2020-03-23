@@ -43,7 +43,7 @@ BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxMale:: @ 825AE25
 	return
 
 BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxFemale:: @ 825AE2B
-	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
 	return
 
 BattleFrontier_BattleFactoryBattleRoom_OnFrame: @ 825AE31

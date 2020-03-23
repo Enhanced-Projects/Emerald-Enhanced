@@ -339,7 +339,7 @@
 #define MUS_KACHI1 412          // Victory! Trainer
 #define MUS_TITLE3 413          // Title Screen
 #define MUS_DEMO1 414           // Opening Movie
-#define MUS_GIRL_SUP 415        // Encounter! May
+#define MUS_GIRL_SUP 415        // Encounter! Dawn
 #define MUS_HAGESHII 416        // Encounter! Biker
 #define MUS_KAKKOII 417         // Encounter! Electric Trainer
 #define MUS_KAZANBAI 418        // Route 113

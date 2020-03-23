@@ -89,7 +89,7 @@
 #define TRAINER_PIC_MAGMA_ADMIN           69
 #define TRAINER_PIC_WALLY                 70
 #define TRAINER_PIC_BRENDAN               71
-#define TRAINER_PIC_MAY                   72
+#define TRAINER_PIC_DAWN                   72
 #define TRAINER_PIC_BUG_CATCHER           73
 #define TRAINER_PIC_POKEMON_RANGER_M      74
 #define TRAINER_PIC_POKEMON_RANGER_F      75
@@ -118,7 +118,7 @@
 #define TRAINER_PIC_MEWTWO                98
 
 #define TRAINER_BACK_PIC_BRENDAN                0
-#define TRAINER_BACK_PIC_MAY                    1
+#define TRAINER_BACK_PIC_DAWN                    1
 #define TRAINER_BACK_PIC_RED                    2
 #define TRAINER_BACK_PIC_LEAF                   3
 #define TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN  4
@@ -192,9 +192,9 @@
 #define FACILITY_CLASS_BRENDAN               0x3c
 #define FACILITY_CLASS_BRENDAN_2             0x3d
 #define FACILITY_CLASS_BRENDAN_3             0x3e
-#define FACILITY_CLASS_MAY                   0x3f
-#define FACILITY_CLASS_MAY_2                 0x40
-#define FACILITY_CLASS_MAY_3                 0x41
+#define FACILITY_CLASS_DAWN                   0x3f
+#define FACILITY_CLASS_DAWN_2                 0x40
+#define FACILITY_CLASS_DAWN_3                 0x41
 #define FACILITY_CLASS_PKMN_BREEDER_M        0x42
 #define FACILITY_CLASS_BUG_CATCHER           0x43
 #define FACILITY_CLASS_PKMN_RANGER_M         0x44
@@ -277,9 +277,9 @@
 #define RS_FACILITY_CLASS_BRENDAN_1             0x3A
 #define RS_FACILITY_CLASS_BRENDAN_2             0x3B
 #define RS_FACILITY_CLASS_BRENDAN_3             0x3C
-#define RS_FACILITY_CLASS_MAY_1                 0x3D
-#define RS_FACILITY_CLASS_MAY_2                 0x3E
-#define RS_FACILITY_CLASS_MAY_3                 0x3F
+#define RS_FACILITY_CLASS_DAWN_1                 0x3D
+#define RS_FACILITY_CLASS_DAWN_2                 0x3E
+#define RS_FACILITY_CLASS_DAWN_3                 0x3F
 #define RS_FACILITY_CLASS_PKMN_BREEDER_M        0x40
 #define RS_FACILITY_CLASS_PKMN_BREEDER_F        0x41
 #define RS_FACILITY_CLASS_PKMN_RANGER_M         0x42

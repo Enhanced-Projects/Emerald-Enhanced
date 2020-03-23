@@ -108,8 +108,8 @@ static const u32 sRegionMapBkgnd_GfxLZ[] = INCBIN_U32("graphics/pokenav/region_m
 static const u32 sRegionMapBkgnd_TilemapLZ[] = INCBIN_U32("graphics/pokenav/region_map_map.bin.lz");
 static const u16 sRegionMapPlayerIcon_BrendanPal[] = INCBIN_U16("graphics/pokenav/brendan_icon.gbapal");
 static const u8 sRegionMapPlayerIcon_BrendanGfx[] = INCBIN_U8("graphics/pokenav/brendan_icon.4bpp");
-static const u16 sRegionMapPlayerIcon_MayPal[] = INCBIN_U16("graphics/pokenav/may_icon.gbapal");
-static const u8 sRegionMapPlayerIcon_MayGfx[] = INCBIN_U8("graphics/pokenav/may_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_DawnPal[] = INCBIN_U16("graphics/pokenav/may_icon.gbapal");
+static const u8 sRegionMapPlayerIcon_DawnGfx[] = INCBIN_U8("graphics/pokenav/may_icon.4bpp");
 
 static const u8 sRegionMap_MapSectionLayout[] = INCBIN_U8("graphics/pokenav/region_map_section_layout.bin");
 
@@ -1467,8 +1467,8 @@ void CreateRegionMapPlayerIcon(u16 tileTag, u16 paletteTag)
     }
     if (gSaveBlock2Ptr->playerGender == FEMALE)
     {
-        sheet.data = sRegionMapPlayerIcon_MayGfx;
-        palette.data = sRegionMapPlayerIcon_MayPal;
+        sheet.data = sRegionMapPlayerIcon_DawnGfx;
+        palette.data = sRegionMapPlayerIcon_DawnPal;
     }
     LoadSpriteSheet(&sheet);
     LoadSpritePalette(&palette);

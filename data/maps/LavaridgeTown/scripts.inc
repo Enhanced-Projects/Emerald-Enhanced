@@ -26,7 +26,7 @@ LT_SetRivalPosForReGift::
 	end
 
 LT_SetRivalFemale::
-	setvar OBJ_EVENT_GFX_VAR_3, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	setvar OBJ_EVENT_GFX_VAR_3, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
 	return
 
 LT_SetRivalMale::

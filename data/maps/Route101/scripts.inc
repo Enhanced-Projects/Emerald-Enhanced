@@ -255,7 +255,7 @@ Route101_EventScript_BirchsBag:: @ 81EBE16
 	end
 
 Route101_EventScript_HideMayInBedroom:: @ 81EBE85
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_BEDROOM
 	return
 
 Route101_EventScript_HideBrendanInBedroom:: @ 81EBE89

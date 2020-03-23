@@ -87,11 +87,11 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Teala;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BreakableRock;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PushableBoulder;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MrBrineysBoat;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayNormal;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayMachBike;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayAcroBike;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MaySurfing;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnNormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnMachBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnAcroBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnSurfing;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnFieldMove;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Truck;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VigorothCarryingBox;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VigorothFacingAway;
@@ -103,14 +103,14 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalBrendanMachBi
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalBrendanAcroBike;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalBrendanSurfing;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalBrendanFieldMove;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalMayNormal;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalMayMachBike;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalMayAcroBike;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalMaySurfing;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalMayFieldMove;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalDawnNormal;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalDawnMachBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalDawnAcroBike;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalDawnSurfing;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalDawnFieldMove;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cameraman;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanUnderwater;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayUnderwater;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnUnderwater;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MovingBox;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CableCar;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scientist2;
@@ -136,7 +136,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Steven;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wally;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireLittleBoy;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanFishing;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayFishing;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnFishing;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HotSpringsOldWoman;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SSTidal;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SubmarineShadow;
@@ -190,9 +190,9 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Latios;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GameboyKid;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ContestJudge;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanWatering;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayWatering;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnWatering;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanDecorating;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayDecorating;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnDecorating;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Archie;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Maxie;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kyogre1;
@@ -215,7 +215,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TuberMSwimming;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Azurill;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mom;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LinkBrendan;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LinkMay;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LinkDawn;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Juan;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scott;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Poochyena;
@@ -336,11 +336,11 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BREAKABLE_ROCK] =           &gObjectEventGraphicsInfo_BreakableRock,
     [OBJ_EVENT_GFX_PUSHABLE_BOULDER] =         &gObjectEventGraphicsInfo_PushableBoulder,
     [OBJ_EVENT_GFX_MR_BRINEYS_BOAT] =          &gObjectEventGraphicsInfo_MrBrineysBoat,
-    [OBJ_EVENT_GFX_MAY_NORMAL] =               &gObjectEventGraphicsInfo_MayNormal,
-    [OBJ_EVENT_GFX_MAY_MACH_BIKE] =            &gObjectEventGraphicsInfo_MayMachBike,
-    [OBJ_EVENT_GFX_MAY_ACRO_BIKE] =            &gObjectEventGraphicsInfo_MayAcroBike,
-    [OBJ_EVENT_GFX_MAY_SURFING] =              &gObjectEventGraphicsInfo_MaySurfing,
-    [OBJ_EVENT_GFX_MAY_FIELD_MOVE] =           &gObjectEventGraphicsInfo_MayFieldMove,
+    [OBJ_EVENT_GFX_DAWN_NORMAL] =               &gObjectEventGraphicsInfo_DawnNormal,
+    [OBJ_EVENT_GFX_DAWN_MACH_BIKE] =            &gObjectEventGraphicsInfo_DawnMachBike,
+    [OBJ_EVENT_GFX_DAWN_ACRO_BIKE] =            &gObjectEventGraphicsInfo_DawnAcroBike,
+    [OBJ_EVENT_GFX_DAWN_SURFING] =              &gObjectEventGraphicsInfo_DawnSurfing,
+    [OBJ_EVENT_GFX_DAWN_FIELD_MOVE] =           &gObjectEventGraphicsInfo_DawnFieldMove,
     [OBJ_EVENT_GFX_TRUCK] =                    &gObjectEventGraphicsInfo_Truck,
     [OBJ_EVENT_GFX_VIGOROTH_CARRYING_BOX] =    &gObjectEventGraphicsInfo_VigorothCarryingBox,
     [OBJ_EVENT_GFX_VIGOROTH_FACING_AWAY] =     &gObjectEventGraphicsInfo_VigorothFacingAway,
@@ -352,14 +352,14 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_ACRO_BIKE] =  &gObjectEventGraphicsInfo_RivalBrendanAcroBike,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_SURFING] =    &gObjectEventGraphicsInfo_RivalBrendanSurfing,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_FIELD_MOVE] = &gObjectEventGraphicsInfo_RivalBrendanFieldMove,
-    [OBJ_EVENT_GFX_RIVAL_MAY_NORMAL] =         &gObjectEventGraphicsInfo_RivalMayNormal,
-    [OBJ_EVENT_GFX_RIVAL_MAY_MACH_BIKE] =      &gObjectEventGraphicsInfo_RivalMayMachBike,
-    [OBJ_EVENT_GFX_RIVAL_MAY_ACRO_BIKE] =      &gObjectEventGraphicsInfo_RivalMayAcroBike,
-    [OBJ_EVENT_GFX_RIVAL_MAY_SURFING] =        &gObjectEventGraphicsInfo_RivalMaySurfing,
-    [OBJ_EVENT_GFX_RIVAL_MAY_FIELD_MOVE] =     &gObjectEventGraphicsInfo_RivalMayFieldMove,
+    [OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL] =         &gObjectEventGraphicsInfo_RivalDawnNormal,
+    [OBJ_EVENT_GFX_RIVAL_DAWN_MACH_BIKE] =      &gObjectEventGraphicsInfo_RivalDawnMachBike,
+    [OBJ_EVENT_GFX_RIVAL_DAWN_ACRO_BIKE] =      &gObjectEventGraphicsInfo_RivalDawnAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_DAWN_SURFING] =        &gObjectEventGraphicsInfo_RivalDawnSurfing,
+    [OBJ_EVENT_GFX_RIVAL_DAWN_FIELD_MOVE] =     &gObjectEventGraphicsInfo_RivalDawnFieldMove,
     [OBJ_EVENT_GFX_CAMERAMAN] =                &gObjectEventGraphicsInfo_Cameraman,
     [OBJ_EVENT_GFX_BRENDAN_UNDERWATER] =       &gObjectEventGraphicsInfo_BrendanUnderwater,
-    [OBJ_EVENT_GFX_MAY_UNDERWATER] =           &gObjectEventGraphicsInfo_MayUnderwater,
+    [OBJ_EVENT_GFX_DAWN_UNDERWATER] =           &gObjectEventGraphicsInfo_DawnUnderwater,
     [OBJ_EVENT_GFX_MOVING_BOX] =               &gObjectEventGraphicsInfo_MovingBox,
     [OBJ_EVENT_GFX_CABLE_CAR] =                &gObjectEventGraphicsInfo_CableCar,
     [OBJ_EVENT_GFX_SCIENTIST_2] =              &gObjectEventGraphicsInfo_Scientist2,
@@ -385,7 +385,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_WALLY] =                    &gObjectEventGraphicsInfo_Wally,
     [OBJ_EVENT_GFX_LITTLE_BOY_3] =             &gObjectEventGraphicsInfo_RubySapphireLittleBoy,
     [OBJ_EVENT_GFX_BRENDAN_FISHING] =          &gObjectEventGraphicsInfo_BrendanFishing,
-    [OBJ_EVENT_GFX_MAY_FISHING] =              &gObjectEventGraphicsInfo_MayFishing,
+    [OBJ_EVENT_GFX_DAWN_FISHING] =              &gObjectEventGraphicsInfo_DawnFishing,
     [OBJ_EVENT_GFX_HOT_SPRINGS_OLD_WOMAN] =    &gObjectEventGraphicsInfo_HotSpringsOldWoman,
     [OBJ_EVENT_GFX_SS_TIDAL] =                 &gObjectEventGraphicsInfo_SSTidal,
     [OBJ_EVENT_GFX_SUBMARINE_SHADOW] =         &gObjectEventGraphicsInfo_SubmarineShadow,
@@ -439,9 +439,9 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_GAMEBOY_KID] =              &gObjectEventGraphicsInfo_GameboyKid,
     [OBJ_EVENT_GFX_CONTEST_JUDGE] =            &gObjectEventGraphicsInfo_ContestJudge,
     [OBJ_EVENT_GFX_BRENDAN_WATERING] =         &gObjectEventGraphicsInfo_BrendanWatering,
-    [OBJ_EVENT_GFX_MAY_WATERING] =             &gObjectEventGraphicsInfo_MayWatering,
+    [OBJ_EVENT_GFX_DAWN_WATERING] =             &gObjectEventGraphicsInfo_DawnWatering,
     [OBJ_EVENT_GFX_BRENDAN_DECORATING] =       &gObjectEventGraphicsInfo_BrendanDecorating,
-    [OBJ_EVENT_GFX_MAY_DECORATING] =           &gObjectEventGraphicsInfo_MayDecorating,
+    [OBJ_EVENT_GFX_DAWN_DECORATING] =           &gObjectEventGraphicsInfo_DawnDecorating,
     [OBJ_EVENT_GFX_ARCHIE] =                   &gObjectEventGraphicsInfo_Archie,
     [OBJ_EVENT_GFX_MAXIE] =                    &gObjectEventGraphicsInfo_Maxie,
     [OBJ_EVENT_GFX_KYOGRE_1] =                 &gObjectEventGraphicsInfo_Kyogre1,
@@ -464,7 +464,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_AZURILL] =                  &gObjectEventGraphicsInfo_Azurill,
     [OBJ_EVENT_GFX_MOM] =                      &gObjectEventGraphicsInfo_Mom,
     [OBJ_EVENT_GFX_LINK_BRENDAN] =             &gObjectEventGraphicsInfo_LinkBrendan,
-    [OBJ_EVENT_GFX_LINK_MAY] =                 &gObjectEventGraphicsInfo_LinkMay,
+    [OBJ_EVENT_GFX_LINK_DAWN] =                &gObjectEventGraphicsInfo_LinkDawn,
     [OBJ_EVENT_GFX_JUAN] =                     &gObjectEventGraphicsInfo_Juan,
     [OBJ_EVENT_GFX_SCOTT] =                    &gObjectEventGraphicsInfo_Scott,
     [OBJ_EVENT_GFX_POOCHYENA] =                &gObjectEventGraphicsInfo_Poochyena,

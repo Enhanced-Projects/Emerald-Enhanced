@@ -1241,7 +1241,7 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tBirchSpriteId data[8]
 #define tLotadSpriteId data[9]
 #define tBrendanSpriteId data[10]
-#define tMaySpriteId data[11]
+#define tDawnSpriteId data[11]
 
 static void Task_NewGameBirchSpeech_Init(u8 taskId)
 {
@@ -1525,7 +1525,7 @@ static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8 taskId)
     {
         gSprites[spriteId].invisible = TRUE;
         if (gTasks[taskId].tPlayerGender != MALE)
-            spriteId = gTasks[taskId].tMaySpriteId;
+            spriteId = gTasks[taskId].tDawnSpriteId;
         else
             spriteId = gTasks[taskId].tBrendanSpriteId;
         gSprites[spriteId].pos1.x = 240;
@@ -1647,7 +1647,7 @@ static void Task_NewGameBirchSpeech_ReshowBirchLotad(u8 taskId)
     if (gTasks[taskId].tIsDoneFadingSprites)
     {
         gSprites[gTasks[taskId].tBrendanSpriteId].invisible = TRUE;
-        gSprites[gTasks[taskId].tMaySpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tDawnSpriteId].invisible = TRUE;
         spriteId = gTasks[taskId].tBirchSpriteId;
         gSprites[spriteId].pos1.x = 136;
         gSprites[spriteId].pos1.y = 60;
@@ -1699,7 +1699,7 @@ static void Task_NewGameBirchSpeech_AreYouReady(u8 taskId)
             return;
         }
         if (gSaveBlock2Ptr->playerGender != MALE)
-            spriteId = gTasks[taskId].tMaySpriteId;
+            spriteId = gTasks[taskId].tDawnSpriteId;
         else
             spriteId = gTasks[taskId].tBrendanSpriteId;
         gSprites[spriteId].pos1.x = 120;
@@ -1812,7 +1812,7 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     if (gSaveBlock2Ptr->playerGender != MALE)
     {
         gTasks[taskId].tPlayerGender = FEMALE;
-        spriteId = gTasks[taskId].tMaySpriteId;
+        spriteId = gTasks[taskId].tDawnSpriteId;
     }
     else
     {
@@ -1887,11 +1887,11 @@ static void AddBirchSpeechObjects(u8 taskId)
     gSprites[brendanSpriteId].invisible = TRUE;
     gSprites[brendanSpriteId].oam.priority = 0;
     gTasks[taskId].tBrendanSpriteId = brendanSpriteId;
-    maySpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_MAY), 120, 60, 0, &gDecompressionBuffer[0x800]);
+    maySpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_DAWN), 120, 60, 0, &gDecompressionBuffer[0x800]);
     gSprites[maySpriteId].callback = SpriteCB_Null;
     gSprites[maySpriteId].invisible = TRUE;
     gSprites[maySpriteId].oam.priority = 0;
-    gTasks[taskId].tMaySpriteId = maySpriteId;
+    gTasks[taskId].tDawnSpriteId = maySpriteId;
 }
 
 #undef tPlayerSpriteId
@@ -1900,7 +1900,7 @@ static void AddBirchSpeechObjects(u8 taskId)
 #undef tBirchSpriteId
 #undef tLotadSpriteId
 #undef tBrendanSpriteId
-#undef tMaySpriteId
+#undef tDawnSpriteId
 
 #define tMainTask data[0]
 #define tAlphaCoeff1 data[1]

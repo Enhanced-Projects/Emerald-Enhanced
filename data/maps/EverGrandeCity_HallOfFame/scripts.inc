@@ -112,7 +112,7 @@ EverGrandeCity_HallOfFame_EventScript_GameClearFemale:: @ 82298F5
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	call_if_set FLAG_RYU_NUZLOCKEMODE, EGC_NLGameClear
 	call_if_set FLAG_RYU_HARDCORE_MODE, EGC_HCGameClear
-	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_DAWNS_HOUSE_2F
 	fadescreenspeed FADE_TO_BLACK, 24
 	special GameClear
 	waitstate

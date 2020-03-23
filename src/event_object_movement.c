@@ -466,7 +466,7 @@ const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPalette14, EVENT_OBJ_PAL_TAG_14},
     {gObjectEventPalette15, EVENT_OBJ_PAL_TAG_15},
     {gObjectEventPalette16, EVENT_OBJ_PAL_TAG_16},
-    {gObjectEventPalette17, EVENT_OBJ_PAL_TAG_17},
+    {gObjectEventPalette_DawnNormal, EVENT_OBJ_PAL_TAG_17},
     {gObjectEventPalette18, EVENT_OBJ_PAL_TAG_18},
     {gObjectEventPalette19, EVENT_OBJ_PAL_TAG_19},
     {gObjectEventPalette20, EVENT_OBJ_PAL_TAG_20},

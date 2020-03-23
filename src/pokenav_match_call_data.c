@@ -191,11 +191,11 @@ static const struct MatchCallStructNPC sStevenMatchCallHeader =
     .type = 0,
 };
 
-static const match_call_text_data_t sMayTextScripts[] = {
+static const match_call_text_data_t sDawnTextScripts[] = {
     { NULL,                 0xFFFF,                              0xFFFF }
 };
 
-static const struct MatchCallRival sMayMatchCallHeader =
+static const struct MatchCallRival sDawnMatchCallHeader =
 {
     .type = 0,
 };
@@ -430,10 +430,10 @@ static const struct MatchCallCheckPageOverride sCheckPageOverrides[] = {
         .flavorTexts = MCFLAVOR(Brendan)
     },
     { 
-        .idx = MC_HEADER_MAY,     
-        .facilityClass = FACILITY_CLASS_MAY,     
+        .idx = MC_HEADER_DAWN,     
+        .facilityClass = FACILITY_CLASS_DAWN,     
         .flag = 0xFFFF,                     
-        .flavorTexts = MCFLAVOR(May)
+        .flavorTexts = MCFLAVOR(Dawn)
     }
 };
 

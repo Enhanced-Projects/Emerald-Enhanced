@@ -5,7 +5,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC:: @ 81F863F
 	releaseall
 	end
 
-LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC:: @ 81F958F
+LittlerootTown_DawnsHouse_2F_EventScript_TurnOffPlayerPC:: @ 81F958F
 	setvar VAR_0x8004, 2
 	playse SE_PC_OFF
 	special DoPCTurnOffEffect

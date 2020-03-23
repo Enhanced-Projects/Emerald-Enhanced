@@ -54,12 +54,12 @@ const struct SpriteFrameImage gTrainerBackPicTable_Brendan[] =
     gTrainerBackPic_Brendan + 0x1800, 0x0800,
 };
 
-const struct SpriteFrameImage gTrainerBackPicTable_May[] =
+const struct SpriteFrameImage gTrainerBackPicTable_Dawn[] =
 {
-    gTrainerBackPic_May, 0x0800,
-    gTrainerBackPic_May + 0x0800, 0x0800,
-    gTrainerBackPic_May + 0x1000, 0x0800,
-    gTrainerBackPic_May + 0x1800, 0x0800,
+    gTrainerBackPic_Dawn, 0x0800,
+    gTrainerBackPic_Dawn + 0x0800, 0x0800,
+    gTrainerBackPic_Dawn + 0x1000, 0x0800,
+    gTrainerBackPic_Dawn + 0x1800, 0x0800,
 };
 
 const struct SpriteFrameImage gTrainerBackPicTable_Red[] =

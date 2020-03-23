@@ -7,7 +7,7 @@ Common_EventScript_SetupRivalGfxId:: @ 8271ED7
 	end
 
 EventScript_SetupRivalGfxIdFemale:: @ 8271EEF
-	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
 	return
 
 EventScript_SetupRivalGfxIdMale:: @ 8271EF5
@@ -23,7 +23,7 @@ Common_EventScript_SetupRivalOnBikeGfxId:: @ 8271EFB
 	end
 
 EventScript_SetupRivalOnBikeGfxIdFemale:: @ 8271F13
-	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
 	return
 
 EventScript_SetupRivalOnBikeGfxIdMale:: @ 8271F19
@@ -44,5 +44,5 @@ EventScript_SetupRivalGfxIdMale2:: @ 8271F37
 	return
 
 EventScript_SetupRivalGfxIdFemale2:: @ 8271F3D
-	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
 	return

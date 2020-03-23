@@ -12,7 +12,7 @@ EGC_SetBrendan::
 	return
 
 EGC_SetDawn::
-	setvar OBJ_EVENT_GFX_VAR_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	setvar OBJ_EVENT_GFX_VAR_0, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
 	return
 
 EverGrandeCity_ChampionsRoom_OnWarp: @ 8228A05

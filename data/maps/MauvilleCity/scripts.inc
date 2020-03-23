@@ -608,7 +608,7 @@ MauvilleCity_Text_WattsonThanksTakeTM: @ 81E020E
     .string "This is my thanks--an egg!\p"
     .string "I found it in a magnetic field,\n"
     .string "maybe a special pokemon is inside?\p"
-    .string "Go on, you've earned it!$
+    .string "Go on, you've earned it!$"
 
 MauvilleCity_Text_WattsonYoungTakeCharge: @ 81E02AA
 	.string "Wattson: Wahahahaha!\p"

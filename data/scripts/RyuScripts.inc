@@ -303,7 +303,7 @@ RyuPartnerNoRelationship::
 RyuMultiBattlePartnerDawn::
 	goto_if_unset FLAG_RYU_DS_DAWN_PARTNERS, RyuPartnerNoRelationship
 	setvar VAR_0x8006, TRAINER_REL_DAWN
-	setvar VAR_0x8007, TRAINER_BACK_PIC_MAY 
+	setvar VAR_0x8007, TRAINER_BACK_PIC_DAWN 
 	return
 	
 RyuMultiBattlePartnerShelly::

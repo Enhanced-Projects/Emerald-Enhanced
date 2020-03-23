@@ -598,13 +598,13 @@ void SpawnLinkPartnerObjectEvent(void)
                     if (gLinkPlayers[i].gender == 0)
                         linkSpriteId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
                     else
-                        linkSpriteId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
+                        linkSpriteId = OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL;
                     break;
                 default:
                     if (gLinkPlayers[i].gender == 0)
                         linkSpriteId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
                     else
-                        linkSpriteId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
+                        linkSpriteId = OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL;
                     break;
             }
             SpawnSpecialObjectEventParameterized(linkSpriteId, movementTypes[j], 240 - i, coordOffsets[j][0] + x + 7, coordOffsets[j][1] + y + 7, 0);
@@ -626,7 +626,7 @@ static void LoadLinkPartnerObjectEventSpritePalette(u8 graphicsId, u8 localEvent
     if (graphicsId == OBJ_EVENT_GFX_LINK_RS_BRENDAN ||
         graphicsId == OBJ_EVENT_GFX_LINK_RS_MAY ||
         graphicsId == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL ||
-        graphicsId == OBJ_EVENT_GFX_RIVAL_MAY_NORMAL)
+        graphicsId == OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)
     {
         u8 obj = GetObjectEventIdByLocalIdAndMap(localEventId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
         if (obj != OBJECT_EVENTS_COUNT)
@@ -646,7 +646,7 @@ static void LoadLinkPartnerObjectEventSpritePalette(u8 graphicsId, u8 localEvent
                 case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
                     LoadPalette(gObjectEventPalette8, 0x100 + (adjustedPaletteNum << 4), 0x20);
                     break;
-                case OBJ_EVENT_GFX_RIVAL_MAY_NORMAL:
+                case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
                     LoadPalette(gObjectEventPalette17, 0x100 + (adjustedPaletteNum << 4), 0x20);
                     break;
             }
@@ -1114,11 +1114,11 @@ static void PCTurnOnEffect_1(s16 isPcTurnedOn, s8 dx, s8 dy)
         }
         else if (gSpecialVar_0x8004 == PC_LOCATION_BRENDANS_HOUSE)
         {
-            tileId = METATILE_ID(BrendansMaysHouse, BrendanPC_Off);
+            tileId = METATILE_ID(BrendansDawnsHouse, BrendanPC_Off);
         }
-        else if (gSpecialVar_0x8004 == PC_LOCATION_MAYS_HOUSE)
+        else if (gSpecialVar_0x8004 == PC_LOCATION_DAWNS_HOUSE)
         {
-            tileId = METATILE_ID(BrendansMaysHouse, MayPC_Off);
+            tileId = METATILE_ID(BrendansDawnsHouse, DawnPC_Off);
         }
     }
     else
@@ -1129,11 +1129,11 @@ static void PCTurnOnEffect_1(s16 isPcTurnedOn, s8 dx, s8 dy)
         }
         else if (gSpecialVar_0x8004 == PC_LOCATION_BRENDANS_HOUSE)
         {
-            tileId = METATILE_ID(BrendansMaysHouse, BrendanPC_On);
+            tileId = METATILE_ID(BrendansDawnsHouse, BrendanPC_On);
         }
-        else if (gSpecialVar_0x8004 == PC_LOCATION_MAYS_HOUSE)
+        else if (gSpecialVar_0x8004 == PC_LOCATION_DAWNS_HOUSE)
         {
-            tileId = METATILE_ID(BrendansMaysHouse, MayPC_On);
+            tileId = METATILE_ID(BrendansDawnsHouse, DawnPC_On);
         }
     }
     MapGridSetMetatileIdAt(gSaveBlock1Ptr->pos.x + dx + 7, gSaveBlock1Ptr->pos.y + dy + 7, tileId | METATILE_COLLISION_MASK);
@@ -1171,11 +1171,11 @@ static void PCTurnOffEffect(void)
     }
     else if (gSpecialVar_0x8004 == 1)
     {
-        tileId = METATILE_ID(BrendansMaysHouse, BrendanPC_Off);
+        tileId = METATILE_ID(BrendansDawnsHouse, BrendanPC_Off);
     }
     else if (gSpecialVar_0x8004 == 2)
     {
-        tileId = METATILE_ID(BrendansMaysHouse, MayPC_Off);
+        tileId = METATILE_ID(BrendansDawnsHouse, DawnPC_Off);
     }
     MapGridSetMetatileIdAt(gSaveBlock1Ptr->pos.x + dx + 7, gSaveBlock1Ptr->pos.y + dy + 7, tileId | METATILE_COLLISION_MASK);
     DrawWholeMapView();
@@ -2848,7 +2848,7 @@ void SetBattleTowerLinkPlayerGfx(void)
         }
         else
         {
-            VarSet(VAR_OBJ_GFX_ID_F - i, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL);
+            VarSet(VAR_OBJ_GFX_ID_F - i, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL);
         }
     }
 }

@@ -45,7 +45,7 @@ SouthernIsland_Interior_EventScript_SetBrendanGfx:: @ 8242AB8
 	return
 
 SouthernIsland_Interior_EventScript_SetMayGfx:: @ 8242ABE
-	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
 	return
 
 SouthernIsland_Interior_EventScript_TryLatiEncounter:: @ 8242AC4
