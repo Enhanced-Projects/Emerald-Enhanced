@@ -5152,7 +5152,7 @@ CometPunchRight:
 	createsprite gFistFootSpriteTemplate, ANIM_ATTACKER, 3, 8, 0, 8, 1, 0
 	goto CometPunchContinue
 
-Move_SONIC_BOOM:
+unused_SONIC_BOOM:
 	loadspritegfx ANIM_TAG_AIR_WAVE
 	loadspritegfx ANIM_TAG_IMPACT
 	monbg ANIM_DEF_PARTNER
@@ -10298,6 +10298,7 @@ Move_PECK:
 	waitforvisualfinish
 	end
 
+Move_SONIC_BOOM:
 Move_AEROBLAST:
 	loadspritegfx ANIM_TAG_AIR_WAVE_2
 	loadspritegfx ANIM_TAG_IMPACT
