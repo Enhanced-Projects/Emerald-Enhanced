@@ -688,16 +688,16 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_SONIC_BOOM] =
     {
-        .effect = EFFECT_SONICBOOM,
+        .effect = EFFECT_ELECTRO_BALL,
         .power = 1,
-        .type = TYPE_NORMAL,
-        .accuracy = 90,
-        .pp = 20,
+        .type = TYPE_FLYING,
+        .accuracy = 100,
+        .pp = 10,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
-        .split = SPLIT_SPECIAL,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_SOUND,
+        .split = SPLIT_PHYSICAL,
     },
 
     [MOVE_DISABLE] =
