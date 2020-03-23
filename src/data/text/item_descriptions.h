@@ -1325,7 +1325,7 @@ static const u8 sPureIncenseDesc[] = _(
 
 static const u8 sLuckyPunchDesc[] = _(
     "A hold item that\n"
-    "raises Chansey's\n"
+    "raises Hitmonchan's\n"
     "critical-hit rate.");
 
 static const u8 sMetalPowderDesc[] = _(

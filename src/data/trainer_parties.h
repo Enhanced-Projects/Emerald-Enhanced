@@ -3767,7 +3767,7 @@ static const struct TrainerMonItemCustomMoves sParty_Juan1[] = {
 	.species = SPECIES_DEWGONG,
 	.heldItem = ITEM_NONE,
 	.ability = 0,
-	.moves = {MOVE_AURORA_BEAM, MOVE_BODY_SLAM, MOVE_HORN_ATTACK, MOVE_WATERFALL},
+	.moves = {MOVE_ICE_BEAM, MOVE_BODY_SLAM, MOVE_HORN_ATTACK, MOVE_WATERFALL},
 	},
 	{
 	.iv = 255,

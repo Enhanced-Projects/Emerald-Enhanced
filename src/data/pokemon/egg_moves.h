@@ -375,7 +375,6 @@ const u16 gEggMoves[] = {
     egg_moves(TENTACOOL,
         MOVE_ACUPRESSURE,
         MOVE_AQUA_RING,
-        MOVE_AURORA_BEAM,
         MOVE_BUBBLE,
         MOVE_CONFUSE_RAY,
         MOVE_HAZE,
@@ -681,7 +680,6 @@ const u16 gEggMoves[] = {
         MOVE_UPROAR),
 
     egg_moves(HORSEA,
-        MOVE_AURORA_BEAM,
         MOVE_CLEAR_SMOG,
         MOVE_DISABLE,
         MOVE_DRAGON_BREATH,
@@ -782,7 +780,6 @@ const u16 gEggMoves[] = {
         MOVE_YAWN),
 
     egg_moves(OMANYTE,
-        MOVE_AURORA_BEAM,
         MOVE_BIDE,
         MOVE_BUBBLE_BEAM,
         MOVE_HAZE,
@@ -799,7 +796,6 @@ const u16 gEggMoves[] = {
         MOVE_GRAVEL_STORM),
 
     egg_moves(KABUTO,
-        MOVE_AURORA_BEAM,
         MOVE_BUBBLE_BEAM,
         MOVE_CONFUSE_RAY,
         MOVE_FLAIL,
@@ -959,7 +955,6 @@ const u16 gEggMoves[] = {
         MOVE_PURSUIT,
         MOVE_RAGE_POWDER,
         MOVE_SIGNAL_BEAM,
-        MOVE_SONIC_BOOM,
         MOVE_TOXIC_SPIKES,
         MOVE_TWINEEDLE),
 
@@ -1407,7 +1402,6 @@ const u16 gEggMoves[] = {
 
     egg_moves(REMORAID,
         MOVE_ACID_SPRAY,
-        MOVE_AURORA_BEAM,
         MOVE_ENTRAINMENT,
         MOVE_FLAIL,
         MOVE_HAZE,
@@ -1422,7 +1416,6 @@ const u16 gEggMoves[] = {
         MOVE_WATER_SPOUT),
 
     egg_moves(DELIBIRD,
-        MOVE_AURORA_BEAM,
         MOVE_BESTOW,
         MOVE_COUNTER,
         MOVE_DESTINY_BOND,
@@ -2850,7 +2843,6 @@ const u16 gEggMoves[] = {
 		MOVE_TICKLE,
 		MOVE_AGILITY,
 		MOVE_BRINE,
-		MOVE_AURORA_BEAM,
 		MOVE_SIGNAL_BEAM,
 		MOVE_CONFUSE_RAY),
 
@@ -3007,7 +2999,6 @@ const u16 gEggMoves[] = {
 		MOVE_BATON_PASS,
 		MOVE_SWIFT,
 		MOVE_CURSE,
-		MOVE_SONIC_BOOM,
 		MOVE_HEALING_WISH),
 
 	egg_moves(PIDOVE,
@@ -3907,7 +3898,6 @@ const u16 gEggMoves[] = {
 
 	egg_moves(DEWPIDER,
 		MOVE_POWER_SPLIT,
-		MOVE_AURORA_BEAM,
 		MOVE_STOCKPILE,
 		MOVE_SPIT_UP,
 		MOVE_STICKY_WEB),

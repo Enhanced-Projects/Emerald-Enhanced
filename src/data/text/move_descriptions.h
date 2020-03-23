@@ -195,7 +195,7 @@ static const u8 sSupersonicDescription[] = _(
 
 static const u8 sSonicBoomDescription[] = _(
     "Launches shock waves that\n"
-    "always inflict 20 HP damage.");
+    "damage slower foes more.");
 
 static const u8 sDisableDescription[] = _(
     "Psychically disables one of\n"
@@ -2535,7 +2535,7 @@ static const u8 sMULTI_ATTACKDescription[] = _(
 
 static const u8 sGRAVEL_STORMDescription[] = _(
 	"Summons and flings gravel\n"
-	"at enemies. May Flinch.");
+	"at enemies. May flinch.");
 
 static const u8 sNIGHT_SLASHDescription[] = _(
     "Attacks the foe with\n"
@@ -2608,12 +2608,11 @@ static const u8 sAQUA_JETDescription[] = _(
 
 static const u8 sREAPING_BLOWDescription[] = _(
     "Reaps part of the foe's soul\n"
-    "to restore health");
+    "to restore health.");
 
 static const u8 sBLAST_OFFDescription[] = _(
     "Departs like a rocket,\n"
-    "hitting everything with \n"
-    "the blast.");
+    "blasting everything.");
 
 static const u8 sNotDoneYetDescription[] = _(
 	"Not done yet.");
