@@ -7302,7 +7302,6 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM36_SLUDGE_BOMB)
 											| TMHM(TM49_SNATCH)
 											| TMHM(TM22_SOLARBEAM)
-											| TMHM(TM54_SUCKER_PUNCH)
 											| TMHM(TM51_STEALTH_ROCK)
 											| TMHM(TM11_SUNNY_DAY)
 											| TMHM(TM12_TAUNT)
