@@ -66,9 +66,9 @@ OkayBye:
 	
 WelcomeToFrontierMonStore:
     .string "Welcome to the Frontier Mon\n"
-    .string "Exchange. Here you can exchange \p"
-    .string "50 BP to get a random competetive\n"
-    .string "pokemon.$"
+    .string "Exchange.\p"
+    .string "Here you can exchange 50 BP to\n"
+    .string "get a random competitive pokemon.$"
 	
 FrontierMonQuery:
     .string "Would you like to make an exchange\n"
