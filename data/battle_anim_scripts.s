@@ -9304,6 +9304,28 @@ Move_FAINT_ATTACK:
 	waitbgfadein
 	end
 
+Move_GRAVEL_STORM:
+	loadspritegfx ANIM_TAG_MUD_SAND
+	monbg ANIM_DEF_PARTNER
+	monbgprio_28 ANIM_ATTACKER
+	setalpha 12, 8
+	playsewithpan SE_W028, SOUND_PAN_ATTACKER
+	createsprite gSlideMonToOffsetSpriteTemplate, ANIM_ATTACKER, 2, 0, -10, 0, 0, 3
+	waitforvisualfinish
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 2
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	end
+
 Move_SAND_ATTACK:
 	loadspritegfx ANIM_TAG_MUD_SAND
 	monbg ANIM_ATK_PARTNER
@@ -12794,7 +12816,6 @@ DragonClawFireSpiral:
 	return
 	end
 
-Move_GRAVEL_STORM:
 Move_MUD_SHOT:
 	loadspritegfx ANIM_TAG_BROWN_ORB
 	monbg ANIM_DEF_PARTNER

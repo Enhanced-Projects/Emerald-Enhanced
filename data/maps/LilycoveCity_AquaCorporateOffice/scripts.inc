@@ -68,9 +68,11 @@ LC_AH_SecurityStop3::
     settrainerflag TRAINER_GRUNT_MT_PYRE_2
     settrainerflag TRAINER_GRUNT_MT_PYRE_3
     settrainerflag TRAINER_GRUNT_MT_PYRE_4
-	cleartrainerflag TRAINER_MAXIE_MAGMA_HIDEOUT
+	cleartrainerflag TRAINER_MAXIE_3
 	cleartrainerflag TRAINER_COURTNEY_3
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
+	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
 	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_PlayerLeave
 	waitmovement 0
 	release
@@ -312,7 +314,7 @@ LC_AH_Mission4::
     settrainerflag TRAINER_GRUNT_MT_PYRE_2
     settrainerflag TRAINER_GRUNT_MT_PYRE_3
     settrainerflag TRAINER_GRUNT_MT_PYRE_4
-	cleartrainerflag TRAINER_MAXIE_MAGMA_HIDEOUT
+	cleartrainerflag TRAINER_MAXIE_3
 	cleartrainerflag TRAINER_COURTNEY_3
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
@@ -332,6 +334,7 @@ LC_AH_NoRelConclusion::
 	setflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
 	setflag FLAG_RYU_AQUA_LINE_DONE
 	setflag FLAG_RYU_ARCHIE_SUCCESSFUL
+	setflag FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW
 	clearflag FLAG_RYU_KYOGRE
 	release
 	end

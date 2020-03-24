@@ -396,14 +396,14 @@ MH_ShellyBossEnter:
 	walk_down
 	walk_down
 	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
 	walk_right
 	walk_right
 	walk_right
+	walk_down
 	walk_right
+	walk_right
+	walk_down
+	face_right
 	step_end
 	
 MH_CourtneyMove:

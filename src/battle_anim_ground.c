@@ -234,10 +234,10 @@ static void AnimDirtScatter(struct Sprite *sprite)
 
     xOffset = Random2() & 0x1F;
     yOffset = Random2() & 0x1F;
-    if (xOffset > 16)
-        xOffset = 16 - xOffset;
-    if (yOffset > 16)
-        yOffset = 16 - yOffset;
+    if (xOffset > 32)
+        xOffset = 32 - xOffset;
+    if (yOffset > 32)
+        yOffset = 32 - yOffset;
 
     sprite->data[0] = gBattleAnimArgs[2];
     sprite->data[2] = targetXPos + xOffset;
