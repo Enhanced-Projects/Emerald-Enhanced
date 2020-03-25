@@ -537,7 +537,7 @@
             "id": "LAYOUT_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
             "name": "LittlerootTown_BrendansHouse_1F_Layout",
             "primary_tileset": "gTileset_Building",
-            "secondary_tileset": "gTileset_BrendansMaysHouse",
+            "secondary_tileset": "gTileset_BrendansDawnsHouse",
             "width": 11
         },
         {
@@ -547,27 +547,27 @@
             "id": "LAYOUT_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F",
             "name": "LittlerootTown_BrendansHouse_2F_Layout",
             "primary_tileset": "gTileset_Building",
-            "secondary_tileset": "gTileset_BrendansMaysHouse",
+            "secondary_tileset": "gTileset_BrendansDawnsHouse",
             "width": 9
         },
         {
-            "blockdata_filepath": "data/layouts/LittlerootTown_MaysHouse_1F/map.bin",
-            "border_filepath": "data/layouts/LittlerootTown_MaysHouse_1F/border.bin",
+            "blockdata_filepath": "data/layouts/LittlerootTown_DawnsHouse_1F/map.bin",
+            "border_filepath": "data/layouts/LittlerootTown_DawnsHouse_1F/border.bin",
             "height": 9,
-            "id": "LAYOUT_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
-            "name": "LittlerootTown_MaysHouse_1F_Layout",
+            "id": "LAYOUT_LITTLEROOT_TOWN_DAWNS_HOUSE_1F",
+            "name": "LittlerootTown_DawnsHouse_1F_Layout",
             "primary_tileset": "gTileset_Building",
-            "secondary_tileset": "gTileset_BrendansMaysHouse",
+            "secondary_tileset": "gTileset_BrendansDawnsHouse",
             "width": 11
         },
         {
-            "blockdata_filepath": "data/layouts/LittlerootTown_MaysHouse_2F/map.bin",
-            "border_filepath": "data/layouts/LittlerootTown_MaysHouse_2F/border.bin",
+            "blockdata_filepath": "data/layouts/LittlerootTown_DawnsHouse_2F/map.bin",
+            "border_filepath": "data/layouts/LittlerootTown_DawnsHouse_2F/border.bin",
             "height": 8,
-            "id": "LAYOUT_LITTLEROOT_TOWN_MAYS_HOUSE_2F",
-            "name": "LittlerootTown_MaysHouse_2F_Layout",
+            "id": "LAYOUT_LITTLEROOT_TOWN_DAWNS_HOUSE_2F",
+            "name": "LittlerootTown_DawnsHouse_2F_Layout",
             "primary_tileset": "gTileset_Building",
-            "secondary_tileset": "gTileset_BrendansMaysHouse",
+            "secondary_tileset": "gTileset_BrendansDawnsHouse",
             "width": 9
         },
         {
@@ -4417,7 +4417,7 @@
             "id": "LAYOUT_LITTLEROOT_TOWN_RIVAL_HOUSE_QUEST",
             "name": "Littleroot_Town_Rival_HouseQuest_Layout",
             "primary_tileset": "gTileset_Building",
-            "secondary_tileset": "gTileset_BrendansMaysHouse",
+            "secondary_tileset": "gTileset_BrendansDawnsHouse",
             "width": 20
         },
         {

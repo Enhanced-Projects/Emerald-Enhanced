@@ -17,7 +17,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_RIVAL_MAY_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -33,7 +33,7 @@
     "show_map_name": true,
     "warp_events": [
         {
-            "dest_map": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
+            "dest_map": "MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_1F",
             "dest_warp_id": 2,
             "elevation": 3,
             "x": 7,

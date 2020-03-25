@@ -44,15 +44,15 @@
             "y": 5
         }
     ],
-    "id": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
-    "layout": "LAYOUT_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
+    "id": "MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_1F",
+    "layout": "LAYOUT_LITTLEROOT_TOWN_DAWNS_HOUSE_1F",
     "map_type": "MAP_TYPE_INDOOR",
     "music": "MUS_MISHIRO",
-    "name": "LittlerootTown_MaysHouse_1F",
+    "name": "LittlerootTown_DawnsHouse_1F",
     "object_events": [
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_MOM",
+            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM",
             "graphics_id": "OBJ_EVENT_GFX_MOM",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -65,7 +65,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_MOM",
+            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_MOM",
             "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -91,7 +91,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_SIBLING",
+            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_SIBLING",
             "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
             "movement_range_x": 1,
             "movement_range_y": 1,
@@ -122,7 +122,7 @@
             "y": 8
         },
         {
-            "dest_map": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F",
+            "dest_map": "MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_2F",
             "dest_warp_id": 0,
             "elevation": 0,
             "x": 2,

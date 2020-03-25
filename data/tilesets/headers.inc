@@ -461,14 +461,14 @@ gTileset_LilycoveMuseum:: @ 83DFADC
 	.4byte NULL @ animation callback
 
 	.align 2
-gTileset_BrendansMaysHouse:: @ 83DFAF4
+gTileset_BrendansDawnsHouse:: @ 83DFAF4
 	.byte TRUE @ is compressed
 	.byte TRUE @ is secondary tileset
 	.2byte 0 @ padding
-	.4byte gTilesetTiles_BrendansMaysHouse
-	.4byte gTilesetPalettes_BrendansMaysHouse
-	.4byte gMetatiles_BrendansMaysHouse
-	.4byte gMetatileAttributes_BrendansMaysHouse
+	.4byte gTilesetTiles_BrendansDawnsHouse
+	.4byte gTilesetPalettes_BrendansDawnsHouse
+	.4byte gMetatiles_BrendansDawnsHouse
+	.4byte gMetatileAttributes_BrendansDawnsHouse
 	.4byte NULL @ animation callback
 
 	.align 2

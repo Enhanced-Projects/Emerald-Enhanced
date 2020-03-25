@@ -1,4 +1,4 @@
-LittlerootTown_MaysHouse_2F_MapScripts:: @ 81F83E3
+LittlerootTown_DawnsHouse_2F_MapScripts:: @ 81F83E3
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, GameIntroSequenceCheck
 	.byte 0
 
@@ -273,9 +273,9 @@ EventScript_PlayerPCFemale:: @ 81F9553
 	lockall
 	checkplayergender
 	compare VAR_RESULT, MALE
-	goto_if_eq LittlerootTown_MaysHouse_2F_EventScript_1F956C
+	goto_if_eq LittlerootTown_DawnsHouse_2F_EventScript_1F956C
 	compare VAR_RESULT, FEMALE
-	goto_if_eq LittlerootTown_MaysHouse_2F_EventScript_1F9576
+	goto_if_eq LittlerootTown_DawnsHouse_2F_EventScript_1F9576
 	end
 
 LRT_PlayerPC:: @ 81F9576

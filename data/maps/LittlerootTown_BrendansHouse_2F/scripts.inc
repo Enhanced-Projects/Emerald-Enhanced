@@ -117,9 +117,9 @@ EventScript_PlayerPCMale::
 	lockall
 	checkplayergender
 	compare VAR_RESULT, FEMALE
-	goto_if_eq LittlerootTown_MaysHouse_2F_EventScript_1F956C
+	goto_if_eq LittlerootTown_DawnsHouse_2F_EventScript_1F956C
 	compare VAR_RESULT, MALE
-	goto_if_eq LittlerootTown_MaysHouse_2F_EventScript_1F9576
+	goto_if_eq LittlerootTown_DawnsHouse_2F_EventScript_1F9576
 	end
 	
 BH_DeskBook::

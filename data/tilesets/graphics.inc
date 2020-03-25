@@ -946,11 +946,11 @@ gTilesetPalettes_LilycoveMuseum:: @ 836DEAC
 	.incbin "data/tilesets/secondary/lilycove_museum/palettes/15.gbapal"
 
 	.align 2
-gTilesetTiles_BrendansMaysHouse:: @ 836E0AC
+gTilesetTiles_BrendansDawnsHouse:: @ 836E0AC
 	.incbin "data/tilesets/secondary/brendans_mays_house/tiles.4bpp.lz"
 
 	.align 2
-gTilesetPalettes_BrendansMaysHouse:: @ 836F178
+gTilesetPalettes_BrendansDawnsHouse:: @ 836F178
 	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/00.gbapal"
 	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/01.gbapal"
 	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/02.gbapal"

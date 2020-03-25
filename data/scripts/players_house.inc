@@ -47,7 +47,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_WallClock:: @ 8292781
 	goto PlayersHouse_2F_EventScript_WallClock
 	end
 
-LittlerootTown_MaysHouse_2F_EventScript_WallClock:: @ 829278D
+LittlerootTown_DawnsHouse_2F_EventScript_WallClock:: @ 829278D
 	lockall
 	setvar VAR_0x8004, FEMALE
 	goto PlayersHouse_2F_EventScript_WallClock
