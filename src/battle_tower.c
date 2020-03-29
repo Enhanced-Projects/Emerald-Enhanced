@@ -1735,7 +1735,7 @@ static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
         for (j = 0; j < i + firstMonId; j++)
         {
             if (GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) != 0
-             && GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) == gBattleFrontierHeldItems[gFacilityTrainerMons[monId].itemTableId])
+             && GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) == gFacilityTrainerMons[monId].heldItem)
                 break;
         }
         if (j != i + firstMonId)
@@ -1772,7 +1772,8 @@ static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
         }
 
         SetMonData(&gEnemyParty[i + firstMonId], MON_DATA_FRIENDSHIP, &friendship);
-        SetMonData(&gEnemyParty[i + firstMonId], MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[gFacilityTrainerMons[monId].itemTableId]);
+        SetMonData(&gEnemyParty[i + firstMonId], MON_DATA_HELD_ITEM, &gFacilityTrainerMons[monId].heldItem);
+        SetMonData(&gEnemyParty[i + firstMonId], MON_DATA_ABILITY_NUM, &gFacilityTrainerMons[monId].ability);
 
         // The pokemon was successfully added to the trainer's party, so it's safe to move on to
         // the next party slot.
@@ -1892,7 +1893,8 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
             SetMonMoveAvoidReturn(&gEnemyParty[firstMonId + i], gFacilityTrainerMons[monId].moves[j], j);
 
         SetMonData(&gEnemyParty[firstMonId + i], MON_DATA_FRIENDSHIP, &friendship);
-        SetMonData(&gEnemyParty[firstMonId + i], MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[gFacilityTrainerMons[monId].itemTableId]);
+        SetMonData(&gEnemyParty[firstMonId + i], MON_DATA_HELD_ITEM, &gFacilityTrainerMons[monId].heldItem);
+        SetMonData(&gEnemyParty[firstMonId + i], MON_DATA_ABILITY_NUM, &gFacilityTrainerMons[monId].ability);
     }
 }
 
@@ -1924,7 +1926,8 @@ static void FillFactoryTentTrainerParty(u16 trainerId, u8 firstMonId)
         }
 
         SetMonData(&gEnemyParty[firstMonId + i], MON_DATA_FRIENDSHIP, &friendship);
-        SetMonData(&gEnemyParty[firstMonId + i], MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[gFacilityTrainerMons[monId].itemTableId]);
+        SetMonData(&gEnemyParty[firstMonId + i], MON_DATA_HELD_ITEM, &gFacilityTrainerMons[monId].heldItem);
+        SetMonData(&gEnemyParty[firstMonId + i], MON_DATA_ABILITY_NUM, &gFacilityTrainerMons[monId].ability);
     }
 }
 
@@ -2365,7 +2368,7 @@ static void LoadMultiPartnerCandidatesData(void)
             while (1)
             {
                 monId = GetRandomFrontierMonFromSet(trainerId);
-                if (j % 2 != 0 && gFacilityTrainerMons[gSaveBlock2Ptr->frontier.trainerIds[r10 - 1]].itemTableId == gFacilityTrainerMons[monId].itemTableId)
+                if (j % 2 != 0 && gFacilityTrainerMons[gSaveBlock2Ptr->frontier.trainerIds[r10 - 1]].heldItem == gFacilityTrainerMons[monId].heldItem)
                     continue;
 
                 for (k = 8; k < r10; k++)
@@ -3119,7 +3122,8 @@ static void FillPartnerParty(u16 trainerId)
                     friendship = 0;
             }
             SetMonData(&gPlayerParty[3 + i], MON_DATA_FRIENDSHIP, &friendship);
-            SetMonData(&gPlayerParty[3 + i], MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[gFacilityTrainerMons[monId].itemTableId]);
+            SetMonData(&gPlayerParty[3 + i], MON_DATA_HELD_ITEM, &gFacilityTrainerMons[monId].heldItem);
+            SetMonData(&gPlayerParty[3 + i], MON_DATA_ABILITY_NUM, &gFacilityTrainerMons[monId].ability);
             for (j = 0; j < PLAYER_NAME_LENGTH + 1; j++)
                 trainerName[j] = gFacilityTrainers[trainerId].trainerName[j];
             SetMonData(&gPlayerParty[3 + i], MON_DATA_OT_NAME, &trainerName);
@@ -3512,7 +3516,7 @@ static void FillTentTrainerParty_(u16 trainerId, u8 firstMonId, u8 monCount)
         for (j = 0; j < i + firstMonId; j++)
         {
             if (GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) != 0
-             && GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) == gBattleFrontierHeldItems[gFacilityTrainerMons[monId].itemTableId])
+             && GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) == gFacilityTrainerMons[monId].heldItem)
                 break;
         }
         if (j != i + firstMonId)
@@ -3549,7 +3553,8 @@ static void FillTentTrainerParty_(u16 trainerId, u8 firstMonId, u8 monCount)
         }
 
         SetMonData(&gEnemyParty[i + firstMonId], MON_DATA_FRIENDSHIP, &friendship);
-        SetMonData(&gEnemyParty[i + firstMonId], MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[gFacilityTrainerMons[monId].itemTableId]);
+        SetMonData(&gEnemyParty[i + firstMonId], MON_DATA_HELD_ITEM, &gFacilityTrainerMons[monId].heldItem);
+        SetMonData(&gEnemyParty[i + firstMonId], MON_DATA_ABILITY_NUM, &gFacilityTrainerMons[monId].ability);
 
         // The pokemon was successfully added to the trainer's party, so it's safe to move on to
         // the next party slot.
@@ -3681,7 +3686,7 @@ void RyuGiveFrontierMon(void)
         SetMonData(&gPlayerParty[party_id], MON_DATA_SPDEF_EV, &evs[4]);
         SetMonData(&gPlayerParty[party_id], MON_DATA_SPEED_EV, &evs[5]);
         SetMonData(&gPlayerParty[party_id], MON_DATA_ABILITY_NUM, &mon->ability);
-        SetMonData(&gPlayerParty[party_id], MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[mon->itemTableId]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_HELD_ITEM, &mon->heldItem);
         CalculateMonStats(&gPlayerParty[party_id]);
     }
 }

@@ -1695,7 +1695,8 @@ static void CreateFrontierFactorySelectableMons(u8 firstMonId)
         for (j = 0; j < MAX_MON_MOVES; j++)
             SetMonMoveAvoidReturn(&sFactorySelectScreen->mons[i + firstMonId].monData, gFacilityTrainerMons[monSetId].moves[j], j);
         SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_FRIENDSHIP, &happiness);
-        SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[gFacilityTrainerMons[monSetId].itemTableId]);
+        SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_HELD_ITEM, &gFacilityTrainerMons[monSetId].heldItem);
+        SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_ABILITY_NUM, &gFacilityTrainerMons[monSetId].ability);
     }
 }
 
@@ -1725,7 +1726,8 @@ static void CreateTentFactorySelectableMons(u8 firstMonId)
         for (j = 0; j < MAX_MON_MOVES; j++)
             SetMonMoveAvoidReturn(&sFactorySelectScreen->mons[i + firstMonId].monData, gFacilityTrainerMons[monSetId].moves[j], j);
         SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_FRIENDSHIP, &happiness);
-        SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[gFacilityTrainerMons[monSetId].itemTableId]);
+        SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_ABILITY_NUM, &gFacilityTrainerMons[monSetId].ability);
+        SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_HELD_ITEM, &gFacilityTrainerMons[monSetId].heldItem);
     }
 }
 

@@ -876,7 +876,7 @@ BCPremierball::
 	checkitem ITEM_PREMIER_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 12
+	setvar VAR_TEMP_4, 11
 	removeitem ITEM_PREMIER_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
