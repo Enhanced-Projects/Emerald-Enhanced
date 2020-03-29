@@ -179,18 +179,22 @@ RyuDebug_ViewTempVars::
 	end
 
 RDB_CTVMsg:
-	.string "{STR_VAR_1} NFE's exist.$"
+	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	call_if_unset FLAG_RYU_CLEARED_COOL, nocool
-	call_if_unset FLAG_RYU_CLEARED_SMART, nosmart
-	call_if_unset FLAG_RYU_CLEARED_BEAUTY, nobeauty
-	call_if_unset FLAG_RYU_CLEARED_TOUGH, notough
-	call_if_unset FLAG_RYU_CLEARED_CUTE, nocute
-	closemessage
-	setflag FLAG_RYU_RANDOMBATTLE
+	buffernumberstring 0, VAR_RYU_EXP_MULTIPLIER
+	special DrawWholeMapView
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGMAWILE
+	waitbuttonpress
+	special SwapPlayerGender
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	release
 	end
+
+genderswap:
+	.string "Your gender will be swapped for\nthe purpose of sprite testing.$"
 
 nocool::
 	msgbox nocoolmsg

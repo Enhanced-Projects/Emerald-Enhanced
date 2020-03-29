@@ -30,6 +30,10 @@ static const u8 sShellyBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/shell
 static const u8 sShellyBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_map.bin");
 static const u8 sShellyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_palette.gbapal");
 
+static const u8 sMawileBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile_tiles.8bpp");
+static const u8 sMawileBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile_tiles.bin");
+static const u8 sMawileBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile_palette.gbapal");
+
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
     [SCENEBGDAWN] = 
@@ -98,6 +102,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .palette = sShellyBgPalette,
 		.palIdxCnt = 240
     },
+	[SCENEBGMAWILE] = 
+    {
+		.mode = 2,
+		.scrollMode = 0,
+        .tiles = sMawileBgTiles,
+		.tileSize = sizeof(sMawileBgTiles),
+        .map = sMawileBgMap,
+		.mapSize = sizeof(sMawileBgMap),
+        .palette = sMawileBgPalette,
+		.palIdxCnt = 240
+    }
 };
 
 static const struct BgTemplate sCutsceneBackground8bpp = {

@@ -1,9 +1,10 @@
-VictoryRoad_1F_MapScripts:: @ 8235D7A
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, VR1_CloseMewTwoDoor
+VictoryRoad_1F_MapScripts::
+	map_script ON_FRAME, VR1_CloseMewTwoDoor
 	.byte 0
 
 VR1_CloseMewTwoDoor::
 	map_script_2 VAR_TEMP_7, 0, VR1_CloseDoor
+	.2byte 0
 	
 VR1_CloseDoor::
 	setvar VAR_TEMP_7, 1

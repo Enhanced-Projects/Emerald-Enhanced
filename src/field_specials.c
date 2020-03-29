@@ -5430,43 +5430,16 @@ void RyuChangeUsedPokeball(void)
     SetMonData(&gPlayerParty[0], MON_DATA_POKEBALL, &newBall);
 }
 
-//Bank
-
-void RyuDepositPlayerMoney(void)
+void SwapPlayerGender(void)
 {
-    u32 amount = VarGet(VAR_TEMP_A);
-    u32 balance = (GetGameStat(51));
-    u32 mult = VarGet(VAR_TEMP_B);
-
-    RemoveMoney(&gSaveBlock1Ptr->money, (amount * mult));
-    balance = (balance + (amount * mult));
-    SetGameStat(51, balance);
-    ConvertIntToDecimalStringN(gStringVar2, balance, STR_CONV_MODE_LEFT_ALIGN, 10);
-}
-
-bool8 RyuWithdrawPlayerMoney(void)
-{
-    u32 amount = VarGet(VAR_TEMP_A);
-    u32 balance = (GetGameStat(51));
-    u32 mult = VarGet(VAR_TEMP_B);
-
-    if (!(balance >= (amount * mult)))
+    if (gSaveBlock2Ptr->playerGender == 1)
     {
-        ConvertIntToDecimalStringN(gStringVar2, balance, STR_CONV_MODE_LEFT_ALIGN, 10);
-        return FALSE;
+        gSaveBlock2Ptr->playerGender = 0;
     }
-
-    AddMoney(&gSaveBlock1Ptr->money, (amount * mult));
-    balance = (balance - (amount * mult));
-    SetGameStat(51, balance);
-    ConvertIntToDecimalStringN(gStringVar2, balance, STR_CONV_MODE_LEFT_ALIGN, 10);
-    return TRUE;
-}
-
-void RyuGetPlayerBankBal(void)
-{
-    u32 balance = (GetGameStat(51));
-    ConvertIntToDecimalStringN(gStringVar2, balance, STR_CONV_MODE_LEFT_ALIGN, 10);
+    else
+    {
+        gSaveBlock2Ptr->playerGender = 1;
+    }
 }
 
 bool8 RyuSwapAbility(void)
