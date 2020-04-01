@@ -54,7 +54,7 @@ NavelRock_Bottom_EventScript_Lugia:: @ 82692A2
 	delay 20
 	setvar VAR_0x8004, SPECIES_LUGIA
 	setvar VAR_0x8005, 70  @ level
-	setvar VAR_0x8006, ITEM_SKY_GEM
+	setvar VAR_0x8006, ITEM_WAVE_INCENSE
 	special CreateObedientEnemyMon
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
