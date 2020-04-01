@@ -144,12 +144,12 @@ Route115_Text_NeverKnowWhenCavePokemonWillAppear: @ 81F2B55
 	.string "appear. It's full of suspense.$"
 
 Route115_Text_RouteSignRustboro: @ 81F2BC9
-	.string "ROUTE 115\n"
-	.string "{DOWN_ARROW} RUSTBORO CITY$"
+	.string "Route 115\n"
+	.string "{DOWN_ARROW} Rustboro City$"
 
 Route115_Text_MeteorFallsSign: @ 81F2BE3
-	.string "METEOR FALLS\n"
-	.string "FALLARBOR TOWN THROUGH HERE$"
+	.string "Meteor Falls\n"
+	.string "Fallarbor Town through here$"
 	
 @==================================================================================================Devon Scene
 
@@ -493,7 +493,7 @@ R115_Raikou::
 	compare VAR_RESULT, 10
 	call_if_lt TC_NoBadge
 	waitmoncry
-	setwildbattle SPECIES_RAIKOU, VAR_RESULT, ITEM_NONE
+	setwildbattle SPECIES_RAIKOU, VAR_RESULT, ITEM_ELECTRIC_SEED
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught
@@ -506,6 +506,6 @@ R115_Raikou_TouchedStone:
 	.string "A thunderous cry is heard...$"
 
 R115_Raikou_TouchQuery:
-	.string "{PLAYER}: This stone looks funny.\n"
-	.string "Small electric bolts are coursing\p"
+	.string "This stone looks funny.\p"
+	.string "Small electric bolts are coursing\n"
 	.string "all over it.$"
