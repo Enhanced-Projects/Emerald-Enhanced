@@ -25,7 +25,7 @@ FP_Entei::
 	call_if_lt TC_NoBadge
 	closemessage
 	waitmoncry
-	setwildbattle SPECIES_ENTEI, VAR_RESULT, ITEM_NONE
+	setwildbattle SPECIES_ENTEI, VAR_RESULT, ITEM_FLAME_ORB
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught
