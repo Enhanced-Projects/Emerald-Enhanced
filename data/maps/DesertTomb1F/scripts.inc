@@ -102,7 +102,7 @@ NM10_CrystalOnix::
 	goto_if_lt ryu_end
 	msgbox NM10_NotTooWeak
 	waitmoncry
-	setwildbattle SPECIES_CRYSTAL_ONIX, 90, ITEM_METAL_COAT
+	setwildbattle SPECIES_CRYSTAL_ONIX, 90, ITEM_LAGGING_TAIL
 	setflag FLAG_RYU_HIDE_CRYSTALONIX_OW
 	removeobject 1
 	special BattleSetup_StartLegendaryBattle
