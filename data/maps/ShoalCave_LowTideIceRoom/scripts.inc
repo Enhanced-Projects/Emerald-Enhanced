@@ -14,7 +14,7 @@ SC1_Articuno::
 	compare VAR_RESULT, 10
 	call_if_lt TC_NoBadge
 	waitmoncry
-	setwildbattle SPECIES_ARTICUNO, VAR_RESULT, ITEM_NONE
+	setwildbattle SPECIES_ARTICUNO, VAR_RESULT, ITEM_NEVER_MELT_ICE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught
@@ -27,7 +27,7 @@ SC1_Articuno_TouchedStone:
 	.string "It's really cold!$"
 
 SC1_Articuno_TouchQuery:
-    .string "{PLAYER}: The stone is iced over.\n"
-	.string "as if it was flash frozen!\p"
+    .string "The stone is iced over, as if\n"
+	.string "it was flash frozen!\p"
 	.string "Touch the stone?$"
 
