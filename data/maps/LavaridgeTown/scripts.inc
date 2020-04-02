@@ -322,6 +322,7 @@ LT_MaleRivalInteraction:: @ 81EA5B5
 
 LT_RivalEnter2::
 	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	goto_if_set FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_end
 	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
 	goto_if_set FLAG_TEMP_A, ryu_end
 	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace
@@ -338,6 +339,7 @@ LT_MaleRivalEnter2::
 	
 LT_RivalEnter3::
 	goto_if_set FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_end
+	goto_if_set FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_end
 	goto_if_unset FLAG_DEFEATED_LAVARIDGE_GYM , ryu_end
 	goto_if_set FLAG_TEMP_A, ryu_end
 	goto_if_set FLAG_RYU_INTERACTED_LAVARIDGE, LT_HasSpace

@@ -1610,7 +1610,7 @@ u8 DoBattlerEndTurnEffects(void)
                 && gBattleMons[gActiveBattler].hp != 0
                 && ability != ABILITY_MAGIC_GUARD)
             {
-                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 4;
+                gBattleMoveDamage = (gBattleMons[gActiveBattler].maxHP / 3) + 1;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 BattleScriptExecute(BattleScript_CurseTurnDmg);

@@ -29,11 +29,13 @@ LC_AH_Security1::
 	call RyuGivePokenav
 	givemoney 50000
 	msgbox LC_AH_Pokenav_get MSGBOX_DEFAULT
+	closemessage
 	msgbox LC_AH_JobOffer MSGBOX_DEFAULT
-	msgbox LC_AH_JoinQuery MSGBOX_YESNO
-	compare VAR_RESULT, 0
-	goto_if_eq LC_AH_Declined
+	closemessage
+	msgbox LC_AH_JoinQuery
+	closemessage
 	msgbox LC_AH_Shelly_desc MSGBOX_DEFAULT
+	closemessage
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	setflag FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA
 	setflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS
@@ -230,7 +232,7 @@ LC_AH_JobOffer:
 	.string "with a sign on bonus of ¥50000.$"
 	
 LC_AH_JoinQuery:
-	.string "Would you like to work for us?$"
+	.string "Let's create a little chaos.$"
 	
 LC_AH_Shelly_desc:
 	.string "Welcome to Team Aqua. You'll\p"

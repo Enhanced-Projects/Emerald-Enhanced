@@ -3602,6 +3602,10 @@ static void Cmd_getexp(void)
                 if (gExpShareExp == 0)
                     gExpShareExp = 1;
             }
+            else if (FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1)
+            {
+                calculatedExp = 0;
+            }
             else
             {
                 *exp = calculatedExp / viaSentIn;

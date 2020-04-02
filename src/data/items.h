@@ -4840,10 +4840,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_TM62_EMPTY] =
+    [ITEM_TM62_CURSE] =
     {
         .name = _("TM62"),
-        .itemId = ITEM_TM62_EMPTY,
+        .itemId = ITEM_TM62_CURSE,
         .price = 3000,
         .description = sTM62Desc,
                 .importance = 1,

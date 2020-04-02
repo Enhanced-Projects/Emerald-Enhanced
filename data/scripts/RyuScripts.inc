@@ -1239,6 +1239,26 @@ SB_SetupRandomSteppedOnEncounter::
 	case 4, SB_Random4
 	goto  ryu_end
 
+SB_SetupRandomMimikyuEncounter::
+	lock
+	clearflag FLAG_TEMP_A
+	setwildbattle SPECIES_MIMIKYU, 33, ITEM_NONE
+	playmoncry SPECIES_MIMIKYU, 0
+	waitmoncry
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox StumbledOnMimikyu
+	closemessage
+	dowildbattle
+	release
+	end
+
+StumbledOnMimikyu:
+	.string "You stumbled across\na wild Mimikyu!$"
+
+
 SB_Random0::
 	setwildbattle SPECIES_PYUKUMUKU, 20, ITEM_NONE
 	playse SE_PIN

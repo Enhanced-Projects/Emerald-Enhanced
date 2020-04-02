@@ -37,6 +37,8 @@
 #include "constants/trainer_hill.h"
 #include "constants/event_objects.h"
 #include "random.h"
+#include "constants/region_map_sections.h"
+#include "constants/species.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
@@ -44,6 +46,7 @@ static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
 u8 gSelectedObjectEvent;
 
 extern const u8 SB_SetupRandomSteppedOnEncounter[];
+extern const u8 SB_SetupRandomMimikyuEncounter[];
 extern const u8 SB_CheckMeloettaEncounter[];
 extern const u8 Ryu_BeingWatched[];
 extern const u8 Ryu_MeloettaWatchingMsg[];
@@ -139,12 +142,43 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
         input->dpadDirection = DIR_EAST;
 }
 
+bool8 RyuCheckPlayerHasPika(void)
+{
+    u8 i;
+    bool8 hasPika = FALSE;
+    for (i = 0; i < (CalculatePlayerPartyCount()); i++)
+    {
+        if ((GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == SPECIES_PIKACHU))
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+bool8 RyuCheckPlayerisInMtPyreAndHasPikachu(void)
+{
+    u16 locGroup = gSaveBlock1Ptr->location.mapGroup;
+    u16 locMap = gSaveBlock1Ptr->location.mapNum;
+    if (locGroup == 24)
+    {
+        if ((locMap > 15) && (locMap < 21))
+        {
+            if (RyuCheckPlayerHasPika() == TRUE)
+            {
+                return TRUE;
+            }
+        }
+    }
+    
+    return FALSE;
+}
+
 int ProcessPlayerFieldInput(struct FieldInput *input)
 {
     struct MapPosition position;
     u8 playerDirection;
     u16 metatileBehavior;
-    u16 rand = (Random() % 128);
+    u16 rand = (Random() % 256);
 
     gSpecialVar_LastTalked = 0;
     gSelectedObjectEvent = 0;
@@ -171,10 +205,17 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         {
             if (!(gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE111)))
             {
-                if (rand == 69)
+                if ((rand == 69) || (rand == 169))
                 {
                     ScriptContext1_SetupScript(SB_SetupRandomSteppedOnEncounter);
                 }
+            }
+        }
+        if (RyuCheckPlayerisInMtPyreAndHasPikachu() == TRUE)
+        {
+            if (rand == 128)
+            {
+                ScriptContext1_SetupScript(SB_SetupRandomMimikyuEncounter);
             }
         }
         

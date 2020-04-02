@@ -494,7 +494,7 @@ SafariZone_Southeast_EventScript_ItemBigPearl:: @ 82912F0
 	end
 
 MtPyre_2F_EventScript_ItemUltraBall:: @ 82912FD
-	finditem ITEM_ULTRA_BALL
+	finditem ITEM_TM62
 	end
 
 MtPyre_3F_EventScript_ItemSuperRepel:: @ 829130A
