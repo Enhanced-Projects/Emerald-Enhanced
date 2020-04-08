@@ -161,7 +161,7 @@ GC1_RYUSCR3::
 	end
 
 GC1_RYUMSG_TOUCHQ:
-    .string "\This wall sparkles beautifully, as if\n"
+    .string "This wall sparkles beautifully, as if\n"
 	.string "it was touched by a sky spirit.\p"
 	.string "Touch the wall?$"
 
