@@ -102,37 +102,37 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
         // Silver Symbol.
         {
             {
-                .species = SPECIES_ALAKAZAM,//.ability = 2
+                .species = SPECIES_ALAKAZAM,
                 .heldItem = ITEM_LIFE_ORB,
                 .fixedIV = 30,
                 .nature = NATURE_TIMID,
                 .evs = {0, 0, 6, 252, 0, 252},
-                .ability = 0,
+                .ability = 2,
                 .moves = {MOVE_PSYCHIC, MOVE_SHADOW_BALL, MOVE_FOCUS_BLAST, MOVE_HIDDEN_POWER},
             },
             {
-                .species = SPECIES_ENTEI,//.ability = 0
+                .species = SPECIES_ENTEI,
                 .heldItem = ITEM_CHOICE_BAND,
                 .fixedIV = 31,
                 .nature = NATURE_JOLLY,
                 .evs = {0, 252, 0, 0, 6, 252},
                 .ability = 0,
-                .moves = {MOVE_SACRED_FIRE, MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_EXTREME_SPEED},
+                .moves = {MOVE_SACRED_FIRE, MOVE_STOMPING_TANTRUM, MOVE_STONE_EDGE, MOVE_EXTREME_SPEED},
             },
             {
-                .species = SPECIES_SNORLAX,//.ability = 1
+                .species = SPECIES_SNORLAX,
                 .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
                 .nature = NATURE_CAREFUL,
                 .evs = {188, 0, 128, 0, 192, 0},
-                .ability = 0,
+                .ability = 1,
                 .moves = {MOVE_BODY_SLAM, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
             },
         },
         // Gold Symbol.
         {
             {
-                .species = SPECIES_RAIKOU,//.ability = 0
+                .species = SPECIES_RAIKOU,
                 .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
                 .nature = NATURE_TIMID,
@@ -141,21 +141,21 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
                 .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_SUBSTITUTE, MOVE_CALM_MIND},
             },
             {
-                .species = SPECIES_LATIOS,//.ability = 0
+                .species = SPECIES_LATIOS,
                 .heldItem = ITEM_LATIOSITE,
-                .fixedIV = 30,
+                .fixedIV = 31,
                 .nature = NATURE_TIMID,
                 .evs = {0, 0, 0, 252, 6, 252},
                 .ability = 0,
-                .moves = {MOVE_PSYCHIC, MOVE_DRAGON_PULSE, MOVE_SURF, MOVE_CALM_MIND},
+                .moves = {MOVE_PSYSHOCK, MOVE_DRAGON_PULSE, MOVE_SURF, MOVE_CALM_MIND},
             },
             {
-                .species = SPECIES_SNORLAX,//.ability = 1
+                .species = SPECIES_SNORLAX,
                 .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
                 .nature = NATURE_CAREFUL,
                 .evs = {188, 0, 128, 0, 192, 0},
-                .ability = 0,
+                .ability = 1,
                 .moves = {MOVE_BODY_SLAM, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
             },
         },
@@ -165,55 +165,55 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
         // Silver Symbol.
         {
             {
-                .species = SPECIES_SWAMPERT,//.ability = 0
+                .species = SPECIES_SWAMPERT,
                 .heldItem = ITEM_CHOICE_BAND,
                 .fixedIV = 31,
                 .nature = NATURE_ADAMANT,
                 .evs = {252, 252, 0, 0, 0, 6},
                 .ability = 0,
-                .moves = {MOVE_EARTHQUAKE, MOVE_DIVE, MOVE_ICE_PUNCH, MOVE_SUPERPOWER},
+                .moves = {MOVE_EARTHQUAKE, MOVE_DIVE, MOVE_AVALANCHE, MOVE_SUPERPOWER},
             },
             {
-                .species = SPECIES_SALAMENCE,//.ability = 0
+                .species = SPECIES_SALAMENCE,
                 .heldItem = ITEM_LIFE_ORB,
                 .fixedIV = 31,
-                .nature = NATURE_JOLLY,
-                .evs = {0, 252, 0, 0, 6, 252},
+                .nature = NATURE_TIMID,
+                .evs = {0, 0, 0, 252, 6, 252},
                 .ability = 0,
-                .moves = {MOVE_OUTRAGE, MOVE_EARTHQUAKE, MOVE_FLY, MOVE_DRAGON_DANCE},
+                .moves = {MOVE_AEROBLAST, MOVE_FIRE_BLAST, MOVE_DRACO_METEOR, MOVE_BLAST_OFF},
             },
             {
-                .species = SPECIES_GRENINJA,//.ability = 2
+                .species = SPECIES_GRENINJA,
                 .heldItem = ITEM_EXPERT_BELT,
                 .fixedIV = 26,
                 .nature = NATURE_TIMID,
                 .evs = {0, 0, 0, 252, 6, 252},
-                .ability = 0,
+                .ability = 2,
                 .moves = {MOVE_ICE_BEAM, MOVE_GRASS_KNOT, MOVE_HIDDEN_POWER, MOVE_EXTRASENSORY},
             },
         },
         // Gold Symbol.
         {
             {
-                .species = SPECIES_SWAMPERT,//.ability = 0
+                .species = SPECIES_SWAMPERT,
                 .heldItem = ITEM_CHOICE_BAND,
                 .fixedIV = 31,
                 .nature = NATURE_ADAMANT,
                 .evs = {252, 252, 0, 0, 0, 6},
                 .ability = 0,
-                .moves = {MOVE_EARTHQUAKE, MOVE_DIVE, MOVE_ICE_PUNCH, MOVE_SUPERPOWER},
+                .moves = {MOVE_EARTHQUAKE, MOVE_DIVE, MOVE_AVALANCHE, MOVE_SUPERPOWER},
             },
             {
-                .species = SPECIES_METAGROSS,//.ability = 0
+                .species = SPECIES_METAGROSS,
                 .heldItem = ITEM_METAGROSSITE,
                 .fixedIV = 31,
                 .nature = NATURE_JOLLY,
                 .evs = {0, 252, 6, 0, 0, 252},
-                .ability = 0,
-                .moves = {MOVE_METEOR_MASH, MOVE_ZEN_HEADBUTT, MOVE_HAMMER_ARM, MOVE_THUNDER_PUNCH},
+                .ability = 1,
+                .moves = {MOVE_HEAVY_SLAM, MOVE_EARTHQUAKE, MOVE_BULLET_PUNCH, MOVE_THUNDER_PUNCH},
             },
             {
-                .species = SPECIES_LATIAS,//.ability = 0
+                .species = SPECIES_LATIAS,
                 .heldItem = ITEM_LIFE_ORB,
                 .fixedIV = 31,
                 .nature = NATURE_TIMID,
@@ -228,61 +228,61 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
         // Silver Symbol.
         {
             {
-                .species = SPECIES_BRELOOM,//.ability = 1
+                .species = SPECIES_BRELOOM,
                 .heldItem = ITEM_TOXIC_ORB,
                 .fixedIV = 31,
                 .nature = NATURE_BRAVE,
                 .evs = {252, 252, 6, 0, 0, 0},
-                .ability = 0,
+                .ability = 1,
                 .moves = {MOVE_FOCUS_PUNCH, MOVE_ROCK_TOMB, MOVE_SYNTHESIS, MOVE_SPORE},
             },
             {
-                .species = SPECIES_SLAKING,//.ability = 0
-                .heldItem = ITEM_CHOICE_SCARF,
+                .species = SPECIES_SCIZOR,
+                .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
-                .nature = NATURE_SASSY,
-                .evs = {0, 252, 6, 0, 0, 252},
-                .ability = 0,
-                .moves = {MOVE_GIGA_IMPACT, MOVE_EARTHQUAKE, MOVE_SHADOW_CLAW, MOVE_NONE},
+                .nature = NATURE_JOLLY,
+                .evs = {252, 0, 48, 0, 208, 0},
+                .ability = 1,
+                .moves = {MOVE_BULLET_PUNCH, MOVE_TOXIC, MOVE_ROOST, MOVE_CURSE},
             },
             {
-                .species = SPECIES_LAPRAS,//.ability = 0
-                .heldItem = ITEM_LEFTOVERS,
+                .species = SPECIES_LAPRAS,
+                .heldItem = ITEM_CHESTO_BERRY,
                 .fixedIV = 31,
                 .nature = NATURE_MODEST,
                 .evs = {252, 0, 0, 252, 0, 6},
-                .ability = 0,
-                .moves = {MOVE_SURF, MOVE_FREEZE_DRY, MOVE_SLEEP_TALK, MOVE_REST},
+                .ability = 2,
+                .moves = {MOVE_SURF, MOVE_FROST_BREATH, MOVE_TOXIC, MOVE_REST},
             },
         },
         // Gold Symbol.
         {
             {
-                .species = SPECIES_VENUSAUR,//.ability = 2
+                .species = SPECIES_VENUSAUR,
                 .heldItem = ITEM_VENUSAURITE,
                 .fixedIV = 31,
                 .nature = NATURE_BRAVE,
-                .evs = {252, 0, 252, 0, 0, 6},
-                .ability = 0,
+                .evs = {252, 0, 252, 0, 6, 0},
+                .ability = 2,
                 .moves = {MOVE_SLUDGE_BOMB, MOVE_EARTHQUAKE, MOVE_LEECH_SEED, MOVE_SYNTHESIS},
             },
             {
-                .species = SPECIES_SLAKING,//.ability = 0
-                .heldItem = ITEM_CHOICE_SCARF,
+                .species = SPECIES_SCIZOR,
+                .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
-                .nature = NATURE_SASSY,
-                .evs = {0, 252, 6, 0, 0, 252},
-                .ability = 0,
-                .moves = {MOVE_GIGA_IMPACT, MOVE_EARTHQUAKE, MOVE_SHADOW_CLAW, MOVE_NONE},
+                .nature = NATURE_JOLLY,
+                .evs = {252, 0, 48, 0, 208, 0},
+                .ability = 1,
+                .moves = {MOVE_BULLET_PUNCH, MOVE_TOXIC, MOVE_ROOST, MOVE_CURSE},
             },
             {
-                .species = SPECIES_HIPPOWDON,//.ability = 0
+                .species = SPECIES_HIPPOWDON,
                 .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
                 .nature = NATURE_BRAVE,
                 .evs = {252, 252, 6, 0, 0, 0},
                 .ability = 0,
-                .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_WHIRLWIND, MOVE_SLACK_OFF},
+                .moves = {MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_CURSE, MOVE_SLACK_OFF},
             },
         },
     },
@@ -291,16 +291,16 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
         // Silver Symbol.
         {
             {
-                .species = SPECIES_HERACROSS,//.ability = 2
+                .species = SPECIES_HERACROSS,
                 .heldItem = ITEM_SALAC_BERRY,
                 .fixedIV = 31,
                 .nature = NATURE_JOLLY,
                 .evs = {0, 252, 0, 0, 6, 252},
-                .ability = 0,
+                .ability = 2,
                 .moves = {MOVE_MEGAHORN, MOVE_STONE_EDGE, MOVE_ENDURE, MOVE_REVERSAL},
             },
             {
-                .species = SPECIES_COBALION,//.ability = 0
+                .species = SPECIES_COBALION,
                 .heldItem = ITEM_LIFE_ORB,
                 .fixedIV = 31,
                 .nature = NATURE_JOLLY,
@@ -309,28 +309,28 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
                 .moves = {MOVE_CLOSE_COMBAT, MOVE_IRON_HEAD, MOVE_SWORDS_DANCE, MOVE_AUTOTOMIZE},
             },
             {
-                .species = SPECIES_MIENSHAO,//.ability = 2
+                .species = SPECIES_MIENSHAO,
                 .heldItem = ITEM_CHOICE_SCARF,
                 .fixedIV = 31,
                 .nature = NATURE_JOLLY,
                 .evs = {0, 252, 6, 252, 0, 0},
-                .ability = 0,
+                .ability = 2,
                 .moves = {MOVE_HI_JUMP_KICK, MOVE_KNOCK_OFF, MOVE_STONE_EDGE, MOVE_U_TURN},
             },
         },
         // Gold Symbol.
         {
             {
-                .species = SPECIES_TERRAKION,//.ability = 0
+                .species = SPECIES_TERRAKION,
                 .heldItem = ITEM_CHOICE_BAND,
                 .fixedIV = 31,
                 .nature = NATURE_JOLLY,
                 .evs = {0, 252, 0, 0, 6, 252},
                 .ability = 0,
-                .moves = {MOVE_CLOSE_COMBAT, MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_IRON_HEAD},
+                .moves = {MOVE_CLOSE_COMBAT, MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_NONE},
             },
             {
-                .species = SPECIES_MEDICHAM,//.ability = 0
+                .species = SPECIES_MEDICHAM,
                 .heldItem = ITEM_MEDICHAMITE,
                 .fixedIV = 31,
                 .nature = NATURE_JOLLY,
@@ -339,7 +339,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
                 .moves = {MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_ICE_PUNCH, MOVE_FAKE_OUT},
             },
             {
-                .species = SPECIES_CONKELDURR,//.ability = 0
+                .species = SPECIES_CONKELDURR,
                 .heldItem = ITEM_FLAME_ORB,
                 .fixedIV = 31,
                 .nature = NATURE_ADAMANT,
@@ -417,7 +417,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
         // Silver Symbol.
         {
             {
-                .species = SPECIES_SEVIPER, //.ability = 0
+                .species = SPECIES_SEVIPER,
                 .heldItem = ITEM_EXPERT_BELT,
                 .fixedIV = 31,
                 .nature = NATURE_MODEST,
@@ -426,7 +426,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
                 .moves = {MOVE_SLUDGE_BOMB, MOVE_DARK_PULSE, MOVE_FLAMETHROWER, MOVE_GIGA_DRAIN},
             },
             {
-                .species = SPECIES_SALAZZLE, //.ability = 0
+                .species = SPECIES_SALAZZLE,
                 .heldItem = ITEM_LIFE_ORB,
                 .fixedIV = 28,
                 .nature = NATURE_TIMID,
@@ -435,7 +435,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
                 .moves = {MOVE_SLUDGE_WAVE, MOVE_FIRE_BLAST, MOVE_HIDDEN_POWER, MOVE_NASTY_PLOT},
             },
             {
-                .species = SPECIES_MILOTIC, //.ability = 0
+                .species = SPECIES_MILOTIC,
                 .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
                 .nature = NATURE_BOLD,
@@ -447,7 +447,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
         // Gold Symbol.
         {
             {
-                .species = SPECIES_SEVIPER, //.ability = 0
+                .species = SPECIES_SEVIPER,
                 .heldItem = ITEM_EXPERT_BELT,
                 .fixedIV = 31,
                 .nature = NATURE_MODEST,
@@ -456,7 +456,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
                 .moves = {MOVE_SLUDGE_BOMB, MOVE_DARK_PULSE, MOVE_FLAMETHROWER, MOVE_GIGA_DRAIN},
             },
             {
-                .species = SPECIES_SALAZZLE, //.ability = 0
+                .species = SPECIES_SALAZZLE,
                 .heldItem = ITEM_FOCUS_SASH,
                 .fixedIV = 28,
                 .nature = NATURE_TIMID,
@@ -465,13 +465,13 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
                 .moves = {MOVE_SLUDGE_WAVE, MOVE_FIRE_BLAST, MOVE_HIDDEN_POWER, MOVE_NASTY_PLOT},
             },
             {
-                .species = SPECIES_SERPERIOR, //.ability = 2
+                .species = SPECIES_SERPERIOR,
                 .heldItem = ITEM_CHOICE_SPECS,
-                .fixedIV = 30,
+                .fixedIV = 31,
                 .nature = NATURE_TIMID,
                 .evs = {0, 0, 0, 252, 6, 252},
-                .ability = 0,
-                .moves = {MOVE_LEAF_STORM, MOVE_HIDDEN_POWER, MOVE_DRAGON_PULSE, MOVE_NONE},
+                .ability = 2,
+                .moves = {MOVE_LEAF_STORM, MOVE_NONE, MOVE_NONE, MOVE_NONE},
             },
         },
     },
@@ -480,61 +480,61 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
         // Silver Symbol.
         {
             {
-                .species = SPECIES_REGIROCK,//.ability = 2
-                .heldItem = ITEM_LEFTOVERS,
+                .species = SPECIES_REGIROCK,
+                .heldItem = ITEM_WEAKNESS_POLICY,
                 .fixedIV = 31,
-                .nature = NATURE_IMPISH,
-                .evs = {252, 240, 16, 0, 0, 0},
-                .ability = 0,
-                .moves = {MOVE_STEALTH_ROCK, MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_DRAIN_PUNCH},
+                .nature = NATURE_ADAMANT,
+                .evs = {0, 252, 6, 0, 0, 252},
+                .ability = 1,
+                .moves = {MOVE_ROCK_SLIDE, MOVE_DRAIN_PUNCH, MOVE_EARTHQUAKE, MOVE_ROCK_POLISH},
             },
             {
-                .species = SPECIES_REGISTEEL,//.ability = 0
+                .species = SPECIES_REGISTEEL,
                 .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
                 .nature = NATURE_CALM,
                 .evs = {252, 0, 0, 0, 252, 6},
-                .ability = 0,
-                .moves = {MOVE_SEISMIC_TOSS, MOVE_TOXIC, MOVE_SLEEP_TALK, MOVE_REST},
+                .ability = 1,
+                .moves = {MOVE_GYRO_BALL, MOVE_CURSE, MOVE_SLEEP_TALK, MOVE_REST},
             },
             {
-                .species = SPECIES_REGICE,//.ability = 0
-                .heldItem = ITEM_LIFE_ORB,
+                .species = SPECIES_REGICE,
+                .heldItem = ITEM_EXPERT_BELT,
                 .fixedIV = 31,
                 .nature = NATURE_MODEST,
                 .evs = {0, 0, 0, 252, 6, 252},
                 .ability = 0,
-                .moves = {MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST, MOVE_ROCK_POLISH},
+                .moves = {MOVE_GLACIATE, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST, MOVE_ROCK_POLISH},
             },
         },
         // Gold Symbol.
         {
             {
-                .species = SPECIES_ARTICUNO, //.ability = 0
-                .heldItem = ITEM_LEFTOVERS,
-                .fixedIV = 27,
-                .nature = NATURE_MODEST,
-                .evs = {252, 0, 0, 252, 0, 6},
-                .ability = 0,
-                .moves = {MOVE_BLIZZARD, MOVE_HURRICANE, MOVE_HIDDEN_POWER, MOVE_ROOST},
-            },
-            {
-                .species = SPECIES_ZAPDOS, //.ability = 0
+                .species = SPECIES_SUICUNE,
                 .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
                 .nature = NATURE_BOLD,
-                .evs = {252, 0, 0, 0, 252, 6},
+                .evs = {252, 0, 252, 0, 0, 6},
                 .ability = 0,
-                .moves = {MOVE_ZAP_CANNON, MOVE_HEAT_WAVE, MOVE_HIDDEN_POWER, MOVE_ROOST},
+                .moves = {MOVE_SCALD, MOVE_CALM_MIND, MOVE_REST, MOVE_SLEEP_TALK},
             },
             {
-                .species = SPECIES_MOLTRES, //.ability = 0
-                .heldItem = ITEM_CHOICE_SCARF,
+                .species = SPECIES_RAIKOU,
+                .heldItem = ITEM_CHOICE_SPECS,
+                .fixedIV = 31,
+                .nature = NATURE_TIMID,
+                .evs = {0, 0, 0, 252, 6, 252},
+                .ability = 0,
+                .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_HIDDEN_POWER, MOVE_AURA_SPHERE},
+            },
+            {
+                .species = SPECIES_ENTEI,
+                .heldItem = ITEM_ASSAULT_VEST,
                 .fixedIV = 28,
                 .nature = NATURE_MODEST,
-                .evs = {0, 0, 6, 252, 0, 252},
+                .evs = {168, 252, 72, 0, 0, 16},
                 .ability = 0,
-                .moves = {MOVE_HURRICANE, MOVE_FIRE_BLAST, MOVE_HIDDEN_POWER, MOVE_NONE},
+                .moves = {MOVE_SACRED_FIRE, MOVE_STONE_EDGE, MOVE_EXTREME_SPEED, MOVE_FLAME_CHARGE},
             },
         },
     },
