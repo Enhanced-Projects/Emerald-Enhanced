@@ -1806,6 +1806,10 @@ static void Cmd_datahpupdate(void)
         else if (DoesDisguiseBlockMove(gBattlerAttacker, gActiveBattler, gCurrentMove))
         {
             gBattleMons[gActiveBattler].species = SPECIES_MIMIKYU_BUSTED;
+            gBattleMons[gActiveBattler].hp -= (gBattleMons[gActiveBattler].maxHP / 8);
+            gHitMarker &= ~(HITMARKER_x100000);
+            BtlController_EmitSetMonData(0, REQUEST_HP_BATTLE, 0, 2, &gBattleMons[gActiveBattler].hp);
+            MarkBattlerForControllerExec(gActiveBattler);
             BattleScriptPush(gBattlescriptCurrInstr + 2);
             gBattlescriptCurrInstr = BattleScript_DisguiseBustedActivates;
         }

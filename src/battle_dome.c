@@ -43,7 +43,7 @@
 #include "constants/rgb.h"
 
 // Enough space to hold 2 match info cards worth of trainers and their parties
-#define NUM_INFOCARD_SPRITES ((FRONTIER_PARTY_SIZE + 1) * 4)
+#define NUM_INFOCARD_SPRITES ((PARTY_SIZE + 1) * 4)
 #define NUM_INFOCARD_TRAINERS 2
 
 // An 'Info Card' is a trainer or match information page that can be viewed on the Tourney Tree
@@ -1318,8 +1318,8 @@ static const u8 *const sBattleDomeOpponentStatsTexts[] =
     [DOME_TEXT_WELL_BALANCED] = BattleDome_Text_RaisesMonsWellBalanced,
 };
 
-static const u8 sInfoTrainerMonX[FRONTIER_PARTY_SIZE] = {104, 136, 104};
-static const u8 sInfoTrainerMonY[FRONTIER_PARTY_SIZE] = { 38,  62,  78};
+static const u8 sInfoTrainerMonX[PARTY_SIZE] = {104, 136, 104};
+static const u8 sInfoTrainerMonY[PARTY_SIZE] = { 38,  62,  78};
 static const u8 sSpeciesNameTextYCoords[] = {0, 4, 0};
 
 // Offsets within sBattleDomeOpponentStatsTexts for stat combinations
@@ -1363,10 +1363,10 @@ static const u8 *const sBattleDomeWinTexts[] =
     [DOME_TEXT_CHAMP_NO_MOVES]   = BattleDome_Text_TrainerWonOutrightNoMoves,
 };
 
-static const u8 sLeftTrainerMonX[FRONTIER_PARTY_SIZE]  = { 96,  96,  96};
-static const u8 sLeftTrainerMonY[FRONTIER_PARTY_SIZE]  = { 56,  80, 104};
-static const u8 sRightTrainerMonX[FRONTIER_PARTY_SIZE] = {144, 144, 144};
-static const u8 sRightTrainerMonY[FRONTIER_PARTY_SIZE] = { 56,  80, 104};
+static const u8 sLeftTrainerMonX[PARTY_SIZE]  = { 96,  96,  96};
+static const u8 sLeftTrainerMonY[PARTY_SIZE]  = { 56,  80, 104};
+static const u8 sRightTrainerMonX[PARTY_SIZE] = {144, 144, 144};
+static const u8 sRightTrainerMonY[PARTY_SIZE] = { 56,  80, 104};
 
 // Duplicate of sTourneyTreeTrainerIds
 static const u8 sTourneyTreeTrainerIds2[DOME_TOURNAMENT_TRAINERS_COUNT] = {0, 8, 12, 4, 7, 15, 11, 3, 2, 10, 14, 6, 5, 13, 9, 1};
@@ -2106,6 +2106,7 @@ static void GetDomeData(void)
 {
     u32 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+    int i;
 
     switch (gSpecialVar_0x8005)
     {
@@ -2161,8 +2162,8 @@ static void GetDomeData(void)
         break;
     case DOME_DATA_SELECTED_MONS:
         ClearSelectedPartyOrder();
-        gSelectedOrderFromParty[0] = gSaveBlock2Ptr->frontier.selectedPartyMons[3];
-        gSelectedOrderFromParty[1] = gSaveBlock2Ptr->frontier.selectedPartyMons[3] >> 8;
+        for (i = 0; i < PARTY_SIZE; i++)
+            gSelectedOrderFromParty[i] = gSaveBlock2Ptr->frontier.selectedPartyMons[i];
         break;
     case DOME_DATA_PREV_TOURNEY_TYPE:
         gSpecialVar_Result = (gSaveBlock2Ptr->frontier.domeLvlMode * 2) - 3 + gSaveBlock2Ptr->frontier.domeBattleMode;
@@ -2174,6 +2175,7 @@ static void SetDomeData(void)
 {
     u32 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     u32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+    int i;
 
     switch (gSpecialVar_0x8005)
     {
@@ -2231,7 +2233,8 @@ static void SetDomeData(void)
         }
         break;
     case DOME_DATA_SELECTED_MONS:
-        gSaveBlock2Ptr->frontier.selectedPartyMons[3] = T1_READ_16(gSelectedOrderFromParty);
+        for (i = 0; i < PARTY_SIZE; i++)
+            gSaveBlock2Ptr->frontier.selectedPartyMons[i] = gSelectedOrderFromParty[i];
         break;
     }
 }
@@ -2240,7 +2243,7 @@ static void InitDomeTrainers(void)
 {
     int i, j, k;
     int monLevel;
-    int species[FRONTIER_PARTY_SIZE];
+    int species[PARTY_SIZE];
     int monTypesBits, monTypesCount;
     int trainerId;
     int monId;
@@ -2262,7 +2265,7 @@ static void InitDomeTrainers(void)
     DOME_TRAINERS[0].forfeited = FALSE;
 
     // Store the data used to display party information on the player's tourney page
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         DOME_MONS[0][i] = GetMonData(&gPlayerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1], MON_DATA_SPECIES, NULL);
         for (j = 0; j < MAX_MON_MOVES; j++)
@@ -2305,7 +2308,7 @@ static void InitDomeTrainers(void)
         }
 
         // Choose party
-        for (j = 0; j < FRONTIER_PARTY_SIZE; j++)
+        for (j = 0; j < PARTY_SIZE; j++)
         {
             do
             {
@@ -2337,7 +2340,7 @@ static void InitDomeTrainers(void)
     // Calculate player's ranking score
     monTypesBits = 0;
     rankingScores[0] = 0;
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         // trainerId var re-used here as index of selected mons
         trainerId = gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1;
@@ -2368,7 +2371,7 @@ static void InitDomeTrainers(void)
         monTypesBits = 0;
         rankingScores[i] = 0;
         ivs = GetDomeTrainerMonIvs(DOME_TRAINERS[i].trainerId);
-        for (j = 0; j < FRONTIER_PARTY_SIZE; j++)
+        for (j = 0; j < PARTY_SIZE; j++)
         {
             CalcDomeMonStats(gFacilityTrainerMons[DOME_MONS[i][j]].species,
                              monLevel, ivs,
@@ -2437,7 +2440,7 @@ static void InitDomeTrainers(void)
             DOME_TRAINERS[j].trainerId = TRAINER_FRONTIER_BRAIN;
         }
 
-        for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+        for (i = 0; i < PARTY_SIZE; i++)
             DOME_MONS[j][i] = GetFrontierBrainMonSpecies(i);
     }
 
@@ -2499,7 +2502,7 @@ static void SwapDomeTrainers(int id1, int id2, u16 *statsArray)
     SWAP(statsArray[id1], statsArray[id2], temp);
     SWAP(DOME_TRAINERS[id1].trainerId, DOME_TRAINERS[id2].trainerId, temp);
 
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
         SWAP(DOME_MONS[id1][i], DOME_MONS[id2][i], temp);
 }
 
@@ -2564,7 +2567,7 @@ static void CreateDomeOpponentMons(u16 tournamentTrainerId)
     if (Random() % 10 > 5)
     {
         // Create mon if it was selected, starting from front
-        for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+        for (i = 0; i < PARTY_SIZE; i++)
         {
             if (selectedMonBits & 1)
             {
@@ -2577,9 +2580,9 @@ static void CreateDomeOpponentMons(u16 tournamentTrainerId)
     else
     {
         // Create mon if it was selected, starting from back
-        for (i = FRONTIER_PARTY_SIZE - 1; i >= 0; i--)
+        for (i = PARTY_SIZE - 1; i >= 0; i--)
         {
-            if (selectedMonBits & 4)
+            if (selectedMonBits & (1 << (PARTY_SIZE - 1)))
             {
                 CreateDomeOpponentMon(monsCount, tournamentTrainerId, i, otId);
                 monsCount++;
@@ -2613,14 +2616,14 @@ int GetDomeTrainerSelectedMons(u16 tournamentTrainerId)
 static int SelectOpponentMonsUsingPersonality(u16 tournamentTrainerId, bool8 allowRandom)
 {
     int i, moveId, playerMonId;
-    int partyMovePoints[FRONTIER_PARTY_SIZE];
+    int partyMovePoints[PARTY_SIZE];
 
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         partyMovePoints[i] = 0;
         for (moveId = 0; moveId < MAX_MON_MOVES; moveId++)
         {
-            for (playerMonId = 0; playerMonId < FRONTIER_PARTY_SIZE; playerMonId++)
+            for (playerMonId = 0; playerMonId < PARTY_SIZE; playerMonId++)
             {
                 if (DOME_TRAINERS[tournamentTrainerId].trainerId == TRAINER_FRONTIER_BRAIN)
                 {
@@ -2642,14 +2645,14 @@ static int SelectOpponentMonsUsingPersonality(u16 tournamentTrainerId, bool8 all
 static int SelectOpponentMonsUsingOtId(u16 tournamentTrainerId, bool8 allowRandom)
 {
     int i, moveId, playerMonId;
-    int partyMovePoints[FRONTIER_PARTY_SIZE];
+    int partyMovePoints[PARTY_SIZE];
 
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         partyMovePoints[i] = 0;
         for (moveId = 0; moveId < MAX_MON_MOVES; moveId++)
         {
-            for (playerMonId = 0; playerMonId < FRONTIER_PARTY_SIZE; playerMonId++)
+            for (playerMonId = 0; playerMonId < PARTY_SIZE; playerMonId++)
             {
                 if (DOME_TRAINERS[tournamentTrainerId].trainerId == TRAINER_FRONTIER_BRAIN)
                 {
@@ -2671,9 +2674,9 @@ static int SelectOpponentMonsFromParty(int *partyMovePoints, bool8 allowRandom)
 {
     int i, j;
     int selectedMonBits = 0;
-    int partyPositions[FRONTIER_PARTY_SIZE];
+    int partyPositions[PARTY_SIZE];
 
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
         partyPositions[i] = i;
 
     // All party mons have equal move score totals, choose randomly
@@ -2683,10 +2686,10 @@ static int SelectOpponentMonsFromParty(int *partyMovePoints, bool8 allowRandom)
         if (allowRandom)
         {
             i = 0;
-            while (i != DOME_BATTLE_PARTY_SIZE)
+            while (i != PARTY_SIZE)
             {
-                u32 rand = Random() & FRONTIER_PARTY_SIZE;
-                if (rand != FRONTIER_PARTY_SIZE && !(selectedMonBits & gBitTable[rand]))
+                u32 rand = Random() & PARTY_SIZE;
+                if (rand != PARTY_SIZE && !(selectedMonBits & gBitTable[rand]))
                 {
                     selectedMonBits |= gBitTable[rand];
                     i++;
@@ -2696,9 +2699,9 @@ static int SelectOpponentMonsFromParty(int *partyMovePoints, bool8 allowRandom)
     }
     else
     {
-        for (i = 0; i < DOME_BATTLE_PARTY_SIZE; i++)
+        for (i = 0; i < PARTY_SIZE; i++)
         {
-            for (j = i + 1; j < FRONTIER_PARTY_SIZE; j++)
+            for (j = i + 1; j < PARTY_SIZE; j++)
             {
                 int temp;
 
@@ -2716,7 +2719,7 @@ static int SelectOpponentMonsFromParty(int *partyMovePoints, bool8 allowRandom)
             }
         }
 
-        for (i = 0; i < DOME_BATTLE_PARTY_SIZE; i++)
+        for (i = 0; i < PARTY_SIZE; i++)
         {
             selectedMonBits |= gBitTable[partyPositions[i]];
         }
@@ -4227,7 +4230,7 @@ static u8 Task_GetInfoCardInput(u8 taskId)
 #undef tUsingAlternateSlot
 
 // allocatedArray below needs to be large enough to hold stat totals for each mon, or totals of each type of move points
-#define ALLOC_ARRAY_SIZE (NUM_STATS * FRONTIER_PARTY_SIZE >= NUM_MOVE_POINT_TYPES ? (NUM_STATS * FRONTIER_PARTY_SIZE) :  NUM_MOVE_POINT_TYPES)
+#define ALLOC_ARRAY_SIZE (NUM_STATS * PARTY_SIZE >= NUM_MOVE_POINT_TYPES ? (NUM_STATS * PARTY_SIZE) :  NUM_MOVE_POINT_TYPES)
 
 static void DisplayTrainerInfoOnCard(u8 flags, u8 trainerTourneyId)
 {
@@ -4243,7 +4246,7 @@ static void DisplayTrainerInfoOnCard(u8 flags, u8 trainerTourneyId)
     trainerId = DOME_TRAINERS[trainerTourneyId].trainerId;
 
     if (flags & CARD_ALTERNATE_SLOT)
-        arrId = 2 * (FRONTIER_PARTY_SIZE + 1), windowId = 9, palSlot = 2;
+        arrId = 2 * (PARTY_SIZE + 1), windowId = 9, palSlot = 2;
     if (flags & MOVE_CARD_RIGHT)
         x = 256;
     if (flags & MOVE_CARD_DOWN)
@@ -4265,7 +4268,7 @@ static void DisplayTrainerInfoOnCard(u8 flags, u8 trainerTourneyId)
         gSprites[sInfoCard->spriteIds[arrId]].invisible = TRUE;
 
     // Create party mon icons
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         if (trainerId == TRAINER_PLAYER)
         {
@@ -4351,7 +4354,7 @@ static void DisplayTrainerInfoOnCard(u8 flags, u8 trainerTourneyId)
     textPrinter.letterSpacing = 0;
 
     // Print names of the party mons
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         textPrinter.currentY = sSpeciesNameTextYCoords[i];
         if (trainerId == TRAINER_PLAYER)
@@ -4389,7 +4392,7 @@ static void DisplayTrainerInfoOnCard(u8 flags, u8 trainerTourneyId)
     AddTextPrinter(&textPrinter, 0, NULL);
 
     // Calculate move scores to determine the trainers battle style
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         for (j = 0; j < MAX_MON_MOVES; j++)
         {
@@ -4437,7 +4440,7 @@ static void DisplayTrainerInfoOnCard(u8 flags, u8 trainerTourneyId)
     // Calculate EV/nature points for the stat portion of battle style
     if (trainerId == TRAINER_FRONTIER_BRAIN || trainerId == TRAINER_PLAYER)
     {
-        for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+        for (i = 0; i < PARTY_SIZE; i++)
         {
             // Add the EVs for this mon
             for (j = 0; j < NUM_STATS; j++)
@@ -4482,7 +4485,7 @@ static void DisplayTrainerInfoOnCard(u8 flags, u8 trainerTourneyId)
     // Same as above but for regular trainers instead of the frontier brain or player
     else
     {
-        for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+        for (i = 0; i < PARTY_SIZE; i++)
         {
             int evBits = gFacilityTrainerMons[DOME_MONS[trainerTourneyId][i]].evSpread;
             for (k = 0, j = 0; j < NUM_STATS; j++)
@@ -4703,7 +4706,7 @@ static void DisplayMatchInfoOnCard(u8 flags, u8 matchNo)
     u8 palSlot = 0;
 
     if (flags & CARD_ALTERNATE_SLOT)
-        arrId = 2 * (FRONTIER_PARTY_SIZE + 1), windowId = 9, palSlot = 2;
+        arrId = 2 * (PARTY_SIZE + 1), windowId = 9, palSlot = 2;
     if (flags & MOVE_CARD_RIGHT)
         x = 256;
     if (flags & MOVE_CARD_DOWN)
@@ -4753,7 +4756,7 @@ static void DisplayMatchInfoOnCard(u8 flags, u8 matchNo)
         gSprites[sInfoCard->spriteIds[1 + arrId]].oam.paletteNum = 3;
 
     // Draw left trainer's pokemon icons.
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         if (trainerIds[0] == TRAINER_PLAYER)
         {
@@ -4793,7 +4796,7 @@ static void DisplayMatchInfoOnCard(u8 flags, u8 matchNo)
     }
 
     // Draw right trainer's pokemon icons.
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         if (trainerIds[1] == TRAINER_PLAYER)
         {
@@ -5136,15 +5139,15 @@ static void ResolveDomeRoundWinners(void)
 static u16 GetWinningMove(int winnerTournamentId, int loserTournamentId, u8 roundId)
 {
     int i, j, k;
-    int moveScores[MAX_MON_MOVES * FRONTIER_PARTY_SIZE];
-    u16 moveIds[MAX_MON_MOVES * FRONTIER_PARTY_SIZE];
+    int moveScores[MAX_MON_MOVES * PARTY_SIZE];
+    u16 moveIds[MAX_MON_MOVES * PARTY_SIZE];
     u16 bestScore = 0;
     u16 bestId = 0;
     int movePower = 0;
     SetFacilityPtrsGetLevel();
 
     // Calc move points of all 4 moves for all 3 pokemon hitting all 3 target mons.
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         for (j = 0; j < MAX_MON_MOVES; j++)
         {
@@ -5164,7 +5167,7 @@ static u16 GetWinningMove(int winnerTournamentId, int loserTournamentId, u8 roun
                   || moveIds[i * MAX_MON_MOVES + j] == MOVE_EXPLOSION)
                 movePower /= 2;
 
-            for (k = 0; k < FRONTIER_PARTY_SIZE; k++)
+            for (k = 0; k < PARTY_SIZE; k++)
             {
                 u32 personality = 0;
                 u32 targetSpecies = 0;
@@ -5210,7 +5213,7 @@ static u16 GetWinningMove(int winnerTournamentId, int loserTournamentId, u8 roun
     goto LABEL;
     while (j != 0)
     {
-        for (j = 0, k = 0; k < MAX_MON_MOVES * FRONTIER_PARTY_SIZE; k++)
+        for (j = 0, k = 0; k < MAX_MON_MOVES * PARTY_SIZE; k++)
         {
             if (bestScore < moveScores[k])
             {
@@ -5237,7 +5240,7 @@ static u16 GetWinningMove(int winnerTournamentId, int loserTournamentId, u8 roun
             moveScores[j] = 0;
             bestScore = 0;
             j = 0;
-            for (k = 0; k < MAX_MON_MOVES * FRONTIER_PARTY_SIZE; k++)
+            for (k = 0; k < MAX_MON_MOVES * PARTY_SIZE; k++)
                 j += moveScores[k];
         }
     }
@@ -5701,7 +5704,7 @@ static void ResetSketchedMoves(void)
 {
     int i, moveSlot;
 
-    for (i = 0; i < DOME_BATTLE_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         int playerMonId = gSaveBlock2Ptr->frontier.selectedPartyMons[gSelectedOrderFromParty[i] - 1] - 1;
         int count;
@@ -5727,7 +5730,7 @@ static void RestoreDomePlayerPartyHeldItems(void)
 {
     int i;
 
-    for (i = 0; i < DOME_BATTLE_PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         int playerMonId = gSaveBlock2Ptr->frontier.selectedPartyMons[gSelectedOrderFromParty[i] - 1] - 1;
         u16 item = GetMonData(&gSaveBlock1Ptr->playerParty[playerMonId], MON_DATA_HELD_ITEM, NULL);
@@ -5767,7 +5770,7 @@ static void InitRandomTourneyTreeResults(void)
 {
     int i, j, k;
     int monLevel;
-    int species[FRONTIER_PARTY_SIZE];
+    int species[PARTY_SIZE];
     int monTypesBits;
     int trainerId;
     int monId;
@@ -5812,7 +5815,7 @@ static void InitRandomTourneyTreeResults(void)
         } while (j != i);
 
         DOME_TRAINERS[i].trainerId = trainerId;
-        for (j = 0; j < FRONTIER_PARTY_SIZE; j++)
+        for (j = 0; j < PARTY_SIZE; j++)
         {
             do
             {
@@ -5843,7 +5846,7 @@ static void InitRandomTourneyTreeResults(void)
         monTypesBits = 0;
         statSums[i] = 0;
         ivs = GetDomeTrainerMonIvs(DOME_TRAINERS[i].trainerId);
-        for (j = 0; j < FRONTIER_PARTY_SIZE; j++)
+        for (j = 0; j < PARTY_SIZE; j++)
         {
             CalcDomeMonStats(gFacilityTrainerMons[DOME_MONS[i][j]].species,
                              monLevel, ivs,
@@ -5969,11 +5972,11 @@ static void DecideRoundWinners(u8 roundId)
             // BUG: points1 and points2 are not cleared at the beginning of the loop resulting in not fair results.
 
             // Calculate points for both trainers.
-            for (monId1 = 0; monId1 < FRONTIER_PARTY_SIZE; monId1++)
+            for (monId1 = 0; monId1 < PARTY_SIZE; monId1++)
             {
                 for (moveSlot = 0; moveSlot < MAX_MON_MOVES; moveSlot++)
                 {
-                    for (monId2 = 0; monId2 < FRONTIER_PARTY_SIZE; monId2++)
+                    for (monId2 = 0; monId2 < PARTY_SIZE; monId2++)
                     {
                         points1 += GetTypeEffectivenessPoints(gFacilityTrainerMons[DOME_MONS[tournamentId1][monId1]].moves[moveSlot],
                                                 gFacilityTrainerMons[DOME_MONS[tournamentId2][monId2]].species, 2);
@@ -5992,11 +5995,11 @@ static void DecideRoundWinners(u8 roundId)
             // Favor trainers with higher id;
             points1 += tournamentId1;
 
-            for (monId1 = 0; monId1 < FRONTIER_PARTY_SIZE; monId1++)
+            for (monId1 = 0; monId1 < PARTY_SIZE; monId1++)
             {
                 for (moveSlot = 0; moveSlot < MAX_MON_MOVES; moveSlot++)
                 {
-                    for (monId2 = 0; monId2 < FRONTIER_PARTY_SIZE; monId2++)
+                    for (monId2 = 0; monId2 < PARTY_SIZE; monId2++)
                     {
                         points2 += GetTypeEffectivenessPoints(gFacilityTrainerMons[DOME_MONS[tournamentId2][monId1]].moves[moveSlot],
                                                 gFacilityTrainerMons[DOME_MONS[tournamentId1][monId2]].species, 2);

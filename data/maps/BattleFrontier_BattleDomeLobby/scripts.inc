@@ -60,7 +60,7 @@ BattleFrontier_BattleDomeLobby_EventScript_2498C9:: @ 82498C9
 	message BattleFrontier_BattleDomeLobby_Text_24A5D6
 	waitmessage
 	special LoadPlayerParty
-	frontier_setpartyorder FRONTIER_PARTY_SIZE
+	frontier_setpartyorder 6
 	frontier_checkairshow
 	dome_set DOME_DATA_ATTEMPTED_CHALLENGE     , 1
 	dome_set DOME_DATA_HAS_WON_CHALLENGE            , 1
@@ -75,7 +75,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249940:: @ 8249940
 	message BattleFrontier_BattleDomeLobby_Text_24A5D6
 	waitmessage
 	special LoadPlayerParty
-	frontier_setpartyorder FRONTIER_PARTY_SIZE
+	frontier_setpartyorder 6
 	frontier_checkairshow
 	dome_set DOME_DATA_WIN_STREAK_ACTIVE, FALSE
 	dome_set DOME_DATA_ATTEMPTED_CHALLENGE     , 1
@@ -169,7 +169,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249ABF:: @ 8249ABF
 	fadescreen FADE_TO_BLACK
 	call BattleFrontier_EventScript_GetLvlMode
 	copyvar VAR_0x8004, VAR_RESULT
-	setvar VAR_0x8005, FRONTIER_PARTY_SIZE
+	setvar VAR_0x8005, 6
 	special ChoosePartyForBattleFrontier
 	waitstate
 	compare VAR_RESULT, 0
@@ -196,7 +196,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249B60:: @ 8249B60
 	dome_inittrainers
 BattleFrontier_BattleDomeLobby_EventScript_249BC2:: @ 8249BC2
 	special SavePlayerParty
-	frontier_setpartyorder FRONTIER_PARTY_SIZE
+	frontier_setpartyorder 6
 	dome_settrainers
 	msgbox BattleFrontier_BattleDomeLobby_Text_24A437, MSGBOX_DEFAULT
 	closemessage
