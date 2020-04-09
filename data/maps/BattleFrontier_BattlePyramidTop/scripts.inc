@@ -250,7 +250,7 @@ BattleFrontier_BattlePyramidTop_Text_ChiefBeatYouHere: @ 825551F
 	.string "Our chief has already conquered\n"
 	.string "the PYRAMID ahead of you.\p"
 	.string "However, my young explorer…\n"
-	.string "You are a Trainer!\p"
+	.string "You are a TRAINER!\p"
 	.string "Assert your power and take the glory\n"
 	.string "of the pinnacle from our chief!\p"
 	.string "Now, please! When you are ready,\n"
@@ -262,7 +262,7 @@ BattleFrontier_BattlePyramidTop_Text_ExplorationsAreGrandestAdventure: @ 8255669
 	.string "are the grandest of adventures?\p"
 	.string "Your own wits!\p"
 	.string "Your own strength!\p"
-	.string "Your own Pokémon!\p"
+	.string "Your own POKéMON!\p"
 	.string "And, above all, only your own courage\n"
 	.string "to lead you through unknown worlds…$"
 

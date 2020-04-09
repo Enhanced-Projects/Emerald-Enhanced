@@ -5974,7 +5974,7 @@ BattleScript_DisguiseBustedActivates::
 	pause 0x5
 	copybyte gBattlerAbility, gBattlerTarget
 	call BattleScript_AbilityPopUp
-	printstring STRINGID_EMPTYSTRING3
+	printstring STRINGID_MIMIKYUDISGUISEBLOCKED
 	waitmessage 0x1
 	handleformchange BS_TARGET, 0
 	handleformchange BS_TARGET, 1

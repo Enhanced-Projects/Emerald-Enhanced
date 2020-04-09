@@ -11,7 +11,7 @@
             "elevation": 4,
             "script": "BattleFrontier_BattlePyramidTop_EventScript_BattleBrandon",
             "type": "trigger",
-            "var": "VAR_TEMP_9",
+            "var": "VAR_TEMP_2",
             "var_value": "1",
             "x": 17,
             "y": 9

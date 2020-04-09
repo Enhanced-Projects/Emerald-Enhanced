@@ -1,5 +1,5 @@
 Ryu_GiveItemScript::
-	giveitem VAR_TEMP_7
+	finditem VAR_TEMP_7
 	return
 
 Ryu_ItemGivenScript::

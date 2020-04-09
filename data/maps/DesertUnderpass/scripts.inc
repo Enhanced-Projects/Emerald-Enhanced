@@ -25,6 +25,12 @@ DesertUnderpass_EventScript_GiveRootFossil:: @ 823AF68
 	removeobject 1
 	release
 	end
+	
+DU_Tyranitarite::
+	finditem ITEM_TYRANITARITE
+	setflag FLAG_RYU_DU_TYRANITARITE
+	release
+	end
 
 @ Unused
 DesertUnderpass_Text_FoundRootFossil:: @ 823AF79

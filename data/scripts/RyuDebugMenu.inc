@@ -170,6 +170,7 @@ RyuDebug_enableWaystone::
 	setflag FLAG_RYU_LANDMARK_LCCDEPTSTORE
 	setflag FLAG_LANDMARK_ABANDONED_SHIP
 	setflag FLAG_LANDMARK_AQUA_OFFICE
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	return
 
 RyuDebug_ViewTempVars::
@@ -182,14 +183,10 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	buffernumberstring 0, VAR_RYU_EXP_MULTIPLIER
+	getplayerxy VAR_TEMP_9, VAR_TEMP_A
+	addvar VAR_TEMP_9, 1
+	setmetatile VAR_TEMP_9, VAR_TEMP_A, 0x28E, 0x0
 	special DrawWholeMapView
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGMAWILE
-	waitbuttonpress
-	special SwapPlayerGender
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
 	release
 	end
 

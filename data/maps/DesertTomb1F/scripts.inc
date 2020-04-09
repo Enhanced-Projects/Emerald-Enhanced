@@ -58,7 +58,7 @@ NM11_MaxRevive::@@
 NM11_MaxElixer::@@
 	lock
 	goto_if_set FLAG_RYU_NM8_MAXELIX, Ryu_ItemGivenScript
-	setvar VAR_TEMP_7, ITEM_MAX_ELIXIR
+	setvar VAR_TEMP_7, ITEM_SCIZORITE
 	call Ryu_GiveItemScript
 	setflag FLAG_RYU_NM8_MAXELIX
 	releaseall
