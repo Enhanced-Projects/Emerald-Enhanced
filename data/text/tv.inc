@@ -121,7 +121,7 @@ BattleFrontier_BattleTowerLobby_Text_HowDidBattleTowerTurnOut:: @ 0827F7BA
 	.string "Thank you!\l"
 	.string "Then, uh…\p"
 	.string "How did things turn out in\n"
-	.string "the BATTLE TOWER today?\p"
+	.string "the Battle Tower today?\p"
 	.string "Were you satisfied with the battle?\n"
 	.string "Or are you unhappy?$"
 
@@ -129,7 +129,7 @@ BattleFrontier_BattleTowerLobby_Text_SorryWeDisturbedYou:: @ 0827F84C
 	.string "Oh…\n"
 	.string "Sorry we disturbed you.\p"
 	.string "Please give us an interview the next\n"
-	.string "time you visit the BATTLE TOWER.$"
+	.string "time you visit the Battle Tower.$"
 
 BattleFrontier_BattleTowerLobby_Text_ObviousYouHadGreatBattle:: @ 0827F8AE
 	.string "Well, of course!\p"
@@ -170,7 +170,7 @@ gTVBravoTrainerBattleTowerText00:: @ 0827FB20
 	.string "Yeah!\n"
 	.string "It's BRAVO TRAINER time!\p"
 	.string "Today, we're going to profile {STR_VAR_1},\n"
-	.string "who took the BATTLE TOWER challenge!\p"
+	.string "who took the Battle Tower challenge!\p"
 	.string "For the challenge, {STR_VAR_1} entered\n"
 	.string "one wicked {STR_VAR_2}.$"
 
@@ -1209,17 +1209,17 @@ gTVTodaysRivalTrainerText02:: @ 0828489A
 
 gTVTodaysRivalTrainerText03:: @ 082848CC
 	.string "Our rival hasn't obtained a single\n"
-	.string "BATTLE FRONTIER Symbol yet.$"
+	.string "Battle Frontier Symbol yet.$"
 
 gTVTodaysRivalTrainerText04:: @ 0828490B
-	.string "Let's see how many BATTLE FRONTIER\n"
+	.string "Let's see how many Battle Frontier\n"
 	.string "Symbols our rival has.\p"
 	.string "Gold Symbols: {STR_VAR_1}!\n"
 	.string "Silver Symbols: {STR_VAR_2}!$"
 
 gTVTodaysRivalTrainerText05:: @ 0828496B
 	.string "Our rival has collected {STR_VAR_1} Battle\n"
-	.string "Point(s) at the BATTLE FRONTIER.$"
+	.string "Point(s) at the Battle Frontier.$"
 
 gTVTodaysRivalTrainerText06:: @ 082849AE
 	.string "So, how did you measure up in\n"
@@ -1834,7 +1834,7 @@ gTVCutiesText11:: @ 08287442
 	.string "The WINNING RIBBON is especially\n"
 	.string "fetching.\p"
 	.string "{STR_VAR_2} received it for its feats\n"
-	.string "at the BATTLE TOWER.\p"
+	.string "at the Battle Tower.\p"
 	.string "It verily draws out the mightiness\n"
 	.string "of {STR_VAR_2}.\p"
 	.string "{STR_VAR_2} and the WINNING RIBBON!\n"
@@ -1844,7 +1844,7 @@ gTVCutiesText12:: @ 08287508
 	.string "The VICTORY RIBBON is especially\n"
 	.string "fetching.\p"
 	.string "{STR_VAR_2} received it for its feats\n"
-	.string "at the BATTLE TOWER.\p"
+	.string "at the Battle Tower.\p"
 	.string "It verily draws out the incredible\n"
 	.string "mightiness of {STR_VAR_2}.\p"
 	.string "{STR_VAR_2} and the VICTORY RIBBON!\n"
@@ -1881,96 +1881,96 @@ gTVPokemonNewsBattleFrontierText00:: @ 082877DE
 	.string "Greetings!\n"
 	.string "It's time for Pokémon NEWS.\p"
 	.string "We've got some uplifting news from\n"
-	.string "the BATTLE FRONTIER.$"
+	.string "the Battle Frontier.$"
 
 gTVPokemonNewsBattleFrontierText01:: @ 0828783D
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "{STR_VAR_2}-win-streak record while on\l"
-	.string "the BATTLE TOWER's SINGLE BATTLE\l"
+	.string "the Battle Tower's Single Battle\l"
 	.string "ROOM challenge.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText02:: @ 082878B3
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "{STR_VAR_2}-win-streak record while on\l"
-	.string "the BATTLE TOWER's DOUBLE BATTLE\l"
+	.string "the Battle Tower's Double Battle\l"
 	.string "ROOM challenge.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText03:: @ 08287929
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "{STR_VAR_2}-win-streak record while on\l"
-	.string "the BATTLE TOWER's MULTI BATTLE\l"
+	.string "the Battle Tower's MULTI BATTLE\l"
 	.string "ROOM challenge.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText04:: @ 0828799E
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "{STR_VAR_2}-win-streak record while on\l"
-	.string "the BATTLE TOWER's LINK MULTI BATTLE\l"
+	.string "the Battle Tower's LINK MULTI BATTLE\l"
 	.string "ROOM challenge.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText05:: @ 08287A18
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "{STR_VAR_2}-championship-streak record\l"
-	.string "competing in the BATTLE DOME's\l"
-	.string "SINGLE BATTLE Tournaments.\p"
+	.string "competing in the Battle Dome's\l"
+	.string "Single Battle Tournaments.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText06:: @ 08287A97
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "{STR_VAR_2}-championship-streak record\l"
-	.string "competing in the BATTLE DOME's\l"
-	.string "DOUBLE BATTLE Tournaments.\p"
+	.string "competing in the Battle Dome's\l"
+	.string "Double Battle Tournaments.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText07:: @ 08287B16
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "{STR_VAR_2}-win-streak record while on\l"
-	.string "the BATTLE FACTORY's Battle\l"
+	.string "the Battle Factory's Battle\l"
 	.string "Swap Single challenge.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText08:: @ 08287B8E
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "{STR_VAR_2}-win-streak record while on\l"
-	.string "the BATTLE FACTORY's Battle\l"
+	.string "the Battle Factory's Battle\l"
 	.string "Swap Double challenge.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText09:: @ 08287C06
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "record of clearing {STR_VAR_2} rooms\l"
-	.string "while on the BATTLE PIKE's Battle\l"
+	.string "while on the Battle Pike's Battle\l"
 	.string "Choice challenge.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText10:: @ 08287C7D
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "{STR_VAR_2}-win-streak record while\l"
-	.string "competing in the BATTLE ARENA's\l"
+	.string "competing in the Battle Arena's\l"
 	.string "Set KO Tournaments.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText11:: @ 08287CF3
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "{STR_VAR_2}-win-streak record while on\l"
-	.string "the BATTLE PALACE's SINGLE BATTLE\l"
+	.string "the Battle Palace's Single Battle\l"
 	.string "HALL challenge.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText12:: @ 08287D6A
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "{STR_VAR_2}-win-streak record while on\l"
-	.string "the BATTLE PALACE's DOUBLE BATTLE\l"
+	.string "the Battle Palace's Double Battle\l"
 	.string "HALL challenge.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText13:: @ 08287DE1
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "record of clearing {STR_VAR_2} floors\l"
-	.string "while on the BATTLE PYRAMID's\l"
+	.string "while on the Battle Pyramid's\l"
 	.string "Battle Quest challenge.\p"
 	.string "Here's to {STR_VAR_1}!$"
 

@@ -1807,9 +1807,10 @@ static void Cmd_datahpupdate(void)
         {
             gBattleMons[gActiveBattler].species = SPECIES_MIMIKYU_BUSTED;
             gBattleMons[gActiveBattler].hp -= (gBattleMons[gActiveBattler].maxHP / 8);
-            gHitMarker &= ~(HITMARKER_x100000);
+            //gHitMarker &= ~(HITMARKER_x100000);
             BtlController_EmitSetMonData(0, REQUEST_HP_BATTLE, 0, 2, &gBattleMons[gActiveBattler].hp);
-            MarkBattlerForControllerExec(gActiveBattler);
+            //MarkBattlerForControllerExec(gActiveBattler);
+            PrepareStringBattle(STRINGID_MIMIKYUDISGUISEBLOCKED, gBattlerTarget);
             BattleScriptPush(gBattlescriptCurrInstr + 2);
             gBattlescriptCurrInstr = BattleScript_DisguiseBustedActivates;
         }
@@ -5714,7 +5715,7 @@ static void Cmd_switchineffects(void)
     else
     {
         // There is a hack here to ensure the truant counter will be 0 when the battler's next turn starts.
-        // The truant counter is not updated in the case where a mon switches in after a lost judgement in the battle arena.
+        // The truant counter is not updated in the case where a mon switches in after a lost judgement in the Battle Arena.
         if (gBattleMons[gActiveBattler].ability == ABILITY_TRUANT
             && gCurrentActionFuncId != B_ACTION_USE_MOVE
             && !gDisableStructs[gActiveBattler].truantSwitchInHack)

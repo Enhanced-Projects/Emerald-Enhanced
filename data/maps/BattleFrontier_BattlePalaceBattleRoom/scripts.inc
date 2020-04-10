@@ -502,7 +502,7 @@ BattleFrontier_BattlePalaceBattleRoom_Text_SavingData: @ 825007E
 
 BattleFrontier_BattlePalaceBattleRoom_Text_RecordLastMatch: @ 825009E
 	.string "Do you wish to record your latest\n"
-	.string "match on your FRONTIER PASS?$"
+	.string "match on your Frontier Pass?$"
 
 BattleFrontier_BattlePalaceBattleRoom_Text_ChallengingPalaceMaven: @ 82500DD
 	.string "And now…\p"
@@ -545,11 +545,11 @@ BattleFrontier_BattlePalaceBattleRoom_Text_LetsSeeFrontierPass: @ 825036D
 	.string "My, my, if only you could maintain that\n"
 	.string "facade of distinguished authority…\p"
 	.string "Here!\n"
-	.string "Let's see your FRONTIER PASS!$"
+	.string "Let's see your Frontier Pass!$"
 
 BattleFrontier_BattlePalaceBattleRoom_Text_ReceivedSpiritsSymbol: @ 82503DC
 	.string "The Spirits Symbol was embossed on\n"
-	.string "the FRONTIER PASS!$"
+	.string "the Frontier Pass!$"
 
 BattleFrontier_BattlePalaceBattleRoom_Text_SpenserAwaitNextTime: @ 8250412
 	.string "SPENSER: Your Pokémon's eyes are \n"
@@ -583,7 +583,7 @@ BattleFrontier_BattlePalaceBattleRoom_Text_HurryWithFrontierPass: @ 8250629
 	.string "My, my, if only you could maintain\n"
 	.string "a certain level of decorum…\p"
 	.string "Gaaah, here!\n"
-	.string "Hurry with that FRONTIER PASS, you!$"
+	.string "Hurry with that Frontier Pass, you!$"
 
 BattleFrontier_BattlePalaceBattleRoom_Text_SpiritsSymbolTookGoldenShine: @ 8250699
 	.string "The Spirits Symbol took on\n"

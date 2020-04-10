@@ -360,19 +360,19 @@ BattleFrontier_BattleArenaLobby_EventScript_ExitRules:: @ 8256164
 BattleFrontier_BattleArenaLobby_Text_WelcomeToBattleArena: @ 8256166
 	.string "Where the battling spirit of Trainers\n"
 	.string "is put to the test!\p"
-	.string "I welcome you to the BATTLE ARENA!\p"
+	.string "I welcome you to the Battle Arena!\p"
 	.string "I am your guide to the Set KO Tourney!$"
 
 BattleFrontier_BattleArenaLobby_Text_WishToTakeChallenge: @ 82561EA
 	.string "Now, do you wish to take\n"
-	.string "the BATTLE ARENA challenge?$"
+	.string "the Battle Arena challenge?$"
 
 BattleFrontier_BattleArenaLobby_Text_AwaitAnotherChallenge: @ 825621F
 	.string "We await your challenge on\n"
 	.string "another occasion!$"
 
 BattleFrontier_BattleArenaLobby_Text_ExplainChallenge: @ 825624C
-	.string "In the BATTLE ARENA, we undertake\n"
+	.string "In the Battle Arena, we undertake\n"
 	.string "the Set KO Tourney.\p"
 	.string "All participants enter with a team of\n"
 	.string "three Pokémon.\p"
@@ -397,7 +397,7 @@ BattleFrontier_BattleArenaLobby_Text_OkayToSave: @ 82564CE
 	.string "ARENA, you must save. Is that okay?$"
 
 BattleFrontier_BattleArenaLobby_Text_WhichLevelMode: @ 8256513
-	.string "The BATTLE ARENA offers two levels\n"
+	.string "The Battle Arena offers two levels\n"
 	.string "of challenge, Level 50 and Open Level.\l"
 	.string "Which is your choice?$"
 
@@ -433,7 +433,7 @@ BattleFrontier_BattleArenaLobby_Text_NotEnoughValidMonsLv50: @ 82566A8
 
 BattleFrontier_BattleArenaLobby_Text_GuideYouToArena: @ 82567E6
 	.string "I shall now guide you to\n"
-	.string "the BATTLE ARENA.$"
+	.string "the Battle Arena.$"
 
 BattleFrontier_BattleArenaLobby_Text_DidntSaveBeforeShuttingDown: @ 8256811
 	.string "My dear challenger!\p"
@@ -486,8 +486,8 @@ BattleFrontier_BattleArenaLobby_Text_LookingForwardToArrivalSaveGame: @ 8256AA1
 	.string "Please wait.$"
 
 BattleFrontier_BattleArenaLobby_Text_RecordLastMatch: @ 8256B19
-	.string "Shall I record your last BATTLE ARENA\n"
-	.string "match on your FRONTIER PASS?$"
+	.string "Shall I record your last Battle Arena\n"
+	.string "match on your Frontier Pass?$"
 
 BattleFrontier_BattleArenaLobby_Text_BadIdeaToNotAttack: @ 8256B5C
 	.string "I lost on the REFEREE's decision…\p"
@@ -506,7 +506,7 @@ BattleFrontier_BattleArenaLobby_Text_MatchWasDeclaredDraw: @ 8256C19
 	.string "the same amount of HP left.$"
 
 BattleFrontier_BattleArenaLobby_Text_OrderOfMonsImportant: @ 8256C9A
-	.string "In the BATTLE ARENA, the order of\n"
+	.string "In the Battle Arena, the order of\n"
 	.string "Pokémon is totally important.\p"
 	.string "For example, if your first Pokémon\n"
 	.string "has certain type disadvantages,\l"

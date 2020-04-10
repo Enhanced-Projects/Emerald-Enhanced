@@ -301,22 +301,22 @@ BattleFrontier_ReceptionGate_Text_FirstTimeHereThisWay: @ 8266580
 
 BattleFrontier_ReceptionGate_Text_WelcomeToBattleFrontier: @ 82665B2
 	.string "The front lines of Pokémon battling!\n"
-	.string "Welcome to the BATTLE FRONTIER!$"
+	.string "Welcome to the Battle Frontier!$"
 
 BattleFrontier_ReceptionGate_Text_IssueFrontierPass: @ 82665F7
 	.string "For a first-time visitor, we issue\n"
-	.string "the FRONTIER PASS.\p"
+	.string "the Frontier Pass.\p"
 	.string "It's for use at all the facilities\n"
-	.string "in the BATTLE FRONTIER.\p"
+	.string "in the Battle Frontier.\p"
 	.string "Here you are!$"
 
 BattleFrontier_ReceptionGate_Text_ObtainedFrontierPass: @ 8266676
 	.string "{PLAYER} obtained\n"
-	.string "the FRONTIER PASS.$"
+	.string "the Frontier Pass.$"
 
 BattleFrontier_ReceptionGate_Text_PlacedTrainerCardInFrontierPass: @ 8266695
 	.string "{PLAYER} placed the Trainer Card\n"
-	.string "in the FRONTIER PASS.$"
+	.string "in the Frontier Pass.$"
 
 BattleFrontier_ReceptionGate_Text_EnjoyBattleFrontier: @ 82666C6
 	.string "We hope you enjoy all that the BATTLE\n"
@@ -342,20 +342,20 @@ BattleFrontier_ReceptionGate_Text_ScottGreatToSeeYouHere: @ 8266764
 
 BattleFrontier_ReceptionGate_Text_YourGuideToFacilities: @ 8266857
 	.string "I'm your guide to the various facilities\n"
-	.string "here in the BATTLE FRONTIER.$"
+	.string "here in the Battle Frontier.$"
 
 BattleFrontier_ReceptionGate_Text_LearnAboutWhich2: @ 826689D
 	.string "Which would you like to learn about?$"
 
 BattleFrontier_ReceptionGate_Text_BattleTowerInfo: @ 82668C2
 	.string "It is the gigantic tower considered\n"
-	.string "to be the BATTLE FRONTIER's symbol.\p"
+	.string "to be the Battle Frontier's symbol.\p"
 	.string "There are four kinds of BATTLE ROOMS\n"
 	.string "in the tower for SINGLE, DOUBLE, MULTI,\l"
 	.string "and LINK MULTI BATTLES.$"
 
 BattleFrontier_ReceptionGate_Text_BattleDomeInfo: @ 826696F
-	.string "The BATTLE DOME is the large building\n"
+	.string "The Battle Dome is the large building\n"
 	.string "shaped like a huge egg.\p"
 	.string "Events named Battle Tourneys are held\n"
 	.string "in this facility.\p"
@@ -364,20 +364,20 @@ BattleFrontier_ReceptionGate_Text_BattleDomeInfo: @ 826696F
 	.string "BATTLES.$"
 
 BattleFrontier_ReceptionGate_Text_BattlePalaceInfo: @ 8266A34
-	.string "The BATTLE PALACE is the red building\n"
-	.string "on the right of the BATTLE FRONTIER.\p"
+	.string "The Battle Palace is the red building\n"
+	.string "on the right of the Battle Frontier.\p"
 	.string "There are two kinds of BATTLE HALLS\n"
-	.string "for SINGLE and DOUBLE BATTLES.$"
+	.string "for SINGLE and Double BattleS.$"
 
 BattleFrontier_ReceptionGate_Text_BattleArenaInfo: @ 8266AC2
-	.string "The BATTLE ARENA is the dojo-like\n"
+	.string "The Battle Arena is the dojo-like\n"
 	.string "building at the center-right of\l"
-	.string "the BATTLE FRONTIER.\p"
+	.string "the Battle Frontier.\p"
 	.string "An event called the Set KO Tourney\n"
-	.string "takes place at the BATTLE ARENA.$"
+	.string "takes place at the Battle Arena.$"
 
 BattleFrontier_ReceptionGate_Text_BattleFactoryInfo: @ 8266B5D
-	.string "The BATTLE FACTORY is the large\n"
+	.string "The Battle Factory is the large\n"
 	.string "building that is the closest to us.\p"
 	.string "An event called the Battle Swap\n"
 	.string "is conducted there.\p"
@@ -386,31 +386,31 @@ BattleFrontier_ReceptionGate_Text_BattleFactoryInfo: @ 8266B5D
 	.string "BATTLES.$"
 
 BattleFrontier_ReceptionGate_Text_BattlePikeInfo: @ 8266C24
-	.string "The BATTLE PIKE is the building shaped\n"
+	.string "The Battle Pike is the building shaped\n"
 	.string "like a Pokémon at the center-left of\l"
-	.string "the BATTLE FRONTIER.\p"
+	.string "the Battle Frontier.\p"
 	.string "An event called the Battle Choice\n"
 	.string "is conducted there.$"
 
 BattleFrontier_ReceptionGate_Text_BattlePyramidInfo: @ 8266CBB
-	.string "The BATTLE PYRAMID is the enormous\n"
+	.string "The Battle Pyramid is the enormous\n"
 	.string "pyramid.\p"
 	.string "An event called the Battle Quest\n"
 	.string "is conducted there.$"
 
 BattleFrontier_ReceptionGate_Text_RankingHallInfo: @ 8266D1C
 	.string "The RANKING HALL is located near\n"
-	.string "the BATTLE TOWER.\p"
+	.string "the Battle Tower.\p"
 	.string "There, you may see the most fantastic\n"
 	.string "records left by the Trainers that\l"
 	.string "took on the many challenges of\l"
-	.string "the BATTLE FRONTIER.$"
+	.string "the Battle Frontier.$"
 
 BattleFrontier_ReceptionGate_Text_ExchangeCornerInfo: @ 8266DCB
 	.string "The EXCHANGE SERVICE CORNER is near\n"
-	.string "the BATTLE TOWER.\p"
+	.string "the Battle Tower.\p"
 	.string "The Battle Points you have earned in\n"
-	.string "the BATTLE FRONTIER may be exchanged\l"
+	.string "the Battle Frontier may be exchanged\l"
 	.string "for fabulous prizes there.$"
 
 BattleFrontier_ReceptionGate_Text_YourGuideToRules: @ 8266E66
@@ -434,7 +434,7 @@ BattleFrontier_ReceptionGate_Text_Level50Info: @ 8266F69
 	.string "no Trainer you face will have any\l"
 	.string "Pokémon below Level 50.\p"
 	.string "This course is the entry level for\n"
-	.string "battles at the BATTLE FRONTIER.\p"
+	.string "battles at the Battle Frontier.\p"
 	.string "To begin, we hope you will challenge\n"
 	.string "this course.$"
 
@@ -468,14 +468,14 @@ BattleFrontier_ReceptionGate_Text_HoldItemsInfo: @ 8267298
 	.string "different items.$"
 
 BattleFrontier_ReceptionGate_Text_YourGuideToFrontierPass: @ 8267357
-	.string "I'm your guide to the FRONTIER PASS.$"
+	.string "I'm your guide to the Frontier Pass.$"
 
 BattleFrontier_ReceptionGate_Text_LearnAboutWhich1: @ 826737C
 	.string "Which would you like to learn about?$"
 
 BattleFrontier_ReceptionGate_Text_SymbolsInfo: @ 82673A1
 	.string "There are seven facilities at\n"
-	.string "the BATTLE FRONTIER.\p"
+	.string "the Battle Frontier.\p"
 	.string "Trainers who gain recognition for\n"
 	.string "their abilities may be rewarded with\l"
 	.string "symbols from each of the facilities.\p"
@@ -487,20 +487,20 @@ BattleFrontier_ReceptionGate_Text_SymbolsInfo: @ 82673A1
 
 BattleFrontier_ReceptionGate_Text_RecordedBattleInfo: @ 82674F3
 	.string "It is possible to record one battle\n"
-	.string "on your FRONTIER PASS.\p"
+	.string "on your Frontier Pass.\p"
 	.string "You may record a battle you had with\n"
 	.string "a friend or friends.\p"
 	.string "Or you may record a battle conducted\n"
-	.string "at the BATTLE FRONTIER excluding\l"
-	.string "matches at the BATTLE PIKE or\l"
-	.string "the BATTLE PYRAMID.\p"
+	.string "at the Battle Frontier excluding\l"
+	.string "matches at the Battle Pike or\l"
+	.string "the Battle Pyramid.\p"
 	.string "You may choose to record your match\n"
 	.string "at the end of a battle.$"
 
 BattleFrontier_ReceptionGate_Text_BattlePointsInfo: @ 826761C
 	.string "Battle Points are rewards given to\n"
 	.string "Trainers who battled outstandingly\l"
-	.string "at the BATTLE FRONTIER.\p"
+	.string "at the Battle Frontier.\p"
 	.string "You may trade in your Battle Points\n"
 	.string "for prizes at the EXCHANGE SERVICE\l"
 	.string "CORNER.$"

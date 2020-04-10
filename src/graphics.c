@@ -1064,7 +1064,7 @@ const u16 gTilesetAnims_BattleDomePals0_3[] = INCBIN_U16("graphics/battle_fronti
 // 8D856C0
 asm(".2byte 0x013F, 0x0119, 0x0113, 0x010E"); // unused?
 
-const u16 gUnknown_08D856C8[] = INCBIN_U16("graphics/battle_frontier/pyramid_light.gbapal"); // unfaded pal for the player light in battle pyramid
+const u16 gUnknown_08D856C8[] = INCBIN_U16("graphics/battle_frontier/pyramid_light.gbapal"); // unfaded pal for the player light in Battle Pyramid
 
 const u32 gUnknown_08D857A8[] = INCBIN_U32("graphics/battle_frontier/battle_tilemap1.bin.lz");
 const u32 gUnknown_08D85A1C[] = INCBIN_U32("graphics/battle_frontier/battle_tilemap2.bin.lz");

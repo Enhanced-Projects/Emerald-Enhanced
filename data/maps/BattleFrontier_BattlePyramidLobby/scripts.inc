@@ -534,7 +534,7 @@ BattleFrontier_BattlePyramidLobby_EventScript_ExitRules:: @ 8250F2F
 BattleFrontier_BattlePyramidLobby_Text_WelcomeToBattlePyramid: @ 8250F31
 	.string "Where the courage of TRAINERS\n"
 	.string "is put to the test!\p"
-	.string "Welcome to the BATTLE PYRAMID!\p"
+	.string "Welcome to the Battle Pyramid!\p"
 	.string "I am your guide to\n"
 	.string "the Battle Quest.$"
 
@@ -596,12 +596,12 @@ BattleFrontier_BattlePyramidLobby_Text_NotEnoughValidMonsLv50: @ 82513C1
 	.string "a word with me.$"
 
 BattleFrontier_BattlePyramidLobby_Text_OkayToSaveBeforeChallenge: @ 82514E6
-	.string "Before you enter the BATTLE PYRAMID,\n"
+	.string "Before you enter the Battle Pyramid,\n"
 	.string "the game must be saved. Is that okay?$"
 
 BattleFrontier_BattlePyramidLobby_Text_ShowYouIntoPyramid: @ 8251531
 	.string "Very good. I will now show you into\n"
-	.string "the BATTLE PYRAMID.$"
+	.string "the Battle Pyramid.$"
 
 BattleFrontier_BattlePyramidLobby_Text_WeWillHoldBagForSafekeeping: @ 8251569
 	.string "We will hold your BAG for safekeeping,\n"
@@ -684,7 +684,7 @@ BattleFrontier_BattlePyramidLobby_Text_RecordResultsWait: @ 8251A77
 @ Unused
 BattleFrontier_BattlePyramidLobby_Text_ForConqueringPyramidTakeThis: @ 8251AA0
 	.string "As a memento for conquering\n"
-	.string "the BATTLE PYRAMID, please take this.$"
+	.string "the Battle Pyramid, please take this.$"
 
 @ Unused
 BattleFrontier_BattlePyramidLobby_Text_ReceivedPrizeItem: @ 8251AE2
@@ -861,7 +861,7 @@ BattleFrontier_BattlePyramidLobby_Text_YouveDefeatedPyramidKing: @ 82525F4
 	.string "Welcome back!\n"
 	.string "You've done the unthinkable!\p"
 	.string "You've defeated the PYRAMID KING\n"
-	.string "and conquered the BATTLE PYRAMID!$"
+	.string "and conquered the Battle Pyramid!$"
 
 BattleFrontier_BattlePyramidLobby_Text_GiveYouTheseBattlePoints: @ 8252662
 	.string "Young explorer!\n"

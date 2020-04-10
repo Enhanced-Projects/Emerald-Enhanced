@@ -425,7 +425,7 @@ SlateportCity_Harbor_Text_LilycoveItIs: @ 820CF93
 	.string "LILYCOVE CITY it is, then!$"
 
 SlateportCity_Harbor_Text_BattleFrontierItIs: @ 820CFAE
-	.string "BATTLE FRONTIER it is, then!$"
+	.string "Battle Frontier it is, then!$"
 
 SlateportCity_Harbor_Text_PleaseBoardFerry: @ 820CFCB
 	.string "Please board the ferry and wait for\n"

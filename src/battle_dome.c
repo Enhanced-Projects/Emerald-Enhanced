@@ -5702,28 +5702,28 @@ static void SetFacilityTrainerAndMonPtrs(void)
 
 static void ResetSketchedMoves(void)
 {
-    int i, moveSlot;
-
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        int playerMonId = gSaveBlock2Ptr->frontier.selectedPartyMons[gSelectedOrderFromParty[i] - 1] - 1;
-        int count;
-
-        for (moveSlot = 0; moveSlot < MAX_MON_MOVES; moveSlot++)
-        {
-            count = 0;
-            while (count < MAX_MON_MOVES)
-            {
-                if (GetMonData(&gSaveBlock1Ptr->playerParty[playerMonId], MON_DATA_MOVE1 + count, NULL) == GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + moveSlot, NULL))
-                    break;
-                count++;
-            }
-            if (count == MAX_MON_MOVES)
-                SetMonMoveSlot(&gPlayerParty[i], MOVE_SKETCH, moveSlot);
-        }
-
-        gSaveBlock1Ptr->playerParty[playerMonId] = gPlayerParty[i];
-    }
+    //int i, moveSlot;
+    //
+    //for (i = 0; i < PARTY_SIZE; i++)
+    //{
+    //    int playerMonId = gSaveBlock2Ptr->frontier.selectedPartyMons[gSelectedOrderFromParty[i] - 1] - 1;
+    //    int count;
+    //
+    //    for (moveSlot = 0; moveSlot < MAX_MON_MOVES; moveSlot++)
+    //    {
+    //        count = 0;
+    //        while (count < MAX_MON_MOVES)
+    //        {
+    //            if (GetMonData(&gSaveBlock1Ptr->playerParty[playerMonId], MON_DATA_MOVE1 + count, NULL) == GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + moveSlot, NULL))
+    //                break;
+    //            count++;
+    //        }
+    //        if (count == MAX_MON_MOVES)
+    //            SetMonMoveSlot(&gPlayerParty[i], MOVE_SKETCH, moveSlot);
+    //    }
+    //
+    //    gSaveBlock1Ptr->playerParty[playerMonId] = gPlayerParty[i];
+    //}
 }
 
 static void RestoreDomePlayerPartyHeldItems(void)

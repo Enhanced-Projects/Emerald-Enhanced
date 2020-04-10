@@ -183,12 +183,34 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	getplayerxy VAR_TEMP_9, VAR_TEMP_A
-	addvar VAR_TEMP_9, 1
-	setmetatile VAR_TEMP_9, VAR_TEMP_A, 0x28E, 0x0
-	special DrawWholeMapView
+	playse SE_PIN
+	waitse
+	setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
+	setvar VAR_TEMP_5, 6
+	goto RDB_GiveRandomFrontierMons
+
+RDB_GiveRandomFrontierMons::
+	compare VAR_TEMP_5, 0
+	goto_if_eq GiveRandomFrontiermonsEnd
+	subvar VAR_TEMP_5, 1
+	goto RDB_GiveRandomFrontierMonsLoop
+
+RDB_GiveRandomFrontierMonsLoop::
+	random 199
+	addvar VAR_RESULT, 601
+	copyvar VAR_TEMP_6, VAR_RESULT 
+	special RyuGiveFrontierMon
+	goto RDB_GiveRandomFrontierMons
+
+GiveRandomFrontiermonsEnd::
+	msgbox RDB_GRFMD
+	clearflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
+	closemessage
 	release
 	end
+
+RDB_GRFMD:
+	.string "Given 6 random frontier mons.$"
 
 genderswap:
 	.string "Your gender will be swapped for\nthe purpose of sprite testing.$"

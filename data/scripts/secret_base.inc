@@ -789,7 +789,7 @@ SecretBase_Text_RegistryInfo: @ 8276835
 
 SecretBase_Text_BattleTowerShield: @ 827692B
 	.string "A shield of {STR_VAR_2} that marks winning\n"
-	.string "{STR_VAR_1} times in a row at the BATTLE TOWER.$"
+	.string "{STR_VAR_1} times in a row at the Battle Tower.$"
 
 SecretBase_Text_ToyTV: @ 8276974
 	.string "A realistic toy TV. It could be easily\n"

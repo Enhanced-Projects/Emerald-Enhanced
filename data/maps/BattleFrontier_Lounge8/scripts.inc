@@ -32,10 +32,10 @@ BattleFrontier_Lounge8_Text_KnowAboutFrontierBrains: @ 826779C
 	.string "BRAINS?\p"
 	.string "That's what SCOTT calls the seven\n"
 	.string "special Trainers that run the seven\l"
-	.string "facilities in the BATTLE FRONTIER.$"
+	.string "facilities in the Battle Frontier.$"
 
 BattleFrontier_Lounge8_Text_ToldMeIHaveTalentForBattling: @ 826782C
-	.string "At the BATTLE TOWER, an older girl\n"
+	.string "At the Battle Tower, an older girl\n"
 	.string "told me that I have a lot of talent\l"
 	.string "for battling!\p"
 	.string "I like Pokémon Contests more!\p"

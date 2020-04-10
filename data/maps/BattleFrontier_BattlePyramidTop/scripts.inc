@@ -231,7 +231,7 @@ BattleFrontier_BattlePyramidTop_Movement_CameraPanUp: @ 825540C
 BattleFrontier_BattlePyramidTop_Text_ReachedSummitUpYouGo: @ 8255410
 	.string "It is a delight to see you here!\n"
 	.string "You have reached the summit of\l"
-	.string "the BATTLE PYRAMID!\p"
+	.string "the Battle Pyramid!\p"
 	.string "Above here is the PYRAMID's\n"
 	.string "lookout point.\p"
 	.string "It is a place open only to those\n"
@@ -287,11 +287,11 @@ BattleFrontier_BattlePyramidTop_Text_BrandonFrontierPassPlease: @ 8255873
 	.string "BRANDON: Hahahah! Grand it was!\n"
 	.string "Grand, yes, indeed!\p"
 	.string "Well done! You've earned recognition!\n"
-	.string "Your FRONTIER PASS, please!$"
+	.string "Your Frontier Pass, please!$"
 
 BattleFrontier_BattlePyramidTop_Text_ReceivedBraveSymbol: @ 82558E9
 	.string "The Brave Symbol was embossed on\n"
-	.string "the FRONTIER PASS!$"
+	.string "the Frontier Pass!$"
 
 BattleFrontier_BattlePyramidTop_Text_LookForwardToNextMeeting: @ 825591D
 	.string "Young explorer!\n"

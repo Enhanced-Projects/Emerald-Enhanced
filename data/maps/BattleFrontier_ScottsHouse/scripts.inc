@@ -230,7 +230,7 @@ BattleFrontier_ScottsHouse_Text_WelcomeToBattleFrontier: @ 8263A3F
 	.string "SCOTT: Well, hello and welcome!\n"
 	.string "Heheh… Sorry about the cramped space.\p"
 	.string "Anyway, {PLAYER}, let me formally\n"
-	.string "welcome you to the BATTLE FRONTIER.\p"
+	.string "welcome you to the Battle Frontier.\p"
 	.string "This is my dream come true.\n"
 	.string "It took me years and years, but I've\l"
 	.string "finally given shape to my dream.$"
@@ -258,9 +258,9 @@ BattleFrontier_ScottsHouse_Text_ObtainedXBattlePoints: @ 8263CB0
 
 BattleFrontier_ScottsHouse_Text_ExplainBattlePoints: @ 8263CD0
 	.string "SCOTT: You can check your Battle\n"
-	.string "Points on your FRONTIER PASS.\p"
+	.string "Points on your Frontier Pass.\p"
 	.string "The more success you have here at\n"
-	.string "the BATTLE FRONTIER, the more Battle\l"
+	.string "the Battle Frontier, the more Battle\l"
 	.string "Points you will collect.\p"
 	.string "Use your Battle Points the way you\n"
 	.string "see fit, like trading them for items.$"
@@ -297,15 +297,15 @@ BattleFrontier_ScottsHouse_Text_MayFindWildMonsInFrontier: @ 8263FFE
 	.string "a Pokédex as well.\p"
 	.string "Well, guess what?\p"
 	.string "You may run into wild Pokémon in\n"
-	.string "the BATTLE FRONTIER somewhere…\l"
+	.string "the Battle Frontier somewhere…\l"
 	.string "Fufufu!$"
 
 BattleFrontier_ScottsHouse_Text_YouveCollectedAllSilverSymbols: @ 82640BC
 	.string "SCOTT: Are you enjoying things in\n"
-	.string "the BATTLE FRONTIER?\p"
+	.string "the Battle Frontier?\p"
 	.string "…Wait a second…\n"
 	.string "Oh!\p"
-	.string "Your FRONTIER PASS!\n"
+	.string "Your Frontier Pass!\n"
 	.string "You've collected the full set\l"
 	.string "of silver symbols!\p"
 	.string "That's more than impressive!\n"
@@ -317,10 +317,10 @@ BattleFrontier_ScottsHouse_Text_YouveCollectedAllSilverSymbols: @ 82640BC
 
 BattleFrontier_ScottsHouse_Text_YouveCollectedAllGoldSymbols: @ 8264216
 	.string "SCOTT: I hope you're enjoying\n"
-	.string "everything in the BATTLE FRONTIER.\p"
+	.string "everything in the Battle Frontier.\p"
 	.string "…Wait a second…\n"
 	.string "Oh, my disbelieving eyes!\p"
-	.string "Your FRONTIER PASS!\n"
+	.string "Your Frontier Pass!\n"
 	.string "You've gathered up the full set\l"
 	.string "of gold symbols!\p"
 	.string "That's more than stupendous!\n"
@@ -342,14 +342,14 @@ BattleFrontier_ScottsHouse_Text_BerryPocketStuffed: @ 82643EB
 
 BattleFrontier_ScottsHouse_Text_Beat50TrainersInARow: @ 8264412
 	.string "SCOTT: Oh, I heard about you!\n"
-	.string "How you ruled the BATTLE TOWER!\l"
+	.string "How you ruled the Battle Tower!\l"
 	.string "You beat over 50 Trainers in a row?\p"
 	.string "That's fantastic!\n"
 	.string "I want you to have this!$"
 
 BattleFrontier_ScottsHouse_Text_Beat100TrainersInARow: @ 826449F
 	.string "SCOTT: Oh, my! I heard about you!\n"
-	.string "How you overwhelmed the BATTLE TOWER!\l"
+	.string "How you overwhelmed the Battle Tower!\l"
 	.string "You beat over 100 Trainers in a row?\p"
 	.string "That's ridiculously spectacular!\n"
 	.string "You've got to have this!$"

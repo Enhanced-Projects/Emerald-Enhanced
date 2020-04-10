@@ -3647,9 +3647,12 @@ void RyuGiveFrontierMon(void)
     s32 count;
     s32 evs[NUM_STATS];
     u8 level = 50;
-    u8 i, temp, party_id = CalculatePlayerPartyCount();
+    u8 i, temp;
+    u8 party_id = CalculatePlayerPartyCount();
 
     const struct FacilityMon *mon = &gBattleFrontierMons[Random() % 881];
+
+    Random();
 
     if ((FlagGet(FLAG_RYU_PASSCODE_FRONTIER_MON_DEV) ==1 ) && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {

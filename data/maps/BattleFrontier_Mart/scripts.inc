@@ -60,7 +60,7 @@ BattleFrontier_Mart_Text_ProteinMakeNiceGift: @ 8267B8F
 	.string "It sounds delicious, doesn't it?$"
 
 BattleFrontier_Mart_Text_FacilitiesDontAllowItems: @ 8267C01
-	.string "A lot of the BATTLE FRONTIER's\n"
+	.string "A lot of the Battle Frontier's\n"
 	.string "facilities don't allow the use of items\l"
 	.string "during battles.\p"
 	.string "That rule makes things tougher than\n"
