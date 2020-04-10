@@ -66,7 +66,7 @@ DesertRuins_EventScript_Regirock:: @ 822DA02
 	playmoncry SPECIES_REGIROCK, 2
 	delay 40
 	waitmoncry
-	setwildbattle SPECIES_REGIROCK, 40, ITEM_NONE
+	setwildbattle SPECIES_REGIROCK, 40, ITEM_HARD_STONE
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special StartRegiBattle
 	waitstate

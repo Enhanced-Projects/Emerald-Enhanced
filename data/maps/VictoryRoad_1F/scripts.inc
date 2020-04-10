@@ -156,7 +156,7 @@ VR1_Moltres::
 	compare VAR_RESULT, 10
 	call_if_lt TC_NoBadge
 	waitmoncry
-	setwildbattle SPECIES_MOLTRES, VAR_RESULT, ITEM_BRIGHT_POWDER
+	setwildbattle SPECIES_MOLTRES, VAR_RESULT, ITEM_CHARCOAL
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught
@@ -169,8 +169,8 @@ NewMauville_Moltres_TouchedStone:
 	.string "{PLAYER} OH SH-!$"
 
 NewMauville_Moltres_TouchQuery:
-	.string "{PLAYER}: This stone looks like it\n"
-	.string "was torched!\p"
+	.string "This stone looks like it was\n"
+	.string "torched!\p"
 	.string "Touch the stone?$"
 
 

@@ -117,7 +117,6 @@ LCC_BattleItemMart: @ 8220024
 	.2byte ITEM_IRON_BALL
 	.2byte ITEM_LAGGING_TAIL
 	.2byte ITEM_AIR_BALLOON
-	.2byte ITEM_FLYING_GEM
 	.2byte ITEM_NONE
 	release
 	end

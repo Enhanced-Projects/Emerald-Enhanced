@@ -10109,19 +10109,19 @@ static void Cmd_presentdamagecalculation(void)
 
     if (rand < 102)
     {
-        gBattleStruct->presentBasePower = 40;
+        gBattleStruct->presentBasePower = 50;
     }
     else if (rand < 178)
     {
-        gBattleStruct->presentBasePower = 80;
+        gBattleStruct->presentBasePower = 100;
     }
     else if (rand < 204)
     {
-        gBattleStruct->presentBasePower = 120;
+        gBattleStruct->presentBasePower = 250;
     }
     else
     {
-        gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 4;
+        gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP * (-1);
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;
         gBattleMoveDamage *= -1;

@@ -24,7 +24,7 @@ SP_RyuRayEnc::
 	call_if_lt TC_NoBadge
 	waitmoncry
 	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 100
-	setwildbattle SPECIES_RAYQUAZA, VAR_RESULT, ITEM_NONE
+	setwildbattle SPECIES_RAYQUAZA, VAR_RESULT, ITEM_DRAGON_FANG
 	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_2
 	removeobject 1
 	special BattleSetup_StartLegendaryBattle

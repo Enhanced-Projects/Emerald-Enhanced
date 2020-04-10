@@ -4156,7 +4156,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                 break;
             // nice copy/paste there gamefreak, making a function for confuse berries was too much eh?
             case HOLD_EFFECT_CONFUSE_SPICY:
-                if (!moveTurn && HasEnoughHpToEatBerry(battlerId, 2))
+                if (!moveTurn && HasEnoughHpToEatBerry(battlerId, 4))
                 {
                     PREPARE_FLAVOR_BUFFER(gBattleTextBuff1, FLAVOR_SPICY);
 
@@ -4174,7 +4174,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_CONFUSE_DRY:
-                if (!moveTurn && HasEnoughHpToEatBerry(battlerId, 2))
+                if (!moveTurn && HasEnoughHpToEatBerry(battlerId, 4))
                 {
                     PREPARE_FLAVOR_BUFFER(gBattleTextBuff1, FLAVOR_DRY);
 
@@ -4192,7 +4192,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_CONFUSE_SWEET:
-                if (!moveTurn && HasEnoughHpToEatBerry(battlerId, 2))
+                if (!moveTurn && HasEnoughHpToEatBerry(battlerId, 4))
                 {
                     PREPARE_FLAVOR_BUFFER(gBattleTextBuff1, FLAVOR_SWEET);
 
@@ -4210,7 +4210,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_CONFUSE_BITTER:
-                if (!moveTurn && HasEnoughHpToEatBerry(battlerId, 2))
+                if (!moveTurn && HasEnoughHpToEatBerry(battlerId, 4))
                 {
                     PREPARE_FLAVOR_BUFFER(gBattleTextBuff1, FLAVOR_BITTER);
 
@@ -4228,7 +4228,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_CONFUSE_SOUR:
-                if (!moveTurn && HasEnoughHpToEatBerry(battlerId, 2))
+                if (!moveTurn && HasEnoughHpToEatBerry(battlerId, 4))
                 {
                     PREPARE_FLAVOR_BUFFER(gBattleTextBuff1, FLAVOR_SOUR);
 

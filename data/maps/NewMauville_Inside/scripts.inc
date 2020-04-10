@@ -399,7 +399,7 @@ NewMauville_Zapdos::
 	call_if_lt TC_NoBadge
 	closemessage
 	waitmoncry
-	setwildbattle SPECIES_ZAPDOS, VAR_RESULT, ITEM_BRIGHT_POWDER
+	setwildbattle SPECIES_ZAPDOS, VAR_RESULT, ITEM_SHARP_BEAK
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught
@@ -412,6 +412,6 @@ NewMauville_Zapdos_TouchedStone:
 	.string "{COLOR RED}OUCH! {COLOR DARK_GREY}{PLAYER} got shocked!$"
 
 NewMauville_Zapdos_TouchQuery:
-	.string "{PLAYER}: This stone looks funny,\n"
-	.string "as if it was charged up!\p"
+	.string "This stone looks funny, as if\n"
+	.string "it was charged up!\p"
 	.string "Touch the stone?$"

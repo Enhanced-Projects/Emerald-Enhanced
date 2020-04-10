@@ -85,34 +85,34 @@ GraniteCave_StevensRoom_Movement_StevenExitSouth: @ 822DD51
 	step_end
 
 GraniteCave_StevensRoom_Text_ImStevenLetterForMe: @ 822DD5A
-	.string "My name is STEVEN.\p"
+	.string "My name is Steven.\p"
 	.string "I'm interested in rare stones,\n"
 	.string "so I travel here and there.\p"
 	.string "Oh?\n"
-	.string "A LETTER for me?$"
+	.string "A letter for me?$"
 
 GraniteCave_StevensRoom_Text_ThankYouTakeThis: @ 822DDBD
-	.string "STEVEN: Okay, thank you.\p"
+	.string "Steven: Okay, thank you.\p"
 	.string "You went through all this trouble to\n"
 	.string "deliver that. I need to thank you.\p"
 	.string "Let me see…\n"
 	.string "I'll give you this TM.\p"
 	.string "It contains my favorite move,\n"
-	.string "STEEL WING.$"
+	.string "Steel Wing.$"
 
 GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister: @ 822DE6B
-	.string "STEVEN: Your Pokémon appear quite\n"
+	.string "Steven: Your Pokémon appear quite\n"
 	.string "capable.\p"
 	.string "If you keep training, you could even\n"
 	.string "become the Champion of the Pokémon\l"
 	.string "League one day. That's what I think.\p"
 	.string "I know, since we've gotten to know each\n"
 	.string "other, let's register one another in\l"
-	.string "our POKéNAVS.\p"
+	.string "our Pokénavs.\p"
 	.string "… … … … … …$"
 
 GraniteCave_StevensRoom_Text_RegisteredSteven: @ 822DF6A
-	.string "Registered STEVEN\n"
+	.string "Registered Steven\n"
 	.string "in the Pokénav.$"
 
 GraniteCave_StevensRoom_Text_IveGotToHurryAlong: @ 822DF8C
@@ -133,7 +133,7 @@ GC_JIRACHI_ENC::
 	closemessage
 	delay 10
 	waitmoncry
-	setwildbattle SPECIES_JIRACHI, 40, ITEM_KINGS_ROCK
+	setwildbattle SPECIES_JIRACHI, 40, ITEM_PIXIE_PLATE
 	setflag FLAG_RYU_JIRACHI
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -161,9 +161,9 @@ GC1_RYUSCR3::
 	end
 
 GC1_RYUMSG_TOUCHQ:
-    .string "{PLAYER}: This wall sparkles beautifully.\n"
-	.string "as if it was touched by a sky spirit.\p"
-	.string "touch the wall?$"
+    .string "\This wall sparkles beautifully, as if\n"
+	.string "it was touched by a sky spirit.\p"
+	.string "Touch the wall?$"
 
 GC1_RYUMSG_DEAD:
     .string "The wall shows ancient text.$"
@@ -173,5 +173,5 @@ GC1_RYUMSG_NOTOUCH:
 
 GC1_RYUMSG_TOUCHED:
     .string "{PLAYER} touched the wall.\p"
-	.string "You hear the sound of startust falling.$"
+	.string "You hear the sound of stardust falling.$"
 

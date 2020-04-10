@@ -15,7 +15,7 @@ r66_Celebi::
 	call_if_lt TC_NoBadge
 	closemessage
 	waitmoncry
-	setwildbattle SPECIES_CELEBI, VAR_RESULT, ITEM_NONE
+	setwildbattle SPECIES_CELEBI, VAR_RESULT, ITEM_BIG_ROOT
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_CheckCaught
@@ -29,5 +29,5 @@ r66_Celebi_TouchedStone:
 	.string "same time.$"
 
 r66_Celebi_TouchQuery:
-    .string "{PLAYER}: The stone is beautifully overgrown.\p"
+    .string "The stone is beautifully overgrown.\p"
 	.string "Touch the stone?$"

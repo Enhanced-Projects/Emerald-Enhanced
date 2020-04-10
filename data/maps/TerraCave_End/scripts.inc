@@ -37,7 +37,7 @@ TerraCave_End_EventScript_Groudon:: @ 823B0EC
 	call_if_lt TC_NoBadge
 	waitmoncry
 	setvar VAR_LAST_TALKED, 1
-	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_NONE
+	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_HEAT_ROCK
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
