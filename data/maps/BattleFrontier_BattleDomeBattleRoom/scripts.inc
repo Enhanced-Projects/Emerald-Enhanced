@@ -957,7 +957,7 @@ BattleFrontier_BattleDomeBattleRoom_Movement_24C96B: @ 824C96B
 	step_end
 
 BattleFrontier_BattleDomeBattleRoom_Text_24C970: @ 824C970
-	.string "{PLAYER} has entered the BATTLE DOME!$"
+	.string "{PLAYER} has entered the Battle Dome!$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24C990: @ 824C990
 	.string "{STR_VAR_1}\n"
@@ -1089,7 +1089,7 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CEDE: @ 824CEDE
 	.string "And now… The Trainer standing in\n"
 	.string "{PLAYER}'s record-setting path…\p"
 	.string "Yes! The one and only!\n"
-	.string "The BATTLE DOME COMMISSIONER!\l"
+	.string "The Battle Dome COMMISSIONER!\l"
 	.string "Our very own DOME ACE!\l"
 	.string "Make way for TUCKER!$"
 
@@ -1105,7 +1105,7 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CFAE: @ 824CFAE
 	.string "I bet you're twitching all over from\n"
 	.string "the tension of getting to battle me!\p"
 	.string "But don't you worry about a thing!\p"
-	.string "I'm the no. 1 star of the BATTLE DOME!\n"
+	.string "I'm the no. 1 star of the Battle Dome!\n"
 	.string "I, TUCKER the DOME ACE, will bathe you\l"
 	.string "in my brilliant glow!$"
 
@@ -1124,11 +1124,11 @@ BattleFrontier_BattleDomeBattleRoom_Text_24D127: @ 824D127
 
 BattleFrontier_BattleDomeBattleRoom_Text_24D172: @ 824D172
 	.string "TUCKER: Rules are rules!\n"
-	.string "Let me see your FRONTIER PASS.$"
+	.string "Let me see your Frontier Pass.$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24D1AA: @ 824D1AA
 	.string "The Tactics Symbol was embossed on\n"
-	.string "the FRONTIER PASS!$"
+	.string "the Frontier Pass!$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24D1E0: @ 824D1E0
 	.string "… … … … … …\p"
@@ -1169,7 +1169,7 @@ BattleFrontier_BattleDomeBattleRoom_Text_24D47F: @ 824D47F
 	.string "Never before! I haven't ever lost in the\n"
 	.string "times I've had to unleash my power.\p"
 	.string "Yes, quite fantastic!\n"
-	.string "Your FRONTIER PASS, please?$"
+	.string "Your Frontier Pass, please?$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24D522: @ 824D522
 	.string "The Tactics Symbol took on\n"

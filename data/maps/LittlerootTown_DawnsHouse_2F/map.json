@@ -15,7 +15,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "LittlerootTown_MaysHouse_2F_EventScript_WallClock",
+            "script": "LittlerootTown_DawnsHouse_2F_EventScript_WallClock",
             "type": "sign",
             "x": 3,
             "y": 1
@@ -32,15 +32,15 @@
     "connections": null,
     "coord_events": [
     ],
-    "id": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F",
-    "layout": "LAYOUT_LITTLEROOT_TOWN_MAYS_HOUSE_2F",
+    "id": "MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_2F",
+    "layout": "LAYOUT_LITTLEROOT_TOWN_DAWNS_HOUSE_2F",
     "map_type": "MAP_TYPE_INDOOR",
     "music": "MUS_MISHIRO",
-    "name": "LittlerootTown_MaysHouse_2F",
+    "name": "LittlerootTown_DawnsHouse_2F",
     "object_events": [
         {
             "elevation": 4,
-            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_PICHU_DOLL",
+            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_2F_PICHU_DOLL",
             "graphics_id": "OBJ_EVENT_GFX_PICHU_DOLL",
             "movement_range_x": 1,
             "movement_range_y": 1,
@@ -54,7 +54,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
-            "graphics_id": "OBJ_EVENT_GFX_RIVAL_MAY_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -80,7 +80,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_DAWNS_HOUSE_DAWN",
-            "graphics_id": "OBJ_EVENT_GFX_RIVAL_MAY_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -96,7 +96,7 @@
     "show_map_name": false,
     "warp_events": [
         {
-            "dest_map": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
+            "dest_map": "MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_1F",
             "dest_warp_id": 2,
             "elevation": 0,
             "x": 1,

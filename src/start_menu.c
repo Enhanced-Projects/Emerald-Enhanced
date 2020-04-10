@@ -1236,13 +1236,13 @@ static bool8 BattlePyramidRetireCallback(void)
 {
     switch (RunSaveCallback())
     {
-    case SAVE_SUCCESS: // No (Stay in battle pyramid)
+    case SAVE_SUCCESS: // No (Stay in Battle Pyramid)
         RemoveExtraStartMenuWindows();
         gMenuCallback = BattlePyramidRetireReturnCallback;
         return FALSE;
     case SAVE_IN_PROGRESS:
         return FALSE;
-    case SAVE_CANCELED: // Yes (Retire from battle pyramid)
+    case SAVE_CANCELED: // Yes (Retire from Battle Pyramid)
         ClearDialogWindowAndFrameToTransparent(0, TRUE);
         ScriptUnfreezeObjectEvents();
         ScriptContext2_Disable();

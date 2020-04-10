@@ -173,6 +173,7 @@ IT_FrontierMode::
 	setflag FLAG_SYS_FRONTIER_PASS
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setflag FLAG_RYU_FRONTIER_MODE
+	setflag FLAG_HIDE_BATTLE_FRONTIER_RECEPTION_GATE_SCOTT
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq SetMaleStartingVariables

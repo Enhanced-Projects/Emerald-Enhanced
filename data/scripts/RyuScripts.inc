@@ -788,273 +788,6 @@ RyuCantUsePCCHARGING:
 	.string "The Wireless PC needs to recharge.\nPlease try again later.$"
 	
 
-@+=================================================================================================Player Bank
-
-BF_PlayerBank::
-	msgbox Ryu_WTB
-	showmoneybox 18, 0, 0
-	nop
-	nop
-	multichoicedefault 0, 0, 137, 2, 1
-	switch VAR_RESULT
-	case 0, BF_PlayerBankDeposit
-	case 1, BF_PlayerBankWithdraw
-	case 2, BF_PlayerBankCancel
-	goto BF_PlayerBankCancel
-	end
-	
-Ryu_WTB:
-	.string "Welcome to Frontier Bank.\pWhat would you like to do today?$"
-
-BF_PlayerBankDeposit::
-	msgbox BF_DepositQuery MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_ne BF_CancelTransaction
-	multichoice 0, 0, 138, 0
-	switch VAR_RESULT
-	case 0, BF_Dep10k
-	case 1, BF_Dep50k
-	case 2, BF_Dep100k
-	case 3, BF_Dep1m
-	case 4, BF_CancelTransaction
-	goto BF_CancelTransaction
-	end
-	
-BF_DepositQuery:
-	.string "Would you like to\nmake a deposit?$"
-
-
-BF_PlayerBankWithdraw::
-	msgbox BF_WithdrawQuery MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_ne BF_CancelTransaction
-	multichoice 0, 0, 138, 0
-	switch VAR_RESULT
-	case 0, BF_Pull10k
-	case 1, BF_Pull50k
-	case 2, BF_Pull100k
-	case 3, BF_Pull1m
-	case 4, BF_CancelTransaction
-	goto BF_CancelTransaction
-	end
-	
-BF_WithdrawQuery:
-	.string "Would you like to\nmake a withdrawal?$"
-
-BF_PlayerBankCancel::
-	special RyuGetPlayerBankBal
-	msgbox BF_PlayerBankAccountStatus
-	closemessage
-	hidemoneybox
-	nop
-	nop
-	release
-	end
-	
-BF_PlayerBankAccountStatus:
-	.string "Your balance is currently:\n{COLOR LIGHT_GREEN}{SHADOW GREEN} {STR_VAR_2}$"
-	
-BF_CancelTransaction::
-	msgbox BF_TransCancel
-	closemessage
-	hidemoneybox
-	nop
-	nop
-	release
-	end
-	
-BF_TransCancel:
-	.string "Cancelling the transaction.$"
-	
-BF_RyuInsufficientBalance::
-	msgbox BF_NotEnoughBalance
-	closemessage
-	hidemoneybox
-	nop
-	nop
-	release
-	end
-	
-BF_NotEnoughBalance:
-	.string "You do not have enough money in\nyour account to do this transaction.\pYour balance is: {COLOR LIGHT_GREEN}{SHADOW GREEN}{STR_VAR_2}$"
-	
-BF_HND:
-	.string "Thanks for using Frontier Bank\n and have a nice day!$"
-
-BF_Dep10k::
-	setvar VAR_TEMP_A, 10000
-	setvar VAR_TEMP_B, 1
-	special RyuDepositPlayerMoney
-	msgbox BF_Processing
-	delay 10
-	closemessage
-	msgbox BF_TransSuccessful
-	closemessage
-	updatemoneybox 0, 0
-	nop
-	nop
-	msgbox BF_HND
-	closemessage
-	hidemoneybox
-	nop
-	nop
-	release
-	end
-	
-BF_Dep50k::
-	setvar VAR_TEMP_A, 50000
-	setvar VAR_TEMP_B, 1
-	special RyuDepositPlayerMoney
-	msgbox BF_Processing
-	delay 10
-	closemessage
-	msgbox BF_TransSuccessful
-	closemessage
-	updatemoneybox 0, 0
-	nop
-	nop
-	msgbox BF_HND
-	closemessage
-	hidemoneybox
-	nop
-	nop
-	release
-	end
-	
-BF_Dep100k::
-	setvar VAR_TEMP_A, 50000
-	setvar VAR_TEMP_B, 2
-	special RyuDepositPlayerMoney
-	msgbox BF_Processing
-	delay 10
-	closemessage
-	msgbox BF_TransSuccessful
-	closemessage
-	updatemoneybox 0, 0
-	nop
-	nop
-	msgbox BF_HND
-	closemessage
-	hidemoneybox
-	nop
-	nop
-	release
-	end
-	
-BF_Dep1m::
-	setvar VAR_TEMP_A, 50000
-	setvar VAR_TEMP_B, 20
-	special RyuDepositPlayerMoney
-	msgbox BF_Processing
-	delay 10
-	closemessage
-	msgbox BF_TransSuccessful
-	closemessage
-	updatemoneybox 0, 0
-	nop
-	nop
-	msgbox BF_HND
-	closemessage
-	hidemoneybox
-	nop
-	nop
-	release
-	end
-	
-BF_Pull10k::
-	setvar VAR_TEMP_A, 10000
-	setvar VAR_TEMP_B, 1
-	specialvar VAR_RESULT, RyuWithdrawPlayerMoney
-	compare VAR_RESULT, TRUE
-	goto_if_ne BF_RyuInsufficientBalance
-	msgbox BF_Processing
-	delay 10
-	closemessage
-	msgbox BF_TransSuccessful
-	closemessage
-	updatemoneybox 0, 0
-	nop
-	nop
-	msgbox BF_HND
-	closemessage
-	hidemoneybox
-	nop
-	nop
-	release
-	end
-	
-BF_Pull50k::
-	setvar VAR_TEMP_A, 50000
-	setvar VAR_TEMP_B, 1
-	specialvar VAR_RESULT, RyuWithdrawPlayerMoney
-	compare VAR_RESULT, TRUE
-	goto_if_ne BF_RyuInsufficientBalance
-	msgbox BF_Processing
-	delay 10
-	closemessage
-	msgbox BF_TransSuccessful
-	closemessage
-	updatemoneybox 0, 0
-	nop
-	nop
-	msgbox BF_HND
-	closemessage
-	hidemoneybox
-	nop
-	nop
-	release
-	end
-	
-BF_Pull100k::
-	setvar VAR_TEMP_A, 50000
-	setvar VAR_TEMP_B, 2
-	specialvar VAR_RESULT, RyuWithdrawPlayerMoney
-	compare VAR_RESULT, TRUE
-	goto_if_ne BF_RyuInsufficientBalance
-	msgbox BF_Processing
-	delay 10
-	closemessage
-	msgbox BF_TransSuccessful
-	closemessage
-	updatemoneybox 0, 0
-	nop
-	nop
-	msgbox BF_HND
-	closemessage
-	hidemoneybox
-	nop
-	nop
-	release
-	end
-	
-BF_Pull1m::
-	setvar VAR_TEMP_A, 50000
-	setvar VAR_TEMP_B, 20
-	specialvar VAR_RESULT, RyuWithdrawPlayerMoney
-	compare VAR_RESULT, TRUE
-	goto_if_ne BF_RyuInsufficientBalance
-	msgbox BF_Processing
-	delay 10
-	closemessage
-	msgbox BF_TransSuccessful
-	closemessage
-	updatemoneybox 0, 0
-	nop
-	nop
-	msgbox BF_HND
-	closemessage
-	hidemoneybox
-	nop
-	nop
-	release
-	end
-	
-BF_Processing:
-	.string "We're currently processing\nthe transaction...$"
-	
-BF_TransSuccessful:
-	.string "The transaction was successful.\pYour new balance is:\n{COLOR LIGHT_GREEN}{SHADOW GREEN}{STR_VAR_2}$"
-
 @=================================================Ball changer
 
 
@@ -1143,7 +876,7 @@ BCPremierball::
 	checkitem ITEM_PREMIER_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 12
+	setvar VAR_TEMP_4, 11
 	removeitem ITEM_PREMIER_BALL, 1
 	takemoney 10000
 	special RyuChangeUsedPokeball
@@ -1505,6 +1238,26 @@ SB_SetupRandomSteppedOnEncounter::
 	case 3, SB_Random3
 	case 4, SB_Random4
 	goto  ryu_end
+
+SB_SetupRandomMimikyuEncounter::
+	lock
+	clearflag FLAG_TEMP_A
+	setwildbattle SPECIES_MIMIKYU, 33, ITEM_NONE
+	playmoncry SPECIES_MIMIKYU, 0
+	waitmoncry
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox StumbledOnMimikyu
+	closemessage
+	dowildbattle
+	release
+	end
+
+StumbledOnMimikyu:
+	.string "You stumbled across\na wild Mimikyu!$"
+
 
 SB_Random0::
 	setwildbattle SPECIES_PYUKUMUKU, 20, ITEM_NONE

@@ -60,7 +60,7 @@ BattleFrontier_BattleDomeLobby_EventScript_2498C9:: @ 82498C9
 	message BattleFrontier_BattleDomeLobby_Text_24A5D6
 	waitmessage
 	special LoadPlayerParty
-	frontier_setpartyorder FRONTIER_PARTY_SIZE
+	frontier_setpartyorder 6
 	frontier_checkairshow
 	dome_set DOME_DATA_ATTEMPTED_CHALLENGE     , 1
 	dome_set DOME_DATA_HAS_WON_CHALLENGE            , 1
@@ -75,7 +75,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249940:: @ 8249940
 	message BattleFrontier_BattleDomeLobby_Text_24A5D6
 	waitmessage
 	special LoadPlayerParty
-	frontier_setpartyorder FRONTIER_PARTY_SIZE
+	frontier_setpartyorder 6
 	frontier_checkairshow
 	dome_set DOME_DATA_WIN_STREAK_ACTIVE, FALSE
 	dome_set DOME_DATA_ATTEMPTED_CHALLENGE     , 1
@@ -169,7 +169,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249ABF:: @ 8249ABF
 	fadescreen FADE_TO_BLACK
 	call BattleFrontier_EventScript_GetLvlMode
 	copyvar VAR_0x8004, VAR_RESULT
-	setvar VAR_0x8005, FRONTIER_PARTY_SIZE
+	setvar VAR_0x8005, 6
 	special ChoosePartyForBattleFrontier
 	waitstate
 	compare VAR_RESULT, 0
@@ -196,7 +196,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249B60:: @ 8249B60
 	dome_inittrainers
 BattleFrontier_BattleDomeLobby_EventScript_249BC2:: @ 8249BC2
 	special SavePlayerParty
-	frontier_setpartyorder FRONTIER_PARTY_SIZE
+	frontier_setpartyorder 6
 	dome_settrainers
 	msgbox BattleFrontier_BattleDomeLobby_Text_24A437, MSGBOX_DEFAULT
 	closemessage
@@ -458,29 +458,23 @@ BattleFrontier_BattleDomeLobby_EventScript_249EB5:: @ 8249EB5
 BattleFrontier_BattleDomeLobby_Text_249EB7: @ 8249EB7
 	.string "Where the strategies of Trainers\n"
 	.string "are put to the test!\p"
-	.string "Welcome to the BATTLE DOME!\p"
-	.string "I am your guide to the SINGLE BATTLE\n"
+	.string "Welcome to the Battle Dome!\p"
+	.string "I am your guide to the Single Battle\n"
 	.string "Tournament.$"
 
 BattleFrontier_BattleDomeLobby_Text_249F3A: @ 8249F3A
 	.string "Would you like to challenge\n"
-	.string "the SINGLE BATTLE Tournament?$"
+	.string "the Single Battle Tournament?$"
 
 BattleFrontier_BattleDomeLobby_Text_249F74: @ 8249F74
 	.string "We hope to see you again.$"
 
 BattleFrontier_BattleDomeLobby_Text_249F8E: @ 8249F8E
-	.string "The SINGLE BATTLE Tournament\n"
+	.string "The Single Battle Tournament\n"
 	.string "is exactly as the name suggests--\l"
-	.string "a tournament of SINGLE BATTLES.\p"
+	.string "a tournament of Single Battle.\p"
 	.string "All participating Trainers must\n"
-	.string "enter three Pokémon each.\p"
-	.string "In each battle, one of the three\n"
-	.string "Pokémon must be held in reserve.\p"
-	.string "The other two Pokémon can battle\n"
-	.string "one at a time.\p"
-	.string "Choose the two battling Pokémon after\n"
-	.string "examining the opponent's trio.\p"
+	.string "enter six Pokémon each.\p"
 	.string "You win the tournament by defeating\n"
 	.string "four Trainers.\p"
 	.string "Battle Points are awarded to\n"
@@ -491,7 +485,7 @@ BattleFrontier_BattleDomeLobby_Text_249F8E: @ 8249F8E
 	.string "you will be disqualified.$"
 
 BattleFrontier_BattleDomeLobby_Text_24A1C6: @ 824A1C6
-	.string "Before I show you to the BATTLE DOME,\n"
+	.string "Before I show you to the Battle Dome,\n"
 	.string "I must save the data. Is that okay?$"
 
 BattleFrontier_BattleDomeLobby_Text_24A210: @ 824A210
@@ -500,30 +494,26 @@ BattleFrontier_BattleDomeLobby_Text_24A210: @ 824A210
 	.string "Which is your choice?$"
 
 BattleFrontier_BattleDomeLobby_Text_24A26E: @ 824A26E
-	.string "Now select the three Pokémon that\n"
-	.string "you wish to enter, please.$"
+	.string "Now select the Pokémon in the\n"
+	.string "order you wish them to be in.$"
 
 BattleFrontier_BattleDomeLobby_Text_24A2AB: @ 824A2AB
 	.string "Excuse me!\p"
-	.string "You don't have three eligible Pokémon.\p"
-	.string "Also, the Pokémon must be holding\n"
-	.string "different kinds of items.\p"
-	.string "EGGS{STR_VAR_1} ineligible.\p"
+	.string "You don't have six eligible Pokémon.\p"
+	.string "Eggs and legendaries are illegal.\p"
 	.string "Please come see me when you are ready.$"
 
 BattleFrontier_BattleDomeLobby_Text_24A353: @ 824A353
 	.string "Excuse me!\p"
-	.string "You don't have three eligible Pokémon.\p"
-	.string "You must have three different Pokémon\n"
+	.string "You don't have six eligible Pokémon.\p"
+	.string "You must have six different Pokémon\n"
 	.string "of Level 50 or less to enter.\p"
-	.string "They also must be holding different\n"
-	.string "kinds of items.\p"
-	.string "EGGS{STR_VAR_1} ineligible.\p"
+	.string "Eggs and legendaries are illegal.\p"
 	.string "Please come see me when you are ready.$"
 
 BattleFrontier_BattleDomeLobby_Text_24A437: @ 824A437
 	.string "I will now show you to\n"
-	.string "the BATTLE DOME.$"
+	.string "the Battle Dome.$"
 
 BattleFrontier_BattleDomeLobby_Text_24A45F: @ 824A45F
 	.string "Excuse me!\p"
@@ -561,32 +551,30 @@ BattleFrontier_BattleDomeLobby_Text_24A5FE: @ 824A5FE
 	.string "We've been waiting for you!$"
 
 BattleFrontier_BattleDomeLobby_Text_24A61A: @ 824A61A
-	.string "Before I show you to the BATTLE DOME,\n"
+	.string "Before I show you to the Battle Dome,\n"
 	.string "I must save the data. Is that okay?$"
 
 BattleFrontier_BattleDomeLobby_Text_24A664: @ 824A664
 	.string "Where the strategies of Trainers\n"
 	.string "are put to the test!\p"
-	.string "Welcome to the BATTLE DOME!\p"
-	.string "I am your guide to the DOUBLE BATTLE\n"
+	.string "Welcome to the Battle Dome!\p"
+	.string "I am your guide to the Double Battle\n"
 	.string "Tournament.$"
 
 BattleFrontier_BattleDomeLobby_Text_24A6E7: @ 824A6E7
 	.string "Would you like to challenge\n"
-	.string "the DOUBLE BATTLE Tournament?$"
+	.string "the Double Battle Tournament?$"
 
 BattleFrontier_BattleDomeLobby_Text_24A721: @ 824A721
-	.string "The DOUBLE BATTLE Tournament\n"
+	.string "The Double Battle Tournament\n"
 	.string "is exactly as the name suggests--\l"
-	.string "a tournament of DOUBLE BATTLES.\p"
+	.string "a tournament of Double Battles.\p"
 	.string "All participating Trainers must\n"
-	.string "enter three Pokémon each.\p"
-	.string "In each battle, one of the three\n"
-	.string "Pokémon must be held in reserve.\p"
-	.string "The remaining two Pokémon must take\n"
-	.string "part in a DOUBLE BATTLE.\p"
-	.string "Choose the two battling Pokémon after\n"
-	.string "examining the opponent's trio.\p"
+	.string "enter six Pokémon each.\p"
+	.string "Two Pokémon must take part in a\n"
+	.string "Double Battle.\p"
+	.string "Choose your party order and begin\n"
+	.string "the match.\p"
 	.string "You win the tournament by defeating\n"
 	.string "four Trainers.\p"
 	.string "Battle Points are awarded to\n"
@@ -598,19 +586,19 @@ BattleFrontier_BattleDomeLobby_Text_24A721: @ 824A721
 
 BattleFrontier_BattleDomeLobby_Text_24A966: @ 824A966
 	.string "They're the results of the last\n"
-	.string "Level 50 SINGLE BATTLE Tournament.$"
+	.string "Level 50 Single Battle Tournament.$"
 
 BattleFrontier_BattleDomeLobby_Text_24A9A9: @ 824A9A9
 	.string "They're the results of the last\n"
-	.string "Level 50 DOUBLE BATTLE Tournament.$"
+	.string "Level 50 Double Battle Tournament.$"
 
 BattleFrontier_BattleDomeLobby_Text_24A9EC: @ 824A9EC
 	.string "They're the results of the last\n"
-	.string "Open Level SINGLE BATTLE Tournament.$"
+	.string "Open Level Single Battle Tournament.$"
 
 BattleFrontier_BattleDomeLobby_Text_24AA31: @ 824AA31
 	.string "They're the results of the last\n"
-	.string "Open Level DOUBLE BATTLE Tournament.$"
+	.string "Open Level Double Battle Tournament.$"
 
 BattleFrontier_BattleDomeLobby_Text_24AA76: @ 824AA76
 	.string "Did you see it?\n"
@@ -621,11 +609,11 @@ BattleFrontier_BattleDomeLobby_Text_24AA76: @ 824AA76
 	.string "on the monitor beside the PC.$"
 
 BattleFrontier_OutsideWest_Text_24AB06: @ 824AB06
-	.string "The BATTLE FRONTIER…\n"
+	.string "The Battle Frontier…\n"
 	.string "I've long dreamed about a place like it.$"
 
 BattleFrontier_OutsideWest_Text_BattleDomeSign2: @ 824AB44
-	.string "The BATTLE DOME\n"
+	.string "The Battle Dome\n"
 	.string "Become the Unbeatable Superstar!$"
 
 BattleFrontier_OutsideWest_Text_QuestionMarkUnderConstruction: @ 824AB75
@@ -634,10 +622,10 @@ BattleFrontier_OutsideWest_Text_QuestionMarkUnderConstruction: @ 824AB75
 
 BattleFrontier_BattleDomeLobby_Text_24AB94: @ 824AB94
 	.string "When a Trainer chains tournament\n"
-	.string "wins at the BATTLE DOME, he or she\l"
+	.string "wins at the Battle Dome, he or she\l"
 	.string "gains a reputation as a star.\p"
 	.string "Tough Trainers are drawn by that\n"
-	.string "reputation to the BATTLE DOME.\p"
+	.string "reputation to the Battle Dome.\p"
 	.string "A true superstar is a Trainer who\n"
 	.string "can keep winning tournaments.$"
 
@@ -665,8 +653,8 @@ BattleFrontier_BattleDomeLobby_Text_24ADB1: @ 824ADB1
 
 BattleFrontier_BattleDomeLobby_Text_24AE17: @ 824AE17
 	.string "Would you like to record your\n"
-	.string "last BATTLE DOME match on your\l"
-	.string "FRONTIER PASS?$"
+	.string "last Battle Dome match on your\l"
+	.string "Frontier Pass?$"
 
 BattleFrontier_BattleDomeLobby_Text_24AE63: @ 824AE63
 	.string "The Battle Tournament rules\n"
@@ -696,5 +684,5 @@ BattleFrontier_BattleDomeLobby_Text_24AF4C: @ 824AF4C
 BattleFrontier_BattleDomeLobby_Text_24B073: @ 824B073
 	.string "If battling Pokémon faint at the same\n"
 	.string "time--a double KO--in a tournament\l"
-	.string "match, the REFEREES will review\l"
+	.string "match, the Referees will review\l"
 	.string "the match and declare the winner.$"

@@ -25,7 +25,7 @@ CableClub_Text_CloseThisMenu: @ 8277FDD
 	.string "Close this menu.$"
 
 CableClub_Text_NeedTwoMonsForDoubleBattle: @ 8277FEE
-	.string "For a DOUBLE BATTLE, you must\n"
+	.string "For a Double Battle, you must\n"
 	.string "have at least two Pokémon.$"
 
 CableClub_Text_NeedTwoMonsToTrade: @ 8278027
@@ -86,11 +86,11 @@ CableClub_Text_IncorrectNumberOfParticipants: @ 82782A8
 	.string "incorrect.$"
 
 CableClub_Text_CantSingleBattleWithXPlayers: @ 82782D1
-	.string "The SINGLE BATTLE Mode can't be\n"
+	.string "The Single Battle Mode can't be\n"
 	.string "played by {STR_VAR_1} players.$"
 
 CableClub_Text_CantDoubleBattleWithXPlayers: @ 8278307
-	.string "The DOUBLE BATTLE Mode can't be\n"
+	.string "The Double Battle Mode can't be\n"
 	.string "played by {STR_VAR_1} players.$"
 
 CableClub_Text_NeedFourPlayers: @ 827833D
@@ -356,11 +356,11 @@ CableClub_Text_UseBerryCrush: @ 8279114
 
 CableClub_Text_ExplainBattleModes: @ 8279142
 	.string "There are three Battle Modes.\p"
-	.string "SINGLE BATTLE is for two TRAINERS\n"
+	.string "Single Battle is for two TRAINERS\n"
 	.string "with one or more Pokémon each.\p"
 	.string "Each TRAINER can have one Pokémon\n"
 	.string "in battle at a time.\p"
-	.string "DOUBLE BATTLE is for two TRAINERS\n"
+	.string "Double Battle is for two TRAINERS\n"
 	.string "with two or more Pokémon each.\p"
 	.string "Each TRAINER will send out two\n"
 	.string "Pokémon in battle at a time.\p"

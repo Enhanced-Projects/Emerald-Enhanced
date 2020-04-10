@@ -582,10 +582,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuDrawDicePics
 	def_special RyuNumberOfFullBoxes
 	def_special RyuWipeParty
-	def_special RyuDepositPlayerMoney
-	def_special RyuWithdrawPlayerMoney
-	def_special RyuGetPlayerBankBal
-	def_special UpdateBankBalance
 	def_special GivePlayerModdedMon
 	def_special RyuSacrificeMon
 	def_special RyuSwapAbility
@@ -606,3 +602,4 @@ gSpecials:: @ 81DBA64
 	def_special resetSoundGameStat
 	def_special ForceSoftReset
 	def_special RyuMeloettaFormSwitcher
+	def_special SwapPlayerGender

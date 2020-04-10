@@ -98,7 +98,7 @@ LilycoveCity_DepartmentStore_5F_EventScript_ClerkMidRight:: @ 822000A
 LCC_BattleItemMart: @ 8220024
 	.2byte ITEM_CHOICE_BAND
 	.2byte ITEM_CHOICE_SPECS
-        .2byte ITEM_CHOICE_SCARF
+    .2byte ITEM_CHOICE_SCARF
 	.2byte ITEM_LIFE_ORB
 	.2byte ITEM_EXPERT_BELT
 	.2byte ITEM_WEAKNESS_POLICY

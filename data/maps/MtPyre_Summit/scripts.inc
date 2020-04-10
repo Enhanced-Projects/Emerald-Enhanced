@@ -82,7 +82,7 @@ MtPyre_Summit_EventScript_TeamAquaExits:: @ 823203C
 	applymovement OBJ_EVENT_ID_PLAYER, MP_PlayerReturnToTop
 	waitmovement 0
 	msgbox MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis, MSGBOX_DEFAULT
-	additem ITEM_EON_TICKET
+	giveitem ITEM_EON_TICKET
 	setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
 	setflag FLAG_SHOWN_EON_TICKET
 	setflag FLAG_RECEIVED_RED_OR_BLUE_ORB
@@ -240,21 +240,21 @@ MtPyre_Summit_EventScript_ArchieMaxieTrigger0:: @ 82321EC
 	lockall
 	setvar VAR_0x8008, 0
 	goto_if_set FLAG_RYU_DS_SHELLY_LOVERS, MP_AltArchieFight
-	goto MtPyre_Summit_EventScript_ArchieMaxieReturnOrbs
+	goto MtPyre_Summit_EventScript_TeamAquaExits
 	end
 
 MtPyre_Summit_EventScript_ArchieMaxieTrigger1:: @ 82321F8
 	lockall
 	setvar VAR_0x8008, 1
 	goto_if_set FLAG_RYU_DS_SHELLY_LOVERS, MP_AltArchieFight
-	goto MtPyre_Summit_EventScript_ArchieMaxieReturnOrbs
+	goto MtPyre_Summit_EventScript_TeamAquaExits
 	end
 
 MtPyre_Summit_EventScript_ArchieMaxieTrigger2:: @ 8232204
 	lockall
 	setvar VAR_0x8008, 2
 	goto_if_set FLAG_RYU_DS_SHELLY_LOVERS, MP_AltArchieFight
-	goto MtPyre_Summit_EventScript_ArchieMaxieReturnOrbs
+	goto MtPyre_Summit_EventScript_TeamAquaExits
 	end
 
 MtPyre_Summit_EventScript_ArchieMaxieReturnOrbs:: @ 8232210

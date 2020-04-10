@@ -335,6 +335,7 @@
 #define SCENEBGMINNIE 3
 #define SCENEBGMELOETTA 4
 #define SCENEBGSHELLY 5
+#define SCENEBGMAWILE 6
 
 #define SPECIAL_VARS_END              0x8015
 

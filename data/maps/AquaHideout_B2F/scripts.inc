@@ -194,11 +194,63 @@ AC_NormalWarp::
 	end
 
 AquaHideout_B2F_EventScript_Matt:: @ 8233E09
+	goto_if_set FLAG_RYU_ARCHIE_SUCCESSFUL, AquaHideoutKyogreGuardian
 	trainerbattle_single TRAINER_MATT, AquaHideout_B2F_Text_MattIntro, AquaHideout_B2F_Text_MattDefeat, AquaHideout_B2F_EventScript_SubmarineEscape
 	msgbox AquaHideout_B2F_Text_MattPostBattle, MSGBOX_DEFAULT
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	release
 	end
+
+AquaHideoutKyogreGuardian::
+	lockall
+	faceplayer
+	msgbox KyogreGuardian
+	closemessage
+	giveitem ITEM_NET_BALL, 20
+	msgbox KGGoodluck
+	closemessage
+	setflag FLAG_RYU_DEVON_HIDE_MATT_SUB
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepRight
+	waitmovement EVENT_OBJ_ID_PLAYER
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
+	applymovement 1, KyogreGuardianLeaves
+	waitmovement 1
+	playse SE_TK_WARPOUT
+	removeobject 1
+	waitse
+	release
+	end
+
+KyogreGuardian:
+    .string "Matt: Heya {PLAYER}. I've been\n"
+    .string "keeping an eye on Kyogre until you\p"
+    .string "got here. It's been suprisingly calm,\n"
+    .string "though I think it's because Archie\p"
+    .string "told it that a powerful trainer was\n"
+    .string "coming.\p"
+    .string "Anyways... Here's some Net Balls, you\n"
+    .string "may need them.$"
+
+KGGoodluck:
+    .string "Well... I'm off to explore the ocean\n"
+    .string "to see where would be good ingress\p"
+    .string "points to start expanding the sea.\n"
+    .string "Good Luck, Soldier!$"
+
+KyogreGuardianLeaves:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
 
 AHQ_KyogreTrigger::
 	goto_if_unset FLAG_RYU_AQUA_LINE_DONE, ryu_end

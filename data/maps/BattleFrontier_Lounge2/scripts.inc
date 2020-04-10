@@ -124,13 +124,13 @@ BattleFrontier_Lounge2_EventScript_TriathleteF:: @ 826075D
 
 BattleFrontier_Lounge2_Text_FrontierManiacIntro:: @ 8260766
 	.string "Howdy! When it comes to news about\n"
-	.string "the BATTLE FRONTIER, I'm no. 1.\p"
+	.string "the Battle Frontier, I'm no. 1.\p"
 	.string "You can think of me as\n"
 	.string "the FRONTIER MANIAC.\p"
 	.string "Just checking, but you are a Trainer,\n"
 	.string "isn't that right?\p"
 	.string "I'll happily share the hottest news\n"
-	.string "I gathered about the BATTLE FRONTIER.$"
+	.string "I gathered about the Battle Frontier.$"
 
 BattleFrontier_Lounge2_Text_SwingByForTheLatestWord:: @ 8260857
 	.string "Howdy! Did you swing by to grill me\n"
@@ -149,7 +149,7 @@ BattleFrontier_Lounge2_Text_FacilityIsHottest:: @ 82608F2
 
 BattleFrontier_Lounge2_Text_BattleTowerIsHottest:: @ 8260933
 	.string "Let's see now…\p"
-	.string "It sounds like BATTLE TOWER\n"
+	.string "It sounds like Battle Tower\n"
 	.string "{STR_VAR_1} is the hottest.$"
 
 BattleFrontier_Lounge2_Text_SalonMaidenIsThere:: @ 8260971
@@ -329,24 +329,24 @@ BattleFrontier_Lounge2_Text_PyramidKingGoldMons:: @ 82618C4
 
 BattleFrontier_Lounge2_Text_DoubleBattleAdvice1:: @ 82619AC
 	.string "Sure, there are several places where\n"
-	.string "you can enter DOUBLE BATTLES.\p"
-	.string "But the DOUBLE BATTLE ROOMS of\n"
-	.string "the BATTLE TOWER are, like, basic!\p"
+	.string "you can enter Double BattleS.\p"
+	.string "But the Double Battle ROOMS of\n"
+	.string "the Battle Tower are, like, basic!\p"
 	.string "They're where you should learn about\n"
-	.string "how DOUBLE BATTLES are played here\l"
-	.string "in the BATTLE FRONTIER.$"
+	.string "how Double BattleS are played here\l"
+	.string "in the Battle Frontier.$"
 
 BattleFrontier_Lounge2_Text_DoubleBattleAdvice2:: @ 8261A91
 	.string "Watch yourself in the battles here.\p"
 	.string "I hear there are Trainers that have\n"
 	.string "strategies they developed just for\l"
-	.string "DOUBLE BATTLES.$"
+	.string "Double BattleS.$"
 
 BattleFrontier_Lounge2_Text_DoubleBattleAdvice3:: @ 8261B0C
 	.string "Once you're confident and comfortable\n"
-	.string "with DOUBLE BATTLES here, you should\l"
+	.string "with Double BattleS here, you should\l"
 	.string "think about challenging other places\l"
-	.string "offering DOUBLE BATTLES.$"
+	.string "offering Double BattleS.$"
 
 BattleFrontier_Lounge2_Text_MultiBattleAdvice:: @ 8261B95
 	.string "All sorts of Trainers gather in\n"

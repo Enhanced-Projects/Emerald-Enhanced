@@ -1,10 +1,10 @@
-VictoryRoad_1F_MapScripts:: @ 8235D7A
-	map_script MAP_SCRIPT_ON_TRANSITION, VictoryRoad_1F_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, VR1_CloseMewTwoDoor
+VictoryRoad_1F_MapScripts::
+	map_script ON_FRAME, VR1_CloseMewTwoDoor
 	.byte 0
 
 VR1_CloseMewTwoDoor::
 	map_script_2 VAR_TEMP_7, 0, VR1_CloseDoor
+	.2byte 0
 	
 VR1_CloseDoor::
 	setvar VAR_TEMP_7, 1
@@ -16,98 +16,6 @@ VR1_CloseDoor::
 	setmetatile  9, 20, 537, 1
 	setmetatile 10, 20, 537, 1
 	setmetatile 11, 20, 537, 1
-	end
-
-VictoryRoad_1F_OnTransition: @ 8235D80
-	compare VAR_VICTORY_ROAD_1F_STATE, 1
-	call_if_eq VictoryRoad_1F_EventScript_SetEntranceWallyPos1
-	compare VAR_VICTORY_ROAD_1F_STATE, 2
-	call_if_eq VictoryRoad_1F_EventScript_SetEntranceWallyPos2
-	end
-
-VictoryRoad_1F_EventScript_SetEntranceWallyPos1:: @ 8235D97
-	setobjectxyperm 4, 2, 24
-	setobjectmovementtype 4, MOVEMENT_TYPE_FACE_DOWN
-	return
-
-VictoryRoad_1F_EventScript_SetEntranceWallyPos2:: @ 8235DA3
-	setobjectxyperm 4, 3, 24
-	setobjectmovementtype 4, MOVEMENT_TYPE_FACE_DOWN
-	return
-
-VictoryRoad_1F_EventScript_WallyBattleTrigger1:: @ 8235DAF
-	lockall
-	setvar VAR_0x8008, 1
-	addobject 4
-	applymovement 4, VictoryRoad_1F_Movement_WallyApproachPlayer1
-	waitmovement 0
-	goto VictoryRoad_1F_EventScript_WallyEntranceBattle
-	end
-
-VictoryRoad_1F_EventScript_WallyBattleTrigger2:: @ 8235DC8
-	lockall
-	setvar VAR_0x8008, 2
-	addobject 4
-	applymovement 4, VictoryRoad_1F_Movement_WallyApproachPlayer2
-	waitmovement 0
-	goto VictoryRoad_1F_EventScript_WallyEntranceBattle
-	end
-
-VictoryRoad_1F_EventScript_WallyEntranceBattle:: @ 8235DE1
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	msgbox VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_WALLY_VR_1, VictoryRoad_1F_Text_WallyEntranceDefeat
-	msgbox VictoryRoad_1F_Text_WallyPostEntranceBattle, MSGBOX_DEFAULT
-	clearflag FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY
-	copyobjectxytoperm 4
-	setflag FLAG_DEFEATED_WALLY_VICTORY_ROAD
-	copyvar VAR_VICTORY_ROAD_1F_STATE, VAR_0x8008
-	releaseall
-	end
-
-VictoryRoad_1F_Movement_WallyApproachPlayer1: @ 8235E15
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	step_end
-
-VictoryRoad_1F_Movement_WallyApproachPlayer2: @ 8235E21
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	step_end
-
-@ This Wally appears near the entrance once his battle is triggered and remains there until the Hall of Fame is entered
-VictoryRoad_1F_EventScript_EntranceWally:: @ 8235E2C
-	msgbox VictoryRoad_1F_Text_WallyPostEntranceBattle, MSGBOX_NPC
-	end
-
-@ This Wally appears and remains at the exit after the Hall of Fame is entered 
-VictoryRoad_1F_EventScript_ExitWally:: @ 8235E35
-	trainerbattle_single TRAINER_WALLY_VR_2, VictoryRoad_1F_Text_WallyIntro, VictoryRoad_1F_Text_WallyDefeat
-	goto_if_eq VictoryRoad_1F_EventScript_RematchWally
-	msgbox VictoryRoad_1F_Text_WallyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-VictoryRoad_1F_EventScript_RematchWally:: @ 8235E5C
-	trainerbattle_single TRAINER_WALLY_VR_2, VictoryRoad_1F_Text_WallyIntro, VictoryRoad_1F_Text_WallyDefeat
-	msgbox VictoryRoad_1F_Text_WallyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 VictoryRoad_1F_EventScript_Edgar:: @ 8235E73

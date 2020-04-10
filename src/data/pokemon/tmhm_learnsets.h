@@ -8808,6 +8808,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM25_THUNDER)
 											| TMHM(TM24_THUNDERBOLT)
 											| TMHM(TM41_TORMENT)
+											| TMHM(TM62_CURSE)
 											| TMHM(TM06_TOXIC)),
 
     [SPECIES_BANETTE]     = TMHM_LEARNSET(TMHM(TM45_ATTRACT)

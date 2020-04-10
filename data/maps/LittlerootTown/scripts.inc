@@ -34,12 +34,8 @@ LRT_CancelFollower::
 	end
 	
 LRT_MinnieScript::
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGMINNIE
 	msgbox LRT_FollowerHeal MSGBOX_YESNO
 	compare VAR_RESULT, 1
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
 	goto_if_eq LRT_RemoveMinnie
 	closemessage
 	end

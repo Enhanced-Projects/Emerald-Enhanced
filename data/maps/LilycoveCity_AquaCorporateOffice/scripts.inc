@@ -29,11 +29,13 @@ LC_AH_Security1::
 	call RyuGivePokenav
 	givemoney 50000
 	msgbox LC_AH_Pokenav_get MSGBOX_DEFAULT
+	closemessage
 	msgbox LC_AH_JobOffer MSGBOX_DEFAULT
-	msgbox LC_AH_JoinQuery MSGBOX_YESNO
-	compare VAR_RESULT, 0
-	goto_if_eq LC_AH_Declined
+	closemessage
+	msgbox LC_AH_JoinQuery
+	closemessage
 	msgbox LC_AH_Shelly_desc MSGBOX_DEFAULT
+	closemessage
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	setflag FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA
 	setflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS
@@ -68,9 +70,11 @@ LC_AH_SecurityStop3::
     settrainerflag TRAINER_GRUNT_MT_PYRE_2
     settrainerflag TRAINER_GRUNT_MT_PYRE_3
     settrainerflag TRAINER_GRUNT_MT_PYRE_4
-	cleartrainerflag TRAINER_MAXIE_MAGMA_HIDEOUT
+	cleartrainerflag TRAINER_MAXIE_3
 	cleartrainerflag TRAINER_COURTNEY_3
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
+	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
 	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_PlayerLeave
 	waitmovement 0
 	release
@@ -228,7 +232,7 @@ LC_AH_JobOffer:
 	.string "with a sign on bonus of ¥50000.$"
 	
 LC_AH_JoinQuery:
-	.string "Would you like to work for us?$"
+	.string "Let's create a little chaos.$"
 	
 LC_AH_Shelly_desc:
 	.string "Welcome to Team Aqua. You'll\p"
@@ -312,7 +316,7 @@ LC_AH_Mission4::
     settrainerflag TRAINER_GRUNT_MT_PYRE_2
     settrainerflag TRAINER_GRUNT_MT_PYRE_3
     settrainerflag TRAINER_GRUNT_MT_PYRE_4
-	cleartrainerflag TRAINER_MAXIE_MAGMA_HIDEOUT
+	cleartrainerflag TRAINER_MAXIE_3
 	cleartrainerflag TRAINER_COURTNEY_3
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
@@ -332,6 +336,7 @@ LC_AH_NoRelConclusion::
 	setflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
 	setflag FLAG_RYU_AQUA_LINE_DONE
 	setflag FLAG_RYU_ARCHIE_SUCCESSFUL
+	setflag FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW
 	clearflag FLAG_RYU_KYOGRE
 	release
 	end

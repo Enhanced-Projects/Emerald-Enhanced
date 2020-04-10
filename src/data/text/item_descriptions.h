@@ -1818,7 +1818,9 @@ static const u8 sTM61Desc[] = _(
     "May flinch.");
 
 static const u8 sTM62Desc[] = _(
-    "contains nothing");
+    "Raises Atk & Def at\n"
+    "the cost of speed,\n"
+    "or lays a curse.");
 
 static const u8 sTM63Desc[] = _(
     "contains nothing");

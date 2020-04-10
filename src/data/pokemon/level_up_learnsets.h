@@ -20291,6 +20291,7 @@ static const struct LevelUpMove sLeavannyLevelUpLearnset[] = {//NOT IN EE
 static const struct LevelUpMove sVenipedeLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_DEFENSE_CURL),
     LEVEL_UP_MOVE( 1, MOVE_ROLLOUT),
+    LEVEL_UP_MOVE( 1, MOVE_BUG_BITE),
     LEVEL_UP_MOVE( 5, MOVE_POISON_STING),
     LEVEL_UP_MOVE( 8, MOVE_SCREECH),
     LEVEL_UP_MOVE(12, MOVE_PURSUIT),

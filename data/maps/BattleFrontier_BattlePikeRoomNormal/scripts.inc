@@ -790,11 +790,11 @@ BattleFrontier_BattlePikeRoomNormal_Text_HopeYouDidntUseUpLuck: @ 825DF71
 
 BattleFrontier_BattlePikeRoomNormal_Text_LucyShowMeFrontierPass: @ 825DFA2
 	.string "LUCY: … … … … … …\n"
-	.string "Show me your FRONTIER PASS…$"
+	.string "Show me your Frontier Pass…$"
 
 BattleFrontier_BattlePikeRoomNormal_Text_ReceivedLuckSymbol: @ 825DFD0
 	.string "The Luck Symbol was embossed on\n"
-	.string "the FRONTIER PASS!$"
+	.string "the Frontier Pass!$"
 
 BattleFrontier_BattlePikeRoomNormal_Text_AllThereIsDisappear: @ 825E003
 	.string "…That's all there is…\n"
@@ -816,7 +816,7 @@ BattleFrontier_BattlePikeRoomNormal_Text_NowComeOn: @ 825E0E8
 
 BattleFrontier_BattlePikeRoomNormal_Text_LucyFrontierPass: @ 825E0F6
 	.string "LUCY: … … … … … …\p"
-	.string "…FRONTIER PASS…$"
+	.string "…Frontier Pass…$"
 
 BattleFrontier_BattlePikeRoomNormal_Text_LuckSymbolTookGoldenShine: @ 825E118
 	.string "The Luck Symbol took on\n"

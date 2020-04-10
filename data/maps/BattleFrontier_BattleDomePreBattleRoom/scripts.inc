@@ -141,7 +141,7 @@ BattleFrontier_BattleDomePreBattleRoom_EventScript_24B46D:: @ 824B46D
 	fadescreen FADE_TO_BLACK
 	call BattleFrontier_EventScript_GetLvlMode
 	copyvar VAR_0x8004, VAR_RESULT
-	setvar VAR_0x8005, 2  @ 2 of the 3 party mons are selected for battle
+	setvar VAR_0x8005, 6 
 	special ChoosePartyForBattleFrontier
 	waitstate
 	frontier_resetsketch
@@ -222,7 +222,7 @@ BattleFrontier_BattleDomePreBattleRoom_EventScript_24B5C7:: @ 824B5C7
 	setvar VAR_TEMP_0, 1
 	msgbox BattleFrontier_BattleDomePreBattleRoom_Text_24B760, MSGBOX_DEFAULT
 	special LoadPlayerParty
-	frontier_setpartyorder FRONTIER_PARTY_SIZE
+	frontier_setpartyorder 6
 	playfanfare MUS_ME_ASA
 	waitfanfare
 	special HealPlayerParty
@@ -290,8 +290,7 @@ BattleFrontier_BattleDomePreBattleRoom_Text_24B6E3: @ 824B6E3
 	.string "Are you ready?$"
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24B70C: @ 824B70C
-	.string "Please choose the two Pokémon\n"
-	.string "that are to appear in battle.$"
+	.string "Please choose the Pokémon order.$"
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24B748: @ 824B748
 	.string "Right this way, please.$"
@@ -364,27 +363,27 @@ BattleFrontier_BattleDomePreBattleRoom_Text_24BAD3: @ 824BAD3
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24BAF7: @ 824BAF7
 	.string "Should I record your last match\n"
-	.string "on your FRONTIER PASS?$"
+	.string "on your Frontier Pass?$"
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24BB2E: @ 824BB2E
 	.string "Congratulations for advancing\n"
 	.string "to the final match.\p"
 	.string "For the final match, you will challenge\n"
-	.string "the DOME ACE TUCKER.\p"
+	.string "the Dome Ace Tucker.\p"
 	.string "Are you ready?$"
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24BBAC: @ 824BBAC
 	.string "Congratulations for advancing\n"
 	.string "to the final match.\p"
 	.string "For the final match, you will challenge\n"
-	.string "the DOME ACE TUCKER.\p"
+	.string "the Dome Ace Tucker.\p"
 	.string "Are you ready?$"
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24BC2A: @ 824BC2A
-	.string "Your final battle against TUCKER is\n"
+	.string "Your final battle against Tucker is\n"
 	.string "next. Are you ready?$"
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24BC63: @ 824BC63
-	.string "Your final battle against TUCKER is\n"
+	.string "Your final battle against Tucker is\n"
 	.string "next. Are you ready?$"
 

@@ -28,11 +28,11 @@ struct FacilityMon
 {
     u16 species;
     u16 moves[MAX_MON_MOVES];
-    u8 itemTableId;
+    u16 heldItem;
     u8 evSpread;
     u8 nature;
     u8 ivs;
-    bool8 ability;
+    u8 ability;
 };
 
 extern const u8 gTowerMaleFacilityClasses[30];

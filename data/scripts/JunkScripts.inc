@@ -12,7 +12,7 @@ LittlerootTown_DawnsHouse_2F_EventScript_TurnOffPlayerPC:: @ 81F958F
 	releaseall
 	end
 
-LittlerootTown_MaysHouse_2F_EventScript_1F9576:: @ 81F9576
+LittlerootTown_DawnsHouse_2F_EventScript_1F9576:: @ 81F9576
 	setvar VAR_0x8004, 2
 	special DoPCTurnOnEffect
 	playse SE_PC_ON
@@ -33,7 +33,7 @@ PlayersHouse_1F_Text_IsntItNiceInHere: @ 81F7A1C
 	.string "MOM: See, {PLAYER}?\n"
 	.string "Isn't it nice in here, too?$"
 
-LittlerootTown_MaysHouse_2F_EventScript_1F956C:: @ 81F956C
+LittlerootTown_DawnsHouse_2F_EventScript_1F956C:: @ 81F956C
 	msgbox gUnknown_08272CD5, MSGBOX_DEFAULT
 	releaseall
 	end

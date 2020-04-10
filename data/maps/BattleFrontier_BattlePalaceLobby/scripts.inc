@@ -391,19 +391,19 @@ BattleFrontier_BattlePalaceLobby_EventScript_ExitRules:: @ 824DD59
 BattleFrontier_BattlePalaceLobby_Text_WelcomeForSingleBattle: @ 824DD5B
 	.string "Where the hearts of Trainers\n"
 	.string "are put to the test.\p"
-	.string "I welcome you to the BATTLE PALACE.\p"
+	.string "I welcome you to the Battle Palace.\p"
 	.string "I accept challenges to the SINGLE\n"
 	.string "BATTLE HALLS.$"
 
 BattleFrontier_BattlePalaceLobby_Text_TakeSingleBattleChallenge: @ 824DDE1
 	.string "Do you wish to take\n"
-	.string "the SINGLE BATTLE HALL challenge?$"
+	.string "the Single Battle HALL challenge?$"
 
 BattleFrontier_BattlePalaceLobby_Text_ExplainSingleBattleChallenge: @ 824DE17
-	.string "In the BATTLE PALACE, there are\n"
-	.string "several auditoriums for SINGLE BATTLES\l"
-	.string "that are named SINGLE BATTLE HALLS.\p"
-	.string "The SINGLE BATTLES are conducted in\n"
+	.string "In the Battle Palace, there are\n"
+	.string "several auditoriums for Single BattleS\l"
+	.string "that are named Single Battle HALLS.\p"
+	.string "The Single BattleS are conducted in\n"
 	.string "the usual way, except with one crucial\l"
 	.string "rule that must be obeyed.\p"
 	.string "Trainers are permitted only to switch\n"
@@ -561,19 +561,19 @@ BattleFrontier_BattlePalaceLobby_Text_WhatNatureFavorsChippingAway: @ 824EA4B
 BattleFrontier_BattlePalaceLobby_Text_WelcomeForDoubleBattle: @ 824EB06
 	.string "Where the hearts of Trainers\n"
 	.string "are put to the test.\p"
-	.string "I welcome you to the BATTLE PALACE.\p"
+	.string "I welcome you to the Battle Palace.\p"
 	.string "I accept challenges to the DOUBLE\n"
 	.string "BATTLE HALLS.$"
 
 BattleFrontier_BattlePalaceLobby_Text_TakeDoubleBattleChallenge: @ 824EB8C
 	.string "Do you wish to take\n"
-	.string "the DOUBLE BATTLE HALL challenge?$"
+	.string "the Double Battle HALL challenge?$"
 
 BattleFrontier_BattlePalaceLobby_Text_ExplainDoubleBattleChallenge: @ 824EBC2
-	.string "In the BATTLE PALACE, there are\n"
-	.string "several auditoriums for DOUBLE BATTLES\l"
-	.string "that are named DOUBLE BATTLE HALLS.\p"
-	.string "The DOUBLE BATTLES are conducted in\n"
+	.string "In the Battle Palace, there are\n"
+	.string "several auditoriums for Double BattleS\l"
+	.string "that are named Double Battle HALLS.\p"
+	.string "The Double BattleS are conducted in\n"
 	.string "the usual way, except with one crucial\l"
 	.string "rule that must be obeyed.\p"
 	.string "Trainers are permitted only to switch\n"
@@ -603,8 +603,8 @@ BattleFrontier_BattlePalaceLobby_Text_PresentYouWithBattlePoints: @ 824EEB9
 
 BattleFrontier_BattlePalaceLobby_Text_LikeToRecordMatch: @ 824EF16
 	.string "Would you like to record your latest\n"
-	.string "BATTLE PALACE match on your\l"
-	.string "FRONTIER PASS?$"
+	.string "Battle Palace match on your\l"
+	.string "Frontier Pass?$"
 
 BattleFrontier_BattlePalaceLobby_Text_RulesAreListed: @ 824EF66
 	.string "The BATTLE HALL rules are listed.$"

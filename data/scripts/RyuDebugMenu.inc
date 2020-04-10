@@ -170,6 +170,7 @@ RyuDebug_enableWaystone::
 	setflag FLAG_RYU_LANDMARK_LCCDEPTSTORE
 	setflag FLAG_LANDMARK_ABANDONED_SHIP
 	setflag FLAG_LANDMARK_AQUA_OFFICE
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	return
 
 RyuDebug_ViewTempVars::
@@ -179,18 +180,40 @@ RyuDebug_ViewTempVars::
 	end
 
 RDB_CTVMsg:
-	.string "{STR_VAR_1} NFE's exist.$"
+	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	call_if_unset FLAG_RYU_CLEARED_COOL, nocool
-	call_if_unset FLAG_RYU_CLEARED_SMART, nosmart
-	call_if_unset FLAG_RYU_CLEARED_BEAUTY, nobeauty
-	call_if_unset FLAG_RYU_CLEARED_TOUGH, notough
-	call_if_unset FLAG_RYU_CLEARED_CUTE, nocute
+	playse SE_PIN
+	waitse
+	setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
+	setvar VAR_TEMP_5, 6
+	goto RDB_GiveRandomFrontierMons
+
+RDB_GiveRandomFrontierMons::
+	compare VAR_TEMP_5, 0
+	goto_if_eq GiveRandomFrontiermonsEnd
+	subvar VAR_TEMP_5, 1
+	goto RDB_GiveRandomFrontierMonsLoop
+
+RDB_GiveRandomFrontierMonsLoop::
+	random 199
+	addvar VAR_RESULT, 601
+	copyvar VAR_TEMP_6, VAR_RESULT 
+	special RyuGiveFrontierMon
+	goto RDB_GiveRandomFrontierMons
+
+GiveRandomFrontiermonsEnd::
+	msgbox RDB_GRFMD
+	clearflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
 	closemessage
-	setflag FLAG_RYU_RANDOMBATTLE
 	release
 	end
+
+RDB_GRFMD:
+	.string "Given 6 random frontier mons.$"
+
+genderswap:
+	.string "Your gender will be swapped for\nthe purpose of sprite testing.$"
 
 nocool::
 	msgbox nocoolmsg

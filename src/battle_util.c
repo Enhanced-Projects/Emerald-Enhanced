@@ -1610,7 +1610,7 @@ u8 DoBattlerEndTurnEffects(void)
                 && gBattleMons[gActiveBattler].hp != 0
                 && ability != ABILITY_MAGIC_GUARD)
             {
-                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 4;
+                gBattleMoveDamage = (gBattleMons[gActiveBattler].maxHP / 3) + 1;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 BattleScriptExecute(BattleScript_CurseTurnDmg);
@@ -4006,6 +4006,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
     u8 changedPP = 0;
     u8 battlerHoldEffect, atkHoldEffect;
     u8 battlerHoldEffectParam, atkHoldEffectParam;
+    u16 amount = 1;
     u16 atkItem;
 
     gLastUsedItem = gBattleMons[battlerId].item;
@@ -4063,9 +4064,10 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
             case HOLD_EFFECT_RESTORE_HP:
                 if (!moveTurn && HasEnoughHpToEatBerry(battlerId, 2))
                 {
-                    gBattleMoveDamage = battlerHoldEffectParam;
-                    if (gBattleMons[battlerId].hp + battlerHoldEffectParam > gBattleMons[battlerId].maxHP)
-                        gBattleMoveDamage = gBattleMons[battlerId].maxHP - gBattleMons[battlerId].hp;
+                    amount = battlerHoldEffectParam;
+                    gBattleMoveDamage = (gBattleMons[battlerId].maxHP / 4);
+                    if ((gBattleMoveDamage + gBattleMons[battlerId].hp) > gBattleMons[battlerId].maxHP)
+                        gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
                     BattleScriptExecute(BattleScript_ItemHealHP_RemoveItem);
                     effect = 4;
@@ -4913,6 +4915,9 @@ static bool32 HasObedientBitSet(u8 battlerId)
 u8 IsMonDisobedient(void)
 {
     u8 obedienceLevel = 0;
+
+    if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
+        return 0;
 
     if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_x2000000))
         return 0;

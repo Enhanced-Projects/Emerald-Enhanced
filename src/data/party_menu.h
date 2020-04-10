@@ -660,6 +660,8 @@ static const u8 *const sDescriptionStringTable[] =
     [PARTYBOX_DESC_SECOND]     = gText_Second_PM,
     [PARTYBOX_DESC_THIRD]      = gText_Third_PM,
     [PARTYBOX_DESC_FOURTH]     = gText_Fourth,
+    [PARTYBOX_DESC_FIFTH]      = gText_5th,
+    [PARTYBOX_DESC_SIXTH]      = gText_6th,
     [PARTYBOX_DESC_ABLE]       = gText_Able2,
     [PARTYBOX_DESC_NOT_ABLE]   = gText_NotAble,
     [PARTYBOX_DESC_ABLE_2]     = gText_Able3,
@@ -1255,7 +1257,7 @@ static const u16 sTMHMMoves[] = //TM MOVE TABLE
     MOVE_IRON_HEAD,
     MOVE_SUPERPOWER,
     MOVE_GRAVEL_STORM,
-    MOVE_NONE,
+    MOVE_CURSE,
     MOVE_NONE,
     MOVE_NONE,
 };

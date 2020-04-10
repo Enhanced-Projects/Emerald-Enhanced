@@ -806,6 +806,7 @@ const u16 gEggMoves[] = {
         MOVE_MUD_SHOT,
         MOVE_RAPID_SPIN,
         MOVE_SCREECH,
+        MOVE_ICICLE_SPEAR,
         MOVE_TAKE_DOWN),
 
     egg_moves(AERODACTYL,

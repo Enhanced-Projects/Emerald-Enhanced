@@ -6916,7 +6916,7 @@ extern const u32 gTitleScreenPressStartGfx[];
 extern const u32 gTitleScreenPokemonLogoGfx[];
 extern const u32 gUnknown_08DE0644[];
 extern const u32 gUnknown_08DDE458[];
-extern const u16 gTitleScreenBgPalettes[];
+extern const u32 gTitleScreenBgPalettes[];
 extern const u16 gTitleScreenPressStartPal[];
 extern const u16 gTitleScreenEmeraldVersionPal[];
 

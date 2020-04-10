@@ -8,6 +8,13 @@ MtPyre_2F_SetHoleWarp: @ 823110B
 	setstepcallback STEP_CB_CRACKED_FLOOR
 	setholewarp MAP_MT_PYRE_1F, 255, 0, 0
 	end
+	
+MP_TM62::
+	finditem ITEM_TM62, 1
+	setflag FLAG_ITEM_MT_PYRE_2F_ULTRA_BALL
+	removeobject 2
+	release
+	end
 
 MtPyre_2F_EventScript_Woman:: @ 8231116
 	msgbox MtPyre_2F_Text_MemoriesOfSkitty, MSGBOX_NPC

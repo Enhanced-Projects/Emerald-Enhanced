@@ -484,11 +484,11 @@ BattleFrontier_BattleTowerBattleRoom_Text_ReadyFor7thOpponent: @ 8242371
 
 BattleFrontier_BattleTowerBattleRoom_Text_RecordYourBattle: @ 82423A3
 	.string "Record your battle on your\n"
-	.string "FRONTIER PASS?$"
+	.string "Frontier Pass?$"
 
 BattleFrontier_BattleTowerLobby_Text_BattleRecordedOnPass: @ 82423CD
 	.string "{PLAYER}'s battle was recorded\n"
-	.string "on the FRONTIER PASS.$"
+	.string "on the Frontier Pass.$"
 
 BattleFrontier_BattleTowerBattleRoom_Text_SaveAndQuitGame: @ 82423FC
 	.string "Would you like to save and\n"
@@ -520,7 +520,7 @@ BattleFrontier_BattleTowerBattleRoom_Text_GreetingsImAnabel: @ 8242579
 	.string "Greetings…\n"
 	.string "My name is ANABEL.\p"
 	.string "I am the SALON MAIDEN, and I am in\n"
-	.string "charge of running the BATTLE TOWER…\p"
+	.string "charge of running the Battle Tower…\p"
 	.string "I have heard several rumors\n"
 	.string "about you…\p"
 	.string "In all honesty, what I have heard does\n"
@@ -534,12 +534,12 @@ BattleFrontier_BattleTowerBattleRoom_Text_LetMeSeeYourTalent: @ 824268C
 
 BattleFrontier_BattleTowerBattleRoom_Text_AnabelTalentShallBeRecognized: @ 82426B4
 	.string "ANABEL: Fufufu, nicely done…\p"
-	.string "Your FRONTIER PASS, please…\n"
+	.string "Your Frontier Pass, please…\n"
 	.string "Your talent shall be recognized.$"
 
 BattleFrontier_BattleTowerBattleRoom_Text_ReceivedAbilitySymbol: @ 824270E
 	.string "The Ability Symbol was embossed on\n"
-	.string "the FRONTIER PASS!$"
+	.string "the Frontier Pass!$"
 
 BattleFrontier_BattleTowerBattleRoom_Text_UntilNextTime: @ 8242744
 	.string "… … … … … …\p"
@@ -565,7 +565,7 @@ BattleFrontier_BattleTowerBattleRoom_Text_LetsBeginShallWe: @ 82428E0
 
 BattleFrontier_BattleTowerBattleRoom_Text_AnabelCongratsYourPassPlease: @ 82428F7
 	.string "ANABEL: Fufu, congratulations…\n"
-	.string "Your FRONTIER PASS, please…$"
+	.string "Your Frontier Pass, please…$"
 
 BattleFrontier_BattleTowerBattleRoom_Text_AbilitySymbolTookGoldenShine: @ 8242932
 	.string "The Ability Symbol took on\n"

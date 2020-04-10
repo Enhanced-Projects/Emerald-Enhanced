@@ -476,7 +476,7 @@ struct BattleStruct
     u8 stringMoveType;
     u8 expGetterBattlerId;
     u8 field_91; // related to gAbsentBattlerFlags, possibly absent flags turn ago?
-    u8 field_92; // battle palace related
+    u8 field_92; // Battle Palace related
     u8 field_93; // related to choosing pokemon?
     u8 wallyBattleState;
     u8 wallyMovesState;
@@ -600,7 +600,7 @@ struct BattleScripting
     u8 reshowMainState;
     u8 reshowHelperState;
     u8 field_23;
-    u8 windowsType; // 0 - normal, 1 - battle arena
+    u8 windowsType; // 0 - normal, 1 - Battle Arena
     u8 multiplayerId;
     u8 specialTrainerBattleType;
     bool8 monCaught;

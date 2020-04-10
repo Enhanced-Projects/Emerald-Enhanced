@@ -687,7 +687,7 @@ void DoCableClubWarp(void)
 {
     ScriptContext2_Enable();
     TryFadeOutOldMapMusic();
-    WarpFadeOutScreen();
+    //WarpFadeOutScreen();
     PlaySE(SE_KAIDAN);
     CreateTask(sub_80AF8E0, 10);
 }

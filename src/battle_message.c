@@ -683,6 +683,7 @@ static const u8 sText_RyuBossRaisedStats[] = _("Ryu's legendary status\nraises o
 static const u8 sText_RyuBossWildStatBoost[] = _("The wild Pokémon emits an\nopressive aura...");
 static const u8 sText_RyuSimulationCritDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_1} damage\nwith a critical hit.");
 static const u8 sText_RyuPkmnResolvedToFight[] = _("{B_DEF_NAME_WITH_PREFIX} has resolved to stick\nthis fight out.");
+static const u8 sText_RyuMimikyuDisguiseBlocked[] = _("Its disguise served it as a decoy!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1234,6 +1235,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_SIMULATIONDAMAGE - 12] = sText_RyuSimulationDamage,
     [STRINGID_SIMULATIONCRITDAMAGE - 12] = sText_RyuSimulationCritDamage,
     [STRINGID_PKMNISRESOLVED - 12] = sText_RyuPkmnResolvedToFight,
+    [STRINGID_MIMIKYUDISGUISEBLOCKED - 12] = sText_RyuMimikyuDisguiseBlocked
 
 };
 
@@ -1700,8 +1702,8 @@ static const u8 sText_Trainer2WinText[] = _("{B_TRAINER2_WIN_TEXT}");
 static const u8 sText_Trainer1Fled[] = _( "{PLAY_SE 0x0011}{B_TRAINER1_CLASS} {B_TRAINER1_NAME} fled!");
 static const u8 sText_PlayerLostAgainstTrainer1[] = _("Player lost against\n{B_TRAINER1_CLASS} {B_TRAINER1_NAME}!");
 static const u8 sText_PlayerBattledToDrawTrainer1[] = _("Player battled to a draw against\n{B_TRAINER1_CLASS} {B_TRAINER1_NAME}!");
-const u8 gText_RecordBattleToPass[] = _("Would you like to record your battle\non your FRONTIER PASS?");
-const u8 gText_BattleRecordedOnPass[] = _("{B_PLAYER_NAME}'s battle result was recorded\non the FRONTIER PASS.");
+const u8 gText_RecordBattleToPass[] = _("Would you like to record your battle\non your Frontier Pass?");
+const u8 gText_BattleRecordedOnPass[] = _("{B_PLAYER_NAME}'s battle result was recorded\non the Frontier Pass.");
 static const u8 sText_LinkTrainerWantsToBattlePause[] = _("{B_LINK_OPPONENT1_NAME}\nwants to battle!{PAUSE 49}");
 static const u8 sText_TwoLinkTrainersWantToBattlePause[] = _("{B_LINK_OPPONENT1_NAME} and {B_LINK_OPPONENT2_NAME}\nwant to battle!{PAUSE 49}");
 static const u8 sText_Your1[] = _("Your");

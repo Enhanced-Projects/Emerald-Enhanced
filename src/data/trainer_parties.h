@@ -3498,7 +3498,7 @@ static const struct TrainerMonItemCustomMoves sParty_Roxanne1[] = {
 	.species = SPECIES_KABUTO,
 	.heldItem = ITEM_SITRUS_BERRY,
 	.ability = 2,
-	.moves = {MOVE_AQUA_JET, MOVE_SLASH, MOVE_MEGA_DRAIN, MOVE_ROCK_SLIDE},
+	.moves = {MOVE_AQUA_JET, MOVE_ICICLE_SPEAR, MOVE_MEGA_DRAIN, MOVE_ROCK_SLIDE},
 	},
 	{
 	.iv = 255,

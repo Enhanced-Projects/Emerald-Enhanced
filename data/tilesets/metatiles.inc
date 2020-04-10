@@ -287,11 +287,11 @@ gMetatileAttributes_LilycoveMuseum:: @ 83BEAD8
 	.incbin "data/tilesets/secondary/lilycove_museum/metatile_attributes.bin"
 
 	.align 1
-gMetatiles_BrendansMaysHouse:: @ 83BEBF6
+gMetatiles_BrendansDawnsHouse:: @ 83BEBF6
 	.incbin "data/tilesets/secondary/brendans_mays_house/metatiles.bin"
 
 	.align 1
-gMetatileAttributes_BrendansMaysHouse:: @ 83BF836
+gMetatileAttributes_BrendansDawnsHouse:: @ 83BF836
 	.incbin "data/tilesets/secondary/brendans_mays_house/metatile_attributes.bin"
 
 	.align 1
