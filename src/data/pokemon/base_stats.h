@@ -916,7 +916,7 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_VULPIX] =
     {
         .baseHP        = 65,
-        .baseAttack    = 25,
+        .baseAttack    = 40,
         .baseDefense   = 65,
         .baseSpeed     = 65,
         .baseSpAttack  = 65,
@@ -942,7 +942,7 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_NINETALES] =
     {
         .baseHP        = 120,
-        .baseAttack    = 25,
+        .baseAttack    = 65,
         .baseDefense   = 105,
         .baseSpeed     = 95,
         .baseSpAttack  = 90,
@@ -8768,13 +8768,13 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_ANORITH] =
     {
-        .baseHP        = 89,
-        .baseAttack    = 113,
+        .baseHP        = 65,
+        .baseAttack    = 115,
         .baseDefense   = 50,
         .baseSpeed     = 75,
         .baseSpAttack  = 40,
         .baseSpDefense = 50,
-        .type1 = TYPE_ROCK,
+        .type1 = TYPE_WATER,
         .type2 = TYPE_BUG,
         .catchRate = 45,
         .expYield = 71,
@@ -8786,20 +8786,20 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_FAST,
         .eggGroup1 = EGG_GROUP_WATER_3,
         .eggGroup2 = EGG_GROUP_WATER_3,
-        .abilities = {ABILITY_BATTLE_ARMOR, ABILITY_BATTLE_ARMOR},
+        .abilities = {ABILITY_ADAPTABILITY, ABILITY_ADAPTABILITY},
         .abilityHidden = ABILITY_SWIFT_SWIM,
         .bodyColor = BODY_COLOR_GRAY,
     },
 
     [SPECIES_ARMALDO] =
     {
-        .baseHP        = 133,
-        .baseAttack    = 136,
+        .baseHP        = 105,
+        .baseAttack    = 138,
         .baseDefense   = 100,
-        .baseSpeed     = 45,
-        .baseSpAttack  = 60,
+        .baseSpeed     = 60,
+        .baseSpAttack  = 70,
         .baseSpDefense = 80,
-        .type1 = TYPE_ROCK,
+        .type1 = TYPE_WATER,
         .type2 = TYPE_BUG,
         .catchRate = 45,
         .expYield = 173,
@@ -8811,7 +8811,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_FAST,
         .eggGroup1 = EGG_GROUP_WATER_3,
         .eggGroup2 = EGG_GROUP_WATER_3,
-        .abilities = {ABILITY_BATTLE_ARMOR, ABILITY_BATTLE_ARMOR},
+        .abilities = {ABILITY_ADAPTABILITY, ABILITY_ADAPTABILITY},
         .abilityHidden = ABILITY_SWIFT_SWIM,
         .bodyColor = BODY_COLOR_GRAY,
     },
