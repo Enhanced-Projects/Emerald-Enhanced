@@ -8754,11 +8754,11 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .split = SPLIT_PHYSICAL,
     },
 
-    [MOVE_BANEFUL_BUNKER] =
+    [MOVE_EE_PROTECT] =
     {
         .effect = EFFECT_PROTECT,
         .power = 0,
-        .type = TYPE_POISON,
+        .type = TYPE_NORMAL,
         .accuracy = 0,
         .pp = 10,
         .secondaryEffectChance = 0,

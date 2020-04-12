@@ -2338,8 +2338,8 @@ static const u8 sFIRST_IMPRESSIONDescription[] = _(
 	"Only works first turn.");
 
 static const u8 sBANEFUL_BUNKERDescription[] = _(
-	"Protects user and poisons\n"
-	"foes on contact.");
+	"Protects user. Can fail\n"
+	"if used repeatedly.");
 
 static const u8 sSPIRIT_SHACKLEDescription[] = _(
 	"After being hit, foes can\n"
@@ -3244,7 +3244,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_HYPERSPACE_FURY - 1] = sHYPERSPACE_HOLEDescription,
     [MOVE_SHORE_UP - 1] = sSHORE_UPDescription,
     [MOVE_FIRST_IMPRESSION - 1] = sFIRST_IMPRESSIONDescription,
-    [MOVE_BANEFUL_BUNKER - 1] = sBANEFUL_BUNKERDescription,
+    [MOVE_EE_PROTECT - 1] = sBANEFUL_BUNKERDescription,
     [MOVE_SPIRIT_SHACKLE - 1] = sSPIRIT_SHACKLEDescription,
     [MOVE_DARKEST_LARIAT - 1] = sDARKEST_LARIATDescription,
     [MOVE_SPARKLING_ARIA - 1] = sSPARKLING_ARIADescription,

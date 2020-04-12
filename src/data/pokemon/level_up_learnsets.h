@@ -26251,8 +26251,8 @@ static const struct LevelUpMove sMareanieLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sToxapexLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 0, MOVE_BANEFUL_BUNKER),
-    LEVEL_UP_MOVE( 1, MOVE_BANEFUL_BUNKER),
+    LEVEL_UP_MOVE( 0, MOVE_EE_PROTECT),
+    LEVEL_UP_MOVE( 1, MOVE_EE_PROTECT),
     LEVEL_UP_MOVE( 1, MOVE_POISON_STING),
     LEVEL_UP_MOVE( 1, MOVE_PECK),
     LEVEL_UP_MOVE( 1, MOVE_BITE),
