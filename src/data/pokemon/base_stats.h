@@ -3436,12 +3436,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_FLAREON] =
     {
-        .baseHP        = 95,
-        .baseAttack    = 115,
-        .baseDefense   = 115,
+        .baseHP        = 110,
+        .baseAttack    = 130,
+        .baseDefense   = 95,
         .baseSpeed     = 65,
-        .baseSpAttack  = 85,
-        .baseSpDefense = 90,
+        .baseSpAttack  = 60,
+        .baseSpDefense = 65,
         .type1 = TYPE_FIRE,
         .type2 = TYPE_FIRE,
         .catchRate = 45,
@@ -3454,7 +3454,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_FLASH_FIRE, ABILITY_FLASH_FIRE},
+        .abilities = {ABILITY_SHEER_FORCE, ABILITY_SHEER_FORCE},
         .abilityHidden = ABILITY_GUTS,
         .bodyColor = BODY_COLOR_RED,
     },
