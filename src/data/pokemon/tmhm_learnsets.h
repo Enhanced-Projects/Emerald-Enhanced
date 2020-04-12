@@ -13236,6 +13236,7 @@ const u32 gTMHMLearnsets[][2] =
     [SPECIES_SEISMITOAD]  = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
 											| TMHM(TM31_BRICK_BREAK)
 											| TMHM(TM28_DIG)
+											| TMHM(TM58_DIVE)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM56_EARTH_POWER)
 											| TMHM(TM26_EARTHQUAKE)
