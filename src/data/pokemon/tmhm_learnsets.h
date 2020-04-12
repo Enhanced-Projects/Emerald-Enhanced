@@ -3353,10 +3353,10 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM06_TOXIC)),
 
     [SPECIES_FLAREON]     = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
+											| TMHM(TM08_BULK_UP)
 											| TMHM(TM62_CURSE)
 											| TMHM(TM28_DIG)
 											| TMHM(TM32_DOUBLE_TEAM)
-											| TMHM(TM26_EARTHQUAKE)
 											| TMHM(TM42_FACADE)
 											| TMHM(TM38_FIRE_BLAST)
 											| TMHM(TM35_FLAMETHROWER)
