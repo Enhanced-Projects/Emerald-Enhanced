@@ -2698,8 +2698,8 @@ static int SelectOpponentMonsFromParty(int *partyMovePoints, bool8 allowRandom)
     {
         for (i = 0; i < DOME_BATTLE_PARTY_SIZE; i++)
         {
-            //for (j = i + 1; j < FRONTIER_PARTY_SIZE; j++)
-            //{
+            for (j = i + 1; j < FRONTIER_PARTY_SIZE; j++)
+            {
                 int temp;
 
                 if (partyMovePoints[i] < partyMovePoints[j])
@@ -2713,7 +2713,7 @@ static int SelectOpponentMonsFromParty(int *partyMovePoints, bool8 allowRandom)
                     SWAP(partyMovePoints[i], partyMovePoints[j],temp)
                     SWAP(partyPositions[i], partyPositions[j], temp)
                 }
-            //}
+            }
         }
 
         for (i = 0; i < DOME_BATTLE_PARTY_SIZE; i++)
