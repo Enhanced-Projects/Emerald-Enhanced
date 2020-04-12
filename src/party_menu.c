@@ -5656,18 +5656,18 @@ static u8 CheckBattleEntriesAndGetMessage(void)
         return 0xFF;
 
     maxBattlers = GetMaxBattleEntries();
-    for (i = 0; i < maxBattlers - 1; i++)
-    {
-        u16 species = GetMonData(&party[order[i] - 1], MON_DATA_SPECIES);
-        u16 item = GetMonData(&party[order[i] - 1], MON_DATA_HELD_ITEM);
-        for (j = i + 1; j < maxBattlers; j++)
-        {
-            if (species == GetMonData(&party[order[j] - 1], MON_DATA_SPECIES))
-                return PARTY_MSG_MONS_CANT_BE_SAME;
-            if (item != ITEM_NONE && item == GetMonData(&party[order[j] - 1], MON_DATA_HELD_ITEM))
-                return PARTY_MSG_NO_SAME_HOLD_ITEMS;
-        }
-    }
+    //for (i = 0; i < maxBattlers - 1; i++)
+    //{
+    //    u16 species = GetMonData(&party[order[i] - 1], MON_DATA_SPECIES);
+    //    u16 item = GetMonData(&party[order[i] - 1], MON_DATA_HELD_ITEM);
+    //    for (j = i + 1; j < maxBattlers; j++)
+    //    {
+    //        if (species == GetMonData(&party[order[j] - 1], MON_DATA_SPECIES))
+    //            return PARTY_MSG_MONS_CANT_BE_SAME;
+    //        if (item != ITEM_NONE && item == GetMonData(&party[order[j] - 1], MON_DATA_HELD_ITEM))
+    //            return PARTY_MSG_NO_SAME_HOLD_ITEMS;
+    //    }
+    //}
 
     return 0xFF;
 }

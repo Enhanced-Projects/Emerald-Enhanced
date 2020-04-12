@@ -370,7 +370,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
                 .nature = NATURE_IMPISH,
                 .evs = {252, 0, 0, 0, 6, 252},
                 .ability = 0,
-                .moves = {MOVE_TOXIC, MOVE_AERIAL_ACE, MOVE_PROTECT, MOVE_STEEL_WING},
+                .moves = {MOVE_TOXIC, MOVE_AERIAL_ACE, MOVE_EE_PROTECT, MOVE_STEEL_WING},
             },
             {
                 .species = SPECIES_AGGRON,
@@ -379,7 +379,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
                 .nature = NATURE_ADAMANT,
                 .evs = {0, 252, 0, 0, 252, 6},
                 .ability = 0,
-                .moves = {MOVE_THUNDERBOLT, MOVE_PROTECT, MOVE_SOLAR_BEAM, MOVE_DRAGON_CLAW},
+                .moves = {MOVE_THUNDERBOLT, MOVE_EE_PROTECT, MOVE_SOLAR_BEAM, MOVE_DRAGON_CLAW},
             },
         },
         {
@@ -399,7 +399,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
                 .nature = NATURE_IMPISH,
                 .evs = {252, 0, 0, 0, 6, 252},
                 .ability = 0,
-                .moves = {MOVE_TOXIC, MOVE_AERIAL_ACE, MOVE_PROTECT, MOVE_STEEL_WING},
+                .moves = {MOVE_TOXIC, MOVE_AERIAL_ACE, MOVE_EE_PROTECT, MOVE_STEEL_WING},
             },
             {
                 .species = SPECIES_AGGRON,
@@ -408,7 +408,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][3] =
                 .nature = NATURE_ADAMANT,
                 .evs = {0, 252, 0, 0, 252, 6},
                 .ability = 0,
-                .moves = {MOVE_THUNDERBOLT, MOVE_PROTECT, MOVE_SOLAR_BEAM, MOVE_DRAGON_CLAW},
+                .moves = {MOVE_THUNDERBOLT, MOVE_EE_PROTECT, MOVE_SOLAR_BEAM, MOVE_DRAGON_CLAW},
             },
         },
     },
@@ -2237,27 +2237,27 @@ static void BufferFrontierTrainerName(void)
 
 static void ResetSketchedMoves(void)
 {
-    u8 i, j, k;
-
-    for (i = 0; i < MAX_FRONTIER_PARTY_SIZE; i++)
-    {
-        u16 monId = gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1;
-        if (monId < PARTY_SIZE)
-        {
-            for (j = 0; j < MAX_MON_MOVES; j++)
-            {
-                for (k = 0; k < MAX_MON_MOVES; k++)
-                {
-                    if (GetMonData(&gSaveBlock1Ptr->playerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1], MON_DATA_MOVE1 + k, NULL)
-                        == GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + j, NULL))
-                        break;
-                }
-                if (k == MAX_MON_MOVES)
-                    SetMonMoveSlot(&gPlayerParty[i], MOVE_SKETCH, j);
-            }
-            gSaveBlock1Ptr->playerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1] = gPlayerParty[i];
-        }
-    }
+    //u8 i, j, k;
+    //
+    //for (i = 0; i < MAX_FRONTIER_PARTY_SIZE; i++)
+    //{
+    //    u16 monId = gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1;
+    //    if (monId < PARTY_SIZE)
+    //    {
+    //        for (j = 0; j < MAX_MON_MOVES; j++)
+    //        {
+    //            for (k = 0; k < MAX_MON_MOVES; k++)
+    //            {
+    //                if (GetMonData(&gSaveBlock1Ptr->playerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1], MON_DATA_MOVE1 + k, NULL)
+    //                    == GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + j, NULL))
+    //                    break;
+    //            }
+    //            if (k == MAX_MON_MOVES)
+    //                SetMonMoveSlot(&gPlayerParty[i], MOVE_SKETCH, j);
+    //        }
+    //        gSaveBlock1Ptr->playerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1] = gPlayerParty[i];
+    //    }
+    //}
 }
 
 static void SetFacilityBrainObjectEvent(void)

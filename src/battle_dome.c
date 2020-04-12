@@ -2276,22 +2276,22 @@ static void InitDomeTrainers(void)
     // Populate the tourney roster with random frontier trainers (dependent on streak)
     for (i = 1; i < DOME_TOURNAMENT_TRAINERS_COUNT; i++)
     {
-        // Choose trainer. First 5/16 trainers are easier than the rest
-        if (i > 5)
-        {
-            do
-            {
-                trainerId = GetRandomScaledFrontierTrainerId(GetCurrentFacilityWinStreak(), 0);
-                for (j = 1; j < i; j++)
-                {
-                    if (DOME_TRAINERS[j].trainerId == trainerId)
-                        break;
-                }
-            } while (j != i);
-            DOME_TRAINERS[i].trainerId = trainerId;
-        }
-        else
-        {
+        //// Choose trainer. First 5/16 trainers are easier than the rest
+        //if (i > 5)
+        //{
+        //    do
+        //    {
+        //        trainerId = GetRandomScaledFrontierTrainerId(GetCurrentFacilityWinStreak(), 0);
+        //        for (j = 1; j < i; j++)
+        //        {
+        //            if (DOME_TRAINERS[j].trainerId == trainerId)
+        //                break;
+        //        }
+        //    } while (j != i);
+        //    DOME_TRAINERS[i].trainerId = trainerId;
+        //}
+        //else
+        //{
             do
             {
                 trainerId = GetRandomScaledFrontierTrainerId(GetCurrentFacilityWinStreak() + 1, 0);
@@ -2302,7 +2302,7 @@ static void InitDomeTrainers(void)
                 }
             } while (j != i);
             DOME_TRAINERS[i].trainerId = trainerId;
-        }
+        //}
 
         // Choose party
         for (j = 0; j < FRONTIER_PARTY_SIZE; j++)
@@ -2698,8 +2698,8 @@ static int SelectOpponentMonsFromParty(int *partyMovePoints, bool8 allowRandom)
     {
         for (i = 0; i < DOME_BATTLE_PARTY_SIZE; i++)
         {
-            for (j = i + 1; j < FRONTIER_PARTY_SIZE; j++)
-            {
+            //for (j = i + 1; j < FRONTIER_PARTY_SIZE; j++)
+            //{
                 int temp;
 
                 if (partyMovePoints[i] < partyMovePoints[j])
@@ -2713,7 +2713,7 @@ static int SelectOpponentMonsFromParty(int *partyMovePoints, bool8 allowRandom)
                     SWAP(partyMovePoints[i], partyMovePoints[j],temp)
                     SWAP(partyPositions[i], partyPositions[j], temp)
                 }
-            }
+            //}
         }
 
         for (i = 0; i < DOME_BATTLE_PARTY_SIZE; i++)
@@ -5699,28 +5699,28 @@ static void SetFacilityTrainerAndMonPtrs(void)
 
 static void ResetSketchedMoves(void)
 {
-    int i, moveSlot;
-
-    for (i = 0; i < DOME_BATTLE_PARTY_SIZE; i++)
-    {
-        int playerMonId = gSaveBlock2Ptr->frontier.selectedPartyMons[gSelectedOrderFromParty[i] - 1] - 1;
-        int count;
-
-        for (moveSlot = 0; moveSlot < MAX_MON_MOVES; moveSlot++)
-        {
-            count = 0;
-            while (count < MAX_MON_MOVES)
-            {
-                if (GetMonData(&gSaveBlock1Ptr->playerParty[playerMonId], MON_DATA_MOVE1 + count, NULL) == GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + moveSlot, NULL))
-                    break;
-                count++;
-            }
-            if (count == MAX_MON_MOVES)
-                SetMonMoveSlot(&gPlayerParty[i], MOVE_SKETCH, moveSlot);
-        }
-
-        gSaveBlock1Ptr->playerParty[playerMonId] = gPlayerParty[i];
-    }
+    //int i, moveSlot;
+    //
+    //for (i = 0; i < DOME_BATTLE_PARTY_SIZE; i++)
+    //{
+    //    int playerMonId = gSaveBlock2Ptr->frontier.selectedPartyMons[gSelectedOrderFromParty[i] - 1] - 1;
+    //    int count;
+    //
+    //    for (moveSlot = 0; moveSlot < MAX_MON_MOVES; moveSlot++)
+    //    {
+    //        count = 0;
+    //        while (count < MAX_MON_MOVES)
+    //        {
+    //            if (GetMonData(&gSaveBlock1Ptr->playerParty[playerMonId], MON_DATA_MOVE1 + count, NULL) == GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + moveSlot, NULL))
+    //                break;
+    //            count++;
+    //        }
+    //        if (count == MAX_MON_MOVES)
+    //            SetMonMoveSlot(&gPlayerParty[i], MOVE_SKETCH, moveSlot);
+    //    }
+    //
+    //    gSaveBlock1Ptr->playerParty[playerMonId] = gPlayerParty[i];
+    //}
 }
 
 static void RestoreDomePlayerPartyHeldItems(void)
