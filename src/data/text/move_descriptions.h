@@ -247,7 +247,7 @@ static const u8 sBubbleBeamDescription[] = _(
 
 static const u8 sAuroraBeamDescription[] = _(
     "Fires a rainbow-colored\n"
-    "beam that may lower Attack.");
+    "beam that lowers Attack.");
 
 static const u8 sHyperBeamDescription[] = _(
     "Powerful, but leaves the\n"
@@ -946,8 +946,8 @@ static const u8 sMoonlightDescription[] = _(
     "varies with the weather.");
 
 static const u8 sHiddenPowerDescription[] = _(
-    "The effectiveness varies\n"
-    "with the user.");
+    "The type depends on the \n"
+    "IV average of the user.");
 
 static const u8 sCrossChopDescription[] = _(
     "A double-chopping attack.\n"
@@ -1158,8 +1158,8 @@ static const u8 sSnatchDescription[] = _(
     "move the target uses next.");
 
 static const u8 sSecretPowerDescription[] = _(
-    "An attack with effects\n"
-    "that vary by location.");
+    "The type depends on the \n"
+    "IV average of the user.");
 
 static const u8 sDiveDescription[] = _(
     "Dives deep underwater to\n"
@@ -2210,7 +2210,7 @@ static const u8 sFAIRY_LOCKDescription[] = _(
 	"preventing escape next turn.");
 
 static const u8 sKINGS_SHIELDDescription[] = _(
-	"Evades damage, and sharply\n"
+	"Blocks damaging moves, and\n"
 	"reduces Attack if struck.");
 
 static const u8 sPLAY_NICEDescription[] = _(

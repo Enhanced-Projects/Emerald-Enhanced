@@ -4340,6 +4340,7 @@ static const u32 sTutorLearnsets[] =
 
     [SPECIES_SEISMITOAD]    = TUTOR_LEARNSET(TUTOR(MOVE_BOUNCE)
 											| TUTOR(MOVE_METRONOME)
+											| TUTOR(MOVE_LIQUIDATION)
 											| TUTOR(MOVE_LOW_KICK)
 											| TUTOR(MOVE_DRAIN_PUNCH)
 											| TUTOR(MOVE_STOMPING_TANTRUM)

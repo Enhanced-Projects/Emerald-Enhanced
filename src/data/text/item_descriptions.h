@@ -1559,9 +1559,9 @@ static const u8 sTM09Desc[] = _(
     "the foe.");
 
 static const u8 sTM10Desc[] = _(
-    "The attack power\n"
-    "varies among\n"
-    "different Pokémon.");
+    "The type depends\n"
+    "on the user's IV\n"
+    "average.");
 
 static const u8 sTM11Desc[] = _(
     "Raises the power of\n"
@@ -1724,9 +1724,9 @@ static const u8 sTM42Desc[] = _(
     "or paralyzed.");
 
 static const u8 sTM43Desc[] = _(
-    "Adds an effect to\n"
-    "attack depending\n"
-    "on the location.");
+    "The type depends\n"
+    "on the user's IV\n"
+    "average.");
 
 static const u8 sTM44Desc[] = _(
     "The user sleeps for\n"
