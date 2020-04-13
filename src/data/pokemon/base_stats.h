@@ -1808,12 +1808,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_TENTACOOL] =
     {
-        .baseHP        = 70,
-        .baseAttack    = 65,
+        .baseHP        = 40,
+        .baseAttack    = 40,
         .baseDefense   = 35,
-        .baseSpeed     = 65,
+        .baseSpeed     = 70,
         .baseSpAttack  = 50,
-        .baseSpDefense = 110,
+        .baseSpDefense = 100,
         .type1 = TYPE_WATER,
         .type2 = TYPE_POISON,
         .catchRate = 190,
@@ -1834,11 +1834,11 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_TENTACRUEL] =
     {
-        .baseHP        = 115,
+        .baseHP        = 80,
         .baseAttack    = 70,
         .baseDefense   = 65,
-        .baseSpeed     = 88,
-        .baseSpAttack  = 100,
+        .baseSpeed     = 100,
+        .baseSpAttack  = 80,
         .baseSpDefense = 120,
         .type1 = TYPE_WATER,
         .type2 = TYPE_POISON,
