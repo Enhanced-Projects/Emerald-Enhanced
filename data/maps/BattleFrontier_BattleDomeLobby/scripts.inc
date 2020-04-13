@@ -60,7 +60,7 @@ BattleFrontier_BattleDomeLobby_EventScript_2498C9:: @ 82498C9
 	message BattleFrontier_BattleDomeLobby_Text_24A5D6
 	waitmessage
 	special LoadPlayerParty
-	frontier_setpartyorder 6
+	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	frontier_checkairshow
 	dome_set DOME_DATA_ATTEMPTED_CHALLENGE     , 1
 	dome_set DOME_DATA_HAS_WON_CHALLENGE            , 1
@@ -75,7 +75,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249940:: @ 8249940
 	message BattleFrontier_BattleDomeLobby_Text_24A5D6
 	waitmessage
 	special LoadPlayerParty
-	frontier_setpartyorder 6
+	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	frontier_checkairshow
 	dome_set DOME_DATA_WIN_STREAK_ACTIVE, FALSE
 	dome_set DOME_DATA_ATTEMPTED_CHALLENGE     , 1
@@ -169,7 +169,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249ABF:: @ 8249ABF
 	fadescreen FADE_TO_BLACK
 	call BattleFrontier_EventScript_GetLvlMode
 	copyvar VAR_0x8004, VAR_RESULT
-	setvar VAR_0x8005, 6
+	setvar VAR_0x8005, FRONTIER_PARTY_SIZE
 	special ChoosePartyForBattleFrontier
 	waitstate
 	compare VAR_RESULT, 0
@@ -196,7 +196,7 @@ BattleFrontier_BattleDomeLobby_EventScript_249B60:: @ 8249B60
 	dome_inittrainers
 BattleFrontier_BattleDomeLobby_EventScript_249BC2:: @ 8249BC2
 	special SavePlayerParty
-	frontier_setpartyorder 6
+	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	dome_settrainers
 	msgbox BattleFrontier_BattleDomeLobby_Text_24A437, MSGBOX_DEFAULT
 	closemessage
@@ -474,7 +474,7 @@ BattleFrontier_BattleDomeLobby_Text_249F8E: @ 8249F8E
 	.string "is exactly as the name suggests--\l"
 	.string "a tournament of Single Battle.\p"
 	.string "All participating Trainers must\n"
-	.string "enter six Pokémon each.\p"
+	.string "enter three Pokémon each.\p"
 	.string "You win the tournament by defeating\n"
 	.string "four Trainers.\p"
 	.string "Battle Points are awarded to\n"
@@ -499,14 +499,14 @@ BattleFrontier_BattleDomeLobby_Text_24A26E: @ 824A26E
 
 BattleFrontier_BattleDomeLobby_Text_24A2AB: @ 824A2AB
 	.string "Excuse me!\p"
-	.string "You don't have six eligible Pokémon.\p"
+	.string "You don't have three eligible Pokémon.\p"
 	.string "Eggs and legendaries are illegal.\p"
 	.string "Please come see me when you are ready.$"
 
 BattleFrontier_BattleDomeLobby_Text_24A353: @ 824A353
 	.string "Excuse me!\p"
-	.string "You don't have six eligible Pokémon.\p"
-	.string "You must have six different Pokémon\n"
+	.string "You don't have three eligible Pokémon.\p"
+	.string "You must have three different Pokémon\n"
 	.string "of Level 50 or less to enter.\p"
 	.string "Eggs and legendaries are illegal.\p"
 	.string "Please come see me when you are ready.$"
@@ -570,7 +570,7 @@ BattleFrontier_BattleDomeLobby_Text_24A721: @ 824A721
 	.string "is exactly as the name suggests--\l"
 	.string "a tournament of Double Battles.\p"
 	.string "All participating Trainers must\n"
-	.string "enter six Pokémon each.\p"
+	.string "enter Four Pokémon each.\p"
 	.string "Two Pokémon must take part in a\n"
 	.string "Double Battle.\p"
 	.string "Choose your party order and begin\n"

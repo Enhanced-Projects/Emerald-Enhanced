@@ -857,7 +857,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_TORCHIC] = {
         .species = SPECIES_TORCHIC,
-        .moves = {MOVE_FLAME_CHARGE, MOVE_SWORDS_DANCE, MOVE_PROTECT, MOVE_BATON_PASS},
+        .moves = {MOVE_FLAME_CHARGE, MOVE_SWORDS_DANCE, MOVE_EE_PROTECT, MOVE_BATON_PASS},
         .heldItem = ITEM_FOCUS_SASH,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
         .nature = NATURE_JOLLY,
@@ -1469,7 +1469,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_SABLEYE_1] = {
         .species = SPECIES_SABLEYE,
-        .moves = {MOVE_DARK_PULSE, MOVE_PROTECT, MOVE_CALM_MIND, MOVE_RECOVER},
+        .moves = {MOVE_DARK_PULSE, MOVE_EE_PROTECT, MOVE_CALM_MIND, MOVE_RECOVER},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_CALM,
@@ -5888,7 +5888,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_BLISSEY_3] = {
         .species = SPECIES_BLISSEY,
-        .moves = {MOVE_ICE_BEAM, MOVE_PROTECT, MOVE_CALM_MIND, MOVE_SOFT_BOILED},
+        .moves = {MOVE_ICE_BEAM, MOVE_EE_PROTECT, MOVE_CALM_MIND, MOVE_SOFT_BOILED},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_DEFENSE,
         .nature = NATURE_BOLD,
@@ -6815,7 +6815,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_ZAPDOS_1] = {
         .species = SPECIES_ZAPDOS,
-        .moves = {MOVE_ZAP_CANNON, MOVE_HIDDEN_POWER, MOVE_DETECT, MOVE_ROOST},
+        .moves = {MOVE_ZAP_CANNON, MOVE_HIDDEN_POWER, MOVE_EE_PROTECT, MOVE_ROOST},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_BOLD,
@@ -7112,7 +7112,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_ZAPDOS_4] = {
         .species = SPECIES_ZAPDOS,
-        .moves = {MOVE_ZAP_CANNON, MOVE_HIDDEN_POWER, MOVE_DETECT, MOVE_ROOST},
+        .moves = {MOVE_ZAP_CANNON, MOVE_HIDDEN_POWER, MOVE_EE_PROTECT, MOVE_ROOST},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_BOLD,
@@ -7679,7 +7679,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_DRAGONITE_4] = {
         .species = SPECIES_DRAGONITE,
-        .moves = {MOVE_HORN_DRILL, MOVE_BARRIER, MOVE_DETECT, MOVE_ROOST},
+        .moves = {MOVE_HORN_DRILL, MOVE_BARRIER, MOVE_EE_PROTECT, MOVE_ROOST},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_BOLD,

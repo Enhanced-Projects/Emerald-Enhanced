@@ -98,7 +98,7 @@ BattleFrontier_BattleDomePreBattleRoom_EventScript_24B3BB:: @ 824B3BB
 BattleFrontier_BattleDomePreBattleRoom_EventScript_24B3DD:: @ 824B3DD
 	msgbox BattleFrontier_BattleDomePreBattleRoom_Text_24B9B5, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
-	dome_showopponentinfo
+	dome_showopponentinfo 
 	waitstate
 	goto BattleFrontier_BattleDomePreBattleRoom_EventScript_24B24F
 
@@ -141,7 +141,7 @@ BattleFrontier_BattleDomePreBattleRoom_EventScript_24B46D:: @ 824B46D
 	fadescreen FADE_TO_BLACK
 	call BattleFrontier_EventScript_GetLvlMode
 	copyvar VAR_0x8004, VAR_RESULT
-	setvar VAR_0x8005, 6 
+	setvar VAR_0x8005, FRONTIER_PARTY_SIZE  @ 2 of the 3 party mons are selected for battle
 	special ChoosePartyForBattleFrontier
 	waitstate
 	frontier_resetsketch
@@ -222,7 +222,7 @@ BattleFrontier_BattleDomePreBattleRoom_EventScript_24B5C7:: @ 824B5C7
 	setvar VAR_TEMP_0, 1
 	msgbox BattleFrontier_BattleDomePreBattleRoom_Text_24B760, MSGBOX_DEFAULT
 	special LoadPlayerParty
-	frontier_setpartyorder 6
+	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	playfanfare MUS_ME_ASA
 	waitfanfare
 	special HealPlayerParty

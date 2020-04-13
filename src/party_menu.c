@@ -153,7 +153,7 @@ EWRAM_DATA u8 gSelectedMonPartyId = 0;
 EWRAM_DATA MainCallback gPostMenuFieldCallback = NULL;
 static EWRAM_DATA u16 *sSlot1TilemapBuffer = 0; // for switching party slots
 static EWRAM_DATA u16 *sSlot2TilemapBuffer = 0; //
-EWRAM_DATA u8 gSelectedOrderFromParty[6] = {0};
+EWRAM_DATA u8 gSelectedOrderFromParty[4] = {0};
 static EWRAM_DATA u16 sPartyMenuItemId = 0;
 static EWRAM_DATA u16 sUnused_0203CEFE = 0;
 EWRAM_DATA u8 gBattlePartyCurrentOrder[PARTY_SIZE / 2] = {0}; // bits 0-3 are the current pos of Slot 1, 4-7 are Slot 2, and so on
@@ -5656,6 +5656,18 @@ static u8 CheckBattleEntriesAndGetMessage(void)
         return 0xFF;
 
     maxBattlers = GetMaxBattleEntries();
+    //for (i = 0; i < maxBattlers - 1; i++)
+    //{
+    //    u16 species = GetMonData(&party[order[i] - 1], MON_DATA_SPECIES);
+    //    u16 item = GetMonData(&party[order[i] - 1], MON_DATA_HELD_ITEM);
+    //    for (j = i + 1; j < maxBattlers; j++)
+    //    {
+    //        if (species == GetMonData(&party[order[j] - 1], MON_DATA_SPECIES))
+    //            return PARTY_MSG_MONS_CANT_BE_SAME;
+    //        if (item != ITEM_NONE && item == GetMonData(&party[order[j] - 1], MON_DATA_HELD_ITEM))
+    //            return PARTY_MSG_NO_SAME_HOLD_ITEMS;
+    //    }
+    //}
 
     return 0xFF;
 }

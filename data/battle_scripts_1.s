@@ -6892,7 +6892,7 @@ BattleScript_KingsShieldEffect::
 BattleScript_BanefulBunkerEffect::
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_SAFEGUARD | HITMARKER_x100000
 	bichalfword gMoveResultFlags, MOVE_RESULT_NO_EFFECT
-	seteffectsecondary
+	@seteffectsecondary
 	setmoveeffect 0
 	return
 

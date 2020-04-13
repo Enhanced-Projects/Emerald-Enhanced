@@ -1295,7 +1295,7 @@
 #define FLAG_RYU_SUB_ROOM_SHELLY                                    0x4D4 // Unused Flag
 #define FLAG_RYU_DU_TYRANITARITE                                    0x4D5 // Unused Flag
 #define FLAG_RYU_DTC_STEELIXITE                                     0x4D6 // Unused Flag
-#define FLAG_UNUSED_0x4D7                                           0x4D7 // Unused Flag
+#define FLAG_RYU_FORCE_TUCKER                                           0x4D7 // Unused Flag
 #define FLAG_UNUSED_0x4D8                                           0x4D8 // Unused Flag
 #define FLAG_UNUSED_0x4D9                                           0x4D9 // Unused Flag
 #define FLAG_UNUSED_0x4DA                                           0x4DA // Unused Flag

@@ -1734,8 +1734,8 @@ static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
         // Ensure this Pokemon's held item isn't a duplicate.
         for (j = 0; j < i + firstMonId; j++)
         {
-            if (GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) != 0
-             && GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) == gFacilityTrainerMons[monId].heldItem)
+            //if (GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) != 0
+            // && GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) == gFacilityTrainerMons[monId].heldItem)
                 break;
         }
         if (j != i + firstMonId)
@@ -3685,9 +3685,9 @@ void RyuGiveFrontierMon(void)
         SetMonData(&gPlayerParty[party_id], MON_DATA_HP_EV, &evs[0]);
         SetMonData(&gPlayerParty[party_id], MON_DATA_ATK_EV, &evs[1]);
         SetMonData(&gPlayerParty[party_id], MON_DATA_DEF_EV, &evs[2]);
-        SetMonData(&gPlayerParty[party_id], MON_DATA_SPATK_EV, &evs[3]);
-        SetMonData(&gPlayerParty[party_id], MON_DATA_SPDEF_EV, &evs[4]);
-        SetMonData(&gPlayerParty[party_id], MON_DATA_SPEED_EV, &evs[5]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_SPEED_EV, &evs[3]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_SPATK_EV, &evs[4]);
+        SetMonData(&gPlayerParty[party_id], MON_DATA_SPDEF_EV, &evs[5]);
         SetMonData(&gPlayerParty[party_id], MON_DATA_ABILITY_NUM, &mon->ability);
         SetMonData(&gPlayerParty[party_id], MON_DATA_HELD_ITEM, &mon->heldItem);
         CalculateMonStats(&gPlayerParty[party_id]);

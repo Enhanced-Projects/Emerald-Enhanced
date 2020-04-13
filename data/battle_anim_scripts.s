@@ -5790,6 +5790,7 @@ Move_DEFENSE_CURL:
 	waitforvisualfinish
 	end
 
+Move_EE_PROTECT:
 Move_PROTECT:
 	loadspritegfx ANIM_TAG_PROTECT
 	monbg ANIM_ATK_PARTNER

@@ -4592,9 +4592,9 @@ static void Cmd_moveend(void)
             {
                 if (gProtectStructs[gBattlerTarget].spikyShielded && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD)
                 {
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
-                    if (gBattleMoveDamage == 0)
-                        gBattleMoveDamage = 1;
+                    //gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
+                    //if (gBattleMoveDamage == 0)
+                    //    gBattleMoveDamage = 1;
                     PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_SPIKY_SHIELD);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_SpikyShieldEffect;
@@ -4613,7 +4613,7 @@ static void Cmd_moveend(void)
                 else if (gProtectStructs[gBattlerTarget].banefulBunkered)
                 {
                     gBattleScripting.moveEffect = MOVE_EFFECT_POISON | MOVE_EFFECT_AFFECTS_USER;
-                    PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_BANEFUL_BUNKER);
+                    PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_EE_PROTECT);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_BanefulBunkerEffect;
                     effect = 1;
@@ -7984,7 +7984,7 @@ static void Cmd_setprotectlike(void)
                 gProtectStructs[gBattlerAttacker].kingsShielded = 1;
                 gBattleCommunication[MULTISTRING_CHOOSER] = 0;
             }
-            else if (gCurrentMove == MOVE_BANEFUL_BUNKER)
+            else if (gCurrentMove == MOVE_EE_PROTECT)
             {
                 gProtectStructs[gBattlerAttacker].banefulBunkered = 1;
                 gBattleCommunication[MULTISTRING_CHOOSER] = 0;

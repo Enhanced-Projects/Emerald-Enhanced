@@ -10903,7 +10903,7 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly2[] = {
 	.species = SPECIES_HITMONCHAN,
 	.heldItem = ITEM_NONE,
 	.ability = 0,
-	.moves = {MOVE_SKY_UPPERCUT, MOVE_PROTECT, MOVE_FIRE_PUNCH, MOVE_ICE_PUNCH},
+	.moves = {MOVE_SKY_UPPERCUT, MOVE_EE_PROTECT, MOVE_FIRE_PUNCH, MOVE_ICE_PUNCH},
 	},
 	{
 	.iv = 255,
