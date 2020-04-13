@@ -9672,7 +9672,6 @@ static const struct LevelUpMove sSpecies276LevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sTreeckoLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_DETECT),
     LEVEL_UP_MOVE( 1, MOVE_POUND),
     LEVEL_UP_MOVE( 1, MOVE_LEER),
     LEVEL_UP_MOVE( 5, MOVE_ABSORB),
@@ -9692,7 +9691,6 @@ static const struct LevelUpMove sTreeckoLevelUpLearnset[] = {
 
 static const struct LevelUpMove sGrovyleLevelUpLearnset[] = {
     // LEVEL_UP_MOVE( 0, MOVE_FURY_CUTTER),
-    LEVEL_UP_MOVE( 1, MOVE_DETECT),
     LEVEL_UP_MOVE( 1, MOVE_FURY_CUTTER),
     LEVEL_UP_MOVE( 1, MOVE_POUND),
     LEVEL_UP_MOVE( 1, MOVE_LEER),
@@ -9759,7 +9757,6 @@ static const struct LevelUpMove sSceptileLevelUpLearnset[] = {
     LEVEL_UP_MOVE(  1, MOVE_CONFIDE),
     // Level Up Moves
     // LEVEL_UP_MOVE( 0, MOVE_DUAL_CHOP),
-    LEVEL_UP_MOVE(  1, MOVE_DETECT),
     LEVEL_UP_MOVE(  1, MOVE_DUAL_CHOP),
     LEVEL_UP_MOVE(  1, MOVE_FURY_CUTTER),
     LEVEL_UP_MOVE(  1, MOVE_LEAF_STORM),
