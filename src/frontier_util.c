@@ -143,11 +143,11 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
             {
                 .species = SPECIES_LATIOS,
                 .heldItem = ITEM_LATIOSITE,
-                .fixedIV = 31,
+                .fixedIV = 30,
                 .nature = NATURE_TIMID,
                 .evs = {0, 0, 0, 252, 252, 6},
                 .ability = 0,
-                .moves = {MOVE_PSYSHOCK, MOVE_DRAGON_PULSE, MOVE_SURF, MOVE_CALM_MIND},
+                .moves = {MOVE_LUSTER_PURGE, MOVE_DRAGON_PULSE, MOVE_HIDDEN_POWER, MOVE_CALM_MIND},
             },
             {
                 .species = SPECIES_SNORLAX,
@@ -185,11 +185,11 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
             {
                 .species = SPECIES_GRENINJA,
                 .heldItem = ITEM_EXPERT_BELT,
-                .fixedIV = 26,
+                .fixedIV = 29,
                 .nature = NATURE_TIMID,
                 .evs = {0, 0, 0, 252, 252, 6},
                 .ability = 2,
-                .moves = {MOVE_ICE_BEAM, MOVE_GRASS_KNOT, MOVE_HIDDEN_POWER, MOVE_EXTRASENSORY},
+                .moves = {MOVE_ICE_BEAM, MOVE_GRASS_KNOT, MOVE_HIDDEN_POWER, MOVE_DARK_PULSE},
             },
         },
         // Gold Symbol.
@@ -214,12 +214,12 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
             },
             {
                 .species = SPECIES_LATIAS,
-                .heldItem = ITEM_LIFE_ORB,
+                .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
                 .nature = NATURE_TIMID,
-                .evs = {0, 0, 6, 252, 252, 0},
+                .evs = {252, 0, 0, 6, 252, 0},
                 .ability = 0,
-                .moves = {MOVE_DRACO_METEOR, MOVE_PSYSHOCK, MOVE_CALM_MIND, MOVE_RECOVER},
+                .moves = {MOVE_DRAGON_PULSE, MOVE_MIST_BALL, MOVE_CALM_MIND, MOVE_RECOVER},
             },
         },
     },
