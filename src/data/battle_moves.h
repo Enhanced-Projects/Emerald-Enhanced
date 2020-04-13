@@ -234,7 +234,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_DMG_IN_AIR,
         .split = SPLIT_SPECIAL,
     },
 
@@ -878,7 +878,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_SHEER_FORCE_BOOST,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_SHEER_FORCE_BOOST | FLAG_LIGHT_BASED,
         .split = SPLIT_SPECIAL,
     },
 
@@ -1074,7 +1074,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_LIGHT_BASED,
         .split = SPLIT_SPECIAL,
     },
 
@@ -1228,7 +1228,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 30,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_SHEER_FORCE_BOOST,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_SHEER_FORCE_BOOST | FLAG_HIT_IN_AIR,
         .split = SPLIT_SPECIAL,
     },
 
@@ -1270,7 +1270,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_DMG_UNDERGROUND,
         .split = SPLIT_PHYSICAL,
     },
 
@@ -1816,7 +1816,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_LIGHT_BASED,
         .split = SPLIT_SPECIAL,
     },
 
@@ -3357,7 +3357,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 20,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST | FLAG_DMG_IN_AIR,
         .split = SPLIT_SPECIAL,
     },
 
@@ -4548,7 +4548,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST | FLAG_LIGHT_BASED,
         .split = SPLIT_SPECIAL,
     },
 
@@ -4590,7 +4590,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_IRON_FIST_BOOST,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_IRON_FIST_BOOST | FLAG_HIT_IN_AIR,
         .split = SPLIT_PHYSICAL,
     },
 
@@ -5728,7 +5728,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_LIGHT_BASED,
         .split = SPLIT_SPECIAL,
     },
 
@@ -6022,7 +6022,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 30,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST | FLAG_LIGHT_BASED,
         .split = SPLIT_SPECIAL,
     },
 
@@ -6036,7 +6036,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST | FLAG_MEGA_LAUNCHER_BOOST,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST | FLAG_MEGA_LAUNCHER_BOOST | FLAG_LIGHT_BASED,
         .split = SPLIT_SPECIAL,
     },
 
@@ -6723,7 +6723,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_HIT_IN_AIR,
         .split = SPLIT_PHYSICAL,
     },
 
@@ -7606,7 +7606,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 30,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_SHEER_FORCE_BOOST | FLAG_HIT_IN_AIR,
         .split = SPLIT_SPECIAL,
     },
 
@@ -8497,7 +8497,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_LIGHT_BASED,
         .split = SPLIT_SPECIAL,
     },
 
@@ -8624,7 +8624,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_HIT_IN_AIR,
         .split = SPLIT_PHYSICAL,
     },
 

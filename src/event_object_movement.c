@@ -1929,7 +1929,7 @@ static void SetPlayerAvatarObjectEventIdAndObjectId(u8 objectEventId, u8 spriteI
     gPlayerAvatar.objectEventId = objectEventId;
     gPlayerAvatar.spriteId = spriteId;
     gPlayerAvatar.gender = GetPlayerAvatarGenderByGraphicsId(gObjectEvents[objectEventId].graphicsId);
-    SetPlayerAvatarExtraStateTransition(gObjectEvents[objectEventId].graphicsId, 0x20);
+    SetPlayerAvatarExtraStateTransition(gObjectEvents[objectEventId].graphicsId, PLAYER_AVATAR_FLAG_5);
 }
 
 void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, u8 graphicsId)
