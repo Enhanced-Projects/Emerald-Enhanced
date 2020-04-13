@@ -1592,7 +1592,7 @@ u8 DoBattlerEndTurnEffects(void)
                 // persist even after the affected Pokemon has been awakened by Shed Skin.
                 if (gBattleMons[gActiveBattler].status1 & STATUS1_SLEEP)
                 {
-                    gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 4;
+                    gBattleMoveDamage = ((gBattleMons[gActiveBattler].maxHP / 3) + 1);
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     BattleScriptExecute(BattleScript_NightmareTurnDmg);
@@ -6225,6 +6225,13 @@ static void MulByTypeEffectiveness(u16 *modifier, u16 move, u8 moveType, u8 batt
 
     if (gProtectStructs[battlerDef].kingsShielded && gBattleMoves[move].effect != EFFECT_FEINT)
         mod = UQ_4_12(1.0);
+
+    if ((gBattleMons[gBattlerAttacker].ability == ABILITY_CORROSION) &&
+    (moveType == TYPE_POISON) && (defType == TYPE_STEEL))
+        mod = UQ_4_12(2.0);
+
+    if (move == MOVE_ACID && (defType == TYPE_STEEL))
+        mod = UQ_4_12(2.0);
 
     MulModifier(modifier, mod);
 }
