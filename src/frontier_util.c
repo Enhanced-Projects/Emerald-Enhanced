@@ -1711,6 +1711,11 @@ u8 GetFrontierBrainStatus(void)
     if (battleMode != FRONTIER_MODE_SINGLES)
         return FRONTIER_BRAIN_NOT_READY;
 
+    if (FlagGet(FLAG_RYU_FORCE_TUCKER) == 1)
+    {
+        return FRONTIER_BRAIN_STREAK_LONG;
+    }
+
     symbolsCount = GetPlayerSymbolCountForFacility(facility);
     switch (symbolsCount)
     {

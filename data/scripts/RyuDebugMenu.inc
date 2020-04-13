@@ -184,6 +184,7 @@ RDB_CTVMsg:
 
 RyuDebug_Utility1::
 	playse SE_PIN
+	setflag FLAG_RYU_FORCE_TUCKER
 	waitse
 	setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
 	setvar VAR_TEMP_5, 6
