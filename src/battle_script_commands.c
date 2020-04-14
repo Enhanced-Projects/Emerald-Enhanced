@@ -4615,9 +4615,9 @@ static void Cmd_moveend(void)
             {
                 if (gProtectStructs[gBattlerTarget].spikyShielded && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD)
                 {
-                    //gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
-                    //if (gBattleMoveDamage == 0)
-                    //    gBattleMoveDamage = 1;
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
                     PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_SPIKY_SHIELD);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_SpikyShieldEffect;
