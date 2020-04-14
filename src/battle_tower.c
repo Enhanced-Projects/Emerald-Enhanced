@@ -2022,7 +2022,6 @@ void DoSpecialTrainerBattle(void)
     s32 i;
 
     gBattleScripting.specialTrainerBattleType = gSpecialVar_0x8004;
-    mgba_printf(MGBA_LOG_INFO, "8004 = %d, 8005 = %d, Mode is %d", gSpecialVar_0x8004, gSpecialVar_0x8005, VarGet(VAR_FRONTIER_BATTLE_MODE));
     switch (gSpecialVar_0x8004)
     {
     case SPECIAL_BATTLE_TOWER:
