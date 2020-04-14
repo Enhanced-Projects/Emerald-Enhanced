@@ -96,7 +96,7 @@ LNH_Outro::
 	drawheadshot HEAD_LANETTE
 	goto_if_set FLAG_RYU_DS_LANETTE_PARTNERS, LNH_PartnerStayTheNight
 	msgbox LNH_NewTechnology
-	additem ITEM_TEACHY_TV
+	additem ITEM_WIRELESSPC
 	msgbox LNH_AboutRemotePc
 	closemessage
 	setflag FLAG_RYU_DS_LANETTE_PARTNERS

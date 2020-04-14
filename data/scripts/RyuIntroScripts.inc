@@ -68,7 +68,7 @@ Ryu_NGP_Waystone:
 	return
 
 Ryu_NGP_Forecaster:
-	additem ITEM_VS_SEEKER, 1
+	additem ITEM_FORECASTER, 1
 	return
 
 Ryu_NGP_ExpDrive:
@@ -76,11 +76,11 @@ Ryu_NGP_ExpDrive:
 	return
 
 Ryu_NGP_Imprinter:
-	additem ITEM_POKE_FLUTE, 1
+	additem ITEM_IMPRINTER, 1
 	return
 
 Ryu_NGP_WirelessPC:
-	additem ITEM_TEACHY_TV, 1
+	additem ITEM_WIRELESSPC, 1
 	return
 
 Ryu_NGP_ExpShare::

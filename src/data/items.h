@@ -4894,10 +4894,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_POKE_FLUTE] =
+    [ITEM_IMPRINTER] =
     {
         .name = _("Imprinter"),
-        .itemId = ITEM_POKE_FLUTE,
+        .itemId = ITEM_IMPRINTER,
         .price = 60000,
         .holdEffect = HOLD_EFFECT_NONE,
         .holdEffectParam = 0,
@@ -5161,10 +5161,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_VS_SEEKER] =
+    [ITEM_FORECASTER] =
     {
         .name = _("Forecaster"),
-        .itemId = ITEM_VS_SEEKER,
+        .itemId = ITEM_FORECASTER,
         .price = 0,
         .holdEffect = HOLD_EFFECT_NONE,
         .holdEffectParam = 0,
@@ -5221,10 +5221,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_TEACHY_TV] =
+    [ITEM_WIRELESSPC] =
     {
         .name = _("Wireless PC"),
-        .itemId = ITEM_TEACHY_TV,
+        .itemId = ITEM_WIRELESSPC,
         .price = 0,
         .holdEffect = HOLD_EFFECT_NONE,
         .holdEffectParam = 0,

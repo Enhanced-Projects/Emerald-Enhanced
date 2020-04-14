@@ -363,7 +363,7 @@ TC_Drugs_Exit_Txt:
 	.string "Thanks for shopping with us!$"
 	
 TC_Imprint_Shop::
-	checkitem ITEM_POKE_FLUTE, 1
+	checkitem ITEM_IMPRINTER, 1
 	compare VAR_RESULT, 1
 	goto_if_ne TC_StatShopGiveImprinter
 	msgbox TC_Imprint_Txt MSGBOX_DEFAULT
@@ -379,7 +379,7 @@ TC_StatShopGiveImprinter::
 	compare VAR_RESULT, 0
 	goto_if_eq TC_StatShopCantAffordImprinter
 	takemoney 65000
-	additem ITEM_POKE_FLUTE
+	additem ITEM_IMPRINTER
 	msgbox TC_BoughtImprinter MSGBOX_DEFAULT
 	waitmessage
 	closemessage

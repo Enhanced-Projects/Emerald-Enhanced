@@ -1609,9 +1609,9 @@ bool8 KeepKeyItem(u16 itemId)
     switch (itemId)
     {
     case ITEM_NUGGET:
-    case ITEM_POKE_FLUTE:
+    case ITEM_IMPRINTER:
     case ITEM_SUPER_ROD:
-    case ITEM_VS_SEEKER:
+    case ITEM_FORECASTER:
     case ITEM_UP_GRADE:
     case ITEM_EXP_SHARE:
         return TRUE;
@@ -1654,13 +1654,13 @@ void CB2_NewGame(void)
     if (CheckBagHasItem(ITEM_UP_GRADE, 1))
         hasExpDrive = TRUE;
 
-    if (CheckBagHasItem(ITEM_VS_SEEKER, 1))
+    if (CheckBagHasItem(ITEM_FORECASTER, 1))
         hasForecaster = TRUE;
 
-    if (CheckBagHasItem(ITEM_POKE_FLUTE, 1))
+    if (CheckBagHasItem(ITEM_IMPRINTER, 1))
         hasImprinter = TRUE;
 
-    if (CheckBagHasItem(ITEM_TEACHY_TV, 1))
+    if (CheckBagHasItem(ITEM_WIRELESSPC, 1))
         hasWirelessPC = TRUE;
 
     if (CheckBagHasItem(ITEM_EXP_SHARE, 1))
