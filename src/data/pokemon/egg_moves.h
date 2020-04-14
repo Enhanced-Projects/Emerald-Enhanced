@@ -520,6 +520,7 @@ const u16 gEggMoves[] = {
         MOVE_BLOCK,
         MOVE_DEFENSE_CURL,
         MOVE_FLAIL,
+        MOVE_HEAD_SMASH,
         MOVE_HEAVY_SLAM,
         MOVE_ROCK_BLAST,
         MOVE_ROCK_CLIMB,
