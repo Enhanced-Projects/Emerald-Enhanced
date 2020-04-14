@@ -184,7 +184,7 @@ RDB_CTVMsg:
 
 RyuDebug_Utility1::
 	playse SE_PIN
-	setflag FLAG_RYU_FORCE_TUCKER
+	call RDB_FrontierModeCheat
 	waitse
 	setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
 	setvar VAR_TEMP_5, 6
@@ -213,53 +213,24 @@ GiveRandomFrontiermonsEnd::
 RDB_GRFMD:
 	.string "Given 6 random frontier mons.$"
 
-genderswap:
-	.string "Your gender will be swapped for\nthe purpose of sprite testing.$"
+FMCQuery:
+	.string "Increase chances of getting a\nfrontier brain?$"
 
-nocool::
-	msgbox nocoolmsg
+RDB_FrontierModeCheat::
+	clearflag FLAG_RYU_FORCE_TUCKER
+	msgbox FMCQuery, MSGBOX_YESNO
+	switch VAR_RESULT
+	case 0, ryu_return
+	case 1, RDB_FCEnable
 	return
 
-nosmart::
-	msgbox nosmartmsg
-	return
-	
-nobeauty::
-	msgbox nobeautymsg
-	return
-	
-notough::
-	msgbox notoughmsg
-	return
-	
-nocute::
-	msgbox nocutemsg
+RDB_FCEnable::
+	msgbox FMCON
+	setflag FLAG_RYU_FORCE_TUCKER
 	return
 
-
-nocoolmsg:
-	.string "No COOL master ribbon.$"
-
-nosmartmsg:
-	.string "No SMART master ribbon.$"
-
-nobeautymsg:
-	.string "No BEAUTY master ribbon.$"
-
-notoughmsg:
-	.string "No TOUGH master ribbon.$"
-
-nocutemsg:
-	.string "No CUTE master ribbon.$"
-
-rdb_hassymbols::
-playse SE_EXPMAX
-waitse
-release
-end
-
-sizeofmsg::
-	.string "SavBlock1 size: {STR_VAR_1}$"
+FMCON:
+	.string "Chances of getting a brain are/nnow significantly increased.$"
 
 RDB_u1_EnableRandomize::
 	setflag FLAG_RYU_RANDOMIZE_MUSIC
