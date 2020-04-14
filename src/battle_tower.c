@@ -38,6 +38,7 @@
 #include "constants/species.h"
 #include "constants/easy_chat.h"
 #include "constants/tv.h"
+#include "mgba.h"
 
 extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer[];
 extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_CourtneyTrainer[];
@@ -1732,16 +1733,6 @@ static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
         if (j != i + firstMonId)
             continue;
 
-        // Ensure this Pokemon's held item isn't a duplicate.
-        for (j = 0; j < i + firstMonId; j++)
-        {
-            //if (GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) != 0
-            // && GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) == gFacilityTrainerMons[monId].heldItem)
-                break;
-        }
-        if (j != i + firstMonId)
-            continue;
-
         // Ensure this exact pokemon index isn't a duplicate. This check doesn't seem necessary
         // because the species and held items were already checked directly above.
         for (j = 0; j < i; j++)
@@ -1775,7 +1766,6 @@ static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
         SetMonData(&gEnemyParty[i + firstMonId], MON_DATA_FRIENDSHIP, &friendship);
         SetMonData(&gEnemyParty[i + firstMonId], MON_DATA_HELD_ITEM, &gFacilityTrainerMons[monId].heldItem);
         SetMonData(&gEnemyParty[i + firstMonId], MON_DATA_ABILITY_NUM, &gFacilityTrainerMons[monId].ability);
-
         // The pokemon was successfully added to the trainer's party, so it's safe to move on to
         // the next party slot.
         i++;
@@ -2032,6 +2022,7 @@ void DoSpecialTrainerBattle(void)
     s32 i;
 
     gBattleScripting.specialTrainerBattleType = gSpecialVar_0x8004;
+    mgba_printf(MGBA_LOG_INFO, "8004 = %d, 8005 = %d, Mode is %d", gSpecialVar_0x8004, gSpecialVar_0x8005, VarGet(VAR_FRONTIER_BATTLE_MODE));
     switch (gSpecialVar_0x8004)
     {
     case SPECIAL_BATTLE_TOWER:
