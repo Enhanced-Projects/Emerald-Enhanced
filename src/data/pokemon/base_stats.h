@@ -281,14 +281,14 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_BUTTERFREE] =
     {
-        .baseHP        = 60,
+        .baseHP        = 80,
         .baseAttack    = 45,
-        .baseDefense   = 50,
-        .baseSpeed     = 70,
-        .baseSpAttack  = 90,
-        .baseSpDefense = 80,
+        .baseDefense   = 75,
+        .baseSpeed     = 50,
+        .baseSpAttack  = 110,
+        .baseSpDefense = 120,
         .type1 = TYPE_BUG,
-        .type2 = TYPE_FLYING,
+        .type2 = TYPE_PSYCHIC,
         .catchRate = 45,
         .expYield = 178,
         .evYield_SpAttack  = 2,
