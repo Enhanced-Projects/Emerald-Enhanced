@@ -323,6 +323,7 @@ static const struct LevelUpMove sMetapodLevelUpLearnset[] = {
 
 static const struct LevelUpMove sButterfreeLevelUpLearnset[] = {
     // Gen 7 TM's
+    LEVEL_UP_MOVE( 1, MOVE_PSYSHOCK),
     LEVEL_UP_MOVE( 1, MOVE_TOXIC),
     LEVEL_UP_MOVE( 1, MOVE_VENOSHOCK),
     LEVEL_UP_MOVE( 1, MOVE_HIDDEN_POWER),
@@ -354,6 +355,7 @@ static const struct LevelUpMove sButterfreeLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_SLEEP_TALK),
     LEVEL_UP_MOVE( 1, MOVE_U_TURN),
     LEVEL_UP_MOVE( 1, MOVE_SUBSTITUTE),
+    LEVEL_UP_MOVE( 1, MOVE_TRICK_ROOM),
     LEVEL_UP_MOVE( 1, MOVE_CONFIDE),
     // Level Up Moves
     // LEVEL_UP_MOVE( 0, MOVE_GUST),
