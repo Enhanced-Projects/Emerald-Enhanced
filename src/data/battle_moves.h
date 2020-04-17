@@ -9480,6 +9480,20 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .target = MOVE_TARGET_FOES_AND_ALLY,
         .priority = 0,
         .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
-        .split = SPLIT_SPECIAL,
-    }
+        .split = SPLIT_PHYSICAL,
+    },
+
+    [MOVE_MIND_BLOWN] =
+    {
+        .effect = EFFECT_HIT_ESCAPE,
+        .power = 70,
+        .type = TYPE_FIRE,
+        .accuracy = 100,
+        .pp = 20,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_FOES_AND_ALLY,
+        .priority = 0,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
+        .split = SPLIT_PHYSICAL,
+    },
 };

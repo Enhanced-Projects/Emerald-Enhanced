@@ -8282,6 +8282,9 @@ static void Cmd_manipulatedamage(void)
     case DMG_BIG_ROOT:
         gBattleMoveDamage = GetDrainedBigRootHp(gBattlerAttacker, gBattleMoveDamage);
         break;
+    case DMG_1_2_ATTACKER_HP:
+        gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 2;
+        break;
     }
 
     gBattlescriptCurrInstr += 2;
@@ -10905,7 +10908,7 @@ static void Cmd_tryswapabilities(void) // skill swap
         return;
     }
 
-    if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+    if (gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
     {
         gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
     }
@@ -11194,6 +11197,19 @@ static void Cmd_pickup(void)
                 heldItem = GetBattlePyramidPickupItemId();
                 SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);
             }
+            #if (defined ITEM_HONEY)
+            else if (ability == ABILITY_HONEY_GATHER
+                && species != 0
+                && species != SPECIES_EGG
+                && heldItem == ITEM_NONE)
+            {
+                if ((lvlDivBy10 + 1 ) * 5 > Random() % 100)
+                {
+                    heldItem = ITEM_HONEY;
+                    SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);
+                }
+            }
+            #endif
         }
     }
     else
@@ -11234,6 +11250,19 @@ static void Cmd_pickup(void)
                     }
                 }
             }
+            #if (defined ITEM_HONEY)
+            else if (ability == ABILITY_HONEY_GATHER
+                && species != 0
+                && species != SPECIES_EGG
+                && heldItem == ITEM_NONE)
+            {
+                if ((lvlDivBy10 + 1 ) * 5 > Random() % 100)
+                {
+                    heldItem = ITEM_HONEY;
+                    SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);
+                }
+            }
+            #endif
         }
     }
 

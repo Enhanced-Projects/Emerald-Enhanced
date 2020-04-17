@@ -676,4 +676,5 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_GRAVEL_STORM] = _("Gravel Storm"),
     [MOVE_REAPING_BLOW] = _("Reaping Blow"),
     [MOVE_BLAST_OFF] = _("Blast Off"),
+    [MOVE_MIND_BLOWN] = _("Mind Blown"),
 };

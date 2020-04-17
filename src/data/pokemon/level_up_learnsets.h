@@ -26204,8 +26204,7 @@ static const struct LevelUpMove sLycanrocMidnightLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sLycanrocDuskLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 0, MOVE_TRASH),
-    LEVEL_UP_MOVE( 1, MOVE_TRASH),
+    LEVEL_UP_MOVE( 1, MOVE_THRASH),
     LEVEL_UP_MOVE( 1, MOVE_ACCELEROCK),
     LEVEL_UP_MOVE( 1, MOVE_COUNTER),
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),

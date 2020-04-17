@@ -2614,6 +2614,10 @@ static const u8 sBLAST_OFFDescription[] = _(
     "Departs like a rocket,\n"
     "blasting everything.");
 
+static const u8 sMIND_BLOWNDescription[] = _(
+	"It explodes the user's head\n"
+	"to damage everything around.");
+
 static const u8 sNotDoneYetDescription[] = _(
 	"Not done yet.");
 
@@ -3296,4 +3300,5 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_GRAVEL_STORM - 1] = sGRAVEL_STORMDescription,
     [MOVE_REAPING_BLOW - 1] = sREAPING_BLOWDescription,
     [MOVE_BLAST_OFF - 1] = sBLAST_OFFDescription,
+    [MOVE_MIND_BLOWN - 1] = sMIND_BLOWNDescription,
 };

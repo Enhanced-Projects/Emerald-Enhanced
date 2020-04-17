@@ -116,7 +116,7 @@ NM10_CONIXNA::
 	end
 
 NM10_NotWorthy:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN)You briefly see it stare at you\n"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You briefly see it stare at you\n"
 	.string "and then return to its\l"
 	.string "original position.\p"
 	.string "Maybe you should come back later.$"
