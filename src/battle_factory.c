@@ -561,18 +561,6 @@ static void GenerateInitialRentalMons(void)
         if (j != firstMonId + i)
             continue;
 
-        // Cannot have two same held items.
-        for (j = firstMonId; j < firstMonId + i; j++)
-        {
-            if (heldItems[j] != 0 && heldItems[j] == gFacilityTrainerMons[monSetId].heldItem)
-            {
-                if (gFacilityTrainerMons[monSetId].species == currSpecies)
-                    currSpecies = SPECIES_NONE;
-                break;
-            }
-        }
-        if (j != firstMonId + i)
-            continue;
 
         gSaveBlock2Ptr->frontier.rentalMons[i].monId = monSetId;
         species[i] = gFacilityTrainerMons[monSetId].species;

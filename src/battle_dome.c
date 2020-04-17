@@ -2316,8 +2316,7 @@ static void InitDomeTrainers(void)
                     int alreadySelectedMonId = DOME_MONS[i][k];
                     if (alreadySelectedMonId == monId
                         || species[0] == gFacilityTrainerMons[monId].species
-                        || species[1] == gFacilityTrainerMons[monId].species
-                        || gFacilityTrainerMons[alreadySelectedMonId].heldItem == gFacilityTrainerMons[monId].heldItem)
+                        || species[1] == gFacilityTrainerMons[monId].species)
                         break;
                 }
             } while (k != j);
