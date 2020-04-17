@@ -7997,7 +7997,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_PARABOLIC_CHARGE] =
     {
         .effect = EFFECT_ABSORB,
-        .power = 65,
+        .power = 80,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,
         .pp = 20,

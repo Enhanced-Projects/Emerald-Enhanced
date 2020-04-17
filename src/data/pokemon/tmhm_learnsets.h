@@ -17822,6 +17822,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM10_HIDDEN_POWER)
 											| TMHM(TM59_IRON_HEAD)
 											| TMHM(TM23_IRON_TAIL)
+											| TMHM(TM57_KNOCK_OFF)
 											| TMHM(TM17_PROTECT)
 											| TMHM(TM44_REST)
 											| TMHM(TM27_RETURN)
