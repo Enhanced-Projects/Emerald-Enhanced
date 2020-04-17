@@ -1612,7 +1612,7 @@ bool8 KeepKeyItem(u16 itemId)
     case ITEM_IMPRINTER:
     case ITEM_SUPER_ROD:
     case ITEM_FORECASTER:
-    case ITEM_UP_GRADE:
+    case ITEM_EXP_DRIVE:
     case ITEM_EXP_SHARE:
         return TRUE;
     default:
@@ -1651,7 +1651,7 @@ void CB2_NewGame(void)
     if (CheckBagHasItem(ITEM_NUGGET, 1))
         hasWaystone = TRUE;
 
-    if (CheckBagHasItem(ITEM_UP_GRADE, 1))
+    if (CheckBagHasItem(ITEM_EXP_DRIVE, 1))
         hasExpDrive = TRUE;
 
     if (CheckBagHasItem(ITEM_FORECASTER, 1))

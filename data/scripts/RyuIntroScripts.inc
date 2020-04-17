@@ -72,7 +72,7 @@ Ryu_NGP_Forecaster:
 	return
 
 Ryu_NGP_ExpDrive:
-	additem ITEM_UP_GRADE, 1
+	additem ITEM_EXP_DRIVE, 1
 	return
 
 Ryu_NGP_Imprinter:
@@ -338,7 +338,7 @@ RyuSetRTCFrontier::
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
 	setflag FLAG_HIDE_ROUTE_103_RIVAL
 	setflag FLAG_SYS_POKEDEX_GET
-	special sub_81AFDA0
+	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setflag FLAG_SYS_NATIONAL_DEX
 	special EnableNationalPokedex

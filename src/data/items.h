@@ -3332,10 +3332,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_UP_GRADE] =
+    [ITEM_EXP_DRIVE] =
     {
         .name = _("EXP Drive"),
-        .itemId = ITEM_UP_GRADE,
+        .itemId = ITEM_EXP_DRIVE,
         .price = 32000,
         .holdEffect = HOLD_EFFECT_NONE,
         .holdEffectParam = 0,

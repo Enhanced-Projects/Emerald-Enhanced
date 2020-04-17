@@ -293,6 +293,7 @@ RyuDebugGiveItemsDone::
 	additem ITEM_MASTER_BALL, 100
 	additem ITEM_MAX_REPEL, 100
 	additem ITEM_MEGA_BRACELET, 1
+	additem ITEM_EXP_DRIVE, 1
 	msgbox RyuDebug_GiveAllItemsDoneMsg MSGBOX_DEFAULT
 	msgbox RyuDebug_MoneyMsg MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -397,7 +398,7 @@ RyuDebug_SkipTutorial::
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
 	setflag FLAG_HIDE_ROUTE_103_RIVAL
 	setflag FLAG_SYS_POKEDEX_GET
-	special sub_81AFDA0
+	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setflag FLAG_SYS_NATIONAL_DEX
 	special EnableNationalPokedex

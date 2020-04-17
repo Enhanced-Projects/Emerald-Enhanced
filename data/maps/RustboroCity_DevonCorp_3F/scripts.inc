@@ -512,7 +512,7 @@ DC_CorporateInterrogation4::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox DC_ToThinkThe
 	closemessage
-	additem ITEM_UP_GRADE
+	additem ITEM_EXP_DRIVE
 	setvar VAR_RYU_EXP_BATTERY, 1
 	closemessage
 	additem ITEM_OLD_SEA_MAP

@@ -5135,7 +5135,7 @@ void RyuResetDevonFlags(void)
 		FlagClear(FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE);
 		RemoveBagItem(ITEM_FAME_CHECKER, 1);
 		RemoveBagItem(ITEM_METEORITE, 1);
-		RemoveBagItem(ITEM_UP_GRADE, 1);
+		RemoveBagItem(ITEM_EXP_DRIVE, 1);
     }
 void RyuResetAquaFlags(void)
     {
