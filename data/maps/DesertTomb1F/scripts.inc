@@ -99,7 +99,7 @@ NM10_CrystalOnix::
 	playmoncry SPECIES_ONIX, 0
 	special checkbadgecount
 	compare VAR_RESULT, 8
-	goto_if_lt ryu_end
+	goto_if_ne NM10_CONIXNA
 	msgbox NM10_NotTooWeak
 	waitmoncry
 	setwildbattle SPECIES_CRYSTAL_ONIX, 90, ITEM_LAGGING_TAIL
@@ -109,11 +109,22 @@ NM10_CrystalOnix::
 	waitstate
 	releaseall
 	end
+
+NM10_CONIXNA::
+	msgbox NM10_NotWorthy
+	releaseall
+	end
+
+NM10_NotWorthy:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN)You briefly see it stare at you\n"
+	.string "and then return to its\l"
+	.string "original position.\p"
+	.string "Maybe you should come back later.$"
 	
 NM10_CrystalOnixSpeech:
     .string "It is the most beautiful Pokémon\n"
     .string "statue you've ever seen.\p"
-	.string "It has a faint yellow glow to it.\n"
+	.string "It has a faint yellow glow to it.\n$"
 
 NM10_NotTooWeak:
     .string "... ... ... ...\p"
