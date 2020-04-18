@@ -202,8 +202,8 @@ static const u8 sDisableDescription[] = _(
     "the foe's moves.");
 
 static const u8 sAcidDescription[] = _(
-    "Sprays a hide-melting acid.\n"
-    "May lower Defense.");
+    "Super effective on Steel\n"
+    "types. May inflict Poison.");
 
 static const u8 sEmberDescription[] = _(
     "A weak fire attack that may\n"
@@ -2150,7 +2150,7 @@ static const u8 sPETAL_BLIZZARDDescription[] = _(
 	"of petals to attack.");
 
 static const u8 sFREEZE_DRYDescription[] = _(
-	"Super effective on WaterDash\n"
+	"Super effective on Water\n"
 	"types. May cause freezing.");
 
 static const u8 sDISARMING_VOICEDescription[] = _(
