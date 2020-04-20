@@ -8469,6 +8469,7 @@ static const struct LevelUpMove sMantineLevelUpLearnset[] = {
     LEVEL_UP_MOVE(39, MOVE_AQUA_RING),
     LEVEL_UP_MOVE(46, MOVE_BOUNCE),
     LEVEL_UP_MOVE(49, MOVE_HYDRO_PUMP),
+    LEVEL_UP_MOVE(53, MOVE_HURRICANE),
     LEVEL_UP_END
 };
 
