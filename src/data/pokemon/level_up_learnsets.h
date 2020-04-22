@@ -6421,6 +6421,7 @@ static const struct LevelUpMove sIgglybuffLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sTogepiLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 1, MOVE_SOFTBOILED),
     LEVEL_UP_MOVE( 1, MOVE_GROWL),
     LEVEL_UP_MOVE( 1, MOVE_CHARM),
     LEVEL_UP_MOVE( 5, MOVE_METRONOME),
