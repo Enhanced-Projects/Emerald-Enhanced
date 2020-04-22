@@ -10929,6 +10929,7 @@ static const struct LevelUpMove sWailmerLevelUpLearnset[] = {
     LEVEL_UP_MOVE(45, MOVE_BOUNCE),
     LEVEL_UP_MOVE(49, MOVE_HYDRO_PUMP),
     LEVEL_UP_MOVE(53, MOVE_HEAVY_SLAM),
+    LEVEL_UP_MOVE(58, MOVE_HYPER_VOICE),
     LEVEL_UP_END
 };
 
@@ -10985,6 +10986,7 @@ static const struct LevelUpMove sWailordLevelUpLearnset[] = {
     LEVEL_UP_MOVE(51, MOVE_BOUNCE),
     LEVEL_UP_MOVE(58, MOVE_HYDRO_PUMP),
     LEVEL_UP_MOVE(65, MOVE_HEAVY_SLAM),
+    LEVEL_UP_MOVE(71, MOVE_BOOMBURST),
     LEVEL_UP_END
 };
 
