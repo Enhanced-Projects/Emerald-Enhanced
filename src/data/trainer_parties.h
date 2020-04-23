@@ -12236,7 +12236,7 @@ static const struct TrainerMonItemCustomMoves sParty_Steven[] = {
     .species = SPECIES_AEGISLASH,
     .heldItem = ITEM_NONE,
     .ability = 0,
-    .moves = {MOVE_KING_S_SHIELD, MOVE_FLASH_CANNON, MOVE_SHADOW_BALL, MOVE_SACRED_SWORD},
+    .moves = {MOVE_KINGS_SHIELD, MOVE_FLASH_CANNON, MOVE_SHADOW_BALL, MOVE_SACRED_SWORD},
     },
     {
     .iv = 255,

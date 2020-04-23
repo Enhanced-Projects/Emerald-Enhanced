@@ -5963,10 +5963,10 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_SLOW,
         .eggGroup1 = EGG_GROUP_FLYING,
         .eggGroup2 = EGG_GROUP_FLYING,
-        .abilities = {ABILITY_KEEN_EYE, ABILITY_STURDY},
-        .abilityHidden = ABILITY_WEAK_ARMOR,
-        .noFlip = FALSE,
+        .abilities = {ABILITY_STURDY, ABILITY_KEEN_EYE},
+        .safariZoneFleeRate = 0,
         .bodyColor = BODY_COLOR_GRAY,
+        .noFlip = FALSE,
     },
 
     [SPECIES_HOUNDOUR] =
