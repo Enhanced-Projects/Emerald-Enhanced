@@ -12347,16 +12347,16 @@ const struct Trainer gTrainers[] = {
     [TRAINER_REL_BRENDAN] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_TRIATHLETE,
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_SWIMMER,
         .trainerPic = TRAINER_PIC_SWIMMING_TRIATHLETE_M,
-        .trainerName = _("PABLO"),
+        .trainerName = _("Brendan"),
         .items = {},
-        .battleStyle = BS_SHIFT,
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Pablo5),
-        .party = {.NoItemDefaultMoves = sParty_Pablo5},
+        .partySize = ARRAY_COUNT(sParty_RelBrendan),
+        .party = {.ItemCustomMoves = sParty_RelBrendan},
     },
 
     [TRAINER_REL_DAWN] =

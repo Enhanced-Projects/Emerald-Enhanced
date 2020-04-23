@@ -12848,22 +12848,31 @@ static const struct TrainerMonItemCustomMoves sParty_RelLana[] = {
 	}
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Pablo5[] = {
-    {
-    .iv = 40,
-    .lvl = 43,
-    .species = SPECIES_PELIPPER,
-    },
-    {
-    .iv = 40,
-    .lvl = 43,
-    .species = SPECIES_STARMIE,
-    },
-    {
-    .iv = 40,
-    .lvl = 43,
-    .species = SPECIES_STARMIE,
-    }
+static const struct TrainerMonItemCustomMoves sParty_RelBrendan[] = {//bookmark
+	{
+	.iv = 255,
+	.lvl = 101,
+	.species = SPECIES_LUCARIO,
+	.heldItem = ITEM_LIFE_ORB,
+	.ability = 0,
+	.moves = {MOVE_CLOSE_COMBAT, MOVE_METEOR_MASH, MOVE_EXTREME_SPEED, MOVE_SWORDS_DANCE},
+	},
+	{
+	.iv = 255,
+	.lvl = 109,
+	.species = SPECIES_SCEPTILE,
+	.heldItem = ITEM_EXPERT_BELT,
+	.ability = 0,
+	.moves = {MOVE_LEAF_BLADE, MOVE_ROCK_SLIDE, MOVE_DRAIN_PUNCH, MOVE_SWORDS_DANCE},
+	},
+	{
+	.iv = 255,
+	.lvl = 104,
+	.species = SPECIES_GALLADE,
+	.heldItem = ITEM_EXPERT_BELT,
+	.ability = 0,
+	.moves = {MOVE_PSYCHO_CUT, MOVE_NIGHT_SLASH, MOVE_DRAIN_PUNCH, MOVE_SWORDS_DANCE},
+	}
 };
 
 static const struct TrainerMonItemCustomMoves sParty_RelDawn[] = {

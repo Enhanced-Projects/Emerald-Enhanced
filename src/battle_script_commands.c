@@ -3240,7 +3240,7 @@ static void Cmd_tryfaintmon(void)
         else
         {
             gActiveBattler = gBattlerTarget;
-            battlerId = gBattlerTarget;
+            battlerId = gBattlerAttacker;
             if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 20))
             {
                 BS_ptr = BattleScript_FaintTarget20x;
