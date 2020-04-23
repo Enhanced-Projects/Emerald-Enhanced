@@ -31,8 +31,8 @@ struct PokedexEntry
     /*0x1C*/ u16 trainerOffset;
 };  /*size = 0x20*/
 
-#define KANTO_DEX_COUNT 151
-#define JOHTO_DEX_COUNT 252
+//#define KANTO_DEX_COUNT 151
+//#define JOHTO_DEX_COUNT 252
 
 
 void ResetPokedex(void);

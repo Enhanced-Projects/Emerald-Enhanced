@@ -11179,8 +11179,8 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FAIRY,
         .eggGroup2 = EGG_GROUP_GRASS,
         .abilities = {ABILITY_FLOWER_GIFT, ABILITY_NONE},
-        .noFlip = FALSE,
         .bodyColor = BODY_COLOR_PURPLE,
+        .noFlip = TRUE,
     },
 
     [SPECIES_SHELLOS] =
@@ -13215,8 +13215,8 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_UNDISCOVERED,
         .eggGroup2 = EGG_GROUP_UNDISCOVERED,
         .abilities = {ABILITY_VICTORY_STAR, ABILITY_NONE},
-        .noFlip = FALSE,
         .bodyColor = BODY_COLOR_YELLOW,
+        .noFlip = TRUE,
     },
 
     [SPECIES_SNIVY] =
@@ -16770,8 +16770,8 @@ const struct BaseStats gBaseStats[] =
         .eggGroup2 = EGG_GROUP_FLYING,
         .abilities = {ABILITY_BIG_PECKS, ABILITY_OVERCOAT},
         .abilityHidden = ABILITY_WEAK_ARMOR,
-        .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BROWN,
+        .noFlip = TRUE,
     },
 
     [SPECIES_HEATMOR] =
