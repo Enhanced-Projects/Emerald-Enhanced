@@ -1002,6 +1002,7 @@ const u16 gEggMoves[] = {
         MOVE_MIMIC,
         MOVE_MISTY_TERRAIN,
         MOVE_PRESENT,
+        MOVE_SOFTBOILED,
         MOVE_SPLASH,
         MOVE_STORED_POWER,
         MOVE_TICKLE,
