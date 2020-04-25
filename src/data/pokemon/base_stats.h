@@ -8405,9 +8405,9 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_WAILMER] =
     {
         .baseHP        = 100,
-        .baseAttack    = 40,
+        .baseAttack    = 50,
         .baseDefense   = 50,
-        .baseSpeed     = 70,
+        .baseSpeed     = 75,
         .baseSpAttack  = 90,
         .baseSpDefense = 50,
         .type1 = TYPE_WATER,
@@ -8431,10 +8431,10 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_WAILORD] =
     {
         .baseHP        = 130,
-        .baseAttack    = 60,
+        .baseAttack    = 70,
         .baseDefense   = 60,
-        .baseSpeed     = 75,
-        .baseSpAttack  = 115,
+        .baseSpeed     = 85,
+        .baseSpAttack  = 120,
         .baseSpDefense = 60,
         .type1 = TYPE_WATER,
         .type2 = TYPE_WATER,
