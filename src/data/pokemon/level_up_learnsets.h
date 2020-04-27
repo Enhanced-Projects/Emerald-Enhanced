@@ -9556,6 +9556,7 @@ static const struct LevelUpMove sCelebiLevelUpLearnset[] = {
     LEVEL_UP_MOVE(76, MOVE_HEALING_WISH),
     LEVEL_UP_MOVE(82, MOVE_LEAF_STORM),
     LEVEL_UP_MOVE(91, MOVE_PERISH_SONG),
+    LEVEL_UP_MOVE(99, MOVE_GEOMANCY),
     LEVEL_UP_END
 };
 
