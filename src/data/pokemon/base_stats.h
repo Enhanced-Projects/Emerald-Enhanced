@@ -11709,10 +11709,10 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_SPIRITOMB] =
     {
         .baseHP        = 50,
-        .baseAttack    = 92,
+        .baseAttack    = 62,
         .baseDefense   = 108,
         .baseSpeed     = 35,
-        .baseSpAttack  = 92,
+        .baseSpAttack  = 69,
         .baseSpDefense = 108,
         .type1 = TYPE_GHOST,
         .type2 = TYPE_DARK,
@@ -11727,8 +11727,8 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_AMORPHOUS,
         .eggGroup2 = EGG_GROUP_AMORPHOUS,
-        .abilities = {ABILITY_PRESSURE, ABILITY_NONE},
-        .abilityHidden = ABILITY_INFILTRATOR,
+        .abilities = {ABILITY_PRESSURE, ABILITY_INTIMIDATE},
+        .abilityHidden = ABILITY_CURSED_BODY,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_PURPLE,
     },
