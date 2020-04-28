@@ -10883,7 +10883,6 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM06_TOXIC)),
 
     [SPECIES_SPIRITOMB]   = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
-											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM62_CURSE)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM42_FACADE)
