@@ -3383,12 +3383,12 @@ static const struct TrainerMonItemCustomMoves sParty_Phoebe[] = {
 
 static const struct TrainerMonItemCustomMoves sParty_Glacia[] = {
 	{
-	.iv = 250,
+	.iv = 232,
 	.lvl = 90,
-	.species = SPECIES_GLACEON,
-	.heldItem = ITEM_EXPERT_BELT,
-	.ability = 0,
-	.moves = {MOVE_FOCUS_BLAST, MOVE_ICE_BEAM, MOVE_SHADOW_BALL, MOVE_HYPER_VOICE},
+	.species = SPECIES_WALREIN,
+	.heldItem = ITEM_ICY_ROCK,
+	.ability = 1,
+	.moves = {MOVE_SURF, MOVE_BLIZZARD, MOVE_FREEZE_DRY, MOVE_SUPER_FANG},
 	},
 	{
 	.iv = 250,
@@ -3396,13 +3396,13 @@ static const struct TrainerMonItemCustomMoves sParty_Glacia[] = {
 	.species = SPECIES_GLALIE,
 	.heldItem = ITEM_GLALITITE,
 	.ability = 1,
-	.moves = {MOVE_EARTHQUAKE, MOVE_CRUNCH, MOVE_ICE_SHARD, MOVE_DOUBLE_EDGE},
+	.moves = {MOVE_ICE_FANG, MOVE_CRUNCH, MOVE_ICE_SHARD, MOVE_THUNDER_FANG},
 	},
 	{
 	.iv = 250,
 	.lvl = 92,
 	.species = SPECIES_DEWGONG,
-	.heldItem = ITEM_NEVER_MELT_ICE,
+	.heldItem = ITEM_LEFTOVERS,
 	.ability = 0,
 	.moves = {MOVE_ICE_SHARD, MOVE_CURSE, MOVE_AQUA_JET, MOVE_DIVE},
 	},
@@ -3412,23 +3412,23 @@ static const struct TrainerMonItemCustomMoves sParty_Glacia[] = {
 	.species = SPECIES_LAPRAS,
 	.heldItem = ITEM_MYSTIC_WATER,
 	.ability = 0,
-	.moves = {MOVE_SURF, MOVE_THUNDERBOLT, MOVE_TOXIC, MOVE_ICE_BEAM},
+	.moves = {MOVE_SURF, MOVE_THUNDERBOLT, MOVE_TOXIC, MOVE_FROST_BREATH},
 	},
 	{
 	.iv = 255,
 	.lvl = 93,
-	.species = SPECIES_WALREIN,
-	.heldItem = ITEM_LEFTOVERS,
-	.ability = 1,
-	.moves = {MOVE_SURF, MOVE_HAIL, MOVE_BLIZZARD, MOVE_SUBSTITUTE},
+	.species = SPECIES_GLACEON,
+	.heldItem = ITEM_SITRUS_BERRY,
+	.ability = 0,
+	.moves = {MOVE_HIDDEN_POWER, MOVE_FROST_BREATH, MOVE_SHADOW_BALL, MOVE_SYNCHRONOISE},
 	},
 	{
 	.iv = 255,
 	.lvl = 93,
 	.species = SPECIES_PILOSWINE,
-	.heldItem = ITEM_NEVER_MELT_ICE,
-	.ability = 0,
-	.moves = {MOVE_ICE_SHARD, MOVE_STONE_EDGE, MOVE_BODY_SLAM, MOVE_EARTHQUAKE},
+	.heldItem = ITEM_EVIOLITE,
+	.ability = 2,
+	.moves = {MOVE_ICE_SHARD, MOVE_STONE_EDGE, MOVE_ICICLE_CRASH, MOVE_EARTHQUAKE},
 	}
 };
 
@@ -3436,10 +3436,10 @@ static const struct TrainerMonItemCustomMoves sParty_Drake[] = {
 	{
 	.iv = 250,
 	.lvl = 92,
-	.species = SPECIES_MILOTIC,
-	.heldItem = ITEM_LEFTOVERS,
+	.species = SPECIES_GARCHOMP,
+	.heldItem = ITEM_ROCKY_HELMET,
 	.ability = 0,
-	.moves = {MOVE_RAIN_DANCE, MOVE_RECOVER, MOVE_SCALD, MOVE_ICE_BEAM},
+	.moves = {MOVE_STEALTH_ROCK, MOVE_EARTHQUAKE, MOVE_DRAGON_TAIL, MOVE_FIRE_FANG},
 	},
 	{
 	.iv = 250,
@@ -13524,10 +13524,10 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch[] = {
 	{
 	.iv = 255,
 	.lvl = 108,
-	.species = SPECIES_WEAVILE,
-	.heldItem = ITEM_FOCUS_SASH,
-	.ability = 0,
-	.moves = {MOVE_KNOCK_OFF, MOVE_ICICLE_CRASH, MOVE_ICE_SHARD, MOVE_LOW_KICK},
+	.species = SPECIES_GLALIE,
+	.heldItem = ITEM_GLALITITE,
+	.ability = 1,
+	.moves = {MOVE_ICE_FANG, MOVE_CRUNCH, MOVE_THUNDER_FANG, MOVE_EARTHQUAKE},
 	}
 };
 
