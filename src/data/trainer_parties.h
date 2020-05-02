@@ -3388,7 +3388,7 @@ static const struct TrainerMonItemCustomMoves sParty_Glacia[] = {
 	.species = SPECIES_WALREIN,
 	.heldItem = ITEM_ICY_ROCK,
 	.ability = 1,
-	.moves = {MOVE_SURF, MOVE_BLIZZARD, MOVE_FREEZE_DRY, MOVE_SUPER_FANG},
+	.moves = {MOVE_BLIZZARD, MOVE_EARTHQUAKE, MOVE_FREEZE_DRY, MOVE_SLACK_OFF},
 	},
 	{
 	.iv = 250,
