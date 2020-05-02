@@ -8617,8 +8617,8 @@ const struct BaseStats gBaseStats[] =
         .baseSpeed     = 10,
         .baseSpAttack  = 45,
         .baseSpDefense = 45,
-        .type1 = TYPE_GROUND,
-        .type2 = TYPE_BUG,
+        .type1 = TYPE_BUG,
+        .type2 = TYPE_GROUND,
         .catchRate = 255,
         .expYield = 58,
         .evYield_Attack    = 1,
@@ -9535,12 +9535,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_SPHEAL] =
     {
-        .baseHP        = 70,
+        .baseHP        = 80,
         .baseAttack    = 40,
-        .baseDefense   = 50,
-        .baseSpeed     = 25,
+        .baseDefense   = 65,
+        .baseSpeed     = 5,
         .baseSpAttack  = 55,
-        .baseSpDefense = 50,
+        .baseSpDefense = 65,
         .type1 = TYPE_ICE,
         .type2 = TYPE_WATER,
         .catchRate = 255,
@@ -9561,12 +9561,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_SEALEO] =
     {
-        .baseHP        = 90,
+        .baseHP        = 100,
         .baseAttack    = 60,
-        .baseDefense   = 70,
-        .baseSpeed     = 45,
+        .baseDefense   = 85,
+        .baseSpeed     = 25,
         .baseSpAttack  = 75,
-        .baseSpDefense = 70,
+        .baseSpDefense = 85,
         .type1 = TYPE_ICE,
         .type2 = TYPE_WATER,
         .catchRate = 120,
@@ -9587,12 +9587,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_WALREIN] =
     {
-        .baseHP        = 110,
+        .baseHP        = 120,
         .baseAttack    = 80,
-        .baseDefense   = 110,
-        .baseSpeed     = 55,
+        .baseDefense   = 105,
+        .baseSpeed     = 45,
         .baseSpAttack  = 95,
-        .baseSpDefense = 110,
+        .baseSpDefense = 105,
         .type1 = TYPE_ICE,
         .type2 = TYPE_WATER,
         .catchRate = 45,
