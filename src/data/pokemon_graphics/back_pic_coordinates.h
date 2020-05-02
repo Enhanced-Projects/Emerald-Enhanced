@@ -4433,6 +4433,32 @@ const struct MonCoords gMonBackPicCoords[] =
         .y_offset = 10,
     },
     // Alolan Forms
+    // Rotom Forms
+    [SPECIES_ROTOM_HEAT]
+    {
+        .size = 0x65,
+        .y_offset = 0xc,
+    },
+    [SPECIES_ROTOM_WASH]
+    {
+        .size = 0x65,
+        .y_offset = 0x11,
+    },
+    [SPECIES_ROTOM_FROST]
+    {
+        .size = 0x65,
+        .y_offset = 0x7,
+    },
+    [SPECIES_ROTOM_MOW]
+    {
+        .size = 0x65,
+        .y_offset = 0xA,
+    },
+    [SPECIES_ROTOM_FAN]
+    {
+        .size = 0x65,
+        .y_offset = 0x8,
+    },
     [SPECIES_ALOLAN_RATTATA] =
     {
         .size = 0x65,
@@ -4524,6 +4550,7 @@ const struct MonCoords gMonBackPicCoords[] =
         .y_offset = 0x8,
     },
     // Forms
+
     [SPECIES_SHAYMIN_SKY] =
     {
         .size = 0x65,

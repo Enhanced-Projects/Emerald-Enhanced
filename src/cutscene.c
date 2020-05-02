@@ -30,9 +30,9 @@ static const u8 sShellyBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/shell
 static const u8 sShellyBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_map.bin");
 static const u8 sShellyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_palette.gbapal");
 
-static const u8 sMawileBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile_tiles.8bpp");
+static const u8 sMawileBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile.8bpp");
 static const u8 sMawileBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile_tiles.bin");
-static const u8 sMawileBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile_palette.gbapal");
+static const u8 sMawileBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile.gbapal");
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
