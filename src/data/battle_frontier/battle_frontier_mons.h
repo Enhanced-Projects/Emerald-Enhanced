@@ -1767,10 +1767,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_WALREIN_3] = {
         .species = SPECIES_WALREIN,
-        .moves = {MOVE_BLIZZARD, MOVE_SURF, MOVE_FREEZE_DRY, MOVE_REST},
-        .heldItem = ITEM_CHESTO_BERRY,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_MODEST,
+        .moves = {MOVE_AVALANCHE, MOVE_EARTHQUAKE, MOVE_CURSE, MOVE_SLACK_OFF},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_CAREFUL,
         .ivs = 31,
         .ability = 1
     },
@@ -3595,12 +3595,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_GLALIE_1] = {
         .species = SPECIES_GLALIE,
-        .moves = {MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_ICE_SHARD, MOVE_EXPLOSION},
+        .moves = {MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_THUNDER_FANG, MOVE_EXPLOSION},
         .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_LUDICOLO_1] = {
         .species = SPECIES_LUDICOLO,
@@ -4072,10 +4072,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_WALREIN_1] = {
         .species = SPECIES_WALREIN,
-        .moves = {MOVE_FROST_BREATH, MOVE_SHEER_COLD, MOVE_REST, MOVE_SLEEP_TALK},
+        .moves = {MOVE_FROST_BREATH, MOVE_EARTHQUAKE, MOVE_YAWN, MOVE_SLACK_OFF},
         .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_CALM,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_SASSY,
         .ivs = 31,
         .ability = 1
     },
@@ -5323,12 +5323,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_GLALIE_2] = {
         .species = SPECIES_GLALIE,
-        .moves = {MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_CRUNCH, MOVE_EXPLOSION},
+        .moves = {MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_THUNDER_FANG, MOVE_EXPLOSION},
         .heldItem = ITEM_CHOICE_SCARF,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_ADAMANT,
+        .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_LUDICOLO_2] = {
         .species = SPECIES_LUDICOLO,
@@ -5800,7 +5800,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_WALREIN_2] = {
         .species = SPECIES_WALREIN,
-        .moves = {MOVE_FROST_BREATH, MOVE_SURF, MOVE_REST, MOVE_SLEEP_TALK},
+        .moves = {MOVE_BLIZZARD, MOVE_FREEZE_DRY, MOVE_HYDRO_PUMP, MOVE_SLACK_OFF},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,

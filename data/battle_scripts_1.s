@@ -1146,7 +1146,7 @@ BattleScript_ToxicThreadPrintString::
 	printfromtable gStatDownStringIds
 	waitmessage 0x40
 BattleScript_ToxicThreadTryPsn::
-	setmoveeffect MOVE_EFFECT_POISON
+	setmoveeffect MOVE_EFFECT_TOXIC
 	seteffectprimary
 	goto BattleScript_MoveEnd
 

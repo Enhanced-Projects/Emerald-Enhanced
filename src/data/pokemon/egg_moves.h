@@ -1991,6 +1991,7 @@ const u16 gEggMoves[] = {
         MOVE_FISSURE,
         MOVE_ROLLOUT,
         MOVE_SIGNAL_BEAM,
+        MOVE_SLACK_OFF,
         MOVE_SLEEP_TALK,
         MOVE_SPIT_UP,
         MOVE_STOCKPILE,
@@ -2729,6 +2730,7 @@ const u16 gEggMoves[] = {
 		MOVE_SHADOW_SNEAK,
 		MOVE_CAPTIVATE,
 		MOVE_NIGHTMARE,
+                MOVE_NIGHT_SHADE,
 		MOVE_FOUL_PLAY,
 		MOVE_DISABLE),
 
