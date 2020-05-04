@@ -947,26 +947,26 @@ gTilesetPalettes_LilycoveMuseum:: @ 836DEAC
 
 	.align 2
 gTilesetTiles_BrendansDawnsHouse:: @ 836E0AC
-	.incbin "data/tilesets/secondary/brendans_mays_house/tiles.4bpp.lz"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/tiles.4bpp.lz"
 
 	.align 2
 gTilesetPalettes_BrendansDawnsHouse:: @ 836F178
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/00.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/01.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/02.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/03.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/04.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/05.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/06.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/07.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/08.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/09.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/10.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/11.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/12.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/13.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/14.gbapal"
-	.incbin "data/tilesets/secondary/brendans_mays_house/palettes/15.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/12.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/13.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/14.gbapal"
+	.incbin "data/tilesets/secondary/brendans_dawns_house/palettes/15.gbapal"
 
 	.align 2
 gTilesetTiles_Lab:: @ 836F378

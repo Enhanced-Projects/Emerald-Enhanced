@@ -54,7 +54,7 @@
     ],
     "id": "MAP_ROUTE110_TRICK_HOUSE_PUZZLE2",
     "layout": "LAYOUT_ROUTE110_TRICK_HOUSE_PUZZLE2",
-    "map_type": "MAP_TYPE_UNUSED_1",
+    "map_type": "MAP_TYPE_INDOOR",
     "music": "MUS_KARAKURI",
     "name": "Route110_TrickHousePuzzle2",
     "object_events": [
