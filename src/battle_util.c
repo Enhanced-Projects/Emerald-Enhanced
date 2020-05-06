@@ -5794,6 +5794,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         if (moveType == TYPE_NORMAL && gBattleStruct->ateBoost[battlerAtk])
             MulModifier(&modifier, UQ_4_12(1.2));
         break;
+    case ABILITY_FIERCE_KICKS:
+        if (gBattleMoves[move].flags & FLAG_KICK_BOOST)
+           MulModifier(&modifier, UQ_4_12(1.2));
+        break;
     }
 
     // field abilities
@@ -5822,9 +5826,12 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     switch (GetBattlerAbility(battlerDef))
     {
     case ABILITY_HEATPROOF:
+    if (moveType == TYPE_FIRE)
+            MulModifier(&modifier, UQ_4_12(0.2));
+        break;
     case ABILITY_WATER_BUBBLE:
         if (moveType == TYPE_FIRE)
-            MulModifier(&modifier, UQ_4_12(0.5));
+            MulModifier(&modifier, UQ_4_12(0.0));
         break;
     case ABILITY_DRY_SKIN:
         if (moveType == TYPE_FIRE)
@@ -5835,6 +5842,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
             MulModifier(&modifier, UQ_4_12(0.5));
         if (moveType == TYPE_FIRE)
             MulModifier(&modifier, UQ_4_12(2.0));
+        break;
+    case ABILITY_ARMORED:
+        if (moveType == TYPE_FIGHTING)
+            MulModifier(&modifier, UQ_4_12(0.5));
         break;
     }
 
@@ -6551,6 +6562,19 @@ static u16 CalcTypeEffectivenessMultiplierInternal(u16 move, u8 moveType, u8 bat
             gLastLandedMoves[battlerDef] = 0;
             gBattleCommunication[6] = 4;
             RecordAbilityBattle(battlerDef, ABILITY_LEVITATE);
+        }
+    }
+    if (moveType == TYPE_FIRE)
+    {
+        modifier = UQ_4_12(0.0);
+        if (recordAbilities && GetBattlerAbility(battlerDef) == ABILITY_HEATPROOF)
+        {
+            StringCopy(gStringVar2, gTypeNames[TYPE_FIRE]);
+            gLastUsedAbility = ABILITY_HEATPROOF;
+            gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
+            gLastLandedMoves[battlerDef] = 0;
+            gBattleCommunication[6] = 4;
+            RecordAbilityBattle(battlerDef, ABILITY_HEATPROOF);
         }
     }
     if (GetBattlerAbility(battlerDef) == ABILITY_WONDER_GUARD && modifier <= UQ_4_12(1.0) && gBattleMoves[move].power)
