@@ -5825,13 +5825,9 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     // target's abilities
     switch (GetBattlerAbility(battlerDef))
     {
-    case ABILITY_HEATPROOF:
-    if (moveType == TYPE_FIRE)
-            MulModifier(&modifier, UQ_4_12(0.2));
-        break;
     case ABILITY_WATER_BUBBLE:
         if (moveType == TYPE_FIRE)
-            MulModifier(&modifier, UQ_4_12(0.0));
+            MulModifier(&modifier, UQ_4_12(0.5));
         break;
     case ABILITY_DRY_SKIN:
         if (moveType == TYPE_FIRE)
