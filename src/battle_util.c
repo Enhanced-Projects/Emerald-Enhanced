@@ -47,6 +47,7 @@ extern int CountBadges();
 
 static const u8 sAbilitiesAffectedByMoldBreaker[] =
 {
+    [ABILITY_ARMORED] = 1,
     [ABILITY_BATTLE_ARMOR] = 1,
     [ABILITY_CLEAR_BODY] = 1,
     [ABILITY_DAMP] = 1,
@@ -76,6 +77,7 @@ static const u8 sAbilitiesAffectedByMoldBreaker[] =
     [ABILITY_SNOW_CLOAK] = 1,
     [ABILITY_SOLID_ROCK] = 1,
     [ABILITY_SOUNDPROOF] = 1,
+    [ABILITY_STEELY_RESOLVE] = 1,
     [ABILITY_STICKY_HOLD] = 1,
     [ABILITY_STORM_DRAIN] = 1,
     [ABILITY_STURDY] = 1,
