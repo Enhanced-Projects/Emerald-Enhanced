@@ -10845,22 +10845,30 @@ static const struct TrainerMonItemCustomMoves sParty_Roxanne4[] = {
 	}
 };
 
-static const struct TrainerMonItemCustomMoves sParty_Shanti[] = {//unused
+static const struct TrainerMonItemCustomMoves sParty_Shanti[] = {
+    {
+    .iv = 255,
+    .lvl = 52,
+    .species = SPECIES_MIENSHAO,
+    .heldItem = ITEM_FOCUS_SASH,
+    .ability = 2,
+    .moves = {MOVE_FAKE_OUT, MOVE_HI_JUMP_KICK, MOVE_KNOCK_OFF, MOVE_POISON_JAB},
+    },
+    {
+    .iv = 255,
+    .lvl = 52,
+    .species = SPECIES_MEDICHAM,
+    .heldItem = ITEM_MEDICHAMITE,
+    .ability = 2,
+    .moves = {MOVE_FAKE_OUT, MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_MEDITATE},
+    },
     {
     .iv = 255,
     .lvl = 52,
     .species = SPECIES_DARMANITAN_ZEN,
-    .heldItem = ITEM_SITRUS_BERRY,
+    .heldItem = ITEM_WEAKNESS_POLICY,
     .ability = 0,
-    .moves = {MOVE_FOCUS_BLAST, MOVE_PSYCHIC, MOVE_FLAMETHROWER, MOVE_DAZZLING_GLEAM},
-    },
-    {
-    .iv = 174,
-    .lvl = 52,
-    .species = SPECIES_MEDICHAM,
-    .heldItem = ITEM_MEDICHAMITE,
-    .ability = 0,
-    .moves = {MOVE_SECRET_POWER, MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_CALM_MIND},
+    .moves = {MOVE_PSYCHIC, MOVE_GRAVEL_STORM, MOVE_FOCUS_BLAST, MOVE_TRICK_ROOM},
     }
 };
 
