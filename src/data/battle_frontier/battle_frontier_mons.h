@@ -2073,7 +2073,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_BASTIODON_1] = {
         .species = SPECIES_BASTIODON,
-        .moves = {MOVE_METAL_BURST, MOVE_SPIKES, MOVE_STEALTH_ROCKS, MOVE_SHORE_UP},
+        .moves = {MOVE_METAL_BURST, MOVE_SPIKES, MOVE_STEALTH_ROCK, MOVE_SHORE_UP},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_BOLD,

@@ -10845,54 +10845,22 @@ static const struct TrainerMonItemCustomMoves sParty_Roxanne4[] = {
 	}
 };
 
-static const struct TrainerMonItemCustomMoves sParty_Roxanne5[] = {//unused
-    {
-    .iv = 255,
-    .lvl = 47,
-    .species = SPECIES_AERODACTYL,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = {MOVE_ROCK_SLIDE, MOVE_HYPER_BEAM, MOVE_SUPERSONIC, MOVE_FLY},
-    },
-    {
-    .iv = 255,
-    .lvl = 47,
-    .species = SPECIES_GOLEM,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = {MOVE_FOCUS_PUNCH, MOVE_ROLLOUT, MOVE_EARTHQUAKE, MOVE_EXPLOSION},
-    },
-    {
-    .iv = 255,
-    .lvl = 47,
-    .species = SPECIES_OMASTAR,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = {MOVE_GRAVEL_STORM, MOVE_ICE_BEAM, MOVE_ROCK_SLIDE, MOVE_SURF},
-    },
-    {
-    .iv = 255,
-    .lvl = 50,
-    .species = SPECIES_KABUTOPS,
-    .heldItem = ITEM_SITRUS_BERRY,
-    .ability = 0,
-    .moves = {MOVE_SWORDS_DANCE, MOVE_ICE_BEAM, MOVE_SURF, MOVE_ROCK_SLIDE},
-    },
-    {
-    .iv = 255,
-    .lvl = 50,
-    .species = SPECIES_STEELIX,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .moves = {MOVE_IRON_TAIL, MOVE_EXPLOSION, MOVE_ROAR, MOVE_ROCK_SLIDE},
-    },
+static const struct TrainerMonItemCustomMoves sParty_Shanti[] = {//unused
     {
     .iv = 255,
     .lvl = 52,
-    .species = SPECIES_NOSEPASS,
+    .species = SPECIES_DARMANITAN_ZEN,
     .heldItem = ITEM_SITRUS_BERRY,
     .ability = 0,
-    .moves = {MOVE_DOUBLE_TEAM, MOVE_EXPLOSION, MOVE_POWER_GEM, MOVE_ROCK_SLIDE},
+    .moves = {MOVE_FOCUS_BLAST, MOVE_PSYCHIC, MOVE_FLAMETHROWER, MOVE_DAZZLING_GLEAM},
+    },
+    {
+    .iv = 174,
+    .lvl = 52,
+    .species = SPECIES_MEDICHAM,
+    .heldItem = ITEM_MEDICHAMITE,
+    .ability = 0,
+    .moves = {MOVE_SECRET_POWER, MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_CALM_MIND},
     }
 };
 

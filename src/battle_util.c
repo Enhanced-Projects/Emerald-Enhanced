@@ -2825,7 +2825,7 @@ static bool32 ShouldChangeFormHpBased(u32 battler)
     // Ability,     form >, form <=, hp divided
     static const u16 forms[][4] =
     {
-        {ABILITY_ZEN_MODE, SPECIES_DARMANITAN, SPECIES_DARMANITAN_ZEN, 2},
+        //{ABILITY_ZEN_MODE, SPECIES_DARMANITAN, SPECIES_DARMANITAN_ZEN, 2},
         {ABILITY_SHIELDS_DOWN, SPECIES_MINIOR, SPECIES_MINIOR_CORE, 2},
         {ABILITY_SCHOOLING, SPECIES_WISHIWASHI_SCHOOL, SPECIES_WISHIWASHI, 4},
     };
@@ -6564,9 +6564,9 @@ static u16 CalcTypeEffectivenessMultiplierInternal(u16 move, u8 moveType, u8 bat
     }
     if (moveType == TYPE_FIRE)
     {
-        modifier = UQ_4_12(0.0);
         if (recordAbilities && GetBattlerAbility(battlerDef) == ABILITY_HEATPROOF)
         {
+            modifier = UQ_4_12(0.0);
             StringCopy(gStringVar2, gTypeNames[TYPE_FIRE]);
             gLastUsedAbility = ABILITY_HEATPROOF;
             gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);

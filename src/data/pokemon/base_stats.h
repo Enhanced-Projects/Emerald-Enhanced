@@ -14819,8 +14819,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_SHEER_FORCE, ABILITY_NONE},
-        .abilityHidden = ABILITY_ZEN_MODE,
+        .abilities = {ABILITY_SHEER_FORCE, ABILITY_SHEER_FORCE},
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_RED,
     },
@@ -23220,7 +23219,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_ZEN_MODE, ABILITY_NONE}, // Change
+        .abilities = {ABILITY_NONE, ABILITY_NONE}, // Change
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_RED,
     },

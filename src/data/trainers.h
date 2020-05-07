@@ -11594,19 +11594,18 @@ const struct Trainer gTrainers[] = {
         .party = {.ItemCustomMoves = sParty_Roxanne4},
     },
 
-    [TRAINER_EMPTY_37] =
+    [TRAINER_SHANTI] =
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
-        .trainerClass = TRAINER_CLASS_LEADER,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_LEADER_ROXANNE,
-        .trainerName = _("Roxanne"),
-        .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE},
-        .battleStyle = BS_SET,
+        .trainerClass = TRAINER_CLASS_EXPERT,
+        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_INTENSE,
+        .trainerPic = TRAINER_PIC_EXPERT_F,
+        .trainerName = _("Shanti"),
+        .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_Roxanne5),
-        .party = {.ItemCustomMoves = sParty_Roxanne5},
+        .partySize = ARRAY_COUNT(sParty_Shanti),
+        .party = {.ItemCustomMoves = sParty_Shanti},
     },
 
     [TRAINER_BRAWLY_2] =
