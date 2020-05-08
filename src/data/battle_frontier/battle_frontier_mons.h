@@ -1522,14 +1522,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_REUNICLUS_3] = {
-        .species = SPECIES_REUNICLUS,
-        .moves = {MOVE_PSYSHOCK, MOVE_ACID_ARMOR, MOVE_CALM_MIND, MOVE_RECOVER},
-        .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_BOLD,
+    [FRONTIER_MON_DARMANITAN_ZEN_1] = {
+        .species = SPECIES_DARMANITAN_ZEN,
+        .moves = {MOVE_PSYCHIC, MOVE_GRAVEL_STORM, MOVE_FLAMETHROWER, MOVE_TRICK_ROOM},
+        .heldItem = ITEM_WEAKNESS_POLICY,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_QUIET,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_ROTOM_WASH_3] = {
         .species = SPECIES_ROTOM_WASH,
@@ -2467,14 +2467,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_REUNICLUS_4] = {
-        .species = SPECIES_REUNICLUS,
-        .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_SIGNAL_BEAM, MOVE_TRICK_ROOM},
-        .heldItem = ITEM_LIFE_ORB,
+    [FRONTIER_MON_DARMANITAN_ZEN_2] = {
+        .species = SPECIES_DARMANITAN_ZEN,
+        .moves = {MOVE_PSYCHIC, MOVE_GRAVEL_STORM, MOVE_FOCUS_BLAST, MOVE_TRICK_ROOM},
+        .heldItem = ITEM_WEAKNESS_POLICY,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_QUIET,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_ROTOM_WASH_4] = {
         .species = SPECIES_ROTOM_WASH,
