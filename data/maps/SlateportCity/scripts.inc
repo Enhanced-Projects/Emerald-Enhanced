@@ -7,9 +7,13 @@ SlateportCity_OnTransition: @ 81DCC6C
 	call SlateportCity_EventScript_EnterSlateport
 	end
 	
-SC1_LeafHouseSold::
-	goto_if_set FLAG_RYU_DS_LEAF_LINE_CANCELLED SC1_LeafHouseVacant
+SC_LH_DoorLock::
+	goto_if_set FLAG_RYU_DS_LEAF_LINE_CANCELLED, SC1_LeafHouseVacant
+	goto_if_set FLAG_RYU_SC_PC_LANA_INTRO_EVENT, ryu_end
 	msgbox SC1_LeafHouseSign1
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 	
@@ -32,7 +36,18 @@ SlateportCity_EventScript_EnterSlateport:: @ 81DCC8D
 	return
 
 @SlateportCity_OnFrame: @ 81DCD12
-	@.2byte 0
+	@.2byte 0\
+	
+SC1_LeafHouseSign::
+	msgbox SC1_LeafSignMsg
+	closemessage
+	release
+	end
+	
+SC1_LeafSignMsg:
+	.string "Some real estate person is shown\n"
+	.string "on the sign. It must have been a\l"
+	.string "recent sale.$"
 
 SlateportCity_EventScript_EnergyGuru:: @ 81DCDBD
 	lock
