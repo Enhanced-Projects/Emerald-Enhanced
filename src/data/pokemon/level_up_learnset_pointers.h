@@ -895,7 +895,7 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     // Forms
     [SPECIES_SHAYMIN_SKY] = sShayminLevelUpLearnset,
     [SPECIES_GIRATINA_ORIGIN] = sGiratinaLevelUpLearnset,
-    [SPECIES_DARMANITAN_ZEN] = sDarmanitanLevelUpLearnset,
+    [SPECIES_DARMANITAN_ZEN] = sDarmanitanZenLevelUpLearnset,
     [SPECIES_TORNADUS_THERIAN] = sTornadusLevelUpLearnset,
     [SPECIES_THUNDURUS_THERIAN] = sThundurusLevelUpLearnset,
     [SPECIES_LANDORUS_THERIAN] = sLandorusLevelUpLearnset,

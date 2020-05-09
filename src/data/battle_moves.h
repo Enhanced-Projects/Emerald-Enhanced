@@ -4191,9 +4191,9 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_BLAZE_KICK] =
     {
         .effect = EFFECT_BURN_HIT,
-        .power = 85,
+        .power = 90,
         .type = TYPE_FIRE,
-        .accuracy = 90,
+        .accuracy = 95,
         .pp = 10,
         .secondaryEffectChance = 10,
         .target = MOVE_TARGET_SELECTED,
@@ -4324,7 +4324,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGSROCK_AFFECTED | FLAG_MEGA_LAUNCHER_BOOST,
         .split = SPLIT_SPECIAL
     },
 
