@@ -522,6 +522,7 @@ static void VBlankCB(void)
 static const u8 sMawileTileSet[] = INCBIN_U8("graphics/title_screen/mawiletileset.4bpp");
 static const u8 sMawilePalette[] = INCBIN_U8("graphics/title_screen/mawiletileset.gbapal");
 static const u8 sMawileTileMap[] = INCBIN_U8("graphics/title_screen/mawiletileset.bin");
+
 void CB2_InitTitleScreen(void)
 {
     u32 palindex;
@@ -562,7 +563,7 @@ void CB2_InitTitleScreen(void)
             u32 i;
             u16 * vramMapAddr = (u16*)BG_SCREEN_ADDR(26);
             u16 * mapAddr = (u16*)sMawileTileMap;
-            for(; (u32)vramMapAddr <= BG_SCREEN_ADDR(26)+sizeof(sMawileTileMap); mapAddr++, vramMapAddr++)
+            for(i = 0; i < sizeof(sMawileTileMap); i += 2, mapAddr++, vramMapAddr++)
             {
                 u16 val2 = *mapAddr & ~0xF000;
 
@@ -843,12 +844,11 @@ static u16 BlendPaletteDevPidgey2(u8 coeff, u16 color, u16 blendColor)
                             | ((b + (((data2->b - b) * coeff) >> 4)) << 10);
 }
 
-static void UpdateBackgroundColor(u8 frameNum)
+static void UpdateBackgroundColor(u8 theta)
 {
-    if ((frameNum % 1) == 0) // Change color every 16th frame
-    {
-        s32 coeff = (128 + -gSineTable[frameNum+64] / 2);
-        u16 color = BlendPaletteDevPidgey2(coeff/16, RGB(11, 12, 13), 0);
-        LoadPalette(&color, 0xF3, sizeof(color));
-   }
+    s32 coeff = (128 + -gSineTable[theta+64] / 2);
+    u16 color = BlendPaletteDevPidgey2(coeff/16, RGB(10, 10, 10), RGB_BLACK);
+    LoadPalette(&color, 0xF2, sizeof(color));
+    color = BlendPaletteDevPidgey2(coeff/16, RGB(23, 12, 17), RGB_RED);
+    LoadPalette(&color, 0xF1, sizeof(color));
 }
