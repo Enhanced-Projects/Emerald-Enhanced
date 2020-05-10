@@ -184,10 +184,15 @@ RDB_CTVMsg:
 
 RyuDebug_Utility1::
 	playse SE_PIN
-	call RDB_FrontierModeCheat
-	waitse
-	setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
-	setvar VAR_TEMP_5, 6
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGMAWILE
+	@call RDB_FrontierModeCheat
+	@waitse
+	@setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
+	@setvar VAR_TEMP_5, 6
+	waitbuttonpress
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	goto RDB_GiveRandomFrontierMons
 
 RDB_GiveRandomFrontierMons::

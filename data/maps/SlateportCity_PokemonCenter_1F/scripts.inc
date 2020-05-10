@@ -24,6 +24,49 @@ SlateportCity_PokemonCenter_1F_EventScript_Sailor:: @ 820DAE1
 SlateportCity_PokemonCenter_1F_EventScript_Woman:: @ 820DAEA
 	msgbox SlateportCity_PokemonCenter_1F_Text_TradedMonWithFriend, MSGBOX_NPC
 	end
+	
+SC_PC_LanaIntro::
+	goto_if_set FLAG_RYU_SC_PC_LANA_INTRO_EVENT, ryu_end
+	lockall
+	applymovement 1, Common_Movement_FaceDown
+	waitmovement 1
+	msgbox SC_PC_Nurse1
+	closemessage
+	applymovement 4, Common_Movement_FaceUp
+	waitmovement 4
+	delay 12
+	applymovement 4, SC_PC_LanaExit
+	delay 90
+	msgbox SC_PC_LanaEmote, MSGBOX_AUTOCLOSE
+	playse SE_DOOR
+	waitse
+	setflag FLAG_RYU_LANA_SLATEPORT
+	setflag FLAG_RYU_SC_PC_LANA_INTRO_EVENT
+	removeobject 4
+	releaseall
+	end
+	
+SC_PC_Nurse1:
+    .string "Nurse: Okay, Lana, dear, here are\n"
+    .string "your Pokémon back. Have a nice day!$"
+
+SC_PC_LanaEmote:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You smell a mild perfume as the\n"
+    .string "girl walks by you. It's rather\l"
+    .string "pleasant.$"
+
+SC_PC_LanaExit:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	face_down
+	walk_in_place_down
+	step_end
+	
 
 SlateportCity_PokemonCenter_1F_Text_RaiseDifferentTypesOfPokemon: @ 820DAF3
 	.string "Want a tip for battling?\p"

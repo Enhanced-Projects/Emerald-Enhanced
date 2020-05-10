@@ -603,3 +603,5 @@ gSpecials:: @ 81DBA64
 	def_special ForceSoftReset
 	def_special RyuMeloettaFormSwitcher
 	def_special SwapPlayerGender
+	def_special CheckPlayerHasDarmanitan
+	def_special ChangeDarmanitanForm

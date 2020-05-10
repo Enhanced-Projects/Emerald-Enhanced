@@ -1680,10 +1680,6 @@ static void CreateFrontierFactorySelectableMons(u8 firstMonId)
     {
         u16 monSetId = gSaveBlock2Ptr->frontier.rentalMons[i].monId;
         sFactorySelectScreen->mons[i + firstMonId].monSetId = monSetId;
-        if (i < var_28)
-            ivs = GetFactoryMonFixedIV(challengeNum + 1, 0);
-        else
-            ivs = GetFactoryMonFixedIV(challengeNum, 0);
         CreateMonWithEVSpreadNatureOTID(&sFactorySelectScreen->mons[i + firstMonId].monData,
                                              gFacilityTrainerMons[monSetId].species,
                                              level,
@@ -1697,6 +1693,12 @@ static void CreateFrontierFactorySelectableMons(u8 firstMonId)
         SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_FRIENDSHIP, &happiness);
         SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_HELD_ITEM, &gFacilityTrainerMons[monSetId].heldItem);
         SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_ABILITY_NUM, &gFacilityTrainerMons[monSetId].ability);
+        SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_HP_IV, &gFacilityTrainerMons[monSetId].ivs);
+        SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_ATK_IV, &gFacilityTrainerMons[monSetId].ivs);
+        SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_DEF_IV, &gFacilityTrainerMons[monSetId].ivs);
+        SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_SPATK_IV, &gFacilityTrainerMons[monSetId].ivs);
+        SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_SPDEF_IV, &gFacilityTrainerMons[monSetId].ivs);
+        SetMonData(&sFactorySelectScreen->mons[i + firstMonId].monData, MON_DATA_SPEED_IV, &gFacilityTrainerMons[monSetId].ivs);
     }
 }
 

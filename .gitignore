@@ -18,6 +18,7 @@
 sound/**/*.bin
 sound/songs/midi/*.s
 tools/agbcc
+tools/*.*
 *.map
 *.ld
 *.bat
@@ -33,3 +34,4 @@ porymap.project.cfg
 *.a
 .fuse_hidden*
 pokeemerald.ss1
+include/constants/battle_frontier_mons.h.old

@@ -54,8 +54,8 @@
     ],
     "id": "MAP_SLATEPORT_CITY_LANAS_HOUSE",
     "layout": "LAYOUT_SLATEPORT_CITY_LANAS_HOUSE",
-    "map_type": "MAP_TYPE_UNUSED_1",
-    "music": "MUS_DAN02",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_FINECITY",
     "name": "SlateportCity_LanasHouse",
     "object_events": [
         {

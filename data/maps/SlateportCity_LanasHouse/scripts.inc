@@ -140,7 +140,7 @@ LH_LeafNight:
 	
 LH_NightQuery:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}. Did you...want to\n"
-  	.string "spend the night?$"
+  	.string "spend the night with me?$"
 
 LH_Dispt:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She looks a little disappointed.)$"
@@ -149,11 +149,11 @@ LH_LeafNightMsg1:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Hehe, I knew you couldn't resist.$"
 
 LH_LeafNightSceneMsg:
-    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana and {PLAYER} blissfully\n"
-    .string " enjoyed their time together in\p"
-    .string " each other's loving embrace as\n"
-    .string " they rested for the night.)$"
-
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana and {PLAYER} climb into the\n"
+	.string " together and hold one another\l"
+	.string " in their arms.)\p"
+	.string " (Lana holds you tightly and\l"
+	.string " kisses you on the forehead.)$"
 
 LH_LeafNightSceneMsg2:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Lana: That was wonderful...I never\n"
@@ -255,10 +255,16 @@ LH_QuestStarted:
 
 	
 LH_Bro_intro:
-	.string "I think my sister {COLOR LIGHT_RED}{SHADOW RED}Lana{COLOR DARK_GREY}{SHADOW LIGHT_GREY} is waiting\n"
-	.string "for you in her room. Just a fair\p"
-	.string "warning... she hasn't talked in\n"
-	.string "a long time.$"
+    .string "Who are you, and why are you here?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: I'm {PLAYER}. I saw a girl\n"
+    .string "come in here, and I wanted to meet\l"
+    .string "her. She seemed new to the area.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Guy: Oh, you're talking about my\n"
+    .string "sister, {COLOR LIGHT_RED}{SHADOW RED}Lana{COLOR DARK_GREY}{SHADOW LIGHT_GREY}. Uh... She doesn't \p"
+    .string "really speak anymore, She's not much\n"
+    .string "of a conversationalist. You can try\l"
+    .string "though. Good luck!$"
+
 	
 LH_bro_chat:
 	.string "Our family recently moved here\n"
@@ -281,18 +287,32 @@ LH_chat1:
 	.string "Is your name... Lana?\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She nods.)\n"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}... ... ... \p"
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Well... I took care of that goon for\n"
-	.string "you. She was tough for an Aqua\p"
-	.string "soldier.\n"
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana smiles. She seems to be\p"
-	.string "  thinking about something.)\p"
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} Lana leans towards you.$"
-	
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Well... I saw you exiting the\p"
+	.string "PokeCenter. I really like your\n"
+	.string "perfume. It's nice.\p"
+    .string "My name is {PLAYER}. Are you new\n"
+    .string "to Slateport, or Hoenn as a whole?\p"
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (She nods)\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}... ... ...\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER} Well, Welcome. I'd like to\p"
+    .string "be your friend. Would you like a\n"
+    .string "tour? I'd be happy to show you\l"
+    .string "around.\p"
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (She shakes her head. She seems to\n"
+    .string " be very shy.)\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Well if you change your\n"
+    .string "mind, here's my number...\p"
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (She nods once more and then pulls\n"
+    .string " a magazine out of her bag and starts\p"
+    .string " looking at it. Guess you should leave\n"
+    .string " her to it.)$"
+
 LH_chat2:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Lana: Thanks.\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She leans back and puts a finger\n"
-	.string " on your mouth, signifying you to\p"
-	.string " not tell anyone she spoke. You\n"
-	.string " feel some slight pressure in your\p"
-	.string " chest. You're starting to like this\n"
-	.string " girl)$"
+	.string " up to her mouth)\p"
+	.string " (there's something about this girl\n"
+    .string " that feels very welcoming, and sad\l"
+    .string " at the same time. You're feeling some\p"
+	.string " slight pressure in your chest...)$"
+

@@ -109,6 +109,7 @@
 #define FLAG_DANCE                  0x200000
 #define FLAG_DMG_IN_AIR             0x400000 // X2 dmg on air, always hits target on air
 #define FLAG_HIT_IN_AIR             0x800000 // dmg is normal, always hits target on air
+#define FLAG_KICK_BOOST             0x40000000
 #define FLAG_LIGHT_BASED            0x80000000
 
 // Split defines.

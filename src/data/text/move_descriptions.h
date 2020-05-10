@@ -1421,6 +1421,10 @@ static const u8 sGRAVITYDescription[] = _(
 	"Gravity is intensified\n"
 	"negating levitation.");
 
+static const u8 sMIRACLE_EYEDescription[] = _(
+	"Makes GHOSTS and evasive\n"
+	"foes easier to hit.");
+
 static const u8 sWAKE_UP_SLAPDescription[] = _(
 	"Powerful against sleeping\n"
 	"foes, but also heals them.");
@@ -1520,6 +1524,10 @@ static const u8 sLUCKY_CHANTDescription[] = _(
 static const u8 sME_FIRSTDescription[] = _(
 	"Executes the foe's attack\n"
 	"with greater power.");
+
+static const u8 sCOPYCATDescription[] = _(
+	"The user mimics the last\n"
+	"move used by a foe.");
 
 static const u8 sPOWER_SWAPDescription[] = _(
 	"Swaps changes to Attack\n"
@@ -1645,6 +1653,10 @@ static const u8 sNASTY_PLOTDescription[] = _(
 	"Thinks bad thoughts to\n"
 	"sharply boost Sp. Atk.");
 
+static const u8 sBULLET_PUNCHDescription[] = _(
+	"Punches as fast as a bul-\n"
+	"let. It always hits first.");
+
 static const u8 sICE_SHARDDescription[] = _(
 	"Hurls a chunk of ice that\n"
 	"always strike first.");
@@ -1673,6 +1685,10 @@ static const u8 sPSYCHO_CUTDescription[] = _(
 	"Tears with psychic blades.\n"
 	"High critical-hit ratio.");
 
+static const u8 sZEN_HEADBUTTDescription[] = _(
+	"Hits with a strong head-\n"
+	"butt. May cause flinching.");
+
 static const u8 sMIRROR_SHOTDescription[] = _(
 	"Emits a flash of energy to\n"
 	"damage and cut accuracy.");
@@ -1693,9 +1709,14 @@ static const u8 sTRICK_ROOMDescription[] = _(
 	"Slower Pokémon get to move\n"
 	"first for 5 turns.");
 
+
 static const u8 sPOWER_WHIPDescription[] = _(
 	"Violently lashes the foe\n"
 	"with vines or tentacles.");
+
+static const u8 sCROSS_POISONDescription[] = _(
+	"A slash that may poison a\n"
+	"foe and do critical damage.");
 
 static const u8 sGUNK_SHOTDescription[] = _(
 	"Shoots filthy garbage at\n"
@@ -1744,6 +1765,10 @@ static const u8 sATTACK_ORDERDescription[] = _(
 static const u8 sDEFEND_ORDERDescription[] = _(
 	"Raises Defense and Sp. Def\n"
 	"with a living shield.");
+
+static const u8 sHEAL_ORDERDescription[] = _(
+	"The user's underlings show\n"
+	"up to heal half its max HP.");
 
 static const u8 sHEAD_SMASHDescription[] = _(
 	"A life-risking headbutt that\n"
@@ -1804,6 +1829,10 @@ static const u8 sWONDER_ROOMDescription[] = _(
 static const u8 sPSYSHOCKDescription[] = _(
 	"Attacks with a psychic wave\n"
 	"that does physical damage.");
+
+static const u8 sTAIL_SLAPDescription[] = _(
+    "Strikes the foe with its\n"
+    "tail 2 to 5 times.");
 
 static const u8 sVENOSHOCKDescription[] = _(
 	"Does double damage if the\n"
@@ -2009,6 +2038,10 @@ static const u8 sELECTROWEBDescription[] = _(
 	"Snares the foe with an\n"
 	"electric net. Lowers Speed.");
 
+static const u8 sWILD_CHARGEDescription[] = _(
+    "An electrical tackle that\n"
+    "also hurts the user.");
+
 static const u8 sDRILL_RUNDescription[] = _(
 	"Spins its body like a drill.\n"
 	"High critical-hit ratio.");
@@ -2064,6 +2097,10 @@ static const u8 sRELIC_SONGDescription[] = _(
 static const u8 sSECRET_SWORDDescription[] = _(
 	"Cuts with a long horn that\n"
 	"does physical damage.");
+
+static const u8 sGLACIATEDescription[] = _(
+	"Blows very cold air at the\n"
+	"foe. It lowers their Speed.");
 
 static const u8 sBOLT_STRIKEDescription[] = _(
 	"Strikes with a great amount\n"
@@ -2140,6 +2177,10 @@ static const u8 sNOBLE_ROARDescription[] = _(
 static const u8 sION_DELUGEDescription[] = _(
 	"Electrifies Normal-type\n"
 	"moves with charged atoms.");
+
+static const u8 sPARABOLIC_CHARGEDescription[] = _(
+	"Damages adjacent Pokémon and\n"
+	"heals up by half of it.");
 
 static const u8 sFORESTS_CURSEDescription[] = _(
 	"Puts a curse on the foe\n"
@@ -2312,6 +2353,10 @@ static const u8 sTHOUSAND_ARROWSDescription[] = _(
 static const u8 sTHOUSAND_WAVESDescription[] = _(
 	"Those hit by the wave can\n"
 	"no longer escape.");
+
+static const u8 sLANDS_WRATHDescription[] = _(
+	"Gathers the energy of the\n"
+	"land to attack every foe.");
 
 static const u8 sLIGHT_OF_RUINDescription[] = _(
 	"Fires a great beam of light\n"
@@ -2556,11 +2601,6 @@ static const u8 sGIGA_IMPACTDescription[] = _(
     "force, and is required to\n"
     "rest nextr turn.");
 
-static const u8 sBULLET_PUNCHDescription[] = _(
-    "User attacks with an\n"
-    "extremely quick punch.\n"
-    "Has high priority.");
-
 static const u8 sSHADOW_CLAWDescription[] = _(
     "User attacks with ghostly\n"
     "blades.\n"
@@ -2570,11 +2610,6 @@ static const u8 sAVALANCHEDescription[] = _(
     "User causes an avalanche\n"
     "of snow and rock to fall\n"
     "on the target.");
-
-static const u8 sZEN_HEADBUTTDescription[] = _(
-    "User focuses power and\n"
-    "hits the foe with a\n"
-    "strong headbutt.");
 
 static const u8 sDRACO_METEORDescription[] = _(
     "User summons comets to hurt\n"
@@ -2590,11 +2625,6 @@ static const u8 sLEAF_STORMDescription[] = _(
     "User summons a storm of\n"
     "leaves to damage the foe.\n"
     "Sharply lowers Sp. Atk.");
-
-static const u8 sCROSS_POISONDescription[] = _(
-    "User slices target with\n"
-    "poisonous blades. Dawn\n"
-    "poison. High crit chance.");
 
 static const u8 sWOOD_HAMMERDescription[] = _(
     "User slams target with its\n"
@@ -2617,6 +2647,18 @@ static const u8 sBLAST_OFFDescription[] = _(
 static const u8 sMIND_BLOWNDescription[] = _(
 	"It explodes the user's head\n"
 	"to damage everything around.");
+
+static const u8 sPLASMA_FISTSDescription[] = _(
+	"Hits with electrical fists.\n"
+	"Normal moves become Electric.");
+
+static const u8 sPHOTON_GEYSERDescription[] = _(
+	"The foe's highest offensive\n"
+	"determines its category.");
+
+static const u8 sDOUBLE_IRON_BASHDescription[] = _(
+    "The user spins and hits with\n"
+    "its arms. May cause flinch.");
 
 static const u8 sNotDoneYetDescription[] = _(
 	"Not done yet.");
@@ -2981,7 +3023,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_PSYCHO_BOOST - 1] = sPsychoBoostDescription,
     [MOVE_ROOST - 1] = sROOSTDescription,
     [MOVE_GRAVITY - 1] = sGRAVITYDescription,
-    [MOVE_MIRACLE_EYE - 1] = sNotDoneYetDescription,
+    [MOVE_MIRACLE_EYE - 1] = sMIRACLE_EYEDescription,
     [MOVE_WAKE_UP_SLAP - 1] = sWAKE_UP_SLAPDescription,
     [MOVE_HAMMER_ARM - 1] = sHAMMER_ARMDescription,
     [MOVE_GYRO_BALL - 1] = sGYRO_BALLDescription,
@@ -3007,7 +3049,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_GASTRO_ACID - 1] = sGASTRO_ACIDDescription,
     [MOVE_LUCKY_CHANT - 1] = sLUCKY_CHANTDescription,
     [MOVE_ME_FIRST - 1] = sME_FIRSTDescription,
-    [MOVE_COPYCAT - 1] = sNotDoneYetDescription,
+    [MOVE_COPYCAT - 1] = sCOPYCATDescription,
     [MOVE_POWER_SWAP - 1] = sPOWER_SWAPDescription,
     [MOVE_GUARD_SWAP - 1] = sGUARD_SWAPDescription,
     [MOVE_PUNISHMENT - 1] = sPUNISHMENTDescription,
@@ -3063,7 +3105,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_LAVA_PLUME - 1] = sLAVA_PLUMEDescription,
     [MOVE_LEAF_STORM - 1] = sLEAF_STORMDescription,
     [MOVE_POWER_WHIP - 1] = sPOWER_WHIPDescription,
-    [MOVE_ROCK_WRECKER - 1] = sNotDoneYetDescription,
+    [MOVE_ROCK_WRECKER - 1] = sHyperBeamDescription,
     [MOVE_CROSS_POISON - 1] = sCROSS_POISONDescription,
     [MOVE_GUNK_SHOT - 1] = sGUNK_SHOTDescription,
     [MOVE_IRON_HEAD - 1] = sIRON_HEADDescription,
@@ -3080,7 +3122,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_AQUA_JET - 1] = sAQUA_JETDescription,
     [MOVE_ATTACK_ORDER - 1] = sATTACK_ORDERDescription,
     [MOVE_DEFEND_ORDER - 1] = sDEFEND_ORDERDescription,
-    [MOVE_HEAL_ORDER - 1] = sNotDoneYetDescription,
+    [MOVE_HEAL_ORDER - 1] = sHEAL_ORDERDescription,
     [MOVE_HEAD_SMASH - 1] = sHEAD_SMASHDescription,
     [MOVE_DOUBLE_HIT - 1] = sDOUBLE_HITDescription,
     [MOVE_ROAR_OF_TIME - 1] = sROAR_OF_TIMEDescription,
@@ -3152,11 +3194,11 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_DRAGON_TAIL - 1] = sCIRCLE_THROWDescription,
     [MOVE_WORK_UP - 1] = sWORK_UPDescription,
     [MOVE_ELECTROWEB - 1] = sELECTROWEBDescription,
-    [MOVE_WILD_CHARGE - 1] = sNotDoneYetDescription,
+    [MOVE_WILD_CHARGE - 1] = sWILD_CHARGEDescription,
     [MOVE_DRILL_RUN - 1] = sDRILL_RUNDescription,
     [MOVE_DUAL_CHOP - 1] = sDUAL_CHOPDescription,
     [MOVE_HEART_STAMP - 1] = sHEART_STAMPDescription,
-    [MOVE_HORN_LEECH - 1] = sNotDoneYetDescription,
+    [MOVE_HORN_LEECH - 1] = sMegaDrainDescription,
     [MOVE_SACRED_SWORD - 1] = sCHIP_AWAYDescription,
     [MOVE_RAZOR_SHELL - 1] = sRAZOR_SHELLDescription,
     [MOVE_HEAT_CRASH - 1] = sHEAVY_SLAMDescription,
@@ -3165,15 +3207,15 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_COTTON_GUARD - 1] = sCOTTON_GUARDDescription,
     [MOVE_NIGHT_DAZE - 1] = sNIGHT_DAZEDescription,
     [MOVE_PSYSTRIKE - 1] = sPSYSHOCKDescription,
-    [MOVE_TAIL_SLAP - 1] = sNotDoneYetDescription,
+    [MOVE_TAIL_SLAP - 1] = sTAIL_SLAPDescription,
     [MOVE_HURRICANE - 1] = sHURRICANEDescription,
     [MOVE_HEAD_CHARGE - 1] = sHEAD_CHARGEDescription,
     [MOVE_GEAR_GRIND - 1] = sGEAR_GRINDDescription,
-    [MOVE_SEARING_SHOT - 1] = sNotDoneYetDescription,
+    [MOVE_SEARING_SHOT - 1] = sLAVA_PLUMEDescription,
     [MOVE_TECHNO_BLAST - 1] = sTECHNO_BLASTDescription,
     [MOVE_RELIC_SONG - 1] = sRELIC_SONGDescription,
     [MOVE_SECRET_SWORD - 1] = sSECRET_SWORDDescription,
-    [MOVE_GLACIATE - 1] = sNotDoneYetDescription,
+    [MOVE_GLACIATE - 1] = sGLACIATEDescription,
     [MOVE_BOLT_STRIKE - 1] = sBOLT_STRIKEDescription,
     [MOVE_BLUE_FLARE - 1] = sBLUE_FLAREDescription,
     [MOVE_FIERY_DANCE - 1] = sFIERY_DANCEDescription,
@@ -3194,8 +3236,8 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_TRICK_OR_TREAT - 1] = sTRICK_OR_TREATDescription,
     [MOVE_NOBLE_ROAR - 1] = sNOBLE_ROARDescription,
     [MOVE_ION_DELUGE - 1] = sION_DELUGEDescription,
-    [MOVE_PARABOLIC_CHARGE - 1] = sNotDoneYetDescription,
-    [MOVE_FOREST_S_CURSE - 1] = sFORESTS_CURSEDescription,
+    [MOVE_PARABOLIC_CHARGE - 1] = sPARABOLIC_CHARGEDescription,
+    [MOVE_FORESTS_CURSE - 1] = sFORESTS_CURSEDescription,
     [MOVE_PETAL_BLIZZARD - 1] = sPETAL_BLIZZARDDescription,
     [MOVE_FREEZE_DRY - 1] = sFREEZE_DRYDescription,
     [MOVE_DISARMING_VOICE - 1] = sDISARMING_VOICEDescription,
@@ -3212,7 +3254,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_MOONBLAST - 1] = sMOONBLASTDescription,
     [MOVE_BOOMBURST - 1] = sBOOMBURSTDescription,
     [MOVE_FAIRY_LOCK - 1] = sFAIRY_LOCKDescription,
-    [MOVE_KING_S_SHIELD - 1] = sKINGS_SHIELDDescription,
+    [MOVE_KINGS_SHIELD - 1] = sKINGS_SHIELDDescription,
     [MOVE_PLAY_NICE - 1] = sPLAY_NICEDescription,
     [MOVE_CONFIDE - 1] = sCONFIDEDescription,
     [MOVE_DIAMOND_STORM - 1] = sDIAMOND_STORMDescription,
@@ -3234,13 +3276,13 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_HOLD_HANDS - 1] = sHOLD_HANDSDescription,
     [MOVE_BABY_DOLL_EYES - 1] = sBABYDOLL_EYESDescription,
     [MOVE_NUZZLE - 1] = sNUZZLEDescription,
-    [MOVE_HOLD_BACK - 1] = sNotDoneYetDescription,
+    [MOVE_HOLD_BACK - 1] = sFalseSwipeDescription,
     [MOVE_INFESTATION - 1] = sINFESTATIONDescription,
     [MOVE_POWER_UP_PUNCH - 1] = sPOWER_UP_PUNCHDescription,
     [MOVE_OBLIVION_WING - 1] = sDRAINING_KISSDescription,
     [MOVE_THOUSAND_ARROWS - 1] = sTHOUSAND_ARROWSDescription,
     [MOVE_THOUSAND_WAVES - 1] = sTHOUSAND_WAVESDescription,
-    [MOVE_LAND_S_WRATH - 1] = sNotDoneYetDescription,
+    [MOVE_LANDS_WRATH - 1] = sLANDS_WRATHDescription,
     [MOVE_LIGHT_OF_RUIN - 1] = sLIGHT_OF_RUINDescription,
     [MOVE_ORIGIN_PULSE - 1] = sORIGIN_PULSEDescription,
     [MOVE_PRECIPICE_BLADES - 1] = sPRECIPICE_BLADESDescription,
@@ -3301,4 +3343,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_REAPING_BLOW - 1] = sREAPING_BLOWDescription,
     [MOVE_BLAST_OFF - 1] = sBLAST_OFFDescription,
     [MOVE_MIND_BLOWN - 1] = sMIND_BLOWNDescription,
+    [MOVE_PLASMA_FISTS - 1] = sPLASMA_FISTSDescription,
+    [MOVE_PHOTON_GEYSER - 1] = sPHOTON_GEYSERDescription,
+    [MOVE_DOUBLE_IRON_BASH - 1] = sDOUBLE_IRON_BASHDescription,
 };
