@@ -8692,12 +8692,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_CACNEA] =
     {
-        .baseHP        = 71,
+        .baseHP        = 55,
         .baseAttack    = 95,
-        .baseDefense   = 60,
+        .baseDefense   = 70,
         .baseSpeed     = 49,
-        .baseSpAttack  = 30,
-        .baseSpDefense = 51,
+        .baseSpAttack  = 50,
+        .baseSpDefense = 50,
         .type1 = TYPE_GRASS,
         .type2 = TYPE_GRASS,
         .catchRate = 190,
