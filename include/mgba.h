@@ -24,6 +24,7 @@
 
 #include "gba/types.h"
 
+#if DEBUG==1
 
 #define MGBA_LOG_FATAL 0
 #define MGBA_LOG_ERROR 1
@@ -34,5 +35,19 @@
 void mgba_printf(int level, const char* string, ...);
 bool8 mgba_open(void);
 void mgba_close(void);
+
+#else 
+
+#define MGBA_LOG_FATAL 0
+#define MGBA_LOG_ERROR 1
+#define MGBA_LOG_WARN 2
+#define MGBA_LOG_INFO 3
+#define MGBA_LOG_DEBUG 4
+
+#define mgba_printf(...) 
+#define mgba_open(...)
+#define mgba_close(...)
+
+#endif // debug
 
 #endif

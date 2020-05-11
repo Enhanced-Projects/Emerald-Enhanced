@@ -8,6 +8,7 @@ EWRAM_DATA u8 gStringVar2[0x100] = {0};
 EWRAM_DATA u8 gStringVar3[0x100] = {0};
 EWRAM_DATA u8 gStringVar4[0x3E8] = {0};
 EWRAM_DATA static u8 sUnknownStringVar[16] = {0};
+EWRAM_DATA static char sAsciiConversionBuffer[128] = {0};
 
 static const u8 sDigits[] = __("0123456789ABCDEF");
 
@@ -626,6 +627,40 @@ bool32 IsStringJapanese(u8 *str)
     }
 
     return FALSE;
+}
+
+char * ConvertToAscii(const u8 *str)
+{
+    s32 i;
+    char * textBuffer = sAsciiConversionBuffer;
+    for (i = 0; *str != EOS && i < sizeof(sAsciiConversionBuffer); str++)
+    {
+        char modifiedCode = '?';
+        if(*str > CHAR_SPECIAL_F7)
+        {
+            continue;
+        }
+        if(*str >= CHAR_A && *str <= CHAR_Z)
+        {
+            modifiedCode = *str-(CHAR_A-'A'); // uppercase characters
+        }
+        else if(*str >= CHAR_a && *str <= CHAR_z)
+        {
+            modifiedCode = *str-(CHAR_a-'a'); // lowercase characters
+        }
+        else if (*str >= CHAR_0 && *str <= CHAR_9)
+        {
+            modifiedCode = *str-(CHAR_0-'0'); // numbers
+        }
+        else if (*str == CHAR_SPACE)
+        {
+            modifiedCode = ' '; // space
+        }
+        textBuffer[i] = modifiedCode;
+        i++;
+    }
+    textBuffer[i] = 0;
+    return textBuffer;
 }
 
 bool32 sub_800924C(u8 *str, s32 n)

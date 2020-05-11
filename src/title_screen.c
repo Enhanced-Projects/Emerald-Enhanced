@@ -523,6 +523,8 @@ static const u8 sMawileTileSet[] = INCBIN_U8("graphics/title_screen/mawiletilese
 static const u8 sMawilePalette[] = INCBIN_U8("graphics/title_screen/mawiletileset.gbapal");
 static const u8 sMawileTileMap[] = INCBIN_U8("graphics/title_screen/mawiletileset.bin");
 
+#include "mgba.h"
+
 void CB2_InitTitleScreen(void)
 {
     u32 palindex;
@@ -571,6 +573,8 @@ void CB2_InitTitleScreen(void)
             }
 
         }
+        mgba_open();
+        mgba_printf(MGBA_LOG_WARN, "This is a test");
 
         //DmaCopy16(3, sMawileTileMap, BG_SCREEN_ADDR(26), sizeof(sMawileTileMap));
         LoadPalette(sMawilePalette, palindex*0x10, 0x20);
