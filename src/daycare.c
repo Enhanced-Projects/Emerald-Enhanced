@@ -805,7 +805,7 @@ static void _GiveEggFromDaycare(struct DayCare *daycare)
     u16 species;
     u8 parentSlots[DAYCARE_MON_COUNT];
     bool8 isEgg;
-    u8 ability = 0;
+    u8 ability = 2;
     u8 genderless = 0xFF;
 
     species = DetermineEggSpeciesAndParentSlots(daycare, parentSlots);
@@ -837,7 +837,7 @@ static void _GiveEggFromDaycare(struct DayCare *daycare)
             SetMonData(&egg, MON_DATA_ABILITY_NUM, &ability);
         }
     }
-    else if (Random() % 100 < 80)
+    else if (Random() % 100 > 89)
     {
         SetMonData(&egg, MON_DATA_ABILITY_NUM, &ability);
     }
