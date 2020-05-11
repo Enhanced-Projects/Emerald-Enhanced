@@ -1569,7 +1569,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MARACTUS_1] = {
         .species = SPECIES_MARACTUS,
-        .moves = {MOVE_GIGA_DRAIN, MOVE_EARTH_POWER, MOVE_GRAVEL_STORM, MOVE_SANDSTORM},
+        .moves = {MOVE_ENERGY_BALL, MOVE_EARTH_POWER, MOVE_WEATHER_BALL, MOVE_SANDSTORM},
         .heldItem = ITEM_EXPERT_BELT,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_MODEST,
@@ -2514,8 +2514,8 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MARACTUS_2] = {
         .species = SPECIES_MARACTUS,
-        .moves = {MOVE_ENERGY_BALL, MOVE_EARTH_POWER, MOVE_GRAVEL_STORM, MOVE_SANDSTORM},
-        .heldItem = ITEM_FOCUS_SASH,
+        .moves = {MOVE_GIGA_DRAIN, MOVE_EARTH_POWER, MOVE_WEATHER_BALL, MOVE_SANDSTORM},
+        .heldItem = ITEM_LIFE_ORB,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_MODEST,
         .ivs = 31,
@@ -6970,10 +6970,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_REGICE_2] = {
         .species = SPECIES_REGICE,
-        .moves = {MOVE_GLACIATE, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST, MOVE_RECOVER},
-        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_BLIZZARD, MOVE_THUNDER, MOVE_FOCUS_BLAST, MOVE_RECOVER},
+        .heldItem = ITEM_ZOOM_LENS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_MODEST,
+        .nature = NATURE_QUIET,
         .ivs = 31,
         .ability = 0
     },
@@ -7069,10 +7069,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_REGICE_3] = {
         .species = SPECIES_REGICE,
-        .moves = {MOVE_GLACIATE, MOVE_THUNDERBOLT, MOVE_TOXIC, MOVE_RECOVER},
-        .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_CALM,
+        .moves = {MOVE_GLACIATE, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST, MOVE_ROCK_POLISH},
+        .heldItem = ITEM_SHELL_BELL,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_MODEST,
         .ivs = 31,
         .ability = 0
     },
@@ -7168,10 +7168,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_REGICE_4] = {
         .species = SPECIES_REGICE,
-        .moves = {MOVE_GLACIATE, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST, MOVE_ROCK_POLISH},
-        .heldItem = ITEM_SHELL_BELL,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_MODEST,
+        .moves = {MOVE_GLACIATE, MOVE_THUNDERBOLT, MOVE_TOXIC, MOVE_RECOVER},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_CALM,
         .ivs = 31,
         .ability = 0
     },
