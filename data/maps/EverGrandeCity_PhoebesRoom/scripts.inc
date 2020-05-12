@@ -6,7 +6,6 @@ EverGrandeCity_PhoebesRoom_MapScripts:: @ 8228174
 
 EverGrandeCity_PhoebesRoom_OnWarp: @ 8228184
 	map_script_2 VAR_TEMP_1, 0, EverGrandeCity_PhoebesRoom_EventScript_PlayerTurnNorth
-	@map_script_2 VAR_TEMP_D, 0, LRT_ResetFollower
 	.2byte 0
 
 EverGrandeCity_PhoebesRoom_EventScript_PlayerTurnNorth:: @ 822818E

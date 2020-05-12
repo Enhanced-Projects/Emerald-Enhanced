@@ -7,13 +7,7 @@ GameIntroSequenceCheck::
 	map_script_2 VAR_RYU_DS_LANA_STAGE, 75, LRT_LeafEvent
 	map_script_2 VAR_TEMP_0, 0, LRT_CheckIfRemoveRival
 	map_script_2 VAR_RYU_PARTNER_COUNT, 4, LRT_BeginHaremSequence
-	@map_script_2 VAR_TEMP_D, 0, LRT_ResetFollower
 	.2byte 0
-
-LRT_ResetFollower::
-	@call_if_set FLAG_RYU_HAS_FOLLOWER, RyuResetFollowerPosition
-	@setvar VAR_TEMP_D, 1
-	end
 	
 LRT_CheckIfRemoveRival::
 	goto_if_set FLAG_TEMP_4, ryu_end

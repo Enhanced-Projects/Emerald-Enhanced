@@ -7,7 +7,7 @@ BattleFrontier_BattlePyramidTop_MapScripts:: @ 82550A1
 
 BattleFrontier_BattlePyramidTop_OnTransition: @ 82550B6
 	pyramid_updatelight 200, PYRAMID_LIGHT_SET_RADIUS
-	setvar VAR_TEMP_F, 1
+	setvar VAR_TEMP_A, 1
 	end
 
 BattleFrontier_BattlePyramidTop_OnWarp: @ 82550CE
@@ -45,18 +45,18 @@ BattleFrontier_BattlePyramidTop_EventScript_CheckChallengeStatus:: @ 825510C
 	end
 
 BattleFrontier_BattlePyramidTop_OnFrame: @ 825516E
-	map_script_2 VAR_TEMP_E, 0, BattleFrontier_BattlePyramidTop_EventScript_PlayPyramidMusic
-	map_script_2 VAR_TEMP_F, 1, BattleFrontier_BattlePyramidTop_EventScript_ShowMapName
+	map_script_2 VAR_TEMP_B, 0, BattleFrontier_BattlePyramidTop_EventScript_PlayPyramidMusic
+	map_script_2 VAR_TEMP_A, 1, BattleFrontier_BattlePyramidTop_EventScript_ShowMapName
 	.2byte 0
 
 BattleFrontier_BattlePyramidTop_EventScript_PlayPyramidMusic:: @ 8255180
 	playbgm MUS_PYRAMID_TOP, 0
-	setvar VAR_TEMP_E, 1
+	setvar VAR_TEMP_B, 1
 	end
 
 BattleFrontier_BattlePyramidTop_EventScript_ShowMapName:: @ 825518A
 	special ShowMapNamePopup
-	setvar VAR_TEMP_F, 0
+	setvar VAR_TEMP_A, 0
 	end
 
 BattleFrontier_BattlePyramidTop_EventScript_ReadyChallenge:: @ 8255193
@@ -65,7 +65,7 @@ BattleFrontier_BattlePyramidTop_EventScript_ReadyChallenge:: @ 8255193
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, 0
 	pyramid_settrainers
 	frontier_setpartyorder FRONTIER_PARTY_SIZE
-	setvar VAR_TEMP_F, 1
+	setvar VAR_TEMP_A, 1
 	end
 
 BattleFrontier_BattlePyramidTop_EventScript_Attendant:: @ 82551D0
@@ -103,6 +103,7 @@ BattleFrontier_BattlePyramidTop_EventScript_BrandonHereMoveAside:: @ 8255240
 	msgbox BattleFrontier_BattlePyramidTop_Text_ChiefBeatYouHere, MSGBOX_DEFAULT
 	applymovement 1, BattleFrontier_BattlePyramidTop_Movement_AttendantMoveAside
 	setvar VAR_TEMP_D, 1
+	setvar VAR_TEMP_2, 1
 	closemessage
 	end
 

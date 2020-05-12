@@ -15,7 +15,6 @@ EverGrandeCity_DrakesRoom_EventScript_PlayerTurnNorth:: @ 82286B6
 
 EverGrandeCity_DrakesRoom_OnFrame: @ 82286BB
 	map_script_2 VAR_ELITE_4_STATE, 3, EverGrandeCity_DrakesRoom_EventScript_WalkInCloseDoor
-	@map_script_2 VAR_TEMP_D, 0, LRT_ResetFollower
 	.2byte 0
 
 EverGrandeCity_DrakesRoom_EventScript_WalkInCloseDoor:: @ 82286C5

@@ -42,7 +42,6 @@ EverGrandeCity_SidneysRoom_EventScript_PlayerTurnNorth:: @ 8227F48
 
 EverGrandeCity_SidneysRoom_OnFrame: @ 8227F4D
 	map_script_2 VAR_ELITE_4_STATE, 0, EverGrandeCity_SidneysRoom_EventScript_WalkInCloseDoor
-	@map_script_2 VAR_TEMP_D, 0, LRT_ResetFollower
 	.2byte 0
 
 EverGrandeCity_SidneysRoom_EventScript_WalkInCloseDoor:: @ 8227F57

@@ -2223,23 +2223,23 @@ Move_DRAIN_PUNCH:
 	end
 	
 Move_VACUUM_WAVE:
-	loadspritegfx ANIM_TAG_IMPACT 
-	loadspritegfx ANIM_TAG_HANDS_AND_FEET 
-	monbg ANIM_ATK_PARTNER 
-	createvisualtask AnimTask_GetAttackerSide, 2, 0
-	waitbgfadein
-	delay 0
-	setalpha 9, 8 
-	createvisualtask AnimTask_AttackerPunchWithTrace, 2, 2, RGB(8, 9, 24), 17  
-	playsewithpan SE_W026, SOUND_PAN_ATTACKER
-	delay 6
-	createsprite gBasicHitSplatSpriteTemplate 131, 4, 0, 0, 1, 1 
-	createsprite gFistFootSpriteTemplate 132, 5, 0, 0, 8, 1, 0 
-	playsewithpan SE_W004, SOUND_PAN_TARGET 
-	createvisualtask AnimTask_ShakeMon 2, 5, ANIM_TARGET, 3, 0, 6, 1
-	waitforvisualfinish 
-	clearmonbg ANIM_ATK_PARTNER 
-	blendoff 
+	@@loadspritegfx ANIM_TAG_IMPACT 
+	@@loadspritegfx ANIM_TAG_HANDS_AND_FEET 
+	@@monbg ANIM_ATK_PARTNER 
+	@@createvisualtask AnimTask_GetAttackerSide, 2, 0
+	@@waitbgfadein
+	@@delay 0
+	@@setalpha 9, 8 
+	@@createvisualtask AnimTask_AttackerPunchWithTrace, 2, 2, RGB(8, 9, 24), 17  
+	@@playsewithpan SE_W026, SOUND_PAN_ATTACKER
+	@@delay 6
+	@@createsprite gBasicHitSplatSpriteTemplate 131, 4, 0, 0, 1, 1 
+	@@createsprite gFistFootSpriteTemplate 132, 5, 0, 0, 8, 1, 0 
+	@@playsewithpan SE_W004, SOUND_PAN_TARGET 
+	@@createvisualtask AnimTask_ShakeMon 2, 5, ANIM_TARGET, 3, 0, 6, 1
+	@@waitforvisualfinish 
+	@@clearmonbg ANIM_ATK_PARTNER 
+	@@blendoff 
 	end 
 	
 Move_FOCUS_BLAST:
@@ -2404,7 +2404,7 @@ Move_NASTY_PLOT:
 	waitbgfadeout 
 	createvisualtask AnimTask_FadeScreenToWhite, 5
 	waitbgfadein 
-	return
+	@return
 	delay 8
 	createsprite gQuestionMarkSpriteTemplate, 20, 0
 	playsewithpan SE_W118, SOUND_PAN_ATTACKER, 

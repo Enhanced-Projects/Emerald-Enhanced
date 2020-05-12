@@ -183,22 +183,14 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	playse SE_PIN
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGDAWN
-	@call RDB_FrontierModeCheat
-	@waitse
-	@setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
-	@setvar VAR_TEMP_5, 6
-	setflag FLAG_RYU_DS_DAWN_PARTNERS
-	setflag FLAG_RYU_DS_LEAF_PARTNERS
-	setflag FLAG_RYU_DS_LANETTE_PARTNERS
-	setflag FLAG_RYU_DS_SHELLY_PARTNERS
-	setvar VAR_RYU_PARTNER_COUNT, 4
-	waitbuttonpress
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
-	goto RDB_GiveRandomFrontierMons
+	getplayerxy VAR_TEMP_5, VAR_TEMP_6
+	addvar VAR_TEMP_5, 1
+	setmetatile VAR_TEMP_5, VAR_TEMP_6, 654, 0
+	special DrawWholeMapView
+	release
+	end
+
+	@goto RDB_GiveRandomFrontierMons
 
 RDB_GiveRandomFrontierMons::
 	compare VAR_TEMP_5, 0
