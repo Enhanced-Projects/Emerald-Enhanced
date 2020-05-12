@@ -20,7 +20,7 @@ AS_RegigigasEncounter::
 	call_if_lt TC_NoBadge
 	waitmoncry
 	setwildbattle SPECIES_REGIGIGAS, VAR_RESULT, ITEM_EVERSTONE
-	special BattleSetup_StartLegendaryBattle
+	special StartRegiBattle
 	waitstate
 	call RyuLegendary_CheckCaught
 	setflag FLAG_RYU_REGIGIGAS

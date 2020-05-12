@@ -709,5 +709,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT_GEN7] =
     [ABILITY_PRIMAL] = sPrimalDescription,
     [ABILITY_STEELY_RESOLVE] = sSteelyResolveDescription,
     [ABILITY_FIERCE_KICKS] = sFierceKicksDescription,
-    [ABILITY_Armored] = sArmoredDescription,
+    [ABILITY_ARMORED] = sArmoredDescription,
 };

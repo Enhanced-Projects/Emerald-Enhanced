@@ -8,6 +8,86 @@ MtPyre_Summit_OnTransition: @ 8231FFD
 MtPyre_Summit_EventScript_SetArchieMaxiePositions:: @ 8232009
 	end
 	
+	
+MPS_Spiritomb::
+	goto_if_set FLAG_RYU_FINISHED_SPIRITOMB_SIDEQUEST, ryu_end
+	goto_if_set FLAG_RYU_SPIRITOMB_IN_PROGRESS, MPS_SpiritombContinue
+	setflag FLAG_RYU_SPIRITOMB_IN_PROGRESS
+	setvar VAR_RYU_SPIRITOMB_FAINTS, 0
+	msgbox MPS_SpiritombIntro
+	closemessage
+	@insert special gfx effect here TODO: do
+	msgbox MPS_SpiritombIntro2
+	closemessage
+	release
+	end
+	
+MPS_SpiritombContinue::
+	compare VAR_RYU_SPIRITOMB_FAINTS, 107
+	goto_if_ge MPS_SpiritombFinish
+	msgbox MPS_SpiritombNotFinishedYet
+	release
+	end
+	
+MPS_SpiritombFinish::
+	msgbox MPS_SpiritombUnleashed
+	playmoncry SPECIES_SPIRITOMB, 2
+	waitmoncry
+	closemessage
+	msgbox MPS_SpiritombAttacks
+	playmoncry SPECIES_SPIRITOMB, 2
+	special checkbadgecount
+	multvar VAR_RESULT, 10
+	compare VAR_RESULT, 10
+	call_if_lt TC_NoBadge
+	closemessage
+	waitmoncry
+	setflag FLAG_TEMP_D
+	setwildbattle SPECIES_SPIRITOMB, VAR_RESULT, ITEM_NONE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	setflag FLAG_RYU_FINISHED_SPIRITOMB_SIDEQUEST
+	release
+	end
+
+MPS_SpiritombIntro:
+	.string "{COLOR RED}{SHADOW LIGHT_GREY}...Hey…\p"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}...Did that stone just talk?\p"
+	.string "{COLOR RED}{SHADOW LIGHT_GREY}...Hey you...\p"
+	.string "I'm a spirit trapped here, kekeke.\p"
+	.string "I have an offer you can't resist…..\n"
+	.string "Kekeke, do you like Master Balls?\p"
+	.string "If you slay 107 innocent pokemon,\n"
+	.string "come back here… kekeke.\p"
+	.string "I will grant you a Master Ball…$"
+	
+MPS_SpiritombIntro2:
+	.string "({COLOR LIGHT_GREEN}{SHADOW GREEN}A Master Ball, huh?\n"
+	.string " Just for fainting some pokemon?)\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}That… sounds like a good deal.\p"
+	.string "{COLOR RED}{SHADOW LIGHT_GREY}Then you better get on it…\n"
+	.string "Kekeke!$"
+
+MPS_SpiritombAttacks:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Will you give me my Master Ball now?\p"
+	.string "{COLOR RED}{SHADOW LIGHT_GREY}Kekeke!\p"
+	.string "KEKEKE!\p"
+	.string "I have deceived you!\n"
+	.string "You were merely a puppet!\p"
+	.string "I just used you to gather souls!\n"
+	.string "I have become powerful!\p"
+	.string "Kekeke!\p"
+	.string "Now we will destroy you!$"
+	
+MPS_SpiritombNotFinishedYet:
+	.string "{COLOR RED}{SHADOW LIGHT_GREY}Why are you still here?\n"
+	.string "Gather more souls for me!$"
+	
+MPS_SpiritombUnleashed:
+	.string "{COLOR RED}{SHADOW LIGHT_GREY}So you have returned...\n"
+	.string "I have enough souls!\p"
+	.string "We have enough souls!$"
+
 MP_Gengarite::
 	finditem ITEM_GENGARITE, 1
 	setflag FLAG_RYU_OBTAINED_GENGARITE

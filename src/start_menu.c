@@ -149,6 +149,8 @@ static void sub_80A0550(u8 taskId);
 static void sub_80A08A4(u8 taskId);
 static bool8 FieldCB_ReturnToFieldStartMenu(void);
 
+extern int CountBadges();
+
 static const struct WindowTemplate sSafariBallsWindowTemplate = {0, 1, 1, 9, 4, 0xF, 8};
 
 static const u8* const sPyramindFloorNames[] =
@@ -427,7 +429,7 @@ void PrintNumberToScreen(s32 num)
     struct WindowTemplate template;
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 1, 1, 13, 3, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 1, 13, 5, 15, 8);
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
@@ -490,7 +492,16 @@ void PrintNumberToScreen(s32 num)
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 0, 0, NULL);
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 56, 0, 0, NULL);
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 0, 10, 0, NULL);
+    //print KO's
+    StringCopy(gStringVar1, gText_RyuKills);
+    ConvertIntToDecimalStringN(gStringVar2, VarGet(VAR_RYU_TOTAL_FAINTS), STR_CONV_MODE_LEFT_ALIGN, 5);
+    StringAppend(gStringVar1, gStringVar2);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 22, 0, NULL);
 
+    StringCopy(gStringVar1, gText_RyuBadges);
+    ConvertIntToDecimalStringN(gStringVar2, (CountBadges()), STR_CONV_MODE_LEFT_ALIGN, 1);
+    StringAppend(gStringVar1, gStringVar2);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 56, 22, 0, NULL);
 }
 
 void RemovePrintedNumber(void)
@@ -672,13 +683,13 @@ void DrawDevonLogo(void)
     {
         LoadSpriteSheet(&DevonScientistLogoSheet);
         LoadSpritePalette(&DevonLogoPalette);
-        MenuSpriteId1 = (CreateSprite(&DevonLogoSpriteTemplate, 16, 54, 0));
+        MenuSpriteId1 = (CreateSprite(&DevonLogoSpriteTemplate, 16, 62, 0));
     }
     else
     {
         LoadSpriteSheet(&DevonLogoSheet);
         LoadSpritePalette(&DevonLogoPalette);
-        MenuSpriteId1 = (CreateSprite(&DevonScientistLogoSpriteTemplate, 16, 54, 0));
+        MenuSpriteId1 = (CreateSprite(&DevonScientistLogoSpriteTemplate, 16, 62, 0));
     }
 }
 
@@ -688,13 +699,13 @@ void DrawAquaLogo(void)
     {
         LoadSpriteSheet(&AquaShellyLogoSheet);
         LoadSpritePalette(&AquaLogoPalette);
-        MenuSpriteId1 = (CreateSprite(&AquaShellyLogoSpriteTemplate, 16, 54, 0));
+        MenuSpriteId1 = (CreateSprite(&AquaShellyLogoSpriteTemplate, 16, 62, 0));
     }
     else
     {
         LoadSpriteSheet(&AquaLogoSheet);
         LoadSpritePalette(&AquaLogoPalette);
-        MenuSpriteId1 = (CreateSprite(&AquaLogoSpriteTemplate, 16, 54, 0));
+        MenuSpriteId1 = (CreateSprite(&AquaLogoSpriteTemplate, 16, 62, 0));
     }
 }
 void DrawMagmaLogo(void)

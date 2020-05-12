@@ -4783,7 +4783,7 @@ u8 WhatStageIsGiftPoke(void)
             {
                     return 2;//default evo
             }
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNORUNT)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_FROSLASS)
             {
                     return 3;//special evo
             }

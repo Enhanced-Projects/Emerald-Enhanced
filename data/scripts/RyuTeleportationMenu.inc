@@ -202,9 +202,7 @@ RT_LCAH::
 	end
 	
 RT_MCMH::
-	msgbox RT_NYI MSGBOX_SIGN
-	@goto_if_unset FLAG_RYU_PLAYER_HELPING_MAGMA, RT_NoFlag
-	goto RT_Landmarks
+	warpteleport MAP_ALTERING_CAVE, 255, 8, 6 
 	release
 	end
 	

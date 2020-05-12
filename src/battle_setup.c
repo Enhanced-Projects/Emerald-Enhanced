@@ -424,9 +424,12 @@ void BattleSetup_StartLatiBattle(void)
 
 void BattleSetup_StartLegendaryBattle(void)
 {
+    u8 ability = 2;
     ScriptContext2_Enable();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_LEGENDARY;
+    if (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES) == SPECIES_SPIRITOMB)
+        SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &ability);
 
     switch (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES, NULL))
     {
@@ -446,13 +449,24 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_DEOXYS:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEO);
         break;
+    case SPECIES_ZAPDOS:
+    case SPECIES_MOLTRES:
+    case SPECIES_ARTICUNO:
+    case SPECIES_CELEBI:
     case SPECIES_LUGIA:
     case SPECIES_HO_OH:
+    case SPECIES_SUICUNE:
+    case SPECIES_RAIKOU:
+    case SPECIES_ENTEI:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEN);
         break;
+    case SPECIES_SPIRITOMB:
     case SPECIES_MEW:
+    case SPECIES_JIRACHI:
+    case SPECIES_MELOETTA:
         CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_VS_MEW);
         break;
+
     }
 
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
@@ -497,6 +511,9 @@ void StartRegiBattle(void)
         transitionId = B_TRANSITION_REGICE;
         break;
     case SPECIES_REGISTEEL:
+        transitionId = B_TRANSITION_REGISTEEL;
+        break;
+    case SPECIES_REGIGIGAS:
         transitionId = B_TRANSITION_REGISTEEL;
         break;
     default:

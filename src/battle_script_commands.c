@@ -3320,6 +3320,8 @@ static void Cmd_dofaintanimation(void)
 
 static void Cmd_cleareffectsonfaint(void)
 {
+    u16 faints = (VarGet(VAR_RYU_TOTAL_FAINTS));
+    u16 SpiritombFaints = (VarGet(VAR_RYU_SPIRITOMB_FAINTS));
     if (gBattleControllerExecFlags == 0)
     {
         gActiveBattler = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
@@ -3333,6 +3335,15 @@ static void Cmd_cleareffectsonfaint(void)
 
         FaintClearSetData(); // Effects like attractions, trapping, etc.
         gBattlescriptCurrInstr += 2;
+        faints++;
+        if (FlagGet(FLAG_RYU_SPIRITOMB_IN_PROGRESS) == 1)
+        {
+            SpiritombFaints++;
+            if ((SpiritombFaints >= 107) && !(FlagGet(FLAG_RYU_FINISHED_SPIRITOMB_SIDEQUEST) == 1))
+                PlayCry5(SPECIES_SPIRITOMB, 2);
+        }
+        VarSet(VAR_RYU_TOTAL_FAINTS, faints);
+        VarSet(VAR_RYU_SPIRITOMB_FAINTS, SpiritombFaints);
     }
 }
 

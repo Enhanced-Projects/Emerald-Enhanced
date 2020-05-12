@@ -1977,7 +1977,7 @@ const u8 gText_RyuTeleportEvergrande[] = _(" EverGrande");
 const u8 gText_RyuTeleportBattleFrontier[] = _(" B. Frontier");
 const u8 gText_RyuTeleportMtPyreExterior[] = _(" Mt.Pyre Ext");
 const u8 gText_RyuTeleportLCCDEPT[] = _(" LC DeptStore");
-const u8 gText_RyuTeleportMCMH[] = _(" MagmaOffice");
+const u8 gText_RyuTeleportMCMH[] = _(" Altering Cv");
 const u8 gText_RyuTeleportLCAH[] = _(" AquaOffice");
 const u8 gText_RyuTeleportAbandonedShip[] = _(" Abdn. Ship");
 
@@ -2156,6 +2156,8 @@ const u8 gText_Night[] = _("(Night)");
 const u8 gText_RyuDay[] = _("(Day)");
 const u8 gText_RyuDawn[] = _("(Dawn)");
 const u8 gText_Dusk[] = _("(Dusk)");
+const u8 gText_RyuKills[] = _("KO's: ");
+const u8 gText_RyuBadges[] = _("Badges: ");
 const u8 gText_colon[] = _(":");
 const u8 gText_ColorLightBlueShadowBlue[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}");
 const u8 gText_ColorLightRedShadowRed[] = _("{COLOR LIGHT_RED}{SHADOW RED}");

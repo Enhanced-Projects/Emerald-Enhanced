@@ -190,6 +190,7 @@ RyuDebug_Utility1::
 	@waitse
 	@setflag FLAG_RYU_PASSCODE_FRONTIER_MON_DEV
 	@setvar VAR_TEMP_5, 6
+	setvar VAR_RYU_SPIRITOMB_FAINTS, 106
 	waitbuttonpress
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK

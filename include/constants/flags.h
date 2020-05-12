@@ -1298,8 +1298,8 @@
 #define FLAG_RYU_FORCE_TUCKER                                       0x4D7 // Unused Flag
 #define FLAG_RYU_LANA_SLATEPORT                                     0x4D8 // Unused Flag
 #define FLAG_RYU_SC_PC_LANA_INTRO_EVENT                             0x4D9 // Unused Flag
-#define FLAG_UNUSED_0x4DA                                           0x4DA // Unused Flag
-#define FLAG_UNUSED_0x4DB                                           0x4DB // Unused Flag
+#define FLAG_RYU_SPIRITOMB_IN_PROGRESS                              0x4DA // Unused Flag
+#define FLAG_RYU_FINISHED_SPIRITOMB_SIDEQUEST                       0x4DB // Unused Flag
 #define FLAG_UNUSED_0x4DC                                           0x4DC // Unused Flag
 #define FLAG_UNUSED_0x4DD                                           0x4DD // Unused Flag
 #define FLAG_UNUSED_0x4DE                                           0x4DE // Unused Flag

@@ -3293,6 +3293,8 @@ extern const u8 gText_Night[];
 extern const u8 gText_RyuDay[];
 extern const u8 gText_Dusk[];
 extern const u8 gText_RyuDawn[];
+extern const u8 gText_RyuKills[];
+extern const u8 gText_RyuBadges[];
 extern const u8 gText_colon[];
 extern const u8 gText_ColorLightBlueShadowBlue[];
 extern const u8 gText_ColorLightRedShadowRed[];
