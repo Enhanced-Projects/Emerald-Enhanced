@@ -96,7 +96,7 @@ AncientTomb_EventScript_RanFromRegisteel:: @ 82390AA
 @====================================Leaf Events
 
 
-AT_SetupLanaEvent2:;
+AT_SetupLanaEvent2:
 	map_script_2 VAR_RYU_DS_LANA_STAGE, 82, AT_LanaEvent2
 	.2byte 0
 	

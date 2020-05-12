@@ -100,10 +100,10 @@ LRT_NIGHT::
  	closemessage
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
-	applymovement 4, Common_Movement_HeartEmote
+	applymovement 2, Common_Movement_HeartEmote
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
-	applymovement 4 LRT_HEART2
+	applymovement 2 LRT_HEART2
 	applymovement OBJ_EVENT_ID_PLAYER LRT_HEART
 	fadescreen FADE_TO_BLACK
 	delay 20
@@ -133,10 +133,10 @@ LRT_NIGHT2::
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	delay 10
-	applymovement 4, Common_Movement_HeartEmote
+	applymovement 2, Common_Movement_HeartEmote
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
-	applymovement 4, LRT_HEART2
+	applymovement 2, LRT_HEART2
 	applymovement OBJ_EVENT_ID_PLAYER, LRT_HEART
 	delay 20
 	fadescreen FADE_TO_BLACK
@@ -307,7 +307,7 @@ LRT_DawnIntroductionScene::
 	closemessage
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
-	applymovement 4, GI_LeavingForRoute103
+	applymovement 2, GI_LeavingForRoute103
 	waitmovement 0
 	playse SE_DOOR
 	removeobject 4

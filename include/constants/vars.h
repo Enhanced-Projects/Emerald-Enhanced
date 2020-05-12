@@ -94,8 +94,7 @@
 #define VAR_POKELOT_RND1                     0x404B
 #define VAR_POKELOT_RND2                     0x404C
 #define VAR_POKELOT_PRIZE_PLACE              0x404D
-#define VAR_RYU_THEME_NUMBER                 0x404E // Unused Var
-#define VAR_LOTAD_SIZE_RECORD                0x404F
+#define VAR_RYU_THEME_NUMBER                 0x404E // Which theme is selected
 #define VAR_LITTLEROOT_TOWN_STATE            0x4050
 #define VAR_OLDALE_TOWN_STATE                0x4051
 #define VAR_LAST_KNOWN_GAME_VERSION          0x4052 // current game version
@@ -111,18 +110,18 @@
 #define VAR_LILYCOVE_CITY_STATE              0x405C // Unused Var
 #define VAR_MOSSDEEP_CITY_STATE              0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE            0x405E
-#define VAR_EVER_GRANDE_CITY_STATE           0x405F // Unused Var
+#define VAR_RYU_PARTNER_COUNT                0x405F // Used to track how many partners the player has
 #define VAR_ROUTE101_STATE                   0x4060
 #define VAR_ROUTE102_STATE                   0x4061 // Unused Var
 #define VAR_ROUTE103_STATE                   0x4062 // Unused Var
 #define VAR_ROUTE104_STATE                   0x4063
-#define VAR_RYU_GCMS_MOVE1                   0x4064 // Unused Var
-#define VAR_RYU_GCMS_MOVE2                   0x4065 // Unused Var
-#define VAR_RYU_GCMS_MOVE3                   0x4066 // Unused Var
-#define VAR_RYU_GCMS_MOVE4                   0x4067 // Unused Var
-#define VAR_RYU_GCMS_ABILITY                 0x4068 // Unused Var
+#define VAR_RYU_GCMS_MOVE1                   0x4064 //GCMS
+#define VAR_RYU_GCMS_MOVE2                   0x4065 // GCMS
+#define VAR_RYU_GCMS_MOVE3                   0x4066 // GCMS
+#define VAR_RYU_GCMS_MOVE4                   0x4067 // GCMS
+#define VAR_RYU_GCMS_ABILITY                 0x4068 // GCMS
 #define VAR_ROUTE110_STATE                   0x4069
-#define VAR_ROUTE111_STATE                   0x406A // Unused Var
+#define VAR_LOTAD_SIZE_RECORD                0x406A // Unused Var
 #define VAR_ROUTE112_STATE                   0x406B // Unused Var
 #define VAR_ROUTE113_STATE                   0x406C // Unused Var
 #define VAR_ROUTE114_STATE                   0x406D // Unused Var
@@ -146,7 +145,7 @@
 #define VAR_UNUSED_0x407F                    0x407F // Unused Var
 #define VAR_UNUSED_0x4080                    0x4080 // Unused Var
 #define VAR_UNUSED_0x4081                    0x4081 // Unused Var
-#define VAR_LITTLEROOT_HOUSES_STATE_DAWN      0x4082
+#define VAR_LITTLEROOT_HOUSES_STATE_DAWN     0x4082
 #define VAR_UNUSED_0x4083                    0x4083 // Unused Var
 #define VAR_BIRCH_LAB_STATE                  0x4084
 #define VAR_PETALBURG_GYM_STATE              0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman 

@@ -41,6 +41,7 @@ const u32 gObjectEventPic_RubySapphireMayNormal[] = INCBIN_U32("graphics/object_
 const u32 gObjectEventPic_RubySapphireMayRunning[] = INCBIN_U32("graphics/object_events/pics/people/ruby_sapphire_may/running.4bpp");
 const u16 gObjectEventPalette34[] = INCBIN_U16("graphics/object_events/palettes/34.gbapal");
 const u16 gUnusedObjectEventPalette[] = INCBIN_U16("graphics/object_events/palettes/unused_palette.gbapal");
+const u16 gObjectEventPaletteLeaf[] = INCBIN_U16("graphics/object_events/palettes/leaf.gbapal");
 const u16 gObjectEventPaletteNull16[16] = {};
 const u16 gObjectEventPaletteNull17[16] = {};
 const u16 gObjectEventPaletteNull18[16] = {};

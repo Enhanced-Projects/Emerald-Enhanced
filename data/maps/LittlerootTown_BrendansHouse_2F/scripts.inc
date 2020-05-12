@@ -6,6 +6,7 @@ GameIntroSequenceCheck::
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 4, GameIntroSequencePart1
 	map_script_2 VAR_RYU_DS_LANA_STAGE, 75, LRT_LeafEvent
 	map_script_2 VAR_TEMP_0, 0, LRT_CheckIfRemoveRival
+	map_script_2 VAR_RYU_PARTNER_COUNT, 4, LRT_BeginHaremSequence
 	@map_script_2 VAR_TEMP_D, 0, LRT_ResetFollower
 	.2byte 0
 
@@ -612,7 +613,51 @@ LRT_Story7:
 	.string "it's time to finish what was\p"
 	.string "started...at the Ancient Tomb.$"
 	
-@Snorunt stuff
+@Harem Stuff=======================================================================================
+
+LRT_BeginHaremSequence::
+	goto HaremBegin
+	end
+	
+HaremBegin:
+	lockall
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	addobject 4
+	playse SE_DOOR
+	waitse
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 4, LRT_Harem_RivalMove
+	waitmovement 4
+	msgbox LRT_HaremBeginRivalMsg
+	closemessage
+	clearflag FLAG_RYU_HIDE_HAREM_EVENT_NPCS
+	fadescreen FADE_TO_BLACK
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	goto_if_eq HaremBeginFemale
+	clearflag FLAG_RYU_HIDE_HAREM_EVENT_DAWN
+	warpsilent MAP_LITTLEROOT_TOWN, 255, 9, 8
+	release
+	end
+	
+HaremBeginFemale::
+	clearflag FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN
+	warpsilent MAP_LITTLEROOT_TOWN, 255, 10, 8
+	release
+	end
+	
+	
+LRT_HaremBeginRivalMsg:
+	.string "{RIVAL}: HEY! come outside!\p"
+	.string "I have a suprise for you!$"
+	
+LRT_Harem_RivalMove:
+	walk_down
+	walk_down
+	emote_heart
+	step_end
 
 
 

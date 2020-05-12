@@ -1,8 +1,13 @@
 LittlerootTown_MapScripts:: @ 81E7DCB
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_MapScript1_1E7DDB
-	@map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_MapScript2_1E7EC1
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Ryu_HaremEventCheck
 	@map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_MapScript2_1E7FE2
 	.byte 0
+
+Ryu_HaremEventCheck::
+	map_script_2 VAR_RYU_PARTNER_COUNT, 4, Ryu_HaremEvent
+	.2byte 0
+
 
 LittlerootTown_MapScript1_1E7DDB: @ 81E7DDB
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
@@ -17,6 +22,7 @@ LRT_FollowerTest::
 	goto_if_ne LRT_CancelFollower
 	closemessage
 	setflag FLAG_RYU_HIDE_MINNIE
+	setflag FLAG_RYU_RECRUITED_MINNIE
 	removeobject 4
 	createfollower OBJ_EVENT_GFX_TWIN, RyuFollowerSelectNPCScript, 1
 	setflag FLAG_RYU_HAS_FOLLOWER
@@ -256,5 +262,231 @@ LRT_FM2:
     .string "Did you hear them? It's distracting\n"
     .string "right? Well anyways, bye!$"
 
+@HAREM EVENT=======================================================================================
+Ryu_HaremEvent::
+	goto_if_set FLAG_RYU_HAREM_EVENT_COMPLETED, ryu_end
+	lockall
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	call_if_eq Ryu_HaremEventMale
+	checkplayergender
+	compare VAR_RESULT, MALE
+	call_if_eq Ryu_HaremEventFemale
+	call_if_set FLAG_RYU_RECRUITED_MINNIE, LRT_Harem_AlsoMinnie
+	fadescreen FADE_TO_BLACK
+	@drawfullscreenimage SCENEBGHAREM
+	msgbox LRT_Harem_Outro
+	closemessage
+	giveitem ITEM_SHINY_CHARM
+	closemessage
+	delay 60
+	setflag FLAG_RYU_HAREM_EVENT_COMPLETED
+	setflag FLAG_RYU_HIDE_HAREM_EVENT_NPCS
+	setflag FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN
+	setflag FLAG_RYU_HIDE_HAREM_EVENT_DAWN
+	removeobject 6
+	removeobject 8
+	removeobject 9
+	@clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	msgbox LRT_HAREM_END_RIVALMSG
+	closemessage
+	applymovement 7, RivalToLab
+	applymovement 10, RivalToLab
+	waitmovement 7
+	waitmovement 10
+	removeobject 7
+	removeobject 10
+	setvar VAR_RYU_PARTNER_COUNT, 10
+	release
+	end
+	
+LRT_HAREM_END_RIVALMSG:
+	.string "{RIVAL}:{COLOR LIGHT_RED}{SHADOW RED} Don't forget to take one\n"
+	.string "of us with you to battle from\l"
+	.string "time to time!$"
+
+LRT_HAREM_INTRO:
+    .string "{RIVAL}:{COLOR LIGHT_RED}{SHADOW RED} We all love you, and in\n"
+    .string "return, you've shown us all love.\p"
+    .string "We got together to get you a gift.$"
+	
+LRT_Harem_Outro:
+    .string "{RIVAL}:{COLOR LIGHT_RED}{SHADOW RED} It's a Shiny Charm.$"
+	
+LRT_HAREM_INTRO_Shelly:
+    .string "Shelly:{COLOR LIGHT_RED}{SHADOW RED} It's an incredibly rare\n"
+    .string "artifact imported from Kalos.$"
+	
+LRT_HAREM_INTRO_Lanette:
+    .string "Lanette:{COLOR LIGHT_RED}{SHADOW RED} I researched for HOURS to\n"
+    .string "track it down!$"
+	
+LRT_HAREM_INTRO_Lana:
+    .string "Lana:{COLOR LIGHT_RED}{SHADOW RED} I went to Kanto to fill out the\n"
+    .string "paperwork to have it shipped here!$"
+
+LRT_HAREM_INTRO_Rival:
+    .string "{RIVAL}:{COLOR LIGHT_RED}{SHADOW RED} We hope you like it!\p"
+    .string "You gave us your all, so we\n"
+    .string "returned the favor!$"
+
+	
+LRT_Harem_AlsoMinnie::
+	applymovement 4, MinnieToGroup
+	waitmovement 4
+	playse SE_PIN
+	msgbox AlsoMinnieMsg
+	closemessage
+	return
+	
+AlsoMinnieMsg:
+    .string "Minnie: {COLOR LIGHT_RED}{SHADOW RED}Hey! don't forget about me!\p"
+    .string "You became my friend when I didn't\n"
+    .string "have any. When I get older, I want to\p"
+    .string "be with you like these other girls!\n"
+    .string "Please wait for me!$"
+	
+MinnieToGroup:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_diag_southeast
+	face_right
+	emote_exclamation_mark
+	step_end
+	
+RivalToLab:
+	walk_down
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+Ryu_HaremEventMale::
+	msgbox LRT_HAREM_INTRO
+	closemessage
+	applymovement 9, ShellyToDawn
+	waitmovement 9
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox LRT_HAREM_INTRO_Shelly
+	closemessage
+	applymovement 8, LanaToDawn
+	waitmovement 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox LRT_HAREM_INTRO_Lana
+	closemessage
+	applymovement 6, LanetteToDawn
+	waitmovement 6
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox LRT_HAREM_INTRO_Lanette
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 10, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox LRT_HAREM_INTRO_Rival
+	closemessage
+	return
+	
+Ryu_HaremEventFemale::
+	msgbox LRT_HAREM_INTRO
+	closemessage
+	applymovement 6, LanetteToBrendan
+	waitmovement 6
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox LRT_HAREM_INTRO_Lanette
+	closemessage
+	applymovement 8, LanaToBrendan
+	waitmovement 8
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox LRT_HAREM_INTRO_Lana
+	closemessage
+	applymovement 9, ShellyToBrendan
+	waitmovement 9
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox LRT_HAREM_INTRO_Shelly
+	closemessage
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement 7, Common_Movement_FaceLeft
+	waitmovement 7
+	msgbox LRT_HAREM_INTRO_Rival
+	return
+	
+LanetteToDawn:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	face_left
+	step_end
+	
+LanaToDawn:
+	walk_up
+	walk_up
+	walk_left
+	walk_up
+	walk_up
+	walk_right
+	face_down
+	step_end
+	
+ShellyToDawn:
+	walk_up
+	walk_up
+	face_up
+	step_end
+	
+LanetteToBrendan:
+	walk_up
+	walk_up
+	walk_up
+	face_right
+	step_end
+	
+LanaToBrendan:
+	walk_up
+	walk_up
+	face_up
+	step_end
+	
+ShellyToBrendan:
+	walk_up
+	walk_up
+	walk_right
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	face_down
+	step_end
 
 
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

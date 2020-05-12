@@ -14,6 +14,7 @@
 int GameClear(void)
 {
     int i;
+    u8 partners = 0;
     bool32 ribbonGet;
     struct RibbonCounter {
         u8 partyIndex;
@@ -29,6 +30,7 @@ int GameClear(void)
     else
     {
         gHasHallOfFameRecords = FALSE;
+        FlagSet(FLAG_RYU_FIRST_GAME_CLEAR);
         FlagSet(FLAG_SYS_GAME_CLEAR);
     }
 
@@ -82,6 +84,23 @@ int GameClear(void)
             TryPutSpotTheCutiesOnAir(&gPlayerParty[ribbonCounts[0].partyIndex], MON_DATA_CHAMPION_RIBBON);
         }
     }
+
+    if ((FlagGet(FLAG_RYU_DS_DAWN_PARTNERS) == 1) || (FlagGet(FLAG_RYU_DS_BRENDAN_PARTNERS) == 1))
+        partners++;
+
+    if (FlagGet(FLAG_RYU_DS_LANETTE_PARTNERS) == 1)
+        partners++;
+
+    if (FlagGet(FLAG_RYU_DS_LEAF_PARTNERS) == 1)
+        partners++;
+
+    if (FlagGet(FLAG_RYU_DS_SHELLY_PARTNERS) == 1)
+        partners++;
+
+    if ((partners == 4) && (FlagGet(FLAG_RYU_FIRST_GAME_CLEAR) == 1))
+        VarSet(VAR_RYU_PARTNER_COUNT, partners);
+        
+  
 
     SetMainCallback2(CB2_DoHallOfFameScreen);
     return 0;

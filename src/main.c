@@ -172,7 +172,10 @@ void AgbMain()
         VarSet(VAR_LAST_KNOWN_GAME_VERSION, 670);
         VarSet(VAR_RECYCLE_GOODS, 45454);
         //mgba_open();
-        (FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE));
+        FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
+        //FlagSet(FLAG_RYU_HIDE_HAREM_EVENT_NPCS);
+        //FlagSet(FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN);
+        //FlagSet(FLAG_RYU_HIDE_HAREM_EVENT_DAWN);
         MapMusicMain();
         WaitForVBlank();
     }

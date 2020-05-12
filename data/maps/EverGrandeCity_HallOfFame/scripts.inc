@@ -89,6 +89,7 @@ AltHallofFame::
 	delay 40
 	setvar VAR_TEMP_1, 1
 	call EverGrandeCity_HallOfFame_EventScript_SetGameClearFlags
+	setflag FLAG_RYU_FIRST_GAME_CLEAR
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq EverGrandeCity_HallOfFame_EventScript_GameClearMale

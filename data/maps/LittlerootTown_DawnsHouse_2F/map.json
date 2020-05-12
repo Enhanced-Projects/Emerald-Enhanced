@@ -53,7 +53,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
+            "flag": "FLAG_HIDE_DAWNS_HOUSE_DAWN",
             "graphics_id": "OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -62,7 +62,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 8,
-            "y": 7
+            "y": 2
         },
         {
             "elevation": 3,
@@ -79,15 +79,15 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_DAWNS_HOUSE_DAWN",
-            "graphics_id": "OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL",
+            "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
+            "graphics_id": "OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "LRT_DawnAfterLilycoveSequence",
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 8,
+            "x": 1,
             "y": 2
         }
     ],
