@@ -36,6 +36,7 @@ GAME_CODE   := BPEE
 MAKER_CODE  := 01
 REVISION    := 0
 MODERN      ?= 0
+DEBUG      ?= 0
 
 SHELL := /bin/bash -o pipefail
 
@@ -75,7 +76,7 @@ OBJ_DIR := build/modern
 LIBPATH := -L $(TOOLCHAIN)/lib/gcc/arm-none-eabi/$(GCC_VER)/thumb -L $(TOOLCHAIN)/arm-none-eabi/lib/thumb -lc -lgcc
 endif
 
-CPPFLAGS := -iquote include -iquote $(GFLIB_SUBDIR) -Wno-trigraphs -DMODERN=$(MODERN)
+CPPFLAGS := -iquote include -iquote $(GFLIB_SUBDIR) -Wno-trigraphs -DMODERN=$(MODERN) -DDEBUG=$(DEBUG)
 ifeq ($(MODERN),0)
 CPPFLAGS += -I tools/agbcc/include -I tools/agbcc
 endif
@@ -154,7 +155,9 @@ AUTO_GEN_TARGETS :=
 
 $(shell mkdir -p $(SUBDIRS))
 
-all: rom
+all: updatedebug rom
+
+updatedebug: ; @touch src/mgba.c include/mgba.h src/printf.c include/printf.h
 
 tools: $(TOOLDIRS)
 
@@ -324,6 +327,8 @@ $(ROM): $(ELF)
 	$(FIX) $@ -p --silent
 
 modern: ; @$(MAKE) MODERN=1
+
+debug: ; @$(MAKE) DEBUG=1
 
 #berry_fix/berry_fix.gba: berry_fix
 

@@ -46,7 +46,7 @@ static void CB2_GoToClearSaveDataScreen(void);
 static void CB2_GoToResetRtcScreen(void);
 static void CB2_GoToBerryFixScreen(void);
 static void CB2_GoToCopyrightScreen(void);
-static void UpdateLegendaryMarkingColor(u8);
+static void UpdateBackgroundColor(u8);
 
 static void SpriteCB_VersionBannerLeft(struct Sprite *sprite);
 static void SpriteCB_VersionBannerRight(struct Sprite *sprite);
@@ -517,8 +517,17 @@ static void VBlankCB(void)
 #define tCounter data[0]
 #define tSkipToNext data[1]
 
+#define tTheta data[9]
+
+static const u8 sMawileTileSet[] = INCBIN_U8("graphics/title_screen/mawiletileset.4bpp");
+static const u8 sMawilePalette[] = INCBIN_U8("graphics/title_screen/mawiletileset.gbapal");
+static const u8 sMawileTileMap[] = INCBIN_U8("graphics/title_screen/mawiletileset.bin");
+
+#include "mgba.h"
+
 void CB2_InitTitleScreen(void)
 {
+    u32 palindex;
     switch (gMain.state)
     {
     default:
@@ -545,13 +554,34 @@ void CB2_InitTitleScreen(void)
         gMain.state = 1;
         break;
     case 1:
-        LZ77UnCompVram(gTitleScreenPokemonLogoGfx, (void *)VRAM);
-        LZ77UnCompVram(gUnknown_08DE0644, (void *)(BG_SCREEN_ADDR(9)));
+        LZ77UnCompVram(gTitleScreenPokemonLogoGfx, (void *)(BG_CHAR_ADDR(2)));
+        LZ77UnCompVram(gUnknown_08DE0644, (void *)(BG_SCREEN_ADDR(28)));
         LoadPalette(gTitleScreenBgPalettes, 0, 0x1E0);
-        LZ77UnCompVram(sTitleScreenRayquazaGfx, (void *)(BG_CHAR_ADDR(2)));
-        LZ77UnCompVram(sTitleScreenRayquazaTilemap, (void *)(BG_SCREEN_ADDR(26)));
+        
+        DmaCopy16(3, sMawileTileSet, BG_CHAR_ADDR(0), sizeof(sMawileTileSet));
+        
+        palindex = 15;
+        {
+            u32 i;
+            u16 * vramMapAddr = (u16*)BG_SCREEN_ADDR(26);
+            u16 * mapAddr = (u16*)sMawileTileMap;
+            for(i = 0; i < sizeof(sMawileTileMap); i += 2, mapAddr++, vramMapAddr++)
+            {
+                u16 val2 = *mapAddr & ~0xF000;
+
+                *vramMapAddr = val2 | (palindex << 12);
+            }
+
+        }
+        mgba_open();
+        mgba_printf(MGBA_LOG_WARN, "This is a test");
+
+        //DmaCopy16(3, sMawileTileMap, BG_SCREEN_ADDR(26), sizeof(sMawileTileMap));
+        LoadPalette(sMawilePalette, palindex*0x10, 0x20);
+        //LZ77UnCompVram(sTitleScreenRayquazaGfx, (void *)(BG_CHAR_ADDR(2)));
+        //LZ77UnCompVram(sTitleScreenRayquazaTilemap, (void *)(BG_SCREEN_ADDR(26)));
         LZ77UnCompVram(sTitleScreenCloudsGfx, (void *)(BG_CHAR_ADDR(3)));
-        LZ77UnCompVram(gUnknown_08DDE458, (void *)(BG_SCREEN_ADDR(27)));
+        LZ77UnCompVram(gUnknown_08DDE458, (void *)(BG_SCREEN_ADDR(30)));
         ScanlineEffect_Stop();
         ResetTasks();
         ResetSpriteData();
@@ -560,7 +590,7 @@ void CB2_InitTitleScreen(void)
         LoadCompressedSpriteSheet(&sSpriteSheet_EmeraldVersion[0]);
         LoadCompressedSpriteSheet(&sSpriteSheet_PressStart[0]);
         LoadCompressedSpriteSheet(&sPokemonLogoShineSpriteSheet[0]);
-        LoadPalette(gTitleScreenEmeraldVersionPal, 0x100, 0x20);
+        LoadPalette(gTitleScreenEmeraldVersionPal, 0x100, 0x20); // OBJ PAL
         LoadSpritePalette(&sSpritePalette_PressStart[0]);
         gMain.state = 2;
         break;
@@ -595,9 +625,9 @@ void CB2_InitTitleScreen(void)
         SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG2 | BLDCNT_EFFECT_LIGHTEN);
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BLDY, 0xC);
-        SetGpuReg(REG_OFFSET_BG0CNT, BGCNT_PRIORITY(3) | BGCNT_CHARBASE(2) | BGCNT_SCREENBASE(26) | BGCNT_16COLOR | BGCNT_TXT256x256);
-        SetGpuReg(REG_OFFSET_BG1CNT, BGCNT_PRIORITY(2) | BGCNT_CHARBASE(3) | BGCNT_SCREENBASE(27) | BGCNT_16COLOR | BGCNT_TXT256x256);
-        SetGpuReg(REG_OFFSET_BG2CNT, BGCNT_PRIORITY(1) | BGCNT_CHARBASE(0) | BGCNT_SCREENBASE(9) | BGCNT_256COLOR | BGCNT_AFF256x256);
+        SetGpuReg(REG_OFFSET_BG0CNT, BGCNT_PRIORITY(2) | BGCNT_CHARBASE(0) | BGCNT_SCREENBASE(26) | BGCNT_16COLOR | BGCNT_TXT256x256);
+        SetGpuReg(REG_OFFSET_BG1CNT, BGCNT_PRIORITY(1) | BGCNT_CHARBASE(3) | BGCNT_SCREENBASE(30) | BGCNT_16COLOR | BGCNT_TXT256x256);
+        SetGpuReg(REG_OFFSET_BG2CNT, BGCNT_PRIORITY(0) | BGCNT_CHARBASE(2) | BGCNT_SCREENBASE(28) | BGCNT_256COLOR | BGCNT_AFF256x256);
         EnableInterrupts(INTR_FLAG_VBLANK);
         SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_1
                                     | DISPCNT_OBJ_1D_MAP
@@ -639,12 +669,13 @@ static void Task_TitleScreenPhase1(u8 taskId)
 
     if (gTasks[taskId].tCounter != 0)
     {
+        
         u16 frameNum = gTasks[taskId].tCounter;
         if (frameNum == 176)
             StartPokemonLogoShine(1);
         else if (frameNum == 64)
             StartPokemonLogoShine(2);
-
+        
         gTasks[taskId].tCounter--;
     }
     else
@@ -740,24 +771,30 @@ static void Task_TitleScreenPhase3(u8 taskId)
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         SetMainCallback2(CB2_GoToResetRtcScreen);
     }
+    /*
     else if ((gMain.heldKeys & BERRY_UPDATE_BUTTON_COMBO) == BERRY_UPDATE_BUTTON_COMBO)
     {
         FadeOutBGM(4);
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         SetMainCallback2(CB2_GoToBerryFixScreen);
-    }   
+    } 
+    */  
     else
     {
         SetGpuReg(REG_OFFSET_BG2Y_L, 0);
         SetGpuReg(REG_OFFSET_BG2Y_H, 0);
         gTasks[taskId].tCounter++;
-        if (gTasks[taskId].tCounter & 1)
+        if (!(gTasks[taskId].tCounter % 2))
         {
-            gTasks[taskId].data[4]++;
-            gBattle_BG1_Y = gTasks[taskId].data[4] / 2;
-            gBattle_BG1_X = 0;
+            gTasks[taskId].tTheta++;
         }
-        UpdateLegendaryMarkingColor(gTasks[taskId].tCounter);
+        //if (gTasks[taskId].tCounter & 1)
+        //{
+            //gTasks[taskId].data[4]++;
+            //gBattle_BG1_Y = gTasks[taskId].data[4] / 2;
+            //gBattle_BG1_X = 0;
+        //}
+        UpdateBackgroundColor(gTasks[taskId].tTheta);
         if ((gMPlayInfo_BGM.status & 0xFFFF) == 0)
         {
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_WHITEALPHA);
@@ -799,16 +836,23 @@ static void CB2_GoToBerryFixScreen(void)
     }
 }
 
-static void UpdateLegendaryMarkingColor(u8 frameNum)
+static u16 BlendPaletteDevPidgey2(u8 coeff, u16 color, u16 blendColor)
 {
-    if ((frameNum % 4) == 0) // Change color every 4th frame
-    {
-        s32 intensity = Cos(frameNum, 128) + 128;
-        s32 r = 31 - ((intensity * 32 - intensity) / 256);
-        s32 g = 31 - (intensity * 22 / 256);
-        s32 b = 12;
+    struct PlttData *data1 = (struct PlttData *)&color;
+    s8 r = data1->r;
+    s8 g = data1->g;
+    s8 b = data1->b;
+    struct PlttData *data2 = (struct PlttData *)&blendColor;
+    return ((r + (((data2->r - r) * coeff) >> 4)) << 0)
+                            | ((g + (((data2->g - g) * coeff) >> 4)) << 5)
+                            | ((b + (((data2->b - b) * coeff) >> 4)) << 10);
+}
 
-        u16 color = RGB(r, g, b);
-        LoadPalette(&color, 0xEF, sizeof(color));
-   }
+static void UpdateBackgroundColor(u8 theta)
+{
+    s32 coeff = (128 + -gSineTable[theta+64] / 2);
+    u16 color = BlendPaletteDevPidgey2(coeff/16, RGB(10, 10, 10), RGB_BLACK);
+    LoadPalette(&color, 0xF2, sizeof(color));
+    color = BlendPaletteDevPidgey2(coeff/16, RGB(23, 12, 17), RGB_RED);
+    LoadPalette(&color, 0xF1, sizeof(color));
 }
