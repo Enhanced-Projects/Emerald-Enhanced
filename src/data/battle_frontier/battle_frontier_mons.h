@@ -3447,7 +3447,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
         .nature = NATURE_CAREFUL,
         .ivs = 31,
-        .ability = 2
+        .ability = 1
     },
     [FRONTIER_MON_FORRETRESS_1] = {
         .species = SPECIES_FORRETRESS,
