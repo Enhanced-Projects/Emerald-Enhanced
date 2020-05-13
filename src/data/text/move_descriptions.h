@@ -834,8 +834,8 @@ static const u8 sMilkDrinkDescription[] = _(
     "user's maximum HP.");
 
 static const u8 sSparkDescription[] = _(
-    "An electrified tackle that\n"
-    "may paralyze the foe.");
+    "Builds up a charge with\n"
+    "friction then shocks foe.");
 
 static const u8 sFuryCutterDescription[] = _(
     "An attack that intensifies\n"
