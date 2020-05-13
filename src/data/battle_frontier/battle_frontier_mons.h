@@ -1794,12 +1794,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_FURRET_1] = {
         .species = SPECIES_FURRET,
-        .moves = {MOVE_HYPER_VOICE, MOVE_FOCUS_BLAST, MOVE_BLIZZARD, MOVE_THUNDER},
-        .heldItem = ITEM_CHOICE_SPECS,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_MODEST,
+        .moves = {MOVE_BODY_SLAM, MOVE_COIL, MOVE_REST, MOVE_BATON_PASS},
+        .heldItem = ITEM_CHESTO_BERRY,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
+        .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_DUNSPARCE_1] = {
         .species = SPECIES_DUNSPARCE,
@@ -1868,7 +1868,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .species = SPECIES_WIGGLYTUFF,
         .moves = {MOVE_DAZZLING_GLEAM, MOVE_THUNDERBOLT, MOVE_FIRE_BLAST, MOVE_FOCUS_BLAST},
         .heldItem = ITEM_EXPERT_BELT,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_DEFENSE,
         .nature = NATURE_MODEST,
         .ivs = 31,
         .ability = 1
@@ -2739,12 +2739,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_FURRET_2] = {
         .species = SPECIES_FURRET,
-        .moves = {MOVE_RETURN, MOVE_DYNAMIC_PUNCH, MOVE_KNOCK_OFF, MOVE_IRON_TAIL},
-        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_RETURN, MOVE_KNOCK_OFF, MOVE_COIL, MOVE_REST},
+        .heldItem = ITEM_CHESTO_BERRY,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_DUNSPARCE_2] = {
         .species = SPECIES_DUNSPARCE,
@@ -2811,9 +2811,9 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_WIGGLYTUFF_2] = {
         .species = SPECIES_WIGGLYTUFF,
-        .moves = {MOVE_HYPER_VOICE, MOVE_DAZZLING_GLEAM, MOVE_FIRE_BLAST, MOVE_FOCUS_BLAST},
-        .heldItem = ITEM_CHOICE_SPECS,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .moves = {MOVE_DAZZLING_GLEAM, MOVE_FOCUS_BLAST, MOVE_WISH, MOVE_EE_PROTECT},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_DEFENSE,
         .nature = NATURE_MODEST,
         .ivs = 31,
         .ability = 1
