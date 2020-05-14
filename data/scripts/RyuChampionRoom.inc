@@ -88,6 +88,7 @@ RCR_OverlordRyuBossFight::
 	goto RCR_OverlordRyuEndMatch
 	
 RCR_OverlordRyuEndMatch::
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
     goto AT1_Warp
 	end
 

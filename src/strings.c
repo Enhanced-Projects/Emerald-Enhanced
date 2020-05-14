@@ -2164,6 +2164,8 @@ const u8 gText_ColorLightRedShadowRed[] = _("{COLOR LIGHT_RED}{SHADOW RED}");
 const u8 gText_ColorLightRedShadowDarkGrey[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}");
 const u8 gText_ColorLightBlueShadowDarkGrey[] = _("{COLOR LIGHT_BLUE}{SHADOW LIGHT_GREY}");
 
+const u8 gText_MartDisabledNuzlocke[] = _("You are in Nuzlocke mode.\nMarts are disabled.");
+
 const u8 gText_ItemRepel[] = _("Repel (100 steps)");
 const u8 gText_ItemSuperRepel[] = _("Super Repel (200 steps)");
 const u8 gText_ItemMaxRepel[] = _("Max Repel (250 steps)");

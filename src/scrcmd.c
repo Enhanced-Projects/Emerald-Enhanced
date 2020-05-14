@@ -7,6 +7,7 @@
 #include "contest.h"
 #include "contest_link_80F57C4.h"
 #include "contest_painting.h"
+#include "constants/songs.h"
 #include "data.h"
 #include "decoration.h"
 #include "decoration_inventory.h"
@@ -70,6 +71,7 @@ extern const SpecialFunc gSpecials[];
 extern const u8 *gStdScripts[];
 extern const u8 *gStdScripts_End[];
 extern const u8 RyuResetFollowerPosition[];
+extern const u8 gText_MartDisabledNuzlocke[];
 
 static void CloseBrailleWindow(void);
 
@@ -1877,6 +1879,13 @@ bool8 ScrCmd_dowildbattle(struct ScriptContext *ctx)
 bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
+
+    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+    {
+        PlaySE(SE_HAZURE);
+        ShowFieldMessage(gText_MartDisabledNuzlocke);
+        return TRUE;
+    }
 
     CreatePokemartMenu(ptr);
     ScriptContext1_Stop();

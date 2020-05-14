@@ -310,7 +310,7 @@ LRT_DawnIntroductionScene::
 	applymovement 2, GI_LeavingForRoute103
 	waitmovement 0
 	playse SE_DOOR
-	removeobject 4
+	removeobject 2
 	setflag FLAG_HIDE_DAWNS_HOUSE_DAWN
 	msgbox GI_DawnMetMsg
 	closemessage
