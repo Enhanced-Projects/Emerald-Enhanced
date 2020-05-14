@@ -907,6 +907,7 @@ const u16 gEggMoves[] = {
         MOVE_CHARM,
         MOVE_COVET,
         MOVE_DOUBLE_EDGE,
+        MOVE_DYNAMIC_PUNCH,
         MOVE_FOCUS_ENERGY,
         MOVE_IRON_TAIL,
         MOVE_LAST_RESORT,
