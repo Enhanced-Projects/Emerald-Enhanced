@@ -6004,7 +6004,7 @@ static const struct LevelUpMove sFurretLevelUpLearnset[] = {
     LEVEL_UP_MOVE(42, MOVE_AMNESIA),
     LEVEL_UP_MOVE(46, MOVE_BATON_PASS),
     LEVEL_UP_MOVE(50, MOVE_ME_FIRST),
-    LEVEL_UP_MOVE(56, MOVE_HYPER_VOICE),
+    LEVEL_UP_MOVE(56, MOVE_PLAY_ROUGH),
     LEVEL_UP_END
 };
 
