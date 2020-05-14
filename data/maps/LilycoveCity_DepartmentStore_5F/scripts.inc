@@ -98,7 +98,7 @@ LilycoveCity_DepartmentStore_5F_EventScript_ClerkMidRight:: @ 822000A
 LCC_BattleItemMart: @ 8220024
 	.2byte ITEM_CHOICE_BAND
 	.2byte ITEM_CHOICE_SPECS
-    .2byte ITEM_CHOICE_SCARF
+        .2byte ITEM_CHOICE_SCARF
 	.2byte ITEM_LIFE_ORB
 	.2byte ITEM_EXPERT_BELT
 	.2byte ITEM_WEAKNESS_POLICY
@@ -212,6 +212,24 @@ LCC_Jewels:
 	.2byte ITEM_PEARL
 	.2byte ITEM_BIG_PEARL
 	.2byte ITEM_STAR_PIECE
+	.2byte ITEM_NORMAL_GEM
+	.2byte ITEM_FIRE_GEM
+	.2byte ITEM_WATER_GEM
+	.2byte ITEM_ELECTRIC_GEM
+	.2byte ITEM_GRASS_GEM
+	.2byte ITEM_ICE_GEM
+	.2byte ITEM_FIGHTING_GEM
+	.2byte ITEM_POISON_GEM
+	.2byte ITEM_GROUND_GEM
+	.2byte ITEM_FLYING_GEM
+	.2byte ITEM_PSYCHIC_GEM
+	.2byte ITEM_BUG_GEM
+	.2byte ITEM_ROCK_GEM
+	.2byte ITEM_GHOST_GEM
+	.2byte ITEM_DRAGON_GEM
+	.2byte ITEM_DARK_GEM
+	.2byte ITEM_STEEL_GEM
+	.2byte ITEM_FAIRY_GEM
 	.2byte ITEM_NONE
 	
 LCC_Jeweler_Customwork::
@@ -253,9 +271,9 @@ LCC_JewelEnd::
 	end
 
 LCC_JewelEndMsg:
-	.string "Oh, that's such a same. Any woman\n"
-	.string "would absolutely love it. My offer\p"
-	.string "to do this has a limited time window\n"
+	.string "Oh, that's such a shame. Any woman\n"
+	.string "would absolutely love it.\p"
+	.string "My offer has a limited time window,\n"
 	.string "come back if you change your mind!$"
 	
 LCC_JewelEndNoItem:
@@ -275,16 +293,16 @@ LCC_NecklaceMade:
 	.string "happy with this!$"
 
 LCC_BALL_STORE_MSG:
-    .string "Hello and welcome to the\n"
+        .string "Hello and welcome to the\n"
 	.string "Ball Market.\l"
 	.string "Get your balls here!$"
 
 LCC_BATTLE_ITEM_MSG:
-    .string "Hello and welcome to the Battle Item\n"
-	.string "store. We carry all the latest battle\l"
+        .string "Hello and welcome to the Battle Item\n"
+	.string "Store. We carry all the latest battle\l"
 	.string "tech and gear here!$"
 
 LCC_EVO_STORE_MSG:
-    .string "Hello and welcome to Darwin's market!\n"
+        .string "Hello and welcome to Darwin's market!\n"
 	.string "All evolution needs can be found here!$"
 
