@@ -33,6 +33,9 @@ EventScript_AccessPlayersPC:: @ 8271DF9
 	end
 
 EventScript_AccessPokemonStorage:: @ 8271E0E
+	checkpartycount
+	compare VAR_RESULT, 6
+	goto_if_eq EventscriptPC_NoMons
 	playse SE_PC_LOGIN
 	call_if_unset FLAG_SYS_PC_LANETTE, EventScript_AccessSomeonesPC
 	call_if_set FLAG_SYS_PC_LANETTE, EventScript_AccessLanettesPC
@@ -41,6 +44,15 @@ EventScript_AccessPokemonStorage:: @ 8271E0E
 	waitstate
 	goto EventScript_PCMainMenu
 	end
+
+EventscriptPC_NoMons::
+	playse SE_HAZURE
+	msgbox nomons
+	releaseall
+	end
+
+nomons:
+	.string "You don't have any pokemon.$"
 
 EventScript_AccessSomeonesPC:: @ 8271E35
 	msgbox gText_AccessedSomeonesPC, MSGBOX_DEFAULT
