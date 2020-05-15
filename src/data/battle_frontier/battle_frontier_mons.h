@@ -1235,12 +1235,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_FARFETCHD] = {
         .species = SPECIES_FARFETCHD,
-        .moves = {MOVE_SLASH, MOVE_LEAF_BLADE, MOVE_NIGHT_SLASH, MOVE_SWORDS_DANCE},
-        .heldItem = ITEM_STICK,
+        .moves = {MOVE_ACROBATICS, MOVE_LEAF_BLADE, MOVE_SECRET_POWER, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
-        .ivs = 31,
-        .ability = 2
+        .nature = NATURE_ADAMANT,
+        .ivs = 29,
+        .ability = 1
     },
     [FRONTIER_MON_OMASTAR_3] = {
         .species = SPECIES_OMASTAR,
