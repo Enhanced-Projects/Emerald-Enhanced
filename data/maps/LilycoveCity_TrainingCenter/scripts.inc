@@ -194,9 +194,9 @@ TC_Exiting_Nomoney::
 TC_Broke:
 	.string "I'm sorry, but you cannot afford\n"
 	.string "to use the training center currently.\p"
-	.string "you need ¥65000 to enter.\n"
-	.string "Perhaps you can find a friend with\p"
-	.string "a membership or VIP pass.\n"
+	.string "You need ¥65000 to enter.\p"
+	.string "Perhaps you can find a friend with\n"
+	.string "a membership or VIP pass.\p"
 	.string "Have a nice day!$"
 	
 TC_Exiting::
@@ -232,9 +232,8 @@ TC_WelcomeBack::
 	end
 	
 TC_WB_TEXT:
-	.string "Hi there. It seems you passed out\n"
-	.string "or teleported away. You may now\p"
-	.string "resume your session.$"
+	.string "Hi there. It seems you passed out.\n"
+	.string "You may now resume your session.$"
 	
 	
 TC_Exiting_pokeballs::
@@ -247,8 +246,8 @@ TC_Exiting_pokeballs::
 	end
 
 TC_Entry_Cost:
-	.string "Hello and welcome to Lilycove\p"
-	.string "Training Center.\n"
+	.string "Hello and welcome to Lilycove\n"
+	.string "Training Center.\p"
 	.string "It will cost ¥65000 to use this service.\p"
 	.string "You're also not permitted to have\n"
         .string "any pokeballs with you. \p"
@@ -271,8 +270,8 @@ TC_Leave:
 TC_Leave_Balls:
 	.string "I'm terribly sorry, but you're not\n"
 	.string "permitted to have any balls with you.\p"
-	.string "We can't allow\n"
-	.string "our training pokémon to be captured. $"
+	.string "We can't allow our training\n"
+	.string "pokémon to be captured. $"
 	
 TC_FacePlayer:
 	face_right
@@ -360,9 +359,8 @@ TC_Drugs_Mart:
 	end
 	
 TC_Drugs_Txt:
-	.string "Hi there. Get your drugs here.\n"
-	.string "Garunteed to boost performance\p"
-	.string "or your money back!$"
+	.string "Get your drugs here to boost\n"
+	.string "performance or your money back!$"
 
 TC_Drugs_Exit_Txt:
 	.string "Thanks for shopping with us!$"
@@ -423,8 +421,8 @@ TC_Imprint_Mart:
 	.2byte ITEM_NONE
 	
 TC_Imprint_Txt:
-	.string "Hi! Welcome to the imprint shop\n"
-	.string "Customize your Pokémon's stats\p"
+	.string "Hi! Welcome to the imprint shop.\p"
+	.string "Customize your Pokémon's stats\n"
 	.string "with these special items.$"
 	
 TC_Tutor::

@@ -344,10 +344,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_ARCHEOPS_3] = {
         .species = SPECIES_ARCHEOPS,
-        .moves = {MOVE_ACROBATICS, MOVE_ROCK_SLIDE, MOVE_EARTH_POWER, MOVE_ROOST},
-        .heldItem = ITEM_NONE,
+        .moves = {MOVE_ACROBATICS, MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_U_TURN},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_HASTY,
+        .nature = NATURE_JOLLY,
         .ivs = 31,
         .ability = 0
     },
@@ -371,10 +371,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_SCIZOR_3] = {
         .species = SPECIES_SCIZOR,
-        .moves = {MOVE_BULLET_PUNCH, MOVE_QUICK_ATTACK, MOVE_ROOST, MOVE_CURSE},
-        .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_IMPISH,
+        .moves = {MOVE_BULLET_PUNCH, MOVE_ACROBATICS, MOVE_SUPERPOWER, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_FLYING_GEM,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 1
     },
@@ -839,8 +839,8 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_HAWLUCHA_3] = {
         .species = SPECIES_HAWLUCHA,
-        .moves = {MOVE_SKY_ATTACK, MOVE_ACROBATICS, MOVE_HI_JUMP_KICK, MOVE_SWORDS_DANCE},
-        .heldItem = ITEM_POWER_HERB,
+        .moves = {MOVE_HI_JUMP_KICK, MOVE_ACROBATICS, MOVE_DRAIN_PUNCH, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
@@ -857,8 +857,8 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_TALONFLAME_3] = {
         .species = SPECIES_TALONFLAME,
-        .moves = {MOVE_BRAVE_BIRD, MOVE_WILL_O_WISP, MOVE_BULK_UP, MOVE_ROOST},
-        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_ACROBATICS, MOVE_WILL_O_WISP, MOVE_BULK_UP, MOVE_ROOST},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
         .nature = NATURE_JOLLY,
         .ivs = 31,
@@ -1235,12 +1235,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_FARFETCHD] = {
         .species = SPECIES_FARFETCHD,
-        .moves = {MOVE_SLASH, MOVE_LEAF_BLADE, MOVE_NIGHT_SLASH, MOVE_SWORDS_DANCE},
-        .heldItem = ITEM_STICK,
+        .moves = {MOVE_ACROBATICS, MOVE_LEAF_BLADE, MOVE_SECRET_POWER, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
-        .ivs = 31,
-        .ability = 2
+        .nature = NATURE_ADAMANT,
+        .ivs = 29,
+        .ability = 1
     },
     [FRONTIER_MON_OMASTAR_3] = {
         .species = SPECIES_OMASTAR,
@@ -2065,7 +2065,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     [FRONTIER_MON_JUMPLUFF_1] = {
         .species = SPECIES_JUMPLUFF,
         .moves = {MOVE_ACROBATICS, MOVE_SEED_BOMB, MOVE_SLEEP_POWDER, MOVE_SWORDS_DANCE},
-        .heldItem = ITEM_NONE,
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
@@ -3010,7 +3010,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     [FRONTIER_MON_JUMPLUFF_2] = {
         .species = SPECIES_JUMPLUFF,
         .moves = {MOVE_ACROBATICS, MOVE_SLEEP_POWDER, MOVE_SWORDS_DANCE, MOVE_STRENGTH_SAP},
-        .heldItem = ITEM_NONE,
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
@@ -4216,8 +4216,8 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_GLISCOR_1] = {
         .species = SPECIES_GLISCOR,
-        .moves = {MOVE_EARTHQUAKE, MOVE_FACADE, MOVE_SWORDS_DANCE, MOVE_ROOST},
-        .heldItem = ITEM_TOXIC_ORB,
+        .moves = {MOVE_ACROBATICS, MOVE_EARTHQUAKE, MOVE_SWORDS_DANCE, MOVE_ROOST},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
@@ -4225,10 +4225,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_HAWLUCHA_1] = {
         .species = SPECIES_HAWLUCHA,
-        .moves = {MOVE_SKY_ATTACK, MOVE_ACROBATICS, MOVE_HI_JUMP_KICK, MOVE_SWORDS_DANCE},
-        .heldItem = ITEM_POWER_HERB,
+        .moves = {MOVE_HI_JUMP_KICK, MOVE_ACROBATICS, MOVE_SWORDS_DANCE, MOVE_ROOST},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 1
     },
@@ -4262,7 +4262,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     [FRONTIER_MON_TALONFLAME_1] = {
         .species = SPECIES_TALONFLAME,
         .moves = {MOVE_ACROBATICS, MOVE_WILL_O_WISP, MOVE_SWORDS_DANCE, MOVE_ROOST},
-        .heldItem = ITEM_NONE,
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
@@ -4388,7 +4388,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     [FRONTIER_MON_EMOLGA_1] = {
         .species = SPECIES_EMOLGA,
         .moves = {MOVE_ACROBATICS, MOVE_WILD_CHARGE, MOVE_U_TURN, MOVE_KNOCK_OFF},
-        .heldItem = ITEM_NONE,
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
@@ -4783,10 +4783,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_ARCHEOPS_1] = {
         .species = SPECIES_ARCHEOPS,
-        .moves = {MOVE_ACROBATICS, MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_ROOST},
-        .heldItem = ITEM_NONE,
+        .moves = {MOVE_ACROBATICS, MOVE_STONE_EDGE, MOVE_EARTH_POWER, MOVE_ROOST},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_NAIVE,
         .ivs = 31,
         .ability = 0
     },
@@ -5953,10 +5953,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_HAWLUCHA_2] = {
         .species = SPECIES_HAWLUCHA,
-        .moves = {MOVE_HI_JUMP_KICK, MOVE_ACROBATICS, MOVE_SUBSTITUTE, MOVE_SWORDS_DANCE},
-        .heldItem = ITEM_SITRUS_BERRY,
+        .moves = {MOVE_HI_JUMP_KICK, MOVE_ACROBATICS, MOVE_STONE_EDGE, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 1
     },
@@ -5971,8 +5971,8 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_TALONFLAME_2] = {
         .species = SPECIES_TALONFLAME,
-        .moves = {MOVE_BRAVE_BIRD, MOVE_FLARE_BLITZ, MOVE_SWORDS_DANCE, MOVE_ROOST},
-        .heldItem = ITEM_LIFE_ORB,
+        .moves = {MOVE_ACROBATICS, MOVE_FLARE_BLITZ, MOVE_SWORDS_DANCE, MOVE_ROOST},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
@@ -6115,9 +6115,9 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_EMOLGA_2] = {
         .species = SPECIES_EMOLGA,
-        .moves = {MOVE_TAILWIND, MOVE_AIR_SLASH, MOVE_VOLT_SWITCH, MOVE_NUZZLE},
+        .moves = {MOVE_TAILWIND, MOVE_AIR_SLASH, MOVE_VOLT_SWITCH, MOVE_ENCORE},
         .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
         .ivs = 31,
         .ability = 2
@@ -6511,10 +6511,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_ARCHEOPS_2] = {
         .species = SPECIES_ARCHEOPS,
-        .moves = {MOVE_FLY, MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_U_TURN},
-        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_ACROBATICS, MOVE_ROCK_SLIDE, MOVE_EARTH_POWER, MOVE_ROOST},
+        .heldItem = ITEM_FLYING_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_NAIVE,
         .ivs = 31,
         .ability = 0
     },

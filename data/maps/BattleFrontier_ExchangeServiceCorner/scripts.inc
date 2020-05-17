@@ -53,7 +53,7 @@ PartyIsFull:
 	.string "We're sorry, but your party is\ncurrently full.\pPlease make space and\ncome back later.$"
 	
 WelcomeToExchangeCorner:
-	.string "Welcome to the Battle Point\nExchange Center.\pI hope we have what you're\llooking for!$"
+	.string "Welcome to the Battle Point\nExchange Corner.\pI hope we have what you're\nlooking for!$"
 	
 gratz:
 	.string "Thank you for your purchase!$"
@@ -67,12 +67,12 @@ OkayBye:
 WelcomeToFrontierMonStore:
     .string "Welcome to the Frontier Mon\n"
     .string "Exchange.\p"
-    .string "Here you can exchange 50 BP to\n"
+    .string "Here you can exchange 40 BP to\n"
     .string "get a random competitive pokemon.$"
 	
 FrontierMonQuery:
     .string "Would you like to make an exchange\n"
-	.string "your points?$"
+	.string "with your points?$"
 
 BattleFrontier_ExchangeServiceCorner_EventScript_ClerkWelcome:: @ 825F071
 	msgbox BattleFrontier_ExchangeServiceCorner_Text_WelcomePleaseChoosePrize, MSGBOX_DEFAULT
@@ -548,8 +548,8 @@ BattleFrontier_ExchangeServiceCorner_EventScript_Girl:: @ 825F7F1
 	end
 
 BattleFrontier_ExchangeServiceCorner_Text_WelcomePleaseChoosePrize: @ 825F7FA
-	.string "Hello, this is the EXCHANGE SERVICE\n"
-	.string "CORNER.\p"
+	.string "Hello, this is the Exchange Service\n"
+	.string "Corner.\p"
 	.string "We exchange the Battle Points you\n"
 	.string "have collected for lovely prizes.\p"
 	.string "Please choose a prize from this list.$"
@@ -559,123 +559,123 @@ BattleFrontier_ExchangeServiceCorner_Text_PleaseChoosePrize: @ 825F890
 	.string "Please choose a prize from this list.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmKissPoster: @ 825F8B6
-	.string "You've chosen the KISS POSTER.\n"
+	.string "You've chosen the Kiss Poster.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmKissCushion: @ 825F8E6
-	.string "You've chosen the KISS CUSHION.\n"
+	.string "You've chosen the Kiss Cushion.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmSmoochumDoll: @ 825F917
-	.string "You've chosen the SMOOCHUM DOLL.\n"
+	.string "You've chosen the Smoochum Doll.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmTogepiDoll: @ 825F949
-	.string "You've chosen the TOGEPI DOLL.\n"
+	.string "You've chosen the Togepi Doll.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmMeowthDoll: @ 825F979
-	.string "You've chosen the MEOWTH DOLL.\n"
+	.string "You've chosen the Meowth Doll.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmClefairyDoll: @ 825F9A9
-	.string "You've chosen the CLEFAIRY DOLL.\n"
+	.string "You've chosen the Clefairy Doll.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmDittoDoll: @ 825F9DB
-	.string "You've chosen the DITTO DOLL.\n"
+	.string "You've chosen the Ditto Doll.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmCyndaquilDoll: @ 825FA0A
-	.string "You've chosen the CYNDAQUIL DOLL.\n"
+	.string "You've chosen the Cyndaquil Doll.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmChikoritaDoll: @ 825FA3D
-	.string "You've chosen the CHIKORITA DOLL.\n"
+	.string "You've chosen the Chikorita Doll.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmTotodileDoll: @ 825FA70
-	.string "You've chosen the TOTODILE DOLL.\n"
+	.string "You've chosen the Totodile Doll.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmLaprasDoll: @ 825FAA2
-	.string "You've chosen the LAPRAS DOLL.\n"
+	.string "You've chosen the Lapras Doll.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmSnorlaxDoll: @ 825FAD2
-	.string "You've chosen the SNORLAX DOLL.\n"
+	.string "You've chosen a chunky boi.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmVenusaurDoll: @ 825FB03
-	.string "You've chosen the VENUSAUR DOLL.\n"
+	.string "You've chosen the Venusaur Doll.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmCharizardDoll: @ 825FB35
-	.string "You've chosen the CHARIZARD DOLL.\n"
+	.string "You've chosen the Charizard Doll.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmBlastoiseDoll: @ 825FB68
-	.string "You've chosen the BLASTOISE DOLL.\n"
+	.string "You've chosen the Blastoise Doll.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmProtein: @ 825FB9B
-	.string "You've chosen the PROTEIN.\n"
+	.string "You've chosen the Protein.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmCalcium: @ 825FBC7
-	.string "You've chosen the CALCIUM.\n"
+	.string "You've chosen the Calcium.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmIron: @ 825FBF3
-	.string "You've chosen the IRON.\n"
+	.string "You've chosen the Iron.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmZinc: @ 825FC1C
-	.string "You've chosen the ZINC.\n"
+	.string "You've chosen the Zinc.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmCarbos: @ 825FC45
-	.string "You've chosen the CARBOS.\n"
+	.string "You've chosen the Carbos.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmHPUp: @ 825FC70
-	.string "You've chosen the HP UP.\n"
+	.string "You've chosen the HP Up.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmBrightpowder: @ 825FC9A
-	.string "You've chosen the BRIGHTPOWDER.\n"
+	.string "You've chosen the Brightpowder.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmWhiteHerb: @ 825FCCB
-	.string "You've chosen the WHITE HERB.\n"
+	.string "You've chosen the White Herb.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmQuickClaw: @ 825FCFA
-	.string "You've chosen the QUICK CLAW.\n"
+	.string "You've chosen the Quick Claw.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmMentalHerb: @ 825FD29
-	.string "You've chosen the MENTAL HERB.\n"
+	.string "You've chosen the Mental Herb.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmChoiceBand: @ 825FD59
-	.string "You've chosen the CHOICE BAND.\n"
+	.string "You've chosen the Choice Band.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmKingsRock: @ 825FD89
-	.string "You've chosen the KING's ROCK.\n"
+	.string "You've chosen the King's Rock.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmFocusBand: @ 825FDB9
-	.string "You've chosen the FOCUS BAND.\n"
+	.string "You've chosen the Focus Band.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmScopeLens: @ 825FDE8
-	.string "You've chosen the SCOPE LENS.\n"
+	.string "You've chosen the Scope Lens.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ConfirmLeftovers: @ 825FE17
-	.string "You've chosen the LEFTOVERS.\n"
+	.string "You've chosen the Leftovers.\n"
 	.string "Is that correct?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_WellSendItToPC: @ 825FE45
@@ -706,8 +706,8 @@ BattleFrontier_ExchangeServiceCorner_Text_WishIHadAllDolls: @ 825FF5D
 	.string "Oh, they're so nice!\n"
 	.string "I wish I had them!\l"
 	.string "Cute cushions!\l"
-	.string "Big plush DOLLS!\l"
-	.string "Little plush DOLLS!\l"
+	.string "Big plush Dolls!\l"
+	.string "Little plush Dolls!\l"
 	.string "I wish I had them all!$"
 
 BattleFrontier_ExchangeServiceCorner_Text_GetYouAnythingYouWant: @ 825FFD0
@@ -727,75 +727,75 @@ BattleFrontier_ExchangeServiceCorner_Text_GoGetYourOwnDoll: @ 8260099
 	.string "I don't like you staring at my plush\n"
 	.string "doll like that.\p"
 	.string "If you want it, go get one yourself!\n"
-	.string "Isn't that right, SMOOCHUM?$"
+	.string "Isn't that right, Smoochum?$"
 
 BattleFrontier_ExchangeServiceCorner_Text_MoreBattlePointsForRecord: @ 826012D
 	.string "Did you know?\p"
 	.string "If you stretch your record at any of\n"
-	.string "the BATTLE facilities, they start\l"
+	.string "the Battle facilities, they start\l"
 	.string "giving you more and more Battle Points.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_KissPosterDesc:: @ 82601AA
-	.string "A large poster with a SMOOCHUM print.$"
+	.string "A large poster with a Smoochum print.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_KissCushionDesc:: @ 82601D0
-	.string "A SMOOCHUM cushion.\n"
+	.string "A Smoochum cushion.\n"
 	.string "Place it on a mat or a desk.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_SmoochumDollDesc:: @ 8260201
-	.string "A SMOOCHUM DOLL.\n"
+	.string "A Smoochum Doll.\n"
 	.string "Place it on a mat or a desk.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_TogepiDollDesc:: @ 826022F
-	.string "A TOGEPI DOLL.\n"
+	.string "A Togepi Doll.\n"
 	.string "Place it on a mat or a desk.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_MeowthDollDesc:: @ 826025B
-	.string "A MEOWTH DOLL.\n"
+	.string "A Meowth Doll.\n"
 	.string "Place it on a mat or a desk.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ClefairyDollDesc:: @ 8260287
-	.string "A CLEFAIRY DOLL.\n"
+	.string "A Clefairy Doll.\n"
 	.string "Place it on a mat or a desk.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_DittoDollDesc:: @ 82602B5
-	.string "A DITTO DOLL.\n"
+	.string "A Ditto Doll.\n"
 	.string "Place it on a mat or a desk.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_CyndaquilDollDesc:: @ 82602E0
-	.string "A CYNDAQUIL DOLL.\n"
+	.string "A Cyndaquil Doll.\n"
 	.string "Place it on a mat or a desk.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ChikoritaDollDesc:: @ 826030F
-	.string "A CHIKORITA DOLL.\n"
+	.string "A Chikorita Doll.\n"
 	.string "Place it on a mat or a desk.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_TotodileDollDesc:: @ 826033E
-	.string "A TOTODILE DOLL.\n"
+	.string "A Totodile Doll.\n"
 	.string "Place it on a mat or a desk.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_LargeDollDesc:: @ 826036C
-	.string "A large DOLL.\n"
+	.string "A large Doll.\n"
 	.string "Place it on a mat or a desk.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ProteinDesc:: @ 8260397
-	.string "Raises the stat ATTACK of one\n"
+	.string "Raises the stat Attack of one\n"
 	.string "Pokémon.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_CalciumDesc:: @ 82603BE
-	.string "Raises the stat SP. ATK of one\n"
+	.string "Raises the stat Sp. Atk of one\n"
 	.string "Pokémon.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_IronDesc:: @ 82603E6
-	.string "Raises the stat DEFENSE of one\n"
+	.string "Raises the stat Defense of one\n"
 	.string "Pokémon.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ZincDesc:: @ 826040E
-	.string "Raises the stat SP. DEF of one\n"
+	.string "Raises the stat Sp. Def of one\n"
 	.string "Pokémon.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_CarbosDesc:: @ 8260436
-	.string "Raises the stat SPEED of one\n"
+	.string "Raises the stat Speed of one\n"
 	.string "Pokémon.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_HPUpDesc:: @ 826045C
@@ -814,8 +814,8 @@ BattleFrontier_ExchangeServiceCorner_Text_QuickClawDesc:: @ 82604D8
 	.string "the first strike.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_MentalHerbDesc:: @ 826050F
-	.string "A hold item that snaps Pokémon out\n"
-	.string "of infatuation.$"
+	.string "A hold item that cures move-binding\n"
+	.string "effects to move freely.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_BrightpowderDesc:: @ 8260542
 	.string "A hold item that casts a glare to\n"
