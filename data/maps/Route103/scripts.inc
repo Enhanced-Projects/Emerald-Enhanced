@@ -52,10 +52,13 @@ Route103_EventScript_RivalBrendan:: @ 81EC434
 	applymovement 2, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement 2, Common_Movement_Delay48
-	waitmovement 0
-	drawheadshot HEAD_BRENDAN
+	waitmovement 0	
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGBRENDAN
 	msgbox r103_maleRivalIntro, MSGBOX_DEFAULT
 	closemessage
+	clearfullscreenimage
+	fadescreen FADE_TO_BLACK
 	goto r103_maleRivalBattle
 	end
 
@@ -77,15 +80,15 @@ Route103_EventScript_AfterMayBattle:: @ 81EC4EE
 	closemessage
 	end
 
-Route103_EventScript_AfterBrendanBattle:: @ 81EC4FC
-	drawheadshot HEAD_BRENDAN
+Route103_EventScript_AfterBrendanBattle:: @ 81EC4FC	
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGBRENDAN
 	msgbox r103_maleRivalChat, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
 
 Route103_EventScript_RivalExit:: @ 81EC50A
 	closemessage
-	removecutscenesprites
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	switch VAR_FACING
