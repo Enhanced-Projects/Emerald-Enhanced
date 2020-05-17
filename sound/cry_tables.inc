@@ -904,7 +904,7 @@ gCryTable:: @ 869DCF4
 	cry_not Cry_Aegislash_Blade
 	cry_not Cry_Hoopa_Unbound
 	cry_not Cry_Minior_Core
-	cry_not Cry_Wishiwashi_School
+	cry_not Cry_Unown_School
 	cry_not Cry_Mimikyu_Busted
 	cry_not Cry_Lycanroc_Midnight
 	cry_not Cry_Lycanroc_Dusk
@@ -1814,7 +1814,7 @@ gCryTable2:: @ 869EF24
 	cry2_not Cry_Aegislash_Blade
 	cry2_not Cry_Hoopa_Unbound
 	cry2_not Cry_Minior_Core
-	cry2_not Cry_Wishiwashi_School
+	cry2_not Cry_Unown_School
 	cry2_not Cry_Mimikyu_Busted
 	cry2_not Cry_Lycanroc_Midnight
 	cry2_not Cry_Lycanroc_Dusk

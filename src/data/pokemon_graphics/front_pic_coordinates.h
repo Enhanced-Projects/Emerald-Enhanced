@@ -4584,7 +4584,7 @@ const struct MonCoords gMonFrontPicCoords[] =
         .size = 0x87,
         .y_offset = 0x9,
     },
-    [SPECIES_WISHIWASHI_SCHOOL] =
+    [SPECIES_UNOWN_SCHOOL] =
     {
         .size = 0x87,
         .y_offset = 0x3,
