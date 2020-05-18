@@ -83,7 +83,7 @@ static const u8 sBindDescription[] = _(
 
 static const u8 sSlamDescription[] = _(
     "Slams the foe with a long\n"
-    "tail, vine, etc.");
+    "tail. May cause flinching.");
 
 static const u8 sVineWhipDescription[] = _(
     "Strikes the foe with\n"

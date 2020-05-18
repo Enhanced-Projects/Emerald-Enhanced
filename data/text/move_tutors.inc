@@ -74,8 +74,8 @@ MoveTutor_MimicDeclined: @ 82C737F
 	.string "to Trick people.$"
 
 MoveTutor_Text_MimicWhichMon: @ 82C73B1
-	.string "Fwofwo! And so I shall!\n"
-	.string "Let me see the Pokémon\l"
+	.string "Fwofwo! And so I shall!\p"
+	.string "Let me see the Pokémon\n"
 	.string "you wish me to teach.$"
 
 MoveTutor_Text_MimicTaught: @ 82C73F6
