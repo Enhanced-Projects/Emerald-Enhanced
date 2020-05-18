@@ -3992,7 +3992,7 @@ Cry_Minior_Core::
 
 	.align 2
 Cry_Unown_School::
-	.incbin "sound/direct_sound_samples/cry_not_unown_school.bin"
+	.incbin "sound/direct_sound_samples/cry_not_cosmoem.bin"
 
 	.align 2
 Cry_Mimikyu_Busted::
