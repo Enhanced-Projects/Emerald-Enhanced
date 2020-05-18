@@ -1136,8 +1136,8 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_UNOWN] = {
         .species = SPECIES_UNOWN,
-        .moves = {MOVE_STORED_POWER, MOVE_COSMIC_POWER, MOVE_MOONLIGHT, MOVE_DAZZLING_GLEAM},
-        .heldItem = ITEM_WIKI_BERRY,
+        .moves = {MOVE_COSMIC_POWER, MOVE_MOONLIGHT, MOVE_STORED_POWER, MOVE_DAZZLING_GLEAM},
+        .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
         .ivs = 31,

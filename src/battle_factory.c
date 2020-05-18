@@ -149,12 +149,12 @@ static const u32 sWinStreakMasks[][2] =
 
 static const u8 sFixedIVTable[][2] =
 {
-    {3, 6},
-    {6, 9},
-    {9, 12},
-    {12, 15},
-    {15, 18},
-    {21, 31},
+    {31, 31},
+    {31, 31},
+    {31, 31},
+    {31, 31},
+    {31, 31},
+    {31, 31},
     {31, 31},
     {31, 31},
 };
@@ -715,8 +715,8 @@ void FillFactoryBrainParty(void)
         u16 monSetId = GetMonSetId(lvlMode, challengeNum, FALSE);
         u8 ability = gFacilityTrainerMons[monSetId].ability;
 
-        if (gFacilityTrainerMons[monSetId].species == SPECIES_UNOWN)
-            continue;
+        //if (gFacilityTrainerMons[monSetId].species == SPECIES_UNOWN)
+        //    continue;
         if (monLevel == 50 && monSetId > FRONTIER_MONS_HIGH_TIER)
             continue;
 
