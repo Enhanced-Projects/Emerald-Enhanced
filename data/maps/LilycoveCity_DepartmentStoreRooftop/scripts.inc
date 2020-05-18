@@ -416,7 +416,7 @@ LCL_Story4:
 	.string "didn't want to make contact with\l"
 	.string "anyone...so when Mom would force\p"
 	.string "me to go and socialize, I went to\n"
-	.string "a place where few people visited.p"
+	.string "a place where few people visited.$"
 
 	
 LCL_Story4_5:
