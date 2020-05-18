@@ -5263,10 +5263,10 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_UNOWN] =
     {
-        .baseHP        = 48,
+        .baseHP        = 55,
         .baseAttack    = 72,
         .baseDefense   = 48,
-        .baseSpeed     = 48,
+        .baseSpeed     = 98,
         .baseSpAttack  = 72,
         .baseSpDefense = 48,
         .type1 = TYPE_PSYCHIC,
@@ -23407,27 +23407,27 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_UNOWN_SCHOOL] =
     {
-        .baseHP        = 45,
+        .baseHP        = 55,
         .baseAttack    = 140,
-        .baseDefense   = 130,
-        .baseSpeed     = 30,
+        .baseDefense   = 150,
+        .baseSpeed     = 48,
         .baseSpAttack  = 140,
-        .baseSpDefense = 135,
+        .baseSpDefense = 150,
         .type1 = TYPE_PSYCHIC,
         .type2 = TYPE_PSYCHIC,
-        .catchRate = 60,
-        .expYield = 61,
-        .evYield_HP        = 1,
-        .evYield_SpAttack  = 0,
+        .catchRate = 225,
+        .expYield = 118,
+        .evYield_Attack    = 1,
+        .evYield_SpAttack  = 1,
         .genderRatio = MON_GENDERLESS,
-        .eggCycles = 15,
+        .eggCycles = 40,
         .friendship = 70,
-        .growthRate = GROWTH_FAST,
-        .eggGroup1 = EGG_GROUP_WATER_2,
-        .eggGroup2 = EGG_GROUP_WATER_2,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroup1 = EGG_GROUP_UNDISCOVERED,
+        .eggGroup2 = EGG_GROUP_UNDISCOVERED,
         .abilities = {ABILITY_SCHOOLING, ABILITY_SCHOOLING},
         .noFlip = FALSE,
-        .bodyColor = BODY_COLOR_BLUE,
+        .bodyColor = BODY_COLOR_BLACK,
     },
 
     [SPECIES_MIMIKYU_BUSTED] =
