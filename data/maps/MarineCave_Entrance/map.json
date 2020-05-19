@@ -1,28 +1,31 @@
 {
-  "id": "MAP_MARINE_CAVE_ENTRANCE",
-  "name": "MarineCave_Entrance",
-  "layout": "LAYOUT_MARINE_CAVE_ENTRANCE",
-  "music": "MUS_DAN01",
-  "region_map_section": "MAPSEC_MARINE_CAVE",
-  "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_UNDERGROUND",
-  "allow_bike": false,
-  "allow_escape_rope": true,
-  "allow_running": true,
-  "show_map_name": true,
-  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
-  "object_events": [],
-  "warp_events": [
-    {
-      "x": 14,
-      "y": 1,
-      "elevation": 3,
-      "dest_map": "MAP_MARINE_CAVE_END",
-      "dest_warp_id": 0
-    }
-  ],
-  "coord_events": [],
-  "bg_events": []
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_MARINE_CAVE_ENTRANCE",
+    "layout": "LAYOUT_MARINE_CAVE_ENTRANCE",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "music": "MUS_DAN01",
+    "name": "MarineCave_Entrance",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_MARINE_CAVE",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_MARINE_CAVE_END",
+            "dest_warp_id": 0,
+            "elevation": 3,
+            "x": 14,
+            "y": 1
+        }
+    ],
+    "weather": "WEATHER_NONE"
 }
