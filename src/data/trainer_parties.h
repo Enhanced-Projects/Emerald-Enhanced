@@ -7046,13 +7046,13 @@ static const struct TrainerMonNoItemCustomMoves sParty_WallyVR1[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_Brendan1[] = {
 	{
 	.iv = 0,
-	.lvl = 10,
+	.lvl = 14,
 	.species = SPECIES_TREECKO,
 	},
 	{
 	.iv = 0,
-	.lvl = 8,
-	.species = SPECIES_RALTS,
+	.lvl = 12,
+	.species = SPECIES_RIOLU,
 	}
 };
 
@@ -7205,12 +7205,12 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute119Torchic[]
 static const struct TrainerMonNoItemDefaultMoves sParty_Dawn1[] = {
 	{
 	.iv = 0,
-	.lvl = 10,
-	.species = SPECIES_BUDEW,
+	.lvl = 14,
+	.species = SPECIES_ROSELIA,
 	},
 	{
 	.iv = 0,
-	.lvl = 8,
+	.lvl = 12,
 	.species = SPECIES_TOGEPI,
 	}
 };
@@ -8247,13 +8247,13 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Jonathan[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRustboroTorchic[] = {//Brendan12
     {
     .iv = 25,
-    .lvl = 13,
+    .lvl = 15,
     .species = SPECIES_RIOLU,
     },
     {
     .iv = 50,
-    .lvl = 15,
-    .species = SPECIES_MUDKIP,
+    .lvl = 16,
+    .species = SPECIES_GROVYLE,
     }
 };
 

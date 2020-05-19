@@ -511,11 +511,15 @@ Ryu_CheckSetNuzlockPCUseVar::
 	end
 
 Ryu_OutOfPcUses::
+	playse SE_HAZURE
+	waitse
 	msgbox Ryu_SorryCantHeal
 	release
 	end
 
 Ryu_NoPcUsesHardcore::
+	playse SE_HAZURE
+	waitse
 	msgbox Ryu_SorryHardcore
 	release
 	end

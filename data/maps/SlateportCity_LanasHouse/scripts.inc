@@ -129,9 +129,10 @@ LH_LeafNight:
 	closemessage
 	fadedefaultbgm
 	fadescreen 0
-	drawheadshot HEAD_LANA
 	msgbox LH_LeafNightSceneMsg2 MSGBOX_DEFAULT
 	closemessage
+	applymovement 2, Common_Movement_HeartEmote
+	waitmovement 2
 	removecutscenesprites
 	applymovement OBJ_EVENT_ID_PLAYER, LH_RelSceneEnd
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -156,9 +157,9 @@ LH_LeafNightSceneMsg:
 	.string " kisses you on the forehead.)$"
 
 LH_LeafNightSceneMsg2:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Lana: That was wonderful...I never\n"
-    .string "thought I'd experience something\l"
-    .string "like this...thank you, {PLAYER}.$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Lana: You're so warm and cuddly...\n"
+    .string "Like a big teddy.\p"
+    .string "Thanks for staying, {PLAYER}.$"
 
 LH_LeafBadEndMsgAqua:
     .string " (She sees the Aqua emblem on your\n"

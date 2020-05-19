@@ -102,6 +102,7 @@ EverGrandeCity_HallOfFame_EventScript_GameClearMale:: @ 82298E9
 	call_if_set FLAG_RYU_NUZLOCKEMODE, EGC_NLGameClear
 	call_if_set FLAG_RYU_HARDCORE_MODE, EGC_HCGameClear
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	fadescreenspeed FADE_TO_BLACK, 24
 	setflag FLAG_SYS_GAME_CLEAR
 	special GameClear
@@ -114,6 +115,7 @@ EverGrandeCity_HallOfFame_EventScript_GameClearFemale:: @ 82298F5
 	call_if_set FLAG_RYU_NUZLOCKEMODE, EGC_NLGameClear
 	call_if_set FLAG_RYU_HARDCORE_MODE, EGC_HCGameClear
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_DAWNS_HOUSE_2F
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	fadescreenspeed FADE_TO_BLACK, 24
 	special GameClear
 	waitstate

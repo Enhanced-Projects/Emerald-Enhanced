@@ -115,6 +115,7 @@ extern const int gMaxFlashLevel;
 extern const u16 gOverworldBackgroundLayerFlags[];
 
 extern void RyuKillMon(void);
+extern void RyuWipeParty(void);
 
 static void Overworld_ResetStateAfterWhiteOut(void);
 static void c2_80567AC(void);
@@ -415,11 +416,12 @@ void DoWhiteOut(void)
         FlagClear(FLAG_RYU_RANDOMBATTLE);
         DoSoftReset();
     }
+
     if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
-        RyuKillMon();
+        RyuWipeParty();
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
-        RyuKillMon();
+        RyuWipeParty();
 
     FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
     ScriptContext2_RunNewScript(EventScript_WhiteOut);
@@ -2132,6 +2134,12 @@ static bool32 load_map_stuff(u8 *state, u32 a2)
 
 static bool32 sub_8086638(u8 *state)
 {
+    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+        RyuKillMon();
+
+    if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
+        RyuKillMon();
+
     switch (*state)
     {
     case 0:

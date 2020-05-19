@@ -1615,6 +1615,16 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
     {
         case 0:
             PlaySE(SE_SELECT);
+
+            if(&gSaveBlock2Ptr->playerGender == MALE)
+            {
+                FlagSet(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
+            }
+            else
+            {
+                FlagSet(FLAG_HIDE_DAWNS_HOUSE_DAWN);
+            }
+            
             gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
             NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
             NewGameBirchSpeech_StartFadePlatformIn(taskId, 1);

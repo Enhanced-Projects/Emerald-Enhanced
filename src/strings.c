@@ -1977,7 +1977,7 @@ const u8 gText_RyuTeleportEvergrande[] = _(" EverGrande");
 const u8 gText_RyuTeleportBattleFrontier[] = _(" B. Frontier");
 const u8 gText_RyuTeleportMtPyreExterior[] = _(" Mt.Pyre Ext");
 const u8 gText_RyuTeleportLCCDEPT[] = _(" LC DeptStore");
-const u8 gText_RyuTeleportMCMH[] = _(" Altering Cv");
+const u8 gText_RyuTeleportMCMH[] = _(" Berry Farm");
 const u8 gText_RyuTeleportLCAH[] = _(" AquaOffice");
 const u8 gText_RyuTeleportAbandonedShip[] = _(" Abdn. Ship");
 
@@ -2163,6 +2163,8 @@ const u8 gText_ColorLightBlueShadowBlue[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}")
 const u8 gText_ColorLightRedShadowRed[] = _("{COLOR LIGHT_RED}{SHADOW RED}");
 const u8 gText_ColorLightRedShadowDarkGrey[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}");
 const u8 gText_ColorLightBlueShadowDarkGrey[] = _("{COLOR LIGHT_BLUE}{SHADOW LIGHT_GREY}");
+
+const u8 gText_MartDisabledNuzlocke[] = _("You are in Nuzlocke mode.\nMarts are disabled.");
 
 const u8 gText_ItemRepel[] = _("Repel (100 steps)");
 const u8 gText_ItemSuperRepel[] = _("Super Repel (200 steps)");

@@ -42,6 +42,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/species.h"
+#include "field_message_box.h"
 
 struct WallpaperTable
 {
@@ -8363,6 +8364,15 @@ static void AddBoxMenu(void)
 static u8 sub_80CFA5C(void)
 {
     InitMenu();
+    if (sPSSData->boxOption == BOX_OPTION_WITHDRAW)
+    {
+        if ((FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1) || ((FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)))
+        {
+            PlaySE(SE_HAZURE);
+            Cb2_ExitPSS();
+        }
+    }
+        
     if (sPSSData->boxOption != BOX_OPTION_MOVE_ITEMS)
         return sub_80CFA84();
     else
@@ -8388,6 +8398,12 @@ static bool8 sub_80CFA84(void)
             return FALSE;
         break;
     case BOX_OPTION_MOVE_MONS:
+        if ((FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1) || ((FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)))
+        {
+            PlaySE(SE_HAZURE);
+            Cb2_ExitPSS();
+        }
+
         if (sIsMonBeingMoved)
         {
             if (var0)

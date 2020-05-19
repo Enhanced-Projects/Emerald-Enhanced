@@ -34,6 +34,17 @@ static const u8 sMawileBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/mawil
 static const u8 sMawileBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile_tiles.bin");
 static const u8 sMawileBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile.gbapal");
 
+
+static const u8 sBrendanBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_tiles.8bpp");
+static const u8 sBrendanBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_map.bin");
+static const u8 sBrendanBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_palette.gbapal");
+
+
+static const u8 sBrendanNightBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_tiles.8bpp");
+static const u8 sBrendanNightBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_map.bin");
+static const u8 sBrendanNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_palette.gbapal");
+
+
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
     [SCENEBGDAWN] = 
@@ -112,7 +123,31 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sMawileBgMap),
         .palette = sMawileBgPalette,
 		.palIdxCnt = 240
-    }
+    },
+	
+	[SCENEBGBRENDAN] = 
+    {
+		.mode = 2,
+		.scrollMode = 0,
+        .tiles = sBrendanBgTiles,
+		.tileSize = sizeof(sBrendanBgTiles),
+        .map = sBrendanBgMap,
+		.mapSize = sizeof(sBrendanBgMap),
+        .palette = sBrendanBgPalette,
+		.palIdxCnt = 240
+	},
+	
+	[SCENEBGBRENDANNIGHT] = 
+    {
+		.mode = 2,
+		.scrollMode = 0,
+        .tiles = sBrendanNightBgTiles,
+		.tileSize = sizeof(sBrendanNightBgTiles),
+        .map = sBrendanNightBgMap,
+		.mapSize = sizeof(sBrendanNightBgMap),
+        .palette = sBrendanNightBgPalette,
+		.palIdxCnt = 240
+	}
 };
 
 static const struct BgTemplate sCutsceneBackground8bpp = {

@@ -514,7 +514,12 @@ Route110_EventScript_DawnDefeated:: @ 81EF84A
 	end
 
 Route110_EventScript_BrendanBattle:: @ 81EF865
+	delay 5	
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGBRENDAN
 	msgbox Route110_Text_BrendayLetsBattle, MSGBOX_DEFAULT
+	clearfullscreenimage
+	fadescreen FADE_TO_BLACK
 	goto Route110_EventScript_BrendanBattleMudkip
 	end
 
@@ -524,9 +529,14 @@ Route110_EventScript_BrendanBattleMudkip:: @ 81EF8B4
 	end
 
 Route110_EventScript_BrendanDefeated:: @ 81EF8C4
+	delay 5	
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGBRENDAN
 	msgbox Route110_Text_BrendanTakeThis, MSGBOX_DEFAULT
 	call Route110_EventScript_GiveWaystone
 	msgbox Route110_Text_BrendanExplainWaystone, MSGBOX_DEFAULT
+	clearfullscreenimage
+	fadescreen FADE_TO_BLACK
 	goto Route110_EventScript_RivalExit
 	end
 

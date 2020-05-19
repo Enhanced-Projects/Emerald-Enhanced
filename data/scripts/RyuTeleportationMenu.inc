@@ -202,7 +202,8 @@ RT_LCAH::
 	end
 	
 RT_MCMH::
-	warpteleport MAP_ALTERING_CAVE, 255, 8, 6 
+	goto_if_unset FLAG_LANDMARK_BERRY_MASTERS_HOUSE, RT_NoFlag
+	warpteleport MAP_ROUTE123, 255, 14, 4
 	release
 	end
 	

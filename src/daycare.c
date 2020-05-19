@@ -839,6 +839,7 @@ static void _GiveEggFromDaycare(struct DayCare *daycare)
     }
     else if (Random() % 100 > 89)
     {
+        ability = 2;
         SetMonData(&egg, MON_DATA_ABILITY_NUM, &ability);
     }
 

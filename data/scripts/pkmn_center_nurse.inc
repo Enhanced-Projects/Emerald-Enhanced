@@ -1,8 +1,17 @@
 Common_EventScript_PkmnCenterNurse:: @ 827191E
     lock
     faceplayer
+    goto_if_set FLAG_RYU_HARDCORE_MODE, Common_NurseDisabledHardcore
     goto EventScript_PkmnCenterNurse_HealPkmn
     end
+
+Common_NurseDisabledHardcore::
+    msgbox HardcoreNurseDisabled
+    release
+    end
+
+HardcoreNurseDisabled:
+    .string "I'm sorry, but our machine isn't\nworking. You can purchase healing\litems at a mart.$"
 
 EventScript_PkmnCenterNurse_Goodbye:: @ 8271954
     message gText_WeHopeToSeeYouAgain
@@ -11,6 +20,7 @@ EventScript_PkmnCenterNurse_Goodbye:: @ 8271954
 @ VAR_0x8004 is 1 when player has Gold Card; jumps are identical
 EventScript_PkmnCenterNurse_HealPkmn:: @ 827195A
     call Ryu_CheckHealPermissions
+    clearflag FLAG_RYU_USED_WIRELESSPC
     incrementgamestat GAME_STAT_USED_POKECENTER
     readgamestat GAME_STAT_USED_POKECENTER
     compare VAR_RESULT, 256
