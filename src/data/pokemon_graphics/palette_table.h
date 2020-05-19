@@ -902,7 +902,7 @@ const struct CompressedSpritePalette gMonPaletteTable[] =
     SPECIES_PAL(AEGISLASH_BLADE, gMonPalette_AegislashBlade),
     SPECIES_PAL(HOOPA_UNBOUND, gMonPalette_HoopaUnbound),
     SPECIES_PAL(MINIOR_CORE, gMonPalette_MiniorCore),
-    SPECIES_PAL(WISHIWASHI_SCHOOL, gMonPalette_WishiwashiSchool),
+    SPECIES_PAL(UNOWN_SCHOOL, gMonPalette_UnownSchool),
     SPECIES_PAL(KYUREM_BLACK, gMonPalette_KyuremBlack),
     SPECIES_PAL(KYUREM_WHITE, gMonPalette_KyuremWhite),
     SPECIES_PAL(MIMIKYU_BUSTED, gMonPalette_MimikyuBusted),

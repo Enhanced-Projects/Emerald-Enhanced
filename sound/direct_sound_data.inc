@@ -3991,8 +3991,8 @@ Cry_Minior_Core::
 	.incbin "sound/direct_sound_samples/cry_not_minior.bin"
 
 	.align 2
-Cry_Wishiwashi_School::
-	.incbin "sound/direct_sound_samples/cry_not_wishiwashi_school.bin"
+Cry_Unown_School::
+	.incbin "sound/direct_sound_samples/cry_not_cosmoem.bin"
 
 	.align 2
 Cry_Mimikyu_Busted::
