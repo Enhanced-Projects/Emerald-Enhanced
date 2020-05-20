@@ -1106,3 +1106,90 @@ static u16 GetPrizeItemId(void)
 
     return prizeList[id];
 }
+
+//New trainer hill reward tables. There's no limit to the size of these arrays, and the function below will scale up to match
+
+const u16 sTrainerHillLegendRewards[] = {//legends reward table
+    ITEM_RARE_CANDY,
+    ITEM_LUXURY_BALL,
+};
+
+const u16 sTrainerHillMythicRewards[] = {//mythics reward table
+    ITEM_RARE_CANDY,
+    ITEM_LUXURY_BALL,
+};
+
+const u16 sTrainerHillBeastRewards[] = {//beast reward table
+    ITEM_RARE_CANDY,
+    ITEM_LUXURY_BALL,
+};
+
+const u16 sTrainerHillMixedRewards[] = {//mixed reward table
+    ITEM_RARE_CANDY,
+    ITEM_LUXURY_BALL,
+};
+
+
+int RyuGetTrainerHillReward(void)
+{
+    u8 mode = (VarGet(VAR_TEMP_A));//game's variable for which th mode you are in
+
+    if (!(FlagGet(FLAG_RYU_BLASTOISINITE) == 1) &&
+     ((FlagGet(FLAG_RYU_BEEDRILLITE) == 1) &&
+     (FlagGet(FLAG_RYU_GYARADOSITE) == 1) &&
+     (FlagGet(FLAG_RYU_HERACRONITE) == 1) &&
+     (FlagGet(FLAG_RYU_PINSIRITE) == 1)))
+       {
+        FlagSet(FLAG_RYU_BLASTOISINITE);
+        return ITEM_BLASTOISINITE;
+       }
+
+    switch (mode)
+    {
+        case 0://Legend Mode
+        {
+            if (FlagGet(FLAG_RYU_GYARADOSITE) == 1)
+            {
+                return sTrainerHillLegendRewards[Random() %SizeOf(sTrainerHillLegendRewards)];
+            }
+            else
+            {
+                return ITEM_GYARADOSITE;
+            }
+        }
+        case 1://Mythic Mode
+        {
+            if (FlagGet(FLAG_RYU_PINSIRITE) == 1)
+            {
+                return sTrainerHillMythicRewards[Random() %SizeOf(sTrainerHillMythicRewards)];
+            }
+            else
+            {
+                return ITEM_PINSIRITE;
+            }
+        }
+        case 2://Beast Mode
+        {
+            if (FlagGet(FLAG_RYU_HERACRONITE) == 1)
+            {
+                return sTrainerHillBeastRewards[Random() %SizeOf(sTrainerHillBeastRewards)];
+            }
+            else
+            {
+                return ITEM_HERACRONITE;
+            }
+        }
+        case 3://Mixed Mode
+        {
+            if (FlagGet(FLAG_RYU_BEEDRILLITE) == 1)
+            {
+                return sTrainerHillMixedRewards[Random() %SizeOf(sTrainerHillMixedRewards)];
+            }
+            else
+            {
+                return ITEM_BEEDRILLITE;
+            }
+        }
+    }
+    
+}
