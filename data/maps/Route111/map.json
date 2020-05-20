@@ -121,8 +121,8 @@
             "flag": "FLAG_HIDDEN_ITEM_ROUTE_111_RARE_CANDY",
             "item": "ITEM_RARE_CANDY",
             "type": "hidden_item",
-            "x": 35,
-            "y": 66
+            "x": 38,
+            "y": 65
         },
         {
             "elevation": 0,

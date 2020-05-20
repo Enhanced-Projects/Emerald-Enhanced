@@ -2931,7 +2931,7 @@ static const struct TrainerMonItemDefaultMoves sParty_Jeffrey5[] = {
 
 static const struct TrainerMonNoItemCustomMoves sParty_Edward[] = {
     {
-    .iv = 0,
+    .iv = 140,
     .lvl = 15,
     .species = SPECIES_ABRA,
     .ability = 0,
@@ -3415,7 +3415,7 @@ static const struct TrainerMonItemCustomMoves sParty_Glacia[] = {
 	.moves = {MOVE_SURF, MOVE_THUNDERBOLT, MOVE_TOXIC, MOVE_FROST_BREATH},
 	},
 	{
-	.iv = 255,
+	.iv = 223,
 	.lvl = 93,
 	.species = SPECIES_GLACEON,
 	.heldItem = ITEM_SITRUS_BERRY,
@@ -11257,7 +11257,7 @@ static const struct TrainerMonItemCustomMoves sParty_Flannery2[] = {
 	.moves = {MOVE_DYNAMIC_PUNCH, MOVE_INFERNO, MOVE_STONE_EDGE, MOVE_SOLAR_BEAM},
 	},
 	{
-	.iv = 224,
+	.iv = 231,
 	.lvl = 81,
 	.species = SPECIES_SALAZZLE,
 	.heldItem = ITEM_LIFE_ORB,
@@ -11438,7 +11438,7 @@ static const struct TrainerMonItemCustomMoves sParty_Norman2[] = {
 	.moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_BRUTAL_SWING},
 	},
 	{
-	.iv = 232,
+	.iv = 239,
 	.lvl = 88,
 	.species = SPECIES_FARFETCHD,
 	.heldItem = ITEM_FLYING_GEM,
@@ -11650,7 +11650,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona2[] = {
 	.moves = {MOVE_FLY, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE, MOVE_ROOST},
 	},
 	{
-	.iv = 232,
+	.iv = 239,
 	.lvl = 88,
 	.species = SPECIES_PIDGEOT,
 	.heldItem = ITEM_LEFTOVERS,
@@ -11701,7 +11701,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona3[] = {
 	.moves = {MOVE_AEROBLAST, MOVE_EARTHQUAKE, MOVE_BLAST_OFF, MOVE_ROOST},
 	},
 	{
-	.iv = 232,
+	.iv = 239,
 	.lvl = 88,
 	.species = SPECIES_PIDGEOT,
 	.heldItem = ITEM_LEFTOVERS,
@@ -12722,12 +12722,12 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerJohnatan[] = {
 
 static const struct TrainerMonItemCustomMoves gTrainerParty_StoryLana[] = {
 	{
-	.iv = 240,
+	.iv = 247,
 	.lvl = 119,
 	.species = SPECIES_VENUSAUR,
 	.heldItem = ITEM_VENUSAURITE,
 	.ability = 0,
-    .moves = {MOVE_GIGA_DRAIN, MOVE_SLUDGE_BOMB, MOVE_SPORE, MOVE_HIDDEN_POWER},
+    .moves = {MOVE_GIGA_DRAIN, MOVE_SLUDGE_BOMB, MOVE_SLEEP_POWDER, MOVE_HIDDEN_POWER},
 	},
 	{
 	.iv = 255,
@@ -12735,15 +12735,15 @@ static const struct TrainerMonItemCustomMoves gTrainerParty_StoryLana[] = {
 	.species = SPECIES_PIKACHU,
 	.heldItem = ITEM_LIGHT_BALL,
 	.ability = 0,
-    .moves = {MOVE_THUNDERBOLT, MOVE_IRON_TAIL, MOVE_HIDDEN_POWER, MOVE_ELECTROWEB},
+    .moves = {MOVE_THUNDERBOLT, MOVE_IRON_TAIL, MOVE_HIDDEN_POWER, MOVE_VOLT_SWITCH},
 	},
 	{
 	.iv = 255,
 	.lvl = 120,
 	.species = SPECIES_WIGGLYTUFF,
 	.heldItem = ITEM_LEFTOVERS,
-	.ability = 0,
-    .moves = {MOVE_METRONOME, MOVE_MOONBLAST, MOVE_RECOVER, MOVE_MEGA_PUNCH},
+	.ability = 1,
+    .moves = {MOVE_METRONOME, MOVE_DAZZLING_GLEAM, MOVE_RECOVER, MOVE_MEGA_PUNCH},
 	},
 	{
 	.iv = 255,
@@ -12751,7 +12751,7 @@ static const struct TrainerMonItemCustomMoves gTrainerParty_StoryLana[] = {
 	.species = SPECIES_MILOTIC,
 	.heldItem = ITEM_MYSTIC_WATER,
 	.ability = 0,
-    .moves = {MOVE_ICE_BEAM, MOVE_AQUA_RING, MOVE_THUNDER, MOVE_SCALD},
+    .moves = {MOVE_ICE_BEAM, MOVE_AQUA_RING, MOVE_RECOVER, MOVE_SCALD},
 	},
 	{
 	.iv = 255,
@@ -12783,12 +12783,12 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Pablo3[] = {
 
 static const struct TrainerMonItemCustomMoves sParty_RelLana[] = {
 	{
-	.iv = 240,
+	.iv = 247,
 	.lvl = 112,
 	.species = SPECIES_VENUSAUR,
 	.heldItem = ITEM_VENUSAURITE,
-	.ability = 0,
-	.moves = {MOVE_FRENZY_PLANT, MOVE_SLUDGE_BOMB, MOVE_HIDDEN_POWER, MOVE_GIGA_DRAIN},
+	.ability = 2,
+	.moves = {MOVE_SLUDGE_BOMB, MOVE_GIGA_DRAIN, MOVE_HIDDEN_POWER, MOVE_LEECH_SEED},
 	},
 	{
 	.iv = 255,
@@ -13554,12 +13554,12 @@ static const struct TrainerMonItemCustomMoves sParty_Red[] = {
 	.moves = {MOVE_ERUPTION, MOVE_EARTHQUAKE, MOVE_GRAVEL_STORM, MOVE_NONE},
 	},
 	{
-	.iv = 255,
+	.iv = 239,
 	.lvl = 112,
 	.species = SPECIES_PIDGEOT,
 	.heldItem = ITEM_LEFTOVERS,
 	.ability = 0,
-	.moves = {MOVE_SKY_ATTACK, MOVE_HURRICANE, MOVE_ICE_SHARD, MOVE_HIDDEN_POWER},
+	.moves = {MOVE_SKY_ATTACK, MOVE_HURRICANE, MOVE_EXTREME_SPEED, MOVE_SECRET_POWER},
 	},
 	{
 	.iv = 255,
