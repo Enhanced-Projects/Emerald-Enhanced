@@ -1133,7 +1133,7 @@ const u16 sTrainerHillMixedRewards[] = {//mixed reward table
 
 int RyuGetTrainerHillReward(void)
 {
-    u8 mode = (VarGet(VAR_TEMP_A));//game's variable for which th mode you are in
+    u8 mode = (VarGet(VAR_RYU_TRAINER_HILL_MODE));//game's variable for which th mode you are in
 
     if (!(FlagGet(FLAG_RYU_BLASTOISINITE) == 1) &&//if player does NOT already have this AND
      ((FlagGet(FLAG_RYU_BEEDRILLITE) == 1) &&//has this

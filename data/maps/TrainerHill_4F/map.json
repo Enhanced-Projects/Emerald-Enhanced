@@ -36,7 +36,7 @@
         {
             "dest_map": "MAP_TRAINER_HILL_ELEVATOR",
             "dest_warp_id": 0,
-            "elevation": 0,
+            "elevation": 3,
             "x": 5,
             "y": 4
         }
