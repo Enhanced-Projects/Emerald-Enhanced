@@ -34,8 +34,8 @@
             "y": 1
         },
         {
-            "dest_map": "MAP_ROUTE111",
-            "dest_warp_id": 4,
+            "dest_map": "MAP_TRAINER_HILL_ELEVATOR",
+            "dest_warp_id": 0,
             "elevation": 0,
             "x": 5,
             "y": 4

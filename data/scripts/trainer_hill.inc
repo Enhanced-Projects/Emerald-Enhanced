@@ -50,8 +50,9 @@ TrainerHill_1F_EventScript_Lost:: @ 82C83C9
 	end
 
 TrainerHill_EventScript_WarpToEntranceCounter:: @ 82C83DF
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setvar VAR_TEMP_1, 0
-	warp MAP_TRAINER_HILL_ENTRANCE, 255, 9, 6
+	warp MAP_TRAINER_HILL_ENTRANCE, 255, 3, 8
 	waitstate
 	end
 

@@ -1135,13 +1135,13 @@ int RyuGetTrainerHillReward(void)
 {
     u8 mode = (VarGet(VAR_TEMP_A));//game's variable for which th mode you are in
 
-    if (!(FlagGet(FLAG_RYU_BLASTOISINITE) == 1) &&
-     ((FlagGet(FLAG_RYU_BEEDRILLITE) == 1) &&
-     (FlagGet(FLAG_RYU_GYARADOSITE) == 1) &&
-     (FlagGet(FLAG_RYU_HERACRONITE) == 1) &&
-     (FlagGet(FLAG_RYU_PINSIRITE) == 1)))
+    if (!(FlagGet(FLAG_RYU_BLASTOISINITE) == 1) &&//if player does NOT already have this AND
+     ((FlagGet(FLAG_RYU_BEEDRILLITE) == 1) &&//has this
+     (FlagGet(FLAG_RYU_GYARADOSITE) == 1) &&//has this
+     (FlagGet(FLAG_RYU_HERACRONITE) == 1) &&//has this
+     (FlagGet(FLAG_RYU_PINSIRITE) == 1)))//has this
        {
-        FlagSet(FLAG_RYU_BLASTOISINITE);
+        FlagSet(FLAG_RYU_BLASTOISINITE);//then do this
         return ITEM_BLASTOISINITE;
        }
 
@@ -1154,7 +1154,8 @@ int RyuGetTrainerHillReward(void)
                 return sTrainerHillLegendRewards[Random() %ARRAY_COUNT(sTrainerHillLegendRewards)];
             }
             else
-            {
+            {   
+                FlagSet(FLAG_RYU_GYARADOSITE);
                 return ITEM_GYARADOSITE;
             }
         }
@@ -1166,6 +1167,7 @@ int RyuGetTrainerHillReward(void)
             }
             else
             {
+                FlagSet(FLAG_RYU_PINSIRITE);
                 return ITEM_PINSIRITE;
             }
         }
@@ -1177,6 +1179,7 @@ int RyuGetTrainerHillReward(void)
             }
             else
             {
+                FlagSet(FLAG_RYU_HERACRONITE);
                 return ITEM_HERACRONITE;
             }
         }
@@ -1188,6 +1191,7 @@ int RyuGetTrainerHillReward(void)
             }
             else
             {
+                FlagSet(FLAG_RYU_BEEDRILLITE);
                 return ITEM_BEEDRILLITE;
             }
         }

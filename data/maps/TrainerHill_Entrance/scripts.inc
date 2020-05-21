@@ -154,20 +154,58 @@ TrainerHill_Entrance_EventScript_Info:: @ 82682BA
 	end
 
 TrainerHill_Entrance_EventScript_ChooseChallenge:: @ 82682C8
+	setflag FLAG_RYU_WAYSTONE_DISABLED
 	multichoice 13, 2, MULTI_TAG_MATCH_TYPE, 0
 	switch VAR_RESULT
+	case 0, TrainerHill_EnterLegend
+	case 1, TrainerHill_EnterMythic
+	case 2, TrainerHill_EnterBeast
+	case 3, TrainerHill_EnterMixed
 	case 4, TrainerHill_Entrance_EventScript_CancelEntry
 	case MULTI_B_PRESSED, TrainerHill_Entrance_EventScript_CancelEntry
+	goto TrainerHill_Entrance_EventScript_CancelEntry
+	
+TrainerHill_EnterLegend::
+	setvar VAR_RYU_TRAINER_HILL_MODE, 0
+	goto TrainerHill_Enter
+	
+TrainerHill_EnterMythic::
+	setvar VAR_RYU_TRAINER_HILL_MODE, 1
+	goto TrainerHill_Enter
+	
+TrainerHill_EnterBeast::
+	setvar VAR_RYU_TRAINER_HILL_MODE, 2
+	goto TrainerHill_Enter
+	
+TrainerHill_EnterMixed::
+	setvar VAR_RYU_TRAINER_HILL_MODE, 3
+	goto TrainerHill_Enter
+	
+TrainerHill_Enter::
 	trainerhill_settag VAR_RESULT
 	setvar VAR_TRAINER_HILL_IS_ACTIVE, 1
 	setvar VAR_TEMP_5, 0
 	special HealPlayerParty
 	msgbox TrainerHill_Entrance_Text_TimeProgessGetSetGo, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, TH_GoToElevator
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_TK_KASYA
 	trainerhill_start
+	waitse
+	warpsilent MAP_TRAINER_HILL_1F, 255, 2, 4
 	releaseall
 	end
+	
+TH_GoToElevator:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
 
 TrainerHill_Entrance_EventScript_CancelEntry:: @ 8268314
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setvar VAR_TEMP_5, 0
 	msgbox TrainerHill_Entrance_Text_PleaseVisitUsAgain, MSGBOX_DEFAULT
 	closemessage
@@ -188,10 +226,12 @@ TrainerHill_Entrance_EventScript_SaveGame:: @ 826832E
 
 TrainerHill_Entrance_EventScript_SaveFailed:: @ 826835C
 	trainerhill_clearsaved
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	goto TrainerHill_Entrance_EventScript_CancelEntry
 	end
 
 TrainerHill_Entrance_EventScript_Closed:: @ 826836A
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	msgbox TrainerHill_Entrance_Text_StillGettingReady, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, TrainerHill_Entrance_Movement_PushPlayerBackFromCounter
@@ -444,5 +484,5 @@ TrainerHill_Entrance_Text_DoYouKnowWhenTheyOpen: @ 8268EDC
 	.string "challenger ever!$"
 
 TrainerHill_Elevator_Text_ReturnToReception: @ 8268F3E
-	.string "Would you like to return to\n"
-	.string "the reception counter?$"
+	.string "Returning you to the\n"
+	.string "reception counter.$"

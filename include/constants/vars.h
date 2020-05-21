@@ -122,7 +122,7 @@
 #define VAR_RYU_GCMS_ABILITY                 0x4068 // GCMS
 #define VAR_ROUTE110_STATE                   0x4069
 #define VAR_LOTAD_SIZE_RECORD                0x406A // Unused Var
-#define VAR_ROUTE112_STATE                   0x406B // Unused Var
+#define VAR_RYU_TRAINER_HILL_MODE            0x406B // Unused Var
 #define VAR_ROUTE113_STATE                   0x406C // Unused Var
 #define VAR_ROUTE114_STATE                   0x406D // Unused Var
 #define VAR_ROUTE115_STATE                   0x406E // Unused Var

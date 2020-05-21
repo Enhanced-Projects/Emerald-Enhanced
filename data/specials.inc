@@ -605,3 +605,4 @@ gSpecials:: @ 81DBA64
 	def_special SwapPlayerGender
 	def_special CheckPlayerHasDarmanitan
 	def_special ChangeDarmanitanForm
+	def_special RyuGetTrainerHillReward
