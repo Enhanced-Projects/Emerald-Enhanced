@@ -34,6 +34,7 @@
 #include "constants/easy_chat.h"
 #include "constants/trainer_hill.h"
 #include "constants/trainer_types.h"
+#include "random.h"
 
 #define HILL_TAG_NORMAL 0
 #define HILL_TAG_VARIETY 1
@@ -1150,7 +1151,7 @@ int RyuGetTrainerHillReward(void)
         {
             if (FlagGet(FLAG_RYU_GYARADOSITE) == 1)
             {
-                return sTrainerHillLegendRewards[Random() %SizeOf(sTrainerHillLegendRewards)];
+                return sTrainerHillLegendRewards[Random() %ARRAY_COUNT(sTrainerHillLegendRewards)];
             }
             else
             {
@@ -1161,7 +1162,7 @@ int RyuGetTrainerHillReward(void)
         {
             if (FlagGet(FLAG_RYU_PINSIRITE) == 1)
             {
-                return sTrainerHillMythicRewards[Random() %SizeOf(sTrainerHillMythicRewards)];
+                return sTrainerHillMythicRewards[Random() %ARRAY_COUNT(sTrainerHillMythicRewards)];
             }
             else
             {
@@ -1172,7 +1173,7 @@ int RyuGetTrainerHillReward(void)
         {
             if (FlagGet(FLAG_RYU_HERACRONITE) == 1)
             {
-                return sTrainerHillBeastRewards[Random() %SizeOf(sTrainerHillBeastRewards)];
+                return sTrainerHillBeastRewards[Random() %ARRAY_COUNT(sTrainerHillBeastRewards)];
             }
             else
             {
@@ -1183,7 +1184,7 @@ int RyuGetTrainerHillReward(void)
         {
             if (FlagGet(FLAG_RYU_BEEDRILLITE) == 1)
             {
-                return sTrainerHillMixedRewards[Random() %SizeOf(sTrainerHillMixedRewards)];
+                return sTrainerHillMixedRewards[Random() %ARRAY_COUNT(sTrainerHillMixedRewards)];
             }
             else
             {
