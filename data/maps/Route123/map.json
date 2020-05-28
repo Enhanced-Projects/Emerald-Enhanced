@@ -62,8 +62,8 @@
             "flag": "FLAG_HIDDEN_ITEM_ROUTE_123_REVIVE",
             "item": "ITEM_REVIVE",
             "type": "hidden_item",
-            "x": 12,
-            "y": 1
+            "x": 126,
+            "y": 14
         },
         {
             "elevation": 3,
@@ -78,16 +78,16 @@
             "flag": "FLAG_HIDDEN_ITEM_ROUTE_123_PP_UP",
             "item": "ITEM_PP_UP",
             "type": "hidden_item",
-            "x": 139,
-            "y": 15
+            "x": 163,
+            "y": 9
         },
         {
             "elevation": 3,
             "flag": "FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY",
             "item": "ITEM_RARE_CANDY",
             "type": "hidden_item",
-            "x": 138,
-            "y": 18
+            "x": 12,
+            "y": 1
         }
     ],
     "connections": [
@@ -100,6 +100,11 @@
             "direction": "left",
             "map": "MAP_ROUTE118",
             "offset": 0
+        },
+        {
+            "direction": "down",
+            "map": "MAP_ROUTE135",
+            "offset": 140
         }
     ],
     "coord_events": [
@@ -500,19 +505,6 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_TEMP_12",
-            "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "EventScript_CutTree",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 129,
-            "y": 14
-        },
-        {
-            "elevation": 3,
             "flag": "FLAG_TEMP_13",
             "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
             "movement_range_x": 0,
@@ -634,12 +626,12 @@
             "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Route123_EventScript_Cameron",
-            "trainer_sight_or_berry_tree_id": "7",
+            "trainer_sight_or_berry_tree_id": "4",
             "trainer_type": "1",
-            "x": 138,
-            "y": 12
+            "x": 141,
+            "y": 11
         },
         {
             "elevation": 3,
@@ -701,10 +693,10 @@
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_TREE_DISGUISE",
             "script": "Route123_EventScript_Jonas",
-            "trainer_sight_or_berry_tree_id": "1",
+            "trainer_sight_or_berry_tree_id": "3",
             "trainer_type": "1",
-            "x": 138,
-            "y": 14
+            "x": 162,
+            "y": 8
         },
         {
             "elevation": 3,
@@ -714,9 +706,9 @@
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "Route123_EventScript_Kayley",
-            "trainer_sight_or_berry_tree_id": "1",
+            "trainer_sight_or_berry_tree_id": "4",
             "trainer_type": "1",
-            "x": 138,
+            "x": 141,
             "y": 16
         },
         {

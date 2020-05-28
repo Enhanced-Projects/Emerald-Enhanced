@@ -4,10 +4,10 @@ TrainerHill_Roof_MapScripts:: @ 8268FA7
 	.byte 0
 
 TrainerHill_Roof_EventScript_Owner:: @ 8268FB2
-	goto_if_set FLAG_TEMP_B, ryu_end
+	goto_if_set FLAG_HILL_REWARD_RECIEVED, ryu_end
 	trainerhill_settrainerflags
 	lock
-	setflag FLAG_TEMP_B
+	setflag FLAG_HILL_REWARD_RECIEVED
 	faceplayer
 	specialvar VAR_RESULT, RyuGetTrainerHillReward
 	playfanfare MUS_FANFA1

@@ -339,8 +339,8 @@ TrainerHill_Entrance_Text_StillGettingReady: @ 8268430
 	.string "This is the Trainer Hill where\n"
 	.string "you may enjoy battles with many\l"
 	.string "powerful trainers.\p"
-	.string "Unfortunately, we're still getting\n"
-	.string "things ready. Please come back later!$"
+	.string "Unfortunately, we're closed while\n"
+	.string "new management sets up.$"
 
 TrainerHill_Entrance_Text_WelcomeToTrainerHill: @ 82684C6
 	.string "Welcome!\p"
@@ -368,7 +368,7 @@ TrainerHill_Entrance_Text_LikeToChallengeTrainers: @ 82685F8
 
 TrainerHill_Entrance_Text_TimeProgessGetSetGo: @ 826862A
 	.string "If you wish to quit, you can take\n"
-	.string "the middle door in each room.$"
+	.string "the elevator in each room.$"
 
 TrainerHill_Entrance_Text_PleaseVisitUsAgain: @ 826866F
 	.string "Please do visit us again!$"

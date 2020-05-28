@@ -3189,7 +3189,7 @@ Route121_Text_TammyDefeat: @ 829F3B9
 	.string "I have lost…$"
 
 Route121_Text_TammyPostBattle: @ 829F3C6
-	.string "MT. PYRE…\n"
+	.string "Mt. Pyre…\n"
 	.string "There is a mysterious power\l"
 	.string "at work there…$"
 
@@ -3399,7 +3399,7 @@ Route123_Text_CameronRematchDefeat: @ 829FF1B
 	.string "I feel sad…$"
 
 Route123_Text_CameronPostRematch: @ 829FF27
-	.string "I should train at MT. PYRE…\n"
+	.string "I should train at Mt. Pyre…\n"
 	.string "I'll never beat you this way…$"
 
 Route123_Text_JackiIntro: @ 829FF61
@@ -3461,7 +3461,7 @@ Route123_Text_YukiNotEnoughMons: @ 82A0224
 	.string "don't have two Pokémon.$"
 
 Route123_Text_KindraIntro: @ 82A025F
-	.string "MT. PYRE…\n"
+	.string "Mt. Pyre…\n"
 	.string "Where the spirits of Pokémon sleep…\l"
 	.string "Will your Pokémon sleep?$"
 
@@ -3469,7 +3469,7 @@ Route123_Text_KindraDefeat: @ 82A02A6
 	.string "Overflowing with vitality…$"
 
 Route123_Text_KindraPostBattle: @ 82A02C1
-	.string "MT. PYRE…\n"
+	.string "Mt. Pyre…\n"
 	.string "Where the spirits of Pokémon sleep…\p"
 	.string "It must overflow with a power that\n"
 	.string "soothes spirits…$"

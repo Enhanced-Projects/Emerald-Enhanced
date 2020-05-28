@@ -388,7 +388,7 @@
             "name": "Route123_Layout",
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Lilycove",
-            "width": 140
+            "width": 174
         },
         {
             "blockdata_filepath": "data/layouts/Route124/map.bin",
@@ -4579,6 +4579,76 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_Lab",
             "width": 13
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route135/map.bin",
+            "border_filepath": "data/layouts/Route135/border.bin",
+            "height": 100,
+            "id": "LAYOUT_ROUTE135",
+            "name": "Route135_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Pacifidlog",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/Underwater8/map.bin",
+            "border_filepath": "data/layouts/Underwater8/border.bin",
+            "height": 100,
+            "id": "LAYOUT_UNDERWATER8",
+            "name": "Underwater8_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route135_House1/map.bin",
+            "border_filepath": "data/layouts/Route135_House1/border.bin",
+            "height": 9,
+            "id": "LAYOUT_ROUTE135_HOUSE1",
+            "name": "Route135_House1_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_GenericBuilding",
+            "width": 10
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route135_House2/map.bin",
+            "border_filepath": "data/layouts/Route135_House2/border.bin",
+            "height": 9,
+            "id": "LAYOUT_ROUTE135_HOUSE2",
+            "name": "Route135_House2_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_GenericBuilding",
+            "width": 10
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route135_House3/map.bin",
+            "border_filepath": "data/layouts/Route135_House3/border.bin",
+            "height": 9,
+            "id": "LAYOUT_ROUTE135_HOUSE3",
+            "name": "Route135_House3_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_GenericBuilding",
+            "width": 10
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route135_ManaphyTemple/map.bin",
+            "border_filepath": "data/layouts/Route135_ManaphyTemple/border.bin",
+            "height": 35,
+            "id": "LAYOUT_ROUTE135_MANAPHY_TEMPLE",
+            "name": "Route135_ManaphyTemple_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_BattlePyramid",
+            "width": 15
+        },
+        {
+            "blockdata_filepath": "data/layouts/Underwater9/map.bin",
+            "border_filepath": "data/layouts/Underwater9/border.bin",
+            "height": 37,
+            "id": "LAYOUT_UNDERWATER9",
+            "name": "Underwater9_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 15
         }
     ],
     "layouts_table_label": "gMapLayouts"

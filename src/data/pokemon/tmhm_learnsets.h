@@ -12136,7 +12136,9 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM11_SUNNY_DAY)
 											| TMHM(TM06_TOXIC)),
 
-    [SPECIES_PHIONE]      = TMHM_LEARNSET(TMHM(TM14_BLIZZARD)
+    [SPECIES_PHIONE]      = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
+											| TMHM(TM14_BLIZZARD)
+											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM58_DIVE)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM42_FACADE)
@@ -12154,7 +12156,8 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM06_TOXIC)
 											| TMHM(TM03_WATER_PULSE)),
 
-    [SPECIES_MANAPHY]     = TMHM_LEARNSET(TMHM(TM14_BLIZZARD)
+    [SPECIES_MANAPHY]     = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
+											| TMHM(TM14_BLIZZARD)
 											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM58_DIVE)
 											| TMHM(TM32_DOUBLE_TEAM)

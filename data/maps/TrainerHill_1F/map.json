@@ -7,6 +7,13 @@
     ],
     "connections": null,
     "coord_events": [
+        {
+            "elevation": 3,
+            "type": "weather",
+            "weather": "COORD_EVENT_WEATHER_DROUGHT",
+            "x": 8,
+            "y": 7
+        }
     ],
     "id": "MAP_TRAINER_HILL_1F",
     "layout": "LAYOUT_TRAINER_HILL_1F",

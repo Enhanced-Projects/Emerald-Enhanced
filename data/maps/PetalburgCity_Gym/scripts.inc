@@ -75,8 +75,8 @@ PBG_NEWGYMBATTLE::
 	end
 
 PBG_AreYouSure:
-    .string "Dad: Are you sure you want to fight\n"
-    .string "me now? $"
+    .string "Are you sure you want to fight me\n"
+    .string "now?$"
 
 PBG_NotReadyYet::
 	msgbox PBG_PlayerNotReadyText
@@ -84,9 +84,9 @@ PBG_NotReadyYet::
 	end
 
 PBG_PlayerNotReadyText:
-    .string "Dad: I brought you into this world,\n"
-    .string "I can certainly take you right out of\l"
-    .string "it! Come back when you are stronger!$"
+    .string "I brought you into this world, I can\n"
+    .string "certainly take you right out of it!\p"
+    .string "Come back when you are stronger!$"
 
 PG_Reset::
 	setvar VAR_TEMP_8, 5
@@ -123,8 +123,8 @@ PG_GiveMegaBracelet::
 	return
 
 NormanGivesMB:
-	.string "Dad: Ahh, by the way, {PLAYER},\n"
-	.string "I got this for you, you should be\p"
+	.string "Ahh, by the way, {PLAYER},\n"
+	.string "I got this for you, you should be\l"
 	.string "strong enough to use it.$"
 
 NormanfinishGiveBracelet:
@@ -381,9 +381,6 @@ PG_DefeatText:
 PG_PartnerEnter:
 	walk_up
 	walk_up
-	walk_left
-	walk_left
-	walk_left
 	walk_left
 	walk_up
 	walk_up
@@ -1241,13 +1238,12 @@ PetalburgCity_Gym_Text_GymStatueCertified: @ 8207467
 	.string "{PLAYER}$"
 
 PG_Norman_Not4Badges_Intro:
-    .string "Dad: I may have gotten older, but I\n"
-    .string "can definitely still teach you a\p"
-    .string "lesson that you aren't likely to\n"
-    .string "forget. LET's DO THIS!$"
+    .string "I may have gotten older, but I can\n"
+    .string "still teach you a lesson\p"
+    .string "LET'S DO THIS!$"
 
 PetalburgCity_Gym_Text_NormanPreRematch: @ 82074A2
-	.string "DAD: {PLAYER}…\n"
+	.string "{PLAYER}…\n"
 	.string "I had a feeling that you would come.\p"
 	.string "I would never refuse to accept\n"
 	.string "a challenge from you.\p"
@@ -1263,14 +1259,14 @@ PetalburgCity_Gym_Text_NormanRematchDefeat: @ 82075CE
 	.string "Maybe that was going too hard…$"
 
 PetalburgCity_Gym_Text_NormanPostRematch: @ 82075F7
-	.string "DAD: {PLAYER}…\n"
+	.string "{PLAYER}…\n"
 	.string "What is your dream?\p"
 	.string "My dream…\n"
 	.string "Hahaha…\l"
 	.string "It has already come true, actually.$"
 
 PetalburgCity_Gym_Text_NormanRematchNeedTwoMons: @ 820764A
-	.string "DAD: {PLAYER}…\n"
+	.string "{PLAYER}…\n"
 	.string "I had a feeling that you would come.\p"
 	.string "I would never refuse to accept\n"
 	.string "a challenge from you.\p"

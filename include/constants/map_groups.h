@@ -282,6 +282,13 @@
 #define MAP_DESERT_TOMB2F                    (6 | (18 << 8))
 #define MAP_DESERT_TOMB_CORE                 (7 | (18 << 8))
 #define MAP_ROUTE66                          (8 | (18 << 8))
+#define MAP_ROUTE135                         (9 | (18 << 8))
+#define MAP_UNDERWATER8                      (10 | (18 << 8))
+#define MAP_ROUTE135_HOUSE1                  (11 | (18 << 8))
+#define MAP_ROUTE135_HOUSE2                  (12 | (18 << 8))
+#define MAP_ROUTE135_HOUSE3                  (13 | (18 << 8))
+#define MAP_ROUTE135_MANAPHY_TEMPLE          (14 | (18 << 8))
+#define MAP_UNDERWATER9                      (15 | (18 << 8))
 
 // Map Group 19
 #define MAP_ROUTE112_CABLE_CAR_STATION   (0 | (19 << 8))

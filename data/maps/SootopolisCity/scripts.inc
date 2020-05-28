@@ -186,7 +186,7 @@ SootopolisCity_Text_CaveOfOriginPleaseLeave: @ 81E6D77
 	.string "Who might you be?\p"
 	.string "This is the CAVE OF ORIGIN.\p"
 	.string "The spirits of Pokémon, becalmed at\n"
-	.string "MT. PYRE, are said to be revived here.\p"
+	.string "Mt. Pyre, are said to be revived here.\p"
 	.string "Please leave.$"
 
 SootopolisCity_Text_LeadSuperiorTrainerToCave: @ 81E6DFE

@@ -728,6 +728,17 @@ const struct WildPokemon gUnderwater2_WaterMons[] =
 
 const struct WildPokemonInfo gUnderwater2_WaterMonsInfo = {4, gUnderwater2_WaterMons};
 
+const struct WildPokemon gUnderwater8_WaterMons[] =
+{
+	{20, 30, SPECIES_CLAMPERL},
+	{20, 30, SPECIES_LANTURN},
+	{30, 35, SPECIES_GOREBYSS},
+	{30, 35, SPECIES_HUNTAIL},
+	{30, 35, SPECIES_HUNTAIL},
+};
+
+const struct WildPokemonInfo gUnderwater8_WaterMonsInfo = {4, gUnderwater8_WaterMons};
+
 const struct WildPokemon gAbandonedShip_Rooms_B1F_WaterMons[] =
 {
 	{5, 35, SPECIES_TENTACOOL},
@@ -1094,7 +1105,7 @@ const struct WildPokemon gRoute119_FishingMons[] =
 	{30, 35, SPECIES_CARVANHA},
 	{20, 25, SPECIES_SHELLOS},
 	{35, 40, SPECIES_SHELLOS},
-	{40, 45, SPECIES_FEEBAS},
+	{40, 45, SPECIES_FEEBAS},//normal encounter, no tile-specific shenanigans
 };
 
 const struct WildPokemonInfo gRoute119_FishingMonsInfo = {30, gRoute119_FishingMons};
@@ -1693,6 +1704,33 @@ const struct WildPokemon gRoute134_FishingMons[] =
 };
 
 const struct WildPokemonInfo gRoute134_FishingMonsInfo = {30, gRoute134_FishingMons};
+
+const struct WildPokemon gRoute135_WaterMons[] =
+{
+	{5, 35, SPECIES_CLAUNCHER},
+	{20, 25, SPECIES_PELIPPER},
+	{15, 25, SPECIES_PELIPPER},
+	{25, 30, SPECIES_CLAWITZER},
+	{25, 30, SPECIES_CLAWITZER},
+};
+
+const struct WildPokemonInfo gRoute135_WaterMonsInfo = {4, gRoute135_WaterMons};
+
+const struct WildPokemon gRoute135_FishingMons[] =
+{
+	{15, 20, SPECIES_MAGIKARP},
+	{15, 20, SPECIES_TENTACOOL},
+	{20, 25, SPECIES_MAGIKARP},
+	{20, 25, SPECIES_TENTACOOL},
+	{20, 25, SPECIES_WAILMER},
+	{30, 35, SPECIES_SHARPEDO},
+	{30, 35, SPECIES_WAILMER},
+	{25, 30, SPECIES_HORSEA},
+	{35, 40, SPECIES_GYARADOS},
+	{40, 45, SPECIES_MILOTIC},
+};
+
+const struct WildPokemonInfo gRoute135_FishingMonsInfo = {30, gRoute135_FishingMons};
 
 const struct WildPokemon gAbandonedShip_HiddenFloorCorridors_WaterMons[] =
 {
@@ -3612,6 +3650,14 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.fishingMonsInfo = NULL,
 	},
 	{
+		.mapGroup = MAP_GROUP(UNDERWATER8),
+		.mapNum = MAP_NUM(UNDERWATER8),
+		.landMonsInfo = NULL,
+		.waterMonsInfo = &gUnderwater8_WaterMonsInfo,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = NULL,
+	},
+	{
 		.mapGroup = MAP_GROUP(ABANDONED_SHIP_ROOMS_B1F),
 		.mapNum = MAP_NUM(ABANDONED_SHIP_ROOMS_B1F),
 		.landMonsInfo = NULL,
@@ -3882,6 +3928,14 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.waterMonsInfo = &gRoute134_WaterMonsInfo,
 		.rockSmashMonsInfo = NULL,
 		.fishingMonsInfo = &gRoute134_FishingMonsInfo,
+	},
+	{
+		.mapGroup = MAP_GROUP(ROUTE135),
+		.mapNum = MAP_NUM(ROUTE135),
+		.landMonsInfo = NULL,
+		.waterMonsInfo = &gRoute135_WaterMonsInfo,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = &gRoute135_FishingMonsInfo,
 	},
 	{
 		.mapGroup = MAP_GROUP(ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS),
