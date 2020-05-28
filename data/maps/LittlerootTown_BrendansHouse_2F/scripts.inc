@@ -448,6 +448,7 @@ LRT_BrendanTURN:
 	
 LRT_LeafEvent::
 	lock
+	clearflag FLAG_RYU_RANDOMBATTLE
 	setvar VAR_RYU_DS_LANA_STAGE, 76
 	msgbox LRT_Story1 MSGBOX_DEFAULT
 	closemessage
@@ -609,6 +610,7 @@ LRT_Story7:
 @Harem Stuff=======================================================================================
 
 LRT_BeginHaremSequence::
+	clearflag FLAG_RYU_RANDOMBATTLE
 	goto HaremBegin
 	end
 	
