@@ -1,4 +1,5 @@
 GameIntroSequencePart1::
+	clearflag FLAG_RYU_RANDOMBATTLE
 	goto GameModeSelect
 	
 LRT_IntroMsg1:
@@ -18,6 +19,7 @@ GameModeSelect:: @ 823BF04
 	end
 
 Ryu_NewGamePlus::
+	clearflag FLAG_RYU_RANDOMBATTLE
 	msgbox RyuNGPInfo
 	closemessage
 	call_if_set FLAG_RYU_HAS_WAYSTONE, Ryu_NGP_Waystone

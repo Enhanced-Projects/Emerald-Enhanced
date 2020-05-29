@@ -3283,10 +3283,10 @@ static const struct TrainerMonItemCustomMoves sParty_Sidney[] = {
 	{
 	.iv = 250,
 	.lvl = 86,
-	.species = SPECIES_MIGHTYENA,
+	.species = SPECIES_KROOKODILE,
 	.heldItem = ITEM_FOCUS_SASH,
 	.ability = 0,
-	.moves = {MOVE_ICE_FANG, MOVE_THUNDER_FANG, MOVE_PSYCHIC_FANGS, MOVE_CRUNCH},
+	.moves = {MOVE_EARTHQUAKE, MOVE_KNOCK_OFF, MOVE_STEALTH_ROCK, MOVE_STONE_EDGE},
 	},
 	{
 	.iv = 250,
@@ -11775,7 +11775,7 @@ static const struct TrainerMonItemCustomMoves sParty_ShellyPyre[] = {
     .lvl = 54,
     .species = SPECIES_MIGHTYENA,
     .heldItem = ITEM_QUICK_CLAW,
-    .ability = 1,
+    .ability = 0,
     .moves = {MOVE_THUNDER_FANG, MOVE_CRUNCH, MOVE_TAKE_DOWN, MOVE_FIRE_FANG},
     },
     {
@@ -12348,10 +12348,10 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch[] = {
 	{
 	.iv = 255,
 	.lvl = 98,
-	.species = SPECIES_MIGHTYENA,
+	.species = SPECIES_HYDREIGON,
 	.heldItem = ITEM_CHOICE_SCARF,
-	.ability = 1,
-	.moves = {MOVE_CRUNCH, MOVE_PSYCHIC_FANGS, MOVE_POISON_FANG, MOVE_FIRE_FANG},
+	.ability = 0,
+	.moves = {MOVE_DRACO_METEOR, MOVE_DARK_PULSE, MOVE_FIRE_BLAST, MOVE_FLASH_CANNON},
 	},
 	{
 	.iv = 255,
@@ -12899,9 +12899,9 @@ static const struct TrainerMonItemCustomMoves sParty_RelShelly[] = {
 	.iv = 255,
 	.lvl = 108,
 	.species = SPECIES_MIGHTYENA,
-	.heldItem = ITEM_EXPERT_BELT,
+	.heldItem = ITEM_TOXIC_ORB,
 	.ability = 1,
-	.moves = {MOVE_CRUNCH, MOVE_THUNDER_FANG, MOVE_FIRE_FANG, MOVE_POISON_FANG},
+	.moves = {MOVE_FACADE, MOVE_CRUNCH, MOVE_FIRE_FANG, MOVE_SWORDS_DANCE},
 	},
 	{
 	.iv = 255,

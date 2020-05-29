@@ -1,75 +1,77 @@
 {
-  "id": "MAP_PACIFIDLOG_TOWN_HOUSE4",
-  "name": "PacifidlogTown_House4",
-  "layout": "LAYOUT_PACIFIDLOG_TOWN_HOUSE2",
-  "music": "MUS_MINAMO",
-  "region_map_section": "MAPSEC_PACIFIDLOG_TOWN",
-  "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_INDOOR",
-  "allow_bike": false,
-  "allow_escape_rope": false,
-  "allow_running": false,
-  "show_map_name": false,
-  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
-  "object_events": [
-    {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
-      "x": 3,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "PacifidlogTown_House4_EventScript_Woman",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
-      "x": 7,
-      "y": 5,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "PacifidlogTown_House4_EventScript_LittleGirl",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
-      "x": 7,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "PacifidlogTown_House4_EventScript_Boy",
-      "flag": "0"
-    }
-  ],
-  "warp_events": [
-    {
-      "x": 4,
-      "y": 8,
-      "elevation": 0,
-      "dest_map": "MAP_PACIFIDLOG_TOWN",
-      "dest_warp_id": 4
-    },
-    {
-      "x": 5,
-      "y": 8,
-      "elevation": 0,
-      "dest_map": "MAP_PACIFIDLOG_TOWN",
-      "dest_warp_id": 4
-    }
-  ],
-  "coord_events": [],
-  "bg_events": []
+    "allow_bike": false,
+    "allow_escape_rope": false,
+    "allow_running": false,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_PACIFIDLOG_TOWN_HOUSE4",
+    "layout": "LAYOUT_PACIFIDLOG_TOWN_HOUSE2",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_MINAMO",
+    "name": "PacifidlogTown_House4",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "PacifidlogTown_House4_EventScript_Woman",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 3,
+            "y": 4
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "PacifidlogTown_House4_EventScript_LittleGirl",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "PacifidlogTown_House4_EventScript_Boy",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 4
+        }
+    ],
+    "region_map_section": "MAPSEC_PACIFIDLOG_TOWN",
+    "requires_flash": false,
+    "show_map_name": false,
+    "warp_events": [
+        {
+            "dest_map": "MAP_PACIFIDLOG_TOWN",
+            "dest_warp_id": 4,
+            "elevation": 0,
+            "x": 4,
+            "y": 8
+        },
+        {
+            "dest_map": "MAP_PACIFIDLOG_TOWN",
+            "dest_warp_id": 4,
+            "elevation": 0,
+            "x": 5,
+            "y": 8
+        }
+    ],
+    "weather": "WEATHER_NONE"
 }

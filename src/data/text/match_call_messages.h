@@ -371,7 +371,7 @@ const u8 gText_MatchCallEliteFour_Sidney_Intro2[] = _("I'm one of the ELITE FOUR
 const u8 gText_MatchCallEliteFour_Phoebe_Strategy[] = _("Confuse and confound.");
 const u8 gText_MatchCallEliteFour_Phoebe_Pokemon[] = _("There's nothing definite.");
 const u8 gText_MatchCallEliteFour_Phoebe_Intro1[] = _("I wonder how my grandma at");
-const u8 gText_MatchCallEliteFour_Phoebe_Intro2[] = _("MT. PYRE is doing?");
+const u8 gText_MatchCallEliteFour_Phoebe_Intro2[] = _("Mt. Pyre is doing?");
 
 const u8 gText_MatchCallEliteFour_Glacia_Strategy[] = _("I use items for help.");
 const u8 gText_MatchCallEliteFour_Glacia_Pokemon[] = _("Flaming passion in icy cold!");

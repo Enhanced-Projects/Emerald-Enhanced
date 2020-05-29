@@ -101,7 +101,7 @@ AquaHideout_1F_Text_BossIsOnRoute122: @ 8233739
 	.string "What? What? What do you want with \n"
 	.string "Team Aqua?\p"
 	.string "Our BOSS isn't here! He's on his way to\n"
-	.string "MT. PYRE on ROUTE 122!\p"
+	.string "Mt. Pyre on ROUTE 122!\p"
 	.string "… …\n"
 	.string "Why did he go?\p"
 	.string "Wahaha! Do you really think I'd tell\n"

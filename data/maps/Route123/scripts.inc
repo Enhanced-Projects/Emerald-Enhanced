@@ -195,7 +195,7 @@ Route123_Text_RouteSign: @ 81F6511
 	.string "{LEFT_ARROW} ROUTE 118$"
 
 Route123_Text_RouteSignMtPyre: @ 81F6529
-	.string "{UP_ARROW} MT. PYRE\n"
+	.string "{UP_ARROW} Mt. Pyre\n"
 	.string "“Forbidden to the faint of heart.”$"
 
 Route123_Text_BerryMastersHouse: @ 81F6557

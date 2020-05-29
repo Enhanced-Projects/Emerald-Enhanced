@@ -199,7 +199,14 @@
         "DesertTomb1F",
         "DesertTomb2F",
         "DesertTombCore",
-        "Route66"
+        "Route66",
+        "Route135",
+        "Underwater8",
+        "Route135_House1",
+        "Route135_House2",
+        "Route135_House3",
+        "Route135_ManaphyTemple",
+        "Underwater9"
     ],
     "gMapGroup19": [
         "Route112_CableCarStation",

@@ -1,0 +1,11 @@
+Route135_House2_MapScripts::
+	.byte 0
+
+Route135_House2_EventScript_Woman::
+	msgbox Route135_House2_Text_ImStarving, MSGBOX_NPC
+	end
+
+Route135_House2_Text_ImStarving:
+	.string "I wonder if my husband has caught\n"
+	.string "anything yet...\p"
+	.string "I'm starving!$"
