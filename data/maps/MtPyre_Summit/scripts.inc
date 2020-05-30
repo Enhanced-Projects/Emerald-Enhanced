@@ -147,7 +147,7 @@ MtPyre_Summit_EventScript_TeamAquaExits:: @ 823203C
 	setflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
 	fadescreen 0
 	delay 20
-	setvar VAR_MT_PYRE_STATE, 1
+	setvar VAR_MT_PYRE_STATE, 4
 	msgbox MP_MaxieConclusion MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, MP_moveoutofway
@@ -877,6 +877,7 @@ MP_AltArchieFight::
 	setflag FLAG_RYU_MISSION4COMPLETE
 	clearflag FLAG_RYU_STARTING_M4
 	setvar VAR_TEMP_0, 69
+	setvar VAR_MT_PYRE_STATE, 4
 	release
 	end
 	
