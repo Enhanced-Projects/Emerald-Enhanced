@@ -7866,12 +7866,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_SKITTY] =
     {
-        .baseHP        = 50,
+        .baseHP        = 58,
         .baseAttack    = 10,
         .baseDefense   = 45,
-        .baseSpeed     = 60,
-        .baseSpAttack  = 65,
-        .baseSpDefense = 35,
+        .baseSpeed     = 75,
+        .baseSpAttack  = 72,
+        .baseSpDefense = 41,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_FAIRY,
         .catchRate = 255,
@@ -7892,12 +7892,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_DELCATTY] =
     {
-        .baseHP        = 70,
-        .baseAttack    = 25,
+        .baseHP        = 82,
+        .baseAttack    = 33,
         .baseDefense   = 70,
-        .baseSpeed     = 95,
-        .baseSpAttack  = 105,
-        .baseSpDefense = 50,
+        .baseSpeed     = 100,
+        .baseSpAttack  = 109,
+        .baseSpDefense = 62,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_FAIRY,
         .catchRate = 60,
@@ -22565,6 +22565,31 @@ const struct BaseStats gBaseStats[] =
         .bodyColor = BODY_COLOR_BLUE,
     },
 
+    [SPECIES_MEGA_RAYQUAZA] =
+    {
+        .baseHP        = 105,
+        .baseAttack    = 180,
+        .baseDefense   = 100,
+        .baseSpeed     = 115,
+        .baseSpAttack  = 180,
+        .baseSpDefense = 100,
+        .type1 = TYPE_DRAGON,
+        .type2 = TYPE_FLYING,
+        .catchRate = 45,
+        .expYield = 306,
+        .evYield_Attack    = 2,
+        .evYield_SpAttack  = 1,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroup1 = EGG_GROUP_UNDISCOVERED,
+        .eggGroup2 = EGG_GROUP_UNDISCOVERED,
+        .abilities = {ABILITY_DELTA_STREAM, ABILITY_DELTA_STREAM},
+        .bodyColor = BODY_COLOR_GREEN,
+        .noFlip = FALSE,
+    },
+
     [SPECIES_MEGA_CAMERUPT] =
     {
         .baseHP        = 70,
@@ -23146,6 +23171,55 @@ const struct BaseStats gBaseStats[] =
         .abilityHidden = ABILITY_ROCK_HEAD,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_PURPLE,
+    },
+
+    [SPECIES_PRIMAL_KYOGRE] =
+    {
+        .baseHP        = 100,
+        .baseAttack    = 150,
+        .baseDefense   = 90,
+        .baseSpeed     = 90,
+        .baseSpAttack  = 180,
+        .baseSpDefense = 160,
+        .type1 = TYPE_WATER,
+        .type2 = TYPE_WATER,
+        .catchRate = 3,
+        .expYield = 302,
+        .evYield_SpAttack  = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroup1 = EGG_GROUP_UNDISCOVERED,
+        .eggGroup2 = EGG_GROUP_UNDISCOVERED,
+        .abilities = {ABILITY_PRIMORDIAL_SEA, ABILITY_PRIMORDIAL_SEA},
+        .bodyColor = BODY_COLOR_BLUE,
+        .noFlip = FALSE,
+    },
+
+    [SPECIES_PRIMAL_GROUDON] =
+    {
+        .baseHP        = 100,
+        .baseAttack    = 180,
+        .baseDefense   = 160,
+        .baseSpeed     = 90,
+        .baseSpAttack  = 150,
+        .baseSpDefense = 90,
+        .type1 = TYPE_GROUND,
+        .type2 = TYPE_FIRE,
+        .catchRate = 3,
+        .expYield = 302,
+        .evYield_Attack    = 3,
+        .evYield_SpAttack  = 0,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroup1 = EGG_GROUP_UNDISCOVERED,
+        .eggGroup2 = EGG_GROUP_UNDISCOVERED,
+        .abilities = {ABILITY_DESOLATE_LAND, ABILITY_DESOLATE_LAND},
+        .bodyColor = BODY_COLOR_RED,
+        .noFlip = FALSE,
     },
 
     [SPECIES_SHAYMIN_SKY] =

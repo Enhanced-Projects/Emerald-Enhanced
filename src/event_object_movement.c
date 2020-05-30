@@ -1457,7 +1457,7 @@ u8 SpawnSpecialObjectEventParameterized(u8 graphicsId, u8 movementBehavior, u8 l
     y -= 7;
     objectEventTemplate.localId = localId;
     objectEventTemplate.graphicsId = graphicsId;
-    objectEventTemplate.unk2 = 0;
+    objectEventTemplate.inConnection = 0;
     objectEventTemplate.x = x;
     objectEventTemplate.y = y;
     objectEventTemplate.elevation = z;
@@ -1660,7 +1660,7 @@ void GetSafeCoordsForFollower(struct ObjectEvent *playerObjectEvent, int playerX
 const struct ObjectEventTemplate gFollowerObjectEventTemplate = {
     .localId = OBJ_EVENT_ID_FOLLOWER,
     .graphicsId = 0,
-    .unk2 = 0,
+    //.unk2 = 0,
     .x = 0,
     .y = 0,
     .elevation = 0,

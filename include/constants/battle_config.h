@@ -32,7 +32,9 @@
 #define B_TERRAIN_TYPE_BOOST        GEN_7 // In Gen8+, speed is boosted by 30% instead of 50%.
 #define B_BINDING_DAMAGE            GEN_7 // In Gen6+, binding damage is 1/8 of max HP instead of 1/16. (With Binding Band, 1/6 and 1/8 respectively.)
 #define B_CONFUSION_SELF_DMG_CHANCE GEN_7 // In Gen7+, confusion has a 33.3% of self-damage, instead of 50%.
-
+#define B_MULTI_HIT_CHANCE          GEN_6 // In Gen5+, multi-hit moves have different %. See Cmd_setmultihitcounter for values.
+#define B_RECOIL_IF_MISS_DMG        GEN_6 // In Gen5+, Jump Kick and Hi Jump Kick will always do half of the user's max HP when missing.
+#define B_PSYWAVE_DMG               GEN_6 // Psywave's damage formula. See Cmd_psywavedamageeffect.
 // Move settings
 #define B_FELL_STINGER_STAT_RAISE   GEN_7 // In Gen7+, it raises Atk by 3 stages instead of 2 if it causes the target to faint.
 #define B_SOUND_SUBSTITUTE          GEN_6 // In Gen6+, sound moves bypass Substitute.
@@ -40,7 +42,10 @@
 #define B_PAYBACK_SWITCH_BOOST      GEN_6 // In Gen5+, if the opponent switches out, Payback's damage will no longer be doubled.
 #define B_KINGS_SHIELD_LOWER_ATK    GEN_8 // In Gen8+, it lowers Atk by 1 stage instead of 2 of oponents that hit it.
 #define B_BINDING_TURNS             GEN_6 // In Gen5+, binding moves last for 4-5 turns instead of 2-5 turns. (With Grip Claw, 7 and 5 turns respectively.)
+#define B_UPROAR_TURNS              GEN_6 // In Gen5+, Uproar lasts for 3 turns instead of 2-5 turns.
+#define B_DISABLE_TURNS             GEN_6 // Disable's turns. See Cmd_disablelastusedattack.
 #define B_INCINERATE_GEMS           GEN_6 // In Gen6+, Incinerate can destroy Gems.
+#define B_MINIMIZE_DMG_ACC          GEN_6 // In Gen6+, moves that causes double damage to minimized Pokémon will also skip accuracy checks.
 
 // Ability settings
 #define B_ABILITY_POP_UP            GEN_6 // In Gen5+, the Pokémon abilities are displayed in a pop-up, when they activate in battle.
@@ -55,5 +60,24 @@
 // Other
 #define B_FAST_INTRO                TRUE  // If set to TRUE, battle intro texts print at the same time as animation of a Pokémon, as opposing to waiting for the animation to end.
 #define B_SLEEP_TURNS               GEN_6 // In Gen5+, sleep lasts for 1-3 turns instead of 2-5 turns.
+#define B_PARALYZE_ELECTRIC         GEN_6 // In Gen6+, Electric type Pokémon can't be paralyzed.
+#define B_POWDER_GRASS              GEN_6 // In Gen6+, Grass type Pokémon are immune to powder and spore moves.
+
+// Animation Settings
+#define NEW_SWORD_PARTICLE              TRUE    // update swords dance particle
+#define NEW_LEECH_SEED_PARTICLE         TRUE    //update leech seed's animation particle
+#define NEW_HORN_ATTACK_PARTICLE        TRUE    //update horn attack's horn
+#define NEW_LEAF_PARTICLE               TRUE    // update leaf particle
+#define NEW_EMBER_PARTICLES             TRUE    //updates ember fire particle
+#define NEW_MEAN_LOOK_PARTICLE          TRUE    //update mean look eye
+#define NEW_TEETH_PARTICLE              TRUE    //update bite/crunch teeth particle
+#define NEW_HANDS_FEET_PARTICLE         TRUE    //update chop/kick/punch particles
+#define NEW_SPIKES_PARTICLE             TRUE    //update spikes particle
+#define NEW_FLY_BUBBLE_PARTICLE         TRUE    //update fly 'bubble' particle
+#define NEW_CURSE_NAIL_PARTICLE         TRUE    //updates curse nail
+#define NEW_BATON_PASS_BALL_PARTICLE    TRUE    //update baton pass pokeball sprite
+#define NEW_MORNING_SUN_STAR_PARTICLE   TRUE    //updates morning sun star particles
+#define NEW_IMPACT_PALETTE              TRUE    //updates the basic 'hit' particle
+#define NEW_SURF_PARTICLE_PALETTE       TRUE    //updates the surf wave palette
 
 #endif // GUARD_CONSTANTS_BATTLE_CONFIG_H

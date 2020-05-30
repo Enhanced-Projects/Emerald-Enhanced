@@ -2660,6 +2660,14 @@ static const u8 sDOUBLE_IRON_BASHDescription[] = _(
     "The user spins and hits with\n"
     "its arms. May cause flinch.");
 
+static const u8 sSNUGGLEDescription[] = _(
+    "The user snuggles lovingly\n"
+    "with target. May Flinch.");
+
+static const u8 sCLINGDescription[] = _(
+    "User clings on to the foe.\n"
+    "Prevents Escape.");
+
 static const u8 sNotDoneYetDescription[] = _(
 	"Not done yet.");
 
@@ -3346,4 +3354,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_PLASMA_FISTS - 1] = sPLASMA_FISTSDescription,
     [MOVE_PHOTON_GEYSER - 1] = sPHOTON_GEYSERDescription,
     [MOVE_DOUBLE_IRON_BASH - 1] = sDOUBLE_IRON_BASHDescription,
+    [MOVE_SNUGGLE - 1] = sSNUGGLEDescription,
+    [MOVE_CLING - 1] = sCLINGDescription,
 };
