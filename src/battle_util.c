@@ -6552,9 +6552,10 @@ static u16 CalcTypeEffectivenessMultiplierInternal(u16 move, u8 moveType, u8 bat
 
     if (moveType == TYPE_GROUND && !IsBattlerGrounded(battlerDef))
     {
-        modifier = UQ_4_12(0.0);
         if (recordAbilities && GetBattlerAbility(battlerDef) == ABILITY_LEVITATE)
         {
+            modifier = UQ_4_12(0.0);
+            StringCopy(gStringVar2, gTypeNames[TYPE_FIRE]);
             gLastUsedAbility = ABILITY_LEVITATE;
             gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
             gLastLandedMoves[battlerDef] = 0;
