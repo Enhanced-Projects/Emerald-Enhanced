@@ -680,4 +680,6 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_PLASMA_FISTS] = _("Plasma Fists"),
     [MOVE_PHOTON_GEYSER] = _("PhotonGeyser"),
     [MOVE_DOUBLE_IRON_BASH] = _("D. Iron Bash"),
+    [MOVE_SNUGGLE] = _("Snuggle"),
+    [MOVE_CLING] = _("Cling"),
 };

@@ -637,6 +637,7 @@ static const u8 sText_MegaEvoEvolved[] = _("{B_ATK_NAME_WITH_PREFIX} has Mega\nE
 static const u8 sText_drastically[] = _("drastically ");
 static const u8 sText_severely[] = _("severely ");
 static const u8 sText_Infestation[] = _("{B_DEF_NAME_WITH_PREFIX} has been afflicted\nwith an infestation by {B_ATK_NAME_WITH_PREFIX}!");
+static const u8 sText_Cling[] = _("{B_DEF_NAME_WITH_PREFIX} has been hugged\nby {B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_NoEffectOnTarget[] = _("It had no effect\non {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_BurstingFlames[] = _("The bursting flames\nhit {B_SCR_ACTIVE_NAME_WITH_PREFIX}!");
 static const u8 sText_BestowItemGiving[] = _("{B_DEF_NAME_WITH_PREFIX} received {B_LAST_ITEM}\nfrom {B_ATK_NAME_WITH_PREFIX}!");
@@ -1249,7 +1250,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_BOSSRAISEDSTAT - 12] = sText_RyuBossRaisedStats,
     [STRINGID_BOSSWILDPRESENCE - 12] = sText_RyuBossWildStatBoost,
     [STRINGID_PKMNISRESOLVED - 12] = sText_RyuPkmnResolvedToFight,
-    [STRINGID_MIMIKYUDISGUISEBLOCKED - 12] = sText_RyuMimikyuDisguiseBlocked
+    [STRINGID_MIMIKYUDISGUISEBLOCKED - 12] = sText_RyuMimikyuDisguiseBlocked,
+    [STRINGID_WASHUGGEDBY - 12] = sText_Cling
 
 };
 
@@ -1393,7 +1395,7 @@ const u16 gWrappedStringIds[] =
 {
     STRINGID_PKMNSQUEEZEDBYBIND, STRINGID_PKMNWRAPPEDBY, STRINGID_PKMNTRAPPEDINVORTEX,
     STRINGID_PKMNCLAMPED, STRINGID_PKMNTRAPPEDINVORTEX, STRINGID_PKMNTRAPPEDBYSANDTOMB,
-    STRINGID_INFESTATION,
+    STRINGID_INFESTATION, STRINGID_WASHUGGEDBY,
 };
 
 const u16 gMistUsedStringIds[] =
@@ -1551,7 +1553,7 @@ const u16 gCaughtMonStringIds[] =
 
 const u16 gTrappingMoves[] =
 {
-    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_INFESTATION, 0xFFFF
+    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_INFESTATION, MOVE_CLING, 0xFFFF
 };
 
 const u16 gRoomsStringIds[] =

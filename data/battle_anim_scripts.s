@@ -697,6 +697,8 @@ gBattleAnims_Moves::
 	.4byte Move_PLASMA_FISTS
 	.4byte Move_PHOTON_GEYSER
     .4byte Move_DOUBLE_IRON_BASH
+	.4byte Move_SNUGGLE
+	.4byte Move_CLING
 @@@@@@@@@@@@ GEN 8 @@@@@@@@@@@@
 	.4byte Move_DYNAMAX_CANNON
 	.4byte Move_SNIPE_SHOT
@@ -13111,6 +13113,13 @@ Move_DOUBLE_IRON_BASH::
 	clearmonbg ANIM_DEF_PARTNER
 	blendoff
 	end
+
+Move_SNUGGLE:
+	goto Move_COVET
+
+Move_CLING:
+	createvisualtask AnimTask_TranslateMonEllipticalRespectSide, 2, ANIM_ATTACKER, 6, 4, 2, 4
+	goto BindWrap
 
 @@@@@@@@@@@@@@@@@@@@@@@ GEN 8 @@@@@@@@@@@@@@@@@@@@@@@
 Move_DYNAMAX_CANNON::

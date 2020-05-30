@@ -635,6 +635,8 @@
 #define MOVE_PRECIPICE_BLADES 619
 #define MOVE_DRAGON_ASCENT 620
 #define MOVE_HYPERSPACE_FURY 621
+
+//custom moves
 #define MOVE_GRAVEL_STORM 622
 #define MOVE_REAPING_BLOW 623
 #define MOVE_BLAST_OFF 624
@@ -698,7 +700,14 @@
 #define MOVE_PHOTON_GEYSER 679
 #define MOVE_DOUBLE_IRON_BASH 680
 
-#define MOVES_COUNT_GEN7 681
+
+//Custom moves post v6.74
+
+#define MOVE_SNUGGLE 681
+#define MOVE_CLING 682
+
+#define MOVES_COUNT_GEN7 683
+
 
 // Gen 8 moves.
 #define MOVE_DYNAMAX_CANNON           (MOVES_COUNT_GEN7 + 0)
