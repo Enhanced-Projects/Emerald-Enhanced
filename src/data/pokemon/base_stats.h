@@ -7866,12 +7866,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_SKITTY] =
     {
-        .baseHP        = 50,
+        .baseHP        = 58,
         .baseAttack    = 10,
         .baseDefense   = 45,
-        .baseSpeed     = 60,
-        .baseSpAttack  = 65,
-        .baseSpDefense = 35,
+        .baseSpeed     = 75,
+        .baseSpAttack  = 72,
+        .baseSpDefense = 41,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_FAIRY,
         .catchRate = 255,
@@ -7892,12 +7892,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_DELCATTY] =
     {
-        .baseHP        = 70,
-        .baseAttack    = 25,
+        .baseHP        = 82,
+        .baseAttack    = 33,
         .baseDefense   = 70,
-        .baseSpeed     = 95,
-        .baseSpAttack  = 105,
-        .baseSpDefense = 50,
+        .baseSpeed     = 100,
+        .baseSpAttack  = 109,
+        .baseSpDefense = 62,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_FAIRY,
         .catchRate = 60,
