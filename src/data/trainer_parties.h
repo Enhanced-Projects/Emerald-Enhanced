@@ -3522,23 +3522,23 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly1[] = {
 	{
 	.iv = 255,
 	.lvl = 28,
-	.species = SPECIES_MONFERNO,
+	.species = SPECIES_MEDITITE,
 	.heldItem = ITEM_FOCUS_SASH,
 	.ability = 0,
-	.moves = {MOVE_DYNAMIC_PUNCH, MOVE_INFERNO, MOVE_STONE_EDGE, MOVE_GUNK_SHOT},
+	.moves = {MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_ICE_PUNCH, MOVE_FAKE_OUT},
 	},
 	{
 	.iv = 255,
 	.lvl = 28,
-	.species = SPECIES_HITMONCHAN,
-	.heldItem = ITEM_LUCKY_PUNCH,
-	.ability = 0,
-	.moves = {MOVE_CROSS_CHOP, MOVE_STONE_EDGE, MOVE_BULK_UP, MOVE_AGILITY},
+	.species = SPECIES_CROAGUNK,
+	.heldItem = ITEM_EVIOLITE,
+	.ability = 1Y,
+	.moves = {MOVE_SLUDGE_BOMB, MOVE_DRAIN_PUNCH, MOVE_VACUUM_WAVE, MOVE_KNOCK_OFF},
 	},
 	{
 	.iv = 255,
 	.lvl = 30,
-	.species = SPECIES_GURDURR,
+	.species = SPECIES_TIMBURR,
 	.heldItem = ITEM_EVIOLITE,
 	.ability = 0,
 	.moves = {MOVE_DRAIN_PUNCH, MOVE_KNOCK_OFF, MOVE_MACH_PUNCH, MOVE_BULK_UP},
@@ -3565,7 +3565,7 @@ static const struct TrainerMonItemCustomMoves sParty_Wattson1[] = {
 	{
 	.iv = 255,
 	.lvl = 31,
-	.species = SPECIES_LUXIO,
+	.species = SPECIES_SHINX,
 	.heldItem = ITEM_EVIOLITE,
 	.ability = 0,
 	.moves = {MOVE_CRUNCH, MOVE_THUNDER_FANG, MOVE_ICE_FANG, MOVE_FIRE_FANG},
@@ -3573,7 +3573,7 @@ static const struct TrainerMonItemCustomMoves sParty_Wattson1[] = {
 	{
 	.iv = 255,
 	.lvl = 31,
-	.species = SPECIES_FLAAFFY,
+	.species = SPECIES_MAREEP,
 	.heldItem = ITEM_EVIOLITE,
 	.ability = 1,
 	.moves = {MOVE_PARABOLIC_CHARGE, MOVE_SIGNAL_BEAM, MOVE_HIDDEN_POWER, MOVE_TAIL_GLOW},
@@ -3635,10 +3635,10 @@ static const struct TrainerMonItemCustomMoves sParty_Norman1[] = {
 	{
 	.iv = 255,
 	.lvl = 32,
-	.species = SPECIES_AMBIPOM,
-	.heldItem = ITEM_SILK_SCARF,
-	.ability = 0,
-	.moves = {MOVE_FAKE_OUT, MOVE_RETURN, MOVE_LOW_KICK, MOVE_KNOCK_OFF},
+	.species = SPECIES_AIPOM,
+	.heldItem = ITEM_EVIOLITE,
+	.ability = 2,
+	.moves = {MOVE_FAKE_OUT, MOVE_TAIL_SLAP, MOVE_LOW_SWEEP, MOVE_KNOCK_OFF},
 	},
 	{
 	.iv = 255,
@@ -3651,10 +3651,10 @@ static const struct TrainerMonItemCustomMoves sParty_Norman1[] = {
 	{
 	.iv = 255,
 	.lvl = 35,
-	.species = SPECIES_VIGOROTH,
-	.heldItem = ITEM_EVIOLITE,
-	.ability = 0,
-	.moves = {MOVE_DRAIN_PUNCH, MOVE_SHADOW_CLAW, MOVE_BULK_UP, MOVE_SLACK_OFF},
+	.species = SPECIES_MILTANK,
+	.heldItem = ITEM_LEFTOVERS,
+	.ability = 1,
+	.moves = {MOVE_BODY_SLAM, MOVE_HAMMER_ARM, MOVE_CURSE, MOVE_MILK_DRINK},
 	}
 };
 
@@ -3686,10 +3686,10 @@ static const struct TrainerMonItemCustomMoves sParty_Winona1[] = {
 	{
 	.iv = 255,
 	.lvl = 28,
-	.species = SPECIES_FLETCHINDER,
+	.species = SPECIES_FLETCHLING,
 	.heldItem = ITEM_FLYING_GEM,
 	.ability = 2,
-	.moves = {MOVE_BRAVE_BIRD, MOVE_FLARE_BLITZ, MOVE_SWORDS_DANCE, MOVE_ROOST},
+	.moves = {MOVE_BRAVE_BIRD, MOVE_OVERHEAT, MOVE_NONE, MOVE_NONE},
 	}
 };
 
@@ -3697,18 +3697,18 @@ static const struct TrainerMonItemCustomMoves sParty_TateAndLiza1[] = {
 	{
 	.iv = 255,
 	.lvl = 28,
-	.species = SPECIES_NOCTOWL,
-	.heldItem = ITEM_SITRUS_BERRY,
+	.species = SPECIES_HOOTHOOT,
+	.heldItem = ITEM_EVIOLITE,
 	.ability = 1, 
 	.moves = {MOVE_HYPNOSIS, MOVE_HURRICANE, MOVE_HEAT_WAVE, MOVE_ROOST}
 	},
 	{
-	.iv = 255,
+	.iv = 223,
 	.lvl = 29,
-	.species = SPECIES_DARMANITAN_ZEN,
-	.heldItem = ITEM_WEAKNESS_POLICY,
-	.ability = 0,
-	.moves = {MOVE_GRAVEL_STORM, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST, MOVE_TRICK_ROOM},
+	.species = SPECIES_SOLOSIS,
+	.heldItem = ITEM_EVIOLITE,
+	.ability = 1,
+	.moves = {MOVE_PSYCHIC, MOVE_SHADOW_BALL, MOVE_HIDDEN_POWER, MOVE_TRICK_ROOM},
 	},
 	{
 	.iv = 255,
@@ -3740,7 +3740,7 @@ static const struct TrainerMonItemCustomMoves sParty_Juan1[] = {
 	{
 	.iv = 255,
 	.lvl = 28,
-	.species = SPECIES_PRINPLUP,
+	.species = SPECIES_PIPLUP,
 	.heldItem = ITEM_EVIOLITE,
 	.ability = 0,
 	.moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_GRASS_KNOT, MOVE_RAIN_DANCE},
@@ -3748,10 +3748,10 @@ static const struct TrainerMonItemCustomMoves sParty_Juan1[] = {
 	{
 	.iv = 255,
 	.lvl = 28,
-	.species = SPECIES_MARSHTOMP,
+	.species = SPECIES_LOMBRE,
 	.heldItem = ITEM_EVIOLITE,
 	.ability = 0,
-	.moves = {MOVE_EARTHQUAKE, MOVE_DIVE, MOVE_RAIN_DANCE, MOVE_TOXIC},
+	.moves = {MOVE_HYDRO_PUMP, MOVE_GIGA_DRAIN, MOVE_ICE_BEAM, MOVE_RAIN_DANCE},
 	},
 	{
 	.iv = 255,
