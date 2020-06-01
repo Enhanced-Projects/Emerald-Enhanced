@@ -1306,11 +1306,11 @@
 #define FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN                           0x4DF // Unused Flag
 #define FLAG_RYU_HIDE_HAREM_EVENT_DAWN                              0x4E0 // Unused Flag
 #define FLAG_RYU_RECRUITED_MINNIE                                   0x4E1 // Unused Flag
-#define FLAG_UNUSED_0x4E2                                           0x4E2 // Unused Flag
-#define FLAG_UNUSED_0x4E3                                           0x4E3 // Unused Flag
-#define FLAG_UNUSED_0x4E4                                           0x4E4 // Unused Flag
-#define FLAG_UNUSED_0x4E5                                           0x4E5 // Unused Flag
-#define FLAG_UNUSED_0x4E6                                           0x4E6 // Unused Flag
+#define FLAG_RYU_GYARADOSITE                                        0x4E2 // Unused Flag
+#define FLAG_RYU_PINSIRITE                                          0x4E3 // Unused Flag
+#define FLAG_RYU_HERACRONITE                                        0x4E4 // Unused Flag
+#define FLAG_RYU_BEEDRILLITE                                        0x4E5 // Unused Flag
+#define FLAG_RYU_BLASTOISINITE                                      0x4E6 // Unused Flag
 #define FLAG_UNUSED_0x4E7                                           0x4E7 // Unused Flag
 #define FLAG_UNUSED_0x4E8                                           0x4E8 // Unused Flag
 #define FLAG_UNUSED_0x4E9                                           0x4E9 // Unused Flag

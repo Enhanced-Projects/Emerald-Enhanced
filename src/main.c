@@ -72,7 +72,7 @@ s8 gPcmDmaCounter;
 
 static EWRAM_DATA u16 gTrainerId = 0;
 
-//EWRAM_DATA void (**gFlashTimerIntrFunc)(void) = NULL;
+EWRAM_DATA void (**gFlashTimerIntrFunc)(void) = NULL;
 
 static void UpdateLinkAndCallCallbacks(void);
 static void InitMainCallbacks(void);
@@ -120,6 +120,7 @@ void AgbMain()
     CheckForFlashMemory();
     InitMainCallbacks();
     InitMapMusic();
+    SeedRngWithRtc(); //see comment at SeedRngWithRtc declaration below
     ClearDma3Requests();
     ResetBgs();
     SetDefaultFontsPointer();
@@ -169,7 +170,7 @@ void AgbMain()
         }
 
         PlayTimeCounter_Update();
-        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 673);
+        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 680);
         VarSet(VAR_RECYCLE_GOODS, 45454);
         //mgba_open();
         FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
@@ -236,6 +237,14 @@ void EnableVCountIntrAtLine150(void)
     u16 gpuReg = (GetGpuReg(REG_OFFSET_DISPSTAT) & 0xFF) | (150 << 8);
     SetGpuReg(REG_OFFSET_DISPSTAT, gpuReg | DISPSTAT_VCOUNT_INTR);
     EnableInterrupts(INTR_FLAG_VCOUNT);
+}
+
+// oops! FRLG commented this out to remove RTC, however Emerald didnt undo this!
+static void SeedRngWithRtc(void)
+{
+    u32 seed = RtcGetMinuteCount();
+    seed = (seed >> 16) ^ (seed & 0xFFFF);
+    SeedRng(seed);
 }
 
 void InitKeys(void)

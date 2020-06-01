@@ -1948,90 +1948,90 @@ const struct WildPokemonInfo gSeafloorCavern_Entrance_FishingMonsInfo = {10, gSe
 
 const struct WildPokemon gCaveOfOrigin_Entrance_LandMons[] =
 {
-	{30, 30, SPECIES_ZUBAT},
-	{31, 31, SPECIES_ZUBAT},
-	{32, 32, SPECIES_ZUBAT},
-	{33, 33, SPECIES_ZUBAT},
-	{28, 28, SPECIES_DROWZEE},
-	{29, 29, SPECIES_ZUBAT},
-	{33, 33, SPECIES_ONIX},
-	{35, 35, SPECIES_ZUBAT},
-	{33, 33, SPECIES_GOLBAT},
-	{35, 35, SPECIES_GOLBAT},
-	{33, 33, SPECIES_GOLBAT},
-	{46, 46, SPECIES_GOLBAT},
+	{30, 30, SPECIES_UNOWN},
+	{31, 31, SPECIES_UNOWN},
+	{32, 32, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{28, 28, SPECIES_UNOWN},
+	{29, 29, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{35, 35, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{35, 35, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{46, 46, SPECIES_UNOWN},
 };
 
 const struct WildPokemonInfo gCaveOfOrigin_Entrance_LandMonsInfo = {4, gCaveOfOrigin_Entrance_LandMons};
 
 const struct WildPokemon gCaveOfOrigin_1F_LandMons[] =
 {
-	{30, 30, SPECIES_ZUBAT},
-	{31, 31, SPECIES_ZUBAT},
-	{32, 32, SPECIES_ZUBAT},
-	{30, 30, SPECIES_SABLEYE},
-	{32, 32, SPECIES_SABLEYE},
-	{33, 33, SPECIES_SABLEYE},
-	{33, 33, SPECIES_ZUBAT},
-	{33, 33, SPECIES_ZUBAT},
-	{33, 33, SPECIES_GOLBAT},
-	{35, 35, SPECIES_GOLBAT},
-	{33, 33, SPECIES_GOLBAT},
-	{46, 46, SPECIES_GOLBAT},
+	{30, 30, SPECIES_UNOWN},
+	{31, 31, SPECIES_UNOWN},
+	{32, 32, SPECIES_UNOWN},
+	{30, 30, SPECIES_UNOWN},
+	{32, 32, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{35, 35, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{46, 46, SPECIES_UNOWN},
 };
 
 const struct WildPokemonInfo gCaveOfOrigin_1F_LandMonsInfo = {4, gCaveOfOrigin_1F_LandMons};
 
 const struct WildPokemon gCaveOfOrigin_UnusedRubySapphireMap1_LandMons[] =
 {
-	{30, 30, SPECIES_ZUBAT},
-	{31, 31, SPECIES_ZUBAT},
-	{32, 32, SPECIES_ZUBAT},
-	{30, 30, SPECIES_SABLEYE},
-	{32, 32, SPECIES_SABLEYE},
-	{33, 33, SPECIES_SABLEYE},
-	{33, 33, SPECIES_ZUBAT},
-	{33, 33, SPECIES_ZUBAT},
-	{33, 33, SPECIES_GOLBAT},
-	{35, 35, SPECIES_GOLBAT},
-	{33, 33, SPECIES_GOLBAT},
-	{46, 46, SPECIES_GOLBAT},
+	{30, 30, SPECIES_UNOWN},
+	{31, 31, SPECIES_UNOWN},
+	{32, 32, SPECIES_UNOWN},
+	{30, 30, SPECIES_UNOWN},
+	{32, 32, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{35, 35, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{46, 46, SPECIES_UNOWN},
 };
 
 const struct WildPokemonInfo gCaveOfOrigin_UnusedRubySapphireMap1_LandMonsInfo = {4, gCaveOfOrigin_UnusedRubySapphireMap1_LandMons};
 
 const struct WildPokemon gCaveOfOrigin_UnusedRubySapphireMap2_LandMons[] =
 {
-	{30, 30, SPECIES_ZUBAT},
-	{31, 31, SPECIES_ZUBAT},
-	{32, 32, SPECIES_ZUBAT},
-	{30, 30, SPECIES_SABLEYE},
-	{32, 32, SPECIES_SABLEYE},
-	{33, 33, SPECIES_SABLEYE},
-	{33, 33, SPECIES_ZUBAT},
-	{33, 33, SPECIES_ZUBAT},
-	{33, 33, SPECIES_GOLBAT},
-	{35, 35, SPECIES_GOLBAT},
-	{33, 33, SPECIES_GOLBAT},
-	{46, 46, SPECIES_GOLBAT},
+	{30, 30, SPECIES_UNOWN},
+	{31, 31, SPECIES_UNOWN},
+	{32, 32, SPECIES_UNOWN},
+	{30, 30, SPECIES_UNOWN},
+	{32, 32, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{35, 35, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{46, 46, SPECIES_UNOWN},
 };
 
 const struct WildPokemonInfo gCaveOfOrigin_UnusedRubySapphireMap2_LandMonsInfo = {4, gCaveOfOrigin_UnusedRubySapphireMap2_LandMons};
 
 const struct WildPokemon gCaveOfOrigin_UnusedRubySapphireMap3_LandMons[] =
 {
-	{30, 30, SPECIES_ZUBAT},
-	{31, 31, SPECIES_ZUBAT},
-	{32, 32, SPECIES_ZUBAT},
-	{30, 30, SPECIES_SABLEYE},
-	{32, 32, SPECIES_SABLEYE},
-	{33, 33, SPECIES_SABLEYE},
-	{33, 33, SPECIES_ZUBAT},
-	{33, 33, SPECIES_ZUBAT},
-	{33, 33, SPECIES_GOLBAT},
-	{35, 35, SPECIES_GOLBAT},
-	{33, 33, SPECIES_GOLBAT},
-	{46, 46, SPECIES_GOLBAT},
+	{30, 30, SPECIES_UNOWN},
+	{31, 31, SPECIES_UNOWN},
+	{32, 32, SPECIES_UNOWN},
+	{30, 30, SPECIES_UNOWN},
+	{32, 32, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{35, 35, SPECIES_UNOWN},
+	{33, 33, SPECIES_UNOWN},
+	{46, 46, SPECIES_UNOWN},
 };
 
 const struct WildPokemonInfo gCaveOfOrigin_UnusedRubySapphireMap3_LandMonsInfo = {4, gCaveOfOrigin_UnusedRubySapphireMap3_LandMons};

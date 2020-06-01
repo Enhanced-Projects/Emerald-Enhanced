@@ -42,16 +42,18 @@ static void sub_8098154(u8 taskId)
     switch (task->data[0])
     {
         case 0:
-           LoadMessageBoxAndBorderGfx();
-           task->data[0]++;
-           break;
+            LoadMessageBoxAndBorderGfx();
+            task->data[0]++;
+            break;
         case 1:
-           DrawDialogueFrame(0, 1);
-           task->data[0]++;
-           break;
+            DrawDialogueFrame(0, 1);
+            task->data[0]++;
+            break;
         case 2:
             if (RunTextPrintersAndIsPrinter0Active() != 1)
             {
+                if(sFieldMessageBoxMode == 4)
+                    InitStandardTextBoxWindows();
                 sFieldMessageBoxMode = 0;
                 DestroyTask(taskId);
             }
@@ -88,7 +90,7 @@ bool8 ShowFieldMessageOneLine(u8 *str)
     StringExpandPlaceholders(gStringVar4, str);
     AddTextPrinterForMessage(TRUE);
     task_add_textbox();
-    sFieldMessageBoxMode = 2;
+    sFieldMessageBoxMode = 4;
     return TRUE;
 }
 void sub_8098214(u8 taskId)

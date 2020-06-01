@@ -37,8 +37,8 @@
             "type": "trigger",
             "var": "VAR_MT_PYRE_STATE",
             "var_value": "0",
-            "x": 22,
-            "y": 9
+            "x": 18,
+            "y": 6
         },
         {
             "elevation": 3,
@@ -46,8 +46,8 @@
             "type": "trigger",
             "var": "VAR_MT_PYRE_STATE",
             "var_value": "0",
-            "x": 23,
-            "y": 9
+            "x": 18,
+            "y": 7
         },
         {
             "elevation": 3,
@@ -55,8 +55,8 @@
             "type": "trigger",
             "var": "VAR_MT_PYRE_STATE",
             "var_value": "0",
-            "x": 24,
-            "y": 9
+            "x": 18,
+            "y": 5
         },
         {
             "elevation": 3,

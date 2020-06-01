@@ -857,7 +857,6 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     ClearTempFieldEventData();
     ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
-    TryUpdateRandomTrainerRematches(mapGroup, mapNum);
     DoTimeBasedEvents();
     SetSav1WeatherFromCurrMapHeader();
     ChooseAmbientCrySpecies();
@@ -910,7 +909,6 @@ static void mli0_load_map(u32 a1)
     ClearTempFieldEventData();
     ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
-    //TryUpdateRandomTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);//ryumark
     if (a1 != 1)
         DoTimeBasedEvents();
     SetSav1WeatherFromCurrMapHeader();
@@ -1910,6 +1908,7 @@ void CB2_ContinueSavedGame(void)
         ScriptContext2_Enable();
         ScriptContext1_SetupScript(Ryu_StartRandomBattle);
     }
+    
     if (UseContinueGameWarp() == TRUE)
     {
         ClearContinueGameWarpStatus();

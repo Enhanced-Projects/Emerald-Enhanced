@@ -1046,10 +1046,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_EELEKTROSS_3] = {
         .species = SPECIES_EELEKTROSS,
-        .moves = {MOVE_THUNDERBOLT, MOVE_FLAMETHROWER, MOVE_GIGA_DRAIN, MOVE_SUPERPOWER},
-        .heldItem = ITEM_EXPERT_BELT,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_RASH,
+        .moves = {MOVE_THUNDERBOLT, MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_VOLT_SWITCH},
+        .heldItem = ITEM_ASSAULT_VEST,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_MODEST,
         .ivs = 31,
         .ability = 0
     },
@@ -1136,11 +1136,11 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_UNOWN] = {
         .species = SPECIES_UNOWN,
-        .moves = {MOVE_SECRET_POWER, MOVE_NONE, MOVE_NONE, MOVE_NONE},
-        .heldItem = ITEM_CHOICE_BAND,
-        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_ADAMANT,
-        .ivs = 17,
+        .moves = {MOVE_COSMIC_POWER, MOVE_MOONLIGHT, MOVE_STORED_POWER, MOVE_DAZZLING_GLEAM},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_MODEST,
+        .ivs = 31,
         .ability = 0
     },
     [FRONTIER_MON_DRAGALGE_3] = {
@@ -1352,12 +1352,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_PROBOPASS] = {
         .species = SPECIES_PROBOPASS,
-        .moves = {MOVE_POWER_GEM, MOVE_STEALTH_ROCK, MOVE_THUNDER_WAVE, MOVE_VOLT_SWITCH},
-        .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_CALM,
+        .moves = {MOVE_POWER_GEM, MOVE_DISCHARGE, MOVE_EARTH_POWER, MOVE_VOLT_SWITCH},
+        .heldItem = ITEM_ASSAULT_VEST,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_MODEST,
         .ivs = 31,
-        .ability = 0
+        .ability = 2
     },
     [FRONTIER_MON_CORSOLA] = {
         .species = SPECIES_CORSOLA,
@@ -4090,10 +4090,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_CHARIZARD_1] = {
         .species = SPECIES_CHARIZARD,
-        .moves = {MOVE_BELLY_DRUM, MOVE_ACROBATICS, MOVE_OVERHEAT, MOVE_SUBSTITUTE},
-        .heldItem = ITEM_SALAC_BERRY,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_NAUGHTY,
+        .moves = {MOVE_ACROBATICS, MOVE_EARTHQUAKE, MOVE_OVERHEAT, MOVE_DRAGON_DANCE},
+        .heldItem = ITEM_FLYING_GEM,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_NAIVE,
         .ivs = 31,
         .ability = 0
     },
@@ -4531,7 +4531,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_EELEKTROSS_1] = {
         .species = SPECIES_EELEKTROSS,
-        .moves = {MOVE_THUNDER_PUNCH, MOVE_DRAIN_PUNCH, MOVE_COIL, MOVE_SUBSTITUTE},
+        .moves = {MOVE_THUNDER_PUNCH, MOVE_ICE_PUNCH, MOVE_COIL, MOVE_SUBSTITUTE},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_CAREFUL,
@@ -4639,7 +4639,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_AMBIPOM_1] = {
         .species = SPECIES_AMBIPOM,
-        .moves = {MOVE_FAKE_OUT, MOVE_RETURN, MOVE_LOW_KICK, MOVE_KNOCK_OFF},
+        .moves = {MOVE_FAKE_OUT, MOVE_SLAM, MOVE_LOW_KICK, MOVE_KNOCK_OFF},
         .heldItem = ITEM_SILK_SCARF,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
@@ -6259,8 +6259,8 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_EELEKTROSS_2] = {
         .species = SPECIES_EELEKTROSS,
-        .moves = {MOVE_VOLT_SWITCH, MOVE_FLAMETHROWER, MOVE_GIGA_DRAIN, MOVE_DRAGON_PULSE},
-        .heldItem = ITEM_ASSAULT_VEST,
+        .moves = {MOVE_THUNDERBOLT, MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_FLAMETHROWER},
+        .heldItem = ITEM_EXPERT_BELT,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
         .ivs = 31,

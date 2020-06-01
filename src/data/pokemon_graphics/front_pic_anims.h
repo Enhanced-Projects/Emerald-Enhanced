@@ -8368,7 +8368,7 @@ static const union AnimCmd sAnim_MINIOR_CORE_1[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_WISHIWASHI_SCHOOL_1[] =
+static const union AnimCmd sAnim_UNOWN_SCHOOL_1[] =
 {
     ANIMCMD_FRAME(0, 1),
     ANIMCMD_END,
@@ -13074,9 +13074,9 @@ static const union AnimCmd *const sAnims_MINIOR_CORE[] ={
     sAnim_MINIOR_CORE_1,
 };
 
-static const union AnimCmd *const sAnims_WISHIWASHI_SCHOOL[] ={
+static const union AnimCmd *const sAnims_UNOWN_SCHOOL[] ={
     sAnim_GeneralFrame0,
-    sAnim_WISHIWASHI_SCHOOL_1,
+    sAnim_UNOWN_SCHOOL_1,
 };
 
 static const union AnimCmd *const sAnims_KYUREM_BLACK[] ={
@@ -14008,7 +14008,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
     ANIM_CMD(AEGISLASH_BLADE),
     ANIM_CMD(HOOPA_UNBOUND),
     ANIM_CMD(MINIOR_CORE),
-    ANIM_CMD(WISHIWASHI_SCHOOL),
+    ANIM_CMD(UNOWN_SCHOOL),
     ANIM_CMD(KYUREM_BLACK),
     ANIM_CMD(KYUREM_WHITE),
     ANIM_CMD(MIMIKYU_BUSTED),

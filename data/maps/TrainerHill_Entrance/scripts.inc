@@ -154,20 +154,58 @@ TrainerHill_Entrance_EventScript_Info:: @ 82682BA
 	end
 
 TrainerHill_Entrance_EventScript_ChooseChallenge:: @ 82682C8
+	setflag FLAG_RYU_WAYSTONE_DISABLED
 	multichoice 13, 2, MULTI_TAG_MATCH_TYPE, 0
 	switch VAR_RESULT
+	case 0, TrainerHill_EnterLegend
+	case 1, TrainerHill_EnterMythic
+	case 2, TrainerHill_EnterBeast
+	case 3, TrainerHill_EnterMixed
 	case 4, TrainerHill_Entrance_EventScript_CancelEntry
 	case MULTI_B_PRESSED, TrainerHill_Entrance_EventScript_CancelEntry
+	goto TrainerHill_Entrance_EventScript_CancelEntry
+	
+TrainerHill_EnterLegend::
+	setvar VAR_RYU_TRAINER_HILL_MODE, 0
+	goto TrainerHill_Enter
+	
+TrainerHill_EnterMythic::
+	setvar VAR_RYU_TRAINER_HILL_MODE, 1
+	goto TrainerHill_Enter
+	
+TrainerHill_EnterBeast::
+	setvar VAR_RYU_TRAINER_HILL_MODE, 2
+	goto TrainerHill_Enter
+	
+TrainerHill_EnterMixed::
+	setvar VAR_RYU_TRAINER_HILL_MODE, 3
+	goto TrainerHill_Enter
+	
+TrainerHill_Enter::
 	trainerhill_settag VAR_RESULT
 	setvar VAR_TRAINER_HILL_IS_ACTIVE, 1
 	setvar VAR_TEMP_5, 0
 	special HealPlayerParty
 	msgbox TrainerHill_Entrance_Text_TimeProgessGetSetGo, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, TH_GoToElevator
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_TK_KASYA
 	trainerhill_start
+	waitse
+	warpsilent MAP_TRAINER_HILL_1F, 255, 2, 4
 	releaseall
 	end
+	
+TH_GoToElevator:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
 
 TrainerHill_Entrance_EventScript_CancelEntry:: @ 8268314
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setvar VAR_TEMP_5, 0
 	msgbox TrainerHill_Entrance_Text_PleaseVisitUsAgain, MSGBOX_DEFAULT
 	closemessage
@@ -188,10 +226,12 @@ TrainerHill_Entrance_EventScript_SaveGame:: @ 826832E
 
 TrainerHill_Entrance_EventScript_SaveFailed:: @ 826835C
 	trainerhill_clearsaved
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	goto TrainerHill_Entrance_EventScript_CancelEntry
 	end
 
 TrainerHill_Entrance_EventScript_Closed:: @ 826836A
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	msgbox TrainerHill_Entrance_Text_StillGettingReady, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, TrainerHill_Entrance_Movement_PushPlayerBackFromCounter
@@ -200,7 +240,7 @@ TrainerHill_Entrance_EventScript_Closed:: @ 826836A
 	end
 
 TrainerHill_Entrance_Movement_PlayerFaceAttendant: @ 826837F
-	face_right
+	face_left
 	step_end
 
 TrainerHill_Entrance_Movement_PushPlayerBackFromCounter: @ 8268381
@@ -296,17 +336,17 @@ TrainerHill_Entrance_Pokemart_Expanded: @ 8268414
 	end
 
 TrainerHill_Entrance_Text_StillGettingReady: @ 8268430
-	.string "This is the Trainer HILL where\n"
-	.string "you may enjoy tag battles with many\l"
-	.string "Trainers.\p"
+	.string "This is the Trainer Hill where\n"
+	.string "you may enjoy battles with many\l"
+	.string "powerful trainers.\p"
 	.string "Unfortunately, we're still getting\n"
 	.string "things ready. Please come back later!$"
 
 TrainerHill_Entrance_Text_WelcomeToTrainerHill: @ 82684C6
 	.string "Welcome!\p"
-	.string "This is the Trainer HILL where\n"
-	.string "you may enjoy tag battles with many\l"
-	.string "Trainers!$"
+	.string "This is the Trainer Hill where\n"
+	.string "you may enjoy battles with many\l"
+	.string "powerful trainers!$"
 
 TrainerHill_Entrance_Text_SaveGameBeforeEnter: @ 826851C
 	.string "Is this your first visit here?\p"
@@ -319,21 +359,16 @@ TrainerHill_Entrance_Text_TrainersUpToFloorX: @ 8268564
 	.string "Up to floor no. {STR_VAR_1}.$"
 
 TrainerHill_Entrance_Text_TrainersInEveryRoom: @ 826859E
-	.string "Let's see…\n"
-	.string "The Trainers here now are…\p"
-	.string "There appear to be Trainers gathered\n"
-	.string "in every room.$"
+	.string "There is no timer, so you can\n"
+	.string "take your time.$"
 
 TrainerHill_Entrance_Text_LikeToChallengeTrainers: @ 82685F8
 	.string "Would you like to challenge the\n"
 	.string "waiting Trainers?$"
 
 TrainerHill_Entrance_Text_TimeProgessGetSetGo: @ 826862A
-	.string "I will time your progress.\n"
-	.string "Best of luck!\p"
-	.string "On your marks…\p"
-	.string "Get set…\p"
-	.string "Go!$"
+	.string "If you wish to quit, you can take\n"
+	.string "the middle door in each room.$"
 
 TrainerHill_Entrance_Text_PleaseVisitUsAgain: @ 826866F
 	.string "Please do visit us again!$"
@@ -348,7 +383,7 @@ TrainerHill_Entrance_Text_HopeYouGiveItYourBest: @ 82686F4
 	.string "I hope you give it your best.$"
 
 TrainerHill_Entrance_Text_MovedReceptionHereForSwitch: @ 8268712
-	.string "When the Trainers switch places,\n"
+	.string "When the trainers switch places,\n"
 	.string "the movement can be hectic.\p"
 	.string "To avoid the stampede, we moved\n"
 	.string "the reception counter here.\p"
@@ -358,14 +393,17 @@ TrainerHill_Entrance_Text_ThankYouForPlaying: @ 82687AC
 	.string "Thank you for playing!$"
 
 TrainerHill_Entrance_Text_ExplainTrainerHill: @ 82687C3
-	.string "Here at the Trainer HILL, we conduct\n"
-	.string "an event called the Time Attack.\p"
-	.string "It is a race that measures how long\n"
-	.string "you take to reach our owner on\l"
-	.string "the rooftop from this counter.\p"
-	.string "The fastest times are posted on\n"
-	.string "the Time Board--try competing with\l"
-	.string "your friends.\p"
+	.string "Here at Trainer Hill, you will battle\n"
+	.string "the strongest pokemon in the world!\p"
+	.string "You can bring any pokemon you wish.\p"
+	.string "Legend Mode has you battle against\n"
+	.string "Legendary pokemon,\p"
+	.string "Mythic Mode has you battle against\n"
+	.string "Mythical pokemon,\p"
+	.string "Beast Mode has you battle against\n"
+	.string "Ultra Beasts,\p"
+	.string "and finally, Mixed Mode combines all\n"
+	.string "for the greatest challenge!\p"
 	.string "In Trainer battles along the way,\n"
 	.string "neither Exp. Points nor money will\l"
 	.string "be awarded.$"
@@ -375,7 +413,7 @@ TrainerHill_Entrance_Text_NeedAtLeastTwoPokemon: @ 826890D
 	.string "Oh, I'm sorry, but you appear to have\n"
 	.string "only one Pokémon with you.\p"
 	.string "You will need at least two Pokémon\n"
-	.string "to enter this event.$"
+	.string "to enter this facility.$"
 
 TrainerHill_Roof_Text_YouFinallyCameBravo: @ 8268986
 	.string "Hm! Hm!\p"
@@ -385,7 +423,7 @@ TrainerHill_Roof_Text_YouFinallyCameBravo: @ 8268986
 	.string "I know why you came all the way\l"
 	.string "here by yourself!\p"
 	.string "You wanted to see me, the owner\n"
-	.string "of the Trainer HILL, because…\p"
+	.string "of the Trainer Hill, because…\p"
 	.string "You want to form a tag team with me!\n"
 	.string "Wa-hoo!\p"
 	.string "…Uh?\n"
@@ -402,27 +440,19 @@ TrainerHill_Roof_Text_FullUpBeBackLaterForThis: @ 8268B07
 	.string "You'll be back later for this!$"
 
 TrainerHill_Roof_Text_GotHereMarvelouslyQuickly: @ 8268B43
-	.string "Oh, hold on here! Did you possibly get\n"
-	.string "here marvelously quickly?\p"
-	.string "How splendid! You needn't have\n"
-	.string "hurried so to see me!\p"
-	.string "That is so delightful. I'll have the Time\n"
-	.string "Board at the reception updated!$"
+	.string "It takes a lot of skill to beat\n"
+	.string "these powerful pokemon!$"
 
 TrainerHill_Roof_Text_YouWerentVeryQuick: @ 8268C03
-	.string "But, oh…\n"
-	.string "You weren't very quick getting here.$"
+	.string "It takes a lot of skill to beat\n"
+	.string "these powerful pokemon!$"
 
 TrainerHill_Roof_Text_ArriveZippierNextTime: @ 8268C31
-	.string "Perhaps it would please me more if you\n"
-	.string "arrived zippier next time.\p"
-	.string "Then, I should be pleased to form\n"
-	.string "a tag team with you!\p"
 	.string "Until we meet again, amigo!$"
 
 @ Unused
 TrainerHill_Roof_Text_BuiltTrainerHillToFindPartner: @ 8268CC6
-	.string "I had the Trainer HILL built for but\n"
+	.string "I had the Trainer Hill built for but\n"
 	.string "one reason and one only!\p"
 	.string "To find the most suitable partner\n"
 	.string "with whom I may form a tag team!$"
@@ -438,15 +468,14 @@ TrainerHill_Entrance_Text_WhatSortOfTrainersAreAhead: @ 8268D5A
 
 TrainerHill_Entrance_Text_CantWaitToTestTheWaters: @ 8268DDA
 	.string "I heard tough Trainers come to this\n"
-	.string "Trainer HILL from all over.\p"
+	.string "Trainer Hill from all over.\p"
 	.string "I can't wait to test the waters!\p"
 	.string "I'll knock aside anyone that stands\n"
 	.string "in my way!$"
 
 TrainerHill_Entrance_Text_FriendsTryingToReachTimeBoardTop: @ 8268E6A
-	.string "Do you see the Time Board over there?\p"
-	.string "My friends and I are trying to see who\n"
-	.string "can reach the top in the least time.$"
+	.string "I thought my Heatran-Manaphy combo\n"
+	.string "was perfect, until I faced a Kyogre!$"
 
 TrainerHill_Entrance_Text_DoYouKnowWhenTheyOpen: @ 8268EDC
 	.string "Do you know when they're opening\n"
@@ -455,5 +484,5 @@ TrainerHill_Entrance_Text_DoYouKnowWhenTheyOpen: @ 8268EDC
 	.string "challenger ever!$"
 
 TrainerHill_Elevator_Text_ReturnToReception: @ 8268F3E
-	.string "Would you like to return to\n"
-	.string "the reception counter?$"
+	.string "Returning you to the\n"
+	.string "reception counter.$"

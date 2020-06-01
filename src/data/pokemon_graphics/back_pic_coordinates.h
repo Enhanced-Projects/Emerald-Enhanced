@@ -4610,7 +4610,7 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = 0x66,
         .y_offset = 0x12,
     },
-    [SPECIES_WISHIWASHI_SCHOOL] =
+    [SPECIES_UNOWN_SCHOOL] =
     {
         .size = 0x66,
         .y_offset = 0x8,

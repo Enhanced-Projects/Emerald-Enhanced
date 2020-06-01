@@ -4,7 +4,7 @@ BattleFrontier_ExchangeServiceCorner_MapScripts:: @ 825F070
 BF_GetRandomMon::
 	goto_if_unset FLAG_RYU_FRONTIER_MODE, BF_NoFrontierModeIntro
 	msgbox WelcomeToFrontierMonStore
-	checkbp
+	specialvar VAR_RESULT, GetFrontierBattlePoints
 	buffernumberstring 0, VAR_RESULT
 	msgbox YouCurrentlyHave
 	closemessage
@@ -14,10 +14,11 @@ BF_GetRandomMon::
 	msgbox FrontierMonQuery  MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne BF_RandomMonDeclined
-	checkbp
+	specialvar VAR_RESULT, GetFrontierBattlePoints
 	compare VAR_RESULT, 40
 	goto_if_lt BF_CantAffordMon
-	takebp 40
+	setvar VAR_0x8004, 40
+	special TakeFrontierBattlePoints
 	special RyuGiveFrontierMon
 	delay 50
 	msgbox gratz

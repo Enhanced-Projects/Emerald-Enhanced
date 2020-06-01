@@ -34,6 +34,7 @@
 #include "constants/easy_chat.h"
 #include "constants/trainer_hill.h"
 #include "constants/trainer_types.h"
+#include "random.h"
 
 #define HILL_TAG_NORMAL 0
 #define HILL_TAG_VARIETY 1
@@ -165,7 +166,7 @@ static const u16 sPrizeListElixir2[]     = {ITEM_ELIXIR,           ITEM_ETHER, I
 static const u16 sPrizeListBrickBreak[]  = {ITEM_TM31_BRICK_BREAK, ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
 static const u16 sPrizeListTorment[]     = {ITEM_TM41_TORMENT,     ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
 static const u16 sPrizeListSkillSwap[]   = {ITEM_TM48_SKILL_SWAP,  ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
-static const u16 sPrizeListGigaSwap[]    = {ITEM_TM19_GIGA_DRAIN,  ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
+static const u16 sPrizeListGigaDrain[]   = {ITEM_TM19_GIGA_DRAIN,  ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
 static const u16 sPrizeListAttract[]     = {ITEM_TM45_ATTRACT,     ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
 
 static const u16 *const sPrizeLists1[NUM_TRAINER_HILL_PRIZE_LISTS] =
@@ -192,7 +193,7 @@ static const u16 *const sPrizeLists2[NUM_TRAINER_HILL_PRIZE_LISTS] =
 	sPrizeListBrickBreak,
 	sPrizeListTorment,
 	sPrizeListSkillSwap,
-	sPrizeListGigaSwap,
+	sPrizeListGigaDrain,
 	sPrizeListAttract
 };
 
@@ -1105,4 +1106,95 @@ static u16 GetPrizeItemId(void)
         id = 5;
 
     return prizeList[id];
+}
+
+//New trainer hill reward tables. There's no limit to the size of these arrays, and the function below will scale up to match
+
+const u16 sTrainerHillLegendRewards[] = {//legends reward table
+    ITEM_RARE_CANDY,
+    ITEM_LUXURY_BALL,
+};
+
+const u16 sTrainerHillMythicRewards[] = {//mythics reward table
+    ITEM_RARE_CANDY,
+    ITEM_LUXURY_BALL,
+};
+
+const u16 sTrainerHillBeastRewards[] = {//beast reward table
+    ITEM_RARE_CANDY,
+    ITEM_LUXURY_BALL,
+};
+
+const u16 sTrainerHillMixedRewards[] = {//mixed reward table
+    ITEM_RARE_CANDY,
+    ITEM_LUXURY_BALL,
+};
+
+
+int RyuGetTrainerHillReward(void)
+{
+    u8 mode = (VarGet(VAR_RYU_TRAINER_HILL_MODE));//game's variable for which th mode you are in
+
+    if (!(FlagGet(FLAG_RYU_BLASTOISINITE) == 1) &&//if player does NOT already have this AND
+     ((FlagGet(FLAG_RYU_BEEDRILLITE) == 1) &&//has this
+     (FlagGet(FLAG_RYU_GYARADOSITE) == 1) &&//has this
+     (FlagGet(FLAG_RYU_HERACRONITE) == 1) &&//has this
+     (FlagGet(FLAG_RYU_PINSIRITE) == 1)))//has this
+       {
+        FlagSet(FLAG_RYU_BLASTOISINITE);//then do this
+        return ITEM_BLASTOISINITE;
+       }
+
+    switch (mode)
+    {
+        case 0://Legend Mode
+        {
+            if (FlagGet(FLAG_RYU_GYARADOSITE) == 1)
+            {
+                return sTrainerHillLegendRewards[Random() %ARRAY_COUNT(sTrainerHillLegendRewards)];
+            }
+            else
+            {   
+                FlagSet(FLAG_RYU_GYARADOSITE);
+                return ITEM_GYARADOSITE;
+            }
+        }
+        case 1://Mythic Mode
+        {
+            if (FlagGet(FLAG_RYU_PINSIRITE) == 1)
+            {
+                return sTrainerHillMythicRewards[Random() %ARRAY_COUNT(sTrainerHillMythicRewards)];
+            }
+            else
+            {
+                FlagSet(FLAG_RYU_PINSIRITE);
+                return ITEM_PINSIRITE;
+            }
+        }
+        case 2://Beast Mode
+        {
+            if (FlagGet(FLAG_RYU_HERACRONITE) == 1)
+            {
+                return sTrainerHillBeastRewards[Random() %ARRAY_COUNT(sTrainerHillBeastRewards)];
+            }
+            else
+            {
+                FlagSet(FLAG_RYU_HERACRONITE);
+                return ITEM_HERACRONITE;
+            }
+        }
+        case 3://Mixed Mode
+        {
+            if (FlagGet(FLAG_RYU_BEEDRILLITE) == 1)
+            {
+                return sTrainerHillMixedRewards[Random() %ARRAY_COUNT(sTrainerHillMixedRewards)];
+            }
+            else
+            {
+                FlagSet(FLAG_RYU_BEEDRILLITE);
+                return ITEM_BEEDRILLITE;
+            }
+        }
+    }
+    
 }

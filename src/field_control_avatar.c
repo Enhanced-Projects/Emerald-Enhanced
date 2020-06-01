@@ -863,30 +863,30 @@ static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPositi
 {
     const struct WarpEvent *warpEvent;
 
-    u8 trainerHillMapId = GetCurrentTrainerHillMapId();
-
-    if (trainerHillMapId)
-    {
-        if (trainerHillMapId == GetNumFloorsInTrainerHillChallenge())
-        {
-            if (warpEventId == 0)
-                warpEvent = &gMapHeader.events->warps[0];
-            else
-                warpEvent = SetWarpDestinationTrainerHill4F();
-        }
-        else if (trainerHillMapId == TRAINER_HILL_ROOF)
-        {
-            warpEvent = SetWarpDestinationTrainerHillFinalFloor(warpEventId);
-        }
-        else
-        {
-            warpEvent = &gMapHeader.events->warps[warpEventId];
-        }
-    }
-    else
-    {
+    //u8 trainerHillMapId = GetCurrentTrainerHillMapId();
+    //
+    //if (trainerHillMapId)
+    //{
+    //    if (trainerHillMapId == GetNumFloorsInTrainerHillChallenge())
+    //    {
+    //        if (warpEventId == 0)
+    //            warpEvent = &gMapHeader.events->warps[0];
+    //        else
+    //            warpEvent = SetWarpDestinationTrainerHill4F();
+    //    }
+    //    else if (trainerHillMapId == TRAINER_HILL_ROOF)
+    //    {
+    //        warpEvent = SetWarpDestinationTrainerHillFinalFloor(warpEventId);
+    //    }
+    //    else
+    //    {
+    //        warpEvent = &gMapHeader.events->warps[warpEventId];
+    //    }
+    //}
+    //else
+    //{
         warpEvent = &gMapHeader.events->warps[warpEventId];
-    }
+    //}
 
     if (warpEvent->mapNum == MAP_NUM(NONE))
     {

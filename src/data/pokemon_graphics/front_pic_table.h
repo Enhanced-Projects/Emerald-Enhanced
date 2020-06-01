@@ -902,7 +902,7 @@ const struct CompressedSpriteSheet gMonFrontPicTable[] =
     SPECIES_SPRITE(AEGISLASH_BLADE, gMonFrontPic_AegislashBlade),
     SPECIES_SPRITE(HOOPA_UNBOUND, gMonFrontPic_HoopaUnbound),
     SPECIES_SPRITE(MINIOR_CORE, gMonFrontPic_MiniorCore),
-    SPECIES_SPRITE(WISHIWASHI_SCHOOL, gMonFrontPic_WishiwashiSchool),
+    SPECIES_SPRITE(UNOWN_SCHOOL, gMonFrontPic_UnownSchool),
     SPECIES_SPRITE(KYUREM_BLACK, gMonFrontPic_KyuremBlack),
     SPECIES_SPRITE(KYUREM_WHITE, gMonFrontPic_KyuremWhite),
     SPECIES_SPRITE(MIMIKYU_BUSTED, gMonFrontPic_MimikyuBusted),

@@ -23,9 +23,9 @@ TrainerHill_Elevator_EventScript_EnterElevator:: @ 8269375
 	applymovement 1, TrainerHill_Elevator_Movement_AttendantFacePlayer
 	waitmovement 0
 	lockall
-	msgbox TrainerHill_Elevator_Text_ReturnToReception, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq TrainerHill_Elevator_EventScript_ExitToRoof
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	trainerhill_lost
+	msgbox TrainerHill_Elevator_Text_ReturnToReception
 	releaseall
 	applymovement 1, TrainerHill_Elevator_Movement_AttendantFaceDown
 	waitmovement 0
