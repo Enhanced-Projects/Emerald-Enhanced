@@ -642,6 +642,7 @@ gBattleAnims_Moves::
 	.4byte Move_REAPING_BLOW
 	.4byte Move_BLAST_OFF
 @@@@@@@@@@@@ GEN 7 @@@@@@@@@@@@
+	.4byte 0
 	.4byte Move_SHORE_UP
 	.4byte Move_FIRST_IMPRESSION
 	.4byte Move_BANEFUL_BUNKER
@@ -10220,34 +10221,6 @@ Move_FIRST_IMPRESSION::
 	clearmonbg ANIM_TARGET
 	end
 
-
-Move_BANEFUL_BUNKER::
-	loadspritegfx ANIM_TAG_PROTECT @protect
-	loadspritegfx ANIM_TAG_POISON_BUBBLE @poison
-	monbg ANIM_ATK_PARTNER
-	monbgprio_28 ANIM_ATTACKER
-	waitplaysewithpan SE_W115, SOUND_PAN_ATTACKER 0x10
-	launchtemplate gProtectSpriteTemplate 0x2 0x3 0x18 0x0 0x5a
-	launchtemplate gBanefulBunkerPoisonBubbleTemplate 0x2 0x4 0xa 0xa 0x19 0x0
-	delay 0x4
-	launchtemplate gBanefulBunkerPoisonBubbleTemplate 0x2 0x4 0xfff1 0x0 0x19 0x0
-	delay 0x4
-	launchtemplate gBanefulBunkerPoisonBubbleTemplate 0x2 0x4 0x14 0xa 0x19 0x0
-	delay 0x4
-	launchtemplate gBanefulBunkerPoisonBubbleTemplate 0x2 0x4 0x0 0xfff6 0x19 0x0
-	delay 0x4
-	launchtemplate gBanefulBunkerPoisonBubbleTemplate 0x2 0x4 0xfff6 0xf 0x19 0x0
-	delay 0x4
-	launchtemplate gBanefulBunkerPoisonBubbleTemplate 0x2 0x4 0x19 0x14 0x19 0x0
-	delay 0x4
-	launchtemplate gBanefulBunkerPoisonBubbleTemplate 0x2 0x4 0xffec 0x14 0x19 0x0
-	delay 0x4
-	launchtemplate gBanefulBunkerPoisonBubbleTemplate 0x2 0x4 0xc 0x0 0x19 0x0
-	waitforvisualfinish
-	clearmonbg ANIM_ATK_PARTNER
-	end
-
-
 Move_SPIRIT_SHACKLE::
 	loadspritegfx ANIM_TAG_SPIRIT_ARROW @Arrow
 	loadspritegfx ANIM_TAG_CHAIN_LINK @Chain
@@ -15206,7 +15179,7 @@ Move_DEFENSE_CURL:
 	waitforvisualfinish
 	end
 
-Move_EE_PROTECT:
+Move_BANEFUL_BUNKER:
 Move_PROTECT:
 	loadspritegfx ANIM_TAG_PROTECT
 	monbg ANIM_ATK_PARTNER
