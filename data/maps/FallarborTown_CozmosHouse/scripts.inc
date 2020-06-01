@@ -24,6 +24,8 @@ FallarborTown_CozmosHouse_EventScript_ProfCozmo:: @ 8200F13
 	compare VAR_RESULT, 1
 	goto_if_eq FT_AlreadyHaveMeteorite
 	setflag FLAG_RYU_DEVON_MISSION3START
+	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
 	release
 	end
 	

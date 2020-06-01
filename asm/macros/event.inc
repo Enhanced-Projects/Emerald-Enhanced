@@ -1667,6 +1667,10 @@
 	.4byte \text
 	.endm
 
+	.macro dominingcheck
+	.byte 0xf4
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req
