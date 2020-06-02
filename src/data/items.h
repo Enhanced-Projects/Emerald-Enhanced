@@ -983,6 +983,176 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
+    
+    [ITEM_DARK_SHARD] =
+    {
+        .name = _("Dark Shard"),
+        .itemId = ITEM_DARK_SHARD,
+        .price = 1000,
+        .description = sGreenShardDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_LIGHT_SHARD] =
+    {
+        .name = _("Light Shard"),
+        .itemId = ITEM_LIGHT_SHARD,
+        .price = 1000,
+        .description = sGreenShardDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_CYAN_SHARD] =
+    {
+        .name = _("Cyan Shard"),
+        .itemId = ITEM_CYAN_SHARD,
+        .price = 1000,
+        .description = sGreenShardDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_GLOSSY_SHARD] =
+    {
+        .name = _("Gloss Shard"),
+        .itemId = ITEM_GLOSSY_SHARD,
+        .price = 1000,
+        .description = sGreenShardDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_GOLD_SHARD] =
+    {
+        .name = _("Gold Shard"),
+        .itemId = ITEM_GOLD_SHARD,
+        .price = 1000,
+        .description = sGreenShardDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_GRAY_SHARD] =
+    {
+        .name = _("Gray Shard"),
+        .itemId = ITEM_GRAY_SHARD,
+        .price = 1000,
+        .description = sGreenShardDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_RARE_GEM_ORE] =
+    {
+        .name = _("Gem Ore(R)"),
+        .itemId = ITEM_RARE_GEM_ORE,
+        .price = 500,
+        .description = sGemOreDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_UNCOMMON_GEM_ORE] =
+    {
+        .name = _("Gem Ore(U)"),
+        .itemId = ITEM_UNCOMMON_GEM_ORE,
+        .price = 250,
+        .description = sGemOreDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_COMMON_GEM_ORE] =
+    {
+        .name = _("Gem Ore(C)"),
+        .itemId = ITEM_COMMON_GEM_ORE,
+        .price = 100,
+        .description = sGemOreDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_COPPER_ORE] =
+    {
+        .name = _("Copper Ore"),
+        .itemId = ITEM_COPPER_ORE,
+        .price = 512,
+        .description = sCopperOreDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_SILVER_ORE] =
+    {
+        .name = _("Silver Ore"),
+        .itemId = ITEM_SILVER_ORE,
+        .price = 768,
+        .description = sSilverOreDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_GOLD_ORE] =
+    {
+        .name = _("Gold Ore"),
+        .itemId = ITEM_GOLD_ORE,
+        .price = 1536,
+        .description = sGoldOreDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_FOSSIL_ORE] =
+    {
+        .name = _("Fossil Ore"),
+        .itemId = ITEM_FOSSIL_ORE,
+        .price = 600,
+        .description = sFossilOreDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_SHARD_ORE] =
+    {
+        .name = _("Shard Ore"),
+        .itemId = ITEM_SHARD_ORE,
+        .price = 400,
+        .description = sShardOreDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+
 
 // Vitamins
 
@@ -6031,48 +6201,6 @@ const struct Item gItems[] =
         .secondaryId = TYPE_WATER,
     },
 
-    [ITEM_FLAME_PLATE] =
-    {
-        .name = _("Flame Plate"),
-        .itemId = ITEM_FLAME_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_FIRE_POWER,
-        .holdEffectParam = 20,
-        .description = sFlamePlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
-    },
-
-    [ITEM_SPLASH_PLATE] =
-    {
-        .name = _("Splash Plate"),
-        .itemId = ITEM_SPLASH_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_WATER_POWER,
-        .holdEffectParam = 20,
-        .description = sSplashPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
-    },
-
-    [ITEM_ZAP_PLATE] =
-    {
-        .name = _("Zap Plate"),
-        .itemId = ITEM_ZAP_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_ELECTRIC_POWER,
-        .holdEffectParam = 20,
-        .description = sZapPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
-    },
-
     [ITEM_MEADOW_PLATE] =
     {
         .name = _("Meadow Plate"),
@@ -6095,20 +6223,6 @@ const struct Item gItems[] =
         .holdEffect = HOLD_EFFECT_ICE_POWER,
         .holdEffectParam = 20,
         .description = sIciclePlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
-    },
-
-    [ITEM_FIST_PLATE] =
-    {
-        .name = _("Fist Plate"),
-        .itemId = ITEM_FIST_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_FIGHTING_POWER,
-        .holdEffectParam = 20,
-        .description = sFistPlateDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -6171,33 +6285,6 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_INSECT_PLATE] =
-    {
-        .name = _("Insect Plate"),
-        .itemId = ITEM_INSECT_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_BUG_POWER,
-        .holdEffectParam = 20,
-        .description = sInsectPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
-    },
-
-    [ITEM_STONE_PLATE] =
-    {
-        .name = _("Stone Plate"),
-        .itemId = ITEM_STONE_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_ROCK_POWER,
-        .holdEffectParam = 20,
-        .description = sStonePlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
-    },
 
     [ITEM_SPOOKY_PLATE] =
     {
@@ -6207,48 +6294,6 @@ const struct Item gItems[] =
         .holdEffect = HOLD_EFFECT_GHOST_POWER,
         .holdEffectParam = 20,
         .description = sSpookyPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
-    },
-
-    [ITEM_DRACO_PLATE] =
-    {
-        .name = _("Draco Plate"),
-        .itemId = ITEM_DRACO_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_DRAGON_POWER,
-        .holdEffectParam = 20,
-        .description = sDracoPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
-    },
-
-    [ITEM_DREAD_PLATE] =
-    {
-        .name = _("Dread Plate"),
-        .itemId = ITEM_DREAD_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_DARK_POWER,
-        .holdEffectParam = 20,
-        .description = sDreadPlateDesc,
-        .pocket = POCKET_ITEMS,
-        .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
-    },
-
-    [ITEM_IRON_PLATE] =
-    {
-        .name = _("Iron Plate"),
-        .itemId = ITEM_IRON_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_STEEL_POWER,
-        .holdEffectParam = 20,
-        .description = sIronPlateDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -6747,20 +6792,6 @@ const struct Item gItems[] =
         .holdEffect = HOLD_EFFECT_ASSAULT_VEST,
         .holdEffectParam = 50,
         .description = sAssaultVestDesc,
-        .pocket = POCKET_ITEMS,
-        .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
-    },
-
-    [ITEM_PIXIE_PLATE] =
-    {
-        .name = _("Pixie Plate"),
-        .itemId = ITEM_PIXIE_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_FAIRY_POWER,
-        .holdEffectParam = 20,
-        .description = sPixiePlateDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,

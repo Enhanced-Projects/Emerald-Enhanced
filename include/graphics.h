@@ -5715,6 +5715,12 @@ extern const u32 gItemIconPalette_RedShard[];
 extern const u32 gItemIconPalette_BlueShard[];
 extern const u32 gItemIconPalette_YellowShard[];
 extern const u32 gItemIconPalette_GreenShard[];
+extern const u32 gItemIconPalette_LightShard[];
+extern const u32 gItemIconPalette_DarkShard[];
+extern const u32 gItemIconPalette_CyanShard[];
+extern const u32 gItemIconPalette_GlossyShard[];
+extern const u32 gItemIconPalette_GrayShard[];
+extern const u32 gItemIconPalette_GoldShard[];
 // Vitamins
 extern const u32 gItemIcon_HPUp[];
 extern const u32 gItemIconPalette_HPUp[];

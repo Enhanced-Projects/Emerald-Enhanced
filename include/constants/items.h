@@ -106,16 +106,16 @@
 #define ITEM_SWIFT_WING 99
 #define ITEM_PRETTY_WING 100
 // Evolution stones
-#define ITEM_SUN_STONE 101
-#define ITEM_MOON_STONE 102
-#define ITEM_FIRE_STONE 103
-#define ITEM_THUNDER_STONE 104
-#define ITEM_WATER_STONE 105
-#define ITEM_LEAF_STONE 106
-#define ITEM_DAWN_STONE 107
-#define ITEM_DUSK_STONE 108
-#define ITEM_SHINY_STONE 109
-#define ITEM_ICE_STONE 110
+#define ITEM_SUN_STONE 101//orange shard
+#define ITEM_MOON_STONE 102//gray shard
+#define ITEM_FIRE_STONE 103//red shard
+#define ITEM_THUNDER_STONE 104//yellow shard
+#define ITEM_WATER_STONE 105//blue shard
+#define ITEM_LEAF_STONE 106//green shard
+#define ITEM_DAWN_STONE 107//light shard
+#define ITEM_DUSK_STONE 108//dark shard
+#define ITEM_SHINY_STONE 109//glossy shard
+#define ITEM_ICE_STONE 110//skyblue shard
 // Unusable
 #define ITEM_RED_APRICORN 111
 #define ITEM_BLUE_APRICORN 112
@@ -333,13 +333,13 @@
 #define ITEM_LUCK_INCENSE 320
 #define ITEM_PURE_INCENSE 321
 // Plates
-#define ITEM_INSECT_PLATE 322
-#define ITEM_DREAD_PLATE 323
-#define ITEM_DRACO_PLATE 324
-#define ITEM_ZAP_PLATE 325
-#define ITEM_PIXIE_PLATE 326
-#define ITEM_FIST_PLATE 327
-#define ITEM_FLAME_PLATE 328
+#define ITEM_DARK_SHARD 322//dusk stone
+#define ITEM_LIGHT_SHARD 323//dawn stone
+#define ITEM_CYAN_SHARD 324// ice stone
+#define ITEM_GLOSSY_SHARD 325//shiny stone
+#define ITEM_GOLD_SHARD 326//sun stone
+#define ITEM_GRAY_SHARD 327// moon stone
+#define ITEM_PIXIE_PLATE 328
 #define ITEM_SKY_PLATE 329
 #define ITEM_SPOOKY_PLATE 330
 #define ITEM_MEADOW_PLATE 331
@@ -347,9 +347,9 @@
 #define ITEM_ICICLE_PLATE 333
 #define ITEM_TOXIC_PLATE 334
 #define ITEM_MIND_PLATE 335
-#define ITEM_STONE_PLATE 336
-#define ITEM_IRON_PLATE 337
-#define ITEM_SPLASH_PLATE 338
+#define ITEM_RARE_GEM_ORE 336
+#define ITEM_UNCOMMON_GEM_ORE 337
+#define ITEM_COMMON_GEM_ORE 338
 // Gems
 #define ITEM_BUG_GEM 339
 #define ITEM_DARK_GEM 340
@@ -663,7 +663,13 @@
 
 #define ITEM_SHINY_CHARM 616
 
-#define ITEMS_COUNT 617
+#define ITEM_COPPER_ORE 617
+#define ITEM_SILVER_ORE 618
+#define ITEM_GOLD_ORE 619
+#define ITEM_FOSSIL_ORE 620
+#define ITEM_SHARD_ORE 621
+
+#define ITEMS_COUNT 622
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 #define FIRST_BERRY_INDEX             ITEM_CHERI_BERRY

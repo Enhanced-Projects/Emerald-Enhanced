@@ -77,6 +77,7 @@
 #include "pokedex.h"
 #include "money.h"
 #include "menu_helpers.h"
+#include "data/lifeskill.h"
 //#include "mgba.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
@@ -6341,4 +6342,57 @@ bool8 ChangeDarmanitanForm(void)
         }
     }
     return FALSE;
+}
+
+bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx)
+{
+    u16 reward = 0;
+    bool8 inside = IsMapTypeIndoors(GetCurrentMapType());
+    u8 amount = 1;
+
+    switch (VarGet(VAR_RYU_PLAYER_MINING_SKILL))
+    {
+    case 0:
+        {
+
+        }
+    case 1:
+        {
+            if (inside == TRUE)
+                {
+                    reward = gInsideMiningTier1[(Random() % ARRAY_COUNT(gInsideMiningTier1))];
+                }
+            else
+                {
+                    reward = gOutsideMiningTier1[(Random() % ARRAY_COUNT(gOutsideMiningTier1))];
+                }
+        }
+    case 2:
+        {
+            if (inside == TRUE)
+                {
+                    reward = gInsideMiningTier2[(Random() % ARRAY_COUNT(gInsideMiningTier2))];
+                }
+            else
+                {
+                    reward = gOutsideMiningTier2[(Random() % ARRAY_COUNT(gOutsideMiningTier2))];
+                }
+        }
+    case 3:
+        {
+            amount = ((Random() % 2) + 1);
+            if (inside == TRUE)
+                {
+                    reward = gInsideMiningTier3[(Random() % ARRAY_COUNT(gInsideMiningTier3))];
+                }
+            else
+                {
+                    reward = gOutsideMiningTier3[(Random() % ARRAY_COUNT(gOutsideMiningTier3))];
+                }
+        }
+    }
+    VarSet(VAR_TEMP_B, reward);
+    VarSet(VAR_TEMP_C, amount);
+    return TRUE;
+    
 }
