@@ -3532,7 +3532,7 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly1[] = {
 	.lvl = 28,
 	.species = SPECIES_CROAGUNK,
 	.heldItem = ITEM_EVIOLITE,
-	.ability = 1Y,
+	.ability = 1,
 	.moves = {MOVE_SLUDGE_BOMB, MOVE_DRAIN_PUNCH, MOVE_VACUUM_WAVE, MOVE_KNOCK_OFF},
 	},
 	{

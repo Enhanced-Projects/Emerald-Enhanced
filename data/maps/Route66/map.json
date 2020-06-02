@@ -4,6 +4,14 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "NULL",
+            "type": "sign",
+            "x": 28,
+            "y": 1
+        }
     ],
     "connections": [
         {
@@ -35,8 +43,8 @@
             "script": "r66_Celebi",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 16,
-            "y": 5
+            "x": 34,
+            "y": 1
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_66",
@@ -44,5 +52,5 @@
     "show_map_name": true,
     "warp_events": [
     ],
-    "weather": "WEATHER_SHADE"
+    "weather": "WEATHER_SUNNY"
 }

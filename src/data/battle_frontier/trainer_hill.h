@@ -410,24 +410,24 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                 {
                     [0] =
                     {
-                        .species = SPECIES_MOLTRES,
-                        .heldItem = ITEM_LIFE_ORB,
-                        .moves = {MOVE_INFERNO, MOVE_HURRICANE, MOVE_HIDDEN_POWER, MOVE_FIRE_BLAST},
+                        .species = SPECIES_HEATRAN,
+                        .heldItem = ITEM_AIR_BALLOON,
+                        .moves = {MOVE_HEAT_WAVE, MOVE_FLASH_CANNON, MOVE_SOLAR_BEAM, MOVE_EARTH_POWER},
                         .level = 0,
                         .ppBonuses = 0xFF,
+                        .hpEV = 252,
                         .defenseEV = 4,
-                        .speedEV = 252,
                         .spAttackEV = 252,
                         .otId = TRAINER_HILL_OTID,
                         .hpIV = 31,
-                        .attackIV = 13,
+                        .attackIV = 31,
                         .defenseIV = 31,
                         .speedIV = 31,
                         .spAttackIV = 31,
                         .spDefenseIV = 31,
                         .abilityNum = 0,
-                        .personality = 0xA,//Timid
-                        .nickname = _("Moltres"),
+                        .personality = 0xF,//Modest
+                        .nickname = _("Heatran"),
                         .friendship = 255,
                     },
                     [1] =
@@ -2158,7 +2158,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                         {
                                             .species = SPECIES_MAGEARNA,
                                             .heldItem = ITEM_WIKI_BERRY,
-                                            .moves = {MOVE_TRICK_ROOM, MOVE_DAZZLING_GLEAM, MOVE_FLASH_CANNON, MOVE_FOCUS_BLAST},
+                                            .moves = {MOVE_TRICK_ROOM, MOVE_DAZZLING_GLEAM, MOVE_MIRROR_SHOT, MOVE_FOCUS_BLAST},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
                                             .hpEV = 248,
@@ -2226,7 +2226,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
             .display = {
                 .data = {0x31, 0x3B, 0x3B, 0x3B, 0x39, 0x39, 0x13, 0x14, 0x15, 0x38, 0x39, 0x3A, 0x3B, 0x3B, 0x3B, 0x8, 0x91, 0x9B, 0x9C, 0x96, 0x40, 0x40, 0x96, 0x9B, 0x96, 0x40, 0x40, 0x96, 0x9B, 0x9C, 0x9B, 0x8, 0x9C, 0x9B, 0x96, 0x40, 0xDB, 0xDB, 0x40, 0x96, 0x40, 0xDB, 0xDB, 0x42, 0x96, 0x9B, 0x9B, 0x8, 0x91, 0x96, 0x40, 0xDB, 0xDB, 0xDB, 0xDB, 0xDB, 0xDB, 0xDB, 0xDB, 0xDB, 0x42, 0x96, 0x9C, 0x8, 0x91, 0x42, 0xDB, 0xDB, 0xD6, 0xD6, 0xD6, 0xDB, 0xD6, 0xD6, 0xD6, 0xDB, 0xDB, 0x42, 0x9B, 0x8, 0x96, 0x42, 0xDB, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xDB, 0x42, 0x96, 0x8, 0x96, 0x42, 0xDB, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xDB, 0x42, 0x96, 0x8, 0x96, 0x42, 0xDB, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xDB, 0x42, 0x96, 0x8, 0x96, 0x42, 0xDB, 0xDB, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xDB, 0xDB, 0x42, 0x96, 0x8, 0x91, 0x96, 0x42, 0xDB, 0xDB, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xDB, 0xDB, 0x42, 0x96, 0x9B, 0x8, 0x91, 0x9B, 0x96, 0x42, 0xDB, 0xDB, 0xD6, 0xD6, 0xD6, 0xDB, 0xDB, 0x42, 0x96, 0x9B, 0x9C, 0x8, 0x9C, 0x9B, 0x9B, 0x96, 0x42, 0xDB, 0xDB, 0xD6, 0xDB, 0xDB, 0x42, 0x96, 0x9B, 0x9B, 0x9B, 0x8, 0x96, 0x9B, 0x9B, 0x9B, 0x96, 0x41, 0xDB, 0xDB, 0xDB, 0x42, 0x96, 0x9B, 0x9B, 0x9C, 0x96, 0x8, 0xD6, 0x96, 0x9C, 0x9B, 0x9B, 0x96, 0x41, 0xDB, 0x42, 0x96, 0x9B, 0x9B, 0x9B, 0x96, 0xD6, 0x8, 0x9C, 0xD6, 0x96, 0x9B, 0x9C, 0x9B, 0x96, 0x40, 0x96, 0x9B, 0x9C, 0x9B, 0x96, 0xD6, 0x9C, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8},
                 .unk3A0 = {0x381, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0xFFFF},
-                .coords = {131, 139},
+                .coords = {147, 155},
                 .direction = 0x23,
                 .range = 0x77,
             }
@@ -2785,7 +2785,7 @@ static const struct TrHillFloor sDataTagVariety_Floors[] = {
                                         {
                                             .species = SPECIES_MAGEARNA,
                                             .heldItem = ITEM_ASSAULT_VEST,
-                                            .moves = {MOVE_FLEUR_CANNON, MOVE_FLASH_CANNON, MOVE_FOCUS_BLAST, MOVE_VOLT_SWITCH},
+                                            .moves = {MOVE_FLEUR_CANNON, MOVE_MIRROR_SHOT, MOVE_FOCUS_BLAST, MOVE_VOLT_SWITCH},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
                                             .hpEV = 248,
@@ -2855,7 +2855,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                 {
                     [0] =
                         {
-                            .name = _("MEREDITH"),
+                            .name = _("Meredith"),
                             .facilityClass = FACILITY_CLASS_PKMN_RANGER_F,
                             .unused = 0,
                             .speechBefore = {EC_WORD_UM, EC_WORD_ELLIPSIS, 0xFFFF, EC_WORD_I, EC_WORD_ELLIPSIS, 0xFFFF},
@@ -2866,14 +2866,14 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                 {
                                     [0] =
                                         {
-                                            .species = SPECIES_SUNFLORA,
-                                            .heldItem = ITEM_PERSIM_BERRY,
-                                            .moves = {MOVE_PETAL_DANCE, MOVE_GRASS_WHISTLE, MOVE_LIGHT_SCREEN, MOVE_SUNNY_DAY},
+                                            .species = SPECIES_BUZZWOLE,
+                                            .heldItem = ITEM_ASSAULT_VEST,
+                                            .moves = {MOVE_DRAIN_PUNCH, MOVE_LEECH_LIFE, MOVE_ICE_PUNCH, MOVE_POISON_JAB},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 255,
-                                            .defenseEV = 155,
-                                            .spDefenseEV = 100,
+                                            .attackEV = 252,
+                                            .defenseEV = 4,
+                                            .spDefenseEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
                                             .attackIV = 31,
@@ -2882,19 +2882,20 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x0,
-                                            .nickname = _("SUNFLORA"),
+                                            .personality = 0x3,//Adamant
+                                            .nickname = _("Buzzwole"),
                                             .friendship = 255,
                                         },
                                     [1] =
                                         {
-                                            .species = SPECIES_TANGELA,
-                                            .heldItem = ITEM_QUICK_CLAW,
-                                            .moves = {MOVE_GIGA_DRAIN, MOVE_SLEEP_POWDER, MOVE_AMNESIA, MOVE_SUNNY_DAY},
+                                            .species = SPECIES_XURKITREE,
+                                            .heldItem = ITEM_CHOICE_SCARF,
+                                            .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_ENERGY_BALL, MOVE_VOLT_SWITCH},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 255,
-                                            .spDefenseEV = 255,
+                                            .defenseEV = 4,
+                                            .speedEV = 252,
+                                            .spAttackEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
                                             .attackIV = 31,
@@ -2903,22 +2904,20 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x91,
-                                            .nickname = _("TANGELA"),
+                                            .personality = 0xA,//Timid
+                                            .nickname = _("Xurkitree"),
                                             .friendship = 255,
                                         },
                                     [2] =
                                         {
-                                            .species = SPECIES_VENUSAUR,
-                                            .heldItem = ITEM_LEFTOVERS,
-                                            .moves = {MOVE_SOLAR_BEAM, MOVE_EARTHQUAKE, MOVE_SYNTHESIS, MOVE_SUNNY_DAY},
+                                            .species = SPECIES_GUZZLORD,
+                                            .heldItem = ITEM_ASSAULT_VEST,
+                                            .moves = {MOVE_KNOCK_OFF, MOVE_DRACO_METEOR, MOVE_HEAVY_SLAM, MOVE_FIRE_BLAST},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 100,
-                                            .attackEV = 110,
-                                            .defenseEV = 100,
-                                            .spAttackEV = 100,
-                                            .spDefenseEV = 100,
+                                            .attackEV = 252,
+                                            .spAttackEV = 4,
+                                            .spDefenseEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
                                             .attackIV = 31,
@@ -2927,13 +2926,13 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x1F,
-                                            .nickname = _("VENUSAUR"),
+                                            .personality = 0x2,//Brave
+                                            .nickname = _("Guzzlord"),
                                             .friendship = 255,
                                         },
                                     [3] =
                                         {
-                                            .species = SPECIES_LANTURN,
+                                            .species = SPECIES_LANTURN,//unused
                                             .heldItem = ITEM_PERSIM_BERRY,
                                             .moves = {MOVE_SPARK, MOVE_WATER_PULSE, MOVE_CONFUSE_RAY, MOVE_RAIN_DANCE},
                                             .level = 0,
@@ -2954,7 +2953,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [4] =
                                         {
-                                            .species = SPECIES_MANECTRIC,
+                                            .species = SPECIES_MANECTRIC,//unused
                                             .heldItem = ITEM_FOCUS_BAND,
                                             .moves = {MOVE_THUNDERBOLT, MOVE_HEADBUTT, MOVE_BITE, MOVE_RAIN_DANCE},
                                             .level = 0,
@@ -2975,7 +2974,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [5] =
                                         {
-                                            .species = SPECIES_RAIKOU,
+                                            .species = SPECIES_RAIKOU,//unused
                                             .heldItem = ITEM_BRIGHT_POWDER,
                                             .moves = {MOVE_THUNDER, MOVE_CRUNCH, MOVE_ROAR, MOVE_RAIN_DANCE},
                                             .level = 0,
@@ -2998,7 +2997,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                         },
                     [1] =
                         {
-                            .name = _("BERNARD"),
+                            .name = _("Bernard"),
                             .facilityClass = FACILITY_CLASS_KINDLER,
                             .unused = 0,
                             .speechBefore = {EC_WORD_I, EC_WORD_CAN_T, EC_WORD_LOSE, EC_WORD_THIS, EC_WORD_HOT, EC_WORD_BATTLE},
@@ -3009,7 +3008,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                 {
                                     [0] =
                                         {
-                                            .species = SPECIES_RELICANTH,
+                                            .species = SPECIES_RELICANTH,//unused
                                             .heldItem = ITEM_QUICK_CLAW,
                                             .moves = {MOVE_ANCIENT_POWER, MOVE_WATER_PULSE, MOVE_MUD_SPORT, MOVE_RAIN_DANCE},
                                             .level = 0,
@@ -3031,7 +3030,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [1] =
                                         {
-                                            .species = SPECIES_GOLDUCK,
+                                            .species = SPECIES_GOLDUCK,//unused
                                             .heldItem = ITEM_LAX_INCENSE,
                                             .moves = {MOVE_SURF, MOVE_PSYBEAM, MOVE_BRICK_BREAK, MOVE_RAIN_DANCE},
                                             .level = 0,
@@ -3052,7 +3051,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [2] =
                                         {
-                                            .species = SPECIES_BLASTOISE,
+                                            .species = SPECIES_BLASTOISE,//unused
                                             .heldItem = ITEM_SHELL_BELL,
                                             .moves = {MOVE_HYDRO_PUMP, MOVE_BITE, MOVE_MIRROR_COAT, MOVE_RAIN_DANCE},
                                             .level = 0,
@@ -3073,55 +3072,14 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [3] =
                                         {
-                                            .species = SPECIES_MAGCARGO,
-                                            .heldItem = ITEM_QUICK_CLAW,
-                                            .moves = {MOVE_HEAT_WAVE, MOVE_ROCK_SLIDE, MOVE_EE_PROTECT, MOVE_SUNNY_DAY},
+                                            .species = SPECIES_CELESTEELA,
+                                            .heldItem = ITEM_LEFTOVERS,
+                                            .moves = {MOVE_HEAVY_SLAM, MOVE_FLAMETHROWER, MOVE_LEECH_SEED, MOVE_TOXIC},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 255,
-                                            .spDefenseEV = 255,
-                                            .otId = TRAINER_HILL_OTID,
-                                            .hpIV = 31,
-                                            .attackIV = 31,
-                                            .defenseIV = 31,
-                                            .speedIV = 31,
-                                            .spAttackIV = 31,
-                                            .spDefenseIV = 31,
-                                            .abilityNum = 1,
-                                            .personality = 0x93,
-                                            .nickname = _("MAGCARGO"),
-                                            .friendship = 255,
-                                        },
-                                    [4] =
-                                        {
-                                            .species = SPECIES_RAPIDASH,
-                                            .heldItem = ITEM_KINGS_ROCK,
-                                            .moves = {MOVE_FIRE_BLAST, MOVE_BOUNCE, MOVE_QUICK_ATTACK, MOVE_SUNNY_DAY},
-                                            .level = 0,
-                                            .ppBonuses = 0xFF,
-                                            .speedEV = 255,
-                                            .spAttackEV = 255,
-                                            .otId = TRAINER_HILL_OTID,
-                                            .hpIV = 31,
-                                            .attackIV = 31,
-                                            .defenseIV = 31,
-                                            .speedIV = 31,
-                                            .spAttackIV = 31,
-                                            .spDefenseIV = 31,
-                                            .abilityNum = 1,
-                                            .personality = 0xF,
-                                            .nickname = _("RAPIDASH"),
-                                            .friendship = 255,
-                                        },
-                                    [5] =
-                                        {
-                                            .species = SPECIES_MOLTRES,
-                                            .heldItem = ITEM_BRIGHT_POWDER,
-                                            .moves = {MOVE_SKY_ATTACK, MOVE_AERIAL_ACE, MOVE_ROAR, MOVE_SUNNY_DAY},
-                                            .level = 0,
-                                            .ppBonuses = 0xFF,
-                                            .speedEV = 255,
-                                            .spAttackEV = 255,
+                                            .hpEV = 252,
+                                            .attackEV = 52,
+                                            .spDefenseEV = 208,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
                                             .attackIV = 31,
@@ -3130,8 +3088,52 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0xF,
-                                            .nickname = _("MOLTRES"),
+                                            .personality = 0x2,//Brave
+                                            .nickname = _("Celesteela"),
+                                            .friendship = 255,
+                                        },
+                                    [4] =
+                                        {
+                                            .species = SPECIES_KARTANA,
+                                            .heldItem = ITEM_FOCUS_SASH,
+                                            .moves = {MOVE_LEAF_BLADE, MOVE_SMART_STRIKE, MOVE_SACRED_SWORD, MOVE_TAILWIND},
+                                            .level = 0,
+                                            .ppBonuses = 0xFF,
+                                            .attackEV = 252,
+                                            .defenseEV = 4,
+                                            .speedEV = 252,
+                                            .otId = TRAINER_HILL_OTID,
+                                            .hpIV = 31,
+                                            .attackIV = 31,
+                                            .defenseIV = 31,
+                                            .speedIV = 31,
+                                            .spAttackIV = 31,
+                                            .spDefenseIV = 31,
+                                            .abilityNum = 0,
+                                            .personality = 0xD,//Jolly
+                                            .nickname = _("Kartana"),
+                                            .friendship = 255,
+                                        },
+                                    [5] =
+                                        {
+                                            .species = SPECIES_NIHILEGO,
+                                            .heldItem = ITEM_LIFE_ORB,
+                                            .moves = {MOVE_SLUDGE_BOMB, MOVE_POWER_GEM, MOVE_GRASS_KNOT, MOVE_HIDDEN_POWER},
+                                            .level = 0,
+                                            .ppBonuses = 0xFF,
+                                            .speedEV = 252,
+                                            .spAttackEV = 252,
+                                            .spDefenseEV = 4,
+                                            .otId = TRAINER_HILL_OTID,
+                                            .hpIV = 31,
+                                            .attackIV = 19,
+                                            .defenseIV = 31,
+                                            .speedIV = 31,
+                                            .spAttackIV = 31,
+                                            .spDefenseIV = 31,
+                                            .abilityNum = 0,
+                                            .personality = 0xA,//Timid
+                                            .nickname = _("Nihilego"),
                                             .friendship = 255,
                                         },
                                 },
@@ -3153,8 +3155,8 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                 {
                     [0] =
                         {
-                            .name = _("ABRAHAM"),
-                            .facilityClass = FACILITY_CLASS_RUIN_MANIAC,
+                            .name = _("Abraham"),
+                            .facilityClass = FACILITY_CLASS_BUG_MANIAC,
                             .unused = 0,
                             .speechBefore = {EC_WORD_I, EC_WORD_LIKE, EC_WORD_THIS, EC_WORD_POKEMON, EC_WORD_THE, EC_WORD_BEST},
                             .speechWin = {EC_WORD_WHAT, EC_WORD_A, EC_WORD_GREAT, EC_WORD_POKEMON, EC_WORD_IT, EC_WORD_IS},
@@ -3164,14 +3166,14 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                 {
                                     [0] =
                                         {
-                                            .species = SPECIES_SMEARGLE,
-                                            .heldItem = ITEM_SCOPE_LENS,
-                                            .moves = {MOVE_EARTHQUAKE, MOVE_SHADOW_BALL, MOVE_AERIAL_ACE, MOVE_IMPRISON},
+                                            .species = SPECIES_PHEROMOSA,
+                                            .heldItem = ITEM_FOCUS_SASH,
+                                            .moves = {MOVE_HI_JUMP_KICK, MOVE_ICE_BEAM, MOVE_THROAT_CHOP, MOVE_POISON_JAB},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 252,
-                                            .attackEV = 6,
+                                            .attackEV = 252,
                                             .speedEV = 252,
+                                            .spAttackEV = 4,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
                                             .attackIV = 31,
@@ -3180,42 +3182,42 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x8A,
-                                            .nickname = _("SMEARGLE"),
+                                            .personality = 0xE,//Naive,
+                                            .nickname = _("Pheromosa"),
                                             .friendship = 255,
                                         },
                                     [1] =
                                         {
-                                            .species = SPECIES_SMEARGLE,
-                                            .heldItem = ITEM_CHESTO_BERRY,
-                                            .moves = {MOVE_REST, MOVE_THUNDER_WAVE, MOVE_FLAMETHROWER, MOVE_IMPRISON},
+                                            .species = SPECIES_PHEROMOSA,
+                                            .heldItem = ITEM_FOCUS_SASH,
+                                            .moves = {MOVE_FOCUS_BLAST, MOVE_BUG_BUZZ, MOVE_ICE_BEAM, MOVE_QUIVER_DANCE},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 252,
+                                            .defenseEV = 4,
                                             .speedEV = 252,
-                                            .spAttackEV = 6,
+                                            .spAttackEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
-                                            .attackIV = 31,
+                                            .attackIV = 0,
                                             .defenseIV = 31,
                                             .speedIV = 31,
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x87,
-                                            .nickname = _("SMEARGLE"),
+                                            .personality = 0xF,//Modest
+                                            .nickname = _("Pheromosa"),
                                             .friendship = 255,
                                         },
                                     [2] =
                                         {
-                                            .species = SPECIES_SMEARGLE,
-                                            .heldItem = ITEM_QUICK_CLAW,
-                                            .moves = {MOVE_TEETER_DANCE, MOVE_LOCK_ON, MOVE_SHEER_COLD, MOVE_EXPLOSION},
+                                            .species = SPECIES_PHEROMOSA,
+                                            .heldItem = ITEM_LIFE_ORB,
+                                            .moves = {MOVE_HI_JUMP_KICK, MOVE_ICE_BEAM, MOVE_DRILL_RUN, MOVE_THROAT_CHOP},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 252,
-                                            .attackEV = 6,
+                                            .attackEV = 252,
                                             .speedEV = 252,
+                                            .spAttackEV = 4,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
                                             .attackIV = 31,
@@ -3224,13 +3226,13 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0xD,
-                                            .nickname = _("SMEARGLE"),
+                                            .personality = 0xE,//Naive,
+                                            .nickname = _("Pheromosa"),
                                             .friendship = 255,
                                         },
                                     [3] =
                                         {
-                                            .species = SPECIES_SMEARGLE,
+                                            .species = SPECIES_SMEARGLE,//unused
                                             .heldItem = ITEM_SCOPE_LENS,
                                             .moves = {MOVE_PSYCHIC, MOVE_SURF, MOVE_THUNDERBOLT, MOVE_IMPRISON},
                                             .level = 0,
@@ -3252,7 +3254,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [4] =
                                         {
-                                            .species = SPECIES_SMEARGLE,
+                                            .species = SPECIES_SMEARGLE,//unused
                                             .heldItem = ITEM_LEFTOVERS,
                                             .moves = {MOVE_TOXIC, MOVE_EE_PROTECT, MOVE_WILL_O_WISP, MOVE_IMPRISON},
                                             .level = 0,
@@ -3274,7 +3276,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [5] =
                                         {
-                                            .species = SPECIES_SMEARGLE,
+                                            .species = SPECIES_SMEARGLE,//unused
                                             .heldItem = ITEM_QUICK_CLAW,
                                             .moves = {MOVE_TEETER_DANCE, MOVE_LOCK_ON, MOVE_SHEER_COLD, MOVE_DESTINY_BOND},
                                             .level = 0,
@@ -3298,18 +3300,18 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                         },
                     [1] =
                         {
-                            .name = _("LUC"),
-                            .facilityClass = FACILITY_CLASS_TUBER_M,
+                            .name = _("Luc"),
+                            .facilityClass = FACILITY_CLASS_BUG_MANIAC,
                             .unused = 0,
-                            .speechBefore = {EC_WORD_I, EC_WORD_HAVE, EC_WORD_A, EC_WORD_COOL, EC_WORD_RARE, EC_WORD_MOVE},
-                            .speechWin = {EC_WORD_MY, EC_WORD_RARE, EC_WORD_MOVE, EC_WORD_IS, EC_WORD_COOL, EC_WORD_ISN_T_IT_QUES},
-                            .speechLose = {EC_WORD_DIDN_T, EC_WORD_YOU, EC_WORD_SEE, EC_WORD_MY, EC_WORD_MOVE, EC_WORD_QUES},
+                            .speechBefore = {EC_WORD_MY, EC_WORD_BUG, EC_WORD_POKEMON, EC_WORD_IS, EC_WORD_BETTER, 0xFFFF},
+                            .speechWin = {EC_WORD_MY, EC_WORD_RARE, EC_WORD_POKEMON, EC_WORD_IS, EC_WORD_COOL, EC_WORD_ISN_T_IT_QUES},
+                            .speechLose = {EC_WORD_DIDN_T, EC_WORD_YOU, EC_WORD_SEE, EC_WORD_MY, EC_WORD_POKEMON, EC_WORD_QUES},
                             .speechAfter = {EC_WORD_I_AM, EC_WORD_SMART, EC_WORD_BUT, EC_WORD_ALSO, EC_WORD_WEAK, EC_WORD_ELLIPSIS},
                             .mons =
                                 {
                                     [0] =
                                         {
-                                            .species = SPECIES_STARYU,
+                                            .species = SPECIES_STARYU,//unused
                                             .heldItem = ITEM_LEFTOVERS,
                                             .moves = {MOVE_CAMOUFLAGE, MOVE_NONE, MOVE_NONE, MOVE_NONE},
                                             .level = 0,
@@ -3331,7 +3333,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [1] =
                                         {
-                                            .species = SPECIES_MEOWTH,
+                                            .species = SPECIES_MEOWTH,//unused
                                             .heldItem = ITEM_QUICK_CLAW,
                                             .moves = {MOVE_PAY_DAY, MOVE_NONE, MOVE_NONE, MOVE_NONE},
                                             .level = 0,
@@ -3353,7 +3355,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [2] =
                                         {
-                                            .species = SPECIES_BLAZIKEN,
+                                            .species = SPECIES_BLAZIKEN,//unused
                                             .heldItem = ITEM_BRIGHT_POWDER,
                                             .moves = {MOVE_BLAZE_KICK, MOVE_NONE, MOVE_NONE, MOVE_NONE},
                                             .level = 0,
@@ -3375,13 +3377,13 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [3] =
                                         {
-                                            .species = SPECIES_CUBONE,
-                                            .heldItem = ITEM_THICK_CLUB,
-                                            .moves = {MOVE_BONEMERANG, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+                                            .species = SPECIES_BUZZWOLE,
+                                            .heldItem = ITEM_ASSAULT_VEST,
+                                            .moves = {MOVE_DRAIN_PUNCH, MOVE_LEECH_LIFE, MOVE_ICE_PUNCH, MOVE_POISON_JAB},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 252,
-                                            .defenseEV = 6,
+                                            .attackEV = 252,
+                                            .defenseEV = 4,
                                             .spDefenseEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
@@ -3390,19 +3392,20 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .speedIV = 31,
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
-                                            .abilityNum = 1,
-                                            .personality = 0x16,
-                                            .nickname = _("CUBONE"),
+                                            .abilityNum = 0,
+                                            .personality = 0x3,//Adamant
+                                            .nickname = _("Buzzwole"),
                                             .friendship = 255,
                                         },
                                     [4] =
                                         {
-                                            .species = SPECIES_BEEDRILL,
-                                            .heldItem = ITEM_SHELL_BELL,
-                                            .moves = {MOVE_TWINEEDLE, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+                                            .species = SPECIES_BUZZWOLE,
+                                            .heldItem = ITEM_CHOICE_SCARF,
+                                            .moves = {MOVE_ROCK_SLIDE, MOVE_LEECH_LIFE, MOVE_DRAIN_PUNCH, MOVE_ICE_PUNCH},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 252,
+                                            .attackEV = 252,
+                                            .defenseEV = 4,
                                             .speedEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
@@ -3412,20 +3415,20 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x8A,
-                                            .nickname = _("BEEDRILL"),
+                                            .personality = 0xD,//Jolly
+                                            .nickname = _("Buzzwole"),
                                             .friendship = 255,
                                         },
                                     [5] =
                                         {
-                                            .species = SPECIES_RATICATE,
-                                            .heldItem = ITEM_FOCUS_BAND,
-                                            .moves = {MOVE_SUPER_FANG, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+                                            .species = SPECIES_BUZZWOLE,
+                                            .heldItem = ITEM_LEFTOVERS,
+                                            .moves = {MOVE_DRAIN_PUNCH, MOVE_ICE_PUNCH, MOVE_BULK_UP, MOVE_ROOST},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 252,
-                                            .defenseEV = 6,
-                                            .speedEV = 252,
+                                            .hpEV = 248,
+                                            .defenseEV = 8,
+                                            .spDefenseEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
                                             .attackIV = 31,
@@ -3433,9 +3436,9 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .speedIV = 31,
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
-                                            .abilityNum = 1,
-                                            .personality = 0xD,
-                                            .nickname = _("RATICATE"),
+                                            .abilityNum = 0,
+                                            .personality = 0x17,//Careful
+                                            .nickname = _("Buzzwole"),
                                             .friendship = 255,
                                         },
                                 },
@@ -3457,7 +3460,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                 {
                     [0] =
                         {
-                            .name = _("BREYDEN"),
+                            .name = _("Breyden"),
                             .facilityClass = FACILITY_CLASS_YOUNGSTER,
                             .unused = 0,
                             .speechBefore = {EC_WORD_I, EC_WORD_CARE, EC_WORD_FOR, EC_WORD_MY, EC_WORD_POKEMON, EC_WORD_A_LOT},
@@ -3468,72 +3471,73 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                 {
                                     [0] =
                                         {
-                                            .species = SPECIES_CHARMELEON,
-                                            .heldItem = ITEM_CHARCOAL,
-                                            .moves = {MOVE_FIRE_SPIN, MOVE_DRAGON_RAGE, MOVE_FLAMETHROWER, MOVE_SLASH},
+                                            .species = SPECIES_PHEROMOSA,
+                                            .heldItem = ITEM_FOCUS_SASH,
+                                            .moves = {MOVE_HI_JUMP_KICK, MOVE_ICE_BEAM, MOVE_THROAT_CHOP, MOVE_U_TURN},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 252,
+                                            .attackEV = 252,
                                             .speedEV = 252,
-                                            .spAttackEV = 6,
+                                            .spAttackEV = 4,
                                             .otId = TRAINER_HILL_OTID,
-                                            .hpIV = 25,
-                                            .attackIV = 25,
-                                            .defenseIV = 25,
-                                            .speedIV = 25,
-                                            .spAttackIV = 25,
-                                            .spDefenseIV = 25,
+                                            .hpIV = 31,
+                                            .attackIV = 31,
+                                            .defenseIV = 31,
+                                            .speedIV = 31,
+                                            .spAttackIV = 31,
+                                            .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x32,
-                                            .nickname = _("CHARMELEON"),
-                                            .friendship = 100,
+                                            .personality = 0xE,//Naive,
+                                            .nickname = _("Pheromosa"),
+                                            .friendship = 255,
                                         },
                                     [1] =
                                         {
-                                            .species = SPECIES_WARTORTLE,
-                                            .heldItem = ITEM_MYSTIC_WATER,
-                                            .moves = {MOVE_HYDRO_PUMP, MOVE_SKULL_BASH, MOVE_RAIN_DANCE, MOVE_EE_PROTECT},
-                                            .level = 0,
-                                            .ppBonuses = 0xFF,
-                                            .hpEV = 250,
-                                            .defenseEV = 130,
-                                            .otId = TRAINER_HILL_OTID,
-                                            .hpIV = 25,
-                                            .attackIV = 25,
-                                            .defenseIV = 25,
-                                            .speedIV = 25,
-                                            .spAttackIV = 25,
-                                            .spDefenseIV = 25,
-                                            .abilityNum = 0,
-                                            .personality = 0x0,
-                                            .nickname = _("WARTORTLE"),
-                                            .friendship = 100,
-                                        },
-                                    [2] =
-                                        {
-                                            .species = SPECIES_IVYSAUR,
-                                            .heldItem = ITEM_MIRACLE_SEED,
-                                            .moves = {MOVE_SOLAR_BEAM, MOVE_SYNTHESIS, MOVE_GROWTH, MOVE_SWEET_SCENT},
+                                            .species = SPECIES_CELESTEELA,
+                                            .heldItem = ITEM_LEFTOVERS,
+                                            .moves = {MOVE_HEAVY_SLAM, MOVE_FLAMETHROWER, MOVE_GIGA_DRAIN, MOVE_LEECH_SEED},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
                                             .hpEV = 252,
-                                            .speedEV = 6,
-                                            .spAttackEV = 252,
+                                            .defenseEV = 252,
+                                            .spDefenseEV = 4,
                                             .otId = TRAINER_HILL_OTID,
-                                            .hpIV = 25,
-                                            .attackIV = 25,
-                                            .defenseIV = 25,
-                                            .speedIV = 25,
-                                            .spAttackIV = 25,
-                                            .spDefenseIV = 25,
+                                            .hpIV = 31,
+                                            .attackIV = 31,
+                                            .defenseIV = 31,
+                                            .speedIV = 31,
+                                            .spAttackIV = 31,
+                                            .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x0,
-                                            .nickname = _("IVYSAUR"),
-                                            .friendship = 100,
+                                            .personality = 0x7,//Relaxed
+                                            .nickname = _("Celesteela"),
+                                            .friendship = 255,
+                                        },
+                                    [2] =
+                                        {
+                                            .species = SPECIES_KARTANA,
+                                            .heldItem = ITEM_FOCUS_SASH,
+                                            .moves = {MOVE_LEAF_BLADE, MOVE_SMART_STRIKE, MOVE_SACRED_SWORD, MOVE_TAILWIND},
+                                            .level = 0,
+                                            .ppBonuses = 0xFF,
+                                            .attackEV = 252,
+                                            .defenseEV = 4,
+                                            .speedEV = 252,
+                                            .otId = TRAINER_HILL_OTID,
+                                            .hpIV = 31,
+                                            .attackIV = 31,
+                                            .defenseIV = 31,
+                                            .speedIV = 31,
+                                            .spAttackIV = 31,
+                                            .spDefenseIV = 31,
+                                            .abilityNum = 0,
+                                            .personality = 0xD,//Jolly
+                                            .nickname = _("Kartana"),
+                                            .friendship = 255,
                                         },
                                     [3] =
                                         {
-                                            .species = SPECIES_BAYLEEF,
+                                            .species = SPECIES_BAYLEEF,//unused
                                             .heldItem = ITEM_MIRACLE_SEED,
                                             .moves = {MOVE_SOLAR_BEAM, MOVE_SAFEGUARD, MOVE_LIGHT_SCREEN, MOVE_BODY_SLAM},
                                             .level = 0,
@@ -3555,7 +3559,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [4] =
                                         {
-                                            .species = SPECIES_CROCONAW,
+                                            .species = SPECIES_CROCONAW,//unused
                                             .heldItem = ITEM_MYSTIC_WATER,
                                             .moves = {MOVE_SCARY_FACE, MOVE_SLASH, MOVE_HYDRO_PUMP, MOVE_SCREECH},
                                             .level = 0,
@@ -3577,7 +3581,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [5] =
                                         {
-                                            .species = SPECIES_QUILAVA,
+                                            .species = SPECIES_QUILAVA,//unused
                                             .heldItem = ITEM_CHARCOAL,
                                             .moves = {MOVE_QUICK_ATTACK, MOVE_FLAMETHROWER, MOVE_FLAME_WHEEL, MOVE_SWIFT},
                                             .level = 0,
@@ -3601,7 +3605,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                         },
                     [1] =
                         {
-                            .name = _("ANIYA"),
+                            .name = _("Aniya"),
                             .facilityClass = FACILITY_CLASS_TUBER_F,
                             .unused = 0,
                             .speechBefore = {EC_WORD_SOMEONE, EC_WORD_GOT, EC_WORD_ME, EC_WORD_A_LITTLE, EC_WORD_POKEMON, EC_WORD_EGG},
@@ -3612,7 +3616,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                 {
                                     [0] =
                                         {
-                                            .species = SPECIES_SMOOCHUM,
+                                            .species = SPECIES_SMOOCHUM,//unused
                                             .heldItem = ITEM_PETAYA_BERRY,
                                             .moves = {MOVE_ICE_BEAM, MOVE_PSYCHIC, MOVE_SWEET_KISS, MOVE_FAKE_TEARS},
                                             .level = 0,
@@ -3634,7 +3638,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [1] =
                                         {
-                                            .species = SPECIES_AZURILL,
+                                            .species = SPECIES_AZURILL,//unused
                                             .heldItem = ITEM_FOCUS_BAND,
                                             .moves = {MOVE_SURF, MOVE_SING, MOVE_RAIN_DANCE, MOVE_BLIZZARD},
                                             .level = 0,
@@ -3656,7 +3660,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [2] =
                                         {
-                                            .species = SPECIES_ELEKID,
+                                            .species = SPECIES_ELEKID,//unused
                                             .heldItem = ITEM_KINGS_ROCK,
                                             .moves = {MOVE_FIRE_PUNCH, MOVE_THUNDER, MOVE_ICE_PUNCH, MOVE_THUNDER_WAVE},
                                             .level = 0,
@@ -3678,56 +3682,34 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [3] =
                                         {
-                                            .species = SPECIES_CLEFFA,
-                                            .heldItem = ITEM_QUICK_CLAW,
-                                            .moves = {MOVE_MEGA_KICK, MOVE_SWEET_KISS, MOVE_SING, MOVE_METRONOME},
+                                            .species = SPECIES_NAGANADEL,
+                                            .heldItem = ITEM_LIFE_ORB,
+                                            .moves = {MOVE_SLUDGE_BOMB, MOVE_FIRE_BLAST, MOVE_DRACO_METEOR, MOVE_TAILWIND},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 6,
-                                            .attackEV = 252,
+                                            .defenseEV = 4,
                                             .speedEV = 252,
+                                            .spAttackEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
-                                            .attackIV = 31,
+                                            .attackIV = 0,
                                             .defenseIV = 31,
                                             .speedIV = 31,
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x0,
-                                            .nickname = _("CLEFFA"),
-                                            .friendship = 50,
+                                            .personality = 0xF,//Modest
+                                            .nickname = _("Naganadel"),
+                                            .friendship = 255,
                                         },
                                     [4] =
                                         {
-                                            .species = SPECIES_WYNAUT,
-                                            .heldItem = ITEM_LEFTOVERS,
-                                            .moves = {MOVE_ENCORE, MOVE_COUNTER, MOVE_MIRROR_COAT, MOVE_DESTINY_BOND},
+                                            .species = SPECIES_XURKITREE,
+                                            .heldItem = ITEM_CHOICE_SCARF,
+                                            .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_ENERGY_BALL, MOVE_VOLT_SWITCH},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 250,
-                                            .defenseEV = 130,
-                                            .spDefenseEV = 130,
-                                            .otId = TRAINER_HILL_OTID,
-                                            .hpIV = 31,
-                                            .attackIV = 31,
-                                            .defenseIV = 31,
-                                            .speedIV = 31,
-                                            .spAttackIV = 31,
-                                            .spDefenseIV = 31,
-                                            .abilityNum = 0,
-                                            .personality = 0x84,
-                                            .nickname = _("WYNAUT"),
-                                            .friendship = 50,
-                                        },
-                                    [5] =
-                                        {
-                                            .species = SPECIES_MAGBY,
-                                            .heldItem = ITEM_SCOPE_LENS,
-                                            .moves = {MOVE_FIRE_BLAST, MOVE_CONFUSE_RAY, MOVE_THUNDER_PUNCH, MOVE_BARRIER},
-                                            .level = 0,
-                                            .ppBonuses = 0xFF,
-                                            .hpEV = 6,
+                                            .defenseEV = 4,
                                             .speedEV = 252,
                                             .spAttackEV = 252,
                                             .otId = TRAINER_HILL_OTID,
@@ -3738,9 +3720,31 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0xF,
-                                            .nickname = _("MAGBY"),
-                                            .friendship = 50,
+                                            .personality = 0xF,//Modest
+                                            .nickname = _("Xurkitree"),
+                                            .friendship = 255,
+                                        },
+                                    [5] =
+                                        {
+                                            .species = SPECIES_GUZZLORD,
+                                            .heldItem = ITEM_ASSAULT_VEST,
+                                            .moves = {MOVE_KNOCK_OFF, MOVE_DRACO_METEOR, MOVE_HEAVY_SLAM, MOVE_HAMMER_ARM},
+                                            .level = 0,
+                                            .ppBonuses = 0xFF,
+                                            .attackEV = 252,
+                                            .spAttackEV = 4,
+                                            .spDefenseEV = 252,
+                                            .otId = TRAINER_HILL_OTID,
+                                            .hpIV = 31,
+                                            .attackIV = 31,
+                                            .defenseIV = 31,
+                                            .speedIV = 31,
+                                            .spAttackIV = 31,
+                                            .spDefenseIV = 31,
+                                            .abilityNum = 0,
+                                            .personality = 0x2,//Brave
+                                            .nickname = _("Guzzlord"),
+                                            .friendship = 255,
                                         },
                                 },
                         },
@@ -3748,7 +3752,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
             .display = {
                 .data = {0x31, 0x3B, 0x3B, 0x3B, 0x39, 0x39, 0x13, 0x14, 0x15, 0x38, 0x39, 0x3A, 0x3B, 0x3B, 0x3B, 0x8, 0x69, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x7C, 0x46, 0x8, 0x69, 0x46, 0x7A, 0x73, 0x73, 0x73, 0x79, 0x73, 0x73, 0x73, 0x7D, 0x73, 0x73, 0x73, 0x46, 0x8, 0x69, 0x46, 0x73, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x8, 0x69, 0x46, 0x73, 0x73, 0x7B, 0x73, 0x7C, 0x73, 0x7B, 0x73, 0x7A, 0x73, 0x73, 0x73, 0x46, 0x8, 0x69, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x7A, 0x46, 0x8, 0x69, 0x46, 0x73, 0x73, 0x73, 0x73, 0x73, 0x7D, 0x7C, 0x73, 0x7C, 0x73, 0x7B, 0x73, 0x46, 0x8, 0x69, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x7C, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x8, 0x91, 0x46, 0x9B, 0x9B, 0x9B, 0x46, 0x3B, 0x3B, 0x3B, 0x46, 0x9B, 0x9B, 0x9B, 0x9B, 0x46, 0x8, 0x91, 0x46, 0x9B, 0x9B, 0x9B, 0x46, 0x3B, 0x3B, 0x3B, 0x46, 0x9B, 0x9B, 0x9B, 0x9B, 0x46, 0x8, 0x91, 0x46, 0x9B, 0x9B, 0x9B, 0x46, 0x3B, 0x3B, 0x3B, 0x46, 0x9B, 0x9B, 0x9B, 0x9B, 0x46, 0x8, 0xF1, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x78, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x8, 0xF1, 0x46, 0xFB, 0xFB, 0xFB, 0xFB, 0xFB, 0xFB, 0x7A, 0xFB, 0xFB, 0xFB, 0xFB, 0xFB, 0x7C, 0x8, 0xF1, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0xFB, 0x8, 0x7C, 0xFB, 0x7B, 0xFB, 0x7A, 0xFB, 0x79, 0xFB, 0xB3, 0xFB, 0x7D, 0xFB, 0x7E, 0xFB, 0x7D, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8},
                 .unk3A0 = {0x381, 0x7FFB, 0x4003, 0x5FFF, 0x4003, 0x7FFB, 0x4003, 0x7EFF, 0x4443, 0x4443, 0x4443, 0x7EFF, 0x4001, 0x7FFD, 0x1, 0xFFFF},
-                .coords = {150, 152},
+                .coords = {166, 168},
                 .direction = 0x23,
                 .range = 0x11,
             }
@@ -3761,7 +3765,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                 {
                     [0] =
                         {
-                            .name = _("DANE"),
+                            .name = _("Dane"),
                             .facilityClass = FACILITY_CLASS_BIRD_KEEPER,
                             .unused = 0,
                             .speechBefore = {EC_WORD_I, EC_WORD_GOT, EC_WORD_MY, EC_WORD_POKEMON, EC_WORD_ON, EC_WORD_VACATION},
@@ -3772,56 +3776,36 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                 {
                                     [0] =
                                         {
-                                            .species = SPECIES_SUDOWOODO,
-                                            .heldItem = ITEM_SITRUS_BERRY,
-                                            .moves = {MOVE_ROCK_SLIDE, MOVE_BLOCK, MOVE_TOXIC, MOVE_EXPLOSION},
+                                            .species = SPECIES_NIHILEGO,
+                                            .heldItem = ITEM_LIFE_ORB,
+                                            .moves = {MOVE_SLUDGE_BOMB, MOVE_POWER_GEM, MOVE_GRASS_KNOT, MOVE_HIDDEN_POWER},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 100,
-                                            .attackEV = 255,
-                                            .spDefenseEV = 155,
+                                            .speedEV = 252,
+                                            .spAttackEV = 252,
+                                            .spDefenseEV = 4,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
-                                            .attackIV = 31,
+                                            .attackIV = 19,
                                             .defenseIV = 31,
                                             .speedIV = 31,
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x80,
-                                            .nickname = _("SUDOWOODO"),
+                                            .personality = 0xA,//Timid
+                                            .nickname = _("Nihilego"),
                                             .friendship = 255,
                                         },
                                     [1] =
                                         {
-                                            .species = SPECIES_SLOWKING,
-                                            .heldItem = ITEM_SCOPE_LENS,
-                                            .moves = {MOVE_SURF, MOVE_PSYCHIC, MOVE_BLIZZARD, MOVE_DISABLE},
+                                            .species = SPECIES_XURKITREE,
+                                            .heldItem = ITEM_CHOICE_SCARF,
+                                            .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_ENERGY_BALL, MOVE_VOLT_SWITCH},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 255,
-                                            .defenseEV = 255,
-                                            .otId = TRAINER_HILL_OTID,
-                                            .hpIV = 31,
-                                            .attackIV = 31,
-                                            .defenseIV = 31,
-                                            .speedIV = 31,
-                                            .spAttackIV = 31,
-                                            .spDefenseIV = 31,
-                                            .abilityNum = 1,
-                                            .personality = 0x8C,
-                                            .nickname = _("SLOWKING"),
-                                            .friendship = 255,
-                                        },
-                                    [2] =
-                                        {
-                                            .species = SPECIES_ENTEI,
-                                            .heldItem = ITEM_PETAYA_BERRY,
-                                            .moves = {MOVE_FLAMETHROWER, MOVE_CALM_MIND, MOVE_FIRE_SPIN, MOVE_ROAR},
-                                            .level = 0,
-                                            .ppBonuses = 0xFF,
-                                            .speedEV = 255,
-                                            .spAttackEV = 255,
+                                            .defenseEV = 4,
+                                            .speedEV = 252,
+                                            .spAttackEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
                                             .attackIV = 31,
@@ -3830,13 +3814,35 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0xF,
-                                            .nickname = _("ENTEI"),
+                                            .personality = 0xA,//Timid
+                                            .nickname = _("Xurkitree"),
+                                            .friendship = 255,
+                                        },
+                                    [2] =
+                                        {
+                                            .species = SPECIES_KARTANA,
+                                            .heldItem = ITEM_FOCUS_SASH,
+                                            .moves = {MOVE_LEAF_BLADE, MOVE_SMART_STRIKE, MOVE_SACRED_SWORD, MOVE_SWORDS_DANCE},
+                                            .level = 0,
+                                            .ppBonuses = 0xFF,
+                                            .attackEV = 252,
+                                            .defenseEV = 4,
+                                            .speedEV = 252,
+                                            .otId = TRAINER_HILL_OTID,
+                                            .hpIV = 31,
+                                            .attackIV = 31,
+                                            .defenseIV = 31,
+                                            .speedIV = 31,
+                                            .spAttackIV = 31,
+                                            .spDefenseIV = 31,
+                                            .abilityNum = 0,
+                                            .personality = 0xD,//Jolly
+                                            .nickname = _("Kartana"),
                                             .friendship = 255,
                                         },
                                     [3] =
                                         {
-                                            .species = SPECIES_HITMONCHAN,
+                                            .species = SPECIES_HITMONCHAN,//unused
                                             .heldItem = ITEM_FOCUS_BAND,
                                             .moves = {MOVE_MEGA_PUNCH, MOVE_EE_PROTECT, MOVE_COUNTER, MOVE_SKY_UPPERCUT},
                                             .level = 0,
@@ -3857,7 +3863,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [4] =
                                         {
-                                            .species = SPECIES_MANTINE,
+                                            .species = SPECIES_MANTINE,//unused
                                             .heldItem = ITEM_LEFTOVERS,
                                             .moves = {MOVE_SURF, MOVE_CONFUSE_RAY, MOVE_ATTRACT, MOVE_AERIAL_ACE},
                                             .level = 0,
@@ -3878,7 +3884,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [5] =
                                         {
-                                            .species = SPECIES_ZAPDOS,
+                                            .species = SPECIES_ZAPDOS,//unused
                                             .heldItem = ITEM_BRIGHT_POWDER,
                                             .moves = {MOVE_THUNDERBOLT, MOVE_DRILL_PECK, MOVE_THUNDER_WAVE, MOVE_AGILITY},
                                             .level = 0,
@@ -3901,7 +3907,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                         },
                     [1] =
                         {
-                            .name = _("STEPHANIE"),
+                            .name = _("Stephanie"),
                             .facilityClass = FACILITY_CLASS_SWIMMING_TRIATHLETE_F,
                             .unused = 0,
                             .speechBefore = {EC_WORD_THIS, EC_WORD_IS, EC_WORD_HOW, EC_WORD_YOU, EC_WORD_WIN, EC_WORD_EXCL},
@@ -3912,7 +3918,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                 {
                                     [0] =
                                         {
-                                            .species = SPECIES_HITMONLEE,
+                                            .species = SPECIES_HITMONLEE,//unused
                                             .heldItem = ITEM_FOCUS_BAND,
                                             .moves = {MOVE_MEGA_KICK, MOVE_MIND_READER, MOVE_FOCUS_ENERGY, MOVE_HI_JUMP_KICK},
                                             .level = 0,
@@ -3933,7 +3939,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [1] =
                                         {
-                                            .species = SPECIES_PORYGON2,
+                                            .species = SPECIES_PORYGON2,//unused
                                             .heldItem = ITEM_SCOPE_LENS,
                                             .moves = {MOVE_LOCK_ON, MOVE_BLIZZARD, MOVE_CONVERSION_2, MOVE_PSYCHIC},
                                             .level = 0,
@@ -3954,7 +3960,7 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [2] =
                                         {
-                                            .species = SPECIES_SUICUNE,
+                                            .species = SPECIES_SUICUNE,//unused
                                             .heldItem = ITEM_PETAYA_BERRY,
                                             .moves = {MOVE_SURF, MOVE_CALM_MIND, MOVE_MIRROR_COAT, MOVE_MIST},
                                             .level = 0,
@@ -3975,13 +3981,14 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                         },
                                     [3] =
                                         {
-                                            .species = SPECIES_HOUNDOOM,
-                                            .heldItem = ITEM_QUICK_CLAW,
-                                            .moves = {MOVE_FLAMETHROWER, MOVE_CRUNCH, MOVE_ROAR, MOVE_WILL_O_WISP},
+                                            .species = SPECIES_GUZZLORD,
+                                            .heldItem = ITEM_ASSAULT_VEST,
+                                            .moves = {MOVE_KNOCK_OFF, MOVE_DRACO_METEOR, MOVE_HEAVY_SLAM, MOVE_HAMMER_ARM},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .speedEV = 255,
-                                            .spAttackEV = 255,
+                                            .attackEV = 4,
+                                            .defenseEV = 252,
+                                            .spDefenseEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
                                             .attackIV = 31,
@@ -3989,41 +3996,43 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .speedIV = 31,
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
-                                            .abilityNum = 1,
-                                            .personality = 0xF,
-                                            .nickname = _("HOUNDOOM"),
+                                            .abilityNum = 0,
+                                            .personality = 0x2,//Brave
+                                            .nickname = _("Guzzlord"),
                                             .friendship = 255,
                                         },
                                     [4] =
                                         {
-                                            .species = SPECIES_STANTLER,
-                                            .heldItem = ITEM_LEFTOVERS,
-                                            .moves = {MOVE_CONFUSE_RAY, MOVE_SWAGGER, MOVE_PSYCH_UP, MOVE_TAKE_DOWN},
+                                            .species = SPECIES_NAGANADEL,
+                                            .heldItem = ITEM_LIFE_ORB,
+                                            .moves = {MOVE_SLUDGE_BOMB, MOVE_DRAGON_PULSE, MOVE_FIRE_BLAST, MOVE_NASTY_PLOT},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .attackEV = 255,
-                                            .speedEV = 255,
+                                            .defenseEV = 4,
+                                            .speedEV = 252,
+                                            .spAttackEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
-                                            .attackIV = 31,
+                                            .attackIV = 0,
                                             .defenseIV = 31,
                                             .speedIV = 31,
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x3,
-                                            .nickname = _("STANTLER"),
+                                            .personality = 0xA,//Timid
+                                            .nickname = _("Naganadel"),
                                             .friendship = 255,
                                         },
                                     [5] =
                                         {
-                                            .species = SPECIES_ARTICUNO,
-                                            .heldItem = ITEM_NEVER_MELT_ICE,
-                                            .moves = {MOVE_BLIZZARD, MOVE_SHEER_COLD, MOVE_MIST, MOVE_AERIAL_ACE},
+                                            .species = SPECIES_CELESTEELA,
+                                            .heldItem = ITEM_LEFTOVERS,
+                                            .moves = {MOVE_HEAVY_SLAM, MOVE_EARTHQUAKE, MOVE_AUTOTOMIZE, MOVE_LEECH_SEED},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 255,
-                                            .spAttackEV = 255,
+                                            .hpEV = 40,
+                                            .attackEV = 252,
+                                            .speedEV = 216,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
                                             .attackIV = 31,
@@ -4032,8 +4041,8 @@ static const struct TrHillFloor sDataTagUnique_Floors[] = {
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0xF,
-                                            .nickname = _("ARTICUNO"),
+                                            .personality = 0x3,//Adamant
+                                            .nickname = _("Celesteela"),
                                             .friendship = 255,
                                         },
                                 },
@@ -4066,46 +4075,24 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                 {
                     [0] =
                         {
-                            .name = _("ALFRED"),
-                            .facilityClass = FACILITY_CLASS_COOLTRAINER_M,
+                            .name = _("Rayan"),
+                            .facilityClass = FACILITY_CLASS_PKMN_RANGER_M,
                             .unused = 0,
-                            .speechBefore = {EC_WORD_WE, EC_WORD_CAN, EC_WORD_TAKE, EC_WORD_ON, EC_WORD_ANY, EC_WORD_TYPE},
-                            .speechWin = {EC_WORD_WE, EC_WORD_DID, EC_WORD_BETTER, EC_WORD_THAN, EC_WORD_OKAY, EC_WORD_EXCL},
+                            .speechBefore = {EC_WORD_WE, EC_WORD_CAN, EC_WORD_TAKE, EC_WORD_YOU, EC_WORD_ON, EC_WORD_EXCL},
+                            .speechWin = {EC_WORD_WE, EC_WORD_DID, EC_WORD_BETTER, EC_WORD_THAN, EC_WORD_YOU, EC_WORD_EXCL},
                             .speechLose = {EC_WORD_OUR, EC_WORD_STRATEGY, EC_WORD_ISN_T, EC_WORD_ANY, EC_WORD_GOOD, EC_WORD_ELLIPSIS},
-                            .speechAfter = {EC_WORD_WE, EC_WORD_NEED, EC_WORD_TO, EC_WORD_TRAIN, EC_WORD_A_LOT, EC_WORD_MORE},
+                            .speechAfter = {EC_WORD_I, EC_WORD_WILL, EC_WORD_MAKE, EC_WORD_YOU, EC_WORD_A, EC_MOVE(SKETCH)},
                             .mons =
                                 {
                                     [0] =
                                         {
-                                            .species = SPECIES_SNORLAX,
-                                            .heldItem = ITEM_QUICK_CLAW,
-                                            .moves = {MOVE_MEGA_KICK, MOVE_SHADOW_BALL, MOVE_BRICK_BREAK, MOVE_EARTHQUAKE},
+                                            .species = SPECIES_VICTINI,
+                                            .heldItem = ITEM_CHOICE_BAND,
+                                            .moves = {MOVE_V_CREATE, MOVE_NONE, MOVE_NONE, MOVE_NONE},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 6,
                                             .attackEV = 252,
-                                            .defenseEV = 252,
-                                            .otId = TRAINER_HILL_OTID,
-                                            .hpIV = 31,
-                                            .attackIV = 31,
-                                            .defenseIV = 31,
-                                            .speedIV = 31,
-                                            .spAttackIV = 31,
-                                            .spDefenseIV = 31,
-                                            .abilityNum = 0,
-                                            .personality = 0x35,
-                                            .nickname = _("SNORLAX"),
-                                            .friendship = 255,
-                                        },
-                                    [1] =
-                                        {
-                                            .species = SPECIES_MILTANK,
-                                            .heldItem = ITEM_LEFTOVERS,
-                                            .moves = {MOVE_DOUBLE_EDGE, MOVE_SHADOW_BALL, MOVE_ATTRACT, MOVE_MILK_DRINK},
-                                            .level = 0,
-                                            .ppBonuses = 0xFF,
-                                            .hpEV = 6,
-                                            .attackEV = 252,
+                                            .defenseEV = 4,
                                             .speedEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
@@ -4115,20 +4102,42 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x3,
-                                            .nickname = _("MILTANK"),
+                                            .personality = 0x3,//Adamant
+                                            .nickname = _("Victini"),
+                                            .friendship = 255,
+                                        },
+                                    [1] =
+                                        {
+                                            .species = SPECIES_VOLCANION,
+                                            .heldItem = ITEM_ASSAULT_VEST,
+                                            .moves = {MOVE_STEAM_ERUPTION, MOVE_HEAT_WAVE, MOVE_EARTH_POWER, MOVE_SLUDGE_BOMB},
+                                            .level = 0,
+                                            .ppBonuses = 0xFF,
+                                            .hpEV = 248,
+                                            .speedEV = 8,
+                                            .spAttackEV = 252,
+                                            .otId = TRAINER_HILL_OTID,
+                                            .hpIV = 31,
+                                            .attackIV = 0,
+                                            .defenseIV = 31,
+                                            .speedIV = 31,
+                                            .spAttackIV = 31,
+                                            .spDefenseIV = 31,
+                                            .abilityNum = 0,
+                                            .personality = 0xF,//Modest
+                                            .nickname = _("Volcanion"),
                                             .friendship = 255,
                                         },
                                     [2] =
                                         {
-                                            .species = SPECIES_URSARING,
-                                            .heldItem = ITEM_QUICK_CLAW,
-                                            .moves = {MOVE_DOUBLE_EDGE, MOVE_CRUNCH, MOVE_BRICK_BREAK, MOVE_AERIAL_ACE},
+                                            .species = SPECIES_RAYQUAZA,
+                                            .heldItem = ITEM_LIFE_ORB,
+                                            .moves = {MOVE_DRAGON_ASCENT, MOVE_V_CREATE, MOVE_EXTREME_SPEED, MOVE_DRAGON_DANCE},
                                             .level = 0,
                                             .ppBonuses = 0xFF,
-                                            .hpEV = 252,
                                             .attackEV = 252,
-                                            .spAttackEV = 6,
+                                            .defenseEV = 4,
+                                            .speedEV = 252,
                                             .otId = TRAINER_HILL_OTID,
                                             .hpIV = 31,
                                             .attackIV = 31,
@@ -4137,13 +4146,13 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                             .spAttackIV = 31,
                                             .spDefenseIV = 31,
                                             .abilityNum = 0,
-                                            .personality = 0x7F,
-                                            .nickname = _("URSARING"),
+                                            .personality = 0xD,//Jolly
+                                            .nickname = _("Rayanquaza"),
                                             .friendship = 255,
                                         },
                                     [3] =
                                         {
-                                            .species = SPECIES_SLAKING,
+                                            .species = SPECIES_SLAKING,//unused
                                             .heldItem = ITEM_CHESTO_BERRY,
                                             .moves = {MOVE_HYPER_BEAM, MOVE_SHADOW_BALL, MOVE_BRICK_BREAK, MOVE_REST},
                                             .level = 0,
@@ -4165,7 +4174,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                         },
                                     [4] =
                                         {
-                                            .species = SPECIES_KANGASKHAN,
+                                            .species = SPECIES_KANGASKHAN,//unused
                                             .heldItem = ITEM_LEFTOVERS,
                                             .moves = {MOVE_MEGA_KICK, MOVE_SHADOW_BALL, MOVE_ATTRACT, MOVE_FAKE_OUT},
                                             .level = 0,
@@ -4187,7 +4196,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                         },
                                     [5] =
                                         {
-                                            .species = SPECIES_ZANGOOSE,
+                                            .species = SPECIES_ZANGOOSE,//unused
                                             .heldItem = ITEM_SCOPE_LENS,
                                             .moves = {MOVE_CRUSH_CLAW, MOVE_SHADOW_BALL, MOVE_BRICK_BREAK, MOVE_ROAR},
                                             .level = 0,
@@ -4211,8 +4220,8 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                         },
                     [1] =
                         {
-                            .name = _("KRISTINA"),
-                            .facilityClass = FACILITY_CLASS_AROMA_LADY,
+                            .name = _("Toby"),
+                            .facilityClass = FACILITY_CLASS_PKMN_RANGER_M,
                             .unused = 0,
                             .speechBefore = {EC_WORD_IT_S, EC_WORD_HOT, EC_WORD_ELLIPSIS, EC_WORD_WHAT, EC_WORD_A, EC_WORD_STENCH},
                             .speechWin = {EC_WORD_I, EC_WORD_REALLY, EC_WORD_LIKE, EC_WORD_AN, EC_WORD_OFFENSIVE, EC_WORD_STENCH},
@@ -4222,7 +4231,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                 {
                                     [0] =
                                         {
-                                            .species = SPECIES_SLOWKING,
+                                            .species = SPECIES_SLOWKING,//unused
                                             .heldItem = ITEM_LEFTOVERS,
                                             .moves = {MOVE_PSYCHIC, MOVE_SURF, MOVE_ICE_BEAM, MOVE_SKILL_SWAP},
                                             .level = 0,
@@ -4244,7 +4253,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                         },
                                     [1] =
                                         {
-                                            .species = SPECIES_ESPEON,
+                                            .species = SPECIES_ESPEON,//unused
                                             .heldItem = ITEM_LUM_BERRY,
                                             .moves = {MOVE_PSYCHIC, MOVE_BITE, MOVE_CALM_MIND, MOVE_REFLECT},
                                             .level = 0,
@@ -4266,7 +4275,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                         },
                                     [2] =
                                         {
-                                            .species = SPECIES_STARMIE,
+                                            .species = SPECIES_STARMIE,//unused
                                             .heldItem = ITEM_SHELL_BELL,
                                             .moves = {MOVE_PSYCHIC, MOVE_SURF, MOVE_THUNDERBOLT, MOVE_ICE_BEAM},
                                             .level = 0,
@@ -4982,7 +4991,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                     [0] =
                         {
                             .name = _("Ryu"),
-                            .facilityClass = FACILITY_CLASS_OVERLORD,
+                            .facilityClass = FACILITY_CLASS_COOLTRAINER_M,
                             .unused = 0,
                             .speechBefore = {EC_WORD_WAAAH, EC_WORD_THIS, EC_WORD_IS, EC_WORD_SO, EC_WORD_EXCITING, EC_WORD_EXCL},
                             .speechWin = {EC_WORD_WAAAH, EC_WORD_I_AM, EC_WORD_SO, EC_WORD_HAPPY, EC_WORD_I, EC_WORD_WON},

@@ -254,7 +254,6 @@ TrainerHill_Entrance_Movement_FaceUp: @ 8268383
 
 TrainerHill_Entrance_Movement_PlayerExitElevator: @ 8268385
 	walk_down
-	walk_down
 	step_end
 
 TrainerHill_Entrance_EventScript_Records:: @ 8268388

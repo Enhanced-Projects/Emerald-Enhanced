@@ -974,7 +974,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MAGNEZONE_3] = {
         .species = SPECIES_MAGNEZONE,
-        .moves = {MOVE_THUNDERBOLT, MOVE_FLASH_CANNON, MOVE_VOLT_SWITCH, MOVE_HIDDEN_POWER},
+        .moves = {MOVE_THUNDERBOLT, MOVE_MIRROR_SHOT, MOVE_VOLT_SWITCH, MOVE_HIDDEN_POWER},
         .heldItem = ITEM_CHOICE_SPECS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
@@ -2199,7 +2199,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MAGNEZONE_1] = {
         .species = SPECIES_MAGNEZONE,
-        .moves = {MOVE_THUNDERBOLT, MOVE_FLASH_CANNON, MOVE_HIDDEN_POWER, MOVE_MIRROR_COAT},
+        .moves = {MOVE_THUNDERBOLT, MOVE_MIRROR_SHOT, MOVE_HIDDEN_POWER, MOVE_MIRROR_COAT},
         .heldItem = ITEM_ASSAULT_VEST,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
@@ -3144,7 +3144,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_MAGNEZONE_2] = {
         .species = SPECIES_MAGNEZONE,
-        .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_FLASH_CANNON, MOVE_HIDDEN_POWER},
+        .moves = {MOVE_THUNDERBOLT, MOVE_VOLT_SWITCH, MOVE_MIRROR_SHOT, MOVE_HIDDEN_POWER},
         .heldItem = ITEM_ASSAULT_VEST,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
@@ -3636,7 +3636,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_ALAKAZAM_1] = {
         .species = SPECIES_ALAKAZAM,
@@ -3847,12 +3847,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_DONPHAN_1] = {
         .species = SPECIES_DONPHAN,
-        .moves = {MOVE_EARTHQUAKE, MOVE_ICE_SHARD, MOVE_FIRE_FANG, MOVE_THUNDER_FANG},
-        .heldItem = ITEM_ASSAULT_VEST,
-        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .moves = {MOVE_BULLDOZE, MOVE_ROCK_TOMB, MOVE_ICE_SHARD, MOVE_FLAME_WHEEL},
+        .heldItem = ITEM_EXPERT_BELT,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_CLAYDOL_1] = {
         .species = SPECIES_CLAYDOL,
@@ -5575,12 +5575,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_DONPHAN_2] = {
         .species = SPECIES_DONPHAN,
-        .moves = {MOVE_EARTHQUAKE, MOVE_ICE_SHARD, MOVE_FIRE_FANG, MOVE_THUNDER_FANG},
-        .heldItem = ITEM_EXPERT_BELT,
-        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .moves = {MOVE_BULLDOZE, MOVE_ROCK_TOMB, MOVE_ICE_SHARD, MOVE_FLAME_WHEEL},
+        .heldItem = ITEM_ASSAULT_VEST,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_CLAYDOL_2] = {
         .species = SPECIES_CLAYDOL,
