@@ -192,7 +192,7 @@ TrainerHill_Enter::
 	playse SE_TK_KASYA
 	trainerhill_start
 	waitse
-	warpsilent MAP_TRAINER_HILL_1F, 255, 2, 4
+	warpsilent MAP_TRAINER_HILL_1F, 255, 2, 5
 	releaseall
 	end
 	

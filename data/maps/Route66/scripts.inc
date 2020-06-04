@@ -38,7 +38,7 @@ Route66_EventScript_HintSign::
 
 Route66_Text_HintSign:
 	.string "Did you know Cut can get rid\n"
-	.string "of Grass?\p"
+	.string "of Tall Grass?\p"
 	.string "Use it to get to the other side.\p"
 	.string "There is a catch, however.\p"
 	.string "You can not Cut while riding\n"

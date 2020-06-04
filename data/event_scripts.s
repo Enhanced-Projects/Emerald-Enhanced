@@ -1123,3 +1123,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/Route135_ManaphyTemple/scripts.inc"
 
 	.include "data/maps/Underwater9/scripts.inc"
+
+	.include "data/maps/Route114_SuicuneCave/scripts.inc"

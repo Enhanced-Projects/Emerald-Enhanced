@@ -4649,6 +4649,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Underwater",
             "width": 15
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route114_SuicuneCave/map.bin",
+            "border_filepath": "data/layouts/Route114_SuicuneCave/border.bin",
+            "height": 28,
+            "id": "LAYOUT_ROUTE114_SUICUNE_CAVE",
+            "name": "Route114_SuicuneCave_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Fallarbor",
+            "width": 17
         }
     ],
     "layouts_table_label": "gMapLayouts"

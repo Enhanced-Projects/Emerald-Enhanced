@@ -366,17 +366,18 @@
 #define EC_WORD_WE           (EC_GROUP_PEOPLE << 9) | 0x3d
 #define EC_WORD_BEEN         (EC_GROUP_PEOPLE << 9) | 0x3e
 #define EC_WORD_TO_US        (EC_GROUP_PEOPLE << 9) | 0x3f
-#define EC_WORD_OUR          (EC_GROUP_PEOPLE << 9) | 0x40
-#define EC_WORD_WE_RE        (EC_GROUP_PEOPLE << 9) | 0x41
-#define EC_WORD_RIVAL        (EC_GROUP_PEOPLE << 9) | 0x42
-#define EC_WORD_WE_VE        (EC_GROUP_PEOPLE << 9) | 0x43
-#define EC_WORD_WOMAN        (EC_GROUP_PEOPLE << 9) | 0x44
-#define EC_WORD_SHE          (EC_GROUP_PEOPLE << 9) | 0x45
-#define EC_WORD_SHE_WAS      (EC_GROUP_PEOPLE << 9) | 0x46
-#define EC_WORD_TO_HER       (EC_GROUP_PEOPLE << 9) | 0x47
-#define EC_WORD_HERS         (EC_GROUP_PEOPLE << 9) | 0x48
-#define EC_WORD_SHE_IS       (EC_GROUP_PEOPLE << 9) | 0x49
-#define EC_WORD_SOME         (EC_GROUP_PEOPLE << 9) | 0x4a
+#define EC_WORD_US           (EC_GROUP_PEOPLE << 9) | 0x40
+#define EC_WORD_OUR          (EC_GROUP_PEOPLE << 9) | 0x41
+#define EC_WORD_WE_RE        (EC_GROUP_PEOPLE << 9) | 0x42
+#define EC_WORD_RIVAL        (EC_GROUP_PEOPLE << 9) | 0x43
+#define EC_WORD_WE_VE        (EC_GROUP_PEOPLE << 9) | 0x44
+#define EC_WORD_WOMAN        (EC_GROUP_PEOPLE << 9) | 0x45
+#define EC_WORD_SHE          (EC_GROUP_PEOPLE << 9) | 0x46
+#define EC_WORD_SHE_WAS      (EC_GROUP_PEOPLE << 9) | 0x47
+#define EC_WORD_TO_HER       (EC_GROUP_PEOPLE << 9) | 0x48
+#define EC_WORD_HERS         (EC_GROUP_PEOPLE << 9) | 0x49
+#define EC_WORD_SHE_IS       (EC_GROUP_PEOPLE << 9) | 0x4a
+#define EC_WORD_SOME         (EC_GROUP_PEOPLE << 9) | 0x4b
 
 // VOICES
 #define EC_WORD_EXCL                        (EC_GROUP_VOICES << 9) | 0x0
