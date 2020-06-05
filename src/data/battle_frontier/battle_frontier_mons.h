@@ -983,12 +983,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_DEWGONG_3] = {
         .species = SPECIES_DEWGONG,
-        .moves = {MOVE_SURF, MOVE_FROST_BREATH, MOVE_RAIN_DANCE, MOVE_REST},
-        .heldItem = ITEM_DAMP_ROCK,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_MODEST,
+        .moves = {MOVE_ICICLE_CRASH, MOVE_ICE_SHARD, MOVE_DRILL_RUN, MOVE_HAIL},
+        .heldItem = ITEM_NEVER_MELT_ICE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 1
+        .ability = 2
     },
     [FRONTIER_MON_TOXICROAK_3] = {
         .species = SPECIES_TOXICROAK,
@@ -3532,12 +3532,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_DEWGONG_1] = {
         .species = SPECIES_DEWGONG,
-        .moves = {MOVE_PERISH_SONG, MOVE_WHIRLPOOL, MOVE_RAIN_DANCE, MOVE_REST},
+        .moves = {MOVE_ICICLE_CRASH, MOVE_DRILL_RUN, MOVE_SWORDS_DANCE, MOVE_HAIL},
         .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_CALM,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 1
+        .ability = 2
     },
     [FRONTIER_MON_MANECTRIC_1] = {
         .species = SPECIES_MANECTRIC,
@@ -5260,12 +5260,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_DEWGONG_2] = {
         .species = SPECIES_DEWGONG,
-        .moves = {MOVE_HORN_DRILL, MOVE_SHEER_COLD, MOVE_RAIN_DANCE, MOVE_REST},
-        .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_BOLD,
+        .moves = {MOVE_ICICLE_CRASH, MOVE_LIQUIDATION, MOVE_DRILL_RUN, MOVE_HAIL},
+        .heldItem = ITEM_LIFE_ORB,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 1
+        .ability = 2
     },
     [FRONTIER_MON_MANECTRIC_2] = {
         .species = SPECIES_MANECTRIC,
