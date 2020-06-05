@@ -1931,6 +1931,10 @@ const u8 gText_DevMonGiveAbility1[] = _("Ability 1");
 const u8 gText_DevMonGiveAbility2[] = _("Ability 2");
 const u8 gText_DevMonGiveAbility3[] = _("Hidden Ability");
 
+const u8 gText_RLSGM_Common[] = _("Common  ({RYU_STR_1})");
+const u8 gText_RLSGM_Uncommon[] = _("Uncommon  ({RYU_STR_2})");
+const u8 gText_RLSGM_Rare[] = _("Rare  ({RYU_STR_3})");
+
 const u8 gText_RyuLevel10MenuOption[] = _("Lv.10");
 const u8 gText_RyuLevel20MenuOption[] = _("Lv.20");
 const u8 gText_RyuLevel30MenuOption[] = _("Lv.30");

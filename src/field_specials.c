@@ -78,7 +78,7 @@
 #include "money.h"
 #include "menu_helpers.h"
 #include "data/lifeskill.h"
-//#include "mgba.h"
+#include "mgba.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -6395,4 +6395,70 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx)
     VarSet(VAR_TEMP_C, amount);
     return TRUE;
     
+}
+
+int RyuGetItemQuantity(u16 *quantity)
+{
+    return gSaveBlock2Ptr->encryptionKey ^ *quantity;
+}
+
+void RyuCountGemOres(void)
+{
+    u8 i;
+    u16 total1 = 0;
+    u16 total2 = 0;
+    u16 total3 = 0;
+
+    for (i = 0; i < gBagPockets[ITEMS_POCKET].capacity; i++)
+    {
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_COMMON_GEM_ORE)
+        {
+            total1 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_UNCOMMON_GEM_ORE)
+        {
+            total2 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_RARE_GEM_ORE)
+        {
+            total3 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+    }
+
+    mgba_printf(MGBA_LOG_INFO, "quantities = %d, %d, %d", total1, total2, total3);
+    ConvertIntToDecimalStringN(gRyuStringVar3, total3, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar2, total2, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, total1, STR_CONV_MODE_LEFT_ALIGN, 3);
+}
+
+void RyuChooseFromGemList(void)
+{
+    u16 mode = (VarGet(VAR_TEMP_A));
+
+    u16 Result = 0;
+
+    switch (mode)
+    {
+        case 1:
+            {
+                Result = (gGemTier1[((Random () % 5)+1)]);
+                mgba_printf(MGBA_LOG_INFO, "Picked common %d", Result);
+                break;
+            }
+        case 2:
+            {
+                Result = (gGemTier2[((Random () % 5)+1)]);
+                mgba_printf(MGBA_LOG_INFO, "Picked uncommon %d", Result);
+                break;
+            }
+        case 3:
+            {
+                Result = (gGemTier3[((Random () % 5)+1)]);
+                mgba_printf(MGBA_LOG_INFO, "Picked rare %d", Result);
+                break;
+            }
+    }
+    gSpecialVar_Result = Result;
 }

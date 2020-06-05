@@ -1,5 +1,86 @@
 @@Life Skills scripts
 
+@@ Mining item refinement (add these scripts to the proper NPC's when the cave town is done.)
+
+Ryu_MiningGemstoneOreRefiner::
+    msgbox Ryu_GemRefiningIntro
+    closemessage
+    msgbox RyuPlsChoosOre, MSGBOX_ONELINE
+    special RyuCountGemOres
+    delay 10
+    multichoicedefault 0, 5, MULTI_RLS_GEMSTONEQUALITYMENU, 0, 1
+    switch VAR_RESULT
+    case 0, Ryu_RefineCommonOre
+    case 1, Ryu_RefineUncommonOre
+    case 2, Ryu_RefineRareOre
+    case 3, Ryu_ExitRefinery
+    goto Ryu_ExitRefinery
+
+Ryu_RefineCommonOre::
+    checkitem ITEM_COMMON_GEM_ORE, 1
+    compare VAR_RESULT, 0
+    goto_if_eq Ryu_NoItem
+    removeitem ITEM_COMMON_GEM_ORE, 1
+    setvar VAR_TEMP_A, 1
+    special RyuChooseFromGemList
+    additem VAR_RESULT, 1
+	bufferitemname 0, VAR_RESULT
+    msgbox Ryu_RefineSuccessful
+    release
+    end
+
+Ryu_RefineUncommonOre::
+    checkitem ITEM_UNCOMMON_GEM_ORE, 1
+    compare VAR_RESULT, 0
+    goto_if_eq Ryu_NoItem
+    removeitem ITEM_UNCOMMON_GEM_ORE, 1
+    setvar VAR_TEMP_A, 2
+    special RyuChooseFromGemList
+    additem VAR_RESULT, 1
+	bufferitemname 0, VAR_RESULT
+    msgbox Ryu_RefineSuccessful
+    release
+    end
+
+Ryu_RefineRareOre::
+    checkitem ITEM_RARE_GEM_ORE, 1
+    compare VAR_RESULT, 0
+    goto_if_eq Ryu_NoItem
+    removeitem ITEM_COMMON_GEM_ORE, 1
+    setvar VAR_TEMP_A, 3
+    special RyuChooseFromGemList
+    additem VAR_RESULT, 1
+	bufferitemname 0, VAR_RESULT
+    msgbox Ryu_RefineSuccessful
+    release
+    end
+
+Ryu_ExitRefinery::
+    msgbox Ryu_PlsComeBackLater
+    release
+    end
+
+Ryu_NoItem:
+    msgbox Ryu_YouDontHaveAnyGemOres
+    release
+    end
+
+Ryu_GemRefiningIntro:
+	.string "Welcome to my refining shop!\nHere, I will refine your gem\lores for free!$"
+	
+RyuPlsChoosOre:
+	.string "Please choose an ore to refine.$"
+	
+Ryu_RefineSuccessful:
+	.string "All finished!\nIt was a {STR_VAR_1}!$"
+	
+Ryu_PlsComeBackLater:
+	.string "Please return when you need\nme to refine something!$"
+	
+Ryu_YouDontHaveAnyGemOres:
+	.string "You don't have any of that ore!$"
+
+
 @@Mining General
 
 Ryu_MineOutsideRock::
