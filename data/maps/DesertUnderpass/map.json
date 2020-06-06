@@ -46,7 +46,7 @@
     "show_map_name": true,
     "warp_events": [
         {
-            "dest_map": "MAP_ROUTE114_FOSSIL_MANIACS_TUNNEL",
+            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
             "dest_warp_id": 2,
             "elevation": 0,
             "x": 10,

@@ -1125,3 +1125,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/Underwater9/scripts.inc"
 
 	.include "data/maps/Route114_SuicuneCave/scripts.inc"
+
+	.include "data/maps/FallarborTown_CaveTown/scripts.inc"

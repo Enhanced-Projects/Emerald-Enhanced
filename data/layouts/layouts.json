@@ -4659,6 +4659,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Fallarbor",
             "width": 17
+        },
+        {
+            "blockdata_filepath": "data/layouts/FallarborTown_CaveTown/map.bin",
+            "border_filepath": "data/layouts/FallarborTown_CaveTown/border.bin",
+            "height": 29,
+            "id": "LAYOUT_FALLARBOR_TOWN_CAVE_TOWN",
+            "name": "FallarborTown_CaveTown_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Lavaridge",
+            "width": 61
         }
     ],
     "layouts_table_label": "gMapLayouts"
