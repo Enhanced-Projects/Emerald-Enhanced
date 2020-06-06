@@ -4667,8 +4667,8 @@
             "id": "LAYOUT_FALLARBOR_TOWN_CAVE_TOWN",
             "name": "FallarborTown_CaveTown_Layout",
             "primary_tileset": "gTileset_General",
-            "secondary_tileset": "gTileset_Lavaridge",
-            "width": 61
+            "secondary_tileset": "gTileset_Fallarbor_Mine",
+            "width": 62
         }
     ],
     "layouts_table_label": "gMapLayouts"

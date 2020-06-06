@@ -4,6 +4,22 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Common_EventScript_ShowPokemartSign",
+            "type": "sign",
+            "x": 50,
+            "y": 19
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Common_EventScript_ShowPokemartSign",
+            "type": "sign",
+            "x": 51,
+            "y": 19
+        }
     ],
     "connections": null,
     "coord_events": [
@@ -24,8 +40,86 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 54,
+            "x": 55,
             "y": 9
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 40,
+            "y": 15
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_MANIAC",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 43,
+            "y": 16
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_MANIAC",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 52,
+            "y": 11
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_MANIAC",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 31,
+            "y": 11
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 46,
+            "y": 24
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_2",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 6,
+            "y": 13
         }
     ],
     "region_map_section": "MAPSEC_FALLARBOR_TOWN",
@@ -36,22 +130,36 @@
             "dest_map": "MAP_FALLARBOR_TOWN",
             "dest_warp_id": 1,
             "elevation": 0,
-            "x": 47,
-            "y": 26
+            "x": 48,
+            "y": 25
         },
         {
             "dest_map": "MAP_ROUTE114_FOSSIL_MANIACS_HOUSE",
             "dest_warp_id": 2,
             "elevation": 0,
-            "x": 6,
-            "y": 26
+            "x": 7,
+            "y": 25
         },
         {
             "dest_map": "MAP_DESERT_UNDERPASS",
             "dest_warp_id": 0,
             "elevation": 0,
-            "x": 6,
+            "x": 7,
             "y": 2
+        },
+        {
+            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
+            "dest_warp_id": 4,
+            "elevation": 0,
+            "x": 46,
+            "y": 10
+        },
+        {
+            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
+            "dest_warp_id": 3,
+            "elevation": 0,
+            "x": 47,
+            "y": 10
         }
     ],
     "weather": "WEATHER_NONE"

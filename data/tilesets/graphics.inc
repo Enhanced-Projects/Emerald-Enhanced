@@ -1729,3 +1729,23 @@ gTilesetPalettes_UnionRoom:: @ 8395678
 	.align 2
 gTilesetTiles_UnionRoom:: @ 8395878
 	.incbin "data/tilesets/secondary/union_room/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Fallarbor_Mine::
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/fallarbor_mine/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Fallarbor_Mine::
+	.incbin "data/tilesets/secondary/fallarbor_mine/tiles.4bpp.lz"
