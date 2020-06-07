@@ -163,6 +163,10 @@
 #define METATILE_Facility_NewMauvilleDoor_Open_Tile4    0x2CC
 #define METATILE_Facility_NewMauvilleDoor_Open_Tile5    0x2CD
 
+// gTileset_FallarborMine
+#define METATILE_FallarborMine_Door_Lab        0x241
+#define METATILE_FallarborMine_Door_LightRoof  0x2A4
+
 // gTileset_Fallarbor
 #define METATILE_Fallarbor_AshField                  0x218
 #define METATILE_Fallarbor_AshGrass                  0x20A
@@ -780,9 +784,5 @@
 // gTileset_Underwater
 #define METATILE_Underwater_FloorShadow  0x228
 #define METATILE_Underwater_RockWall     0x21E
-
-// gTileset_FallarborMine
-#define METATILE_FallarborMine_Door_Lab        0x241
-#define METATILE_FallarborMine_Door_LightRoof  0x2A4
 
 #endif // GUARD_METATILE_LABELS_H
