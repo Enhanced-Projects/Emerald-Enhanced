@@ -160,6 +160,20 @@
             "elevation": 0,
             "x": 47,
             "y": 10
+        },
+        {
+            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
+            "dest_warp_id": 6,
+            "elevation": 0,
+            "x": 28,
+            "y": 8
+        },
+        {
+            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
+            "dest_warp_id": 5,
+            "elevation": 0,
+            "x": 38,
+            "y": 10
         }
     ],
     "weather": "WEATHER_NONE"

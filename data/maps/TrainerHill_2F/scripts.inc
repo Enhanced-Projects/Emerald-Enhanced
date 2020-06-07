@@ -5,11 +5,15 @@ TrainerHill_2F_MapScripts:: @ 8268F81
 	.byte 0
 
 TrainerHill_2F_EventScript_Heal::
+	msgbox TrainerHill_2F_Text_HealingPokemon
+	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
-	msgbox TrainerHill_2F_Text_HealedUpReadyToGo
+	msgbox TrainerHill_2F_Text_GiveItYourAll
 	closemessage
 	end
 
-TrainerHill_2F_Text_HealedUpReadyToGo:
-	.string "Healed up and ready to go!\n"
+TrainerHill_2F_Text_HealingPokemon:
+	.string "Healing Pokemon...$"
+
+TrainerHill_2F_Text_GiveItYourAll:
 	.string "Give it your all!$"
