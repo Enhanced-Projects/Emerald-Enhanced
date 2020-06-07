@@ -151,14 +151,14 @@
             "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
             "dest_warp_id": 4,
             "elevation": 0,
-            "x": 46,
-            "y": 10
+            "x": 34,
+            "y": 17
         },
         {
             "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
             "dest_warp_id": 3,
             "elevation": 0,
-            "x": 47,
+            "x": 46,
             "y": 10
         },
         {

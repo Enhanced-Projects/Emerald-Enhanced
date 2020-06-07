@@ -781,7 +781,8 @@
 #define METATILE_Underwater_FloorShadow  0x228
 #define METATILE_Underwater_RockWall     0x21E
 
-// gTileset_Fallarbor_Mine
-#define METATILE_FallarborMine_Door_LightRoof  0x228
+// gTileset_FallarborMine
+#define METATILE_FallarborMine_Door_Lab        0x241
+#define METATILE_FallarborMine_Door_LightRoof  0x2A4
 
 #endif // GUARD_METATILE_LABELS_H
