@@ -121,7 +121,6 @@ const u16 gInsideMiningTier3[] = {//level 3
     ITEM_RARE_GEM_ORE,
     ITEM_COMMON_GEM_ORE,
     ITEM_COMMON_GEM_ORE,
-    ITEM_NONE,
     ITEM_FOSSIL_ORE,
     ITEM_UNCOMMON_GEM_ORE,
     ITEM_UNCOMMON_GEM_ORE,
@@ -170,10 +169,10 @@ const u16 gOutsideMiningTier2[] = {//level 2
     ITEM_GOLD_ORE
 };
 const u16 gOutsideMiningTier3[] = {//level 3
-    ITEM_GOLD_ORE,
+    ITEM_COPPER_ORE,
     ITEM_RARE_GEM_ORE,
     ITEM_RARE_GEM_ORE,
-    ITEM_RARE_GEM_ORE,
+    ITEM_FOSSIL_ORE,
     ITEM_SHARD_ORE,
     ITEM_COMMON_GEM_ORE,
     ITEM_NONE,
@@ -183,6 +182,6 @@ const u16 gOutsideMiningTier3[] = {//level 3
     ITEM_NONE,
     ITEM_NONE,
     ITEM_SILVER_ORE,
-    ITEM_GOLD_ORE,
-    ITEM_GOLD_ORE
+    ITEM_COPPER_ORE,
+    ITEM_FOSSIL_ORE
 };

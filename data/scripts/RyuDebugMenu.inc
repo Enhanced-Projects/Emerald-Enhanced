@@ -183,7 +183,8 @@ RDB_CTVMsg:
 	.string "{RYU_STR_1} - {RYU_STR_2} - {RYU_STR_3}$"
 
 RyuDebug_Utility1::
-	goto Ryu_MiningGemstoneOreRefiner
+	setvar VAR_RYU_PLAYER_MINING_SKILL, 1
+	@goto Ryu_RefineFossilOre
 	release
 	end
 

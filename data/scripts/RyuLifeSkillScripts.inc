@@ -84,14 +84,13 @@ Ryu_YouDontHaveAnyGemOres:
 Ryu_RefineFossilOre::
     msgbox Ryu_FossilOreIntro
     closemessage
-    specialvar VAR_RESULT, RyuFossilReward
-    compare VAR_RESULT, 0
-    goto_if_eq Ryu_NoFossilOreToRefine
-    compare VAR_RESULT, 1
-    goto_if_eq Ryu_FossilOreFailed
+    specialvar VAR_TEMP_C, RyuFossilReward
+    switch VAR_RESULT
+    case 0, Ryu_NoFossilOreToRefine
+    case 1, Ryu_FossilOreFailed
     removeitem ITEM_FOSSIL_ORE, 1
-    additem VAR_RESULT, 1
-    bufferitemname 4, VAR_RESULT
+    additem VAR_TEMP_C, 1
+    bufferitemname 3, VAR_TEMP_C
     msgbox RyuFossilRewardExiting
     release
     end
@@ -115,9 +114,12 @@ Ryu_FossilOreIntro:
 RyuFossilRewardExiting:
     .string "Ooh, I got something from it!\pHere's your {RYU_STR_1}!\nBe sure to make good use of it!$"
 
+Ryu_NoFossilOres:
+    .string "You must have at least one\nfossil ore for me to refine!$"
+
 @@Mining General
 
-Ryu_MineOutsideRock::
+Ryu_MineRock:: @@The special code function determines if you are inside or outside by map header.
     playse SE_W088
     waitse
     playse SE_W088
@@ -142,6 +144,11 @@ Ryu_NoOresHere::
     release
     end
 
+RyuCheckMiningSkill:
+    compare VAR_RYU_PLAYER_MINING_SKILL, 0
+    goto_if_eq ryu_end
+    return
+
 Ryu_FailedToMine:
     .string "You failed to mine anything.$"
 
@@ -154,9 +161,10 @@ Ryu_NothingHere:
 @overworld mining scripts
 
 r101_MiningRock1::
+    call RyuCheckMiningSkill
     goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
     setflag FLAG_TEMP_2
-    call Ryu_MineOutsideRock
+    call Ryu_MineRock
     playfanfare MUS_FANFA1
     msgbox Ryu_YouMinedA
     waitfanfare
@@ -166,10 +174,53 @@ r101_MiningRock1::
 r101_MiningRock2::
     goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
     setflag FLAG_TEMP_3
-    call Ryu_MineOutsideRock
+    call Ryu_MineRock
     playfanfare MUS_FANFA1
     msgbox Ryu_YouMinedA
     waitfanfare
     release
     end
 
+DU_MiningRock1::
+    call RyuCheckMiningSkill
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    playfanfare MUS_FANFA1
+    msgbox Ryu_YouMinedA
+    waitfanfare
+    release
+    end
+
+DU_MiningRock2::
+    call RyuCheckMiningSkill
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    playfanfare MUS_FANFA1
+    msgbox Ryu_YouMinedA
+    waitfanfare
+    release
+    end
+
+DU_MiningRock3::
+    call RyuCheckMiningSkill
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    playfanfare MUS_FANFA1
+    msgbox Ryu_YouMinedA
+    waitfanfare
+    release
+    end
+
+DU_MiningRock4::
+    call RyuCheckMiningSkill
+    goto_if_set FLAG_TEMP_4, Ryu_NoOresHere
+    setflag FLAG_TEMP_4
+    call Ryu_MineRock
+    playfanfare MUS_FANFA1
+    msgbox Ryu_YouMinedA
+    waitfanfare
+    release
+    end
