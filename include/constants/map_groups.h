@@ -103,6 +103,8 @@
 #define MAP_FALLARBOR_TOWN_MOVE_RELEARNERS_HOUSE   (7 | (5 << 8))
 #define MAP_FALLARBOR_TOWN_CAVE_TOWN               (8 | (5 << 8))
 #define MAP_FALLARBOR_TOWN_LAB                     (9 | (5 << 8))
+#define MAP_FALLARBOR_TOWN_GEM_REFINER             (10 | (5 << 8))
+#define MAP_FALLARBOR_TOWN_SHARD_REFINER           (11 | (5 << 8))
 
 // Map Group 6
 #define MAP_VERDANTURF_TOWN_BATTLE_TENT_LOBBY       (0 | (6 << 8))

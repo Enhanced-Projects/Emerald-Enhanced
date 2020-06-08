@@ -4679,6 +4679,26 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_Facility",
             "width": 18
+        },
+        {
+            "blockdata_filepath": "data/layouts/FallarborTown_GemRefiner/map.bin",
+            "border_filepath": "data/layouts/FallarborTown_GemRefiner/border.bin",
+            "height": 8,
+            "id": "LAYOUT_FALLARBOR_TOWN_GEM_REFINER",
+            "name": "FallarborTown_GemRefiner_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Facility",
+            "width": 8
+        },
+        {
+            "blockdata_filepath": "data/layouts/FallarborTown_ShardRefiner/map.bin",
+            "border_filepath": "data/layouts/FallarborTown_ShardRefiner/border.bin",
+            "height": 8,
+            "id": "LAYOUT_FALLARBOR_TOWN_SHARD_REFINER",
+            "name": "FallarborTown_ShardRefiner_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Facility",
+            "width": 8
         }
     ],
     "layouts_table_label": "gMapLayouts"

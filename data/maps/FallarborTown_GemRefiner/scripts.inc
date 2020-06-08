@@ -1,0 +1,2 @@
+FallarborTown_GemRefiner_MapScripts::
+	.byte 0

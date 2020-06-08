@@ -564,7 +564,9 @@
         "FallarborTown_CozmosHouse",
         "FallarborTown_MoveRelearnersHouse",
         "FallarborTown_CaveTown",
-        "FallarborTown_Lab"
+        "FallarborTown_Lab",
+        "FallarborTown_GemRefiner",
+        "FallarborTown_ShardRefiner"
     ],
     "gMapGroup6": [
         "VerdanturfTown_BattleTentLobby",

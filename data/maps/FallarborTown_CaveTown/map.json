@@ -19,6 +19,30 @@
             "type": "sign",
             "x": 51,
             "y": 19
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FallarborTown_CaveTown_EventScript_FallarborFossilLabSign",
+            "type": "sign",
+            "x": 48,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FallarborTown_CaveTown_EventScript_FallarborShardRefinerSign",
+            "type": "sign",
+            "x": 23,
+            "y": 17
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FallarborTown_CaveTown_Text_GemRefinerSign",
+            "type": "sign",
+            "x": 36,
+            "y": 17
         }
     ],
     "connections": null,
@@ -148,8 +172,8 @@
             "y": 2
         },
         {
-            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
-            "dest_warp_id": 4,
+            "dest_map": "MAP_FALLARBOR_TOWN_GEM_REFINER",
+            "dest_warp_id": 0,
             "elevation": 0,
             "x": 34,
             "y": 17
@@ -174,6 +198,13 @@
             "elevation": 0,
             "x": 38,
             "y": 10
+        },
+        {
+            "dest_map": "MAP_FALLARBOR_TOWN_SHARD_REFINER",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 25,
+            "y": 17
         }
     ],
     "weather": "WEATHER_NONE"
