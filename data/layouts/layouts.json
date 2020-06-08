@@ -4669,6 +4669,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Fallarbor_Mine",
             "width": 62
+        },
+        {
+            "blockdata_filepath": "data/layouts/FallarborTown_Lab/map.bin",
+            "border_filepath": "data/layouts/FallarborTown_Lab/border.bin",
+            "height": 13,
+            "id": "LAYOUT_FALLARBOR_TOWN_LAB",
+            "name": "FallarborTown_Lab_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Facility",
+            "width": 18
         }
     ],
     "layouts_table_label": "gMapLayouts"

@@ -563,7 +563,8 @@
         "FallarborTown_PokemonCenter_2F",
         "FallarborTown_CozmosHouse",
         "FallarborTown_MoveRelearnersHouse",
-        "FallarborTown_CaveTown"
+        "FallarborTown_CaveTown",
+        "FallarborTown_Lab"
     ],
     "gMapGroup6": [
         "VerdanturfTown_BattleTentLobby",
