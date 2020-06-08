@@ -6401,36 +6401,57 @@ int RyuGetItemQuantity(u16 *quantity)
 {
     return gSaveBlock2Ptr->encryptionKey ^ *quantity;
 }
+//
+//void RyuCountGemOres(void)
+//{
+//    u8 i;
+//    u16 total1 = 0;
+//    u16 total2 = 0;
+//    u16 total3 = 0;
+//
+//    for (i = 0; i < gBagPockets[ITEMS_POCKET].capacity; i++)
+//    {
+//        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_COMMON_GEM_ORE)
+//        {
+//            total1 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+//        }
+//
+//        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_UNCOMMON_GEM_ORE)
+//        {
+//            total2 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+//        }
+//
+//        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_RARE_GEM_ORE)
+//        {
+//            total3 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+//        }
+//    }
+//
+//    mgba_printf(MGBA_LOG_INFO, "quantities = %d, %d, %d", total1, total2, total3);
+//    ConvertIntToDecimalStringN(gRyuStringVar3, total3, STR_CONV_MODE_LEFT_ALIGN, 3);
+//    ConvertIntToDecimalStringN(gRyuStringVar2, total2, STR_CONV_MODE_LEFT_ALIGN, 3);
+//    ConvertIntToDecimalStringN(gRyuStringVar1, total1, STR_CONV_MODE_LEFT_ALIGN, 3);
+//}
 
-void RyuCountGemOres(void)
-{
-    u8 i;
-    u16 total1 = 0;
-    u16 total2 = 0;
-    u16 total3 = 0;
-
-    for (i = 0; i < gBagPockets[ITEMS_POCKET].capacity; i++)
-    {
-        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_COMMON_GEM_ORE)
-        {
-            total1 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
-        }
-
-        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_UNCOMMON_GEM_ORE)
-        {
-            total2 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
-        }
-
-        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_RARE_GEM_ORE)
-        {
-            total3 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
-        }
+void RyuCountGemOres (void) {
+  unsigned i;
+  unsigned common = 0, uncommon = 0, rare = 0;
+  for (i = 0; i < gBagPockets[ITEM_POCKET].capacity; i ++) {
+    const ItemSlot * slot = gBagPockets[ITEM_POCKET].itemSlots + i;
+    switch (slot -> itemId) {
+      case ITEM_COMMON_GEM_ORE:
+        common += RyuGetItemQuantity(slot -> quantity);
+        break;
+      case ITEM_UNCOMMON_GEM_ORE:
+        uncommon += RyuGetItemQuantity(slot -> quantity);
+        break;
+      case ITEM_RARE_GEM_ORE:
+        rare += RyuGetItemQuantity(slot -> quantity);
     }
-
-    mgba_printf(MGBA_LOG_INFO, "quantities = %d, %d, %d", total1, total2, total3);
-    ConvertIntToDecimalStringN(gRyuStringVar3, total3, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar2, total2, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar1, total1, STR_CONV_MODE_LEFT_ALIGN, 3);
+  }
+  ConvertIntToDecimalStringN(gRyuStringVar3, rare, STR_CONV_MODE_LEFT_ALIGN, 3);
+  ConvertIntToDecimalStringN(gRyuStringVar2, uncommon, STR_CONV_MODE_LEFT_ALIGN, 3);
+  ConvertIntToDecimalStringN(gRyuStringVar1, common, STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
 void RyuChooseFromGemList(void)
@@ -6461,4 +6482,29 @@ void RyuChooseFromGemList(void)
             }
     }
     gSpecialVar_Result = Result;
+}
+
+//int RyuFossilReward(void)
+//{
+//    u16 itemreward = 0;
+//    bool8 hasItem = (CheckBagHasItem(ITEM_FOSSIL_ORE, 1));
+//    
+//    if (hasItem == FALSE)
+//    {
+//        return 0;
+//    }
+//
+//    itemreward = gFossilTable[(Random () %(ARRAY_COUNT(gFossilTable)))];
+//
+//    if (itemreward == 1)
+//    {
+//        return 1;
+//    }
+//
+//    return itemreward;
+//}
+
+int RyuFossilReward (void) 
+{
+  return CheckBagHasItem(ITEM_FOSSIL_ORE, 1) ? gFossilTable[Random() % ARRAY_COUNT(gFossilTable)] : 0;
 }

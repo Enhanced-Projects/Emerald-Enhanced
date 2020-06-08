@@ -29,16 +29,38 @@ const u16 gGemTier1[] = {//common gem ore
 
 const u16 gFossilTable[] = {//used when refining fossil ore
     ITEM_ARMOR_FOSSIL,
+    ITEM_ARMOR_FOSSIL,
+    ITEM_SKULL_FOSSIL,
     ITEM_SKULL_FOSSIL,
     ITEM_HELIX_FOSSIL,
+    ITEM_HELIX_FOSSIL,
     ITEM_DOME_FOSSIL,
-    ITEM_COVER_FOSSIL,
+    ITEM_DOME_FOSSIL,
+    ITEM_PLUME_FOSSIL,
     ITEM_PLUME_FOSSIL,
     ITEM_JAW_FOSSIL,
+    ITEM_JAW_FOSSIL,
+    ITEM_SAIL_FOSSIL,
     ITEM_SAIL_FOSSIL,
     ITEM_ROOT_FOSSIL,
+    ITEM_ROOT_FOSSIL,
+    ITEM_CLAW_FOSSIL,
     ITEM_CLAW_FOSSIL,
     ITEM_OLD_AMBER,
+    ITEM_OLD_AMBER,
+    ITEM_THICK_CLUB,
+    ITEM_RARE_BONE,
+    ITEM_EVERSTONE,
+    ITEM_HARD_STONE,
+    ITEM_FLOAT_STONE,
+    ITEM_DAMP_ROCK,
+    ITEM_ICY_ROCK,
+    ITEM_SMOOTH_ROCK,
+    ITEM_HEAT_ROCK,
+    ITEM_MASTER_BALL,//no item
+    ITEM_MASTER_BALL,//no item
+    ITEM_MASTER_BALL,//no item
+    ITEM_MASTER_BALL,//no item
 };
 
 const u16 gShardOreTable[] = {//the table rolled on when refining shard ores.

@@ -80,6 +80,40 @@ Ryu_PlsComeBackLater:
 Ryu_YouDontHaveAnyGemOres:
 	.string "You don't have any of that ore!$"
 
+@@Fossil Ore Refiner
+Ryu_RefineFossilOre::
+    msgbox Ryu_FossilOreIntro
+    closemessage
+    specialvar VAR_RESULT, RyuFossilReward
+    compare VAR_RESULT, 0
+    goto_if_eq Ryu_NoFossilOreToRefine
+    compare VAR_RESULT, 1
+    goto_if_eq Ryu_FossilOreFailed
+    removeitem ITEM_FOSSIL_ORE, 1
+    additem VAR_RESULT, 1
+    bufferitemname 4, VAR_RESULT
+    msgbox RyuFossilRewardExiting
+    release
+    end
+
+Ryu_NoFossilOreToRefine::
+    msgbox Ryu_NoFossilOres
+    release
+    end
+
+Ryu_FossilOreFailed::
+    msgbox Ryu_FossilRefineFailure
+    release
+    end
+
+Ryu_FossilRefineFailure:
+    .string "Bad news! I failed to refine\nanything of use. The ore was\ltoo damaged. Sorry!$"
+
+Ryu_FossilOreIntro:
+    .string "Welcome! I'll refine any fossil\nores you have, at no charge!\pLet's see what you got...$"
+
+RyuFossilRewardExiting:
+    .string "Ooh, I got something from it!\pHere's your {RYU_STR_1}!\nBe sure to make good use of it!$"
 
 @@Mining General
 
