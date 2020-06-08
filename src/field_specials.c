@@ -78,7 +78,7 @@
 #include "money.h"
 #include "menu_helpers.h"
 #include "data/lifeskill.h"
-//#include "mgba.h"
+#include "mgba.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -4403,11 +4403,10 @@ void GivePlayerModdedMon(void)
     u16 move3 =  (VarGet(VAR_RYU_GCMS_MOVE3));
     u16 move4 =  (VarGet(VAR_RYU_GCMS_MOVE4));
     u8 ability = (VarGet(VAR_RYU_GCMS_ABILITY));
-    //mgba_printf(MGBA_LOG_INFO, "%d %d %d %d %d %d %d %d %d %d %d %d %d", species, nature, fixedIv, level, isEgg, slot, ball, move1, move2, move3, move4, ability);
 
     if (fixedIv > 31)
         fixedIv = 31;
-    //mgba_printf(MGBA_LOG_INFO, "Creating mon in slot %d. Species is %d, at level %d, with IV's of %d, and nature of %d");
+
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
     SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &isEgg);
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
@@ -4427,7 +4426,6 @@ void PasscodeGiveMonWithNature(void)
     u8 nature = (VarGet(VAR_TEMP_C));
     u8 fixedIv = 31;
     u8 level = 100;
-    //mgba_printf(MGBA_LOG_INFO, "giving species # %d, at level %d with nature %d and fixed IV value of %d in slot %d", species, level, nature, fixedIv, slot);
 
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
     CalculateMonStats(&gPlayerParty[slot]);
@@ -5617,7 +5615,6 @@ bool8 checkForOverlordRyuEncounter(void)
 void CheckSaveFileSize(void)
 {
     u32 size = (sizeof(struct SaveBlock1));
-    //mgba_printf(MGBA_LOG_INFO, "Saveblock size is: %d", size);
     ConvertIntToDecimalStringN(gStringVar1, size, STR_CONV_MODE_LEFT_ALIGN, 6);
 }
 
@@ -6395,4 +6392,87 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx)
     VarSet(VAR_TEMP_C, amount);
     return TRUE;
     
+}
+
+int RyuGetItemQuantity(u16 *quantity)
+{
+    return gSaveBlock2Ptr->encryptionKey ^ *quantity;
+}
+
+
+void RyuCountGemOres(void)
+{
+    u8 i;
+    u16 total1 = 0;
+    u16 total2 = 0;
+    u16 total3 = 0;
+
+    for (i = 0; i < gBagPockets[ITEMS_POCKET].capacity; i++)
+    {
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_COMMON_GEM_ORE)
+        {
+            total1 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_UNCOMMON_GEM_ORE)
+        {
+            total2 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_RARE_GEM_ORE)
+        {
+            total3 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+    }
+
+    ConvertIntToDecimalStringN(gRyuStringVar3, total3, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar2, total2, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, total1, STR_CONV_MODE_LEFT_ALIGN, 3);
+}
+
+void RyuChooseFromGemList(void)
+{
+    u16 mode = (VarGet(VAR_TEMP_A));
+
+    u16 Result = 0;
+
+    switch (mode)
+    {
+        case 1:
+            {
+                Result = (gGemTier1[((Random () % 5)+1)]);
+                break;
+            }
+        case 2:
+            {
+                Result = (gGemTier2[((Random () % 5)+1)]);
+                break;
+            }
+        case 3:
+            {
+                Result = (gGemTier3[((Random () % 5)+1)]);
+                break;
+            }
+    }
+    gSpecialVar_Result = Result;
+}
+
+int RyuFossilReward(void)
+{
+    u16 itemReward = gFossilTable[(Random() %(ARRAY_COUNT(gFossilTable)))];
+    bool8 hasItem = (CheckBagHasItem(ITEM_FOSSIL_ORE, 1));
+
+    mgba_open();
+    mgba_printf(MGBA_LOG_INFO, "Selected a %d", itemReward);
+    
+    if (hasItem == FALSE)
+    {
+        return 0;
+    }
+    else
+    {
+        mgba_printf(MGBA_LOG_INFO, "Refined a %d", itemReward);
+        return itemReward;
+    }
+
 }

@@ -180,13 +180,11 @@ RyuDebug_ViewTempVars::
 	end
 
 RDB_CTVMsg:
-	.string "{STR_VAR_1}$"
+	.string "{RYU_STR_1} - {RYU_STR_2} - {RYU_STR_3}$"
 
 RyuDebug_Utility1::
-	getplayerxy VAR_TEMP_5, VAR_TEMP_6
-	addvar VAR_TEMP_5, 1
-	setmetatile VAR_TEMP_5, VAR_TEMP_6, 654, 0
-	special DrawWholeMapView
+	setvar VAR_RYU_PLAYER_MINING_SKILL, 1
+	warpteleport MAP_DESERT_UNDERPASS, 0, 10, 12
 	release
 	end
 

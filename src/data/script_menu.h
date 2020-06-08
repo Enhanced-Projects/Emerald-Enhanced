@@ -1180,6 +1180,14 @@ static const struct MenuAction MultichoiceList_DevMonGiveAbilityMenu[]=
     {gText_DevMonGiveAbility3},
 };
 
+static const struct MenuAction MultichoiceList_RyuLifeskillGemRefinerQualitySelect[]=
+{
+    {gText_RLSGM_Common},
+    {gText_RLSGM_Uncommon},
+    {gText_RLSGM_Rare},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1341,7 +1349,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_LANETTE_ROTOM_DIALOG]       = MULTICHOICE(MultichoiceList_LaneteRotomDialog),
     [MULTI_OW_REPEL_DLG]               = MULTICHOICE(MultichoiceList_OWRepelList),
     [MULTI_DEV_GIVE_MON_ABILITY]       = MULTICHOICE(MultichoiceList_DevMonGiveAbilityMenu),
-
+    [MULTI_RLS_GEMSTONEQUALITYMENU]    = MULTICHOICE(MultichoiceList_RyuLifeskillGemRefinerQualitySelect),
 };
 
 const u8 *const gStdStrings[] =

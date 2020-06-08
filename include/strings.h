@@ -3148,6 +3148,10 @@ extern const u8 gText_DevMonGiveAbility1[];
 extern const u8 gText_DevMonGiveAbility2[];
 extern const u8 gText_DevMonGiveAbility3[];
 
+extern const u8 gText_RLSGM_Common[];
+extern const u8 gText_RLSGM_Uncommon[];
+extern const u8 gText_RLSGM_Rare[];
+
 extern const u8 gText_RyuLevel10MenuOption[];
 extern const u8 gText_RyuLevel20MenuOption[];
 extern const u8 gText_RyuLevel30MenuOption[];

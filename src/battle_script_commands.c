@@ -1255,6 +1255,20 @@ static bool32 AccuracyCalcHelper(u16 move)
         JumpIfMoveFailed(7, move);
         return TRUE;
     }
+    else if (B_TOXIC_NEVER_MISS >= GEN_6
+            && gBattleMoves[move].effect == EFFECT_WILL_O_WISP
+            && IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_FIRE))
+    {
+        JumpIfMoveFailed(7, move);
+        return TRUE;
+    }
+    else if (B_TOXIC_NEVER_MISS >= GEN_6
+            && gBattleMoves[move].effect == EFFECT_PARALYZE
+            && IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_ELECTRIC))
+    {
+        JumpIfMoveFailed(7, move);
+        return TRUE;
+    }
     else if (GetBattlerAbility(gBattlerAttacker) == ABILITY_NO_GUARD)
     {
         if (!JumpIfMoveFailed(7, move))

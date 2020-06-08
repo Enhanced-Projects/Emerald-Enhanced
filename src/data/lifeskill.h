@@ -29,16 +29,38 @@ const u16 gGemTier1[] = {//common gem ore
 
 const u16 gFossilTable[] = {//used when refining fossil ore
     ITEM_ARMOR_FOSSIL,
+    ITEM_ARMOR_FOSSIL,
+    ITEM_SKULL_FOSSIL,
     ITEM_SKULL_FOSSIL,
     ITEM_HELIX_FOSSIL,
+    ITEM_HELIX_FOSSIL,
     ITEM_DOME_FOSSIL,
-    ITEM_COVER_FOSSIL,
+    ITEM_DOME_FOSSIL,
+    ITEM_PLUME_FOSSIL,
     ITEM_PLUME_FOSSIL,
     ITEM_JAW_FOSSIL,
+    ITEM_JAW_FOSSIL,
+    ITEM_SAIL_FOSSIL,
     ITEM_SAIL_FOSSIL,
     ITEM_ROOT_FOSSIL,
+    ITEM_ROOT_FOSSIL,
+    ITEM_CLAW_FOSSIL,
     ITEM_CLAW_FOSSIL,
     ITEM_OLD_AMBER,
+    ITEM_OLD_AMBER,
+    ITEM_THICK_CLUB,
+    ITEM_RARE_BONE,
+    ITEM_EVERSTONE,
+    ITEM_HARD_STONE,
+    ITEM_FLOAT_STONE,
+    ITEM_DAMP_ROCK,
+    ITEM_ICY_ROCK,
+    ITEM_SMOOTH_ROCK,
+    ITEM_HEAT_ROCK,
+    ITEM_MASTER_BALL,//no item
+    ITEM_MASTER_BALL,//no item
+    ITEM_MASTER_BALL,//no item
+    ITEM_MASTER_BALL,//no item
 };
 
 const u16 gShardOreTable[] = {//the table rolled on when refining shard ores.
@@ -99,7 +121,6 @@ const u16 gInsideMiningTier3[] = {//level 3
     ITEM_RARE_GEM_ORE,
     ITEM_COMMON_GEM_ORE,
     ITEM_COMMON_GEM_ORE,
-    ITEM_NONE,
     ITEM_FOSSIL_ORE,
     ITEM_UNCOMMON_GEM_ORE,
     ITEM_UNCOMMON_GEM_ORE,
@@ -148,10 +169,10 @@ const u16 gOutsideMiningTier2[] = {//level 2
     ITEM_GOLD_ORE
 };
 const u16 gOutsideMiningTier3[] = {//level 3
-    ITEM_GOLD_ORE,
+    ITEM_COPPER_ORE,
     ITEM_RARE_GEM_ORE,
     ITEM_RARE_GEM_ORE,
-    ITEM_RARE_GEM_ORE,
+    ITEM_FOSSIL_ORE,
     ITEM_SHARD_ORE,
     ITEM_COMMON_GEM_ORE,
     ITEM_NONE,
@@ -161,6 +182,6 @@ const u16 gOutsideMiningTier3[] = {//level 3
     ITEM_NONE,
     ITEM_NONE,
     ITEM_SILVER_ORE,
-    ITEM_GOLD_ORE,
-    ITEM_GOLD_ORE
+    ITEM_COPPER_ORE,
+    ITEM_FOSSIL_ORE
 };
