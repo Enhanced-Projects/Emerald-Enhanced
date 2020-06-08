@@ -1083,26 +1083,19 @@ static bool8 TryGetAbilityInfluencedWildMonIndexFromTable(const struct WildPokem
 {
     u32 ability = GetMonAbility(&gPlayerParty[0]);
 
-    //mgba_open();
-
     if (GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
     {
-        //mgba_printf(MGBA_LOG_DEBUG, "Attraction Debug, Mon is an Egg");
         return FALSE;
     }   
     else if (sTypeAttractionTable[ability][0][encounterType] == TYPE_NONE || (sTypeAttractionTable[ability][0][encounterType] == 0 && sTypeAttractionTable[ability][1][0] == FALSE))
     {
-        //mgba_printf(MGBA_LOG_DEBUG, "Attraction Debug, No Attr, eT = %d, a = %d, arrAcceT = %d, arrAcc2 = %d", encounterType, ability, sTypeAttractionTable[ability][0][encounterType], sTypeAttractionTable[ability][1][0]);
         return FALSE;
     }   
     else if (Random() % 2 != 0)
     {
-        //mgba_printf(MGBA_LOG_DEBUG, "Attraction Debug, I lost the run to RNG dude");
         return FALSE;
     }   
     
-    //mgba_printf(MGBA_LOG_DEBUG, "Attraction Debug, Attr, eT = %d, a = %d, arrAcceT = %d, arrAcc2 = %d, wc = %d", encounterType, ability, sTypeAttractionTable[ability][0][encounterType], sTypeAttractionTable[ability][1][0], sWildCount[encounterType]);
-
     return TryGetRandomWildMonIndexByType(wildMon, sTypeAttractionTable[ability][0][encounterType], sWildCount[encounterType], monIndex);
 }
 

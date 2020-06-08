@@ -573,13 +573,8 @@ void CB2_InitTitleScreen(void)
             }
 
         }
-        mgba_open();
-        mgba_printf(MGBA_LOG_WARN, "This is a test");
 
-        //DmaCopy16(3, sMawileTileMap, BG_SCREEN_ADDR(26), sizeof(sMawileTileMap));
         LoadPalette(sMawilePalette, palindex*0x10, 0x20);
-        //LZ77UnCompVram(sTitleScreenRayquazaGfx, (void *)(BG_CHAR_ADDR(2)));
-        //LZ77UnCompVram(sTitleScreenRayquazaTilemap, (void *)(BG_SCREEN_ADDR(26)));
         LZ77UnCompVram(sTitleScreenCloudsGfx, (void *)(BG_CHAR_ADDR(3)));
         LZ77UnCompVram(gUnknown_08DDE458, (void *)(BG_SCREEN_ADDR(30)));
         ScanlineEffect_Stop();
