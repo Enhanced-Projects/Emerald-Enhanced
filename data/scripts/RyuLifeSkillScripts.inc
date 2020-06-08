@@ -172,6 +172,7 @@ r101_MiningRock1::
     end
 
 r101_MiningRock2::
+    call RyuCheckMiningSkill
     goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
     setflag FLAG_TEMP_3
     call Ryu_MineRock

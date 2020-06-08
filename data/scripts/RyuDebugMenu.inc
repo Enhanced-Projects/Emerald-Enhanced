@@ -184,7 +184,7 @@ RDB_CTVMsg:
 
 RyuDebug_Utility1::
 	setvar VAR_RYU_PLAYER_MINING_SKILL, 1
-	@goto Ryu_RefineFossilOre
+	warpteleport MAP_DESERT_UNDERPASS, 0, 10, 12
 	release
 	end
 
