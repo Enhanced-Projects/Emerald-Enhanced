@@ -15,7 +15,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "VR_MiningRock1",
+            "script": "MiningRock1",
             "type": "sign",
             "x": 29,
             "y": 13
@@ -23,7 +23,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "VR_MiningRock2",
+            "script": "MiningRock2",
             "type": "sign",
             "x": 29,
             "y": 24
@@ -31,7 +31,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "VR_MiningRock3",
+            "script": "MiningRock3",
             "type": "sign",
             "x": 5,
             "y": 30
@@ -39,7 +39,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "VR_MiningRock4",
+            "script": "MiningRock4",
             "type": "sign",
             "x": 6,
             "y": 36

@@ -13,7 +13,7 @@ FallarborTown_CaveTown_EventScript_FallarborGemRefinerSign::
 	msgbox FallarborTown_CaveTown_Text_GemRefinerSign, MSGBOX_SIGN
 	end
 
-FallarborTown_CaveTown_Text_GemRefinerSign:
+FallarborTown_CaveTown_Text_GemRefinerSign::
 	.string "Fallarbor Gem Ore Refiner\n"
 	.string "“From rough rock to dazzling diamond”$"
 

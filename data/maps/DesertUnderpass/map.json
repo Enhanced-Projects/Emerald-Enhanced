@@ -15,7 +15,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "DU_MiningRock2",
+            "script": "MiningRock1",
             "type": "sign",
             "x": 22,
             "y": 12
@@ -23,7 +23,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "DU_MiningRock3",
+            "script": "MiningRock2",
             "type": "sign",
             "x": 31,
             "y": 4
@@ -31,7 +31,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "DU_MiningRock4",
+            "script": "MiningRock3",
             "type": "sign",
             "x": 46,
             "y": 4
@@ -39,7 +39,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "DU_MiningRock5",
+            "script": "MiningRock4",
             "type": "sign",
             "x": 47,
             "y": 18
@@ -47,7 +47,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "DU_MiningRock9",
+            "script": "MiningRock5",
             "type": "sign",
             "x": 121,
             "y": 13
@@ -55,7 +55,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "DU_MiningRock8",
+            "script": "MiningRock6",
             "type": "sign",
             "x": 73,
             "y": 20
@@ -63,7 +63,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "DU_MiningRock7",
+            "script": "MiningRock7",
             "type": "sign",
             "x": 68,
             "y": 4
@@ -71,7 +71,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "DU_MiningRock6",
+            "script": "MiningRock8",
             "type": "sign",
             "x": 59,
             "y": 11
@@ -101,7 +101,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_RYU_DU_TYRANITARITE",
+            "flag": "FLAG_RYU_TYRANITARITE",
             "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,

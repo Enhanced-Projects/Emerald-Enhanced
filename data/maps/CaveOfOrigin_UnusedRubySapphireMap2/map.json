@@ -7,7 +7,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "CoO_MiningRock3",
+            "script": "MiningRock3",
             "type": "sign",
             "x": 14,
             "y": 5
@@ -15,7 +15,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "CoO_MiningRock4",
+            "script": "MiningRock4",
             "type": "sign",
             "x": 15,
             "y": 6

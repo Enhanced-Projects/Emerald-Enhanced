@@ -196,7 +196,7 @@ Ryu_CheckLevel1::
     goto_if_lt ryu_return
     compare VAR_RYU_PLAYER_MINING_SKILL, 1
     goto_if_ne ryu_return
-    playfanfare MUS_FANFA2
+    playfanfare MUS_FANFA4
     waitfanfare
     msgbox Ryu_Level2Mining
     closemessage
@@ -208,7 +208,7 @@ Ryu_CheckLevel2::
     goto_if_lt ryu_return
     compare VAR_RYU_PLAYER_MINING_SKILL, 2
     goto_if_ne ryu_return
-    playfanfare MUS_FANFA3
+    playfanfare MUS_FANFA5
     msgbox Ryu_Level3Mining
     waitfanfare
     closemessage
@@ -238,6 +238,12 @@ Ryu_YouMinedA:
 
 Ryu_NothingHere:
     .string "There doesn't seem to be\nanything of interest here.$"
+
+Ryu_Level2Mining:
+    .string "You feel yourself attuning to\nthe earth a little more.$"
+
+Ryu_Level3Mining:
+    .string "The earth now speaks to you,\nletting you see ores more clearly.$"
 
 @overworld mining scripts==========================================================================
 

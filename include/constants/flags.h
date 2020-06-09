@@ -1293,7 +1293,7 @@
 #define FLAG_HAS_ACRO_BIKE                                          0x4D2 // Unused Flag
 #define FLAG_HAS_MACH_BIKE                                          0x4D3 // Unused Flag
 #define FLAG_RYU_SUB_ROOM_SHELLY                                    0x4D4 // Unused Flag
-#define FLAG_RYU_DU_TYRANITARITE                                    0x4D5 // Unused Flag
+#define FLAG_RYU_TYRANITARITE                                       0x4D5 // Unused Flag
 #define FLAG_RYU_DTC_STEELIXITE                                     0x4D6 // Unused Flag
 #define FLAG_RYU_FORCE_TUCKER                                       0x4D7 // Unused Flag
 #define FLAG_RYU_LANA_SLATEPORT                                     0x4D8 // Unused Flag
