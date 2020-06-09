@@ -1188,6 +1188,22 @@ static const struct MenuAction MultichoiceList_RyuLifeskillGemRefinerQualitySele
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_RyuShardExchange[]=
+{
+    {gText_RedShard},
+    {gText_BlueShard},
+    {gText_YellowShard},
+    {gText_GreenShard},
+    {gText_DarkShard},
+    {gText_LightShard},
+    {gText_CyanShard},
+    {gText_GlossyShard},
+    {gText_GoldShard},
+    {gText_GrayShard},
+    {gText_Exit},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1350,6 +1366,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_OW_REPEL_DLG]               = MULTICHOICE(MultichoiceList_OWRepelList),
     [MULTI_DEV_GIVE_MON_ABILITY]       = MULTICHOICE(MultichoiceList_DevMonGiveAbilityMenu),
     [MULTI_RLS_GEMSTONEQUALITYMENU]    = MULTICHOICE(MultichoiceList_RyuLifeskillGemRefinerQualitySelect),
+    [MULTI_SHARD_EXCHANGE]    = MULTICHOICE(MultichoiceList_RyuShardExchange),
 };
 
 const u8 *const gStdStrings[] =

@@ -180,17 +180,11 @@ RyuDebug_ViewTempVars::
 	end
 
 RDB_CTVMsg:
-	.string "{RYU_STR_1} - {RYU_STR_2} - {RYU_STR_3}$"
+	.string "SaveBlock1 is {STR_VAR_1} bytes long.$"
 
 RyuDebug_Utility1::
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGMININGMAP
-	@msgbox Ryu_MiningMapInfo, MSGBOX_ONELINE
-	waitbuttonpress
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
-	setvar VAR_RYU_PLAYER_MINING_SKILL, 1
-	warpteleport MAP_DESERT_UNDERPASS, 0, 10, 12
+	special CheckSaveFileSize
+	msgbox RDB_CTVMsg
 	release
 	end
 

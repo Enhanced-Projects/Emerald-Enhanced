@@ -5,8 +5,13 @@
 @@Shard ore refining===============================================================================
 
 Ryu_RefineShardOre::@add this to the shard ore refiner npc
+    lockall
+    faceplayer
     msgbox Ryu_ShardOreIntro
     closemessage
+    checkitemspace ITEM_RARE_CANDY, 1  @@arbitrarily checks if there's space in the item pocket.
+    compare VAR_RESULT, FALSE
+    goto_if_eq Ryu_NotEnoughSpace
     specialvar VAR_TEMP_C, RyuShardReward
     switch VAR_TEMP_C
     case 0, Ryu_NoShardOreToRefine
@@ -42,12 +47,14 @@ Ryu_NoShardOres:
 
 @@gem ore refining=================================================================================
 Ryu_MiningGemstoneOreRefiner::@Add this to the gemstone refiner
+    lockall
+    faceplayer
     msgbox Ryu_GemRefiningIntro
     closemessage
-    msgbox RyuPlsChoosOre, MSGBOX_ONELINE
+    msgbox RyuPlsChoosOre
     special RyuCountGemOres
     delay 10
-    multichoicedefault 0, 5, MULTI_RLS_GEMSTONEQUALITYMENU, 0, 1
+    multichoicedefault 0, 3, MULTI_RLS_GEMSTONEQUALITYMENU, 0, 1
     switch VAR_RESULT
     case 0, Ryu_RefineCommonOre
     case 1, Ryu_RefineUncommonOre
@@ -56,41 +63,51 @@ Ryu_MiningGemstoneOreRefiner::@Add this to the gemstone refiner
     goto Ryu_ExitRefinery
 
 Ryu_RefineCommonOre::
+    checkitemspace ITEM_RARE_CANDY, 1  @@arbitrarily checks if there's space in the item pocket.
+    compare VAR_RESULT, FALSE
+    goto_if_eq Ryu_NotEnoughSpace
     checkitem ITEM_COMMON_GEM_ORE, 1
     compare VAR_RESULT, 0
     goto_if_eq Ryu_NoItem
     removeitem ITEM_COMMON_GEM_ORE, 1
     setvar VAR_TEMP_A, 1
     special RyuChooseFromGemList
-    additem VAR_RESULT, 1
-	bufferitemname 0, VAR_RESULT
+    additem VAR_TEMP_B, 1
+	bufferitemname 3, VAR_TEMP_B
     msgbox Ryu_RefineSuccessful
     release
     end
 
 Ryu_RefineUncommonOre::
+    checkitemspace ITEM_RARE_CANDY, 1  @@arbitrarily checks if there's space in the item pocket.
+    compare VAR_RESULT, FALSE
+    goto_if_eq Ryu_NotEnoughSpace
     checkitem ITEM_UNCOMMON_GEM_ORE, 1
     compare VAR_RESULT, 0
     goto_if_eq Ryu_NoItem
     removeitem ITEM_UNCOMMON_GEM_ORE, 1
     setvar VAR_TEMP_A, 2
     special RyuChooseFromGemList
-    additem VAR_RESULT, 1
-	bufferitemname 0, VAR_RESULT
+    additem VAR_TEMP_B, 1
+	bufferitemname 3, VAR_TEMP_B
     msgbox Ryu_RefineSuccessful
     release
     end
 
 Ryu_RefineRareOre::
+    checkitemspace ITEM_RARE_CANDY, 1  @@arbitrarily checks if there's space in the item pocket.
+    compare VAR_RESULT, FALSE
+    goto_if_eq Ryu_NotEnoughSpace
     checkitem ITEM_RARE_GEM_ORE, 1
     compare VAR_RESULT, 0
     goto_if_eq Ryu_NoItem
-    removeitem ITEM_COMMON_GEM_ORE, 1
+    removeitem ITEM_RARE_GEM_ORE, 1
     setvar VAR_TEMP_A, 3
     special RyuChooseFromGemList
-    additem VAR_RESULT, 1
-	bufferitemname 0, VAR_RESULT
+    additem VAR_TEMP_B, 1
+	bufferitemname 3, VAR_TEMP_B
     msgbox Ryu_RefineSuccessful
+    closemessage
     release
     end
 
@@ -113,7 +130,7 @@ RyuPlsChoosOre:
 	.string "Please choose an ore to refine.$"
 	
 Ryu_RefineSuccessful:
-	.string "The process is done.\nIt was a {STR_VAR_1}!$"
+	.string "The process is done.\nIt was a {RYU_STR_1}!$"
 	
 Ryu_PlsComeBackLater:
 	.string "Feel free to return when you need\nme to refine something.$"
@@ -123,9 +140,14 @@ Ryu_YouDontHaveAnyGemOres:
 
 @@Fossil Ore Refiner===============================================================================
 Ryu_RefineFossilOre::@Add this to the fossil ore refiner
+    lockall
+    faceplayer
     msgbox Ryu_FossilOreIntro
     closemessage
     specialvar VAR_TEMP_C, RyuFossilReward
+    checkitemspace VAR_TEMP_C, 1
+    compare VAR_RESULT, FALSE
+    goto_if_eq Ryu_NotEnoughSpace
     switch VAR_TEMP_C
     case 0, Ryu_NoFossilOreToRefine
     case 1, Ryu_FossilOreFailed
@@ -160,6 +182,120 @@ RyuFossilRewardExiting:
 Ryu_NoFossilOres:
     .string "You must have at least one\nfossil ore for me to refine.$"
 
+@@Shard exchange menu
+
+Ryu_ShardExchange:: @@this goes on the shard exchange dudes
+    msgbox Ryu_ShardExchangeIntro
+    multichoicegrid 4, 0, MULTI_SHARD_EXCHANGE, 2, 0
+    switch VAR_RESULT
+    case 0, Ryu_ShardExchangeRed
+    case 1, Ryu_ShardExchangeBlue
+    case 2, Ryu_ShardExchangeYellow
+    case 3, Ryu_ShardExchangeGreen
+    case 4, Ryu_ShardExchangeDark
+    case 5, Ryu_ShardExchangeLight
+    case 6, Ryu_ShardExchangeCyan
+    case 7, Ryu_ShardExchangeGlossy
+    case 8, Ryu_ShardExchangeGold
+    case 9, Ryu_ShardExchangeGray
+    case 10, Ryu_ShardExchangeExit
+    case 11, Ryu_ShardExchangeExit
+    goto Ryu_ShardExchangeExit
+
+Ryu_ShardExchangeRed::
+    setvar VAR_TEMP_B, ITEM_RED_SHARD
+    setvar VAR_TEMP_C, ITEM_FIRE_STONE
+    goto Ryu_CheckShardCount
+
+Ryu_ShardExchangeBlue::
+    setvar VAR_TEMP_B, ITEM_BLUE_SHARD
+    setvar VAR_TEMP_C, ITEM_WATER_STONE
+    goto Ryu_CheckShardCount
+    
+Ryu_ShardExchangeYellow::
+    setvar VAR_TEMP_B, ITEM_YELLOW_SHARD
+    setvar VAR_TEMP_C, ITEM_THUNDER_STONE
+    goto Ryu_CheckShardCount
+    
+Ryu_ShardExchangeGreen::
+    setvar VAR_TEMP_B, ITEM_GREEN_SHARD
+    setvar VAR_TEMP_C, ITEM_LEAF_STONE
+    goto Ryu_CheckShardCount
+    
+Ryu_ShardExchangeDark::
+    setvar VAR_TEMP_B, ITEM_DARK_SHARD
+    setvar VAR_TEMP_C, ITEM_DUSK_STONE
+    goto Ryu_CheckShardCount
+    
+Ryu_ShardExchangeLight::
+    setvar VAR_TEMP_B, ITEM_LIGHT_SHARD
+    setvar VAR_TEMP_C, ITEM_DAWN_STONE
+    goto Ryu_CheckShardCount
+    
+Ryu_ShardExchangeCyan::
+    setvar VAR_TEMP_B, ITEM_CYAN_SHARD
+    setvar VAR_TEMP_C, ITEM_ICE_STONE
+    goto Ryu_CheckShardCount
+    
+Ryu_ShardExchangeGlossy::
+    setvar VAR_TEMP_B, ITEM_GLOSSY_SHARD
+    setvar VAR_TEMP_C, ITEM_SHINY_STONE
+    goto Ryu_CheckShardCount
+    
+Ryu_ShardExchangeGold::
+    setvar VAR_TEMP_B, ITEM_GOLD_SHARD
+    setvar VAR_TEMP_C, ITEM_SUN_STONE
+    goto Ryu_CheckShardCount
+    
+Ryu_ShardExchangeGray::
+    setvar VAR_TEMP_B, ITEM_GRAY_SHARD
+    setvar VAR_TEMP_C, ITEM_MOON_STONE
+    goto Ryu_CheckShardCount
+    
+Ryu_ShardExchangeExit::
+    msgbox Ryu_ExchangeLeaveMsg
+    closemessage
+    release
+    end
+    
+Ryu_CheckShardCount::
+    checkitem VAR_TEMP_B, 2
+    compare VAR_RESULT, 0
+    goto_if_eq Ryu_DontHaveEnoughShard
+    checkitemspace VAR_TEMP_C, 1
+    compare VAR_RESULT, FALSE
+    goto_if_eq Ryu_NotEnoughSpace
+    removeitem VAR_TEMP_B, 2
+    additem VAR_TEMP_C, 1
+    bufferitemname 3, VAR_TEMP_C
+    msgbox Ryu_ExchangeSuccess
+    closemessage
+    release
+    end
+
+Ryu_NotEnoughSpace:
+    msgbox Ryu_NoSpaceMessage2
+
+Ryu_NoSpaceMessage2:
+    .string "You don't have enough space\nto receive this item!\pMake space and come back!$"
+
+Ryu_ShardExchangeIntro:
+    .string "Hello! I'll take your shards\nand exchange them for stones!\pPlease pick a shard type.$"
+
+Ryu_ExchangeLeaveMsg:
+    .string "Come back when you have more\nshards!$"
+
+Ryu_DontHaveEnoughShard:
+    msgbox Ryu_YouDontHaveEnough
+    release
+    end
+
+Ryu_YouDontHaveEnough:
+    .string "I need at least two for the\nexchange.$"
+
+Ryu_ExchangeSuccess:
+    .string "Here you go!\nOne {RYU_STR_1}!$"
+
 @@Mining General===================================================================================
 
 Ryu_MineRock:: @@The special code function determines if you are inside or outside by map header.
@@ -173,6 +309,9 @@ Ryu_MineRock:: @@The special code function determines if you are inside or outsi
     dominingcheck
     compare VAR_TEMP_B, 0
     goto_if_eq Ryu_MineFailed
+    checkitemspace ITEM_RARE_CANDY, 1  @@arbitrarily checks if there's space in the item pocket.
+    compare VAR_RESULT, FALSE
+    goto_if_eq MiningNotEnoughSpace
     addvar VAR_RYU_PLAYER_MINING_EXP, 1
     additem VAR_TEMP_B, VAR_TEMP_C
     bufferitemname 1, VAR_TEMP_B
@@ -182,6 +321,14 @@ Ryu_MineRock:: @@The special code function determines if you are inside or outsi
     call Ryu_CheckForMiningLevelUp
     waitfanfare
     return
+
+MiningNotEnoughSpace:
+    msgbox Ryu_NoSpaceMessage
+    release
+    end
+
+Ryu_NoSpaceMessage:
+    .string "You didn't have space\nfor the item...$"
 
 Ryu_CheckForMiningLevelUp::
     switch VAR_RYU_PLAYER_MINING_SKILL

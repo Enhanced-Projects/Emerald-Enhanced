@@ -940,7 +940,7 @@ const struct Item gItems[] =
     {
         .name = _("Red Shard"),
         .itemId = ITEM_RED_SHARD,
-        .price = 1000,
+        .price = 500,
         .description = sRedShardDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
@@ -952,7 +952,7 @@ const struct Item gItems[] =
     {
         .name = _("Blue Shard"),
         .itemId = ITEM_BLUE_SHARD,
-        .price = 1000,
+        .price = 500,
         .description = sBlueShardDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
@@ -964,7 +964,7 @@ const struct Item gItems[] =
     {
         .name = _("Yellow Shard"),
         .itemId = ITEM_YELLOW_SHARD,
-        .price = 1000,
+        .price = 500,
         .description = sYellowShardDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
@@ -976,7 +976,7 @@ const struct Item gItems[] =
     {
         .name = _("Green Shard"),
         .itemId = ITEM_GREEN_SHARD,
-        .price = 1000,
+        .price = 500,
         .description = sGreenShardDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
@@ -988,7 +988,7 @@ const struct Item gItems[] =
     {
         .name = _("Dark Shard"),
         .itemId = ITEM_DARK_SHARD,
-        .price = 1000,
+        .price = 500,
         .description = sGreenShardDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
@@ -1000,7 +1000,7 @@ const struct Item gItems[] =
     {
         .name = _("Light Shard"),
         .itemId = ITEM_LIGHT_SHARD,
-        .price = 1000,
+        .price = 500,
         .description = sGreenShardDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
@@ -1012,7 +1012,7 @@ const struct Item gItems[] =
     {
         .name = _("Cyan Shard"),
         .itemId = ITEM_CYAN_SHARD,
-        .price = 1000,
+        .price = 500,
         .description = sGreenShardDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
@@ -1024,7 +1024,7 @@ const struct Item gItems[] =
     {
         .name = _("Gloss Shard"),
         .itemId = ITEM_GLOSSY_SHARD,
-        .price = 1000,
+        .price = 500,
         .description = sGreenShardDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
@@ -1036,7 +1036,7 @@ const struct Item gItems[] =
     {
         .name = _("Gold Shard"),
         .itemId = ITEM_GOLD_SHARD,
-        .price = 1000,
+        .price = 500,
         .description = sGreenShardDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
@@ -1048,7 +1048,7 @@ const struct Item gItems[] =
     {
         .name = _("Gray Shard"),
         .itemId = ITEM_GRAY_SHARD,
-        .price = 1000,
+        .price = 500,
         .description = sGreenShardDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,

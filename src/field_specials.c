@@ -6349,8 +6349,6 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx)
     u8 i = 0;
     u8 outsideCount = (ARRAY_COUNT(gOutsideMapSecs));
 
-    mgba_open();
-
     for (i = 0; i < outsideCount; i++)
     {
         if (gMapHeader.regionMapSectionId == gOutsideMapSecs[i])
@@ -6454,28 +6452,27 @@ void RyuCountGemOres(void)
 void RyuChooseFromGemList(void)
 {
     u16 mode = (VarGet(VAR_TEMP_A));
-
     u16 Result = 0;
 
     switch (mode)
     {
         case 1:
             {
-                Result = (gGemTier1[((Random () % 5)+1)]);
+                Result = gGemTier1[(Random() %(ARRAY_COUNT(gGemTier1)))];
                 break;
             }
         case 2:
             {
-                Result = (gGemTier2[((Random () % 5)+1)]);
+                Result = gGemTier2[(Random() %(ARRAY_COUNT(gGemTier2)))];
                 break;
             }
         case 3:
             {
-                Result = (gGemTier3[((Random () % 5)+1)]);
+                Result = gGemTier3[(Random() %(ARRAY_COUNT(gGemTier3)))];
                 break;
             }
     }
-    gSpecialVar_Result = Result;
+    VarSet(VAR_TEMP_B, Result);
 }
 
 int RyuFossilReward(void)
@@ -6505,8 +6502,6 @@ int RyuShardReward(void)
     }
     else
     {
-        mgba_open();
-        mgba_printf(MGBA_LOG_INFO, "Refined a %d", itemReward);
         return itemReward;
     }
 
