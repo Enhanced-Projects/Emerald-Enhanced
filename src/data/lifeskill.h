@@ -1,5 +1,5 @@
 //This file has all the rewards tables for the different life gkills.
-
+#include "constants/region_map_sections.h"
 //gem tier list. These will be used when refining their respective ores.
 const u16 gGemTier3[] = {//rare gem ore
     ITEM_FLYING_GEM,
@@ -150,6 +150,20 @@ const u16 gInsideMiningTier3[] = {//level 3
     ITEM_SILVER_ORE,
     ITEM_GOLD_ORE,
     ITEM_GOLD_ORE
+};
+
+//Mining table for list of 'outside' maps. 
+//You need to add new outside locations here 
+//when you add new rocks if you want the miningcheck to differentiate them.
+
+const u16 gOutsideMapSecs[] = {
+    MAPSEC_ROUTE_66,
+    MAPSEC_ROUTE_114,
+    MAPSEC_ROUTE_115,
+    MAPSEC_ROUTE_116,
+    MAPSEC_MT_PYRE,
+    MAPSEC_JAGGED_PASS,
+    MAPSEC_JAGGED_PASS2,
 };
 
 //mining tables for exterior maps

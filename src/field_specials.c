@@ -6344,24 +6344,40 @@ bool8 ChangeDarmanitanForm(void)
 bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx)
 {
     u16 reward = 0;
-    bool8 inside = IsMapTypeIndoors(GetCurrentMapType());
+    bool8 inside = TRUE;
     u8 amount = 1;
+    u8 i = 0;
+    u8 outsideCount = (ARRAY_COUNT(gOutsideMapSecs));
+
+    mgba_open();
+
+    for (i = 0; i < outsideCount; i++)
+    {
+        if (gMapHeader.regionMapSectionId == gOutsideMapSecs[i])
+        {
+            inside = FALSE;
+        }
+    }
 
     switch (VarGet(VAR_RYU_PLAYER_MINING_SKILL))
     {
     case 0:
         {
-
+            reward = 0;
+            amount = 0;
+            break;
         }
     case 1:
         {
             if (inside == TRUE)
                 {
                     reward = gInsideMiningTier1[(Random() % ARRAY_COUNT(gInsideMiningTier1))];
+                    break;
                 }
             else
                 {
                     reward = gOutsideMiningTier1[(Random() % ARRAY_COUNT(gOutsideMiningTier1))];
+                    break;
                 }
         }
     case 2:
@@ -6369,10 +6385,12 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx)
             if (inside == TRUE)
                 {
                     reward = gInsideMiningTier2[(Random() % ARRAY_COUNT(gInsideMiningTier2))];
+                    break;
                 }
             else
                 {
                     reward = gOutsideMiningTier2[(Random() % ARRAY_COUNT(gOutsideMiningTier2))];
+                    break;
                 }
         }
     case 3:
@@ -6381,15 +6399,18 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx)
             if (inside == TRUE)
                 {
                     reward = gInsideMiningTier3[(Random() % ARRAY_COUNT(gInsideMiningTier3))];
+                    break;
                 }
             else
                 {
                     reward = gOutsideMiningTier3[(Random() % ARRAY_COUNT(gOutsideMiningTier3))];
+                    break;
                 }
         }
     }
     VarSet(VAR_TEMP_B, reward);
     VarSet(VAR_TEMP_C, amount);
+    mgba_printf(MGBA_LOG_INFO, "Rewarding %d %d's", amount, reward);
     return TRUE;
     
 }

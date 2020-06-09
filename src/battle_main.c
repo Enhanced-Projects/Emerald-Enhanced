@@ -1807,27 +1807,27 @@ static void sub_8038538(struct Sprite *sprite)
 }
 
 static const u16 sRange[9][2] = {//2d array for trainer level ranges
-    {10,14},
-    {15,22},
-    {21,29},
+    {14,18},
+    {19,23},
+    {24,29},
     {29,34},
     {34,47},
     {47,53},
     {53,64}, 
-    {64,72},
-    {72,85},
+    {64,70},
+    {71,82},
 };
 
 static const u16 sGymRange[9][2] = {//2d array for gym leader level ranges
-    {13,17},
-    {18,24},
-    {27,31},
+    {16,21},
+    {22,26},
+    {27,33},
     {34,40},
     {42,48},
-    {50,55},
-    {55,65}, 
-    {65,75},
-    {75,85},
+    {49,55},
+    {55,66}, 
+    {67,76},
+    {77,84},
 };
 
 int RyuChooseTrainerLevel(void)
