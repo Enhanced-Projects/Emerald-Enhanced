@@ -127,7 +127,7 @@
 #define VAR_RYU_PLAYER_BOTANY_SKILL          0x406D // Unused Var
 #define VAR_RYU_PLAYER_ALCHEMY_SKILL         0x406E // Unused Var
 #define VAR_ROUTE116_STATE                   0x406F
-#define VAR_ROUTE117_STATE                   0x4070 // Unused Var
+#define VAR_RYU_PLAYER_MINING_EXP            0x4070 // Unused Var
 #define VAR_ROUTE118_STATE                   0x4071
 #define VAR_ROUTE119_STATE                   0x4072
 #define VAR_ROUTE120_STATE                   0x4073 // Unused Var
