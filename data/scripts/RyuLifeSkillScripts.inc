@@ -66,19 +66,21 @@ Ryu_NoItem:
     end
 
 Ryu_GemRefiningIntro:
-	.string "Welcome to my refining shop!\nHere, I will refine your gem\lores for free!$"
-	
+	.string "Welcome to my Gem Ore refinery!\p"
+	.string "If you have any Gem Ore, I'll refine\n"
+	.string "it for you, no cost!$"
+
 RyuPlsChoosOre:
 	.string "Please choose an ore to refine.$"
 	
 Ryu_RefineSuccessful:
-	.string "All finished!\nIt was a {STR_VAR_1}!$"
+	.string "The process is done.\nIt was a {STR_VAR_1}!$"
 	
 Ryu_PlsComeBackLater:
-	.string "Please return when you need\nme to refine something!$"
+	.string "Feel free to return when you need\nme to refine something.$"
 	
 Ryu_YouDontHaveAnyGemOres:
-	.string "You don't have any of that ore!$"
+	.string "You don't have any of that ore.$"
 
 @@Fossil Ore Refiner
 Ryu_RefineFossilOre::
@@ -106,20 +108,23 @@ Ryu_FossilOreFailed::
     end
 
 Ryu_FossilRefineFailure:
-    .string "Bad news! I failed to refine\nanything of use. The ore was\ltoo damaged. Sorry!$"
+    .string "Bad news! I failed to refine\nanything of use.\pThe ore was too damaged. Sorry!$"
 
 Ryu_FossilOreIntro:
-    .string "Welcome! I'll refine any fossil\nores you have, at no charge!\pLet's see what you got...$"
+	.string "This machine is our Fossil Ore Refiner.\p"
+	.string "If you have any Fossil Ore, I'll refine\n"
+	.string "it for you, no cost!$"
 
 RyuFossilRewardExiting:
-    .string "Ooh, I got something from it!\pHere's your {RYU_STR_1}!\nBe sure to make good use of it!$"
+    .string "Success, I got something from it!\pHere's your {RYU_STR_1}!\nBe sure to make good use of it!$"
 
 Ryu_NoFossilOres:
-    .string "You must have at least one\nfossil ore for me to refine!$"
+    .string "You must have at least one\nfossil ore for me to refine.$"
 
 @@Mining General
 
 Ryu_MineRock:: @@The special code function determines if you are inside or outside by map header.
+    call RyuCheckMiningSkill
     playse SE_W088
     waitse
     playse SE_W088
@@ -160,67 +165,773 @@ Ryu_NothingHere:
 
 @overworld mining scripts
 
-r101_MiningRock1::
-    call RyuCheckMiningSkill
-    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
-    setflag FLAG_TEMP_2
-    call Ryu_MineRock
-    playfanfare MUS_FANFA1
-    msgbox Ryu_YouMinedA
-    waitfanfare
-    release
-    end
-
-r101_MiningRock2::
-    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
-    setflag FLAG_TEMP_3
-    call Ryu_MineRock
-    playfanfare MUS_FANFA1
-    msgbox Ryu_YouMinedA
-    waitfanfare
-    release
-    end
+//Desert Underpass
 
 DU_MiningRock1::
-    call RyuCheckMiningSkill
     goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
     setflag FLAG_TEMP_1
     call Ryu_MineRock
-    playfanfare MUS_FANFA1
-    msgbox Ryu_YouMinedA
-    waitfanfare
     release
     end
 
 DU_MiningRock2::
-    call RyuCheckMiningSkill
     goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
     setflag FLAG_TEMP_2
     call Ryu_MineRock
-    playfanfare MUS_FANFA1
-    msgbox Ryu_YouMinedA
-    waitfanfare
     release
     end
 
 DU_MiningRock3::
-    call RyuCheckMiningSkill
     goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
     setflag FLAG_TEMP_3
     call Ryu_MineRock
-    playfanfare MUS_FANFA1
-    msgbox Ryu_YouMinedA
-    waitfanfare
     release
     end
 
 DU_MiningRock4::
-    call RyuCheckMiningSkill
     goto_if_set FLAG_TEMP_4, Ryu_NoOresHere
     setflag FLAG_TEMP_4
     call Ryu_MineRock
-    playfanfare MUS_FANFA1
-    msgbox Ryu_YouMinedA
-    waitfanfare
+    release
+    end
+    
+DU_MiningRock5::
+    goto_if_set FLAG_TEMP_5, Ryu_NoOresHere
+    setflag FLAG_TEMP_5
+    call Ryu_MineRock
+    release
+    end
+    
+DU_MiningRock6::
+    goto_if_set FLAG_TEMP_6, Ryu_NoOresHere
+    setflag FLAG_TEMP_6
+    call Ryu_MineRock
+    release
+    end
+    
+DU_MiningRock7::
+    goto_if_set FLAG_TEMP_7, Ryu_NoOresHere
+    setflag FLAG_TEMP_7
+    call Ryu_MineRock
+    release
+    end
+    
+DU_MiningRock8::
+    goto_if_set FLAG_TEMP_8, Ryu_NoOresHere
+    setflag FLAG_TEMP_8
+    call Ryu_MineRock
+    release
+    end
+    
+DU_MiningRock9::
+    goto_if_set FLAG_TEMP_9, Ryu_NoOresHere
+    setflag FLAG_TEMP_9
+    call Ryu_MineRock
+    release
+    end
+
+//Meteor Falls
+
+MF_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+MF_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+MF_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+MF_MiningRock4::
+    goto_if_set FLAG_TEMP_4, Ryu_NoOresHere
+    setflag FLAG_TEMP_4
+    call Ryu_MineRock
+    release
+    end
+
+MF_MiningRock5::
+    goto_if_set FLAG_TEMP_5, Ryu_NoOresHere
+    setflag FLAG_TEMP_5
+    call Ryu_MineRock
+    release
+    end
+
+//Rusturf Tunnel
+
+RT_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+RT_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+RT_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+//Granite Cave
+
+GC_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+GC_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+GC_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+GC_MiningRock4::
+    goto_if_set FLAG_TEMP_4, Ryu_NoOresHere
+    setflag FLAG_TEMP_4
+    call Ryu_MineRock
+    release
+    end
+
+GC_MiningRock5::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+GC_MiningRock6::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+GC_MiningRock7::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+GC_MiningRock8::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+GC_MiningRock9::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+GC_MiningRock10::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+GC_MiningRock11::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+//Jagged Pass
+
+JP_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+JP_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+JP_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+//Fiery Path
+
+FP_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+FP_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+FP_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+FP_MiningRock4::
+    goto_if_set FLAG_TEMP_4, Ryu_NoOresHere
+    setflag FLAG_TEMP_4
+    call Ryu_MineRock
+    release
+    end
+
+FP_MiningRock5::
+    goto_if_set FLAG_TEMP_5, Ryu_NoOresHere
+    setflag FLAG_TEMP_5
+    call Ryu_MineRock
+    release
+    end
+
+//Desert Tomb
+
+DT_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock4::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock5::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock6::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock7::
+    goto_if_set FLAG_TEMP_4, Ryu_NoOresHere
+    setflag FLAG_TEMP_4
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock8::
+    goto_if_set FLAG_TEMP_5, Ryu_NoOresHere
+    setflag FLAG_TEMP_5
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock9::
+    goto_if_set FLAG_TEMP_6, Ryu_NoOresHere
+    setflag FLAG_TEMP_6
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock10::
+    goto_if_set FLAG_TEMP_7, Ryu_NoOresHere
+    setflag FLAG_TEMP_7
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock11::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock12::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock13::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock14::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+DT_MiningRock15::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+//Altering Cave
+
+AC_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+AC_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+AC_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+AC_MiningRock4::
+    goto_if_set FLAG_TEMP_4, Ryu_NoOresHere
+    setflag FLAG_TEMP_4
+    call Ryu_MineRock
+    release
+    end
+
+//Artisan Cave
+
+ArC_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+ArC_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+ArC_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+ArC_MiningRock4::
+    goto_if_set FLAG_TEMP_4, Ryu_NoOresHere
+    setflag FLAG_TEMP_4
+    call Ryu_MineRock
+    release
+    end
+
+ArC_MiningRock5::
+    goto_if_set FLAG_TEMP_5, Ryu_NoOresHere
+    setflag FLAG_TEMP_5
+    call Ryu_MineRock
+    release
+    end
+
+ArC_MiningRock6::
+    goto_if_set FLAG_TEMP_6, Ryu_NoOresHere
+    setflag FLAG_TEMP_6
+    call Ryu_MineRock
+    release
+    end
+
+//Scorched Slab
+
+SS_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+SS_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+SS_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+//Shoal Cave
+
+SC_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+SC_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+SC_MiningRock3::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+SC_MiningRock4::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+SC_MiningRock5::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+//Mt Pyre
+
+MP_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+MP_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+MP_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+MP_MiningRock4::
+    goto_if_set FLAG_TEMP_4, Ryu_NoOresHere
+    setflag FLAG_TEMP_4
+    call Ryu_MineRock
+    release
+    end
+
+//Victory Road
+
+VR_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+VR_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+VR_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+VR_MiningRock4::
+    goto_if_set FLAG_TEMP_4, Ryu_NoOresHere
+    setflag FLAG_TEMP_4
+    call Ryu_MineRock
+    release
+    end
+
+VR_MiningRock5::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+VR_MiningRock6::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+VR_MiningRock7::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+VR_MiningRock8::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+VR_MiningRock9::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+VR_MiningRock10::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+VR_MiningRock11::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+//Cave of Origin
+
+CoO_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+CoO_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+CoO_MiningRock3::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+CoO_MiningRock4::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+CoO_MiningRock5::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+//Route 66
+
+R66_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+R66_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+R66_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+//Route 114
+
+R114_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+R114_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+R114_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+R114_MiningRock4::
+    goto_if_set FLAG_TEMP_4, Ryu_NoOresHere
+    setflag FLAG_TEMP_4
+    call Ryu_MineRock
+    release
+    end
+
+R114_MiningRock5::
+    goto_if_set FLAG_TEMP_5, Ryu_NoOresHere
+    setflag FLAG_TEMP_5
+    call Ryu_MineRock
+    release
+    end
+
+//Route 115
+
+R115_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+R115_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+R115_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
+    release
+    end
+
+R115_MiningRock4::
+    goto_if_set FLAG_TEMP_4, Ryu_NoOresHere
+    setflag FLAG_TEMP_4
+    call Ryu_MineRock
+    release
+    end
+
+R115_MiningRock5::
+    goto_if_set FLAG_TEMP_5, Ryu_NoOresHere
+    setflag FLAG_TEMP_5
+    call Ryu_MineRock
+    release
+    end
+
+//Route 116
+
+R116_MiningRock1::
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    setflag FLAG_TEMP_1
+    call Ryu_MineRock
+    release
+    end
+
+R116_MiningRock2::
+    goto_if_set FLAG_TEMP_2, Ryu_NoOresHere
+    setflag FLAG_TEMP_2
+    call Ryu_MineRock
+    release
+    end
+
+R116_MiningRock3::
+    goto_if_set FLAG_TEMP_3, Ryu_NoOresHere
+    setflag FLAG_TEMP_3
+    call Ryu_MineRock
     release
     end

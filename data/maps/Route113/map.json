@@ -77,7 +77,7 @@
         {
             "direction": "left",
             "map": "MAP_FALLARBOR_TOWN",
-            "offset": 0
+            "offset": -2
         },
         {
             "direction": "right",

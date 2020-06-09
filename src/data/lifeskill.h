@@ -3,27 +3,27 @@
 //gem tier list. These will be used when refining their respective ores.
 const u16 gGemTier3[] = {//rare gem ore
     ITEM_FLYING_GEM,
-    ITEM_DARK_GEM,
+    ITEM_DRAGON_GEM,
     ITEM_FIGHTING_GEM,
-    ITEM_ROCK_GEM,
+    ITEM_STEEL_GEM,
     ITEM_ICE_GEM,
     ITEM_NORMAL_GEM,
 };
 
 const u16 gGemTier2[] = {//uncommon gem ore
-    ITEM_WATER_GEM,
-    ITEM_DRAGON_GEM,
+    ITEM_ROCK_GEM,
+    ITEM_DARK_GEM,
     ITEM_FAIRY_GEM,
-    ITEM_GHOST_GEM,
-    ITEM_PSYCHIC_GEM,
+    ITEM_ELECTRIC_GEM,
+    ITEM_FIRE_GEM,
     ITEM_GROUND_GEM,
 };
 const u16 gGemTier1[] = {//common gem ore
     ITEM_POISON_GEM,
-    ITEM_STEEL_GEM,
-    ITEM_ELECTRIC_GEM,
+    ITEM_WATER_GEM,
+    ITEM_GHOST_GEM,
     ITEM_BUG_GEM,
-    ITEM_FIRE_GEM,
+    ITEM_PSYCHIC_GEM,
     ITEM_GRASS_GEM,
 };
 
@@ -57,6 +57,8 @@ const u16 gFossilTable[] = {//used when refining fossil ore
     ITEM_ICY_ROCK,
     ITEM_SMOOTH_ROCK,
     ITEM_HEAT_ROCK,
+    ITEM_SOFT_SAND,
+    ITEM_OVAL_STONE,
     ITEM_MASTER_BALL,//no item
     ITEM_MASTER_BALL,//no item
     ITEM_MASTER_BALL,//no item
@@ -65,15 +67,34 @@ const u16 gFossilTable[] = {//used when refining fossil ore
 
 const u16 gShardOreTable[] = {//the table rolled on when refining shard ores.
     ITEM_DARK_SHARD,
+    ITEM_DARK_SHARD,
+    ITEM_LIGHT_SHARD,
     ITEM_LIGHT_SHARD,
     ITEM_CYAN_SHARD,
+    ITEM_CYAN_SHARD,
+    ITEM_GLOSSY_SHARD,
     ITEM_GLOSSY_SHARD,
     ITEM_GOLD_SHARD,
+    ITEM_GOLD_SHARD,
+    ITEM_GRAY_SHARD,
     ITEM_GRAY_SHARD,
     ITEM_RED_SHARD,
+    ITEM_RED_SHARD,
+    ITEM_BLUE_SHARD,
     ITEM_BLUE_SHARD,
     ITEM_YELLOW_SHARD,
+    ITEM_YELLOW_SHARD,
     ITEM_GREEN_SHARD,
+    ITEM_GREEN_SHARD,
+    ITEM_LIGHT_CLAY,
+    ITEM_IRON_BALL,
+    ITEM_METAL_COAT,
+    ITEM_STAR_PIECE,
+    ITEM_STARDUST,
+    ITEM_HEART_SCALE,
+    ITEM_REVIVE,
+    ITEM_MAX_REVIVE,
+    ITEM_RARE_CANDY,
 };
 
 //Mining tables for interior maps
@@ -143,7 +164,7 @@ const u16 gOutsideMiningTier1[] = {//level 1
     ITEM_NONE,
     ITEM_NONE,
     ITEM_SHARD_ORE,
-    ITEM_SHOAL_SALT,
+    ITEM_SHARD_ORE,
     ITEM_COMMON_GEM_ORE,
     ITEM_COPPER_ORE,
     ITEM_COPPER_ORE,

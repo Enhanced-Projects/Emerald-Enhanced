@@ -11,6 +11,30 @@
             "type": "sign",
             "x": 28,
             "y": 1
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "R66_MiningRock1",
+            "type": "sign",
+            "x": 14,
+            "y": 1
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "R66_MiningRock2",
+            "type": "sign",
+            "x": 1,
+            "y": 12
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "R66_MiningRock3",
+            "type": "sign",
+            "x": 8,
+            "y": 14
         }
     ],
     "connections": [

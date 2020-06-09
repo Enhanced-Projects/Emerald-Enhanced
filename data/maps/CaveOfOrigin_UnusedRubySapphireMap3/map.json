@@ -4,6 +4,14 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "CoO_MiningRock5",
+            "type": "sign",
+            "x": 5,
+            "y": 11
+        }
     ],
     "connections": null,
     "coord_events": [
@@ -27,10 +35,10 @@
             "y": 14
         },
         {
-            "dest_map": "MAP_CAVE_OF_ORIGIN_B1F",
-            "dest_warp_id": 0,
+            "dest_map": "MAP_CAVE_OF_ORIGIN_1F",
+            "dest_warp_id": 2,
             "elevation": 3,
-            "x": 12,
+            "x": 7,
             "y": 6
         }
     ],

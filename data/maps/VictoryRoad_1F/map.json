@@ -11,6 +11,38 @@
             "type": "hidden_item",
             "x": 30,
             "y": 39
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "VR_MiningRock1",
+            "type": "sign",
+            "x": 29,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "VR_MiningRock2",
+            "type": "sign",
+            "x": 29,
+            "y": 24
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "VR_MiningRock3",
+            "type": "sign",
+            "x": 5,
+            "y": 30
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "VR_MiningRock4",
+            "type": "sign",
+            "x": 6,
+            "y": 36
         }
     ],
     "connections": null,
@@ -123,8 +155,8 @@
             "script": "VR1_Moltres",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 5,
-            "y": 5
+            "x": 39,
+            "y": 9
         }
     ],
     "region_map_section": "MAPSEC_VICTORY_ROAD",

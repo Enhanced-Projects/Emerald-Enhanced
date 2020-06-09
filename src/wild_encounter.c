@@ -504,7 +504,7 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
         return FALSE;
 
     CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
-    if (((Random() % 128) == 69) || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+    if (((Random() % 128) == 69)
     {
         u8 val[1] = {TRUE};
         u8 newAbility = (Random() %2);

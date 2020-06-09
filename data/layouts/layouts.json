@@ -133,7 +133,7 @@
         {
             "blockdata_filepath": "data/layouts/FallarborTown/map.bin",
             "border_filepath": "data/layouts/FallarborTown/border.bin",
-            "height": 20,
+            "height": 22,
             "id": "LAYOUT_FALLARBOR_TOWN",
             "name": "FallarborTown_Layout",
             "primary_tileset": "gTileset_General",
