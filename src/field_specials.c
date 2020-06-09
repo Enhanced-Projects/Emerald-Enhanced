@@ -6461,9 +6461,6 @@ int RyuFossilReward(void)
 {
     u16 itemReward = gFossilTable[(Random() %(ARRAY_COUNT(gFossilTable)))];
     bool8 hasItem = (CheckBagHasItem(ITEM_FOSSIL_ORE, 1));
-
-    mgba_open();
-    mgba_printf(MGBA_LOG_INFO, "Selected a %d", itemReward);
     
     if (hasItem == FALSE)
     {
@@ -6471,8 +6468,26 @@ int RyuFossilReward(void)
     }
     else
     {
+        return itemReward;
+    }
+
+}
+
+int RyuShardReward(void)
+{
+    u16 itemReward = gShardOreTable[(Random() %(ARRAY_COUNT(gShardOreTable)))];
+    bool8 hasItem = (CheckBagHasItem(ITEM_SHARD_ORE, 1));
+    
+    if (hasItem == FALSE)
+    {
+        return 0;
+    }
+    else
+    {
+        mgba_open();
         mgba_printf(MGBA_LOG_INFO, "Refined a %d", itemReward);
         return itemReward;
     }
 
 }
+

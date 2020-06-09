@@ -44,6 +44,10 @@ static const u8 sBrendanNightBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene
 static const u8 sBrendanNightBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_map.bin");
 static const u8 sBrendanNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_palette.gbapal");
 
+static const u8 sMiningMapBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/maps/mining_map_tiles.4bpp");
+static const u8 sMiningMapBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/maps/mining_map.bin");
+static const u8 sMiningMapBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/maps/mining_map_palette.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -136,7 +140,6 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .palette = sBrendanBgPalette,
 		.palIdxCnt = 240
 	},
-	
 	[SCENEBGBRENDANNIGHT] = 
     {
 		.mode = 2,
@@ -147,6 +150,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sBrendanNightBgMap),
         .palette = sBrendanNightBgPalette,
 		.palIdxCnt = 240
+	},
+	[SCENEBGMININGMAP] = 
+    {
+		.mode = 0,
+		.scrollMode = 0,
+        .tiles = sMiningMapBgTiles,
+		.tileSize = sizeof(sMiningMapBgTiles),
+        .map = sMiningMapBgMap,
+		.mapSize = sizeof(sMiningMapBgMap),
+        .palette = sMiningMapBgPalette,
+		.palIdxCnt = 16
 	}
 };
 

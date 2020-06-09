@@ -7,7 +7,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "DU_MiningRock1",
+            "script": "Ryu_RefineShardOre",
             "type": "sign",
             "x": 7,
             "y": 11
