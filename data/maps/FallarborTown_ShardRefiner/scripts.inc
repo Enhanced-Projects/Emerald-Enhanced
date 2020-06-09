@@ -1,0 +1,2 @@
+FallarborTown_ShardRefiner_MapScripts::
+	.byte 0

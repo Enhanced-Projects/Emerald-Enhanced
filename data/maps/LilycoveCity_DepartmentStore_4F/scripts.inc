@@ -58,7 +58,6 @@ LilycoveCity_DepartmentStore_4F_Pokemart_DefenseTMs: @ 821FE44
 	.2byte ITEM_TM52 @ Fly
 	.2byte ITEM_TM53 @ Seed Bomb
 	.2byte ITEM_TM57 @ Knock Off
-	.2byte ITEM_TM58 @ Dive
 	.2byte ITEM_TM59 @ Iron Head
 	.2byte ITEM_NONE
 	release

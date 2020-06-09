@@ -830,3 +830,14 @@ gTileset_UnionRoom:: @ 83DFDFC
 	.4byte gMetatiles_UnionRoom
 	.4byte gMetatileAttributes_UnionRoom
 	.4byte NULL @ animation callback
+
+	.align 2
+gTileset_Fallarbor_Mine::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Fallarbor_Mine
+	.4byte gTilesetPalettes_Fallarbor_Mine
+	.4byte gMetatiles_Fallarbor_Mine
+	.4byte gMetatileAttributes_Fallarbor_Mine
+	.4byte NULL

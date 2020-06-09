@@ -105,19 +105,21 @@ Ryu_NoItem:
     end
 
 Ryu_GemRefiningIntro:
-	.string "Welcome to my refining shop!\nHere, I will refine your gem\lores for free!$"
-	
+	.string "Welcome to my Gem Ore refinery!\p"
+	.string "If you have any Gem Ore, I'll refine\n"
+	.string "it for you, no cost!$"
+
 RyuPlsChoosOre:
 	.string "Please choose an ore to refine.$"
 	
 Ryu_RefineSuccessful:
-	.string "All finished!\nIt was a {STR_VAR_1}!$"
+	.string "The process is done.\nIt was a {STR_VAR_1}!$"
 	
 Ryu_PlsComeBackLater:
-	.string "Please return when you need\nme to refine something!$"
+	.string "Feel free to return when you need\nme to refine something.$"
 	
 Ryu_YouDontHaveAnyGemOres:
-	.string "You don't have any of that ore!$"
+	.string "You don't have any of that ore.$"
 
 @@Fossil Ore Refiner===============================================================================
 Ryu_RefineFossilOre::@Add this to the fossil ore refiner
@@ -145,16 +147,18 @@ Ryu_FossilOreFailed::
     end
 
 Ryu_FossilRefineFailure:
-    .string "Bad news! I failed to refine\nanything of use. The ore was\ltoo damaged. Sorry!$"
+    .string "Bad news! I failed to refine\nanything of use.\pThe ore was too damaged. Sorry!$"
 
 Ryu_FossilOreIntro:
-    .string "Welcome! I'll refine any fossil\nores you have, at no charge!\pLet's see what you got...$"
+	.string "This machine is our Fossil Ore Refiner.\p"
+	.string "If you have any Fossil Ore, I'll refine\n"
+	.string "it for you, no cost!$"
 
 RyuFossilRewardExiting:
-    .string "Ooh, I got something from it!\pHere's your {RYU_STR_1}!\nBe sure to make good use of it!$"
+    .string "Success, I got something from it!\pHere's your {RYU_STR_1}!\nBe sure to make good use of it!$"
 
 Ryu_NoFossilOres:
-    .string "You must have at least one\nfossil ore for me to refine!$"
+    .string "You must have at least one\nfossil ore for me to refine.$"
 
 @@Mining General===================================================================================
 
@@ -278,6 +282,7 @@ MiningRock6::
     call Ryu_MineRock
     release
     end
+
 
 MiningRock7::
     goto_if_set FLAG_TEMP_7, Ryu_NoOresHere

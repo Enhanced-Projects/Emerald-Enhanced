@@ -80,7 +80,7 @@
             "script": "TrainerHill_Entrance_EventScript_Girl",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 2,
+            "x": 4,
             "y": 14
         },
         {
@@ -93,7 +93,7 @@
             "script": "TrainerHill_Entrance_EventScript_Man",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 11,
+            "x": 14,
             "y": 13
         },
         {
@@ -134,20 +134,6 @@
             "elevation": 3,
             "x": 3,
             "y": 2
-        },
-        {
-            "dest_map": "MAP_ROUTE111",
-            "dest_warp_id": 4,
-            "elevation": 3,
-            "x": 16,
-            "y": 16
-        },
-        {
-            "dest_map": "MAP_ROUTE111",
-            "dest_warp_id": 4,
-            "elevation": 3,
-            "x": 17,
-            "y": 16
         }
     ],
     "weather": "WEATHER_NONE"

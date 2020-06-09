@@ -1,56 +1,58 @@
 {
-  "id": "MAP_UNDERWATER4",
-  "name": "Underwater4",
-  "layout": "LAYOUT_UNDERWATER4",
-  "music": "MUS_DEEPDEEP",
-  "region_map_section": "MAPSEC_UNDERWATER_127",
-  "requires_flash": false,
-  "weather": "WEATHER_UNDERWATER_BUBBLES",
-  "map_type": "MAP_TYPE_UNDERWATER",
-  "allow_bike": true,
-  "allow_escape_rope": false,
-  "allow_running": true,
-  "show_map_name": true,
-  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": [
-    {
-      "direction": "up",
-      "offset": 0,
-      "map": "MAP_UNDERWATER3"
-    },
-    {
-      "direction": "emerge",
-      "offset": 0,
-      "map": "MAP_ROUTE128"
-    }
-  ],
-  "object_events": [],
-  "warp_events": [
-    {
-      "x": 38,
-      "y": 26,
-      "elevation": 3,
-      "dest_map": "MAP_UNDERWATER_SEAFLOOR_CAVERN",
-      "dest_warp_id": 0
-    }
-  ],
-  "coord_events": [],
-  "bg_events": [
-    {
-      "type": "hidden_item",
-      "x": 38,
-      "y": 19,
-      "elevation": 3,
-      "item": "ITEM_PROTEIN",
-      "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_4_PROTEIN"
-    },
-    {
-      "type": "hidden_item",
-      "x": 69,
-      "y": 18,
-      "elevation": 3,
-      "item": "ITEM_PEARL",
-      "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_4_PEARL"
-    }
-  ]
+    "allow_bike": true,
+    "allow_escape_rope": false,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_4_PROTEIN",
+            "item": "ITEM_PROTEIN",
+            "type": "hidden_item",
+            "x": 38,
+            "y": 19
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_4_PEARL",
+            "item": "ITEM_PEARL",
+            "type": "hidden_item",
+            "x": 69,
+            "y": 18
+        }
+    ],
+    "connections": [
+        {
+            "direction": "up",
+            "map": "MAP_UNDERWATER3",
+            "offset": 0
+        },
+        {
+            "direction": "emerge",
+            "map": "MAP_ROUTE128",
+            "offset": 0
+        }
+    ],
+    "coord_events": [
+    ],
+    "id": "MAP_UNDERWATER4",
+    "layout": "LAYOUT_UNDERWATER4",
+    "map_type": "MAP_TYPE_UNDERWATER",
+    "music": "MUS_DEEPDEEP",
+    "name": "Underwater4",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_UNDERWATER_127",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_UNDERWATER_SEAFLOOR_CAVERN",
+            "dest_warp_id": 0,
+            "elevation": 3,
+            "x": 38,
+            "y": 26
+        }
+    ],
+    "weather": "WEATHER_UNDERWATER_BUBBLES"
 }

@@ -43,8 +43,8 @@
             "dest_map": "MAP_TRAINER_HILL_ROOF",
             "dest_warp_id": 1,
             "elevation": 3,
-            "x": 0,
-            "y": 0
+            "x": 2,
+            "y": 6
         }
     ],
     "weather": "WEATHER_NONE"

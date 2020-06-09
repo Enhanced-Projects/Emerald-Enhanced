@@ -7,8 +7,6 @@ MossdeepCity_OnTransition: @ 81E4A9C
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_2
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_3
 	clearflag FLAG_MOSSDEEP_GYM_SWITCH_4
-	setweather WEATHER_SHADE
-	doweather
 	setflag FLAG_VISITED_MOSSDEEP_CITY
 	end
 

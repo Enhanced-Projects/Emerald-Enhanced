@@ -4,6 +4,30 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "DT_MiningRock13",
+            "type": "sign",
+            "x": 15,
+            "y": 14
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "DT_MiningRock15",
+            "type": "sign",
+            "x": 6,
+            "y": 5
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "DT_MiningRock14",
+            "type": "sign",
+            "x": 13,
+            "y": 15
+        }
     ],
     "connections": null,
     "coord_events": [

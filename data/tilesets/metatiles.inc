@@ -557,3 +557,12 @@ gMetatiles_UnionRoom:: @ 83DF392
 	.align 1
 gMetatileAttributes_UnionRoom:: @ 83DF6A2
 	.incbin "data/tilesets/secondary/union_room/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_Fallarbor_Mine::
+	.incbin "data/tilesets/secondary/fallarbor_mine/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Fallarbor_Mine::
+	.incbin "data/tilesets/secondary/fallarbor_mine/metatile_attributes.bin"
+	

@@ -199,7 +199,14 @@
         "DesertTomb1F",
         "DesertTomb2F",
         "DesertTombCore",
-        "Route66"
+        "Route66",
+        "Route135",
+        "Underwater8",
+        "Route135_House1",
+        "Route135_House2",
+        "Route135_House3",
+        "Route135_ManaphyTemple",
+        "Underwater9"
     ],
     "gMapGroup19": [
         "Route112_CableCarStation",
@@ -216,7 +223,8 @@
         "Route114_FossilManiacsHouse",
         "Route114_FossilManiacsTunnel",
         "Route114_LanettesHouse",
-        "Route114_LanettesHouse_Basement"
+        "Route114_LanettesHouse_Basement",
+        "Route114_SuicuneCave"
     ],
     "gMapGroup21": [
         "Route116_TunnelersRestHouse"
@@ -554,7 +562,11 @@
         "FallarborTown_PokemonCenter_1F",
         "FallarborTown_PokemonCenter_2F",
         "FallarborTown_CozmosHouse",
-        "FallarborTown_MoveRelearnersHouse"
+        "FallarborTown_MoveRelearnersHouse",
+        "FallarborTown_CaveTown",
+        "FallarborTown_Lab",
+        "FallarborTown_GemRefiner",
+        "FallarborTown_ShardRefiner"
     ],
     "gMapGroup6": [
         "VerdanturfTown_BattleTentLobby",

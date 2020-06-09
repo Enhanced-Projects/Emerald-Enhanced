@@ -133,7 +133,7 @@
         {
             "blockdata_filepath": "data/layouts/FallarborTown/map.bin",
             "border_filepath": "data/layouts/FallarborTown/border.bin",
-            "height": 20,
+            "height": 22,
             "id": "LAYOUT_FALLARBOR_TOWN",
             "name": "FallarborTown_Layout",
             "primary_tileset": "gTileset_General",
@@ -388,7 +388,7 @@
             "name": "Route123_Layout",
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Lilycove",
-            "width": 140
+            "width": 174
         },
         {
             "blockdata_filepath": "data/layouts/Route124/map.bin",
@@ -4579,6 +4579,126 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_Lab",
             "width": 13
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route135/map.bin",
+            "border_filepath": "data/layouts/Route135/border.bin",
+            "height": 100,
+            "id": "LAYOUT_ROUTE135",
+            "name": "Route135_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Pacifidlog",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/Underwater8/map.bin",
+            "border_filepath": "data/layouts/Underwater8/border.bin",
+            "height": 100,
+            "id": "LAYOUT_UNDERWATER8",
+            "name": "Underwater8_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route135_House1/map.bin",
+            "border_filepath": "data/layouts/Route135_House1/border.bin",
+            "height": 9,
+            "id": "LAYOUT_ROUTE135_HOUSE1",
+            "name": "Route135_House1_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_GenericBuilding",
+            "width": 10
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route135_House2/map.bin",
+            "border_filepath": "data/layouts/Route135_House2/border.bin",
+            "height": 9,
+            "id": "LAYOUT_ROUTE135_HOUSE2",
+            "name": "Route135_House2_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_GenericBuilding",
+            "width": 10
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route135_House3/map.bin",
+            "border_filepath": "data/layouts/Route135_House3/border.bin",
+            "height": 9,
+            "id": "LAYOUT_ROUTE135_HOUSE3",
+            "name": "Route135_House3_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_GenericBuilding",
+            "width": 10
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route135_ManaphyTemple/map.bin",
+            "border_filepath": "data/layouts/Route135_ManaphyTemple/border.bin",
+            "height": 35,
+            "id": "LAYOUT_ROUTE135_MANAPHY_TEMPLE",
+            "name": "Route135_ManaphyTemple_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_BattlePyramid",
+            "width": 15
+        },
+        {
+            "blockdata_filepath": "data/layouts/Underwater9/map.bin",
+            "border_filepath": "data/layouts/Underwater9/border.bin",
+            "height": 37,
+            "id": "LAYOUT_UNDERWATER9",
+            "name": "Underwater9_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 15
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route114_SuicuneCave/map.bin",
+            "border_filepath": "data/layouts/Route114_SuicuneCave/border.bin",
+            "height": 28,
+            "id": "LAYOUT_ROUTE114_SUICUNE_CAVE",
+            "name": "Route114_SuicuneCave_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Fallarbor",
+            "width": 17
+        },
+        {
+            "blockdata_filepath": "data/layouts/FallarborTown_CaveTown/map.bin",
+            "border_filepath": "data/layouts/FallarborTown_CaveTown/border.bin",
+            "height": 29,
+            "id": "LAYOUT_FALLARBOR_TOWN_CAVE_TOWN",
+            "name": "FallarborTown_CaveTown_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Fallarbor_Mine",
+            "width": 62
+        },
+        {
+            "blockdata_filepath": "data/layouts/FallarborTown_Lab/map.bin",
+            "border_filepath": "data/layouts/FallarborTown_Lab/border.bin",
+            "height": 13,
+            "id": "LAYOUT_FALLARBOR_TOWN_LAB",
+            "name": "FallarborTown_Lab_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Facility",
+            "width": 18
+        },
+        {
+            "blockdata_filepath": "data/layouts/FallarborTown_GemRefiner/map.bin",
+            "border_filepath": "data/layouts/FallarborTown_GemRefiner/border.bin",
+            "height": 8,
+            "id": "LAYOUT_FALLARBOR_TOWN_GEM_REFINER",
+            "name": "FallarborTown_GemRefiner_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Facility",
+            "width": 8
+        },
+        {
+            "blockdata_filepath": "data/layouts/FallarborTown_ShardRefiner/map.bin",
+            "border_filepath": "data/layouts/FallarborTown_ShardRefiner/border.bin",
+            "height": 8,
+            "id": "LAYOUT_FALLARBOR_TOWN_SHARD_REFINER",
+            "name": "FallarborTown_ShardRefiner_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Facility",
+            "width": 8
         }
     ],
     "layouts_table_label": "gMapLayouts"

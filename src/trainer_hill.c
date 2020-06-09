@@ -1111,23 +1111,49 @@ static u16 GetPrizeItemId(void)
 //New trainer hill reward tables. There's no limit to the size of these arrays, and the function below will scale up to match
 
 const u16 sTrainerHillLegendRewards[] = {//legends reward table
-    ITEM_RARE_CANDY,
-    ITEM_LUXURY_BALL,
+    ITEM_SACRED_ASH,
+    ITEM_SACRED_ASH,
+    ITEM_SACRED_ASH,
+    ITEM_LIECHI_BERRY,
+    ITEM_GANLON_BERRY,
+    ITEM_SALAC_BERRY,
+    ITEM_PETAYA_BERRY,
+    ITEM_APICOT_BERRY,
+    ITEM_LANSAT_BERRY,
+    ITEM_STARF_BERRY,
+    ITEM_ENIGMA_BERRY,
 };
 
 const u16 sTrainerHillMythicRewards[] = {//mythics reward table
-    ITEM_RARE_CANDY,
-    ITEM_LUXURY_BALL,
+    ITEM_LEVEL_BALL,
+    ITEM_LURE_BALL,
+    ITEM_MOON_BALL,
+    ITEM_FRIEND_BALL,
+    ITEM_LOVE_BALL,
+    ITEM_HEAVY_BALL,
+    ITEM_FAST_BALL,
+    ITEM_LUCKY_EGG,
 };
 
 const u16 sTrainerHillBeastRewards[] = {//beast reward table
-    ITEM_RARE_CANDY,
-    ITEM_LUXURY_BALL,
+    ITEM_BEAST_BALL,
+    ITEM_BEAST_BALL,
+    ITEM_BEAST_BALL,
+    ITEM_CHOICE_BAND,
+    ITEM_CHOICE_SPECS,
+    ITEM_CHOICE_SCARF,
+    ITEM_PP_MAX,
+    ITEM_STAR_PIECE,
 };
 
 const u16 sTrainerHillMixedRewards[] = {//mixed reward table
-    ITEM_RARE_CANDY,
-    ITEM_LUXURY_BALL,
+    ITEM_BLUE_FLUTE,
+    ITEM_YELLOW_FLUTE,
+    ITEM_RED_FLUTE,
+    ITEM_BLACK_FLUTE,
+    ITEM_WHITE_FLUTE,
+    ITEM_LUCKY_EGG,
+    ITEM_PP_MAX,
 };
 
 

@@ -215,7 +215,10 @@
 #define MAPSEC_NAVEL_ROCK                   0xD3
 #define MAPSEC_TRAINER_HILL                 0xD4
 #define MAPSEC_ROUTE_66                     0xD5
-#define MAPSEC_NONE                         0xD6
+#define MAPSEC_ROUTE_135                    0xD6
+#define MAPSEC_UNDERWATER_135               0xD7
+#define MAPSEC_FALLARBOR_MINE               0xD8
+#define MAPSEC_NONE                         0xD9
 
 
 #define METLOC_SPECIAL_EGG                  0xFD

@@ -1109,3 +1109,27 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/Route66/scripts.inc"
 
 	.include "data/maps/Route114_LanettesHouse_Basement/scripts.inc"
+
+	.include "data/maps/Route135/scripts.inc"
+
+	.include "data/maps/Underwater8/scripts.inc"
+
+	.include "data/maps/Route135_House1/scripts.inc"
+
+	.include "data/maps/Route135_House2/scripts.inc"
+
+	.include "data/maps/Route135_House3/scripts.inc"
+
+	.include "data/maps/Route135_ManaphyTemple/scripts.inc"
+
+	.include "data/maps/Underwater9/scripts.inc"
+
+	.include "data/maps/Route114_SuicuneCave/scripts.inc"
+
+	.include "data/maps/FallarborTown_CaveTown/scripts.inc"
+
+	.include "data/maps/FallarborTown_Lab/scripts.inc"
+
+	.include "data/maps/FallarborTown_GemRefiner/scripts.inc"
+
+	.include "data/maps/FallarborTown_ShardRefiner/scripts.inc"

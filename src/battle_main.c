@@ -1819,11 +1819,11 @@ static const u16 sRange[9][2] = {//2d array for trainer level ranges
 };
 
 static const u16 sGymRange[9][2] = {//2d array for gym leader level ranges
-    {22,28},
-    {28,34},
-    {34,38},
-    {38,44},
-    {44,50},
+    {13,17},
+    {18,24},
+    {27,31},
+    {34,40},
+    {42,48},
     {50,55},
     {55,65}, 
     {65,75},
