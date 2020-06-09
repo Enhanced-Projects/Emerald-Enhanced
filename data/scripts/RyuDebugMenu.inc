@@ -183,10 +183,19 @@ RDB_CTVMsg:
 	.string "{RYU_STR_1} - {RYU_STR_2} - {RYU_STR_3}$"
 
 RyuDebug_Utility1::
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGMININGMAP
+	@msgbox Ryu_MiningMapInfo, MSGBOX_ONELINE
+	waitbuttonpress
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	setvar VAR_RYU_PLAYER_MINING_SKILL, 1
 	warpteleport MAP_DESERT_UNDERPASS, 0, 10, 12
 	release
 	end
+
+Ryu_MiningMapInfo:
+	.string "Mining Locations$"
 
 	@goto RDB_GiveRandomFrontierMons
 
