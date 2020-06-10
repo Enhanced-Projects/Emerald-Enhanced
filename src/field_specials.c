@@ -5090,6 +5090,7 @@ void RyuGiveKoutaMawile(void)
 void RyuSetIVs(void)
 {
     u8 iv = 31;
+    u8 ab = 1;
     SetMonData(&gPlayerParty[0], MON_DATA_HP_IV, &iv);
     SetMonData(&gPlayerParty[0], MON_DATA_ATK_IV, &iv);
     SetMonData(&gPlayerParty[0], MON_DATA_DEF_IV, &iv);
@@ -5102,6 +5103,7 @@ void RyuSetIVs(void)
     SetMonData(&gPlayerParty[1], MON_DATA_SPATK_IV, &iv);
     SetMonData(&gPlayerParty[1], MON_DATA_SPDEF_IV, &iv);
     SetMonData(&gPlayerParty[1], MON_DATA_SPEED_IV, &iv);
+    SetMonData(&gPlayerParty[1], MON_DATA_ABILITY_NUM, &ab);
     CalculateMonStats(&gPlayerParty[1]);
     CalculateMonStats(&gPlayerParty[0]);
 }

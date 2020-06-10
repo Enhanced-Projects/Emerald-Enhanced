@@ -198,11 +198,11 @@ MH_ShellyIntro:
 	.string "the center, most likely.$"
 	
 MH_ShellyRelQuery:
-	.string "So, how about we take down the\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}So, how about we take down the\n"
 	.string "management together? It'll be fun.$"
 	
 MH_ShellyPreparing:
-	.string "I'll take the back seat and watch\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I'll take the back seat and watch\n"
     .string "you work, then. It really turns\p"
     .string "me on, the way you wreck these\n"
     .string "Magma scrubs.$"
