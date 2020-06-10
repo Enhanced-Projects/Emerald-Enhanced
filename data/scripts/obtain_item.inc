@@ -17,6 +17,8 @@ EventScript_ObtainItemMessage:: @ 8271AE3
 EventScript_BufferPocketNameAndTryFanfare:: @ 8271B08
 	switch VAR_RESULT
 	case POCKET_ITEMS, EventScript_BufferItemsPocket
+	case POCKET_MEDICINE, EventScript_BufferMedicinesPocket
+	case POCKET_COLLECTIBLES, EventScript_BufferCollectiblesPocket
 	case POCKET_KEY_ITEMS, EventScript_BufferKeyItemsPocket
 	case POCKET_POKE_BALLS, EventScript_BufferPokeballsPocket
 	case POCKET_TM_HM, EventScript_BufferTMHMsPocket
@@ -25,6 +27,18 @@ EventScript_BufferPocketNameAndTryFanfare:: @ 8271B08
 
 EventScript_BufferItemsPocket:: @ 8271B45
 	bufferstdstring 2, STDSTRING_ITEMS
+	compare VAR_0x8007, 1
+	call_if_eq EventScript_PlayFanfareObtainedItem
+	return
+
+EventScript_BufferMedicinesPocket:: @ 8271B45
+	bufferstdstring 2, STDSTRING_MEDICINES
+	compare VAR_0x8007, 1
+	call_if_eq EventScript_PlayFanfareObtainedItem
+	return
+
+EventScript_BufferCollectiblesPocket:: @ 8271B45
+	bufferstdstring 2, STDSTRING_COLLECTIBLES
 	compare VAR_0x8007, 1
 	call_if_eq EventScript_PlayFanfareObtainedItem
 	return
