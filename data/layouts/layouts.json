@@ -4699,6 +4699,16 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_Facility",
             "width": 8
+        },
+        {
+            "blockdata_filepath": "data/layouts/FallarborTown_CaveMart/map.bin",
+            "border_filepath": "data/layouts/FallarborTown_CaveMart/border.bin",
+            "height": 8,
+            "id": "LAYOUT_FALLARBOR_TOWN_CAVE_MART",
+            "name": "FallarborTown_CaveMart_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Shop",
+            "width": 11
         }
     ],
     "layouts_table_label": "gMapLayouts"

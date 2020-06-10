@@ -218,6 +218,13 @@
             "elevation": 0,
             "x": 25,
             "y": 17
+        },
+        {
+            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_MART",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 49,
+            "y": 19
         }
     ],
     "weather": "WEATHER_NONE"

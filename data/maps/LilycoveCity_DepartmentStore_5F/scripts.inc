@@ -122,18 +122,22 @@ LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarRight:: @ 822003A
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemart LCC_ShardItemMarket
+	pokemart LCC_NaturalMedicineMarket
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 
 	.align 2
-LCC_ShardItemMarket: @ 8220054
+LCC_NaturalMedicineMarket: @ 8220054
 	.2byte ITEM_BERRY_JUICE
 	.2byte ITEM_SWEET_HEART
 	.2byte ITEM_BIG_MALASADA
 	.2byte ITEM_OLD_GATEAU
-	.2byte ITEM_NONE
+	.2byte ITEM_MOOMOO_MILK
+	.2byte ITEM_HEAL_POWDER
+	.2byte ITEM_ENERGY_POWDER
+	.2byte ITEM_ENERGY_ROOT
+	.2byte ITEM_REVIVAL_HERB
 	release
 	end
 
@@ -294,5 +298,5 @@ LCC_BATTLE_ITEM_MSG:
 
 LCC_EVO_STORE_MSG:
         .string "Hello and welcome to Darwin's market!\n"
-	.string "All evolution needs can be found here!$"
+	.string "Evolution needs can be found here!$"
 

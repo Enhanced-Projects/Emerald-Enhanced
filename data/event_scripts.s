@@ -1133,3 +1133,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/FallarborTown_GemRefiner/scripts.inc"
 
 	.include "data/maps/FallarborTown_ShardRefiner/scripts.inc"
+
+	.include "data/maps/FallarborTown_CaveMart/scripts.inc"
