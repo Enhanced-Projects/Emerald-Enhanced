@@ -6,7 +6,7 @@
     "bg_events": [
         {
             "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
             "script": "Common_EventScript_ShowPokemartSign",
             "type": "sign",
             "x": 50,
@@ -14,7 +14,7 @@
         },
         {
             "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
             "script": "Common_EventScript_ShowPokemartSign",
             "type": "sign",
             "x": 51,
@@ -199,8 +199,8 @@
             "y": 10
         },
         {
-            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
-            "dest_warp_id": 6,
+            "dest_map": "MAP_FALLARBOR_TOWN_FOSSIL_MANI",
+            "dest_warp_id": 0,
             "elevation": 0,
             "x": 28,
             "y": 8

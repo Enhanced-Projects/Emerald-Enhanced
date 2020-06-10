@@ -8,70 +8,70 @@
     "connections": null,
     "coord_events": [
     ],
-    "id": "MAP_DEWFORD_TOWN_HOUSE1",
-    "layout": "LAYOUT_HOUSE3",
+    "id": "MAP_FALLARBOR_TOWN_FOSSIL_MANI",
+    "layout": "LAYOUT_FALLARBOR_TOWN_FOSSIL_MANI",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_HIGHTOWN",
-    "name": "DewfordTown_House1",
+    "music": "MUS_DAN02",
+    "name": "FallarborTown_FossilMani",
     "object_events": [
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
+            "graphics_id": "OBJ_EVENT_GFX_FOSSIL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 2,
+            "y": 3
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_MANIAC",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "DewfordTown_House1_EventScript_Woman",
+            "script": "FallarborTown_FossilMani_EventScript_FossilManiac",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 6,
+            "x": 3,
             "y": 3
         },
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+            "graphics_id": "OBJ_EVENT_GFX_FOSSIL",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "DewfordTown_House1_EventScript_Man",
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 3,
-            "y": 3
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_ZIGZAGOON_2",
-            "movement_range_x": 3,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "DewfordTown_House1_EventScript_Zigzagoon",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 4,
-            "y": 2
+            "x": 7,
+            "y": 4
         }
     ],
-    "region_map_section": "MAPSEC_DEWFORD_TOWN",
+    "region_map_section": "MAPSEC_FALLARBOR_MINE",
     "requires_flash": false,
-    "show_map_name": false,
+    "show_map_name": true,
     "warp_events": [
         {
-            "dest_map": "MAP_DEWFORD_TOWN",
-            "dest_warp_id": 3,
-            "elevation": 0,
-            "x": 3,
-            "y": 7
-        },
-        {
-            "dest_map": "MAP_DEWFORD_TOWN",
-            "dest_warp_id": 3,
+            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
+            "dest_warp_id": 5,
             "elevation": 0,
             "x": 4,
             "y": 7
+        },
+        {
+            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
+            "dest_warp_id": 5,
+            "elevation": 0,
+            "x": 5,
+            "y": 7
         }
     ],
-    "weather": "WEATHER_NONE"
+    "weather": "WEATHER_SUNNY"
 }
