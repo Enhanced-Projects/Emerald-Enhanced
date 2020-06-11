@@ -183,8 +183,11 @@ RDB_CTVMsg:
 	.string "SaveBlock1 is {STR_VAR_1} bytes long.$"
 
 RyuDebug_Utility1::
-	special CheckSaveFileSize
-	msgbox RDB_CTVMsg
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
+	waitbuttonpress
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	release
 	end
 
