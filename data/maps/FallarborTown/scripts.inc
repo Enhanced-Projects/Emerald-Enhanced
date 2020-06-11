@@ -38,8 +38,8 @@ FallarborTown_EventScript_Azurill:: @ 81EB23D
 	release
 	end
 
-FallarborTown_EventScript_BattleTentSign:: @ 81EB250
-	msgbox FallarborTown_Text_BattleTentSign, MSGBOX_SIGN
+FallarborTown_EventScript_MineSign:: @ 81EB250
+	msgbox FallarborTown_Text_MineSign, MSGBOX_SIGN
 	end
 
 FallarborTown_EventScript_TownSign:: @ 81EB259
@@ -80,9 +80,9 @@ FallarborTown_Text_HaveYouChallengedFlannery: @ 81EB3CA
 	.string "become a great Trainer in her own\l"
 	.string "right.$"
 
-FallarborTown_Text_BattleTentSign: @ 81EB4C2
-	.string "Battle Tent Fallarbor Site\n"
-	.string "“May the Greatest Teams Gather!”$"
+FallarborTown_Text_MineSign: @ 81EB4C2
+	.string "Fallarbor Mine\n"
+	.string "“A humble mining town.”$"
 
 FallarborTown_Text_TownSign: @ 81EB4FE
 	.string "Fallarbor Town\n"

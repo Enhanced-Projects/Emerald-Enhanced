@@ -23,7 +23,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "FallarborTown_CaveTown_EventScript_FallarborFossilLabSign",
+            "script": "FallarborTown_CaveTown_Text_FossilLabSign",
             "type": "sign",
             "x": 48,
             "y": 11
@@ -31,7 +31,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "FallarborTown_CaveTown_EventScript_FallarborShardRefinerSign",
+            "script": "FallarborTown_CaveTown_Text_ShardRefinerSign",
             "type": "sign",
             "x": 23,
             "y": 17
@@ -43,6 +43,30 @@
             "type": "sign",
             "x": 36,
             "y": 17
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FallarborTown_CaveTown_Text_FossilManiacSign",
+            "type": "sign",
+            "x": 26,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FallarborTown_CaveTown_Text_MiningMasterSign",
+            "type": "sign",
+            "x": 39,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FallarborTown_CaveTown_Text_TownSign",
+            "type": "sign",
+            "x": 43,
+            "y": 14
         }
     ],
     "connections": null,
@@ -144,19 +168,6 @@
             "trainer_type": "0",
             "x": 6,
             "y": 13
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "FTCT_MiningMaster",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 22,
-            "y": 7
         }
     ],
     "region_map_section": "MAPSEC_FALLARBOR_MINE",
@@ -206,8 +217,8 @@
             "y": 8
         },
         {
-            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
-            "dest_warp_id": 5,
+            "dest_map": "MAP_FALLARBOR_TOWN_MINING_MASTER_HOUSE",
+            "dest_warp_id": 0,
             "elevation": 0,
             "x": 38,
             "y": 10

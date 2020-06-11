@@ -1,44 +1,31 @@
 {
     "allow_bike": false,
     "allow_escape_rope": false,
-    "allow_running": true,
+    "allow_running": false,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
     ],
     "connections": null,
     "coord_events": [
     ],
-    "id": "MAP_FALLARBOR_TOWN_LAB",
-    "layout": "LAYOUT_FALLARBOR_TOWN_LAB",
+    "id": "MAP_FALLARBOR_TOWN_MINING_MASTER_HOUSE",
+    "layout": "LAYOUT_FALLARBOR_TOWN_MINING_MASTER_HOUSE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_AJITO",
-    "name": "FallarborTown_Lab",
+    "music": "MUS_TONEKUSA",
+    "name": "FallarborTown_MiningMasterHouse",
     "object_events": [
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_FOSSIL",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 16,
-            "y": 3
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_FOSSIL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 17,
-            "y": 4
+            "x": 12,
+            "y": 8
         },
         {
             "elevation": 3,
@@ -50,8 +37,8 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 15,
-            "y": 4
+            "x": 11,
+            "y": 9
         },
         {
             "elevation": 3,
@@ -63,73 +50,60 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 15,
-            "y": 3
+            "x": 9,
+            "y": 8
         },
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "FallarborTown_Lab_EventScript_TopRightScientist",
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 14,
-            "y": 4
+            "x": 10,
+            "y": 9
         },
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_2",
+            "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "Ryu_RefineFossilOre",
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "FallarborTown_MiningMasterHouse_EventScript_Daughter",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 8,
+            "x": 11,
             "y": 7
         },
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
-            "script": "FallarborTown_Lab_EventScript_TopLeftScientist",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 5,
-            "y": 3
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_FOSSIL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 17,
-            "y": 10
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "FallarborTown_Lab_EventScript_BottomRightScientist",
+            "script": "FallarborTown_MiningMasterHouse_EventScript_Wife",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 17,
-            "y": 12
+            "x": 12,
+            "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 12,
+            "y": 9
         },
         {
             "elevation": 3,
@@ -141,21 +115,34 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 0,
-            "y": 3
+            "x": 13,
+            "y": 9
         },
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+            "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "FTCT_MiningMaster",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 4,
+            "y": 4
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-            "script": "FallarborTown_Lab_EventScript_BottomLeftScientist",
+            "script": "FallarborTown_MiningMasterHouse_EventScript_Son",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 2,
-            "y": 10
+            "x": 8,
+            "y": 5
         }
     ],
     "region_map_section": "MAPSEC_FALLARBOR_MINE",
@@ -164,24 +151,17 @@
     "warp_events": [
         {
             "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
-            "dest_warp_id": 4,
+            "dest_warp_id": 6,
             "elevation": 0,
             "x": 3,
-            "y": 12
+            "y": 7
         },
         {
             "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
-            "dest_warp_id": 4,
+            "dest_warp_id": 6,
             "elevation": 0,
             "x": 4,
-            "y": 12
-        },
-        {
-            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
-            "dest_warp_id": 4,
-            "elevation": 0,
-            "x": 5,
-            "y": 12
+            "y": 7
         }
     ],
     "weather": "WEATHER_NONE"

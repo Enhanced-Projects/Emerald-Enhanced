@@ -107,6 +107,7 @@
 #define MAP_FALLARBOR_TOWN_SHARD_REFINER           (11 | (5 << 8))
 #define MAP_FALLARBOR_TOWN_CAVE_MART               (12 | (5 << 8))
 #define MAP_FALLARBOR_TOWN_FOSSIL_MANI             (13 | (5 << 8))
+#define MAP_FALLARBOR_TOWN_MINING_MASTER_HOUSE     (14 | (5 << 8))
 
 // Map Group 6
 #define MAP_VERDANTURF_TOWN_BATTLE_TENT_LOBBY       (0 | (6 << 8))

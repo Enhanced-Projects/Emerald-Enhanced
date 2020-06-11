@@ -11,7 +11,7 @@
     "id": "MAP_FALLARBOR_TOWN_SHARD_REFINER",
     "layout": "LAYOUT_FALLARBOR_TOWN_SHARD_REFINER",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_AJITO",
     "name": "FallarborTown_ShardRefiner",
     "object_events": [
         {
@@ -43,7 +43,7 @@
     ],
     "region_map_section": "MAPSEC_FALLARBOR_MINE",
     "requires_flash": false,
-    "show_map_name": true,
+    "show_map_name": false,
     "warp_events": [
         {
             "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
@@ -60,5 +60,5 @@
             "y": 7
         }
     ],
-    "weather": "WEATHER_SUNNY"
+    "weather": "WEATHER_NONE"
 }
