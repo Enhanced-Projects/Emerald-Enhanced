@@ -142,8 +142,8 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "MiningRock5",
             "type": "sign",
-            "x": 28,
-            "y": 38
+            "x": 31,
+            "y": 40
         }
     ],
     "connections": [

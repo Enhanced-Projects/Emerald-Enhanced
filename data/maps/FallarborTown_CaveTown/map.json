@@ -6,7 +6,15 @@
     "bg_events": [
         {
             "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "Common_EventScript_ShowPokemartSign",
+            "type": "sign",
+            "x": 49,
+            "y": 19
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
             "script": "Common_EventScript_ShowPokemartSign",
             "type": "sign",
             "x": 50,
@@ -15,25 +23,17 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Common_EventScript_ShowPokemartSign",
+            "script": "FallarborTown_CaveTown_Text_FossilLabSign",
             "type": "sign",
-            "x": 51,
-            "y": 19
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "FallarborTown_CaveTown_EventScript_FallarborFossilLabSign",
-            "type": "sign",
-            "x": 48,
+            "x": 47,
             "y": 11
         },
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "FallarborTown_CaveTown_EventScript_FallarborShardRefinerSign",
+            "script": "FallarborTown_CaveTown_Text_ShardRefinerSign",
             "type": "sign",
-            "x": 23,
+            "x": 22,
             "y": 17
         },
         {
@@ -41,8 +41,40 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "FallarborTown_CaveTown_Text_GemRefinerSign",
             "type": "sign",
-            "x": 36,
+            "x": 35,
             "y": 17
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FallarborTown_CaveTown_Text_FossilManiacSign",
+            "type": "sign",
+            "x": 25,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FallarborTown_CaveTown_Text_MiningMasterSign",
+            "type": "sign",
+            "x": 38,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FallarborTown_CaveTown_Text_TownSign",
+            "type": "sign",
+            "x": 42,
+            "y": 14
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FallarborTown_CaveTown_Text_DesertUnderpassSign",
+            "type": "sign",
+            "x": 5,
+            "y": 3
         }
     ],
     "connections": null,
@@ -61,10 +93,10 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "NULL",
+            "script": "FallarborTown_CaveTown_EventScript_MineShaftBlocker",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 55,
+            "x": 54,
             "y": 9
         },
         {
@@ -74,10 +106,10 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-            "script": "NULL",
+            "script": "FallarborTown_CaveTown_EventScript_OldFart",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 40,
+            "x": 39,
             "y": 15
         },
         {
@@ -87,10 +119,10 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-            "script": "NULL",
+            "script": "FallarborTown_CaveTown_EventScript_MiddleManiac",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 43,
+            "x": 42,
             "y": 16
         },
         {
@@ -100,10 +132,10 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-            "script": "NULL",
+            "script": "FallarborTown_CaveTown_EventScript_MiningLover",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 52,
+            "x": 51,
             "y": 11
         },
         {
@@ -113,10 +145,10 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-            "script": "NULL",
+            "script": "FallarborTown_CaveTown_EventScript_Questioner",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 31,
+            "x": 30,
             "y": 11
         },
         {
@@ -126,10 +158,10 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "NULL",
+            "script": "FallarborTown_CaveTown_EventScript_DrillScientist",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 46,
+            "x": 45,
             "y": 24
         },
         {
@@ -139,24 +171,11 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "NULL",
+            "script": "FallarborTown_CaveTown_EventScript_Boy",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 6,
+            "x": 5,
             "y": 13
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "FTCT_MiningMaster",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 22,
-            "y": 7
         }
     ],
     "region_map_section": "MAPSEC_FALLARBOR_MINE",
@@ -167,57 +186,64 @@
             "dest_map": "MAP_FALLARBOR_TOWN",
             "dest_warp_id": 1,
             "elevation": 0,
-            "x": 48,
+            "x": 47,
             "y": 25
         },
         {
             "dest_map": "MAP_ROUTE114_FOSSIL_MANIACS_HOUSE",
             "dest_warp_id": 2,
             "elevation": 0,
-            "x": 7,
+            "x": 6,
             "y": 25
         },
         {
             "dest_map": "MAP_DESERT_UNDERPASS",
             "dest_warp_id": 0,
             "elevation": 0,
-            "x": 7,
+            "x": 6,
             "y": 2
         },
         {
             "dest_map": "MAP_FALLARBOR_TOWN_GEM_REFINER",
             "dest_warp_id": 0,
             "elevation": 0,
-            "x": 34,
+            "x": 33,
             "y": 17
         },
         {
             "dest_map": "MAP_FALLARBOR_TOWN_LAB",
             "dest_warp_id": 1,
             "elevation": 0,
-            "x": 46,
+            "x": 45,
             "y": 10
         },
         {
-            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
-            "dest_warp_id": 6,
+            "dest_map": "MAP_FALLARBOR_TOWN_FOSSIL_MANI",
+            "dest_warp_id": 0,
             "elevation": 0,
-            "x": 28,
+            "x": 27,
             "y": 8
         },
         {
-            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
-            "dest_warp_id": 5,
+            "dest_map": "MAP_FALLARBOR_TOWN_MINING_MASTER_HOUSE",
+            "dest_warp_id": 0,
             "elevation": 0,
-            "x": 38,
+            "x": 37,
             "y": 10
         },
         {
             "dest_map": "MAP_FALLARBOR_TOWN_SHARD_REFINER",
             "dest_warp_id": 0,
             "elevation": 0,
-            "x": 25,
+            "x": 24,
             "y": 17
+        },
+        {
+            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_MART",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 48,
+            "y": 19
         }
     ],
     "weather": "WEATHER_NONE"

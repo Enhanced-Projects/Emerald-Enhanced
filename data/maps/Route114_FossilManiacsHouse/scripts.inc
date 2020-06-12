@@ -32,15 +32,17 @@ Route114_FossilManiacsHouse_EventScript_Bookshelf:: @ 822AD7C
 	end
 
 Route114_FossilManiacsHouse_Text_HaveThisToDigLikeMyBrother: @ 822AD85
-	.string "My big brother's the FOSSIL MANIAC…\n"
-	.string "He's a nice guy who loves FOSSILS…\p"
+	.string "My big brother's the Fossil Maniac…\n"
+	.string "He's a nice guy who loves fossils…\p"
 	.string "He loves digging holes, too…\n"
-	.string "He dug this hole by himself…\p"
-	.string "You can have this, so you can DIG\n"
+	.string "He dug this cave behind me…\p"
+	.string "Together with some other miners,\n"
+	.string "he made the cave his home…\p"
+	.string "You can have this, so you can Dig\n"
 	.string "holes just like my big brother…$"
 
 Route114_FossilManiacsHouse_Text_DigReturnsYouToEntrance: @ 822AE48
-	.string "If you make a Pokémon DIG inside a\n"
+	.string "If you make a Pokémon Dig inside a\n"
 	.string "cave, you're returned to the entrance…$"
 
 Route114_FossilManiacsHouse_Text_RocksFillDisplayCase: @ 822AE92

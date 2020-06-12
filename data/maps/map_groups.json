@@ -566,7 +566,10 @@
         "FallarborTown_CaveTown",
         "FallarborTown_Lab",
         "FallarborTown_GemRefiner",
-        "FallarborTown_ShardRefiner"
+        "FallarborTown_ShardRefiner",
+        "FallarborTown_CaveMart",
+        "FallarborTown_FossilMani",
+        "FallarborTown_MiningMasterHouse"
     ],
     "gMapGroup6": [
         "VerdanturfTown_BattleTentLobby",

@@ -20,7 +20,6 @@ SootopolisCity_Mart_Pokemart: @ 82267AC
 	.2byte ITEM_MAX_REPEL
 	.2byte ITEM_X_ATTACK
 	.2byte ITEM_X_DEFENSE
-	.2byte ITEM_SHADOW_MAIL
 	.2byte ITEM_NONE
 	release
 	end

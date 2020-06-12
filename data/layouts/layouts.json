@@ -4668,7 +4668,7 @@
             "name": "FallarborTown_CaveTown_Layout",
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Fallarbor_Mine",
-            "width": 62
+            "width": 61
         },
         {
             "blockdata_filepath": "data/layouts/FallarborTown_Lab/map.bin",
@@ -4699,6 +4699,36 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_Facility",
             "width": 8
+        },
+        {
+            "blockdata_filepath": "data/layouts/FallarborTown_CaveMart/map.bin",
+            "border_filepath": "data/layouts/FallarborTown_CaveMart/border.bin",
+            "height": 8,
+            "id": "LAYOUT_FALLARBOR_TOWN_CAVE_MART",
+            "name": "FallarborTown_CaveMart_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Shop",
+            "width": 11
+        },
+        {
+            "blockdata_filepath": "data/layouts/FallarborTown_FossilMani/map.bin",
+            "border_filepath": "data/layouts/FallarborTown_FossilMani/border.bin",
+            "height": 8,
+            "id": "LAYOUT_FALLARBOR_TOWN_FOSSIL_MANI",
+            "name": "FallarborTown_FossilMani_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_GenericBuilding",
+            "width": 10
+        },
+        {
+            "blockdata_filepath": "data/layouts/FallarborTown_MiningMasterHouse/map.bin",
+            "border_filepath": "data/layouts/FallarborTown_MiningMasterHouse/border.bin",
+            "height": 10,
+            "id": "LAYOUT_FALLARBOR_TOWN_MINING_MASTER_HOUSE",
+            "name": "FallarborTown_MiningMasterHouse_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_GenericBuilding",
+            "width": 15
         }
     ],
     "layouts_table_label": "gMapLayouts"

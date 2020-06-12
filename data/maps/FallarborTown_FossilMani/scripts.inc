@@ -1,0 +1,17 @@
+FallarborTown_FossilMani_MapScripts::
+	.byte 0
+
+FallarborTown_FossilMani_EventScript_FossilManiac::
+	msgbox FallarborTown_FossilMani_Text_Introduction, MSGBOX_NPC
+	end
+
+FallarborTown_FossilMani_Text_Introduction:
+	.string "I'm the Fossil Maniac…\n"
+	.string "I'm a nice guy who loves fossils…\p"
+	.string "Do you want a fossil?\p"
+	.string "But the fossils in this house all\n"
+	.string "belong to me… None for you…\p"
+	.string "If you can't bear to go without a\n"
+	.string "fossil, go visit my friend next door.\p"
+	.string "He may be able to teach you how to\n"
+	.string "dig for fossils…$"
