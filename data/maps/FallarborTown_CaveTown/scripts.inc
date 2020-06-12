@@ -54,4 +54,3 @@ FallarborTown_CaveTown_Text_TownSign::
 FTCT_TownSignMessage:
 	.string "Fallarbor Mine\n"
 	.string "“A humble mining town.”$"
-	
