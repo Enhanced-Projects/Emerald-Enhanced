@@ -1589,7 +1589,7 @@ static const struct TrainerMonItemCustomMoves sParty_Cindy6[] = {
     .iv = 40,
     .lvl = 36,
     .species = SPECIES_LINOONE,
-    .heldItem = ITEM_NUGGET,
+    .heldItem = ITEM_STARDUST,
     .ability = 0,
     .moves = {MOVE_FURY_SWIPES, MOVE_MUD_SPORT, MOVE_ODOR_SLEUTH, MOVE_SAND_ATTACK},
     }

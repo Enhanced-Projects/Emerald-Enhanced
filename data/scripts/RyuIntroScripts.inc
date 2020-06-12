@@ -66,7 +66,7 @@ RyuNGP_HCQuery:
 
 
 Ryu_NGP_Waystone:
-	additem ITEM_NUGGET, 1
+	additem ITEM_WAYSTONE, 1
 	return
 
 Ryu_NGP_Forecaster:

@@ -1608,7 +1608,7 @@ bool8 KeepKeyItem(u16 itemId)
 {
     switch (itemId)
     {
-    case ITEM_NUGGET:
+    case ITEM_WAYSTONE:
     case ITEM_IMPRINTER:
     case ITEM_SUPER_ROD:
     case ITEM_FORECASTER:
@@ -1648,7 +1648,7 @@ void CB2_NewGame(void)
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
         isNGPlus = TRUE;
 
-    if (CheckBagHasItem(ITEM_NUGGET, 1))
+    if (CheckBagHasItem(ITEM_WAYSTONE, 1))
         hasWaystone = TRUE;
 
     if (CheckBagHasItem(ITEM_EXP_DRIVE, 1))

@@ -123,7 +123,7 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_BIG_PEARL] = {gItemIcon_BigPearl, gItemIconPalette_Pearl},
     [ITEM_STARDUST] = {gItemIcon_Stardust, gItemIconPalette_Star},
     [ITEM_STAR_PIECE] = {gItemIcon_StarPiece, gItemIconPalette_Star},
-    [ITEM_NUGGET] = {gItemIcon_Nugget, gItemIconPalette_Nugget},
+    [ITEM_WAYSTONE] = {gItemIcon_Nugget, gItemIconPalette_Nugget},
     [ITEM_HEART_SCALE] = {gItemIcon_HeartScale, gItemIconPalette_HeartScale},
     // Mail
     [ITEM_ORANGE_MAIL] = {gItemIcon_OrangeMail, gItemIconPalette_OrangeMail},
