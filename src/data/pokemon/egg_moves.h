@@ -164,7 +164,7 @@ const u16 gEggMoves[] = {
         MOVE_NIGHTMARE,
         MOVE_SHADOW_SNEAK,
         MOVE_SPITE,
-        MOVE_TAIL_SLAP,),
+        MOVE_TAIL_SLAP),
 
     egg_moves(ZUBAT,
         MOVE_BRAVE_BIRD,
