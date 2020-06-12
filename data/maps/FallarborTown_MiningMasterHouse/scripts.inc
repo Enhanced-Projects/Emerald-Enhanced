@@ -36,6 +36,8 @@ FallarborTown_MiningMasterHouse_Text_TheseRocks:
 
 @@As a note, leveling up is facilitated by the mining script itself, the master just comments based on the player's mining level, or gives them an initial level.
 FTCT_MiningMaster::@@This script goes on the mining master.
+	lock
+	faceplayer
 	special checkbadgecount
 	compare VAR_RESULT, 4
 	goto_if_ge FTCT_MiningMasterStandard@@The mining master checks badges. If the count is greater than or equal to 4, go to the normal miningmaster script.

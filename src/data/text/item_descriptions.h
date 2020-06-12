@@ -1184,9 +1184,9 @@ static const u8 sWhippedDreamDesc[] = _(
     "Pokémon.");
 
 static const u8 sSachetDesc[] = _(
-    "A sachet filled with\n"
-    "perfumes loved by\n"
-    "some Pokémon.");
+    "A hold item that\n"
+    "raises the power of\n"
+    "Fairy-type moves.");
 
 static const u8 sLightBallDesc[] = _(
     "A hold item that\n"

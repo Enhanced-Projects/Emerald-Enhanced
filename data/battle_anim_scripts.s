@@ -14752,7 +14752,7 @@ Move_HIDDEN_POWER:
     jumpargeq 0, TYPE_ELECTRIC,             Move_THUNDER_SHOCK
     jumpargeq 0, TYPE_PSYCHIC,              Move_PSYCHIC
     jumpargeq 0, TYPE_DRAGON,               Move_DRAGON_PULSE
-    jumpargeq 0, TYPE_FAIRY,                Move_SWIFT
+    jumpargeq 0, TYPE_FAIRY,                Move_FAIRY_WIND
     goto Move_HYPER_VOICE
 
 Move_REVERSAL:
