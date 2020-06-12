@@ -141,13 +141,13 @@ EGC_CLEARGAMECLEARFLAG::
 	end
 
 RyuDebug_waystone::
-	additem ITEM_NUGGET, 1
+	additem ITEM_WAYSTONE, 1
 	goto RyuDebug_menu_nodevcheck
 	releaseall
 	end
 
 RyuDebug_enableWaystone::
-	additem ITEM_NUGGET, 1
+	additem ITEM_WAYSTONE, 1
     setflag FLAG_VISITED_LITTLEROOT_TOWN
     setflag FLAG_VISITED_OLDALE_TOWN
     setflag FLAG_VISITED_DEWFORD_TOWN
@@ -183,11 +183,7 @@ RDB_CTVMsg:
 	.string "SaveBlock1 is {STR_VAR_1} bytes long.$"
 
 RyuDebug_Utility1::
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGDAWN
-	waitbuttonpress
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
+	setvar VAR_RYU_PLAYER_MINING_SKILL, 3
 	release
 	end
 
@@ -375,7 +371,7 @@ RyuDebug_quickstart::
 	special RyuSetEVSPDEF
 	special RyuSetEVDEF
 	special RyuSetIVs
-	additem ITEM_NUGGET 1
+	additem ITEM_WAYSTONE 1
     setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV
