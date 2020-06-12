@@ -4668,7 +4668,7 @@
             "name": "FallarborTown_CaveTown_Layout",
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Fallarbor_Mine",
-            "width": 62
+            "width": 61
         },
         {
             "blockdata_filepath": "data/layouts/FallarborTown_Lab/map.bin",

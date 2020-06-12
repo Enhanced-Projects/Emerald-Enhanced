@@ -116,8 +116,8 @@
             "script": "VictoryRoad_1F_EventScript_ItemPPUp",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 37,
-            "y": 39
+            "x": 27,
+            "y": 15
         },
         {
             "elevation": 3,
