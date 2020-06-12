@@ -158,6 +158,7 @@
 #define MULTI_DEV_GIVE_MON_ABILITY         147
 #define MULTI_RLS_GEMSTONEQUALITYMENU      148
 #define MULTI_SHARD_EXCHANGE               149
+#define MULTI_FOSSIL_REVIVER               150
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

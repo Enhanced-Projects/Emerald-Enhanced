@@ -1,4 +1,6 @@
 // multichoice lists
+
+
 static const struct MenuAction MultichoiceList_BrineyOnDewford[] =
 {
     {gText_Petalburg},
@@ -1204,6 +1206,22 @@ static const struct MenuAction MultichoiceList_RyuShardExchange[]=
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_FossilReviver[]=
+{
+    {gText_ARMOR_FOSSIL},
+    {gText_SKULL_FOSSIL},
+    {gText_HELIX_FOSSIL},
+    {gText_DOME_FOSSIL},
+    {gText_PLUME_FOSSIL},
+    {gText_JAW_FOSSIL},
+    {gText_SAIL_FOSSIL},
+    {gText_ROOT_FOSSIL},
+    {gText_CLAW_FOSSIL},
+    {gText_OLD_AMBER},
+    {gText_Exit},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1366,7 +1384,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_OW_REPEL_DLG]               = MULTICHOICE(MultichoiceList_OWRepelList),
     [MULTI_DEV_GIVE_MON_ABILITY]       = MULTICHOICE(MultichoiceList_DevMonGiveAbilityMenu),
     [MULTI_RLS_GEMSTONEQUALITYMENU]    = MULTICHOICE(MultichoiceList_RyuLifeskillGemRefinerQualitySelect),
-    [MULTI_SHARD_EXCHANGE]    = MULTICHOICE(MultichoiceList_RyuShardExchange),
+    [MULTI_SHARD_EXCHANGE]             = MULTICHOICE(MultichoiceList_RyuShardExchange),
+    [MULTI_FOSSIL_REVIVER]             = MULTICHOICE(MultichoiceList_FossilReviver),
 };
 
 const u8 *const gStdStrings[] =

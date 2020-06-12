@@ -6509,3 +6509,133 @@ int RyuShardReward(void)
 
 }
 
+int Ryu_GiveRevivedFossilEgg(void)
+{
+    u16 species = (VarGet(VAR_TEMP_4));
+    u8 iv = 31;
+    u8 rnd1, rnd2, rnd3;
+    u8 slot = (CalculatePlayerPartyCount() + 1);
+    u8 level = 5;
+    u8 fixedIV = 32;
+    u8 egg = TRUE;
+
+    if (slot == 6)
+    {
+        return 0;
+    }
+
+    do
+    {
+        rnd1 = ((Random() %6) + 39);
+        rnd2 = ((Random() %6) + 39);
+        rnd3 = ((Random() %6) + 39);
+    }while (((rnd1 != rnd2) && (rnd2 != rnd3) && (rnd3 != rnd1)) == FALSE);
+
+    CreateMon(&gPlayerParty[slot], species, level, fixedIV, 0, 0, OT_ID_PLAYER_ID, 0);
+
+    switch (rnd1)
+    {
+        case 39:
+            {
+                SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                break;
+            }
+        case 40:
+            {
+                SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                break;
+            }
+        case 41:
+            {
+                SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                break;
+            }
+        case 42:
+            {
+                SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                break;
+            }
+        case 43:
+            {
+                SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                break;
+            }
+        case 44:
+            {
+                SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                break;
+            }
+    } 
+
+    switch (rnd2)
+    {
+        case 39:
+            {
+                SetMonData(&gPlayerParty[slot], rnd1, &iv);
+                break;
+            }
+        case 40:
+            {
+                SetMonData(&gPlayerParty[slot], rnd2, &iv);
+                break;
+            }
+        case 41:
+            {
+                SetMonData(&gPlayerParty[slot], rnd2, &iv);
+                break;
+            }
+        case 42:
+            {
+                SetMonData(&gPlayerParty[slot], rnd2, &iv);
+                break;
+            }
+        case 43:
+            {
+                SetMonData(&gPlayerParty[slot], rnd2, &iv);
+                break;
+            }
+        case 44:
+            {
+                SetMonData(&gPlayerParty[slot], rnd2, &iv);
+                break;
+            }
+    }  
+
+    switch (rnd3)
+    {
+        case 39:
+            {
+                SetMonData(&gPlayerParty[slot], rnd3, &iv);
+                break;
+            }
+        case 40:
+            {
+                SetMonData(&gPlayerParty[slot], rnd3, &iv);
+                break;
+            }
+        case 41:
+            {
+                SetMonData(&gPlayerParty[slot], rnd3, &iv);
+                break;
+            }
+        case 42:
+            {
+                SetMonData(&gPlayerParty[slot], rnd3, &iv);
+                break;
+            }
+        case 43:
+            {
+                SetMonData(&gPlayerParty[slot], rnd3, &iv);
+                break;
+            }
+        case 44:
+            {
+                SetMonData(&gPlayerParty[slot], rnd3, &iv);
+                break;
+            }
+    }
+
+    //SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &egg);
+    return 1;
+}  
+
