@@ -9,7 +9,7 @@
         {
             "direction": "down",
             "map": "MAP_PACIFIDLOG_TOWN",
-            "offset": 4
+            "offset": 0
         },
         {
             "direction": "up",
