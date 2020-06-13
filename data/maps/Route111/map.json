@@ -152,7 +152,7 @@
         {
             "direction": "right",
             "map": "MAP_ROUTE66",
-            "offset": -4
+            "offset": 0
         }
     ],
     "coord_events": [

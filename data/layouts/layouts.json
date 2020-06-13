@@ -4568,7 +4568,7 @@
             "name": "Route66_Layout",
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Fortree",
-            "width": 48
+            "width": 40
         },
         {
             "blockdata_filepath": "data/layouts/Route114_LanettesHouse_Basement/map.bin",
