@@ -43,7 +43,7 @@
         {
             "direction": "up",
             "map": "MAP_ROUTE135",
-            "offset": -4
+            "offset": 0
         }
     ],
     "coord_events": [

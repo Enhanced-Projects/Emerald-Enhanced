@@ -138,6 +138,7 @@ LCC_NaturalMedicineMarket: @ 8220054
 	.2byte ITEM_ENERGY_POWDER
 	.2byte ITEM_ENERGY_ROOT
 	.2byte ITEM_REVIVAL_HERB
+	.2byte ITEM_NONE
 	release
 	end
 
