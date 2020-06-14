@@ -133,7 +133,7 @@ GC_JIRACHI_ENC::
 	closemessage
 	delay 10
 	waitmoncry
-	setwildbattle SPECIES_JIRACHI, 40, ITEM_PIXIE_PLATE
+	setwildbattle SPECIES_JIRACHI, 40, ITEM_SACHET
 	setflag FLAG_RYU_JIRACHI
 	special BattleSetup_StartLegendaryBattle
 	waitstate

@@ -1483,6 +1483,16 @@ void sub_81AC644(u8 unused)
                         if (ItemIsMail(gSpecialVar_ItemId) == TRUE)
                             gBagMenu->unk824 = 6;
                         break;
+                    case MEDICINE_POCKET:
+                        gBagMenu->unk820 = &gBagMenu->unk824;
+                        gBagMenu->unk828 = 4;
+                        memcpy(&gBagMenu->unk824, &gUnknown_0861402C, 4);
+                        break;
+                    case COLLECTIBLES_POCKET:
+                        gBagMenu->unk820 = &gBagMenu->unk824;
+                        gBagMenu->unk828 = 4;
+                        memcpy(&gBagMenu->unk824, &gUnknown_0861402C, 4);
+                        break;
                     case KEYITEMS_POCKET:
                         gBagMenu->unk820 = &gBagMenu->unk824;
                         gBagMenu->unk828 = 4;

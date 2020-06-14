@@ -11,6 +11,22 @@
             "type": "sign",
             "x": 10,
             "y": 2
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock1",
+            "type": "sign",
+            "x": 4,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock10",
+            "type": "sign",
+            "x": 7,
+            "y": 10
         }
     ],
     "connections": null,

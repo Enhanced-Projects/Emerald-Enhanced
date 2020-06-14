@@ -67,36 +67,36 @@
 
  const struct WildPokemon gLittlerootTown_LandMons[] =
 {
-	{5, 5,SPECIES_CHARMANDER},
-	{5, 5,SPECIES_BULBASAUR},
-	{5, 5,SPECIES_SQUIRTLE},
-	{5, 5,SPECIES_CHIKORITA},
-	{5, 5,SPECIES_CYNDAQUIL},
-	{5, 5,SPECIES_TOTODILE},
-	{5, 5,SPECIES_MUDKIP},
-	{5, 5,SPECIES_TORCHIC},
-	{5, 5,SPECIES_TREECKO},
-	{5, 5,SPECIES_BELDUM},
-	{5, 5,SPECIES_TANGELA},
-	{5, 5,SPECIES_CHANSEY},
+	{5, 5,SPECIES_CHARMANDER},//20%
+	{5, 5,SPECIES_BULBASAUR},//20%
+	{5, 5,SPECIES_SQUIRTLE},//10%
+	{5, 5,SPECIES_CHIKORITA},//10%
+	{5, 5,SPECIES_CYNDAQUIL},//10%
+	{5, 5,SPECIES_TOTODILE},//10%
+	{5, 5,SPECIES_MUDKIP},//5%
+	{5, 5,SPECIES_TORCHIC},//5%
+	{5, 5,SPECIES_TREECKO},//4%
+	{5, 5,SPECIES_BELDUM},//4%
+	{5, 5,SPECIES_TANGELA},//1%
+	{5, 5,SPECIES_CHANSEY},//1%
 };
 
 const struct WildPokemonInfo gLittlerootTown_LandMonsInfo = {20, gLittlerootTown_LandMons};
 
 const struct WildPokemon gRoute101_LandMons[] =
 {
-	{5, 5,SPECIES_STARLY},
-	{5, 5,SPECIES_POOCHYENA},
-	{5, 5,SPECIES_WURMPLE},
-	{5, 5,SPECIES_SEEDOT},
-	{5, 5,SPECIES_POOCHYENA},
-	{5, 5,SPECIES_SEEDOT},
-	{5, 5,SPECIES_WURMPLE},
-	{5, 5,SPECIES_SENTRET},
-	{5, 5,SPECIES_HOPPIP},
-	{5, 5,SPECIES_ZIGZAGOON},
-	{5, 5,SPECIES_SURSKIT},
-	{5, 5,SPECIES_SURSKIT},
+	{5, 5,SPECIES_STARLY},//20%
+	{5, 5,SPECIES_POOCHYENA},//20%
+	{5, 5,SPECIES_WURMPLE},//10%
+	{5, 5,SPECIES_SEEDOT},//10%
+	{5, 5,SPECIES_POOCHYENA},//10%
+	{5, 5,SPECIES_SEEDOT},//10%
+	{5, 5,SPECIES_WURMPLE},//5%
+	{5, 5,SPECIES_SENTRET},//5%
+	{5, 5,SPECIES_HOPPIP},//4%
+	{5, 5,SPECIES_ZIGZAGOON},//4%
+	{5, 5,SPECIES_SURSKIT},//1%
+	{5, 5,SPECIES_SURSKIT},//1%
 };
 
 const struct WildPokemonInfo gRoute101_LandMonsInfo = {20, gRoute101_LandMons};
@@ -728,6 +728,17 @@ const struct WildPokemon gUnderwater2_WaterMons[] =
 
 const struct WildPokemonInfo gUnderwater2_WaterMonsInfo = {4, gUnderwater2_WaterMons};
 
+const struct WildPokemon gUnderwater8_WaterMons[] =
+{
+	{20, 30, SPECIES_CLAMPERL},
+	{20, 30, SPECIES_LANTURN},
+	{30, 35, SPECIES_GOREBYSS},
+	{30, 35, SPECIES_HUNTAIL},
+	{30, 35, SPECIES_HUNTAIL},
+};
+
+const struct WildPokemonInfo gUnderwater8_WaterMonsInfo = {4, gUnderwater8_WaterMons};
+
 const struct WildPokemon gAbandonedShip_Rooms_B1F_WaterMons[] =
 {
 	{5, 35, SPECIES_TENTACOOL},
@@ -1094,7 +1105,7 @@ const struct WildPokemon gRoute119_FishingMons[] =
 	{30, 35, SPECIES_CARVANHA},
 	{20, 25, SPECIES_SHELLOS},
 	{35, 40, SPECIES_SHELLOS},
-	{40, 45, SPECIES_FEEBAS},
+	{40, 45, SPECIES_FEEBAS},//normal encounter, no tile-specific shenanigans
 };
 
 const struct WildPokemonInfo gRoute119_FishingMonsInfo = {30, gRoute119_FishingMons};
@@ -1693,6 +1704,33 @@ const struct WildPokemon gRoute134_FishingMons[] =
 };
 
 const struct WildPokemonInfo gRoute134_FishingMonsInfo = {30, gRoute134_FishingMons};
+
+const struct WildPokemon gRoute135_WaterMons[] =
+{
+	{5, 35, SPECIES_CLAUNCHER},
+	{20, 25, SPECIES_PELIPPER},
+	{15, 25, SPECIES_PELIPPER},
+	{25, 30, SPECIES_CLAWITZER},
+	{25, 30, SPECIES_ARMALDO},
+};
+
+const struct WildPokemonInfo gRoute135_WaterMonsInfo = {4, gRoute135_WaterMons};
+
+const struct WildPokemon gRoute135_FishingMons[] =
+{
+	{15, 20, SPECIES_MAGIKARP},
+	{15, 20, SPECIES_TENTACOOL},
+	{20, 25, SPECIES_MAGIKARP},
+	{20, 25, SPECIES_TENTACOOL},
+	{20, 25, SPECIES_WAILMER},
+	{30, 35, SPECIES_SHARPEDO},
+	{30, 35, SPECIES_WAILMER},
+	{25, 30, SPECIES_HORSEA},
+	{35, 40, SPECIES_GYARADOS},
+	{40, 45, SPECIES_MILOTIC},
+};
+
+const struct WildPokemonInfo gRoute135_FishingMonsInfo = {30, gRoute135_FishingMons};
 
 const struct WildPokemon gAbandonedShip_HiddenFloorCorridors_WaterMons[] =
 {
@@ -3027,71 +3065,71 @@ const struct WildPokemonInfo gMagmaHideout_2F_3R_LandMonsInfo = {10, gMagmaHideo
 
 const struct WildPokemon gMirageTower_1F_LandMons[] =
 {
-	{21, 21, SPECIES_SANDSHREW},
+	{21, 21, SPECIES_ONIX},
 	{21, 21, SPECIES_TRAPINCH},
 	{20, 20, SPECIES_SANDSHREW},
 	{20, 20, SPECIES_TRAPINCH},
-	{20, 20, SPECIES_SANDSHREW},
-	{20, 20, SPECIES_TYRUNT},
-	{22, 22, SPECIES_TYRUNT},
-	{22, 22, SPECIES_CRANIDOS},
+	{33, 33, SPECIES_DIGLETT},
+	{33, 33, SPECIES_DIGLETT},
+	{33, 33, SPECIES_BALTOY},
+	{33, 33, SPECIES_SANDSLASH},
+	{33, 33, SPECIES_DUGTRIO},
+	{33, 33, SPECIES_KROKOROK},
+	{33, 33, SPECIES_KABUTOPS},
 	{33, 33, SPECIES_OMASTAR},
-	{33, 33, SPECIES_KABUTO},
-	{33, 33, SPECIES_LILEEP},
-	{33, 33, SPECIES_ANORITH},
 };
 
 const struct WildPokemonInfo gMirageTower_1F_LandMonsInfo = {10, gMirageTower_1F_LandMons};
 
 const struct WildPokemon gMirageTower_2F_LandMons[] =
 {
-	{21, 21, SPECIES_SANDSHREW},
+	{21, 21, SPECIES_GOLETT},
 	{21, 21, SPECIES_TRAPINCH},
 	{20, 20, SPECIES_SANDSHREW},
 	{20, 20, SPECIES_TRAPINCH},
-	{33, 33, SPECIES_OMASTAR},
-	{33, 33, SPECIES_KABUTO},
-	{33, 33, SPECIES_LILEEP},
-	{33, 33, SPECIES_SHIELDON},
-	{33, 33, SPECIES_OMASTAR},
-	{33, 33, SPECIES_KABUTO},
-	{33, 33, SPECIES_LILEEP},
-	{33, 33, SPECIES_ANORITH},
+	{33, 33, SPECIES_DIGLETT},
+	{33, 33, SPECIES_DIGLETT},
+	{33, 33, SPECIES_BALTOY},
+	{33, 33, SPECIES_SANDSLASH},
+	{33, 33, SPECIES_DUGTRIO},
+	{33, 33, SPECIES_GRAVELER},
+	{33, 33, SPECIES_CRADILY},
+	{33, 33, SPECIES_BASTIODON},
 };
 
 const struct WildPokemonInfo gMirageTower_2F_LandMonsInfo = {10, gMirageTower_2F_LandMons};
 
 const struct WildPokemon gMirageTower_3F_LandMons[] =
 {
-	{21, 21, SPECIES_SANDSHREW},
+	{21, 21, SPECIES_LARVITAR},
 	{21, 21, SPECIES_TRAPINCH},
 	{20, 20, SPECIES_SANDSHREW},
 	{20, 20, SPECIES_TRAPINCH},
-	{33, 33, SPECIES_OMASTAR},
-	{33, 33, SPECIES_KABUTO},
-	{33, 33, SPECIES_LILEEP},
-	{33, 33, SPECIES_ANORITH},
-	{33, 33, SPECIES_OMASTAR},
-	{33, 33, SPECIES_KABUTO},
-	{33, 33, SPECIES_LILEEP},
-	{33, 33, SPECIES_ANORITH},
+	{33, 33, SPECIES_DIGLETT},
+	{33, 33, SPECIES_DIGLETT},
+	{33, 33, SPECIES_BALTOY},
+	{33, 33, SPECIES_SANDSLASH},
+	{33, 33, SPECIES_DUGTRIO},
+	{33, 33, SPECIES_PUPITAR},
+	{33, 33, SPECIES_RAMPARDOS},
+	{33, 33, SPECIES_TYRANTRUM},
 };
 
 const struct WildPokemonInfo gMirageTower_3F_LandMonsInfo = {10, gMirageTower_3F_LandMons};
 
 const struct WildPokemon gMirageTower_4F_LandMons[] =
 {
-	{21, 21, SPECIES_SANDSHREW},
+	{21, 21, SPECIES_GLIGAR},
 	{21, 21, SPECIES_TRAPINCH},
 	{20, 20, SPECIES_SANDSHREW},
 	{20, 20, SPECIES_TRAPINCH},
-	{20, 20, SPECIES_SANDSHREW},
-	{20, 20, SPECIES_TRAPINCH},
-	{22, 22, SPECIES_SANDSHREW},
-	{22, 22, SPECIES_TRAPINCH},
-	{33, 33, SPECIES_SANDSHREW},
-	{33, 33, SPECIES_ARCHEN},
-	{33, 33, SPECIES_AERODACTYL},
+	{33, 33, SPECIES_DIGLETT},
+	{33, 33, SPECIES_DIGLETT},
+	{33, 33, SPECIES_BALTOY},
+	{33, 33, SPECIES_SANDSLASH},
+	{33, 33, SPECIES_DUGTRIO},
+	{33, 33, SPECIES_BOLDORE},
+	{33, 33, SPECIES_ARCHEOPS},
 	{33, 33, SPECIES_AERODACTYL},
 };
 
@@ -3336,12 +3374,12 @@ const struct WildPokemonInfo gMeteorFalls_StevensCave_LandMonsInfo = {10, gMeteo
 {
 	{55, 65,SPECIES_GRAVELER},
 	{55, 65,SPECIES_PUPITAR},
-	{55, 65,SPECIES_ANORITH},
+	{55, 65,SPECIES_HIPPOPOTAS},
 	{55, 64,SPECIES_ONIX},
 	{55, 64,SPECIES_SCIZOR},
 	{55, 65,SPECIES_GOLBAT},
 	{55, 65,SPECIES_SANDILE},
-	{55, 65,SPECIES_NOCTOWL},
+	{55, 65,SPECIES_LAIRON},
 	{55, 65,SPECIES_DUGTRIO},
 	{55, 65,SPECIES_AGGRON},
 	{55, 65,SPECIES_KROKOROK},
@@ -3354,7 +3392,7 @@ const struct WildPokemonInfo gDesertTomb1f_LandMonsInfo = {20, gDesertTomb1f_Lan
 const struct WildPokemon gDesertTomb2f_LandMons[] =
 {
 	{55, 65,SPECIES_ONIX},
-	{55, 65,SPECIES_ANORITH},
+	{55, 65,SPECIES_MUDSDALE},
 	{55, 65,SPECIES_DUGTRIO},
 	{55, 64,SPECIES_MAWILE},
 	{55, 64,SPECIES_MAMOSWINE},
@@ -3376,12 +3414,12 @@ const struct WildPokemon gDesertTombCore_LandMons[] =
 	{55, 65,SPECIES_ONIX},
 	{55, 65,SPECIES_ONIX},
 	{55, 65,SPECIES_DURANT},
-	{55, 64,SPECIES_OMANYTE},
+	{55, 64,SPECIES_SANDSLASH},
 	{55, 64,SPECIES_VIBRAVA},
 	{55, 65,SPECIES_GOLEM},
 	{55, 65,SPECIES_GOLBAT},
 	{55, 65,SPECIES_SUDOWOODO},
-	{55, 65,SPECIES_LILEEP},
+	{55, 65,SPECIES_LUNATONE},
 	{55, 65,SPECIES_BANETTE},
 	{55, 65,SPECIES_MISMAGIUS},
 	{55, 65,SPECIES_TERRAKION},
@@ -3608,6 +3646,14 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.mapNum = MAP_NUM(UNDERWATER2),
 		.landMonsInfo = NULL,
 		.waterMonsInfo = &gUnderwater2_WaterMonsInfo,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = NULL,
+	},
+	{
+		.mapGroup = MAP_GROUP(UNDERWATER8),
+		.mapNum = MAP_NUM(UNDERWATER8),
+		.landMonsInfo = NULL,
+		.waterMonsInfo = &gUnderwater8_WaterMonsInfo,
 		.rockSmashMonsInfo = NULL,
 		.fishingMonsInfo = NULL,
 	},
@@ -3882,6 +3928,14 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.waterMonsInfo = &gRoute134_WaterMonsInfo,
 		.rockSmashMonsInfo = NULL,
 		.fishingMonsInfo = &gRoute134_FishingMonsInfo,
+	},
+	{
+		.mapGroup = MAP_GROUP(ROUTE135),
+		.mapNum = MAP_NUM(ROUTE135),
+		.landMonsInfo = NULL,
+		.waterMonsInfo = &gRoute135_WaterMonsInfo,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = &gRoute135_FishingMonsInfo,
 	},
 	{
 		.mapGroup = MAP_GROUP(ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS),

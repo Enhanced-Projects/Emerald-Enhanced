@@ -4,6 +4,30 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock1",
+            "type": "sign",
+            "x": 4,
+            "y": 4
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock2",
+            "type": "sign",
+            "x": 7,
+            "y": 3
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock3",
+            "type": "sign",
+            "x": 10,
+            "y": 4
+        }
     ],
     "connections": null,
     "coord_events": [
@@ -24,7 +48,7 @@
             "script": "ScorchedSlab_EventScript_ItemTM11",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 7,
+            "x": 6,
             "y": 5
         },
         {
@@ -37,8 +61,8 @@
             "script": "SS_CHY",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 7,
-            "y": 3
+            "x": 8,
+            "y": 5
         }
     ],
     "region_map_section": "MAPSEC_SCORCHED_SLAB",

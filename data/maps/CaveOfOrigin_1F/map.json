@@ -27,11 +27,18 @@
             "y": 17
         },
         {
-            "dest_map": "MAP_CAVE_OF_ORIGIN_B1F",
+            "dest_map": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP1",
             "dest_warp_id": 0,
             "elevation": 3,
             "x": 14,
             "y": 5
+        },
+        {
+            "dest_map": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP3",
+            "dest_warp_id": 1,
+            "elevation": 3,
+            "x": 8,
+            "y": 6
         }
     ],
     "weather": "WEATHER_NONE"

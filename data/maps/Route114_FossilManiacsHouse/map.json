@@ -49,7 +49,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_3",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -79,8 +79,8 @@
             "y": 7
         },
         {
-            "dest_map": "MAP_ROUTE114_FOSSIL_MANIACS_TUNNEL",
-            "dest_warp_id": 0,
+            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
+            "dest_warp_id": 1,
             "elevation": 0,
             "x": 4,
             "y": 1

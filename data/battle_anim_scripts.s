@@ -4491,7 +4491,7 @@ Move_WIDE_GUARD:
 	
 Move_GUARD_SPLIT::
 	loadspritegfx ANIM_TAG_BLUEGREEN_ORB
-	createsprite AnimTask_BlendBattleAnimPal, ANIM_ATTACKER, 10, ANIM_PAL_BG, 0x1, 0x0, 0xC, 0x0
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, ANIM_PAL_BG, 0x1, 0x0, 0xC, 0x0
 	loopsewithpan SE_W199, SOUND_PAN_ATTACKER, 0x18, 0x3
 	call GuardSplitLaunch
 	call GuardSplitLaunch
@@ -4504,7 +4504,7 @@ Move_GUARD_SPLIT::
 	call GuardSplitLaunch
 	call GuardSplitLaunch
 	waitforvisualfinish
-	createsprite AnimTask_BlendBattleAnimPal, ANIM_ATTACKER 10, ANIM_PAL_BG, 0x1, 0xC, 0x0, 0x0
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, ANIM_PAL_BG, 0x1, 0xC, 0x0, 0x0
 	waitforvisualfinish
 	end
 GuardSplitLaunch:
@@ -6217,7 +6217,7 @@ Move_DRILL_RUN:
 	waitforvisualfinish
 	delay 0x2
 	launchtemplate gBowMonSpriteTemplate 0x2 0x1 0x1
-	launchtemplate gHealingBlueStarSpriteTemplate 0x84 0x3 0x0 0x0 0xc
+	launchtemplate gHornHitSpriteTemplate 0x84 0x3 0x0 0x0 0xc
 	waitforvisualfinish
 	playse 0x14
 	launchtask AnimTask_ShakeMonInPlace 0x2 0x5 0x0 0x2 0x0 0x28 0x1
@@ -7314,9 +7314,9 @@ Move_GLACIATE:
 	launchtemplate gGlaciateSmokeTemplate 0x84 0x5 0x0 0x12 0x50 0x0 0x4b
 	launchtemplate gGlaciateSmokeTemplate 0x84 0x5 0x0 0x12 0x48 0x1 0x4b
 	waitforvisualfinish
-	createsprite AnimTask_BlendBattleAnimPal, ANIM_ATTACKER, 0xA, (ANIM_PAL_DEF | ANIM_PAL_DEF_PARTNER), 0x2, 0x0, 0xA, 0x7FFF
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, (ANIM_PAL_DEF | ANIM_PAL_DEF_PARTNER), 0x2, 0x0, 0xA, 0x7FFF
 	call IceCrystalEffectLong
-	createsprite AnimTask_BlendBattleAnimPal, ANIM_ATTACKER, 0xA, (ANIM_PAL_DEF | ANIM_PAL_DEF_PARTNER), 0x2, 0xA, 0x0, 0x7FFF
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, (ANIM_PAL_DEF | ANIM_PAL_DEF_PARTNER), 0x2, 0xA, 0x0, 0x7FFF
 	waitforvisualfinish
 	blendoff
 	clearmonbg ANIM_DEF_PARTNER
@@ -13291,7 +13291,7 @@ Move_BOLT_BEAK::
 	launchtask AnimTask_BlendColorCycle 0x2 0x6 0x3 0xffe1 0x1 0x0 0x0 0x5bff 
 	launchtemplate gHorizontalLungeSpriteTemplate 0x2 0x2 0x4 0x4 
 	delay 0x4 
-	launchtemplate gHealingBlueStarSpriteTemplate 0x84 0x3 0x8 0x8 0xa 
+	launchtemplate gHornHitSpriteTemplate 0x84 0x3 0x8 0x8 0xa 
 	waitforvisualfinish 
 	launchtemplate gFlashingHitSplatSpriteTemplate 0x83 0x4 0x0 0x0 0x1 0x1 
 	playsewithpan SE_W030, SOUND_PAN_TARGET
@@ -14752,7 +14752,7 @@ Move_HIDDEN_POWER:
     jumpargeq 0, TYPE_ELECTRIC,             Move_THUNDER_SHOCK
     jumpargeq 0, TYPE_PSYCHIC,              Move_PSYCHIC
     jumpargeq 0, TYPE_DRAGON,               Move_DRAGON_PULSE
-    jumpargeq 0, TYPE_FAIRY,                Move_SWIFT
+    jumpargeq 0, TYPE_FAIRY,                Move_FAIRY_WIND
     goto Move_HYPER_VOICE
 
 Move_REVERSAL:

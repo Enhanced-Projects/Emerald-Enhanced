@@ -809,10 +809,10 @@ lcc_dawn_declined::
 	msgbox lcc_dawnLeave MSGBOX_DEFAULT
 	dofieldeffect 30
 	delay 15
-	removeobject VAR_LAST_TALKED
 	waitfieldeffect 30
 	savebgm MUS_DUMMY
 	fadedefaultbgm
+	removeobject 17
 	setflag FLAG_MET_RIVAL_LILYCOVE
 	setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
 	closemessage

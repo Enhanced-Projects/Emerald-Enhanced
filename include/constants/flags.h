@@ -1293,7 +1293,7 @@
 #define FLAG_HAS_ACRO_BIKE                                          0x4D2 // Unused Flag
 #define FLAG_HAS_MACH_BIKE                                          0x4D3 // Unused Flag
 #define FLAG_RYU_SUB_ROOM_SHELLY                                    0x4D4 // Unused Flag
-#define FLAG_RYU_DU_TYRANITARITE                                    0x4D5 // Unused Flag
+#define FLAG_RYU_TYRANITARITE                                       0x4D5 // Unused Flag
 #define FLAG_RYU_DTC_STEELIXITE                                     0x4D6 // Unused Flag
 #define FLAG_RYU_FORCE_TUCKER                                       0x4D7 // Unused Flag
 #define FLAG_RYU_LANA_SLATEPORT                                     0x4D8 // Unused Flag
@@ -1311,10 +1311,10 @@
 #define FLAG_RYU_HERACRONITE                                        0x4E4 // Unused Flag
 #define FLAG_RYU_BEEDRILLITE                                        0x4E5 // Unused Flag
 #define FLAG_RYU_BLASTOISINITE                                      0x4E6 // Unused Flag
-#define FLAG_UNUSED_0x4E7                                           0x4E7 // Unused Flag
-#define FLAG_UNUSED_0x4E8                                           0x4E8 // Unused Flag
-#define FLAG_UNUSED_0x4E9                                           0x4E9 // Unused Flag
-#define FLAG_UNUSED_0x4EA                                           0x4EA // Unused Flag
+#define FLAG_HILL_REWARD_RECIEVED                                   0x4E7 // Unused Flag
+#define FLAG_RYU_MANAPHY                                            0x4E8 // Unused Flag
+#define FLAG_RYU_RECEIVED_PHIONE_EGG                                0x4E9 // Unused Flag
+#define FLAG_RYU_HIDE_MANAPHY                                       0x4EA // Unused Flag
 #define FLAG_UNUSED_0x4EB                                           0x4EB // Unused Flag
 #define FLAG_UNUSED_0x4EC                                           0x4EC // Unused Flag
 #define FLAG_UNUSED_0x4ED                                           0x4ED // Unused Flag

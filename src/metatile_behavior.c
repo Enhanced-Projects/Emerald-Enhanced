@@ -969,6 +969,7 @@ bool8 MetatileBehavior_IsDiveable(u8 metatileBehavior)
 bool8 MetatileBehavior_IsUnableToEmerge(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_NO_SURFACING
+     || metatileBehavior == MB_WATER_SOUTH_ARROW_WARP
      || metatileBehavior == MB_SEAWEED_NO_SURFACING)
         return TRUE;
     else

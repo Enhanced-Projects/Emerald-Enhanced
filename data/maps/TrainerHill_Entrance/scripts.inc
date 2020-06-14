@@ -192,7 +192,7 @@ TrainerHill_Enter::
 	playse SE_TK_KASYA
 	trainerhill_start
 	waitse
-	warpsilent MAP_TRAINER_HILL_1F, 255, 2, 4
+	warpsilent MAP_TRAINER_HILL_1F, 255, 2, 5
 	releaseall
 	end
 	
@@ -253,7 +253,6 @@ TrainerHill_Entrance_Movement_FaceUp: @ 8268383
 	step_end
 
 TrainerHill_Entrance_Movement_PlayerExitElevator: @ 8268385
-	walk_down
 	walk_down
 	step_end
 
@@ -339,8 +338,8 @@ TrainerHill_Entrance_Text_StillGettingReady: @ 8268430
 	.string "This is the Trainer Hill where\n"
 	.string "you may enjoy battles with many\l"
 	.string "powerful trainers.\p"
-	.string "Unfortunately, we're still getting\n"
-	.string "things ready. Please come back later!$"
+	.string "Unfortunately, we're closed while\n"
+	.string "new management sets up.$"
 
 TrainerHill_Entrance_Text_WelcomeToTrainerHill: @ 82684C6
 	.string "Welcome!\p"
@@ -368,7 +367,7 @@ TrainerHill_Entrance_Text_LikeToChallengeTrainers: @ 82685F8
 
 TrainerHill_Entrance_Text_TimeProgessGetSetGo: @ 826862A
 	.string "If you wish to quit, you can take\n"
-	.string "the middle door in each room.$"
+	.string "the elevator in each room.$"
 
 TrainerHill_Entrance_Text_PleaseVisitUsAgain: @ 826866F
 	.string "Please do visit us again!$"

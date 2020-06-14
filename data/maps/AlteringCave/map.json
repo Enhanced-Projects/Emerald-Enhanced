@@ -1,42 +1,76 @@
 {
-  "id": "MAP_ALTERING_CAVE",
-  "name": "AlteringCave",
-  "layout": "LAYOUT_ALTERING_CAVE",
-  "music": "MUS_RG_NANADUNGEON",
-  "region_map_section": "MAPSEC_ALTERING_CAVE",
-  "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_UNDERGROUND",
-  "allow_bike": true,
-  "allow_escape_rope": true,
-  "allow_running": true,
-  "show_map_name": true,
-  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
-  "object_events": [
-    {
-        "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
-        "x": 6,
-        "y": 4,
-        "elevation": 3,
-        "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-        "movement_range_x": 0,
-        "movement_range_y": 0,
-        "trainer_type": "0",
-        "trainer_sight_or_berry_tree_id": "0",
-        "script": "AS_RegigigasEncounter",
-        "flag": "0"
-    }
-  ],
-  "warp_events": [
-    {
-      "x": 18,
-      "y": 22,
-      "elevation": 0,
-      "dest_map": "MAP_ROUTE103",
-      "dest_warp_id": 0
-    }
-  ],
-  "coord_events": [],
-  "bg_events": []
+    "allow_bike": true,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock2",
+            "type": "sign",
+            "x": 20,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock1",
+            "type": "sign",
+            "x": 5,
+            "y": 10
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock3",
+            "type": "sign",
+            "x": 8,
+            "y": 2
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock4",
+            "type": "sign",
+            "x": 4,
+            "y": 3
+        }
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_ALTERING_CAVE",
+    "layout": "LAYOUT_ALTERING_CAVE",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "music": "MUS_RG_NANADUNGEON",
+    "name": "AlteringCave",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "AS_RegigigasEncounter",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 6,
+            "y": 4
+        }
+    ],
+    "region_map_section": "MAPSEC_ALTERING_CAVE",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_ROUTE103",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 18,
+            "y": 22
+        }
+    ],
+    "weather": "WEATHER_NONE"
 }

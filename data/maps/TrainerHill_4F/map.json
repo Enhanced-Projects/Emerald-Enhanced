@@ -4,6 +4,14 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrainerHill_4F_EventScript_Heal",
+            "type": "sign",
+            "x": 0,
+            "y": 2
+        }
     ],
     "connections": null,
     "coord_events": [

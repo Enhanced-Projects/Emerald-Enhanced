@@ -339,6 +339,36 @@ static const u8 sGreenShardDesc[] = _(
     "ancient item. Can\n"
     "be sold cheaply.");
 
+static const u8 sGemOreDesc[] = _(
+    "An ore containing\n"
+    "gem fragments.\n"
+    "Needs Refined.");
+
+static const u8 sCopperOreDesc[] = _(
+    "An ore containing\n"
+    "raw copper.\n"
+    "Sells cheaply.");
+
+static const u8 sSilverOreDesc[] = _(
+    "An ore containing\n"
+    "raw silver.\n"
+    "Sells decently.");
+
+static const u8 sGoldOreDesc[] = _(
+    "An ore containing\n"
+    "raw gold.\n"
+    "Sells high.");
+
+static const u8 sFossilOreDesc[] = _(
+    "An ore that might\n"
+    "contain fossils.\n"
+    "Needs Refined.");
+
+static const u8 sShardOreDesc[] = _(
+    "An ore that has\n"
+    "shards inside.\n"
+    "Needs Refined.");
+
 // Vitamins
 static const u8 sHPUpDesc[] = _(
     "Raises the HP\n"
@@ -1154,9 +1184,9 @@ static const u8 sWhippedDreamDesc[] = _(
     "Pokémon.");
 
 static const u8 sSachetDesc[] = _(
-    "A sachet filled with\n"
-    "perfumes loved by\n"
-    "some Pokémon.");
+    "A hold item that\n"
+    "raises the power of\n"
+    "Fairy-type moves.");
 
 static const u8 sLightBallDesc[] = _(
     "A hold item that\n"

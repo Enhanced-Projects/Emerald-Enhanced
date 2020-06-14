@@ -19,6 +19,30 @@
             "type": "hidden_item",
             "x": 7,
             "y": 29
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock3",
+            "type": "sign",
+            "x": 8,
+            "y": 24
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock2",
+            "type": "sign",
+            "x": 8,
+            "y": 15
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock1",
+            "type": "sign",
+            "x": 21,
+            "y": 10
         }
     ],
     "connections": null,

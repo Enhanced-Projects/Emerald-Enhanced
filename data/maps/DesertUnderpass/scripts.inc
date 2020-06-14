@@ -28,7 +28,7 @@ DesertUnderpass_EventScript_GiveRootFossil:: @ 823AF68
 	
 DU_Tyranitarite::
 	finditem ITEM_TYRANITARITE
-	setflag FLAG_RYU_DU_TYRANITARITE
+	setflag FLAG_RYU_TYRANITARITE
 	release
 	end
 

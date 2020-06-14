@@ -663,7 +663,7 @@ MtPyre_Summit_Text_SuperAncientPokemonTaughtUs: @ 8232D1E
 	.string "taught us that…$"
 
 MtPyre_Summit_Text_WillYouHearOutMyTale: @ 8232E0C
-	.string "MT. PYRE is where we calm the spirits\n"
+	.string "Mt. Pyre is where we calm the spirits\n"
 	.string "of Pokémon that have passed on…\p"
 	.string "This is a high place where one can\n"
 	.string "see all of Hoenn…\p"

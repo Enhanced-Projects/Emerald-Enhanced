@@ -912,8 +912,6 @@ static bool8 HandleStartMenuInput(void)
     {
         PlaySE(SE_SELECT);
         sStartMenuCursorPos = Menu_MoveCursor(1);
-        //gSaveBlock1Ptr->test1++;
-        //mgba_printf(MGBA_LOG_DEBUG, "test1 = %d", gSaveBlock1Ptr->test1);
     }
 
     if (gMain.newKeys & DPAD_LEFT)

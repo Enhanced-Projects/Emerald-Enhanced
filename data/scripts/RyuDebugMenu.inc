@@ -141,13 +141,13 @@ EGC_CLEARGAMECLEARFLAG::
 	end
 
 RyuDebug_waystone::
-	additem ITEM_NUGGET, 1
+	additem ITEM_WAYSTONE, 1
 	goto RyuDebug_menu_nodevcheck
 	releaseall
 	end
 
 RyuDebug_enableWaystone::
-	additem ITEM_NUGGET, 1
+	additem ITEM_WAYSTONE, 1
     setflag FLAG_VISITED_LITTLEROOT_TOWN
     setflag FLAG_VISITED_OLDALE_TOWN
     setflag FLAG_VISITED_DEWFORD_TOWN
@@ -180,15 +180,15 @@ RyuDebug_ViewTempVars::
 	end
 
 RDB_CTVMsg:
-	.string "{STR_VAR_1}$"
+	.string "SaveBlock1 is {STR_VAR_1} bytes long.$"
 
 RyuDebug_Utility1::
-	getplayerxy VAR_TEMP_5, VAR_TEMP_6
-	addvar VAR_TEMP_5, 1
-	setmetatile VAR_TEMP_5, VAR_TEMP_6, 654, 0
-	special DrawWholeMapView
+	setvar VAR_RYU_PLAYER_MINING_SKILL, 3
 	release
 	end
+
+Ryu_MiningMapInfo:
+	.string "Mining Locations$"
 
 	@goto RDB_GiveRandomFrontierMons
 
@@ -349,25 +349,29 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
-    givemon SPECIES_NAGANADEL, 125, ITEM_EXPERT_BELT
-	givemon SPECIES_ZERAORA, 125, ITEM_BLACK_BELT
+    givemon SPECIES_MAGEARNA, 125, ITEM_EXPERT_BELT
+	givemon SPECIES_MUDSDALE, 125, ITEM_LIFE_ORB
 	setmonmove 1, 0, MOVE_CLOSE_COMBAT
-	setmonmove 1, 1, MOVE_WILD_CHARGE
+	setmonmove 1, 1, MOVE_ROCK_SLIDE
 	setmonmove 1, 2, MOVE_EXTREME_SPEED
-	setmonmove 1, 3, MOVE_ICE_PUNCH
+	setmonmove 1, 3, MOVE_EARTHQUAKE
 	setmonmove 0, 0, MOVE_SLUDGE_BOMB
-	setmonmove 0, 1, MOVE_DRAGON_PULSE
+	setmonmove 0, 1, MOVE_MOONBLAST
 	setmonmove 0, 2, MOVE_THUNDERBOLT
-	setmonmove 0, 3, MOVE_ICE_BEAM
+	setmonmove 0, 3, MOVE_MIRROR_SHOT
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 1
 	special RyuSetEVATK
 	special RyuSetEVSPE
+	special RyuSetEVSPDEF
+	special RyuSetEVDEF
 	setvar VAR_TEMP_2, 2
 	special RyuSetEVSPATK
 	special RyuSetEVHP
+	special RyuSetEVSPDEF
+	special RyuSetEVDEF
 	special RyuSetIVs
-	additem ITEM_NUGGET 1
+	additem ITEM_WAYSTONE 1
     setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV

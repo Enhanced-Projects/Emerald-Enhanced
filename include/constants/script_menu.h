@@ -156,6 +156,9 @@
 #define MULTI_LANETTE_ROTOM_DIALOG         145
 #define MULTI_OW_REPEL_DLG                 146
 #define MULTI_DEV_GIVE_MON_ABILITY         147
+#define MULTI_RLS_GEMSTONEQUALITYMENU      148
+#define MULTI_SHARD_EXCHANGE               149
+#define MULTI_FOSSIL_REVIVER               150
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0
@@ -198,5 +201,7 @@
 #define STDSTRING_BATTLE_ARENA     27
 #define STDSTRING_BATTLE_PIKE      28
 #define STDSTRING_BATTLE_PYRAMID   29
+#define STDSTRING_MEDICINES        30
+#define STDSTRING_COLLECTIBLES     31
 
 #endif //GUARD_SCRIPT_MENU_CONSTANTS_H

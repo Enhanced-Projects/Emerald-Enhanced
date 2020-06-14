@@ -34,17 +34,11 @@ BallChangerQuery:
 
 	.align 2
 LCC_EvoItemMart: @ 821FFC0
-	.2byte ITEM_SUN_STONE
-	.2byte ITEM_MOON_STONE
-	.2byte ITEM_FIRE_STONE
-	.2byte ITEM_THUNDER_STONE
-	.2byte ITEM_WATER_STONE
 	.2byte ITEM_LEAF_STONE
-	.2byte ITEM_DAWN_STONE
-	.2byte ITEM_DUSK_STONE
-	.2byte ITEM_SHINY_STONE
+	.2byte ITEM_FIRE_STONE
+	.2byte ITEM_WATER_STONE
+	.2byte ITEM_THUNDER_STONE
 	.2byte ITEM_DRAGON_SCALE
-	.2byte ITEM_KINGS_ROCK
 	.2byte ITEM_METAL_COAT
 	.2byte ITEM_PROTECTOR
 	.2byte ITEM_ELECTIRIZER
@@ -98,7 +92,7 @@ LilycoveCity_DepartmentStore_5F_EventScript_ClerkMidRight:: @ 822000A
 LCC_BattleItemMart: @ 8220024
 	.2byte ITEM_CHOICE_BAND
 	.2byte ITEM_CHOICE_SPECS
-        .2byte ITEM_CHOICE_SCARF
+    .2byte ITEM_CHOICE_SCARF
 	.2byte ITEM_LIFE_ORB
 	.2byte ITEM_EXPERT_BELT
 	.2byte ITEM_WEAKNESS_POLICY
@@ -128,21 +122,22 @@ LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarRight:: @ 822003A
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemart LCC_ShardItemMarket
+	pokemart LCC_NaturalMedicineMarket
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 
 	.align 2
-LCC_ShardItemMarket: @ 8220054
+LCC_NaturalMedicineMarket: @ 8220054
 	.2byte ITEM_BERRY_JUICE
 	.2byte ITEM_SWEET_HEART
 	.2byte ITEM_BIG_MALASADA
 	.2byte ITEM_OLD_GATEAU
-	.2byte ITEM_RED_SHARD
-	.2byte ITEM_BLUE_SHARD
-	.2byte ITEM_YELLOW_SHARD
-	.2byte ITEM_GREEN_SHARD
+	.2byte ITEM_MOOMOO_MILK
+	.2byte ITEM_HEAL_POWDER
+	.2byte ITEM_ENERGY_POWDER
+	.2byte ITEM_ENERGY_ROOT
+	.2byte ITEM_REVIVAL_HERB
 	.2byte ITEM_NONE
 	release
 	end
@@ -304,5 +299,5 @@ LCC_BATTLE_ITEM_MSG:
 
 LCC_EVO_STORE_MSG:
         .string "Hello and welcome to Darwin's market!\n"
-	.string "All evolution needs can be found here!$"
+	.string "Evolution needs can be found here!$"
 

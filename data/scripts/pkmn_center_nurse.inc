@@ -31,6 +31,7 @@ EventScript_PkmnCenterNurse_HealPkmn:: @ 827195A
     call_if_eq EventScript_PkmnCenterNurse_IllTakeYourPkmn2
     waitmessage
     call EventScript_PkmnCenterNurse_TakeAndHealPkmn
+    releaseall
     end
 
 PkmnCenterNurse_MegaAudinite::

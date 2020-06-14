@@ -24,6 +24,7 @@ TrainerHill_Elevator_EventScript_EnterElevator:: @ 8269375
 	waitmovement 0
 	lockall
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	clearflag FLAG_HILL_REWARD_RECIEVED
 	trainerhill_lost
 	msgbox TrainerHill_Elevator_Text_ReturnToReception
 	releaseall

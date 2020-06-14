@@ -832,7 +832,11 @@
 	.byte \b
 	.endm
 
-	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made. Lists of options are predefined (sMultichoiceLists) and the one to be used is specified with list. The default argument determines the initial position of the cursor when the box is first opened; it is zero-indexed, and if it is too large, it is treated as 0x00. If b is set to a non-zero value, then the user will not be allowed to back out of the multichoice with the B button.
+	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until
+	@ a selection is made. Lists of options are predefined (sMultichoiceLists) and the one to be used is
+	@ specified with list. The default argument determines the initial position of the cursor when the box 
+	@ is first opened; it is zero-indexed, and if it is too large, it is treated as 0x00. If b is set to a non-zero value, 
+	@ then the user will not be allowed to back out of the multichoice with the B button.
 	.macro multichoicedefault x:req, y:req, list:req, default:req, b:req
 	.byte 0x70
 	.byte \x
@@ -1665,6 +1669,10 @@
 	.macro messageoneline text:req
 	.byte 0xf3
 	.4byte \text
+	.endm
+
+	.macro dominingcheck
+	.byte 0xf4
 	.endm
 
 @ Supplementary

@@ -169,10 +169,23 @@ const u32 gItemIcon_ShoalShell[] = INCBIN_U32("graphics/items/icons/shoal_shell.
 const u32 gItemIconPalette_Shell[] = INCBIN_U32("graphics/items/icon_palettes/shell.gbapal.lz");
 
 const u32 gItemIcon_Shard[] = INCBIN_U32("graphics/items/icons/shard.4bpp.lz");
+const u32 gItemIcon_ShardOre[] = INCBIN_U32("graphics/items/icons/shard_ore.4bpp.lz");
+const u32 gItemIconPalette_ShardOre[] = INCBIN_U32("graphics/items/icon_palettes/shard_ore.gbapal.lz");
+const u32 gItemIcon_MetalOre[] = INCBIN_U32("graphics/items/icons/metal_ore.4bpp.lz");
+const u32 gItemIconPalette_GoldOre[] = INCBIN_U32("graphics/items/icon_palettes/gold_ore.gbapal.lz");
+const u32 gItemIconPalette_SilverOre[] = INCBIN_U32("graphics/items/icon_palettes/silver_ore.gbapal.lz");
+const u32 gItemIconPalette_CopperOre[] = INCBIN_U32("graphics/items/icon_palettes/copper_ore.gbapal.lz");
 const u32 gItemIconPalette_RedShard[] = INCBIN_U32("graphics/items/icon_palettes/red_shard.gbapal.lz");
 const u32 gItemIconPalette_BlueShard[] = INCBIN_U32("graphics/items/icon_palettes/blue_shard.gbapal.lz");
 const u32 gItemIconPalette_YellowShard[] = INCBIN_U32("graphics/items/icon_palettes/yellow_shard.gbapal.lz");
 const u32 gItemIconPalette_GreenShard[] = INCBIN_U32("graphics/items/icon_palettes/green_shard.gbapal.lz");
+const u32 gItemIconPalette_LightShard[] = INCBIN_U32("graphics/items/icon_palettes/light_shard.gbapal.lz");
+const u32 gItemIconPalette_DarkShard[] = INCBIN_U32("graphics/items/icon_palettes/dark_shard.gbapal.lz");
+const u32 gItemIconPalette_GlossyShard[] = INCBIN_U32("graphics/items/icon_palettes/glossy_shard.gbapal.lz");
+const u32 gItemIconPalette_CyanShard[] = INCBIN_U32("graphics/items/icon_palettes/cyan_shard.gbapal.lz");
+const u32 gItemIconPalette_GoldShard[] = INCBIN_U32("graphics/items/icon_palettes/gold_shard.gbapal.lz");
+const u32 gItemIconPalette_GrayShard[] = INCBIN_U32("graphics/items/icon_palettes/silver_shard.gbapal.lz");
+
 
 // Vitamins
 

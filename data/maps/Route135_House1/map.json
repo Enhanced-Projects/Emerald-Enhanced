@@ -1,0 +1,38 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": false,
+    "allow_running": false,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_ROUTE135_HOUSE1",
+    "layout": "LAYOUT_ROUTE135_HOUSE1",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_MINAMO",
+    "name": "Route135_House1",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_ROUTE_135",
+    "requires_flash": false,
+    "show_map_name": false,
+    "warp_events": [
+        {
+            "dest_map": "MAP_ROUTE135",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 4,
+            "y": 8
+        },
+        {
+            "dest_map": "MAP_ROUTE135",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 5,
+            "y": 8
+        }
+    ],
+    "weather": "WEATHER_NONE"
+}

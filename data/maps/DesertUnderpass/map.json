@@ -4,6 +4,78 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Ryu_RefineShardOre",
+            "type": "sign",
+            "x": 7,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock1",
+            "type": "sign",
+            "x": 22,
+            "y": 12
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock2",
+            "type": "sign",
+            "x": 31,
+            "y": 4
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock3",
+            "type": "sign",
+            "x": 46,
+            "y": 4
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock4",
+            "type": "sign",
+            "x": 47,
+            "y": 18
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock5",
+            "type": "sign",
+            "x": 121,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock6",
+            "type": "sign",
+            "x": 73,
+            "y": 20
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock7",
+            "type": "sign",
+            "x": 68,
+            "y": 4
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock8",
+            "type": "sign",
+            "x": 59,
+            "y": 11
+        }
     ],
     "connections": null,
     "coord_events": [
@@ -24,12 +96,12 @@
             "script": "DesertUnderpass_EventScript_Fossil",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 132,
-            "y": 10
+            "x": 127,
+            "y": 3
         },
         {
             "elevation": 3,
-            "flag": "FLAG_RYU_DU_TYRANITARITE",
+            "flag": "FLAG_RYU_TYRANITARITE",
             "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -38,7 +110,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 132,
-            "y": 5
+            "y": 10
         }
     ],
     "region_map_section": "MAPSEC_DESERT_UNDERPASS",
@@ -46,7 +118,7 @@
     "show_map_name": true,
     "warp_events": [
         {
-            "dest_map": "MAP_ROUTE114_FOSSIL_MANIACS_TUNNEL",
+            "dest_map": "MAP_FALLARBOR_TOWN_CAVE_TOWN",
             "dest_warp_id": 2,
             "elevation": 0,
             "x": 10,

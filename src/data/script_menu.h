@@ -1,4 +1,6 @@
 // multichoice lists
+
+
 static const struct MenuAction MultichoiceList_BrineyOnDewford[] =
 {
     {gText_Petalburg},
@@ -1180,6 +1182,46 @@ static const struct MenuAction MultichoiceList_DevMonGiveAbilityMenu[]=
     {gText_DevMonGiveAbility3},
 };
 
+static const struct MenuAction MultichoiceList_RyuLifeskillGemRefinerQualitySelect[]=
+{
+    {gText_RLSGM_Common},
+    {gText_RLSGM_Uncommon},
+    {gText_RLSGM_Rare},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_RyuShardExchange[]=
+{
+    {gText_RedShard},
+    {gText_BlueShard},
+    {gText_YellowShard},
+    {gText_GreenShard},
+    {gText_DarkShard},
+    {gText_LightShard},
+    {gText_CyanShard},
+    {gText_GlossyShard},
+    {gText_GoldShard},
+    {gText_GrayShard},
+    {gText_Exit},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_FossilReviver[]=
+{
+    {gText_ARMOR_FOSSIL},
+    {gText_SKULL_FOSSIL},
+    {gText_HELIX_FOSSIL},
+    {gText_DOME_FOSSIL},
+    {gText_PLUME_FOSSIL},
+    {gText_JAW_FOSSIL},
+    {gText_SAIL_FOSSIL},
+    {gText_ROOT_FOSSIL},
+    {gText_CLAW_FOSSIL},
+    {gText_OLD_AMBER},
+    {gText_Exit},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1341,7 +1383,9 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_LANETTE_ROTOM_DIALOG]       = MULTICHOICE(MultichoiceList_LaneteRotomDialog),
     [MULTI_OW_REPEL_DLG]               = MULTICHOICE(MultichoiceList_OWRepelList),
     [MULTI_DEV_GIVE_MON_ABILITY]       = MULTICHOICE(MultichoiceList_DevMonGiveAbilityMenu),
-
+    [MULTI_RLS_GEMSTONEQUALITYMENU]    = MULTICHOICE(MultichoiceList_RyuLifeskillGemRefinerQualitySelect),
+    [MULTI_SHARD_EXCHANGE]             = MULTICHOICE(MultichoiceList_RyuShardExchange),
+    [MULTI_FOSSIL_REVIVER]             = MULTICHOICE(MultichoiceList_FossilReviver),
 };
 
 const u8 *const gStdStrings[] =
@@ -1376,6 +1420,8 @@ const u8 *const gStdStrings[] =
     [STDSTRING_BATTLE_ARENA] = gText_BattleArena,
     [STDSTRING_BATTLE_PIKE] = gText_BattlePike,
     [STDSTRING_BATTLE_PYRAMID] = gText_BattlePyramid,
+    [STDSTRING_MEDICINES] = gText_MedicinesPocket,
+    [STDSTRING_COLLECTIBLES] = gText_CollectiblesPocket,
     
 };
 

@@ -606,3 +606,8 @@ gSpecials:: @ 81DBA64
 	def_special CheckPlayerHasDarmanitan
 	def_special ChangeDarmanitanForm
 	def_special RyuGetTrainerHillReward
+	def_special RyuCountGemOres
+	def_special RyuChooseFromGemList
+	def_special RyuFossilReward
+	def_special RyuShardReward
+	def_special Ryu_GiveRevivedFossilEgg

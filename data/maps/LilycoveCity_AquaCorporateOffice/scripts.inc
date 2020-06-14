@@ -55,13 +55,59 @@ AH_LEAVING_NOSTART::
 	end
 	
 LC_AH_Guard::
+	lockall
+	faceplayer
+	getplayerxy VAR_TEMP_9, VAR_TEMP_8
+	compare VAR_TEMP_9, 15
+	goto_if_gt LC_MoveGuard
 	msgbox LCGuard MSGBOX_DEFAULT
 	release
 	end
+
+LC_MoveGuard::
+	applymovement 3, Common_Movement_ExclamationMark
+	playse SE_PIN
+	waitse
+	msgbox LC_Guard_Exit
+	closemessage
+	applymovement 3, LC_GuardMoves
+	waitmovement 3
+	applymovement OBJ_EVENT_ID_PLAYER, LC_ExitAroundGuard
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 3, LC_GuardReturns
+	waitmovement 3
+	release
+	end
+
 	
 LCGuard:
 	.string "Guard: This area is off limits.\p"
 	.string "You can't come through.$"
+
+LC_Guard_Exit::
+	.string "You're so lucky... I could never\n"
+	.string "get her to even notice me...\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(The guard grumbles some more...)$"
+
+LC_GuardMoves:
+	walk_left
+	walk_left
+	face_right
+	step_end
+
+LC_ExitAroundGuard:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	face_up
+	step_end
+
+LC_GuardReturns:
+	walk_right
+	walk_right
+	face_left
+	step_end
 	
 LC_AH_SecurityStop3::
 	msgbox LC_AH_OnWay4 MSGBOX_DEFAULT
@@ -75,6 +121,7 @@ LC_AH_SecurityStop3::
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
+	setflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
 	applymovement OBJ_EVENT_ID_PLAYER, LC_AH_PlayerLeave
 	waitmovement 0
 	release
@@ -534,6 +581,9 @@ LC_AH_M4Reldesc::
 	cleartrainerflag TRAINER_MAXIE_MAGMA_HIDEOUT
 	cleartrainerflag TRAINER_COURTNEY_3
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
+	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
+	setflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
 	release
 	end
 	

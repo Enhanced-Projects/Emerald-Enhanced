@@ -101,6 +101,13 @@
 #define MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F       (5 | (5 << 8))
 #define MAP_FALLARBOR_TOWN_COZMOS_HOUSE            (6 | (5 << 8))
 #define MAP_FALLARBOR_TOWN_MOVE_RELEARNERS_HOUSE   (7 | (5 << 8))
+#define MAP_FALLARBOR_TOWN_CAVE_TOWN               (8 | (5 << 8))
+#define MAP_FALLARBOR_TOWN_LAB                     (9 | (5 << 8))
+#define MAP_FALLARBOR_TOWN_GEM_REFINER             (10 | (5 << 8))
+#define MAP_FALLARBOR_TOWN_SHARD_REFINER           (11 | (5 << 8))
+#define MAP_FALLARBOR_TOWN_CAVE_MART               (12 | (5 << 8))
+#define MAP_FALLARBOR_TOWN_FOSSIL_MANI             (13 | (5 << 8))
+#define MAP_FALLARBOR_TOWN_MINING_MASTER_HOUSE     (14 | (5 << 8))
 
 // Map Group 6
 #define MAP_VERDANTURF_TOWN_BATTLE_TENT_LOBBY       (0 | (6 << 8))
@@ -282,6 +289,13 @@
 #define MAP_DESERT_TOMB2F                    (6 | (18 << 8))
 #define MAP_DESERT_TOMB_CORE                 (7 | (18 << 8))
 #define MAP_ROUTE66                          (8 | (18 << 8))
+#define MAP_ROUTE135                         (9 | (18 << 8))
+#define MAP_UNDERWATER8                      (10 | (18 << 8))
+#define MAP_ROUTE135_HOUSE1                  (11 | (18 << 8))
+#define MAP_ROUTE135_HOUSE2                  (12 | (18 << 8))
+#define MAP_ROUTE135_HOUSE3                  (13 | (18 << 8))
+#define MAP_ROUTE135_MANAPHY_TEMPLE          (14 | (18 << 8))
+#define MAP_UNDERWATER9                      (15 | (18 << 8))
 
 // Map Group 19
 #define MAP_ROUTE112_CABLE_CAR_STATION   (0 | (19 << 8))
@@ -292,6 +306,7 @@
 #define MAP_ROUTE114_FOSSIL_MANIACS_TUNNEL   (1 | (20 << 8))
 #define MAP_ROUTE114_LANETTES_HOUSE          (2 | (20 << 8))
 #define MAP_ROUTE114_LANETTES_HOUSE_BASEMENT (3 | (20 << 8))
+#define MAP_ROUTE114_SUICUNE_CAVE            (4 | (20 << 8))
 
 // Map Group 21
 #define MAP_ROUTE116_TUNNELERS_REST_HOUSE (0 | (21 << 8))
