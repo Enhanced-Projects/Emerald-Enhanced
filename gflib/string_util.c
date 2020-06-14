@@ -3,11 +3,11 @@
 #include "text.h"
 #include "strings.h"
 
-EWRAM_DATA u8 gStringVar1[0x100] = {0};
-EWRAM_DATA u8 gStringVar2[0x100] = {0};
-EWRAM_DATA u8 gStringVar3[0x100] = {0};
-EWRAM_DATA u8 gRyuStringVar1[0x100] = {0};
-EWRAM_DATA u8 gRyuStringVar2[0x100] = {0};
+EWRAM_DATA u8 gStringVar1[0x99] = {0};
+EWRAM_DATA u8 gStringVar2[0x99] = {0};
+EWRAM_DATA u8 gStringVar3[0x99] = {0};
+EWRAM_DATA u8 gRyuStringVar1[0x99] = {0};
+EWRAM_DATA u8 gRyuStringVar2[0x99] = {0};
 EWRAM_DATA u8 gRyuStringVar3[0x99] = {0};
 EWRAM_DATA u8 gStringVar4[0x3E8] = {0};
 EWRAM_DATA static u8 sUnknownStringVar[16] = {0};
