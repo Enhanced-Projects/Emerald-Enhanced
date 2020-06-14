@@ -86,7 +86,7 @@ Route111_EventScript_ItemElixir:: @ 8290DC2
 	end
 
 Route112_EventScript_ItemNugget:: @ 8290DCF
-	finditem ITEM_BIG_PEARL
+	finditem ITEM_PP_UP
 	end
 
 Route113_EventScript_ItemMaxEther:: @ 8290DDC
