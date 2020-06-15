@@ -223,7 +223,7 @@ bool8 IsWirelessAdapterConnected(void)
 {
     sub_800B488();
     sub_800E700();
-    if (sub_800BEC0() == 0x8001)
+    if (rfu_LMAN_REQBN_softReset_and_checkID() == 0x8001)
     {
         rfu_REQ_stopMode();
         rfu_waitREQComplete();
@@ -1657,7 +1657,7 @@ void CB2_LinkError(void)
     if (InitWindows(gUnknown_082ED204))
     {
         DeactivateAllTextPrinters();
-        reset_temp_tile_data_buffers();
+        ResetTempTileDataBuffers();
         SetGpuReg(REG_OFFSET_BLDCNT, 0);
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BG0HOFS, 0);

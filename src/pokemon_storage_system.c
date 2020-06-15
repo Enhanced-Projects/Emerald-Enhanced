@@ -36,6 +36,7 @@
 #include "trig.h"
 #include "walda_phrase.h"
 #include "window.h"
+#include "constants/items.h"
 #include "constants/maps.h"
 #include "constants/moves.h"
 #include "constants/rgb.h"
@@ -231,7 +232,7 @@ struct PokemonStorageSystemData
     struct Sprite *field_D94;
     struct Sprite *field_D98[2];
     u16 *field_DA0;
-    struct PokemonMarkMenu field_DA4;
+    struct PokemonMarkMenu markMenu;
     struct UnkPSSStruct_2002370 field_1E5C;
     struct Pokemon movingMon;
     struct Pokemon field_2108;
@@ -367,7 +368,7 @@ enum
 {
     MODE_PARTY,
     MODE_BOX,
-    MODE_2,
+    MODE_MOVE,
 };
 
 enum
@@ -454,7 +455,7 @@ EWRAM_DATA static u8 sCurrentBoxOption = 0;
 EWRAM_DATA static u8 gUnknown_02039D0E = 0;
 EWRAM_DATA static u8 sWhichToReshow = 0;
 EWRAM_DATA static u8 sLastUsedBox = 0;
-EWRAM_DATA static u16 gUnknown_02039D12 = 0;
+EWRAM_DATA static u16 sMovingItemId = 0;
 EWRAM_DATA static struct Pokemon gUnknown_02039D14 = {0};
 EWRAM_DATA static s8 sBoxCursorArea = 0;
 EWRAM_DATA static s8 sBoxCursorPosition = 0;
@@ -1735,7 +1736,7 @@ static void Task_PokemonStorageSystemPC(u8 taskId)
     {
     case 0:
         CreatePCMenu(task->data[1], &task->data[15]);
-        sub_81973A4();
+        LoadMessageBoxAndBorderGfx();
         DrawDialogueFrame(0, 0);
         FillWindowPixelBuffer(0, PIXEL_FILL(1));
         AddTextPrinterParameterized2(0, 1, gUnknown_085716C0[task->data[1]].desc, TEXT_SPEED_FF, NULL, 2, 1, 3);
@@ -2165,7 +2166,7 @@ static void Cb2_EnterPSS(u8 boxOption)
     {
         sPSSData->boxOption = boxOption;
         sPSSData->isReshowingPSS = FALSE;
-        gUnknown_02039D12 = 0;
+        sMovingItemId = ITEM_NONE;
         sPSSData->state = 0;
         sPSSData->taskId = CreateTask(Cb_InitPSS, 3);
         sLastUsedBox = StorageGetCurrentBox();
@@ -2227,7 +2228,7 @@ static void sub_80C7F1C(void)
     gUnknown_02039D0E = 0;
 }
 
-static void sub_80C7F4C(void)
+static void SetMonIconTransparency(void)
 {
     if (sPSSData->boxOption == BOX_OPTION_MOVE_ITEMS)
     {
@@ -2321,9 +2322,9 @@ static void Cb_InitPSS(u8 taskId)
 
         if (sPSSData->boxOption != BOX_OPTION_MOVE_ITEMS)
         {
-            sPSSData->field_DA4.baseTileTag = TAG_TILE_D;
-            sPSSData->field_DA4.basePaletteTag = TAG_PAL_DACE;
-            sub_811F90C(&sPSSData->field_DA4);
+            sPSSData->markMenu.baseTileTag = TAG_TILE_D;
+            sPSSData->markMenu.basePaletteTag = TAG_PAL_DACE;
+            sub_811F90C(&sPSSData->markMenu);
             sub_811FA90();
         }
         else
@@ -2333,7 +2334,7 @@ static void Cb_InitPSS(u8 taskId)
         }
         break;
     case 10:
-        sub_80C7F4C();
+        SetMonIconTransparency();
         if (!sPSSData->isReshowingPSS)
         {
             BlendPalettes(0xFFFFFFFF, 0x10, RGB_BLACK);
@@ -3178,7 +3179,7 @@ static void Cb_ShowMarkMenu(u8 taskId)
     {
     case 0:
         PrintStorageActionText(PC_TEXT_MARK_POKE);
-        sPSSData->field_DA4.markings = sPSSData->cursorMonMarkings;
+        sPSSData->markMenu.markings = sPSSData->cursorMonMarkings;
         sub_811FAA4(sPSSData->cursorMonMarkings, 0xb0, 0x10);
         sPSSData->state++;
         break;
@@ -3187,7 +3188,7 @@ static void Cb_ShowMarkMenu(u8 taskId)
         {
             sub_811FAF8();
             ClearBottomWindow();
-            SetMonMarkings(sPSSData->field_DA4.markings);
+            SetMonMarkings(sPSSData->markMenu.markings);
             RefreshCursorMonData();
             SetPSSCallback(Cb_MainPSS);
         }
@@ -3863,9 +3864,9 @@ static void Cb_ChangeScreen(u8 taskId)
     u8 screenChangeType = sPSSData->screenChangeType;
 
     if (sPSSData->boxOption == BOX_OPTION_MOVE_ITEMS && IsActiveItemMoving() == TRUE)
-        gUnknown_02039D12 = GetMovingItem();
+        sMovingItemId = GetMovingItem();
     else
-        gUnknown_02039D12 = 0;
+        sMovingItemId = ITEM_NONE;
 
     switch (screenChangeType)
     {
@@ -3891,7 +3892,7 @@ static void Cb_ChangeScreen(u8 taskId)
         break;
     case SCREEN_CHANGE_ITEM_FROM_BAG:
         FreePSSData();
-        GoToBagMenu(11, 0, Cb2_ReturnToPSS);
+        GoToBagMenu(ITEMMENULOCATION_PCBOX, 0, Cb2_ReturnToPSS);
         break;
     }
 
@@ -3943,7 +3944,7 @@ static void LoadPSSMenuGfx(void)
     LZ77UnCompWram(gUnknown_085722A0, sPSSData->field_5AC4);
     SetBgTilemapBuffer(1, sPSSData->field_5AC4);
     ShowBg(1);
-    schedule_bg_copy_tilemap_to_vram(1);
+    ScheduleBgCopyTilemapToVram(1);
 }
 
 static bool8 InitPSSWindows(void)
@@ -4009,7 +4010,7 @@ static void RefreshCursorMonData(void)
     LoadCursorMonGfx(sPSSData->cursorMonSpecies, sPSSData->cursorMonPersonality);
     PrintCursorMonInfo();
     sub_80CA65C();
-    schedule_bg_copy_tilemap_to_vram(0);
+    ScheduleBgCopyTilemapToVram(0);
 }
 
 static void BoxSetMosaic(void)
@@ -4153,7 +4154,7 @@ static void sub_80CA65C(void)
     }
 
     sub_80D2918(0);
-    schedule_bg_copy_tilemap_to_vram(1);
+    ScheduleBgCopyTilemapToVram(1);
 }
 
 static void sub_80CA704(void)
@@ -4180,7 +4181,7 @@ static void sub_80CA704(void)
         sub_80D2918(2);
     }
 
-    schedule_bg_copy_tilemap_to_vram(1);
+    ScheduleBgCopyTilemapToVram(1);
     sPSSData->unk_02C7 = 0;
 }
 
@@ -4201,7 +4202,7 @@ static bool8 ShowPartyMenu(void)
     sPSSData->field_2C2++;
     sub_80D27F4(1, 3, 1);
     sub_80D2918(1);
-    schedule_bg_copy_tilemap_to_vram(1);
+    ScheduleBgCopyTilemapToVram(1);
     sub_80CBAF0(8);
     if (++sPSSData->field_2C5 == 20)
     {
@@ -4235,7 +4236,7 @@ static bool8 HidePartyMenu(void)
         sub_80CBAF0(-8);
         if (++sPSSData->field_2C5 != 20)
         {
-            schedule_bg_copy_tilemap_to_vram(1);
+            ScheduleBgCopyTilemapToVram(1);
             return TRUE;
         }
         else
@@ -4245,7 +4246,7 @@ static bool8 HidePartyMenu(void)
             CompactPartySlots();
             sub_80D27AC(2, 0, 0, 9, 2);
             sub_80D2918(2);
-            schedule_bg_copy_tilemap_to_vram(1);
+            ScheduleBgCopyTilemapToVram(1);
             return FALSE;
         }
     }
@@ -4261,7 +4262,7 @@ static void sub_80CA984(bool8 arg0)
         sub_80D27AC(2, 0, 2, 9, 2);
 
     sub_80D2918(2);
-    schedule_bg_copy_tilemap_to_vram(1);
+    ScheduleBgCopyTilemapToVram(1);
 }
 
 static void sub_80CA9C0(void)
@@ -4330,7 +4331,7 @@ static void sub_80CAB20(void)
     sub_80CAA74();
     sub_80D27AC(1, 0, 0, 12, 22);
     sub_80D2918(1);
-    schedule_bg_copy_tilemap_to_vram(1);
+    ScheduleBgCopyTilemapToVram(1);
 }
 
 static void SetUpDoShowPartyMenu(void)
@@ -4421,7 +4422,7 @@ static void PrintStorageActionText(u8 id)
     DrawTextBorderOuter(1, 2, 14);
     PutWindowTilemap(1);
     CopyWindowToVram(1, 2);
-    schedule_bg_copy_tilemap_to_vram(0);
+    ScheduleBgCopyTilemapToVram(0);
 }
 
 static void ShowYesNoWindow(s8 cursorPos)
@@ -4433,7 +4434,7 @@ static void ShowYesNoWindow(s8 cursorPos)
 static void ClearBottomWindow(void)
 {
     ClearStdWindowAndFrameToTransparent(1, FALSE);
-    schedule_bg_copy_tilemap_to_vram(0);
+    ScheduleBgCopyTilemapToVram(0);
 }
 
 static void AddWallpaperSetsMenu(void)
@@ -4496,9 +4497,9 @@ static void sub_80CAEAC(void)
             sub_80D0D8C(CURSOR_AREA_IN_BOX, GetBoxCursorPosition());
     }
 
-    if (gUnknown_02039D12 != 0)
+    if (sMovingItemId != ITEM_NONE)
     {
-        sub_80D0F38(gUnknown_02039D12);
+        sub_80D0F38(sMovingItemId);
         sub_80CFE54(3);
     }
 }
@@ -5077,7 +5078,7 @@ static void sub_80CBF14(u8 mode, u8 position)
     case MODE_BOX:
         sPSSData->field_B04 = &sPSSData->boxMonsSprites[position];
         break;
-    case MODE_2:
+    case MODE_MOVE:
         sPSSData->field_B04 = &sPSSData->movingMonSprite;
         break;
     default:
@@ -6388,7 +6389,7 @@ static void sub_80CE250(void)
     u8 mode;
 
     if (sIsMonBeingMoved)
-        mode = MODE_2;
+        mode = MODE_MOVE;
     else if (sBoxCursorArea == CURSOR_AREA_IN_PARTY)
         mode = MODE_PARTY;
     else
@@ -6756,7 +6757,7 @@ static void sub_80CEB40(void)
             // fallthrough
         case CURSOR_AREA_BUTTONS:
         case CURSOR_AREA_BOX:
-            SetCursorMonData(NULL, MODE_2);
+            SetCursorMonData(NULL, MODE_MOVE);
             break;
         case CURSOR_AREA_IN_BOX:
             SetCursorMonData(GetBoxedMonPtr(StorageGetCurrentBox(), sBoxCursorPosition), MODE_BOX);
@@ -6898,7 +6899,7 @@ static void SetCursorMonData(void *pokemon, u8 mode)
         *(txtPtr++) = 3;
         *(txtPtr++) = 0;
         *(txtPtr++) = CHAR_SPECIAL_F9;
-        *(txtPtr++) = 5;
+        *(txtPtr++) = CHAR_LV_2;
 
         txtPtr = ConvertIntToDecimalStringN(txtPtr, sPSSData->cursorMonLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
         txtPtr[0] = CHAR_SPACE;
@@ -6925,21 +6926,20 @@ static u8 HandleInput_InBox(void)
     }
 }
 
-// This group of four functions handling input simply CANNOT be matched.
-// GF must have written them in a really weird way, a way not a sane person could dream to reproduce.
-#ifdef NONMATCHING
 static u8 InBoxInput_Normal(void)
 {
     u8 retVal;
-    s8 cursorArea = sBoxCursorArea;
-    s8 cursorPosition = sBoxCursorPosition;
-
-    sPSSData->field_CD2 = 0;
-    sPSSData->field_CD3 = 0;
-    sPSSData->field_CD7 = 0;
+    s8 cursorArea;
+    s8 cursorPosition;
 
     do
     {
+        cursorArea = sBoxCursorArea;
+        cursorPosition = sBoxCursorPosition;
+        sPSSData->field_CD2 = 0;
+        sPSSData->field_CD3 = 0;
+        sPSSData->field_CD7 = 0;
+
         if (gMain.newAndRepeatedKeys & DPAD_UP)
         {
             retVal = TRUE;
@@ -7064,310 +7064,6 @@ static u8 InBoxInput_Normal(void)
 
     return retVal;
 }
-#else
-NAKED
-static u8 InBoxInput_Normal(void)
-{
-    asm_unified("\n\
-                    push {r4-r7,lr}\n\
-    mov r7, r10\n\
-    mov r6, r9\n\
-    mov r5, r8\n\
-    push {r5-r7}\n\
-    ldr r0, =sBoxCursorArea\n\
-    ldrb r0, [r0]\n\
-    mov r8, r0\n\
-    ldr r2, =sBoxCursorPosition\n\
-    ldrb r4, [r2]\n\
-    ldr r5, =sPSSData\n\
-    ldr r0, [r5]\n\
-    ldr r1, =0x00000cd2\n\
-    mov r10, r1\n\
-    add r0, r10\n\
-    movs r1, 0\n\
-    strb r1, [r0]\n\
-    ldr r0, [r5]\n\
-    ldr r7, =0x00000cd3\n\
-    adds r0, r7\n\
-    strb r1, [r0]\n\
-    ldr r0, [r5]\n\
-    ldr r3, =0x00000cd7\n\
-    mov r9, r3\n\
-    add r0, r9\n\
-    strb r1, [r0]\n\
-    ldr r6, =gMain\n\
-    ldrh r1, [r6, 0x30]\n\
-    movs r0, 0x40\n\
-    ands r0, r1\n\
-    adds r3, r2, 0\n\
-    cmp r0, 0\n\
-    beq _080CF14C\n\
-    b _080CF33C\n\
-_080CF14C:\n\
-    movs r0, 0x80\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF1A8\n\
-    movs r6, 0x1\n\
-    lsls r0, r4, 24\n\
-    movs r1, 0xC0\n\
-    lsls r1, 19\n\
-    adds r0, r1\n\
-    lsrs r4, r0, 24\n\
-    asrs r0, 24\n\
-    cmp r0, 0x1D\n\
-    bgt _080CF168\n\
-    b _080CF358\n\
-_080CF168:\n\
-    movs r2, 0x3\n\
-    mov r8, r2\n\
-    subs r0, 0x1E\n\
-    lsls r0, 24\n\
-    asrs r0, 24\n\
-    movs r1, 0x3\n\
-    bl __divsi3\n\
-    lsls r0, 24\n\
-    lsrs r4, r0, 24\n\
-    ldr r0, [r5]\n\
-    add r0, r10\n\
-    strb r6, [r0]\n\
-    ldr r0, [r5]\n\
-    add r0, r9\n\
-    strb r6, [r0]\n\
-    b _080CF358\n\
-    .pool\n\
-_080CF1A8:\n\
-    movs r0, 0x20\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF1DE\n\
-    movs r6, 0x1\n\
-    movs r0, 0\n\
-    ldrsb r0, [r3, r0]\n\
-    movs r1, 0x6\n\
-    bl __modsi3\n\
-    lsls r0, 24\n\
-    cmp r0, 0\n\
-    beq _080CF1CA\n\
-    lsls r0, r4, 24\n\
-    movs r3, 0xFF\n\
-    lsls r3, 24\n\
-    b _080CF34C\n\
-_080CF1CA:\n\
-    ldr r0, [r5]\n\
-    adds r0, r7\n\
-    movs r1, 0xFF\n\
-    strb r1, [r0]\n\
-    lsls r0, r4, 24\n\
-    movs r1, 0xA0\n\
-    lsls r1, 19\n\
-    adds r0, r1\n\
-    lsrs r4, r0, 24\n\
-    b _080CF358\n\
-_080CF1DE:\n\
-    movs r0, 0x10\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF212\n\
-    movs r6, 0x1\n\
-    movs r0, 0\n\
-    ldrsb r0, [r3, r0]\n\
-    adds r0, 0x1\n\
-    movs r1, 0x6\n\
-    bl __modsi3\n\
-    cmp r0, 0\n\
-    beq _080CF204\n\
-    lsls r0, r4, 24\n\
-    movs r2, 0x80\n\
-    lsls r2, 17\n\
-    adds r0, r2\n\
-    lsrs r4, r0, 24\n\
-    b _080CF358\n\
-_080CF204:\n\
-    ldr r0, [r5]\n\
-    adds r0, r7\n\
-    strb r6, [r0]\n\
-    lsls r0, r4, 24\n\
-    movs r3, 0xFB\n\
-    lsls r3, 24\n\
-    b _080CF34C\n\
-_080CF212:\n\
-    ldrh r1, [r6, 0x2E]\n\
-    movs r0, 0x8\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF220\n\
-    movs r6, 0x1\n\
-    b _080CF352\n\
-_080CF220:\n\
-    movs r4, 0x1\n\
-    movs r0, 0x1\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF2E4\n\
-    bl sub_80CFA5C\n\
-    lsls r0, 24\n\
-    cmp r0, 0\n\
-    beq _080CF2E4\n\
-    ldr r0, =sCanOnlyMove\n\
-    ldrb r0, [r0]\n\
-    cmp r0, 0\n\
-    bne _080CF244\n\
-    movs r0, 0x8\n\
-    b _080CF366\n\
-    .pool\n\
-_080CF244:\n\
-    ldr r1, [r5]\n\
-    ldrb r0, [r1, 0x1]\n\
-    cmp r0, 0x2\n\
-    bne _080CF254\n\
-    ldr r0, =sIsMonBeingMoved\n\
-    ldrb r0, [r0]\n\
-    cmp r0, 0x1\n\
-    bne _080CF2D4\n\
-_080CF254:\n\
-    movs r0, 0\n\
-    bl sub_80CFF98\n\
-    subs r0, 0x1\n\
-    lsls r0, 24\n\
-    asrs r0, 24\n\
-    cmp r0, 0xE\n\
-    bhi _080CF2E4\n\
-    lsls r0, 2\n\
-    ldr r1, =_080CF278\n\
-    adds r0, r1\n\
-    ldr r0, [r0]\n\
-    mov pc, r0\n\
-    .pool\n\
-    .align 2, 0\n\
-_080CF278:\n\
-    .4byte _080CF2B4\n\
-    .4byte _080CF2B8\n\
-    .4byte _080CF2BC\n\
-    .4byte _080CF2C0\n\
-    .4byte _080CF2C4\n\
-    .4byte _080CF2E4\n\
-    .4byte _080CF2E4\n\
-    .4byte _080CF2E4\n\
-    .4byte _080CF2E4\n\
-    .4byte _080CF2E4\n\
-    .4byte _080CF2E4\n\
-    .4byte _080CF2C8\n\
-    .4byte _080CF2CC\n\
-    .4byte _080CF2E4\n\
-    .4byte _080CF2D0\n\
-_080CF2B4:\n\
-    movs r0, 0xB\n\
-    b _080CF366\n\
-_080CF2B8:\n\
-    movs r0, 0xC\n\
-    b _080CF366\n\
-_080CF2BC:\n\
-    movs r0, 0xD\n\
-    b _080CF366\n\
-_080CF2C0:\n\
-    movs r0, 0xE\n\
-    b _080CF366\n\
-_080CF2C4:\n\
-    movs r0, 0xF\n\
-    b _080CF366\n\
-_080CF2C8:\n\
-    movs r0, 0x10\n\
-    b _080CF366\n\
-_080CF2CC:\n\
-    movs r0, 0x11\n\
-    b _080CF366\n\
-_080CF2D0:\n\
-    movs r0, 0x12\n\
-    b _080CF366\n\
-_080CF2D4:\n\
-    ldr r2, =0x000021ff\n\
-    adds r0, r1, r2\n\
-    strb r4, [r0]\n\
-    movs r0, 0x14\n\
-    b _080CF366\n\
-    .pool\n\
-_080CF2E4:\n\
-    ldr r2, =gMain\n\
-    ldrh r1, [r2, 0x2E]\n\
-    movs r0, 0x2\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF2F8\n\
-    movs r0, 0x13\n\
-    b _080CF366\n\
-    .pool\n\
-_080CF2F8:\n\
-    ldr r0, =gSaveBlock2Ptr\n\
-    ldr r0, [r0]\n\
-    ldrb r0, [r0, 0x13]\n\
-    cmp r0, 0x1\n\
-    bne _080CF326\n\
-    ldrh r1, [r2, 0x2C]\n\
-    movs r0, 0x80\n\
-    lsls r0, 2\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF318\n\
-    movs r0, 0xA\n\
-    b _080CF366\n\
-    .pool\n\
-_080CF318:\n\
-    movs r0, 0x80\n\
-    lsls r0, 1\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF326\n\
-    movs r0, 0x9\n\
-    b _080CF366\n\
-_080CF326:\n\
-    ldrh r1, [r2, 0x2E]\n\
-    movs r0, 0x4\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF338\n\
-    bl sub_80CFDC4\n\
-    movs r0, 0\n\
-    b _080CF366\n\
-_080CF338:\n\
-    movs r6, 0\n\
-    b _080CF364\n\
-_080CF33C:\n\
-    movs r6, 0x1\n\
-    movs r0, 0\n\
-    ldrsb r0, [r2, r0]\n\
-    cmp r0, 0x5\n\
-    ble _080CF352\n\
-    lsls r0, r4, 24\n\
-    movs r3, 0xFA\n\
-    lsls r3, 24\n\
-_080CF34C:\n\
-    adds r0, r3\n\
-    lsrs r4, r0, 24\n\
-    b _080CF358\n\
-_080CF352:\n\
-    movs r0, 0x2\n\
-    mov r8, r0\n\
-    movs r4, 0\n\
-_080CF358:\n\
-    cmp r6, 0\n\
-    beq _080CF364\n\
-    mov r0, r8\n\
-    adds r1, r4, 0\n\
-    bl sub_80CD894\n\
-_080CF364:\n\
-    adds r0, r6, 0\n\
-_080CF366:\n\
-    pop {r3-r5}\n\
-    mov r8, r3\n\
-    mov r9, r4\n\
-    mov r10, r5\n\
-    pop {r4-r7}\n\
-    pop {r1}\n\
-    bx r1\n\
-                ");
-}
-#endif
 
 static u8 InBoxInput_GrabbingMultiple(void)
 {
@@ -7525,22 +7221,23 @@ static u8 InBoxInput_MovingMultiple(void)
     }
 }
 
-#ifdef NONMATCHING
 static u8 HandleInput_InParty(void)
 {
     u8 retVal;
     bool8 gotoBox;
-    s8 cursorArea = sBoxCursorArea;
-    s8 cursorPosition = sBoxCursorPosition;
-
-    sPSSData->field_CD3 = 0;
-    sPSSData->field_CD2 = 0;
-    sPSSData->field_CD7 = 0;
-    gotoBox = FALSE;
-    retVal = 0;
+    s8 cursorArea;
+    s8 cursorPosition;
 
     do
     {
+        cursorArea = sBoxCursorArea;
+        cursorPosition = sBoxCursorPosition;
+        sPSSData->field_CD3 = 0;
+        sPSSData->field_CD2 = 0;
+        sPSSData->field_CD7 = 0;
+        gotoBox = FALSE;
+        retVal = 0;
+
         if (gMain.newAndRepeatedKeys & DPAD_UP)
         {
             if (--cursorPosition < 0)
@@ -7646,290 +7343,19 @@ static u8 HandleInput_InParty(void)
 
     return retVal;
 }
-#else
-NAKED
-static u8 HandleInput_InParty(void)
-{
-    asm_unified("\n\
-                    push {r4-r7,lr}\n\
-    mov r7, r9\n\
-    mov r6, r8\n\
-    push {r6,r7}\n\
-    ldr r0, =sBoxCursorArea\n\
-    ldrb r0, [r0]\n\
-    mov r9, r0\n\
-    ldr r6, =sBoxCursorPosition\n\
-    ldrb r4, [r6]\n\
-    ldr r2, =sPSSData\n\
-    ldr r0, [r2]\n\
-    ldr r1, =0x00000cd3\n\
-    adds r0, r1\n\
-    movs r1, 0\n\
-    strb r1, [r0]\n\
-    ldr r0, [r2]\n\
-    ldr r3, =0x00000cd2\n\
-    adds r0, r3\n\
-    strb r1, [r0]\n\
-    ldr r0, [r2]\n\
-    adds r3, 0x5\n\
-    adds r0, r3\n\
-    strb r1, [r0]\n\
-    mov r8, r1\n\
-    movs r7, 0\n\
-    ldr r1, =gMain\n\
-    ldrh r3, [r1, 0x30]\n\
-    movs r0, 0x40\n\
-    ands r0, r3\n\
-    adds r5, r6, 0\n\
-    mov r12, r1\n\
-    cmp r0, 0\n\
-    beq _080CF608\n\
-    b _080CF7A8\n\
-_080CF608:\n\
-    movs r0, 0x80\n\
-    ands r0, r3\n\
-    cmp r0, 0\n\
-    beq _080CF64C\n\
-    lsls r0, r4, 24\n\
-    movs r1, 0x80\n\
-    lsls r1, 17\n\
-    adds r0, r1\n\
-    lsrs r4, r0, 24\n\
-    asrs r0, 24\n\
-    cmp r0, 0x6\n\
-    ble _080CF622\n\
-    movs r4, 0\n\
-_080CF622:\n\
-    lsls r0, r4, 24\n\
-    asrs r0, 24\n\
-    movs r1, 0\n\
-    ldrsb r1, [r5, r1]\n\
-    cmp r0, r1\n\
-    bne _080CF630\n\
-    b _080CF7C6\n\
-_080CF630:\n\
-    movs r7, 0x1\n\
-    b _080CF7CA\n\
-    .pool\n\
-_080CF64C:\n\
-    movs r0, 0x20\n\
-    ands r0, r3\n\
-    cmp r0, 0\n\
-    beq _080CF670\n\
-    ldrb r1, [r5]\n\
-    movs r0, 0\n\
-    ldrsb r0, [r5, r0]\n\
-    cmp r0, 0\n\
-    beq _080CF670\n\
-    movs r7, 0x1\n\
-    ldr r0, [r2]\n\
-    ldr r2, =0x00000cd6\n\
-    adds r0, r2\n\
-    strb r1, [r0]\n\
-    movs r4, 0\n\
-    b _080CF7C6\n\
-    .pool\n\
-_080CF670:\n\
-    mov r3, r12\n\
-    ldrh r1, [r3, 0x30]\n\
-    movs r0, 0x10\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF69E\n\
-    movs r0, 0\n\
-    ldrsb r0, [r5, r0]\n\
-    cmp r0, 0\n\
-    bne _080CF694\n\
-    movs r7, 0x1\n\
-    ldr r0, [r2]\n\
-    ldr r1, =0x00000cd6\n\
-    adds r0, r1\n\
-    ldrb r4, [r0]\n\
-    b _080CF7C6\n\
-    .pool\n\
-_080CF694:\n\
-    movs r7, 0x6\n\
-    movs r2, 0\n\
-    mov r9, r2\n\
-    movs r4, 0\n\
-    b _080CF7C6\n\
-_080CF69E:\n\
-    mov r3, r12\n\
-    ldrh r1, [r3, 0x2E]\n\
-    movs r0, 0x1\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF75C\n\
-    movs r0, 0\n\
-    ldrsb r0, [r5, r0]\n\
-    cmp r0, 0x6\n\
-    bne _080CF6C4\n\
-    ldr r0, [r2]\n\
-    ldrb r0, [r0, 0x1]\n\
-    cmp r0, 0x1\n\
-    bne _080CF6BE\n\
-    movs r0, 0x4\n\
-    b _080CF7D8\n\
-_080CF6BE:\n\
-    movs r0, 0x1\n\
-    mov r8, r0\n\
-    b _080CF75C\n\
-_080CF6C4:\n\
-    bl sub_80CFA5C\n\
-    lsls r0, 24\n\
-    cmp r0, 0\n\
-    beq _080CF75C\n\
-    ldr r0, =sCanOnlyMove\n\
-    ldrb r0, [r0]\n\
-    cmp r0, 0\n\
-    bne _080CF6E0\n\
-    movs r0, 0x8\n\
-    b _080CF7D8\n\
-    .pool\n\
-_080CF6E0:\n\
-    movs r0, 0\n\
-    bl sub_80CFF98\n\
-    subs r0, 0x1\n\
-    lsls r0, 24\n\
-    asrs r0, 24\n\
-    cmp r0, 0xE\n\
-    bhi _080CF75C\n\
-    lsls r0, 2\n\
-    ldr r1, =_080CF700\n\
-    adds r0, r1\n\
-    ldr r0, [r0]\n\
-    mov pc, r0\n\
-    .pool\n\
-    .align 2, 0\n\
-_080CF700:\n\
-    .4byte _080CF73C\n\
-    .4byte _080CF740\n\
-    .4byte _080CF744\n\
-    .4byte _080CF748\n\
-    .4byte _080CF74C\n\
-    .4byte _080CF75C\n\
-    .4byte _080CF75C\n\
-    .4byte _080CF75C\n\
-    .4byte _080CF75C\n\
-    .4byte _080CF75C\n\
-    .4byte _080CF75C\n\
-    .4byte _080CF750\n\
-    .4byte _080CF754\n\
-    .4byte _080CF75C\n\
-    .4byte _080CF758\n\
-_080CF73C:\n\
-    movs r0, 0xB\n\
-    b _080CF7D8\n\
-_080CF740:\n\
-    movs r0, 0xC\n\
-    b _080CF7D8\n\
-_080CF744:\n\
-    movs r0, 0xD\n\
-    b _080CF7D8\n\
-_080CF748:\n\
-    movs r0, 0xE\n\
-    b _080CF7D8\n\
-_080CF74C:\n\
-    movs r0, 0xF\n\
-    b _080CF7D8\n\
-_080CF750:\n\
-    movs r0, 0x10\n\
-    b _080CF7D8\n\
-_080CF754:\n\
-    movs r0, 0x11\n\
-    b _080CF7D8\n\
-_080CF758:\n\
-    movs r0, 0x12\n\
-    b _080CF7D8\n\
-_080CF75C:\n\
-    ldr r2, =gMain\n\
-    ldrh r1, [r2, 0x2E]\n\
-    movs r0, 0x2\n\
-    ands r0, r1\n\
-    mov r12, r2\n\
-    cmp r0, 0\n\
-    beq _080CF784\n\
-    ldr r0, =sPSSData\n\
-    ldr r0, [r0]\n\
-    ldrb r0, [r0, 0x1]\n\
-    cmp r0, 0x1\n\
-    bne _080CF780\n\
-    movs r0, 0x13\n\
-    b _080CF7D8\n\
-    .pool\n\
-_080CF780:\n\
-    movs r1, 0x1\n\
-    mov r8, r1\n\
-_080CF784:\n\
-    mov r2, r8\n\
-    cmp r2, 0\n\
-    beq _080CF794\n\
-    movs r7, 0x6\n\
-    movs r3, 0\n\
-    mov r9, r3\n\
-    movs r4, 0\n\
-    b _080CF7C6\n\
-_080CF794:\n\
-    mov r0, r12\n\
-    ldrh r1, [r0, 0x2E]\n\
-    movs r0, 0x4\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF7C6\n\
-    bl sub_80CFDC4\n\
-    movs r0, 0\n\
-    b _080CF7D8\n\
-_080CF7A8:\n\
-    lsls r0, r4, 24\n\
-    movs r1, 0xFF\n\
-    lsls r1, 24\n\
-    adds r0, r1\n\
-    lsrs r4, r0, 24\n\
-    cmp r0, 0\n\
-    bge _080CF7B8\n\
-    movs r4, 0x6\n\
-_080CF7B8:\n\
-    lsls r0, r4, 24\n\
-    asrs r0, 24\n\
-    movs r1, 0\n\
-    ldrsb r1, [r6, r1]\n\
-    cmp r0, r1\n\
-    beq _080CF7C6\n\
-    movs r7, 0x1\n\
-_080CF7C6:\n\
-    cmp r7, 0\n\
-    beq _080CF7D6\n\
-_080CF7CA:\n\
-    cmp r7, 0x6\n\
-    beq _080CF7D6\n\
-    mov r0, r9\n\
-    adds r1, r4, 0\n\
-    bl sub_80CD894\n\
-_080CF7D6:\n\
-    adds r0, r7, 0\n\
-_080CF7D8:\n\
-    pop {r3,r4}\n\
-    mov r8, r3\n\
-    mov r9, r4\n\
-    pop {r4-r7}\n\
-    pop {r1}\n\
-    bx r1");
-}
-#endif
 
-#ifdef NONMATCHING
 static u8 HandleInput_OnBox(void)
 {
     u8 retVal;
     s8 cursorArea;
     s8 cursorPosition;
 
-    sPSSData->field_CD3 = 0;
-    sPSSData->field_CD2 = 0;
-    sPSSData->field_CD7 = 0;
-
     do
     {
+        sPSSData->field_CD3 = 0;
+        sPSSData->field_CD2 = 0;
+        sPSSData->field_CD7 = 0;
+
         if (gMain.newAndRepeatedKeys & DPAD_UP)
         {
             retVal = 1;
@@ -7988,152 +7414,30 @@ static u8 HandleInput_OnBox(void)
 
     return retVal;
 }
-#else
-NAKED
-static u8 HandleInput_OnBox(void)
-{
-    asm_unified("\n\
-                    push {r4-r6,lr}\n\
-    ldr r3, =sPSSData\n\
-    ldr r0, [r3]\n\
-    ldr r1, =0x00000cd3\n\
-    adds r0, r1\n\
-    movs r1, 0\n\
-    strb r1, [r0]\n\
-    ldr r0, [r3]\n\
-    ldr r2, =0x00000cd2\n\
-    adds r0, r2\n\
-    strb r1, [r0]\n\
-    ldr r0, [r3]\n\
-    ldr r5, =0x00000cd7\n\
-    adds r0, r5\n\
-    strb r1, [r0]\n\
-    ldr r1, =gMain\n\
-    ldrh r2, [r1, 0x30]\n\
-    movs r0, 0x40\n\
-    ands r0, r2\n\
-    cmp r0, 0\n\
-    bne _080CF8AA\n\
-    movs r0, 0x80\n\
-    ands r0, r2\n\
-    cmp r0, 0\n\
-    beq _080CF834\n\
-    movs r4, 0x1\n\
-    movs r1, 0\n\
-    movs r6, 0x2\n\
-    b _080CF8B6\n\
-    .pool\n\
-_080CF834:\n\
-    ldrh r2, [r1, 0x2C]\n\
-    movs r0, 0x20\n\
-    ands r0, r2\n\
-    cmp r0, 0\n\
-    bne _080CF85A\n\
-    movs r0, 0x10\n\
-    ands r0, r2\n\
-    cmp r0, 0\n\
-    bne _080CF86E\n\
-    ldr r0, =gSaveBlock2Ptr\n\
-    ldr r0, [r0]\n\
-    ldrb r0, [r0, 0x13]\n\
-    cmp r0, 0x1\n\
-    bne _080CF872\n\
-    movs r0, 0x80\n\
-    lsls r0, 2\n\
-    ands r0, r2\n\
-    cmp r0, 0\n\
-    beq _080CF864\n\
-_080CF85A:\n\
-    movs r0, 0xA\n\
-    b _080CF8D2\n\
-    .pool\n\
-_080CF864:\n\
-    movs r0, 0x80\n\
-    lsls r0, 1\n\
-    ands r0, r2\n\
-    cmp r0, 0\n\
-    beq _080CF872\n\
-_080CF86E:\n\
-    movs r0, 0x9\n\
-    b _080CF8D2\n\
-_080CF872:\n\
-    ldrh r1, [r1, 0x2E]\n\
-    movs r0, 0x1\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF88A\n\
-    movs r0, 0\n\
-    bl sub_80CD1A8\n\
-    bl AddBoxMenu\n\
-    movs r0, 0x7\n\
-    b _080CF8D2\n\
-_080CF88A:\n\
-    movs r0, 0x2\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF896\n\
-    movs r0, 0x13\n\
-    b _080CF8D2\n\
-_080CF896:\n\
-    movs r0, 0x4\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF8A6\n\
-    bl sub_80CFDC4\n\
-    movs r0, 0\n\
-    b _080CF8D2\n\
-_080CF8A6:\n\
-    movs r4, 0\n\
-    b _080CF8D0\n\
-_080CF8AA:\n\
-    movs r4, 0x1\n\
-    movs r1, 0x3\n\
-    movs r6, 0\n\
-    ldr r0, [r3]\n\
-    adds r0, r5\n\
-    strb r4, [r0]\n\
-_080CF8B6:\n\
-    cmp r4, 0\n\
-    beq _080CF8D0\n\
-    lsls r5, r1, 24\n\
-    cmp r1, 0x2\n\
-    beq _080CF8C6\n\
-    movs r0, 0\n\
-    bl sub_80CD1A8\n\
-_080CF8C6:\n\
-    lsrs r0, r5, 24\n\
-    lsls r1, r6, 24\n\
-    lsrs r1, 24\n\
-    bl sub_80CD894\n\
-_080CF8D0:\n\
-    adds r0, r4, 0\n\
-_080CF8D2:\n\
-    pop {r4-r6}\n\
-    pop {r1}\n\
-    bx r1\n\
-                ");
-}
-#endif
 
-#ifdef NONMATCHING
 static u8 HandleInput_OnButtons(void)
 {
     u8 retVal;
-    s8 cursorArea = sBoxCursorArea;
-    s8 cursorPosition = sBoxCursorPosition;
-
-    sPSSData->field_CD3 = 0;
-    sPSSData->field_CD2 = 0;
-    sPSSData->field_CD7 = 0;
+    s8 cursorArea;
+    s8 cursorPosition;
 
     do
     {
+        cursorArea = sBoxCursorArea;
+        cursorPosition = sBoxCursorPosition;
+        sPSSData->field_CD3 = 0;
+        sPSSData->field_CD2 = 0;
+        sPSSData->field_CD7 = 0;
+
         if (gMain.newAndRepeatedKeys & DPAD_UP)
         {
             retVal = 1;
             cursorArea = CURSOR_AREA_IN_BOX;
             sPSSData->field_CD2 = -1;
-            cursorPosition = (sBoxCursorPosition == 0) ? IN_BOX_COUNT - 1 - 5 : IN_BOX_COUNT - 1;
+            if (sBoxCursorPosition == 0)
+                cursorPosition = IN_BOX_COUNT - 1 - 5;
+            else 
+                cursorPosition = IN_BOX_COUNT - 1;
             sPSSData->field_CD7 = 1;
             break;
         }
@@ -8180,148 +7484,6 @@ static u8 HandleInput_OnButtons(void)
 
     return retVal;
 }
-#else
-NAKED
-static u8 HandleInput_OnButtons(void)
-{
-    asm_unified("\n\
-                    push {r4-r7,lr}\n\
-    mov r7, r8\n\
-    push {r7}\n\
-    ldr r0, =sBoxCursorArea\n\
-    ldrb r0, [r0]\n\
-    mov r8, r0\n\
-    ldr r0, =sBoxCursorPosition\n\
-    mov r12, r0\n\
-    ldrb r2, [r0]\n\
-    ldr r3, =sPSSData\n\
-    ldr r0, [r3]\n\
-    ldr r1, =0x00000cd3\n\
-    adds r0, r1\n\
-    movs r1, 0\n\
-    strb r1, [r0]\n\
-    ldr r0, [r3]\n\
-    ldr r6, =0x00000cd2\n\
-    adds r0, r6\n\
-    strb r1, [r0]\n\
-    ldr r0, [r3]\n\
-    ldr r5, =0x00000cd7\n\
-    adds r0, r5\n\
-    strb r1, [r0]\n\
-    ldr r7, =gMain\n\
-    ldrh r1, [r7, 0x30]\n\
-    movs r0, 0x40\n\
-    ands r0, r1\n\
-    adds r4, r3, 0\n\
-    cmp r0, 0\n\
-    bne _080CF9B2\n\
-    movs r0, 0x88\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF944\n\
-    movs r7, 0x1\n\
-    movs r0, 0x2\n\
-    mov r8, r0\n\
-    movs r2, 0\n\
-    ldr r0, [r4]\n\
-    b _080CF9D0\n\
-    .pool\n\
-_080CF944:\n\
-    movs r0, 0x20\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF960\n\
-    movs r7, 0x1\n\
-    lsls r0, r2, 24\n\
-    movs r1, 0xFF\n\
-    lsls r1, 24\n\
-    adds r0, r1\n\
-    lsrs r2, r0, 24\n\
-    cmp r0, 0\n\
-    bge _080CF9D4\n\
-    movs r2, 0x1\n\
-    b _080CF9D4\n\
-_080CF960:\n\
-    movs r0, 0x10\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF97E\n\
-    movs r7, 0x1\n\
-    lsls r0, r2, 24\n\
-    movs r1, 0x80\n\
-    lsls r1, 17\n\
-    adds r0, r1\n\
-    lsrs r2, r0, 24\n\
-    asrs r0, 24\n\
-    cmp r0, 0x1\n\
-    ble _080CF9D4\n\
-    movs r2, 0\n\
-    b _080CF9D4\n\
-_080CF97E:\n\
-    ldrh r1, [r7, 0x2E]\n\
-    movs r0, 0x1\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF992\n\
-    movs r0, 0x4\n\
-    cmp r2, 0\n\
-    bne _080CF9E2\n\
-    movs r0, 0x5\n\
-    b _080CF9E2\n\
-_080CF992:\n\
-    movs r0, 0x2\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF99E\n\
-    movs r0, 0x13\n\
-    b _080CF9E2\n\
-_080CF99E:\n\
-    movs r0, 0x4\n\
-    ands r0, r1\n\
-    cmp r0, 0\n\
-    beq _080CF9AE\n\
-    bl sub_80CFDC4\n\
-    movs r0, 0\n\
-    b _080CF9E2\n\
-_080CF9AE:\n\
-    movs r7, 0\n\
-    b _080CF9E0\n\
-_080CF9B2:\n\
-    movs r7, 0x1\n\
-    movs r0, 0\n\
-    mov r8, r0\n\
-    ldr r0, [r3]\n\
-    adds r0, r6\n\
-    movs r1, 0xFF\n\
-    strb r1, [r0]\n\
-    mov r1, r12\n\
-    movs r0, 0\n\
-    ldrsb r0, [r1, r0]\n\
-    movs r2, 0x1D\n\
-    cmp r0, 0\n\
-    bne _080CF9CE\n\
-    movs r2, 0x18\n\
-_080CF9CE:\n\
-    ldr r0, [r3]\n\
-_080CF9D0:\n\
-    adds r0, r5\n\
-    strb r7, [r0]\n\
-_080CF9D4:\n\
-    cmp r7, 0\n\
-    beq _080CF9E0\n\
-    mov r0, r8\n\
-    adds r1, r2, 0\n\
-    bl sub_80CD894\n\
-_080CF9E0:\n\
-    adds r0, r7, 0\n\
-_080CF9E2:\n\
-    pop {r3}\n\
-    mov r8, r3\n\
-    pop {r4-r7}\n\
-    pop {r1}\n\
-    bx r1");
-}
-#endif
 
 static u8 HandleInput(void)
 {
@@ -8742,7 +7904,7 @@ static void AddMenu(void)
     DrawStdFrameWithCustomTileAndPalette(sPSSData->field_CB0, FALSE, 11, 14);
     PrintMenuTable(sPSSData->field_CB0, sPSSData->menuItemsCount, (void*)sPSSData->menuItems);
     InitMenuInUpperLeftCornerPlaySoundWhenAPressed(sPSSData->field_CB0, sPSSData->menuItemsCount, 0);
-    schedule_bg_copy_tilemap_to_vram(0);
+    ScheduleBgCopyTilemapToVram(0);
     sPSSData->field_CAE = 0;
 }
 
@@ -9965,7 +9127,7 @@ static bool8 sub_80D18E4(void)
         sub_80D19B4(var);
 
     FillBgTilemapBufferRect(0, 0, var + 1, 12, 1, 9, 0x11);
-    schedule_bg_copy_tilemap_to_vram(0);
+    ScheduleBgCopyTilemapToVram(0);
     return TRUE;
 }
 
@@ -9979,7 +9141,7 @@ static void sub_80D19B4(u32 arg0)
     FillBgTilemapBufferRect(0, 0x13B, arg0, 0xD, 1, 7, 0xFu);
     FillBgTilemapBufferRect(0, 0x13C, arg0, 0xC, 1, 1, 0xFu);
     FillBgTilemapBufferRect(0, 0x13D, arg0, 0x14, 1, 1, 0xFu);
-    schedule_bg_copy_tilemap_to_vram(0);
+    ScheduleBgCopyTilemapToVram(0);
 }
 
 static void sub_80D1A48(struct Sprite *sprite)

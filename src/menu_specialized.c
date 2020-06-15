@@ -704,7 +704,7 @@ void InitMoveRelearnerWindows(bool8 useContextWindow)
     DrawStdFrameWithCustomTileAndPalette(2, 0, 1, 0xE);
     DrawStdFrameWithCustomTileAndPalette(3, 0, 1, 0xE);
     nullsub_79();
-    schedule_bg_copy_tilemap_to_vram(1);
+    ScheduleBgCopyTilemapToVram(1);
 }
 
 static void nullsub_79(void)
@@ -955,7 +955,7 @@ static u8 *sub_81D2CD0(u8 *dst, u16 boxId, u16 monId)
         *(str++) = 9;
         *(str++) = CHAR_SLASH;
         *(str++) = CHAR_SPECIAL_F9;
-        *(str++) = 5;
+        *(str++) = CHAR_LV_2;
         str = ConvertIntToDecimalStringN(str, level, STR_CONV_MODE_LEFT_ALIGN, 3);
         *(str++) = CHAR_SPACE;
         *str = EOS;

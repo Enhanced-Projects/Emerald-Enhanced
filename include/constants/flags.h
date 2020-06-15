@@ -459,9 +459,9 @@
 
 #define FLAG_DEFEATED_DEOXYS                 0x1AC
 #define FLAG_BATTLED_DEOXYS                  0x1AD
-#define FLAG_HAS_EON_TICKET                  0x1AE
-#define FLAG_HAS_AURORA_TICKET               0x1AF
-#define FLAG_HAS_OLD_SEA_MAP                 0x1B0
+#define FLAG_SHOWN_EON_TICKET                0x1AE
+#define FLAG_SHOWN_AURORA_TICKET             0x1AF
+#define FLAG_SHOWN_OLD_SEA_MAP               0x1B0
 #define FLAG_MOVE_TUTOR_TAUGHT_SWAGGER       0x1B1
 #define FLAG_MOVE_TUTOR_TAUGHT_ROLLOUT       0x1B2
 #define FLAG_MOVE_TUTOR_TAUGHT_FURY_CUTTER   0x1B3
@@ -506,7 +506,7 @@
 
 #define FLAG_UNUSED_0x1DA                    0x1DA // Unused Flag
 
-#define FLAG_HAS_MYSTIC_TICKET               0x1DB
+#define FLAG_SHOWN_MYSTIC_TICKET             0x1DB
 #define FLAG_DEFEATED_HO_OH                  0x1DC
 #define FLAG_DEFEATED_LUGIA                  0x1DD
 
@@ -1353,22 +1353,24 @@
 
 #define SYSTEM_FLAGS                                   (TRAINER_FLAGS_END + 1) // 0x860
 
-#define FLAG_SYS_POKEMON_GET                           (SYSTEM_FLAGS + 0) // FLAG_0x860
-#define FLAG_SYS_POKEDEX_GET                           (SYSTEM_FLAGS + 1)
-#define FLAG_SYS_POKENAV_GET                           (SYSTEM_FLAGS + 2)
-#define FLAG_SYS_GAME_CLEAR                            (SYSTEM_FLAGS + 4)
-#define FLAG_SYS_CHAT_USED                             (SYSTEM_FLAGS + 5)
-#define FLAG_SYS_HIPSTER_MEET                          (SYSTEM_FLAGS + 6)
+#define FLAG_SYS_POKEMON_GET                         (SYSTEM_FLAGS + 0x0) // FLAG_0x860
+#define FLAG_SYS_POKEDEX_GET                         (SYSTEM_FLAGS + 0x1)
+#define FLAG_SYS_POKENAV_GET                         (SYSTEM_FLAGS + 0x2)
+#define FLAG_UNUSED_0x863                            (SYSTEM_FLAGS + 0x3)
+#define FLAG_SYS_GAME_CLEAR                          (SYSTEM_FLAGS + 0x4)
+#define FLAG_SYS_CHAT_USED                           (SYSTEM_FLAGS + 0x5)
+#define FLAG_SYS_HIPSTER_MEET                        (SYSTEM_FLAGS + 0x6)
 
 // Badges
-#define FLAG_BADGE01_GET                               (SYSTEM_FLAGS + 7)
-#define FLAG_BADGE02_GET                               (SYSTEM_FLAGS + 8)
-#define FLAG_BADGE03_GET                               (SYSTEM_FLAGS + 9)
+#define FLAG_BADGE01_GET                             (SYSTEM_FLAGS + 0x7)
+#define FLAG_BADGE02_GET                             (SYSTEM_FLAGS + 0x8)
+#define FLAG_BADGE03_GET                             (SYSTEM_FLAGS + 0x9)
 #define FLAG_BADGE04_GET                             (SYSTEM_FLAGS + 0xA)
 #define FLAG_BADGE05_GET                             (SYSTEM_FLAGS + 0xB)
 #define FLAG_BADGE06_GET                             (SYSTEM_FLAGS + 0xC)
 #define FLAG_BADGE07_GET                             (SYSTEM_FLAGS + 0xD)
 #define FLAG_BADGE08_GET                             (SYSTEM_FLAGS + 0xE)
+#define NUM_BADGES                                   (1 + FLAG_BADGE08_GET - FLAG_BADGE01_GET)
 
 // Towns and Cities
 #define FLAG_VISITED_LITTLEROOT_TOWN                 (SYSTEM_FLAGS + 0xF)
@@ -1446,10 +1448,9 @@
 #define FLAG_SYS_REGIROCK_PUZZLE_COMPLETED          (SYSTEM_FLAGS + 0x50)
 #define FLAG_SYS_BRAILLE_REGICE_COMPLETED           (SYSTEM_FLAGS + 0x51)
 #define FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED         (SYSTEM_FLAGS + 0x52)
-#define FLAG_SYS_HAS_EON_TICKET                     (SYSTEM_FLAGS + 0x53)
+#define FLAG_ENABLE_SHIP_SOUTHERN_ISLAND            (SYSTEM_FLAGS + 0x53)
 
 #define FLAG_LANDMARK_POKEMON_LEAGUE                (SYSTEM_FLAGS + 0x54)
-
 #define FLAG_LANDMARK_ISLAND_CAVE                   (SYSTEM_FLAGS + 0x55)
 #define FLAG_LANDMARK_DESERT_RUINS                  (SYSTEM_FLAGS + 0x56)
 #define FLAG_LANDMARK_FOSSIL_MANIACS_HOUSE          (SYSTEM_FLAGS + 0x57)

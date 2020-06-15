@@ -524,7 +524,7 @@ static void sub_80B2CEC(u8 taskId)
 {
     gSpecialVar_Result = 5;
     sub_80B241C(gTasks[taskId].data[5]);
-    sub_8098374();
+    StopFieldMessage();
     RemoveWindow(gTasks[taskId].data[5]);
     EnableBothScriptContexts();
     DestroyTask(taskId);
@@ -1190,16 +1190,16 @@ void Script_ShowLinkTrainerCard(void)
 // color into gStringVar2.
 bool32 GetLinkTrainerCardColor(u8 linkPlayerIndex)
 {
-    u32 trainerCardColorIndex;
+    u32 numStars;
 
     gSpecialVar_0x8006 = linkPlayerIndex;
     StringCopy(gStringVar1, gLinkPlayers[linkPlayerIndex].name);
 
-    trainerCardColorIndex = GetTrainerCardStars(linkPlayerIndex);
-    if (trainerCardColorIndex == 0)
+    numStars = GetTrainerCardStars(linkPlayerIndex);
+    if (numStars == 0)
         return FALSE;
 
-    StringCopy(gStringVar2, gTrainerCardColorNames[trainerCardColorIndex - 1]);
+    StringCopy(gStringVar2, gTrainerCardColorNames[numStars - 1]);
     return TRUE;
 }
 

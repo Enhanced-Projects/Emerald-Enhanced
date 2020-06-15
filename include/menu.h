@@ -8,6 +8,15 @@
 #define MENU_NOTHING_CHOSEN -2
 #define MENU_B_PRESSED -1
 
+enum
+{
+    SAVE_MENU_NAME,
+    SAVE_MENU_CAUGHT,
+    SAVE_MENU_PLAY_TIME,
+    SAVE_MENU_LOCATION,
+    SAVE_MENU_BADGES,
+};
+
 struct MenuAction
 {
     const u8 *text;
@@ -23,7 +32,7 @@ void FreeAllOverworldWindowBuffers(void);
 void InitStandardTextBoxWindows(void);
 void sub_8197200(void);
 u16 RunTextPrintersAndIsPrinter0Active(void);
-void sub_81973A4(void);
+void LoadMessageBoxAndBorderGfx(void);
 void DrawDialogueFrame(u8 windowId, bool8 copyToVram);
 void ClearStdWindowAndFrame(u8 windowId, bool8 copyToVram);
 u16 AddTextPrinterParameterized2(u8 windowId, u8 fontId, const u8 *str, u8 speed, void (*callback)(struct TextPrinterTemplate *, u16), u8 fgColor, u8 bgColor, u8 shadowColor);
@@ -40,16 +49,16 @@ void AddTextPrinterParameterized3(u8 windowId, u8 fontId, u8 left, u8 top, const
 void ClearStdWindowAndFrameToTransparent(u8 windowId, bool8 copyToVram);
 void SetWindowTemplateFields(struct WindowTemplate* template, u8 priority, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 palNum, u16 baseBlock);
 void DrawStdFrameWithCustomTileAndPalette(u8 windowId, bool8 copyToVram, u16 tileStart, u8 palette);
-void schedule_bg_copy_tilemap_to_vram(u8 bgNum);
+void ScheduleBgCopyTilemapToVram(u8 bgNum);
 void PrintMenuTable(u8 windowId, u8 itemCount, const struct MenuAction *strs);
 u8 InitMenuInUpperLeftCornerPlaySoundWhenAPressed(u8 windowId, u8 numItems, u8 initialCursorPos);
 u8 Menu_GetCursorPos(void);
 s8 Menu_ProcessInput(void);
 s8 Menu_ProcessInputNoWrap(void);
 void blit_move_info_icon(u8 winId, u8 a2, u16 x, u16 y);
-void reset_temp_tile_data_buffers(void);
-void *decompress_and_copy_tile_data_to_vram(u8 bgId, const void *src, u32 size, u16 offset, u8 mode);
-bool8 free_temp_tile_data_buffers_if_possible(void);
+void ResetTempTileDataBuffers(void);
+void *DecompressAndCopyTileDataToVram(u8 bgId, const void *src, u32 size, u16 offset, u8 mode);
+bool8 FreeTempTileDataBuffersIfPossible(void);
 struct WindowTemplate CreateWindowTemplate(u8 bg, u8 left, u8 top, u8 width, u8 height, u8 paletteNum, u16 baseBlock);
 void CreateYesNoMenu(const struct WindowTemplate *windowTemplate, u16 borderFirstTileNum, u8 borderPalette, u8 initialCursorPos);
 void DecompressAndLoadBgGfxUsingHeap(u8 bgId, const void *src, u32 size, u16 offset, u8 mode);
@@ -80,7 +89,7 @@ void sub_819786C(u8 windowId, bool8 copyToVram);
 void AddTextPrinterForMessage_2(bool8 allowSkippingDelayWithButtonPress);
 void RemoveStartMenuWindow(void);
 void DisplayYesNoMenuWithDefault(u8 initialCursorPos);
-void sub_819A344(u8 a0, u8 *dest, u8 color);
+void BufferSaveMenuText(u8 textId, u8 *dest, u8 color);
 void RemoveMapNamePopUpWindow(void);
 u8 GetMapNamePopUpWindowId(void);
 u8 AddMapNamePopUpWindow(void);

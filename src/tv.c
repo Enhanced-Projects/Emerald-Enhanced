@@ -47,13 +47,15 @@
 
 // Static type declarations
 
+#define LAST_TVSHOW_IDX (TV_SHOWS_COUNT - 1)
+
 #define rbernoulli(num, den) TV_BernoulliTrial(0xFFFF * (num) / (den))
 
 // Static RAM declarations
 
 s8 sCurTVShowSlot;
 u16 sTV_SecretBaseVisitMovesTemp[8];
-u8 sTV_DecorationsBuffer[16];
+u8 sTV_DecorationsBuffer[DECOR_MAX_SECRET_BASE];
 struct {
     u8 level;
     u16 species;
@@ -131,8 +133,8 @@ void PutPokemonTodayFailedOnTheAir(void);
 static void sub_80ED718(void);
 static void sub_80EED88(void);
 void TV_SortPurchasesByQuantity(void);
-static void sub_80ED8B4(u16 days);
-void UpdateMassOutbreakTimeLeft(u16 days);
+static void UpdateMassOutbreakTimeLeft(u16 days);
+static void TryEndMassOutbreak(u16 days);
 static void sub_80EF120(u16 days);
 static void sub_80EDA48(u16 days);
 static void sub_80EEB98(u16 days);
@@ -191,29 +193,34 @@ static const struct {
     u8 location;
 } sPokeOutbreakSpeciesList[] = {
     {
-        SPECIES_SEEDOT,
-        {MOVE_BIDE, MOVE_HARDEN, MOVE_LEECH_SEED},
-        3, 0x11 // Route 102
+        .species = SPECIES_SEEDOT,
+        .moves = {MOVE_BIDE, MOVE_HARDEN, MOVE_LEECH_SEED},
+        .level = 3, 
+        .location = MAP_NUM(ROUTE102)
     },
     {
-        SPECIES_NUZLEAF,
-        {MOVE_HARDEN, MOVE_GROWTH, MOVE_NATURE_POWER, MOVE_LEECH_SEED},
-        15, 0x1D // Route 114
+        .species = SPECIES_NUZLEAF,
+        .moves = {MOVE_HARDEN, MOVE_GROWTH, MOVE_NATURE_POWER, MOVE_LEECH_SEED},
+        .level = 15, 
+        .location = MAP_NUM(ROUTE114),
     },
     {
-        SPECIES_SEEDOT,
-        {MOVE_HARDEN, MOVE_GROWTH, MOVE_NATURE_POWER, MOVE_LEECH_SEED},
-        13, 0x20 // Route 117
+        .species = SPECIES_SEEDOT,
+        .moves = {MOVE_HARDEN, MOVE_GROWTH, MOVE_NATURE_POWER, MOVE_LEECH_SEED},
+        .level = 13, 
+        .location = MAP_NUM(ROUTE117),
     },
     {
-        SPECIES_SEEDOT,
-        {MOVE_GIGA_DRAIN, MOVE_FRUSTRATION, MOVE_SOLAR_BEAM, MOVE_LEECH_SEED},
-        25, 0x23 // Route 110
+        .species = SPECIES_SEEDOT,
+        .moves = {MOVE_GIGA_DRAIN, MOVE_FRUSTRATION, MOVE_SOLAR_BEAM, MOVE_LEECH_SEED},
+        .level = 25, 
+        .location = MAP_NUM(ROUTE120),
     },
     {
-        SPECIES_SKITTY,
-        {MOVE_GROWL, MOVE_TACKLE, MOVE_TAIL_WHIP, MOVE_ATTRACT},
-        8, 0x1F // Route 116
+        .species = SPECIES_SKITTY,
+        .moves = {MOVE_GROWL, MOVE_TACKLE, MOVE_TAIL_WHIP, MOVE_ATTRACT},
+        .level = 8, 
+        .location = MAP_NUM(ROUTE116),
     }
 };
 
@@ -1039,7 +1046,7 @@ u8 GabbyAndTyGetLastBattleTrivia(void)
     return 0;
 }
 
-void GabbyAndTySetScriptVarsToEventObjectLocalIds(void)
+void GabbyAndTySetScriptVarsToObjectEventLocalIds(void)
 {
     switch (GabbyAndTyGetBattleNum())
     {
@@ -1176,10 +1183,10 @@ void UpdateWorldOfMastersAndPutItOnTheAir(void)
 {
     TVShow *show;
 
-    show = &gSaveBlock1Ptr->tvShows[24];
+    show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
     if (show->worldOfMasters.kind != TVSHOW_WORLD_OF_MASTERS)
     {
-        DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, 24);
+        DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, LAST_TVSHOW_IDX);
         show->worldOfMasters.steps = GetGameStat(GAME_STAT_STEPS);
         show->worldOfMasters.kind = TVSHOW_WORLD_OF_MASTERS;
     }
@@ -1255,7 +1262,7 @@ static void InterviewAfter_ContestLiveUpdates(void)
     TVShow *show;
     TVShow *show2;
 
-    show = &gSaveBlock1Ptr->tvShows[24];
+    show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
     if (show->contestLiveUpdates.kind == TVSHOW_CONTEST_LIVE_UPDATES)
     {
         show2 = &gSaveBlock1Ptr->tvShows[sCurTVShowSlot];
@@ -1274,7 +1281,7 @@ static void InterviewAfter_ContestLiveUpdates(void)
         tv_store_id_2x(show2);
         show2->contestLiveUpdates.language = gGameLanguage;
         show2->contestLiveUpdates.winningTrainerLanguage = show->contestLiveUpdates.winningTrainerLanguage;
-        DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, 24);
+        DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, LAST_TVSHOW_IDX);
     }
 }
 
@@ -1396,11 +1403,11 @@ void ContestLiveUpdates_BeforeInterview_1(u8 a0)
 {
     TVShow *show;
 
-    DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, 24);
+    DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, LAST_TVSHOW_IDX);
     sCurTVShowSlot = FindEmptyTVSlotWithinFirstFiveShowsOfArray(gSaveBlock1Ptr->tvShows);
     if (sCurTVShowSlot != -1)
     {
-        show = &gSaveBlock1Ptr->tvShows[24];
+        show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
         show->contestLiveUpdates.round1Rank = a0;
         show->contestLiveUpdates.kind = TVSHOW_CONTEST_LIVE_UPDATES;
     }
@@ -1410,7 +1417,7 @@ void ContestLiveUpdates_BeforeInterview_2(u8 a0)
 {
     TVShow *show;
 
-    show = &gSaveBlock1Ptr->tvShows[24];
+    show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
     sCurTVShowSlot = FindEmptyTVSlotWithinFirstFiveShowsOfArray(gSaveBlock1Ptr->tvShows);
     if (sCurTVShowSlot != -1)
     {
@@ -1422,7 +1429,7 @@ void ContestLiveUpdates_BeforeInterview_3(u8 a0)
 {
     TVShow *show;
 
-    show = &gSaveBlock1Ptr->tvShows[24];
+    show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
     sCurTVShowSlot = FindEmptyTVSlotWithinFirstFiveShowsOfArray(gSaveBlock1Ptr->tvShows);
     if (sCurTVShowSlot != -1)
     {
@@ -1434,7 +1441,7 @@ void ContestLiveUpdates_BeforeInterview_4(u16 a0)
 {
     TVShow *show;
 
-    show = &gSaveBlock1Ptr->tvShows[24];
+    show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
     sCurTVShowSlot = FindEmptyTVSlotWithinFirstFiveShowsOfArray(gSaveBlock1Ptr->tvShows);
     if (sCurTVShowSlot != -1)
     {
@@ -1446,7 +1453,7 @@ void ContestLiveUpdates_BeforeInterview_5(u8 a0, u8 a1)
 {
     TVShow *show;
 
-    show = &gSaveBlock1Ptr->tvShows[24];
+    show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
     sCurTVShowSlot = FindEmptyTVSlotWithinFirstFiveShowsOfArray(gSaveBlock1Ptr->tvShows);
     if (sCurTVShowSlot != -1)
     {
@@ -1474,7 +1481,7 @@ static void InterviewAfter_BravoTrainerPokemonProfile(void)
     TVShow *show;
     TVShow *show2;
 
-    show = &gSaveBlock1Ptr->tvShows[24];
+    show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
     if (show->bravoTrainer.kind == TVSHOW_BRAVO_TRAINER_POKEMON_PROFILE)
     {
         show2 = &gSaveBlock1Ptr->tvShows[sCurTVShowSlot];
@@ -1498,7 +1505,7 @@ static void InterviewAfter_BravoTrainerPokemonProfile(void)
         {
             show2->bravoTrainer.pokemonNameLanguage = show->bravoTrainer.pokemonNameLanguage;
         }
-        DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, 24);
+        DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, LAST_TVSHOW_IDX);
     }
 }
 
@@ -1506,12 +1513,12 @@ void BravoTrainerPokemonProfile_BeforeInterview1(u16 a0)
 {
     TVShow *show;
 
-    show = &gSaveBlock1Ptr->tvShows[24];
+    show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
     InterviewBefore_BravoTrainerPkmnProfile();
     sCurTVShowSlot = FindEmptyTVSlotWithinFirstFiveShowsOfArray(gSaveBlock1Ptr->tvShows);
     if (sCurTVShowSlot != -1)
     {
-        DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, 24);
+        DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, LAST_TVSHOW_IDX);
         show->bravoTrainer.move = a0;
         show->bravoTrainer.kind = TVSHOW_BRAVO_TRAINER_POKEMON_PROFILE;
     }
@@ -1521,7 +1528,7 @@ void BravoTrainerPokemonProfile_BeforeInterview2(u8 contestStandingPlace)
 {
     TVShow *show;
 
-    show = &gSaveBlock1Ptr->tvShows[24];
+    show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
     sCurTVShowSlot = FindEmptyTVSlotWithinFirstFiveShowsOfArray(gSaveBlock1Ptr->tvShows);
     if (sCurTVShowSlot != -1)
     {
@@ -1734,7 +1741,7 @@ static void sub_80ED718(void)
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR))
     {
-        for (i = 0; i < 24; i ++)
+        for (i = 0; i < LAST_TVSHOW_IDX; i ++)
         {
             if (gSaveBlock1Ptr->tvShows[i].common.kind == TVSHOW_MASS_OUTBREAK)
             {
@@ -1791,49 +1798,42 @@ void EndMassOutbreak(void)
 
 void UpdateTVShowsPerDay(u16 days)
 {
-    sub_80ED8B4(days);
     UpdateMassOutbreakTimeLeft(days);
+    TryEndMassOutbreak(days);
     sub_80EF120(days);
     sub_80EDA48(days);
     sub_80EEB98(days);
 }
 
-static void sub_80ED8B4(u16 days)
+static void UpdateMassOutbreakTimeLeft(u16 days)
 {
     u8 i;
     TVShow *show;
 
     if (gSaveBlock1Ptr->outbreakPokemonSpecies == SPECIES_NONE)
     {
-        for (i = 0; i < 24; i ++)
+        for (i = 0; i < LAST_TVSHOW_IDX; i ++)
         {
             if (gSaveBlock1Ptr->tvShows[i].massOutbreak.kind == TVSHOW_MASS_OUTBREAK && gSaveBlock1Ptr->tvShows[i].massOutbreak.active == TRUE)
             {
                 show = &gSaveBlock1Ptr->tvShows[i];
                 if (show->massOutbreak.daysLeft < days)
-                {
                     show->massOutbreak.daysLeft = 0;
-                }
                 else
-                {
                     show->massOutbreak.daysLeft -= days;
-                }
+
                 break;
             }
         }
     }
 }
 
-void UpdateMassOutbreakTimeLeft(u16 days)
+static void TryEndMassOutbreak(u16 days)
 {
     if (gSaveBlock1Ptr->outbreakDaysLeft <= days)
-    {
         EndMassOutbreak();
-    }
     else
-    {
         gSaveBlock1Ptr->outbreakDaysLeft -= days;
-    }
 }
 
 void sub_80ED950(bool8 flag)
@@ -1892,14 +1892,14 @@ static void sub_80EDA48(u16 days)
 {
     TVShow *show;
 
-    show = &gSaveBlock1Ptr->tvShows[24];
+    show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
     if (show->worldOfMasters.kind == TVSHOW_WORLD_OF_MASTERS)
     {
         if (show->worldOfMasters.numPokeCaught >= 20)
         {
             sub_80EDA80();
         }
-        DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, 24);
+        DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, LAST_TVSHOW_IDX);
     }
 }
 
@@ -1908,7 +1908,7 @@ void sub_80EDA80(void)
     TVShow *show;
     TVShow *show2;
 
-    show = &gSaveBlock1Ptr->tvShows[24];
+    show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
     if (!rbernoulli(1, 1))
     {
         sCurTVShowSlot = FindEmptyTVSlotBeyondFirstFiveShowsOfArray(gSaveBlock1Ptr->tvShows);
@@ -1925,7 +1925,7 @@ void sub_80EDA80(void)
             StringCopy(show2->worldOfMasters.playerName, gSaveBlock2Ptr->playerName);
             tv_store_id_3x(show2);
             show2->worldOfMasters.language = gGameLanguage;
-            DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, 24);
+            DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, LAST_TVSHOW_IDX);
         }
     }
 }
@@ -1943,7 +1943,7 @@ void sub_80EDB44(void)
         show = &gSaveBlock1Ptr->tvShows[sCurTVShowSlot];
         show->rivalTrainer.kind = TVSHOW_TODAYS_RIVAL_TRAINER;
         show->rivalTrainer.active = FALSE;
-        for (i = FLAG_BADGE01_GET, nBadges = 0; i < FLAG_BADGE01_GET + 8; i ++)
+        for (i = FLAG_BADGE01_GET, nBadges = 0; i < FLAG_BADGE01_GET + NUM_BADGES; i ++)
         {
             if (FlagGet(i))
             {
@@ -2093,16 +2093,16 @@ static void sub_80EDE98(TVShow *show)
     u8 deco;
     u8 x;
 
-    for (i = 0; i < 16; i ++)
+    for (i = 0; i < DECOR_MAX_SECRET_BASE; i ++)
     {
         sTV_DecorationsBuffer[i] = 0;
     }
-    for (i = 0, n = 0; i < 16; i ++)
+    for (i = 0, n = 0; i < DECOR_MAX_SECRET_BASE; i ++)
     {
         deco = gSaveBlock1Ptr->secretBases[0].decorations[i];
         if (deco)
         {
-            for (j = 0; j < 16; j ++)
+            for (j = 0; j < DECOR_MAX_SECRET_BASE; j ++)
             {
                 if (sTV_DecorationsBuffer[j] == 0)
                 {
@@ -2481,7 +2481,7 @@ bool8 ShouldAirFrontierTVShow(void)
     {
         shows = gSaveBlock1Ptr->tvShows;
         playerId = GetPlayerIDAsU32();
-        for (showIdx = 5; showIdx < 24; showIdx ++)
+        for (showIdx = 5; showIdx < LAST_TVSHOW_IDX; showIdx ++)
         {
             if (shows[showIdx].common.kind == TVSHOW_FRONTIER && (playerId & 0xFF) == shows[showIdx].common.trainerIdLo && ((playerId >> 8) & 0xFF) == shows[showIdx].common.trainerIdHi)
             {
@@ -2681,7 +2681,7 @@ s8 sub_80EEE30(PokeNews *pokeNews)
 {
     s8 i;
 
-    for (i = 0; i < 16; i ++)
+    for (i = 0; i < POKE_NEWS_COUNT; i ++)
     {
         if (pokeNews[i].kind == 0)
         {
@@ -2695,7 +2695,7 @@ void ClearPokemonNews(void)
 {
     u8 i;
 
-    for (i = 0; i < 16; i ++)
+    for (i = 0; i < POKE_NEWS_COUNT; i ++)
     {
         ClearPokemonNewsI(i);
     }
@@ -2713,11 +2713,11 @@ static void sub_80EEEB8(void)
     u8 i;
     u8 j;
 
-    for (i = 0; i < 15; i ++)
+    for (i = 0; i < POKE_NEWS_COUNT - 1; i ++)
     {
         if (gSaveBlock1Ptr->pokeNews[i].kind == POKENEWS_NONE)
         {
-            for (j = i + 1; j < 16; j ++)
+            for (j = i + 1; j < POKE_NEWS_COUNT; j ++)
             {
                 if (gSaveBlock1Ptr->pokeNews[j].kind != POKENEWS_NONE)
                 {
@@ -2734,7 +2734,7 @@ u8 FindAnyTVNewsOnTheAir(void)
 {
     u8 i;
 
-    for (i = 0; i < 16; i ++)
+    for (i = 0; i < POKE_NEWS_COUNT; i ++)
     {
         if (gSaveBlock1Ptr->pokeNews[i].kind != POKENEWS_NONE && gSaveBlock1Ptr->pokeNews[i].state == TRUE && gSaveBlock1Ptr->pokeNews[i].days < 3)
         {
@@ -2828,7 +2828,7 @@ bool8 sub_80EF0E4(u8 newsKind)
     {
         return TRUE;
     }
-    for (i = 0; i < 16; i ++)
+    for (i = 0; i < POKE_NEWS_COUNT; i ++)
     {
         if (gSaveBlock1Ptr->pokeNews[i].kind == newsKind)
         {
@@ -2842,7 +2842,7 @@ static void sub_80EF120(u16 days)
 {
     u8 i;
 
-    for (i = 0; i < 16; i ++)
+    for (i = 0; i < POKE_NEWS_COUNT; i ++)
     {
         if (gSaveBlock1Ptr->pokeNews[i].kind != POKENEWS_NONE)
         {
@@ -2965,7 +2965,7 @@ bool8 HasMixableShowAlreadyBeenSpawnedWithPlayerID(u8 kind, bool8 flag)
 
     shows = gSaveBlock1Ptr->tvShows;
     playerId = GetPlayerIDAsU32();
-    for (i = 5; i < 24; i ++)
+    for (i = 5; i < LAST_TVSHOW_IDX; i ++)
     {
         if (shows[i].common.kind == kind && (playerId & 0xFF) == shows[i].common.trainerIdLo && ((playerId >> 8) & 0xFF) == shows[i].common.trainerIdHi)
         {
@@ -3195,11 +3195,11 @@ static void sub_80EF93C(TVShow *shows)
             }
         }
     }
-    for (i = 5; i < 24; i ++)
+    for (i = 5; i < LAST_TVSHOW_IDX; i ++)
     {
         if (shows[i].common.kind == TVSHOW_OFF_AIR)
         {
-            for (j = i + 1; j < 24; j ++)
+            for (j = i + 1; j < LAST_TVSHOW_IDX; j ++)
             {
                 if (shows[j].common.kind != TVSHOW_OFF_AIR)
                 {
@@ -3279,7 +3279,7 @@ s8 FindEmptyTVSlotBeyondFirstFiveShowsOfArray(TVShow *shows)
 {
     s8 i;
 
-    for (i = 5; i < 24; i ++)
+    for (i = 5; i < LAST_TVSHOW_IDX; i ++)
     {
         if (shows[i].common.kind == TVSHOW_OFF_AIR)
         {
@@ -3598,7 +3598,7 @@ void GetMomOrDadStringForTVMessage(void)
 void HideBattleTowerReporter(void)
 {
     VarSet(VAR_BRAVO_TRAINER_BATTLE_TOWER_ON, 0);
-    RemoveEventObjectByLocalIdAndMap(5, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    RemoveObjectEventByLocalIdAndMap(5, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
     FlagSet(FLAG_HIDE_BATTLE_TOWER_REPORTER);
 }
 
@@ -3790,7 +3790,7 @@ static s8 sub_80F06D0(TVShow *tvShows)
 {
     u8 i;
 
-    for (i = 0; i < 24; i ++)
+    for (i = 0; i < LAST_TVSHOW_IDX; i ++)
     {
         if (tvShows[i].common.active == FALSE && (u8)(tvShows[i].common.kind - 1) < 60)
         {
@@ -3800,25 +3800,28 @@ static s8 sub_80F06D0(TVShow *tvShows)
     return -1;
 }
 
-#ifdef NONMATCHING
 static void sub_80F0708(void) // FIXME: register allocation shenanigans
 {
     u16 i;
-    TVShow *show;
+    u16 j;
 
-    for (i = 0; i < 24; i ++)
+    for (i = 0; i < LAST_TVSHOW_IDX; i ++)
     {
         switch (gSaveBlock1Ptr->tvShows[i].common.kind)
         {
             case TVSHOW_CONTEST_LIVE_UPDATES:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->contestLiveUpdates.species, i);
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->contestLiveUpdates.winningSpecies, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->contestLiveUpdates.species;
+                sub_80F0B24(j, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->contestLiveUpdates.winningSpecies;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_3_CHEERS_FOR_POKEBLOCKS:
                 break;
             case TVSHOW_BATTLE_UPDATE:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->battleUpdate.speciesPlayer, i);
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->battleUpdate.speciesOpponent, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->battleUpdate.speciesPlayer;
+                sub_80F0B24(j, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->battleUpdate.speciesOpponent;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_FAN_CLUB_SPECIAL:
                 break;
@@ -3828,43 +3831,57 @@ static void sub_80F0708(void) // FIXME: register allocation shenanigans
             case TVSHOW_OFF_AIR:
                 break;
             case TVSHOW_FAN_CLUB_LETTER:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->fanclubLetter.species, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->fanclubLetter.species;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_RECENT_HAPPENINGS:
                 break;
             case TVSHOW_PKMN_FAN_CLUB_OPINIONS:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->fanclubOpinions.species, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->fanclubOpinions.species;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_UNKN_SHOWTYPE_04:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->unkShow04.var06, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->unkShow04.var06;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_NAME_RATER_SHOW:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->nameRaterShow.species, i);
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->nameRaterShow.randomSpecies, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->nameRaterShow.species;
+                sub_80F0B24(j, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->nameRaterShow.randomSpecies;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_BRAVO_TRAINER_POKEMON_PROFILE:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->bravoTrainer.species, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->bravoTrainer.species;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_BRAVO_TRAINER_BATTLE_TOWER_PROFILE:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->bravoTrainerTower.species, i);
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->bravoTrainerTower.defeatedSpecies, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->bravoTrainerTower.species;
+                sub_80F0B24(j, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->bravoTrainerTower.defeatedSpecies;
+                sub_80F0B24(j, i);
                 break;
 
             case TVSHOW_POKEMON_TODAY_CAUGHT:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->pokemonToday.species, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->pokemonToday.species;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_SMART_SHOPPER:
                 break;
             case TVSHOW_POKEMON_TODAY_FAILED:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->pokemonTodayFailed.species, i);
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->pokemonTodayFailed.species2, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->pokemonTodayFailed.species;
+                sub_80F0B24(j, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->pokemonTodayFailed.species2;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_FISHING_ADVICE:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->pokemonAngler.species, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->pokemonAngler.species;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_WORLD_OF_MASTERS:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->worldOfMasters.species, i);
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->worldOfMasters.caughtPoke, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->worldOfMasters.species;
+                sub_80F0B24(j, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->worldOfMasters.caughtPoke;
+                sub_80F0B24(j, i);
                 break;
 
             case TVSHOW_TODAYS_RIVAL_TRAINER:
@@ -3876,37 +3893,48 @@ static void sub_80F0708(void) // FIXME: register allocation shenanigans
             case TVSHOW_FIND_THAT_GAMER:
                 break;
             case TVSHOW_BREAKING_NEWS:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->breakingNews.lastOpponentSpecies, i);
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->breakingNews.poke1Species, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->breakingNews.lastOpponentSpecies;
+                sub_80F0B24(j, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->breakingNews.poke1Species;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_SECRET_BASE_VISIT:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->secretBaseVisit.species, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->secretBaseVisit.species;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_LOTTO_WINNER:
                 break;
             case TVSHOW_BATTLE_SEMINAR:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->battleSeminar.species, i);
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->battleSeminar.foeSpecies, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->battleSeminar.species;
+                sub_80F0B24(j, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->battleSeminar.foeSpecies;
+                sub_80F0B24(j, i);
                 break;
             case TVSHOW_TRAINER_FAN_CLUB:
                 break;
             case TVSHOW_CUTIES:
                 break;
             case TVSHOW_FRONTIER:
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->frontier.species1, i);
-                sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->frontier.species2, i);
-                switch ((&gSaveBlock1Ptr->tvShows[i])->frontier.facility)
+                j = (&gSaveBlock1Ptr->tvShows[i])->frontier.species1;
+                sub_80F0B24(j, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->frontier.species2;
+                sub_80F0B24(j, i);
+                j = (&gSaveBlock1Ptr->tvShows[i])->frontier.facility;
+                switch (j)
                 {
                     case  3:
                     case  4:
                         break;
                     case  1:
                     case  5 ... 13:
-                        sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->frontier.species3, i);
+                        j = (&gSaveBlock1Ptr->tvShows[i])->frontier.species3;
+                        sub_80F0B24(j, i);
                         break;
                     case 2:
-                        sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->frontier.species3, i);
-                        sub_80F0B24((&gSaveBlock1Ptr->tvShows[i])->frontier.species4, i);
+                        j = (&gSaveBlock1Ptr->tvShows[i])->frontier.species3;
+                        sub_80F0B24(j, i);
+                        j = (&gSaveBlock1Ptr->tvShows[i])->frontier.species4;
+                        sub_80F0B24(j, i);
                         break;
                 }
                 break;
@@ -3926,444 +3954,6 @@ static void sub_80F0708(void) // FIXME: register allocation shenanigans
         }
     }
 }
-#else
-NAKED static void sub_80F0708(void)
-{
-    asm_unified("\tpush {r4-r7,lr}\n"
-                    "\tmov r7, r9\n"
-                    "\tmov r6, r8\n"
-                    "\tpush {r6,r7}\n"
-                    "\tsub sp, 0x8\n"
-                    "\tmovs r0, 0\n"
-                    "\tmov r9, r0\n"
-                    "_080F0716:\n"
-                    "\tldr r3, =gSaveBlock1Ptr\n"
-                    "\tldr r1, [r3]\n"
-                    "\tmov r4, r9\n"
-                    "\tlsls r2, r4, 3\n"
-                    "\tadds r0, r2, r4\n"
-                    "\tlsls r0, 2\n"
-                    "\tadds r1, r0\n"
-                    "\tldr r0, =0x000027cc\n"
-                    "\tadds r1, r0\n"
-                    "\tldrb r0, [r1]\n"
-                    "\tadds r7, r2, 0\n"
-                    "\tcmp r0, 0x29\n"
-                    "\tbls _080F0732\n"
-                    "\tb _080F0AD8\n"
-                    "_080F0732:\n"
-                    "\tlsls r0, 2\n"
-                    "\tldr r1, =_080F0748\n"
-                    "\tadds r0, r1\n"
-                    "\tldr r0, [r0]\n"
-                    "\tmov pc, r0\n"
-                    "\t.pool\n"
-                    "\t.align 2, 0\n"
-                    "_080F0748:\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_OFF_AIR\n"
-                    "\t.4byte _080F0848  @ TVSHOW_FAN_CLUB_LETTER\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_RECENT_HAPPENINGS\n"
-                    "\t.4byte _080F0860  @ TVSHOW_PKMN_FAN_CLUB_OPINIONS\n"
-                    "\t.4byte _080F0878  @ TVSHOW_UNKN_SHOWTYPE_04\n"
-                    "\t.4byte _080F0890  @ TVSHOW_NAME_RATER_SHOW\n"
-                    "\t.4byte _080F08BC  @ TVSHOW_BRAVO_TRAINER_POKEMON_PROFILE\n"
-                    "\t.4byte _080F08D4  @ TVSHOW_BRAVO_TRAINER_BATTLE_TOWER_PROFILE\n"
-                    "\t.4byte _080F07F0  @ TVSHOW_CONTEST_LIVE_UPDATES\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_3_CHEERS_FOR_POKEBLOCKS\n"
-                    "\t.4byte _080F081C  @ TVSHOW_BATTLE_UPDATE\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_FAN_CLUB_SPECIAL\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_CONTEST_LIVE_UPDATES_2\n"
-                    "\t.4byte _080F0AD8  @ \n"
-                    "\t.4byte _080F0AD8  @ \n"
-                    "\t.4byte _080F0AD8  @ \n"
-                    "\t.4byte _080F0AD8  @ \n"
-                    "\t.4byte _080F0AD8  @ \n"
-                    "\t.4byte _080F0AD8  @ \n"
-                    "\t.4byte _080F0AD8  @ \n"
-                    "\t.4byte _080F0AD8  @ \n"
-                    "\t.4byte _080F0900  @ TVSHOW_POKEMON_TODAY_CAUGHT\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_SMART_SHOPPER\n"
-                    "\t.4byte _080F0918  @ TVSHOW_POKEMON_TODAY_FAILED\n"
-                    "\t.4byte _080F0944  @ TVSHOW_FISHING_ADVICE\n"
-                    "\t.4byte _080F095C  @ TVSHOW_WORLD_OF_MASTERS\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_TODAYS_RIVAL_TRAINER\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_TREND_WATCHER\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_TREASURE_INVESTIGATORS\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_FIND_THAT_GAMER\n"
-                    "\t.4byte _080F0974  @ TVSHOW_BREAKING_NEWS\n"
-                    "\t.4byte _080F09A0  @ TVSHOW_SECRET_BASE_VISIT\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_LOTTO_WINNER\n"
-                    "\t.4byte _080F09C0  @ TVSHOW_BATTLE_SEMINAR\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_TRAINER_FAN_CLUB\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_CUTIES\n"
-                    "\t.4byte _080F09F4  @ TVSHOW_FRONTIER\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_NUMBER_ONE\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_SECRET_BASE_SECRETS\n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_SAFARI_FAN_CLUB\n"
-                    "\t.4byte _080F0AD8  @ \n"
-                    "\t.4byte _080F0AE2_break  @ TVSHOW_MASS_OUTBREAK\n"
-                    "_080F07F0:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r1, r9\n"
-                    "\tadds r4, r7, r1\n"
-                    "\tlsls r4, 2\n"
-                    "\tadds r0, r4, r0\n"
-                    "\tldr r6, =0x000027cc\n"
-                    "\tadds r0, r6\n"
-                    "\tldrh r0, [r0, 0x12]\n"
-                    "\tlsls r5, r1, 24\n"
-                    "\tlsrs r5, 24\n"
-                    "\tadds r1, r5, 0\n"
-                    "\tstr r3, [sp, 0x4]\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tldr r3, [sp, 0x4]\n"
-                    "\tldr r0, [r3]\n"
-                    "\tadds r4, r0\n"
-                    "\tadds r4, r6\n"
-                    "\tldrh r0, [r4, 0x2]\n"
-                    "\tb _080F09E6\n"
-                    "\t.pool\n"
-                    "_080F081C:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r2, r9\n"
-                    "\tadds r4, r7, r2\n"
-                    "\tlsls r4, 2\n"
-                    "\tadds r0, r4, r0\n"
-                    "\tldr r6, =0x000027cc\n"
-                    "\tadds r0, r6\n"
-                    "\tldrh r0, [r0, 0x16]\n"
-                    "\tlsls r5, r2, 24\n"
-                    "\tlsrs r5, 24\n"
-                    "\tadds r1, r5, 0\n"
-                    "\tstr r3, [sp, 0x4]\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tldr r3, [sp, 0x4]\n"
-                    "\tldr r0, [r3]\n"
-                    "\tadds r4, r0\n"
-                    "\tadds r4, r6\n"
-                    "\tldrh r0, [r4, 0x2]\n"
-                    "\tb _080F09E6\n"
-                    "\t.pool\n"
-                    "_080F0848:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r4, r9\n"
-                    "\tadds r1, r7, r4\n"
-                    "\tlsls r1, 2\n"
-                    "\tadds r1, r0\n"
-                    "\tldr r0, =0x000027cc\n"
-                    "\tadds r1, r0\n"
-                    "\tldrh r0, [r1, 0x2]\n"
-                    "\tb _080F09B0\n"
-                    "\t.pool\n"
-                    "_080F0860:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r2, r9\n"
-                    "\tadds r1, r7, r2\n"
-                    "\tlsls r1, 2\n"
-                    "\tadds r1, r0\n"
-                    "\tldr r4, =0x000027cc\n"
-                    "\tadds r1, r4\n"
-                    "\tldrh r0, [r1, 0x2]\n"
-                    "\tlsls r1, r2, 24\n"
-                    "\tb _080F09B2\n"
-                    "\t.pool\n"
-                    "_080F0878:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r2, r9\n"
-                    "\tadds r1, r7, r2\n"
-                    "\tlsls r1, 2\n"
-                    "\tadds r1, r0\n"
-                    "\tldr r4, =0x000027cc\n"
-                    "\tadds r1, r4\n"
-                    "\tldrh r0, [r1, 0x6]\n"
-                    "\tlsls r1, r2, 24\n"
-                    "\tb _080F09B2\n"
-                    "\t.pool\n"
-                    "_080F0890:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r1, r9\n"
-                    "\tadds r4, r7, r1\n"
-                    "\tlsls r4, 2\n"
-                    "\tadds r0, r4, r0\n"
-                    "\tldr r6, =0x000027cc\n"
-                    "\tadds r0, r6\n"
-                    "\tldrh r0, [r0, 0x2]\n"
-                    "\tlsls r5, r1, 24\n"
-                    "\tlsrs r5, 24\n"
-                    "\tadds r1, r5, 0\n"
-                    "\tstr r3, [sp, 0x4]\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tldr r3, [sp, 0x4]\n"
-                    "\tldr r0, [r3]\n"
-                    "\tadds r4, r0\n"
-                    "\tadds r4, r6\n"
-                    "\tldrh r0, [r4, 0x1C]\n"
-                    "\tb _080F09E6\n"
-                    "\t.pool\n"
-                    "_080F08BC:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r2, r9\n"
-                    "\tadds r1, r7, r2\n"
-                    "\tlsls r1, 2\n"
-                    "\tadds r1, r0\n"
-                    "\tldr r4, =0x000027cc\n"
-                    "\tadds r1, r4\n"
-                    "\tldrh r0, [r1, 0x2]\n"
-                    "\tlsls r1, r2, 24\n"
-                    "\tb _080F09B2\n"
-                    "\t.pool\n"
-                    "_080F08D4:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r1, r9\n"
-                    "\tadds r4, r7, r1\n"
-                    "\tlsls r4, 2\n"
-                    "\tadds r0, r4, r0\n"
-                    "\tldr r6, =0x000027cc\n"
-                    "\tadds r0, r6\n"
-                    "\tldrh r0, [r0, 0xA]\n"
-                    "\tlsls r5, r1, 24\n"
-                    "\tlsrs r5, 24\n"
-                    "\tadds r1, r5, 0\n"
-                    "\tstr r3, [sp, 0x4]\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tldr r3, [sp, 0x4]\n"
-                    "\tldr r0, [r3]\n"
-                    "\tadds r4, r0\n"
-                    "\tadds r4, r6\n"
-                    "\tldrh r0, [r4, 0x14]\n"
-                    "\tb _080F09E6\n"
-                    "\t.pool\n"
-                    "_080F0900:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r2, r9\n"
-                    "\tadds r1, r7, r2\n"
-                    "\tlsls r1, 2\n"
-                    "\tadds r1, r0\n"
-                    "\tldr r4, =0x000027cc\n"
-                    "\tadds r1, r4\n"
-                    "\tldrh r0, [r1, 0x10]\n"
-                    "\tlsls r1, r2, 24\n"
-                    "\tb _080F09B2\n"
-                    "\t.pool\n"
-                    "_080F0918:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r1, r9\n"
-                    "\tadds r4, r7, r1\n"
-                    "\tlsls r4, 2\n"
-                    "\tadds r0, r4, r0\n"
-                    "\tldr r6, =0x000027cc\n"
-                    "\tadds r0, r6\n"
-                    "\tldrh r0, [r0, 0xC]\n"
-                    "\tlsls r5, r1, 24\n"
-                    "\tlsrs r5, 24\n"
-                    "\tadds r1, r5, 0\n"
-                    "\tstr r3, [sp, 0x4]\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tldr r3, [sp, 0x4]\n"
-                    "\tldr r0, [r3]\n"
-                    "\tadds r4, r0\n"
-                    "\tadds r4, r6\n"
-                    "\tldrh r0, [r4, 0xE]\n"
-                    "\tb _080F09E6\n"
-                    "\t.pool\n"
-                    "_080F0944:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r2, r9\n"
-                    "\tadds r1, r7, r2\n"
-                    "\tlsls r1, 2\n"
-                    "\tadds r1, r0\n"
-                    "\tldr r4, =0x000027cc\n"
-                    "\tadds r1, r4\n"
-                    "\tldrh r0, [r1, 0x4]\n"
-                    "\tlsls r1, r2, 24\n"
-                    "\tb _080F09B2\n"
-                    "\t.pool\n"
-                    "_080F095C:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r1, r9\n"
-                    "\tadds r4, r7, r1\n"
-                    "\tlsls r4, 2\n"
-                    "\tadds r0, r4, r0\n"
-                    "\tldr r6, =0x000027cc\n"
-                    "\tadds r0, r6\n"
-                    "\tldrh r0, [r0, 0x8]\n"
-                    "\tb _080F09D0\n"
-                    "\t.pool\n"
-                    "_080F0974:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r2, r9\n"
-                    "\tadds r4, r7, r2\n"
-                    "\tlsls r4, 2\n"
-                    "\tadds r0, r4, r0\n"
-                    "\tldr r6, =0x000027cc\n"
-                    "\tadds r0, r6\n"
-                    "\tldrh r0, [r0, 0x2]\n"
-                    "\tlsls r5, r2, 24\n"
-                    "\tlsrs r5, 24\n"
-                    "\tadds r1, r5, 0\n"
-                    "\tstr r3, [sp, 0x4]\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tldr r3, [sp, 0x4]\n"
-                    "\tldr r0, [r3]\n"
-                    "\tadds r4, r0\n"
-                    "\tadds r4, r6\n"
-                    "\tldrh r0, [r4, 0xA]\n"
-                    "\tb _080F09E6\n"
-                    "\t.pool\n"
-                    "_080F09A0:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r4, r9\n"
-                    "\tadds r1, r7, r4\n"
-                    "\tlsls r1, 2\n"
-                    "\tadds r1, r0\n"
-                    "\tldr r0, =0x000027cc\n"
-                    "\tadds r1, r0\n"
-                    "\tldrh r0, [r1, 0x8]\n"
-                    "_080F09B0:\n"
-                    "\tlsls r1, r4, 24\n"
-                    "_080F09B2:\n"
-                    "\tlsrs r1, 24\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tb _080F0AE2_break\n"
-                    "\t.pool\n"
-                    "_080F09C0:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r1, r9\n"
-                    "\tadds r4, r7, r1\n"
-                    "\tlsls r4, 2\n"
-                    "\tadds r0, r4, r0\n"
-                    "\tldr r6, =0x000027cc\n"
-                    "\tadds r0, r6\n"
-                    "\tldrh r0, [r0, 0x6]\n"
-                    "_080F09D0:\n"
-                    "\tlsls r5, r1, 24\n"
-                    "\tlsrs r5, 24\n"
-                    "\tadds r1, r5, 0\n"
-                    "\tstr r3, [sp, 0x4]\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tldr r3, [sp, 0x4]\n"
-                    "\tldr r0, [r3]\n"
-                    "\tadds r4, r0\n"
-                    "\tadds r4, r6\n"
-                    "\tldrh r0, [r4, 0x4]\n"
-                    "_080F09E6:\n"
-                    "\tadds r1, r5, 0\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tb _080F0AE2_break\n"
-                    "\t.pool\n"
-                    "_080F09F4:\n"
-                    "\tldr r0, [r3]\n"
-                    "\tmov r2, r9\n"
-                    "\tadds r4, r7, r2\n"
-                    "\tlsls r4, 2\n"
-                    "\tadds r0, r4, r0\n"
-                    "\tldr r5, =0x000027cc\n"
-                    "\tadds r0, r5\n"
-                    "\tldrh r0, [r0, 0x4]\n"
-                    "\tlsls r2, 24\n"
-                    "\tmov r8, r2\n"
-                    "\tlsrs r6, r2, 24\n"
-                    "\tadds r1, r6, 0\n"
-                    "\tstr r3, [sp, 0x4]\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tldr r3, [sp, 0x4]\n"
-                    "\tldr r0, [r3]\n"
-                    "\tadds r0, r4, r0\n"
-                    "\tadds r0, r5\n"
-                    "\tldrh r0, [r0, 0x6]\n"
-                    "\tadds r1, r6, 0\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tldr r3, [sp, 0x4]\n"
-                    "\tldr r0, [r3]\n"
-                    "\tadds r4, r0\n"
-                    "\tadds r4, r5\n"
-                    "\tldrb r0, [r4, 0xD]\n"
-                    "\tsubs r0, 0x1\n"
-                    "\tmov r6, r8\n"
-                    "\tcmp r0, 0xC\n"
-                    "\tbhi _080F0AE2_break\n"
-                    "\tlsls r0, 2\n"
-                    "\tldr r1, =_080F0A48\n"
-                    "\tadds r0, r1\n"
-                    "\tldr r0, [r0]\n"
-                    "\tmov pc, r0\n"
-                    "\t.pool\n"
-                    "\t.align 2, 0\n"
-                    "_080F0A48:\n"
-                    "\t.4byte _080F0A7C\n"
-                    "\t.4byte _080F0AA0\n"
-                    "\t.4byte _080F0AE2_break\n"
-                    "\t.4byte _080F0AE2_break\n"
-                    "\t.4byte _080F0A7C\n"
-                    "\t.4byte _080F0A7C\n"
-                    "\t.4byte _080F0A7C\n"
-                    "\t.4byte _080F0A7C\n"
-                    "\t.4byte _080F0A7C\n"
-                    "\t.4byte _080F0A7C\n"
-                    "\t.4byte _080F0A7C\n"
-                    "\t.4byte _080F0A7C\n"
-                    "\t.4byte _080F0A7C\n"
-                    "_080F0A7C:\n"
-                    "\tldr r0, =gSaveBlock1Ptr\n"
-                    "\tldr r1, [r0]\n"
-                    "\tmov r4, r9\n"
-                    "\tadds r0, r7, r4\n"
-                    "\tlsls r0, 2\n"
-                    "\tadds r0, r1\n"
-                    "\tldr r1, =0x000027cc\n"
-                    "\tadds r0, r1\n"
-                    "\tldrh r0, [r0, 0x8]\n"
-                    "\tlsrs r1, r6, 24\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tb _080F0AE2_break\n"
-                    "\t.pool\n"
-                    "_080F0AA0:\n"
-                    "\tldr r2, =gSaveBlock1Ptr\n"
-                    "\tldr r0, [r2]\n"
-                    "\tmov r1, r9\n"
-                    "\tadds r4, r7, r1\n"
-                    "\tlsls r4, 2\n"
-                    "\tadds r0, r4, r0\n"
-                    "\tldr r5, =0x000027cc\n"
-                    "\tadds r0, r5\n"
-                    "\tldrh r0, [r0, 0x8]\n"
-                    "\tlsrs r6, 24\n"
-                    "\tadds r1, r6, 0\n"
-                    "\tstr r2, [sp]\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tldr r2, [sp]\n"
-                    "\tldr r0, [r2]\n"
-                    "\tadds r4, r0\n"
-                    "\tadds r4, r5\n"
-                    "\tldrh r0, [r4, 0xA]\n"
-                    "\tadds r1, r6, 0\n"
-                    "\tbl sub_80F0B24\n"
-                    "\tb _080F0AE2_break\n"
-                    "\t.pool\n"
-                    "_080F0AD8:\n"
-                    "\tmov r2, r9\n"
-                    "\tlsls r0, r2, 24\n"
-                    "\tlsrs r0, 24\n"
-                    "\tbl SetTvShowInactive\n"
-                    "_080F0AE2_break:\n"
-                    "\tmov r0, r9\n"
-                    "\tadds r0, 0x1\n"
-                    "\tlsls r0, 16\n"
-                    "\tlsrs r0, 16\n"
-                    "\tmov r9, r0\n"
-                    "\tcmp r0, 0x17\n"
-                    "\tbhi _080F0AF2\n"
-                    "\tb _080F0716\n"
-                    "_080F0AF2:\n"
-                    "\tadd sp, 0x8\n"
-                    "\tpop {r3,r4}\n"
-                    "\tmov r8, r3\n"
-                    "\tmov r9, r4\n"
-                    "\tpop {r4-r7}\n"
-                    "\tpop {r0}\n"
-                    "\tbx r0");
-}
-#endif
 
 void SetTvShowInactive(u8 showIdx)
 {
@@ -4384,7 +3974,7 @@ static void sub_80F0B64(void)
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) != TRUE)
     {
-        for (i = 0; i < 24; i ++)
+        for (i = 0; i < LAST_TVSHOW_IDX; i ++)
         {
             if (gSaveBlock1Ptr->tvShows[i].common.kind == TVSHOW_BRAVO_TRAINER_BATTLE_TOWER_PROFILE)
             {
@@ -4417,7 +4007,7 @@ static void sub_80F0C04(void)
     s8 ct;
 
     ct = 0;
-    for (i = 5; i < 24; i ++)
+    for (i = 5; i < LAST_TVSHOW_IDX; i ++)
     {
         if (gSaveBlock1Ptr->tvShows[i].common.kind == TVSHOW_OFF_AIR)
         {
@@ -4477,7 +4067,7 @@ static void sub_80F0D60(PokeNews player1[16], PokeNews player2[16], PokeNews pla
     argslist[2] = &player3;
     argslist[3] = &player4;
     sTVShowNewsMixingNumPlayers = GetLinkPlayerCount();
-    for (i = 0; i < 16; i ++)
+    for (i = 0; i < POKE_NEWS_COUNT; i ++)
     {
         for (j = 0; j < sTVShowNewsMixingNumPlayers; j ++)
         {
@@ -4517,7 +4107,7 @@ static bool8 sub_80F0E84(PokeNews *dest, PokeNews *src, s8 slot)
     {
         return FALSE;
     }
-    for (i = 0; i < 16; i ++)
+    for (i = 0; i < POKE_NEWS_COUNT; i ++)
     {
         if (dest[i].kind == src->kind)
         {
@@ -4543,7 +4133,7 @@ static void sub_80F0EEC(void)
 {
     u8 i;
 
-    for (i = 0; i < 16; i ++)
+    for (i = 0; i < POKE_NEWS_COUNT; i ++)
     {
         if (gSaveBlock1Ptr->pokeNews[i].kind > POKENEWS_BLENDMASTER)
         {
@@ -4559,7 +4149,7 @@ static void sub_80F0F24(void)
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) != TRUE)
     {
-        for (i = 0; i < 16; i ++)
+        for (i = 0; i < POKE_NEWS_COUNT; i ++)
         {
             gSaveBlock1Ptr->pokeNews[i].state = 0;
         }
@@ -4582,7 +4172,7 @@ static void sub_80F0F64(TVShow *show, u32 language)
     TVShow **r4;
 
     r4 = calloc(11, sizeof(TVShow *));
-    for (i = 0; i < 24; i ++)
+    for (i = 0; i < LAST_TVSHOW_IDX; i ++)
     {
         switch (show[i].common.kind)
         {
@@ -4646,7 +4236,7 @@ void sub_80F1208(TVShow *shows)
     TVShow *curShow;
 
     sub_80F14F8(shows);
-    for (curShow = shows; curShow < shows + 24; curShow ++)
+    for (curShow = shows; curShow < shows + LAST_TVSHOW_IDX; curShow ++)
     {
         if (curShow->bravoTrainerTower.kind == TVSHOW_BRAVO_TRAINER_BATTLE_TOWER_PROFILE)
         {
@@ -4662,7 +4252,7 @@ static void sub_80F1254(TVShow *shows)
 {
     TVShow *curShow;
 
-    for (curShow = shows; curShow < shows + 24; curShow ++)
+    for (curShow = shows; curShow < shows + LAST_TVSHOW_IDX; curShow ++)
     {
         if (curShow->bravoTrainerTower.kind == TVSHOW_BRAVO_TRAINER_BATTLE_TOWER_PROFILE)
         {
@@ -4687,7 +4277,7 @@ static void sub_80F12A4(TVShow *shows)
 {
     TVShow *curShow;
 
-    for (curShow = shows; curShow < shows + 24; curShow ++)
+    for (curShow = shows; curShow < shows + LAST_TVSHOW_IDX; curShow ++)
     {
         switch(curShow->common.kind)
         {
@@ -4797,18 +4387,18 @@ void sub_80F14F8(TVShow *shows)
 {
     int i;
 
-    for (i = 0; i < 24; i ++)
+    for (i = 0; i < LAST_TVSHOW_IDX; i ++)
     {
         switch (shows[i].common.kind)
         {
             case TVSHOW_WORLD_OF_MASTERS:
-                if (shows[i].worldOfMasters.location > 0x58)
+                if (shows[i].worldOfMasters.location > KANTO_MAPSEC_START)
                 {
                     memset(&shows[i], 0, sizeof(TVShow));
                 }
                 break;
             case TVSHOW_POKEMON_TODAY_FAILED:
-                if (shows[i].pokemonTodayFailed.location > 0x58)
+                if (shows[i].pokemonTodayFailed.location > KANTO_MAPSEC_START)
                 {
                     memset(&shows[i], 0, sizeof(TVShow));
                 }

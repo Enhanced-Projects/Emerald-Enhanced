@@ -24,10 +24,11 @@ extern struct PartyMenu gPartyMenu;
 extern bool8 gPartyMenuUseExitCallback;
 extern u8 gSelectedMonPartyId;
 extern MainCallback gPostMenuFieldCallback;
-extern u8 gSelectedOrderFromParty[4];
-extern u8 gBattlePartyCurrentOrder[3];
+extern u8 gSelectedOrderFromParty[MAX_FRONTIER_PARTY_SIZE];
+extern u8 gBattlePartyCurrentOrder[PARTY_SIZE / 2];
 extern const struct SpriteSheet sSpriteSheet_HeldItem;
 extern const struct SpritePalette sSpritePalette_HeldItem;
+
 
 extern void (*gItemUseCB)(u8, TaskFunc);
 

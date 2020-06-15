@@ -4,7 +4,7 @@ EverGrandeCity_PokemonLeague_1F_MapScripts:: @ 82295D2
 	.byte 0
 
 EverGrandeCity_PokemonLeague_1F_OnTransition: @ 82295DD
-	setrespawn HEAL_LOCATION_EVER_GRANDE_CITY_2
+	setrespawn HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE
 	setflag FLAG_LANDMARK_POKEMON_LEAGUE
 	call_if_unset FLAG_ENTERED_ELITE_FOUR, EverGrandeCity_PokemonLeague_1F_EventScript_GuardsBlockDoor
 	end
@@ -77,12 +77,12 @@ EverGrandeCity_PokemonLeague_1F_EventScript_DoorGuard:: @ 8229636
 	end
 
 EverGrandeCity_PokemonLeague_1F_EventScript_PlayerMoveToFrontFromRight:: @ 8229698
-	applymovement EVENT_OBJ_ID_PLAYER, EverGrandeCity_PokemonLeague_1F_Movement_MoveToFrontFromRight
+	applymovement OBJ_EVENT_ID_PLAYER, EverGrandeCity_PokemonLeague_1F_Movement_MoveToFrontFromRight
 	waitmovement 0
 	return
 
 EverGrandeCity_PokemonLeague_1F_EventScript_PlayerMoveToFrontFromLeft:: @ 82296A3
-	applymovement EVENT_OBJ_ID_PLAYER, EverGrandeCity_PokemonLeague_1F_Movement_MoveToFrontFromLeft
+	applymovement OBJ_EVENT_ID_PLAYER, EverGrandeCity_PokemonLeague_1F_Movement_MoveToFrontFromLeft
 	waitmovement 0
 	return
 

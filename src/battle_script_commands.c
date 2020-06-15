@@ -2064,7 +2064,7 @@ static void Cmd_resultmessage(void)
             gPotentialItemEffectBattler = gBattlerTarget;
             gMoveResultFlags &= ~(MOVE_RESULT_FOE_ENDURED | MOVE_RESULT_FOE_HUNG_ON);
             BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_HangedOnMsg;
+            gBattlescriptCurrInstr = BattleScript_FocusBandActivates;
             return;
         default:
             if (gMoveResultFlags & MOVE_RESULT_DOESNT_AFFECT_FOE)
@@ -2093,7 +2093,7 @@ static void Cmd_resultmessage(void)
                 gPotentialItemEffectBattler = gBattlerTarget;
                 gMoveResultFlags &= ~(MOVE_RESULT_FOE_ENDURED | MOVE_RESULT_FOE_HUNG_ON);
                 BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_HangedOnMsg;
+                gBattlescriptCurrInstr = BattleScript_FocusBandActivates;
                 return;
             }
             else if (gMoveResultFlags & MOVE_RESULT_FAILED)
@@ -2895,16 +2895,16 @@ static void Cmd_seteffectwithchance(void)
         && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
     {
         gBattleCommunication[MOVE_EFFECT_BYTE] &= ~(MOVE_EFFECT_CERTAIN);
-        SetMoveEffect(0, MOVE_EFFECT_CERTAIN);
+        SetMoveEffect(FALSE, MOVE_EFFECT_CERTAIN);
     }
     else if (Random() % 100 < percentChance
              && gBattleCommunication[MOVE_EFFECT_BYTE]
              && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
     {
         if (percentChance >= 100)
-            SetMoveEffect(0, MOVE_EFFECT_CERTAIN);
+            SetMoveEffect(FALSE, MOVE_EFFECT_CERTAIN);
         else
-            SetMoveEffect(0, 0);
+            SetMoveEffect(FALSE, 0);
     }
     else
     {
@@ -3434,7 +3434,7 @@ static void Cmd_getexp(void)
                 gLeveledUpInBattle |= gBitTable[gBattleStruct->expGetterMonId];
                 gBattlescriptCurrInstr = BattleScript_LevelUp;
                 gBattleMoveDamage = (gBattleBufferB[gActiveBattler][2] | (gBattleBufferB[gActiveBattler][3] << 8));
-                AdjustFriendship(&gPlayerParty[gBattleStruct->expGetterMonId], 0);
+                AdjustFriendship(&gPlayerParty[gBattleStruct->expGetterMonId], FRIENDSHIP_EVENT_GROW_LEVEL);
 
                 // update battle mon structure after level up
                 if (gBattlerPartyIndexes[0] == gBattleStruct->expGetterMonId && gBattleMons[0].hp)
@@ -6351,7 +6351,7 @@ static void PutLevelAndGenderOnLvlUpBox(void)
     txtPtr = gStringVar4;
     gStringVar4[0] = CHAR_SPECIAL_F9;
     txtPtr++;
-    txtPtr[0] = 5;
+    txtPtr[0] = CHAR_LV_2;
     txtPtr++;
 
     var = (u32)(txtPtr);
@@ -8925,7 +8925,7 @@ static void Cmd_jumpifnopursuitswitchdmg(void)
         for (i = 0; i < gBattlersCount; i++)
         {
             if (gBattlerByTurnOrder[i] == gBattlerTarget)
-                gActionsByTurnOrder[i] = 11;
+                gActionsByTurnOrder[i] = B_ACTION_TRY_FINISH;
         }
 
         gCurrentMove = MOVE_PURSUIT;
@@ -10005,7 +10005,7 @@ static void Cmd_pursuitrelated(void)
 
     if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE
         && !(gAbsentBattlerFlags & gBitTable[gActiveBattler])
-        && gChosenActionByBattler[gActiveBattler] == 0
+        && gChosenActionByBattler[gActiveBattler] == B_ACTION_USE_MOVE
         && gChosenMoveByBattler[gActiveBattler] == MOVE_PURSUIT)
     {
         gActionsByTurnOrder[gActiveBattler] = 11;
@@ -10263,7 +10263,7 @@ static void Cmd_displaydexinfo(void)
         if (!gPaletteFade.active)
         {
             FreeAllWindowBuffers();
-            gBattleCommunication[TASK_ID] = CreateDexDisplayMonDataTask(SpeciesToNationalPokedexNum(species),
+            gBattleCommunication[TASK_ID] = DisplayCaughtMonDexPage(SpeciesToNationalPokedexNum(species),
                                                                         gBattleMons[gBattlerTarget].otId,
                                                                         gBattleMons[gBattlerTarget].personality);
             gBattleCommunication[0]++;

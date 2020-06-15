@@ -265,7 +265,7 @@ static void CableCarMainCallback_Setup(void)
         ResetTasks();
         FreeAllSpritePalettes();
         ResetPaletteFade();
-        reset_temp_tile_data_buffers();
+        ResetTempTileDataBuffers();
         StartWeather();
         for (i = 0; i < 20; i++)
             gWeatherPtr->sprites.s2.ashSprites[i] = NULL;
@@ -291,11 +291,11 @@ static void CableCarMainCallback_Setup(void)
         sCableCar->mountainTilemap = malloc_and_decompress(gCableCarMountainTilemap, &sizeOut);
         sCableCar->pylonStemTilemap = malloc_and_decompress(gCableCarPylonStemTilemap, &sizeOut);
         sCableCar->pylonHookTilemapEntries = gCableCarPylonHookTilemapEntries;
-        decompress_and_copy_tile_data_to_vram(0, gUnknown_08DBA5B8, 0, 0, 0);
+        DecompressAndCopyTileDataToVram(0, gUnknown_08DBA5B8, 0, 0, 0);
         gMain.state++;
         break;
     case 3:
-        if (!free_temp_tile_data_buffers_if_possible())
+        if (!FreeTempTileDataBuffersIfPossible())
         {
             LoadPalette(gUnknown_08DBA518, 0, 0x80);
             gMain.state++;
@@ -768,15 +768,15 @@ static void LoadCableCarSprites(void)
     u8 i;
 
     u8 playerGraphicsIds[2] = {
-        EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL,
-        EVENT_OBJ_GFX_RIVAL_MAY_NORMAL
+        OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL,
+        OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
     };
     u16 rval = Random();
     u8 hikerGraphicsIds[4] = {
-        EVENT_OBJ_GFX_HIKER,
-        EVENT_OBJ_GFX_CAMPER,
-        EVENT_OBJ_GFX_PICNICKER,
-        EVENT_OBJ_GFX_ZIGZAGOON_1
+        OBJ_EVENT_GFX_HIKER,
+        OBJ_EVENT_GFX_CAMPER,
+        OBJ_EVENT_GFX_PICNICKER,
+        OBJ_EVENT_GFX_ZIGZAGOON_1
     };
     s16 hikerCoords[2][2] = {
         {   0,  80 },
@@ -797,7 +797,7 @@ static void LoadCableCarSprites(void)
     {
         case 0:
         default:
-            spriteId = AddPseudoEventObject(playerGraphicsIds[gSaveBlock2Ptr->playerGender], sub_8150948, 200, 73, 102);
+            spriteId = AddPseudoObjectEvent(playerGraphicsIds[gSaveBlock2Ptr->playerGender], sub_8150948, 200, 73, 102);
             if (spriteId != MAX_SPRITES)
             {
                 gSprites[spriteId].oam.priority = 2;
@@ -821,7 +821,7 @@ static void LoadCableCarSprites(void)
             break;
         case 1:
             CopyToBgTilemapBufferRect_ChangePalette(0, sCableCar->mtChimneyTilemap + 0x24, 24, 26, 12, 3, 17);
-            spriteId = AddPseudoEventObject(playerGraphicsIds[gSaveBlock2Ptr->playerGender], sub_8150948, 128, 39, 102);
+            spriteId = AddPseudoObjectEvent(playerGraphicsIds[gSaveBlock2Ptr->playerGender], sub_8150948, 128, 39, 102);
             if (spriteId != MAX_SPRITES)
             {
                 gSprites[spriteId].oam.priority = 2;
@@ -852,7 +852,7 @@ static void LoadCableCarSprites(void)
     }
     if ((rval % 64) == 0)
     {
-        spriteId = AddPseudoEventObject(hikerGraphicsIds[rval % 3], callbacks[gSpecialVar_0x8004], hikerCoords[gSpecialVar_0x8004][0], hikerCoords[gSpecialVar_0x8004][1], 0x6a);
+        spriteId = AddPseudoObjectEvent(hikerGraphicsIds[rval % 3], callbacks[gSpecialVar_0x8004], hikerCoords[gSpecialVar_0x8004][0], hikerCoords[gSpecialVar_0x8004][1], 0x6a);
         if (spriteId != MAX_SPRITES)
         {
             gSprites[spriteId].oam.priority = 2;

@@ -2794,7 +2794,7 @@ static bool8 sub_811BFA4(void)
         DeactivateAllTextPrinters();
         sub_811CF64();
         sub_811CF04();
-        CpuFastFill(0, (void *)VRAM + 0x1000000, 0x400);
+        CpuFastFill(0, (void *)OAM, OAM_SIZE);
         break;
     case 1:
         DecompressAndLoadBgGfxUsingHeap(3, gEasyChatWindow_Gfx, 0, 0, 0);
@@ -2828,8 +2828,12 @@ static bool8 sub_811BFA4(void)
         else
         {
             sub_811DE5C(0, 0, 0, 0);
-            SetGpuReg(REG_OFFSET_WININ, WIN_RANGE(0, 63));
-            SetGpuReg(REG_OFFSET_WINOUT, WIN_RANGE(0, 59));
+            SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_BG_ALL | WININ_WIN0_OBJ | WININ_WIN0_CLR);
+            SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG0
+                                       | WINOUT_WIN01_BG1
+                                       | WINOUT_WIN01_BG3
+                                       | WINOUT_WIN01_OBJ
+                                       | WINOUT_WIN01_CLR);
             ShowBg(3);
             ShowBg(1);
             ShowBg(2);
@@ -4718,13 +4722,13 @@ static void sub_811E828(void)
     switch (GetDisplayedPersonType())
     {
     case EASY_CHAT_PERSON_REPORTER_MALE:
-        graphicsId = EVENT_OBJ_GFX_REPORTER_M;
+        graphicsId = OBJ_EVENT_GFX_REPORTER_M;
         break;
     case EASY_CHAT_PERSON_REPORTER_FEMALE:
-        graphicsId = EVENT_OBJ_GFX_REPORTER_F;
+        graphicsId = OBJ_EVENT_GFX_REPORTER_F;
         break;
     case EASY_CHAT_PERSON_BOY:
-        graphicsId = EVENT_OBJ_GFX_BOY_1;
+        graphicsId = OBJ_EVENT_GFX_BOY_1;
         break;
     default:
         return;
@@ -4733,15 +4737,15 @@ static void sub_811E828(void)
     if (GetEasyChatScreenFrameId() != 4)
         return;
 
-    spriteId = AddPseudoEventObject(graphicsId, SpriteCallbackDummy, 76, 40, 0);
+    spriteId = AddPseudoObjectEvent(graphicsId, SpriteCallbackDummy, 76, 40, 0);
     if (spriteId != MAX_SPRITES)
     {
         gSprites[spriteId].oam.priority = 0;
         StartSpriteAnim(&gSprites[spriteId], 2);
     }
 
-    spriteId = AddPseudoEventObject(
-        gSaveBlock2Ptr->playerGender == MALE ? EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL : EVENT_OBJ_GFX_RIVAL_MAY_NORMAL,
+    spriteId = AddPseudoObjectEvent(
+        gSaveBlock2Ptr->playerGender == MALE ? OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL : OBJ_EVENT_GFX_RIVAL_MAY_NORMAL,
         SpriteCallbackDummy,
         52,
         40,

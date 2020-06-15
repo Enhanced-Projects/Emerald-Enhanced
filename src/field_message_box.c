@@ -1,155 +1,164 @@
 #include "global.h"
-#include "field_message_box.h"
 #include "menu.h"
 #include "string.h"
 #include "string_util.h"
 #include "task.h"
 #include "text.h"
 #include "match_call.h"
+#include "field_message_box.h"
 
-EWRAM_DATA u8 gFieldMessageBoxMode = 0;
+static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
 
-static void textbox_auto_and_task_add(void);
+static void ExpandStringAndStartDrawFieldMessage(const u8*, bool32);
+static void StartDrawFieldMessage(void);
 
 void InitFieldMessageBox(void)
 {
-    gFieldMessageBoxMode = 0;
-    gTextFlags.canABSpeedUpPrint = 0;
-    gTextFlags.useAlternateDownArrow = 0;
-    gTextFlags.autoScroll = 0;
-    gTextFlags.forceMidTextSpeed = 0;
+    sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
+    gTextFlags.canABSpeedUpPrint = FALSE;
+    gTextFlags.useAlternateDownArrow = FALSE;
+    gTextFlags.autoScroll = FALSE;
+    gTextFlags.forceMidTextSpeed = FALSE;
 }
 
-static void sub_8098154(u8 taskId)
+#define tState data[0]
+
+static void Task_DrawFieldMessage(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
-    switch (task->data[0])
+    switch (task->tState)
     {
         case 0:
-           sub_81973A4();
-           task->data[0]++;
+           LoadMessageBoxAndBorderGfx();
+           task->tState++;
            break;
         case 1:
            DrawDialogueFrame(0, 1);
-           task->data[0]++;
+           task->tState++;
            break;
         case 2:
-            if (RunTextPrintersAndIsPrinter0Active() != 1)
+            if (RunTextPrintersAndIsPrinter0Active() != TRUE)
             {
-                gFieldMessageBoxMode = 0;
+                sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
                 DestroyTask(taskId);
             }
     }
 }
 
-static void task_add_textbox(void)
+#undef tState
+
+static void CreateTask_DrawFieldMessage(void)
 {
-    CreateTask(sub_8098154, 0x50);
+    CreateTask(Task_DrawFieldMessage, 0x50);
 }
 
-static void task_del_textbox(void)
+static void DestroyTask_DrawFieldMessage(void)
 {
-    u8 taskId = FindTaskIdByFunc(sub_8098154);
+    u8 taskId = FindTaskIdByFunc(Task_DrawFieldMessage);
     if (taskId != 0xFF)
         DestroyTask(taskId);
 }
 
-bool8 ShowFieldMessage(const u8 *message)
+bool8 ShowFieldMessage(const u8 *str)
 {
-    if (gFieldMessageBoxMode != 0)
+    if (sFieldMessageBoxMode != FIELD_MESSAGE_BOX_HIDDEN)
         return FALSE;
-    textbox_fdecode_auto_and_task_add(message, 1);
-    gFieldMessageBoxMode = 2;
+    ExpandStringAndStartDrawFieldMessage(str, TRUE);
+    sFieldMessageBoxMode = FIELD_MESSAGE_BOX_NORMAL;
     return TRUE;
 }
 
-void sub_8098214(u8 taskId)
+static void Task_HidePokenavMessageWhenDone(u8 taskId)
 {
     if (!IsMatchCallTaskActive())
     {
-        gFieldMessageBoxMode = 0;
+        sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
         DestroyTask(taskId);
     }
 }
 
-bool8 sub_8098238(const u8 *message)
+bool8 ShowPokenavFieldMessage(const u8 *str)
 {
-    if (gFieldMessageBoxMode != 0)
+    if (sFieldMessageBoxMode != FIELD_MESSAGE_BOX_HIDDEN)
         return FALSE;
-    StringExpandPlaceholders(gStringVar4, message);
-    CreateTask(sub_8098214, 0);
-    StartMatchCallFromScript(message);
-    gFieldMessageBoxMode = 2;
+    StringExpandPlaceholders(gStringVar4, str);
+    CreateTask(Task_HidePokenavMessageWhenDone, 0);
+    StartMatchCallFromScript(str);
+    sFieldMessageBoxMode = 2;
     return TRUE;
 }
 
-bool8 ShowFieldAutoScrollMessage(const u8 *message)
+bool8 ShowFieldAutoScrollMessage(const u8 *str)
 {
-    if (gFieldMessageBoxMode != 0)
+    if (sFieldMessageBoxMode != FIELD_MESSAGE_BOX_HIDDEN)
         return FALSE;
-    gFieldMessageBoxMode = 3;
-    textbox_fdecode_auto_and_task_add(message, 0);
+    sFieldMessageBoxMode = FIELD_MESSAGE_BOX_AUTO_SCROLL;
+    ExpandStringAndStartDrawFieldMessage(str, FALSE);
     return TRUE;
 }
 
-bool8 sub_80982A0(u8 *str)
+// Unused
+static bool8 ForceShowFieldAutoScrollMessage(const u8 *str)
 {
-    gFieldMessageBoxMode = 3;
-    textbox_fdecode_auto_and_task_add(str, 1);
+    sFieldMessageBoxMode = FIELD_MESSAGE_BOX_AUTO_SCROLL;
+    ExpandStringAndStartDrawFieldMessage(str, TRUE);
     return TRUE;
 }
 
-bool8 sub_80982B8(void)
+// Same as ShowFieldMessage, but instead of accepting a 
+// string arg it just prints whats already in gStringVar4
+bool8 ShowFieldMessageFromBuffer(void)
 {
-    if (gFieldMessageBoxMode != 0)
+    if (sFieldMessageBoxMode != FIELD_MESSAGE_BOX_HIDDEN)
         return FALSE;
-    gFieldMessageBoxMode = 2;
-    textbox_auto_and_task_add();
+    sFieldMessageBoxMode = FIELD_MESSAGE_BOX_NORMAL;
+    StartDrawFieldMessage();
     return TRUE;
 }
 
-void textbox_fdecode_auto_and_task_add(const u8* str, bool32 allowSkippingDelayWithButtonPress)
+static void ExpandStringAndStartDrawFieldMessage(const u8* str, bool32 allowSkippingDelayWithButtonPress)
 {
     StringExpandPlaceholders(gStringVar4, str);
     AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
-    task_add_textbox();
+    CreateTask_DrawFieldMessage();
 }
 
-static void textbox_auto_and_task_add(void)
+static void StartDrawFieldMessage(void)
 {
     AddTextPrinterForMessage(TRUE);
-    task_add_textbox();
+    CreateTask_DrawFieldMessage();
 }
 
 void HideFieldMessageBox(void)
 {
-    task_del_textbox();
+    DestroyTask_DrawFieldMessage();
     ClearDialogWindowAndFrame(0, 1);
-    gFieldMessageBoxMode = 0;
+    sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
 }
 
 u8 GetFieldMessageBoxMode(void)
 {
-    return gFieldMessageBoxMode;
+    return sFieldMessageBoxMode;
 }
 
 bool8 IsFieldMessageBoxHidden(void)
 {
-    if (gFieldMessageBoxMode == 0)
+    if (sFieldMessageBoxMode == FIELD_MESSAGE_BOX_HIDDEN)
         return TRUE;
     return FALSE;
 }
 
-void sub_8098358(void)
+// Unused
+static void ReplaceFieldMessageWithFrame(void)
 {
-    task_del_textbox();
+    DestroyTask_DrawFieldMessage();
     DrawStdWindowFrame(0, 1);
-    gFieldMessageBoxMode = 0;
+    sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
 }
 
-void sub_8098374(void)
+void StopFieldMessage(void)
 {
-    task_del_textbox();
-    gFieldMessageBoxMode = 0;
+    DestroyTask_DrawFieldMessage();
+    sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
 }

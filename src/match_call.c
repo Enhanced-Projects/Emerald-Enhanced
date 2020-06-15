@@ -1114,7 +1114,7 @@ static void StartMatchCall(void)
     if (!gMatchCallState.triggeredFromScript)
     {
         ScriptContext2_Enable();
-        FreezeEventObjects();
+        FreezeObjectEvents();
         sub_808B864();
         sub_808BCF4();
     }
@@ -1182,7 +1182,7 @@ static bool32 LoadMatchCallWindowGfx(u8 taskId)
         return FALSE;
     }
 
-    if (!decompress_and_copy_tile_data_to_vram(0, sPokeNavIconGfx, 0, 0x279, 0))
+    if (!DecompressAndCopyTileDataToVram(0, sPokeNavIconGfx, 0, 0x279, 0))
     {
         RemoveWindow(taskData[2]);
         DestroyTask(taskId);
@@ -1199,7 +1199,7 @@ static bool32 LoadMatchCallWindowGfx(u8 taskId)
 static bool32 MoveMatchCallWindowToVram(u8 taskId)
 {
     s16 *taskData = gTasks[taskId].data;
-    if (free_temp_tile_data_buffers_if_possible())
+    if (FreeTempTileDataBuffersIfPossible())
         return FALSE;
 
     PutWindowTilemap(taskData[2]);
@@ -1287,11 +1287,11 @@ static bool32 sub_81963F0(u8 taskId)
         ChangeBgY(0, 0, 0);
         if (!gMatchCallState.triggeredFromScript)
         {
-            sub_81973A4();
-            playerObjectId = GetEventObjectIdByLocalIdAndMap(EVENT_OBJ_ID_PLAYER, 0, 0);
-            EventObjectClearHeldMovementIfFinished(&gEventObjects[playerObjectId]);
-            ScriptMovement_UnfreezeEventObjects();
-            UnfreezeEventObjects();
+            LoadMessageBoxAndBorderGfx();
+            playerObjectId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+            ObjectEventClearHeldMovementIfFinished(&gObjectEvents[playerObjectId]);
+            ScriptMovement_UnfreezeObjectEvents();
+            UnfreezeObjectEvents();
             ScriptContext2_Disable();
         }
 
@@ -1746,7 +1746,7 @@ static void PopulateBattleFrontierStreak(int matchCallId, u8 *destStr)
     ConvertIntToDecimalStringN(destStr, gBattleFrontierStreakInfo.streak, STR_CONV_MODE_LEFT_ALIGN, i);
 }
 
-static const u16 sBadgeFlags[] =
+static const u16 sBadgeFlags[NUM_BADGES] =
 {
     FLAG_BADGE01_GET,
     FLAG_BADGE02_GET,
@@ -1762,7 +1762,7 @@ static int GetNumOwnedBadges(void)
 {
     u32 i;
 
-    for (i = 0; i < 8; i++)
+    for (i = 0; i < NUM_BADGES; i++)
     {
         if (!FlagGet(sBadgeFlags[i]))
             break;

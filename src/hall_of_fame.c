@@ -155,7 +155,7 @@ static const struct CompressedSpritePalette sHallOfFame_ConfettiSpritePalette[] 
     {},
 };
 
-static const s16 sHallOfFame_MonFullTeamPositions[6][4] =
+static const s16 sHallOfFame_MonFullTeamPositions[PARTY_SIZE][4] =
 {
     {120,   210,    120,    40},
     {326,   220,    56,     40},
@@ -165,7 +165,7 @@ static const s16 sHallOfFame_MonFullTeamPositions[6][4] =
     {310,   -92,    40,     88}
 };
 
-static const s16 sHallOfFame_MonHalfTeamPositions[3][4] =
+static const s16 sHallOfFame_MonHalfTeamPositions[PARTY_SIZE / 2][4] =
 {
     {120,   234,    120,    64},
     {326,   244,    56,     64},
@@ -544,7 +544,7 @@ static void Task_Hof_DisplayMon(u8 taskId)
     u16 currMonId = gTasks[taskId].tDisplayedMonId;
     struct HallofFameMon* currMon = &sHofMonPtr->mon[currMonId];
 
-    if (gTasks[taskId].tMonNumber > 3)
+    if (gTasks[taskId].tMonNumber > PARTY_SIZE / 2)
     {
         xPos = sHallOfFame_MonFullTeamPositions[currMonId][0];
         yPos = sHallOfFame_MonFullTeamPositions[currMonId][1];
@@ -893,7 +893,7 @@ static void Task_HofPC_DrawSpritesPrintText(u8 taskId)
             u16 spriteId;
             s16 posX, posY;
 
-            if (gTasks[taskId].tMonNo > 3)
+            if (gTasks[taskId].tMonNo > PARTY_SIZE / 2)
             {
                 posX = sHallOfFame_MonFullTeamPositions[i][2];
                 posY = sHallOfFame_MonFullTeamPositions[i][3];
@@ -1255,7 +1255,7 @@ static void sub_8174F70(void)
     ScanlineEffect_Stop();
     ResetTasks();
     ResetSpriteData();
-    reset_temp_tile_data_buffers();
+    ResetTempTileDataBuffers();
     ResetAllPicSprites();
     FreeAllSpritePalettes();
     gReservedSpritePaletteCount = 8;
@@ -1282,10 +1282,10 @@ static bool8 sub_8175024(void)
     switch (sHofGfxPtr->state)
     {
     case 0:
-        decompress_and_copy_tile_data_to_vram(1, sHallOfFame_Gfx, 0, 0, 0);
+        DecompressAndCopyTileDataToVram(1, sHallOfFame_Gfx, 0, 0, 0);
         break;
     case 1:
-        if (free_temp_tile_data_buffers_if_possible())
+        if (FreeTempTileDataBuffersIfPossible())
             return TRUE;
         break;
     case 2:
