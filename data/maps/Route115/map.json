@@ -458,8 +458,8 @@
             "script": "Route115_EventScript_ItemPPUp",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 26,
-            "y": 67
+            "x": 27,
+            "y": 30
         },
         {
             "elevation": 3,
@@ -471,8 +471,8 @@
             "script": "Route115_EventScript_ItemHealPowder",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 12,
-            "y": 14
+            "x": 29,
+            "y": 17
         },
         {
             "elevation": 3,
@@ -538,6 +538,20 @@
             "elevation": 0,
             "x": 36,
             "y": 10
+        },
+        {
+            "dest_map": "MAP_METEOR_FALLS_3F",
+            "dest_warp_id": 2,
+            "elevation": 0,
+            "x": 36,
+            "y": 29
+        },
+        {
+            "dest_map": "MAP_METEOR_FALLS_3F",
+            "dest_warp_id": 1,
+            "elevation": 0,
+            "x": 37,
+            "y": 7
         }
     ],
     "weather": "WEATHER_SUNNY"

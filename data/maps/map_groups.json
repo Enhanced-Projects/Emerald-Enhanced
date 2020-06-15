@@ -344,7 +344,10 @@
         "TerraCave_End",
         "AlteringCave",
         "MeteorFalls_StevensCave",
-        "VictoryRoad_Cove"
+        "VictoryRoad_Cove",
+        "MeteorFalls_2F",
+        "MeteorFalls_1F_3R",
+        "MeteorFalls_3F"
     ],
     "gMapGroup25": [
         "SecretBase_RedCave1",

@@ -329,6 +329,10 @@ RustboroCity_EventScript_ItemXDefend:: @ 82910DB
 	finditem ITEM_X_DEFENSE
 	end
 
+RustboroCity_EventScript_ItemRevive::
+	finditem ITEM_REVIVE
+	end
+
 LilycoveCity_EventScript_ItemMaxRepel:: @ 82910E8
 	finditem ITEM_MAX_REPEL
 	end
