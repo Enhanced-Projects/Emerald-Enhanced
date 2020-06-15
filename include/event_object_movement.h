@@ -419,6 +419,6 @@ bool32 sub_8097C8C(u8 var);
 void sub_8097BB4(u8 var1, u8 graphicsId);
 void sub_8097CC4(u8 var1, u8 var2);
 bool32 sub_8097D9C(u8 var);
-bool8 MovementAction_EmoteExclamationMark_Step0(struct EventObject *eventObject, struct Sprite *sprite);
+bool8 MovementAction_EmoteExclamationMark_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
 
 #endif //GUARD_EVENT_OBJECT_MOVEMENT_H
