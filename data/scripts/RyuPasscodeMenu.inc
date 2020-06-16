@@ -63,6 +63,7 @@ MC_GC_GetReward::
 	case 910, TutorVoucherReward
 	case 622, KoutaMawileReward
 	case 842, GCMSReward
+	case 392, Compensationreward
 	msgbox MC_GC_NOREWARD MSGBOX_DEFAULT
 	closemessage
 	release
@@ -175,6 +176,20 @@ GCMSReward:
 	setflag FLAG_RYU_PASSCODE_GCMS_GIFT
 	release
 	end
+
+Compensationreward::
+	goto_if_set FLAG_RYU_COMPENSATION_REWARD, MC_GC_Received
+	additem ITEM_LUXURY_BALL, 50
+	additem ITEM_RARE_CANDY, 50
+	additem ITEM_EXP_DRIVE, 1
+	setvar VAR_RYU_EXP_BATTERY, 42069
+	msgbox CompensationMsg
+	setflag FLAG_RYU_COMPENSATION_REWARD
+	release
+	end
+
+CompensationMsg:
+	.string "50 Rare Candies, 50 Luxury Balls\nand an EXP Drive with some free\lEXP!$"
 
 GCMSRewardMsg:
 	.string "Your GCMS Map Status has been set\nto 31.\pYou can now get a free perfect\nspecimen from the GCMS.\pThanks for joining the discord!$"
