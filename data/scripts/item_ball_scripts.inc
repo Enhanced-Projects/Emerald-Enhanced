@@ -86,7 +86,7 @@ Route111_EventScript_ItemElixir:: @ 8290DC2
 	end
 
 Route112_EventScript_ItemNugget:: @ 8290DCF
-	finditem ITEM_BIG_PEARL
+	finditem ITEM_PP_UP
 	end
 
 Route113_EventScript_ItemMaxEther:: @ 8290DDC
@@ -327,6 +327,10 @@ MauvilleCity_EventScript_ItemXSpeed:: @ 82910CE
 
 RustboroCity_EventScript_ItemXDefend:: @ 82910DB
 	finditem ITEM_X_DEFENSE
+	end
+
+RustboroCity_EventScript_ItemRevive::
+	finditem ITEM_REVIVE
 	end
 
 LilycoveCity_EventScript_ItemMaxRepel:: @ 82910E8

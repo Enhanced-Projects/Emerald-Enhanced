@@ -49,16 +49,16 @@
             "flag": "FLAG_HIDDEN_ITEM_ROUTE_104_SUPER_POTION",
             "item": "ITEM_SUPER_POTION",
             "type": "hidden_item",
-            "x": 7,
-            "y": 6
+            "x": 6,
+            "y": 5
         },
         {
             "elevation": 3,
             "flag": "FLAG_HIDDEN_ITEM_ROUTE_104_POKE_BALL",
             "item": "ITEM_POKE_BALL",
             "type": "hidden_item",
-            "x": 3,
-            "y": 9
+            "x": 2,
+            "y": 2
         },
         {
             "elevation": 3,

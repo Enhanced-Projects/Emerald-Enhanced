@@ -4729,6 +4729,36 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_GenericBuilding",
             "width": 15
+        },
+        {
+            "blockdata_filepath": "data/layouts/MeteorFalls_2F/map.bin",
+            "border_filepath": "data/layouts/MeteorFalls_2F/border.bin",
+            "height": 7,
+            "id": "LAYOUT_METEOR_FALLS_2F",
+            "name": "MeteorFalls_2F_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_MeteorFalls",
+            "width": 11
+        },
+        {
+            "blockdata_filepath": "data/layouts/MeteorFalls_1F_3R/map.bin",
+            "border_filepath": "data/layouts/MeteorFalls_1F_3R/border.bin",
+            "height": 7,
+            "id": "LAYOUT_METEOR_FALLS_1F_3R",
+            "name": "MeteorFalls_1F_3R_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_MeteorFalls",
+            "width": 11
+        },
+        {
+            "blockdata_filepath": "data/layouts/MeteorFalls_3F/map.bin",
+            "border_filepath": "data/layouts/MeteorFalls_3F/border.bin",
+            "height": 25,
+            "id": "LAYOUT_METEOR_FALLS_3F",
+            "name": "MeteorFalls_3F_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_MeteorFalls",
+            "width": 13
         }
     ],
     "layouts_table_label": "gMapLayouts"
