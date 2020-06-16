@@ -40,7 +40,7 @@ Ryu_ShardOreIntro:
     .string "Welcome! I'll refine any Shard\nores you have, at no charge!\pLet's see what you got...$"
 
 RyuShardRewardExiting:
-    .string "Ooh, I got something from it!\pHere's your {RYU_STR_1}!\nBe sure to make good use of it!$"
+    .string "Ooh, I got something from it!\pHere's your {STR_VAR_1}!\nBe sure to make good use of it!$"
 
 Ryu_NoShardOres:
     .string "You must have at least one\nShard ore for me to refine!$"
@@ -130,7 +130,7 @@ RyuPlsChoosOre:
 	.string "Please choose an ore to refine.$"
 	
 Ryu_RefineSuccessful:
-	.string "The process is done.\nIt was a {RYU_STR_1}!$"
+	.string "The process is done.\nIt was a {STR_VAR_1}!$"
 	
 Ryu_PlsComeBackLater:
 	.string "Feel free to return when you need\nme to refine something.$"
@@ -177,7 +177,7 @@ Ryu_FossilOreIntro:
 	.string "it for you, no cost!$"
 
 RyuFossilRewardExiting:
-    .string "Success, I got something from it!\pHere's your {RYU_STR_1}!\nBe sure to make good use of it!$"
+    .string "Success, I got something from it!\pHere's your {STR_VAR_1}!\nBe sure to make good use of it!$"
 
 Ryu_NoFossilOres:
     .string "You must have at least one\nfossil ore for me to refine.$"
@@ -294,7 +294,7 @@ Ryu_YouDontHaveEnough:
     .string "I need at least two for the\nexchange.$"
 
 Ryu_ExchangeSuccess:
-    .string "Here you go!\nOne {RYU_STR_1}!$"
+    .string "Here you go!\nOne {STR_VAR_1}!$"
 
 @@Mining General===================================================================================
 
