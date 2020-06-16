@@ -600,3 +600,10 @@ r119_scottIntroMalePlayer:
 	.string "It's obvious that she likes you.\p"
 	.string "I sure seem to run into you often.\n"
 	.string "Well, I'll be seeing you!$"
+
+Route119_EventScript_DoorIsLocked:: @ placeholder
+	msgbox Route119_Text_DoorIsLocked, MSGBOX_SIGN
+	end
+
+Route119_Text_DoorIsLocked: @ placeholder
+	.string "The door is locked.$"

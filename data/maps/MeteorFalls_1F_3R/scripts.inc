@@ -1,0 +1,2 @@
+MeteorFalls_1F_3R_MapScripts::
+	.byte 0

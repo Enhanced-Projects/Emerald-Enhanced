@@ -7,7 +7,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "NULL",
+            "script": "Route66_EventScript_HintSign",
             "type": "sign",
             "x": 22,
             "y": 1
