@@ -63,6 +63,7 @@ MC_GC_GetReward::
 	case 910, TutorVoucherReward
 	case 622, KoutaMawileReward
 	case 842, GCMSReward
+	case 392, Compensationreward
 	msgbox MC_GC_NOREWARD MSGBOX_DEFAULT
 	closemessage
 	release
@@ -175,6 +176,14 @@ GCMSReward:
 	setflag FLAG_RYU_PASSCODE_GCMS_GIFT
 	release
 	end
+
+Compensationreward::
+	msgbox CompensationMsg
+	release
+	end
+
+CompensationMsg:
+	.string "Nothing!\pBecause this code is no longer\navailable.$"
 
 GCMSRewardMsg:
 	.string "Your GCMS Map Status has been set\nto 31.\pYou can now get a free perfect\nspecimen from the GCMS.\pThanks for joining the discord!$"
