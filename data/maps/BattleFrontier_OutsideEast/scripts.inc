@@ -9,17 +9,19 @@ BattleFrontier_OutsideEast_OnResume: @ 8242C0F
 
 BF_CheckPartyForArtisanCave::
 	lock
-	getpartysize
-	compare VAR_RESULT, 0
-	goto_if_ne ryu_end
-	msgbox CantEnterNoPkmn
+	goto_if_set FLAG_RYU_FRONTIER_MODE, BF_FrontierModeCantEnter
+	release
+	end
+
+BF_FrontierModeCantEnter::
+	msgbox CantEnterInFrontierMode
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 	
-CantEnterNoPkmn:
-	.string "You don't have any pokemon.\nYou cannot enter here.$"
+CantEnterInFrontierMode:
+	.string "You are in Frontier Mode.\nYou cannot enter here.$"
 
 BattleFrontier_OutsideEast_EventScript_TryRemoveSudowoodo:: @ 8242C19
 	specialvar VAR_RESULT, GetBattleOutcome
