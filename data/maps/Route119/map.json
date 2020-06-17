@@ -24,8 +24,8 @@
             "elevation": 0,
             "secret_base_id": "SECRET_BASE_SHRUB1_1",
             "type": "secret_base",
-            "x": 5,
-            "y": 2
+            "x": 15,
+            "y": 10
         },
         {
             "elevation": 0,
@@ -549,10 +549,10 @@
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_MOUNTAIN_DISGUISE",
             "script": "Route119_EventScript_Takashi",
-            "trainer_sight_or_berry_tree_id": "3",
+            "trainer_sight_or_berry_tree_id": "2",
             "trainer_type": "1",
-            "x": 19,
-            "y": 49
+            "x": 6,
+            "y": 51
         },
         {
             "elevation": 4,
@@ -564,8 +564,8 @@
             "script": "Route119_EventScript_Hugh",
             "trainer_sight_or_berry_tree_id": "3",
             "trainer_type": "1",
-            "x": 10,
-            "y": 50
+            "x": 16,
+            "y": 52
         },
         {
             "elevation": 3,
@@ -772,8 +772,8 @@
             "script": "Route119_EventScript_ItemHyperPotion2",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 3,
-            "y": 56
+            "x": 11,
+            "y": 57
         },
         {
             "elevation": 4,
@@ -863,8 +863,8 @@
             "script": "Route119_EventScript_Dayton",
             "trainer_sight_or_berry_tree_id": "3",
             "trainer_type": "1",
-            "x": 16,
-            "y": 52
+            "x": 5,
+            "y": 53
         },
         {
             "elevation": 3,
@@ -917,6 +917,19 @@
             "trainer_type": "0",
             "x": 28,
             "y": 18
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 11,
+            "y": 25
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_119",

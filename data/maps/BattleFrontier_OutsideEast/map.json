@@ -83,8 +83,8 @@
             "type": "trigger",
             "var": "VAR_TEMP_8",
             "var_value": "0",
-            "x": 28,
-            "y": 8
+            "x": 30,
+            "y": 6
         }
     ],
     "id": "MAP_BATTLE_FRONTIER_OUTSIDE_EAST",
@@ -146,17 +146,17 @@
             "y": 16
         },
         {
-            "elevation": 0,
+            "elevation": 3,
             "flag": "0",
             "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "BattleFrontier_OutsideEast_EventScript_BlackBelt1",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 37,
-            "y": 32
+            "x": 36,
+            "y": 30
         },
         {
             "elevation": 3,
@@ -286,7 +286,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 42,
-            "y": 34
+            "y": 30
         },
         {
             "elevation": 3,
@@ -415,8 +415,8 @@
             "script": "BattleFrontier_OutsideEast_EventScript_Gentleman",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 48,
-            "y": 41
+            "x": 29,
+            "y": 40
         },
         {
             "elevation": 0,
@@ -428,8 +428,34 @@
             "script": "BattleFrontier_OutsideEast_EventScript_Camper",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 29,
-            "y": 14
+            "x": 16,
+            "y": 9
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_RYU_TYPENULL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 38
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_RYU_TYPENULL",
+            "graphics_id": "OBJ_EVENT_GFX_NOLAND",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+            "script": "Script_Noland",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 48,
+            "y": 38
         }
     ],
     "region_map_section": "MAPSEC_BATTLE_FRONTIER",
@@ -476,7 +502,7 @@
             "dest_warp_id": 0,
             "elevation": 0,
             "x": 4,
-            "y": 44
+            "y": 45
         },
         {
             "dest_map": "MAP_BATTLE_FRONTIER_EXCHANGE_SERVICE_CORNER",
@@ -518,7 +544,7 @@
             "dest_warp_id": 0,
             "elevation": 0,
             "x": 21,
-            "y": 45
+            "y": 44
         },
         {
             "dest_map": "MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F",
@@ -531,8 +557,8 @@
             "dest_map": "MAP_ARTISAN_CAVE_1F",
             "dest_warp_id": 0,
             "elevation": 0,
-            "x": 28,
-            "y": 7
+            "x": 30,
+            "y": 5
         }
     ],
     "weather": "WEATHER_NONE"

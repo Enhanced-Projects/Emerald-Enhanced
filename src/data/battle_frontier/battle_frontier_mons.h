@@ -1406,12 +1406,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_STEELIX_3] = {
         .species = SPECIES_STEELIX,
-        .moves = {MOVE_EARTHQUAKE, MOVE_HEAVY_SLAM, MOVE_HEAD_SMASH, MOVE_DRAGON_DANCE},
+        .moves = {MOVE_EARTHQUAKE, MOVE_IRON_TAIL, MOVE_ICE_FANG, MOVE_COIL},
         .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 0
+        .ability = 2
     },
     [FRONTIER_MON_BEAUTIFLY] = {
         .species = SPECIES_BEAUTIFLY,
@@ -5629,8 +5629,8 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_STEELIX_2] = {
         .species = SPECIES_STEELIX,
-        .moves = {MOVE_EARTHQUAKE, MOVE_HEAVY_SLAM, MOVE_HEAD_SMASH, MOVE_ICE_FANG},
-        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_EARTHQUAKE, MOVE_IRON_TAIL, MOVE_HEAD_SMASH, MOVE_COIL},
+        .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,

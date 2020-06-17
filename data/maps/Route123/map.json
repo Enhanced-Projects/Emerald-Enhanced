@@ -526,8 +526,8 @@
             "script": "Route123_EventScript_ItemCalcium",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 31,
-            "y": 8
+            "x": 64,
+            "y": 3
         },
         {
             "elevation": 3,
@@ -773,8 +773,8 @@
             "script": "Route123_EventScript_ItemPPUp",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 43,
-            "y": 15
+            "x": 31,
+            "y": 8
         },
         {
             "elevation": 3,
@@ -812,8 +812,8 @@
             "script": "Route123_EventScript_ItemRevivalHerb",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 57,
-            "y": 16
+            "x": 148,
+            "y": 9
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_123",

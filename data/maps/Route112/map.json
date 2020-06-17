@@ -90,8 +90,8 @@
             "script": "Route112_EventScript_Carol",
             "trainer_sight_or_berry_tree_id": "3",
             "trainer_type": "1",
-            "x": 22,
-            "y": 46
+            "x": 29,
+            "y": 44
         },
         {
             "elevation": 3,
