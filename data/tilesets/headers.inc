@@ -841,3 +841,14 @@ gTileset_Fallarbor_Mine::
 	.4byte gMetatiles_Fallarbor_Mine
 	.4byte gMetatileAttributes_Fallarbor_Mine
 	.4byte NULL
+
+	.align 2
+gTileset_Snowy::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Snowy
+	.4byte gTilesetPalettes_Snowy
+	.4byte gMetatiles_Snowy
+	.4byte gMetatileAttributes_Snowy
+	.4byte NULL

@@ -1441,6 +1441,7 @@ RyuLegendary_LeftStoneAloneMsg:
 	.string "{PLAYER} left the stone alone.$"
 
 RyuLegendary_CheckCaught::
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_CAUGHT
 	goto_if_ne ryu_end
 	return

@@ -38,6 +38,13 @@
             "elevation": 3,
             "x": 5,
             "y": 15
+        },
+        {
+            "dest_map": "MAP_METEOR_FALLS_1F_3R",
+            "dest_warp_id": 0,
+            "elevation": 3,
+            "x": 5,
+            "y": 2
         }
     ],
     "weather": "WEATHER_NONE"

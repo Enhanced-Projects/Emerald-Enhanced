@@ -1140,3 +1140,9 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/FallarborTown_FossilMani/scripts.inc"
 
 	.include "data/maps/FallarborTown_MiningMasterHouse/scripts.inc"
+
+	.include "data/maps/MeteorFalls_2F/scripts.inc"
+
+	.include "data/maps/MeteorFalls_1F_3R/scripts.inc"
+
+	.include "data/maps/MeteorFalls_3F/scripts.inc"

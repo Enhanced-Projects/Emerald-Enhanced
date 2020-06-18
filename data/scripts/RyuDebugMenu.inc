@@ -350,15 +350,15 @@ RyuDebug_GiveAllBeginMsg:
 
 RyuDebug_quickstart::
     givemon SPECIES_MAGEARNA, 125, ITEM_EXPERT_BELT
-	givemon SPECIES_MUDSDALE, 125, ITEM_LIFE_ORB
-	setmonmove 1, 0, MOVE_CLOSE_COMBAT
-	setmonmove 1, 1, MOVE_ROCK_SLIDE
+	givemon SPECIES_MUDSDALE, 125, ITEM_WIDE_LENS
+	setmonmove 1, 0, MOVE_PRECIPICE_BLADES
+	setmonmove 1, 1, MOVE_DIAMOND_STORM
 	setmonmove 1, 2, MOVE_EXTREME_SPEED
-	setmonmove 1, 3, MOVE_EARTHQUAKE
-	setmonmove 0, 0, MOVE_SLUDGE_BOMB
-	setmonmove 0, 1, MOVE_MOONBLAST
-	setmonmove 0, 2, MOVE_THUNDERBOLT
-	setmonmove 0, 3, MOVE_MIRROR_SHOT
+	setmonmove 1, 3, MOVE_ICE_SHARD
+	setmonmove 0, 0, MOVE_MOONBLAST
+	setmonmove 0, 1, MOVE_MIRROR_SHOT
+	setmonmove 0, 2, MOVE_EARTH_POWER
+	setmonmove 0, 3, MOVE_PARABOLIC_CHARGE
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 1
 	special RyuSetEVATK

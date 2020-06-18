@@ -110,6 +110,7 @@ LRT_NIGHT::
 	fadeoutbgm 1
 	special HealPlayerParty
 	delay 20
+	setobjectxy 2, 8, 2
 	msgbox LRT_ROM, MSGBOX_DEFAULT
 	fadescreen 0
 	fadeinbgm 1
@@ -153,6 +154,7 @@ LRT_NIGHT2::
 	msgbox LRT_DAWN_THANKS2 MSGBOX_DEFAULT
 	closemessage
 	clearfullscreenimage
+	setobjectxy 2, 8, 2
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER LRT_HEART3
 	waitmovement 0

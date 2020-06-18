@@ -51,6 +51,15 @@
             "var_value": "0",
             "x": 38,
             "y": 22
+        },
+        {
+            "elevation": 3,
+            "script": "MH_RyuBossFight",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 9,
+            "y": 20
         }
     ],
     "id": "MAP_MAGMA_HIDEOUT_4F",

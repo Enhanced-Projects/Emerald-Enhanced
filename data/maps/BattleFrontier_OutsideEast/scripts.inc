@@ -9,17 +9,19 @@ BattleFrontier_OutsideEast_OnResume: @ 8242C0F
 
 BF_CheckPartyForArtisanCave::
 	lock
-	getpartysize
-	compare VAR_RESULT, 0
-	goto_if_ne ryu_end
-	msgbox CantEnterNoPkmn
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	goto_if_set FLAG_RYU_FRONTIER_MODE, BF_FrontierModeCantEnter
+	release
+	end
+
+BF_FrontierModeCantEnter::
+	msgbox CantEnterInFrontierMode
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
 	
-CantEnterNoPkmn:
-	.string "You don't have any pokemon.\nYou cannot enter here.$"
+CantEnterInFrontierMode:
+	.string "You are in Frontier Mode.\nYou cannot enter here.$"
 
 BattleFrontier_OutsideEast_EventScript_TryRemoveSudowoodo:: @ 8242C19
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -453,3 +455,49 @@ BattleFrontier_OutsideEast_Text_StickyMonWithLongTail: @ 8243D0B
 	.string "with a long tail up ahead!\p"
 	.string "It was hiding under a boulder, and\n"
 	.string "it kept staring at me!$"
+
+Script_Noland::
+	goto_if_set FLAG_RYU_TYPENULL, Script_MonAlreadyGiven
+	lock
+	faceplayer
+	msgbox Text_DoYouWantThisPokemon, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq AnsweredYesScript
+	msgbox Text_AnsweredNo
+	release
+	end
+
+AnsweredYesScript::
+	givemon SPECIES_TYPE_NULL, 100, ITEM_EVIOLITE
+	setflag FLAG_RYU_TYPENULL
+	removeobject 27
+	msgbox Text_BeCareful
+	release
+	end
+
+Script_MonAlreadyGiven::
+	lock
+	faceplayer
+	msgbox Text_BeCareful
+	release
+	end
+
+Text_DoYouWantThisPokemon:
+	.string "Huh? Oh it's you.\p"
+	.string "You're {PLAYER}, right? I heard\n"
+	.string "about you.\p"
+	.string "We have genetically engineered this\n"
+	.string "pokemon in our lab, but it keeps\l"
+	.string "escaping.\p"
+	.string "I just barely managed to re-catch it.\p"
+	.string "It is too powerful…\p"
+	.string "We need to get rid of it, but it\n"
+	.string "wouldn't be reponsible to release\l"
+	.string "it into the wild.\p"
+	.string "…Would you be willing to take it?$"
+
+Text_BeCareful:
+	.string "Be careful, it's a fierce one!$"
+
+Text_AnsweredNo:
+	.string "I see… Maybe that's a wise choice.$"

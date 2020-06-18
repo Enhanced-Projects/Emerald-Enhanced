@@ -144,7 +144,7 @@ RFR_ComeBackLater:
     .string "Come back later if you want\na fossil revived!$"
 
 RFR_Finish:
-    .string "Success! I have successfully\nrevived a {RYU_STR_1} from\lthe fossil!$"
+    .string "Success! I have successfully\nrevived a {STR_VAR_1} from\lthe fossil!$"
 
 
 

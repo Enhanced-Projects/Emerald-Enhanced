@@ -1315,10 +1315,10 @@
 #define FLAG_RYU_MANAPHY                                            0x4E8 // Unused Flag
 #define FLAG_RYU_RECEIVED_PHIONE_EGG                                0x4E9 // Unused Flag
 #define FLAG_RYU_HIDE_MANAPHY                                       0x4EA // Unused Flag
-#define FLAG_UNUSED_0x4EB                                           0x4EB // Unused Flag
-#define FLAG_UNUSED_0x4EC                                           0x4EC // Unused Flag
-#define FLAG_UNUSED_0x4ED                                           0x4ED // Unused Flag
-#define FLAG_UNUSED_0x4EE                                           0x4EE // Unused Flag
+#define FLAG_ITEM_RUSTBORO_CITY_REVIVE                              0x4EB // Unused Flag
+#define FLAG_RYU_NECROZMA                                           0x4EC // Unused Flag
+#define FLAG_RYU_TYPENULL                                           0x4ED // Unused Flag
+#define FLAG_RYU_COMPENSATION_REWARD                                0x4EE // Unused Flag
 #define FLAG_UNUSED_0x4EF                                           0x4EF // Unused Flag
 
 #define FLAG_DEFEATED_RUSTBORO_GYM                                  0x4F0
