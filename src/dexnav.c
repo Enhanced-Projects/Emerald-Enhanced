@@ -125,6 +125,8 @@ struct DexnavHudData
 // RAM
 EWRAM_DATA static u8 sDexNavSearchLevels[NUM_SPECIES] = {0};    // to be moved to saveblock!!!!
 EWRAM_DATA static struct DexnavHudData *sDNavState = {NULL};  //#define sDNavState (*((struct DexnavHudData**) 0x203E038))
+EWRAM_DATA u16 gDexnavSpecies = 0;
+EWRAM_DATA u8 gDexnavEnvironment = 0;
 
 // Function Declarations
 static void VblackCallbackSeq(void);
@@ -149,7 +151,7 @@ static void DexNavLoadAreaNames(void);
 static void InitDexNavHUD(u16 species, u8 environment);
 static void DexNavHudDrawSpeciesIcon(u16 species, u8* spriteIdAddr);
 static void DexNavDrawBlackBars(u8* spriteIdAddr);
-static void DexNavDrawSight(u8 sight_lvl, u8* spriteIdAddr);
+static void DexNavDrawSight(u8 sightLevel, u8* spriteIdAddr);
 static void DexNavDrawAbility(u8 ability, u8* spriteIdAddr);
 static void DexNavDrawMove(u16 move, u8 searchLevel, u8* spriteIdAddr);
 static void DexNavDrawPotential(u8 potential, u8* spriteIdAddr);
@@ -207,12 +209,8 @@ static bool8 InTanobyRuins(void);
 //// Const Data
 extern const struct OamData gObjectEventBaseOam_16x16;
 extern const struct SpriteSheet sSpriteSheet_HeldItem;
+extern const struct SpritePalette sSpritePalette_HeldItem;
 
-static const u16 sHeldItemPalette[] = INCBIN_U16("graphics/interface/hold_icons.gbapal");
-static const struct SpritePalette sSpritePalette_HeldItem =
-{
-    sHeldItemPalette, 0x8472
-};
 extern const union AnimCmd *const gFieldEffectObjectImageAnimTable_Ripple[];
 extern const union AnimCmd *const gFieldEffectObjectImageAnimTable_Unknown20[];
 
@@ -233,8 +231,9 @@ static const u32 sDexNavGuiCavePal[] = INCBIN_U32("graphics/dexnav/gui_palettes/
 static const u32 sDexNavGuiDarkerCavePal[] = INCBIN_U32("graphics/dexnav/gui_palettes/dark_cave.gbapal.lz");
 static const u32 sDexNavGuiIndoorPal[] = INCBIN_U32("graphics/dexnav/gui_palettes/indoor.gbapal.lz");
 
+//static const u16 sDexnavStarsTiles[] = INCBIN_U16("graphics/dexnav/stars.4bpp");
 static const u8 sDexnavStarsTiles[] = INCBIN_U8("graphics/dexnav/stars.4bpp");
-static const u16 sDexnavStarsPal[] = INCBIN_U16("graphics/dexnav/stars.gbapal");
+static const u8 sDexnavStarsPal[] = INCBIN_U8("graphics/dexnav/stars.gbapal");
 
 static const u32 gInterfaceGfx_selectionCursorTiles[] = INCBIN_U32("graphics/dexnav/cursor.4bpp");
 static const u16 gInterfaceGfx_selectionCursorPal[] = INCBIN_U16("graphics/dexnav/cursor.gbapal");
@@ -255,6 +254,11 @@ static const u32 gInterfaceGfx_LavaBubblesTiles[] = INCBIN_U32("graphics/dexnav/
 static const u16 gInterfaceGfx_LavaBubblesPal[] = INCBIN_U16("graphics/dexnav/lava_bubbles.gbapal");
 
 static const u32 sDexNavNoDataSymbolTiles[] = INCBIN_U32("graphics/dexnav/no_data.4bpp.lz");
+
+static const struct SpritePalette sSpritePalette_Stars =
+{
+    (const u16 *)sDexnavStarsPal, 0x2710
+};
 
 // strings
 static const u8 sText_DexNavText[] = _("Pokédex\nDexNav");
@@ -567,7 +571,7 @@ static const struct OamData PIconOAM =
     .affineParam = 0,
 };
 
-static const struct SpriteTemplate BulbTemp =
+/*static const struct SpriteTemplate BulbTemp =
 {
     .tileTag = 0x3139,
     .paletteTag = 0x3139,
@@ -576,7 +580,7 @@ static const struct SpriteTemplate BulbTemp =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCallbackDummy,
-};
+};*/
 
 static const u8 MenuTextBlack[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY};
 static const u8 DexNav_BlackText[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_RED};
@@ -605,7 +609,7 @@ static const struct CompressedSpriteSheet sBlackBarTiles =
 static const struct SpriteTemplate sBlackBarTemplate =
 {
     .tileTag = 0xFDF1,
-    .paletteTag = 0x8472,
+    .paletteTag = 0x2710,
     .oam = &sBlackBarOAM,
     .anims = gDummySpriteAnimTable,
     .images = NULL,
@@ -743,7 +747,7 @@ static const struct CompressedSpriteSheet sightTiles =
 static const struct SpriteTemplate fontTempSight =
 {
     .tileTag = 0x5424,
-    .paletteTag = 0x8472,
+    .paletteTag = 0x2710,
     .oam = &FontOAM,
     .anims = gDummySpriteAnimTable,
     .images = NULL,
@@ -762,7 +766,7 @@ static const struct CompressedSpriteSheet FontSpriteAbility =
 static const struct SpriteTemplate FontTempAbility =
 {
     .tileTag = 0x1EE7,
-    .paletteTag = 0x8472,
+    .paletteTag = 0x2710,
     .oam = &FontOAM,
     .anims = gDummySpriteAnimTable,
     .images = 0,
@@ -781,7 +785,7 @@ static const struct CompressedSpriteSheet FontSpriteMove =
 static const struct SpriteTemplate FontTempMove =
 {
     .tileTag = 0x4736,
-    .paletteTag = 0x8472,
+    .paletteTag = 0x2710,
     .oam = &FontOAM,
     .anims =  gDummySpriteAnimTable,
     .images = 0,
@@ -792,14 +796,14 @@ static const struct SpriteTemplate FontTempMove =
 //19 tiles per row, stars are on the 4th row. 1 tile is 32 bytes. Hence 19 * 4 *32
 static const struct SpriteSheet StarIconLit = 
 {
-    .data = (const u16*)&sDexnavStarsTiles[19 * 4 * 32],
+    .data = (const u8 *)&sDexnavStarsTiles[19 * 4 * 32],
     .size = 64,
     .tag = 0x61
 };
 
 static const struct SpriteSheet StarIconOff = 
 {
-    .data = (const u16*)&sDexnavStarsTiles[((19 * 4) + 1) * 32],
+    .data = (const u8 *)&sDexnavStarsTiles[((19 * 4) + 1) * 32],
     .size = 32 * 2 * (19 * 4),
     .tag = 0x2613
 };
@@ -807,7 +811,7 @@ static const struct SpriteSheet StarIconOff =
 static const struct SpriteTemplate StarLitTemp =
 {
     .tileTag = 0x61,
-    .paletteTag = 0x8472,
+    .paletteTag = 0x2710,
     .oam = &HeldOAM,
     .anims =  gDummySpriteAnimTable,
     .images = 0,
@@ -818,7 +822,7 @@ static const struct SpriteTemplate StarLitTemp =
 static const struct SpriteTemplate StarOffTemp =
 {
     .tileTag = 0x2613,
-    .paletteTag = 0x8472,
+    .paletteTag = 0x2710,
     .oam = &HeldOAM,
     .anims =  gDummySpriteAnimTable,
     .images = 0,
@@ -828,8 +832,8 @@ static const struct SpriteTemplate StarOffTemp =
 
 static const struct SpriteTemplate HeldTemp =
 {
-    .tileTag = 0x8472,
-    .paletteTag = 0x8472,
+    .tileTag = 0x2710,
+    .paletteTag = 0x2710,
     .oam = &HeldOAM,
     .anims =  gDummySpriteAnimTable,
     .images = 0,
@@ -1084,7 +1088,6 @@ static void OutlinedFontDraw(u8 spriteId, u8 tileNum, u16 size)
     u8 element = *strPtr;
     
     originalDst = dst = AllocZeroed(size + TILE_SIZE_4BPP);
-
     while (element != 0xFF)
     {
         prevIndex = index;
@@ -1566,8 +1569,8 @@ static void DexNavGuiHandler(void)
                             
                             
                             //Species was valid, save and enter OW HUD mode
-                            gSpecialVar_0x8000 = species;
-                            gSpecialVar_0x8001 = sDNavState->selectedArr;   //selected environment
+                            gDexnavSpecies = species;
+                            gDexnavEnvironment = sDNavState->selectedArr;   //selected environment
                             sDNavState->environment = sDNavState->selectedArr;
                             gMain.state = 0;
                             SetMainCallback1(DexNavGuiExitSearch);
@@ -2074,7 +2077,7 @@ static void ExecDexNavHUD(void)
     if (!gPaletteFade.active && !ScriptContext2_IsEnabled() && gMain.callback2 == CB2_Overworld)
     {
         SetMainCallback1(CB1_Overworld);
-        InitDexNavHUD(gSpecialVar_0x8000, gSpecialVar_0x8001);
+        InitDexNavHUD(gDexnavSpecies, gDexnavEnvironment);
     }
 }
 
@@ -2461,7 +2464,7 @@ static void InitDexNavHUD(u16 species, u8 environment)
         ShowFieldMessage(sText_NotFoundNearby);
         return;
     }
-
+    
     //Populate sDNavState objects
     DexNavGenerateMoveset(species, searchLevel, sDNavState->pokemonLevel, &sDNavState->moveId[0]);
     sDNavState->heldItem = DexNavGenerateHeldItem(species, searchLevel);
@@ -2501,7 +2504,7 @@ static void DexNavDrawIcons(void)
 
 static void DexNavDrawBlackBars(u8 *spriteIdAddr)
 {
-    LoadSpritePalette(&sSpritePalette_HeldItem);
+    LoadSpritePalette(&sSpritePalette_Stars);
     LoadCompressedSpriteSheetUsingHeap(&sBlackBarTiles);
     spriteIdAddr[0] = CreateSprite(&sBlackBarTemplate, ICONX + 16, ICONY - 2, 0x0);
     spriteIdAddr[1] = CreateSprite(&sBlackBarTemplate, ICONX + 16 + 64, ICONY - 2, 0x0);
@@ -2509,17 +2512,18 @@ static void DexNavDrawBlackBars(u8 *spriteIdAddr)
     spriteIdAddr[3] = CreateSprite(&sBlackBarTemplate, ICONX + 16 + 64 + 64 + 64, ICONY - 2, 0x0);
 }
 
-static void DexNavDrawSight(u8 sight_lvl, u8* spriteIdAddr)
+static void DexNavDrawSight(u8 sightLevel, u8* spriteIdAddr)
 {
     u8 spriteId;
-    
-    LoadSpritePalette(&sSpritePalette_HeldItem);
-    LoadCompressedSpriteSheetUsingHeap(&sightTiles);
-    spriteId = CreateSprite(&fontTempSight, ICONX + 192, ICONY + 0x12, 0x0);
-    *spriteIdAddr = spriteId;
-    gSprites[spriteId].oam.affineMode = 2;
-    DexNavSightUpdate(sight_lvl);
-    gSprites[spriteId].oam.objMode = 1;
+  
+	LoadSpritePalette(&sSpritePalette_Stars);
+	LoadCompressedSpriteSheetUsingHeap(&sightTiles);
+	spriteId = CreateSprite(&fontTempSight, ICONX + 192, ICONY + 0x12, 0x0);
+	if (spriteId < MAX_SPRITES)
+	{
+		*spriteIdAddr = spriteId;
+		DexNavSightUpdate(sightLevel);
+	}
 }
 
 static void DexNavDrawAbility(u8 ability, u8* spriteIdAddr)
@@ -2527,7 +2531,7 @@ static void DexNavDrawAbility(u8 ability, u8* spriteIdAddr)
     u8 spriteId = CreateSprite(&FontTempAbility, ICONX + 80, ICONY + 0x12, 0x0);
     u8 len;
     
-    LoadSpritePalette(&sSpritePalette_HeldItem);
+    LoadSpritePalette(&sSpritePalette_Stars);
     LoadCompressedSpriteSheetUsingHeap(&FontSpriteAbility);
     *spriteIdAddr = spriteId;
     gSprites[spriteId].oam.affineMode = 2;
@@ -2560,7 +2564,7 @@ static void DexNavDrawMove(u16 move, u8 searchLevel, u8* spriteIdAddr)
     u8* ptr;
     u8 len;
     
-    LoadSpritePalette(&sSpritePalette_HeldItem);
+    LoadSpritePalette(&sSpritePalette_Stars);
     LoadCompressedSpriteSheetUsingHeap(&FontSpriteMove);
     spriteId = CreateSprite(&FontTempMove, ICONX + 80, ICONY + 0x12, 0x0);
     *spriteIdAddr = spriteId;
@@ -2596,7 +2600,7 @@ static void DexNavDrawMove(u16 move, u8 searchLevel, u8* spriteIdAddr)
     gSprites[spriteId].oam.objMode = 1;
 }
 
-void DexNavHudDrawSpeciesIcon(u16 species, u8* spriteIdAddr)
+void DexNavHudDrawSpeciesIcon(u16 species, u8 *spriteIdAddr)
 {  
     u8 spriteId;
     u32 pid = 0xFFFFFFFF;
@@ -2638,7 +2642,7 @@ static void DexNavDrawPotential(u8 potential, u8* spriteIdAddr)
     // allocate both the lit and unlit star to VRAM
     LoadSpriteSheet(&StarIconLit);
     LoadSpriteSheet(&StarIconOff);
-    LoadSpritePalette(&sSpritePalette_HeldItem);
+    LoadSpritePalette(&sSpritePalette_Stars);
 
     // create star objects and space them according to potential 0 - 3
     for (i = 0; i < 3; i++)
@@ -2660,6 +2664,7 @@ static void DexNavSightUpdate(u8 sight)
     // draw sight eye on first tile, takes up two tiles
     u8 tileid = gSprites[spriteId].oam.tileNum;
     u8* toWrite = (u8*)((tileid * 32) + (OBJ_VRAM0));
+    
     memcpy(toWrite, &sDexnavStarsTiles[((19 * 4) + (7 - (2 * sight))) * 32], 64);
 
     // draw the B button tile
@@ -2945,8 +2950,8 @@ static bool8 ShakingGrass(u8 environment, u8 xSize, u8 ySize, bool8 smallScan)
     
     if (DexNavPickTile(environment, xSize, ySize, smallScan))
     {
-        //u8 metatileBehaviour = MapGridGetMetatileField(sDNavState->tileX, sDNavState->tileY, 0xFF);
-        u8 metatileBehaviour = MapGridGetMetatileLayerTypeAt(sDNavState->tileX, sDNavState->tileY);
+        u8 metatileBehaviour = MapGridGetMetatileBehaviorAt(sDNavState->tileX, sDNavState->tileY);
+        
         gFieldEffectArguments[0] = sDNavState->tileX;
         gFieldEffectArguments[1] = sDNavState->tileY;
         gFieldEffectArguments[2] = 0xFF; // height.
@@ -3153,11 +3158,11 @@ static void DexNavFreeHUD(void)
     FreeSpriteTilesByTag(0x61);
     FreeSpriteTilesByTag(0x2613);
     FreeSpriteTilesByTag(0x5424);
-    FreeSpriteTilesByTag(0x8472);
+    FreeSpriteTilesByTag(0x2710);
     FreeSpriteTilesByTag(0x1EE7); //Font Sprite
     FreeSpriteTilesByTag(0xFDF1); //Black Bars
     FreeSpriteTilesByTag(0x3039);
-    FreeSpritePaletteByTag(0x8472);
+    FreeSpritePaletteByTag(0x2710);
     FreeSpritePaletteByTag(0x3039);
 
     ResetSprite(&gSprites[sDNavState->spriteIdMove]);
