@@ -7645,7 +7645,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_LATIOS_8] = {
         .species = SPECIES_LATIOS,
-        .moves = {MOVE_LUSTER_PURGE, MOVE_DRACO_METEOR, MOVE_SURF, MOVE_THUNDERBOLT},
+        .moves = {MOVE_LUSTER_PURGE, MOVE_DRACO_METEOR, MOVE_ICE_BEAM, MOVE_THUNDERBOLT},
         .heldItem = ITEM_CHOICE_SPECS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
