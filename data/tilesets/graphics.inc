@@ -1749,3 +1749,23 @@ gTilesetPalettes_Fallarbor_Mine::
 	.align 2
 gTilesetTiles_Fallarbor_Mine::
 	.incbin "data/tilesets/secondary/fallarbor_mine/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Snowy::
+	.incbin "data/tilesets/primary/snowy/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/snowy/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/snowy/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/snowy/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/snowy/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/snowy/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/snowy/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/snowy/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/snowy/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/snowy/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/snowy/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/snowy/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/snowy/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Snowy::
+	.incbin "data/tilesets/primary/snowy/tiles.4bpp.lz"
