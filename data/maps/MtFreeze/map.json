@@ -29,11 +29,11 @@
     ],
     "coord_events": [
     ],
-    "id": "MAP_SNOW_SHORE2",
+    "id": "MAP_MT_FREEZE",
     "layout": "LAYOUT_SNOW_SHORE2",
     "map_type": "MAP_TYPE_ROUTE",
     "music": "MUS_DAN02",
-    "name": "SnowShore2",
+    "name": "MtFreeze",
     "object_events": [
     ],
     "region_map_section": "MAPSEC_LITTLEROOT_TOWN",

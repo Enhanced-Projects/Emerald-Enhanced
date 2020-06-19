@@ -58,10 +58,11 @@
         "Underwater6",
         "Underwater7",
         "SnowShore",
-        "SnowShore2",
+        "MtFreeze",
         "FrostyForest",
         "CraggyCoast",
         "FrostbiteField",
+        "SnowshoreUnderwater"
     ],
     "gMapGroup1": [
         "LittlerootTown_BrendansHouse_1F",

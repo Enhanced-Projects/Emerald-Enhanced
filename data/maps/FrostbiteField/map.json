@@ -15,11 +15,6 @@
             "direction": "right",
             "map": "MAP_SNOW_SHORE",
             "offset": 40
-        },
-        {
-            "direction": "right",
-            "map": "MAP_SNOW_SHORE2",
-            "offset": 0
         }
     ],
     "coord_events": [

@@ -4771,11 +4771,11 @@
             "width": 80
         },
         {
-            "blockdata_filepath": "data/layouts/SnowShore2/map.bin",
-            "border_filepath": "data/layouts/SnowShore2/border.bin",
+            "blockdata_filepath": "data/layouts/MtFreeze/map.bin",
+            "border_filepath": "data/layouts/MtFreeze/border.bin",
             "height": 40,
             "id": "LAYOUT_SNOW_SHORE2",
-            "name": "SnowShore2_Layout",
+            "name": "MtFreeze_Layout",
             "primary_tileset": "gTileset_Snowy",
             "secondary_tileset": "gTileset_SnowShore",
             "width": 40
@@ -4809,6 +4809,16 @@
             "primary_tileset": "gTileset_Snowy",
             "secondary_tileset": "gTileset_SnowShore",
             "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SnowshoreUnderwater/map.bin",
+            "border_filepath": "data/layouts/SnowshoreUnderwater/border.bin",
+            "height": 42,
+            "id": "LAYOUT_SNOWSHORE_UNDERWATER",
+            "name": "SnowshoreUnderwater_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 80
         }
     ],
     "layouts_table_label": "gMapLayouts"

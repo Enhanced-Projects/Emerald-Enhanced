@@ -22,8 +22,13 @@
             "offset": 40
         },
         {
+            "direction": "dive",
+            "map": "MAP_SNOWSHORE_UNDERWATER",
+            "offset": 0
+        },
+        {
             "direction": "up",
-            "map": "MAP_SNOW_SHORE2",
+            "map": "MAP_MT_FREEZE",
             "offset": 0
         }
     ],

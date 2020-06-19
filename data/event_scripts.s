@@ -1149,10 +1149,12 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 
 	.include "data/maps/SnowShore/scripts.inc"
 
-	.include "data/maps/SnowShore2/scripts.inc"
+	.include "data/maps/MtFreeze/scripts.inc"
 
 	.include "data/maps/FrostyForest/scripts.inc"
 
 	.include "data/maps/CraggyCoast/scripts.inc"
 
 	.include "data/maps/FrostbiteField/scripts.inc"
+
+	.include "data/maps/SnowshoreUnderwater/scripts.inc"

@@ -15,11 +15,6 @@
             "direction": "down",
             "map": "MAP_FROSTBITE_FIELD",
             "offset": 0
-        },
-        {
-            "direction": "down",
-            "map": "MAP_SNOW_SHORE2",
-            "offset": 40
         }
     ],
     "coord_events": [
