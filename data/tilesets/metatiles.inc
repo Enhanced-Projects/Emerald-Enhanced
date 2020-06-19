@@ -573,3 +573,10 @@ gMetatiles_Snowy::
 	.align 1
 gMetatileAttributes_Snowy::
 	.incbin "data/tilesets/primary/snowy/metatile_attributes.bin"
+	.align 1
+gMetatiles_SnowShore::
+	.incbin "data/tilesets/secondary/snowshore/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_SnowShore::
+	.incbin "data/tilesets/secondary/snowshore/metatile_attributes.bin"
