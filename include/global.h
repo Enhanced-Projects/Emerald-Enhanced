@@ -7,10 +7,6 @@
 #include "gba/gba.h"
 #include "constants/global.h"
 
-#if DEBUG
-#include "mgba.h"
-#endif
-
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
 
