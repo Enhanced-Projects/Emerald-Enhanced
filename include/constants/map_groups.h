@@ -59,6 +59,11 @@
 #define MAP_UNDERWATER5      (54 | (0 << 8))
 #define MAP_UNDERWATER6      (55 | (0 << 8))
 #define MAP_UNDERWATER7      (56 | (0 << 8))
+#define MAP_SNOW_SHORE       (57 | (0 << 8))
+#define MAP_SNOW_SHORE2      (58 | (0 << 8))
+#define MAP_FROSTY_FOREST    (59 | (0 << 8))
+#define MAP_CRAGGY_COAST     (60 | (0 << 8))
+#define MAP_FROSTBITE_FIELD  (61 | (0 << 8))
 
 // Map Group 1
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))

@@ -4759,6 +4759,56 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_MeteorFalls",
             "width": 13
+        },
+        {
+            "blockdata_filepath": "data/layouts/SnowShore/map.bin",
+            "border_filepath": "data/layouts/SnowShore/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SNOW_SHORE",
+            "name": "SnowShore_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_SnowShore",
+            "width": 80
+        },
+        {
+            "blockdata_filepath": "data/layouts/SnowShore2/map.bin",
+            "border_filepath": "data/layouts/SnowShore2/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SNOW_SHORE2",
+            "name": "SnowShore2_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_SnowShore",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/FrostyForest/map.bin",
+            "border_filepath": "data/layouts/FrostyForest/border.bin",
+            "height": 40,
+            "id": "LAYOUT_FROSTY_FOREST",
+            "name": "FrostyForest_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_SnowShore",
+            "width": 80
+        },
+        {
+            "blockdata_filepath": "data/layouts/CraggyCoast/map.bin",
+            "border_filepath": "data/layouts/CraggyCoast/border.bin",
+            "height": 80,
+            "id": "LAYOUT_CRAGGY_COAST",
+            "name": "CraggyCoast_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_SnowShore",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/FrostbiteField/map.bin",
+            "border_filepath": "data/layouts/FrostbiteField/border.bin",
+            "height": 80,
+            "id": "LAYOUT_FROSTBITE_FIELD",
+            "name": "FrostbiteField_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_SnowShore",
+            "width": 40
         }
     ],
     "layouts_table_label": "gMapLayouts"
