@@ -56,7 +56,6 @@
 #include "constants/rgb.h"
 #include "data.h"
 #include "constants/party_menu.h"
-#include "mgba.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
 extern bool8 gHasAmuletEffectActive;
