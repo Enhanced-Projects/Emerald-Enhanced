@@ -4,6 +4,7 @@
 #include "decompress.h"
 #include "decoration.h"
 #include "decoration_inventory.h"
+#include "event_data.h"
 #include "event_object_movement.h"
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
@@ -90,169 +91,167 @@ static void Task_HandleShopMenuBuy(u8 taskId);
 static void Task_HandleShopMenuSell(u8 taskId);
 static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, struct ListMenu *list);
 static void BuyMenuPrintPriceInList(u8 windowId, s32 item, u8 y);
-//mart badges
-static u8 GetNumberOfBadges(void);
 
-// pokemart items by badge
+//mart badges
 static const u16 sShopInventory_ZeroBadges[] = {
     ITEM_POKE_BALL,
     ITEM_POTION,
     ITEM_ANTIDOTE,
+    ITEM_BURN_HEAL,
+    ITEM_ICE_HEAL,
+    ITEM_AWAKENING,
     ITEM_PARALYZE_HEAL,
+    ITEM_REVIVE,
     ITEM_NONE
 };
 
 static const u16 sShopInventory_OneBadge[] = {
     ITEM_POKE_BALL,
+    ITEM_GREAT_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_ANTIDOTE,
-    ITEM_PARALYZE_HEAL,
+    ITEM_BURN_HEAL,
+    ITEM_ICE_HEAL,
     ITEM_AWAKENING,
-    ITEM_BURNHEAL,
-    ITEM_ICEHEAL,
-    ITEM_ESCAPEROPE,
-    ITEM_REPEL,
+    ITEM_PARALYZE_HEAL,
+    ITEM_REVIVE,
     ITEM_NONE
 };
 
-// two is same as one badge
 static const u16 sShopInventory_TwoBadges[] = {
     ITEM_POKE_BALL,
+    ITEM_GREAT_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_ANTIDOTE,
-    ITEM_PARALYZE_HEAL,
+    ITEM_BURN_HEAL,
+    ITEM_ICE_HEAL,
     ITEM_AWAKENING,
-    ITEM_BURNHEAL,
-    ITEM_ICEHEAL,
-    ITEM_ESCAPEROPE,
-    ITEM_REPEL,
+    ITEM_PARALYZE_HEAL,
+    ITEM_REVIVE,
+    ITEM_POKE_DOLL,
     ITEM_NONE
 };
 
 static const u16 sShopInventory_ThreeBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREATBALL,
+    ITEM_GREAT_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
-    ITEM_REVIVE,
     ITEM_ANTIDOTE,
-    ITEM_PARALYZE_HEAL,
+    ITEM_BURN_HEAL,
+    ITEM_ICE_HEAL,
     ITEM_AWAKENING,
-    ITEM_BURNHEAL,
-    ITEM_ICEHEAL,
-    ITEM_ESCAPEROPE,
+    ITEM_PARALYZE_HEAL,
+    ITEM_REVIVE,
     ITEM_REPEL,
-    ITEM_SUPERREPEL,
+    ITEM_POKE_DOLL,
     ITEM_NONE
 };
 
-// four is same as three
 static const u16 sShopInventory_FourBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREATBALL,
+    ITEM_GREAT_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
-    ITEM_REVIVE,
+    ITEM_HYPER_POTION,
     ITEM_ANTIDOTE,
-    ITEM_PARALYZE_HEAL,
+    ITEM_BURN_HEAL,
+    ITEM_ICE_HEAL,
     ITEM_AWAKENING,
-    ITEM_BURNHEAL,
-    ITEM_ICEHEAL,
-    ITEM_ESCAPEROPE,
+    ITEM_PARALYZE_HEAL,
+    ITEM_REVIVE,
     ITEM_REPEL,
-    ITEM_SUPERREPEL,
+    ITEM_POKE_DOLL,
     ITEM_NONE
 };
 
 static const u16 sShopInventory_FiveBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREATBALL,
-    ITEM_ULTRABALL,
+    ITEM_GREAT_BALL,
+    ITEM_ULTRA_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
-    ITEM_HYPERPOTION,
-    ITEM_REVIVE,
+    ITEM_HYPER_POTION,
     ITEM_ANTIDOTE,
-    ITEM_PARALYZE_HEAL,
+    ITEM_BURN_HEAL,
+    ITEM_ICE_HEAL,
     ITEM_AWAKENING,
-    ITEM_BURNHEAL,
-    ITEM_ICEHEAL,
-    ITEM_FULLHEAL,
-    ITEM_ESCAPEROPE,
+    ITEM_PARALYZE_HEAL,
+    ITEM_REVIVE,
     ITEM_REPEL,
-    ITEM_SUPERREPEL,
+    ITEM_SUPER_REPEL,
+    ITEM_POKE_DOLL,
     ITEM_NONE
 };
 
-// six is same as five
 static const u16 sShopInventory_SixBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREATBALL,
-    ITEM_ULTRABALL,
+    ITEM_GREAT_BALL,
+    ITEM_ULTRA_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
-    ITEM_HYPERPOTION,
-    ITEM_REVIVE,
+    ITEM_HYPER_POTION,
     ITEM_ANTIDOTE,
-    ITEM_PARALYZE_HEAL,
+    ITEM_BURN_HEAL,
+    ITEM_ICE_HEAL,
     ITEM_AWAKENING,
-    ITEM_BURNHEAL,
-    ITEM_ICEHEAL,
-    ITEM_FULLHEAL,
-    ITEM_ESCAPEROPE,
+    ITEM_PARALYZE_HEAL,
+    ITEM_FULL_HEAL,
+    ITEM_REVIVE,
     ITEM_REPEL,
-    ITEM_SUPERREPEL,
+    ITEM_SUPER_REPEL,
+    ITEM_POKE_DOLL,
     ITEM_NONE
 };
 
 static const u16 sShopInventory_SevenBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREATBALL,
-    ITEM_ULTRABALL,
+    ITEM_GREAT_BALL,
+    ITEM_ULTRA_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
-    ITEM_HYPERPOTION,
-    ITEM_MAXPOTION,
-    ITEM_REVIVE,
+    ITEM_HYPER_POTION,
+    ITEM_MAX_POTION,
     ITEM_ANTIDOTE,
-    ITEM_PARALYZE_HEAL,
+    ITEM_BURN_HEAL,
+    ITEM_ICE_HEAL,
     ITEM_AWAKENING,
-    ITEM_BURNHEAL,
-    ITEM_ICEHEAL,
-    ITEM_FULLHEAL,
-    ITEM_ESCAPEROPE,
+    ITEM_PARALYZE_HEAL,
+    ITEM_FULL_HEAL,
+    ITEM_REVIVE,
     ITEM_REPEL,
-    ITEM_SUPERREPEL,
-    ITEM_MAXREPEL,
+    ITEM_SUPER_REPEL,
+    ITEM_MAX_REPEL,
+    ITEM_POKE_DOLL,
     ITEM_NONE
 };
 
 static const u16 sShopInventory_EightBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREATBALL,
-    ITEM_ULTRABALL,
+    ITEM_GREAT_BALL,
+    ITEM_ULTRA_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
-    ITEM_HYPERPOTION,
-    ITEM_MAXPOTION,
-    ITEM_FULLRESTORE,
-    ITEM_REVIVE,
+    ITEM_HYPER_POTION,
+    ITEM_MAX_POTION,
+    ITEM_FULL_RESTORE,
     ITEM_ANTIDOTE,
-    ITEM_PARALYZE_HEAL,
+    ITEM_BURN_HEAL,
+    ITEM_ICE_HEAL,
     ITEM_AWAKENING,
-    ITEM_BURNHEAL,
-    ITEM_ICEHEAL,
-    ITEM_FULLHEAL,
-    ITEM_ESCAPEROPE,
+    ITEM_PARALYZE_HEAL,
+    ITEM_FULL_HEAL,
+    ITEM_REVIVE,
     ITEM_REPEL,
-    ITEM_SUPERREPEL,
-    ITEM_MAXREPEL,
+    ITEM_SUPER_REPEL,
+    ITEM_MAX_REPEL,
+    ITEM_POKE_DOLL,
     ITEM_NONE
 };
 
-static const u16 *sShopInventories[] = 
+static const u16 *const sShopInventories[] = 
 {
     sShopInventory_ZeroBadges, 
     sShopInventory_OneBadge,
@@ -264,6 +263,7 @@ static const u16 *sShopInventories[] =
     sShopInventory_SevenBadges,
     sShopInventory_EightBadges
 };
+
 
 static const struct YesNoFuncTable sShopPurchaseYesNoFuncs =
 {
@@ -485,14 +485,31 @@ static void SetShopMenuCallback(void (* callback)(void))
     gMartInfo.callback = callback;
 }
 
+static u8 GetNumberOfBadges(void)
+{
+    u16 badgeFlag;
+    u8 count = 0;
+    
+    for (badgeFlag = FLAG_BADGE01_GET; badgeFlag < FLAG_BADGE01_GET + NUM_BADGES; badgeFlag++)
+    {
+        if (FlagGet(badgeFlag))
+            count++;
+    }
+    
+    return count;
+}
+
 static void SetShopItemsForSale(const u16 *items)
 {
     u16 i = 0;
     u8 badgeCount = GetNumberOfBadges();
 
-    gMartInfo.itemList = items;
-    gMartInfo.itemCount = 0;
+    if (items == NULL)
+        gMartInfo.itemList = sShopInventories[badgeCount];
+    else
+        gMartInfo.itemList = items;
 
+    gMartInfo.itemCount = 0;
     while (gMartInfo.itemList[i])
     {
         gMartInfo.itemCount++;
@@ -1409,17 +1426,3 @@ void CreateDecorationShop2Menu(const u16 *itemsForSale)
 }
 
 
-
-static u8 GetNumberOfBadges(void)
-{
-    u16 badgeFlag;
-    u8 count = 0;
-    
-    for (badgeFlag = FLAG_BADGE01_GET; badgeFlag < FLAG_BADGE01_GET + NUM_BADGES; badgeFlag++)
-    {
-        if (FlagGet(badgeFlag))
-            count++;
-    }
-    
-    return count;
-}
