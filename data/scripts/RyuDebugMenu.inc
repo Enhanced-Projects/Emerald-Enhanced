@@ -183,9 +183,16 @@ RDB_CTVMsg:
 	.string "SaveBlock1 is {STR_VAR_1} bytes long.$"
 
 RyuDebug_Utility1::
-	setvar VAR_RYU_PLAYER_MINING_SKILL, 3
-	release
-	end
+    setflag FLAG_RYU_MAX_SCALE
+    cleartrainerflag TRAINER_OVERLORD_RYU
+    trainerbattle_no_intro TRAINER_OVERLORD_RYU, Ryu_losefight
+    waitstate
+    clearflag FLAG_RYU_MAX_SCALE
+    release
+    end
+
+Ryu_losefight:
+	.string "$"
 
 Ryu_MiningMapInfo:
 	.string "Mining Locations$"

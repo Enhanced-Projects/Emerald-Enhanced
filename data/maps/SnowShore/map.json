@@ -12,16 +12,6 @@
             "offset": 0
         },
         {
-            "direction": "left",
-            "map": "MAP_FROSTBITE_FIELD",
-            "offset": -40
-        },
-        {
-            "direction": "up",
-            "map": "MAP_CRAGGY_COAST",
-            "offset": 40
-        },
-        {
             "direction": "dive",
             "map": "MAP_SNOWSHORE_UNDERWATER",
             "offset": 0
@@ -30,6 +20,16 @@
             "direction": "up",
             "map": "MAP_MT_FREEZE",
             "offset": 0
+        },
+        {
+            "direction": "up",
+            "map": "MAP_FROSTBITE_FIELD",
+            "offset": 40
+        },
+        {
+            "direction": "left",
+            "map": "MAP_CRAGGY_COAST",
+            "offset": -40
         }
     ],
     "coord_events": [
@@ -41,7 +41,7 @@
     "name": "SnowShore",
     "object_events": [
     ],
-    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+    "region_map_section": "MAPSEC_SNOWSHORE",
     "requires_flash": false,
     "show_map_name": true,
     "warp_events": [
