@@ -35,7 +35,6 @@
 #include "rtc.h"
 #include "script.h"
 #include "script_menu.h"
-#include "slot_machine.h"
 #include "sound.h"
 #include "starter_choose.h"
 #include "string_util.h"
@@ -59,6 +58,7 @@
 #include "constants/mevent.h"
 #include "constants/tv.h"
 #include "constants/script_menu.h"
+#include "constants/slot_machine.h"
 #include "constants/songs.h"
 #include "constants/species.h"
 #include "constants/moves.h"
@@ -2642,7 +2642,7 @@ static void Task_ShowScrollableMultichoice(u8 taskId)
 
     ScrollableMultichoice_UpdateScrollArrows(taskId);
     task->tListTaskId = ListMenuInit(&gScrollableMultichoice_ListMenuTemplate, task->tScrollOffset, task->tSelectedRow);
-    schedule_bg_copy_tilemap_to_vram(0);
+    ScheduleBgCopyTilemapToVram(0);
     gTasks[taskId].func = ScrollableMultichoice_ProcessInput;
 }
 
