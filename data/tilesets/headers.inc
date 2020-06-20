@@ -851,7 +851,7 @@ gTileset_Snowy::
 	.4byte gTilesetPalettes_Snowy
 	.4byte gMetatiles_Snowy
 	.4byte gMetatileAttributes_Snowy
-	.4byte NULL
+	.4byte InitTilesetAnim_Snowy
 
 	.align 2
 gTileset_SnowShore::

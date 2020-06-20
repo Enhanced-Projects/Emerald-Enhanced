@@ -7,14 +7,19 @@
     ],
     "connections": [
         {
-            "direction": "left",
+            "direction": "up",
             "map": "MAP_FROSTY_FOREST",
             "offset": 0
         },
         {
-            "direction": "down",
+            "direction": "right",
             "map": "MAP_SNOW_SHORE",
-            "offset": -40
+            "offset": 40
+        },
+        {
+            "direction": "right",
+            "map": "MAP_MT_FREEZE",
+            "offset": 0
         }
     ],
     "coord_events": [
@@ -26,7 +31,7 @@
     "name": "CraggyCoast",
     "object_events": [
     ],
-    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+    "region_map_section": "MAPSEC_CRAGGY_COAST",
     "requires_flash": false,
     "show_map_name": true,
     "warp_events": [

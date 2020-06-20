@@ -17,14 +17,28 @@
     "id": "MAP_SNOWSHORE_UNDERWATER",
     "layout": "LAYOUT_SNOWSHORE_UNDERWATER",
     "map_type": "MAP_TYPE_UNDERWATER",
-    "music": "MUS_DAN02",
+    "music": "MUS_DEEPDEEP",
     "name": "SnowshoreUnderwater",
     "object_events": [
     ],
-    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+    "region_map_section": "MAPSEC_SNOWSHORE",
     "requires_flash": false,
     "show_map_name": true,
     "warp_events": [
+        {
+            "dest_map": "MAP_UNDERWATER7",
+            "dest_warp_id": 2,
+            "elevation": 0,
+            "x": 52,
+            "y": 40
+        },
+        {
+            "dest_map": "MAP_UNDERWATER7",
+            "dest_warp_id": 3,
+            "elevation": 0,
+            "x": 59,
+            "y": 39
+        }
     ],
-    "weather": "WEATHER_SUNNY"
+    "weather": "WEATHER_UNDERWATER_BUBBLES"
 }
