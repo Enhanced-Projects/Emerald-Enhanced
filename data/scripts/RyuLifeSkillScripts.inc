@@ -339,7 +339,7 @@ Ryu_CheckForMiningLevelUp::
     goto ryu_return
 
 Ryu_CheckLevel1::
-    compare VAR_RYU_PLAYER_MINING_EXP, 128
+    compare VAR_RYU_PLAYER_MINING_EXP, 75
     goto_if_lt ryu_return
     compare VAR_RYU_PLAYER_MINING_SKILL, 1
     goto_if_ne ryu_return
@@ -351,7 +351,7 @@ Ryu_CheckLevel1::
     return
 
 Ryu_CheckLevel2::
-    compare VAR_RYU_PLAYER_MINING_EXP, 356
+    compare VAR_RYU_PLAYER_MINING_EXP, 180
     goto_if_lt ryu_return
     compare VAR_RYU_PLAYER_MINING_SKILL, 2
     goto_if_ne ryu_return
