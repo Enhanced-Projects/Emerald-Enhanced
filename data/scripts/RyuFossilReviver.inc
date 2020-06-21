@@ -88,8 +88,8 @@ RFR_Claw::
 RFR_Amber::
     checkitem ITEM_OLD_AMBER, 1
     goto_if_ne Ryu_DontHaveItem
-    setvar VAR_TEMP_2, ITEM_OLD_AMBER
     setvar VAR_TEMP_4, SPECIES_AERODACTYL
+    setvar VAR_TEMP_2, ITEM_OLD_AMBER
     goto RFR_CheckPartyandGiveEgg
 
 Ryu_FossilReviverNoSkill::
@@ -115,7 +115,7 @@ RFR_NoPartySlotFree::
     end
 
 RFR_GiveEggAndExit::
-    removeitem VAR_TEMP_2
+    removeitem VAR_TEMP_2, 1
     bufferspeciesname 3, VAR_TEMP_4
     msgbox RFR_Finish
     release
@@ -144,7 +144,7 @@ RFR_ComeBackLater:
     .string "Come back later if you want\na fossil revived!$"
 
 RFR_Finish:
-    .string "Success! I have successfully\nrevived a {STR_VAR_1} from\lthe fossil!$"
+    .string "Success! I have successfully\nrevived a {STR_VAR_2} from\lthe fossil!$"
 
 
 
