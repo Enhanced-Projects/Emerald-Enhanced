@@ -62,7 +62,8 @@
         "FrostyForest",
         "CraggyCoast",
         "FrostbiteField",
-        "SnowshoreUnderwater"
+        "SnowshoreUnderwater",
+        "FrostyForestUnderwater"
     ],
     "gMapGroup1": [
         "LittlerootTown_BrendansHouse_1F",

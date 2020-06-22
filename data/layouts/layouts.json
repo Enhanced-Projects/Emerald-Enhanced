@@ -4819,6 +4819,16 @@
             "primary_tileset": "gTileset_Snowy",
             "secondary_tileset": "gTileset_Underwater",
             "width": 80
+        },
+        {
+            "blockdata_filepath": "data/layouts/FrostyForestUnderwater/map.bin",
+            "border_filepath": "data/layouts/FrostyForestUnderwater/border.bin",
+            "height": 37,
+            "id": "LAYOUT_FROSTY_FOREST_UNDERWATER",
+            "name": "FrostyForestUnderwater_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 38
         }
     ],
     "layouts_table_label": "gMapLayouts"

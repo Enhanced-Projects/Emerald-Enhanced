@@ -203,8 +203,8 @@ MasterBallRewardMsg:
 	.string "a Master Ball!$"
 	
 MC_GC_ReceivedMsg:
-	.string "Nothing! because\n"
-	.string "You've already redeemed this code!$"
+	.string "Nothing! because you have already\n"
+	.string "redeemed this code!$"
 	
 MC_GC_RewardReceived:
 	.string "You entered {STR_VAR_1}.\pYour Reward is: $"
