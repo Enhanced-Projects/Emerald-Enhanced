@@ -1,13 +1,14 @@
 #ifndef GUARD_CUTSCENE_H
 #define GUARD_CUTSCENE_H
 
-struct BGPanState {
+struct BGPanState 
+{
+	const u8 * ptr;
 	bool8 active;
 	u8 bgLineOfs;
 	u8 vofsVal;
 	u8 mode;
 	u8 bpp;
-	const u8 * ptr;
 };
 
 struct PidgeyPaletteFade 
@@ -23,15 +24,26 @@ struct PidgeyPaletteFade
 
 struct CutsceneBG
 {
-	u8 mode; // 0 - 4bpp NS, 1 - 4bpp S, 2 - 8bpp NS, 3 - 8bpp S
-	u8 scrollMode; // 0 - map, 1 - tile
     const u8 *tiles;
 	u32 tileSize;
     const u8 *map;
 	u32 mapSize;
     const u8 *palette;
 	u32 palIdxCnt;
+	u8 mode;
+	u8 scrollMode;
 };
+
+#define CUTSCENE_4BPP_NO_SCROLL 0x0
+#define CUTSCENE_4BPP_SCROLL 0x1
+#define CUTSCENE_4BPP_MODE_MASK (CUTSCENE_4BPP_NO_SCROLL | CUTSCENE_4BPP_SCROLL)
+#define CUTSCENE_8BPP_NO_SCROLL 0x2
+#define CUTSCENE_8BPP_SCROLL 0x4
+#define CUTSCENE_8BPP_MODE_MASK (CUTSCENE_8BPP_NO_SCROLL | CUTSCENE_8BPP_SCROLL)
+
+#define CUTSCENE_SCROLL_MAP 0
+#define CUTSCENE_SCROLL_TILE 1
+#define CUTSCENE_SCROLL_NONE 0xFF
 
 void UpdatePidgeyPaletteFade(void);
 void StartPaletteFadePidgey(u16 offset, u8 numEntries, u8 startCoeff, u8 endCoeff, u16 color);
