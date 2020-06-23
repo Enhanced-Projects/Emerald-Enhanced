@@ -6,6 +6,8 @@
 #include "constants/rgb.h"
 #include "constants/vars.h"
 
+static const u8 sDefaultCutsceneTilemap[] = INCBIN_U8("graphics/cutscene/fscutscene/default_tilemap.bin");
+
 static const u8 sDawnCutsceneBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/tiles.8bpp");
 static const u8 sDawnCutsceneBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/map.bin");
 static const u8 sDawnCutsceneBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/tiles.gbapal");
@@ -186,7 +188,6 @@ static const struct BgTemplate sCutsceneBackground4bpp = {
 
 
 EWRAM_DATA struct BGPanState gBgPanState = {0};
-EWRAM_DATA u16 gMapBuffer[32][32] = {0};
 
 ALIGNED(4) EWRAM_DATA u16 gUnfadedPalette[0x100] = {0};
 ALIGNED(4) EWRAM_DATA u16 gFadedPalette[0x100] = {0};
@@ -254,15 +255,7 @@ void LoadPalettePidgey(const void * pal, u8 numEntries)
 
 static void InitDefaultTilemap(void)
 {
-	u32 i, j, k = 0;
-	for(i = 0; i < 21; i++)
-	{
-		for(j = 0; j < 30; j++)
-		{
-			gMapBuffer[i][j] = k++;
-		}
-	}
-	LoadBgTilemap(1, gMapBuffer, sizeof(gMapBuffer), 0);	
+	LoadBgTilemap(1, sDefaultCutsceneTilemap, sizeof(sDefaultCutsceneTilemap), 0);
 }
 
 static void StartBackgroundPan(const u8 * ptr, u8 bpp, u8 mode)
@@ -313,7 +306,10 @@ void StartBGCutscene(u8 id)
 	{
 		case CUTSCENE_4BPP_NO_SCROLL:
 		case CUTSCENE_8BPP_NO_SCROLL:
-			LoadBgTilemap(1, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
+			if(gCutsceneBgTable[id].map == NULL)
+				InitDefaultTilemap();
+			else
+				LoadBgTilemap(1, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
 			LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
 			break;
 		case CUTSCENE_4BPP_SCROLL:
@@ -328,7 +324,10 @@ void StartBGCutscene(u8 id)
 					StartBackgroundPan(gCutsceneBgTable[id].tiles, 4, gCutsceneBgTable[id].scrollMode);
 					break;
 				default:
-					LoadBgTilemap(1, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
+					if(gCutsceneBgTable[id].map == NULL)
+						InitDefaultTilemap();
+					else
+						LoadBgTilemap(1, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
 					LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
 					break;
 			}
@@ -345,7 +344,10 @@ void StartBGCutscene(u8 id)
 					StartBackgroundPan(gCutsceneBgTable[id].tiles, 8, gCutsceneBgTable[id].scrollMode);
 					break;
 				default:
-					LoadBgTilemap(1, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
+					if(gCutsceneBgTable[id].map == NULL)
+						InitDefaultTilemap();
+					else
+						LoadBgTilemap(1, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
 					LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
 					break;
 			}
