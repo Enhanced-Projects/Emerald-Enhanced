@@ -31,13 +31,6 @@ SlateportCity_NameRatersHouse_EventScript_RateMonNickname:: @ 8209AF3
 	compare VAR_RESULT, SPECIES_EGG
 	goto_if_eq SlateportCity_NameRatersHouse_EventScript_CantRateEgg
 	special BufferMonNickname
-	special IsMonOTIDNotPlayers
-	compare VAR_RESULT, TRUE
-	goto_if_eq SlateportCity_NameRatersHouse_EventScript_PlayerNotMonsOT
-	specialvar VAR_RESULT, MonOTNameNotPlayer
-	special BufferMonNickname
-	compare VAR_RESULT, TRUE
-	goto_if_eq SlateportCity_NameRatersHouse_EventScript_PlayerNotMonsOT
 	msgbox SlateportCity_NameRatersHouse_Text_FineNameSuggestBetterOne, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq SlateportCity_NameRatersHouse_EventScript_ChangeNickname
