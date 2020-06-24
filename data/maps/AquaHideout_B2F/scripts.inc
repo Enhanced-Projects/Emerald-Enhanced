@@ -105,7 +105,7 @@ AC_ShellyOutro:
     .string "time ago. I have no clue where it's\l"
     .string "at now.\p"
 	.string "Pray you don't run into Matt...\p"
-    .string "Matt. He will turn your world\n"
+    .string "He will turn your world\n"
     .string "inside out.$"
 	
 AC_DevonMattTrigger::
