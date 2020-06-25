@@ -11534,19 +11534,19 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves =  sParty_Dawn2},
     },
 
-    [TRAINER_EMPTY_35] =
+    [TRAINER_OVERLORD_RYU_REMATCH] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_DAWN,
-        .trainerName = _("Dawn"),
-        .items = {},
-        .battleStyle = BS_SHIFT,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_OVERLORD,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
+        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .trainerName = _("Ryu"),
+        .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE},
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_DawnRustboroTorchic),
-        .party = {.NoItemDefaultMoves = sParty_DawnRustboroTorchic},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_HP_AWARE | AI_SCRIPT_PREFER_STRONGEST_MOVE | AI_SCRIPT_RISKY | AI_SCRIPT_TRY_TO_FAINT,
+        .partySize = ARRAY_COUNT(sParty_OverlordRyuRematch),
+        .party = {.ItemCustomMoves = sParty_OverlordRyuRematch},
     },
 
     [TRAINER_ROXANNE_2] =
