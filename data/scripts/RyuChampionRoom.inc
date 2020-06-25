@@ -3,7 +3,7 @@
 
 
 RyuThroneRoomCheckFollower::
-	map_script_2 VAR_TEMP_D, 0, RyuResetFollowerPosition
+	@map_script_2 VAR_TEMP_D, 0, RyuResetFollowerPosition
 	.2byte 0
 
 @Alternate champion room 
@@ -45,8 +45,9 @@ RyuChampionThroneStart::
 RCR_SoloChamp::
 	closemessage
 	specialvar VAR_RESULT, checkForOverlordRyuEncounter
-	compare VAR_RESULT, 1
-	goto_if_eq RCR_OverlordRyuBossFight
+	switch VAR_RESULT
+	case 1, RCR_OverlordRyuBossFight
+	case 2, RCR_OverlordRyuRematch
 	call RCR_ChooseOpponent
 	playse SE_DOOR
 	addobject VAR_TEMP_5
@@ -80,7 +81,31 @@ RCR_OverlordRyuBossFight::
 	setflag FLAG_RYU_MAX_SCALE
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	trainerbattle_no_intro TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
+	clearflag FLAG_RYU_MAX_SCALE
+	call_if_unset FLAG_RYU_DEFEATED_OVERLORD, MawileMegaReward
+	goto RCR_OverlordRyuEndMatch
+
+RCR_OverlordRyuRematch::
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	playbgm MUS_REKKUU_KOURIN, 1
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_CAMERA
+	addobject 15
+	applymovement 15, RCR_ChallengerApproach
+	waitmovement 15
+	msgbox RCR_RYU_Intro
+	closemessage
+	setflag FLAG_TEMP_3
+	setflag FLAG_RYU_MAX_SCALE
+	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
+	trainerbattle_no_intro TRAINER_OVERLORD_RYU_REMATCH, RCR_RYU_DefeatText
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	clearflag FLAG_RYU_MAX_SCALE
@@ -247,7 +272,7 @@ RCR_ChallengerSteven::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -272,7 +297,7 @@ RCR_ChallengerNorman::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -287,7 +312,7 @@ RCR_ChallengerJohnatan::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -302,7 +327,7 @@ RCR_ChallengerRobert::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -317,7 +342,7 @@ RCR_ChallengerLance::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -332,7 +357,7 @@ RCR_ChallengerZod::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -347,7 +372,7 @@ RCR_ChallengerGiovanni::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -362,7 +387,7 @@ RCR_ChallengerSigma::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -377,7 +402,7 @@ RCR_ChallengerJuan::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge

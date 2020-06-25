@@ -5595,21 +5595,21 @@ bool8 checkForOverlordRyuEncounter(void)
 {
     if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10 && (FlagGet(FLAG_RYU_DEFEATED_OVERLORD) == 1))
     {
-        if ((Random() % 100) <= 5)
+        if ((Random() % 100) <= 25)
         {
-            return TRUE;
+            return 2;
         }
     }
     else if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10)
     {
         if ((Random() % 100) <= 10)
         {
-            return TRUE;
+            return 1;
         }
     }
     else
     {
-        return FALSE;
+        return 0;
     }
         
 }

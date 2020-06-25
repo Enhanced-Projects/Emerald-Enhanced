@@ -1270,7 +1270,6 @@ static void CB2_EndTrainerBattle(void)
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         if (!InBattlePyramid() && !InTrainerHillChallenge())
         {
-            //RegisterTrainerInMatchCall();
             SetBattledTrainersFlags();
         }
     }
