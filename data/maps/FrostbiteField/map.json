@@ -30,6 +30,32 @@
     "music": "MUS_DAN02",
     "name": "FrostbiteField",
     "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "2",
+            "trainer_type": "0",
+            "x": 5,
+            "y": 22
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "2",
+            "trainer_type": "0",
+            "x": 5,
+            "y": 19
+        }
     ],
     "region_map_section": "MAPSEC_FROSTBITE_FIELD",
     "requires_flash": false,
