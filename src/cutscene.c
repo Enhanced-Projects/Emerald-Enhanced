@@ -6,6 +6,8 @@
 #include "constants/rgb.h"
 #include "constants/vars.h"
 
+static const u8 sDefaultCutsceneTilemap[] = INCBIN_U8("graphics/cutscene/fscutscene/default_tilemap.bin");
+
 static const u8 sDawnCutsceneBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/tiles.8bpp");
 static const u8 sDawnCutsceneBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/map.bin");
 static const u8 sDawnCutsceneBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/tiles.gbapal");
@@ -53,8 +55,8 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 {
     [SCENEBGDAWN] = 
     {
-		.mode = 2,
-		.scrollMode = 0,
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sDawnCutsceneBgTiles,
 		.tileSize = sizeof(sDawnCutsceneBgTiles),
         .map = sDawnCutsceneBgMap,
@@ -64,8 +66,8 @@ static const struct CutsceneBG gCutsceneBgTable[] =
     },
 	[SCENEBGNIGHTDAWN] = 
     {
-		.mode = 2,
-		.scrollMode = 0,
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sDawnCutsceneBgNightTiles,
 		.tileSize = sizeof(sDawnCutsceneBgNightTiles),
         .map = sDawnCutsceneBgNightMap,
@@ -75,8 +77,8 @@ static const struct CutsceneBG gCutsceneBgTable[] =
     },
 	[SCENEBGSUNSET] = 
     {
-		.mode = 0,
-		.scrollMode = 0,
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sSunsetBgTiles,
 		.tileSize = sizeof(sSunsetBgTiles),
         .map = sSunsetBgMap,
@@ -86,8 +88,8 @@ static const struct CutsceneBG gCutsceneBgTable[] =
     },
 	[SCENEBGMINNIE] = 
     {
-		.mode = 2,
-		.scrollMode = 0,
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sMinnieBgTiles,
 		.tileSize = sizeof(sMinnieBgTiles),
         .map = sMinnieBgMap,
@@ -97,8 +99,8 @@ static const struct CutsceneBG gCutsceneBgTable[] =
     },
 	[SCENEBGMELOETTA] = 
     {
-		.mode = 0,
-		.scrollMode = 0,
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sMeloettaBgTiles,
 		.tileSize = sizeof(sMeloettaBgTiles),
         .map = sMeloettaBgMap,
@@ -108,8 +110,8 @@ static const struct CutsceneBG gCutsceneBgTable[] =
     },
 	[SCENEBGSHELLY] = 
     {
-		.mode = 2,
-		.scrollMode = 0,
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sShellyBgTiles,
 		.tileSize = sizeof(sShellyBgTiles),
         .map = sShellyBgMap,
@@ -119,8 +121,8 @@ static const struct CutsceneBG gCutsceneBgTable[] =
     },
 	[SCENEBGMAWILE] = 
     {
-		.mode = 2,
-		.scrollMode = 0,
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sMawileBgTiles,
 		.tileSize = sizeof(sMawileBgTiles),
         .map = sMawileBgMap,
@@ -131,8 +133,8 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 	
 	[SCENEBGBRENDAN] = 
     {
-		.mode = 2,
-		.scrollMode = 0,
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sBrendanBgTiles,
 		.tileSize = sizeof(sBrendanBgTiles),
         .map = sBrendanBgMap,
@@ -142,8 +144,8 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 	},
 	[SCENEBGBRENDANNIGHT] = 
     {
-		.mode = 2,
-		.scrollMode = 0,
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sBrendanNightBgTiles,
 		.tileSize = sizeof(sBrendanNightBgTiles),
         .map = sBrendanNightBgMap,
@@ -153,8 +155,8 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 	},
 	[SCENEBGMININGMAP] = 
     {
-		.mode = 0,
-		.scrollMode = 0,
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sMiningMapBgTiles,
 		.tileSize = sizeof(sMiningMapBgTiles),
         .map = sMiningMapBgMap,
@@ -186,7 +188,6 @@ static const struct BgTemplate sCutsceneBackground4bpp = {
 
 
 EWRAM_DATA struct BGPanState gBgPanState = {0};
-EWRAM_DATA u16 gMapBuffer[32][32] = {0};
 
 ALIGNED(4) EWRAM_DATA u16 gUnfadedPalette[0x100] = {0};
 ALIGNED(4) EWRAM_DATA u16 gFadedPalette[0x100] = {0};
@@ -254,15 +255,7 @@ void LoadPalettePidgey(const void * pal, u8 numEntries)
 
 static void InitDefaultTilemap(void)
 {
-	u32 i, j, k = 0;
-	for(i = 0; i < 21; i++)
-	{
-		for(j = 0; j < 30; j++)
-		{
-			gMapBuffer[i][j] = k++;
-		}
-	}
-	LoadBgTilemap(1, gMapBuffer, sizeof(gMapBuffer), 0);	
+	LoadBgTilemap(1, sDefaultCutsceneTilemap, sizeof(sDefaultCutsceneTilemap), 0);
 }
 
 static void StartBackgroundPan(const u8 * ptr, u8 bpp, u8 mode)
@@ -302,7 +295,7 @@ void UpdateBgPan(void)
 
 void StartBGCutscene(u8 id)
 {
-	if(gCutsceneBgTable[id].mode > 1)
+	if(gCutsceneBgTable[id].mode & CUTSCENE_8BPP_MODE_MASK)
 		InitBgFromTemplate(&sCutsceneBackground8bpp);
 	else
 		InitBgFromTemplate(&sCutsceneBackground4bpp);
@@ -311,36 +304,52 @@ void StartBGCutscene(u8 id)
     ShowBg(1);
 	switch(gCutsceneBgTable[id].mode)
 	{
-		case 0:
-			LoadBgTilemap(1, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
+		case CUTSCENE_4BPP_NO_SCROLL:
+		case CUTSCENE_8BPP_NO_SCROLL:
+			if(gCutsceneBgTable[id].map == NULL)
+				InitDefaultTilemap();
+			else
+				LoadBgTilemap(1, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
 			LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
 			break;
-		case 1:
-			if(gCutsceneBgTable[id].scrollMode == 0)
+		case CUTSCENE_4BPP_SCROLL:
+			switch(gCutsceneBgTable[id].scrollMode)
 			{
-				LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
-				StartBackgroundPan(gCutsceneBgTable[id].map, 4, gCutsceneBgTable[id].scrollMode);
-			}
-			else
-			{
-				InitDefaultTilemap();
-				StartBackgroundPan(gCutsceneBgTable[id].tiles, 4, gCutsceneBgTable[id].scrollMode);
+				case CUTSCENE_SCROLL_MAP:
+					LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
+					StartBackgroundPan(gCutsceneBgTable[id].map, 4, gCutsceneBgTable[id].scrollMode);
+					break;
+				case CUTSCENE_SCROLL_TILE:
+					InitDefaultTilemap();
+					StartBackgroundPan(gCutsceneBgTable[id].tiles, 4, gCutsceneBgTable[id].scrollMode);
+					break;
+				default:
+					if(gCutsceneBgTable[id].map == NULL)
+						InitDefaultTilemap();
+					else
+						LoadBgTilemap(1, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
+					LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
+					break;
 			}
 			break;
-		case 2:
-			LoadBgTilemap(1, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
-			LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
-			break;
-		case 3:
-			if(gCutsceneBgTable[id].scrollMode == 0)
+		case CUTSCENE_8BPP_SCROLL:
+			switch(gCutsceneBgTable[id].scrollMode)
 			{
-				LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
-				StartBackgroundPan(gCutsceneBgTable[id].map, 8, gCutsceneBgTable[id].scrollMode);
-			}
-			else
-			{
-				InitDefaultTilemap();
-				StartBackgroundPan(gCutsceneBgTable[id].tiles, 8, gCutsceneBgTable[id].scrollMode);
+				case CUTSCENE_SCROLL_MAP:
+					LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
+					StartBackgroundPan(gCutsceneBgTable[id].map, 8, gCutsceneBgTable[id].scrollMode);
+					break;
+				case CUTSCENE_SCROLL_TILE:
+					InitDefaultTilemap();
+					StartBackgroundPan(gCutsceneBgTable[id].tiles, 8, gCutsceneBgTable[id].scrollMode);
+					break;
+				default:
+					if(gCutsceneBgTable[id].map == NULL)
+						InitDefaultTilemap();
+					else
+						LoadBgTilemap(1, gCutsceneBgTable[id].map, gCutsceneBgTable[id].mapSize, 0);
+					LoadBgTiles(1, gCutsceneBgTable[id].tiles, gCutsceneBgTable[id].tileSize, 0);
+					break;
 			}
 			break;
 		default:
