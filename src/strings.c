@@ -1537,7 +1537,7 @@ const u8 gText_MenuPokenav[] = _("Pokénav");
 const u8 gText_MenuPlayer[] = _("{PLAYER}");
 const u8 gText_MenuSave[] = _("Save");
 const u8 gText_MenuOption[] = _("Options");
-const u8 gText_MenuExit[] = _("Close");
+const u8 gText_MenuExit[] = _("BetaInfo");
 const u8 gText_MenuRetire[] = _("Forfeit");
 const u8 gText_MenuRest[] = _("Rest");
 const u8 gText_SafariBallStock[] = _("Safari balls\nStock: {STR_VAR_1}");
@@ -2065,14 +2065,11 @@ const u8 gText_RyuRelationshipLanaMenuOption[] = _("Lana");
 const u8 gText_RyuRelationshipLanetteMenuOption[] = _("Lanette");
 
 
-const u8 gText_RyuBetaMenuResetDevon[] = _("Reset Devon");
-const u8 gText_RyuBetaMenuResetMagma[] = _("{COLOR RED}{SHADOW DARK_GREY}Reset Magma");
-const u8 gText_RyuBetaMenuResetAqua[] = _("Reset Aqua");
-const u8 gText_RyuBetaMenuResetLeaf[] = _("Reset Leaf");
-const u8 gText_RyuBetaMenuResetRival[] = _("Reset Rival");
+const u8 gText_RyuBetaMenuBlank[] = _("Empty");
+const u8 gText_RyuBetaMenuResetBadges[] = _("Reset Badges");
 const u8 gText_RyuBetaMenuResetGCMS[] = _("Reset GCMS");
 const u8 gText_RyuBetaMenuGoHome[] = _("Teleport Home");
-const u8 gText_RyuBetaMenuExit[] = _("Reset Nothing");
+const u8 gText_RyuBetaMenuExit[] = _("Exit Menu");
 
 const u8 gText_RyuForecasterClear[] = _("Clear");
 const u8 gText_RyuForecasterSprinkle[] = _("Light Sprinkle");

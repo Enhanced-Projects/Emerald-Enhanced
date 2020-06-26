@@ -3196,11 +3196,8 @@ extern const u8 gText_RyuUserModeEvMenuSpAtk[];
 extern const u8 gText_RyuUserModeEvMenuSpDef[];
 extern const u8 gText_RyuUserModeEvMenuSpe[];
 
-extern const u8 gText_RyuBetaMenuResetDevon[];
-extern const u8 gText_RyuBetaMenuResetMagma[];
-extern const u8 gText_RyuBetaMenuResetAqua[];
-extern const u8 gText_RyuBetaMenuResetLeaf[];
-extern const u8 gText_RyuBetaMenuResetRival[];
+extern const u8 gText_RyuBetaMenuBlank[];
+extern const u8 gText_RyuBetaMenuResetBadges[];
 extern const u8 gText_RyuBetaMenuResetGCMS[];
 extern const u8 gText_RyuBetaMenuGoHome[];
 extern const u8 gText_RyuBetaMenuExit[];

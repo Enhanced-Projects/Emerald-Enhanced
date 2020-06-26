@@ -1025,11 +1025,11 @@ static const struct MenuAction MultichoiceList_132[]=
 
 static const struct MenuAction MultichoiceList_133[]=
 {
-    {gText_RyuBetaMenuResetDevon},
-    {gText_RyuBetaMenuResetMagma},
-    {gText_RyuBetaMenuResetAqua},
-    {gText_RyuBetaMenuResetLeaf},
-    {gText_RyuBetaMenuResetRival},
+    {gText_RyuBetaMenuBlank},
+    {gText_RyuBetaMenuBlank},
+    {gText_RyuBetaMenuBlank},
+    {gText_RyuBetaMenuBlank},
+    {gText_RyuBetaMenuResetBadges},
     {gText_RyuBetaMenuResetGCMS},
     {gText_RyuBetaMenuGoHome},
     {gText_RyuBetaMenuExit},

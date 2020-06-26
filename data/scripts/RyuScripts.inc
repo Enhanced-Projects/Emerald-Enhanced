@@ -146,12 +146,12 @@ RyuDebugBetaMenuScript::
 	closemessage
 	multichoicedefault 30, 0, 133, 7, 0
 	switch VAR_RESULT
-	case 0, RDBM_ResetDevon
-	case 1, RDBM_Magma
-	case 2, RDBM_ResetAqua
-	case 3, RDBM_ResetLeaf
-	case 4, RDBM_ResetRival
-	case 5, RDBM_ResetBadges
+	case 0, RDBM_Option1
+	case 1, RDBM_Option2
+	case 2, RDBM_Option3
+	case 3, RDBM_Option4
+	case 4, RDBM_ResetBadges
+	case 5, RDBM_ResetGCMS
 	case 6, RDBM_TeleportHome
 	case 7, RDBM_ExitResetMenu
 	case 127, RDBM_ExitResetMenu
@@ -159,76 +159,37 @@ RyuDebugBetaMenuScript::
 	end
 
 BetaMenuIntro:
-	.string "You really shouldn't mess with these\noptions unless you were directed\pto do so. Save file damage can occur.\pIn some cases, these menus will\ndelete items given from the questline.\p"
+	.string "You really shouldn't mess with these\noptions unless you were directed\pto do so. Save file damage can occur.\p"
 	.string "{COLOR LIGHT_RED}{SHADOW TRANSPARENT}YOU HAVE BEEN WARNED!!$"
 
-RDBM_ResetDevon::
-	lockall
-	msgbox RDBM_Devon_msg MSGBOX_DEFAULT
-	delay 60
-	closemessage
-	special RyuResetDevonFlags
-	playse SE_EXPMAX
-	waitse
+RDBM_Option1::
+RDBM_Option2::
+RDBM_Option3::
+RDBM_Option4::
+	msgbox RDBM_Unimplemented
 	release
 	end
 
-RDBM_Devon_msg:
-	.string "Resetting Devon storyline progress\n... ... ... ...$"
+RDBM_Unimplemented:
+	.string "This option does nothing. It's\na placeholder for future options.$"
 
-RDBM_Magma::
-	lockall
-	msgbox RDBM_Magma_msg MSGBOX_DEFAULT
+RDBM_ResetBadges:
+	clearflag FLAG_BADGE01_GET
+	clearflag FLAG_BADGE02_GET
+	clearflag FLAG_BADGE03_GET
+	clearflag FLAG_BADGE04_GET
+	clearflag FLAG_BADGE05_GET
+	clearflag FLAG_BADGE06_GET
+	clearflag FLAG_BADGE07_GET
+	clearflag FLAG_BADGE08_GET
+	msgbox RDBM_BadgesReset
 	release
 	end
-	
-RDBM_Magma_msg:
-	.string "Magma hasn't been implemented yet.\nNo changes have been made.$"
 
-RDBM_ResetAqua::
-	lockall
-	msgbox RDBM_Aqua_msg MSGBOX_DEFAULT
-	delay 60
-	closemessage
-	special RyuResetAquaFlags
-	playse SE_EXPMAX
-	waitse
-	release
-	end
-	
-RDBM_Aqua_msg:
-	.string "Resetting Aqua storyline progress\n... ... ... ...$"
+RDBM_BadgesReset:
+	.string "All badges have been removed.$"
 
-RDBM_ResetLeaf::
-	lockall
-	msgbox RDBM_Leaf_msg MSGBOX_DEFAULT
-	delay 60
-	closemessage
-	cleartrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_24
-	special RyuResetLeafFlags
-	playse SE_EXPMAX
-	waitse
-	release
-	end
-	
-RDBM_Leaf_msg:
-	.string "Resetting Leaf storyline progress\n... ... ... ...$"
-
-RDBM_ResetRival::
-	lockall
-	msgbox RDBM_Rival_msg MSGBOX_DEFAULT
-	delay 60
-	closemessage
-	special RyuResetRivalFlags
-	playse SE_EXPMAX
-	waitse
-	release
-	end
-	
-RDBM_Rival_msg:
-	.string "Resetting {RIVAL} storyline progress\n... ... ... ...$"
-
-RDBM_ResetBadges::
+RDBM_ResetGCMS::
 	lockall
 	setvar VAR_RYU_GCMS_SPECIES, 0
 	setvar VAR_RYU_GCMS_VALUE, 0
@@ -238,21 +199,6 @@ RDBM_ResetBadges::
 
 RDBM_GCMSReset:
 	.string "GCMS has been reset.$"
-
-RDBM_WeatherFixArchie:
-	clearflag FLAG_RYU_ARCHIE_SUCCESSFUL
-	doweather
-	release
-	end
-
-RDBM_WeatherMsg:
-	.string "Resetting all weather variables...$"
-
-RDBM_WeatherMsg2:
-	.string "Weather has been reset to default state.$"
-
-RDBM_Badges_msg::
-	.string "Not Implemented yet.\nNo changes made.$"
 
 RDBM_ExitResetMenu::
 	msgbox RDBM_Exiting MSGBOX_DEFAULT
@@ -1505,6 +1451,31 @@ BF_battleintro:
 	
 BF_battledefeat:
 	.string "Good fight.\nLet's do it again!$"
+
+@==================================================================================================Start Menu Config Info
+
+RyuStartMenuConfigInfoScript::
+	fadescreen FADE_FROM_BLACK
+	buffernumberstring 0, VAR_LAST_KNOWN_GAME_VERSION
+	msgbox RyuTemp_StartMenuConfig, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq RyuDebugBetaMenuScript
+	closemessage
+	release
+	end
+
+RyuTemp_StartMenuConfig:
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced ({COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1}{COLOR LIGHT_GREEN}{SHADOW GREEN})\n"
+    .string "Configuration Info\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}In Start menu inputs:\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}L+R {COLOR DARK_GREY}{SHADOW LIGHT_GREY}: Enable/Disable Jukebox\l"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}R(With Jukebox On){COLOR DARK_GREY}{SHADOW LIGHT_GREY}:Skip to Next Song\l"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Right:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Tgl Rdm route/battle music.\l"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Left:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Realign Follower\l"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Theme switcher in Option menu.\p"
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Open Beta Menu?$"
+
+
 
 @==================================================================================================Meloetta Switcher
 
