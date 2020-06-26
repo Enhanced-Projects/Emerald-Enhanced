@@ -25,6 +25,33 @@ FrostyForest_Movement_FallThroughIce:
 	set_invisible
 	step_end
 
+FrostyForest_IceWarpTile::
+  lockall
+  getplayerxy VAR_TEMP_5, VAR_TEMP_6
+  playse SE_RU_GASHIN
+  waitse
+  playse SE_RU_GASYAN
+  waitse
+  applymovement OBJ_EVENT_ID_PLAYER, FF_StepInPlace
+  setmetatile VAR_TEMP_5, VAR_TEMP_6, 769, TRUE
+  special DrawWholeMapView
+  delay 30
+  playse SE_RU_HYUU
+  warphole MAP_FROSTY_FOREST_UNDERWATER
+  release
+  end
+
+FF_StepInPlace:
+	walk_in_place_fastest_down
+	walk_in_place_fastest_down
+	walk_in_place_fastest_down
+	walk_in_place_fastest_down
+	walk_in_place_fastest_down
+	walk_in_place_fastest_down
+	walk_in_place_fastest_down
+	walk_in_place_fastest_down
+	step_end
+
 FrostyForest_EnergyRoot::
 	lockall
 	goto_if_set FLAG_RYU_FROSTY_FOREST_ENERGY_ROOT, FrostyForestEnd
