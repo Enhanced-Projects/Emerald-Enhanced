@@ -851,4 +851,15 @@ gTileset_Snowy::
 	.4byte gTilesetPalettes_Snowy
 	.4byte gMetatiles_Snowy
 	.4byte gMetatileAttributes_Snowy
+	.4byte InitTilesetAnim_Snowy
+
+	.align 2
+gTileset_SnowShore::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_SnowShore
+	.4byte gTilesetPalettes_SnowShore
+	.4byte gMetatiles_SnowShore
+	.4byte gMetatileAttributes_SnowShore
 	.4byte NULL

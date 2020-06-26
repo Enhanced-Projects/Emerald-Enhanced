@@ -9,14 +9,14 @@
             "secret_base_id": "SECRET_BASE_RED_CAVE1_2",
             "type": "secret_base",
             "x": 53,
-            "y": 10
+            "y": 11
         },
         {
             "elevation": 0,
             "secret_base_id": "SECRET_BASE_RED_CAVE4_2",
             "type": "secret_base",
             "x": 55,
-            "y": 11
+            "y": 12
         },
         {
             "elevation": 0,
@@ -47,6 +47,11 @@
         {
             "direction": "dive",
             "map": "MAP_UNDERWATER7",
+            "offset": 0
+        },
+        {
+            "direction": "up",
+            "map": "MAP_SNOW_SHORE",
             "offset": 0
         }
     ],

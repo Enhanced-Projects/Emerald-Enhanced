@@ -1,0 +1,30 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": false,
+    "allow_running": false,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": [
+        {
+            "direction": "emerge",
+            "map": "MAP_FROSTY_FOREST",
+            "offset": 0
+        }
+    ],
+    "coord_events": [
+    ],
+    "id": "MAP_FROSTY_FOREST_UNDERWATER",
+    "layout": "LAYOUT_FROSTY_FOREST_UNDERWATER",
+    "map_type": "MAP_TYPE_UNDERWATER",
+    "music": "MUS_DEEPDEEP",
+    "name": "FrostyForestUnderwater",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_FROSTY_FOREST",
+    "requires_flash": false,
+    "show_map_name": false,
+    "warp_events": [
+    ],
+    "weather": "WEATHER_UNDERWATER_BUBBLES"
+}

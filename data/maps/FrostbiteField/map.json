@@ -1,0 +1,66 @@
+{
+    "allow_bike": true,
+    "allow_escape_rope": false,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": [
+        {
+            "direction": "left",
+            "map": "MAP_FROSTY_FOREST",
+            "offset": 0
+        },
+        {
+            "direction": "down",
+            "map": "MAP_SNOW_SHORE",
+            "offset": -40
+        },
+        {
+            "direction": "left",
+            "map": "MAP_MT_FREEZE",
+            "offset": 40
+        }
+    ],
+    "coord_events": [
+    ],
+    "id": "MAP_FROSTBITE_FIELD",
+    "layout": "LAYOUT_FROSTBITE_FIELD",
+    "map_type": "MAP_TYPE_ROUTE",
+    "music": "MUS_DAN02",
+    "name": "FrostbiteField",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "2",
+            "trainer_type": "0",
+            "x": 5,
+            "y": 22
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "2",
+            "trainer_type": "0",
+            "x": 5,
+            "y": 19
+        }
+    ],
+    "region_map_section": "MAPSEC_FROSTBITE_FIELD",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+    ],
+    "weather": "WEATHER_SUNNY"
+}

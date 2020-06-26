@@ -16,6 +16,12 @@
         "FallarborTown",
         "VerdanturfTown",
         "PacifidlogTown",
+        "SnowShore",
+        "CraggyCoast",
+        "FrostyForest",
+        "FrostbiteField",
+        "MtFreeze",
+        "Route66",
         "Route101",
         "Route102",
         "Route103",
@@ -50,13 +56,18 @@
         "Route132",
         "Route133",
         "Route134",
+        "Route135",
         "Underwater1",
         "Underwater2",
         "Underwater3",
         "Underwater4",
         "Underwater5",
         "Underwater6",
-        "Underwater7"
+        "Underwater7",
+        "Underwater8",
+        "Underwater9",
+        "SnowshoreUnderwater",
+        "FrostyForestUnderwater"
     ],
     "gMapGroup1": [
         "LittlerootTown_BrendansHouse_1F",
@@ -199,14 +210,10 @@
         "DesertTomb1F",
         "DesertTomb2F",
         "DesertTombCore",
-        "Route66",
-        "Route135",
-        "Underwater8",
         "Route135_House1",
         "Route135_House2",
         "Route135_House3",
-        "Route135_ManaphyTemple",
-        "Underwater9"
+        "Route135_ManaphyTemple"
     ],
     "gMapGroup19": [
         "Route112_CableCarStation",
