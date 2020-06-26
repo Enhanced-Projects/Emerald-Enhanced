@@ -8500,7 +8500,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
         .abilities = {ABILITY_FLASH_FIRE, ABILITY_SOLID_ROCK},
-        .abilityHidden = ABILITY_ANGER_POINT,
+        .abilityHidden = ABILITY_DETONATE,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_RED,
     },
