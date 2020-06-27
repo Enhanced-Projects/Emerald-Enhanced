@@ -180,14 +180,23 @@ RyuDebug_ViewTempVars::
 	end
 
 RDB_CTVMsg:
-	.string "SaveBlock1 is {STR_VAR_1} bytes long.$"
+	.string "{STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}, {RYU_STR_1}, {RYU_STR_2}, {RYU_STR_3}$"
 
 RyuDebug_Utility1::
-    setflag FLAG_RYU_MAX_SCALE
-    cleartrainerflag TRAINER_OVERLORD_RYU
-    trainerbattle_no_intro TRAINER_OVERLORD_RYU, Ryu_losefight
-    waitstate
-    clearflag FLAG_RYU_MAX_SCALE
+    random 150
+	buffernumberstring 0, VAR_RESULT
+    random 150
+	buffernumberstring 1, VAR_RESULT
+    random 150
+	buffernumberstring 2, VAR_RESULT
+    random 150
+	buffernumberstring 3, VAR_RESULT
+    random 150
+	buffernumberstring 4, VAR_RESULT
+    random 150
+	buffernumberstring 5, VAR_RESULT
+	msgbox RDB_CTVMsg
+	goto RyuDebug_Utility1
     release
     end
 
@@ -451,14 +460,6 @@ RyuPokeEditMenu::
 RyuExitPokeEditMenu::
 	release
 	end
-	
-RyuViewIvDebugMenu::
-	special RyuIvCheckerDef
-	msgbox RyuIvDebug1 MSGBOX_DEFAULT
-	special RyuIvCheckerOff
-	msgbox RyuIvDebug2 MSGBOX_DEFAULT
-	closemessage
-	goto RyuPokeEditMenu
 
 RyuAccessDevMoveRelearner::
 	msgbox RyuActivateRelearner MSGBOX_YESNO
@@ -483,10 +484,14 @@ retutor:
 	.string "Relearn another move?$"
 	
 RyuViewEvDebugMenu::
-	special RyuEvCheckerDef
-	msgbox RyuEVDebug1 MSGBOX_DEFAULT
-	special RyuEvCheckerOff
-	msgbox RyuEVDebug2 MSGBOX_DEFAULT
+	special RyuEvChecker
+	msgbox RyuEVDebugMsg MSGBOX_DEFAULT
+	closemessage
+	goto RyuPokeEditMenu
+
+RyuViewIvDebugMenu::
+	special RyuIvChecker
+	msgbox RyuIVDebugMsg MSGBOX_DEFAULT
 	closemessage
 	goto RyuPokeEditMenu
 	
@@ -497,9 +502,7 @@ RyuViewOtherDebugMenu::
 	goto RyuPokeEditMenu
 	
 RyuOtherMenuMsg:
-	.string "Lead mon's Friendship Value is {STR_VAR_1}\p"
-	.string "Lead mon's Personality Value is {STR_VAR_2}\p"
-	.string "Lead mon's ribbon count is {STR_VAR_3}$"
+	.string "FriendShip: {STR_VAR_1},      Personality: {STR_VAR_2},\nRibbons: {STR_VAR_3}$"
 
 RyuSetEvDebugMenu::
 	msgbox RyuEvIntro MSGBOX_SIGN
@@ -648,21 +651,15 @@ RyuEvMenuSpe126::
 RyuEvMenuMsg:
 	.string "Would you like to modify EV's?"
 	
-RyuIvDebug1:
-	.string "Lead Pokemon Defensive IVS:\n"
-	.string "HP: {STR_VAR_1}    Def: {STR_VAR_2}     SpDef: {STR_VAR_3}$"
+RyuIVDebugMsg:
+	.string "Lead Pokemon IVS:\p"
+	.string "HP: {STR_VAR_1}    Atk: {STR_VAR_2}     Def: {STR_VAR_3}\n"
+	.string "SpAtk: {RYU_STR_1}    SpDef: {RYU_STR_2}     Speed: {RYU_STR_3}$"
 	
-RyuIvDebug2:
-	.string "Lead Pokemon Offensive IVS:\n"
-	.string "Atk: {STR_VAR_1}    SpAtk: {STR_VAR_2}     Speed: {STR_VAR_3}$"
-
-RyuEVDebug1:
-	.string "Lead Pokemon Defensive EVS:\n"
-	.string "HP: {STR_VAR_1}    Def: {STR_VAR_2}     SpDef: {STR_VAR_3}$"
-	
-RyuEVDebug2:
-	.string "Lead Pokemon Offensive EVS:\n"
-	.string "Atk: {STR_VAR_1}    SpAtk: {STR_VAR_2}     Speed: {STR_VAR_3}$"
+RyuEVDebugMsg:
+	.string "Lead Pokemon EVS:\p"
+	.string "Hp: {STR_VAR_1},     Atk: {STR_VAR_2},     Def: {STR_VAR_3}\n"
+	.string "SpAtk: {RYU_STR_1},     SpDef: {RYU_STR_2},     Speed: {RYU_STR_3}$"
 	
 RyuSetFriendshipDebugMenu::
 	addmonhappiness 0, 255

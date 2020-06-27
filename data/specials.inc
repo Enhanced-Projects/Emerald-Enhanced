@@ -533,10 +533,8 @@ gSpecials:: @ 81DBA64
 	def_special CloseDeptStoreElevatorWindow
 	def_special TrySetBattleTowerLinkType
 	def_special checkbadgecount
-	def_special RyuIvCheckerDef
-	def_special RyuIvCheckerOff
-	def_special RyuEvCheckerDef
-	def_special RyuEvCheckerOff
+	def_special RyuIvChecker
+	def_special RyuEvChecker
 	def_special RyuSetEVHP
 	def_special RyuSetEVATK
 	def_special RyuSetEVDEF
@@ -560,7 +558,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuSetMonMove
 	def_special RyuOtherDataChecker
 	def_special RyuIvSetter
-	def_special RyuLevelSetter
 	def_special RyuSetFriendship
 	def_special RyuResetEvs
 	def_special RyuCalculateCurrentExpCoefficient
