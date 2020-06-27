@@ -897,6 +897,7 @@ static bool8 HandleStartMenuInput(void)
 
             HideStartMenu();
             HideFieldMessageBox();
+            RemovePrintedNumber();
             ScriptContext2_Enable();
             ScriptContext1_SetupScript(RyuDebugMenuScript);
             return TRUE;
