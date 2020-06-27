@@ -6507,7 +6507,7 @@ int Ryu_GiveRevivedFossilEgg(void)
     u16 species = (VarGet(VAR_TEMP_4));
     u8 iv = 31;
     u8 rnd1, rnd2, rnd3;
-    u8 slot = (CalculatePlayerPartyCount() + 1);
+    u8 slot = CalculatePlayerPartyCount();
     u8 level = 5;
     u8 fixedIV = 32;
     u8 egg = TRUE;
@@ -6628,7 +6628,7 @@ int Ryu_GiveRevivedFossilEgg(void)
             }
     }
 
-    //SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &egg);
+    SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &egg);
     return 1;
 }  
 

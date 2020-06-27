@@ -24,6 +24,7 @@ Ryu_FossilReviverScript::
 
 RFR_Armor::
     checkitem ITEM_ARMOR_FOSSIL, 1
+    compare VAR_RESULT, 1
     goto_if_ne Ryu_DontHaveItem
     setvar VAR_TEMP_4, SPECIES_SHIELDON
     setvar VAR_TEMP_2, ITEM_ARMOR_FOSSIL
@@ -31,6 +32,7 @@ RFR_Armor::
 
 RFR_Skull::
     checkitem ITEM_SKULL_FOSSIL, 1
+    compare VAR_RESULT, 1
     goto_if_ne Ryu_DontHaveItem
     setvar VAR_TEMP_4, SPECIES_CRANIDOS
     setvar VAR_TEMP_2, ITEM_SKULL_FOSSIL
@@ -38,6 +40,7 @@ RFR_Skull::
 
 RFR_Helix::
     checkitem ITEM_HELIX_FOSSIL, 1
+    compare VAR_RESULT, 1
     goto_if_ne Ryu_DontHaveItem
     setvar VAR_TEMP_4, SPECIES_OMANYTE
     setvar VAR_TEMP_2, ITEM_HELIX_FOSSIL
@@ -45,6 +48,7 @@ RFR_Helix::
 
 RFR_Dome::
     checkitem ITEM_DOME_FOSSIL, 1
+    compare VAR_RESULT, 1
     goto_if_ne Ryu_DontHaveItem
     setvar VAR_TEMP_4, SPECIES_KABUTO
     setvar VAR_TEMP_2, ITEM_DOME_FOSSIL
@@ -52,6 +56,7 @@ RFR_Dome::
 
 RFR_Plume::
     checkitem ITEM_PLUME_FOSSIL, 1
+    compare VAR_RESULT, 1
     goto_if_ne Ryu_DontHaveItem
     setvar VAR_TEMP_4, SPECIES_ARCHEN
     setvar VAR_TEMP_2, ITEM_PLUME_FOSSIL
@@ -59,6 +64,7 @@ RFR_Plume::
 
 RFR_Jaw::
     checkitem ITEM_JAW_FOSSIL, 1
+    compare VAR_RESULT, 1
     goto_if_ne Ryu_DontHaveItem
     setvar VAR_TEMP_4, SPECIES_TYRUNT
     setvar VAR_TEMP_2, ITEM_JAW_FOSSIL
@@ -66,6 +72,7 @@ RFR_Jaw::
 
 RFR_Sail::
     checkitem ITEM_SAIL_FOSSIL, 1
+    compare VAR_RESULT, 1
     goto_if_ne Ryu_DontHaveItem
     setvar VAR_TEMP_4, SPECIES_AMAURA
     setvar VAR_TEMP_2, ITEM_SAIL_FOSSIL
@@ -73,6 +80,7 @@ RFR_Sail::
 
 RFR_Root::
     checkitem ITEM_ROOT_FOSSIL, 1
+    compare VAR_RESULT, 1
     goto_if_ne Ryu_DontHaveItem
     setvar VAR_TEMP_4, SPECIES_LILEEP
     setvar VAR_TEMP_2, ITEM_ROOT_FOSSIL
@@ -80,6 +88,7 @@ RFR_Root::
 
 RFR_Claw::
     checkitem ITEM_CLAW_FOSSIL, 1
+    compare VAR_RESULT, 1
     goto_if_ne Ryu_DontHaveItem
     setvar VAR_TEMP_4, SPECIES_ANORITH
     setvar VAR_TEMP_2, ITEM_CLAW_FOSSIL
@@ -87,6 +96,7 @@ RFR_Claw::
 
 RFR_Amber::
     checkitem ITEM_OLD_AMBER, 1
+    compare VAR_RESULT, 1
     goto_if_ne Ryu_DontHaveItem
     setvar VAR_TEMP_4, SPECIES_AERODACTYL
     setvar VAR_TEMP_2, ITEM_OLD_AMBER
@@ -144,7 +154,7 @@ RFR_ComeBackLater:
     .string "Come back later if you want\na fossil revived!$"
 
 RFR_Finish:
-    .string "Success! I have successfully\nrevived a {STR_VAR_2} from\lthe fossil!$"
+    .string "Success! I have successfully\nrevived a {RYU_STR_1} from\lthe fossil!$"
 
 
 
