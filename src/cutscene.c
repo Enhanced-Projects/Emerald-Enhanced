@@ -46,6 +46,10 @@ static const u8 sBrendanNightBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene
 static const u8 sBrendanNightBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_map.bin");
 static const u8 sBrendanNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_palette.gbapal");
 
+static const u8 sLeafBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/leaf/leaf_tiles.8bpp");
+static const u8 sLeafBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/leaf/leaf_map.bin");
+static const u8 sLeafBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/leaf/leaf_palette.gbapal");
+
 static const u8 sMiningMapBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/maps/mining_map_tiles.4bpp");
 static const u8 sMiningMapBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/maps/mining_map.bin");
 static const u8 sMiningMapBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/maps/mining_map_palette.gbapal");
@@ -163,7 +167,18 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sMiningMapBgMap),
         .palette = sMiningMapBgPalette,
 		.palIdxCnt = 16
-	}
+	},
+	[SCENEBGLEAFNORMAL] = 
+    {
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sLeafBgTiles,
+		.tileSize = sizeof(sLeafBgTiles),
+        .map = sLeafBgMap,
+		.mapSize = sizeof(sLeafBgMap),
+        .palette = sLeafBgPalette,
+		.palIdxCnt = 240
+	},
 };
 
 static const struct BgTemplate sCutsceneBackground8bpp = {
