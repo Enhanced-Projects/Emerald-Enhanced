@@ -564,10 +564,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuGenerateReward
 	def_special RyuGiveKoutaMawile
 	def_special RyuSetIVs
-	def_special RyuResetDevonFlags
-	def_special RyuResetAquaFlags
-	def_special RyuResetLeafFlags
-	def_special RyuResetRivalFlags
 	def_special IsWailordInParty
 	def_special SpecialScriptAdvancer
 	def_special RyuWarp
@@ -608,3 +604,4 @@ gSpecials:: @ 81DBA64
 	def_special RyuFossilReward
 	def_special RyuShardReward
 	def_special Ryu_GiveRevivedFossilEgg
+	def_special RyuCheckRelMegaReward

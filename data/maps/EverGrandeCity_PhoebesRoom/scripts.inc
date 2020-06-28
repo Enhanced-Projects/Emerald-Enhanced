@@ -101,6 +101,7 @@ EverGrandeCity_PhoebesRoom_EventScript_Defeated:: @ 82281FC
 	setflag FLAG_DEFEATED_ELITE_4_PHOEBE
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	call Ryu_CheckForPartnerReward
 	release
 	end
 

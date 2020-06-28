@@ -275,7 +275,6 @@ RyuMultiBattlePartnerLanette::
 	setvar VAR_0x8006, TRAINER_REL_LANETTE
 	setvar VAR_0x8007, TRAINER_BACK_PIC_LANETTE
 	return
-
 	
 Ryu_PlayerCalledDawn:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} called Dawn...\n... ... ... ... ... ...$"
@@ -954,116 +953,6 @@ BC_NeedBall:
 
 BC_NeedMoney:
 	.string "Sorry, but you do not have enough\nmoney to do this.\pIt costs ¥10000.$"
-	
-@@+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Follower System
-
-RyuCancelFollowerForQuest::  @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
-	msgbox RyuCantHaveFollower MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_eq RF_FollowerLeaveCall
-	release
-	end
-
-RyuResetFollowerPosition::
-	gfec
-	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_E, VAR_TEMP_F
-	setvar VAR_TEMP_D, 1
-	end
-
-RyuResetFollowerPositionAR::
-	gfec
-	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_E, VAR_TEMP_F
-	setvar VAR_TEMP_D, 1
-	return
-
-RyuForceCancelFollowerForQuest:: @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
-	goto RF_FollowerLeaveCall
-	
-
-RyuFollowerSelectNPCScript::
-	switch VAR_RYU_FOLLOWER_ID
-	case OBJ_EVENT_GFX_TWIN, LRT_MinnieScript
-	case OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollower_ShellyScript
-	case OBJ_EVENT_GFX_WOMAN_2, RyuFollower_LanetteScript
-	end
-
-RyuFollower_ShellyScript::
-	goto_if_set FLAG_RYU_WAYSTONE_DISABLED, RyuFollower_MagmaShelly
-	msgbox RyuFollower_ShellyLeaveMsg MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RF_FollowerLeave
-	release
-	end
-
-RyuFollower_MagmaShelly::
-	goto MH_FollowerShellyScript
-	end
-	
-RyuFollower_LanetteScript::
-	msgbox RyuFollowerLanetteLeaveMsg MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RF_FollowerLeave
-	release
-	end
-
-RF_FollowerLeaveCall::
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
-	goto_if_eq Ryu_RestoreLanetteAtHouse
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
-	goto_if_eq Ryu_RestoreMinnie
-	clearflag FLAG_RYU_HAS_FOLLOWER
-	destroyfollower
-	msgbox RyuFollowerLeavesService
-	clearflag FLAG_RYU_HAS_FOLLOWER
-	return
-	
-RF_FollowerLeave:
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
-	call_if_eq Ryu_RestoreLanetteAtHouse
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
-	call_if_eq Ryu_RestoreMinnie
-	clearflag FLAG_RYU_HAS_FOLLOWER
-	destroyfollower
-	msgbox RyuFollowerLeavesService
-	clearflag FLAG_RYU_HAS_FOLLOWER
-	release
-	end
-
-Ryu_RestoreLanetteAtHouse::
-	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
-	return
-
-Ryu_RestoreMinnie::
-	clearflag FLAG_RYU_HIDE_MINNIE
-	return
-
-RyuFollowerAllySelector::
-	special RyuFollowerToTrainerID
-	return
-	
-RyuFollower_ShellyLeaveMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Should I go?$"
-	
-RyuFollowerLanetteLeaveMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Lanette: Should I return to my lab??$"
-
-RyuFollowerLeavesService:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Your follower\nleaves your service...$"
-
-RyuCantHaveFollower:
-    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You're attempting to do a\n"
-    .string "cinematic quest.\p"
-    .string "You can't have a follower present\n"
-    .string "for this quest. Would you like\l"
-    .string "to dismiss your follower?$"
-
-
-ryu_return::
-	return
-
-ryu_end::
-	release
-	end
 
 @==================================================================================================Theme changer
 
@@ -1563,3 +1452,59 @@ CLM_NotInPartyMsg:
     .string "you know where it came from?\p"
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Yes, it's from a Pokémon.\n"
     .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}You have to show me, Please!$"
+
+
+@==================================================================================================Relationship based mega stones
+
+
+Ryu_CheckForPartnerReward::
+	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_return
+	specialvar VAR_RESULT, RyuCheckRelMegaReward
+	compare VAR_RESULT, 0
+	goto_if_eq ryu_return
+	switch VAR_RYU_FOLLOWER_ID
+	case OBJ_EVENT_GFX_AQUA_MEMBER_F, Ryu_GiveShellyMegaAndReturn
+	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, Ryu_GiveDawnMegaAndReturn
+	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, Ryu_GiveBrendanMegaAndReturn
+	case OBJ_EVENT_GFX_LEAF, Ryu_GiveLeafMegaAndReturn
+	goto ryu_return
+
+Ryu_GiveShellyMegaAndReturn::
+	msgbox ShellyMegaReward
+	closemessage
+	giveitem ITEM_SHARPEDONITE
+	closemessage
+	goto ryu_return
+
+Ryu_GiveDawnMegaAndReturn::
+	msgbox DawnMegaReward
+	closemessage
+	giveitem ITEM_ALTARIANITE
+	closemessage
+	goto ryu_return
+
+Ryu_GiveBrendanMegaAndReturn::
+	msgbox BrendanMegaReward
+	closemessage
+	giveitem ITEM_LUCARIONITE
+	closemessage
+	goto ryu_return
+
+Ryu_GiveLeafMegaAndReturn::
+	msgbox LeafMegaReward
+	closemessage
+	giveitem ITEM_VENUSAURITE
+	closemessage
+	goto ryu_return
+
+ShellyMegaReward:
+	.string "Shelly:{COLOR LIGHT_RED}{SHADOW RED} Hey babe, I wanted you to have\nthis as a thanks for helping me\lsee the light.$"
+
+DawnMegaReward:
+	.string "Dawn:{COLOR LIGHT_RED}{SHADOW RED} Here! I grabbed this for you.\nIt's for a really fluffy birb!$"
+
+BrendanMegaReward:
+	.string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Hey, girl. I know how you like\nmy athletic physique.\pHere's a gift that will benefit you\nif you have a certain athletic\lpokemon!$"
+
+LeafMegaReward:
+	.string "Lana:{COLOR LIGHT_RED}{SHADOW RED} Hey... Um... Take this...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(She's beet red in the face.)$"

@@ -162,6 +162,9 @@ LRT_NIGHT2::
 	end
 
 LRT_CANCEL::
+	msgbox FollowerDawnQuery, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq FollowerDawnSetup
     msgbox LRT_DISPT MSGBOX_DEFAULT
 	closemessage
 	clearfullscreenimage
@@ -174,6 +177,10 @@ LRT_FZ::
 	closemessage
 	release
 	end
+
+FollowerDawnQuery:
+    .string "I'd really like to get out for a\n"
+    .string "while.\pOoh! did you come to get me?$"
 
 LRT_BADEND:
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You see sadness and disappointment in\n"

@@ -586,6 +586,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/hall_of_fame.inc"
 	.include "data/scripts/RyuLifeSkillScripts.inc"
 	.include "data/scripts/RyuFossilReviver.inc"
+	.include "data/scripts/RyuFollowerSystem.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED

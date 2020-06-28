@@ -105,6 +105,7 @@ EverGrandeCity_DrakesRoom_EventScript_Defeated:: @ 8228724
 	setflag FLAG_DEFEATED_ELITE_4_DRAKE
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	call Ryu_CheckForPartnerReward
 	release
 	end
 

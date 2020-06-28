@@ -112,6 +112,9 @@ LH_StayTheNight::
 	msgbox LH_NightQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq LH_LeafNight
+	msgbox LH_FollowerLanaQuery, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq FollowerLeafSetup
 	msgbox LH_Dispt MSGBOX_DEFAULT
 	release
 	end
@@ -138,6 +141,11 @@ LH_LeafNight:
 	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
+
+LH_FollowerLanaQuery:
+    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}It's been a while since I've\n"
+    .string "been out with someone.\p"
+    .string "Can I come with you, please?$"
 	
 LH_NightQuery:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}. Did you...want to\n"
