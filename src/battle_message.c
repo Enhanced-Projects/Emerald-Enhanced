@@ -693,7 +693,6 @@ static const u8 sText_ReceiverAbilityTakeOver[] = _("{B_SCR_ACTIVE_NAME_WITH_PRE
 static const u8 sText_PkmnAbsorbingPower[] = _("{B_ATK_NAME_WITH_PREFIX} is absorbing power!");
 static const u8 sText_NoOneWillBeAbleToRun[] = _("No one will be able to run away\nduring the next turn!");
 static const u8 sText_DestinyKnotActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} fell in love\nfrom the {B_LAST_ITEM}!");
-static const u8 sText_MonLandedCritForYou[] = _("{B_ATK_NAME_WITH_PREFIX} Landed a critical hit\njust to please you.");
 static const u8 sText_CloakedInAFreezingLight[] = _("{B_ATK_NAME_WITH_PREFIX} became cloaked\nin a freezing light!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
@@ -1254,8 +1253,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_BOSSWILDPRESENCE - 12] = sText_RyuBossWildStatBoost,
     [STRINGID_PKMNISRESOLVED - 12] = sText_RyuPkmnResolvedToFight,
     [STRINGID_MIMIKYUDISGUISEBLOCKED - 12] = sText_RyuMimikyuDisguiseBlocked,
-    [STRINGID_WASHUGGEDBY - 12] = sText_Cling,
-    [STRINGID_LOVECRIT - 12] = sText_MonLandedCritForYou,
+    [STRINGID_WASHUGGEDBY - 12] = sText_Cling
 
 };
 
