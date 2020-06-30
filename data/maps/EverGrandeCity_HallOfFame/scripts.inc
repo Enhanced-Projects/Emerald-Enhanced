@@ -90,6 +90,7 @@ AltHallofFame::
 	setvar VAR_TEMP_1, 1
 	call EverGrandeCity_HallOfFame_EventScript_SetGameClearFlags
 	setflag FLAG_RYU_FIRST_GAME_CLEAR
+	call RyuLegendary_GameClearResetLegends
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq EverGrandeCity_HallOfFame_EventScript_GameClearMale

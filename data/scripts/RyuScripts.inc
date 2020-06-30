@@ -1265,29 +1265,114 @@ JuanMegaReward::
 JuanMega:
 	.string "Juan: You're even more fabulous\nthan I. I thought this wasn't\ppossible until now. As a token\nof your dedication to the art\lof battle, take this stone!$"
 
-@Legendaries common scripts
+@__________________________________________________________________________________________________Legendaries common scripts
 
-RyuLegendary_LeftStoneAlone::
-	msgbox RyuLegendary_LeftStoneAloneMsg
-	release
+RyuLegendary_GeneralLegendEncounter::
+	playmoncry VAR_TEMP_5, 0
+	specialvar VAR_TEMP_9, CountBadges
+	multvar VAR_TEMP_5, 20
+	compare VAR_TEMP_5, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_5, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle VAR_TEMP_5, VAR_TEMP_7, VAR_TEMP_9
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	call RyuLegendary_HandleEndLegendaryBattle
+	return
 	end
 
-RyuLegendary_LeftStoneAloneMsg:
-	.string "{PLAYER} left the stone alone.$"
-
-RyuLegendary_CheckCaught::
+RyuLegendary_HandleEndLegendaryBattle::
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_CAUGHT
-	goto_if_ne ryu_end
+	switch VAR_RESULT
+	case B_OUTCOME_MON_FLED, RyuLegendary_MonEscaped
+	case B_OUTCOME_RAN, RyuLegendary_MonEscaped
+	case B_OUTCOME_PLAYER_TELEPORTED, RyuLegendary_MonEscaped
+	case B_OUTCOME_CAUGHT, RyuLegendaryFinish
+	case B_OUTCOME_WON, RyuLegendaryFinish
 	return
 
-RyuLegendary_Stoneisdull::
-	msgbox RyuLegendary_StoneIsDullMsg
-	release
-	end
+RyuLegendary_SetMaxScale::
+	setvar VAR_TEMP_5, 110
+	return
 
-RyuLegendary_StoneIsDullMsg:
-	.string "The stone is dull and lifeless.$"
+RyuLegendary_SetBaseScale::
+	setvar VAR_TEMP_5, 30
+	return
+
+RyuLegendary_MonEscaped::
+	goto ryu_return
+
+RyuLegendaryFinish::
+	goto ryu_end
+
+RyuLegendary_GameClearResetLegends
+	call_if_set FLAG_RYU_ZAPDOS_RAN, RL_ResetZapdos
+	call_if_set FLAG_RYU_MOLTRES_RAN, RL_ResetMoltres
+	call_if_set FLAG_RYU_ARTICUNO_RAN, RL_ResetArticuno
+	call_if_set FLAG_RYU_ENTEI_RAN, RL_ResetEntei
+	call_if_set FLAG_RYU_SUICUNE_RAN, RL_ResetSuicune
+	call_if_set FLAG_RYU_RAIKOU_RAN, RL_ResetRaikou
+	call_if_set FLAG_RYU_CELEBI_RAN, RL_ResetCelebi
+	call_if_set FLAG_RYU_REGIGIGAS_RAN, RL_ResetRegigigas
+	call_if_set FLAG_RYU_MANAPHY_RAN, RL_ResetManaphy
+	call_if_set FLAG_RYU_NECROZMA_RAN, RL_ResetNecrozma
+	call_if_set FLAG_RYU_KYOGRE_RAN, RL_ResetKyogre
+
+RL_ResetZapdos::
+	clearflag FLAG_RYU_ZAPDOS
+	clearflag FLAG_RYU_ZAPDOS_RAN
+	return
+
+RL_ResetMoltres::
+	clearflag FLAG_RYU_MOLTRES
+	clearflag FLAG_RYU_MOLTRES_RAN
+	return
+		
+RL_ResetArticuno::
+	clearflag FLAG_RYU_ARTICUNO
+	clearflag FLAG_RYU_ARTICUNO_RAN
+	return
+
+RL_ResetEntei::
+	clearflag FLAG_RYU_ENTEI
+	clearflag FLAG_RYU_ENTEI_RAN
+	return
+
+RL_ResetSuicune::
+	clearflag FLAG_RYU_SUICUNE
+	clearflag FLAG_RYU_SUICUNE_RAN
+	return
+
+RL_ResetRaikou::
+	clearflag FLAG_RYU_RAIKOU
+	clearflag FLAG_RYU_RAIKOU_RAN
+	return
+
+RL_ResetCelebi::
+	clearflag FLAG_RYU_CELEBI
+	clearflag FLAG_RYU_CELEBI_RAN
+	return
+
+RL_ResetRegigigas::
+	clearflag FLAG_RYU_REGIGIGAS
+	clearflag FLAG_RYU_REGIGIGAS_RAN
+	return
+
+RL_ResetManaphy::
+	clearflag FLAG_RYU_MANAPHY
+	clearflag FLAG_RYU_MANAPHY_RAN
+	return
+
+RL_ResetNecrozma::
+	clearflag FLAG_RYU_NECROZMA
+	clearflag FLAG_RYU_NECROZMA_RAN
+	return
+
+RL_ResetKyogre::
+	clearflag FLAG_RYU_KYOGRE
+	clearflag FLAG_RYU_KYOGRE_RAN
+	return
 
 @==================================================================================================Randombattle
 

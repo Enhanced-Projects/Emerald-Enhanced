@@ -144,33 +144,29 @@ VictoryRoad_1F_Text_KatelynnPostBattle: @ 82364BB
 @==================================================================================================
 
 VR1_Moltres::
-	goto_if_set FLAG_RYU_MOLTRES, RyuLegendary_Stoneisdull
-	msgbox NewMauville_Moltres_TouchQuery, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_ne RyuLegendary_LeftStoneAlone
-	msgbox NewMauville_Moltres_TouchedStone
-	playmoncry SPECIES_MOLTRES, 0
-	closemessage
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	waitmoncry
-	setwildbattle SPECIES_MOLTRES, VAR_RESULT, ITEM_CHARCOAL
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	call RyuLegendary_CheckCaught
+	goto_if_set FLAG_RYU_MOLTRES, ryu_end
+	msgbox OverworldLegendary_IntroMoltres
+	setvar VAR_TEMP_5, SPECIES_MOLTRES
+	setvar VAR_TEMP_7, ITEM_CHARCOAL
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_RAN, VR1_MoltresGotAway
+	case B_OUTCOME_LOST, VR1_MoltresGotAway
+	case B_OUTCOME_MON_FLED, VR1_MoltresGotAway
+	case B_OUTCOME_PLAYER_TELEPORTED, VR1_MoltresGotAway
 	setflag FLAG_RYU_MOLTRES
+	removeobject 8 @Put the porymap object ID here
 	release
 	end
 
-NewMauville_Moltres_TouchedStone:
-	.string "{PLAYER} touched the stone.\p"
-	.string "{PLAYER} OH SH-!$"
+VR1_MoltresGotAway::
+	setflag FLAG_RYU_MOLTRES_RAN
+	removeobject 8 @Put the porymap object ID here
+	release
+	end
 
-NewMauville_Moltres_TouchQuery:
-	.string "This stone looks like it was\n"
-	.string "torched!\p"
-	.string "Touch the stone?$"
+OverworldLegendary_IntroMoltres: @put your intro here
+	.string "$"
+
 
 

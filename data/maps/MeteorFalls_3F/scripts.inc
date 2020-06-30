@@ -1,32 +1,28 @@
 MeteorFalls_3F_MapScripts::
 	.byte 0
 
+
 MeteorFalls_Necrozma::
-	goto_if_set FLAG_RYU_NECROZMA, RyuLegendary_Stoneisdull
-	msgbox MeteorFalls_Necrozma_TouchQuery, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_ne RyuLegendary_LeftStoneAlone
-	msgbox MeteorFalls_Necrozma_TouchedStone
-	playmoncry SPECIES_NECROZMA, 0
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	closemessage
-	waitmoncry
-	setwildbattle SPECIES_NECROZMA, VAR_RESULT, ITEM_MOON_STONE
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	call RyuLegendary_CheckCaught
+	goto_if_set FLAG_RYU_NECROZMA, ryu_end
+	msgbox OverworldLegendary_IntroNecrozma
+	setvar VAR_TEMP_5, SPECIES_NECROZMA
+	setvar VAR_TEMP_7, ITEM_SHARP_BEAK
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_RAN, MeteorFalls_NecrozmaGotAway
+	case B_OUTCOME_LOST, MeteorFalls_NecrozmaGotAway
+	case B_OUTCOME_MON_FLED, MeteorFalls_NecrozmaGotAway
+	case B_OUTCOME_PLAYER_TELEPORTED, MeteorFalls_NecrozmaGotAway
 	setflag FLAG_RYU_NECROZMA
+	removeobject 1 @Put the porymap object ID here
 	release
 	end
 
-MeteorFalls_Necrozma_TouchedStone:
-    .string "{PLAYER} touched the stone.\p"
-	.string "The stone appears to be absorbing\n"
-	.string "all light in the area.$"
+MeteorFalls_NecrozmaGotAway::
+	setflag FLAG_RYU_NECROZMA_RAN
+	removeobject 1 @Put the porymap object ID here
+	release
+	end
 
-MeteorFalls_Necrozma_TouchQuery:
-    .string "The stone is made of black crystal.\p"
-	.string "Touch the stone?$"
+OverworldLegendary_IntroNecrozma: @put your intro here
+	.string "$"

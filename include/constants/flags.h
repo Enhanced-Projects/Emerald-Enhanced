@@ -1516,17 +1516,19 @@
 #define FLAG_RYU_FROSTY_FOREST_BANETTITE            (SYSTEM_FLAGS + 0x86) // Unused Flag
 #define FLAG_RYU_FROSTY_FOREST_DUSK_STONE           (SYSTEM_FLAGS + 0x87) // Unused Flag
 #define FLAG_RYU_FROSTY_FOREST_SPELL_TAG            (SYSTEM_FLAGS + 0x88) // Unused Flag
-#define FLAG_UNUSED_0x8E9                           (SYSTEM_FLAGS + 0x89) // Unused Flag
-#define FLAG_UNUSED_0x8EA                           (SYSTEM_FLAGS + 0x8A) // Unused Flag
-#define FLAG_UNUSED_0x8EB                           (SYSTEM_FLAGS + 0x8B) // Unused Flag
-#define FLAG_UNUSED_0x8EC                           (SYSTEM_FLAGS + 0x8C) // Unused Flag
-#define FLAG_UNUSED_0x8ED                           (SYSTEM_FLAGS + 0x8D) // Unused Flag
-#define FLAG_UNUSED_0x8EE                           (SYSTEM_FLAGS + 0x8E) // Unused Flag
-#define FLAG_UNUSED_0x8EF                           (SYSTEM_FLAGS + 0x8F) // Unused Flag
-#define FLAG_UNUSED_0x8F0                           (SYSTEM_FLAGS + 0x90) // Unused Flag
-#define FLAG_UNUSED_0x8F1                           (SYSTEM_FLAGS + 0x91) // Unused Flag
-#define FLAG_UNUSED_0x8F2                           (SYSTEM_FLAGS + 0x92) // Unused Flag
-#define FLAG_UNUSED_0x8F3                           (SYSTEM_FLAGS + 0x93) // Unused Flag
+
+
+#define FLAG_RYU_ZAPDOS_RAN                         (SYSTEM_FLAGS + 0x89) // From here, put all the flags for ledendaries you want to reset on champion
+#define FLAG_RYU_MOLTRES_RAN                        (SYSTEM_FLAGS + 0x8A) // Unused Flag
+#define FLAG_RYU_ARTICUNO_RAN                       (SYSTEM_FLAGS + 0x8B) // Unused Flag
+#define FLAG_RYU_ENTEI_RAN                          (SYSTEM_FLAGS + 0x8C) // Unused Flag
+#define FLAG_RYU_SUICUNE_RAN                        (SYSTEM_FLAGS + 0x8D) // Unused Flag
+#define FLAG_RYU_RAIKOU_RAN                         (SYSTEM_FLAGS + 0x8E) // Unused Flag
+#define FLAG_RYU_CELEBI_RAN                         (SYSTEM_FLAGS + 0x8F) // Unused Flag
+#define FLAG_RYU_REGIGIGAS_RAN                      (SYSTEM_FLAGS + 0x90) // Unused Flag
+#define FLAG_RYU_MANAPHY_RAN                        (SYSTEM_FLAGS + 0x91) // Unused Flag
+#define FLAG_RYU_NECROZMA_RAN                       (SYSTEM_FLAGS + 0x92) // Unused Flag
+#define FLAG_RYU_KYOGRE_RAN                         (SYSTEM_FLAGS + 0x93) // Unused Flag
 #define FLAG_UNUSED_0x8F4                           (SYSTEM_FLAGS + 0x94) // Unused Flag
 #define FLAG_UNUSED_0x8F5                           (SYSTEM_FLAGS + 0x95) // Unused Flag
 #define FLAG_UNUSED_0x8F6                           (SYSTEM_FLAGS + 0x96) // Unused Flag

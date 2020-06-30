@@ -2,31 +2,27 @@ Route135_ManaphyTemple_MapScripts::
 	.byte 0
 
 r135_Manaphy::
-	goto_if_set FLAG_RYU_MANAPHY, RyuLegendary_Stoneisdull
-	msgbox r135_Manaphy_TouchQuery, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_ne RyuLegendary_LeftStoneAlone
-	msgbox r135_Manaphy_TouchedStone
-	playmoncry SPECIES_MANAPHY, 0
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	closemessage
-	waitmoncry
-	setwildbattle SPECIES_MANAPHY, VAR_RESULT, ITEM_MYSTIC_WATER
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	call RyuLegendary_CheckCaught
-	setflag FLAG_RYU_MANAPHY
+	goto_if_set FLAG_RYU_HIDE_MANAPHY, ryu_end
+	msgbox OverworldLegendary_IntroManaphy
+	setvar VAR_TEMP_5, SPECIES_MANAPHY
+	setvar VAR_TEMP_7, ITEM_SHARP_BEAK
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_RAN, r135_ManaphyGotAway
+	case B_OUTCOME_LOST, r135_ManaphyGotAway
+	case B_OUTCOME_MON_FLED, r135_ManaphyGotAway
+	case B_OUTCOME_PLAYER_TELEPORTED, r135_ManaphyGotAway
+	setflag FLAG_RYU_HIDE_MANAPHY
+	removeobject 1 @Put the porymap object ID here
 	release
 	end
 
-r135_Manaphy_TouchedStone:
-    .string "{PLAYER} touched the stone.\p"
-	.string "It feels wet, as if it had been\n"
-	.string "submerged.$"
+r135_ManaphyGotAway::
+	setflag FLAG_RYU_MANAPHY_RAN
+	removeobject 1 @Put the porymap object ID here
+	release
+	end
 
-r135_Manaphy_TouchQuery:
-    .string "The stone is shining brightly.\p"
-	.string "Touch the stone?$"
+OverworldLegendary_IntroManaphy: @put your intro here
+	.string "$"
+

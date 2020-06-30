@@ -183,20 +183,8 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}, {RYU_STR_1}, {RYU_STR_2}, {RYU_STR_3}$"
 
 RyuDebug_Utility1::
-    random 150
-	buffernumberstring 0, VAR_RESULT
-    random 150
-	buffernumberstring 1, VAR_RESULT
-    random 150
-	buffernumberstring 2, VAR_RESULT
-    random 150
-	buffernumberstring 3, VAR_RESULT
-    random 150
-	buffernumberstring 4, VAR_RESULT
-    random 150
-	buffernumberstring 5, VAR_RESULT
-	msgbox RDB_CTVMsg
-	goto RyuDebug_Utility1
+    clearflag FLAG_RYU_ZAPDOS
+	clearflag FLAG_RYU_ZAPDOS_RAN
     release
     end
 

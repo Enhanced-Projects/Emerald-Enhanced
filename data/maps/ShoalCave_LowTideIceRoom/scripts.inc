@@ -2,32 +2,28 @@ ShoalCave_LowTideIceRoom_MapScripts:: @ 82396A1
 	.byte 0
 
 SC1_Articuno::
-	goto_if_set FLAG_RYU_ARTICUNO, RyuLegendary_Stoneisdull
-	msgbox SC1_Articuno_TouchQuery, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_ne RyuLegendary_LeftStoneAlone
-	msgbox SC1_Articuno_TouchedStone
-	playmoncry SPECIES_ARTICUNO, 0
-	closemessage
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	waitmoncry
-	setwildbattle SPECIES_ARTICUNO, VAR_RESULT, ITEM_NEVER_MELT_ICE
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	call RyuLegendary_CheckCaught
+	goto_if_set FLAG_RYU_ARTICUNO, ryu_end
+	msgbox OverworldLegendary_IntroArticuno
+	setvar VAR_TEMP_5, SPECIES_ARTICUNO
+	setvar VAR_TEMP_7, ITEM_NEVER_MELT_ICE
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_RAN, SC1_ArticunoGotAway
+	case B_OUTCOME_LOST, SC1_ArticunoGotAway
+	case B_OUTCOME_MON_FLED, SC1_ArticunoGotAway
+	case B_OUTCOME_PLAYER_TELEPORTED, SC1_ArticunoGotAway
 	setflag FLAG_RYU_ARTICUNO
+	removeobject 3 @Put the porymap object ID here
 	release
 	end
 
-SC1_Articuno_TouchedStone:
-    .string "{PLAYER} touched the stone.\p"
-	.string "It's really cold!$"
+SC1_ArticunoGotAway::
+	setflag FLAG_RYU_ARTICUNO_RAN
+	removeobject 3 @Put the porymap object ID here
+	release
+	end
 
-SC1_Articuno_TouchQuery:
-    .string "The stone is iced over, as if\n"
-	.string "it was flash frozen!\p"
-	.string "Touch the stone?$"
+OverworldLegendary_IntroArticuno: @put your intro here
+	.string "$"
+
 

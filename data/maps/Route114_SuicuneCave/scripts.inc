@@ -1,31 +1,28 @@
 Route114_SuicuneCave_MapScripts::
 	.byte 0
 
-Route114_SuicuneCave_Suicune::
-	goto_if_set FLAG_RYU_SUICUNE, RyuLegendary_Stoneisdull
-	msgbox Route114_SuicuneCave_TouchQuery, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_ne RyuLegendary_LeftStoneAlone
-	msgbox Route114_SuicuneCave_TouchedStone
-	playmoncry SPECIES_SUICUNE, 0
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	closemessage
-	waitmoncry
-	setwildbattle SPECIES_SUICUNE, VAR_RESULT, ITEM_MYSTIC_WATER
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	call RyuLegendary_CheckCaught
+
+Route114_Suicune::
+	goto_if_set FLAG_RYU_SUICUNE, ryu_end
+	msgbox OverworldLegendary_IntroSuicune
+	setvar VAR_TEMP_5, SPECIES_SUICUNE
+	setvar VAR_TEMP_7, ITEM_MYSTIC_WATER
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_RAN, Route114_SuicuneGotAway
+	case B_OUTCOME_LOST, Route114_SuicuneGotAway
+	case B_OUTCOME_MON_FLED, Route114_SuicuneGotAway
+	case B_OUTCOME_PLAYER_TELEPORTED, Route114_SuicuneGotAway
 	setflag FLAG_RYU_SUICUNE
+	removeobject 1 @Put the porymap object ID here
 	release
 	end
-	
-Route114_SuicuneCave_TouchedStone:
-    .string "{PLAYER} touched the stone.\p"
-	.string "Ewww... Its gross!$"
-	
-Route114_SuicuneCave_TouchQuery:
-    .string "The stone is slimy and wet.\p"
-	.string "Touch the stone?$"
+
+Route114_SuicuneGotAway::
+	setflag FLAG_RYU_SUICUNE_RAN
+	removeobject 1 @Put the porymap object ID here
+	release
+	end
+
+OverworldLegendary_IntroSuicune: @put your intro here
+	.string "$"

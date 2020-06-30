@@ -7,31 +7,26 @@ AlteringCave_OnTransition: @ 823B17D
 	end
 
 AS_RegigigasEncounter::
-	goto_if_set FLAG_RYU_REGIGIGAS, RyuLegendary_Stoneisdull
-	msgbox AS_Regigigas_TouchQuery, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_ne RyuLegendary_LeftStoneAlone
-	msgbox AS_Regigigas_TouchedStone
-	playmoncry SPECIES_REGIGIGAS, 0
-	closemessage
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	waitmoncry
-	setwildbattle SPECIES_REGIGIGAS, VAR_RESULT, ITEM_EVERSTONE
-	special StartRegiBattle
-	waitstate
-	call RyuLegendary_CheckCaught
+	goto_if_set FLAG_RYU_REGIGIGAS, ryu_end
+	msgbox OverworldLegendary_IntroRegigigas
+	setvar VAR_TEMP_5, SPECIES_REGIGIGAS
+	setvar VAR_TEMP_7, ITEM_EVERSTONE
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_RAN, AS_RegigigasGotAway
+	case B_OUTCOME_LOST, AS_RegigigasGotAway
+	case B_OUTCOME_MON_FLED, AS_RegigigasGotAway
+	case B_OUTCOME_PLAYER_TELEPORTED, AS_RegigigasGotAway
 	setflag FLAG_RYU_REGIGIGAS
+	removeobject 1 @Put the porymap object ID here
 	release
 	end
 
-AS_Regigigas_TouchQuery::
-	.string "The stone is ancient and has a\n"
-	.string "mystical quality to it.\p"
-	.string "Touch the stone?$"
+AS_RegigigasGotAway::
+	setflag FLAG_RYU_REGIGIGAS_RAN
+	removeobject 1 @Put the porymap object ID here
+	release
+	end
 
-AS_Regigigas_TouchedStone::
-	.string "You feel older as soon as\n"
-	.string "you make contact with the stone.$"
+OverworldLegendary_IntroRegigigas: @put your intro here
+	.string "$"
