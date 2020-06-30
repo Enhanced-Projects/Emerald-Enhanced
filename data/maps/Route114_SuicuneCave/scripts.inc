@@ -6,7 +6,7 @@ Route114_Suicune::
 	goto_if_set FLAG_RYU_SUICUNE, ryu_end
 	msgbox OverworldLegendary_IntroSuicune
 	setvar VAR_TEMP_5, SPECIES_SUICUNE
-	setvar VAR_TEMP_7, ITEM_MYSTIC_WATER
+	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_RAN, Route114_SuicuneGotAway

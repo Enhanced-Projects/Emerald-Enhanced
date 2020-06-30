@@ -1269,11 +1269,11 @@ JuanMega:
 
 RyuLegendary_GeneralLegendEncounter::
 	playmoncry VAR_TEMP_5, 0
-	specialvar VAR_TEMP_9, CountBadges
-	multvar VAR_TEMP_5, 20
-	compare VAR_TEMP_5, 110
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 20
+	compare VAR_TEMP_7, 110
 	call_if_gt RyuLegendary_SetMaxScale
-	compare VAR_TEMP_5, 20
+	compare VAR_TEMP_7, 20
 	call_if_le RyuLegendary_SetBaseScale
 	setwildbattle VAR_TEMP_5, VAR_TEMP_7, VAR_TEMP_9
 	special BattleSetup_StartLegendaryBattle
@@ -1293,11 +1293,11 @@ RyuLegendary_HandleEndLegendaryBattle::
 	return
 
 RyuLegendary_SetMaxScale::
-	setvar VAR_TEMP_5, 110
+	setvar VAR_TEMP_7, 110
 	return
 
 RyuLegendary_SetBaseScale::
-	setvar VAR_TEMP_5, 30
+	setvar VAR_TEMP_7, 30
 	return
 
 RyuLegendary_MonEscaped::
@@ -1306,7 +1306,7 @@ RyuLegendary_MonEscaped::
 RyuLegendaryFinish::
 	goto ryu_end
 
-RyuLegendary_GameClearResetLegends
+RyuLegendary_GameClearResetLegends::
 	call_if_set FLAG_RYU_ZAPDOS_RAN, RL_ResetZapdos
 	call_if_set FLAG_RYU_MOLTRES_RAN, RL_ResetMoltres
 	call_if_set FLAG_RYU_ARTICUNO_RAN, RL_ResetArticuno

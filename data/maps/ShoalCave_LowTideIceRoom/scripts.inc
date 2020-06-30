@@ -5,7 +5,7 @@ SC1_Articuno::
 	goto_if_set FLAG_RYU_ARTICUNO, ryu_end
 	msgbox OverworldLegendary_IntroArticuno
 	setvar VAR_TEMP_5, SPECIES_ARTICUNO
-	setvar VAR_TEMP_7, ITEM_NEVER_MELT_ICE
+	setvar VAR_TEMP_9, ITEM_NEVER_MELT_ICE
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_RAN, SC1_ArticunoGotAway

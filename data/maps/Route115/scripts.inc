@@ -484,7 +484,7 @@ R115_Raikou::
 	goto_if_set FLAG_RYU_RAIKOU, ryu_end
 	msgbox OverworldLegendary_IntroRaikou
 	setvar VAR_TEMP_5, SPECIES_RAIKOU
-	setvar VAR_TEMP_7, ITEM_ELECTRIC_SEED
+	setvar VAR_TEMP_9, ITEM_ELECTRIC_SEED
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_RAN, R115_RaikouGotAway

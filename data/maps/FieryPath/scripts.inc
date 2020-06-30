@@ -17,7 +17,7 @@ FP_Entei::
 	goto_if_set FLAG_RYU_ENTEI, ryu_end
 	msgbox OverworldLegendary_IntroEntei
 	setvar VAR_TEMP_5, SPECIES_ENTEI
-	setvar VAR_TEMP_7, ITEM_FLAME_ORB
+	setvar VAR_TEMP_9, ITEM_FLAME_ORB
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_RAN, FP_EnteiGotAway

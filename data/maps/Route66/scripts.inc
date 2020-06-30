@@ -5,7 +5,7 @@ r66_Celebi::
 	goto_if_set FLAG_RYU_CELEBI, ryu_end
 	msgbox OverworldLegendary_IntroCelebi
 	setvar VAR_TEMP_5, SPECIES_CELEBI
-	setvar VAR_TEMP_7, ITEM_BIG_ROOT
+	setvar VAR_TEMP_9, ITEM_BIG_ROOT
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_RAN, r66_CelebiGotAway

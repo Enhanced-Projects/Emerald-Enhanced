@@ -6,7 +6,7 @@ MeteorFalls_Necrozma::
 	goto_if_set FLAG_RYU_NECROZMA, ryu_end
 	msgbox OverworldLegendary_IntroNecrozma
 	setvar VAR_TEMP_5, SPECIES_NECROZMA
-	setvar VAR_TEMP_7, ITEM_SHARP_BEAK
+	setvar VAR_TEMP_9, ITEM_SHARP_BEAK
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_RAN, MeteorFalls_NecrozmaGotAway

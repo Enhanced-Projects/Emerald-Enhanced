@@ -390,7 +390,7 @@ NewMauville_Zapdos::
 	goto_if_set FLAG_RYU_ZAPDOS, ryu_end
 	msgbox OverworldLegendary_IntroZapdos
 	setvar VAR_TEMP_5, SPECIES_ZAPDOS
-	setvar VAR_TEMP_7, ITEM_SHARP_BEAK
+	setvar VAR_TEMP_9, ITEM_SHARP_BEAK
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_RAN, NewMauville_ZapdosGotAway

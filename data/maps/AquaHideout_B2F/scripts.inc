@@ -260,7 +260,7 @@ AHQ_Kyogre::
 	goto_if_set FLAG_RYU_KYOGRE, ryu_end
 	msgbox AHQ_KYOGRE_STARING
 	setvar VAR_TEMP_5, SPECIES_KYOGRE
-	setvar VAR_TEMP_7, ITEM_MYSTIC_WATER
+	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_RAN, AHQ_KyogreGotAway

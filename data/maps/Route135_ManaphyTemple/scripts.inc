@@ -5,7 +5,7 @@ r135_Manaphy::
 	goto_if_set FLAG_RYU_HIDE_MANAPHY, ryu_end
 	msgbox OverworldLegendary_IntroManaphy
 	setvar VAR_TEMP_5, SPECIES_MANAPHY
-	setvar VAR_TEMP_7, ITEM_SHARP_BEAK
+	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_RAN, r135_ManaphyGotAway
