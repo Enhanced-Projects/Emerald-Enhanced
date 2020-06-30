@@ -116,6 +116,7 @@ EverGrandeCity_SidneysRoom_EventScript_Defeated:: @ 8227F95
 	setflag FLAG_DEFEATED_ELITE_4_SIDNEY
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	call Ryu_CheckForPartnerReward
 	release
 	end
 

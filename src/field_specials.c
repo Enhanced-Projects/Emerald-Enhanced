@@ -5101,132 +5101,6 @@ void RyuSetIVs(void)
     CalculateMonStats(&gPlayerParty[0]);
 }
 
-void RyuResetDevonFlags(void)
-    {
-        FlagClear(FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE);
-        FlagClear(FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT);
-        VarSet(VAR_PETALBURG_WOODS_STATE, 0);
-        FlagClear(FLAG_RYU_AQUA_THIEF_SEEN);
-        FlagSet(FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE);
-        FlagClear(FLAG_RYU_PLAYER_HELPING_DEVON);
-        FlagSet(FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO);
-        FlagClear(FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE);
-        FlagClear(FLAG_RYU_DEVON_MISSION2START);
-        FlagClear(FLAG_RYU_DEVON_M1C);
-        FlagClear(FLAG_RYU_DG_REWARD_RECEIVED);
-        FlagClear(FLAG_DELIVERED_DEVON_GOODS);
-        FlagClear(FLAG_DELIVERED_STEVEN_LETTER);
-        FlagClear(FLAG_RYU_DEVON_MISSION1START);
-        FlagClear(FLAG_RYU_PLAYER_HELPING_AQUA);
-		FlagClear(FLAG_RYU_DEVON_MISSION6START);
-		FlagClear(FLAG_RYU_DEVON_MISSION5COMPLETE);
-		FlagClear(FLAG_RYU_DEVON_MISSION5START);
-		FlagClear(FLAG_RYU_DEVON_MISSION_3_DONE);
-		FlagClear(FLAG_RYU_DEVON_MISSION3START);
-		FlagClear(FLAG_RYU_DEVON_MISSION4COMPLETE);
-		FlagClear(FLAG_RYU_DEVON_CORPORATE);
-		FlagClear(FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE);
-		FlagClear(FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE);
-		RemoveBagItem(ITEM_FAME_CHECKER, 1);
-		RemoveBagItem(ITEM_METEORITE, 1);
-		RemoveBagItem(ITEM_EXP_DRIVE, 1);
-    }
-void RyuResetAquaFlags(void)
-    {
-        FlagSet(FLAG_RYU_PLAYER_HELPING_AQUA);
-        FlagClear(FLAG_RYU_STARTING_M3);
-        FlagClear(FLAG_RYU_STARTING_M4);
-        FlagClear(FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS);
-        FlagClear(FLAG_RYU_AQUA_LINE_DONE);
-        FlagClear(FLAG_RYU_MISSION4COMPLETE);
-        FlagClear(FLAG_RYU_AQUA_MISSION2COMPLETE);
-        FlagClear(FLAG_RYU_DS_SHELLY_ACQ);
-        FlagClear(FLAG_RYU_DS_SHELLY_FRIENDS);
-        FlagClear(FLAG_RYU_DS_SHELLY_CLOSEFRIENDS);
-        FlagClear(FLAG_RYU_DS_SHELLY_LOVERS);
-        FlagClear(FLAG_RYU_DS_SHELLY_PARTNERS);
-        FlagClear(FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS);
-        FlagClear(FLAG_RYU_AQUA_MISSION2REWARDED);
-        FlagClear(FLAG_RYU_AQUA_MISSION1REWARDED);
-        FlagClear(FLAG_RYU_MISSION4COMPLETE);
-        FlagSet(FLAG_HIDE_METEOR_FALLS_TEAM_AQUA);
-        FlagClear(FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA);
-        FlagClear(FLAG_RYU_PLAYER_AQUA_NECKLACE);
-        FlagClear(FLAG_RYU_PLAYER_AQUA_STONE);
-        FlagClear(FLAG_RYU_PLAYER_AQUA_ADMIN);
-        FlagClear(FLAG_RYU_ARCHIE_SUCCESSFUL);
-        FlagSet(FLAG_RYU_KYOGRE);
-        FlagClear(FLAG_HIDE_AQUA_HIDEOUT_GRUNTS);
-        FlagClear(FLAG_RYU_DS_SHELLY_SCENE);
-        FlagClear(FLAG_RYU_AFTERSHELLYSTORY);
-
-        if (!FLAG_RYU_DS_DAWN_PARTNERS == 1 || !FLAG_RYU_DS_LEAF_PARTNERS == 1 || !FLAG_RYU_DS_BRENDAN_PARTNERS == 1 || !FLAG_RYU_DS_LANETTE_PARTNERS == 1)
-            {
-                FlagClear(FLAG_RYU_DS_HAS_PARTNER);
-            }
-    }
-
-void RyuResetRivalFlags(void)
-    {   
-        FlagClear(FLAG_HIDE_RUSTBORO_CITY_RIVAL);
-        FlagClear(FLAG_HIDE_LILYCOVE_CITY_RIVAL);
-        FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
-        FlagSet(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
-        FlagSet(FLAG_HIDE_DAWNS_HOUSE_DAWN);
-        FlagClear(FLAG_RYU_DS_DAWN_ACQ);
-        FlagClear(FLAG_RYU_DS_DAWN_FRIENDS);
-        FlagClear(FLAG_RYU_DS_DAWN_CLOSEFRIENDS);
-        FlagClear(FLAG_RYU_DS_DAWN_LOVERS);
-        FlagClear(FLAG_RYU_DS_DAWN_PARTNERS);
-        FlagClear(FLAG_RYU_DS_BRENDAN_ACQ);
-        FlagClear(FLAG_RYU_DS_BRENDAN_FRIENDS);
-        FlagClear(FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS);
-        FlagClear(FLAG_RYU_DS_BRENDAN_LOVERS);
-        FlagClear(FLAG_RYU_DS_BRENDAN_PARTNERS);
-        
-        if (!FLAG_RYU_DS_SHELLY_PARTNERS == 1 && !FLAG_RYU_DS_LEAF_PARTNERS == 1 || !FLAG_RYU_DS_LANETTE_PARTNERS == 1)
-            {
-                FlagClear(FLAG_RYU_DS_HAS_PARTNER);
-            }
-    }
-
-void RyuResetLeafFlags(void)
-    {
-        
-        FlagClear(FLAG_LEAF_PC);
-        FlagClear(FLAG_RYU_DS_LEAF_ACQ);
-        FlagClear(FLAG_RYU_DS_LEAF_FRIENDS);
-        FlagClear(FLAG_RYU_DS_LEAF_CLOSEFRIENDS);
-        FlagClear(FLAG_RYU_DS_LEAF_LOVERS);
-        FlagClear(FLAG_RYU_DS_LEAF_PARTNERS);
-        FlagClear(FLAG_LANA_EVENT3_DONE);
-        FlagClear(FLAG_RYU_HIDE_R120_LANA_AND_HIKER);
-        FlagClear(FLAG_RYU_LEAF_ALTERNATE_LINE);
-        FlagClear(FLAG_RYU_LEAF_MTPYRE);
-        FlagClear(FLAG_RYU_DAYCARE_LEAFEVENTPC);
-        FlagClear(FLAG_RYU_LANA_ALTEVENT3);
-        FlagClear(FLAG_RYU_HIDE_LCC_DEPT_ROOF_NPC);
-        FlagClear(FLAG_RYU_LEAF_LCC_EVENT_DONE);
-        FlagClear(FLAG_LH_EVENT);
-        FlagClear(FLAG_RYU_DEFEATED_SS);
-        FlagClear(FLAG_HIDE_LANETTES_HOUSE_LANETTE);
-        FlagSet(FLAG_HIDE_FALLORBOR_POKEMON_CENTER_LANETTE);
-        FlagClear(FLAG_RYU_LANA_ALTEVENT2);
-        FlagClear(FLAG_RYU_LEAF_MTPYRE);
-        FlagClear(FLAG_RYU_DAYCARE_LEAFEVENTPC);
-        FlagClear(FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO);
-        FlagClear(FLAG_RYU_DS_LEAF_LINE_CANCELLED);
-        FlagClear(FLAG_LEAF_EVENT_0);
-        FlagSet(FLAG_RYU_HIDE_REL_OBJECTS);
-        FlagSet(FLAG_HIDE_CHAMPIONS_ROOM_RIVAL);
-        FlagSet(FLAG_HIDE_CHAMPIONS_ROOM_STEVEN);
-
-        if (!FLAG_RYU_DS_DAWN_PARTNERS == 1 && !FLAG_RYU_DS_BRENDAN_PARTNERS == 1 && !FLAG_RYU_DS_DAWN_PARTNERS || !FLAG_RYU_DS_LANETTE_PARTNERS == 1)
-            {
-                FlagClear(FLAG_RYU_DS_HAS_PARTNER);
-            }
-    }
-
 bool8 IsWailordInParty(void)
     {
     u8 i;
@@ -6289,6 +6163,27 @@ bool8 RyuFollowerToTrainerID(void)
                         return TRUE;
                         break;
                     }
+                case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+                    {
+                        gSpecialVar_0x8006 = TRAINER_REL_DAWN;
+	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_DAWN;
+                        return TRUE;
+                        break;
+                    }
+                case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+                    {
+                        gSpecialVar_0x8006 = TRAINER_REL_BRENDAN;
+	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_BRENDAN;
+                        return TRUE;
+                        break;
+                    }
+                case OBJ_EVENT_GFX_LEAF:
+                    {
+                        gSpecialVar_0x8006 = TRAINER_REL_LANA;
+	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_LEAF;
+                        return TRUE;
+                        break;
+                    }
                 }
                 return FALSE;
             }
@@ -6632,3 +6527,47 @@ int Ryu_GiveRevivedFossilEgg(void)
     return 1;
 }  
 
+int RyuCheckRelMegaReward(void)
+{
+    u16 partnerId = (VarGet(VAR_RYU_FOLLOWER_ID));
+
+    switch (partnerId)
+    {
+        case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+        {
+            if (FlagGet(FLAG_RYU_SHELLY_MEGA_REWARD) == 0)
+                {
+                    FlagSet(FLAG_RYU_SHELLY_MEGA_REWARD);
+                    return ITEM_SHARPEDONITE;
+                }
+        }
+        case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+        {
+            if (FlagGet(FLAG_RYU_DAWN_MEGA_REWARD) == 0)
+                {
+                    FlagSet(FLAG_RYU_DAWN_MEGA_REWARD);
+                    return ITEM_ALTARIANITE;
+                }
+        }
+        case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+        {
+            if (FlagGet(FLAG_RYU_BRENDAN_MEGA_REWARD) == 0)
+                {
+                    FlagSet(FLAG_RYU_BRENDAN_MEGA_REWARD);
+                    return ITEM_LUCARIONITE;
+                }
+        }
+        case OBJ_EVENT_GFX_LEAF:
+            {
+                if (FlagGet(FLAG_RYU_LEAF_MEGA_REWARD) == 0)
+                {
+                    FlagSet(FLAG_RYU_LEAF_MEGA_REWARD);
+                    return ITEM_VENUSAURITE;
+                }
+            }
+        default:
+        {
+            return 0;
+        }
+    }
+};

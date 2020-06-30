@@ -68,7 +68,7 @@
         {
             "elevation": 4,
             "flag": "FLAG_HIDE_REGIROCK",
-            "graphics_id": "OBJ_EVENT_GFX_REGIROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BIG_REGIROCK_DOLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",

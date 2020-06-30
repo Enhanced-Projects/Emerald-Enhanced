@@ -1539,21 +1539,6 @@ s32 CalcCritChanceStage(u8 battlerAtk, u8 battlerDef, u32 move, bool32 recordAbi
     {
         critChance = -2;
     }
-    else if (Random() % 10 >= 9)
-    {
-        if (!(gBattleTypeFlags & BATTLE_TYPE_DOUBLE))
-        if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
-        {
-            if (GetMonData(&gPlayerParty[0], MON_DATA_FRIENDSHIP) >= 250)
-            {
-                u8 friendship = (GetMonData(&gPlayerParty[0], MON_DATA_FRIENDSHIP) - 50);
-                SetMonData(&gPlayerParty[0], MON_DATA_FRIENDSHIP, &friendship);
-                critChance = -2;
-                PrepareStringBattle(STRINGID_LOVECRIT, gBattlerAttacker);
-                gBattleCommunication[MSG_DISPLAY] = 1;
-            }
-        }
-    }
     else
     {
         u32 holdEffectAtk = GetBattlerHoldEffect(battlerAtk, TRUE);
@@ -1575,7 +1560,6 @@ s32 CalcCritChanceStage(u8 battlerAtk, u8 battlerDef, u32 move, bool32 recordAbi
 static void Cmd_critcalc(void)
 {
     s32 critChance = CalcCritChanceStage(gBattlerAttacker, gBattlerTarget, gCurrentMove, TRUE);
-    u16 stringId;
     gPotentialItemEffectBattler = gBattlerAttacker;
 
     if (gBattleTypeFlags & (BATTLE_TYPE_WALLY_TUTORIAL | BATTLE_TYPE_FIRST_BATTLE))
@@ -7883,10 +7867,10 @@ static void Cmd_various(void)
             gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
         }
         return;
-    case VARIOUS_TRY_AUTONOMIZE:
+    case VARIOUS_TRY_AUTOTOMIZE:
         if (GetBattlerWeight(gActiveBattler) > 1)
         {
-            gDisableStructs[gActiveBattler].autonomizeCount++;
+            gDisableStructs[gActiveBattler].autotomizeCount++;
             gBattlescriptCurrInstr += 7;
         }
         else

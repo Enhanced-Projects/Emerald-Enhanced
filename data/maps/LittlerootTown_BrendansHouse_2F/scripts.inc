@@ -218,6 +218,9 @@ LRT_BrendanNight2::
 	end
 
 LRT_BrendanCANCEL::
+	msgbox Brendan_FollowerQuery, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq FollowerBrendanSetup
     msgbox LRT_BrendanDISPT MSGBOX_DEFAULT
 	removecutscenesprites
 	release
@@ -246,6 +249,7 @@ LRT_BH_CheckTraining::
 LRT_BH_RcvGift2::
 	msgbox LRT_BH_HopeItsDoingWell
 	return
+
 	
 LRT_BH_HopeItsDoingWell:
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I hope you and my Pokémon are doing\n"
@@ -319,6 +323,12 @@ LRT_BH_SnoruntIsChampionFroslass::
 	setflag FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS
 	setflag FLAG_RYU_BRENDAN_GIFT2
 	return
+
+Brendan_FollowerQuery:
+    .string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}I know we should have done\n"
+    .string "this earlier... but\p"
+    .string "Can we travel together for a while?$"
+
 	
 LRT_BH_PullItOut:
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}If you have Snorunt with you, pull\n"
