@@ -4463,7 +4463,7 @@
         {
             "blockdata_filepath": "data/layouts/DesertTomb2F/map.bin",
             "border_filepath": "data/layouts/DesertTomb2F/border.bin",
-            "height": 20,
+            "height": 19,
             "id": "LAYOUT_DESERT_TOMB2F",
             "name": "DesertTomb2F_Layout",
             "primary_tileset": "gTileset_General",

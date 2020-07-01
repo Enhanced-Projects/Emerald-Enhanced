@@ -2670,10 +2670,10 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_EXEGGCUTE] =
     {
-        .baseHP        = 60,
+        .baseHP        = 70,
         .baseAttack    = 40,
         .baseDefense   = 80,
-        .baseSpeed     = 40,
+        .baseSpeed     = 30,
         .baseSpAttack  = 60,
         .baseSpDefense = 45,
         .type1 = TYPE_GRASS,
@@ -2697,12 +2697,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_EXEGGUTOR] =
     {
-        .baseHP        = 95,
-        .baseAttack    = 95,
-        .baseDefense   = 85,
-        .baseSpeed     = 55,
+        .baseHP        = 110,
+        .baseAttack    = 65,
+        .baseDefense   = 95,
+        .baseSpeed     = 40,
         .baseSpAttack  = 125,
-        .baseSpDefense = 75,
+        .baseSpDefense = 95,
         .type1 = TYPE_GRASS,
         .type2 = TYPE_PSYCHIC,
         .catchRate = 45,
@@ -2714,7 +2714,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_SLOW,
         .eggGroup1 = EGG_GROUP_GRASS,
         .eggGroup2 = EGG_GROUP_GRASS,
-        .abilities = {ABILITY_CHLOROPHYLL, ABILITY_CHLOROPHYLL},
+        .abilities = {ABILITY_THICK_FAT, ABILITY_THICK_FAT},
         .abilityHidden = ABILITY_HARVEST,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_YELLOW,
@@ -12994,13 +12994,13 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_REGIGIGAS] =
     {
         .baseHP        = 110,
-        .baseAttack    = 160,
+        .baseAttack    = 135,
         .baseDefense   = 110,
-        .baseSpeed     = 100,
-        .baseSpAttack  = 80,
+        .baseSpeed     = 80,
+        .baseSpAttack  = 55,
         .baseSpDefense = 110,
         .type1 = TYPE_NORMAL,
-        .type2 = TYPE_NORMAL,
+        .type2 = TYPE_GROUND,
         .catchRate = 3,
         .expYield = 302,
         .evYield_Attack    = 3,
@@ -13011,7 +13011,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_SLOW,
         .eggGroup1 = EGG_GROUP_UNDISCOVERED,
         .eggGroup2 = EGG_GROUP_UNDISCOVERED,
-        .abilities = {ABILITY_SLOW_START, ABILITY_NONE},
+        .abilities = {ABILITY_SLOW_START, ABILITY_SLOW_START},
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_WHITE,
     },
