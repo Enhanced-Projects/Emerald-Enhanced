@@ -183,8 +183,7 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}, {RYU_STR_1}, {RYU_STR_2}, {RYU_STR_3}$"
 
 RyuDebug_Utility1::
-    clearflag FLAG_RYU_ZAPDOS
-	clearflag FLAG_RYU_ZAPDOS_RAN
+    DrawInfoBox INFOBOXTEST
     release
     end
 
