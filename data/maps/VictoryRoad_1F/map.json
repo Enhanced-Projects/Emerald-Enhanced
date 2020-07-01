@@ -147,8 +147,8 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_VIGOROTH_CARRYING_BOX",
+            "flag": "FLAG_RYU_MOLTRES",
+            "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",

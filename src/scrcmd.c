@@ -53,6 +53,7 @@
 #include "battle_tower.h"
 #include "load_save.h"
 #include "battle_setup.h"
+#include "infobox.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -2419,3 +2420,10 @@ bool8 ScrCmd_readgamestat(struct ScriptContext *ctx)
     gSpecialVar_Result = (GetGameStat(stat));
     return FALSE;
 }
+
+bool8 ScrCmd_DrawInfoBox(struct ScriptContext *ctx)
+{
+    u16 number = (VarGet(ScriptReadHalfword(ctx)));
+    PrintInfoBox(number);
+    return FALSE;
+};

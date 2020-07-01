@@ -481,31 +481,27 @@ r115_StepLeft:
 
 
 R115_Raikou::
-	goto_if_set FLAG_RYU_RAIKOU, RyuLegendary_Stoneisdull
-	msgbox R115_Raikou_TouchQuery, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_ne RyuLegendary_LeftStoneAlone
-	msgbox R115_Raikou_TouchedStone
-	playmoncry SPECIES_RAIKOU, 0
-	closemessage
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	waitmoncry
-	setwildbattle SPECIES_RAIKOU, VAR_RESULT, ITEM_ELECTRIC_SEED
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	call RyuLegendary_CheckCaught
+	goto_if_set FLAG_RYU_RAIKOU, ryu_end
+	msgbox OverworldLegendary_IntroRaikou
+	setvar VAR_TEMP_5, SPECIES_RAIKOU
+	setvar VAR_TEMP_9, ITEM_ELECTRIC_SEED
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_RAN, R115_RaikouGotAway
+	case B_OUTCOME_LOST, R115_RaikouGotAway
+	case B_OUTCOME_MON_FLED, R115_RaikouGotAway
+	case B_OUTCOME_PLAYER_TELEPORTED, R115_RaikouGotAway
 	setflag FLAG_RYU_RAIKOU
+	removeobject 24 @Put the porymap object ID here
 	release
 	end
 
-R115_Raikou_TouchedStone:
-	.string "{PLAYER} touched the stone.\p"
-	.string "A thunderous cry is heard...$"
+R115_RaikouGotAway::
+	setflag FLAG_RYU_RAIKOU_RAN
+	removeobject 24 @Put the porymap object ID here
+	release
+	end
 
-R115_Raikou_TouchQuery:
-	.string "This stone looks funny.\p"
-	.string "Small electric bolts are coursing\n"
-	.string "all over it.$"
+OverworldLegendary_IntroRaikou: @put your intro here
+	.string "$"
+

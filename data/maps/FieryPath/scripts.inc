@@ -12,32 +12,29 @@ FieryPath_EventScript_MoveScottToFallarbor:: @ 8230F37
 	clearflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
 	return
 
+
 FP_Entei::
-	goto_if_set FLAG_RYU_ENTEI, RyuLegendary_Stoneisdull
-	msgbox FP_Entei_TouchQuery, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_ne RyuLegendary_LeftStoneAlone
-	msgbox FP_Entei_TouchedStone
-	playmoncry SPECIES_ENTEI, 0
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	closemessage
-	waitmoncry
-	setwildbattle SPECIES_ENTEI, VAR_RESULT, ITEM_FLAME_ORB
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	call RyuLegendary_CheckCaught
+	goto_if_set FLAG_RYU_ENTEI, ryu_end
+	msgbox OverworldLegendary_IntroEntei
+	setvar VAR_TEMP_5, SPECIES_ENTEI
+	setvar VAR_TEMP_9, ITEM_FLAME_ORB
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_RAN, FP_EnteiGotAway
+	case B_OUTCOME_LOST, FP_EnteiGotAway
+	case B_OUTCOME_MON_FLED, FP_EnteiGotAway
+	case B_OUTCOME_PLAYER_TELEPORTED, FP_EnteiGotAway
 	setflag FLAG_RYU_ENTEI
+	removeobject 2 @Put the porymap object ID here
 	release
 	end
 
-FP_Entei_TouchQuery:
-	.string "The stone is toasty.\n"
-	.string "Touch the stone?$"
+FP_EnteiGotAway::
+	setflag FLAG_RYU_ENTEI_RAN
+	removeobject 2 @Put the porymap object ID here
+	release
+	end
 
-FP_Entei_TouchedStone:
-	.string "{PLAYER} touched the stone.\n"
-	.string "It's so nice and warm...$"
+OverworldLegendary_IntroEntei: @put your intro here
+	.string "$"
 
