@@ -1677,7 +1677,7 @@
 
 	.macro DrawInfoBox number:req
 	.byte 0xf5
-	.2byte \number
+    .byte \number
 	.endm
 
 @ Supplementary

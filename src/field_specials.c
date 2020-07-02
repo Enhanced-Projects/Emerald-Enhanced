@@ -78,7 +78,6 @@
 #include "money.h"
 #include "menu_helpers.h"
 #include "data/lifeskill.h"
-#include "mgba.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -6298,7 +6297,6 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx)
     }
     VarSet(VAR_TEMP_B, reward);
     VarSet(VAR_TEMP_C, amount);
-    mgba_printf(MGBA_LOG_INFO, "Rewarding %d %d's", amount, reward);
     return TRUE;
     
 }
@@ -6571,3 +6569,101 @@ int RyuCheckRelMegaReward(void)
         }
     }
 };
+
+extern const u8 gText_ColorLightRedShadowRed[];
+extern const u8 gText_ColorLightBlueShadowBlue[];
+const u8 gText_ColorDarkGreyShadowLightGrey[] = _("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
+const u8 gText_RyuStatsHP[] =    _("                HP: ");
+const u8 gText_RyuStatsAtk[] =   _("        Attack: ");
+const u8 gText_RyuStatsDef[] =   _("      Defense: ");
+const u8 gText_RyuStatsSpAtk[] = _("  Sp. Attack: ");
+const u8 gText_RyuStatsSpDef[] = _("Sp. Defense: ");
+const u8 gText_RyuStatsSpeed[] = _("          Speed: ");
+const u8 gText_RyuStatsIv[] = _(", Iv: ");
+const u8 gText_RyuStatsEv[] = _(", Ev: ");
+
+
+bool8 RyuFillStatsBuffers(void)
+{
+    s8 NatureBoost = 0;
+    u8 statIndex = 1;
+    u8 nature = (GetNature(&gPlayerParty[0]));
+    u8 gTextBuffer1[64];
+    u8 gTextBuffer2[64];
+    u8 gTextBuffer3[64];
+    u8 gTextBuffer4[64];
+
+    StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey);
+    StringAppend(gTextBuffer1, gText_RyuStatsHP);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_HP, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer2);
+    StringAppend(gTextBuffer1, gText_RyuStatsIv);
+    ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_HP_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer3);
+    StringAppend(gTextBuffer1, gText_RyuStatsEv);
+    ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[0], MON_DATA_HP_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer4);
+    StringCopy(gStringVar1, gTextBuffer1);
+
+    StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey); 
+    StringAppend(gTextBuffer1, gText_RyuStatsAtk);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_ATK, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer2);
+    StringAppend(gTextBuffer1, gText_RyuStatsIv);
+    ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_ATK_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer3);
+    StringAppend(gTextBuffer1, gText_RyuStatsEv);
+    ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[0], MON_DATA_ATK_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer4);
+    StringCopy(gStringVar2, gTextBuffer1);
+
+    StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey); 
+    StringAppend(gTextBuffer1, gText_RyuStatsDef);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_DEF, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer2);
+    StringAppend(gTextBuffer1, gText_RyuStatsIv);
+    ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_DEF_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer3);
+    StringAppend(gTextBuffer1, gText_RyuStatsEv);
+    ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[0], MON_DATA_DEF_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer4);
+    StringCopy(gStringVar3, gTextBuffer1);
+
+    StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey); 
+    StringAppend(gTextBuffer1, gText_RyuStatsSpAtk);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_SPATK, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer2);
+    StringAppend(gTextBuffer1, gText_RyuStatsIv);
+    ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_SPATK_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer3);
+    StringAppend(gTextBuffer1, gText_RyuStatsEv);
+    ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[0], MON_DATA_SPATK_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer4);
+    StringCopy(gRyuStringVar1, gTextBuffer1);
+
+    StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey); 
+    StringAppend(gTextBuffer1, gText_RyuStatsSpDef);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_SPDEF, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer2);
+    StringAppend(gTextBuffer1, gText_RyuStatsIv);
+    ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_SPDEF_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer3);
+    StringAppend(gTextBuffer1, gText_RyuStatsEv);
+    ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[0], MON_DATA_SPDEF_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer4);
+    StringCopy(gRyuStringVar2, gTextBuffer1);
+
+    StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey); 
+    StringAppend(gTextBuffer1, gText_RyuStatsSpeed);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_SPEED, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer2);
+    StringAppend(gTextBuffer1, gText_RyuStatsIv);
+    ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_SPEED_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer3);
+    StringAppend(gTextBuffer1, gText_RyuStatsEv);
+    ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer4);
+    StringCopy(gRyuStringVar3, gTextBuffer1);
+
+    return TRUE;
+}

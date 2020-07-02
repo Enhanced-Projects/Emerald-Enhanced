@@ -183,9 +183,26 @@ RDB_CTVMsg:
 	.string "{STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}, {RYU_STR_1}, {RYU_STR_2}, {RYU_STR_3}$"
 
 RyuDebug_Utility1::
-    DrawInfoBox INFOBOXTEST
+	specialvar VAR_RESULT, RyuFillStatsBuffers
+	compare VAR_RESULT, TRUE
+	goto_if_ne RyuDebug_StatsFailed
+	delay 30
+    DrawInfoBox INFOBOXPOKEBLOCKS
+	bufferpartymonnick 1, 0
+	msgbox Ryu_Stats
     release
     end
+
+RyuDebug_StatsFailed::
+	msgbox statsfailedmsg
+	release
+	end
+
+statsfailedmsg:
+	.string "Failed to fill stat info$"
+
+Ryu_Stats:
+	.string "{STR_VAR_2}'s Stats$"
 
 Ryu_losefight:
 	.string "$"

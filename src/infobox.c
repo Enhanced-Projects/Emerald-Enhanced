@@ -9,83 +9,71 @@
 #include "string_util.h"
 #include "strings.h"
 
-#define BOXLIST(name) {name, ARRAY_COUNT(name)}
-
 EWRAM_DATA static u8 sPrintWindowId = 1;
 
-struct InfoBoxList
+#define BOXLIST(name) {name, ARRAY_COUNT(name)}
+
+struct InfoBox
 {
     const u8 *text;
-    union {
-        void (*void_u8)(u8);
-        u8 (*u8_void)(void);
-    } func;
+};
+
+const u8 gText_RyuStatHpDisplay[] = _("{STR_VAR_1}");
+const u8 gText_RyuStatAtkDisplay[] = _("{STR_VAR_2}");
+const u8 gText_RyuStatDefDisplay[] = _("{STR_VAR_3}");
+const u8 gText_RyuStatSpAtkDisplay[] = _("{RYU_STR_1}");
+const u8 gText_RyuStatSpDefDisplay[] = _("{RYU_STR_2}");
+const u8 gText_RyuStatSpeedDisplay[] = _("{RYU_STR_3}");
+
+static const struct InfoBox sInfoBoxListPokeblocks[] = 
+{
+    {gText_RyuStatHpDisplay},
+    {gText_RyuStatAtkDisplay},
+    {gText_RyuStatDefDisplay},
+    {gText_RyuStatSpAtkDisplay},
+    {gText_RyuStatSpDefDisplay},
+    {gText_RyuStatSpeedDisplay},
 };
 
 struct InfoBoxListStruct
 {
-    const struct InfoBoxList *list;
+    const struct InfoBox *list;
     u8 count;
 };
 
-static const struct InfoBoxList sInfoBoxListPokeblocks[] = 
+
+static const struct InfoBoxListStruct sInfoBoxes[] =
 {
-    {gText_RedPokeblock},
-    {gText_BluePokeblock},
-    {gText_PinkPokeblock},
-    {gText_GreenPokeblock},
-    {gText_YellowPokeblock},
-    {gText_PurplePokeblock},
-    {gText_IndigoPokeblock},
-    {gText_BrownPokeblock},
-    {gText_LiteBluePokeblock},
-    {gText_OlivePokeblock},
+    BOXLIST(sInfoBoxListPokeblocks),
 };
 
-static const struct InfoBoxListStruct sInfoBoxList[] =
+void PrintInfoTable(u8 windowId, u8 itemCount, const struct InfoBox *strs)
 {
-    [INFOBOXPOKEBLOCKS] = BOXLIST(sInfoBoxListPokeblocks),
-};
+    u32 i;
+
+    for (i = 0; i < itemCount; i++)
+    {
+        StringExpandPlaceholders(gStringVar4, strs[i].text);
+        AddTextPrinterParameterized(windowId, 1, gStringVar4, 4, (i * 16) + 1, 0xFF, NULL);
+    }
+
+    CopyWindowToVram(windowId, 2);
+}
 
 void PrintInfoBox(u16 number)
 {
+    u8 i = 0;
+    u16 y = 0;
+    u8 count = sInfoBoxes[number].count;
     struct WindowTemplate template;
+    const struct InfoBox *list = sInfoBoxes[number].list;
 
-    const struct InfoListBox *boxlist = sInfoBoxList[number].list;
-
-    //prepare window
-    SetWindowTemplateFields(&template, 0, 4, 4, 29, 19, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 1, 28, 12, 15, 4);
     sPrintWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintWindowId, 0);
     PutWindowTilemap(sPrintWindowId);
-    CopyWindowToVram(sPrintWindowId, 1);
     DrawStdFrameWithCustomTileAndPalette(sPrintWindowId, FALSE, 0x214, 14);
-
-    //first batch
-    StringCopy(gStringVar1, &number);
-    StringCopy(gStringVar2, &number);
-    StringCopy(gStringVar3, &number);
-    StringCopy(gRyuStringVar1, &number);
-    StringCopy(gRyuStringVar2, &number);
-    StringCopy(gRyuStringVar3, &number);
-
-    AddTextPrinterParameterized(sPrintWindowId, 0, gStringVar1, 0, 0, 0, NULL);
-    AddTextPrinterParameterized(sPrintWindowId, 0, gStringVar2, 0, 16, 0, NULL);
-    AddTextPrinterParameterized(sPrintWindowId, 0, gStringVar3, 0, 32, 0, NULL);
-    AddTextPrinterParameterized(sPrintWindowId, 0, gRyuStringVar3, 0, 48, 0, NULL);
-    AddTextPrinterParameterized(sPrintWindowId, 0, gRyuStringVar3, 0, 64, 0, NULL);
-    AddTextPrinterParameterized(sPrintWindowId, 0, gRyuStringVar3, 0, 80, 0, NULL);
-
-    //second batch
-    StringCopy(gStringVar1, &number);
-    StringCopy(gStringVar2, &number);
-    StringCopy(gStringVar3, &number);
-    StringCopy(gRyuStringVar1, &number);
-
-    AddTextPrinterParameterized(sPrintWindowId, 0, gStringVar1, 0, 96, 0, NULL);
-    AddTextPrinterParameterized(sPrintWindowId, 0, gStringVar2, 0, 112, 0, NULL);
-    AddTextPrinterParameterized(sPrintWindowId, 0, gStringVar3, 0, 128, 0, NULL);
-    AddTextPrinterParameterized(sPrintWindowId, 0, gRyuStringVar3, 0, 144, 0, NULL);
+    PrintInfoTable(sPrintWindowId, count, list);
 }
 
 

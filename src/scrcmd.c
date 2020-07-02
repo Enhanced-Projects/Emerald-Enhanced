@@ -2423,7 +2423,7 @@ bool8 ScrCmd_readgamestat(struct ScriptContext *ctx)
 
 bool8 ScrCmd_DrawInfoBox(struct ScriptContext *ctx)
 {
-    u16 number = (VarGet(ScriptReadHalfword(ctx)));
+    u8 number = ScriptReadByte(ctx);
     PrintInfoBox(number);
     return FALSE;
 };
