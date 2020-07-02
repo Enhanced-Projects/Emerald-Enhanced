@@ -183,18 +183,9 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	specialvar VAR_RESULT, RyuFillStatsBuffers
-	compare VAR_RESULT, TRUE
-	goto_if_ne RyuDebug_StatsFailed
-	delay 30
-    drawinfobox INFOBOXPOKEMONDATA
-	bufferpartymonnick 1, 0
-	msgbox Ryu_Stats
-	removeinfobox
-	goto RyuPokeEditMenu
-
-Ryu_Stats:
-	.string "{STR_VAR_2}'s Stats$"
+	setflag FLAG_RYU_AQUA_BAD_END
+	release
+	end
 
 RDB_GiveRandomFrontierMons::
 	compare VAR_TEMP_5, 0

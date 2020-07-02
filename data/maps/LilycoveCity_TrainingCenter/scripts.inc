@@ -28,6 +28,9 @@ RyuDebug_StatsFailed::
 statsfailedmsg:
 	.string "Failed to fill stat info$"
 
+Ryu_Stats:
+	.string "{STR_VAR_2}'s Stats$"
+
 Ryu_PkmnHealed:
 	.string "Your party has been healed.$"
 

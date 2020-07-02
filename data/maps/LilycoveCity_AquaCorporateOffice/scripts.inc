@@ -2,6 +2,7 @@ LilycoveCity_AquaCorporateOffice_MapScripts::
 	.byte 0
 
 LC_AH_Security1::
+	goto_if_set FLAG_RYU_AQUA_BAD_END, LC_AH_BADEND
 	goto_if_set FLAG_RYU_STARTING_M4, LC_AH_SecurityStop3
 	goto_if_set FLAG_RYU_STARTING_M3, LC_AH_SecurityStop2
     goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, LC_AH_SecurityStop
@@ -45,6 +46,33 @@ LC_AH_Security1::
 	removeobject 7
 	release
 	end
+
+LC_AH_BADEND::
+	applymovement 5, ForcePlayerOut
+	applymovement OBJ_EVENT_ID_PLAYER, ForcedOut
+	msgbox forciblyThrownOut
+	closemessage
+	warpsilent MAP_LILYCOVE_CITY, 15, 49, 8
+	release
+	end
+
+forciblyThrownOut:
+	.string "You were banned from this\npremises by our administrator.\pDo Not Return!$"
+
+ForcePlayerOut:
+	delay_8
+	walk_right
+	face_down
+	walk_down
+	walk_down
+	step_end
+
+ForcedOut:
+	face_down
+	walk_down
+	walk_down
+	step_end
+
 
 AH_WorkForAqua:
 	.string "Are you sure you want to\nstart this line?\pYou won't be able to complete\nany other line if you do!$"
@@ -346,7 +374,7 @@ LC_AH_mission3::
 	
 LC_AH_Mission3Done::
 	msgbox LC_AH_M3DoneMsg MSGBOX_DEFAULT
-	additem ITEM_MASTER_BALL, 1
+	giveitem ITEM_MASTER_BALL, 1
 	msgbox LC_AH_M3DoneMsg2 MSGBOX_DEFAULT
 	setflag FLAG_RYU_AQUA_MISSION3COMPLETE
 	release
@@ -368,6 +396,7 @@ LC_AH_Mission4::
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
+	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
 	release
 	end
 	
@@ -554,8 +583,8 @@ LC_AH_DeclinedShelly::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LH_M3Exit
 	waitmovement 0
-	clearflag FLAG_RYU_PLAYER_HELPING_AQUA
-	msgbox LC_AH_BADEND MSGBOX_DEFAULT
+	msgbox LC_AH_BadEndMsg MSGBOX_DEFAULT
+	setflag FLAG_RYU_AQUA_BAD_END
 	warpsilent MAP_LILYCOVE_CITY, 15, 49, 8
 	release
 	end
@@ -578,7 +607,7 @@ LC_AH_M4Reldesc::
     settrainerflag TRAINER_GRUNT_MT_PYRE_2
     settrainerflag TRAINER_GRUNT_MT_PYRE_3
     settrainerflag TRAINER_GRUNT_MT_PYRE_4
-	cleartrainerflag TRAINER_MAXIE_MAGMA_HIDEOUT
+	cleartrainerflag TRAINER_MAXIE_3
 	cleartrainerflag TRAINER_COURTNEY_3
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
@@ -873,34 +902,84 @@ LC_AH_TOQUARTERS4:
 	step_end	
 	
 LC_AH_FirstNight:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: There you are, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}.\nI was wondering when you would\lturn up. Everything's going well\lon my front. Most of Team Aqua's\lmembers were okay with the\l"
-	.string "transition. Some even say they\lprefer it. Doesn't seem like there\lwill be any issues from here out.\lI think we're going to start doing\llegitimate business. Probably\lseafloor tours, since we have that\lsubmarine and the latest tech on\lit.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: There you are, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}.\n"
+	.string "I was wondering when you would\p"
+	.string "turn up. Everything's going well\n"
+	.string "on my front. Most of Team Aqua's\p"
+	.string "members were okay with the\n"
+	.string "transition. Some even say they\p"
+	.string "prefer it. Doesn't seem like there\n"
+	.string "will be any issues from here out.\p"
+	.string "I think we're going to start doing\n"
+	.string "legitimate business. Probably\p"
+	.string "seafloor tours, since we have that\n"
+	.string "submarine with the LIDAR on it.$"
 
 LC_AH_GoToQuarters:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: I was hoping we could spend\la night together... and {COLOR LIGHT_BLUE}really{COLOR LIGHT_RED}{SHADOW RED}\l"
-	.string "get to know each other. You've\lmade me a better person, and I\llove you for it.\l{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: A night sounds good, I'm\lsuper tired. I also love you.\lYou're the most beautiful evil\lteam admin I've ever met. And I've\lmet a few.\l"
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Let's go, then.\p{COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly grabs your hand.)$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: I was hoping we could spend\n"
+	.string "a night together... and {COLOR LIGHT_BLUE}really{COLOR LIGHT_RED}{SHADOW RED}\p"
+	.string "get to know each other. You've\n"
+	.string "made me a better person, and I\l"
+	.string "love you for it.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: I love you, too.\n"
+	.string "A night sounds good,\l"
+	.string "I could use some rest.\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Let's go, then.\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly grabs your hand.)$"
 	
 LC_AH_QuartersScene:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: You know, before I met you\nI failed to see any of the signs\lthat archie wasn't thinking about\lwhat was best for all the innocent\lpeople. He was only thinking about\lhimself. You lifted the wool from\lmy eyes with your kindness, and\l"
-	.string "opened me up to a new world of\lopportunities. Ever since you\lstarted coming around, I've been\lin a better mood than I've ever\lbeen. You didn't just save the\llives of countless innocents. You\lalso saved me from a world of\l"
-	.string "darkness. I love you so much,\l{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}. I'm so glad we're\ltogether.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: You know, before I met you\n"
+	.string "I failed to see any of the signs\p"
+	.string "that archie wasn't thinking about\n"
+	.string "what was best for all the innocent\p"
+	.string "people. He was only thinking about\n"
+	.string "himself. You lifted the wool from\p"
+	.string "my eyes with your kindness, and\n"
+	.string "opened me up to a new world of\p"
+	.string "opportunities. Ever since you\n"
+	.string "started coming around, I've been\p"
+	.string "in a better mood than I've ever\n"
+	.string "been. You didn't just save the\p"
+	.string "lives of countless innocents. You\n"
+	.string "also saved me from a world of\p"
+	.string "darkness. I love you so much,\n"
+	.string "{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}. I'm so glad we're\l"
+	.string "together.$"
 
 LC_AH_QuartersScene2:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Speaking of which...\p{COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly slides over and\n leans against your chest...)$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Speaking of which...\p"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly slides over and\n"
+	.string " leans against your chest...)$"
 	
 LC_AH_CONCLUSION:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Shelly snuggle\n closely and cover up.)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Shelly snuggle\n"
+	.string " closely and cover up.)$"
 	
 LC_AH_CONCLUSION2:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER}{COLOR LIGHT_GREEN}{SHADOW GREEN} and Shelly fall into a\n peaceful sleep as the humid ocean\l air slightly jostles the curtains\l in the window.\l... ... ... ... ... \l"
-	.string " You hear a distant\l ship blowing its horn, signaling\l that it's coming into the pier.)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER}{COLOR LIGHT_GREEN}{SHADOW GREEN} and Shelly fall into a\n"
+	.string " peaceful sleep as the humid ocean\p"
+	.string " air slightly jostles the curtains\n"
+	.string " in the window.)\p"
+	.string "... ... ... ... ... \p"
+	.string " (You hear a distant\n"
+	.string " ship blowing its horn, signaling\p"
+	.string " that it's coming into the pier.)$"
 	
 LC_AH_ShellyNeutralmsg:
-	.string "Hi, {PLAYER}, how are you?\n... ... ... ... ... ...\lThat's nice to hear. Well, at\lleast Team Aqua is back on its\lfeet. Our touring business is\lpicking up speed!$"
+	.string "Hi, {PLAYER}, how are you?\p"
+	.string "... ... ... ... ... ...\p"
+	.string "That's nice to hear. Well, at\n"
+	.string "least Team Aqua is back on its\p"
+	.string "feet. Our touring business is\n"
+	.string "picking up speed!$"
+	
 	
 LC_AH_TRANSITION:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You awaken to a few voices\n chattering in the main room.\l There's a nice breeze coming\l through the window, and you don't\l want to get up.$)"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You awaken to a few voices\n"
+	.string " chattering in the main room.\p"
+	.string " There's a nice breeze coming\n"
+	.string " through the window, and you don't\l"
+	.string " want to get up.$)"
 
 LC_AH_ShellyThanks:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}You're quite the bold one, you are.\p"
@@ -944,7 +1023,7 @@ LC_AH_ShellyDispt2:
 	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I've got to go handle this mess,\n"
 	.string "now. Please leave.$"
 	
-LC_AH_BADEND:
+LC_AH_BadEndMsg:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You got a pretty strong sense\p"
 	.string "of finality in the way Shelly asked\n"
 	.string "you to leave.)$"
