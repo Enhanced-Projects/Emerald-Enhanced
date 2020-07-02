@@ -1675,9 +1675,13 @@
 	.byte 0xf4
 	.endm
 
-	.macro DrawInfoBox number:req
+	.macro drawinfobox number:req
 	.byte 0xf5
     .byte \number
+	.endm
+
+	.macro removeinfobox
+	.byte 0xf6
 	.endm
 
 @ Supplementary

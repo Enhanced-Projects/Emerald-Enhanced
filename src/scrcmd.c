@@ -2421,9 +2421,15 @@ bool8 ScrCmd_readgamestat(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_DrawInfoBox(struct ScriptContext *ctx)
+bool8 ScrCmd_drawinfobox(struct ScriptContext *ctx)
 {
     u8 number = ScriptReadByte(ctx);
     PrintInfoBox(number);
     return FALSE;
 };
+
+bool8 ScrCmd_removeinfobox(struct ScriptContext *ctx)
+{
+    RemoveInfoBox();
+    return FALSE;
+}
