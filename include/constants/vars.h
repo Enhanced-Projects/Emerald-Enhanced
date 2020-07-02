@@ -320,11 +320,6 @@
 #define BS_SHIFT 0
 #define BS_SET 1
 
-//dice game defines
-
-#define DRAW 1
-#define LOSS 2
-#define WIN 3
 
 
 //drawFullscreenImage defines

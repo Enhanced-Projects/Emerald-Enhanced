@@ -571,8 +571,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuGiveExpUnloadBattery
 	def_special RyuGetCaughtMonsFromPCForDex
 	def_special RyuCheckTempVars
-	def_special RyuRollDice
-	def_special RyuDrawDicePics
 	def_special RyuNumberOfFullBoxes
 	def_special RyuWipeParty
 	def_special GivePlayerModdedMon
@@ -607,3 +605,4 @@ gSpecials:: @ 81DBA64
 	def_special RyuCheckRelMegaReward
 	def_special CountBadges
 	def_special RyuFillStatsBuffers
+
