@@ -1529,7 +1529,7 @@
 #define FLAG_RYU_MANAPHY_RAN                        (SYSTEM_FLAGS + 0x91) // Unused Flag
 #define FLAG_RYU_NECROZMA_RAN                       (SYSTEM_FLAGS + 0x92) // Unused Flag
 #define FLAG_RYU_KYOGRE_RAN                         (SYSTEM_FLAGS + 0x93) // Unused Flag
-#define FLAG_UNUSED_0x8F4                           (SYSTEM_FLAGS + 0x94) // Unused Flag
+#define FLAG_RYU_AQUA_BAD_END                       (SYSTEM_FLAGS + 0x94) // Unused Flag
 #define FLAG_UNUSED_0x8F5                           (SYSTEM_FLAGS + 0x95) // Unused Flag
 #define FLAG_UNUSED_0x8F6                           (SYSTEM_FLAGS + 0x96) // Unused Flag
 #define FLAG_UNUSED_0x8F7                           (SYSTEM_FLAGS + 0x97) // Unused Flag

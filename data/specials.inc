@@ -606,3 +606,4 @@ gSpecials:: @ 81DBA64
 	def_special Ryu_GiveRevivedFossilEgg
 	def_special RyuCheckRelMegaReward
 	def_special CountBadges
+	def_special RyuFillStatsBuffers

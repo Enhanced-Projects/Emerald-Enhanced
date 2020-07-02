@@ -341,7 +341,7 @@
 #define SCENEBGLEAFNORMAL 10
 
 //InfoBox Defines
-#define INFOBOXPOKEBLOCKS 0
+#define INFOBOXPOKEMONDATA 0
 
 #define SPECIAL_VARS_END              0x8015
 

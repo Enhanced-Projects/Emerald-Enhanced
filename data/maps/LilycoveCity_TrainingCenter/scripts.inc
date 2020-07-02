@@ -2,20 +2,37 @@ LilycoveCity_TrainingCenter_MapScripts::
 	.byte 0
 	
 TC_EvIvCheckerScript::
-    lock
-	special RyuIvChecker
-	msgbox RyuIVDebugMsg MSGBOX_DEFAULT
-	special RyuEvChecker
-	msgbox RyuEVDebugMsg MSGBOX_DEFAULT
-	special RyuOtherDataChecker
-	msgbox RyuOtherMenuMsg MSGBOX_DEFAULT
+    specialvar VAR_RESULT, RyuFillStatsBuffers
+	compare VAR_RESULT, TRUE
+	goto_if_ne RyuDebug_StatsFailed
+	delay 30
+    drawinfobox INFOBOXPOKEMONDATA
+	bufferpartymonnick 1, 0
+	msgbox Ryu_Stats
+	removeinfobox
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, TC_IVEV_NOHEAL
 	goto_if_set FLAG_RYU_HARDCORE_MODE, TC_IVEV_NOHEAL
+	delay 10
 	special HealPlayerParty
 	playfanfare MUS_ME_ASA
 	waitfanfare
+	msgbox Ryu_PkmnHealed
 	release
 	end
+
+RyuDebug_StatsFailed::
+	msgbox statsfailedmsg
+	release
+	end
+
+statsfailedmsg:
+	.string "Failed to fill stat info$"
+
+Ryu_Stats:
+	.string "{STR_VAR_2}'s Stats$"
+
+Ryu_PkmnHealed:
+	.string "Your party has been healed.$"
 
 TC_IVEV_NOHEAL::
 	msgbox TC_HCNZ_CANTHEAL

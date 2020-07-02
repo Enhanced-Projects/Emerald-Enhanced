@@ -11,7 +11,6 @@
 #include "util.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
-#include "mgba.h"
 
 struct AnimStatsChangeData
 {

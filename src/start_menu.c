@@ -50,7 +50,6 @@
 #include "constants/event_objects.h"
 #include "rtc.h"
 #include "gba/m4a_internal.h"
-#include "mgba.h"
 
 static EWRAM_DATA u8 MenuSpriteId1 = 0;
 static EWRAM_DATA u8 MenuSpriteId2 = 0;

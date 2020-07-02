@@ -65,7 +65,7 @@
             "var": "VAR_MT_PYRE_STATE",
             "var_value": "2",
             "x": 22,
-            "y": 9
+            "y": 10
         },
         {
             "elevation": 3,
@@ -74,7 +74,7 @@
             "var": "VAR_MT_PYRE_STATE",
             "var_value": "2",
             "x": 23,
-            "y": 9
+            "y": 10
         },
         {
             "elevation": 3,
@@ -83,7 +83,7 @@
             "var": "VAR_MT_PYRE_STATE",
             "var_value": "2",
             "x": 24,
-            "y": 9
+            "y": 10
         },
         {
             "elevation": 0,
@@ -221,7 +221,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 23,
-            "y": 8
+            "y": 9
         },
         {
             "elevation": 3,

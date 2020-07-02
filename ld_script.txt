@@ -327,8 +327,6 @@ SECTIONS {
         src/unk_transition.o(.text);
         src/international_string_util.o(.text);
         src/cutscene.o(.text);
-        src/mgba.o(.text);
-        src/printf.o(.text);
         src/*.o(.text);
     } =0
 
