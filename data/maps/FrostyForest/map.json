@@ -190,7 +190,7 @@
     "id": "MAP_FROSTY_FOREST",
     "layout": "LAYOUT_FROSTY_FOREST",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DAN02",
+    "music": "MUS_M_DUNGON",
     "name": "FrostyForest",
     "object_events": [
         {

@@ -163,8 +163,8 @@
             "type": "trigger",
             "var": "VAR_CYCLING_CHALLENGE_STATE",
             "var_value": "2",
-            "x": 28,
-            "y": 92
+            "x": 36,
+            "y": 98
         },
         {
             "elevation": 3,
@@ -172,8 +172,8 @@
             "type": "trigger",
             "var": "VAR_CYCLING_CHALLENGE_STATE",
             "var_value": "2",
-            "x": 29,
-            "y": 92
+            "x": 37,
+            "y": 98
         },
         {
             "elevation": 3,
@@ -524,8 +524,8 @@
             "script": "Route110_EventScript_ChallengeGuy",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 27,
-            "y": 92
+            "x": 36,
+            "y": 100
         },
         {
             "elevation": 4,

@@ -12072,6 +12072,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM59_IRON_HEAD)
 											| TMHM(TM57_KNOCK_OFF)
 											| TMHM(TM18_RAIN_DANCE)
+											| TMHM(TM44_REST)
 											| TMHM(TM27_RETURN)
 											| TMHM(TM39_ROCK_TOMB)
 											| TMHM(TM20_SAFEGUARD)
