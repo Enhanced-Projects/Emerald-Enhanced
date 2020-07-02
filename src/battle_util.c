@@ -35,7 +35,6 @@
 #include "constants/species.h"
 #include "constants/weather.h"
 #include "data.h"
-#include "mgba.h"
 
 extern const u8 gText_OverlordRyuBossNameBuffer[];
 extern const u8 gText_PokemonStringBuffer[];

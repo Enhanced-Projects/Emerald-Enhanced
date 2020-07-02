@@ -23,7 +23,6 @@
 #include "intro.h"
 #include "main.h"
 #include "trainer_hill.h"
-#include "mgba.h"
 #include "event_data.h"
 
 static void VBlankIntr(void);
@@ -125,7 +124,6 @@ void AgbMain()
     ResetBgs();
     SetDefaultFontsPointer();
     InitHeap(gHeap, HEAP_SIZE);
-    //mgba_open();
 
     gSoftResetDisabled = FALSE;
 
@@ -172,7 +170,6 @@ void AgbMain()
         PlayTimeCounter_Update();
         VarSet(VAR_LAST_KNOWN_GAME_VERSION, 684);
         VarSet(VAR_RECYCLE_GOODS, 45454);
-        //mgba_open();
         FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
         FlagSet(FLAG_RYU_HIDE_HAREM_EVENT_NPCS);
         FlagSet(FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN);

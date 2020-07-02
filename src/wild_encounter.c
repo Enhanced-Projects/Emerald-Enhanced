@@ -28,7 +28,6 @@
 #include "strings.h"
 #include "pokemon.h"
 #include "constants/weather.h"
-//#include "mgba.h"
 
 extern const u8 EventScript_RepelWoreOff[];
 extern int CountBadges();
@@ -1077,8 +1076,6 @@ static const u8 sWildCount[] =
     ROCK_WILD_COUNT,
     FISH_WILD_COUNT
 };
-
-//#include "mgba.h"
 
 static bool8 TryGetAbilityInfluencedWildMonIndexFromTable(const struct WildPokemon *wildMon, u8 *monIndex, u8 encounterType)
 {
