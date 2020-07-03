@@ -20,6 +20,7 @@ EWRAM_DATA static u16 gUnusedWeatherRelated = 0;
 // CONST
 const u16 gCloudsWeatherPalette[] = INCBIN_U16("graphics/weather/cloud.gbapal");
 const u16 gSandstormWeatherPalette[] = INCBIN_U16("graphics/weather/sandstorm.gbapal");
+const u16 gBlizzardWeatherPalette[] = INCBIN_U16("graphics/weather/blizzard.gbapal");
 const u8 gWeatherFogDiagonalTiles[] = INCBIN_U8("graphics/weather/fog_diagonal.4bpp");
 const u8 gWeatherFogHorizontalTiles[] = INCBIN_U8("graphics/weather/fog_horizontal.4bpp");
 const u8 gWeatherCloudTiles[] = INCBIN_U8("graphics/weather/cloud.4bpp");
@@ -29,6 +30,7 @@ const u8 gWeatherBubbleTiles[] = INCBIN_U8("graphics/weather/bubble.4bpp");
 const u8 gWeatherAshTiles[] = INCBIN_U8("graphics/weather/ash.4bpp");
 const u8 gWeatherRainTiles[] = INCBIN_U8("graphics/weather/rain.4bpp");
 const u8 gWeatherSandstormTiles[] = INCBIN_U8("graphics/weather/sandstorm.4bpp");
+const u8 gWeatherBlizzardTiles[] = INCBIN_U8("graphics/weather/blizzard.4bpp");
 
 //------------------------------------------------------------------------------
 // WEATHER_SUNNY_CLOUDS
@@ -2083,6 +2085,13 @@ static const struct SpriteSheet sSandstormSpriteSheet =
     .tag = 0x1204,
 };
 
+static const struct SpriteSheet sBlizzardSpriteSheet =
+{
+    .data = gWeatherBlizzardTiles,
+    .size = sizeof(gWeatherBlizzardTiles),
+    .tag = 0x1240,
+};
+
 // Regular sandstorm sprites
 #define tSpriteColumn  data[0]
 #define tSpriteRow     data[1]
@@ -2093,6 +2102,23 @@ static const struct SpriteSheet sSandstormSpriteSheet =
 #define tRadiusCounter data[2]
 #define tEntranceDelay data[3]
 
+bool8 RyuCheckPlayerisInColdArea(void)
+{
+    u16 locGroup = gSaveBlock1Ptr->location.mapGroup;
+    u16 locMap = gSaveBlock1Ptr->location.mapNum;
+    if (locGroup == 0)
+    {
+        if ((locMap > 15) && (locMap < 21))
+        {
+            {
+                return TRUE;
+            }
+        }
+    }
+    
+    return FALSE;
+}
+
 static void CreateSandstormSprites(void)
 {
     u16 i;
@@ -2101,7 +2127,15 @@ static void CreateSandstormSprites(void)
     if (!gWeatherPtr->sandstormSpritesCreated)
     {
         LoadSpriteSheet(&sSandstormSpriteSheet);
-        LoadCustomWeatherSpritePalette(gSandstormWeatherPalette);
+        if (RyuCheckPlayerisInColdArea() == TRUE)
+        {
+            LoadCustomWeatherSpritePalette(gBlizzardWeatherPalette);
+        }
+        else
+        {
+            LoadCustomWeatherSpritePalette(gSandstormWeatherPalette);
+        }
+        
         for (i = 0; i < NUM_SANDSTORM_SPRITES; i++)
         {
             spriteId = CreateSpriteAtEnd(&sSandstormSpriteTemplate, 0, (i / 5) * 64, 1);
