@@ -41,6 +41,14 @@ const u32 gBattleTerrainTilemap_FrontierMap[] = INCBIN_U32("graphics/battle_terr
 const u32 gBattleTerrainPalette_FrontierPalette[] = INCBIN_U32("graphics/battle_terrain/building/FrontierBattleScenePalette.gbapal.lz");
 const u32 gBattleTerrainTiles_FrontierTiles[] = INCBIN_U32("graphics/battle_terrain/building/FrontierBattleSceneTiles.4bpp.lz");
 
+const u32 gBattleTerrainTilemap_SnowshoreMap[] = INCBIN_U32("graphics/battle_terrain/cold/SnowshoreMap.bin.lz");
+const u32 gBattleTerrainPalette_SnowshorePalette[] = INCBIN_U32("graphics/battle_terrain/cold/SnowshorePalette.gbapal.lz");
+const u32 gBattleTerrainTiles_SnowshoreTiles[] = INCBIN_U32("graphics/battle_terrain/cold/SnowshoreTiles.4bpp.lz");
+
+const u32 gBattleTerrainTilemap_MtFreezeMap[] = INCBIN_U32("graphics/battle_terrain/cold/MtFreezeMap.bin.lz");
+const u32 gBattleTerrainPalette_MtFreezePalette[] = INCBIN_U32("graphics/battle_terrain/cold/MtFreezePalette.gbapal.lz");
+const u32 gBattleTerrainTiles_MtFreezeTiles[] = INCBIN_U32("graphics/battle_terrain/cold/MtFreezeTiles.4bpp.lz");
+
 const u32 gBattleTerrainTiles_Stadium[] = INCBIN_U32("graphics/battle_terrain/stadium/tiles.4bpp.lz");
 const u32 gBattleTerrainTilemap_Stadium[] = INCBIN_U32("graphics/battle_terrain/stadium/map.bin.lz");
 
