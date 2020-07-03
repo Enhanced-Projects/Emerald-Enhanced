@@ -155,7 +155,7 @@ $(shell mkdir -p $(SUBDIRS))
 
 all: updatedebug rom
 
-updatedebug: ; @touch src/mgba.c include/mgba.h src/printf.c include/printf.h
+updatedebug: ; 
 
 tools: $(TOOLDIRS)
 

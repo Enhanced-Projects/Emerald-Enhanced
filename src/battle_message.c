@@ -695,6 +695,7 @@ static const u8 sText_PkmnAbsorbingPower[] = _("{B_ATK_NAME_WITH_PREFIX} is abso
 static const u8 sText_NoOneWillBeAbleToRun[] = _("No one will be able to run away\nduring the next turn!");
 static const u8 sText_DestinyKnotActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} fell in love\nfrom the {B_LAST_ITEM}!");
 static const u8 sText_CloakedInAFreezingLight[] = _("{B_ATK_NAME_WITH_PREFIX} became cloaked\nin a freezing light!");
+static const u8 sText_HailIsBrewing[] = _("A hail storm is brewing...");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1254,7 +1255,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_BOSSWILDPRESENCE - 12] = sText_RyuBossWildStatBoost,
     [STRINGID_PKMNISRESOLVED - 12] = sText_RyuPkmnResolvedToFight,
     [STRINGID_MIMIKYUDISGUISEBLOCKED - 12] = sText_RyuMimikyuDisguiseBlocked,
-    [STRINGID_WASHUGGEDBY - 12] = sText_Cling
+    [STRINGID_WASHUGGEDBY - 12] = sText_Cling,
+    [STRINGID_HAILISBREWING - 12] = sText_HailIsBrewing
 
 };
 
@@ -1491,7 +1493,7 @@ const u16 gBallEscapeStringIds[] =
 const u16 gWeatherContinuesStringIds[] =
 {
     STRINGID_ITISRAINING, STRINGID_ITISRAINING, STRINGID_ITISRAINING,
-    STRINGID_ITISRAINING, STRINGID_ITISRAINING, STRINGID_ITISRAINING,
+    STRINGID_ITISRAINING, STRINGID_HAILISBREWING, STRINGID_ITISRAINING,
     STRINGID_ITISRAINING, STRINGID_ITISRAINING, STRINGID_SANDSTORMISRAGING,
     STRINGID_ITISRAINING, STRINGID_ITISRAINING, STRINGID_ITISRAINING,
     STRINGID_SUNLIGHTSTRONG, STRINGID_ITISRAINING, STRINGID_ITISRAINING, STRINGID_ITISRAINING

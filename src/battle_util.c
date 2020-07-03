@@ -2924,6 +2924,8 @@ static u8 ForewarnChooseMove(u32 battler)
     free(data);
 }
 
+extern bool8 RyuCheckPlayerisInColdArea();
+
 u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveArg)
 {
     u8 effect = 0;
@@ -3019,10 +3021,22 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 case WEATHER_SANDSTORM:
                     if (!(gBattleWeather & WEATHER_SANDSTORM_ANY))
                     {
-                        gBattleWeather = (WEATHER_SANDSTORM_PERMANENT | WEATHER_SANDSTORM_TEMPORARY);
-                        gBattleScripting.animArg1 = B_ANIM_SANDSTORM_CONTINUES;
-                        gBattleScripting.battler = battler;
-                        effect++;
+                        if (RyuCheckPlayerisInColdArea() == TRUE)
+                            {
+                                gBattleWeather = (WEATHER_HAIL_PERMANENT | WEATHER_HAIL_TEMPORARY);
+                                gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
+                                gBattleScripting.battler = battler;
+                                effect++;
+                                break;
+                            }
+                        else
+                            {
+                                gBattleWeather = (WEATHER_SANDSTORM_PERMANENT | WEATHER_SANDSTORM_TEMPORARY);
+                                gBattleScripting.animArg1 = B_ANIM_SANDSTORM_CONTINUES;
+                                gBattleScripting.battler = battler;
+                                effect++;
+                                break;
+                            }
                     }
                     break;
                 case WEATHER_DROUGHT:
@@ -3047,7 +3061,14 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
             }
             if (effect)
             {
-                gBattleCommunication[MULTISTRING_CHOOSER] = GetCurrentWeather();
+                if (RyuCheckPlayerisInColdArea())
+                {
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_SNOW;
+                }
+                else
+                {
+                    gBattleCommunication[MULTISTRING_CHOOSER] = GetCurrentWeather();
+                }                       
                 BattleScriptPushCursorAndCallback(BattleScript_OverworldWeatherStarts);
             }
             break;

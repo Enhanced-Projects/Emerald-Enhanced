@@ -5520,6 +5520,12 @@ extern const u32 gBattleTerrainPalette_StadiumWallace[];
 extern const u32 gBattleTerrainTilemap_FrontierMap[];
 extern const u32 gBattleTerrainPalette_FrontierPalette[];
 extern const u32 gBattleTerrainTiles_FrontierTiles[];
+extern const u32 gBattleTerrainTilemap_SnowshoreMap[];
+extern const u32 gBattleTerrainPalette_SnowshorePalette[];
+extern const u32 gBattleTerrainTiles_SnowshoreTiles[];
+extern const u32 gBattleTerrainTilemap_MtFreezeMap[];
+extern const u32 gBattleTerrainPalette_MtFreezePalette[];
+extern const u32 gBattleTerrainTiles_MtFreezeTiles[];
 
 // pokedex
 extern const u32 gPokedexInterface_Gfx[];
