@@ -625,7 +625,7 @@ const struct WildPokemon gRusturfTunnel_LandMons[] =
 	{26, 29, SPECIES_HYPNO},
 };
 
-const struct WildPokemonInfo gRusturfTunnel_LandMonsInfo = {0, gRusturfTunnel_LandMons};
+const struct WildPokemonInfo gRusturfTunnel_LandMonsInfo = {15, gRusturfTunnel_LandMons};
 
 const struct WildPokemon gGraniteCave_1F_LandMons[] =
 {
