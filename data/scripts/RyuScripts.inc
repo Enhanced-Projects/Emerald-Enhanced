@@ -165,10 +165,20 @@ BetaMenuIntro:
 RDBM_Option1::
 RDBM_Option2::
 RDBM_Option3::
-RDBM_Option4::
 	msgbox RDBM_Unimplemented
 	release
 	end
+
+RDBM_Option4::
+	setflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
+	clearflag FLAG_RYU_DS_LANETTE_ACQ
+	clearflag FLAG_HIDE_FALLORBOR_POKEMON_CENTER_LANETTE
+	msgbox RDBM_LanetteReset
+	release
+	end
+
+RDBM_LanetteReset:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} (Lanette's quest has been\n initialized)$"
 
 RDBM_Unimplemented:
 	.string "This option does nothing. It's\na placeholder for future options.$"
@@ -1268,19 +1278,32 @@ JuanMega:
 @__________________________________________________________________________________________________Legendaries common scripts
 
 RyuLegendary_GeneralLegendEncounter::
+	msgbox StartingRandomBattleMsg
 	playmoncry VAR_TEMP_5, 0
+	msgbox StartingRandomBattleMsg
 	specialvar VAR_TEMP_7, CountBadges
 	multvar VAR_TEMP_7, 20
 	compare VAR_TEMP_7, 110
 	call_if_gt RyuLegendary_SetMaxScale
 	compare VAR_TEMP_7, 20
 	call_if_le RyuLegendary_SetBaseScale
+	msgbox StartingRandomBattleMsg
+	buffernumberstring 0, VAR_TEMP_5
+	buffernumberstring 1, VAR_TEMP_7
+	buffernumberstring 2, VAR_TEMP_9
+	copyvar VAR_0x8004, VAR_TEMP_5
+	copyvar VAR_0x8005, VAR_TEMP_7
+	copyvar VAR_0x8006, VAR_TEMP_9
+	msgbox TestMsg
 	setwildbattle VAR_TEMP_5, VAR_TEMP_7, VAR_TEMP_9
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	call RyuLegendary_HandleEndLegendaryBattle
 	return
 	end
+
+TestMsg:
+	.string "{STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}$"
 
 RyuLegendary_HandleEndLegendaryBattle::
 	specialvar VAR_RESULT, GetBattleOutcome
