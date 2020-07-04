@@ -2,24 +2,37 @@ LilycoveCity_TrainingCenter_MapScripts::
 	.byte 0
 	
 TC_EvIvCheckerScript::
-    lock
-	special RyuIvCheckerDef
-	msgbox TC_IvShow1 MSGBOX_DEFAULT
-	special RyuIvCheckerOff
-	msgbox TC_IvShow2 MSGBOX_DEFAULT
-	special RyuEvCheckerDef
-	msgbox TC_EvShow1 MSGBOX_DEFAULT
-	special RyuEvCheckerOff
-	msgbox TC_EvShow2 MSGBOX_DEFAULT
-	special RyuOtherDataChecker
-	msgbox TC_FSShow MSGBOX_DEFAULT
+    specialvar VAR_RESULT, RyuFillStatsBuffers
+	compare VAR_RESULT, TRUE
+	goto_if_ne RyuDebug_StatsFailed
+	delay 30
+    drawinfobox INFOBOXPOKEMONDATA
+	bufferpartymonnick 1, 0
+	msgbox Ryu_Stats
+	removeinfobox
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, TC_IVEV_NOHEAL
 	goto_if_set FLAG_RYU_HARDCORE_MODE, TC_IVEV_NOHEAL
+	delay 10
 	special HealPlayerParty
 	playfanfare MUS_ME_ASA
 	waitfanfare
+	msgbox Ryu_PkmnHealed
 	release
 	end
+
+RyuDebug_StatsFailed::
+	msgbox statsfailedmsg
+	release
+	end
+
+statsfailedmsg:
+	.string "Failed to fill stat info$"
+
+Ryu_Stats:
+	.string "{STR_VAR_2}'s Stats$"
+
+Ryu_PkmnHealed:
+	.string "Your party has been healed.$"
 
 TC_IVEV_NOHEAL::
 	msgbox TC_HCNZ_CANTHEAL
@@ -28,26 +41,6 @@ TC_IVEV_NOHEAL::
 
 TC_HCNZ_CANTHEAL:
 	.string "You're in a restricted game mode.\nYou can't heal here.$"
-	
-TC_IvShow1:
-	.string "Lead Pokemon Defensive IVS:\n"
-	.string "HP: {STR_VAR_1}    Def: {STR_VAR_2}     SpDef: {STR_VAR_3}$"
-	
-TC_IvShow2:
-	.string "Lead Pokemon Offensive IVS:\n"
-	.string "Atk: {STR_VAR_1}    SpAtk: {STR_VAR_2}     Speed: {STR_VAR_3}$"
-	
-TC_EvShow1:
-	.string "Lead Pokemon Defensive EVS:\n"
-	.string "HP: {STR_VAR_1}    Def: {STR_VAR_2}     SpDef: {STR_VAR_3}$"
-	
-TC_EvShow2:
-	.string "Lead Pokemon Offensive EVS:\n"
-	.string "Atk: {STR_VAR_1}    SpAtk: {STR_VAR_2}     Speed: {STR_VAR_3}$"
-
-TC_FSShow:
-	.string "Lead Pokemon Friendship Level: {STR_VAR_1}\n"
-	.string "Lead Pokemon Ribbon Count: {STR_VAR_3}$"
 
 @================================================================================================== Training Center Entry
 	

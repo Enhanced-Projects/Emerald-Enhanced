@@ -533,10 +533,8 @@ gSpecials:: @ 81DBA64
 	def_special CloseDeptStoreElevatorWindow
 	def_special TrySetBattleTowerLinkType
 	def_special checkbadgecount
-	def_special RyuIvCheckerDef
-	def_special RyuIvCheckerOff
-	def_special RyuEvCheckerDef
-	def_special RyuEvCheckerOff
+	def_special RyuIvChecker
+	def_special RyuEvChecker
 	def_special RyuSetEVHP
 	def_special RyuSetEVATK
 	def_special RyuSetEVDEF
@@ -560,17 +558,12 @@ gSpecials:: @ 81DBA64
 	def_special RyuSetMonMove
 	def_special RyuOtherDataChecker
 	def_special RyuIvSetter
-	def_special RyuLevelSetter
 	def_special RyuSetFriendship
 	def_special RyuResetEvs
 	def_special RyuCalculateCurrentExpCoefficient
 	def_special RyuGenerateReward
 	def_special RyuGiveKoutaMawile
 	def_special RyuSetIVs
-	def_special RyuResetDevonFlags
-	def_special RyuResetAquaFlags
-	def_special RyuResetLeafFlags
-	def_special RyuResetRivalFlags
 	def_special IsWailordInParty
 	def_special SpecialScriptAdvancer
 	def_special RyuWarp
@@ -578,8 +571,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuGiveExpUnloadBattery
 	def_special RyuGetCaughtMonsFromPCForDex
 	def_special RyuCheckTempVars
-	def_special RyuRollDice
-	def_special RyuDrawDicePics
 	def_special RyuNumberOfFullBoxes
 	def_special RyuWipeParty
 	def_special GivePlayerModdedMon
@@ -611,3 +602,7 @@ gSpecials:: @ 81DBA64
 	def_special RyuFossilReward
 	def_special RyuShardReward
 	def_special Ryu_GiveRevivedFossilEgg
+	def_special RyuCheckRelMegaReward
+	def_special CountBadges
+	def_special RyuFillStatsBuffers
+

@@ -1,36 +1,30 @@
 Route66_MapScripts::
 	.byte 0
 
-
 r66_Celebi::
-	goto_if_set FLAG_RYU_CELEBI, RyuLegendary_Stoneisdull
-	msgbox r66_Celebi_TouchQuery, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_ne RyuLegendary_LeftStoneAlone
-	msgbox r66_Celebi_TouchedStone
-	playmoncry SPECIES_CELEBI, 0
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	closemessage
-	waitmoncry
-	setwildbattle SPECIES_CELEBI, VAR_RESULT, ITEM_BIG_ROOT
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	call RyuLegendary_CheckCaught
+	goto_if_set FLAG_RYU_CELEBI, ryu_end
+	msgbox OverworldLegendary_IntroCelebi
+	setvar VAR_TEMP_5, SPECIES_CELEBI
+	setvar VAR_TEMP_9, ITEM_BIG_ROOT
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_RAN, r66_CelebiGotAway
+	case B_OUTCOME_LOST, r66_CelebiGotAway
+	case B_OUTCOME_MON_FLED, r66_CelebiGotAway
+	case B_OUTCOME_PLAYER_TELEPORTED, r66_CelebiGotAway
 	setflag FLAG_RYU_CELEBI
+	removeobject 1 @Put the porymap object ID here
 	release
 	end
 
-r66_Celebi_TouchedStone:
-    .string "{PLAYER} touched the stone.\p"
-	.string "It feels so old, but so new at the\n"
-	.string "same time.$"
+r66_CelebiGotAway::
+	setflag FLAG_RYU_CELEBI_RAN
+	removeobject 1 @Put the porymap object ID here
+	release
+	end
 
-r66_Celebi_TouchQuery:
-    .string "The stone is beautifully overgrown.\p"
-	.string "Touch the stone?$"
+OverworldLegendary_IntroCelebi: @put your intro here
+	.string "$"
 
 Route66_EventScript_HintSign::
 	msgbox Route66_Text_HintSign, MSGBOX_SIGN

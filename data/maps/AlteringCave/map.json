@@ -48,7 +48,7 @@
     "object_events": [
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_RYU_REGIGIGAS",
             "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
             "movement_range_x": 0,
             "movement_range_y": 0,

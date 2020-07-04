@@ -53,6 +53,7 @@
 #include "battle_tower.h"
 #include "load_save.h"
 #include "battle_setup.h"
+#include "infobox.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -95,6 +96,9 @@ static u8 * const sScriptStringVars[] =
     gStringVar1,
     gStringVar2,
     gStringVar3,
+    gRyuStringVar1,
+    gRyuStringVar2,
+    gRyuStringVar3,
 };
 
 bool8 ScrCmd_nop(struct ScriptContext *ctx)
@@ -2414,5 +2418,18 @@ bool8 ScrCmd_readgamestat(struct ScriptContext *ctx)
     u16 stat = (VarGet(ScriptReadHalfword(ctx)));
 
     gSpecialVar_Result = (GetGameStat(stat));
+    return FALSE;
+}
+
+bool8 ScrCmd_drawinfobox(struct ScriptContext *ctx)
+{
+    u8 number = ScriptReadByte(ctx);
+    PrintInfoBox(number);
+    return FALSE;
+};
+
+bool8 ScrCmd_removeinfobox(struct ScriptContext *ctx)
+{
+    RemoveInfoBox();
     return FALSE;
 }

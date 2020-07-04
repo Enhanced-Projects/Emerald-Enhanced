@@ -770,7 +770,7 @@
 #define TRAINER_PAT                         766
 #define TRAINER_CRISTIN_1                   767
 #define TRAINER_DAWN_2        768
-#define TRAINER_EMPTY_35        769
+#define TRAINER_OVERLORD_RYU_REMATCH        769
 #define TRAINER_ROXANNE_2                   770
 #define TRAINER_ROXANNE_3                   771
 #define TRAINER_ROXANNE_4                   772

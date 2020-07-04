@@ -10663,17 +10663,55 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Dawn2[] = {//Dawn14
 	}
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_DawnRustboroTorchic[] = {//Dawn15
-    {
-    .iv = 25,
-    .lvl = 13,
-    .species = SPECIES_BOUNSWEET,
-    },
-    {
-    .iv = 50,
-    .lvl = 15,
-    .species = SPECIES_MUDKIP,
-    }
+static const struct TrainerMonItemCustomMoves sParty_OverlordRyuRematch[] = {
+	{
+	.iv = 255,
+	.lvl = 125,
+	.species = SPECIES_SALAZZLE,
+	.heldItem = ITEM_CHOICE_SPECS,
+	.ability = 0,
+	.moves = {MOVE_FLAMETHROWER, MOVE_SHADOW_BALL, MOVE_SLUDGE_BOMB, MOVE_THUNDERBOLT},
+	},
+	{
+	.iv = 255,
+	.lvl = 125,
+	.species = SPECIES_ABSOL,
+	.heldItem = ITEM_SCOPE_LENS,
+	.ability = 2,
+	.moves = {MOVE_EXTREME_SPEED, MOVE_NIGHT_SLASH, MOVE_SLASH, MOVE_CLOSE_COMBAT},
+	},
+	{
+	.iv = 255,
+	.lvl = 125,
+	.species = SPECIES_TYRANTRUM,
+	.heldItem = ITEM_ASSAULT_VEST,
+	.ability = 2,
+	.moves = {MOVE_EARTHQUAKE, MOVE_HEAD_CHARGE, MOVE_DOUBLE_EDGE, MOVE_IRON_HEAD},
+	},
+	{
+	.iv = 255,
+	.lvl = 125,
+	.species = SPECIES_ARIADOS,
+	.heldItem = ITEM_SCOPE_LENS,
+	.ability = 2,
+	.moves = {MOVE_PIN_MISSILE, MOVE_SHADOW_SNEAK, MOVE_SUCKER_PUNCH, MOVE_POISON_FANG},
+	},
+	{
+	.iv = 255,
+	.lvl = 125,
+	.species = SPECIES_TOUCANNON,
+	.heldItem = ITEM_LIFE_ORB,
+	.ability = 1,
+	.moves = {MOVE_ICICLE_SPEAR, MOVE_ROCK_BLAST, MOVE_BULLET_SEED, MOVE_GUILLOTINE},
+	},
+	{
+	.iv = 255,
+	.lvl = 125,
+	.species = SPECIES_MAWILE,
+	.heldItem = ITEM_MAWILITE,
+	.ability = 0,
+	.moves = {MOVE_PLAY_ROUGH, MOVE_POWER_UP_PUNCH, MOVE_CRUNCH, MOVE_IRON_HEAD},
+	}
 };
 
 static const struct TrainerMonItemCustomMoves sParty_Roxanne2[] = {

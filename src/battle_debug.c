@@ -32,6 +32,7 @@
 #include "constants/moves.h"
 #include "constants/items.h"
 #include "constants/rgb.h"
+#include "event_data.h"
 
 #define MAX_MODIFY_DIGITS 4
 
@@ -564,7 +565,8 @@ static const bool8 sHasChangeableEntries[LIST_ITEM_COUNT] =
     [LIST_ITEM_STAT_STAGES] = TRUE,
 };
 
-static const u16 sBgColor[] = {RGB_WHITE};
+static const u16 sBgColorWhite[] = {RGB_WHITE};
+static const u16 sBgColorBlack[] = {RGB_RYU_DARK};
 
 // this file's functions
 static void Task_DebugMenuFadeOut(u8 taskId);
@@ -650,7 +652,14 @@ void CB2_BattleDebugMenu(void)
         gMain.state++;
         break;
     case 3:
-        LoadPalette(sBgColor, 0, 2);
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+        {
+            LoadPalette(sBgColorBlack, 0, 2);
+        }
+        else
+        {
+            LoadPalette(sBgColorWhite, 0, 2);
+        }
         LoadPalette(GetOverworldTextboxPalettePtr(), 0xf0, 16);
         gMain.state++;
         break;

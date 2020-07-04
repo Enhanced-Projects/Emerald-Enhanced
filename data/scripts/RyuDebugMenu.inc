@@ -175,29 +175,17 @@ RyuDebug_enableWaystone::
 
 RyuDebug_ViewTempVars::
 	special RyuCheckTempVars
-	msgbox RDB_CTVMsg
+	msgbox RDB_TempVarsViewMsg
 	releaseall
 	end
 
-RDB_CTVMsg:
-	.string "SaveBlock1 is {STR_VAR_1} bytes long.$"
+RDB_TempVarsViewMsg:
+	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-    setflag FLAG_RYU_MAX_SCALE
-    cleartrainerflag TRAINER_OVERLORD_RYU
-    trainerbattle_no_intro TRAINER_OVERLORD_RYU, Ryu_losefight
-    waitstate
-    clearflag FLAG_RYU_MAX_SCALE
-    release
-    end
-
-Ryu_losefight:
-	.string "$"
-
-Ryu_MiningMapInfo:
-	.string "Mining Locations$"
-
-	@goto RDB_GiveRandomFrontierMons
+	setflag FLAG_RYU_AQUA_BAD_END
+	release
+	end
 
 RDB_GiveRandomFrontierMons::
 	compare VAR_TEMP_5, 0
@@ -221,25 +209,6 @@ GiveRandomFrontiermonsEnd::
 
 RDB_GRFMD:
 	.string "Given 6 random frontier mons.$"
-
-FMCQuery:
-	.string "Increase chances of getting a\nfrontier brain?$"
-
-RDB_FrontierModeCheat::
-	clearflag FLAG_RYU_FORCE_TUCKER
-	msgbox FMCQuery, MSGBOX_YESNO
-	switch VAR_RESULT
-	case 0, ryu_return
-	case 1, RDB_FCEnable
-	return
-
-RDB_FCEnable::
-	msgbox FMCON
-	setflag FLAG_RYU_FORCE_TUCKER
-	return
-
-FMCON:
-	.string "Chances of getting a brain are/nnow significantly increased.$"
 
 RDB_u1_EnableRandomize::
 	setflag FLAG_RYU_RANDOMIZE_MUSIC
@@ -274,7 +243,7 @@ settimequery:
 	.string "Would you like to change the time?$"
 
 RDB_Readout_2:
-	.string "Time was changed to: {STR_VAR_1}{STR_VAR_2}:{STR_VAR_3}  $"
+	.string "Time was changed to: {STR_VAR_1}:{STR_VAR_2}:{STR_VAR_3}  $"
 
 RyuDebug_Init_GiveAllItems::
 	setvar VAR_TEMP_2, 482
@@ -438,9 +407,9 @@ RyuNewGameQuery:
 RyuPokeEditMenu::
 	multichoicedefault 1, 0, 122, 0, 0
 	switch VAR_RESULT
-	case 0, RyuViewEvDebugMenu@
-	case 1, RyuViewIvDebugMenu@
-	case 2, RyuViewOtherDebugMenu@
+	case 0, TC_EvIvCheckerScript@
+	case 1, ryu_end@
+	case 2, ryu_end@
 	case 3, RyuAccessDevMoveRelearner@
 	case 4, RyuSetEvDebugMenu@
 	case 5, RyuSetIvDebugMenu@
@@ -451,14 +420,6 @@ RyuPokeEditMenu::
 RyuExitPokeEditMenu::
 	release
 	end
-	
-RyuViewIvDebugMenu::
-	special RyuIvCheckerDef
-	msgbox RyuIvDebug1 MSGBOX_DEFAULT
-	special RyuIvCheckerOff
-	msgbox RyuIvDebug2 MSGBOX_DEFAULT
-	closemessage
-	goto RyuPokeEditMenu
 
 RyuAccessDevMoveRelearner::
 	msgbox RyuActivateRelearner MSGBOX_YESNO
@@ -481,25 +442,6 @@ RyuActivateRelearner:
 
 retutor:
 	.string "Relearn another move?$"
-	
-RyuViewEvDebugMenu::
-	special RyuEvCheckerDef
-	msgbox RyuEVDebug1 MSGBOX_DEFAULT
-	special RyuEvCheckerOff
-	msgbox RyuEVDebug2 MSGBOX_DEFAULT
-	closemessage
-	goto RyuPokeEditMenu
-	
-RyuViewOtherDebugMenu::
-	special RyuOtherDataChecker
-	msgbox RyuOtherMenuMsg MSGBOX_DEFAULT
-	closemessage
-	goto RyuPokeEditMenu
-	
-RyuOtherMenuMsg:
-	.string "Lead mon's Friendship Value is {STR_VAR_1}\p"
-	.string "Lead mon's Personality Value is {STR_VAR_2}\p"
-	.string "Lead mon's ribbon count is {STR_VAR_3}$"
 
 RyuSetEvDebugMenu::
 	msgbox RyuEvIntro MSGBOX_SIGN
@@ -648,22 +590,6 @@ RyuEvMenuSpe126::
 RyuEvMenuMsg:
 	.string "Would you like to modify EV's?"
 	
-RyuIvDebug1:
-	.string "Lead Pokemon Defensive IVS:\n"
-	.string "HP: {STR_VAR_1}    Def: {STR_VAR_2}     SpDef: {STR_VAR_3}$"
-	
-RyuIvDebug2:
-	.string "Lead Pokemon Offensive IVS:\n"
-	.string "Atk: {STR_VAR_1}    SpAtk: {STR_VAR_2}     Speed: {STR_VAR_3}$"
-
-RyuEVDebug1:
-	.string "Lead Pokemon Defensive EVS:\n"
-	.string "HP: {STR_VAR_1}    Def: {STR_VAR_2}     SpDef: {STR_VAR_3}$"
-	
-RyuEVDebug2:
-	.string "Lead Pokemon Offensive EVS:\n"
-	.string "Atk: {STR_VAR_1}    SpAtk: {STR_VAR_2}     Speed: {STR_VAR_3}$"
-	
 RyuSetFriendshipDebugMenu::
 	addmonhappiness 0, 255
 	msgbox RyuSetFriendshipMsg MSGBOX_DEFAULT
@@ -685,11 +611,10 @@ RyuSetExpMultMenu::
 	case 2, RyuSetExpMult2
 	case 3, RyuSetExpMult4
 	case 4, RyuSetExpMult8
-	case 5, RyuExitSetLevel
-	case 127, RyuExitSetLevel
+	case 5, RyuExitExpMult
+	goto RyuExitExpMult
 
 RyuSetExpMultMenu2::
-	playse SE_EXPMAX
 	waitse
 	specialvar VAR_RESULT, RyuCalculateCurrentExpCoefficient
 	buffernumberstring 0, VAR_RESULT
@@ -702,8 +627,15 @@ RyuSetExpMultMenu2::
 	case 2, RyuSetExpMult2
 	case 3, RyuSetExpMult4
 	case 4, RyuSetExpMult8
-	case 5, RyuExitSetLevel
-	case 127, RyuExitSetLevel
+	case 5, RyuExitExpMult
+	goto RyuExitExpMult
+
+RyuExitExpMult::
+	msgbox ExpMultNoChange
+	goto ryu_end
+
+ExpMultNoChange:
+	.string "Exp mult not changed.$"
 
 RyuCurrentExpMult:
 	.string "The coefficient is currently {STR_VAR_1}.\n"
@@ -714,7 +646,7 @@ RyuSetExpMult1::@@exp is vanilla
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
 	msgbox ExpMult1 MSGBOX_DEFAULT
 	closemessage
-	goto RyuPokeEditMenu
+	goto RyuDebugMenuScript
 	
 ExpMult1:
 	.string "EXP Multiplier is now default.\n"
@@ -725,7 +657,7 @@ RyuSetExpMultAuto::@@exp is increased by 12.5% per gym badge
 	setvar VAR_RYU_EXP_MULTIPLIER, 1
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
 	closemessage
-	goto RyuPokeEditMenu
+	goto RyuDebugMenuScript
 	
 ExpMultAuto:
 	.string "EXP Multiplier is now Auto.\n"
@@ -736,7 +668,7 @@ RyuSetExpMult2::@@exp is multiplied by 2
 	setvar VAR_RYU_PRICE_MULTIPLIER, 750
 	msgbox ExpMult2 MSGBOX_DEFAULT
 	closemessage
-	goto RyuPokeEditMenu
+	goto RyuDebugMenuScript
 	
 ExpMult2:
 	.string "EXP Multiplier is now 2.0x.$"
@@ -746,7 +678,7 @@ RyuSetExpMult4::@@exp is multiplied by 4
 	setvar VAR_RYU_PRICE_MULTIPLIER, 500
 	msgbox ExpMult4 MSGBOX_DEFAULT
 	closemessage
-	goto RyuPokeEditMenu
+	goto RyuDebugMenuScript
 	
 ExpMult4:
 	.string "EXP Multiplier is now 4.0x.$"
@@ -756,7 +688,7 @@ RyuSetExpMult8::@@exp is multiplied by 8
 	setvar VAR_RYU_PRICE_MULTIPLIER, 250
 	msgbox ExpMult8 MSGBOX_DEFAULT
 	closemessage
-	goto RyuPokeEditMenu
+	goto RyuDebugMenuScript
 	
 ExpMult8:
 	.string "EXP Multiplier is now 8.0x.$"
@@ -766,55 +698,6 @@ RyuDebug_PasscodeMenu::
 	waitse
 	setvar VAR_TEMP_0, 0
 	goto MC_GC_MENU
-	
-RyuSetLevel10::
-	setvar VAR_TEMP_9, 10
-	goto RyuPokeEditMenu
-	
-RyuSetLevel20::
-	setvar VAR_TEMP_9, 20
-	goto RyuPokeEditMenu
-	
-RyuSetLevel30::
-	setvar VAR_TEMP_9, 30
-	goto RyuPokeEditMenu
-	
-RyuSetLevel40::
-	setvar VAR_TEMP_9, 40
-	goto RyuPokeEditMenu
-	
-RyuSetLevel50::
-	setvar VAR_TEMP_9, 50
-	goto RyuPokeEditMenu
-	
-RyuSetLevel60::
-	setvar VAR_TEMP_9, 60
-	goto RyuPokeEditMenu
-	
-RyuSetLevel70::
-	setvar VAR_TEMP_9, 70
-	goto RyuPokeEditMenu
-	
-RyuSetLevel80::
-	setvar VAR_TEMP_9, 80
-	goto RyuPokeEditMenu
-	
-RyuSetLevel90::
-	setvar VAR_TEMP_9, 90
-	goto RyuPokeEditMenu
-	
-RyuSetLevel100::
-	setvar VAR_RYU_PRICE_MULTIPLIER, 200
-	release
-	end
-
-RyuExitSetLevel::
-	setvar VAR_TEMP_9, 10
-	goto RyuPokeEditMenu
-
-RyuSetLevelBlankOption::
-	setvar VAR_TEMP_9, 0
-	goto RyuDebug_PasscodeMenu
 	
 RyuSetIvDebugMenu::
 	special RyuIvSetter

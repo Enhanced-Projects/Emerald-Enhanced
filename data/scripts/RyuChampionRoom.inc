@@ -3,7 +3,7 @@
 
 
 RyuThroneRoomCheckFollower::
-	map_script_2 VAR_TEMP_D, 0, RyuResetFollowerPosition
+	@map_script_2 VAR_TEMP_D, 0, RyuResetFollowerPosition
 	.2byte 0
 
 @Alternate champion room 
@@ -22,10 +22,15 @@ RyuChampionThrone::
 	end
 
 RCR_FollowerIntroSetup::
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
+	waitmovement OBJ_EVENT_ID_FOLLOWER
 	switch VAR_RYU_FOLLOWER_ID
 	case OBJ_EVENT_GFX_TWIN, RCR_FollowerMinnieIntro
 	case OBJ_EVENT_GFX_AQUA_MEMBER_F, RCR_FollowerShellyIntro
 	case OBJ_EVENT_GFX_WOMAN_2, RCR_FollowerLanetteIntro
+	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RCR_FollowerDawnIntro
+	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, RCR_FollowerBrendanIntro
+	case OBJ_EVENT_GFX_LEAF, RCR_FollowerLeafIntro
 	return
 
 
@@ -45,8 +50,9 @@ RyuChampionThroneStart::
 RCR_SoloChamp::
 	closemessage
 	specialvar VAR_RESULT, checkForOverlordRyuEncounter
-	compare VAR_RESULT, 1
-	goto_if_eq RCR_OverlordRyuBossFight
+	switch VAR_RESULT
+	case 1, RCR_OverlordRyuBossFight
+	case 2, RCR_OverlordRyuRematch
 	call RCR_ChooseOpponent
 	playse SE_DOOR
 	addobject VAR_TEMP_5
@@ -80,7 +86,31 @@ RCR_OverlordRyuBossFight::
 	setflag FLAG_RYU_MAX_SCALE
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	trainerbattle_no_intro TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EGC_RYU_PLAYER_LOST
+	clearflag FLAG_RYU_MAX_SCALE
+	call_if_unset FLAG_RYU_DEFEATED_OVERLORD, MawileMegaReward
+	goto RCR_OverlordRyuEndMatch
+
+RCR_OverlordRyuRematch::
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	playbgm MUS_REKKUU_KOURIN, 1
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_CAMERA
+	addobject 15
+	applymovement 15, RCR_ChallengerApproach
+	waitmovement 15
+	msgbox RCR_RYU_Intro
+	closemessage
+	setflag FLAG_TEMP_3
+	setflag FLAG_RYU_MAX_SCALE
+	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
+	trainerbattle_no_intro TRAINER_OVERLORD_RYU_REMATCH, RCR_RYU_DefeatText
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	clearflag FLAG_RYU_MAX_SCALE
@@ -247,7 +277,7 @@ RCR_ChallengerSteven::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -272,7 +302,7 @@ RCR_ChallengerNorman::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -287,7 +317,7 @@ RCR_ChallengerJohnatan::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -302,7 +332,7 @@ RCR_ChallengerRobert::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -317,7 +347,7 @@ RCR_ChallengerLance::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -332,7 +362,7 @@ RCR_ChallengerZod::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -347,7 +377,7 @@ RCR_ChallengerGiovanni::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -362,7 +392,7 @@ RCR_ChallengerSigma::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -377,7 +407,7 @@ RCR_ChallengerJuan::
 	special DoSpecialTrainerBattle
 	waitstate
 	special LoadPlayerParty
-	special GetBattleOutcome
+	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, 2
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
@@ -458,7 +488,6 @@ RCR_ChallengerJuanSolo::
 RCR_BOSSMODE::
 	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
 	waitmovement OBJ_EVENT_ID_CAMERA
-	
 	goto RCR_FinishChallenge
 
 MawileMegaReward::
@@ -478,6 +507,10 @@ RCR_FinishChallenge::
 	closemessage
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, 2
+	goto_if_eq EventScript_WhiteOut
+	call Ryu_CheckForPartnerReward
 	applymovement OBJ_EVENT_ID_PLAYER, RCR_ToHOF
 	applymovement OBJ_EVENT_ID_FOLLOWER, RCR_ToHOF
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -586,23 +619,32 @@ RCR_ChallengerApproach:
 	step_end
 
 RCR_FollowerMinnieIntro::
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
-	waitmovement OBJ_EVENT_ID_FOLLOWER
 	msgbox FMinnieMsg
 	closemessage
 	return
 
 RCR_FollowerShellyIntro::
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
-	waitmovement OBJ_EVENT_ID_FOLLOWER
 	msgbox FShellyMsg
 	closemessage
 	return
 
 RCR_FollowerLanetteIntro::
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
-	waitmovement OBJ_EVENT_ID_FOLLOWER
 	msgbox FLanetteMsg
+	closemessage
+	return
+
+RCR_FollowerDawnIntro::
+	msgbox FDawnMsg
+	closemessage
+	return
+
+RCR_FollowerBrendanIntro::
+	msgbox FBrendanMsg
+	closemessage
+	return
+
+RCR_FollowerLeafIntro::
+	msgbox FLeafMsg
 	closemessage
 	return
 
@@ -769,3 +811,24 @@ FLanetteMsg:
     .string "but I'll follow you to the nine\p"
     .string "hells if you ask me to. I'll do\n"
     .string "what I can!$"
+
+FDawnMsg:
+    .string "Dawn: It's been a long walk, but I'm\n"
+    .string "glad that I can be here with you.\p"
+    .string "It's so surreal, being here in the\n"
+    .string "Hoenn Champion room...\p"
+    .string "Well... LET'S GO!!$"
+
+FBrendanMsg:
+    .string "Brendan: Not gonna lie, I expected\n"
+    .string "to get here before you, maybe after\p"
+    .string "you, but I never thought we'd be\n"
+    .string "doing this together. Here we go!$"
+
+FLeafMsg:
+    .string "Lana: Oh, Wow, this room is HUGE!\n"
+    .string "The Kanto one doesn't even compare.\p"
+    .string "Well, I've already beaten the Kanto\n"
+    .string "Champion, time to add Hoennn to my\l"
+    .string "repertoire!$"
+

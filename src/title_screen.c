@@ -523,8 +523,6 @@ static const u8 sMawileTileSet[] = INCBIN_U8("graphics/title_screen/mawiletilese
 static const u8 sMawilePalette[] = INCBIN_U8("graphics/title_screen/mawiletileset.gbapal");
 static const u8 sMawileTileMap[] = INCBIN_U8("graphics/title_screen/mawiletileset.bin");
 
-#include "mgba.h"
-
 void CB2_InitTitleScreen(void)
 {
     u32 palindex;

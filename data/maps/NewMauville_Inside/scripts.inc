@@ -387,31 +387,27 @@ NM_Warp2::
 @==================================================================================================End Lana Events
 
 NewMauville_Zapdos::
-	goto_if_set FLAG_RYU_ZAPDOS, RyuLegendary_Stoneisdull
-	msgbox NewMauville_Zapdos_TouchQuery, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_ne RyuLegendary_LeftStoneAlone
-	msgbox NewMauville_Zapdos_TouchedStone
-	playmoncry SPECIES_ZAPDOS, 0
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	closemessage
-	waitmoncry
-	setwildbattle SPECIES_ZAPDOS, VAR_RESULT, ITEM_SHARP_BEAK
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	call RyuLegendary_CheckCaught
+	goto_if_set FLAG_RYU_ZAPDOS, ryu_end
+	msgbox OverworldLegendary_IntroZapdos
+	setvar VAR_TEMP_5, SPECIES_ZAPDOS
+	setvar VAR_TEMP_9, ITEM_SHARP_BEAK
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_RAN, NewMauville_ZapdosGotAway
+	case B_OUTCOME_LOST, NewMauville_ZapdosGotAway
+	case B_OUTCOME_MON_FLED, NewMauville_ZapdosGotAway
+	case B_OUTCOME_PLAYER_TELEPORTED, NewMauville_ZapdosGotAway
 	setflag FLAG_RYU_ZAPDOS
+	removeobject 9 @Put the porymap object ID here
 	release
 	end
 
-NewMauville_Zapdos_TouchedStone:
-	.string "{PLAYER} touched the stone.\p"
-	.string "{COLOR RED}OUCH! {COLOR DARK_GREY}{PLAYER} got shocked!$"
+NewMauville_ZapdosGotAway::
+	setflag FLAG_RYU_ZAPDOS_RAN
+	removeobject 9 @Put the porymap object ID here
+	release
+	end
 
-NewMauville_Zapdos_TouchQuery:
-	.string "This stone looks funny, as if\n"
-	.string "it was charged up!\p"
-	.string "Touch the stone?$"
+OverworldLegendary_IntroZapdos: @put your intro here
+	.string "$"
+

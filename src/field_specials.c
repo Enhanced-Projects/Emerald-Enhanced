@@ -78,7 +78,6 @@
 #include "money.h"
 #include "menu_helpers.h"
 #include "data/lifeskill.h"
-#include "mgba.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -4858,57 +4857,56 @@ int CountBadges(void)
     return count;
 }
 
-void RyuIvCheckerDef(void)
+extern const u8 gText_EmptyString2[]; 
+
+void RyuClearStringVars(void)
 {
-    u8 HpIv = 0;
-    u8 DefIv = 0;
-    u8 SpDefIv = 0;
+    StringCopy(gStringVar1, gText_EmptyString2);
+    StringCopy(gStringVar2, gText_EmptyString2);
+    StringCopy(gStringVar3, gText_EmptyString2);
+    StringCopy(gRyuStringVar1, gText_EmptyString2);
+    StringCopy(gRyuStringVar2, gText_EmptyString2);
+    StringCopy(gRyuStringVar2, gText_EmptyString2);
+}
+
+void RyuIvChecker(void)
+{
+    u8 HpIv, AtkIv, DefIv, SpAtkIv, SpDefIv, SpdIv;
+
+    RyuClearStringVars();
     HpIv = GetMonData(&gPlayerParty[0], MON_DATA_HP_IV);
     DefIv = GetMonData(&gPlayerParty[0], MON_DATA_DEF_IV);
     SpDefIv = GetMonData(&gPlayerParty[0], MON_DATA_SPDEF_IV);
-    ConvertIntToDecimalStringN(gStringVar1, HpIv, STR_CONV_MODE_LEADING_ZEROS, 2);
-    ConvertIntToDecimalStringN(gStringVar2, DefIv, STR_CONV_MODE_LEADING_ZEROS, 2);
-    ConvertIntToDecimalStringN(gStringVar3, SpDefIv, STR_CONV_MODE_LEADING_ZEROS, 2);
-}
-
-void RyuIvCheckerOff(void)
-{
-    u8 AtkIv = 0;
-    u8 SpAtkIv = 0;
-    u8 SpeIv = 0;
     AtkIv = GetMonData(&gPlayerParty[0], MON_DATA_ATK_IV);
     SpAtkIv = GetMonData(&gPlayerParty[0], MON_DATA_SPATK_IV);
-    SpeIv = GetMonData(&gPlayerParty[0], MON_DATA_SPEED_IV);
-    ConvertIntToDecimalStringN(gStringVar1, AtkIv, STR_CONV_MODE_LEADING_ZEROS, 2);
-    ConvertIntToDecimalStringN(gStringVar2, SpAtkIv, STR_CONV_MODE_LEADING_ZEROS, 2);
-    ConvertIntToDecimalStringN(gStringVar3, SpeIv, STR_CONV_MODE_LEADING_ZEROS, 2);
+    SpdIv = GetMonData(&gPlayerParty[0], MON_DATA_SPEED_IV);
+    ConvertIntToDecimalStringN(gStringVar1, HpIv, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, AtkIv, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, DefIv, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, SpAtkIv, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar2, SpDefIv, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar3, SpdIv, STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
-void RyuEvCheckerDef(void)
+void RyuEvChecker(void)
 {
-    u8 HpEv = 0;
-    u8 DefEv = 0;
-    u8 SpDefEv = 0;
+    u8 HpEv, AtkEv, DefEv, SpAtkEv, SpDefEv, SpdEv;
+
+    RyuClearStringVars();
     HpEv = GetMonData(&gPlayerParty[0], MON_DATA_HP_EV);
     DefEv = GetMonData(&gPlayerParty[0], MON_DATA_DEF_EV);
     SpDefEv = GetMonData(&gPlayerParty[0], MON_DATA_SPDEF_EV);
-    ConvertIntToDecimalStringN(gStringVar1, HpEv, STR_CONV_MODE_LEADING_ZEROS, 3);
-    ConvertIntToDecimalStringN(gStringVar2, DefEv, STR_CONV_MODE_LEADING_ZEROS, 3);
-    ConvertIntToDecimalStringN(gStringVar3, SpDefEv, STR_CONV_MODE_LEADING_ZEROS, 3);
-}
-
-void RyuEvCheckerOff(void)
-{
-    u8 AtkEv = 0;
-    u8 SpAtkEv = 0;
-    u8 SpeEv = 0;
     AtkEv = GetMonData(&gPlayerParty[0], MON_DATA_ATK_EV);
     SpAtkEv = GetMonData(&gPlayerParty[0], MON_DATA_SPATK_EV);
-    SpeEv = GetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV);
-    ConvertIntToDecimalStringN(gStringVar1, AtkEv, STR_CONV_MODE_LEADING_ZEROS, 3);
-    ConvertIntToDecimalStringN(gStringVar2, SpAtkEv, STR_CONV_MODE_LEADING_ZEROS, 3);
-    ConvertIntToDecimalStringN(gStringVar3, SpeEv, STR_CONV_MODE_LEADING_ZEROS, 3);
+    SpdEv = GetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV);
+    ConvertIntToDecimalStringN(gStringVar1, HpEv, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar1, AtkEv, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, DefEv, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, SpAtkEv, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar2, SpDefEv, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar3, SpdEv, STR_CONV_MODE_LEFT_ALIGN, 3);
 }
+
 
 void RyuIvSetter(void)
 {
@@ -4920,12 +4918,6 @@ void RyuIvSetter(void)
     SetMonData(&gPlayerParty[0], MON_DATA_SPATK_IV, &iv);
     SetMonData(&gPlayerParty[0], MON_DATA_SPDEF_IV, &iv);
     SetMonData(&gPlayerParty[0], MON_DATA_SPEED_IV, &iv);
-}
-
-void RyuLevelSetter(void)
-{
-    u8 level = VarGet(VAR_TEMP_9);
-    SetMonData(&gPlayerParty[0], MON_DATA_LEVEL, &level);
 }
 
 void RyuSetFriendship(void)
@@ -5107,132 +5099,6 @@ void RyuSetIVs(void)
     CalculateMonStats(&gPlayerParty[1]);
     CalculateMonStats(&gPlayerParty[0]);
 }
-
-void RyuResetDevonFlags(void)
-    {
-        FlagClear(FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE);
-        FlagClear(FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT);
-        VarSet(VAR_PETALBURG_WOODS_STATE, 0);
-        FlagClear(FLAG_RYU_AQUA_THIEF_SEEN);
-        FlagSet(FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE);
-        FlagClear(FLAG_RYU_PLAYER_HELPING_DEVON);
-        FlagSet(FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO);
-        FlagClear(FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE);
-        FlagClear(FLAG_RYU_DEVON_MISSION2START);
-        FlagClear(FLAG_RYU_DEVON_M1C);
-        FlagClear(FLAG_RYU_DG_REWARD_RECEIVED);
-        FlagClear(FLAG_DELIVERED_DEVON_GOODS);
-        FlagClear(FLAG_DELIVERED_STEVEN_LETTER);
-        FlagClear(FLAG_RYU_DEVON_MISSION1START);
-        FlagClear(FLAG_RYU_PLAYER_HELPING_AQUA);
-		FlagClear(FLAG_RYU_DEVON_MISSION6START);
-		FlagClear(FLAG_RYU_DEVON_MISSION5COMPLETE);
-		FlagClear(FLAG_RYU_DEVON_MISSION5START);
-		FlagClear(FLAG_RYU_DEVON_MISSION_3_DONE);
-		FlagClear(FLAG_RYU_DEVON_MISSION3START);
-		FlagClear(FLAG_RYU_DEVON_MISSION4COMPLETE);
-		FlagClear(FLAG_RYU_DEVON_CORPORATE);
-		FlagClear(FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE);
-		FlagClear(FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE);
-		RemoveBagItem(ITEM_FAME_CHECKER, 1);
-		RemoveBagItem(ITEM_METEORITE, 1);
-		RemoveBagItem(ITEM_EXP_DRIVE, 1);
-    }
-void RyuResetAquaFlags(void)
-    {
-        FlagSet(FLAG_RYU_PLAYER_HELPING_AQUA);
-        FlagClear(FLAG_RYU_STARTING_M3);
-        FlagClear(FLAG_RYU_STARTING_M4);
-        FlagClear(FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS);
-        FlagClear(FLAG_RYU_AQUA_LINE_DONE);
-        FlagClear(FLAG_RYU_MISSION4COMPLETE);
-        FlagClear(FLAG_RYU_AQUA_MISSION2COMPLETE);
-        FlagClear(FLAG_RYU_DS_SHELLY_ACQ);
-        FlagClear(FLAG_RYU_DS_SHELLY_FRIENDS);
-        FlagClear(FLAG_RYU_DS_SHELLY_CLOSEFRIENDS);
-        FlagClear(FLAG_RYU_DS_SHELLY_LOVERS);
-        FlagClear(FLAG_RYU_DS_SHELLY_PARTNERS);
-        FlagClear(FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS);
-        FlagClear(FLAG_RYU_AQUA_MISSION2REWARDED);
-        FlagClear(FLAG_RYU_AQUA_MISSION1REWARDED);
-        FlagClear(FLAG_RYU_MISSION4COMPLETE);
-        FlagSet(FLAG_HIDE_METEOR_FALLS_TEAM_AQUA);
-        FlagClear(FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA);
-        FlagClear(FLAG_RYU_PLAYER_AQUA_NECKLACE);
-        FlagClear(FLAG_RYU_PLAYER_AQUA_STONE);
-        FlagClear(FLAG_RYU_PLAYER_AQUA_ADMIN);
-        FlagClear(FLAG_RYU_ARCHIE_SUCCESSFUL);
-        FlagSet(FLAG_RYU_KYOGRE);
-        FlagClear(FLAG_HIDE_AQUA_HIDEOUT_GRUNTS);
-        FlagClear(FLAG_RYU_DS_SHELLY_SCENE);
-        FlagClear(FLAG_RYU_AFTERSHELLYSTORY);
-
-        if (!FLAG_RYU_DS_DAWN_PARTNERS == 1 || !FLAG_RYU_DS_LEAF_PARTNERS == 1 || !FLAG_RYU_DS_BRENDAN_PARTNERS == 1 || !FLAG_RYU_DS_LANETTE_PARTNERS == 1)
-            {
-                FlagClear(FLAG_RYU_DS_HAS_PARTNER);
-            }
-    }
-
-void RyuResetRivalFlags(void)
-    {   
-        FlagClear(FLAG_HIDE_RUSTBORO_CITY_RIVAL);
-        FlagClear(FLAG_HIDE_LILYCOVE_CITY_RIVAL);
-        FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL);
-        FlagSet(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
-        FlagSet(FLAG_HIDE_DAWNS_HOUSE_DAWN);
-        FlagClear(FLAG_RYU_DS_DAWN_ACQ);
-        FlagClear(FLAG_RYU_DS_DAWN_FRIENDS);
-        FlagClear(FLAG_RYU_DS_DAWN_CLOSEFRIENDS);
-        FlagClear(FLAG_RYU_DS_DAWN_LOVERS);
-        FlagClear(FLAG_RYU_DS_DAWN_PARTNERS);
-        FlagClear(FLAG_RYU_DS_BRENDAN_ACQ);
-        FlagClear(FLAG_RYU_DS_BRENDAN_FRIENDS);
-        FlagClear(FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS);
-        FlagClear(FLAG_RYU_DS_BRENDAN_LOVERS);
-        FlagClear(FLAG_RYU_DS_BRENDAN_PARTNERS);
-        
-        if (!FLAG_RYU_DS_SHELLY_PARTNERS == 1 && !FLAG_RYU_DS_LEAF_PARTNERS == 1 || !FLAG_RYU_DS_LANETTE_PARTNERS == 1)
-            {
-                FlagClear(FLAG_RYU_DS_HAS_PARTNER);
-            }
-    }
-
-void RyuResetLeafFlags(void)
-    {
-        
-        FlagClear(FLAG_LEAF_PC);
-        FlagClear(FLAG_RYU_DS_LEAF_ACQ);
-        FlagClear(FLAG_RYU_DS_LEAF_FRIENDS);
-        FlagClear(FLAG_RYU_DS_LEAF_CLOSEFRIENDS);
-        FlagClear(FLAG_RYU_DS_LEAF_LOVERS);
-        FlagClear(FLAG_RYU_DS_LEAF_PARTNERS);
-        FlagClear(FLAG_LANA_EVENT3_DONE);
-        FlagClear(FLAG_RYU_HIDE_R120_LANA_AND_HIKER);
-        FlagClear(FLAG_RYU_LEAF_ALTERNATE_LINE);
-        FlagClear(FLAG_RYU_LEAF_MTPYRE);
-        FlagClear(FLAG_RYU_DAYCARE_LEAFEVENTPC);
-        FlagClear(FLAG_RYU_LANA_ALTEVENT3);
-        FlagClear(FLAG_RYU_HIDE_LCC_DEPT_ROOF_NPC);
-        FlagClear(FLAG_RYU_LEAF_LCC_EVENT_DONE);
-        FlagClear(FLAG_LH_EVENT);
-        FlagClear(FLAG_RYU_DEFEATED_SS);
-        FlagClear(FLAG_HIDE_LANETTES_HOUSE_LANETTE);
-        FlagSet(FLAG_HIDE_FALLORBOR_POKEMON_CENTER_LANETTE);
-        FlagClear(FLAG_RYU_LANA_ALTEVENT2);
-        FlagClear(FLAG_RYU_LEAF_MTPYRE);
-        FlagClear(FLAG_RYU_DAYCARE_LEAFEVENTPC);
-        FlagClear(FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO);
-        FlagClear(FLAG_RYU_DS_LEAF_LINE_CANCELLED);
-        FlagClear(FLAG_LEAF_EVENT_0);
-        FlagSet(FLAG_RYU_HIDE_REL_OBJECTS);
-        FlagSet(FLAG_HIDE_CHAMPIONS_ROOM_RIVAL);
-        FlagSet(FLAG_HIDE_CHAMPIONS_ROOM_STEVEN);
-
-        if (!FLAG_RYU_DS_DAWN_PARTNERS == 1 && !FLAG_RYU_DS_BRENDAN_PARTNERS == 1 && !FLAG_RYU_DS_DAWN_PARTNERS || !FLAG_RYU_DS_LANETTE_PARTNERS == 1)
-            {
-                FlagClear(FLAG_RYU_DS_HAS_PARTNER);
-            }
-    }
 
 bool8 IsWailordInParty(void)
     {
@@ -5467,48 +5333,6 @@ bool8 RyuCheckContestMastery(void)
     }
 }
 
-#define DRAW 1
-#define LOSS 2
-#define WIN 3
-
-//Dice game
-u8 GetRollOutcome (u8 roll)
-{
-    if (roll == 7 || roll == 11)
-        return WIN;
-    if (roll == 2 || roll == 3 || roll == 12)
-        return LOSS;
-    return DRAW;
-}
-
-u8 RyuRollDice(void)
-{
-    u8 p1d1 = ((Random() % 5) + 1);
-    u8 p1d2 = ((Random() % 5) + 1);
-    u8 p2d1 = ((Random() % 5) + 1);
-    u8 p2d2 = ((Random() % 5) + 1);
-    u8 playerRoll = GetRollOutcome(p1d1 + p1d2);
-    u8 aiRoll = GetRollOutcome(p2d1 + p2d2);
-    VarSet(VAR_TEMP_1, p1d1);
-    VarSet(VAR_TEMP_2, p1d2);
-    VarSet(VAR_TEMP_3, p2d1);
-    VarSet(VAR_TEMP_4, p2d2);
-
-    if (playerRoll == aiRoll)
-        return DRAW;
-
-    if (playerRoll == DRAW)
-        {
-            if (aiRoll == WIN)
-                return LOSS;
-            if (aiRoll == LOSS)
-                return WIN;
-        }
-
-return playerRoll;
-}
-
-
 int RyuNumberOfFullBoxes(void)
 {
     u8 i;
@@ -5595,21 +5419,21 @@ bool8 checkForOverlordRyuEncounter(void)
 {
     if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10 && (FlagGet(FLAG_RYU_DEFEATED_OVERLORD) == 1))
     {
-        if ((Random() % 100) <= 5)
+        if ((Random() % 100) <= 25)
         {
-            return TRUE;
+            return 2;
         }
     }
     else if (VarGet(VAR_RYU_TITLE_DEFENSE_WINS) >= 10)
     {
         if ((Random() % 100) <= 10)
         {
-            return TRUE;
+            return 1;
         }
     }
     else
     {
-        return FALSE;
+        return 0;
     }
         
 }
@@ -5663,520 +5487,7 @@ int RyuMeloettaFormSwitcher(void)
 
 
 
-//Cutscene image defines
 
-
-static const u32 dawnSceneGfx[] = INCBIN_U32("graphics/cutscene/dawnHeadshot.4bpp");
-static const u16 dawnScenePal[] = INCBIN_U16("graphics/cutscene/dawnHeadshotPalette.gbapal");
-static const u32 leafSceneGfx[] = INCBIN_U32("graphics/cutscene/leafHeadshot.4bpp");
-static const u16 leafScenePal[] = INCBIN_U16("graphics/cutscene/leafHeadshotPalette.gbapal");
-static const u32 garySceneGfx[] = INCBIN_U32("graphics/cutscene/garyHeadshot.4bpp");
-static const u16 garyScenePal[] = INCBIN_U16("graphics/cutscene/garyHeadshotPalette.gbapal");
-static const u32 brendanSceneGfx[] = INCBIN_U32("graphics/cutscene/brendanHeadshot.4bpp");
-static const u16 brendanScenePal[] = INCBIN_U16("graphics/cutscene/brendanHeadshotPalette.gbapal");
-static const u16 diceGamePal[] = INCBIN_U16("graphics/cutscene/diceOne.gbapal");
-static const u32 diceOneGfx[] = INCBIN_U32("graphics/cutscene/diceOne.4bpp");
-static const u32 diceTwoGfx[] = INCBIN_U32("graphics/cutscene/diceTwo.4bpp");
-static const u32 diceThreeGfx[] = INCBIN_U32("graphics/cutscene/diceThree.4bpp");
-static const u32 diceFourGfx[] = INCBIN_U32("graphics/cutscene/diceFour.4bpp");
-static const u32 diceFiveGfx[] = INCBIN_U32("graphics/cutscene/diceFive.4bpp");
-static const u32 diceSixGfx[] = INCBIN_U32("graphics/cutscene/diceSix.4bpp");
-static const u32 lanetteSceneGfx[] = INCBIN_U32("graphics/cutscene/lanetteHeadshot.4bpp");
-static const u16 lanetteScenePal[] = INCBIN_U16("graphics/cutscene/lanetteHeadshotPalette.gbapal");
-
-//Dice
-//one
-const struct SpriteSheet diceGameOneSheet =
-{
-    .data = diceOneGfx,
-    .size = sizeof(diceOneGfx),
-    .tag = 1203
-};
-
-const struct SpritePalette diceOnePalette =
-{
-    .data = diceGamePal, 
-	.tag = 1203
-};
-
-static const struct OamData diceOneOamData =
-{
-    .y = 0,
-    .shape = SPRITE_SHAPE(64x64),
-    .size = SPRITE_SIZE(64x64),
-    .priority = 0
-};
-
-const struct SpriteTemplate diceOneSpriteTemplate =
-{
-    .tileTag = 1203,
-    .paletteTag = 1203,
-    .oam = &diceOneOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-//two
-const struct SpriteSheet diceGameTwoSheet =
-{
-    .data = diceTwoGfx,
-    .size = sizeof(diceTwoGfx),
-    .tag = 1303
-};
-
-const struct SpritePalette diceTwoPalette =
-{
-    .data = diceGamePal, 
-	.tag = 1303
-};
-
-static const struct OamData diceTwoOamData =
-{
-    .y = 0,
-    .shape = SPRITE_SHAPE(64x64),
-    .size = SPRITE_SIZE(64x64),
-    .priority = 0
-};
-
-const struct SpriteTemplate diceTwoSpriteTemplate =
-{
-    .tileTag = 1303,
-    .paletteTag = 1303,
-    .oam = &diceTwoOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-//three
-const struct SpriteSheet diceGameThreeSheet =
-{
-    .data = diceThreeGfx,
-    .size = sizeof(diceThreeGfx),
-    .tag = 1403
-};
-
-const struct SpritePalette diceThreePalette =
-{
-    .data = diceGamePal, 
-	.tag = 1403
-};
-
-static const struct OamData diceThreeOamData =
-{
-    .y = 0,
-    .shape = SPRITE_SHAPE(64x64),
-    .size = SPRITE_SIZE(64x64),
-    .priority = 0
-};
-
-const struct SpriteTemplate diceThreeSpriteTemplate =
-{
-    .tileTag = 1403,
-    .paletteTag = 1403,
-    .oam = &diceThreeOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-//four
-const struct SpriteSheet diceGameFourSheet =
-{
-    .data = diceFourGfx,
-    .size = sizeof(diceFourGfx),
-    .tag = 1503
-};
-
-const struct SpritePalette diceFourPalette =
-{
-    .data = diceGamePal, 
-	.tag = 1503
-};
-
-static const struct OamData diceFourOamData =
-{
-    .y = 0,
-    .shape = SPRITE_SHAPE(64x64),
-    .size = SPRITE_SIZE(64x64),
-    .priority = 0
-};
-
-const struct SpriteTemplate diceFourSpriteTemplate =
-{
-    .tileTag = 1503,
-    .paletteTag = 1503,
-    .oam = &diceFourOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-//five
-const struct SpriteSheet diceGameFiveSheet =
-{
-    .data = diceFiveGfx,
-    .size = sizeof(diceFiveGfx),
-    .tag = 1603
-};
-
-const struct SpritePalette diceFivePalette =
-{
-    .data = diceGamePal, 
-	.tag = 1603
-};
-
-static const struct OamData diceFiveOamData =
-{
-    .y = 0,
-    .shape = SPRITE_SHAPE(64x64),
-    .size = SPRITE_SIZE(64x64),
-    .priority = 0
-};
-
-const struct SpriteTemplate diceFiveSpriteTemplate =
-{
-    .tileTag = 1603,
-    .paletteTag = 1603,
-    .oam = &diceFiveOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-//six
-const struct SpriteSheet diceGameSixSheet =
-{
-    .data = diceSixGfx,
-    .size = sizeof(diceSixGfx),
-    .tag = 1703
-};
-
-const struct SpritePalette diceSixPalette =
-{
-    .data = diceGamePal, 
-	.tag = 1703
-};
-
-static const struct OamData diceSixOamData =
-{
-    .y = 0,
-    .shape = SPRITE_SHAPE(64x64),
-    .size = SPRITE_SIZE(64x64),
-    .priority = 0
-};
-
-const struct SpriteTemplate diceSixSpriteTemplate =
-{
-    .tileTag = 1703,
-    .paletteTag = 1703,
-    .oam = &diceSixOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-
-//Dawn
-
-const struct SpriteSheet dawnHeadshotSpriteSheet =
-{
-    .data = dawnSceneGfx,
-    .size = sizeof(dawnSceneGfx),
-    .tag = 1201
-};
-
-const struct SpritePalette dawnScenePalette =
-{
-    .data = dawnScenePal, 
-	.tag = 1201
-};
-
-static const struct OamData dawnSceneOamData =
-{
-    .y = 0,
-    .shape = SPRITE_SHAPE(64x64),
-    .size = SPRITE_SIZE(64x64),
-    .priority = 0
-};
-
-const struct SpriteTemplate dawnSceneSpriteTemplate =
-{
-    .tileTag = 1201,
-    .paletteTag = 1201,
-    .oam = &dawnSceneOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-
-//Leaf
-const struct SpriteSheet leafHeadshotSpriteSheet =
-{
-    .data = leafSceneGfx,
-    .size = sizeof(leafSceneGfx),
-    .tag = 1302
-};
-
-const struct SpritePalette leafScenePalette =
-{
-    .data = leafScenePal, 
-	.tag = 1302
-};
-
-static const struct OamData leafSceneOamData =
-{
-    .y = 0,
-    .shape = SPRITE_SHAPE(64x64),
-    .size = SPRITE_SIZE(64x64),
-    .priority = 0
-};
-
-const struct SpriteTemplate leafSceneSpriteTemplate =
-{
-    .tileTag = 1302,
-    .paletteTag = 1302,
-    .oam = &leafSceneOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-
-//Gary
-
-const struct SpriteSheet garyHeadshotSpriteSheet =
-{
-    .data = garySceneGfx,
-    .size = sizeof(garySceneGfx),
-    .tag = 1403
-};
-
-const struct SpritePalette garyScenePalette =
-{
-    .data = garyScenePal, 
-	.tag = 1403
-};
-
-static const struct OamData garySceneOamData =
-{
-    .y = 0,
-    .shape = SPRITE_SHAPE(64x64),
-    .size = SPRITE_SIZE(64x64),
-    .priority = 0
-};
-
-const struct SpriteTemplate garySceneSpriteTemplate =
-{
-    .tileTag = 1403,
-    .paletteTag = 1403,
-    .oam = &garySceneOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-
-//Brendan
-
-const struct SpriteSheet brendanHeadshotSpriteSheet =
-{
-    .data = brendanSceneGfx,
-    .size = sizeof(brendanSceneGfx),
-    .tag = 1403
-};
-
-const struct SpritePalette brendanScenePalette =
-{
-    .data = brendanScenePal, 
-	.tag = 1403
-};
-
-static const struct OamData brendanSceneOamData =
-{
-    .y = 0,
-    .shape = SPRITE_SHAPE(64x64),
-    .size = SPRITE_SIZE(64x64),
-    .priority = 0
-};
-
-const struct SpriteTemplate brendanSceneSpriteTemplate =
-{
-    .tileTag = 1403,
-    .paletteTag = 1403,
-    .oam = &brendanSceneOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-
-//Lanette
-
-const struct SpriteSheet lanetteHeadshotSpriteSheet =
-{
-    .data = lanetteSceneGfx,
-    .size = sizeof(lanetteSceneGfx),
-    .tag = 1407
-};
-
-const struct SpritePalette lanetteScenePalette =
-{
-    .data = lanetteScenePal, 
-	.tag = 1407
-};
-
-static const struct OamData lanetteSceneOamData =
-{
-    .y = 0,
-    .shape = SPRITE_SHAPE(64x64),
-    .size = SPRITE_SIZE(64x64),
-    .priority = 0
-};
-
-const struct SpriteTemplate lanetteSceneSpriteTemplate =
-{
-    .tileTag = 1407,
-    .paletteTag = 1407,
-    .oam = &lanetteSceneOamData,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-
-//cutscene related
-
-void RyuDrawDicePics(void)
-    {
-        u8 id1 = (VarGet(VAR_TEMP_9));
-        u8 id2 = (VarGet(VAR_TEMP_F));
-
-        switch (id1)
-        {
-            case 1:
-                LoadSpriteSheet(&diceGameOneSheet);
-                LoadSpritePalette(&diceOnePalette);
-                cutsceneSpriteId1 = (CreateSprite(&diceOneSpriteTemplate, 102, 80, 0));
-                break;
-            case 2:
-                LoadSpriteSheet(&diceGameTwoSheet);
-                LoadSpritePalette(&diceTwoPalette);
-                cutsceneSpriteId1 = (CreateSprite(&diceTwoSpriteTemplate, 102, 80, 0));
-                break;
-            case 3:
-                LoadSpriteSheet(&diceGameThreeSheet);
-                LoadSpritePalette(&diceThreePalette);
-                cutsceneSpriteId1 = (CreateSprite(&diceThreeSpriteTemplate, 102, 80, 0));
-                break;
-            case 4:
-                LoadSpriteSheet(&diceGameFourSheet);
-                LoadSpritePalette(&diceFourPalette);
-                cutsceneSpriteId1 = (CreateSprite(&diceFourSpriteTemplate, 102, 80, 0));
-                break;
-            case 5:
-                LoadSpriteSheet(&diceGameFiveSheet);
-                LoadSpritePalette(&diceFivePalette);
-                cutsceneSpriteId1 = (CreateSprite(&diceFiveSpriteTemplate, 102, 80, 0));
-                break;
-            case 6:
-                LoadSpriteSheet(&diceGameSixSheet);
-                LoadSpritePalette(&diceSixPalette);
-                cutsceneSpriteId1 = (CreateSprite(&diceSixSpriteTemplate, 102, 80, 0));
-                break;
-            default:
-                break;
-        }
-
-        switch (id2)
-        {
-            case 1:
-                LoadSpriteSheet(&diceGameOneSheet);
-                LoadSpritePalette(&diceOnePalette);
-                cutsceneSpriteId2 = (CreateSprite(&diceOneSpriteTemplate, 136, 80, 1));
-                break;
-            case 2:
-                LoadSpriteSheet(&diceGameTwoSheet);
-                LoadSpritePalette(&diceTwoPalette);
-                cutsceneSpriteId2 = (CreateSprite(&diceTwoSpriteTemplate, 136, 80, 1));
-                break;
-            case 3:
-                LoadSpriteSheet(&diceGameThreeSheet);
-                LoadSpritePalette(&diceThreePalette);
-                cutsceneSpriteId2 = (CreateSprite(&diceThreeSpriteTemplate, 136, 80, 1));
-                break;
-            case 4:
-                LoadSpriteSheet(&diceGameFourSheet);
-                LoadSpritePalette(&diceFourPalette);
-                cutsceneSpriteId2 = (CreateSprite(&diceFourSpriteTemplate, 136, 80, 1));
-                break;
-            case 5:
-                LoadSpriteSheet(&diceGameFiveSheet);
-                LoadSpritePalette(&diceFivePalette);
-                cutsceneSpriteId2 = (CreateSprite(&diceFiveSpriteTemplate, 136, 80, 1));
-                break;
-            case 6:
-                LoadSpriteSheet(&diceGameSixSheet);
-                LoadSpritePalette(&diceSixPalette);
-                cutsceneSpriteId2 = (CreateSprite(&diceSixSpriteTemplate, 136, 80, 1));
-                break;
-            default:
-                break;
-        }
-        
-        
-    }
-
-bool8 ScrCmd_drawheadshot(struct ScriptContext *ctx)
-{
-    u8 image = ScriptReadByte(ctx);
-
-    switch (image)
-    {
-        case 1:
-            {
-                LoadSpriteSheet(&dawnHeadshotSpriteSheet);
-                LoadSpritePalette(&dawnScenePalette);
-                cutsceneSpriteId1 = (CreateSprite(&dawnSceneSpriteTemplate, 220, 83, 1));
-                return FALSE;
-            }
-        case 2:
-            {
-                LoadSpriteSheet(&brendanHeadshotSpriteSheet);
-                LoadSpritePalette(&brendanScenePalette);
-                cutsceneSpriteId1 = (CreateSprite(&brendanSceneSpriteTemplate, 220, 83, 1));
-                return FALSE;
-            }
-        case 3:
-            {
-                LoadSpriteSheet(&leafHeadshotSpriteSheet);
-                LoadSpritePalette(&leafScenePalette);
-                cutsceneSpriteId1 = 1;
-                cutsceneSpriteId1 = (CreateSprite(&leafSceneSpriteTemplate, 220, 83, 1));
-                return FALSE;
-            }
-        case 4:
-            {
-                LoadSpriteSheet(&garyHeadshotSpriteSheet);
-                LoadSpritePalette(&garyScenePalette);
-                cutsceneSpriteId1 = (CreateSprite(&garySceneSpriteTemplate, 220, 83, 1));
-                return FALSE;
-            }
-        case 5:
-            {
-                LoadSpriteSheet(&lanetteHeadshotSpriteSheet);
-                LoadSpritePalette(&lanetteScenePalette);
-                cutsceneSpriteId1 = (CreateSprite(&lanetteSceneSpriteTemplate, 220, 83, 1));
-                return FALSE;
-            }
-        default:
-            {
-                return FALSE;
-            }
-    }
-}
 
 void VBCB_FullscreenCutscene(void) 
 {
@@ -6296,6 +5607,27 @@ bool8 RyuFollowerToTrainerID(void)
                         return TRUE;
                         break;
                     }
+                case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+                    {
+                        gSpecialVar_0x8006 = TRAINER_REL_DAWN;
+	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_DAWN;
+                        return TRUE;
+                        break;
+                    }
+                case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+                    {
+                        gSpecialVar_0x8006 = TRAINER_REL_BRENDAN;
+	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_BRENDAN;
+                        return TRUE;
+                        break;
+                    }
+                case OBJ_EVENT_GFX_LEAF:
+                    {
+                        gSpecialVar_0x8006 = TRAINER_REL_LANA;
+	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_LEAF;
+                        return TRUE;
+                        break;
+                    }
                 }
                 return FALSE;
             }
@@ -6410,7 +5742,6 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx)
     }
     VarSet(VAR_TEMP_B, reward);
     VarSet(VAR_TEMP_C, amount);
-    mgba_printf(MGBA_LOG_INFO, "Rewarding %d %d's", amount, reward);
     return TRUE;
     
 }
@@ -6446,9 +5777,9 @@ void RyuCountGemOres(void)
         }
     }
 
-    ConvertIntToDecimalStringN(gStringVar3, total3, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, total2, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar1, total1, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar3, total3, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar2, total2, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, total1, STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
 void RyuChooseFromGemList(void)
@@ -6514,7 +5845,7 @@ int Ryu_GiveRevivedFossilEgg(void)
     u16 species = (VarGet(VAR_TEMP_4));
     u8 iv = 31;
     u8 rnd1, rnd2, rnd3;
-    u8 slot = (CalculatePlayerPartyCount() + 1);
+    u8 slot = CalculatePlayerPartyCount();
     u8 level = 5;
     u8 fixedIV = 32;
     u8 egg = TRUE;
@@ -6635,7 +5966,149 @@ int Ryu_GiveRevivedFossilEgg(void)
             }
     }
 
-    //SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &egg);
+    SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &egg);
     return 1;
 }  
 
+int RyuCheckRelMegaReward(void)
+{
+    u16 partnerId = (VarGet(VAR_RYU_FOLLOWER_ID));
+
+    switch (partnerId)
+    {
+        case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+        {
+            if (FlagGet(FLAG_RYU_SHELLY_MEGA_REWARD) == 0)
+                {
+                    FlagSet(FLAG_RYU_SHELLY_MEGA_REWARD);
+                    return ITEM_SHARPEDONITE;
+                }
+        }
+        case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+        {
+            if (FlagGet(FLAG_RYU_DAWN_MEGA_REWARD) == 0)
+                {
+                    FlagSet(FLAG_RYU_DAWN_MEGA_REWARD);
+                    return ITEM_ALTARIANITE;
+                }
+        }
+        case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+        {
+            if (FlagGet(FLAG_RYU_BRENDAN_MEGA_REWARD) == 0)
+                {
+                    FlagSet(FLAG_RYU_BRENDAN_MEGA_REWARD);
+                    return ITEM_LUCARIONITE;
+                }
+        }
+        case OBJ_EVENT_GFX_LEAF:
+            {
+                if (FlagGet(FLAG_RYU_LEAF_MEGA_REWARD) == 0)
+                {
+                    FlagSet(FLAG_RYU_LEAF_MEGA_REWARD);
+                    return ITEM_VENUSAURITE;
+                }
+            }
+        default:
+        {
+            return 0;
+        }
+    }
+};
+
+extern const u8 gText_ColorLightRedShadowRed[];
+extern const u8 gText_ColorLightBlueShadowBlue[];
+const u8 gText_ColorDarkGreyShadowLightGrey[] = _("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
+const u8 gText_RyuStatsHP[] =    _("                HP: ");
+const u8 gText_RyuStatsAtk[] =   _("        Attack: ");
+const u8 gText_RyuStatsDef[] =   _("      Defense: ");
+const u8 gText_RyuStatsSpAtk[] = _("  Sp. Attack: ");
+const u8 gText_RyuStatsSpDef[] = _("Sp. Defense: ");
+const u8 gText_RyuStatsSpeed[] = _("          Speed: ");
+const u8 gText_RyuStatsIv[] = _(", Iv: ");
+const u8 gText_RyuStatsEv[] = _(", Ev: ");
+
+
+bool8 RyuFillStatsBuffers(void)
+{
+    s8 NatureBoost = 0;
+    u8 statIndex = 1;
+    u8 nature = (GetNature(&gPlayerParty[0]));
+    u8 gTextBuffer1[64];
+    u8 gTextBuffer2[64];
+    u8 gTextBuffer3[64];
+    u8 gTextBuffer4[64];
+
+    StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey);
+    StringAppend(gTextBuffer1, gText_RyuStatsHP);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_HP, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer2);
+    StringAppend(gTextBuffer1, gText_RyuStatsIv);
+    ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_HP_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer3);
+    StringAppend(gTextBuffer1, gText_RyuStatsEv);
+    ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[0], MON_DATA_HP_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer4);
+    StringCopy(gStringVar1, gTextBuffer1);
+
+    StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey); 
+    StringAppend(gTextBuffer1, gText_RyuStatsAtk);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_ATK, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer2);
+    StringAppend(gTextBuffer1, gText_RyuStatsIv);
+    ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_ATK_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer3);
+    StringAppend(gTextBuffer1, gText_RyuStatsEv);
+    ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[0], MON_DATA_ATK_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer4);
+    StringCopy(gStringVar2, gTextBuffer1);
+
+    StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey); 
+    StringAppend(gTextBuffer1, gText_RyuStatsDef);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_DEF, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer2);
+    StringAppend(gTextBuffer1, gText_RyuStatsIv);
+    ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_DEF_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer3);
+    StringAppend(gTextBuffer1, gText_RyuStatsEv);
+    ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[0], MON_DATA_DEF_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer4);
+    StringCopy(gStringVar3, gTextBuffer1);
+
+    StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey); 
+    StringAppend(gTextBuffer1, gText_RyuStatsSpAtk);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_SPATK, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer2);
+    StringAppend(gTextBuffer1, gText_RyuStatsIv);
+    ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_SPATK_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer3);
+    StringAppend(gTextBuffer1, gText_RyuStatsEv);
+    ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[0], MON_DATA_SPATK_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer4);
+    StringCopy(gRyuStringVar1, gTextBuffer1);
+
+    StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey); 
+    StringAppend(gTextBuffer1, gText_RyuStatsSpDef);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_SPDEF, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer2);
+    StringAppend(gTextBuffer1, gText_RyuStatsIv);
+    ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_SPDEF_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer3);
+    StringAppend(gTextBuffer1, gText_RyuStatsEv);
+    ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[0], MON_DATA_SPDEF_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer4);
+    StringCopy(gRyuStringVar2, gTextBuffer1);
+
+    StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey); 
+    StringAppend(gTextBuffer1, gText_RyuStatsSpeed);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_SPEED, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer2);
+    StringAppend(gTextBuffer1, gText_RyuStatsIv);
+    ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_SPEED_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer3);
+    StringAppend(gTextBuffer1, gText_RyuStatsEv);
+    ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gTextBuffer1, gTextBuffer4);
+    StringCopy(gRyuStringVar3, gTextBuffer1);
+
+    return TRUE;
+}

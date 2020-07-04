@@ -790,7 +790,6 @@ MP_Maxie_Walkaway::
 	addobject 8
 	special DrawWholeMapView
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
-	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
 	special DrawWholeMapView
 	release
 	end

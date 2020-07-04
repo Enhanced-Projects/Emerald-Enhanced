@@ -795,4 +795,48 @@ MauvilleCity_GameCorner_Text_HeresSomeSlotsInfo: @ 8210B04
 MauvilleCity_GameCorner_Text_CantPlayWithNoCoinCase: @ 8210C2E
 	.string "You can't play if you don't have\n"
 	.string "a coin case.$"
+@==================================================================================================
+RyuDiceGame::
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, RDG_BallBlackMarket
+	msgbox gambler
+	release
+	end
 
+RDG_BallBlackMarket::
+	lock
+	faceplayer
+	setvar VAR_RYU_PRICE_MULTIPLIER, 8000
+	clearflag FLAG_RYU_NUZLOCKEMODE
+	msgbox BBM_intro, MSGBOX_DEFAULT
+	message gBallBlackMarket
+	waitmessage
+	pokemart RyuDiceGame_BallBlackMarket
+	msgbox BBM_Outro
+	setflag FLAG_RYU_NUZLOCKEMODE
+	setvar VAR_RYU_PRICE_MULTIPLIER, 1500
+	release
+	end
+
+	.align 2
+RyuDiceGame_BallBlackMarket:
+	.2byte ITEM_POKE_BALL
+	.2byte ITEM_PREMIER_BALL
+	.2byte ITEM_LUXURY_BALL
+	.2byte ITEM_ULTRA_BALL
+	.2byte ITEM_NONE
+
+BBM_intro:
+    .string "Shifty Old Man: {SHADOW BLUE}PSST! Hey, You!\p"
+    .string "I got some top tier, high quality\n"
+    .string "balls for sale. You can't get\l"
+    .string "these anywhere else!$"
+
+BBM_Outro:
+    .string "Shifty Old Man: Yeah... get out of\n"
+    .string "here before the feds catch on...$"
+
+gambler:
+	.string "I used to be a trainer like you\n"
+	.string "but then I had to sell off my\p"
+	.string "beautiful Primarina, to pay off\n"
+	.string "debts. I can't help myself...$"

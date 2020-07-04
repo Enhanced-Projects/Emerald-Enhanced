@@ -2911,7 +2911,7 @@ static void SpriteCB_BounceEffect(struct Sprite *sprite)
     gSprites[bouncerSpriteId].pos2.y = y;
     sprite->sSinIndex = (sprite->sSinIndex + sprite->sDelta) & 0xFF;
 
-    bouncerSpriteId = gBattleStruct->mega.indicatorSpriteIds[sprite->sBattler];
+    bouncerSpriteId = GetMegaIndicatorSpriteId(sprite->sBouncerSpriteId);
     if (sprite->sWhich == BOUNCE_HEALTHBOX && bouncerSpriteId != 0xFF)
         gSprites[bouncerSpriteId].pos2.y = y;
 }
@@ -3064,8 +3064,6 @@ static void BattleStartClearSetData(void)
     gBattleStruct->arenaLostOpponentMons = 0;
 
     gBattleStruct->mega.triggerSpriteId = 0xFF;
-    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
-        gBattleStruct->mega.indicatorSpriteIds[i] = 0xFF;
 }
 
 void SwitchInClearSetData(void)
@@ -3073,6 +3071,7 @@ void SwitchInClearSetData(void)
     s32 i;
     struct DisableStruct disableStructCopy = gDisableStructs[gActiveBattler];
 
+    ClearIllusionMon(gActiveBattler);
     if (gBattleMoves[gCurrentMove].effect != EFFECT_BATON_PASS)
     {
         for (i = 0; i < NUM_BATTLE_STATS; i++)
@@ -5187,6 +5186,7 @@ void SetTypeBeforeUsingMove(u16 move, u8 battlerAtk)
                  || (attackerAbility == ABILITY_REFRIGERATE && (ateType = TYPE_ICE))
                  || (attackerAbility == ABILITY_AERILATE && (ateType = TYPE_FLYING))
                  || ((attackerAbility == ABILITY_GALVANIZE) && (ateType = TYPE_ELECTRIC))
+                 || ((attackerAbility == ABILITY_DETONATE) && (ateType = TYPE_FIRE))
                 )
              )
     {

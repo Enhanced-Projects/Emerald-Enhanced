@@ -5,15 +5,9 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern:: @ 820BB00
 	lock
 	faceplayer
 	goto_if_unset FLAG_RECOVERED_DEVON_GOODS, OM_NoQuest
-	playse SE_BIDORO
-	waitse
 	goto_if_set FLAG_DEVON_GOODS_STOLEN, OM_NoQuest
-	playse SE_EXPMAX
-	waitse
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, OM_AlreadyWorkingAqua
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, OM_Normal
-	playse SE_PIN
-	waitse
 	goto OM_NoQuest
 
 OM_Normal::
@@ -59,9 +53,6 @@ OM_Normal::
 	applymovement 3, Common_Movement_FaceUp
 	applymovement 4, Common_Movement_FaceUp
 	waitmovement 0
-	msgbox SlateportCity_OceanicMuseum_2F_Text_SternThankYouForSavingUs, MSGBOX_DEFAULT
-	closemessage
-	delay 35
 	addobject 2
 	applymovement 2, SlateportCity_OceanicMuseum_2F_Movement_ArchieEnter
 	applymovement 4, SlateportCity_OceanicMuseum_2F_Movement_GruntMoveForArchie
@@ -119,6 +110,8 @@ OM_Declined::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	msgbox SlateportCity_OceanicMuseum_2F_Text_SternThankYouForSavingUs, MSGBOX_DEFAULT
+	closemessage
+	delay 35
 	removeitem ITEM_DEVON_GOODS, 1
 	setvar VAR_0x8004, 269
 	closemessage

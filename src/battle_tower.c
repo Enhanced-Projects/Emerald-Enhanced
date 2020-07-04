@@ -38,7 +38,6 @@
 #include "constants/species.h"
 #include "constants/easy_chat.h"
 #include "constants/tv.h"
-#include "mgba.h"
 
 extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer[];
 extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_CourtneyTrainer[];

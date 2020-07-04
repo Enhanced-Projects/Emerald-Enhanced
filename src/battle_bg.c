@@ -700,6 +700,22 @@ static const struct BattleBackground gBattleTerrainTable[] =
         .entryTilemap = gBattleTerrainTilemap_FrontierMap,
         .palette = gBattleTerrainPalette_FrontierPalette,
     },
+    [BATTLE_TERRAIN_SNOWSHORE] =
+    {
+        .tileset = gBattleTerrainTiles_SnowshoreTiles,
+        .tilemap = gBattleTerrainTilemap_SnowshoreMap,
+        .entryTileset = gBattleTerrainAnimTiles_Sand,
+        .entryTilemap = gBattleTerrainAnimTilemap_Sand,
+        .palette = gBattleTerrainPalette_SnowshorePalette,
+    },
+    [BATTLE_TERRAIN_MTFREEZE] =
+    {
+        .tileset = gBattleTerrainTiles_MtFreezeTiles,
+        .tilemap = gBattleTerrainTilemap_MtFreezeMap,
+        .entryTileset = gBattleTerrainAnimTiles_Sand,
+        .entryTilemap = gBattleTerrainAnimTilemap_Sand,
+        .palette = gBattleTerrainPalette_MtFreezePalette,
+    },
 };
 
 static void sub_8035648(void);

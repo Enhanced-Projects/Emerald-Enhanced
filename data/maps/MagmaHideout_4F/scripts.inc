@@ -234,6 +234,7 @@ MH_MapSetup_Solo::
 	lock
 	addobject 5
 	removeobject 10
+	setobjectxy 9, 4, 15
 	clearflag FLAG_RYU_MH_COURTNEY_SOLOMODE
 	setflag FLAG_RYU_MH_COURTNEY_DUOMODE
 	special DrawWholeMapView

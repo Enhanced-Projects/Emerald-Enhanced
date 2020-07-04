@@ -146,12 +146,12 @@ RyuDebugBetaMenuScript::
 	closemessage
 	multichoicedefault 30, 0, 133, 7, 0
 	switch VAR_RESULT
-	case 0, RDBM_ResetDevon
-	case 1, RDBM_Magma
-	case 2, RDBM_ResetAqua
-	case 3, RDBM_ResetLeaf
-	case 4, RDBM_ResetRival
-	case 5, RDBM_ResetBadges
+	case 0, RDBM_Option1
+	case 1, RDBM_Option2
+	case 2, RDBM_Option3
+	case 3, RDBM_Option4
+	case 4, RDBM_ResetBadges
+	case 5, RDBM_ResetGCMS
 	case 6, RDBM_TeleportHome
 	case 7, RDBM_ExitResetMenu
 	case 127, RDBM_ExitResetMenu
@@ -159,76 +159,37 @@ RyuDebugBetaMenuScript::
 	end
 
 BetaMenuIntro:
-	.string "You really shouldn't mess with these\noptions unless you were directed\pto do so. Save file damage can occur.\pIn some cases, these menus will\ndelete items given from the questline.\p"
+	.string "You really shouldn't mess with these\noptions unless you were directed\pto do so. Save file damage can occur.\p"
 	.string "{COLOR LIGHT_RED}{SHADOW TRANSPARENT}YOU HAVE BEEN WARNED!!$"
 
-RDBM_ResetDevon::
-	lockall
-	msgbox RDBM_Devon_msg MSGBOX_DEFAULT
-	delay 60
-	closemessage
-	special RyuResetDevonFlags
-	playse SE_EXPMAX
-	waitse
+RDBM_Option1::
+RDBM_Option2::
+RDBM_Option3::
+RDBM_Option4::
+	msgbox RDBM_Unimplemented
 	release
 	end
 
-RDBM_Devon_msg:
-	.string "Resetting Devon storyline progress\n... ... ... ...$"
+RDBM_Unimplemented:
+	.string "This option does nothing. It's\na placeholder for future options.$"
 
-RDBM_Magma::
-	lockall
-	msgbox RDBM_Magma_msg MSGBOX_DEFAULT
+RDBM_ResetBadges:
+	clearflag FLAG_BADGE01_GET
+	clearflag FLAG_BADGE02_GET
+	clearflag FLAG_BADGE03_GET
+	clearflag FLAG_BADGE04_GET
+	clearflag FLAG_BADGE05_GET
+	clearflag FLAG_BADGE06_GET
+	clearflag FLAG_BADGE07_GET
+	clearflag FLAG_BADGE08_GET
+	msgbox RDBM_BadgesReset
 	release
 	end
-	
-RDBM_Magma_msg:
-	.string "Magma hasn't been implemented yet.\nNo changes have been made.$"
 
-RDBM_ResetAqua::
-	lockall
-	msgbox RDBM_Aqua_msg MSGBOX_DEFAULT
-	delay 60
-	closemessage
-	special RyuResetAquaFlags
-	playse SE_EXPMAX
-	waitse
-	release
-	end
-	
-RDBM_Aqua_msg:
-	.string "Resetting Aqua storyline progress\n... ... ... ...$"
+RDBM_BadgesReset:
+	.string "All badges have been removed.$"
 
-RDBM_ResetLeaf::
-	lockall
-	msgbox RDBM_Leaf_msg MSGBOX_DEFAULT
-	delay 60
-	closemessage
-	cleartrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_24
-	special RyuResetLeafFlags
-	playse SE_EXPMAX
-	waitse
-	release
-	end
-	
-RDBM_Leaf_msg:
-	.string "Resetting Leaf storyline progress\n... ... ... ...$"
-
-RDBM_ResetRival::
-	lockall
-	msgbox RDBM_Rival_msg MSGBOX_DEFAULT
-	delay 60
-	closemessage
-	special RyuResetRivalFlags
-	playse SE_EXPMAX
-	waitse
-	release
-	end
-	
-RDBM_Rival_msg:
-	.string "Resetting {RIVAL} storyline progress\n... ... ... ...$"
-
-RDBM_ResetBadges::
+RDBM_ResetGCMS::
 	lockall
 	setvar VAR_RYU_GCMS_SPECIES, 0
 	setvar VAR_RYU_GCMS_VALUE, 0
@@ -238,21 +199,6 @@ RDBM_ResetBadges::
 
 RDBM_GCMSReset:
 	.string "GCMS has been reset.$"
-
-RDBM_WeatherFixArchie:
-	clearflag FLAG_RYU_ARCHIE_SUCCESSFUL
-	doweather
-	release
-	end
-
-RDBM_WeatherMsg:
-	.string "Resetting all weather variables...$"
-
-RDBM_WeatherMsg2:
-	.string "Weather has been reset to default state.$"
-
-RDBM_Badges_msg::
-	.string "Not Implemented yet.\nNo changes made.$"
 
 RDBM_ExitResetMenu::
 	msgbox RDBM_Exiting MSGBOX_DEFAULT
@@ -329,7 +275,6 @@ RyuMultiBattlePartnerLanette::
 	setvar VAR_0x8006, TRAINER_REL_LANETTE
 	setvar VAR_0x8007, TRAINER_BACK_PIC_LANETTE
 	return
-
 	
 Ryu_PlayerCalledDawn:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} called Dawn...\n... ... ... ... ... ...$"
@@ -1008,116 +953,6 @@ BC_NeedBall:
 
 BC_NeedMoney:
 	.string "Sorry, but you do not have enough\nmoney to do this.\pIt costs ¥10000.$"
-	
-@@+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Follower System
-
-RyuCancelFollowerForQuest::  @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
-	msgbox RyuCantHaveFollower MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_eq RF_FollowerLeaveCall
-	release
-	end
-
-RyuResetFollowerPosition::
-	gfec
-	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_E, VAR_TEMP_F
-	setvar VAR_TEMP_D, 1
-	end
-
-RyuResetFollowerPositionAR::
-	gfec
-	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_E, VAR_TEMP_F
-	setvar VAR_TEMP_D, 1
-	return
-
-RyuForceCancelFollowerForQuest:: @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
-	goto RF_FollowerLeaveCall
-	
-
-RyuFollowerSelectNPCScript::
-	switch VAR_RYU_FOLLOWER_ID
-	case OBJ_EVENT_GFX_TWIN, LRT_MinnieScript
-	case OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollower_ShellyScript
-	case OBJ_EVENT_GFX_WOMAN_2, RyuFollower_LanetteScript
-	end
-
-RyuFollower_ShellyScript::
-	goto_if_set FLAG_RYU_WAYSTONE_DISABLED, RyuFollower_MagmaShelly
-	msgbox RyuFollower_ShellyLeaveMsg MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RF_FollowerLeave
-	release
-	end
-
-RyuFollower_MagmaShelly::
-	goto MH_FollowerShellyScript
-	end
-	
-RyuFollower_LanetteScript::
-	msgbox RyuFollowerLanetteLeaveMsg MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RF_FollowerLeave
-	release
-	end
-
-RF_FollowerLeaveCall::
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
-	goto_if_eq Ryu_RestoreLanetteAtHouse
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
-	goto_if_eq Ryu_RestoreMinnie
-	clearflag FLAG_RYU_HAS_FOLLOWER
-	destroyfollower
-	msgbox RyuFollowerLeavesService
-	clearflag FLAG_RYU_HAS_FOLLOWER
-	return
-	
-RF_FollowerLeave:
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
-	call_if_eq Ryu_RestoreLanetteAtHouse
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
-	call_if_eq Ryu_RestoreMinnie
-	clearflag FLAG_RYU_HAS_FOLLOWER
-	destroyfollower
-	msgbox RyuFollowerLeavesService
-	clearflag FLAG_RYU_HAS_FOLLOWER
-	release
-	end
-
-Ryu_RestoreLanetteAtHouse::
-	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
-	return
-
-Ryu_RestoreMinnie::
-	clearflag FLAG_RYU_HIDE_MINNIE
-	return
-
-RyuFollowerAllySelector::
-	special RyuFollowerToTrainerID
-	return
-	
-RyuFollower_ShellyLeaveMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Should I go?$"
-	
-RyuFollowerLanetteLeaveMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Lanette: Should I return to my lab??$"
-
-RyuFollowerLeavesService:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Your follower\nleaves your service...$"
-
-RyuCantHaveFollower:
-    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You're attempting to do a\n"
-    .string "cinematic quest.\p"
-    .string "You can't have a follower present\n"
-    .string "for this quest. Would you like\l"
-    .string "to dismiss your follower?$"
-
-
-ryu_return::
-	return
-
-ryu_end::
-	release
-	end
 
 @==================================================================================================Theme changer
 
@@ -1430,29 +1265,114 @@ JuanMegaReward::
 JuanMega:
 	.string "Juan: You're even more fabulous\nthan I. I thought this wasn't\ppossible until now. As a token\nof your dedication to the art\lof battle, take this stone!$"
 
-@Legendaries common scripts
+@__________________________________________________________________________________________________Legendaries common scripts
 
-RyuLegendary_LeftStoneAlone::
-	msgbox RyuLegendary_LeftStoneAloneMsg
-	release
+RyuLegendary_GeneralLegendEncounter::
+	playmoncry VAR_TEMP_5, 0
+	specialvar VAR_TEMP_7, CountBadges
+	multvar VAR_TEMP_7, 20
+	compare VAR_TEMP_7, 110
+	call_if_gt RyuLegendary_SetMaxScale
+	compare VAR_TEMP_7, 20
+	call_if_le RyuLegendary_SetBaseScale
+	setwildbattle VAR_TEMP_5, VAR_TEMP_7, VAR_TEMP_9
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	call RyuLegendary_HandleEndLegendaryBattle
+	return
 	end
 
-RyuLegendary_LeftStoneAloneMsg:
-	.string "{PLAYER} left the stone alone.$"
-
-RyuLegendary_CheckCaught::
+RyuLegendary_HandleEndLegendaryBattle::
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_CAUGHT
-	goto_if_ne ryu_end
+	switch VAR_RESULT
+	case B_OUTCOME_MON_FLED, RyuLegendary_MonEscaped
+	case B_OUTCOME_RAN, RyuLegendary_MonEscaped
+	case B_OUTCOME_PLAYER_TELEPORTED, RyuLegendary_MonEscaped
+	case B_OUTCOME_CAUGHT, RyuLegendaryFinish
+	case B_OUTCOME_WON, RyuLegendaryFinish
 	return
 
-RyuLegendary_Stoneisdull::
-	msgbox RyuLegendary_StoneIsDullMsg
-	release
-	end
+RyuLegendary_SetMaxScale::
+	setvar VAR_TEMP_7, 110
+	return
 
-RyuLegendary_StoneIsDullMsg:
-	.string "The stone is dull and lifeless.$"
+RyuLegendary_SetBaseScale::
+	setvar VAR_TEMP_7, 30
+	return
+
+RyuLegendary_MonEscaped::
+	goto ryu_return
+
+RyuLegendaryFinish::
+	goto ryu_end
+
+RyuLegendary_GameClearResetLegends::
+	call_if_set FLAG_RYU_ZAPDOS_RAN, RL_ResetZapdos
+	call_if_set FLAG_RYU_MOLTRES_RAN, RL_ResetMoltres
+	call_if_set FLAG_RYU_ARTICUNO_RAN, RL_ResetArticuno
+	call_if_set FLAG_RYU_ENTEI_RAN, RL_ResetEntei
+	call_if_set FLAG_RYU_SUICUNE_RAN, RL_ResetSuicune
+	call_if_set FLAG_RYU_RAIKOU_RAN, RL_ResetRaikou
+	call_if_set FLAG_RYU_CELEBI_RAN, RL_ResetCelebi
+	call_if_set FLAG_RYU_REGIGIGAS_RAN, RL_ResetRegigigas
+	call_if_set FLAG_RYU_MANAPHY_RAN, RL_ResetManaphy
+	call_if_set FLAG_RYU_NECROZMA_RAN, RL_ResetNecrozma
+	call_if_set FLAG_RYU_KYOGRE_RAN, RL_ResetKyogre
+
+RL_ResetZapdos::
+	clearflag FLAG_RYU_ZAPDOS
+	clearflag FLAG_RYU_ZAPDOS_RAN
+	return
+
+RL_ResetMoltres::
+	clearflag FLAG_RYU_MOLTRES
+	clearflag FLAG_RYU_MOLTRES_RAN
+	return
+		
+RL_ResetArticuno::
+	clearflag FLAG_RYU_ARTICUNO
+	clearflag FLAG_RYU_ARTICUNO_RAN
+	return
+
+RL_ResetEntei::
+	clearflag FLAG_RYU_ENTEI
+	clearflag FLAG_RYU_ENTEI_RAN
+	return
+
+RL_ResetSuicune::
+	clearflag FLAG_RYU_SUICUNE
+	clearflag FLAG_RYU_SUICUNE_RAN
+	return
+
+RL_ResetRaikou::
+	clearflag FLAG_RYU_RAIKOU
+	clearflag FLAG_RYU_RAIKOU_RAN
+	return
+
+RL_ResetCelebi::
+	clearflag FLAG_RYU_CELEBI
+	clearflag FLAG_RYU_CELEBI_RAN
+	return
+
+RL_ResetRegigigas::
+	clearflag FLAG_RYU_REGIGIGAS
+	clearflag FLAG_RYU_REGIGIGAS_RAN
+	return
+
+RL_ResetManaphy::
+	clearflag FLAG_RYU_MANAPHY
+	clearflag FLAG_RYU_MANAPHY_RAN
+	return
+
+RL_ResetNecrozma::
+	clearflag FLAG_RYU_NECROZMA
+	clearflag FLAG_RYU_NECROZMA_RAN
+	return
+
+RL_ResetKyogre::
+	clearflag FLAG_RYU_KYOGRE
+	clearflag FLAG_RYU_KYOGRE_RAN
+	return
 
 @==================================================================================================Randombattle
 
@@ -1505,6 +1425,31 @@ BF_battleintro:
 	
 BF_battledefeat:
 	.string "Good fight.\nLet's do it again!$"
+
+@==================================================================================================Start Menu Config Info
+
+RyuStartMenuConfigInfoScript::
+	fadescreen FADE_FROM_BLACK
+	buffernumberstring 0, VAR_LAST_KNOWN_GAME_VERSION
+	msgbox RyuTemp_StartMenuConfig, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq RyuDebugBetaMenuScript
+	closemessage
+	release
+	end
+
+RyuTemp_StartMenuConfig:
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced ({COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1}{COLOR LIGHT_GREEN}{SHADOW GREEN})\n"
+    .string "Configuration Info\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}In Start menu inputs:\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}L+R {COLOR DARK_GREY}{SHADOW LIGHT_GREY}: Enable/Disable Jukebox\l"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}R(With Jukebox On){COLOR DARK_GREY}{SHADOW LIGHT_GREY}:Skip to Next Song\l"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Right:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Tgl Rdm route/battle music.\l"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Left:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Realign Follower\l"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Theme switcher in Option menu.\p"
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Open Beta Menu?$"
+
+
 
 @==================================================================================================Meloetta Switcher
 
@@ -1592,3 +1537,59 @@ CLM_NotInPartyMsg:
     .string "you know where it came from?\p"
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Yes, it's from a Pokémon.\n"
     .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}You have to show me, Please!$"
+
+
+@==================================================================================================Relationship based mega stones
+
+
+Ryu_CheckForPartnerReward::
+	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_return
+	specialvar VAR_RESULT, RyuCheckRelMegaReward
+	compare VAR_RESULT, 0
+	goto_if_eq ryu_return
+	switch VAR_RYU_FOLLOWER_ID
+	case OBJ_EVENT_GFX_AQUA_MEMBER_F, Ryu_GiveShellyMegaAndReturn
+	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, Ryu_GiveDawnMegaAndReturn
+	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, Ryu_GiveBrendanMegaAndReturn
+	case OBJ_EVENT_GFX_LEAF, Ryu_GiveLeafMegaAndReturn
+	goto ryu_return
+
+Ryu_GiveShellyMegaAndReturn::
+	msgbox ShellyMegaReward
+	closemessage
+	giveitem ITEM_SHARPEDONITE
+	closemessage
+	goto ryu_return
+
+Ryu_GiveDawnMegaAndReturn::
+	msgbox DawnMegaReward
+	closemessage
+	giveitem ITEM_ALTARIANITE
+	closemessage
+	goto ryu_return
+
+Ryu_GiveBrendanMegaAndReturn::
+	msgbox BrendanMegaReward
+	closemessage
+	giveitem ITEM_LUCARIONITE
+	closemessage
+	goto ryu_return
+
+Ryu_GiveLeafMegaAndReturn::
+	msgbox LeafMegaReward
+	closemessage
+	giveitem ITEM_VENUSAURITE
+	closemessage
+	goto ryu_return
+
+ShellyMegaReward:
+	.string "Shelly:{COLOR LIGHT_RED}{SHADOW RED} Hey babe, I wanted you to have\nthis as a thanks for helping me\lsee the light.$"
+
+DawnMegaReward:
+	.string "Dawn:{COLOR LIGHT_RED}{SHADOW RED} Here! I grabbed this for you.\nIt's for a really fluffy birb!$"
+
+BrendanMegaReward:
+	.string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Hey, girl. I know how you like\nmy athletic physique.\pHere's a gift that will benefit you\nif you have a certain athletic\lpokemon!$"
+
+LeafMegaReward:
+	.string "Lana:{COLOR LIGHT_RED}{SHADOW RED} Hey... Um... Take this...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(She's beet red in the face.)$"

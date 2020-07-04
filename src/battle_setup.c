@@ -562,10 +562,20 @@ static void CB2_EndScriptedWildBattle(void)
     }
 }
 
+extern bool8 RyuCheckPlayerisInColdArea();
+
 u8 BattleSetup_GetTerrainId(void)
 {
     u16 tileBehavior;
     s16 x, y;
+
+    if (RyuCheckPlayerisInColdArea() == TRUE)
+    {
+        if ((gSaveBlock1Ptr->location.mapGroup == 0) && (gSaveBlock1Ptr->location.mapNum == 20))
+            return BATTLE_TERRAIN_MTFREEZE;
+        else
+            return BATTLE_TERRAIN_SNOWSHORE;
+    }
 
     PlayerGetDestCoords(&x, &y);
     tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
@@ -1270,7 +1280,6 @@ static void CB2_EndTrainerBattle(void)
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         if (!InBattlePyramid() && !InTrainerHillChallenge())
         {
-            //RegisterTrainerInMatchCall();
             SetBattledTrainersFlags();
         }
     }

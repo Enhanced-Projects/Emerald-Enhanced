@@ -50,13 +50,12 @@
 #include "constants/event_objects.h"
 #include "rtc.h"
 #include "gba/m4a_internal.h"
-#include "mgba.h"
 
 static EWRAM_DATA u8 MenuSpriteId1 = 0;
 static EWRAM_DATA u8 MenuSpriteId2 = 0;
 
 extern u8 RyuDebugMenuScript[];
-extern u8 RyuDebugBetaMenuScript[];
+extern u8 RyuStartMenuConfigInfoScript[];
 extern const u8 gText_RyuVersion[];
 
 // Menu actions
@@ -897,6 +896,7 @@ static bool8 HandleStartMenuInput(void)
 
             HideStartMenu();
             HideFieldMessageBox();
+            RemovePrintedNumber();
             ScriptContext2_Enable();
             ScriptContext1_SetupScript(RyuDebugMenuScript);
             return TRUE;
@@ -1122,13 +1122,13 @@ static bool8 StartMenuOptionCallback(void)
 
 static bool8 StartMenuExitCallback(void)
 {
-    if (gMain.heldKeys & R_BUTTON)
+    if (gMain.newKeys & A_BUTTON || gMain.heldKeys & A_BUTTON)
     {
         HideStartMenu();
         RemovePrintedNumber();
         HideFieldMessageBox();
         ScriptContext2_Enable();
-        ScriptContext1_SetupScript(RyuDebugBetaMenuScript);
+        ScriptContext1_SetupScript(RyuStartMenuConfigInfoScript);
         return TRUE;
     }
     else

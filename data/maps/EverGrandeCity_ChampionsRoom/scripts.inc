@@ -28,7 +28,6 @@ EverGrandeCity_ChampionsRoom_OnFrame: @ 8228A14
 	.2byte 0
 
 EverGrandeCity_ChampionsRoom_EventScript_EnterRoom:: @ 8228A1E
-	call RyuResetFollowerPositionAR
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp4
 	waitmovement 0
@@ -86,6 +85,7 @@ EverGrandeCity_ChampionsRoom_EventScript_Defeated:: @ 8228A61
 	msgbox EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	closemessage
 	playse SE_DOOR
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF
 	checkplayergender
 	compare VAR_RESULT, MALE
 	call_if_eq EverGrandeCity_ChampionsRoom_EventScript_PlayMayMusic
@@ -150,6 +150,7 @@ EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF:: @ 8228B30
 	msgbox EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex, MSGBOX_DEFAULT
 	call ProfBirch_EventScript_RatePokedex
 	msgbox EverGrandeCity_ChampionsRoom_Text_BirchCongratulations, MSGBOX_DEFAULT
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_PlayerAndChampionExit
 	applymovement 1, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
 	delay 20
@@ -173,6 +174,11 @@ EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF:: @ 8228B30
 	call_if_set FLAG_RYU_DS_DAWN_FRIENDS, EGC_DAWNFZ_QUERY
 	removecutscenesprites
 	closemessage
+	goto EGC_PlayerAndChampionExit
+
+
+EGC_PlayerAndChampionExit::
+	call Ryu_CheckForPartnerReward
 	applymovement 1, EverGrandeCity_ChampionsRoom_Movement_WallaceExit
 	applymovement OBJ_EVENT_ID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExit
 	applymovement OBJ_EVENT_ID_FOLLOWER, EverGrandeCity_ChampionsRoom_Movement_PlayerExit

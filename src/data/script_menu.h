@@ -846,50 +846,19 @@ static const struct MenuAction MultichoiceList_119[] =
 
 static const struct MenuAction MultichoiceList_120[] =
 {
-    {gText_MoveDarkPulse},
-    {gText_MoveScald},
-    {gText_MoveDragonPulse},
-    {gText_MoveDrainPunch},
-    {gText_MoveStoneEdge},
-    {gText_MoveRockSlide},
-    {gText_MoveAvalanche},
-    {gText_MoveThunderWave},
-    {gText_MoveGigaImpact},
-    {gText_MoveSilverWind},
-    {gText_MoveBrine},
-    {gText_MoveFlashCannon},
-    {gText_MoveEnergyBall},
-    {gText_MoveSignalBeam},
-    {gText_MoveSeedBomb},
-    {gText_MoveSuperpower},
-    {gText_MoveEarthPower},
-    {gText_MoveNastyPlot},
-    {gText_MoveFocusBlast},
-    {gText_MoveSwordsDance},
-    {gText_MoveMenuExit},
+    {gText_Exit},
 };
 
 static const struct MenuAction MultichoiceList_121[] =
 {
-    {gText_MusicAshroad},
-    {gText_MusicCasino},
-    {gText_MusicMtPyre},
-    {gText_MusicMagmaHQ},
-    {gText_MusicDive},
-    {gText_MusicBiking},
-    {gText_MusicField},
-    {gText_MusicMuseum},
-    {gText_MusicLilyCov},
-    {gText_MusicViridia},
-    {gText_MusicVermill},
-    {gText_MusicCancel},
+    {gText_Exit},
 };
 
 static const struct MenuAction MultichoiceList_122[]=
 {
-    {gText_RyuViewEvMenuOption},
-    {gText_RyuViewIvMenuOption},
-    {gText_RyuViewOtherMenuOption},
+    {gText_RyuViewMonDataOption},
+    {gText_RyuBetaMenuBlank},
+    {gText_RyuBetaMenuBlank},
     {gText_RyuAccessMoveRelearner},  
     {gText_RyuSetEvMenuOption},
     {gText_RyuMaxIvMenuOption},
@@ -899,19 +868,7 @@ static const struct MenuAction MultichoiceList_122[]=
 
 static const struct MenuAction MultichoiceList_123[]=
 {
-    {gText_RyuLevel10MenuOption},
-    {gText_RyuLevel20MenuOption},
-    {gText_RyuLevel30MenuOption},
-    {gText_RyuLevel40MenuOption},
-    {gText_RyuLevel50MenuOption},
-    {gText_RyuLevel60MenuOption},
-    {gText_RyuLevel70MenuOption},
-    {gText_RyuLevel80MenuOption},
-    {gText_RyuLevel90MenuOption},
-    {gText_RyuLevel100MenuOption},
-    {gText_RyuExitLevelMenuOption},
-    {gText_ExitEvMenu2},
-   
+    {gText_Exit},
 };
 
 static const struct MenuAction MultichoiceList_124[]=
@@ -1025,11 +982,11 @@ static const struct MenuAction MultichoiceList_132[]=
 
 static const struct MenuAction MultichoiceList_133[]=
 {
-    {gText_RyuBetaMenuResetDevon},
-    {gText_RyuBetaMenuResetMagma},
-    {gText_RyuBetaMenuResetAqua},
-    {gText_RyuBetaMenuResetLeaf},
-    {gText_RyuBetaMenuResetRival},
+    {gText_RyuBetaMenuBlank},
+    {gText_RyuBetaMenuBlank},
+    {gText_RyuBetaMenuBlank},
+    {gText_RyuBetaMenuBlank},
+    {gText_RyuBetaMenuResetBadges},
     {gText_RyuBetaMenuResetGCMS},
     {gText_RyuBetaMenuGoHome},
     {gText_RyuBetaMenuExit},
@@ -1062,18 +1019,12 @@ static const struct MenuAction MultichoiceList_136[]=
 
 static const struct MenuAction MultichoiceList_137[]=
 {
-    {gText_BankDeposit},
-    {gText_BankWithdraw},
-    {gText_BankBalance},
+    {gText_Exit},
 };
 
 static const struct MenuAction MultichoiceList_138[]=
 {
-    {gText_Bank10k},
-    {gText_Bank50k},
-    {gText_Bank100k},
-    {gText_BankOneMil},
-    {gText_BankCancel},
+    {gText_Exit},
 };
 
 static const struct MenuAction MultichoiceList_139[]=
@@ -1172,7 +1123,7 @@ static const struct MenuAction MultichoiceList_OWRepelList[]=
     {gText_ItemRepel},
     {gText_ItemSuperRepel},
     {gText_ItemMaxRepel},
-    {gText_MoveMenuExit},
+    {gText_Exit},
 };
 
 static const struct MenuAction MultichoiceList_DevMonGiveAbilityMenu[]=

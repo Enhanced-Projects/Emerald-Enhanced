@@ -576,7 +576,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuDevonLine.inc"
 	.include "data/scripts/JunkScripts.inc"
 	.include "data/scripts/RyuChampionRoom.inc"
-	.include "data/scripts/RyuDiceGame.inc"
 	.include "data/scripts/RyuTeleportationMenu.inc"
 	.include "data/scripts/RyuPasscodeMenu.inc"
 	.include "data/scripts/RyuDebugMenu.inc"
@@ -586,6 +585,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/hall_of_fame.inc"
 	.include "data/scripts/RyuLifeSkillScripts.inc"
 	.include "data/scripts/RyuFossilReviver.inc"
+	.include "data/scripts/RyuFollowerSystem.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
@@ -1158,3 +1158,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/FrostbiteField/scripts.inc"
 
 	.include "data/maps/SnowshoreUnderwater/scripts.inc"
+
+	.include "data/maps/FrostyForestUnderwater/scripts.inc"

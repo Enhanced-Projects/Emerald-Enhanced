@@ -105,7 +105,7 @@ AC_ShellyOutro:
     .string "time ago. I have no clue where it's\l"
     .string "at now.\p"
 	.string "Pray you don't run into Matt...\p"
-    .string "Matt. He will turn your world\n"
+    .string "He will turn your world\n"
     .string "inside out.$"
 	
 AC_DevonMattTrigger::
@@ -254,25 +254,28 @@ KyogreGuardianLeaves:
 
 AHQ_KyogreTrigger::
 	goto_if_unset FLAG_RYU_AQUA_LINE_DONE, ryu_end
-	lockall
-	msgbox AHQ_KYOGRE_STARING MSGBOX_DEFAULT
-	playmoncry SPECIES_KYOGRE, 0
-	closemessage
-	fadescreen 1
+	goto AHQ_Kyogre
+
+AHQ_Kyogre::
+	goto_if_set FLAG_RYU_KYOGRE, ryu_end
+	msgbox AHQ_KYOGRE_STARING
+	setvar VAR_TEMP_5, SPECIES_KYOGRE
+	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_RAN, AHQ_KyogreGotAway
+	case B_OUTCOME_LOST, AHQ_KyogreGotAway
+	case B_OUTCOME_MON_FLED, AHQ_KyogreGotAway
+	case B_OUTCOME_PLAYER_TELEPORTED, AHQ_KyogreGotAway
 	setflag FLAG_RYU_KYOGRE
-	removeobject 7
-	special checkbadgecount
-	multvar VAR_RESULT, 10
-	compare VAR_RESULT, 10
-	call_if_lt TC_NoBadge
-	fadescreen 0
-	waitmoncry
-	delay 10
-	setwildbattle SPECIES_KYOGRE, VAR_RESULT, ITEM_MYSTIC_WATER
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	setvar VAR_SKY_PILLAR_STATE, 3
-	releaseall
+	removeobject 7 @Put the porymap object ID here
+	release
+	end
+
+AHQ_KyogreGotAway::
+	setflag FLAG_RYU_KYOGRE_RAN
+	removeobject 7 @Put the porymap object ID here
+	release
 	end
 	
 AHQ_KYOGRE_STARING:

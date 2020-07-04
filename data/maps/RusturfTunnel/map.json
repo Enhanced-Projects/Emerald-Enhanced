@@ -17,8 +17,8 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "MiningRock2",
             "type": "sign",
-            "x": 30,
-            "y": 4
+            "x": 31,
+            "y": 11
         },
         {
             "elevation": 0,
@@ -27,6 +27,30 @@
             "type": "sign",
             "x": 3,
             "y": 4
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock3",
+            "type": "sign",
+            "x": 3,
+            "y": 5
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock4",
+            "type": "sign",
+            "x": 29,
+            "y": 2
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "MiningRock5",
+            "type": "sign",
+            "x": 20,
+            "y": 20
         }
     ],
     "connections": null,
