@@ -9989,19 +9989,19 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_DawnLilycoveTreecko},
     },
 
-    [TRAINER_EMPTY_31] =
+    [TRAINER_ESKIMO_1] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_DAWN,
-        .trainerName = _("Dawn"),
+        .trainerClass = TRAINER_CLASS_HIKER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
+        .trainerPic = TRAINER_PIC_ESKIMO,
+        .trainerName = _("Jamie"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_DawnLilycoveTorchic),
-        .party = {.NoItemDefaultMoves = sParty_DawnLilycoveTorchic},
+        .partySize = ARRAY_COUNT(sParty_IceHikerJamie),
+        .party = {.NoItemDefaultMoves = sParty_IceHikerJamie},
     },
 
     [TRAINER_JONAH] =

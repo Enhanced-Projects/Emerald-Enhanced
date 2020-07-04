@@ -1999,6 +1999,7 @@ const u8 gText_RyuRelationshipLanetteMenuOption[] = _("Lanette");
 
 
 const u8 gText_RyuBetaMenuBlank[] = _("Empty");
+const u8 gText_RyuBetaMenuLanette[] = _("Reset Lanette");
 const u8 gText_RyuBetaMenuResetBadges[] = _("Reset Badges");
 const u8 gText_RyuBetaMenuResetGCMS[] = _("Reset GCMS");
 const u8 gText_RyuBetaMenuGoHome[] = _("Teleport Home");

@@ -558,7 +558,7 @@ static void CB2_InitBattleInternal(void)
     LoadBattleTextboxAndBackground();
     ResetSpriteData();
     ResetTasks();
-    //DrawBattleEntryBackground();
+    //DrawBattleEntryBackground(); this was disabled because the slide tiles did not play well with the new battle bg's from ee v5.5+
     FreeAllSpritePalettes();
     gReservedSpritePaletteCount = 4;
     SetVBlankCallback(VBlankCB_Battle);

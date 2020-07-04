@@ -704,16 +704,12 @@ static const struct BattleBackground gBattleTerrainTable[] =
     {
         .tileset = gBattleTerrainTiles_SnowshoreTiles,
         .tilemap = gBattleTerrainTilemap_SnowshoreMap,
-        .entryTileset = gBattleTerrainAnimTiles_Sand,
-        .entryTilemap = gBattleTerrainAnimTilemap_Sand,
         .palette = gBattleTerrainPalette_SnowshorePalette,
     },
     [BATTLE_TERRAIN_MTFREEZE] =
     {
         .tileset = gBattleTerrainTiles_MtFreezeTiles,
         .tilemap = gBattleTerrainTilemap_MtFreezeMap,
-        .entryTileset = gBattleTerrainAnimTiles_Sand,
-        .entryTilemap = gBattleTerrainAnimTilemap_Sand,
         .palette = gBattleTerrainPalette_MtFreezePalette,
     },
 };

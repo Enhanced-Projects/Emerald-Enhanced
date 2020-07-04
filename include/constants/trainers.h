@@ -116,6 +116,7 @@
 #define TRAINER_PIC_LANETTE               96
 #define TRAINER_PIC_MINNIE                97
 #define TRAINER_PIC_MEWTWO                98
+#define TRAINER_PIC_ESKIMO                99
 
 #define TRAINER_BACK_PIC_BRENDAN                0
 #define TRAINER_BACK_PIC_DAWN                   1
