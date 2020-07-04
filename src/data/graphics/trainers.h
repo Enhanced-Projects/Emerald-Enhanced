@@ -286,6 +286,9 @@ const u32 gTrainerPalette_Lance[] = INCBIN_U32("graphics/trainers/palettes/train
 const u32 gTrainerFrontPic_Giovanni[] = INCBIN_U32("graphics/trainers/front_pics/trainer_giovanni.4bpp.lz");
 const u32 gTrainerPalette_Giovanni[] = INCBIN_U32("graphics/trainers/palettes/trainer_giovanni.gbapal.lz");
 
+const u32 gTrainerFrontPic_Eskimo[] = INCBIN_U32("graphics/trainers/front_pics/eskimo.4bpp.lz");
+const u32 gTrainerPalette_Eskimo[] = INCBIN_U32("graphics/trainers/palettes/eskimo_palette.gbapal.lz");
+
 const u32 gTrainerFrontPic_Lanette[] = INCBIN_U32("graphics/trainers/front_pics/trainer_lanette.4bpp.lz");
 const u32 gTrainerPalette_Lanette[] = INCBIN_U32("graphics/trainers/palettes/trainer_lanette.gbapal.lz");
 
