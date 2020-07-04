@@ -226,5 +226,5 @@
     "show_map_name": true,
     "warp_events": [
     ],
-    "weather": "WEATHER_SANDSTORM"
+    "weather": "WEATHER_SUNNY"
 }
