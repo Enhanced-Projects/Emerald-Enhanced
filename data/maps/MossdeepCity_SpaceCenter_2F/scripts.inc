@@ -93,6 +93,8 @@ MossdeepCity_SpaceCenter_2F_EventScript_BattleThreeMagmaGrunts:: @ 8223E09
 	removeobject 5
 	removeobject 7
 	removeobject 6
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAXIE
+	addobject 9
 	releaseall
 	end
 	
@@ -569,7 +571,7 @@ SPC_YouAgreed:
 	.string "{COLOR DARK_GREY}{SHADOW RED}What? You...agreed to this?\p"
 	.string "That's absurd! It's clearly\n"
 	.string "obvious that humans willingly\p"
-	.string "repeat their past mistakes, expect\n"
+	.string "repeat their past mistakes,\n"
 	.string "expecting a different outcome.\p"
 	.string "I know better...they never learn.$"
 
