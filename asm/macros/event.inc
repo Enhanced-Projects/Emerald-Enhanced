@@ -1594,94 +1594,89 @@
 	.2byte \y
 	.endm
 
-	@removes sprites drawn with drawheadshot or drawcustompic
-	.macro removecutscenesprites
-	.byte 0xe7
-	.endm
-
 	@sets party mon index to happiness value
 	.macro addmonhappiness partyindex:req, value:req
-	.byte 0xe8
+	.byte 0xe7
 	.2byte \partyindex
 	.2byte \value
 	.endm
 
 	@Takes battle points away from the player's balance
 	.macro takebp value:req
-	.byte 0xe9
+	.byte 0xe8
 	.2byte \value
 	.endm
 
 	@gives value battle points to player
 	.macro givebp value:req
-	.byte 0xea
+	.byte 0xe9
 	.2byte \value
 	.endm
 
 	@puts player's current bp in VAR_RESULT
 	.macro checkbp
-	.byte 0xeb
+	.byte 0xea
 	.endm
 
 	@puts the correct relative follower x/y coords in vars temp 1 and 2.
 	.macro gfec
-	.byte 0xec
+	.byte 0xeb
 	.endm
 
 	@multiplies var by value.
 	.macro multvar var:req, value:req
-	.byte 0xed
+	.byte 0xec
 	.2byte \var
 	.2byte \value
 	.endm
 
 	@divides var by value.
 	.macro divvar var:req, value:req
-	.byte 0xee
+	.byte 0xed
 	.2byte \var
 	.2byte \value
 	.endm
 
 	@displays a fullscreen bg image.
 	.macro drawfullscreenimage index:req
-	.byte 0xef
+	.byte 0xee
 	.byte \index
 	.endm
 
 	@clears the drawn fullscreen image.
 	.macro clearfullscreenimage
-	.byte 0xf0
+	.byte 0xef
 	.endm
 
 	@gives an item silently
 	.macro giveitem_silent item:req, quantity=1
-	.byte 0xf1
+	.byte 0xf0
 	.2byte \item
 	.2byte \quantity
 	.endm
 
 	@gets gamestat and puts it in VAR_RESULT
 	.macro readgamestat stat:req
-	.byte 0xf2
+	.byte 0xf1
 	.2byte \stat
 	.endm
 
 	.macro messageoneline text:req
-	.byte 0xf3
+	.byte 0xf2
 	.4byte \text
 	.endm
 
 	.macro dominingcheck
-	.byte 0xf4
+	.byte 0xf3
 	.endm
 
 	.macro drawinfobox number:req
-	.byte 0xf5
+	.byte 0xf4
     .byte \number
 	.endm
 
 	.macro removeinfobox
-	.byte 0xf6
+	.byte 0xf5
 	.endm
 
 @ Supplementary
