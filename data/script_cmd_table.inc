@@ -231,7 +231,6 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_destroyfollower
 	.4byte ScrCmd_drawheadshot
 	.4byte ScrCmd_drawcustompic
-	.4byte ScrCmd_removecutscenesprites
 	.4byte ScrCmd_addmonhappiness
 	.4byte ScrCmd_takebp
 	.4byte ScrCmd_givebp
