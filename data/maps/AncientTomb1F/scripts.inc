@@ -24,13 +24,10 @@ AT1_LeafStoryEvent::
 	applymovement 2, Common_Movement_ExclamationMark
 	playse SE_PIN
 	waitmovement 2
-	drawheadshot HEAD_LANA
 	msgbox AT1_Story2 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	msgbox AT1_Story21 MSGBOX_DEFAULT
 	closemessage
-	drawheadshot HEAD_LANA
 	msgbox AT1_Story22 MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_RYU_DS_LANA_STAGE, 70
@@ -40,7 +37,6 @@ AT1_LeafStoryEvent15::
 	setvar VAR_RYU_DS_LANA_STAGE, 71
 	applymovement 2, Common_Movement_FaceRight
 	waitmovement 2
-	removecutscenesprites
 	msgbox AT1_Story23 MSGBOX_DEFAULT
 	msgbox AT1_Story3 MSGBOX_DEFAULT
 	delay 25

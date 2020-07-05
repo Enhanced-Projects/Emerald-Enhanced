@@ -42,10 +42,8 @@ AbandonedShip_CaptainsOffice_Text_ThisIsSSCactus: @ 8238918
 	
 @==================================================================================================LANA AbandonedShip_CaptainsOffice_EventScript_2387E2
 AS_Leaf_Event::
-	drawheadshot HEAD_LANA
 	msgbox AS_LeafMsg1 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	msgbox AS_LeafMsg12 MSGBOX_DEFAULT
 	applymovement 3, AS_PushingDown
 	applymovement OBJ_EVENT_ID_PLAYER, AS_PushedDown

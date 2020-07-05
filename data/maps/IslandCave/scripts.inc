@@ -54,10 +54,8 @@ IC_LeafEvent2::
 	waitmovement 3
 	msgbox IC_LeafMsg3 MSGBOX_DEFAULT
 	closemessage
-	drawheadshot HEAD_LANA
 	msgbox IC_LeafMsg32 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	applymovement OBJ_EVENT_ID_PLAYER, DR_StepRight
 	waitmovement 0
 	applymovement 3, IC_Exit

@@ -35,7 +35,6 @@ LH_bro_move:
 LH_Leaf_Home_chat::
 	lock
 	faceplayer
-	drawheadshot HEAD_LANA
 	compare VAR_RYU_DS_LANA_STAGE, 4
 	goto_if_eq LH_alreadytalked
 	call_if_set FLAG_RYU_DS_LEAF_PARTNERS, LH_Afterstory
@@ -49,7 +48,6 @@ LH_Leaf_Home_chat::
 	setvar VAR_RYU_DS_LANA_STAGE, 4
 	applymovement 2, LH_read
 	waitmovement 0
-	removecutscenesprites
 	release
 	end
 
@@ -61,7 +59,6 @@ LH_Afterstory::
 	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
 	setflag FLAG_RECEIVED_MYSTIC_TICKET
 	msgbox LH_GIFT_GIVEN
-	removecutscenesprites
 	release
 	end
 	
@@ -69,17 +66,16 @@ LH_alreadytalked::
 	goto_if_set FLAG_SYS_GAME_CLEAR, LH_EventStart
 	msgbox LH_finished MSGBOX_SIGN
 	closemessage
-	removecutscenesprites
 	applymovement 2, LH_read
 	waitmovement 0
 	release
 	end
 	
 LH_EventStart::
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
 	call_if_set FLAG_RYU_PLAYER_HELPING_AQUA, LH_AquaMember
 	msgbox LH_BeginQuest MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	applymovement OBJ_EVENT_ID_PLAYER, LH_PlayerShoved
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	applymovement 2, LH_LanaLeaves
@@ -136,7 +132,6 @@ LH_LeafNight:
 	closemessage
 	applymovement 2, Common_Movement_HeartEmote
 	waitmovement 2
-	removecutscenesprites
 	applymovement OBJ_EVENT_ID_PLAYER, LH_RelSceneEnd
 	waitmovement OBJ_EVENT_ID_PLAYER
 	release

@@ -14,7 +14,6 @@ LeafSceneResume::
     goto_if_unset FLAG_RYU_ON_DATE ryu_end
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	fadenewbgm MUS_THANKFOR
-	drawheadshot HEAD_LANA
 	msgbox LCL_Story1 MSGBOX_DEFAULT
 	closemessage
 	applymovement 23, Common_Movement_FaceRight
@@ -47,7 +46,6 @@ LeafSceneResume::
 	waitmovement 23
 	msgbox LCL_Story7 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	applymovement 23, LCL_LeafLeaving
 	waitmovement 23
 	removeobject 23
@@ -551,25 +549,21 @@ LCC_FemalRivalIntroScript:: @ 81E2DF8
 	end
 
 LilycoveCity_EventScript_1E2E48:: @ 81E2E48
-	removecutscenesprites
 	msgbox lcc_femaleRivalAskAgain, MSGBOX_YESNO
 	nop
-    drawheadshot HEAD_DAWN
-	return
+    return
 
 LilycoveCity_EventScript_1E2E51:: @ 81E2E51
 	msgbox lcc_femaleRivalIntro, MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
+	nop
     msgbox lcc_femaleRivalIntroQuery MSGBOX_YESNO
-    drawheadshot HEAD_DAWN
-	return
+    return
 
 LCC_FemalRivalBattleDeclined:: @ 81E2E5A
 	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
 	msgbox lcc_femaleRivalVictory, MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	release
@@ -577,7 +571,6 @@ LCC_FemalRivalBattleDeclined:: @ 81E2E5A
 
 MaleRivalIntroScript:: @ 81E2E6B
 	playbgm MUS_BOY_SUP, 1
-	drawheadshot HEAD_BRENDAN
 	msgbox lcc_brendanBattleStarting, MSGBOX_DEFAULT
 	goto LCC_MaleRivalStartBattle
 	end
@@ -591,16 +584,13 @@ LilycoveCity_EventScript_1E2EC4:: @ 81E2EC4
 	closemessage
 	applymovement 17, Common_Movement_ExclamationMark
 	waitmovement 0
-	removecutscenesprites
 	msgbox lcc_brendanIntro, MSGBOX_YESNO
 	return
 
 LilycoveCity_EventScript_1E2ECD:: @ 81E2ECD
 	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
-	drawheadshot HEAD_BRENDAN
 	msgbox lcc_declinedBrendanBattle, MSGBOX_DEFAULT
 	savebgm MUS_DUMMY
-	removecutscenesprites
 	fadedefaultbgm
 	release
 	end
@@ -611,7 +601,6 @@ LCC_FemalRivalStartBattle:: @ 81E2EFE
 	end
 
 LCC_MaleRivalStartBattle:: @ 81E2F2E
-	removecutscenesprites
 	trainerbattle_no_intro TRAINER_BRENDAN_5, lcc_brendanLostBattle
 	goto LCC_MaleRivalBattleFinished
 	end

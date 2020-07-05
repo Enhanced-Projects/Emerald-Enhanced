@@ -324,10 +324,8 @@ NM_Leaf_Event_PostWattson::
 	
 NM_Leaf_Event::
 	lock
-	drawheadshot HEAD_LANA
 	msgbox NM_LanaElipsis MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	fadescreen 1
 	playse SE_TK_WARPOUT
 	waitse
@@ -348,7 +346,6 @@ NM_LeafNoGenerator:
     faceplayer
 	msgbox NM_LanaElipsis2 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	release
 	end
 

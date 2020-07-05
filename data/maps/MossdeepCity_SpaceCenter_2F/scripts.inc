@@ -345,7 +345,6 @@ SPC_AfterMaxie2::
 	waitmoncry
 	msgbox SPC_YouStillSide
 	closemessage
-	removecutscenesprites
 	fadedefaultbgm
 	playse SE_TK_WARPOUT
 	removeobject 10

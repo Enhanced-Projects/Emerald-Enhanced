@@ -257,7 +257,6 @@ LCC_LeafEvent::
 	waitmovement 5
 	fadenewbgm MUS_OOAME
 	delay 20
-	drawheadshot HEAD_LANA
 	msgbox LCC_Story1 MSGBOX_DEFAULT
 	closemessage
 	applymovement 5, Common_Movement_ExclamationMark
@@ -298,7 +297,6 @@ LCC_LeafEvent::
 	applymovement 5 LCC_Right1
 	msgbox LCC_Story9 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	savebgm MUS_THANKFOR
 	delay 5
 	setvar VAR_RYU_DS_LANA_STAGE, 1
