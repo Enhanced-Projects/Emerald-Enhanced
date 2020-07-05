@@ -1598,13 +1598,14 @@
 #define FLAG_UNUSED_0x933                           (DAILY_FLAGS_START + 0x13) // Unused Flag
 #define FLAG_DAILY_APPRENTICE_LEAVES                (DAILY_FLAGS_START + 0x14)
 
-#define FLAG_UNUSED_0x935                           (DAILY_FLAGS_START + 0x15) // Unused Flag
-#define FLAG_UNUSED_0x936                           (DAILY_FLAGS_START + 0x16) // Unused Flag
-#define FLAG_UNUSED_0x937                           (DAILY_FLAGS_START + 0x17) // Unused Flag
-#define FLAG_UNUSED_0x938                           (DAILY_FLAGS_START + 0x18) // Unused Flag
-#define FLAG_UNUSED_0x939                           (DAILY_FLAGS_START + 0x19) // Unused Flag
-#define FLAG_UNUSED_0x93A                           (DAILY_FLAGS_START + 0x1A) // Unused Flag
-#define FLAG_UNUSED_0x93B                           (DAILY_FLAGS_START + 0x1B) // Unused Flag
+//Iceland item flags continued
+#define FLAG_ITEM_FROSTBITE_FIELD_PP_UP             (DAILY_FLAGS_START + 0x15) // Unused Flag
+#define FLAG_ITEM_FROSTBITE_FIELD_REPEL             (DAILY_FLAGS_START + 0x16) // Unused Flag
+#define FLAG_ITEM_FROSTBITE_FIELD_PP_MAX            (DAILY_FLAGS_START + 0x17) // Unused Flag
+#define FLAG_ITEM_FROSTBITE_FIELD_SUPER_REPEL       (DAILY_FLAGS_START + 0x18) // Unused Flag
+#define FLAG_HIDDEN_FROSTBITE_FIELD_ICE_HEAL        (DAILY_FLAGS_START + 0x19) // Unused Flag
+#define FLAG_HIDDEN_SNOWSHORE_BIG_PEARL             (DAILY_FLAGS_START + 0x1A) // Unused Flag
+#define FLAG_HIDDEN_SNOWSHORE_HEART_SCALE           (DAILY_FLAGS_START + 0x1B) // Unused Flag
 #define FLAG_UNUSED_0x93C                           (DAILY_FLAGS_START + 0x1C) // Unused Flag
 #define FLAG_UNUSED_0x93D                           (DAILY_FLAGS_START + 0x1D) // Unused Flag
 #define FLAG_UNUSED_0x93E                           (DAILY_FLAGS_START + 0x1E) // Unused Flag
