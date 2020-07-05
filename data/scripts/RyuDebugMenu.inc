@@ -183,6 +183,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	goto RyuDebug_Init_GiveAll
 	release
 	end
 
@@ -308,7 +309,7 @@ RyuDebug_GiveAllMons::
 	goto RyuDebug_ReturnCall
 	
 RyuDebug_ReturnCall::
-	compare VAR_TEMP_0, 151
+	compare VAR_TEMP_0, 400
 	goto_if_eq RyuDebugGivePokeDone
 	goto RyuDebug_GiveAllMons
 	
