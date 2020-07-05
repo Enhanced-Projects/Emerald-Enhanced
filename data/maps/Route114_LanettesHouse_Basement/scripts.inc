@@ -275,6 +275,7 @@ LNH_HelpLanette::
 	fadenewbgm MUS_TONEKUSA
 	removeobject 1
 	msgbox LNH_AsYouWakeUp
+	removecutscenesprites
 	fadescreen 0
 	closemessage
 	setflag FLAG_RYU_LANETTE_EVENT1
