@@ -110,7 +110,6 @@ EverGrandeCity_ChampionsRoom_EventScript_PlayBrendanMusic:: @ 8228AC1
 	return
 
 EverGrandeCity_ChampionsRoom_EventScript_MayAdvice:: @ 8228AC6
-	drawheadshot HEAD_DAWN
 	msgbox EGC_DawnIntro, MSGBOX_DEFAULT
 	delay 40
 	playse SE_PIN
@@ -126,7 +125,6 @@ EverGrandeCity_ChampionsRoom_EventScript_MayAdvice:: @ 8228AC6
 	end
 
 EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice:: @ 8228AFB
-	drawheadshot HEAD_BRENDAN
 	msgbox EGC_NormalBrendanIntro, MSGBOX_DEFAULT
 	delay 40
 	playse SE_PIN
@@ -141,7 +139,6 @@ EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice:: @ 8228AFB
 
 EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF:: @ 8228B30
 	closemessage
-	removecutscenesprites
 	addobject 2
 	applymovement 2, EverGrandeCity_ChampionsRoom_Movement_BirchArrives
 	waitmovement 0
@@ -172,7 +169,6 @@ EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF:: @ 8228B30
 	closemessage
 	call_if_set FLAG_RYU_DS_BRENDAN_FRIENDS, EGC_BRENDANFZ_QUERY
 	call_if_set FLAG_RYU_DS_DAWN_FRIENDS, EGC_DAWNFZ_QUERY
-	removecutscenesprites
 	closemessage
 	goto EGC_PlayerAndChampionExit
 
@@ -394,10 +390,9 @@ EverGrandeCity_ChampionsRoom_Text_BrendanCongratulations: @ 82294F5
 @==================================================================================================Relationship stuffs
 
 EGC_DAWNREL_QUERY::
-	removecutscenesprites
+	nop
     msgbox EGC_DS_LoversToPartners MSGBOX_YESNO
-    drawheadshot HEAD_DAWN
-	compare VAR_RESULT 1
+    compare VAR_RESULT 1
 	goto_if_eq EGC_DAWNREL_YES
 	goto_if_ne EGC_DAWNREL_NO
 	return
@@ -405,18 +400,15 @@ EGC_DAWNREL_QUERY::
 EGC_DAWNFZ_QUERY::
 	goto_if_set FLAG_RYU_DS_DAWN_PARTNERS, EGC_MAXDSRANK_DAWN
 	goto_if_set FLAG_RYU_DS_DAWN_LOVERS, EGC_DAWNREL_QUERY
-	removecutscenesprites
+	nop
     msgbox EGC_DAWN_QUERY, MSGBOX_YESNO
-    drawheadshot HEAD_DAWN
-	compare VAR_RESULT 1
+    compare VAR_RESULT 1
 	goto_if_eq EGC_DAWNFZ_YES
 	goto_if_ne EGC_DAWNFZ_NO
 	return
 	
 EGC_BRENDANREL_QUERY::
-    removecutscenesprites
-	msgbox EGC_DS_LoversToPartnersFemalePlayer MSGBOX_YESNO
-	drawheadshot HEAD_BRENDAN
+    msgbox EGC_DS_LoversToPartnersFemalePlayer MSGBOX_YESNO
 	compare VAR_RESULT 1
 	goto_if_eq EGC_BRENDANREL_YES
 	goto_if_ne EGC_BRENDANREL_NO
@@ -432,20 +424,16 @@ EGC_BRENDANFZ_QUERY::
 	return
 
 EGC_MAXDSRANK_BRENDAN::
-	drawheadshot HEAD_BRENDAN
 	msgbox EGC_MAXDS_MALE_MSG
 	closemessage
-	removecutscenesprites
 	return
 
 EGC_MAXDS_MALE_MSG:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{RIVAL}: I'll see you outside!$"
 
 EGC_MAXDSRANK_DAWN::
-	drawheadshot HEAD_DAWN
 	msgbox EGC_MAXDS_FEMALE_MSG
 	closemessage
-	removecutscenesprites
 	return
 
 EGC_MAXDS_FEMALE_MSG:
@@ -535,7 +523,6 @@ EGC_GoingToHallOfFame::
 	goto_if_set FLAG_RYU_DS_DAWN_LOVERS, EGC_DAWNREL_QUERY
 	goto_if_set FLAG_RYU_DS_DAWN_FRIENDS, EGC_DAWNFZ_QUERY
 	setflag FLAG_RYU_DS_DAWN_FRIENDS
-	removecutscenesprites
 	return
 	
 EGC_GoingToHallOfFameFemale::

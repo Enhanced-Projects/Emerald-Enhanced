@@ -210,7 +210,6 @@ bool8 ScrCmd_drawheadshot(struct ScriptContext *ctx)
             {
                 LoadSpriteSheet(&leafHeadshotSpriteSheet);
                 LoadSpritePalette(&leafScenePalette);
-                cutsceneSpriteId1 = 1;
                 cutsceneSpriteId1 = (CreateSprite(&leafSceneSpriteTemplate, 220, 83, 1));
                 return FALSE;
             }

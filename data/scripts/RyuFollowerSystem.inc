@@ -104,8 +104,7 @@ FollowerLeafSetup::
 	createfollower OBJ_EVENT_GFX_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
 	waitmovement 0
-    removecutscenesprites
-	setflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
+    setflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
 	setflag FLAG_RYU_HAS_FOLLOWER
 	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LEAF
 	msgbox LeafOkLetsGo

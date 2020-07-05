@@ -786,7 +786,6 @@ r111_ScientistCastformEvent::
 	fadescreen 0
 	msgbox r111_IKnewItWouldnt
 	closemessage
-	removecutscenesprites
 	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 104
 	release
 	end

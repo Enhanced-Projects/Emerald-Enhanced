@@ -42,8 +42,7 @@ LRT_NotReceived::
 	fadescreen FADE_FROM_BLACK
 	msgbox LRT_DAWN_KISS, MSGBOX_YESNO
 	nop
-    drawheadshot HEAD_DAWN
-	compare VAR_RESULT, 1
+    compare VAR_RESULT, 1
 	goto_if_eq LRT_WONT_HAPPEN
     setflag	FLAG_RYU_DS_DAWN_CLOSEFRIENDS
 	msgbox LRT_HAPPY, MSGBOX_DEFAULT

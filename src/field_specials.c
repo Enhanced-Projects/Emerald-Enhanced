@@ -95,8 +95,6 @@ static EWRAM_DATA u8 sBattlePointsWindowId = 0;
 static EWRAM_DATA u8 sFrontierExchangeCorner_ItemIconWindowId = 0;
 static EWRAM_DATA u8 sPCBoxToSendMon = 0;
 static EWRAM_DATA u32 sBattleTowerMultiBattleTypeFlags = 0;
-static EWRAM_DATA u8 cutsceneSpriteId1 = 0;
-static EWRAM_DATA u8 cutsceneSpriteId2 = 0;
 
 struct ListMenuTemplate gScrollableMultichoice_ListMenuTemplate;
 
@@ -5485,10 +5483,6 @@ int RyuMeloettaFormSwitcher(void)
     }
 }
 
-
-
-
-
 void VBCB_FullscreenCutscene(void) 
 {
 	UpdatePidgeyPaletteFade();
@@ -5511,6 +5505,8 @@ bool8 ScrCmd_clearfullscreenimage(struct ScriptContext *ctx)
     return TRUE;
 }
 
+static EWRAM_DATA u8 specialCutsceneSprite = 0;
+
 bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)
 {
     u8 mode = ScriptReadByte(ctx);
@@ -5520,7 +5516,7 @@ bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)
 
     if (mode == 1)
     {
-        cutsceneSpriteId2 = (CreateTrainerSprite(FacilityClassToPicIndex(id), x, y, 0, &gDecompressionBuffer[0x800]));
+        specialCutsceneSprite = (CreateTrainerSprite(FacilityClassToPicIndex(id), x, y, 0, &gDecompressionBuffer[0x800]));
         return FALSE;
     }
 
@@ -5528,7 +5524,7 @@ bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)
     {
         VarSet(VAR_TEMP_7, id);
         VarSet(VAR_TEMP_8, 2);
-        cutsceneSpriteId2 = CreateMonSpriteFromNationalDexNumber(id, x, y, 15);
+        specialCutsceneSprite = CreateMonSpriteFromNationalDexNumber(id, x, y, 15);
         return FALSE;
     }
 
@@ -5536,31 +5532,6 @@ bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)
     {
         CreateMonSprite_PicBox(id, x, y, 0);
     }
-}
-
-bool8 ScrCmd_removecutscenesprites(struct ScriptContext *ctx)
-{
-    if (!cutsceneSpriteId1 == 0)
-    {
-        DestroySprite(&gSprites[cutsceneSpriteId1]);
-        cutsceneSpriteId1 = 0;
-        return FALSE;
-    }
-
-    if (!cutsceneSpriteId2 == 0)
-    {
-        DestroySprite(&gSprites[cutsceneSpriteId2]);
-        cutsceneSpriteId2 = 0;
-        return FALSE;
-    }
-} 
-
-void RemoveBothCutsceneSpriteIds(void)
-{
-    DestroySpriteAndFreeResources(&gSprites[cutsceneSpriteId1]);
-    DestroySpriteAndFreeResources(&gSprites[cutsceneSpriteId2]);
-    cutsceneSpriteId2 = 0;
-    cutsceneSpriteId1 = 0;
 }
 
 bool8 ScrCmd_addmonhappiness(struct ScriptContext *ctx)

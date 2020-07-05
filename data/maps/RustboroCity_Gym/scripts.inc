@@ -124,7 +124,6 @@ RG_GymBattleIntroBrendan::
 	playse SE_DOOR
 	applymovement 8, RG_PartnerEnter
 	waitmovement 0
-	drawheadshot HEAD_BRENDAN
 	msgbox RG_BRENDAN_INTRO MSGBOX_DEFAULT
 	goto RG_AltGymBattle
 	
@@ -154,7 +153,6 @@ RG_GymBattleIntroLanette::
 	
 RG_AltGymBattle::
 	msgbox RG_PreBattleText MSGBOX_DEFAULT
-	removecutscenesprites
 	special SavePlayerParty
 	trainerbattle 10 TRAINER_ROXANNE_4, 0, NULL, RG_DefeatText
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI

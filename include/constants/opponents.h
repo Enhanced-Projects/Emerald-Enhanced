@@ -663,11 +663,11 @@
 #define TRAINER_WALLY_VR_4                  659
 #define TRAINER_WALLY_VR_5                  660
 #define TRAINER_BRENDAN_5                   661
-#define TRAINER_EMPTY_32    662
-#define TRAINER_EMPTY_29    663
+#define TRAINER_EMPTY_32                    662
+#define TRAINER_EMPTY_29                    663
 #define TRAINER_DAWN_5                      664
-#define TRAINER_EMPTY_30        665
-#define TRAINER_EMPTY_31        666
+#define TRAINER_EMPTY_30                    665
+#define TRAINER_ESKIMO_1                    666
 #define TRAINER_JONAH                       667
 #define TRAINER_HENRY                       668
 #define TRAINER_ROGER                       669

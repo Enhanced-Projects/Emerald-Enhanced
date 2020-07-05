@@ -63,6 +63,7 @@
 #include "constants/trainers.h"
 #include "cable_club.h"
 #include "pokemon.h"
+#include "autoscale_tables.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_SE1;
 extern struct MusicPlayerInfo gMPlayInfo_SE2;
@@ -558,7 +559,7 @@ static void CB2_InitBattleInternal(void)
     LoadBattleTextboxAndBackground();
     ResetSpriteData();
     ResetTasks();
-    //DrawBattleEntryBackground();
+    //DrawBattleEntryBackground(); this was disabled because the slide tiles did not play well with the new battle bg's from ee v5.5+
     FreeAllSpritePalettes();
     gReservedSpritePaletteCount = 4;
     SetVBlankCallback(VBlankCB_Battle);
@@ -1806,29 +1807,7 @@ static void sub_8038538(struct Sprite *sprite)
     }
 }
 
-static const u16 sRange[9][2] = {//2d array for trainer level ranges
-    {14,18},
-    {19,23},
-    {24,29},
-    {29,34},
-    {34,47},
-    {47,53},
-    {53,64}, 
-    {64,70},
-    {71,82},
-};
 
-static const u16 sGymRange[9][2] = {//2d array for gym leader level ranges
-    {16,21},
-    {22,26},
-    {27,33},
-    {34,40},
-    {42,48},
-    {49,55},
-    {55,66}, 
-    {67,76},
-    {77,84},
-};
 
 int RyuChooseTrainerLevel(void)
 {

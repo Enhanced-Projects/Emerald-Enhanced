@@ -157,7 +157,6 @@ LRT_BrendanNIGHT::
 	waitmovement 0
 	applymovement 2 LRT_BrendanHEART2
 	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART
-	removecutscenesprites
 	delay 20
 	fadescreen 1
 	fadeoutbgm 1
@@ -222,7 +221,6 @@ LRT_BrendanCANCEL::
 	compare VAR_RESULT, 1
 	goto_if_eq FollowerBrendanSetup
     msgbox LRT_BrendanDISPT MSGBOX_DEFAULT
-	removecutscenesprites
 	release
 	end
 
@@ -469,7 +467,6 @@ LRT_LeafEvent::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
-	drawheadshot HEAD_LANA
 	msgbox LRT_Story3 MSGBOX_DEFAULT
 	closemessage
 	msgbox LRT_PlayerKiss MSGBOX_DEFAULT
@@ -487,7 +484,6 @@ LRT_LeafEvent::
 	waitmovement 3
 	msgbox LRT_Story6 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	applymovement 3 Common_Movement_HeartEmote
 	waitmovement 3
 	msgbox LRT_Story6_5 MSGBOX_DEFAULT

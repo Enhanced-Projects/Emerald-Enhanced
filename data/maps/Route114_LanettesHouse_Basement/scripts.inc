@@ -32,10 +32,8 @@ Ryu_LNH_RomSceneStart::
 	waitmovement 1
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1
-	drawheadshot HEAD_LANETTE
 	msgbox LNH_StayingNightPartners
 	closemessage
-	removecutscenesprites
 	fadescreen 1
 	special HealPlayerParty
 	clearflag FLAG_RYU_HIDE_LANETTE_BASEMENT
@@ -63,10 +61,8 @@ LNH_AfterStory::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
 	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, ryu_end
 	lock
-	drawheadshot HEAD_LANETTE
 	msgbox LNH_StayingNightAfterStory
 	closemessage
-	removecutscenesprites
 	applymovement 1, LNH_AS_LanetteToBed
 	applymovement OBJ_EVENT_ID_PLAYER, LNH_AS_PlayerToBed
 	waitmovement 1
@@ -92,7 +88,6 @@ LNH_AfterStory::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 1, LNH_MoveToPlayerFromPCDesk
 	waitmovement 1
-	drawheadshot HEAD_LANETTE
 	setflag FLAG_RYU_HIDE_LANETTE_BASEMENT
 	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
 	goto_if_set FLAG_RYU_RECIEVED_ROTOM, LNH_WaitHowIsRotom
@@ -107,7 +102,6 @@ LNH_AfterStory::
 	waitfanfare
 	setflag FLAG_RYU_STAYED_2_NIGHTS_AT_LANETTE
 	setflag FLAG_RYU_RECIEVED_ROTOM
-	removecutscenesprites
 	release
 	end
 
@@ -124,7 +118,6 @@ LNH_ReceivedRotom:
 
 LNH_WaitHowIsRotom::
 	msgbox LNH_HowIsRotomMsg
-	removecutscenesprites
 	setflag FLAG_RYU_HIDE_LANETTE_BASEMENT
 	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
 	release
@@ -139,7 +132,6 @@ LNH_GiveRotomFullParty::
 	playfanfare MUS_FANFA4
 	setflag FLAG_RYU_DS_LANETTE_PARTNERS
 	setflag FLAG_RYU_RECIEVED_ROTOM
-	removecutscenesprites
 	release
 	end
 
@@ -219,14 +211,12 @@ LNH_WaitForLanette::
 	delay 60
 	applymovement 1, LNH_ToPlayer
 	waitmovement 1
-	drawheadshot HEAD_LANETTE
 	msgbox LNH_SorryFor
 	closemessage
 	msgbox LNH_JustChecking
 	closemessage
 	msgbox LNH_OkayHi
 	closemessage
-	removecutscenesprites
 	applymovement 1, LNH_LanetteToDesk
 	waitmovement 1
 	setflag FLAG_RYU_DS_LANETTE_ACQ
@@ -246,7 +236,6 @@ LNH_HelpLanette::
 	msgbox LNH_looksflushed
 	setflag FLAG_RYU_DS_LANETTE_LOVERS
 	closemessage
-	drawheadshot HEAD_LANETTE
 	applymovement 1, Common_Movement_FaceUp
 	waitmovement 1
 	applymovement 1, Common_Movement_FaceRight
@@ -259,7 +248,6 @@ LNH_HelpLanette::
 	applymovement 1, Common_Movement_HeartEmote
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement OBJ_EVENT_ID_PLAYER
-	removecutscenesprites
 	applymovement 1, LNH_ToBed1
 	applymovement OBJ_EVENT_ID_PLAYER, LNH_ToBed2
 	waitmovement OBJ_EVENT_ID_PLAYER

@@ -90,13 +90,11 @@ MP_SetupLeafEvent::
 MP_LeafAltStory1::
 	lock
 	faceplayer
-	drawheadshot HEAD_LANA
 	msgbox MP_Story1 MSGBOX_DEFAULT
 	closemessage
 	fadenewbgm MUS_HIDERI
 	msgbox MP_Story1_5 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	applymovement 4 MP_LeafLeave
 	waitmovement 4
 	playse SE_TK_WARPOUT

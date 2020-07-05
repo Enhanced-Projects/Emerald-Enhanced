@@ -113,30 +113,19 @@ AT_LanaEvent2::
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, AT_SV_Cam1
     waitmovement OBJ_EVENT_ID_CAMERA
-	drawheadshot HEAD_LANA
 	msgbox AT_SV_Story2 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
-	drawheadshot HEAD_GARY
 	msgbox AT_SV_Story21 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
-	drawheadshot HEAD_LANA
 	msgbox AT_SV_Story22 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
-	drawheadshot HEAD_GARY
 	msgbox AT_SV_Story23 MSGBOX_DEFAULT
 	applymovement 2, Common_Movement_QuestionMark
 	waitmovement 2
 	msgbox AT_SV_Story3 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
-	drawheadshot HEAD_LANA
 	msgbox AT_SV_Story31 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
-	drawheadshot HEAD_GARY
 	setvar VAR_RYU_DS_LANA_STAGE, 83
 	goto AT_LanaEvent3
 
@@ -152,13 +141,10 @@ AT_LanaEvent3::
 	fadenewbgm MUS_RG_EXEYE
 	msgbox AT_SV_Story4 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	msgbox AT_SV_Story41 MSGBOX_DEFAULT
 	closemessage
-	drawheadshot HEAD_LANA
 	msgbox AT_SV_Story42 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox AT_SV_Story5 MSGBOX_DEFAULT
@@ -167,35 +153,25 @@ AT_LanaEvent3::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox AT_SV_Story6 MSGBOX_DEFAULT
 	closemessage
-	drawheadshot HEAD_GARY
 	msgbox AT_SV_Story61 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
-	drawheadshot HEAD_LANA
 	msgbox AT_SV_Story62 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	msgbox AT_SV_Story63 MSGBOX_DEFAULT
 	fadenewbgm MUS_DUMMY
 	msgbox AT_SV_Story7 MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_RG_RIVAL1, 0
-	drawheadshot HEAD_GARY
 	msgbox AT_SV_Story8 MSGBOX_DEFAULT
 	closemessage
-	drawheadshot HEAD_LANA
 	msgbox AT_SV_Story81 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
-	drawheadshot HEAD_GARY
 	msgbox AT_SV_Story82 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	msgbox AT_SV_Story83 MSGBOX_DEFAULT
 	applymovement 2, AT_SV_LeafBesidePlayer
 	waitmovement 2
 	setflag FLAG_TEMP_9
-	drawheadshot HEAD_LANA
 	msgbox AT_SV_Story9 MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_RYU_DS_LANA_STAGE, 85
@@ -203,7 +179,6 @@ AT_LanaEvent3::
 	
 AT_SV_Battle::
 	setvar VAR_RYU_DS_LANA_STAGE, 86
-	removecutscenesprites
 	savebgm MUS_RG_NANADUNGEON
 	setflag FLAG_RYU_DO_NOT_AUTOSCALE
 	special SavePlayerParty
@@ -220,10 +195,8 @@ AT_SV_Battle::
 AT_SV_ReturnFromBattle::
 	fadenewbgm MUS_RG_NANADUNGEON
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
-	drawheadshot HEAD_GARY
 	msgbox AT_SV_Story10 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	playmoncry SPECIES_REGISTEEL, 0
 	waitmoncry
 	applymovement 4, Common_Movement_ExclamationMark
@@ -238,29 +211,24 @@ AT_SV_ReturnFromBattle::
 	playse SE_W089
 	waitse
 	fadescreen 0
-	drawheadshot HEAD_LANA
 	msgbox AT_SV_Story11 MSGBOX_DEFAULT
 	applymovement 2, Common_Movement_FaceLeft
 	waitmovement 2
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	msgbox AT_SV_Story12 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	msgbox AT_SV_Story121
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox AT_SV_Story13 MSGBOX_DEFAULT
-	drawheadshot HEAD_LANA
 	msgbox AT_SV_Story131 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	msgbox AT_SV_Story132 MSGBOX_DEFAULT
 	applymovement 2, Common_Movement_QuestionMark
 	waitmovement 2
 	fadenewbgm MUS_FUNE_KAN
 	msgbox AT_SV_Story14 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	applymovement 2, Common_Movement_HeartEmote
