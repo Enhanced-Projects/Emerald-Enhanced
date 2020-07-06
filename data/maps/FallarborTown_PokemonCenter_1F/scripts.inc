@@ -29,7 +29,7 @@ FallarborTown_PokemonCenter_1F_EventScript_Lanette:: @ 8200C01
 	msgbox StartLanetteQuery, MSGBOX_YESNO
 	compare VAR_RESULT, 0
 	goto_if_eq FT_CancelledLanette
-	call_if_set FLAG_RYU_PLAYER_HELPING_DEVON, FT_CheckOtherQuestActive
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
 	lock
 	faceplayer
 	msgbox FT_LanetteNormalIntro, MSGBOX_DEFAULT
@@ -45,7 +45,7 @@ FT_CancelledLanette::
 	end
 
 StartLanetteQuery:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Activating this scene will start\n the Lanette romance quest.\p This will lock you out\n of the Devon quest by\l doing so.\pWould you like to start the\n Lanette quest?)$"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Activating this scene will start\n the Lanette romance quest.)\pWould you like to start it?$"
 
 FT_LANETTE_DENIED:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You can activate this event\n to start the Lanette quest any time.)$"

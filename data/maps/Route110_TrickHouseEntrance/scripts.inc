@@ -376,10 +376,8 @@ TH_Lana_Event2::
 	waitmovement 2
 	msgbox TH_Outro2 MSGBOX_DEFAULT
 	closemessage
-	drawheadshot HEAD_LANA
 	msgbox TH_Outro25 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	msgbox TH_Outro26 MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
@@ -387,11 +385,9 @@ TH_Lana_Event2::
 	waitmovement 2
 	msgbox TH_Outro3 MSGBOX_DEFAULT
 	closemessage
-	drawheadshot HEAD_LANA
 	msgbox TH_Outro35 MSGBOX_DEFAULT
 	fadenewbgm MUS_RG_SLOWMASARA
 	closemessage
-	removecutscenesprites
 	msgbox TH_Outro36 MSGBOX_DEFAULT
 	closemessage
 	applymovement 3, TH_Lana2Leave

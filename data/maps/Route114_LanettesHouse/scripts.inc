@@ -31,7 +31,6 @@ Ryu_LNH_RomQuest::
 	setvar VAR_RYU_LANETTE_VAR, 0
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	drawheadshot HEAD_LANETTE
 	msgbox LNH_RomStart
 	closemessage
 	applymovement 1, Common_Movement_FaceDown
@@ -44,7 +43,6 @@ Ryu_LNH_RomQuest::
 	compare VAR_RESULT, 4
 	goto_if_ge LNH_PlayerHasCollection
 	msgbox LNH_StillLookingMsg
-	removecutscenesprites
 	setflag FLAG_RYU_LANETTE_INTRO
 	release
 	end
@@ -70,7 +68,6 @@ LNH_PlayerHasCollection::
 	waitfanfare
 	msgbox LNH_RepairRequest
 	closemessage
-	removecutscenesprites
 	applymovement OBJ_EVENT_ID_PLAYER, LNH_MoveOutOfWay
 	applymovement 1, LNH_LanetteExitHouse
 	waitmovement 1
@@ -93,7 +90,6 @@ LNH_RomanceEvent::
 	end
 	
 LNH_Outro::
-	drawheadshot HEAD_LANETTE
 	goto_if_set FLAG_RYU_DS_LANETTE_PARTNERS, LNH_PartnerStayTheNight
 	msgbox LNH_NewTechnology
 	additem ITEM_WIRELESSPC
@@ -163,24 +159,20 @@ LNH_DoRotomSwap::
 	goto_if_eq LNH_RotomSwapped
 	compare VAR_RESULT, 2
 	goto_if_eq LNH_NoSpecialMove
-	removecutscenesprites
 	goto ryu_end
 
 LNH_RotomNotInParty::
 	msgbox LNH_NoRotom
-	removecutscenesprites
 	release
 	end
 
 LNH_RotomSwapped::
 	msgbox LNH_RotomSwapSuccessful
-	removecutscenesprites
 	release
 	end
 
 LNH_NoSpecialMove::
 	msgbox LNH_RotomNoSpecialMoveMsg
-	removecutscenesprites
 	release
 	end
 
@@ -197,7 +189,6 @@ LNH_PartnerStayTheNight::
 	call_if_set FLAG_RYU_RECIEVED_ROTOM, LNH_LanetteMulti
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
 	goto LNH_Romance
-	removecutscenesprites
 	release
 	end
 
@@ -205,7 +196,6 @@ LNH_Romance::
 	msgbox LNH_PartnerStayover MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq LNH_Staying
-	removecutscenesprites
 	closemessage
 	release
 	end
@@ -234,7 +224,6 @@ LNH_Nothing::
 LNH_Staying:
 	msgbox LNH_Rel_Lanette_stayingScene
 	closemessage
-	removecutscenesprites
 	setvar VAR_RYU_LANETTE_VAR, 105
 	fadescreen 1
 	clearflag FLAG_RYU_HIDE_LANETTE_BASEMENT
@@ -482,7 +471,6 @@ LNH_LeafEvent::
 	lock
 	msgbox LNH_StoryMsg1 MSGBOX_DEFAULT
 	closemessage
-	drawheadshot HEAD_LANA
 	msgbox LNH_StoryMsg11
 	closemessage
 	applymovement 2, Common_Movement_FaceDown
@@ -496,7 +484,6 @@ LNH_LeafEvent::
 	waitse
 	applymovement OBJ_EVENT_ID_PLAYER, LNH_Return
 	waitmovement OBJ_EVENT_ID_PLAYER
-	removecutscenesprites
 	msgbox LNH_StoryMsg3 MSGBOX_DEFAULT
 	applymovement 1, LNH_LanetteWalkDown
 	waitmovement 1

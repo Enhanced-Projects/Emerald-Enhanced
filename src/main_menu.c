@@ -248,6 +248,7 @@ static void MainMenu_FormatSavegamePlayer(void);
 static void MainMenu_FormatSavegamePokedex(void);
 static void MainMenu_FormatSavegameTime(void);
 static void MainMenu_FormatSavegameBadges(void);
+static void MainMenu_FormatSavegameFaction(void);
 static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8, u8, u8, u8, u8, u8);
 
 // .rodata
@@ -822,10 +823,10 @@ static void Task_DisplayMainMenu(u8 taskId)
                 FillWindowPixelBuffer(3, PIXEL_FILL(0xA));
                 FillWindowPixelBuffer(4, PIXEL_FILL(0xA));
                 FillWindowPixelBuffer(5, PIXEL_FILL(0xA));
-                AddTextPrinterParameterized3(2, 1, 0, 1, sTextColor_Headers, -1, gText_MainMenuContinue);
-                AddTextPrinterParameterized3(3, 1, 0, 1, sTextColor_Headers, -1, gText_MainMenuNewGame);
-                AddTextPrinterParameterized3(4, 1, 0, 1, sTextColor_Headers, -1, gText_MainMenuMysteryGift);
-                AddTextPrinterParameterized3(5, 1, 0, 1, sTextColor_Headers, -1, gText_MainMenuOption);
+                AddTextPrinterParameterized3(2, 1, 1, 1, sTextColor_Headers, -1, gText_MainMenuContinue);
+                AddTextPrinterParameterized3(3, 1, 1, 1, sTextColor_Headers, -1, gText_MainMenuNewGame);
+                AddTextPrinterParameterized3(4, 1, 1, 1, sTextColor_Headers, -1, gText_MainMenuMysteryGift);
+                AddTextPrinterParameterized3(5, 1, 1, 1, sTextColor_Headers, -1, gText_MainMenuOption);
                 MainMenu_FormatSavegameText();
                 PutWindowTilemap(2);
                 PutWindowTilemap(3);
@@ -2130,26 +2131,29 @@ static void MainMenu_FormatSavegameText(void)
     MainMenu_FormatSavegamePokedex();
     MainMenu_FormatSavegameTime();
     MainMenu_FormatSavegameBadges();
+    MainMenu_FormatSavegameFaction();
 }
+
+static const u8 sText_Colon[] = _(":");
+extern const u8 gText_Space2[];
 
 static void MainMenu_FormatSavegamePlayer(void)
 {
-    StringExpandPlaceholders(gStringVar4, gText_ContinueMenuPlayer);
-    AddTextPrinterParameterized3(2, 1, 0, 17, sTextColor_MenuInfo, -1, gStringVar4);
-    AddTextPrinterParameterized3(2, 1, GetStringRightAlignXOffset(1, gSaveBlock2Ptr->playerName, 100), 17, sTextColor_MenuInfo, -1, gSaveBlock2Ptr->playerName);
+    AddTextPrinterParameterized3(2, 1, 1, 13, sTextColor_MenuInfo, -1, gSaveBlock2Ptr->playerName);
 }
 
 static void MainMenu_FormatSavegameTime(void)
 {
-    u8 str[0x20];
-    u8* ptr;
-
+    u8 str2[0x20];
+    
     StringExpandPlaceholders(gStringVar4, gText_ContinueMenuTime);
-    AddTextPrinterParameterized3(2, 1, 0x6C, 17, sTextColor_MenuInfo, -1, gStringVar4);
-    ptr = ConvertIntToDecimalStringN(str, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
-    *ptr = 0xF0;
-    ConvertIntToDecimalStringN(ptr + 1, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
-    AddTextPrinterParameterized3(2, 1, GetStringRightAlignXOffset(1, str, 0xD0), 17, sTextColor_MenuInfo, -1, str);
+    AddTextPrinterParameterized3(2, 0, 1, 25, sTextColor_MenuInfo, -1, gStringVar4);
+    ConvertIntToDecimalStringN(gStringVar4, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gStringVar4, sText_Colon);
+    ConvertIntToDecimalStringN(str2, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gStringVar4, str2);
+    AddTextPrinterParameterized3(2, 0, 25, 25, sTextColor_MenuInfo, -1, gStringVar4);
+
 }
 
 static void MainMenu_FormatSavegamePokedex(void)
@@ -2164,9 +2168,10 @@ static void MainMenu_FormatSavegamePokedex(void)
         else
             dexCount = GetHoennPokedexCount(FLAG_GET_CAUGHT);
         StringExpandPlaceholders(gStringVar4, gText_ContinueMenuPokedex);
-        AddTextPrinterParameterized3(2, 1, 0, 33, sTextColor_MenuInfo, -1, gStringVar4);
+        StringAppend(gStringVar4, sText_Colon);
+        AddTextPrinterParameterized3(2, 0, 1, 36, sTextColor_MenuInfo, -1, gStringVar4);
         ConvertIntToDecimalStringN(str, dexCount, STR_CONV_MODE_LEFT_ALIGN, 3);
-        AddTextPrinterParameterized3(2, 1, GetStringRightAlignXOffset(1, str, 100), 33, sTextColor_MenuInfo, -1, str);
+        AddTextPrinterParameterized3(2, 0, GetStringRightAlignXOffset(1, str, 62), 36, sTextColor_MenuInfo, -1, str);
     }
 }
 
@@ -2182,9 +2187,37 @@ static void MainMenu_FormatSavegameBadges(void)
             badgeCount++;
     }
     StringExpandPlaceholders(gStringVar4, gText_ContinueMenuBadges);
-    AddTextPrinterParameterized3(2, 1, 0x6C, 33, sTextColor_MenuInfo, -1, gStringVar4);
+    StringAppend(gStringVar4, sText_Colon);
+    AddTextPrinterParameterized3(2, 1, 70, 13, sTextColor_MenuInfo, -1, gStringVar4);
     ConvertIntToDecimalStringN(str, badgeCount, STR_CONV_MODE_LEADING_ZEROS, 1);
-    AddTextPrinterParameterized3(2, 1, GetStringRightAlignXOffset(1, str, 0xD0), 33, sTextColor_MenuInfo, -1, str);
+    AddTextPrinterParameterized3(2, 1, 112, 13, sTextColor_MenuInfo, -1, str);
+}
+
+static const u8 sText_Devon[] = _("Devon");
+static const u8 sText_Aqua[] = _("Aqua");
+static const u8 sText_None[] = _("None");
+static const u8 sText_Faction[] = _("Faction: ");
+
+static void MainMenu_FormatSavegameFaction(void)
+{
+    u8 str[0x30];
+
+    if (FlagGet(FLAG_RYU_PLAYER_HELPING_DEVON) == 1)
+    {
+        StringCopy(str, sText_Devon);
+    }
+    else if (FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA) == 1)
+    {
+        StringCopy(str, sText_Aqua);
+    }
+    else
+    {
+        StringCopy(str, sText_None);
+    }
+    StringCopy(gStringVar4, sText_Faction);
+    StringAppend(gStringVar4, str);
+    AddTextPrinterParameterized3(2, 0, 70, 36, sTextColor_MenuInfo, -1, gStringVar4);
+
 }
 
 static void LoadMainMenuWindowFrameTiles(u8 bgId, u16 tileOffset)

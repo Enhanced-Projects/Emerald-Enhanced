@@ -277,7 +277,7 @@ Ryu_HaremEvent::
 	@drawfullscreenimage SCENEBGHAREM
 	msgbox LRT_Harem_Outro
 	closemessage
-	giveitem ITEM_SHINY_CHARM
+	additem ITEM_SHINY_CHARM
 	closemessage
 	delay 60
 	setflag FLAG_RYU_HAREM_EVENT_COMPLETED

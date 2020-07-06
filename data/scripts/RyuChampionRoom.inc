@@ -185,10 +185,8 @@ RCR_Dawn::
 	applymovement 3, RCR_PartnerToPlayer
 	applymovement 3, Common_Movement_HeartEmote
 	waitmovement 3
-	drawheadshot HEAD_DAWN
 	msgbox RCR_Dawn_Intromsg
 	closemessage
-	removecutscenesprites
 	call RCR_ChooseOpponent
 	goto RCR_SetUpBattle
 	
@@ -199,11 +197,9 @@ RCR_Shelly::
 	waitmovement 6
 	applymovement 6, Common_Movement_HeartEmote
 	waitmovement 6
-	@drawheadshot HEAD_DAWN
-	msgbox RCR_Shelly_Intromsg
+	@msgbox RCR_Shelly_Intromsg
 	closemessage
-	@removecutscenesprites
-	call RCR_ChooseOpponent
+	@call RCR_ChooseOpponent
 	goto RCR_SetUpBattle
 	
 RCR_Brendan::
@@ -213,10 +209,8 @@ RCR_Brendan::
 	waitmovement 5
 	applymovement 5, Common_Movement_HeartEmote
 	waitmovement 5
-	drawheadshot HEAD_BRENDAN
 	msgbox RCR_Brendan_Intromsg
 	closemessage
-	removecutscenesprites
 	call RCR_ChooseOpponent
 	goto RCR_SetUpBattle
 	
@@ -227,10 +221,8 @@ RCR_Lana::
 	waitmovement 4
 	applymovement 4, Common_Movement_HeartEmote
 	waitmovement 4
-	drawheadshot HEAD_LANA
 	msgbox RCR_Lana_Intromsg
 	closemessage
-	removecutscenesprites
 	call RCR_ChooseOpponent
 	goto RCR_SetUpBattle
 
@@ -241,10 +233,8 @@ RCR_Lanette::
 	waitmovement 14
 	applymovement 14, Common_Movement_HeartEmote
 	waitmovement 14
-	drawheadshot HEAD_LANETTE
 	msgbox RCR_Lanette_Intromsg
 	closemessage
-	removecutscenesprites
 	call RCR_ChooseOpponent
 	goto RCR_SetUpBattle
 

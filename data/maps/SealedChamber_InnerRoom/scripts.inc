@@ -140,10 +140,8 @@ SCH_AfterBattle::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	playse SE_PIN
 	waitmovement 0
-	drawheadshot HEAD_LANA
 	msgbox SCH_LanaMsg4 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	applymovement 1, SCH_LanaLeaves
 	waitmovement 1
 	removeobject 1
@@ -165,10 +163,8 @@ SCH_AlternateStoryTrigger::
 	msgbox SCH_AltStory1 MSGBOX_DEFAULT
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	msgbox SCH_AltStory2 MSGBOX_DEFAULT
-	drawheadshot HEAD_LANA
 	msgbox SCH_AltStory22 MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	msgbox SCH_AltStory23 MSGBOX_DEFAULT
 	fadedefaultbgm
 	release

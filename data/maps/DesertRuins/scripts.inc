@@ -167,10 +167,8 @@ DR_LeafEvent2::
 	removeobject 3
 	applymovement 4, DR_LeafToPlayer
 	waitmovement 4
-	drawheadshot HEAD_LANA
 	msgbox DR_LeafMsg MSGBOX_DEFAULT
 	closemessage
-	removecutscenesprites
 	applymovement OBJ_EVENT_ID_PLAYER, DR_StepRight
 	waitmovement 0
 	applymovement 4, DR_LeafLeaves

@@ -579,7 +579,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuChangeUsedPokeball
 	def_special RyuFollowerToTrainerID
 	def_special RyuGiveMewtwo
-	def_special RemoveBothCutsceneSpriteIds
 	def_special RyuGiveFrontierMon
 	def_special FillTheDex
 	def_special RyuSwapRotomForm
