@@ -3463,6 +3463,8 @@ const u16 gEggMoves[] = {
 		MOVE_HARDEN),
 
 	egg_moves(CUBCHOO,
+		MOVE_BELLY_DRUM,
+		MOVE_MACH_PUNCH,
 		MOVE_YAWN,
 		MOVE_AVALANCHE,
 		MOVE_ENCORE,
