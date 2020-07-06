@@ -4829,6 +4829,36 @@
             "primary_tileset": "gTileset_Snowy",
             "secondary_tileset": "gTileset_Underwater",
             "width": 38
+        },
+        {
+            "blockdata_filepath": "data/layouts/CraggyCoastUnderwater/map.bin",
+            "border_filepath": "data/layouts/CraggyCoastUnderwater/border.bin",
+            "height": 54,
+            "id": "LAYOUT_CRAGGY_COAST_UNDERWATER",
+            "name": "CraggyCoastUnderwater_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 27
+        },
+        {
+            "blockdata_filepath": "data/layouts/CraggyCoastUnderwaterCave/map.bin",
+            "border_filepath": "data/layouts/CraggyCoastUnderwaterCave/border.bin",
+            "height": 60,
+            "id": "LAYOUT_CRAGGY_COAST_UNDERWATER_CAVE",
+            "name": "CraggyCoastUnderwaterCave_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Cave",
+            "width": 50
+        },
+        {
+            "blockdata_filepath": "data/layouts/CraggyCoastUnderwater2/map.bin",
+            "border_filepath": "data/layouts/CraggyCoastUnderwater2/border.bin",
+            "height": 60,
+            "id": "LAYOUT_CRAGGY_COAST_UNDERWATER2",
+            "name": "CraggyCoastUnderwater2_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 27
         }
     ],
     "layouts_table_label": "gMapLayouts"

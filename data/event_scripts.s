@@ -1160,3 +1160,9 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/SnowshoreUnderwater/scripts.inc"
 
 	.include "data/maps/FrostyForestUnderwater/scripts.inc"
+
+	.include "data/maps/CraggyCoastUnderwater/scripts.inc"
+
+	.include "data/maps/CraggyCoastUnderwaterCave/scripts.inc"
+
+	.include "data/maps/CraggyCoastUnderwater2/scripts.inc"

@@ -761,7 +761,7 @@
 #define FLAG_HIDE_ROUTE_104_RIVAL                                   0x2CF
 #define FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE                  0x2D0
 #define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH                  0x2D1
-#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_BEDROOM          0x2D2
+#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_BEDROOM         0x2D2
 #define FLAG_HIDE_ROUTE_103_RIVAL                                   0x2D3
 #define FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE                    0x2D4
 #define FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT                        0x2D5
@@ -769,7 +769,7 @@
 #define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY   0x2D7
 #define FLAG_HIDE_PETALBURG_CITY_WALLYS_AUNT                        0x2D8
 
-#define FLAG_RYU_PASSCODE_FRONTIER_MON_DEV                                           0x2D9 // Unused Flag
+#define FLAG_RYU_PASSCODE_FRONTIER_MON_DEV                          0x2D9 // Unused Flag
 
 #define FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER                     0x2DA
 #define FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT                          0x2DB
@@ -777,7 +777,7 @@
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_2                   0x2DD
 #define FLAG_HIDE_PLAYERS_HOUSE_DAD                                 0x2DE
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING      0x2DF
-#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_SIBLING          0x2E0
+#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_SIBLING         0x2E0
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE             0x2E1
 #define FLAG_HIDE_ROUTE_104_MR_BRINEY                               0x2E2
 #define FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY                           0x2E3
@@ -787,7 +787,7 @@
 #define FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN                       0x2E7
 #define FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT                          0x2E8
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN            0x2E9
-#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_DAWN                    0x2EA
+#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_DAWN                  0x2EA
 #define FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION                  0x2EB
 #define FLAG_HIDE_LILYCOVE_HARBOR_EVENT_TICKET_TAKER                0x2EC
 #define FLAG_HIDE_SLATEPORT_CITY_SCOTT                              0x2ED
@@ -800,10 +800,10 @@
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA          0x2F4
 #define FLAG_HIDE_LITTLE_ROOT_TOWN_PLAYERS_BEDROOM_MOM              0x2F5
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM                0x2F6
-#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM                    0x2F7
+#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_MOM                   0x2F7
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM      0x2F8
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK              0x2F9
-#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_TRUCK                  0x2FA
+#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_TRUCK                 0x2FA
 #define FLAG_HIDE_DEOXYS                                            0x2FB
 #define FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE                      0x2FC
 #define FLAG_HIDE_MAUVILLE_CITY_SCOTT                               0x2FD
@@ -826,7 +826,7 @@
 #define FLAG_HIDE_MARINE_CAVE_KYOGRE                                0x30E
 #define FLAG_HIDE_TERRA_CAVE_GROUDON                                0x30F
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM          0x310
-#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_MOM              0x311
+#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_MOM             0x311
 #define FLAG_HIDE_ROUTE_119_SCOTT                                   0x312
 #define FLAG_HIDE_LILCOVE_MOTEL_SCOTT                               0x313
 #define FLAG_HIDE_MOSSDEEP_CITY_SCOTT                               0x314
@@ -1606,12 +1606,12 @@
 #define FLAG_HIDDEN_FROSTBITE_FIELD_ICE_HEAL        (DAILY_FLAGS_START + 0x19) // Unused Flag
 #define FLAG_HIDDEN_SNOWSHORE_BIG_PEARL             (DAILY_FLAGS_START + 0x1A) // Unused Flag
 #define FLAG_HIDDEN_SNOWSHORE_HEART_SCALE           (DAILY_FLAGS_START + 0x1B) // Unused Flag
-#define FLAG_UNUSED_0x93C                           (DAILY_FLAGS_START + 0x1C) // Unused Flag
-#define FLAG_UNUSED_0x93D                           (DAILY_FLAGS_START + 0x1D) // Unused Flag
-#define FLAG_UNUSED_0x93E                           (DAILY_FLAGS_START + 0x1E) // Unused Flag
-#define FLAG_UNUSED_0x93F                           (DAILY_FLAGS_START + 0x1F) // Unused Flag
-#define FLAG_UNUSED_0x940                           (DAILY_FLAGS_START + 0x20) // Unused Flag
-#define FLAG_UNUSED_0x941                           (DAILY_FLAGS_START + 0x21) // Unused Flag
+#define FLAG_HIDDEN_CRAGGY_COAST_REPEL              (DAILY_FLAGS_START + 0x1C) // Unused Flag
+#define FLAG_HIDDEN_CRAGGY_COAST_RARE_BONE          (DAILY_FLAGS_START + 0x1D) // Unused Flag
+#define FLAG_HIDDEN_CRAGGY_COAST_GREAT_BALL         (DAILY_FLAGS_START + 0x1E) // Unused Flag
+#define FLAG_HIDDEN_CRAGGY_COAST_DIVE_BALL          (DAILY_FLAGS_START + 0x1F) // Unused Flag
+#define FLAG_HIDDEN_CRAGGY_COAST_HARD_STONE         (DAILY_FLAGS_START + 0x20) // Unused Flag
+#define FLAG_HIDDEN_CRAGGY_COAST_NET_BALL           (DAILY_FLAGS_START + 0x21) // Unused Flag
 #define FLAG_UNUSED_0x942                           (DAILY_FLAGS_START + 0x22) // Unused Flag
 #define FLAG_UNUSED_0x943                           (DAILY_FLAGS_START + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x944                           (DAILY_FLAGS_START + 0x24) // Unused Flag
