@@ -440,6 +440,7 @@
 #define MAP_METEOR_FALLS_2F                          (109 | (24 << 8))
 #define MAP_METEOR_FALLS_1F_3R                       (110 | (24 << 8))
 #define MAP_METEOR_FALLS_3F                          (111 | (24 << 8))
+#define MAP_POLAR_PILLAR_1F                          (112 | (24 << 8))
 
 // Map Group 25
 #define MAP_SECRET_BASE_RED_CAVE1           (0 | (25 << 8))

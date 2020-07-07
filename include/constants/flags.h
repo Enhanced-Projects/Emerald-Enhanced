@@ -1612,8 +1612,8 @@
 #define FLAG_HIDDEN_CRAGGY_COAST_DIVE_BALL          (DAILY_FLAGS_START + 0x1F) // Unused Flag
 #define FLAG_HIDDEN_CRAGGY_COAST_HARD_STONE         (DAILY_FLAGS_START + 0x20) // Unused Flag
 #define FLAG_HIDDEN_CRAGGY_COAST_NET_BALL           (DAILY_FLAGS_START + 0x21) // Unused Flag
-#define FLAG_UNUSED_0x942                           (DAILY_FLAGS_START + 0x22) // Unused Flag
-#define FLAG_UNUSED_0x943                           (DAILY_FLAGS_START + 0x23) // Unused Flag
+#define FLAG_KEY_SHARD_1                            (DAILY_FLAGS_START + 0x22) // Unused Flag
+#define FLAG_KEY_SHARD_2                            (DAILY_FLAGS_START + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x944                           (DAILY_FLAGS_START + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x945                           (DAILY_FLAGS_START + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x946                           (DAILY_FLAGS_START + 0x26) // Unused Flag

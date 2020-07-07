@@ -4859,6 +4859,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Underwater",
             "width": 27
+        },
+        {
+            "blockdata_filepath": "data/layouts/PolarPillar_1F/map.bin",
+            "border_filepath": "data/layouts/PolarPillar_1F/border.bin",
+            "height": 17,
+            "id": "LAYOUT_POLAR_PILLAR_1F",
+            "name": "PolarPillar_1F_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_PolarPillar",
+            "width": 21
         }
     ],
     "layouts_table_label": "gMapLayouts"

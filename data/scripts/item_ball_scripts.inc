@@ -1,4 +1,8 @@
 
+CraggyCoast_EventScript_ItemKeyShard2::
+	finditem ITEM_KEY_SHARD_2
+	end
+
 FrostbiteField_EventScript_ItemPPup::
 	finditem ITEM_PP_UP
 	end

@@ -1166,3 +1166,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/CraggyCoastUnderwaterCave/scripts.inc"
 
 	.include "data/maps/CraggyCoastUnderwater2/scripts.inc"
+
+	.include "data/maps/PolarPillar_1F/scripts.inc"

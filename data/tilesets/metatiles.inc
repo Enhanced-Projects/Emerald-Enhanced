@@ -580,3 +580,10 @@ gMetatiles_SnowShore::
 	.align 1
 gMetatileAttributes_SnowShore::
 	.incbin "data/tilesets/secondary/snowshore/metatile_attributes.bin"
+	.align 1
+gMetatiles_PolarPillar::
+	.incbin "data/tilesets/secondary/polarpillar/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_PolarPillar::
+	.incbin "data/tilesets/secondary/polarpillar/metatile_attributes.bin"

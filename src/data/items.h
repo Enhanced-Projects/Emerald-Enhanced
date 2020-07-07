@@ -6202,71 +6202,66 @@ const struct Item gItems[] =
         .secondaryId = TYPE_WATER,
     },
 
-    [ITEM_MEADOW_PLATE] =
+    [ITEM_KEY_SHARD_1] =
     {
-        .name = _("Meadow Plate"),
-        .itemId = ITEM_MEADOW_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_GRASS_POWER,
-        .holdEffectParam = 20,
-        .description = sMeadowPlateDesc,
-        .pocket = POCKET_ITEMS,
+        .name = _("Key Shard"),
+        .itemId = ITEM_KEY_SHARD_1,
+        .price = 0,
+        .description = sKeyShard1Desc,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_ICICLE_PLATE] =
+    [ITEM_KEY_SHARD_2] =
     {
-        .name = _("Icicle Plate"),
-        .itemId = ITEM_ICICLE_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_ICE_POWER,
-        .holdEffectParam = 20,
-        .description = sIciclePlateDesc,
-        .pocket = POCKET_ITEMS,
+        .name = _("Key Shard"),
+        .itemId = ITEM_KEY_SHARD_2,
+        .price = 0,
+        .description = sKeyShard2Desc,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_TOXIC_PLATE] =
+    [ITEM_KEY_SHARD_3] =
     {
-        .name = _("Toxic Plate"),
-        .itemId = ITEM_TOXIC_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_POISON_POWER,
-        .holdEffectParam = 20,
-        .description = sToxicPlateDesc,
-        .pocket = POCKET_ITEMS,
+        .name = _("Key Shard"),
+        .itemId = ITEM_KEY_SHARD_3,
+        .price = 0,
+        .description = sKeyShard3Desc,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_EARTH_PLATE] =
+    [ITEM_KEY_SHARD_4] =
     {
-        .name = _("Earth Plate"),
-        .itemId = ITEM_EARTH_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_GROUND_POWER,
-        .holdEffectParam = 20,
-        .description = sEarthPlateDesc,
-        .pocket = POCKET_ITEMS,
+        .name = _("Key Shard"),
+        .itemId = ITEM_KEY_SHARD_4,
+        .price = 0,
+        .description = sKeyShard4Desc,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_SKY_PLATE] =
+    [ITEM_OLD_KEY] =
     {
-        .name = _("Sky Plate"),
-        .itemId = ITEM_SKY_PLATE,
-        .price = 200,
-        .holdEffect = HOLD_EFFECT_FLYING_POWER,
-        .holdEffectParam = 20,
-        .description = sSkyPlateDesc,
-        .pocket = POCKET_ITEMS,
+        .name = _("Old Key"),
+        .itemId = ITEM_OLD_KEY,
+        .price = 0,
+        .description = sOldKeyDesc,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
