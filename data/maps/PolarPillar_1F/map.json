@@ -15,10 +15,24 @@
     "name": "PolarPillar_1F",
     "object_events": [
     ],
-    "region_map_section": "MAPSEC_FROSTBITE_FIELD",
+    "region_map_section": "MAPSEC_POLAR_PILLAR",
     "requires_flash": false,
     "show_map_name": true,
     "warp_events": [
+        {
+            "dest_map": "MAP_FROSTBITE_FIELD",
+            "dest_warp_id": 0,
+            "elevation": 3,
+            "x": 10,
+            "y": 14
+        },
+        {
+            "dest_map": "MAP_POLAR_PILLAR_2F",
+            "dest_warp_id": 0,
+            "elevation": 3,
+            "x": 15,
+            "y": 2
+        }
     ],
     "weather": "WEATHER_NONE"
 }

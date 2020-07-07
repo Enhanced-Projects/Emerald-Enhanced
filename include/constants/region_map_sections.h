@@ -223,7 +223,8 @@
 #define MAPSEC_FROSTY_FOREST                0xDB
 #define MAPSEC_FROSTBITE_FIELD              0xDC
 #define MAPSEC_MT_FREEZE                    0xDD
-#define MAPSEC_NONE                         0xDE
+#define MAPSEC_POLAR_PILLAR                 0xDE
+#define MAPSEC_NONE                         0xDF
 
 
 #define METLOC_SPECIAL_EGG                  0xFD

@@ -10,7 +10,7 @@
     ],
     "id": "MAP_IGLOO3",
     "layout": "LAYOUT_IGLOO3",
-    "map_type": "MAP_TYPE_UNDERGROUND",
+    "map_type": "MAP_TYPE_INDOOR",
     "music": "MUS_TOZAN",
     "name": "Igloo3",
     "object_events": [
@@ -21,7 +21,7 @@
     "warp_events": [
         {
             "dest_map": "MAP_FROSTBITE_FIELD",
-            "dest_warp_id": 0,
+            "dest_warp_id": 3,
             "elevation": 3,
             "x": 4,
             "y": 6

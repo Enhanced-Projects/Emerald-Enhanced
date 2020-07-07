@@ -206,6 +206,7 @@ static const u8 sMapName_CraggyCoast[] = _("Craggy Coast");
 static const u8 sMapName_FrostyForest[] = _("Frosty Forest");
 static const u8 sMapName_FrostbiteField[] = _("Frostbite Field");
 static const u8 sMapName_MtFreeze[] = _("Mt Freeze");
+static const u8 sMapName_PolarPillar[] = _("Polar Pillar");
 
 const struct RegionMapLocation gRegionMapEntries[] = {
     [MAPSEC_ABANDONED_SHIP]            = {6, 14, 1, 1, sMapName_AbandonedShip},
@@ -293,6 +294,7 @@ const struct RegionMapLocation gRegionMapEntries[] = {
     [MAPSEC_POKEMON_LEAGUE]            = {0, 0, 1, 1, sMapName_PokemonLeague},
     [MAPSEC_POKEMON_MANSION]           = {0, 0, 1, 1, sMapName_PokemonMansion},
     [MAPSEC_POKEMON_TOWER]             = {0, 0, 1, 1, sMapName_PokemonTower},
+    [MAPSEC_POLAR_PILLAR]              = {25, 0, 1, 1, sMapName_PolarPillar},
     [MAPSEC_POWER_PLANT]               = {0, 0, 1, 1, sMapName_PowerPlant},
     [MAPSEC_RESORT_GORGEOUS]           = {0, 0, 1, 1, sMapName_ResortGorgeous},
     [MAPSEC_RIXY_CHAMBER]              = {0, 0, 1, 1, sMapName_RixyChamber},
