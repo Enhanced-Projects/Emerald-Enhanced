@@ -344,6 +344,10 @@
         "MirageTower_2F",
         "MirageTower_3F",
         "MirageTower_4F",
+        "PolarPillar_1F",
+        "PolarPillar_2F",
+        "PolarPillar_3F",
+        "PolarPillar_4F",
         "DesertUnderpass",
         "ArtisanCave_B1F",
         "ArtisanCave_1F",
@@ -357,8 +361,7 @@
         "VictoryRoad_Cove",
         "MeteorFalls_2F",
         "MeteorFalls_1F_3R",
-        "MeteorFalls_3F",
-        "PolarPillar_1F"
+        "MeteorFalls_3F"
     ],
     "gMapGroup25": [
         "SecretBase_RedCave1",
@@ -516,11 +519,15 @@
         "SafariZone_HiddenGrotto"
     ],
     "gMapGroup27": [
-        "Route104_Prototype",
-        "Route104_PrototypePrettyPetalFlowerShop"
+        "Igloo1",
+        "Igloo2",
+        "Igloo3",
+        "Igloo4"
     ],
     "gMapGroup28": [
-        "Route109_SeashoreHouse"
+        "Route109_SeashoreHouse",
+        "Route104_Prototype",
+        "Route104_PrototypePrettyPetalFlowerShop"
     ],
     "gMapGroup29": [
         "Route110_TrickHouseEntrance",

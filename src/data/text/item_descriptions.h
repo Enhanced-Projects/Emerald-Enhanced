@@ -2287,13 +2287,13 @@ static const u8 sZapPlateDesc[] = _(
     "Electric-type moves.");
 
 static const u8 sKeyShard1Desc[] = _(
-    "An old shard of a key\n"
-    "of sorts. Needs three\n"
+    "An old shard of a\n"
+    "key. Needs three\n"
     "other fragments.");
 
 static const u8 sKeyShard2Desc[] = _(
-    "An old shard of a key\n"
-    "of sorts. Needs three\n"
+    "An old shard of a\n"
+    "key. Needs three\n"
     "other fragments.");
 
 static const u8 sFistPlateDesc[] = _(
@@ -2302,13 +2302,13 @@ static const u8 sFistPlateDesc[] = _(
     "Fighting-type moves.");
 
 static const u8 sKeyShard3Desc[] = _(
-    "An old shard of a key\n"
-    "of sorts. Needs three\n"
+    "An old shard of a\n"
+    "key. Needs three\n"
     "other fragments.");
 
 static const u8 sKeyShard4Desc[] = _(
-    "An old shard of a key\n"
-    "of sorts. Needs three\n"
+    "An old shard of a\n"
+    "key. Needs three\n"
     "other fragments.");
 
 static const u8 sOldKeyDesc[] = _(
