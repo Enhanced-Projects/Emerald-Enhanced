@@ -6083,3 +6083,18 @@ bool8 RyuFillStatsBuffers(void)
 
     return TRUE;
 }
+
+bool8 TobyCheckPlayerHasMon(void)//called with "specialvar VAR_RESULT, TobyCheckPlayerHasMon"
+    {//                            then followed with a comparison like "compare VAR_RESULT TRUE"
+    u8 i;//                                                             "goto_if_eq YourScriptFunctionHere"
+    u8 partyCount = CalculatePlayerPartyCount();//                      "end"
+    
+    for (i = 0; i < partyCount; i++)
+        {
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_CARBINK)//change species here
+            {
+                return TRUE;
+            }
+        }
+    return FALSE;
+    }
