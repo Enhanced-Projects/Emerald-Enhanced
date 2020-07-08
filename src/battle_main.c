@@ -499,6 +499,8 @@ static void CB2_InitBattleInternal(void)
 {
     s32 i;
 
+    mgba_printf(3, "Internally initializing Battle");
+
     SetHBlankCallback(NULL);
     SetVBlankCallback(NULL);
 
@@ -540,6 +542,7 @@ static void CB2_InitBattleInternal(void)
 
         ScanlineEffect_SetParams(sIntroScanlineParams16Bit);
     }
+    mgba_printf(3, "Finished setting scanline effect args");
 
     ResetPaletteFade();
     gBattle_BG0_X = 0;
@@ -551,18 +554,27 @@ static void CB2_InitBattleInternal(void)
     gBattle_BG3_X = 0;
     gBattle_BG3_Y = 0;
 
+    mgba_printf(3, "Finished resetting palette fade");
+
     gBattleTerrain = BattleSetup_GetTerrainId();
+    mgba_printf(3, "Finished getting battle terrain ID. Chose # %d", gBattleTerrain);
     if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
         gBattleTerrain = BATTLE_TERRAIN_BUILDING;
 
     InitBattleBgsVideo();
+    mgba_printf(3, "Initted battle bg video");
     LoadBattleTextboxAndBackground();
+    mgba_printf(3, "loaded battle UI and bg");
     ResetSpriteData();
+    mgba_printf(3, "Reset sprite data");
     ResetTasks();
+    mgba_printf(3, "reset tasks");
     //DrawBattleEntryBackground(); this was disabled because the slide tiles did not play well with the new battle bg's from ee v5.5+
     FreeAllSpritePalettes();
+    mgba_printf(3, "Freed all sprite palettes");
     gReservedSpritePaletteCount = 4;
     SetVBlankCallback(VBlankCB_Battle);
+    mgba_printf(3, "Set vblank callback");
     SetUpBattleVarsAndBirchZigzagoon();
 
     if (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
@@ -573,6 +585,8 @@ static void CB2_InitBattleInternal(void)
         SetMainCallback2(CB2_HandleStartMultiBattle);
     else
         SetMainCallback2(CB2_HandleStartBattle);
+
+    mgba_printf(3, "going to HandleStartBttle");
 
     if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED)))
     {
@@ -828,6 +842,8 @@ static void CB2_HandleStartBattle(void)
     u8 playerMultiplayerId;
     u8 enemyMultiplayerId;
 
+    mgba_printf(3, "Now in HandleStartBattle");
+
     RunTasks();
     AnimateSprites();
     BuildOamBuffer();
@@ -835,6 +851,8 @@ static void CB2_HandleStartBattle(void)
     playerMultiplayerId = GetMultiplayerId();
     gBattleScripting.multiplayerId = playerMultiplayerId;
     enemyMultiplayerId = playerMultiplayerId ^ BIT_SIDE;
+
+    mgba_printf(3, "Got multiplayer ID");
 
     switch (gBattleCommunication[MULTIUSE_STATE])
     {
@@ -850,6 +868,7 @@ static void CB2_HandleStartBattle(void)
         }
         if (gWirelessCommType)
             LoadWirelessStatusIndicatorSpriteGfx();
+            mgba_printf(3, "Case 0 of gBattleCommunication reached.");
         break;
     case 1:
         if (gBattleTypeFlags & BATTLE_TYPE_LINK)
@@ -883,6 +902,7 @@ static void CB2_HandleStartBattle(void)
             gBattleCommunication[MULTIUSE_STATE] = 15;
             SetAllPlayersBerryData();
         }
+        mgba_printf(3, "Case 1 of gBattleCommunication reached.");
         break;
     case 2:
         if ((GetBlockReceivedStatus() & 3) == 3)
@@ -903,6 +923,7 @@ static void CB2_HandleStartBattle(void)
             SetDeoxysStats();
             gBattleCommunication[MULTIUSE_STATE]++;
         }
+        mgba_printf(3, "Case 2 of gBattleCommunication reached.");
         break;
     case 3:
         if (IsLinkTaskFinished())
@@ -910,6 +931,7 @@ static void CB2_HandleStartBattle(void)
             SendBlock(bitmask_all_link_players_but_self(), gPlayerParty, sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
+        mgba_printf(3, "Case 3 of gBattleCommunication reached.");
         break;
     case 4:
         if ((GetBlockReceivedStatus() & 3) == 3)
@@ -918,6 +940,7 @@ static void CB2_HandleStartBattle(void)
             memcpy(gEnemyParty, gBlockRecvBuffer[enemyMultiplayerId], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
+        mgba_printf(3, "Case 4 of gBattleCommunication reached.");
         break;
     case 7:
         if (IsLinkTaskFinished())
@@ -925,6 +948,7 @@ static void CB2_HandleStartBattle(void)
             SendBlock(bitmask_all_link_players_but_self(), gPlayerParty + 2, sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
+        mgba_printf(3, "Case 7 of gBattleCommunication reached.");
         break;
     case 8:
         if ((GetBlockReceivedStatus() & 3) == 3)
@@ -933,6 +957,7 @@ static void CB2_HandleStartBattle(void)
             memcpy(gEnemyParty + 2, gBlockRecvBuffer[enemyMultiplayerId], sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
+        mgba_printf(3, "Case 8 of gBattleCommunication reached.");
         break;
     case 11:
         if (IsLinkTaskFinished())
@@ -940,6 +965,7 @@ static void CB2_HandleStartBattle(void)
             SendBlock(bitmask_all_link_players_but_self(), gPlayerParty + 4, sizeof(struct Pokemon) * 2);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
+        mgba_printf(3, "Case 11 of gBattleCommunication reached.");
         break;
     case 12:
         if ((GetBlockReceivedStatus() & 3) == 3)
@@ -954,6 +980,7 @@ static void CB2_HandleStartBattle(void)
             TryCorrectShedinjaLanguage(&gEnemyParty[5]);
             gBattleCommunication[MULTIUSE_STATE]++;
         }
+        mgba_printf(3, "Case 12 of gBattleCommunication reached.");
         break;
     case 15:
         sub_8032768();
@@ -975,6 +1002,7 @@ static void CB2_HandleStartBattle(void)
         {
             gBattleCommunication[MULTIUSE_STATE] = 18;
         }
+        mgba_printf(3, "Case 15 of gBattleCommunication reached.");
         break;
     case 16:
         if (IsLinkTaskFinished())
@@ -982,6 +1010,7 @@ static void CB2_HandleStartBattle(void)
             SendBlock(bitmask_all_link_players_but_self(), &gRecordedBattleRngSeed, sizeof(gRecordedBattleRngSeed));
             gBattleCommunication[MULTIUSE_STATE]++;
         }
+        mgba_printf(3, "Case 16 of gBattleCommunication reached.");
         break;
     case 17:
         if ((GetBlockReceivedStatus() & 3) == 3)
@@ -991,6 +1020,7 @@ static void CB2_HandleStartBattle(void)
                 memcpy(&gRecordedBattleRngSeed, gBlockRecvBuffer[enemyMultiplayerId], sizeof(gRecordedBattleRngSeed));
             gBattleCommunication[MULTIUSE_STATE]++;
         }
+        mgba_printf(3, "Case 17 of gBattleCommunication reached.");
         break;
     case 18:
         if (BattleInitAllSprites(&gBattleCommunication[SPRITES_INIT_STATE1], &gBattleCommunication[SPRITES_INIT_STATE2]))
@@ -1003,17 +1033,20 @@ static void CB2_HandleStartBattle(void)
                 gBattleTypeFlags |= BATTLE_TYPE_20;
             }
         }
+        mgba_printf(3, "Case 18 of gBattleCommunication reached.");
         break;
     case 5:
     case 9:
     case 13:
         gBattleCommunication[MULTIUSE_STATE]++;
         gBattleCommunication[1] = 1;
+        mgba_printf(3, "default case 1 of gBattleCommunication reached.");
     case 6:
     case 10:
     case 14:
         if (--gBattleCommunication[1] == 0)
             gBattleCommunication[MULTIUSE_STATE]++;
+            mgba_printf(3, "default case 2 of gBattleCommunication reached.");
         break;
     }
 }
@@ -2941,6 +2974,7 @@ void BeginBattleIntro(void)
 
 static void BattleMainCB1(void)
 {
+    mgba_printf(3, "processing gBattleMainFunc");
     gBattleMainFunc();
 
     for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
@@ -3244,9 +3278,12 @@ static void DoBattleIntro(void)
     s32 i;
     u8 *state = &gBattleStruct->introState;
 
+    mgba_printf(3, "Doing Battle Intro");
+
     switch (*state)
     {
     case 0: // Get Data of all battlers.
+        mgba_printf(3, "state 0: getting battler data");
         gActiveBattler = gBattleCommunication[1];
         BtlController_EmitGetMonData(0, REQUEST_ALL_BATTLE, 0);
         MarkBattlerForControllerExec(gActiveBattler);
@@ -3260,8 +3297,10 @@ static void DoBattleIntro(void)
             else
                 *state = 0;
         }
+        mgba_printf(3, "state 1: looping through battlers");
         break;
     case 2: // Start graphical intro slide.
+        mgba_printf(3, "state 2: Starting graphical intro slide");
         if (!gBattleControllerExecFlags)
         {
             gActiveBattler = GetBattlerAtPosition(0);
@@ -3275,15 +3314,12 @@ static void DoBattleIntro(void)
     case 3: // Wait for intro slide.
         if (!gBattleControllerExecFlags)
             (*state)++;
+            mgba_printf(3, "state 3: waited for battle intro slide");
         break;
     case 4: // Copy battler data gotten in cases 0 and 1. Draw trainer/mon sprite.
+        mgba_printf(3, "state 4: Begin draw trainers and mons sprites");
         for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
         {
-            if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI) && GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
-            {
-                memset(&gBattleMons[gActiveBattler], 0, sizeof(struct BattlePokemon));
-            }
-            else
             {
                 memcpy(&gBattleMons[gActiveBattler], &gBattleResources->bufferB[gActiveBattler][4], sizeof(struct BattlePokemon));
                 gBattleMons[gActiveBattler].type1 = gBaseStats[gBattleMons[gActiveBattler].species].type1;
@@ -3293,15 +3329,23 @@ static void DoBattleIntro(void)
                 gBattleStruct->hpOnSwitchout[GetBattlerSide(gActiveBattler)] = gBattleMons[gActiveBattler].hp;
                 gBattleMons[gActiveBattler].status2 = 0;
                 for (i = 0; i < NUM_BATTLE_STATS; i++)
+                {
                     gBattleMons[gActiveBattler].statStages[i] = 6;
+                    mgba_printf(3, "state 4: one loop of setting stat stage data for this battler");
+                }
+
+                mgba_printf(3, "state 4: One loop of checks for battler data.");
             }
+            mgba_printf(3, "state 4, part 1: finished initializing all 4 slots of battlepokemon");
 
             // Draw sprite.
+            mgba_printf(3, "state 4, part 2: for each position, setting sprite data");
             switch (GetBattlerPosition(gActiveBattler))
             {
             case B_POSITION_PLAYER_LEFT: // player sprite
                 BtlController_EmitDrawTrainerPic(0);
                 MarkBattlerForControllerExec(gActiveBattler);
+                mgba_printf(3, "Player sprite.");
                 break;
             case B_POSITION_OPPONENT_LEFT:
                 if (gBattleTypeFlags & BATTLE_TYPE_TRAINER) // opponent 1 sprite
@@ -3315,6 +3359,7 @@ static void DoBattleIntro(void)
                     MarkBattlerForControllerExec(gActiveBattler);
                     gBattleResults.lastOpponentSpecies = GetMonData(&gEnemyParty[gBattlerPartyIndexes[gActiveBattler]], MON_DATA_SPECIES, NULL);
                 }
+                mgba_printf(3, "opponent sprite");
                 break;
             case B_POSITION_PLAYER_RIGHT:
                 if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER)) // partner sprite
@@ -3322,6 +3367,7 @@ static void DoBattleIntro(void)
                     BtlController_EmitDrawTrainerPic(0);
                     MarkBattlerForControllerExec(gActiveBattler);
                 }
+                mgba_printf(3, "player partner if applicable");
                 break;
             case B_POSITION_OPPONENT_RIGHT:
                 if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
@@ -3338,6 +3384,7 @@ static void DoBattleIntro(void)
                     MarkBattlerForControllerExec(gActiveBattler);
                     gBattleResults.lastOpponentSpecies = GetMonData(&gEnemyParty[gBattlerPartyIndexes[gActiveBattler]], MON_DATA_SPECIES, NULL);
                 }
+                mgba_printf(3, "Enemy partner if applicable");
                 break;
             }
 
@@ -3347,17 +3394,18 @@ static void DoBattleIntro(void)
 
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
         {
+            mgba_printf(3, "state 4, part 3: Trainer battle, so do pokeball slide in");
             (*state)++;
         }
         else // Skip party summary since it is a wild battle.
         {
-            if (B_FAST_INTRO)
-                *state = 7; // Don't wait for sprite, print message at the same time.
-            else
-                *state = 6; // Wait for sprite to load.
+            mgba_printf(3, "state 4, part 3: don't do pokeball slide in");
+            *state = 7; // Don't wait for sprite, print message at the same time.
         }
+        mgba_printf(3, "state 4, part 4: Unable to advance state returning to top. ");
         break;
     case 5: // draw party summary in trainer battles
+        mgba_printf(3, "state 5: Draw party summary");
         if (!gBattleControllerExecFlags)
         {
             struct HpAndStatus hpStatus[PARTY_SIZE];
@@ -3406,8 +3454,10 @@ static void DoBattleIntro(void)
     case 6: // wait for previous action to complete
         if (!gBattleControllerExecFlags)
             (*state)++;
+            mgba_printf(3, "state 6: finished sprite slides and set final sprites for beginning of battle");
         break;
     case 7: // print battle intro message
+        mgba_printf(3, "state 7: printing battle intro");
         if (!IsBattlerMarkedForControllerExec(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)))
         {
             PrepareStringBattle(STRINGID_INTROMSG, GetBattlerAtPosition(B_POSITION_PLAYER_LEFT));

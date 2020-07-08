@@ -171,6 +171,7 @@ void AgbMain()
         VarSet(VAR_LAST_KNOWN_GAME_VERSION, 686);
         VarSet(VAR_RECYCLE_GOODS, 45454);
         FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
+        mgba_open();
         MapMusicMain(); 
         WaitForVBlank();
     }

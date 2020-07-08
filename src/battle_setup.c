@@ -569,6 +569,8 @@ u8 BattleSetup_GetTerrainId(void)
     u16 tileBehavior;
     s16 x, y;
 
+    mgba_printf(3, "Getting battle terrain ID");
+
     if (RyuCheckPlayerisInColdArea() == TRUE)
     {
         if ((gSaveBlock1Ptr->location.mapGroup == 0) && (gSaveBlock1Ptr->location.mapNum == 20))

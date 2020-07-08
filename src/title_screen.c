@@ -764,14 +764,6 @@ static void Task_TitleScreenPhase3(u8 taskId)
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         SetMainCallback2(CB2_GoToResetRtcScreen);
     }
-    /*
-    else if ((gMain.heldKeys & BERRY_UPDATE_BUTTON_COMBO) == BERRY_UPDATE_BUTTON_COMBO)
-    {
-        FadeOutBGM(4);
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
-        SetMainCallback2(CB2_GoToBerryFixScreen);
-    } 
-    */  
     else
     {
         SetGpuReg(REG_OFFSET_BG2Y_L, 0);
@@ -781,17 +773,11 @@ static void Task_TitleScreenPhase3(u8 taskId)
         {
             gTasks[taskId].tTheta++;
         }
-        //if (gTasks[taskId].tCounter & 1)
-        //{
-            //gTasks[taskId].data[4]++;
-            //gBattle_BG1_Y = gTasks[taskId].data[4] / 2;
-            //gBattle_BG1_X = 0;
-        //}
+
         UpdateBackgroundColor(gTasks[taskId].tTheta);
         if ((gMPlayInfo_BGM.status & 0xFFFF) == 0)
         {
-            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_WHITEALPHA);
-            SetMainCallback2(CB2_GoToCopyrightScreen);
+            PlayBGM(502);
         }
     }
 }
