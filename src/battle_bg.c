@@ -692,6 +692,20 @@ static const struct BattleBackground gBattleTerrainTable[] =
         .palette = gBattleTerrainPalette_Plain,
     },
 
+    [BATTLE_TERRAIN_SNOWSHORE] =
+    {
+        .tileset = gBattleTerrainTiles_SnowshoreTiles,
+        .tilemap = gBattleTerrainTilemap_SnowshoreMap,
+        .palette = gBattleTerrainPalette_SnowshorePalette,
+    },
+
+    [BATTLE_TERRAIN_MTFREEZE] =
+    {
+        .tileset = gBattleTerrainTiles_MtFreezeTiles,
+        .tilemap = gBattleTerrainTilemap_MtFreezeMap,
+        .palette = gBattleTerrainPalette_MtFreezePalette,
+    },
+    
     [BATTLE_TERRAIN_BATTLEFRONTIER] =
     {
         .tileset = gBattleTerrainTiles_FrontierTiles,
@@ -699,19 +713,7 @@ static const struct BattleBackground gBattleTerrainTable[] =
         .entryTileset = gBattleTerrainTiles_FrontierTiles,
         .entryTilemap = gBattleTerrainTilemap_FrontierMap,
         .palette = gBattleTerrainPalette_FrontierPalette,
-    },
-    [BATTLE_TERRAIN_SNOWSHORE] =
-    {
-        .tileset = gBattleTerrainTiles_SnowshoreTiles,
-        .tilemap = gBattleTerrainTilemap_SnowshoreMap,
-        .palette = gBattleTerrainPalette_SnowshorePalette,
-    },
-    [BATTLE_TERRAIN_MTFREEZE] =
-    {
-        .tileset = gBattleTerrainTiles_MtFreezeTiles,
-        .tilemap = gBattleTerrainTilemap_MtFreezeMap,
-        .palette = gBattleTerrainPalette_MtFreezePalette,
-    },
+    }
 };
 
 static void sub_8035648(void);
@@ -735,7 +737,6 @@ static void sub_8035648(void)
 
 void BattleInitBgsAndWindows(void)
 {
-    mgba_printf(3, "Initializing BGs and Windows.");
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, gBattleBgTemplates, ARRAY_COUNT(gBattleBgTemplates));
 
@@ -767,7 +768,6 @@ void InitBattleBgsVideo(void)
 
 void LoadBattleMenuWindowGfx(void)
 {
-    mgba_printf(3, "loading user defined frame");
     LoadUserWindowBorderGfx(2, 0x12, 0x10);
     LoadUserWindowBorderGfx(2, 0x22, 0x10);
     if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
@@ -788,12 +788,10 @@ void LoadBattleMenuWindowGfx(void)
         gPlttBufferUnfaded[0x76] = 0;
         CpuCopy16(&gPlttBufferUnfaded[0x76], &gPlttBufferFaded[0x76], 2);
     }
-    mgba_printf(3, "returning to LoadBattleUI");
 }
 
 void DrawMainBattleBackground(void)
 {
-    mgba_printf(3, "Starting main DrawBattleBackground function");
 
     if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_x2000000))
     {
@@ -827,7 +825,6 @@ void DrawMainBattleBackground(void)
     }
     else
     {
-        mgba_printf(3, "Skipped Legendary/Link/Frontier terrains");
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
         {
             u8 trainerClass = gTrainers[gTrainerBattleOpponent_A].trainerClass;
@@ -846,7 +843,6 @@ void DrawMainBattleBackground(void)
                 return;
             }
         }
-        mgba_printf(3, "Skipped Trainer/Leader terrains");
 
         switch (GetCurrentMapBattleScene())
         {
@@ -897,22 +893,18 @@ void DrawMainBattleBackground(void)
             LoadCompressedPalette(gBattleTerrainPalette_Frontier, 0x20, 0x60);
             break;
         }
-        mgba_printf(3, "finished checking map battle scenes, returning to LoadBattleUI");
     }
 }
 
 void LoadBattleTextboxAndBackground(void)
 {
-    mgba_printf(3, "Loading battle text box.");
     if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
     {
         LZDecompressVram(gBattleDarkTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
-        mgba_printf(3, "using dark theme textbox");
     }
     else
     {
         LZDecompressVram(gBattleTextboxTiles, (void*)(BG_CHAR_ADDR(0)));
-        mgba_printf(3, "using vanilla theme textbox");
     }
     
     CopyToBgTilemapBuffer(0, gBattleTextboxTilemap, 0, 0);
@@ -928,9 +920,7 @@ void LoadBattleTextboxAndBackground(void)
     }
     
     LoadBattleMenuWindowGfx();
-    mgba_printf(3, "Finished loading battle UI");
     DrawMainBattleBackground();
-    mgba_printf(3, "Finished loading battle ui and bacground");
 }
 
 static void DrawLinkBattleParticipantPokeballs(u8 taskId, u8 multiplayerId, u8 bgId, u8 destX, u8 destY)

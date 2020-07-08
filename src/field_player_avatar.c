@@ -402,6 +402,9 @@ static void PlayerAllowForcedMovementIfMovingSameDirection(void)
 
 static bool8 TryDoMetatileBehaviorForcedMovement(void)
 {
+    if (FlagGet(FLAG_RYU_COLLISION_OFF) == 1)
+        return 0;
+
     return sForcedMovementFuncs[GetForcedMovementByMetatileBehavior()]();
 }
 

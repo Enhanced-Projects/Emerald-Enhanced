@@ -3460,8 +3460,6 @@ static union PokemonSubstruct *GetSubstruct(struct BoxPokemon *boxMon, u32 perso
 u32 GetMonData(struct Pokemon *mon, s32 field, u8* data)
 {
     u32 ret;
-
-    mgba_printf(3, "getting some mon data");
     switch (field)
     {
     case MON_DATA_STATUS:
