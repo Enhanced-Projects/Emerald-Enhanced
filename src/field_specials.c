@@ -6098,3 +6098,9 @@ bool8 TobyCheckPlayerHasMon(void)//called with "specialvar VAR_RESULT, TobyCheck
         }
     return FALSE;
     }
+
+void RyuSetUpSaveBlockStuff(void)
+{
+    gSaveBlock1Ptr->registeredItem = ITEM_WAYSTONE;
+    VarSet(VAR_RYU_THEME_NUMBER, 1);
+}
