@@ -18,12 +18,6 @@ SealedChamber_OuterRoom_OnLoad: @ 823912B
 	end
 
 SealedChamber_OuterRoom_EventScript_CloseInnerRoomEntrance:: @ 8239135
-	setmetatile 9, 1, METATILE_Cave_EntranceCover, 1
-	setmetatile 10, 1, METATILE_Cave_EntranceCover, 1
-	setmetatile 11, 1, METATILE_Cave_EntranceCover, 1
-	setmetatile 9, 2, METATILE_Cave_SealedChamberBraille_Mid, 1
-	setmetatile 10, 2, METATILE_Cave_SealedChamberBraille_Mid, 1
-	setmetatile 11, 2, METATILE_Cave_SealedChamberBraille_Mid, 1
 	return
 
 SealedChamber_OuterRoom_EventScript_BrailleABC:: @ 823916C
