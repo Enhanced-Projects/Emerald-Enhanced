@@ -2974,7 +2974,6 @@ void BeginBattleIntro(void)
 
 static void BattleMainCB1(void)
 {
-    mgba_printf(3, "processing gBattleMainFunc");
     gBattleMainFunc();
 
     for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
@@ -3278,8 +3277,6 @@ static void DoBattleIntro(void)
     s32 i;
     u8 *state = &gBattleStruct->introState;
 
-    mgba_printf(3, "Doing Battle Intro");
-
     switch (*state)
     {
     case 0: // Get Data of all battlers.
@@ -3322,12 +3319,17 @@ static void DoBattleIntro(void)
         {
             {
                 memcpy(&gBattleMons[gActiveBattler], &gBattleResources->bufferB[gActiveBattler][4], sizeof(struct BattlePokemon));
+                mgba_printf(3, "memcpy'd each battle mon slot to empty");
                 gBattleMons[gActiveBattler].type1 = gBaseStats[gBattleMons[gActiveBattler].species].type1;
                 gBattleMons[gActiveBattler].type2 = gBaseStats[gBattleMons[gActiveBattler].species].type2;
                 gBattleMons[gActiveBattler].type3 = TYPE_MYSTERY;
+                mgba_printf(3, "Set battlepokemon types");
                 gBattleMons[gActiveBattler].ability = GetAbilityBySpecies(gBattleMons[gActiveBattler].species, gBattleMons[gActiveBattler].abilityNum);
+                mgba_printf(3, "set ability for each battlepokemon");
                 gBattleStruct->hpOnSwitchout[GetBattlerSide(gActiveBattler)] = gBattleMons[gActiveBattler].hp;
+                mgba_printf(3, "set hp for each battlePokemon");
                 gBattleMons[gActiveBattler].status2 = 0;
+                mgba_printf(3, "set status for each battlePokemon");
                 for (i = 0; i < NUM_BATTLE_STATS; i++)
                 {
                     gBattleMons[gActiveBattler].statStages[i] = 6;
@@ -3402,14 +3404,14 @@ static void DoBattleIntro(void)
             mgba_printf(3, "state 4, part 3: don't do pokeball slide in");
             *state = 7; // Don't wait for sprite, print message at the same time.
         }
-        mgba_printf(3, "state 4, part 4: Unable to advance state returning to top. ");
+        mgba_printf(3, "Finished state 4");
         break;
     case 5: // draw party summary in trainer battles
-        mgba_printf(3, "state 5: Draw party summary");
+        mgba_printf(3, "starting state 5: Draw party summary");
         if (!gBattleControllerExecFlags)
         {
             struct HpAndStatus hpStatus[PARTY_SIZE];
-
+            mgba_printf(3, "Putting data in status box for player party");
             for (i = 0; i < PARTY_SIZE; i++)
             {
                 if (GetMonData(&gEnemyParty[i], MON_DATA_SPECIES2) == SPECIES_NONE
@@ -3425,10 +3427,11 @@ static void DoBattleIntro(void)
                 }
             }
 
+            mgba_printf(3, "Finished setting status for player");
             gActiveBattler = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
             BtlController_EmitDrawPartyStatusSummary(0, hpStatus, 0x80);
             MarkBattlerForControllerExec(gActiveBattler);
-
+            mgba_printf(3, "setting status for enemy party");
             for (i = 0; i < PARTY_SIZE; i++)
             {
                 if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == SPECIES_NONE
@@ -3443,18 +3446,21 @@ static void DoBattleIntro(void)
                     hpStatus[i].status = GetMonData(&gPlayerParty[i], MON_DATA_STATUS);
                 }
             }
-
+            mgba_printf(3, "Finished setting status for enemy");
             gActiveBattler = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
             BtlController_EmitDrawPartyStatusSummary(0, hpStatus, 0x80);
             MarkBattlerForControllerExec(gActiveBattler);
-
+            mgba_printf(3, "Drew mon status");
             (*state)++;
         }
+        mgba_printf(3, "Finished state 5");
         break;
     case 6: // wait for previous action to complete
+        mgba_printf(3, "State 6a: Waiting for status to finish drawing");
         if (!gBattleControllerExecFlags)
             (*state)++;
-            mgba_printf(3, "state 6: finished sprite slides and set final sprites for beginning of battle");
+
+        mgba_printf(3, "state 6b: finished sprite slides and set final sprites for beginning of battle");
         break;
     case 7: // print battle intro message
         mgba_printf(3, "state 7: printing battle intro");
