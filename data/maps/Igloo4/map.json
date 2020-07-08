@@ -4,6 +4,14 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "Igloo4_EventScript_HintText",
+            "type": "sign",
+            "x": 4,
+            "y": 1
+        }
     ],
     "connections": null,
     "coord_events": [

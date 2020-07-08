@@ -27,7 +27,7 @@ Snowshore_EventScript_MrFrigusSign::
 
 SnowShore_Text_MrFrigusSign:
 	.string "Mr Frigus's house\n"
-	.string "“Come in for some ice magic”$"
+	.string "“Learn about the island's past”$"
 
 Snowshore_BigPearl::
 	lockall
