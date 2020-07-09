@@ -35,10 +35,10 @@
             "elevation": 5,
             "script": "FrostbiteField_PolarPillarEntranceTrigger",
             "type": "trigger",
-            "var": "VAR_TEMP_0",
+            "var": "VAR_TEMP_5",
             "var_value": "0",
-            "x": 23,
-            "y": 40
+            "x": 21,
+            "y": 44
         }
     ],
     "id": "MAP_FROSTBITE_FIELD",

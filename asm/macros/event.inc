@@ -287,7 +287,7 @@
 	@ Blocks script execution for frames. (Game runs at 60 frames per second.)
 	.macro delay frames:req
 	.byte 0x28
-	.2byte \time
+	.2byte \frames
 	.endm
 
 	@ Sets a to 1.
@@ -570,7 +570,9 @@
 	.endm
 
 	@ Blocks script execution until the movements being applied to the specified (index) Object finish. 
-	@ If the specified Object is 0x0000, then the command will block script execution until all Objects affected by applymovement finish their movements. If the specified Object is not currently being manipulated with applymovement, then this command does nothing.
+	@ If the specified Object is 0x0000, then the command will block script execution until all Objects 
+	@ affected by applymovement finish their movements. If the specified Object is not currently being 
+	@ manipulated with applymovement, then this command does nothing.
 	@ If no map is specified, then the current map is used.
 	.macro waitmovement index:req, map
 		.ifb \map
