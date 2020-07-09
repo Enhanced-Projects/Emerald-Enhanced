@@ -18,7 +18,10 @@
 	.byte 0x03
 	.endm
 
-	@ Jumps to destination and continues script execution from there. The location of the calling script is remembered and can be returned to later.
+	@ Jumps to destination and continues script execution from there. 
+	@ The location of the calling script is remembered and can be returned 
+	@ to later. There is a stack of 20 saved locations, and the engine will
+	@ return to them in the inverse order they were saved.
 	.macro call destination:req
 	.byte 0x04
 	.4byte \destination
@@ -274,13 +277,15 @@
 	.2byte \functionId
 	.endm
 
-	@ Blocks script execution until a command or ASM code manually unblocks it. Generally used with specific commands and specials. If this command runs, and a subsequent command or piece of ASM does not unblock state, the script will remain blocked indefinitely (essentially a hang).
+	@ Blocks script execution until a command or ASM code manually unblocks it. Generally used 
+	@ with specific commands and specials. If this command runs, and a subsequent command or 
+	@piece of ASM does not unblock state, the script will remain blocked indefinitely (essentially a hang).
 	.macro waitstate
 	.byte 0x27
 	.endm
 
-	@ Blocks script execution for time (frames? milliseconds?).
-	.macro delay time:req
+	@ Blocks script execution for frames. (Game runs at 60 frames per second.)
+	.macro delay frames:req
 	.byte 0x28
 	.2byte \time
 	.endm
@@ -315,7 +320,8 @@
 	.byte 0x2d
 	.endm
 
-	@ Sets the values of variables 0x8000, 0x8001, and 0x8002 to the current hour, minute, and second. In FRLG, this command sets those variables to zero.
+	@ Sets the values of variables 0x8000, 0x8001, and 0x8002 to the current hour, minute, and second.
+	@ In FRLG, this command sets those variables to zero.
 	.macro gettime
 	.byte 0x2e
 	.endm
@@ -360,7 +366,7 @@
 	.byte 0x35
 	.endm
 
-	@ Crossfades the currently-playng song into the specified (song_number) song.
+	@ Crossfades the currently-playing song into the specified (song_number) song.
 	.macro fadenewbgm song_number:req
 	.byte 0x36
 	.2byte \song_number
@@ -429,7 +435,8 @@
 	.2byte \Y
 	.endm
 
-	@ Sets the warp destination that a warp to Warp 127 on Map 127.127 will connect to. Useful when a map has warps that need to go to script-controlled locations (i.e. elevators).
+	@ Sets the warp destination that a warp to Warp 127 on Map 127.127 will connect to. 
+	@ Useful when a map has warps that need to go to script-controlled locations (i.e. elevators).
 	.macro setdynamicwarp map:req, warp:req, X:req, Y:req
 	.byte 0x3f
 	map \map
@@ -468,7 +475,8 @@
 	.byte 0x43
 	.endm
 
-	@ Attempts to add quantity of item index to the player's Bag. If the player has enough room, the item will be added and VAR_RESULT will be set to TRUE; otherwise, VAR_RESULT is set to FALSE.
+	@ Attempts to add quantity of item index to the player's Bag. If the player has enough room, 
+	@ the item will be added and VAR_RESULT will be set to TRUE; otherwise, VAR_RESULT is set to FALSE.
 	.macro additem index:req, quantity=1
 	.byte 0x44
 	.2byte \index
@@ -482,21 +490,25 @@
 	.2byte \quantity
 	.endm
 
-	@ Checks if the player has enough space in their Bag to hold quantity more of item index. Sets VAR_RESULT to TRUE if there is room, or FALSE is there is no room.
+	@ Checks if the player has enough space in their Bag to hold quantity more of item index.
+	@ Sets VAR_RESULT to TRUE if there is room, or FALSE is there is no room.
 	.macro checkitemspace index:req, quantity:req
 	.byte 0x46
 	.2byte \index
 	.2byte \quantity
 	.endm
 
-	@ Checks if the player has quantity or more of item index in their Bag. Sets VAR_RESULT to TRUE if the player has enough of the item, or FALSE if they have fewer than quantity of the item.
+	@ Checks if the player has quantity or more of item index in their Bag. 
+	@ Sets VAR_RESULT to TRUE if the player has enough of the item, 
+	@ or FALSE if they have fewer than quantity of the item.
 	.macro checkitem index:req, quantity:req
 	.byte 0x47
 	.2byte \index
 	.2byte \quantity
 	.endm
 
-	@ Checks which Bag pocket the specified item belongs in, and writes the pocket value (POCKET_*) to VAR_RESULT. This script is used to show the name of the proper Bag pocket when the player receives an item via callstd (simplified to giveitem in XSE).
+	@ Checks which Bag pocket the specified item belongs in, and writes the pocket value (POCKET_*) to VAR_RESULT.
+	@ This script is used to show the name of the proper Bag pocket when the player receives an item via callstd (simplified to giveitem in XSE).
 	.macro checkitemtype index:req
 	.byte 0x48
 	.2byte \index
@@ -534,7 +546,8 @@
 	.2byte \decoration
 	.endm
 
-	@ Checks if the player has enough space in their PC to hold decoration. Sets VAR_RESULT to TRUE if there is room, or FALSE is there is no room. In FireRed, this command is a nop. (The argument is read, but not used for anything.)
+	@ Checks if the player has enough space in their PC to hold decoration. Sets VAR_RESULT to TRUE if there is room,
+	@  or FALSE is there is no room. In FireRed, this command is a nop. (The argument is read, but not used for anything.)
 	.macro checkdecorspace decoration:req
 	.byte 0x4e
 	.2byte \decoration
@@ -556,7 +569,8 @@
 		.endif
 	.endm
 
-	@ Blocks script execution until the movements being applied to the specified (index) Object finish. If the specified Object is 0x0000, then the command will block script execution until all Objects affected by applymovement finish their movements. If the specified Object is not currently being manipulated with applymovement, then this command does nothing.
+	@ Blocks script execution until the movements being applied to the specified (index) Object finish. 
+	@ If the specified Object is 0x0000, then the command will block script execution until all Objects affected by applymovement finish their movements. If the specified Object is not currently being manipulated with applymovement, then this command does nothing.
 	@ If no map is specified, then the current map is used.
 	.macro waitmovement index:req, map
 		.ifb \map
@@ -569,7 +583,8 @@
 		.endif
 	.endm
 
-	@ Attempts to hide the specified (index) Object on the specified (map_group, map_num) map, by setting its visibility flag if it has a valid one. If the Object does not have a valid visibility flag, this command does nothing.
+	@ Attempts to hide the specified (index) Object on the specified (map_group, map_num) map, 
+	@ by setting its visibility flag if it has a valid one. If the Object does not have a valid visibility flag, this command does nothing.
 	@ If no map is specified, then the current map is used.
 	.macro removeobject index:req, map
 		.ifb \map
@@ -582,7 +597,8 @@
 		.endif
 	.endm
 
-	@ Unsets the specified (index) Object's visibility flag on the specified (map_group, map_num) map if it has a valid one. If the Object does not have a valid visibility flag, this command does nothing.
+	@ Unsets the specified (index) Object's visibility flag on the specified (map_group, map_num) map if it has a valid one.
+	@ If the Object does not have a valid visibility flag, this command does nothing.
 	@ If no map is specified, then the current map is used.
 	.macro addobject index:req, map
 		.ifb \map
@@ -723,7 +739,8 @@
 	.endm
 
 
-	@ Starts a trainer battle using the battle information stored in RAM (usually by trainerbattle, which actually calls this command behind-the-scenes), and blocks script execution until the battle finishes.
+	@ Starts a trainer battle using the battle information stored in RAM 
+	@ (usually by trainerbattle, which actually calls this command behind-the-scenes), and blocks script execution until the battle finishes.
 	.macro trainerbattlebegin
 	.byte 0x5d
 	.endm
@@ -763,7 +780,8 @@
 	.2byte \y
 	.endm
 
-	@ Copies a live object event's xy position to its template, so that if the sprite goes off screen, it'll still be there when it comes back on screen.
+	@ Copies a live object event's xy position to its template, so that if the sprite goes off screen, 
+	@ it'll still be there when it comes back on screen.
 	.macro copyobjectxytoperm index:req
 	.byte 0x64
 	.2byte \index
@@ -775,12 +793,14 @@
 	.byte \byte
 	.endm
 
-	@ If a standard message box (or its text) is being drawn on-screen, this command blocks script execution until the box and its text have been fully drawn.
+	@ If a standard message box (or its text) is being drawn on-screen, this command blocks script execution until
+	@ the box and its text have been fully drawn.
 	.macro waitmessage
 	.byte 0x66
 	.endm
 
-	@ Starts displaying a standard message box containing the specified text. If text is a pointer, then the string at that offset will be loaded and used. If text is script bank 0, then the value of script bank 0 will be treated as a pointer to the text. (You can use loadpointer to place a string pointer in a script bank.)
+	@ Starts displaying a standard message box containing the specified text. If text is a pointer, then the string 
+	@ at that offset will be loaded and used. If text is script bank 0, then the value of script bank 0 will be treated as a pointer to the text. (You can use loadpointer to place a string pointer in a script bank.)
 	.macro message text:req
 	.byte 0x67
 	.4byte \text
@@ -806,7 +826,8 @@
 	.byte 0x6b
 	.endm
 
-	@ If the script was called by an Object, then that Object's movement will resume. This command also closes any standard message boxes that are still open.
+	@ If the script was called by an Object, then that Object's movement will resume. 
+	@ This command also closes any standard message boxes that are still open.
 	.macro release
 	.byte 0x6c
 	.endm
@@ -816,14 +837,17 @@
 	.byte 0x6d
 	.endm
 
-	@ Displays a YES/NO multichoice box at the specified coordinates, and blocks script execution until the user makes a selection. Their selection is stored in VAR_RESULT as NO (0) or YES (1). Pressing B is equivalent to answering NO
+	@ Displays a YES/NO multichoice box at the specified coordinates, and blocks script execution until the user
+	@ makes a selection. Their selection is stored in VAR_RESULT as NO (0) or YES (1). Pressing B is equivalent to answering NO
 	.macro yesnobox x:req, y:req
 	.byte 0x6e
 	.byte \x
 	.byte \y
 	.endm
 
-	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made. Lists of options are predefined (sMultichoiceLists) and the one to be used is specified with list. If b is set to a non-zero value, then the user will not be allowed to back out of the multichoice with the B button.
+	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made.
+	@ Lists of options are predefined (sMultichoiceLists) and the one to be used is specified with list. 
+	@ If b is set to a non-zero value, then the user will not be allowed to back out of the multichoice with the B button.
 	.macro multichoice x:req, y:req, list:req, b:req
 	.byte 0x6f
 	.byte \x
@@ -846,7 +870,9 @@
 	.byte \b
 	.endm
 
-	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made. Lists of options are predefined (sMultichoiceLists) and the one to be used is specified with list. The per_row argument determines how many list items will be shown on a single row of the box.
+	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made.
+	@ Lists of options are predefined (sMultichoiceLists) and the one to be used is specified with list. 
+	@ The per_row argument determines how many list items will be shown on a single row of the box.
 	.macro multichoicegrid x:req, y:req, list:req, per_row:req, B:req
 	.byte 0x71
 	.byte \x
@@ -898,7 +924,9 @@
 	.byte \a
 	.endm
 
-	@ Displays the string at pointer as braille text in a standard message box. The string must be formatted to use braille characters and needs to provide six extra starting characters that are skipped (in RS, these characters determined the box's size and position, but in Emerald these are calculated automatically).
+	@ Displays the string at pointer as braille text in a standard message box. 
+	@ The string must be formatted to use braille characters and needs to provide six extra starting characters
+	@ that are skipped (in RS, these characters determined the box's size and position, but in Emerald these are calculated automatically).
 	.macro braillemessage text:req
 	.byte 0x78
 	.4byte \text
@@ -927,7 +955,9 @@
 	.2byte \move
 	.endm
 
-	@ Checks if at least one Pokemon in the player's party knows the specified (index) attack. If so, VAR_RESULT is set to the (zero-indexed) slot number of the first Pokemon that knows the move. If not, VAR_RESULT is set to PARTY_SIZE. VAR_0x8004 is also set to this Pokemon's species.
+	@ Checks if at least one Pokemon in the player's party knows the specified (index) attack. If so, 
+	@ VAR_RESULT is set to the (zero-indexed) slot number of the first Pokemon that knows the move. 
+	@ If not, VAR_RESULT is set to PARTY_SIZE. VAR_0x8004 is also set to this Pokemon's species.
 	.macro checkpartymove index:req
 	.byte 0x7c
 	.2byte \index
@@ -946,14 +976,16 @@
 	.byte \out
 	.endm
 
-	@ Writes the nickname of the Pokemon in slot slot (zero-indexed) of the player's party to the specified buffer. If an empty or invalid slot is specified, ten spaces ("") are written to the buffer.
+	@ Writes the nickname of the Pokemon in slot slot (zero-indexed) of the player's party to the specified buffer.
+	@ If an empty or invalid slot is specified, ten spaces ("") are written to the buffer.
 	.macro bufferpartymonnick out:req, slot:req
 	.byte 0x7f
 	.byte \out
 	.2byte \slot
 	.endm
 
-	@ Writes the name of the item at index item to the specified buffer. If the specified index is larger than the number of items in the game (0x176), the name of item 0 ("????????") is buffered instead.
+	@ Writes the name of the item at index item to the specified buffer. If the specified index is larger than the number
+	@ of items in the game (0x176), the name of item 0 ("????????") is buffered instead.
 	.macro bufferitemname out:req, item:req
 	.byte 0x80
 	.byte \out
@@ -981,7 +1013,8 @@
 	.2byte \input
 	.endm
 
-	@ Writes the standard string identified by index to the specified buffer. This command has no protections in place at all, so specifying an invalid standard string (e.x. 0x2B) can and usually will cause data corruption.
+	@ Writes the standard string identified by index to the specified buffer. This command has no protections in place at all,
+	@ so specifying an invalid standard string (e.x. 0x2B) can and usually will cause data corruption.
 	.macro bufferstdstring out:req, index:req
 	.byte 0x84
 	.byte \out
@@ -1065,7 +1098,8 @@
 	.4byte \value
 	.endm
 
-	@ If check is 0x00, this command will check if the player has value or more money; script variable 0x800D (LASTRESULT) is set to 0x0001 if the player has enough money, or 0x0000 if the do not.
+	@ If check is 0x00, this command will check if the player has value or more money; script variable 0x800D (LASTRESULT)
+	@ is set to 0x0001 if the player has enough money, or 0x0000 if the do not.
 	.macro checkmoney value:req
 	.byte 0x92
 	.4byte \value
@@ -1292,7 +1326,8 @@
 	.2byte \count
 	.endm
 
-	@ Prepares to start a wild battle against a species at Level level holding item. Running this command will not affect normal wild battles. You start the prepared battle with dowildbattle.
+	@ Prepares to start a wild battle against a species at Level level holding item. Running this command will not affect normal wild battles.
+	@ You start the prepared battle with dowildbattle.
 	.macro setwildbattle species:req, level:req, item:req
 	.byte 0xb6
 	.2byte \species
@@ -1396,19 +1431,23 @@
 	.2byte \box
 	.endm
 
-	@ Sets the color of the text in standard message boxes. 0x00 produces blue (male) text, 0x01 produces red (female) text, 0xFF resets the color to the default for the current OW's gender, and all other values produce black text.
+	@ Sets the color of the text in standard message boxes. 0x00 produces blue (male) text, 
+	@ 0x01 produces red (female) text, 0xFF resets the color to the default for the current OW's gender, 
+	@ and all other values produce black text.
 	.macro textcolor color:req
 	.byte 0xc7
 	.byte \color
 	.endm
 
-	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom of the screen when the Main Menu is opened.
+	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears 
+	@ on the bottom of the screen when the Main Menu is opened.
 	.macro loadhelp pointer:req
 	.byte 0xc8
 	.4byte \pointer
 	.endm
 
-	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom of the screen when the Main Menu is opened.
+	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears 
+	@ on the bottom of the screen when the Main Menu is opened.
 	.macro unloadhelp
 	.byte 0xc9
 	.endm
@@ -1436,13 +1475,15 @@
 	.2byte \slot
 	.endm
 
-	@ Checks if the Pokemon in the specified slot of the player's party is obedient. If the Pokemon is disobedient, VAR_RESULT is TRUE. If the Pokemon is obedient (or if the specified slot is empty or invalid), VAR_RESULT is FALSE.
+	@ Checks if the Pokemon in the specified slot of the player's party is obedient. If the Pokemon is disobedient,
+	@ VAR_RESULT is TRUE. If the Pokemon is obedient (or if the specified slot is empty or invalid), VAR_RESULT is FALSE.
 	.macro checkmonobedience slot:req
 	.byte 0xce
 	.2byte \slot
 	.endm
 
-	@ Depending on factors I haven't managed to understand yet, this command may cause script execution to jump to the offset specified by the pointer at 0x020375C0.
+	@ Depending on factors I haven't managed to understand yet, this command may cause script execution to jump to the offset
+	@ specified by the pointer at 0x020375C0.
 	.macro gotoram
 	.byte 0xcf
 	.endm
@@ -1469,7 +1510,8 @@
 	.byte \location
 	.endm
 
-	@ For the rotating tile puzzles in Mossdeep Gym/Trick House Room 7. Moves the objects on the colored puzzle specified by puzzleNumber one rotation
+	@ For the rotating tile puzzles in Mossdeep Gym/Trick House Room 7. Moves the objects on the colored puzzle 
+	@ specified by puzzleNumber one rotation
 	.macro moverotatingtileobjects puzzleNumber:req
 	.byte 0xd3
 	.2byte \puzzleNumber
@@ -1480,7 +1522,9 @@
 	.byte 0xd4
 	.endm
 
-	@ For the rotating tile puzzles in Mossdeep Gym/Trick House Room 7. Allocates memory for the puzzle objects. isTrickHouse is needed to determine which of the two maps the puzzle is on, in order to know where in the tileset the puzzle tiles start. In FireRed, this command is a nop.
+	@ For the rotating tile puzzles in Mossdeep Gym/Trick House Room 7. Allocates memory for the puzzle objects.
+	@ isTrickHouse is needed to determine which of the two maps the puzzle is on, in order to know where in the 
+	@ tileset the puzzle tiles start. In FireRed, this command is a nop.
 	.macro initrotatingtilepuzzle isTrickHouse:req
 	.byte 0xd5
 	.2byte \isTrickHouse
@@ -1552,7 +1596,11 @@
 	.2byte \word
 	.endm
 
-	@ Writes the name of the specified (item) item to the specified buffer. If the specified item is a Berry (0x85 - 0xAE) or Poke Ball (0x4) and if the quantity is 2 or more, the buffered string will be pluralized ("IES" or "S" appended). If the specified item is the Enigma Berry, I have no idea what this command does (but testing showed no pluralization). If the specified index is larger than the number of items in the game (0x176), the name of item 0 ("????????") is buffered instead.
+	@ Writes the name of the specified (item) item to the specified buffer. 
+	@ If the specified item is a Berry (0x85 - 0xAE) or Poke Ball (0x4) and if the quantity is 2 or more,
+	@ the buffered string will be pluralized ("IES" or "S" appended). If the specified item is the Enigma Berry, 
+	@ I have no idea what this command does (but testing showed no pluralization). 
+	@ If the specified index is larger than the number of items in the game (0x176), the name of item 0 ("????????") is buffered instead.
 	.macro bufferitemnameplural out:req, item:req, quantity:req
 	.byte 0xe2
 	.byte \out
