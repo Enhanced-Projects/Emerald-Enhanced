@@ -4,6 +4,14 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FrostbiteField_IceHeal",
+            "type": "sign",
+            "x": 36,
+            "y": 56
+        }
     ],
     "connections": [
         {
@@ -23,6 +31,15 @@
         }
     ],
     "coord_events": [
+        {
+            "elevation": 5,
+            "script": "FrostbiteField_PolarPillarEntranceTrigger",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 23,
+            "y": 40
+        }
     ],
     "id": "MAP_FROSTBITE_FIELD",
     "layout": "LAYOUT_FROSTBITE_FIELD",
@@ -59,21 +76,147 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+            "graphics_id": "OBJ_EVENT_GFX_HIKER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "FrostbiteField_TestBattle",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
+            "x": 18,
+            "y": 57
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_ITEM_FROSTBITE_FIELD_PP_UP",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "FrostbiteField_EventScript_ItemPPup",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 0,
+            "y": 49
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_ITEM_FROSTBITE_FIELD_REPEL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "FrostbiteField_EventScript_ItemRepel",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
             "x": 15,
-            "y": 73
+            "y": 20
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_ITEM_FROSTBITE_FIELD_PP_MAX",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "FrostbiteField_EventScript_ItemPPmax",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 1,
+            "y": 74
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_HIKER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "2",
+            "trainer_type": "0",
+            "x": 20,
+            "y": 49
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_HIKER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "2",
+            "trainer_type": "0",
+            "x": 8,
+            "y": 37
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_HIKER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 21,
+            "y": 26
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_ITEM_FROSTBITE_FIELD_SUPER_REPEL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "FrostbiteField_EventScript_ItemSuperRepel",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 32,
+            "y": 70
         }
     ],
     "region_map_section": "MAPSEC_FROSTBITE_FIELD",
     "requires_flash": false,
     "show_map_name": true,
     "warp_events": [
+        {
+            "dest_map": "MAP_POLAR_PILLAR_1F",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 23,
+            "y": 39
+        },
+        {
+            "dest_map": "MAP_IGLOO1",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 20,
+            "y": 25
+        },
+        {
+            "dest_map": "MAP_IGLOO2",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 23,
+            "y": 26
+        },
+        {
+            "dest_map": "MAP_IGLOO3",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 7,
+            "y": 69
+        },
+        {
+            "dest_map": "MAP_IGLOO4",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 11,
+            "y": 67
+        }
     ],
     "weather": "WEATHER_SANDSTORM"
 }

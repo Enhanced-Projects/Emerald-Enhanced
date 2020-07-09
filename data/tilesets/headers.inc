@@ -863,3 +863,14 @@ gTileset_SnowShore::
 	.4byte gMetatiles_SnowShore
 	.4byte gMetatileAttributes_SnowShore
 	.4byte NULL
+
+	.align 2
+gTileset_PolarPillar::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_PolarPillar
+	.4byte gTilesetPalettes_PolarPillar
+	.4byte gMetatiles_PolarPillar
+	.4byte gMetatileAttributes_PolarPillar
+	.4byte NULL

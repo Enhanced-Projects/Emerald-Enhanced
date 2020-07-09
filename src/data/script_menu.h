@@ -932,7 +932,7 @@ static const struct MenuAction MultichoiceList_128[]=
     {gText_RyuTeleportLCCDEPT},
     {gText_RyuTeleportLCAH},
     {gText_RyuTeleportMCMH},
-    {gText_RyuTeleportAbandonedShip},
+    {gText_RyuTeleportSnowshore},
     {gText_RyuTeleportBattleFrontierCallback},  
 };
 

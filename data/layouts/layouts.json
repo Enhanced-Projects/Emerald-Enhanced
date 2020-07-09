@@ -4829,6 +4829,116 @@
             "primary_tileset": "gTileset_Snowy",
             "secondary_tileset": "gTileset_Underwater",
             "width": 38
+        },
+        {
+            "blockdata_filepath": "data/layouts/CraggyCoastUnderwater/map.bin",
+            "border_filepath": "data/layouts/CraggyCoastUnderwater/border.bin",
+            "height": 54,
+            "id": "LAYOUT_CRAGGY_COAST_UNDERWATER",
+            "name": "CraggyCoastUnderwater_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 27
+        },
+        {
+            "blockdata_filepath": "data/layouts/CraggyCoastUnderwaterCave/map.bin",
+            "border_filepath": "data/layouts/CraggyCoastUnderwaterCave/border.bin",
+            "height": 60,
+            "id": "LAYOUT_CRAGGY_COAST_UNDERWATER_CAVE",
+            "name": "CraggyCoastUnderwaterCave_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Cave",
+            "width": 50
+        },
+        {
+            "blockdata_filepath": "data/layouts/CraggyCoastUnderwater2/map.bin",
+            "border_filepath": "data/layouts/CraggyCoastUnderwater2/border.bin",
+            "height": 60,
+            "id": "LAYOUT_CRAGGY_COAST_UNDERWATER2",
+            "name": "CraggyCoastUnderwater2_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 27
+        },
+        {
+            "blockdata_filepath": "data/layouts/PolarPillar_1F/map.bin",
+            "border_filepath": "data/layouts/PolarPillar_1F/border.bin",
+            "height": 17,
+            "id": "LAYOUT_POLAR_PILLAR_1F",
+            "name": "PolarPillar_1F_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_PolarPillar",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/PolarPillar_2F/map.bin",
+            "border_filepath": "data/layouts/PolarPillar_2F/border.bin",
+            "height": 17,
+            "id": "LAYOUT_POLAR_PILLAR_2F",
+            "name": "PolarPillar_2F_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_PolarPillar",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/PolarPillar_3F/map.bin",
+            "border_filepath": "data/layouts/PolarPillar_3F/border.bin",
+            "height": 17,
+            "id": "LAYOUT_POLAR_PILLAR_3F",
+            "name": "PolarPillar_3F_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_PolarPillar",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/PolarPillar_4F/map.bin",
+            "border_filepath": "data/layouts/PolarPillar_4F/border.bin",
+            "height": 10,
+            "id": "LAYOUT_POLAR_PILLAR_4F",
+            "name": "PolarPillar_4F_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_PolarPillar",
+            "width": 13
+        },
+        {
+            "blockdata_filepath": "data/layouts/Igloo1/map.bin",
+            "border_filepath": "data/layouts/Igloo1/border.bin",
+            "height": 9,
+            "id": "LAYOUT_IGLOO1",
+            "name": "Igloo1_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_PolarPillar",
+            "width": 9
+        },
+        {
+            "blockdata_filepath": "data/layouts/Igloo2/map.bin",
+            "border_filepath": "data/layouts/Igloo2/border.bin",
+            "height": 9,
+            "id": "LAYOUT_IGLOO2",
+            "name": "Igloo2_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_PolarPillar",
+            "width": 9
+        },
+        {
+            "blockdata_filepath": "data/layouts/Igloo3/map.bin",
+            "border_filepath": "data/layouts/Igloo3/border.bin",
+            "height": 9,
+            "id": "LAYOUT_IGLOO3",
+            "name": "Igloo3_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_PolarPillar",
+            "width": 9
+        },
+        {
+            "blockdata_filepath": "data/layouts/Igloo4/map.bin",
+            "border_filepath": "data/layouts/Igloo4/border.bin",
+            "height": 9,
+            "id": "LAYOUT_IGLOO4",
+            "name": "Igloo4_Layout",
+            "primary_tileset": "gTileset_Snowy",
+            "secondary_tileset": "gTileset_PolarPillar",
+            "width": 9
         }
     ],
     "layouts_table_label": "gMapLayouts"

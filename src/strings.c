@@ -1956,7 +1956,7 @@ const u8 gText_RyuTeleportMtPyreExterior[] = _(" Mt.Pyre Ext");
 const u8 gText_RyuTeleportLCCDEPT[] = _(" LC DeptStore");
 const u8 gText_RyuTeleportMCMH[] = _(" Berry Farm");
 const u8 gText_RyuTeleportLCAH[] = _(" AquaOffice");
-const u8 gText_RyuTeleportAbandonedShip[] = _(" Abdn. Ship");
+const u8 gText_RyuTeleportSnowshore[] = _(" Snowshore");
 
 const u8 gText_RyuTeleportBattleFrontierGate[] = _(" Front Gate");
 const u8 gText_RyuTeleportBattleFrontierTower[] = _(" Battle Tower");
@@ -1970,7 +1970,7 @@ const u8 gText_RyuTeleportBattleFrontierCallback[] = _(" Return");
 
 const u8 gText_NuzlockeName[] = _("Failure");
 const u8 gText_RyuMonDied[] = _("A pokemon died...");
-const u8 gText_RyuNuzlockeFailed[] = _("You have failed the nuzlocke challenge.");
+const u8 gText_RyuNuzlockeFailed[] = _("You have failed the Nuzlocke challenge.");
 
 const u8 gText_RyuPasscodeMenu1[] = _("1");
 const u8 gText_RyuPasscodeMenu2[] = _("2");

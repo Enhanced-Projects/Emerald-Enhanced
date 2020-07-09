@@ -1,62 +1,64 @@
 {
-  "id": "MAP_LILYCOVE_CITY_HOUSE4",
-  "name": "LilycoveCity_House4",
-  "layout": "LAYOUT_HOUSE1",
-  "music": "MUS_MINAMO",
-  "region_map_section": "MAPSEC_LILYCOVE_CITY",
-  "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_INDOOR",
-  "allow_bike": false,
-  "allow_escape_rope": false,
-  "allow_running": false,
-  "show_map_name": false,
-  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
-  "object_events": [
-    {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_4",
-      "x": 1,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_House4_EventScript_Man1",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
-      "x": 7,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_House4_EventScript_Man2",
-      "flag": "0"
-    }
-  ],
-  "warp_events": [
-    {
-      "x": 3,
-      "y": 8,
-      "elevation": 0,
-      "dest_map": "MAP_LILYCOVE_CITY",
-      "dest_warp_id": 11
-    },
-    {
-      "x": 4,
-      "y": 8,
-      "elevation": 0,
-      "dest_map": "MAP_LILYCOVE_CITY",
-      "dest_warp_id": 11
-    }
-  ],
-  "coord_events": [],
-  "bg_events": []
+    "allow_bike": false,
+    "allow_escape_rope": false,
+    "allow_running": false,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_LILYCOVE_CITY_HOUSE4",
+    "layout": "LAYOUT_HOUSE1",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_MINAMO",
+    "name": "LilycoveCity_House4",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_4",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "LilycoveCity_House4_EventScript_Man1",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 1,
+            "y": 4
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "LilycoveCity_House4_EventScript_Man2",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 4
+        }
+    ],
+    "region_map_section": "MAPSEC_LILYCOVE_CITY",
+    "requires_flash": false,
+    "show_map_name": false,
+    "warp_events": [
+        {
+            "dest_map": "MAP_LILYCOVE_CITY",
+            "dest_warp_id": 11,
+            "elevation": 0,
+            "x": 3,
+            "y": 8
+        },
+        {
+            "dest_map": "MAP_LILYCOVE_CITY",
+            "dest_warp_id": 11,
+            "elevation": 0,
+            "x": 4,
+            "y": 8
+        }
+    ],
+    "weather": "WEATHER_NONE"
 }
