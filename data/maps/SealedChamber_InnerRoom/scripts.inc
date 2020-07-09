@@ -6,7 +6,8 @@ SCH_OpenDoors:: @ 82391F8
 	goto_if_eq ryu_end
 	fadeoutbgm 0
 	playse SE_W089
-	msgbox SCH_LanaMsgEQ MSGBOX_AUTOCLOSE
+	call_if_set FLAG_RYU_DS_LEAF_FRIENDS, SCH_LanaSCMessage
+	call_if_unset FLAG_RYU_DS_LEAF_FRIENDS, SCH_NoLanaSCMessage
 	closemessage
 	playse SE_W089
 	special DoSealedChamberShakingEffect1
@@ -34,6 +35,14 @@ SCH_OpenDoors:: @ 82391F8
 	return
 	releaseall
 	end
+
+SCH_LanaSCMessage::
+	msgbox SCH_LanaSCMsg
+	return
+
+SCH_NoLanaSCMessage::
+	msgbox SCH_NoLanaSCMsg
+	return
 
 SealedChamber_InnerRoom_EventScript_NoEffect:: @ 8239253
 	releaseall
@@ -231,8 +240,11 @@ SCH_LanaMsg2:
 SCH_LanaMsg3:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}:Hey, you okay?\p{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ...$"
 
-SCH_LanaMsgEQ:
+SCH_LanaSCMsg:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(An earthquake suddenly occurs,\n causing Lana to crash into {PLAYER}.)$"
+
+SCH_NoLanaSCMsg:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(An earthquake suddenly occurs.\n Doors can be heard opening far\l away.)$"
 
 SCH_LanaMsg4:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana smiles in response before\n surprisingly opening her mouth.)\p{COLOR LIGHT_RED}{SHADOW RED}See...you...$"

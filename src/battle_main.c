@@ -559,7 +559,6 @@ static void CB2_InitBattleInternal(void)
     LoadBattleTextboxAndBackground();
     ResetSpriteData();
     ResetTasks();
-    //DrawBattleEntryBackground(); this was disabled because the slide tiles did not play well with the new battle bg's from ee v5.5+
     FreeAllSpritePalettes();
     gReservedSpritePaletteCount = 4;
     SetVBlankCallback(VBlankCB_Battle);
@@ -3279,11 +3278,6 @@ static void DoBattleIntro(void)
     case 4: // Copy battler data gotten in cases 0 and 1. Draw trainer/mon sprite.
         for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
         {
-            if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI) && GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
-            {
-                memset(&gBattleMons[gActiveBattler], 0, sizeof(struct BattlePokemon));
-            }
-            else
             {
                 memcpy(&gBattleMons[gActiveBattler], &gBattleResources->bufferB[gActiveBattler][4], sizeof(struct BattlePokemon));
                 gBattleMons[gActiveBattler].type1 = gBaseStats[gBattleMons[gActiveBattler].species].type1;
@@ -3294,6 +3288,7 @@ static void DoBattleIntro(void)
                 gBattleMons[gActiveBattler].status2 = 0;
                 for (i = 0; i < NUM_BATTLE_STATS; i++)
                     gBattleMons[gActiveBattler].statStages[i] = 6;
+
             }
 
             // Draw sprite.
@@ -3350,18 +3345,13 @@ static void DoBattleIntro(void)
             (*state)++;
         }
         else // Skip party summary since it is a wild battle.
-        {
-            if (B_FAST_INTRO)
-                *state = 7; // Don't wait for sprite, print message at the same time.
-            else
-                *state = 6; // Wait for sprite to load.
-        }
+            *state = 7; // Don't wait for sprite, print message at the same time.
+
         break;
     case 5: // draw party summary in trainer battles
         if (!gBattleControllerExecFlags)
         {
             struct HpAndStatus hpStatus[PARTY_SIZE];
-
             for (i = 0; i < PARTY_SIZE; i++)
             {
                 if (GetMonData(&gEnemyParty[i], MON_DATA_SPECIES2) == SPECIES_NONE
@@ -3380,7 +3370,6 @@ static void DoBattleIntro(void)
             gActiveBattler = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
             BtlController_EmitDrawPartyStatusSummary(0, hpStatus, 0x80);
             MarkBattlerForControllerExec(gActiveBattler);
-
             for (i = 0; i < PARTY_SIZE; i++)
             {
                 if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == SPECIES_NONE
@@ -3395,17 +3384,16 @@ static void DoBattleIntro(void)
                     hpStatus[i].status = GetMonData(&gPlayerParty[i], MON_DATA_STATUS);
                 }
             }
-
             gActiveBattler = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
             BtlController_EmitDrawPartyStatusSummary(0, hpStatus, 0x80);
             MarkBattlerForControllerExec(gActiveBattler);
-
             (*state)++;
         }
         break;
     case 6: // wait for previous action to complete
         if (!gBattleControllerExecFlags)
             (*state)++;
+
         break;
     case 7: // print battle intro message
         if (!IsBattlerMarkedForControllerExec(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)))

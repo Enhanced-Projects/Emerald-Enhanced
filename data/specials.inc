@@ -604,4 +604,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuCheckRelMegaReward
 	def_special CountBadges
 	def_special RyuFillStatsBuffers
+	def_special TobyCheckPlayerHasMon
+	def_special RyuSetUpSaveBlockStuff
 

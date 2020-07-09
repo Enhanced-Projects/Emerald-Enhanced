@@ -692,6 +692,20 @@ static const struct BattleBackground gBattleTerrainTable[] =
         .palette = gBattleTerrainPalette_Plain,
     },
 
+    [BATTLE_TERRAIN_SNOWSHORE] =
+    {
+        .tileset = gBattleTerrainTiles_SnowshoreTiles,
+        .tilemap = gBattleTerrainTilemap_SnowshoreMap,
+        .palette = gBattleTerrainPalette_SnowshorePalette,
+    },
+
+    [BATTLE_TERRAIN_MTFREEZE] =
+    {
+        .tileset = gBattleTerrainTiles_MtFreezeTiles,
+        .tilemap = gBattleTerrainTilemap_MtFreezeMap,
+        .palette = gBattleTerrainPalette_MtFreezePalette,
+    },
+    
     [BATTLE_TERRAIN_BATTLEFRONTIER] =
     {
         .tileset = gBattleTerrainTiles_FrontierTiles,
@@ -699,19 +713,7 @@ static const struct BattleBackground gBattleTerrainTable[] =
         .entryTileset = gBattleTerrainTiles_FrontierTiles,
         .entryTilemap = gBattleTerrainTilemap_FrontierMap,
         .palette = gBattleTerrainPalette_FrontierPalette,
-    },
-    [BATTLE_TERRAIN_SNOWSHORE] =
-    {
-        .tileset = gBattleTerrainTiles_SnowshoreTiles,
-        .tilemap = gBattleTerrainTilemap_SnowshoreMap,
-        .palette = gBattleTerrainPalette_SnowshorePalette,
-    },
-    [BATTLE_TERRAIN_MTFREEZE] =
-    {
-        .tileset = gBattleTerrainTiles_MtFreezeTiles,
-        .tilemap = gBattleTerrainTilemap_MtFreezeMap,
-        .palette = gBattleTerrainPalette_MtFreezePalette,
-    },
+    }
 };
 
 static void sub_8035648(void);
@@ -790,6 +792,7 @@ void LoadBattleMenuWindowGfx(void)
 
 void DrawMainBattleBackground(void)
 {
+
     if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_x2000000))
     {
         LZDecompressVram(gBattleTerrainTiles_Building, (void*)(BG_CHAR_ADDR(2)));

@@ -569,6 +569,7 @@ u8 BattleSetup_GetTerrainId(void)
     u16 tileBehavior;
     s16 x, y;
 
+
     if (RyuCheckPlayerisInColdArea() == TRUE)
     {
         if ((gSaveBlock1Ptr->location.mapGroup == 0) && (gSaveBlock1Ptr->location.mapNum == 20))

@@ -3542,21 +3542,14 @@ static void Cmd_getexp(void)
     u16 *exp = &gBattleStruct->expValue;
     u32 RyuExpBatteryTemp = 0;
 
-    if ((VarGet(VAR_RYU_EXP_MULTIPLIER)) == 1)//If no multiplier is present, You get 12.5% exp per badge you own
+    if ((VarGet(VAR_RYU_EXP_MULTIPLIER)) == 1)//If no multiplier is present, You get 25% exp per badge you own
         {   
-            u16 badges = 0;
-            checkbadgecount();
-            badges = (gSpecialVar_Result);
-               
-
+            u16 badges = CountBadges();
+            
             if (badges == 0)
-                {
-                    multiplier = 1000;
-                }
+                multiplier = 1000;
             else
-                {
-                    multiplier = (1000+(badges*250));
-                }
+                multiplier = (1000+(badges*250));
         }
 
     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
