@@ -6091,7 +6091,7 @@ bool8 TobyCheckPlayerHasMon(void)//called with "specialvar VAR_RESULT, TobyCheck
     
     for (i = 0; i < partyCount; i++)
         {
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_CARBINK)//change species here
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_CRYOGONAL)//change species here
             {
                 return TRUE;
             }

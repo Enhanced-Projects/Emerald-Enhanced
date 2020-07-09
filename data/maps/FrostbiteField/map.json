@@ -31,6 +31,15 @@
         }
     ],
     "coord_events": [
+        {
+            "elevation": 5,
+            "script": "FrostbiteField_PolarPillarEntranceTrigger",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 23,
+            "y": 40
+        }
     ],
     "id": "MAP_FROSTBITE_FIELD",
     "layout": "LAYOUT_FROSTBITE_FIELD",
