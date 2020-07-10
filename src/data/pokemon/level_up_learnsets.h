@@ -21485,6 +21485,8 @@ static const struct LevelUpMove sMinccinoLevelUpLearnset[] = {
     LEVEL_UP_MOVE(43, MOVE_HYPER_VOICE),
     LEVEL_UP_MOVE(45, MOVE_LAST_RESORT),
     LEVEL_UP_MOVE(49, MOVE_AFTER_YOU),
+    LEVEL_UP_MOVE(51, MOVE_PLAY_ROUGH),
+    LEVEL_UP_MOVE(51, MOVE_ARM_THRUST),
     LEVEL_UP_END
 };
 
@@ -21529,6 +21531,8 @@ static const struct LevelUpMove sCinccinoLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_TICKLE),
     LEVEL_UP_MOVE( 1, MOVE_SING),
     LEVEL_UP_MOVE( 1, MOVE_TAIL_SLAP),
+    LEVEL_UP_MOVE( 1, MOVE_PLAY_ROUGH),
+    LEVEL_UP_MOVE( 1, MOVE_ARM_THRUST),
     LEVEL_UP_END
 };
 
