@@ -694,6 +694,7 @@ const u8 gText_SAIL_FOSSIL[] = _("Sail");
 const u8 gText_ROOT_FOSSIL[] = _("Root");
 const u8 gText_CLAW_FOSSIL[] = _("Claw");
 const u8 gText_OLD_AMBER[] = _("Old Amber");
+const u8 gText_COVER_FOSSIL[] = _("Cover");
 const u8 gText_BattleFrontier[] = _("Battle Frontier");
 const u8 gText_Right[] = _("Right");
 const u8 gText_Left[] = _("Left");

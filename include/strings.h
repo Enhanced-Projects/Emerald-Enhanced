@@ -1199,6 +1199,7 @@ extern const u8 gText_SAIL_FOSSIL[];
 extern const u8 gText_ROOT_FOSSIL[];
 extern const u8 gText_CLAW_FOSSIL[];
 extern const u8 gText_OLD_AMBER[];
+extern const u8 gText_COVER_FOSSIL[];
 extern const u8 gText_Opponent[];
 extern const u8 gText_Tourney_Tree[];
 extern const u8 gText_ReadyToStart[];

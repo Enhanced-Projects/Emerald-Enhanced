@@ -1169,7 +1169,7 @@ static const struct MenuAction MultichoiceList_FossilReviver[]=
     {gText_ROOT_FOSSIL},
     {gText_CLAW_FOSSIL},
     {gText_OLD_AMBER},
-    {gText_Exit},
+    {gText_COVER_FOSSIL},
     {gText_Exit},
 };
 

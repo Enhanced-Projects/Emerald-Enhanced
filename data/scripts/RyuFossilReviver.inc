@@ -18,7 +18,7 @@ Ryu_FossilReviverScript::
     case 7, RFR_Root
     case 8, RFR_Claw
     case 9, RFR_Amber
-    case 10, Ryu_FossilReviverCancel
+    case 10, RFR_Cover
     case 11, Ryu_FossilReviverCancel
     goto Ryu_FossilReviverCancel @@shouldn't be possible to get here, but just in case, this will prevent random crashes. 
 
@@ -100,6 +100,14 @@ RFR_Amber::
     goto_if_ne Ryu_DontHaveItem
     setvar VAR_TEMP_4, SPECIES_AERODACTYL
     setvar VAR_TEMP_2, ITEM_OLD_AMBER
+    goto RFR_CheckPartyandGiveEgg
+
+RFR_Cover::
+    checkitem ITEM_COVER_FOSSIL, 1
+    compare VAR_RESULT, 1
+    goto_if_ne Ryu_DontHaveItem
+    setvar VAR_TEMP_4, SPECIES_TIRTOUGA
+    setvar VAR_TEMP_2, ITEM_COVER_FOSSIL
     goto RFR_CheckPartyandGiveEgg
 
 Ryu_FossilReviverNoSkill::
