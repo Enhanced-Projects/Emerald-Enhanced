@@ -131,14 +131,10 @@ static struct ObjectEventTemplate *FindObjectEventTemplateByLocalId(u8 localId, 
 static void ClearObjectEventMovement(struct ObjectEvent *, struct Sprite *);
 static void ObjectEventSetSingleMovement(struct ObjectEvent *, struct Sprite *, u8);
 static void oamt_npc_ministep_reset(struct Sprite *, u8, u8);
-<<<<<<< HEAD
-static void UpdateObjectEventSpriteSubpriorityAndVisibility(struct Sprite *);
+static void UpdateObjectEventSprite(struct Sprite *);
 static void FaceDirection(struct ObjectEvent *objectEvent, struct Sprite *sprite, u8 direction);
 static u8 GetDirectionToFace(s16 x1, s16 y1, s16 x2, s16 y2);
 
-=======
-static void UpdateObjectEventSprite(struct Sprite *);
->>>>>>> egg/item_expansion
 
 const u8 gReflectionEffectPaletteMap[] = {1, 1, 6, 7, 8, 9, 6, 7, 8, 9, 11, 11, 0, 0, 0, 0};
 
