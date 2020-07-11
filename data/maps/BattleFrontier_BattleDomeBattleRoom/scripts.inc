@@ -158,22 +158,22 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_24BEE0:: @ 824BEE0
 	addvar VAR_RESULT, 1
 	frontier_set FRONTIER_DATA_BATTLE_NUM, VAR_RESULT
 	switch VAR_RESULT
-	case 4, BattleFrontier_BattleDomeBattleRoom_EventScript_24BF62
+	case 4, BattleFrontier_BattleDomeBattleRoom_EventScript_WonTourney
 	setvar VAR_0x8006, 1
 	warp MAP_BATTLE_FRONTIER_BATTLE_DOME_PRE_BATTLE_ROOM, 255, 5, 3
 	waitstate
 
-BattleFrontier_BattleDomeBattleRoom_EventScript_24BF62:: @ 824BF62
-	applymovement 13, BattleFrontier_BattleDomeBattleRoom_Movement_24C77D
+BattleFrontier_BattleDomeBattleRoom_EventScript_WonTourney:: @ 824BF62
+	applymovement 13, BattleFrontier_BattleDomeBattleRoom_Movement_PlayerApproachAudience
 	waitmovement 0
 	frontier_get FRONTIER_DATA_LVL_MODE
 	switch VAR_RESULT
 	case FRONTIER_LVL_OPEN, BattleFrontier_BattleDomeBattleRoom_EventScript_24BF96
 	msgbox BattleFrontier_BattleDomeBattleRoom_Text_24CA04, MSGBOX_DEFAULT
-	goto BattleFrontier_BattleDomeBattleRoom_EventScript_24BF9E
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_CelebrateWin
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_24BF96:: @ 824BF96
-	msgbox BattleFrontier_BattleDomeBattleRoom_Text_24CA44, MSGBOX_DEFAULT
+	msgbox BattleFrontier_BattleDomeBattleRoom_Text_PlayerIsLvOpenChamp, MSGBOX_DEFAULT
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_WonLvOpenTourney:: @ 824BF96
 	msgbox BattleFrontier_BattleDomeBattleRoom_Text_PlayerIsLvOpenChamp, MSGBOX_DEFAULT
@@ -403,7 +403,7 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_24C2B9:: @ 824C2B9
 	dome_resolvewinners 1
 	frontier_getsymbols
 	compare VAR_RESULT, 0
-	goto_if_ne BattleFrontier_BattleDomeBattleRoom_EventScript_24BF62
+	goto_if_ne BattleFrontier_BattleDomeBattleRoom_EventScript_WonTourney
 	closemessage
 	applymovement 15, BattleFrontier_BattleDomeBattleRoom_Movement_24C82B
 	waitmovement 0
@@ -414,7 +414,7 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_24C2B9:: @ 824C2B9
 	waitfanfare
 	frontier_givesymbol
 	msgbox BattleFrontier_BattleDomeBattleRoom_Text_24D1E0, MSGBOX_DEFAULT
-	goto BattleFrontier_BattleDomeBattleRoom_EventScript_24BF62
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_WonTourney
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_24C346:: @ 824C346
 	frontier_get FRONTIER_DATA_HEARD_BRAIN_SPEECH
@@ -433,7 +433,7 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_24C373:: @ 824C373
 	dome_resolvewinners 1
 	frontier_getsymbols
 	compare VAR_RESULT, 2
-	goto_if_eq BattleFrontier_BattleDomeBattleRoom_EventScript_24BF62
+	goto_if_eq BattleFrontier_BattleDomeBattleRoom_EventScript_WonTourney
 	closemessage
 	applymovement 15, BattleFrontier_BattleDomeBattleRoom_Movement_24C82B
 	waitmovement 0
@@ -444,7 +444,7 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_24C373:: @ 824C373
 	waitfanfare
 	frontier_givesymbol
 	msgbox BattleFrontier_BattleDomeBattleRoom_Text_24D54D, MSGBOX_DEFAULT
-	goto BattleFrontier_BattleDomeBattleRoom_EventScript_24BF62
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_WonTourney
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_24C400:: @ 824C400
 	msgbox BattleFrontier_BattleDomeBattleRoom_Text_24D677, MSGBOX_DEFAULT
@@ -618,7 +618,7 @@ BattleFrontier_BattleDomeBattleRoom_Movement_24C77B: @ 824C77B
 	walk_right
 	step_end
 
-BattleFrontier_BattleDomeBattleRoom_Movement_24C77D: @ 824C77D
+BattleFrontier_BattleDomeBattleRoom_Movement_PlayerApproachAudience: @ 824C77D
 	walk_up
 	step_end
 
@@ -980,7 +980,7 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CA04: @ 824CA04
 	.string "Battle Tournament Champion!\p"
 	.string "Congratulations!$"
 
-BattleFrontier_BattleDomeBattleRoom_Text_24CA44: @ 824CA44
+BattleFrontier_BattleDomeBattleRoom_Text_PlayerIsLvOpenChamp: @ 824CA44
 	.string "{PLAYER} is the Open Level\n"
 	.string "Battle Tournament Champion!\p"
 	.string "Congratulations!$"

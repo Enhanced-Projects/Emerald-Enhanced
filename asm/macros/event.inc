@@ -1102,7 +1102,7 @@
 
 	@ If check is 0x00, this command will check if the player has money >= value; VAR_RESULT is set to TRUE if the player 
 	@ has enough money, or FALSE if they do not.
-	.macro checkmoney value:req, check:req
+	.macro checkmoney value:req
 	.byte 0x92
 	.4byte \value
 	.endm

@@ -84,15 +84,15 @@ bool8 ShowFieldMessage(const u8 *str)
     return TRUE;
 }
 
-bool8 ShowFieldMessageOneLine(u8 *str)
+bool8 ShowFieldMessageOneLine(const u8 *message)
 {
     if (sFieldMessageBoxMode != 0)
         return FALSE;
     ClearWindowTilemap(0);
     InitWindows(sSceneBgTextBox_WindowTemplate);
-    StringExpandPlaceholders(gStringVar4, str);
+    StringExpandPlaceholders(gStringVar4, message);
     AddTextPrinterForMessage(TRUE);
-    task_add_textbox();
+    CreateTask_DrawFieldMessage();
     sFieldMessageBoxMode = 4;
     return TRUE;
 }

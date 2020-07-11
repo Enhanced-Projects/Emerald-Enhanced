@@ -1551,14 +1551,14 @@ void OpenContextMenu(u8 unused)
                             gBagMenu->contextMenuItemsBuffer[0] = ITEMMENUACTION_CHECK;
                         break;
                     case MEDICINE_POCKET:
-                        gBagMenu->unk820 = &gBagMenu->unk824;
-                        gBagMenu->unk828 = 4;
-                        memcpy(&gBagMenu->unk824, &gUnknown_0861402C, 4);
+                        gBagMenu->contextMenuItemsPtr = &gBagMenu->contextMenuItemsBuffer[4];
+                        gBagMenu->contextMenuNumItems = 4;
+                        memcpy(&gBagMenu->contextMenuItemsBuffer[4], &sContextMenuItems_ItemsPocket, 4);
                         break;
                     case COLLECTIBLES_POCKET:
-                        gBagMenu->unk820 = &gBagMenu->unk824;
-                        gBagMenu->unk828 = 4;
-                        memcpy(&gBagMenu->unk824, &gUnknown_0861402C, 4);
+                        gBagMenu->contextMenuItemsPtr = &gBagMenu->contextMenuItemsBuffer[4];
+                        gBagMenu->contextMenuNumItems = 4;
+                        memcpy(&gBagMenu->contextMenuItemsBuffer[4], &sContextMenuItems_ItemsPocket, 4);
                         break;
                     case KEYITEMS_POCKET:
                         gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;

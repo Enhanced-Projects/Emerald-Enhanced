@@ -1561,7 +1561,7 @@ u8 CreateObjectSprite(u8 graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction)
             sprite->oam.paletteNum -= 16;
         }
         sprite->coordOffsetEnabled = TRUE;
-        sprite->data[0] = eventObjectId;
+        sprite->data[0] = graphicsId;
         sprite->data[1] = z;
         if (graphicsInfo->paletteSlot == 10)
         {
