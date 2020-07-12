@@ -969,7 +969,7 @@ u8 ItemIdToBallId(u16 ballItem)
         return BALL_DUSK;
     case ITEM_QUICK_BALL:
         return BALL_QUICK;
-    case ITEM_HEAL_BALL:
+    case ITEM_CHILL_BALL:
         return BALL_HEAL;
     case ITEM_CHERISH_BALL:
         return BALL_CHERISH;
