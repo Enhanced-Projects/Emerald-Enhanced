@@ -29,7 +29,8 @@ struct InfoBoxListStruct
 //List of infobox groups used when calling them
 static const struct InfoBoxListStruct sInfoBoxes[] =
 {
-    BOXLIST(sInfoBoxPokemonData),
+    BOXLIST(sInfoBoxPokemonData),  //INFOBOXPOKEMONDATA
+    BOXLIST(sInfoBoxBalanceFrontierStarter) //INFOBOXFRONTIER_STARTER_BALANCE
 };
 
 //Strings for use in infobox
@@ -41,6 +42,13 @@ const u8 gText_RyuStatSpAtkDisplay[] = _("{RYU_STR_1}");
 const u8 gText_RyuStatSpDefDisplay[] = _("{RYU_STR_2}");
 const u8 gText_RyuStatSpeedDisplay[] = _("{RYU_STR_3}");
 
+const u8 gText_FrontierBalanceLine1[] = _("A balanced team consisting of");
+const u8 gText_FrontierBalanceLine2[] = _("Scizor, Hippowdon, and Primarina");
+const u8 gText_FrontierBalanceLine3[] = _("more info here");
+const u8 gText_FrontierBalanceLine4[] = _("and more");
+const u8 gText_FrontierBalanceLine5[] = _("yet more info");
+const u8 gText_FrontierBalanceLine6[] = _("just a bit more");
+
 //String list groups for individual infoboxes
 
 static const struct InfoBox sInfoBoxPokemonData[] = 
@@ -51,6 +59,16 @@ static const struct InfoBox sInfoBoxPokemonData[] =
     {gText_RyuStatSpAtkDisplay},
     {gText_RyuStatSpDefDisplay},
     {gText_RyuStatSpeedDisplay},
+};
+
+static const struct InfoBox sInfoBoxBalanceFrontierStarter[] = 
+{
+    {gText_FrontierBalanceLine1},
+    {gText_FrontierBalanceLine2,
+    {gText_FrontierBalanceLine3},
+    {gText_FrontierBalanceLine4},
+    {gText_FrontierBalanceLine5},
+    {gText_FrontierBalanceLine6},
 };
 
 void PrintInfoTable(u8 windowId, u8 itemCount, const struct InfoBox *strs)

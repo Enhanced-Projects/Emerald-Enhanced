@@ -337,6 +337,7 @@
 
 //InfoBox Defines
 #define INFOBOXPOKEMONDATA 0
+#define INFOBOXFRONTIER_STARTER_BALANCE 1
 
 #define SPECIAL_VARS_END              0x8015
 
