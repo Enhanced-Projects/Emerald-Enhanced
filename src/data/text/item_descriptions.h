@@ -98,9 +98,9 @@ static const u8 sFastBallDesc[] = _(
     "Pokémon.");
 
 static const u8 sChillBallDesc[] = _(
-    "A chilly ball\n"
-    "that works better\n"
-    "on Ice Pokémon.");
+    "A chilly ball that\n"
+    "works better on\n"
+    "Ice type Pokémon.");
 
 static const u8 sQuickBallDesc[] = _(
     "Works well if\n"
