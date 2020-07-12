@@ -18,6 +18,22 @@ struct InfoBox
     const u8 *text;
 };
 
+struct InfoBoxListStruct
+{
+    const struct InfoBox *list;
+    u8 count;
+};
+
+//You also need to add INFOBOX(name) to the bottom of vars.h so that these can be accessed from script.
+
+//List of infobox groups used when calling them
+static const struct InfoBoxListStruct sInfoBoxes[] =
+{
+    BOXLIST(sInfoBoxPokemonData),
+};
+
+//Strings for use in infobox
+
 const u8 gText_RyuStatHpDisplay[] = _("{STR_VAR_1}");
 const u8 gText_RyuStatAtkDisplay[] = _("{STR_VAR_2}");
 const u8 gText_RyuStatDefDisplay[] = _("{STR_VAR_3}");
@@ -25,7 +41,9 @@ const u8 gText_RyuStatSpAtkDisplay[] = _("{RYU_STR_1}");
 const u8 gText_RyuStatSpDefDisplay[] = _("{RYU_STR_2}");
 const u8 gText_RyuStatSpeedDisplay[] = _("{RYU_STR_3}");
 
-static const struct InfoBox sInfoBoxListPokeblocks[] = 
+//String list groups for individual infoboxes
+
+static const struct InfoBox sInfoBoxPokemonData[] = 
 {
     {gText_RyuStatHpDisplay},
     {gText_RyuStatAtkDisplay},
@@ -33,18 +51,6 @@ static const struct InfoBox sInfoBoxListPokeblocks[] =
     {gText_RyuStatSpAtkDisplay},
     {gText_RyuStatSpDefDisplay},
     {gText_RyuStatSpeedDisplay},
-};
-
-struct InfoBoxListStruct
-{
-    const struct InfoBox *list;
-    u8 count;
-};
-
-
-static const struct InfoBoxListStruct sInfoBoxes[] =
-{
-    BOXLIST(sInfoBoxListPokeblocks),
 };
 
 void PrintInfoTable(u8 windowId, u8 itemCount, const struct InfoBox *strs)
