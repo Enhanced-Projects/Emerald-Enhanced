@@ -357,6 +357,8 @@ int RyuChooseWildLevel(void)
 {
     u8 badge = (CountBadges());
     u8 level = (Random() % (sWildRange[badge][1] - sWildRange[badge][0])) + sWildRange[badge][0];
+    if (FlagGet(FLAG_RYU_BOSS_WILD) == 1)
+        level += 5;
     //sWildRange is the array declared above, [badge] is the index, [0] and [1] are the first and second values of the index listed.
     //To get a range of random values, do (array[index][second value] minus array[index][first value]) plus array[index][first value]
     return level;
@@ -490,15 +492,13 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
     level = ChooseWildMonLevel(&wildMonInfo->wildPokemon[wildMonIndex]);
     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
         return FALSE;
-
-    CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
   
-    if ((Random() % 128) == 69)
+    if (((Random() % 128) == 69) || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {
         u8 val[1] = {TRUE};
         u8 newAbility = (Random() %2);
-        newLevel = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
-        newLevel += 5;
+        FlagSet(FLAG_RYU_BOSS_WILD);
+        CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
         ShowFieldMessage(gText_PowerfulWildAppears);
         SetMonData(&gEnemyParty[0], MON_DATA_HP_IV, &iv);
         SetMonData(&gEnemyParty[0], MON_DATA_ATK_IV, &iv);
@@ -519,8 +519,11 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
                 SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &newAbility);
             }
         
-        FlagSet(FLAG_RYU_BOSS_WILD);
         CalculateMonStats(&gEnemyParty[0]);
+    }
+    else
+    {
+        CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
     }
     return TRUE;
 }
