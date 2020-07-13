@@ -1173,6 +1173,45 @@ static const struct MenuAction MultichoiceList_FossilReviver[]=
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_FrontierStarter1[]=
+{
+    {gText_RyuFrontierStarter_Prev},
+    {gText_RyuFrontierStarter1_1},
+    {gText_RyuFrontierStarter1_2},
+    {gText_RyuFrontierStarter1_3},
+    {gText_RyuFrontierStarter1_4},
+    {gText_RyuFrontierStarter1_5},
+    {gText_RyuFrontierStarter1_6},
+    {gText_RyuFrontierStarter1_7},
+    {gText_RyuFrontierStarter_Next},
+};
+
+static const struct MenuAction MultichoiceList_FrontierStarter2[]=
+{
+    {gText_RyuFrontierStarter_Prev},
+    {gText_RyuFrontierStarter2_1},
+    {gText_RyuFrontierStarter2_2},
+    {gText_RyuFrontierStarter2_3},
+    {gText_RyuFrontierStarter2_4},
+    {gText_RyuFrontierStarter2_5},
+    {gText_RyuFrontierStarter2_6},
+    {gText_RyuFrontierStarter2_7},
+    {gText_RyuFrontierStarter_Next},
+};
+
+static const struct MenuAction MultichoiceList_FrontierStarter3[]=
+{
+    {gText_RyuFrontierStarter_Prev},
+    {gText_RyuFrontierStarter3_1},
+    {gText_RyuFrontierStarter3_2},
+    {gText_RyuFrontierStarter3_3},
+    {gText_RyuFrontierStarter3_4},
+    {gText_RyuFrontierStarter3_5},
+    {gText_RyuFrontierStarter3_6},
+    {gText_RyuFrontierStarter3_7},
+    {gText_RyuFrontierStarter_Next},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1337,6 +1376,9 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_RLS_GEMSTONEQUALITYMENU]    = MULTICHOICE(MultichoiceList_RyuLifeskillGemRefinerQualitySelect),
     [MULTI_SHARD_EXCHANGE]             = MULTICHOICE(MultichoiceList_RyuShardExchange),
     [MULTI_FOSSIL_REVIVER]             = MULTICHOICE(MultichoiceList_FossilReviver),
+    [MULTI_FRONTIERMODE_STARTER1]      = MULTICHOICE(MultichoiceList_FrontierStarter1),
+    [MULTI_FRONTIERMODE_STARTER2]      = MULTICHOICE(MultichoiceList_FrontierStarter2),
+    [MULTI_FRONTIERMODE_STARTER3]      = MULTICHOICE(MultichoiceList_FrontierStarter3),
 };
 
 const u8 *const gStdStrings[] =

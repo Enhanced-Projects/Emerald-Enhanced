@@ -3249,4 +3249,28 @@ extern const u8 gText_ItemRepel[];
 extern const u8 gText_ItemSuperRepel[];
 extern const u8 gText_ItemMaxRepel[];
 
+extern const u8 gText_RyuFrontierStarter1_1[];
+extern const u8 gText_RyuFrontierStarter1_2[];
+extern const u8 gText_RyuFrontierStarter1_3[];
+extern const u8 gText_RyuFrontierStarter1_4[];
+extern const u8 gText_RyuFrontierStarter1_5[];
+extern const u8 gText_RyuFrontierStarter1_6[];
+extern const u8 gText_RyuFrontierStarter1_7[];
+extern const u8 gText_RyuFrontierStarter2_1[];
+extern const u8 gText_RyuFrontierStarter2_2[];
+extern const u8 gText_RyuFrontierStarter2_3[];
+extern const u8 gText_RyuFrontierStarter2_4[];
+extern const u8 gText_RyuFrontierStarter2_5[];
+extern const u8 gText_RyuFrontierStarter2_6[];
+extern const u8 gText_RyuFrontierStarter2_7[];
+extern const u8 gText_RyuFrontierStarter3_1[];
+extern const u8 gText_RyuFrontierStarter3_2[];
+extern const u8 gText_RyuFrontierStarter3_3[];
+extern const u8 gText_RyuFrontierStarter3_4[];
+extern const u8 gText_RyuFrontierStarter3_5[];
+extern const u8 gText_RyuFrontierStarter3_6[];
+extern const u8 gText_RyuFrontierStarter3_7[];
+extern const u8 gText_RyuFrontierStarter_Next[];
+extern const u8 gText_RyuFrontierStarter_Prev[];
+
 #endif // GUARD_STRINGS_H

@@ -3639,16 +3639,26 @@ void RyuGiveFrontierMon(void)
     u8 level = 50;
     u8 i, temp;
     u8 party_id = CalculatePlayerPartyCount();
-
+    bool8 IsPickingFrontierStarter = (FlagGet(FLAG_RYU_CHOOSING_FRONTIER_STARTER));
     const struct FacilityMon *mon = &gBattleFrontierMons[Random() % 881];
+
+    if (IsPickingFrontierStarter == TRUE)
+    {
+        mon = &gBattleFrontierMons[(VarGet(VAR_TEMP_A))];
+        level = 100;
+    }
+    else if ((FlagGet(FLAG_RYU_PASSCODE_FRONTIER_MON_DEV) ==1 ) && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+    {
+        mon = &gBattleFrontierMons[(VarGet(VAR_TEMP_6))];
+        level = 125;
+    }
+    else
+    {
+    }
+    
 
     Random();
 
-    if ((FlagGet(FLAG_RYU_PASSCODE_FRONTIER_MON_DEV) ==1 ) && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
-    {
-        mon = &gBattleFrontierMons[(VarGet(VAR_TEMP_6))];
-        level = 100;
-    }
 
     temp = mon->evSpread;
     count = 0;
