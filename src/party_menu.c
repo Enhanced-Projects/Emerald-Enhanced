@@ -2224,13 +2224,24 @@ static void DisplayPartyPokemonBarDetail(u8 windowId, const u8 *str, u8 color, c
 static void DisplayPartyPokemonNickname(struct Pokemon *mon, struct PartyMenuBox *menuBox, u8 c)
 {
     u8 nickname[POKEMON_NAME_LENGTH + 1];
+    u8 gText_ColorRedShadowLightRed[] = _("{COLOR 11}{SHADOW 12}");
 
     if (GetMonData(mon, MON_DATA_SPECIES) != SPECIES_NONE)
     {
         if (c == 1)
             menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->dimensions[0] >> 3, menuBox->infoRects->dimensions[1] >> 3, menuBox->infoRects->dimensions[2] >> 3, menuBox->infoRects->dimensions[3] >> 3, FALSE);
-        GetMonNickname(mon, nickname);
-        DisplayPartyPokemonBarDetail(menuBox->windowId, nickname, 0, menuBox->infoRects->dimensions);
+        if (GetMonData(mon, MON_DATA_GIFT_RIBBON_7) == 1)
+        {
+            StringCopy(gStringVar4, gText_ColorRedShadowLightRed);
+            GetMonNickname(mon, gRyuStringVar1);
+            StringAppend(gStringVar4, gRyuStringVar1);
+            DisplayPartyPokemonBarDetail(menuBox->windowId, gStringVar4, 0, menuBox->infoRects->dimensions);
+        }
+        else
+        {
+            GetMonNickname(mon, nickname);
+            DisplayPartyPokemonBarDetail(menuBox->windowId, nickname, 0, menuBox->infoRects->dimensions);
+        }
     }
 }
 

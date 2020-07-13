@@ -4107,7 +4107,7 @@ static void LoadCursorMonGfx(u16 species, u32 pid)
     }
 }
 
-static void PrintCursorMonInfo(void)
+static void PrintCursorMonInfo(void)//bosspokemon bookmark for later
 {
     FillWindowPixelBuffer(0, PIXEL_FILL(1));
     if (sPSSData->boxOption != BOX_OPTION_MOVE_ITEMS)

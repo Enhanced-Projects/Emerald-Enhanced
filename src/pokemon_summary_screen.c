@@ -2716,6 +2716,7 @@ static void PrintNotEggInfo(void)
     struct Pokemon *mon = &sMonSummaryScreen->currentMon;
     struct PokeSummary *summary = &sMonSummaryScreen->summary;
     u16 dexNum = SpeciesToPokedexNum(summary->species);
+    u8 Text_ColorRed[] = _("{COLOR 5}{SHADOW 10}");
 
     if (dexNum != 0xFFFF)
     {
@@ -2746,11 +2747,25 @@ static void PrintNotEggInfo(void)
     ConvertIntToDecimalStringN(gStringVar2, summary->level, STR_CONV_MODE_LEFT_ALIGN, 3);
     StringAppend(gStringVar1, gStringVar2);
     PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, gStringVar1, 24, 17, 0, 1);
-    GetMonNickname(mon, gStringVar1);
-    PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME, gStringVar1, 0, 1, 0, 1);
-    strArray[0] = CHAR_SLASH;
-    StringCopy(&strArray[1], &gSpeciesNames[summary->species2][0]);
-    PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, strArray, 0, 1, 0, 1);
+    if (GetMonData(mon, MON_DATA_GIFT_RIBBON_7) == 1)
+    {
+        GetMonNickname(mon, gRyuStringVar1);
+        StringCopy(gRyuStringVar2, Text_ColorRed);
+        StringAppend(gRyuStringVar2, gRyuStringVar1);
+        PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME, gRyuStringVar2, 0, 1, 0, 1);
+        strArray[0] = CHAR_SLASH;
+        StringCopy(&strArray[1], Text_ColorRed);
+        StringAppend(&strArray[1], &gSpeciesNames[summary->species2][0]);
+        PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, strArray, 0, 1, 0, 1);
+    }
+    else
+    {
+        GetMonNickname(mon, gStringVar1);
+        PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME, gStringVar1, 0, 1, 0, 1);
+        strArray[0] = CHAR_SLASH;
+        StringCopy(&strArray[1], &gSpeciesNames[summary->species2][0]);
+        PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, strArray, 0, 1, 0, 1);
+    }
     PrintGenderSymbol(mon, summary->species2);
     PutWindowTilemap(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME);
     PutWindowTilemap(PSS_LABEL_WINDOW_PORTRAIT_SPECIES);

@@ -6535,8 +6535,6 @@ u8 IsMonShiny(struct Pokemon *mon)
 
     if (IsShinyOtIdPersonality(otId, personality))
         return 1;
-    if (IsMonBoss(mon) == TRUE)
-        return 2;
     return 0;
 }
 
