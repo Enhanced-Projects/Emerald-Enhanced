@@ -6110,3 +6110,28 @@ void RyuSetUpSaveBlockStuff(void)
     gSaveBlock1Ptr->registeredItem = ITEM_WAYSTONE;
     VarSet(VAR_RYU_THEME_NUMBER, 1);
 }
+
+EWRAM_DATA static u8 sDebugWindowId = 8;
+static const u8 gText_HighlightTransparent[] = _("{HIGHLIGHT TRANSPARENT}");
+static const u8 gText_DarkTextColors[] = _("{COLOR LIGHT_GREY}{SHADOW DARK_GREY}");
+static const u8 gText_LightTextColors[] = _("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
+
+void RyuPrintDebugMessage(u8 *str)
+{
+    struct WindowTemplate template;
+    SetWindowTemplateFields(&template, 0, 0, 15, 15, 5, 15, 8);
+    sDebugWindowId = AddWindow(&template);
+    FillWindowPixelBuffer(sDebugWindowId, 0);
+    PutWindowTilemap(sDebugWindowId);
+    CopyWindowToVram(sDebugWindowId, 1);
+    StringCopy(gStringVar4, gText_DarkTextColors);
+    StringAppend(gStringVar4, gText_HighlightTransparent);
+    StringAppend(gStringVar4, str);
+    AddTextPrinterParameterized(sDebugWindowId, 0, gStringVar4, 0, 0, 0, NULL);
+}
+
+void RyuTestDebug(void)
+{
+    u8 gTextBuffer1[] = _("Test Debug Error Message");
+    RyuPrintDebugMessage(gTextBuffer1);
+}
