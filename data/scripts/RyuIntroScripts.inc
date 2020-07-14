@@ -176,7 +176,7 @@ IT_FrontierMode::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setflag FLAG_RYU_FRONTIER_MODE
 	setflag FLAG_HIDE_BATTLE_FRONTIER_RECEPTION_GATE_SCOTT
-	setflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
+	@@setflag FLAG_RYU_CHOOSING_FRONTIER_STARTER enable when frontier overhaul gets in
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq SetMaleStartingVariables
