@@ -1607,7 +1607,11 @@ u8 DoBattlerEndTurnEffects(void)
 
                 gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / (B_BURN_DAMAGE >= GEN_7 ? 16 : 8);
                 if (ability == ABILITY_HEATPROOF)
+                {
+                    if (gBattleMoveDamage > (gBattleMoveDamage / 2) + 1) // Record ability if the burn takes less damage than it normally would.
+                        RecordAbilityBattle(gActiveBattler, ABILITY_HEATPROOF);
                     gBattleMoveDamage /= 2;
+                }
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 BattleScriptExecute(BattleScript_BurnTurnDmg);
@@ -5856,7 +5860,7 @@ static u16 CalcMoveBasePower(u16 move, u8 battlerAtk, u8 battlerDef)
 
 static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 updateFlags)
 {
-    u32 i;
+    u32 i, ability;
     u32 holdEffectAtk, holdEffectParamAtk;
     u16 basePower = CalcMoveBasePower(move, battlerAtk, battlerDef);
     u16 holdEffectModifier;
@@ -5981,11 +5985,16 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     }
 
     // target's abilities
-    switch (GetBattlerAbility(battlerDef))
+    ability = GetBattlerAbility(battlerDef);
+    switch (ability)
     {
     case ABILITY_WATER_BUBBLE:
         if (moveType == TYPE_FIRE)
+        {
             MulModifier(&modifier, UQ_4_12(0.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ability);
+        }
         break;
     case ABILITY_DRY_SKIN:
         if (moveType == TYPE_FIRE)
@@ -5993,7 +6002,11 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         break;
     case ABILITY_FLUFFY:
         if (IsMoveMakingContact(move, battlerAtk))
+        {
             MulModifier(&modifier, UQ_4_12(0.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ability);
+        }
         if (moveType == TYPE_FIRE)
             MulModifier(&modifier, UQ_4_12(2.0));
         break;
@@ -6128,7 +6141,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     return ApplyModifier(modifier, basePower);
 }
 
-static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 isCrit)
+static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 isCrit, bool32 updateFlags)
 {
     u8 atkStage;
     u32 atkStat;
@@ -6238,7 +6251,11 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
     {
     case ABILITY_THICK_FAT:
         if (moveType == TYPE_FIRE || moveType == TYPE_ICE)
+        {
             MulModifier(&modifier, UQ_4_12(0.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_THICK_FAT);
+        }
         break;
     }
 
@@ -6294,7 +6311,7 @@ static bool32 CanEvolve(u32 species)
     return FALSE;
 }
 
-static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 isCrit)
+static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 isCrit, bool32 updateFlags)
 {
     bool32 usesDefStat;
     u8 defStage;
@@ -6346,15 +6363,27 @@ static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, 
     {
     case ABILITY_MARVEL_SCALE:
         if (gBattleMons[battlerDef].status1 & STATUS1_ANY && usesDefStat)
+        {
             MulModifier(&modifier, UQ_4_12(1.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_MARVEL_SCALE);
+        }
         break;
     case ABILITY_FUR_COAT:
         if (usesDefStat)
+        {
             MulModifier(&modifier, UQ_4_12(2.0));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_FUR_COAT);
+        }
         break;
     case ABILITY_GRASS_PELT:
-        if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN)
+        if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && usesDefStat)
+        {
             MulModifier(&modifier, UQ_4_12(1.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_GRASS_PELT);
+        }
         break;
     case ABILITY_FLOWER_GIFT:
         if (gBattleMons[battlerDef].species == SPECIES_CHERRIM && WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_SUN_ANY && !usesDefStat)
@@ -6608,8 +6637,8 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
     // long dmg basic formula
     dmg = ((gBattleMons[battlerAtk].level * 2) / 5) + 2;
     dmg *= gBattleMovePower;
-    dmg *= CalcAttackStat(move, battlerAtk, battlerDef, moveType, isCrit);
-    dmg /= CalcDefenseStat(move, battlerAtk, battlerDef, moveType, isCrit);
+    dmg *= CalcAttackStat(move, battlerAtk, battlerDef, moveType, isCrit, updateFlags);
+    dmg /= CalcDefenseStat(move, battlerAtk, battlerDef, moveType, isCrit, updateFlags);
     dmg = (dmg / 50) + 2;
 
     // Calculate final modifiers.
