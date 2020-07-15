@@ -3286,7 +3286,7 @@ static const struct TrainerMonItemCustomMoves sParty_Sidney[] = {
 	.species = SPECIES_PERSIAN,
 	.heldItem = ITEM_FOCUS_SASH,
 	.ability = 1,
-	.moves = {MOVE_FOUL_PLAY, MOVE_SWAGGER, MOVE_HYPNOSIS, MOVE_U_TURN},
+	.moves = {MOVE_FOUL_PLAY, MOVE_SWAGGER, MOVE_HYPNOSIS, MOVE_THUNDER_WAVE},
 	},
 	{
 	.iv = 250,
