@@ -29,6 +29,7 @@
 #include "pokemon.h"
 #include "constants/weather.h"
 #include "autoscale_tables.h"
+#include "constants/metatile_behaviors.h"
 
 extern const u8 EventScript_RepelWoreOff[];
 extern int CountBadges();
@@ -649,6 +650,8 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
 {
     u16 headerId;
     struct Roamer *roamer;
+    struct MapPosition position;
+    u16 tileBehavior = 0;
 
     if (sWildEncountersDisabled == TRUE)
         return FALSE;
@@ -722,11 +725,14 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
                     BattleSetup_StartWildBattle();
                     return TRUE;
                 }
+                
+                GetPlayerPosition(&position);
+                tileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);
 
                 // try a regular wild land encounter
                 if (TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
                 {
-                    if (USE_BATTLE_DEBUG && GetMonsStateToDoubles() == PLAYER_HAS_TWO_USABLE_MONS && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+                    if (USE_BATTLE_DEBUG && GetMonsStateToDoubles() == PLAYER_HAS_TWO_USABLE_MONS && (tileBehavior == MB_DARK_GRASS) && (Random() % 100 >= 50))
                     {
                         struct Pokemon mon1 = gEnemyParty[0];
                         TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_KEEN_EYE);
