@@ -6111,27 +6111,43 @@ void RyuSetUpSaveBlockStuff(void)
     VarSet(VAR_RYU_THEME_NUMBER, 1);
 }
 
-EWRAM_DATA static u8 sDebugWindowId = 8;
+EWRAM_DATA static u8 sDebugWindowId = 0xFF;
+EWRAM_DATA static u8 sDebugWindow2Id = 0xEE;
 static const u8 gText_HighlightTransparent[] = _("{HIGHLIGHT TRANSPARENT}");
 static const u8 gText_DarkTextColors[] = _("{COLOR LIGHT_GREY}{SHADOW DARK_GREY}");
 static const u8 gText_LightTextColors[] = _("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
 
-void RyuPrintDebugMessage(u8 *str)
+void RyuPrintDebugMessage(u8 mode, u8 *str)
 {
     struct WindowTemplate template;
+    struct WindowTemplate template2;
     SetWindowTemplateFields(&template, 0, 0, 15, 15, 5, 15, 8);
+    SetWindowTemplateFields(&template2, 0, 1, 15, 15, 5, 15, 8);
     sDebugWindowId = AddWindow(&template);
+    sDebugWindow2Id = AddWindow(&template2);
     FillWindowPixelBuffer(sDebugWindowId, 0);
+    FillWindowPixelBuffer(sDebugWindow2Id, 0);
     PutWindowTilemap(sDebugWindowId);
+    PutWindowTilemap(sDebugWindow2Id);
     CopyWindowToVram(sDebugWindowId, 1);
+    CopyWindowToVram(sDebugWindow2Id, 1);
     StringCopy(gStringVar4, gText_DarkTextColors);
     StringAppend(gStringVar4, gText_HighlightTransparent);
+    StringCopy(gRyuStringVar3,gStringVar4);
     StringAppend(gStringVar4, str);
-    AddTextPrinterParameterized(sDebugWindowId, 0, gStringVar4, 0, 0, 0, NULL);
+    StringAppend(gRyuStringVar3, str);
+    if (mode == 2)
+    {
+        AddTextPrinterParameterized(sDebugWindow2Id, 0, gRyuStringVar3, 0, 0, 0, NULL);
+    }
+    else
+    {
+        AddTextPrinterParameterized(sDebugWindowId, 0, gStringVar4, 0, 0, 0, NULL);
+    }
 }
 
 void RyuTestDebug(void)
 {
     u8 gTextBuffer1[] = _("Test Debug Error Message");
-    RyuPrintDebugMessage(gTextBuffer1);
+    RyuPrintDebugMessage(0, gTextBuffer1);
 }

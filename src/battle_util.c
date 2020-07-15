@@ -1390,16 +1390,6 @@ u8 DoFieldEndTurnEffects(void)
     return (gBattleMainFunc != BattleTurnPassed);
 }
 
-void Ryu_LoadLegendaryOpponentName(void)
-{
-    if (FlagGet(FLAG_RYU_MAX_SCALE) == 1)
-    {
-        StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
-        StringCopy(gStringVar2, gText_PokemonStringBuffer);
-    }
-}
-
-
 enum
 {
     ENDTURN_INGRAIN,
@@ -1458,7 +1448,7 @@ if (ability == ABILITY_MAGIC_GUARD) \
             break;\
 }
 
-
+extern void RyuPrintDebugMessage();
 u8 DoBattlerEndTurnEffects(void)
 {
     u32 ability, i, effect = 0;
@@ -1930,13 +1920,18 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_BOSSMODEHEAL:
-            if ((FlagGet(FLAG_TEMP_3) == 1) && !BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK) && gBattleMons[gActiveBattler].hp != 0 && ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
+            if ((FlagGet(FLAG_TEMP_3) == 1) &&
+                 (!(BATTLER_MAX_HP(gActiveBattler))) &&
+                 (!(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK)) &&
+                 (gBattleMons[gActiveBattler].hp != 0) &&
+                 ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
             {
                 gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 gBattleMoveDamage *= -1;
-                Ryu_LoadLegendaryOpponentName();
+                StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
+                StringCopy(gStringVar2, gText_PokemonStringBuffer);
                 BattleScriptExecute(BattleScript_BossModeHeal);
             }
             gBattleStruct->turnEffectsTracker++;
@@ -1945,7 +1940,8 @@ u8 DoBattlerEndTurnEffects(void)
         {
             if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_TEMP_3) == 1))
                 {
-                    Ryu_LoadLegendaryOpponentName();
+                    StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
+                    StringCopy(gStringVar2, gText_PokemonStringBuffer);
                     if (gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] < 0xC)
                         {
                             gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] = 9;
@@ -2965,7 +2961,8 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
 
     if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_BOSS_WILD) == 1))
     {
-        Ryu_LoadLegendaryOpponentName();
+        StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
+        StringCopy(gStringVar2, gText_PokemonStringBuffer);
         if (gBattleMons[gBattlerAttacker].statStages[STAT_DEF] < 0xC)
             {
                 gBattleMons[gBattlerAttacker].statStages[STAT_DEF] += 6;
@@ -2989,7 +2986,8 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
 
     if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1))
     {
-        Ryu_LoadLegendaryOpponentName();
+        StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
+        StringCopy(gStringVar2, gText_PokemonStringBuffer);
         gBattleMons[gBattlerAttacker].statStages[STAT_SPDEF] = 9;
         gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] = 9;
         gBattleMons[gBattlerAttacker].statStages[STAT_ATK] = 9;
