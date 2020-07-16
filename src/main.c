@@ -114,7 +114,7 @@ void AgbMain()
     InitIntrHandlers();
     m4aSoundInit();
     EnableVCountIntrAtLine150();
-    sub_800E6D0();
+    InitRFU();
     RtcInit();
     CheckForFlashMemory();
     InitMainCallbacks();
@@ -168,7 +168,7 @@ void AgbMain()
         }
 
         PlayTimeCounter_Update();
-        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 686);
+        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 6875);
         VarSet(VAR_RECYCLE_GOODS, 45454);
         FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
         mgba_open();
@@ -372,7 +372,7 @@ static void VBlankIntr(void)
     if (!gMain.inBattle || !(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_RECORDED)))
         Random();
 
-    sub_800E174();
+    UpdateWirelessStatusIndicatorSprite();
 
     INTR_CHECK |= INTR_FLAG_VBLANK;
     gMain.intrCheck |= INTR_FLAG_VBLANK;

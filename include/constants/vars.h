@@ -337,6 +337,7 @@
 
 //InfoBox Defines
 #define INFOBOXPOKEMONDATA 0
+#define INFOBOX_F_STARTER_HYPER_OFFENSE 1
 
 #define SPECIAL_VARS_END              0x8015
 

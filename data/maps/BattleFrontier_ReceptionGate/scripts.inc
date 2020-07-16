@@ -14,6 +14,7 @@ BattleFrontier_ReceptionGate_OnFrame: @ 82661E9
 BattleFrontier_ReceptionGate_EventScript_FirstTimeEntering:: @ 82661F3
 	lockall
 	setvar VAR_TEMP_3, 1
+	goto_if_set FLAG_RYU_CHOOSING_FRONTIER_STARTER, RyuFrontierModeStarterMenu
 	goto_if_set FLAG_SYS_FRONTIER_PASS, ryu_end
 	playse SE_PIN
 	applymovement 1, Common_Movement_ExclamationMark

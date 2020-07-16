@@ -586,6 +586,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuLifeSkillScripts.inc"
 	.include "data/scripts/RyuFossilReviver.inc"
 	.include "data/scripts/RyuFollowerSystem.inc"
+	.include "data/scripts/frontiermode.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED

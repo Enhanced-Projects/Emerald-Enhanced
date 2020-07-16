@@ -3301,6 +3301,9 @@ const u16 gEggMoves[] = {
 		MOVE_FAKE_TEARS,
 		MOVE_SLEEP_TALK,
 		MOVE_ENDURE,
+        MOVE_ROCK_BLAST,
+        MOVE_PLAY_ROUGH,
+        MOVE_ARM_THRUST,
 		MOVE_FLAIL),
 
 	egg_moves(GOTHITA,

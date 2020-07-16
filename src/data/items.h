@@ -280,12 +280,12 @@ const struct Item gItems[] =
         .secondaryId = 18,
     },
 
-    [ITEM_HEAL_BALL] =
+    [ITEM_CHILL_BALL] =
     {
-        .name = _("Heal Ball"),
-        .itemId = ITEM_HEAL_BALL,
+        .name = _("Chill Ball"),
+        .itemId = ITEM_CHILL_BALL,
         .price = 300,
-        .description = sHealBallDesc,
+        .description = sChillBallDesc,
         .pocket = POCKET_POKE_BALLS,
         .type = 11,
         .fieldUseFunc = NULL,

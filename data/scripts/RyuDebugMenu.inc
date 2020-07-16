@@ -176,6 +176,7 @@ RyuDebug_enableWaystone::
 RyuDebug_ViewTempVars::
 	special RyuCheckTempVars
 	msgbox RDB_TempVarsViewMsg
+	special RyuTestDebug
 	releaseall
 	end
 
@@ -183,7 +184,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto RyuDebug_Init_GiveAll
+	goto RCR_OverlordRyuBossFight
 	release
 	end
 

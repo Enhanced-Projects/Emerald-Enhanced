@@ -530,7 +530,8 @@ void PrepareStringBattle(u16 stringId, u8 battler)
     else if ((stringId == STRINGID_PKMNSSTATCHANGED4 || stringId == STRINGID_PKMNCUTSATTACKWITH)
               && ((GetBattlerAbility(gBattlerTarget) == ABILITY_DEFIANT && gBattleMons[gBattlerTarget].statStages[STAT_ATK] != 12)
                  || (GetBattlerAbility(gBattlerTarget) == ABILITY_COMPETITIVE && gBattleMons[gBattlerTarget].statStages[STAT_SPATK] != 12))
-              && gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != BATTLE_PARTNER(gBattlerTarget))
+              && gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != BATTLE_PARTNER(gBattlerTarget)
+              && gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != gBattlerTarget)
     {
         gBattlerAbility = gBattlerTarget;
         BattleScriptPushCursor();
@@ -1389,16 +1390,6 @@ u8 DoFieldEndTurnEffects(void)
     return (gBattleMainFunc != BattleTurnPassed);
 }
 
-void Ryu_LoadLegendaryOpponentName(void)
-{
-    if (FlagGet(FLAG_RYU_MAX_SCALE) == 1)
-    {
-        StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
-        StringCopy(gStringVar2, gText_PokemonStringBuffer);
-    }
-}
-
-
 enum
 {
     ENDTURN_INGRAIN,
@@ -1457,7 +1448,7 @@ if (ability == ABILITY_MAGIC_GUARD) \
             break;\
 }
 
-
+extern void RyuPrintDebugMessage();
 u8 DoBattlerEndTurnEffects(void)
 {
     u32 ability, i, effect = 0;
@@ -1606,7 +1597,11 @@ u8 DoBattlerEndTurnEffects(void)
 
                 gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / (B_BURN_DAMAGE >= GEN_7 ? 16 : 8);
                 if (ability == ABILITY_HEATPROOF)
+                {
+                    if (gBattleMoveDamage > (gBattleMoveDamage / 2) + 1) // Record ability if the burn takes less damage than it normally would.
+                        RecordAbilityBattle(gActiveBattler, ABILITY_HEATPROOF);
                     gBattleMoveDamage /= 2;
+                }
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 BattleScriptExecute(BattleScript_BurnTurnDmg);
@@ -1925,13 +1920,18 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_BOSSMODEHEAL:
-            if ((FlagGet(FLAG_TEMP_3) == 1) && !BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK) && gBattleMons[gActiveBattler].hp != 0 && ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
+            if ((FlagGet(FLAG_TEMP_3) == 1) &&
+                 (!(BATTLER_MAX_HP(gActiveBattler))) &&
+                 (!(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK)) &&
+                 (gBattleMons[gActiveBattler].hp != 0) &&
+                 ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
             {
                 gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 gBattleMoveDamage *= -1;
-                Ryu_LoadLegendaryOpponentName();
+                StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
+                StringCopy(gStringVar2, gText_PokemonStringBuffer);
                 BattleScriptExecute(BattleScript_BossModeHeal);
             }
             gBattleStruct->turnEffectsTracker++;
@@ -1940,7 +1940,8 @@ u8 DoBattlerEndTurnEffects(void)
         {
             if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_TEMP_3) == 1))
                 {
-                    Ryu_LoadLegendaryOpponentName();
+                    StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
+                    StringCopy(gStringVar2, gText_PokemonStringBuffer);
                     if (gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] < 0xC)
                         {
                             gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] = 9;
@@ -2960,7 +2961,8 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
 
     if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_BOSS_WILD) == 1))
     {
-        Ryu_LoadLegendaryOpponentName();
+        StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
+        StringCopy(gStringVar2, gText_PokemonStringBuffer);
         if (gBattleMons[gBattlerAttacker].statStages[STAT_DEF] < 0xC)
             {
                 gBattleMons[gBattlerAttacker].statStages[STAT_DEF] += 6;
@@ -2984,7 +2986,8 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
 
     if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1))
     {
-        Ryu_LoadLegendaryOpponentName();
+        StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
+        StringCopy(gStringVar2, gText_PokemonStringBuffer);
         gBattleMons[gBattlerAttacker].statStages[STAT_SPDEF] = 9;
         gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] = 9;
         gBattleMons[gBattlerAttacker].statStages[STAT_ATK] = 9;
@@ -3343,6 +3346,10 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     effect++;
                 }
                 break;
+            case ABILITY_DRY_SKIN:
+                if (gBattleWeather & WEATHER_SUN_ANY)
+                    goto SOLAR_POWER_HP_DROP;
+            // Dry Skin works similarly to Rain Dish in Rain
             case ABILITY_RAIN_DISH:
                 if (WEATHER_HAS_EFFECT
                  && (gBattleWeather & WEATHER_RAIN_ANY)
@@ -3350,7 +3357,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                  && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
                 {
                     BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
-                    gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
+                    gBattleMoveDamage = gBattleMons[battler].maxHP / (gLastUsedAbility == ABILITY_RAIN_DISH ? 16 : 8);
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
@@ -3452,6 +3459,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     effect++;
                 }
                 break;
+            SOLAR_POWER_HP_DROP:
             case ABILITY_SOLAR_POWER:
                 if (WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_SUN_ANY)
                 {
@@ -5850,7 +5858,7 @@ static u16 CalcMoveBasePower(u16 move, u8 battlerAtk, u8 battlerDef)
 
 static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 updateFlags)
 {
-    u32 i;
+    u32 i, ability;
     u32 holdEffectAtk, holdEffectParamAtk;
     u16 basePower = CalcMoveBasePower(move, battlerAtk, battlerDef);
     u16 holdEffectModifier;
@@ -5975,11 +5983,16 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     }
 
     // target's abilities
-    switch (GetBattlerAbility(battlerDef))
+    ability = GetBattlerAbility(battlerDef);
+    switch (ability)
     {
     case ABILITY_WATER_BUBBLE:
         if (moveType == TYPE_FIRE)
+        {
             MulModifier(&modifier, UQ_4_12(0.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ability);
+        }
         break;
     case ABILITY_DRY_SKIN:
         if (moveType == TYPE_FIRE)
@@ -5987,7 +6000,11 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         break;
     case ABILITY_FLUFFY:
         if (IsMoveMakingContact(move, battlerAtk))
+        {
             MulModifier(&modifier, UQ_4_12(0.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ability);
+        }
         if (moveType == TYPE_FIRE)
             MulModifier(&modifier, UQ_4_12(2.0));
         break;
@@ -6122,7 +6139,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     return ApplyModifier(modifier, basePower);
 }
 
-static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 isCrit)
+static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 isCrit, bool32 updateFlags)
 {
     u8 atkStage;
     u32 atkStat;
@@ -6232,7 +6249,11 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
     {
     case ABILITY_THICK_FAT:
         if (moveType == TYPE_FIRE || moveType == TYPE_ICE)
+        {
             MulModifier(&modifier, UQ_4_12(0.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_THICK_FAT);
+        }
         break;
     }
 
@@ -6288,7 +6309,7 @@ static bool32 CanEvolve(u32 species)
     return FALSE;
 }
 
-static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 isCrit)
+static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 isCrit, bool32 updateFlags)
 {
     bool32 usesDefStat;
     u8 defStage;
@@ -6340,15 +6361,27 @@ static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, 
     {
     case ABILITY_MARVEL_SCALE:
         if (gBattleMons[battlerDef].status1 & STATUS1_ANY && usesDefStat)
+        {
             MulModifier(&modifier, UQ_4_12(1.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_MARVEL_SCALE);
+        }
         break;
     case ABILITY_FUR_COAT:
         if (usesDefStat)
+        {
             MulModifier(&modifier, UQ_4_12(2.0));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_FUR_COAT);
+        }
         break;
     case ABILITY_GRASS_PELT:
-        if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN)
+        if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && usesDefStat)
+        {
             MulModifier(&modifier, UQ_4_12(1.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_GRASS_PELT);
+        }
         break;
     case ABILITY_FLOWER_GIFT:
         if (gBattleMons[battlerDef].species == SPECIES_CHERRIM && WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_SUN_ANY && !usesDefStat)
@@ -6602,8 +6635,8 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
     // long dmg basic formula
     dmg = ((gBattleMons[battlerAtk].level * 2) / 5) + 2;
     dmg *= gBattleMovePower;
-    dmg *= CalcAttackStat(move, battlerAtk, battlerDef, moveType, isCrit);
-    dmg /= CalcDefenseStat(move, battlerAtk, battlerDef, moveType, isCrit);
+    dmg *= CalcAttackStat(move, battlerAtk, battlerDef, moveType, isCrit, updateFlags);
+    dmg /= CalcDefenseStat(move, battlerAtk, battlerDef, moveType, isCrit, updateFlags);
     dmg = (dmg / 50) + 2;
 
     // Calculate final modifiers.
