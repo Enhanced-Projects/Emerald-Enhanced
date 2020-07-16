@@ -7948,5 +7948,23 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .nature = NATURE_BOLD,
         .ivs = 31,
         .ability = 2
+    },
+    [FRONTIER_MON_MEGA_VENUSAUR_1] = { // Mega_Venusaur-Defensive
+        .species = SPECIES_MEGA_VENUSAUR,
+        .moves = {MOVE_GIGA_DRAIN, MOVE_ACID, MOVE_LEECH_SEED, MOVE_SYNTHESIS},
+        .heldItem = ITEM_VENUSAURITE,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_BOLD,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_VENUSAUR_2] = { // Mega_Venusaur-Offensive
+        .species = SPECIES_MEGA_VENUSAUR,
+        .moves = {MOVE_SLUDGE_BOMB, MOVE_GIGA_DRAIN, MOVE_ACID, MOVE_SYNTHESIS},
+        .heldItem = ITEM_VENUSAURITE,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_MODEST,
+        .ivs = 31,
+        .ability = 0
     }
 };
