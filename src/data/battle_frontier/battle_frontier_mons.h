@@ -8002,5 +8002,23 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .nature = NATURE_TIMID,
         .ivs = 31,
         .ability = 0
+    },
+    [FRONTIER_MON_MEGA_BLASTOISE_1] = { // Mega_Blastoise-Defensive
+        .species = SPECIES_MEGA_BLASTOISE,
+        .moves = {MOVE_FLASH_CANNON, MOVE_SCALD, MOVE_REST, MOVE_SLEEP_TALK},
+        .heldItem = ITEM_BLASTOISITE,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_BOLD,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_BLASTOISE_2] = { // Mega_Blastoise-Offensive
+        .species = SPECIES_MEGA_BLASTOISE,
+        .moves = {MOVE_FLASH_CANNON, MOVE_HYDRO_PUMP, MOVE_AURA_SPHERE, MOVE_DARK_PULSE},
+        .heldItem = ITEM_BLASTOISITE,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_MODEST,
+        .ivs = 31,
+        .ability = 2
     }
 };
