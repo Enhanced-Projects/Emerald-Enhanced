@@ -7966,5 +7966,41 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .nature = NATURE_MODEST,
         .ivs = 31,
         .ability = 0
+    },
+    [FRONTIER_MON_MEGA_CHARIZARD_X_1] = { // Mega_Charizard_X-DD
+        .species = SPECIES_MEGA_CHARIZARD_X,
+        .moves = {MOVE_FLARE_BLITZ, MOVE_DRAGON_CLAW, MOVE_DRAGON_DANCE, MOVE_ROOST},
+        .heldItem = ITEM_CHARIZARDITE_X,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_CHARIZARD_X_2] = { // Mega_Charizard_X-SD
+        .species = SPECIES_MEGA_CHARIZARD_X,
+        .moves = {MOVE_FLARE_BLITZ, MOVE_DRAGON_CLAW, MOVE_FLAME_CHARGE, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_CHARIZARDITE_X,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_CHARIZARD_Y_1] = { // Mega_Charizard_Y-3attacks
+        .species = SPECIES_MEGA_CHARIZARD_Y,
+        .moves = {MOVE_FIRE_BLAST, MOVE_SOLAR_BEAM, MOVE_FOCUS_BLAST, MOVE_ROOST},
+        .heldItem = ITEM_CHARIZARDITE_Y,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_CHARIZARD_Y_2] = { // Mega_Charizard_Y-4attacks
+        .species = SPECIES_MEGA_CHARIZARD_Y,
+        .moves = {MOVE_FLAMETHROWER, MOVE_OVERHEAT, MOVE_SOLAR_BEAM, MOVE_FOCUS_BLAST},
+        .heldItem = ITEM_CHARIZARDITE_Y,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
     }
 };
