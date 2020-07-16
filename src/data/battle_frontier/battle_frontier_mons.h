@@ -4167,7 +4167,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_BOLD,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_MILOTIC_1] = { // Milotic-OffensiveToxic
         .species = SPECIES_MILOTIC,
@@ -5895,7 +5895,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_BOLD,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_MILOTIC_2] = { // Milotic-Defensive
         .species = SPECIES_MILOTIC,
