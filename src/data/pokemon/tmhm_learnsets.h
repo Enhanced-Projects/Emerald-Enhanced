@@ -19071,6 +19071,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM06_TOXIC)),
 
     [SPECIES_ZERAORA]     = TMHM_LEARNSET(TMHM(TM40_AERIAL_ACE)
+											| TMHM(TM45_ATTRACT)
 											| TMHM(TM31_BRICK_BREAK)
 											| TMHM(TM08_BULK_UP)
 											| TMHM(TM04_CALM_MIND)

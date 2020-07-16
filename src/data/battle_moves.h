@@ -5875,7 +5875,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_AVALANCHE] =
     {
         .effect = EFFECT_REVENGE,
-        .power = 60,
+        .power = 70,
         .type = TYPE_ICE,
         .accuracy = 100,
         .pp = 10,

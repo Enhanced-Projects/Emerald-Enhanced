@@ -21,7 +21,7 @@
     "warp_events": [
         {
             "dest_map": "MAP_FROSTBITE_FIELD",
-            "dest_warp_id": 0,
+            "dest_warp_id": 5,
             "elevation": 3,
             "x": 10,
             "y": 14

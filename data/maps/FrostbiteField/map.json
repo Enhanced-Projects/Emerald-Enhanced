@@ -37,8 +37,8 @@
             "type": "trigger",
             "var": "VAR_TEMP_5",
             "var_value": "0",
-            "x": 21,
-            "y": 44
+            "x": 23,
+            "y": 40
         }
     ],
     "id": "MAP_FROSTBITE_FIELD",
@@ -216,6 +216,13 @@
             "elevation": 0,
             "x": 11,
             "y": 67
+        },
+        {
+            "dest_map": "MAP_FROSTBITE_FIELD",
+            "dest_warp_id": 0,
+            "elevation": 5,
+            "x": 23,
+            "y": 40
         }
     ],
     "weather": "WEATHER_SANDSTORM"
