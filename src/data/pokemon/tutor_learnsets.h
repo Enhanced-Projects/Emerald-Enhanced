@@ -4520,15 +4520,7 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_LIQUIDATION)
 											| TUTOR(MOVE_ZEN_HEADBUTT)
 											| TUTOR(MOVE_LOW_KICK)
-											| TUTOR(MOVE_ENDURE)
-											| TUTOR(MOVE_GUNK_SHOT)
-											| TUTOR(MOVE_ICE_PUNCH)
-											| TUTOR(MOVE_HYPER_VOICE)
-											| TUTOR(MOVE_SYNTHESIS)
-											| TUTOR(MOVE_OUTRAGE)
-											| TUTOR(MOVE_THUNDER_PUNCH)
-											| TUTOR(MOVE_FIRE_PUNCH)
-											| TUTOR(MOVE_SIGNAL_BEAM)),
+											| TUTOR(MOVE_ENDURE)),
 
     [SPECIES_ARCHEN]        = TUTOR_LEARNSET(TUTOR(MOVE_BOUNCE)
 											| TUTOR(MOVE_METRONOME)

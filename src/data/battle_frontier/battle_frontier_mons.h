@@ -7939,5 +7939,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .nature = NATURE_BOLD,
         .ivs = 31,
         .ability = 0
+    },
+    [FRONTIER_MON_TRUBBISH] = { // Trubbish-Attract
+        .species = SPECIES_TRUBBISH,
+        .moves = {MOVE_ATTRACT, MOVE_TOXIC_SPIKES, MOVE_SPIKES, MOVE_PAIN_SPLIT},
+        .heldItem = ITEM_EVIOLITE,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_BOLD,
+        .ivs = 31,
+        .ability = 2
     }
 };
