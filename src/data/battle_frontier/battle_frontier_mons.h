@@ -72,12 +72,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 28,
         .ability = 1
     },
-    [FRONTIER_MON_METAPOD] = { // Unused
-        .species = SPECIES_METAPOD,
-        .moves = {MOVE_BUG_BITE, MOVE_TACKLE, MOVE_IRON_DEFENSE, MOVE_STRING_SHOT},
-        .heldItem = ITEM_EVIOLITE,
-        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_ADAMANT,
+    [FRONTIER_MON_METAPOD] = { // Slakoth-Roar
+        .species = SPECIES_SLAKOTH,
+        .moves = {MOVE_ROAR_OF_TIME, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+        .heldItem = ITEM_CHOICE_SPECS,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_MODEST,
         .ivs = 31,
         .ability = 0
     },
@@ -1296,7 +1296,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_EXPLOUD_3] = { // Exploud-RestoBerry
+    [FRONTIER_MON_EXPLOUD_3] = { // Exploud-ChestoResto
         .species = SPECIES_EXPLOUD,
         .moves = {MOVE_BOOMBURST, MOVE_FOCUS_BLAST, MOVE_WORK_UP, MOVE_REST},
         .heldItem = ITEM_CHESTO_BERRY,
@@ -1936,7 +1936,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 28,
         .ability = 2
     },
-    [FRONTIER_MON_LYCANROC_MIDNIGHT_3] = { // Lycanroc_Midnight-RestoBerry
+    [FRONTIER_MON_LYCANROC_MIDNIGHT_3] = { // Lycanroc_Midnight-ChestoResto
         .species = SPECIES_LYCANROC_MIDNIGHT,
         .moves = {MOVE_POWER_TRIP, MOVE_REST, MOVE_BULK_UP, MOVE_ROCK_POLISH},
         .heldItem = ITEM_CHESTO_BERRY,
@@ -5618,7 +5618,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_SHUCKLE_2] = { // Shuckle-RestoBerry
+    [FRONTIER_MON_SHUCKLE_2] = { // Shuckle-ChestoResto
         .species = SPECIES_SHUCKLE,
         .moves = {MOVE_STICKY_WEB, MOVE_STEALTH_ROCK, MOVE_TOXIC, MOVE_REST},
         .heldItem = ITEM_CHESTO_BERRY,
@@ -6932,7 +6932,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_RAIKOU_2] = { // Raikou-RestoBerry
+    [FRONTIER_MON_RAIKOU_2] = { // Raikou-ChestoResto
         .species = SPECIES_RAIKOU,
         .moves = {MOVE_THUNDERBOLT, MOVE_HIDDEN_POWER, MOVE_CALM_MIND, MOVE_REST},
         .heldItem = ITEM_CHESTO_BERRY,
@@ -7076,7 +7076,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_REGISTEEL_3] = { // Registeel-RestoBerry
+    [FRONTIER_MON_REGISTEEL_3] = { // Registeel-ChestoResto
         .species = SPECIES_REGISTEEL,
         .moves = {MOVE_GYRO_BALL, MOVE_CURSE, MOVE_REST, MOVE_EARTHQUAKE},
         .heldItem = ITEM_CHESTO_BERRY,
@@ -7922,7 +7922,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_SUICUNE_5] = { // Suicune-RestoBerry
+    [FRONTIER_MON_SUICUNE_5] = { // Suicune-ChestoResto
         .species = SPECIES_SUICUNE,
         .moves = {MOVE_SCALD, MOVE_ICE_BEAM, MOVE_CALM_MIND, MOVE_REST},
         .heldItem = ITEM_CHESTO_BERRY,
