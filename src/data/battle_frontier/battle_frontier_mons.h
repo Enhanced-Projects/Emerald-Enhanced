@@ -81,12 +81,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_KAKUNA] = { // Unused
-        .species = SPECIES_KAKUNA,
-        .moves = {MOVE_BUG_BITE, MOVE_POISON_STING, MOVE_IRON_DEFENSE, MOVE_STRING_SHOT},
-        .heldItem = ITEM_EVIOLITE,
-        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_ADAMANT,
+    [FRONTIER_MON_KAKUNA] = { // Slakoth-Doom
+        .species = SPECIES_SLAKOTH,
+        .moves = {MOVE_DOOM_DESIRE, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+        .heldItem = ITEM_CHOICE_SPECS,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_MODEST,
         .ivs = 31,
         .ability = 0
     },
