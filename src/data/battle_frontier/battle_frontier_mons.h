@@ -8006,7 +8006,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     [FRONTIER_MON_MEGA_BLASTOISE_1] = { // Mega_Blastoise-Defensive
         .species = SPECIES_MEGA_BLASTOISE,
         .moves = {MOVE_FLASH_CANNON, MOVE_SCALD, MOVE_REST, MOVE_SLEEP_TALK},
-        .heldItem = ITEM_BLASTOISITE,
+        .heldItem = ITEM_BLASTOISINITE,
         .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_BOLD,
         .ivs = 31,
@@ -8015,10 +8015,154 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     [FRONTIER_MON_MEGA_BLASTOISE_2] = { // Mega_Blastoise-Offensive
         .species = SPECIES_MEGA_BLASTOISE,
         .moves = {MOVE_FLASH_CANNON, MOVE_HYDRO_PUMP, MOVE_AURA_SPHERE, MOVE_DARK_PULSE},
-        .heldItem = ITEM_BLASTOISITE,
+        .heldItem = ITEM_BLASTOISINITE,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
         .ivs = 31,
         .ability = 2
+    },
+    [FRONTIER_MON_MEGA_BEEDRILL_1] = { // Mega_Beedrill-4attacks
+        .species = SPECIES_MEGA_BEEDRILL,
+        .moves = {MOVE_U_TURN, MOVE_POISON_JAB, MOVE_DRILL_RUN, MOVE_X_SCISSOR},
+        .heldItem = ITEM_BEEDRILLITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 1
+    },
+    [FRONTIER_MON_MEGA_BEEDRILL_2] = { // Mega_Beedrill-SD
+        .species = SPECIES_MEGA_BEEDRILL,
+        .moves = {MOVE_X_SCISSOR, MOVE_POISON_JAB, MOVE_DRILL_RUN, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_BEEDRILLITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 1
+    },
+    [FRONTIER_MON_MEGA_PIDGEOT_1] = { // Mega_Pidgeot-WorkUp
+        .species = SPECIES_MEGA_PIDGEOT,
+        .moves = {MOVE_HURRICANE, MOVE_HEAT_WAVE, MOVE_ROOST, MOVE_WORK_UP},
+        .heldItem = ITEM_PIDGEOTITE,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_PIDGEOT_2] = { // Mega_Pidgeot-HyperBeam
+        .species = SPECIES_MEGA_PIDGEOT,
+        .moves = {MOVE_HURRICANE, MOVE_HEAT_WAVE, MOVE_ROOST, MOVE_HYPER_BEAM},
+        .heldItem = ITEM_PIDGEOTITE,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_ALAKAZAM_1] = { // Mega_Alakazam-3attacks
+        .species = SPECIES_MEGA_ALAKAZAM,
+        .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_SHADOW_BALL, MOVE_RECOVER},
+        .heldItem = ITEM_ALAKAZITE,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_ALAKAZAM_2] = { // Mega_Alakazam-CM
+        .species = SPECIES_MEGA_ALAKAZAM,
+        .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_CALM_MIND, MOVE_RECOVER},
+        .heldItem = ITEM_ALAKAZITE,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_SLOWBRO_1] = { // Mega_Slowbro-CM
+        .species = SPECIES_MEGA_SLOWBRO,
+        .moves = {MOVE_SCALD, MOVE_PSYSHOCK, MOVE_CALM_MIND, MOVE_RECOVER},
+        .heldItem = ITEM_SLOWBRONITE,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_BOLD,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_SLOWBRO_2] = { // Mega_Slowbro-Offensive
+        .species = SPECIES_MEGA_SLOWBRO,
+        .moves = {MOVE_SCALD, MOVE_PSYSHOCK, MOVE_ICE_BEAM, MOVE_RECOVER},
+        .heldItem = ITEM_SLOWBRONITE,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_MODEST,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_GENGAR_1] = { // Mega_Gengar-Offensive
+        .species = SPECIES_MEGA_GENGAR,
+        .moves = {MOVE_SLUDGE_WAVE, MOVE_SHADOW_BALL, MOVE_FOCUS_BLAST, MOVE_DESTINY_BOND},
+        .heldItem = ITEM_GENGARITE,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_GENGAR_2] = { // Mega_Gengar-PerishTrap
+        .species = SPECIES_MEGA_GENGAR,
+        .moves = {MOVE_SHADOW_BALL, MOVE_PERISH_SONG, MOVE_EE_PROTECT, MOVE_SUBSTITUTE},
+        .heldItem = ITEM_GENGARITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_KANGASKHAN_1] = { // Mega_Kangaskhan-SuckerPunch
+        .species = SPECIES_MEGA_KANGASKHAN,
+        .moves = {MOVE_FAKE_OUT, MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_SUCKER_PUNCH},
+        .heldItem = ITEM_KANGASKHANITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 1
+    },
+    [FRONTIER_MON_MEGA_KANGASKHAN_2] = { // Mega_Kangaskhan-RockSlide
+        .species = SPECIES_MEGA_KANGASKHAN,
+        .moves = {MOVE_FAKE_OUT, MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE},
+        .heldItem = ITEM_KANGASKHANITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 1
+    },
+    [FRONTIER_MON_MEGA_PINSIR_1] = { // Mega_Pinsir-CloseCombat
+        .species = SPECIES_MEGA_PINSIR,
+        .moves = {MOVE_RETURN, MOVE_QUICK_ATTACK, MOVE_CLOSE_COMBAT, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_PINSIRITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_PINSIR_2] = { // Mega_Pinsir-Earthquake
+        .species = SPECIES_MEGA_PINSIR,
+        .moves = {MOVE_RETURN, MOVE_QUICK_ATTACK, MOVE_EARTHQUAKE, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_PINSIRITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_GYARADOS_1] = { // Mega_Gyarados-IceFang
+        .species = SPECIES_MEGA_GYARADOS,
+        .moves = {MOVE_WATERFALL, MOVE_ICE_FANG, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
+        .heldItem = ITEM_GYARADOSITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_GYARADOS_2] = { // Mega_Gyarados-Crunch
+        .species = SPECIES_MEGA_GYARADOS,
+        .moves = {MOVE_WATERFALL, MOVE_CRUNCH, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
+        .heldItem = ITEM_GYARADOSITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 0
     }
 };
