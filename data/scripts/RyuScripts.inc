@@ -3,6 +3,15 @@
 
 @@=================================================================================================EXP BATTERY
 
+RyuBufferPartyMonNames::
+	bufferpartymonnick 0, 0
+	bufferpartymonnick 1, 1
+	bufferpartymonnick 2, 2
+	bufferpartymonnick 3, 3
+	bufferpartymonnick 4, 4
+	bufferpartymonnick 5, 5
+	return
+
 RyuExpBattery::
 	lock
 	special RyuDevCheck
@@ -17,6 +26,7 @@ RyuExpBatteryContd::
 	msgbox RyuExpBatteryUseOnPokemon MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RS_CancelPartySlot
+	call RyuBufferPartyMonNames
 	goto RS_SelectSlot
 
 RyuExpBatteryDevModeMsg::
@@ -30,7 +40,7 @@ RyuExpBatteryDevMode::
 	goto RyuExpBatteryContd
 
 RS_SelectSlot::
-	multichoicedefault 0, 0, 118, 0, 0
+	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 0, 0
 	switch VAR_RESULT
 	case 0, RS_Slot1Selected
 	case 1, RS_Slot2Selected
@@ -100,6 +110,7 @@ RS_Slot6Selected::
 	
 RS_SlotSelectEmpty::
 	msgbox RS_SelectAnotherSlot MSGBOX_DEFAULT
+	call RyuBufferPartyMonNames
 	goto RS_SelectSlot
 
 RS_SelectAnotherSlot:

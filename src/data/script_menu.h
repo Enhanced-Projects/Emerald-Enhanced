@@ -826,12 +826,12 @@ static const struct MenuAction MultichoiceList_117[] =
 
 static const struct MenuAction MultichoiceList_118[] =
 {
-    {gText_PartySlot1},
-    {gText_PartySlot2},
-    {gText_PartySlot3},
-    {gText_PartySlot4},
-    {gText_PartySlot5},
-    {gText_PartySlot6},
+    {gText_RyuBufferedString1},
+    {gText_RyuBufferedString2},
+    {gText_RyuBufferedString3},
+    {gText_RyuBufferedString4},
+    {gText_RyuBufferedString5},
+    {gText_RyuBufferedString6},
     {gText_PartySlotCancel},
 };
 

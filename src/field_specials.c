@@ -6150,3 +6150,4 @@ void RyuTestDebug(void)
     u8 gTextBuffer1[] = _("Test Debug Error Message");
     RyuPrintDebugMessage(0, gTextBuffer1);
 }
+

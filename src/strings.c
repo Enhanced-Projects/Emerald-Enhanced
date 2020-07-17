@@ -2144,3 +2144,10 @@ const u8 gText_RyuFrontierStarter3_6[] = _("Blank");
 const u8 gText_RyuFrontierStarter3_7[] = _("Blank");
 const u8 gText_RyuFrontierStarter_Next[] = _("Next");
 const u8 gText_RyuFrontierStarter_Prev[] = _("Previous");
+
+const u8 gText_RyuBufferedString1[] = _("{STR_VAR_1}");
+const u8 gText_RyuBufferedString2[] = _("{STR_VAR_2}");
+const u8 gText_RyuBufferedString3[] = _("{STR_VAR_3}");
+const u8 gText_RyuBufferedString4[] = _("{RYU_STR_1}");
+const u8 gText_RyuBufferedString5[] = _("{RYU_STR_2}");
+const u8 gText_RyuBufferedString6[] = _("{RYU_STR_3}");
