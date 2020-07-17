@@ -2086,8 +2086,8 @@ bool8 HandleWishPerishSongOnTurnEnd(void)
             for (i = 0; i < 2; i++)
                 CancelMultiTurnMoves(i);
 
-            gBattlescriptCurrInstr = BattleScript_ArenaDoJudgment;
-            BattleScriptExecute(BattleScript_ArenaDoJudgment);
+            //gBattlescriptCurrInstr = BattleScript_ArenaDoJudgment;
+            //BattleScriptExecute(BattleScript_ArenaDoJudgment);
             gBattleStruct->wishPerishSongState++;
             return TRUE;
         }
@@ -3732,8 +3732,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
              && gBattleMons[battler].hp < gBattleMons[battler].maxHP / 2
              && (gMultiHitCounter == 0 || gMultiHitCounter == 1)
              && !(GetBattlerAbility(gBattlerAttacker) == ABILITY_SHEER_FORCE && gBattleMoves[gCurrentMove].flags & FLAG_SHEER_FORCE_BOOST)
-             && (CanBattlerSwitch(battler) || !(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
-             && !(gBattleTypeFlags & BATTLE_TYPE_ARENA))
+             && (CanBattlerSwitch(battler) || !(gBattleTypeFlags & BATTLE_TYPE_TRAINER)))
             {
                 gBattleResources->flags->flags[battler] |= RESOURCE_FLAG_EMERGENCY_EXIT;
                 effect++;
@@ -6872,7 +6871,7 @@ u16 CalcPartyMonTypeEffectivenessMultiplier(u16 move, u16 speciesDef, u8 ability
 
 u16 GetTypeModifier(u8 atkType, u8 defType)
 {
-    if (B_FLAG_INVERSE_BATTLE != 0 && FlagGet(B_FLAG_INVERSE_BATTLE))
+    if (FlagGet(FLAG_RYU_INVERSE_BATTLE) == 1)
         return sInverseTypeEffectivenessTable[atkType][defType];
     else
         return sTypeEffectivenessTable[atkType][defType];

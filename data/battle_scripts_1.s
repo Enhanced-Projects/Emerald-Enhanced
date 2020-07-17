@@ -7584,17 +7584,17 @@ BattleScript_82DB89D::
 	end2
 
 BattleScript_ArenaTurnBeginning::
-	waitcry BS_ATTACKER
-	volumedown
-	playse SE_HANTEI1
-	pause 0x8
-	playse SE_HANTEI1
-	various14 BS_ATTACKER
-	arenajudmengtstring 8
-	arenawaitmessage 8
-	pause 0x40
-	various15 BS_ATTACKER
-	volumeup
+	@@waitcry BS_ATTACKER
+	@@volumedown
+	@@playse SE_HANTEI1
+	@@pause 0x8
+	@@playse SE_HANTEI1
+	@@various14 BS_ATTACKER
+	@@arenajudmengtstring 8
+	@@arenawaitmessage 8
+	@@pause 0x40
+	@@various15 BS_ATTACKER
+	@@volumeup
 	end2
 
 BattleScript_82DB8E0:: @ Unused battlescript
@@ -7607,77 +7607,77 @@ BattleScript_82DB8E0:: @ Unused battlescript
 	end2
 
 BattleScript_ArenaDoJudgment::
-	makevisible BS_PLAYER1
-	waitstate
-	makevisible BS_OPPONENT1
-	waitstate
-	volumedown
-	playse SE_HANTEI1
-	pause 0x8
-	playse SE_HANTEI1
-	pause 0x40
-	various14 BS_ATTACKER
-	arenajudmengtstring 1
-	arenawaitmessage 1
-	pause 0x40
-	setbyte gBattleCommunication, 0x0
-	arenajudgmentwindow
-	pause 0x40
-	arenajudgmentwindow
-	arenajudmengtstring 2
-	arenawaitmessage 2
-	arenajudgmentwindow
-	arenajudmengtstring 3
-	arenawaitmessage 3
-	arenajudgmentwindow
-	arenajudmengtstring 4
-	arenawaitmessage 4
-	arenajudgmentwindow
-	jumpifbyte CMP_EQUAL, gBattleCommunication + 1, 0x3, BattleScript_ArenaJudgmentPlayerLoses
-	jumpifbyte CMP_EQUAL, gBattleCommunication + 1, 0x4, BattleScript_ArenaJudgmentDraw
-	arenajudmengtstring 5
-	arenawaitmessage 5
-	arenajudgmentwindow
-	various15 BS_ATTACKER
-	printstring STRINGID_DEFEATEDOPPONENTBYREFEREE
-	waitmessage 0x40
-	playfaintcry BS_OPPONENT1
-	waitcry BS_ATTACKER
-	dofaintanimation BS_OPPONENT1
-	cleareffectsonfaint BS_OPPONENT1
-	arenaopponentmonlost
+	@@makevisible BS_PLAYER1
+	@@waitstate
+	@@makevisible BS_OPPONENT1
+	@@waitstate
+	@@volumedown
+	@@playse SE_HANTEI1
+	@@pause 0x8
+	@@playse SE_HANTEI1
+	@@pause 0x40
+	@@various14 BS_ATTACKER
+	@@arenajudmengtstring 1
+	@@arenawaitmessage 1
+	@@pause 0x40
+	@@setbyte gBattleCommunication, 0x0
+	@@arenajudgmentwindow
+	@@pause 0x40
+	@@arenajudgmentwindow
+	@@arenajudmengtstring 2
+	@@arenawaitmessage 2
+	@@arenajudgmentwindow
+	@@arenajudmengtstring 3
+	@@arenawaitmessage 3
+	@@arenajudgmentwindow
+	@@arenajudmengtstring 4
+	@@arenawaitmessage 4
+	@@arenajudgmentwindow
+	@@jumpifbyte CMP_EQUAL, gBattleCommunication + 1, 0x3, BattleScript_ArenaJudgmentPlayerLoses
+	@@jumpifbyte CMP_EQUAL, gBattleCommunication + 1, 0x4, BattleScript_ArenaJudgmentDraw
+	@@arenajudmengtstring 5
+	@@arenawaitmessage 5
+	@@arenajudgmentwindow
+	@@various15 BS_ATTACKER
+	@@printstring STRINGID_DEFEATEDOPPONENTBYREFEREE
+	@@waitmessage 0x40
+	@@playfaintcry BS_OPPONENT1
+	@@waitcry BS_ATTACKER
+	@@dofaintanimation BS_OPPONENT1
+	@@cleareffectsonfaint BS_OPPONENT1
+	@@arenaopponentmonlost
 	end2
 
 BattleScript_ArenaJudgmentPlayerLoses:
-	arenajudmengtstring 6
-	arenawaitmessage 6
-	arenajudgmentwindow
-	various15 BS_ATTACKER
-	printstring STRINGID_LOSTTOOPPONENTBYREFEREE
-	waitmessage 0x40
-	playfaintcry BS_PLAYER1
-	waitcry BS_ATTACKER
-	dofaintanimation BS_PLAYER1
-	cleareffectsonfaint BS_PLAYER1
-	arenaplayermonlost
+	@@arenajudmengtstring 6
+	@@arenawaitmessage 6
+	@@arenajudgmentwindow
+	@@various15 BS_ATTACKER
+	@@printstring STRINGID_LOSTTOOPPONENTBYREFEREE
+	@@waitmessage 0x40
+	@@playfaintcry BS_PLAYER1
+	@@waitcry BS_ATTACKER
+	@@dofaintanimation BS_PLAYER1
+	@@cleareffectsonfaint BS_PLAYER1
+	@@arenaplayermonlost
 	end2
 
 BattleScript_ArenaJudgmentDraw:
-	arenajudmengtstring 7
-	arenawaitmessage 7
-	arenajudgmentwindow
-	various15 BS_ATTACKER
-	printstring STRINGID_TIEDOPPONENTBYREFEREE
-	waitmessage 0x40
-	playfaintcry BS_PLAYER1
-	waitcry BS_ATTACKER
-	dofaintanimation BS_PLAYER1
-	cleareffectsonfaint BS_PLAYER1
-	playfaintcry BS_OPPONENT1
-	waitcry BS_ATTACKER
-	dofaintanimation BS_OPPONENT1
-	cleareffectsonfaint BS_OPPONENT1
-	arenabothmonlost
+	@@arenajudmengtstring 7
+	@@arenawaitmessage 7
+	@@arenajudgmentwindow
+	@@various15 BS_ATTACKER
+	@@printstring STRINGID_TIEDOPPONENTBYREFEREE
+	@@waitmessage 0x40
+	@@playfaintcry BS_PLAYER1
+	@@waitcry BS_ATTACKER
+	@@dofaintanimation BS_PLAYER1
+	@@cleareffectsonfaint BS_PLAYER1
+	@@playfaintcry BS_OPPONENT1
+	@@waitcry BS_ATTACKER
+	@@dofaintanimation BS_OPPONENT1
+	@@cleareffectsonfaint BS_OPPONENT1
+	@@arenabothmonlost
 	end2
 
 BattleScript_AskIfWantsToForfeitMatch::
