@@ -8164,5 +8164,59 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
+    },
+    [FRONTIER_MON_MEGA_AERODACTYL_1] = { // Mega_Aerodactyl-4attacks
+        .species = SPECIES_MEGA_AERODACTYL,
+        .moves = {MOVE_FLY, MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_THUNDER_FANG},
+        .heldItem = ITEM_AERODACTYLITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_AERODACTYL_2] = { // Mega_Aerodactyl-3attacksRoost
+        .species = SPECIES_MEGA_AERODACTYL,
+        .moves = {MOVE_FLY, MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_ROOST},
+        .heldItem = ITEM_AERODACTYLITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_MEWTWO_X_1] = { // Mega_Mewtwo_X-4attacks
+        .species = SPECIES_MEGA_MEWTWO_X,
+        .moves = {MOVE_LOW_KICK, MOVE_ZEN_HEADBUTT, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH},
+        .heldItem = ITEM_MEWTWONITE_X,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_MEWTWO_X_2] = { // Mega_Mewtwo_X-BU
+        .species = SPECIES_MEGA_MEWTWO_X,
+        .moves = {MOVE_DRAIN_PUNCH, MOVE_ZEN_HEADBUTT, MOVE_BULK_UP, MOVE_RECOVER},
+        .heldItem = ITEM_MEWTWONITE_X,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_MEWTWO_Y_1] = { // Mega_Mewtwo_Y-4attacks
+        .species = SPECIES_MEGA_MEWTWO_Y,
+        .moves = {MOVE_PSYSTRIKE, MOVE_FOCUS_BLAST, MOVE_ICE_BEAM, MOVE_FIRE_BLAST},
+        .heldItem = ITEM_MEWTWONITE_Y,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_MEWTWO_Y_2] = { // Mega_Mewtwo_Y-CM
+        .species = SPECIES_MEGA_MEWTWO_Y,
+        .moves = {MOVE_PSYSTRIKE, MOVE_FOCUS_BLAST, MOVE_CALM_MIND, MOVE_RECOVER},
+        .heldItem = ITEM_MEWTWONITE_Y,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
     }
 };
