@@ -6612,6 +6612,39 @@ BattleScript_MoodyLower:
 	waitmessage 0x40
 BattleScript_MoodyEnd:
 	end3
+	
+BattleScript_EmergencyExit::
+	pause 0x5
+	call BattleScript_AbilityPopUp
+	pause 0x40
+BattleScript_EmergencyExitNoPopUp::
+	playanimation BS_TARGET, B_ANIM_SLIDE_OFFSCREEN, NULL
+	waitanimation
+	openpartyscreen BS_TARGET, BattleScript_EmergencyExitRet
+	switchoutabilities BS_TARGET
+	waitstate
+	switchhandleorder BS_TARGET, 2
+	returntoball BS_TARGET
+	getswitchedmondata BS_TARGET
+	switchindataupdate BS_TARGET
+	hpthresholds BS_TARGET
+	printstring STRINGID_SWITCHINMON
+	switchinanim BS_TARGET, TRUE
+	waitstate
+	switchineffects BS_TARGET
+BattleScript_EmergencyExitRet:
+	return
+	
+BattleScript_EmergencyExitWild::
+	pause 0x5
+	call BattleScript_AbilityPopUp
+	pause 0x40
+BattleScript_EmergencyExitWildNoPopUp::
+	playanimation BS_TARGET, B_ANIM_SLIDE_OFFSCREEN, NULL
+	waitanimation
+	setoutcomeonteleport BS_TARGET
+	finishaction
+	return
 
 BattleScript_TraceActivates::
 	pause 0x20
@@ -6632,15 +6665,26 @@ BattleScript_ReceiverActivates::
 	waitmessage 0x40
 	settracedability BS_ABILITY_BATTLER
 	return
-
-BattleScript_RainDishActivates::
+	
+BattleScript_AbilityHpHeal:
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNSXRESTOREDHPALITTLE2
 	waitmessage 0x40
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
+	return
+
+BattleScript_RainDishActivates::
+	call BattleScript_AbilityHpHeal
 	end3
+	
+BattleScript_CheekPouchActivates::
+	copybyte sSAVED_BATTLER, gBattlerAttacker
+	copybyte gBattlerAttacker, gBattlerAbility
+	call BattleScript_AbilityHpHeal
+	copybyte gBattlerAttacker, sSAVED_BATTLER
+	return
 
 BattleScript_HarvestActivates::
 	pause 0x5
