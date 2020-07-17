@@ -230,6 +230,16 @@ static const u8 sContextMenuItems_ItemsPocket[] = {
     ITEMMENUACTION_TOSS,        ITEMMENUACTION_CANCEL
 };
 
+static const u8 sContextMenuItems_MedicinePocket[] = {
+    ITEMMENUACTION_USE,          ITEMMENUACTION_TOSS,
+    ITEMMENUACTION_DUMMY,        ITEMMENUACTION_CANCEL
+};
+
+static const u8 sContextMenuItems_ValuablesPocket[] = {
+    ITEMMENUACTION_GIVE,         ITEMMENUACTION_TOSS,
+    ITEMMENUACTION_DUMMY,        ITEMMENUACTION_CANCEL
+};
+
 static const u8 sContextMenuItems_KeyItemsPocket[] = {
     ITEMMENUACTION_USE,         ITEMMENUACTION_REGISTER,
     ITEMMENUACTION_DUMMY,       ITEMMENUACTION_CANCEL
@@ -241,8 +251,8 @@ static const u8 sContextMenuItems_BallsPocket[] = {
 };
 
 static const u8 sContextMenuItems_TmHmPocket[] = {
-    ITEMMENUACTION_USE,         ITEMMENUACTION_GIVE,
-    ITEMMENUACTION_DUMMY,       ITEMMENUACTION_CANCEL
+    ITEMMENUACTION_USE,         ITEMMENUACTION_CANCEL,
+    ITEMMENUACTION_DUMMY,       ITEMMENUACTION_DUMMY
 };
 
 static const u8 sContextMenuItems_BerriesPocket[] = {
@@ -1551,14 +1561,14 @@ void OpenContextMenu(u8 unused)
                             gBagMenu->contextMenuItemsBuffer[0] = ITEMMENUACTION_CHECK;
                         break;
                     case MEDICINE_POCKET:
-                        gBagMenu->contextMenuItemsPtr = &gBagMenu->contextMenuItemsBuffer[4];
-                        gBagMenu->contextMenuNumItems = 4;
-                        memcpy(&gBagMenu->contextMenuItemsBuffer[4], &sContextMenuItems_ItemsPocket, 4);
+                        gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
+                        gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_MedicinePocket);
+                        memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_MedicinePocket, sizeof(sContextMenuItems_MedicinePocket));
                         break;
                     case COLLECTIBLES_POCKET:
-                        gBagMenu->contextMenuItemsPtr = &gBagMenu->contextMenuItemsBuffer[4];
-                        gBagMenu->contextMenuNumItems = 4;
-                        memcpy(&gBagMenu->contextMenuItemsBuffer[4], &sContextMenuItems_ItemsPocket, 4);
+                        gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
+                        gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ValuablesPocket);
+                        memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_ValuablesPocket, sizeof(sContextMenuItems_ValuablesPocket));
                         break;
                     case KEYITEMS_POCKET:
                         gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
