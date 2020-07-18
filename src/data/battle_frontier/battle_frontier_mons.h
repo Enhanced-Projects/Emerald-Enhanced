@@ -5937,7 +5937,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .species = SPECIES_SLAKING,
         .moves = {MOVE_RETURN, MOVE_DRAIN_PUNCH, MOVE_SUCKER_PUNCH, MOVE_SLACK_OFF},
         .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_ATTACK,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
@@ -8216,6 +8216,150 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .heldItem = ITEM_MEWTWONITE_Y,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_STEELIX_1] = { // Mega_Steelix-Curse3attacks
+        .species = SPECIES_MEGA_STEELIX,
+        .moves = {MOVE_GYRO_BALL, MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_CURSE},
+        .heldItem = ITEM_STEELIXITE,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_BRAVE,
+        .ivs = 31,
+        .ability = 1
+    },
+    [FRONTIER_MON_MEGA_STEELIX_2] = { // Mega_Steelix-CurseRestTalk
+        .species = SPECIES_MEGA_STEELIX,
+        .moves = {MOVE_GYRO_BALL, MOVE_CURSE, MOVE_REST, MOVE_SLEEP_TALK},
+        .heldItem = ITEM_STEELIXITE,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_IMPISH,
+        .ivs = 31,
+        .ability = 1
+    },
+    [FRONTIER_MON_MEGA_SCIZOR_1] = { // Mega_Scizor-Curse
+        .species = SPECIES_MEGA_SCIZOR,
+        .moves = {MOVE_BULLET_PUNCH, MOVE_QUICK_ATTACK, MOVE_CURSE, MOVE_ROOST},
+        .heldItem = ITEM_SCIZORITE,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_IMPISH,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_SCIZOR_2] = { // Mega_Scizor-SD
+        .species = SPECIES_MEGA_SCIZOR,
+        .moves = {MOVE_BULLET_PUNCH, MOVE_KNOCK_OFF, MOVE_SWORDS_DANCE, MOVE_ROOST},
+        .heldItem = ITEM_SCIZORITE,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_IMPISH,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_HERACROSS_1] = { // Mega_Heracross-4attacks
+        .species = SPECIES_MEGA_HERACROSS,
+        .moves = {MOVE_PIN_MISSILE, MOVE_CLOSE_COMBAT, MOVE_ROCK_BLAST, MOVE_BULLET_SEED},
+        .heldItem = ITEM_HERACRONITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_HERACROSS_2] = { // Mega_Heracross-SD
+        .species = SPECIES_MEGA_HERACROSS,
+        .moves = {MOVE_PIN_MISSILE, MOVE_CLOSE_COMBAT, MOVE_ROCK_BLAST, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_HERACRONITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_HOUNDOOM_1] = { // Mega_Houndoom-SludgeBombNP
+        .species = SPECIES_MEGA_HOUNDOOM,
+        .moves = {MOVE_FIRE_BLAST, MOVE_DARK_PULSE, MOVE_SLUDGE_BOMB, MOVE_NASTY_PLOT},
+        .heldItem = ITEM_HOUNDOOMITE,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 1
+    },
+    [FRONTIER_MON_MEGA_HOUNDOOM_2] = { // Mega_Houndoom-OverheatNP
+        .species = SPECIES_MEGA_HOUNDOOM,
+        .moves = {MOVE_FLAMETHROWER, MOVE_DARK_PULSE, MOVE_OVERHEAT, MOVE_NASTY_PLOT},
+        .heldItem = ITEM_HOUNDOOMITE,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 1
+    },
+    [FRONTIER_MON_MEGA_TYRANITAR_1] = { // Mega_Tyranitar-DD
+        .species = SPECIES_MEGA_TYRANITAR,
+        .moves = {MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH, MOVE_DRAGON_DANCE},
+        .heldItem = ITEM_TYRANITARITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_TYRANITAR_2] = { // Mega_Tyranitar-4attacks
+        .species = SPECIES_MEGA_TYRANITAR,
+        .moves = {MOVE_STONE_EDGE, MOVE_CRUNCH, MOVE_ICE_PUNCH, MOVE_SUPERPOWER},
+        .heldItem = ITEM_TYRANITARITE,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_SCEPTILE_1] = { // Mega_Sceptile-EarthquakeSD
+        .species = SPECIES_MEGA_SCEPTILE,
+        .moves = {MOVE_DUAL_CHOP, MOVE_BULLET_SEED, MOVE_EARTHQUAKE, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_SCEPTILITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_SCEPTILE_2] = { // Mega_Sceptile-DoubleKickSD
+        .species = SPECIES_MEGA_SCEPTILE,
+        .moves = {MOVE_DUAL_CHOP, MOVE_BULLET_SEED, MOVE_DOUBLE_KICK, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_SCEPTILITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_BLAZIKEN_1] = { // Mega_Blaziken-SD
+        .species = SPECIES_MEGA_BLAZIKEN,
+        .moves = {MOVE_HI_JUMP_KICK, MOVE_FLARE_BLITZ, MOVE_EE_PROTECT, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_BLAZIKENITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_BLAZIKEN_2] = { // Mega_Blaziken-Mixed
+        .species = SPECIES_MEGA_BLAZIKEN,
+        .moves = {MOVE_HI_JUMP_KICK, MOVE_OVERHEAT, MOVE_STONE_EDGE, MOVE_EE_PROTECT},
+        .heldItem = ITEM_BLAZIKENITE,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_NAIVE,
+        .ivs = 31,
+        .ability = 2
+    },
+    [FRONTIER_MON_MEGA_SWAMPERT_1] = { // Mega_Swampert-Rain
+        .species = SPECIES_MEGA_SWAMPERT,
+        .moves = {MOVE_WATERFALL, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH, MOVE_RAIN_DANCE},
+        .heldItem = ITEM_SWAMPERTITE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MEGA_SWAMPERT_2] = { // Mega_Swampert-RestTalk
+        .species = SPECIES_MEGA_SWAMPERT,
+        .moves = {MOVE_DIVE, MOVE_EARTHQUAKE, MOVE_REST, MOVE_SLEEP_TALK},
+        .heldItem = ITEM_SWAMPERTITE,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_IMPISH,
         .ivs = 31,
         .ability = 0
     }
