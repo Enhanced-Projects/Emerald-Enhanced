@@ -1944,11 +1944,7 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_BOSSMODEHEAL:
-            if ((FlagGet(FLAG_TEMP_3) == 1) &&
-                 (!(BATTLER_MAX_HP(gActiveBattler))) &&
-                 (!(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK)) &&
-                 (gBattleMons[gActiveBattler].hp != 0) &&
-                 ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
+            if ((FlagGet(FLAG_RYU_MAX_SCALE) == 1) && (!(BATTLER_MAX_HP(gActiveBattler)))  && (gBattleMons[gActiveBattler].hp != 0) && ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
             {
                 gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
                 if (gBattleMoveDamage == 0)
