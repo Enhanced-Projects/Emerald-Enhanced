@@ -89,7 +89,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_CutTree",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 19,
             "y": 10
         },
@@ -102,7 +102,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_CutTree",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 19,
             "y": 11
         },
@@ -115,7 +115,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 26,
             "y": 17
         },
@@ -128,7 +128,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 26,
             "y": 20
         },
@@ -141,7 +141,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "PetalburgWoods_EventScript_ItemGreatBall",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 45,
             "y": 7
         },
@@ -154,7 +154,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "PetalburgWoods_EventScript_ItemXAttack",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 35,
             "y": 20
         },
@@ -167,7 +167,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "PetalburgWoods_EventScript_ItemEther",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 8
         },
@@ -180,7 +180,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
             "script": "PetalburgWoods_EventScript_Boy1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 15,
             "y": 19
         },
@@ -193,7 +193,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
             "script": "PetalburgWoods_EventScript_Lyle",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 7,
             "y": 32
         },
@@ -206,7 +206,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_UP_AND_RIGHT",
             "script": "PetalburgWoods_EventScript_James",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 14
         },
@@ -219,7 +219,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "PetalburgWoods_EventScript_Boy2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 30,
             "y": 34
         },
@@ -232,7 +232,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "PetalburgWoods_EventScript_ItemParalyzeHeal",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 26
         },
@@ -245,7 +245,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "PetalburgWoods_EventScript_Girl",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 33,
             "y": 5
         }

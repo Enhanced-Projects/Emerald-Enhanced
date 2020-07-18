@@ -23,7 +23,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SootopolisCity_Gym_B1F_EventScript_Andrea",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 7,
             "y": 17
         },
@@ -36,7 +36,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "SootopolisCity_Gym_B1F_EventScript_Connie",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 9,
             "y": 19
         },
@@ -49,7 +49,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "SootopolisCity_Gym_B1F_EventScript_Brianna",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 12,
             "y": 7
         },
@@ -62,7 +62,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "SootopolisCity_Gym_B1F_EventScript_Bridget",
             "trainer_sight_or_berry_tree_id": "5",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 11,
             "y": 9
         },
@@ -75,7 +75,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SootopolisCity_Gym_B1F_EventScript_Tiffany",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 5,
             "y": 6
         },
@@ -88,7 +88,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SootopolisCity_Gym_B1F_EventScript_Bethany",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 7,
             "y": 8
         },
@@ -101,7 +101,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SootopolisCity_Gym_B1F_EventScript_Crissy",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 8
         },
@@ -114,7 +114,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SootopolisCity_Gym_B1F_EventScript_Olivia",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 9,
             "y": 7
         },
@@ -127,7 +127,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SootopolisCity_Gym_B1F_EventScript_Daphne",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 6,
             "y": 13
         },
@@ -140,7 +140,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "SootopolisCity_Gym_B1F_EventScript_Annika",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 10,
             "y": 13
         }

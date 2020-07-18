@@ -23,7 +23,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Route119_WeatherInstitute_2F_EventScript_Grunt2",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 15,
             "y": 6
         },
@@ -36,7 +36,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_UP",
             "script": "Route119_WeatherInstitute_2F_EventScript_Grunt3",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 10,
             "y": 8
         },
@@ -49,7 +49,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Route119_WeatherInstitute_2F_EventScript_Shelly",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 6
         },
@@ -62,7 +62,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 0,
             "y": 6
         },
@@ -75,7 +75,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Route119_WeatherInstitute_2F_EventScript_WeatherScientist",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 18,
             "y": 6
         },
@@ -88,7 +88,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 1,
             "y": 7
         },
@@ -101,7 +101,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 6
         },
@@ -114,7 +114,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "Route119_WeatherInstitute_2F_EventScript_Grunt5",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 19,
             "y": 6
         },
@@ -127,7 +127,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 17,
             "y": 6
         }

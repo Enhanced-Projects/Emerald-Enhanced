@@ -55,7 +55,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "MossdeepCity_StevensHouse_EventScript_Steven",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 9,
             "y": 6
         },
@@ -68,7 +68,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "MossdeepCity_StevensHouse_EventScript_GiveBeldum",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 3
         },
@@ -81,7 +81,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "MossdeepCity_StevensHouse_EventScript_Letter",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 4
         }

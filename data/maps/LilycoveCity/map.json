@@ -138,7 +138,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
             "script": "LilycoveCity_EventScript_Sailor2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 32,
             "y": 20
         },
@@ -151,7 +151,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "LilycoveCity_EventScript_Girl",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 15,
             "y": 18
         },
@@ -164,7 +164,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "LilycoveCity_EventScript_Man3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 28,
             "y": 28
         },
@@ -177,7 +177,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "LilycoveCity_EventScript_RichBoy",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 21,
             "y": 15
         },
@@ -190,7 +190,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
             "script": "LilycoveCity_EventScript_Man2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 9
         },
@@ -203,7 +203,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "LilycoveCity_EventScript_Woman2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 35,
             "y": 27
         },
@@ -216,7 +216,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_EventScript_ExpertM1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 35,
             "y": 37
         },
@@ -229,7 +229,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_EventScript_ExpertF",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 34,
             "y": 37
         },
@@ -242,7 +242,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "LilycoveCity_EventScript_ExpertM2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 57,
             "y": 17
         },
@@ -255,7 +255,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "LilycoveCity_EventScript_WailmerTrainerGrunt",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 73,
             "y": 15
         },
@@ -268,7 +268,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "LilycoveCity_EventScript_ItemMaxRepel",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 61,
             "y": 36
         },
@@ -281,7 +281,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
             "script": "LilycoveCity_EventScript_AquaGrunt4",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 42,
             "y": 16
         },
@@ -294,7 +294,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "LilycoveCity_EventScript_AquaGrunt1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 46,
             "y": 13
         },
@@ -307,7 +307,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "LilycoveCity_EventScript_AquaGrunt2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 45,
             "y": 13
         },
@@ -320,7 +320,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "LilycoveCity_EventScript_AquaGrunt3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 38,
             "y": 9
         },
@@ -333,7 +333,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "LilycoveCity_EventScript_BerryGentleman",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 54,
             "y": 10
         },
@@ -346,7 +346,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_EventScript_Rival",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 27,
             "y": 7
         },
@@ -359,7 +359,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "LilycoveCity_EventScript_SchoolKidM",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 23
         },
@@ -372,7 +372,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "LilycoveCity_EventScript_Woman1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 41,
             "y": 25
         },
@@ -385,7 +385,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "LilycoveCity_EventScript_Man1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 40,
             "y": 25
         },
@@ -398,7 +398,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_EventScript_Sailor1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 34
         },
@@ -411,7 +411,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_EventScript_FatMan",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 35
         },
@@ -424,7 +424,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 61,
             "y": 37
         }

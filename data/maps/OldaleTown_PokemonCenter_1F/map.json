@@ -23,7 +23,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "OldaleTown_PokemonCenter_1F_EventScript_Nurse",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 7,
             "y": 2
         },
@@ -36,7 +36,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "OldaleTown_PokemonCenter_1F_EventScript_Gentleman",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 4
         },
@@ -49,7 +49,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "OldaleTown_PokemonCenter_1F_EventScript_Boy",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 10,
             "y": 6
         },
@@ -62,7 +62,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "OldaleTown_PokemonCenter_1F_EventScript_Girl",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 7
         }

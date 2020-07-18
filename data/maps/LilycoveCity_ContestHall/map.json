@@ -71,7 +71,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "LilycoveCity_ContestHall_EventScript_Boy1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 30,
             "y": 30
         },
@@ -84,7 +84,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "LilycoveCity_ContestHall_EventScript_Boy2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 11,
             "y": 7
         },
@@ -97,7 +97,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "LilycoveCity_ContestHall_EventScript_Girl",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 40,
             "y": 8
         },
@@ -110,7 +110,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_ContestHall_EventScript_SmartContestMC",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 22
         },
@@ -123,7 +123,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_ContestHall_EventScript_SmartContestJudge",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 15,
             "y": 22
         },
@@ -136,7 +136,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_ContestHall_EventScript_SmartContestant1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 10,
             "y": 25
         },
@@ -149,7 +149,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_ContestHall_EventScript_SmartContestant2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 25
         },
@@ -162,7 +162,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_ContestHall_EventScript_SmartContestant3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 25
         },
@@ -175,7 +175,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_ContestHall_EventScript_SmartContestant4",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 25
         },
@@ -188,7 +188,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "LilycoveCity_ContestHall_EventScript_SmartContestAudience1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 24
         },
@@ -201,7 +201,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "LilycoveCity_ContestHall_EventScript_SmartContestAudience4",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 18,
             "y": 24
         },
@@ -214,7 +214,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "LilycoveCity_ContestHall_EventScript_SmartContestAudience2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 22
         },
@@ -227,7 +227,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_ContestHall_EventScript_BeautyContestMC",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 24,
             "y": 10
         },
@@ -240,7 +240,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_ContestHall_EventScript_BeautyContestJudge",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 27,
             "y": 10
         },
@@ -253,7 +253,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_ContestHall_EventScript_BeautyContestant1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 22,
             "y": 13
         },
@@ -266,7 +266,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_ContestHall_EventScript_BeautyContestant2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 24,
             "y": 13
         },
@@ -279,7 +279,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_ContestHall_EventScript_BeautyContestant3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 26,
             "y": 13
         },
@@ -292,7 +292,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_ContestHall_EventScript_BeautyContestant4",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 28,
             "y": 13
         },
@@ -305,7 +305,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "LilycoveCity_ContestHall_EventScript_BeautyContestAudience1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 20,
             "y": 10
         },
@@ -318,7 +318,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "LilycoveCity_ContestHall_EventScript_BeautyContestAudience3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 30,
             "y": 11
         },
@@ -331,7 +331,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_ContestHall_EventScript_BeautyContestAudience2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 26,
             "y": 8
         },
@@ -344,7 +344,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_ContestHall_EventScript_SmartContestAudience3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 20
         },
@@ -357,7 +357,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_ContestHall_EventScript_CuteContestMC",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 36,
             "y": 22
         },
@@ -370,7 +370,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_ContestHall_EventScript_CuteContestJudge",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 39,
             "y": 22
         },
@@ -383,7 +383,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_ContestHall_EventScript_CuteContestant1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 34,
             "y": 25
         },
@@ -396,7 +396,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_ContestHall_EventScript_CuteContestant2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 36,
             "y": 25
         },
@@ -409,7 +409,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_ContestHall_EventScript_CuteContestant3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 38,
             "y": 25
         },
@@ -422,7 +422,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LilycoveCity_ContestHall_EventScript_CuteContestant4",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 40,
             "y": 25
         },
@@ -435,7 +435,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "LilycoveCity_ContestHall_EventScript_CuteContestAudience1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 32,
             "y": 23
         },
@@ -448,7 +448,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LilycoveCity_ContestHall_EventScript_CuteContestAudience3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 37,
             "y": 20
         },
@@ -461,7 +461,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "LilycoveCity_ContestHall_EventScript_CuteContestAudience2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 42,
             "y": 24
         },
@@ -474,7 +474,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "LilycoveCity_ContestHall_EventScript_Sailor",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 23,
             "y": 26
         }

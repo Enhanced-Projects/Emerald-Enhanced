@@ -23,7 +23,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
             "script": "MtPyre_3F_EventScript_William",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 1,
             "y": 4
         },
@@ -36,7 +36,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
             "script": "MtPyre_3F_EventScript_Kayla",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 11,
             "y": 4
         },
@@ -49,7 +49,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "MtPyre_3F_EventScript_ItemSuperRepel",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 0,
             "y": 7
         },
@@ -62,7 +62,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT_AND_RIGHT",
             "script": "MtPyre_3F_EventScript_Gabrielle",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 6,
             "y": 4
         },
@@ -75,7 +75,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "MP_Bannetite",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 0,
             "y": 11
         }

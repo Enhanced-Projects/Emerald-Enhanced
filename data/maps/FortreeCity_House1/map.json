@@ -23,7 +23,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "FortreeCity_House1_EventScript_Trader",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 1,
             "y": 3
         },
@@ -36,7 +36,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "FortreeCity_House1_EventScript_Zigzagoon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 2,
             "y": 3
         },
@@ -49,7 +49,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "FortreeCity_House1_EventScript_ExpertF",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 7,
             "y": 4
         }

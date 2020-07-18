@@ -103,7 +103,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NM8_HardStone",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 15,
             "y": 30
         },
@@ -116,7 +116,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NM8_LuxuryBall",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 41,
             "y": 32
         },
@@ -129,7 +129,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NM8_MaxRepel",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 3
         },
@@ -142,7 +142,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NM8_Earthquake",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 22,
             "y": 26
         },
@@ -155,7 +155,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NM8_PPMax",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 2,
             "y": 26
         }

@@ -39,7 +39,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "FortreeCity_Gym_EventScript_Winona",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 15,
             "y": 2
         },
@@ -52,7 +52,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "FortreeCity_Gym_EventScript_Jared",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 14
         },
@@ -65,7 +65,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "FortreeCity_Gym_EventScript_Flint",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 10,
             "y": 10
         },
@@ -78,7 +78,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "FortreeCity_Gym_EventScript_Ashley",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 5,
             "y": 17
         },
@@ -91,7 +91,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "FortreeCity_Gym_EventScript_Edwardo",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 9,
             "y": 8
         },
@@ -104,7 +104,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "FortreeCity_Gym_EventScript_GymGuide",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 15,
             "y": 21
         },
@@ -117,7 +117,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "FortreeCity_Gym_EventScript_Humberto",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 23
         },
@@ -130,7 +130,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "FortreeCity_Gym_EventScript_Darius",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 1,
             "y": 10
         },
@@ -143,7 +143,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 4
         },
@@ -156,7 +156,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 4
         },
@@ -169,7 +169,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 4
         },
@@ -182,7 +182,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 4
         },
@@ -195,7 +195,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 4
         }

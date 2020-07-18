@@ -95,7 +95,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "DesertUnderpass_EventScript_Fossil",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 127,
             "y": 3
         },
@@ -108,7 +108,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "DU_Tyranitarite",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 132,
             "y": 10
         }

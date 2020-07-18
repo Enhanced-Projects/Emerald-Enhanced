@@ -169,7 +169,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "SlateportCity_EventScript_FatMan",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 21,
             "y": 11
         },
@@ -182,7 +182,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
             "script": "SlateportCity_EventScript_Man1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 34,
             "y": 29
         },
@@ -195,7 +195,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "SlateportCity_EventScript_RichBoy",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 13
         },
@@ -208,7 +208,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "SlateportCity_EventScript_Woman1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 26,
             "y": 29
         },
@@ -221,7 +221,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SlateportCity_EventScript_Cook",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 43
         },
@@ -234,7 +234,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "SlateportCity_EventScript_OldWoman",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 20,
             "y": 37
         },
@@ -247,7 +247,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "SlateportCity_EventScript_Girl",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 42
         },
@@ -260,7 +260,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "SlateportCity_EventScript_Ty",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 29,
             "y": 13
         },
@@ -273,7 +273,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "SlateportCity_EventScript_Gabby",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 28,
             "y": 14
         },
@@ -286,7 +286,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SlateportCity_EventScript_CaptStern",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 28,
             "y": 13
         },
@@ -299,7 +299,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SlateportCity_EventScript_Sailor1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 37,
             "y": 41
         },
@@ -312,7 +312,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
             "script": "SlateportCity_EventScript_Sailor2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 28,
             "y": 46
         },
@@ -325,7 +325,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
             "script": "SlateportCity_EventScript_PokefanF",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 9,
             "y": 50
         },
@@ -338,7 +338,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "SlateportCity_EventScript_Man2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 46
         },
@@ -351,7 +351,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
             "script": "SlateportCity_EventScript_Maniac",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 24
         },
@@ -364,7 +364,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "SlateportCity_EventScript_Woman2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 15,
             "y": 31
         },
@@ -377,7 +377,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SlateportCity_EventScript_DecorClerk",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 38
         },
@@ -390,7 +390,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SlateportCity_EventScript_DollClerk",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 51
         },
@@ -403,7 +403,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SlateportCity_EventScript_Man3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 34,
             "y": 51
         },
@@ -416,7 +416,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SlateportCity_EventScript_EffortRibbonWoman",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 47
         },
@@ -429,7 +429,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SlateportCity_EventScript_PowerTMClerk",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 11,
             "y": 47
         },
@@ -442,7 +442,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SlateportCity_EventScript_EnergyGuru",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 47
         },
@@ -455,7 +455,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "SlateportCity_EventScript_BerryPowderClerk",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 11,
             "y": 37
         },
@@ -468,7 +468,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 10,
             "y": 12
         }

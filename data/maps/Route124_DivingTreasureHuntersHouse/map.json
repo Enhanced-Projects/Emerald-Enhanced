@@ -31,7 +31,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "Route124_DivingTreasureHuntersHouse_EventScript_TreasureHunter",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 4
         }

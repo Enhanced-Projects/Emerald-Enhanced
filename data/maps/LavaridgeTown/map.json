@@ -129,7 +129,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LavaridgeTown_EventScript_ExpertF",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 7
         },
@@ -142,7 +142,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LavaridgeTown_EventScript_ExpertM",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 1
         },
@@ -155,7 +155,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LavaridgeTown_EventScript_OldMan",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 8
         },
@@ -168,7 +168,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
             "script": "LavaridgeTown_EventScript_Twin",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 18,
             "y": 9
         },
@@ -181,7 +181,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
             "script": "LavaridgeTown_EventScript_HotSpringsOldWoman1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 4
         },
@@ -194,7 +194,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
             "script": "LavaridgeTown_EventScript_HotSpringsOldWoman2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 4
         },
@@ -207,7 +207,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 9,
             "y": 6
         },
@@ -220,7 +220,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 15
         },
@@ -233,7 +233,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LavaridgeTown_EventScript_EggWoman",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 7
         }

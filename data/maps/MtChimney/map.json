@@ -39,7 +39,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "MtChimney_EventScript_Archie",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 24,
             "y": 19
         },
@@ -52,7 +52,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "MtChimney_EventScript_Maxie",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 6
         },
@@ -65,7 +65,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "MtChimney_EventScript_Courtney",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 12,
             "y": 11
         },
@@ -78,7 +78,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "MtChimney_EventScript_BusyMagmaGrunt5",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 32,
             "y": 6
         },
@@ -91,7 +91,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "MtChimney_EventScript_BusyMagmaGrunt4",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 28,
             "y": 12
         },
@@ -104,7 +104,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "MtChimney_EventScript_BusyAquaGrunt2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 20,
             "y": 36
         },
@@ -117,7 +117,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "MtChimney_EventScript_BusyAquaGrunt1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 29,
             "y": 6
         },
@@ -130,7 +130,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "MtChimney_EventScript_BusyAquaGrunt3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 31,
             "y": 12
         },
@@ -143,7 +143,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "MtChimney_EventScript_LavaCookieLady",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 19,
             "y": 39
         },
@@ -156,7 +156,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "MtChimney_EventScript_BusyMagmaGrunt6",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 23,
             "y": 36
         },
@@ -169,7 +169,7 @@
             "movement_type": "MOVEMENT_TYPE_RUN_IN_PLACE_LEFT",
             "script": "MtChimney_EventScript_AquaPoochyena",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 23,
             "y": 19
         },
@@ -182,7 +182,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
             "script": "MtChimney_EventScript_MagmaPoochyena",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 23,
             "y": 18
         },
@@ -195,7 +195,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "MtChimney_EventScript_BusyMagmaGrunt2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 23,
             "y": 17
         },
@@ -208,7 +208,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
             "script": "MtChimney_EventScript_MagmaPoochyena",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 23,
             "y": 20
         },
@@ -221,7 +221,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
             "script": "MtChimney_EventScript_MagmaPoochyena",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 22,
             "y": 19
         },
@@ -234,7 +234,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "MtChimney_EventScript_BusyMagmaGrunt3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 23,
             "y": 21
         },
@@ -247,7 +247,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "MtChimney_EventScript_BusyMagmaGrunt1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 21,
             "y": 19
         },
@@ -260,7 +260,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
             "script": "MtChimney_EventScript_AquaPoochyena",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 30,
             "y": 12
         },
@@ -273,7 +273,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
             "script": "MtChimney_EventScript_MagmaPoochyena",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 29,
             "y": 12
         },
@@ -286,7 +286,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
             "script": "MtChimney_EventScript_AquaPoochyena",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 30,
             "y": 6
         },
@@ -299,7 +299,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
             "script": "MtChimney_EventScript_MagmaPoochyena",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 31,
             "y": 6
         },
@@ -312,7 +312,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "MtChimney_EventScript_Grunt2",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 9,
             "y": 16
         },
@@ -325,7 +325,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
             "script": "MtChimney_EventScript_AquaPoochyena",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 21,
             "y": 36
         },
@@ -338,7 +338,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
             "script": "MtChimney_EventScript_MagmaPoochyena",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 22,
             "y": 36
         },
@@ -351,7 +351,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_UP",
             "script": "MtChimney_EventScript_Shelby",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 16,
             "y": 18
         },
@@ -364,7 +364,7 @@
             "movement_type": "MOVEMENT_TYPE_JOG_IN_PLACE_LEFT",
             "script": "MtChimney_EventScript_Melissa",
             "trainer_sight_or_berry_tree_id": "6",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 14,
             "y": 7
         },
@@ -377,7 +377,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
             "script": "MtChimney_EventScript_Sheila",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 29,
             "y": 7
         },
@@ -390,7 +390,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
             "script": "MtChimney_EventScript_Shirley",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 27,
             "y": 17
         },
@@ -403,7 +403,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "MtChimney_EventScript_Grunt1",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 13,
             "y": 16
         },
@@ -416,7 +416,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "MtChimney_EventScript_Sawyer",
             "trainer_sight_or_berry_tree_id": "6",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 7,
             "y": 7
         },
@@ -429,7 +429,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "MC_Houndoomite",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 31,
             "y": 5
         }

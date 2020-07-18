@@ -71,7 +71,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "SootopolisCity_EventScript_Woman2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 47,
             "y": 33
         },
@@ -84,7 +84,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
             "script": "SootopolisCity_EventScript_Kiri",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 9,
             "y": 43
         },
@@ -97,7 +97,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SootopolisCity_EventScript_NinjaBoy",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 51,
             "y": 14
         },
@@ -110,7 +110,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "SootopolisCity_EventScript_Boy1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 43,
             "y": 26
         },
@@ -123,7 +123,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
             "script": "SootopolisCity_EventScript_Man",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 26,
             "y": 4
         },
@@ -136,7 +136,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
             "script": "SootopolisCity_EventScript_Woman1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 49,
             "y": 34
         },
@@ -149,7 +149,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SootopolisCity_EventScript_Maniac",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 17,
             "y": 44
         },
@@ -162,7 +162,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SootopolisCity_EventScript_Girl",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 42
         },
@@ -175,7 +175,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SootopolisCity_EventScript_BlackBelt",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 17,
             "y": 40
         },
@@ -188,7 +188,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SootopolisCity_EventScript_Boy2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 19,
             "y": 37
         }

@@ -40,7 +40,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "TrainerHill_Entrance_EventScript_Attendant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 1,
             "y": 8
         },
@@ -53,7 +53,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "TrainerHill_Entrance_EventScript_Nurse",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 7,
             "y": 9
         },
@@ -66,7 +66,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "TrainerHill_Entrance_EventScript_Clerk",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 9
         },
@@ -79,7 +79,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "TrainerHill_Entrance_EventScript_Girl",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 14
         },
@@ -92,7 +92,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "TrainerHill_Entrance_EventScript_Man",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 13
         },
@@ -105,7 +105,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 9
         }

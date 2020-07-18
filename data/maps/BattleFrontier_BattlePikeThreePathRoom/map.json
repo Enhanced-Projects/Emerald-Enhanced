@@ -104,7 +104,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "BattleFrontier_BattlePikeThreePathRoom_EventScript_Attendant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 10
         },
@@ -117,7 +117,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "BattleFrontier_BattlePikeThreePathRoom_EventScript_HintGiver",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 5
         }

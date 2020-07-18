@@ -125,7 +125,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "MeteorFalls_1F_1R_EventScript_ItemTM23",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 2,
             "y": 4
         },
@@ -138,7 +138,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "MeteorFalls_1F_1R_EventScript_ItemMoonStone",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 2,
             "y": 14
         },
@@ -151,7 +151,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "MeteorFalls_1F_1R_EventScript_ItemFullHeal",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 27,
             "y": 5
         },
@@ -164,7 +164,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "MeteorFalls_1F_1R_EventScript_ItemPPUP",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 26,
             "y": 32
         },
@@ -177,7 +177,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 20
         },
@@ -190,7 +190,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 21
         },
@@ -203,7 +203,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 20
         },
@@ -216,7 +216,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 21
         },
@@ -229,7 +229,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP_LEFT_AND_RIGHT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 23
         }

@@ -143,7 +143,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "LittlerootTown_ProfessorBirchsLab_EventScript_Aide",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 9,
             "y": 8
         },
@@ -156,7 +156,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LittlerootTown_ProfessorBirchsLab_EventScript_Birch",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 4
         },
@@ -169,7 +169,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LittlerootTown_ProfessorBirchsLab_EventScript_Rival",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 7,
             "y": 4
         },
@@ -182,7 +182,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LittlerootTown_ProfessorBirchsLab_EventScript_Cyndaquil",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 8
         },
@@ -195,7 +195,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LittlerootTown_ProfessorBirchsLab_EventScript_Totodile",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 8
         },
@@ -208,7 +208,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "LittlerootTown_ProfessorBirchsLab_EventScript_Chikorita",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 8
         }

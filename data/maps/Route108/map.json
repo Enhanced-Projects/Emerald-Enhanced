@@ -42,7 +42,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_LEFT_DOWN_RIGHT",
             "script": "Route108_EventScript_Jerome",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 52,
             "y": 13
         },
@@ -55,7 +55,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_UP",
             "script": "Route108_EventScript_Tara",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 35,
             "y": 12
         },
@@ -68,7 +68,7 @@
             "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
             "script": "Route108_EventScript_Matthew",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 13,
             "y": 13
         },
@@ -81,7 +81,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_UP_AND_RIGHT",
             "script": "Route108_EventScript_Missy",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 8,
             "y": 7
         },
@@ -94,7 +94,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Route108_EventScript_Carolina",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 41,
             "y": 5
         },
@@ -107,7 +107,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "Route108_EventScript_Cory",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 43,
             "y": 5
         },
@@ -120,7 +120,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Route108_EventScript_ItemStarPiece",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 42,
             "y": 4
         }

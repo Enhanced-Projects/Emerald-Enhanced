@@ -63,7 +63,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "VictoryRoad_B2F_EventScript_Vito",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 15,
             "y": 6
         },
@@ -76,7 +76,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "VictoryRoad_B2F_EventScript_Owen",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 43,
             "y": 14
         },
@@ -89,7 +89,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "VictoryRoad_B2F_EventScript_Caroline",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 2,
             "y": 17
         },
@@ -102,7 +102,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "VictoryRoad_B2F_EventScript_Julie",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 35,
             "y": 22
         },
@@ -115,7 +115,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "VictoryRoad_B2F_EventScript_ItemFullHeal",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 8
         },
@@ -128,7 +128,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "VictoryRoad_B2F_EventScript_Dianne",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 25,
             "y": 18
         },
@@ -141,7 +141,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "VictoryRoad_B2F_EventScript_Felix",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 25,
             "y": 21
         }

@@ -23,7 +23,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "LilycoveCity_House4_EventScript_Man1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 1,
             "y": 4
         },
@@ -36,7 +36,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "LilycoveCity_House4_EventScript_Man2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 7,
             "y": 4
         }

@@ -86,7 +86,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "BattleFrontier_BattlePikeRoomNormal_EventScript_NPC",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 4
         },
@@ -99,7 +99,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "BattleFrontier_BattlePikeRoomNormal_EventScript_StatusMon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 4
         }

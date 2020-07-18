@@ -135,7 +135,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "PBG_NEWGYMBATTLE",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 2
         },
@@ -148,7 +148,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "PetalburgCity_Gym_EventScript_Mary",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 94
         },
@@ -161,7 +161,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "PetalburgCity_Gym_EventScript_Randall",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 81
         },
@@ -174,7 +174,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "PetalburgCity_Gym_EventScript_Parker",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 42
         },
@@ -187,7 +187,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "PetalburgCity_Gym_EventScript_Alexia",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 55
         },
@@ -200,7 +200,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "PetalburgCity_Gym_EventScript_George",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 68
         },
@@ -213,7 +213,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "PetalburgCity_Gym_EventScript_Jody",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 16
         },
@@ -226,7 +226,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "PetalburgCity_Gym_EventScript_Berke",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 29
         },
@@ -239,7 +239,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "PetalburgCity_Gym_EventScript_GymGuide",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 2,
             "y": 112
         },
@@ -252,7 +252,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 7
         },
@@ -265,7 +265,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 7
         },
@@ -278,7 +278,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 7
         },
@@ -291,7 +291,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 7
         },
@@ -304,7 +304,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 7
         }
