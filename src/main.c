@@ -168,7 +168,7 @@ void AgbMain()
         }
 
         PlayTimeCounter_Update();
-        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 6875);
+        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 688);
         VarSet(VAR_RECYCLE_GOODS, 45454);
         FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
         mgba_open();
@@ -285,7 +285,7 @@ static void ReadKeys(void)
     gMain.heldKeys = gMain.heldKeysRaw;
 
     // Remap L to A if the L=A option is enabled.
-    if (gSaveBlock2Ptr->optionsButtonMode == 2)
+    if (gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
     {
         if (gMain.newKeys & L_BUTTON)
             gMain.newKeys |= A_BUTTON;

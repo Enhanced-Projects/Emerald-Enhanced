@@ -67,7 +67,6 @@
 #include "constants/battle_frontier.h"
 #include "constants/easy_chat.h"
 #include "constants/field_effects.h"
-#include "constants/flags.h"
 #include "constants/item_effects.h"
 #include "constants/items.h"
 #include "constants/maps.h"
@@ -1105,8 +1104,8 @@ static u8 GetPartyBoxPaletteFlags(u8 slot, u8 animNum)
         palFlags |= PARTY_PAL_SELECTED;
     if (GetMonData(&gPlayerParty[slot], MON_DATA_HP) == 0)
         palFlags |= PARTY_PAL_FAINTED;
-    if (PartyBoxPal_ParnterOrDisqualifiedInArena(slot) == TRUE)
-        palFlags |= PARTY_PAL_MULTI_ALT;
+    //if (PartyBoxPal_ParnterOrDisqualifiedInArena(slot) == TRUE)
+        //palFlags |= PARTY_PAL_MULTI_ALT;
     if (gPartyMenu.action == PARTY_ACTION_SWITCHING)
         palFlags |= PARTY_PAL_SWITCHING;
     if (gPartyMenu.action == PARTY_ACTION_SWITCH)
@@ -5819,7 +5818,7 @@ static u8 GetPartyMenuActionsTypeInBattle(struct Pokemon *mon)
     {
         if (gPartyMenu.action == PARTY_ACTION_SEND_OUT)
             return ACTIONS_SEND_OUT;
-        if (!(gBattleTypeFlags & BATTLE_TYPE_ARENA))
+        else
             return ACTIONS_SHIFT;
     }
     return ACTIONS_SUMMARY_ONLY;

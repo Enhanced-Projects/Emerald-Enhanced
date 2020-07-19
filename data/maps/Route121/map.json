@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": false,
+    "allow_cycling": true,
+    "allow_escaping": false,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -151,7 +151,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Route121_EventScript_Woman",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 29,
             "y": 14
         },
@@ -164,7 +164,7 @@
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
             "script": "BerryTreeScript",
             "trainer_sight_or_berry_tree_id": "47",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 2
         },
@@ -177,7 +177,7 @@
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
             "script": "BerryTreeScript",
             "trainer_sight_or_berry_tree_id": "48",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 15,
             "y": 2
         },
@@ -190,7 +190,7 @@
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
             "script": "BerryTreeScript",
             "trainer_sight_or_berry_tree_id": "49",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 2
         },
@@ -203,7 +203,7 @@
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
             "script": "BerryTreeScript",
             "trainer_sight_or_berry_tree_id": "50",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 17,
             "y": 2
         },
@@ -216,7 +216,7 @@
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
             "script": "BerryTreeScript",
             "trainer_sight_or_berry_tree_id": "51",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 64,
             "y": 14
         },
@@ -229,7 +229,7 @@
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
             "script": "BerryTreeScript",
             "trainer_sight_or_berry_tree_id": "52",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 65,
             "y": 14
         },
@@ -242,7 +242,7 @@
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
             "script": "BerryTreeScript",
             "trainer_sight_or_berry_tree_id": "53",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 66,
             "y": 14
         },
@@ -255,7 +255,7 @@
             "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
             "script": "BerryTreeScript",
             "trainer_sight_or_berry_tree_id": "54",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 67,
             "y": 14
         },
@@ -268,7 +268,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Route121_EventScript_Kate",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 39,
             "y": 9
         },
@@ -281,7 +281,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Route121_EventScript_Joy",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 40,
             "y": 9
         },
@@ -294,7 +294,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_CutTree",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 32,
             "y": 5
         },
@@ -307,7 +307,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_CutTree",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 65,
             "y": 4
         },
@@ -320,7 +320,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "Route121_EventScript_Vanessa",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 63,
             "y": 5
         },
@@ -333,7 +333,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "Route121_EventScript_Walter",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 55,
             "y": 8
         },
@@ -346,7 +346,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "Route121_EventScript_Tammy",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 11,
             "y": 11
         },
@@ -359,7 +359,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
             "script": "Route121_EventScript_Jessica",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 22,
             "y": 5
         },
@@ -372,7 +372,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Route121_EventScript_ItemCarbos",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 55,
             "y": 10
         },
@@ -385,7 +385,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_CutTree",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 26,
             "y": 12
         },
@@ -398,7 +398,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
             "script": "Route121_EventScript_Cale",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 11,
             "y": 6
         },
@@ -411,7 +411,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Route121_EventScript_Myles",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 59,
             "y": 8
         },
@@ -424,7 +424,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "Route121_EventScript_Pat",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 59,
             "y": 13
         },
@@ -437,7 +437,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
             "script": "Route121_EventScript_Marcel",
             "trainer_sight_or_berry_tree_id": "6",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 65,
             "y": 9
         },
@@ -450,7 +450,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
             "script": "Route121_EventScript_Cristin",
             "trainer_sight_or_berry_tree_id": "6",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 72,
             "y": 9
         },
@@ -463,7 +463,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Route121_EventScript_ItemRevive",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 60,
             "y": 10
         },
@@ -476,7 +476,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Route121_EventScript_ItemZinc",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 38,
             "y": 13
         }

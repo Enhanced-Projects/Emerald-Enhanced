@@ -39,17 +39,16 @@
 #include "text.h"
 #include "constants/event_bg.h"
 #include "constants/event_objects.h"
-#include "constants/flags.h"
 #include "constants/item_effects.h"
 #include "constants/items.h"
 #include "constants/songs.h"
-#include "constants/vars.h"
 
 extern u8 RyuTeleport[];
 extern u8 RyuUserModeEVMenu[];
 extern u8 RyuExpBattery[];
 extern u8 Ryu_Forecaster[];
 extern u8 Ryu_SoundTest[];
+extern u8 Ryu_AbilityCapsule[];
 //extern u8 EventScript_PC[];
 extern u8 Ryu_CantUsePcCharging[];
 
@@ -749,8 +748,9 @@ void ItemUseOutOfBattle_Medicine(u8 taskId)
 
 void ItemUseOutOfBattle_AbilityCapsule(u8 taskId)
 {
-    gItemUseCB = ItemUseCB_AbilityCapsule;
-    SetUpItemUseCallback(taskId);
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext2_Enable();
+    ScriptContext1_SetupScript(Ryu_AbilityCapsule);
 }
 
 void ItemUseOutOfBattle_ReduceEV(u8 taskId)

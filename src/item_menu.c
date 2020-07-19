@@ -230,6 +230,16 @@ static const u8 sContextMenuItems_ItemsPocket[] = {
     ITEMMENUACTION_TOSS,        ITEMMENUACTION_CANCEL
 };
 
+static const u8 sContextMenuItems_MedicinePocket[] = {
+    ITEMMENUACTION_USE,          ITEMMENUACTION_TOSS,
+    ITEMMENUACTION_DUMMY,        ITEMMENUACTION_CANCEL
+};
+
+static const u8 sContextMenuItems_ValuablesPocket[] = {
+    ITEMMENUACTION_GIVE,         ITEMMENUACTION_TOSS,
+    ITEMMENUACTION_DUMMY,        ITEMMENUACTION_CANCEL
+};
+
 static const u8 sContextMenuItems_KeyItemsPocket[] = {
     ITEMMENUACTION_USE,         ITEMMENUACTION_REGISTER,
     ITEMMENUACTION_DUMMY,       ITEMMENUACTION_CANCEL
@@ -241,8 +251,8 @@ static const u8 sContextMenuItems_BallsPocket[] = {
 };
 
 static const u8 sContextMenuItems_TmHmPocket[] = {
-    ITEMMENUACTION_USE,         ITEMMENUACTION_GIVE,
-    ITEMMENUACTION_DUMMY,       ITEMMENUACTION_CANCEL
+    ITEMMENUACTION_USE,         ITEMMENUACTION_CANCEL,
+    ITEMMENUACTION_DUMMY,       ITEMMENUACTION_DUMMY
 };
 
 static const u8 sContextMenuItems_BerriesPocket[] = {
@@ -1551,14 +1561,14 @@ void OpenContextMenu(u8 unused)
                             gBagMenu->contextMenuItemsBuffer[0] = ITEMMENUACTION_CHECK;
                         break;
                     case MEDICINE_POCKET:
-                        gBagMenu->contextMenuItemsPtr = &gBagMenu->contextMenuItemsBuffer[4];
-                        gBagMenu->contextMenuNumItems = 4;
-                        memcpy(&gBagMenu->contextMenuItemsBuffer[4], &sContextMenuItems_ItemsPocket, 4);
+                        gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
+                        gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_MedicinePocket);
+                        memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_MedicinePocket, sizeof(sContextMenuItems_MedicinePocket));
                         break;
                     case COLLECTIBLES_POCKET:
-                        gBagMenu->contextMenuItemsPtr = &gBagMenu->contextMenuItemsBuffer[4];
-                        gBagMenu->contextMenuNumItems = 4;
-                        memcpy(&gBagMenu->contextMenuItemsBuffer[4], &sContextMenuItems_ItemsPocket, 4);
+                        gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
+                        gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ValuablesPocket);
+                        memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_ValuablesPocket, sizeof(sContextMenuItems_ValuablesPocket));
                         break;
                     case KEYITEMS_POCKET:
                         gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
@@ -1798,7 +1808,7 @@ void Task_ChooseHowManyToToss(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&tItemCount, data[2]) == TRUE)
     {
-        PrintItemDepositAmount(gBagMenu->unk817, tItemCount);
+        PrintItemDepositAmount(gBagMenu->windowPointers[7], tItemCount);
     }
     else if (gMain.newKeys & A_BUTTON)
     {
@@ -2072,7 +2082,7 @@ void Task_BuyHowManyDialogueHandleInput(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&tItemCount, data[2]) == TRUE)
     {
-        PrintItemSoldAmount(gBagMenu->unk818, tItemCount, (ItemId_GetPrice(gSpecialVar_ItemId) / 2) * tItemCount);
+        PrintItemSoldAmount(gBagMenu->windowPointers[8], tItemCount, (ItemId_GetPrice(gSpecialVar_ItemId) / 2) * tItemCount);
     }
     else if (gMain.newKeys & A_BUTTON)
     {
@@ -2116,7 +2126,7 @@ void sub_81AD8C8(u8 taskId)
     LoadBagItemListBuffers(gBagPositionStruct.pocket);
     data[0] = ListMenuInit(&gMultiuseListMenuTemplate, *scrollPos, *cursorPos);
     BagMenu_PrintCursor_(data[0], 2);
-    PrintMoneyAmountInMoneyBox(gBagMenu->unk819, GetMoney(&gSaveBlock1Ptr->money), 0);
+    PrintMoneyAmountInMoneyBox(gBagMenu->windowPointers[9], GetMoney(&gSaveBlock1Ptr->money), 0);
     gTasks[taskId].func = sub_81AD9C0;
 }
 
@@ -2156,7 +2166,7 @@ void sub_81ADA7C(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&tItemCount, data[2]) == TRUE)
     {
-        PrintItemDepositAmount(gBagMenu->unk817, tItemCount);
+        PrintItemDepositAmount(gBagMenu->windowPointers[7], tItemCount);
     }
     else if (gMain.newKeys & A_BUTTON)
     {

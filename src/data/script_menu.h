@@ -775,13 +775,10 @@ static const struct MenuAction MultichoiceList_TagMatchType[] =
 
 static const struct MenuAction MultichoiceList_114[] =
 {
-    {gText_Date1},
-    {gText_Date2},
-    {gText_Date3},
-    {gText_DateCancel},
+    {gText_Exit},
 };
 
-static const struct MenuAction MultichoiceList_115[] =
+static const struct MenuAction MultichoiceList_RyuDebugMulti[] =
 {
     {gText_PasscodeMenu},
     {gText_Utilities},
@@ -815,23 +812,17 @@ static const struct MenuAction MultichoiceList_116[] =
 
 static const struct MenuAction MultichoiceList_117[] =
 {
-    {gText_NoRelationship},
-    {gText_Stage1},
-    {gText_Stage2},
-    {gText_Stage3},
-    {gText_Stage4},
-    {gText_Stage5},
-    {gText_RelCancel},
+    {gText_Exit},
 };
 
-static const struct MenuAction MultichoiceList_118[] =
+static const struct MenuAction MultichoiceList_118[] =//party slot selection menu, contains only buffers, game will crash if drawn without filing first 6 buffers.
 {
-    {gText_PartySlot1},
-    {gText_PartySlot2},
-    {gText_PartySlot3},
-    {gText_PartySlot4},
-    {gText_PartySlot5},
-    {gText_PartySlot6},
+    {gText_RyuBufferedString1},
+    {gText_RyuBufferedString2},
+    {gText_RyuBufferedString3},
+    {gText_RyuBufferedString4},
+    {gText_RyuBufferedString5},
+    {gText_RyuBufferedString6},
     {gText_PartySlotCancel},
 };
 
@@ -1340,7 +1331,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_UNUSED_DATE]                = MULTICHOICE(MultichoiceList_114),
-    [MULTI_DEV_MENU_MAIN]              = MULTICHOICE(MultichoiceList_115),
+    [MULTI_DEV_MENU_MAIN]              = MULTICHOICE(MultichoiceList_RyuDebugMulti),
     [MULTI_DEV_EV_MENU]                = MULTICHOICE(MultichoiceList_116),
     [MULTI_UNUSED_REL_MENU]            = MULTICHOICE(MultichoiceList_117),
     [MULTI_SELECT_PARTY_SLOT]          = MULTICHOICE(MultichoiceList_118),

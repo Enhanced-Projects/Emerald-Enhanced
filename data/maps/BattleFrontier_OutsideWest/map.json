@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": false,
+    "allow_cycling": true,
+    "allow_escaping": false,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -86,7 +86,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "BattleFrontier_OutsideWest_EventScript_Boy1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 26,
             "y": 38
         },
@@ -99,7 +99,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 20,
             "y": 70
         },
@@ -112,7 +112,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "BattleFrontier_OutsideWest_EventScript_FerryAttendant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 19,
             "y": 68
         },
@@ -125,7 +125,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
             "script": "BattleFrontier_OutsideWest_EventScript_ExpertM",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 26,
             "y": 20
         },
@@ -138,7 +138,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "BattleFrontier_OutsideWest_EventScript_Man1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 27,
             "y": 30
         },
@@ -151,7 +151,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "BattleFrontier_OutsideWest_EventScript_Woman1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 33,
             "y": 41
         },
@@ -164,7 +164,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
             "script": "BattleFrontier_OutsideWest_EventScript_FatMan1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 28,
             "y": 43
         },
@@ -177,7 +177,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "BattleFrontier_OutsideWest_EventScript_Gentleman",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 17,
             "y": 20
         },
@@ -190,7 +190,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "BattleFrontier_OutsideWest_EventScript_Maniac1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 44
         },
@@ -203,7 +203,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "BattleFrontier_OutsideWest_EventScript_Maniac2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 44
         },
@@ -216,7 +216,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
             "script": "BattleFrontier_OutsideWest_EventScript_Man2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 23,
             "y": 47
         },
@@ -229,7 +229,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "BattleFrontier_OutsideWest_EventScript_Girl",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 38,
             "y": 27
         },
@@ -242,7 +242,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
             "script": "BattleFrontier_OutsideWest_EventScript_Woman2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 45,
             "y": 18
         },
@@ -255,7 +255,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
             "script": "BattleFrontier_OutsideWest_EventScript_Camper",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 9,
             "y": 47
         },
@@ -268,7 +268,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "BattleFrontier_OutsideWest_EventScript_Lass",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 35,
             "y": 5
         },
@@ -281,7 +281,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "BattleFrontier_OutsideWest_EventScript_Man3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 11,
             "y": 66
         },
@@ -294,7 +294,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "BattleFrontier_OutsideWest_EventScript_Fisherman1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 31,
             "y": 31
         },
@@ -307,7 +307,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
             "script": "BattleFrontier_OutsideWest_EventScript_Fisherman2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 42,
             "y": 48
         },
@@ -320,7 +320,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
             "script": "BattleFrontier_OutsideWest_EventScript_FatMan2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 38,
             "y": 22
         },
@@ -333,7 +333,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "BattleFrontier_OutsideWest_EventScript_Woman3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 9
         },
@@ -346,7 +346,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "BattleFrontier_OutsideWest_EventScript_Boy2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 10
         },
@@ -359,7 +359,7 @@
             "movement_type": "MOVEMENT_TYPE_ROTATE_COUNTERCLOCKWISE",
             "script": "BattleFrontier_OutsideWest_EventScript_OldMan",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 11,
             "y": 10
         },
@@ -372,7 +372,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "BattleFrontier_OutsideWest_EventScript_Man4",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 5
         },
@@ -385,7 +385,7 @@
             "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
             "script": "BattleFrontier_OutsideWest_EventScript_PokefanF",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 26
         }

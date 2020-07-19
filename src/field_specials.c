@@ -65,7 +65,6 @@
 #include "constants/species.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
-#include "constants/vars.h"
 #include "constants/battle_frontier.h"
 #include "constants/weather.h"
 #include "constants/metatile_labels.h"
@@ -6151,3 +6150,4 @@ void RyuTestDebug(void)
     u8 gTextBuffer1[] = _("Test Debug Error Message");
     RyuPrintDebugMessage(0, gTextBuffer1);
 }
+

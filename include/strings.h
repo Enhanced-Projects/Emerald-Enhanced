@@ -3273,4 +3273,11 @@ extern const u8 gText_RyuFrontierStarter3_7[];
 extern const u8 gText_RyuFrontierStarter_Next[];
 extern const u8 gText_RyuFrontierStarter_Prev[];
 
+extern const u8 gText_RyuBufferedString1[];
+extern const u8 gText_RyuBufferedString2[];
+extern const u8 gText_RyuBufferedString3[];
+extern const u8 gText_RyuBufferedString4[];
+extern const u8 gText_RyuBufferedString5[];
+extern const u8 gText_RyuBufferedString6[];
+
 #endif // GUARD_STRINGS_H

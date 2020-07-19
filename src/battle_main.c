@@ -102,7 +102,7 @@ static void SpriteCb_WildMonShowHealthbox(struct Sprite *sprite);
 static void SpriteCb_WildMonAnimate(struct Sprite *sprite);
 static void sub_80398D0(struct Sprite *sprite);
 static void SpriteCB_AnimFaintOpponent(struct Sprite *sprite);
-static void sub_8039AF4(struct Sprite *sprite);
+static void SpriteCb_BlinkVisible(struct Sprite *sprite);
 static void SpriteCallbackDummy_3(struct Sprite *sprite);
 static void oac_poke_ally_(struct Sprite *sprite);
 static void SpecialStatusesClear(void);
@@ -2732,31 +2732,31 @@ static void SpriteCB_AnimFaintOpponent(struct Sprite *sprite)
     }
 }
 
-void sub_8039AD8(struct Sprite *sprite)
+// Used when selecting a move, which can hit multiple targets, in double battles.
+void SpriteCb_ShowAsMoveTarget(struct Sprite *sprite)
 {
     sprite->data[3] = 8;
     sprite->data[4] = sprite->invisible;
-    sprite->callback = sub_8039AF4;
+    sprite->callback = SpriteCb_BlinkVisible;
 }
 
-static void sub_8039AF4(struct Sprite *sprite)
+static void SpriteCb_BlinkVisible(struct Sprite *sprite)
 {
-    sprite->data[3]--;
-    if (sprite->data[3] == 0)
+    if (--sprite->data[3] == 0)
     {
         sprite->invisible ^= 1;
         sprite->data[3] = 8;
     }
 }
 
-void sub_8039B2C(struct Sprite *sprite)
+void SpriteCb_HideAsMoveTarget(struct Sprite *sprite)
 {
     sprite->invisible = sprite->data[4];
     sprite->data[4] = FALSE;
     sprite->callback = SpriteCallbackDummy_2;
 }
 
-void sub_8039B58(struct Sprite *sprite)
+void SpriteCb_OpponentMonFromBall(struct Sprite *sprite)
 {
     if (sprite->affineAnimEnded)
     {
@@ -2900,7 +2900,7 @@ static void SpriteCB_BounceEffect(struct Sprite *sprite)
 #undef sBouncerSpriteId
 #undef sWhich
 
-void sub_8039E44(struct Sprite *sprite)
+void SpriteCb_PlayerMonFromBall(struct Sprite *sprite)
 {
     if (sprite->affineAnimEnded)
         BattleAnimateBackSprite(sprite, sprite->sSpeciesId);
@@ -3336,8 +3336,6 @@ static void DoBattleIntro(void)
                 break;
             }
 
-            if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-                BattleArena_InitPoints();
         }
 
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
@@ -3620,11 +3618,6 @@ static void TryDoEventsBeforeFirstTurn(void)
 
     gRandomTurnNumber = Random();
 
-    if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-    {
-        StopCryAndClearCrySongs();
-        BattleScriptExecute(BattleScript_ArenaTurnBeginning);
-    }
 }
 
 static void HandleEndTurn_ContinueBattle(void)
@@ -3712,8 +3705,6 @@ void BattleTurnPassed(void)
 
     if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
         BattleScriptExecute(BattleScript_82DB881);
-    else if (gBattleTypeFlags & BATTLE_TYPE_ARENA && gBattleStruct->arenaTurnCounter == 0)
-        BattleScriptExecute(BattleScript_ArenaTurnBeginning);
     else if (ShouldDoTrainerSlide(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), gTrainerBattleOpponent_A, TRAINER_SLIDE_LAST_LOW_HP))
         BattleScriptExecute(BattleScript_TrainerSlideMsgEnd2);
 }
@@ -3932,8 +3923,7 @@ static void HandleTurnActionSelectionState(void)
                     break;
                 case B_ACTION_SWITCH:
                     *(gBattleStruct->field_58 + gActiveBattler) = gBattlerPartyIndexes[gActiveBattler];
-                    if (gBattleTypeFlags & BATTLE_TYPE_ARENA
-                        || !CanBattlerEscape(gActiveBattler))
+                    if (!(CanBattlerEscape(gActiveBattler)))
                     {
                         BtlController_EmitChoosePokemon(0, PARTY_ACTION_CANT_SWITCH, PARTY_SIZE, ABILITY_NONE, gBattleStruct->field_60[gActiveBattler]);
                     }
@@ -5430,10 +5420,6 @@ static void HandleAction_UseMove(void)
     {
         gBattlescriptCurrInstr = gBattleScriptsForMoveEffects[gBattleMoves[gCurrentMove].effect];
     }
-
-    if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-        BattleArena_AddMindPoints(gBattlerAttacker);
-
     // Record HP of each battler
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
         gBattleStruct->hpBefore[i] = gBattleMons[i].hp;
@@ -5469,7 +5455,7 @@ static void HandleAction_UseItem(void)
     ClearFuryCutterDestinyBondGrudge(gBattlerAttacker);
     gLastUsedItem = gBattleResources->bufferB[gBattlerAttacker][1] | (gBattleResources->bufferB[gBattlerAttacker][2] << 8);
 
-    if (gLastUsedItem <= ITEM_PREMIER_BALL) // is ball
+    if (gLastUsedItem <= LAST_BALL) // is ball
     {
         gBattlescriptCurrInstr = gBattlescriptsForBallThrow[gLastUsedItem];
     }

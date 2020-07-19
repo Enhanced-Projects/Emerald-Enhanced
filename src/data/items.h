@@ -1441,7 +1441,7 @@ const struct Item gItems[] =
         .price = 5000,
         .holdEffectParam = 0,
         .description = sAbilityCapsuleDesc,
-        .pocket = POCKET_COLLECTIBLES,
+        .pocket = POCKET_MEDICINE,
         .fieldUseFunc = ItemUseOutOfBattle_AbilityCapsule,
         .secondaryId = 0,
     },

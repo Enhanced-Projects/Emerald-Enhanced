@@ -273,6 +273,7 @@
 #define VAR_UNUSED_0x40FF                    0x40FF // Unused Var
 
 #define VARS_END                             0x40FF
+#define VARS_COUNT                           (VARS_END - VARS_START + 1)
 
 #define SPECIAL_VARS_START            0x8000
 // special vars

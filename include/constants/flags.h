@@ -1339,7 +1339,7 @@
 #define FLAG_DEFEATED_ELITE_4_GLACIA                                0x4FD
 #define FLAG_DEFEATED_ELITE_4_DRAKE                                 0x4FE
 
-#define FLAG_UNUSED_0x4FF                                           0x4FF // Unused Flag
+#define FLAG_RYU_INVERSE_BATTLE                                     0x4FF // Unused Flag
 
 // Trainer Flags
 // Trainer flags occupy 0x500 - 0x85F, the last 9 of which are unused
@@ -1575,7 +1575,9 @@
 #define FLAG_UNUSED_0x91F                           (SYSTEM_FLAGS + 0xBF) // Unused Flag
 
 // Daily Flags
-#define DAILY_FLAGS_START                           0x920
+// These flags are cleared once per day
+// The start and end are byte-aligned because the flags are cleared in byte increments
+#define DAILY_FLAGS_START                           (FLAG_UNUSED_0x91F + (8 - FLAG_UNUSED_0x91F % 8))
 #define FLAG_UNUSED_0x920                           (DAILY_FLAGS_START + 0x0)  // Unused Flag
 #define FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY     (DAILY_FLAGS_START + 0x1)
 #define FLAG_DAILY_SECRET_BASE                      (DAILY_FLAGS_START + 0x2)
@@ -1642,7 +1644,9 @@
 #define FLAG_UNUSED_0x95D                           (DAILY_FLAGS_START + 0x3D) // Unused Flag
 #define FLAG_UNUSED_0x95E                           (DAILY_FLAGS_START + 0x3E) // Unused Flag
 #define FLAG_UNUSED_0x95F                           (DAILY_FLAGS_START + 0x3F) // Unused Flag
-#define DAILY_FLAGS_END                             FLAG_UNUSED_0x95F
+#define DAILY_FLAGS_END                             (FLAG_UNUSED_0x95F + (7 - FLAG_UNUSED_0x95F % 8))
+
+#define FLAGS_COUNT (DAILY_FLAGS_END + 1)
 
 // Special Flags (Stored in EWRAM (gSpecialFlags), not in the SaveBlock)
 #define SPECIAL_FLAGS_START                     0x4000

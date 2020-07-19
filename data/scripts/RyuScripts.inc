@@ -3,6 +3,15 @@
 
 @@=================================================================================================EXP BATTERY
 
+RyuBufferPartyMonNames::
+	bufferpartymonnick 0, 0
+	bufferpartymonnick 1, 1
+	bufferpartymonnick 2, 2
+	bufferpartymonnick 3, 3
+	bufferpartymonnick 4, 4
+	bufferpartymonnick 5, 5
+	return
+
 RyuExpBattery::
 	lock
 	special RyuDevCheck
@@ -17,6 +26,7 @@ RyuExpBatteryContd::
 	msgbox RyuExpBatteryUseOnPokemon MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RS_CancelPartySlot
+	call RyuBufferPartyMonNames
 	goto RS_SelectSlot
 
 RyuExpBatteryDevModeMsg::
@@ -30,7 +40,7 @@ RyuExpBatteryDevMode::
 	goto RyuExpBatteryContd
 
 RS_SelectSlot::
-	multichoicedefault 0, 0, 118, 0, 0
+	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 0, 0
 	switch VAR_RESULT
 	case 0, RS_Slot1Selected
 	case 1, RS_Slot2Selected
@@ -100,6 +110,7 @@ RS_Slot6Selected::
 	
 RS_SlotSelectEmpty::
 	msgbox RS_SelectAnotherSlot MSGBOX_DEFAULT
+	call RyuBufferPartyMonNames
 	goto RS_SelectSlot
 
 RS_SelectAnotherSlot:
@@ -1616,3 +1627,88 @@ BrendanMegaReward:
 
 LeafMegaReward:
 	.string "Lana:{COLOR LIGHT_RED}{SHADOW RED} Hey... Um... Take this...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(She's beet red in the face.)$"
+
+@==================================================================================================Ability Capsule
+
+Ryu_AbilityCapsule::
+	call RyuBufferPartyMonNames
+	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 0, 6
+	switch VAR_RESULT
+	case 0, RyuAC_Slot1
+	case 1, RyuAC_Slot2
+	case 2, RyuAC_Slot3
+	case 3, RyuAC_Slot4
+	case 4, RyuAC_Slot5
+	case 5, RyuAC_Slot6
+	case 6, RyuAC_Cancel
+
+RyuAC_Slot1::
+	setvar VAR_TEMP_8, 0
+	random 1
+	setvar VAR_TEMP_7, VAR_RESULT
+	special SetMonAbility
+	removeitem ITEM_ABILITY_CAPSULE, 1
+	msgbox RyuAC_SuccessMsg
+	release
+	end
+
+RyuAC_Slot2::
+	setvar VAR_TEMP_8, 1
+	random 1
+	setvar VAR_TEMP_7, VAR_RESULT
+	special SetMonAbility
+	removeitem ITEM_ABILITY_CAPSULE, 1
+	msgbox RyuAC_SuccessMsg
+	release
+	end
+
+RyuAC_Slot3::
+	setvar VAR_TEMP_8, 2
+	random 1
+	setvar VAR_TEMP_7, VAR_RESULT
+	special SetMonAbility
+	removeitem ITEM_ABILITY_CAPSULE, 1
+	msgbox RyuAC_SuccessMsg
+	release
+	end
+
+RyuAC_Slot4::
+	setvar VAR_TEMP_8, 3
+	random 1
+	setvar VAR_TEMP_7, VAR_RESULT
+	special SetMonAbility
+	removeitem ITEM_ABILITY_CAPSULE, 1
+	msgbox RyuAC_SuccessMsg
+	release
+	end
+
+RyuAC_Slot5::
+	setvar VAR_TEMP_8, 4
+	random 1
+	setvar VAR_TEMP_7, VAR_RESULT
+	special SetMonAbility
+	removeitem ITEM_ABILITY_CAPSULE, 1
+	msgbox RyuAC_SuccessMsg
+	release
+	end
+
+RyuAC_Slot6::
+	setvar VAR_TEMP_8, 5
+	random 1
+	setvar VAR_TEMP_7, VAR_RESULT
+	special SetMonAbility
+	removeitem ITEM_ABILITY_CAPSULE, 1
+	msgbox RyuAC_SuccessMsg
+	release
+	end
+
+RyuAC_Cancel::
+	msgbox RyuAC_CancelMsg
+	release
+	end
+
+RyuAC_SuccessMsg::
+	.string "The mon's ability was successfully\nchanged.$"
+
+RyuAC_CancelMsg::
+	.string "Leaving menu without changes.$"

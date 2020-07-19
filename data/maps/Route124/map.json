@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": false,
+    "allow_cycling": true,
+    "allow_escaping": false,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -57,7 +57,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Route124_EventScript_Spencer",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 34,
             "y": 25
         },
@@ -70,7 +70,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
             "script": "Route124_EventScript_Roland",
             "trainer_sight_or_berry_tree_id": "7",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 61,
             "y": 74
         },
@@ -83,7 +83,7 @@
             "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
             "script": "Route124_EventScript_Jenny",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 49,
             "y": 45
         },
@@ -96,7 +96,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
             "script": "Route124_EventScript_Grace",
             "trainer_sight_or_berry_tree_id": "5",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 7,
             "y": 23
         },
@@ -109,7 +109,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT",
             "script": "Route124_EventScript_Chad",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 58,
             "y": 58
         },
@@ -122,7 +122,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Route124_EventScript_ItemRedShard",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 28,
             "y": 12
         },
@@ -135,7 +135,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Route124_EventScript_ItemBlueShard",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 31,
             "y": 53
         },
@@ -148,7 +148,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Route124_EventScript_ItemYellowShard",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 58,
             "y": 11
         },
@@ -161,7 +161,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Route124_EventScript_Lila",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 18,
             "y": 44
         },
@@ -174,7 +174,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Route124_EventScript_Roy",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 17,
             "y": 44
         },
@@ -187,7 +187,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "Route124_EventScript_Declan",
             "trainer_sight_or_berry_tree_id": "5",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 7,
             "y": 29
         },
@@ -200,7 +200,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
             "script": "Route124_EventScript_Isabella",
             "trainer_sight_or_berry_tree_id": "7",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 69,
             "y": 74
         }

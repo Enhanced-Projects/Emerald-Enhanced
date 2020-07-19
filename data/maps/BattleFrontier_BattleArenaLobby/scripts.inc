@@ -32,6 +32,7 @@ BattleFrontier_BattleArenaLobby_EventScript_QuitWithoutSaving:: @ 8255C88
 	arena_set ARENA_DATA_WIN_STREAK_ACTIVE, FALSE
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, 0
 	setvar VAR_TEMP_0, 255
+	clearflag FLAG_RYU_INVERSE_BATTLE
 	releaseall
 	end
 
@@ -41,6 +42,7 @@ BattleFrontier_BattleArenaLobby_EventScript_WonChallenge:: @ 8255CCF
 	compare VAR_RESULT, TRUE
 	goto_if_eq BattleFrontier_BattleArenaLobby_EventScript_DefeatedTycoon
 	msgbox BattleFrontier_BattleArenaLobby_Text_CongratsOnSevenWins, MSGBOX_DEFAULT
+	clearflag FLAG_RYU_INVERSE_BATTLE
 	goto BattleFrontier_BattleArenaLobby_EventScript_GiveBattlePoints
 
 BattleFrontier_BattleArenaLobby_EventScript_DefeatedTycoon:: @ 8255CF0
@@ -67,6 +69,7 @@ BattleFrontier_BattleArenaLobby_EventScript_LostChallenge:: @ 8255D2B
 	msgbox BattleFrontier_BattleArenaLobby_Text_AwaitAnotherChallenge2, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_TEMP_0, 255
+	clearflag FLAG_RYU_INVERSE_BATTLE
 	releaseall
 	end
 
@@ -149,6 +152,7 @@ BattleFrontier_BattleArenaLobby_EventScript_TryEnterChallenge:: @ 8255E47
 
 BattleFrontier_BattleArenaLobby_EventScript_SaveBeforeChallenge:: @ 8255EE8
 	setvar VAR_TEMP_0, 0
+	setflag FLAG_RYU_INVERSE_BATTLE
 	frontier_set FRONTIER_DATA_SELECTED_MON_ORDER
 	arena_init
 	arena_set ARENA_DATA_WIN_STREAK_ACTIVE, TRUE
@@ -166,6 +170,7 @@ BattleFrontier_BattleArenaLobby_EventScript_EnterChallenge:: @ 8255F54
 	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	msgbox BattleFrontier_BattleArenaLobby_Text_GuideYouToArena, MSGBOX_DEFAULT
 	closemessage
+	setflag FLAG_RYU_INVERSE_BATTLE
 	frontier_get FRONTIER_DATA_LVL_MODE
 	compare VAR_RESULT, FRONTIER_LVL_50
 	call_if_eq BattleFrontier_BattleArenaLobby_EventScript_WalkToDoorLv50
@@ -321,37 +326,14 @@ BattleFrontier_BattleArenaLobby_EventScript_RulesBoard:: @ 82560CA
 	end
 
 BattleFrontier_BattleArenaLobby_EventScript_ReadRulesBoard:: @ 82560D9
-	message BattleFrontier_BattleArenaLobby_Text_ReadWhichHeading
-	waitmessage
-	multichoice 17, 2, MULTI_BATTLE_ARENA_RULES, 0
-	switch VAR_RESULT
-	case 0, BattleFrontier_BattleArenaLobby_EventScript_BattleRules
-	case 1, BattleFrontier_BattleArenaLobby_EventScript_MindRules
-	case 2, BattleFrontier_BattleArenaLobby_EventScript_SkillRules
-	case 3, BattleFrontier_BattleArenaLobby_EventScript_BodyRules
-	case 4, BattleFrontier_BattleArenaLobby_EventScript_ExitRules
-	case MULTI_B_PRESSED, BattleFrontier_BattleArenaLobby_EventScript_ExitRules
+	goto BattleFrontier_BattleArenaLobby_EventScript_BattleRules
 	end
 
 BattleFrontier_BattleArenaLobby_EventScript_BattleRules:: @ 825612C
 	msgbox BattleFrontier_BattleArenaLobby_Text_ExplainBattleRules, MSGBOX_DEFAULT
-	goto BattleFrontier_BattleArenaLobby_EventScript_ReadRulesBoard
+	goto BattleFrontier_BattleArenaLobby_EventScript_ExitRules
 	end
 
-BattleFrontier_BattleArenaLobby_EventScript_MindRules:: @ 825613A
-	msgbox BattleFrontier_BattleArenaLobby_Text_ExplainMindRules, MSGBOX_DEFAULT
-	goto BattleFrontier_BattleArenaLobby_EventScript_ReadRulesBoard
-	end
-
-BattleFrontier_BattleArenaLobby_EventScript_SkillRules:: @ 8256148
-	msgbox BattleFrontier_BattleArenaLobby_Text_ExplainSkillRules, MSGBOX_DEFAULT
-	goto BattleFrontier_BattleArenaLobby_EventScript_ReadRulesBoard
-	end
-
-BattleFrontier_BattleArenaLobby_EventScript_BodyRules:: @ 8256156
-	msgbox BattleFrontier_BattleArenaLobby_Text_ExplainBodyRules, MSGBOX_DEFAULT
-	goto BattleFrontier_BattleArenaLobby_EventScript_ReadRulesBoard
-	end
 
 BattleFrontier_BattleArenaLobby_EventScript_ExitRules:: @ 8256164
 	releaseall
@@ -361,7 +343,7 @@ BattleFrontier_BattleArenaLobby_Text_WelcomeToBattleArena: @ 8256166
 	.string "Where the battling spirit of Trainers\n"
 	.string "is put to the test!\p"
 	.string "I welcome you to the Battle Arena!\p"
-	.string "I am your guide to the Set KO Tourney!$"
+	.string "I am the guide to Inverse Battle!$"
 
 BattleFrontier_BattleArenaLobby_Text_WishToTakeChallenge: @ 82561EA
 	.string "Now, do you wish to take\n"
@@ -373,17 +355,14 @@ BattleFrontier_BattleArenaLobby_Text_AwaitAnotherChallenge: @ 825621F
 
 BattleFrontier_BattleArenaLobby_Text_ExplainChallenge: @ 825624C
 	.string "In the Battle Arena, we undertake\n"
-	.string "the Set KO Tourney.\p"
+	.string "Inverse Battles.\p"
 	.string "All participants enter with a team of\n"
 	.string "three Pokémon.\p"
-	.string "The three Pokémon must be lined up in\n"
-	.string "the order in which they are to appear.\p"
-	.string "During battle, the Pokémon will appear\n"
-	.string "one at a time in the preset order.\p"
-	.string "Once a Pokémon enters battle, it must\n"
-	.string "remain out until the match is decided.\p"
-	.string "If a match remains undecided in\n"
-	.string "three turns, it goes to judging.\p"
+	.string "All type matchups in battle are\n"
+	.string "reversed! Things that used to\p"
+	.string "be super effective will now do\n"
+	.string "half damage!\p"
+	.string "The opposite is also true.\p"
 	.string "If you wish to interrupt your challenge,\n"
 	.string "please save the game.\p"
 	.string "If you don't save, you will not be able\n"
@@ -393,8 +372,8 @@ BattleFrontier_BattleArenaLobby_Text_ExplainChallenge: @ 825624C
 	.string "we will present you with Battle Points.$"
 
 BattleFrontier_BattleArenaLobby_Text_OkayToSave: @ 82564CE
-	.string "Before showing you to the BATTLE\n"
-	.string "ARENA, you must save. Is that okay?$"
+	.string "Before showing you to the Battle\n"
+	.string "Arena, you must save. Is that okay?$"
 
 BattleFrontier_BattleArenaLobby_Text_WhichLevelMode: @ 8256513
 	.string "The Battle Arena offers two levels\n"
@@ -411,9 +390,6 @@ BattleFrontier_BattleArenaLobby_Text_NotEnoughValidMonsLvOpen: @ 82565A5
 	.string "required for entry.\p"
 	.string "To qualify, you must bring three\n"
 	.string "different kinds of Pokémon.\p"
-	.string "They also must not hold the same\n"
-	.string "kinds of items.\p"
-	.string "EGGS{STR_VAR_1} ineligible.\p"
 	.string "When you have made your preparations,\n"
 	.string "please do return.$"
 
@@ -425,9 +401,6 @@ BattleFrontier_BattleArenaLobby_Text_NotEnoughValidMonsLv50: @ 82566A8
 	.string "different kinds of Pokémon.\p"
 	.string "The three different Pokémon\n"
 	.string "must all be Level 50 or lower.\p"
-	.string "They also must not hold the same\n"
-	.string "kinds of items.\p"
-	.string "EGGS{STR_VAR_1} ineligible.\p"
 	.string "When you have made your preparations,\n"
 	.string "please do return.$"
 
@@ -453,23 +426,6 @@ BattleFrontier_BattleArenaLobby_Text_RecordAchievement: @ 8256931
 	.string "Your achievement will be recorded.\n"
 	.string "Please wait while I save the game.$"
 
-@ Unused
-BattleFrontier_BattleArenaLobby_Text_PresentYouWithPrize: @ 8256977
-	.string "In commemoration of your 7-win streak,\n"
-	.string "we present you with this prize.$"
-
-@ Unused
-BattleFrontier_BattleArenaLobby_Text_ReceivedPrize: @ 82569BE
-	.string "{PLAYER} received the prize\n"
-	.string "{STR_VAR_1}.$"
-
-@ Unused
-BattleFrontier_BattleArenaLobby_Text_BagFullReturnForPrize: @ 82569D8
-	.string "Oh?\n"
-	.string "Your Pack seems to be full.\p"
-	.string "I urge you to clear space and\n"
-	.string "return for your prize.$"
-
 BattleFrontier_BattleArenaLobby_Text_ThankYouWaitWhileSave: @ 8256A2C
 	.string "Thank you so much for participating!\p"
 	.string "Please wait while I save the game.$"
@@ -481,8 +437,8 @@ BattleFrontier_BattleArenaLobby_Text_AwaitAnotherChallenge2: @ 8256A74
 BattleFrontier_BattleArenaLobby_Text_LookingForwardToArrivalSaveGame: @ 8256AA1
 	.string "We have been looking forward to\n"
 	.string "your arrival.\p"
-	.string "Before I show you to the BATTLE\n"
-	.string "ARENA, I must save the game.\l"
+	.string "Before I show you to the Battle\n"
+	.string "Arena, I must save the game.\l"
 	.string "Please wait.$"
 
 BattleFrontier_BattleArenaLobby_Text_RecordLastMatch: @ 8256B19
@@ -490,34 +446,35 @@ BattleFrontier_BattleArenaLobby_Text_RecordLastMatch: @ 8256B19
 	.string "match on your Frontier Pass?$"
 
 BattleFrontier_BattleArenaLobby_Text_BadIdeaToNotAttack: @ 8256B5C
-	.string "I lost on the REFEREE's decision…\p"
+	.string "I lost because I used my Steelix\n"
+	.string "and it happened to be weak to\l"
+	.string "Rock type moves in this mode!"
 	.string "I don't think it was a good idea to only\n"
-	.string "use defensive moves and not attack…$"
+	.string "use defensive Pokémon...$"
 
 BattleFrontier_BattleArenaLobby_Text_LandingHitsWorked: @ 8256BCB
-	.string "I won in judging!\p"
-	.string "Landing hits consistently on\n"
-	.string "the opponent's Pokémon worked!$"
+	.string "I won with my Vileplume!\p"
+	.string "It's type matchups are better in\n"
+	.string "inverse battles!$"
 
 BattleFrontier_BattleArenaLobby_Text_MatchWasDeclaredDraw: @ 8256C19
 	.string "Our match was declared a draw.\p"
-	.string "When we ran out of time, both my\n"
-	.string "Pokémon and the opponent's had about\l"
-	.string "the same amount of HP left.$"
+	.string "I used Double-Edge with my last\n"
+	.string "Pokémon. Both sides fainted!$"
 
 BattleFrontier_BattleArenaLobby_Text_OrderOfMonsImportant: @ 8256C9A
 	.string "In the Battle Arena, the order of\n"
 	.string "Pokémon is totally important.\p"
 	.string "For example, if your first Pokémon\n"
-	.string "has certain type disadvantages,\l"
+	.string "has certain type advantages,\l"
 	.string "try making your second Pokémon one\l"
-	.string "with moves that are super effective\l"
+	.string "with moves that are not effective\l"
 	.string "against the first one.\p"
 	.string "I think that will be a good way of\n"
 	.string "making an effective team.$"
 
 BattleFrontier_BattleArenaLobby_Text_RulesAreListed: @ 8256DB8
-	.string "The Set KO Tourney's rules are listed.$"
+	.string "Inverse Battle's rules are listed.$"
 
 BattleFrontier_BattleArenaLobby_Text_ReadWhichHeading: @ 8256DDF
 	.string "Which heading do you want to read?$"
@@ -525,49 +482,9 @@ BattleFrontier_BattleArenaLobby_Text_ReadWhichHeading: @ 8256DDF
 BattleFrontier_BattleArenaLobby_Text_ExplainBattleRules: @ 8256E02
 	.string "The Set KO Tourney has special rules,\n"
 	.string "unlike standard battles.\p"
-	.string "First, one battle lasts only\n"
-	.string "three turns.\p"
-	.string "If the outcome is not decided after\n"
-	.string "three turns, it goes to judging.\p"
-	.string "The REFEREE will choose the winner\n"
-	.string "based on how the Pokémon battled.\p"
-	.string "Also, a Pokémon cannot be switched out\n"
-	.string "until its battle's outcome is decided.$"
-
-BattleFrontier_BattleArenaLobby_Text_ExplainMindRules: @ 8256F43
-	.string "The first judging factor is “Mind.”\n"
-	.string "This factor evaluates how aggressive\l"
-	.string "the battlers were.\p"
-	.string "The judging is based on how often\n"
-	.string "the Trainers ordered the use of\l"
-	.string "offensive moves.$"
-
-BattleFrontier_BattleArenaLobby_Text_ExplainSkillRules: @ 8256FF2
-	.string "The second judging factor is “Skill.”\n"
-	.string "This factor evaluates how effectively\l"
-	.string "Pokémon moves were used.\p"
-	.string "If a move worked successfully,\n"
-	.string "the Skill rating goes up.\p"
-	.string "If a move failed, the Skill rating\n"
-	.string "is lowered.\p"
-	.string "If it was an offensive move, the Skill\n"
-	.string "rating goes up if the move was “super\l"
-	.string "effective” and goes down if it was\l"
-	.string "“not very effective.”\p"
-	.string "The Skill rating will not go up for\n"
-	.string "moves such as PROTECT and DETECT.\p"
-	.string "If the opponent used PROTECT or\n"
-	.string "DETECT, and your Pokémon failed to\l"
-	.string "hit with a move, its Skill rating will not\l"
-	.string "go down.$"
-
-BattleFrontier_BattleArenaLobby_Text_ExplainBodyRules: @ 8257202
-	.string "The third judging factor is “Body.”\n"
-	.string "This factor is based on how much HP\l"
-	.string "remained at the end of a battle.\p"
-	.string "The rating takes into account how much\n"
-	.string "HP a Pokémon had at the start of\l"
-	.string "battle, and what remained at the end.$"
+	.string "Type matchups are reversed.\p"
+	.string "Additionally, no Pokémon have\n"
+	.string "immunities.$"
 
 BattleFrontier_BattleArenaLobby_Text_CongratsOnDefeatingTycoon: @ 82572D9
 	.string "A victory snatched from the ARENA\n"

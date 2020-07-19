@@ -668,6 +668,21 @@
 	.byte 0x75
 	.endm
 	
+	.macro get_considered_move_target
+	.byte 0x76
+	.endm
+	
+	.macro compare_speeds battler1:req, battler2:req
+	.byte 0x77
+	.byte \battler1
+	.byte \battler2
+	.endm
+	
+	.macro is_wakeup_turn battler:req
+	.byte 0x78
+	.byte \battler
+	.endm
+	
 @ useful script macros
 	.macro if_has_physical_move battler:req, ptr:req
 	if_has_move_with_split \battler, SPLIT_PHYSICAL, \ptr

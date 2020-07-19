@@ -314,7 +314,8 @@ GCMS_Consignment::
 	goto_if_eq GCMS_ChooseInitialSpecies
 	bufferspeciesname 0, VAR_RYU_GCMS_SPECIES
 	msgbox GCMS_PickSlot
-	multichoicedefault 0, 0, 118, 6, 0
+	call RyuBufferPartyMonNames
+	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 6, 0
 	switch VAR_RESULT
 	case 0, GCMS_Slot1Selected
 	case 1, GCMS_Slot2Selected
@@ -334,7 +335,8 @@ GCMS_ChooseInitialSpecies:
 	setflag FLAG_TEMP_5
 	msgbox GCMS_PickInitialSpecies
 	closemessage
-	multichoicedefault 0, 0, 118, 6, 0
+	call RyuBufferPartyMonNames
+	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 6, 0
 	switch VAR_RESULT
 	case 0, GCMS_Slot1Selected
 	case 1, GCMS_Slot2Selected
@@ -490,8 +492,8 @@ GCMS_Successful:
     .string "been made!$"
 	
 GCMS_PickSlot:
-    .string "You are currently mapping genes\n"
-    .string "for {COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1}{COLOR DARK_GREY}{SHADOW LIGHT_GREY}. Please select one.$"
+    .string "You are currently mapping genes.\n"
+    .string "Choose which species to Consign.$"
 	
 GCMS_PickInitialSpecies:
     .string "You are not currently mapping\n"

@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": true,
+    "allow_cycling": true,
+    "allow_escaping": true,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -23,7 +23,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 10
         },
@@ -36,7 +36,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 11,
             "y": 10
         },
@@ -49,7 +49,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 9
         },
@@ -62,7 +62,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 7
         },
@@ -75,7 +75,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 11,
             "y": 8
         },
@@ -88,7 +88,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 11
         },
@@ -101,7 +101,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 8
         },
@@ -114,7 +114,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "SeafloorCavern_Room3_EventScript_Shelly",
             "trainer_sight_or_berry_tree_id": "6",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 9,
             "y": 5
         },
@@ -127,7 +127,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SeafloorCavern_Room3_EventScript_Grunt5",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 5,
             "y": 5
         }

@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": false,
+    "allow_cycling": true,
+    "allow_escaping": false,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -143,7 +143,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "JaggedPass_EventScript_Eric",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 10,
             "y": 8
         },
@@ -156,7 +156,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "JaggedPass_EventScript_Ethan",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 12,
             "y": 35
         },
@@ -169,7 +169,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "JaggedPass_EventScript_ItemBurnHeal",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 23,
             "y": 24
         },
@@ -182,7 +182,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
             "script": "JaggedPass_EventScript_Diana",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 9,
             "y": 21
         },
@@ -195,7 +195,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "JaggedPass_EventScript_MagmaHideoutGuard",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 19
         },
@@ -208,7 +208,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "JaggedPass_EventScript_Autumn",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 14,
             "y": 25
         },
@@ -221,7 +221,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "JaggedPass_EventScript_Julio",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 18,
             "y": 25
         },
@@ -234,7 +234,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "JP_SuckerPunch",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 11,
             "y": 25
         }

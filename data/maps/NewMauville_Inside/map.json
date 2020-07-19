@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": true,
+    "allow_cycling": true,
+    "allow_escaping": true,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -132,7 +132,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "NewMauville_Inside_EventScript_ItemUltraRope",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 32,
             "y": 25
         },
@@ -145,7 +145,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "NewMauville_Inside_EventScript_ItemEscapeRope",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 22
         },
@@ -158,7 +158,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "NewMauville_Inside_EventScript_ItemThunderStone",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 39,
             "y": 4
         },
@@ -171,7 +171,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "NewMauville_Inside_EventScript_ItemFullHeal",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 17,
             "y": 10
         },
@@ -184,7 +184,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "NewMauville_Inside_EventScript_ItemParalyzeHeal",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 2,
             "y": 11
         },
@@ -197,7 +197,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "NewMauville_Inside_EventScript_Voltorb1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 25,
             "y": 18
         },
@@ -210,7 +210,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "NewMauville_Inside_EventScript_Voltorb2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 11
         },
@@ -223,7 +223,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "NewMauville_Inside_EventScript_Voltorb3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 10
         },
@@ -236,7 +236,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "NewMauville_Zapdos",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 47,
             "y": 38
         },
@@ -249,7 +249,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NM_Leaf_Event_PostWattson",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 33,
             "y": 5
         },
@@ -262,7 +262,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NMV_Ampharosite",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 15
         }

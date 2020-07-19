@@ -1,6 +1,6 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": false,
+    "allow_cycling": false,
+    "allow_escaping": false,
     "allow_running": false,
     "battle_scene": "MAP_BATTLE_SCENE_GYM",
     "bg_events": [
@@ -39,7 +39,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "RustboroCity_Gym_EventScript_Roxanne",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 2
         },
@@ -52,7 +52,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "RustboroCity_Gym_EventScript_Josh",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 5,
             "y": 13
         },
@@ -65,7 +65,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "RustboroCity_Gym_EventScript_Tommy",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 3,
             "y": 9
         },
@@ -78,7 +78,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "RustboroCity_Gym_EventScript_GymGuide",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 18
         },
@@ -91,7 +91,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "RustboroCity_Gym_EventScript_Marc",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 1,
             "y": 6
         },
@@ -104,7 +104,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 8
         },
@@ -117,7 +117,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 8
         },
@@ -130,7 +130,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 8
         },
@@ -143,7 +143,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 8
         },
@@ -156,7 +156,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 8
         }

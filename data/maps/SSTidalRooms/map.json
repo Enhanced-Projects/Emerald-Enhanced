@@ -1,6 +1,6 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": false,
+    "allow_cycling": false,
+    "allow_escaping": false,
     "allow_running": false,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -39,7 +39,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SSTidalRooms_EventScript_Colton",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 7
         },
@@ -52,7 +52,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "SSTidalRooms_EventScript_Micah",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 34,
             "y": 11
         },
@@ -65,7 +65,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "SSTidalRooms_EventScript_Thomas",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 21,
             "y": 5
         },
@@ -78,7 +78,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SSTidalRooms_EventScript_Jed",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 5,
             "y": 14
         },
@@ -91,7 +91,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SSTidalRooms_EventScript_Lea",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 14
         },
@@ -104,7 +104,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "SSTidalRooms_EventScript_Garret",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 22,
             "y": 11
         },
@@ -117,7 +117,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "SSTidalRooms_EventScript_Naomi",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 15,
             "y": 6
         },
@@ -130,7 +130,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "SSTidalRooms_EventScript_SnatchGiver",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 28,
             "y": 5
         }

@@ -1,6 +1,6 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": false,
+    "allow_cycling": false,
+    "allow_escaping": false,
     "allow_running": false,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -39,7 +39,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "BattleFrontier_BattlePikeLobby_EventScript_Attendant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 5
         },
@@ -52,7 +52,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "BattleFrontier_BattlePikeLobby_EventScript_Hiker",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 10,
             "y": 9
         },
@@ -65,7 +65,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "BattleFrontier_BattlePikeLobby_EventScript_Twin",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 0,
             "y": 5
         },
@@ -78,7 +78,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "BattleFrontier_BattlePikeLobby_EventScript_Beauty",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 9
         }
