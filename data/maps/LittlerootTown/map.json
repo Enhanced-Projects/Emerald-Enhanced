@@ -1,275 +1,275 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": false,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "LittlerootTown_EventScript_TownSign",
-            "type": "sign",
-            "x": 15,
-            "y": 13
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "LRT_BirchLabSignNormal",
-            "type": "sign",
-            "x": 6,
-            "y": 17
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "LRT_BrendansHouseSign",
-            "type": "sign",
-            "x": 7,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "LRT_DawnsHouseSign",
-            "type": "sign",
-            "x": 12,
-            "y": 8
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "RyuDevSwitch",
-            "type": "sign",
-            "x": 9,
-            "y": 16
-        }
-    ],
-    "connections": [
-        {
-            "direction": "up",
-            "map": "MAP_ROUTE101",
-            "offset": 0
-        }
-    ],
-    "coord_events": [
-        {
-            "elevation": 3,
-            "script": "LRT_PreventLeave",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 10,
-            "y": 1
-        },
-        {
-            "elevation": 3,
-            "script": "LRT_PreventLeave",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 11,
-            "y": 1
-        },
-        {
-            "elevation": 0,
-            "script": "LRT_StopGoingSouth",
-            "type": "trigger",
-            "var": "VAR_TEMP_4",
-            "var_value": "0",
-            "x": 6,
-            "y": 21
-        },
-        {
-            "elevation": 0,
-            "script": "LRT_StopGoingSouth",
-            "type": "trigger",
-            "var": "VAR_TEMP_4",
-            "var_value": "0",
-            "x": 7,
-            "y": 21
-        },
-        {
-            "elevation": 0,
-            "script": "LRT_StopGoingSouth",
-            "type": "trigger",
-            "var": "VAR_TEMP_4",
-            "var_value": "0",
-            "x": 10,
-            "y": 21
-        },
-        {
-            "elevation": 0,
-            "script": "LRT_StopGoingSouth",
-            "type": "trigger",
-            "var": "VAR_TEMP_4",
-            "var_value": "0",
-            "x": 11,
-            "y": 21
-        }
-    ],
-    "id": "MAP_LITTLEROOT_TOWN",
-    "layout": "LAYOUT_LITTLEROOT_TOWN",
-    "map_type": "MAP_TYPE_TOWN",
-    "music": "350",
-    "name": "LittlerootTown",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TWIN",
-            "movement_range_x": 1,
-            "movement_range_y": 2,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "LRT_LittleGirlChatter",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 8,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN",
-            "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
-            "movement_range_x": 2,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-            "script": "LRT_FatManChatter",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 15,
-            "y": 15
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_BOY_2",
-            "movement_range_x": 2,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-            "script": "LRT_BoyChatter",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 19,
-            "y": 10
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_MINNIE",
-            "graphics_id": "OBJ_EVENT_GFX_TWIN",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "LRT_FollowerTest",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 7,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_GAMEBOY_KID",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Pidgey_NPC",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 19,
-            "y": 32
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_HAREM_EVENT_NPCS",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 8,
-            "y": 11
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_HAREM_EVENT_DAWN",
-            "graphics_id": "OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 10,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_HAREM_EVENT_NPCS",
-            "graphics_id": "OBJ_EVENT_GFX_LEAF",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 9,
-            "y": 11
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_HAREM_EVENT_NPCS",
-            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 10,
-            "y": 11
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN",
-            "graphics_id": "OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 9,
-            "y": 8
-        }
-    ],
-    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_1F",
-            "dest_warp_id": 1,
-            "elevation": 0,
-            "x": 14,
-            "y": 8
-        },
-        {
-            "dest_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
-            "dest_warp_id": 1,
-            "elevation": 0,
-            "x": 5,
-            "y": 8
-        },
-        {
-            "dest_map": "MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 7,
-            "y": 16
-        }
-    ],
-    "weather": "WEATHER_SUNNY"
+  "id": "MAP_LITTLEROOT_TOWN",
+  "name": "LittlerootTown",
+  "layout": "LAYOUT_LITTLEROOT_TOWN",
+  "music": "350",
+  "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_TOWN",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "direction": "up",
+      "offset": 0,
+      "map": "MAP_ROUTE101"
+    }
+  ],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TWIN",
+      "x": 8,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LRT_LittleGirlChatter",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
+      "x": 15,
+      "y": 15,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LRT_FatManChatter",
+      "flag": "FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BOY_2",
+      "x": 19,
+      "y": 10,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LRT_BoyChatter",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TWIN",
+      "x": 7,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LRT_FollowerTest",
+      "flag": "FLAG_RYU_HIDE_MINNIE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GAMEBOY_KID",
+      "x": 19,
+      "y": 32,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Pidgey_NPC",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "x": 8,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_HAREM_EVENT_NPCS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL",
+      "x": 10,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_HAREM_EVENT_DAWN"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LEAF",
+      "x": 9,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_HAREM_EVENT_NPCS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "x": 10,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_HAREM_EVENT_NPCS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL",
+      "x": 9,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 14,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_LITTLEROOT_TOWN_DAWNS_HOUSE_1F",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 5,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 7,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 1,
+      "elevation": 3,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "LRT_PreventLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 1,
+      "elevation": 3,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "LRT_PreventLeave"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "LRT_StopGoingSouth"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "LRT_StopGoingSouth"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "LRT_StopGoingSouth"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "LRT_StopGoingSouth"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LittlerootTown_EventScript_TownSign"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 17,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LRT_BirchLabSignNormal"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 8,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LRT_BrendansHouseSign"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 8,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LRT_DawnsHouseSign"
+    },
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 16,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RyuDevSwitch"
+    }
+  ]
 }
