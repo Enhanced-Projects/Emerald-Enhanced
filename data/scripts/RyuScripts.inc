@@ -160,7 +160,7 @@ RyuDebugBetaMenuScript::
 	case 0, RDBM_Option1
 	case 1, RDBM_Option2
 	case 2, RDBM_Option3
-	case 3, RDBM_Option4
+	case 3, RDBM_ResetTemporaryBattleFlags
 	case 4, RDBM_ResetBadges
 	case 5, RDBM_ResetGCMS
 	case 6, RDBM_TeleportHome
@@ -180,16 +180,18 @@ RDBM_Option3::
 	release
 	end
 
-RDBM_Option4::
-	setflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
-	clearflag FLAG_RYU_DS_LANETTE_ACQ
-	clearflag FLAG_HIDE_FALLORBOR_POKEMON_CENTER_LANETTE
-	msgbox RDBM_LanetteReset
+RDBM_ResetTemporaryBattleFlags::
+	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
+	clearflag FLAG_RYU_MAX_SCALE
+	clearflag FLAG_RYU_BOSS_WILD
+	clearflag FLAG_RYU_INVERSE_BATTLE
+	clearflag FLAG_RYU_RANDOMBATTLE
+	msgbox RDBM_ResetTempFlagsMsg
 	release
 	end
 
-RDBM_LanetteReset:
-	.string "{COLOR LIGHT_RED}{SHADOW RED} (Lanette's quest has been\n initialized)$"
+RDBM_ResetTempFlagsMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} (Temporary battle flags have been\n reset)$"
 
 RDBM_Unimplemented:
 	.string "This option does nothing. It's\na placeholder for future options.$"
