@@ -236,7 +236,7 @@ static const u8 sContextMenuItems_MedicinePocket[] = {
 };
 
 static const u8 sContextMenuItems_ValuablesPocket[] = {
-    ITEMMENUACTION_GIVE,         ITEMMENUACTION_TOSS,
+    ITEMMENUACTION_USE,         ITEMMENUACTION_TOSS,
     ITEMMENUACTION_DUMMY,        ITEMMENUACTION_CANCEL
 };
 

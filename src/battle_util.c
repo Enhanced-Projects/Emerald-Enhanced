@@ -1944,30 +1944,33 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_BOSSMODEHEAL:
-            if ((FlagGet(FLAG_RYU_MAX_SCALE) == 1) && (!(BATTLER_MAX_HP(gActiveBattler)))  && (gBattleMons[gActiveBattler].hp != 0) && ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT))
-            {
-                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
-                if (gBattleMoveDamage == 0)
-                    gBattleMoveDamage = 1;
-                gBattleMoveDamage *= -1;
-                StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
-                StringCopy(gStringVar2, gText_PokemonStringBuffer);
-                BattleScriptExecute(BattleScript_BossModeHeal);
-            }
+            if (FlagGet(FLAG_RYU_MAX_SCALE) == 1)
+                if(!(BATTLER_MAX_HP(gActiveBattler)))
+                    if(gBattleMons[gActiveBattler].hp != 0)
+                        if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT)
+                            {
+                                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
+                                if (gBattleMoveDamage == 0)
+                                    gBattleMoveDamage = 1;
+                                gBattleMoveDamage *= -1;
+                                StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
+                                StringCopy(gStringVar2, gText_PokemonStringBuffer);
+                                BattleScriptExecute(BattleScript_BossModeHeal);
+                            }
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_BOSSMODERAISESTAT:
         {
-            if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_TEMP_3) == 1))
+            if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1))
                 {
                     StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
                     StringCopy(gStringVar2, gText_PokemonStringBuffer);
                     if (gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] < 0xC)
                         {
-                            gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] = 9;
-                            gBattleMons[gBattlerAttacker].statStages[STAT_ATK] = 9;
-                            gBattleMons[gBattlerAttacker].statStages[STAT_DEF] = 9;
-                            gBattleMons[gBattlerAttacker].statStages[STAT_SPDEF] = 9;
+                            gBattleMons[gBattlerAttacker].statStages[STAT_SPATK] = 10;
+                            gBattleMons[gBattlerAttacker].statStages[STAT_ATK] = 10;
+                            gBattleMons[gBattlerAttacker].statStages[STAT_DEF] = 12;
+                            gBattleMons[gBattlerAttacker].statStages[STAT_SPDEF] = 12;
                             gBattleScripting.animArg1 = 0x11;
                             gBattleScripting.animArg2 = 0;
                             BattleScriptPushCursorAndCallback(BattleScript_BossModeStatBoostActivates);

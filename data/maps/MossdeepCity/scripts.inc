@@ -76,143 +76,8 @@ MossdeepCity_EventScript_VisitedMossdeep:: @ 81E4B38
 	end
 
 MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter:: @ 81E4B41
-	lockall
-	applymovement 14, MossdeepCity_Movement_MaxieGestureToSpaceCenter
-	waitmovement 0
-	applymovement 10, MossdeepCity_Movement_GruntFaceSpaceCenter
-	applymovement 11, MossdeepCity_Movement_GruntFaceSpaceCenter
-	applymovement 12, MossdeepCity_Movement_GruntFaceSpaceCenter
-	applymovement 13, MossdeepCity_Movement_GruntFaceSpaceCenter
-	waitmovement 0
-	applymovement 14, MossdeepCity_Movement_MaxieEnterSpaceCenter
-	applymovement 10, MossdeepCity_Movement_Grunt1EnterSpaceCenter
-	applymovement 11, MossdeepCity_Movement_Grunt2EnterSpaceCenter
-	applymovement 12, MossdeepCity_Movement_Grunt3EnterSpaceCenter
-	applymovement 13, MossdeepCity_Movement_Grunt4EnterSpaceCenter
-	waitmovement 0
-	removeobject 14
-	removeobject 10
-	removeobject 11
-	removeobject 12
-	removeobject 13
-	delay 30
-	setvar VAR_MOSSDEEP_CITY_STATE, 2
-	setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
-	releaseall
 	end
 
-MossdeepCity_Movement_MaxieGestureToSpaceCenter: @ 81E4BAD
-	delay_16
-	face_right
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	face_left
-	delay_16
-	delay_16
-	step_end
-
-MossdeepCity_Movement_GruntFaceSpaceCenter: @ 81E4BB7
-	face_right
-	delay_16
-	delay_16
-	delay_16
-	step_end
-
-MossdeepCity_Movement_MaxieEnterSpaceCenter: @ 81E4BBC
-	walk_down
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-MossdeepCity_Movement_Grunt1EnterSpaceCenter: @ 81E4BCA
-	delay_16
-	delay_8
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-MossdeepCity_Movement_Grunt2EnterSpaceCenter: @ 81E4BDD
-	delay_16
-	delay_8
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-MossdeepCity_Movement_Grunt3EnterSpaceCenter: @ 81E4BEF
-	delay_16
-	delay_8
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-MossdeepCity_Movement_Grunt4EnterSpaceCenter: @ 81E4C00
-	delay_16
-	delay_8
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
 
 MossdeepCity_EventScript_Man:: @ 81E4C10
 	lock
@@ -251,63 +116,6 @@ MossdeepCity_EventScript_DeclineKingsRock:: @ 81E4C72
 MossdeepCity_EventScript_BlackBelt:: @ 81E4C7C
 	msgbox MossdeepCity_Text_SootopolisNewGymLeader, MSGBOX_NPC
 	end
-
-MossdeepCity_EventScript_Scott:: @ 81E4C85
-	lock
-	faceplayer
-	msgbox MossdeepCity_Text_ScottSomethingWrongWithTown, MSGBOX_DEFAULT
-	closemessage
-	compare VAR_FACING, DIR_NORTH
-	call_if_eq MossdeepCity_EventScript_ScottExitNorth
-	compare VAR_FACING, DIR_EAST
-	call_if_eq MossdeepCity_EventScript_ScottExitEast
-	addvar VAR_SCOTT_STATE, 1
-	removeobject 16
-	release
-	end
-
-MossdeepCity_EventScript_ScottExitNorth:: @ 81E4CB0
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Movement_PlayerWatchScottExit
-	applymovement 16, MossdeepCity_Movement_ScottExitNorth
-	waitmovement 0
-	return
-
-MossdeepCity_EventScript_ScottExitEast:: @ 81E4CC2
-	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Movement_PlayerWatchScottExit
-	applymovement 16, MossdeepCity_Movement_ScottExitEast
-	waitmovement 0
-	return
-
-MossdeepCity_Movement_PlayerWatchScottExit: @ 81E4CD4
-	delay_16
-	delay_16
-	walk_in_place_fastest_left
-	step_end
-
-MossdeepCity_Movement_ScottExitNorth: @ 81E4CD8
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-MossdeepCity_Movement_ScottExitEast: @ 81E4CE2
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
 
 MossdeepCity_Text_WantKingsRockStevenGaveMe: @ 81E4CED
 	.string "I got this from STEVEN, but I don't\n"
@@ -408,19 +216,6 @@ MossdeepCity_Text_CitySign: @ 81E53F2
 MossdeepCity_Text_SpaceCenterSign: @ 81E541F
 	.string "MOSSDEEP SPACE CENTER\n"
 	.string "“The closest place to space.”$"
-
-MossdeepCity_Text_ScottSomethingWrongWithTown: @ 81E5453
-	.string "SCOTT: {PLAYER}, feeling good?\n"
-	.string "I'm doing great!\p"
-	.string "I'd heard MOSSDEEP's Gym Leader is\n"
-	.string "pretty strong, so I decided to come\l"
-	.string "take a look-see for myself.\p"
-	.string "But there's something wrong about\n"
-	.string "this town.\p"
-	.string "People are going on about a warning\n"
-	.string "letter and the SPACE CENTER…\p"
-	.string "I don't think it concerns me in any\n"
-	.string "way, though.$"
 
 MossdeepCity_Text_SootopolisNewGymLeader: @ 81E5581
 	.string "Ahh… It feels great letting the waves\n"
