@@ -98,8 +98,6 @@ static const u16 sShopInventory_ZeroBadges[] = {
     ITEM_POKE_BALL,
     ITEM_POTION,
     ITEM_ANTIDOTE,
-    ITEM_BURN_HEAL,
-    ITEM_ICE_HEAL,
     ITEM_AWAKENING,
     ITEM_PARALYZE_HEAL,
     ITEM_REVIVE,
@@ -486,24 +484,12 @@ static void SetShopMenuCallback(void (* callback)(void))
     gMartInfo.callback = callback;
 }
 
-static u8 GetNumberOfBadges(void)
-{
-    u16 badgeFlag;
-    u8 count = 0;
-    
-    for (badgeFlag = FLAG_BADGE01_GET; badgeFlag < FLAG_BADGE01_GET + NUM_BADGES; badgeFlag++)
-    {
-        if (FlagGet(badgeFlag))
-            count++;
-    }
-    
-    return count;
-}
+extern void CountBadges();
 
 static void SetShopItemsForSale(const u16 *items)
 {
     u16 i = 0;
-    u8 badgeCount = GetNumberOfBadges();
+    u8 badgeCount = CountBadges();
 
     if (items == NULL)
         gMartInfo.itemList = sShopInventories[badgeCount];

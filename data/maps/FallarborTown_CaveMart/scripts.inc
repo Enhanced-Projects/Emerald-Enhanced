@@ -13,6 +13,7 @@ FallarborTown_CaveMart_EventScript_Clerk::
 
 	.align 2
 FallarborTown_CaveMart_Pokemart:
+	.2byte ITEM_HEART_SCALE
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_ULTRA_BALL
 	.2byte ITEM_HYPER_POTION

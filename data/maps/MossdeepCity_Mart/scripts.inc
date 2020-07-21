@@ -6,7 +6,7 @@ MossdeepCity_Mart_EventScript_Clerk:: @ 82223C8
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemart MossdeepCity_Mart_Pokemart
+	pokemart 0
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end

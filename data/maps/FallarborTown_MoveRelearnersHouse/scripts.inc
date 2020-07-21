@@ -90,7 +90,8 @@ FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale: @ 8201627
 
 FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale: @ 8201653
 	.string "If you want more knowledge come\n"
-	.string "visit me again!$"
+	.string "visit me again! You can buy more\l"
+	.string "Heart Scales in the mine mart.$"
 
 FallarborTown_MoveRelearnersHouse_Text_CantTeachEgg: @ 8201697
 	.string "Hunh? There isn't a single move that\n"
