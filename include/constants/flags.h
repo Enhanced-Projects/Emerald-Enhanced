@@ -1530,8 +1530,8 @@
 #define FLAG_RYU_NECROZMA_RAN                       (SYSTEM_FLAGS + 0x92) // Unused Flag
 #define FLAG_RYU_KYOGRE_RAN                         (SYSTEM_FLAGS + 0x93) // Unused Flag
 #define FLAG_RYU_AQUA_BAD_END                       (SYSTEM_FLAGS + 0x94) // Unused Flag
-#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAXIE                           (SYSTEM_FLAGS + 0x95) // Unused Flag
-#define FLAG_UNUSED_0x8F6                           (SYSTEM_FLAGS + 0x96) // Unused Flag
+#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAXIE (SYSTEM_FLAGS + 0x95) // Unused Flag
+#define FLAG_TOBY_TRAINER_SIGHT                     (SYSTEM_FLAGS + 0x96) // Unused Flag
 #define FLAG_UNUSED_0x8F7                           (SYSTEM_FLAGS + 0x97) // Unused Flag
 #define FLAG_UNUSED_0x8F8                           (SYSTEM_FLAGS + 0x98) // Unused Flag
 #define FLAG_UNUSED_0x8F9                           (SYSTEM_FLAGS + 0x99) // Unused Flag

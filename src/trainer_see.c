@@ -176,7 +176,10 @@ static const struct SpriteTemplate sSpriteTemplate_HeartIcon =
 bool8 CheckForTrainersWantingBattle(void)
 {
     u8 i;
-
+    
+    if (FlagGet(FLAG_TOBY_TRAINER_SIGHT))
+        return FALSE;
+    
     gNoOfApproachingTrainers = 0;
     gApproachingTrainerId = 0;
 

@@ -117,12 +117,14 @@ Ryu_saveViewerEnabled:
 RyuDebug_Phasing::
 	goto_if_set FLAG_RYU_COLLISION_OFF, Ryu_DisablePhasing
 	setflag FLAG_RYU_COLLISION_OFF
+	setflag FLAG_TOBY_TRAINER_SIGHT
 	msgbox Ryu_CollisionOffMsg
 	release
 	end
 
 Ryu_DisablePhasing::
 	clearflag FLAG_RYU_COLLISION_OFF
+	clearflag FLAG_TOBY_TRAINER_SIGHT
 	msgbox Ryu_CollisionOnMsg
 	release
 	end
