@@ -15,7 +15,7 @@
   "connections": [
     {
       "direction": "down",
-      "offset": 0,
+      "offset": 20,
       "map": "MAP_PACIFIDLOG_TOWN"
     },
     {

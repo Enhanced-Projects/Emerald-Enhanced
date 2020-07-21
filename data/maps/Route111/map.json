@@ -625,87 +625,6 @@
     },
     {
       "type": "trigger",
-      "x": 11,
-      "y": 61,
-      "elevation": 3,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "Route111_EventScript_ViciousSandstormTriggerDown"
-    },
-    {
-      "type": "trigger",
-      "x": 12,
-      "y": 61,
-      "elevation": 3,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "Route111_EventScript_ViciousSandstormTriggerDown"
-    },
-    {
-      "type": "trigger",
-      "x": 13,
-      "y": 61,
-      "elevation": 3,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "Route111_EventScript_ViciousSandstormTriggerDown"
-    },
-    {
-      "type": "trigger",
-      "x": 7,
-      "y": 63,
-      "elevation": 3,
-      "var": "0",
-      "var_value": "0",
-      "script": "Route111_EventScript_SunTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 12,
-      "y": 44,
-      "elevation": 3,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "Route111_EventScript_ViciousSandstormTriggerLeft"
-    },
-    {
-      "type": "trigger",
-      "x": 13,
-      "y": 43,
-      "elevation": 3,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "Route111_EventScript_ViciousSandstormTriggerLeft"
-    },
-    {
-      "type": "trigger",
-      "x": 14,
-      "y": 42,
-      "elevation": 3,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "Route111_EventScript_ViciousSandstormTriggerLeft"
-    },
-    {
-      "type": "trigger",
-      "x": 16,
-      "y": 40,
-      "elevation": 3,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "Route111_EventScript_ViciousSandstormTriggerLeft"
-    },
-    {
-      "type": "trigger",
-      "x": 14,
-      "y": 61,
-      "elevation": 3,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "Route111_EventScript_ViciousSandstormTriggerDown"
-    },
-    {
-      "type": "trigger",
       "x": 18,
       "y": 32,
       "elevation": 3,
@@ -739,24 +658,6 @@
       "var": "0",
       "var_value": "0",
       "script": "Route111_EventScript_SunTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 17,
-      "y": 39,
-      "elevation": 3,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "Route111_EventScript_ViciousSandstormTriggerLeft"
-    },
-    {
-      "type": "trigger",
-      "x": 18,
-      "y": 38,
-      "elevation": 3,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "Route111_EventScript_ViciousSandstormTriggerLeft"
     },
     {
       "type": "trigger",
@@ -955,6 +856,24 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "r111_TrainerHillBlockEntry"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 63,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 63,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "NULL"
     }
   ],
   "bg_events": [
