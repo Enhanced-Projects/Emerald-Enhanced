@@ -1,6 +1,6 @@
 Route128_MapScripts:: @ 81F6B38
-	map_script MAP_SCRIPT_ON_TRANSITION, Route128_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route128_OnFrame
+	map_script ON_TRANSITION, Route128_OnTransition
+	map_script ON_FRAME, Route128_OnFrame
 	.byte 0
 
 Route128_OnTransition: @ 81F6B43

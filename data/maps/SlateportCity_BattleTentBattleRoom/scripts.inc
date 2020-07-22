@@ -1,7 +1,7 @@
 SlateportCity_BattleTentBattleRoom_MapScripts:: @ 8209960
-	map_script MAP_SCRIPT_ON_TRANSITION, SlateportCity_BattleTentBattleRoom_OnTransition
+	map_script ON_TRANSITION, SlateportCity_BattleTentBattleRoom_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SlateportCity_BattleTentBattleRoom_OnWarp
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SlateportCity_BattleTentBattleRoom_OnFrame
+	map_script ON_FRAME, SlateportCity_BattleTentBattleRoom_OnFrame
 	.byte 0
 
 	@ On this map the player (OBJ_EVENT_ID_PLAYER) is hidden

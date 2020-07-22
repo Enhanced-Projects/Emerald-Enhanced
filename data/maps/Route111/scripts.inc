@@ -1,8 +1,8 @@
 Route111_MapScripts:: @ 81F0CA7
-	map_script MAP_SCRIPT_ON_LOAD , Route111_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, Route111_OnTransition
+	map_script ON_LOAD , Route111_OnLoad
+	map_script ON_TRANSITION, Route111_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Route111_OnWarp
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route111_OnFrame
+	map_script ON_FRAME, Route111_OnFrame
 	.byte 0
 
 Route111_OnLoad: @ 81F0CBC

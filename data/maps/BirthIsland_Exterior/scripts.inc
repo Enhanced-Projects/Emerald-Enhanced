@@ -1,6 +1,6 @@
 BirthIsland_Exterior_MapScripts:: @ 8267F15
-	map_script MAP_SCRIPT_ON_TRANSITION, BirthIsland_Exterior_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, BirthIsland_Exterior_OnResume
+	map_script ON_TRANSITION, BirthIsland_Exterior_OnTransition
+	map_script ON_RESUME, BirthIsland_Exterior_OnResume
 	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, BirthIsland_Exterior_OnReturnToField
 	.byte 0
 

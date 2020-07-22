@@ -1,5 +1,5 @@
 VerdanturfTown_BattleTentLobby_MapScripts:: @ 82016D0
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, VerdanturfTown_BattleTentLobby_OnFrame
+	map_script ON_FRAME, VerdanturfTown_BattleTentLobby_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, VerdanturfTown_BattleTentLobby_OnWarp
 	.byte 0
 

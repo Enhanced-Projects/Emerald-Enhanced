@@ -1,5 +1,5 @@
 AbandonedShip_Rooms_B1F_MapScripts:: @ 8237FB7
-	map_script MAP_SCRIPT_ON_RESUME, AbandonedShip_Rooms_B1F_OnResume
+	map_script ON_RESUME, AbandonedShip_Rooms_B1F_OnResume
 	.byte 0
 
 AbandonedShip_Rooms_B1F_OnResume: @ 8237FBD

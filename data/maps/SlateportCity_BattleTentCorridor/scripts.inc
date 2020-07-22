@@ -1,5 +1,5 @@
 SlateportCity_BattleTentCorridor_MapScripts:: @ 8208E26
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SlateportCity_BattleTentCorridor_OnFrame
+	map_script ON_FRAME, SlateportCity_BattleTentCorridor_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SlateportCity_BattleTentCorridor_OnWarp
 	.byte 0
 

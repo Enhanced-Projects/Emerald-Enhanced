@@ -1,5 +1,5 @@
 MossdeepCity_Gym_MapScripts:: @ 8220800
-	map_script MAP_SCRIPT_ON_LOAD , MossdeepCity_Gym_OnLoad
+	map_script ON_LOAD , MossdeepCity_Gym_OnLoad
 	.byte 0
 
 @ NOTE: Mossdeep Gym was redesigned between R/S and E. Leftover (and now functionally unused) scripts are commented below

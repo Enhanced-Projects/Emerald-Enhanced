@@ -1,7 +1,7 @@
 Route110_MapScripts:: @ 81EF269
-	map_script MAP_SCRIPT_ON_RESUME, Route110_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, Route110_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route110_OnFrame
+	map_script ON_RESUME, Route110_OnResume
+	map_script ON_TRANSITION, Route110_OnTransition
+	map_script ON_FRAME, Route110_OnFrame
 	.byte 0
 
 Route110_OnResume: @ 81EF279

@@ -1,6 +1,6 @@
 Route119_MapScripts:: @ 81F4424
-	map_script MAP_SCRIPT_ON_RESUME, Route119_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, Route119_OnTransition
+	map_script ON_RESUME, Route119_OnResume
+	map_script ON_TRANSITION, Route119_OnTransition
 	.byte 0
 
 Route119_OnResume: @ 81F442F

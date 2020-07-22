@@ -1,5 +1,5 @@
 FallarborTown_BattleTentCorridor_MapScripts:: @ 82006A7
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, FallarborTown_BattleTentCorridor_OnFrame
+	map_script ON_FRAME, FallarborTown_BattleTentCorridor_OnFrame
 	.byte 0
 
 FallarborTown_BattleTentCorridor_OnFrame: @ 82006AD

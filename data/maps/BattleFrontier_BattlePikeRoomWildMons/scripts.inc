@@ -1,6 +1,6 @@
 BattleFrontier_BattlePikeRoomWildMons_MapScripts:: @ 825E41A
-	map_script MAP_SCRIPT_ON_RESUME, BattleFrontier_BattlePikeRoomWildMons_OnResume
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattlePikeRoomWildMons_OnFrame
+	map_script ON_RESUME, BattleFrontier_BattlePikeRoomWildMons_OnResume
+	map_script ON_FRAME, BattleFrontier_BattlePikeRoomWildMons_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattlePikeRoomWildMons_OnWarp
 	.byte 0
 

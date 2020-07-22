@@ -1,6 +1,6 @@
 SafariZone_South_MapScripts:: @ 823D279
-	map_script MAP_SCRIPT_ON_TRANSITION, SafariZone_South_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SafariZone_South_OnFrame
+	map_script ON_TRANSITION, SafariZone_South_OnTransition
+	map_script ON_FRAME, SafariZone_South_OnFrame
 	.byte 0
 
 SafariZone_South_OnFrame: @ 823D284

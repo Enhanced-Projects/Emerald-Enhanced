@@ -1,7 +1,7 @@
 SkyPillar_2F_MapScripts:: @ 823962B
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, CaveHole_CheckFallDownHole
-	map_script MAP_SCRIPT_ON_TRANSITION, SkyPillar_2F_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, SkyPillar_2F_SetHoleWarp
+	map_script ON_FRAME, CaveHole_CheckFallDownHole
+	map_script ON_TRANSITION, SkyPillar_2F_OnTransition
+	map_script ON_RESUME, SkyPillar_2F_SetHoleWarp
 	.byte 0
 
 SkyPillar_2F_OnTransition: @ 823963B

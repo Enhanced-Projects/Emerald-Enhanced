@@ -1,8 +1,8 @@
 SecretBase_MapScripts::
     map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SecretBase_OnWarp
-    map_script MAP_SCRIPT_ON_TRANSITION, SecretBase_OnTransition
-    map_script MAP_SCRIPT_ON_FRAME_TABLE, SecretBase_OnFrame
-    map_script MAP_SCRIPT_ON_RESUME, SecretBase_OnResume
+    map_script ON_TRANSITION, SecretBase_OnTransition
+    map_script ON_FRAME, SecretBase_OnFrame
+    map_script ON_RESUME, SecretBase_OnResume
     .byte 0
 
 SecretBase_OnWarp: @ 823B498

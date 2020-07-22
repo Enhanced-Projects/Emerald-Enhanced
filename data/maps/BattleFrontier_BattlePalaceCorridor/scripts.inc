@@ -1,5 +1,5 @@
 BattleFrontier_BattlePalaceCorridor_MapScripts:: @ 824F4A3
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattlePalaceCorridor_OnFrame
+	map_script ON_FRAME, BattleFrontier_BattlePalaceCorridor_OnFrame
 	.byte 0
 
 BattleFrontier_BattlePalaceCorridor_OnFrame: @ 824F4A9

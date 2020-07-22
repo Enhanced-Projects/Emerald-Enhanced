@@ -1,5 +1,5 @@
 Route109_SeashoreHouse_MapScripts:: @ 82693F4
-	map_script MAP_SCRIPT_ON_TRANSITION, Route109_SeashoreHouse_OnTransition
+	map_script ON_TRANSITION, Route109_SeashoreHouse_OnTransition
 	.byte 0
 
 Route109_SeashoreHouse_OnTransition: @ 82693FA

@@ -1,7 +1,7 @@
 BattleFrontier_BattleFactoryBattleRoom_MapScripts:: @ 825ADAB
-	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattleFactoryBattleRoom_OnTransition
+	map_script ON_TRANSITION, BattleFrontier_BattleFactoryBattleRoom_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattleFactoryBattleRoom_OnWarp
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleFactoryBattleRoom_OnFrame
+	map_script ON_FRAME, BattleFrontier_BattleFactoryBattleRoom_OnFrame
 	.byte 0
 
 	@ On this map the player (OBJ_EVENT_ID_PLAYER) is hidden
