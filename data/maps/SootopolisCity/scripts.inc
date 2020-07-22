@@ -85,12 +85,6 @@ EventScript_ClosedSootopolisDoor:: @ 81E615D
 SootopolisCity_Text_DoorIsClosed:
 	.string "$"
 
-SootopolisCity_EventScript_Man:: @ 81E6017
-	lock
-	faceplayer
-	release
-	end
-
 SootopolisCity_EventScript_Woman1:: @ 81E6038
 	lock
 	faceplayer
