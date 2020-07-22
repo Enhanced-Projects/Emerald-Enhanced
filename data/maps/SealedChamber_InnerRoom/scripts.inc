@@ -6,8 +6,8 @@ SCH_OpenDoors:: @ 82391F8
 	goto_if_eq ryu_end
 	fadeoutbgm 0
 	playse SE_W089
-	call_if_set FLAG_RYU_DS_LEAF_FRIENDS, SCH_LanaSCMessage
-	call_if_unset FLAG_RYU_DS_LEAF_FRIENDS, SCH_NoLanaSCMessage
+	call_if_set FLAG_TEMP_B, SCH_LanaSCMessage
+	call_if_unset FLAG_TEMP_B, SCH_NoLanaSCMessage
 	closemessage
 	playse SE_W089
 	special DoSealedChamberShakingEffect1
@@ -26,9 +26,7 @@ SCH_OpenDoors:: @ 82391F8
 	waitstate
 	playse SE_DOOR
 	delay 40
-	@msgbox gUnknown_0827301B, MSGBOX_DEFAULT
-	@closemessage
-	fadeinbgm 0
+	fadedefaultbgm
 	setflag FLAG_REGI_DOORS_OPENED
 	compare VAR_RYU_DS_LANA_STAGE, 41
 	goto_if_ne ryu_end
@@ -38,10 +36,12 @@ SCH_OpenDoors:: @ 82391F8
 
 SCH_LanaSCMessage::
 	msgbox SCH_LanaSCMsg
+	closemessage
 	return
 
 SCH_NoLanaSCMessage::
 	msgbox SCH_NoLanaSCMsg
+	closemessage
 	return
 
 SealedChamber_InnerRoom_EventScript_NoEffect:: @ 8239253
@@ -141,6 +141,7 @@ SCH_AfterBattle::
 	setvar VAR_RYU_DS_LANA_STAGE, 41
 	applymovement 1, SCH_Fall
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
+	setflag FLAG_TEMP_B
 	call SCH_OpenDoors
 	applymovement 1, SCH_diagonal
 	applymovement OBJ_EVENT_ID_PLAYER, SCH_diagonal

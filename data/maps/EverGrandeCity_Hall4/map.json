@@ -1,74 +1,76 @@
 {
-    "allow_cycling": false,
-    "allow_escaping": false,
-    "allow_running": false,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-    ],
-    "connections": null,
-    "coord_events": [
-        {
-            "elevation": 3,
-            "script": "H4_GoToPartnerChampionRoom",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 5,
-            "y": 4
-        },
-        {
-            "elevation": 0,
-            "script": "H4_GoToPartnerChampionRoom",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 5,
-            "y": 5
-        },
-        {
-            "elevation": 0,
-            "script": "H4_GoToPartnerChampionRoom",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 5,
-            "y": 3
-        },
-        {
-            "elevation": 0,
-            "script": "H4_GoToPartnerChampionRoom",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 5,
-            "y": 6
-        }
-    ],
-    "id": "MAP_EVER_GRANDE_CITY_HALL4",
-    "layout": "LAYOUT_EVER_GRANDE_CITY_HALL4",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_C_ROAD",
-    "name": "EverGrandeCity_Hall4",
-    "object_events": [
-    ],
-    "region_map_section": "MAPSEC_EVER_GRANDE_CITY",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-        {
-            "dest_map": "MAP_EVER_GRANDE_CITY_DRAKES_ROOM",
-            "dest_warp_id": 1,
-            "elevation": 3,
-            "x": 5,
-            "y": 33
-        },
-        {
-            "dest_map": "MAP_EVER_GRANDE_CITY_CHAMPIONS_ROOM",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 5,
-            "y": 2
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_EVER_GRANDE_CITY_HALL4",
+  "name": "EverGrandeCity_Hall4",
+  "layout": "LAYOUT_EVER_GRANDE_CITY_HALL4",
+  "music": "MUS_C_ROAD",
+  "region_map_section": "MAPSEC_EVER_GRANDE_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 5,
+      "y": 33,
+      "elevation": 3,
+      "dest_map": "MAP_EVER_GRANDE_CITY_DRAKES_ROOM",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 5,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_EVER_GRANDE_CITY_CHAMPIONS_ROOM",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 6,
+      "elevation": 3,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "H4_GoToPartnerChampionRoom"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "H4_GoToPartnerChampionRoom"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 3,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "H4_GoToPartnerChampionRoom"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "H4_GoToPartnerChampionRoom"
+    }
+  ],
+  "bg_events": [
+
+  ]
 }
