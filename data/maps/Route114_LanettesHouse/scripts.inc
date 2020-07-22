@@ -1,5 +1,5 @@
 Route114_LanettesHouse_MapScripts:: @ 822B2C8
-	map_script MAP_SCRIPT_ON_TRANSITION, Route114_LanettesHouse_OnTransition
+	map_script ON_TRANSITION, Route114_LanettesHouse_OnTransition
 	map_script ON_FRAME, Ryu_LNH_RomChek
 	.byte 0
 

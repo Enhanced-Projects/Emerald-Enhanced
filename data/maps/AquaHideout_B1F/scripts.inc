@@ -1,6 +1,6 @@
 AquaHideout_B1F_MapScripts:: @ 82339A7
-	map_script MAP_SCRIPT_ON_RESUME, AquaHideout_B1F_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, AquaHideout_B1F_OnTransition
+	map_script ON_RESUME, AquaHideout_B1F_OnResume
+	map_script ON_TRANSITION, AquaHideout_B1F_OnTransition
 	.byte 0
 
 AquaHideout_B1F_OnResume: @ 82339B2

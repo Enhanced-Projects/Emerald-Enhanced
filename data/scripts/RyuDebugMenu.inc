@@ -184,7 +184,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto RCR_OverlordRyuBossFight
+	goto RyuDebug_Init_GiveAll
 	release
 	end
 

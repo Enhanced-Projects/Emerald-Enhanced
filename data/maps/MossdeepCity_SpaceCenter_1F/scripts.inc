@@ -1,7 +1,7 @@
 MossdeepCity_SpaceCenter_1F_MapScripts:: @ 8222F41
-	map_script MAP_SCRIPT_ON_LOAD , MossdeepCity_SpaceCenter_1F_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_SpaceCenter_1F_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SPC_CheckDevonQuest
+	map_script ON_LOAD , MossdeepCity_SpaceCenter_1F_OnLoad
+	map_script ON_TRANSITION, MossdeepCity_SpaceCenter_1F_OnTransition
+	map_script ON_FRAME, SPC_CheckDevonQuest
 	.byte 0
 
 SPC_CheckDevonQuest::

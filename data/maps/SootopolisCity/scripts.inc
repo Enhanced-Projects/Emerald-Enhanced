@@ -1,6 +1,6 @@
 SootopolisCity_MapScripts:: @ 81E565C
-	map_script MAP_SCRIPT_ON_TRANSITION, SootopolisCity_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, SootopolisCity_OnResume
+	map_script ON_TRANSITION, SootopolisCity_OnTransition
+	map_script ON_RESUME, SootopolisCity_OnResume
 	.byte 0
 
 SootopolisCity_OnResume: @ 81E590B

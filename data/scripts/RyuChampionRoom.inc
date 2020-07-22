@@ -1,4 +1,4 @@
-@====map_script MAP_SCRIPT_ON_FRAME_TABLE, RyuThroneRoomCheckFollower
+@====map_script ON_FRAME, RyuThroneRoomCheckFollower
 	@.byte 0
 
 

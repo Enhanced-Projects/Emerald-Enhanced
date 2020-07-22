@@ -1,6 +1,6 @@
 EverGrandeCity_Hall1_MapScripts:: @ 8229569
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, EverGrandeCity_Hall1_OnWarp
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, RyuThroneRoomCheckFollower
+	map_script ON_FRAME, RyuThroneRoomCheckFollower
 	.byte 0
 
 EverGrandeCity_Hall1_OnWarp: @ 822956F

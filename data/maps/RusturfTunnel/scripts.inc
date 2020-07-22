@@ -1,6 +1,6 @@
 RusturfTunnel_MapScripts:: @ 822CE27
-	map_script MAP_SCRIPT_ON_TRANSITION, RusturfTunnel_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, RusturfTunnel_OnFrame
+	map_script ON_TRANSITION, RusturfTunnel_OnTransition
+	map_script ON_FRAME, RusturfTunnel_OnFrame
 	.byte 0
 
 RusturfTunnel_OnFrame: @ 822CE32

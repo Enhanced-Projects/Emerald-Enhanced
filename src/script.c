@@ -293,17 +293,17 @@ u8 *MapHeaderCheckScriptTable(u8 tag)
 
 void RunOnLoadMapScript(void)
 {
-    MapHeaderRunScriptType(MAP_SCRIPT_ON_LOAD );
+    MapHeaderRunScriptType(ON_LOAD );
 }
 
 void RunOnTransitionMapScript(void)
 {
-    MapHeaderRunScriptType(MAP_SCRIPT_ON_TRANSITION);
+    MapHeaderRunScriptType(ON_TRANSITION);
 }
 
 void RunOnResumeMapScript(void)
 {
-    MapHeaderRunScriptType(MAP_SCRIPT_ON_RESUME);
+    MapHeaderRunScriptType(ON_RESUME);
 }
 
 void RunOnReturnToFieldMapScript(void)
@@ -318,7 +318,7 @@ void RunOnDiveWarpMapScript(void)
 
 bool8 TryRunOnFrameMapScript(void)
 {
-    u8 *ptr = MapHeaderCheckScriptTable(MAP_SCRIPT_ON_FRAME_TABLE);
+    u8 *ptr = MapHeaderCheckScriptTable(ON_FRAME);
 
     if (!ptr)
         return FALSE;

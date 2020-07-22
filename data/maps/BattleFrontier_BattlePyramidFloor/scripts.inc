@@ -1,7 +1,7 @@
 BattleFrontier_BattlePyramidFloor_MapScripts:: @ 8252A33
-	map_script MAP_SCRIPT_ON_RESUME, BattleFrontier_BattlePyramidFloor_OnResume
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattlePyramidFloor_OnFrame
-	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattlePyramidFloor_OnTransition
+	map_script ON_RESUME, BattleFrontier_BattlePyramidFloor_OnResume
+	map_script ON_FRAME, BattleFrontier_BattlePyramidFloor_OnFrame
+	map_script ON_TRANSITION, BattleFrontier_BattlePyramidFloor_OnTransition
 	.byte 0
 
 BattleFrontier_BattlePyramidFloor_OnFrame: @ 8252A43

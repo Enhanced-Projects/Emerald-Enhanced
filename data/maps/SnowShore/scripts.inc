@@ -1,5 +1,5 @@
 SnowShore_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, SnowShore_OnTransition
+	map_script ON_TRANSITION, SnowShore_OnTransition
 	.byte 0
 
 SnowShore_OnTransition:

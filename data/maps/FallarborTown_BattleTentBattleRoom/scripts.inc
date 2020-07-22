@@ -1,6 +1,6 @@
 FallarborTown_BattleTentBattleRoom_MapScripts:: @ 8200899
-	map_script MAP_SCRIPT_ON_TRANSITION, FallarborTown_BattleTentBattleRoom_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, FallarborTown_BattleTentBattleRoom_OnFrame
+	map_script ON_TRANSITION, FallarborTown_BattleTentBattleRoom_OnTransition
+	map_script ON_FRAME, FallarborTown_BattleTentBattleRoom_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, FallarborTown_BattleTentBattleRoom_OnWarp
 	.byte 0
 

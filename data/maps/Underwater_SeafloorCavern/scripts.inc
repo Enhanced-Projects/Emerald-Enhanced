@@ -1,7 +1,7 @@
 Underwater_SeafloorCavern_MapScripts:: @ 823433B
-	map_script MAP_SCRIPT_ON_RESUME, Underwater_SeafloorCavern_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, Underwater_SeafloorCavern_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD , Underwater_SeafloorCavern_OnLoad
+	map_script ON_RESUME, Underwater_SeafloorCavern_OnResume
+	map_script ON_TRANSITION, Underwater_SeafloorCavern_OnTransition
+	map_script ON_LOAD , Underwater_SeafloorCavern_OnLoad
 	.byte 0
 
 Underwater_SeafloorCavern_OnTransition: @ 823434B

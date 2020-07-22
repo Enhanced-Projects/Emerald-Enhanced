@@ -1,7 +1,7 @@
 Route114_MapScripts:: @ 81F252F
-	map_script MAP_SCRIPT_ON_TRANSITION, Route114_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD , Route114_OnLoad
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route114_OnFrame
+	map_script ON_TRANSITION, Route114_OnTransition
+	map_script ON_LOAD , Route114_OnLoad
+	map_script ON_FRAME, Route114_OnFrame
 	.byte 0
 
 Route114_OnTransition: @ 81F253F

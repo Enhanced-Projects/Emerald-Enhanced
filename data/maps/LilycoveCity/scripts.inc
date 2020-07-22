@@ -1,6 +1,6 @@
 LilycoveCity_MapScripts:: @ 81E2B3C
-	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD , LilycoveCity_OnLoad
+	map_script ON_TRANSITION, LilycoveCity_OnTransition
+	map_script ON_LOAD , LilycoveCity_OnLoad
 	map_script ON_FRAME, LeafScene
 	.byte 0
 
@@ -15,6 +15,12 @@ LeafScene::
 LCC_ShellyFollowerInteraction::
 	lockall
 	setvar VAR_TEMP_0, 100
+	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_end
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_AQUA_MEMBER_F
+	goto_if_eq LCC_ShellyFollowerScene
+	goto ryu_end
+
+LCC_ShellyFollowerScene::
 	applymovement OBJ_EVENT_ID_PLAYER, LCC_ToCoast
 	applymovement OBJ_EVENT_ID_FOLLOWER, LCC_ToCoast
 	waitmovement OBJ_EVENT_ID_FOLLOWER
@@ -31,7 +37,7 @@ LCC_ShellyFollowerInteraction::
 	end
 	
 LCC_ShellyThanksFor:
-    .string "Thanks for bringing me here.\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Thanks for bringing me here.\n"
     .string "The ocean always makes me feel at\l"
     .string "home.$"
 
@@ -51,7 +57,7 @@ LCC_FacePlayerSS::
 	step_end
 	
 LCC_ShellyWhenIWasLittle:
-    .string "Shelly: When I was little, I used\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}When I was little, I used\n"
     .string "to stand here every day. I always\p"
     .string "loved the sea, and perhaps that's\n"
     .string "why I found my way into Team Aqua.\p"

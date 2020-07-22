@@ -1,5 +1,5 @@
 RustburoCity_DevonCorp2fStoryMap_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, DC_MainDevonLineCheck
+	map_script ON_FRAME, DC_MainDevonLineCheck
 	.byte 0
 	
 DC_MainDevonLineCheck::

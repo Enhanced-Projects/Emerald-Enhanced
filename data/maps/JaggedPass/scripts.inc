@@ -1,7 +1,7 @@
 JaggedPass_MapScripts:: @ 8230656
-	map_script MAP_SCRIPT_ON_RESUME, JaggedPass_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, JaggedPass_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD , JaggedPass_OnLoad
+	map_script ON_RESUME, JaggedPass_OnResume
+	map_script ON_TRANSITION, JaggedPass_OnTransition
+	map_script ON_LOAD , JaggedPass_OnLoad
 	.byte 0
 
 JaggedPass_OnResume: @ 8230666
