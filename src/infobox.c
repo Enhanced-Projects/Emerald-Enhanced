@@ -41,6 +41,13 @@ const u8 gText_FHyperOffenseLine4[] = _("can sweep with Merciless doubling");
 const u8 gText_FHyperOffenseLine5[] = _("damage output, while Zangoose has");
 const u8 gText_FHyperOffenseLine6[] = _("Toxic Boost to double its Attack.");
 
+const u8 gText_FFEARTeamLine1[] = _("A FEAR team of level 1 Aron and");
+const u8 gText_FFEARTeamLine2[] = _("Magnemite, backed up by Hippowdon.");
+const u8 gText_FFEARTeamLine3[] = _("Aron has an Endeavor Shell Bell set");
+const u8 gText_FFEARTeamLine4[] = _("aided by Sandstorm. Sturdy");
+const u8 gText_FFEARTeamLine5[] = _("Magnemite paralyzes and Swaggers,");
+const u8 gText_FFEARTeamLine6[] = _("while Recycling its Berry Juice");
+
 //String list groups for individual infoboxes
 
 static const struct InfoBox sInfoBoxPokemonData[] = 
@@ -63,13 +70,24 @@ static const struct InfoBox sInfoBoxFHyperOffenseStarter[] =
     {gText_FHyperOffenseLine6},
 };
 
+static const struct InfoBox sInfoBoxFFEARTeamStarter[] = 
+{
+    {gText_FFEARTeamLine1},
+    {gText_FFEARTeamLine2},
+    {gText_FFEARTeamLine3},
+    {gText_FFEARTeamLine4},
+    {gText_FFEARTeamLine5},
+    {gText_FFEARTeamLine6},
+};
+
 //You also need to add INFOBOX(name) to the bottom of vars.h so that these can be accessed from script.
 
 //List of infobox groups used when calling them
 static const struct InfoBoxListStruct sInfoBoxes[] =
 {
     BOXLIST(sInfoBoxPokemonData),  //INFOBOXPOKEMONDATA
-    BOXLIST(sInfoBoxFHyperOffenseStarter) //INFOBOX_F_STARTER_HYPER_OFFENSE
+    BOXLIST(sInfoBoxFHyperOffenseStarter), //INFOBOX_F_STARTER_HYPER_OFFENSE
+    BOXLIST(sInfoBoxFFEARTeamStarter) //INFOBOX_F_STARTER_FEAR_TEAM
 };
 
 void PrintInfoTable(u8 windowId, u8 itemCount, const struct InfoBox *strs)

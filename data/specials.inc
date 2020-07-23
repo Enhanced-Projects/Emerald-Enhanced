@@ -556,7 +556,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuIncrementLapCount
 	def_special ResetCyclingRoadChallengeData
 	def_special RyuSetMonMove
-	def_special RyuOtherDataChecker
 	def_special RyuIvSetter
 	def_special RyuSetFriendship
 	def_special RyuResetEvs
