@@ -8362,5 +8362,32 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .nature = NATURE_IMPISH,
         .ivs = 31,
         .ability = 0
+    },
+    [FRONTIER_MON_HIPPOWDON_FEAR] = {
+        .species = SPECIES_HIPPOWDON,
+        .moves = {MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_ROCK_SLIDE, MOVE_SLACK_OFF},
+        .heldItem = ITEM_SMOOTH_ROCK,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_ARON_FEAR] = {
+        .species = SPECIES_ARON,
+        .moves = {MOVE_ENDEAVOR, MOVE_SANDSTORM, MOVE_TOXIC, MOVE_EE_PROTECT},
+        .heldItem = ITEM_SHELL_BELL,
+        .evSpread = 0,
+        .nature = NATURE_BOLD,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_MAGNEMITE_FEAR] = {
+        .species = SPECIES_MAGNEMITE,
+        .moves = {MOVE_THUNDER_WAVE, MOVE_SWAGGER, MOVE_RECYCLE, MOVE_MAGIC_COAT},
+        .heldItem = ITEM_BERRY_JUICE,
+        .evSpread = 0,
+        .nature = NATURE_BOLD,
+        .ivs = 31,
+        .ability = 1
     }
 };

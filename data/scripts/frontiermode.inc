@@ -52,7 +52,7 @@ RyuFrontierStarterMenu3::
 	case 2, RF_Gimmick
 	case 3, RF_Eggtactical
 	case 4, RF_Masochist
-	case 5, RF_Blank3
+	case 5, RF_FEAR
 	case 6, RF_Blank3
 	case 7, RF_Blank3
 	case 8, RF_StarterMenu1Jump
@@ -66,12 +66,6 @@ RF_StarterMenu2Jump::
 
 RF_StarterMenu1Jump::
     goto RyuFrontierStarterMenu1
-
-
-	
-@Ariados: 160
-@Toxicroak: 708 
-@Zangoose: 78
 	
 
 RF_HyperOffense::
@@ -97,6 +91,9 @@ RF_HyperOffense::
 
 RF_HyperOffenseIntro:
 	.string "Showing the\nHyper Offense team description.$"
+
+RF_FearTeamIntro:
+	.string "Showing the FEAR team\ndescription.$"
 	
 RF_Offense::
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -171,6 +168,29 @@ RF_Eggtactical::
 	end
 	
 RF_Masochist::
+	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
+	release
+	end
+
+RF_FEAR::
+	drawinfobox INFOBOX_F_STARTER_FEAR_TEAM
+	msgbox RF_FearTeamIntro
+	removeinfobox
+	closemessage
+	msgbox RF_ChooseThisSet, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_ne RyuFrontierStarterMenu1
+	setvar VAR_TEMP_A, 975
+	special RyuGiveFrontierMon
+	delay 20
+	setvar VAR_TEMP_A, 976
+	setflag FLAG_TEMP_D
+	special RyuGiveFrontierMon
+	delay 20
+	setvar VAR_TEMP_A, 977
+	setflag FLAG_TEMP_D
+	special RyuGiveFrontierMon
+	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
 	release
 	end

@@ -992,7 +992,11 @@
 #define FRONTIER_MON_MEGA_AUDINO_2       972
 #define FRONTIER_MON_MEGA_DIANCIE_1      973
 #define FRONTIER_MON_MEGA_DIANCIE_2      974
+//Frontier starter teams
+#define FRONTIER_MON_HIPPOWDON_FEAR      975
+#define FRONTIER_MON_ARON_FEAR           976
+#define FRONTIER_MON_MAGNEMITE_FEAR      977
 
-#define NUM_FRONTIER_MONS                975
+#define NUM_FRONTIER_MONS                978
 
 #endif //GUARD_CONSTANTS_BATTLE_FRONTIER_MONS_H

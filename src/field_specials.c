@@ -4928,6 +4928,7 @@ void RyuSetFriendship(void)
     u8 value = 250;
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetEVHP(void)
@@ -4935,6 +4936,7 @@ void RyuSetEVHP(void)
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetEVATK(void)
@@ -4942,6 +4944,7 @@ void RyuSetEVATK(void)
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetEVDEF(void)
@@ -4949,6 +4952,7 @@ void RyuSetEVDEF(void)
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_DEF_EV, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetEVSPATK(void)
@@ -4956,6 +4960,7 @@ void RyuSetEVSPATK(void)
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetEVSPDEF(void)
@@ -4963,6 +4968,7 @@ void RyuSetEVSPDEF(void)
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_EV, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetEVSPE(void)
@@ -4970,6 +4976,7 @@ void RyuSetEVSPE(void)
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_EV, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetMonMove(void)
@@ -5004,19 +5011,6 @@ int RyuCalculateCurrentExpCoefficient(void)
     return calc;
 }
 
-void RyuOtherDataChecker(void)
-{
-    u8 obed = 0;
-    u8 pers = 0;
-    u8 ribb = 0;
-    obed = GetMonData(&gPlayerParty[0], MON_DATA_FRIENDSHIP);
-    pers = GetMonData(&gPlayerParty[0], MON_DATA_PERSONALITY);
-    ribb = GetMonData(&gPlayerParty[0], MON_DATA_RIBBONS);
-    ConvertIntToDecimalStringN(gStringVar1, obed, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, pers, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar3, ribb, STR_CONV_MODE_LEFT_ALIGN, 3);
-}
-
 void RyuResetEvs(void)
 {
     u8 ev = 0;
@@ -5027,6 +5021,7 @@ void RyuResetEvs(void)
     SetMonData(&gPlayerParty[0], MON_DATA_SPATK_EV, &ev);
     SetMonData(&gPlayerParty[0], MON_DATA_SPDEF_EV, &ev);
     SetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV, &ev);
+    CalculateMonStats(&gPlayerParty[0]);
 }
 
 void RyuGenerateReward(void)
