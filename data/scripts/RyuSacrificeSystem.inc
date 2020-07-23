@@ -88,6 +88,9 @@ GCMS_Status::
 	end
 	
 GCMS_CreateMon::
+	checkitem ITEM_SHINY_CHARM, 1
+	compare VAR_RESULT, TRUE
+	goto_if_eq GCMS_ShinyCharmPresent
 	getpartysize
 	compare VAR_RESULT, 6
 	goto_if_eq GCMS_NoSpace
@@ -97,6 +100,20 @@ GCMS_CreateMon::
 	compare VAR_RESULT, 1
 	goto_if_ne GCMS_CancelCreate
 	goto GCMS_NatureMenu
+
+GCMS_ShinyCharmPresent::
+	msgbox GCMS_ShinyCharmWarningMsg
+	release
+	end
+
+GCMS_ShinyCharmWarningMsg:
+	.string "{COLOR RED}{SHADOW LIGHT_GREY}WARNING!\n"
+	.string "You have a Shiny Charm with you.\p"
+	.string "Creating a mon has been cancelled\n"
+	.string "because the shiny charm rerolls\l"
+	.string "your stats and ability.\p"
+	.string "Go deposit your Shiny Charm before\n"
+	.string "attempting to create your mon.$"
 
 GCMS_NatureMenu::
 	msgbox GCMS_ChooseNatureMsg
