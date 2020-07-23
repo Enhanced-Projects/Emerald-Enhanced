@@ -145,7 +145,7 @@
 #define FLAG_DEFEATED_RIVAL_ROUTE_104        0x7D
 #define FLAG_DEFEATED_WALLY_VICTORY_ROAD     0x7E // EE-Unused
 #define FLAG_MET_PRETTY_PETAL_SHOP_OWNER     0x7F
-#define FLAG_ENABLE_ROXANNE_FIRST_CALL       0x80 // Set after defeating Brawly. This will activate a call with Roxanne in order to register her.
+#define FLAG_ENABLE_ROXANNE_FIRST_CALL       0x80 // EE-Unused
 #define FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN  0x81
 #define FLAG_DEFEATED_RIVAL_ROUTE103         0x82
 #define FLAG_RECEIVED_DOLL_LANETTE           0x83
@@ -153,7 +153,7 @@
 #define FLAG_RECEIVED_AMULET_COIN            0x85
 #define FLAG_PENDING_DAYCARE_EGG             0x86
 #define FLAG_THANKED_FOR_PLAYING_WITH_WALLY  0x87 // EE-Unused
-#define FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0x88 // Set after defeating Wally outside Mauville Gym. Will activate a call later to register Wally.
+#define FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0x88 // EE-Unused
 #define FLAG_RECEIVED_TM51                   0x89
 #define FLAG_SCOTT_CALL_FORTREE_GYM          0x8A // Triggers call from Scott after defeating Winona
 #define FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY   0x8B
@@ -274,7 +274,7 @@
 #define FLAG_RECEIVED_DURIN_BERRY            0xFB
 #define FLAG_RECEIVED_BELUE_BERRY            0xFC
 #define FLAG_ENABLE_RIVAL_MATCH_CALL         0xFD // EE-Unused
-#define FLFLAG_RECEIVED_CHARCOAL             0xFE // Why is this a FLFLAG
+#define FLFLAG_RECEIVED_CHARCOAL             0xFE // "Why is this a FLFLAG" -Toby
 #define FLAG_LATIOS_OR_LATIAS_ROAMING        0xFF
 #define FLAG_RECEIVED_REPEAT_BALL            0x100
 #define FLAG_RECEIVED_OLD_ROD                0x101
@@ -290,7 +290,7 @@
 #define FLAG_RECEIVED_REVIVED_FOSSIL_MON     0x10B
 #define FLAG_SECRET_BASE_REGISTRY_ENABLED    0x10C
 #define FLAG_RECEIVED_TM46                   0x10D
-#define FLAG_RYU_PLAYER_AQUA_ADMIN           0x10E  // Set but never read
+#define FLAG_RYU_PLAYER_AQUA_ADMIN           0x10E // Set but never read
 #define FLAG_EVIL_TEAM_ESCAPED_STERN_SPOKE   0x10F
 #define FLAG_RECEIVED_EXP_SHARE              0x110
 #define FLAG_POKERUS_EXPLAINED               0x111
@@ -327,11 +327,11 @@
 #define FLAG_ADDED_MATCH_CALL_TO_POKENAV     0x130 // EE-Unused
 #define FLAG_REGISTERED_STEVEN_POKENAV       0x131 // EE-Unused
 #define FLAG_ENABLE_NORMAN_MATCH_CALL        0x132 // EE-Unused
-#define FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN 0x133 // Set after you follow Steven to the entrance of the Cave of Origin.
+#define FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN 0x133 // EE-Unused
 #define FLAG_MET_ARCHIE_SOOTOPOLIS           0x134 // EE-Unused
 #define FLAG_MET_MAXIE_SOOTOPOLIS            0x135 // EE-Unused
 #define FLAG_MET_SCOTT_RUSTBORO              0x136
-#define FLAG_WALLACE_GOES_TO_SKY_PILLAR      0x137 // Set after speaking to Wallace within the Cave of Origin.
+#define FLAG_WALLACE_GOES_TO_SKY_PILLAR      0x137 // EE-Unused
 #define FLAG_RECEIVED_TM57                   0x138
 #define FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS    0x139
 #define FLAG_RECEIVED_AURORA_TICKET          0x13A
@@ -367,7 +367,7 @@
 #define FLAG_ENTERED_CONTEST                 0x155
 #define FLAG_MET_SLATEPORT_FANCLUB_CHAIRMAN  0x156
 #define FLAG_MET_BATTLE_FRONTIER_GAMBLER     0x157
-#define FLAG_ENABLE_MR_STONE_POKENAV         0x158
+#define FLAG_ENABLE_MR_STONE_POKENAV         0x158 // EE-Unused
 #define FLAG_NURSE_MENTIONS_GOLD_CARD        0x159
 #define FLAG_MET_FRONTIER_BEAUTY_MOVE_TUTOR  0x15A
 #define FLAG_MET_FRONTIER_SWIMMER_MOVE_TUTOR 0x15B
@@ -742,14 +742,14 @@
 #define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
 #define FLAG_HIDE_APPRENTICE                                        0x2BD
 #define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE // EE-Unused
-#define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
-#define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x2C0
-#define FLAG_HIDE_UNION_ROOM_PLAYER_3                               0x2C1
-#define FLAG_HIDE_UNION_ROOM_PLAYER_4                               0x2C2
-#define FLAG_HIDE_UNION_ROOM_PLAYER_5                               0x2C3
-#define FLAG_HIDE_UNION_ROOM_PLAYER_6                               0x2C4
-#define FLAG_HIDE_UNION_ROOM_PLAYER_7                               0x2C5
-#define FLAG_HIDE_UNION_ROOM_PLAYER_8                               0x2C6
+#define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF // EE-Unused
+#define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x2C0 // EE-Unused
+#define FLAG_HIDE_UNION_ROOM_PLAYER_3                               0x2C1 // EE-Unused
+#define FLAG_HIDE_UNION_ROOM_PLAYER_4                               0x2C2 // EE-Unused
+#define FLAG_HIDE_UNION_ROOM_PLAYER_5                               0x2C3 // EE-Unused
+#define FLAG_HIDE_UNION_ROOM_PLAYER_6                               0x2C4 // EE-Unused
+#define FLAG_HIDE_UNION_ROOM_PLAYER_7                               0x2C5 // EE-Unused
+#define FLAG_HIDE_UNION_ROOM_PLAYER_8                               0x2C6 // EE-Unused
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_1               0x2C7
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_2               0x2C8
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_3               0x2C9
@@ -847,7 +847,7 @@
 #define FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER                   0x323
 #define FLAG_HIDE_MAUVILLE_CITY_WALLY                               0x324 // EE-Unused
 #define FLAG_HIDE_MAUVILLE_CITY_WALLYS_UNCLE                        0x325 // EE-Unused
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY                0x326
+#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY                0x326 // EE-Unused
 #define FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND                   0x327
 #define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND     0x328
 #define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE         0x329
@@ -1390,7 +1390,7 @@
 #define FLAG_VISITED_EVER_GRANDE_CITY               (SYSTEM_FLAGS + 0x1E)
 
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
-#define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
+#define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20) // EE-Unused
 
 #define FLAG_RYU_BOSS_WILD                          (SYSTEM_FLAGS + 0x21) 
 #define FLAG_RYU_SHELLY_MEGA_REWARD                 (SYSTEM_FLAGS + 0x22) 

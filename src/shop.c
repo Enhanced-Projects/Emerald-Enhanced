@@ -484,7 +484,7 @@ static void SetShopMenuCallback(void (* callback)(void))
     gMartInfo.callback = callback;
 }
 
-extern void CountBadges();
+extern int CountBadges();
 
 static void SetShopItemsForSale(const u16 *items)
 {

@@ -662,7 +662,7 @@
     {
       "type": "trigger",
       "x": 8,
-      "y": 64,
+      "y": 63,
       "elevation": 3,
       "var": "0",
       "var_value": "0",
@@ -671,7 +671,7 @@
     {
       "type": "trigger",
       "x": 9,
-      "y": 65,
+      "y": 64,
       "elevation": 3,
       "var": "0",
       "var_value": "0",
@@ -856,24 +856,6 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "r111_TrainerHillBlockEntry"
-    },
-    {
-      "type": "trigger",
-      "x": 8,
-      "y": 63,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
-    },
-    {
-      "type": "trigger",
-      "x": 9,
-      "y": 63,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
     }
   ],
   "bg_events": [
