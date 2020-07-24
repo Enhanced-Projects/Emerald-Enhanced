@@ -1,6 +1,6 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": false,
+    "allow_cycling": false,
+    "allow_escaping": false,
     "allow_running": false,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -55,7 +55,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 4
         },
@@ -68,20 +68,20 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "LRT_BrendanAfterLilycoveScene",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 0,
             "y": 2
         },
         {
             "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
+            "flag": "FLAG_HIDE_CHAMPIONS_ROOM_STEVEN",
             "graphics_id": "OBJ_EVENT_GFX_LEAF",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 0,
             "y": 4
         },
@@ -94,7 +94,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 7,
             "y": 2
         }

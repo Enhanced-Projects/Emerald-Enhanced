@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": true,
+    "allow_cycling": true,
+    "allow_escaping": true,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -31,7 +31,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "MeteorFalls_1F_2R_EventScript_Nicolas",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 13,
             "y": 2
         },
@@ -44,7 +44,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "MeteorFalls_1F_2R_EventScript_John",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 6,
             "y": 12
         },
@@ -57,7 +57,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "MeteorFalls_1F_2R_EventScript_Jay",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 7,
             "y": 12
         }

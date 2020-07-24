@@ -3637,18 +3637,30 @@ void RyuGiveFrontierMon(void)
     s32 count;
     s32 evs[NUM_STATS];
     u8 level = 50;
+    u8 level2 = 0;
     u8 i, temp;
     u8 party_id = CalculatePlayerPartyCount();
-
+    bool8 IsPickingFrontierStarter = (FlagGet(FLAG_RYU_CHOOSING_FRONTIER_STARTER));
     const struct FacilityMon *mon = &gBattleFrontierMons[Random() % 881];
+
+    if (IsPickingFrontierStarter == TRUE)
+    {
+        mon = &gBattleFrontierMons[(VarGet(VAR_TEMP_A))];
+        level = 100;
+        level2 = 1;
+    }
+    else if ((FlagGet(FLAG_RYU_PASSCODE_FRONTIER_MON_DEV) ==1 ) && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+    {
+        mon = &gBattleFrontierMons[(VarGet(VAR_TEMP_6))];
+        level = 125;
+    }
+    else
+    {
+    }
+    
 
     Random();
 
-    if ((FlagGet(FLAG_RYU_PASSCODE_FRONTIER_MON_DEV) ==1 ) && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
-    {
-        mon = &gBattleFrontierMons[(VarGet(VAR_TEMP_6))];
-        level = 100;
-    }
 
     temp = mon->evSpread;
     count = 0;
@@ -3667,7 +3679,11 @@ void RyuGiveFrontierMon(void)
 
     if (party_id != 6)
     {
-        CreateMonWithNature(&gPlayerParty[party_id], mon->species, level, mon->ivs, mon->nature);
+        if (FlagGet(FLAG_TEMP_D) == 1)
+            CreateMonWithNature(&gPlayerParty[party_id], mon->species, level2, mon->ivs, mon->nature);
+        else
+            CreateMonWithNature(&gPlayerParty[party_id], mon->species, level, mon->ivs, mon->nature);
+
         SetMonData(&gPlayerParty[party_id], MON_DATA_MOVE1, &mon->moves[0]);
         SetMonData(&gPlayerParty[party_id], MON_DATA_MOVE2, &mon->moves[1]);
         SetMonData(&gPlayerParty[party_id], MON_DATA_MOVE3, &mon->moves[2]);
@@ -3681,5 +3697,6 @@ void RyuGiveFrontierMon(void)
         SetMonData(&gPlayerParty[party_id], MON_DATA_ABILITY_NUM, &mon->ability);
         SetMonData(&gPlayerParty[party_id], MON_DATA_HELD_ITEM, &mon->heldItem);
         CalculateMonStats(&gPlayerParty[party_id]);
+        FlagClear(FLAG_TEMP_D);
     }
 }

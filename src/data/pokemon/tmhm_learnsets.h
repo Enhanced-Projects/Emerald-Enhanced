@@ -14045,6 +14045,7 @@ const u32 gTMHMLearnsets[][2] =
 
     [SPECIES_MINCCINO]    = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
 											| TMHM(TM04_CALM_MIND)
+											| TMHM(TM09_BULLET_SEED)
 											| TMHM(TM28_DIG)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM42_FACADE)

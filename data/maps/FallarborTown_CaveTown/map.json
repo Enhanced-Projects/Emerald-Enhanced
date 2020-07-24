@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": true,
+    "allow_cycling": true,
+    "allow_escaping": true,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -95,7 +95,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "FallarborTown_CaveTown_EventScript_MineShaftBlocker",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 54,
             "y": 9
         },
@@ -108,7 +108,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "FallarborTown_CaveTown_EventScript_OldFart",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 39,
             "y": 15
         },
@@ -121,7 +121,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "FallarborTown_CaveTown_EventScript_MiddleManiac",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 42,
             "y": 16
         },
@@ -134,7 +134,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "FallarborTown_CaveTown_EventScript_MiningLover",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 51,
             "y": 11
         },
@@ -147,7 +147,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "FallarborTown_CaveTown_EventScript_Questioner",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 30,
             "y": 11
         },
@@ -160,7 +160,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "FallarborTown_CaveTown_EventScript_DrillScientist",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 45,
             "y": 24
         },
@@ -173,7 +173,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "FallarborTown_CaveTown_EventScript_Boy",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 13
         }

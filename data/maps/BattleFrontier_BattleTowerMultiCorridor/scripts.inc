@@ -1,7 +1,7 @@
 BattleFrontier_BattleTowerMultiCorridor_MapScripts:: @ 8248D4A
-	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattleTowerMultiCorridor_OnTransition
+	map_script ON_TRANSITION, BattleFrontier_BattleTowerMultiCorridor_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattleTowerMultiCorridor_OnWarp
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleTowerMultiCorridor_OnFrame
+	map_script ON_FRAME, BattleFrontier_BattleTowerMultiCorridor_OnFrame
 	.byte 0
 
 	@ On this map the player (OBJ_EVENT_ID_PLAYER) is hidden

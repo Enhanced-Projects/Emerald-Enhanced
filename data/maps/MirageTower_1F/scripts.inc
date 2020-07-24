@@ -1,5 +1,5 @@
 MirageTower_1F_MapScripts:: @ 823AD01
-	map_script MAP_SCRIPT_ON_TRANSITION, MirageTower_1F_OnTransition
+	map_script ON_TRANSITION, MirageTower_1F_OnTransition
 	.byte 0
 
 MirageTower_1F_OnTransition: @ 823AD07

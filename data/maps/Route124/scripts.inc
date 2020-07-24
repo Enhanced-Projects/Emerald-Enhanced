@@ -1,5 +1,5 @@
 Route124_MapScripts:: @ 81F656C
-	map_script MAP_SCRIPT_ON_TRANSITION, Route124_OnTransition
+	map_script ON_TRANSITION, Route124_OnTransition
 	.byte 0
 
 Route124_OnTransition: @ 81F6572

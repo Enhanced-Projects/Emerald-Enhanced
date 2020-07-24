@@ -14,8 +14,6 @@ TC_EvIvCheckerScript::
 	goto_if_set FLAG_RYU_HARDCORE_MODE, TC_IVEV_NOHEAL
 	delay 10
 	special HealPlayerParty
-	playfanfare MUS_ME_ASA
-	waitfanfare
 	msgbox Ryu_PkmnHealed
 	release
 	end

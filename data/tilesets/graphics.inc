@@ -1789,3 +1789,23 @@ gTilesetPalettes_SnowShore::
 	.align 2
 gTilesetTiles_SnowShore::
 	.incbin "data/tilesets/secondary/snowshore/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_PolarPillar::
+	.incbin "data/tilesets/secondary/polarpillar/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/polarpillar/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/polarpillar/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/polarpillar/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/polarpillar/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/polarpillar/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/polarpillar/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/polarpillar/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/polarpillar/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/polarpillar/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/polarpillar/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/polarpillar/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/polarpillar/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_PolarPillar::
+	.incbin "data/tilesets/secondary/polarpillar/tiles.4bpp.lz"

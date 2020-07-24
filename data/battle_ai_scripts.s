@@ -725,10 +725,7 @@ AI_CBM_Substitute: @ 82DC568
 
 AI_CBM_LeechSeed: @ 82DC57A
 	if_status3 AI_TARGET, STATUS3_LEECHSEED, Score_Minus10
-	get_target_type1
-	if_equal TYPE_GRASS, Score_Minus10
-	get_target_type2
-	if_equal TYPE_GRASS, Score_Minus10
+	if_type AI_TARGET, TYPE_GRASS, Score_Minus10
 	end
 
 AI_CBM_Disable: @ 82DC595
@@ -862,10 +859,9 @@ AI_CBM_WillOWisp: @ 82DC6B4
 	get_ability AI_TARGET
 	if_equal ABILITY_WATER_VEIL, Score_Minus10
 	if_equal ABILITY_FLARE_BOOST, Score_Minus10
+	if_equal ABILITY_FLASH_FIRE, Score_Minus10
 	if_status AI_TARGET, STATUS1_ANY, Score_Minus10
-	if_type_effectiveness AI_EFFECTIVENESS_x0, Score_Minus10
-	if_type_effectiveness AI_EFFECTIVENESS_x0_5, Score_Minus10
-	if_type_effectiveness AI_EFFECTIVENESS_x0_25, Score_Minus10
+	if_type AI_TARGET, TYPE_FIRE, Score_Minus10
 	if_side_affecting AI_TARGET, SIDE_STATUS_SAFEGUARD, Score_Minus10
 	end
 
@@ -1100,9 +1096,9 @@ AI_CheckViability:
 	if_effect EFFECT_COUNTER, AI_CV_Counter
 	if_effect EFFECT_ENCORE, AI_CV_Encore
 	if_effect EFFECT_PAIN_SPLIT, AI_CV_PainSplit
-	if_effect EFFECT_SNORE, AI_CV_Snore
 	if_effect EFFECT_LOCK_ON, AI_CV_LockOn
 	if_effect EFFECT_SLEEP_TALK, AI_CV_SleepTalk
+	if_effect EFFECT_SNORE, AI_CV_SleepTalk
 	if_effect EFFECT_DESTINY_BOND, AI_CV_DestinyBond
 	if_effect EFFECT_FLAIL, AI_CV_Flail
 	if_effect EFFECT_HEAL_BELL, AI_CV_HealBell
@@ -2391,10 +2387,6 @@ AI_CV_PainSplit_ScoreDown1:
 AI_CV_PainSplit_End:
 	end
 
-AI_CV_Snore:
-	score +2
-	end
-
 AI_CV_LockOn:
 	if_random_less_than 128, AI_CV_LockOn_End
 	score +2
@@ -2403,6 +2395,8 @@ AI_CV_LockOn_End:
 	end
 
 AI_CV_SleepTalk:
+	is_wakeup_turn AI_USER
+	if_equal 1, Score_Minus5
 	if_status AI_USER, STATUS1_SLEEP, Score_Plus10
 	score -5
 	end
@@ -3614,9 +3608,38 @@ AI_ConsiderAllyChosenMove:
 	if_equal 0, AI_ConsiderAllyChosenMoveRet
 	get_move_effect_from_result
 	if_equal EFFECT_HELPING_HAND, AI_PartnerChoseHelpingHand	
-	if_equal EFFECT_PERISH_SONG, AI_PartnerChosePerishSong	
+	if_equal EFFECT_PERISH_SONG, AI_PartnerChosePerishSong
+	if_equal EFFECT_ALWAYS_CRIT, AI_PartnerChoseAlwaysCrit
 AI_ConsiderAllyChosenMoveRet:
 	end
+	
+@ Ally decided to use Frost Breath on us. we must have Anger Point as our ability
+AI_PartnerChoseAlwaysCrit:
+	if_no_ability AI_USER, ABILITY_ANGER_POINT, AI_PartnerChoseAlwaysCritEnd
+	@frost breath user should be faster
+	compare_speeds AI_USER, AI_USER_PARTNER
+	if_not_equal 1, AI_PartnerChoseAlwaysCritEnd
+	get_considered_move_effect
+	if_in_hwords sEffectsAtkRaise, Score_Minus3
+	@encourage moves hitting multiple opponents
+	get_considered_move_power
+	if_equal 0, AI_PartnerChoseAlwaysCritEnd
+	get_considered_move_target
+	if_equal MOVE_TARGET_BOTH, Score_Plus3
+	if_equal MOVE_TARGET_FOES_AND_ALLY, Score_Plus3
+AI_PartnerChoseAlwaysCritEnd:
+	end
+	
+.align 1
+sEffectsAtkRaise:
+    .2byte EFFECT_ATTACK_ACCURACY_UP
+    .2byte EFFECT_ATTACK_UP
+    .2byte EFFECT_ATTACK_UP_2
+    .2byte EFFECT_DRAGON_DANCE
+    .2byte EFFECT_COIL
+    .2byte EFFECT_BELLY_DRUM
+    .2byte EFFECT_BULK_UP
+    .2byte -1
 	
 AI_PartnerChoseHelpingHand:
 	@ Do not use a status move if you know your move's power will be boosted
@@ -3717,16 +3740,26 @@ AI_TryOnAlly:
 	if_equal MOVE_POWER_DISCOURAGED, AI_TryStatusMoveOnAlly
 	get_curr_move_type
 	if_equal TYPE_FIRE, AI_TryFireMoveOnAlly
-
+	if_effect EFFECT_ALWAYS_CRIT, AI_TryCritAngerPointAlly
 AI_DiscourageOnAlly:
 	goto Score_Minus30
 
 AI_TryFireMoveOnAlly:
 	if_ability AI_USER_PARTNER, ABILITY_FLASH_FIRE, AI_TryFireMoveOnAlly_FlashFire
 	goto AI_DiscourageOnAlly
-
 AI_TryFireMoveOnAlly_FlashFire:
 	if_flash_fired AI_USER_PARTNER, AI_DiscourageOnAlly
+	goto Score_Plus3
+	
+AI_TryCritAngerPointAlly:
+	get_ability AI_USER_PARTNER
+	if_not_equal ABILITY_ANGER_POINT, AI_DiscourageOnAlly
+	if_stat_level_more_than AI_USER_PARTNER, STAT_ATK, 8, AI_DiscourageOnAlly
+	if_status2 AI_USER_PARTNER, STATUS2_SUBSTITUTE, AI_DiscourageOnAlly
+	if_has_no_move_with_split AI_USER_PARTNER, SPLIT_PHYSICAL, AI_DiscourageOnAlly
+	get_curr_dmg_hp_percent
+	if_more_than 34,AI_DiscourageOnAlly
+	if_hp_less_than AI_USER_PARTNER, 60, AI_DiscourageOnAlly
 	goto Score_Plus3
 
 AI_TryStatusMoveOnAlly:

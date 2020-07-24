@@ -775,13 +775,10 @@ static const struct MenuAction MultichoiceList_TagMatchType[] =
 
 static const struct MenuAction MultichoiceList_114[] =
 {
-    {gText_Date1},
-    {gText_Date2},
-    {gText_Date3},
-    {gText_DateCancel},
+    {gText_Exit},
 };
 
-static const struct MenuAction MultichoiceList_115[] =
+static const struct MenuAction MultichoiceList_RyuDebugMulti[] =
 {
     {gText_PasscodeMenu},
     {gText_Utilities},
@@ -815,23 +812,17 @@ static const struct MenuAction MultichoiceList_116[] =
 
 static const struct MenuAction MultichoiceList_117[] =
 {
-    {gText_NoRelationship},
-    {gText_Stage1},
-    {gText_Stage2},
-    {gText_Stage3},
-    {gText_Stage4},
-    {gText_Stage5},
-    {gText_RelCancel},
+    {gText_Exit},
 };
 
-static const struct MenuAction MultichoiceList_118[] =
+static const struct MenuAction MultichoiceList_118[] =//party slot selection menu, contains only buffers, game will crash if drawn without filing first 6 buffers.
 {
-    {gText_PartySlot1},
-    {gText_PartySlot2},
-    {gText_PartySlot3},
-    {gText_PartySlot4},
-    {gText_PartySlot5},
-    {gText_PartySlot6},
+    {gText_RyuBufferedString1},
+    {gText_RyuBufferedString2},
+    {gText_RyuBufferedString3},
+    {gText_RyuBufferedString4},
+    {gText_RyuBufferedString5},
+    {gText_RyuBufferedString6},
     {gText_PartySlotCancel},
 };
 
@@ -932,7 +923,7 @@ static const struct MenuAction MultichoiceList_128[]=
     {gText_RyuTeleportLCCDEPT},
     {gText_RyuTeleportLCAH},
     {gText_RyuTeleportMCMH},
-    {gText_RyuTeleportAbandonedShip},
+    {gText_RyuTeleportSnowshore},
     {gText_RyuTeleportBattleFrontierCallback},  
 };
 
@@ -985,7 +976,7 @@ static const struct MenuAction MultichoiceList_133[]=
     {gText_RyuBetaMenuBlank},
     {gText_RyuBetaMenuBlank},
     {gText_RyuBetaMenuBlank},
-    {gText_RyuBetaMenuLanette},
+    {gText_RyuBetaMenuResetTempBattleFlags},
     {gText_RyuBetaMenuResetBadges},
     {gText_RyuBetaMenuResetGCMS},
     {gText_RyuBetaMenuGoHome},
@@ -1169,8 +1160,53 @@ static const struct MenuAction MultichoiceList_FossilReviver[]=
     {gText_ROOT_FOSSIL},
     {gText_CLAW_FOSSIL},
     {gText_OLD_AMBER},
+    {gText_COVER_FOSSIL},
     {gText_Exit},
-    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_FrontierStarter1[]=
+{
+    {gText_RyuFrontierStarter_Prev},
+    {gText_RyuFrontierStarter1_1},
+    {gText_RyuFrontierStarter1_2},
+    {gText_RyuFrontierStarter1_3},
+    {gText_RyuFrontierStarter1_4},
+    {gText_RyuFrontierStarter1_5},
+    {gText_RyuFrontierStarter1_6},
+    {gText_RyuFrontierStarter1_7},
+    {gText_RyuFrontierStarter_Next},
+};
+
+static const struct MenuAction MultichoiceList_FrontierStarter2[]=
+{
+    {gText_RyuFrontierStarter_Prev},
+    {gText_RyuFrontierStarter2_1},
+    {gText_RyuFrontierStarter2_2},
+    {gText_RyuFrontierStarter2_3},
+    {gText_RyuFrontierStarter2_4},
+    {gText_RyuFrontierStarter2_5},
+    {gText_RyuFrontierStarter2_6},
+    {gText_RyuFrontierStarter2_7},
+    {gText_RyuFrontierStarter_Next},
+};
+
+static const struct MenuAction MultichoiceList_FrontierStarter3[]=
+{
+    {gText_RyuFrontierStarter_Prev},
+    {gText_RyuFrontierStarter3_1},
+    {gText_RyuFrontierStarter3_2},
+    {gText_RyuFrontierStarter3_3},
+    {gText_RyuFrontierStarter3_4},
+    {gText_RyuFrontierStarter3_5},
+    {gText_RyuFrontierStarter3_6},
+    {gText_RyuFrontierStarter3_7},
+    {gText_RyuFrontierStarter_Next},
+};
+
+static const struct MenuAction MultichoiceList_MagmaIntroChoice[]=
+{
+    {gText_RyuMagmaMultichoice1},
+    {gText_RyuMagmaMultichoice2}
 };
 
 static const struct MenuAction MultichoiceList_Exit[] =
@@ -1301,7 +1337,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_UNUSED_DATE]                = MULTICHOICE(MultichoiceList_114),
-    [MULTI_DEV_MENU_MAIN]              = MULTICHOICE(MultichoiceList_115),
+    [MULTI_DEV_MENU_MAIN]              = MULTICHOICE(MultichoiceList_RyuDebugMulti),
     [MULTI_DEV_EV_MENU]                = MULTICHOICE(MultichoiceList_116),
     [MULTI_UNUSED_REL_MENU]            = MULTICHOICE(MultichoiceList_117),
     [MULTI_SELECT_PARTY_SLOT]          = MULTICHOICE(MultichoiceList_118),
@@ -1337,6 +1373,10 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_RLS_GEMSTONEQUALITYMENU]    = MULTICHOICE(MultichoiceList_RyuLifeskillGemRefinerQualitySelect),
     [MULTI_SHARD_EXCHANGE]             = MULTICHOICE(MultichoiceList_RyuShardExchange),
     [MULTI_FOSSIL_REVIVER]             = MULTICHOICE(MultichoiceList_FossilReviver),
+    [MULTI_FRONTIERMODE_STARTER1]      = MULTICHOICE(MultichoiceList_FrontierStarter1),
+    [MULTI_FRONTIERMODE_STARTER2]      = MULTICHOICE(MultichoiceList_FrontierStarter2),
+    [MULTI_FRONTIERMODE_STARTER3]      = MULTICHOICE(MultichoiceList_FrontierStarter3),
+    [MULTI_MAGMA_CHOICE]               = MULTICHOICE(MultichoiceList_MagmaIntroChoice),
 };
 
 const u8 *const gStdStrings[] =

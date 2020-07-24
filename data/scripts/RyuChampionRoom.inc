@@ -1,4 +1,4 @@
-@====map_script MAP_SCRIPT_ON_FRAME_TABLE, RyuThroneRoomCheckFollower
+@====map_script ON_FRAME, RyuThroneRoomCheckFollower
 	@.byte 0
 
 
@@ -82,7 +82,6 @@ RCR_OverlordRyuBossFight::
 	waitmovement 15
 	msgbox RCR_RYU_Intro
 	closemessage
-	setflag FLAG_TEMP_3
 	setflag FLAG_RYU_MAX_SCALE
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	trainerbattle_no_intro TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText

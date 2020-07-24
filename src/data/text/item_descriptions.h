@@ -97,10 +97,10 @@ static const u8 sFastBallDesc[] = _(
     "very fast\n"
     "Pokémon.");
 
-static const u8 sHealBallDesc[] = _(
-    "A remedial ball\n"
-    "that restores\n"
-    "caught Pokémon.");
+static const u8 sChillBallDesc[] = _(
+    "A chilly ball that\n"
+    "works better on\n"
+    "Ice type Pokémon.");
 
 static const u8 sQuickBallDesc[] = _(
     "Works well if\n"
@@ -2286,35 +2286,35 @@ static const u8 sZapPlateDesc[] = _(
     "boosts the power of\n"
     "Electric-type moves.");
 
-static const u8 sMeadowPlateDesc[] = _(
-    "A stone tablet that\n"
-    "boosts the power of\n"
-    "Grass-type moves.");
+static const u8 sKeyShard1Desc[] = _(
+    "An old shard of a\n"
+    "key. Needs three\n"
+    "other fragments.");
 
-static const u8 sIciclePlateDesc[] = _(
-    "A stone tablet that\n"
-    "boosts the power of\n"
-    "Ice-type moves.");
+static const u8 sKeyShard2Desc[] = _(
+    "An old shard of a\n"
+    "key. Needs three\n"
+    "other fragments.");
 
 static const u8 sFistPlateDesc[] = _(
     "A stone tablet that\n"
     "boosts the power of\n"
     "Fighting-type moves.");
 
-static const u8 sToxicPlateDesc[] = _(
-    "A stone tablet that\n"
-    "boosts the power of\n"
-    "Poison-type moves.");
+static const u8 sKeyShard3Desc[] = _(
+    "An old shard of a\n"
+    "key. Needs three\n"
+    "other fragments.");
 
-static const u8 sEarthPlateDesc[] = _(
-    "A stone tablet that\n"
-    "boosts the power of\n"
-    "Ground-type moves.");
+static const u8 sKeyShard4Desc[] = _(
+    "An old shard of a\n"
+    "key. Needs three\n"
+    "other fragments.");
 
-static const u8 sSkyPlateDesc[] = _(
-    "A stone tablet that\n"
-    "boosts the power of\n"
-    "Flying-type moves.");
+static const u8 sOldKeyDesc[] = _(
+    "An old key used to open\n"
+    "Mt Freeze. Belonged to\n"
+    "an ancient civilization.");
 
 static const u8 sMindPlateDesc[] = _(
     "A stone tablet that\n"

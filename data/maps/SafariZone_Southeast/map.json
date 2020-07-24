@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": false,
+    "allow_cycling": true,
+    "allow_escaping": false,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -50,7 +50,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "SafariZone_Southeast_EventScript_RichBoy",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 7,
             "y": 7
         },
@@ -63,7 +63,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "SafariZone_Southeast_EventScript_FatMan",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 20,
             "y": 30
         },
@@ -76,7 +76,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "SafariZone_Southeast_EventScript_LittleGirl",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 26
         },
@@ -89,7 +89,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "SafariZone_Southeast_EventScript_ItemBigPearl",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 31,
             "y": 15
         },
@@ -102,7 +102,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "SafariZone_Southeast_EventScript_ExpansionZoneAttendant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 16
         }

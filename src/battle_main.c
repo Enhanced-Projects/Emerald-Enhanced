@@ -102,7 +102,7 @@ static void SpriteCb_WildMonShowHealthbox(struct Sprite *sprite);
 static void SpriteCb_WildMonAnimate(struct Sprite *sprite);
 static void sub_80398D0(struct Sprite *sprite);
 static void SpriteCB_AnimFaintOpponent(struct Sprite *sprite);
-static void sub_8039AF4(struct Sprite *sprite);
+static void SpriteCb_BlinkVisible(struct Sprite *sprite);
 static void SpriteCallbackDummy_3(struct Sprite *sprite);
 static void oac_poke_ally_(struct Sprite *sprite);
 static void SpecialStatusesClear(void);
@@ -559,7 +559,6 @@ static void CB2_InitBattleInternal(void)
     LoadBattleTextboxAndBackground();
     ResetSpriteData();
     ResetTasks();
-    //DrawBattleEntryBackground(); this was disabled because the slide tiles did not play well with the new battle bg's from ee v5.5+
     FreeAllSpritePalettes();
     gReservedSpritePaletteCount = 4;
     SetVBlankCallback(VBlankCB_Battle);
@@ -863,7 +862,7 @@ static void CB2_HandleStartBattle(void)
                     sub_8036A5C();
                     SetPlayerBerryDataInBattleStruct();
 
-                    if (gTrainerBattleOpponent_A == TRAINER_OPPONENT_C00)
+                    if (gTrainerBattleOpponent_A == TRAINER_UNION_ROOM)
                     {
                         gLinkPlayers[0].id = 0;
                         gLinkPlayers[1].id = 1;
@@ -2733,31 +2732,31 @@ static void SpriteCB_AnimFaintOpponent(struct Sprite *sprite)
     }
 }
 
-void sub_8039AD8(struct Sprite *sprite)
+// Used when selecting a move, which can hit multiple targets, in double battles.
+void SpriteCb_ShowAsMoveTarget(struct Sprite *sprite)
 {
     sprite->data[3] = 8;
     sprite->data[4] = sprite->invisible;
-    sprite->callback = sub_8039AF4;
+    sprite->callback = SpriteCb_BlinkVisible;
 }
 
-static void sub_8039AF4(struct Sprite *sprite)
+static void SpriteCb_BlinkVisible(struct Sprite *sprite)
 {
-    sprite->data[3]--;
-    if (sprite->data[3] == 0)
+    if (--sprite->data[3] == 0)
     {
         sprite->invisible ^= 1;
         sprite->data[3] = 8;
     }
 }
 
-void sub_8039B2C(struct Sprite *sprite)
+void SpriteCb_HideAsMoveTarget(struct Sprite *sprite)
 {
     sprite->invisible = sprite->data[4];
     sprite->data[4] = FALSE;
     sprite->callback = SpriteCallbackDummy_2;
 }
 
-void sub_8039B58(struct Sprite *sprite)
+void SpriteCb_OpponentMonFromBall(struct Sprite *sprite)
 {
     if (sprite->affineAnimEnded)
     {
@@ -2901,7 +2900,7 @@ static void SpriteCB_BounceEffect(struct Sprite *sprite)
 #undef sBouncerSpriteId
 #undef sWhich
 
-void sub_8039E44(struct Sprite *sprite)
+void SpriteCb_PlayerMonFromBall(struct Sprite *sprite)
 {
     if (sprite->affineAnimEnded)
         BattleAnimateBackSprite(sprite, sprite->sSpeciesId);
@@ -3279,11 +3278,6 @@ static void DoBattleIntro(void)
     case 4: // Copy battler data gotten in cases 0 and 1. Draw trainer/mon sprite.
         for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
         {
-            if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI) && GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
-            {
-                memset(&gBattleMons[gActiveBattler], 0, sizeof(struct BattlePokemon));
-            }
-            else
             {
                 memcpy(&gBattleMons[gActiveBattler], &gBattleResources->bufferB[gActiveBattler][4], sizeof(struct BattlePokemon));
                 gBattleMons[gActiveBattler].type1 = gBaseStats[gBattleMons[gActiveBattler].species].type1;
@@ -3294,6 +3288,7 @@ static void DoBattleIntro(void)
                 gBattleMons[gActiveBattler].status2 = 0;
                 for (i = 0; i < NUM_BATTLE_STATS; i++)
                     gBattleMons[gActiveBattler].statStages[i] = 6;
+
             }
 
             // Draw sprite.
@@ -3341,8 +3336,6 @@ static void DoBattleIntro(void)
                 break;
             }
 
-            if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-                BattleArena_InitPoints();
         }
 
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
@@ -3350,18 +3343,13 @@ static void DoBattleIntro(void)
             (*state)++;
         }
         else // Skip party summary since it is a wild battle.
-        {
-            if (B_FAST_INTRO)
-                *state = 7; // Don't wait for sprite, print message at the same time.
-            else
-                *state = 6; // Wait for sprite to load.
-        }
+            *state = 7; // Don't wait for sprite, print message at the same time.
+
         break;
     case 5: // draw party summary in trainer battles
         if (!gBattleControllerExecFlags)
         {
             struct HpAndStatus hpStatus[PARTY_SIZE];
-
             for (i = 0; i < PARTY_SIZE; i++)
             {
                 if (GetMonData(&gEnemyParty[i], MON_DATA_SPECIES2) == SPECIES_NONE
@@ -3380,7 +3368,6 @@ static void DoBattleIntro(void)
             gActiveBattler = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
             BtlController_EmitDrawPartyStatusSummary(0, hpStatus, 0x80);
             MarkBattlerForControllerExec(gActiveBattler);
-
             for (i = 0; i < PARTY_SIZE; i++)
             {
                 if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == SPECIES_NONE
@@ -3395,17 +3382,16 @@ static void DoBattleIntro(void)
                     hpStatus[i].status = GetMonData(&gPlayerParty[i], MON_DATA_STATUS);
                 }
             }
-
             gActiveBattler = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
             BtlController_EmitDrawPartyStatusSummary(0, hpStatus, 0x80);
             MarkBattlerForControllerExec(gActiveBattler);
-
             (*state)++;
         }
         break;
     case 6: // wait for previous action to complete
         if (!gBattleControllerExecFlags)
             (*state)++;
+
         break;
     case 7: // print battle intro message
         if (!IsBattlerMarkedForControllerExec(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)))
@@ -3632,11 +3618,6 @@ static void TryDoEventsBeforeFirstTurn(void)
 
     gRandomTurnNumber = Random();
 
-    if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-    {
-        StopCryAndClearCrySongs();
-        BattleScriptExecute(BattleScript_ArenaTurnBeginning);
-    }
 }
 
 static void HandleEndTurn_ContinueBattle(void)
@@ -3724,8 +3705,6 @@ void BattleTurnPassed(void)
 
     if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
         BattleScriptExecute(BattleScript_82DB881);
-    else if (gBattleTypeFlags & BATTLE_TYPE_ARENA && gBattleStruct->arenaTurnCounter == 0)
-        BattleScriptExecute(BattleScript_ArenaTurnBeginning);
     else if (ShouldDoTrainerSlide(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), gTrainerBattleOpponent_A, TRAINER_SLIDE_LAST_LOW_HP))
         BattleScriptExecute(BattleScript_TrainerSlideMsgEnd2);
 }
@@ -3944,8 +3923,7 @@ static void HandleTurnActionSelectionState(void)
                     break;
                 case B_ACTION_SWITCH:
                     *(gBattleStruct->field_58 + gActiveBattler) = gBattlerPartyIndexes[gActiveBattler];
-                    if (gBattleTypeFlags & BATTLE_TYPE_ARENA
-                        || !CanBattlerEscape(gActiveBattler))
+                    if (!(CanBattlerEscape(gActiveBattler)))
                     {
                         BtlController_EmitChoosePokemon(0, PARTY_ACTION_CANT_SWITCH, PARTY_SIZE, ABILITY_NONE, gBattleStruct->field_60[gActiveBattler]);
                     }
@@ -5290,8 +5268,8 @@ static void HandleAction_UseMove(void)
         {
             if (side != GetBattlerSide(gActiveBattler)
                 && *(gBattleStruct->moveTarget + gBattlerAttacker) != gActiveBattler
-                && ((gBattleMons[gActiveBattler].ability == ABILITY_LIGHTNING_ROD && moveType == TYPE_ELECTRIC)
-                    || (gBattleMons[gActiveBattler].ability == ABILITY_STORM_DRAIN && moveType == TYPE_WATER)
+                && ((GetBattlerAbility(gActiveBattler) == ABILITY_LIGHTNING_ROD && moveType == TYPE_ELECTRIC)
+                    || (GetBattlerAbility(gActiveBattler) == ABILITY_STORM_DRAIN && moveType == TYPE_WATER)
                    )
                 && GetBattlerTurnOrderNum(gActiveBattler) < var)
             {
@@ -5442,10 +5420,6 @@ static void HandleAction_UseMove(void)
     {
         gBattlescriptCurrInstr = gBattleScriptsForMoveEffects[gBattleMoves[gCurrentMove].effect];
     }
-
-    if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-        BattleArena_AddMindPoints(gBattlerAttacker);
-
     // Record HP of each battler
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
         gBattleStruct->hpBefore[i] = gBattleMons[i].hp;
@@ -5481,7 +5455,7 @@ static void HandleAction_UseItem(void)
     ClearFuryCutterDestinyBondGrudge(gBattlerAttacker);
     gLastUsedItem = gBattleResources->bufferB[gBattlerAttacker][1] | (gBattleResources->bufferB[gBattlerAttacker][2] << 8);
 
-    if (gLastUsedItem <= ITEM_PREMIER_BALL) // is ball
+    if (gLastUsedItem <= LAST_BALL) // is ball
     {
         gBattlescriptCurrInstr = gBattlescriptsForBallThrow[gLastUsedItem];
     }

@@ -1,5 +1,5 @@
 PetalburgCity_Gym_MapScripts:: @ 8204889
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, PetalburgCity_Gym_OnFrame
+	map_script ON_FRAME, PetalburgCity_Gym_OnFrame
 	.byte 0
 
 PetalburgCity_Gym_OnLoad: @ 820489E

@@ -1684,10 +1684,6 @@ u8 CreatePartyStatusSummarySprites(u8 battlerId, struct HpAndStatus *partyInfo, 
                 {
                     gSprites[ballIconSpritesIds[i]].oam.tileNum += 3;
                 }
-                else if (gBattleTypeFlags & BATTLE_TYPE_ARENA && gBattleStruct->arenaLostPlayerMons & gBitTable[j])
-                {
-                    gSprites[ballIconSpritesIds[i]].oam.tileNum += 3;
-                }
                 else if (partyInfo[j].status != 0) // mon with major status
                 {
                     gSprites[ballIconSpritesIds[i]].oam.tileNum += 2;
@@ -1730,10 +1726,6 @@ u8 CreatePartyStatusSummarySprites(u8 battlerId, struct HpAndStatus *partyInfo, 
                     continue;
                 }
                 else if (partyInfo[j].hp == 0) // fainted mon
-                {
-                    gSprites[ballIconSpritesIds[5 - var]].oam.tileNum += 3;
-                }
-                else if (gBattleTypeFlags & BATTLE_TYPE_ARENA && gBattleStruct->arenaLostOpponentMons & gBitTable[j]) // hmm...?
                 {
                     gSprites[ballIconSpritesIds[5 - var]].oam.tileNum += 3;
                 }

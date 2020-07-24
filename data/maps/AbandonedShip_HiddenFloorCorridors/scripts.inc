@@ -1,6 +1,6 @@
 AbandonedShip_HiddenFloorCorridors_MapScripts:: @ 823896C
-	map_script MAP_SCRIPT_ON_RESUME, AbandonedShip_HiddenFloorCorridors_OnResume
-	map_script MAP_SCRIPT_ON_LOAD , AbandonedShip_HiddenFloorCorridors_OnLoad
+	map_script ON_RESUME, AbandonedShip_HiddenFloorCorridors_OnResume
+	map_script ON_LOAD , AbandonedShip_HiddenFloorCorridors_OnLoad
 	.byte 0
 
 AbandonedShip_HiddenFloorCorridors_OnResume: @ 8238977

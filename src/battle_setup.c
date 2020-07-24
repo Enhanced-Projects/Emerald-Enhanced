@@ -569,6 +569,7 @@ u8 BattleSetup_GetTerrainId(void)
     u16 tileBehavior;
     s16 x, y;
 
+
     if (RyuCheckPlayerisInColdArea() == TRUE)
     {
         if ((gSaveBlock1Ptr->location.mapGroup == 0) && (gSaveBlock1Ptr->location.mapNum == 20))
@@ -1321,7 +1322,7 @@ void ShowTrainerIntroSpeech(void)
         else
             CopyPyramidTrainerSpeechBefore(LocalIdToPyramidTrainerId(gObjectEvents[gApproachingTrainers[gApproachingTrainerId].objectEventId].localId));
 
-        sub_80982B8();
+        ShowFieldMessageFromBuffer();
     }
     else if (InTrainerHillChallenge())
     {
@@ -1330,7 +1331,7 @@ void ShowTrainerIntroSpeech(void)
         else
             CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_INTRO, LocalIdToHillTrainerId(gObjectEvents[gApproachingTrainers[gApproachingTrainerId].objectEventId].localId));
 
-        sub_80982B8();
+        ShowFieldMessageFromBuffer();
     }
     else
     {

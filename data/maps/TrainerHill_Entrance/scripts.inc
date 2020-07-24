@@ -1,9 +1,9 @@
 TrainerHill_Entrance_MapScripts:: @ 82680AC
-	map_script MAP_SCRIPT_ON_RESUME, TrainerHill_Entrance_OnResume
+	map_script ON_RESUME, TrainerHill_Entrance_OnResume
 	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, TrainerHill_Entrance_OnReturn
-	map_script MAP_SCRIPT_ON_TRANSITION, TrainerHill_Entrance_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD , TrainerHill_Entrance_OnLoad
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrainerHill_Entrance_OnFrame
+	map_script ON_TRANSITION, TrainerHill_Entrance_OnTransition
+	map_script ON_LOAD , TrainerHill_Entrance_OnLoad
+	map_script ON_FRAME, TrainerHill_Entrance_OnFrame
 	.byte 0
 
 TrainerHill_Entrance_OnTransition: @ 82680C6

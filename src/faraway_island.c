@@ -6,10 +6,8 @@
 #include "metatile_behavior.h"
 #include "sprite.h"
 #include "constants/event_objects.h"
-#include "constants/flags.h"
 #include "constants/maps.h"
 #include "constants/metatile_behaviors.h"
-#include "constants/vars.h"
 
 static u8 sub_81D4890(u8);
 static bool8 sub_81D4C14(struct ObjectEvent*, u8);
@@ -378,7 +376,7 @@ void sub_81D4A90(void)
 
         x = mew->currentCoords.x;
         y = mew->currentCoords.y;
-        sub_80930E0(&x, &y, 8, 8);
+        SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
         sUnknown_0203CF50 = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[15], x, y, gSprites[mew->spriteId].subpriority - 1);
         if (sUnknown_0203CF50 != MAX_SPRITES)
         {

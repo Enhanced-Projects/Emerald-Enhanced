@@ -1,6 +1,6 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": false,
+    "allow_cycling": false,
+    "allow_escaping": false,
     "allow_running": false,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -31,7 +31,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "Route121_SafariZoneEntrance_EventScript_WelcomeAttendant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 17,
             "y": 9
         },
@@ -44,7 +44,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Route121_SafariZoneEntrance_EventScript_InfoAttendant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 10,
             "y": 2
         },
@@ -57,7 +57,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 2
         }

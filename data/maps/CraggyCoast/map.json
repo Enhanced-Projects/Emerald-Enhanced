@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": false,
+    "allow_cycling": true,
+    "allow_escaping": false,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -20,6 +20,11 @@
             "direction": "right",
             "map": "MAP_MT_FREEZE",
             "offset": 0
+        },
+        {
+            "direction": "dive",
+            "map": "MAP_CRAGGY_COAST_UNDERWATER",
+            "offset": 0
         }
     ],
     "coord_events": [
@@ -32,14 +37,14 @@
     "object_events": [
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_KEY_SHARD_2",
             "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "CraggyCoast_EventScript_ItemKeyShard2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 11,
             "y": 53
         },
@@ -52,7 +57,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 34
         },
@@ -65,7 +70,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 15
         },
@@ -78,7 +83,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 17,
             "y": 18
         },
@@ -91,7 +96,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 11,
             "y": 57
         },
@@ -104,7 +109,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 10,
             "y": 46
         },
@@ -117,7 +122,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 35
         },
@@ -130,7 +135,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 73
         },
@@ -143,7 +148,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 25,
             "y": 62
         },
@@ -156,9 +161,48 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 24,
             "y": 62
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+            "movement_range_x": 3,
+            "movement_range_y": 3,
+            "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_RIGHT_UP_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 35,
+            "y": 59
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_HIKER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "4",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 37,
+            "y": 21
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "4",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 25,
+            "y": 44
         }
     ],
     "region_map_section": "MAPSEC_CRAGGY_COAST",

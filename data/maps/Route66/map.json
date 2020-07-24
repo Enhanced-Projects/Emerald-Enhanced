@@ -1,80 +1,82 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": false,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Route66_EventScript_HintSign",
-            "type": "sign",
-            "x": 22,
-            "y": 1
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock1",
-            "type": "sign",
-            "x": 12,
-            "y": 1
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock2",
-            "type": "sign",
-            "x": 1,
-            "y": 12
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock3",
-            "type": "sign",
-            "x": 8,
-            "y": 14
-        }
-    ],
-    "connections": [
-        {
-            "direction": "right",
-            "map": "MAP_ROUTE119",
-            "offset": 0
-        },
-        {
-            "direction": "left",
-            "map": "MAP_ROUTE111",
-            "offset": 0
-        }
-    ],
-    "coord_events": [
-    ],
-    "id": "MAP_ROUTE66",
-    "layout": "LAYOUT_ROUTE66",
-    "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_RG_LOAD02",
-    "name": "Route66",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_CELEBI",
-            "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "r66_Celebi",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 28,
-            "y": 1
-        }
-    ],
-    "region_map_section": "MAPSEC_ROUTE_66",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-    ],
-    "weather": "WEATHER_SUNNY"
+  "id": "MAP_ROUTE66",
+  "name": "Route66",
+  "layout": "LAYOUT_ROUTE66",
+  "music": "MUS_RG_LOAD02",
+  "region_map_section": "MAPSEC_ROUTE_66",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "direction": "right",
+      "offset": 0,
+      "map": "MAP_ROUTE119"
+    },
+    {
+      "direction": "left",
+      "offset": 0,
+      "map": "MAP_ROUTE111"
+    }
+  ],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
+      "x": 28,
+      "y": 1,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "r66_Celebi",
+      "flag": "FLAG_RYU_CELEBI"
+    }
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 22,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route66_EventScript_HintSign"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock1"
+    },
+    {
+      "type": "sign",
+      "x": 1,
+      "y": 12,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock2"
+    },
+    {
+      "type": "sign",
+      "x": 8,
+      "y": 14,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock3"
+    }
+  ]
 }

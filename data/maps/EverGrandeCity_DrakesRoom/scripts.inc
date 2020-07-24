@@ -1,6 +1,6 @@
 EverGrandeCity_DrakesRoom_MapScripts:: @ 822869C
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, EverGrandeCity_DrakesRoom_OnFrame
-	map_script MAP_SCRIPT_ON_LOAD , EverGrandeCity_DrakesRoom_OnLoad
+	map_script ON_FRAME, EverGrandeCity_DrakesRoom_OnFrame
+	map_script ON_LOAD , EverGrandeCity_DrakesRoom_OnLoad
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, EverGrandeCity_SidneysRoom_OnWarp
 	.byte 0
 
@@ -100,7 +100,7 @@ EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech:: @ 822871A
 	end
 
 EverGrandeCity_DrakesRoom_EventScript_Defeated:: @ 8228724
-	setvar VAR_0x8004, 0
+	setvar VAR_0x8004, FANCOUNTER_DEFEATED_DRAKE
 	special Script_TryGainNewFanFromCounter
 	setflag FLAG_DEFEATED_ELITE_4_DRAKE
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles

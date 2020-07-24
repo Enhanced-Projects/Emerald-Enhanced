@@ -39,7 +39,7 @@ gSpecials:: @ 81DBA64
 	def_special TryBattleLinkup
 	def_special TryTradeLinkup
 	def_special TryRecordMixLinkup
-	def_special sub_80B2EA8
+	def_special ValidateMixingGameLanguage
 	def_special CloseLink
 	def_special ColosseumPlayerSpotTriggered
 	def_special PlayerEnteredTradeSeat
@@ -424,8 +424,8 @@ gSpecials:: @ 81DBA64
 	def_special IsWirelessAdapterConnected
 	def_special TryBecomeLinkLeader
 	def_special TryJoinLinkGroup
-	def_special UnionRoomSpecial
-	def_special sub_801A42C
+	def_special RunUnionRoom
+	def_special ShowWirelessCommunicationScreen
 	def_special InitUnionRoom
 	def_special BufferUnionRoomPlayerName
 	def_special sub_801DC20
@@ -495,11 +495,11 @@ gSpecials:: @ 81DBA64
 	def_special GetPCBoxToSendMon
 	def_special ShouldShowBoxWasFullMessage
 	def_special SetMatchCallRegisteredFlag
-	def_special DoConfettiEffect
+	def_special DoDomeConfetti
 	def_special CreateAbnormalWeatherEvent
 	def_special GetAbnormalWeatherMapNameAndType
 	def_special GetMartEmployeeObjectEventId
-	def_special sub_80A08CC
+	def_special SaveForBattleTowerLink
 	def_special Unused_SetWeatherSunny
 	def_special SetUnlockedPokedexFlags
 	def_special IsTrainerRegistered
@@ -556,7 +556,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuIncrementLapCount
 	def_special ResetCyclingRoadChallengeData
 	def_special RyuSetMonMove
-	def_special RyuOtherDataChecker
 	def_special RyuIvSetter
 	def_special RyuSetFriendship
 	def_special RyuResetEvs
@@ -604,4 +603,7 @@ gSpecials:: @ 81DBA64
 	def_special RyuCheckRelMegaReward
 	def_special CountBadges
 	def_special RyuFillStatsBuffers
+	def_special TobyCheckPlayerHasMon
+	def_special RyuSetUpSaveBlockStuff
+	def_special RyuTestDebug
 

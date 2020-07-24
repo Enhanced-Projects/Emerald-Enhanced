@@ -8,8 +8,6 @@ EverGrandeCity_Hall4_OnWarp: @ 82295AE
 
 EverGrandeCity_Hall4_EventScript_TurnPlayerNorth:: @ 82295B8
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
-	gfec
-	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
 	end
 
 H4_GoToPartnerChampionRoom::
@@ -17,3 +15,4 @@ H4_GoToPartnerChampionRoom::
 	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
 	setflag FLAG_RYU_TITLE_DEFENSE
 	warpteleport MAP_THRONE_ROOM, 255, 9, 17
+	waitstate

@@ -1,5 +1,5 @@
 FrostyForest_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, FrostyForest_OnTransition
+	map_script ON_TRANSITION, FrostyForest_OnTransition
 	.byte 0
 
 FrostyForest_OnFrame:

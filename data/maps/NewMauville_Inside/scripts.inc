@@ -1,7 +1,7 @@
 NewMauville_Inside_MapScripts:: @ 82373D7
-	map_script MAP_SCRIPT_ON_RESUME, NewMauville_Inside_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, NewMauville_Inside_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD , NewMauville_Inside_OnLoad
+	map_script ON_RESUME, NewMauville_Inside_OnResume
+	map_script ON_TRANSITION, NewMauville_Inside_OnTransition
+	map_script ON_LOAD , NewMauville_Inside_OnLoad
 	.byte 0
 
 NewMauville_Inside_OnResume: @ 82373E7

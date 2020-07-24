@@ -31,12 +31,5 @@ Route66_EventScript_HintSign::
 	end
 
 Route66_Text_HintSign:
-	.string "Did you know Cut can get rid\n"
-	.string "of Tall Grass?\p"
-	.string "Use it to get to the other side.\p"
-	.string "There is a catch, however.\p"
-	.string "You can not Cut while riding\n"
-	.string "on the rails.\p"
-	.string "Hint: what do Krabby, Gligar,\n"
-	.string "Trapinch, Mawile and Corphish\l"
-	.string "have in common?$"
+	.string "Did you know you can use the bike\n"
+	.string "anywhere, no matter the surface?$"

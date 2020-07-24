@@ -1,5 +1,5 @@
 LilycoveCity_House3_MapScripts:: @ 821EE3C
-	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_House3_OnTransition
+	map_script ON_TRANSITION, LilycoveCity_House3_OnTransition
 	.byte 0
 
 LilycoveCity_House3_OnTransition: @ 821EE42

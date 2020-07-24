@@ -1,8 +1,8 @@
 SootopolisCity_Gym_1F_MapScripts:: @ 8224E4C
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SootopolisCity_Gym_1F_OnFrame
-	map_script MAP_SCRIPT_ON_RESUME, SootopolisCity_Gym_1F_OnResume
-	map_script MAP_SCRIPT_ON_LOAD , SootopolisCity_Gym_1F_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, SootopolisCity_Gym_1F_OnTransition
+	map_script ON_FRAME, SootopolisCity_Gym_1F_OnFrame
+	map_script ON_RESUME, SootopolisCity_Gym_1F_OnResume
+	map_script ON_LOAD , SootopolisCity_Gym_1F_OnLoad
+	map_script ON_TRANSITION, SootopolisCity_Gym_1F_OnTransition
 	.byte 0
 
 SootopolisCity_Gym_1F_OnTransition: @ 8224E61

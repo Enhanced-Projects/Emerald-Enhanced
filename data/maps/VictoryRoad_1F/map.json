@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": true,
+    "allow_cycling": true,
+    "allow_escaping": true,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -63,7 +63,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "VictoryRoad_1F_EventScript_Edgar",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 33,
             "y": 22
         },
@@ -76,7 +76,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "VictoryRoad_1F_EventScript_Hope",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 6,
             "y": 15
         },
@@ -89,7 +89,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
             "script": "VictoryRoad_1F_EventScript_Albert",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 27,
             "y": 34
         },
@@ -102,7 +102,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "VictoryRoad_1F_EventScript_ItemMaxElixir",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 40,
             "y": 26
         },
@@ -115,7 +115,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "VictoryRoad_1F_EventScript_ItemPPUp",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 27,
             "y": 15
         },
@@ -128,7 +128,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "VictoryRoad_1F_EventScript_Katelynn",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 29,
             "y": 17
         },
@@ -141,7 +141,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "VictoryRoad_1F_EventScript_Quincy",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 32,
             "y": 17
         },
@@ -154,7 +154,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "VR1_Moltres",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 39,
             "y": 9
         }

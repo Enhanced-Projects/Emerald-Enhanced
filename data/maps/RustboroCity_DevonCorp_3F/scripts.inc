@@ -1,5 +1,5 @@
 RustboroCity_DevonCorp_3F_MapScripts:: @ 821242D
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, RustboroCity_DevonCorp_3F_OnFrame
+	map_script ON_FRAME, RustboroCity_DevonCorp_3F_OnFrame
 	.byte 0
 
 RustboroCity_DevonCorp_3F_OnTransition: @ 821243D

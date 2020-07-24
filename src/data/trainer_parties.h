@@ -3286,7 +3286,7 @@ static const struct TrainerMonItemCustomMoves sParty_Sidney[] = {
 	.species = SPECIES_PERSIAN,
 	.heldItem = ITEM_FOCUS_SASH,
 	.ability = 1,
-	.moves = {MOVE_FOUL_PLAY, MOVE_SWAGGER, MOVE_HYPNOSIS, MOVE_U_TURN},
+	.moves = {MOVE_FOUL_PLAY, MOVE_SWAGGER, MOVE_HYPNOSIS, MOVE_THUNDER_WAVE},
 	},
 	{
 	.iv = 250,
@@ -7896,16 +7896,21 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntSeafloorCavern5[] =
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_GruntUnused[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_GruntMagmaRusturf[] = {
     {
-    .iv = 0,
+    .iv = 100,
     .lvl = 31,
-    .species = SPECIES_WAILMER,
+    .species = SPECIES_SALANDIT,
     },
     {
-    .iv = 0,
+    .iv = 100,
     .lvl = 31,
-    .species = SPECIES_TOXAPEX,
+    .species = SPECIES_FLETCHLING,
+    },
+    {
+    .iv = 100,
+    .lvl = 31,
+    .species = SPECIES_NUMEL,
     }
 };
 
@@ -9331,26 +9336,21 @@ static const struct TrainerMonItemCustomMoves sParty_Dawn5[] = {
 	},
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_DawnLilycoveTreecko[] = {//Dawn12
+static const struct TrainerMonNoItemDefaultMoves sParty_StevenStory1[] = {//Dawn12
     {
     .iv = 150,
     .lvl = 31,
-    .species = SPECIES_TOGEKISS,
+    .species = SPECIES_BELDUM,
     },
     {
     .iv = 150,
     .lvl = 32,
-    .species = SPECIES_PELIPPER,
+    .species = SPECIES_ANORITH,
     },
     {
     .iv = 150,
     .lvl = 32,
-    .species = SPECIES_LUDICOLO,
-    },
-    {
-    .iv = 200,
-    .lvl = 34,
-    .species = SPECIES_COMBUSKEN,
+    .species = SPECIES_SKARMORY,
     }
 };
 

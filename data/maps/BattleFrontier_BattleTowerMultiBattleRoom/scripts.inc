@@ -1,7 +1,7 @@
 BattleFrontier_BattleTowerMultiBattleRoom_MapScripts:: @ 8248EE8
-	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattleTowerMultiBattleRoom_OnTransition
+	map_script ON_TRANSITION, BattleFrontier_BattleTowerMultiBattleRoom_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattleTowerMultiBattleRoom_OnWarp
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleTowerMultiBattleRoom_OnFrame
+	map_script ON_FRAME, BattleFrontier_BattleTowerMultiBattleRoom_OnFrame
 	.byte 0
 
 	@ On this map the player (OBJ_EVENT_ID_PLAYER) is hidden
@@ -103,7 +103,7 @@ BattleFrontier_BattleTowerMultiBattleRoom_EventScript_DoTowerBattle:: @ 8249069
 BattleFrontier_BattleTowerMultiBattleRoom_EventScript_WarpToLobbyLost:: @ 824907E
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_LOST
 	tower_set TOWER_DATA_LVL_MODE
-	setvar VAR_0x8004, 3
+	setvar VAR_0x8004, FANCOUNTER_USED_BATTLE_TOWER
 	special Script_TryGainNewFanFromCounter
 	goto BattleFrontier_BattleTowerBattleRoom_EventScript_WarpToLobby
 
@@ -208,7 +208,7 @@ BattleFrontier_BattleTowerMultiBattleRoom_EventScript_ContinueChallenge:: @ 8249
 BattleFrontier_BattleTowerMultiBattleRoom_EventScript_WarpToLobbyWon:: @ 82492AF
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_WON
 	tower_set TOWER_DATA_LVL_MODE
-	setvar VAR_0x8004, 3
+	setvar VAR_0x8004, FANCOUNTER_USED_BATTLE_TOWER
 	special Script_TryGainNewFanFromCounter
 	goto BattleFrontier_BattleTowerBattleRoom_EventScript_WarpToLobby
 

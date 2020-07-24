@@ -1,6 +1,6 @@
 PacifidlogTown_MapScripts:: @ 81EBAB1
-	map_script MAP_SCRIPT_ON_TRANSITION, PacifidlogTown_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, PacifidlogTown_OnResume
+	map_script ON_TRANSITION, PacifidlogTown_OnTransition
+	map_script ON_RESUME, PacifidlogTown_OnResume
 	.byte 0
 
 PacifidlogTown_OnTransition: @ 81EBABC

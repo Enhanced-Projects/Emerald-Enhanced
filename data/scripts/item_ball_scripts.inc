@@ -1,3 +1,24 @@
+
+CraggyCoast_EventScript_ItemKeyShard2::
+	finditem ITEM_KEY_SHARD_2
+	end
+
+FrostbiteField_EventScript_ItemPPup::
+	finditem ITEM_PP_UP
+	end
+
+FrostbiteField_EventScript_ItemRepel::
+	finditem ITEM_REPEL
+	end
+
+FrostbiteField_EventScript_ItemPPmax::
+	finditem ITEM_PP_MAX
+	end
+
+FrostbiteField_EventScript_ItemSuperRepel::
+	finditem ITEM_SUPER_REPEL
+	end
+
 Ryu_GiveItemScript::
 	finditem VAR_TEMP_7
 	return

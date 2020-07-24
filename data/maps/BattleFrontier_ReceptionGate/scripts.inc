@@ -1,6 +1,6 @@
 BattleFrontier_ReceptionGate_MapScripts:: @ 82661DA
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_ReceptionGate_OnFrame
-	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_ReceptionGate_OnTransition
+	map_script ON_FRAME, BattleFrontier_ReceptionGate_OnFrame
+	map_script ON_TRANSITION, BattleFrontier_ReceptionGate_OnTransition
 	.byte 0
 
 BattleFrontier_ReceptionGate_OnTransition: @ 82661E5
@@ -14,6 +14,7 @@ BattleFrontier_ReceptionGate_OnFrame: @ 82661E9
 BattleFrontier_ReceptionGate_EventScript_FirstTimeEntering:: @ 82661F3
 	lockall
 	setvar VAR_TEMP_3, 1
+	goto_if_set FLAG_RYU_CHOOSING_FRONTIER_STARTER, RyuFrontierModeStarterMenu
 	goto_if_set FLAG_SYS_FRONTIER_PASS, ryu_end
 	playse SE_PIN
 	applymovement 1, Common_Movement_ExclamationMark

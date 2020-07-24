@@ -207,7 +207,7 @@ void NewGameInitData(void)
     WarpToTruck();
     ScriptContext2_RunNewScript(EventScript_ResetAllMapFlags);
     ResetMiniGamesResults();
-    copy_strings_to_sav1();
+    InitUnionRoomChatRegisteredTexts();
     InitLilycoveLady();
     ResetAllApprenticeData();
     ClearRankingHallRecords();
@@ -280,6 +280,8 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN);
     FlagSet(FLAG_RYU_HIDE_HAREM_EVENT_DAWN);
     FlagSet(FLAG_RYU_HIDE_MANAPHY);
+    FlagSet(FLAG_RYU_HIDE_BRINEY_GUARD);
+    FlagSet(FLAG_RYU_HIDE_GC_BLAISE);
 }
 
 static void ResetMiniGamesResults(void)

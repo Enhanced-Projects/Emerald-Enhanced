@@ -1,7 +1,7 @@
 SealedChamber_OuterRoom_MapScripts:: @ 8239106
-	map_script MAP_SCRIPT_ON_RESUME, SealedChamber_OuterRoom_OnResume
-	map_script MAP_SCRIPT_ON_TRANSITION, SealedChamber_OuterRoom_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD , SealedChamber_OuterRoom_OnLoad
+	map_script ON_RESUME, SealedChamber_OuterRoom_OnResume
+	map_script ON_TRANSITION, SealedChamber_OuterRoom_OnTransition
+	map_script ON_LOAD , SealedChamber_OuterRoom_OnLoad
 	.byte 0
 
 SealedChamber_OuterRoom_OnResume: @ 8239116
@@ -18,12 +18,6 @@ SealedChamber_OuterRoom_OnLoad: @ 823912B
 	end
 
 SealedChamber_OuterRoom_EventScript_CloseInnerRoomEntrance:: @ 8239135
-	setmetatile 9, 1, METATILE_Cave_EntranceCover, 1
-	setmetatile 10, 1, METATILE_Cave_EntranceCover, 1
-	setmetatile 11, 1, METATILE_Cave_EntranceCover, 1
-	setmetatile 9, 2, METATILE_Cave_SealedChamberBraille_Mid, 1
-	setmetatile 10, 2, METATILE_Cave_SealedChamberBraille_Mid, 1
-	setmetatile 11, 2, METATILE_Cave_SealedChamberBraille_Mid, 1
 	return
 
 SealedChamber_OuterRoom_EventScript_BrailleABC:: @ 823916C

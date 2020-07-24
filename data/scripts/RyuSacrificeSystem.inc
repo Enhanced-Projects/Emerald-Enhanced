@@ -88,6 +88,9 @@ GCMS_Status::
 	end
 	
 GCMS_CreateMon::
+	checkitem ITEM_SHINY_CHARM, 1
+	compare VAR_RESULT, TRUE
+	goto_if_eq GCMS_ShinyCharmPresent
 	getpartysize
 	compare VAR_RESULT, 6
 	goto_if_eq GCMS_NoSpace
@@ -97,6 +100,20 @@ GCMS_CreateMon::
 	compare VAR_RESULT, 1
 	goto_if_ne GCMS_CancelCreate
 	goto GCMS_NatureMenu
+
+GCMS_ShinyCharmPresent::
+	msgbox GCMS_ShinyCharmWarningMsg
+	release
+	end
+
+GCMS_ShinyCharmWarningMsg:
+	.string "{COLOR RED}{SHADOW LIGHT_GREY}WARNING!\n"
+	.string "You have a Shiny Charm with you.\p"
+	.string "Creating a mon has been cancelled\n"
+	.string "because the shiny charm rerolls\l"
+	.string "your stats and ability.\p"
+	.string "Go deposit your Shiny Charm before\n"
+	.string "attempting to create your mon.$"
 
 GCMS_NatureMenu::
 	msgbox GCMS_ChooseNatureMsg
@@ -314,7 +331,8 @@ GCMS_Consignment::
 	goto_if_eq GCMS_ChooseInitialSpecies
 	bufferspeciesname 0, VAR_RYU_GCMS_SPECIES
 	msgbox GCMS_PickSlot
-	multichoicedefault 0, 0, 118, 6, 0
+	call RyuBufferPartyMonNames
+	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 6, 0
 	switch VAR_RESULT
 	case 0, GCMS_Slot1Selected
 	case 1, GCMS_Slot2Selected
@@ -334,7 +352,8 @@ GCMS_ChooseInitialSpecies:
 	setflag FLAG_TEMP_5
 	msgbox GCMS_PickInitialSpecies
 	closemessage
-	multichoicedefault 0, 0, 118, 6, 0
+	call RyuBufferPartyMonNames
+	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 6, 0
 	switch VAR_RESULT
 	case 0, GCMS_Slot1Selected
 	case 1, GCMS_Slot2Selected
@@ -490,8 +509,8 @@ GCMS_Successful:
     .string "been made!$"
 	
 GCMS_PickSlot:
-    .string "You are currently mapping genes\n"
-    .string "for {COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1}{COLOR DARK_GREY}{SHADOW LIGHT_GREY}. Please select one.$"
+    .string "You are currently mapping genes.\n"
+    .string "Choose which species to Consign.$"
 	
 GCMS_PickInitialSpecies:
     .string "You are not currently mapping\n"

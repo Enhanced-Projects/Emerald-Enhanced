@@ -1,0 +1,38 @@
+{
+    "allow_cycling": true,
+    "allow_escaping": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_POLAR_PILLAR_3F",
+    "layout": "LAYOUT_POLAR_PILLAR_3F",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "music": "MUS_TOZAN",
+    "name": "PolarPillar_3F",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_POLAR_PILLAR",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_POLAR_PILLAR_2F",
+            "dest_warp_id": 1,
+            "elevation": 3,
+            "x": 18,
+            "y": 12
+        },
+        {
+            "dest_map": "MAP_POLAR_PILLAR_4F",
+            "dest_warp_id": 0,
+            "elevation": 3,
+            "x": 2,
+            "y": 4
+        }
+    ],
+    "weather": "WEATHER_NONE"
+}

@@ -1,5 +1,5 @@
 BattleFrontier_BattleTowerBattleRoom_MapScripts:: @ 8241B40
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleTowerBattleRoom_OnFrame
+	map_script ON_FRAME, BattleFrontier_BattleTowerBattleRoom_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattleTowerBattleRoom_OnWarp
 	.byte 0
 
@@ -45,7 +45,7 @@ BattleFrontier_BattleTowerBattleRoom_EventScript_OpponentEnter:: @ 8241BC3
 BattleFrontier_BattleTower_EventScript_WarpToLobbyLost:: @ 8241C03
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_LOST
 	tower_set TOWER_DATA_LVL_MODE
-	setvar VAR_0x8004, 3
+	setvar VAR_0x8004, FANCOUNTER_USED_BATTLE_TOWER
 	special Script_TryGainNewFanFromCounter
 	goto BattleFrontier_BattleTowerBattleRoom_EventScript_WarpToLobby
 
@@ -134,7 +134,7 @@ BattleFrontier_BattleTowerBattleRoom_EventScript_ContinueChallenge:: @ 8241DDC
 BattleFrontier_BattleTowerBattleRoom_EventScript_WarpToLobbyWon:: @ 8241DF6
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, CHALLENGE_STATUS_WON
 	tower_set TOWER_DATA_LVL_MODE
-	setvar VAR_0x8004, 3
+	setvar VAR_0x8004, FANCOUNTER_USED_BATTLE_TOWER
 	special Script_TryGainNewFanFromCounter
 	goto BattleFrontier_BattleTowerBattleRoom_EventScript_WarpToLobby
 

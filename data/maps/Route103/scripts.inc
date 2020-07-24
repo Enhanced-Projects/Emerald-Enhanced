@@ -1,6 +1,6 @@
 Route103_MapScripts:: @ 81EC38E
-	map_script MAP_SCRIPT_ON_TRANSITION, Route103_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD , Route103_OnLoad
+	map_script ON_TRANSITION, Route103_OnTransition
+	map_script ON_LOAD , Route103_OnLoad
 	.byte 0
 
 Route103_OnTransition: @ 81EC399

@@ -31,6 +31,7 @@ RyuFollowerSelectNPCScript::
 	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RyuFollower_DawnScript
 	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, RyuFollower_BrendanScript
 	case OBJ_EVENT_GFX_LEAF, RyuFollower_LeafScript
+	case OBJ_EVENT_GFX_MAGMA_MEMBER_M, GC_BlaiseScript
 	end
 
 RyuFollower_ShellyScript::

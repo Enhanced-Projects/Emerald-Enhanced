@@ -270,9 +270,10 @@
 #define VAR_RYU_PRICE_MULTIPLIER             0x40FC // Unused Var
 #define VAR_RYU_WEATHER                      0x40FD // Unused Var
 #define VAR_RYU_DS_LANA_STAGE                0x40FE // Unused Var
-#define VAR_UNUSED_0x40FF                    0x40FF // Unused Var
+#define VAR_RYU_MAGMA                        0x40FF // Magma quest var
 
 #define VARS_END                             0x40FF
+#define VARS_COUNT                           (VARS_END - VARS_START + 1)
 
 #define SPECIAL_VARS_START            0x8000
 // special vars
@@ -337,6 +338,8 @@
 
 //InfoBox Defines
 #define INFOBOXPOKEMONDATA 0
+#define INFOBOX_F_STARTER_HYPER_OFFENSE 1
+#define INFOBOX_F_STARTER_FEAR_TEAM 2
 
 #define SPECIAL_VARS_END              0x8015
 

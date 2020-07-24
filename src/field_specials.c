@@ -65,7 +65,6 @@
 #include "constants/species.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
-#include "constants/vars.h"
 #include "constants/battle_frontier.h"
 #include "constants/weather.h"
 #include "constants/metatile_labels.h"
@@ -2609,7 +2608,7 @@ static void Task_ShowScrollableMultichoice(u8 taskId)
 
     ScrollableMultichoice_UpdateScrollArrows(taskId);
     task->tListTaskId = ListMenuInit(&gScrollableMultichoice_ListMenuTemplate, task->tScrollOffset, task->tSelectedRow);
-    schedule_bg_copy_tilemap_to_vram(0);
+    ScheduleBgCopyTilemapToVram(0);
     gTasks[taskId].func = ScrollableMultichoice_ProcessInput;
 }
 
@@ -4062,11 +4061,17 @@ void UpdateTrainerFanClubGameClear(void)
 }
 
 // If the player has < 3 fans, gain a new fan whenever the counter reaches 20+
-// Defeating Drake or participating in a Link Contest increments the counter by 2
+// Defeating Drake or participating in a Contest increments the counter by 2 
 // Participating at Battle Tower or in a Secret Base battle increments the counter by 1
 u8 TryGainNewFanFromCounter(u8 incrementId)
 {
-    static const u8 sCounterIncrements[] = { 2, 1, 2, 1 };
+    static const u8 sCounterIncrements[] = 
+    { 
+        [FANCOUNTER_DEFEATED_DRAKE]    = 2, 
+        [FANCOUNTER_BATTLED_AT_BASE]   = 1, 
+        [FANCOUNTER_FINISHED_CONTEST]  = 2, 
+        [FANCOUNTER_USED_BATTLE_TOWER] = 1 
+    };
 
     if (VarGet(VAR_LILYCOVE_FAN_CLUB_STATE) == 2)
     {
@@ -4923,6 +4928,7 @@ void RyuSetFriendship(void)
     u8 value = 250;
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetEVHP(void)
@@ -4930,6 +4936,7 @@ void RyuSetEVHP(void)
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetEVATK(void)
@@ -4937,6 +4944,7 @@ void RyuSetEVATK(void)
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetEVDEF(void)
@@ -4944,6 +4952,7 @@ void RyuSetEVDEF(void)
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_DEF_EV, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetEVSPATK(void)
@@ -4951,6 +4960,7 @@ void RyuSetEVSPATK(void)
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetEVSPDEF(void)
@@ -4958,6 +4968,7 @@ void RyuSetEVSPDEF(void)
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_EV, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetEVSPE(void)
@@ -4965,6 +4976,7 @@ void RyuSetEVSPE(void)
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_EV, &value);
+    CalculateMonStats(&gPlayerParty[slot]);
 }
 
 void RyuSetMonMove(void)
@@ -4999,19 +5011,6 @@ int RyuCalculateCurrentExpCoefficient(void)
     return calc;
 }
 
-void RyuOtherDataChecker(void)
-{
-    u8 obed = 0;
-    u8 pers = 0;
-    u8 ribb = 0;
-    obed = GetMonData(&gPlayerParty[0], MON_DATA_FRIENDSHIP);
-    pers = GetMonData(&gPlayerParty[0], MON_DATA_PERSONALITY);
-    ribb = GetMonData(&gPlayerParty[0], MON_DATA_RIBBONS);
-    ConvertIntToDecimalStringN(gStringVar1, obed, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, pers, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar3, ribb, STR_CONV_MODE_LEFT_ALIGN, 3);
-}
-
 void RyuResetEvs(void)
 {
     u8 ev = 0;
@@ -5022,6 +5021,7 @@ void RyuResetEvs(void)
     SetMonData(&gPlayerParty[0], MON_DATA_SPATK_EV, &ev);
     SetMonData(&gPlayerParty[0], MON_DATA_SPDEF_EV, &ev);
     SetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV, &ev);
+    CalculateMonStats(&gPlayerParty[0]);
 }
 
 void RyuGenerateReward(void)
@@ -6083,3 +6083,66 @@ bool8 RyuFillStatsBuffers(void)
 
     return TRUE;
 }
+
+bool8 TobyCheckPlayerHasMon(void)//called with "specialvar VAR_RESULT, TobyCheckPlayerHasMon"
+    {//                            then followed with a comparison like "compare VAR_RESULT TRUE"
+    u8 i;//                                                             "goto_if_eq YourScriptFunctionHere"
+    u8 partyCount = CalculatePlayerPartyCount();//                      "end"
+    
+    for (i = 0; i < partyCount; i++)
+        {
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_CRYOGONAL)//change species here
+            {
+                return TRUE;
+            }
+        }
+    return FALSE;
+    }
+
+void RyuSetUpSaveBlockStuff(void)
+{
+    gSaveBlock1Ptr->registeredItem = ITEM_WAYSTONE;
+    VarSet(VAR_RYU_THEME_NUMBER, 1);
+}
+
+EWRAM_DATA static u8 sDebugWindowId = 0xFF;
+EWRAM_DATA static u8 sDebugWindow2Id = 0xEE;
+static const u8 gText_HighlightTransparent[] = _("{HIGHLIGHT TRANSPARENT}");
+static const u8 gText_DarkTextColors[] = _("{COLOR LIGHT_GREY}{SHADOW DARK_GREY}");
+static const u8 gText_LightTextColors[] = _("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
+
+void RyuPrintDebugMessage(u8 mode, u8 *str)
+{
+    struct WindowTemplate template;
+    struct WindowTemplate template2;
+    SetWindowTemplateFields(&template, 0, 0, 15, 15, 5, 15, 8);
+    SetWindowTemplateFields(&template2, 0, 1, 15, 15, 5, 15, 8);
+    sDebugWindowId = AddWindow(&template);
+    sDebugWindow2Id = AddWindow(&template2);
+    FillWindowPixelBuffer(sDebugWindowId, 0);
+    FillWindowPixelBuffer(sDebugWindow2Id, 0);
+    PutWindowTilemap(sDebugWindowId);
+    PutWindowTilemap(sDebugWindow2Id);
+    CopyWindowToVram(sDebugWindowId, 1);
+    CopyWindowToVram(sDebugWindow2Id, 1);
+    StringCopy(gStringVar4, gText_DarkTextColors);
+    StringAppend(gStringVar4, gText_HighlightTransparent);
+    StringCopy(gRyuStringVar3,gStringVar4);
+    StringAppend(gStringVar4, str);
+    StringAppend(gRyuStringVar3, str);
+    if (mode == 2)
+    {
+        AddTextPrinterParameterized(sDebugWindow2Id, 0, gRyuStringVar3, 0, 0, 0, NULL);
+    }
+    else
+    {
+        AddTextPrinterParameterized(sDebugWindowId, 0, gStringVar4, 0, 0, 0, NULL);
+    }
+}
+
+void RyuTestDebug(void)
+{
+    u8 gTextBuffer1[] = _("Test Debug Error Message");
+    RyuPrintDebugMessage(0, gTextBuffer1);
+}
+

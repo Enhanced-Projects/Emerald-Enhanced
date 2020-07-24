@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": false,
+    "allow_cycling": true,
+    "allow_escaping": false,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -39,7 +39,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_RIGHT_DOWN",
             "script": "Route126_EventScript_Barry",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 51,
             "y": 65
         },
@@ -52,7 +52,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT",
             "script": "Route126_EventScript_Dean",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 56,
             "y": 22
         },
@@ -65,7 +65,7 @@
             "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
             "script": "Route126_EventScript_Nikki",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 63,
             "y": 43
         },
@@ -78,7 +78,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "Route126_EventScript_Brenda",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 9,
             "y": 48
         },
@@ -91,7 +91,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Route126_EventScript_ItemGreenShard",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 1
         },
@@ -104,7 +104,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
             "script": "Route126_EventScript_Sienna",
             "trainer_sight_or_berry_tree_id": "7",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 15,
             "y": 66
         },
@@ -117,7 +117,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
             "script": "Route126_EventScript_Pablo",
             "trainer_sight_or_berry_tree_id": "7",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 7,
             "y": 66
         },
@@ -130,7 +130,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
             "script": "Route126_EventScript_Isobel",
             "trainer_sight_or_berry_tree_id": "7",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 64,
             "y": 5
         },
@@ -143,7 +143,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
             "script": "Route126_EventScript_Leonardo",
             "trainer_sight_or_berry_tree_id": "7",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 56,
             "y": 5
         }

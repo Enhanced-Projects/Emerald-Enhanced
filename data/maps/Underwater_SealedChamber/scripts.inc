@@ -20,9 +20,11 @@ Underwater_SealedChamber_EventScript_SurfaceSealedChamber:: @ 82390F3
 
 Underwater_SealedChamber_EventScript_Braille:: @ 82390FC
 	lockall
-	braillemessage Underwater_SealedChamber_Braille_GoUpHere
-	waitbuttonpress
-	closebraillemessage
+	msgbox U_SC_NewMessage
+	closemessage
 	releaseall
 	end
+	
+U_SC_NewMessage:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(There's some ancient text\n inscribed here.\p Your best guess is that it\n is a marker for an ancient\l people.\p You should try to surface.)$"
 

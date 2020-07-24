@@ -258,7 +258,7 @@ bool32 TryStartMatchCall(void)
     return FALSE;
 }
 
-void StartMatchCallFromScript(u8 *message)
+void StartMatchCallFromScript(const u8 *message)
 {
     gMatchCallState.triggeredFromScript = 1;
     StartMatchCall();
@@ -342,7 +342,7 @@ static bool32 LoadMatchCallWindowGfx(u8 taskId)
         return FALSE;
     }
 
-    if (!decompress_and_copy_tile_data_to_vram(0, sPokeNavIconGfx, 0, 0x279, 0))
+    if (!DecompressAndCopyTileDataToVram(0, sPokeNavIconGfx, 0, 0x279, 0))
     {
         RemoveWindow(taskData[2]);
         DestroyTask(taskId);
@@ -359,7 +359,7 @@ static bool32 LoadMatchCallWindowGfx(u8 taskId)
 static bool32 MoveMatchCallWindowToVram(u8 taskId)
 {
     s16 *taskData = gTasks[taskId].data;
-    if (free_temp_tile_data_buffers_if_possible())
+    if (FreeTempTileDataBuffersIfPossible())
         return FALSE;
 
     PutWindowTilemap(taskData[2]);

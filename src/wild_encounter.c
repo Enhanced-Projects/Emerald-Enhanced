@@ -29,6 +29,7 @@
 #include "pokemon.h"
 #include "constants/weather.h"
 #include "autoscale_tables.h"
+#include "constants/metatile_behaviors.h"
 
 extern const u8 EventScript_RepelWoreOff[];
 extern int CountBadges();
@@ -357,6 +358,8 @@ int RyuChooseWildLevel(void)
 {
     u8 badge = (CountBadges());
     u8 level = (Random() % (sWildRange[badge][1] - sWildRange[badge][0])) + sWildRange[badge][0];
+    if (FlagGet(FLAG_RYU_BOSS_WILD) == 1)
+        level += 5;
     //sWildRange is the array declared above, [badge] is the index, [0] and [1] are the first and second values of the index listed.
     //To get a range of random values, do (array[index][second value] minus array[index][first value]) plus array[index][first value]
     return level;
@@ -490,15 +493,13 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
     level = ChooseWildMonLevel(&wildMonInfo->wildPokemon[wildMonIndex]);
     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
         return FALSE;
-
-    CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
   
-    if ((Random() % 128) == 69)
+    if ((Random() % 128) == 69)// || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {
         u8 val[1] = {TRUE};
-        u8 newAbility = (Random() %2);
-        newLevel = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
-        newLevel += 5;
+        u8 newAbility = (Random() % 2);
+        FlagSet(FLAG_RYU_BOSS_WILD);
+        CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
         ShowFieldMessage(gText_PowerfulWildAppears);
         SetMonData(&gEnemyParty[0], MON_DATA_HP_IV, &iv);
         SetMonData(&gEnemyParty[0], MON_DATA_ATK_IV, &iv);
@@ -519,8 +520,11 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
                 SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &newAbility);
             }
         
-        FlagSet(FLAG_RYU_BOSS_WILD);
         CalculateMonStats(&gEnemyParty[0]);
+    }
+    else
+    {
+        CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
     }
     return TRUE;
 }
@@ -642,6 +646,16 @@ static bool8 AreLegendariesInSootopolisPreventingEncounters(void)
     return FlagGet(FLAG_LEGENDARIES_IN_SOOTOPOLIS);
 }
 
+bool8 RyuCheckForDarkGrass(void)
+{
+    u16 pX = gSaveBlock1Ptr->location.x;
+    u16 pY = gSaveBlock1Ptr->location.y;
+
+    if (MapGridGetMetatileBehaviorAt(pX, pY) == MB_DARK_GRASS)
+        return TRUE;
+    return FALSE;
+}
+
 bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavior)
 {
     u16 headerId;
@@ -723,19 +737,20 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
                 // try a regular wild land encounter
                 if (TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
                 {
-                    //if (USE_BATTLE_DEBUG && !GetSafariZoneFlag() && GetMonsStateToDoubles() == PLAYER_HAS_TWO_USABLE_MONS)
-                    //{
-                    //    struct Pokemon mon1 = gEnemyParty[0];
-                    //    TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_KEEN_EYE);
-                    //    gEnemyParty[1] = mon1;
-                    //    BattleSetup_StartDoubleWildBattle();
-                    //}
-                    //else
-                    //{
-                    BattleSetup_StartWildBattle();
-                    //
+                    if (USE_BATTLE_DEBUG && GetMonsStateToDoubles() == PLAYER_HAS_TWO_USABLE_MONS && (RyuCheckForDarkGrass() == TRUE) && (Random() % 100 >= 50))
+                    {
+                        struct Pokemon mon1 = gEnemyParty[0];
+                        TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_KEEN_EYE);
+                        gEnemyParty[1] = mon1;
+                        BattleSetup_StartDoubleWildBattle();
+                    }
+                    else
+                    {
+                        BattleSetup_StartWildBattle();
+                    }   
                     return TRUE;
                 }
+                
 
                 return FALSE;
             }

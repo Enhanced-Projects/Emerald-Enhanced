@@ -1,5 +1,5 @@
 AncientTomb1F_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, AT1_LeafEventRop
+	map_script ON_FRAME, AT1_LeafEventRop
 	.byte 0
 	
 AT1_LeafEventRop::
@@ -116,7 +116,7 @@ AT1_LeafStoryEvent2::
 	fadescreen FADE_TO_WHITE
 	msgbox AT1_BlackedOut MSGBOX_DEFAULT
 	closemessage
-	clearflag FLAG_RYU_HIDE_REL_OBJECTS
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	setvar VAR_RYU_DS_LANA_STAGE, 75
 	call AT1_Warp
 	release

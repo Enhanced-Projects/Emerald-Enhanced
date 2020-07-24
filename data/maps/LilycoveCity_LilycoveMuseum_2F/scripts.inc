@@ -1,6 +1,6 @@
 LilycoveCity_LilycoveMuseum_2F_MapScripts:: @ 821973A
-	map_script MAP_SCRIPT_ON_LOAD , LilycoveCity_LilycoveMuseum_2F_OnLoad
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, LilycoveCity_LilycoveMuseum_2F_OnFrame
+	map_script ON_LOAD , LilycoveCity_LilycoveMuseum_2F_OnLoad
+	map_script ON_FRAME, LilycoveCity_LilycoveMuseum_2F_OnFrame
 	.byte 0
 
 LilycoveCity_LilycoveMuseum_2F_OnLoad: @ 8219745
@@ -183,35 +183,35 @@ LilycoveCity_LilycoveMuseum_2F_EventScript_RichBoy:: @ 821999C
 LilycoveCity_LilycoveMuseum_2F_EventScript_ShowCoolPainting:: @ 82199A5
 	msgbox LilycoveCity_LilycoveMuseum_2F_Text_ItsPaintingOfPokemon, MSGBOX_SIGN
 	fadescreen FADE_TO_BLACK
-	showcontestwinner 9
+	showcontestwinner CONTEST_WINNER_MUSEUM_COOL
 	releaseall
 	end
 
 LilycoveCity_LilycoveMuseum_2F_EventScript_ShowBeautyPainting:: @ 82199B3
 	msgbox LilycoveCity_LilycoveMuseum_2F_Text_ItsPaintingOfPokemon, MSGBOX_SIGN
 	fadescreen FADE_TO_BLACK
-	showcontestwinner 10
+	showcontestwinner CONTEST_WINNER_MUSEUM_BEAUTY
 	releaseall
 	end
 
 LilycoveCity_LilycoveMuseum_2F_EventScript_ShowCutePainting:: @ 82199C1
 	msgbox LilycoveCity_LilycoveMuseum_2F_Text_ItsPaintingOfPokemon, MSGBOX_SIGN
 	fadescreen FADE_TO_BLACK
-	showcontestwinner 11
+	showcontestwinner CONTEST_WINNER_MUSEUM_CUTE
 	releaseall
 	end
 
 LilycoveCity_LilycoveMuseum_2F_EventScript_ShowSmartPainting:: @ 82199CF
 	msgbox LilycoveCity_LilycoveMuseum_2F_Text_ItsPaintingOfPokemon, MSGBOX_SIGN
 	fadescreen FADE_TO_BLACK
-	showcontestwinner 12
+	showcontestwinner CONTEST_WINNER_MUSEUM_SMART
 	releaseall
 	end
 
 LilycoveCity_LilycoveMuseum_2F_EventScript_ShowToughPainting:: @ 82199DD
 	msgbox LilycoveCity_LilycoveMuseum_2F_Text_ItsPaintingOfPokemon, MSGBOX_SIGN
 	fadescreen FADE_TO_BLACK
-	showcontestwinner 13
+	showcontestwinner CONTEST_WINNER_MUSEUM_TOUGH
 	releaseall
 	end
 

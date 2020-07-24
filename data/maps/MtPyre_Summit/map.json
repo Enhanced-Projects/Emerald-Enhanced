@@ -1,6 +1,6 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": false,
+    "allow_cycling": true,
+    "allow_escaping": false,
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -128,7 +128,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "MtPyre_Summit_EventScript_OldMan",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 22,
             "y": 5
         },
@@ -141,7 +141,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 23,
             "y": 6
         },
@@ -154,7 +154,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "MtPyre_Summit_EventScript_OldLady",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 23,
             "y": 5
         },
@@ -167,7 +167,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "MtPyre_Summit_EventScript_Grunt1",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 21,
             "y": 15
         },
@@ -180,7 +180,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "MtPyre_Summit_EventScript_Grunt2",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 25,
             "y": 18
         },
@@ -193,7 +193,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "MtPyre_Summit_EventScript_Grunt3",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 21,
             "y": 11
         },
@@ -206,7 +206,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "MtPyre_Summit_EventScript_Grunt4",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 25,
             "y": 11
         },
@@ -219,7 +219,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 23,
             "y": 9
         },
@@ -232,7 +232,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "MP_Courtney",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 25,
             "y": 28
         },
@@ -245,7 +245,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "MP_Maxie",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 21,
             "y": 28
         },
@@ -258,7 +258,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 24,
             "y": 6
         },
@@ -271,7 +271,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 22,
             "y": 6
         },
@@ -284,7 +284,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "MP_Gengarite",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 9,
             "y": 4
         }

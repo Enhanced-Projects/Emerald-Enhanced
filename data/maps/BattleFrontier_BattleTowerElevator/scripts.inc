@@ -1,5 +1,5 @@
 BattleFrontier_BattleTowerElevator_MapScripts:: @ 82419DB
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleTowerElevator_OnFrame
+	map_script ON_FRAME, BattleFrontier_BattleTowerElevator_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattleTowerElevator_OnWarp
 	.byte 0
 

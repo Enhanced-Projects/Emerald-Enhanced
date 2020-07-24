@@ -586,6 +586,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuLifeSkillScripts.inc"
 	.include "data/scripts/RyuFossilReviver.inc"
 	.include "data/scripts/RyuFollowerSystem.inc"
+	.include "data/scripts/frontiermode.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
@@ -1160,3 +1161,27 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/SnowshoreUnderwater/scripts.inc"
 
 	.include "data/maps/FrostyForestUnderwater/scripts.inc"
+
+	.include "data/maps/CraggyCoastUnderwater/scripts.inc"
+
+	.include "data/maps/CraggyCoastUnderwaterCave/scripts.inc"
+
+	.include "data/maps/CraggyCoastUnderwater2/scripts.inc"
+
+	.include "data/maps/PolarPillar_1F/scripts.inc"
+
+	.include "data/maps/PolarPillar_2F/scripts.inc"
+
+	.include "data/maps/PolarPillar_3F/scripts.inc"
+
+	.include "data/maps/PolarPillar_4F/scripts.inc"
+
+	.include "data/maps/Igloo1/scripts.inc"
+
+	.include "data/maps/Igloo2/scripts.inc"
+
+	.include "data/maps/Igloo3/scripts.inc"
+
+	.include "data/maps/Igloo4/scripts.inc"
+
+	.include "data/maps/Route104_MrBrineysHouse_Story/scripts.inc"

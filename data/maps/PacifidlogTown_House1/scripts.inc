@@ -48,7 +48,7 @@ PT_LanaEvent1::
 	end
 
 PT_NpcChatter:
-	.string "Surfer: That girl traded for my\nRelicanth...\pI'd say I got the\nbetter deal, but I can't shake the\lfeeling I've been outplayed...\pI mean, what's Relicanth useful\lfor anyway?\pBy the way...$"
+	.string "That girl traded for my Relicanth...\pI'd say I got the\nbetter deal, but I can't shake the\lfeeling I've been outplayed...\pI mean, what's Relicanth useful\lfor anyway?\pBy the way...$"
 
 	
 PT_LanaMsg:

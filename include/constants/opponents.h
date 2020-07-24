@@ -569,7 +569,7 @@
 #define TRAINER_CATHERINE_5                 565
 #define TRAINER_JULIO                       566
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_5     567
-#define TRAINER_GRUNT_UNUSED                568
+#define TRAINER_GRUNT_RUSTURF_MAGMA                568
 #define TRAINER_GRUNT_MT_PYRE_4             569
 #define TRAINER_GRUNT_JAGGED_PASS           570
 #define TRAINER_MARC                        571
@@ -666,7 +666,7 @@
 #define TRAINER_EMPTY_32                    662
 #define TRAINER_EMPTY_29                    663
 #define TRAINER_DAWN_5                      664
-#define TRAINER_EMPTY_30                    665
+#define TRAINER_STEVEN_STORY1                    665
 #define TRAINER_ESKIMO_1                    666
 #define TRAINER_JONAH                       667
 #define TRAINER_HENRY                       668
@@ -859,6 +859,7 @@
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
+//       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
 #define TRAINERS_COUNT                      855
 #define MAX_TRAINERS_COUNT                  864

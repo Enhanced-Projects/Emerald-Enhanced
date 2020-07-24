@@ -39,17 +39,16 @@
 #include "text.h"
 #include "constants/event_bg.h"
 #include "constants/event_objects.h"
-#include "constants/flags.h"
 #include "constants/item_effects.h"
 #include "constants/items.h"
 #include "constants/songs.h"
-#include "constants/vars.h"
 
 extern u8 RyuTeleport[];
 extern u8 RyuUserModeEVMenu[];
 extern u8 RyuExpBattery[];
 extern u8 Ryu_Forecaster[];
 extern u8 Ryu_SoundTest[];
+extern u8 Ryu_AbilityCapsule[];
 //extern u8 EventScript_PC[];
 extern u8 Ryu_CantUsePcCharging[];
 
@@ -116,7 +115,7 @@ static void SetUpItemUseCallback(u8 taskId)
         type = ItemId_GetType(gSpecialVar_ItemId) - 1;
     if (!InBattlePyramid())
     {
-        gBagMenu->mainCallback2 = sItemUseCallbacks[type];
+        gBagMenu->exitCallback = sItemUseCallbacks[type];
         Task_FadeAndCloseBagMenu(taskId);
     }
     else
@@ -201,7 +200,7 @@ static void CB2_CheckMail(void)
 
 void ItemUseOutOfBattle_Mail(u8 taskId)
 {
-    gBagMenu->mainCallback2 = CB2_CheckMail;
+    gBagMenu->exitCallback = CB2_CheckMail;
     Task_FadeAndCloseBagMenu(taskId);
 }
 
@@ -610,13 +609,13 @@ static void Task_StandingOnHiddenItem(u8 taskId)
 
 void ItemUseOutOfBattle_PokeblockCase(u8 taskId)
 {
-    if (sub_81221AC() == TRUE) // link func
+    if (MenuHelpers_LinkSomething() == TRUE) // link func
     {
         DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
     }
     else if (gTasks[taskId].tUsingRegisteredKeyItem != TRUE)
     {
-        gBagMenu->mainCallback2 = CB2_OpenPokeblockCaseOnField;
+        gBagMenu->exitCallback = CB2_OpenPokeblockCaseOnField;
         Task_FadeAndCloseBagMenu(taskId);
     }
     else
@@ -678,7 +677,7 @@ void ItemUseOutOfBattle_Berry(u8 taskId)
     {
         sItemUseOnFieldCB = ItemUseOnFieldCB_Berry;
         gFieldCallback = FieldCB_UseItemOnField;
-        gBagMenu->mainCallback2 = CB2_ReturnToField;
+        gBagMenu->exitCallback = CB2_ReturnToField;
         Task_FadeAndCloseBagMenu(taskId);
     }
     else
@@ -749,8 +748,9 @@ void ItemUseOutOfBattle_Medicine(u8 taskId)
 
 void ItemUseOutOfBattle_AbilityCapsule(u8 taskId)
 {
-    gItemUseCB = ItemUseCB_AbilityCapsule;
-    SetUpItemUseCallback(taskId);
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext2_Enable();
+    ScriptContext1_SetupScript(Ryu_AbilityCapsule);
 }
 
 void ItemUseOutOfBattle_ReduceEV(u8 taskId)
@@ -1057,7 +1057,7 @@ static void ItemUseInBattle_ShowPartyMenu(u8 taskId)
 {
     if (!InBattlePyramid())
     {
-        gBagMenu->mainCallback2 = ChooseMonForInBattleItem;
+        gBagMenu->exitCallback = ChooseMonForInBattleItem;
         Task_FadeAndCloseBagMenu(taskId);
     }
     else

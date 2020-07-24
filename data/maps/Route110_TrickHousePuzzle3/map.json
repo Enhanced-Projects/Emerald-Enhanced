@@ -1,6 +1,6 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": false,
+    "allow_cycling": false,
+    "allow_escaping": false,
     "allow_running": false,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
@@ -67,7 +67,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Route110_TrickHousePuzzle3_EventScript_Justin",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 7,
             "y": 19
         },
@@ -80,7 +80,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Route110_TrickHousePuzzle3_EventScript_Martha",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 4
         },
@@ -93,7 +93,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Route110_TrickHousePuzzle3_EventScript_Alan",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 10,
             "y": 10
         },
@@ -106,7 +106,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Route110_TrickHousePuzzle3_EventScript_ItemWoodMail",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 1,
             "y": 2
         },
@@ -119,7 +119,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Route110_TrickHousePuzzle3_EventScript_ItemShadowMail",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 2
         },
@@ -132,7 +132,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_RockSmash",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 1,
             "y": 20
         },
@@ -145,7 +145,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "EventScript_RockSmash",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 2,
             "y": 21
         }

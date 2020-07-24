@@ -8,7 +8,5 @@ EverGrandeCity_Hall3_OnWarp: @ 8229599
 
 EverGrandeCity_Hall3_EventScript_TurnPlayerNorth:: @ 82295A3
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
-	gfec
-	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_1, VAR_TEMP_2
 	end
 

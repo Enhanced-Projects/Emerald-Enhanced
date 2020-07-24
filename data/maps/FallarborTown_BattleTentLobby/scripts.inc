@@ -1,5 +1,5 @@
 FallarborTown_BattleTentLobby_MapScripts:: @ 81FFE66
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, FallarborTown_BattleTentLobby_OnFrame
+	map_script ON_FRAME, FallarborTown_BattleTentLobby_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, FallarborTown_BattleTentLobby_OnWarp
 	.byte 0
 
@@ -262,42 +262,17 @@ FallarborTown_BattleTentLobby_EventScript_RulesBoard:: @ 820024F
 	end
 
 FallarborTown_BattleTentLobby_EventScript_ReadRulesBoard:: @ 820025E
-	message BattleFrontier_BattleArenaLobby_Text_ReadWhichHeading
-	waitmessage
-	multichoice 17, 0, MULTI_FALLARBOR_TENT_RULES, 0
-	switch VAR_RESULT
-	case 0, FallarborTown_BattleTentLobby_EventScript_RulesLevel
-	case 1, FallarborTown_BattleTentLobby_EventScript_RulesBattle
-	case 2, FallarborTown_BattleTentLobby_EventScript_RulesMind
-	case 3, FallarborTown_BattleTentLobby_EventScript_RulesSkill
-	case 4, FallarborTown_BattleTentLobby_EventScript_RulesBody
-	case 5, FallarborTown_BattleTentLobby_EventScript_ExitRules
-	case MULTI_B_PRESSED, FallarborTown_BattleTentLobby_EventScript_ExitRules
+	goto FallarborTown_BattleTentLobby_EventScript_RulesLevel
 	end
 
 FallarborTown_BattleTentLobby_EventScript_RulesLevel:: @ 82002BC
 	msgbox BattleTentLobby_Text_ExplainLevelRules, MSGBOX_DEFAULT
-	goto FallarborTown_BattleTentLobby_EventScript_ReadRulesBoard
+	goto FallarborTown_BattleTentLobby_EventScript_RulesBattle
 	end
 
 FallarborTown_BattleTentLobby_EventScript_RulesBattle:: @ 82002CA
 	msgbox BattleFrontier_BattleArenaLobby_Text_ExplainBattleRules, MSGBOX_DEFAULT
-	goto FallarborTown_BattleTentLobby_EventScript_ReadRulesBoard
-	end
-
-FallarborTown_BattleTentLobby_EventScript_RulesMind:: @ 82002D8
-	msgbox BattleFrontier_BattleArenaLobby_Text_ExplainMindRules, MSGBOX_DEFAULT
-	goto FallarborTown_BattleTentLobby_EventScript_ReadRulesBoard
-	end
-
-FallarborTown_BattleTentLobby_EventScript_RulesSkill:: @ 82002E6
-	msgbox BattleFrontier_BattleArenaLobby_Text_ExplainSkillRules, MSGBOX_DEFAULT
-	goto FallarborTown_BattleTentLobby_EventScript_ReadRulesBoard
-	end
-
-FallarborTown_BattleTentLobby_EventScript_RulesBody:: @ 82002F4
-	msgbox BattleFrontier_BattleArenaLobby_Text_ExplainBodyRules, MSGBOX_DEFAULT
-	goto FallarborTown_BattleTentLobby_EventScript_ReadRulesBoard
+	goto FallarborTown_BattleTentLobby_EventScript_ExitRules
 	end
 
 FallarborTown_BattleTentLobby_EventScript_ExitRules:: @ 8200302

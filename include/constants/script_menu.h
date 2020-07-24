@@ -159,6 +159,10 @@
 #define MULTI_RLS_GEMSTONEQUALITYMENU      148
 #define MULTI_SHARD_EXCHANGE               149
 #define MULTI_FOSSIL_REVIVER               150
+#define MULTI_FRONTIERMODE_STARTER1        151
+#define MULTI_FRONTIERMODE_STARTER2        152
+#define MULTI_FRONTIERMODE_STARTER3        153
+#define MULTI_MAGMA_CHOICE                 154
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

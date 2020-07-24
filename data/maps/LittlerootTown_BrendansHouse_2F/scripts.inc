@@ -1,5 +1,5 @@
 LittlerootTown_BrendansHouse_2F_MapScripts:: @ 81F83E3
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, GameIntroSequenceCheck
+	map_script ON_FRAME, GameIntroSequenceCheck
 	.byte 0
 	
 GameIntroSequenceCheck::
@@ -622,6 +622,7 @@ LRT_BeginHaremSequence::
 	
 HaremBegin:
 	lockall
+	goto_if_set FLAG_RYU_HAREM_EVENT_COMPLETED, HaremAlreadyFinished
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	addobject 4
 	playse SE_DOOR
@@ -642,6 +643,10 @@ HaremBegin:
 	warpsilent MAP_LITTLEROOT_TOWN, 255, 9, 8
 	release
 	end
+
+HaremAlreadyFinished::
+	setvar VAR_RYU_PARTNER_COUNT, 10
+	goto ryu_end
 	
 HaremBeginFemale::
 	clearflag FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN

@@ -1,6 +1,6 @@
 MossdeepCity_SpaceCenter_2F_MapScripts:: @ 8223D58
-	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_SpaceCenter_2F_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_SpaceCenter_2F_OnFrame
+	map_script ON_TRANSITION, MossdeepCity_SpaceCenter_2F_OnTransition
+	map_script ON_FRAME, MossdeepCity_SpaceCenter_2F_OnFrame
 	.byte 0
 
 SPC_PREVENT2fEXIT::
@@ -22,9 +22,9 @@ spc_cantleavemsg:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} You can't leave yet.\pYou have to deal with Magma's\npresence.$"
 
 MossdeepCity_SpaceCenter_2F_OnTransition: @ 8223D63
-	compare VAR_MOSSDEEP_CITY_STATE, 2
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 106
 	call_if_eq MossdeepCity_SpaceCenter_2F_EventScript_MoveStevenMaxieCourtney
-	compare VAR_MOSSDEEP_SPACE_CENTER_STATE, 2
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 106
 	call_if_eq MossdeepCity_SpaceCenter_2F_EventScript_MoveDefeatedGrunts
 	end
 
@@ -220,8 +220,17 @@ SPC_MaxieDefeat:
 	.string "What?! NO! Why?!$"
 
 SPC_Maxie::
+	goto_if_unset FLAG_RYU_PLAYER_HELPING_DEVON, ryu_killMaxie
+	goto_if_unset FLAG_RYU_DEVON_SCIENTIST, ryu_killMaxie
 	trainerbattle_single TRAINER_MAXIE_3, SPC_MaxieIntro, SPC_MaxieDefeat, SPC_MaxieDefeated
 	goto SPC_MaxieDefeated
+	end
+
+ryu_killMaxie::
+	removeobject 9
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAXIE
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
+	release
 	end
 	
 SPC_MaxieDefeated:: @ 8224071

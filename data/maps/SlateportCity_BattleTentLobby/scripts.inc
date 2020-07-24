@@ -1,5 +1,5 @@
 SlateportCity_BattleTentLobby_MapScripts:: @ 8208730
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SlateportCity_BattleTentLobby_OnFrame
+	map_script ON_FRAME, SlateportCity_BattleTentLobby_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SlateportCity_BattleTentLobby_OnWarp
 	.byte 0
 

@@ -1,6 +1,6 @@
 Route104_MapScripts:: @ 81ECC32
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
-	map_script MAP_SCRIPT_ON_TRANSITION, Route104_OnTransition
+	map_script ON_FRAME, Route104_OnFrame
+	map_script ON_TRANSITION, Route104_OnTransition
 	.byte 0
 
 Route104_OnFrame: @ 81ECC3D
@@ -17,6 +17,71 @@ Route104_OnTransition: @ 81ECC4E
 	call Route104_EventScript_TrySetRivalPos
 	call Route104_EventScript_ShowOrHideWhiteHerbFlorist
 	end
+	
+	
+@==================================================================================================Magma Event
+
+r104_MagmaEvent2::
+	compare VAR_RYU_MAGMA, 105
+	goto_if_eq r104_MagmaEvent2Intro
+	msgbox r104_TheresNothing
+	release
+	end
+	
+r104_TheresNothing:
+	.string "There's nothing to see here, so you\n"
+    .string "better keep moving!$"
+	
+r104_MagmaEvent2Intro::
+	msgbox r104_YourTheNew
+	closemessage
+	switch VAR_FACING
+	case DIR_NORTH, r104_PlayerEntersCottage
+	case DIR_EAST, r104_CorrectPlayerLocation1
+	case DIR_WEST, r104_CorrectPlayerLocation2
+	goto r104_PlayerEntersCottage
+	
+r104_CorrectPlayerLocation1::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	goto r104_PlayerEntersCottage
+	
+r104_CorrectPlayerLocation2::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	goto r104_PlayerEntersCottage
+	
+	
+r104_PlayerEntersCottage::
+	applymovement 35, Common_Movement_StepRight
+	waitmovement 35
+	applymovement 35 Common_Movement_FaceDown
+	waitmovement 35
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_DOOR
+	warpsilent MAP_ROUTE104_MR_BRINEYS_HOUSE_STORY, 255, 5, 8
+	waitstate
+	
+	
+r104_YourTheNew:
+	.string "You're the new recruit that grunt\n"
+ 	.string "was talking about...?\p"
+   	.string "Well, go on inside...\p"
+   	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You see the nervous expression on\n"
+    .string " his face as he grants you entry...)$"
+	
+
+
+
+
+@==================================================================================================Magma Event End
 
 Route104_EventScript_ShowOrHideWhiteHerbFlorist:: @ 81ECC5E
 	goto_if_unset FLAG_MET_PRETTY_PETAL_SHOP_OWNER, Route104_EventScript_HideWhiteHerbFlorist

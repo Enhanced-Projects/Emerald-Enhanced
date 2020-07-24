@@ -1,7 +1,7 @@
 MirageTower_2F_MapScripts:: @ 823AD11
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, CaveHole_CheckFallDownHole
-	map_script MAP_SCRIPT_ON_TRANSITION, CaveHole_FixCrackedGround
-	map_script MAP_SCRIPT_ON_RESUME, MirageTower_2F_SetHoleWarp
+	map_script ON_FRAME, CaveHole_CheckFallDownHole
+	map_script ON_TRANSITION, CaveHole_FixCrackedGround
+	map_script ON_RESUME, MirageTower_2F_SetHoleWarp
 	.byte 0
 
 MirageTower_2F_SetHoleWarp: @ 823AD21

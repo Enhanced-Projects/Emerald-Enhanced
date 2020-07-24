@@ -2852,7 +2852,7 @@ void SetDeoxysStats(void)
     }
 }
 
-u16 sub_8068B48(void)
+u16 GetUnionRoomTrainerPic(void)
 {
     u8 linkId;
     u32 arrId;
@@ -2867,7 +2867,7 @@ u16 sub_8068B48(void)
     return FacilityClassToPicIndex(gLinkPlayerFacilityClasses[arrId]);
 }
 
-u16 sub_8068BB0(void)
+u16 GetUnionRoomTrainerClass(void)
 {
     u8 linkId;
     u32 arrId;
@@ -3460,7 +3460,6 @@ static union PokemonSubstruct *GetSubstruct(struct BoxPokemon *boxMon, u32 perso
 u32 GetMonData(struct Pokemon *mon, s32 field, u8* data)
 {
     u32 ret;
-
     switch (field)
     {
     case MON_DATA_STATUS:
@@ -3708,7 +3707,7 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
         retVal = substruct3->metGame;
         break;
     case MON_DATA_POKEBALL:
-        retVal = substruct3->pokeball;
+        retVal = substruct0->pokeball;
         break;
     case MON_DATA_OT_GENDER:
         retVal = substruct3->otGender;
@@ -4082,7 +4081,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
     case MON_DATA_POKEBALL:
     {
         u8 pokeball = *data;
-        substruct3->pokeball = pokeball;
+        substruct0->pokeball = pokeball;
         break;
     }
     case MON_DATA_OT_GENDER:
@@ -6226,6 +6225,10 @@ u16 GetBattleBGM(void)
         return MUS_BATTLE36;
     else if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_x2000000))
         return MUS_BATTLE20;
+    else if (FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == 1)
+        return sBattleThemes[(Random() % 9)];
+    else if (FlagGet(FLAG_RYU_PLAYER_MAGMA_MEMBER) == 1)
+        return MUS_BATTLE31;
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
         u8 trainerClass;
@@ -6237,49 +6240,42 @@ u16 GetBattleBGM(void)
         else
             trainerClass = gTrainers[gTrainerBattleOpponent_A].trainerClass;
 
-        if (FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == 1)
+        switch (trainerClass)
         {
-            return sBattleThemes[(Random() % 9)];
-        }
-        else
-        {
-            switch (trainerClass)
-            {
-                case TRAINER_CLASS_AQUA_LEADER:
-                case TRAINER_CLASS_MAGMA_LEADER:
-                    return MUS_BATTLE30;
-                case TRAINER_CLASS_TEAM_AQUA:
-                case TRAINER_CLASS_TEAM_MAGMA:
-                case TRAINER_CLASS_AQUA_ADMIN:
-                case TRAINER_CLASS_MAGMA_ADMIN:
-                    return MUS_BATTLE31;
-                case TRAINER_CLASS_LEADER:
-                    return MUS_BATTLE32;
-                case TRAINER_CLASS_CHAMPION:
-                    return MUS_BATTLE33;
-                case TRAINER_CLASS_PKMN_TRAINER_3:
-                    if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-                        return MUS_BATTLE35;
-                    if (!StringCompare(gTrainers[gTrainerBattleOpponent_A].trainerName, gText_BattleWallyName))
-                        return MUS_BATTLE20;
+            case TRAINER_CLASS_AQUA_LEADER:
+            case TRAINER_CLASS_MAGMA_LEADER:
+                return MUS_BATTLE30;
+            case TRAINER_CLASS_TEAM_AQUA:
+            case TRAINER_CLASS_TEAM_MAGMA:
+            case TRAINER_CLASS_AQUA_ADMIN:
+            case TRAINER_CLASS_MAGMA_ADMIN:
+                return MUS_BATTLE31;
+            case TRAINER_CLASS_LEADER:
+                return MUS_BATTLE32;
+            case TRAINER_CLASS_CHAMPION:
+                return MUS_BATTLE33;
+            case TRAINER_CLASS_PKMN_TRAINER_3:
+                if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                     return MUS_BATTLE35;
-                case TRAINER_CLASS_ELITE_FOUR:
-                    return MUS_BATTLE38;
-                case TRAINER_CLASS_SALON_MAIDEN:
-                case TRAINER_CLASS_DOME_ACE:
-                case TRAINER_CLASS_PALACE_MAVEN:
-                case TRAINER_CLASS_ARENA_TYCOON:
-                case TRAINER_CLASS_FACTORY_HEAD:
-                case TRAINER_CLASS_PIKE_QUEEN:
-                case TRAINER_CLASS_PYRAMID_KING:
-                    return MUS_VS_FRONT;
-                case TRAINER_CLASS_OVERLORD:
-                    return MUS_VS_REKKU;
-                default:
+                if (!StringCompare(gTrainers[gTrainerBattleOpponent_A].trainerName, gText_BattleWallyName))
                     return MUS_BATTLE20;
+                return MUS_BATTLE35;
+            case TRAINER_CLASS_ELITE_FOUR:
+                return MUS_BATTLE38;
+            case TRAINER_CLASS_SALON_MAIDEN:
+            case TRAINER_CLASS_DOME_ACE:
+            case TRAINER_CLASS_PALACE_MAVEN:
+            case TRAINER_CLASS_ARENA_TYCOON:
+            case TRAINER_CLASS_FACTORY_HEAD:
+            case TRAINER_CLASS_PIKE_QUEEN:
+            case TRAINER_CLASS_PYRAMID_KING:
+                return MUS_VS_FRONT;
+            case TRAINER_CLASS_OVERLORD:
+                return MUS_VS_REKKU;
+            default:
+                return MUS_BATTLE20;
 
-                return MUS_BATTLE27;
-            }
+            return MUS_BATTLE27;
         }
     }
     else
@@ -6536,8 +6532,6 @@ u8 IsMonShiny(struct Pokemon *mon)
 
     if (IsShinyOtIdPersonality(otId, personality))
         return 1;
-    if (IsMonBoss(mon) == TRUE)
-        return 2;
     return 0;
 }
 

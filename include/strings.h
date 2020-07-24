@@ -964,7 +964,7 @@ extern const u8 gText_TwoDashes[];
 
 extern const u8 *const gReturnToXStringsTable2[];
 
-extern const u8 gText_XPLink[];
+extern const u8 gText_NumPlayerLink[];
 extern const u8 gText_ConfirmLinkWhenPlayersReady[];
 extern const u8 gText_ConfirmStartLinkWithXPlayers[];
 extern const u8 gText_AwaitingLinkup[];
@@ -1199,6 +1199,7 @@ extern const u8 gText_SAIL_FOSSIL[];
 extern const u8 gText_ROOT_FOSSIL[];
 extern const u8 gText_CLAW_FOSSIL[];
 extern const u8 gText_OLD_AMBER[];
+extern const u8 gText_COVER_FOSSIL[];
 extern const u8 gText_Opponent[];
 extern const u8 gText_Tourney_Tree[];
 extern const u8 gText_ReadyToStart[];
@@ -2514,7 +2515,7 @@ extern const u8 gText_CommunicationStandby[];
 extern const u8 gText_AnnouncingResults[];
 extern const u8 gText_PreliminaryResults[];
 extern const u8 gText_Round2Results[];
-extern const u8 gText_Var1sVar2Won[];
+extern const u8 gText_ContestantsMonWon[];
 
 // Trainer Card
 extern const u8 gText_LinkCableBattles[];
@@ -2835,10 +2836,10 @@ extern const u8 gText_RegisterTextHere[];
 extern const u8 gText_InputText[];
 extern const u8 gText_ExitingChat[];
 extern const u8 gText_LeaderLeftEndingChat[];
-extern const u8 gText_RegisteredTextChanged[];
-extern const u8 gText_AlreadySavedFile_Unused[];
-extern const u8 gText_SavingDontTurnOff_Unused[];
-extern const u8 gText_PlayerSavedGame_Unused[];
+extern const u8 gText_RegisteredTextChangedOKToSave[];
+extern const u8 gText_AlreadySavedFile_Chat[];
+extern const u8 gText_SavingDontTurnOff_Chat[];
+extern const u8 gText_PlayerSavedGame_Chat[];
 extern const u8 gText_IfLeaderLeavesChatEnds[];
 extern const u8 gText_Upper[];
 extern const u8 gText_Lower[];
@@ -3014,7 +3015,7 @@ extern const u8 gText_RyuTeleportBattleFrontier[];
 extern const u8 gText_RyuTeleportMtPyreExterior[];
 extern const u8 gText_RyuTeleportLCCDEPT[];
 extern const u8 gText_RyuTeleportMCMH[];
-extern const u8 gText_RyuTeleportAbandonedShip[];
+extern const u8 gText_RyuTeleportSnowshore[];
 extern const u8 gText_RyuTeleportLCAH[];
 
 extern const u8 gText_RyuTeleportBattleFrontierGate[];
@@ -3130,7 +3131,7 @@ extern const u8 gText_RyuUserModeEvMenuSpDef[];
 extern const u8 gText_RyuUserModeEvMenuSpe[];
 
 extern const u8 gText_RyuBetaMenuBlank[];
-extern const u8 gText_RyuBetaMenuLanette[];
+extern const u8 gText_RyuBetaMenuResetTempBattleFlags[];
 extern const u8 gText_RyuBetaMenuResetBadges[];
 extern const u8 gText_RyuBetaMenuResetGCMS[];
 extern const u8 gText_RyuBetaMenuGoHome[];
@@ -3247,5 +3248,38 @@ extern const u8 gText_ColorLightBlueShadowDarkGrey[];
 extern const u8 gText_ItemRepel[];
 extern const u8 gText_ItemSuperRepel[];
 extern const u8 gText_ItemMaxRepel[];
+
+extern const u8 gText_RyuFrontierStarter1_1[];
+extern const u8 gText_RyuFrontierStarter1_2[];
+extern const u8 gText_RyuFrontierStarter1_3[];
+extern const u8 gText_RyuFrontierStarter1_4[];
+extern const u8 gText_RyuFrontierStarter1_5[];
+extern const u8 gText_RyuFrontierStarter1_6[];
+extern const u8 gText_RyuFrontierStarter1_7[];
+extern const u8 gText_RyuFrontierStarter2_1[];
+extern const u8 gText_RyuFrontierStarter2_2[];
+extern const u8 gText_RyuFrontierStarter2_3[];
+extern const u8 gText_RyuFrontierStarter2_4[];
+extern const u8 gText_RyuFrontierStarter2_5[];
+extern const u8 gText_RyuFrontierStarter2_6[];
+extern const u8 gText_RyuFrontierStarter2_7[];
+extern const u8 gText_RyuFrontierStarter3_1[];
+extern const u8 gText_RyuFrontierStarter3_2[];
+extern const u8 gText_RyuFrontierStarter3_3[];
+extern const u8 gText_RyuFrontierStarter3_4[];
+extern const u8 gText_RyuFrontierStarter3_5[];
+extern const u8 gText_RyuFrontierStarter3_6[];
+extern const u8 gText_RyuFrontierStarter3_7[];
+extern const u8 gText_RyuFrontierStarter_Next[];
+extern const u8 gText_RyuFrontierStarter_Prev[];
+extern const u8 gText_RyuMagmaMultichoice1[];
+extern const u8 gText_RyuMagmaMultichoice2[];
+
+extern const u8 gText_RyuBufferedString1[];
+extern const u8 gText_RyuBufferedString2[];
+extern const u8 gText_RyuBufferedString3[];
+extern const u8 gText_RyuBufferedString4[];
+extern const u8 gText_RyuBufferedString5[];
+extern const u8 gText_RyuBufferedString6[];
 
 #endif // GUARD_STRINGS_H

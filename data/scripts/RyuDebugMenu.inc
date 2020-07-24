@@ -176,6 +176,7 @@ RyuDebug_enableWaystone::
 RyuDebug_ViewTempVars::
 	special RyuCheckTempVars
 	msgbox RDB_TempVarsViewMsg
+	special RyuTestDebug
 	releaseall
 	end
 
@@ -352,6 +353,7 @@ RyuDebug_quickstart::
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV
 	call RyuDebug_enableWaystone
+	special RyuSetUpSaveBlockStuff
 	msgbox RyuNewGameQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq RyuDebug_SkipTutorial

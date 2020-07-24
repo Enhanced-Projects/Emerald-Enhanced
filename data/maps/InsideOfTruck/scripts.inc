@@ -1,6 +1,6 @@
 InsideOfTruck_MapScripts:: @ 823BEDA
-	map_script MAP_SCRIPT_ON_LOAD , InsideOfTruck_OnLoad
-	map_script MAP_SCRIPT_ON_RESUME, InsideOfTruck_OnResume
+	map_script ON_LOAD , InsideOfTruck_OnLoad
+	map_script ON_RESUME, InsideOfTruck_OnResume
 	.byte 0
 
 InsideOfTruck_OnLoad: @ 823BEE5
