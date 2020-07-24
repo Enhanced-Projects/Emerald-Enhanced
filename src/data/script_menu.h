@@ -1203,6 +1203,12 @@ static const struct MenuAction MultichoiceList_FrontierStarter3[]=
     {gText_RyuFrontierStarter_Next},
 };
 
+static const struct MenuAction MultichoiceList_MagmaIntroChoice[]=
+{
+    {gText_RyuMagmaMultichoice1},
+    {gText_RyuMagmaMultichoice2}
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1370,6 +1376,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FRONTIERMODE_STARTER1]      = MULTICHOICE(MultichoiceList_FrontierStarter1),
     [MULTI_FRONTIERMODE_STARTER2]      = MULTICHOICE(MultichoiceList_FrontierStarter2),
     [MULTI_FRONTIERMODE_STARTER3]      = MULTICHOICE(MultichoiceList_FrontierStarter3),
+    [MULTI_MAGMA_CHOICE]               = MULTICHOICE(MultichoiceList_MagmaIntroChoice),
 };
 
 const u8 *const gStdStrings[] =

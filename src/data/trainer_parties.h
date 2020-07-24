@@ -7896,16 +7896,21 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntSeafloorCavern5[] =
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_GruntUnused[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_GruntMagmaRusturf[] = {
     {
-    .iv = 0,
+    .iv = 100,
     .lvl = 31,
-    .species = SPECIES_WAILMER,
+    .species = SPECIES_SALANDIT,
     },
     {
-    .iv = 0,
+    .iv = 100,
     .lvl = 31,
-    .species = SPECIES_TOXAPEX,
+    .species = SPECIES_FLETCHLING,
+    },
+    {
+    .iv = 100,
+    .lvl = 31,
+    .species = SPECIES_NUMEL,
     }
 };
 

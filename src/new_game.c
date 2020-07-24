@@ -280,6 +280,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN);
     FlagSet(FLAG_RYU_HIDE_HAREM_EVENT_DAWN);
     FlagSet(FLAG_RYU_HIDE_MANAPHY);
+    FlagSet(FLAG_RYU_HIDE_BRINEY_GUARD);
 }
 
 static void ResetMiniGamesResults(void)

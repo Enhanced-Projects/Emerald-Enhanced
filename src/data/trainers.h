@@ -8519,19 +8519,19 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_GruntSeafloorCavern5},
     },
 
-    [TRAINER_GRUNT_UNUSED] =
+    [TRAINER_GRUNT_RUSTURF_MAGMA] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_AQUA,
-        .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_AQUA,
+        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_M,
         .trainerName = _("Soldier"),
         .items = {},
-        .battleStyle = BS_SHIFT,
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_GruntUnused),
-        .party = {.NoItemDefaultMoves = sParty_GruntUnused},
+        .partySize = ARRAY_COUNT(sParty_GruntMagmaRusturf),
+        .party = {.NoItemDefaultMoves = sParty_GruntMagmaRusturf},
     },
 
     [TRAINER_GRUNT_MT_PYRE_4] =

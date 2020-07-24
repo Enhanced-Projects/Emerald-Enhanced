@@ -2144,6 +2144,8 @@ const u8 gText_RyuFrontierStarter3_6[] = _("Blank");
 const u8 gText_RyuFrontierStarter3_7[] = _("Blank");
 const u8 gText_RyuFrontierStarter_Next[] = _("Next");
 const u8 gText_RyuFrontierStarter_Prev[] = _("Previous");
+const u8 gText_RyuMagmaMultichoice1[] = _("Stand your groud");
+const u8 gText_RyuMagmaMultichoice2[] = _("Hand it over");
 
 const u8 gText_RyuBufferedString1[] = _("{STR_VAR_1}");
 const u8 gText_RyuBufferedString2[] = _("{STR_VAR_2}");

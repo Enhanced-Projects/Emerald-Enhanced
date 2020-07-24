@@ -18,256 +18,11 @@ RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos:: @ 822CE50
 	setobjectxyperm 6, 13, 5
 	return
 
-RusturfTunnel_EventScript_Wanda:: @ 822CE5F
-	lock
-	faceplayer
-	msgbox RusturfTunnel_Text_BoyfriendOnOtherSideOfRock, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-RusturfTunnel_EventScript_WandasBoyfriend:: @ 822CE76
-	lock
-	faceplayer
-	goto_if_set FLAG_TEMP_1, RusturfTunnel_EventScript_AlreadySpokenTo
-	setflag FLAG_TEMP_1
-	msgbox RusturfTunnel_Text_WhyCantTheyKeepDigging, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-RusturfTunnel_EventScript_AlreadySpokenTo:: @ 822CE99
-	msgbox RusturfTunnel_Text_ToGetToVerdanturf, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
 
 RusturfTunnel_EventScript_ClearTunnelScene:: @ 822CEAE
 	lockall
-	compare VAR_TEMP_1, 1
-	call_if_eq RusturfTunnel_EventScript_FaceWandasBoyfriend1
-	compare VAR_TEMP_1, 2
-	call_if_eq RusturfTunnel_EventScript_FaceWandasBoyfriend2
-	compare VAR_TEMP_1, 3
-	call_if_eq RusturfTunnel_EventScript_FaceWandasBoyfriend3
-	call RusturfTunnel_EventScript_WandasBoyfriendNotice
-	msgbox RusturfTunnel_Text_YouShatteredBoulderTakeHM, MSGBOX_DEFAULT
-	compare VAR_TEMP_1, 2
-	call_if_eq RusturfTunnel_EventScript_WandasBoyfriendApproachPlayer
-	compare VAR_TEMP_1, 3
-	call_if_eq RusturfTunnel_EventScript_WandasBoyfriendApproachPlayer
-	giveitem ITEM_TM54
-	setflag FLAG_RECEIVED_TM54
-	msgbox RusturfTunnel_Text_ExplainStrength, MSGBOX_DEFAULT
-	closemessage
-	compare VAR_TEMP_1, 1
-	call_if_eq RusturfTunnel_EventScript_BoyfriendApproachWanda1
-	compare VAR_TEMP_1, 2
-	call_if_eq RusturfTunnel_EventScript_BoyfriendApproachWanda2
-	compare VAR_TEMP_1, 3
-	call_if_eq RusturfTunnel_EventScript_BoyfriendApproachWanda3
-	msgbox RusturfTunnel_Text_WandaReunion, MSGBOX_DEFAULT
-	closemessage
-	compare VAR_TEMP_1, 1
-	call_if_eq RusturfTunnel_EventScript_WandaAndBoyfriendExit1
-	compare VAR_TEMP_1, 2
-	call_if_eq RusturfTunnel_EventScript_WandaAndBoyfriendExit
-	compare VAR_TEMP_1, 3
-	call_if_eq RusturfTunnel_EventScript_WandaAndBoyfriendExit
-	call RusturfTunnel_EventScript_SetRusturfTunnelOpen
 	releaseall
 	end
-
-RusturfTunnel_EventScript_BoyfriendApproachWanda1:: @ 822CF5D
-	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend1
-	applymovement 1, RusturfTunnel_Movement_BoyfriendApproachWanda1
-	waitmovement 0
-	return
-
-RusturfTunnel_EventScript_BoyfriendApproachWanda2:: @ 822CF6F
-	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
-	applymovement 1, RusturfTunnel_Movement_BoyfriendApproachWanda
-	waitmovement 0
-	applymovement 10, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	return
-
-RusturfTunnel_EventScript_BoyfriendApproachWanda3:: @ 822CF8B
-	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
-	applymovement 1, RusturfTunnel_Movement_BoyfriendApproachWanda
-	waitmovement 0
-	applymovement 10, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	return
-
-RusturfTunnel_EventScript_FaceWandasBoyfriend1:: @ 822CFA7
-	applymovement 1, Common_Movement_WalkInPlaceFastestUp
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	return
-
-RusturfTunnel_EventScript_FaceWandasBoyfriend2:: @ 822CFBC
-	applymovement 1, RusturfTunnel_Movement_BoyfriendFaceRight
-	waitmovement 0
-	return
-
-RusturfTunnel_EventScript_FaceWandasBoyfriend3:: @ 822CFC7
-	return
-
-RusturfTunnel_EventScript_WandasBoyfriendApproachPlayer:: @ 822CFC8
-	closemessage
-	applymovement 1, RusturfTunnel_Movement_WandasBoyfriendApproachPlayer
-	waitmovement 0
-	return
-
-RusturfTunnel_EventScript_WandaAndBoyfriendExit1:: @ 822CFD4
-	applymovement 10, RusturfTunnel_Movement_WandaExit1
-	applymovement 1, RusturfTunnel_Movement_WandasBoyfriendExit1
-	waitmovement 0
-	return
-
-RusturfTunnel_EventScript_WandaAndBoyfriendExit:: @ 822CFE6
-	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchWandaExit
-	applymovement 10, RusturfTunnel_Movement_WandaExit
-	applymovement 1, RusturfTunnel_Movement_WandasBoyfriendExit
-	waitmovement 0
-	return
-
-RusturfTunnel_EventScript_WandasBoyfriendNotice:: @ 822CFFF
-	playse SE_PIN
-	applymovement 1, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 1, Common_Movement_Delay48
-	waitmovement 0
-	return
-
-RusturfTunnel_Movement_WandaExit1: @ 822D017
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-RusturfTunnel_Movement_WandaExit: @ 822D023
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-RusturfTunnel_Movement_PlayerWatchWandaExit: @ 822D02F
-	delay_8
-	walk_in_place_fastest_up
-	delay_16
-	delay_16
-	walk_in_place_fastest_right
-	step_end
-
-@ Unused
-RusturfTunnel_Movement_22D035: @ 822D035
-	walk_left
-	walk_in_place_fastest_right
-	step_end
-
-@ Unused
-RusturfTunnel_Movement_22D038: @ 822D038
-	walk_down
-	walk_in_place_fastest_up
-	delay_8
-	walk_in_place_fastest_right
-	step_end
-
-@ Unused
-RusturfTunnel_Movement_22D03D: @ 822D03D
-	walk_up
-	walk_in_place_fastest_down
-	delay_8
-	walk_in_place_fastest_right
-	step_end
-
-RusturfTunnel_Movement_PlayerWatchBoyfriend1: @ 822D042
-	walk_left
-	walk_in_place_fastest_right
-	step_end
-
-RusturfTunnel_Movement_PlayerWatchBoyfriend: @ 822D045
-	walk_right
-	walk_in_place_fastest_left
-	step_end
-
-RusturfTunnel_Movement_BoyfriendFaceRight: @ 822D048
-	walk_up
-	walk_in_place_fastest_right
-	step_end
-
-RusturfTunnel_Movement_WandasBoyfriendExit1: @ 822D04B
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-RusturfTunnel_Movement_WandasBoyfriendExit: @ 822D058
-	walk_up
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-RusturfTunnel_Movement_WandasBoyfriendApproachPlayer: @ 822D065
-	walk_right
-	step_end
-
-RusturfTunnel_Movement_BoyfriendApproachWanda1: @ 822D067
-	walk_in_place_fast_up
-	walk_in_place_fast_up
-	walk_fast_up
-	walk_fast_right
-	step_end
-
-RusturfTunnel_Movement_BoyfriendApproachWanda: @ 822D06C
-	walk_in_place_fast_right
-	walk_in_place_fast_right
-	walk_fast_right
-	walk_in_place_fastest_up
-	step_end
 
 RusturfTunnel_EventScript_TunnelBlockagePos1:: @ 822D071
 	setvar VAR_TEMP_1, 1
@@ -333,9 +88,209 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	playse SE_PIN
 	waitse
 	msgbox RT_ThiefNote MSGBOX_DEFAULT
-	setflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
+	setflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE@@Magma intro starts here
+	addobject 4
+	applymovement 4, RT_MagmaGruntEnters
+	waitmovement 4
+	applymovement OBJ_EVENT_ID_PLAYER, RT_DelayedFace
+	msgbox RT_WhatAChump
+	closemessage
+	playse SE_PIN
+	applymovement 4, Common_Movement_ExclamationMark
+	waitmovement 4
+	trainerbattle_single TRAINER_GRUNT_RUSTURF_MAGMA, RT_SoItsAFight, RT_MG_Defeat, RT_PostBattle
+	
+RT_PostBattle::
+	msgbox RT_SoThisIsHow
+	delay 60
+	msgbox RT_Listen
+	closemessage
+	multichoice 0, 110, MULTI_MAGMA_CHOICE, 1
+	switch VAR_RESULT
+	case 0, RT_ADIntro
+	case 1, RT_MagmaIntro
 	release
 	end
+	
+	
+RT_ADIntro:
+	msgbox RT_IsEverything
+	playse SE_PIN
+	applymovement 4, Common_Movement_ExclamationMark
+	waitmovement 4
+	msgbox RT_Darn
+	closemessage
+	applymovement 4, RT_MagmaEscaped
+	waitmovement 4
+	fadescreen FADE_TO_BLACK
+	removeobject 5
+	addobject 5
+	fadescreen FADE_FROM_BLACK
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	msgbox RT_OhItsYou
+	closemessage
+	playse SE_PIN
+	applymovement 5, Common_Movement_QuestionMark
+	waitmovement 5
+	msgbox RT_WhyAmIHere
+	fadescreen FADE_TO_BLACK
+	removeobject 5
+	fadescreen FADE_FROM_BLACK
+	release
+	end
+	
+RT_MagmaIntro::
+	setflag FLAG_RYU_PLAYER_HELPING_MAGMA
+	setvar VAR_RYU_MAGMA, 100 @@player chose magma
+	msgbox RT_AndThats
+	closemessage
+	applymovement 4 Common_Movement_StepRight
+	waitmovement 4
+	delay 30
+	applymovement 4, Common_Movement_FaceLeft
+	waitmovement 4
+	msgbox RT_YKnow
+	closemessage
+	applymovement 4, Common_Movement_StepLeft
+	waitmovement 4
+	msgbox RT_SoHow
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
+	waitmovement 0xff
+	msgbox RT_OneCompleted
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement 0xff
+	msgbox RT_Nevermind
+	applymovement 4, RT_MagmaEscaped2
+	waitmovement 4
+	removeobject 4
+	clearflag FLAG_RYU_HIDE_BRINEY_GUARD
+	setvar VAR_RYU_MAGMA, 105 @player completed event in rusturf
+	removeitem ITEM_DEVON_GOODS, 1
+	clearflag FLAG_RECOVERED_DEVON_GOODS
+	release
+	end
+	
+RT_OhItsYou:
+	.string "Oh, it's you {PLAYER}! I'm glad\n"
+    .string "you're okay.$"
+
+RT_Listen:
+	.string "Listen, I know you beat me and all\n"
+    .string "but I've got my orders, and there\p"
+    .string "will be hell to pay if I don't\n"
+    .string "follow through, so...$"
+
+RT_SoThisIsHow:
+	.string "Huh, so this is how things became.$"
+	
+RT_AndThats:
+	.string "And that's mission accomplished. Good\n"
+    .string "to know when you're about to fail and\p"
+    .string "need to bail. Pleasure doing business\n"
+    .string "with you!$"
+
+RT_YKnow:
+	.string "Y'know, you're an interesting one...\n"
+    .string "and skilled. It's not my place to say\p"
+    .string "but we could really use someone like\n"
+    .string "you on our side.$"
+
+RT_SoHow:
+	.string "So how about it? Will you join Team\n"
+    .string "Magma?$"
+
+RT_OneCompleted:
+	.string "One completed mission, and one new\n"
+    .string "member...sounds like a good day's\p"
+    .string "work to me! Maybe I'll get a bonus\n"
+    .string "from this.$"
+
+RT_Nevermind:
+	.string "Nevermind. Let's head over to the\n"
+    .string "rendezvous point.$"
+    .string "Y'know, the empty sea cottage, the\n"
+    .string "one on Route 104. Don't keep us\p"
+    .string "waiting!$"
+
+	
+RT_IsEverything:
+	.string "Is everything alright in there!?$"
+
+RT_Darn:
+	.string "Darn, reinforcements...$"
+	
+RT_WhyAmIHere:
+	.string "Why am I here? The miners heard a\n"
+    .string "lot of commotion going on in here\p"
+    .string "and called me to check it out.\n"
+    .string "This place is known to be unstable\p"
+    .string "and it's my duty as Gym Leader to\n"
+    .string "make sure everyone's safe...although\p"
+    .string "it seems like you're doing just fine\n"
+    .string "so I'll be heading back. Drop by\l"
+    .string "for a visit sometime!$"
+
+	
+RT_SoItsAFight:
+	.string "So it's a fight you want. Let's\n"
+    .string "not waste any time then!$"
+	
+RT_MG_Defeat:
+	.string "Well isn't this something...$"
+
+	
+RT_WhatAChump:
+	.string "Haha, what a chump!\p"
+	.string "Such a pleasant sight to see Aqua\n"
+    .string "running with their tails between\l"
+    .string "their legs.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ... ...\p"
+    .string "C'mon now, what's with the stern\n"
+    .string "look?$"
+	
+RT_MagmaEscaped:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+	
+RT_MagmaEscaped2:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+	
+RT_DelayedFace:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_right
+	step_end
+	
+RT_MagmaGruntEnters:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
 
 RusturfTunnel_Movement_PushPlayerAsideForGrunt: @ 822D178
 	face_down
