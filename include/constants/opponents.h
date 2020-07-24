@@ -666,7 +666,7 @@
 #define TRAINER_EMPTY_32                    662
 #define TRAINER_EMPTY_29                    663
 #define TRAINER_DAWN_5                      664
-#define TRAINER_EMPTY_30                    665
+#define TRAINER_STEVEN_STORY1                    665
 #define TRAINER_ESKIMO_1                    666
 #define TRAINER_JONAH                       667
 #define TRAINER_HENRY                       668

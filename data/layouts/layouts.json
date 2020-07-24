@@ -4940,6 +4940,16 @@
       "secondary_tileset": "gTileset_PolarPillar",
       "border_filepath": "data/layouts/Igloo4/border.bin",
       "blockdata_filepath": "data/layouts/Igloo4/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE104_MR_BRINEYS_HOUSE_STORY",
+      "name": "Route104_MrBrineysHouse_Story_Layout",
+      "width": 12,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Route104_MrBrineysHouse_Story/border.bin",
+      "blockdata_filepath": "data/layouts/Route104_MrBrineysHouse_Story/map.bin"
     }
   ]
 }

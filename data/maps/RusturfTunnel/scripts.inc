@@ -127,6 +127,7 @@ RT_ADIntro:
 	addobject 5
 	fadescreen FADE_FROM_BLACK
 	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	msgbox RT_OhItsYou
 	closemessage

@@ -9974,19 +9974,19 @@ const struct Trainer gTrainers[] = {
         .party = {.ItemCustomMoves = sParty_Dawn5},
     },
 
-    [TRAINER_EMPTY_30] =
+    [TRAINER_STEVEN_STORY1] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_DAWN,
-        .trainerName = _("Dawn"),
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
+        .trainerPic = TRAINER_PIC_STEVEN,
+        .trainerName = _("Steven"),
         .items = {},
-        .battleStyle = BS_SHIFT,
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_DawnLilycoveTreecko),
-        .party = {.NoItemDefaultMoves = sParty_DawnLilycoveTreecko},
+        .partySize = ARRAY_COUNT(sParty_StevenStory1),
+        .party = {.NoItemDefaultMoves = sParty_StevenStory1},
     },
 
     [TRAINER_ESKIMO_1] =

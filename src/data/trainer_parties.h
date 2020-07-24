@@ -9336,26 +9336,21 @@ static const struct TrainerMonItemCustomMoves sParty_Dawn5[] = {
 	},
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_DawnLilycoveTreecko[] = {//Dawn12
+static const struct TrainerMonNoItemDefaultMoves sParty_StevenStory1[] = {//Dawn12
     {
     .iv = 150,
     .lvl = 31,
-    .species = SPECIES_TOGEKISS,
+    .species = SPECIES_BELDUM,
     },
     {
     .iv = 150,
     .lvl = 32,
-    .species = SPECIES_PELIPPER,
+    .species = SPECIES_ANORITH,
     },
     {
     .iv = 150,
     .lvl = 32,
-    .species = SPECIES_LUDICOLO,
-    },
-    {
-    .iv = 200,
-    .lvl = 34,
-    .species = SPECIES_COMBUSKEN,
+    .species = SPECIES_SKARMORY,
     }
 };
 
