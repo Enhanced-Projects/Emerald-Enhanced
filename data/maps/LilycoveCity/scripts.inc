@@ -6,8 +6,19 @@ LilycoveCity_MapScripts:: @ 81E2B3C
 
 LeafScene::
     map_script_2 VAR_RYU_DS_LANA_STAGE, 1, LeafSceneResume
+	map_script_2 VAR_TEMP_A, 0, LCC_SetUpMagma
 	@map_script_2 VAR_TEMP_D, 0, RyuResetFollowerPosition
     .2byte 0
+	
+LCC_SetUpMagma::
+	setvar VAR_TEMP_A, 100
+	compare VAR_RYU_MAGMA, 165
+	goto_if_ne ryu_end
+	setobjectxy 21, 27, 0
+	setobjectxy 22, 27, 0
+	copyobjectxytoperm 21
+	copyobjectxytoperm 22
+	end
 	
 	
 @================================================================================================== Follower Shelly interaction
@@ -74,9 +85,9 @@ LCC_ShellyWhenIWasLittle:
     .string "wrong. I'm happy you helped me\n"
     .string "understand.$"
 
-
-
 @================================================================================================== End
+
+@==================================================================================================Leaf Scene
 
 LeafSceneResume::
 	call RyuResetFollowerPositionAR
@@ -140,6 +151,8 @@ LCL_LeafLeaving:
 	walk_left
 	walk_left
 	step_end
+	
+@==================================================================================================LeafSceneEnd
 
 LilycoveCity_OnTransition: @ 81E2B47
 	setflag FLAG_VISITED_LILYCOVE_CITY
@@ -1003,6 +1016,168 @@ lcc_brendanOutro1: @ 81E37D7
 	
 lcc_brendanOutro2:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I know you'll take on the\nPokémon League challenge,\l{PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}, but {COLOR LIGHT_RED}{SHADOW BLUE}do{COLOR LIGHT_BLUE}{SHADOW BLUE} stop by my place\lbefore that time.$"
+
+@==================================================================================================End rival stuff
+
+@==================================================================================================Begin Magma Stuff
+
+
+LCC_MiddleMagmaTrigger::
+	compare VAR_RYU_MAGMA, 165
+	goto_if_ne ryu_end
+	lockall
+	playbgm MUS_MGM0, 0
+	playse SE_PIN
+	applymovement 10, Common_Movement_ExclamationMark
+	waitmovement 10
+	applymovement 10, Common_Movement_FaceLeft
+	waitmovement 10
+	msgbox LCC_WhatThe
+	applymovement 24, Common_Movement_StepDown
+	waitmovement 24
+	applymovement 24, Common_Movement_FaceUp
+	waitmovement 24
+	applymovement 10, LCC_AquaGruntRunsAway
+	waitmovement 10
+	removeobject 10
+	setflag FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS
+	applymovement 24, Common_Movement_StepUp
+	waitmovement 24
+	applymovement 24, Common_Movement_FaceLeft
+	waitmovement 24
+	msgbox LCC_ITakeIt
+	subvar VAR_ASH_GATHER_COUNT, 2000
+	closemessage
+	msgbox LCC_ThisIsGoing
+	applymovement 24 Common_Movement_FaceRight
+	waitmovement 24
+	call LCC_Magma_PoisonWater1
+	setvar VAR_RYU_MAGMA, 170@Player poisoned the first portion of ocean
+	fadenewbgm MUS_AJITO
+	release
+	end
+	
+LCC_TopMagmaGrunt::
+	lock
+	faceplayer
+	compare VAR_RYU_MAGMA, 170
+	goto_if_ne LCC_MagmaGruntNotReady
+	msgbox LCC_ReadyWhenYouAre
+	closemessage
+	subvar VAR_ASH_GATHER_COUNT, 2000
+	call LCC_Magma_PoisonWater2
+	setvar VAR_RYU_MAGMA 175@Player poisoned 2 spots
+	release
+	end
+	
+LCC_BottomMagmaGrunt::
+	lock
+	faceplayer
+	compare VAR_RYU_MAGMA, 175
+	goto_if_ne LCC_MagmaGruntNotReady
+	msgbox LCC_ThisShouldBe
+	closemessage
+	subvar VAR_ASH_GATHER_COUNT, 2000
+	call LCC_Magma_PoisonWater3
+	setvar VAR_RYU_MAGMA, 180@Player poisoned last spot of ocean
+	msgbox LCC_GoFindBlaise
+	closemessage
+	release
+	end
+	
+LCC_MagmaGruntNotReady:
+	msgbox LCC_GoFindTheOther
+	release
+	end
+	
+LCC_Magma_PoisonWater1::
+LCC_Magma_PoisonWater2::
+LCC_Magma_PoisonWater3::
+	return
+	
+LCC_Blaise::
+	msgbox LCC_AhThereYouAre
+	closemessage
+	applymovement 27 Common_Movement_StepUp
+	waitmovement 27
+	playse SE_DOOR
+	waitse
+	removeobject 27
+	setflag FLAG_RYU_MAGMA_LILYCOVE
+	setvar VAR_RYU_MAGMA, 185@player met with Blaise by harbor
+	setflag LCC_MAGMA_HARBOR_REPORTERS
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_DOOR
+	warpsilent MAP_LILYCOVE_CITY_HARBOR_STORY, 0, 11, 14
+	waitstate
+	release
+	end
+	
+LCC_WhatThe:
+	.string "What the-! Why're Team Magma on our\n"
+    .string "turf!?\p"
+    .string "Grunt: You don't want to know,\n"
+	.string "so beat it!$"
+
+LCC_ITakeIt:
+	.string "I take it you've got the stuff?\p"
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} hands over 2000 grams\n"
+    .string " of the ash.)$"
+
+LCC_ThisIsGoing:
+	.string "This is going to be sweet...by the\n"
+    .string "way, there are 3 other spots to\p"
+    .string "place ash in, 2 of which are just\n"
+    .string "along the bank here. I didn't catch\p"
+    .string "where the last location was, but it's\n"
+    .string "gotta be connected to water somehow\p"
+    .string "right?$"
+
+LCC_ReadyWhenYouAre:
+	.string "Ready when you are.\p"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} hands over 2000 more\n grams of ash.)$"
+
+LCC_ThisShouldBe:
+	.string "This should be a good spot.\p"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} gives up another 2000 grams\n of the ash.)$"
+	
+LCC_GoFindBlaise:
+	.string "You should go find Blaise\nnow. He said something about\la dock.$"
+	
+LCC_AhThereYouAre:
+	.string "Ah, there you are, come on in.$"
+	
+LCC_GoFindTheOther:
+	.string "Go find the other grunt.\nWe should do this in order.$"
+	
+LCC_AquaGruntRunsAway:
+	walk_down
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	step_end
+
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
 
 
 

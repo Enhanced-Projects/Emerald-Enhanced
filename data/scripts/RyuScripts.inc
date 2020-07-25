@@ -1714,3 +1714,53 @@ RyuAC_SuccessMsg::
 
 RyuAC_CancelMsg::
 	.string "Leaving menu without changes.$"
+
+@==================================================================================================Magma Related Global Scripts
+
+Ryu_CheckMagmaStatusForMissionCall::
+	setvar VAR_TEMP_A, 100
+	goto_if_unset FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 6
+	goto_if_ge Ryu_InitializeMagmaPart6
+	compare VAR_RESULT, 3
+	goto_if_ge Ryu_InitializeMagmaPart4
+	goto ryu_end
+
+Ryu_InitializeMagmaPart4::
+	goto_if_set FLAG_RYU_MAGMA_4_NOTIFY, ryu_end
+	lockall
+	setflag FLAG_RYU_MAGMA_4_NOTIFY
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0xff
+	msgbox Ryu_MagmaCallIntro
+	closemessage
+	pokenavcall Ryu_MagmaPokenavMsg4
+	waitmessage
+	closemessage
+	msgbox Ryu_MagmaCallOutro
+	clearflag FLAG_RYU_HIDE_111_MAGMA_MEETING
+	clearflag FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA1
+	clearflag FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE
+	closemessage
+	releaseall
+	end
+
+Ryu_MagmaPokenavMsg4:
+	.string "{PLAYER}, report to the \n"
+    .string "marked location for further\l"
+	.string "instruction.$"
+
+
+Ryu_MagmaCallIntro:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(A notification shows up on your\n"
+    .string " Pokénav!)$"
+
+Ryu_MagmaCallOutro:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It's pointing to a mountain ridge\n"
+    .string " north of the desert.)$"
+
+Ryu_InitializeMagmaPart6::@bookmark
+	end
+

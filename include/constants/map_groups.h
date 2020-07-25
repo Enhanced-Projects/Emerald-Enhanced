@@ -238,6 +238,7 @@
 #define MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ELEVATOR (22 | (13 << 8))
 #define MAP_LILYCOVE_CITY_TRAINING_CENTER           (23 | (13 << 8))
 #define MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE     (24 | (13 << 8))
+#define MAP_LILYCOVE_CITY_HARBOR_STORY              (25 | (13 << 8))
 
 // Map Group 14
 #define MAP_MOSSDEEP_CITY_GYM               (0 | (14 << 8))

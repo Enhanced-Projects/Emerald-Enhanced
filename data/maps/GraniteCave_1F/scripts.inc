@@ -1,5 +1,19 @@
 GraniteCave_1F_MapScripts:: @ 822DA5D
 	.byte 0
+	
+GC_CheckMagmaMissionState::
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_MAGMA_MEMBER_M
+	goto_if_ne ryu_end
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp
+	msgbox GC_ME_CantLeaveUntilMission
+	closemessage
+	release
+	end
+	
+GC_ME_CantLeaveUntilMission:
+	.string "Blaise: You can't leave, we're\nnot done here, yet.\pGet to finding that stone!$"
 
 GraniteCave_1F_EventScript_Hiker:: @ 822DA5E
 	lock

@@ -5,6 +5,16 @@ Route124_MapScripts:: @ 81F656C
 Route124_OnTransition: @ 81F6572
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
 	end
+	
+R124_CheckMagmaBan::
+	goto_if_unset FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE, ryu_end
+	lockall
+	msgbox Ryu_YouReallyDontWantToGoThere
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
 
 Route124_EventScript_HuntersHouseSign:: @ 81F657C
 	msgbox Route124_Text_HuntersHouse, MSGBOX_SIGN

@@ -1,332 +1,333 @@
 {
-    "allow_cycling": false,
-    "allow_escaping": false,
-    "allow_running": false,
-    "battle_scene": "MAP_BATTLE_SCENE_GYM",
-    "bg_events": [
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PetalburgCity_Gym_EventScript_SpeedRoomDoor",
-            "type": "sign",
-            "x": 10,
-            "y": 101
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PetalburgCity_Gym_EventScript_AccuracyRoomDoor",
-            "type": "sign",
-            "x": 10,
-            "y": 101
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PetalburgCity_Gym_EventScript_ConfusionRoomDoor",
-            "type": "sign",
-            "x": 10,
-            "y": 79
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PetalburgCity_Gym_EventScript_LeftDefenseRoomDoor",
-            "type": "sign",
-            "x": 10,
-            "y": 79
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PetalburgCity_Gym_EventScript_RightDefenseRoomDoor",
-            "type": "sign",
-            "x": 10,
-            "y": 92
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PetalburgCity_Gym_EventScript_RecoveryRoomDoor",
-            "type": "sign",
-            "x": 10,
-            "y": 92
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PetalburgCity_Gym_EventScript_LeftStrengthRoomDoor",
-            "type": "sign",
-            "x": 10,
-            "y": 40
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PetalburgCity_Gym_EventScript_RightStrengthRoomDoor",
-            "type": "sign",
-            "x": 10,
-            "y": 53
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PetalburgCity_Gym_EventScript_LeftOHKORoomDoor",
-            "type": "sign",
-            "x": 10,
-            "y": 53
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PetalburgCity_Gym_EventScript_RightOHKORoomDoor",
-            "type": "sign",
-            "x": 10,
-            "y": 66
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PetalburgCity_Gym_EventScript_LeftGymLeadersRoomDoor",
-            "type": "sign",
-            "x": 10,
-            "y": 14
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PetalburgCity_Gym_EventScript_RightGymLeadersRoomDoor",
-            "type": "sign",
-            "x": 10,
-            "y": 27
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-            "script": "PetalburgCity_Gym_EventScript_LeftGymStatue",
-            "type": "sign",
-            "x": 1,
-            "y": 112
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-            "script": "PetalburgCity_Gym_EventScript_RightGymStatue",
-            "type": "sign",
-            "x": 7,
-            "y": 112
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_PETALBURG_CITY_GYM",
-    "layout": "LAYOUT_PETALBURG_CITY_GYM",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_GIM",
-    "name": "PetalburgCity_Gym",
-    "object_events": [
-        {
-            "elevation": 0,
-            "flag": "FLAG_HIDE_PETALBURG_GYM_NORMAN",
-            "graphics_id": "OBJ_EVENT_GFX_NORMAN",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "PBG_NEWGYMBATTLE",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 4,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "flag": "5",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "PetalburgCity_Gym_EventScript_Mary",
-            "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 4,
-            "y": 94
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "PetalburgCity_Gym_EventScript_Randall",
-            "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 4,
-            "y": 81
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "PetalburgCity_Gym_EventScript_Parker",
-            "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 4,
-            "y": 42
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "PetalburgCity_Gym_EventScript_Alexia",
-            "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 4,
-            "y": 55
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "PetalburgCity_Gym_EventScript_George",
-            "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 4,
-            "y": 68
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "PetalburgCity_Gym_EventScript_Jody",
-            "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 4,
-            "y": 16
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "PetalburgCity_Gym_EventScript_Berke",
-            "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 4,
-            "y": 29
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_PETALBURG_GYM_GREETER",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_2",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "PetalburgCity_Gym_EventScript_GymGuide",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 2,
-            "y": 112
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
-            "graphics_id": "OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 4,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
-            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 4,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
-            "graphics_id": "OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 4,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
-            "graphics_id": "OBJ_EVENT_GFX_LEAF",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 4,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_REL_OBJECTS",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 4,
-            "y": 7
-        }
-    ],
-    "region_map_section": "MAPSEC_PETALBURG_CITY",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-        {
-            "dest_map": "MAP_PETALBURG_CITY",
-            "dest_warp_id": 2,
-            "elevation": 3,
-            "x": 4,
-            "y": 113
-        },
-        {
-            "dest_map": "MAP_PETALBURG_CITY",
-            "dest_warp_id": 2,
-            "elevation": 3,
-            "x": 5,
-            "y": 113
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_PETALBURG_CITY_GYM",
+  "name": "PetalburgCity_Gym",
+  "layout": "LAYOUT_PETALBURG_CITY_GYM",
+  "music": "MUS_GIM",
+  "region_map_section": "MAPSEC_PETALBURG_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_GYM",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NORMAN",
+      "x": 4,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PBG_NEWGYMBATTLE",
+      "flag": "FLAG_HIDE_PETALBURG_GYM_NORMAN"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "x": 4,
+      "y": 94,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "PetalburgCity_Gym_EventScript_Mary",
+      "flag": "5"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "x": 4,
+      "y": 81,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "PetalburgCity_Gym_EventScript_Randall",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "x": 4,
+      "y": 42,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "PetalburgCity_Gym_EventScript_Parker",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "x": 4,
+      "y": 55,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "PetalburgCity_Gym_EventScript_Alexia",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "x": 4,
+      "y": 68,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "PetalburgCity_Gym_EventScript_George",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "x": 4,
+      "y": 16,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "PetalburgCity_Gym_EventScript_Jody",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "x": 4,
+      "y": 29,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "PetalburgCity_Gym_EventScript_Berke",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "x": 2,
+      "y": 112,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PetalburgCity_Gym_EventScript_GymGuide",
+      "flag": "FLAG_HIDE_PETALBURG_GYM_GREETER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL",
+      "x": 4,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "x": 4,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL",
+      "x": 4,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LEAF",
+      "x": 4,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "x": 4,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "y": 113,
+      "elevation": 3,
+      "dest_map": "MAP_PETALBURG_CITY",
+      "dest_warp_id": 2
+    },
+    {
+      "x": 5,
+      "y": 113,
+      "elevation": 3,
+      "dest_map": "MAP_PETALBURG_CITY",
+      "dest_warp_id": 2
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 101,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_Gym_EventScript_SpeedRoomDoor"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 101,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_Gym_EventScript_AccuracyRoomDoor"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 79,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_Gym_EventScript_ConfusionRoomDoor"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 79,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_Gym_EventScript_LeftDefenseRoomDoor"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 92,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_Gym_EventScript_RightDefenseRoomDoor"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 92,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_Gym_EventScript_RecoveryRoomDoor"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 40,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_Gym_EventScript_LeftStrengthRoomDoor"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 53,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_Gym_EventScript_RightStrengthRoomDoor"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 53,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_Gym_EventScript_LeftOHKORoomDoor"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 66,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_Gym_EventScript_RightOHKORoomDoor"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 14,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_Gym_EventScript_LeftGymLeadersRoomDoor"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 27,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PetalburgCity_Gym_EventScript_RightGymLeadersRoomDoor"
+    },
+    {
+      "type": "sign",
+      "x": 1,
+      "y": 112,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "PetalburgCity_Gym_EventScript_LeftGymStatue"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 112,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "PetalburgCity_Gym_EventScript_RightGymStatue"
+    }
+  ]
 }

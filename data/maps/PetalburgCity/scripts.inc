@@ -31,6 +31,7 @@ PetalburgCity_EventScript_SetGymDoorsUnlocked:: @ 81DC316
 PetalburgCity_OnFrame: @ 81DC31C
 	map_script_2 VAR_PETALBURG_CITY_STATE, 2, PetalburgCity_EventScript_WallyTutorial
 	map_script_2 VAR_PETALBURG_CITY_STATE, 4, PetalburgCity_EventScript_WalkToWallyHouse
+	map_script_2 VAR_TEMP_A, 0, Ryu_CheckMagmaStatusForMissionCall
 	.2byte 0
 
 PetalburgCity_EventScript_WallyTutorial:: @ 81DC32E

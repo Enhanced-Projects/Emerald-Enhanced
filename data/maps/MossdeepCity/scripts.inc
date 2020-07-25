@@ -1,5 +1,6 @@
 MossdeepCity_MapScripts:: @ 81E4A96
 	map_script ON_TRANSITION, MossdeepCity_OnTransition
+	map_script ON_FRAME, SC_DoMagmaCheck
 	.byte 0
 
 MossdeepCity_OnTransition: @ 81E4A9C

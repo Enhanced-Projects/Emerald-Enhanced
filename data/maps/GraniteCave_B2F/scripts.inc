@@ -182,11 +182,14 @@ GC_ME_Event3::
 	call RyuGivePokenav
 	waitfanfare
 	msgbox GC_ME_NowIveGotta
-	setflag FLAG_RYU_PLAYER_MAGMA_MEMBER
-	setvar VAR_RYU_MAGMA, 130@Player defeated steven in granite cave
 	fadescreen FADE_TO_BLACK
 	destroyfollower
 	fadescreen FADE_FROM_BLACK
+	setvar VAR_RYU_FOLLOWER_ID, 0
+	clearflag FLAG_RYU_HAS_FOLLOWER
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	setflag FLAG_RYU_PLAYER_MAGMA_MEMBER
+	setvar VAR_RYU_MAGMA, 130@Player defeated steven in granite cave
 	release
 	end
 	

@@ -1,6 +1,7 @@
 Route113_MapScripts:: @ 81F2153
 	map_script ON_RESUME, Route113_OnResume
 	map_script ON_TRANSITION, Route113_OnTransition
+	map_script ON_FRAME, R113_JumpBackTo111
 	.byte 0
 
 Route113_OnResume: @ 81F215E
@@ -10,6 +11,19 @@ Route113_OnResume: @ 81F215E
 Route113_OnTransition: @ 81F2161
 	setflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
 	call Route113_EventScript_CheckSetAshWeather
+	end
+	
+R113_JumpBackTo111:
+	map_script_2 VAR_RYU_MAGMA, 140, R113_ReturnCameraTo111
+	.2byte 0
+	
+R113_ReturnCameraTo111:
+	setvar VAR_RYU_MAGMA, 150@Camera is returning to the event in 111
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, R111_cam2
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	goto R111_ResumeMagmaScene
 	end
 
 Route113_EventScript_CheckSetAshWeather:: @ 81F216A

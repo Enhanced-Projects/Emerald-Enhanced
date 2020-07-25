@@ -4950,6 +4950,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/Route104_MrBrineysHouse_Story/border.bin",
       "blockdata_filepath": "data/layouts/Route104_MrBrineysHouse_Story/map.bin"
+    },
+    {
+      "id": "LAYOUT_LILYCOVE_CITY_HARBOR_STORY",
+      "name": "LilycoveCity_Harbor_Story_Layout",
+      "width": 24,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/LilycoveCity_Harbor_Story/border.bin",
+      "blockdata_filepath": "data/layouts/LilycoveCity_Harbor_Story/map.bin"
     }
   ]
 }

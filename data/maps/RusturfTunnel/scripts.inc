@@ -171,6 +171,7 @@ RT_MagmaIntro::
 	setvar VAR_RYU_MAGMA, 105 @player completed event in rusturf
 	removeitem ITEM_DEVON_GOODS, 1
 	clearflag FLAG_RECOVERED_DEVON_GOODS
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	release
 	end
 	
@@ -249,7 +250,7 @@ RT_WhatAChump:
     .string "running with their tails between\l"
     .string "their legs.\p"
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ... ...\p"
-    .string "C'mon now, what's with the stern\n"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}c'mon now, what's with the stern\n"
     .string "look?$"
 	
 RT_MagmaEscaped:

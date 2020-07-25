@@ -12,6 +12,20 @@ Route121_EventScript_MtPyrePierSign:: @ 81F5E06
 Route121_EventScript_SafariZoneSign:: @ 81F5E0F
 	msgbox Route121_Text_SafariZoneSign, MSGBOX_SIGN
 	end
+	
+R121_CheckMagmaBan::
+	goto_if_unset FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE, ryu_end
+	lockall
+	msgbox Ryu_YouReallyDontWantToGoThere
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
+	
+Ryu_YouReallyDontWantToGoThere:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It would be a very bad idea\n to show your face here.\p You should probably go somewhere\n else.)$"
 
 Route121_EventScript_AquaGruntsMoveOut:: @ 81F5E18
 	lockall
