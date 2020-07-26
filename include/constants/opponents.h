@@ -600,7 +600,7 @@
 #define TRAINER_GRUNT_WEATHER_INST_5        596
 #define TRAINER_COURTNEY_MT_CHIMNEY          597
 #define TRAINER_JONATHAN                    598
-#define TRAINER_EMPTY_34    599
+#define TRAINER_DEVON_2    599
 #define TRAINER_STORY_MEWTWO         600
 #define TRAINER_MAXIE_MAGMA_HIDEOUT         601
 #define TRAINER_MAXIE_MT_CHIMNEY            602
@@ -664,7 +664,7 @@
 #define TRAINER_WALLY_VR_5                  660
 #define TRAINER_BRENDAN_5                   661
 #define TRAINER_EMPTY_32                    662
-#define TRAINER_EMPTY_29                    663
+#define TRAINER_DEVON_ENFORCER_1                    663
 #define TRAINER_DAWN_5                      664
 #define TRAINER_STEVEN_STORY1                    665
 #define TRAINER_ESKIMO_1                    666

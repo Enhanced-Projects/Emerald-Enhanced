@@ -1147,13 +1147,33 @@ R111_cam2:
 	
 @==================================================================================================Second Magma Meeting
 
-R111_MagmaMeeting2TriggerRight::
+R111_MagmaMeeting2TriggerRight2::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0xff
+	goto R111_MagmaMeeting2Trigger
+	
+R111_MagmaMeeting2TriggerRight1::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0xff
+	goto R111_MagmaMeeting2Trigger
+	
+R111_MagmaMeeting2TriggerLeft1::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0xff
 	goto R111_MagmaMeeting2Trigger
 
 R111_MagmaMeeting2Trigger::
 	lock
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0xff
 	setvar VAR_RYU_MAGMA, 205@Player started second meeting with magma
 	addobject 49
 	applymovement 49, R111_TabithaToPlayer2@right 7
@@ -1164,6 +1184,8 @@ R111_MagmaMeeting2Trigger::
 	addobject 48
 	applymovement 48, R111_MaxieToPlayer@right8
 	waitmovement 48
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox R111_SoYouveArrived2
 	closemessage
 	msgbox R111_IveBeenLedTo
@@ -1275,6 +1297,7 @@ R111_TabithaToPlayer2:
 	walk_right
 	walk_right
 	walk_right
+	face_up
 	step_end
 	
 R111_BlaiseToPlayer:
@@ -1287,6 +1310,7 @@ R111_BlaiseToPlayer:
 	walk_right
 	walk_right
 	walk_right
+	face_up
 	step_end
 	
 R111_MaxieToPlayer:
@@ -1298,4 +1322,5 @@ R111_MaxieToPlayer:
 	walk_right
 	walk_right
 	walk_right
+	face_up
 	step_end

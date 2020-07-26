@@ -62,6 +62,7 @@ RT_Home::
 	end
 	
 RT_Oldale::
+	goto_if_set FLAG_RYU_BANNED_FROM_OLDALE, RT_BannedFromLilycove
 	goto_if_unset FLAG_VISITED_OLDALE_TOWN, RT_NoFlag
 	warpteleport MAP_OLDALE_TOWN, 255, 10, 9
 	release
@@ -196,6 +197,7 @@ RT_MtPyre::
 	end
 
 RT_LCCDEPT::
+	goto_if_set FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE, RT_BannedFromLilycove
     goto_if_unset FLAG_RYU_LANDMARK_LCCDEPTSTORE, RT_NoFlag
 	warpteleport MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP, 255, 4, 5
 	release

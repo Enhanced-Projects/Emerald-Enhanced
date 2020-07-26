@@ -214,8 +214,9 @@
 #define FACILITY_CLASS_RS_MAY                0x51
 #define FACILITY_CLASS_OVERLORD              0x52
 #define FACILITY_CLASS_MEWTWO                0x53
+#define FACILITY_CLASS_DEVON_ENFORCER        0x54
 
-#define FACILITY_CLASSES_COUNT               0x54
+#define FACILITY_CLASSES_COUNT               0x55
 
 #define RS_FACILITY_CLASS_AQUA_LEADER_ARCHIE    0x0
 #define RS_FACILITY_CLASS_AQUA_GRUNT_M          0x1
@@ -365,6 +366,7 @@
 #define TRAINER_CLASS_RS_PROTAG      0x41
 #define TRAINER_CLASS_OVERLORD       0x42
 #define TRAINER_CLASS_MEWTWO         0x43
+#define TRAINER_CLASS_DEVON_ENFORCER 0x44
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

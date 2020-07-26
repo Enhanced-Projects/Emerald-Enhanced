@@ -67,4 +67,5 @@ const u8 gTrainerClassNames[][13] = {
     [TRAINER_CLASS_RS_PROTAG] = _("{PKMN} Trainer"),
     [TRAINER_CLASS_OVERLORD] = _("Overlord"),
     [TRAINER_CLASS_MEWTWO] = _("Genetic"),
+    [TRAINER_CLASS_DEVON_ENFORCER] = _("Enforcer"),
 };

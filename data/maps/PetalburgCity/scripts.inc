@@ -32,6 +32,7 @@ PetalburgCity_OnFrame: @ 81DC31C
 	map_script_2 VAR_PETALBURG_CITY_STATE, 2, PetalburgCity_EventScript_WallyTutorial
 	map_script_2 VAR_PETALBURG_CITY_STATE, 4, PetalburgCity_EventScript_WalkToWallyHouse
 	map_script_2 VAR_TEMP_A, 0, Ryu_CheckMagmaStatusForMissionCall
+	map_script_2 VAR_RYU_MAGMA, 245, PC_DoMagmaStuffAfterHeist
 	.2byte 0
 
 PetalburgCity_EventScript_WallyTutorial:: @ 81DC32E
@@ -725,3 +726,255 @@ PetalburgCity_Text_ImLookingForTalentedTrainers: @ 81DCC09
 	.string "I'm roaming the land in search of\n"
 	.string "talented Trainers.\p"
 	.string "I'm sorry to have taken your time.$"
+	
+@==================================================================================================Mamga post-heist
+
+PC_DoMagmaStuffAfterHeist::
+	setvar VAR_RYU_MAGMA, 250
+	release
+	end
+	
+PC_CheckForPlayerInWrongDirection::
+	specialvar VAR_RESULT, GetPlayerFacingDirection
+	compare VAR_RESULT, DIR_WEST
+	goto_if_eq ryu_end
+	compare VAR_RYU_MAGMA, 250
+	goto_if_eq PC_YouCantLeaveThisDirection
+	goto ryu_end
+	
+PC_NoTimeToSwim::
+	compare VAR_RYU_MAGMA, 250
+	goto_if_ne ryu_end
+	lock
+	msgbox PC_NotTheTime
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
+	
+PC_YouCantLeaveThisDirection::
+	msgbox PC_YouShouldBeFleeingWest
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
+	
+PC_StopPlayerForDad::
+	lock
+	setvar VAR_RYU_MAGMA, 255 @Dad notices player
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	addobject 9
+	playse SE_PIN
+	applymovement 9, Common_Movement_ExclamationMark
+	waitmovement 9
+	addobject 10
+	addobject 11
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox PC_PlayerElipsis
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, PC_ContinueEscapingLeft@6 left
+	waitmovement OBJ_EVENT_ID_PLAYER
+	getplayerxy VAR_TEMP_D, VAR_TEMP_E
+	compare VAR_TEMP_E, 10
+	call_if_eq PC_AdjustPlayerTop
+	compare VAR_TEMP_E, 11
+	call_if_eq PC_AdjustPlayerMid
+	compare VAR_TEMP_E, 13
+	call_if_eq PC_AdjustPlayerBottom
+	msgbox PC_WeWontLet
+	closemessage
+	setvar VAR_RYU_MAGMA, 258@Player is about to fight enforcer
+	trainerbattle_single TRAINER_DEVON_2, PC_DevonIntro, PC_DevonDefeated, PC_ContinueScene
+	end
+	
+PC_AdjustPlayerTop::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+	
+PC_AdjustPlayerMid::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+	
+PC_AdjustPlayerBottom::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+	
+PC_ContinueScene::
+	applymovement OBJ_EVENT_ID_PLAYER,PC_MoveGuard
+	applymovement 10, PC_MoveGuard
+	waitmovement 10
+	applymovement 12, PC_MagmaGruntEscape
+	waitmovement 12
+	removeobject 12
+	applymovement OBJ_EVENT_ID_PLAYER PC_PlayerAttemptEscape
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 10, Common_Movement_FaceDown
+	applymovement 11, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, PC_PlayerStruggle
+	msgbox PC_LetGoYou
+	closemessage
+	applymovement 10, Common_Movement_FaceRight
+	applymovement 11, Common_Movement_FaceRight
+	waitmovement 11
+	addobject 9
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 9, PC_DadToPlayer@leave 2 space gap
+	waitmovement 9
+	msgbox PC_DadPlayerLook
+	applymovement 9, Common_Movement_StepLeft
+	waitmovement 9
+	fadescreen FADE_TO_WHITE
+	fadescreen FADE_FROM_WHITE
+	addobject 13
+	applymovement 13, Common_Movement_FaceRight
+	waitmovement 13
+	msgbox PC_GetAwayFromMe
+	closemessage
+	applymovement 13, Common_Movement_FaceLeft
+	waitmovement 13
+	msgbox PC_WhoAreYou
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	delay 20
+	applymovement 13, Common_Movement_StepLeft
+	waitmovement 13
+	msgbox PC_Bothersome
+	closemessage
+	applymovement 13, Common_Movement_FaceRight
+	waitmovement 13
+	msgbox PC_Deleting
+	closemessage
+	setvar VAR_RYU_MAGMA, 260@Player got warped to slateport beach by courtney
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	warpteleport MAP_ROUTE109, 255, 20, 24
+	waitstate
+	end
+	
+	
+PC_NotTheTime:
+	.string "This is not the time to be\nexploring. Escape west!$"
+	
+PC_YouShouldBeFleeingWest:
+	.string "Make your escape to Route 104!$"
+	
+PC_PlayerElipsis:
+	.string "{PLAYER}...?$"
+	
+PC_WeWontLet:
+	.string "We won't let you escape!\p"
+    .string "Back me up here, {PLAYER}!$"
+
+PC_LetGoYou:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Let go, you lost!\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Hate to break it to ya, but winning\n"
+    .string "pokémon battles won't get you out\p"
+    .string "of this mess. You'll pay the price\n"
+    .string "for your actions, and who better to\p"
+    .string "deal out your punishment than...$"
+
+
+PC_DadPlayerLook:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Dad...\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}{PLAYER}, look at what's happened\n"
+    .string "to you. Has my child become nothing\p"
+    .string "more than a criminal? What'll your\n"
+    .string "mother think?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I made this choice on my own. It's\n"
+    .string "not your concern.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Of course it is! We're your parents,\n"
+    .string "and a parent's duty is to discipline\p"
+    .string "their child when they've taken a\n"
+    .string "wrong turn. I will do the same, even\p"
+    .string "if I have to turn you in myself.$"
+
+PC_GetAwayFromMe:
+	.string "Get away from me...$"
+	
+PC_WhoAreYou:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Who're you?\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}MOVE!\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Ah, right! Bye!$"
+	
+PC_Bothersome:
+	.string "Bothersome...$"
+
+PC_Deleting:
+	.string "Deleting...$"
+	
+PC_DevonIntro:
+	.string "I will stop you dead!$"
+	
+PC_DevonDefeated:
+	.string "Oh well...$"
+
+PC_ContinueEscapingLeft:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	step_end
+	
+PC_MoveGuard:@up face left
+	walk_fastest_up
+	face_left
+	step_end
+
+PC_MagmaGruntEscape:
+	walk_fast_up
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	step_end
+
+PC_PlayerAttemptEscape:@down 1, left 1
+	walk_down
+	walk_left
+	step_end
+	
+PC_PlayerStruggle:@in place 4
+	walk_in_place_fastest_left
+	walk_in_place_fastest_left
+	walk_in_place_fastest_left
+	walk_in_place_fastest_left
+	step_end
+	
+PC_DadToPlayer:
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end

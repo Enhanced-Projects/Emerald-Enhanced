@@ -8225,16 +8225,26 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Jonathan[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRustboroTorchic[] = {//Brendan12
+static const struct TrainerMonNoItemDefaultMoves sParty_DevonEnforcer2[] = {//Brendan12
     {
-    .iv = 25,
-    .lvl = 13,
-    .species = SPECIES_RIOLU,
+    .iv = 250,
+    .lvl = 50,
+    .species = SPECIES_STOUTLAND,
     },
     {
-    .iv = 50,
-    .lvl = 15,
-    .species = SPECIES_MUDKIP,
+    .iv = 250,
+    .lvl = 50,
+    .species = SPECIES_ARCANINE,
+    },
+    {
+    .iv = 250,
+    .lvl = 50,
+    .species = SPECIES_DELCATTY,
+    },
+    {
+    .iv = 250,
+    .lvl = 50,
+    .species = SPECIES_MANECTRIC,
     }
 };
 
@@ -9278,26 +9288,26 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanLilycoveTreecko[]
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_BrendanLilycoveTorchic[] = {//Brendan15
+static const struct TrainerMonNoItemDefaultMoves sParty_DevonEnforcer1[] = {//Brendan15
     {
-    .iv = 150,
+    .iv = 255,
     .lvl = 31,
-    .species = SPECIES_LUCARIO,
+    .species = SPECIES_ARCANINE,
     },
     {
-    .iv = 150,
+    .iv = 255,
     .lvl = 32,
-    .species = SPECIES_LUDICOLO,
+    .species = SPECIES_MANECTRIC,
     },
     {
-    .iv = 150,
+    .iv = 255,
     .lvl = 32,
-    .species = SPECIES_SLUGMA,
+    .species = SPECIES_HERDIER,
     },
     {
-    .iv = 200,
+    .iv = 255,
     .lvl = 34,
-    .species = SPECIES_MARSHTOMP,
+    .species = SPECIES_BLAZIKEN,
     }
 };
 

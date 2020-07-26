@@ -1,4 +1,5 @@
 Route109_MapScripts:: @ 81EE75F
+	map_script ON_FRAME, R109_CheckMagmaEvent
 	.byte 0
 
 Route109_EventScript_StartDepartForDewford:: @ 81EE760
@@ -563,3 +564,92 @@ Route109_Text_TrainerTipsSign: @ 81EF1D5
 	.string "always have identical stats.\p"
 	.string "Pokémon raised by Trainers are said\n"
 	.string "to grow stronger than wild Pokémon.$"
+	
+	
+@==================================================================================================Magma related
+
+R109_CheckMagmaEvent::
+	map_script_2 VAR_RYU_MAGMA, 260, R109_StartMagmaEvent
+	.2byte 0
+	
+R109_StartMagmaEvent::
+	lock
+	setvar VAR_RYU_MAGMA, 270@player at beach
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox R109_ThatWasA
+	closemessage
+	giveitem ITEM_HYPER_POTION, 40
+	giveitem ITEM_ETHER, 15
+	msgbox R109_PFFTINearly
+	closemessage
+	delay 40
+	msgbox R109_OhYouMust
+	closemessage
+	delay 40
+	applymovement 25, Common_Movement_FaceUp
+	waitmovement 25
+	msgbox R109_WaitThatMeans
+	closemessage
+	applymovement 25 Common_Movement_FaceDown
+	waitmovement 25
+	msgbox R109_OhCrapWere
+	applymovement 25, R109_GruntRuns
+	waitmovement 25
+	setvar VAR_RYU_MAGMA, 275@player finished scene on the beach
+	clearflag FLAG_RYU_RUSTURF_CLEARING_MAGMA
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	clearflag FLAG_RYU_BANNED_FROM_OLDALE
+	setflag FLAG_RYU_BANNED_FROM_MARTS
+	removeobject 25
+	release
+	end
+	
+R109_ThatWasA:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}That was a close one! Thanks for\n"
+    .string "your help. Here, this is yours.$"
+
+R109_PFFTINearly:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Pfft, I nearly got caught myself! If\n"
+    .string "it wasn't for her...\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}'Her'?$"
+	
+R109_OhYouMust:
+	.string "Oh, you must mean Admin Courtney.\n"
+    .string "She's an odd one for sure, but she's\p"
+    .string "very loyal to Maxie. She'd only do\n"
+    .string "something if Maxie tells her to...$"
+
+R109_WaitThatMeans:
+	.string "Wait...that means...$"
+
+R109_OhCrapWere:
+	.string "Oh crap, we're in trouble! We'd\n"
+    .string "better go apologize right away\p"
+    .string "before we end up as Mightyena\n"
+    .string "kibble! The other exit of Rusturf\p"
+    .string "Tunnel, hurry!$"
+	
+R109_GruntRuns:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

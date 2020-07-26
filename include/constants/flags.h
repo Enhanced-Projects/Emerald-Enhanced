@@ -1537,12 +1537,12 @@
 #define LCC_MAGMA_HARBOR_REPORTERS                  (SYSTEM_FLAGS + 0x99) // Unused Flag
 #define FLAG_RYU_MAGMA_LILYCOVE                     (SYSTEM_FLAGS + 0x9A) // Unused Flag
 #define FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE        (SYSTEM_FLAGS + 0x9B) // Unused Flag
-#define FLAG_UNUSED_0x8FC                           (SYSTEM_FLAGS + 0x9C) // Unused Flag
-#define FLAG_UNUSED_0x8FD                           (SYSTEM_FLAGS + 0x9D) // Unused Flag
-#define FLAG_UNUSED_0x8FE                           (SYSTEM_FLAGS + 0x9E) // Unused Flag
+#define FLAG_RYU_MAGMA_6_NOTIFY                     (SYSTEM_FLAGS + 0x9C) // Unused Flag
+#define FLAG_RYU_HIDE_103_MAGMA_MEETING             (SYSTEM_FLAGS + 0x9D) // Unused Flag
+#define FLAG_RYU_BANNED_FROM_OLDALE                 (SYSTEM_FLAGS + 0x9E) // Unused Flag
 #define FLAG_UNUSED_0x8FF                           (SYSTEM_FLAGS + 0x9F) // Unused Flag
-#define FLAG_UNUSED_0x900                           (SYSTEM_FLAGS + 0xA0) // Unused Flag
-#define FLAG_UNUSED_0x901                           (SYSTEM_FLAGS + 0xA1) // Unused Flag
+#define FLAG_RYU_RUSTURF_CLEARING_MAGMA             (SYSTEM_FLAGS + 0xA0) // Unused Flag
+#define FLAG_RYU_BANNED_FROM_MARTS                  (SYSTEM_FLAGS + 0xA1) // Unused Flag
 #define FLAG_UNUSED_0x902                           (SYSTEM_FLAGS + 0xA2) // Unused Flag
 #define FLAG_UNUSED_0x903                           (SYSTEM_FLAGS + 0xA3) // Unused Flag
 #define FLAG_UNUSED_0x904                           (SYSTEM_FLAGS + 0xA4) // Unused Flag

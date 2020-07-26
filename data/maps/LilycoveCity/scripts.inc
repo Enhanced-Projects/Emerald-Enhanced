@@ -1043,6 +1043,8 @@ LCC_MiddleMagmaTrigger::
 	setflag FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS
 	applymovement 24, Common_Movement_StepUp
 	waitmovement 24
+	applymovement 24, Common_Movement_StepUp
+	waitmovement 24
 	applymovement 24, Common_Movement_FaceLeft
 	waitmovement 24
 	msgbox LCC_ITakeIt
@@ -1051,6 +1053,7 @@ LCC_MiddleMagmaTrigger::
 	msgbox LCC_ThisIsGoing
 	applymovement 24 Common_Movement_FaceRight
 	waitmovement 24
+	closemessage
 	call LCC_Magma_PoisonWater1
 	setvar VAR_RYU_MAGMA, 170@Player poisoned the first portion of ocean
 	fadenewbgm MUS_AJITO
@@ -1065,6 +1068,8 @@ LCC_TopMagmaGrunt::
 	msgbox LCC_ReadyWhenYouAre
 	closemessage
 	subvar VAR_ASH_GATHER_COUNT, 2000
+	applymovement 25, Common_Movement_FaceRight
+	waitmovement 25
 	call LCC_Magma_PoisonWater2
 	setvar VAR_RYU_MAGMA 175@Player poisoned 2 spots
 	release
@@ -1078,6 +1083,8 @@ LCC_BottomMagmaGrunt::
 	msgbox LCC_ThisShouldBe
 	closemessage
 	subvar VAR_ASH_GATHER_COUNT, 2000
+	applymovement 26, Common_Movement_FaceRight
+	waitmovement 26
 	call LCC_Magma_PoisonWater3
 	setvar VAR_RYU_MAGMA, 180@Player poisoned last spot of ocean
 	msgbox LCC_GoFindBlaise
@@ -1090,9 +1097,176 @@ LCC_MagmaGruntNotReady:
 	release
 	end
 	
+LCC_DrawMapAndDelay::
+	special DrawWholeMapView
+	delay 20
+	return
+	
 LCC_Magma_PoisonWater1::
+	setmetatile 73, 14, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 74, 14, 369, 0
+	setmetatile 72, 14, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 73, 13, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 75, 15, 369, 0
+	setmetatile 75, 16, 369, 0
+	setmetatile 75, 17, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 74, 14, 369, 0
+	setmetatile 75, 14, 369, 0
+	setmetatile 76, 14, 369, 0
+	setmetatile 76, 15, 369, 0
+	setmetatile 76, 16, 369, 0
+	setmetatile 76, 17, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 72, 14, 369, 0
+	setmetatile 71, 14, 369, 0
+	setmetatile 70, 14, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 69, 14, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 68, 14, 369, 0
+	setmetatile 68, 15, 369, 0
+	setmetatile 69, 15, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 68, 13, 369, 0
+	setmetatile 69, 13, 369, 0
+	setmetatile 70, 13, 369, 0
+	setmetatile 71, 13, 369, 0
+	setmetatile 72, 13, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 73, 13, 369, 0
+	setmetatile 74, 13, 369, 0
+	setmetatile 75, 13, 369, 0
+	setmetatile 76, 13, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 67, 13, 369, 0
+	setmetatile 67, 12, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 66, 13, 369, 0
+	setmetatile 66, 12, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 65, 13, 369, 0
+	setmetatile 65, 12, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 65, 12, 369, 0
+	setmetatile 66, 12, 369, 0
+	setmetatile 67, 12, 369, 0
+	setmetatile 68, 12, 369, 0
+	setmetatile 69, 12, 369, 0
+	setmetatile 70, 12, 369, 0
+	setmetatile 71, 12, 369, 0
+	setmetatile 72, 12, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 65, 11, 369, 0
+	setmetatile 66, 11, 369, 0
+	setmetatile 67, 11, 369, 0
+	setmetatile 68, 11, 369, 0
+	setmetatile 69, 11, 369, 0
+	setmetatile 70, 11, 369, 0
+	setmetatile 71, 11, 369, 0
+	setmetatile 72, 11, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 77, 13, 369, 0
+	setmetatile 77, 14, 369, 0
+	setmetatile 77, 15, 369, 0
+	setmetatile 77, 16, 369, 0
+	setmetatile 77, 17, 369, 0
+	setmetatile 77, 18, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 75, 18, 369, 0
+	setmetatile 76, 18, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 65, 14, 369, 0
+	setmetatile 66, 14, 369, 0
+	call LCC_DrawMapAndDelay
+	return
+	
 LCC_Magma_PoisonWater2::
+	setmetatile 65, 13, 369, 0
+	setmetatile 66, 14, 369, 0
+	setmetatile 67, 14, 369, 0
+	setmetatile 68, 14, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 67, 9, 369, 0
+	setmetatile 68, 9, 369, 0
+	setmetatile 69, 9, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 68, 8, 369, 0
+	setmetatile 69, 8, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 68, 7, 369, 0
+	setmetatile 69, 7, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 65, 10, 369, 0
+	setmetatile 66, 10, 369, 0
+	setmetatile 67, 10, 369, 0
+	setmetatile 68, 10, 369, 0
+	setmetatile 69, 10, 369, 0
+	setmetatile 70, 10, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 63, 11, 369, 0
+	setmetatile 64, 11, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 63, 12, 369, 0
+	setmetatile 64, 12, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 63, 13, 369, 0
+	setmetatile 64, 13, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 70, 6, 369, 0
+	setmetatile 70, 7, 369, 0
+	setmetatile 70, 8, 369, 0
+	setmetatile 70, 9, 369, 0
+	setmetatile 70, 10, 369, 0
+	call LCC_DrawMapAndDelay
+	return
+	
 LCC_Magma_PoisonWater3::
+	setmetatile 66, 33, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 66, 32, 369, 0
+	setmetatile 66, 34, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 66, 35, 369, 0
+	setmetatile 66, 30, 369, 0
+	setmetatile 66, 31, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 67, 30, 369, 0
+	setmetatile 67, 31, 369, 0
+	setmetatile 67, 32, 369, 0
+	setmetatile 67, 33, 369, 0
+	setmetatile 67, 34, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 68, 29, 369, 0
+	setmetatile 68, 30, 369, 0
+	setmetatile 68, 31, 369, 0
+	setmetatile 68, 32, 369, 0
+	setmetatile 68, 33, 369, 0
+	setmetatile 68, 34, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 69, 28, 369, 0
+	setmetatile 69, 29, 369, 0
+	setmetatile 69, 30, 369, 0
+	setmetatile 69, 31, 369, 0
+	setmetatile 69, 32, 369, 0
+	setmetatile 69, 33, 369, 0
+	setmetatile 69, 34, 369, 0
+	setmetatile 69, 35, 369, 0
+	call LCC_DrawMapAndDelay
+	setmetatile 70, 26, 369, 0
+	setmetatile 70, 27, 369, 0
+	setmetatile 70, 28, 369, 0
+	setmetatile 70, 29, 369, 0
+	setmetatile 70, 30, 369, 0
+	setmetatile 70, 31, 369, 0
+	setmetatile 70, 32, 369, 0
+	setmetatile 70, 33, 369, 0
+	setmetatile 70, 34, 369, 0
+	setmetatile 70, 35, 369, 0
+	call LCC_DrawMapAndDelay
 	return
 	
 LCC_Blaise::
