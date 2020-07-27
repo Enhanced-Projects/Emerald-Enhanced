@@ -635,17 +635,17 @@ static bool8 DoGlobalWildEncounterDiceRoll(void)
         return TRUE;
 }
 
-static bool8 AreLegendariesInSootopolisPreventingEncounters(void)
-{
-    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(SOOTOPOLIS_CITY)
-     || gSaveBlock1Ptr->location.mapNum != MAP_NUM(SOOTOPOLIS_CITY))
-    {
-        return FALSE;
-    }
-
-    return FlagGet(FLAG_LEGENDARIES_IN_SOOTOPOLIS);
-}
-
+//static bool8 AreLegendariesInSootopolisPreventingEncounters(void)
+//{
+//    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(SOOTOPOLIS_CITY)
+//     || gSaveBlock1Ptr->location.mapNum != MAP_NUM(SOOTOPOLIS_CITY))
+//    {
+//        return FALSE;
+//    }
+//
+//    return FlagGet(FLAG_LEGENDARIES_IN_SOOTOPOLIS);
+//}
+//
 bool8 RyuCheckForDarkGrass(void)
 {
     u16 pX = gSaveBlock1Ptr->location.x;

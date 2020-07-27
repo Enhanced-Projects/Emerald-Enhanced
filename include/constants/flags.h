@@ -94,7 +94,7 @@
 #define FLAG_HIDE_RAYQUAZA_SKY_TOWER_SUMMIT  0x50
 #define FLAG_SET_WALL_CLOCK                  0x51
 #define FLAG_RESCUED_BIRCH                   0x52
-#define FLAG_LEGENDARIES_IN_SOOTOPOLIS       0x53 // EE-Unused
+#define FLAG_TOBY_TRAINER_SIGHT              0x53
 
 #define FLAG_RYU_JUKEBOX_ENABLED             0x54 // Unused Flag
 #define FLAG_RYU_ALTERNATE_SCALE             0x55 // Uses gym scaling instead of normal scaling.
@@ -1572,7 +1572,7 @@
 #define FLAG_UNUSED_0x91C                           (SYSTEM_FLAGS + 0xBC) // Unused Flag
 #define FLAG_UNUSED_0x91D                           (SYSTEM_FLAGS + 0xBD) // Unused Flag
 #define FLAG_UNUSED_0x91E                           (SYSTEM_FLAGS + 0xBE) // Unused Flag
-#define FLAG_TOBY_TRAINER_SIGHT                     (SYSTEM_FLAGS + 0xBF) // Unused Flag
+#define FLAG_UNUSED_0x91F                           (SYSTEM_FLAGS + 0xBF) // Unused Flag
 
 // Daily Flags
 // These flags are cleared once per day

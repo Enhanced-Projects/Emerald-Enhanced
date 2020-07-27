@@ -8481,11 +8481,11 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_CAMERUPT] =
     {
-        .baseHP        = 70,
-        .baseAttack    = 100,
+        .baseHP        = 110,
+        .baseAttack    = 115,
         .baseDefense   = 70,
         .baseSpeed     = 40,
-        .baseSpAttack  = 105,
+        .baseSpAttack  = 115,
         .baseSpDefense = 75,
         .type1 = TYPE_FIRE,
         .type2 = TYPE_GROUND,
@@ -8499,7 +8499,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_FLASH_FIRE, ABILITY_SOLID_ROCK},
+        .abilities = {ABILITY_MAGMA_ARMOR, ABILITY_SOLID_ROCK},
         .abilityHidden = ABILITY_DETONATE,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_RED,
@@ -22593,11 +22593,11 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_MEGA_CAMERUPT] =
     {
-        .baseHP        = 70,
-        .baseAttack    = 120,
+        .baseHP        = 110,
+        .baseAttack    = 115,
         .baseDefense   = 100,
         .baseSpeed     = 20,
-        .baseSpAttack  = 145,
+        .baseSpAttack  = 175,
         .baseSpDefense = 105,
         .type1 = TYPE_FIRE,
         .type2 = TYPE_GROUND,
