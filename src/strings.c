@@ -2123,7 +2123,7 @@ const u8 gText_RyuVersion[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}Ver: ");
 
 const u8 gText_RyuFrontierStarter1_1[] = _("Hyper Offense");
 const u8 gText_RyuFrontierStarter1_2[] = _("Offense");
-const u8 gText_RyuFrontierStarter1_3[] = _("Balanced");
+const u8 gText_RyuFrontierStarter1_3[] = _("Balance");
 const u8 gText_RyuFrontierStarter1_4[] = _("Bulky Offense");
 const u8 gText_RyuFrontierStarter1_5[] = _("Stall");
 const u8 gText_RyuFrontierStarter1_6[] = _("Blank");
@@ -2139,7 +2139,7 @@ const u8 gText_RyuFrontierStarter3_1[] = _("Baton Pass");
 const u8 gText_RyuFrontierStarter3_2[] = _("Gimmick");
 const u8 gText_RyuFrontierStarter3_3[] = _("Eggtactical");
 const u8 gText_RyuFrontierStarter3_4[] = _("Masochist");
-const u8 gText_RyuFrontierStarter3_5[] = _("Fear");
+const u8 gText_RyuFrontierStarter3_5[] = _("FEAR");
 const u8 gText_RyuFrontierStarter3_6[] = _("Blank");
 const u8 gText_RyuFrontierStarter3_7[] = _("Blank");
 const u8 gText_RyuFrontierStarter_Next[] = _("Next");

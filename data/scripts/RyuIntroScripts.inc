@@ -176,7 +176,7 @@ IT_FrontierMode::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setflag FLAG_RYU_FRONTIER_MODE
 	setflag FLAG_HIDE_BATTLE_FRONTIER_RECEPTION_GATE_SCOTT
-	setflag FLAG_RYU_CHOOSING_FRONTIER_STARTER @enable when frontier overhaul gets in
+	setflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq SetMaleStartingVariables
@@ -203,31 +203,30 @@ IT_FrontierOutro:
     .string "All game flags and variables have\n"
     .string "been intialized.\p"
     .string "You can spend your earned BP in the\n"
-    .string "frontier Pokemon Center to get\l"
+    .string "BP Exchange Service Corner to get\l"
     .string "new pokemon for your team.$"
 
 IT_FrontierIntro:
-    .string "Welcome to frontier mode, trainer\p"
-    .string "In this mode you get no starter\n"
-    .string "and you don't do any of the normal\p"
-    .string "intro stuff. You must earn BP to\n"
-    .string "get mons for your team. You must\p"
-    .string "get all silver medals to be able\n"
-    .string "to leave the Frontier.$"
-
+    .string "Welcome to frontier mode, trainer.\p"
+    .string "In this mode you pick a starter\n"
+    .string "team of 3 pokemon and you don't\l"
+    .string "do any of the normal intro stuff.\p"
+    .string "You earn BP to expand your team.\p"
+    .string "You must get all silver medals to\n"
+    .string "be able to leave the Frontier.$"
 	
 IT_HardcoreIntro:
     .string "Hello, and welcome to HARDCORE\n"
-    .string "mode. In this mode, you are\p"
-    .string "restricted even further than in\n"
-    .string "Nuzlocke mode.\p"
+    .string "mode.\p"
+    .string "In this mode, you are restricted\n"
+    .string "even further than Nuzlocke mode.\p"
     .string "You will be dealing 20% less\n"
-    .string "damage and you will take 20% more\p"
-    .string "damage. You make 15% the money\n"
-    .string "you normally would. You may not\p"
-    .string "use pokecenters, and you\n"
-    .string "will not get healed or handouts\l"
-    .string "from gym leaders.$"
+    .string "damage and you will take 20% more.\p"
+    .string "You make 15% the money you normally\n"
+    .string "you normally would.\p"
+    .string "You can't use pokecenters, and you\n"
+    .string "will not get healed or recieve\l"
+    .string "handouts from gym leaders.$"
 	
 IT_HardcoreOutro:
 	.string "Welcome to the nightmare.$"
