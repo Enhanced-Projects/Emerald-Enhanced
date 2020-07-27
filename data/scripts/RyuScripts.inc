@@ -1714,3 +1714,86 @@ RyuAC_SuccessMsg::
 
 RyuAC_CancelMsg::
 	.string "Leaving menu without changes.$"
+
+@==================================================================================================Magma Related Global Scripts
+
+Ryu_CheckMagmaStatusForMissionCall::
+	setvar VAR_TEMP_A, 100
+	goto_if_unset FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 3
+	goto_if_ge Ryu_InitializeMagmaPart4
+	compare VAR_RESULT, 6
+	goto_if_ge Ryu_InitializeMagmaPart6
+	goto ryu_end
+
+Ryu_InitializeMagmaPart4::
+	compare VAR_RYU_MAGMA, 200
+	goto_if_ge Ryu_InitializeMagmaPart6
+	goto_if_set FLAG_RYU_MAGMA_4_NOTIFY, ryu_end
+	lockall
+	setflag FLAG_RYU_MAGMA_4_NOTIFY
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0xff
+	msgbox Ryu_MagmaCallIntro4
+	closemessage
+	pokenavcall Ryu_MagmaPokenavMsg4
+	waitmessage
+	closemessage
+	msgbox Ryu_MagmaCallOutro4
+	clearflag FLAG_RYU_HIDE_111_MAGMA_MEETING
+	clearflag FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA1
+	clearflag FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE
+	closemessage
+	releaseall
+	end
+
+Ryu_MagmaPokenavMsg4:
+	.string "{PLAYER}, report to the \n"
+    .string "marked location for further\l"
+	.string "instruction.$"
+
+
+Ryu_MagmaCallIntro4:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(A notification shows up on your\n"
+    .string " Pokénav!)$"
+
+Ryu_MagmaCallOutro4:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It's pointing to a mountain ridge\n"
+    .string " north of the desert.)$"
+
+Ryu_InitializeMagmaPart6::@bookmark
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 6
+	goto_if_lt ryu_end
+	compare VAR_RYU_MAGMA, 300@change to state where events after second meeting are done
+	goto_if_ge Ryu_InitializeMagmaPart8
+	goto_if_set FLAG_RYU_MAGMA_6_NOTIFY, ryu_end
+	lockall
+	setflag FLAG_RYU_MAGMA_6_NOTIFY
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0xff
+	msgbox Ryu_MagmaCallIntro4
+	closemessage
+	pokenavcall Ryu_MagmaPokenavMsg6
+	waitmessage
+	closemessage
+	msgbox Ryu_MagmaCallOutro6
+	clearflag FLAG_RYU_HIDE_103_MAGMA_MEETING
+	closemessage
+	releaseall
+	end
+
+Ryu_MagmaPokenavMsg6:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Scheduled Heist at Oldale Town's\n"
+    .string " PokéMart. Group meet north of town\p"
+    .string " for further briefing.)$"
+
+Ryu_MagmaCallOutro6:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I should go check it out.$"
+
+
+Ryu_InitializeMagmaPart8::
+	end

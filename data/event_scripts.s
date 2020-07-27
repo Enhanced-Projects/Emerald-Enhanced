@@ -1183,3 +1183,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/Igloo3/scripts.inc"
 
 	.include "data/maps/Igloo4/scripts.inc"
+
+	.include "data/maps/Route104_MrBrineysHouse_Story/scripts.inc"
+
+	.include "data/maps/LilycoveCity_Harbor_Story/scripts.inc"

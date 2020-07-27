@@ -1,7 +1,12 @@
 SootopolisCity_MapScripts:: @ 81E565C
 	map_script ON_TRANSITION, SootopolisCity_OnTransition
 	map_script ON_RESUME, SootopolisCity_OnResume
+	map_script ON_FRAME, SC_DoMagmaCheck
 	.byte 0
+	
+SC_DoMagmaCheck::
+	map_script_2 VAR_TEMP_A, 0, Ryu_CheckMagmaStatusForMissionCall
+	.2byte 0
 
 SootopolisCity_OnResume: @ 81E590B
 	setdivewarp MAP_UNDERWATER_SOOTOPOLIS_CITY, 255, 9, 6

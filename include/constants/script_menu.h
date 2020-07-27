@@ -162,6 +162,7 @@
 #define MULTI_FRONTIERMODE_STARTER1        151
 #define MULTI_FRONTIERMODE_STARTER2        152
 #define MULTI_FRONTIERMODE_STARTER3        153
+#define MULTI_MAGMA_CHOICE                 154
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

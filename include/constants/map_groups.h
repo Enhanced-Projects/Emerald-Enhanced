@@ -238,6 +238,7 @@
 #define MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ELEVATOR (22 | (13 << 8))
 #define MAP_LILYCOVE_CITY_TRAINING_CENTER           (23 | (13 << 8))
 #define MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE     (24 | (13 << 8))
+#define MAP_LILYCOVE_CITY_HARBOR_STORY              (25 | (13 << 8))
 
 // Map Group 14
 #define MAP_MOSSDEEP_CITY_GYM               (0 | (14 << 8))
@@ -292,6 +293,7 @@
 // Map Group 17
 #define MAP_ROUTE104_MR_BRINEYS_HOUSE         (0 | (17 << 8))
 #define MAP_ROUTE104_PRETTY_PETAL_FLOWER_SHOP (1 | (17 << 8))
+#define MAP_ROUTE104_MR_BRINEYS_HOUSE_STORY   (2 | (17 << 8))
 
 // Map Group 18
 #define MAP_ROUTE111_WINSTRATE_FAMILYS_HOUSE (0 | (18 << 8))

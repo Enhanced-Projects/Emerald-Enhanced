@@ -1,5 +1,6 @@
 DewfordTown_MapScripts:: @ 81E9507
 	map_script ON_TRANSITION, DewfordTown_OnTransition
+	map_script ON_FRAME, SC_DoMagmaCheck
 	.byte 0
 
 DewfordTown_OnTransition: @ 81E950D

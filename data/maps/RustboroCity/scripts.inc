@@ -12,6 +12,24 @@ RustboroCity_OnTransition: @ 81E06C8
 	compare VAR_RUSTBORO_CITY_STATE, 6
 	goto_if_eq RustboroCity_EventScript_PositionScientistForExit
 	end
+	
+	
+RC_DevonEntranceCheck::
+	lock
+	playse SE_EXPMAX
+	goto_if_unset FLAG_RYU_PLAYER_MAGMA_MEMBER, ryu_end
+	playse SE_BIDORO
+	waitse
+	msgbox RC_DontWantTo
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	release
+	end
+	
+RC_DontWantTo:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You feel like you really don't\n want to be here.)$"
 
 RustboroCity_EventScript_PositionScientistForExit:: @ 81E06EC
 	compare VAR_TEMP_0, 11
@@ -29,6 +47,7 @@ RustboroCity_EventScript_HideMapNamePopup:: @ 81E0707
 
 RustboroCity_OnFrame: @ 81E070B
 	map_script_2 VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_ScientistAddMatchCall
+	map_script_2 VAR_TEMP_A, 0, Ryu_CheckMagmaStatusForMissionCall
 	.2byte 0
 
 RustboroCity_EventScript_ScientistAddMatchCall:: @ 81E0715

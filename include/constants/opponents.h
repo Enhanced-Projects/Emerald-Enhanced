@@ -569,7 +569,7 @@
 #define TRAINER_CATHERINE_5                 565
 #define TRAINER_JULIO                       566
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_5     567
-#define TRAINER_GRUNT_UNUSED                568
+#define TRAINER_GRUNT_RUSTURF_MAGMA                568
 #define TRAINER_GRUNT_MT_PYRE_4             569
 #define TRAINER_GRUNT_JAGGED_PASS           570
 #define TRAINER_MARC                        571
@@ -600,7 +600,7 @@
 #define TRAINER_GRUNT_WEATHER_INST_5        596
 #define TRAINER_COURTNEY_MT_CHIMNEY          597
 #define TRAINER_JONATHAN                    598
-#define TRAINER_EMPTY_34    599
+#define TRAINER_DEVON_2    599
 #define TRAINER_STORY_MEWTWO         600
 #define TRAINER_MAXIE_MAGMA_HIDEOUT         601
 #define TRAINER_MAXIE_MT_CHIMNEY            602
@@ -664,9 +664,9 @@
 #define TRAINER_WALLY_VR_5                  660
 #define TRAINER_BRENDAN_5                   661
 #define TRAINER_EMPTY_32                    662
-#define TRAINER_EMPTY_29                    663
+#define TRAINER_DEVON_ENFORCER_1                    663
 #define TRAINER_DAWN_5                      664
-#define TRAINER_EMPTY_30                    665
+#define TRAINER_STEVEN_STORY1                    665
 #define TRAINER_ESKIMO_1                    666
 #define TRAINER_JONAH                       667
 #define TRAINER_HENRY                       668

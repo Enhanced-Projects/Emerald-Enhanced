@@ -7896,16 +7896,21 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntSeafloorCavern5[] =
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_GruntUnused[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_GruntMagmaRusturf[] = {
     {
-    .iv = 0,
+    .iv = 100,
     .lvl = 31,
-    .species = SPECIES_WAILMER,
+    .species = SPECIES_SALANDIT,
     },
     {
-    .iv = 0,
+    .iv = 100,
     .lvl = 31,
-    .species = SPECIES_TOXAPEX,
+    .species = SPECIES_FLETCHLING,
+    },
+    {
+    .iv = 100,
+    .lvl = 31,
+    .species = SPECIES_NUMEL,
     }
 };
 
@@ -8220,16 +8225,26 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Jonathan[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRustboroTorchic[] = {//Brendan12
+static const struct TrainerMonNoItemDefaultMoves sParty_DevonEnforcer2[] = {//Brendan12
     {
-    .iv = 25,
-    .lvl = 13,
-    .species = SPECIES_RIOLU,
+    .iv = 250,
+    .lvl = 50,
+    .species = SPECIES_STOUTLAND,
     },
     {
-    .iv = 50,
-    .lvl = 15,
-    .species = SPECIES_MUDKIP,
+    .iv = 250,
+    .lvl = 50,
+    .species = SPECIES_ARCANINE,
+    },
+    {
+    .iv = 250,
+    .lvl = 50,
+    .species = SPECIES_DELCATTY,
+    },
+    {
+    .iv = 250,
+    .lvl = 50,
+    .species = SPECIES_MANECTRIC,
     }
 };
 
@@ -9273,26 +9288,26 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanLilycoveTreecko[]
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_BrendanLilycoveTorchic[] = {//Brendan15
+static const struct TrainerMonNoItemDefaultMoves sParty_DevonEnforcer1[] = {//Brendan15
     {
-    .iv = 150,
+    .iv = 255,
     .lvl = 31,
-    .species = SPECIES_LUCARIO,
+    .species = SPECIES_ARCANINE,
     },
     {
-    .iv = 150,
+    .iv = 255,
     .lvl = 32,
-    .species = SPECIES_LUDICOLO,
+    .species = SPECIES_MANECTRIC,
     },
     {
-    .iv = 150,
+    .iv = 255,
     .lvl = 32,
-    .species = SPECIES_SLUGMA,
+    .species = SPECIES_HERDIER,
     },
     {
-    .iv = 200,
+    .iv = 255,
     .lvl = 34,
-    .species = SPECIES_MARSHTOMP,
+    .species = SPECIES_BLAZIKEN,
     }
 };
 
@@ -9331,26 +9346,21 @@ static const struct TrainerMonItemCustomMoves sParty_Dawn5[] = {
 	},
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_DawnLilycoveTreecko[] = {//Dawn12
+static const struct TrainerMonNoItemDefaultMoves sParty_StevenStory1[] = {//Dawn12
     {
     .iv = 150,
     .lvl = 31,
-    .species = SPECIES_TOGEKISS,
+    .species = SPECIES_BELDUM,
     },
     {
     .iv = 150,
     .lvl = 32,
-    .species = SPECIES_PELIPPER,
+    .species = SPECIES_ANORITH,
     },
     {
     .iv = 150,
     .lvl = 32,
-    .species = SPECIES_LUDICOLO,
-    },
-    {
-    .iv = 200,
-    .lvl = 34,
-    .species = SPECIES_COMBUSKEN,
+    .species = SPECIES_SKARMORY,
     }
 };
 

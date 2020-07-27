@@ -374,7 +374,7 @@
 
 // Trainer Rematch Flags
 #define FLAG_MATCH_CALL_REGISTERED           0x15C // EE-Unused
-#define FLAG_REMATCH_ROSE                    0x15D // EE-Unused
+#define FLAG_RYU_HIDE_BRINEY_GUARD           0x15D // EE-Unused
 #define FLAG_REMATCH_ANDRES                  0x15E // EE-Unused
 #define FLAG_REMATCH_DUSTY                   0x15F // EE-Unused
 #define FLAG_REMATCH_LOLA                    0x160 // EE-Unused
@@ -1332,7 +1332,7 @@
 #define FLAG_DEFEATED_METEOR_FALLS_STEVEN                           0x4F8 // EE-Unused (currently)
 
 #define FLAG_RYU_CHOOSING_FRONTIER_STARTER                          0x4F9 // Tells the code for frontier mon giver that you're picking a starter
-#define FLAG_UNUSED_0x4FA                                           0x4FA // Unused Flag
+#define FLAG_RYU_PLAYER_HELPING_MAGMA                               0x4FA // Unused Flag
 
 #define FLAG_DEFEATED_ELITE_4_SIDNEY                                0x4FB
 #define FLAG_DEFEATED_ELITE_4_PHOEBE                                0x4FC
@@ -1355,7 +1355,7 @@
 #define FLAG_SYS_POKEMON_GET                         (SYSTEM_FLAGS + 0x0) // FLAG_0x860
 #define FLAG_SYS_POKEDEX_GET                         (SYSTEM_FLAGS + 0x1)
 #define FLAG_SYS_POKENAV_GET                         (SYSTEM_FLAGS + 0x2)
-#define FLAG_UNUSED_0x863                            (SYSTEM_FLAGS + 0x3)
+#define FLAG_RYU_HIDE_COTTAGE_MAGMA                  (SYSTEM_FLAGS + 0x3)
 #define FLAG_SYS_GAME_CLEAR                          (SYSTEM_FLAGS + 0x4)
 #define FLAG_SYS_CHAT_USED                           (SYSTEM_FLAGS + 0x5)
 #define FLAG_SYS_HIPSTER_MEET                        (SYSTEM_FLAGS + 0x6)
@@ -1397,8 +1397,8 @@
 #define FLAG_RYU_DAWN_MEGA_REWARD                   (SYSTEM_FLAGS + 0x23) 
 #define FLAG_RYU_BRENDAN_MEGA_REWARD                (SYSTEM_FLAGS + 0x24) 
 #define FLAG_RYU_LEAF_MEGA_REWARD                   (SYSTEM_FLAGS + 0x25) 
-#define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) 
-#define FLAG_UNUSED_0x887                           (SYSTEM_FLAGS + 0x27) // Unused Flag
+#define FLAG_RYU_HIDE_GC_BLAISE                     (SYSTEM_FLAGS + 0x26) 
+#define FLAG_RYU_PLAYER_MAGMA_MEMBER                (SYSTEM_FLAGS + 0x27) // Unused Flag
 
 #define FLAG_SYS_USE_FLASH                          (SYSTEM_FLAGS + 0x28) // EE-Unused
 #define FLAG_SYS_USE_STRENGTH                       (SYSTEM_FLAGS + 0x29)
@@ -1407,8 +1407,8 @@
 #define FLAG_SYS_SAFARI_MODE                        (SYSTEM_FLAGS + 0x2C) // EE-Unused
 #define FLAG_SYS_CRUISE_MODE                        (SYSTEM_FLAGS + 0x2D)
 
-#define FLAG_UNUSED_0x88E                           (SYSTEM_FLAGS + 0x2E) // Unused Flag
-#define FLAG_UNUSED_0x88F                           (SYSTEM_FLAGS + 0x2F) // Unused Flag
+#define FLAG_RYU_MAGMA_4_NOTIFY                     (SYSTEM_FLAGS + 0x2E) // Unused Flag
+#define FLAG_RYU_HIDE_111_MAGMA_MEETING             (SYSTEM_FLAGS + 0x2F) // Unused Flag
 
 #define FLAG_SYS_TV_HOME                            (SYSTEM_FLAGS + 0x30)
 #define FLAG_SYS_TV_WATCH                           (SYSTEM_FLAGS + 0x31)
@@ -1531,18 +1531,18 @@
 #define FLAG_RYU_KYOGRE_RAN                         (SYSTEM_FLAGS + 0x93) // Unused Flag
 #define FLAG_RYU_AQUA_BAD_END                       (SYSTEM_FLAGS + 0x94) // Unused Flag
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAXIE (SYSTEM_FLAGS + 0x95) // Unused Flag
-#define FLAG_TOBY_TRAINER_SIGHT                     (SYSTEM_FLAGS + 0x96) // Unused Flag
-#define FLAG_UNUSED_0x8F7                           (SYSTEM_FLAGS + 0x97) // Unused Flag
-#define FLAG_UNUSED_0x8F8                           (SYSTEM_FLAGS + 0x98) // Unused Flag
-#define FLAG_UNUSED_0x8F9                           (SYSTEM_FLAGS + 0x99) // Unused Flag
-#define FLAG_UNUSED_0x8FA                           (SYSTEM_FLAGS + 0x9A) // Unused Flag
-#define FLAG_UNUSED_0x8FB                           (SYSTEM_FLAGS + 0x9B) // Unused Flag
-#define FLAG_UNUSED_0x8FC                           (SYSTEM_FLAGS + 0x9C) // Unused Flag
-#define FLAG_UNUSED_0x8FD                           (SYSTEM_FLAGS + 0x9D) // Unused Flag
-#define FLAG_UNUSED_0x8FE                           (SYSTEM_FLAGS + 0x9E) // Unused Flag
+#define FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA1    (SYSTEM_FLAGS + 0x96) // Unused Flag
+#define FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA2    (SYSTEM_FLAGS + 0x97) // Unused Flag
+#define FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE     (SYSTEM_FLAGS + 0x98) // Unused Flag
+#define LCC_MAGMA_HARBOR_REPORTERS                  (SYSTEM_FLAGS + 0x99) // Unused Flag
+#define FLAG_RYU_MAGMA_LILYCOVE                     (SYSTEM_FLAGS + 0x9A) // Unused Flag
+#define FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE        (SYSTEM_FLAGS + 0x9B) // Unused Flag
+#define FLAG_RYU_MAGMA_6_NOTIFY                     (SYSTEM_FLAGS + 0x9C) // Unused Flag
+#define FLAG_RYU_HIDE_103_MAGMA_MEETING             (SYSTEM_FLAGS + 0x9D) // Unused Flag
+#define FLAG_RYU_BANNED_FROM_OLDALE                 (SYSTEM_FLAGS + 0x9E) // Unused Flag
 #define FLAG_UNUSED_0x8FF                           (SYSTEM_FLAGS + 0x9F) // Unused Flag
-#define FLAG_UNUSED_0x900                           (SYSTEM_FLAGS + 0xA0) // Unused Flag
-#define FLAG_UNUSED_0x901                           (SYSTEM_FLAGS + 0xA1) // Unused Flag
+#define FLAG_RYU_RUSTURF_CLEARING_MAGMA             (SYSTEM_FLAGS + 0xA0) // Unused Flag
+#define FLAG_RYU_BANNED_FROM_MARTS                  (SYSTEM_FLAGS + 0xA1) // Unused Flag
 #define FLAG_UNUSED_0x902                           (SYSTEM_FLAGS + 0xA2) // Unused Flag
 #define FLAG_UNUSED_0x903                           (SYSTEM_FLAGS + 0xA3) // Unused Flag
 #define FLAG_UNUSED_0x904                           (SYSTEM_FLAGS + 0xA4) // Unused Flag
@@ -1572,7 +1572,7 @@
 #define FLAG_UNUSED_0x91C                           (SYSTEM_FLAGS + 0xBC) // Unused Flag
 #define FLAG_UNUSED_0x91D                           (SYSTEM_FLAGS + 0xBD) // Unused Flag
 #define FLAG_UNUSED_0x91E                           (SYSTEM_FLAGS + 0xBE) // Unused Flag
-#define FLAG_UNUSED_0x91F                           (SYSTEM_FLAGS + 0xBF) // Unused Flag
+#define FLAG_TOBY_TRAINER_SIGHT                     (SYSTEM_FLAGS + 0xBF) // Unused Flag
 
 // Daily Flags
 // These flags are cleared once per day

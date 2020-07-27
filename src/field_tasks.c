@@ -629,7 +629,7 @@ static void AshGrassPerStepCallback(u8 taskId)
             {
                 ashGatherCount = GetVarPointer(VAR_ASH_GATHER_COUNT);
                 if (*ashGatherCount < 9999)
-                    (*ashGatherCount)++;
+                    (*ashGatherCount) += 4;
             }
         }
     }

@@ -1,68 +1,69 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "GC_JIRACHI_ENC",
-            "type": "sign",
-            "x": 10,
-            "y": 2
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock1",
-            "type": "sign",
-            "x": 4,
-            "y": 11
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock10",
-            "type": "sign",
-            "x": 7,
-            "y": 10
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_GRANITE_CAVE_STEVENS_ROOM",
-    "layout": "LAYOUT_GRANITE_CAVE_STEVENS_ROOM",
-    "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN01",
-    "name": "GraniteCave_StevensRoom",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_GRANITE_CAVE_STEVEN",
-            "graphics_id": "OBJ_EVENT_GFX_STEVEN",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "GraniteCave_StevensRoom_EventScript_Steven",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 7,
-            "y": 8
-        }
-    ],
-    "region_map_section": "MAPSEC_GRANITE_CAVE",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_GRANITE_CAVE_1F",
-            "dest_warp_id": 3,
-            "elevation": 3,
-            "x": 7,
-            "y": 2
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_GRANITE_CAVE_STEVENS_ROOM",
+  "name": "GraniteCave_StevensRoom",
+  "layout": "LAYOUT_GRANITE_CAVE_STEVENS_ROOM",
+  "music": "MUS_DAN01",
+  "region_map_section": "MAPSEC_GRANITE_CAVE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_STEVEN",
+      "x": 7,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GraniteCave_StevensRoom_EventScript_Steven",
+      "flag": "FLAG_HIDE_GRANITE_CAVE_STEVEN"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 7,
+      "y": 2,
+      "elevation": 3,
+      "dest_map": "MAP_GRANITE_CAVE_1F",
+      "dest_warp_id": 3
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "GC_JIRACHI_ENC"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 11,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock1"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 10,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock10"
+    }
+  ]
 }

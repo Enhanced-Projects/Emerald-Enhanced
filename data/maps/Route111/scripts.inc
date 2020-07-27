@@ -50,7 +50,12 @@ Route111_OnTransition: @ 81F0D87
 	call GabbyAndTy_EventScript_UpdateLocation
 	checktrainerflag TRAINER_VICKY
 	goto_if_lt Route111_EventScript_SetWinstratesNotDefeated
+	call_if_set FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA2, R111_FixTabitha
 	end
+
+R111_FixTabitha::
+	setobjectxy 45, 31, 28
+	return
 
 Route111_EventScript_SetFallingPlayerGfx:: @ 81F0DC2
 	checkplayergender
@@ -113,6 +118,7 @@ Route111_EventScript_HidePlayerForMirageTower:: @ 81F0E50
 
 Route111_OnFrame: @ 81F0E56
 	map_script_2 VAR_MIRAGE_TOWER_STATE, 1, Route111_EventScript_MirageTowerDisappear
+	map_script_2 VAR_RYU_MAGMA, 150, R111_ResumeMagmaScene
 	.2byte 0
 
 Route111_EventScript_MirageTowerDisappear:: @ 81F0E60
@@ -728,5 +734,509 @@ r111_IKnewItWouldnt:
 	.string " enough strength to transform at\n"
 	.string " this point. I better head back to\l"
 	.string " the Institute and report this.)$"
+	
+@==================================================================================================Magma Events
+
+R111_MagmaMeeting::
+	setvar VAR_RYU_MAGMA, 135@player started route 111 magma meeting
+	applymovement 45, Common_Movement_FaceUp
+	waitmovement 45
+	msgbox R111_SoYouveArrived
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, R11_PlayerFallInLine@3 left, 1 down, face right
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 45, Common_Movement_FaceLeft
+	waitmovement 45
+	msgbox R111_OurLeaderCurrently
+	closemessage
+	delay 20
+	msgbox R111_WeveRecentlyBeen
+	closemessage
+	delay 40
+	msgbox R111_ImGivingYou
+	closemessage
+	delay 20
+	msgbox R111_HmmWell
+	closemessage
+	delay 20
+	applymovement 45, R111_TabithaToPlayer
+	waitmovement 45
+	msgbox R111_YouGotSomething
+	closemessage
+	applymovement 42, Common_Movement_FaceUp
+	waitmovement 42
+	msgbox R111_AndHowDo
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox R111_EasyTakeALook
+	closemessage
+	setflag FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA1
+	clearflag FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA2
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, R111_cam1
+    waitmovement OBJ_EVENT_ID_CAMERA
+	msgbox R111_TheVolcanicAsh
+	setvar VAR_RYU_MAGMA, 140@camera is panning to route 113
+	closemessage
+	end
+	
+R111_ResumeMagmaScene::
+	setvar VAR_RYU_MAGMA, 155@camera finished and has returned to 111
+	special RemoveCameraObject
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	applymovement 46, R111_BlaiseToTabitha
+	waitmovement 46
+	msgbox R111_SoundsLikeAPlan
+	playse SE_PIN
+	applymovement 47, Common_Movement_ExclamationMark
+	waitmovement 47
+	applymovement 47, Common_Movement_FaceDown
+	waitmovement 47
+	msgbox R111_DontYouDare
+	closemessage
+	applymovement 47, Common_Movement_FaceLeft
+	waitmovement 47
+	msgbox R111_InOrder
+	msgbox R111_HeyImThe
+	closemessage
+	applymovement 47, Common_Movement_FaceDown
+	waitmovement 47
+	msgbox R111_WhatDidI
+	closemessage
+	fadescreen FADE_TO_BLACK
+	setflag FLAG_RYU_HIDE_111_MAGMA_MEETING
+	removeobject 42
+	removeobject 43
+	removeobject 44
+	removeobject 45
+	removeobject 47
+	fadescreen FADE_FROM_BLACK
+	setvar VAR_RYU_MAGMA, 160@Blaise is now waiting for player to collect all the ash
+	releaseall
+	end
+	
+R111_BlaiseWaitingForAsh::
+	lock
+	faceplayer
+	compare VAR_RYU_MAGMA, 160
+	goto_if_ne ryu_end
+	compare VAR_ASH_GATHER_COUNT, 8000
+	goto_if_lt R111_Blaise_NotEnough
+	msgbox R111_NiceWork
+	setvar VAR_RYU_MAGMA, 165@player gathered the required ash.
+	clearflag FLAG_RYU_MAGMA_LILYCOVE
+	setflag FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE
+	applymovement 46, R111_BlaiseExit
+	waitmovement 46
+	removeobject 46
+	release
+	end
+	
+R111_Blaise_NotEnough::
+	buffernumberstring 0, VAR_ASH_GATHER_COUNT
+	msgbox R111_GetToIt
+	release
+	end
+	
+R111_SoYouveArrived:
+	.string "So you've arrived, fall in line!$"
+	
+R111_OurLeaderCurrently:
+	.string "Our Leader currently has neither the\n"
+    .string "time nor the patience to inform you\p"
+    .string "of what has occurred, so I'm here in\n"
+    .string "his stead...$"
+
+R111_WeveRecentlyBeen:
+	.string "We've recently been made aware of a\n"
+    .string "raid Team Aqua had made on the\p"
+    .string "Oceanic Museum in Slateport, and\n"
+    .string "voiced their demands to Capt. Stern.\p"
+    .string "They have begun to make their move,\n"
+    .string "and to Team Magma, that is definitely\p"
+    .string "unacceptable! We need to slow their\n"
+    .string "progress, if not halt it completely!$"
+
+R111_ImGivingYou:
+	.string "I'm giving you this one and only\n"
+    .string "opportunity to prove yourselves, so\p"
+    .string "speak up!$"
+
+R111_HmmWell:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Hmm...well...$"
+	
+R111_YouGotSomething:
+	.string "You got something to say, grunt?\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}How about we take the fight to them?\n"
+    .string "Team Aqua's all about the sea, so\p"
+    .string "what if we poisoned the water around\n"
+    .string "their home turf?$"
+
+R111_AndHowDo:
+	.string "And how do you propose we even go\n"
+    .string "about doing that, huh?$"
+
+R111_EasyTakeALook:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Easy, take a look at the next route.$"
+	
+R111_TheVolcanicAsh:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}The volcanic ash from Mt. Chimney\n"
+    .string "would be detrimental to any water\p"
+    .string "supply, and there are copious amounts\n"
+    .string "of it.$"
+
+R111_SoundsLikeAPlan:
+	.string "Sounds like a plan to me. What do you\n"
+    .string "think, Tabby?$"
+
+R111_DontYouDare:
+	.string "Don't you dare call me that again!$"
+
+R111_InOrder:
+	.string "In order to carry out something like\n"
+    .string "that, you'll need to gather a lot\p"
+    .string "of ash, which can only be carried\n"
+    .string "in a Soot Sack.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I'll handle that part. The rest can\n"
+    .string "figure out at which points to pour\p"
+    .string "the ash.$"
+
+R111_HeyImThe:
+	.string "Hey, I'm the Admin here, not you!\p"
+    .string "Oh give it a rest, Tabby, and let's\n"
+    .string "get this done!$"
+
+R111_WhatDidI:
+	.string "What did I just say!?$"
+	
+R111_NiceWork:
+	.string "Nice work! Meet us in Lilycove,\n"
+	.string "and let the sabotage commence!$"
+	
+R111_GetToIt:
+	.string "{STR_VAR_1} isn't enough. Go get more!$"
 
 	
+R11_PlayerFallInLine:@3 left, 1 down, face right
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	face_right
+	step_end
+	
+R111_TabithaToPlayer:
+	walk_up
+	walk_left
+	walk_left
+	step_end
+	
+R111_BlaiseToTabitha:
+	walk_left
+	walk_left
+	face_up
+	step_end
+	
+R111_BlaiseExit:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+	
+R111_cam1:@up 18, left 53
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	step_end
+	
+R111_cam2:
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	step_end
+	
+@==================================================================================================Second Magma Meeting
+
+R111_MagmaMeeting2TriggerRight2::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0xff
+	goto R111_MagmaMeeting2Trigger
+	
+R111_MagmaMeeting2TriggerRight1::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0xff
+	goto R111_MagmaMeeting2Trigger
+	
+R111_MagmaMeeting2TriggerLeft1::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0xff
+	goto R111_MagmaMeeting2Trigger
+
+R111_MagmaMeeting2Trigger::
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0xff
+	setvar VAR_RYU_MAGMA, 205@Player started second meeting with magma
+	addobject 49
+	applymovement 49, R111_TabithaToPlayer2@right 7
+	waitmovement 49
+	addobject 50
+	applymovement 50, R111_BlaiseToPlayer@right 9
+	waitmovement 50
+	addobject 48
+	applymovement 48, R111_MaxieToPlayer@right8
+	waitmovement 48
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox R111_SoYouveArrived2
+	closemessage
+	msgbox R111_IveBeenLedTo
+	closemessage
+	applymovement 48, Common_Movement_FaceDown
+	waitmovement 48
+	msgbox R111_YouNeedNot
+	playse SE_PIN
+	applymovement 49, Common_Movement_ExclamationMark
+	waitmovement 49
+	msgbox R111_HowDareYou
+	closemessage
+	delay 40
+	applymovement 48, Common_Movement_FaceUp
+	waitmovement 48
+	msgbox R111_AreYouReady
+	closemessage
+	delay 40
+	msgbox R111_PlayerGivesMaxie
+	closemessage
+	applymovement 48, Common_Movement_StepUp
+	waitmovement 48
+	playfanfare MUS_FANFA1
+	msgbox R111_PlayerIsNow
+	closemessage
+	applymovement 50, Common_Movement_StepUp
+	waitmovement 50
+	msgbox R111_WillYouLook
+	closemessage
+	playse SE_PIN
+	applymovement 49, Common_Movement_ExclamationMark
+	waitmovement 49
+	applymovement 49, Common_Movement_StepUp
+	waitmovement 49
+	msgbox R111_MaxieSir
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject 48
+	removeobject 49
+	removeobject 50
+	setvar VAR_RYU_MAGMA, 210@second meeting with magma finished
+	fadescreen FADE_FROM_BLACK
+	setflag FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE
+	release
+	end
+	
+R111_SoYouveArrived2:
+	.string "So you've arrived.$"
+	
+R111_IveBeenLedTo:
+	.string "I've been made aware of the incident\n"
+    .string "in Lilycove. I'm led to believe that\p"
+    .string "you practically spearheaded the\n"
+    .string "operation, correct?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Yes, sir, at the direction of-$"
+
+R111_YouNeedNot:
+	.string "You need not say any more. It only\n"
+    .string "wastes time.\p"
+    .string "I will have you know, however, that\n"
+    .string "this little escapade of yours has\p"
+    .string "brought undue attention to ourselves\n"
+    .string "and thus makes it all the more\p"
+    .string "difficult to get our jobs done. Do\n"
+    .string "you understand?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I...suppose I do.$"
+
+R111_HowDareYou:
+	.string "How dare you-!\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}The plan was to stop Aqua from\n"
+    .string "progressing by causing a problem\p"
+    .string "on their home turf that they cannot\n"
+    .string "ignore, giving Team Magma the lead\p"
+    .string "in our own plans, whatever that is.\n"
+    .string "We succeeded in doing so. It should\p"
+    .string "count for something.$"
+
+R111_AreYouReady:
+	.string "Are you ready to take responsibility\n"
+    .string "for your actions?$"
+
+R111_PlayerGivesMaxie:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} gives Maxie a stern nod.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Hmph, say no more.$"
+
+R111_PlayerIsNow:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} is now an Agent!$"
+	
+R111_WillYouLook:
+	.string "Will you look at that...$"
+	
+R111_MaxieSir:
+    .string "M-Maxie, sir!\p"
+    .string "Your actions do indeed have some\n"
+    .string "merit. Well done, Agent {PLAYER}.\p"
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Thank you, sir.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}All I require from you at the moment\n"
+    .string "is to gain strength. You shall be\p"
+    .string "contacted again when the time is\n"
+    .string "right.\p"
+    .string "Magma, move out.$"
+
+
+R111_TabithaToPlayer2:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	face_up
+	step_end
+	
+R111_BlaiseToPlayer:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	face_up
+	step_end
+	
+R111_MaxieToPlayer:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	face_up
+	step_end

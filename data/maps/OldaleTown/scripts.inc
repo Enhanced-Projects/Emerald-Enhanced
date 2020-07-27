@@ -1,6 +1,11 @@
 OldaleTown_MapScripts:: @ 81E8EA2
 	map_script ON_TRANSITION, OldaleTown_OnTransition
+	map_script ON_FRAME, OT_CheckMagmaEvent
 	.byte 0
+	
+OT_CheckMagmaEvent::
+	map_script_2 VAR_RYU_MAGMA, 225, OT_DoMagmaSetup
+	.2byte 0
 
 OldaleTown_OnTransition: @ 81E8EA8
 	call Common_EventScript_SetupRivalGfxId
@@ -399,4 +404,266 @@ OldaleTown_Text_BrendanLetsGoBack: @ 81E948A
 OldaleTown_Text_CitySign: @ 81E94DA
 	.string "Oldale Town\n"
 	.string "“Where things start off scarce.”$"
+	
+	
+@==================================================================================================Magma Event
 
+OT_DoMagmaSetup::
+	setvar VAR_RYU_MAGMA, 230@Magma heist is under way
+	addobject 5
+	setflag FLAG_RYU_WAYSTONE_DISABLED
+	release
+	end
+	
+OT_CheckPlayerMagmaEvent::
+	compare VAR_RYU_MAGMA, 230
+	goto_if_eq OT_CantLeaveYet
+	goto ryu_end
+	
+OT_CheckIfPlayerCanEnter::
+	goto_if_unset FLAG_RYU_BANNED_FROM_OLDALE, ryu_end
+	lock
+	msgbox OT_YouCantGoInHere
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
+	
+OT_CantLeaveYet::
+	lock
+	goto_if_unset FLAG_RYU_BANNED_FROM_OLDALE, ryu_end
+	specialvar VAR_RESULT, GetPlayerFacingDirection
+	switch VAR_RESULT
+	case DIR_NORTH, OT_CantLeaveNorth
+	case DIR_WEST, OT_CantLeaveWest
+	case DIR_SOUTH, OT_CantLeaveSouth
+	case DIR_EAST, OT_CantEnterEast
+	goto OT_CantLeaveNorth
+	
+OT_CantLeaveNorth::
+	msgbox OT_NotDone
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto ryu_end
+	
+OT_CantLeaveSouth::
+	msgbox OT_NotDone
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto ryu_end
+	
+OT_CantLeaveWest::
+	msgbox OT_NotDone
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto ryu_end
+	
+OT_CantEnterEast:
+	msgbox OT_CantEnterHere
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto ryu_end
+
+	
+OT_StartMagmaHeist::
+	lock
+	faceplayer
+	setvar VAR_RYU_MAGMA, 234@player started heist scene
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	playse SE_PIN
+	applymovement 5, Common_Movement_ExclamationMark
+	waitmovement 5
+	msgbox OT_ThatFaceI
+	closemessage
+	trainerbattle_single TRAINER_DEVON_ENFORCER_1, OT_BattleIntro, OT_BattleDefeat, OT_ContinueHeist
+	end
+	
+OT_ContinueHeist::
+	setvar VAR_RYU_MAGMA 240@player defeated shop guard
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 5, Common_Movement_StepRight
+	waitmovement 5
+	addobject 6
+	addobject 7
+	addobject 8
+	addobject 9
+	applymovement 6, OT_MoveIntoStore
+	delay 40
+	applymovement 7, OT_MoveIntoStore
+	delay 40
+	applymovement 8, OT_MoveIntoStore
+	delay 40
+	applymovement 9, OT_MoveIntoStore
+	waitmovement 9
+	removeobject 6
+	removeobject 7
+	removeobject 8
+	removeobject 9
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	msgbox OT_YouThinkThis
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_QuestionMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_HINSI
+	waitse
+	playse SE_HINSI
+	waitse
+	playse SE_HINSI
+	waitse
+	playse SE_HINSI
+	waitse
+	playse SE_HINSI
+	waitse
+	playse SE_HINSI
+	waitse
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox OT_ThatsWhatIMean
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	addobject 6
+	addobject 7
+	addobject 8
+	addobject 9
+	setobjectxy 6, 14, 6
+	setobjectxy 7, 14, 6
+	setobjectxy 8, 14, 6
+	setobjectxy 9, 14, 6
+	applymovement 6, OT_MagmaExitStore
+	delay 20
+	applymovement 7, OT_MagmaExitStore
+	delay 20
+	applymovement 8, OT_MagmaExitStore
+	delay 20
+	applymovement 9, OT_LastMagmaExit
+	waitmovement 9
+	removeobject 6
+	removeobject 7
+	removeobject 8
+	msgbox OT_PlayerStoreOwner
+	closemessage
+	applymovement 9, OT_LastMagmaLeave
+	waitmovement 9
+	removeobject 9
+	applymovement OBJ_EVENT_ID_PLAYER, OT_PlayerLeaveOldale
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setvar VAR_RYU_MAGMA, 245@Player left oldale after heist
+	setflag FLAG_RYU_BANNED_FROM_OLDALE
+	release
+	end
+	
+OT_CantEnterHere:
+	.string "You just commited a crime here.\nYou probably don't want to\lgo back there.$"
+	
+OT_YouCantGoInHere:
+	.string "You're currently participating\nin a crime. You can't go\linto this building.$"
+	
+OT_ThatFaceI:
+	.string "That face...I saw you on TV! You're\n"
+    .string "that Trainer who joined Team Magma\p"
+    .string "and contaminated Lilycove's seas!\n"
+    .string "Someone like you will not be accepted\p"
+    .string "here!$"
+
+OT_BattleIntro:
+	.string "Prepare yourself, scum!$"
+	
+OT_BattleDefeat:
+	.string "I've failed…$"
+
+OT_YouThinkThis:
+	.string "You think this is it, do you?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Shut it. You're not getting past me.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}That's not what I mean.$"
+	
+OT_ThatsWhatIMean:
+	.string "That's what I mean.$"
+
+OT_PlayerStoreOwner:
+	.string "{PLAYER}! Store owner flipped the\n"
+    .string "alarm! We've gotta get out of here!$"
+	
+OT_MoveIntoStore:@7down, 6 right, 1 up
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_up
+	step_end
+	
+OT_MagmaExitStore:
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	step_end
+	
+OT_LastMagmaExit:
+	walk_down
+	walk_down
+	walk_left
+	face_up
+	step_end
+	
+OT_LastMagmaLeave:
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	step_end
+	
+OT_PlayerLeaveOldale:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	step_end
+	

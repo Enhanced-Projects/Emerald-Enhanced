@@ -353,5 +353,134 @@ Text2:
 
 dawnhi:
 	.string "$"
+	
+@-=================================================================================================Magma meeting 3
 
+r103_MagmaMeeting3_TopRight::
+	compare VAR_RYU_MAGMA, 225
+	goto_if_ge ryu_end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto R103_MagmaMeeting3Main
 
+r103_MagmaMeeting3_Top::
+	compare VAR_RYU_MAGMA, 225
+	goto_if_ge ryu_end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto R103_MagmaMeeting3Main
+
+r103_MagmaMeeting3_Bottom::
+	compare VAR_RYU_MAGMA, 225
+	goto_if_ge ryu_end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto R103_MagmaMeeting3Main
+
+r103_MagmaMeeting3_BottomRight::
+	compare VAR_RYU_MAGMA, 225
+	goto_if_ge ryu_end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto R103_MagmaMeeting3Main
+	
+R103_MagmaMeeting3Main::
+	setvar VAR_RYU_MAGMA, 220@Third Meeting prior to heist completed
+	applymovement 25, Common_Movement_FaceRight
+	waitmovement 25
+	msgbox R103_YouYoureAgent
+	closemessage
+	applymovement 25, Common_Movement_FaceUp
+	waitmovement 25
+	msgbox R103_SoHeresThe
+	closemessage
+	applymovement 25, Common_Movement_FaceRight
+	waitmovement 25
+	msgbox R103_ThatsWhereYou
+	closemessage
+	applymovement 22, Common_Movement_FaceRight
+	waitmovement 22
+	msgbox R103_WhereDoWe
+	closemessage
+	applymovement 25, Common_Movement_FaceUp
+	applymovement 24, Common_Movement_FaceLeft
+	waitmovement 24
+	msgbox R103_OurOnlyOption
+	closemessage
+	applymovement 25, Common_Movement_FaceRight
+	waitmovement 25
+	msgbox R103_AllSetPlayer
+	closemessage
+	fadescreen FADE_TO_BLACK
+	setflag FLAG_RYU_HIDE_103_MAGMA_MEETING
+	removeobject 22
+	removeobject 23
+	removeobject 24
+	removeobject 25
+	fadescreen FADE_FROM_BLACK
+	setvar VAR_RYU_MAGMA, 225@Heist Initialized
+	setflag FLAG_RYU_BANNED_FROM_OLDALE
+	applymovement OBJ_EVENT_ID_PLAYER, OT_MoveIntoPlace
+	waitmovement OBJ_EVENT_ID_PLAYER
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	release
+	end
+	
+OT_NotDone:
+	.string "You haven't finished your task.\nYou can't leave.$"
+	
+R103_YouYoureAgent:
+	.string "You...you're Agent {PLAYER}, right?\n"
+    .string "Thought you were too much of a\p"
+    .string "hotshot to join us grunts...seems I\n"
+    .string "was wrong. Security's been tight\p"
+    .string "nowadays, so we could use the help.$"
+
+R103_SoHeresThe:
+	.string "So, here's the plan: Our target's\n"
+    .string "Oldale Town's Mart. Having the store\p"
+    .string "owner give up the goods is a walk in\n"
+    .string "the park. The issue is the guard\p"
+    .string "they've recently employed out front\n"
+    .string "an effort to combat the surge in\p"
+    .string "crime. The pokémon they have are\n"
+    .string "fairly strong. Us grunts can't handle\p"
+    .string "them at our current level and rank.$"
+
+R103_ThatsWhereYou:
+	.string "That's where you come in, {PLAYER}.\n"
+    .string "You subdue the guard, while we go in\p"
+    .string "and grab the goods. And don't worry,\n"
+    .string "you'll get your share of the profits.$"
+
+R103_WhereDoWe:
+	.string "Where do we go once we got what we\n"
+    .string "came for? Up here's a dead end.$"
+
+R103_OurOnlyOption:
+    .string "Our only option is to head west thru\n"
+    .string "Petalburg...it's a risk for sure, but\p"
+    .string "if we can make it to the Sea Cottage,\n"
+    .string "we all can hitch a ride on the boat\p"
+    .string "there and sail away from danger.$"
+
+R103_AllSetPlayer:
+	.string "All set, {PLAYER}? Go ahead and do\n"
+    .string "your thing. We'll make our move once\p"
+    .string "you get rid of the guard.$"
+	
+OT_MoveIntoPlace:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	step_end

@@ -676,6 +676,38 @@ const struct SpriteTemplate AquaShellyLogoSpriteTemplate =
     .callback = SpriteCallbackDummy
 };
 
+const struct SpriteSheet MagmaLogoSheet =
+{
+    .data = MagmaLogoGfx,
+    .size = sizeof(MagmaLogoGfx),
+    .tag = 2659
+};
+
+const struct SpritePalette MagmaLogoPalette =
+{
+    .data = MagmaLogoPal, 
+	.tag = 2659
+};
+
+static const struct OamData MagmaLogoOamData =
+{
+    .y = 0,
+    .shape = SPRITE_SHAPE(32x32),
+    .size = SPRITE_SIZE(32x32),
+    .priority = 0
+};
+
+const struct SpriteTemplate MagmaLogoSpriteTemplate =
+{
+    .tileTag = 2659,
+    .paletteTag = 2659,
+    .oam = &MagmaLogoOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
+
 void DrawDevonLogo(void)
 {
     if (FlagGet(FLAG_RYU_DEVON_SCIENTIST) == 1)
@@ -707,8 +739,13 @@ void DrawAquaLogo(void)
         MenuSpriteId1 = (CreateSprite(&AquaLogoSpriteTemplate, 16, 62, 0));
     }
 }
+
 void DrawMagmaLogo(void)
-{}
+{
+        LoadSpriteSheet(&MagmaLogoSheet);
+        LoadSpritePalette(&MagmaLogoPalette);
+        MenuSpriteId1 = (CreateSprite(&MagmaLogoSpriteTemplate, 16, 62, 0));
+}
 
 static bool32 InitStartMenuStep(void)
 {
@@ -760,7 +797,10 @@ static bool32 InitStartMenuStep(void)
         {
             DrawAquaLogo();
         }
-        else{}
+        else if (FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA) == 1)
+        {
+            DrawMagmaLogo();
+        }
         
         return TRUE;
     }

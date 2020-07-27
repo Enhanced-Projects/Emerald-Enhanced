@@ -15,6 +15,8 @@ MauvilleCity_OnTransition: @ 81DF38B
 
 MauvilleCity_OnFrame::
 	map_script_2 VAR_TEMP_5, 0, CheckFollowerLanette
+	map_script_2 VAR_TEMP_A, 0, Ryu_CheckMagmaStatusForMissionCall
+	.2byte 0
 
 CheckFollowerLanette::
 	setvar VAR_TEMP_5, 100

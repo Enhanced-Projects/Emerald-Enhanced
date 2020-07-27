@@ -1,110 +1,137 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock1",
-            "type": "sign",
-            "x": 4,
-            "y": 10
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock2",
-            "type": "sign",
-            "x": 29,
-            "y": 5
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock4",
-            "type": "sign",
-            "x": 34,
-            "y": 7
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock3",
-            "type": "sign",
-            "x": 16,
-            "y": 8
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_GRANITE_CAVE_1F",
-    "layout": "LAYOUT_GRANITE_CAVE_1F",
-    "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN01",
-    "name": "GraniteCave_1F",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_HIKER",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "GraniteCave_1F_EventScript_Hiker",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 36,
-            "y": 9
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_ITEM_GRANITE_CAVE_1F_ESCAPE_ROPE",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "GraniteCave_1F_EventScript_ItemEscapeRope",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 17,
-            "y": 7
-        }
-    ],
-    "region_map_section": "MAPSEC_GRANITE_CAVE",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_ROUTE106",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 37,
-            "y": 12
-        },
-        {
-            "dest_map": "MAP_GRANITE_CAVE_B1F",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 35,
-            "y": 3
-        },
-        {
-            "dest_map": "MAP_GRANITE_CAVE_B1F",
-            "dest_warp_id": 1,
-            "elevation": 3,
-            "x": 17,
-            "y": 11
-        },
-        {
-            "dest_map": "MAP_GRANITE_CAVE_STEVENS_ROOM",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 5,
-            "y": 10
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_GRANITE_CAVE_1F",
+  "name": "GraniteCave_1F",
+  "layout": "LAYOUT_GRANITE_CAVE_1F",
+  "music": "MUS_DAN01",
+  "region_map_section": "MAPSEC_GRANITE_CAVE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 36,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GraniteCave_1F_EventScript_Hiker",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 17,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GraniteCave_1F_EventScript_ItemEscapeRope",
+      "flag": "FLAG_ITEM_GRANITE_CAVE_1F_ESCAPE_ROPE"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 37,
+      "y": 12,
+      "elevation": 3,
+      "dest_map": "MAP_ROUTE106",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 35,
+      "y": 3,
+      "elevation": 3,
+      "dest_map": "MAP_GRANITE_CAVE_B1F",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 17,
+      "y": 11,
+      "elevation": 3,
+      "dest_map": "MAP_GRANITE_CAVE_B1F",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 5,
+      "y": 10,
+      "elevation": 3,
+      "dest_map": "MAP_GRANITE_CAVE_STEVENS_ROOM",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 35,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "GC_CheckMagmaMissionState"
+    },
+    {
+      "type": "trigger",
+      "x": 36,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "GC_CheckMagmaMissionState"
+    },
+    {
+      "type": "trigger",
+      "x": 37,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "GC_CheckMagmaMissionState"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 10,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock1"
+    },
+    {
+      "type": "sign",
+      "x": 29,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock2"
+    },
+    {
+      "type": "sign",
+      "x": 34,
+      "y": 7,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock4"
+    },
+    {
+      "type": "sign",
+      "x": 16,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock3"
+    }
+  ]
 }

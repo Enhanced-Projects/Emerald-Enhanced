@@ -1,107 +1,107 @@
 {
-    "allow_cycling": false,
-    "allow_escaping": false,
-    "allow_running": false,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Route114_LanettesHouse_EventScript_Notebook",
-            "type": "sign",
-            "x": 5,
-            "y": 1
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Route114_LanettesHouse_EventScript_PC",
-            "type": "sign",
-            "x": 8,
-            "y": 1
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Route114_LanettesHouse_EventScript_PC",
-            "type": "sign",
-            "x": 7,
-            "y": 1
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-        {
-            "elevation": 3,
-            "script": "LNH_LeafEvent",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 5,
-            "y": 6
-        },
-        {
-            "elevation": 3,
-            "script": "LNH_RelCheck",
-            "type": "trigger",
-            "var": "VAR_TEMP_5",
-            "var_value": "0",
-            "x": 11,
-            "y": 5
-        }
-    ],
-    "id": "MAP_ROUTE114_LANETTES_HOUSE",
-    "layout": "LAYOUT_ROUTE114_LANETTES_HOUSE",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_TONEKUSA",
-    "name": "Route114_LanettesHouse",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_LANETTES_HOUSE_LANETTE",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Route114_LanettesHouse_EventScript_Lanette",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 5,
-            "y": 4
-        }
-    ],
-    "region_map_section": "MAPSEC_ROUTE_114",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-        {
-            "dest_map": "MAP_ROUTE114",
-            "dest_warp_id": 2,
-            "elevation": 0,
-            "x": 5,
-            "y": 7
-        },
-        {
-            "dest_map": "MAP_ROUTE114",
-            "dest_warp_id": 2,
-            "elevation": 0,
-            "x": 6,
-            "y": 7
-        },
-        {
-            "dest_map": "MAP_ROUTE114_LANETTES_HOUSE_BASEMENT",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 15,
-            "y": 5
-        },
-        {
-            "dest_map": "MAP_ROUTE114_LANETTES_HOUSE_BASEMENT",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 16,
-            "y": 5
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_ROUTE114_LANETTES_HOUSE",
+  "name": "Route114_LanettesHouse",
+  "layout": "LAYOUT_ROUTE114_LANETTES_HOUSE",
+  "music": "MUS_TONEKUSA",
+  "region_map_section": "MAPSEC_ROUTE_114",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "x": 5,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route114_LanettesHouse_EventScript_Lanette",
+      "flag": "FLAG_HIDE_LANETTES_HOUSE_LANETTE"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 5,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE114",
+      "dest_warp_id": 2
+    },
+    {
+      "x": 6,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE114",
+      "dest_warp_id": 2
+    },
+    {
+      "x": 15,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE114_LANETTES_HOUSE_BASEMENT",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 16,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE114_LANETTES_HOUSE_BASEMENT",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 6,
+      "elevation": 3,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "LNH_LeafEvent"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 5,
+      "elevation": 3,
+      "var": "VAR_TEMP_5",
+      "var_value": "0",
+      "script": "LNH_RelCheck"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 5,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route114_LanettesHouse_EventScript_Notebook"
+    },
+    {
+      "type": "sign",
+      "x": 8,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route114_LanettesHouse_EventScript_PC"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route114_LanettesHouse_EventScript_PC"
+    }
+  ]
 }

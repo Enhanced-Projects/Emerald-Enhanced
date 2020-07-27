@@ -3272,6 +3272,8 @@ extern const u8 gText_RyuFrontierStarter3_6[];
 extern const u8 gText_RyuFrontierStarter3_7[];
 extern const u8 gText_RyuFrontierStarter_Next[];
 extern const u8 gText_RyuFrontierStarter_Prev[];
+extern const u8 gText_RyuMagmaMultichoice1[];
+extern const u8 gText_RyuMagmaMultichoice2[];
 
 extern const u8 gText_RyuBufferedString1[];
 extern const u8 gText_RyuBufferedString2[];

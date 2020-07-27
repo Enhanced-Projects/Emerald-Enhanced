@@ -186,7 +186,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto RyuDebug_Init_GiveAll
+	setvar VAR_ASH_GATHER_COUNT, 8000
 	release
 	end
 
