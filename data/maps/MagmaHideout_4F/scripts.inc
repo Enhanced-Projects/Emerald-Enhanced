@@ -1,4 +1,5 @@
 MagmaHideout_4F_MapScripts:: @ 823A55F
+	map_script ON_FRAME, MH_CheckSetMaxiePosition
 	.byte 0
 
 MagmaHideout_4F_EventScript_Maxie:: @ 823A560
@@ -107,21 +108,25 @@ MagmaHideout_4F_Movement_MaxieLookAround: @ 823A680
 
 MagmaHideout_4F_EventScript_Grunt11:: @ 823A68C
 	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_11, MagmaHideout_4F_Text_Grunt11Intro, MagmaHideout_4F_Text_Grunt11Defeat
+	call MH_CheckPlayerIsMagma
 	msgbox MagmaHideout_4F_Text_Grunt11PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MagmaHideout_4F_EventScript_Grunt12:: @ 823A6A3
 	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_12, MagmaHideout_4F_Text_Grunt12Intro, MagmaHideout_4F_Text_Grunt12Defeat
+	call MH_CheckPlayerIsMagma
 	msgbox MagmaHideout_4F_Text_Grunt12PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MagmaHideout_4F_EventScript_Grunt13:: @ 823A6BA
 	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_13, MagmaHideout_4F_Text_Grunt13Intro, MagmaHideout_4F_Text_Grunt13Defeat
+	call MH_CheckPlayerIsMagma
 	msgbox MagmaHideout_4F_Text_Grunt13PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MagmaHideout_4F_EventScript_Courtney:: @ 823A6D1
 	trainerbattle_single TRAINER_COURTNEY_3, MagmaHideout_4F_Text_CourtneyIntro, MagmaHideout_4F_Text_CourtneyDefeat
+	call MH_CheckPlayerIsMagma
 	msgbox MagmaHideout_4F_Text_CourtneyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -226,6 +231,8 @@ MagmaHideout_4F_Text_MaxieImGoingAfterGroudon: @ 823ABE2
 @===========================================ryu aqua
 
 MH_CheckForStatus::
+	compare VAR_RYU_MAGMA, 301
+	goto_if_ge ryu_end
 	goto_if_set FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS, ryu_end
 	goto_if_set FLAG_RYU_DS_SHELLY_CLOSEFRIENDS, MH_MapSetup_Duo
 	goto MH_MapSetup_Solo
@@ -253,6 +260,8 @@ MH_MapSetup_Duo::
 	
 	
 MH_RyuBossFight::
+	compare VAR_RYU_MAGMA, 301
+	goto_if_ge ryu_end
 	goto_if_set FLAG_RYU_DS_SHELLY_CLOSEFRIENDS, MH_CourtneyMaxieAltBattle
 	goto_if_set FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS, ryu_end
 	playse SE_PIN
@@ -268,6 +277,8 @@ MH_RyuBossFight::
 	end
 	
 MH_CourtneyMaxieAltBattle::
+	compare VAR_RYU_MAGMA, 301
+	goto_if_ge ryu_end
 	fadenewbgm MUS_MGM0
 	applymovement OBJ_EVENT_ID_FOLLOWER, MH_FollowerToStatic
 	waitmovement OBJ_EVENT_ID_FOLLOWER
@@ -570,3 +581,315 @@ MagmaHideout_4F_Movement_23A67D: @ 823A67D
 	
 MH_GroudonMsg:
 	.string "Groudon stares at you intently...$"
+	
+	
+@==================================================================================================Magma side scripts
+
+MH_CheckSetMaxiePosition:
+	map_script_2 VAR_RYU_MAGMA, 301, SetMaxiePosition2
+	.2byte 0
+	
+SetMaxiePosition2::
+	setvar VAR_RYU_MAGMA, 302@Player entered 4f to chat with maxie
+	removeobject 6
+	setflag FLAG_RYU_HIDE_MAGMA_HIDEOUT_MAXIE
+	setmetatile 20, 3, 598, 1
+	setmetatile 20, 4, 606, 1
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	addobject 11
+	addobject 12
+	end
+	
+MH4_MagmaAdminCheck::
+	@goto_if_unset magma admin flag, ryu_end
+	specialvar VAR_RESULT, GetPlayerFacingDirection
+	compare VAR_RESULT, DIR_EAST
+	goto_if_eq ryu_end
+	compare VAR_RESULT, DIR_WEST
+	goto_if_eq ryu_end
+	msgbox MH4_NotAdminCantGoHere
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
+	
+	
+MH4_MagmaMaxieEvent::
+	compare VAR_RYU_MAGMA, 305
+	goto_if_eq MH4_ToldToGoOtherWay
+	compare VAR_RYU_MAGMA, 302
+	goto_if_ne ryu_end
+	lock
+	setvar VAR_RYU_MAGMA, 305@Player is meeting maxie in the hideout.
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	applymovement 11, MH4_MaxieToPlayer@left 3 up 1 left 2, up 3
+	waitmovement 11
+	msgbox MH4_SoItSeems
+	closemessage
+	applymovement 11, MH4_MaxieToCourtney@down 3, right 2, down1, right 3, down 2, right 2
+	waitmovement 11
+	release
+	end
+	
+MH4_ToldToGoOtherWay::
+	msgbox MH4_MaxieAsked
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
+	
+MH4_Maxie2Event::
+	setvar VAR_RYU_MAGMA, 310@Player sees Groudon with Maxie
+	applymovement 12, Common_Movement_FaceLeft
+	waitmovement 12
+	msgbox MH4_LeaderMaxieWelcome
+	applymovement 11, Common_Movement_FaceRight
+	waitmovement 11
+	msgbox MH4_NowThenPlayer
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 11, Common_Movement_FaceUp
+	waitmovement 11
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, MH4_Cam1
+	waitmovement OBJ_EVENT_ID_CAMERA
+	msgbox MH4_TheAncientCreature
+	closemessage
+	applymovement OBJ_EVENT_ID_CAMERA, MH4_Cam2
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	msgbox MH4_HoweverThereAre
+	closemessage
+	playbgm MUS_EVENT0, 1
+	addobject 15
+	playse SE_DOOR
+	waitse
+	applymovement 15, Common_Movement_StepUp
+	waitmovement 15
+	applymovement 15, Common_Movement_FaceLeft
+	waitmovement 15
+	msgbox MH4_LeaderMaxieSir
+	closemessage
+	applymovement 12, MH4_CourtneyToGrunt
+	applymovement 15, MH4_GruntPushed
+	waitmovement 15
+	msgbox MH4_Ellipsis
+	playse SE_W025
+	applymovement 12, MH4_WalkInPlaceUP
+	fadedefaultbgm
+	applymovement 15, MH4_GruntSlideUp2DiagNW
+	waitmovement 15
+	removeobject 15
+	playse SE_W052
+	delay 5
+	playse SE_W052
+	delay 15
+	playse SE_W052
+	waitse
+	msgbox MH4_Wasteful
+	applymovement 11, Common_Movement_FaceRight
+	waitmovement 11
+	msgbox MH4_IMustGo
+	closemessage
+	applymovement 11, Common_Movement_FaceLeft
+	waitmovement 11
+	msgbox MH4_DoNotDisappoint
+	closemessage
+	applymovement 11, MH4_MaxiExitsForPeak
+	waitmovement 11
+	playse SE_DOOR
+	waitse
+	removeobject 11
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	setvar VAR_RYU_MAGMA, 315@player is tasked with clearing out aqua grunts
+	applymovement 12, MH4_CourtneyToPlayer@4 left, 1 down, 1 left, face up
+	waitmovement 12
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MH4_Analyzing
+	closemessage
+	removeobject 12
+	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, 1
+	setflag FLAG_RYU_HAS_FOLLOWER
+	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_MAGMA_MEMBER_F
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
+	clearflag FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS
+	setflag FLAG_RYU_WAYSTONE_DISABLED
+	release
+	end
+	
+	
+MH4_CourtneyScript::
+	goto ryu_end
+	
+	
+MH4_NotAdminCantGoHere:
+	.string "You don't have permission\nto be in here.$"
+
+
+MH4_SoItSeems:
+	.string "So it seems you can follow directions\n"
+    .string "after all, {PLAYER}.\p"
+    .string "Very well then...I shall give you a\n"
+    .string "glimpse of Team Magma's achievements.\p"
+    .string "Come this way.$"
+
+MH4_MaxieAsked:
+	.string "Maxie asked you to follow\nhim around the lava pit.$"
+	
+MH4_LeaderMaxieWelcome:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Leader Maxie...welcome.\n"
+    .string "Agent {PLAYER}...unwelcome.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Courtney, stand down.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, don't like...troublesome...\n"
+    .string "wasteful.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Hey now!\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}You may very well be right about that\n"
+    .string "Courtney. However, {PLAYER} will\p"
+    .string "be utilized for as long as I deem\n"
+    .string "necessary. Are we clear?\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}...Understood.$"
+
+MH4_NowThenPlayer:
+	.string "Now then, {PLAYER}, look there.$"
+	
+MH4_TheAncientCreature:
+	.string "The ancient creature slumbering\n"
+    .string "before us...is the key.\p"
+    .string "Within its' form lies the power\n"
+    .string "necessary to shape the world as I\p"
+    .string "see fit...\p"
+    .string "With Groudon on our side, nothing\n"
+    .string "will stand in the way of Team Magma!$"
+
+MH4_HoweverThereAre:
+	.string "However, there are still preparations\n"
+    .string "to be made before that glorious time,\p"
+    .string "which in turn, leads me to-$"
+	
+MH4_LeaderMaxieSir:
+	.string "Leader Maxie, sir! Urgent report!\n"
+    .string "Team Aqua has arrived on Mt. Chimney!\p"
+    .string "They're attempting to-!$"
+
+MH4_Ellipsis:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Ms. Courtney, wai-!\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Burn.$"
+
+MH4_Wasteful:
+	.string "Wasteful.$"
+	
+MH4_IMustGo:
+	.string "I must go to the peak. Courtney, you\n"
+    .string "and {PLAYER} will dispose of the Aqua\l"
+    .string "vermin infecting our base.$"
+
+MH4_DoNotDisappoint:
+	.string "Do not disappoint me.$"
+	
+MH4_Analyzing:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Analyzing...\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Listen, I wanted to-\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Leader's orders priority. Talking is\n"
+    .string "wasteful.$"
+	
+MH4_MaxieToPlayer:@left 3 up 1 left 2, up 3
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	
+MH4_MaxieToCourtney:@down 3, right 2, down1, right 3, down 2, right 2
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+	
+MH4_Cam1:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	
+MH4_Cam2:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+	
+MH4_CourtneyToGrunt:
+	walk_right
+	walk_right
+	walk_right
+	face_up
+	step_end
+	
+MH4_GruntPushed:
+	delay_16
+	delay_16
+	delay_16
+	slide_up
+	step_end
+	
+MH4_WalkInPlaceUP:
+	walk_in_place_fast_up
+	walk_in_place_fast_up
+	step_end
+	
+MH4_GruntSlideUp2DiagNW:
+	slide_up
+	slide_up
+	walk_diag_northwest
+	step_end
+	
+MH4_MaxiExitsForPeak:
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	face_down
+	step_end
+
+MH4_CourtneyToPlayer:@4 left, 1 down, 1 left, face up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	face_up
+	step_end
+
+
+	
+	
+	
+	
+	

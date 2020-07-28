@@ -1,14 +1,14 @@
 {
-  "id": "MAP_MAGMA_HIDEOUT_2F_3R",
-  "name": "MagmaHideout_2F_3R",
-  "layout": "LAYOUT_MAGMA_HIDEOUT_2F_3R",
+  "id": "MAP_MAGMA_HIDEOUT_ADMIN_QUARTERS",
+  "name": "MagmaHideout_AdminQuarters",
+  "layout": "LAYOUT_MAGMA_HIDEOUT_ADMIN_QUARTERS",
   "music": "MUS_AJITO",
   "region_map_section": "MAPSEC_MAGMA_HIDEOUT",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",
   "allow_cycling": true,
-  "allow_escaping": true,
+  "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
@@ -17,20 +17,7 @@
 
   ],
   "warp_events": [
-    {
-      "x": 16,
-      "y": 1,
-      "elevation": 0,
-      "dest_map": "MAP_MAGMA_HIDEOUT_1F",
-      "dest_warp_id": 3
-    },
-    {
-      "x": 16,
-      "y": 13,
-      "elevation": 0,
-      "dest_map": "MAP_MAGMA_HIDEOUT_3F_3R",
-      "dest_warp_id": 0
-    }
+
   ],
   "coord_events": [
 

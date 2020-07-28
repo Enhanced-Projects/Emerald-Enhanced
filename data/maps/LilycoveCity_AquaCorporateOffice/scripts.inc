@@ -369,6 +369,7 @@ LC_AH_mission3::
 	waitmovement 0
 	setvar VAR_JAGGED_PASS_STATE, 1
 	warpsilent MAP_LILYCOVE_CITY, 15, 49, 8
+	clearflag FLAG_RYU_HIDE_MAGMA_HIDEOUT_MAXIE
 	release
 	end
 	

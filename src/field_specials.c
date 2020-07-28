@@ -5599,6 +5599,13 @@ bool8 RyuFollowerToTrainerID(void)
                         return TRUE;
                         break;
                     }
+                case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+                    {
+                        gSpecialVar_0x8006 = TRAINER_REL_COURTNEY_1;
+	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_COURTNEY;
+                        return TRUE;
+                        break;
+                    }
                 }
                 return FALSE;
             }

@@ -3,21 +3,25 @@ MagmaHideout_2F_2R_MapScripts:: @ 8239E07
 
 MagmaHideout_2F_2R_EventScript_Grunt15:: @ 8239E08
 	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_15, MagmaHideout_2F_2R_Text_Grunt15Intro, MagmaHideout_2F_2R_Text_Grunt15Defeat
+	call MH_CheckPlayerIsMagma
 	msgbox MagmaHideout_2F_2R_Text_Grunt15PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MagmaHideout_2F_2R_EventScript_Grunt6:: @ 8239E1F
 	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_6, MagmaHideout_2F_2R_Text_Grunt6Intro, MagmaHideout_2F_2R_Text_Grunt6Defeat
+	call MH_CheckPlayerIsMagma
 	msgbox MagmaHideout_2F_2R_Text_Grunt6PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MagmaHideout_2F_2R_EventScript_Grunt7:: @ 8239E36
 	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_7, MagmaHideout_2F_2R_Text_Grunt7Intro, MagmaHideout_2F_2R_Text_Grunt7Defeat
+	call MH_CheckPlayerIsMagma
 	msgbox MagmaHideout_2F_2R_Text_Grunt7PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MagmaHideout_2F_2R_EventScript_Grunt8:: @ 8239E4D
 	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_8, MagmaHideout_2F_2R_Text_Grunt8Intro, MagmaHideout_2F_2R_Text_Grunt8Defeat
+	call MH_CheckPlayerIsMagma
 	msgbox MagmaHideout_2F_2R_Text_Grunt8PostBattle, MSGBOX_AUTOCLOSE
 	end
 

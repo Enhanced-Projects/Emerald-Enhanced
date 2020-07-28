@@ -288,6 +288,9 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE);
     FlagSet(LCC_MAGMA_HARBOR_REPORTERS);
     FlagSet(FLAG_RYU_MAGMA_LILYCOVE);
+    FlagSet(FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS);
+    FlagSet(FLAG_RYU_HIDE_MAGMA_HIDEOUT_MAXIE);
+    FlagSet(FLAG_RYU_HIDE_R112_BLAISE);
 }
 
 static void ResetMiniGamesResults(void)

@@ -1797,3 +1797,22 @@ Ryu_MagmaCallOutro6:
 
 Ryu_InitializeMagmaPart8::
 	end
+
+RyuSetMagmaTrainerFlags::
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_1
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_2
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_3
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_4
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_5
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_6
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_7
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_8
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_9
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_10
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_11
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_12
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_13
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_14
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_15
+	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_16
+	return

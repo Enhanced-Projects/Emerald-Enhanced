@@ -184,7 +184,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setvar VAR_ASH_GATHER_COUNT, 8000
+	buffernumberstring 0, VAR_RYU_MAGMA
+	msgbox RDB_TempVarsViewMsg
 	release
 	end
 

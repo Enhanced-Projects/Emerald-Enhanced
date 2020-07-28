@@ -90,7 +90,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MagmaHideout_4F_EventScript_Maxie",
-      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
+      "flag": "FLAG_RYU_HIDE_MAGMA_HIDEOUT_MAXIE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GROUDON_2",
@@ -143,6 +143,71 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MH_RyuBossFight",
       "flag": "FLAG_RYU_MH_COURTNEY_DUOMODE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAXIE",
+      "x": 10,
+      "y": 19,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MH4_Maxie2Event",
+      "flag": "FLAG_HIDE_CHAMPIONS_ROOM_STEVEN"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 17,
+      "y": 21,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_CHAMPIONS_ROOM_STEVEN"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "x": 36,
+      "y": 24,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "MH_AquaGrunt2",
+      "flag": "FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "x": 30,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "5",
+      "script": "MH_AquaGrunt1",
+      "flag": "FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 20,
+      "y": 22,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
     }
   ],
   "warp_events": [
@@ -155,10 +220,17 @@
     },
     {
       "x": 20,
-      "y": 21,
+      "y": 22,
       "elevation": 0,
       "dest_map": "MAP_MAGMA_HIDEOUT_3F_3R",
       "dest_warp_id": 1
+    },
+    {
+      "x": 20,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_MAGMA_HIDEOUT_4F",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [
@@ -215,6 +287,42 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "MH_RyuBossFight"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "0",
+      "script": "MH4_MagmaMaxieEvent"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "0",
+      "script": "MH4_MagmaMaxieEvent"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "0",
+      "script": "MH4_MagmaMaxieEvent"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "MH4_MagmaAdminCheck"
     }
   ],
   "bg_events": [

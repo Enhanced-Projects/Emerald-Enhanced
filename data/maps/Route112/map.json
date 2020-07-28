@@ -41,7 +41,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "Route112_EventScript_Brice",
-      "flag": "0"
+      "flag": "(TRAINER_FLAGS_START + TRAINER_BRICE)"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CAMPER",
@@ -54,7 +54,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route112_EventScript_Larry",
-      "flag": "0"
+      "flag": "(TRAINER_FLAGS_START + TRAINER_LARRY)"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
@@ -67,7 +67,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route112_EventScript_Carol",
-      "flag": "0"
+      "flag": "(TRAINER_FLAGS_START + TRAINER_CAROL)"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
@@ -80,7 +80,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route112_EventScript_Trent",
-      "flag": "0"
+      "flag": "(TRAINER_FLAGS_START + TRAINER_TRENT_1)"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
@@ -158,7 +158,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route112_EventScript_Bryant",
-      "flag": "0"
+      "flag": "(TRAINER_FLAGS_START + TRAINER_BRYANT)"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
@@ -171,7 +171,33 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route112_EventScript_Shayla",
-      "flag": "0"
+      "flag": "(TRAINER_FLAGS_START + TRAINER_SHAYLA)"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 27,
+      "y": 30,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "R112_BlaiseCheckProgress",
+      "flag": "FLAG_RYU_HIDE_R112_BLAISE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POOCHYENA",
+      "x": 26,
+      "y": 30,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_R112_BLAISE"
     }
   ],
   "warp_events": [

@@ -485,3 +485,143 @@ Route116_Text_TrainerTipsBagHasPockets: @ 81F38D4
 	.string "No Trainer can afford to be without\n"
 	.string "a Pack of their own.$"
 
+
+@==================================================================================================Magma
+
+R116_StartMagmaEvent::
+	compare VAR_RYU_MAGMA, 275
+	goto_if_ne ryu_end
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto r116_MagmaEvent7
+	
+
+r116_MagmaEvent7::
+	setvar VAR_RYU_MAGMA, 280@player started the scene on the other side of rusturf
+	msgbox R116_LeaderMaxieSir
+	closemessage
+	applymovement 26 R116_Mightyena_Bites
+	playse SE_W044
+	delay 20
+	playse SE_W044
+	waitse
+	waitmovement 26
+	removeobject 29
+	applymovement 30, Common_Movement_FaceDown
+	waitmovement 30
+	msgbox R116_AhLeaderMaxie
+	closemessage
+	applymovement 27, Common_Movement_FaceDown
+	delay 12
+	applymovement 28, Common_Movement_FaceDown
+	waitmovement 28
+	msgbox R116_AgentPlayerI
+	closemessage
+	applymovement 28, Common_Movement_FaceUp
+	waitmovement 28
+	msgbox R116_AllThoseWho
+	closemessage
+	applymovement 28, Common_Movement_FaceDown
+	waitmovement 28
+	msgbox R116_HoweverKnowThis
+	closemessage
+	delay 40
+	msgbox R116_NowThenIf
+	closemessage
+	applymovement 28, Common_Movement_FaceRight
+	waitmovement 28
+	msgbox R116_HoweverTheArea
+	closemessage
+	applymovement 28, Common_Movement_FaceDown
+	waitmovement 28
+	msgbox R116_YourTaskIs
+	closemessage
+	delay 40
+	msgbox R116_GoYouHave
+	closemessage
+	setvar VAR_RYU_MAGMA, 300 @Player started chimney event
+	setflag FLAG_HIDE_MT_CHIMNEY_TRAINERS
+	setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
+	release
+	end
+	
+R116_Mightyena_Bites:
+	walk_in_place_up
+	walk_in_place_up
+	walk_up
+	step_end
+	
+R116_LeaderMaxieSir:
+	.string "Leader Maxie, sir, please, I'm sorry\n"
+    .string "for-!$"
+	
+R116_AhLeaderMaxie:
+	.string "Ah, Leader Maxie, sir. The last has\n"
+    .string "finally arrived.$"
+
+R116_AgentPlayerI:
+	.string "Agent {PLAYER}...I expected better\n"
+    .string "of you. Once again, I've had to deal\p"
+    .string "with the unnecessary actions of those\n"
+    .string "within my Order.$"
+
+
+R116_AllThoseWho:
+	.string "All those who were involved in that\n"
+    .string "excursion have been eliminated. The\p"
+    .string "only reason you haven't been at this\n"
+    .string "point is due to your battle\p"
+    .string "skill.$"
+
+R116_HoweverKnowThis:
+	.string "However, know this...when the time\n"
+    .string "comes that I'll have no further use\p"
+    .string "of you, you will be disposed of.$"
+
+R116_NowThenIf:
+	.string "Now then, if you truly value your\n"
+    .string "existence, your performance with\p"
+    .string "this next assignment is crucial.\p"
+    .string "We of Team Magma have begun making\n"
+    .string "preparations to carve out a base for\p"
+    .string "ourselves towards the base of Mt.\n"
+    .string "Chimney, particularly in Jagged Pass.$"
+
+R116_HoweverTheArea:
+	.string "However, the area is persistently\n"
+    .string "overrun by the public, who're totally\p"
+    .string "unaware of what's laying beneath\n"
+    .string "their feet...$"
+
+R116_YourTaskIs:
+	.string "Your task is to get rid of every\n"
+    .string "single Trainer and civilian on and\p"
+    .string "around the mountain, as well as\n"
+    .string "shutting down the Cable Car. Do\p"
+    .string "this, and Mt. Chimney will become the\n"
+    .string "property of Team Magma!$"
+
+R116_GoYouHave:
+	.string "Go, you have your orders. You better\n"
+    .string "not fail me.$"
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
