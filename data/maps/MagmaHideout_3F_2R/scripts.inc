@@ -3,6 +3,7 @@ MagmaHideout_3F_2R_MapScripts:: @ 823A3D4
 
 MagmaHideout_3F_2R_EventScript_Grunt10:: @ 823A3D5
 	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_10, MagmaHideout_3F_2R_Text_Grunt10Intro, MagmaHideout_3F_2R_Text_Grunt10Defeat
+	call MH_CheckPlayerIsMagma
 	msgbox MagmaHideout_3F_2R_Text_Grunt10PostBattle, MSGBOX_AUTOCLOSE
 	end
 

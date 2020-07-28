@@ -137,6 +137,14 @@ const struct SpriteFrameImage gTrainerBackPicTable_Minnie[] =
     gTrainerBackPic_Minnie + 0x1800, 0x0800,
 };
 
+const struct SpriteFrameImage gTrainerBackPicTable_Courtney[] =
+{
+    gTrainerBackPic_Courtney, 0x0800,
+    gTrainerBackPic_Courtney + 0x0800, 0x0800,
+    gTrainerBackPic_Courtney + 0x1000, 0x0800,
+    gTrainerBackPic_Courtney + 0x1800, 0x0800,
+};
+
 static const union AnimCmd sAnim_GeneralFrame0[] =
 {
     ANIMCMD_FRAME(0, 0),

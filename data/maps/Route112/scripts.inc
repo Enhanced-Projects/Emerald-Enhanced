@@ -140,4 +140,46 @@ Route112_Text_MtChimneySign: @ 81F20ED
 Route112_Text_RouteSignLavaridge: @ 81F2138
 	.string "ROUTE 112\n"
 	.string "{LEFT_ARROW} LAVARIDGE TOWN$"
+	
+@================================================================================================== Magma Stuff
 
+R112_BlaiseCheckProgress::
+	goto_if_unset (TRAINER_FLAGS_START + TRAINER_ERIC), R112_Blaise_NotDoneYet
+	goto_if_unset (TRAINER_FLAGS_START + TRAINER_ETHAN_1), R112_Blaise_NotDoneYet
+	goto_if_unset (TRAINER_FLAGS_START + TRAINER_DIANA_1), R112_Blaise_NotDoneYet
+	goto_if_unset (TRAINER_FLAGS_START + TRAINER_AUTUMN), R112_Blaise_NotDoneYet
+	goto_if_unset (TRAINER_FLAGS_START + TRAINER_JULIO), R112_Blaise_NotDoneYet
+	goto_if_unset (TRAINER_FLAGS_START + TRAINER_BRICE), R112_Blaise_NotDoneYet
+	goto_if_unset (TRAINER_FLAGS_START + TRAINER_LARRY), R112_Blaise_NotDoneYet
+	goto_if_unset (TRAINER_FLAGS_START + TRAINER_CAROL), R112_Blaise_NotDoneYet
+	goto_if_unset (TRAINER_FLAGS_START + TRAINER_TRENT_1), R112_Blaise_NotDoneYet
+	goto_if_unset (TRAINER_FLAGS_START + TRAINER_BRYANT), R112_Blaise_NotDoneYet
+	goto_if_unset (TRAINER_FLAGS_START + TRAINER_SHAYLA), R112_Blaise_NotDoneYet
+	goto R112_Blaise_ClearingFinished
+	end
+	
+R112_Blaise_ClearingFinished::
+	setvar VAR_RYU_MAGMA, 301@Player finished clearing civilians from area surrounding magma hideout
+	msgbox R112_CoolThenYoure
+	closemessage
+	setflag FLAG_RYU_HIDE_R112_BLAISE
+	call RyuSetMagmaTrainerFlags
+	setflag FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS
+	release
+	end
+	
+R112_Blaise_NotDoneYet::
+	msgbox R112_BlaiseGetToIt
+	closemessage
+	release
+	end
+	
+R112_BlaiseGetToIt:
+	.string "I still see civilians here.\nFinish clearing them out.$"
+	
+R112_CoolThenYoure:
+	.string "Cool, then you're needed at base.\n"
+    .string "It's located near the bottom of\l"
+    .string "Jagged Pass. You can't miss it.\p"
+    .string "I'll be staying here for the time\n"
+    .string "being.$"

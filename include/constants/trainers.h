@@ -129,6 +129,7 @@
 #define TRAINER_BACK_PIC_SHELLY                 8
 #define TRAINER_BACK_PIC_LANETTE                9
 #define TRAINER_BACK_PIC_MINNIE                 10
+#define TRAINER_BACK_PIC_COURTNEY               11
 
 #define FACILITY_CLASS_HIKER                 0x0
 #define FACILITY_CLASS_AQUA_GRUNT_M          0x1

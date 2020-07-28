@@ -149,12 +149,11 @@ RF_LanetteSetupFollower:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Lanette: Can I roam around with\nyou, please?\lI'm bored!$"
 
 LNH_Follower::
+	removeobject 1
 	createfollower OBJ_EVENT_GFX_WOMAN_2, RyuFollowerSelectNPCScript, DIR_NORTH
-	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceDown
 	setflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
 	setflag FLAG_RYU_HIDE_LANETTE_BASEMENT
-	setflag FLAG_RYU_HAS_FOLLOWER
-	removeobject 1
 	release
 	end
 	

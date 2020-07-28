@@ -1189,3 +1189,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/LilycoveCity_Harbor_Story/scripts.inc"
 
 	.include "data/maps/Snowshore_Mart/scripts.inc"
+
+	.include "data/maps/MagmaHideout_AdminQuarters/scripts.inc"

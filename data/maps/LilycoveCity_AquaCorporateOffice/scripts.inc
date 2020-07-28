@@ -369,6 +369,7 @@ LC_AH_mission3::
 	waitmovement 0
 	setvar VAR_JAGGED_PASS_STATE, 1
 	warpsilent MAP_LILYCOVE_CITY, 15, 49, 8
+	clearflag FLAG_RYU_HIDE_MAGMA_HIDEOUT_MAXIE
 	release
 	end
 	
@@ -696,8 +697,6 @@ LC_AH_Shelly_Afterstory:
 
 LC_AH_ShellySetUpFollower::
 	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollowerSelectNPCScript, 1
-	setflag FLAG_RYU_HAS_FOLLOWER
-	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_AQUA_MEMBER_F
 	release
 	end
 	

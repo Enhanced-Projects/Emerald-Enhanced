@@ -1,51 +1,53 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_SEAFLOOR_CAVERN_ENTRANCE",
-    "layout": "LAYOUT_SEAFLOOR_CAVERN_ENTRANCE",
-    "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_TOZAN",
-    "name": "SeafloorCavern_Entrance",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT",
-            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "SeafloorCavern_Entrance_EventScript_Grunt",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 10,
-            "y": 2
-        }
-    ],
-    "region_map_section": "MAPSEC_SEAFLOOR_CAVERN",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_UNDERWATER4",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 10,
-            "y": 18
-        },
-        {
-            "dest_map": "MAP_SEAFLOOR_CAVERN_ROOM1",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 10,
-            "y": 1
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_SEAFLOOR_CAVERN_ENTRANCE",
+  "name": "SeafloorCavern_Entrance",
+  "layout": "LAYOUT_SEAFLOOR_CAVERN_ENTRANCE",
+  "music": "MUS_TOZAN",
+  "region_map_section": "MAPSEC_SEAFLOOR_CAVERN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "x": 10,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SeafloorCavern_Entrance_EventScript_Grunt",
+      "flag": "FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 10,
+      "y": 18,
+      "elevation": 3,
+      "dest_map": "MAP_UNDERWATER4",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 10,
+      "y": 1,
+      "elevation": 3,
+      "dest_map": "MAP_SEAFLOOR_CAVERN_ROOM1",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }

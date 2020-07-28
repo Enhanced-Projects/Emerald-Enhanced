@@ -68,8 +68,6 @@ GC_ME_BlaiseContd::
 	waitmovement 11
 	removeobject 11
 	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_M, GC_BlaiseScript, DIR_NORTH
-	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_MAGMA_MEMBER_M
-	setflag FLAG_RYU_HAS_FOLLOWER
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	msgbox GC_ME_BlaiseJoinsYourAdventure
 	closemessage
