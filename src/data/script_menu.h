@@ -1209,6 +1209,26 @@ static const struct MenuAction MultichoiceList_MagmaIntroChoice[]=
     {gText_RyuMagmaMultichoice2}
 };
 
+static const struct MenuAction MultiChoiceList_MagmaMachineMenu[]=
+{
+    {gText_RyuMHM_Main},
+    {gText_RyuMHM_Kits}
+};
+
+static const struct MenuAction MultiChoiceList_MagmaMachineKitMenu[]=
+{
+    {gText_RyuMHM_Kits_1},
+    {gText_RyuMHM_Kits_2},
+    {gText_RyuMHM_Kits_3},
+    {gText_RyuMHM_Kits_4},
+    {gText_RyuMHM_Kits_5},
+    {gText_RyuMHM_Kits_6},
+    {gText_RyuMHM_Kits_7},
+    {gText_RyuMHM_Kits_8},
+    {gText_Exit}
+};
+
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1377,6 +1397,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FRONTIERMODE_STARTER2]      = MULTICHOICE(MultichoiceList_FrontierStarter2),
     [MULTI_FRONTIERMODE_STARTER3]      = MULTICHOICE(MultichoiceList_FrontierStarter3),
     [MULTI_MAGMA_CHOICE]               = MULTICHOICE(MultichoiceList_MagmaIntroChoice),
+    [MULTI_MAGMA_MACHINE]              = MULTICHOICE(MultiChoiceList_MagmaMachineMenu),
+    [MULTI_MAGMA_MACHINE_KITS]         = MULTICHOICE(MultiChoiceList_MagmaMachineKitMenu),
 };
 
 const u8 *const gStdStrings[] =

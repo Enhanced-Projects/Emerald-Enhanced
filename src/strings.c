@@ -2153,3 +2153,14 @@ const u8 gText_RyuBufferedString3[] = _("{STR_VAR_3}");
 const u8 gText_RyuBufferedString4[] = _("{RYU_STR_1}");
 const u8 gText_RyuBufferedString5[] = _("{RYU_STR_2}");
 const u8 gText_RyuBufferedString6[] = _("{RYU_STR_3}");
+
+const u8 gText_RyuMHM_Main[] = _("Heal Party");
+const u8 gText_RyuMHM_Kits[] = _("Magma Kits Shop");
+const u8 gText_RyuMHM_Kits_1[] = _("Basic Healing (¥1500)");
+const u8 gText_RyuMHM_Kits_2[] = _("Better Healing (¥3500)");
+const u8 gText_RyuMHM_Kits_3[] = _("Premium Healing (¥6250)");
+const u8 gText_RyuMHM_Kits_4[] = _("Deluxe Healing (¥10000)");
+const u8 gText_RyuMHM_Kits_5[] = _("Basic Capture (¥500)");
+const u8 gText_RyuMHM_Kits_6[] = _("Advanced Capture (¥2500)");
+const u8 gText_RyuMHM_Kits_7[] = _("Performance Boost (¥25000)");
+const u8 gText_RyuMHM_Kits_8[] = _("Master Kit (¥20000)");

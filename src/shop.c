@@ -283,9 +283,19 @@ static u8 CreateShopMenu(u8 martType)
     {
         struct WindowTemplate winTemplate;
         winTemplate = sShopMenuWindowTemplates[0];
-        winTemplate.width = GetMaxWidthInMenuTable(sShopMenuActions_BuySellQuit, ARRAY_COUNT(sShopMenuActions_BuySellQuit));
-        gMartInfo.windowId = AddWindow(&winTemplate);
-        gMartInfo.menuActions = sShopMenuActions_BuySellQuit;
+
+        if ((FlagGet(FLAG_RYU_BANNED_FROM_MARTS) == 1) && (FlagGet(FLAG_RYU_SELLING_TO_FENCE) == 0))
+        {
+            winTemplate.width = GetMaxWidthInMenuTable(sShopMenuActions_BuyQuit, ARRAY_COUNT(sShopMenuActions_BuyQuit));
+            gMartInfo.windowId = AddWindow(&winTemplate);
+            gMartInfo.menuActions = sShopMenuActions_BuyQuit;
+        }
+        else
+        {
+            winTemplate.width = GetMaxWidthInMenuTable(sShopMenuActions_BuySellQuit, ARRAY_COUNT(sShopMenuActions_BuySellQuit));
+            gMartInfo.windowId = AddWindow(&winTemplate);
+            gMartInfo.menuActions = sShopMenuActions_BuySellQuit;
+        }
         numMenuItems = ARRAY_COUNT(sShopMenuActions_BuySellQuit);
     }
     else

@@ -2,6 +2,7 @@ JaggedPass_MapScripts:: @ 8230656
 	map_script ON_RESUME, JaggedPass_OnResume
 	map_script ON_TRANSITION, JaggedPass_OnTransition
 	map_script ON_LOAD , JaggedPass_OnLoad
+	map_script ON_FRAME, JP_CheckFinishedMagmaHideout1
 	.byte 0
 
 JaggedPass_OnResume: @ 8230666
@@ -282,4 +283,137 @@ JaggedPass_Text_AutumnDefeat: @ 8230ECD
 JaggedPass_Text_AutumnPostBattle: @ 8230EE3
 	.string "What is that odd rock protrusion\n"
 	.string "a little up the hill from here?$"
+	
+	@==============================================================================================End of magma hideout events
+JP_CheckFinishedMagmaHideout1::
+	map_script_2 VAR_RYU_MAGMA, 320, JP_MagmaBlaiseEvent
+	.2byte 0
+	
+JP_MagmaBlaiseEvent::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	msgbox JP_CourtneyDoneMessage
+	closemessage
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_WalkUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	msgbox JP_CourtneyOutro
+	closemessage
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	destroyfollower
+	addobject 9
+	applymovement 9, JP_BlaiseEnters@down 12 face right
+	waitmovement 9
+	msgbox JP_YoPlayer
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement 9, Common_Movement_StepRight
+	waitmovement 9
+	applymovement 9, Common_Movement_StepRight
+	waitmovement 9
+	msgbox JP_WhatsTheMatter
+	closemessage
+	applymovement 9, JP_BlaiseEntersHideout
+	waitmovement 9
+	playse SE_KOUKA_M
+	removeobject 9
+	msgbox JP_PlayerThoughts
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_KOUKA_M
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
+	clearflag FLAG_HIDE_MAGMA_ARMY
+	warpsilent MAP_MAGMA_HIDEOUT_2F_1R, 255, 21, 16
+	setvar VAR_RYU_MAGMA, 325
+	waitstate
+	
+	
+JP_CourtneyDoneMessage:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}...loyal...efficient...$"
+	
+JP_CourtneyOutro:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She gives you a lingering glance\n"
+	.string " as if she wanted to say something\l"
+	.string " then decided against it.\p"
+	.string " For the first time, you're\n"
+	.string " getting a glance of humanity\l"
+	.string " from Admin Courtney...)$"
+	
+JP_YoPlayer:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ... ...\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Yo, {PLAYER}!\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You're suddenly snapped to attention\nas Blaise walks up.)$"
+	
+JP_WhatsTheMatter:
+	.string "What's the matter? Can't take the\n"
+    .string "heat?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}What's up with Courtney?\n"
+	.string "I thought she was a lifeless\l"
+	.string "machine for a while.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}She's always got that kind of temper\n"
+    .string "so don't take it personal.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} No, I mean, she's being strange...\n"
+	.string "in a nice way...\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Who, Courtney? no way.\n"
+	.string "She only cares about Maxie.\p"
+	.string "Anyways, Boss wants to meet with all\n"
+    .string "of us now, so let's head back inside.$"
+	
+JP_PlayerThoughts:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You are absolutely certain you\n"
+	.string " saw a glimmer of kindness from her.\p"
+	.string " Since no one else noticed a\n"
+	.string " change in her lately, perhaps\l"
+	.string " you're overthinking it...)$"
+	
+JP_BlaiseEntersHideout:
+	walk_up
+	walk_right
+	walk_up
+	step_end
+
+JP_BlaiseEnters:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	face_right
+	step_end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

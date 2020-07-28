@@ -142,7 +142,7 @@ void PrintMoneyAmount(u8 windowId, u8 x, u8 y, int amount, u8 speed)
 
     ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, 8);
 
-    strLength = 8 - StringLength(gStringVar1);
+    strLength = 6 - StringLength(gStringVar1);
     txtPtr = gStringVar4;
 
     while (strLength-- > 0)

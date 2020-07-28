@@ -114,6 +114,8 @@ MH_ShellyHeal::
 	end
 
 MH_ExitPrevention::
+	compare VAR_RYU_MAGMA, 315
+	goto_if_eq MH_CheckMagmaExit
 	goto_if_set FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS, ryu_end
 	goto_if_unset FLAG_RYU_DS_SHELLY_CLOSEFRIENDS, ryu_end
 	lock
@@ -267,7 +269,7 @@ MH_GruntChatter1:
 	.string "I really need a raise.$"
 	
 MH_GruntChatter2:
-	.string "I heard that Maxie's Mightyena\neats people. That's crazy!$"
+	.string "I heard that Cortney's Mightyena\neats people. That's crazy!$"
 	
 MH_GruntChatter3:
 	.string "You really don't wanna get on\nMaxie's bad side.\pBut Courtney is way harsher.\nBest to do what you're told.$"
@@ -283,18 +285,28 @@ MH_GruntChatter6:
 	
 MH_GruntChatter7:
 	.string "I think Courtney's cute\nbut I am not into crazy.\lThat girl is ALL crazy.$"
+	
+MH_CheckMagmaExit::
+	lock
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	msgbox MH_Courtney_NotDoneYet
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
+	
+MH_CortneyConfirmsDone:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}...Task Finished...\p"
+	.string "... ... ... \p"
+	.string "...fun\p"
+	.string "{PLAYER}... not useless...\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You see a flicker of a confused\n"
+	.string " look on her normally\l"
+	.string " expressionless face...)$"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+MH_Courtney_NotDoneYet:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Orders incomplete...Return...$"

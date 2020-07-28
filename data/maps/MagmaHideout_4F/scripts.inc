@@ -721,7 +721,11 @@ MH4_Maxie2Event::
 	
 	
 MH4_CourtneyScript::
+	msgbox MH4_CourtneyChatter
 	goto ryu_end
+
+MH4_CourtneyChatter:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Talking is... inefficient...\nLeader's orders... Go...$"
 	
 	
 MH4_NotAdminCantGoHere:
