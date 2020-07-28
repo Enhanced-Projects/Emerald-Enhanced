@@ -4967,7 +4967,7 @@
       "width": 14,
       "height": 9,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_PokemonCenter",
+      "secondary_tileset": "gTileset_SnowshorePokemonCenter",
       "border_filepath": "data/layouts/Snowshore_Mart/border.bin",
       "blockdata_filepath": "data/layouts/Snowshore_Mart/map.bin"
     },

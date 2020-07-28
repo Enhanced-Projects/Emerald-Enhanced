@@ -6,7 +6,7 @@ SootopolisCity_Mart_EventScript_Clerk:: @ 8226795
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemart SootopolisCity_Mart_Pokemart
+	pokemart 0
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end

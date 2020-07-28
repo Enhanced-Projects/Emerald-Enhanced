@@ -874,3 +874,14 @@ gTileset_PolarPillar::
 	.4byte gMetatiles_PolarPillar
 	.4byte gMetatileAttributes_PolarPillar
 	.4byte NULL
+
+	.align 2
+gTileset_SnowshorePokemonCenter::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_SnowshorePokemonCenter
+	.4byte gTilesetPalettes_SnowshorePokemonCenter
+	.4byte gMetatiles_SnowshorePokemonCenter
+	.4byte gMetatileAttributes_SnowshorePokemonCenter
+	.4byte NULL
