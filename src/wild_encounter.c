@@ -758,9 +758,9 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
         else if (MetatileBehavior_IsWaterWildEncounter(currMetaTileBehavior) == TRUE
                  || (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING) && MetatileBehavior_IsBridge(currMetaTileBehavior) == TRUE))
         {
-            if (AreLegendariesInSootopolisPreventingEncounters() == TRUE)
-                return FALSE;
-            else if (gWildMonHeaders[headerId].waterMonsInfo == NULL)
+//            if (AreLegendariesInSootopolisPreventingEncounters() == TRUE)
+//                return FALSE;
+            if (gWildMonHeaders[headerId].waterMonsInfo == NULL)
                 return FALSE;
             else if (previousMetaTileBehavior != currMetaTileBehavior && !DoGlobalWildEncounterDiceRoll())
                 return FALSE;
@@ -886,8 +886,8 @@ bool8 SweetScentWildEncounter(void)
         }
         else if (MetatileBehavior_IsWaterWildEncounter(MapGridGetMetatileBehaviorAt(x, y)) == TRUE)
         {
-            if (AreLegendariesInSootopolisPreventingEncounters() == TRUE)
-                return FALSE;
+//            if (AreLegendariesInSootopolisPreventingEncounters() == TRUE)
+//                return FALSE;
             if (gWildMonHeaders[headerId].waterMonsInfo == NULL)
                 return FALSE;
 

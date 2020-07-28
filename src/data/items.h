@@ -284,7 +284,7 @@ const struct Item gItems[] =
     {
         .name = _("Chill Ball"),
         .itemId = ITEM_CHILL_BALL,
-        .price = 300,
+        .price = 1000,
         .description = sChillBallDesc,
         .pocket = POCKET_POKE_BALLS,
         .type = 11,

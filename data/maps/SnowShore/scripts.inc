@@ -19,7 +19,8 @@ Snowshore_EventScript_CraggyCoastSign::
 	end
 
 SnowShore_Text_CraggyCoastSign:
-	.string "{LEFT_ARROW} Craggy Coast$"
+	.string "{LEFT_ARROW} Craggy Coast\n"
+	.string "Snowshore {RIGHT_ARROW}$"
 
 Snowshore_EventScript_MrFrigusSign::
 	msgbox SnowShore_Text_MrFrigusSign, MSGBOX_SIGN
