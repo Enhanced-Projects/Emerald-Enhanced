@@ -90,11 +90,9 @@ MH_ShellyCF::
 	msgbox MH_ShellyPreparing MSGBOX_DEFAULT
 	msgbox MH_observation MSGBOX_DEFAULT
 	closemessage
-	setflag FLAG_RYU_HAS_FOLLOWER
+	removeobject 7
 	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, MH_FollowerShellyScript, 2
 	setflag FLAG_RYU_WAYSTONE_DISABLED
-	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_AQUA_MEMBER_F
-	removeobject 7
 	setflag FLAG_MAGMA_HIDEOUT_EVENT_DONE
 	clearflag FLAG_RYU_MH_COURTNEY_DUOMODE
 	setflag FLAG_RYU_MH_COURTNEY_SOLOMODE

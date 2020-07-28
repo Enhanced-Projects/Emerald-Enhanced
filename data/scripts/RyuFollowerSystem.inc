@@ -82,8 +82,6 @@ FollowerDawnSetup::
 	waitmovement 0
     clearfullscreenimage
 	setflag FLAG_HIDE_DAWNS_HOUSE_DAWN
-	setflag FLAG_RYU_HAS_FOLLOWER
-	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
 	msgbox DawnOkLetsGo
 	release
 	end
@@ -95,8 +93,6 @@ FollowerBrendanSetup::
 	waitmovement 0
     clearfullscreenimage
 	setflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
-	setflag FLAG_RYU_HAS_FOLLOWER
-	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
 	msgbox BrendanOkLetsGo
 	release
 	end
@@ -107,8 +103,6 @@ FollowerLeafSetup::
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
 	waitmovement 0
     setflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
-	setflag FLAG_RYU_HAS_FOLLOWER
-	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LEAF
 	msgbox LeafOkLetsGo
 	release
 	end

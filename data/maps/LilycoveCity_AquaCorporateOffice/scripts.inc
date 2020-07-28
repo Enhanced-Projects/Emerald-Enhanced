@@ -697,8 +697,6 @@ LC_AH_Shelly_Afterstory:
 
 LC_AH_ShellySetUpFollower::
 	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollowerSelectNPCScript, 1
-	setflag FLAG_RYU_HAS_FOLLOWER
-	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_AQUA_MEMBER_F
 	release
 	end
 	

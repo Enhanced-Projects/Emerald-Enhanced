@@ -25,8 +25,6 @@ LRT_FollowerTest::
 	setflag FLAG_RYU_RECRUITED_MINNIE
 	removeobject 4
 	createfollower OBJ_EVENT_GFX_TWIN, RyuFollowerSelectNPCScript, 1
-	setflag FLAG_RYU_HAS_FOLLOWER
-	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	release
