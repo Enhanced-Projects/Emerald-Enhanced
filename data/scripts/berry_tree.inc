@@ -182,6 +182,7 @@ BerryTree_FertilizeBerry::
 	special DoWateringBerryTreeAnim
 	waitstate
 	message BerryTree_Text_PlantIsEnergized
+	removeitem ITEM_FERTILIZER, 1
 	waitmessage
 	waitbuttonpress
 	releaseall
