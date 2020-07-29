@@ -184,8 +184,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	buffernumberstring 0, VAR_RYU_MAGMA
-	msgbox RDB_TempVarsViewMsg
+	giveitem ITEM_FERTILIZER, 100
 	release
 	end
 

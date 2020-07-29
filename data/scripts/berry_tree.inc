@@ -154,6 +154,9 @@ BerryTree_EventScript_ItemUsePlantBerry:: @ 8274482
 	end
 
 BerryTree_EventScript_WantToWater:: @ 827448D
+	checkitem ITEM_FERTILIZER, 1
+	compare VAR_RESULT, 1
+	call_if_eq BerryTree_CheckIfWantToFertilize
 	checkitem ITEM_WAILMER_PAIL, 1
 	compare VAR_RESULT, 0
 	goto_if_eq BerryTree_EventScript_DontWater
@@ -163,6 +166,28 @@ BerryTree_EventScript_WantToWater:: @ 827448D
 	goto_if_eq BerryTree_EventScript_WaterBerry
 	compare VAR_RESULT, NO
 	goto_if_eq BerryTree_EventScript_DontWater
+
+BerryTree_CheckIfWantToFertilize::
+	msgbox BerryTree_AskFertilize, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq BerryTree_FertilizeBerry
+	return
+
+BerryTree_FertilizeBerry::
+	special ObjectEventInteractionFertilizeBerryTree
+	special ObjectEventInteractionGetBerryName
+	message BerryTree_Text_FertilizedTheBerry
+	waitmessage
+	special ObjectEventInteractionWaterBerryTree
+	special DoWateringBerryTreeAnim
+	waitstate
+	message BerryTree_Text_PlantIsEnergized
+	waitmessage
+	waitbuttonpress
+	releaseall
+	end
+	
+
 
 BerryTree_EventScript_DontWater:: @ 82744BE
 	releaseall
@@ -193,6 +218,9 @@ BerryTree_EventScript_PlantBerry:: @ 82744DD
 	waitmessage
 	waitbuttonpress
 	return
+
+BerryTree_AskFertilize:
+	.string "The plant looks hungry.\nWould you like to fertilize it?$"
 
 BerryTree_Text_ItsSoftLoamySoil: @ 82744F0
 	.string "It's soft, loamy soil.$"
@@ -256,8 +284,14 @@ BerryTree_Text_WantToWater: @ 82746E4
 BerryTree_Text_WateredTheBerry: @ 8274710
 	.string "{PLAYER} watered the {STR_VAR_1}.$"
 
+BerryTree_Text_FertilizedTheBerry: @ 8274710
+	.string "{PLAYER} fertilized the {STR_VAR_1}.$"
+
 BerryTree_Text_PlantIsDelighted: @ 8274723
 	.string "The plant seems to be delighted.$"
+
+BerryTree_Text_PlantIsEnergized: @ 8274723
+	.string "The plant looks energized.$"
 
 BerryTree_Text_ExclamationPoint: @ 8274744
 	.string "!$"

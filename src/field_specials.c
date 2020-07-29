@@ -5438,7 +5438,7 @@ bool8 checkForOverlordRyuEncounter(void)
 
 void CheckSaveFileSize(void)
 {
-    u32 size = (sizeof(struct SaveBlock1));
+    u32 size = (sizeof(struct Pokemon));
     ConvertIntToDecimalStringN(gStringVar1, size, STR_CONV_MODE_LEFT_ALIGN, 6);
 }
 

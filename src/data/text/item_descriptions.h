@@ -2531,10 +2531,10 @@ static const u8 sAssaultVestDesc[] = _(
     "prevents the use\n"
     "of status moves.");
 
-static const u8 sPixiePlateDesc[] = _(
-    "A stone tablet that\n"
-    "boosts the power of\n"
-    "Fairy-type moves.");
+static const u8 sFertilizerDesc[] = _(
+    "A pouch containing\n"
+    "nutrient-rich plant\n"
+    "food.");
 
 static const u8 sSafetyGogglesDesc[] = _(
     "Protect from\n"
