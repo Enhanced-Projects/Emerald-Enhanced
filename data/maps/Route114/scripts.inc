@@ -208,4 +208,8 @@ Route114_Text_FossilManiacsHouseSign: @ 81F28DB
 
 Route114_Text_LanettesHouse: @ 81F2910
 	.string "Lanette's house$"
+	
+@================================================================================================== Magma event
+R114_PlayerFindMaxie::
+	end
 

@@ -184,7 +184,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	giveitem ITEM_FERTILIZER, 100
+	clearflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE
 	release
 	end
 

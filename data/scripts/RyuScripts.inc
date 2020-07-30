@@ -1720,16 +1720,16 @@ RyuAC_CancelMsg::
 Ryu_CheckMagmaStatusForMissionCall::
 	setvar VAR_TEMP_A, 100
 	goto_if_unset FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
-	specialvar VAR_RESULT, CountBadges
-	compare VAR_RESULT, 3
-	goto_if_ge Ryu_InitializeMagmaPart4
-	compare VAR_RESULT, 6
-	goto_if_ge Ryu_InitializeMagmaPart6
+	switch VAR_RYU_MAGMA
+	case 130, Ryu_InitializeMagmaPart4
+	case 210, Ryu_InitializeMagmaPart6
+	case 350, Ryu_InitializeMagmaPart8
 	goto ryu_end
 
 Ryu_InitializeMagmaPart4::
-	compare VAR_RYU_MAGMA, 200
-	goto_if_ge Ryu_InitializeMagmaPart6
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 3
+	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_MAGMA_4_NOTIFY, ryu_end
 	lockall
 	setflag FLAG_RYU_MAGMA_4_NOTIFY
@@ -1749,28 +1749,12 @@ Ryu_InitializeMagmaPart4::
 	releaseall
 	end
 
-Ryu_MagmaPokenavMsg4:
-	.string "{PLAYER}, report to the \n"
-    .string "marked location for further\l"
-	.string "instruction.$"
-
-
-Ryu_MagmaCallIntro4:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(A notification shows up on your\n"
-    .string " Pokénav!)$"
-
-Ryu_MagmaCallOutro4:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It's pointing to a mountain ridge\n"
-    .string " north of the desert.)$"
-
-Ryu_InitializeMagmaPart6::@bookmark
+Ryu_InitializeMagmaPart6::
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 6
 	goto_if_lt ryu_end
-	compare VAR_RYU_MAGMA, 300@change to state where events after second meeting are done
-	goto_if_ge Ryu_InitializeMagmaPart8
 	goto_if_set FLAG_RYU_MAGMA_6_NOTIFY, ryu_end
-	lockall
+	lock
 	setflag FLAG_RYU_MAGMA_6_NOTIFY
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
@@ -1786,6 +1770,20 @@ Ryu_InitializeMagmaPart6::@bookmark
 	releaseall
 	end
 
+
+Ryu_InitializeMagmaPart8::
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 7
+	goto_if_lt ryu_end
+	goto_if_set FLAG_RYU_MAGMA_8_NOTIFY, ryu_end
+	lock
+	msgbox Ryu_Magma8Notice
+	closemessage
+	setvar VAR_RYU_MAGMA, 400
+	setflag FLAG_RYU_MAGMA_8_NOTIFY
+	release
+	end
+
 Ryu_MagmaPokenavMsg6:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Scheduled Heist at Oldale Town's\n"
     .string " PokéMart. Group meet north of town\p"
@@ -1794,9 +1792,19 @@ Ryu_MagmaPokenavMsg6:
 Ryu_MagmaCallOutro6:
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I should go check it out.$"
 
+Ryu_MagmaPokenavMsg4:
+	.string "{PLAYER}, report to the \n"
+    .string "marked location for further\l"
+	.string "instruction.$"
 
-Ryu_InitializeMagmaPart8::
-	end
+
+Ryu_MagmaCallIntro4:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(A notification shows up on your\n"
+    .string " Pokénav!)$"
+
+Ryu_MagmaCallOutro4:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It's pointing to a mountain ridge\n"
+    .string " north of the desert.)$"
 
 RyuSetMagmaTrainerFlags::
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_1
@@ -1816,3 +1824,7 @@ RyuSetMagmaTrainerFlags::
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_15
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_16
 	return
+
+Ryu_Magma8Notice:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I suppose it's time to head back to\n"
+    .string "base and see what's happened so far.$"

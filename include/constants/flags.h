@@ -1546,10 +1546,10 @@
 #define FLAG_RYU_HIDE_R112_BLAISE                   (SYSTEM_FLAGS + 0xA2) // Unused Flag
 #define FLAG_HIDE_MAGMA_ARMY                        (SYSTEM_FLAGS + 0xA3) // Unused Flag
 #define FLAG_RYU_SELLING_TO_FENCE                   (SYSTEM_FLAGS + 0xA4) // Set when the player is banned from marts and selling to the magma Fence.
-#define FLAG_UNUSED_0x905                           (SYSTEM_FLAGS + 0xA5) // Unused Flag
-#define FLAG_UNUSED_0x906                           (SYSTEM_FLAGS + 0xA6) // Unused Flag
-#define FLAG_UNUSED_0x907                           (SYSTEM_FLAGS + 0xA7) // Unused Flag
-#define FLAG_UNUSED_0x908                           (SYSTEM_FLAGS + 0xA8) // Unused Flag
+#define FLAG_RYU_MAGMA_8_NOTIFY                     (SYSTEM_FLAGS + 0xA5) // Unused Flag
+#define FLAG_RYU_COURTNEY_FIERY_PATH                (SYSTEM_FLAGS + 0xA6) // Unused Flag
+#define FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY       (SYSTEM_FLAGS + 0xA7) // Unused Flag
+#define FLAG_RYU_HIDE_114_MAXIE                     (SYSTEM_FLAGS + 0xA8) // Unused Flag
 #define FLAG_UNUSED_0x909                           (SYSTEM_FLAGS + 0xA9) // Unused Flag
 #define FLAG_UNUSED_0x90A                           (SYSTEM_FLAGS + 0xAA) // Unused Flag
 #define FLAG_UNUSED_0x90B                           (SYSTEM_FLAGS + 0xAB) // Unused Flag
@@ -1567,21 +1567,21 @@
 #define FLAG_UNUSED_0x917                           (SYSTEM_FLAGS + 0xB7) // Unused Flag
 #define FLAG_UNUSED_0x918                           (SYSTEM_FLAGS + 0xB8) // Unused Flag
 #define FLAG_UNUSED_0x919                           (SYSTEM_FLAGS + 0xB9) // Unused Flag
-#define FLAG_UNUSED_0x91A                           (SYSTEM_FLAGS + 0xBA) // Unused Flag
-#define FLAG_UNUSED_0x91B                           (SYSTEM_FLAGS + 0xBB) // Unused Flag
-#define FLAG_UNUSED_0x91C                           (SYSTEM_FLAGS + 0xBC) // Unused Flag
-#define FLAG_UNUSED_0x91D                           (SYSTEM_FLAGS + 0xBD) // Unused Flag
-#define FLAG_UNUSED_0x91E                           (SYSTEM_FLAGS + 0xBE) // Unused Flag
-#define FLAG_UNUSED_0x91F                           (SYSTEM_FLAGS + 0xBF) // Unused Flag
+#define FLAG_RYU_PLAYER_FAILED_TO_CAPTURE_GROUDON   (SYSTEM_FLAGS + 0xBA) // Unused Flag
+#define FLAG_RYU_DS_COURTNEY_FRIENDS                (SYSTEM_FLAGS + 0xBB) // Unused Flag
+#define FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS           (SYSTEM_FLAGS + 0xBC) // Unused Flag
+#define FLAG_RYU_DS_COURTNEY_LOVERS                 (SYSTEM_FLAGS + 0xBD) // Unused Flag
+#define FLAG_RYU_DS_COURTNEY_PARTNERS               (SYSTEM_FLAGS + 0xBE) // Unused Flag
+#define FLAG_RYU_MAXIE_END_EVENT                    (SYSTEM_FLAGS + 0xBF) // Unused Flag
 
 // Daily Flags
 // These flags are cleared once per day
 // The start and end are byte-aligned because the flags are cleared in byte increments
-#define DAILY_FLAGS_START                           (FLAG_UNUSED_0x91F + (8 - FLAG_UNUSED_0x91F % 8))
-#define FLAG_UNUSED_0x920                           (DAILY_FLAGS_START + 0x0)  // Unused Flag
+#define DAILY_FLAGS_START                           (FLAG_RYU_MAXIE_END_EVENT + (8 - FLAG_RYU_MAXIE_END_EVENT % 8))
+#define FLAG_HIDE_SCME_GROUDON                      (DAILY_FLAGS_START + 0x0)  // this will get reset daily, but it doesn't matter as the player isn't likely to spend much time here.
 #define FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY     (DAILY_FLAGS_START + 0x1)
 #define FLAG_DAILY_SECRET_BASE                      (DAILY_FLAGS_START + 0x2)
-#define FLAG_UNUSED_0x923                           (DAILY_FLAGS_START + 0x3)  // Unused Flag
+#define FLAG_HIDE_SCME_KYOGRE                       (DAILY_FLAGS_START + 0x3)  // Unused Flag
 #define FLAG_UNUSED_0x924                           (DAILY_FLAGS_START + 0x4)  // Unused Flag
 #define FLAG_UNUSED_0x925                           (DAILY_FLAGS_START + 0x5)  // Unused Flag
 #define FLAG_UNUSED_0x926                           (DAILY_FLAGS_START + 0x6)  // Unused Flag

@@ -308,6 +308,11 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntWeatherInst4[] = {
     .iv = 0,
     .lvl = 28,
     .species = SPECIES_SHARPEDO,
+    },
+    {
+    .iv = 0,
+    .lvl = 28,
+    .species = SPECIES_GYARADOS,
     }
 };
 

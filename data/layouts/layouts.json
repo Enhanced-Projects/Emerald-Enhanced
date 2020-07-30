@@ -4970,6 +4970,16 @@
       "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/MagmaHideout_AdminQuarters/border.bin",
       "blockdata_filepath": "data/layouts/MagmaHideout_AdminQuarters/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOOTOPOLIS_CITY_MAGMA_EVENT",
+      "name": "SootopolisCity_MagmaEvent_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Sootopolis",
+      "border_filepath": "data/layouts/SootopolisCity_MagmaEvent/border.bin",
+      "blockdata_filepath": "data/layouts/SootopolisCity_MagmaEvent/map.bin"
     }
   ]
 }

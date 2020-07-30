@@ -2,7 +2,7 @@ SeafloorCavern_Room3_MapScripts:: @ 8234937
 	.byte 0
 
 SeafloorCavern_Room3_EventScript_Shelly:: @ 8234938
-	trainerbattle_single TRAINER_SHELLY_2, SeafloorCavern_Room3_Text_ShellyIntro, SeafloorCavern_Room3_Text_ShellyDefeat
+	trainerbattle_single TRAINER_GRUNT_WEATHER_INST_4, SeafloorCavern_Room3_Text_ShellyIntro, SeafloorCavern_Room3_Text_ShellyDefeat
 	msgbox SeafloorCavern_Room3_Text_ShellyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -16,10 +16,6 @@ SeafloorCavern_Room3_Text_ShellyIntro: @ 8234966
 	.string "How did you manage to get here without\n"
 	.string "a submarine?\l"
 	.string "What an impressive child!\p"
-	.string "But… It won't do to have you\n"
-	.string "meddling about here.\p"
-	.string "And, I do want payback for what\n"
-	.string "happened at the WEATHER INSTITUTE…\p"
 	.string "I'm going to give you a little taste\n"
 	.string "of pain! Resign yourself to it!$"
 
