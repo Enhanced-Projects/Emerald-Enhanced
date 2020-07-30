@@ -231,9 +231,9 @@
 #define FLAG_DEFEATED_RIVAL_RUSTBORO         0xD3
 #define FLAG_RECEIVED_RED_OR_BLUE_ORB        0xD4
 #define FLAG_RECEIVED_PREMIER_BALL_RUSTBORO  0xD5
-#define FLAG_ENABLE_WALLY_MATCH_CALL         0xD6 // EE-Unused
-#define FLAG_ENABLE_SCOTT_MATCH_CALL         0xD7 // EE-Unused
-#define FLAG_ENABLE_MOM_MATCH_CALL           0xD8 // EE-Unused
+#define FLAG_ITEM_IGLOO2_GOLD_ORE_1          0xD6
+#define FLAG_ITEM_IGLOO2_GOLD_ORE_2          0xD7
+#define FLAG_ITEM_IGLOO2_GOLD_ORE_3          0xD8
 #define FLAG_MET_DIVING_TREASURE_HUNTER      0xD9
 #define FLAG_MET_WAILMER_TRAINER             0xDA // EE-Unused
 #define FLAG_EVIL_LEADER_PLEASE_STOP         0xDB
@@ -1550,8 +1550,8 @@
 #define FLAG_UNUSED_0x906                           (SYSTEM_FLAGS + 0xA6) // Unused Flag
 #define FLAG_UNUSED_0x907                           (SYSTEM_FLAGS + 0xA7) // Unused Flag
 #define FLAG_UNUSED_0x908                           (SYSTEM_FLAGS + 0xA8) // Unused Flag
-#define FLAG_UNUSED_0x909                           (SYSTEM_FLAGS + 0xA9) // Unused Flag
-#define FLAG_UNUSED_0x90A                           (SYSTEM_FLAGS + 0xAA) // Unused Flag
+#define FLAG_KEY_SHARD_1                            (SYSTEM_FLAGS + 0xA9) // Unused Flag
+#define FLAG_KEY_SHARD_2                            (SYSTEM_FLAGS + 0xAA) // Unused Flag
 #define FLAG_UNUSED_0x90B                           (SYSTEM_FLAGS + 0xAB) // Unused Flag
 #define FLAG_UNUSED_0x90C                           (SYSTEM_FLAGS + 0xAC) // Unused Flag
 #define FLAG_ITEM_FROSTBITE_FIELD_PP_UP             (SYSTEM_FLAGS + 0xAD) // Unused Flag
@@ -1567,8 +1567,8 @@
 #define FLAG_HIDDEN_CRAGGY_COAST_DIVE_BALL          (SYSTEM_FLAGS + 0xB7) // Unused Flag
 #define FLAG_HIDDEN_CRAGGY_COAST_HARD_STONE         (SYSTEM_FLAGS + 0xB8) // Unused Flag
 #define FLAG_HIDDEN_CRAGGY_COAST_NET_BALL           (SYSTEM_FLAGS + 0xB9) // Unused Flag
-#define FLAG_KEY_SHARD_1                            (SYSTEM_FLAGS + 0xBA) // Unused Flag
-#define FLAG_KEY_SHARD_2                            (SYSTEM_FLAGS + 0xBB) // Unused Flag
+#define FLAG_UNUSED_0x91A                           (SYSTEM_FLAGS + 0xBA) // Unused Flag
+#define FLAG_UNUSED_0x91B                           (SYSTEM_FLAGS + 0xBB) // Unused Flag
 #define FLAG_UNUSED_0x91C                           (SYSTEM_FLAGS + 0xBC) // Unused Flag
 #define FLAG_UNUSED_0x91D                           (SYSTEM_FLAGS + 0xBD) // Unused Flag
 #define FLAG_UNUSED_0x91E                           (SYSTEM_FLAGS + 0xBE) // Unused Flag

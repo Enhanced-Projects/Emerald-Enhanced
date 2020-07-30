@@ -1,0 +1,72 @@
+{
+  "id": "MAP_IGLOO2BASEMENT",
+  "name": "Igloo2Basement",
+  "layout": "LAYOUT_IGLOO2BASEMENT",
+  "music": "MUS_TOZAN",
+  "region_map_section": "MAPSEC_FROSTBITE_FIELD",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 2,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Igloo2Basement_EventScript_ItemGoldOre1",
+      "flag": "FLAG_ITEM_IGLOO2_GOLD_ORE_1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 4,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Igloo2Basement_EventScript_ItemGoldOre3",
+      "flag": "FLAG_ITEM_IGLOO2_GOLD_ORE_3"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 3,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Igloo2Basement_EventScript_ItemGoldOre2",
+      "flag": "FLAG_ITEM_IGLOO2_GOLD_ORE_2"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 3,
+      "y": 2,
+      "elevation": 3,
+      "dest_map": "MAP_IGLOO2",
+      "dest_warp_id": 1
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

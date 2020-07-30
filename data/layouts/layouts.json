@@ -4980,6 +4980,16 @@
       "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/MagmaHideout_AdminQuarters/border.bin",
       "blockdata_filepath": "data/layouts/MagmaHideout_AdminQuarters/map.bin"
+    },
+    {
+      "id": "LAYOUT_IGLOO2BASEMENT",
+      "name": "Igloo2Basement_Layout",
+      "width": 7,
+      "height": 7,
+      "primary_tileset": "gTileset_Snowy",
+      "secondary_tileset": "gTileset_PolarPillar",
+      "border_filepath": "data/layouts/Igloo2Basement/border.bin",
+      "blockdata_filepath": "data/layouts/Igloo2Basement/map.bin"
     }
   ]
 }

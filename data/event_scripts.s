@@ -1191,3 +1191,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/Snowshore_Mart/scripts.inc"
 
 	.include "data/maps/MagmaHideout_AdminQuarters/scripts.inc"
+
+	.include "data/maps/Igloo2Basement/scripts.inc"

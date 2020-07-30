@@ -8,5 +8,5 @@ Igloo4_EventScript_HintText::
 Igloo4_Text_HintText:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(The text is old and faded.\n"
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}It's hard to read.)\p"
-	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}“U…… R……k …ma…… …… F……nt …… t…e\n"
-	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}…ol…… ……ll…….”$"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}“Br…n… …ry…g…na… to …he ……la…\n"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}……ll…r …… ga…n …nt…y.”$"

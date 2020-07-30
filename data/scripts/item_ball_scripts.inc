@@ -1,4 +1,16 @@
 
+Igloo2Basement_EventScript_ItemGoldOre1::
+	finditem ITEM_GOLD_ORE
+	end
+
+Igloo2Basement_EventScript_ItemGoldOre2::
+	finditem ITEM_GOLD_ORE
+	end
+
+Igloo2Basement_EventScript_ItemGoldOre3::
+	finditem ITEM_GOLD_ORE
+	end
+
 CraggyCoast_EventScript_ItemKeyShard2::
 	finditem ITEM_KEY_SHARD_2
 	end

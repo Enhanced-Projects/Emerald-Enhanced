@@ -52,7 +52,89 @@ SnowShore_EskimoFight::
     msgbox EskimoFightFinished
 	release
 	end
-	
+
+Snowshore_EventScript_Girl::
+	lock
+	faceplayer
+	msgbox Snowshore_Text_MyGarden, MSGBOX_DEFAULT
+	release
+	end
+
+Snowshore_Text_MyGarden:
+	.string "Isn't my garden pretty? I take\n"
+	.string "good care of it!$"
+
+Snowshore_EventScript_LittleGirl::
+	lock
+	faceplayer
+	msgbox Snowshore_Text_SlidingOnIce, MSGBOX_DEFAULT
+	release
+	end
+
+Snowshore_Text_SlidingOnIce:
+	.string "I love sliding on ice!$"
+
+Snowshore_EventScript_OldWoman::
+	lock
+	faceplayer
+	msgbox Snowshore_Text_MtFreeze, MSGBOX_DEFAULT
+	release
+	end
+
+Snowshore_Text_MtFreeze:
+	.string "Further north along this path is\n"
+	.string "Mt Freeze.\p"
+	.string "Very, very long ago the mountain,\n"
+	.string "was a volcano.\p"
+	.string "According to old folklore, a\n"
+	.string "legendary bird lives on top, and\l"
+	.string "it's the cause of the cold climate.$"
+
+Snowshore_EventScript_Woman::
+	lock
+	faceplayer
+	msgbox Snowshore_Text_Compost, MSGBOX_DEFAULT
+	release
+	end
+
+Snowshore_Text_Compost:
+	.string "Despite the cold climate, we are\n"
+	.string "able to grow flowers with compost\l"
+	.string "made from Aspear Berries.$"
+
+Snowshore_EventScript_Man::
+	lock
+	faceplayer
+	msgbox Snowshore_Text_ThickFat, MSGBOX_DEFAULT
+	release
+	end
+
+Snowshore_Text_ThickFat:
+	.string "My Azumarill doesn't care about the\n"
+	.string "cold, it has Thick Fat!$"
+
+Snowshore_EventScript_Azumarill::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_AZUMARILL, 0
+	msgbox Snowshore_Text_Azumarill, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+Snowshore_Text_Azumarill:
+	.string "Azumarill: Mari mareeeeeeeeeeeeeee\n"
+	.string "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\p"
+	.string "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\n"
+	.string "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\p"
+	.string "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\n"
+	.string "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\p"
+	.string "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\n"
+	.string "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\p"
+	.string "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\n"
+	.string "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!$"
+
 SS_EF_Intro:
 	.string "Harr Harr, It's cold$"
 	

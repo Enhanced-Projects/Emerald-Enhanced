@@ -1,39 +1,41 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": false,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-            "script": "Igloo4_EventScript_HintText",
-            "type": "sign",
-            "x": 4,
-            "y": 1
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_IGLOO4",
-    "layout": "LAYOUT_IGLOO4",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_TOZAN",
-    "name": "Igloo4",
-    "object_events": [
-    ],
-    "region_map_section": "MAPSEC_FROSTBITE_FIELD",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-        {
-            "dest_map": "MAP_FROSTBITE_FIELD",
-            "dest_warp_id": 4,
-            "elevation": 3,
-            "x": 4,
-            "y": 6
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_IGLOO4",
+  "name": "Igloo4",
+  "layout": "LAYOUT_IGLOO4",
+  "music": "MUS_TOZAN",
+  "region_map_section": "MAPSEC_FROSTBITE_FIELD",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "y": 6,
+      "elevation": 3,
+      "dest_map": "MAP_FROSTBITE_FIELD",
+      "dest_warp_id": 4
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "Igloo4_EventScript_HintText"
+    }
+  ]
 }
