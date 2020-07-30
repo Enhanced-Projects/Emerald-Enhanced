@@ -508,7 +508,7 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_SHINY_CHARM] = {gItemIcon_ShinyCharm, gItemIconPalette_ShinyCharm},
 	// Gen 6 Items
     [ITEM_ASSAULT_VEST] = {gItemIcon_AssaultVest, gItemIconPalette_AssaultVest},
-    [ITEM_PIXIE_PLATE] = {gItemIcon_PixiePlate, gItemIconPalette_PixiePlate},
+    [ITEM_FERTILIZER] = {gItemIcon_PixiePlate, gItemIconPalette_PixiePlate},
     [ITEM_SAFETY_GOGGLES] = {gItemIcon_SafetyGoggles, gItemIconPalette_SafetyGoggles},
     [ITEM_GENGARITE] = {gItemIcon_Gengarite, gItemIconPalette_Gengarite},
     [ITEM_GARDEVOIRITE] = {gItemIcon_Gardevoirite, gItemIconPalette_Gardevoirite},

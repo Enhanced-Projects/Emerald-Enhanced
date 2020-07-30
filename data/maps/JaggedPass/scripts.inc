@@ -307,6 +307,7 @@ JP_MagmaBlaiseEvent::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	msgbox JP_CourtneyOutro
 	closemessage
+	setflag FLAG_RYU_DS_COURTNEY_FRIENDS
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	destroyfollower
@@ -336,8 +337,8 @@ JP_MagmaBlaiseEvent::
 	playse SE_KOUKA_M
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
 	clearflag FLAG_HIDE_MAGMA_ARMY
-	warpsilent MAP_MAGMA_HIDEOUT_2F_1R, 255, 21, 16
 	setvar VAR_RYU_MAGMA, 325
+	warpsilent MAP_MAGMA_HIDEOUT_2F_1R, 255, 21, 16
 	waitstate
 	
 	

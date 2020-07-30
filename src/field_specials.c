@@ -5438,7 +5438,7 @@ bool8 checkForOverlordRyuEncounter(void)
 
 void CheckSaveFileSize(void)
 {
-    u32 size = (sizeof(struct SaveBlock1));
+    u32 size = (sizeof(struct Pokemon));
     ConvertIntToDecimalStringN(gStringVar1, size, STR_CONV_MODE_LEFT_ALIGN, 6);
 }
 
@@ -6153,3 +6153,13 @@ void RyuTestDebug(void)
     RyuPrintDebugMessage(0, gTextBuffer1);
 }
 
+void Ryu_ClearAquaSFCTrainerFlags(void)
+{
+    FlagClear(TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_1);
+    FlagClear(TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_2);
+    FlagClear(TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_5);
+    FlagClear(TRAINER_FLAGS_START + TRAINER_SHELLY_2);
+    FlagClear(TRAINER_FLAGS_START + TRAINER_GRUNT_WEATHER_INST_4);
+    FlagClear(TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_4);
+    FlagClear(TRAINER_FLAGS_START + TRAINER_MATT);
+}

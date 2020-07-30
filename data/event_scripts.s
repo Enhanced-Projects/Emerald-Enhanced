@@ -1193,3 +1193,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/MagmaHideout_AdminQuarters/scripts.inc"
 
 	.include "data/maps/Igloo2Basement/scripts.inc"
+
+	.include "data/maps/SootopolisCity_MagmaEvent/scripts.inc"

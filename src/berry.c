@@ -1380,6 +1380,32 @@ bool32 ObjectEventInteractionWaterBerryTree(void)
     return TRUE;
 }
 
+extern void DrawWholeMapView();
+
+bool32 ObjectEventInteractionFertilizeBerryTree(void)
+{
+    struct BerryTree *tree = GetBerryTreeInfo(GetObjectEventBerryTreeId(gSelectedObjectEvent));
+
+    if (!((tree->stage == 0) && (tree->stage == 7)))
+        tree->stage++;
+
+        tree->berryYield++;
+
+    if (tree->stage == BERRY_STAGE_PLANTED)
+        tree->watered1 == TRUE;
+    
+    if (tree->stage == BERRY_STAGE_SPROUTED)
+        tree->watered2 == TRUE;
+
+    if (tree->stage == BERRY_STAGE_TALLER)
+        tree->watered3 == TRUE;
+
+    if (tree->stage == BERRY_STAGE_FLOWERING)
+        tree->watered4 == TRUE;
+
+    DrawWholeMapView();
+}
+
 bool8 IsPlayerFacingEmptyBerryTreePatch(void)
 {
     if (GetObjectEventScriptPointerPlayerFacing() == BerryTreeScript

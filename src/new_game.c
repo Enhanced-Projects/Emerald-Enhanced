@@ -293,6 +293,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_R112_BLAISE);
     FlagSet(FLAG_HIDE_MAGMA_ARMY);
     FlagSet(FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS);
+    FlagSet(FLAG_RYU_MAXIE_END_EVENT);
 }
 
 static void ResetMiniGamesResults(void)

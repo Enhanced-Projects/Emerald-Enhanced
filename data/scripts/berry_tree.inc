@@ -47,6 +47,9 @@ BerryTree_EventScript_CancelPlanting:: @ 82743AF
 BerryTree_EventScript_CheckBerryStage1:: @ 82743B1
 	lockall
 	special ObjectEventInteractionGetBerryCountString
+	checkitem ITEM_FERTILIZER, 1
+	compare VAR_RESULT, 1
+	call_if_eq BerryTree_CheckIfWantToFertilize
 	checkitem ITEM_WAILMER_PAIL, 1
 	compare VAR_RESULT, 0
 	goto_if_eq BerryTree_EventScript_DontWater
@@ -59,6 +62,9 @@ BerryTree_EventScript_CheckBerryStage1:: @ 82743B1
 BerryTree_EventScript_CheckBerryStage2:: @ 82743C1
 	lockall
 	special ObjectEventInteractionGetBerryName
+	checkitem ITEM_FERTILIZER, 1
+	compare VAR_RESULT, 1
+	call_if_eq BerryTree_CheckIfWantToFertilize
 	checkitem ITEM_WAILMER_PAIL, 1
 	compare VAR_RESULT, 0
 	goto_if_eq BerryTree_EventScript_DontWater
@@ -71,6 +77,9 @@ BerryTree_EventScript_CheckBerryStage2:: @ 82743C1
 BerryTree_EventScript_CheckBerryStage3:: @ 82743D1
 	lockall
 	special ObjectEventInteractionGetBerryName
+	checkitem ITEM_FERTILIZER, 1
+	compare VAR_RESULT, 1
+	call_if_eq BerryTree_CheckIfWantToFertilize
 	checkitem ITEM_WAILMER_PAIL, 1
 	compare VAR_RESULT, 0
 	goto_if_eq BerryTree_EventScript_DontWater
@@ -84,6 +93,9 @@ BerryTree_EventScript_CheckBerryStage4:: @ 82743E1
 	call BerryTree_EventScript_GetCareAdverb
 	lockall
 	special ObjectEventInteractionGetBerryName
+	checkitem ITEM_FERTILIZER, 1
+	compare VAR_RESULT, 1
+	call_if_eq BerryTree_CheckIfWantToFertilize
 	checkitem ITEM_WAILMER_PAIL, 1
 	compare VAR_RESULT, 0
 	goto_if_eq BerryTree_EventScript_DontWater
@@ -164,6 +176,23 @@ BerryTree_EventScript_PlantBerry:: @ 82744DD
 	incrementgamestat GAME_STAT_PLANTED_BERRIES
 	special IncrementDailyPlantedBerries
 	return
+
+BerryTree_CheckIfWantToFertilize::
+	msgbox BerryTree_AskFertilize, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq BerryTree_FertilizeBerry
+	return
+
+BerryTree_FertilizeBerry::
+	special ObjectEventInteractionFertilizeBerryTree
+	special ObjectEventInteractionWaterBerryTree
+	special DoWateringBerryTreeAnim
+	waitstate
+	releaseall
+	end
+
+BerryTree_AskFertilize:
+	.string "The plant looks hungry.\nWould you like to fertilize it?$"
 
 BerryTree_Text_ItsSoftLoamySoil: @ 82744F0
 	.string "It's soft, loamy soil.$"

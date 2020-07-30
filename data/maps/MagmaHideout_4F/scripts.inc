@@ -262,6 +262,8 @@ MH_MapSetup_Duo::
 MH_RyuBossFight::
 	compare VAR_RYU_MAGMA, 301
 	goto_if_ge ryu_end
+	compare VAR_RYU_MAGMA, 450
+	goto_if_eq MH4_MaxieAwakensGroudon
 	goto_if_set FLAG_RYU_DS_SHELLY_CLOSEFRIENDS, MH_CourtneyMaxieAltBattle
 	goto_if_set FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS, ryu_end
 	playse SE_PIN
@@ -587,8 +589,17 @@ MH_GroudonMsg:
 
 MH_CheckSetMaxiePosition:
 	map_script_2 VAR_RYU_MAGMA, 301, SetMaxiePosition2
+	map_script_2 VAR_TEMP_6, 0, CheckOpenAdminQuarters
 	.2byte 0
 	
+CheckOpenAdminQuarters::
+	compare VAR_RYU_MAGMA, 560
+	goto_if_lt ryu_end
+	setvar VAR_TEMP_6, 100
+	setmetatile 20, 4, 606, 1
+	setmetatile 20, 3, 598, 1
+	end
+
 SetMaxiePosition2::
 	setvar VAR_RYU_MAGMA, 302@Player entered 4f to chat with maxie
 	removeobject 6
@@ -616,6 +627,8 @@ MH4_MagmaAdminCheck::
 	
 	
 MH4_MagmaMaxieEvent::
+	compare VAR_RYU_MAGMA 400
+	goto_if_ge MH4_MagmaEvent8
 	compare VAR_RYU_MAGMA, 305
 	goto_if_eq MH4_ToldToGoOtherWay
 	compare VAR_RYU_MAGMA, 302
@@ -719,10 +732,19 @@ MH4_Maxie2Event::
 	release
 	end
 	
-	
 MH4_CourtneyScript::
+	compare VAR_RYU_MAGMA, 560
+	goto_if_ge MH4_PostGroudonCourtneyFollower
 	msgbox MH4_CourtneyChatter
 	goto ryu_end
+
+MH4_PostGroudonCourtneyFollower::
+	msgbox MH4_CourtneyPostGroudonChatter
+	release
+	end
+
+MH4_CourtneyPostGroudonChatter::
+	.string "{COLOR LIGHT_RED}{SHADOW RED}We must find ex-leader Maxie.\nLast seen... Route 114.$"
 
 MH4_CourtneyChatter:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Talking is... inefficient...\nLeader's orders... Go...$"
@@ -888,6 +910,309 @@ MH4_CourtneyToPlayer:@4 left, 1 down, 1 left, face up
 	walk_left
 	face_up
 	step_end
+	
+MH4_MagmaEvent8::
+	getplayerxy VAR_TEMP_4, VAR_TEMP_5
+	compare VAR_TEMP_4, 4
+	call_if_eq MH4_ME8_MovePlayerRight
+	getplayerxy VAR_TEMP_4, VAR_TEMP_5
+	compare VAR_TEMP_5, 6
+	call_if_eq MH4_ME8_MovePlayerLeft
+	compare VAR_RYU_MAGMA, 405
+	goto_if_ge ryu_end
+	lock
+	special SpawnCameraObject
+	addobject 16
+	addobject 17
+	addobject 18
+	addobject 19
+	applymovement OBJ_EVENT_ID_CAMERA, MH4_Cam3
+	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement 16, Common_Movement_FaceDown
+	waitmovement 16
+	msgbox MH4_WhatUtter
+	closemessage
+	delay 30
+	msgbox MH4_ToThinkThat
+	closemessage
+	applymovement OBJ_EVENT_ID_CAMERA, MH4_Cam4
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MH4_PlayerSeesSomething
+	waitmovement OBJ_EVENT_ID_CAMERA
+	closemessage
+	special RemoveCameraObject
+	addobject 17
+	addobject 18
+	addobject 19
+	applymovement OBJ_EVENT_ID_PLAYER, MH4_PlayerToAdmins
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 16, Common_Movement_FaceUp
+	waitmovement 16
+	msgbox MH4_AgentPlayerImpeccable
+	closemessage
+	applymovement 16, Common_Movement_FaceDown
+	waitmovement 16
+	delay 30
+	msgbox MH4_TeamAquaHas
+	closemessage
+	applymovement 16, Common_Movement_StepUp
+	waitmovement 16
+	msgbox MH4_YoureTheOnly
+	closemessage
+	playse SE_PIN
+	applymovement 19, Common_Movement_ExclamationMark
+	waitmovement 19
+	applymovement 19, Common_Movement_StepUp
+	waitmovement 19
+	msgbox MH4_LeaderMaxieNo
+	closemessage
+	applymovement 16, Common_Movement_FaceDown
+	waitmovement 16
+	msgbox MH4_Silence
+	closemessage
+	applymovement 16, MH2_MaxiePushesCourtney
+	applymovement 19, MH2_DelayedStepDown
+	waitmovement 19
+	msgbox MH4_YouWillKnow
+	closemessage
+	applymovement 16, Common_Movement_StepUp
+	waitmovement 16
+	msgbox MH4_GoForthPlayer
+	closemessage
+	applymovement 19, MH4_CourtneyRunsOff
+	waitmovement 19
+	removeobject 19
+	applymovement 16, MH4_MaxieToOffice
+	waitmovement 16
+	removeobject 16
+	msgbox MH4_WellThatsThat
+	closemessage
+	applymovement 17, MH4_BlaiseToOffice
+	waitmovement 17
+	removeobject 17
+	msgbox MH4_IllJustWait
+	closemessage
+	applymovement 18, MH4_TabithaToExit
+	waitmovement 18
+	removeobject 18
+	setvar VAR_RYU_MAGMA, 405
+	clearflag FLAG_RYU_COURTNEY_FIERY_PATH
+	setflag FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT
+	clearflag FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS
+	clearflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE
+	callnative Ryu_ClearAquaSFCTrainerFlags
+	release
+	end
+	
+MH4_ME8_MovePlayerRight::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+	
+MH4_ME8_MovePlayerLeft::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+
+	
+MH4_WhatUtter:
+	.string "What utter incompetence!$"
+	
+MH4_ToThinkThat:
+	.string "To think the Three Fires of Team\n"
+    .string "Magma can't complete such a simple\l"
+    .string "yet crucial task...!\p"
+    .string "B-But Leader Maxie, sir!\n"
+    .string "It wasn't just Team Aqua.\p"
+    .string "Those Devon folk, as well as\n"
+    .string "Gym Leaders were up there!\p"
+    .string "We were ambushed!$"
+
+MH4_PlayerSeesSomething:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} sees Maxie berating the\n"
+	.string " Admins for something...)\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} I wonder what happened?$"
+
+MH4_AgentPlayerImpeccable:
+	.string "Agent {PLAYER}, impeccable timing.\n"
+    .string "I've come to understand that you were\l"
+    .string "not given a mission assignment.\p"
+    .string "Although I explicitly stated that\n"
+    .string "every individual was to be utilized.\p"
+    .string "Even so, I can see that you've used\n"
+    .string "your time effectively and become\p"
+    .string "strong enough to claim your seventh\l"
+    .string "badge.\p"
+    .string "I shall reward you in time, however,\n"
+    .string "thanks to the failures of these three\l"
+    .string "behind me, time is of the essence.$"
+
+MH4_TeamAquaHas:
+	.string "Team Aqua has obtained the Blue Orb\n"
+    .string "and has gone to awaken Kyogre.\p"
+    .string "It's a legendary sea creature whose\n"
+    .string "power rivals Groudon's.\p"
+    .string "Needless to say, it'll spell disaster\n"
+    .string "for Team Magma.$"
+
+MH4_YoureTheOnly:
+	.string "You're the only one I can rely on\n"
+    .string "now...\p"
+    .string "Head to Seafloor Cavern, stop Team\n"
+    .string "Aqua, Kyogre, and reclaim the Blue\l"
+    .string "Orb.\p"
+    .string "Return to me in this manner, and you\n"
+    .string "shall be...$"
+
+MH4_LeaderMaxieNo:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Leader Maxie, no!$"
+	
+MH4_Silence:
+	.string "Silence!\p"
+    .string "You've had your chance to show your\n"
+    .string "loyalty, and you've failed!\p"
+    .string "Now the task shall be given to\n"
+    .string "someone more suitable.$"
+
+MH4_YouWillKnow:
+	.string "You will know your place if you wish\n"
+    .string "to continue walking along the {COLOR DARK_GREY}{SHADOW RED}Fiery\l"
+    .string "Path {COLOR DARK_GREY}{SHADOW LIGHT_GREY}with me.\p"
+    .string "Begone, all of you!$"
+
+MH4_GoForthPlayer:
+	.string "Go forth, {PLAYER}.\n"
+    .string "I place my trust in you.$"
+
+MH4_WellThatsThat:
+	.string "Well that's that I guess...$"
+	
+MH4_IllJustWait:
+	.string "I'll just...wait until I'm summoned.$"
+
+
+
+MH4_Cam3:
+	walk_down
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_down
+	walk_down
+	step_end
+	
+MH4_Cam4:
+	walk_up
+	walk_up
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_up
+	step_end
+
+MH4_PlayerToAdmins:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	face_down
+	step_end
+	
+MH2_MaxiePushesCourtney:
+	walk_down
+	walk_in_place_fast_down
+	walk_in_place_fast_down
+	step_end
+	
+MH2_DelayedStepDown:
+	delay_16
+	delay_8
+	slide_down
+	step_end
+	
+MH4_CourtneyRunsOff:
+	walk_up
+	walk_up
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	step_end
+	
+MH4_MaxieToOffice:
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	
+MH4_BlaiseToOffice:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	
+MH4_TabithaToExit:
+	walk_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	step_end
+	
+	
+MH4_AquaSeafloorCavernFinished::
+	end
+	
+MH4_MaxieAwakensGroudon::
+	end
+
+
+
+	
 
 
 	

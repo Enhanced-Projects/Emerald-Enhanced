@@ -1,232 +1,225 @@
 {
-    "allow_cycling": false,
-    "allow_escaping": false,
-    "allow_running": false,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "GCMS_Intro",
-            "type": "sign",
-            "x": 1,
-            "y": 1
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-        {
-            "elevation": 3,
-            "script": "SPC_PreventLeaveTillDone",
-            "type": "trigger",
-            "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
-            "var_value": "106",
-            "x": 9,
-            "y": 9
-        },
-        {
-            "elevation": 3,
-            "script": "SPC_PreventLeaveTillDone",
-            "type": "trigger",
-            "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
-            "var_value": "106",
-            "x": 8,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "script": "SPC_PreventLeaveTillDone",
-            "type": "trigger",
-            "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
-            "var_value": "106",
-            "x": 7,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "script": "SPC_PreventLeaveTillDone",
-            "type": "trigger",
-            "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
-            "var_value": "106",
-            "x": 6,
-            "y": 9
-        }
-    ],
-    "id": "MAP_MOSSDEEP_CITY_SPACE_CENTER_1F",
-    "layout": "LAYOUT_MOSSDEEP_CITY_SPACE_CENTER_1F",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_GOTOWN",
-    "name": "MossdeepCity_SpaceCenter_1F",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "MossdeepCity_SpaceCenter_1F_EventScript_RocketLaunchCounter",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 7,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "MossdeepCity_SpaceCenter_1F_EventScript_Scientist",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 2,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SAILOR",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "MossdeepCity_SpaceCenter_1F_EventScript_SunStoneMan",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 6,
-            "y": 6
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "MossdeepCity_SpaceCenter_1F_EventScript_OldMan",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 10,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
-            "script": "MossdeepCity_SpaceCenter_1F_EventScript_Woman",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 14,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA",
-            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "MossdeepCity_SpaceCenter_1F_EventScript_Grunt3",
-            "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 12,
-            "y": 9
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA",
-            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "MossdeepCity_SpaceCenter_1F_EventScript_Grunt1",
-            "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 11,
-            "y": 6
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA",
-            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "MossdeepCity_SpaceCenter_1F_EventScript_Grunt4",
-            "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 10,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA",
-            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "MossdeepCity_SpaceCenter_1F_EventScript_Grunt2",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 13,
-            "y": 2
-        },
-        {
-            "elevation": 0,
-            "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE",
-            "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
-            "script": "MossdeepCity_SpaceCenter_1F_EventScript_MagmaNote",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 2,
-            "y": 5
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN",
-            "graphics_id": "OBJ_EVENT_GFX_STEVEN",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 8,
-            "y": 6
-        }
-    ],
-    "region_map_section": "MAPSEC_MOSSDEEP_CITY",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-        {
-            "dest_map": "MAP_MOSSDEEP_CITY",
-            "dest_warp_id": 8,
-            "elevation": 0,
-            "x": 7,
-            "y": 9
-        },
-        {
-            "dest_map": "MAP_MOSSDEEP_CITY",
-            "dest_warp_id": 8,
-            "elevation": 0,
-            "x": 8,
-            "y": 9
-        },
-        {
-            "dest_map": "MAP_MOSSDEEP_CITY_SPACE_CENTER_2F",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 13,
-            "y": 1
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_MOSSDEEP_CITY_SPACE_CENTER_1F",
+  "name": "MossdeepCity_SpaceCenter_1F",
+  "layout": "LAYOUT_MOSSDEEP_CITY_SPACE_CENTER_1F",
+  "music": "MUS_GOTOWN",
+  "region_map_section": "MAPSEC_MOSSDEEP_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+      "x": 7,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_RocketLaunchCounter",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+      "x": 2,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_Scientist",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+      "x": 6,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_SunStoneMan",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "x": 10,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_OldMan",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
+      "x": 14,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_Woman",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 12,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_Grunt3",
+      "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 11,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_Grunt1",
+      "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 10,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_Grunt4",
+      "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 13,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_Grunt2",
+      "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "x": 2,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MossdeepCity_SpaceCenter_1F_EventScript_MagmaNote",
+      "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_STEVEN",
+      "x": 8,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 7,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_MOSSDEEP_CITY",
+      "dest_warp_id": 8
+    },
+    {
+      "x": 8,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_MOSSDEEP_CITY",
+      "dest_warp_id": 8
+    },
+    {
+      "x": 13,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_MOSSDEEP_CITY_SPACE_CENTER_2F",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 9,
+      "elevation": 3,
+      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var_value": "106",
+      "script": "SPC_PreventLeaveTillDone"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 8,
+      "elevation": 3,
+      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var_value": "106",
+      "script": "SPC_PreventLeaveTillDone"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 8,
+      "elevation": 3,
+      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var_value": "106",
+      "script": "SPC_PreventLeaveTillDone"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 9,
+      "elevation": 3,
+      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var_value": "106",
+      "script": "SPC_PreventLeaveTillDone"
+    }
+  ],
+  "bg_events": [
+
+  ]
 }

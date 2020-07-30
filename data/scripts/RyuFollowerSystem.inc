@@ -8,15 +8,9 @@ RyuCancelFollowerForQuest::  @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollow
 	end
 
 RyuResetFollowerPosition::
-	gfec
-	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_E, VAR_TEMP_F
-	setvar VAR_TEMP_D, 1
 	end
 
 RyuResetFollowerPositionAR::
-	gfec
-	setobjectxy OBJ_EVENT_ID_FOLLOWER, VAR_TEMP_E, VAR_TEMP_F
-	setvar VAR_TEMP_D, 1
 	return
 
 RyuForceCancelFollowerForQuest:: @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
@@ -108,59 +102,56 @@ FollowerLeafSetup::
 	end
 
 RF_FollowerLeaveCall::
-	clearflag FLAG_RYU_HAS_FOLLOWER
-	destroyfollower
-	setvar VAR_RYU_FOLLOWER_ID, 0
 	msgbox RyuFollowerLeavesService
-	clearflag FLAG_RYU_HAS_FOLLOWER
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
-	goto_if_eq Ryu_RestoreLanetteAtHouse
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
-	goto_if_eq Ryu_RestoreMinnie
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL
-	goto_if_eq Ryu_RestoreDawn
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
-	goto_if_eq Ryu_RestoreBrendan
-    compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LEAF
-    goto_if_eq Ryu_RestoreLeaf
+	switch VAR_RYU_FOLLOWER_ID
+	case OBJ_EVENT_GFX_WOMAN_2, Ryu_RestoreLanetteAtHouse
+	case OBJ_EVENT_GFX_TWIN, Ryu_RestoreMinnie
+	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, Ryu_RestoreDawn
+	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, Ryu_RestoreBrendan
+    case OBJ_EVENT_GFX_LEAF, Ryu_RestoreLeaf
+	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, Ryu_RestoreCourtney
 	return
 	
 RF_FollowerLeave::
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_WOMAN_2
-	call_if_eq Ryu_RestoreLanetteAtHouse
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
-	call_if_eq Ryu_RestoreMinnie
-	clearflag FLAG_RYU_HAS_FOLLOWER
-	destroyfollower
-	msgbox RyuFollowerLeavesService
-	clearflag FLAG_RYU_HAS_FOLLOWER
+	call RF_FollowerLeaveCall
 	release
 	end
 
 Ryu_RestoreLanetteAtHouse::
+	destroyfollower
 	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
 	release
 	end
 
 Ryu_RestoreMinnie::
+	destroyfollower
 	clearflag FLAG_RYU_HIDE_MINNIE
 	release
 	end
 
 Ryu_RestoreDawn::
+	destroyfollower
 	clearflag FLAG_HIDE_DAWNS_HOUSE_DAWN
 	release
 	end
 
 Ryu_RestoreBrendan::
+	destroyfollower
     clearflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
     release
     end
 
 Ryu_RestoreLeaf::
+	destroyfollower
     clearflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
     release
     end
+
+Ryu_RestoreCourtney::
+	destroyfollower
+	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY
+	release
+	end
 
 RyuFollowerAllySelector::
 	special RyuFollowerToTrainerID

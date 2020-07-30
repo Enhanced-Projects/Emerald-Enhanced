@@ -342,7 +342,7 @@
 #define ITEM_GLOSSY_SHARD 325//shiny stone
 #define ITEM_GOLD_SHARD 326//sun stone
 #define ITEM_GRAY_SHARD 327// moon stone
-#define ITEM_PIXIE_PLATE 328
+#define ITEM_FERTILIZER 328
 #define ITEM_OLD_KEY 329
 #define ITEM_SPOOKY_PLATE 330
 #define ITEM_KEY_SHARD_1 331

@@ -6295,6 +6295,19 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
+    
+    [ITEM_FERTILIZER] =
+    {
+        .name = _("Fertilizer"),
+        .itemId = ITEM_FERTILIZER,
+        .price = 20000,
+        .holdEffect = HOLD_EFFECT_NONE,
+        .description = sFertilizerDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
 
     [ITEM_EVIOLITE] =
     {
