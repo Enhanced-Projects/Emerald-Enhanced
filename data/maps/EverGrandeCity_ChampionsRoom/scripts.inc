@@ -604,29 +604,41 @@ EGC_BRENDANFZ_TEXT_YES:
 
 
 EGC_BRENDANFZ_TEXT_NO:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}...Sorry about all this...I\njust wanted to...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(A familiar look of sadness and\nhurt is plastered on his face)\p"
-	.string "Prof Birch: Come now, {RIVAL}{COLOR LIGHT_GREEN}{SHADOW GREEN}, this isn't\nthe end. There are plenty other\ltrainers out there you can get\lto know.\p"
-	.string " (The Prof. gives you the glare\nof a Seviper as {RIVAL} {COLOR LIGHT_GREEN}{SHADOW GREEN}runs out…)$" 
+    .string "{COLOR LIGHT_RED}{SHADOW RED}...Sorry about all this...I\n"
+	.string "just wanted to...\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(A familiar look of sadness and\n"
+	.string "hurt is plastered on his face)\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Prof Birch: Come now, {RIVAL}, this isn't\n"
+	.string "the end. There are plenty other\l"
+	.string "trainers out there you can get\l"
+	.string "to know.\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(The Prof. gives you the glare\n"
+	.string " of a Seviper as {RIVAL} runs out…)$" 
 
 	
 EGC_DawnIntro: @ 82290CA
-	.string "{RIVAL}: {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}!\p"
+	.string " {PLAYER}!\p"
 	.string "I'm here to cheer you on!\n"
-	.string "Go {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}! Wait...$"
+	.string "Go {PLAYER}! Wait...$"
 
 EGC_DawnIntro2: @ 822910B
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Oh! you didn't even need me\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh! you didn't even need me\n"
 	.string "to cheer you on. You're so strong,\l"
-	.string "{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}. I'm so glad you made it!$"
+	.string "{PLAYER}. I'm so glad you made it!$"
 	
 EGC_DawnDeniedEntry: @ 8229479
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Groan… I really wanted to be\p"
-	.string "with {PLAYER}{COLOR LIGHT_RED}{SHADOW RED} for his crowning.\n"
-	.string "Well, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, I'm sorry I can't\l"
+	.string "with {PLAYER} for his crowning.\n"
+	.string "Well, {PLAYER}, I'm sorry I can't\l"
 	.string "come with... Enjoy Your moment!$"
 	
 EGC_BrendanDeniedEntry:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Wha-… and I really\nwanted to be there for your big\lday… \pCan't be helped, I guess.\pThem's the rules, right?\nThat's awesome, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}, congratulations!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Wha-… and I really\n"
+	.string "wanted to be there for your big\l"
+	.string "day… \p"
+	.string "Can't be helped, I guess.\p"
+	.string "Them's the rules, right?\n"
+	.string "That's awesome, {PLAYER}, congratulations!$"
 	
 EGC_BirchIntro: @ 82291E6
 	.string "Prof. Birch: {RIVAL}, you can't\n"

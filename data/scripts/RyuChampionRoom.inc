@@ -654,7 +654,7 @@ RCR_RYU_DefeatText:
 	.string "Even with my devhax...$"
 
 RCR_PlayerRecordingInfo:
-	.string "{PLAYER}:{COLOR LIGHT_BLUE}{SHADOW BLUE} You have lost the match.\pI will now go put the data\ninto the system.\pPlease come challenge me again!$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} You have lost the match.\pI will now go put the data\ninto the system.\pPlease come challenge me again!$"
 
 RCR_Steven_Intro:
     .string "Steven: Hi there, {PLAYER}!\p"
@@ -783,39 +783,39 @@ RCR_PlayerPartnerQuery:
 @============================================Follower Texts
 
 FMinnieMsg:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Minnie: {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, I'm not sure if\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, I'm not sure if\n"
     .string "I'm strong enough for this...\p"
     .string "B-but... I will try my hardest\n"
     .string "for you!$"
 
 FShellyMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Man this journey has been\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Man this journey has been\n"
     .string "refreshing. I got so tired of\p"
     .string "sitting at that desk.\n"
     .string "It's so nice to be able to stretch\l"
     .string "my legs again!$"
 
 FLanetteMsg:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Lanette: I'm not much of a fighter\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'm not much of a fighter\n"
     .string "but I'll follow you to the nine\p"
     .string "hells if you ask me to. I'll do\n"
     .string "what I can!$"
 
 FDawnMsg:
-    .string "Dawn: It's been a long walk, but I'm\n"
+    .string "It's been a long walk, but I'm\n"
     .string "glad that I can be here with you.\p"
     .string "It's so surreal, being here in the\n"
     .string "Hoenn Champion room...\p"
     .string "Well... LET'S GO!!$"
 
 FBrendanMsg:
-    .string "Brendan: Not gonna lie, I expected\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Not gonna lie, I expected\n"
     .string "to get here before you, maybe after\p"
     .string "you, but I never thought we'd be\n"
     .string "doing this together. Here we go!$"
 
 FLeafMsg:
-    .string "Lana: Oh, Wow, this room is HUGE!\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, Wow, this room is HUGE!\n"
     .string "The Kanto one doesn't even compare.\p"
     .string "Well, I've already beaten the Kanto\n"
     .string "Champion, time to add Hoennn to my\l"

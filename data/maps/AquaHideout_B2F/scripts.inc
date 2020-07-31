@@ -81,7 +81,7 @@ AC_ShellyAttacks:
 	.string "Woman: Who the hell are you and\n"
     .string "why are you trespassing in our\l"
     .string "hideout? Who let you in?\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: I'm here to reclaim some\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} I'm here to reclaim some\n"
     .string "stolen property. Heard of a\l"
     .string "radiation detector? It's owner\p"
     .string "wants it back, and I'm not leaving\n"

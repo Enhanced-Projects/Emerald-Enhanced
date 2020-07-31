@@ -1571,7 +1571,7 @@ CLM_FinishedMsg:
 CLM_NotInPartyMsg:
     .string "Oh!, I think you've heard it too! Do\n"
     .string "you know where it came from?\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Yes, it's from a Pokémon.\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Yes, it's from a Pokémon.\n"
     .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}You have to show me, Please!$"
 
 

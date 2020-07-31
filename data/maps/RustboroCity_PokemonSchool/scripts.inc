@@ -99,14 +99,14 @@ MinnieHelpedE4:
     .string "stuff I learned here and we won!$"
 
 PlayerConfirms:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Yeah, she's an excellent\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Yeah, she's an excellent\n"
     .string "bodyguard. And she's good company,\p"
     .string "too! She makes everything much\n"
     .string "more interesting.\p"
     .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Minnie Blushes)\p"
     .string "{COLOR LIGHT_RED}{SHADOW RED}Minnie: {PLAYER}, I hope we can\n"
     .string "be best friends forever!\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: You can bet on it!$"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} You can bet on it!$"
 
 MinnieOutro:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Minnie: Well, teacher, nice to see\n"

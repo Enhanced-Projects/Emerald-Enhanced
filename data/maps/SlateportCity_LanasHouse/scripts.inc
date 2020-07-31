@@ -251,7 +251,7 @@ LH_Step:
 	step_end
 	
 LH_BeginQuest:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Hm? What is it?\p  {COLOR LIGHT_GREEN}{SHADOW GREEN}(She points to your pokénav.)\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Oh, you want it? Here.\p{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ...\n"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Hm? What is it?\p  {COLOR LIGHT_GREEN}{SHADOW GREEN}(She points to your pokénav.)\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Oh, you want it? Here.\p{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ...\n"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She takes it only for a moment\p before handing it back to you.)$"
 
 LH_QuestStarted:
@@ -260,11 +260,11 @@ LH_QuestStarted:
 	
 LH_Bro_intro:
     .string "Who are you, and why are you here?\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: I'm {PLAYER}. I saw a girl\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I'm {PLAYER}. I saw a girl\n"
     .string "come in here, and I wanted to meet\l"
     .string "her. She seemed new to the area.\p"
     .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Guy: Oh, you're talking about my\n"
-    .string "sister, {COLOR LIGHT_RED}{SHADOW RED}Lana{COLOR DARK_GREY}{SHADOW LIGHT_GREY}. Uh... She doesn't \p"
+    .string "sister. Uh... She doesn't \p"
     .string "really speak anymore, She's not much\n"
     .string "of a conversationalist. You can try\l"
     .string "though. Good luck!$"
@@ -274,20 +274,20 @@ LH_bro_chat:
 	.string "Our family recently moved here\n"
 	.string "from Kanto. Our parents are out\p"
 	.string "working most of the time, so it's\n"
-	.string "just me and {COLOR LIGHT_RED}{SHADOW RED}Lana{COLOR DARK_GREY}{SHADOW LIGHT_GREY} here, usually.$"
+	.string "just me and Lana here, usually.$"
 	
 LH_finished:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana looks up and smiles\n"
 	.string " at you, then resumes reading.)$"
 	
 LH_End:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}({COLOR LIGHT_RED}{SHADOW RED}Lana{COLOR LIGHT_GREEN}{SHADOW GREEN} sits down and starts\n"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana sits down and starts\n"
 	.string " reading a magazine with a rare\p"
 	.string " Pokémon on the cover. Guess\n"
 	.string " she's done talking.)$"
 	
 LH_chat1:
-	.string "{PLAYER}:{COLOR LIGHT_BLUE}{SHADOW BLUE} Umm... hi. I'm {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}.\n"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Umm... hi. I'm {PLAYER}.\n"
 	.string "Is your name... Lana?\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She nods.)\n"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}... ... ... \p"
@@ -304,7 +304,7 @@ LH_chat1:
     .string "around.\p"
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (She shakes her head. She seems to\n"
     .string " be very shy.)\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Well if you change your\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Well if you change your\n"
     .string "mind, here's my number...\p"
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (She nods once more and then pulls\n"
     .string " a magazine out of her bag and starts\p"
@@ -312,7 +312,7 @@ LH_chat1:
     .string " her to it.)$"
 
 LH_chat2:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Lana: Thanks.\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Thanks.\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She leans back and puts a finger\n"
 	.string " up to her mouth)\p"
 	.string " (there's something about this girl\n"

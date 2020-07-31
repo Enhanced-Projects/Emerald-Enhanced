@@ -892,16 +892,21 @@ MP_RelShellyDeclined:@NEUTRAL end.
 	
 	
 MP_RelArchieIntro:
-	.string "Archie: Ah! {PLAYER}, nice of you\nto join us. We were just\lcollecting the Orb to awaken\lKyogre!\lNice work back at Magma's hideout.\las you can imagine, they were...\lsort of a hindrance to our plans.$"
+	.string "Archie: Ah! {PLAYER}, nice of you\n"
+	.string "to join us. We were just\l"
+	.string "collecting the Orb to awaken\l"
+	.string "Kyogre!\lNice work back at Magma's hideout.\l"
+	.string "as you can imagine, they were...\l"
+	.string "sort of a hindrance to our plans.$"
 	
 MP_ArchieIntro2:
     .string "All right, old lady, give it up!$"
 
 MP_RelShellyWait:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Wait just a minute!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Wait just a minute!$"
 	
 MP_RelShellyReveal:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}As soon as I discovered your plans\l{PLAYER} and I worked out that you\lare no better than Maxie. You're\lgoing to destroy the world!\lYou see, I found love in {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}!\lAnd we're going to stop you!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}As soon as I discovered your plans\l{PLAYER} and I worked out that you\lare no better than Maxie. You're\lgoing to destroy the world!\lYou see, I found love in {PLAYER}!\lAnd we're going to stop you!$"
 	
 MP_ArchieBetrayal:
 	.string "Matt: No way! Betrayed by our very\nown Lieutenant!\p Well if you're against Archie,\nthen you're against me!\lWe need to silence you\lso that our plans can continue!$"
@@ -920,7 +925,7 @@ MP_ArchieDefeated:
 	.string "Very well. I will retire as well.\lI can't work for a traitor. I will\lget my revenge. Better keep watch!$"
 
 MP_RelShellyConfession:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, thanks for\nhelping me. I wouldn't have been\lable to stop Archie on my own.\lI'm sorry if I embarassed you,\lconfessing in front of everyone.\lI have to know, though...\pDo you feel the same way?$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, thanks for\nhelping me. I wouldn't have been\lable to stop Archie on my own.\lI'm sorry if I embarassed you,\lconfessing in front of everyone.\lI have to know, though...\pDo you feel the same way?$"
 	
 MP_RelShellyDeclinedmsg:
 	.string "Shelly: Oh... I...\nI'm sorry, {PLAYER}. For what you\lhave done here, you have my\lgratitude.\lI will always remember you, and\lthe gift you gave me.\lWhen you do find someone you love,\l"

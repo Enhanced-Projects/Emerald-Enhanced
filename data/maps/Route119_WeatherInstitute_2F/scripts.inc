@@ -211,7 +211,7 @@ WI_wonderfulNews:
 	.string "progress on your end?\p"
 	.string "Bart: I hate to admit it, but it has\n"
 	.string "slowed to a crawl.\p"
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: What're you working on?\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} What're you working on?\p"
 	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}We've begun initial development on\n"
 	.string "a device dubbed the Forecaster. An\p"
 	.string "artificial attempt to simulate and\n"
@@ -239,7 +239,7 @@ WI_SeemsLike:
 	.string "is already underway.$"
 
 WI_GuessSo:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Guess so.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Guess so.\p"
 	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Would you? Thanks, this'll be a\n"
 	.string "huge help. All you have to do is\p"
 	.string "take Castform to the deepest part\n"

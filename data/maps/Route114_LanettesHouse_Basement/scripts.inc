@@ -274,7 +274,7 @@ LNH_StayingNightAfterStory:
     .string "have any new movies for us to\p"
     .string "watch, so I guess I will just\n"
     .string "have to entertain you, myself...\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: I like where this is\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} I like where this is\n"
     .string "going. I hope I can keep up...$"
 	
 LNH_AS_InBedMsg:
@@ -293,7 +293,7 @@ LNH_AS_YouWakeUp:
 
 
 LNH_JustChecking:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: No, not really.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} No, not really.\p"
 	.string "I was just stopping by to say hi.$"
 	
 LNH_OkayHi:
@@ -352,7 +352,7 @@ LNH_tryingToMakeBed:
     .string "bed, and my foot got tangled in\p"
     .string "the sheet and I lost my balance\l"
     .string "and...\p"
-    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}{PLAYER}:{COLOR LIGHT_BLUE}{SHADOW BLUE} Don't worry about it.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}{COLOR LIGHT_BLUE}{SHADOW BLUE} Don't worry about it.\p"
     .string "Are you okay?$"
 	
 LNH_tryingToMakeBed2:
@@ -365,7 +365,7 @@ LNH_tryingToMakeBed2:
     .string "I was just about to take a nap.\p"
     .string "Would.... you like to take a nap\n"
     .string "with me?\p"
-    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}{PLAYER}: {COLOR LIGHT_BLUE}{SHADOW BLUE}Yeah, okay. I was getting\n"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY} {COLOR LIGHT_BLUE}{SHADOW BLUE}Yeah, okay. I was getting\n"
     .string "sleepy from walking around all day\l"
     .string "anyways.\p"
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Her face flushes again.)\p"
@@ -387,7 +387,7 @@ LNH_YouFeelLanette:
     .string "It's different with you. I always\n"
     .string "feel comfortable with you, I'm\l"
     .string "not sure why...\p"
-    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}{PLAYER}: {COLOR LIGHT_BLUE}{SHADOW BLUE}I'm okay with that.\n"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY} {COLOR LIGHT_BLUE}{SHADOW BLUE}I'm okay with that.\n"
     .string "It just means I get to keep you\l"
     .string "all to myself.\p"
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Lanette squeezes you tighter\n"

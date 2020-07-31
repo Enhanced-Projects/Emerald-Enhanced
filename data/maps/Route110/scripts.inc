@@ -851,7 +851,7 @@ Route110_Text_AquaActionsBringSmiles: @ 81EFC0D
 	.string "smiles to people's faces!$"
 
 Route110_Text_DawnLetsBattle: @ 81EFC48
-	.string "Dawn: Hi, {PLAYER}, long time no see!\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hi, {PLAYER}, long time no see!\p"
 	.string "While I was searching for other\n"
 	.string "Pokémon, my Pokémon grew stronger.\p"
 	.string "So…\n"
@@ -862,13 +862,13 @@ Route110_Text_DawnDefeated: @ 81EFCCB
 	.string "You really had your way with me!$"
 
 Route110_Text_DawnTakeThis: @ 81EFCF1
-	.string "Dawn: {PLAYER}, you've been busy\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, you've been busy\n"
 	.string "training, too, haven't you?\p"
 	.string "I think you deserve a reward!\n"
 	.string "This is from me!$"
 
 Route110_Text_DawnExplainWaystone: @ 81EFD58
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: That's a Waystone.\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}That's a Waystone.\p"
 	.string "It lets you teleport to any city\n"
 	.string "you have visited.\p"
 	.string "Okay, {PLAYER}, let's meet again!\p"
@@ -877,7 +877,7 @@ Route110_Text_DawnExplainWaystone: @ 81EFD58
 	.string "harder for the next time.$"
 
 Route110_Text_BrendayLetsBattle: @ 81EFE3F
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Hey, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}. Fancy\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}. Fancy\n"
 	.string "meeting you here.\p"
 	.string "How's it going? Have you been\n"
 	.string "raising your pokémon?\lI'll check for you.$"
@@ -891,19 +891,19 @@ Route110_Text_BrendanDefeated: @ 81EFEB4
 	.string "And maybe a little turned on.$"
 
 Route110_Text_BrendanTakeThis: @ 81EFECD
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Jeez, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}, You've\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Jeez, {PLAYER}, You've\n"
 	.string "trained up... \n"
 	.string "I like that.\l"
 	.string "Here, you can have this.$"
 
 Route110_Text_BrendanExplainWaystone: @ 81EFF1C
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: That thing's called a\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}That thing's called a\n"
 	.string "Waystone.\p"
 	.string "Rub it the right way to travel\n"
 	.string "anywhere you've been to before.\p"
 	.string "… … …\p"
 	.string "Well, I'll be heading off now.\n"
-	.string "See ya around, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}.\l"
+	.string "See ya around, {PLAYER}.\l"
 	.string "Keep training!$"
 
 Route110_Text_RideBikeAtFullSpeed: @ 81EFFC3

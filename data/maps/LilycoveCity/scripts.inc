@@ -863,7 +863,8 @@ LCC_BRENDAN_MSG:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Brendan pecked you on the cheek!$"
 	
 lcc_brendan_declined_msg:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Okay then... well, I've gotta get\ngoing, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}. See ya around.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay then... well, I've gotta get\n"
+	.string "going, {PLAYER}. See ya around.$"
 	
 lcc_brendanLeave:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(That alarmed expression left on\n his face as he walked away… you\l wondered if he was expecting\l something else to happen…)$"
@@ -912,8 +913,8 @@ LCC_DAWN_MSG:
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Dawn suddenly kissed you!$"
 
 lcc_femaleRivalIntro: @ 81E3061
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Oh, hey?\n"
-	.string "{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, are you shopping, too?\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, hey?\n"
+	.string "{PLAYER}, are you shopping, too?\p"
 	.string "I bought a whole bunch of dolls and\n"
 	.string "posters. You should get one made of\p"
 	.string "you, I'd pin it up front and center!\n"
@@ -928,18 +929,18 @@ lcc_femaleRivalIntroQuery:
 	.string "me your Pokémon, {PLAYER}.$"
 
 lcc_femaleRivalVictory: @ 81E318D
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Oh, my... {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, haven't you\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, my... {PLAYER}, haven't you\n"
     .string "been training at all? I'm dissapointed.\l"
 	.string "You'll never be able to win the Pokémon\l"
 	.string "League if you can't best lil' ol me!$" 
 
 lcc_femaleRivalAskAgain: @ 81E31F5
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Come on, battle with me, so I can\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Come on, battle with me, so I can\n"
 	.string "check out your Pokémon!$"
 
 lcc_femaleRivalBattleIntro: @ 81E3234
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Oh, hey?\n"
-	.string "{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, are you shopping, too?\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, hey?\n"
+	.string "{PLAYER}, are you shopping, too?\p"
 	.string "I bought a whole bunch of dolls and\n"
 	.string "posters. You should get one made of\p"
 	.string "you, I'd pin it up front and center!\n"
@@ -953,28 +954,28 @@ lcc_femaleRivalBattleDefeat: @ 81E3275
 	.string "Oooh, you really pounded me.$\p"
 
 lcc_femaleRivalChat: @ 81E32FB
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: I'm thinking of going back to\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I'm thinking of going back to\n"
 	.string "Littleroot soon.\p"
 	.string "I've caught a decent group of Pokémon,\n"
 	.string "and my Pokédex is coming along, so\l"
 	.string "I'm going home to show my dad.\p"
 	.string "You {COLOR BLUE}should{COLOR DARK_GREY} come visit me at home,\n"
-	.string "{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, before you challenge the Master.$"
+	.string "{PLAYER}, before you challenge the Master.$"
 
 lcc_femaleRivalOutro: @ 81E3398
 	.string "{COLOR LIGHT_RED}{SHADOW RED}I remember the first battle I had with\n"
-	.string "you, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}. It was special. I'm\l"
+	.string "you, {PLAYER}. It was special. I'm\l"
 	.string "so glad I get to see you so often.\l"
 	.string "It makes me really happy to be with you.\l"
-	.string "{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, what are you going to do?\p"
+	.string "{PLAYER}, what are you going to do?\p"
 	.string "Collect all the Gym Badges and take\n"
 	.string "the Pokémon League challenge?\p"
 	.string "Well, while you're collecting Badges,\n"
-	.string "{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, I'm going to work on my\l"
+	.string "{PLAYER}, I'm going to work on my\l"
 	.string "Pokédex. I'll complete it before you!$"
 
 LCC_FemalRivalConvoDoneNotChampion: @ 81E346D
-	.string "{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, what are you going to do?\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, what are you going to do?\p"
 	.string "Are you taking the Pokémon League\n"
 	.string "challenge?\p"
 	.string "Or, are you going to complete your\n"
@@ -983,7 +984,7 @@ LCC_FemalRivalConvoDoneNotChampion: @ 81E346D
 	.string "but I'll finish my Pokédex before you!$"
 
 lcc_DawnOutroPlayerisChampion: @ 81E353A
-	.string "{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, what are you going to do?\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, what are you going to do?\p"
 	.string "Are you taking the Battle Frontier\n"
 	.string "challenge?\p"
 	.string "Since you've beaten the Master, you\n"
@@ -993,29 +994,49 @@ lcc_DawnOutroPlayerisChampion: @ 81E353A
 	.string "See you!$"
 
 lcc_brendanIntro: @ 81E3608
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}What? No, it's nothing like that!\pI'd rather get it for someone\nlik-uh... nevermind.\pAnyways, are you raising your\nPokémon properly? Let me check.\pYep, you know what time it is!\n{PLAYER}, I challenge you!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}What? No, it's nothing like that!\p"
+	.string "I'd rather get it for someone\n"
+	.string "lik-uh... nevermind.\p"
+	.string "Anyways, are you raising your\n"
+	.string "Pokémon properly? Let me check.\p"
+	.string "Yep, you know what time it is!\n{PLAYER}, I challenge you!$"
 
 lcc_brendanPreBattleIntro:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}! You're a\nwelcome sight!\pAre you per chance stopping by\nto shop?\p... ... ...\pMe? Nah, I just came by to run an\nerrand for my dad. You know how\lhe is…\l... ... ... $"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! You're a\n"
+	.string "welcome sight!\p" 
+	.string "Are you per chance stopping by\n"
+	.string "to shop?\p... ... ...\p"
+	.string "Me? Nah, I just came by to run an\n"
+	.string "errand for my dad. You know how\l"
+	.string "he is…\l... ... ... $"
 
 lcc_declinedBrendanBattle: @ 81E36BF
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Aw c'mon, don't chicken\nout on me now!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Aw c'mon, don't chicken\nout on me now!$"
 
 lcc_brendanAsksforBattle: @ 81E36FA
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Want to battle to see who's\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Want to battle to see who's\n"
 	.string "been raising Pokémon better?$"
 
 lcc_brendanBattleStarting: @ 81E373C
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Now it's time to show\nyou what I'm made of!$"
+	.string "{{COLOR LIGHT_RED}{SHADOW RED}Now it's time to show\nyou what I'm made of!$"
 
 lcc_brendanLostBattle: @ 81E3777
 	.string "Eager to come out on top, are we?$"
 
 lcc_brendanOutro1: @ 81E37D7
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: I… I plan on going\nhome to Littleroot.\pI'm still helping out my dad\non his Pokédex, and it's coming\ltogether pretty well, so it's\labout time I show him.\p... … … …$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I… I plan on going\n"
+	.string "home to Littleroot.\p"
+	.string "I'm still helping out my dad\n"
+	.string "on his Pokédex, and it's coming\l"
+	.string "together pretty well, so it's\l"
+	.string "about time I show him.\p"
+	.string "... ... ...$"
 	
 lcc_brendanOutro2:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I know you'll take on the\nPokémon League challenge,\l{PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}, but {COLOR LIGHT_RED}{SHADOW BLUE}do{COLOR LIGHT_BLUE}{SHADOW BLUE} stop by my place\lbefore that time.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I know you'll take on the\n"
+	.string "Pokémon League challenge,\p"
+	.string "{PLAYER}, but {COLOR DARK_GREY}do{COLOR LIGHT_RED}{SHADOW RED} stop by my place\n"
+	.string "before that time.$"
 
 @==================================================================================================End rival stuff
 

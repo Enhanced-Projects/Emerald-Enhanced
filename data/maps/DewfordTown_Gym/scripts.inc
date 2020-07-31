@@ -380,12 +380,12 @@ DFG_SHELLY_INTRO:
 	.string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}Ah, yes, a good ol'\nfashioned brawl. I used to fight\lAqua grunts for fun all the time!$"
 
 DFG_DAWN_INTRO:
-	.string "Dawn: {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}! I'm glad you called, I was\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I'm glad you called, I was\n"
 	.string "getting bored, anyways. I'm here to back\l"
 	.string "you up, like always!$"
 	
 DFG_BRENDAN_INTRO:
-	.string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}Now this is definetly\n"
+	.string "Brendan: {COLOR LIGHT_RED}{SHADOW RED}Now this is definetly\n"
     .string "more my style. Let's have at it!$"
 
 DFG_LANA_INTRO:

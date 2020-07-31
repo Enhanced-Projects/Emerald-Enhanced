@@ -89,14 +89,14 @@ r120_HikerRequest:
     .string "Hmph. The nerve of young people\n"
     .string "these days. Are you going to\l"
     .string "waltz past me too?\p"
-    .string "{PLAYER}:{COLOR LIGHT_BLUE}{SHADOW BLUE} Yeah, sorry about that.\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Yeah, sorry about that.\n"
     .string "She's going through some stuff,\p"
     .string "and I'm trying to help her work\n"
     .string "through it.\p"
     .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I'm sorry to hear that, but that's\n"
     .string "no reason to disrespect her elders\l"
     .string "like that.\p"
-    .string "{PLAYER}:{COLOR LIGHT_BLUE}{SHADOW BLUE} Yeah... sorry again.$"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Yeah... sorry again.$"
 	
 R120_death:
 	.string "The smell of rot and death\nassaults your nose as you approach...$"
@@ -164,7 +164,7 @@ r120_notReady:
 
 
 r120_SV_Intro:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Hmm. I bet Lana is inside.\pWelp, time to get this over with!\pI'll destroy that giant hunk of\nrust...$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Hmm. I bet Lana is inside.\pWelp, time to get this over with!\pI'll destroy that giant hunk of\nrust...$"
 
 r120_SV_walkup:
 	walk_in_place_up
