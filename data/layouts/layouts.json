@@ -4980,6 +4980,36 @@
       "secondary_tileset": "gTileset_Sootopolis",
       "border_filepath": "data/layouts/SootopolisCity_MagmaEvent/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_MagmaEvent/map.bin"
+    },
+    {
+      "id": "LAYOUT_LRT_BIRCH_LAB_MAGMA_EVENT",
+      "name": "LRT_BirchLab_MagmaEvent_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/LRT_BirchLab_MagmaEvent/border.bin",
+      "blockdata_filepath": "data/layouts/LRT_BirchLab_MagmaEvent/map.bin"
+    },
+    {
+      "id": "LAYOUT_TREASURE_HUNTERS_HOUSE_MAGMA_EVENT",
+      "name": "TreasureHuntersHouse_MagmaEvent_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/TreasureHuntersHouse_MagmaEvent/border.bin",
+      "blockdata_filepath": "data/layouts/TreasureHuntersHouse_MagmaEvent/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE124_MAXIE_HIDEOUT_CAVE",
+      "name": "Route124_MaxieHideoutCave_Layout",
+      "width": 9,
+      "height": 13,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Route124_MaxieHideoutCave/border.bin",
+      "blockdata_filepath": "data/layouts/Route124_MaxieHideoutCave/map.bin"
     }
   ]
 }

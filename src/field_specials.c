@@ -5080,7 +5080,7 @@ void RyuGiveKoutaMawile(void)
 void RyuSetIVs(void)
 {
     u8 iv = 31;
-    u8 ab = 1;
+    u8 ab = 0; 
     SetMonData(&gPlayerParty[0], MON_DATA_HP_IV, &iv);
     SetMonData(&gPlayerParty[0], MON_DATA_ATK_IV, &iv);
     SetMonData(&gPlayerParty[0], MON_DATA_DEF_IV, &iv);

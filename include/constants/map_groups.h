@@ -447,6 +447,7 @@
 #define MAP_METEOR_FALLS_1F_3R                       (114 | (24 << 8))
 #define MAP_METEOR_FALLS_3F                          (115 | (24 << 8))
 #define MAP_MAGMA_HIDEOUT_ADMIN_QUARTERS             (116 | (24 << 8))
+#define MAP_LRT_BIRCH_LAB_MAGMA_EVENT                (117 | (24 << 8))
 
 // Map Group 25
 #define MAP_SECRET_BASE_RED_CAVE1           (0 | (25 << 8))
@@ -643,6 +644,8 @@
 // Map Group 33
 #define MAP_ROUTE124_DIVING_TREASURE_HUNTERS_HOUSE (0 | (33 << 8))
 #define MAP_SOOTOPOLIS_CITY_MAGMA_EVENT            (1 | (33 << 8))
+#define MAP_TREASURE_HUNTERS_HOUSE_MAGMA_EVENT     (2 | (33 << 8))
+#define MAP_ROUTE124_MAXIE_HIDEOUT_CAVE            (3 | (33 << 8))
 
 #define MAP_GROUPS_COUNT 34
 

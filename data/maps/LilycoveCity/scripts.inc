@@ -1018,7 +1018,7 @@ lcc_brendanAsksforBattle: @ 81E36FA
 	.string "been raising Pokémon better?$"
 
 lcc_brendanBattleStarting: @ 81E373C
-	.string "{{COLOR LIGHT_RED}{SHADOW RED}Now it's time to show\nyou what I'm made of!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Now it's time to show\nyou what I'm made of!$"
 
 lcc_brendanLostBattle: @ 81E3777
 	.string "Eager to come out on top, are we?$"

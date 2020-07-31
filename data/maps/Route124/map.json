@@ -204,6 +204,13 @@
       "elevation": 3,
       "dest_map": "MAP_ROUTE124_DIVING_TREASURE_HUNTERS_HOUSE",
       "dest_warp_id": 0
+    },
+    {
+      "x": 51,
+      "y": 22,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE124_MAXIE_HIDEOUT_CAVE",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [
@@ -224,6 +231,15 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 70,
+      "y": 49,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "R124_CheckWarpMagmaEvent"
     }
   ],
   "bg_events": [

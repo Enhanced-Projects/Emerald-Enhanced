@@ -39,6 +39,8 @@ OverworldLegendary_IntroEntei: @put your intro here
 	.string "$"
 	
 FP_CourtneyRomance1::
+	compare VAR_RYU_MAGMA, 405
+	goto_if_ne ryu_end
 	goto_if_set FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, ryu_end
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, FP_ToCourtney@1 up 2 right 1 up

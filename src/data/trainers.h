@@ -8054,19 +8054,19 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_DawnRoute110Torchic},
     },
 
-    [TRAINER_EMPTY_28] =
+    [TRAINER_REL_COURTNEY_2] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_DAWN,
-        .trainerName = _("Dawn"),
+        .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerName = _("Courtney"),
         .items = {},
-        .battleStyle = BS_SHIFT,
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_DawnRoute119Torchic),
-        .party = {.NoItemDefaultMoves = sParty_DawnRoute119Torchic},
+        .partySize = ARRAY_COUNT(sParty_RelCourtney2),
+        .party = {.ItemCustomMoves = sParty_RelCourtney2},
     },
 
     [TRAINER_ISAAC_1] =
@@ -8879,19 +8879,19 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Macey},
     },
 
-    [TRAINER_EMPTY_33] =
+    [TRAINER_STORY_MAXIE] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
-        .trainerPic = TRAINER_PIC_BRENDAN,
-        .trainerName = _("Brendan"),
-        .items = {},
-        .battleStyle = BS_SHIFT,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+        .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
+        .trainerName = _("Maxie"),
+        .items = {ITEM_FULL_RESTORE},
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_BrendanRustboroTreecko),
-        .party = {.NoItemDefaultMoves = sParty_BrendanRustboroTreecko},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
+        .partySize = ARRAY_COUNT(sParty_MaxieStory),
+        .party = {.ItemCustomMoves = sParty_MaxieStory},
     },
 
     [TRAINER_BRENDAN_2] =

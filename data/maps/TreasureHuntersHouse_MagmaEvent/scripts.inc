@@ -1,0 +1,93 @@
+TreasureHuntersHouse_MagmaEvent_MapScripts::
+	map_script ON_FRAME, THH_ME_MagmaEvent
+	.byte 0
+
+
+THH_ME_MagmaEvent::
+	map_script_2 VAR_TEMP_3, 0, THH_ME_NotHere
+	.2byte 0
+	
+THH_ME_NotHere::
+	setvar VAR_TEMP_3, 100
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox THH_ME_HesNotHere
+	closemessage
+	goto_if_unset FLAG_RYU_DS_COURTNEY_LOVERS, THH_ME_NotHereEnd
+	setvar VAR_RYU_MAGMA, 580@Player is on the romance line of the alternate magma quest. Final Stage.
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox THH_ME_WhatYouGotThere
+	closemessage
+	release
+	end
+	
+	
+THH_ME_NotHereEnd::
+	setvar VAR_RYU_MAGMA, 597@Player looked for maxie in treasure house, but didn't find him there. End of Magma alternate default line.
+	msgbox THH_ME_ThatsTheEnd
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox THH_ME_ItCantBeHelped
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	msgbox THH_ME_Burn
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox THH_ME_WhatIGetMyselfInto
+	closemessage
+	applymovement OBJ_EVENT_ID_FOLLOWER, THH_ME_CourtneyExit
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	playse SE_DOOR
+	waitse
+	destroyfollower
+	release
+	end
+	
+THH_ME_HesNotHere:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}He's not here...\n"
+    .string "Must've expected us to follow him.\p"
+    .string "Slick move.$"
+
+THH_ME_WhatYouGotThere:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Courtney appears to be lost in\n"
+    .string " thought.)\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Yo! Courtney... Let's go to the cave\n"
+    .string "nearby.$"
+
+THH_ME_ThatsTheEnd:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}That's the end of that I guess.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Grr...$"
+
+THH_ME_ItCantBeHelped:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}It can't be helped.\n"
+    .string "He got the better of us.\p"
+    .string "We'll have to wait until-$"
+
+THH_ME_Burn:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'm going to go burn something. Or\n"
+    .string "someone.$"
+
+THH_ME_WhatIGetMyselfInto:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Haha!\n"
+    .string "What'd I get myself into...$"
+
+THH_ME_CourtneyExit:
+	face_down
+	walk_in_place_down
+	step_end
+
+
+	
+	
+	

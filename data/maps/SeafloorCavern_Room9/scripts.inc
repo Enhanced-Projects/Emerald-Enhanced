@@ -107,6 +107,7 @@ SFC9_CompleteTheMission::
 	msgbox SFC9_LeaveUsBe
 	closemessage
 	setvar VAR_RYU_MAGMA, 450@Player's doing the main magma line
+	clearflag FLAG_RYU_MAXIE_END_EVENT
 	warpsilent MAP_MAGMA_HIDEOUT_4F, 255, 5, 13
 	
 SFC9_Shelly::

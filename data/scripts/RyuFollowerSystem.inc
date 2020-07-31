@@ -69,6 +69,17 @@ RyuFollower_LeafScript::
 	release
 	end
 
+RyuFollower_CourtneyScript::
+	msgbox RF_CourtneyMsg
+	closemessage
+	release
+	end
+
+RF_CourtneyMsg:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}I will follow you anywhere...\n"
+	.string "Do... anything for you.\l"
+	.string "Can we go hurt people?$"
+
 FollowerDawnSetup::
 	removeobject 2
 	createfollower OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RyuFollowerSelectNPCScript, DIR_EAST
@@ -150,6 +161,7 @@ Ryu_RestoreLeaf::
 Ryu_RestoreCourtney::
 	destroyfollower
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY
+	addobject 1
 	release
 	end
 

@@ -116,22 +116,22 @@ bool32 IsMysteryGiftEnabled(void)
 
 void ClearMysteryEventFlags(void)
 {
-    FlagClear(FLAG_MYSTERY_EVENT_DONE);
-    FlagClear(FLAG_MYSTERY_EVENT_1);
-    FlagClear(FLAG_MYSTERY_EVENT_2);
-    FlagClear(FLAG_MYSTERY_EVENT_3);
-    FlagClear(FLAG_MYSTERY_EVENT_4);
-    FlagClear(FLAG_MYSTERY_EVENT_5);
-    FlagClear(FLAG_MYSTERY_EVENT_6);
-    FlagClear(FLAG_MYSTERY_EVENT_7);
-    FlagClear(FLAG_MYSTERY_EVENT_8);
-    FlagClear(FLAG_MYSTERY_EVENT_9);
-    FlagClear(FLAG_MYSTERY_EVENT_10);
-    FlagClear(FLAG_MYSTERY_EVENT_11);
-    FlagClear(FLAG_MYSTERY_EVENT_12);
-    FlagClear(FLAG_MYSTERY_EVENT_13);
-    FlagClear(FLAG_MYSTERY_EVENT_14);
-    FlagClear(FLAG_MYSTERY_EVENT_15);
+    FlagClear(FLAG_RYU_MAGMA_LINE_DONE);
+    FlagSet(FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE);
+    FlagSet(FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE);
+    FlagSet(FLAG_HIDE_114_MAXIE);
+    FlagClear(FLAG_RYU_MAGMA_INTENSE_SUN_ENABLED);
+    FlagClear(FLAG_UNUSED_5);
+    FlagClear(FLAG_UNUSED_6);
+    FlagClear(FLAG_UNUSED_7);
+    FlagClear(FLAG_UNUSED_8);
+    FlagClear(FLAG_UNUSED_9);
+    FlagClear(FLAG_UNUSED_10);
+    FlagClear(FLAG_UNUSED_11);
+    FlagClear(FLAG_UNUSED_12);
+    FlagClear(FLAG_UNUSED_13);
+    FlagClear(FLAG_UNUSED_14);
+    FlagClear(FLAG_UNUSED_15);
 }
 
 void ClearMysteryEventVars(void)

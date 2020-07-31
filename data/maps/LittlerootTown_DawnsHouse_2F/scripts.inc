@@ -353,7 +353,7 @@ GI_DawnIntro:
 	.string "from Route 101.\p"
 	.string "Oh! Shoot! I was supposed to go\n"
 	.string "study Pokémon behaviors at Route 103!!\p"
-	"Sorry, {PLAYER}, I have to run!$"
+	.string "Sorry, {PLAYER}, I have to run!$"
 	
 GI_DawnMetMsg:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN} (She seems like the outgoing sort.\p Not too shy, either.\n You can see yourself being good\l friends with her.)$"

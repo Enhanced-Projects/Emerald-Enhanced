@@ -516,23 +516,23 @@
 #define FLAG_RYU_DS_LEAF_LOVERS              0x1E2 // Unused Flag
 #define FLAG_RYU_DS_LEAF_PARTNERS            0x1E3 // Unused Flag
 
-// Mystery Gift Flags (Unknown)
-#define FLAG_MYSTERY_EVENT_DONE              0x1E4
-#define FLAG_MYSTERY_EVENT_1                 0x1E5
-#define FLAG_MYSTERY_EVENT_2                 0x1E6
-#define FLAG_MYSTERY_EVENT_3                 0x1E7
-#define FLAG_MYSTERY_EVENT_4                 0x1E8
-#define FLAG_MYSTERY_EVENT_5                 0x1E9
-#define FLAG_MYSTERY_EVENT_6                 0x1EA
-#define FLAG_MYSTERY_EVENT_7                 0x1EB
-#define FLAG_MYSTERY_EVENT_8                 0x1EC
-#define FLAG_MYSTERY_EVENT_9                 0x1ED
-#define FLAG_MYSTERY_EVENT_10                0x1EE
-#define FLAG_MYSTERY_EVENT_11                0x1EF
-#define FLAG_MYSTERY_EVENT_12                0x1F0
-#define FLAG_MYSTERY_EVENT_13                0x1F1
-#define FLAG_MYSTERY_EVENT_14                0x1F2
-#define FLAG_MYSTERY_EVENT_15                0x1F3
+// These unused flags are cleared seperately from the other flags, so when used, the flag also has to be replaced in  event_data.c: Ln117
+#define FLAG_RYU_MAGMA_LINE_DONE             0x1E4
+#define FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE   0x1E5
+#define FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE  0x1E6
+#define FLAG_HIDE_114_MAXIE                  0x1E7
+#define FLAG_RYU_MAGMA_INTENSE_SUN_ENABLED   0x1E8
+#define FLAG_UNUSED_5                        0x1E9
+#define FLAG_UNUSED_6                        0x1EA
+#define FLAG_UNUSED_7                        0x1EB
+#define FLAG_UNUSED_8                        0x1EC
+#define FLAG_UNUSED_9                        0x1ED
+#define FLAG_UNUSED_10                       0x1EE
+#define FLAG_UNUSED_11                       0x1EF
+#define FLAG_UNUSED_12                       0x1F0
+#define FLAG_UNUSED_13                       0x1F1
+#define FLAG_UNUSED_14                       0x1F2
+#define FLAG_UNUSED_15                       0x1F3
 
 // Hidden Items -- sorted by location
 #define FLAG_HIDDEN_ITEMS_START                                                         0x1F4

@@ -1,10 +1,35 @@
 Route124_MapScripts:: @ 81F656C
 	map_script ON_TRANSITION, Route124_OnTransition
+	map_script ON_FRAME, Route124_CheckFinalMagmaAltRomEvent
 	.byte 0
+	
+Route124_CheckFinalMagmaAltRomEvent::
+	map_script_2 VAR_RYU_MAGMA, 590, Route124_DoFinalMagmaEvent
+	.2byte 0
+	
+Route124_DoFinalMagmaEvent:
+	setvar VAR_RYU_MAGMA, 596@@Magma alternate Romance Complete
+	lockall
+	releaseall
+	end
 
 Route124_OnTransition: @ 81F6572
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
+	compare VAR_RYU_MAGMA, 580
+	call_if_eq R124_OpenMagmaCave
 	end
+	
+R124_OpenMagmaCave::
+	setmetatile 51, 22, 167, 1
+	setmetatile 51, 21, 159, 1
+	return
+
+R124_CheckWarpMagmaEvent::
+	compare VAR_RYU_MAGMA, 575
+	goto_if_ne ryu_end
+	warpsilent MAP_TREASURE_HUNTERS_HOUSE_MAGMA_EVENT, 0, 3, 8
+	waitstate
+	
 	
 R124_CheckMagmaBan::
 	goto_if_unset FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE, ryu_end

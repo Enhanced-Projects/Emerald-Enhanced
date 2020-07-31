@@ -212,7 +212,7 @@ RT_OneCompleted:
 
 RT_Nevermind:
 	.string "Nevermind. Let's head over to the\n"
-    .string "rendezvous point.$"
+    .string "rendezvous point.\p"
     .string "Y'know, the empty sea cottage, the\n"
     .string "one on Route 104. Don't keep us\p"
     .string "waiting!$"

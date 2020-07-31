@@ -545,6 +545,7 @@ r116_MagmaEvent7::
 	setvar VAR_RYU_MAGMA, 300 @Player started chimney event
 	setflag FLAG_HIDE_MT_CHIMNEY_TRAINERS
 	setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
+	clearflag FLAG_RYU_HIDE_R112_BLAISE
 	release
 	end
 	

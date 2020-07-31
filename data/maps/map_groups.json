@@ -481,7 +481,8 @@
     "MeteorFalls_2F",
     "MeteorFalls_1F_3R",
     "MeteorFalls_3F",
-    "MagmaHideout_AdminQuarters"
+    "MagmaHideout_AdminQuarters",
+    "LRT_BirchLab_MagmaEvent"
   ],
   "gMapGroup25": [
     "SecretBase_RedCave1",
@@ -677,6 +678,8 @@
   ],
   "gMapGroup33": [
     "Route124_DivingTreasureHuntersHouse",
-    "SootopolisCity_MagmaEvent"
+    "SootopolisCity_MagmaEvent",
+    "TreasureHuntersHouse_MagmaEvent",
+    "Route124_MaxieHideoutCave"
   ]
 }

@@ -7364,21 +7364,30 @@ static const struct TrainerMonNoItemDefaultMoves sParty_DawnRoute110Torchic[] = 
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_DawnRoute119Torchic[] = {
+static const struct TrainerMonItemCustomMoves sParty_RelCourtney2[] = {
     {
-    .iv = 100,
-    .lvl = 29,
-    .species = SPECIES_LOMBRE,
+    .iv = 255,
+    .lvl = 118,
+    .species = SPECIES_MIGHTYENA,
+    .heldItem = ITEM_ASSAULT_VEST,
+	.ability = 0,
+	.moves = {MOVE_FISSURE, MOVE_CRUNCH, MOVE_PLAY_ROUGH, MOVE_SNARL},
     },
     {
-    .iv = 100,
-    .lvl = 29,
-    .species = SPECIES_TOGETIC,
+    .iv = 255,
+    .lvl = 109,
+    .species = SPECIES_SALAZZLE,
+    .heldItem = ITEM_FOCUS_SASH,
+	.ability = 0,
+	.moves = {MOVE_HEAT_WAVE, MOVE_SLUDGE_BOMB, MOVE_FLAMETHROWER, MOVE_FAKE_OUT},
     },
     {
-    .iv = 150,
-    .lvl = 31,
-    .species = SPECIES_MARSHTOMP,
+    .iv = 255,
+    .lvl = 104,
+    .species = SPECIES_DELPHOX,
+    .heldItem = ITEM_SITRUS_BERRY,
+	.ability = 2,
+	.moves = {MOVE_PSYCHIC, MOVE_GRASS_KNOT, MOVE_FLAMETHROWER, MOVE_HEAT_WAVE},
     }
 };
 
@@ -8179,16 +8188,54 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Macey[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRustboroTreecko[] = {
+static const struct TrainerMonItemCustomMoves sParty_MaxieStory[] = {
     {
-    .iv = 25,
-    .lvl = 13,
-    .species = SPECIES_RIOLU,
+    .iv = 255,
+    .lvl = 100,
+    .species = SPECIES_CAMERUPT,
+    .heldItem = ITEM_CAMERUPTITE,
+	.ability = 1,
+	.moves = {MOVE_HEAT_WAVE, MOVE_EARTH_POWER, MOVE_GRAVEL_STORM, MOVE_NONE},
     },
     {
-    .iv = 50,
+    .iv = 255,
+    .lvl = 98,
+    .species = SPECIES_TORKOAL,
+    .heldItem = ITEM_AIR_BALLOON,
+	.ability = 1,
+	.moves = {MOVE_HEAT_WAVE, MOVE_EARTH_POWER, MOVE_SOLAR_BEAM, MOVE_NONE},
+    },
+    {
+    .iv = 239,
+    .lvl = 85,
+    .species = SPECIES_CROBAT,
+    .heldItem = ITEM_CHOICE_BAND,
+	.ability = 2,
+	.moves = {MOVE_FLY, MOVE_POISON_FANG, MOVE_SECRET_POWER, MOVE_U_TURN},
+    },
+    {
+    .iv = 255,
     .lvl = 15,
-    .species = SPECIES_TORCHIC,
+    .species = SPECIES_INCINEROAR,
+    .heldItem = ITEM_BLACK_GLASSES,
+	.ability = 0,
+	.moves = {MOVE_FLARE_BLITZ, MOVE_DARKEST_LARIAT, MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE},
+    },
+    {
+    .iv = 255,
+    .lvl = 15,
+    .species = SPECIES_NOIVERN,
+    .heldItem = ITEM_LIFE_ORB,
+	.ability = 1,
+	.moves = {MOVE_DRACO_METEOR, MOVE_HURRICANE, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST},
+    },
+    {
+    .iv = 255,
+    .lvl = 15,
+    .species = SPECIES_TYPHLOSION,
+    .heldItem = ITEM_FOCUS_SASH,
+	.ability = 2,
+	.moves = {MOVE_EARTH_POWER, MOVE_HEAT_WAVE, MOVE_BLAST_OFF, MOVE_EARTHQUAKE},
     }
 };
 
@@ -8335,7 +8382,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MaxieMagmaHideout[] = {/
     {
     .iv = 150,
     .lvl = 37,
-    .species = SPECIES_MIGHTYENA,
+    .species = SPECIES_NOIVERN,
     },
     {
     .iv = 150,
@@ -8353,7 +8400,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MaxieMtChimney[] = {//Ma
     {
     .iv = 150,
     .lvl = 24,
-    .species = SPECIES_MIGHTYENA,
+    .species = SPECIES_NOIVERN,
     },
     {
     .iv = 150,
@@ -10302,7 +10349,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MaxieMossdeep[] = {//Max
     {
     .iv = 150,
     .lvl = 42,
-    .species = SPECIES_MIGHTYENA,
+    .species = SPECIES_NOIVERN,
     },
     {
     .iv = 150,

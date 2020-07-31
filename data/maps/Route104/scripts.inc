@@ -282,7 +282,7 @@ Route104_EventScript_BrendanDefeated:: @ 81ECF38
 	end
 
 Route104_EventScript_BattleBrendanTreecko:: @ 81ECF4D
-	trainerbattle_no_intro TRAINER_EMPTY_33, Route104_Text_BrendanDefeat
+	trainerbattle_no_intro TRAINER_STORY_MAXIE, Route104_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
 	goto Route104_EventScript_BrendanDefeated
 	end

@@ -538,7 +538,7 @@
 #define TRAINER_EMPTY_25                    534
 #define TRAINER_EMPTY_26                    535
 #define TRAINER_EMPTY_27                    536
-#define TRAINER_EMPTY_28                    537
+#define TRAINER_REL_COURTNEY_2                    537
 #define TRAINER_ISAAC_1                     538
 #define TRAINER_DAVIS                       539
 #define TRAINER_MITCHELL                    540
@@ -593,7 +593,7 @@
 #define TRAINER_GRUNT_SPACE_CENTER_6        589
 #define TRAINER_GRUNT_SPACE_CENTER_7        590
 #define TRAINER_MACEY                       591
-#define TRAINER_EMPTY_33    592
+#define TRAINER_STORY_MAXIE    592
 #define TRAINER_BRENDAN_2     593
 #define TRAINER_PAXTON                      594
 #define TRAINER_ISABELLA                    595
