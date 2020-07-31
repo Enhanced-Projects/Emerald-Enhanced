@@ -1,3 +1,19 @@
+.set LOCALID_MC, 1
+.set LOCALID_JUDGE, 2
+.set LOCALID_CONTESTANT_1, 3
+.set LOCALID_CONTESTANT_2, 4
+.set LOCALID_CONTESTANT_3, 5
+.set LOCALID_AUDIENCE_1, 6
+.set LOCALID_AUDIENCE_3, 7
+.set LOCALID_AUDIENCE_4, 8
+.set LOCALID_AUDIENCE_5, 9
+.set LOCALID_AUDIENCE_6, 10
+.set LOCALID_AUDIENCE_7, 11
+.set LOCALID_AUDIENCE_2, 12
+.set LOCALID_POKEBALL, 13
+.set LOCALID_CONTESTANT_4, 14
+.set LOCALID_ARTIST, 15
+
 @ Either ends or returns to EventScript_ContestReceptionist after submitting a contest entry
 LilycoveCity_ContestLobby_EventScript_SpeakToContestReceptionist:: @ 8279CC5
 	lock
@@ -194,9 +210,9 @@ ContestHall_EventScript_DoContest:: @ 8279F97
 	special LinkContestTryShowWirelessIndicator
 	setvar VAR_0x8006, 0
 	lockall
-	applymovement 14, ContestHall_Movement_Player4FaceUp
+	applymovement LOCALID_CONTESTANT_4, ContestHall_Movement_Player4FaceUp
 	waitmovement 0
-	applymovement 1, ContestHall_Movement_MCWalkDown
+	applymovement LOCALID_MC, ContestHall_Movement_MCWalkDown
 	waitmovement 0
 	releaseall
 	call ContestHall_EventScript_TryWaitForLink
@@ -273,7 +289,7 @@ ContestHall_EventScript_ContestGettingStarted:: @ 827A097
 	bufferstdstring 2, VAR_0x8009
 	call ContestHall_EventScript_GettingStarted
 	lockall
-	applymovement 1, ContestHall_Movement_MCBackUp
+	applymovement LOCALID_MC, ContestHall_Movement_MCBackUp
 	waitmovement 0
 	releaseall
 	return
@@ -343,37 +359,37 @@ ContestHall_EventScript_ContestantWalkToCenter:: @ 827A149
 ContestHall_EventScript_Player1WalkToCenter:: @ 827A176
 	call ContestHall_EventScript_TryWaitForLink
 	lockall
-	applymovement 3, ContestHall_Movement_Player1WalkToCenter
+	applymovement LOCALID_CONTESTANT_1, ContestHall_Movement_Player1WalkToCenter
 	waitmovement 0
 	releaseall
-	setvar VAR_0x800B, 3
+	setvar VAR_0x800B, LOCALID_CONTESTANT_1
 	return
 
 ContestHall_EventScript_Player2WalkToCenter:: @ 827A18D
 	call ContestHall_EventScript_TryWaitForLink
 	lockall
-	applymovement 4, ContestHall_Movement_Player2WalkToCenter
+	applymovement LOCALID_CONTESTANT_2, ContestHall_Movement_Player2WalkToCenter
 	waitmovement 0
 	releaseall
-	setvar VAR_0x800B, 4
+	setvar VAR_0x800B, LOCALID_CONTESTANT_2
 	return
 
 ContestHall_EventScript_Player3WalkToCenter:: @ 827A1A4
 	call ContestHall_EventScript_TryWaitForLink
 	lockall
-	applymovement 5, ContestHall_Movement_Player3WalkToCenter
+	applymovement LOCALID_CONTESTANT_3, ContestHall_Movement_Player3WalkToCenter
 	waitmovement 0
 	releaseall
-	setvar VAR_0x800B, 5
+	setvar VAR_0x800B, LOCALID_CONTESTANT_3
 	return
 
 ContestHall_EventScript_Player4WalkToCenter:: @ 827A1BB
 	call ContestHall_EventScript_TryWaitForLink
 	lockall
-	applymovement 14, ContestHall_Movement_Player4WalkToCenter
+	applymovement LOCALID_CONTESTANT_4, ContestHall_Movement_Player4WalkToCenter
 	waitmovement 0
 	releaseall
-	setvar VAR_0x800B, 14
+	setvar VAR_0x800B, LOCALID_CONTESTANT_4
 	return
 
 ContestHall_EventScript_ShowContestMonPic:: @ 827A1D2
@@ -386,7 +402,7 @@ ContestHall_EventScript_ShowContestMonPic:: @ 827A1D2
 	releaseall
 	call ContestHall_EventScript_TryWaitForLink
 	call ContestHall_EventScript_CheckIfContestWithRSPlayer
-	addobject 13  @ Place Poke Ball down
+	addobject LOCALID_POKEBALL
 	playse SE_DANSA
 	lockall
 	applymovement VAR_0x800B, ContestHall_Movement_ContestantDelay32
@@ -417,13 +433,13 @@ ContestHall_EventScript_AudienceVote:: @ 827A230
 	waitmessage
 	setvar VAR_TEMP_4, 0
 	call ContestHall_EventScript_AudienceLookAround
-	applymovement 1, ContestHall_Movement_MCFaceJudge2
+	applymovement LOCALID_MC, ContestHall_Movement_MCFaceJudge2
 	waitmovement 0
-	applymovement 2, ContestHall_Movement_JudgeFaceMC
+	applymovement LOCALID_JUDGE, ContestHall_Movement_JudgeFaceMC
 	waitmovement 0
 	delay 20
-	applymovement 1, ContestHall_Movement_FaceContestants
-	applymovement 2, ContestHall_Movement_FaceContestants
+	applymovement LOCALID_MC, ContestHall_Movement_FaceContestants
+	applymovement LOCALID_JUDGE, ContestHall_Movement_FaceContestants
 	waitmovement 0
 	return
 
@@ -466,25 +482,25 @@ ContestHall_EventScript_VotingUnderWayLink:: @ 827A2CA
 
 ContestHall_EventScript_AudienceReactToContestant:: @ 827A2D5
 	call ContestHall_EventScript_TryWaitForLink
-	applymovement 1, ContestHall_Movement_AudienceMemberLookLeft
+	applymovement LOCALID_MC, ContestHall_Movement_AudienceMemberLookLeft
 	waitmovement 0
 	playse SE_W227B
 	call ContestHall_EventScript_VObjectAudienceLookAround
-	applymovement 9, ContestHall_Movement_AudienceMemberLookRight
-	applymovement 12, ContestHall_Movement_AudienceMemberLookDown
-	applymovement 7, ContestHall_Movement_AudienceMemberLookRight
+	applymovement LOCALID_AUDIENCE_5, ContestHall_Movement_AudienceMemberLookRight
+	applymovement LOCALID_AUDIENCE_2, ContestHall_Movement_AudienceMemberLookDown
+	applymovement LOCALID_AUDIENCE_3, ContestHall_Movement_AudienceMemberLookRight
 	waitmovement 0
-	applymovement 1, ContestHall_Movement_AudienceMemberLookRight
+	applymovement LOCALID_MC, ContestHall_Movement_AudienceMemberLookRight
 	waitmovement 0
-	applymovement 10, ContestHall_Movement_AudienceMemberLookLeft
-	applymovement 11, ContestHall_Movement_AudienceMemberLookDown
-	applymovement 6, ContestHall_Movement_AudienceMemberLookUp
-	applymovement 8, ContestHall_Movement_AudienceMemberLookLeft
+	applymovement LOCALID_AUDIENCE_6, ContestHall_Movement_AudienceMemberLookLeft
+	applymovement LOCALID_AUDIENCE_7, ContestHall_Movement_AudienceMemberLookDown
+	applymovement LOCALID_AUDIENCE_1, ContestHall_Movement_AudienceMemberLookUp
+	applymovement LOCALID_AUDIENCE_4, ContestHall_Movement_AudienceMemberLookLeft
 	waitmovement 0
-	applymovement 1, ContestHall_Movement_MCLookAtJudge
+	applymovement LOCALID_MC, ContestHall_Movement_MCLookAtJudge
 	waitmovement 0
-	applymovement 1, ContestHall_Movement_MCWalkInPlaceDown
-	applymovement 2, ContestHall_Movement_JudgeLookAtMC
+	applymovement LOCALID_MC, ContestHall_Movement_MCWalkInPlaceDown
+	applymovement LOCALID_JUDGE, ContestHall_Movement_JudgeLookAtMC
 	waitmovement 0
 	releaseall
 	call ContestHall_EventScript_TryWaitForLink
@@ -686,7 +702,7 @@ ContestHall_EventScript_Set8Hearts:: @ 827A654
 ContestHall_EventScript_TryDisplayHeartAudienceMember1:: @ 827A65A
 	compare VAR_TEMP_1, 1
 	goto_if_eq ContestHall_EventScript_AudienceMember1AlreadyEmoted
-	applymovement 6, ContestHall_Movement_Heart
+	applymovement LOCALID_AUDIENCE_1, ContestHall_Movement_Heart
 	playse SE_PIN
 	delay 14
 	setvar VAR_TEMP_1, 1
@@ -699,7 +715,7 @@ ContestHall_EventScript_AudienceMember1AlreadyEmoted:: @ 827A67D
 ContestHall_EventScript_TryDisplayHeartAudienceMember2:: @ 827A67E
 	compare VAR_TEMP_2, 1
 	goto_if_eq ContestHall_EventScript_AudienceMember2AlreadyEmoted
-	applymovement 12, ContestHall_Movement_Heart
+	applymovement LOCALID_AUDIENCE_2, ContestHall_Movement_Heart
 	playse SE_PIN
 	delay 14
 	setvar VAR_TEMP_2, 1
@@ -712,7 +728,7 @@ ContestHall_EventScript_AudienceMember2AlreadyEmoted:: @ 827A6A1
 ContestHall_EventScript_TryDisplayHeartAudienceMember3:: @ 827A6A2
 	compare VAR_TEMP_3, 1
 	goto_if_eq ContestHall_EventScript_AudienceMember3AlreadyEmoted
-	applymovement 7, ContestHall_Movement_Heart
+	applymovement LOCALID_AUDIENCE_3, ContestHall_Movement_Heart
 	playse SE_PIN
 	delay 14
 	setvar VAR_TEMP_3, 1
@@ -725,7 +741,7 @@ ContestHall_EventScript_AudienceMember3AlreadyEmoted:: @ 827A6C5
 ContestHall_EventScript_TryDisplayHeartAudienceMember4:: @ 827A6C6
 	compare VAR_TEMP_4, 1
 	goto_if_eq ContestHall_EventScript_Audience4MemberAlreadyEmoted
-	applymovement 8, ContestHall_Movement_Heart
+	applymovement LOCALID_AUDIENCE_4, ContestHall_Movement_Heart
 	playse SE_PIN
 	delay 14
 	setvar VAR_TEMP_4, 1
@@ -738,7 +754,7 @@ ContestHall_EventScript_Audience4MemberAlreadyEmoted:: @ 827A6E9
 ContestHall_EventScript_TryDisplayHeartAudienceMember5:: @ 827A6EA
 	compare VAR_TEMP_5, 1
 	goto_if_eq ContestHall_EventScript_AudienceMember5AlreadyEmoted
-	applymovement 9, ContestHall_Movement_Heart
+	applymovement LOCALID_AUDIENCE_5, ContestHall_Movement_Heart
 	playse SE_PIN
 	delay 14
 	setvar VAR_TEMP_5, 1
@@ -751,7 +767,7 @@ ContestHall_EventScript_AudienceMember5AlreadyEmoted:: @ 827A70D
 ContestHall_EventScript_TryDisplayHeartAudienceMember6:: @ 827A70E
 	compare VAR_TEMP_6, 1
 	goto_if_eq ContestHall_EventScript_AudienceMember6AlreadyEmoted
-	applymovement 10, ContestHall_Movement_Heart
+	applymovement LOCALID_AUDIENCE_6, ContestHall_Movement_Heart
 	playse SE_PIN
 	delay 14
 	setvar VAR_TEMP_6, 1
@@ -764,7 +780,7 @@ ContestHall_EventScript_AudienceMember6AlreadyEmoted:: @ 827A731
 ContestHall_EventScript_TryDisplayHeartAudienceMember7:: @ 827A732
 	compare VAR_TEMP_7, 1
 	goto_if_eq ContestHall_EventScript_AudienceMember7AlreadyEmoted
-	applymovement 11, ContestHall_Movement_Heart
+	applymovement LOCALID_AUDIENCE_7, ContestHall_Movement_Heart
 	playse SE_PIN
 	delay 14
 	setvar VAR_TEMP_7, 1
@@ -777,7 +793,7 @@ ContestHall_EventScript_AudienceMember7AlreadyEmoted:: @ 827A755
 ContestHall_EventScript_TryDisplayHeartAudienceMember8:: @ 827A756
 	compare VAR_TEMP_8, 1
 	goto_if_eq ContestHall_EventScript_AudienceMember8AlreadyEmoted
-	applymovement 15, ContestHall_Movement_Heart
+	applymovement LOCALID_ARTIST, ContestHall_Movement_Heart
 	playse SE_PIN
 	delay 14
 	setvar VAR_TEMP_8, 1
@@ -790,7 +806,7 @@ ContestHall_EventScript_AudienceMember8AlreadyEmoted:: @ 827A779
 ContestHall_EventScript_ContestantReturn:: @ 827A77A
 	closemessage
 	release
-	removeobject 13  @ Poke Ball
+	removeobject LOCALID_POKEBALL
 	special HideContestEntryMonPic
 	call ContestHall_EventScript_TryWaitForLink
 	switch VAR_0x8006
@@ -834,13 +850,13 @@ ContestHall_EventScript_Player4WalkBack:: @ 827A7EF
 
 ContestHall_EventScript_DoContestAppeals:: @ 827A801
 	lockall
-	applymovement 1, ContestHall_Movement_FaceContestants2
+	applymovement LOCALID_MC, ContestHall_Movement_FaceContestants2
 	waitmovement 0
 	call ContestHall_EventScript_TryWaitForLink
 	call ContestHall_EventScript_LetsAppeal
 	waitmessage
-	applymovement 1, ContestHall_Movement_WalkStageLeft
-	applymovement 2, ContestHall_Movement_WalkStageRight
+	applymovement LOCALID_MC, ContestHall_Movement_WalkStageLeft
+	applymovement LOCALID_JUDGE, ContestHall_Movement_WalkStageRight
 	waitmovement 0
 	releaseall
 	call ContestHall_EventScript_TryWaitForLink
@@ -850,8 +866,8 @@ ContestHall_EventScript_DoContestAppeals:: @ 827A801
 	special LinkContestTryShowWirelessIndicator
 	setvar VAR_TEMP_9, 0
 	lockall
-	applymovement 1, ContestHall_Movement_WalkStageRight
-	applymovement 2, ContestHall_Movement_WalkStageLeft
+	applymovement LOCALID_MC, ContestHall_Movement_WalkStageRight
+	applymovement LOCALID_JUDGE, ContestHall_Movement_WalkStageLeft
 	waitmovement 0
 	releaseall
 	return
@@ -889,13 +905,13 @@ ContestHall_EventScript_ContestResults:: @ 827A8A5
 	call ContestHall_EventScript_TryWaitForLink
 	call ContestHall_EventScript_ThankYouForAppeals
 	call ContestHall_EventScript_TryWaitForLink
-	applymovement 1, ContestHall_Movement_MCFaceJudge
+	applymovement LOCALID_MC, ContestHall_Movement_MCFaceJudge
 	waitmovement 0
 	call ContestHall_EventScript_JudgeLooksReady
 	call ContestHall_EventScript_TryWaitForLink
 	call ContestHall_EventScript_WeWillDeclareWinner
 	call ContestHall_EventScript_TryWaitForLink
-	applymovement 1, ContestHall_Movement_FaceContestants
+	applymovement LOCALID_MC, ContestHall_Movement_FaceContestants
 	waitmovement 0
 	closemessage
 	releaseall
@@ -968,19 +984,19 @@ ContestHall_EventScript_GetWinnerObjEventId:: @ 827A987
 	return
 
 ContestHall_EventScript_GetPlayer1ObjEventId:: @ 827A9BC
-	setvar VAR_TEMP_3, 3
+	setvar VAR_TEMP_3, LOCALID_CONTESTANT_1
 	return
 
 ContestHall_EventScript_GetPlayer2ObjEventId:: @ 827A9C2
-	setvar VAR_TEMP_3, 4
+	setvar VAR_TEMP_3, LOCALID_CONTESTANT_2
 	return
 
 ContestHall_EventScript_GetPlayer3ObjEventId:: @ 827A9C8
-	setvar VAR_TEMP_3, 5
+	setvar VAR_TEMP_3, LOCALID_CONTESTANT_3
 	return
 
 ContestHall_EventScript_GetPlayer4ObjEventId:: @ 827A9CE
-	setvar VAR_TEMP_3, 14
+	setvar VAR_TEMP_3, LOCALID_CONTESTANT_4
 	return
 
 ContestHall_EventScript_CongratulateWinner:: @ 827A9D4
@@ -1012,15 +1028,15 @@ ContestHall_EventScript_AudienceLookAround:: @ 827AA1B
 	lockall
 	compare VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_NORMAL
 	call_if_gt ContestHall_EventScript_VObjectAudienceLookAround
-	applymovement 9, ContestHall_Movement_AudienceMemberLookRight
-	applymovement 12, ContestHall_Movement_AudienceMemberLookDown
-	applymovement 7, ContestHall_Movement_AudienceMemberLookRight
+	applymovement LOCALID_AUDIENCE_5, ContestHall_Movement_AudienceMemberLookRight
+	applymovement LOCALID_AUDIENCE_2, ContestHall_Movement_AudienceMemberLookDown
+	applymovement LOCALID_AUDIENCE_3, ContestHall_Movement_AudienceMemberLookRight
 	delay 30
-	applymovement 10, ContestHall_Movement_AudienceMemberLookLeft
-	applymovement 11, ContestHall_Movement_AudienceMemberLookDown
-	applymovement 6, ContestHall_Movement_AudienceMemberLookUp
-	applymovement 8, ContestHall_Movement_AudienceMemberLookLeft
-	compare VAR_TEMP_4, 4
+	applymovement LOCALID_AUDIENCE_6, ContestHall_Movement_AudienceMemberLookLeft
+	applymovement LOCALID_AUDIENCE_7, ContestHall_Movement_AudienceMemberLookDown
+	applymovement LOCALID_AUDIENCE_1, ContestHall_Movement_AudienceMemberLookUp
+	applymovement LOCALID_AUDIENCE_4, ContestHall_Movement_AudienceMemberLookLeft
+	compare VAR_TEMP_1, 4
 	goto_if_ne ContestHall_EventScript_AudienceLookAround
 	delay 30
 	return

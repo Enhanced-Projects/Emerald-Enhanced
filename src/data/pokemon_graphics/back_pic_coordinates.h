@@ -4049,7 +4049,7 @@ const struct MonCoords gMonBackPicCoords[] =
     [SPECIES_EGG] =
     {
         .size = 0x36,
-        .y_offset = 0x0a,
+        .y_offset = 10,
     },
     [SPECIES_UNOWN_A] =
     {
@@ -4059,137 +4059,137 @@ const struct MonCoords gMonBackPicCoords[] =
     [SPECIES_UNOWN_B] =
     {
         .size = 0x56,
-        .y_offset = 0x09,
+        .y_offset = 9,
     },
     [SPECIES_UNOWN_C] =
     {
         .size = 0x67,
-        .y_offset = 0x06,
+        .y_offset = 6,
     },
     [SPECIES_UNOWN_D] =
     {
         .size = 0x56,
-        .y_offset = 0x08,
+        .y_offset = 8,
     },
     [SPECIES_UNOWN_E] =
     {
         .size = 0x56,
-        .y_offset = 0x0a,
+        .y_offset = 10,
     },
     [SPECIES_UNOWN_F] =
     {
         .size = 0x66,
-        .y_offset = 0x0a,
+        .y_offset = 10,
     },
     [SPECIES_UNOWN_G] =
     {
         .size = 0x57,
-        .y_offset = 0x05,
+        .y_offset = 5,
     },
     [SPECIES_UNOWN_H] =
     {
         .size = 0x66,
-        .y_offset = 0x08,
+        .y_offset = 8,
     },
     [SPECIES_UNOWN_I] =
     {
         .size = 0x37,
-        .y_offset = 0x07,
+        .y_offset = 7,
     },
     [SPECIES_UNOWN_J] =
     {
         .size = 0x46,
-        .y_offset = 0x09,
+        .y_offset = 9,
     },
     [SPECIES_UNOWN_K] =
     {
         .size = 0x57,
-        .y_offset = 0x07,
+        .y_offset = 7,
     },
     [SPECIES_UNOWN_L] =
     {
         .size = 0x46,
-        .y_offset = 0x0a,
+        .y_offset = 10,
     },
     [SPECIES_UNOWN_M] =
     {
         .size = 0x65,
-        .y_offset = 0x0d,
+        .y_offset = 13,
     },
     [SPECIES_UNOWN_N] =
     {
         .size = 0x65,
-        .y_offset = 0x0d,
+        .y_offset = 13,
     },
     [SPECIES_UNOWN_O] =
     {
         .size = 0x66,
-        .y_offset = 0x08,
+        .y_offset = 8,
     },
     [SPECIES_UNOWN_P] =
     {
         .size = 0x46,
-        .y_offset = 0x0a,
+        .y_offset = 10,
     },
     [SPECIES_UNOWN_Q] =
     {
         .size = 0x55,
-        .y_offset = 0x0f,
+        .y_offset = 15,
     },
     [SPECIES_UNOWN_R] =
     {
         .size = 0x45,
-        .y_offset = 0x0c,
+        .y_offset = 12,
     },
     [SPECIES_UNOWN_S] =
     {
         .size = 0x57,
-        .y_offset = 0x04,
+        .y_offset = 4,
     },
     [SPECIES_UNOWN_T] =
     {
         .size = 0x45,
-        .y_offset = 0x0d,
+        .y_offset = 13,
     },
     [SPECIES_UNOWN_U] =
     {
         .size = 0x65,
-        .y_offset = 0x0d,
+        .y_offset = 13,
     },
     [SPECIES_UNOWN_V] =
     {
         .size = 0x56,
-        .y_offset = 0x0b,
+        .y_offset = 11,
     },
     [SPECIES_UNOWN_W] =
     {
         .size = 0x55,
-        .y_offset = 0x0d,
+        .y_offset = 13,
     },
     [SPECIES_UNOWN_X] =
     {
         .size = 0x55,
-        .y_offset = 0x0f,
+        .y_offset = 15,
     },
     [SPECIES_UNOWN_Y] =
     {
         .size = 0x46,
-        .y_offset = 0x0a,
+        .y_offset = 10,
     },
     [SPECIES_UNOWN_Z] =
     {
         .size = 0x46,
-        .y_offset = 0x0a,
+        .y_offset = 10,
     },
     [SPECIES_UNOWN_EMARK] =
     {
         .size = 0x37,
-        .y_offset = 0x06,
+        .y_offset = 6,
     },
     [SPECIES_UNOWN_QMARK] =
     {
         .size = 0x47,
-        .y_offset = 0x06,
+        .y_offset = 6,
     },
     // Megas
     [SPECIES_MEGA_DIANCIE] =

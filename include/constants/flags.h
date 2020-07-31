@@ -274,7 +274,7 @@
 #define FLAG_RECEIVED_DURIN_BERRY            0xFB
 #define FLAG_RECEIVED_BELUE_BERRY            0xFC
 #define FLAG_ENABLE_RIVAL_MATCH_CALL         0xFD
-#define FLFLAG_RECEIVED_CHARCOAL             0xFE
+#define FLAG_RECEIVED_CHARCOAL               0xFE
 #define FLAG_LATIOS_OR_LATIAS_ROAMING        0xFF
 #define FLAG_RECEIVED_REPEAT_BALL            0x100
 #define FLAG_RECEIVED_OLD_ROD                0x101
@@ -960,10 +960,10 @@
 #define FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE                             0x394
 #define FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA                          0x395
 #define FLAG_HIDE_BATTLE_TOWER_REPORTER                             0x396
-#define FLAG_HIDE_ROUTE_110_RIVAL_1                                 0x397
+#define FLAG_HIDE_ROUTE_110_RIVAL                                   0x397
 #define FLAG_HIDE_CHAMPIONS_ROOM_RIVAL                              0x398
 #define FLAG_HIDE_CHAMPIONS_ROOM_BIRCH                              0x399
-#define FLAG_HIDE_ROUTE_110_RIVAL_2                                 0x39A
+#define FLAG_HIDE_ROUTE_110_RIVAL_ON_BIKE                           0x39A
 #define FLAG_HIDE_ROUTE_119_RIVAL_ON_BIKE                           0x39B
 #define FLAG_HIDE_AQUA_HIDEOUT_GRUNTS                               0x39C
 #define FLAG_HIDE_LILCOVE_MOTEL_GAME_DESIGNERS                      0x39D
@@ -1180,18 +1180,12 @@
 #define FLAG_ITEM_MT_PYRE_4F_SEA_INCENSE                            0x46A
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_WEST_MAX_REVIVE                 0x46B
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_NUGGET                           0x46C
-
 #define FLAG_RYU_EXP_DRIVE_DISABLE_EARNING                          0x46D // Unused Flag
-
 #define FLAG_ITEM_ROUTE_119_NUGGET                                  0x46E
 #define FLAG_ITEM_ROUTE_104_POTION                                  0x46F
-
 #define FLAG_RYU_NUZLOCKEFAILED                                     0x470 // Unused Flag
-
 #define FLAG_ITEM_ROUTE_103_PP_UP                                   0x471
-
 #define FLAG_RYU_DEVELOPER_ITEM_MENU                                0x472 // Unused Flag
-
 #define FLAG_ITEM_ROUTE_108_STAR_PIECE                              0x473
 #define FLAG_ITEM_ROUTE_109_POTION                                  0x474
 #define FLAG_ITEM_ROUTE_110_ELIXIR                                  0x475
@@ -1372,7 +1366,7 @@
 #define NUM_BADGES                                   (1 + FLAG_BADGE08_GET - FLAG_BADGE01_GET)
 
 // Towns and Cities
-#define FLAG_VISITED_LITTLEROOT_TOWN                 (SYSTEM_FLAGS + 0xF)
+#define FLAG_VISITED_LITTLEROOT_TOWN                (SYSTEM_FLAGS + 0xF)
 #define FLAG_VISITED_OLDALE_TOWN                    (SYSTEM_FLAGS + 0x10)
 #define FLAG_VISITED_DEWFORD_TOWN                   (SYSTEM_FLAGS + 0x11)
 #define FLAG_VISITED_LAVARIDGE_TOWN                 (SYSTEM_FLAGS + 0x12)
@@ -1417,9 +1411,9 @@
 #define FLAG_SYS_MIX_RECORD                         (SYSTEM_FLAGS + 0x34)
 #define FLAG_SYS_CLOCK_SET                          (SYSTEM_FLAGS + 0x35)
 #define FLAG_SYS_NATIONAL_DEX                       (SYSTEM_FLAGS + 0x36)
-#define FLAG_SYS_UNUSED_CAVE_SHIP                   (SYSTEM_FLAGS + 0x37) // Unused Flag?
-#define FLAG_SYS_UNUSED_CAVE_WONDER                 (SYSTEM_FLAGS + 0x38) // Unused Flag?
-#define FLAG_SYS_UNUSED_CAVE_BATTLE                 (SYSTEM_FLAGS + 0x39) // Unused Flag?
+#define FLAG_SYS_CAVE_SHIP                          (SYSTEM_FLAGS + 0x37) // Unused Flag, leftover from R/S debug, presumably used by Emerald's debug too
+#define FLAG_SYS_CAVE_WONDER                        (SYSTEM_FLAGS + 0x38) // Unused Flag, same as above
+#define FLAG_SYS_CAVE_BATTLE                        (SYSTEM_FLAGS + 0x39) // Unused Flag, same as above
 #define FLAG_SYS_SHOAL_TIDE                         (SYSTEM_FLAGS + 0x3A)
 #define FLAG_SYS_RIBBON_GET                         (SYSTEM_FLAGS + 0x3B)
 

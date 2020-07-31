@@ -23,7 +23,7 @@ FarawayIsland_Interior_EventScript_267D19:: @ 8267D19
 
 FarawayIsland_Interior_EventScript_267D4B:: @ 8267D4B
 	setvar VAR_0x8004, 1
-	special sub_81D4A90
+	special SetMewAboveGrass
 	return
 
 FarawayIsland_Interior_OnResume: @ 8267D54
@@ -121,7 +121,7 @@ FarawayIsland_Interior_EventScript_Mew:: @ 8267DF2
 	applymovement 1, FarawayIsland_Interior_Movement_MewAppear
 	waitmovement 0
 	setvar VAR_0x8004, 0
-	special sub_81D4A90
+	special SetMewAboveGrass
 	message FarawayIsland_Interior_Text_Mew
 	waitse
 	playmoncry SPECIES_MEW, 2
@@ -133,7 +133,7 @@ FarawayIsland_Interior_EventScript_Mew:: @ 8267DF2
 	call_if_eq FarawayIsland_Interior_EventScript_MewHideRight
 	compare VAR_FACING, DIR_EAST
 	call_if_eq FarawayIsland_Interior_EventScript_MewHideLeft
-	special sub_81D4BEC
+	special DestroyMewEmergingGrassSprite
 	delay 40
 	waitmoncry
 	setvar VAR_0x8004, SPECIES_MEW

@@ -548,7 +548,7 @@ static const u8 sText_SharedItsPower[] =_("{B_ATK_NAME_WITH_PREFIX} shared its\n
 static const u8 sText_SwapsDefAndSpDefOfAllPkmn[] =_("It created a bizarre area in which\nthe Defense and Sp.Def stats are swapped!");
 static const u8 sText_BecameNimble[] =_("{B_ATK_NAME_WITH_PREFIX} became nimble!");
 static const u8 sText_HurledIntoTheAir[] =_("{B_DEF_NAME_WITH_PREFIX} was hurled\ninto the air!");
-static const u8 sText_HeldItemsLoseEffects[] =_("It created a bizarra area in which\nPokémon's held items lose their effects!");
+static const u8 sText_HeldItemsLoseEffects[] =_("It created a bizarre area in which\nPokémon's held items lose their effects!");
 static const u8 sText_FellStraightDown[] =_("{B_DEF_NAME_WITH_PREFIX} fell\nstraight down!");
 static const u8 sText_TransformedIntoWaterType[] =_("{B_DEF_NAME_WITH_PREFIX} transformed\ninto the water type!");
 static const u8 sText_PkmnAcquiredSimple[] =_("{B_DEF_NAME_WITH_PREFIX} acquired\nSimple!");
@@ -560,7 +560,7 @@ static const u8 sText_TookPkmnIntoTheSky[] =_("{B_ATK_NAME_WITH_PREFIX} took\n{B
 static const u8 sText_FreedFromSkyDrop[] =_("{B_DEF_NAME_WITH_PREFIX} was freed\nfrom the Sky Drop!");
 static const u8 sText_PostponeTargetMove[] =_("{B_DEF_NAME_WITH_PREFIX}'s move\nwas postponed!");
 static const u8 sText_ReflectTargetsType[] =_("{B_ATK_NAME_WITH_PREFIX}'s type\nchanged to match the {B_DEF_NAME_WITH_PREFIX}'s!");
-static const u8 sText_TransferHeldItem[] =_("{B_DEF_NAME_WITH_PREFIX} recieved {B_LAST_ITEM}\nfrom {B_ATK_NAME_WITH_PREFIX}");
+static const u8 sText_TransferHeldItem[] =_("{B_DEF_NAME_WITH_PREFIX} received {B_LAST_ITEM}\nfrom {B_ATK_NAME_WITH_PREFIX}");
 static const u8 sText_EmbargoEnds[] = _("{B_ATK_NAME_WITH_PREFIX} can\nuse items again!");
 static const u8 sText_Electromagnetism[] = _("electromagnetism");
 static const u8 sText_BufferEnds[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1}\nwore off!");
@@ -587,15 +587,15 @@ static const u8 sText_GrassyTerrainEnds[] = _("The grass disappeared\nfrom the b
 static const u8 sText_AngryPointActivates[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} maxed\nits attack!");
 static const u8 sText_PoisonHealHpUp[] = _("The poisoning healed {B_ATK_NAME_WITH_PREFIX}\na little bit!");
 static const u8 sText_BadDreamsDmg[] = _("{B_DEF_NAME_WITH_PREFIX} is tormented\nby {B_ATK_ABILITY}!");
-static const u8 sText_MoldBreakerEnters[] = _("{B_ATK_NAME_WITH_PREFIX} breaks the mold!");
-static const u8 sText_TeravoltEnters[] = _("{B_ATK_NAME_WITH_PREFIX} is radiating a bursting aura!");
-static const u8 sText_TurboblazeEnters[] = _("{B_ATK_NAME_WITH_PREFIX} is radiating\na blazing aura!");
-static const u8 sText_SlowStartEnters[] = _("{B_ATK_NAME_WITH_PREFIX} can't get it going!");
+static const u8 sText_MoldBreakerEnters[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} breaks the mold!");
+static const u8 sText_TeravoltEnters[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is radiating \na bursting aura!");
+static const u8 sText_TurboblazeEnters[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is radiating\na blazing aura!");
+static const u8 sText_SlowStartEnters[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} can't get it going!");
 static const u8 sText_SlowStartEnd[] = _("{B_ATK_NAME_WITH_PREFIX} finally got\nits act together!");
 static const u8 sText_SolarPowerHpDrop[] = _("The {B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\ntakes its toll!");
 static const u8 sText_AftermathDmg[] = _("{B_ATK_NAME_WITH_PREFIX} is hurt!");
-static const u8 sText_AnticipationActivates[] = _("{B_ATK_NAME_WITH_PREFIX} shuddered\nin anticipation!");
-static const u8 sText_ForewarnActivates[] = _("{B_ATK_ABILITY} alerted {B_ATK_NAME_WITH_PREFIX}\nto the{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}!");
+static const u8 sText_AnticipationActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} shuddered\nin anticipation!");
+static const u8 sText_ForewarnActivates[] = _("{B_SCR_ACTIVE_ABILITY} alerted {B_SCR_ACTIVE_NAME_WITH_PREFIX}\nto the {B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}!");
 static const u8 sText_IceBodyHpGain[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\nhealed it a little bit!");
 static const u8 sText_SnowWarningHail[] = _("It started to hail!");
 static const u8 sText_FriskActivates[] = _("{B_ATK_NAME_WITH_PREFIX} frisked {B_DEF_NAME_WITH_PREFIX} and\nfound its {B_LAST_ITEM}!");
@@ -1687,10 +1687,12 @@ static const u8 sText_PkmnGettingIntoPosition[] = _("{B_SCR_ACTIVE_NAME_WITH_PRE
 static const u8 sText_PkmnBeganGrowlingDeeply[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} began growling deeply!");
 static const u8 sText_PkmnEagerForMore[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is eager for more!");
 
-const u16 gStringIds_85CCF0A[] =
+const u16 gBattlePalaceFlavorTextTable[] =
 {
-    STRINGID_GLINTAPPEARSINEYE, STRINGID_PKMNGETTINGINTOPOSITION,
-    STRINGID_PKMNBEGANGROWLINGDEEPLY, STRINGID_PKMNEAGERFORMORE
+    STRINGID_GLINTAPPEARSINEYE,
+    STRINGID_PKMNGETTINGINTOPOSITION,
+    STRINGID_PKMNBEGANGROWLINGDEEPLY,
+    STRINGID_PKMNEAGERFORMORE
 };
 
 static const u8 sText_RefIfNothingIsDecided[] = _("REFEREE: If nothing is decided in\n3 turns, we will go to judging!");
