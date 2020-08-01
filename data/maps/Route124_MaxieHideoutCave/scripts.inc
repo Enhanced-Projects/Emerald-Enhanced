@@ -1,7 +1,27 @@
 Route124_MaxieHideoutCave_MapScripts::
+	map_script ON_FRAME, Route124_MaxieHideoutCave_CheckDisableMaxie
 	.byte 0
+	
+Route124_MaxieHideoutCave_CheckDisableMaxie::
+	map_script_2 VAR_TEMP_2, 0, MHC_ShowMaxie
+	.2byte 0
+	
+MHC_ShowMaxie::
+	setvar VAR_TEMP_2, 100
+	compare VAR_RYU_MAGMA, 580
+	goto_if_lt ryu_end
+	compare VAR_RYU_MAGMA, 590
+	goto_if_gt ryu_end
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	addobject 1
+	end
+
 
 MHC_MaxieFinalEvent::
+	setvar VAR_TEMP_0, 100
+	compare VAR_RYU_MAGMA, 580
+	goto_if_lt ryu_end
+	compare VAR_RYU_MAGMA, 590
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -11,15 +31,26 @@ MHC_MaxieFinalEvent::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft
 	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement 1, Common_Movement_FaceRight
+	waitmovement 1
 	msgbox THC_FoundYou
+	closemessage
 	multi_fixed_2_vs_1 TRAINER_STORY_MAXIE, MHC_MaxieDefeated, TRAINER_REL_COURTNEY_2, TRAINER_BACK_PIC_COURTNEY
 	msgbox MHC_ToThinkThat
 	closemessage
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_ExclamationMark
 	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	msgbox MHC_IHaveAnIdea
 	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceLeft
 	msgbox MHC_StayRightThere
 	closemessage
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft
@@ -28,12 +59,14 @@ MHC_MaxieFinalEvent::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	msgbox MHC_BeRightBack
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, MHC_ExitCave
-	applymovement OBJ_EVENT_ID_FOLLOWER, MHC_ExitCave
+	applymovement OBJ_EVENT_ID_PLAYER, MHC_PlayerExitCave
+	applymovement OBJ_EVENT_ID_FOLLOWER, MHC_CourtneyExitCave
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	setvar VAR_RYU_MAGMA, 590@Final Event of Magma Alternate Romance happening
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	warpsilent MAP_ROUTE124, 255, 51, 24
 	waitstate
 	
@@ -67,7 +100,25 @@ MHC_BeRightBack:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Just wait here for a sec\n"
     .string "I'll bring it in.$"
 	
-MHC_ExitCave:
+MHC_PlayerExitCave:
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_down
+	walk_in_place_down
+	step_end
+	
+MHC_CourtneyExitCave:
+	delay_16
+	walk_right
+	walk_right
 	walk_right
 	walk_down
 	walk_down

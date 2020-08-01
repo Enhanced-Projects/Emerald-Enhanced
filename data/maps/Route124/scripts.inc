@@ -8,28 +8,74 @@ Route124_CheckFinalMagmaAltRomEvent::
 	.2byte 0
 	
 Route124_DoFinalMagmaEvent:
+	delay 30
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_RYU_MAGMA, 596@@Magma alternate Romance Complete
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
 	lockall
+	playse SE_NAGERU
+	waitse
+	addobject 13
+	msgbox R124_UseFissure
+	closemessage
+	playmoncry SPECIES_MIGHTYENA, 0
+	waitmoncry
+	msgbox R124_MightyenaUsedFissure
+	closemessage
+	playse SE_W089
+	setvar VAR_0x8004, 2  @ vertical pan
+	setvar VAR_0x8005, 2  @ horizontal pan
+	setvar VAR_0x8006, 20  @ num shakes
+	setvar VAR_0x8007, 3  @ shake delay
+	special ShakeCamera
+	delay 60
+	fadescreen FADE_TO_BLACK
+	call R124_CollapseMaxieCave
+	fadescreen FADE_FROM_BLACK
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	msgbox R124_MightyenaReturn
+	closemessage
+	removeobject 13
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	msgbox R124_HeWontBeBotheringUsAnymore
+	clearflag FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE
+	setflag FLAG_RYU_MAGMA_LINE_DONE
+	closemessage
 	releaseall
 	end
+	
+R124_UseFissure:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Mightyena! Use Fissure!$"
+	
+R124_MightyenaUsedFissure:
+	.string "Mightyena used Fissure!$"
+
+R124_HeWontBeBotheringUsAnymore:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Well, that makes me feel better.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}He won't be around to bother us\n"
+	.string "later.\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Also, no one will know what\n"
+	.string "actually happened here.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Today was a good day.$"
+	
+R124_MightyenaReturn:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Mightyena returns to its ball)$"
 
 Route124_OnTransition: @ 81F6572
-	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
-	compare VAR_RYU_MAGMA, 580
-	call_if_eq R124_OpenMagmaCave
 	end
-	
-R124_OpenMagmaCave::
-	setmetatile 51, 22, 167, 1
-	setmetatile 51, 21, 159, 1
-	return
 
 R124_CheckWarpMagmaEvent::
 	compare VAR_RYU_MAGMA, 575
 	goto_if_ne ryu_end
 	warpsilent MAP_TREASURE_HUNTERS_HOUSE_MAGMA_EVENT, 0, 3, 8
 	waitstate
-	
 	
 R124_CheckMagmaBan::
 	goto_if_unset FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE, ryu_end
@@ -139,4 +185,40 @@ Route124_EventScript_Isabella:: @ 81F6722
 
 Route124_Text_HuntersHouse: @ 81F6739
 	.string "HUNTER's HOUSE$"
+	
+
+R124_CollapseMaxieCave::	
+	setmetatile 51, 22, 145, 1 
+    setmetatile 49, 16, 113, 1
+	setmetatile 50, 16, 113, 1
+	setmetatile 51, 16, 113, 1
+	setmetatile 48, 17, 113, 1
+	setmetatile 49, 17, 113, 1
+	setmetatile 50, 17, 113, 1
+	setmetatile 51, 17, 113, 1
+	setmetatile 52, 17, 113, 1
+	setmetatile 53, 17, 113, 1
+	setmetatile 48, 18, 113, 1
+	setmetatile 49, 18, 113, 1
+	setmetatile 50, 18, 113, 1
+	setmetatile 51, 18, 113, 1
+	setmetatile 52, 18, 113, 1
+	setmetatile 53, 18, 113, 1
+	setmetatile 48, 19, 113, 1
+	setmetatile 49, 19, 113, 1
+	setmetatile 50, 19, 113, 1
+	setmetatile 51, 19, 113, 1
+	setmetatile 52, 19, 113, 1
+	setmetatile 53, 19, 113, 1
+	setmetatile 49, 20, 113, 1
+	setmetatile 50, 20, 113, 1
+	setmetatile 51, 20, 113, 1
+	setmetatile 52, 20, 113, 1
+	setmetatile 53, 20, 113, 1
+	setmetatile 50, 21, 113, 1
+	setmetatile 51, 21, 113, 1
+	setmetatile 52, 21, 113, 1
+	setmetatile 53, 21, 113, 1
+	special DrawWholeMapView
+	return
 

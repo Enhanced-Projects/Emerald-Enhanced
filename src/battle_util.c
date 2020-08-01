@@ -6653,10 +6653,6 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     if (gBattleMoves[move].flags & FLAG_DMG_IN_AIR      && gStatuses3[battlerDef] & STATUS3_ON_AIR)
         MulModifier(&finalModifier, UQ_4_12(2.0));
 
-    dmg = ApplyModifier(finalModifier, dmg);
-    if (dmg == 0)
-        dmg = 1;
-
     if (FlagGet(FLAG_RYU_MAX_SCALE) == 1)
         if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
         {
@@ -6668,6 +6664,11 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
         {
             MulModifier(&finalModifier, UQ_4_12(1.2));
         }
+
+    dmg = ApplyModifier(finalModifier, dmg);
+    if (dmg == 0)
+        dmg = 1;
+
     return dmg;
 }
 
@@ -6693,6 +6694,15 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
     dmg *= CalcAttackStat(move, battlerAtk, battlerDef, moveType, isCrit, updateFlags);
     dmg /= CalcDefenseStat(move, battlerAtk, battlerDef, moveType, isCrit, updateFlags);
     dmg = (dmg / 50) + 2;
+
+    //Courtney has a special mightyena for the purposes of the magma questline.
+    if ((VarGet(VAR_RYU_FOLLOWER_ID) == 120) &&//courtney
+     (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1) &&//is following
+     (move == MOVE_CRUNCH) &&//used crunch
+     (GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_RIGHT))//is the player's partner in battle
+      {
+          dmg *= 5;
+      }
 
     // Calculate final modifiers.
     dmg = CalcFinalDmg(dmg, move, battlerAtk, battlerDef, moveType, typeEffectivenessModifier, isCrit, updateFlags);
