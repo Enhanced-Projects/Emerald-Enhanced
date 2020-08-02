@@ -12,6 +12,8 @@ LCC_MagmaHarbor_Blaise::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LCC_Harbor_PlayerToBlaise
 	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 1, Common_Movement_FaceUp
+	waitmovement 1
 	msgbox LCC_GoAheadPlayer
 	closemessage
 	fadescreen FADE_TO_BLACK

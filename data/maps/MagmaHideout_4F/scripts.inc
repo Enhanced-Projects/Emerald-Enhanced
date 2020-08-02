@@ -1686,15 +1686,3 @@ MH4_HideDeadMagmaMembers::
 	setobjectxy 22, 37, 0
 	setobjectxy 20, 37, 0
 	end
-	
-
-
-
-	
-
-
-	
-	
-	
-	
-	

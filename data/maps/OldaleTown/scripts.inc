@@ -411,6 +411,7 @@ OldaleTown_Text_CitySign: @ 81E94DA
 OT_DoMagmaSetup::
 	setvar VAR_RYU_MAGMA, 230@Magma heist is under way
 	addobject 5
+	playbgm 358, 0
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	release
 	end
