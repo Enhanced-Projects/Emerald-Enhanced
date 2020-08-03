@@ -7,6 +7,21 @@ Route124_CheckFinalMagmaAltRomEvent::
 	map_script_2 VAR_RYU_MAGMA, 590, Route124_DoFinalMagmaEvent
 	.2byte 0
 	
+R124_SetFollowerCourtneyEndEvent_R::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_end
+	compare VAR_RYU_MAGMA, 580
+	goto_if_ne ryu_end
+	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
+	end
+	
+R124_SetFollowerCourtneyEndEvent_NR::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_end
+	compare VAR_RYU_MAGMA, 575
+	goto_if_ne ryu_end
+	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
+	end
+	
+	
 Route124_DoFinalMagmaEvent:
 	delay 30
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft

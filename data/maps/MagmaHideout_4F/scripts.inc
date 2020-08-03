@@ -600,9 +600,10 @@ MH_CheckSetMaxiePosition:
 CheckOpenAdminQuarters::
 	setvar VAR_TEMP_6, 100
 	compare VAR_RYU_MAGMA, 550
-	call_if_ge MH4_SetupCourtneyPursuit
+	call_if_eq MH4_SetupCourtneyPursuit
 	goto_if_set FLAG_RYU_MAGMA_LINE_DONE, SetAdminTiles
 	goto_if_set FLAG_RYU_DS_COURTNEY_LOVERS, SetAdminTiles
+	end
 	
 	
 SetAdminTiles::
