@@ -63,8 +63,7 @@ MH_Shortcut::
 	end
 	
 MH_ShellyArrival::
-	compare VAR_RYU_MAGMA, 301
-	goto_if_ge ryu_end
+	goto_if_set FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
 	lock
 	goto_if_set FLAG_MAGMA_HIDEOUT_EVENT_DONE, ryu_end
 	addobject 7

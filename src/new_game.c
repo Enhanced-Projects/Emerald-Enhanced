@@ -299,6 +299,8 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_MAXIE_END_EVENT);
     FlagSet(FLAG_RYU_COURTNEY_FIERY_PATH);
     FlagSet(FLAG_HIDE_UNION_ROOM_PLAYER_1);
+    FlagSet(FLAG_RYU_HIDE_103_MAGMA_MEETING);
+    FlagSet(FLAG_RYU_HIDE_114_MAXIE);
 }
 
 static void ResetMiniGamesResults(void)

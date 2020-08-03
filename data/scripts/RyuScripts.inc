@@ -1714,6 +1714,19 @@ RyuAC_SuccessMsg::
 RyuAC_CancelMsg::
 	.string "Leaving menu without changes.$"
 
+@==================================================================================================Soot Sack
+
+RyuCheckSootSackContents::
+	buffernumberstring 0, VAR_ASH_GATHER_COUNT
+	msgbox Ryu_SootSackReadout
+	closemessage
+	release
+	end
+
+Ryu_SootSackReadout:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You have {COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1}{COLOR LIGHT_GREEN}{SHADOW GREEN} grams of ash.$"
+
+
 @==================================================================================================Magma Related Global Scripts
 
 Ryu_CheckMagmaStatusForMissionCall::

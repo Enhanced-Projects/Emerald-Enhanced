@@ -357,8 +357,12 @@ dawnhi:
 @-=================================================================================================Magma meeting 3
 
 r103_MagmaMeeting3_TopRight::
+	setvar VAR_TEMP_0, 100
+	compare VAR_RYU_MAGMA, 210
+	goto_if_le ryu_end
 	compare VAR_RYU_MAGMA, 225
 	goto_if_ge ryu_end
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
@@ -366,8 +370,13 @@ r103_MagmaMeeting3_TopRight::
 	goto R103_MagmaMeeting3Main
 
 r103_MagmaMeeting3_Top::
+	setvar VAR_TEMP_0, 100
+	compare VAR_RYU_MAGMA, 210
+	goto_if_le ryu_end
+	setvar VAR_TEMP_0, 100
 	compare VAR_RYU_MAGMA, 225
 	goto_if_ge ryu_end
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
@@ -375,8 +384,13 @@ r103_MagmaMeeting3_Top::
 	goto R103_MagmaMeeting3Main
 
 r103_MagmaMeeting3_Bottom::
+	setvar VAR_TEMP_0, 100
+	compare VAR_RYU_MAGMA, 210
+	goto_if_le ryu_end
+	setvar VAR_TEMP_0, 100
 	compare VAR_RYU_MAGMA, 225
 	goto_if_ge ryu_end
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
@@ -384,8 +398,12 @@ r103_MagmaMeeting3_Bottom::
 	goto R103_MagmaMeeting3Main
 
 r103_MagmaMeeting3_BottomRight::
+	setvar VAR_TEMP_0, 100
+	compare VAR_RYU_MAGMA, 210
+	goto_if_le ryu_end
 	compare VAR_RYU_MAGMA, 225
 	goto_if_ge ryu_end
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft

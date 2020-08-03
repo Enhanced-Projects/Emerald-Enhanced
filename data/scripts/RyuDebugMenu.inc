@@ -184,8 +184,6 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setflag FLAG_RYU_COURTNEY_FIERY_PATH
-	clearflag FLAG_RYU_HIDE_R112_BLAISE
 	buffernumberstring 0, VAR_RYU_MAGMA
 	msgbox RDB_TempVarsViewMsg
 	release
