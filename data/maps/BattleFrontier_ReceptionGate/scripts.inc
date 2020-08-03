@@ -374,7 +374,7 @@ BattleFrontier_ReceptionGate_Text_BattleArenaInfo: @ 8266AC2
 	.string "The Battle Arena is the dojo-like\n"
 	.string "building at the center-right of\l"
 	.string "the Battle Frontier.\p"
-	.string "An event called the Set KO Tourney\n"
+	.string "An event called inverse battle\n"
 	.string "takes place at the Battle Arena.$"
 
 BattleFrontier_ReceptionGate_Text_BattleFactoryInfo: @ 8266B5D

@@ -475,15 +475,15 @@ BattleFrontier_BattleArenaLobby_Text_ReadWhichHeading: @ 8256DDF
 	.string "Which heading do you want to read?$"
 
 BattleFrontier_BattleArenaLobby_Text_ExplainBattleRules: @ 8256E02
-	.string "The Set KO Tourney has special rules,\n"
+	.string "Inverse Battle has special rules,\n"
 	.string "unlike standard battles.\p"
 	.string "Type matchups are reversed.\p"
 	.string "Additionally, no Pokémon have\n"
 	.string "immunities.$"
 
 BattleFrontier_BattleArenaLobby_Text_CongratsOnDefeatingTycoon: @ 82572D9
-	.string "A victory snatched from the ARENA\n"
-	.string "TYCOON, and a seven-Trainer sweep!\p"
+	.string "A victory snatched from the \n"
+	.string "Tycoon, and a seven-Trainer sweep!\p"
 	.string "We congratulate you on your most\n"
 	.string "splendid challenge!$"
 
