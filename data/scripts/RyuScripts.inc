@@ -184,7 +184,6 @@ RDBM_ResetTemporaryBattleFlags::
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	clearflag FLAG_RYU_MAX_SCALE
 	clearflag FLAG_RYU_BOSS_WILD
-	clearflag FLAG_RYU_INVERSE_BATTLE
 	clearflag FLAG_RYU_RANDOMBATTLE
 	msgbox RDBM_ResetTempFlagsMsg
 	release

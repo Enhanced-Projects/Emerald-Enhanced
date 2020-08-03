@@ -6872,12 +6872,21 @@ u16 CalcPartyMonTypeEffectivenessMultiplier(u16 move, u16 speciesDef, u8 ability
     return modifier;
 }
 
+bool8 RyuCheckPlayerIsInBattleArena(void)
+{
+    u16 locGroup = gSaveBlock1Ptr->location.mapGroup;
+    u16 locMap = gSaveBlock1Ptr->location.mapNum;
+    if ((locGroup == 26) && (locMap == 30))
+        return TRUE;
+    
+    return FALSE;
+}
+
 u16 GetTypeModifier(u8 atkType, u8 defType)
 {
-    if (FlagGet(FLAG_RYU_INVERSE_BATTLE) == 1)
+    if (RyuCheckPlayerIsInBattleArena() == TRUE)
         return sInverseTypeEffectivenessTable[atkType][defType];
-    else
-        return sTypeEffectivenessTable[atkType][defType];
+    return sTypeEffectivenessTable[atkType][defType];
 }
 
 s32 GetStealthHazardDamage(u8 hazardType, u8 battlerId)

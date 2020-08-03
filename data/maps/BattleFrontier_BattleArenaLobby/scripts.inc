@@ -32,7 +32,6 @@ BattleFrontier_BattleArenaLobby_EventScript_QuitWithoutSaving:: @ 8255C88
 	arena_set ARENA_DATA_WIN_STREAK_ACTIVE, FALSE
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, 0
 	setvar VAR_TEMP_0, 255
-	clearflag FLAG_RYU_INVERSE_BATTLE
 	releaseall
 	end
 
@@ -42,7 +41,6 @@ BattleFrontier_BattleArenaLobby_EventScript_WonChallenge:: @ 8255CCF
 	compare VAR_RESULT, TRUE
 	goto_if_eq BattleFrontier_BattleArenaLobby_EventScript_DefeatedTycoon
 	msgbox BattleFrontier_BattleArenaLobby_Text_CongratsOnSevenWins, MSGBOX_DEFAULT
-	clearflag FLAG_RYU_INVERSE_BATTLE
 	goto BattleFrontier_BattleArenaLobby_EventScript_GiveBattlePoints
 
 BattleFrontier_BattleArenaLobby_EventScript_DefeatedTycoon:: @ 8255CF0
@@ -69,7 +67,6 @@ BattleFrontier_BattleArenaLobby_EventScript_LostChallenge:: @ 8255D2B
 	msgbox BattleFrontier_BattleArenaLobby_Text_AwaitAnotherChallenge2, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_TEMP_0, 255
-	clearflag FLAG_RYU_INVERSE_BATTLE
 	releaseall
 	end
 
@@ -152,7 +149,6 @@ BattleFrontier_BattleArenaLobby_EventScript_TryEnterChallenge:: @ 8255E47
 
 BattleFrontier_BattleArenaLobby_EventScript_SaveBeforeChallenge:: @ 8255EE8
 	setvar VAR_TEMP_0, 0
-	setflag FLAG_RYU_INVERSE_BATTLE
 	frontier_set FRONTIER_DATA_SELECTED_MON_ORDER
 	arena_init
 	arena_set ARENA_DATA_WIN_STREAK_ACTIVE, TRUE
@@ -170,7 +166,6 @@ BattleFrontier_BattleArenaLobby_EventScript_EnterChallenge:: @ 8255F54
 	frontier_setpartyorder FRONTIER_PARTY_SIZE
 	msgbox BattleFrontier_BattleArenaLobby_Text_GuideYouToArena, MSGBOX_DEFAULT
 	closemessage
-	setflag FLAG_RYU_INVERSE_BATTLE
 	frontier_get FRONTIER_DATA_LVL_MODE
 	compare VAR_RESULT, FRONTIER_LVL_50
 	call_if_eq BattleFrontier_BattleArenaLobby_EventScript_WalkToDoorLv50
