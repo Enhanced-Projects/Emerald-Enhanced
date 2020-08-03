@@ -173,7 +173,7 @@ SFC9_ActuallyIhave:
 
 SFC9_ADealThis:
 	.string "A deal? At this stage of the game?\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I want to take over Team Magma.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I want to take over Team Magma.$"
 
 SFC9_TeamMagmaTo:
 	.string "Team Magma, to be led by a whelp\n"

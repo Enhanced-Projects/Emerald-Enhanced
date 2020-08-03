@@ -359,7 +359,7 @@ dawnhi:
 r103_MagmaMeeting3_TopRight::
 	setvar VAR_TEMP_0, 100
 	compare VAR_RYU_MAGMA, 210
-	goto_if_le ryu_end
+	goto_if_lt ryu_end
 	compare VAR_RYU_MAGMA, 225
 	goto_if_ge ryu_end
 	lock
@@ -372,7 +372,7 @@ r103_MagmaMeeting3_TopRight::
 r103_MagmaMeeting3_Top::
 	setvar VAR_TEMP_0, 100
 	compare VAR_RYU_MAGMA, 210
-	goto_if_le ryu_end
+	goto_if_lt ryu_end
 	setvar VAR_TEMP_0, 100
 	compare VAR_RYU_MAGMA, 225
 	goto_if_ge ryu_end
@@ -386,7 +386,7 @@ r103_MagmaMeeting3_Top::
 r103_MagmaMeeting3_Bottom::
 	setvar VAR_TEMP_0, 100
 	compare VAR_RYU_MAGMA, 210
-	goto_if_le ryu_end
+	goto_if_lt ryu_end
 	setvar VAR_TEMP_0, 100
 	compare VAR_RYU_MAGMA, 225
 	goto_if_ge ryu_end
@@ -400,7 +400,7 @@ r103_MagmaMeeting3_Bottom::
 r103_MagmaMeeting3_BottomRight::
 	setvar VAR_TEMP_0, 100
 	compare VAR_RYU_MAGMA, 210
-	goto_if_le ryu_end
+	goto_if_lt ryu_end
 	compare VAR_RYU_MAGMA, 225
 	goto_if_ge ryu_end
 	lock

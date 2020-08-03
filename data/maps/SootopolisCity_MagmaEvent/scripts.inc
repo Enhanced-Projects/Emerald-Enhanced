@@ -105,8 +105,15 @@ SC_GroudonFight::
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_CAUGHT
 	call_if_ne SC_Groudon_Defeated
+	compare VAR_RESULT, B_OUTCOME_CAUGHT
+	goto_if_eq SC_HideGroudon
 	goto SC_Groudon_PostEvent
 	
+SC_HideGroudon::
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2
+	goto SC_Groudon_PostEvent
+
 SC_Groudon_Defeated::
 	setflag FLAG_RYU_PLAYER_FAILED_TO_CAPTURE_GROUDON
 	return

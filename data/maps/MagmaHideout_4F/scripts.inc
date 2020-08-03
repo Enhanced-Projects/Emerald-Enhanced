@@ -1529,7 +1529,7 @@ MH4_MaxiCommandsGroudon:
     .string "so that it may have more land!$"
 	
 MH4_WhatIsHappening:
-    .string "Maxie: wait.. what is happening?\p"
+    .string "Maxie: Wait.. what is happening?\p"
     .string "Groudon, why won't you obey me?!$"
 
 MH4_GroudonLooksAtYou:
