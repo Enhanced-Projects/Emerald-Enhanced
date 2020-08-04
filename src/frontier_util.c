@@ -82,7 +82,13 @@ static void ShowPyramidResultsWindow(void);
 static void ShowLinkContestResultsWindow(void);
 static void CopyFrontierBrainText(bool8 playerWonText);
 
-// const rom data
+// Streak appearances of frontier brains.
+// Structure is {silver, gold, recurring, offset}.
+// Where recurring means the brain appears each x battles after gold has been obtained,
+// and offset is added to the current streak before being compared to the symbol streak values.
+// It’s 1 for Tower because you fight the brain after 34 battles (making her the 35th),
+// but 0 for Dome because Tucker is generated at the beginning of round 5, where your streak is 4,
+// and also 0 for Pyramid because you fight Brandon on floor 8 of the Pyramid, thus *after* streak 21.
 static const u8 sFrontierBrainStreakAppearances[NUM_FRONTIER_FACILITIES][4] =
 {
     [FRONTIER_FACILITY_TOWER]   = {35,  70, 35, 1},
@@ -1702,46 +1708,53 @@ static void Script_GetFrontierBrainStatus(void)
 
 u8 GetFrontierBrainStatus(void)
 {
-    s32 status = FRONTIER_BRAIN_NOT_READY;
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
-    u16 winStreakNoModifier = GetCurrentFacilityWinStreak();
-    s32 winStreak = winStreakNoModifier + sFrontierBrainStreakAppearances[facility][3];
-    s32 symbolsCount;
 
-    if (battleMode != FRONTIER_MODE_SINGLES)
+    if (VarGet(VAR_FRONTIER_BATTLE_MODE) != FRONTIER_MODE_SINGLES)
         return FRONTIER_BRAIN_NOT_READY;
 
     if (FlagGet(FLAG_RYU_FORCE_TUCKER) == 1)
-    {
         return FRONTIER_BRAIN_STREAK_LONG;
-    }
 
-    symbolsCount = GetPlayerSymbolCountForFacility(facility);
-    switch (symbolsCount)
+    return CalculateFrontierBrainStatus(facility, GetCurrentFacilityWinStreak());
+}
+
+u8 CalculateFrontierBrainStatus(s32 facility, u16 winStreak) {
+    u8 silverStreak = sFrontierBrainStreakAppearances[facility][0];
+    u8 goldStreak = sFrontierBrainStreakAppearances[facility][1];
+    // Whenever the streak is higher than goldStreak by a multiple of this value, trigger another gold battle.
+    // Example for the tower: gold is 70 and repeatedStreak is 35, so another gold battle will happen at 105, 140, 175, etc.
+    u8 repeatedStreak = sFrontierBrainStreakAppearances[facility][2];
+    // Add the offset (element 3) to compensate e.g. for Brendan technically being on floor 8 of the pyramid.
+    winStreak += sFrontierBrainStreakAppearances[facility][3];
+
+    switch (GetPlayerSymbolCountForFacility(facility))
     {
-    // Missing a symbol
+    // Received nothing
     case 0:
+        if (winStreak == silverStreak)
+            return FRONTIER_BRAIN_SILVER;
+        break;
+    // Received silver, missing gold
     case 1:
-        if (winStreak == sFrontierBrainStreakAppearances[facility][symbolsCount])
-            status = symbolsCount + 1; // FRONTIER_BRAIN_SILVER and FRONTIER_BRAIN_GOLD
+        if (winStreak == silverStreak)
+            return FRONTIER_BRAIN_STREAK;
+        else if (winStreak == goldStreak)
+            return FRONTIER_BRAIN_GOLD;
         break;
     // Already received both symbols
     case 2:
     default:
-        // Silver streak is reached
-        if (winStreak == sFrontierBrainStreakAppearances[facility][0])
-            status = FRONTIER_BRAIN_STREAK;
-        // Gold streak is reached
-        else if (winStreak == sFrontierBrainStreakAppearances[facility][1])
-            status = FRONTIER_BRAIN_STREAK_LONG;
-        // Some increment of the gold streak is reached
-        else if (winStreak > sFrontierBrainStreakAppearances[facility][1] && (winStreak - sFrontierBrainStreakAppearances[facility][1]) % sFrontierBrainStreakAppearances[facility][2] == 0)
-            status = FRONTIER_BRAIN_STREAK_LONG;
+        if (winStreak == silverStreak)
+            return FRONTIER_BRAIN_STREAK;
+        else if (winStreak == goldStreak)
+            return FRONTIER_BRAIN_STREAK_LONG;
+        // Some increment of the gold streak is reached; see comment above
+        else if (winStreak > goldStreak && (winStreak - goldStreak) % repeatedStreak == 0)
+            return FRONTIER_BRAIN_STREAK_LONG;
         break;
     }
-
-    return status;
+    return FRONTIER_BRAIN_NOT_READY;
 }
 
 void CopyFrontierTrainerText(u8 whichText, u16 trainerId)
@@ -2536,7 +2549,7 @@ void CreateFrontierBrainPokemon(void)
     s32 monLevel = 0;
     u8 friendship;
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetFronterBrainSymbol();
+    s32 symbol = GetFrontierBrainSymbol();
     u8 ability = sFrontierBrainsMons[facility][symbol][i].ability;
 
     if (facility == FRONTIER_FACILITY_DOME)
@@ -2581,7 +2594,7 @@ void CreateFrontierBrainPokemon(void)
 u16 GetFrontierBrainMonSpecies(u8 monId)
 {
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetFronterBrainSymbol();
+    s32 symbol = GetFrontierBrainSymbol();
 
     return sFrontierBrainsMons[facility][symbol][monId].species;
 }
@@ -2595,7 +2608,7 @@ void SetFrontierBrainObjEventGfx(u8 facility)
 u16 GetFrontierBrainMonMove(u8 monId, u8 moveSlotId)
 {
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetFronterBrainSymbol();
+    s32 symbol = GetFrontierBrainSymbol();
 
     return sFrontierBrainsMons[facility][symbol][monId].moves[moveSlotId];
 }
@@ -2603,7 +2616,7 @@ u16 GetFrontierBrainMonMove(u8 monId, u8 moveSlotId)
 u8 GetFrontierBrainMonNature(u8 monId)
 {
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetFronterBrainSymbol();
+    s32 symbol = GetFrontierBrainSymbol();
 
     return sFrontierBrainsMons[facility][symbol][monId].nature;
 }
@@ -2611,28 +2624,28 @@ u8 GetFrontierBrainMonNature(u8 monId)
 u8 GetFrontierBrainMonEvs(u8 monId, u8 evStatId)
 {
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetFronterBrainSymbol();
+    s32 symbol = GetFrontierBrainSymbol();
 
     return sFrontierBrainsMons[facility][symbol][monId].evs[evStatId];
 }
 
-s32 GetFronterBrainSymbol(void)
+s32 GetFrontierBrainSymbol(void)
 {
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetPlayerSymbolCountForFacility(facility);
+    u16 winStreak = GetCurrentFacilityWinStreak();
 
-    if (symbol == 2)
-    {
-        u16 winStreak = GetCurrentFacilityWinStreak();
-        if (winStreak + sFrontierBrainStreakAppearances[facility][3] == sFrontierBrainStreakAppearances[facility][0])
-            symbol = 0;
-        else if (winStreak + sFrontierBrainStreakAppearances[facility][3] == sFrontierBrainStreakAppearances[facility][1])
-            symbol = 1;
-        else if (winStreak + sFrontierBrainStreakAppearances[facility][3] > sFrontierBrainStreakAppearances[facility][1]
-                 && (winStreak + sFrontierBrainStreakAppearances[facility][3] - sFrontierBrainStreakAppearances[facility][1]) % sFrontierBrainStreakAppearances[facility][2] == 0)
-            symbol = 1;
-    }
-    return symbol;
+    // First silver
+    if (winStreak + sFrontierBrainStreakAppearances[facility][3] == sFrontierBrainStreakAppearances[facility][0])
+        return 0;
+    // First gold
+    else if (winStreak + sFrontierBrainStreakAppearances[facility][3] == sFrontierBrainStreakAppearances[facility][1])
+        return 1;
+    // Repeated gold battle for longer streaks
+    else if (winStreak + sFrontierBrainStreakAppearances[facility][3] > sFrontierBrainStreakAppearances[facility][1]
+             && (winStreak + sFrontierBrainStreakAppearances[facility][3] - sFrontierBrainStreakAppearances[facility][1]) % sFrontierBrainStreakAppearances[facility][2] == 0)
+        return 1;
+    // Fallback that shouldn’t actually happen.
+    return max(GetPlayerSymbolCountForFacility(facility), 1);
 }
 
 // Called for intro speech as well despite the fact that its handled in the map scripts files instead
@@ -2649,7 +2662,7 @@ static void CopyFrontierBrainText(bool8 playerWonText)
     else
     {
         facility = VarGet(VAR_FRONTIER_FACILITY);
-        symbol = GetFronterBrainSymbol();
+        symbol = GetFrontierBrainSymbol();
     }
 
     switch (playerWonText)

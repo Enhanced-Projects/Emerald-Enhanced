@@ -3,6 +3,7 @@
 
 void CallFrontierUtilFunc(void);
 u8 GetFrontierBrainStatus(void);
+u8 CalculateFrontierBrainStatus(s32 facility, u16 winStreak);
 void CopyFrontierTrainerText(u8 whichText, u16 trainerId);
 void ResetWinStreaks(void);
 u32 GetCurrentFacilityWinStreak(void);
@@ -23,7 +24,7 @@ void SetFrontierBrainObjEventGfx(u8 facility);
 u16 GetFrontierBrainMonMove(u8 monId, u8 moveSlotId);
 u8 GetFrontierBrainMonNature(u8 monId);
 u8 GetFrontierBrainMonEvs(u8 monId, u8 evStatId);
-s32 GetFronterBrainSymbol(void);
+s32 GetFrontierBrainSymbol(void);
 
 extern const u16 gFrontierBannedSpecies[];
 

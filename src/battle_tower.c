@@ -1579,7 +1579,7 @@ static void FillTentTrainerParty(u8 monsCount)
 static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
 {
     s32 i, j;
-    u16 chosenMonIndices[4];
+    u16 chosenMonIndices[MAX_FRONTIER_PARTY_SIZE];
     u8 friendship = MAX_FRIENDSHIP;
     u8 level = SetFacilityPtrsGetLevel();
     u8 fixedIV = 0;
@@ -1629,8 +1629,9 @@ static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
     // Attempt to fill the trainer's party with random Pokemon until 3 have been
     // successfully chosen. The trainer's party may not have duplicate pokemon species
     // or duplicate held items.
-    for (bfMonCount = 0; monSet[bfMonCount] != 0xFFFF; bfMonCount++)
-        ;
+    // The possible pokemon of a trainer are defined in battle_frontier_trainer_mons.h,
+    // and the last element of the array is always -1 (0xFFFF since this is a u16).
+    for (bfMonCount = 0; monSet[bfMonCount] != 0xFFFF; bfMonCount++);
     i = 0;
     otID = Random32();
     while (i != monCount)
@@ -1648,16 +1649,6 @@ static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
         if (j != i + firstMonId)
             continue;
 
-        // Ensure this exact pokemon index isn't a duplicate. This check doesn't seem necessary
-        // because the species and held items were already checked directly above.
-        for (j = 0; j < i; j++)
-        {
-            if (chosenMonIndices[j] == monId)
-                break;
-        }
-        if (j != i)
-            continue;
-
         chosenMonIndices[i] = monId;
 
         // Place the chosen pokemon into the trainer's party.
@@ -1668,7 +1659,6 @@ static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
                                              gFacilityTrainerMons[monId].ivs,
                                              gFacilityTrainerMons[monId].evSpread,
                                              otID);
-
         friendship = MAX_FRIENDSHIP;
         // Give the chosen pokemon its specified moves.
         for (j = 0; j < MAX_MON_MOVES; j++)
