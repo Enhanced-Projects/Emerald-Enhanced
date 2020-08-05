@@ -608,4 +608,5 @@ gSpecials:: @ 81DBA64
 	def_special RyuTestDebug
 	def_special ObjectEventInteractionFertilizeBerryTree
 	def_special RyuBufferQuestVars
+	def_special DoWhiteOut
 

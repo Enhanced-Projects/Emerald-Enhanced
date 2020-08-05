@@ -71,28 +71,39 @@ DrakeMegaRewardMsg::
 
 EGC_FollowerDrake::
 	call RyuFollowerAllySelector
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_DRAKE, 0, NULL, EverGrandeCity_DrakesRoom_Text_Defeat
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq EGC_DR_ChooseValidMons
+	multi_2_vs_1 TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
 	waitstate
 	special LoadPlayerParty
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto Ryu_DrakeMegaReward
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
 
 EGC_FollowerDrakeRematch::
+	setflag VAR_TEMP_B
 	call RyuFollowerAllySelector
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_DRAKE_REMATCH, 0, NULL, EverGrandeCity_DrakesRoom_Text_Defeat
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq EGC_DR_ChooseValidMons
+	multi_2_vs_1 TRAINER_DRAKE_REMATCH, EverGrandeCity_DrakesRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
 	waitstate
 	special LoadPlayerParty
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
+	
+EGC_DR_ChooseValidMons::
+	msgbox EGC_NeedToChoose
+	closemessage
+	goto_if_set FLAG_TEMP_B, EGC_FollowerDrakeRematch
+	goto EGC_FollowerDrake
 
 EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech:: @ 822871A
 	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT

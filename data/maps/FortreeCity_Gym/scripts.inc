@@ -174,16 +174,21 @@ FG_GymBattleIntroLanette::
 	
 FG_AltGymBattle::
 	msgbox FG_PreBattleText MSGBOX_DEFAULT
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_WINONA_4, 0, NULL, FG_DefeatText
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq FG_ChooseValidMons
+	multi_2_vs_1 TRAINER_WINONA_4, FG_DefeatText, VAR_0x8006, VAR_0x8007
 	waitstate
 	special LoadPlayerParty
-	delay 10
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto FG_GymBattleEnd
-	
+
+FG_ChooseValidMons::
+	msgbox EGC_NeedToChoose
+	closemessage
+	goto FG_AltGymBattle
 	
 FG_GymBattleEnd::
 	compare VAR_0x8006, TRAINER_REL_DAWN

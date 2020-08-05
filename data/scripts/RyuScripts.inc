@@ -1849,3 +1849,9 @@ RyuSetMagmaTrainerFlags::
 Ryu_Magma8Notice:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I suppose it's time to head back to\n"
     .string "base and see what's happened so far.$"
+
+@==================================================================================================Player lost a RyuMultiBattlePartnerBrendan
+
+Ryu_PlayerLostTheGame::
+	special DoWhiteOut
+	end

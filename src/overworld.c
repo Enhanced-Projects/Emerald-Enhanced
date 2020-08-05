@@ -425,7 +425,7 @@ void DoWhiteOut(void)
 
     FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
     ScriptContext2_RunNewScript(EventScript_WhiteOut);
-    SetMoney(&gSaveBlock1Ptr->money, GetMoney(&gSaveBlock1Ptr->money) / 2);
+    SetMoney(&gSaveBlock1Ptr->money, ((GetMoney(&gSaveBlock1Ptr->money) / 5) * 4));
     HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
     SetWarpDestinationToLastHealLocation();

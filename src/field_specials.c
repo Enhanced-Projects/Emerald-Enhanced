@@ -5601,7 +5601,7 @@ bool8 RyuFollowerToTrainerID(void)
                     }
                 case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
                     {
-                        gSpecialVar_0x8006 = TRAINER_REL_COURTNEY_1;
+                        gSpecialVar_0x8006 = TRAINER_REL_COURTNEY_2;
 	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_COURTNEY;
                         return TRUE;
                         break;
@@ -6172,3 +6172,4 @@ void RyuBufferQuestVars(void)
     ConvertIntToDecimalStringN(gRyuStringVar1, (VarGet(VAR_RYU_DS_LANA_STAGE)), STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gRyuStringVar2, (VarGet(VAR_RYU_LANETTE_VAR)), STR_CONV_MODE_LEFT_ALIGN, 3);
 }
+

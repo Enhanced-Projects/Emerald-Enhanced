@@ -52,13 +52,15 @@ EverGrandeCity_PhoebesRoom_EventScript_Phoebe:: @ 82281CB
 
 EGC_FollowerPhoebe::
 	call RyuFollowerAllySelector
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_PHOEBE, 0, NULL, EverGrandeCity_PhoebesRoom_Text_Defeat
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq EGC_PR_ChooseValidMons
+	multi_2_vs_1 TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
 	waitstate
 	special LoadPlayerParty
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto RyuPhoebeMegaReward
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 	end
@@ -74,16 +76,25 @@ PhoebeMegaRewardMsg::
 	.string "My ghosts didn't give you a\nhard time at all!\pYou should be able to use this.$"
 	
 EGC_FollowerPhoebeRematch::
+	setflag FLAG_TEMP_B
 	call RyuFollowerAllySelector
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_PHOEBE_REMATCH, 0, NULL, EverGrandeCity_PhoebesRoom_Text_Defeat
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq EGC_PR_ChooseValidMons
+	multi_2_vs_1 TRAINER_PHOEBE_REMATCH, EverGrandeCity_PhoebesRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
 	waitstate
 	special LoadPlayerParty
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 	end
+	
+EGC_PR_ChooseValidMons::
+	msgbox EGC_NeedToChoose
+	closemessage
+	goto_if_set FLAG_TEMP_B, EGC_FollowerPhoebeRematch
+	goto EGC_FollowerPhoebe
 
 EGC_AltPhoebe::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerPhoebeRematch
