@@ -6163,3 +6163,12 @@ void Ryu_ClearAquaSFCTrainerFlags(void)
     FlagClear(TRAINER_FLAGS_START + TRAINER_GRUNT_SEAFLOOR_CAVERN_4);
     FlagClear(TRAINER_FLAGS_START + TRAINER_MATT);
 }
+
+void RyuBufferQuestVars(void)
+{
+    ConvertIntToDecimalStringN(gStringVar1, (VarGet(VAR_RYU_MAGMA)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_DEVON_MAIN_QUEST_VAR)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, (VarGet(VAR_RYU_DEVON_SCIENTIST_STAGE)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, (VarGet(VAR_RYU_DS_LANA_STAGE)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar2, (VarGet(VAR_RYU_LANETTE_VAR)), STR_CONV_MODE_LEFT_ALIGN, 3);
+}

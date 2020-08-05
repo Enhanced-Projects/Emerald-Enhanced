@@ -2000,6 +2000,7 @@ const u8 gText_RyuRelationshipLanetteMenuOption[] = _("Lanette");
 
 
 const u8 gText_RyuBetaMenuBlank[] = _("Empty");
+const u8 gText_RyuBetaMenuViewQuestVars[] = _("View Quest Stages");
 const u8 gText_RyuBetaMenuResetTempBattleFlags[] = _("Reset Battle Flags");
 const u8 gText_RyuBetaMenuResetBadges[] = _("Reset Badges");
 const u8 gText_RyuBetaMenuResetGCMS[] = _("Reset GCMS");

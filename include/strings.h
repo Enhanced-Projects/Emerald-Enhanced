@@ -3134,6 +3134,7 @@ extern const u8 gText_RyuUserModeEvMenuSpDef[];
 extern const u8 gText_RyuUserModeEvMenuSpe[];
 
 extern const u8 gText_RyuBetaMenuBlank[];
+extern const u8 gText_RyuBetaMenuViewQuestVars[];
 extern const u8 gText_RyuBetaMenuResetTempBattleFlags[];
 extern const u8 gText_RyuBetaMenuResetBadges[];
 extern const u8 gText_RyuBetaMenuResetGCMS[];

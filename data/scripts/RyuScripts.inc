@@ -155,11 +155,11 @@ RyuDebugBetaMenuScript::
 	setflag FLAG_RYU_BETA_MENU_USED
 	msgbox BetaMenuIntro MSGBOX_DEFAULT
 	closemessage
-	multichoicedefault 30, 0, 133, 7, 0
+	multichoicedefault 30, 0, MULTI_BETA_MENU, 7, 0
 	switch VAR_RESULT
 	case 0, RDBM_Option1
 	case 1, RDBM_Option2
-	case 2, RDBM_Option3
+	case 2, RDBM_DisplayQuestVars
 	case 3, RDBM_ResetTemporaryBattleFlags
 	case 4, RDBM_ResetBadges
 	case 5, RDBM_ResetGCMS
@@ -175,10 +175,19 @@ BetaMenuIntro:
 
 RDBM_Option1::
 RDBM_Option2::
-RDBM_Option3::
 	msgbox RDBM_Unimplemented
 	release
 	end
+
+RDBM_DisplayQuestVars::
+	special RyuBufferQuestVars
+	msgbox RDBM_DisplayQuestVarsMsg
+	release
+	end
+
+RDBM_DisplayQuestVarsMsg:
+	.string "Magma: {STR_VAR_1}, DevonM: {STR_VAR_2}, DevonS: {STR_VAR_3}\n"
+	.string "Lana: {RYU_STR_1}, Lanette: {RYU_STR_2}$"
 
 RDBM_ResetTemporaryBattleFlags::
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE

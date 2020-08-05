@@ -607,4 +607,5 @@ gSpecials:: @ 81DBA64
 	def_special RyuSetUpSaveBlockStuff
 	def_special RyuTestDebug
 	def_special ObjectEventInteractionFertilizeBerryTree
+	def_special RyuBufferQuestVars
 
