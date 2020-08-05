@@ -1323,6 +1323,7 @@ MH4_GroudonEvent::
 	special ShakeCamera
 	waitstate
 	msgbox MH4_WhatIsHappening
+	removeitem ITEM_BLUE_ORB, 1
 	specialvar VAR_TEMP_A, CountBadges
 	multvar VAR_TEMP_A, 10
 	setwildbattle SPECIES_GROUDON, VAR_TEMP_A, ITEM_NONE
@@ -1368,7 +1369,7 @@ MH4_NormalMagmaGroudonEndEvent::
 	fadescreen FADE_FROM_WHITE
 	setflag FLAG_RYU_MAGMA_LINE_DONE
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
-	setvar VAR_RYU_MAGMA, 599@Player finished the main magma line with the normal ending.
+	setvar VAR_RYU_MAGMA, 598@Player finished the main magma line with the normal ending and caught Groudon.
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	fadescreen FADE_TO_BLACK
 	removeobject 20
@@ -1407,7 +1408,7 @@ MH4_NormalMagmaEnding2::
 	fadescreen FADE_FROM_WHITE
 	setflag FLAG_RYU_MAGMA_LINE_DONE
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
-	setvar VAR_RYU_MAGMA, 598@Player finished the main magma line with the alternate ending.
+	setvar VAR_RYU_MAGMA, 598@Player finished the main magma line with the non-romance ending and failed to capture Groudon.
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	fadescreen FADE_TO_BLACK
 	removeobject 20
@@ -1427,12 +1428,15 @@ MH4_CourtneyGivesMasterBall::
 	applymovement 21, MH4_CourtneyToPlayer
 	waitmovement 21
 	msgbox MH4_PlayerTakeThis
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	closemessage
 	applymovement 20, Common_Movement_FaceDown
 	waitmovement 20
 	giveitem ITEM_MASTER_BALL, 1
 	msgbox MH4_CourtneyHowCouldYou
 	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	removeobject 1
@@ -1487,11 +1491,16 @@ MH4_CourtneyGivesMasterBall::
 	waitmovement 21
 	applymovement 21, MH4_CourtneyToPlayer2
 	waitmovement 21
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement 21, Common_Movement_FaceDown
+	waitmovement 21
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	setflag FLAG_RYU_DS_COURTNEY_LOVERS
 	msgbox MH4_CourtneyLovesPlayer
 	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement 21, Common_Movement_FaceLeft
+	waitmovement 21
 	msgbox MH4_BlaiseAsksWhoLeaderIs
 	closemessage
 	msgbox MH4_CourtneyAnswersBoth
@@ -1507,8 +1516,7 @@ MH4_CourtneyGivesMasterBall::
 	msgbox MH4_WhatTroubleCanWe
 	closemessage
 	setflag FLAG_RYU_MAGMA_LINE_DONE
-	setvar VAR_RYU_MAGMA, 499@Player finished the magma main line with the romance courtney ending.
-	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY
+	setvar VAR_RYU_MAGMA, 599@Player finished the magma main line with the romance courtney ending.
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY
@@ -1587,7 +1595,7 @@ MH4_CourtneyHowCouldYou:
     .string "I brought you in from the streets...\l"
     .string "You were NOTHING before I found you!\p"
     .string "I will put an end to your miserable\n"
-    .string "existence. Mightyena! us-$"
+    .string "existence. Camerupt! use-$"
 
 MH4_CourtneyTiredOfMaxie:
     .string "{COLOR LIGHT_RED}{SHADOW RED}You may have rescued me... but\n"
@@ -1632,7 +1640,7 @@ MH4_CourtneyAnswersBoth:
 
 MH4_BlaiseSalutes:
     .string "Blaise: Very well... Leaders! I'm \n"
-    .string "off to inform the soldier.\p"
+    .string "off to inform the soldiers.\p"
     .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Blaise salutes both of you and\n"
     .string " takes his leave.)$"
 

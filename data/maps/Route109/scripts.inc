@@ -607,7 +607,7 @@ R109_StartMagmaEvent::
 	end
 	
 R109_ThatWasA:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}That was a close one! Thanks for\n"
+	.string "That was a close one! Thanks for\n"
     .string "your help. Here, this is yours.$"
 
 R109_PFFTINearly:

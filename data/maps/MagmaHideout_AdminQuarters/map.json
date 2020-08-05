@@ -78,7 +78,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
-      "script": "NULL"
+      "script": "MHAQ_CheckTerminateCourtney"
     },
     {
       "type": "trigger",

@@ -74,6 +74,7 @@ LH_alreadytalked::
 LH_EventStart::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
 	call_if_set FLAG_RYU_PLAYER_HELPING_AQUA, LH_AquaMember
+	call_if_set FLAG_RYU_PLAYER_HELPING_MAGMA, LH_MagmaMember
 	msgbox LH_BeginQuest MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LH_PlayerShoved
@@ -93,6 +94,16 @@ LH_EventStart::
 LH_AquaMember::
 	goto_if_set FLAG_RYU_ARCHIE_SUCCESSFUL, LH_LeafBadEnd
 	return
+
+LH_MagmaMember::
+	setflag FLAG_RYU_DS_LEAF_LINE_CANCELLED
+	msgbox LH_LeafBadEndMsgMagma MSGBOX_DEFAULT
+	applymovement 2, Common_Movement_FaceDown
+	waitmovement 2
+	setvar VAR_RYU_DS_LANA_STAGE, 666
+	release
+	end
+
 	
 LH_LeafBadEnd::
 	setflag FLAG_RYU_DS_LEAF_LINE_CANCELLED
@@ -166,6 +177,13 @@ LH_LeafNightSceneMsg2:
 
 LH_LeafBadEndMsgAqua:
     .string " (She sees the Aqua emblem on your\n"
+    .string " chest and huffs. She then gives\p"
+    .string " you a very disapproving\n"
+    .string " look. It would appear she's not\l"
+    .string " happy with your choice of work.)$"
+
+LH_LeafBadEndMsgMagma:
+	.string " (She sees the Magma emblem on your\n"
     .string " chest and huffs. She then gives\p"
     .string " you a very disapproving\n"
     .string " look. It would appear she's not\l"

@@ -15,8 +15,10 @@ MHAQ_CheckTerminateCourtney::
 	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_MAGMA_MEMBER_F
 	goto_if_ne ryu_end
 	lock
+	setvar VAR_TEMP_0, 100
 	msgbox MHAQ_DismissCourtney
 	call RF_FollowerLeaveCall
+	addobject 1
 	release
 	end
 
@@ -25,10 +27,10 @@ MHAQ_DismissCourtney:
     .string "Or I will chase you down.$"
 
 MHA_ComeWithPlayer:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}I will come with {PLAYER} now.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I will come with you now.$"
 	
-MHAQ_Maxie::@@need to add post story events, like maybe heatran
+MHAQ_Maxie::@@need to add post story events, like maybe heatran for when the player didn't romance courtney
 	end
 	
-MHAQ_Blaise::
+MHAQ_Blaise::@@need to add post story events for when the player /did/ romance courtney
 	end
