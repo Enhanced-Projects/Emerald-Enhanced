@@ -492,11 +492,11 @@ LRT_LeafEvent::
 	removeobject 3
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	delay 80
-	fadenewbgm MUS_DUMMY
+	playbgm MUS_DUMMY, 0
 	fadescreenspeed 0, 5
 	msgbox LRT_Story7 MSGBOX_DEFAULT
 	closemessage
-	fadenewbgm MUS_MISHIRO
+	playbgm MUS_MISHIRO, 0
 	setvar VAR_RYU_DS_LANA_STAGE, 80
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	setflag FLAG_RYU_DS_LEAF_LOVERS
