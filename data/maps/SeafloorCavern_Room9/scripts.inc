@@ -65,6 +65,7 @@ SFC9_CancelCourtney::
 	goto ryu_end
 	
 SFC9_TakeOpportunity::
+	setflag FLAG_RYU_MAGMA_ALT_LINE
 	msgbox SFC9_ActuallyIhave
 	closemessage
 	playse SE_PIN
