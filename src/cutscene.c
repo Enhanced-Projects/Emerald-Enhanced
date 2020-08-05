@@ -54,6 +54,10 @@ static const u8 sMiningMapBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/ma
 static const u8 sMiningMapBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/maps/mining_map.bin");
 static const u8 sMiningMapBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/maps/mining_map_palette.gbapal");
 
+static const u8 sCourtneyBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_tiles.8bpp");
+static const u8 sCourtneyBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_map.bin");
+static const u8 sCourtneyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -177,6 +181,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .map = sLeafBgMap,
 		.mapSize = sizeof(sLeafBgMap),
         .palette = sLeafBgPalette,
+		.palIdxCnt = 240
+	},
+	[SCENEBGCOURTNEY] = 
+    {
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sCourtneyBgTiles,
+		.tileSize = sizeof(sCourtneyBgTiles),
+        .map = sCourtneyBgMap,
+		.mapSize = sizeof(sCourtneyBgMap),
+        .palette = sCourtneyBgPalette,
 		.palIdxCnt = 240
 	},
 };
