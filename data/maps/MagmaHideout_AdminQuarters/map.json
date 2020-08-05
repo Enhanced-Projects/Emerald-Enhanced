@@ -16,7 +16,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
-      "x": 2,
+      "x": 1,
       "y": 3,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -74,15 +74,6 @@
     {
       "type": "trigger",
       "x": 4,
-      "y": 8,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MHAQ_CheckTerminateCourtney"
-    },
-    {
-      "type": "trigger",
-      "x": 3,
       "y": 8,
       "elevation": 0,
       "var": "VAR_TEMP_0",

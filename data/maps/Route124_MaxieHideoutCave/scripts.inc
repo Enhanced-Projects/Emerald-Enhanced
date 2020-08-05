@@ -36,6 +36,11 @@ MHC_MaxieFinalEvent::
 	msgbox THC_FoundYou
 	closemessage
 	multi_fixed_2_vs_1 TRAINER_STORY_MAXIE, MHC_MaxieDefeated, TRAINER_REL_COURTNEY_2, TRAINER_BACK_PIC_COURTNEY
+	waitstate
+	special LoadPlayerParty
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	msgbox MHC_ToThinkThat
 	closemessage
 	playse SE_PIN

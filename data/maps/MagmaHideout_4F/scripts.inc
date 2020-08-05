@@ -607,8 +607,9 @@ CheckOpenAdminQuarters::
 	
 	
 SetAdminTiles::
-	setmetatile 20, 4, 606, 1
-	setmetatile 20, 3, 598, 1
+	setmetatile 20, 4, 606, 0
+	setmetatile 20, 3, 598, 0
+	special DrawWholeMapView
 	call_if_set FLAG_RYU_PLAYER_FAILED_TO_CAPTURE_GROUDON, SetGroudonEventRepeatable
 	end
 	
