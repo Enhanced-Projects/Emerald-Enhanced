@@ -253,58 +253,66 @@ RyuPartnerMultiText:
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Would you like to challenge this\n"
 	.string "opponent with one of your partners?$"
 
-RyuParterBattleMultichoice::
+RyuPartnerBattleMultichoice::
 	checkplayergender
 	compare VAR_RESULT, FEMALE
 	goto_if_eq RyuPartnerMultiBattleChoiceMale
-	multichoice 20, 4, 130, 1
+	multichoice 20, 4, MULTI_SELECT_PARTNER_MENU, 1
 	switch VAR_RESULT
 	case 0, RyuMultiBattlePartnerDawn
 	case 1, RyuMultiBattlePartnerShelly
 	case 2, RyuMultiBattlePartnerLana
 	case 3, RyuMultiBattlePartnerLanette
+	case 4, RyuMultiBattlePartnerCourtney
 	
 RyuPartnerMultiBattleChoiceMale::
-	multichoice 20, 4, 132, 1
+	multichoice 20, 4, MULTI_SELECT_PARTNER_ALT_GENDER, 1
 	switch VAR_RESULT
 	case 0, RyuMultiBattlePartnerBrendan
 	case 1, RyuMultiBattlePartnerShelly
 	case 2, RyuMultiBattlePartnerLana
 	case 3, RyuMultiBattlePartnerLanette
+	case 4, RyuMultiBattlePartnerCourtney
 	
 RyuPartnerNoRelationship::
 	msgbox Ryu_NOREL
 	closemessage
-	goto RyuParterBattleMultichoice
+	goto RyuPartnerBattleMultichoice
 	
 RyuMultiBattlePartnerDawn::
 	goto_if_unset FLAG_RYU_DS_DAWN_PARTNERS, RyuPartnerNoRelationship
-	setvar VAR_0x8006, TRAINER_REL_DAWN
-	setvar VAR_0x8007, TRAINER_BACK_PIC_DAWN 
+	setvar VAR_0x8008, TRAINER_REL_DAWN
+	setvar VAR_0x8009, TRAINER_BACK_PIC_DAWN 
 	return
 	
 RyuMultiBattlePartnerShelly::
 	goto_if_unset FLAG_RYU_DS_SHELLY_PARTNERS, RyuPartnerNoRelationship
-	setvar VAR_0x8006, TRAINER_REL_SHELLY
-	setvar VAR_0x8007, TRAINER_BACK_PIC_SHELLY
+	setvar VAR_0x8008, TRAINER_REL_SHELLY
+	setvar VAR_0x8009, TRAINER_BACK_PIC_SHELLY
 	return
 	
 RyuMultiBattlePartnerBrendan::
 	goto_if_unset FLAG_RYU_DS_BRENDAN_PARTNERS, RyuPartnerNoRelationship
-	setvar VAR_0x8006, TRAINER_REL_BRENDAN
-	setvar VAR_0x8007, TRAINER_BACK_PIC_BRENDAN
+	setvar VAR_0x8008, TRAINER_REL_BRENDAN
+	setvar VAR_0x8009, TRAINER_BACK_PIC_BRENDAN
 	return
 
 RyuMultiBattlePartnerLana::
 	goto_if_unset FLAG_RYU_DS_LEAF_PARTNERS, RyuPartnerNoRelationship
-	setvar VAR_0x8006, TRAINER_REL_LANA
-	setvar VAR_0x8007, TRAINER_BACK_PIC_LEAF
+	setvar VAR_0x8008, TRAINER_REL_LANA
+	setvar VAR_0x8009, TRAINER_BACK_PIC_LEAF
 	return
 
 RyuMultiBattlePartnerLanette::
 	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, RyuPartnerNoRelationship
-	setvar VAR_0x8006, TRAINER_REL_LANETTE
-	setvar VAR_0x8007, TRAINER_BACK_PIC_LANETTE
+	setvar VAR_0x8008, TRAINER_REL_LANETTE
+	setvar VAR_0x8009, TRAINER_BACK_PIC_LANETTE
+	return
+
+RyuMultiBattlePartnerCourtney::
+	goto_if_unset FLAG_RYU_DS_COURTNEY_PARTNERS, RyuPartnerNoRelationship
+	setvar VAR_0x8008, TRAINER_REL_COURTNEY_2
+	setvar VAR_0x8009, TRAINER_BACK_PIC_COURTNEY
 	return
 	
 Ryu_PlayerCalledDawn:
@@ -321,6 +329,9 @@ Ryu_PlayerCalledLana:
 
 Ryu_PlayerCalledLanette:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} called Lanette...\n... ... ... ... ... ...$"
+
+Ryu_PlayerCalledCourtney:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} called Courtney...\n... ... ... ... ... ...$"
 	
 Ryu_NOREL:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You don't have a good enough\nrelationship with this person.\pChoose a different partner.$"

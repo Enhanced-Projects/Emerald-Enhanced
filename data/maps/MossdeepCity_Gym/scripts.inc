@@ -116,17 +116,19 @@ MG_PartnerQuery::
 	
 	
 MG_RelDialog::
-	call RyuParterBattleMultichoice
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	call RyuPartnerBattleMultichoice
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq MG_GymBattleIntroShelly
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq MG_GymBattleIntroDawn
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq MG_GymBattleIntroBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq MG_GymBattleIntroLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq MG_GymBattleIntroLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq MG_GymBattleIntroCourtney
 	goto MG_NoRelGymBattle
 	
 MG_NoRelGymBattle::
@@ -198,13 +200,25 @@ MG_GymBattleIntroBrendan::
 	waitmovement 0
 	msgbox MG_BRENDAN_INTRO MSGBOX_DEFAULT
 	goto MG_AltGymBattle
+
+MG_GymBattleIntroCourtney::
+	goto_if_unset FLAG_RYU_DS_COURTNEY_PARTNERS, MG_NoRelationship1
+	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 43
+	playse SE_DOOR
+	applymovement 43, MG_PartnerEnter
+	waitmovement 0
+	msgbox MG_COURTNEY_INTRO MSGBOX_DEFAULT
+	goto MG_AltGymBattle
 	
 MG_AltGymBattle::
 	msgbox MG_PreBattleText MSGBOX_DEFAULT
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq MG_ChooseValidMons
-	multi_2_vs_1 TRAINER_TATE_AND_LIZA_SINGLE, MG_DefeatText, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_TATE_AND_LIZA_SINGLE, MG_DefeatText, VAR_0x8008, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -219,16 +233,18 @@ MG_ChooseValidMons::
 	goto MG_AltGymBattle
 	
 MG_GymBattleEnd::
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq MG_GymBattleEndDawn
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq MG_GymBattleEndShelly
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq MG_GymBattleEndBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq MG_GymBattleEndLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq MG_GymBattleEndLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq MG_GymBattleEndCourtney
 	release
 	end
 	
@@ -286,27 +302,44 @@ MG_GymBattleEndLanette::
 	goto MDG_Reset
 	release
 	end
+
+MG_GymBattleEndCourtney::
+	delay 15
+	playmoncry SPECIES_MIGHTYENA, 0
+	waitmoncry
+	msgbox MG_CourtneyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 43, MG_PartnerExit
+	waitmovement 43
+	playse SE_DOOR
+	removeobject 43
+	goto MG_Reset
+	release
+	end
 	
 MG_SHELLY_INTRO:
-    .string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}I've technically got an\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I've technically got an\n"
     .string "edge here, but I can't help but\l"
     .string "feel uncomfortable...$"
 	
 MG_DAWN_INTRO:
-    .string "Dawn:{COLOR LIGHT_RED}{SHADOW RED} This gym is so creepy...\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}This gym is so creepy...\n"
     .string "I'll power through it!$"
 	
 MG_LEAF_INTRO:
-    .string "Lana: Hmm, I didn't know gym leaders\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Hmm, I didn't know gym leaders\n"
     .string "were allowed to be this young.\p"
     .string "Oh well, I won't be nice about it.$"
 
 MG_LANETTE_INTRO:
-    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}This will be quite the\nbout. May the smartest team win!$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}This will be quite the\nbout. May the smartest team win!$"
 
 MG_BRENDAN_INTRO:
-    .string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}Brainpower really isn't\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Brainpower really isn't\n"
     .string "my specialty, So, you take the lead!$"
+
+MG_COURTNEY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}No problem at all, pshychic types\ncan't stand up to my Mightyena.\pFree snack for the pupper!$"
 	
 MG_PreBattleText:
     .string "Tate: I see you levelled the\n"
@@ -320,23 +353,26 @@ MG_DefeatText:
 	.string "our bond?$"
 	
 MG_ShellyGymBattleComplete:
-    .string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}It worked itself out.\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}It worked itself out.\n"
     .string "I'm glad I had dark types with me!$"
 
 MG_DawnGymBattleComplete:
-    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Dawn seems a little off...)$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED} (Dawn seems a little off...)$"
 	
 MG_LanaGymBattleComplete:
-    .string "Lana: Impressive teamwork, but you\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Impressive teamwork, but you\n"
 	.string "should have known that the bond of\l"
 	.string "love is stronger than any other.$"
 	
 MG_LanetteGymBattleComplete:
-    .string "Lanette:{COLOR LIGHT_RED}{SHADOW RED} I had no doubts.\nLet's do this again sometime!$"
+    .string "L{COLOR LIGHT_RED}{SHADOW RED}I had no doubts.\nLet's do this again sometime!$"
 
 MG_BrendanGymBattleComplete:
-    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Brute strength wins again!\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Brute strength wins again!\n"
     .string "Catch ya later, neighbor.$"
+
+MG_CourtneyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}My doggo looks very satisfied.$"
 	
 MG_PartnerEnter:
 	walk_in_place_down

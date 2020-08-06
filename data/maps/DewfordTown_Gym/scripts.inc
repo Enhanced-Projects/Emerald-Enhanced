@@ -216,17 +216,19 @@ DFG_PartnerQuery::
 	
 	
 DFG_RelDialog::
-	call RyuParterBattleMultichoice
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	call RyuPartnerBattleMultichoice
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq DFG_GymBattleIntroShelly
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq DFG_GymBattleIntroDawn
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq DFG_GymBattleIntroBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq DFG_GymBattleIntroLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq DFG_GymBattleIntroLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq DFG_GymBattleIntroCourtney
 	goto DFG_NoRelGymBattle
 	
 DFG_NoRelGymBattle::
@@ -299,12 +301,24 @@ DFG_GymBattleIntroLanette::
 	msgbox DFG_LANETTE_INTRO MSGBOX_DEFAULT
 	goto DFG_AltGymBattle
 	
+DFG_GymBattleIntroCourtney::
+	goto_if_unset FLAG_RYU_DS_COURTNEY_PARTNERS, DFG_NoRelationship1
+	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 14
+	playse SE_DOOR
+	applymovement 14, DFG_PartnerEnter
+	waitmovement 0
+	msgbox DFG_COURTNEY_INTRO MSGBOX_DEFAULT
+	goto DFG_AltGymBattle
+	
 DFG_AltGymBattle::
 	msgbox DFG_PreBattleText MSGBOX_DEFAULT
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq DFG_ChooseValidMons
-	multi_2_vs_1 TRAINER_BRAWLY_4, DFG_DefeatText, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_BRAWLY_4, DFG_DefeatText, VAR_0x8008, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -319,16 +333,18 @@ DFG_ChooseValidMons::
 	goto DFG_AltGymBattle
 	
 DFG_GymBattleEnd::
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq DFG_GymBattleEndDawn
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq DFG_GymBattleEndShelly
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq DFG_GymBattleEndBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq DFG_GymBattleEndLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq DFG_GymBattleEndLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq DFG_GymBattleEndCourtney
 	release
 	end
 	
@@ -381,9 +397,20 @@ DFG_GymBattleEndLanette:
 	removeobject 13
 	release
 	end
+
+DFG_GymBattleEndCourtney::
+	msgbox DFG_CourtneyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 14, DFG_PartnerExit
+	waitmovement 14
+	playse SE_DOOR
+	removeobject 14
+	goto DFG_Reset
+	release
+	end
 	
 DFG_SHELLY_INTRO:
-	.string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}Ah, yes, a good ol'\nfashioned brawl. I used to fight\lAqua grunts for fun all the time!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah, yes, a good ol'\nfashioned brawl. I used to fight\lAqua grunts for fun all the time!$"
 
 DFG_DAWN_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I'm glad you called, I was\n"
@@ -391,14 +418,17 @@ DFG_DAWN_INTRO:
 	.string "you up, like always!$"
 	
 DFG_BRENDAN_INTRO:
-	.string "Brendan: {COLOR LIGHT_RED}{SHADOW RED}Now this is definetly\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Now this is definetly\n"
     .string "more my style. Let's have at it!$"
 
 DFG_LANA_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Lana: My Heracross oughta make quick\nwork of this guy...$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}My Heracross oughta make quick\nwork of this guy...$"
 	
 DFG_LANETTE_INTRO:
-	.string "Lanette:{COLOR LIGHT_RED}{SHADOW RED} I pride myself on my\nabilty to outsmart brawny types.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I pride myself on my\nabilty to outsmart brawny types.$"
+
+DFG_COURTNEY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I like this guy, he punches\nthings. Not as well as you, of couse.$"
 	
 DFG_PreBattleText:
 	.string "Brawly: Here at Dewford Gym, we\n"
@@ -412,26 +442,29 @@ DFG_DefeatText:
 	.string "Hit the waves with me any time!$"
 	
 DFG_ShellyGymBattleComplete:
-	.string "Shelly:{COLOR LIGHT_RED}{SHADOW RED} That really takes me back\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}That really takes me back\n"
     .string "to my grunt days. A nice workout!\l"
     .string "Call me if you want backup again!$"
 
 DFG_DawnGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn:{COLOR DARK_GREY}{SHADOW LIGHT_GREY} Thanks for the fun! Call me\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Thanks for the fun! Call me\n"
 	.string "if you ever want help again!$"
 	
 DFG_BrendanGymBattleComplete:
-	.string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Ah, that's better. Worked"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah, that's better. Worked"
     .string "out all my aggression. Let's do it"
     .string "again sometime!$"
 
 DFG_LanaGymBattleComplete:
-    .string "Lana:{COLOR LIGHT_RED}{SHADOW RED} I do enjoy a nice workout\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I do enjoy a nice workout\n"
     .string "once in a while...\p"
     .string "But now I'm all hot and bothered...$"
 	
 DFG_LanetteGymBattleComplete:
-    .string "Lanette:{COLOR LIGHT_RED}{SHADOW RED} As expected, brawn can't\nbeat brains!$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}As expected, brawn can't\nbeat brains!$"
+
+DFG_CourtneyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Nothing like an early morning\nbeatdown!$"
 	
 DFG_PartnerEnter:
 	walk_left

@@ -166,17 +166,19 @@ PG_PartnerQuery::
 	
 	
 PG_RelDialog::
-	call RyuParterBattleMultichoice
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	call RyuPartnerBattleMultichoice
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq PG_GymBattleIntroShelly
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq PG_GymBattleIntroDawn
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq PG_GymBattleIntroBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq PG_GymBattleIntroLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq PG_GymBattleIntroLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq PG_GymBattleIntroCourtney
 	goto PG_NoRelGymBattle
 	
 PG_NoRelGymBattle::
@@ -248,15 +250,39 @@ PG_GymBattleIntroLanette::
 	waitmovement 14
 	msgbox PG_LANETTE_INTRO MSGBOX_DEFAULT
 	goto PG_AltGymBattle
+
+PG_GymBattleIntroCourtney::
+	goto_if_unset FLAG_RYU_DS_COURTNEY_PARTNERS, PG_NoRelationship1
+	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 15
+	playse SE_DOOR
+	applymovement 15, PG_PartnerEnter
+	waitmovement 0
+	msgbox PG_COURTNEY_INTRO MSGBOX_DEFAULT
+	goto PG_AltGymBattle
 	
 PG_AltGymBattle::
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_MAGMA_MEMBER_F
+	goto_if_eq PG_CourtneyAltGymBattle
 	msgbox PG_PreBattleText MSGBOX_DEFAULT
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq PG_ChooseValidMons
-	multi_2_vs_1 TRAINER_NORMAN_4, PG_DefeatText, VAR_0x8006, VAR_0x8007
-	waitstate
-	special LoadPlayerParty
+	multi_2_vs_1 TRAINER_NORMAN_4, PG_DefeatText, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	delay 10
+	goto PG_GymBattleEnd
+
+PG_CourtneyAltGymBattle::
+	msgbox PG_CourtneyPreBattleText MSGBOX_DEFAULT
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq PG_ChooseValidMons
+	multi_2_vs_1 TRAINER_NORMAN_4, PG_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
@@ -269,16 +295,18 @@ PG_ChooseValidMons::
 	goto PG_AltGymBattle
 	
 PG_GymBattleEnd::
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq PG_GymBattleEndDawn
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq PG_GymBattleEndShelly
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq PG_GymBattleEndBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq PG_GymBattleEndLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq PG_GymBattleEndLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq PG_GymBattleEndCourtney
 	release
 	end
 	
@@ -336,50 +364,75 @@ PG_GymBattleEndLanette::
 	goto PG_Reset
 	release
 	end
+
+PG_GymBattleEndCourtney::
+	msgbox PG_CourtneyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 15, PG_PartnerExit
+	waitmovement 15
+	playse SE_DOOR
+	removeobject 15
+	goto PG_Reset
+	release
+	end
 	
 PG_PreBattleText:
     .string "Norman: Two challengers. Time for\n"
     .string "a double battle. You better have\l"
     .string "potions!$"
 
+PG_CourtneyPreBattleText:
+    .string "So... You're the one who corrupted\n"
+    .string "my child...\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Not at all, In fact, {PLAYER} sought\n"
+    .string "me out, and showed me a better life.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see... Well, I still can't approve.\n"
+    .string "Let's see how close you really are!$"
+
 PG_SHELLY_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly:I didn't really expect to meet\nyour father this way, but battle is\las good a way as any, I guess.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I didn't really expect to meet\nyour father this way, but battle is\las good a way as any, I guess.$"
 	
 PG_DAWN_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: I've been wanting another crack\nat Norman since he beat me before.\pI bet we win this time!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I've been wanting another crack\nat Norman since he beat me before.\pI bet we win this time!$"
 	
 PG_BRENDAN_INTRO:
-    .string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}Best. Parent. intro. Ever.\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Best. Parent. Intro. Ever.\n"
     .string "Let's get it on!$"
 
 PG_ALTTEXT1:
 	.string "I'm quite proud of you, {PLAYER}!$"
 	
 PG_ShellyGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Well, this was fun!\nNice to meet you, pops!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Well, this was fun!\nNice to meet you, pops!$"
 	
 PG_LANA_INTRO:
-	.string "Lana: {COLOR LIGHT_RED}{SHADOW RED}Oh, so your dad is a Gym\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, so your dad is a Gym\n"
     .string "Leader. Your strength makes sense\l"
     .string "now!$"
 	
 PG_LANETTE_INTRO:
-	.string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}Oh... he's your father...\nUm... Hi...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lanette looks at the floor)$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh... he's your father...\nUm... Hi...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lanette looks at the floor)$"
+
+PG_COURTNEY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}We do not need your approval.\nI never decline a challenge, though.$"
 	
 PG_DawnGymBattleComplete:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Ha! Got you this time!\nI knew you couldn't stand to both of us!\lSee you later, {PLAYER}!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ha! Got you this time!\nI knew you couldn't stand to both of us!\lSee you later, {PLAYER}!$"
 	
 PG_BrendanGymBattleComplete:
-    .string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}Ha! He's not so strong\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Ha! He's not so strong\n"
     .string "in a double battle.\l"
     .string "He can't beat our bond!$"
 	
 PG_LeafGymBattleComplete:
-    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}I can definetly see some of your\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I can definetly see some of your\n"
     .string "dad's battle style in yours.$"
 	
 PG_LanetteGymBattleComplete:
-    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}Oh, that wasn't so bad\nNice to meet you!$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, that wasn't so bad\nNice to meet you!$"
+
+PG_CourtneyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I hope you understand now.\nWe're inseperable.\pOf course, I don't care if you\napprove or not.$"
 	
 PG_DefeatText:
     .string "I didn't do enough damage...$"

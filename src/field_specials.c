@@ -5559,50 +5559,50 @@ bool8 RyuFollowerToTrainerID(void)
                 {
                 case OBJ_EVENT_GFX_TWIN:
                     {
-                        gSpecialVar_0x8006 = TRAINER_REL_MINNIE;
-	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_MINNIE;
+                        gSpecialVar_0x8008 = TRAINER_REL_MINNIE;
+	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_MINNIE;
                         return TRUE;
                         break;
                     }
                 case OBJ_EVENT_GFX_WOMAN_2:
                     {
-                        gSpecialVar_0x8006 = TRAINER_REL_LANETTE;
-	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_LANETTE; 
+                        gSpecialVar_0x8008 = TRAINER_REL_LANETTE;
+	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_LANETTE; 
                         return TRUE;
                         break;
                     }
                 case OBJ_EVENT_GFX_AQUA_MEMBER_F:
                     {
-                        gSpecialVar_0x8006 = TRAINER_REL_SHELLY;
-	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_SHELLY;
+                        gSpecialVar_0x8008 = TRAINER_REL_SHELLY;
+	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_SHELLY;
                         return TRUE;
                         break;
                     }
                 case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
                     {
-                        gSpecialVar_0x8006 = TRAINER_REL_DAWN;
-	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_DAWN;
+                        gSpecialVar_0x8008 = TRAINER_REL_DAWN;
+	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_DAWN;
                         return TRUE;
                         break;
                     }
                 case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
                     {
-                        gSpecialVar_0x8006 = TRAINER_REL_BRENDAN;
-	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_BRENDAN;
+                        gSpecialVar_0x8008 = TRAINER_REL_BRENDAN;
+	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_BRENDAN;
                         return TRUE;
                         break;
                     }
                 case OBJ_EVENT_GFX_LEAF:
                     {
-                        gSpecialVar_0x8006 = TRAINER_REL_LANA;
-	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_LEAF;
+                        gSpecialVar_0x8008 = TRAINER_REL_LANA;
+	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_LEAF;
                         return TRUE;
                         break;
                     }
                 case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
                     {
-                        gSpecialVar_0x8006 = TRAINER_REL_COURTNEY_2;
-	                    gSpecialVar_0x8007 = TRAINER_BACK_PIC_COURTNEY;
+                        gSpecialVar_0x8008 = TRAINER_REL_COURTNEY_2;
+	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_COURTNEY;
                         return TRUE;
                         break;
                     }

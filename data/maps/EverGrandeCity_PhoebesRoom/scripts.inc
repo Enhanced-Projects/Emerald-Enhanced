@@ -55,7 +55,7 @@ EGC_FollowerPhoebe::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq EGC_PR_ChooseValidMons
-	multi_2_vs_1 TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat, VAR_0x8006, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -81,7 +81,7 @@ EGC_FollowerPhoebeRematch::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq EGC_PR_ChooseValidMons
-	multi_2_vs_1 TRAINER_PHOEBE_REMATCH, EverGrandeCity_PhoebesRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_PHOEBE_REMATCH, EverGrandeCity_PhoebesRoom_Text_Defeat, VAR_0x8006, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome

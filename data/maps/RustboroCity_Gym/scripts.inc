@@ -68,17 +68,19 @@ RG_PartnerQuery::
 	
 	
 RG_RelDialog::
-	call RyuParterBattleMultichoice
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	call RyuPartnerBattleMultichoice
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq RG_GymBattleIntroShelly
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq RG_GymBattleIntroDawn
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq RG_GymBattleIntroBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq RG_GymBattleIntroLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq RG_GymBattleIntroLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq RG_GymBattleIntroCourtney
 	goto RG_NoRelGymBattle
 	
 RG_NoRelGymBattle::
@@ -150,13 +152,25 @@ RG_GymBattleIntroLanette::
 	waitmovement 10
 	msgbox RG_LANETTE_INTRO MSGBOX_DEFAULT
 	goto RG_AltGymBattle
+
+RG_GymBattleIntroCourtney::
+	goto_if_unset FLAG_RYU_DS_COURTNEY_PARTNERS, RG_NoRelationship1
+	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 11
+	playse SE_DOOR
+	applymovement 11, RG_PartnerEnter
+	waitmovement 0
+	msgbox RG_COURTNEY_INTRO MSGBOX_DEFAULT
+	goto RG_AltGymBattle
 	
 RG_AltGymBattle::
 	msgbox RG_PreBattleText MSGBOX_DEFAULT
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq LG_ChooseValidMons
-	multi_2_vs_1 TRAINER_ROXANNE_4, RG_DefeatText, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_ROXANNE_4, RG_DefeatText, VAR_0x8008, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -171,16 +185,18 @@ RG_ChooseValidMons::
 	goto RG_AltGymBattle
 	
 RG_GymBattleEnd::
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq RG_GymBattleEndDawn
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq RG_GymBattleEndShelly
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq RG_GymBattleEndBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq RG_GymBattleEndLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq RG_GymBattleEndLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq RG_GymBattleEndCourtney
 	release
 	end
 	
@@ -191,6 +207,7 @@ RG_GymBattleEndShelly::
 	waitmovement 0
 	playse SE_DOOR
 	removeobject 7
+	goto RG_Reset
 	release
 	end
 	
@@ -201,6 +218,7 @@ RG_GymBattleEndDawn::
 	waitmovement 0
 	playse SE_DOOR
 	removeobject 6
+	goto RG_Reset
 	release
 	end
 	
@@ -211,6 +229,7 @@ RG_GymBattleEndBrendan::
 	waitmovement 0
 	playse SE_DOOR
 	removeobject 8
+	goto RG_Reset
 	release
 	end
 	
@@ -221,6 +240,7 @@ RG_GymBattleEndLana::
 	waitmovement 9
 	playse SE_DOOR
 	removeobject 9
+	goto RG_Reset
 	release
 	end
 	
@@ -231,48 +251,65 @@ RG_GymBattleEndLanette::
 	waitmovement 10
 	playse SE_DOOR
 	removeobject 10
+	goto RG_Reset
+	release
+	end
+
+RG_GymBattleEndCourtney::
+	msgbox RG_CourtneyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 11, RG_PartnerExit
+	waitmovement 11
+	playse SE_DOOR
+	removeobject 11
+	goto RG_Reset
 	release
 	end
 	
 RG_SHELLY_INTRO:
-	.string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}, I'm glad you\ngot me out of the office for a while.\pLets show her our combined power!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}, I'm glad you\ngot me out of the office for a while.\pLets show her our combined power!$"
 	
 RG_DAWN_INTRO:
-	.string "{RIVAL}: {PLAYER}! I flew in as soon as you called!\pLet's Show her how much we've\lgrown!!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I flew in as soon as you called!\pLet's Show her how much we've\lgrown!!$"
 	
 RG_LANA_INTRO:
-    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}I love smashing rocks.\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I love smashing rocks.\n"
     .string "It's practically therapeutic!$"
 	
 RG_BRENDAN_INTRO:
-	.string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}! I flew in as soon as you called!\pLet's pound some novices!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I flew in as soon as you called!\pLet's pound some novices!$"
 	
 RG_LANETTE_INTRO:
-	.string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}I'm... not very good\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I'm... not very good\n"
     .string "against rock types... But I love a\l"
     .string "challenge!$"
+
+RG_COURTNEY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}An excellent opportunity for Mightyena\nto sharpen his teeth.$"
 	
 RG_DefeatText:
 	.string "Roxanne: Maybe I should have\nrecorded that for the students...$"
 	
 RG_ShellyGymBattleComplete:
-	.string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}Right, well that was fun.\pI'm headed back to the office\nCall me if you want my help again!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Right, well that was fun.\pI'm headed back to the office\nCall me if you want my help again!$"
 	
 RG_DawnGymBattleComplete:
-	.string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}I feel a little bad for this...\nOh well, It was fun.\lHave a nice day!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I feel a little bad for this...\nOh well, It was fun.\lHave a nice day!$"
 	
 RG_BrendanGymBattleComplete:
-	.string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Yeah, that's right,\nwe're unstoppable!\pSee you later, {PLAYER}$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Yeah, that's right,\nwe're unstoppable!\pSee you later, {PLAYER}$"
 	
 RG_LanaGymBattleComplete:
-    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}I feel much better now.\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I feel much better now.\n"
     .string "I might go smash some more rocks\l"
     .string "around Hoenn just for fun!$"
 	
 RG_LanetteGymBattleComplete:
-    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}That was pretty tough.\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}That was pretty tough.\n"
     .string "You saved me again, {PLAYER}!$"
 
+RG_CourtneyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Not exactly optimal, but not really\nproblematic either.$"
 
 RG_PreBattleText:
     .string "Roxanne: Nice to see you guys back.\n"

@@ -31,6 +31,7 @@ RCR_FollowerIntroSetup::
 	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RCR_FollowerDawnIntro
 	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, RCR_FollowerBrendanIntro
 	case OBJ_EVENT_GFX_LEAF, RCR_FollowerLeafIntro
+	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, RCR_FollowerCourtneyIntro
 	return
 
 
@@ -39,13 +40,14 @@ RyuChampionThroneStart::
 	msgbox RCR_PlayerPartnerQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RCR_SoloChamp
-	call RyuParterBattleMultichoice
-	switch VAR_0x8006
+	call RyuPartnerBattleMultichoice
+	switch VAR_0x8008
 	case TRAINER_REL_DAWN, RCR_Dawn
 	case TRAINER_REL_SHELLY, RCR_Shelly
 	case TRAINER_REL_BRENDAN, RCR_Brendan
 	case TRAINER_REL_LANA, RCR_Lana
 	case TRAINER_REL_LANETTE, RCR_Lanette
+	case TRAINER_REL_COURTNEY_2, RCR_Courtney
 	
 RCR_SoloChamp::
 	closemessage
@@ -86,7 +88,7 @@ RCR_OverlordRyuBossFight::
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	trainerbattle_no_intro TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, 2
+	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	clearflag FLAG_RYU_MAX_SCALE
 	call_if_unset FLAG_RYU_DEFEATED_OVERLORD, MawileMegaReward
@@ -110,7 +112,7 @@ RCR_OverlordRyuRematch::
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	trainerbattle_no_intro TRAINER_OVERLORD_RYU_REMATCH, RCR_RYU_DefeatText
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, 2
+	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	clearflag FLAG_RYU_MAX_SCALE
 	call_if_unset FLAG_RYU_DEFEATED_OVERLORD, MawileMegaReward
@@ -237,6 +239,18 @@ RCR_Lanette::
 	call RCR_ChooseOpponent
 	goto RCR_SetUpBattle
 
+RCR_Courtney::
+	closemessage
+	addobject 17
+	applymovement 17, RCR_PartnerToPlayer
+	waitmovement 17
+	applymovement 17, Common_Movement_HeartEmote
+	waitmovement 17
+	msgbox RCR_Courtney_Intromsg
+	closemessage
+	call RCR_ChooseOpponent
+	goto RCR_SetUpBattle
+
 	
 RCR_SetUpBattle::
 	playse SE_DOOR
@@ -255,19 +269,21 @@ RCR_SetUpBattle::
 	case 11, RCR_ChallengerGiovanni
 	case 12, RCR_ChallengerSigma
 	case 13, RCR_ChallengerJuan
+
+RCR_ChooseValidMons::
+	msgbox EGC_NeedToChoose
+	closemessage
+	return
 	
 RCR_ChallengerSteven::
 	msgbox RCR_Steven_Intro 
 	closemessage
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_STEVEN, 0, NULL, RCR_Steven_DefeatText
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
-	waitstate
-	special LoadPlayerParty
+	choose_mons
+	compare VAR_RESULT, FALSE
+	call_if_eq RCR_ChooseValidMons
+	multi_2_vs_1 TRAINER_SIDNEY, RCR_Steven_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, 2
+	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 
@@ -284,15 +300,12 @@ RCR_StevenExplainAggronite:
 RCR_ChallengerNorman::
 	msgbox RCR_Norman_Intro 
 	closemessage
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_CHALLENGER_NORMAN, 0, NULL, RCR_Norman_DefeatText
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
-	waitstate
-	special LoadPlayerParty
+	choose_mons
+	compare VAR_RESULT, FALSE
+	call_if_eq RCR_ChooseValidMons
+	multi_2_vs_1 TRAINER_CHALLENGER_NORMAN, RCR_Norman_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, 2
+	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 	
@@ -300,104 +313,84 @@ RCR_ChallengerJohnatan::
 	msgbox RCR_Johnatan_Intro
 	closemessage
 	special SavePlayerParty
-	trainerbattle 10 TRAINER_CHALLENGER_JOHNATAN, 0, NULL, RCR_Johnatan_DefeatText
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
-	waitstate
-	special LoadPlayerParty
+	choose_mons
+	compare VAR_RESULT, FALSE
+	call_if_eq RCR_ChooseValidMons
+	multi_2_vs_1 TRAINER_CHALLENGER_JOHNATAN, RCR_Johnatan_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, 2
+	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerRobert::
 	msgbox RCR_Robert_Intro
 	closemessage
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_CHALLENGER_ROBERT, 0, NULL, RCR_Robert_DefeatText
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
-	waitstate
-	special LoadPlayerParty
+	choose_mons
+	compare VAR_RESULT, FALSE
+	call_if_eq RCR_ChooseValidMons
+	multi_2_vs_1 TRAINER_CHALLENGER_ROBERT, RCR_Robert_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, 2
+	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerLance::
 	msgbox RCR_Lance_Intro
 	closemessage
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_CHALLENGER_LANCE, 0, NULL, RCR_Lance_DefeatText
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
-	waitstate
-	special LoadPlayerParty
+	choose_mons
+	compare VAR_RESULT, FALSE
+	call_if_eq RCR_ChooseValidMons
+	multi_2_vs_1 TRAINER_CHALLENGER_LANCE, RCR_Lance_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, 2
+	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerZod::
 	msgbox RCR_Zod_Intro
 	closemessage
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_CHALLENGER_ZOD, 0, NULL, RCR_Zod_DefeatText
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
-	waitstate
-	special LoadPlayerParty
+	choose_mons
+	compare VAR_RESULT, FALSE
+	call_if_eq RCR_ChooseValidMons
+	multi_2_vs_1 TRAINER_CHALLENGER_ZOD, RCR_Zod_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, 2
+	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 	
 RCR_ChallengerGiovanni::
 	msgbox RCR_Giovanni_Intro
 	closemessage
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_CHALLENGER_GIOVANNI, 0, NULL, RCR_Giovanni_DefeatText
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
-	waitstate
-	special LoadPlayerParty
+	choose_mons
+	compare VAR_RESULT, FALSE
+	call_if_eq RCR_ChooseValidMons
+	multi_2_vs_1 TRAINER_CHALLENGER_GIOVANNI, RCR_Giovanni_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, 2
+	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 
 RCR_ChallengerSigma::
 	msgbox RCR_Sigma_Intro
 	closemessage
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_CHALLENGER_SIGMA, 0, NULL, RCR_Sigma_DefeatText
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
-	waitstate
-	special LoadPlayerParty
+	choose_mons
+	compare VAR_RESULT, FALSE
+	call_if_eq RCR_ChooseValidMons
+	multi_2_vs_1 TRAINER_CHALLENGER_SIGMA, RCR_Sigma_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, 2
+	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 
 RCR_ChallengerJuan::
 	msgbox RCR_Juan_Intro
 	closemessage
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_CHALLENGER_JUAN, 0, NULL, RCR_Juan_DefeatText
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
-	waitstate
-	special LoadPlayerParty
+	choose_mons
+	compare VAR_RESULT, FALSE
+	call_if_eq RCR_ChooseValidMons
+	multi_2_vs_1 TRAINER_CHALLENGER_JUAN, RCR_Juan_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, 2
+	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
 	
@@ -497,7 +490,7 @@ RCR_FinishChallenge::
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, 2
+	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EventScript_WhiteOut
 	call Ryu_CheckForPartnerReward
 	applymovement OBJ_EVENT_ID_PLAYER, RCR_ToHOF
@@ -637,11 +630,19 @@ RCR_FollowerLeafIntro::
 	closemessage
 	return
 
+RCR_FollowerCourtneyIntro::
+	msgbox FCourtneyMsg
+	closemessage
+	playmoncry SPECIES_MIGHTYENA, 0
+	waitmoncry
+	return
+
 
 @==================challenger Text
 
 RCR_RYU_Intro:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ryu: I'd say your chances of winning\nare about one in 8192.\lTime for you to learn your place!$"
+
 RyuGivesMawilite:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ryu: Nice! I was cheating and\n"
 	.string "you still won!\p"
@@ -757,7 +758,7 @@ RCR_Lana_Intromsg:
     .string "count on me!$"
 	
 RCR_Brendan_Intromsg:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: I can't let you have all\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Brendan: I can't let you have all\n"
     .string "the fun, I want in on some super\l"
     .string "powered battles too!$"
 
@@ -776,7 +777,13 @@ RCR_Lanette_Intromsg:
     .string "I was stuck on a certain bit of\n"
     .string "code that refused to work.\l"
 	.string "This is just what I needed!$"
-	
+
+RCR_Courtney_Intromsg:
+    .string "I'm glad you called. No Really...\n"
+    .string "I was about to come find you again!\p"
+    .string "But since I'm here, Let's hurt some\n"
+    .string "people!$"
+
 RCR_PlayerPartnerQuery:
 	.string "{COLOR DARK_GREY}{SHADOW RED}Would you like to have one of your\npartners help you defend your title?$"
 
@@ -802,14 +809,14 @@ FLanetteMsg:
     .string "what I can!$"
 
 FDawnMsg:
-    .string "It's been a long walk, but I'm\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}It's been a long walk, but I'm\n"
     .string "glad that I can be here with you.\p"
     .string "It's so surreal, being here in the\n"
     .string "Hoenn Champion room...\p"
     .string "Well... LET'S GO!!$"
 
 FBrendanMsg:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Not gonna lie, I expected\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Not gonna lie, I expected\n"
     .string "to get here before you, maybe after\p"
     .string "you, but I never thought we'd be\n"
     .string "doing this together. Here we go!$"
@@ -818,6 +825,14 @@ FLeafMsg:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, Wow, this room is HUGE!\n"
     .string "The Kanto one doesn't even compare.\p"
     .string "Well, I've already beaten the Kanto\n"
-    .string "Champion, time to add Hoennn to my\l"
+    .string "Champion, time to add Hoenn to my\l"
     .string "repertoire!$"
+
+FCourtneyMsg:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}You know, I didn't fancy mself a\n"
+    .string "voyeur... But hurting people in\p"
+    .string "such a public way really excites me.\p"
+    .string "My pupper is hungry!$"
+
+
 
