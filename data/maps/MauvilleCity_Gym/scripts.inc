@@ -241,8 +241,6 @@ MVG_AltGymBattle::
 	compare VAR_RESULT, FALSE
 	goto_if_eq MVG_ChooseValidMons
 	multi_2_vs_1 TRAINER_WATTSON_4, MVG_DefeatText, VAR_0x8008, VAR_0x8009
-	waitstate
-	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame

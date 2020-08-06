@@ -219,8 +219,6 @@ MG_AltGymBattle::
 	compare VAR_RESULT, FALSE
 	goto_if_eq MG_ChooseValidMons
 	multi_2_vs_1 TRAINER_TATE_AND_LIZA_SINGLE, MG_DefeatText, VAR_0x8008, VAR_0x8009
-	waitstate
-	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame

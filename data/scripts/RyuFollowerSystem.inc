@@ -166,7 +166,9 @@ Ryu_RestoreCourtney::
 	end
 
 RyuFollowerAllySelector::
-	special RyuFollowerToTrainerID
+	specialvar VAR_RESULT, RyuFollowerToTrainerID
+	compare VAR_RESULT, FALSE
+	goto_if_eq ryu_end
 	return
 
 LeafOkLetsGo:
