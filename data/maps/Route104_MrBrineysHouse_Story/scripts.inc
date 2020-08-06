@@ -64,11 +64,11 @@ R104_ME_EventStart::
 	closemessage
 	applymovement 1, Common_Movement_FaceRight
 	removeobject 10
-	applymovement 8, Common_Movement_FaceLeft
+	applymovement 9, Common_Movement_FaceLeft
 	waitmovement 9
 	msgbox R104_ME_BlaiseImLeaving
 	closemessage
-	applymovement 8, Common_Movement_FaceLeft
+	applymovement 9, Common_Movement_FaceLeft
 	msgbox R104_ME_ComeAlong
 	closemessage
 	applymovement 1, R104_ME_MaxieExits

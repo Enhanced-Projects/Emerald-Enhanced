@@ -558,24 +558,24 @@ r119_FemaleDefeatText: @ 81F4AF3
 	.string "succeed.\pHere, another gift for you!$"
 
 R119_ExplainItemfinderFemale: @ 81F4B56
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: It's an Itemfinder!\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}It's an Itemfinder!\n"
 	.string "Use it to sense hidden items.\p"
 	.string "Come visit me in Littleroot sometime!\n"
 	.string "We'll have a fun night!\p"
 	.string "See you later, {PLAYER}!$"
 
 r119_maleRivaIntro: @ 81F4C9A
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Yo, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}!\pI've been looking all over for ya!\nDoing good? You know I am!\pSay...since we're here, how about\na quick one?\pA battle, right here and now!\nAlright, here we go!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Yo, {PLAYER}!\pI've been looking all over for ya!\nDoing good? You know I am!\pSay...since we're here, how about\na quick one?\pA battle, right here and now!\nAlright, here we go!$"
 
 r119_maleRivalDefeated: @ 81F4D24
 	.string "That was rough... \n"
 	.string "I'm not used to being smashed.$"
 
 r119_maleRivalOutroText1: @ 81F4D4B
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: It's a nice change. I'm\nwierdly turned on.\pYou...being strong enough to\ntopple the current Champion…\lThat'll be a day I'm definitely\llooking forward to seeing!\pHere, something else for you!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}It's a nice change. I'm\nwierdly turned on.\pYou...being strong enough to\ntopple the current Champion…\lThat'll be a day I'm definitely\llooking forward to seeing!\pHere, something else for you!$"
 
 r119_maleRivalGivesItemfinder: @ 81F4DB5
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: This is an Itemfinder.\pIt'll scan and find hidden items.\pI'm gonna head back home soon.\nDrop by my place sometime!\lI'll make it worth your while!\pTake care, {PLAYER}!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}This is an Itemfinder.\pIt'll scan and find hidden items.\pI'm gonna head back home soon.\nDrop by my place sometime!\lI'll make it worth your while!\pTake care, {PLAYER}!$"
 
 r119_scottIntroFemalePlayer: @ 81F4E60
 	.string "Scott: Hahahah!\n"

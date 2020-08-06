@@ -488,7 +488,9 @@ LC_AH_M4DescMsg:
 	.string "to do.$"
 	
 LC_AH_M3DoneMsg:
-	.string "Shelly: We barely averted the\ndisaster that would have been if\lGroudon was awakened by the wrong\lperson.\lYou might be able to\lcontrol it, actually. You should\lgive it a try sometime.$"
+	.string "Shelly: We barely averted the\n"
+	.string "disaster that would have been if\l"
+	.string "Groudon was awakened by the wrong\lperson.$"
 	
 LC_AH_M3DoneMsg2:
 	.string "I found this hiding in their base\p"
@@ -735,28 +737,29 @@ LC_AH_ShellyNoTeleport::
 	goto LC_AH_Shelly_Afterstory
 
 LC_AH_ShellyFollowerQuery:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Want me to tag along\nwith you for a while?$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Want me to tag along\nwith you for a while?$"
 
 LC_AH_ShellyTeleportQueryMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: I know where Kyogre is.\pI think you will be able to control\nKyogre and use it for good deeds.\pWould you like me to teleport\nyou to where Kyogre is resting?$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I know where Kyogre is.\pI think you will be able to control\nKyogre and use it for good deeds.\pWould you like me to teleport\nyou to where Kyogre is resting?$"
 	
 LC_AH_ShellyNoTeleportMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Well, You can find it underwater\non route 128.\pSo anyways...$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Well, You can find it underwater\non route 128.\pSo anyways...$"
 	
 LC_AH_ShellyTeleporting:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Just note that this is a one-way\nteleport.\pYou will need to find your own way\nback out of the cavern.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Just note that this is a one-way\nteleport.\pYou will need to find your own way\nback out of the cavern.$"
 
 LC_AH_RelShellyGivesCardKey:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: So, Archie was going to pass\ncommand of the hideout to me, but\lI think it'd be more fitting for you.\pSo take this note, It gives you\nfull control of the hideout and all\lthe items inside.\p$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}So, Archie was going to pass\ncommand of the hideout to me, but\lI think it'd be more fitting for you.\pSo take this note, It gives you\nfull control of the hideout and all\lthe items inside.\p$"
 	
 LC_AH_RelShellyAfterStoryCardKeyMsg:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Now that that is sorted...$"
 	
 LC_AH_AfterStoryIntro:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Welcome back, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}!\nAqua's doing great. It's all\lthanks to you!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Welcome back, {PLAYER}!\n"
+	.string "Aqua's doing great. It's all\lthanks to you!$"
 	
 LC_AH_AfterStoryMsg:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly gives you a light kiss)\n... ... ... ... ... ...\l{COLOR LIGHT_RED}{SHADOW RED}Shelly: How are things going for\lyou? Are you the champion yet?\lYou can call me if you want help\lwith any hard fights, you know!$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly gives you a light kiss)\n... ... ... ... ... ...\l{COLOR LIGHT_RED}{SHADOW RED}How are things going for\lyou? Are you the champion yet?\lYou can call me if you want help\lwith any hard fights, you know!$"
 	
 LC_AH_ShellySLide:
 	walk_slow_left
@@ -903,7 +906,7 @@ LC_AH_TOQUARTERS4:
 	step_end	
 	
 LC_AH_FirstNight:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: There you are, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}.\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}There you are, {PLAYER}.\n"
 	.string "I was wondering when you would\p"
 	.string "turn up. Everything's going well\n"
 	.string "on my front. Most of Team Aqua's\p"
@@ -917,15 +920,15 @@ LC_AH_FirstNight:
 	.string "submarine with the LIDAR on it.$"
 
 LC_AH_GoToQuarters:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: I was hoping we could spend\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I was hoping we could spend\n"
 	.string "a night together... and {COLOR LIGHT_BLUE}really{COLOR LIGHT_RED}{SHADOW RED}\p"
 	.string "get to know each other. You've\n"
 	.string "made me a better person, and I\l"
 	.string "love you for it.\p"
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: I love you, too.\n"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I love you, too.\n"
 	.string "A night sounds good,\l"
 	.string "I could use some rest.\p"
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Let's go, then.\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Let's go, then.\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly grabs your hand.)$"
 	
 LC_AH_QuartersScene:
@@ -941,10 +944,9 @@ LC_AH_QuartersScene:
 	.string "started coming around, I've been\p"
 	.string "in a better mood than I've ever\n"
 	.string "been. You didn't just save the\p"
-	.string "lives of countless innocents. You\n"
-	.string "also saved me from a world of\p"
-	.string "darkness. I love you so much,\n"
-	.string "{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}. I'm so glad we're\l"
+	.string "lives of countless innocents.\n"
+	.string " I love you so much,\n"
+	.string "{PLAYER}. I'm so glad we're\l"
 	.string "together.$"
 
 LC_AH_QuartersScene2:
@@ -957,7 +959,7 @@ LC_AH_CONCLUSION:
 	.string " closely and cover up.)$"
 	
 LC_AH_CONCLUSION2:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER}{COLOR LIGHT_GREEN}{SHADOW GREEN} and Shelly fall into a\n"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Shelly fall into a\n"
 	.string " peaceful sleep as the humid ocean\p"
 	.string " air slightly jostles the curtains\n"
 	.string " in the window.)\p"
@@ -996,17 +998,17 @@ LC_AH_M1RelGiftDialog:
 	.string " you. Give it to Shelly?)$"
 	
 LC_AH_GiftGiven:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: I had this made\n" 
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I had this made\n" 
 	.string "for you. I thought a beautiful woman\p"
 	.string "like you could use a beautiful\n"
 	.string "necklace like this one...$"
 	
 LC_AH_NoGiftMsg:
 	.string "Shelly: Was there something else?\p"
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: No, sorry.$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}No, sorry.$"
 
 LC_AH_RelDecision:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, you're with me right?\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, you're with me right?\n"
 	.string "Will you help me take down\p"
 	.string "Archie?$"
 	
@@ -1030,7 +1032,7 @@ LC_AH_BadEndMsg:
 	.string "you to leave.)$"
 	
 LC_AH_Mission4Msg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}! Bad news! We thought\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! Bad news! We thought\n"
 	.string "Maxie was bad, because he was\p"
 	.string "trying to erupt a volcano.\p"
 	.string "Well, Archie isn't any better!\n"

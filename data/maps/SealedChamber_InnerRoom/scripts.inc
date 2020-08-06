@@ -4,7 +4,7 @@ SealedChamber_InnerRoom_MapScripts:: @ 82391F7
 SCH_OpenDoors:: @ 82391F8
 	compare VAR_RYU_DS_LANA_STAGE, 35
 	goto_if_eq ryu_end
-	fadeoutbgm 0
+	playbgm MUS_DUMMY, 0
 	playse SE_W089
 	call_if_set FLAG_TEMP_B, SCH_LanaSCMessage
 	call_if_unset FLAG_TEMP_B, SCH_NoLanaSCMessage
@@ -236,10 +236,10 @@ SCH_LanaMsg:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Whew...I finally found you. Sure\ntook a while.\p{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ...$"
 	
 SCH_LanaMsg2:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She swipes a pokéball from your\n belt and puts it in your hand,\l soon after, taking out hers.)\p{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: What, you wanna battle?\pFine by me!\nGimme your best shot!$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She swipes a pokéball from your\n belt and puts it in your hand,\l soon after, taking out hers.)\p{COLOR LIGHT_BLUE}{SHADOW BLUE} What, you wanna battle?\pFine by me!\nGimme your best shot!$"
 	
 SCH_LanaMsg3:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}:Hey, you okay?\p{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ...$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Hey, you okay?\p{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ...$"
 
 SCH_LanaSCMsg:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(An earthquake suddenly occurs,\n causing Lana to crash into {PLAYER}.)$"

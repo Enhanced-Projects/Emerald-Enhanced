@@ -1,13 +1,13 @@
 MysteryEventScript_SurfPichu:: @ 8674D3D
 	setvaddress MysteryEventScript_SurfPichu
-	vgoto_if_unset FLAG_MYSTERY_EVENT_DONE, SurfPichu_GiveIfPossible
+	@vgoto_if_unset FLAG_UNUSED_DONE, SurfPichu_GiveIfPossible
 	returnram
 
 SurfPichu_GiveIfPossible: @ 8674D4C
 	specialvar VAR_EVENT_PICHU_SLOT, CalculatePlayerPartyCount
 	compare VAR_EVENT_PICHU_SLOT, PARTY_SIZE
 	vgoto_if_eq SurfPichu_FullParty
-	setflag FLAG_MYSTERY_EVENT_DONE
+	@setflag FLAG_UNUSED_DONE
 	vcall SurfPichu_GiveEgg
 	lock
 	faceplayer

@@ -51,6 +51,7 @@ extern u8 Ryu_SoundTest[];
 extern u8 Ryu_AbilityCapsule[];
 //extern u8 EventScript_PC[];
 extern u8 Ryu_CantUsePcCharging[];
+extern u8 RyuCheckSootSackContents[];
 
 static void SetUpItemUseCallback(u8 taskId);
 static void FieldCB_UseItemOnField(void);
@@ -789,6 +790,15 @@ void ItemUseOutOfBattle_Teleport(u8 taskId)
     ScriptContext2_Enable();
     ScriptContext1_SetupScript(RyuTeleport);
 }
+
+void ItemUseOutOfBattle_CheckSootSack(u8 taskId)
+{
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext2_Enable();
+    ScriptContext1_SetupScript(RyuCheckSootSackContents);
+}
+
+
 
 void ItemUseOutOfBattle_RyuForecaster(u8 taskId)
 {

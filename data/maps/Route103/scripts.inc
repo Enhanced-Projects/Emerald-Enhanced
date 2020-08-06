@@ -278,11 +278,11 @@ Route103_EventScript_Isabelle:: @ 81EC78F
 	end
 
 r103_femaleRivalTalkSelf: @ 81EC7A6
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Let's see… The Pokémon found\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Let's see… The Pokémon found\n"
 	.string "on Route 103 include…$"
 
 r103_femaleRivalIntro: @ 81EC7DE
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, hi, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}!\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, hi, {PLAYER}!\p"
 	.string "It seems like you decided to become\n"
 	.string "a Pokémon Trainer. That's awesome.\l"
 	.string "I didn't have any friends, so it's\l"
@@ -296,7 +296,7 @@ r103_femaleRivalDefeat: @ 81EC881
 	.string "be great friends.$"
 
 r103_femaleRivalChat: @ 81EC8AE
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: I think I know why your\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I think I know why your\n"
 	.string "Pokémon likes you already. It tried\l"
 	.string "really hard for you. I hope you\l"
 	.string "continue to grow with your Pokémon.\l"
@@ -307,18 +307,18 @@ r103_maleRivalTalkSelf: @ 81EC989
 	.string "that one that live on Route 103…$"
 
 r103_maleRivalIntro: @ 81EC9CE
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Hey there, {PLAYER}!\p{COLOR LIGHT_BLUE}{SHADOW BLUE}…Oh, yeah?\nSo Dad gave you a Pokémon.\pWell since we're here, how about\na little battle?\pI'll teach you what being a trainer's\nall about!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey there, {PLAYER}!\p…Oh, yeah?\nSo Dad gave you a Pokémon.\pWell since we're here, how about\na little battle?\pI'll teach you what being a trainer's\nall about!$"
 
 r103_maleRivalDefeatText: @ 81ECA59
 	.string "Huh, {PLAYER}, you're not too shabby.$"
 
 r103_maleRivalChat: @ 81ECA79
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: I think I get it.\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I think I get it.\n"
 	.string "I think I know why my dad has his eye\l"
 	.string "out for you now.\p"
 	.string "Look, your Pokémon already likes you,\n"
 	.string "even though you just got it.\p"
-	.string "{PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}, I get the feeling that you\n"
+	.string "{PLAYER}, I get the feeling that you\n"
 	.string "could befriend any Pokémon with ease.\p"
 	.string "We should head back to the lab.$"
 
@@ -357,8 +357,12 @@ dawnhi:
 @-=================================================================================================Magma meeting 3
 
 r103_MagmaMeeting3_TopRight::
+	setvar VAR_TEMP_0, 100
+	compare VAR_RYU_MAGMA, 210
+	goto_if_lt ryu_end
 	compare VAR_RYU_MAGMA, 225
 	goto_if_ge ryu_end
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
@@ -366,8 +370,13 @@ r103_MagmaMeeting3_TopRight::
 	goto R103_MagmaMeeting3Main
 
 r103_MagmaMeeting3_Top::
+	setvar VAR_TEMP_0, 100
+	compare VAR_RYU_MAGMA, 210
+	goto_if_lt ryu_end
+	setvar VAR_TEMP_0, 100
 	compare VAR_RYU_MAGMA, 225
 	goto_if_ge ryu_end
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
@@ -375,8 +384,13 @@ r103_MagmaMeeting3_Top::
 	goto R103_MagmaMeeting3Main
 
 r103_MagmaMeeting3_Bottom::
+	setvar VAR_TEMP_0, 100
+	compare VAR_RYU_MAGMA, 210
+	goto_if_lt ryu_end
+	setvar VAR_TEMP_0, 100
 	compare VAR_RYU_MAGMA, 225
 	goto_if_ge ryu_end
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
@@ -384,8 +398,12 @@ r103_MagmaMeeting3_Bottom::
 	goto R103_MagmaMeeting3Main
 
 r103_MagmaMeeting3_BottomRight::
+	setvar VAR_TEMP_0, 100
+	compare VAR_RYU_MAGMA, 210
+	goto_if_lt ryu_end
 	compare VAR_RYU_MAGMA, 225
 	goto_if_ge ryu_end
+	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft

@@ -69,6 +69,7 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	playbgm MUS_AQA_0, 0
 	msgbox RusturfTunnel_Text_GruntIntro, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, RusturfTunnel_Text_GruntDefeat
+	playbgm 366, 0
 	msgbox RusturfTunnel_Text_GruntTakePackage, MSGBOX_DEFAULT
 	additem ITEM_DEVON_GOODS
 	closemessage
@@ -101,6 +102,7 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	trainerbattle_single TRAINER_GRUNT_RUSTURF_MAGMA, RT_SoItsAFight, RT_MG_Defeat, RT_PostBattle
 	
 RT_PostBattle::
+	playbgm 366, 0
 	msgbox RT_SoThisIsHow
 	delay 60
 	msgbox RT_Listen
@@ -212,7 +214,7 @@ RT_OneCompleted:
 
 RT_Nevermind:
 	.string "Nevermind. Let's head over to the\n"
-    .string "rendezvous point.$"
+    .string "rendezvous point.\p"
     .string "Y'know, the empty sea cottage, the\n"
     .string "one on Route 104. Don't keep us\p"
     .string "waiting!$"
@@ -250,7 +252,7 @@ RT_WhatAChump:
     .string "running with their tails between\l"
     .string "their legs.\p"
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ... ...\p"
-    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}c'mon now, what's with the stern\n"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}C'mon now, what's with the stern\n"
     .string "look?$"
 	
 RT_MagmaEscaped:

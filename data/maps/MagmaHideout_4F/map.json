@@ -207,7 +207,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
+      "flag": "FLAG_HIDE_UNION_ROOM_PLAYER_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAXIE",
@@ -273,6 +273,58 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MH4_AquaSeafloorCavernFinished",
       "flag": "FLAG_RYU_MAXIE_END_EVENT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 17,
+      "y": 21,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_MAXIE_END_EVENT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 18,
+      "y": 21,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_MAXIE_END_EVENT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 14,
+      "y": 21,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_MAXIE_END_EVENT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 12,
+      "y": 20,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MH4_CourtneySetUpChaseMaxie",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
     }
   ],
   "warp_events": [
@@ -358,7 +410,7 @@
       "x": 6,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_TEMP_6",
+      "var": "VAR_TEMP_5",
       "var_value": "0",
       "script": "MH4_MagmaMaxieEvent"
     },
@@ -367,7 +419,7 @@
       "x": 5,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_TEMP_6",
+      "var": "VAR_TEMP_5",
       "var_value": "0",
       "script": "MH4_MagmaMaxieEvent"
     },
@@ -376,18 +428,9 @@
       "x": 4,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_TEMP_6",
+      "var": "VAR_TEMP_5",
       "var_value": "0",
       "script": "MH4_MagmaMaxieEvent"
-    },
-    {
-      "type": "trigger",
-      "x": 20,
-      "y": 5,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MH4_MagmaAdminCheck"
     }
   ],
   "bg_events": [

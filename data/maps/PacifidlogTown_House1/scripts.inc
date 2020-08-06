@@ -52,7 +52,7 @@ PT_NpcChatter:
 
 	
 PT_LanaMsg:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Hey, Lana, what's going on?\pThese notes you've left behind are\ngetting me worried...\p{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ...\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Hey, Lana, what's going on?\pThese notes you've left behind are\ngetting me worried...\p{COLOR LIGHT_RED}{SHADOW RED}Lana: ... ... ... ...\p"
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You see her scribbling on a piece\n of paper before handing it to you...)$"
 	
 PT_PlayerMsg:

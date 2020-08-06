@@ -65,6 +65,7 @@ SFC9_CancelCourtney::
 	goto ryu_end
 	
 SFC9_TakeOpportunity::
+	setflag FLAG_RYU_MAGMA_ALT_LINE
 	msgbox SFC9_ActuallyIhave
 	closemessage
 	playse SE_PIN
@@ -107,6 +108,7 @@ SFC9_CompleteTheMission::
 	msgbox SFC9_LeaveUsBe
 	closemessage
 	setvar VAR_RYU_MAGMA, 450@Player's doing the main magma line
+	clearflag FLAG_RYU_MAXIE_END_EVENT
 	warpsilent MAP_MAGMA_HIDEOUT_4F, 255, 5, 13
 	
 SFC9_Shelly::
@@ -172,7 +174,7 @@ SFC9_ActuallyIhave:
 
 SFC9_ADealThis:
 	.string "A deal? At this stage of the game?\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I want to take over Team Magma.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I want to take over Team Magma.$"
 
 SFC9_TeamMagmaTo:
 	.string "Team Magma, to be led by a whelp\n"

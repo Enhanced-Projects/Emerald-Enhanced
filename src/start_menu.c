@@ -423,6 +423,7 @@ static void RemoveExtraStartMenuWindows(void)
 }
 
 EWRAM_DATA static u8 sPrintNumberWindowId = 1;
+EWRAM_DATA static u8 sPrintNumberWindow2Id = 2;
 void PrintNumberToScreen(s32 num)
 {
     struct WindowTemplate template;
@@ -508,6 +509,9 @@ void RemovePrintedNumber(void)
     ClearStdWindowAndFrameToTransparent(sPrintNumberWindowId, FALSE);
     CopyWindowToVram(sPrintNumberWindowId, 2);
     RemoveWindow(sPrintNumberWindowId);
+    ClearStdWindowAndFrameToTransparent(sPrintNumberWindow2Id, FALSE);
+    CopyWindowToVram(sPrintNumberWindow2Id, 2);
+    RemoveWindow(sPrintNumberWindow2Id);
 }
 
 void PrintSongNumber(u16 song)
@@ -557,8 +561,10 @@ static const u32 DevonScientistLogoGfx[] = INCBIN_U32("graphics/cutscene/devonSc
 static const u32 AquaLogoGfx[] = INCBIN_U32("graphics/cutscene/aquaLogo.4bpp");
 static const u16 AquaLogoPal[] = INCBIN_U16("graphics/cutscene/aquaLogo.gbapal");
 static const u32 AquaShellyLogoGfx[] = INCBIN_U32("graphics/cutscene/aquaShellyLogo.4bpp");
-static const u32 MagmaLogoGfx[] = INCBIN_U32("graphics/cutscene/magmaLogo.4bpp");
-static const u16 MagmaLogoPal[] = INCBIN_U16("graphics/cutscene/magmaLogo.gbapal");
+static const u32 MagmaMainLogoGfx[] = INCBIN_U32("graphics/cutscene/magmaMainLogo.4bpp");
+static const u16 MagmaMainLogoPal[] = INCBIN_U16("graphics/cutscene/magmaMainLogo.gbapal");
+static const u32 MagmaAltLogoGfx[] = INCBIN_U32("graphics/cutscene/magmaAltLogo.4bpp");
+static const u16 MagmaAltLogoPal[] = INCBIN_U16("graphics/cutscene/magmaAltLogo.gbapal");
 
 const struct SpriteSheet DevonLogoSheet =
 {
@@ -676,20 +682,20 @@ const struct SpriteTemplate AquaShellyLogoSpriteTemplate =
     .callback = SpriteCallbackDummy
 };
 
-const struct SpriteSheet MagmaLogoSheet =
+const struct SpriteSheet MagmaMainLogoSheet =
 {
-    .data = MagmaLogoGfx,
-    .size = sizeof(MagmaLogoGfx),
+    .data = MagmaMainLogoGfx,
+    .size = sizeof(MagmaMainLogoGfx),
     .tag = 2659
 };
 
-const struct SpritePalette MagmaLogoPalette =
+const struct SpritePalette MagmaMainLogoPalette =
 {
-    .data = MagmaLogoPal, 
+    .data = MagmaMainLogoPal, 
 	.tag = 2659
 };
 
-static const struct OamData MagmaLogoOamData =
+static const struct OamData MagmaMainLogoOamData =
 {
     .y = 0,
     .shape = SPRITE_SHAPE(32x32),
@@ -697,11 +703,43 @@ static const struct OamData MagmaLogoOamData =
     .priority = 0
 };
 
-const struct SpriteTemplate MagmaLogoSpriteTemplate =
+const struct SpriteTemplate MagmaMainLogoSpriteTemplate =
 {
     .tileTag = 2659,
     .paletteTag = 2659,
-    .oam = &MagmaLogoOamData,
+    .oam = &MagmaMainLogoOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
+
+const struct SpriteSheet MagmaAltLogoSheet =
+{
+    .data = MagmaAltLogoGfx,
+    .size = sizeof(MagmaAltLogoGfx),
+    .tag = 2759
+};
+
+const struct SpritePalette MagmaAltLogoPalette =
+{
+    .data = MagmaAltLogoPal, 
+	.tag = 2759
+};
+
+static const struct OamData MagmaAltLogoOamData =
+{
+    .y = 0,
+    .shape = SPRITE_SHAPE(32x32),
+    .size = SPRITE_SIZE(32x32),
+    .priority = 0
+};
+
+const struct SpriteTemplate MagmaAltLogoSpriteTemplate =
+{
+    .tileTag = 2759,
+    .paletteTag = 2759,
+    .oam = &MagmaAltLogoOamData,
     .anims = gDummySpriteAnimTable,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
@@ -710,6 +748,8 @@ const struct SpriteTemplate MagmaLogoSpriteTemplate =
 
 void DrawDevonLogo(void)
 {
+    struct WindowTemplate template;
+
     if (FlagGet(FLAG_RYU_DEVON_SCIENTIST) == 1)
     {
         LoadSpriteSheet(&DevonScientistLogoSheet);
@@ -722,10 +762,26 @@ void DrawDevonLogo(void)
         LoadSpritePalette(&DevonLogoPalette);
         MenuSpriteId1 = (CreateSprite(&DevonScientistLogoSpriteTemplate, 16, 62, 0));
     }
+
+    //prepare window
+    SetWindowTemplateFields(&template, 0, 4, 8, 3, 2, 15, 76);
+    sPrintNumberWindow2Id = AddWindow(&template);
+    FillWindowPixelBuffer(sPrintNumberWindow2Id, 0);
+    PutWindowTilemap(sPrintNumberWindow2Id);
+    CopyWindowToVram(sPrintNumberWindow2Id, 1);
+
+    //Show quest stage
+    StringCopy(gRyuStringVar1, gText_HighlightTransparent);
+    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_MAGMA)), 0, 3);
+    StringAppend(gRyuStringVar1, gStringVar2);
+    AddTextPrinterParameterized(sPrintNumberWindow2Id, 1, gRyuStringVar1, 0, 0, 0, NULL);
 }
 
+static const u8 sText_RyuAquaNotApplicable[] = _("N/A");
 void DrawAquaLogo(void)
 {
+    struct WindowTemplate template;
+
     if (FlagGet(FLAG_RYU_PLAYER_ARCHIE_ACQ) == 1)
     {
         LoadSpriteSheet(&AquaShellyLogoSheet);
@@ -738,13 +794,50 @@ void DrawAquaLogo(void)
         LoadSpritePalette(&AquaLogoPalette);
         MenuSpriteId1 = (CreateSprite(&AquaLogoSpriteTemplate, 16, 62, 0));
     }
+
+    //prepare window
+    SetWindowTemplateFields(&template, 0, 4, 8, 3, 2, 15, 76);
+    sPrintNumberWindow2Id = AddWindow(&template);
+    FillWindowPixelBuffer(sPrintNumberWindow2Id, 0);
+    PutWindowTilemap(sPrintNumberWindow2Id);
+    CopyWindowToVram(sPrintNumberWindow2Id, 1);
+
+    //Show quest stage
+    StringCopy(gRyuStringVar1, gText_HighlightTransparent);
+    StringAppend(gRyuStringVar1, sText_RyuAquaNotApplicable);
+    AddTextPrinterParameterized(sPrintNumberWindow2Id, 1, gRyuStringVar1, 0, 0, 0, NULL);
 }
 
 void DrawMagmaLogo(void)
 {
-        LoadSpriteSheet(&MagmaLogoSheet);
-        LoadSpritePalette(&MagmaLogoPalette);
-        MenuSpriteId1 = (CreateSprite(&MagmaLogoSpriteTemplate, 16, 62, 0));
+    struct WindowTemplate template;
+
+    if (FlagGet(FLAG_RYU_MAGMA_ALT_LINE) == 1)
+    {
+        LoadSpriteSheet(&MagmaAltLogoSheet);
+        LoadSpritePalette(&MagmaAltLogoPalette);
+        MenuSpriteId1 = (CreateSprite(&MagmaAltLogoSpriteTemplate, 15, 69, 0));
+    }
+    else
+    {
+        LoadSpriteSheet(&MagmaMainLogoSheet);
+        LoadSpritePalette(&MagmaMainLogoPalette);
+        MenuSpriteId1 = (CreateSprite(&MagmaMainLogoSpriteTemplate, 15, 69, 0));
+    }
+
+    //prepare window
+    SetWindowTemplateFields(&template, 0, 4, 8, 3, 2, 15, 76);
+    sPrintNumberWindow2Id = AddWindow(&template);
+    FillWindowPixelBuffer(sPrintNumberWindow2Id, 0);
+    PutWindowTilemap(sPrintNumberWindow2Id);
+    CopyWindowToVram(sPrintNumberWindow2Id, 1);
+
+    //Show quest stage
+    StringCopy(gRyuStringVar1, gText_HighlightTransparent);
+    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_MAGMA)), 0, 3);
+    StringAppend(gRyuStringVar1, gStringVar2);
+    AddTextPrinterParameterized(sPrintNumberWindow2Id, 1, gRyuStringVar1, 0, 0, 0, NULL);
+
 }
 
 static bool32 InitStartMenuStep(void)

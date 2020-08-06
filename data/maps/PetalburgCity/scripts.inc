@@ -585,7 +585,10 @@ PC_YouCantLeaveThisDirection::
 	end
 	
 PC_StopPlayerForDad::
+	compare VAR_RYU_MAGMA, 250
+	goto_if_ne ryu_end
 	lock
+	playbgm 350, 0
 	setvar VAR_RYU_MAGMA, 255 @Dad notices player
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	addobject 9

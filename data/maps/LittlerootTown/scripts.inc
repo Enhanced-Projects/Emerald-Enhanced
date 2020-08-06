@@ -7,7 +7,13 @@ LittlerootTown_MapScripts:: @ 81E7DCB
 Ryu_HaremEventCheck::
 	map_script_2 VAR_RYU_PARTNER_COUNT, 4, Ryu_HaremEvent
 	.2byte 0
-
+	
+LRT_CheckMagmaWarp::
+	setvar VAR_TEMP_7, 0
+	compare VAR_RYU_MAGMA, 570
+	goto_if_ne ryu_end
+	warpsilent MAP_LRT_BIRCH_LAB_MAGMA_EVENT, 0, 6, 12
+	waitstate
 
 LittlerootTown_MapScript1_1E7DDB: @ 81E7DDB
 	setflag FLAG_VISITED_LITTLEROOT_TOWN

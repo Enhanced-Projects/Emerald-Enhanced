@@ -67,32 +67,46 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney:: @ 8227F64
 
 EGC_FollowerSidney::
 	call RyuFollowerAllySelector
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_SIDNEY, 0, NULL, EverGrandeCity_SidneysRoom_Text_Defeat
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq EGC_ChooseValidMons
+	multi_2_vs_1 TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
 	waitstate
 	special LoadPlayerParty
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 	
+EGC_ChooseValidMons::
+	msgbox EGC_NeedToChoose
+	closemessage
+	goto_if_set FLAG_TEMP_B, EGC_FollowerSidneyRematch
+	goto EGC_FollowerSidney
+	
+EGC_NeedToChoose:
+	.string "You must make a valid selection.$"
+	
 EGC_FollowerSidneyRematch::
+	setflag FLAG_TEMP_B
 	call RyuFollowerAllySelector
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_SIDNEY_REMATCH, 0, NULL, EverGrandeCity_SidneysRoom_Text_Defeat
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq EGC_ChooseValidMons
+	multi_2_vs_1 TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
 	waitstate
 	special LoadPlayerParty
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto Ryu_CheckForMega
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 
 EGC_AltSidney::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidneyRematch
-	trainerbattle_no_intro TRAINER_SIDNEY_REMATCH, 	EverGrandeCity_SidneysRoom_Text_Defeat
+	trainerbattle_no_intro TRAINER_SIDNEY_REMATCH, EverGrandeCity_SidneysRoom_Text_Defeat
 	goto Ryu_CheckForMega
 	end
 

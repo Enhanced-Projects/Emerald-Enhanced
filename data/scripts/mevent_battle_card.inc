@@ -1,6 +1,6 @@
 MysteryEventScript_BattleCard:: @ 867513C
 	setvaddress MysteryEventScript_BattleCard
-	vgoto_if_set FLAG_MYSTERY_EVENT_DONE, MysteryEventScript_BattleCardInfo
+	@vgoto_if_set FLAG_UNUSED_DONE, MysteryEventScript_BattleCardInfo
 	setorcopyvar VAR_RESULT, GET_CARD_BATTLES_WON
 	specialvar VAR_0x8008, GetMysteryEventCardVal
 	compare VAR_0x8008, REQUIRED_CARD_BATTLES
@@ -12,7 +12,7 @@ MysteryEventScript_BattleCard:: @ 867513C
 	waitbuttonpress
 	giveitem ITEM_POTION
 	release
-	setflag FLAG_MYSTERY_EVENT_DONE
+	@setflag FLAG_UNUSED_DONE
 	end
 
 MysteryEventScript_BattleCardInfo: @ 8675179

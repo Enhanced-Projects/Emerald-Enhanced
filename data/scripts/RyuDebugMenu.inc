@@ -186,7 +186,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	clearflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE
+	buffernumberstring 0, VAR_RYU_MAGMA
+	msgbox RDB_TempVarsViewMsg
 	release
 	end
 
@@ -328,29 +329,31 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
-    givemon SPECIES_MAGEARNA, 125, ITEM_EXPERT_BELT
-	givemon SPECIES_MUDSDALE, 125, ITEM_WIDE_LENS
-	setmonmove 1, 0, MOVE_PRECIPICE_BLADES
-	setmonmove 1, 1, MOVE_DIAMOND_STORM
-	setmonmove 1, 2, MOVE_EXTREME_SPEED
-	setmonmove 1, 3, MOVE_ICE_SHARD
-	setmonmove 0, 0, MOVE_MOONBLAST
-	setmonmove 0, 1, MOVE_MIRROR_SHOT
-	setmonmove 0, 2, MOVE_EARTH_POWER
-	setmonmove 0, 3, MOVE_PARABOLIC_CHARGE
+    givemon SPECIES_MEGA_MAWILE, 125, ITEM_EXPERT_BELT
+	givemon SPECIES_VOLCANION, 125, ITEM_EXPERT_BELT
+	setmonmove 0, 0, MOVE_CRUNCH
+	setmonmove 0, 1, MOVE_IRON_HEAD
+	setmonmove 0, 2, MOVE_PLAY_ROUGH
+	setmonmove 0, 3, MOVE_CLOSE_COMBAT
+	setmonmove 1, 0, MOVE_SURF
+	setmonmove 1, 1, MOVE_FLAMETHROWER
+	setmonmove 1, 2, MOVE_EARTH_POWER
+	setmonmove 1, 3, MOVE_PARABOLIC_CHARGE
 	setvar VAR_TEMP_1, 252
-	setvar VAR_TEMP_2, 1
+	setvar VAR_TEMP_2, 0
 	special RyuSetEVATK
-	special RyuSetEVSPE
+	special RyuSetEVHP
 	special RyuSetEVSPDEF
 	special RyuSetEVDEF
-	setvar VAR_TEMP_2, 2
+	special RyuSetEVSPE
+	setvar VAR_TEMP_2, 1
 	special RyuSetEVSPATK
 	special RyuSetEVHP
 	special RyuSetEVSPDEF
 	special RyuSetEVDEF
 	special RyuSetIVs
-	additem ITEM_WAYSTONE 1
+	special RyuSetEVSPE
+	additem ITEM_WAYSTONE, 1
     setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV

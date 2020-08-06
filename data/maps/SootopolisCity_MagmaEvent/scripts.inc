@@ -8,6 +8,7 @@ SootopolisCity_MagmaEvent_OnTransition::
 	call AbnormalWeather_StartGroudonWeather
 	doweather
 	playbgm MUS_HIDERI, 0
+	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
 	return
 	
 SCME_StartEvent::
@@ -102,16 +103,20 @@ SC_GroudonFight::
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	specialvar VAR_RESULT, GetBattleOutcome
-	compare VAR_RESULT, B_OUTCOME_WON
-	goto_if_eq SC_Groudon_Defeated
-	compare VAR_RESULT, B_OUTCOME_RAN
-	goto_if_eq SC_Groudon_Defeated
 	compare VAR_RESULT, B_OUTCOME_CAUGHT
+	call_if_ne SC_Groudon_Defeated
+	compare VAR_RESULT, B_OUTCOME_CAUGHT
+	goto_if_eq SC_HideGroudon
 	goto SC_Groudon_PostEvent
 	
+SC_HideGroudon::
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2
+	goto SC_Groudon_PostEvent
+
 SC_Groudon_Defeated::
 	setflag FLAG_RYU_PLAYER_FAILED_TO_CAPTURE_GROUDON
-	goto SC_Groudon_PostEvent
+	return
 
 SC_Groudon_PostEvent::
 	removeobject 1
@@ -163,6 +168,7 @@ SCME_PostEventPart2::
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
 	removeobject 3
+	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
 	waitfieldeffect FLDEFF_NPCFLY_OUT
 	setobjectxy 3, 0, 0
 	applymovement 16, Common_Movement_StepDown
@@ -197,8 +203,11 @@ SCME_PostEventPart2::
 	msgbox SCME_CourtneyChasesMaxie
 	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
 	removeobject 4
+	setflag FLAG_RYU_DS_COURTNEY_LOVERS
 	setvar VAR_RYU_MAGMA, 560
 	clearflag FLAG_RYU_HIDE_114_MAXIE
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
 	warpsilent MAP_SOOTOPOLIS_CITY, 255, 13, 41
 	waitstate
 	
@@ -233,7 +242,9 @@ SCME_CourtneyAlone::
 	msgbox SCME_IsNowAdmin
 	closemessage
 	setvar VAR_RYU_MAGMA, 560
-	clearflag FLAG_RYU_MH_COURTNEY_DUOMODE
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+	setflag FLAG_RYU_MAXIE_END_EVENT
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	warpsilent MAP_MAGMA_HIDEOUT_1F, 255, 21, 23
 	waitstate
 	

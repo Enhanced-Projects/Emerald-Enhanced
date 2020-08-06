@@ -321,41 +321,41 @@ LRT_BH_SnoruntIsChampionFroslass::
 	return
 
 Brendan_FollowerQuery:
-    .string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}I know we should have done\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I know we should have done\n"
     .string "this earlier... but\p"
     .string "Can we travel together for a while?$"
 
 	
 LRT_BH_PullItOut:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}If you have Snorunt with you, pull\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}If you have Snorunt with you, pull\n"
     .string "it out. I wanna see how its doing!$"
 
 LRT_BH_YouShouldTrain:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: You should train it more.\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}You should train it more.\p"
     .string "It has a lot of untapped potential.$"
 	
 LRT_BH_Thanks1:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Well, thanks for showing it to me.\pIt's nice to see it once in a while!$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Well, thanks for showing it to me.\pIt's nice to see it once in a while!$"
 	
 LRT_BH_Vouchers:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Here, take some tutor vouchers.\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Here, take some tutor vouchers.\n"
     .string "They will probably be useful to you!$"
 
 LRT_BH_WastedPotential:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I see you evolved it into Glalie.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I see you evolved it into Glalie.\p"
     .string "That's cool, but it doesn't have\n"
     .string "a good nature for that. Thanks for\p"
     .string "taking care of my Pokémon, anyways\n"
     .string "It looks quite happy!$"
 
 LRT_BH_BeautifulPokemon:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Oh, you evolved it into\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, you evolved it into\p"
     .string "Froslass! That's Awesome!\n"
     .string "It's a beautiful Pokémon, befitting\l"
     .string "a beautiful Pokémon trainer!$"	
 	
 LRT_BH_FroslassChampionMsg:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Oh wow, It has the champion ribbon too!\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh wow, It has the champion ribbon too!\n"
     .string "I bet it worked real hard for you\l"
     .string "to get that!\p"
 	.string "Here, take this. From me!\n"
@@ -364,7 +364,7 @@ LRT_BH_FroslassChampionMsg:
 	.string "really likes you!$"
 	
 LRT_BH_GlalieChampionMsg:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Oh wow, It has the champion ribbon too!\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh wow, It has the champion ribbon too!\n"
     .string "I bet it worked real hard for you\l"
     .string "to get that!\p"
 	.string "Here, take this. It'll make its\n"
@@ -374,13 +374,13 @@ LRT_BrendanBADEND:
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Sadness and disappointment are\n evident on his face as you turn\l away.)$"
 
 LRT_BRENDAN_KISS:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}The time I kissed you...\pIt was the heat of the moment and\n... ... ...\pDid it upset you?$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}The time I kissed you...\pIt was the heat of the moment and\n... ... ...\pDid it upset you?$"
 	
 LRT_BrendanDISPT:
     .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(He looks a little deflated.)$"
 
 LRT_BrendanROMPre:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Sorry, my bed might be a little small...$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Sorry, my bed might be a little small...$"
 	
 LRT_BrendanROM:
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{RIVAL} and {PLAYER} cuddled together,\nenjoying a long night's rest.$"
@@ -389,34 +389,34 @@ LRT_BrendanROM2Pre:
 	.string "Whenever I snuggle with you, it's\nlike all of my troubles just\lmelt away.\pI wish it could be like that\nall the time.$"
 
 LRT_BrendanROM2:
-    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {RIVAL}{COLOR LIGHT_GREEN}{SHADOW GREEN} deviously cuddle\n"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {RIVAL} deviously cuddle\n"
 	.string " together for another night.)$"
 
 LRT_DS_FZ_Brendan:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Dawn: Oh, hi, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}. What are you\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, hi, {PLAYER}. What are you\n"
 	.string "up to today?$"
 
 LRT_BrendanHAPPY:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: YE-I mean, whew, that's\na relief! I thought you'd hate me\lafter that.$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}YE-I mean, whew, that's\na relief! I thought you'd hate me\lafter that.$"
 
 LRT_BrendanSTAY:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Did you want to spend the night\nwith me, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}?$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Did you want to spend the night\nwith me, {PLAYER}?$"
 
 LRT_BrendanSTAY2:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: Did you want to join\nme for another night?$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Did you want to join\nme for another night?$"
 
 LRT_BrendanSORRY:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Yeah, I thought as much…\psorry about that, {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}.\nI won't do it again.$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Yeah, I thought as much…\psorry about that, {PLAYER}.\nI won't do it again.$"
 
 LRT_BRENDAN_SORRYKISSED:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Dawn: {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}!\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: {PLAYER}!\p"
 	.string "I'm sorry I kissed you.$"
 
 LRT_BRENDAN_THANKS:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: That was great.\pI can't remember the last time\nI slept so good.\pThanks for that.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Brendan: That was great.\pI can't remember the last time\nI slept so good.\pThanks for that.$"
 
 LRT_BRENDAN_THANKS2:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Thanks for staying with me for another\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Thanks for staying with me for another\n"
 	.string "night. You might get me addicted...\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(He gives a wide, toothy grin.)$"
 	
@@ -490,11 +490,11 @@ LRT_LeafEvent::
 	removeobject 3
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	delay 80
-	fadenewbgm MUS_DUMMY
+	playbgm MUS_DUMMY, 0
 	fadescreenspeed 0, 5
 	msgbox LRT_Story7 MSGBOX_DEFAULT
 	closemessage
-	fadenewbgm MUS_MISHIRO
+	playbgm MUS_MISHIRO, 0
 	setvar VAR_RYU_DS_LANA_STAGE, 80
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	setflag FLAG_RYU_DS_LEAF_LOVERS

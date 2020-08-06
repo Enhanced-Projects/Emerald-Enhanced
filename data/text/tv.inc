@@ -1950,7 +1950,7 @@ gTVPokemonNewsBattleFrontierText10:: @ 08287C7D
 	.string "The TRAINER {STR_VAR_1} set a new\n"
 	.string "{STR_VAR_2}-win-streak record while\l"
 	.string "competing in the Battle Arena's\l"
-	.string "Set KO Tournaments.\p"
+	.string "Inverse Battle Tournaments.\p"
 	.string "Here's to {STR_VAR_1}!$"
 
 gTVPokemonNewsBattleFrontierText11:: @ 08287CF3

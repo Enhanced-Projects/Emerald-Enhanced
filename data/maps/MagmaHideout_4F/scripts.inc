@@ -231,11 +231,16 @@ MagmaHideout_4F_Text_MaxieImGoingAfterGroudon: @ 823ABE2
 @===========================================ryu aqua
 
 MH_CheckForStatus::
-	compare VAR_RYU_MAGMA, 301
+	compare VAR_RYU_MAGMA, 200
 	goto_if_ge ryu_end
 	goto_if_set FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS, ryu_end
 	goto_if_set FLAG_RYU_DS_SHELLY_CLOSEFRIENDS, MH_MapSetup_Duo
 	goto MH_MapSetup_Solo
+	
+MH4_SetupCourtneyPursuit::
+	clearflag FLAG_RYU_HIDE_REL_OBJECTS
+	addobject 24
+	return
 	
 MH_MapSetup_Solo::
 	lock
@@ -260,10 +265,7 @@ MH_MapSetup_Duo::
 	
 	
 MH_RyuBossFight::
-	compare VAR_RYU_MAGMA, 301
-	goto_if_ge ryu_end
-	compare VAR_RYU_MAGMA, 450
-	goto_if_eq MH4_MaxieAwakensGroudon
+	goto_if_set FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
 	goto_if_set FLAG_RYU_DS_SHELLY_CLOSEFRIENDS, MH_CourtneyMaxieAltBattle
 	goto_if_set FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS, ryu_end
 	playse SE_PIN
@@ -461,7 +463,7 @@ MH_CourtneyCry:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN} (Courtney looks broken and dejected.\n She seems really upset.\l You can't help but feel sorry for her.)$"
 	
 MH_ShellyRelOutro:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: We make an amazing team,\n{PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, don't we?\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}We make an amazing team,\n{PLAYER}, don't we?\p"
 	.string "I'll stay here and make sure\nno other Magma thugs show up to\lmess with Groudon.\pMeet me back at Corporate later.\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly winks at you.\n you wonder what's in store...)$"
 	
@@ -501,9 +503,9 @@ MH_MaxieIntro:
 	.string "problem!$"
 	
 MH_ShellyAssistIntro:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: Maxie and Courtney!\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Maxie and Courtney!\p"
 	.string "Your crazy evil deeds stop NOW!\n"
-	.string "{PLAYER}{COLOR LIGHT_RED}{SHADOW RED} and I will annihilate you!\p"
+	.string "{PLAYER} and I will annihilate you!\p"
 	.string "We won't allow you to destroy the\n"
 	.string "world!$"
 	
@@ -511,7 +513,7 @@ MH_MaxieSoloDefeat:
 	.string "What!? Unbelievable!$"
 	
 MH_MaxieDefeated:
-	.string "Groudon.... It's clear to me that\nI am not strong enough to control\lyou...\lYou're going to have to stay here,\ldormant...$"
+	.string "Groudon.... It's clear to me that\nI am not strong enough to control\lyou...\pYou're going to have to stay here,\ndormant...$"
 	
 MH_CourtneySpcdefeat:
 	.string "Courtney: Maxie.... I'm sorry...\n"
@@ -521,8 +523,7 @@ MH_MaxieSpcdefeat:
 	.string "Maxie: Unbelievable! This can't be!$"
 
 MH_Groudon_Enc::
-	goto_if_set FLAG_RYU_GROUDON_ENCOUNTERED, ryu_end
-	goto_if_unset FLAG_RYU_DS_SHELLY_LOVERS, ryu_end
+	call MH4_CheckMagmaLineGroudonCaptured
 	lockall
 	setvar VAR_RESULT, 1
 	playse SE_W197
@@ -575,6 +576,10 @@ MH_Groudon_Enc::
 	setflag FLAG_RYU_GROUDON_ENCOUNTERED
 	releaseall
 	end
+	
+MH4_CheckMagmaLineGroudonCaptured::
+	goto_if_unset FLAG_RYU_PLAYER_FAILED_TO_CAPTURE_GROUDON, ryu_end
+	return
 
 MagmaHideout_4F_Movement_23A67D: @ 823A67D
 	slide_up
@@ -593,19 +598,47 @@ MH_CheckSetMaxiePosition:
 	.2byte 0
 	
 CheckOpenAdminQuarters::
-	compare VAR_RYU_MAGMA, 560
-	goto_if_lt ryu_end
 	setvar VAR_TEMP_6, 100
-	setmetatile 20, 4, 606, 1
-	setmetatile 20, 3, 598, 1
+	compare VAR_RYU_MAGMA, 550
+	call_if_eq MH4_SetupCourtneyPursuit
+	goto_if_set FLAG_RYU_MAGMA_LINE_DONE, SetAdminTiles
+	goto_if_set FLAG_RYU_DS_COURTNEY_LOVERS, SetAdminTiles
 	end
+	
+	
+SetAdminTiles::
+	setmetatile 20, 4, 606, 0
+	setmetatile 20, 3, 598, 0
+	special DrawWholeMapView
+	call_if_set FLAG_RYU_PLAYER_FAILED_TO_CAPTURE_GROUDON, SetGroudonEventRepeatable
+	end
+	
+SetGroudonEventRepeatable:
+	addobject 7
+	return
+	
+MH4_CourtneySetUpChaseMaxie::
+	compare VAR_RYU_MAGMA, 550
+	goto_if_lt ryu_end
+	msgbox MH4_CourtneyChaseMaxie1
+	closemessage
+	clearflag FLAG_RYU_HIDE_114_MAXIE
+	release
+	setvar VAR_RYU_MAGMA, 565@Player is chasing down maxie with robot courtney
+	setflag FLAG_RYU_HIDE_REL_OBJECTS
+	removeobject 24
+	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_WEST
+	release
+	end
+
+MH4_CourtneyChaseMaxie1:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, We must find ex-leader Maxie.\nLast seen... Route 114$"
+	
 
 SetMaxiePosition2::
 	setvar VAR_RYU_MAGMA, 302@Player entered 4f to chat with maxie
 	removeobject 6
 	setflag FLAG_RYU_HIDE_MAGMA_HIDEOUT_MAXIE
-	setmetatile 20, 3, 598, 1
-	setmetatile 20, 4, 606, 1
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	addobject 11
 	addobject 12
@@ -627,6 +660,10 @@ MH4_MagmaAdminCheck::
 	
 	
 MH4_MagmaMaxieEvent::
+	compare VAR_RYU_MAGMA, 550
+	goto_if_eq MH_CheckForStatus
+	compare VAR_RYU_MAGMA, 450
+	goto_if_eq ryu_end
 	compare VAR_RYU_MAGMA 400
 	goto_if_ge MH4_MagmaEvent8
 	compare VAR_RYU_MAGMA, 305
@@ -717,7 +754,7 @@ MH4_Maxie2Event::
 	removeobject 11
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	setvar VAR_RYU_MAGMA, 315@player is tasked with clearing out aqua grunts
-	applymovement 12, MH4_CourtneyToPlayer@4 left, 1 down, 1 left, face up
+	applymovement 12, MH4_CourtneyToPlayerFollower@4 left, 1 down, 1 left, face up
 	waitmovement 12
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -733,15 +770,36 @@ MH4_Maxie2Event::
 	end
 	
 MH4_CourtneyScript::
+	goto_if_set FLAG_RYU_DS_COURTNEY_LOVERS, RyuFollower_CourtneyScript
+	compare VAR_RYU_MAGMA, 575
+	goto_if_ge MH4_PostLabCourtneyFollower
+	compare VAR_RYU_MAGMA, 570
+	goto_if_ge MH4_PostR114CourtneyFollower
 	compare VAR_RYU_MAGMA, 560
 	goto_if_ge MH4_PostGroudonCourtneyFollower
 	msgbox MH4_CourtneyChatter
 	goto ryu_end
+	
+MH4_PostLabCourtneyFollower::
+	msgbox MH4_PostLabCourtneyChatter
+	release
+	end
 
 MH4_PostGroudonCourtneyFollower::
 	msgbox MH4_CourtneyPostGroudonChatter
 	release
 	end
+	
+MH4_PostR114CourtneyFollower::
+	msgbox MH4_PostR114CourtneyChatter
+	release
+	end
+	
+MH4_PostLabCourtneyChatter::
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Close to catching Maxie...\nLast seen... Route 124$"
+	
+MH4_PostR114CourtneyChatter::
+	.string "{COLOR LIGHT_RED}{SHADOW RED}We must find ex-leader Maxie.\nLast seen... Littleroot.$"
 
 MH4_CourtneyPostGroudonChatter::
 	.string "{COLOR LIGHT_RED}{SHADOW RED}We must find ex-leader Maxie.\nLast seen... Route 114.$"
@@ -901,7 +959,7 @@ MH4_MaxiExitsForPeak:
 	face_down
 	step_end
 
-MH4_CourtneyToPlayer:@4 left, 1 down, 1 left, face up
+MH4_CourtneyToPlayerFollower:@4 left, 1 down, 1 left, face up
 	walk_left
 	walk_left
 	walk_left
@@ -1205,18 +1263,436 @@ MH4_TabithaToExit:
 	
 	
 MH4_AquaSeafloorCavernFinished::
+	compare VAR_RYU_MAGMA, 450
+	goto_if_lt ryu_end
+	lock
+	faceplayer
+	specialvar VAR_RESULT, GetPlayerFacingDirection
+	compare VAR_RESULT, DIR_NORTH
+	goto_if_eq MH4_PlayerFacingUp
+	goto MH4_PlayerFacingRight
 	end
 	
-MH4_MaxieAwakensGroudon::
+MH4_PlayerFacingUp::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 20, Common_Movement_FaceLeft
+	waitmovement 20
+	goto MH4_PlayerFacingRight
+	
+MH4_PlayerFacingRight::
+	msgbox MH4_PlayerYouveExceeded
+	closemessage
+	playfanfare MUS_FANFA1
+	msgbox SCME_IsNowAdmin
+	closemessage
+	msgbox MH4_AsOfThis
+	closemessage
+	applymovement 20, Common_Movement_FaceUp
+	waitmovement 20
+	msgbox MH4_NowComeStand
+	closemessage
+	call MH4_GroudonEvent
+	
+MH4_GroudonEvent::
+	playbgm MUS_MGM0, 0
+	closemessage
+	setvar VAR_RESULT, 1
+	playse SE_W197
+	dofieldeffectsparkle 18, 42, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	setvar VAR_RESULT, 1
+	playse SE_TAMA
+	special DoOrbEffect
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	waitmovement 0
+	removeobject 7  @ sleeping Groudon
+	addobject 1     @ awakened Groudon
+	waitstate
+	applymovement 1, MagmaHideout_4F_Movement_GroudonApproach
+	waitmovement 0
+	special FadeOutOrbEffect
+	waitstate
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 5  @ shake delay
+	special ShakeCamera
+	waitstate
+	msgbox MH4_WhatIsHappening
+	removeitem ITEM_BLUE_ORB, 1
+	specialvar VAR_TEMP_A, CountBadges
+	multvar VAR_TEMP_A, 10
+	setwildbattle SPECIES_GROUDON, VAR_TEMP_A, ITEM_NONE
+	playmoncry SPECIES_GROUDON, 0
+	msgbox MH4_GroudonLooksAtYou
+	closemessage
+	goto_if_set FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, MH4_CourtneyGivesMasterBall
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	removeobject 1
+	removeobject 7
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2
+	specialvar VAR_TEMP_A, GetBattleOutcome
+	compare VAR_TEMP_A, B_OUTCOME_CAUGHT
+	call_if_ne MH4_PlayerFailedCapturingGroudon
+	goto MH4_NormalMagmaGroudonEndEvent
 	end
+	
+MH4_NormalMagmaGroudonEndEvent::
+	goto_if_set FLAG_RYU_PLAYER_FAILED_TO_CAPTURE_GROUDON, MH4_NormalMagmaEnding2
+	msgbox MH4_MaxieAsksPlayerToStartEternalSun
+	closemessage
+	msgbox MH4_PlayerTellsGroudonToStartSun
+	closemessage
+	fadescreen FADE_TO_BLACK
+	addobject 1
+	setobjectxy 1, 15, 20
+	playmoncry SPECIES_GROUDON, 0
+	fadescreen FADE_FROM_BLACK
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 5  @ shake delay
+	special ShakeCamera
+	waitstate
+	msgbox MH4_MagmaFinished
+	closemessage
+	fadescreen FADE_TO_WHITE
+	playmoncry SPECIES_GROUDON, 1
+	waitmoncry
+	removeobject 1
+	fadescreen FADE_FROM_WHITE
+	setflag FLAG_RYU_MAGMA_LINE_DONE
+	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
+	setvar VAR_RYU_MAGMA, 598@Player finished the main magma line with the normal ending and caught Groudon.
+	setflag FLAG_RYU_MAXIE_END_EVENT
+	fadescreen FADE_TO_BLACK
+	removeobject 20
+	removeobject 21
+	removeobject 22
+	removeobject 23
+	fadescreen FADE_FROM_BLACK
+	setflag FLAG_RYU_MAGMA_INTENSE_SUN_ENABLED
+	msgbox MH4_SeemsLikeIm
+	release
+	end
+	
+MH4_SeemsLikeIm:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Seems like I'm going to get\na tan now...$"
+	
+MH4_NormalMagmaEnding2::
+	msgbox MH4_Unfortunate
+	closemessage
+	msgbox MH4_MaxiCommandsGroudon
+	closemessage
+	fadescreen FADE_TO_BLACK
+	addobject 1
+	setobjectxy 1, 15, 20
+	playmoncry SPECIES_GROUDON, 0
+	fadescreen FADE_FROM_BLACK
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 5  @ shake delay
+	special ShakeCamera
+	waitstate
+	fadescreen FADE_TO_WHITE
+	playmoncry SPECIES_GROUDON, 1
+	waitmoncry
+	removeobject 1
+	fadescreen FADE_FROM_WHITE
+	setflag FLAG_RYU_MAGMA_LINE_DONE
+	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
+	setvar VAR_RYU_MAGMA, 598@Player finished the main magma line with the non-romance ending and failed to capture Groudon.
+	setflag FLAG_RYU_MAXIE_END_EVENT
+	fadescreen FADE_TO_BLACK
+	removeobject 20
+	removeobject 21
+	removeobject 22
+	removeobject 23
+	fadescreen FADE_FROM_BLACK
+	setflag FLAG_TEMP_4
+	release
+	end
+	
+MH4_PlayerFailedCapturingGroudon::
+	setflag FLAG_RYU_PLAYER_FAILED_TO_CAPTURE_GROUDON
+	return
+	
+MH4_CourtneyGivesMasterBall::
+	applymovement 21, MH4_CourtneyToPlayer
+	waitmovement 21
+	msgbox MH4_PlayerTakeThis
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	closemessage
+	applymovement 20, Common_Movement_FaceDown
+	waitmovement 20
+	giveitem ITEM_MASTER_BALL, 1
+	msgbox MH4_CourtneyHowCouldYou
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	removeobject 1
+	removeobject 7
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2
+	specialvar VAR_TEMP_A, GetBattleOutcome
+	compare VAR_TEMP_A, B_OUTCOME_CAUGHT
+	call_if_ne MH4_PlayerFailedCapturingGroudon
+	applymovement 21, MH4_CourtneyBehindMaxie@fast
+	waitmovement 21
+	applymovement 20, Common_Movement_FaceDown
+	waitmovement 20
+	msgbox MH4_CourtneyTiredOfMaxie
+	closemessage
+	applymovement 20 MH4_GruntSlideUp2DiagNW
+	waitmovement 20
+	removeobject 20
+	playse SE_W052
+	delay 5
+	playse SE_W052
+	delay 15
+	playse SE_W052
+	waitse
+	playse SE_PIN
+	applymovement 23, Common_Movement_ExclamationMark
+	applymovement 22, Common_Movement_ExclamationMark
+	waitmovement 23
+	applymovement 23, Common_Movement_FaceRight
+	waitmovement 23
+	msgbox MH4_BlaiseNotSuprised
+	closemessage
+	applymovement 22, Common_Movement_FaceLeft
+	waitmovement 22
+	msgbox MH4_TabithaSuprised
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, MH4_PlayerToTabitha@fast
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MH4_PlayerTiredOfTabitha
+	closemessage
+	applymovement 22, MH4_GruntSlideUp2DiagNW
+	waitmovement 22
+	playse SE_W052
+	delay 5
+	playse SE_W052
+	delay 15
+	playse SE_W052
+	waitse
+	removeobject 22
+	playse SE_PIN
+	applymovement 21, Common_Movement_HeartEmote
+	waitmovement 21
+	applymovement 21, MH4_CourtneyToPlayer2
+	waitmovement 21
+	applymovement 21, Common_Movement_FaceDown
+	waitmovement 21
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setflag FLAG_RYU_DS_COURTNEY_LOVERS
+	msgbox MH4_CourtneyLovesPlayer
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement 21, Common_Movement_FaceLeft
+	waitmovement 21
+	msgbox MH4_BlaiseAsksWhoLeaderIs
+	closemessage
+	msgbox MH4_CourtneyAnswersBoth
+	closemessage
+	msgbox MH4_BlaiseSalutes
+	closemessage
+	applymovement 23, MH4_BlaiseExitsEnd
+	waitmovement 23
+	removeobject 23
+	applymovement 21, Common_Movement_FaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MH4_WhatTroubleCanWe
+	closemessage
+	setflag FLAG_RYU_MAGMA_LINE_DONE
+	setvar VAR_RYU_MAGMA, 599@Player finished the magma main line with the romance courtney ending.
+	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE
+	setflag FLAG_RYU_MAXIE_END_EVENT
+	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY
+	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
+	removeobject 21
+	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_NORTH
+	release
+	end
+	
+MH4_Unfortunate:
+    .string "Maxie: What an unfortunate chain of\n"
+    .string "events. It saw you as worthy, and yet\p"
+    .string "you failed to capture it. No matter,\n"
+    .string "I will command it, then. $"
 
+MH4_MaxiCommandsGroudon:
+    .string "Great beast of the earth, please\n"
+    .string "shed additional light on this world\l"
+    .string "so that it may have more land!$"
+	
+MH4_WhatIsHappening:
+    .string "Maxie: Wait.. what is happening?\p"
+    .string "Groudon, why won't you obey me?!$"
 
+MH4_GroudonLooksAtYou:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You feel Groudon staring into\n"
+    .string " your very soul)\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Maxie: I see... It only sees you as\n"
+    .string "worthy. Well, no matter. You can\p"
+    .string "just ask it to intensify the sun.\n"
+    .string "I don't particularly care what\p"
+    .string "happens to it as long as that\n"
+    .string "works.$"
+	
+MH4_MaxieAsksPlayerToStartEternalSun:
+    .string "Maxie: Tell your beast to intensify\n"
+    .string "sunlight over Hoenn.$"
+
+MH4_PlayerTellsGroudonToStartSun:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} sends out Groudon.)$"
+
+MH4_MagmaFinished:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Groudon emits a blinding flash\n"
+    .string " and the entire room feels\l"
+    .string " impossibly hot for a second.)$"
 
 	
+MH4_PlayerYouveExceeded:
+	.string "{PLAYER}! You've exceeded my\n"
+    .string "expectations!\p"
+    .string "Not only have you single-handedly\n"
+    .string "halted Team Aqua, you've made sure\l"
+    .string "they're no longer a thorn in my side.\p"
+    .string "Now, there's only one other thing\n"
+    .string "left to do...$"
 
+MH4_AsOfThis:
+	.string "As of this moment, you shall join the\n"
+    .string "Three Fires as their fourth pillar,\l"
+    .string "one whom I can place my trust in.$"
 
+MH4_NowComeStand:
+	.string "Now come...stand beside me as we\n"
+    .string "witness Team Magma's dream become\p"
+    .string "reality!$"
+
+MH4_PlayerTakeThis:@courtney gives player maxie's master ball
+    .string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! Use this ball!\n"
+    .string "I took it from Maxie's Office.\p"
+    .string "You should be the one who controls\n"
+    .string "Groudon...$"
+
+MH4_CourtneyHowCouldYou:
+	.string "How DARE you steal from ME!\p"
+    .string "I practially raised you as my own...\n"
+    .string "I brought you in from the streets...\l"
+    .string "You were NOTHING before I found you!\p"
+    .string "I will put an end to your miserable\n"
+    .string "existence. Camerupt! use-$"
+
+MH4_CourtneyTiredOfMaxie:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}You may have rescued me... but\n"
+    .string "you never showed me love... even\p"
+    .string "though I put everything into serving\n"
+    .string "you...\p"
+    .string "You never ackowledged me, or even\n"
+    .string "recognized my achievements.\p"
+    .string "Now, I will return the favor.$"
+
+MH4_BlaiseNotSuprised:
+    .string "Blaise: Hmm... I can't say that I'm\n"
+    .string "suprised. \p"
+    .string "Leader... you should have saw this\n"
+    .string "coming...$"
+
+MH4_TabithaSuprised:
+	.string "Tabitha: You traitorous b-$"
+
+MH4_PlayerTiredOfTabitha:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I won't have you insulting my\n"
+    .string "partner. You sniveling whelp of a\l"
+    .string "person.$"
+
+MH4_CourtneyLovesPlayer:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, {PLAYER}... You really know how\n"
+    .string "to make a girl happy...$"
+
+MH4_BlaiseAsksWhoLeaderIs:
+    .string "Blaise: Ahem. Sorry... before I\n"
+    .string "leave you to your moment... Uh...\p"
+    .string "Which one of you is the leader now?$"
+
+MH4_CourtneyAnswersBoth:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}As the only remaining Admin of Magma\n"
+    .string "you will now serve both of us.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Team Magma is now run by a couple.\p"
+    .string "Subsequent leaders will be chosen\n"
+    .string "once they have found a partner,\l"
+    .string "inside of our ranks. \p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}We don't want another Maxie.$"
+
+MH4_BlaiseSalutes:
+    .string "Blaise: Very well... Leaders! I'm \n"
+    .string "off to inform the soldiers.\p"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Blaise salutes both of you and\n"
+    .string " takes his leave.)$"
+
+MH4_WhatTroubleCanWe:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Now... {PLAYER} I DO wonder what\n"
+    .string "trouble we can get into now.\p"
+    .string "What should we do?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Anything and everything we want to.\n"
+    .string "The world is our stomping ground.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}No one will oppose us.$"
+
+MH4_CourtneyToPlayer:
+	walk_down
+	walk_left
+	walk_left
+	face_up
+	step_end
 	
+MH4_CourtneyToPlayer2:
+	walk_up
+	walk_right
+	walk_right
+	face_left
+	step_end
+
+MH4_CourtneyBehindMaxie:
+	walk_fast_right
+	walk_in_place_fast_up
+	step_end
+
+MH4_PlayerToTabitha:
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_down
+	walk_fastest_right
+	walk_in_place_fast_up
+	step_end
 	
+MH4_BlaiseExitsEnd:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_left
+	step_end
 	
-	
-	
+MH4_HideDeadMagmaMembers::
+	setvar VAR_TEMP_B, 100
+	setobjectxy 22, 37, 0
+	setobjectxy 20, 37, 0
+	end

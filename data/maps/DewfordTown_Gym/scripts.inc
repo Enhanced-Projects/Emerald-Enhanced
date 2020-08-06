@@ -301,16 +301,22 @@ DFG_GymBattleIntroLanette::
 	
 DFG_AltGymBattle::
 	msgbox DFG_PreBattleText MSGBOX_DEFAULT
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_BRAWLY_4, 0, NULL, DFG_DefeatText
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq DFG_ChooseValidMons
+	multi_2_vs_1 TRAINER_BRAWLY_4, DFG_DefeatText, VAR_0x8006, VAR_0x8007
 	waitstate
 	special LoadPlayerParty
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	delay 10
 	goto DFG_GymBattleEnd
-	
+
+DFG_ChooseValidMons::
+	msgbox EGC_NeedToChoose
+	closemessage
+	goto DFG_AltGymBattle
 	
 DFG_GymBattleEnd::
 	compare VAR_0x8006, TRAINER_REL_DAWN
@@ -380,12 +386,12 @@ DFG_SHELLY_INTRO:
 	.string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}Ah, yes, a good ol'\nfashioned brawl. I used to fight\lAqua grunts for fun all the time!$"
 
 DFG_DAWN_INTRO:
-	.string "Dawn: {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}! I'm glad you called, I was\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I'm glad you called, I was\n"
 	.string "getting bored, anyways. I'm here to back\l"
 	.string "you up, like always!$"
 	
 DFG_BRENDAN_INTRO:
-	.string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}Now this is definetly\n"
+	.string "Brendan: {COLOR LIGHT_RED}{SHADOW RED}Now this is definetly\n"
     .string "more my style. Let's have at it!$"
 
 DFG_LANA_INTRO:

@@ -195,6 +195,19 @@
       "trainer_sight_or_berry_tree_id": "7",
       "script": "Route124_EventScript_Isabella",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POOCHYENA",
+      "x": 52,
+      "y": 23,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
     }
   ],
   "warp_events": [
@@ -203,6 +216,13 @@
       "y": 48,
       "elevation": 3,
       "dest_map": "MAP_ROUTE124_DIVING_TREASURE_HUNTERS_HOUSE",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 51,
+      "y": 22,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE124_MAXIE_HIDEOUT_CAVE",
       "dest_warp_id": 0
     }
   ],
@@ -224,6 +244,15 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "NULL"
+    },
+    {
+      "type": "trigger",
+      "x": 70,
+      "y": 49,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "R124_CheckWarpMagmaEvent"
     }
   ],
   "bg_events": [

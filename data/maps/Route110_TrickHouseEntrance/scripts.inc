@@ -294,7 +294,7 @@ TH_Event1:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ... ...\p... ... ... ...\p... ... ... ...\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Ah, nevermind. I don't blame you\nfor not knowing.$"
 
 TH_Event2:
-	.string "Trainers and other folk often pass\nby this place, but none come to\lpay a visit!\pSeriously, what's a guy to do\nto earn some recognition\laround here!?\p{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: But isn't that like,\nthe whole point of being\la mystery?$"
+	.string "Trainers and other folk often pass\nby this place, but none come to\lpay a visit!\pSeriously, what's a guy to do\nto earn some recognition\laround here!?\p{COLOR LIGHT_BLUE}{SHADOW BLUE} But isn't that like,\nthe whole point of being\la mystery?$"
 
 TH_Event3:
 	.string "You'd think so, but if business\nkeeps going down like this, I'll\lbe sunk!\pThis is a mystery house,\nnot a haunted one!$"

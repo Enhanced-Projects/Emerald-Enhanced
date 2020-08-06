@@ -1,3 +1,6 @@
+.equ LOCALID_OBJ_0, 1
+.equ LOCALID_OBJ_1, 2
+
 BattleFrontier_BattlePikeRoomNormal_MapScripts:: @ 825D152
 	map_script ON_RESUME, BattleFrontier_BattlePikeRoom_OnResume
 	map_script ON_TRANSITION, BattleFrontier_BattlePikeRoom_OnTransition

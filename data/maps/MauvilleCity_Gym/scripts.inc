@@ -223,16 +223,22 @@ MVG_GymBattleIntroLanette::
 	
 MVG_AltGymBattle::
 	msgbox MVG_PreBattleText MSGBOX_DEFAULT
-	special SavePlayerParty
-	trainerbattle 10 TRAINER_WATTSON_4, 0, NULL, MVG_DefeatText
-	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
-	setvar VAR_0x8005, 4|2
-	special DoSpecialTrainerBattle
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MVG_ChooseValidMons
+	multi_2_vs_1 TRAINER_WATTSON_4, MVG_DefeatText, VAR_0x8006, VAR_0x8007
 	waitstate
 	special LoadPlayerParty
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	delay 10
 	goto MVG_GymBattleEnd
 	
+MVG_ChooseValidMons::
+	msgbox EGC_NeedToChoose
+	closemessage
+	goto MVG_AltGymBattle
 	
 MVG_GymBattleEnd::
 	compare VAR_0x8006, TRAINER_REL_DAWN

@@ -211,5 +211,80 @@ Route114_Text_LanettesHouse: @ 81F2910
 	
 @================================================================================================== Magma event
 R114_PlayerFindMaxie::
+	playse SE_PIN
+	applymovement 28, Common_Movement_ExclamationMark
+	waitmovement 28
+	msgbox R114_HowThisWill
+	closemessage
+	applymovement 28, Common_Movement_WalkInPlaceFastestDown
+	waitmovement 28
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject 28
+	setflag FLAG_HIDE_114_MAXIE
+	setvar VAR_RYU_MAGMA, 570@Player found maxie in r114
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	goto_if_set FLAG_RYU_DS_COURTNEY_LOVERS, R114_AlternateFindMaxie
+	msgbox R114_MaxieNowIndoors
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox R114_TheProfessorLab
+	
+	closemessage
+	release
 	end
+	
+R114_AlternateFindMaxie::
+	msgbox R114_HeHidesAgain
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox R114_TheProfessorLab
+	closemessage
+	release
+	end
+	
+R114_HowThisWill:
+	.string "How!? This will not do!\n"
+    .string "I should know not to stay out in\p"
+    .string "the open!$"
+	
+R114_MaxieNowIndoors:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Maxie...now indoors.\n"
+    .string "Difficult.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}He'll still need a map of some sort,\n"
+    .string "which is in every Pokémon Center, as\p"
+    .string "well as...$"
+	
+R114_TheProfessorLab:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}The Professor's Lab!$"
+	
+R114_HeHidesAgain:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}And so, he hides again. Like a scared\n"
+    .string "rat. I can't wait to track him\l"
+    .string "down....$"
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

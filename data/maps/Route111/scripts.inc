@@ -1091,6 +1091,9 @@ R111_MagmaMeeting2Trigger::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0xff
 	setvar VAR_RYU_MAGMA, 205@Player started second meeting with magma
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, R111_PanForSecondEvent
+	waitmovement OBJ_EVENT_ID_CAMERA
 	addobject 49
 	applymovement 49, R111_TabithaToPlayer2@right 7
 	waitmovement 49
@@ -1138,6 +1141,9 @@ R111_MagmaMeeting2Trigger::
 	waitmovement 49
 	msgbox R111_MaxieSir
 	closemessage
+	applymovement OBJ_EVENT_ID_CAMERA, R111_PanBackForSecondEvent
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
 	fadescreen FADE_TO_BLACK
 	removeobject 48
 	removeobject 49
@@ -1184,7 +1190,7 @@ R111_AreYouReady:
     .string "for your actions?$"
 
 R111_PlayerGivesMaxie:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} gives Maxie a stern nod.\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} gives Maxie a stern nod.)\p"
     .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Hmph, say no more.$"
 
 R111_PlayerIsNow:
@@ -1197,12 +1203,26 @@ R111_MaxieSir:
     .string "M-Maxie, sir!\p"
     .string "Your actions do indeed have some\n"
     .string "merit. Well done, Agent {PLAYER}.\p"
-    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Thank you, sir.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Thank you, sir.\p"
     .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}All I require from you at the moment\n"
     .string "is to gain strength. You shall be\p"
     .string "contacted again when the time is\n"
     .string "right.\p"
     .string "Magma, move out.$"
+	
+R111_PanForSecondEvent:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+	
+R111_PanBackForSecondEvent:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
 
 
 R111_TabithaToPlayer2:

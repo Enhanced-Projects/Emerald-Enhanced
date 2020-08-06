@@ -62,7 +62,7 @@ LRT_RLD:
 	.string "So, anyways...$"
 	
 LRT_RivalHappy:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: I'm so glad you decided to\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I'm so glad you decided to\n"
 	.string "raise Sneasel. It really needed a\p"
 	.string "masculine touch.$"
 
@@ -210,40 +210,40 @@ LRT_ROM2:
 	.string " together for another night.)$"
 
 LRT_DS_FZ_DAWN:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Oh, hi, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}. What are you\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, hi, {PLAYER}. What are you\n"
 	.string "up to today?$"
 
 LRT_HAPPY:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Oh, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, what am I going\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, {PLAYER}, what am I going\n"
 	.string "to do with you.\p"
 	.string "I'm glad you're not\n"
 	.string "mad at me.$" 
 
 LRT_STAY:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}So, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, did you want to stay the\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}So, {PLAYER}, did you want to stay the\n"
 	.string "night with me?$"
 
 LRT_STAY2:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: Did you come to stay\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Did you come to stay\n"
     .string "the night with me again?$"
 
 LRT_SORRY:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}I'm sorry {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, I thought you\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'm sorry {PLAYER}, I thought you\n"
 	.string "liked me. It won't happen again.$"
 
 LRT_DAWN_SORRYKISSED:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}!\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}!\p"
 	.string "I'm sorry I kissed you.$"
 
 LRT_DAWN_THANKS:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: I've never slept so good in my\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I've never slept so good in my\n"
 	.string "life. Thanks for spending the night\l"
 	.string "with me.$"
 
 LRT_DAWN_THANKS2:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Thanks for staying with me for another\n"
 	.string "night. You might get me addicted...\p"
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(she gives a sheepish smile)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She gives a sheepish smile)$"
 
 LRT_HEART:
 	walk_down
@@ -336,8 +336,22 @@ LRT_DawnIntroductionScene::
 	end
 	
 GI_DawnIntro:
-	.string "{RIVAL}{COLOR LIGHT_RED}{SHADOW RED}: Oh? Who are you, and why\nare you in my room?\pOh, you're {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, Norman's son.\pI meant to say hi to you at some\npoint. I've been looking for a\lfriend to run around with when\ldoing tasks for my dad, Prof\lBirch.\pIt gets lonely at times.\p"
-    .string "So, did you want me to catch you\la Pokémon?\pI can go grab you one\nfrom Route 101.\pOh! Shoot! I was supposed to go\nstudy Pokémon behaviors at Route 103!!\pSorry, {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}, I have to run!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh? Who are you, and why\n"
+	.string "are you in my room?\p"
+	.string "Oh, you're {PLAYER}, Norman's son.\p"
+	.string "I meant to say hi to you at some\n"
+	.string "point. I've been looking for a\l"
+	.string "friend to run around with when\l"
+	.string "doing tasks for my dad, Prof\l"
+	.string "Birch.\p"
+	.string "It gets lonely at times.\p"
+    .string "So, did you want me to catch you\l"
+	.string "a Pokémon?\p"
+	.string "I can go grab you one\n"
+	.string "from Route 101.\p"
+	.string "Oh! Shoot! I was supposed to go\n"
+	.string "study Pokémon behaviors at Route 103!!\p"
+	.string "Sorry, {PLAYER}, I have to run!$"
 	
 GI_DawnMetMsg:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN} (She seems like the outgoing sort.\p Not too shy, either.\n You can see yourself being good\l friends with her.)$"

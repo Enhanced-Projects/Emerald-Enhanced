@@ -211,11 +211,11 @@
 #define FLAG_DEFEATED_GRUNT_SPACE_CENTER_1F  0xBF
 #define FLAG_RECEIVED_SUN_STONE_MOSSDEEP     0xC0
 #define FLAG_WALLY_SPEECH                    0xC1 // EE-Unused
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1   0xC2 // Leftover from the RS version of Puzzle Room 7, functionally unused
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2   0xC3 //
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3   0xC4 //
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4   0xC5 //
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5   0xC6 //
+#define FLAG_RYU_MAGMA_ALT_LINE              0xC2 // used by start menu to determine which magma icon to draw. C for Main, T for Alt.
+#define FLAG_UNUSED_0xC3                     0xC3 //
+#define FLAG_UNUSED_0xC4                     0xC4 //
+#define FLAG_UNUSED_0xC5                     0xC5 //
+#define FLAG_UNUSED_0xC6                     0xC6 //
 #define FLAG_RUSTURF_TUNNEL_OPENED           0xC7
 #define FLAG_RECEIVED_RED_SCARF              0xC8
 #define FLAG_RECEIVED_BLUE_SCARF             0xC9
@@ -274,7 +274,7 @@
 #define FLAG_RECEIVED_DURIN_BERRY            0xFB
 #define FLAG_RECEIVED_BELUE_BERRY            0xFC
 #define FLAG_ENABLE_RIVAL_MATCH_CALL         0xFD // EE-Unused
-#define FLFLAG_RECEIVED_CHARCOAL             0xFE // "Why is this a FLFLAG" -Toby
+#define FLAG_RECEIVED_CHARCOAL               0xFE
 #define FLAG_LATIOS_OR_LATIAS_ROAMING        0xFF
 #define FLAG_RECEIVED_REPEAT_BALL            0x100
 #define FLAG_RECEIVED_OLD_ROD                0x101
@@ -516,23 +516,23 @@
 #define FLAG_RYU_DS_LEAF_LOVERS              0x1E2 // Unused Flag
 #define FLAG_RYU_DS_LEAF_PARTNERS            0x1E3 // Unused Flag
 
-// Mystery Gift Flags (Unknown)
-#define FLAG_MYSTERY_EVENT_DONE              0x1E4 // EE-Unused
-#define FLAG_MYSTERY_EVENT_1                 0x1E5 // EE-Unused
-#define FLAG_MYSTERY_EVENT_2                 0x1E6 // EE-Unused
-#define FLAG_MYSTERY_EVENT_3                 0x1E7 // EE-Unused
-#define FLAG_MYSTERY_EVENT_4                 0x1E8 // EE-Unused
-#define FLAG_MYSTERY_EVENT_5                 0x1E9 // EE-Unused
-#define FLAG_MYSTERY_EVENT_6                 0x1EA // EE-Unused
-#define FLAG_MYSTERY_EVENT_7                 0x1EB // EE-Unused
-#define FLAG_MYSTERY_EVENT_8                 0x1EC // EE-Unused
-#define FLAG_MYSTERY_EVENT_9                 0x1ED // EE-Unused
-#define FLAG_MYSTERY_EVENT_10                0x1EE // EE-Unused
-#define FLAG_MYSTERY_EVENT_11                0x1EF // EE-Unused
-#define FLAG_MYSTERY_EVENT_12                0x1F0 // EE-Unused
-#define FLAG_MYSTERY_EVENT_13                0x1F1 // EE-Unused
-#define FLAG_MYSTERY_EVENT_14                0x1F2 // EE-Unused
-#define FLAG_MYSTERY_EVENT_15                0x1F3 // EE-Unused
+// These unused flags are cleared seperately from the other flags, so when used, the flag also has to be replaced in  event_data.c: Ln117
+#define FLAG_RYU_MAGMA_LINE_DONE             0x1E4
+#define FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE   0x1E5
+#define FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE  0x1E6
+#define FLAG_HIDE_114_MAXIE                  0x1E7
+#define FLAG_RYU_MAGMA_INTENSE_SUN_ENABLED   0x1E8
+#define FLAG_UNUSED_5                        0x1E9 // EE-Unused
+#define FLAG_UNUSED_6                        0x1EA // EE-Unused
+#define FLAG_UNUSED_7                        0x1EB // EE-Unused
+#define FLAG_UNUSED_8                        0x1EC // EE-Unused
+#define FLAG_UNUSED_9                        0x1ED // EE-Unused
+#define FLAG_UNUSED_10                       0x1EE // EE-Unused
+#define FLAG_UNUSED_11                       0x1EF // EE-Unused
+#define FLAG_UNUSED_12                       0x1F0 // EE-Unused
+#define FLAG_UNUSED_13                       0x1F1 // EE-Unused
+#define FLAG_UNUSED_14                       0x1F2 // EE-Unused
+#define FLAG_UNUSED_15                       0x1F3 // EE-Unused
 
 // Hidden Items -- sorted by location
 #define FLAG_HIDDEN_ITEMS_START                                                         0x1F4
@@ -960,10 +960,10 @@
 #define FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE                             0x394
 #define FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA                          0x395
 #define FLAG_HIDE_BATTLE_TOWER_REPORTER                             0x396
-#define FLAG_HIDE_ROUTE_110_RIVAL_1                                 0x397
+#define FLAG_HIDE_ROUTE_110_RIVAL                                   0x397
 #define FLAG_HIDE_CHAMPIONS_ROOM_RIVAL                              0x398
 #define FLAG_HIDE_CHAMPIONS_ROOM_BIRCH                              0x399
-#define FLAG_HIDE_ROUTE_110_RIVAL_2                                 0x39A
+#define FLAG_HIDE_ROUTE_110_RIVAL_ON_BIKE                           0x39A
 #define FLAG_HIDE_ROUTE_119_RIVAL_ON_BIKE                           0x39B
 #define FLAG_HIDE_AQUA_HIDEOUT_GRUNTS                               0x39C
 #define FLAG_HIDE_LILCOVE_MOTEL_GAME_DESIGNERS                      0x39D
@@ -1180,18 +1180,12 @@
 #define FLAG_ITEM_MT_PYRE_4F_SEA_INCENSE                            0x46A
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_WEST_MAX_REVIVE                 0x46B
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_NUGGET                           0x46C
-
 #define FLAG_RYU_EXP_DRIVE_DISABLE_EARNING                          0x46D // Unused Flag
-
 #define FLAG_ITEM_ROUTE_119_NUGGET                                  0x46E
 #define FLAG_ITEM_ROUTE_104_POTION                                  0x46F
-
 #define FLAG_RYU_NUZLOCKEFAILED                                     0x470 // Unused Flag
-
 #define FLAG_ITEM_ROUTE_103_PP_UP                                   0x471
-
 #define FLAG_RYU_DEVELOPER_ITEM_MENU                                0x472 // Unused Flag
-
 #define FLAG_ITEM_ROUTE_108_STAR_PIECE                              0x473
 #define FLAG_ITEM_ROUTE_109_POTION                                  0x474
 #define FLAG_ITEM_ROUTE_110_ELIXIR                                  0x475
@@ -1339,7 +1333,7 @@
 #define FLAG_DEFEATED_ELITE_4_GLACIA                                0x4FD
 #define FLAG_DEFEATED_ELITE_4_DRAKE                                 0x4FE
 
-#define FLAG_RYU_INVERSE_BATTLE                                     0x4FF // Unused Flag
+#define FLAG_DO_NOT_USE                                             0x4FF // Bugged flag, randomly sets itself for no reason. DOn't use/
 
 // Trainer Flags
 // Trainer flags occupy 0x500 - 0x85F, the last 9 of which are unused
@@ -1372,7 +1366,7 @@
 #define NUM_BADGES                                   (1 + FLAG_BADGE08_GET - FLAG_BADGE01_GET)
 
 // Towns and Cities
-#define FLAG_VISITED_LITTLEROOT_TOWN                 (SYSTEM_FLAGS + 0xF)
+#define FLAG_VISITED_LITTLEROOT_TOWN                (SYSTEM_FLAGS + 0xF)
 #define FLAG_VISITED_OLDALE_TOWN                    (SYSTEM_FLAGS + 0x10)
 #define FLAG_VISITED_DEWFORD_TOWN                   (SYSTEM_FLAGS + 0x11)
 #define FLAG_VISITED_LAVARIDGE_TOWN                 (SYSTEM_FLAGS + 0x12)
@@ -1417,9 +1411,9 @@
 #define FLAG_SYS_MIX_RECORD                         (SYSTEM_FLAGS + 0x34)
 #define FLAG_SYS_CLOCK_SET                          (SYSTEM_FLAGS + 0x35)
 #define FLAG_SYS_NATIONAL_DEX                       (SYSTEM_FLAGS + 0x36)
-#define FLAG_SYS_UNUSED_CAVE_SHIP                   (SYSTEM_FLAGS + 0x37) // Unused Flag?
-#define FLAG_SYS_UNUSED_CAVE_WONDER                 (SYSTEM_FLAGS + 0x38) // Unused Flag?
-#define FLAG_SYS_UNUSED_CAVE_BATTLE                 (SYSTEM_FLAGS + 0x39) // Unused Flag?
+#define FLAG_SYS_CAVE_SHIP                          (SYSTEM_FLAGS + 0x37) // Unused Flag, leftover from R/S debug, presumably used by Emerald's debug too
+#define FLAG_SYS_CAVE_WONDER                        (SYSTEM_FLAGS + 0x38) // Unused Flag, same as above
+#define FLAG_SYS_CAVE_BATTLE                        (SYSTEM_FLAGS + 0x39) // Unused Flag, same as above
 #define FLAG_SYS_SHOAL_TIDE                         (SYSTEM_FLAGS + 0x3A)
 #define FLAG_SYS_RIBBON_GET                         (SYSTEM_FLAGS + 0x3B)
 
@@ -1582,8 +1576,8 @@
 #define FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY     (DAILY_FLAGS_START + 0x1)
 #define FLAG_DAILY_SECRET_BASE                      (DAILY_FLAGS_START + 0x2)
 #define FLAG_HIDE_SCME_KYOGRE                       (DAILY_FLAGS_START + 0x3)  // Unused Flag
-#define FLAG_DAILY_SNOWSHORE_RECEIVED_BERRY         (DAILY_FLAGS_START + 0x4)  // Unused Flag
-#define FLAG_UNUSED_0x925                           (DAILY_FLAGS_START + 0x5)  // Unused Flag
+#define FLAG_RYU_TEMP_HIDE_FOLLOWER_COURTNEY        (DAILY_FLAGS_START + 0x4)  // hack for follower courtney quest
+#define FLAG_DAILY_SNOWSHORE_RECEIVED_BERRY         (DAILY_FLAGS_START + 0x5)  // Unused Flag
 #define FLAG_UNUSED_0x926                           (DAILY_FLAGS_START + 0x6)  // Unused Flag
 #define FLAG_UNUSED_0x927                           (DAILY_FLAGS_START + 0x7)  // Unused Flag
 #define FLAG_UNUSED_0x928                           (DAILY_FLAGS_START + 0x8)  // Unused Flag

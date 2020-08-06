@@ -1456,7 +1456,7 @@ const u8 gText_DoubleBattleTourneyResults[] = _("{PLAYER}'s Double Battle Tourne
 const u8 gText_SingleBattleHallResults[] = _("{PLAYER}'s Single Battle Hall Results");
 const u8 gText_DoubleBattleHallResults[] = _("{PLAYER}'s Double Battle Hall Results");
 const u8 gText_BattleChoiceResults[] = _("{PLAYER}'s Battle Choice Results");
-const u8 gText_SetKOTourneyResults[] = _("{PLAYER}'s Set KO Tourney Results");
+const u8 gText_SetKOTourneyResults[] = _("{PLAYER}'s Inverse Battle Results");
 const u8 gText_BattleSwapSingleResults[] = _("{PLAYER}'s Battle Swap Single Results");
 const u8 gText_BattleSwapDoubleResults[] = _("{PLAYER}'s Battle Swap Double Results");
 const u8 gText_BattleQuestResults[] = _("{PLAYER}'s Battle Quest Results");
@@ -2000,6 +2000,7 @@ const u8 gText_RyuRelationshipLanetteMenuOption[] = _("Lanette");
 
 
 const u8 gText_RyuBetaMenuBlank[] = _("Empty");
+const u8 gText_RyuBetaMenuViewQuestVars[] = _("View Quest Stages");
 const u8 gText_RyuBetaMenuResetTempBattleFlags[] = _("Reset Battle Flags");
 const u8 gText_RyuBetaMenuResetBadges[] = _("Reset Badges");
 const u8 gText_RyuBetaMenuResetGCMS[] = _("Reset GCMS");
@@ -2144,7 +2145,7 @@ const u8 gText_RyuFrontierStarter3_6[] = _("Blank");
 const u8 gText_RyuFrontierStarter3_7[] = _("Blank");
 const u8 gText_RyuFrontierStarter_Next[] = _("Next");
 const u8 gText_RyuFrontierStarter_Prev[] = _("Previous");
-const u8 gText_RyuMagmaMultichoice1[] = _("Stand your groud");
+const u8 gText_RyuMagmaMultichoice1[] = _("Stand your ground");
 const u8 gText_RyuMagmaMultichoice2[] = _("Hand it over");
 
 const u8 gText_RyuBufferedString1[] = _("{STR_VAR_1}");

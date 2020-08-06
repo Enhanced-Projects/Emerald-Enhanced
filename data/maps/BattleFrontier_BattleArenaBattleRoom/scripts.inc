@@ -504,22 +504,21 @@ BattleFrontier_BattleArenaBattleRoom_Movement_GretaWalkBackToCenter: @ 8257C3A
 	step_end
 
 BattleFrontier_BattleArenaBattleRoom_Text_PlayerStepForward: @ 8257C3D
-	.string "REFEREE: Trainer {PLAYER}!\n"
+	.string "Trainer {PLAYER}!\n"
 	.string "Step forward, please!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_OpponentStepForward: @ 8257C68
-	.string "REFEREE: Trainer {STR_VAR_1}!\n"
+	.string "Trainer {STR_VAR_1}!\n"
 	.string "Step forward, please!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_SetKOTourneyBegin: @ 8257C93
-	.string "REFEREE: Set KO Tourney!\n"
-	.string "Begin!$"
+	.string "Let the inverse battle begin!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_WinnerIsPlayer: @ 8257CB3
-	.string "REFEREE: The winner is {PLAYER}!$"
+	.string "The winner is {PLAYER}!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_WinnerIsOpponent: @ 8257CCE
-	.string "REFEREE: The winner is {STR_VAR_1}!$"
+	.string "The winner is {STR_VAR_1}!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_MonsWillBeRestored: @ 8257CE9
 	.string "Your Pokémon will be restored to\n"
@@ -555,7 +554,7 @@ BattleFrontier_BattleArenaBattleRoom_Text_SaveAndShutDown: @ 8257E6B
 
 BattleFrontier_BattleArenaBattleRoom_Text_RetireFromChallenge: @ 8257E9E
 	.string "Would you like to retire from your\n"
-	.string "Set KO Tourney challenge?$"
+	.string "Inverse Battle challenge?$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_SavingPleaseWait: @ 8257EDB
 	.string "I am saving your game data.\n"

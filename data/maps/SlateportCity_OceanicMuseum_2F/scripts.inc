@@ -400,12 +400,12 @@ OM_SternBeg:
 	.string "Capt. Stern: Oh you're giving it\nto me?$"
 	
 OM_MessWithStern:
-	.string "{PLAYER}: Yeah, sure. Here you go.\p"
+	.string " Yeah, sure. Here you go.\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} pretends to hold the\n package out for Stern then quickly\l rips it away.\p"
 	.string " Stern looks crestfallen and\n angry)$"
 
 OM_SternDeclinedMsg:
-	.string "{PLAYER}: No, I don't think so.\n"
+	.string " No, I don't think so.\n"
 	.string "I'd rather get the money.\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} decided to join team Aqua.)$"
 	

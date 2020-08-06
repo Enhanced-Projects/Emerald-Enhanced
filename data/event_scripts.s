@@ -790,12 +790,6 @@ EventScript_HideMrBriney:: @ 82721F8
 	return
 
 RusturfTunnel_EventScript_SetRusturfTunnelOpen:: @ 8272216
-	removeobject 1
-	removeobject 10
-	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
-	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
-	setvar VAR_RUSTURF_TUNNEL_STATE, 6
-	setflag FLAG_RUSTURF_TUNNEL_OPENED
 	return
 
 EventScript_UnusedBoardFerry:: @ 827222B
@@ -1195,3 +1189,9 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/Igloo2Basement/scripts.inc"
 
 	.include "data/maps/SootopolisCity_MagmaEvent/scripts.inc"
+
+	.include "data/maps/LRT_BirchLab_MagmaEvent/scripts.inc"
+
+	.include "data/maps/TreasureHuntersHouse_MagmaEvent/scripts.inc"
+
+	.include "data/maps/Route124_MaxieHideoutCave/scripts.inc"

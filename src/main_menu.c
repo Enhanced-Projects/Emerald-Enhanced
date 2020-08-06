@@ -2194,6 +2194,7 @@ static void MainMenu_FormatSavegameBadges(void)
 
 static const u8 sText_Devon[] = _("Devon");
 static const u8 sText_Aqua[] = _("Aqua");
+static const u8 sText_Magma[] = _("Magma");
 static const u8 sText_None[] = _("None");
 static const u8 sText_Faction[] = _("Faction: ");
 
@@ -2208,6 +2209,10 @@ static void MainMenu_FormatSavegameFaction(void)
     else if (FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA) == 1)
     {
         StringCopy(str, sText_Aqua);
+    }
+    else if (FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA) == 1)
+    {
+        StringCopy(str, sText_Magma);
     }
     else
     {

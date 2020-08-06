@@ -664,7 +664,7 @@ MF_MagmaMsg2:
     .string "we!$"
 	
 MF_PlayerStepsIn:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: HOLD IT!$"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} HOLD IT!$"
 	
 MF_PlayerAttacksMagma:
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}What the hell do you think you're\n"
@@ -681,7 +681,7 @@ MF_MagmaFightIntro:
     .string "powerful pokémon to crush you!$"
 
 MF_PlayerWonVsMagma:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: I should have known you\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} I should have known you\n"
     .string "wouldn't put on much of a fight.\p"
     .string "You avoid people your own size\n"
     .string "because you KNOW you will get\p"
@@ -698,7 +698,7 @@ MF_Archie2:
 	.string "Archie: Well, {PLAYER}, I see you\p"
     .string "made it here before us, and\n"
     .string "interfered with our plans again.\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Yes, Well they were\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Yes, Well they were\n"
     .string "picking on this nice gentleman\p"
     .string "over here. If you have the same\n"
     .string "intent, I will cream you like I\l"
@@ -792,7 +792,7 @@ MF_DM1_Cozmo:
     .string "to me if you weren't here.\n"
     .string "You've made a couple of powerful\l"
     .string "enemies, haven't you?\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Yeah, but they're really\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Yeah, but they're really\n"
     .string "weak, so I'm not particularly\l"
     .string "concerned.\p"
     .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Cozmo: Well anyways, meet me at my\n"

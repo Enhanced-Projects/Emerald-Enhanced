@@ -216,6 +216,7 @@ void NewGameInitData(void)
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
     ResetContestLinkResults();
+    ClearMysteryEventFlags();
     VarSet(VAR_RYU_EXP_MULTIPLIER, 1);
     FlagSet(FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA);
     FlagSet(FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE);
@@ -294,6 +295,12 @@ void NewGameInitData(void)
     FlagSet(FLAG_HIDE_MAGMA_ARMY);
     FlagSet(FLAG_RYU_AQUA_IN_MAGMA_HIDEOUT_GRUNTS);
     FlagSet(FLAG_RYU_MAXIE_END_EVENT);
+    FlagSet(FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY);
+    FlagSet(FLAG_RYU_MAXIE_END_EVENT);
+    FlagSet(FLAG_RYU_COURTNEY_FIERY_PATH);
+    FlagSet(FLAG_HIDE_UNION_ROOM_PLAYER_1);
+    FlagSet(FLAG_RYU_HIDE_103_MAGMA_MEETING);
+    FlagSet(FLAG_RYU_HIDE_114_MAXIE);
 }
 
 static void ResetMiniGamesResults(void)

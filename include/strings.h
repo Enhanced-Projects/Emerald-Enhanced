@@ -376,6 +376,9 @@ extern const u8 gText_DefaultNameTerra[];
 extern const u8 gText_DefaultNameLucy[];
 extern const u8 gText_DefaultNameHalie[];
 
+extern const u8 gText_BirchInTrouble[];
+extern const u8 gText_ConfirmStarterChoice[];
+
 // mystery event menu text
 extern const u8 gText_EventSafelyLoaded[];
 extern const u8 gText_LoadErrorEndingSession[];
@@ -3131,6 +3134,7 @@ extern const u8 gText_RyuUserModeEvMenuSpDef[];
 extern const u8 gText_RyuUserModeEvMenuSpe[];
 
 extern const u8 gText_RyuBetaMenuBlank[];
+extern const u8 gText_RyuBetaMenuViewQuestVars[];
 extern const u8 gText_RyuBetaMenuResetTempBattleFlags[];
 extern const u8 gText_RyuBetaMenuResetBadges[];
 extern const u8 gText_RyuBetaMenuResetGCMS[];

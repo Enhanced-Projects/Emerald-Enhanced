@@ -447,7 +447,7 @@ LT_NoSpace:
 	.string "I'll wait here!$"
 
 LT_FemaleRivalIntro: @ 81EA7C0
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Dawn: {PLAYER}{COLOR LIGHT_RED}{SHADOW RED}! Long time no see!\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! Long time no see!\p"
 	.string "Oh? I was in the hot springs.\n"
 	.string "It's a shame you couldn't join me...\p"
     .string "You might have gotten a good show...\n"
@@ -456,7 +456,7 @@ LT_FemaleRivalIntro: @ 81EA7C0
 	.string "facetious for my training methods.$"
 	
 LT_MaleRivalIntro: @ 81EA9A2
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Brendan: {PLAYER}{COLOR LIGHT_BLUE}{SHADOW BLUE}, hey, it's been a while.\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Brendan: {PLAYER}, hey, it's been a while.\n"
 	.string "How's it going?\p"
 	.string "Hmm…\n"
 	.string "You look different... Did you change\p"

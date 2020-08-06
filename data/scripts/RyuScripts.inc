@@ -155,11 +155,11 @@ RyuDebugBetaMenuScript::
 	setflag FLAG_RYU_BETA_MENU_USED
 	msgbox BetaMenuIntro MSGBOX_DEFAULT
 	closemessage
-	multichoicedefault 30, 0, 133, 7, 0
+	multichoicedefault 30, 0, MULTI_BETA_MENU, 7, 0
 	switch VAR_RESULT
 	case 0, RDBM_Option1
 	case 1, RDBM_Option2
-	case 2, RDBM_Option3
+	case 2, RDBM_DisplayQuestVars
 	case 3, RDBM_ResetTemporaryBattleFlags
 	case 4, RDBM_ResetBadges
 	case 5, RDBM_ResetGCMS
@@ -175,16 +175,24 @@ BetaMenuIntro:
 
 RDBM_Option1::
 RDBM_Option2::
-RDBM_Option3::
 	msgbox RDBM_Unimplemented
 	release
 	end
+
+RDBM_DisplayQuestVars::
+	special RyuBufferQuestVars
+	msgbox RDBM_DisplayQuestVarsMsg
+	release
+	end
+
+RDBM_DisplayQuestVarsMsg:
+	.string "Magma: {STR_VAR_1}, DevonM: {STR_VAR_2}, DevonS: {STR_VAR_3}\n"
+	.string "Lana: {RYU_STR_1}, Lanette: {RYU_STR_2}$"
 
 RDBM_ResetTemporaryBattleFlags::
 	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	clearflag FLAG_RYU_MAX_SCALE
 	clearflag FLAG_RYU_BOSS_WILD
-	clearflag FLAG_RYU_INVERSE_BATTLE
 	clearflag FLAG_RYU_RANDOMBATTLE
 	msgbox RDBM_ResetTempFlagsMsg
 	release
@@ -1571,7 +1579,7 @@ CLM_FinishedMsg:
 CLM_NotInPartyMsg:
     .string "Oh!, I think you've heard it too! Do\n"
     .string "you know where it came from?\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}{PLAYER}: Yes, it's from a Pokémon.\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Yes, it's from a Pokémon.\n"
     .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}You have to show me, Please!$"
 
 
@@ -1715,6 +1723,19 @@ RyuAC_SuccessMsg::
 RyuAC_CancelMsg::
 	.string "Leaving menu without changes.$"
 
+@==================================================================================================Soot Sack
+
+RyuCheckSootSackContents::
+	buffernumberstring 0, VAR_ASH_GATHER_COUNT
+	msgbox Ryu_SootSackReadout
+	closemessage
+	release
+	end
+
+Ryu_SootSackReadout:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You have {COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1}{COLOR LIGHT_GREEN}{SHADOW GREEN} grams of ash.$"
+
+
 @==================================================================================================Magma Related Global Scripts
 
 Ryu_CheckMagmaStatusForMissionCall::
@@ -1828,3 +1849,9 @@ RyuSetMagmaTrainerFlags::
 Ryu_Magma8Notice:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I suppose it's time to head back to\n"
     .string "base and see what's happened so far.$"
+
+@==================================================================================================Player lost a RyuMultiBattlePartnerBrendan
+
+Ryu_PlayerLostTheGame::
+	special DoWhiteOut
+	end
