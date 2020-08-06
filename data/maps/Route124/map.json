@@ -253,6 +253,114 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "R124_CheckWarpMagmaEvent"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "R124_SetFollowerCourtneyEndEvent_R"
+    },
+    {
+      "type": "trigger",
+      "x": 50,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "R124_SetFollowerCourtneyEndEvent_R"
+    },
+    {
+      "type": "trigger",
+      "x": 51,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "R124_SetFollowerCourtneyEndEvent_R"
+    },
+    {
+      "type": "trigger",
+      "x": 52,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "R124_SetFollowerCourtneyEndEvent_R"
+    },
+    {
+      "type": "trigger",
+      "x": 53,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "R124_SetFollowerCourtneyEndEvent_R"
+    },
+    {
+      "type": "trigger",
+      "x": 54,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "R124_SetFollowerCourtneyEndEvent_R"
+    },
+    {
+      "type": "trigger",
+      "x": 68,
+      "y": 49,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "R124_SetFollowerCourtneyEndEvent_NR"
+    },
+    {
+      "type": "trigger",
+      "x": 69,
+      "y": 50,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "R124_SetFollowerCourtneyEndEvent_NR"
+    },
+    {
+      "type": "trigger",
+      "x": 70,
+      "y": 51,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "R124_SetFollowerCourtneyEndEvent_NR"
+    },
+    {
+      "type": "trigger",
+      "x": 71,
+      "y": 51,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "R124_SetFollowerCourtneyEndEvent_NR"
+    },
+    {
+      "type": "trigger",
+      "x": 72,
+      "y": 50,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "R124_SetFollowerCourtneyEndEvent_NR"
+    },
+    {
+      "type": "trigger",
+      "x": 73,
+      "y": 49,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "R124_SetFollowerCourtneyEndEvent_NR"
     }
   ],
   "bg_events": [
