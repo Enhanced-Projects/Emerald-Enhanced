@@ -306,7 +306,7 @@ FG_LANETTE_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}This is certainly my\nwheelhouse. This'll be easy!$"
 
 FG_COURTNEY_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Canines have been man's hunting/ncompanions since the beginning of\ltime.\pThey're natural predators to flying\ntypes.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Canines have been man's hunting\ncompanions since the beginning of\ltime.\pThey're natural predators to flying\ntypes.$"
 	
 FG_PreBattleText:
     .string "Winona: Oh, hi! I remember you. \n"

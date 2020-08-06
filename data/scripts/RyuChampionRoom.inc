@@ -496,6 +496,7 @@ RCR_FinishChallenge::
 	applymovement OBJ_EVENT_ID_PLAYER, RCR_ToHOF
 	applymovement OBJ_EVENT_ID_FOLLOWER, RCR_ToHOF
 	waitmovement OBJ_EVENT_ID_PLAYER
+	call RyuForceCancelFollowerForQuest
 	warp MAP_EVER_GRANDE_CITY_HALL_OF_FAME, 255, 7, 16
 	end
 
@@ -779,7 +780,7 @@ RCR_Lanette_Intromsg:
 	.string "This is just what I needed!$"
 
 RCR_Courtney_Intromsg:
-    .string "I'm glad you called. No Really...\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'm glad you called. No Really...\n"
     .string "I was about to come find you again!\p"
     .string "But since I'm here, Let's hurt some\n"
     .string "people!$"

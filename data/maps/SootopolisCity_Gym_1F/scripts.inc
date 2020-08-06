@@ -238,9 +238,9 @@ SG_GymBattleIntroCourtney::
 	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
 	closemessage
 	delay 30
-	addobject 14
+	addobject 8
 	playse SE_DOOR
-	applymovement 14, SG_PartnerEnter
+	applymovement 8, SG_PartnerEnter
 	waitmovement 0
 	msgbox SG_COURTNEY_INTRO MSGBOX_DEFAULT
 	goto SG_AltGymBattle
@@ -338,10 +338,10 @@ SG_GymBattleEndLanette::
 SG_GymBattleEndCourtney::
 	msgbox SG_CourtneyGymBattleComplete MSGBOX_DEFAULT
 	closemessage
-	applymovement 14, SG_PartnerExit
-	waitmovement 14
+	applymovement 8, SG_PartnerExit
+	waitmovement 8
 	playse SE_TK_WARPOUT
-	removeobject 14
+	removeobject 8
 	special DrawWholeMapView
 	goto SG_Reset
 	release

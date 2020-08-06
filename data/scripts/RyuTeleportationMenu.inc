@@ -191,8 +191,8 @@ RT_BattleFrontier::
 	end
 
 RT_MtPyre::
-	goto_if_unset FLAG_RYU_LANDMARK_MTPYRE, RT_NoFlag
-	warpteleport MAP_MT_PYRE_EXTERIOR, 255, 19, 14
+	goto_if_unset FLAG_RYU_LANDMARK_MH, RT_NoFlag
+	warpteleport MAP_MAGMA_HIDEOUT_4F, 255, 22, 6
 	release
 	end
 

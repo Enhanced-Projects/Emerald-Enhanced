@@ -598,6 +598,7 @@ MH_CheckSetMaxiePosition:
 	.2byte 0
 	
 CheckOpenAdminQuarters::
+	setflag FLAG_RYU_LANDMARK_MH
 	setvar VAR_TEMP_6, 100
 	compare VAR_RYU_MAGMA, 550
 	call_if_eq MH4_SetupCourtneyPursuit

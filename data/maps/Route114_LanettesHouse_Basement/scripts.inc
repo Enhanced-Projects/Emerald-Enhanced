@@ -132,6 +132,7 @@ LNH_GiveRotomFullParty::
 	playfanfare MUS_FANFA4
 	setflag FLAG_RYU_DS_LANETTE_PARTNERS
 	setflag FLAG_RYU_RECIEVED_ROTOM
+	setflag FLAG_RYU_DS_HAS_PARTNER
 	release
 	end
 

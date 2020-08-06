@@ -1953,7 +1953,7 @@ const u8 gText_RyuTeleportMossdeep[] = _("Mossdeep");
 const u8 gText_RyuTeleportLandmarks[] = _(" Landmarks");
 const u8 gText_RyuTeleportEvergrande[] = _(" EverGrande");
 const u8 gText_RyuTeleportBattleFrontier[] = _(" B. Frontier");
-const u8 gText_RyuTeleportMtPyreExterior[] = _(" Mt.Pyre Ext");
+const u8 gText_RyuTeleportMtPyreExterior[] = _(" Magma HQ");
 const u8 gText_RyuTeleportLCCDEPT[] = _(" LC DeptStore");
 const u8 gText_RyuTeleportMCMH[] = _(" Berry Farm");
 const u8 gText_RyuTeleportLCAH[] = _(" AquaOffice");
@@ -1997,7 +1997,7 @@ const u8 gText_RyuRelationshipShellyMenuOption[] = _("Shelly");
 const u8 gText_RyuRelationshipBrendanMenuOption[] = _("Brendan");
 const u8 gText_RyuRelationshipLanaMenuOption[] = _("Lana");
 const u8 gText_RyuRelationshipLanetteMenuOption[] = _("Lanette");
-const u8 gText_RyuRelationshipCourtneyMenuOption[] = _("Lanette");
+const u8 gText_RyuRelationshipCourtneyMenuOption[] = _("Courtney");
 
 const u8 gText_RyuBetaMenuBlank[] = _("Empty");
 const u8 gText_RyuBetaMenuViewQuestVars[] = _("View Quest Stages");

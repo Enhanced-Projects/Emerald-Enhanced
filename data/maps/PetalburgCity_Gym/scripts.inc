@@ -260,7 +260,7 @@ PG_GymBattleIntroCourtney::
 	playse SE_DOOR
 	applymovement 15, PG_PartnerEnter
 	waitmovement 0
-	msgbox PG_COURTNEY_INTRO MSGBOX_DEFAULT
+	msgbox PG_CourtneyPreBattleText MSGBOX_DEFAULT
 	goto PG_AltGymBattle
 	
 PG_AltGymBattle::
@@ -278,7 +278,7 @@ PG_AltGymBattle::
 	goto PG_GymBattleEnd
 
 PG_CourtneyAltGymBattle::
-	msgbox PG_CourtneyPreBattleText MSGBOX_DEFAULT
+	msgbox PG_COURTNEY_INTRO MSGBOX_DEFAULT
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq PG_ChooseValidMons
