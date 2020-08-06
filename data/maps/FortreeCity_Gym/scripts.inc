@@ -89,17 +89,19 @@ FG_PartnerQuery::
 	
 	
 FG_RelDialog::
-	call RyuParterBattleMultichoice
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	call RyuPartnerBattleMultichoice
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq FG_GymBattleIntroShelly
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq FG_GymBattleIntroDawn
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq FG_GymBattleIntroBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq FG_GymBattleIntroLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq FG_GymBattleIntroLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq FG_GymBattleIntroCourtney
 	goto FG_NoRelGymBattle
 	
 FG_NoRelGymBattle::
@@ -171,13 +173,25 @@ FG_GymBattleIntroLanette::
 	waitmovement 13
 	msgbox FG_LANETTE_INTRO MSGBOX_DEFAULT
 	goto FG_AltGymBattle
+
+FG_GymBattleIntroCourtney::
+	goto_if_unset FLAG_RYU_DS_COURTNEY_PARTNERS, FG_NoRelationship1
+	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 14
+	playse SE_DOOR
+	applymovement 14, FG_PartnerEnter
+	waitmovement 0
+	msgbox FG_COURTNEY_INTRO MSGBOX_DEFAULT
+	goto FG_AltGymBattle
 	
 FG_AltGymBattle::
 	msgbox FG_PreBattleText MSGBOX_DEFAULT
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq FG_ChooseValidMons
-	multi_2_vs_1 TRAINER_WINONA_4, FG_DefeatText, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_WINONA_4, FG_DefeatText, VAR_0x8008, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -191,16 +205,18 @@ FG_ChooseValidMons::
 	goto FG_AltGymBattle
 	
 FG_GymBattleEnd::
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq FG_GymBattleEndDawn
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq FG_GymBattleEndShelly
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq FG_GymBattleEndBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq FG_GymBattleEndLeaf
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq FG_GymBattleEndLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq FG_GymBattleEndCourtney
 	release
 	end
 	
@@ -258,27 +274,41 @@ FG_GymBattleEndLanette::
 	goto FG_Reset
 	release
 	end
+
+FG_GymBattleEndCourtney::
+	msgbox FG_CourtneyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 14, FG_PartnerExit
+	waitmovement 14
+	playse SE_DOOR
+	removeobject 14
+	goto FG_Reset
+	release
+	end
 	
 FG_SHELLY_INTRO:
-    .string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}This birdbrain should be\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}This birdbrain should be\n"
     .string "a piece of cake. Let's go!$"
 	
 FG_DAWN_INTRO:
-    .string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}She has some really cute\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}She has some really cute\n"
     .string "Pokémon. It's fun to battle her!$"
 	
 FG_BRENDAN_INTRO:
-    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} I don't have the greatest\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I don't have the greatest\n"
     .string "type matchups for this battle, but\l"
     .string "we should be fine. $"
 	
 FG_LEAF_INTRO:
-    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}Huh, I've never seen a flying\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Huh, I've never seen a flying\n"
     .string "type gym Leader before. This should\l"
     .string "be interesting!$"
 	
 FG_LANETTE_INTRO:
-    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}This is certainly my\nwheelhouse. This'll be easy!$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}This is certainly my\nwheelhouse. This'll be easy!$"
+
+FG_COURTNEY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Canines have been man's hunting/ncompanions since the beginning of\ltime.\pThey're natural predators to flying\ntypes.$"
 	
 FG_PreBattleText:
     .string "Winona: Oh, hi! I remember you. \n"
@@ -296,18 +326,21 @@ FG_ShellyGymBattleComplete:
     .string " without a word)$"
 	
 FG_LeafGymBattleComplete:
-    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}It must be because of how weak\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}It must be because of how weak\n"
     .string "they are. Oh well, bye, {PLAYER}!$"
 	
 FG_DawnGymBattleComplete:
-    .string "Dawn:{COLOR LIGHT_RED}{SHADOW RED} That was really fun! Maybe\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}That was really fun! Maybe\n"
     .string "I should go get an Altaria, they're\l"
     .string "so cuuuuute!$"
 	
 FG_BrendanGymBattleComplete:
-    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} It worked out in the end.\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}It worked out in the end.\n"
     .string "Nice seeing you again, Winona!\l"
     .string "I'll catch you guys later!$"
+
+FG_CourtneyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}It's a shame I couldn't take one\nhome to eat.$"
 
 FG_LanetteGymBattleComplete:
     .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lanette yawns)\p{COLOR LIGHT_RED}{SHADOW RED}Oh! the battle's over.$"

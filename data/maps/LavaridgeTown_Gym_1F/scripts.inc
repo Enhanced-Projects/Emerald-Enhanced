@@ -139,17 +139,19 @@ LG_PartnerQuery::
 	
 	
 LG_RelDialog::
-	call RyuParterBattleMultichoice
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	call RyuPartnerBattleMultichoice
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq LG_GymBattleIntroShelly
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq LG_GymBattleIntroDawn
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq LG_GymBattleIntroBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq LG_GymBattleIntroLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq LG_GymBattleIntroLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq LG_GymBattleIntroCourtney
 	goto LG_NoRelGymBattle
 	
 LG_NoRelGymBattle::
@@ -221,13 +223,25 @@ LG_GymBattleIntroLanette::
 	waitmovement 11
 	msgbox LG_LANETTE_INTRO MSGBOX_DEFAULT
 	goto LG_AltGymBattle
+
+LG_GymBattleIntroCourtney::
+	goto_if_unset FLAG_RYU_DS_COURTNEY_PARTNERS, LG_NoRelationship1
+	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 12
+	playse SE_DOOR
+	applymovement 12, LG_PartnerEnter
+	waitmovement 0
+	msgbox LG_COURTNEY_INTRO MSGBOX_DEFAULT
+	goto LG_AltGymBattle
 	
 LG_AltGymBattle::
 	msgbox LG_PreBattleText MSGBOX_DEFAULT
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq LG_ChooseValidMons
-	multi_2_vs_1 TRAINER_FLANNERY_4, LG_DefeatText, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_FLANNERY_4, LG_DefeatText, VAR_0x8008, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -242,16 +256,18 @@ LG_ChooseValidMons::
 	goto LG_AltGymBattle
 	
 LG_GymBattleEnd::
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq LG_GymBattleEndDawn
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq LG_GymBattleEndShelly
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq LG_GymBattleEndBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq LG_GymBattleEndLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq LG_GymBattleEndLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq LG_GymBattleEndCourtney
 	release
 	end
 	
@@ -311,25 +327,39 @@ LG_GymBattleEndLanette::
 	goto LG_Reset
 	release
 	end
+
+LG_GymBattleEndCourtney::
+	msgbox LG_CourtneyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 12, LG_PartnerExit
+	waitmovement 12
+	playse SE_FU_ZUZUZU
+	removeobject 12
+	goto LG_Reset
+	release
+	end
 	
 LG_SHELLY_INTRO:
-    .string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}!\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}!\p"
     .string "I got a break from admin stuff, so\n"
     .string "I have time to help you crush this\l"
     .string "hothead. LETS GO!$"
 
 LG_DAWN_INTRO:
-    .string "Dawn:{COLOR LIGHT_RED}{SHADOW RED} Hiya {PLAYER}! I'm not the\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Hiya {PLAYER}! I'm not the\n"
     .string "greatest against fire types, but\l"
     .string "I'm willing to try for you!$"
 	
 LG_LANA_INTRO:
-    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}I never really liked fire\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I never really liked fire\n"
     .string "types. It might be tough, but\l"
     .string "I can overcome it!$"
 	
 LG_LANETTE_INTRO:
-    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}Ohoho, quite the aggressive\ntraining style. Let's show what a cool\ltemper can do for a battle.$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Ohoho, quite the aggressive\ntraining style. Let's show what a cool\ltemper can do for a battle.$"
+
+LG_COURTNEY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah yes, a fello pyromaniac.\nGood times.$"
 
 LG_PreBattleText:
     .string "Flannery: Oh, ho ho ho...\p"
@@ -344,28 +374,30 @@ LG_DefeatText:
     .string "Ow! You quenched me!$"
 	
 LG_ShellyGymBattleComplete:
-    .string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}She stood no chance against\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}She stood no chance against\n"
     .string "my water types.\p"
     .string "It's no suprise!$"
 
 LG_DawnGymBattleComplete:
-    .string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}That was really hard, but\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}That was really hard, but\n"
     .string "I'm glad it worked out!\p"
 	.string "See you later, {PLAYER}!$"
 	
 LG_LanetteGymBattleComplete:
-    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}This girl has much promise.\nShe just needs to settle down.\lBeing hotheaded doesn't win battles!$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}This girl has much promise.\nShe just needs to settle down.\lBeing hotheaded doesn't win battles!$"
 
 LG_BrendanGymBattleComplete:
-    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Well, that was a fun\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Well, that was a fun\n"
     .string "work-out. Don't hesitate to call\l"
     .string "me if you want my help again!$"
 	
 LG_LanaGymBattleComplete:
-    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}That wasn't too bad after\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}That wasn't too bad after\n"
     .string "all! I was concerned for no reason!$"
 
-	
+LG_CourtneyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Fire is the best way to remove\nscum from the face of the earth.$"
+
 LG_PartnerEnter:
 	walk_in_place_up
 	walk_in_place_up

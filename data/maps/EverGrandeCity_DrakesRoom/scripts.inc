@@ -74,7 +74,7 @@ EGC_FollowerDrake::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq EGC_DR_ChooseValidMons
-	multi_2_vs_1 TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat, VAR_0x8006, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -90,7 +90,7 @@ EGC_FollowerDrakeRematch::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq EGC_DR_ChooseValidMons
-	multi_2_vs_1 TRAINER_DRAKE_REMATCH, EverGrandeCity_DrakesRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_DRAKE_REMATCH, EverGrandeCity_DrakesRoom_Text_Defeat, VAR_0x8006, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome

@@ -148,17 +148,19 @@ SG_PartnerQuery::
 	
 	
 SG_RelDialog::
-	call RyuParterBattleMultichoice
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	call RyuPartnerBattleMultichoice
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq SG_GymBattleIntroShelly
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq SG_GymBattleIntroDawn
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq SG_GymBattleIntroBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq SG_GymBattleIntroLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq SG_GymBattleIntroLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq SG_GymBattleIntroCourtney
 	goto SG_NoRelGymBattle
 	
 SG_NoRelGymBattle::
@@ -230,13 +232,25 @@ SG_GymBattleIntroLanette::
 	waitmovement 7
 	msgbox SG_LANETTE_INTRO MSGBOX_DEFAULT
 	goto SG_AltGymBattle
+
+SG_GymBattleIntroCourtney::
+	goto_if_unset FLAG_RYU_DS_COURTNEY_PARTNERS, SG_NoRelationship1
+	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 14
+	playse SE_DOOR
+	applymovement 14, SG_PartnerEnter
+	waitmovement 0
+	msgbox SG_COURTNEY_INTRO MSGBOX_DEFAULT
+	goto SG_AltGymBattle
 	
 SG_AltGymBattle::
 	msgbox SG_PreBattleText MSGBOX_DEFAULT
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq SG_ChooseValidMons
-	multi_2_vs_1 TRAINER_JUAN_4, SG_DefeatText, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_JUAN_4, SG_DefeatText, VAR_0x8008, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -251,16 +265,18 @@ SG_ChooseValidMons::
 	goto SG_AltGymBattle
 	
 SG_GymBattleEnd::
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq SG_GymBattleEndDawn
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq SG_GymBattleEndShelly
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq SG_GymBattleEndBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq SG_GymBattleEndLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq SG_GymBattleEndLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq SG_GymBattleEndCourtney
 	release
 	end
 	
@@ -320,29 +336,44 @@ SG_GymBattleEndLanette::
 	goto SG_Reset
 	release
 	end
+
+SG_GymBattleEndCourtney::
+	msgbox SG_CourtneyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 14, SG_PartnerExit
+	waitmovement 14
+	playse SE_TK_WARPOUT
+	removeobject 14
+	special DrawWholeMapView
+	goto SG_Reset
+	release
+	end
 	
 SG_SHELLY_INTRO:
-    .string "Shelly:{COLOR LIGHT_RED}{SHADOW RED} I'd say I probably wasn't\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'd say I probably wasn't\n"
     .string "the best person to call, but I'll\l"
     .string "support you any way I can!$"
 
 	
 SG_DAWN_INTRO:
-    .string "Dawn:{COLOR LIGHT_RED}{SHADOW RED} This guy's creepy...\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}This guy's creepy...\p"
     .string "Let's stomp him out of existence!$"
 	
 SG_LANA_INTRO:
-    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}This guy's annoying... can\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}This guy's annoying... can\n"
     .string "we get this over with quickly?\l"
     .string "He creeps me out...$"
 	
 SG_LANETTE_INTRO:
-	.string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}Hello, Juan. I see that\nyou are as flippant as ever$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hello, Juan. I see that\nyou are as flippant as ever$"
 
 SG_BRENDAN_INTRO:
-    .string "Brendan: This guy is wierd.. I\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Brendan: This guy is wierd.. I\n"
     .string "don't like him... Let's send him\l"
     .string "packing!$"
+
+SG_COURTNEY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}An annoying person with\nannoying types.\pI really don't like it here.$"
 	
 SG_PreBattleText:
 	.string "Juan: Oh, I get to have two dance\npartners. This will be magical!$"
@@ -351,28 +382,29 @@ SG_DefeatText:
 	.string "You guys make a fantastic team!$"
 	
 SG_ShellyGymBattleComplete:
-    .string "Shelly: {COLOR LIGHT_RED}{SHADOW RED}I got a little wetter than\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I got a little wetter than\n"
     .string "I expected to.\p"
     .string "Good thing I have my swimsuit on\n"
     .string "underneath!$"
 
 SG_DawnGymBattleComplete:
-    .string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}I have the strangest urge\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I have the strangest urge\n"
     .string "to take a long, hot shower...\p"
     .string "You should join me after, {PLAYER}!$"
 	
 SG_BrendanGymBattleComplete:
-    .string "Brendan: Man, I really didn't feel\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Man, I really didn't feel\n"
     .string "like swimming today...$"
 	
 SG_LanaGymBattleComplete:
-    .string "Lana: Normally I like getting wet,\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED} Normally I like getting wet,\n"
     .string "but this was a little excessive...$"
 	
 SG_LanetteGymBattleComplete:
-    .string "Lanette: He almost shorted me out!$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}He almost shorted me out!$"
 
-
+SG_CourtneyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}UGH! It's way too humid in here!$"
 	
 SG_PartnerEnter:
 	walk_in_place_down

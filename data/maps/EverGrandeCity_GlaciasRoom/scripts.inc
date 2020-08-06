@@ -72,7 +72,7 @@ EGC_FollowerGlacia::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq EGC_GR_ChooseValidMons
-	multi_2_vs_1 TRAINER_GLACIA, EverGrandeCity_GlaciasRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_GLACIA, EverGrandeCity_GlaciasRoom_Text_Defeat, VAR_0x8006, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -88,7 +88,7 @@ EGC_FollowerGlaciaRematch::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq EGC_GR_ChooseValidMons
-	multi_2_vs_1 TRAINER_GLACIA_REMATCH, EverGrandeCity_GlaciasRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_GLACIA_REMATCH, EverGrandeCity_GlaciasRoom_Text_Defeat, VAR_0x8006, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome

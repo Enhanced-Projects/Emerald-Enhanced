@@ -138,17 +138,19 @@ MVG_PartnerQuery::
 	
 	
 MVG_RelDialog::
-	call RyuParterBattleMultichoice
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	call RyuPartnerBattleMultichoice
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq MVG_GymBattleIntroShelly
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq MVG_GymBattleIntroDawn
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq MVG_GymBattleIntroBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq MVG_GymBattleIntroLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq MVG_GymBattleIntroLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq MVG_GymBattleIntroCourtney
 	goto MVG_NoRelGymBattle
 	
 MVG_NoRelGymBattle::
@@ -220,13 +222,25 @@ MVG_GymBattleIntroLanette::
 	waitmovement 12
 	msgbox MVG_LANETTE_INTRO MSGBOX_DEFAULT
 	goto MVG_AltGymBattle
+
+MVG_GymBattleIntroCourtney::
+	goto_if_unset FLAG_RYU_DS_COURTNEY_PARTNERS, MVG_NoRelationship1
+	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 13
+	playse SE_DOOR
+	applymovement 13, MVG_PartnerEnter
+	waitmovement 0
+	msgbox MVG_COURTNEY_INTRO MSGBOX_DEFAULT
+	goto MVG_AltGymBattle
 	
 MVG_AltGymBattle::
 	msgbox MVG_PreBattleText MSGBOX_DEFAULT
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq MVG_ChooseValidMons
-	multi_2_vs_1 TRAINER_WATTSON_4, MVG_DefeatText, VAR_0x8006, VAR_0x8007
+	multi_2_vs_1 TRAINER_WATTSON_4, MVG_DefeatText, VAR_0x8008, VAR_0x8009
 	waitstate
 	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -241,16 +255,18 @@ MVG_ChooseValidMons::
 	goto MVG_AltGymBattle
 	
 MVG_GymBattleEnd::
-	compare VAR_0x8006, TRAINER_REL_DAWN
+	compare VAR_0x8008, TRAINER_REL_DAWN
 	goto_if_eq MVG_GymBattleEndDawn
-	compare VAR_0x8006, TRAINER_REL_SHELLY
+	compare VAR_0x8008, TRAINER_REL_SHELLY
 	goto_if_eq MVG_GymBattleEndShelly
-	compare VAR_0x8006, TRAINER_REL_BRENDAN
+	compare VAR_0x8008, TRAINER_REL_BRENDAN
 	goto_if_eq MVG_GymBattleEndBrendan
-	compare VAR_0x8006, TRAINER_REL_LANA
+	compare VAR_0x8008, TRAINER_REL_LANA
 	goto_if_eq MVG_GymBattleEndLana
-	compare VAR_0x8006, TRAINER_REL_LANETTE
+	compare VAR_0x8008, TRAINER_REL_LANETTE
 	goto_if_eq MVG_GymBattleEndLanette
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq MVG_GymBattleEndCourtney
 	release
 	end
 	
@@ -308,29 +324,43 @@ MVG_GymBattleEndLanette::
 	goto MG_Reset
 	release
 	end
+
+MVG_GymBattleEndCourtney::
+	msgbox MVG_CourtneyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 13, MVG_PartnerExit
+	waitmovement 13
+	playse SE_DOOR
+	removeobject 13
+	goto MG_Reset
+	release
+	end
 	
 MVG_SHELLY_INTRO:
-    .string "Shelly:{COLOR LIGHT_RED}{SHADOW RED} I'm not particularly\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'm not particularly\n"
     .string "comfortable here...$"
 
 MVG_DAWN_INTRO:
-    .string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}You want me to help with\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}You want me to help with\n"
     .string "this guy? He's not that hard...$"
 	
 MVG_BRENDAN_INTRO:
-    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Hi, {PLAYER}! It's been\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Hi, {PLAYER}! It's been\n"
     .string "a while since I've been to Mauville.\l"
     .string "This should be fun!$"
 	
 MVG_LANA_INTRO:
-    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}I fought Lieutenant Surge.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I fought Lieutenant Surge.\p"
     .string "He's a REAL electric type user.\p"
     .string "I wonder if this old codger can\n"
     .string "keep up...$"
 	
 MVG_LANETTE_INTRO:
-    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}Oh, please. This guy\ndoesn't understand the potential\lof electric Pokémon!$"
-	
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, please. This guy\ndoesn't understand the potential\lof electric Pokémon!$"
+
+MVG_COURTNEY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Picking on old men isn't that\nfun, but I'll do whatever you want.$"
+
 MVG_PreBattleText:
 	.string "Wattson: Ah! Two on one!\n"
     .string "This is quite the shocking\l"
@@ -340,26 +370,29 @@ MVG_DefeatText:
     .string "Ah! You grounded me!$"
 	
 MVG_ShellyGymBattleComplete:
-    .string "Shelly:{COLOR LIGHT_RED}{SHADOW RED} I barely pulled through\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I barely pulled through\n"
     .string "that one... I'd rather not come\l"
     .string "back here!$"
 
 MVG_DawnGymBattleComplete:
-    .string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}That went pretty smooth.\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}That went pretty smooth.\n"
     .string "It was a nice change of pace!$"
 	
 MVG_LanaGymBattleComplete:
-    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}Nope!\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Nope!\p"
     .string "Not even close. Oh well.$"
 
 MVG_BrendanGymBattleComplete:
-    .string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} That was a little tougher\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}That was a little tougher\n"
     .string "than I remember.\p"
     .string "It was fun anyhow. See ya around!$"
 	
 MVG_LanetteGymBattleComplete:
-    .string "Lanette: {COLOR LIGHT_RED}{SHADOW RED}Ha! That's how you use\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Ha! That's how you use\n"
     .string "electric Pokémon to their full\lpotential.$"
+
+MVG_CourtneyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}That wasn't particularly satisfying.$"
 
 MVG_PartnerEnter:
 	walk_up

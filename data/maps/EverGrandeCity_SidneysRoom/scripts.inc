@@ -70,9 +70,7 @@ EGC_FollowerSidney::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq EGC_ChooseValidMons
-	multi_2_vs_1 TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
-	waitstate
-	special LoadPlayerParty
+	multi_2_vs_1 TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
@@ -94,9 +92,7 @@ EGC_FollowerSidneyRematch::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq EGC_ChooseValidMons
-	multi_2_vs_1 TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8006, VAR_0x8007
-	waitstate
-	special LoadPlayerParty
+	multi_2_vs_1 TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
