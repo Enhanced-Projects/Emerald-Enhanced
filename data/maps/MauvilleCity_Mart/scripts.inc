@@ -6,7 +6,7 @@ MauvilleCity_Mart_EventScript_Clerk:: @ 82110E6
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemart MauvilleCity_Mart_Pokemart
+	pokemart 0
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end

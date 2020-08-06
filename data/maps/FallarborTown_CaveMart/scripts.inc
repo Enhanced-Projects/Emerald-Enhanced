@@ -13,6 +13,7 @@ FallarborTown_CaveMart_EventScript_Clerk::
 
 	.align 2
 FallarborTown_CaveMart_Pokemart:
+	.2byte ITEM_HEART_SCALE
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_ULTRA_BALL
 	.2byte ITEM_HYPER_POTION
@@ -54,10 +55,10 @@ FallarborTown_CaveMart_EventScript_Azumarill2::
 	end
 
 FallarborTown_CaveMart_Text_SoMuchMerchandise:
-	.string "These shops sell so much pokemon\n"
-	.string "merchandise!\p"
-	.string "I want to buy this Slakoth plush\n"
-	.string "for my little brother.$"
+	.string "The Move Universalist from Fallarbor\n"
+	.string "loves Heart Scales,\p"
+	.string "but he can't fit throught the mine\n"
+	.string "entrance to buy them here.$"
 
 FallarborTown_CaveMart_Text_Azumarill1:
 	.string "Azumarill: Marimari?$"

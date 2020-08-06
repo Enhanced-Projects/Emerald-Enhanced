@@ -2316,7 +2316,7 @@ static const u8 sOldKeyDesc[] = _(
     "Mt Freeze. Belonged to\n"
     "an ancient civilization.");
 
-static const u8 sMindPlateDesc[] = _(
+static const u8 sDryIceDesc[] = _(
     "A stone tablet that\n"
     "boosts the power of\n"
     "Psychic-type moves.");

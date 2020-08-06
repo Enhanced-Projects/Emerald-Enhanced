@@ -885,7 +885,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_HYPER_BEAM] =
     {
         .effect = EFFECT_RECHARGE,
-        .power = 150,
+        .power = 200,
         .type = TYPE_NORMAL,
         .accuracy = 90,
         .pp = 5,
@@ -3900,7 +3900,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 100,
-        .pp = 10,
+        .pp = 20,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_USER,
         .priority = 0,
@@ -4303,7 +4303,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_BLAST_BURN] =
     {
         .effect = EFFECT_RECHARGE,
-        .power = 150,
+        .power = 200,
         .type = TYPE_FIRE,
         .accuracy = 90,
         .pp = 5,
@@ -4317,7 +4317,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_HYDRO_CANNON] =
     {
         .effect = EFFECT_RECHARGE,
-        .power = 150,
+        .power = 200,
         .type = TYPE_WATER,
         .accuracy = 90,
         .pp = 5,
@@ -4737,7 +4737,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_FRENZY_PLANT] =
     {
         .effect = EFFECT_RECHARGE,
-        .power = 150,
+        .power = 200,
         .type = TYPE_GRASS,
         .accuracy = 90,
         .pp = 5,
@@ -5833,7 +5833,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_GIGA_IMPACT] =
     {
         .effect = EFFECT_RECHARGE,
-        .power = 150,
+        .power = 200,
         .type = TYPE_NORMAL,
         .accuracy = 90,
         .pp = 5,
@@ -5875,7 +5875,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_AVALANCHE] =
     {
         .effect = EFFECT_REVENGE,
-        .power = 60,
+        .power = 70,
         .type = TYPE_ICE,
         .accuracy = 100,
         .pp = 10,
@@ -6155,7 +6155,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_ROCK_WRECKER] =
     {
         .effect = EFFECT_RECHARGE,
-        .power = 150,
+        .power = 200,
         .type = TYPE_ROCK,
         .accuracy = 90,
         .pp = 5,
@@ -6435,7 +6435,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_ROAR_OF_TIME] =
     {
         .effect = EFFECT_RECHARGE,
-        .power = 150,
+        .power = 200,
         .type = TYPE_DRAGON,
         .accuracy = 90,
         .pp = 5,
@@ -9163,15 +9163,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_BEAK_BLAST] =
     {
-        .effect = EFFECT_PLACEHOLDER,
+        .effect = EFFECT_BURN_HIT,
         .power = 100,
         .type = TYPE_FLYING,
         .accuracy = 100,
-        .pp = 15,
-        .secondaryEffectChance = 0,
+        .pp = 10,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
-        .priority = -3,
-        .flags = FLAG_PROTECT_AFFECTED,
+        .priority = 0,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_SHEER_FORCE_BOOST,
         .split = SPLIT_PHYSICAL,
     },
 
@@ -9332,7 +9332,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_PRISMATIC_LASER] =
     {
         .effect = EFFECT_RECHARGE,
-        .power = 160,
+        .power = 230,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
         .pp = 10,

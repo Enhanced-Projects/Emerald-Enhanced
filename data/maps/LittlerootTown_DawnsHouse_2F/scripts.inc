@@ -323,8 +323,6 @@ LRT_DawnIntroductionScene::
 	msgbox GI_DawnMetMsg
 	closemessage
 	setflag FLAG_RECEIVED_RUNNING_SHOES
-	additem ITEM_GO_GOGGLES, 1
-	setflag FLAG_RECEIVED_GO_GOGGLES
 	setflag FLAG_SYS_NATIONAL_DEX
 	setflag FLAG_RYU_LT_RIVAL
 	setflag FLAG_RYU_LT_RIVAL2

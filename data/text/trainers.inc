@@ -2145,7 +2145,7 @@ Route115_Text_HelenePostBattle: @ 829B971
 	.string "I rarely meet anyone who's better\n"
 	.string "than me…\p"
 	.string "I get it now!\n"
-	.string "You're a GYM LEADER, aren't you?$"
+	.string "You're a Gym Leader, aren't you?$"
 
 Route115_Text_AlixIntro: @ 829B9CB
 	.string "Our eyes met!\n"
@@ -3350,9 +3350,9 @@ Route123_Text_WendyPostBattle: @ 829FC42
 
 Route123_Text_BraxtonIntro: @ 829FC6F
 	.string "You seem to have a big collection\n"
-	.string "of GYM BADGES.\p"
+	.string "of gym badges.\p"
 	.string "Let me see if you're actually worthy of\n"
-	.string "those BADGES!$"
+	.string "those badges!$"
 
 Route123_Text_BraxtonDefeat: @ 829FCD6
 	.string "Oh, you're worthy, all right!$"
@@ -3370,7 +3370,7 @@ Route123_Text_VioletDefeat: @ 829FD53
 	.string "I smell the bitter scent of misery…$"
 
 Route123_Text_VioletPostBattle: @ 829FD7B
-	.string "The BERRY MASTER's garden is filled\n"
+	.string "The Berry Master's garden is filled\n"
 	.string "with uplifting fragrances.$"
 
 Route123_Text_CameronIntro: @ 829FDBA
@@ -4637,14 +4637,14 @@ Route133_Text_WarrenPostBattle: @ 82A4304
 
 Route133_Text_BeckIntro: @ 82A436A
 	.string "I came all the way out here with my\n"
-	.string "BIRD Pokémon.$"
+	.string "bird Pokémon.$"
 
 Route133_Text_BeckDefeat: @ 82A439C
 	.string "You…\n"
 	.string "You're stunningly cool!$"
 
 Route133_Text_BeckPostBattle: @ 82A43B9
-	.string "I'd like to go back to FORTREE,\n"
+	.string "I'd like to go back to Fortree,\n"
 	.string "but I've grown to like this place, too.$"
 
 Route133_Text_MollieIntro: @ 82A4401
@@ -4700,7 +4700,7 @@ Route134_Text_AlexDefeat: @ 82A46BE
 	.string "Tuckered out again…$"
 
 Route134_Text_AlexPostBattle: @ 82A46D2
-	.string "My BIRD Pokémon get tired quickly after\n"
+	.string "My bird Pokémon get tired quickly after\n"
 	.string "a long flight…$"
 
 Route134_Text_HitoshiIntro: @ 82A4709
@@ -4769,7 +4769,7 @@ Route134_Text_ReynaPostBattle: @ 82A4A34
 	.string "TRAINERS I happen to meet!$"
 
 Route134_Text_HudsonIntro: @ 82A4A8F
-	.string "Listen, have you seen another SAILOR\n"
+	.string "Listen, have you seen another sailor\n"
 	.string "around here?$"
 
 Route134_Text_HudsonDefeat: @ 82A4AC1
@@ -4779,3 +4779,197 @@ Route134_Text_HudsonPostBattle: @ 82A4AD8
 	.string "Our boat drifted out to sea.\p"
 	.string "My buddy's a timid fellow, so I'm\n"
 	.string "worried about him.$"
+
+Snowshore_Text_HaroldIntro:
+	.string "My dogs are looking for a fun\n"
+	.string "match. Will you join us?$"
+
+Snowshore_Text_HaroldDefeated:
+	.string "Ah, well played.$"
+
+Snowshore_Text_HaroldPostBattle:
+	.string "I never leave home without my\n"
+	.string "Herdier and Stoutland.$"
+
+Snowshore_Text_TimIntro:
+	.string "I found a cute Spheal in the water!$"
+
+Snowshore_Text_TimDefeated:
+	.string "My Spheal may not be a good\n"
+	.string "battler, but I don't mind.$"
+
+Snowshore_Text_TimPostBattle:
+	.string "You should catch many cute pokemon!$"
+
+Snowshore_Text_JimIntro:
+	.string "I just became a trainer, I hope I\n"
+	.string "will do well…$"
+
+Snowshore_Text_JimDefeated:
+	.string "Aw, I did my best.$"
+
+Snowshore_Text_JimPostBattle:
+	.string "You look much more experienced\n"
+	.string "than me at battling.$"
+
+Snowshore_Text_JoyceIntro:
+	.string "You're no match for my deer\n"
+	.string "pokemon!$"
+
+Snowshore_Text_JoyceDefeated:
+	.string "Oh dear…$"
+
+Snowshore_Text_JoycePostBattle:
+	.string "You're the first to beat me…\n"
+	.string "I'll work my way back up by taking on\n"
+	.string "trainers I happen to meet!$"
+
+Snowshore_Text_DeltonIntro:
+	.string "I caught a lot of strong-looking\n"
+	.string "pokemon!$"
+
+Snowshore_Text_DeltonDefeated:
+	.string "I can't believe my legendary\n"
+	.string "pokemon lost!$"
+
+Snowshore_Text_DeltonPostBattle:
+	.string "An old fellow told me about a\n"
+	.string "legendary Ice/Flying pokemon.\p"
+	.string "I caught a whole team of them!$"
+
+Snowshore_Text_MarcusIntro:
+	.string "My Piloswine takes it slow and\n"
+	.string "steady, just like me!$"
+
+Snowshore_Text_MarcusDefeated:
+	.string "My pokemon might be too slow\n"
+	.string "to keep up…$"
+
+Snowshore_Text_MarcusPostBattle:
+	.string "As a hiker, I'm not bothered by the\n"
+	.string "snow. I can take on any terrain!$"
+
+Snowshore_Text_NickIntro:
+	.string "My mom gave me Running Shoes, I've\n"
+	.string "been running around all day!$"
+
+Snowshore_Text_NickDefeated:
+	.string "You are so big and strong!$"
+
+Snowshore_Text_NickPostBattle:
+	.string "I want to run around the whole\n"
+	.string "island with my Running Shoes.$"
+
+CraggyCoast_Text_LemmyIntro:
+	.string "Hey! I am looking for a fun battle!$"
+
+CraggyCoast_Text_LemmyDefeated:
+	.string "That was fun!$"
+
+CraggyCoast_Text_LemmyPostBattle:
+	.string "I want to catch a Spheal. I heard\n"
+	.string "they live in a cave around here.$"
+
+CraggyCoast_Text_TerrenceIntro:
+	.string "I will walk all over you like I do\n"
+	.string "with mountains!$"
+
+CraggyCoast_Text_TerrenceDefeated:
+	.string "I might have underestimated you.$"
+
+CraggyCoast_Text_TerrencePostBattle:
+	.string "Hiking in the snow strengthens\n"
+	.string "your leg muscles a lot.$"
+
+CraggyCoast_Text_MasahiroIntro:
+	.string "I taught my pokemon martial arts!\n"
+	.string "You stand no chance!$"
+
+CraggyCoast_Text_MasahiroDefeated:
+	.string "That is a first…$"
+
+CraggyCoast_Text_MasahiroPostBattle:
+	.string "You should train your pokemon\n"
+	.string "rigorously for max performance.$"
+
+CraggyCoast_Text_MiaIntro:
+	.string "Mia: Me and my boyfriend will\n"
+	.string "easily beat you! He is the best!$"
+
+CraggyCoast_Text_MiaDefeated:
+	.string "Mia: Our combined power was not\n"
+	.string "enough…$"
+
+CraggyCoast_Text_MiaPostBattle:
+	.string "Mia: My boyfriend taught me how\n"
+	.string "to battle. So romantic!$"
+
+CraggyCoast_Text_MiaNotEnoughPokemon:
+	.string "Mia: You don't have enough pokemon.\n"
+	.string "My boyfriend and I do everything\l"
+	.string "together, including battles.$"
+
+CraggyCoast_Text_JakeIntro:
+	.string "Jake: Let's see if you are strong\n"
+	.string "enough to beat the two of us!$"
+
+CraggyCoast_Text_JakeDefeated:
+	.string "Jake: You are quite formidable.$"
+
+CraggyCoast_Text_JakePostBattle:
+	.string "Jake: After teaching my girlfriend\n"
+	.string "how to battle, I am confident enough\l"
+	.string "in her to battle together.$"
+
+CraggyCoast_Text_JakeNotEnoughPokemon:
+	.string "Jake: You don't have enough pokemon.\n"
+	.string "My girlfriend and I do everything\l"
+	.string "together, including battles.$"
+
+CraggyCoast_Text_BettyIntro:
+	.string "Hey youngster. Let me show you the\n"
+	.string "experience I have acquired.$"
+
+CraggyCoast_Text_BettyDefeated:
+	.string "I think you will grow up to be a\n"
+	.string "powerful Gym Leader.$"
+
+CraggyCoast_Text_BettyPostBattle:
+	.string "At my old age, I like to spend time\n"
+	.string "at the raging sea of Craggy Coast\l"
+	.string "to feel young again.$"
+
+CraggyCoast_Text_GrantIntro:
+	.string "Let me see what you are capable of!$"
+
+CraggyCoast_Text_GrantDefeated:
+	.string "You are quite powerful indeed.$"
+
+CraggyCoast_Text_GrantPostBattle:
+	.string "Hiking at sea is quite exciting.\n"
+	.string "You don't want to slip!$"
+
+CraggyCoast_Text_RyujiIntro:
+	.string "The rage of the sea has toughened\n"
+	.string "my pokemon.$"
+
+CraggyCoast_Text_RyujiDefeated:
+	.string "Your style is quite intriguing…\n"
+	.string "and powerful!$"
+
+CraggyCoast_Text_RyujiPostBattle:
+	.string "I train here every day to become\n"
+	.string "the very best!$"
+
+CraggyCoast_Text_CharlesIntro:
+	.string "My Fighting types harness the power\n"
+	.string "of the fearsome sea.$"
+
+CraggyCoast_Text_CharlesDefeated:
+	.string "You are one the most formidable\n"
+	.string "opponents I have battled!$"
+
+CraggyCoast_Text_CharlesPostBattle:
+	.string "The key to being succesful is not\n"
+	.string "using the pokemon that seem best,\l"
+	.string "but the pokemon you like most.$"

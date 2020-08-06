@@ -172,6 +172,9 @@ TC_BallCheck::
 	checkitem ITEM_SAFARI_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_eq TC_Exiting_pokeballs
+	checkitem ITEM_CHILL_BALL, 1
+	compare VAR_RESULT, 1
+	goto_if_eq TC_Exiting_pokeballs
 	return
 	
 TC_Exiting_Nomoney::
@@ -241,7 +244,7 @@ TC_Entry_Cost:
 	.string "Training Center.\p"
 	.string "It will cost ¥65000 to use this service.\p"
 	.string "You're also not permitted to have\n"
-        .string "any pokeballs with you. \p"
+    .string "any pokeballs with you. \p"
 	.string "Please deposit any you have\n"
 	.string "in the pc to our left.$"
 

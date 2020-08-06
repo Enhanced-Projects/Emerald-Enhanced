@@ -587,3 +587,10 @@ gMetatiles_PolarPillar::
 	.align 1
 gMetatileAttributes_PolarPillar::
 	.incbin "data/tilesets/secondary/polarpillar/metatile_attributes.bin"
+	.align 1
+gMetatiles_SnowshorePokemonCenter::
+	.incbin "data/tilesets/secondary/snowshorepokemoncenter/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_SnowshorePokemonCenter::
+	.incbin "data/tilesets/secondary/snowshorepokemoncenter/metatile_attributes.bin"

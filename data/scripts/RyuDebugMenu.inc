@@ -117,12 +117,14 @@ Ryu_saveViewerEnabled:
 RyuDebug_Phasing::
 	goto_if_set FLAG_RYU_COLLISION_OFF, Ryu_DisablePhasing
 	setflag FLAG_RYU_COLLISION_OFF
+	setflag FLAG_TOBY_TRAINER_SIGHT
 	msgbox Ryu_CollisionOffMsg
 	release
 	end
 
 Ryu_DisablePhasing::
 	clearflag FLAG_RYU_COLLISION_OFF
+	clearflag FLAG_TOBY_TRAINER_SIGHT
 	msgbox Ryu_CollisionOnMsg
 	release
 	end
@@ -168,7 +170,7 @@ RyuDebug_enableWaystone::
 	setflag FLAG_LANDMARK_POKEMON_LEAGUE
 	setflag FLAG_RYU_LANDMARK_MTPYRE
 	setflag FLAG_RYU_LANDMARK_LCCDEPTSTORE
-	setflag FLAG_LANDMARK_ABANDONED_SHIP
+	setflag FLAG_LANDMARK_SNOWSHORE
 	setflag FLAG_LANDMARK_AQUA_OFFICE
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	return
@@ -370,9 +372,7 @@ RyuDebug_SkipTutorial::
 	compare VAR_RESULT, 69
 	goto_if_ne ryu_end
 	setvar VAR_LITTLEROOT_INTRO_STATE, 10
-	setflag FLAG_RECEIVED_GO_GOGGLES
 	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
-	additem ITEM_GO_GOGGLES, 1
 	setflag FLAG_SYS_B_DASH
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED

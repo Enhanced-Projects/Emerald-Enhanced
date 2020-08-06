@@ -269,4 +269,17 @@ MHAQ_Maxie::@@need to add post story events, like maybe heatran for when the pla
 	
 MHAQ_Blaise::@@need to add post story events for when the player /did/ romance courtney
 	end
-	
+
+MagmaHideout_AdminQuarters_EventScript_Bed::
+	goto_if_set FLAG_RYU_DS_COURTNEY_LOVERS, ryu_end
+	lockall
+	msgbox MagmaHideout_AdminQuarters_Text_TakeRestInBed, MSGBOX_DEFAULT
+	closemessage
+	call Common_EventScript_OutOfCenterPartyHeal
+	releaseall
+	end
+
+MagmaHideout_AdminQuarters_Text_TakeRestInBed:
+	.string "There's a bed…\n"
+	.string "Let's take a rest.$"
+

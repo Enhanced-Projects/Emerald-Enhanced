@@ -605,10 +605,12 @@
 #define MAP_SAFARI_ZONE_HIDDEN_GROTTO                       (89 | (26 << 8))
 
 // Map Group 27
-#define MAP_IGLOO1 (0 | (27 << 8))
-#define MAP_IGLOO2 (1 | (27 << 8))
-#define MAP_IGLOO3 (2 | (27 << 8))
-#define MAP_IGLOO4 (3 | (27 << 8))
+#define MAP_IGLOO1         (0 | (27 << 8))
+#define MAP_IGLOO2         (1 | (27 << 8))
+#define MAP_IGLOO2BASEMENT (2 | (27 << 8))
+#define MAP_IGLOO3         (3 | (27 << 8))
+#define MAP_IGLOO4         (4 | (27 << 8))
+#define MAP_SNOWSHORE_MART (5 | (27 << 8))
 
 // Map Group 28
 #define MAP_ROUTE109_SEASHORE_HOUSE                     (0 | (28 << 8))

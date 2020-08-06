@@ -3350,7 +3350,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
             switch (gLastUsedAbility)
             {
             case ABILITY_HARVEST:
-                if (((WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_SUN_ANY) || Random() % 1 == 0)
+                if ((WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_SUN_ANY)
                  && gBattleMons[battler].item == ITEM_NONE
                  && gBattleStruct->changedItems[battler] == ITEM_NONE
                  && ItemId_GetPocket(gBattleStruct->usedHeldItems[battler]) == POCKET_BERRIES)

@@ -6,7 +6,7 @@ MossdeepCity_Mart_EventScript_Clerk:: @ 82223C8
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemart MossdeepCity_Mart_Pokemart
+	pokemart 0
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
@@ -51,8 +51,6 @@ MossdeepCity_Mart_Text_MaxRepelLastsLongest: @ 82224A0
 	.string "the longest.$"
 
 MossdeepCity_Mart_Text_NetAndDiveBallsRare: @ 82224FA
-	.string "The NET and DIVE BALLS are rare POKé\n"
-	.string "BALLS that are only made in MOSSDEEP.\p"
 	.string "A NET BALL is effective against\n"
 	.string "BUG-type and WATER-type Pokémon.\p"
 	.string "A DIVE BALL works best on Pokémon\n"

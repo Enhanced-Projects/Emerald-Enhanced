@@ -284,7 +284,7 @@ const struct Item gItems[] =
     {
         .name = _("Chill Ball"),
         .itemId = ITEM_CHILL_BALL,
-        .price = 300,
+        .price = 1000,
         .description = sChillBallDesc,
         .pocket = POCKET_POKE_BALLS,
         .type = 11,
@@ -6269,12 +6269,12 @@ const struct Item gItems[] =
 
     [ITEM_MIND_PLATE] =
     {
-        .name = _("Mind Plate"),
+        .name = _("Dry Ice"),
         .itemId = ITEM_MIND_PLATE,
-        .price = 200,
+        .price = 20000,
         .holdEffect = HOLD_EFFECT_PSYCHIC_POWER,
-        .holdEffectParam = 20,
-        .description = sMindPlateDesc,
+        .holdEffectParam = 50,
+        .description = sDryIceDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,

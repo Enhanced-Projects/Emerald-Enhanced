@@ -1,4 +1,4 @@
-//This file has all the rewards tables for the different life gkills.
+//This file has all the rewards tables for the different life skills.
 #include "constants/region_map_sections.h"
 //gem tier list. These will be used when refining their respective ores.
 const u16 gGemTier3[] = {//rare gem ore
@@ -28,26 +28,28 @@ const u16 gGemTier1[] = {//common gem ore
 };
 
 const u16 gFossilTable[] = {//used when refining fossil ore
-    ITEM_ARMOR_FOSSIL,
-    ITEM_ARMOR_FOSSIL,
-    ITEM_SKULL_FOSSIL,
-    ITEM_SKULL_FOSSIL,
-    ITEM_HELIX_FOSSIL,
-    ITEM_HELIX_FOSSIL,
     ITEM_DOME_FOSSIL,
     ITEM_DOME_FOSSIL,
+    ITEM_HELIX_FOSSIL,
+    ITEM_HELIX_FOSSIL,
+    ITEM_OLD_AMBER,
+    ITEM_OLD_AMBER,
+    ITEM_ROOT_FOSSIL,
+    ITEM_ROOT_FOSSIL,
+    ITEM_CLAW_FOSSIL,
+    ITEM_CLAW_FOSSIL,
+    ITEM_SKULL_FOSSIL,
+    ITEM_SKULL_FOSSIL,
+    ITEM_ARMOR_FOSSIL,
+    ITEM_ARMOR_FOSSIL,
+    ITEM_COVER_FOSSIL,
+    ITEM_COVER_FOSSIL,
     ITEM_PLUME_FOSSIL,
     ITEM_PLUME_FOSSIL,
     ITEM_JAW_FOSSIL,
     ITEM_JAW_FOSSIL,
     ITEM_SAIL_FOSSIL,
     ITEM_SAIL_FOSSIL,
-    ITEM_ROOT_FOSSIL,
-    ITEM_ROOT_FOSSIL,
-    ITEM_CLAW_FOSSIL,
-    ITEM_CLAW_FOSSIL,
-    ITEM_OLD_AMBER,
-    ITEM_OLD_AMBER,
     ITEM_THICK_CLUB,
     ITEM_RARE_BONE,
     ITEM_EVERSTONE,

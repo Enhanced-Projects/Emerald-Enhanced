@@ -15,19 +15,6 @@
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
-      "x": 47,
-      "y": 33,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SootopolisCity_EventScript_Woman2",
-      "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
       "x": 9,
       "y": 43,
@@ -67,19 +54,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
-      "x": 26,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SootopolisCity_EventScript_Man",
-      "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
       "x": 49,
       "y": 34,
@@ -91,58 +65,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SootopolisCity_EventScript_Woman1",
       "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_MANIAC",
-      "x": 17,
-      "y": 44,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SootopolisCity_EventScript_Maniac",
-      "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
-      "x": 14,
-      "y": 42,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SootopolisCity_EventScript_Girl",
-      "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
-      "x": 17,
-      "y": 40,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SootopolisCity_EventScript_BlackBelt",
-      "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_2",
-      "x": 19,
-      "y": 37,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SootopolisCity_EventScript_Boy2",
-      "flag": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS"
     }
   ],
   "warp_events": [

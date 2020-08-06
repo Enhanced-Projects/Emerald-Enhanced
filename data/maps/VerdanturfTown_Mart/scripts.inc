@@ -6,7 +6,7 @@ VerdanturfTown_Mart_EventScript_Clerk:: @ 8202587
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemart VerdanturfTown_Mart_Pokemart
+	pokemart 0
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
@@ -54,7 +54,5 @@ VerdanturfTown_Mart_Text_NoStrategyGuidesForBattleTent: @ 820264C
 
 VerdanturfTown_Mart_Text_NestBallOnWeakenedPokemon: @ 82026C9
 	.string "The NEST BALL works better on\n"
-	.string "weakened Pokémon.\p"
-	.string "VERDANTURF is the only place you can\n"
-	.string "buy it.$"
+	.string "weakened Pokémon.$"
 

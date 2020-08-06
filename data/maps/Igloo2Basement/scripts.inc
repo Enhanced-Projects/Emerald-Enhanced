@@ -1,0 +1,2 @@
+Igloo2Basement_MapScripts::
+	.byte 0

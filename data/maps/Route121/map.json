@@ -382,7 +382,7 @@
     {
       "type": "trigger",
       "x": 25,
-      "y": 5,
+      "y": 0,
       "elevation": 3,
       "var": "VAR_ROUTE121_STATE",
       "var_value": "0",
@@ -391,7 +391,7 @@
     {
       "type": "trigger",
       "x": 25,
-      "y": 6,
+      "y": 1,
       "elevation": 3,
       "var": "VAR_ROUTE121_STATE",
       "var_value": "0",
@@ -400,7 +400,7 @@
     {
       "type": "trigger",
       "x": 25,
-      "y": 7,
+      "y": 2,
       "elevation": 3,
       "var": "VAR_ROUTE121_STATE",
       "var_value": "0",
@@ -409,7 +409,7 @@
     {
       "type": "trigger",
       "x": 25,
-      "y": 8,
+      "y": 3,
       "elevation": 3,
       "var": "VAR_ROUTE121_STATE",
       "var_value": "0",

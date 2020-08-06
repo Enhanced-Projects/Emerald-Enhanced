@@ -4514,7 +4514,7 @@
     {
       "id": "LAYOUT_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE",
       "name": "LilycoveCity_AquaCorporateOffice_Layout",
-      "width": 25,
+      "width": 26,
       "height": 16,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
@@ -4962,6 +4962,16 @@
       "blockdata_filepath": "data/layouts/LilycoveCity_Harbor_Story/map.bin"
     },
     {
+      "id": "LAYOUT_SNOWSHORE_MART",
+      "name": "Snowshore_Mart_Layout",
+      "width": 14,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_SnowshorePokemonCenter",
+      "border_filepath": "data/layouts/Snowshore_Mart/border.bin",
+      "blockdata_filepath": "data/layouts/Snowshore_Mart/map.bin"
+    },
+    {
       "id": "LAYOUT_MAGMA_HIDEOUT_ADMIN_QUARTERS",
       "name": "MagmaHideout_AdminQuarters_Layout",
       "width": 20,
@@ -4970,6 +4980,16 @@
       "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/MagmaHideout_AdminQuarters/border.bin",
       "blockdata_filepath": "data/layouts/MagmaHideout_AdminQuarters/map.bin"
+    },
+    {
+      "id": "LAYOUT_IGLOO2BASEMENT",
+      "name": "Igloo2Basement_Layout",
+      "width": 7,
+      "height": 7,
+      "primary_tileset": "gTileset_Snowy",
+      "secondary_tileset": "gTileset_PolarPillar",
+      "border_filepath": "data/layouts/Igloo2Basement/border.bin",
+      "blockdata_filepath": "data/layouts/Igloo2Basement/map.bin"
     },
     {
       "id": "LAYOUT_SOOTOPOLIS_CITY_MAGMA_EVENT",
