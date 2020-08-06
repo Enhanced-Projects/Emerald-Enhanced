@@ -12,7 +12,7 @@ BerryTreeScript:: @ 82742F9
 
 BerryTree_EventScript_Sparkling:: @ 827434F
 	lockall
-	message BerryTree_Text_ExclamationPoint
+	message BerryTree_Text_GrowingRapidly
 	waitmessage
 	waitbuttonpress
 	releaseall
@@ -188,11 +188,13 @@ BerryTree_FertilizeBerry::
 	special ObjectEventInteractionWaterBerryTree
 	special DoWateringBerryTreeAnim
 	waitstate
+	removeitem ITEM_FERTILIZER, 1
 	releaseall
 	end
 
 BerryTree_AskFertilize:
-	.string "The plant looks hungry.\nWould you like to fertilize it?$"
+	.string "One {STR_VAR_1} was planted here.\n"
+	.string "Would you like to fertilize it?$"
 
 BerryTree_Text_ItsSoftLoamySoil: @ 82744F0
 	.string "It's soft, loamy soil.$"
@@ -229,5 +231,5 @@ BerryTree_Text_BerryPocketFull: @ 827468F
 	.string "The Bag's Berries Pocket is full.\p"
 	.string "The {STR_VAR_1} couldn't be taken.$"
 
-BerryTree_Text_ExclamationPoint: @ 8274744
-	.string "!$"
+BerryTree_Text_GrowingRapidly: @ 8274744
+	.string "The berry tree is growing rapidly!$"

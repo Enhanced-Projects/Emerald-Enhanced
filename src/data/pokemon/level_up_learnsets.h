@@ -27359,6 +27359,7 @@ static const struct LevelUpMove sToucannonLevelUpLearnset[] = {
     LEVEL_UP_MOVE(40, MOVE_BULLET_SEED),
     LEVEL_UP_MOVE(44, MOVE_FEATHER_DANCE),
     LEVEL_UP_MOVE(50, MOVE_HYPER_VOICE),
+    LEVEL_UP_MOVE(55, MOVE_FLARE_BLITZ),
     LEVEL_UP_END
 };
 

@@ -1017,14 +1017,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_TOUCANNON_3] = { // Toucannon-SD
+    [FRONTIER_MON_TOUCANNON_3] = { // Toucannon-Tailwind
         .species = SPECIES_TOUCANNON,
-        .moves = {MOVE_BRAVE_BIRD, MOVE_BULLET_SEED, MOVE_FLAME_CHARGE, MOVE_SWORDS_DANCE},
-        .heldItem = ITEM_SITRUS_BERRY,
+        .moves = {MOVE_BEAK_BLAST, MOVE_FLARE_BLITZ, MOVE_STEEL_WING, MOVE_TAILWIND},
+        .heldItem = ITEM_LIFE_ORB,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 1
+        .ability = 2
     },
     [FRONTIER_MON_CINCCINO_3] = { // Cinccino-LifeOrb
         .species = SPECIES_CINCCINO,
@@ -4295,12 +4295,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_TOUCANNON_1] = { // Toucannon-SkillLink
+    [FRONTIER_MON_TOUCANNON_1] = { // Toucannon-SD
         .species = SPECIES_TOUCANNON,
-        .moves = {MOVE_BOOMBURST, MOVE_BRAVE_BIRD, MOVE_OVERHEAT, MOVE_BULLET_SEED},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_RASH,
+        .moves = {MOVE_BEAK_BLAST, MOVE_BULLET_SEED, MOVE_SWORDS_DANCE, MOVE_ROOST},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 1
     },
@@ -5816,7 +5816,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_CHARIZARD_2] = { // Charizard-SunnyDay
+    [FRONTIER_MON_CHARIZARD_2] = { // Charizard-Sun
         .species = SPECIES_CHARIZARD,
         .moves = {MOVE_FIRE_BLAST, MOVE_SOLAR_BEAM, MOVE_FOCUS_BLAST, MOVE_SUNNY_DAY},
         .heldItem = ITEM_LIFE_ORB,
@@ -6005,12 +6005,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_TOUCANNON_2] = { // Toucannon-SheerForce
+    [FRONTIER_MON_TOUCANNON_2] = { // Toucannon-Scarf
         .species = SPECIES_TOUCANNON,
-        .moves = {MOVE_BOOMBURST, MOVE_BRAVE_BIRD, MOVE_HEAT_WAVE, MOVE_FLASH_CANNON},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_RASH,
+        .moves = {MOVE_BEAK_BLAST, MOVE_FLARE_BLITZ, MOVE_STEEL_WING, MOVE_U_TURN},
+        .heldItem = ITEM_CHOICE_SCARF,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
         .ivs = 31,
         .ability = 2
     },

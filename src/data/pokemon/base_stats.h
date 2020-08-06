@@ -19424,7 +19424,7 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_PIKIPEK] =
     {
-        .baseHP        = 35,
+        .baseHP        = 45,
         .baseAttack    = 75,
         .baseDefense   = 30,
         .baseSpeed     = 65,
@@ -19451,7 +19451,7 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_TRUMBEAK] =
     {
-        .baseHP        = 55,
+        .baseHP        = 65,
         .baseAttack    = 85,
         .baseDefense   = 50,
         .baseSpeed     = 75,
@@ -19478,13 +19478,13 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_TOUCANNON] =
     {
-        .baseHP        = 80,
+        .baseHP        = 90,
         .baseAttack    = 120,
-        .baseDefense   = 75,
-        .baseSpeed     = 60,
+        .baseDefense   = 90,
+        .baseSpeed     = 76,
         .baseSpAttack  = 75,
         .baseSpDefense = 75,
-        .type1 = TYPE_NORMAL,
+        .type1 = TYPE_FLYING,
         .type2 = TYPE_FLYING,
         .catchRate = 45,
         .expYield = 218,

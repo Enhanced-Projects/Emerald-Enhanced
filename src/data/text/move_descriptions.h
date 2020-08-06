@@ -2499,8 +2499,8 @@ static const u8 sINSTRUCTDescription[] = _(
 	"its last move again.");
 
 static const u8 sBEAK_BLASTDescription[] = _(
-	"Heats up beak to attack.\n"
-	"Burns foe on contact.");
+	"Attacks with a flaming\n"
+	"beak. Always inflicts Burn.");
 
 static const u8 sCLANGING_SCALESDescription[] = _(
 	"Makes a big noise with\n"

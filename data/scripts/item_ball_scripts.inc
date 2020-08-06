@@ -1,4 +1,20 @@
 
+CraggyCoast_EventScript_ItemDiveBall::
+	finditem ITEM_DIVE_BALL
+	end
+
+CraggyCoast_EventScript_ItemPPmax::
+	finditem ITEM_PP_MAX
+	end
+
+CraggyCoast_EventScript_ItemWaveIncense::
+	finditem ITEM_WAVE_INCENSE
+	end
+
+CraggyCoast_EventScript_ItemBigPearl::
+	finditem ITEM_BIG_PEARL
+	end
+
 Igloo2Basement_EventScript_ItemGoldOre1::
 	finditem ITEM_GOLD_ORE
 	end

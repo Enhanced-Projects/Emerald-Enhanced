@@ -329,7 +329,7 @@ GCMS_Consignment::
 	goto_if_eq GCMS_NotEnoughPartyMons
 	compare VAR_RYU_GCMS_SPECIES, 0
 	goto_if_eq GCMS_ChooseInitialSpecies
-	bufferspeciesname 0, VAR_RYU_GCMS_SPECIES
+	buffernumberstring 1, VAR_RYU_GCMS_VALUE
 	msgbox GCMS_PickSlot
 	call RyuBufferPartyMonNames
 	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 6, 0
@@ -509,7 +509,7 @@ GCMS_Successful:
     .string "been made!$"
 	
 GCMS_PickSlot:
-    .string "You are currently mapping genes.\n"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}You have mapped{COLOR LIGHT_BLUE}{SHADOW BLUE} {STR_VAR_2} {COLOR DARK_GREY}{SHADOW LIGHT_GREY}sequences.\n"
     .string "Choose which species to Consign.$"
 	
 GCMS_PickInitialSpecies:

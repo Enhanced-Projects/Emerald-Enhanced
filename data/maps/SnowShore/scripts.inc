@@ -20,7 +20,7 @@ Snowshore_EventScript_CraggyCoastSign::
 
 SnowShore_Text_CraggyCoastSign:
 	.string "{LEFT_ARROW} Craggy Coast\n"
-	.string "Snowshore {RIGHT_ARROW}$"
+	.string "Snowshore {RIGHT_ARROW} $"
 
 Snowshore_EventScript_MrFrigusSign::
 	msgbox SnowShore_Text_MrFrigusSign, MSGBOX_SIGN
@@ -43,13 +43,6 @@ Snowshore_HeartScale::
 	goto_if_set FLAG_HIDDEN_SNOWSHORE_HEART_SCALE, FrostyForestEnd
 	giveitem ITEM_HEART_SCALE
 	setflag FLAG_HIDDEN_SNOWSHORE_HEART_SCALE
-	release
-	end
-
-SnowShore_EskimoFight::
-    cleartrainerflag TRAINER_ESKIMO_1
-    trainerbattle_single TRAINER_ESKIMO_1, SS_EF_Intro, SS_EF_Defeat
-    msgbox EskimoFightFinished
 	release
 	end
 
@@ -84,7 +77,7 @@ Snowshore_EventScript_OldWoman::
 Snowshore_Text_MtFreeze:
 	.string "Further north along this path is\n"
 	.string "Mt Freeze.\p"
-	.string "Very, very long ago the mountain,\n"
+	.string "Very, very long ago the mountain\n"
 	.string "was a volcano.\p"
 	.string "According to old folklore, a\n"
 	.string "legendary bird lives on top, and\l"
@@ -135,11 +128,37 @@ Snowshore_Text_Azumarill:
 	.string "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\n"
 	.string "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee!$"
 
-SS_EF_Intro:
-	.string "Harr Harr, It's cold$"
-	
-SS_EF_Defeat:
-	.string "Too cold for me$"
-	
-EskimoFightFinished:
-	.string "You should get a coat.$"
+Snowshore_EventScript_Harold::
+	trainerbattle_single TRAINER_HAROLD, Snowshore_Text_HaroldIntro, Snowshore_Text_HaroldDefeated
+	msgbox Snowshore_Text_HaroldPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Snowshore_EventScript_Tim::
+	trainerbattle_single TRAINER_TIM, Snowshore_Text_TimIntro, Snowshore_Text_TimDefeated
+	msgbox Snowshore_Text_TimPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Snowshore_EventScript_Jim::
+	trainerbattle_single TRAINER_JIM, Snowshore_Text_JimIntro, Snowshore_Text_JimDefeated
+	msgbox Snowshore_Text_JimPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Snowshore_EventScript_Joyce::
+	trainerbattle_single TRAINER_JOYCE, Snowshore_Text_JoyceIntro, Snowshore_Text_JoyceDefeated
+	msgbox Snowshore_Text_JoycePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Snowshore_EventScript_Delton::
+	trainerbattle_single TRAINER_DELTON, Snowshore_Text_DeltonIntro, Snowshore_Text_DeltonDefeated
+	msgbox Snowshore_Text_DeltonPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Snowshore_EventScript_Marcus::
+	trainerbattle_single TRAINER_MARCUS, Snowshore_Text_MarcusIntro, Snowshore_Text_MarcusDefeated
+	msgbox Snowshore_Text_MarcusPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Snowshore_EventScript_Nick::
+	trainerbattle_single TRAINER_NICK, Snowshore_Text_NickIntro, Snowshore_Text_NickDefeated
+	msgbox Snowshore_Text_NickPostBattle, MSGBOX_AUTOCLOSE
+	end

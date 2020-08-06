@@ -252,7 +252,7 @@
 #define FLAG_RECEIVED_TM05                   0xE7
 #define FLAG_RECEIVED_TM19                   0xE8
 
-#define FLAG_RYU_PLAYER_AQUA_STONE                    0xE9 // Unused Flag
+#define FLAG_RYU_PLAYER_AQUA_STONE           0xE9 // Unused Flag
 
 #define FLAG_RECEIVED_TM44                   0xEA
 #define FLAG_RECEIVED_TM45                   0xEB
@@ -865,10 +865,10 @@
 #define FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE         0x335
 #define FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE         0x336
 #define FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA                          0x337
-#define FLAG_HIDE_PETALBURG_GYM_WALLYS_UNCLE                        0x338 // EE-Unused
-#define FLAG_HIDE_LEGEND_MON_CAVE_OF_ORIGIN                         0x339 // Unused, leftover from R/S
-#define FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE                            0x33A // EE-Unused
-#define FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE                             0x33B // EE-Unused
+#define FLAG_ITEM_CRAGGY_COAST_DIVE_BALL                            0x338
+#define FLAG_ITEM_CRAGGY_COAST_PP_MAX                               0x339
+#define FLAG_ITEM_CRAGGY_COAST_WAVE_INCENSE                         0x33A
+#define FLAG_ITEM_CRAGGY_COAST_BIG_PEARL                            0x33B
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE                     0x33C
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE                      0x33D
 #define FLAG_HIDE_PETALBURG_CITY_WALLYS_UNCLE                       0x33E // EE-Unused
