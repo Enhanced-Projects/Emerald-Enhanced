@@ -225,6 +225,13 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 22,
+      "y": 66,
+      "elevation": 4,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CraggyCoast_HeartScale"
+    }
   ]
 }

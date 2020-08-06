@@ -5025,7 +5025,7 @@
       "id": "LAYOUT_ROUTE124_MAXIE_HIDEOUT_CAVE",
       "name": "Route124_MaxieHideoutCave_Layout",
       "width": 9,
-      "height": 13,
+      "height": 11,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/Route124_MaxieHideoutCave/border.bin",

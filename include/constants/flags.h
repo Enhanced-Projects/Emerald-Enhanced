@@ -141,7 +141,7 @@
 #define FLAG_RECEIVED_TM31                   0x79
 #define FLAG_RECEIVED_TM53                   0x7A
 #define FLAG_RECEIVED_TM58                   0x7B
-#define FLAG_REGISTER_RIVAL_POKENAV          0x7C // EE-Unused
+#define FLAG_HIDDEN_CRAGGY_COAST_HEART_SCALE 0x7C
 #define FLAG_DEFEATED_RIVAL_ROUTE_104        0x7D
 #define FLAG_DEFEATED_WALLY_VICTORY_ROAD     0x7E // EE-Unused
 #define FLAG_MET_PRETTY_PETAL_SHOP_OWNER     0x7F
