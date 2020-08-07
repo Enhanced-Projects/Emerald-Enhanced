@@ -192,8 +192,6 @@ FG_AltGymBattle::
 	compare VAR_RESULT, FALSE
 	goto_if_eq FG_ChooseValidMons
 	multi_2_vs_1 TRAINER_WINONA_4, FG_DefeatText, VAR_0x8008, VAR_0x8009
-	waitstate
-	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
@@ -308,7 +306,7 @@ FG_LANETTE_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}This is certainly my\nwheelhouse. This'll be easy!$"
 
 FG_COURTNEY_INTRO:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Canines have been man's hunting/ncompanions since the beginning of\ltime.\pThey're natural predators to flying\ntypes.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Canines have been man's hunting\ncompanions since the beginning of\ltime.\pThey're natural predators to flying\ntypes.$"
 	
 FG_PreBattleText:
     .string "Winona: Oh, hi! I remember you. \n"

@@ -238,9 +238,9 @@ SG_GymBattleIntroCourtney::
 	msgbox Ryu_PlayerCalledCourtney MSGBOX_DEFAULT
 	closemessage
 	delay 30
-	addobject 14
+	addobject 8
 	playse SE_DOOR
-	applymovement 14, SG_PartnerEnter
+	applymovement 8, SG_PartnerEnter
 	waitmovement 0
 	msgbox SG_COURTNEY_INTRO MSGBOX_DEFAULT
 	goto SG_AltGymBattle
@@ -251,8 +251,6 @@ SG_AltGymBattle::
 	compare VAR_RESULT, FALSE
 	goto_if_eq SG_ChooseValidMons
 	multi_2_vs_1 TRAINER_JUAN_4, SG_DefeatText, VAR_0x8008, VAR_0x8009
-	waitstate
-	special LoadPlayerParty
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
@@ -340,10 +338,10 @@ SG_GymBattleEndLanette::
 SG_GymBattleEndCourtney::
 	msgbox SG_CourtneyGymBattleComplete MSGBOX_DEFAULT
 	closemessage
-	applymovement 14, SG_PartnerExit
-	waitmovement 14
+	applymovement 8, SG_PartnerExit
+	waitmovement 8
 	playse SE_TK_WARPOUT
-	removeobject 14
+	removeobject 8
 	special DrawWholeMapView
 	goto SG_Reset
 	release

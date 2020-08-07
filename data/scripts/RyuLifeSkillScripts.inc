@@ -259,13 +259,13 @@ Ryu_ShardExchangeExit::
     end
     
 Ryu_CheckShardCount::
-    checkitem VAR_TEMP_B, 2
+    checkitem VAR_TEMP_B, 1
     compare VAR_RESULT, 0
     goto_if_eq Ryu_DontHaveEnoughShard
     checkitemspace VAR_TEMP_C, 1
     compare VAR_RESULT, FALSE
     goto_if_eq Ryu_NotEnoughSpace
-    removeitem VAR_TEMP_B, 2
+    removeitem VAR_TEMP_B, 1
     additem VAR_TEMP_C, 1
     bufferitemname 3, VAR_TEMP_C
     msgbox Ryu_ExchangeSuccess
@@ -291,10 +291,10 @@ Ryu_DontHaveEnoughShard:
     end
 
 Ryu_YouDontHaveEnough:
-    .string "I need at least two for the\nexchange.$"
+    .string "I need at least one for the\nexchange.$"
 
 Ryu_ExchangeSuccess:
-    .string "Here you go!\nOne {STR_VAR_1}!$"
+    .string "Here you go!\nOne {RYU_STR_1}!$"
 
 @@Mining General===================================================================================
 

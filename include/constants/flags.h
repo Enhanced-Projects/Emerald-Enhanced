@@ -1226,7 +1226,7 @@
 #define FLAG_RYU_PASSCODE_KOUTA                                     0x495 // Unused Flag
 #define FLAG_RYU_PASSCODE_GCMS_GIFT                                 0x496 // Unused Flag
 #define FLAG_RYU_DEV_DISENC                                         0x497 // Unused Flag
-#define FLAG_RYU_LANDMARK_MTPYRE                                    0x498 // Unused Flag
+#define FLAG_RYU_LANDMARK_MH                                    0x498 // Unused Flag
 #define FLAG_RYU_LANDMARK_LCCDEPTSTORE                              0x499 // Unused Flag
 #define FLAG_RYU_SKIPDIFFICULTYCHECK                                0x49A // Unused Flag
 #define FLAG_RYU_HAS_IMPRINTER                                      0x49B // Unused Flag

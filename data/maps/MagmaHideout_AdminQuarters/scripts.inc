@@ -47,6 +47,7 @@ MHAQ_StayingWithCourtney1::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	setobjectxy 1, 1, 3
 	setflag FLAG_RYU_DS_COURTNEY_PARTNERS
+	setflag FLAG_RYU_DS_HAS_PARTNER
 	release
 	end
 	
@@ -92,6 +93,7 @@ MHAQ_StayingWithCourtney2::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	setobjectxy 1, 1, 3
 	setflag FLAG_RYU_DS_COURTNEY_PARTNERS
+	setflag FLAG_RYU_DS_HAS_PARTNER
 	release
 	end
 	
@@ -250,14 +252,14 @@ MHAQ_PlayerToExit2:
 	walk_right
 	walk_right
 	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
 	walk_right
 	walk_right
 	walk_right

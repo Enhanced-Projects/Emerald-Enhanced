@@ -736,8 +736,6 @@ MP_OldPeopleGiveEonTicket:
 
 
 MP_Landmark::
-	lock
-	setflag FLAG_RYU_LANDMARK_MTPYRE
 	release
 	end
 

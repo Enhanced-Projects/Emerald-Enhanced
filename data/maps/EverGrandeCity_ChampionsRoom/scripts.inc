@@ -66,9 +66,7 @@ EGC_AltWallaceFollower::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq EGC_CR_ChooseValidMons
-	multi_2_vs_1 TRAINER_WALLACE, EverGrandeCity_ChampionsRoom_Text_Defeat, VAR_0x8006, VAR_0x8009
-	waitstate
-	special LoadPlayerParty
+	multi_2_vs_1 TRAINER_WALLACE, EverGrandeCity_ChampionsRoom_Text_Defeat, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame

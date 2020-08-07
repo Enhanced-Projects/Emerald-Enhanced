@@ -257,7 +257,7 @@ RyuPartnerBattleMultichoice::
 	checkplayergender
 	compare VAR_RESULT, FEMALE
 	goto_if_eq RyuPartnerMultiBattleChoiceMale
-	multichoice 20, 4, MULTI_SELECT_PARTNER_MENU, 1
+	multichoice 20, 3, MULTI_SELECT_PARTNER_MENU, 1
 	switch VAR_RESULT
 	case 0, RyuMultiBattlePartnerDawn
 	case 1, RyuMultiBattlePartnerShelly
