@@ -40,14 +40,14 @@
             "y": 30
         },
         {
-            "dest_map": "MAP_SNOWSHORE_UNDERWATER",
+            "dest_map": "MAP_SNOWY_SHORE_UNDERWATER",
             "dest_warp_id": 0,
             "elevation": 0,
             "x": 46,
             "y": 2
         },
         {
-            "dest_map": "MAP_SNOWSHORE_UNDERWATER",
+            "dest_map": "MAP_SNOWY_SHORE_UNDERWATER",
             "dest_warp_id": 1,
             "elevation": 0,
             "x": 53,

@@ -692,11 +692,11 @@ static const struct BattleBackground gBattleTerrainTable[] =
         .palette = gBattleTerrainPalette_Plain,
     },
 
-    [BATTLE_TERRAIN_SNOWSHORE] =
+    [BATTLE_TERRAIN_SNOWY_SHORE] =
     {
-        .tileset = gBattleTerrainTiles_SnowshoreTiles,
-        .tilemap = gBattleTerrainTilemap_SnowshoreMap,
-        .palette = gBattleTerrainPalette_SnowshorePalette,
+        .tileset = gBattleTerrainTiles_SnowyShoreTiles,
+        .tilemap = gBattleTerrainTilemap_SnowyShoreMap,
+        .palette = gBattleTerrainPalette_SnowyShorePalette,
     },
 
     [BATTLE_TERRAIN_MTFREEZE] =

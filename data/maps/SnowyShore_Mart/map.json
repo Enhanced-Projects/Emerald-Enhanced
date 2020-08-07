@@ -1,9 +1,9 @@
 {
-  "id": "MAP_SNOWSHORE_MART",
-  "name": "Snowshore_Mart",
-  "layout": "LAYOUT_SNOWSHORE_MART",
+  "id": "MAP_SNOWY_SHORE_MART",
+  "name": "SnowyShore_Mart",
+  "layout": "LAYOUT_SNOWY_SHORE_MART",
   "music": "MUS_POKECEN",
-  "region_map_section": "MAPSEC_SNOWSHORE",
+  "region_map_section": "MAPSEC_SNOWY_SHORE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -24,7 +24,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Snowshore_Mart_EventScript_Nurse",
+      "script": "SnowyShore_Mart_EventScript_Nurse",
       "flag": "0"
     },
     {
@@ -37,7 +37,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Snowshore_Mart_EventScript_Clerk",
+      "script": "SnowyShore_Mart_EventScript_Clerk",
       "flag": "0"
     },
     {
@@ -50,7 +50,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Snowshore_Mart_EventScript_LeftWoman",
+      "script": "SnowyShore_Mart_EventScript_LeftWoman",
       "flag": "0"
     },
     {
@@ -63,7 +63,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Snowshore_Mart_EventScript_Man",
+      "script": "SnowyShore_Mart_EventScript_Man",
       "flag": "0"
     },
     {
@@ -76,7 +76,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Snowshore_Mart_EventScript_RightWoman",
+      "script": "SnowyShore_Mart_EventScript_RightWoman",
       "flag": "0"
     }
   ],

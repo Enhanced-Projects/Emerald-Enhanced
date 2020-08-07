@@ -68,7 +68,7 @@
 #define MAP_UNDERWATER7                  (63 | (0 << 8))
 #define MAP_UNDERWATER8                  (64 | (0 << 8))
 #define MAP_UNDERWATER9                  (65 | (0 << 8))
-#define MAP_SNOWSHORE_UNDERWATER         (66 | (0 << 8))
+#define MAP_SNOWY_SHORE_UNDERWATER       (66 | (0 << 8))
 #define MAP_CRAGGY_COAST_UNDERWATER      (67 | (0 << 8))
 #define MAP_CRAGGY_COAST_UNDERWATER2     (68 | (0 << 8))
 #define MAP_CRAGGY_COAST_UNDERWATER_CAVE (69 | (0 << 8))
@@ -605,12 +605,12 @@
 #define MAP_SAFARI_ZONE_HIDDEN_GROTTO                       (89 | (26 << 8))
 
 // Map Group 27
-#define MAP_IGLOO1         (0 | (27 << 8))
-#define MAP_IGLOO2         (1 | (27 << 8))
-#define MAP_IGLOO2BASEMENT (2 | (27 << 8))
-#define MAP_IGLOO3         (3 | (27 << 8))
-#define MAP_IGLOO4         (4 | (27 << 8))
-#define MAP_SNOWSHORE_MART (5 | (27 << 8))
+#define MAP_IGLOO1           (0 | (27 << 8))
+#define MAP_IGLOO2           (1 | (27 << 8))
+#define MAP_IGLOO2BASEMENT   (2 | (27 << 8))
+#define MAP_IGLOO3           (3 | (27 << 8))
+#define MAP_IGLOO4           (4 | (27 << 8))
+#define MAP_SNOWY_SHORE_MART (5 | (27 << 8))
 
 // Map Group 28
 #define MAP_ROUTE109_SEASHORE_HOUSE                     (0 | (28 << 8))

@@ -43,10 +43,6 @@ PetalburgCity_EventScript_Boy1:: @ 81DC3E6
 	release
 	end
 
-PetalburgCity_EventScript_WallyAunt:: @ 81DC3FD
-	msgbox PetalburgCity_Text_WhereIsWally, MSGBOX_NPC
-	end
-
 PetalburgCity_EventScript_GymSign:: @ 81DC476
 	msgbox PetalburgCity_Text_GymSign, MSGBOX_SIGN
 	end
@@ -488,11 +484,6 @@ PetalburgCity_EventScript_Boy2:: @ 81DC82E
 	msgbox PetalburgCity_Text_AreYouRookieTrainer, MSGBOX_NPC
 	end
 
-PetalburgCity_Text_WhereIsWally: @ 81DC837
-	.string "Where has our WALLY gone?\p"
-	.string "We have to leave for VERDANTURF TOWN\n"
-	.string "very soon…$"
-
 PetalburgCity_Text_AreYouRookieTrainer: @ 81DC881
 	.string "Hiya! Are you maybe…\n"
 	.string "A rookie Trainer?\p"
@@ -531,7 +522,7 @@ PetalburgCity_Text_CitySign: @ 81DCAF1
 	.string "“Where people mingle with nature.”$"
 
 PetalburgCity_Text_WallyHouseSign: @ 81DCB23
-	.string "WALLY's HOUSE$"
+	.string "FOR SALE$"
 
 PetalburgCity_Text_AreYouATrainer: @ 81DCB31
 	.string "Excuse me!\p"

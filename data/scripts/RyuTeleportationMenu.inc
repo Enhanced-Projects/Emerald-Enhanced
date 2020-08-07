@@ -167,7 +167,7 @@ RT_Landmarks::
 	case 2, RT_LCCDEPT
 	case 3, RT_LCAH
 	case 4, RT_MCMH
-	case 5, RT_Snowshore
+	case 5, RT_SnowyShore
 	case 6, RT_BF_CB
 	case 127, RyuTeleport
 	release
@@ -255,8 +255,8 @@ RT_BF_BD::
 	release
 	end
 
-RT_Snowshore::
-	goto_if_unset FLAG_LANDMARK_SNOWSHORE, RT_NoFlag
+RT_SnowyShore::
+	goto_if_unset FLAG_LANDMARK_SNOWY_SHORE, RT_NoFlag
 	warpteleport MAP_SNOW_SHORE, 255, 24, 12
 	release
 	end

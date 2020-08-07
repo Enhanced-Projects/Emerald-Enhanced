@@ -218,7 +218,7 @@
 #define MAPSEC_ROUTE_135                    0xD6
 #define MAPSEC_UNDERWATER_135               0xD7
 #define MAPSEC_FALLARBOR_MINE               0xD8
-#define MAPSEC_SNOWSHORE                    0xD9
+#define MAPSEC_SNOWY_SHORE                    0xD9
 #define MAPSEC_CRAGGY_COAST                 0xDA
 #define MAPSEC_FROSTY_FOREST                0xDB
 #define MAPSEC_FROSTBITE_FIELD              0xDC

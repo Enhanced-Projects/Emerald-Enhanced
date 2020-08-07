@@ -1771,24 +1771,24 @@ gTilesetTiles_Snowy::
 	.incbin "data/tilesets/primary/snowy/tiles.4bpp.lz"
 
 	.align 2
-gTilesetPalettes_SnowShore::
-	.incbin "data/tilesets/secondary/snowshore/palettes/00.gbapal"
-	.incbin "data/tilesets/secondary/snowshore/palettes/01.gbapal"
-	.incbin "data/tilesets/secondary/snowshore/palettes/02.gbapal"
-	.incbin "data/tilesets/secondary/snowshore/palettes/03.gbapal"
-	.incbin "data/tilesets/secondary/snowshore/palettes/04.gbapal"
-	.incbin "data/tilesets/secondary/snowshore/palettes/05.gbapal"
-	.incbin "data/tilesets/secondary/snowshore/palettes/06.gbapal"
-	.incbin "data/tilesets/secondary/snowshore/palettes/07.gbapal"
-	.incbin "data/tilesets/secondary/snowshore/palettes/08.gbapal"
-	.incbin "data/tilesets/secondary/snowshore/palettes/09.gbapal"
-	.incbin "data/tilesets/secondary/snowshore/palettes/10.gbapal"
-	.incbin "data/tilesets/secondary/snowshore/palettes/11.gbapal"
-	.incbin "data/tilesets/secondary/snowshore/palettes/12.gbapal"
+gTilesetPalettes_SnowyShore::
+	.incbin "data/tilesets/secondary/snowyshore/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/snowyshore/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/snowyshore/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/snowyshore/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/snowyshore/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/snowyshore/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/snowyshore/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/snowyshore/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/snowyshore/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/snowyshore/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/snowyshore/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/snowyshore/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/snowyshore/palettes/12.gbapal"
 
 	.align 2
-gTilesetTiles_SnowShore::
-	.incbin "data/tilesets/secondary/snowshore/tiles.4bpp.lz"
+gTilesetTiles_SnowyShore::
+	.incbin "data/tilesets/secondary/snowyshore/tiles.4bpp.lz"
 
 	.align 2
 gTilesetPalettes_PolarPillar::
@@ -1811,21 +1811,21 @@ gTilesetTiles_PolarPillar::
 	.incbin "data/tilesets/secondary/polarpillar/tiles.4bpp.lz"
 
 	.align 2
-gTilesetPalettes_SnowshorePokemonCenter::
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/00.gbapal"
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/01.gbapal"
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/02.gbapal"
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/03.gbapal"
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/04.gbapal"
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/05.gbapal"
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/06.gbapal"
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/07.gbapal"
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/08.gbapal"
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/09.gbapal"
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/10.gbapal"
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/11.gbapal"
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/palettes/12.gbapal"
+gTilesetPalettes_SnowyShorePokemonCenter::
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/palettes/12.gbapal"
 
 	.align 2
-gTilesetTiles_SnowshorePokemonCenter::
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/tiles.4bpp.lz"
+gTilesetTiles_SnowyShorePokemonCenter::
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/tiles.4bpp.lz"

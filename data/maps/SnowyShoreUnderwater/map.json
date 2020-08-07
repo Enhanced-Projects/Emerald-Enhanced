@@ -14,14 +14,14 @@
     ],
     "coord_events": [
     ],
-    "id": "MAP_SNOWSHORE_UNDERWATER",
-    "layout": "LAYOUT_SNOWSHORE_UNDERWATER",
+    "id": "MAP_SNOWY_SHORE_UNDERWATER",
+    "layout": "LAYOUT_SNOWY_SHORE_UNDERWATER",
     "map_type": "MAP_TYPE_UNDERWATER",
     "music": "MUS_DEEPDEEP",
-    "name": "SnowshoreUnderwater",
+    "name": "SnowyShoreUnderwater",
     "object_events": [
     ],
-    "region_map_section": "MAPSEC_SNOWSHORE",
+    "region_map_section": "MAPSEC_SNOWY_SHORE",
     "requires_flash": false,
     "show_map_name": true,
     "warp_events": [

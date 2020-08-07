@@ -3,7 +3,7 @@ CraggyCoast_MapScripts::
 
 CraggyCoast_HeartScale::
 	lockall
-	goto_if_set FLAG_HIDDEN_CRAGGY_COAST_BIG_PEARL, FrostyForestEnd
+	goto_if_set FLAG_HIDDEN_CRAGGY_COAST_HEART_SCALE, FrostyForestEnd
 	giveitem ITEM_HEART_SCALE
 	setflag FLAG_HIDDEN_CRAGGY_COAST_HEART_SCALE
 	release

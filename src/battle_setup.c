@@ -590,7 +590,7 @@ u8 BattleSetup_GetTerrainId(void)
         if ((gSaveBlock1Ptr->location.mapGroup == 0) && (gSaveBlock1Ptr->location.mapNum == 20))
             return BATTLE_TERRAIN_MTFREEZE;
         else
-            return BATTLE_TERRAIN_SNOWSHORE;
+            return BATTLE_TERRAIN_SNOWY_SHORE;
     }
 
     PlayerGetDestCoords(&x, &y);

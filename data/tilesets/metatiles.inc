@@ -574,12 +574,12 @@ gMetatiles_Snowy::
 gMetatileAttributes_Snowy::
 	.incbin "data/tilesets/primary/snowy/metatile_attributes.bin"
 	.align 1
-gMetatiles_SnowShore::
-	.incbin "data/tilesets/secondary/snowshore/metatiles.bin"
+gMetatiles_SnowyShore::
+	.incbin "data/tilesets/secondary/snowyshore/metatiles.bin"
 
 	.align 1
-gMetatileAttributes_SnowShore::
-	.incbin "data/tilesets/secondary/snowshore/metatile_attributes.bin"
+gMetatileAttributes_SnowyShore::
+	.incbin "data/tilesets/secondary/snowyshore/metatile_attributes.bin"
 	.align 1
 gMetatiles_PolarPillar::
 	.incbin "data/tilesets/secondary/polarpillar/metatiles.bin"
@@ -588,9 +588,9 @@ gMetatiles_PolarPillar::
 gMetatileAttributes_PolarPillar::
 	.incbin "data/tilesets/secondary/polarpillar/metatile_attributes.bin"
 	.align 1
-gMetatiles_SnowshorePokemonCenter::
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/metatiles.bin"
+gMetatiles_SnowyShorePokemonCenter::
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/metatiles.bin"
 
 	.align 1
-gMetatileAttributes_SnowshorePokemonCenter::
-	.incbin "data/tilesets/secondary/snowshorepokemoncenter/metatile_attributes.bin"
+gMetatileAttributes_SnowyShorePokemonCenter::
+	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/metatile_attributes.bin"

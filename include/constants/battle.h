@@ -357,7 +357,7 @@
 #define BATTLE_TERRAIN_BUILDING           8
 #define BATTLE_TERRAIN_PLAIN              9
 #define BATTLE_TERRAIN_BATTLEFRONTIER     12
-#define BATTLE_TERRAIN_SNOWSHORE          11
+#define BATTLE_TERRAIN_SNOWY_SHORE          11
 #define BATTLE_TERRAIN_MTFREEZE           10
 
 // Move targets

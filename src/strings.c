@@ -1957,7 +1957,7 @@ const u8 gText_RyuTeleportMtPyreExterior[] = _(" Mt.Pyre Ext");
 const u8 gText_RyuTeleportLCCDEPT[] = _(" LC DeptStore");
 const u8 gText_RyuTeleportMCMH[] = _(" Berry Farm");
 const u8 gText_RyuTeleportLCAH[] = _(" AquaOffice");
-const u8 gText_RyuTeleportSnowshore[] = _(" Snowshore");
+const u8 gText_RyuTeleportSnowyShore[] = _(" Snowy Shore");
 
 const u8 gText_RyuTeleportBattleFrontierGate[] = _(" Front Gate");
 const u8 gText_RyuTeleportBattleFrontierTower[] = _(" Battle Tower");

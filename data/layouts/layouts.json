@@ -4763,13 +4763,13 @@
     },
     {
       "id": "LAYOUT_SNOW_SHORE",
-      "name": "SnowShore_Layout",
+      "name": "SnowyShore_Layout",
       "width": 80,
       "height": 40,
       "primary_tileset": "gTileset_Snowy",
-      "secondary_tileset": "gTileset_SnowShore",
-      "border_filepath": "data/layouts/SnowShore/border.bin",
-      "blockdata_filepath": "data/layouts/SnowShore/map.bin"
+      "secondary_tileset": "gTileset_SnowyShore",
+      "border_filepath": "data/layouts/SnowyShore/border.bin",
+      "blockdata_filepath": "data/layouts/SnowyShore/map.bin"
     },
     {
       "id": "LAYOUT_SNOW_SHORE2",
@@ -4777,7 +4777,7 @@
       "width": 40,
       "height": 40,
       "primary_tileset": "gTileset_Snowy",
-      "secondary_tileset": "gTileset_SnowShore",
+      "secondary_tileset": "gTileset_SnowyShore",
       "border_filepath": "data/layouts/MtFreeze/border.bin",
       "blockdata_filepath": "data/layouts/MtFreeze/map.bin"
     },
@@ -4787,7 +4787,7 @@
       "width": 80,
       "height": 40,
       "primary_tileset": "gTileset_Snowy",
-      "secondary_tileset": "gTileset_SnowShore",
+      "secondary_tileset": "gTileset_SnowyShore",
       "border_filepath": "data/layouts/FrostyForest/border.bin",
       "blockdata_filepath": "data/layouts/FrostyForest/map.bin"
     },
@@ -4797,7 +4797,7 @@
       "width": 40,
       "height": 80,
       "primary_tileset": "gTileset_Snowy",
-      "secondary_tileset": "gTileset_SnowShore",
+      "secondary_tileset": "gTileset_SnowyShore",
       "border_filepath": "data/layouts/CraggyCoast/border.bin",
       "blockdata_filepath": "data/layouts/CraggyCoast/map.bin"
     },
@@ -4807,19 +4807,19 @@
       "width": 40,
       "height": 80,
       "primary_tileset": "gTileset_Snowy",
-      "secondary_tileset": "gTileset_SnowShore",
+      "secondary_tileset": "gTileset_SnowyShore",
       "border_filepath": "data/layouts/FrostbiteField/border.bin",
       "blockdata_filepath": "data/layouts/FrostbiteField/map.bin"
     },
     {
-      "id": "LAYOUT_SNOWSHORE_UNDERWATER",
-      "name": "SnowshoreUnderwater_Layout",
+      "id": "LAYOUT_SNOWY_SHORE_UNDERWATER",
+      "name": "SnowyShoreUnderwater_Layout",
       "width": 80,
       "height": 42,
       "primary_tileset": "gTileset_Snowy",
       "secondary_tileset": "gTileset_Underwater",
-      "border_filepath": "data/layouts/SnowshoreUnderwater/border.bin",
-      "blockdata_filepath": "data/layouts/SnowshoreUnderwater/map.bin"
+      "border_filepath": "data/layouts/SnowyShoreUnderwater/border.bin",
+      "blockdata_filepath": "data/layouts/SnowyShoreUnderwater/map.bin"
     },
     {
       "id": "LAYOUT_FROSTY_FOREST_UNDERWATER",
@@ -4962,14 +4962,14 @@
       "blockdata_filepath": "data/layouts/LilycoveCity_Harbor_Story/map.bin"
     },
     {
-      "id": "LAYOUT_SNOWSHORE_MART",
-      "name": "Snowshore_Mart_Layout",
+      "id": "LAYOUT_SNOWY_SHORE_MART",
+      "name": "SnowyShore_Mart_Layout",
       "width": 14,
       "height": 9,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_SnowshorePokemonCenter",
-      "border_filepath": "data/layouts/Snowshore_Mart/border.bin",
-      "blockdata_filepath": "data/layouts/Snowshore_Mart/map.bin"
+      "secondary_tileset": "gTileset_SnowyShorePokemonCenter",
+      "border_filepath": "data/layouts/SnowyShore_Mart/border.bin",
+      "blockdata_filepath": "data/layouts/SnowyShore_Mart/map.bin"
     },
     {
       "id": "LAYOUT_MAGMA_HIDEOUT_ADMIN_QUARTERS",

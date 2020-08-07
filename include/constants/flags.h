@@ -141,9 +141,9 @@
 #define FLAG_RECEIVED_TM31                   0x79
 #define FLAG_RECEIVED_TM53                   0x7A
 #define FLAG_RECEIVED_TM58                   0x7B
-#define FLAG_HIDDEN_CRAGGY_COAST_HEART_SCALE 0x7C
+#define FLAG_REGISTER_RIVAL_POKENAV          0x7C
 #define FLAG_DEFEATED_RIVAL_ROUTE_104        0x7D
-#define FLAG_DEFEATED_WALLY_VICTORY_ROAD     0x7E // EE-Unused
+#define FLAG_HIDDEN_CRAGGY_COAST_HEART_SCALE 0x7E
 #define FLAG_MET_PRETTY_PETAL_SHOP_OWNER     0x7F
 #define FLAG_ENABLE_ROXANNE_FIRST_CALL       0x80 // EE-Unused
 #define FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN  0x81
@@ -848,9 +848,9 @@
 #define FLAG_HIDE_MAUVILLE_CITY_WALLY                               0x324 // EE-Unused
 #define FLAG_HIDE_MAUVILLE_CITY_WALLYS_UNCLE                        0x325 // EE-Unused
 #define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY                0x326 // EE-Unused
-#define FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND                   0x327
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND     0x328
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE         0x329
+#define FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND                   0x327 // EE-Unused
+#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND     0x328 // EE-Unused
+#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE         0x329 // EE-Unused
 #define FLAG_HIDE_SS_TIDAL_CORRIDOR_SCOTT                           0x32A
 #define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_POKEBALL_CYNDAQUIL     0x32B
 #define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_POKEBALL_TOTODILE      0x32C
@@ -1313,7 +1313,7 @@
 #define FLAG_RYU_NECROZMA                                           0x4EC // Unused Flag
 #define FLAG_RYU_TYPENULL                                           0x4ED // Unused Flag
 #define FLAG_RYU_COMPENSATION_REWARD                                0x4EE // Unused Flag
-#define FLAG_LANDMARK_SNOWSHORE                                     0x4EF // Unused Flag
+#define FLAG_LANDMARK_SNOWY_SHORE                                     0x4EF // Unused Flag
 
 #define FLAG_DEFEATED_RUSTBORO_GYM                                  0x4F0
 #define FLAG_DEFEATED_DEWFORD_GYM                                   0x4F1
@@ -1553,8 +1553,8 @@
 #define FLAG_ITEM_FROSTBITE_FIELD_PP_MAX            (SYSTEM_FLAGS + 0xAF) // Unused Flag
 #define FLAG_ITEM_FROSTBITE_FIELD_SUPER_REPEL       (SYSTEM_FLAGS + 0xB0) // Unused Flag
 #define FLAG_HIDDEN_FROSTBITE_FIELD_ICE_HEAL        (SYSTEM_FLAGS + 0xB1) // Unused Flag
-#define FLAG_HIDDEN_SNOWSHORE_BIG_PEARL             (SYSTEM_FLAGS + 0xB2) // Unused Flag
-#define FLAG_HIDDEN_SNOWSHORE_HEART_SCALE           (SYSTEM_FLAGS + 0xB3) // Unused Flag
+#define FLAG_HIDDEN_SNOWY_SHORE_BIG_PEARL             (SYSTEM_FLAGS + 0xB2) // Unused Flag
+#define FLAG_HIDDEN_SNOWY_SHORE_HEART_SCALE           (SYSTEM_FLAGS + 0xB3) // Unused Flag
 #define FLAG_HIDDEN_CRAGGY_COAST_REPEL              (SYSTEM_FLAGS + 0xB4) // Unused Flag
 #define FLAG_HIDDEN_CRAGGY_COAST_RARE_BONE          (SYSTEM_FLAGS + 0xB5) // Unused Flag
 #define FLAG_HIDDEN_CRAGGY_COAST_GREAT_BALL         (SYSTEM_FLAGS + 0xB6) // Unused Flag
@@ -1577,7 +1577,7 @@
 #define FLAG_DAILY_SECRET_BASE                      (DAILY_FLAGS_START + 0x2)
 #define FLAG_HIDE_SCME_KYOGRE                       (DAILY_FLAGS_START + 0x3)  // Unused Flag
 #define FLAG_RYU_TEMP_HIDE_FOLLOWER_COURTNEY        (DAILY_FLAGS_START + 0x4)  // hack for follower courtney quest
-#define FLAG_DAILY_SNOWSHORE_RECEIVED_BERRY         (DAILY_FLAGS_START + 0x5)  // Unused Flag
+#define FLAG_DAILY_SNOWY_SHORE_RECEIVED_BERRY         (DAILY_FLAGS_START + 0x5)  // Unused Flag
 #define FLAG_UNUSED_0x926                           (DAILY_FLAGS_START + 0x6)  // Unused Flag
 #define FLAG_UNUSED_0x927                           (DAILY_FLAGS_START + 0x7)  // Unused Flag
 #define FLAG_UNUSED_0x928                           (DAILY_FLAGS_START + 0x8)  // Unused Flag

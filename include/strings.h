@@ -3018,7 +3018,7 @@ extern const u8 gText_RyuTeleportBattleFrontier[];
 extern const u8 gText_RyuTeleportMtPyreExterior[];
 extern const u8 gText_RyuTeleportLCCDEPT[];
 extern const u8 gText_RyuTeleportMCMH[];
-extern const u8 gText_RyuTeleportSnowshore[];
+extern const u8 gText_RyuTeleportSnowyShore[];
 extern const u8 gText_RyuTeleportLCAH[];
 
 extern const u8 gText_RyuTeleportBattleFrontierGate[];

@@ -1,8 +1,8 @@
 VictoryRoad_1F_MapScripts::
-	map_script ON_FRAME, VR1_CloseMewTwoDoor
+	map_script ON_FRAME, VR1_CloseMewtwoDoor
 	.byte 0
 
-VR1_CloseMewTwoDoor::
+VR1_CloseMewtwoDoor::
 	map_script_2 VAR_TEMP_7, 0, VR1_CloseDoor
 	.2byte 0
 	
