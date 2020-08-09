@@ -3,6 +3,7 @@ Route135_ManaphyTemple_MapScripts::
 
 r135_Manaphy::
 	goto_if_set FLAG_RYU_HIDE_MANAPHY, ryu_end
+	goto_if_set FLAG_RYU_MANAPHY_RAN, ryu_end
 	msgbox OverworldLegendary_IntroManaphy
 	setvar VAR_TEMP_5, SPECIES_MANAPHY
 	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER

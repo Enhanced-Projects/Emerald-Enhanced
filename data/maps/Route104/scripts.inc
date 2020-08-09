@@ -1111,7 +1111,7 @@ Route104_Text_PrettyPetalFlowShop: @ 81EDAD6
 	.string "PRETTY PETAL FLOWER SHOP$"
 
 Route104_Text_TrainerTipsDoubleBattles: @ 81EDAEF
-	.string "Trainer TIPS\p"
+	.string "Trainer Tips\p"
 	.string "In the Hoenn region there are pairs\n"
 	.string "of Trainers who challenge others\l"
 	.string "for 2-on-2 Pokémon battles called\l"

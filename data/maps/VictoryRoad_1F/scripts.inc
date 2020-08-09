@@ -145,6 +145,7 @@ VictoryRoad_1F_Text_KatelynnPostBattle: @ 82364BB
 
 VR1_Moltres::
 	goto_if_set FLAG_RYU_MOLTRES, ryu_end
+	goto_if_set FLAG_RYU_MOLTRES_RAN, ryu_end
 	msgbox OverworldLegendary_IntroMoltres
 	setvar VAR_TEMP_5, SPECIES_MOLTRES
 	setvar VAR_TEMP_9, ITEM_CHARCOAL

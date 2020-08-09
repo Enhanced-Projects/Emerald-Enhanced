@@ -246,7 +246,7 @@ Route119_Text_WeatherInstitute: @ 81F5327
 	.string "WEATHER INSTITUTE$"
 
 Route119_Text_TrainerTipsDecoration: @ 81F5339
-	.string "Trainer TIPS\p"
+	.string "Trainer Tips\p"
 	.string "Up to sixteen decorations and\n"
 	.string "furniture items can be placed in\l"
 	.string "a SECRET BASE.\p"

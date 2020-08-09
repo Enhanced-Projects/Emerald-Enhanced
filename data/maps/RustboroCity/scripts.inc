@@ -16,9 +16,7 @@ RustboroCity_OnTransition: @ 81E06C8
 	
 RC_DevonEntranceCheck::
 	lock
-	playse SE_EXPMAX
 	goto_if_unset FLAG_RYU_PLAYER_MAGMA_MEMBER, ryu_end
-	playse SE_BIDORO
 	waitse
 	msgbox RC_DontWantTo
 	closemessage

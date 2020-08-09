@@ -385,6 +385,7 @@ NM_Warp2::
 
 NewMauville_Zapdos::
 	goto_if_set FLAG_RYU_ZAPDOS, ryu_end
+	goto_if_set FLAG_RYU_ZAPDOS_RAN, ryu_end
 	msgbox OverworldLegendary_IntroZapdos
 	setvar VAR_TEMP_5, SPECIES_ZAPDOS
 	setvar VAR_TEMP_9, ITEM_SHARP_BEAK

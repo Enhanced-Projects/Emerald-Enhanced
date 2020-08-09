@@ -8,6 +8,7 @@ AlteringCave_OnTransition: @ 823B17D
 
 AS_RegigigasEncounter::
 	goto_if_set FLAG_RYU_REGIGIGAS, ryu_end
+	goto_if_set FLAG_RYU_REGIGIGAS_RAN, ryu_end
 	msgbox OverworldLegendary_IntroRegigigas
 	setvar VAR_TEMP_5, SPECIES_REGIGIGAS
 	setvar VAR_TEMP_9, ITEM_EVERSTONE

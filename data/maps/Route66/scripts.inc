@@ -3,6 +3,7 @@ Route66_MapScripts::
 
 r66_Celebi::
 	goto_if_set FLAG_RYU_CELEBI, ryu_end
+	goto_if_set FLAG_RYU_CELEBI_RAN, ryu_end
 	msgbox OverworldLegendary_IntroCelebi
 	setvar VAR_TEMP_5, SPECIES_CELEBI
 	setvar VAR_TEMP_9, ITEM_BIG_ROOT
