@@ -89,7 +89,7 @@ DC_QuestCheck2::
 	compare VAR_RESULT, 1
 	goto_if_eq DC_BeginQuest
 	msgbox DC_NoQuest MSGBOX_DEFAULT
-	specialvar VAR_RESULT, GetPlayerFacingDirecton
+	specialvar VAR_RESULT, GetPlayerFacingDirection
 	switch VAR_RESULT
 	case DIR_WEST, DC_MovePlayer1@right 1 up 1 warp
 	case DIR_SOUTH, DC_MovePlayer2@Up 2

@@ -6231,7 +6231,12 @@ u16 GetBattleBGM(void)
     else if (FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == 1)
         return sBattleThemes[(Random() % 9)];
     else if (FlagGet(FLAG_RYU_PLAYER_MAGMA_MEMBER) == 1)
-        return MUS_BATTLE31;
+    {
+        if (FlagGet(FLAG_RYU_MAGMA_LINE_DONE) == 1)
+            return MUS_BATTLE30;
+        else
+            return MUS_BATTLE31;
+    }
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
         u8 trainerClass;
