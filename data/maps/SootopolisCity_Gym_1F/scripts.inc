@@ -587,10 +587,10 @@ SootopolisCity_Gym_1F_Text_GoGetFortreeBadge: @ 8225865
 	.string "badge from the Gym in FORTREE.$"
 
 SootopolisCity_Gym_1F_Text_GymStatue: @ 82258FA
-	.string "SOOTOPOLIS CITY Pokémon Gym$"
+	.string "Sootopolis City Pokémon Gym$"
 
 SootopolisCity_Gym_1F_Text_GymStatueCertified: @ 8225916
-	.string "SOOTOPOLIS CITY Pokémon Gym\p"
+	.string "Sootopolis City Pokémon Gym\p"
 	.string "Juan's Certified Trainers:\n"
 	.string "{PLAYER}$"
 

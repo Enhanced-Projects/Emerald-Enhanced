@@ -200,7 +200,7 @@ Route117_Text_AirIsTastyHere: @ 81F3D41
 
 Route117_Text_RouteSignVerdanturf: @ 81F3D58
 	.string "ROUTE 117\n"
-	.string "{LEFT_ARROW} VERDANTURF TOWN$"
+	.string "{LEFT_ARROW}Verdanturf Town$"
 
 Route117_Text_RouteSignMauville: @ 81F3D74
 	.string "ROUTE 117\n"

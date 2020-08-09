@@ -188,14 +188,14 @@ MossdeepCity_StevensHouse_EventScript_DiveItemBall:: @ 8222926
 	end
 
 MossdeepCity_StevensHouse_Text_YouveEarnedHMDive: @ 8222936
-	.string "STEVEN: {PLAYER}…\p"
+	.string "Steven: {PLAYER}…\p"
 	.string "As you can see, there's not much here,\n"
 	.string "but this is my home.\p"
 	.string "Thank you for all that you've done.\p"
 	.string "This is my token of appreciation.\n"
-	.string "It's the HIDDEN MACHINE DIVE.\p"
+	.string "It's the TM for Dive.\p"
 	.string "No need to be shy--you've earned\n"
-	.string "this HM.$"
+	.string "this item.$"
 
 MossdeepCity_StevensHouse_Text_ExplainDive: @ 8222A0E
 	.string "Steven: Dive is a strong Water-\n"
@@ -203,27 +203,27 @@ MossdeepCity_StevensHouse_Text_ExplainDive: @ 8222A0E
 	.string "swimming strength to attack.$"
 
 MossdeepCity_StevensHouse_Text_UnderwateCavernBetweenMossdeepSootopolis: @ 8222B11
-	.string "STEVEN: Apparently, there's an\n"
+	.string "Steven: Apparently, there's an\n"
 	.string "underwater cavern between\l"
-	.string "MOSSDEEP and SOOTOPOLIS.\p"
+	.string "Mossdeep and Sootopolis.\p"
 	.string "You know, the one that CAPT. STERN\n"
 	.string "found in his submarine.$"
 
 MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum: @ 8222B9E
-	.string "{PLAYER} checked the POKé BALL.\p"
+	.string "{PLAYER} checked the Poké ball.\p"
 	.string "It contained the Pokémon\n"
-	.string "BELDUM.\p"
-	.string "Take the POKé BALL?$"
+	.string "Beldum.\p"
+	.string "Take the Poké ball?$"
 
 MossdeepCity_StevensHouse_Text_ObtainedBeldum: @ 8222BED
-	.string "{PLAYER} obtained a BELDUM.$"
+	.string "{PLAYER} obtained a Beldum.$"
 
 @ Unused
 MossdeepCity_StevensHouse_Text_NoSpaceForAnotherMon: @ 8222C03
 	.string "There is no space for another Pokémon.$"
 
 MossdeepCity_StevensHouse_Text_LeftPokeBallWhereItWas: @ 8222C2A
-	.string "{PLAYER} left the POKé BALL where\n"
+	.string "{PLAYER} left the Poké ball where\n"
 	.string "it was.$"
 
 MossdeepCity_StevensHouse_Text_LetterFromSteven: @ 8222C4E

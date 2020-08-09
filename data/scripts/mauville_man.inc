@@ -337,12 +337,12 @@ MauvilleCity_PokemonCenter_1F_Text_BerriesPlantedTitle:: @ 828EA7D
     .string "The BERRY-Planting TRAINER$"
 
 MauvilleCity_PokemonCenter_1F_Text_BerriesPlantedAction:: @ 828EA98
-	.string "Planted BERRIES$"
+	.string "Plantedberries$"
 
 MauvilleCity_PokemonCenter_1F_Text_BerriesPlantedStory:: @ 828EAA8
 	.string "This is a tale of a TRAINER\n"
 	.string "named {STR_VAR_3}.\p"
-	.string "This TRAINER planted BERRIES\n"
+	.string "This TRAINER plantedberries\n"
 	.string "{STR_VAR_1} times!\p"
 	.string "{STR_VAR_3} is a legendary lover of\n"
 	.string "BERRIES!$"
@@ -448,15 +448,15 @@ MauvilleCity_PokemonCenter_1F_Text_UsedPokemonCenterTitle:: @ 828EF73
 	.string "The Pokémon CENTER-Loving TRAINER$"
 
 MauvilleCity_PokemonCenter_1F_Text_UsedPokemonCenterAction:: @ 828EF95
-	.string "Used Pokémon CENTERS$"
+	.string "Used PokémonCenters$"
 
 MauvilleCity_PokemonCenter_1F_Text_UsedPokemonCenterStory:: @ 828EFAA
 	.string "This is a tale of a TRAINER\n"
 	.string "named {STR_VAR_3}.\p"
 	.string "This TRAINER healed Pokémon\n"
-	.string "{STR_VAR_1} times at Pokémon CENTERS!\p"
+	.string "{STR_VAR_1} times at PokémonCenters!\p"
 	.string "There could be no greater lover of\n"
-	.string "Pokémon CENTERS than {STR_VAR_3}!$"
+	.string "PokémonCenters than {STR_VAR_3}!$"
 
 MauvilleCity_PokemonCenter_1F_Text_RestedAtHomeTitle:: @ 828F045
 	.string "The Homebody TRAINER$"

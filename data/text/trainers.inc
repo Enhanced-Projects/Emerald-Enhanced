@@ -1495,7 +1495,7 @@ Route111_Text_HaydenDefeat: @ 82996BE
 
 Route111_Text_HaydenPostBattle: @ 82996C5
 	.string "My stomach is grumbling!\n"
-	.string "Maybe I can grill some BERRIES…$"
+	.string "Maybe I can grill someberries…$"
 
 Route111_Text_BiancaIntro: @ 82996FE
 	.string "Did you come from MAUVILLE?\n"
@@ -3812,7 +3812,7 @@ Route125_Text_TanyaDefeat: @ 82A164D
 
 Route125_Text_TanyaPostBattle: @ 82A165E
 	.string "Whew…\n"
-	.string "Which way is it to MOSSDEEP CITY?$"
+	.string "Which way is it to Mossdeep City?$"
 
 Route125_Text_SharonIntro: @ 82A1686
 	.string "How would you like to take on the\n"
@@ -3934,7 +3934,7 @@ Route126_Text_BarryPostBattle: @ 82A1CDD
 
 Route126_Text_DeanIntro: @ 82A1D2A
 	.string "This towering white mountain of rock\n"
-	.string "is SOOTOPOLIS CITY.$"
+	.string "is Sootopolis City.$"
 
 Route126_Text_DeanDefeat: @ 82A1D63
 	.string "I was done in?$"

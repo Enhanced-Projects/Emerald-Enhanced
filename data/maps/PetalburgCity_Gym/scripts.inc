@@ -931,9 +931,9 @@ PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon: @ 82057A2
 PetalburgCity_Gym_Text_WallyThankYouAndDadGivesPokeBall: @ 8205A89
 	.string "WALLY: Oh, wow!\n"
 	.string "A Pokémon!\p"
-	.string "DAD: Hm. I'll give you a POKé BALL, too.\n"
+	.string "DAD: Hm. I'll give you a Poké ball, too.\n"
 	.string "Go for it!\p"
-	.string "WALLY received a POKé BALL!$"
+	.string "WALLY received a Poké ball!$"
 
 PetalburgCity_Gym_Text_WallyOhWowThankYou: @ 8205AF4
 	.string "WALLY: Oh, wow!\n"
@@ -963,7 +963,7 @@ PetalburgCity_Gym_Text_DadGoCollectBadges: @ 8205C40
 	.string "DAD: Now…\p"
 	.string "{PLAYER}, if you want to become a\n"
 	.string "strong Trainer, here's my advice.\p"
-	.string "Head for RUSTBORO CITY beyond this\n"
+	.string "Head forRustboro City beyond this\n"
 	.string "town.\p"
 	.string "There, you should challenge\n"
 	.string "the Gym Leader, Roxanne.\p"
@@ -978,7 +978,7 @@ PetalburgCity_Gym_Text_DadGoCollectBadges: @ 8205C40
 
 PetalburgCity_Gym_Text_NormanGoToRustboro: @ 8205DB4
 	.string "DAD: Hm? Aren't you going to the\n"
-	.string "Pokémon Gym in RUSTBORO CITY?\p"
+	.string "Pokémon Gym inRustboro City?\p"
 	.string "There's no challenge for me to\n"
 	.string "battle a greenhorn Trainer.\p"
 	.string "{PLAYER}, I want you to challenge me\n"
@@ -988,7 +988,7 @@ PetalburgCity_Gym_Text_NormanGoToRustboro: @ 8205DB4
 
 PetalburgCity_Gym_Text_NormanGoToDewford: @ 8205EAE
 	.string "DAD: I see… So, you've beaten\n"
-	.string "the Gym Leader in RUSTBORO CITY.\p"
+	.string "the Gym Leader inRustboro City.\p"
 	.string "But there are many more Trainers\n"
 	.string "who are stronger than you, {PLAYER}.\p"
 	.string "Across the sea in DEWFORD TOWN is a\n"

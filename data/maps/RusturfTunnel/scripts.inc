@@ -440,14 +440,14 @@ RusturfTunnel_Text_WhyCantTheyKeepDigging: @ 822D510
 	.string "Is the bedrock too hard?\p"
 	.string "My beloved awaits me in VERDANTURF\n"
 	.string "TOWN just beyond here…\p"
-	.string "If RUSTBORO and VERDANTURF were\n"
+	.string "IfRustboro andVerdanturf were\n"
 	.string "joined by this tunnel, I could visit\l"
 	.string "her every day…\p"
 	.string "But this…\n"
 	.string "What am I to do?$"
 
 RusturfTunnel_Text_ToGetToVerdanturf: @ 822D5F3
-	.string "To get from RUSTBORO to VERDANTURF,\n"
+	.string "To get fromRustboro to VERDANTURF,\n"
 	.string "you need to go to DEWFORD, then pass\l"
 	.string "through SLATEPORT and MAUVILLE…$"
 
