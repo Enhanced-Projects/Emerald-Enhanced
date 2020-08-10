@@ -149,10 +149,10 @@ MC_PlayerHelpedAqua:
 	.string "Oh well, it doesn't matter. What does\n"
 	.string "matter is that we're done here. Report\p"
 	.string "back to Shelly. I'm very impressed with\n"
-	.string "your work for us so far. I now oficially\p"
+	.string "your work for us so far. I now officially\p"
 	.string "promote you to Lieutenant. You'll\n"
-	.string "be working alongside Shelly as an\p"
-	.string "equal now. Congratulations.$"
+	.string "be working directly for Shelly.\p"
+	.string "Congratulations.$"
 	
 MC_FoundStone::
 	goto_if_set FLAG_RYU_PLAYER_ARCHIE_ACQ, ryu_end

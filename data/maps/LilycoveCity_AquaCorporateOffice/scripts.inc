@@ -457,7 +457,8 @@ LC_AH_Shelly_mission2msg:
 
 LC_AH_Mcomplete2:
 	.string "Hello, Lt. {PLAYER}. Welcome back.\n"
-	.string "It appears we're equals now. $"
+	.string "It appears you've gained some\l"
+	.string "favor with Archie.$"
 	
 LC_AH_m2Reward:
 	.string "Here's the payout for the last mission.\p"
