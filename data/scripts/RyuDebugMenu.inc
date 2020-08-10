@@ -188,6 +188,18 @@ RDB_TempVarsViewMsg:
 RyuDebug_Utility1::
 	buffernumberstring 0, VAR_RYU_MAGMA
 	msgbox RDB_TempVarsViewMsg
+	closemessage
+	msgbox RDB_SwapGenderQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq RDB_SwapPlayerGender
+	release
+	end
+
+RDB_SwapGenderQuery:
+	.string "Change Gender?$"
+
+RDB_SwapPlayerGender::
+	special SwapPlayerGender
 	release
 	end
 
