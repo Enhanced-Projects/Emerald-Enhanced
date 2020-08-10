@@ -1809,30 +1809,35 @@ static void sub_8038538(struct Sprite *sprite)
 
 
 
-static inline u32 RyuChooseTrainerLevel(u32 badges, bool32 maxScale, bool32 alternateScale)
+int RyuChooseTrainerLevel(void)
 {
-    if (maxScale)
+    u8 badge = (CountBadges());
+    u8 level = (Random() % (sRange[badge][1] - sRange[badge][0])) + sRange[badge][0];
+    u8 gymlevel = (Random() % ((sGymRange[badge][1] - sGymRange[badge][0])) + sGymRange[badge][0]);
+    //sRange is the array declared above, [badge] is the index, [0] and [1] are the first and second values of the index listed.
+    //To get a range of random values, do (array[index][second value] minus array[index][first value]) plus array[index][first value]
+    if (FlagGet(FLAG_RYU_MAX_SCALE) == 1)
         return 125;
     
-    //sRange is the array declared above, [badges] is the index, [0] and [1] are the first and second values of the index listed.
-    //To get a range of random values, do (array[index][second value] minus array[index][first value]) plus array[index][first value]
-    
-    if (alternateScale)
-        return (Random() % ((sGymRange[badges][1] - sGymRange[badges][0])) + sGymRange[badges][0]);
+    if (FlagGet(FLAG_RYU_ALTERNATE_SCALE) == 1)
+    {
+        return gymlevel;
+    }
     else
-        return (Random() % (sRange[badges][1] - sRange[badges][0])) + sRange[badges][0];
+    {
+        return level;
+    }
 }
-
 
 
 
 static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
 {
-    u32 nameHash = 0, trainerNameHash = 0;
-    u32 personalityValue, personalityAdd;
-    u32 fixedIV, monsCount, badges = 0;
+    u32 nameHash = 0;
+    u32 personalityValue;
+    u8 fixedIV;
     s32 i, j;
-	bool32 maxScale = FALSE, alternateScale = FALSE, noScale;
+    u8 monsCount;
 
     if (trainerNum == TRAINER_SECRET_BASE)
         return 0;
@@ -1857,27 +1862,20 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         {
             monsCount = gTrainers[trainerNum].partySize;
         }
-		
-		if (gTrainers[trainerNum].doubleBattle == TRUE)
-			personalityAdd = 0x80;
-		else if (gTrainers[trainerNum].encounterMusic_gender & 0x80)
-			personalityAdd = 0x78;
-		else
-			personalityAdd = 0x88;
-		
-		for (j = 0; gTrainers[trainerNum].trainerName[j] != EOS; j++)
-			trainerNameHash += gTrainers[trainerNum].trainerName[j];
 
-		if (!(noScale = FlagGet(FLAG_RYU_DO_NOT_AUTOSCALE)))
-		{
-			badges = CountBadges();
-			maxScale = FlagGet(FLAG_RYU_MAX_SCALE);
-			alternateScale = FlagGet(FLAG_RYU_ALTERNATE_SCALE);
-		}
-		
         for (i = 0; i < monsCount; i++)
         {
-			nameHash += trainerNameHash;
+
+            if (gTrainers[trainerNum].doubleBattle == TRUE)
+                personalityValue = 0x80;
+            else if (gTrainers[trainerNum].encounterMusic_gender & 0x80)
+                personalityValue = 0x78;
+            else
+                personalityValue = 0x88;
+
+            for (j = 0; gTrainers[trainerNum].trainerName[j] != EOS; j++)
+                nameHash += gTrainers[trainerNum].trainerName[j];
+
             switch (gTrainers[trainerNum].partyFlags)
             {
             case 0:
@@ -1886,21 +1884,24 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
                 {
-                    u32 em1 = (Random() % 902) + 1;
-                    u32 pm1 = (Random() % 902) + 1;
-                    CreateMon(&gEnemyParty[i], em1, 100, 31, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
-                    CreateMon(&gPlayerParty[i], pm1, 100, 31, FALSE, 0, OT_ID_PLAYER_ID, 0);
+                    u16 em1 = (Random() % 902);
+                    u16 pm1 = (Random() % 902);
+                    u8 level = 100;
+                    em1++;
+                    pm1++;
+                    CreateMon(&gEnemyParty[i], em1, level, 31, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
+                    CreateMon(&gPlayerParty[i], pm1, level, 31, FALSE, 0, OT_ID_PLAYER_ID, 0);
                     break;
                 }
 
                 for (j = 0; gSpeciesNames[partyData[i].species][j] != EOS; j++)
                     nameHash += gSpeciesNames[partyData[i].species][j];
 
-                personalityValue = personalityAdd + (nameHash << 8);
+                personalityValue += nameHash << 8;
                 fixedIV = partyData[i].iv * 31 / 255;
-                if (!noScale)
+                if (FlagGet(FLAG_RYU_DO_NOT_AUTOSCALE) == 0)
                 {
-                    CreateMon(&party[i], partyData[i].species, (RyuChooseTrainerLevel(badges, maxScale, alternateScale)), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                    CreateMon(&party[i], partyData[i].species, (RyuChooseTrainerLevel()), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 }
                 else
                 {
@@ -1915,11 +1916,11 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 for (j = 0; gSpeciesNames[partyData[i].species][j] != EOS; j++)
                     nameHash += gSpeciesNames[partyData[i].species][j];
 
-                personalityValue = personalityAdd + (nameHash << 8);
+                personalityValue += nameHash << 8;
                 fixedIV = partyData[i].iv * 31 / 255;
-                if (!noScale)
+                if (FlagGet(FLAG_RYU_DO_NOT_AUTOSCALE) == 0)
                 {
-                    CreateMon(&party[i], partyData[i].species, (RyuChooseTrainerLevel(badges, maxScale, alternateScale)), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                    CreateMon(&party[i], partyData[i].species, (RyuChooseTrainerLevel()), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 }
                 else
                 {
@@ -1943,11 +1944,11 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 for (j = 0; gSpeciesNames[partyData[i].species][j] != EOS; j++)
                     nameHash += gSpeciesNames[partyData[i].species][j];
 
-                personalityValue = personalityAdd + (nameHash << 8);
+                personalityValue += nameHash << 8;
                 fixedIV = partyData[i].iv * 31 / 255;
-                if (!noScale)
+                if (FlagGet(FLAG_RYU_DO_NOT_AUTOSCALE) == 0)
                 {
-                    CreateMon(&party[i], partyData[i].species, (RyuChooseTrainerLevel(badges, maxScale, alternateScale)), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                    CreateMon(&party[i], partyData[i].species, (RyuChooseTrainerLevel()), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 }
                 else
                 {
@@ -1967,11 +1968,11 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     nameHash += gSpeciesNames[partyData[i].species][j];
 
 
-                personalityValue = personalityAdd + (nameHash << 8);
+                personalityValue += nameHash << 8;
                 fixedIV = partyData[i].iv * 31 / 255;
-                if (!noScale)
+                if (FlagGet(FLAG_RYU_DO_NOT_AUTOSCALE) == 0)
                 {
-                    CreateMon(&party[i], partyData[i].species, (RyuChooseTrainerLevel(badges, maxScale, alternateScale)), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                    CreateMon(&party[i], partyData[i].species, (RyuChooseTrainerLevel()), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 }
                 else
                 {
