@@ -699,7 +699,9 @@ LC_AH_Shelly_Afterstory:
 	end
 
 LC_AH_ShellySetUpFollower::
-	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollowerSelectNPCScript, 1
+	setflag FLAG_HIDE_AQUAHQ_SHELLY
+	removeobject 1
+	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_NORTH
 	release
 	end
 	
@@ -944,11 +946,10 @@ LC_AH_QuartersScene:
 	.string "opportunities. Ever since you\n"
 	.string "started coming around, I've been\p"
 	.string "in a better mood than I've ever\n"
-	.string "been. You didn't just save the\p"
-	.string "lives of countless innocents.\n"
-	.string " I love you so much,\n"
-	.string "{PLAYER}. I'm so glad we're\l"
-	.string "together.$"
+	.string "been. You didn't just save the\l"
+	.string "lives of countless innocents.\p"
+	.string "I love you so much, {PLAYER}. \n"
+	.string "I'm so glad we're together.$"
 
 LC_AH_QuartersScene2:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Speaking of which...\p"

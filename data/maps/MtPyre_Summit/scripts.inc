@@ -875,6 +875,7 @@ MP_AltArchieFight::
 	clearflag FLAG_RYU_STARTING_M4
 	setvar VAR_TEMP_0, 69
 	setvar VAR_MT_PYRE_STATE, 4
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	release
 	end
 	

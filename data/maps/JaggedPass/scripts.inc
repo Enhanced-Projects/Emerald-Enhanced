@@ -43,7 +43,7 @@ JaggedPass_EventScript_ConcealHideoutEntrance:: @ 82306A8
 
 JaggedPass_EventScript_OpenMagmaHideout:: @ 82306BB
 	compare VAR_RYU_MAGMA, 300
-	goto_if_lt ryu_end
+	call_if_lt JP_CheckifAquaMission3
 	lockall
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
@@ -68,6 +68,10 @@ JaggedPass_EventScript_OpenMagmaHideout:: @ 82306BB
 	waitse
 	releaseall
 	end
+
+JP_CheckifAquaMission3::
+	goto_if_unset FLAG_RYU_STARTING_M3, ryu_end
+	return
 
 JaggedPass_EventScript_MagmaHideoutGuard:: @ 8230718
 	lockall
