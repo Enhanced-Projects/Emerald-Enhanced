@@ -183,19 +183,11 @@
     },
     {
       "type": "sign",
-      "x": 10,
-      "y": 31,
+      "x": 8,
+      "y": 33,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MiningRock5"
-    },
-    {
-      "type": "sign",
-      "x": 4,
-      "y": 31,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "MiningRock4"
     },
     {
       "type": "sign",
@@ -212,6 +204,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MiningRock2"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 33,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock4"
     }
   ]
 }

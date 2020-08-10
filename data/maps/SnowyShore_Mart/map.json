@@ -85,14 +85,14 @@
       "x": 6,
       "y": 8,
       "elevation": 3,
-      "dest_map": "MAP_SNOW_SHORE",
+      "dest_map": "MAP_SNOWY_SHORE",
       "dest_warp_id": 0
     },
     {
       "x": 7,
       "y": 8,
       "elevation": 3,
-      "dest_map": "MAP_SNOW_SHORE",
+      "dest_map": "MAP_SNOWY_SHORE",
       "dest_warp_id": 0
     }
   ],

@@ -8,7 +8,7 @@
     "connections": [
         {
             "direction": "emerge",
-            "map": "MAP_SNOW_SHORE",
+            "map": "MAP_SNOWY_SHORE",
             "offset": 0
         }
     ],

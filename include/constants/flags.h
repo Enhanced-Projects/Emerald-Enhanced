@@ -845,12 +845,12 @@
 #define FLAG_HIDE_HO_OH                                             0x321
 #define FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER                    0x322
 #define FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER                   0x323
-#define FLAG_HIDE_MAUVILLE_CITY_WALLY                               0x324 // EE-Unused
-#define FLAG_HIDE_MAUVILLE_CITY_WALLYS_UNCLE                        0x325 // EE-Unused
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY                0x326 // EE-Unused
-#define FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND                   0x327 // EE-Unused
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND     0x328 // EE-Unused
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE         0x329 // EE-Unused
+#define FLAG_ITEM_MT_FREEZE_CHILL_BALL                              0x324
+#define FLAG_ITEM_MT_FREEZE_B1F_CALCIUM                             0x325
+#define FLAG_ITEM_MT_FREEZE_B1F_PROTEIN                             0x326
+#define FLAG_ITEM_MT_FREEZE_B1F_SUN_STONE                           0x327
+#define FLAG_ITEM_MT_FREEZE_B1F_FIRE_STONE                          0x328
+#define FLAG_ITEM_MT_FREEZE_B1F_FLAME_ORB                           0x329
 #define FLAG_HIDE_SS_TIDAL_CORRIDOR_SCOTT                           0x32A
 #define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_POKEBALL_CYNDAQUIL     0x32B
 #define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_POKEBALL_TOTODILE      0x32C
@@ -935,7 +935,7 @@
 #define FLAG_HIDE_ROUTE_116_MR_BRINEY                               0x37B // EE-Unused?
 #define FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS                      0x37C
 #define FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS                      0x37D
-#define FLAG_HIDE_ROUTE_116_WANDAS_BOYFRIEND                        0x37E
+#define FLAG_HIDE_ROUTE_116_WANDAS_BOYFRIEND                        0x37E // EE-Unused
 #define FLAG_HIDE_LILYCOVE_CONTEST_HALL_CONTEST_ATTENDANT_2         0x37F
 #define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_UNKNOWN_0x380          0x380
 #define FLAG_HIDE_ROUTE_101_BIRCH                                   0x381
@@ -1024,8 +1024,8 @@
 #define FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE      0x3D4 // EE-Unused?
 #define FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_VISIBLE                  0x3D5
 #define FLAG_HIDE_ROUTE_120_KECLEON_1                               0x3D6
-#define FLAG_HIDE_RUSTURF_TUNNEL_WANDA                              0x3D7
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA                0x3D8
+#define FLAG_HIDE_RUSTURF_TUNNEL_WANDA                              0x3D7 // EE-Unused
+#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA                0x3D8 // EE-Unused
 #define FLAG_HIDE_ROUTE_120_KECLEON_2                               0x3D9
 #define FLAG_HIDE_ROUTE_120_KECLEON_3                               0x3DA
 #define FLAG_HIDE_ROUTE_120_KECLEON_4                               0x3DB
@@ -1226,7 +1226,7 @@
 #define FLAG_RYU_PASSCODE_KOUTA                                     0x495 // Unused Flag
 #define FLAG_RYU_PASSCODE_GCMS_GIFT                                 0x496 // Unused Flag
 #define FLAG_RYU_DEV_DISENC                                         0x497 // Unused Flag
-#define FLAG_RYU_LANDMARK_MH                                    0x498 // Unused Flag
+#define FLAG_RYU_LANDMARK_MH                                        0x498 // Unused Flag
 #define FLAG_RYU_LANDMARK_LCCDEPTSTORE                              0x499 // Unused Flag
 #define FLAG_RYU_SKIPDIFFICULTYCHECK                                0x49A // Unused Flag
 #define FLAG_RYU_HAS_IMPRINTER                                      0x49B // Unused Flag
@@ -1313,7 +1313,7 @@
 #define FLAG_RYU_NECROZMA                                           0x4EC // Unused Flag
 #define FLAG_RYU_TYPENULL                                           0x4ED // Unused Flag
 #define FLAG_RYU_COMPENSATION_REWARD                                0x4EE // Unused Flag
-#define FLAG_LANDMARK_SNOWY_SHORE                                     0x4EF // Unused Flag
+#define FLAG_LANDMARK_SNOWY_SHORE                                   0x4EF // Unused Flag
 
 #define FLAG_DEFEATED_RUSTBORO_GYM                                  0x4F0
 #define FLAG_DEFEATED_DEWFORD_GYM                                   0x4F1
@@ -1397,8 +1397,8 @@
 #define FLAG_SYS_USE_FLASH                          (SYSTEM_FLAGS + 0x28) // EE-Unused
 #define FLAG_SYS_USE_STRENGTH                       (SYSTEM_FLAGS + 0x29)
 #define FLAG_SYS_WEATHER_CTRL                       (SYSTEM_FLAGS + 0x2A)
-#define FLAG_SYS_CYCLING_ROAD                       (SYSTEM_FLAGS + 0x2B) // EE-Unused
-#define FLAG_SYS_SAFARI_MODE                        (SYSTEM_FLAGS + 0x2C) // EE-Unused
+#define FLAG_RYU_HEATRAN                            (SYSTEM_FLAGS + 0x2B)
+#define FLAG_RYU_HEATRAN_RAN                        (SYSTEM_FLAGS + 0x2C)
 #define FLAG_SYS_CRUISE_MODE                        (SYSTEM_FLAGS + 0x2D)
 
 #define FLAG_RYU_MAGMA_4_NOTIFY                     (SYSTEM_FLAGS + 0x2E) // Unused Flag

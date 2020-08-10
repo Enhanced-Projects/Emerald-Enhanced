@@ -19,14 +19,14 @@
       "map": "MAP_FROSTY_FOREST"
     },
     {
-      "direction": "down",
-      "offset": -40,
-      "map": "MAP_SNOW_SHORE"
-    },
-    {
       "direction": "left",
       "offset": 40,
       "map": "MAP_MT_FREEZE"
+    },
+    {
+      "direction": "down",
+      "offset": -40,
+      "map": "MAP_SNOWY_SHORE"
     }
   ],
   "object_events": [

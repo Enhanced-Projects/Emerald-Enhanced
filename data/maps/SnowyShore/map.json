@@ -1,5 +1,5 @@
 {
-  "id": "MAP_SNOW_SHORE",
+  "id": "MAP_SNOWY_SHORE",
   "name": "SnowyShore",
   "layout": "LAYOUT_SNOW_SHORE",
   "music": "MUS_DAN02",
@@ -37,6 +37,21 @@
       "direction": "left",
       "offset": -40,
       "map": "MAP_CRAGGY_COAST"
+    },
+    {
+      "direction": "up",
+      "offset": 0,
+      "map": "MAP_MT_FREEZE"
+    },
+    {
+      "direction": "left",
+      "offset": -40,
+      "map": "MAP_CRAGGY_COAST"
+    },
+    {
+      "direction": "up",
+      "offset": 40,
+      "map": "MAP_FROSTBITE_FIELD"
     }
   ],
   "object_events": [

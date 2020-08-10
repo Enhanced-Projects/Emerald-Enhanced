@@ -18,7 +18,7 @@
 #define MAP_FALLARBOR_TOWN               (13 | (0 << 8))
 #define MAP_VERDANTURF_TOWN              (14 | (0 << 8))
 #define MAP_PACIFIDLOG_TOWN              (15 | (0 << 8))
-#define MAP_SNOW_SHORE                   (16 | (0 << 8))
+#define MAP_SNOWY_SHORE                  (16 | (0 << 8))
 #define MAP_CRAGGY_COAST                 (17 | (0 << 8))
 #define MAP_FROSTY_FOREST                (18 | (0 << 8))
 #define MAP_FROSTBITE_FIELD              (19 | (0 << 8))
@@ -73,6 +73,7 @@
 #define MAP_CRAGGY_COAST_UNDERWATER2     (68 | (0 << 8))
 #define MAP_CRAGGY_COAST_UNDERWATER_CAVE (69 | (0 << 8))
 #define MAP_FROSTY_FOREST_UNDERWATER     (70 | (0 << 8))
+#define MAP_FROSTY_FOREST_UNDERWATER2    (71 | (0 << 8))
 
 // Map Group 1
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))
@@ -611,6 +612,7 @@
 #define MAP_IGLOO3           (3 | (27 << 8))
 #define MAP_IGLOO4           (4 | (27 << 8))
 #define MAP_SNOWY_SHORE_MART (5 | (27 << 8))
+#define MAP_MT_FREEZE_B1F    (6 | (27 << 8))
 
 // Map Group 28
 #define MAP_ROUTE109_SEASHORE_HOUSE                     (0 | (28 << 8))

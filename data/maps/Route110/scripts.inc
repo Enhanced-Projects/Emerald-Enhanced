@@ -1,13 +1,8 @@
 Route110_MapScripts:: @ 81EF269
-	map_script ON_RESUME, Route110_OnResume
 	map_script ON_TRANSITION, Route110_OnTransition
 	map_script ON_FRAME, Route110_OnFrame
 	.byte 0
 
-Route110_OnResume: @ 81EF279
-	special UpdateCyclingRoadState
-	end
-	
 R110_LanaSetup::
 	lock
 	clearflag FLAG_HIDE_TRICK_HOUSE_LANA
@@ -19,16 +14,9 @@ R110_LanaSetup::
 Route110_OnTransition: @ 81EF27D
 	call Common_EventScript_SetupRivalGfxId
 	call Common_EventScript_SetupRivalOnBikeGfxId
-	compare VAR_CYCLING_CHALLENGE_STATE, 1
-	call_if_eq Route110_EventScript_SaveCyclingMusic
 	end
 
-Route110_EventScript_SaveCyclingMusic:: @ 81EF293
-	savebgm MUS_CYCLING
-	return
-
 Route110_OnFrame: @ 81EF297
-	map_script_2 VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_BeginCylcingRoadChallenge
 	map_script_2 VAR_RYU_DS_LANA_STAGE, 95, R110_LeafEventKickstart
 	.2byte 0
 	
@@ -118,11 +106,6 @@ r110_LeafSceneEndText3:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Nah, I think we got the better\ndeal. C'mon, let's go!$"
 
 @==================================================================================================
-
-Route110_EventScript_BeginCylcingRoadChallenge:: @ 81EF2A1
-	special Special_BeginCyclingRoadChallenge
-	setvar VAR_CYCLING_CHALLENGE_STATE, 2
-	return
 
 Route110_EventScript_AquaGrunt1:: @ 81EF2AA
 	lock
@@ -222,42 +205,6 @@ Route110_EventScript_TrainerTipsRegisterItems:: @ 81EF380
 
 Route110_EventScript_TrickHouseSign:: @ 81EF389
 	msgbox Route110_Text_TrickHouseSign, MSGBOX_SIGN
-	end
-
-Route110_EventScript_CyclingRoadResultsSign:: @ 81EF392
-	lockall
-	specialvar VAR_RESULT, GetRecordedCyclingRoadResults
-	compare VAR_RESULT, FALSE
-	goto_if_eq Route110_EventScript_NoRecordSet
-	msgbox Route110_Text_BestRecord, MSGBOX_DEFAULT
-	releaseall
-	end
-
-Route110_EventScript_NoRecordSet:: @ 81EF3AD
-	msgbox Route110_Text_ThereIsNoRecord, MSGBOX_DEFAULT
-	releaseall
-	end
-
-Route110_EventScript_ChallengeGuy:: @ 81EF3B7
-	lock
-	faceplayer
-	specialvar VAR_RESULT, GetPlayerAvatarBike
-	compare VAR_RESULT, 1
-	goto_if_eq Route110_EventScript_PlayerRidingAcroBike
-	compare VAR_CYCLING_CHALLENGE_STATE, 0
-	goto_if_eq Route110_EventScript_PlayerNotRidingBike
-	msgbox Route110_Text_AlwaysAimHigher, MSGBOX_DEFAULT
-	release
-	end
-
-Route110_EventScript_PlayerNotRidingBike:: @ 81EF3DE
-	msgbox Route110_Text_RatedForNumberOfCollisions, MSGBOX_DEFAULT
-	release
-	end
-
-Route110_EventScript_PlayerRidingAcroBike:: @ 81EF3E8
-	msgbox Route110_Text_AcroBikesDoNotQualify, MSGBOX_DEFAULT
-	release
 	end
 
 Route110_EventScript_Edward:: @ 81EF3F2
@@ -400,62 +347,6 @@ Route110_EventScript_Alyssa:: @ 81EF64A
 	trainerbattle_single TRAINER_ALYSSA, Route110_Text_AlyssaIntro, Route110_Text_AlyssaDefeated
 	msgbox Route110_Text_AlyssaPostBattle, MSGBOX_AUTOCLOSE
 	end
-
-Route110_EventScript_CyclingChallengeEnd:: @ 81EF661
-	lockall
-	applymovement 21, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	call Route110_EventScript_CyclingChallengeResults
-	releaseall
-	end
-
-Route110_EventScript_CyclingChallengeResults:: @ 81EF673
-	special FinishCyclingRoadChallenge
-	msgbox Route110_Text_CyclingChallengeResultSummary, MSGBOX_DEFAULT
-	switch VAR_RESULT
-	case 10, Route110_EventScript_ChallengeReactionBest
-	case 9, Route110_EventScript_ChallengeReactionGood
-	case 8, Route110_EventScript_ChallengeReactionGood
-	case 7, Route110_EventScript_ChallengeReactionGood
-	case 6, Route110_EventScript_ChallengeReactionOk
-	case 5, Route110_EventScript_ChallengeReactionOk
-	case 4, Route110_EventScript_ChallengeReactionOk
-	case 3, Route110_EventScript_ChallengeReactionBad
-	case 2, Route110_EventScript_ChallengeReactionBad
-	case 1, Route110_EventScript_ChallengeReactionBad
-	case 0, Route110_EventScript_ChallengeReactionWorst
-	end
-
-Route110_EventScript_ChallengeReactionBest:: @ 81EF6FD
-	msgbox Route110_Text_ChallengeReactionBest, MSGBOX_DEFAULT
-	goto Route110_EventScript_EndChallenge
-	end
-
-Route110_EventScript_ChallengeReactionGood:: @ 81EF70B
-	msgbox Route110_Text_ChallengeReactionGood, MSGBOX_DEFAULT
-	goto Route110_EventScript_EndChallenge
-	end
-
-Route110_EventScript_ChallengeReactionOk:: @ 81EF719
-	msgbox Route110_Text_ChallengeReactionOk, MSGBOX_DEFAULT
-	goto Route110_EventScript_EndChallenge
-	end
-
-Route110_EventScript_ChallengeReactionBad:: @ 81EF727
-	msgbox Route110_Text_ChallengeReactionBad, MSGBOX_DEFAULT
-	goto Route110_EventScript_EndChallenge
-	end
-
-Route110_EventScript_ChallengeReactionWorst:: @ 81EF735
-	msgbox Route110_Text_ChallengeReactionWorst, MSGBOX_DEFAULT
-	goto Route110_EventScript_EndChallenge
-	end
-
-Route110_EventScript_EndChallenge:: @ 81EF743
-	setvar VAR_CYCLING_CHALLENGE_STATE, 3
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	return
 
 Route110_EventScript_RivalScene:: @ 81EF76E	
 	goto_if_set FLAG_RYU_INTERACTED_RIVAL_R110, ryu_end
@@ -952,61 +843,6 @@ Route110_Text_WhichShouldIChoose: @ 81F0390
 	.string "Make a beeline for MAUVILLE on\n"
 	.string "CYCLING ROAD, or take the low road\l"
 	.string "and look for Pokémon?$"
-
-Route110_Text_CyclingChallengeResultSummary: @ 81F03FF
-	.string "Number of collisions:\n"
-	.string "… … {STR_VAR_1}!\p"
-	.string "Total time:\n"
-	.string "… … {STR_VAR_2}!$"
-
-Route110_Text_ChallengeReactionBest: @ 81F0431
-	.string "Bravo! Splendid showing!\p"
-	.string "Your love of cycling comes from deep\n"
-	.string "within your heart.\l"
-	.string "You've shaken me to my very soul!$"
-
-Route110_Text_ChallengeReactionGood: @ 81F04A4
-	.string "Your technique is remarkable.\p"
-	.string "I suggest you speed up a bit while\n"
-	.string "still avoiding collisions.$"
-
-Route110_Text_ChallengeReactionOk: @ 81F0500
-	.string "I would consider you a work in\n"
-	.string "progress.\p"
-	.string "Still, I hope you don't forget the\n"
-	.string "sheer pleasure of cycling.$"
-
-Route110_Text_ChallengeReactionBad: @ 81F0567
-	.string "My word… Your cycling skills border\n"
-	.string "on terrifying.\p"
-	.string "Most certainly, you need much more\n"
-	.string "practice riding.$"
-
-Route110_Text_ChallengeReactionWorst: @ 81F05CE
-	.string "…I am aghast…\p"
-	.string "You're perhaps not cut out for this\n"
-	.string "unfortunate cycling business.\p"
-	.string "You ought to give serious thought to\n"
-	.string "returning that BIKE to RYDEL.$"
-
-Route110_Text_RatedForNumberOfCollisions: @ 81F0661
-	.string "This is CYCLING ROAD.\p"
-	.string "If you were to ride from MAUVILLE to\n"
-	.string "SLATEPORT on a MACH BIKE, you would\l"
-	.string "be rated for the number of collisions\l"
-	.string "and your total time.$"
-
-Route110_Text_AlwaysAimHigher: @ 81F06FB
-	.string "Regardless of the results, I count on\n"
-	.string "seeing more challenges from you.\l"
-	.string "Always aim higher!$"
-
-Route110_Text_AcroBikesDoNotQualify: @ 81F0755
-	.string "On this CYCLING ROAD, those riding\n"
-	.string "MACH BIKES are rated for their number\l"
-	.string "of collisions and their total times.\p"
-	.string "ACRO BIKES do not qualify for rating.\n"
-	.string "They are easy to turn, so it's not fair.$"
 
 Route110_Text_SlateportCitySign: @ 81F0812
 	.string "ROUTE 110\n"

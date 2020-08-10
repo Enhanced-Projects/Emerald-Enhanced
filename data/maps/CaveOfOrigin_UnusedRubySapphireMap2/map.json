@@ -1,54 +1,56 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock3",
-            "type": "sign",
-            "x": 14,
-            "y": 5
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock4",
-            "type": "sign",
-            "x": 15,
-            "y": 6
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP2",
-    "layout": "LAYOUT_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP2",
-    "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN03",
-    "name": "CaveOfOrigin_UnusedRubySapphireMap2",
-    "object_events": [
-    ],
-    "region_map_section": "MAPSEC_CAVE_OF_ORIGIN",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP1",
-            "dest_warp_id": 1,
-            "elevation": 3,
-            "x": 5,
-            "y": 10
-        },
-        {
-            "dest_map": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP3",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 8,
-            "y": 14
-        }
-    ],
-    "weather": "WEATHER_FOG_HORIZONTAL"
+  "id": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP2",
+  "name": "CaveOfOrigin_UnusedRubySapphireMap2",
+  "layout": "LAYOUT_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP2",
+  "music": "MUS_DAN03",
+  "region_map_section": "MAPSEC_CAVE_OF_ORIGIN",
+  "requires_flash": false,
+  "weather": "WEATHER_FOG_HORIZONTAL",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 5,
+      "y": 10,
+      "elevation": 3,
+      "dest_map": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP1",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 8,
+      "y": 14,
+      "elevation": 3,
+      "dest_map": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP3",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock3"
+    },
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 6,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock4"
+    }
+  ]
 }

@@ -27,6 +27,11 @@
       "direction": "dive",
       "offset": 0,
       "map": "MAP_CRAGGY_COAST_UNDERWATER"
+    },
+    {
+      "direction": "right",
+      "offset": 40,
+      "map": "MAP_SNOWY_SHORE"
     }
   ],
   "object_events": [

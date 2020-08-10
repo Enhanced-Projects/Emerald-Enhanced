@@ -4846,7 +4846,7 @@
       "name": "CraggyCoastUnderwaterCave_Layout",
       "width": 50,
       "height": 60,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_Snowy",
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/CraggyCoastUnderwaterCave/border.bin",
       "blockdata_filepath": "data/layouts/CraggyCoastUnderwaterCave/map.bin"
@@ -5030,6 +5030,26 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/Route124_MaxieHideoutCave/border.bin",
       "blockdata_filepath": "data/layouts/Route124_MaxieHideoutCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_FROSTY_FOREST_UNDERWATER2",
+      "name": "FrostyForestUnderwater2_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/FrostyForestUnderwater2/border.bin",
+      "blockdata_filepath": "data/layouts/FrostyForestUnderwater2/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_FREEZE_B1F",
+      "name": "MtFreeze_B1F_Layout",
+      "width": 55,
+      "height": 46,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/MtFreeze_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/MtFreeze_B1F/map.bin"
     }
   ]
 }

@@ -1,45 +1,48 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_CAVE_OF_ORIGIN_1F",
-    "layout": "LAYOUT_CAVE_OF_ORIGIN_1F",
-    "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN03",
-    "name": "CaveOfOrigin_1F",
-    "object_events": [
-    ],
-    "region_map_section": "MAPSEC_CAVE_OF_ORIGIN",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_CAVE_OF_ORIGIN_ENTRANCE",
-            "dest_warp_id": 1,
-            "elevation": 3,
-            "x": 11,
-            "y": 17
-        },
-        {
-            "dest_map": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP1",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 14,
-            "y": 5
-        },
-        {
-            "dest_map": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP3",
-            "dest_warp_id": 1,
-            "elevation": 3,
-            "x": 8,
-            "y": 6
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_CAVE_OF_ORIGIN_1F",
+  "name": "CaveOfOrigin_1F",
+  "layout": "LAYOUT_CAVE_OF_ORIGIN_1F",
+  "music": "MUS_DAN03",
+  "region_map_section": "MAPSEC_CAVE_OF_ORIGIN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 11,
+      "y": 17,
+      "elevation": 3,
+      "dest_map": "MAP_CAVE_OF_ORIGIN_ENTRANCE",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 14,
+      "y": 5,
+      "elevation": 3,
+      "dest_map": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP1",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 8,
+      "y": 6,
+      "elevation": 3,
+      "dest_map": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP3",
+      "dest_warp_id": 1
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }

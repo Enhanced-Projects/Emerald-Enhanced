@@ -1195,3 +1195,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/TreasureHuntersHouse_MagmaEvent/scripts.inc"
 
 	.include "data/maps/Route124_MaxieHideoutCave/scripts.inc"
+
+	.include "data/maps/FrostyForestUnderwater2/scripts.inc"
+
+	.include "data/maps/MtFreeze_B1F/scripts.inc"

@@ -107,7 +107,8 @@
     "CraggyCoastUnderwater",
     "CraggyCoastUnderwater2",
     "CraggyCoastUnderwaterCave",
-    "FrostyForestUnderwater"
+    "FrostyForestUnderwater",
+    "FrostyForestUnderwater2"
   ],
   "gMapGroup1": [
     "LittlerootTown_BrendansHouse_1F",
@@ -645,7 +646,8 @@
     "Igloo2Basement",
     "Igloo3",
     "Igloo4",
-    "SnowyShore_Mart"
+    "SnowyShore_Mart",
+    "MtFreeze_B1F"
   ],
   "gMapGroup28": [
     "Route109_SeashoreHouse",

@@ -257,7 +257,7 @@ RT_BF_BD::
 
 RT_SnowyShore::
 	goto_if_unset FLAG_LANDMARK_SNOWY_SHORE, RT_NoFlag
-	warpteleport MAP_SNOW_SHORE, 255, 24, 12
+	warpteleport MAP_SNOWY_SHORE, 255, 24, 12
 	release
 	end
 	
