@@ -2,7 +2,7 @@ gBerryDescriptionPart1_Cheri:: @ 8589AE4
 	.string "Blooms with delicate pretty flowers.$"
 
 gBerryDescriptionPart2_Cheri:: @ 8589B09
-	.string "The bright red BERRY is very spicy.$"
+	.string "The bright redberry is very spicy.$"
 
 gBerryDescriptionPart1_Chesto:: @ 8589B2D
 	.string "The BERRY's thick skin and fruit are$"
@@ -20,10 +20,10 @@ gBerryDescriptionPart1_Rawst:: @ 8589BB9
 	.string "If the leaves grow long and curly,$"
 
 gBerryDescriptionPart2_Rawst:: @ 8589BDC
-	.string "the BERRY seems to grow very bitter.$"
+	.string "theberry seems to grow very bitter.$"
 
 gBerryDescriptionPart1_Aspear:: @ 8589C01
-	.string "The hard BERRY is dense with a rich$"
+	.string "The hardberry is dense with a rich$"
 
 gBerryDescriptionPart2_Aspear:: @ 8589C25
 	.string "juice. It is quite sour.$"
@@ -35,7 +35,7 @@ gBerryDescriptionPart2_Leppa:: @ 8589C62
 	.string "The smaller the BERRY, the tastier.$"
 
 gBerryDescriptionPart1_Oran:: @ 8589C86
-	.string "A peculiar BERRY with a mix of flavors.$"
+	.string "A peculiarberry with a mix of flavors.$"
 
 gBerryDescriptionPart2_Oran:: @ 8589CAE
 	.string "BERRIES grow in half a day.$"
@@ -50,7 +50,7 @@ gBerryDescriptionPart1_Lum:: @ 8589D11
 	.string "Slow to grow. If raised with loving$"
 
 gBerryDescriptionPart2_Lum:: @ 8589D35
-	.string "care, it may grow two BERRIES.$"
+	.string "care, it may grow twoberries.$"
 
 gBerryDescriptionPart1_Sitrus:: @ 8589D54
 	.string "Closely related to ORAN. The large$"
@@ -65,13 +65,13 @@ gBerryDescriptionPart2_Figy:: @ 8589DBA
 	.string "brims with spicy substances.$"
 
 gBerryDescriptionPart1_Wiki:: @ 8589DD7
-	.string "The BERRY is said to have grown lumpy$"
+	.string "Theberry is said to have grown lumpy$"
 
 gBerryDescriptionPart2_Wiki:: @ 8589DFD
 	.string "to help Pokémon grip it.$"
 
 gBerryDescriptionPart1_Mago:: @ 8589E16
-	.string "The BERRY turns curvy as it grows.$"
+	.string "Theberry turns curvy as it grows.$"
 
 gBerryDescriptionPart2_Mago:: @ 8589E39
 	.string "The curvier, the sweeter and tastier.$"
@@ -83,25 +83,25 @@ gBerryDescriptionPart2_Aguav:: @ 8589E87
 	.string "ability to grow without light.$"
 
 gBerryDescriptionPart1_Iapapa:: @ 8589EA6
-	.string "The BERRY is very big and sour.$"
+	.string "Theberry is very big and sour.$"
 
 gBerryDescriptionPart2_Iapapa:: @ 8589EC6
 	.string "It takes at least a day to grow.$"
 
 gBerryDescriptionPart1_Razz:: @ 8589EE7
-	.string "The red BERRY tastes slightly spicy.$"
+	.string "The redberry tastes slightly spicy.$"
 
 gBerryDescriptionPart2_Razz:: @ 8589F0C
 	.string "It grows quickly in just four hours.$"
 
 gBerryDescriptionPart1_Bluk:: @ 8589F31
-	.string "The BERRY is blue on the outside, but$"
+	.string "Theberry is blue on the outside, but$"
 
 gBerryDescriptionPart2_Bluk:: @ 8589F57
 	.string "it blackens the mouth when eaten.$"
 
 gBerryDescriptionPart1_Nanab:: @ 8589F79
-	.string "This BERRY was the seventh$"
+	.string "Thisberry was the seventh$"
 
 gBerryDescriptionPart2_Nanab:: @ 8589F94
 	.string "discovered in the world. It is sweet.$"
@@ -122,7 +122,7 @@ gBerryDescriptionPart1_Pomeg:: @ 858A04A
 	.string "However much it is watered,$"
 
 gBerryDescriptionPart2_Pomeg:: @ 858A066
-	.string "it only grows up to six BERRIES.$"
+	.string "it only grows up to sixberries.$"
 
 gBerryDescriptionPart1_Kelpsy:: @ 858A087
 	.string "A rare variety shaped like a root.$"
@@ -137,7 +137,7 @@ gBerryDescriptionPart2_Qualot:: @ 858A0E7
 	.string "locations with constant rainfall.$"
 
 gBerryDescriptionPart1_Hondew:: @ 858A109
-	.string "A BERRY that is very valuable and$"
+	.string "Aberry that is very valuable and$"
 
 gBerryDescriptionPart2_Hondew:: @ 858A12B
 	.string "rarely seen. It is very delicious.$"
@@ -146,22 +146,22 @@ gBerryDescriptionPart1_Grepa:: @ 858A14E
 	.string "Despite its tenderness and round$"
 
 gBerryDescriptionPart2_Grepa:: @ 858A16F
-	.string "shape, the BERRY is unimaginably sour.$"
+	.string "shape, theberry is unimaginably sour.$"
 
 gBerryDescriptionPart1_Tamato:: @ 858A196
-	.string "The BERRY is lip-bendingly spicy.$"
+	.string "Theberry is lip-bendingly spicy.$"
 
 gBerryDescriptionPart2_Tamato:: @ 858A1B8
 	.string "It takes time to grow.$"
 
 gBerryDescriptionPart1_Cornn:: @ 858A1CF
-	.string "A BERRY from an ancient era. May not$"
+	.string "Aberry from an ancient era. May not$"
 
 gBerryDescriptionPart2_Cornn:: @ 858A1F4
 	.string "grow unless planted in quantity.$"
 
 gBerryDescriptionPart1_Magost:: @ 858A215
-	.string "A BERRY that is widely said to have$"
+	.string "Aberry that is widely said to have$"
 
 gBerryDescriptionPart2_Magost:: @ 858A239
 	.string "a finely balanced flavor.$"
@@ -179,7 +179,7 @@ gBerryDescriptionPart2_Nomel:: @ 858A2B6
 	.string "impossible to taste for three days.$"
 
 gBerryDescriptionPart1_Spelon:: @ 858A2DA
-	.string "The vividly red BERRY is very spicy.$"
+	.string "The vividly redberry is very spicy.$"
 
 gBerryDescriptionPart2_Spelon:: @ 858A2FF
 	.string "Its warts secrete a spicy substance.$"

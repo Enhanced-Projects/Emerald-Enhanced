@@ -40,7 +40,7 @@ SlateportCity_Mart_Text_SomeItemsOnlyAtMart: @ 820DC88
 	.string "get at a Pokémon MART.$"
 
 SlateportCity_Mart_Text_GreatBallIsBetter: @ 820DCF8
-	.string "A GREAT BALL is better than a POKé BALL\n"
+	.string "A Great ball is better than a Poké ball\n"
 	.string "at catching Pokémon.\p"
 	.string "With this, I should be able to get that\n"
 	.string "elusive Pokémon…$"

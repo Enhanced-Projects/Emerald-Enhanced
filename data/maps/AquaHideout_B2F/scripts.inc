@@ -258,6 +258,7 @@ AHQ_KyogreTrigger::
 
 AHQ_Kyogre::
 	goto_if_set FLAG_RYU_KYOGRE, ryu_end
+	goto_if_set FLAG_RYU_KYOGRE_RAN, ryu_end
 	msgbox AHQ_KYOGRE_STARING
 	setvar VAR_TEMP_5, SPECIES_KYOGRE
 	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER

@@ -482,6 +482,7 @@ r115_StepLeft:
 
 R115_Raikou::
 	goto_if_set FLAG_RYU_RAIKOU, ryu_end
+	goto_if_set FLAG_RYU_RAIKOU_RAN, ryu_end
 	msgbox OverworldLegendary_IntroRaikou
 	setvar VAR_TEMP_5, SPECIES_RAIKOU
 	setvar VAR_TEMP_9, ITEM_ELECTRIC_SEED

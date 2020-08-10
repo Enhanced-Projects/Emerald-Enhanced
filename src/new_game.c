@@ -301,6 +301,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_HIDE_UNION_ROOM_PLAYER_1);
     FlagSet(FLAG_RYU_HIDE_103_MAGMA_MEETING);
     FlagSet(FLAG_RYU_HIDE_114_MAXIE);
+    FlagSet(FLAG_RYU_RUSTURF_CLEARING_MAGMA);
 }
 
 static void ResetMiniGamesResults(void)

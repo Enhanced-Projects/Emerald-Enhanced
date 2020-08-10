@@ -4,6 +4,7 @@ MeteorFalls_3F_MapScripts::
 
 MeteorFalls_Necrozma::
 	goto_if_set FLAG_RYU_NECROZMA, ryu_end
+	goto_if_set FLAG_RYU_NECROZMA_RAN, ryu_end
 	msgbox OverworldLegendary_IntroNecrozma
 	setvar VAR_TEMP_5, SPECIES_NECROZMA
 	setvar VAR_TEMP_9, ITEM_SHARP_BEAK

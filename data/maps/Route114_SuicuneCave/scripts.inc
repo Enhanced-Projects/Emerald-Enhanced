@@ -4,6 +4,7 @@ Route114_SuicuneCave_MapScripts::
 
 Route114_Suicune::
 	goto_if_set FLAG_RYU_SUICUNE, ryu_end
+	goto_if_set FLAG_RYU_SUICUNE_RAN, ryu_end
 	msgbox OverworldLegendary_IntroSuicune
 	setvar VAR_TEMP_5, SPECIES_SUICUNE
 	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER

@@ -20,7 +20,7 @@ EventScript_PkmnCenterNurse_Goodbye:: @ 8271954
 @ VAR_0x8004 is 1 when player has Gold Card; jumps are identical
 EventScript_PkmnCenterNurse_HealPkmn:: @ 827195A
     call Ryu_CheckHealPermissions
-    clearflag FLAG_RYU_USED_WIRELESSPC
+    call_if_set FLAG_RYU_USED_WIRELESSPC, PCN_RechargeWirelessPC
     incrementgamestat GAME_STAT_USED_POKECENTER
     readgamestat GAME_STAT_USED_POKECENTER
     compare VAR_RESULT, 256
@@ -33,6 +33,25 @@ EventScript_PkmnCenterNurse_HealPkmn:: @ 827195A
     call EventScript_PkmnCenterNurse_TakeAndHealPkmn
     releaseall
     end
+
+PCN_RechargeWirelessPC::
+    msgbox PCN_RechargedWirelessPc
+    clearflag FLAG_RYU_USED_WIRELESSPC
+    playse SE_PC_ON
+    return
+
+PCN_RechargedWirelessPc:
+    .string "Here, i'll charge your PC device\n"
+    .string "as well...$"
+
+PCN_CantUseThisHere::
+    msgbox PCN_CantUseWPCHere
+    closemessage
+    release
+    end
+
+PCN_CantUseWPCHere:
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Could not connect to uplink satellite.$"
 
 PkmnCenterNurse_MegaAudinite::
     goto_if_set FLAG_RYU_GOT_AUDINITE, ryu_return

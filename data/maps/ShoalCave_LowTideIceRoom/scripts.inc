@@ -3,6 +3,7 @@ ShoalCave_LowTideIceRoom_MapScripts:: @ 82396A1
 
 SC1_Articuno::
 	goto_if_set FLAG_RYU_ARTICUNO, ryu_end
+	goto_if_set FLAG_RYU_ARTICUNO_RAN, ryu_end
 	msgbox OverworldLegendary_IntroArticuno
 	setvar VAR_TEMP_5, SPECIES_ARTICUNO
 	setvar VAR_TEMP_9, ITEM_NEVER_MELT_ICE

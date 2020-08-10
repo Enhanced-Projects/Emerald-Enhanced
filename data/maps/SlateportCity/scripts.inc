@@ -1230,29 +1230,29 @@ SlateportCity_Text_NameRatersHouseSign: @ 81DEBA0
 
 SlateportCity_Text_ExplainBerries: @ 81DEBCE
 	.string "If a wild Pokémon gets hurt, it heals\n"
-	.string "itself by chewing on BERRIES.\p"
+	.string "itself by chewing onberries.\p"
 	.string "Did you know that?\p"
 	.string "Somebody saw that and got the idea\n"
-	.string "of making medicine from BERRIES.\p"
+	.string "of making medicine fromberries.\p"
 	.string "Did you know that?\p"
-	.string "To turn BERRIES into medicine,\n"
+	.string "To turnberries into medicine,\n"
 	.string "they must be crushed into powder.\p"
 	.string "Did you know that?\p"
 	.string "You seem to have an interest\n"
-	.string "in BERRIES!\p"
+	.string "inberries!\p"
 	.string "I've got something good for someone\n"
 	.string "like you.$"
 
 SlateportCity_Text_ExplainBerryPowder: @ 81DED27
 	.string "I recently had machines installed at\n"
-	.string "Pokémon CENTERS for crushing BERRIES.\p"
-	.string "The BERRY CRUSH machines are at\n"
+	.string "PokémonCenters for crushingberries.\p"
+	.string "Theberry crush machines are at\n"
 	.string "the DIRECT CORNER upstairs.\p"
 	.string "Did you know?\p"
-	.string "Could you make BERRY POWDER for\n"
+	.string "Could you makeberry powder for\n"
 	.string "me using those machines?\p"
 	.string "I can make you all sorts of medicine\n"
-	.string "if you bring me lots of BERRY POWDER.$"
+	.string "if you bring me lots ofberry powder.$"
 
 SlateportCity_Text_BroughtMeSomeBerryPowder: @ 81DEE40
 	.string "Have you brought me some\n"
@@ -1271,7 +1271,7 @@ SlateportCity_Text_DontHaveEnoughBerryPowder: @ 81DEEC9
 	.string "BERRY POWDER.$"
 
 SlateportCity_Text_FineBerryPowderTradeSomethingElse: @ 81DEEF7
-	.string "This is fine BERRY POWDER.\n"
+	.string "This is fineberry powder.\n"
 	.string "It will make excellent medicine.\p"
 	.string "Would you like to trade more of your\n"
 	.string "BERRY POWDER for something else?$"

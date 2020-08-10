@@ -16,9 +16,7 @@ RustboroCity_OnTransition: @ 81E06C8
 	
 RC_DevonEntranceCheck::
 	lock
-	playse SE_EXPMAX
 	goto_if_unset FLAG_RYU_PLAYER_MAGMA_MEMBER, ryu_end
-	playse SE_BIDORO
 	waitse
 	msgbox RC_DontWantTo
 	closemessage
@@ -1007,11 +1005,11 @@ RustboroCity_Text_YouGotItThankYou: @ 81E194D
 	.string "You got them back!\p"
 	.string "You really are a great Trainer!\p"
 	.string "I know! As my thanks, I'll give you\n"
-	.string "another GREAT BALL!$"
+	.string "another Great ball!$"
 
 RustboroCity_Text_YoureLoadedWithItems: @ 81E19E5
 	.string "You're loaded with items.\n"
-	.string "I can't give you this GREAT BALL.$"
+	.string "I can't give you this Great ball.$"
 
 RustboroCity_Text_PleaseComeWithMe: @ 81E1A21
 	.string "Excuse me, please!\n"

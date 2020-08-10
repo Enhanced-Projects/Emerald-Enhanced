@@ -165,13 +165,13 @@ SootopolisCity_EventScript_Maniac:: @ 81E6411
 	end
 
 SootopolisCity_Text_GymSign: @ 81E656F
-	.string "SOOTOPOLIS CITY Pokémon Gym\n"
+	.string "Sootopolis City Pokémon Gym\n"
 	.string "LEADER: Juan\p"
 	.string "“The Gym Leader with the beauty\n"
 	.string "of pure water!”$"
 
 SootopolisCity_Text_CitySign: @ 81E65C8
-	.string "SOOTOPOLIS CITY\p"
+	.string "Sootopolis City\p"
 	.string "“The mystical city where history\n"
 	.string "slumbers.”$"
 

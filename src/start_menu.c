@@ -565,6 +565,8 @@ static const u32 MagmaMainLogoGfx[] = INCBIN_U32("graphics/cutscene/magmaMainLog
 static const u16 MagmaMainLogoPal[] = INCBIN_U16("graphics/cutscene/magmaMainLogo.gbapal");
 static const u32 MagmaAltLogoGfx[] = INCBIN_U32("graphics/cutscene/magmaAltLogo.4bpp");
 static const u16 MagmaAltLogoPal[] = INCBIN_U16("graphics/cutscene/magmaAltLogo.gbapal");
+static const u32 PokeballLogoGfx[] = INCBIN_U32("graphics/cutscene/pokeballLogo.4bpp");
+static const u16 PokeballLogoPal[] = INCBIN_U16("graphics/cutscene/pokeballLogo.gbapal");
 
 const struct SpriteSheet DevonLogoSheet =
 {
@@ -746,6 +748,38 @@ const struct SpriteTemplate MagmaAltLogoSpriteTemplate =
     .callback = SpriteCallbackDummy
 };
 
+const struct SpriteSheet PokeballLogoSheet =
+{
+    .data = PokeballLogoGfx,
+    .size = sizeof(PokeballLogoGfx),
+    .tag = 2651
+};
+
+const struct SpritePalette PokeballLogoPalette =
+{
+    .data = PokeballLogoPal, 
+	.tag = 2651
+};
+
+static const struct OamData PokeballLogoOamData =
+{
+    .y = 0,
+    .shape = SPRITE_SHAPE(32x32),
+    .size = SPRITE_SIZE(32x32),
+    .priority = 0
+};
+
+const struct SpriteTemplate PokeballLogoSpriteTemplate =
+{
+    .tileTag = 2651,
+    .paletteTag = 2651,
+    .oam = &PokeballLogoOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
+
 void DrawDevonLogo(void)
 {
     struct WindowTemplate template;
@@ -840,6 +874,29 @@ void DrawMagmaLogo(void)
 
 }
 
+void DrawNeutralLogo(void)
+{
+    struct WindowTemplate template;
+
+    LoadSpriteSheet(&PokeballLogoSheet);
+    LoadSpritePalette(&PokeballLogoPalette);
+    MenuSpriteId1 = (CreateSprite(&PokeballLogoSpriteTemplate, 15, 69, 0));
+
+    //prepare window
+    SetWindowTemplateFields(&template, 0, 4, 8, 3, 2, 15, 76);
+    sPrintNumberWindow2Id = AddWindow(&template);
+    FillWindowPixelBuffer(sPrintNumberWindow2Id, 0);
+    PutWindowTilemap(sPrintNumberWindow2Id);
+    CopyWindowToVram(sPrintNumberWindow2Id, 1);
+
+    //Show quest stage
+    StringCopy(gRyuStringVar1, gText_HighlightTransparent);
+    ConvertIntToDecimalStringN(gStringVar2, (CountBadges()), 0, 1);
+    StringAppend(gRyuStringVar1, gStringVar2);
+    AddTextPrinterParameterized(sPrintNumberWindow2Id, 1, gRyuStringVar1, 0, 0, 0, NULL);
+
+}
+
 static bool32 InitStartMenuStep(void)
 {
     s8 state = sInitStartMenuData[0];
@@ -893,6 +950,10 @@ static bool32 InitStartMenuStep(void)
         else if (FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA) == 1)
         {
             DrawMagmaLogo();
+        }
+        else
+        {
+            DrawNeutralLogo();
         }
         
         return TRUE;

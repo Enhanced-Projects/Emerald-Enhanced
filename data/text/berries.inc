@@ -4,9 +4,9 @@ PetalburgCity_Gym_Text_GiveEnigmaBerry: @ 82A6D3D
 	.string "I'd like you to have it.$"
 
 Route104_Text_PlantBerriesInSoilTakeThis: @ 82A6D86
-	.string "If you see BERRIES growing in loamy\n"
+	.string "If you seeberries growing in loamy\n"
 	.string "soil, feel free to take them.\p"
-	.string "But make sure you plant a BERRY in the\n"
+	.string "But make sure you plant aberry in the\n"
 	.string "same spot. That's common courtesy.\p"
 	.string "Here, I'll share this with you.$"
 
@@ -15,13 +15,13 @@ Route104_Text_TrainersOftenMakeMonHoldBerries: @ 82A6E32
 	.string "TRAINER, no?\p"
 	.string "TRAINERS often make Pokémon hold\n"
 	.string "BERRIES.\p"
-	.string "It's up to you whether to grow BERRIES\n"
+	.string "It's up to you whether to growberries\n"
 	.string "or use them.$"
 
 Route111_Text_WateredPlantsEveryDayTakeBerry: @ 82A6EBD
 	.string "I watered the plants every day.\n"
 	.string "They grew lots of flowers.\p"
-	.string "And they gave me lots of BERRIES, too.\p"
+	.string "And they gave me lots ofberries, too.\p"
 	.string "Here you go!\n"
 	.string "You can have it!$"
 
@@ -31,26 +31,26 @@ Route111_Text_GoingToTryToMakeDifferentColorBerries: @ 82A6F3D
 	.string "I hope you try hard, too!$"
 
 Route111_Text_WhatColorBerriesToLookForToday: @ 82A6F9A
-	.string "I wonder what color BERRIES I'll look\n"
+	.string "I wonder what colorberries I'll look\n"
 	.string "for today?$"
 
 Route114_Text_LoveUsingBerryCrushShareBerry: @ 82A6FCB
-	.string "I love using the BERRY CRUSH machine,\n"
-	.string "so I'm collecting BERRIES.\p"
+	.string "I love using theberry crush machine,\n"
+	.string "so I'm collectingberries.\p"
 	.string "I'll share one with you, if you'd like.$"
 
 Route114_Text_TryBerryCrushWithFriends: @ 82A7034
-	.string "You should try the BERRY CRUSH\n"
+	.string "You should try theberry crush\n"
 	.string "machine with your friends.$"
 
 Route114_Text_FunToThinkAboutBerries: @ 82A706E
-	.string "Which BERRY should be planted?\n"
-	.string "Should you use or hoard BERRIES?\p"
+	.string "Whichberry should be planted?\n"
+	.string "Should you use or hoardberries?\p"
 	.string "It's fun to think about.$"
 
 Route120_Text_BerriesExpressionOfLoveIsntIt: @ 82A70C7
 	.string "BERRIES grow by soaking up sunlight.\p"
-	.string "We help the BERRIES grow by watering\n"
+	.string "We help theberries grow by watering\n"
 	.string "them regularly.\p"
 	.string "It's an expression of love, isn't it?$"
 
@@ -65,18 +65,18 @@ Route120_Text_MakeYourOwnImpressions: @ 82A7183
 	.string "You can have this.$"
 
 Route120_Text_BerryIsRareRaiseItWithCare: @ 82A71D5
-	.string "I think that BERRY is rare.\n"
+	.string "I think thatberry is rare.\n"
 	.string "I hope you raise it with loving care.$"
 
 Route120_Text_IllGetMoreBerriesFromBerryMaster: @ 82A7217
-	.string "I'll get more BERRIES from\n"
-	.string "the BERRY MASTER.$"
+	.string "I'll get moreberries from\n"
+	.string "theberry MASTER.$"
 
 LilycoveCity_Text_BerrySuitsYou: @ 82A7244
 	.string "When it gets right down to it…\p"
 	.string "The same way suits suit me perfectly,\n"
 	.string "a crisp breeze suits the sea.\p"
-	.string "And you, a BERRY suits you to a “T”…\p"
+	.string "And you, aberry suits you to a “T”…\p"
 	.string "Why should that be so?$"
 
 LilycoveCity_Text_BecauseYoureTrainer: @ 82A72E3
@@ -89,9 +89,9 @@ LilycoveCity_Text_PokeblocksSuitPokemon: @ 82A7321
 	.string "{POKEBLOCK}S perfectly suit Pokémon.$"
 
 Route123_BerryMastersHouse_Text_YoureDeservingOfBerry: @ 82A7386
-	.string "You may call me the BERRY MASTER.\p"
+	.string "You may call me theberry MASTER.\p"
 	.string "I dream of filling the world with\n"
-	.string "beautiful flowers, so I raise BERRIES\l"
+	.string "beautiful flowers, so I raiseberries\l"
 	.string "and hand them out to everyone.\p"
 	.string "You're deserving of one!$"
 
@@ -110,7 +110,7 @@ Route123_BerryMastersHouse_Text_DoneForToday: @ 82A749E
 	.string "Let flowers fill the world!$"
 
 Route123_BerryMastersHouse_Text_HeardAGoodSayingLately: @ 82A74E6
-	.string "The way my husband grows BERRIES,\n"
+	.string "The way my husband growsberries,\n"
 	.string "oh, he's the best in the world.\p"
 	.string "He makes me proud, that he does.\p"
 	.string "Incidentally, child, have you heard\n"
@@ -153,15 +153,15 @@ Route104_PrettyPetalFlowerShop_Text_IntroLearnAboutBerries: @ 82A7706
 Route104_PrettyPetalFlowerShop_Text_BerriesExplanation: @ 82A775B
 	.string "BERRIES grow on trees that thrive\n"
 	.string "only in soft, loamy soil.\p"
-	.string "If you take some BERRIES, be sure to\n"
+	.string "If you take someberries, be sure to\n"
 	.string "plant one in the loamy soil again.\p"
-	.string "A planted BERRY will soon sprout,\n"
+	.string "A plantedberry will soon sprout,\n"
 	.string "grow into a plant, flower beautifully,\l"
-	.string "then grow BERRIES again.\p"
+	.string "then growberries again.\p"
 	.string "I want to see the whole wide world\n"
 	.string "filled with beautiful flowers.\l"
 	.string "That's my dream.\p"
-	.string "Please help me, {PLAYER}. Plant BERRIES\n"
+	.string "Please help me, {PLAYER}. Plantberries\n"
 	.string "and bring more flowers into the world.$"
 
 Route104_PrettyPetalFlowerShop_Text_FlowersBringHappiness: @ 82A78DF
@@ -176,10 +176,10 @@ Route104_PrettyPetalFlowerShop_Text_YouCanHaveThis: @ 82A7916
 	.string "of it. You can have this.$"
 
 Route104_PrettyPetalFlowerShop_Text_WailmerPailExplanation: @ 82A79A6
-	.string "While BERRY plants are growing,\n"
+	.string "Whileberry plants are growing,\n"
 	.string "water them with the WAILMER PAIL.\p"
 	.string "Oh, another thing.\p"
-	.string "If you don't pick BERRIES for a while,\n"
+	.string "If you don't pickberries for a while,\n"
 	.string "they'll drop off onto the ground.\l"
 	.string "But they'll sprout again.\p"
 	.string "Isn't that awesome?\n"
@@ -192,10 +192,10 @@ Route104_PrettyPetalFlowerShop_Text_ImGrowingFlowers: @ 82A7A98
 	.string "It's for you!$"
 
 Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries: @ 82A7AF3
-	.string "You can plant a BERRY and grow it big,\n"
+	.string "You can plant aberry and grow it big,\n"
 	.string "or you can make a Pokémon hold it.\p"
 	.string "But now they have a machine that mixes\n"
-	.string "up different BERRIES and makes candies\l"
+	.string "up differentberries and makes candies\l"
 	.string "for Pokémon.\p"
 	.string "I want some candy, too.$"
 

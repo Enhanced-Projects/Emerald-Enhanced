@@ -306,12 +306,12 @@ RustboroCity_DevonCorp_2F_Text_DeviceForTalkingToPokemon: @ 8211BFB
 
 RustboroCity_DevonCorp_2F_Text_DevelopingNewBalls: @ 8211C50
 	.string "I'm developing new kinds of\n"
-	.string "POKé BALLS…\p"
+	.string "Poké balls…\p"
 	.string "But I haven't made much headway…$"
 
 RustboroCity_DevonCorp_2F_Text_WeFinallyMadeNewBalls: @ 8211C99
 	.string "We finally made new kinds of\n"
-	.string "POKé BALLS!\p"
+	.string "Poké balls!\p"
 	.string "The REPEAT BALL makes it easier to\n"
 	.string "catch Pokémon you've caught before.\p"
 	.string "The TIMER BALL gets better at catching\n"

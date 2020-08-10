@@ -897,7 +897,7 @@ gTVPokemonTodayFailedText01:: @ 0828304D
 gTVPokemonTodayFailedText02:: @ 08283135
 	.string "The Pokémon managed to get away!\p"
 	.string "It ended up wasting this many\n"
-	.string "POKé BALLS: {STR_VAR_2}!\p"
+	.string "Poké balls: {STR_VAR_2}!\p"
 	.string "You should have seen the expression\n"
 	.string "of frustration on {STR_VAR_1}'s face when\l"
 	.string "the Pokémon took off!$"
@@ -906,7 +906,7 @@ gTVPokemonTodayFailedText03:: @ 082831DF
 	.string "But {STR_VAR_1} goofed and made the\n"
 	.string "Pokémon faint!\p"
 	.string "It ended up wasting this many\n"
-	.string "POKé BALLS: {STR_VAR_2}!\p"
+	.string "Poké balls: {STR_VAR_2}!\p"
 	.string "You should have seen the expression\n"
 	.string "of stunned dismay on {STR_VAR_1}'s face\l"
 	.string "when the Pokémon fainted!$"
@@ -961,7 +961,7 @@ gTVPokemonTodaySuccessfulText01:: @ 08283552
 
 gTVPokemonTodaySuccessfulText02:: @ 082835AE
 	.string "BIG BRO: The TRAINER had to throw this\n"
-	.string "many POKé BALLS to catch it: {STR_VAR_3}!\p"
+	.string "manyPoké Balls to catch it: {STR_VAR_3}!\p"
 	.string "It finally took a single {STR_VAR_2}\n"
 	.string "to catch it!$"
 
@@ -1433,7 +1433,7 @@ gTVBreakingNewsText08:: @ 0828596F
 
 gTVBreakingNewsText09:: @ 082859AC
 	.string "However, {STR_VAR_1} seemed to run\n"
-	.string "out of POKé BALLS.\p"
+	.string "out ofPoké Balls.\p"
 	.string "The TRAINER had to break off\n"
 	.string "the battle with the rare {STR_VAR_2}.\p"
 	.string "In that instant, {STR_VAR_3}\n"
@@ -1665,7 +1665,7 @@ gTVTrainerFanClubText00:: @ 08286866
 
 gTVTrainerFanClubText01:: @ 0828695E
 	.string "FANS: Their cool way of throwing\n"
-	.string "POKé BALLS!$"
+	.string "Poké balls!$"
 
 gTVTrainerFanClubText02:: @ 0828698B
 	.string "FANS: Their adorable way of running!$"
@@ -2039,7 +2039,7 @@ gTVWhatsNo1InHoennTodayText03:: @ 0828821A
 
 gTVWhatsNo1InHoennTodayText04:: @ 082882BE
 	.string "In just one day, {STR_VAR_1} spun\n"
-	.string "the BERRY BLENDER {STR_VAR_2} times!\p"
+	.string "theberry blender {STR_VAR_2} times!\p"
 	.string "Toward the end, even {STR_VAR_1}\n"
 	.string "seemed to get dizzy.\p"
 	.string "The TRAINER appeared to totter\n"
@@ -2047,7 +2047,7 @@ gTVWhatsNo1InHoennTodayText04:: @ 082882BE
 
 gTVWhatsNo1InHoennTodayText05:: @ 08288355
 	.string "In just one day, {STR_VAR_1} planted\n"
-	.string "{STR_VAR_2} BERRIES!\p"
+	.string "{STR_VAR_2}berries!\p"
 	.string "As a result, {STR_VAR_1}'s clothes\n"
 	.string "became filthy with dirt.\p"
 	.string "Where the TRAINER planted, countless\n"
@@ -2057,9 +2057,9 @@ gTVWhatsNo1InHoennTodayText05:: @ 08288355
 
 gTVWhatsNo1InHoennTodayText06:: @ 0828842B
 	.string "In just one day, {STR_VAR_1} picked\n"
-	.string "{STR_VAR_2} BERRIES!\p"
+	.string "{STR_VAR_2}berries!\p"
 	.string "{STR_VAR_1}'s BAG became so filled\n"
-	.string "with BERRIES, the TRAINER had trouble\l"
+	.string "withberries, the TRAINER had trouble\l"
 	.string "walking afterward!$"
 
 gTVWhatsNo1InHoennTodayText07:: @ 082884A5
@@ -2735,7 +2735,7 @@ GabbyAndTy_Text_YouStompedUsInterviewAgain: @ 0828B1B3
 
 GabbyAndTy_Text_YouThrewABallAtUsInterviewAgain: @ 0828B23D
 	.string "The last time we battled, didn't you\n"
-	.string "throw a POKé BALL at us?\p"
+	.string "throw a Poké ball at us?\p"
 	.string "We were shocked! So we told everyone,\n"
 	.string "just everyone, about it!\p"
 	.string "Anyway, what do you think?\n"
@@ -2887,7 +2887,7 @@ gTVInSearchOfTrainersText04:: @ 0828BD20
 
 gTVInSearchOfTrainersText05:: @ 0828BE01
 	.string "There's only one thing to be said.\n"
-	.string "Don't you dare throw a POKé BALL during\l"
+	.string "Don't you dare throw a Poké ball during\l"
 	.string "a TRAINER battle!\p"
 	.string "{PLAYER} is certainly strong, but has\n"
 	.string "no clue about the basic rules.\p"

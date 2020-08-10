@@ -89,7 +89,12 @@ DC_QuestCheck2::
 	compare VAR_RESULT, 1
 	goto_if_eq DC_BeginQuest
 	msgbox DC_NoQuest MSGBOX_DEFAULT
-	applymovement OBJ_EVENT_ID_PLAYER DC_Turnaround2
+	specialvar VAR_RESULT, GetPlayerFacingDirection
+	switch VAR_RESULT
+	case DIR_WEST, DC_MovePlayer1@right 1 up 1 warp
+	case DIR_SOUTH, DC_MovePlayer2@Up 2
+	case DIR_EAST, DC_MovePlayer3@left 1 up one
+	applymovement OBJ_EVENT_ID_PLAYER, DC_MovePlayer2@Up
 	waitmovement 0
 	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
 	release
@@ -98,7 +103,22 @@ DC_QuestCheck2::
 DC_NoQuest:
 	.string "I'm sorry, but the CEO is busy.\n"
 	.string "Please come back later.$"
+
+
+DC_MovePlayer1:
+	walk_right
+	walk_up
+	step_end
 	
+DC_MovePlayer2:
+	walk_up
+	walk_up
+	step_end
+	
+DC_MovePlayer3:
+	walk_left
+	walk_up
+	step_end
 
 DC_Turnaround:
 	face_up

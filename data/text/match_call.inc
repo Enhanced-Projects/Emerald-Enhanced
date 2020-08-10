@@ -665,7 +665,7 @@ MatchCall_PersonalizedText3:: @ 82AC18C
 	.string "Hello! It's {STR_VAR_1}.\p"
 	.string "I love where I am now.\n"
 	.string "It's pleasant with sweet aromas!\p"
-	.string "I think someone planted BERRIES,\n"
+	.string "I think someone plantedberries,\n"
 	.string "and they burst into bloom.\p"
 	.string "See you again sometime!$"
 
@@ -2059,11 +2059,11 @@ MatchCall_Text_Roxanne2:: @ 82B250E
 MatchCall_Text_Roxanne3:: @ 82B25C1
 	.string "ROXANNE: {PLAYER}!\n"
 	.string "My GYM is ready!\p"
-	.string "Please visit RUSTBORO whenever\n"
+	.string "Please visitRustboro whenever\n"
 	.string "you can!$"
 
 MatchCall_Text_Roxanne4:: @ 82B2607
-	.string "ROXANNE: At the RUSTBORO GYM,\n"
+	.string "ROXANNE: At theRustboro GYM,\n"
 	.string "the fact that we battled, {PLAYER},\l"
 	.string "is a matter of pride.$"
 
@@ -2215,7 +2215,7 @@ MatchCall_Text_TateLiza3:: @ 82B3158
 	.string "TATE: Our GYM is ready!\n"
 	.string "LIZA: Our GYM is ready!\p"
 	.string "TATE: Please come visit…\n"
-	.string "LIZA: MOSSDEEP anytime!$"
+	.string "LIZA: Mossdeep anytime!$"
 
 MatchCall_Text_TateLiza4:: @ 82B31CD
 	.string "TATE: {PLAYER}, the battle we had…\n"
@@ -2367,7 +2367,7 @@ MatchCall_Text_May4:: @ 2B3CF3
 	.string "Dawn: {PLAYER}{KUN}?\p"
 	.string "RUSTURF TUNNEL…\n"
 	.string "They named it that because it\l"
-	.string "joins RUSTBORO and VERDANTURF.$"
+	.string "joinsRustboro and VERDANTURF.$"
 
 MatchCall_Text_May5:: @ 2B3D4B
 	.string "Dawn: {PLAYER}{KUN}, how are you?\p"
@@ -2492,7 +2492,7 @@ MatchCall_Text_Brendan3:: @ 2B4560
 MatchCall_Text_Brendan4:: @ 2B463F
 	.string "BRENDAN: This voice… {PLAYER}?\p"
 	.string "They gave RUSTURF TUNNEL its name\n"
-	.string "because it joins RUSTBORO and\l"
+	.string "because it joinsRustboro and\l"
 	.string "VERDANTURF.\p"
 	.string "Did you know that?$"
 
@@ -2882,7 +2882,7 @@ MatchCall_Text_MrStone3:: @ 82B6302
 	.string "MR. STONE: Oh! {PLAYER}{KUN}!\p"
 	.string "Ah, so you've met STEVEN!\n"
 	.string "I'd better reward you, then!\p"
-	.string "When you visit RUSTBORO again,\n"
+	.string "When you visitRustboro again,\n"
 	.string "come see me at my office.\p"
 	.string "I'll be waiting for you!$"
 

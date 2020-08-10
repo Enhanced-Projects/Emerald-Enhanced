@@ -1102,8 +1102,8 @@ static const u8 sIngrainDescription[] = _(
     "The user can't switch out.");
 
 static const u8 sSuperpowerDescription[] = _(
-    "Boosts strength sharply,\n"
-    "but lowers abilities.");
+    "A powerful Fighting move\n"
+    "that lowers physical stats.");
 
 static const u8 sMagicCoatDescription[] = _(
     "Reflects special effects\n"

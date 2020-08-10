@@ -222,7 +222,7 @@ LilycoveCity_LilycoveMuseum_1F_Text_PaintingOfGrassPokemon: @ 82191A2
 
 LilycoveCity_LilycoveMuseum_1F_Text_PaintingOfBerries: @ 821920D
 	.string "It's a delicious-looking painting\n"
-	.string "of BERRIES.\p"
+	.string "ofberries.\p"
 	.string "This painting could make you hungry!$"
 
 LilycoveCity_LilycoveMuseum_Text_BirdPokemonSculptureReplica: @ 8219260
@@ -230,7 +230,7 @@ LilycoveCity_LilycoveMuseum_Text_BirdPokemonSculptureReplica: @ 8219260
 	.string "It depicts an ancient BIRD Pokémon.$"
 
 LilycoveCity_LilycoveMuseum_1F_Text_BigPokeBallCarvedFromStone: @ 82192AA
-	.string "It's a big POKé BALL carved from\n"
+	.string "It's a big Poké ball carved from\n"
 	.string "a black stone.\p"
 	.string "It was apparently used in festivals\n"
 	.string "in the olden days.$"

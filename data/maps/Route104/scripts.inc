@@ -1050,7 +1050,7 @@ Route104_Text_WhatsItLikeAtBottomOfSea: @ 81ED662
 	.string "of the sea?$"
 
 Route104_Text_ThrowBallAtWeakenedPokemon: @ 81ED6A2
-	.string "If you're going to throw a POKé BALL,\n"
+	.string "If you're going to throw a Poké ball,\n"
 	.string "weaken the wild Pokémon first.\p"
 	.string "It will be easier to catch if it's been\n"
 	.string "poisoned, burned, or lulled to sleep.$"
@@ -1058,7 +1058,7 @@ Route104_Text_ThrowBallAtWeakenedPokemon: @ 81ED6A2
 Route104_Text_OnlyThrowBallAtWildPokemon: @ 81ED735
 	.string "You're a thief if you try to steal\n"
 	.string "someone else's Pokémon.\p"
-	.string "You should throw POKé BALLS only at\n"
+	.string "You should throwPoké Balls only at\n"
 	.string "wild Pokémon.$"
 
 Route104_Text_ImNotATrainer: @ 81ED7A2
@@ -1105,13 +1105,13 @@ Route104_Text_RouteSignPetalburg: @ 81EDAA1
 
 Route104_Text_RouteSignRustboro: @ 81EDABC
 	.string "ROUTE 1O4\n"
-	.string "{UP_ARROW} RUSTBORO CITY$"
+	.string "{UP_ARROW}Rustboro City$"
 
 Route104_Text_PrettyPetalFlowShop: @ 81EDAD6
 	.string "PRETTY PETAL FLOWER SHOP$"
 
 Route104_Text_TrainerTipsDoubleBattles: @ 81EDAEF
-	.string "Trainer TIPS\p"
+	.string "Trainer Tips\p"
 	.string "In the Hoenn region there are pairs\n"
 	.string "of Trainers who challenge others\l"
 	.string "for 2-on-2 Pokémon battles called\l"
