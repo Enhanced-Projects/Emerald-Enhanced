@@ -14,7 +14,8 @@ RyuResetFollowerPositionAR::
 	return
 
 RyuForceCancelFollowerForQuest:: @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
-	goto RF_FollowerLeaveCall
+	call RF_FollowerLeaveCall
+	return
 	
 
 RyuFollowerSelectNPCScript::

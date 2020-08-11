@@ -219,26 +219,33 @@ static const u8 gCreditsText_EmeraldEnhanced [] = _("Emerald Enhanced");
 static const u8 gCreditsText_CreatedBy [] = _("Created by:");
 static const u8 gCreditsText_Ryuhouji []= _("Ryuhouji");
 static const u8 gCreditsText_Donors[] = _("Donors:");
-static const u8 gCreditsText_Donorsp1[] = _("Kouta    Rascal");
-static const u8 gCreditsText_Donorsp2[] = _("PKB    Ludi");
-static const u8 gCreditsText_Donorsp3[] = _("Swap    Yuzu");
-static const u8 gCreditsText_Donorsp4[] = _("ustaN    Vexy");
+static const u8 gCreditsText_Donorsp1[] = _("Kouta Pkbwgsc");
+static const u8 gCreditsText_Donorsp2[] = _("Rascal ustaN");
+static const u8 gCreditsText_Donorsp3[] = _("Rin    Nick");
+static const u8 gCreditsText_Donorsp4[] = _("Vexy    Swap");
+static const u8 gCreditsText_Donorsp5[] = _("Ludi    Rayan");
+static const u8 gCreditsText_Donorsp6[] = _("TJ    DeltaRayQ");
+static const u8 gCreditsText_Donorsp7[] = _("Vios    Johnny G");
+static const u8 gCreditsText_Donorsp8[] = _("Optfine    Vexy");
+static const u8 gCreditsText_Donorsp9[] = _("NjDeli    Cordigoth");
+static const u8 gCreditsText_Donorsp10[] = _("Dylkill    Katara");
+static const u8 gCreditsText_Donorsp11[] = _("MysticR    Vloshko");
+static const u8 gCreditsText_Donorsp12[] = _("Officer12    Vexy");
+static const u8 gCreditsText_Donorsp13[] = _("Galexio");
+
 static const u8 gCreditsText_StoryboardingBy[] = _("Storyboarding by:");
 static const u8 gCreditsText_Kouta[] = _("Kouta Xenova");
 static const u8 gCreditsText_GraphicsBy[] = _("Custom art by:");
-static const u8 gCreditsText_EEGraphics1[] = _("EvilPanda");
-static const u8 gCreditsText_EEGraphics2[] = _("Rayan");
-static const u8 gCreditsText_EEGraphics3[] = _("Wind King Luca");
-static const u8 gCreditsText_EEGraphics4[] = _("Zavytar");
+static const u8 gCreditsText_EEGraphics1[] = _("Rayan");
+static const u8 gCreditsText_EEGraphics2[] = _("kendyvevo");
 static const u8 gCreditsText_DocumentationBy[] = _("Documentation By:");
 static const u8 gCreditsText_Toby[] = _("Toby");
 static const u8 gCreditsText_QADirectors[] = _("QA Directors:");
 static const u8 gCreditsText_Pidgey[] = _("Pidgey");
-static const u8 gCreditsText_BaseGameCredits[] = _("Base Game Credits:");
+static const u8 gCreditsText_BaseGameCredits[] = _("");
 static const u8 gCreditsText_Consultation[] = _("Consultants:");
 static const u8 gCreditsText_GriffinR[] = _("GriffinR");
 static const u8 gCreditsText_DizzyEggg[] = _("DizzyEggg");
-
 static const u8 gCreditsText_ExecutiveDirector[] = _("Executive Director");
 static const u8 gCreditsText_Director[] = _("Director");
 static const u8 gCreditsText_ArtDirector[] = _("Art Director");
@@ -407,6 +414,15 @@ static const struct CreditsEntry gCreditsEntry_Donorsp1[] = {0, FALSE, gCreditsT
 static const struct CreditsEntry gCreditsEntry_Donorsp2[] = {0, FALSE, gCreditsText_Donorsp2};
 static const struct CreditsEntry gCreditsEntry_Donorsp3[] = {0, FALSE, gCreditsText_Donorsp3};
 static const struct CreditsEntry gCreditsEntry_Donorsp4[] = {0, FALSE, gCreditsText_Donorsp4};
+static const struct CreditsEntry gCreditsEntry_Donorsp5[] = {0, FALSE, gCreditsText_Donorsp5}; 
+static const struct CreditsEntry gCreditsEntry_Donorsp6[] = {0, FALSE, gCreditsText_Donorsp6};
+static const struct CreditsEntry gCreditsEntry_Donorsp7[] = {0, FALSE, gCreditsText_Donorsp7};
+static const struct CreditsEntry gCreditsEntry_Donorsp8[] = {0, FALSE, gCreditsText_Donorsp8};
+static const struct CreditsEntry gCreditsEntry_Donorsp9[] = {0, FALSE, gCreditsText_Donorsp9};
+static const struct CreditsEntry gCreditsEntry_Donorsp10[] = {0, FALSE, gCreditsText_Donorsp10};
+static const struct CreditsEntry gCreditsEntry_Donorsp11[] = {0, FALSE, gCreditsText_Donorsp11};
+static const struct CreditsEntry gCreditsEntry_Donorsp12[] = {0, FALSE, gCreditsText_Donorsp12};
+static const struct CreditsEntry gCreditsEntry_Donorsp13[] = {0, FALSE, gCreditsText_Donorsp13};
 //page
 static const struct CreditsEntry gCreditsEntry_StoryboardingBy[] = {0, TRUE, gCreditsText_StoryboardingBy};
 static const struct CreditsEntry gCreditsEntry_Kouta[] = {0, FALSE, gCreditsText_Kouta};
@@ -414,8 +430,6 @@ static const struct CreditsEntry gCreditsEntry_Kouta[] = {0, FALSE, gCreditsText
 static const struct CreditsEntry gCreditsEntry_GraphicsBy[] = {0, TRUE, gCreditsText_GraphicsBy};
 static const struct CreditsEntry gCreditsEntry_EEGraphics1[] = {0, FALSE, gCreditsText_EEGraphics1};
 static const struct CreditsEntry gCreditsEntry_EEGraphics2[] = {0, FALSE, gCreditsText_EEGraphics2};
-static const struct CreditsEntry gCreditsEntry_EEGraphics3[] = {0, FALSE, gCreditsText_EEGraphics3};
-static const struct CreditsEntry gCreditsEntry_EEGraphics4[] = {0, FALSE, gCreditsText_EEGraphics4};
 //page
 static const struct CreditsEntry gCreditsEntry_DocumentationBy[] = {0, TRUE, gCreditsText_DocumentationBy};
 static const struct CreditsEntry gCreditsEntry_Toby[] = {0, FALSE, gCreditsText_Toby};
@@ -610,7 +624,28 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
         gCreditsEntry_Donorsp1,
         gCreditsEntry_Donorsp2,
         gCreditsEntry_Donorsp3,
-        gCreditsEntry_Donorsp4
+        _
+    },
+    {
+        gCreditsEntry_Donorsp4,
+        gCreditsEntry_Donorsp5,
+        gCreditsEntry_Donorsp6,
+        gCreditsEntry_Donorsp7,
+        _
+    },
+    {
+        gCreditsEntry_Donorsp8,
+        gCreditsEntry_Donorsp9,
+        gCreditsEntry_Donorsp10,
+        gCreditsEntry_Donorsp11,
+        _
+    },
+    {
+        gCreditsEntry_Donorsp12,
+        gCreditsEntry_Donorsp13,
+        _,
+        _,
+        _
     },
     {
         gCreditsEntry_StoryboardingBy,
@@ -622,9 +657,9 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
     {
         gCreditsEntry_GraphicsBy,
         gCreditsEntry_EEGraphics1,
+        _,
         gCreditsEntry_EEGraphics2,
-        gCreditsEntry_EEGraphics3,
-        gCreditsEntry_EEGraphics4
+        _
     },
     {
         gCreditsEntry_DocumentationBy,
@@ -637,19 +672,19 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
         gCreditsEntry_QADirectors,
         _,
         gCreditsEntry_Toby,
-        gCreditsEntry_Pidgey,
+        _,
         _
 
     },
     {
         gCreditsEntry_Consultation,
-        _,
         gCreditsEntry_GriffinR,
         gCreditsEntry_DizzyEggg,
+        gCreditsEntry_Pidgey,
         _
     },
     {
-        gCreditsEntry_BaseGameCredits,
+        _,
         _,
         _,
         _,
