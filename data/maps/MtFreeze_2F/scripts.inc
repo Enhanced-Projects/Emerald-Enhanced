@@ -1,0 +1,42 @@
+MtFreeze_2F_MapScripts::
+	.byte 0
+
+MtFreeze_2F_Pearl1::
+	lockall
+	goto_if_set FLAG_HIDDEN_MT_FREEZE_2F_PEARL_1, FrostyForestEnd
+	giveitem ITEM_PEARL
+	setflag FLAG_HIDDEN_MT_FREEZE_2F_PEARL_1
+	release
+	end
+
+MtFreeze_2F_Pearl2::
+	lockall
+	goto_if_set FLAG_HIDDEN_MT_FREEZE_2F_PEARL_2, FrostyForestEnd
+	giveitem ITEM_PEARL
+	setflag FLAG_HIDDEN_MT_FREEZE_2F_PEARL_2
+	release
+	end
+
+MtFreeze_2F_Pearl3::
+	lockall
+	goto_if_set FLAG_HIDDEN_MT_FREEZE_2F_PEARL_3, FrostyForestEnd
+	giveitem ITEM_PEARL
+	setflag FLAG_HIDDEN_MT_FREEZE_2F_PEARL_3
+	release
+	end
+
+MtFreeze_2F_Pearl4::
+	lockall
+	goto_if_set FLAG_HIDDEN_MT_FREEZE_2F_PEARL_4, FrostyForestEnd
+	giveitem ITEM_PEARL
+	setflag FLAG_HIDDEN_MT_FREEZE_2F_PEARL_4
+	release
+	end
+
+MtFreeze_2F_Pearl5::
+	lockall
+	goto_if_set FLAG_HIDDEN_MT_FREEZE_2F_PEARL_5, FrostyForestEnd
+	giveitem ITEM_PEARL
+	setflag FLAG_HIDDEN_MT_FREEZE_2F_PEARL_5
+	release
+	end

@@ -137,7 +137,7 @@
       "x": 25,
       "y": 18,
       "elevation": 3,
-      "dest_map": "MAP_MT_FREEZE",
+      "dest_map": "MAP_MT_FREEZE_1F",
       "dest_warp_id": 0
     }
   ],

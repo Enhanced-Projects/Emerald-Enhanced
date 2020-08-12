@@ -1829,3 +1829,23 @@ gTilesetPalettes_SnowyShorePokemonCenter::
 	.align 2
 gTilesetTiles_SnowyShorePokemonCenter::
 	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_MtFreeze::
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/mtfreeze/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_MtFreeze::
+	.incbin "data/tilesets/secondary/mtfreeze/tiles.4bpp.lz"

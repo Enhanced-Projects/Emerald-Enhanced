@@ -597,3 +597,11 @@ gMetatiles_SnowyShorePokemonCenter::
 	.align 1
 gMetatileAttributes_SnowyShorePokemonCenter::
 	.incbin "data/tilesets/secondary/snowyshorepokemoncenter/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_MtFreeze::
+	.incbin "data/tilesets/secondary/mtfreeze/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_MtFreeze::
+	.incbin "data/tilesets/secondary/mtfreeze/metatile_attributes.bin"

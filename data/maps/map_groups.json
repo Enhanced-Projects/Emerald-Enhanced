@@ -647,7 +647,10 @@
     "Igloo3",
     "Igloo4",
     "SnowyShore_Mart",
-    "MtFreeze_B1F"
+    "MtFreeze_B1F",
+    "MtFreeze_1F",
+    "MtFreeze_2F",
+    "MtFreeze_3F"
   ],
   "gMapGroup28": [
     "Route109_SeashoreHouse",

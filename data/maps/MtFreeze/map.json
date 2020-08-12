@@ -1,7 +1,7 @@
 {
   "id": "MAP_MT_FREEZE",
   "name": "MtFreeze",
-  "layout": "LAYOUT_SNOW_SHORE2",
+  "layout": "LAYOUT_MT_FREEZE",
   "music": "MUS_DAN02",
   "region_map_section": "MAPSEC_MT_FREEZE",
   "requires_flash": false,
@@ -80,22 +80,22 @@
       "x": 19,
       "y": 35,
       "elevation": 0,
-      "dest_map": "MAP_MT_FREEZE_B1F",
-      "dest_warp_id": 0
+      "dest_map": "MAP_MT_FREEZE_1F",
+      "dest_warp_id": 1
     },
     {
       "x": 20,
       "y": 35,
       "elevation": 0,
-      "dest_map": "MAP_MT_FREEZE",
-      "dest_warp_id": 2
+      "dest_map": "MAP_MT_FREEZE_1F",
+      "dest_warp_id": 1
     },
     {
       "x": 19,
       "y": 11,
       "elevation": 0,
-      "dest_map": "MAP_MT_FREEZE",
-      "dest_warp_id": 1
+      "dest_map": "MAP_MT_FREEZE_3F",
+      "dest_warp_id": 3
     }
   ],
   "coord_events": [

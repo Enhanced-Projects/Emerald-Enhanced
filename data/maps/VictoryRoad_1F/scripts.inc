@@ -43,43 +43,6 @@ VictoryRoad_1F_EventScript_Katelynn:: @ 8235ECF
 	msgbox VictoryRoad_1F_Text_KatelynnPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore: @ 8235EE6
-	.string "WALLY: Hi! {PLAYER}!\p"
-	.string "I bet you're surprised to see me here!\p"
-	.string "I made it all the way here, and it's\n"
-	.string "all thanks to you!\p"
-	.string "{PLAYER}, losing to you that time\n"
-	.string "made me stronger!\p"
-	.string "But I'm not going to lose anymore!\p"
-	.string "I'm going to win! For the Pokémon who\n"
-	.string "gave me courage and strength!\p"
-	.string "Okay… Here I come!$"
-
-VictoryRoad_1F_Text_WallyEntranceDefeat: @ 8235FFC
-	.string "Wow!\n"
-	.string "{PLAYER}, you are strong, after all!$"
-
-VictoryRoad_1F_Text_WallyPostEntranceBattle: @ 8236020
-	.string "WALLY: I couldn't beat you today,\n"
-	.string "{PLAYER}, but one of these days, I'll\l"
-	.string "catch up to you!$"
-
-VictoryRoad_1F_Text_WallyIntro: @ 8236073
-	.string "WALLY: Hi! {PLAYER}!\p"
-	.string "I've gotten stronger since that last\n"
-	.string "time! I wanted to show you, {PLAYER}!\p"
-	.string "Okay… Here I come!$"
-
-VictoryRoad_1F_Text_WallyDefeat: @ 82360DA
-	.string "Wow!\n"
-	.string "{PLAYER}, you are strong, after all!$"
-
-VictoryRoad_1F_Text_WallyPostBattle: @ 82360FE
-	.string "WALLY: I couldn't beat you this time,\n"
-	.string "too… But one of these days, {PLAYER},\l"
-	.string "I'm going to catch up to you…\p"
-	.string "And challenge the Pokémon League!$"
-
 VictoryRoad_1F_Text_EdgarIntro: @ 8236184
 	.string "I've made it this far a couple times,\n"
 	.string "but the last stretch is so long…$"
@@ -168,6 +131,3 @@ VR1_MoltresGotAway::
 
 OverworldLegendary_IntroMoltres: @put your intro here
 	.string "$"
-
-
-

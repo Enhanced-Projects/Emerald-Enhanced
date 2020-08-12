@@ -71,6 +71,14 @@ MtFreeze_B1F_EventScript_ItemFlameOrb::
 	finditem ITEM_FLAME_ORB
 	end
 
+MtFreeze_2F_EventScript_ItemRareCandy1::
+	finditem ITEM_RARE_CANDY
+	end
+
+MtFreeze_2F_EventScript_ItemRareCandy2::
+	finditem ITEM_RARE_CANDY
+	end
+
 Ryu_GiveItemScript::
 	finditem VAR_TEMP_7
 	return

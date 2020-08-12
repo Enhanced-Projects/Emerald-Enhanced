@@ -1199,3 +1199,9 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/FrostyForestUnderwater2/scripts.inc"
 
 	.include "data/maps/MtFreeze_B1F/scripts.inc"
+
+	.include "data/maps/MtFreeze_1F/scripts.inc"
+
+	.include "data/maps/MtFreeze_2F/scripts.inc"
+
+	.include "data/maps/MtFreeze_3F/scripts.inc"

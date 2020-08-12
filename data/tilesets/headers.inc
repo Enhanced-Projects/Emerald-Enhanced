@@ -885,3 +885,14 @@ gTileset_SnowyShorePokemonCenter::
 	.4byte gMetatiles_SnowyShorePokemonCenter
 	.4byte gMetatileAttributes_SnowyShorePokemonCenter
 	.4byte NULL
+
+	.align 2
+gTileset_MtFreeze::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_MtFreeze
+	.4byte gTilesetPalettes_MtFreeze
+	.4byte gMetatiles_MtFreeze
+	.4byte gMetatileAttributes_MtFreeze
+	.4byte NULL

@@ -613,6 +613,9 @@
 #define MAP_IGLOO4           (4 | (27 << 8))
 #define MAP_SNOWY_SHORE_MART (5 | (27 << 8))
 #define MAP_MT_FREEZE_B1F    (6 | (27 << 8))
+#define MAP_MT_FREEZE_1F     (7 | (27 << 8))
+#define MAP_MT_FREEZE_2F     (8 | (27 << 8))
+#define MAP_MT_FREEZE_3F     (9 | (27 << 8))
 
 // Map Group 28
 #define MAP_ROUTE109_SEASHORE_HOUSE                     (0 | (28 << 8))

@@ -4762,7 +4762,7 @@
       "blockdata_filepath": "data/layouts/MeteorFalls_3F/map.bin"
     },
     {
-      "id": "LAYOUT_SNOW_SHORE",
+      "id": "LAYOUT_SNOWY_SHORE",
       "name": "SnowyShore_Layout",
       "width": 80,
       "height": 40,
@@ -4772,7 +4772,7 @@
       "blockdata_filepath": "data/layouts/SnowyShore/map.bin"
     },
     {
-      "id": "LAYOUT_SNOW_SHORE2",
+      "id": "LAYOUT_MT_FREEZE",
       "name": "MtFreeze_Layout",
       "width": 40,
       "height": 40,
@@ -5050,6 +5050,36 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/MtFreeze_B1F/border.bin",
       "blockdata_filepath": "data/layouts/MtFreeze_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_FREEZE_1F",
+      "name": "MtFreeze_1F_Layout",
+      "width": 43,
+      "height": 43,
+      "primary_tileset": "gTileset_Snowy",
+      "secondary_tileset": "gTileset_MtFreeze",
+      "border_filepath": "data/layouts/MtFreeze_1F/border.bin",
+      "blockdata_filepath": "data/layouts/MtFreeze_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_FREEZE_2F",
+      "name": "MtFreeze_2F_Layout",
+      "width": 34,
+      "height": 33,
+      "primary_tileset": "gTileset_Snowy",
+      "secondary_tileset": "gTileset_MtFreeze",
+      "border_filepath": "data/layouts/MtFreeze_2F/border.bin",
+      "blockdata_filepath": "data/layouts/MtFreeze_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_FREEZE_3F",
+      "name": "MtFreeze_3F_Layout",
+      "width": 28,
+      "height": 41,
+      "primary_tileset": "gTileset_Snowy",
+      "secondary_tileset": "gTileset_MtFreeze",
+      "border_filepath": "data/layouts/MtFreeze_3F/border.bin",
+      "blockdata_filepath": "data/layouts/MtFreeze_3F/map.bin"
     }
   ]
 }
