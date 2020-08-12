@@ -353,7 +353,7 @@
 #define FLAG_RYU_DS_SHELLY_SCENE             0x14D
 
 #define FLAG_MIRAGE_TOWER_VISIBLE            0x14E // EE-Unused
-#define FLAG_CHOSE_ROOT_FOSSIL               0x14F // EE-Unused
+#define FLAG_HIDE_AQUAHQ_SHELLY              0x14F // hides shelly in the aqua hq when she becomes a follower.
 #define FLAG_CHOSE_CLAW_FOSSIL               0x150 // EE-Unused
 #define FLAG_RECEIVED_POWDER_JAR             0x151
 

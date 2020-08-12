@@ -496,7 +496,7 @@ RCR_FinishChallenge::
 	applymovement OBJ_EVENT_ID_PLAYER, RCR_ToHOF
 	applymovement OBJ_EVENT_ID_FOLLOWER, RCR_ToHOF
 	waitmovement OBJ_EVENT_ID_PLAYER
-	call RyuForceCancelFollowerForQuest
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	warp MAP_EVER_GRANDE_CITY_HALL_OF_FAME, 255, 7, 16
 	end
 

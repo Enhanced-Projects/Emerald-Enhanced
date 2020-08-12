@@ -143,16 +143,17 @@ MC_PlayerAqua::
 	
 MC_PlayerHelpedAqua:
 	.string "Nice job, {PLAYER}, you managed to beat\n"
-	.string "Maxie on your own! Who was that girl\p"
-	.string "back there crying? The one with\n"
-	.string "purple hair? ... ... ... \p"
-	.string "Oh well, it doesn't matter. What does\n"
-	.string "matter is that we're done here. Report\p"
-	.string "back to Shelly. I'm very impressed with\n"
-	.string "your work for us so far. I now oficially\p"
-	.string "promote you to Lieutenant. You'll\n"
-	.string "be working alongside Shelly as an\p"
-	.string "equal now. Congratulations.$"
+    .string "Maxie on your own!\p"
+    .string "Who was that girl back there crying?\n"
+    .string "The one with purple hair? ... ... ...\p"
+    .string "Oh well, it doesn't matter. What does\n"
+    .string "matter is that we're done here.\p"
+    .string "Report back to Shelly. I'm very\n"
+    .string "impressed with your work for us.\p"
+    .string "I now officially promote you to\n"
+    .string "Lieutenant.\p"
+    .string "You'll be working directly for\n"
+    .string "Shelly. Congratulations.$"
 	
 MC_FoundStone::
 	goto_if_set FLAG_RYU_PLAYER_ARCHIE_ACQ, ryu_end

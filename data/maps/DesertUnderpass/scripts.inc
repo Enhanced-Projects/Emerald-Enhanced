@@ -7,11 +7,6 @@ DesertUnderpass_OnTransition: @ 823AF3D
 	end
 
 DesertUnderpass_EventScript_Fossil:: @ 823AF41
-	lock
-	faceplayer
-	goto_if_set FLAG_CHOSE_ROOT_FOSSIL, DesertUnderpass_EventScript_GiveClawFossil
-	goto_if_set FLAG_CHOSE_CLAW_FOSSIL, DesertUnderpass_EventScript_GiveRootFossil
-	release
 	end
 
 DesertUnderpass_EventScript_GiveClawFossil:: @ 823AF57

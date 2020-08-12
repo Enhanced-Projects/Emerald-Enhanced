@@ -14,7 +14,8 @@ RyuResetFollowerPositionAR::
 	return
 
 RyuForceCancelFollowerForQuest:: @call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
-	goto RF_FollowerLeaveCall
+	call RF_FollowerLeaveCall
+	return
 	
 
 RyuFollowerSelectNPCScript::
@@ -121,6 +122,7 @@ RF_FollowerLeaveCall::
 	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, Ryu_RestoreBrendan
     case OBJ_EVENT_GFX_LEAF, Ryu_RestoreLeaf
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, Ryu_RestoreCourtney
+	case OBJ_EVENT_GFX_AQUA_MEMBER_F, Ryu_RestoreShelly
 	return
 	
 RF_FollowerLeave::
@@ -162,6 +164,12 @@ Ryu_RestoreCourtney::
 	destroyfollower
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY
 	addobject 1
+	release
+	end
+
+Ryu_RestoreShelly::
+	destroyfollower
+	clearflag FLAG_HIDE_AQUAHQ_SHELLY
 	release
 	end
 
