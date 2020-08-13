@@ -186,9 +186,13 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGHEATRAN
 	buffernumberstring 0, VAR_RYU_MAGMA
 	msgbox RDB_TempVarsViewMsg
 	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	msgbox RDB_SwapGenderQuery, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq RDB_SwapPlayerGender
