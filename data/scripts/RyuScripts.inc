@@ -1307,23 +1307,16 @@ JuanMega:
 @__________________________________________________________________________________________________Legendaries common scripts
 
 RyuLegendary_GeneralLegendEncounter::
-	msgbox StartingRandomBattleMsg
+	msgbox StartingRandomBattleMsg @displayed after activating the main script (optional, remove if dont need)
 	playmoncry VAR_TEMP_5, 0
-	msgbox StartingRandomBattleMsg
+	msgbox StartingRandomBattleMsg @displayed after the mon cry (optional, remove if dont need)
 	specialvar VAR_TEMP_7, CountBadges
 	multvar VAR_TEMP_7, 20
 	compare VAR_TEMP_7, 110
 	call_if_gt RyuLegendary_SetMaxScale
 	compare VAR_TEMP_7, 20
 	call_if_le RyuLegendary_SetBaseScale
-	msgbox StartingRandomBattleMsg
-	buffernumberstring 0, VAR_TEMP_5
-	buffernumberstring 1, VAR_TEMP_7
-	buffernumberstring 2, VAR_TEMP_9
-	copyvar VAR_0x8004, VAR_TEMP_5
-	copyvar VAR_0x8005, VAR_TEMP_7
-	copyvar VAR_0x8006, VAR_TEMP_9
-	msgbox TestMsg
+	msgbox StartingRandomBattleMsg   @displayed after legendary level is set (optional, remove if dont need)
 	setwildbattle VAR_TEMP_5, VAR_TEMP_7, VAR_TEMP_9
 	special BattleSetup_StartLegendaryBattle
 	waitstate
