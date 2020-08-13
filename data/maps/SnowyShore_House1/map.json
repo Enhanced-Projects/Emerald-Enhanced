@@ -1,9 +1,9 @@
 {
-  "id": "MAP_MAUVILLE_CITY_HOUSE1",
-  "name": "MauvilleCity_House1",
-  "layout": "LAYOUT_HOUSE2",
+  "id": "MAP_SNOWY_SHORE_HOUSE1",
+  "name": "SnowyShore_House1",
+  "layout": "LAYOUT_SNOWY_SHORE_HOUSE1",
   "music": "MUS_GOTOWN",
-  "region_map_section": "MAPSEC_MAUVILLE_CITY",
+  "region_map_section": "MAPSEC_SNOWY_SHORE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -15,8 +15,8 @@
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
-      "x": 4,
+      "graphics_id": "OBJ_EVENT_GFX_MAN_4",
+      "x": 5,
       "y": 4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -24,24 +24,37 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_House1_EventScript_RockSmashDude",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "x": 3,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_range_x": 2,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
       "flag": "0"
     }
   ],
   "warp_events": [
     {
-      "x": 3,
+      "x": 7,
       "y": 7,
       "elevation": 0,
-      "dest_map": "MAP_MAUVILLE_CITY",
-      "dest_warp_id": 4
+      "dest_map": "MAP_SNOWY_SHORE",
+      "dest_warp_id": 1
     },
     {
-      "x": 4,
+      "x": 8,
       "y": 7,
       "elevation": 0,
-      "dest_map": "MAP_MAUVILLE_CITY",
-      "dest_warp_id": 4
+      "dest_map": "MAP_SNOWY_SHORE",
+      "dest_warp_id": 1
     }
   ],
   "coord_events": [

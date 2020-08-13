@@ -1205,3 +1205,9 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/MtFreeze_2F/scripts.inc"
 
 	.include "data/maps/MtFreeze_3F/scripts.inc"
+
+	.include "data/maps/SnowyShore_House1/scripts.inc"
+
+	.include "data/maps/SnowyShore_House2/scripts.inc"
+
+	.include "data/maps/SnowyShore_House3/scripts.inc"

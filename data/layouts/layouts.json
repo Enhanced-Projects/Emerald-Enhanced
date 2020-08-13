@@ -5080,6 +5080,36 @@
       "secondary_tileset": "gTileset_MtFreeze",
       "border_filepath": "data/layouts/MtFreeze_3F/border.bin",
       "blockdata_filepath": "data/layouts/MtFreeze_3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SNOWY_SHORE_HOUSE1",
+      "name": "SnowyShore_House1_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
+      "border_filepath": "data/layouts/SnowyShore_House1/border.bin",
+      "blockdata_filepath": "data/layouts/SnowyShore_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_SNOWY_SHORE_HOUSE2",
+      "name": "SnowyShore_House2_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/SnowyShore_House2/border.bin",
+      "blockdata_filepath": "data/layouts/SnowyShore_House2/map.bin"
+    },
+    {
+      "id": "LAYOUT_SNOWY_SHORE_HOUSE3",
+      "name": "SnowyShore_House3_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/SnowyShore_House3/border.bin",
+      "blockdata_filepath": "data/layouts/SnowyShore_House3/map.bin"
     }
   ]
 }

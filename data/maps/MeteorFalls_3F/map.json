@@ -1,58 +1,60 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_METEOR_FALLS_3F",
-    "layout": "LAYOUT_METEOR_FALLS_3F",
-    "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN03",
-    "name": "MeteorFalls_3F",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_NECROZMA",
-            "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "MeteorFalls_Necrozma",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 6,
-            "y": 15
-        }
-    ],
-    "region_map_section": "MAPSEC_METEOR_FALLS",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_METEOR_FALLS_2F",
-            "dest_warp_id": 1,
-            "elevation": 3,
-            "x": 6,
-            "y": 4
-        },
-        {
-            "dest_map": "MAP_ROUTE115",
-            "dest_warp_id": 4,
-            "elevation": 3,
-            "x": 6,
-            "y": 7
-        },
-        {
-            "dest_map": "MAP_ROUTE115",
-            "dest_warp_id": 3,
-            "elevation": 3,
-            "x": 6,
-            "y": 22
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_METEOR_FALLS_3F",
+  "name": "MeteorFalls_3F",
+  "layout": "LAYOUT_METEOR_FALLS_3F",
+  "music": "MUS_DAN03",
+  "region_map_section": "MAPSEC_METEOR_FALLS",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
+      "x": 6,
+      "y": 15,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MeteorFalls_Necrozma",
+      "flag": "FLAG_RYU_NECROZMA"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 6,
+      "y": 4,
+      "elevation": 3,
+      "dest_map": "MAP_METEOR_FALLS_2F",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 6,
+      "y": 7,
+      "elevation": 3,
+      "dest_map": "MAP_ROUTE115",
+      "dest_warp_id": 4
+    },
+    {
+      "x": 6,
+      "y": 22,
+      "elevation": 3,
+      "dest_map": "MAP_ROUTE115",
+      "dest_warp_id": 3
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }
