@@ -58,7 +58,7 @@ static const u8 sCourtneyBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/cou
 static const u8 sCourtneyBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_map.bin");
 static const u8 sCourtneyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney.gbapal");
 
-static const u8 sHeatranBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran_tiles.4bpp");
+static const u8 sHeatranBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran_tiles.8bpp");
 static const u8 sHeatranBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran_map.bin");
 static const u8 sHeatranBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran.gbapal");
 
@@ -200,14 +200,14 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 	},
 	[SCENEBGHEATRAN] = 
 	{
-		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
 		.scrollMode = CUTSCENE_SCROLL_NONE,
         .tiles = sHeatranBgTiles,
 		.tileSize = sizeof(sHeatranBgTiles),
         .map = sHeatranBgMap,
 		.mapSize = sizeof(sHeatranBgMap),
         .palette = sHeatranBgPalette,
-		.palIdxCnt = 16
+		.palIdxCnt = 224
 	},
 };
 
