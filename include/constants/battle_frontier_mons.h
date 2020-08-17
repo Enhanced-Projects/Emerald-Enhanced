@@ -1059,7 +1059,10 @@
 #define FRONTIER_MON_BLANK1_BLANK4                 1035
 #define FRONTIER_MON_BLANK2_BLANK4                 1036
 #define FRONTIER_MON_BLANK3_BLANK4                 1037
+#define FRONTIER_MON_RYU_FROSLASS                  1038
+#define FRONTIER_MON_RYU_NINETALES                 1039
+#define FRONTIER_MON_RYU_HOUNDOOM                  1040
 
-#define NUM_FRONTIER_MONS                          1038
+#define NUM_FRONTIER_MONS                          1041
 
 #endif //GUARD_CONSTANTS_BATTLE_FRONTIER_MONS_H

@@ -8821,5 +8821,32 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .nature = NATURE_HASTY,
         .ivs = 31,
         .ability = 1
+    },
+    [FRONTIER_MON_RYU_FROSLASS] = {
+        .species = SPECIES_FROSLASS,
+        .moves = {MOVE_HAIL, MOVE_WILL_O_WISP, MOVE_CONFUSE_RAY, MOVE_ICE_BEAM},
+        .heldItem = ITEM_FOCUS_SASH,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_SP_ATTACK,
+        .nature = NATURE_MODEST,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_RYU_NINETALES] = {
+        .species = SPECIES_NINETALES,
+        .moves = {MOVE_CURSE, MOVE_HYPNOSIS, MOVE_DREAM_EATER, MOVE_FLAMETHROWER},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_HP | F_EV_SPREAD_DEFENSE | F_EV_SPREAD_SP_DEFENSE,
+        .nature = NATURE_CALM,
+        .ivs = 31,
+        .ability = 1
+    },
+    [FRONTIER_MON_RYU_HOUNDOOM] = {
+        .species = SPECIES_HOUNDOOM,
+        .moves = {MOVE_TORMENT, MOVE_EMBARGO, MOVE_CRUNCH, MOVE_TAUNT},
+        .heldItem = ITEM_HOUNDOOMINITE,
+        .evSpread = F_EV_SPREAD_HP | F_EV_SPREAD_SP_DEFENSE,
+        .nature = NATURE_JOLLY,
+        .ivs = 31,
+        .ability = 1
     }
 };
