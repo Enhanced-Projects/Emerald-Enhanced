@@ -5987,6 +5987,14 @@ int RyuCheckRelMegaReward(void)
                     return ITEM_VENUSAURITE;
                 }
             }
+        case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+        {
+            if (FlagGet(FLAG_RYU_COURTNEY_MEGA_REWARD) == 0)
+            {
+                FlagSet(FLAG_RYU_COURTNEY_MEGA_REWARD);
+                return ITEM_CAMERUPTITE;
+            }
+        }
         default:
         {
             return 0;

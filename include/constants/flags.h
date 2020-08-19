@@ -378,7 +378,7 @@
 #define FLAG_REMATCH_ANDRES                  0x15E // EE-Unused
 #define FLAG_REMATCH_DUSTY                   0x15F // EE-Unused
 #define FLAG_REMATCH_LOLA                    0x160 // EE-Unused
-#define FLAG_REMATCH_RICKY                   0x161 // EE-Unused
+#define FLAG_RYU_COURTNEY_MEGA_REWARD        0x161 // Courtney mega stone reward.
 #define FLAG_REMATCH_LILA_AND_ROY            0x162 // EE-Unused
 #define FLAG_REMATCH_CRISTIN                 0x163 // EE-Unused
 #define FLAG_REMATCH_BROOKE                  0x164 // EE-Unused
