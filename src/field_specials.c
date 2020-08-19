@@ -5945,6 +5945,7 @@ int Ryu_GiveRevivedFossilEgg(void)
     }
 
     SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &egg);
+    SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
     return 1;
 }  
 
