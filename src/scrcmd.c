@@ -1386,7 +1386,7 @@ bool8 ScrCmd_multichoicedefault(struct ScriptContext *ctx)
     u8 left = ScriptReadByte(ctx);
     u8 top = ScriptReadByte(ctx);
     u8 multichoiceId = ScriptReadByte(ctx);
-    u8 defaultChoice = ScriptReadByte(ctx);
+    u8 defaultChoice = (VarGet(ScriptReadHalfword(ctx)));
     u8 ignoreBPress = ScriptReadByte(ctx);
 
     if (ScriptMenu_MultichoiceWithDefault(left, top, multichoiceId, ignoreBPress, defaultChoice) == TRUE)
