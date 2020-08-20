@@ -54,7 +54,8 @@ Ryu_MiningGemstoneOreRefiner::@Add this to the gemstone refiner
     msgbox RyuPlsChoosOre
     special RyuCountGemOres
     delay 10
-    multichoicedefault 0, 3, MULTI_RLS_GEMSTONEQUALITYMENU, 0, 1
+    call Ryu_MiningGemstoneRefinerMenuPositionCheck
+    multichoicedefault 0, 3, MULTI_RLS_GEMSTONEQUALITYMENU, VAR_TEMP_4, 1
     switch VAR_RESULT
     case 0, Ryu_RefineCommonOre
     case 1, Ryu_RefineUncommonOre
@@ -75,6 +76,7 @@ Ryu_RefineCommonOre::
     additem VAR_TEMP_B, 1
 	bufferitemname 3, VAR_TEMP_B
     msgbox Ryu_RefineSuccessful
+    setflag FLAG_TEMP_3
     release
     end
 
@@ -91,6 +93,7 @@ Ryu_RefineUncommonOre::
     additem VAR_TEMP_B, 1
 	bufferitemname 3, VAR_TEMP_B
     msgbox Ryu_RefineSuccessful
+    setflag FLAG_TEMP_4
     release
     end
 
@@ -107,11 +110,32 @@ Ryu_RefineRareOre::
     additem VAR_TEMP_B, 1
 	bufferitemname 3, VAR_TEMP_B
     msgbox Ryu_RefineSuccessful
+    setflag FLAG_TEMP_5
     closemessage
     release
     end
 
+Ryu_MiningGemstoneRefinerMenuPositionCheck::
+    goto_if_set FLAG_TEMP_3, Ryu_MGRMP1
+    goto_if_set FLAG_TEMP_4, Ryu_MGRMP2
+    goto_if_set FLAG_TEMP_5, Ryu_MGRMP3
+    setvar VAR_TEMP_4, 0
+    return
+
+Ryu_MGRMP1::
+    setvar VAR_TEMP_4, 0
+    return
+
+Ryu_MGRMP2::
+    setvar VAR_TEMP_4, 1
+    return
+
+Ryu_MGRMP3::
+    setvar VAR_TEMP_4, 2
+    return
+
 Ryu_ExitRefinery::
+    setvar VAR_TEMP_4, 3
     msgbox Ryu_PlsComeBackLater
     release
     end
@@ -395,7 +419,7 @@ Ryu_Level3Mining:
 @overworld mining scripts==========================================================================
 
 MiningRock1::
-    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    @goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
     setflag FLAG_TEMP_1
     call Ryu_MineRock
     release

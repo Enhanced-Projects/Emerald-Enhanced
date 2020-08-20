@@ -868,7 +868,7 @@
 	.byte \x
 	.byte \y
 	.byte \list
-	.byte \default
+	.2byte \default
 	.byte \b
 	.endm
 

@@ -153,6 +153,13 @@ const u8 gText_FFearLine4[] = _("set aided by Sandstorm. Sturdy");
 const u8 gText_FFearLine5[] = _("Magnemite paralyzes and Swaggers,");
 const u8 gText_FFearLine6[] = _("while Recycling its Berry Juice.");
 
+const u8 gText_FGhostlyAnticsLine1[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}Froslass{COLOR DARK_GREY}{SHADOW LIGHT_GREY} leads with Hail to take");
+const u8 gText_FGhostlyAnticsLine2[] = _("advantage of its ability, and uses it");
+const u8 gText_FGhostlyAnticsLine3[] = _("to status foes as much as possible.");
+const u8 gText_FGhostlyAnticsLine4[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}Ninetales{COLOR DARK_GREY}{SHADOW LIGHT_GREY} works like stall and uses");
+const u8 gText_FGhostlyAnticsLine5[] = _("sleep to control the enemy. {COLOR LIGHT_BLUE}{SHADOW BLUE}Houndoom{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
+const u8 gText_FGhostlyAnticsLine6[] = _("uses its moves to confuse the enemy.");
+
 //String list groups for individual infoboxes
 
 static const struct InfoBox sInfoBoxPokemonData[] = 
@@ -335,6 +342,16 @@ static const struct InfoBox sInfoBoxFFearStarter[] =
     {gText_FFearLine6},
 };
 
+static const struct InfoBox sInfoBoxFGhostlyAnticsStarter[] = 
+{
+    {gText_FGhostlyAnticsLine1},
+    {gText_FGhostlyAnticsLine2},
+    {gText_FGhostlyAnticsLine3},
+    {gText_FGhostlyAnticsLine4},
+    {gText_FGhostlyAnticsLine5},
+    {gText_FGhostlyAnticsLine6},
+};
+
 //You also need to add INFOBOX(name) to the bottom of vars.h so that these can be accessed from script.
 
 //List of infobox groups used when calling them
@@ -357,7 +374,8 @@ static const struct InfoBoxListStruct sInfoBoxes[] =
     BOXLIST(sInfoBoxFGimmickStarter), //INFOBOX_F_STARTER_GIMMICK
     BOXLIST(sInfoBoxFEggtacticalStarter), //INFOBOX_F_STARTER_EGGTACTICAL
     BOXLIST(sInfoBoxFMasochistStarter), //INFOBOX_F_STARTER_MASOCHIST
-    BOXLIST(sInfoBoxFFearStarter) //INFOBOX_F_STARTER_FEAR
+    BOXLIST(sInfoBoxFFearStarter), //INFOBOX_F_STARTER_FEAR
+    BOXLIST(sInfoBoxFGhostlyAnticsStarter) //INFOBOX_F_STARTER_GHOSTLYANTICS
 };
 
 void PrintInfoTable(u8 windowId, u8 itemCount, const struct InfoBox *strs)

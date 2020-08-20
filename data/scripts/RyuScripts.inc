@@ -1597,6 +1597,7 @@ Ryu_CheckForPartnerReward::
 	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, Ryu_GiveDawnMegaAndReturn
 	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, Ryu_GiveBrendanMegaAndReturn
 	case OBJ_EVENT_GFX_LEAF, Ryu_GiveLeafMegaAndReturn
+	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, Ryu_GiveCourtneyMegaAndReturn
 	goto ryu_return
 
 Ryu_GiveShellyMegaAndReturn::
@@ -1627,17 +1628,27 @@ Ryu_GiveLeafMegaAndReturn::
 	closemessage
 	goto ryu_return
 
+Ryu_GiveCourtneyMegaAndReturn::
+	msgbox CourtneyMegaReward
+	closemessage
+	giveitem ITEM_CAMERUPTITE
+	closemessage
+	goto ryu_return
+
 ShellyMegaReward:
-	.string "Shelly:{COLOR LIGHT_RED}{SHADOW RED} Hey babe, I wanted you to have\nthis as a thanks for helping me\lsee the light.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey babe, I wanted you to have\nthis as a thanks for helping me\lsee the light.$"
 
 DawnMegaReward:
-	.string "Dawn:{COLOR LIGHT_RED}{SHADOW RED} Here! I grabbed this for you.\nIt's for a really fluffy birb!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Here! I grabbed this for you.\nIt's for a really fluffy birb!$"
 
 BrendanMegaReward:
-	.string "Brendan:{COLOR LIGHT_BLUE}{SHADOW BLUE} Hey, girl. I know how you like\nmy athletic physique.\pHere's a gift that will benefit you\nif you have a certain athletic\lpokemon!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey, girl. I know how you like\nmy athletic physique.\pHere's a gift that will benefit you\nif you have a certain athletic\lpokemon!$"
 
 LeafMegaReward:
-	.string "Lana:{COLOR LIGHT_RED}{SHADOW RED} Hey... Um... Take this...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(She's beet red in the face.)$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey... Um... Take this...\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(She's beet red in the face.)$"
+
+CourtneyMegaReward:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Here's another thing I took from\nMaxie.\pIt's of no use to me, but\nyou can probably use it well.$"
 
 @==================================================================================================Ability Capsule
 
