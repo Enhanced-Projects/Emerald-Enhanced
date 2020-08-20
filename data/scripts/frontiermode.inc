@@ -25,7 +25,7 @@ RyuFrontierStarterMenu1::
 	case 3, RF_Balance
 	case 4, RF_BulkyOffense
 	case 5, RF_Stall
-	case 6, RF_GhostlyAntics
+	case 6, RF_Blank1
 	case 7, RF_Blank1
 	case 8, RF_StarterMenu2Jump
 	goto RF_Blank1
@@ -187,30 +187,6 @@ RF_Stall::
 	
 RF_StallIntro:
 	.string "Showing the Stall team description.$"
-
-RF_GhostlyAntics::
-	drawinfobox INFOBOX_F_STARTER_GHOSTLYANTICS
-	msgbox RF_GhostlyAnticsIntro
-	removeinfobox
-	closemessage
-	msgbox RF_ChooseThisSet, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_ne RyuFrontierStarterMenu1
-	setvar VAR_TEMP_A, 1038
-	special RyuGiveFrontierMon
-	delay 20
-	setvar VAR_TEMP_A, 1039
-	special RyuGiveFrontierMon
-	delay 20
-	setvar VAR_TEMP_A, 1040
-	special RyuGiveFrontierMon
-	msgbox RF_CompletedGivingStarter
-	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
-	release
-	end
-
-RF_GhostlyAnticsIntro:
-	.string "Showing the Ghostly Antics team.$"
 
 @starter menu 2
 RF_Hail::
