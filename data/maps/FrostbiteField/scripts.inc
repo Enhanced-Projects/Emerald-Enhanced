@@ -14,19 +14,3 @@ FrostbiteField_TestBattle::
 	trainerbattle_no_intro TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText
 	release
 	end
-
-FrostbiteField_PolarPillarEntranceTrigger::
-	lock
-	specialvar VAR_RESULT, TobyCheckPlayerHasMon
-	compare VAR_RESULT, TRUE
-	goto_if_eq FrostbiteField_OpenPolarPillar
-	releaseall
-	end
-
-FrostbiteField_OpenPolarPillar::
-	playmoncry SPECIES_CRYOGONAL, 0
-	setmetatile 23, 38, 988, 1
-	setmetatile 23, 39, 996, 0
-	special DrawWholeMapView
-	releaseall
-	end

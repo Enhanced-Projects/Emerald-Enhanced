@@ -5097,7 +5097,7 @@
       "width": 10,
       "height": 8,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
       "border_filepath": "data/layouts/SnowyShore_House2/border.bin",
       "blockdata_filepath": "data/layouts/SnowyShore_House2/map.bin"
     },
@@ -5107,9 +5107,19 @@
       "width": 10,
       "height": 8,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
       "border_filepath": "data/layouts/SnowyShore_House3/border.bin",
       "blockdata_filepath": "data/layouts/SnowyShore_House3/map.bin"
+    },
+    {
+      "id": "LAYOUT_SNOWY_SHORE_MR_FRIGUS_HOUSE",
+      "name": "SnowyShore_MrFrigusHouse_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
+      "border_filepath": "data/layouts/SnowyShore_MrFrigusHouse/border.bin",
+      "blockdata_filepath": "data/layouts/SnowyShore_MrFrigusHouse/map.bin"
     }
   ]
 }

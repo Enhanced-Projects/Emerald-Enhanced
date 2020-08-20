@@ -4817,10 +4817,10 @@ SnowyShore_Text_JoyceIntro:
 	.string "pokemon!$"
 
 SnowyShore_Text_JoyceDefeated:
-	.string "Oh dear…$"
+	.string "Oh deer…$"
 
 SnowyShore_Text_JoycePostBattle:
-	.string "You're the first to beat me…\n"
+	.string "You're the first to beat me…\p"
 	.string "I'll work my way back up by taking on\n"
 	.string "trainers I happen to meet!$"
 

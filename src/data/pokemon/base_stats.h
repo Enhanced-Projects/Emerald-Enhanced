@@ -362,8 +362,8 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_BEEDRILL] =
     {
-        .baseHP        = 76,
-        .baseAttack    = 115,
+        .baseHP        = 65,
+        .baseAttack    = 125,
         .baseDefense   = 40,
         .baseSpeed     = 125,
         .baseSpAttack  = 15,
@@ -381,7 +381,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_BUG,
         .eggGroup2 = EGG_GROUP_BUG,
-        .abilities = {ABILITY_SWARM, ABILITY_ADAPTABILITY},
+        .abilities = {ABILITY_SWARM, ABILITY_MERCILESS},
         .abilityHidden = ABILITY_SNIPER,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_YELLOW,
@@ -22219,11 +22219,11 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_MEGA_BEEDRILL] =
     {
         .baseHP        = 65,
-        .baseAttack    = 150,
-        .baseDefense   = 40,
-        .baseSpeed     = 145,
+        .baseAttack    = 155,
+        .baseDefense   = 70,
+        .baseSpeed     = 155,
         .baseSpAttack  = 15,
-        .baseSpDefense = 80,
+        .baseSpDefense = 90,
         .type1 = TYPE_BUG,
         .type2 = TYPE_POISON,
         .catchRate = 45,

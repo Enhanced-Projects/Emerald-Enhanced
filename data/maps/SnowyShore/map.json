@@ -317,6 +317,27 @@
       "elevation": 0,
       "dest_map": "MAP_SNOWY_SHORE_HOUSE1",
       "dest_warp_id": 0
+    },
+    {
+      "x": 13,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_SNOWY_SHORE_HOUSE2",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 23,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_SNOWY_SHORE_HOUSE3",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 49,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_SNOWY_SHORE_MR_FRIGUS_HOUSE",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [

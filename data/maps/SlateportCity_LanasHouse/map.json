@@ -1,108 +1,108 @@
 {
-    "allow_cycling": false,
-    "allow_escaping": false,
-    "allow_running": false,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "LH_AltLeafStoryTrigger",
-            "type": "sign",
-            "x": 2,
-            "y": 10
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-        {
-            "elevation": 0,
-            "script": "LH_Intro",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 4,
-            "y": 10
-        },
-        {
-            "elevation": 0,
-            "script": "LH_Intro",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 5,
-            "y": 9
-        },
-        {
-            "elevation": 0,
-            "script": "LH_Intro",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 6,
-            "y": 9
-        },
-        {
-            "elevation": 0,
-            "script": "LH_Intro",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 7,
-            "y": 10
-        }
-    ],
-    "id": "MAP_SLATEPORT_CITY_LANAS_HOUSE",
-    "layout": "LAYOUT_SLATEPORT_CITY_LANAS_HOUSE",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_FINECITY",
-    "name": "SlateportCity_LanasHouse",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO",
-            "graphics_id": "OBJ_EVENT_GFX_BOY_1",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 6,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO",
-            "graphics_id": "OBJ_EVENT_GFX_LEAF",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "LH_Leaf_Home_chat",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 15,
-            "y": 9
-        }
-    ],
-    "region_map_section": "MAPSEC_SLATEPORT_CITY",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-        {
-            "dest_map": "MAP_SLATEPORT_CITY",
-            "dest_warp_id": 11,
-            "elevation": 3,
-            "x": 6,
-            "y": 10
-        },
-        {
-            "dest_map": "MAP_SLATEPORT_CITY",
-            "dest_warp_id": 11,
-            "elevation": 3,
-            "x": 5,
-            "y": 10
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_SLATEPORT_CITY_LANAS_HOUSE",
+  "name": "SlateportCity_LanasHouse",
+  "layout": "LAYOUT_SLATEPORT_CITY_LANAS_HOUSE",
+  "music": "MUS_FINECITY",
+  "region_map_section": "MAPSEC_SLATEPORT_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "x": 6,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LEAF",
+      "x": 15,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LH_Leaf_Home_chat",
+      "flag": "FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 6,
+      "y": 10,
+      "elevation": 3,
+      "dest_map": "MAP_SLATEPORT_CITY",
+      "dest_warp_id": 11
+    },
+    {
+      "x": 5,
+      "y": 10,
+      "elevation": 3,
+      "dest_map": "MAP_SLATEPORT_CITY",
+      "dest_warp_id": 11
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "LH_Intro"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "LH_Intro"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "LH_Intro"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "LH_Intro"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 2,
+      "y": 10,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LH_AltLeafStoryTrigger"
+    }
+  ]
 }

@@ -41,7 +41,7 @@
     {
       "x": 4,
       "y": 38,
-      "elevation": 0,
+      "elevation": 3,
       "dest_map": "MAP_MT_FREEZE",
       "dest_warp_id": 2
     },
