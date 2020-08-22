@@ -297,8 +297,10 @@ Ryu_CheckShardCount::
     release
     end
 
-Ryu_NotEnoughSpace:
+Ryu_NotEnoughSpace::
     msgbox Ryu_NoSpaceMessage2
+    release
+    end
 
 Ryu_NoSpaceMessage2:
     .string "You don't have enough space\nto receive this item!\pMake space and come back!$"
