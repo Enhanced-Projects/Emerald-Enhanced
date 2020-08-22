@@ -6,6 +6,8 @@ MtFreeze_B1F_Heatran::
 	msgbox OverworldLegendary_IntroHeatran
 	setvar VAR_TEMP_5, SPECIES_HEATRAN
 	setvar VAR_TEMP_9, ITEM_HEAT_ROCK
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGHEATRAN
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_RAN, FP_HeatranGotAway
