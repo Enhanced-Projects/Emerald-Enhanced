@@ -195,7 +195,7 @@ Text_WantToWaterfall: @ 8290AC3
 	.string "Would you like to bend reality?$"
 
 Text_MonUsedWaterfall: @ 8290AFC
-	.string "{PLAYER} is defeating physics.$"
+	.string "{PLAYER} is defying physics.$"
 
 EventScript_UseDive:: @ 8290B0F
 	lockall
