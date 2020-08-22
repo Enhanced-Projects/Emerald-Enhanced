@@ -1957,7 +1957,7 @@ const u8 gText_RyuTeleportMtPyreExterior[] = _(" Magma HQ");
 const u8 gText_RyuTeleportLCCDEPT[] = _(" LC DeptStore");
 const u8 gText_RyuTeleportMCMH[] = _(" Berry Farm");
 const u8 gText_RyuTeleportLCAH[] = _(" AquaOffice");
-const u8 gText_RyuTeleportSnowshore[] = _(" Snowshore");
+const u8 gText_RyuTeleportSnowyShore[] = _(" Snowy Shore");
 
 const u8 gText_RyuTeleportBattleFrontierGate[] = _(" Front Gate");
 const u8 gText_RyuTeleportBattleFrontierTower[] = _(" Battle Tower");
@@ -2127,7 +2127,7 @@ const u8 gText_RyuFrontierStarter1_2[] = _("Offense");
 const u8 gText_RyuFrontierStarter1_3[] = _("Balance");
 const u8 gText_RyuFrontierStarter1_4[] = _("Bulky Offense");
 const u8 gText_RyuFrontierStarter1_5[] = _("Stall");
-const u8 gText_RyuFrontierStarter1_6[] = _("Ghostly Antics");
+const u8 gText_RyuFrontierStarter1_6[] = _("Blank");
 const u8 gText_RyuFrontierStarter1_7[] = _("Blank");
 const u8 gText_RyuFrontierStarter2_1[] = _("Hail");
 const u8 gText_RyuFrontierStarter2_2[] = _("Rain");

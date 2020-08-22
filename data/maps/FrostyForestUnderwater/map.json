@@ -1,30 +1,34 @@
 {
-    "allow_cycling": false,
-    "allow_escaping": false,
-    "allow_running": false,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-    ],
-    "connections": [
-        {
-            "direction": "emerge",
-            "map": "MAP_FROSTY_FOREST",
-            "offset": 0
-        }
-    ],
-    "coord_events": [
-    ],
-    "id": "MAP_FROSTY_FOREST_UNDERWATER",
-    "layout": "LAYOUT_FROSTY_FOREST_UNDERWATER",
-    "map_type": "MAP_TYPE_UNDERWATER",
-    "music": "MUS_DEEPDEEP",
-    "name": "FrostyForestUnderwater",
-    "object_events": [
-    ],
-    "region_map_section": "MAPSEC_FROSTY_FOREST",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-    ],
-    "weather": "WEATHER_UNDERWATER_BUBBLES"
+  "id": "MAP_FROSTY_FOREST_UNDERWATER",
+  "name": "FrostyForestUnderwater",
+  "layout": "LAYOUT_FROSTY_FOREST_UNDERWATER",
+  "music": "MUS_DEEPDEEP",
+  "region_map_section": "MAPSEC_FROSTY_FOREST",
+  "requires_flash": false,
+  "weather": "WEATHER_UNDERWATER_BUBBLES",
+  "map_type": "MAP_TYPE_UNDERWATER",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "direction": "emerge",
+      "offset": 0,
+      "map": "MAP_FROSTY_FOREST"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }

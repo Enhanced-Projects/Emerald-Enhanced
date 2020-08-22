@@ -53,7 +53,7 @@
     "FallarborTown",
     "VerdanturfTown",
     "PacifidlogTown",
-    "SnowShore",
+    "SnowyShore",
     "CraggyCoast",
     "FrostyForest",
     "FrostbiteField",
@@ -103,11 +103,12 @@
     "Underwater7",
     "Underwater8",
     "Underwater9",
-    "SnowshoreUnderwater",
+    "SnowyShoreUnderwater",
     "CraggyCoastUnderwater",
     "CraggyCoastUnderwater2",
     "CraggyCoastUnderwaterCave",
-    "FrostyForestUnderwater"
+    "FrostyForestUnderwater",
+    "FrostyForestUnderwater2"
   ],
   "gMapGroup1": [
     "LittlerootTown_BrendansHouse_1F",
@@ -640,12 +641,20 @@
     "SafariZone_HiddenGrotto"
   ],
   "gMapGroup27": [
+    "SnowyShore_House1",
+    "SnowyShore_House2",
+    "SnowyShore_House3",
+    "SnowyShore_Mart",
+    "SnowyShore_MrFrigusHouse",
     "Igloo1",
     "Igloo2",
     "Igloo2Basement",
     "Igloo3",
     "Igloo4",
-    "Snowshore_Mart"
+    "MtFreeze_B1F",
+    "MtFreeze_1F",
+    "MtFreeze_2F",
+    "MtFreeze_3F"
   ],
   "gMapGroup28": [
     "Route109_SeashoreHouse",

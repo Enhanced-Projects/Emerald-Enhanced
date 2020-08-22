@@ -12,7 +12,6 @@ FieryPath_EventScript_MoveScottToFallarbor:: @ 8230F37
 	clearflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
 	return
 
-
 FP_Entei::
 	goto_if_set FLAG_RYU_ENTEI, ryu_end
 	goto_if_set FLAG_RYU_ENTEI_RAN, ryu_end
@@ -37,7 +36,8 @@ FP_EnteiGotAway::
 	end
 
 OverworldLegendary_IntroEntei: @put your intro here
-	.string "$"
+	.string "Something is emerging from the\n"
+    .string "magma!$"
 	
 FP_CourtneyRomance1::
 	compare VAR_RYU_MAGMA, 405
@@ -100,7 +100,7 @@ FP_LeaderMaxie:
 	.string "Leader Maxie!$"
 	
 FP_You:
-	.string "You...?$"
+	.string "You…?$"
 	
 FP_GoAway:
 	.string "Go away. I've no desire to speak to\n"
@@ -124,7 +124,7 @@ FP_IfYouTell:
     .string "will strangle you with my bare\l"
     .string "hands.\p"
     .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She gives you an intense look\n"
-    .string " that softens a little...)$"
+    .string " that softens a little…)$"
 	
 FP_CourtneyStraightens:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Courtney straightens up her\n"
@@ -160,16 +160,3 @@ FP_CourtneyExits:
 	walk_fastest_down
 	walk_fastest_down
 	step_end
-
-
-	
-
-
-	
-
-
-	
-	
-	
-	
-

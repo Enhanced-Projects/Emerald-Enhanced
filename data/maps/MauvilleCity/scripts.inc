@@ -77,359 +77,6 @@ MauvilleCity_EventScript_TVExplained:: @ 81DF413
 	release
 	end
 
-MauvilleCity_EventScript_WallysUncle:: @ 81DF41D
-	lock
-	faceplayer
-	goto_if_set FLAG_DECLINED_WALLY_BATTLE_MAUVILLE, MauvilleCity_EventScript_UncleAskPlayerToBattleWally
-	msgbox MauvilleCity_Text_UncleHesTooPeppy, MSGBOX_DEFAULT
-	closemessage
-	applymovement 7, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-MauvilleCity_EventScript_UncleAskPlayerToBattleWally:: @ 81DF43D
-	msgbox MauvilleCity_Text_UncleCanYouBattleWally, MSGBOX_DEFAULT
-	closemessage
-	applymovement 7, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	release
-	end
-
-MauvilleCity_EventScript_Wally:: @ 81DF452
-	lockall
-	goto_if_set FLAG_DECLINED_WALLY_BATTLE_MAUVILLE, MauvilleCity_EventScript_WallyRequestBattleAgain
-	applymovement 6, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	msgbox MauvilleCity_Text_WallyWantToChallengeGym, MSGBOX_DEFAULT
-	msgbox MauvilleCity_Text_UncleYourePushingIt, MSGBOX_DEFAULT
-	msgbox MauvilleCity_Text_WallyWeCanBeatAnyone, MSGBOX_DEFAULT
-	applymovement 6, Common_Movement_FacePlayer
-	waitmovement 0
-	playse SE_PIN
-	applymovement 6, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 6, Common_Movement_Delay48
-	waitmovement 0
-	msgbox MauvilleCity_Text_WallyWillYouBattleMe, MSGBOX_YESNO
-	goto MauvilleCity_EventScript_BattleWallyPrompt
-	end
-
-MauvilleCity_EventScript_BattleWallyPrompt:: @ 81DF4AD
-	compare VAR_RESULT, YES
-	call_if_eq MauvilleCity_EventScript_BattleWally
-	compare VAR_RESULT, NO
-	goto_if_eq MauvilleCity_EventScript_DeclineWallyBattle
-	closemessage
-	switch VAR_FACING
-	case DIR_NORTH, MauvilleCity_EventScript_WallyAndUncleExitNorth
-	case DIR_EAST, MauvilleCity_EventScript_WallyAndUncleExitEast
-	end
-
-MauvilleCity_EventScript_WallyAndUncleExitNorth:: @ 81DF4E0
-	applymovement OBJ_EVENT_ID_PLAYER, MauvilleCity_Movement_PlayerWatchWallyExitNorth1
-	applymovement 6, MauvilleCity_Movement_WallyExitNorth1
-	applymovement 7, MauvilleCity_Movement_WallysUncleExitNorth1
-	waitmovement 0
-	applymovement 6, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	delay 30
-	applymovement OBJ_EVENT_ID_PLAYER, MauvilleCity_Movement_PlayerFaceUncleNorth
-	applymovement 7, MauvilleCity_Movement_WallysUncleApproachPlayerNorth
-	waitmovement 0
-	msgbox MauvilleCity_Text_UncleVisitUsSometime, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, MauvilleCity_Movement_PlayerWatchWallyExitNorth2
-	applymovement 7, MauvilleCity_Movement_WallysUncleExitNorth2
-	applymovement 6, MauvilleCity_Movement_WallyExitNorth2
-	waitmovement 0
-	goto MauvilleCity_EventScript_DefeatedWally
-	end
-
-MauvilleCity_EventScript_WallyAndUncleExitEast:: @ 81DF53D
-	applymovement OBJ_EVENT_ID_PLAYER, MauvilleCity_Movement_PlayerWatchWallyExitEast1
-	applymovement 6, MauvilleCity_Movement_WallyExitEast1
-	applymovement 7, MauvilleCity_Movement_WallysUncleExitEast1
-	waitmovement 0
-	applymovement 6, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	delay 30
-	applymovement 7, MauvilleCity_Movement_WallysUncleApproachPlayerEast
-	waitmovement 0
-	msgbox MauvilleCity_Text_UncleVisitUsSometime, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, MauvilleCity_Movement_PlayerWatchWallyExitEast2
-	applymovement 7, MauvilleCity_Movement_WallysUncleExitEast2
-	applymovement 6, MauvilleCity_Movement_WallyExitEast2
-	waitmovement 0
-	goto MauvilleCity_EventScript_DefeatedWally
-	end
-
-MauvilleCity_EventScript_DefeatedWally:: @ 81DF593
-	removeobject 6
-	removeobject 7
-	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
-	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
-	setflag FLAG_DEFEATED_WALLY_MAUVILLE
-	setvar VAR_WALLY_CALL_STEP_COUNTER, 0
-	setflag FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL
-	compare VAR_FACING, DIR_NORTH
-	call_if_eq MauvilleCity_EventScript_ScottApproachPlayerNorth
-	compare VAR_FACING, DIR_EAST
-	call_if_eq MauvilleCity_EventScript_ScottApproachPlayerEast
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	msgbox MauvilleCity_Text_ScottYouDidntHoldBack, MSGBOX_DEFAULT
-	closemessage
-	addvar VAR_SCOTT_STATE, 1
-	compare VAR_FACING, DIR_NORTH
-	call_if_eq MauvilleCity_EventScript_ScottExitNorth
-	compare VAR_FACING, DIR_EAST
-	call_if_eq MauvilleCity_EventScript_ScottExitEast
-	removeobject 11
-	releaseall
-	end
-
-MauvilleCity_EventScript_ScottApproachPlayerNorth:: @ 81DF5F3
-	addobject 11
-	applymovement 11, MauvilleCity_Movement_ScottApproachPlayerNorth
-	waitmovement 0
-	return
-
-MauvilleCity_EventScript_ScottApproachPlayerEast:: @ 81DF601
-	setobjectxyperm 11, 12, 13
-	addobject 11
-	applymovement 11, MauvilleCity_Movement_ScottApproachPlayerEast
-	waitmovement 0
-	return
-
-MauvilleCity_EventScript_ScottExitNorth:: @ 81DF616
-	applymovement OBJ_EVENT_ID_PLAYER, MauvilleCity_Movement_PlayerWatchScottExitNorth
-	applymovement 11, MauvilleCity_Movement_ScottExitNorth
-	waitmovement 0
-	return
-
-MauvilleCity_EventScript_ScottExitEast:: @ 81DF628
-	applymovement OBJ_EVENT_ID_PLAYER, MauvilleCity_Movement_PlayerWatchScottExitEast
-	applymovement 11, MauvilleCity_Movement_ScottExitEast
-	waitmovement 0
-	return
-
-MauvilleCity_EventScript_BattleWally:: @ 81DF63A
-	msgbox MauvilleCity_Text_WallyHereICome, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_WALLY_MAUVILLE, MauvilleCity_Text_WallyDefeat
-	applymovement 6, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	msgbox MauvilleCity_Text_WallyIllGoBackToVerdanturf, MSGBOX_DEFAULT
-	applymovement 6, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox MauvilleCity_Text_ThankYouNotEnoughToBattle, MSGBOX_DEFAULT
-	applymovement 6, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	msgbox MauvilleCity_Text_UncleNoNeedToBeDown, MSGBOX_DEFAULT
-	return
-
-MauvilleCity_EventScript_DeclineWallyBattle:: @ 81DF683
-	setflag FLAG_DECLINED_WALLY_BATTLE_MAUVILLE
-	msgbox MauvilleCity_Text_WallyMyUncleWontKnowImStrong, MSGBOX_DEFAULT
-	release
-	end
-
-MauvilleCity_EventScript_WallyRequestBattleAgain:: @ 81DF690
-	applymovement 6, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox MauvilleCity_Text_WallyPleaseBattleMe, MSGBOX_YESNO
-	goto MauvilleCity_EventScript_BattleWallyPrompt
-	end
-
-MauvilleCity_Movement_WallyExitNorth1: @ 81DF6A8
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_left
-	step_end
-
-MauvilleCity_Movement_WallyExitEast1: @ 81DF6AE
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-MauvilleCity_Movement_WallyExitNorth2: @ 81DF6B4
-	delay_16
-	delay_16
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	delay_8
-	step_end
-
-MauvilleCity_Movement_WallyExitEast2: @ 81DF6C0
-	delay_16
-	delay_16
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	delay_8
-	step_end
-
-MauvilleCity_Movement_PlayerWatchWallyExitNorth2: @ 81DF6CC
-	delay_16
-	delay_8
-	walk_in_place_fastest_left
-	step_end
-
-MauvilleCity_Movement_PlayerWatchWallyExitEast2: @ 81DF6D0
-	delay_16
-	delay_16
-	delay_16
-	walk_in_place_fastest_left
-	step_end
-
-MauvilleCity_Movement_PlayerWatchScottExitNorth: @ 81DF6D5
-	delay_16
-	walk_in_place_fastest_left
-	step_end
-
-MauvilleCity_Movement_PlayerWatchScottExitEast: @ 81DF6D8
-	delay_16
-	delay_16
-	walk_in_place_fastest_left
-	step_end
-
-MauvilleCity_Movement_PlayerWatchWallyExitEast1: @ 81DF6DC
-	delay_16
-	walk_in_place_fastest_down
-	step_end
-
-MauvilleCity_Movement_PlayerWatchWallyExitNorth1: @ 81DF6DF
-	delay_16
-	walk_in_place_fastest_left
-	step_end
-
-MauvilleCity_Movement_WallysUncleExitNorth1: @ 81DF6E2
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	step_end
-
-MauvilleCity_Movement_WallysUncleExitEast1: @ 81DF6E8
-	walk_left
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	step_end
-
-MauvilleCity_Movement_PlayerFaceUncleNorth: @ 81DF6EE
-	delay_16
-	delay_8
-	delay_4
-	walk_in_place_fastest_down
-	step_end
-
-MauvilleCity_Movement_WallysUncleApproachPlayerNorth: @ 81DF6F3
-	walk_right
-	walk_right
-	walk_in_place_fastest_up
-	step_end
-
-MauvilleCity_Movement_WallysUncleApproachPlayerEast: @ 81DF6F7
-	walk_right
-	walk_up
-	step_end
-
-MauvilleCity_Movement_WallysUncleExitNorth2: @ 81DF6FA
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-MauvilleCity_Movement_WallysUncleExitEast2: @ 81DF703
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-MauvilleCity_Movement_ScottApproachPlayerNorth: @ 81DF70D
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_in_place_fastest_up
-	step_end
-
-MauvilleCity_Movement_ScottApproachPlayerEast: @ 81DF719
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	step_end
-
-MauvilleCity_Movement_ScottExitNorth: @ 81DF725
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-MauvilleCity_Movement_ScottExitEast: @ 81DF72F
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
 MauvilleCity_EventScript_Wattson:: @ 81DF73A
 	lock
 	faceplayer
@@ -462,153 +109,26 @@ MauvilleCity_EventScript_ReceivedThunderbolt:: @ 81DF7B0
 	release
 	end
 
-MauvilleCity_EventScript_RegisterWallyCall:: @ 81DF7BA
-	lockall
-	pokenavcall MauvilleCity_Text_WallyPokenavCall
-	waitmessage
-	delay 30
-	playfanfare MUS_ME_TORE_EYE
-	msgbox MauvilleCity_Text_RegisteredWally, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	releaseall
-	end
-
-MauvilleCity_Text_UncleHesTooPeppy: @ 81DF7DC
-	.string "UNCLE: It's because of Pokémon that\n"
-	.string "this boy's got more pep, I suppose…\l"
-	.string "But he's become a bit too peppy…$"
-
-MauvilleCity_Text_WallyWantToChallengeGym: @ 81DF845
-	.string "WALLY: Aww, UNCLE, please?\p"
-	.string "I want to challenge this Gym and see\n"
-	.string "how much better I've become.\p"
-	.string "Please? May I, please?$"
-
-MauvilleCity_Text_UncleYourePushingIt: @ 81DF8B9
-	.string "UNCLE: Now hold on, WALLY.\p"
-	.string "Since you started living with Pokémon,\n"
-	.string "you have grown quite a lot stronger.\p"
-	.string "But don't you think you're pushing it\n"
-	.string "to suddenly challenge a Gym?$"
-
-MauvilleCity_Text_WallyWeCanBeatAnyone: @ 81DF963
-	.string "WALLY: I'm not pushing it.\p"
-	.string "If I combine forces with RALTS,\n"
-	.string "we can beat anyone!$"
-
-MauvilleCity_Text_WallyWillYouBattleMe: @ 81DF9B2
-	.string "WALLY: Oh! Hi, {PLAYER}!\p"
-	.string "I've gotten a lot stronger since\n"
-	.string "we met.\p"
-	.string "{PLAYER}, I want you and my UNCLE to\n"
-	.string "understand that.\p"
-	.string "{PLAYER}, please, will you have\n"
-	.string "a battle with me?$"
-
-MauvilleCity_Text_WallyMyUncleWontKnowImStrong: @ 81DFA4A
-	.string "WALLY: Oh… If you won't battle me,\n"
-	.string "{PLAYER}, my UNCLE won't know that I've\l"
-	.string "become really strong.$"
-
-MauvilleCity_Text_UncleCanYouBattleWally: @ 81DFAA5
-	.string "UNCLE: {PLAYER}, was it?\n"
-	.string "On WALLY's behalf, can I ask you to\l"
-	.string "battle with him just this once?\p"
-	.string "I don't think he's going to listen to\n"
-	.string "any reason the way he is now.$"
-
-MauvilleCity_Text_WallyPleaseBattleMe: @ 81DFB42
-	.string "WALLY: {PLAYER}, please!\n"
-	.string "Battle with me, please.$"
-
-MauvilleCity_Text_WallyHereICome: @ 81DFB6D
-	.string "WALLY: {PLAYER}, thank you.\p"
-	.string "Okay… Here I come!$"
-
-MauvilleCity_Text_WallyDefeat: @ 81DFB96
-	.string "WALLY: … … … … … … …\p"
-	.string "… … … … … … … …\p"
-	.string "I lost…$"
-
-MauvilleCity_Text_WallyIllGoBackToVerdanturf: @ 81DFBC3
-	.string "WALLY: UNCLE…\n"
-	.string "I'll go back to VERDANTURF…$"
-
-MauvilleCity_Text_ThankYouNotEnoughToBattle: @ 81DFBED
-	.string "{PLAYER}, thank you.\n"
-	.string "Being a Trainer is tough, isn't it?\p"
-	.string "It's not enough just to have Pokémon\n"
-	.string "and make them battle. That isn't what\l"
-	.string "being a real Trainer is about.$"
-
-MauvilleCity_Text_UncleNoNeedToBeDown: @ 81DFC8A
-	.string "UNCLE: WALLY, there's no need to be so\n"
-	.string "down on yourself.\p"
-	.string "Why, what's keeping you from becoming\n"
-	.string "stronger and stronger?\p"
-	.string "Come on, let's go home.\n"
-	.string "Everyone's waiting for you.$"
-
-MauvilleCity_Text_UncleVisitUsSometime: @ 81DFD34
-	.string "UNCLE: {PLAYER}, it just dawned on me\n"
-	.string "that you must be the Trainer who kept\l"
-	.string "an eye out for WALLY when he caught\l"
-	.string "his Pokémon.\p"
-	.string "Why don't you visit us in VERDANTURF\n"
-	.string "sometime?\l"
-	.string "I'm sure WALLY would enjoy it.$"
-
-
-MauvilleCity_Text_WallyPokenavCall: @ 81DFDFB
-	.string "… … … … … …\n"
-	.string "… … … … … Beep!\p"
-	.string "WALLY: Oh, hello, {PLAYER}!\p"
-	.string "I just wanted to tell you that\n"
-	.string "my uncle bought me a Pokénav!\p"
-	.string "Now I can get in touch with you\n"
-	.string "anytime, {PLAYER}!\p"
-	.string "… … … … … …\n"
-	.string "… … … … … Click!$"
-
-MauvilleCity_Text_RegisteredWally: @ 81DFEB4
-	.string "Registered WALLY\n"
-	.string "in the Pokénav.$"
-
-MauvilleCity_Text_ScottYouDidntHoldBack: @ 81DFED5
-	.string "SCOTT: Hehe…\n"
-	.string "I was watching that match!\p"
-	.string "You're friends with that boy WALLY,\n"
-	.string "aren't you?\p"
-	.string "But you didn't hold anything back\n"
-	.string "and beat him impressively.\p"
-	.string "Yeah! That's what a real Pokémon\n"
-	.string "battle is all about!\p"
-	.string "I idolize Trainers like that!\p"
-	.string "… … … … … …\n"
-	.string "I'll be cheering for you!$"
-
 MauvilleCity_Text_WattsonNeedFavorTakeKey: @ 81DFFE4
 	.string "Wattson: Oh, {PLAYER}!\n"
 	.string "You look like you have a lot of zip!\l"
 	.string "That's a good thing, wahahahaha!\p"
 	.string "Fine! I've decided!\n"
 	.string "I need a favor, {PLAYER}!\p"
-	.string "MAUVILLE CITY has an underground\n"
-	.string "sector called NEW MAUVILLE.\p"
+	.string "Mauville City has an underground\n"
+	.string "sector called New Mauville.\p"
 	.string "{PLAYER}, I'd like you to go there and\n"
-	.string "switch off the GENERATOR.\p"
-	.string "The GENERATOR has been running a bit\n"
+	.string "switch off the generator.\p"
+	.string "The generator has been running a bit\n"
 	.string "haywire. It's getting unsafe.\p"
-	.string "Here, this is the KEY to get into\n"
-	.string "NEW MAUVILLE.$"
+	.string "Here, this is the Key to get into\n"
+	.string "New Mauville.$"
 
 MauvilleCity_Text_WattsonWontBeChallenge: @ 81E0154
 	.string "Wattson: Don't you worry about it.\n"
 	.string "It won't be a challenge to you.\p"
-	.string "The entrance to NEW MAUVILLE is just\n"
-	.string "a short SURF away from ROUTE 110.\p"
+	.string "The entrance to New Mauville is just\n"
+	.string "a short swim away from Route 110.\p"
 	.string "That's it, then, you have my trust!\n"
 	.string "Wahahahaha!$"
 
@@ -639,12 +159,12 @@ MauvilleCity_Text_AllSortsOfPeopleComeThrough: @ 81E037C
 	.string "people coming through.$"
 
 MauvilleCity_Text_RydelVeryGenerous: @ 81E03FB
-	.string "Have you been to RYDEL's CYCLES yet?\p"
-	.string "RYDEL, the owner, is a very generous\n"
+	.string "Have you been to Rydel's Cycles yet?\p"
+	.string "Rydel, the owner, is a very generous\n"
 	.string "man.$"
 
 MauvilleCity_Text_PokemonCanJumpYouOnBike: @ 81E044A
-	.string "Even if you're riding a BIKE,\n"
+	.string "Even if you're riding a Bike,\n"
 	.string "wild Pokémon could jump you.$"
 
 MauvilleCity_Text_CitySign: @ 81E0485
@@ -652,14 +172,14 @@ MauvilleCity_Text_CitySign: @ 81E0485
 	.string "“The bright and shiny city of fun!”$"
 
 MauvilleCity_Text_GymSign: @ 81E04B7
-	.string "MAUVILLE CITY Pokémon Gym\n"
-	.string "LEADER: Wattson\l"
+	.string "MAUVILLE CITY POKEMON GYM\n"
+	.string "Leader: Wattson\l"
 	.string "“The cheerfully electrifying man!”$"
 
 MauvilleCity_Text_BikeShopSign: @ 81E0504
 	.string "“Ride in gravel and shake up your\n"
 	.string "soul!”\l"
-	.string "RYDEL's CYCLES$"
+	.string "RYDEL'S CYCLES$"
 
 MauvilleCity_Text_GameCornerSign: @ 81E053C
 	.string "“The play spot for all!”\n"

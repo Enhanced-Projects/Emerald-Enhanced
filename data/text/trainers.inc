@@ -4780,83 +4780,83 @@ Route134_Text_HudsonPostBattle: @ 82A4AD8
 	.string "My buddy's a timid fellow, so I'm\n"
 	.string "worried about him.$"
 
-Snowshore_Text_HaroldIntro:
+SnowyShore_Text_HaroldIntro:
 	.string "My dogs are looking for a fun\n"
 	.string "match. Will you join us?$"
 
-Snowshore_Text_HaroldDefeated:
+SnowyShore_Text_HaroldDefeated:
 	.string "Ah, well played.$"
 
-Snowshore_Text_HaroldPostBattle:
+SnowyShore_Text_HaroldPostBattle:
 	.string "I never leave home without my\n"
 	.string "Herdier and Stoutland.$"
 
-Snowshore_Text_TimIntro:
+SnowyShore_Text_TimIntro:
 	.string "I found a cute Spheal in the water!$"
 
-Snowshore_Text_TimDefeated:
+SnowyShore_Text_TimDefeated:
 	.string "My Spheal may not be a good\n"
 	.string "battler, but I don't mind.$"
 
-Snowshore_Text_TimPostBattle:
+SnowyShore_Text_TimPostBattle:
 	.string "You should catch many cute pokemon!$"
 
-Snowshore_Text_JimIntro:
+SnowyShore_Text_JimIntro:
 	.string "I just became a trainer, I hope I\n"
 	.string "will do well…$"
 
-Snowshore_Text_JimDefeated:
+SnowyShore_Text_JimDefeated:
 	.string "Aw, I did my best.$"
 
-Snowshore_Text_JimPostBattle:
+SnowyShore_Text_JimPostBattle:
 	.string "You look much more experienced\n"
 	.string "than me at battling.$"
 
-Snowshore_Text_JoyceIntro:
+SnowyShore_Text_JoyceIntro:
 	.string "You're no match for my deer\n"
 	.string "pokemon!$"
 
-Snowshore_Text_JoyceDefeated:
-	.string "Oh dear…$"
+SnowyShore_Text_JoyceDefeated:
+	.string "Oh deer…$"
 
-Snowshore_Text_JoycePostBattle:
-	.string "You're the first to beat me…\n"
+SnowyShore_Text_JoycePostBattle:
+	.string "You're the first to beat me…\p"
 	.string "I'll work my way back up by taking on\n"
 	.string "trainers I happen to meet!$"
 
-Snowshore_Text_DeltonIntro:
+SnowyShore_Text_DeltonIntro:
 	.string "I caught a lot of strong-looking\n"
 	.string "pokemon!$"
 
-Snowshore_Text_DeltonDefeated:
+SnowyShore_Text_DeltonDefeated:
 	.string "I can't believe my legendary\n"
 	.string "pokemon lost!$"
 
-Snowshore_Text_DeltonPostBattle:
+SnowyShore_Text_DeltonPostBattle:
 	.string "An old fellow told me about a\n"
 	.string "legendary Ice/Flying pokemon.\p"
 	.string "I caught a whole team of them!$"
 
-Snowshore_Text_MarcusIntro:
+SnowyShore_Text_MarcusIntro:
 	.string "My Piloswine takes it slow and\n"
 	.string "steady, just like me!$"
 
-Snowshore_Text_MarcusDefeated:
+SnowyShore_Text_MarcusDefeated:
 	.string "My pokemon might be too slow\n"
 	.string "to keep up…$"
 
-Snowshore_Text_MarcusPostBattle:
+SnowyShore_Text_MarcusPostBattle:
 	.string "As a hiker, I'm not bothered by the\n"
 	.string "snow. I can take on any terrain!$"
 
-Snowshore_Text_NickIntro:
+SnowyShore_Text_NickIntro:
 	.string "My mom gave me Running Shoes, I've\n"
 	.string "been running around all day!$"
 
-Snowshore_Text_NickDefeated:
+SnowyShore_Text_NickDefeated:
 	.string "You are so big and strong!$"
 
-Snowshore_Text_NickPostBattle:
+SnowyShore_Text_NickPostBattle:
 	.string "I want to run around the whole\n"
 	.string "island with my Running Shoes.$"
 

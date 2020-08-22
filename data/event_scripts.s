@@ -1142,7 +1142,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 
 	.include "data/maps/MeteorFalls_3F/scripts.inc"
 
-	.include "data/maps/SnowShore/scripts.inc"
+	.include "data/maps/SnowyShore/scripts.inc"
 
 	.include "data/maps/MtFreeze/scripts.inc"
 
@@ -1152,7 +1152,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 
 	.include "data/maps/FrostbiteField/scripts.inc"
 
-	.include "data/maps/SnowshoreUnderwater/scripts.inc"
+	.include "data/maps/SnowyShoreUnderwater/scripts.inc"
 
 	.include "data/maps/FrostyForestUnderwater/scripts.inc"
 
@@ -1182,7 +1182,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 
 	.include "data/maps/LilycoveCity_Harbor_Story/scripts.inc"
 
-	.include "data/maps/Snowshore_Mart/scripts.inc"
+	.include "data/maps/SnowyShore_Mart/scripts.inc"
 
 	.include "data/maps/MagmaHideout_AdminQuarters/scripts.inc"
 
@@ -1195,3 +1195,21 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/TreasureHuntersHouse_MagmaEvent/scripts.inc"
 
 	.include "data/maps/Route124_MaxieHideoutCave/scripts.inc"
+
+	.include "data/maps/FrostyForestUnderwater2/scripts.inc"
+
+	.include "data/maps/MtFreeze_B1F/scripts.inc"
+
+	.include "data/maps/MtFreeze_1F/scripts.inc"
+
+	.include "data/maps/MtFreeze_2F/scripts.inc"
+
+	.include "data/maps/MtFreeze_3F/scripts.inc"
+
+	.include "data/maps/SnowyShore_House1/scripts.inc"
+
+	.include "data/maps/SnowyShore_House2/scripts.inc"
+
+	.include "data/maps/SnowyShore_House3/scripts.inc"
+
+	.include "data/maps/SnowyShore_MrFrigusHouse/scripts.inc"

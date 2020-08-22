@@ -19,14 +19,14 @@
       "map": "MAP_FROSTY_FOREST"
     },
     {
-      "direction": "down",
-      "offset": -40,
-      "map": "MAP_SNOW_SHORE"
-    },
-    {
       "direction": "left",
       "offset": 40,
       "map": "MAP_MT_FREEZE"
+    },
+    {
+      "direction": "down",
+      "offset": -40,
+      "map": "MAP_SNOWY_SHORE"
     }
   ],
   "object_events": [
@@ -209,25 +209,10 @@
       "elevation": 0,
       "dest_map": "MAP_IGLOO4",
       "dest_warp_id": 0
-    },
-    {
-      "x": 23,
-      "y": 40,
-      "elevation": 5,
-      "dest_map": "MAP_FROSTBITE_FIELD",
-      "dest_warp_id": 0
     }
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 23,
-      "y": 40,
-      "elevation": 5,
-      "var": "VAR_TEMP_5",
-      "var_value": "0",
-      "script": "FrostbiteField_PolarPillarEntranceTrigger"
-    }
+
   ],
   "bg_events": [
     {

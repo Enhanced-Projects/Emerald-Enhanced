@@ -23,6 +23,13 @@
       "elevation": 3,
       "dest_map": "MAP_FROSTBITE_FIELD",
       "dest_warp_id": 2
+    },
+    {
+      "x": 4,
+      "y": 2,
+      "elevation": 3,
+      "dest_map": "MAP_IGLOO2BASEMENT",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [

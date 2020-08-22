@@ -1,210 +1,211 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 4,
-            "flag": "FLAG_HIDDEN_ITEM_VICTORY_ROAD_1F_ULTRA_BALL",
-            "item": "ITEM_ULTRA_BALL",
-            "type": "hidden_item",
-            "x": 30,
-            "y": 39
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock1",
-            "type": "sign",
-            "x": 29,
-            "y": 13
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock2",
-            "type": "sign",
-            "x": 29,
-            "y": 24
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock3",
-            "type": "sign",
-            "x": 5,
-            "y": 30
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MiningRock4",
-            "type": "sign",
-            "x": 6,
-            "y": 36
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_VICTORY_ROAD_1F",
-    "layout": "LAYOUT_VICTORY_ROAD_1F",
-    "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_C_ROAD",
-    "name": "VictoryRoad_1F",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "VictoryRoad_1F_EventScript_Edgar",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 33,
-            "y": 22
-        },
-        {
-            "elevation": 4,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "VictoryRoad_1F_EventScript_Hope",
-            "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 6,
-            "y": 15
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
-            "script": "VictoryRoad_1F_EventScript_Albert",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 27,
-            "y": 34
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_ITEM_VICTORY_ROAD_1F_MAX_ELIXIR",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "VictoryRoad_1F_EventScript_ItemMaxElixir",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 40,
-            "y": 26
-        },
-        {
-            "elevation": 4,
-            "flag": "FLAG_ITEM_VICTORY_ROAD_1F_PP_UP",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "VictoryRoad_1F_EventScript_ItemPPUp",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 27,
-            "y": 15
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "VictoryRoad_1F_EventScript_Katelynn",
-            "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 29,
-            "y": 17
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "VictoryRoad_1F_EventScript_Quincy",
-            "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 32,
-            "y": 17
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_MOLTRES",
-            "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "VR1_Moltres",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 39,
-            "y": 9
-        }
-    ],
-    "region_map_section": "MAPSEC_VICTORY_ROAD",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_EVER_GRANDE_CITY",
-            "dest_warp_id": 2,
-            "elevation": 3,
-            "x": 15,
-            "y": 40
-        },
-        {
-            "dest_map": "MAP_EVER_GRANDE_CITY",
-            "dest_warp_id": 3,
-            "elevation": 3,
-            "x": 39,
-            "y": 5
-        },
-        {
-            "dest_map": "MAP_VICTORY_ROAD_B1F",
-            "dest_warp_id": 5,
-            "elevation": 3,
-            "x": 21,
-            "y": 32
-        },
-        {
-            "dest_map": "MAP_VICTORY_ROAD_B1F",
-            "dest_warp_id": 2,
-            "elevation": 4,
-            "x": 42,
-            "y": 38
-        },
-        {
-            "dest_map": "MAP_VICTORY_ROAD_B1F",
-            "dest_warp_id": 4,
-            "elevation": 4,
-            "x": 9,
-            "y": 14
-        },
-        {
-            "dest_map": "MAP_VICTORY_ROAD_COVE",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 10,
-            "y": 20
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_VICTORY_ROAD_1F",
+  "name": "VictoryRoad_1F",
+  "layout": "LAYOUT_VICTORY_ROAD_1F",
+  "music": "MUS_C_ROAD",
+  "region_map_section": "MAPSEC_VICTORY_ROAD",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "x": 33,
+      "y": 22,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "VictoryRoad_1F_EventScript_Edgar",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "x": 6,
+      "y": 15,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "VictoryRoad_1F_EventScript_Hope",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "x": 27,
+      "y": 34,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "VictoryRoad_1F_EventScript_Albert",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 40,
+      "y": 26,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "VictoryRoad_1F_EventScript_ItemMaxElixir",
+      "flag": "FLAG_ITEM_VICTORY_ROAD_1F_MAX_ELIXIR"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 27,
+      "y": 15,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "VictoryRoad_1F_EventScript_ItemPPUp",
+      "flag": "FLAG_ITEM_VICTORY_ROAD_1F_PP_UP"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "x": 29,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "VictoryRoad_1F_EventScript_Katelynn",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "x": 32,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "VictoryRoad_1F_EventScript_Quincy",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VIGOROTH_CARRYING_BOX",
+      "x": 39,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "VR1_Moltres",
+      "flag": "FLAG_RYU_MOLTRES"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 15,
+      "y": 40,
+      "elevation": 3,
+      "dest_map": "MAP_EVER_GRANDE_CITY",
+      "dest_warp_id": 2
+    },
+    {
+      "x": 39,
+      "y": 5,
+      "elevation": 3,
+      "dest_map": "MAP_EVER_GRANDE_CITY",
+      "dest_warp_id": 3
+    },
+    {
+      "x": 21,
+      "y": 32,
+      "elevation": 3,
+      "dest_map": "MAP_VICTORY_ROAD_B1F",
+      "dest_warp_id": 5
+    },
+    {
+      "x": 42,
+      "y": 38,
+      "elevation": 4,
+      "dest_map": "MAP_VICTORY_ROAD_B1F",
+      "dest_warp_id": 2
+    },
+    {
+      "x": 9,
+      "y": 14,
+      "elevation": 4,
+      "dest_map": "MAP_VICTORY_ROAD_B1F",
+      "dest_warp_id": 4
+    },
+    {
+      "x": 10,
+      "y": 20,
+      "elevation": 0,
+      "dest_map": "MAP_VICTORY_ROAD_COVE",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 30,
+      "y": 39,
+      "elevation": 4,
+      "item": "ITEM_ULTRA_BALL",
+      "flag": "FLAG_HIDDEN_ITEM_VICTORY_ROAD_1F_ULTRA_BALL"
+    },
+    {
+      "type": "sign",
+      "x": 29,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock1"
+    },
+    {
+      "type": "sign",
+      "x": 29,
+      "y": 24,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock2"
+    },
+    {
+      "type": "sign",
+      "x": 5,
+      "y": 30,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock3"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 36,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock4"
+    }
+  ]
 }

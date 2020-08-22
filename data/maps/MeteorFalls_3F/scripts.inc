@@ -1,13 +1,12 @@
 MeteorFalls_3F_MapScripts::
 	.byte 0
 
-
 MeteorFalls_Necrozma::
 	goto_if_set FLAG_RYU_NECROZMA, ryu_end
 	goto_if_set FLAG_RYU_NECROZMA_RAN, ryu_end
 	msgbox OverworldLegendary_IntroNecrozma
 	setvar VAR_TEMP_5, SPECIES_NECROZMA
-	setvar VAR_TEMP_9, ITEM_SHARP_BEAK
+	setvar VAR_TEMP_9, ITEM_DARK_GEM
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_RAN, MeteorFalls_NecrozmaGotAway

@@ -290,8 +290,8 @@ r115_HoldOn:
 	
 r115_GruntIntro:
 	.string "Grunt: I got into trouble for\n"
-	.string "failing that mission, ya know! Now\l"
-	.string "it's payback time!$"
+	.string "failing that mission, ya know!\p"
+	.string "Now it's payback time!$"
 
 r115_LostAgain:
 	.string "Tch, lost again...$"

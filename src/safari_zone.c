@@ -39,23 +39,12 @@ static void DecrementFeederStepCounters(void);
 
 bool32 GetSafariZoneFlag(void)
 {
-    return FlagGet(FLAG_SYS_SAFARI_MODE);
-}
-
-void SetSafariZoneFlag(void)
-{
-    FlagSet(FLAG_SYS_SAFARI_MODE);
-}
-
-void ResetSafariZoneFlag(void)
-{
-    FlagClear(FLAG_SYS_SAFARI_MODE);
+    return FALSE;
 }
 
 void EnterSafariMode(void)
 {
     IncrementGameStat(GAME_STAT_ENTERED_SAFARI_ZONE);
-    SetSafariZoneFlag();
     ClearAllPokeblockFeeders();
     gNumSafariBalls = 30;
     sSafariZoneStepCounter = 500;
@@ -66,7 +55,6 @@ void EnterSafariMode(void)
 void ExitSafariMode(void)
 {
     sub_80EE44C(sSafariZoneCaughtMons, sSafariZonePkblkUses);
-    ResetSafariZoneFlag();
     ClearAllPokeblockFeeders();
     gNumSafariBalls = 0;
     sSafariZoneStepCounter = 0;

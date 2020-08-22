@@ -31,7 +31,7 @@
     {
       "direction": "up",
       "offset": 0,
-      "map": "MAP_SNOW_SHORE"
+      "map": "MAP_SNOWY_SHORE"
     }
   ],
   "object_events": [

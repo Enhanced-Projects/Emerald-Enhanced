@@ -1,6 +1,14 @@
 CraggyCoast_MapScripts::
 	.byte 0
 
+CraggyCoast_HeartScale::
+	lockall
+	goto_if_set FLAG_HIDDEN_CRAGGY_COAST_HEART_SCALE, FrostyForestEnd
+	giveitem ITEM_HEART_SCALE
+	setflag FLAG_HIDDEN_CRAGGY_COAST_HEART_SCALE
+	release
+	end
+
 CraggyCoast_EventScript_Lemmy::
 	trainerbattle_single TRAINER_LEMMY, CraggyCoast_Text_LemmyIntro, CraggyCoast_Text_LemmyDefeated
 	msgbox CraggyCoast_Text_LemmyPostBattle, MSGBOX_AUTOCLOSE

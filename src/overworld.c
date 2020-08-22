@@ -435,9 +435,7 @@ void DoWhiteOut(void)
 void Overworld_ResetStateAfterFly(void)
 {
     ResetInitialPlayerAvatarState();
-    FlagClear(FLAG_SYS_CYCLING_ROAD);
     FlagClear(FLAG_SYS_CRUISE_MODE);
-    FlagClear(FLAG_SYS_SAFARI_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
 }
@@ -445,9 +443,7 @@ void Overworld_ResetStateAfterFly(void)
 void Overworld_ResetStateAfterTeleport(void)
 {
     ResetInitialPlayerAvatarState();
-    FlagClear(FLAG_SYS_CYCLING_ROAD);
     FlagClear(FLAG_SYS_CRUISE_MODE);
-    FlagClear(FLAG_SYS_SAFARI_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
     ScriptContext2_RunNewScript(EventScript_ResetMrBriney);
@@ -456,9 +452,7 @@ void Overworld_ResetStateAfterTeleport(void)
 void Overworld_ResetStateAfterDigEscRope(void)
 {
     ResetInitialPlayerAvatarState();
-    FlagClear(FLAG_SYS_CYCLING_ROAD);
     FlagClear(FLAG_SYS_CRUISE_MODE);
-    FlagClear(FLAG_SYS_SAFARI_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
 }
@@ -466,9 +460,7 @@ void Overworld_ResetStateAfterDigEscRope(void)
 static void Overworld_ResetStateAfterWhiteOut(void)
 {
     ResetInitialPlayerAvatarState();
-    FlagClear(FLAG_SYS_CYCLING_ROAD);
     FlagClear(FLAG_SYS_CRUISE_MODE);
-    FlagClear(FLAG_SYS_SAFARI_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
     // If you were defeated by Kyogre/Groudon and the step counter has
@@ -482,7 +474,6 @@ static void Overworld_ResetStateAfterWhiteOut(void)
 
 static void sub_8084788(void)
 {
-    FlagClear(FLAG_SYS_SAFARI_MODE);
     ChooseAmbientCrySpecies();
     ResetCyclingRoadChallengeData();
     UpdateLocationHistoryForRoamer();
@@ -1493,11 +1484,6 @@ void CleanupOverworldWindowsAndTilemaps(void)
         FREE_AND_SET_NULL(gBGTilemapBuffers2);
 }
 
-static void ResetSafariZoneFlag_(void)
-{
-    ResetSafariZoneFlag();
-}
-
 bool32 IsUpdateLinkStateCBActive(void)
 {
     if (gMain.callback1 == CB1_UpdateLinkState)
@@ -1674,7 +1660,6 @@ void CB2_NewGame(void)
 
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
-    ResetSafariZoneFlag_();
     NewGameInitData();
     ResetInitialPlayerAvatarState();
     PlayTimeCounter_Start();
@@ -1723,7 +1708,6 @@ void CB2_WhiteOut(void)
     {
         FieldClearVBlankHBlankCallbacks();
         StopMapMusic();
-        ResetSafariZoneFlag_();
         DoWhiteOut();
         ResetInitialPlayerAvatarState();
         ScriptContext1_Init();
@@ -1875,7 +1859,6 @@ void CB2_ContinueSavedGame(void)
 
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
-    ResetSafariZoneFlag_();
     if (gSaveFileStatus == SAVE_STATUS_ERROR)
         ResetWinStreaks();
 

@@ -15,18 +15,6 @@ CraggyCoast_EventScript_ItemBigPearl::
 	finditem ITEM_BIG_PEARL
 	end
 
-Igloo2Basement_EventScript_ItemGoldOre1::
-	finditem ITEM_GOLD_ORE
-	end
-
-Igloo2Basement_EventScript_ItemGoldOre2::
-	finditem ITEM_GOLD_ORE
-	end
-
-Igloo2Basement_EventScript_ItemGoldOre3::
-	finditem ITEM_GOLD_ORE
-	end
-
 CraggyCoast_EventScript_ItemKeyShard2::
 	finditem ITEM_KEY_SHARD_2
 	end
@@ -45,6 +33,50 @@ FrostbiteField_EventScript_ItemPPmax::
 
 FrostbiteField_EventScript_ItemSuperRepel::
 	finditem ITEM_SUPER_REPEL
+	end
+
+Igloo2Basement_EventScript_ItemGoldOre1::
+	finditem ITEM_GOLD_ORE
+	end
+
+Igloo2Basement_EventScript_ItemGoldOre2::
+	finditem ITEM_GOLD_ORE
+	end
+
+Igloo2Basement_EventScript_ItemGoldOre3::
+	finditem ITEM_GOLD_ORE
+	end
+
+MtFreeze_EventScript_ItemChillBall::
+	finditem ITEM_CHILL_BALL
+	end
+
+MtFreeze_B1F_EventScript_ItemCalcium::
+	finditem ITEM_CALCIUM
+	end
+
+MtFreeze_B1F_EventScript_ItemProtein::
+	finditem ITEM_PROTEIN
+	end
+
+MtFreeze_B1F_EventScript_ItemSunStone::
+	finditem ITEM_SUN_STONE
+	end
+
+MtFreeze_B1F_EventScript_ItemFireStone::
+	finditem ITEM_FIRE_STONE
+	end
+
+MtFreeze_B1F_EventScript_ItemFlameOrb::
+	finditem ITEM_FLAME_ORB
+	end
+
+MtFreeze_2F_EventScript_ItemRareCandy1::
+	finditem ITEM_RARE_CANDY
+	end
+
+MtFreeze_2F_EventScript_ItemRareCandy2::
+	finditem ITEM_RARE_CANDY
 	end
 
 Ryu_GiveItemScript::
