@@ -2948,6 +2948,29 @@ static u8 ForewarnChooseMove(u32 battler)
     free(data);
 }
 
+static const u16 gMoveTypeAdvantageTable[] = {
+    //Type that is SE on Incoming MoveType, //Incoming move type ID
+    TYPE_FIGHTING,//0
+    TYPE_FAIRY,//1
+    TYPE_ELECTRIC,//2 
+    TYPE_PSYCHIC,//3
+    TYPE_WATER,//4
+    TYPE_FIGHTING,//5
+    TYPE_FIRE,//6
+    TYPE_DARK,//7
+    TYPE_FIRE,//8
+    TYPE_MYSTERY,//9
+    TYPE_WATER,//10
+    TYPE_ELECTRIC,//11
+    TYPE_FIRE,//12
+    TYPE_GROUND,//13
+    TYPE_DARK,//14
+    TYPE_FIGHTING,//15
+    TYPE_ICE,//16
+    TYPE_FIGHTING,//17
+    TYPE_POISON//18
+};
+
 extern bool8 RyuCheckPlayerisInColdArea();
 
 u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveArg)
@@ -3806,8 +3829,8 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
              && !IS_BATTLER_OF_TYPE(battler, moveType)
              && gBattleMons[battler].hp != 0)
             {
-                SET_BATTLER_TYPE(battler, moveType);
-                PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
+                SET_BATTLER_TYPE(battler, gMoveTypeAdvantageTable[moveType]);
+                PREPARE_TYPE_BUFFER(gBattleTextBuff1, (gMoveTypeAdvantageTable[moveType]));
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ColorChangeActivates;
                 effect++;
