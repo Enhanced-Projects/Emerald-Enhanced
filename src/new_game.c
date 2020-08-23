@@ -302,6 +302,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_103_MAGMA_MEETING);
     FlagSet(FLAG_RYU_HIDE_114_MAXIE);
     FlagSet(FLAG_RYU_RUSTURF_CLEARING_MAGMA);
+    FlagSet(FLAG_HIDE_LANETTES_HOUSE_LANA);
 }
 
 static void ResetMiniGamesResults(void)

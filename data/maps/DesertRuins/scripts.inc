@@ -43,8 +43,24 @@ DesertRuins_EventScript_CaveEntranceMiddle:: @ 822D9DB
 	braillemessage DesertRuins_Braille_UseRockSmash
 	waitbuttonpress
 	closebraillemessage
+	compare VAR_RYU_DS_LANA_STAGE, 40
+	goto_if_gt ryu_end
+	msgbox DR_PlayerHitWall
+	closemessage
+	setflag FLAG_SYS_REGIROCK_PUZZLE_COMPLETED
+	playse SE_W088
+	waitse
+	delay 25
+	fadeoutbgm 0
+	playse SE_W089
+	special DoSealedChamberShakingEffect1
+	waitse
+	call DR_LeafOpenDoor
 	releaseall
 	end
+
+DR_PlayerHitWall:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} hits the wall in a weak\nspot, which makes it open up.$"
 
 DesertRuins_EventScript_BigHoleInWall:: @ 822D9EE
 	msgbox gText_BigHoleInTheWall, MSGBOX_DEFAULT

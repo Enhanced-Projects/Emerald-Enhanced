@@ -210,11 +210,17 @@ SCH_AltStory2:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Wait, what's this?$"
 	
 SCH_AltStory22:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}I don't deserve this...I can't go\non as if nothing happened. It'll\lonly wear me down...\pNo, it already has. There's no\nescaping this life...perhaps if I\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I don't deserve this...I can't go\n"
+	.string "on as if nothing happened. It'll\l"
+	.string "only wear me down...\p"
+	.string "No, it already has. There's no\n"
+	.string "escaping this life...perhaps if I\p"
     .string "pay my respects, then this demon\nwill go away...$"
 	
 SCH_AltStory23:
-	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Well if I wasn't worried enough\nthen, now I really am...\pLana...what's happening to you?$"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Well if I wasn't worried enough\n"
+	.string "then, now I really am...\p"
+	.string "Lana...what's happening to you?$"
 
 
 SCH_Fall:

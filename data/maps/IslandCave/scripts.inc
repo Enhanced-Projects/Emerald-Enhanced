@@ -11,6 +11,8 @@ IslandCave_OnResume: @ 8238E3A
 @==================================================================================================Lana Scripts
 
 IC_CaveCheck::
+	compare VAR_RYU_DS_LANA_STAGE, 40
+	goto_if_lt ryu_end
 	compare VAR_RYU_DS_LANA_STAGE, 55
 	goto_if_eq IC_Setup
 	compare VAR_RYU_DS_LANA_STAGE, 65
@@ -256,9 +258,20 @@ IslandCave_EventScript_CaveEntranceMiddle:: @ 8238EEF
 	call_if_set FLAG_TEMP_3, IslandCave_EventScript_ClearSteps
 	goto_if_set FLAG_SYS_BRAILLE_REGICE_COMPLETED, IslandCave_EventScript_BigHoleInWall
 	braillemessage IslandCave_Braille_RunLapAroundWall
-	setflag FLAG_TEMP_2
-	special ShouldDoBrailleRegicePuzzle
-	goto IslandCave_EventScript_CloseBrailleMsg
+	closebraillemessage
+	compare VAR_RYU_DS_LANA_STAGE, 40
+	goto_if_gt ryu_end
+	msgbox DR_PlayerHitWall
+	closemessage
+	setflag FLAG_SYS_REGIROCK_PUZZLE_COMPLETED
+	playse SE_W088
+	waitse
+	delay 25
+	fadeoutbgm 0
+	playse SE_W089
+	special DoSealedChamberShakingEffect1
+	waitse
+	goto IslandCave_EventScript_OpenRegiEntrance
 	end
 
 IslandCave_EventScript_BigHoleInWall:: @ 8238F13

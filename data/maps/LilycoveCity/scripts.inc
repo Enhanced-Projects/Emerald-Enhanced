@@ -131,7 +131,7 @@ LeafSceneResume::
 	removeobject 23
 	fadedefaultbgm
 	clearflag FLAG_RYU_ON_DATE
-	setvar VAR_RYU_DS_LANA_STAGE, 80
+	setvar VAR_RYU_DS_LANA_STAGE, 90
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	setflag FLAG_RYU_LEAF_LCC_EVENT_DONE
 	clearflag FLAG_RYU_HIDE_LCC_DEPT_ROOF_NPC
