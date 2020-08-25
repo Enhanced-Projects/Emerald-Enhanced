@@ -79,6 +79,14 @@ MtFreeze_2F_EventScript_ItemRareCandy2::
 	finditem ITEM_RARE_CANDY
 	end
 
+Route66_EventScript_ItemDawnStone::
+	finditem ITEM_DAWN_STONE
+	end
+
+Route66_EventScript_ItemLeafStone::
+	finditem ITEM_LEAF_STONE
+	end
+
 Ryu_GiveItemScript::
 	finditem VAR_TEMP_7
 	return
