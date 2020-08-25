@@ -4565,7 +4565,7 @@
       "id": "LAYOUT_ROUTE66",
       "name": "Route66_Layout",
       "width": 40,
-      "height": 22,
+      "height": 40,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Fortree",
       "border_filepath": "data/layouts/Route66/border.bin",
