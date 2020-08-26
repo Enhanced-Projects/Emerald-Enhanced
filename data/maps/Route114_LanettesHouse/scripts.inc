@@ -5,6 +5,11 @@ Route114_LanettesHouse_MapScripts:: @ 822B2C8
 
 Route114_LanettesHouse_OnTransition: @ 822B2CE
 	setflag FLAG_LANDMARK_LANETTES_HOUSE
+	goto_if_unset FLAG_RYU_DAYCARE_LEAFEVENTPC, LNH_HideLeaf
+	end
+
+LNH_HideLeaf:
+	removeobject 2
 	end
 
 Route114_LanettesHouse_EventScript_Lanette:: @ 822B2D2

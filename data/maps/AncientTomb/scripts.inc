@@ -44,6 +44,20 @@ AncientTomb_EventScript_CaveEntranceMiddle:: @ 8239033
 	braillemessage AncientTomb_Braille_ShineInTheMiddle
 	waitbuttonpress
 	closebraillemessage
+	compare VAR_RYU_DS_LANA_STAGE, 40
+	goto_if_gt ryu_end
+	msgbox DR_PlayerHitWall
+	closemessage
+	setflag FLAG_SYS_REGIROCK_PUZZLE_COMPLETED
+	playse SE_W088
+	waitse
+	delay 25
+	fadeoutbgm 0
+	playse SE_W089
+	special DoSealedChamberShakingEffect1
+	setflag FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED
+	waitse
+	call DR_LeafOpenDoor
 	releaseall
 	end
 

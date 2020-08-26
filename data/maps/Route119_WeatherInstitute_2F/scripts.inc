@@ -80,7 +80,7 @@ Route119_WeatherInstitute_2F_EventScript_ShellyDefeated:: @ 826FFC8
 	end
 
 Route119_WeatherInstitute_2F_EventScript_ReceiveCastform:: @ 827004D
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 103
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 104
 	goto_if_ge WI_AfterCozmo
 	msgbox Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon, MSGBOX_DEFAULT
 	setvar VAR_TEMP_1, 385

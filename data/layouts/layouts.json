@@ -2554,8 +2554,8 @@
     {
       "id": "LAYOUT_ROUTE110_SEASIDE_CYCLING_ROAD_ENTRANCE",
       "name": "Route110_SeasideCyclingRoadEntrance_Layout",
-      "width": 15,
-      "height": 6,
+      "width": 1,
+      "height": 1,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Shop",
       "border_filepath": "data/layouts/Route110_SeasideCyclingRoadEntrance/border.bin",

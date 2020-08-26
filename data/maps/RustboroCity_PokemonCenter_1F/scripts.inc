@@ -42,7 +42,7 @@ RustboroCity_PokemonCenter_1F_Text_MaleAndFemalePokemon: @ 8214E13
 	.string "they're different.$"
 
 RustboroCity_PokemonCenter_1F_Text_HMCutNextDoor: @ 8214E81
-	.string "The man next door gave me an HM!\p"
+	.string "The man next door gave me a TM!\p"
 	.string "I used it to teach my Pokémon how to\n"
 	.string "CUT down skinny trees.$"
 
