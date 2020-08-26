@@ -146,7 +146,7 @@ bool8 RyuCheckPlayerHasPika(void)
 {
     u8 i;
     bool8 hasPika = FALSE;
-    for (i = 0; i < (CalculatePlayerPartyCount()); i++)
+    for (i = 0; i < 6; i++)
     {
         if ((GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == SPECIES_PIKACHU))
             return TRUE;
@@ -164,9 +164,7 @@ bool8 RyuCheckPlayerisInMtPyreAndHasPikachu(void)
         if ((locMap > 15) && (locMap < 21))
         {
             if (RyuCheckPlayerHasPika() == TRUE)
-            {
                 return TRUE;
-            }
         }
     }
     
