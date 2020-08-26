@@ -222,7 +222,7 @@ Route119_Text_ThoughtFlyByCatchingBirdMons: @ 81F51A2
 	.string "I thought you FLY by catching a whole\n"
 	.string "flock of BIRD Pokémon, and then\l"
 	.string "hanging on to them somehow.\p"
-	.string "But it turns out there's an HM move\n"
+	.string "But it turns out there's a TM\n"
 	.string "called FLY!\p"
 	.string "I wish I'd known about that a long\n"
 	.string "time ago…$"
