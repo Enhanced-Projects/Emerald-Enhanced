@@ -13,12 +13,24 @@ EventScript_EndUseSurf:: @ 8271ED6
 
 ES_SurfHasFollower::
 	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_MAGMA_MEMBER_F
-	goto_if_eq ES_TandemSurf
+	call_if_eq ES_TandemSurf
 	msgbox ES_YouHaveFollowerCantSurf
 	releaseall
 	end
 
 ES_TandemSurf::
+	compare VAR_RYU_MAGMA, 570
+	call_if_ge ES_TandemSurfCheckMagma
+	return
+
+ES_TandemSurfCheckMagma::
+	compare VAR_RYU_MAGMA, 595
+	goto_if_lt ES_CourtneySurfWithPlayer
+	msgbox ES_YouHaveFollowerCantSurf
+	releaseall
+	end
+
+ES_CourtneySurfWithPlayer::
 	msgbox ES_PlayerAndCourtneySurf
 	destroyfollower
 	setflag FLAG_RYU_TEMP_HIDE_FOLLOWER_COURTNEY
@@ -26,7 +38,6 @@ ES_TandemSurf::
 	dofieldeffect FLDEFF_USE_SURF
 	releaseall
 	end
-
 
 ES_YouHaveFollowerCantSurf:
 	.string "You have a follower.\nYou can't swim.$"

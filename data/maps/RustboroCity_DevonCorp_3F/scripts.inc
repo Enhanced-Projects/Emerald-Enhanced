@@ -71,6 +71,7 @@ DC_QuestCheck1::
 	compare VAR_RESULT, 1
 	goto_if_eq DC_BeginQuest
 	msgbox DC_NoQuest MSGBOX_DEFAULT
+	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER DC_Turnaround1
 	waitmovement 0
 	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
@@ -91,11 +92,32 @@ DC_QuestCheck2::
 	msgbox DC_NoQuest MSGBOX_DEFAULT
 	specialvar VAR_RESULT, GetPlayerFacingDirection
 	switch VAR_RESULT
-	case DIR_WEST, DC_MovePlayer1@right 1 up 1 warp
-	case DIR_SOUTH, DC_MovePlayer2@Up 2
-	case DIR_EAST, DC_MovePlayer3@left 1 up one
+	case DIR_WEST, DC_MovePlayer1Scr@right 1 up 1 warp
+	case DIR_SOUTH, DC_MovePlayer2Scr@Up 2
+	case DIR_EAST, DC_MovePlayer3Scr@left 1 up one
 	applymovement OBJ_EVENT_ID_PLAYER, DC_MovePlayer2@Up
 	waitmovement 0
+	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
+	release
+	end
+	
+DC_MovePlayer1Scr::
+	applymovement OBJ_EVENT_ID_PLAYER, DC_MovePlayer1
+	waitmovement OBJ_EVENT_ID_PLAYER
+	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
+	release
+	end
+	
+DC_MovePlayer2Scr::
+	applymovement OBJ_EVENT_ID_PLAYER, DC_MovePlayer2
+	waitmovement OBJ_EVENT_ID_PLAYER
+	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
+	release
+	end
+	
+DC_MovePlayer3Scr::
+	applymovement OBJ_EVENT_ID_PLAYER, DC_MovePlayer3
+	waitmovement OBJ_EVENT_ID_PLAYER
 	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
 	release
 	end
