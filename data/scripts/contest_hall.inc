@@ -215,7 +215,6 @@ ContestHall_EventScript_DoContest:: @ 8279F97
 	applymovement LOCALID_MC, ContestHall_Movement_MCWalkDown
 	waitmovement 0
 	releaseall
-	call ContestHall_EventScript_TryWaitForLink
 	call ContestHall_EventScript_GetContestRankStringId
 	call ContestHall_EventScript_GetContestCategory
 	call ContestHall_EventScript_ContestGettingStarted
@@ -311,12 +310,6 @@ ContestHall_EventScript_GettingStartedLink:: @ 827A0C7
 	return
 
 ContestHall_EventScript_GettingStartedWireless:: @ 827A0DE
-	messageautoscroll ContestHall_Text_GettingStartedWireless
-	waitmessage
-	call ContestHall_EventScript_TryWaitForLink
-	messageautoscroll ContestHall_Text_ParticipantsAsFollows
-	waitmessage
-	call ContestHall_EventScript_TryWaitForLink
 	return
 
 ContestHall_EventScript_ShowContestMons:: @ 827A0F5
@@ -325,8 +318,6 @@ ContestHall_EventScript_ShowContestMons:: @ 827A0F5
 	call ContestHall_EventScript_AudienceHeartEmotes
 	call ContestHall_EventScript_AudienceReactToContestant
 	call ContestHall_EventScript_ContestantReturn
-	call ContestHall_EventScript_TryWaitForLink
-	call ContestHall_EventScript_TryWaitForLink
 	addvar VAR_0x8006, 1
 	compare VAR_0x8006, CONTESTANT_COUNT
 	goto_if_ne ContestHall_EventScript_ShowContestMons
@@ -335,14 +326,9 @@ ContestHall_EventScript_ShowContestMons:: @ 827A0F5
 	return
 
 ContestHall_EventScript_TryWaitForLink:: @ 827A133
-	specialvar VAR_RESULT, IsWirelessContest
-	compare VAR_RESULT, TRUE
-	goto_if_eq ContestHall_EventScript_WaitForLink
 	return
 
 ContestHall_EventScript_WaitForLink:: @ 827A144
-	special LinkContestWaitForConnection
-	waitstate
 	return
 
 ContestHall_EventScript_ContestantWalkToCenter:: @ 827A149
@@ -357,7 +343,6 @@ ContestHall_EventScript_ContestantWalkToCenter:: @ 827A149
 	return
 
 ContestHall_EventScript_Player1WalkToCenter:: @ 827A176
-	call ContestHall_EventScript_TryWaitForLink
 	lockall
 	applymovement LOCALID_CONTESTANT_1, ContestHall_Movement_Player1WalkToCenter
 	waitmovement 0
@@ -366,7 +351,6 @@ ContestHall_EventScript_Player1WalkToCenter:: @ 827A176
 	return
 
 ContestHall_EventScript_Player2WalkToCenter:: @ 827A18D
-	call ContestHall_EventScript_TryWaitForLink
 	lockall
 	applymovement LOCALID_CONTESTANT_2, ContestHall_Movement_Player2WalkToCenter
 	waitmovement 0
@@ -375,7 +359,6 @@ ContestHall_EventScript_Player2WalkToCenter:: @ 827A18D
 	return
 
 ContestHall_EventScript_Player3WalkToCenter:: @ 827A1A4
-	call ContestHall_EventScript_TryWaitForLink
 	lockall
 	applymovement LOCALID_CONTESTANT_3, ContestHall_Movement_Player3WalkToCenter
 	waitmovement 0
@@ -384,7 +367,6 @@ ContestHall_EventScript_Player3WalkToCenter:: @ 827A1A4
 	return
 
 ContestHall_EventScript_Player4WalkToCenter:: @ 827A1BB
-	call ContestHall_EventScript_TryWaitForLink
 	lockall
 	applymovement LOCALID_CONTESTANT_4, ContestHall_Movement_Player4WalkToCenter
 	waitmovement 0
@@ -400,7 +382,6 @@ ContestHall_EventScript_ShowContestMonPic:: @ 827A1D2
 	applymovement VAR_0x800B, ContestHall_Movement_ContestantDelay32
 	waitmovement 0
 	releaseall
-	call ContestHall_EventScript_TryWaitForLink
 	call ContestHall_EventScript_CheckIfContestWithRSPlayer
 	addobject LOCALID_POKEBALL
 	playse SE_DANSA
@@ -430,7 +411,6 @@ ContestHall_EventScript_AudienceVote:: @ 827A230
 	call ContestHall_EventScript_AudienceWillVote
 	call ContestHall_EventScript_VotingUnderWay
 	playse SE_W227B
-	waitmessage
 	setvar VAR_TEMP_4, 0
 	call ContestHall_EventScript_AudienceLookAround
 	applymovement LOCALID_MC, ContestHall_Movement_MCFaceJudge2
@@ -444,44 +424,23 @@ ContestHall_EventScript_AudienceVote:: @ 827A230
 	return
 
 ContestHall_EventScript_AudienceWillVote:: @ 827A26C
-	compare VAR_CONTEST_TYPE, CONTEST_TYPE_LINK
-	goto_if_eq ContestHall_EventScript_AudienceWillVoteLink
 	msgbox ContestHall_Text_SeenContestantsAudienceWillVote, MSGBOX_DEFAULT
 	return
 
 ContestHall_EventScript_AudienceWillVoteLink:: @ 827A280
-	specialvar VAR_RESULT, IsWirelessContest
-	compare VAR_RESULT, TRUE
-	goto_if_eq ContestHall_EventScript_AudienceWillVoteWireless
-	messageautoscroll ContestHall_Text_SeenContestantsAudienceWillVote
-	waitmessage
 	return
 
 ContestHall_EventScript_AudienceWillVoteWireless:: @ 827A297
-	messageautoscroll ContestHall_Text_WeveSeenContestants
-	waitmessage
-	call ContestHall_EventScript_TryWaitForLink
-	messageautoscroll ContestHall_Text_AudienceWillVote
-	waitmessage
-	call ContestHall_EventScript_TryWaitForLink
-	messageautoscroll ContestHall_Text_LetVotingBegin
-	waitmessage
-	call ContestHall_EventScript_TryWaitForLink
 	return
 
 ContestHall_EventScript_VotingUnderWay:: @ 827A2B9
-	compare VAR_CONTEST_TYPE, CONTEST_TYPE_LINK
-	goto_if_eq ContestHall_EventScript_VotingUnderWayLink
-	message ContestHall_Text_VotingUnderWay
+	msgbox ContestHall_Text_VotingUnderWay
 	return
 
 ContestHall_EventScript_VotingUnderWayLink:: @ 827A2CA
-	messageautoscroll ContestHall_Text_VotingUnderWay
-	call ContestHall_EventScript_TryWaitForLink
 	return
 
 ContestHall_EventScript_AudienceReactToContestant:: @ 827A2D5
-	call ContestHall_EventScript_TryWaitForLink
 	applymovement LOCALID_MC, ContestHall_Movement_AudienceMemberLookLeft
 	waitmovement 0
 	playse SE_W227B
@@ -503,7 +462,6 @@ ContestHall_EventScript_AudienceReactToContestant:: @ 827A2D5
 	applymovement LOCALID_JUDGE, ContestHall_Movement_JudgeLookAtMC
 	waitmovement 0
 	releaseall
-	call ContestHall_EventScript_TryWaitForLink
 	return
 
 @ For below VAR_TEMP_0 is the number of heart emotes to try to display in the audience
@@ -648,23 +606,6 @@ ContestHall_EventScript_GetNumberOfHeartsMaster:: @ 827A56E
 	return
 
 ContestHall_EventScript_GetNumberOfHeartsLink:: @ 827A5CC
-	compare VAR_0x8004, 600
-	goto_if_gt ContestHall_EventScript_Set8Hearts
-	compare VAR_0x8004, 550
-	goto_if_gt ContestHall_EventScript_Set7Hearts
-	compare VAR_0x8004, 500
-	goto_if_gt ContestHall_EventScript_Set6Hearts
-	compare VAR_0x8004, 450
-	goto_if_gt ContestHall_EventScript_Set5Hearts
-	compare VAR_0x8004, 400
-	goto_if_gt ContestHall_EventScript_Set4Hearts
-	compare VAR_0x8004, 300
-	goto_if_gt ContestHall_EventScript_Set3Hearts
-	compare VAR_0x8004, 200
-	goto_if_gt ContestHall_EventScript_Set2Hearts
-	compare VAR_0x8004, 100
-	goto_if_gt ContestHall_EventScript_Set1Heart
-	setvar VAR_TEMP_0, 0
 	return
 
 ContestHall_EventScript_Set1Heart:: @ 827A62A
@@ -808,7 +749,6 @@ ContestHall_EventScript_ContestantReturn:: @ 827A77A
 	release
 	removeobject LOCALID_POKEBALL
 	special HideContestEntryMonPic
-	call ContestHall_EventScript_TryWaitForLink
 	switch VAR_0x8006
 	case 0, ContestHall_EventScript_Player1WalkBack
 	case 1, ContestHall_EventScript_Player2WalkBack
@@ -817,7 +757,6 @@ ContestHall_EventScript_ContestantReturn:: @ 827A77A
 	return
 
 ContestHall_EventScript_Player1WalkBack:: @ 827A7B9
-	call ContestHall_EventScript_TryWaitForLink
 	lockall
 	applymovement VAR_0x800B, ContestHall_Movement_Player1WalkBack
 	waitmovement 0
@@ -825,7 +764,6 @@ ContestHall_EventScript_Player1WalkBack:: @ 827A7B9
 	return
 
 ContestHall_EventScript_Player2WalkBack:: @ 827A7CB
-	call ContestHall_EventScript_TryWaitForLink
 	lockall
 	applymovement VAR_0x800B, ContestHall_Movement_Player2WalkBack
 	waitmovement 0
@@ -833,7 +771,6 @@ ContestHall_EventScript_Player2WalkBack:: @ 827A7CB
 	return
 
 ContestHall_EventScript_Player3WalkBack:: @ 827A7DD
-	call ContestHall_EventScript_TryWaitForLink
 	lockall
 	applymovement VAR_0x800B, ContestHall_Movement_Player3WalkBack
 	waitmovement 0
@@ -841,7 +778,6 @@ ContestHall_EventScript_Player3WalkBack:: @ 827A7DD
 	return
 
 ContestHall_EventScript_Player4WalkBack:: @ 827A7EF
-	call ContestHall_EventScript_TryWaitForLink
 	lockall
 	applymovement VAR_0x800B, ContestHall_Movement_Player4WalkBack
 	waitmovement 0
@@ -852,14 +788,12 @@ ContestHall_EventScript_DoContestAppeals:: @ 827A801
 	lockall
 	applymovement LOCALID_MC, ContestHall_Movement_FaceContestants2
 	waitmovement 0
-	call ContestHall_EventScript_TryWaitForLink
 	call ContestHall_EventScript_LetsAppeal
 	waitmessage
 	applymovement LOCALID_MC, ContestHall_Movement_WalkStageLeft
 	applymovement LOCALID_JUDGE, ContestHall_Movement_WalkStageRight
 	waitmovement 0
 	releaseall
-	call ContestHall_EventScript_TryWaitForLink
 	setvar VAR_TEMP_9, 1
 	special LinkContestTryHideWirelessIndicator
 	startcontest
@@ -887,30 +821,21 @@ ContestHall_EventScript_LetsAppealLink:: @ 827A867
 	return
 
 ContestHall_EventScript_LetsAppealWireless:: @ 827A87E
-	call ContestHall_EventScript_TryWaitForLink
 	messageautoscroll ContestHall_Text_VotingComplete
 	waitmessage
-	call ContestHall_EventScript_TryWaitForLink
 	messageautoscroll ContestHall_Text_SecondStageOfJudging
 	waitmessage
-	call ContestHall_EventScript_TryWaitForLink
 	messageautoscroll ContestHall_Text_LetsAppeal
 	waitmessage
-	call ContestHall_EventScript_TryWaitForLink
 	return
 
 ContestHall_EventScript_ContestResults:: @ 827A8A5
-	call ContestHall_EventScript_TryWaitForLink
 	call ContestHall_EventScript_ThatsItForJudging
-	call ContestHall_EventScript_TryWaitForLink
 	call ContestHall_EventScript_ThankYouForAppeals
-	call ContestHall_EventScript_TryWaitForLink
 	applymovement LOCALID_MC, ContestHall_Movement_MCFaceJudge
 	waitmovement 0
 	call ContestHall_EventScript_JudgeLooksReady
-	call ContestHall_EventScript_TryWaitForLink
 	call ContestHall_EventScript_WeWillDeclareWinner
-	call ContestHall_EventScript_TryWaitForLink
 	applymovement LOCALID_MC, ContestHall_Movement_FaceContestants
 	waitmovement 0
 	closemessage
@@ -929,7 +854,7 @@ ContestHall_EventScript_ThatsItForJudging:: @ 827A8FB
 	return
 
 ContestHall_EventScript_ThatsItForJudgingLink:: @ 827A90F
-	call ContestHall_EventScript_TryWaitForLink
+	nop
 	messageautoscroll ContestHall_Text_ThatsItForJudging
 	waitmessage
 	delay 30
@@ -942,7 +867,7 @@ ContestHall_EventScript_ThankYouForAppeals:: @ 827A91E
 	return
 
 ContestHall_EventScript_ThankYouForAppealsLink:: @ 827A932
-	call ContestHall_EventScript_TryWaitForLink
+	nop
 	messageautoscroll ContestHall_Text_ThankYouForAppeals
 	waitmessage
 	delay 30
@@ -955,7 +880,7 @@ ContestHall_EventScript_JudgeLooksReady:: @ 827A941
 	return
 
 ContestHall_EventScript_JudgeLooksReadyLink:: @ 827A955
-	call ContestHall_EventScript_TryWaitForLink
+	nop
 	messageautoscroll ContestHall_Text_JudgeLooksReady
 	waitmessage
 	delay 30
@@ -968,7 +893,7 @@ ContestHall_EventScript_WeWillDeclareWinner:: @ 827A964
 	return
 
 ContestHall_EventScript_WeWillDeclareWinnerLink:: @ 827A978
-	call ContestHall_EventScript_TryWaitForLink
+	nop
 	messageautoscroll ContestHall_Text_WeWillNowDeclareWinner
 	waitmessage
 	delay 30
@@ -1036,7 +961,7 @@ ContestHall_EventScript_AudienceLookAround:: @ 827AA1B
 	applymovement LOCALID_AUDIENCE_7, ContestHall_Movement_AudienceMemberLookDown
 	applymovement LOCALID_AUDIENCE_1, ContestHall_Movement_AudienceMemberLookUp
 	applymovement LOCALID_AUDIENCE_4, ContestHall_Movement_AudienceMemberLookLeft
-	compare VAR_TEMP_1, 4
+	compare VAR_TEMP_4, 4
 	goto_if_ne ContestHall_EventScript_AudienceLookAround
 	delay 30
 	return
