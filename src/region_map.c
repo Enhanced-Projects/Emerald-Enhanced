@@ -28,6 +28,7 @@
 #include "constants/map_types.h"
 #include "constants/rgb.h"
 #include "constants/weather.h"
+#include "script.h"
 
 /*
  *  This file handles region maps generally, and the map used when selecting a fly destination.
@@ -126,6 +127,8 @@ static const u8 sRegionMapPlayerIcon_DawnGfx[] = INCBIN_U8("graphics/pokenav/may
 static const u8 sRegionMap_MapSectionLayout[] = INCBIN_U8("graphics/pokenav/region_map_section_layout.bin");
 
 #include "data/region_map/region_map_entries.h"
+
+extern u8 RyuTeleport[];
 
 static const u16 sRegionMap_SpecialPlaceLocations[][2] =
 {
@@ -1644,94 +1647,9 @@ bool32 IsEventIslandMapSecId(u8 mapSecId)
 
 void CB2_OpenFlyMap(void)
 {
-    switch (gMain.state)
-    {
-    case 0:
-        SetVBlankCallback(NULL);
-        SetGpuReg(REG_OFFSET_DISPCNT, 0);
-        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG3HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG3VOFS, 0);
-        sFlyMap = malloc(sizeof(*sFlyMap));
-        if (sFlyMap == NULL)
-        {
-            SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
-        }
-        else
-        {
-            ResetPaletteFade();
-            ResetSpriteData();
-            FreeSpriteTileRanges();
-            FreeAllSpritePalettes();
-            gMain.state++;
-        }
-        break;
-    case 1:
-        ResetBgsAndClearDma3BusyFlags(0);
-        InitBgsFromTemplates(1, sFlyMapBgTemplates, 3);
-        gMain.state++;
-        break;
-    case 2:
-        InitWindows(sFlyMapWindowTemplates);
-        DeactivateAllTextPrinters();
-        gMain.state++;
-        break;
-    case 3:
-        LoadUserWindowBorderGfx(0, 0x65, 0xd0);
-        clear_scheduled_bg_copies_to_vram();
-        gMain.state++;
-        break;
-    case 4:
-        InitRegionMap(&sFlyMap->regionMap, FALSE);
-        CreateRegionMapCursor(0, 0);
-        CreateRegionMapPlayerIcon(1, 1);
-        sFlyMap->mapSecId = sFlyMap->regionMap.mapSecId;
-        StringFill(sFlyMap->nameBuffer, CHAR_SPACE, MAP_NAME_LENGTH);
-        gUnknown_03001180 = TRUE;
-        DrawFlyDestTextWindow();
-        gMain.state++;
-        break;
-    case 5:
-        LZ77UnCompVram(sRegionMapFrameGfxLZ, (u16 *)BG_CHAR_ADDR(3));
-        gMain.state++;
-        break;
-    case 6:
-        LZ77UnCompVram(sRegionMapFrameTilemapLZ, (u16 *)BG_SCREEN_ADDR(30));
-        gMain.state++;
-        break;
-    case 7:
-        LoadPalette(sRegionMapFramePal, 0x10, 0x20);
-        PutWindowTilemap(2);
-        FillWindowPixelBuffer(2, PIXEL_FILL(0));
-        AddTextPrinterParameterized(2, 1, gText_FlyToWhere, 0, 1, 0, NULL);
-        ScheduleBgCopyTilemapToVram(0);
-        gMain.state++;
-        break;
-    case 8:
-        LoadFlyDestIcons();
-        gMain.state++;
-        break;
-    case 9:
-        BlendPalettes(-1, 16, 0);
-        SetVBlankCallback(VBlankCB_FlyMap);
-        gMain.state++;
-        break;
-    case 10:
-        SetGpuReg(REG_OFFSET_BLDCNT, 0);
-        SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJ_1D_MAP | DISPCNT_OBJ_ON);
-        ShowBg(0);
-        ShowBg(1);
-        ShowBg(2);
-        SetFlyMapCallback(CB_FadeInFlyMap);
-        SetMainCallback2(CB2_FlyMap);
-        gMain.state++;
-        break;
-    }
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext2_Enable();
+    ScriptContext1_SetupScript(RyuTeleport);
 }
 
 static void VBlankCB_FlyMap(void)

@@ -1,5 +1,8 @@
 RyuTeleport::
 	lockall
+	checkitem ITEM_WAYSTONE, 1
+	compare VAR_RESULT, FALSE
+	goto_if_eq RT_NoWaystone
 	goto_if_set FLAG_RYU_WAYSTONE_DISABLED, RyuTeleportDisabled
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuTeleportUseCheck
 	call_if_set FLAG_RYU_HARDCORE_MODE, RyuTeleportUseCheck
@@ -29,6 +32,15 @@ RyuTeleport::
 	closemessage
 	release
 	end
+
+RT_NoWaystone::
+	msgbox RT_YouDontHaveWaystone
+	closemessage
+	release
+	end
+
+RT_YouDontHaveWaystone:
+	.string "You don't have a waystone.\nYou can't fly or teleport anywhere.$"
 
 RyuTeleportUseCheck:
 	compare VAR_RYU_NUZLOCKE_WAYSTONE_USES, 0
