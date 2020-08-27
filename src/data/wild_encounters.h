@@ -67,21 +67,48 @@
 
  const struct WildPokemon gLittlerootTown_LandMons[] =
 {
-	{5, 5,SPECIES_CHARMANDER},//20%
 	{5, 5,SPECIES_BULBASAUR},//20%
-	{5, 5,SPECIES_SQUIRTLE},//10%
+	{5, 5,SPECIES_CHARMANDER},//20%
 	{5, 5,SPECIES_CHIKORITA},//10%
+	{5, 5,SPECIES_TREECKO},//10%
 	{5, 5,SPECIES_CYNDAQUIL},//10%
-	{5, 5,SPECIES_TOTODILE},//10%
-	{5, 5,SPECIES_MUDKIP},//5%
-	{5, 5,SPECIES_TORCHIC},//5%
-	{5, 5,SPECIES_TREECKO},//4%
-	{5, 5,SPECIES_BELDUM},//4%
+	{5, 5,SPECIES_TORCHIC},//10%
+	{5, 5,SPECIES_CHIKORITA},//5%
+	{5, 5,SPECIES_TREECKO},//5%
+	{5, 5,SPECIES_CYNDAQUIL},//4%
+	{5, 5,SPECIES_TORCHIC},//4%
 	{5, 5,SPECIES_TANGELA},//1%
 	{5, 5,SPECIES_CHANSEY},//1%
 };
 
 const struct WildPokemonInfo gLittlerootTown_LandMonsInfo = {20, gLittlerootTown_LandMons};
+
+const struct WildPokemon gLittlerootTown_WaterMons[] =
+{
+	{5, 5, SPECIES_SQUIRTLE},//60%
+	{5, 5, SPECIES_TOTODILE},//30%
+	{5, 5, SPECIES_MUDKIP},//5%
+	{5, 5, SPECIES_MUDKIP},//4%
+	{5, 5, SPECIES_MUDKIP},//1%
+};
+
+const struct WildPokemonInfo gLittlerootTown_WaterMonsInfo = {4, gLittlerootTown_WaterMons};
+
+const struct WildPokemon gLittlerootTown_FishingMons[] =
+{
+	{15, 20, SPECIES_MUDKIP},//70% old
+	{15, 20, SPECIES_MUDKIP},//30% old
+	{20, 25, SPECIES_MUDKIP},//60% good
+	{20, 25, SPECIES_MUDKIP},//20% good
+	{20, 25, SPECIES_MUDKIP},//20% good
+	{25, 30, SPECIES_TOTODILE},//40% super
+	{30, 35, SPECIES_TOTODILE},//40% super
+	{20, 25, SPECIES_TOTODILE},//15% super
+	{35, 40, SPECIES_TOTODILE},//4% super
+	{40, 45, SPECIES_TOTODILE},//1% super
+};
+
+const struct WildPokemonInfo gLittlerootTown_FishingMonsInfo = {30, gLittlerootTown_FishingMons};
 
 const struct WildPokemon gRoute101_LandMons[] =
 {
@@ -3437,9 +3464,9 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.mapGroup = MAP_GROUP(LITTLEROOT_TOWN),
 		.mapNum = MAP_NUM(LITTLEROOT_TOWN),
 		.landMonsInfo = &gLittlerootTown_LandMonsInfo,
-		.waterMonsInfo = NULL,
+		.waterMonsInfo = &gLittlerootTown_WaterMonsInfo,
 		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = NULL,
+		.fishingMonsInfo = &gLittlerootTown_FishingMonsInfo,
 	},
 	{
 		.mapGroup = MAP_GROUP(ROUTE101),

@@ -87,6 +87,10 @@ Route66_EventScript_ItemLeafStone::
 	finditem ITEM_LEAF_STONE
 	end
 
+LittlerootTown_EventScript_ItemPotion::
+	finditem ITEM_POTION
+	end
+
 Ryu_GiveItemScript::
 	finditem VAR_TEMP_7
 	return
