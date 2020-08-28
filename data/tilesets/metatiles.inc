@@ -605,3 +605,11 @@ gMetatiles_MtFreeze::
 	.align 1
 gMetatileAttributes_MtFreeze::
 	.incbin "data/tilesets/secondary/mtfreeze/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_Safari::
+	.incbin "data/tilesets/primary/safari/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Safari::
+	.incbin "data/tilesets/primary/safari/metatile_attributes.bin"
