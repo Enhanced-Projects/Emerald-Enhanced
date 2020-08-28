@@ -94,7 +94,7 @@ static const u8 sTextWindowFrame18d_Gfx[] = INCBIN_U8("graphics/text_window/18d.
 static const u8 sTextWindowFrame19d_Gfx[] = INCBIN_U8("graphics/text_window/19d.4bpp");
 static const u8 sTextWindowFrame20d_Gfx[] = INCBIN_U8("graphics/text_window/20d.4bpp");
 
-static const u16 sUnknown_0851017C[][16] =
+static const u16 sTextWindowPalettes[][16] =
 {
     INCBIN_U16("graphics/text_window/message_box.gbapal"),
     INCBIN_U16("graphics/text_window/text_pal1.gbapal"),
@@ -257,7 +257,7 @@ void rbox_fill_rectangle(u8 windowId)
     FillBgTilemapBufferRect(bgLayer, 0, tilemapLeft - 1, tilemapTop - 1, width + 2, height + 2, 0x11);
 }
 
-const u16 *stdpal_get(u8 id)
+const u16 *GetTextWindowPalette(u8 id)
 {
     switch (id)
     {
@@ -279,7 +279,7 @@ const u16 *stdpal_get(u8 id)
         break;
     }
 
-    return (const u16 *)(sUnknown_0851017C) + id;
+    return (const u16 *)(sTextWindowPalettes) + id;
 }
 
 const u16 *GetOverworldTextboxPalettePtr(void)
