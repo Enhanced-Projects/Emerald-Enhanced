@@ -8,6 +8,19 @@
 #include "window.h"
 #include "string_util.h"
 #include "strings.h"
+#include "script_menu.h"
+
+extern u8 ryu_return[];
+
+
+#define tLeft           data[0]
+#define tTop            data[1]
+#define tRight          data[2]
+#define tBottom         data[3]
+#define tIgnoreBPress   data[4]
+#define tDoWrap         data[5]
+#define tWindowId       data[6]
+#define tMultichoiceId  data[7]
 
 EWRAM_DATA static u8 sPrintWindowId = 1;
 
@@ -23,6 +36,7 @@ struct InfoBoxListStruct
     const struct InfoBox *list;
     u8 count;
 };
+
 
 
 //Strings for use in infobox
@@ -152,6 +166,8 @@ const u8 gText_FFearLine3[] = _("Togedemaru has an Endeavor Shell Bell");
 const u8 gText_FFearLine4[] = _("set aided by Sandstorm. Sturdy");
 const u8 gText_FFearLine5[] = _("Magnemite paralyzes and Swaggers,");
 const u8 gText_FFearLine6[] = _("while Recycling its Berry Juice.");
+
+
 
 //String list groups for individual infoboxes
 
@@ -335,6 +351,22 @@ static const struct InfoBox sInfoBoxFFearStarter[] =
     {gText_FFearLine6},
 };
 
+static const struct InfoBox sInfoBoxGridTest[] = 
+{
+    {gText_HardyNature},
+    {gText_LonelyNature},
+    {gText_BraveNature},
+    {gText_AdamantNature},
+    {gText_NaughtyNature},
+    {gText_BoldNature},
+    {gText_DocileNature},
+    {gText_RelaxedNature},
+    {gText_ImpishNature},
+    {gText_LaxNature},
+    {gText_TimidNature},
+    {gText_HastyNature}
+};
+
 //You also need to add INFOBOX(name) to the bottom of vars.h so that these can be accessed from script.
 
 //List of infobox groups used when calling them
@@ -358,6 +390,7 @@ static const struct InfoBoxListStruct sInfoBoxes[] =
     BOXLIST(sInfoBoxFEggtacticalStarter), //INFOBOX_F_STARTER_EGGTACTICAL
     BOXLIST(sInfoBoxFMasochistStarter), //INFOBOX_F_STARTER_MASOCHIST
     BOXLIST(sInfoBoxFFearStarter), //INFOBOX_F_STARTER_FEAR
+    BOXLIST(sInfoBoxGridTest), //Infobox For testing infogrid INFOGRID_TESTDEXNAV
 };
 
 void PrintInfoTable(u8 windowId, u8 itemCount, const struct InfoBox *strs)
@@ -373,7 +406,64 @@ void PrintInfoTable(u8 windowId, u8 itemCount, const struct InfoBox *strs)
     CopyWindowToVram(windowId, 2);
 }
 
-void PrintInfoBox(u16 number)
+void PrintInfoGridTable(u8 windowId, u8 optionWidth, u8 columns, u8 rows, const struct InfoBox *strs)
+{
+    u32 i, j;
+
+    for (i = 0; i < rows; i++)
+    {
+        for (j = 0; j < columns; j++)
+            AddTextPrinterParameterized(windowId, 1, strs[(i * columns) + j].text, (optionWidth * j) + 8, (i * 16) + 1, 0xFF, NULL);
+    }
+    CopyWindowToVram(windowId, 2);
+}
+
+static void Task_HandleMultichoiceGridInput(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    s8 selection = Menu_ProcessInputGridLayout();
+
+    if (selection >= MENU_B_PRESSED)
+    {
+        DestroyTask(taskId);
+        ScriptContext2_RunNewScript(ryu_return);
+    }
+    else
+    {
+        return;
+    }
+}
+
+void PrintInfoGrid(u8 left, u8 top, u8 infoGridId, u8 columnCount)
+    {
+        u8 taskId;
+        u8 rowCount, newWidth;
+        int i, width;
+
+        gSpecialVar_Result = 0xFF;
+        width = 0;
+
+        for (i = 0; i < sInfoBoxes[infoGridId].count; i++)
+        {
+            width = DisplayTextAndGetWidth(sInfoBoxes[infoGridId].list[i].text, width);
+        }
+
+        newWidth = ConvertPixelWidthToTileWidth(width);
+
+        left = ScriptMenu_AdjustLeftCoordFromWidth(left, columnCount * newWidth);
+        rowCount = sInfoBoxes[infoGridId].count / columnCount;
+        FlagSet(FLAG_TEMP_B);
+
+        taskId = CreateTask(Task_HandleMultichoiceGridInput, 80);
+
+        gTasks[taskId].tWindowId = CreateWindowFromRect(left, top, columnCount * newWidth, rowCount * 2);
+        SetStandardWindowBorderStyle(gTasks[taskId].tWindowId, 0);
+        PrintInfoGridTable(gTasks[taskId].tWindowId, newWidth * 8, columnCount, rowCount, sInfoBoxes[infoGridId].list);
+        sub_8199944(gTasks[taskId].tWindowId, newWidth * 8, columnCount, rowCount, 0);
+        CopyWindowToVram(gTasks[taskId].tWindowId, 3);
+    }
+
+void PrintInfoBox(u8 mode, u16 number)
 {
     u8 i = 0;
     u16 y = 0;
@@ -381,14 +471,31 @@ void PrintInfoBox(u16 number)
     struct WindowTemplate template;
     const struct InfoBox *list = sInfoBoxes[number].list;
 
-    SetWindowTemplateFields(&template, 0, 1, 1, 28, 12, 15, 4);
-    sPrintWindowId = AddWindow(&template);
-    FillWindowPixelBuffer(sPrintWindowId, 0);
-    PutWindowTilemap(sPrintWindowId);
-    DrawStdFrameWithCustomTileAndPalette(sPrintWindowId, FALSE, 0x214, 14);
-    PrintInfoTable(sPrintWindowId, count, list);
-}
+    if (mode == 2)
+    {
+        u8 left = (VarGet(VAR_TEMP_A));
+        u8 top = (VarGet(VAR_TEMP_B));
+        u8 infoGridId = number;
+        u8 numColumns = 3;
 
+        PrintInfoGrid(left, top, infoGridId, numColumns);
+    }
+    else //mode == 1
+    {
+        u8 i = 0;
+        u16 y = 0;
+        u8 count = sInfoBoxes[number].count;
+        struct WindowTemplate template;
+        const struct InfoBox *list = sInfoBoxes[number].list;
+
+        SetWindowTemplateFields(&template, 0, 1, 1, 28, 12, 15, 4);
+        sPrintWindowId = AddWindow(&template);
+        FillWindowPixelBuffer(sPrintWindowId, 0);
+        PutWindowTilemap(sPrintWindowId);
+        DrawStdFrameWithCustomTileAndPalette(sPrintWindowId, FALSE, 0x214, 14);
+        PrintInfoTable(sPrintWindowId, count, list);
+    }
+}
 
 
 void RemoveInfoBox(void)

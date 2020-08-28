@@ -1460,8 +1460,15 @@ s8 Menu_ProcessInputGridLayout(void)
 
     if (gMain.newKeys & A_BUTTON)
     {
-        PlaySE(SE_SELECT);
-        return sMenu.cursorPos;
+        if (FlagGet(FLAG_TEMP_B) == 1)
+        {
+            return MENU_NOTHING_CHOSEN;
+        }
+        else
+        {
+            PlaySE(SE_SELECT);
+            return sMenu.cursorPos;
+        }
     }
     else if (gMain.newKeys & B_BUTTON)
     {
