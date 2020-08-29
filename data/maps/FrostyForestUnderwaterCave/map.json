@@ -1,0 +1,118 @@
+{
+  "id": "MAP_FROSTY_FOREST_UNDERWATER_CAVE",
+  "name": "FrostyForestUnderwaterCave",
+  "layout": "LAYOUT_FROSTY_FOREST_UNDERWATER_CAVE",
+  "music": "MUS_M_DUNGON",
+  "region_map_section": "MAPSEC_FROSTY_FOREST",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "direction": "dive",
+      "offset": 0,
+      "map": "MAP_FROSTY_FOREST_UNDERWATER2"
+    }
+  ],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 41,
+      "y": 5,
+      "elevation": 5,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "FrostyForest_EventScript_ItemTyranitarite",
+      "flag": "FLAG_RYU_TYRANITARITE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 33,
+      "y": 18,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "FrostyForest_EventScript_ItemDuskStone",
+      "flag": "FLAG_ITEM_FROSTY_FOREST_DUSK_STONE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 39,
+      "y": 52,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "FrostyForest_EventScript_ItemEverstone",
+      "flag": "FLAG_ITEM_FROSTY_FOREST_EVERSTONE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 20,
+      "y": 17,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "FrostyForest_EventScript_ItemStardust",
+      "flag": "FLAG_ITEM_FROSTY_FOREST_STARDUST"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 8,
+      "y": 35,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "FrostyForest_EventScript_ItemDarkGem",
+      "flag": "FLAG_ITEM_FROSTY_FOREST_DARK_GEM"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 5,
+      "y": 8,
+      "elevation": 3,
+      "dest_map": "MAP_FROSTY_FOREST_UNDERWATER_CAVE",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 56,
+      "y": 51,
+      "elevation": 3,
+      "dest_map": "MAP_FROSTY_FOREST_UNDERWATER_CAVE",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 56,
+      "y": 53,
+      "elevation": 0,
+      "dest_map": "MAP_FROSTY_FOREST",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

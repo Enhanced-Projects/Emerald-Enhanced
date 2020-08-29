@@ -1213,3 +1213,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/SnowyShore_House3/scripts.inc"
 
 	.include "data/maps/SnowyShore_MrFrigusHouse/scripts.inc"
+
+	.include "data/maps/FrostyForestUnderwaterCave/scripts.inc"
+
+	.include "data/maps/FrostyForest_House/scripts.inc"

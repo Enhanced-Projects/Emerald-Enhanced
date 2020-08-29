@@ -23,7 +23,13 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 27,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_FROSTY_FOREST_UNDERWATER2",
+      "dest_warp_id": 0
+    }
   ],
   "coord_events": [
 

@@ -12735,11 +12735,11 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_REGIGIGAS] =
     {
-        .baseHP        = 110,
-        .baseAttack    = 135,
+        .baseHP        = 120,
+        .baseAttack    = 140,
         .baseDefense   = 110,
         .baseSpeed     = 80,
-        .baseSpAttack  = 55,
+        .baseSpAttack  = 40,
         .baseSpDefense = 110,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_GROUND,

@@ -87,6 +87,26 @@ Route66_EventScript_ItemLeafStone::
 	finditem ITEM_LEAF_STONE
 	end
 
+FrostyForest_EventScript_ItemTyranitarite::
+	finditem ITEM_TYRANITARITE
+	end
+
+FrostyForest_EventScript_ItemDarkGem::
+	finditem ITEM_DARK_GEM
+	end
+
+FrostyForest_EventScript_ItemEverstone::
+	finditem ITEM_EVERSTONE
+	end
+
+FrostyForest_EventScript_ItemDuskStone::
+	finditem ITEM_DUSK_STONE
+	end
+
+FrostyForest_EventScript_ItemStardust::
+	finditem ITEM_STARDUST
+	end
+
 LittlerootTown_EventScript_ItemPotion::
 	finditem ITEM_POTION
 	end

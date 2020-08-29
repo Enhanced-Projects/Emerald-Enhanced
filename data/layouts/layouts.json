@@ -5034,8 +5034,8 @@
     {
       "id": "LAYOUT_FROSTY_FOREST_UNDERWATER2",
       "name": "FrostyForestUnderwater2_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 17,
+      "height": 53,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Underwater",
       "border_filepath": "data/layouts/FrostyForestUnderwater2/border.bin",
@@ -5120,6 +5120,26 @@
       "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
       "border_filepath": "data/layouts/SnowyShore_MrFrigusHouse/border.bin",
       "blockdata_filepath": "data/layouts/SnowyShore_MrFrigusHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_FROSTY_FOREST_UNDERWATER_CAVE",
+      "name": "FrostyForestUnderwaterCave_Layout",
+      "width": 60,
+      "height": 55,
+      "primary_tileset": "gTileset_Snowy",
+      "secondary_tileset": "gTileset_MeteorFalls",
+      "border_filepath": "data/layouts/FrostyForestUnderwaterCave/border.bin",
+      "blockdata_filepath": "data/layouts/FrostyForestUnderwaterCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_FROSTY_FOREST_HOUSE",
+      "name": "FrostyForest_House_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/FrostyForest_House/border.bin",
+      "blockdata_filepath": "data/layouts/FrostyForest_House/map.bin"
     }
   ]
 }
