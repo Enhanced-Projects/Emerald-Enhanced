@@ -2286,27 +2286,27 @@ static const u8 sZapPlateDesc[] = _(
     "boosts the power of\n"
     "Electric-type moves.");
 
-static const u8 sKeyShard1Desc[] = _(
-    "An old shard of a\n"
-    "key. Needs three\n"
-    "other fragments.");
+static const u8 sArtefact1Desc[] = _(
+    "A gem found by the\n"
+    "the ocean. It is\n"
+    "blue like water.");
 
-static const u8 sKeyShard2Desc[] = _(
-    "An old shard of a\n"
-    "key. Needs three\n"
-    "other fragments.");
+static const u8 sArtefact2Desc[] = _(
+    "A gem found in a\n"
+    "forest. You can\n"
+    "see mist inside.");
 
 static const u8 sFistPlateDesc[] = _(
     "A stone tablet that\n"
     "boosts the power of\n"
     "Fighting-type moves.");
 
-static const u8 sKeyShard3Desc[] = _(
-    "An old shard of a\n"
-    "key. Needs three\n"
-    "other fragments.");
+static const u8 sArtefact3Desc[] = _(
+    "A gem found in the\n"
+    "Polar Pillar. It is\n"
+    "cold and clear.");
 
-static const u8 sKeyShard4Desc[] = _(
+static const u8 sArtefact4Desc[] = _(
     "An old shard of a\n"
     "key. Needs three\n"
     "other fragments.");

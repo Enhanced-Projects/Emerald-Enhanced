@@ -2,7 +2,7 @@
   "id": "MAP_FROSTY_FOREST_UNDERWATER_CAVE",
   "name": "FrostyForestUnderwaterCave",
   "layout": "LAYOUT_FROSTY_FOREST_UNDERWATER_CAVE",
-  "music": "MUS_M_DUNGON",
+  "music": "MUS_RG_OTSUKIMI",
   "region_map_section": "MAPSEC_FROSTY_FOREST",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

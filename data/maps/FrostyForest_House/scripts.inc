@@ -8,5 +8,5 @@ FrostyForest_House_EventScript_HexManiac::
 	release
 	end
 
-FrostyForest_House_Text_IfYouMake:
+FrostyForest_House_Text_FeelFreeTo:
 	.string "Feel free to use my bed to heal.$"

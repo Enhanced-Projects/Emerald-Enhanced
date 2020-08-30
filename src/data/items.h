@@ -6202,12 +6202,12 @@ const struct Item gItems[] =
         .secondaryId = TYPE_WATER,
     },
 
-    [ITEM_KEY_SHARD_1] =
+    [ITEM_ARTEFACT_1] =
     {
-        .name = _("Key Shard"),
-        .itemId = ITEM_KEY_SHARD_1,
+        .name = _("Artefact"),
+        .itemId = ITEM_ARTEFACT_1,
         .price = 0,
-        .description = sKeyShard1Desc,
+        .description = sArtefact1Desc,
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = 4,
@@ -6215,12 +6215,12 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_KEY_SHARD_2] =
+    [ITEM_ARTEFACT_2] =
     {
-        .name = _("Key Shard"),
-        .itemId = ITEM_KEY_SHARD_2,
+        .name = _("Artefact"),
+        .itemId = ITEM_ARTEFACT_2,
         .price = 0,
-        .description = sKeyShard2Desc,
+        .description = sArtefact2Desc,
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = 4,
@@ -6228,12 +6228,12 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_KEY_SHARD_3] =
+    [ITEM_ARTEFACT_3] =
     {
-        .name = _("Key Shard"),
-        .itemId = ITEM_KEY_SHARD_3,
+        .name = _("Artefact"),
+        .itemId = ITEM_ARTEFACT_3,
         .price = 0,
-        .description = sKeyShard3Desc,
+        .description = sArtefact3Desc,
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = 4,
@@ -6241,12 +6241,13 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
+//Key Shard 4 and Old Key are not used
     [ITEM_KEY_SHARD_4] =
     {
         .name = _("Key Shard"),
         .itemId = ITEM_KEY_SHARD_4,
         .price = 0,
-        .description = sKeyShard4Desc,
+        .description = sArtefact4Desc,
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = 4,

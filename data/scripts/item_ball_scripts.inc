@@ -15,8 +15,32 @@ CraggyCoast_EventScript_ItemBigPearl::
 	finditem ITEM_BIG_PEARL
 	end
 
-CraggyCoast_EventScript_ItemKeyShard2::
-	finditem ITEM_KEY_SHARD_2
+CraggyCoast_EventScript_ItemArtefact::
+	finditem ITEM_ARTEFACT_2
+	end
+
+FrostyForest_EventScript_ItemTyranitarite::
+	finditem ITEM_TYRANITARITE
+	end
+
+FrostyForest_EventScript_ItemDarkGem::
+	finditem ITEM_DARK_GEM
+	end
+
+FrostyForest_EventScript_ItemEverstone::
+	finditem ITEM_EVERSTONE
+	end
+
+FrostyForest_EventScript_ItemDuskStone::
+	finditem ITEM_DUSK_STONE
+	end
+
+FrostyForest_EventScript_ItemStardust::
+	finditem ITEM_STARDUST
+	end
+
+FrostyForest_EventScript_ItemArtefact::
+	finditem ITEM_ARTEFACT_2
 	end
 
 FrostbiteField_EventScript_ItemPPup::
@@ -33,6 +57,22 @@ FrostbiteField_EventScript_ItemPPmax::
 
 FrostbiteField_EventScript_ItemSuperRepel::
 	finditem ITEM_SUPER_REPEL
+	end
+
+PolarPillar_EventScript_ItemIceGem1::
+	finditem ITEM_ICE_GEM
+	end
+
+PolarPillar_EventScript_ItemIceGem2::
+	finditem ITEM_ICE_GEM
+	end
+
+PolarPillar_EventScript_ItemAbomasite::
+	finditem ITEM_ABOMASITE
+	end
+
+PolarPillar_EventScript_ItemArtefact::
+	finditem ITEM_ARTEFACT_3
 	end
 
 Igloo2Basement_EventScript_ItemGoldOre1::
@@ -85,26 +125,6 @@ Route66_EventScript_ItemDawnStone::
 
 Route66_EventScript_ItemLeafStone::
 	finditem ITEM_LEAF_STONE
-	end
-
-FrostyForest_EventScript_ItemTyranitarite::
-	finditem ITEM_TYRANITARITE
-	end
-
-FrostyForest_EventScript_ItemDarkGem::
-	finditem ITEM_DARK_GEM
-	end
-
-FrostyForest_EventScript_ItemEverstone::
-	finditem ITEM_EVERSTONE
-	end
-
-FrostyForest_EventScript_ItemDuskStone::
-	finditem ITEM_DUSK_STONE
-	end
-
-FrostyForest_EventScript_ItemStardust::
-	finditem ITEM_STARDUST
 	end
 
 LittlerootTown_EventScript_ItemPotion::

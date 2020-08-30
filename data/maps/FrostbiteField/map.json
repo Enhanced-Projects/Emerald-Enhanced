@@ -2,7 +2,7 @@
   "id": "MAP_FROSTBITE_FIELD",
   "name": "FrostbiteField",
   "layout": "LAYOUT_FROSTBITE_FIELD",
-  "music": "MUS_DAN02",
+  "music": "MUS_KAZANBAI",
   "region_map_section": "MAPSEC_FROSTBITE_FIELD",
   "requires_flash": false,
   "weather": "WEATHER_SANDSTORM",
@@ -208,6 +208,13 @@
       "y": 67,
       "elevation": 0,
       "dest_map": "MAP_IGLOO4",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 23,
+      "y": 71,
+      "elevation": 0,
+      "dest_map": "MAP_FROSTBITE_FIELD_HOUSE",
       "dest_warp_id": 0
     }
   ],

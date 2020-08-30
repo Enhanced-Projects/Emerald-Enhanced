@@ -92,6 +92,8 @@ Route119_WeatherInstitute_1F_EventScript_InstituteWorker2:: @ 826FB0F
 
 Route119_WeatherInstitute_1F_EventScript_Bed:: @ 826FB18
 	lockall
+	goto_if_set FLAG_RYU_HARDCORE_MODE, ryu_end
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, ryu_end
 	msgbox Route119_WeatherInstitute_1F_Text_TakeRestInBed, MSGBOX_DEFAULT
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal

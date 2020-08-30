@@ -647,6 +647,8 @@
     "FrostyForestUnderwater",
     "FrostyForestUnderwater2",
     "FrostyForestUnderwaterCave",
+    "FrostyForest_House",
+    "FrostbiteField_House",
     "Igloo1",
     "Igloo2",
     "Igloo2Basement",
@@ -655,8 +657,7 @@
     "MtFreeze_B1F",
     "MtFreeze_1F",
     "MtFreeze_2F",
-    "MtFreeze_3F",
-    "FrostyForest_House"
+    "MtFreeze_3F"
   ],
   "gMapGroup28": [
     "Route109_SeashoreHouse",

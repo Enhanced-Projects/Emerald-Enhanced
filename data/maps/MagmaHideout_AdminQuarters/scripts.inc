@@ -274,6 +274,8 @@ MHAQ_Blaise::@@need to add post story events for when the player /did/ romance c
 
 MagmaHideout_AdminQuarters_EventScript_Bed::
 	goto_if_set FLAG_RYU_DS_COURTNEY_LOVERS, ryu_end
+	goto_if_set FLAG_RYU_HARDCORE_MODE, ryu_end
+	goto_if_set FLAG_RYU_NUZLOCKEMODE, ryu_end
 	lockall
 	msgbox MagmaHideout_AdminQuarters_Text_TakeRestInBed, MSGBOX_DEFAULT
 	closemessage

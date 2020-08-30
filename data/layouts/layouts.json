@@ -4895,7 +4895,7 @@
       "id": "LAYOUT_POLAR_PILLAR_4F",
       "name": "PolarPillar_4F_Layout",
       "width": 13,
-      "height": 10,
+      "height": 12,
       "primary_tileset": "gTileset_Snowy",
       "secondary_tileset": "gTileset_PolarPillar",
       "border_filepath": "data/layouts/PolarPillar_4F/border.bin",
@@ -5140,6 +5140,16 @@
       "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
       "border_filepath": "data/layouts/FrostyForest_House/border.bin",
       "blockdata_filepath": "data/layouts/FrostyForest_House/map.bin"
+    },
+    {
+      "id": "LAYOUT_FROSTBITE_FIELD_HOUSE",
+      "name": "FrostbiteField_House_Layout",
+      "width": 8,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
+      "border_filepath": "data/layouts/FrostbiteField_House/border.bin",
+      "blockdata_filepath": "data/layouts/FrostbiteField_House/map.bin"
     }
   ]
 }
