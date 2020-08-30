@@ -471,7 +471,6 @@ OT_StartMagmaHeist::
 	lock
 	faceplayer
 	setvar VAR_RYU_MAGMA, 234@player started heist scene
-	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	playse SE_PIN
 	applymovement 5, Common_Movement_ExclamationMark
 	waitmovement 5
@@ -481,6 +480,7 @@ OT_StartMagmaHeist::
 	end
 	
 OT_ContinueHeist::
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	setvar VAR_RYU_MAGMA 240@player defeated shop guard
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
