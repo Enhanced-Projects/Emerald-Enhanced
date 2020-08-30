@@ -5134,10 +5134,10 @@
     {
       "id": "LAYOUT_FROSTY_FOREST_HOUSE",
       "name": "FrostyForest_House_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 12,
+      "height": 8,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_InsideShip",
+      "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
       "border_filepath": "data/layouts/FrostyForest_House/border.bin",
       "blockdata_filepath": "data/layouts/FrostyForest_House/map.bin"
     }
