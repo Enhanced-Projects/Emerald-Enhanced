@@ -667,9 +667,9 @@ void MauvilleGymPressSwitch(void)
     for (i = 0; i < ARRAY_COUNT(sMauvilleGymSwitchCoords); i++)
     {
         if (i == gSpecialVar_0x8004)
-            MapGridSetMetatileIdAt(sMauvilleGymSwitchCoords[i].x, sMauvilleGymSwitchCoords[i].y, METATILE_ID(MauvilleGym, PressedSwitch));
+            MapGridSetMetatileIdAt(sMauvilleGymSwitchCoords[i].x, sMauvilleGymSwitchCoords[i].y, METATILE_MauvilleGym_PressedSwitch);
         else
-            MapGridSetMetatileIdAt(sMauvilleGymSwitchCoords[i].x, sMauvilleGymSwitchCoords[i].y, METATILE_ID(MauvilleGym, RaisedSwitch));
+            MapGridSetMetatileIdAt(sMauvilleGymSwitchCoords[i].x, sMauvilleGymSwitchCoords[i].y, METATILE_MauvilleGym_RaisedSwitch);
     }
 }
 
@@ -684,83 +684,83 @@ void MauvilleGymSetDefaultBarriers(void)
         {
             switch (MapGridGetMetatileIdAt(x, y))
             {
-                case METATILE_ID(MauvilleGym, GreenBeamH1_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamH1_Off));
+                case METATILE_MauvilleGym_GreenBeamH1_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamH1_Off);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamH2_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamH2_Off));
+                case METATILE_MauvilleGym_GreenBeamH2_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamH2_Off);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamH3_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamH3_Off));
+                case METATILE_MauvilleGym_GreenBeamH3_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamH3_Off);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamH4_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamH4_Off));
+                case METATILE_MauvilleGym_GreenBeamH4_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamH4_Off);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamH1_Off):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamH1_On));
+                case METATILE_MauvilleGym_GreenBeamH1_Off:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamH1_On);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamH2_Off):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamH2_On));
+                case METATILE_MauvilleGym_GreenBeamH2_Off:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamH2_On);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamH3_Off):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamH3_On) | METATILE_COLLISION_MASK);
+                case METATILE_MauvilleGym_GreenBeamH3_Off:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamH3_On | METATILE_COLLISION_MASK);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamH4_Off):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamH4_On) | METATILE_COLLISION_MASK);
+                case METATILE_MauvilleGym_GreenBeamH4_Off:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamH4_On | METATILE_COLLISION_MASK);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamH1_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamH1_Off));
+                case METATILE_MauvilleGym_RedBeamH1_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamH1_Off);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamH2_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamH2_Off));
+                case METATILE_MauvilleGym_RedBeamH2_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamH2_Off);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamH3_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamH3_Off));
+                case METATILE_MauvilleGym_RedBeamH3_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamH3_Off);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamH4_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamH4_Off));
+                case METATILE_MauvilleGym_RedBeamH4_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamH4_Off);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamH1_Off):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamH1_On));
+                case METATILE_MauvilleGym_RedBeamH1_Off:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamH1_On);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamH2_Off):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamH2_On));
+                case METATILE_MauvilleGym_RedBeamH2_Off:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamH2_On);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamH3_Off):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamH3_On) | METATILE_COLLISION_MASK);
+                case METATILE_MauvilleGym_RedBeamH3_Off:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamH3_On | METATILE_COLLISION_MASK);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamH4_Off):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamH4_On) | METATILE_COLLISION_MASK);
+                case METATILE_MauvilleGym_RedBeamH4_Off:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamH4_On | METATILE_COLLISION_MASK);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamV1_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, PoleBottom_On) | METATILE_COLLISION_MASK);
+                case METATILE_MauvilleGym_GreenBeamV1_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_PoleBottom_On | METATILE_COLLISION_MASK);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamV2_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, FloorTile));
+                case METATILE_MauvilleGym_GreenBeamV2_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_FloorTile);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamV1_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, PoleBottom_Off) | METATILE_COLLISION_MASK);
+                case METATILE_MauvilleGym_RedBeamV1_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_PoleBottom_Off | METATILE_COLLISION_MASK);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamV2_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, FloorTile));
+                case METATILE_MauvilleGym_RedBeamV2_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_FloorTile);
                     break;
-                case METATILE_ID(MauvilleGym, PoleBottom_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamV1_On) | METATILE_COLLISION_MASK);
+                case METATILE_MauvilleGym_PoleBottom_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamV1_On | METATILE_COLLISION_MASK);
                     break;
-                case METATILE_ID(MauvilleGym, FloorTile):
-                    if (MapGridGetMetatileIdAt(x, y - 1) == METATILE_ID(MauvilleGym, GreenBeamV1_On))
-                        MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamV2_On) | METATILE_COLLISION_MASK);
+                case METATILE_MauvilleGym_FloorTile:
+                    if (MapGridGetMetatileIdAt(x, y - 1) == METATILE_MauvilleGym_GreenBeamV1_On)
+                        MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamV2_On | METATILE_COLLISION_MASK);
                     else
-                        MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamV2_On) | METATILE_COLLISION_MASK);
+                        MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamV2_On | METATILE_COLLISION_MASK);
                     break;
-                case METATILE_ID(MauvilleGym, PoleBottom_Off):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamV1_On) | METATILE_COLLISION_MASK);
+                case METATILE_MauvilleGym_PoleBottom_Off:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamV1_On | METATILE_COLLISION_MASK);
                     break;
-                case METATILE_ID(MauvilleGym, PoleTop_Off):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, PoleTop_On) | METATILE_COLLISION_MASK);
+                case METATILE_MauvilleGym_PoleTop_Off:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_PoleTop_On | METATILE_COLLISION_MASK);
                     break;
-                case METATILE_ID(MauvilleGym, PoleTop_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, PoleTop_Off));
+                case METATILE_MauvilleGym_PoleTop_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_PoleTop_Off);
                     break;
             }
         }
@@ -774,7 +774,7 @@ void MauvilleGymDeactivatePuzzle(void)
     const struct UCoords8 *switchCoords = sMauvilleGymSwitchCoords;
     for (i = ARRAY_COUNT(sMauvilleGymSwitchCoords) - 1; i >= 0; i--)
     {
-        MapGridSetMetatileIdAt(switchCoords->x, switchCoords->y, METATILE_ID(MauvilleGym, PressedSwitch));
+        MapGridSetMetatileIdAt(switchCoords->x, switchCoords->y, METATILE_MauvilleGym_PressedSwitch);
         switchCoords++;
     }
     for (y = 12; y < 24; y++)
@@ -783,42 +783,42 @@ void MauvilleGymDeactivatePuzzle(void)
         {
             switch (MapGridGetMetatileIdAt(x, y))
             {
-                case METATILE_ID(MauvilleGym, GreenBeamH1_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamH1_Off));
+                case METATILE_MauvilleGym_GreenBeamH1_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamH1_Off);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamH2_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamH2_Off));
+                case METATILE_MauvilleGym_GreenBeamH2_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamH2_Off);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamH3_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamH3_Off));
+                case METATILE_MauvilleGym_GreenBeamH3_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamH3_Off);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamH4_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, GreenBeamH4_Off));
+                case METATILE_MauvilleGym_GreenBeamH4_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_GreenBeamH4_Off);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamH1_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamH1_Off));
+                case METATILE_MauvilleGym_RedBeamH1_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamH1_Off);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamH2_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamH2_Off));
+                case METATILE_MauvilleGym_RedBeamH2_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamH2_Off);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamH3_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamH3_Off));
+                case METATILE_MauvilleGym_RedBeamH3_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamH3_Off);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamH4_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, RedBeamH4_Off));
+                case METATILE_MauvilleGym_RedBeamH4_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_RedBeamH4_Off);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamV1_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, PoleBottom_On) | METATILE_COLLISION_MASK);
+                case METATILE_MauvilleGym_GreenBeamV1_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_PoleBottom_On | METATILE_COLLISION_MASK);
                     break;
-                case METATILE_ID(MauvilleGym, RedBeamV1_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, PoleBottom_Off) | METATILE_COLLISION_MASK);
+                case METATILE_MauvilleGym_RedBeamV1_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_PoleBottom_Off | METATILE_COLLISION_MASK);
                     break;
-                case METATILE_ID(MauvilleGym, GreenBeamV2_On):
-                case METATILE_ID(MauvilleGym, RedBeamV2_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, FloorTile));
+                case METATILE_MauvilleGym_GreenBeamV2_On:
+                case METATILE_MauvilleGym_RedBeamV2_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_FloorTile);
                     break;
-                case METATILE_ID(MauvilleGym, PoleTop_On):
-                    MapGridSetMetatileIdAt(x, y, METATILE_ID(MauvilleGym, PoleTop_Off));
+                case METATILE_MauvilleGym_PoleTop_On:
+                    MapGridSetMetatileIdAt(x, y, METATILE_MauvilleGym_PoleTop_Off);
                     break;
             }
         }
@@ -828,11 +828,11 @@ void MauvilleGymDeactivatePuzzle(void)
 static const bool8 sSlidingDoorNextFrameDelay[] = {0, 1, 1, 1, 1};
 
 static const u16 sPetalburgGymSlidingDoorMetatiles[] = {
-    METATILE_ID(PetalburgGym, SlidingDoor_Frame0),
-    METATILE_ID(PetalburgGym, SlidingDoor_Frame1),
-    METATILE_ID(PetalburgGym, SlidingDoor_Frame2),
-    METATILE_ID(PetalburgGym, SlidingDoor_Frame3),
-    METATILE_ID(PetalburgGym, SlidingDoor_Frame4),
+    METATILE_PetalburgGym_SlidingDoor_Frame0,
+    METATILE_PetalburgGym_SlidingDoor_Frame1,
+    METATILE_PetalburgGym_SlidingDoor_Frame2,
+    METATILE_PetalburgGym_SlidingDoor_Frame3,
+    METATILE_PetalburgGym_SlidingDoor_Frame4,
 };
 
 void PetalburgGymSlideOpenRoomDoors(void)
@@ -1176,13 +1176,13 @@ static void LotteryCornerComputerEffect(struct Task *task)
         task->data[3] = 0;
         if (task->data[4] != 0)
         {
-            MapGridSetMetatileIdAt(18, 8, METATILE_ID(Shop, Laptop1_Normal) | METATILE_COLLISION_MASK);
-            MapGridSetMetatileIdAt(18, 9, METATILE_ID(Shop, Laptop2_Normal) | METATILE_COLLISION_MASK);
+            MapGridSetMetatileIdAt(18, 8, METATILE_Shop_Laptop1_Normal | METATILE_COLLISION_MASK);
+            MapGridSetMetatileIdAt(18, 9, METATILE_Shop_Laptop2_Normal | METATILE_COLLISION_MASK);
         }
         else
         {
-            MapGridSetMetatileIdAt(18, 8, METATILE_ID(Shop, Laptop1_Flash) | METATILE_COLLISION_MASK);
-            MapGridSetMetatileIdAt(18, 9, METATILE_ID(Shop, Laptop2_Flash) | METATILE_COLLISION_MASK);
+            MapGridSetMetatileIdAt(18, 8, METATILE_Shop_Laptop1_Flash | METATILE_COLLISION_MASK);
+            MapGridSetMetatileIdAt(18, 9, METATILE_Shop_Laptop2_Flash | METATILE_COLLISION_MASK);
         }
         DrawWholeMapView();
         task->data[4] ^= 1;
@@ -1196,8 +1196,8 @@ static void LotteryCornerComputerEffect(struct Task *task)
 
 void EndLotteryCornerComputerEffect(void)
 {
-    MapGridSetMetatileIdAt(18, 8, METATILE_ID(Shop, Laptop1_Normal) | METATILE_COLLISION_MASK);
-    MapGridSetMetatileIdAt(18, 9, METATILE_ID(Shop, Laptop2_Normal) | METATILE_COLLISION_MASK);
+    MapGridSetMetatileIdAt(18, 8, METATILE_Shop_Laptop1_Normal | METATILE_COLLISION_MASK);
+    MapGridSetMetatileIdAt(18, 9, METATILE_Shop_Laptop2_Normal | METATILE_COLLISION_MASK);
     DrawWholeMapView();
 }
 
@@ -1717,38 +1717,38 @@ const u8 *const gDeptStoreFloorNames[] =
 static const u16 sElevatorWindowTiles_Ascending[][3] =
 {
     {
-        METATILE_ID(BattleFrontier, Elevator_Top0),
-        METATILE_ID(BattleFrontier, Elevator_Top1),
-        METATILE_ID(BattleFrontier, Elevator_Top2)
+        METATILE_BattleFrontier_Elevator_Top0,
+        METATILE_BattleFrontier_Elevator_Top1,
+        METATILE_BattleFrontier_Elevator_Top2
     },
     {
-        METATILE_ID(BattleFrontier, Elevator_Mid0),
-        METATILE_ID(BattleFrontier, Elevator_Mid1),
-        METATILE_ID(BattleFrontier, Elevator_Mid2)
+        METATILE_BattleFrontier_Elevator_Mid0,
+        METATILE_BattleFrontier_Elevator_Mid1,
+        METATILE_BattleFrontier_Elevator_Mid2
     },
     {
-        METATILE_ID(BattleFrontier, Elevator_Bottom0),
-        METATILE_ID(BattleFrontier, Elevator_Bottom1),
-        METATILE_ID(BattleFrontier, Elevator_Bottom2)
+        METATILE_BattleFrontier_Elevator_Bottom0,
+        METATILE_BattleFrontier_Elevator_Bottom1,
+        METATILE_BattleFrontier_Elevator_Bottom2
     },
 };
 
 static const u16 sElevatorWindowTiles_Descending[][3] =
 {
     {
-        METATILE_ID(BattleFrontier, Elevator_Top0),
-        METATILE_ID(BattleFrontier, Elevator_Top2),
-        METATILE_ID(BattleFrontier, Elevator_Top1)
+        METATILE_BattleFrontier_Elevator_Top0,
+        METATILE_BattleFrontier_Elevator_Top2,
+        METATILE_BattleFrontier_Elevator_Top1
     },
     {
-        METATILE_ID(BattleFrontier, Elevator_Mid0),
-        METATILE_ID(BattleFrontier, Elevator_Mid2),
-        METATILE_ID(BattleFrontier, Elevator_Mid1)
+        METATILE_BattleFrontier_Elevator_Mid0,
+        METATILE_BattleFrontier_Elevator_Mid2,
+        METATILE_BattleFrontier_Elevator_Mid1
     },
     {
-        METATILE_ID(BattleFrontier, Elevator_Bottom0),
-        METATILE_ID(BattleFrontier, Elevator_Bottom2),
-        METATILE_ID(BattleFrontier, Elevator_Bottom1)
+        METATILE_BattleFrontier_Elevator_Bottom0,
+        METATILE_BattleFrontier_Elevator_Bottom2,
+        METATILE_BattleFrontier_Elevator_Bottom1
     },
 };
 
@@ -3831,7 +3831,7 @@ static void Task_LinkRetireStatusWithBattleTowerPartner(u8 taskId)
         case 7:
             if (IsLinkTaskFinished() == 1)
             {
-                sub_800ADF8();
+                SetLinkStandbyCallback();
                 gTasks[taskId].data[0]++;
             }
             break;
@@ -3844,7 +3844,7 @@ static void Task_LinkRetireStatusWithBattleTowerPartner(u8 taskId)
         case 9:
             if (gWirelessCommType == 0)
             {
-                sub_800AC34();
+                SetCloseLinkCallback();
             }
             gBattleTypeFlags = sBattleTowerMultiBattleTypeFlags;
             EnableBothScriptContexts();
@@ -6127,39 +6127,24 @@ static const u8 gText_HighlightTransparent[] = _("{HIGHLIGHT TRANSPARENT}");
 static const u8 gText_DarkTextColors[] = _("{COLOR LIGHT_GREY}{SHADOW DARK_GREY}");
 static const u8 gText_LightTextColors[] = _("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
 
-void RyuPrintDebugMessage(u8 mode, u8 *str)
+void RyuPrintDebugMessage(u8 *str)
 {
     struct WindowTemplate template;
-    struct WindowTemplate template2;
     SetWindowTemplateFields(&template, 0, 0, 15, 15, 5, 15, 8);
-    SetWindowTemplateFields(&template2, 0, 1, 15, 15, 5, 15, 8);
     sDebugWindowId = AddWindow(&template);
-    sDebugWindow2Id = AddWindow(&template2);
     FillWindowPixelBuffer(sDebugWindowId, 0);
-    FillWindowPixelBuffer(sDebugWindow2Id, 0);
     PutWindowTilemap(sDebugWindowId);
-    PutWindowTilemap(sDebugWindow2Id);
     CopyWindowToVram(sDebugWindowId, 1);
-    CopyWindowToVram(sDebugWindow2Id, 1);
     StringCopy(gStringVar4, gText_DarkTextColors);
-    StringAppend(gStringVar4, gText_HighlightTransparent);
-    StringCopy(gRyuStringVar3,gStringVar4);
     StringAppend(gStringVar4, str);
-    StringAppend(gRyuStringVar3, str);
-    if (mode == 2)
-    {
-        AddTextPrinterParameterized(sDebugWindow2Id, 0, gRyuStringVar3, 0, 0, 0, NULL);
-    }
-    else
-    {
-        AddTextPrinterParameterized(sDebugWindowId, 0, gStringVar4, 0, 0, 0, NULL);
-    }
+    AddTextPrinterParameterized(sDebugWindowId, 0, gStringVar4, 0, 0, 0, NULL);
 }
 
 void RyuTestDebug(void)
 {
-    u8 gTextBuffer1[] = _("Test Debug Error Message");
-    RyuPrintDebugMessage(0, gTextBuffer1);
+    u8 gTextBuffer1[] = _("");
+    ConvertIntToDecimalStringN(gTextBuffer1, (VarGet(VAR_TEMP_0)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    RyuPrintDebugMessage(gTextBuffer1);
 }
 
 void Ryu_ClearAquaSFCTrainerFlags(void)

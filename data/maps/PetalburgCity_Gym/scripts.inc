@@ -1,3 +1,7 @@
+.set LOCALID_NORMAN, 1
+.set LOCALID_WALLY, 10
+.set LOCALID_WALLYS_DAD, 11
+
 PetalburgCity_Gym_MapScripts:: @ 8204889
 	map_script ON_FRAME, PetalburgCity_Gym_OnFrame
 	.byte 0

@@ -1718,9 +1718,10 @@
 	.byte 0xf3
 	.endm
 
-	.macro drawinfobox number:req
+	.macro drawinfobox number:req, mode=1
 	.byte 0xf4
-    .byte \number
+    .2byte \number
+	.byte \mode
 	.endm
 
 	.macro removeinfobox

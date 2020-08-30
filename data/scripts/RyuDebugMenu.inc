@@ -186,14 +186,29 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	buffernumberstring 0, VAR_RYU_DS_LANA_STAGE
-	msgbox RDB_TempVarsViewMsg
-	closemessage
-	msgbox RDB_SwapGenderQuery, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq RDB_SwapPlayerGender
+	msgbox RDB_CurrentLocationMons
+	call RDB_DrawTempDexNavInfoGrid
+	waitbuttonpress
+	removeinfobox
+	msgbox RDB_ClosingDexNav
 	release
 	end
+
+RDB_CurrentLocationMons:
+	.string "Current area land encounters$"
+
+RDB_ClosingDexNav:
+	.string "Closing DexNav$"
+
+RDB_DrawTempDexNavInfoGrid::
+	setvar VAR_TEMP_A, 3
+	setvar VAR_TEMP_B, 1
+	drawinfobox INFOGRID_TESTDEXNAV, 2
+	goto ryu_return
+
+@   msgbox RDB_SwapGenderQuery, MSGBOX_YESNO
+@	compare VAR_RESULT, YES
+@	goto_if_eq RDB_SwapPlayerGender
 
 RDB_SwapGenderQuery:
 	.string "Change Gender?$"
@@ -325,7 +340,7 @@ RyuDebug_GiveAllMons::
 	goto RyuDebug_ReturnCall
 	
 RyuDebug_ReturnCall::
-	compare VAR_TEMP_0, 400
+	compare VAR_TEMP_0, 120
 	goto_if_eq RyuDebugGivePokeDone
 	goto RyuDebug_GiveAllMons
 	

@@ -324,7 +324,7 @@ void AnimTask_DrawFallingWhiteLinesOnAttacker(u8 taskId)
 
     if (IsContest())
     {
-        species = gContestResources->field_18->species;
+        species = gContestResources->moveAnim->species;
     }
     else
     {
@@ -446,7 +446,7 @@ static void sub_8116F04(u8 taskId)
 
     if (IsContest())
     {
-        sAnimStatsChangeData->species = gContestResources->field_18->species;
+        sAnimStatsChangeData->species = gContestResources->moveAnim->species;
     }
     else
     {
@@ -575,7 +575,7 @@ static void sub_81172EC(u8 taskId)
             if (gTasks[taskId].data[12] == 0)
             {
                 sub_80A477C(0);
-                gTasks[taskId].data[15]++;;
+                gTasks[taskId].data[15]++;
             }
         }
         break;
@@ -816,7 +816,7 @@ void sub_8117854(u8 taskId, int unused, u16 arg2, u8 battler1, u8 arg4, u8 arg5,
 
     if (IsContest())
     {
-        species = gContestResources->field_18->species;
+        species = gContestResources->moveAnim->species;
     }
     else
     {

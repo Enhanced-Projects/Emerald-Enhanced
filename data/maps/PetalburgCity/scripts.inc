@@ -1,3 +1,9 @@
+.set LOCALID_WALLY, 2
+.set LOCALID_BOY, 3
+.set LOCALID_WALLYS_DAD, 5
+.set LOCALID_GYM_BOY, 8
+.set LOCALID_SCOTT, 9
+
 PetalburgCity_MapScripts::
 	map_script ON_TRANSITION, PetalburgCity_OnTransition
 	map_script ON_FRAME, PetalburgCity_OnFrame
