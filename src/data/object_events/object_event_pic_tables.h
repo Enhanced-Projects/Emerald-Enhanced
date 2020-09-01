@@ -927,26 +927,14 @@ const struct SpriteFrameImage gObjectEventPicTable_Truck[] = {
 
 const struct SpriteFrameImage gObjectEventPicTable_VigorothCarryingBox[] = {
     overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 0),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 0),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 0),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 1),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 2),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 1),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 2),
     overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 1),
     overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 2),
 };
 
 const struct SpriteFrameImage gObjectEventPicTable_VigorothFacingAway[] = {
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 3),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 3),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 3),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 4),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 4),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 4),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 4),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 4),
-    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 4),
+    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Vigoroth, 4, 4, 2),
 };
 
 const struct SpriteFrameImage gObjectEventPicTable_BirchsBag[] = {
