@@ -77,7 +77,7 @@
 #define DECOR_SEA_POSTER       73
 #define DECOR_SKY_POSTER       74
 #define DECOR_KISS_POSTER      75
-#define DECOR_PICHU_DOLL       76
+#define DECOR_SLAKOTH_DOLL       76
 #define DECOR_PIKACHU_DOLL     77
 #define DECOR_MARILL_DOLL      78
 #define DECOR_TOGEPI_DOLL      79
