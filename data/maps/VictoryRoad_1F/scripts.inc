@@ -107,6 +107,8 @@ VictoryRoad_1F_Text_KatelynnPostBattle: @ 82364BB
 @==================================================================================================
 
 VR1_Moltres::
+	applymovement 8, Common_Movement_FaceUp
+	waitmovement 8
 	goto_if_set FLAG_RYU_MOLTRES, ryu_end
 	goto_if_set FLAG_RYU_MOLTRES_RAN, ryu_end
 	msgbox OverworldLegendary_IntroMoltres

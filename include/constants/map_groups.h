@@ -1,10 +1,6 @@
 #ifndef GUARD_CONSTANTS_MAP_GROUPS_H
 #define GUARD_CONSTANTS_MAP_GROUPS_H
 
-//
-// DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/map_groups.json
-//
-
 // Map Group 0
 #define MAP_PETALBURG_CITY   (0 | (0 << 8))
 #define MAP_SLATEPORT_CITY   (1 | (0 << 8))
@@ -255,21 +251,22 @@
 #define MAP_MOSSDEEP_CITY_GAME_CORNER_B1F   (12 | (14 << 8))
 
 // Map Group 15
-#define MAP_SOOTOPOLIS_CITY_GYM_1F                   (0 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_GYM_B1F                  (1 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_1F        (2 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F        (3 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_MART                     (4 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_HOUSE1                   (5 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_HOUSE2                   (6 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_HOUSE3                   (7 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_HOUSE4                   (8 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_HOUSE5                   (9 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_HOUSE6                   (10 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_HOUSE7                   (11 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_LOTAD_AND_SEEDOT_HOUSE   (12 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_1F  (13 | (15 << 8))
-#define MAP_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_B1F (14 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_MAGMA_EVENT              (0 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_GYM_1F                   (1 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_GYM_B1F                  (2 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_1F        (3 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F        (4 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_MART                     (5 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_HOUSE1                   (6 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_HOUSE2                   (7 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_HOUSE3                   (8 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_HOUSE4                   (9 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_HOUSE5                   (10 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_HOUSE6                   (11 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_HOUSE7                   (12 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_LOTAD_AND_SEEDOT_HOUSE   (13 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_1F  (14 | (15 << 8))
+#define MAP_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_B1F (15 | (15 << 8))
 
 // Map Group 16
 #define MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM      (0 | (16 << 8))
@@ -661,9 +658,8 @@
 
 // Map Group 33
 #define MAP_ROUTE124_DIVING_TREASURE_HUNTERS_HOUSE (0 | (33 << 8))
-#define MAP_SOOTOPOLIS_CITY_MAGMA_EVENT            (1 | (33 << 8))
-#define MAP_TREASURE_HUNTERS_HOUSE_MAGMA_EVENT     (2 | (33 << 8))
-#define MAP_ROUTE124_MAXIE_HIDEOUT_CAVE            (3 | (33 << 8))
+#define MAP_TREASURE_HUNTERS_HOUSE_MAGMA_EVENT     (1 | (33 << 8))
+#define MAP_ROUTE124_MAXIE_HIDEOUT_CAVE            (2 | (33 << 8))
 
 #define MAP_GROUPS_COUNT 34
 

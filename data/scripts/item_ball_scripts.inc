@@ -16,7 +16,7 @@ CraggyCoast_EventScript_ItemBigPearl::
 	end
 
 CraggyCoast_EventScript_ItemArtefact::
-	finditem ITEM_ARTEFACT_2
+	finditem ITEM_ARTEFACT_1
 	end
 
 FrostyForest_EventScript_ItemTyranitarite::

@@ -11,6 +11,7 @@ FrostbiteField_House_EventScript_Woman::
 	compare VAR_RESULT, FALSE
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	setflag FLAG_DAILY_FROSTBITE_FIELD_RECEIVED_FERTILIZER
+	release
 	end
 
 FrostbiteField_House_EventScript_ReceivedFertilizer::

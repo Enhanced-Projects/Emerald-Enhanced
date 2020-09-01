@@ -286,6 +286,7 @@
     "MossdeepCity_GameCorner_B1F"
   ],
   "gMapGroup15": [
+    "SootopolisCity_MagmaEvent",
     "SootopolisCity_Gym_1F",
     "SootopolisCity_Gym_B1F",
     "SootopolisCity_PokemonCenter_1F",
@@ -692,7 +693,6 @@
   ],
   "gMapGroup33": [
     "Route124_DivingTreasureHuntersHouse",
-    "SootopolisCity_MagmaEvent",
     "TreasureHuntersHouse_MagmaEvent",
     "Route124_MaxieHideoutCave"
   ]

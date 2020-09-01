@@ -63,8 +63,9 @@
 #define ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_TOTAL (ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_9)
 
  
- //Start of regular Pokemon tables.
+//Start of regular Pokemon tables.
 
+//Custom encounters
  const struct WildPokemon gLittlerootTown_LandMons[] =
 {
 	{5, 5, SPECIES_BULBASAUR},//20%
@@ -109,6 +110,188 @@ const struct WildPokemon gLittlerootTown_FishingMons[] =
 };
 
 const struct WildPokemonInfo gLittlerootTown_FishingMonsInfo = {30, gLittlerootTown_FishingMons};
+
+const struct WildPokemon gRoute66_LandMons[] =
+{
+	{35, 45, SPECIES_SLAKOTH},
+	{35, 45, SPECIES_AIPOM},
+	{35, 45, SPECIES_MANKEY},
+	{35, 44, SPECIES_TOUCANNON},
+	{35, 44, SPECIES_ORANGURU},
+	{35, 45, SPECIES_PASSIMIAN},
+	{35, 45, SPECIES_VICTREEBEL},
+	{35, 45, SPECIES_CARNIVINE},
+	{35, 45, SPECIES_TROPIUS},
+	{35, 45, SPECIES_EXEGGUTOR},
+	{35, 45, SPECIES_VIGOROTH},
+	{35, 45, SPECIES_SLIGGOO},
+};
+
+const struct WildPokemonInfo gRoute66_LandMonsInfo = {40, gRoute66_LandMons};
+
+const struct WildPokemon gRoute66_WaterMons[] =
+{
+	{35, 45, SPECIES_BASCULIN},
+	{35, 45, SPECIES_CARVANHA},
+	{35, 45, SPECIES_WHISCASH},
+	{35, 45, SPECIES_WOOPER},
+	{35, 45, SPECIES_SLAKOTH},
+};
+
+const struct WildPokemonInfo gRoute66_WaterMonsInfo = {4, gRoute66_WaterMons};
+
+const struct WildPokemon gRoute66_FishingMons[] =
+{
+	{35, 45, SPECIES_BASCULIN},
+	{35, 45, SPECIES_CARVANHA},
+	{35, 45, SPECIES_CARVANHA},
+	{35, 45, SPECIES_REMORAID},
+	{35, 45, SPECIES_QWILFISH},
+	{35, 45, SPECIES_CARVANHA},
+	{35, 45, SPECIES_REMORAID},
+	{35, 45, SPECIES_TYNAMO},
+	{35, 45, SPECIES_STUNFISK},
+	{35, 45, SPECIES_FEEBAS},
+};
+
+const struct WildPokemonInfo gRoute66_FishingMonsInfo = {30, gRoute66_FishingMons};
+
+const struct WildPokemon gRoute135_WaterMons[] =
+{
+	{5, 35, SPECIES_CLAUNCHER},
+	{20, 25, SPECIES_PELIPPER},
+	{15, 25, SPECIES_PELIPPER},
+	{25, 30, SPECIES_CLAWITZER},
+	{25, 30, SPECIES_ARMALDO},
+};
+
+const struct WildPokemonInfo gRoute135_WaterMonsInfo = {4, gRoute135_WaterMons};
+
+const struct WildPokemon gRoute135_FishingMons[] =
+{
+	{15, 20, SPECIES_MAGIKARP},
+	{15, 20, SPECIES_TENTACOOL},
+	{20, 25, SPECIES_MAGIKARP},
+	{20, 25, SPECIES_TENTACOOL},
+	{20, 25, SPECIES_WAILMER},
+	{30, 35, SPECIES_SHARPEDO},
+	{30, 35, SPECIES_WAILMER},
+	{25, 30, SPECIES_HORSEA},
+	{35, 40, SPECIES_GYARADOS},
+	{40, 45, SPECIES_MILOTIC},
+};
+
+const struct WildPokemonInfo gRoute135_FishingMonsInfo = {30, gRoute135_FishingMons};
+
+const struct WildPokemon gSnowyShore_LandMons[] =
+{
+	{35, 45, SPECIES_DEERLING},
+	{35, 45, SPECIES_HERDIER},
+	{35, 45, SPECIES_VANILLITE},
+	{35, 44, SPECIES_SAWSBUCK},
+	{35, 44, SPECIES_STANTLER},
+	{35, 45, SPECIES_STANTLER},
+	{35, 45, SPECIES_VANILLUXE},
+	{35, 45, SPECIES_STOUTLAND},
+	{35, 45, SPECIES_MUNCHLAX},
+	{35, 45, SPECIES_RATICATE},
+	{35, 45, SPECIES_EEVEE},
+	{35, 45, SPECIES_GLACEON},
+};
+
+const struct WildPokemonInfo gSnowyShore_LandMonsInfo = {20, gSnowyShore_LandMons};
+
+const struct WildPokemon gSnowyShore_WaterMons[] =
+{
+	{35, 45, SPECIES_SLOWPOKE},
+	{35, 45, SPECIES_WAILMER},
+	{35, 45, SPECIES_LAPRAS},
+	{35, 45, SPECIES_SLOWBRO},
+	{35, 45, SPECIES_SLOWKING},
+};
+
+const struct WildPokemonInfo gSnowyShore_WaterMonsInfo = {4, gSnowyShore_WaterMons};
+
+const struct WildPokemon gSnowyShore_FishingMons[] =
+{
+	{35, 45, SPECIES_GOLDEEN},
+	{35, 45, SPECIES_MAGIKARP},
+	{35, 45, SPECIES_SEAKING},
+	{35, 45, SPECIES_MAGIKARP},
+	{35, 45, SPECIES_PIPLUP},
+	{35, 45, SPECIES_GYARADOS},
+	{35, 45, SPECIES_SEAKING},
+	{35, 45, SPECIES_FINNEON},
+	{35, 45, SPECIES_LUMINEON},
+	{35, 45, SPECIES_LUMINEON},
+};
+
+const struct WildPokemonInfo gSnowyShore_FishingMonsInfo = {30, gSnowyShore_FishingMons};
+
+const struct WildPokemon gSnowyShoreUnderwater_WaterMons[] =
+{
+	{20, 30, SPECIES_CHINCHOU},
+	{20, 30, SPECIES_MAREANIE},
+	{30, 35, SPECIES_FINNEON},
+	{30, 35, SPECIES_SHELLDER},
+	{30, 35, SPECIES_WAILORD},
+};
+
+const struct WildPokemonInfo gSnowyShoreUnderwater_WaterMonsInfo = {4, gSnowyShoreUnderwater_WaterMons};
+
+const struct WildPokemon gDesertTomb1f_LandMons[] = //Route 111 cave 1F
+{
+	{55, 65,SPECIES_GRAVELER},
+	{55, 65,SPECIES_PUPITAR},
+	{55, 65,SPECIES_HIPPOPOTAS},
+	{55, 64,SPECIES_ONIX},
+	{55, 64,SPECIES_SCIZOR},
+	{55, 65,SPECIES_GOLBAT},
+	{55, 65,SPECIES_SANDILE},
+	{55, 65,SPECIES_LAIRON},
+	{55, 65,SPECIES_DUGTRIO},
+	{55, 65,SPECIES_AGGRON},
+	{55, 65,SPECIES_KROKOROK},
+	{55, 65,SPECIES_STEELIX},
+};
+
+const struct WildPokemonInfo gDesertTomb1f_LandMonsInfo = {10, gDesertTomb1f_LandMons};
+
+const struct WildPokemon gDesertTomb2f_LandMons[] = //Route 111 cave B1F
+{
+	{55, 65,SPECIES_ONIX},
+	{55, 65,SPECIES_MUDSDALE},
+	{55, 65,SPECIES_DUGTRIO},
+	{55, 64,SPECIES_MAWILE},
+	{55, 64,SPECIES_MAMOSWINE},
+	{55, 65,SPECIES_GLISCOR},
+	{55, 65,SPECIES_VIBRAVA},
+	{55, 65,SPECIES_HOUNDOOM},
+	{55, 65,SPECIES_AGGRON},
+	{55, 65,SPECIES_DURANT},
+	{55, 65,SPECIES_DURANT},
+	{55, 65,SPECIES_GOLEM},
+};
+
+const struct WildPokemonInfo gDesertTomb2f_LandMonsInfo = {10, gDesertTomb2f_LandMons};
+
+const struct WildPokemon gDesertTombCore_LandMons[] = //Route 111 cave B2F
+{
+	{55, 65,SPECIES_ONIX},
+	{55, 65,SPECIES_ONIX},
+	{55, 65,SPECIES_DURANT},
+	{55, 64,SPECIES_SANDSLASH},
+	{55, 64,SPECIES_VIBRAVA},
+	{55, 65,SPECIES_GOLEM},
+	{55, 65,SPECIES_GOLBAT},
+	{55, 65,SPECIES_SUDOWOODO},
+	{55, 65,SPECIES_LUNATONE},
+	{55, 65,SPECIES_BANETTE},
+	{55, 65,SPECIES_MISMAGIUS},
+	{55, 65,SPECIES_TERRAKION},
+};
+const struct WildPokemonInfo gDesertTombCore_LandMonsInfo = {5, gDesertTombCore_LandMons};
+//End custom locations
 
 const struct WildPokemon gRoute101_LandMons[] =
 {
@@ -1029,51 +1212,6 @@ const struct WildPokemon gRoute115_LandMons[] =
 
 const struct WildPokemonInfo gRoute115_LandMonsInfo = {20, gRoute115_LandMons};
 
-const struct WildPokemon gRoute66_LandMons[] =
-{
-	{35, 45, SPECIES_SLAKOTH},
-	{35, 45, SPECIES_AIPOM},
-	{35, 45, SPECIES_MANKEY},
-	{35, 44, SPECIES_TOUCANNON},
-	{35, 44, SPECIES_ORANGURU},
-	{35, 45, SPECIES_PASSIMIAN},
-	{35, 45, SPECIES_VICTREEBEL},
-	{35, 45, SPECIES_CARNIVINE},
-	{35, 45, SPECIES_TROPIUS},
-	{35, 45, SPECIES_EXEGGUTOR},
-	{35, 45, SPECIES_VIGOROTH},
-	{35, 45, SPECIES_SLIGGOO},
-};
-
-const struct WildPokemonInfo gRoute66_LandMonsInfo = {50, gRoute66_LandMons};
-
-const struct WildPokemon gRoute66_WaterMons[] =
-{
-	{35, 45, SPECIES_BASCULIN},
-	{35, 45, SPECIES_CARVANHA},
-	{35, 45, SPECIES_WHISCASH},
-	{35, 45, SPECIES_WOOPER},
-	{35, 45, SPECIES_SLAKOTH},
-};
-
-const struct WildPokemonInfo gRoute66_WaterMonsInfo = {4, gRoute66_WaterMons};
-
-const struct WildPokemon gRoute66_FishingMons[] =
-{
-	{35, 45, SPECIES_BASCULIN},
-	{35, 45, SPECIES_CARVANHA},
-	{35, 45, SPECIES_CARVANHA},
-	{35, 45, SPECIES_REMORAID},
-	{35, 45, SPECIES_QWILFISH},
-	{35, 45, SPECIES_CARVANHA},
-	{35, 45, SPECIES_REMORAID},
-	{35, 45, SPECIES_TYNAMO},
-	{35, 45, SPECIES_STUNFISK},
-	{35, 45, SPECIES_FEEBAS},
-};
-
-const struct WildPokemonInfo gRoute66_FishingMonsInfo = {30, gRoute66_FishingMons};
-
 const struct WildPokemon gRoute115_WaterMons[] =
 {
 	{5, 35, SPECIES_TENTACOOL},
@@ -1759,33 +1897,6 @@ const struct WildPokemon gRoute134_FishingMons[] =
 
 const struct WildPokemonInfo gRoute134_FishingMonsInfo = {30, gRoute134_FishingMons};
 
-const struct WildPokemon gRoute135_WaterMons[] =
-{
-	{5, 35, SPECIES_CLAUNCHER},
-	{20, 25, SPECIES_PELIPPER},
-	{15, 25, SPECIES_PELIPPER},
-	{25, 30, SPECIES_CLAWITZER},
-	{25, 30, SPECIES_ARMALDO},
-};
-
-const struct WildPokemonInfo gRoute135_WaterMonsInfo = {4, gRoute135_WaterMons};
-
-const struct WildPokemon gRoute135_FishingMons[] =
-{
-	{15, 20, SPECIES_MAGIKARP},
-	{15, 20, SPECIES_TENTACOOL},
-	{20, 25, SPECIES_MAGIKARP},
-	{20, 25, SPECIES_TENTACOOL},
-	{20, 25, SPECIES_WAILMER},
-	{30, 35, SPECIES_SHARPEDO},
-	{30, 35, SPECIES_WAILMER},
-	{25, 30, SPECIES_HORSEA},
-	{35, 40, SPECIES_GYARADOS},
-	{40, 45, SPECIES_MILOTIC},
-};
-
-const struct WildPokemonInfo gRoute135_FishingMonsInfo = {30, gRoute135_FishingMons};
-
 const struct WildPokemon gAbandonedShip_HiddenFloorCorridors_WaterMons[] =
 {
 	{5, 35, SPECIES_FRILLISH},
@@ -2304,9 +2415,9 @@ const struct WildPokemon gVictoryRoad_B2F_LandMons[] =
 	{42, 42, SPECIES_SABLEYE},
 	{44, 44, SPECIES_GOLBAT},
 	{44, 44, SPECIES_SABLEYE},
-	{42, 42, SPECIES_DEINO},
 	{42, 42, SPECIES_MAWILE},
-	{44, 44, SPECIES_ZWEILOUS},
+	{42, 42, SPECIES_MAWILE},
+	{44, 44, SPECIES_MAWILE},
 	{44, 44, SPECIES_COBALION},
 };
 
@@ -3422,70 +3533,11 @@ const struct WildPokemon gMeteorFalls_StevensCave_LandMons[] =
 };
 const struct WildPokemonInfo gMeteorFalls_StevensCave_LandMonsInfo = {10, gMeteorFalls_StevensCave_LandMons};
 
-//Custom Encounters List
-
- const struct WildPokemon gDesertTomb1f_LandMons[] =
-{
-	{55, 65,SPECIES_GRAVELER},
-	{55, 65,SPECIES_PUPITAR},
-	{55, 65,SPECIES_HIPPOPOTAS},
-	{55, 64,SPECIES_ONIX},
-	{55, 64,SPECIES_SCIZOR},
-	{55, 65,SPECIES_GOLBAT},
-	{55, 65,SPECIES_SANDILE},
-	{55, 65,SPECIES_LAIRON},
-	{55, 65,SPECIES_DUGTRIO},
-	{55, 65,SPECIES_AGGRON},
-	{55, 65,SPECIES_KROKOROK},
-	{55, 65,SPECIES_STEELIX},
-};
-
-const struct WildPokemonInfo gDesertTomb1f_LandMonsInfo = {20, gDesertTomb1f_LandMons};
-
-// large r111 cave second floor
-const struct WildPokemon gDesertTomb2f_LandMons[] =
-{
-	{55, 65,SPECIES_ONIX},
-	{55, 65,SPECIES_MUDSDALE},
-	{55, 65,SPECIES_DUGTRIO},
-	{55, 64,SPECIES_MAWILE},
-	{55, 64,SPECIES_MAMOSWINE},
-	{55, 65,SPECIES_GLISCOR},
-	{55, 65,SPECIES_VIBRAVA},
-	{55, 65,SPECIES_HOUNDOOM},
-	{55, 65,SPECIES_AGGRON},
-	{55, 65,SPECIES_DURANT},
-	{55, 65,SPECIES_DURANT},
-	{55, 65,SPECIES_GOLEM},
-};
-
-const struct WildPokemonInfo gDesertTomb2f_LandMonsInfo = {10, gDesertTomb2f_LandMons};
-
-//Large r111 cave boss floor
-
-const struct WildPokemon gDesertTombCore_LandMons[] =
-{
-	{55, 65,SPECIES_ONIX},
-	{55, 65,SPECIES_ONIX},
-	{55, 65,SPECIES_DURANT},
-	{55, 64,SPECIES_SANDSLASH},
-	{55, 64,SPECIES_VIBRAVA},
-	{55, 65,SPECIES_GOLEM},
-	{55, 65,SPECIES_GOLBAT},
-	{55, 65,SPECIES_SUDOWOODO},
-	{55, 65,SPECIES_LUNATONE},
-	{55, 65,SPECIES_BANETTE},
-	{55, 65,SPECIES_MISMAGIUS},
-	{55, 65,SPECIES_TERRAKION},
-};
-const struct WildPokemonInfo gDesertTombCore_LandMonsInfo = {5, gDesertTombCore_LandMons};
-
-
-//End custom Encounters
-
 //The actual headers that link the encounter tables to particular maps start here.
 
 const struct WildPokemonHeader gWildMonHeaders[] =
+
+//Custom locations
 {
 	{
 		.mapGroup = MAP_GROUP(LITTLEROOT_TOWN),
@@ -3495,6 +3547,63 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.rockSmashMonsInfo = NULL,
 		.fishingMonsInfo = &gLittlerootTown_FishingMonsInfo,
 	},
+	{
+		.mapGroup = MAP_GROUP(ROUTE66),
+		.mapNum = MAP_NUM(ROUTE66),
+		.landMonsInfo = &gRoute66_LandMonsInfo,
+		.waterMonsInfo = &gRoute66_WaterMonsInfo,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = &gRoute66_FishingMonsInfo,
+	},
+	{
+		.mapGroup = MAP_GROUP(ROUTE135),
+		.mapNum = MAP_NUM(ROUTE135),
+		.landMonsInfo = NULL,
+		.waterMonsInfo = &gRoute135_WaterMonsInfo,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = &gRoute135_FishingMonsInfo,
+	},
+	{
+		.mapGroup = MAP_GROUP(SNOWY_SHORE),
+		.mapNum = MAP_NUM(SNOWY_SHORE),
+		.landMonsInfo = &gSnowyShore_LandMonsInfo,
+		.waterMonsInfo = &gSnowyShore_WaterMonsInfo,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = &gSnowyShore_FishingMonsInfo,
+	},
+	{
+		.mapGroup = MAP_GROUP(SNOWY_SHORE_UNDERWATER),
+		.mapNum = MAP_NUM(SNOWY_SHORE_UNDERWATER),
+		.landMonsInfo = NULL,
+		.waterMonsInfo = &gSnowyShoreUnderwater_WaterMonsInfo,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = NULL,
+	},
+	{
+		.mapGroup = MAP_GROUP(DESERT_TOMB1F),
+		.mapNum = MAP_NUM(DESERT_TOMB1F),
+		.landMonsInfo = &gDesertTomb1f_LandMonsInfo,
+		.waterMonsInfo = NULL,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = NULL,
+	},
+	{
+		.mapGroup = MAP_GROUP(DESERT_TOMB_CORE),
+		.mapNum = MAP_NUM(DESERT_TOMB_CORE),
+		.landMonsInfo = &gDesertTombCore_LandMonsInfo,
+		.waterMonsInfo = NULL,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = NULL,
+	},
+	{
+		.mapGroup = MAP_GROUP(DESERT_TOMB2F),
+		.mapNum = MAP_NUM(DESERT_TOMB2F),
+		.landMonsInfo = &gDesertTomb2f_LandMonsInfo,
+		.waterMonsInfo = NULL,
+		.rockSmashMonsInfo = NULL,
+		.fishingMonsInfo = NULL,
+	},
+	//End of custom locations
 	{
 		.mapGroup = MAP_GROUP(ROUTE101),
 		.mapNum = MAP_NUM(ROUTE101),
@@ -3550,38 +3659,6 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.waterMonsInfo = &gRoute111_WaterMonsInfo,
 		.rockSmashMonsInfo = &gRoute111_RockSmashMonsInfo,
 		.fishingMonsInfo = &gRoute111_FishingMonsInfo,
-	},
-	{
-		.mapGroup = MAP_GROUP(ROUTE66),
-		.mapNum = MAP_NUM(ROUTE66),
-		.landMonsInfo = &gRoute66_LandMonsInfo,
-		.waterMonsInfo = &gRoute66_WaterMonsInfo,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = &gRoute66_FishingMonsInfo,
-	},
-	{
-		.mapGroup = MAP_GROUP(DESERT_TOMB1F),
-		.mapNum = MAP_NUM(DESERT_TOMB1F),
-		.landMonsInfo = &gDesertTomb1f_LandMonsInfo,
-		.waterMonsInfo = NULL,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = NULL,
-	},
-	{
-		.mapGroup = MAP_GROUP(DESERT_TOMB_CORE),
-		.mapNum = MAP_NUM(DESERT_TOMB_CORE),
-		.landMonsInfo = &gDesertTombCore_LandMonsInfo,
-		.waterMonsInfo = NULL,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = NULL,
-	},
-	{
-		.mapGroup = MAP_GROUP(DESERT_TOMB2F),
-		.mapNum = MAP_NUM(DESERT_TOMB2F),
-		.landMonsInfo = &gDesertTomb2f_LandMonsInfo,
-		.waterMonsInfo = NULL,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = NULL,
 	},
 	{
 		.mapGroup = MAP_GROUP(ROUTE112),
@@ -3982,14 +4059,6 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.waterMonsInfo = &gRoute134_WaterMonsInfo,
 		.rockSmashMonsInfo = NULL,
 		.fishingMonsInfo = &gRoute134_FishingMonsInfo,
-	},
-	{
-		.mapGroup = MAP_GROUP(ROUTE135),
-		.mapNum = MAP_NUM(ROUTE135),
-		.landMonsInfo = NULL,
-		.waterMonsInfo = &gRoute135_WaterMonsInfo,
-		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = &gRoute135_FishingMonsInfo,
 	},
 	{
 		.mapGroup = MAP_GROUP(ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS),
