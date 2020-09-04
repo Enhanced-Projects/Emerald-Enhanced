@@ -1867,3 +1867,13 @@ Ryu_Magma8Notice:
 Ryu_PlayerLostTheGame::
 	special DoWhiteOut
 	end
+
+@===================================================================================================
+Ryu_ShowStarterInfo::
+	specialvar VAR_RESULT, RyuFillStatsBuffers
+	delay 30
+    drawinfobox INFOBOXPOKEMONDATA
+	bufferpartymonnick 1, 0
+	msgbox Ryu_Stats
+	removeinfobox
+	return
