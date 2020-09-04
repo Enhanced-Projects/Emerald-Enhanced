@@ -124,6 +124,7 @@ WATTSON3::
 	end
 
 WATTSON4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, MVG_FollowerMatch
 	goto_if_set FLAG_RYU_DS_HAS_PARTNER, MVG_PartnerQuery 
 	trainerbattle_single TRAINER_WATTSON_4, MauvilleCity_Gym_Text_WattsonPreBattle, MauvilleCity_Gym_Text_WattsonDefeat, MG_Reset
 	release
@@ -156,6 +157,20 @@ MVG_RelDialog::
 MVG_NoRelGymBattle::
 	trainerbattle_single TRAINER_WATTSON_4, MauvilleCity_Gym_Text_WattsonPreBattle, MauvilleCity_Gym_Text_WattsonDefeat, MG_Reset
 	release
+	end
+
+MVG_FollowerMatch::
+	msgbox MauvilleCity_Gym_Text_WattsonPreBattle
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MVG_ChooseValidMons
+	multi_2_vs_1 TRAINER_WATTSON_4, MauvilleCity_Gym_Text_WattsonDefeat, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto MG_Reset
 	end
 	
 MVG_NoRelationship1::
@@ -250,6 +265,7 @@ MVG_AltGymBattle::
 MVG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, MVG_FollowerMatch
 	goto MVG_AltGymBattle
 	
 MVG_GymBattleEnd::

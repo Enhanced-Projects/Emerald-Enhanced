@@ -202,6 +202,7 @@ brawly3::
 	end
 
 brawly4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, DFG_FollowerMatch
 	goto_if_set FLAG_RYU_DS_HAS_PARTNER, DFG_PartnerQuery
 	trainerbattle_single TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, DewfordTown_Gym_Text_BrawlyDefeat, DFG_Reset
 	release
@@ -234,6 +235,20 @@ DFG_RelDialog::
 DFG_NoRelGymBattle::
 	trainerbattle_single TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, DewfordTown_Gym_Text_BrawlyPreBattle, DFG_Reset
 	release
+	end
+
+DFG_FollowerMatch::
+	msgbox DewfordTown_Gym_Text_BrawlyPreBattle
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq DFG_ChooseValidMons
+	multi_2_vs_1 TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto DFG_Reset
 	end
 	
 DFG_NoRelationship1::
@@ -328,6 +343,7 @@ DFG_AltGymBattle::
 DFG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, DFG_FollowerMatch
 	goto DFG_AltGymBattle
 	
 DFG_GymBattleEnd::

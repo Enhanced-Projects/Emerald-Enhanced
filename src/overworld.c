@@ -405,6 +405,33 @@ void DoWhiteOut(void)
     WarpIntoMap();
 }
 
+extern void RyuWarp();
+extern void RyuWarp2();
+
+void DoPartnerWhiteOut(void)
+{
+    if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
+    {
+        FlagClear(FLAG_RYU_RANDOMBATTLE);
+        DoSoftReset();
+    }
+
+    if (FlagGet(FLAG_RYU_NUZLOCKEMODE) == 1)
+        RyuWipeParty();
+
+    if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
+        RyuWipeParty();
+
+    FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
+    ScriptContext2_RunNewScript(EventScript_WhiteOut);
+    SetMoney(&gSaveBlock1Ptr->money, ((GetMoney(&gSaveBlock1Ptr->money) / 5) * 4));
+    HealPlayerParty();
+    Overworld_ResetStateAfterWhiteOut();
+    if (&gSaveBlock2Ptr->playerGender == MALE)
+        RyuWarp();
+    RyuWarp2();
+}
+
 void Overworld_ResetStateAfterFly(void)
 {
     ResetInitialPlayerAvatarState();

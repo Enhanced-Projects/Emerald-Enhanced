@@ -186,11 +186,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	msgbox RDB_CurrentLocationMons
-	call RDB_DrawTempDexNavInfoGrid
-	waitbuttonpress
-	removeinfobox
-	msgbox RDB_ClosingDexNav
+	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LEAF
 	release
 	end
 

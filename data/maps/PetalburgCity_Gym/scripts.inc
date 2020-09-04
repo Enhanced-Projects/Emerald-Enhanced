@@ -156,6 +156,7 @@ norman3::
 	end
 
 norman4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, PG_FollowerMatch
 	call_if_set FLAG_RYU_DS_HAS_PARTNER, PG_PartnerQuery
 	trainerbattle_single TRAINER_NORMAN_4, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanDefeat, PG_Reset
 	release
@@ -188,6 +189,20 @@ PG_RelDialog::
 PG_NoRelGymBattle::
 	trainerbattle_single TRAINER_NORMAN_4, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanDefeat, PG_Reset
 	release
+	end
+
+PG_FollowerMatch::
+	msgbox PetalburgCity_Gym_Text_NormanPreRematch
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq PG_ChooseValidMons
+	multi_2_vs_1 TRAINER_NORMAN_4, PetalburgCity_Gym_Text_NormanDefeat, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto PG_Reset
 	end
 	
 PG_NoRelationship1::
@@ -296,6 +311,7 @@ PG_CourtneyAltGymBattle::
 PG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, PG_FollowerMatch
 	goto PG_AltGymBattle
 	
 PG_GymBattleEnd::

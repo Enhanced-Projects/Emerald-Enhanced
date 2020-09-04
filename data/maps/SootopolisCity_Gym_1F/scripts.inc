@@ -134,6 +134,7 @@ Juan3::
 	end
 
 Juan4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, SG_FollowerMatch
 	call_if_set FLAG_RYU_DS_HAS_PARTNER, SG_PartnerQuery
 	trainerbattle_single TRAINER_JUAN_4, SootopolisCity_Gym_1F_Text_JuanPreBattle, SootopolisCity_Gym_1F_Text_JuanDefeat, SG_Reset
 	release
@@ -166,6 +167,20 @@ SG_RelDialog::
 SG_NoRelGymBattle::
 	trainerbattle_single TRAINER_JUAN_4, SootopolisCity_Gym_1F_Text_JuanPreBattle, SootopolisCity_Gym_1F_Text_JuanDefeat, SG_Reset
 	release
+	end
+
+SG_FollowerMatch::
+	msgbox SootopolisCity_Gym_1F_Text_JuanPreBattle
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq SG_ChooseValidMons
+	multi_2_vs_1 TRAINER_JUAN_4, SootopolisCity_Gym_1F_Text_JuanDefeat, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto SG_Reset
 	end
 	
 SG_NoRelationship1::
@@ -260,6 +275,7 @@ SG_AltGymBattle::
 SG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, SG_FollowerMatch
 	goto SG_AltGymBattle
 	
 SG_GymBattleEnd::

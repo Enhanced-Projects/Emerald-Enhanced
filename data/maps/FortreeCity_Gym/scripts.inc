@@ -75,6 +75,7 @@ WINONA3::
 	end
 
 WINONA4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, FG_FollowerMatch
     goto_if_set FLAG_RYU_DS_HAS_PARTNER FG_PartnerQuery
 	trainerbattle_single TRAINER_WINONA_4, FortreeCity_Gym_Text_WinonaPreBattle, FortreeCity_Gym_Text_WinonaDefeat, FG_Reset
 	release
@@ -107,6 +108,20 @@ FG_RelDialog::
 FG_NoRelGymBattle::
 	trainerbattle_single TRAINER_WINONA_4, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_Text_WinonaPostBattle, FG_Reset
 	release
+	end
+
+FG_FollowerMatch::
+	msgbox FortreeCity_Gym_Text_WinonaDefeat
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq FG_ChooseValidMons
+	multi_2_vs_1 TRAINER_WINONA_4, FortreeCity_Gym_Text_WinonaPostBattle, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto FG_Reset
 	end
 	
 FG_NoRelationship1::
@@ -200,6 +215,7 @@ FG_AltGymBattle::
 FG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, FG_FollowerMatch
 	goto FG_AltGymBattle
 	
 FG_GymBattleEnd::

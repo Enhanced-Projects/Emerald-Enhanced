@@ -102,6 +102,7 @@ SABRINA3::
 	end
 
 SABRINA4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, MG_FollowerMatch
 	goto_if_set FLAG_RYU_DS_HAS_PARTNER, MG_PartnerQuery
 	trainerbattle_double TRAINER_TATE_AND_LIZA_4, MossdeepCity_Gym_Text_TateAndLizaPreBattle, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MDG_Reset, NO_MUSIC
 	release
@@ -134,6 +135,20 @@ MG_RelDialog::
 MG_NoRelGymBattle::
 	trainerbattle_double TRAINER_TATE_AND_LIZA_4, MossdeepCity_Gym_Text_TateAndLizaPreBattle, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MDG_Reset, NO_MUSIC
 	release
+	end
+
+MG_FollowerMatch::
+	msgbox MossdeepCity_Gym_Text_TateAndLizaPreBattle
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MG_ChooseValidMons
+	multi_2_vs_1 TRAINER_TATE_AND_LIZA_SINGLE, MossdeepCity_Gym_Text_TateAndLizaDefeat, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto MG_Reset
 	end
 	
 MG_NoRelationship1::
@@ -228,6 +243,7 @@ MG_AltGymBattle::
 MG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, MG_FollowerMatch
 	goto MG_AltGymBattle
 	
 MG_GymBattleEnd::

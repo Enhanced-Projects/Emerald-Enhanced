@@ -54,6 +54,7 @@ ROXANNE3::
 	end
 
 ROXANNE4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, RG_FollowerMatch
 	call_if_set FLAG_RYU_DS_HAS_PARTNER, RG_PartnerQuery
 	trainerbattle_single TRAINER_ROXANNE_4, RustboroCity_Gym_Text_RoxannePreBattle, RustboroCity_Gym_Text_RoxanneDefeat, RG_Reset
 	release
@@ -87,7 +88,21 @@ RG_NoRelGymBattle::
 	trainerbattle_single TRAINER_ROXANNE_4, RustboroCity_Gym_Text_RoxannePreBattle, RustboroCity_Gym_Text_RoxanneDefeat, RG_Reset
 	release
 	end
-	
+
+RG_FollowerMatch::
+	msgbox RustboroCity_Gym_Text_RoxannePreBattle
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq RG_ChooseValidMons
+	multi_2_vs_1 TRAINER_ROXANNE_4, RustboroCity_Gym_Text_RoxanneDefeat, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto RG_Reset
+	end
+
 RG_NoRelationship1::
 	msgbox Ryu_NOREL MSGBOX_DEFAULT
 	closemessage
@@ -180,6 +195,7 @@ RG_AltGymBattle::
 RG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, RG_FollowerMatch
 	goto RG_AltGymBattle
 	
 RG_GymBattleEnd::

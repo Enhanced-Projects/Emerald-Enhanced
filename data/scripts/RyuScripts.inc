@@ -1865,13 +1865,28 @@ Ryu_Magma8Notice:
 @==================================================================================================Player lost a RyuMultiBattlePartnerBrendan
 
 Ryu_PlayerLostTheGame::
+	goto_if_unset FLAG_RYU_HAS_FOLLOWER, RyuPlayerLostTheGameSolo
+	special DoPartnerWhiteOut
+	end
+
+RyuPlayerLostTheGameSolo::
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_ne RyuPlayerLostTheGameSoloFemale
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F
 	special DoWhiteOut
+	release
+	end
+
+RyuPlayerLostTheGameSoloFemale::
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_DAWNS_HOUSE_2F
+	special DoWhiteOut
+	release
 	end
 
 @===================================================================================================
 Ryu_ShowStarterInfo::
 	specialvar VAR_RESULT, RyuFillStatsBuffers
-	delay 30
     drawinfobox INFOBOXPOKEMONDATA
 	bufferpartymonnick 1, 0
 	msgbox Ryu_Stats
