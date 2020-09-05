@@ -13646,36 +13646,30 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Gabrielle4[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Gabrielle5[] = {
+static const struct TrainerMonItemCustomMoves sParty_RelNurseJoy[] = {
     {
-    .iv = 40,
-    .lvl = 37,
+    .iv = 255,
+    .lvl = 101,
+    .species = SPECIES_AUDINO,
+    .heldItem = ITEM_AUDINITE,
+	.ability = 0,
+	.moves = {MOVE_HEAL_PULSE, MOVE_PSYCHIC, MOVE_DAZZLING_GLEAM, MOVE_HEALING_WISH},
+    },
+    {
+    .iv = 255,
+    .lvl = 98,
     .species = SPECIES_DELCATTY,
+    .heldItem = ITEM_EXPERT_BELT,
+	.ability = 0,
+	.moves = {MOVE_FLAMETHROWER, MOVE_SHADOW_BALL, MOVE_ENERGY_BALL, MOVE_FLASH_CANNON},
     },
     {
-    .iv = 40,
-    .lvl = 37,
-    .species = SPECIES_MIGHTYENA,
-    },
-    {
-    .iv = 40,
-    .lvl = 37,
-    .species = SPECIES_LINOONE,
-    },
-    {
-    .iv = 40,
-    .lvl = 37,
-    .species = SPECIES_LUDICOLO,
-    },
-    {
-    .iv = 40,
-    .lvl = 37,
-    .species = SPECIES_SHIFTRY,
-    },
-    {
-    .iv = 40,
-    .lvl = 37,
-    .species = SPECIES_SWELLOW,
+    .iv = 255,
+    .lvl = 102,
+    .species = SPECIES_BLISSEY,
+    .heldItem = ITEM_LEFTOVERS,
+	.ability = 1,
+	.moves = {MOVE_SEISMIC_TOSS, MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_SOFT_BOILED},
     }
 };
 

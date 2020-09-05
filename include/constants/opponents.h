@@ -844,7 +844,7 @@
 #define TRAINER_EMPTY_13                    840
 #define TRAINER_EMPTY_14                    841
 #define TRAINER_EMPTY_15                    842
-#define TRAINER_EMPTY_16                    843
+#define TRAINER_REL_NURSE                    843
 #define TRAINER_OVERLORD_RYU                844
 #define TRAINER_PHOEBE_REMATCH              845
 #define TRAINER_DRAKE_REMATCH               846

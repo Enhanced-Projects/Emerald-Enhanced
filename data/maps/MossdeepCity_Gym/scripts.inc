@@ -110,7 +110,7 @@ SABRINA4::
 	
 MG_PartnerQuery::
     msgbox RyuPartnerMultiText MSGBOX_YESNO
-	compare VAR_RESULT 1
+	compare VAR_RESULT, 1
 	goto_if_eq MG_RelDialog
 	goto MG_NoRelGymBattle
 	return
@@ -130,6 +130,8 @@ MG_RelDialog::
 	goto_if_eq MG_GymBattleIntroLanette
 	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
 	goto_if_eq MG_GymBattleIntroCourtney
+	compare VAR_0x8008, TRAINER_REL_NURSE
+	goto_if_eq MG_GymBattleIntroJoy
 	goto MG_NoRelGymBattle
 	
 MG_NoRelGymBattle::
@@ -226,6 +228,18 @@ MG_GymBattleIntroCourtney::
 	applymovement 43, MG_PartnerEnter
 	waitmovement 0
 	msgbox MG_COURTNEY_INTRO MSGBOX_DEFAULT
+	goto MG_AltGymBattle
+
+MG_GymBattleIntroJoy::
+	goto_if_unset FLAG_RYU_DS_JOY_PARTNERS, MG_NoRelationship1
+	msgbox Ryu_PlayerCalledJoy MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 44
+	playse SE_DOOR
+	applymovement 44, MG_PartnerEnter
+	waitmovement 0
+	msgbox MG_JOY_INTRO MSGBOX_DEFAULT
 	goto MG_AltGymBattle
 	
 MG_AltGymBattle::
@@ -330,6 +344,17 @@ MG_GymBattleEndCourtney::
 	goto MG_Reset
 	release
 	end
+
+MG_GymBattleEndJoy::
+	msgbox MG_JoyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 44, MG_PartnerExit
+	waitmovement 44
+	playse SE_DOOR
+	removeobject 44
+	goto MG_Reset
+	release
+	end
 	
 MG_SHELLY_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}I've technically got an\n"
@@ -354,6 +379,9 @@ MG_BRENDAN_INTRO:
 
 MG_COURTNEY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}No problem at all, pshychic types\ncan't stand up to my Mightyena.\pFree snack for the pupper!$"
+
+MG_JOY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}They're so cute!\nTo think such young people\lcan be Gym Leaders!$"
 	
 MG_PreBattleText:
     .string "Tate: I see you levelled the\n"
@@ -387,6 +415,9 @@ MG_BrendanGymBattleComplete:
 
 MG_CourtneyGymBattleComplete:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}My doggo looks very satisfied.$"
+
+MG_JoyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} $"
 	
 MG_PartnerEnter:
 	walk_in_place_down

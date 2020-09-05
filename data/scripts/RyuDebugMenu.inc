@@ -186,7 +186,15 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setvar VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LEAF
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGNURSE
+	waitbuttonpress
+	clearfullscreenimage
+	buffernumberstring 0, SCENEBGNURSE
+	msgbox RDB_TempVarsViewMsg
+	setflag FLAG_RYU_DS_JOY_PARTNERS
+	setflag FLAG_RYU_DS_HAS_PARTNER
+	fadescreen FADE_FROM_BLACK
 	release
 	end
 

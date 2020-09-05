@@ -12,6 +12,7 @@ const struct MonCoords gTrainerBackPicCoords[] =
     [TRAINER_BACK_PIC_LANETTE] = {.size = 8, .y_offset = 4},
     [TRAINER_BACK_PIC_MINNIE] = {.size = 8, .y_offset = 4},
     [TRAINER_BACK_PIC_COURTNEY] = {.size = 8, .y_offset = 4},
+    [TRAINER_BACK_PIC_NURSE] = {.size = 8, .y_offset = 4},
 };
 
 // this table goes functionally unused, since none of these pics are compressed
@@ -31,6 +32,7 @@ const struct CompressedSpriteSheet gTrainerBackPicTable[] =
     (const u32 *)gTrainerBackPic_Lanette, 0x2000, TRAINER_BACK_PIC_LANETTE,
     (const u32 *)gTrainerBackPic_Minnie, 0x2000, TRAINER_BACK_PIC_MINNIE,
     (const u32 *)gTrainerBackPic_Courtney, 0x2000, TRAINER_BACK_PIC_COURTNEY,
+    (const u32 *)gTrainerBackPic_Nurse, 0x2000, TRAINER_BACK_PIC_NURSE,
 };
 
 const struct CompressedSpritePalette gTrainerBackPicPaletteTable[] =
@@ -47,4 +49,5 @@ const struct CompressedSpritePalette gTrainerBackPicPaletteTable[] =
     TRAINER_BACK_PAL(LANETTE, gTrainerBackPicPal_Lanette),
     TRAINER_BACK_PAL(MINNIE, gTrainerBackPicPal_Minnie),
     TRAINER_BACK_PAL(COURTNEY, gTrainerBackPicPal_Courtney),
+    TRAINER_BACK_PAL(NURSE, gTrainerBackPicPal_Nurse),
 };

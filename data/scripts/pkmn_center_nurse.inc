@@ -95,8 +95,19 @@ EventScript_PkmnCenterNurse_TakeAndHealPkmn:: @ 8271993
     call_if_set FLAG_RYU_HIDE_MINNIE, CheckRestoreMinnie
     special HealPlayerParty
     msgbox HaveANiceDay
+    goto_if_set FLAG_RYU_DS_JOY_PARTNERS, PCN_NurseFollower
     closemessage
     return
+
+PCN_NurseFollower::
+    msgbox PCN_CanIComeWith, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_eq FollowerNurseSetup
+    release
+    end
+
+PCN_CanIComeWith:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Did you... by chance...\nwant a companion for your travels?$"
 
 CheckRestoreMinnie::
     goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_return
