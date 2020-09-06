@@ -90,7 +90,7 @@ const struct WildPokemon gLittlerootTown_WaterMons[] =
 	{5, 5, SPECIES_TOTODILE},//30%
 	{5, 5, SPECIES_MUDKIP},//5%
 	{5, 5, SPECIES_MUDKIP},//4%
-	{5, 5, SPECIES_BELDUM0},//1%
+	{5, 5, SPECIES_BELDUM},//1%
 };
 
 const struct WildPokemonInfo gLittlerootTown_WaterMonsInfo = {4, gLittlerootTown_WaterMons};
