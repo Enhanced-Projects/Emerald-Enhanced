@@ -226,6 +226,7 @@ static const u8 sSteelyResolveDescription[] = _("Semi resists Rck/Ice/Nrml.");
 static const u8 sFierceKicksDescription[] = _("Boosts kicking moves.");
 static const u8 sArmoredDescription[] = _("Resists Fighting moves.");
 static const u8 sDetonateDescription[] = _("Normal moves become Fire.");
+static const u8 sGlacialDescription[] = _("Moving last boosts power.");
 
 const u8 gAbilityNames[ABILITIES_COUNT_GEN7][ABILITY_NAME_LENGTH + 1] =
 {
@@ -469,6 +470,7 @@ const u8 gAbilityNames[ABILITIES_COUNT_GEN7][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_FIERCE_KICKS] = _("Fierce Kicks"),
     [ABILITY_ARMORED] = _("Armored"),
     [ABILITY_DETONATE] = _("Detonate"),
+    [ABILITY_GLACIAL] = _("Glacial"),
 };
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT_GEN7] =
@@ -713,4 +715,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT_GEN7] =
     [ABILITY_FIERCE_KICKS] = sFierceKicksDescription,
     [ABILITY_ARMORED] = sArmoredDescription,
     [ABILITY_DETONATE] = sDetonateDescription,
+    [ABILITY_GLACIAL] = sGlacialDescription,
 };

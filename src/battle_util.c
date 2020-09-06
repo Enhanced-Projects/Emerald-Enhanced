@@ -5988,6 +5988,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         if (GetBattlerTurnOrderNum(battlerAtk) == gBattlersCount - 1 && move != MOVE_FUTURE_SIGHT && move != MOVE_DOOM_DESIRE)
            MulModifier(&modifier, UQ_4_12(1.3));
         break;
+    case ABILITY_GLACIAL:
+        if (GetBattlerTurnOrderNum(battlerAtk) == gBattlersCount - 1 && move != MOVE_FUTURE_SIGHT && move != MOVE_DOOM_DESIRE)
+           MulModifier(&modifier, UQ_4_12(1.3));
+        break;
     case ABILITY_TOUGH_CLAWS:
         if (gBattleMoves[move].flags & FLAG_MAKES_CONTACT)
            MulModifier(&modifier, UQ_4_12(1.3));
@@ -6497,6 +6501,10 @@ static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, 
     case HOLD_EFFECT_ASSAULT_VEST:
         if (!usesDefStat)
             MulModifier(&modifier, UQ_4_12(1.5));
+        break;
+    case HOLD_EFFECT_DRY_ICE:
+        if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ICE))
+            MulModifier(&modifier, UQ_4_12(1.25));
         break;
     }
 

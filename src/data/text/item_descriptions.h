@@ -2306,17 +2306,17 @@ static const u8 sArtefact3Desc[] = _(
     "Polar Pillar. It is\n"
     "cold and clear.");
 
-static const u8 sArtefact4Desc[] = _(
-    "An old shard of a\n"
-    "key. Needs three\n"
-    "other fragments.");
+static const u8 sDryIceDesc[] = _(
+    "A piece of ice that\n"
+    "boosts the defenses\n"
+    "of Ice types.");
 
 static const u8 sOldKeyDesc[] = _(
     "An old key used to open\n"
     "Mt Freeze. Belonged to\n"
     "an ancient civilization.");
 
-static const u8 sDryIceDesc[] = _(
+static const u8 sMindPlateDesc[] = _(
     "A stone tablet that\n"
     "boosts the power of\n"
     "Psychic-type moves.");

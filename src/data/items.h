@@ -6241,20 +6241,21 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-//Key Shard 4 and Old Key are not used
-    [ITEM_KEY_SHARD_4] =
+    [ITEM_DRY_ICE] =
     {
-        .name = _("Key Shard"),
-        .itemId = ITEM_KEY_SHARD_4,
-        .price = 0,
-        .description = sArtefact4Desc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
+        .name = _("Dry Ice"),
+        .itemId = ITEM_DRY_ICE,
+        .price = 10000,
+        .holdEffect = HOLD_EFFECT_DRY_ICE,
+        .holdEffectParam = 25,
+        .description = sDryIceDesc,
+        .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
+//Old Key is not used
     [ITEM_OLD_KEY] =
     {
         .name = _("Old Key"),
@@ -6270,12 +6271,12 @@ const struct Item gItems[] =
 
     [ITEM_MIND_PLATE] =
     {
-        .name = _("Dry Ice"),
+        .name = _("Mind Plate"),
         .itemId = ITEM_MIND_PLATE,
         .price = 20000,
         .holdEffect = HOLD_EFFECT_PSYCHIC_POWER,
         .holdEffectParam = 50,
-        .description = sDryIceDesc,
+        .description = sMindPlateDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
