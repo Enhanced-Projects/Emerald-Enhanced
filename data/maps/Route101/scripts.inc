@@ -234,6 +234,7 @@ Route101_EventScript_BirchsBag:: @ 81EBE16
 	waitmovement 0
 	special ChooseStarter
 	waitstate
+	call Ryu_ShowStarterInfo
 	applymovement 2, Route101_Movement_BirchApproachPlayer
 	waitmovement 0
 	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT

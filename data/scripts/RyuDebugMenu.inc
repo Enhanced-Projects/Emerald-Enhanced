@@ -186,11 +186,15 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	msgbox RDB_CurrentLocationMons
-	call RDB_DrawTempDexNavInfoGrid
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGNURSE
 	waitbuttonpress
-	removeinfobox
-	msgbox RDB_ClosingDexNav
+	clearfullscreenimage
+	buffernumberstring 0, SCENEBGNURSE
+	msgbox RDB_TempVarsViewMsg
+	setflag FLAG_RYU_DS_JOY_PARTNERS
+	setflag FLAG_RYU_DS_HAS_PARTNER
+	fadescreen FADE_FROM_BLACK
 	release
 	end
 

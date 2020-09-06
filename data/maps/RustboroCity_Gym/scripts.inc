@@ -54,6 +54,7 @@ ROXANNE3::
 	end
 
 ROXANNE4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, RG_FollowerMatch
 	call_if_set FLAG_RYU_DS_HAS_PARTNER, RG_PartnerQuery
 	trainerbattle_single TRAINER_ROXANNE_4, RustboroCity_Gym_Text_RoxannePreBattle, RustboroCity_Gym_Text_RoxanneDefeat, RG_Reset
 	release
@@ -61,7 +62,7 @@ ROXANNE4::
 	
 RG_PartnerQuery::
     msgbox RyuPartnerMultiText MSGBOX_YESNO
-	compare VAR_RESULT 1
+	compare VAR_RESULT, 1
 	goto_if_eq RG_RelDialog
 	goto RG_NoRelGymBattle
 	return
@@ -81,13 +82,29 @@ RG_RelDialog::
 	goto_if_eq RG_GymBattleIntroLanette
 	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
 	goto_if_eq RG_GymBattleIntroCourtney
+	compare VAR_0x8008, TRAINER_REL_NURSE
+	goto_if_eq RG_GymBattleIntroJoy
 	goto RG_NoRelGymBattle
 	
 RG_NoRelGymBattle::
 	trainerbattle_single TRAINER_ROXANNE_4, RustboroCity_Gym_Text_RoxannePreBattle, RustboroCity_Gym_Text_RoxanneDefeat, RG_Reset
 	release
 	end
-	
+
+RG_FollowerMatch::
+	msgbox RustboroCity_Gym_Text_RoxannePreBattle
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq RG_ChooseValidMons
+	multi_2_vs_1 TRAINER_ROXANNE_4, RustboroCity_Gym_Text_RoxanneDefeat, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto RG_Reset
+	end
+
 RG_NoRelationship1::
 	msgbox Ryu_NOREL MSGBOX_DEFAULT
 	closemessage
@@ -164,6 +181,18 @@ RG_GymBattleIntroCourtney::
 	waitmovement 0
 	msgbox RG_COURTNEY_INTRO MSGBOX_DEFAULT
 	goto RG_AltGymBattle
+
+RG_GymBattleIntroJoy::
+	goto_if_unset FLAG_RYU_DS_JOY_PARTNERS, RG_NoRelationship1
+	msgbox Ryu_PlayerCalledJoy MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 12
+	playse SE_DOOR
+	applymovement 12, RG_PartnerEnter
+	waitmovement 0
+	msgbox RG_JOY_INTRO MSGBOX_DEFAULT
+	goto RG_AltGymBattle
 	
 RG_AltGymBattle::
 	msgbox RG_PreBattleText MSGBOX_DEFAULT
@@ -180,6 +209,7 @@ RG_AltGymBattle::
 RG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, RG_FollowerMatch
 	goto RG_AltGymBattle
 	
 RG_GymBattleEnd::
@@ -263,6 +293,17 @@ RG_GymBattleEndCourtney::
 	goto RG_Reset
 	release
 	end
+
+RG_GymBattleEndJoy::
+	msgbox RG_JoyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 12, RG_PartnerExit
+	waitmovement 12
+	playse SE_DOOR
+	removeobject 12
+	goto RG_Reset
+	release
+	end
 	
 RG_SHELLY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}, I'm glad you\ngot me out of the office for a while.\pLets show her our combined power!$"
@@ -284,6 +325,9 @@ RG_LANETTE_INTRO:
 
 RG_COURTNEY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}An excellent opportunity for Mightyena\nto sharpen his teeth.$"
+
+RG_JOY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} Oh, dear, everything's pointy\nhere. It's dangerous!$"
 	
 RG_DefeatText:
 	.string "Roxanne: Maybe I should have\nrecorded that for the students...$"
@@ -308,6 +352,9 @@ RG_LanetteGymBattleComplete:
 
 RG_CourtneyGymBattleComplete:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Not exactly optimal, but not really\nproblematic either.$"
+
+RG_JoyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} I hope your Pokémon are okay...$"
 
 RG_PreBattleText:
     .string "Roxanne: Nice to see you guys back.\n"

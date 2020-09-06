@@ -1999,6 +1999,7 @@ const u8 gText_RyuRelationshipBrendanMenuOption[] = _("Brendan");
 const u8 gText_RyuRelationshipLanaMenuOption[] = _("Lana");
 const u8 gText_RyuRelationshipLanetteMenuOption[] = _("Lanette");
 const u8 gText_RyuRelationshipCourtneyMenuOption[] = _("Courtney");
+const u8 gText_RyuRelationshipNurseMenuOption[] = _("Joy");
 
 const u8 gText_RyuBetaMenuBlank[] = _("Empty");
 const u8 gText_RyuBetaMenuViewQuestVars[] = _("View Quest Stages");

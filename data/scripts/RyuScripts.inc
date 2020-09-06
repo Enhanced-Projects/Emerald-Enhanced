@@ -257,22 +257,24 @@ RyuPartnerBattleMultichoice::
 	checkplayergender
 	compare VAR_RESULT, FEMALE
 	goto_if_eq RyuPartnerMultiBattleChoiceMale
-	multichoice 20, 3, MULTI_SELECT_PARTNER_MENU, 1
+	multichoice 20, 0, MULTI_SELECT_PARTNER_MENU, 1
 	switch VAR_RESULT
 	case 0, RyuMultiBattlePartnerDawn
 	case 1, RyuMultiBattlePartnerShelly
 	case 2, RyuMultiBattlePartnerLana
 	case 3, RyuMultiBattlePartnerLanette
 	case 4, RyuMultiBattlePartnerCourtney
+	case 5, RyuMultiBattlePartnerNurse
 	
 RyuPartnerMultiBattleChoiceMale::
-	multichoice 20, 4, MULTI_SELECT_PARTNER_ALT_GENDER, 1
+	multichoice 20, 0, MULTI_SELECT_PARTNER_ALT_GENDER, 1
 	switch VAR_RESULT
 	case 0, RyuMultiBattlePartnerBrendan
 	case 1, RyuMultiBattlePartnerShelly
 	case 2, RyuMultiBattlePartnerLana
 	case 3, RyuMultiBattlePartnerLanette
 	case 4, RyuMultiBattlePartnerCourtney
+	case 5, RyuMultiBattlePartnerNurse
 	
 RyuPartnerNoRelationship::
 	msgbox Ryu_NOREL
@@ -314,6 +316,12 @@ RyuMultiBattlePartnerCourtney::
 	setvar VAR_0x8008, TRAINER_REL_COURTNEY_2
 	setvar VAR_0x8009, TRAINER_BACK_PIC_COURTNEY
 	return
+
+RyuMultiBattlePartnerNurse::
+	goto_if_unset FLAG_RYU_DS_JOY_PARTNERS, RyuPartnerNoRelationship
+	setvar VAR_0x8008, TRAINER_REL_NURSE
+	setvar VAR_0x8009, TRAINER_BACK_PIC_NURSE
+	return
 	
 Ryu_PlayerCalledDawn:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} called Dawn...\n... ... ... ... ... ...$"
@@ -332,6 +340,9 @@ Ryu_PlayerCalledLanette:
 
 Ryu_PlayerCalledCourtney:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} called Courtney...\n... ... ... ... ... ...$"
+
+Ryu_PlayerCalledJoy:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} called Joy...\n... ... ... ... ... ...$"
 	
 Ryu_NOREL:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You don't have a good enough\nrelationship with this person.\pChoose a different partner.$"
@@ -1865,5 +1876,30 @@ Ryu_Magma8Notice:
 @==================================================================================================Player lost a RyuMultiBattlePartnerBrendan
 
 Ryu_PlayerLostTheGame::
-	special DoWhiteOut
+	goto_if_unset FLAG_RYU_HAS_FOLLOWER, RyuPlayerLostTheGameSolo
+	special DoPartnerWhiteOut
 	end
+
+RyuPlayerLostTheGameSolo::
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_ne RyuPlayerLostTheGameSoloFemale
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F
+	special DoWhiteOut
+	release
+	end
+
+RyuPlayerLostTheGameSoloFemale::
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_DAWNS_HOUSE_2F
+	special DoWhiteOut
+	release
+	end
+
+@===================================================================================================
+Ryu_ShowStarterInfo::
+	specialvar VAR_RESULT, RyuFillStatsBuffers
+    drawinfobox INFOBOXPOKEMONDATA
+	bufferpartymonnick 1, 0
+	msgbox Ryu_Stats
+	removeinfobox
+	return

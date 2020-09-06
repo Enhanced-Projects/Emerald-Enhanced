@@ -62,6 +62,10 @@ static const u8 sHeatranBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/heat
 static const u8 sHeatranBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran_map.bin");
 static const u8 sHeatranBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/heatran/heatran.gbapal");
 
+static const u8 sNurseBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/nurse_tiles.8bpp");
+static const u8 sNurseBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/nurse_map.bin");
+static const u8 sNurseBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/nurse_palette.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -207,6 +211,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .map = sHeatranBgMap,
 		.mapSize = sizeof(sHeatranBgMap),
         .palette = sHeatranBgPalette,
+		.palIdxCnt = 224
+	},
+	[SCENEBGNURSE] = 
+	{
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sNurseBgTiles,
+		.tileSize = sizeof(sNurseBgTiles),
+        .map = sNurseBgMap,
+		.mapSize = sizeof(sNurseBgMap),
+        .palette = sNurseBgPalette,
 		.palIdxCnt = 224
 	},
 };

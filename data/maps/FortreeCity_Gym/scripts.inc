@@ -75,6 +75,7 @@ WINONA3::
 	end
 
 WINONA4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, FG_FollowerMatch
     goto_if_set FLAG_RYU_DS_HAS_PARTNER FG_PartnerQuery
 	trainerbattle_single TRAINER_WINONA_4, FortreeCity_Gym_Text_WinonaPreBattle, FortreeCity_Gym_Text_WinonaDefeat, FG_Reset
 	release
@@ -82,7 +83,7 @@ WINONA4::
 
 FG_PartnerQuery::
     msgbox RyuPartnerMultiText MSGBOX_YESNO
-	compare VAR_RESULT 1
+	compare VAR_RESULT, 1
 	goto_if_eq FG_RelDialog
 	goto FG_NoRelGymBattle
 	return
@@ -102,11 +103,27 @@ FG_RelDialog::
 	goto_if_eq FG_GymBattleIntroLanette
 	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
 	goto_if_eq FG_GymBattleIntroCourtney
+	compare VAR_0x8008, TRAINER_REL_NURSE
+	goto_if_eq FG_GymBattleIntroJoy
 	goto FG_NoRelGymBattle
 	
 FG_NoRelGymBattle::
 	trainerbattle_single TRAINER_WINONA_4, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_Text_WinonaPostBattle, FG_Reset
 	release
+	end
+
+FG_FollowerMatch::
+	msgbox FortreeCity_Gym_Text_WinonaDefeat
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq FG_ChooseValidMons
+	multi_2_vs_1 TRAINER_WINONA_4, FortreeCity_Gym_Text_WinonaPostBattle, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto FG_Reset
 	end
 	
 FG_NoRelationship1::
@@ -185,6 +202,18 @@ FG_GymBattleIntroCourtney::
 	waitmovement 0
 	msgbox FG_COURTNEY_INTRO MSGBOX_DEFAULT
 	goto FG_AltGymBattle
+
+FG_GymBattleIntroJoy::
+	goto_if_unset FLAG_RYU_DS_JOY_PARTNERS, FG_NoRelationship1
+	msgbox Ryu_PlayerCalledJoy MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 15
+	playse SE_DOOR
+	applymovement 15, FG_PartnerEnter
+	waitmovement 0
+	msgbox FG_JOY_INTRO MSGBOX_DEFAULT
+	goto FG_AltGymBattle
 	
 FG_AltGymBattle::
 	msgbox FG_PreBattleText MSGBOX_DEFAULT
@@ -200,6 +229,7 @@ FG_AltGymBattle::
 FG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, FG_FollowerMatch
 	goto FG_AltGymBattle
 	
 FG_GymBattleEnd::
@@ -283,6 +313,17 @@ FG_GymBattleEndCourtney::
 	goto FG_Reset
 	release
 	end
+
+FG_GymBattleEndJoy::
+	msgbox DFG_JoyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 15, DFG_PartnerExit
+	waitmovement 15
+	playse SE_DOOR
+	removeobject 15
+	goto DFG_Reset
+	release
+	end
 	
 FG_SHELLY_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}This birdbrain should be\n"
@@ -307,7 +348,10 @@ FG_LANETTE_INTRO:
 
 FG_COURTNEY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Canines have been man's hunting\ncompanions since the beginning of\ltime.\pThey're natural predators to flying\ntypes.$"
-	
+
+FG_JOY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I always loved Winona's style.\nShe's very gentle!$"
+
 FG_PreBattleText:
     .string "Winona: Oh, hi! I remember you. \n"
     .string "Looks like you brought a friend!\p"
@@ -342,6 +386,9 @@ FG_CourtneyGymBattleComplete:
 
 FG_LanetteGymBattleComplete:
     .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lanette yawns)\p{COLOR LIGHT_RED}{SHADOW RED}Oh! the battle's over.$"
+
+FG_JoyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I... feel a little bad...$"
 
 FG_PartnerEnter:
 	walk_right

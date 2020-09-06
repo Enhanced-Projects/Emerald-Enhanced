@@ -950,6 +950,7 @@ static const struct MenuAction MultichoiceList_130[]=
     {gText_RyuRelationshipLanaMenuOption},
     {gText_RyuRelationshipLanetteMenuOption},
     {gText_RyuRelationshipCourtneyMenuOption},
+    {gText_RyuRelationshipNurseMenuOption},
 };
 
 static const struct MenuAction MultichoiceList_131[]=
@@ -971,6 +972,7 @@ static const struct MenuAction MultichoiceList_132[]=
     {gText_RyuRelationshipLanaMenuOption},
     {gText_RyuRelationshipLanetteMenuOption},
     {gText_RyuRelationshipCourtneyMenuOption},
+    {gText_RyuRelationshipNurseMenuOption},
 };
 
 static const struct MenuAction MultichoiceList_133[]=

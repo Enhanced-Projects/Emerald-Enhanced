@@ -124,6 +124,7 @@ WATTSON3::
 	end
 
 WATTSON4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, MVG_FollowerMatch
 	goto_if_set FLAG_RYU_DS_HAS_PARTNER, MVG_PartnerQuery 
 	trainerbattle_single TRAINER_WATTSON_4, MauvilleCity_Gym_Text_WattsonPreBattle, MauvilleCity_Gym_Text_WattsonDefeat, MG_Reset
 	release
@@ -131,7 +132,7 @@ WATTSON4::
 	
 MVG_PartnerQuery::
     msgbox RyuPartnerMultiText MSGBOX_YESNO
-	compare VAR_RESULT 1
+	compare VAR_RESULT, 1
 	goto_if_eq MVG_RelDialog
 	goto MVG_NoRelGymBattle
 	return
@@ -151,11 +152,27 @@ MVG_RelDialog::
 	goto_if_eq MVG_GymBattleIntroLanette
 	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
 	goto_if_eq MVG_GymBattleIntroCourtney
+	compare VAR_0x8008, TRAINER_REL_NURSE
+	goto_if_eq MVG_GymBattleIntroJoy
 	goto MVG_NoRelGymBattle
 	
 MVG_NoRelGymBattle::
 	trainerbattle_single TRAINER_WATTSON_4, MauvilleCity_Gym_Text_WattsonPreBattle, MauvilleCity_Gym_Text_WattsonDefeat, MG_Reset
 	release
+	end
+
+MVG_FollowerMatch::
+	msgbox MauvilleCity_Gym_Text_WattsonPreBattle
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MVG_ChooseValidMons
+	multi_2_vs_1 TRAINER_WATTSON_4, MauvilleCity_Gym_Text_WattsonDefeat, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto MG_Reset
 	end
 	
 MVG_NoRelationship1::
@@ -234,6 +251,18 @@ MVG_GymBattleIntroCourtney::
 	waitmovement 0
 	msgbox MVG_COURTNEY_INTRO MSGBOX_DEFAULT
 	goto MVG_AltGymBattle
+
+MVG_GymBattleIntroJoy::
+	goto_if_unset FLAG_RYU_DS_JOY_PARTNERS, MVG_NoRelationship1
+	msgbox Ryu_PlayerCalledJoy MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 14
+	playse SE_DOOR
+	applymovement 14, MVG_PartnerEnter
+	waitmovement 0
+	msgbox MVG_JOY_INTRO MSGBOX_DEFAULT
+	goto MVG_AltGymBattle
 	
 MVG_AltGymBattle::
 	msgbox MVG_PreBattleText MSGBOX_DEFAULT
@@ -250,6 +279,7 @@ MVG_AltGymBattle::
 MVG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, MVG_FollowerMatch
 	goto MVG_AltGymBattle
 	
 MVG_GymBattleEnd::
@@ -333,6 +363,17 @@ MVG_GymBattleEndCourtney::
 	goto MG_Reset
 	release
 	end
+
+MVG_GymBattleEndJoy::
+	msgbox MVG_JoyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 14, DFG_PartnerExit
+	waitmovement 14
+	playse SE_DOOR
+	removeobject 14
+	goto DFG_Reset
+	release
+	end
 	
 MVG_SHELLY_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}I'm not particularly\n"
@@ -358,6 +399,9 @@ MVG_LANETTE_INTRO:
 
 MVG_COURTNEY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Picking on old men isn't that\nfun, but I'll do whatever you want.$"
+
+MVG_JOY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh no! High chance of paralysis!\nThis won't do!$"
 
 MVG_PreBattleText:
 	.string "Wattson: Ah! Two on one!\n"
@@ -391,6 +435,9 @@ MVG_LanetteGymBattleComplete:
 
 MVG_CourtneyGymBattleComplete:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}That wasn't particularly satisfying.$"
+
+MVG_JoyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} $"
 
 MVG_PartnerEnter:
 	walk_up

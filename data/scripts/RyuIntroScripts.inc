@@ -170,6 +170,7 @@ IT_FrontierMode::
 	setvar VAR_RYU_EXP_MULTIPLIER, 1
 	setvar VAR_RYU_PRICE_MULTIPLIER 1000
 	takemoney 3000
+	giveitem ITEM_MEGA_BRACELET
 	msgbox IT_FrontierOutro
 	additem ITEM_SS_TICKET
 	setflag FLAG_SYS_FRONTIER_PASS

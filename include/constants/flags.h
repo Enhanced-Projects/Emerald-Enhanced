@@ -376,12 +376,12 @@
 #define FLAG_REMATCH_DUSTY                   0x15F // EE-Unused
 #define FLAG_REMATCH_LOLA                    0x160 // EE-Unused
 #define FLAG_RYU_COURTNEY_MEGA_REWARD        0x161 // Courtney mega stone reward.
-#define FLAG_REMATCH_LILA_AND_ROY            0x162 // EE-Unused
-#define FLAG_REMATCH_CRISTIN                 0x163 // EE-Unused
-#define FLAG_REMATCH_BROOKE                  0x164 // EE-Unused
-#define FLAG_REMATCH_WILTON                  0x165 // EE-Unused
-#define FLAG_REMATCH_VALERIE                 0x166 // EE-Unused
-#define FLAG_REMATCH_CINDY                   0x167 // EE-Unused
+#define FLAG_RYU_DS_JOY_ACQ                  0x162
+#define FLAG_RYU_DS_JOY_FRIENDS              0x163
+#define FLAG_RYU_DS_JOY_CLOSEFRIENDS         0x164
+#define FLAG_RYU_DS_JOY_LOVERS               0x165
+#define FLAG_RYU_DS_JOY_PARTNERS             0x166
+#define FLAG_RYU_HIDE_JOY                    0x167
 #define FLAG_REMATCH_THALIA                  0x168 // EE-Unused
 #define FLAG_REMATCH_JESSICA                 0x169 // EE-Unused
 #define FLAG_REMATCH_WINSTON                 0x16A // EE-Unused

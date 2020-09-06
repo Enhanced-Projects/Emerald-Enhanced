@@ -134,6 +134,7 @@ Juan3::
 	end
 
 Juan4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, SG_FollowerMatch
 	call_if_set FLAG_RYU_DS_HAS_PARTNER, SG_PartnerQuery
 	trainerbattle_single TRAINER_JUAN_4, SootopolisCity_Gym_1F_Text_JuanPreBattle, SootopolisCity_Gym_1F_Text_JuanDefeat, SG_Reset
 	release
@@ -141,7 +142,7 @@ Juan4::
 	
 SG_PartnerQuery::
     msgbox RyuPartnerMultiText MSGBOX_YESNO
-	compare VAR_RESULT 1
+	compare VAR_RESULT, 1
 	goto_if_eq SG_RelDialog
 	goto SG_NoRelGymBattle
 	return
@@ -161,11 +162,27 @@ SG_RelDialog::
 	goto_if_eq SG_GymBattleIntroLanette
 	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
 	goto_if_eq SG_GymBattleIntroCourtney
+	compare VAR_0x8008, TRAINER_REL_NURSE
+	goto_if_eq SG_GymBattleIntroJoy
 	goto SG_NoRelGymBattle
 	
 SG_NoRelGymBattle::
 	trainerbattle_single TRAINER_JUAN_4, SootopolisCity_Gym_1F_Text_JuanPreBattle, SootopolisCity_Gym_1F_Text_JuanDefeat, SG_Reset
 	release
+	end
+
+SG_FollowerMatch::
+	msgbox SootopolisCity_Gym_1F_Text_JuanPreBattle
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq SG_ChooseValidMons
+	multi_2_vs_1 TRAINER_JUAN_4, SootopolisCity_Gym_1F_Text_JuanDefeat, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto SG_Reset
 	end
 	
 SG_NoRelationship1::
@@ -244,6 +261,18 @@ SG_GymBattleIntroCourtney::
 	waitmovement 0
 	msgbox SG_COURTNEY_INTRO MSGBOX_DEFAULT
 	goto SG_AltGymBattle
+
+SG_GymBattleIntroJoy::
+	goto_if_unset FLAG_RYU_DS_JOY_PARTNERS, SG_NoRelationship1
+	msgbox Ryu_PlayerCalledJoy MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 9
+	playse SE_DOOR
+	applymovement 9, SG_PartnerEnter
+	waitmovement 0
+	msgbox SG_JOY_INTRO MSGBOX_DEFAULT
+	goto SG_AltGymBattle
 	
 SG_AltGymBattle::
 	msgbox SG_PreBattleText MSGBOX_DEFAULT
@@ -260,6 +289,7 @@ SG_AltGymBattle::
 SG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, SG_FollowerMatch
 	goto SG_AltGymBattle
 	
 SG_GymBattleEnd::
@@ -346,6 +376,17 @@ SG_GymBattleEndCourtney::
 	goto SG_Reset
 	release
 	end
+
+SG_GymBattleEndJoy::
+	msgbox SG_JoyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 9, SG_PartnerExit
+	waitmovement 9
+	playse SE_DOOR
+	removeobject 9
+	goto SG_Reset
+	release
+	end
 	
 SG_SHELLY_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}I'd say I probably wasn't\n"
@@ -372,6 +413,9 @@ SG_BRENDAN_INTRO:
 
 SG_COURTNEY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}An annoying person with\nannoying types.\pI really don't like it here.$"
+
+SG_JOY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} Wow! he's positively adorable!$"
 	
 SG_PreBattleText:
 	.string "Juan: Oh, I get to have two dance\npartners. This will be magical!$"
@@ -403,6 +447,9 @@ SG_LanetteGymBattleComplete:
 
 SG_CourtneyGymBattleComplete:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}UGH! It's way too humid in here!$"
+
+SG_JoyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} It would be great to see Juan\nand Winona in a dance-off!$"
 	
 SG_PartnerEnter:
 	walk_in_place_down

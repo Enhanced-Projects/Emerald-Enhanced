@@ -28,6 +28,7 @@ RyuFollowerSelectNPCScript::
 	case OBJ_EVENT_GFX_LEAF, RyuFollower_LeafScript
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_M, GC_BlaiseScript
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, MH4_CourtneyScript
+	case OBJ_EVENT_GFX_NURSE, RyuFollower_NurseJoy
 	end
 
 RyuFollower_ShellyScript::
@@ -81,6 +82,50 @@ RF_CourtneyMsg:
 	.string "Do... anything for you.\l"
 	.string "Can we go hurt people?$"
 
+RyuFollower_NurseJoy::
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGNURSE
+	goto_if_set FLAG_TEMP_8, RyuFollower_NurseAlreadyHealed
+	msgbox RF_ShouldIHeal, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq RF_NurseHeal
+	msgbox RF_OkayHereIfYouNeed
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	release
+	end
+
+RF_NurseHeal::
+	special HealPlayerParty
+	delay 10
+	msgbox RF_OkayAllBetter
+	setflag FLAG_TEMP_8
+	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	release
+	end
+
+RyuFollower_NurseAlreadyHealed::
+	msgbox RF_NurseChatter
+	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	release
+	end
+
+RF_ShouldIHeal:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Should I heal your team?$"
+
+RF_OkayHereIfYouNeed:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay, I'll be following if you\nneed me!$"
+
+RF_NurseChatter:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Where should we go next?$"
+
+RF_OkayAllBetter:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay!\nAll better!\pTry to be a little more gentle\nplease...$"
+
 FollowerDawnSetup::
 	removeobject 2
 	createfollower OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RyuFollowerSelectNPCScript, DIR_EAST
@@ -113,6 +158,41 @@ FollowerLeafSetup::
 	release
 	end
 
+FollowerNurseSetup::
+    applymovement 1, Common_Movement_FaceDown
+	waitmovement 1
+	playse SE_DOOR
+	setmetatile 7, 3, 514, 0
+	setmetatile 7, 2, 542, 0
+	special DrawWholeMapView
+	waitse
+	setflag FLAG_RYU_HIDE_JOY
+	applymovement 1, Common_Movement_StepDown
+	waitmovement 1
+	removeobject 1
+	createfollower OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_NORTH
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	setmetatile 7, 3, 517, 1
+	setmetatile 7, 2, 519, 0
+	playse SE_DOOR
+	special DrawWholeMapView
+	waitse
+	msgbox NurseOkLetsGo
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	release
+	end
+
+NurseOkLetsGo:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}It should be okay for me to\nstep out a bit.$"
+
 RF_FollowerLeaveCall::
 	msgbox RyuFollowerLeavesService
 	switch VAR_RYU_FOLLOWER_ID
@@ -123,6 +203,7 @@ RF_FollowerLeaveCall::
     case OBJ_EVENT_GFX_LEAF, Ryu_RestoreLeaf
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, Ryu_RestoreCourtney
 	case OBJ_EVENT_GFX_AQUA_MEMBER_F, Ryu_RestoreShelly
+	case OBJ_EVENT_GFX_NURSE, Ryu_RestoreNurse
 	return
 	
 RF_FollowerLeave::
@@ -170,6 +251,12 @@ Ryu_RestoreCourtney::
 Ryu_RestoreShelly::
 	destroyfollower
 	clearflag FLAG_HIDE_AQUAHQ_SHELLY
+	release
+	end
+
+Ryu_RestoreNurse::
+	destroyfollower
+	clearflag FLAG_RYU_HIDE_JOY
 	release
 	end
 

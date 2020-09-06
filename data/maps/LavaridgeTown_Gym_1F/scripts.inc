@@ -124,6 +124,7 @@ FLANNERY3::
 	end
 
 FLANNERY4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, LG_FollowerMatch
 	call_if_set FLAG_RYU_DS_HAS_PARTNER, LG_PartnerQuery
 	trainerbattle_single TRAINER_FLANNERY_4, LavaridgeTown_Gym_1F_Text_FlanneryPreBattle, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LG_Reset
 	release
@@ -131,7 +132,7 @@ FLANNERY4::
 	
 LG_PartnerQuery::
     msgbox RyuPartnerMultiText MSGBOX_YESNO
-	compare VAR_RESULT 1
+	compare VAR_RESULT, 1
 	goto_if_eq LG_RelDialog
 	goto LG_NoRelGymBattle
 	return
@@ -151,11 +152,27 @@ LG_RelDialog::
 	goto_if_eq LG_GymBattleIntroLanette
 	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
 	goto_if_eq LG_GymBattleIntroCourtney
+	compare VAR_0x8008, TRAINER_REL_NURSE
+	goto_if_eq LG_GymBattleIntroJoy
 	goto LG_NoRelGymBattle
 	
 LG_NoRelGymBattle::
 	trainerbattle_single TRAINER_FLANNERY_4, LavaridgeTown_Gym_1F_Text_FlanneryPreBattle, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LG_Reset
 	release
+	end
+
+LG_FollowerMatch::
+	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPreBattle
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq LG_ChooseValidMons
+	multi_2_vs_1 TRAINER_ROXANNE_4, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto LG_Reset
 	end
 	
 LG_NoRelationship1::
@@ -234,6 +251,18 @@ LG_GymBattleIntroCourtney::
 	waitmovement 0
 	msgbox LG_COURTNEY_INTRO MSGBOX_DEFAULT
 	goto LG_AltGymBattle
+
+LG_GymBattleIntroJoy::
+	goto_if_unset FLAG_RYU_DS_JOY_PARTNERS, LG_NoRelationship1
+	msgbox Ryu_PlayerCalledJoy MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 8
+	playse SE_DOOR
+	applymovement 8, LG_PartnerEnter
+	waitmovement 0
+	msgbox LG_JOY_INTRO MSGBOX_DEFAULT
+	goto LG_AltGymBattle
 	
 LG_AltGymBattle::
 	msgbox LG_PreBattleText MSGBOX_DEFAULT
@@ -250,6 +279,7 @@ LG_AltGymBattle::
 LG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, LG_FollowerMatch
 	goto LG_AltGymBattle
 	
 LG_GymBattleEnd::
@@ -335,6 +365,17 @@ LG_GymBattleEndCourtney::
 	goto LG_Reset
 	release
 	end
+
+LG_GymBattleEndJoy::
+	msgbox LG_JoyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 13, LG_PartnerExit
+	waitmovement 13
+	playse SE_DOOR
+	removeobject 13
+	goto LG_Reset
+	release
+	end
 	
 LG_SHELLY_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}!\p"
@@ -357,6 +398,9 @@ LG_LANETTE_INTRO:
 
 LG_COURTNEY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah yes, a fello pyromaniac.\nGood times.$"
+
+LG_JOY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I like visiting the hot springs\nwhen I'm in town.$"
 
 LG_PreBattleText:
     .string "Flannery: Oh, ho ho ho...\p"
@@ -394,6 +438,9 @@ LG_LanaGymBattleComplete:
 
 LG_CourtneyGymBattleComplete:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Fire is the best way to remove\nscum from the face of the earth.$"
+
+LG_JoyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I could really use a rest\nat the hot springs...$"
 
 LG_PartnerEnter:
 	walk_in_place_up

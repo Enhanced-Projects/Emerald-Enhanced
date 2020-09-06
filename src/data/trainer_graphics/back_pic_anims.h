@@ -109,6 +109,16 @@ static const union AnimCmd gAnimCmd_Courtney_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd gAnimCmd_Nurse_1[] =
+{
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 9),
+    ANIMCMD_FRAME(2, 24),
+    ANIMCMD_FRAME(0, 9),
+    ANIMCMD_FRAME(3, 50),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd *const sBackAnims_Brendan[] =
 {
     sAnim_GeneralFrame3,
@@ -181,6 +191,12 @@ static const union AnimCmd *const sBackAnims_Courtney[] =
     gAnimCmd_Courtney_1,
 };
 
+static const union AnimCmd *const sBackAnims_Nurse[] =
+{
+    sAnim_GeneralFrame3,
+    gAnimCmd_Nurse_1,
+};
+
 const union AnimCmd *const *const gTrainerBackAnimsPtrTable[] =
 {
     [TRAINER_BACK_PIC_BRENDAN] = sBackAnims_Brendan,
@@ -195,4 +211,5 @@ const union AnimCmd *const *const gTrainerBackAnimsPtrTable[] =
     [TRAINER_BACK_PIC_LANETTE] = sBackAnims_Lanette,
     [TRAINER_BACK_PIC_MINNIE] = sBackAnims_Minnie,
     [TRAINER_BACK_PIC_COURTNEY] = sBackAnims_Courtney,
+    [TRAINER_BACK_PIC_NURSE] = sBackAnims_Nurse,
 };

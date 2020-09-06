@@ -3068,6 +3068,7 @@ extern const u8 gText_RyuRelationshipBrendanMenuOption[];
 extern const u8 gText_RyuRelationshipLanaMenuOption[];
 extern const u8 gText_RyuRelationshipLanetteMenuOption[];
 extern const u8 gText_RyuRelationshipCourtneyMenuOption[];
+extern const u8 gText_RyuRelationshipNurseMenuOption[];
 
 extern const u8 gText_Date1[];
 extern const u8 gText_Date2[];

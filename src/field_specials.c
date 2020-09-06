@@ -5606,6 +5606,13 @@ bool8 RyuFollowerToTrainerID(void)
                         return TRUE;
                         break;
                     }
+                case OBJ_EVENT_GFX_NURSE:
+                    {
+                        gSpecialVar_0x8008 = TRAINER_REL_NURSE;
+	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_NURSE;
+                        return TRUE;
+                        break;
+                    }
                 }
                 return FALSE;
             }

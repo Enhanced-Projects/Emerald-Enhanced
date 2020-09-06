@@ -202,6 +202,7 @@ brawly3::
 	end
 
 brawly4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, DFG_FollowerMatch
 	goto_if_set FLAG_RYU_DS_HAS_PARTNER, DFG_PartnerQuery
 	trainerbattle_single TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, DewfordTown_Gym_Text_BrawlyDefeat, DFG_Reset
 	release
@@ -209,7 +210,7 @@ brawly4::
 
 DFG_PartnerQuery::
     msgbox RyuPartnerMultiText MSGBOX_YESNO
-	compare VAR_RESULT 1
+	compare VAR_RESULT, 1
 	goto_if_eq DFG_RelDialog
 	goto DFG_NoRelGymBattle
 	return
@@ -229,11 +230,27 @@ DFG_RelDialog::
 	goto_if_eq DFG_GymBattleIntroLanette
 	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
 	goto_if_eq DFG_GymBattleIntroCourtney
+	compare VAR_0x8008, TRAINER_REL_NURSE
+	goto_if_eq DFG_GymBattleIntroJoy
 	goto DFG_NoRelGymBattle
 	
 DFG_NoRelGymBattle::
 	trainerbattle_single TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, DewfordTown_Gym_Text_BrawlyPreBattle, DFG_Reset
 	release
+	end
+
+DFG_FollowerMatch::
+	msgbox DewfordTown_Gym_Text_BrawlyPreBattle
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq DFG_ChooseValidMons
+	multi_2_vs_1 TRAINER_BRAWLY_4, DewfordTown_Gym_Text_BrawlyPreBattle, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto DFG_Reset
 	end
 	
 DFG_NoRelationship1::
@@ -312,6 +329,18 @@ DFG_GymBattleIntroCourtney::
 	waitmovement 0
 	msgbox DFG_COURTNEY_INTRO MSGBOX_DEFAULT
 	goto DFG_AltGymBattle
+
+DFG_GymBattleIntroJoy::
+	goto_if_unset FLAG_RYU_DS_JOY_PARTNERS, DFG_NoRelationship1
+	msgbox Ryu_PlayerCalledJoy MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 15
+	playse SE_DOOR
+	applymovement 15, DFG_PartnerEnter
+	waitmovement 0
+	msgbox DFG_JOY_INTRO MSGBOX_DEFAULT
+	goto DFG_AltGymBattle
 	
 DFG_AltGymBattle::
 	msgbox DFG_PreBattleText MSGBOX_DEFAULT
@@ -328,6 +357,7 @@ DFG_AltGymBattle::
 DFG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, DFG_FollowerMatch
 	goto DFG_AltGymBattle
 	
 DFG_GymBattleEnd::
@@ -406,6 +436,17 @@ DFG_GymBattleEndCourtney::
 	goto DFG_Reset
 	release
 	end
+
+DFG_GymBattleEndJoy::
+	msgbox DFG_JoyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 15, DFG_PartnerExit
+	waitmovement 15
+	playse SE_DOOR
+	removeobject 15
+	goto DFG_Reset
+	release
+	end
 	
 DFG_SHELLY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah, yes, a good ol'\nfashioned brawl. I used to fight\lAqua grunts for fun all the time!$"
@@ -427,6 +468,9 @@ DFG_LANETTE_INTRO:
 
 DFG_COURTNEY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}I like this guy, he punches\nthings. Not as well as you, of couse.$"
+
+DFG_JOY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I think I see more people from\nthis gym than any other.\pFighting types are so rough!$"
 	
 DFG_PreBattleText:
 	.string "Brawly: Here at Dewford Gym, we\n"
@@ -463,6 +507,9 @@ DFG_LanetteGymBattleComplete:
 
 DFG_CourtneyGymBattleComplete:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Nothing like an early morning\nbeatdown!$"
+
+DFG_JoyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}No one seems to have been\nseriously injured, so it's okay, I guess.$"
 	
 DFG_PartnerEnter:
 	walk_left

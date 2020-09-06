@@ -156,6 +156,7 @@ norman3::
 	end
 
 norman4::
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, PG_FollowerMatch
 	call_if_set FLAG_RYU_DS_HAS_PARTNER, PG_PartnerQuery
 	trainerbattle_single TRAINER_NORMAN_4, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanDefeat, PG_Reset
 	release
@@ -163,7 +164,7 @@ norman4::
 	
 PG_PartnerQuery::
     msgbox RyuPartnerMultiText MSGBOX_YESNO
-	compare VAR_RESULT 1
+	compare VAR_RESULT, 1
 	goto_if_eq PG_RelDialog
 	goto PG_NoRelGymBattle
 	return
@@ -183,11 +184,27 @@ PG_RelDialog::
 	goto_if_eq PG_GymBattleIntroLanette
 	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
 	goto_if_eq PG_GymBattleIntroCourtney
+	compare VAR_0x8008, TRAINER_REL_NURSE
+	goto_if_eq PG_GymBattleIntroJoy
 	goto PG_NoRelGymBattle
 	
 PG_NoRelGymBattle::
 	trainerbattle_single TRAINER_NORMAN_4, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanDefeat, PG_Reset
 	release
+	end
+
+PG_FollowerMatch::
+	msgbox PetalburgCity_Gym_Text_NormanPreRematch
+	closemessage
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq PG_ChooseValidMons
+	multi_2_vs_1 TRAINER_NORMAN_4, PetalburgCity_Gym_Text_NormanDefeat, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
+	goto PG_Reset
 	end
 	
 PG_NoRelationship1::
@@ -266,6 +283,18 @@ PG_GymBattleIntroCourtney::
 	waitmovement 0
 	msgbox PG_CourtneyPreBattleText MSGBOX_DEFAULT
 	goto PG_AltGymBattle
+
+PG_GymBattleIntroJoy::
+	goto_if_unset FLAG_RYU_DS_JOY_PARTNERS, PG_NoRelationship1
+	msgbox Ryu_PlayerCalledJoy MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	addobject 16
+	playse SE_DOOR
+	applymovement 16, PG_PartnerEnter
+	waitmovement 0
+	msgbox PG_JOY_INTRO MSGBOX_DEFAULT
+	goto PG_AltGymBattle
 	
 PG_AltGymBattle::
 	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_MAGMA_MEMBER_F
@@ -296,6 +325,7 @@ PG_CourtneyAltGymBattle::
 PG_ChooseValidMons::
 	msgbox EGC_NeedToChoose
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, PG_FollowerMatch
 	goto PG_AltGymBattle
 	
 PG_GymBattleEnd::
@@ -379,6 +409,17 @@ PG_GymBattleEndCourtney::
 	goto PG_Reset
 	release
 	end
+
+PG_GymBattleEndJoy::
+	msgbox PG_JoyGymBattleComplete MSGBOX_DEFAULT
+	closemessage
+	applymovement 16, PG_PartnerExit
+	waitmovement 16
+	playse SE_DOOR
+	removeobject 16
+	goto PG_Reset
+	release
+	end
 	
 PG_PreBattleText:
     .string "Norman: Two challengers. Time for\n"
@@ -419,6 +460,9 @@ PG_LANETTE_INTRO:
 
 PG_COURTNEY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}We do not need your approval.\nI never decline a challenge, though.$"
+
+PG_JOY_INTRO:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} Oh! Wow! Your father's a Gym\nLeader!\pI didn't know that!\pSo that's where your strength\ncomes from$"
 	
 PG_DawnGymBattleComplete:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Ha! Got you this time!\nI knew you couldn't stand to both of us!\lSee you later, {PLAYER}!$"
@@ -437,6 +481,9 @@ PG_LanetteGymBattleComplete:
 
 PG_CourtneyGymBattleComplete:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}I hope you understand now.\nWe're inseperable.\pOf course, I don't care if you\napprove or not.$"
+
+PG_JoyGymBattleComplete:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Yes, I can definitely see it.\nNice to meet you again!$"
 	
 PG_DefeatText:
     .string "I didn't do enough damage...$"
@@ -444,10 +491,10 @@ PG_DefeatText:
 PG_PartnerEnter:
 	walk_up
 	walk_up
+	walk_up
+	walk_up
 	walk_left
 	walk_up
-	walk_up
-	walk_in_place_up
 	step_end
 	
 PG_FlanneryBackupEnter:
@@ -465,11 +512,11 @@ PG_FlanneryBackupEnter:
 
 PG_PartnerExit:
 	walk_down
+	walk_right
 	walk_down
 	walk_down
-	walk_left
 	walk_down
-	walk_in_place_down
+	walk_down
 	step_end
 	
 PG_FlanneryLeave:
