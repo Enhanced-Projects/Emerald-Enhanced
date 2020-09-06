@@ -25,7 +25,8 @@ r66_CelebiGotAway::
 	end
 
 OverworldLegendary_IntroCelebi: @put your intro here
-	.string "$"
+	.string "A beautiful creature appears from\n"
+	.string "the flowers.$"
 
 Route66_EventScript_HintSign::
 	msgbox Route66_Text_HintSign, MSGBOX_SIGN
@@ -34,3 +35,11 @@ Route66_EventScript_HintSign::
 Route66_Text_HintSign:
 	.string "Did you know you can use the bike\n"
 	.string "anywhere, no matter the surface?$"
+
+Route66_AbsorbBulb::
+	lockall
+	goto_if_set FLAG_RYU_ROUTE_66_ABSORB_BULB, FrostyForestEnd
+	giveitem ITEM_ABSORB_BULB
+	setflag FLAG_RYU_ROUTE_66_ABSORB_BULB
+	release
+	end

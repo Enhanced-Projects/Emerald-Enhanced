@@ -896,3 +896,14 @@ gTileset_MtFreeze::
 	.4byte gMetatiles_MtFreeze
 	.4byte gMetatileAttributes_MtFreeze
 	.4byte NULL
+
+	.align 2
+gTileset_Safari::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0 @
+	.4byte gTilesetTiles_Safari
+	.4byte gTilesetPalettes_Safari
+	.4byte gMetatiles_Safari
+	.4byte gMetatileAttributes_Safari
+	.4byte InitTilesetAnim_Safari

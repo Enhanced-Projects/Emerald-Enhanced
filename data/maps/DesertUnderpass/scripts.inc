@@ -5,33 +5,3 @@ DesertUnderpass_MapScripts:: @ 823AF37
 DesertUnderpass_OnTransition: @ 823AF3D
 	setflag FLAG_LANDMARK_DESERT_UNDERPASS
 	end
-
-DesertUnderpass_EventScript_Fossil:: @ 823AF41
-	end
-
-DesertUnderpass_EventScript_GiveClawFossil:: @ 823AF57
-	giveitem ITEM_CLAW_FOSSIL
-	removeobject 1
-	release
-	end
-
-DesertUnderpass_EventScript_GiveRootFossil:: @ 823AF68
-	giveitem ITEM_ROOT_FOSSIL
-	removeobject 1
-	release
-	end
-	
-DU_Tyranitarite::
-	finditem ITEM_TYRANITARITE
-	setflag FLAG_RYU_TYRANITARITE
-	release
-	end
-
-@ Unused
-DesertUnderpass_Text_FoundRootFossil:: @ 823AF79
-	.string "{PLAYER} found the ROOT FOSSIL.$"
-
-@ Unused
-DesertUnderpass_Text_FoundClawFossil:: @ 823AF93
-	.string "{PLAYER} found the CLAW FOSSIL.$"
-

@@ -577,31 +577,22 @@ static void CB2_EndScriptedWildBattle(void)
     }
 }
 
-extern bool8 RyuCheckPlayerisInColdArea();
-
 u8 BattleSetup_GetTerrainId(void)
 {
     u16 tileBehavior;
     s16 x, y;
 
-
-    if (RyuCheckPlayerisInColdArea() == TRUE)
-    {
-        if ((gSaveBlock1Ptr->location.mapGroup == 0) && (gSaveBlock1Ptr->location.mapNum == 20))
-            return BATTLE_TERRAIN_MTFREEZE;
-        else
-            return BATTLE_TERRAIN_SNOWY_SHORE;
-    }
-
     PlayerGetDestCoords(&x, &y);
     tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
 
-    if (MetatileBehavior_IsTallGrass(tileBehavior))
+    if (MetatileBehavior_IsNormalTallGrass(tileBehavior))
         return BATTLE_TERRAIN_GRASS;
     if (MetatileBehavior_IsLongGrass(tileBehavior))
         return BATTLE_TERRAIN_LONG_GRASS;
     if (MetatileBehavior_IsSandOrDeepSand(tileBehavior))
         return BATTLE_TERRAIN_SAND;
+    if (MetatileBehavior_IsSnowyGrass(tileBehavior))
+        return BATTLE_TERRAIN_SNOWY_SHORE;
 
     switch (gMapHeader.mapType)
     {
@@ -614,6 +605,8 @@ u8 BattleSetup_GetTerrainId(void)
             return BATTLE_TERRAIN_BUILDING;
         if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
             return BATTLE_TERRAIN_POND;
+        if (MetatileBehavior_IsMtFreezeOrPolarPillar(tileBehavior))
+            return BATTLE_TERRAIN_MTFREEZE;
         return BATTLE_TERRAIN_CAVE;
     case MAP_TYPE_INDOOR:
     case MAP_TYPE_SECRET_BASE:

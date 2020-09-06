@@ -1849,3 +1849,23 @@ gTilesetPalettes_MtFreeze::
 	.align 2
 gTilesetTiles_MtFreeze::
 	.incbin "data/tilesets/secondary/mtfreeze/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Safari::
+	.incbin "data/tilesets/primary/safari/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/safari/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/safari/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/safari/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/safari/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/safari/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/safari/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/safari/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/safari/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/safari/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/safari/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/safari/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/safari/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Safari::
+	.incbin "data/tilesets/primary/safari/tiles.4bpp.lz"

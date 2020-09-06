@@ -692,7 +692,7 @@ LCC_FemalRivalBattleFinished:: @ 81E2F3E
 	drawfullscreenimage SCENEBGDAWN
 	msgbox lcc_femaleRivalChat, MSGBOX_DEFAULT
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_BEDROOM
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_2F_PICHU_DOLL
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_2F_SLAKOTH_DOLL
 	goto lcc_femaleRivalRelChoice1
 	end
 

@@ -478,7 +478,7 @@
       "dest_warp_id": 0
     },
     {
-      "x": 30,
+      "x": 31,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_ARTISAN_CAVE_1F",
@@ -488,7 +488,7 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 30,
+      "x": 31,
       "y": 6,
       "elevation": 3,
       "var": "VAR_TEMP_8",

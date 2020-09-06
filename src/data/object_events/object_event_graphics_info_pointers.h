@@ -140,7 +140,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnFishing;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HotSpringsOldWoman;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SSTidal;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SubmarineShadow;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PichuDoll;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BigSlakothDoll;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PikachuDoll;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MarillDoll;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TogepiDoll;
@@ -389,7 +389,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_HOT_SPRINGS_OLD_WOMAN] =    &gObjectEventGraphicsInfo_HotSpringsOldWoman,
     [OBJ_EVENT_GFX_SS_TIDAL] =                 &gObjectEventGraphicsInfo_SSTidal,
     [OBJ_EVENT_GFX_SUBMARINE_SHADOW] =         &gObjectEventGraphicsInfo_SubmarineShadow,
-    [OBJ_EVENT_GFX_PICHU_DOLL] =               &gObjectEventGraphicsInfo_PichuDoll,
+    [OBJ_EVENT_GFX_SLAKOTH_DOLL] =               &gObjectEventGraphicsInfo_BigSlakothDoll,
     [OBJ_EVENT_GFX_PIKACHU_DOLL] =             &gObjectEventGraphicsInfo_PikachuDoll,
     [OBJ_EVENT_GFX_MARILL_DOLL] =              &gObjectEventGraphicsInfo_MarillDoll,
     [OBJ_EVENT_GFX_TOGEPI_DOLL] =              &gObjectEventGraphicsInfo_TogepiDoll,

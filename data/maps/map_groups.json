@@ -102,13 +102,7 @@
     "Underwater6",
     "Underwater7",
     "Underwater8",
-    "Underwater9",
-    "SnowyShoreUnderwater",
-    "CraggyCoastUnderwater",
-    "CraggyCoastUnderwater2",
-    "CraggyCoastUnderwaterCave",
-    "FrostyForestUnderwater",
-    "FrostyForestUnderwater2"
+    "Underwater9"
   ],
   "gMapGroup1": [
     "LittlerootTown_BrendansHouse_1F",
@@ -292,6 +286,7 @@
     "MossdeepCity_GameCorner_B1F"
   ],
   "gMapGroup15": [
+    "SootopolisCity_MagmaEvent",
     "SootopolisCity_Gym_1F",
     "SootopolisCity_Gym_B1F",
     "SootopolisCity_PokemonCenter_1F",
@@ -641,11 +636,20 @@
     "SafariZone_HiddenGrotto"
   ],
   "gMapGroup27": [
+    "SnowyShoreUnderwater",
     "SnowyShore_House1",
     "SnowyShore_House2",
     "SnowyShore_House3",
     "SnowyShore_Mart",
     "SnowyShore_MrFrigusHouse",
+    "CraggyCoastUnderwater",
+    "CraggyCoastUnderwater2",
+    "CraggyCoastUnderwaterCave",
+    "FrostyForestUnderwater",
+    "FrostyForestUnderwater2",
+    "FrostyForestUnderwaterCave",
+    "FrostyForest_House",
+    "FrostbiteField_House",
     "Igloo1",
     "Igloo2",
     "Igloo2Basement",
@@ -689,7 +693,6 @@
   ],
   "gMapGroup33": [
     "Route124_DivingTreasureHuntersHouse",
-    "SootopolisCity_MagmaEvent",
     "TreasureHuntersHouse_MagmaEvent",
     "Route124_MaxieHideoutCave"
   ]
