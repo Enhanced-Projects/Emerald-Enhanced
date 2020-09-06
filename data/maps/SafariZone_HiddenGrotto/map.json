@@ -1,44 +1,46 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": false,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_SAFARI_ZONE_HIDDEN_GROTTO",
-    "layout": "LAYOUT_SAFARI_ZONE_HIDDEN_GROTTO",
-    "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_RG_POKEYASHI",
-    "name": "SafariZone_HiddenGrotto",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_MEWTWO_OBTAINED",
-            "graphics_id": "OBJ_EVENT_GFX_TRUCK",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "SZ_HG_MewtwoFight2",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 5,
-            "y": 6
-        }
-    ],
-    "region_map_section": "MAPSEC_SAFARI_ZONE",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_SAFARI_ZONE_NORTHEAST",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 5,
-            "y": 9
-        }
-    ],
-    "weather": "WEATHER_SUNNY"
+  "id": "MAP_SAFARI_ZONE_HIDDEN_GROTTO",
+  "name": "SafariZone_HiddenGrotto",
+  "layout": "LAYOUT_SAFARI_ZONE_HIDDEN_GROTTO",
+  "music": "MUS_RG_POKEYASHI",
+  "region_map_section": "MAPSEC_SAFARI_ZONE",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRUCK",
+      "x": 5,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SZ_HG_MewtwoFight2",
+      "flag": "FLAG_RYU_MEWTWO_OBTAINED"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 5,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_SAFARI_ZONE_NORTHEAST",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }

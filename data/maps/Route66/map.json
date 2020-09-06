@@ -15,19 +15,19 @@
   "connections": [
     {
       "direction": "right",
-      "offset": 0,
+      "offset": 12,
       "map": "MAP_ROUTE119"
     },
     {
       "direction": "left",
-      "offset": 0,
+      "offset": 12,
       "map": "MAP_ROUTE111"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
-      "x": 28,
+      "x": 31,
       "y": 1,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -37,6 +37,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "r66_Celebi",
       "flag": "FLAG_RYU_CELEBI"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 11,
+      "y": 0,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route66_EventScript_ItemDawnStone",
+      "flag": "FLAG_ITEM_ROUTE_66_DAWN_STONE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 18,
+      "y": 16,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route66_EventScript_ItemLeafStone",
+      "flag": "FLAG_ITEM_ROUTE_66_LEAF_STONE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SLAKOTH_DOLL",
+      "x": 23,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -48,35 +87,58 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 22,
-      "y": 1,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Route66_EventScript_HintSign"
-    },
-    {
-      "type": "sign",
-      "x": 12,
-      "y": 1,
+      "x": 17,
+      "y": 10,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MiningRock1"
     },
     {
       "type": "sign",
-      "x": 1,
-      "y": 12,
+      "x": 24,
+      "y": 7,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MiningRock2"
     },
     {
       "type": "sign",
-      "x": 8,
-      "y": 14,
+      "x": 33,
+      "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MiningRock3"
+    },
+    {
+      "type": "secret_base",
+      "x": 28,
+      "y": 13,
+      "elevation": 0,
+      "secret_base_id": "SECRET_BASE_SHRUB2_3"
+    },
+    {
+      "type": "sign",
+      "x": 16,
+      "y": 13,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route66_AbsorbBulb"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 21,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock4"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 22,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MiningRock5"
     }
   ]
 }

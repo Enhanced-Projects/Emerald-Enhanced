@@ -2,7 +2,7 @@
   "id": "MAP_MT_FREEZE_3F",
   "name": "MtFreeze_3F",
   "layout": "LAYOUT_MT_FREEZE_3F",
-  "music": "MUS_AJITO",
+  "music": "MUS_MABOROSI",
   "region_map_section": "MAPSEC_MT_FREEZE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

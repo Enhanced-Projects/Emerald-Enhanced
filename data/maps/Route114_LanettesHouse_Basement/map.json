@@ -1,69 +1,70 @@
 {
-    "allow_cycling": false,
-    "allow_escaping": false,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-    ],
-    "connections": null,
-    "coord_events": [
-        {
-            "elevation": 3,
-            "script": "LNH_BasementScene",
-            "type": "trigger",
-            "var": "VAR_RYU_LANETTE_VAR",
-            "var_value": "104",
-            "x": 1,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "script": "LNH_BasementScene",
-            "type": "trigger",
-            "var": "VAR_RYU_LANETTE_VAR",
-            "var_value": "104",
-            "x": 2,
-            "y": 2
-        }
-    ],
-    "id": "MAP_ROUTE114_LANETTES_HOUSE_BASEMENT",
-    "layout": "LAYOUT_ROUTE114_LANETTES_HOUSE_BASEMENT",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_TONEKUSA",
-    "name": "Route114_LanettesHouse_Basement",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_LANETTE_BASEMENT",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "LNH_AfterStory",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 10,
-            "y": 6
-        }
-    ],
-    "region_map_section": "MAPSEC_ROUTE_114",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_ROUTE114_LANETTES_HOUSE",
-            "dest_warp_id": 2,
-            "elevation": 0,
-            "x": 0,
-            "y": 0
-        },
-        {
-            "dest_map": "MAP_ROUTE114_LANETTES_HOUSE",
-            "dest_warp_id": 2,
-            "elevation": 0,
-            "x": 1,
-            "y": 0
-        }
-    ],
-    "weather": "WEATHER_SUNNY"
+  "id": "MAP_ROUTE114_LANETTES_HOUSE_BASEMENT",
+  "name": "Route114_LanettesHouse_Basement",
+  "layout": "LAYOUT_ROUTE114_LANETTES_HOUSE_BASEMENT",
+  "music": "MUS_TONEKUSA",
+  "region_map_section": "MAPSEC_ROUTE_114",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "x": 10,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LNH_AfterStory",
+      "flag": "FLAG_RYU_HIDE_LANETTE_BASEMENT"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 0,
+      "y": 0,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE114_LANETTES_HOUSE",
+      "dest_warp_id": 2
+    },
+    {
+      "x": 1,
+      "y": 0,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE114_LANETTES_HOUSE",
+      "dest_warp_id": 2
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 2,
+      "elevation": 3,
+      "var": "VAR_RYU_LANETTE_VAR",
+      "var_value": "104",
+      "script": "LNH_BasementScene"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 2,
+      "elevation": 3,
+      "var": "VAR_RYU_LANETTE_VAR",
+      "var_value": "104",
+      "script": "LNH_BasementScene"
+    }
+  ],
+  "bg_events": [
+
+  ]
 }

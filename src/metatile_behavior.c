@@ -14,8 +14,8 @@ static const u8 sTileBitAttributes[] =
     [MB_SECRET_BASE_WALL] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_TALL_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
     [MB_LONG_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
-    [MB_UNUSED_04] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
-    [MB_UNUSED_05] = TILE_ATTRIBUTES(FALSE, FALSE, TRUE),
+    [MB_COLD_CAVE] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
+    [MB_SNOWY_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
     [MB_DEEP_SAND] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
     [MB_SHORT_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_UNUSED_CAVE] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
@@ -225,7 +225,7 @@ static const u8 sTileBitAttributes[] =
     [MB_ISOLATED_HORIZONTAL_RAIL] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_VERTICAL_RAIL] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_HORIZONTAL_RAIL] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
-    [MB_DARK_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
+    [MB_DARK_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
     [MB_UNUSED_D8] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_D9] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_DA] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
@@ -368,14 +368,6 @@ bool8 MetatileBehavior_IsEscalator(u8 metatileBehavior)
         return FALSE;
 }
 
-bool8 Unref_MetatileBehavior_IsUnused04(u8 metatileBehavior)
-{
-    if (metatileBehavior == MB_UNUSED_04)
-        return TRUE;
-    else
-        return FALSE;
-}
-
 bool8 MetatileBehavior_IsLadder(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_LADDER)
@@ -486,14 +478,6 @@ bool8 MetatileBehavior_IsIce_2(u8 metatileBehavior)
 bool8 MetatileBehavior_IsTrickHouseSlipperyFloor(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_TRICK_HOUSE_PUZZLE_8_FLOOR)
-        return TRUE;
-    else
-        return FALSE;
-}
-
-bool8 Unref_MetatileBehavior_IsUnused05(u8 metatileBehavior)
-{
-    if (metatileBehavior == MB_UNUSED_05)
         return TRUE;
     else
         return FALSE;
@@ -849,7 +833,7 @@ bool8 MetatileBehavior_IsPuddle(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsTallGrass(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_TALL_GRASS)
+    if (metatileBehavior == MB_TALL_GRASS || metatileBehavior == MB_SNOWY_GRASS)
         return TRUE;
     else
         return FALSE;
@@ -1485,6 +1469,30 @@ bool8 MetatileBehavior_IsLongGrassSouthEdge(u8 metatileBehavior)
 bool8 MetatileBehavior_IsTrainerHillTimer(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_TRAINER_HILL_TIMER)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsMtFreezeOrPolarPillar(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_COLD_CAVE)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsSnowyGrass(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SNOWY_GRASS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsNormalTallGrass(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_TALL_GRASS)
         return TRUE;
     else
         return FALSE;

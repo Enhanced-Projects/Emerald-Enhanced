@@ -2,7 +2,7 @@
   "id": "MAP_CRAGGY_COAST",
   "name": "CraggyCoast",
   "layout": "LAYOUT_CRAGGY_COAST",
-  "music": "MUS_DAN02",
+  "music": "MUS_KAZANBAI",
   "region_map_section": "MAPSEC_CRAGGY_COAST",
   "requires_flash": false,
   "weather": "WEATHER_RAIN_THUNDERSTORM",
@@ -45,8 +45,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "CraggyCoast_EventScript_ItemKeyShard2",
-      "flag": "FLAG_KEY_SHARD_2"
+      "script": "CraggyCoast_EventScript_ItemArtefact",
+      "flag": "FLAG_ARTEFACT_1"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",

@@ -1,125 +1,125 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "SCH_OpenDoors",
-            "type": "sign",
-            "x": 10,
-            "y": 4
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart1",
-            "type": "sign",
-            "x": 6,
-            "y": 8
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart2",
-            "type": "sign",
-            "x": 14,
-            "y": 8
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart3",
-            "type": "sign",
-            "x": 4,
-            "y": 13
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart4",
-            "type": "sign",
-            "x": 16,
-            "y": 13
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart5",
-            "type": "sign",
-            "x": 6,
-            "y": 18
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart6",
-            "type": "sign",
-            "x": 14,
-            "y": 18
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "SCH_OpenDoors",
-            "type": "sign",
-            "x": 9,
-            "y": 4
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "SCH_OpenDoors",
-            "type": "sign",
-            "x": 11,
-            "y": 4
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-        {
-            "elevation": 3,
-            "script": "SCH_LanaCheck",
-            "type": "trigger",
-            "var": "VAR_RYU_DS_LANA_STAGE",
-            "var_value": "30",
-            "x": 10,
-            "y": 18
-        }
-    ],
-    "id": "MAP_SEALED_CHAMBER_INNER_ROOM",
-    "layout": "LAYOUT_SEALED_CHAMBER_INNER_ROOM",
-    "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_MABOROSI",
-    "name": "SealedChamber_InnerRoom",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_SCH_LANA",
-            "graphics_id": "OBJ_EVENT_GFX_LEAF",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "SCH_LanaEvent",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 10,
-            "y": 5
-        }
-    ],
-    "region_map_section": "MAPSEC_SEALED_CHAMBER",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_SEALED_CHAMBER_OUTER_ROOM",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 10,
-            "y": 19
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_SEALED_CHAMBER_INNER_ROOM",
+  "name": "SealedChamber_InnerRoom",
+  "layout": "LAYOUT_SEALED_CHAMBER_INNER_ROOM",
+  "music": "MUS_MABOROSI",
+  "region_map_section": "MAPSEC_SEALED_CHAMBER",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LEAF",
+      "x": 10,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SCH_LanaEvent",
+      "flag": "FLAG_HIDE_SCH_LANA"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 10,
+      "y": 19,
+      "elevation": 3,
+      "dest_map": "MAP_SEALED_CHAMBER_OUTER_ROOM",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 18,
+      "elevation": 3,
+      "var": "VAR_RYU_DS_LANA_STAGE",
+      "var_value": "30",
+      "script": "SCH_LanaCheck"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SCH_OpenDoors"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart1"
+    },
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart2"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart3"
+    },
+    {
+      "type": "sign",
+      "x": 16,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart4"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 18,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart5"
+    },
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 18,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart6"
+    },
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SCH_OpenDoors"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SCH_OpenDoors"
+    }
+  ]
 }

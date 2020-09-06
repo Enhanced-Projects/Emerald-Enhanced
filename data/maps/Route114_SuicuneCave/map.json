@@ -1,51 +1,53 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_ROUTE114_SUICUNE_CAVE",
-    "layout": "LAYOUT_ROUTE114_SUICUNE_CAVE",
-    "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN03",
-    "name": "Route114_SuicuneCave",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_SUICUNE",
-            "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Route114_Suicune",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 7,
-            "y": 7
-        }
-    ],
-    "region_map_section": "MAPSEC_ROUTE_114",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-        {
-            "dest_map": "MAP_ROUTE114",
-            "dest_warp_id": 5,
-            "elevation": 1,
-            "x": 7,
-            "y": 26
-        },
-        {
-            "dest_map": "MAP_ROUTE114",
-            "dest_warp_id": 6,
-            "elevation": 1,
-            "x": 8,
-            "y": 26
-        }
-    ],
-    "weather": "WEATHER_SHADE"
+  "id": "MAP_ROUTE114_SUICUNE_CAVE",
+  "name": "Route114_SuicuneCave",
+  "layout": "LAYOUT_ROUTE114_SUICUNE_CAVE",
+  "music": "MUS_DAN03",
+  "region_map_section": "MAPSEC_ROUTE_114",
+  "requires_flash": false,
+  "weather": "WEATHER_SHADE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
+      "x": 7,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route114_Suicune",
+      "flag": "FLAG_RYU_SUICUNE"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 7,
+      "y": 26,
+      "elevation": 1,
+      "dest_map": "MAP_ROUTE114",
+      "dest_warp_id": 5
+    },
+    {
+      "x": 8,
+      "y": 26,
+      "elevation": 1,
+      "dest_map": "MAP_ROUTE114",
+      "dest_warp_id": 6
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }

@@ -135,6 +135,9 @@
 #define HOLD_EFFECT_ADRENALINE_ORB   152
 #define HOLD_EFFECT_MEMORY           153
 
+// Custom hold effects
+#define HOLD_EFFECT_DRY_ICE           154
+
 #define HOLD_EFFECT_CHOICE(holdEffect)((holdEffect == HOLD_EFFECT_CHOICE_BAND || holdEffect == HOLD_EFFECT_CHOICE_SCARF || holdEffect == HOLD_EFFECT_CHOICE_SPECS))
 
 #endif // GUARD_HOLD_EFFECTS_H

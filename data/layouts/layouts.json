@@ -94,8 +94,8 @@
     {
       "id": "LAYOUT_LITTLEROOT_TOWN",
       "name": "LittlerootTown_Layout",
-      "width": 20,
-      "height": 34,
+      "width": 26,
+      "height": 40,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/LittlerootTown/border.bin",
@@ -1844,7 +1844,7 @@
     {
       "id": "LAYOUT_NEW_MAUVILLE_INSIDE",
       "name": "NewMauville_Inside_Layout",
-      "width": 50,
+      "width": 41,
       "height": 41,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_BikeShop",
@@ -2376,7 +2376,7 @@
       "name": "SafariZone_Northwest_Layout",
       "width": 40,
       "height": 40,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_Safari",
       "secondary_tileset": "gTileset_Lilycove",
       "border_filepath": "data/layouts/SafariZone_Northwest/border.bin",
       "blockdata_filepath": "data/layouts/SafariZone_Northwest/map.bin"
@@ -2386,7 +2386,7 @@
       "name": "SafariZone_North_Layout",
       "width": 40,
       "height": 40,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_Safari",
       "secondary_tileset": "gTileset_Lilycove",
       "border_filepath": "data/layouts/SafariZone_North/border.bin",
       "blockdata_filepath": "data/layouts/SafariZone_North/map.bin"
@@ -2396,7 +2396,7 @@
       "name": "SafariZone_Southwest_Layout",
       "width": 40,
       "height": 40,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_Safari",
       "secondary_tileset": "gTileset_Lilycove",
       "border_filepath": "data/layouts/SafariZone_Southwest/border.bin",
       "blockdata_filepath": "data/layouts/SafariZone_Southwest/map.bin"
@@ -2406,7 +2406,7 @@
       "name": "SafariZone_South_Layout",
       "width": 40,
       "height": 40,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_Safari",
       "secondary_tileset": "gTileset_Lilycove",
       "border_filepath": "data/layouts/SafariZone_South/border.bin",
       "blockdata_filepath": "data/layouts/SafariZone_South/map.bin"
@@ -3936,7 +3936,7 @@
       "name": "SafariZone_Northeast_Layout",
       "width": 40,
       "height": 40,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_Safari",
       "secondary_tileset": "gTileset_Lilycove",
       "border_filepath": "data/layouts/SafariZone_Northeast/border.bin",
       "blockdata_filepath": "data/layouts/SafariZone_Northeast/map.bin"
@@ -3946,7 +3946,7 @@
       "name": "SafariZone_Southeast_Layout",
       "width": 40,
       "height": 40,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_Safari",
       "secondary_tileset": "gTileset_Lilycove",
       "border_filepath": "data/layouts/SafariZone_Southeast/border.bin",
       "blockdata_filepath": "data/layouts/SafariZone_Southeast/map.bin"
@@ -4565,7 +4565,7 @@
       "id": "LAYOUT_ROUTE66",
       "name": "Route66_Layout",
       "width": 40,
-      "height": 22,
+      "height": 40,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Fortree",
       "border_filepath": "data/layouts/Route66/border.bin",
@@ -4895,7 +4895,7 @@
       "id": "LAYOUT_POLAR_PILLAR_4F",
       "name": "PolarPillar_4F_Layout",
       "width": 13,
-      "height": 10,
+      "height": 12,
       "primary_tileset": "gTileset_Snowy",
       "secondary_tileset": "gTileset_PolarPillar",
       "border_filepath": "data/layouts/PolarPillar_4F/border.bin",
@@ -5034,8 +5034,8 @@
     {
       "id": "LAYOUT_FROSTY_FOREST_UNDERWATER2",
       "name": "FrostyForestUnderwater2_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 17,
+      "height": 53,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Underwater",
       "border_filepath": "data/layouts/FrostyForestUnderwater2/border.bin",
@@ -5120,6 +5120,36 @@
       "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
       "border_filepath": "data/layouts/SnowyShore_MrFrigusHouse/border.bin",
       "blockdata_filepath": "data/layouts/SnowyShore_MrFrigusHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_FROSTY_FOREST_UNDERWATER_CAVE",
+      "name": "FrostyForestUnderwaterCave_Layout",
+      "width": 60,
+      "height": 55,
+      "primary_tileset": "gTileset_Snowy",
+      "secondary_tileset": "gTileset_MeteorFalls",
+      "border_filepath": "data/layouts/FrostyForestUnderwaterCave/border.bin",
+      "blockdata_filepath": "data/layouts/FrostyForestUnderwaterCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_FROSTY_FOREST_HOUSE",
+      "name": "FrostyForest_House_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
+      "border_filepath": "data/layouts/FrostyForest_House/border.bin",
+      "blockdata_filepath": "data/layouts/FrostyForest_House/map.bin"
+    },
+    {
+      "id": "LAYOUT_FROSTBITE_FIELD_HOUSE",
+      "name": "FrostbiteField_House_Layout",
+      "width": 8,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
+      "border_filepath": "data/layouts/FrostbiteField_House/border.bin",
+      "blockdata_filepath": "data/layouts/FrostbiteField_House/map.bin"
     }
   ]
 }

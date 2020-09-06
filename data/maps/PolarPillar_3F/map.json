@@ -1,38 +1,87 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_POLAR_PILLAR_3F",
-    "layout": "LAYOUT_POLAR_PILLAR_3F",
-    "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_TOZAN",
-    "name": "PolarPillar_3F",
-    "object_events": [
-    ],
-    "region_map_section": "MAPSEC_POLAR_PILLAR",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_POLAR_PILLAR_2F",
-            "dest_warp_id": 1,
-            "elevation": 3,
-            "x": 18,
-            "y": 12
-        },
-        {
-            "dest_map": "MAP_POLAR_PILLAR_4F",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 2,
-            "y": 4
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_POLAR_PILLAR_3F",
+  "name": "PolarPillar_3F",
+  "layout": "LAYOUT_POLAR_PILLAR_3F",
+  "music": "MUS_TOZAN",
+  "region_map_section": "MAPSEC_POLAR_PILLAR",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 2,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PolarPillar_EventScript_ItemIceGem1",
+      "flag": "FLAG_ITEM_POLAR_PILLAR_ICE_GEM_1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 14,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PolarPillar_EventScript_ItemIceGem2",
+      "flag": "FLAG_ITEM_POLAR_PILLAR_ICE_GEM_2"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 5,
+      "y": 2,
+      "elevation": 3,
+      "dest_map": "MAP_POLAR_PILLAR_2F",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 11,
+      "y": 2,
+      "elevation": 3,
+      "dest_map": "MAP_POLAR_PILLAR_4F",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 10,
+      "y": 7,
+      "elevation": 3,
+      "dest_map": "MAP_POLAR_PILLAR_4F",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 10,
+      "y": 9,
+      "elevation": 3,
+      "dest_map": "MAP_POLAR_PILLAR_2F",
+      "dest_warp_id": 3
+    },
+    {
+      "x": 8,
+      "y": 13,
+      "elevation": 3,
+      "dest_map": "MAP_POLAR_PILLAR_2F",
+      "dest_warp_id": 4
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }

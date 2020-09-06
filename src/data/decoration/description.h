@@ -347,7 +347,7 @@ const u8 DecorDesc_KISS_POSTER[] = _(
     "A large poster with\n"
         "a SMOOCHUM print.");
 
-const u8 DecorDesc_PICHU_DOLL[] = _(
+const u8 DecorDesc_SLAKOTH_DOLL[] = _(
     "A Slakoth doll.\n"
         "Place it on a mat\n"
         "or a desk.");

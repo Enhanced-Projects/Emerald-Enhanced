@@ -74,8 +74,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GAMEBOY_KID",
-      "x": 19,
-      "y": 32,
+      "x": 25,
+      "y": 39,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -149,6 +149,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 16,
+      "y": 31,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LittlerootTown_EventScript_ItemPotion",
+      "flag": "FLAG_ITEM_LITTLEROOT_TOWN_POTION"
     }
   ],
   "warp_events": [
@@ -195,8 +208,8 @@
     },
     {
       "type": "trigger",
-      "x": 6,
-      "y": 21,
+      "x": 12,
+      "y": 20,
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "0",
@@ -204,26 +217,8 @@
     },
     {
       "type": "trigger",
-      "x": 7,
-      "y": 21,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "LRT_StopGoingSouth"
-    },
-    {
-      "type": "trigger",
-      "x": 10,
-      "y": 21,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "LRT_StopGoingSouth"
-    },
-    {
-      "type": "trigger",
-      "x": 11,
-      "y": 21,
+      "x": 13,
+      "y": 20,
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "0",

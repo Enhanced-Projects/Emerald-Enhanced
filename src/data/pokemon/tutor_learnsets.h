@@ -3175,7 +3175,8 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_DOUBLE_EDGE)
 											| TUTOR(MOVE_MAGIC_COAT)
 											| TUTOR(MOVE_METRONOME)
-											| TUTOR(MOVE_ENDURE)),
+											| TUTOR(MOVE_ENDURE)
+											| TUTOR(MOVE_DRACO_METEOR)),
 
     [SPECIES_CASTFORM]      = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)
 											| TUTOR(MOVE_DOUBLE_EDGE)
