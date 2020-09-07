@@ -115,6 +115,7 @@ LRT_NIGHT::
 	fadeinbgm 1
 	msgbox LRT_DAWN_THANKS, MSGBOX_DEFAULT
 	setflag FLAG_RYU_DS_DAWN_LOVERS
+	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER LRT_HEART3
 	waitmovement 0
@@ -140,6 +141,7 @@ LRT_NIGHT2::
 	applymovement OBJ_EVENT_ID_PLAYER, LRT_HEART
 	delay 20
 	fadescreen FADE_TO_BLACK
+	
 	fadeoutbgm 1
 	special HealPlayerParty
 	delay 20
@@ -154,6 +156,7 @@ LRT_NIGHT2::
 	closemessage
 	clearfullscreenimage
 	setobjectxy 2, 8, 2
+	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER LRT_HEART3
 	waitmovement 0
@@ -367,4 +370,159 @@ GI_LeavingForRoute103:
 	walk_fast_left
 	walk_fast_left
 	walk_fast_up
+	step_end
+	
+@======================================================If player has romanced courtney, she will sabotage relationships with rival=======
+
+LRT_CheckCourtneyForRivalNight::
+	addobject 5
+	playse SE_DOOR
+	call LRT_MoveCourtneyToPlayer
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	delay 20
+	drawfullscreenimage SCENEBGCOURTNEY
+	msgbox LRT_CourtneyNotApprove
+	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	playse SE_PIN
+	applymovement 2, Common_Movement_ExclamationMark
+	waitmovement 2
+	applymovement 2, Common_Movement_FaceDown
+	waitmovement 2
+	msgbox LRT_RivalSad
+	closemessage
+	call LRT_MoveCourtneyToExit
+	removeobject 5
+	clearflag FLAG_RYU_DS_BRENDAN_PARTNERS
+	clearflag FLAG_RYU_DS_BRENDAN_LOVERS
+	clearflag FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS
+	clearflag FLAG_RYU_DS_BRENDAN_FRIENDS
+	clearflag FLAG_RYU_DS_DAWN_PARTNERS
+	clearflag FLAG_RYU_DS_DAWN_LOVERS
+	clearflag FLAG_RYU_DS_DAWN_CLOSEFRIENDS
+	clearflag FLAG_RYU_DS_DAWN_FRIENDS
+	setflag FLAG_RYU_DS_DAWN_ACQ
+	setflag FLAG_RYU_DS_BRENDAN_ACQ
+	subvar VAR_RYU_PARTNER_COUNT, 1
+	msgbox LRT_CourtneyWait
+	closemessage
+	call LRT_MovePlayerToExit
+	fadescreen FADE_TO_BLACK
+	warpsilent MAP_LITTLEROOT_TOWN, 255, 9, 8
+	waitstate
+	
+LRT_MoveCourtneyToPlayer::
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	goto_if_eq LRT_MoveCourtneyToDawn
+	applymovement 5, LRT_CourtneytoBrendan
+	waitmovement 5
+	return
+	
+LRT_MoveCourtneyToDawn::
+	applymovement 5, LRT_CourtneytoDawn
+	waitmovement 5
+	return
+	
+LRT_MovePlayerToExit::
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	goto_if_eq LRT_MovePlayerDawnToExit
+	applymovement OBJ_EVENT_ID_PLAYER, LRT_PlayerBrendanToExit
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+	
+LRT_MovePlayerDawnToExit::
+	applymovement OBJ_EVENT_ID_PLAYER, LRT_PlayerDawnToExit
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+	
+LRT_MoveCourtneyToExit::
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	goto_if_eq LRT_MoveCourtneyFromDawnToExit
+	applymovement 5, LRT_CourtneyFromBrendanToExit
+	waitmovement 5
+	return
+	
+LRT_MoveCourtneyFromDawnToExit::
+	applymovement 5, LRT_CourtneyFromDawnToExit
+	waitmovement 5
+	
+LRT_CourtneyNotApprove:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} So. You've been seeing others\nbehind my back.\pI'm not mad, but if I catch you\nagain,\pI may do something drastic.$"
+	
+LRT_RivalSad:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{RIVAL}: Wait... what does that mean?!$"
+	
+LRT_CourtneyWait:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Courtney, wait! I-$"
+	
+LRT_CourtneytoDawn:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	face_left
+	step_end
+	
+LRT_CourtneytoBrendan:
+    walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	face_right
+	step_end
+	
+LRT_PlayerBrendanToExit:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	step_end
+	
+LRT_PlayerDawnToExit:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	step_end
+	
+LRT_CourtneyFromBrendanToExit:
+	walk_left
+    walk_left
+    walk_up
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+LRT_CourtneyFromDawnToExit:
+    walk_right
+    walk_right
+    walk_up
+	walk_right
+	walk_right
+	walk_up
+	walk_up
 	step_end
