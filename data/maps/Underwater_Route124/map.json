@@ -6,7 +6,7 @@
     "bg_events": [
         {
             "elevation": 0,
-            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_CARBOS",
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_124_CARBOS",
             "item": "ITEM_CARBOS",
             "type": "hidden_item",
             "x": 42,
@@ -14,7 +14,7 @@
         },
         {
             "elevation": 0,
-            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_GREEN_SHARD",
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_124_GREEN_SHARD",
             "item": "ITEM_GREEN_SHARD",
             "type": "hidden_item",
             "x": 14,
@@ -22,7 +22,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_PEARL",
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_124_PEARL",
             "item": "ITEM_PEARL",
             "type": "hidden_item",
             "x": 66,
@@ -30,7 +30,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_BIG_PEARL",
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_124_BIG_PEARL",
             "item": "ITEM_BIG_PEARL",
             "type": "hidden_item",
             "x": 64,
@@ -38,7 +38,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_HEART_SCALE_1",
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_124_HEART_SCALE_1",
             "item": "ITEM_HEART_SCALE",
             "type": "hidden_item",
             "x": 70,
@@ -46,7 +46,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_CALCIUM",
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_124_CALCIUM",
             "item": "ITEM_CALCIUM",
             "type": "hidden_item",
             "x": 42,
@@ -54,7 +54,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_HEART_SCALE_2",
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_124_HEART_SCALE_2",
             "item": "ITEM_HEART_SCALE",
             "type": "hidden_item",
             "x": 45,
@@ -79,7 +79,7 @@
     "layout": "LAYOUT_UNDERWATER_ROUTE124",
     "map_type": "MAP_TYPE_UNDERWATER",
     "music": "MUS_DEEPDEEP",
-    "name": "Underwater1",
+    "name": "Underwater_Route124",
     "object_events": [
     ],
     "region_map_section": "MAPSEC_UNDERWATER_124",
