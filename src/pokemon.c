@@ -6232,9 +6232,9 @@ const u16 sBattleThemes[] = {
 u16 GetBattleBGM(void)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_KYOGRE_GROUDON)
-        return MUS_BATTLE34;
+        return MUS_VS_KYOGRE_GROUDON;
     else if (gBattleTypeFlags & BATTLE_TYPE_REGI)
-        return MUS_BATTLE36;
+        return MUS_VS_REGI;
     else if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_x2000000))
         return MUS_BATTLE20;
     else if (FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == 1)
@@ -6297,7 +6297,7 @@ u16 GetBattleBGM(void)
         }
     }
     else
-        return MUS_BATTLE27;
+        return MUS_VS_WILD;
 }
 
 void PlayBattleBGM(void)

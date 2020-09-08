@@ -8,12 +8,7 @@ LeafHouse_brother::
 	end
 	
 LH_AltLeafStoryTrigger::
-	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_ne ryu_end
-	setflag FLAG_DEFEATED_REGICE
-	setflag FLAG_DEFEATED_REGISTEEL
-	setflag FLAG_DEFEATED_REGIROCK
+	end
 
 LH_Intro::
 	lock
@@ -145,8 +140,75 @@ LH_LeafNight:
 	waitmovement 2
 	applymovement OBJ_EVENT_ID_PLAYER, LH_RelSceneEnd
 	waitmovement OBJ_EVENT_ID_PLAYER
+	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LH_CourtneyCaughtPlayer
 	release
 	end
+	
+LH_CourtneyCaughtPlayer::
+	playse SE_DOOR
+	waitse
+	addobject 3
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement 1, Common_Movement_ExclamationMark
+	waitmovement 1
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 3, LH_CourtneyToPlayer
+	waitmovement 3
+	msgbox LH_CourtneyCaughtMsg
+	closemessage
+	playse SE_DOOR
+	waitse
+	applymovement 3, LH_CourtneyLeave
+	waitmovement 3
+	removeobject 3
+	setflag FLAG_RYU_DS_LEAF_LINE_CANCELLED
+	setvar VAR_RYU_DS_LANA_STAGE, 666
+	applymovement OBJ_EVENT_ID_PLAYER, LH_PlayerExitHouse
+	waitmovement OBJ_EVENT_ID_PLAYER
+	warpsilent MAP_SLATEPORT_CITY, 255, 14, 19
+	waitstate
+
+	
+LH_PlayerExitHouse:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_down
+	step_end
+	
+LH_CourtneyToPlayer:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	face_right
+	step_end
+	
+LH_CourtneyLeave:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	step_end
+
+LH_CourtneyCaughtMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ohohoho what is this?\nCaught red-handed!\pIf I catch you here again,\nI'll send her packing myself!$"
 
 LH_FollowerLanaQuery:
     .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}It's been a while since I've\n"
@@ -255,6 +317,7 @@ LH_RelSceneEnd:
 	walk_left
 	walk_left
 	walk_in_place_right
+	walk_down
 	walk_down
 	walk_down
 	walk_down

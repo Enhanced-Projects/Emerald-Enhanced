@@ -169,7 +169,8 @@ LRT_BrendanNIGHT::
 	setflag FLAG_RYU_DS_BRENDAN_LOVERS
 	closemessage
 	clearfullscreenimage
-	fadescreen FADE_TO_BLACK
+	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
+	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
 	waitmovement 0
 	release
@@ -208,7 +209,8 @@ LRT_BrendanNight2::
 	msgbox LRT_BRENDAN_THANKS2 MSGBOX_DEFAULT
 	closemessage
 	clearfullscreenimage
-	fadescreen FADE_TO_BLACK
+	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
+	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
 	waitmovement 0
 	release

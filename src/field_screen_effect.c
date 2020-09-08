@@ -301,7 +301,7 @@ static void FieldCB_TeleportTileWarpExit(void)
 {
     Overworld_PlaySpecialMapMusic();
     WarpFadeInScreen();
-    PlaySE(SE_TK_WARPOUT);
+    PlaySE(SE_WARP_OUT);
     CreateTask(Task_TeleportTileWarpExit, 10);
     ScriptContext2_Enable();
 }
@@ -310,7 +310,7 @@ static void FieldCB_MossdeepGymWarpExit(void)
 {
     Overworld_PlaySpecialMapMusic();
     WarpFadeInScreen();
-    PlaySE(SE_TK_WARPOUT);
+    PlaySE(SE_WARP_OUT);
     CreateTask(Task_ExitNonDoor, 10);
     ScriptContext2_Enable();
     SetObjectEventLoadFlag((~SKIP_OBJECT_EVENT_LOAD) & 0xF);
@@ -572,7 +572,7 @@ void DoWarp(void)
     LoadMapMusic();
     WarpFadeOutScreen();
     PlayRainStoppingSoundEffect();
-    PlaySE(SE_KAIDAN);
+    PlaySE(SE_EXIT);
     gFieldCallback = FieldCB_DefaultWarpExit;
     CreateTask(Task_WarpAndLoadMap, 10);
 }
@@ -634,7 +634,7 @@ void DoTeleportTileWarp(void)
     ScriptContext2_Enable();
     TryFadeOutOldMapMusic();
     WarpFadeOutScreen();
-    PlaySE(SE_TK_WARPIN);
+    PlaySE(SE_WARP_IN);
     CreateTask(Task_WarpAndLoadMap, 10);
     gFieldCallback = FieldCB_TeleportTileWarpExit;
 }
@@ -646,7 +646,7 @@ void DoMossdeepGymWarp(void)
     SaveObjectEvents();
     TryFadeOutOldMapMusic();
     WarpFadeOutScreen();
-    PlaySE(SE_TK_WARPIN);
+    PlaySE(SE_WARP_IN);
     CreateTask(Task_WarpAndLoadMap, 10);
     gFieldCallback = FieldCB_MossdeepGymWarpExit;
 }
@@ -704,7 +704,7 @@ static void Task_ReturnToWorldFromLinkRoom(u8 taskId)
         ClearLinkCallback_2();
         FadeScreen(FADE_TO_BLACK, 0);
         TryFadeOutOldMapMusic();
-        PlaySE(SE_KAIDAN);
+        PlaySE(SE_EXIT);
         data[0]++;
         break;
     case 1:
@@ -845,7 +845,7 @@ void DoContestHallWarp(void)
     TryFadeOutOldMapMusic();
     WarpFadeOutScreen();
     PlayRainStoppingSoundEffect();
-    PlaySE(SE_KAIDAN);
+    PlaySE(SE_EXIT);
     gFieldCallback = FieldCB_WarpExitFadeFromBlack;
     CreateTask(Task_DoContestHallWarp, 10);
 }
@@ -1113,7 +1113,7 @@ static void sub_80B01BC(u8 taskId)
     case 0:
         FreezeObjectEvents();
         ScriptContext2_Enable();
-        PlaySE(SE_TK_WARPIN);
+        PlaySE(SE_WARP_IN);
         sub_808D1C8();
         task->data[0]++;
         break;

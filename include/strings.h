@@ -3317,5 +3317,9 @@ extern const u8 gText_RyuMHM_Kits_5[];
 extern const u8 gText_RyuMHM_Kits_6[];
 extern const u8 gText_RyuMHM_Kits_7[];
 extern const u8 gText_RyuMHM_Kits_8[];
+// Berry Blender
+extern const u8 gText_SavingDontTurnOff2[];
+extern const u8 gText_BlenderMaxSpeedRecord[];
+extern const u8 gText_234Players[];
 
 #endif // GUARD_STRINGS_H
