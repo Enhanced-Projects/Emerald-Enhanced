@@ -39,7 +39,7 @@ static const u8 sTileBitAttributes[] =
     [MB_UNUSED_SOOTOPOLIS_DEEP_WATER_2] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_STAIRS_OUTSIDE_ABANDONED_SHIP] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_SHOAL_CAVE_ENTRANCE] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
-    [MB_SNOWY_NORMAL] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
+    [MB_MT_FREEZE_EXTERIOR] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_UNUSED_1E] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_1F] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_ICE] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
@@ -1476,7 +1476,7 @@ bool8 MetatileBehavior_IsTrainerHillTimer(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsMtFreezeOrPolarPillar(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_COLD_CAVE)
+    if (metatileBehavior == MB_COLD_CAVE || metatileBehavior == MB_MT_FREEZE_EXTERIOR)
         return TRUE;
     else
         return FALSE;
@@ -1493,14 +1493,6 @@ bool8 MetatileBehavior_IsSnowyGrass(u8 metatileBehavior)
 bool8 MetatileBehavior_IsNormalTallGrass(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_TALL_GRASS)
-        return TRUE;
-    else
-        return FALSE;
-}
-
-bool8 MetatileBehavior_IsColdArea(u8 metatileBehavior)
-{
-    if (metatileBehavior == MB_SNOWY_NORMAL || metatileBehavior == MB_SNOWY_GRASS || metatileBehavior == MB_COLD_CAVE)
         return TRUE;
     else
         return FALSE;

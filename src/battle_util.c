@@ -2973,6 +2973,8 @@ static const u16 gMoveTypeAdvantageTable[] = {
 
 extern bool8 RyuCheckPlayerisInColdArea();
 
+extern bool8 TobyCheckPlayerisInHailStorm();
+
 u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveArg)
 {
     u8 effect = 0;
@@ -3107,7 +3109,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
             }
             if (effect)
             {
-                if (RyuCheckPlayerisInColdArea())
+                if (TobyCheckPlayerisInHailStorm())
                 {
                     gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_SNOW;
                 }
