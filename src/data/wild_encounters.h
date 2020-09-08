@@ -4237,8 +4237,8 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.fishingMonsInfo = NULL,
 	},
 	{
-		.mapGroup = MAP_GROUP(UNDERWATER2),
-		.mapNum = MAP_NUM(UNDERWATER2),
+		.mapGroup = MAP_GROUP(UNDERWATER_ROUTE126),
+		.mapNum = MAP_NUM(UNDERWATER_ROUTE126),
 		.landMonsInfo = NULL,
 		.waterMonsInfo = &gUnderwater2_WaterMonsInfo,
 		.rockSmashMonsInfo = NULL,
@@ -4805,8 +4805,8 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.fishingMonsInfo = &gPetalburgCity_FishingMonsInfo,
 	},
 	{
-		.mapGroup = MAP_GROUP(UNDERWATER1),
-		.mapNum = MAP_NUM(UNDERWATER1),
+		.mapGroup = MAP_GROUP(UNDERWATER_ROUTE124),
+		.mapNum = MAP_NUM(UNDERWATER_ROUTE124),
 		.landMonsInfo = NULL,
 		.waterMonsInfo = &gUnderwater1_WaterMonsInfo,
 		.rockSmashMonsInfo = NULL,

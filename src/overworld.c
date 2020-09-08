@@ -1275,7 +1275,7 @@ void Overworld_ChangeMusicToDefault(void)
 void Overworld_ChangeMusicTo(u16 newMusic)
 {
     u16 currentMusic = GetCurrentMapMusic();
-    if (currentMusic != newMusic && currentMusic != MUS_OOAME)
+    if (currentMusic != newMusic && currentMusic != MUS_ABNORMAL_WEATHER)
         FadeOutAndPlayNewMapMusic(newMusic, 8);
 }
 
@@ -1294,7 +1294,7 @@ void TryFadeOutOldMapMusic(void)
     u16 warpMusic = GetWarpDestinationMusic();
     if (FlagGet(FLAG_DONT_TRANSITION_MUSIC) != TRUE && warpMusic != GetCurrentMapMusic())
     {
-        if (currentMusic == MUS_NAMINORI
+        if (currentMusic == MUS_SURF
             && VarGet(VAR_SKY_PILLAR_STATE) == 2
             && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SOOTOPOLIS_CITY)
             && gSaveBlock1Ptr->location.mapNum == MAP_NUM(SOOTOPOLIS_CITY)
@@ -2639,20 +2639,19 @@ static void UpdateHeldKeyCode(u16 key)
 
 static u16 KeyInterCB_ReadButtons(u32 key)
 {
-    if (gMain.heldKeys & DPAD_UP)
+    if (JOY_HELD(DPAD_UP))
         return LINK_KEY_CODE_DPAD_UP;
-    else if (gMain.heldKeys & DPAD_DOWN)
+    if (JOY_HELD(DPAD_DOWN))
         return LINK_KEY_CODE_DPAD_DOWN;
-    else if (gMain.heldKeys & DPAD_LEFT)
+    if (JOY_HELD(DPAD_LEFT))
         return LINK_KEY_CODE_DPAD_LEFT;
-    else if (gMain.heldKeys & DPAD_RIGHT)
+    if (JOY_HELD(DPAD_RIGHT))
         return LINK_KEY_CODE_DPAD_RIGHT;
-    else if (gMain.newKeys & START_BUTTON)
+    if (JOY_NEW(START_BUTTON))
         return LINK_KEY_CODE_START_BUTTON;
-    else if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
         return LINK_KEY_CODE_A_BUTTON;
-    else
-        return LINK_KEY_CODE_EMPTY;
+    return LINK_KEY_CODE_EMPTY;
 }
 
 static u16 GetDirectionForDpadKey(u16 a1)
@@ -2759,7 +2758,7 @@ static u16 sub_8087170(u32 keyOrPlayerId)
 {
     if (sPlayerTradingStates[keyOrPlayerId] == PLAYER_TRADING_STATE_UNK_2)
     {
-        if (gMain.newKeys & B_BUTTON)
+        if (JOY_NEW(B_BUTTON))
         {
             SetKeyInterceptCallback(KeyInterCB_DoNothingAndKeepAlive);
             return LINK_KEY_CODE_UNK_7;

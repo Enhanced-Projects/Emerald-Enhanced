@@ -43,7 +43,6 @@
 #include "trainer_card.h"
 #include "window.h"
 #include "constants/songs.h"
-#include "rom_8011DC0.h"
 #include "union_room.h"
 #include "constants/rgb.h"
 #include "field_message_box.h"
@@ -1102,7 +1101,7 @@ static bool8 HandleStartMenuInput(void)
         sStartMenuCursorPos = Menu_MoveCursor(-1);
     }
 
-    if (gMain.newKeys & DPAD_DOWN)
+    if (JOY_NEW(DPAD_DOWN))
     {
         PlaySE(SE_SELECT);
         sStartMenuCursorPos = Menu_MoveCursor(1);
@@ -1151,7 +1150,7 @@ static bool8 HandleStartMenuInput(void)
         return FALSE;
     }
 
-    if (gMain.newKeys & (START_BUTTON | B_BUTTON))
+    if (JOY_NEW(START_BUTTON | B_BUTTON))
     {
         RemoveExtraStartMenuWindows();
         HideStartMenu();
@@ -1530,12 +1529,12 @@ static bool8 SaveSuccesTimer(void)
 {
     sSaveDialogTimer--;
 
-    if (gMain.heldKeys & A_BUTTON)
+    if (JOY_HELD(A_BUTTON))
     {
         PlaySE(SE_SELECT);
         return TRUE;
     }
-    else if (sSaveDialogTimer == 0)
+    if (sSaveDialogTimer == 0)
     {
         return TRUE;
     }
@@ -1549,7 +1548,7 @@ static bool8 SaveErrorTimer(void)
     {
         sSaveDialogTimer--;
     }
-    else if (gMain.heldKeys & A_BUTTON)
+    else if (JOY_HELD(A_BUTTON))
     {
         return TRUE;
     }

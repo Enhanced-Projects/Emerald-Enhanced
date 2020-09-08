@@ -1,0 +1,91 @@
+{
+    "allow_cycling": true,
+    "allow_escaping": false,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 0,
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_CARBOS",
+            "item": "ITEM_CARBOS",
+            "type": "hidden_item",
+            "x": 42,
+            "y": 51
+        },
+        {
+            "elevation": 0,
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_GREEN_SHARD",
+            "item": "ITEM_GREEN_SHARD",
+            "type": "hidden_item",
+            "x": 14,
+            "y": 40
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_PEARL",
+            "item": "ITEM_PEARL",
+            "type": "hidden_item",
+            "x": 66,
+            "y": 34
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_BIG_PEARL",
+            "item": "ITEM_BIG_PEARL",
+            "type": "hidden_item",
+            "x": 64,
+            "y": 54
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_HEART_SCALE_1",
+            "item": "ITEM_HEART_SCALE",
+            "type": "hidden_item",
+            "x": 70,
+            "y": 64
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_CALCIUM",
+            "item": "ITEM_CALCIUM",
+            "type": "hidden_item",
+            "x": 42,
+            "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_1_HEART_SCALE_2",
+            "item": "ITEM_HEART_SCALE",
+            "type": "hidden_item",
+            "x": 45,
+            "y": 36
+        }
+    ],
+    "connections": [
+        {
+            "direction": "down",
+            "map": "MAP_UNDERWATER_ROUTE126",
+            "offset": 0
+        },
+        {
+            "direction": "emerge",
+            "map": "MAP_ROUTE124",
+            "offset": 0
+        }
+    ],
+    "coord_events": [
+    ],
+    "id": "MAP_UNDERWATER_ROUTE124",
+    "layout": "LAYOUT_UNDERWATER_ROUTE124",
+    "map_type": "MAP_TYPE_UNDERWATER",
+    "music": "MUS_DEEPDEEP",
+    "name": "Underwater1",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_UNDERWATER_124",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+    ],
+    "weather": "WEATHER_UNDERWATER_BUBBLES"
+}

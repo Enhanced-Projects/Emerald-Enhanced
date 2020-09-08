@@ -1589,23 +1589,23 @@ static void Task_HandleInput(u8 taskId)
 {
     if (MenuHelpers_CallLinkSomething() != TRUE && !gPaletteFade.active)
     {
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             ChangeSummaryPokemon(taskId, -1);
         }
-        else if (gMain.newKeys & DPAD_DOWN)
+        else if (JOY_NEW(DPAD_DOWN))
         {
             ChangeSummaryPokemon(taskId, 1);
         }
-        else if ((gMain.newKeys & DPAD_LEFT) || GetLRKeysPressed() == MENU_L_PRESSED)
+        else if (JOY_NEW(DPAD_LEFT) || GetLRKeysPressed() == MENU_L_PRESSED)
         {
             ChangePage(taskId, -1);
         }
-        else if ((gMain.newKeys & DPAD_RIGHT) || GetLRKeysPressed() == MENU_R_PRESSED)
+        else if (JOY_NEW(DPAD_RIGHT) || GetLRKeysPressed() == MENU_R_PRESSED)
         {
             ChangePage(taskId, 1);
         }
-        else if (gMain.newKeys & A_BUTTON)
+        else if (JOY_NEW(A_BUTTON))
         {
             if (sMonSummaryScreen->currPageIndex != PSS_PAGE_SKILLS)
             {
@@ -1622,7 +1622,7 @@ static void Task_HandleInput(u8 taskId)
                 }
             }
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             StopPokemonAnimations();
             PlaySE(SE_SELECT);
@@ -1970,17 +1970,17 @@ static void Task_HandleInput_MoveSelect(u8 taskId)
 
     if (MenuHelpers_CallLinkSomething() != 1)
     {
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             data[0] = 4;
             ChangeSelectedMove(data, -1, &sMonSummaryScreen->firstMoveIndex);
         }
-        else if (gMain.newKeys & DPAD_DOWN)
+        else if (JOY_NEW(DPAD_DOWN))
         {
             data[0] = 4;
             ChangeSelectedMove(data, 1, &sMonSummaryScreen->firstMoveIndex);
         }
-        else if (gMain.newKeys & A_BUTTON)
+        else if (JOY_NEW(A_BUTTON))
         {
             if (sMonSummaryScreen->lockMovesFlag == TRUE
              || (sMonSummaryScreen->newMove == MOVE_NONE && sMonSummaryScreen->firstMoveIndex == MAX_MON_MOVES))
@@ -1995,10 +1995,10 @@ static void Task_HandleInput_MoveSelect(u8 taskId)
             }
             else
             {
-                PlaySE(SE_HAZURE);
+                PlaySE(SE_FAILURE);
             }
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             PlaySE(SE_SELECT);
             CloseMoveSelectMode(taskId);
@@ -2112,24 +2112,24 @@ static void Task_HandleInput_MovePositionSwitch(u8 taskId)
 
     if (MenuHelpers_CallLinkSomething() != TRUE)
     {
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             data[0] = 3;
             ChangeSelectedMove(&data[0], -1, &sMonSummaryScreen->secondMoveIndex);
         }
-        else if (gMain.newKeys & DPAD_DOWN)
+        else if (JOY_NEW(DPAD_DOWN))
         {
             data[0] = 3;
             ChangeSelectedMove(&data[0], 1, &sMonSummaryScreen->secondMoveIndex);
         }
-        else if (gMain.newKeys & A_BUTTON)
+        else if (JOY_NEW(A_BUTTON))
         {
             if (sMonSummaryScreen->firstMoveIndex == sMonSummaryScreen->secondMoveIndex)
                 ExitMovePositionSwitchMode(taskId, FALSE);
             else
                 ExitMovePositionSwitchMode(taskId, TRUE);
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             ExitMovePositionSwitchMode(taskId, FALSE);
         }
@@ -2255,25 +2255,25 @@ static void Task_HandleReplaceMoveInput(u8 taskId)
     {
         if (gPaletteFade.active != TRUE)
         {
-            if (gMain.newKeys & DPAD_UP)
+            if (JOY_NEW(DPAD_UP))
             {
                 data[0] = 4;
                 ChangeSelectedMove(data, -1, &sMonSummaryScreen->firstMoveIndex);
             }
-            else if (gMain.newKeys & DPAD_DOWN)
+            else if (JOY_NEW(DPAD_DOWN))
             {
                 data[0] = 4;
                 ChangeSelectedMove(data, 1, &sMonSummaryScreen->firstMoveIndex);
             }
-            else if (gMain.newKeys & DPAD_LEFT || GetLRKeysPressed() == MENU_L_PRESSED)
+            else if (JOY_NEW(DPAD_LEFT) || GetLRKeysPressed() == MENU_L_PRESSED)
             {
                 ChangePage(taskId, -1);
             }
-            else if (gMain.newKeys & DPAD_RIGHT || GetLRKeysPressed() == MENU_R_PRESSED)
+            else if (JOY_NEW(DPAD_RIGHT) || GetLRKeysPressed() == MENU_R_PRESSED)
             {
                 ChangePage(taskId, 1);
             }
-            else if (gMain.newKeys & A_BUTTON)
+            else if (JOY_NEW(A_BUTTON))
             {
                 StopPokemonAnimations();
                 PlaySE(SE_SELECT);
@@ -2281,7 +2281,7 @@ static void Task_HandleReplaceMoveInput(u8 taskId)
                 gSpecialVar_0x8005 = sMoveSlotToReplace;
                 BeginCloseSummaryScreen(taskId);
             }
-            else if (gMain.newKeys & B_BUTTON)
+            else if (JOY_NEW(B_BUTTON))
             {
                 StopPokemonAnimations();
                 PlaySE(SE_SELECT);

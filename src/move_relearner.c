@@ -150,6 +150,8 @@
 #define JAM_HEART_EMPTY 2
 #define JAM_HEART_FULL 3
 
+#define MAX_RELEARNER_MOVES (MAX_LEVEL_UP_MOVES > 25 ? MAX_LEVEL_UP_MOVES : 25)
+
 static EWRAM_DATA struct
 {
     u8 state;
@@ -713,13 +715,13 @@ static void DoMoveRelearnerMain(void)
         {
             FormatAndPrintText(gText_MoveRelearnerPkmnForgotMoveAndLearnedNew);
             sMoveRelearnerStruct->state = MENU_STATE_PRINT_TEXT_THEN_FANFARE;
-            PlayFanfare(MUS_FANFA1);
+            PlayFanfare(MUS_LEVEL_UP);
         }
         break;
     case MENU_STATE_PRINT_TEXT_THEN_FANFARE:
         if (!MoveRelearnerRunTextPrinters())
         {
-            PlayFanfare(MUS_FANFA1);
+            PlayFanfare(MUS_LEVEL_UP);
             sMoveRelearnerStruct->state = MENU_STATE_WAIT_FOR_FANFARE;
         }
         break;
@@ -730,7 +732,7 @@ static void DoMoveRelearnerMain(void)
         }
         break;
     case MENU_STATE_WAIT_FOR_A_BUTTON:
-        if (gMain.newKeys & A_BUTTON)
+        if (JOY_NEW(A_BUTTON))
         {
             PlaySE(SE_SELECT);
             sMoveRelearnerStruct->state = MENU_STATE_FADE_AND_RETURN;
