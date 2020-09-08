@@ -153,14 +153,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_LOPUNNY_3] = { // Lopunny-SilkScarfPlayRough
-        .species = SPECIES_LOPUNNY,
-        .moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_PLAY_ROUGH},
-        .heldItem = ITEM_SILK_SCARF,
+    [FRONTIER_MON_AMBIPOM_4] = { // Ambipom-GemCovet
+        .species = SPECIES_AMBIPOM,
+        .moves = {MOVE_FAKE_OUT, MOVE_COVET, MOVE_STORM_THROW, MOVE_KNOCK_OFF},
+        .heldItem = ITEM_NORMAL_GEM,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_ADAMANT,
+        .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_GOGOAT_3] = { // Gogoat-GrassPeltJumpKick
         .species = SPECIES_GOGOAT,
@@ -1278,10 +1278,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_AMBIPOM_3] = { // Ambipom-LifeOrb
+    [FRONTIER_MON_AMBIPOM_3] = { // Ambipom-SD
         .species = SPECIES_AMBIPOM,
-        .moves = {MOVE_FAKE_OUT, MOVE_RETURN, MOVE_LOW_KICK, MOVE_KNOCK_OFF},
-        .heldItem = ITEM_LIFE_ORB,
+        .moves = {MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_KNOCK_OFF, MOVE_SWORDS_DANCE},
+        .heldItem = ITEM_FOCUS_SASH,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
@@ -1596,12 +1596,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_PARASECT_1] = { // Parasect-Bulky
         .species = SPECIES_PARASECT,
-        .moves = {MOVE_SPORE, MOVE_LEECH_LIFE, MOVE_SEED_BOMB, MOVE_KNOCK_OFF},
+        .moves = {MOVE_SPORE, MOVE_REAPING_BLOW, MOVE_BRICK_BREAK, MOVE_SYNTHESIS},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_HITMONLEE_3] = { // Hitmonlee-NormalGem
         .species = SPECIES_HITMONLEE,
@@ -2539,14 +2539,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_PARASECT_2] = { // Parasect-SpDefWall
+    [FRONTIER_MON_PARASECT_2] = { // Parasect-Nightmare
         .species = SPECIES_PARASECT,
-        .moves = {MOVE_SPORE, MOVE_LEECH_LIFE, MOVE_KNOCK_OFF, MOVE_SYNTHESIS},
+        .moves = {MOVE_SPORE, MOVE_NIGHTMARE, MOVE_SYNTHESIS, MOVE_REAPING_BLOW},
         .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_CAREFUL,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_RELAXED,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_HITMONLEE_4] = { // Hitmonlee-Reversal
         .species = SPECIES_HITMONLEE,
@@ -4538,10 +4538,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_LOPUNNY_1] = { // Lopunny-NormalGemCovet
+    [FRONTIER_MON_LOPUNNY_1] = { // Lopunny-3attacksHealingWish
         .species = SPECIES_LOPUNNY,
-        .moves = {MOVE_FAKE_OUT, MOVE_COVET, MOVE_STORM_THROW, MOVE_PLAY_ROUGH},
-        .heldItem = ITEM_NORMAL_GEM,
+        .moves = {MOVE_FAKE_OUT, MOVE_RETURN, MOVE_HI_JUMP_KICK, MOVE_HEALING_WISH},
+        .heldItem = ITEM_FOCUS_SASH,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
@@ -4637,12 +4637,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_AMBIPOM_1] = { // Ambipom-SilkScarf
+    [FRONTIER_MON_AMBIPOM_1] = { // Ambipom-FakeOutLifeOrb
         .species = SPECIES_AMBIPOM,
-        .moves = {MOVE_FAKE_OUT, MOVE_SLAM, MOVE_LOW_KICK, MOVE_KNOCK_OFF},
+        .moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_KNOCK_OFF},
         .heldItem = ITEM_SILK_SCARF,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
@@ -6266,12 +6266,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_LOPUNNY_2] = { // Lopunny-SilkScarfBrutalSwing
+    [FRONTIER_MON_LOPUNNY_2] = { // Lopunny-4attacks
         .species = SPECIES_LOPUNNY,
-        .moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_BRUTAL_SWING},
-        .heldItem = ITEM_SILK_SCARF,
+        .moves = {MOVE_FAKE_OUT, MOVE_RETURN, MOVE_HI_JUMP_KICK, MOVE_QUICK_ATTACK},
+        .heldItem = ITEM_SACHET,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_ADAMANT,
+        .nature = NATURE_JOLLY,
         .ivs = 31,
         .ability = 1
     },
@@ -6365,12 +6365,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_AMBIPOM_2] = { // Ambipom-NormalGem
+    [FRONTIER_MON_AMBIPOM_2] = { // Ambipom-FakeOutSilkScarf
         .species = SPECIES_AMBIPOM,
-        .moves = {MOVE_FAKE_OUT, MOVE_COVET, MOVE_LOW_KICK, MOVE_KNOCK_OFF},
-        .heldItem = ITEM_NORMAL_GEM,
+        .moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_KNOCK_OFF},
+        .heldItem = ITEM_SILK_SCARF,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },

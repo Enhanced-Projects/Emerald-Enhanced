@@ -11867,10 +11867,10 @@ static const struct TrainerMonItemCustomMoves sParty_Norman2[] = {
 	{
 	.iv = 255,
 	.lvl = 85,
-	.species = SPECIES_LOPUNNY,
+	.species = SPECIES_AMBIPOM,
 	.heldItem = ITEM_SILK_SCARF,
-	.ability = 1,
-	.moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_BRUTAL_SWING},
+	.ability = 0,
+	.moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_KNOCK_OFF},
 	},
 	{
 	.iv = 239,
@@ -11918,10 +11918,10 @@ static const struct TrainerMonItemCustomMoves sParty_Norman3[] = {
 	{
 	.iv = 255,
 	.lvl = 85,
-	.species = SPECIES_LOPUNNY,
+	.species = SPECIES_AMBIPOM,
 	.heldItem = ITEM_SILK_SCARF,
-	.ability = 1,
-	.moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_BRUTAL_SWING},
+	.ability = 0,
+	.moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_STORM_THROW, MOVE_KNOCK_OFF},
 	},
 	{
 	.iv = 255,
@@ -11953,10 +11953,10 @@ static const struct TrainerMonItemCustomMoves sParty_Norman4[] = {
 	{
 	.iv = 255,
 	.lvl = 82,
-	.species = SPECIES_LOPUNNY,
-	.heldItem = ITEM_LOPUNNITE,
-	.ability = 0,
-	.moves = {MOVE_HI_JUMP_KICK, MOVE_RETURN, MOVE_FAKE_OUT, MOVE_QUICK_ATTACK},
+	.species = SPECIES_KANGASKHAN,
+	.heldItem = ITEM_KANGASKHANITE,
+	.ability = 1,
+	.moves = {MOVE_BODY_SLAM, MOVE_EARTHQUAKE, MOVE_CRUNCH, MOVE_ICE_PUNCH},
 	},
 	{
 	.iv = 255,
@@ -12004,10 +12004,10 @@ static const struct TrainerMonItemCustomMoves sParty_Norman5[] = {//challenger N
 	{
 	.iv = 255,
 	.lvl = 105,
-	.species = SPECIES_LOPUNNY,
-	.heldItem = ITEM_LOPUNNITE,
-	.ability = 0,
-	.moves = {MOVE_HI_JUMP_KICK, MOVE_RETURN, MOVE_FAKE_OUT, MOVE_QUICK_ATTACK},
+	.species = SPECIES_KANGASKHAN,
+	.heldItem = ITEM_KANGASKHANITE,
+	.ability = 1,
+	.moves = {MOVE_BODY_SLAM, MOVE_EARTHQUAKE, MOVE_CRUNCH, MOVE_ICE_PUNCH},
 	},
 	{
 	.iv = 255,
