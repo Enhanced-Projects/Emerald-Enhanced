@@ -18,7 +18,8 @@ const u16 gEggMoves[] = {
         MOVE_PETAL_DANCE,
         MOVE_POWER_WHIP,
         MOVE_SKULL_BASH,
-        MOVE_SLUDGE),
+        MOVE_SLUDGE,
+        MOVE_WEATHER_BALL),
 
     egg_moves(CHARMANDER,
         MOVE_AIR_CUTTER,
