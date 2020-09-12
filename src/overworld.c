@@ -68,10 +68,10 @@
 #include "constants/species.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
-#include "constants/event_objects.h"
-#include "item.h"
+#include "dns.h"
 #include "constants/items.h"
 #include "pokemon_storage_system.h"
+#include "item.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -1524,6 +1524,7 @@ void CB1_Overworld(void)
 
 static void OverworldBasic(void)
 {
+    DnsApplyFilters();
     ScriptContext2_RunScript();
     RunTasks();
     AnimateSprites();

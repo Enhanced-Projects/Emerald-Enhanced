@@ -151,3 +151,4 @@
 	.include "src/cutscene.o"
 	.include "src/battle_util.o"
 	.include "src/m4a.o"
+	.include "src/dns.o"
