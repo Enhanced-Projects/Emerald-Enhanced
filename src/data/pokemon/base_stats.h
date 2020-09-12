@@ -14369,10 +14369,10 @@ const struct BaseStats gBaseStats[] =
     [SPECIES_BASCULIN] =
     {
         .baseHP        = 70,
-        .baseAttack    = 92,
+        .baseAttack    = 125,
         .baseDefense   = 65,
-        .baseSpeed     = 98,
-        .baseSpAttack  = 80,
+        .baseSpeed     = 106,
+        .baseSpAttack  = 65,
         .baseSpDefense = 55,
         .type1 = TYPE_WATER,
         .type2 = TYPE_WATER,
@@ -16101,11 +16101,11 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_STUNFISK] =
     {
-        .baseHP        = 109,
-        .baseAttack    = 66,
-        .baseDefense   = 84,
+        .baseHP        = 113,
+        .baseAttack    = 69,
+        .baseDefense   = 98,
         .baseSpeed     = 32,
-        .baseSpAttack  = 81,
+        .baseSpAttack  = 92,
         .baseSpDefense = 99,
         .type1 = TYPE_GROUND,
         .type2 = TYPE_ELECTRIC,
@@ -16121,7 +16121,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_WATER_1,
         .eggGroup2 = EGG_GROUP_AMORPHOUS,
         .abilities = {ABILITY_STATIC, ABILITY_LIMBER},
-        .abilityHidden = ABILITY_SAND_VEIL,
+        .abilityHidden = ABILITY_DRY_SKIN,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BROWN,
     },

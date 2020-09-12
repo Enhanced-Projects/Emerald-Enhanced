@@ -117,12 +117,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_WHIMSICOTT_3] = { // Whimsicott-Defensive
+    [FRONTIER_MON_WHIMSICOTT_3] = { // Whimsicott-Offensive
         .species = SPECIES_WHIMSICOTT,
-        .moves = {MOVE_MOONBLAST, MOVE_STUN_SPORE, MOVE_ENCORE, MOVE_LEECH_SEED},
+        .moves = {MOVE_MOONBLAST, MOVE_GIGA_DRAIN, MOVE_ENCORE, MOVE_TAUNT},
         .heldItem = ITEM_LEFTOVERS,
-        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_BOLD,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
         .ivs = 31,
         .ability = 0
     },
@@ -1540,14 +1540,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_WHIMSICOTT_1] = { // Whimsicott-SpecsHurricane
+    [FRONTIER_MON_WHIMSICOTT_1] = { // Whimsicott-Defensive
         .species = SPECIES_WHIMSICOTT,
-        .moves = {MOVE_MOONBLAST, MOVE_ENERGY_BALL, MOVE_PSYCHIC, MOVE_HURRICANE},
-        .heldItem = ITEM_CHOICE_SPECS,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_TIMID,
+        .moves = {MOVE_MOONBLAST, MOVE_STUN_SPORE, MOVE_ENCORE, MOVE_LEECH_SEED},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_BOLD,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_VOLBEAT_1] = { // Volbeat-TailGlowPass
         .species = SPECIES_VOLBEAT,
@@ -8111,18 +8111,18 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_MEGA_KANGASKHAN_1] = { // Mega_Kangaskhan-SuckerPunch
+    [FRONTIER_MON_MEGA_KANGASKHAN_1] = { // Mega_Kangaskhan-IcePunch
         .species = SPECIES_MEGA_KANGASKHAN,
-        .moves = {MOVE_FAKE_OUT, MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_SUCKER_PUNCH},
+        .moves = {MOVE_BODY_SLAM, MOVE_EARTHQUAKE, MOVE_CRUNCH, MOVE_ICE_PUNCH},
         .heldItem = ITEM_KANGASKHANITE,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_ADAMANT,
+        .nature = NATURE_JOLLY,
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_MEGA_KANGASKHAN_2] = { // Mega_Kangaskhan-RockSlide
+    [FRONTIER_MON_MEGA_KANGASKHAN_2] = { // Mega_Kangaskhan-SuckerPunch
         .species = SPECIES_MEGA_KANGASKHAN,
-        .moves = {MOVE_FAKE_OUT, MOVE_DOUBLE_EDGE, MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE},
+        .moves = {MOVE_BODY_SLAM, MOVE_EARTHQUAKE, MOVE_CRUNCH, MOVE_SUCKER_PUNCH},
         .heldItem = ITEM_KANGASKHANITE,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
