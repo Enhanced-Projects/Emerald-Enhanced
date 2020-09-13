@@ -1281,6 +1281,7 @@ const u16 gEggMoves[] = {
         MOVE_ICE_FANG,
         MOVE_METRONOME,
         MOVE_MIMIC,
+        MOVE_MOONLIGHT,
         MOVE_PRESENT,
         MOVE_SMELLING_SALT,
         MOVE_SNORE,

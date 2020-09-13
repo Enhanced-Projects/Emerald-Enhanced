@@ -5364,14 +5364,14 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_SNUBBULL] =
     {
-        .baseHP        = 60,
+        .baseHP        = 65,
         .baseAttack    = 80,
-        .baseDefense   = 50,
+        .baseDefense   = 60,
         .baseSpeed     = 30,
         .baseSpAttack  = 40,
-        .baseSpDefense = 40,
+        .baseSpDefense = 50,
         .type1 = TYPE_FAIRY,
-        .type2 = TYPE_FAIRY,
+        .type2 = TYPE_DARK,
         .catchRate = 190,
         .expYield = 60,
         .evYield_Attack    = 1,
@@ -5389,14 +5389,14 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_GRANBULL] =
     {
-        .baseHP        = 90,
+        .baseHP        = 95,
         .baseAttack    = 120,
-        .baseDefense   = 75,
+        .baseDefense   = 85,
         .baseSpeed     = 45,
         .baseSpAttack  = 60,
-        .baseSpDefense = 60,
+        .baseSpDefense = 80,
         .type1 = TYPE_FAIRY,
-        .type2 = TYPE_FAIRY,
+        .type2 = TYPE_DARK,
         .catchRate = 75,
         .expYield = 158,
         .evYield_Attack    = 2,

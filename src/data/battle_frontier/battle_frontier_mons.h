@@ -3386,10 +3386,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_GRANBULL_1] = { // Granbull-BU
+    [FRONTIER_MON_GRANBULL_1] = { // Granbull-Band
         .species = SPECIES_GRANBULL,
-        .moves = {MOVE_PLAY_ROUGH, MOVE_EARTHQUAKE, MOVE_BULK_UP, MOVE_REST},
-        .heldItem = ITEM_CHESTO_BERRY,
+        .moves = {MOVE_KNOCK_OFF, MOVE_PLAY_ROUGH, MOVE_EARTHQUAKE, MOVE_CLOSE_COMBAT},
+        .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
@@ -5114,10 +5114,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_GRANBULL_2] = { // Granbull-ExBelt
+    [FRONTIER_MON_GRANBULL_2] = { // Granbull-BU
         .species = SPECIES_GRANBULL,
-        .moves = {MOVE_PLAY_ROUGH, MOVE_EARTHQUAKE, MOVE_FIRE_FANG, MOVE_THUNDER_FANG},
-        .heldItem = ITEM_EXPERT_BELT,
+        .moves = {MOVE_KNOCK_OFF, MOVE_PLAY_ROUGH, MOVE_BULK_UP, MOVE_MOONLIGHT},
+        .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
@@ -7652,12 +7652,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 27,
         .ability = 0
     },
-    [FRONTIER_MON_DRAGONITE_1] = { // Dragonite-Rain
+    [FRONTIER_MON_DRAGONITE_1] = { // Dragonite-Parashuffler
         .species = SPECIES_DRAGONITE,
-        .moves = {MOVE_HURRICANE, MOVE_THUNDER, MOVE_ROOST, MOVE_RAIN_DANCE},
-        .heldItem = ITEM_DAMP_ROCK,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_MODEST,
+        .moves = {MOVE_THUNDER_WAVE, MOVE_DRAGON_TAIL, MOVE_SUBSTITUTE, MOVE_ROOST},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_CAREFUL,
         .ivs = 31,
         .ability = 2
     },
@@ -7688,12 +7688,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_DRAGONITE_5] = { // Dragonite-Specs
+    [FRONTIER_MON_DRAGONITE_5] = { // Dragonite-Band
         .species = SPECIES_DRAGONITE,
-        .moves = {MOVE_DRACO_METEOR, MOVE_HURRICANE, MOVE_THUNDERBOLT, MOVE_FLAMETHROWER},
-        .heldItem = ITEM_CHOICE_SPECS,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_TIMID,
+        .moves = {MOVE_OUTRAGE, MOVE_FLY, MOVE_EARTHQUAKE, MOVE_EXTREME_SPEED},
+        .heldItem = ITEM_CHOICE_BAND,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 2
     },
