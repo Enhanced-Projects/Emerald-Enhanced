@@ -167,7 +167,26 @@ const u8 gText_FFearLine4[] = _("set aided by Sandstorm. Sturdy");
 const u8 gText_FFearLine5[] = _("Magnemite paralyzes and Swaggers,");
 const u8 gText_FFearLine6[] = _("while Recycling its Berry Juice.");
 
+const u8 gText_GCMSLine1[] = _("Welcome to the {COLOR LIGHT_GREEN}{SHADOW GREEN}GCMS{COLOR DARK_GREY}{SHADOW LIGHT_GREY}.");
+const u8 gText_GCMSLine2[] = _("This system allows you to perfect");
+const u8 gText_GCMSLine3[] = _("your IV's.");
+const u8 gText_GCMSLine4[] = _("When you consign the first Pokemon,");
+const u8 gText_GCMSLine5[] = _("its species, moves, and ability is");
+const u8 gText_GCMSLine6[] = _("preserved.");
 
+const u8 gText_GCMS2Line1[] = _("Once you have selected the initial");
+const u8 gText_GCMS2Line2[] = _("mon for research, you then must");
+const u8 gText_GCMS2Line3[] = _("bring more identical species to");
+const u8 gText_GCMS2Line4[] = _("increase your GCV by one each time.");
+const u8 gText_GCMS2Line5[] = _("The maximum is 31 consignments.");
+const u8 gText_GCMS2Line6[] = _("");
+
+const u8 gText_GCMS3Line1[] = _("Once you have reached the GCV value");
+const u8 gText_GCMS3Line2[] = _("you want, you can then choose to");
+const u8 gText_GCMS3Line3[] = _("create the egg. When you do so, you");
+const u8 gText_GCMS3Line4[] = _("will be asked to select a nature.");
+const u8 gText_GCMS3Line5[] = _("Once you have done so, you will");
+const u8 gText_GCMS3Line6[] = _("receive the egg.");
 
 //String list groups for individual infoboxes
 
@@ -351,6 +370,36 @@ static const struct InfoBox sInfoBoxFFearStarter[] =
     {gText_FFearLine6},
 };
 
+static const struct InfoBox sInfoBoxGCMS1[] = //INFOBOXGCMS1
+{
+    {gText_GCMSLine1},
+    {gText_GCMSLine2},
+    {gText_GCMSLine3},
+    {gText_GCMSLine4},
+    {gText_GCMSLine5},
+    {gText_GCMSLine6},
+};
+
+static const struct InfoBox sInfoBoxGCMS2[] = //INFOBOXGCMS1
+{
+    {gText_GCMS2Line1},
+    {gText_GCMS2Line2},
+    {gText_GCMS2Line3},
+    {gText_GCMS2Line4},
+    {gText_GCMS2Line5},
+    {gText_GCMS2Line6},
+};
+
+static const struct InfoBox sInfoBoxGCMS3[] = //INFOBOXGCMS1
+{
+    {gText_GCMS3Line1},
+    {gText_GCMS3Line2},
+    {gText_GCMS3Line3},
+    {gText_GCMS3Line4},
+    {gText_GCMS3Line5},
+    {gText_GCMS3Line6},
+};
+
 static const struct InfoBox sInfoBoxGridTest[] = 
 {
     {gText_HardyNature},
@@ -391,6 +440,9 @@ static const struct InfoBoxListStruct sInfoBoxes[] =
     BOXLIST(sInfoBoxFMasochistStarter), //INFOBOX_F_STARTER_MASOCHIST
     BOXLIST(sInfoBoxFFearStarter), //INFOBOX_F_STARTER_FEAR
     BOXLIST(sInfoBoxGridTest), //Infobox For testing infogrid INFOGRID_TESTDEXNAV
+    BOXLIST(sInfoBoxGCMS1), //gcms tutorial
+    BOXLIST(sInfoBoxGCMS2), //gcms tutorial
+    BOXLIST(sInfoBoxGCMS3), //gcms tutorial
 };
 
 void PrintInfoTable(u8 windowId, u8 itemCount, const struct InfoBox *strs)
