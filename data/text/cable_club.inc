@@ -218,7 +218,7 @@ CableClub_Text_ReturnsToPreviousStep: @ 82788DE
 	.string "Returns to the previous step.$"
 
 CableClub_Text_NeedBerryForBerryCrush: @ 82788FC
-	.string "To use theberry crush service,\n"
+	.string "To use the berry crush service,\n"
 	.string "you must have at least one BERRY.$"
 
 CableClub_Text_NeedTwoMonsForUnionRoom: @ 827893E
@@ -267,7 +267,7 @@ MossdeepCity_GameCorner_1F_Text_PokemonJumpInfo: @ 8278ACB
 MossdeepCity_GameCorner_1F_Text_DodrioBerryPickingInfo: @ 8278BF1
 	.string "“DODRIO BERRY-PICKING”\p"
 	.string "Command DODRIO's three heads to\n"
-	.string "catch fallingberries.\p"
+	.string "catch falling berries.\p"
 	.string "Press right, up, or left on the\n"
 	.string "{PLUS} Control Pad to move the heads.\p"
 	.string "To play this game, you must have\n"

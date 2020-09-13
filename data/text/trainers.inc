@@ -1495,7 +1495,7 @@ Route111_Text_HaydenDefeat: @ 82996BE
 
 Route111_Text_HaydenPostBattle: @ 82996C5
 	.string "My stomach is grumbling!\n"
-	.string "Maybe I can grill someberries…$"
+	.string "Maybe I can grill some berries…$"
 
 Route111_Text_BiancaIntro: @ 82996FE
 	.string "Did you come from MAUVILLE?\n"

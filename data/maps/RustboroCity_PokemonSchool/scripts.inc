@@ -401,7 +401,7 @@ RustboroCity_PokemonSchool_Text_ConfusedPokemonAttacksItself: @ 8214669
 	.string "return to normal.$"
 
 RustboroCity_PokemonSchool_Text_PokemonHealItselfWithBerry: @ 8214719
-	.string "A Pokémon holding aberry will heal\n"
+	.string "A Pokémon holding a berry will heal\n"
 	.string "itself…\p"
 	.string "There are many kinds of items that\n"
 	.string "Pokémon can hold…\p"

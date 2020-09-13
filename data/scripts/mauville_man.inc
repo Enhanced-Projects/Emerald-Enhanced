@@ -337,12 +337,12 @@ MauvilleCity_PokemonCenter_1F_Text_BerriesPlantedTitle:: @ 828EA7D
     .string "The BERRY-Planting TRAINER$"
 
 MauvilleCity_PokemonCenter_1F_Text_BerriesPlantedAction:: @ 828EA98
-	.string "Plantedberries$"
+	.string "Planted berries$"
 
 MauvilleCity_PokemonCenter_1F_Text_BerriesPlantedStory:: @ 828EAA8
 	.string "This is a tale of a TRAINER\n"
 	.string "named {STR_VAR_3}.\p"
-	.string "This TRAINER plantedberries\n"
+	.string "This TRAINER planted berries\n"
 	.string "{STR_VAR_1} times!\p"
 	.string "{STR_VAR_3} is a legendary lover of\n"
 	.string "BERRIES!$"

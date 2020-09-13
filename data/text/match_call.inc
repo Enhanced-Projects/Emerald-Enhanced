@@ -665,7 +665,7 @@ MatchCall_PersonalizedText3:: @ 82AC18C
 	.string "Hello! It's {STR_VAR_1}.\p"
 	.string "I love where I am now.\n"
 	.string "It's pleasant with sweet aromas!\p"
-	.string "I think someone plantedberries,\n"
+	.string "I think someone planted berries,\n"
 	.string "and they burst into bloom.\p"
 	.string "See you again sometime!$"
 
