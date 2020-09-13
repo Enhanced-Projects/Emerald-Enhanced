@@ -4592,14 +4592,14 @@
       "blockdata_filepath": "data/layouts/Route135/map.bin"
     },
     {
-      "id": "LAYOUT_UNDERWATER8",
-      "name": "Underwater8_Layout",
+      "id": "LAYOUT_UNDERWATER_ROUTE135_1",
+      "name": "Underwater_Route135_1_Layout",
       "width": 40,
       "height": 100,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Underwater",
-      "border_filepath": "data/layouts/Underwater8/border.bin",
-      "blockdata_filepath": "data/layouts/Underwater8/map.bin"
+      "border_filepath": "data/layouts/Underwater_Route135_1/border.bin",
+      "blockdata_filepath": "data/layouts/Underwater_Route135_1/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE135_HOUSE1",
@@ -4642,14 +4642,14 @@
       "blockdata_filepath": "data/layouts/Route135_ManaphyTemple/map.bin"
     },
     {
-      "id": "LAYOUT_UNDERWATER9",
-      "name": "Underwater9_Layout",
+      "id": "LAYOUT_UNDERWATER_ROUTE135_2",
+      "name": "Underwater_Route135_2_Layout",
       "width": 15,
       "height": 37,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Underwater",
-      "border_filepath": "data/layouts/Underwater9/border.bin",
-      "blockdata_filepath": "data/layouts/Underwater9/map.bin"
+      "border_filepath": "data/layouts/Underwater_Route135_2/border.bin",
+      "blockdata_filepath": "data/layouts/Underwater_Route135_2/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE114_SUICUNE_CAVE",

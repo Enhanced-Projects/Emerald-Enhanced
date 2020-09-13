@@ -4245,8 +4245,8 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.fishingMonsInfo = NULL,
 	},
 	{
-		.mapGroup = MAP_GROUP(UNDERWATER8),
-		.mapNum = MAP_NUM(UNDERWATER8),
+		.mapGroup = MAP_GROUP(UNDERWATER_ROUTE135_1),
+		.mapNum = MAP_NUM(UNDERWATER_ROUTE135_1),
 		.landMonsInfo = NULL,
 		.waterMonsInfo = &gUnderwater8_WaterMonsInfo,
 		.rockSmashMonsInfo = NULL,
