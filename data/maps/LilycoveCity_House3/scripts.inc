@@ -128,11 +128,11 @@ LilycoveCity_House3_Text_ExplainPokeblocks: @ 821F0F8
 	.string "{POKEBLOCK}S than ordinary ones, too.\p"
 	.string "And this is important.\p"
 	.string "If you want to make smooth {POKEBLOCK}S,\n"
-	.string "use different kinds ofberries.\p"
-	.string "Don't be stingy--the kinds ofberries\n"
+	.string "use different kinds of berries.\p"
+	.string "Don't be stingy--the kinds of berries\n"
 	.string "affect the smoothness of {POKEBLOCK}S.\p"
 	.string "And another thing.\p"
-	.string "The more people blendingberries,\n"
+	.string "The more people blending berries,\n"
 	.string "the smoother the {POKEBLOCK}S.\p"
 	.string "That's why you should talk to other\n"
 	.string "people and make {POKEBLOCK}S together.\p"
@@ -160,7 +160,7 @@ LilycoveCity_House3_Text_LikeMixingAtRecordCorner: @ 821F4E0
 
 LilycoveCity_House3_Text_MakePokeblocksWithBerryBlender: @ 821F523
 	.string "We're going to make super {POKEBLOCK}S\n"
-	.string "with aberry blender!$"
+	.string "with a berry blender!$"
 
 LilycoveCity_House3_Text_GoingToEnterContest: @ 821F55A
 	.string "I want to brag about how tough my\n"

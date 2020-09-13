@@ -2039,7 +2039,7 @@ gTVWhatsNo1InHoennTodayText03:: @ 0828821A
 
 gTVWhatsNo1InHoennTodayText04:: @ 082882BE
 	.string "In just one day, {STR_VAR_1} spun\n"
-	.string "theberry blender {STR_VAR_2} times!\p"
+	.string "the berry blender {STR_VAR_2} times!\p"
 	.string "Toward the end, even {STR_VAR_1}\n"
 	.string "seemed to get dizzy.\p"
 	.string "The TRAINER appeared to totter\n"
@@ -2059,7 +2059,7 @@ gTVWhatsNo1InHoennTodayText06:: @ 0828842B
 	.string "In just one day, {STR_VAR_1} picked\n"
 	.string "{STR_VAR_2}berries!\p"
 	.string "{STR_VAR_1}'s BAG became so filled\n"
-	.string "withberries, the TRAINER had trouble\l"
+	.string "with berries, the TRAINER had trouble\l"
 	.string "walking afterward!$"
 
 gTVWhatsNo1InHoennTodayText07:: @ 082884A5

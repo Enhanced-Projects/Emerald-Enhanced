@@ -222,7 +222,7 @@ LilycoveCity_LilycoveMuseum_1F_Text_PaintingOfGrassPokemon: @ 82191A2
 
 LilycoveCity_LilycoveMuseum_1F_Text_PaintingOfBerries: @ 821920D
 	.string "It's a delicious-looking painting\n"
-	.string "ofberries.\p"
+	.string "of berries.\p"
 	.string "This painting could make you hungry!$"
 
 LilycoveCity_LilycoveMuseum_Text_BirdPokemonSculptureReplica: @ 8219260

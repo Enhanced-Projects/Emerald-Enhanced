@@ -19,14 +19,14 @@ BerryBlender_Text_BlendMasterNoBerries: @ 82C439D
 	.string "Hmmm!\p"
 	.string "You haven't got a single BERRY!\p"
 	.string "I shall be here all day!\n"
-	.string "Hurry back with someberries!$"
+	.string "Hurry back with some berries!$"
 
 BerryBlender_Text_BlendMasterKnowHowToMakePokeblocks: @ 82C43FA
 	.string "Of course!\n"
 	.string "Of course!\p"
 	.string "Incidentally…\n"
 	.string "You do know how to blend {POKEBLOCK}S\l"
-	.string "fromberries?$"
+	.string "from berries?$"
 
 BerryBlender_Text_BlendMasterExplainBerryBlending: @ 82C444C
 	.string "Hmmm!\p"
@@ -41,7 +41,7 @@ BerryBlender_Text_BlendMasterLetsBerryBlender: @ 82C451B
 	.string "Fine!\p"
 	.string "Let's get started, then!\p"
 	.string "All together with the BLEND MASTER,\n"
-	.string "let'sberry blender!$"
+	.string "let's berry blender!$"
 
 BerryBlender_Text_BlendMasterNoPokeblockCase: @ 82C4573
 	.string "Hmmm!\p"
@@ -82,4 +82,4 @@ BerryBlender_Text_MasterWorksOnSkillsInMountains: @ 82C4763
 	.string "The BLEND MASTER's supposed to work\n"
 	.string "on his skills deep in the mountains.\p"
 	.string "Sometimes, he comes to LILYCOVE\n"
-	.string "to blendberries all day long.$"
+	.string "to blend berries all day long.$"
