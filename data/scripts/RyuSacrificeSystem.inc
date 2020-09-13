@@ -69,13 +69,28 @@ SwapCancelled:
 	
 GCMS_Tutorial::
 	closemessage
-	msgbox GCMS_Tutorial1
+	drawinfobox INFOBOXGCMS1
+	msgbox GCMS_Page1
 	closemessage
-	msgbox GCMS_Tutorial2
+	removeinfobox
+	drawinfobox INFOBOXGCMS2
+	msgbox GCMS_Page2
 	closemessage
-	msgbox GCMS_ReturningToMain
+	removeinfobox
+	drawinfobox INFOBOXGCMS3
+	msgbox GCMS_TutOutro
 	closemessage
+	removeinfobox
 	goto GCMS_Intro
+
+GCMS_Page1:
+	.string "Tutorial page 1$"
+
+GCMS_Page2:
+	.string "Tutorial page 2$"
+
+GCMS_TutOutro:
+	.string "The egg will have the species,\nability, and moves of the first\lPokemon you consigned.\p         \pReturning to main menu.$"
 	
 GCMS_Status::
 	bufferspeciesname 0, VAR_RYU_GCMS_SPECIES
@@ -370,6 +385,8 @@ GCMS_Slot1Selected::
 	specialvar VAR_RESULT, RyuSacrificeMon
 	compare VAR_RESULT, FALSE
 	goto_if_eq GCMS_SpeciesNotCorrect
+	compare VAR_RYU_GCMS_VALUE, 31
+	goto_if_ge GCMS_MaxReached
 	addvar VAR_RYU_GCMS_VALUE, 1
 	addvar VAR_TEMP_9, 1
 	buffernumberstring 0, VAR_TEMP_9
@@ -437,6 +454,10 @@ GCMS_Slot6Selected::
 	msgbox GCMS_ConsignSuccess
 	goto GCMS_Consignment
 	end
+
+GCMS_MaxReached::
+	msgbox GCMS_YouHaveReached
+	goto GCMS_Intro
 	
 GCMS_CancelPartySlot:
 	msgbox GCMS_ReturnWithSpecimen
@@ -458,6 +479,8 @@ GCMS_NotEnoughPartyMons::
 	release
 	end
 	
+GCMS_YouHaveReached:
+	.string "You have reached the maximum\nachievable GCV. No more mons may\lbe consigned.$"
 	
 GCMS_IntroMsg:
 	.string "Welcome to the\n{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Code Mapping System.\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Please make a selection.$"

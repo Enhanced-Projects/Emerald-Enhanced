@@ -101,7 +101,7 @@ BerryBlender_Text_DontHaveAnyBerries2: @ 8293394
 	.string "Oh, but wait a second here…\n"
 	.string "You don't have anyberries.\p"
 	.string "You can't make any {POKEBLOCK}S without\n"
-	.string "BERRIES…\p"
+	.string "berries…\p"
 	.string "We'll always be around whenever you\n"
 	.string "get hold of someberries to blend.$"
 

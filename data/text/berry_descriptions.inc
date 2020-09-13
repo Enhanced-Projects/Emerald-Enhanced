@@ -38,7 +38,7 @@ gBerryDescriptionPart1_Oran:: @ 8589C86
 	.string "A peculiarberry with a mix of flavors.$"
 
 gBerryDescriptionPart2_Oran:: @ 8589CAE
-	.string "BERRIES grow in half a day.$"
+	.string "berries grow in half a day.$"
 
 gBerryDescriptionPart1_Persim:: @ 8589CCA
 	.string "Loves sunlight. The BERRY's color$"

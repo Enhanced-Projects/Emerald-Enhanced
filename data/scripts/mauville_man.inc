@@ -345,7 +345,7 @@ MauvilleCity_PokemonCenter_1F_Text_BerriesPlantedStory:: @ 828EAA8
 	.string "This TRAINER plantedberries\n"
 	.string "{STR_VAR_1} times!\p"
 	.string "{STR_VAR_3} is a legendary lover of\n"
-	.string "BERRIES!$"
+	.string "berries!$"
 
 MauvilleCity_PokemonCenter_1F_Text_BikeTradesTitle:: @ 828EB19
 	.string "The BIKE-Loving TRAINER$"
