@@ -9728,6 +9728,79 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Charles[] = {
     }
 };
 
+static const struct TrainerMonNoItemDefaultMoves sParty_Yuna[] = {
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_GASTLY,
+    },
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_FROSLASS,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Jason[] = {
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_NOCTOWL,
+    },
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_KADABRA,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Rodette[] = {
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_PHANTUMP,
+    },
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_GOURGEIST,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Tyrone[] = {
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_HYPNO,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Luna[] = {
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_DRIFLOON,
+    },
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_FROSLASS,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Melanie[] = {
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_PHANTUMP,
+    },
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_DRIFBLIM,
+    }
+};
+
 static const struct TrainerMonNoItemDefaultMoves sParty_Jonah[] = {
     {
     .iv = 0,

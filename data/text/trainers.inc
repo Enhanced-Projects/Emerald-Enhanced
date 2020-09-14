@@ -4973,3 +4973,75 @@ CraggyCoast_Text_CharlesPostBattle:
 	.string "The key to being succesful is not\n"
 	.string "using the pokemon that seem best,\l"
 	.string "but the pokemon you like most.$"
+
+CraggyCoast_Text_YunaIntro:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_YunaDefeated:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_YunaPostBattle:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_JasonIntro:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_JasonDefeated:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_JasonPostBattle:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_RodetteIntro:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_RodetteDefeated:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_RodettePostBattle:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_TyroneIntro:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_TyroneDefeated:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_TyronePostBattle:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_LunaIntro:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_LunaDefeated:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_LunaPostBattle:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_MelanieIntro:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_MelanieDefeated:
+	.string "\n"
+	.string "$"
+
+CraggyCoast_Text_MelaniePostBattle:
+	.string "\n"
+	.string "$"
