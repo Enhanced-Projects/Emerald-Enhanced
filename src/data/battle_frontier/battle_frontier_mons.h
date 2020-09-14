@@ -8823,7 +8823,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ability = 1
     }
     /*
-    [FRONTIER_MON_OVERLORD] = {
+    [FRONTIER_MON_OVERLORD] = { // Overlord-Ryu
         .species = SPECIES_OVERLORD,
         .moves = {MOVE_EXECUTE, MOVE_SWAG, MOVE_DISINTEGRATE, MOVE_NO_U},
         .heldItem = ITEM_SLEDGEHAMMER,
