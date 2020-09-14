@@ -8822,4 +8822,15 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     }
+    /*
+    [FRONTIER_MON_RYU] = {
+        .species = SPECIES_OVERLORD,
+        .moves = {MOVE_EXECUTE, MOVE_SWAG, MOVE_DISINTEGRATE, MOVE_NO_U},
+        .heldItem = ITEM_SLEDGEHAMMER,
+        .evSpread = F_EV_SPREAD_HP | F_EV_SPREAD_HP | F_EV_SPREAD_DEFENSE,
+        .nature = NATURE_BOOMER,
+        .ivs = 69,
+        .ability = 420
+    }
+    */
 };
