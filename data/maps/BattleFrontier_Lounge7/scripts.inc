@@ -187,7 +187,7 @@ BattleFrontier_Lounge7_Text_LeftTutorIntro: @ 82656ED
 	.string "You couldn't tell it from looking now,\n"
 	.string "but I used to be one tough Trainer.\p"
 	.string "I had a reputation as the toughest\n"
-	.string "BEAUTY around, I tell you!\p"
+	.string "Beauty around, I tell you!\p"
 	.string "… … … … … …\p"
 	.string "What is it now?\n"
 	.string "You don't believe me.\p"
@@ -233,7 +233,7 @@ BattleFrontier_Lounge7_Text_RightTutorIntro: @ 8265A6C
 	.string "I know it's hard to see now, but I used\n"
 	.string "to be one fantastic Trainer.\p"
 	.string "I had a reputation as the most\n"
-	.string "invincible SWIMMER around, I tell you!\p"
+	.string "invincible Swimmer around, I tell you!\p"
 	.string "… … … … … …\p"
 	.string "What's wrong?\n"
 	.string "You don't believe me.\p"
@@ -259,7 +259,7 @@ BattleFrontier_Lounge7_Text_ThinkLadiesDontGetAlong: @ 8265C6F
 	.string "stay out here together, would they?$"
 
 BattleFrontier_Lounge7_Text_LadiesWereStrongAndBeautiful: @ 8265D17
-	.string "When I was just a wee YOUNGSTER,\n"
+	.string "When I was just a wee Youngster,\n"
 	.string "those ladies were strong and beautiful.\p"
 	.string "They were idols among us Trainers.\p"
 	.string "Even now, age hasn't dulled their\n"

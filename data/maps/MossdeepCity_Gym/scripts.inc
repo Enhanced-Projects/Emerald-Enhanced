@@ -790,7 +790,7 @@ MossdeepCity_Gym_Text_VirgilPostBattle: @ 8220F3A
 
 MossdeepCity_Gym_Text_BlakePreBattle: @ 8220FB0
 	.string "Fufufufu… Watch me levitate a POKé\n"
-	.string "BALL telekinetically!\p"
+	.string "Ball telekinetically!\p"
 	.string "Wrooooooooaaaar!\n"
 	.string "… … … … … … …\p"
 	.string "Sometimes, I'm out of sync…$"
@@ -869,7 +869,7 @@ MossdeepCity_Gym_Text_SylviaPostBattle: @ 8221412
 MossdeepCity_Gym_Text_NatePreBattle: @ 8221460
 	.string "Hohoho.\p"
 	.string "You need me to show you how tenacious\n"
-	.string "the PSYCHIC type can be.$"
+	.string "the Psychic type can be.$"
 
 MossdeepCity_Gym_Text_NateDefeat: @ 82214A7
 	.string "Oh! My, my!\n"
@@ -912,7 +912,7 @@ MossdeepCity_Gym_Text_MaceyDefeat: @ 8221658
 
 MossdeepCity_Gym_Text_MaceyPostBattle: @ 8221680
 	.string "Humph! You may be strong, but you're\n"
-	.string "not suitable for the PSYCHIC type!\p"
+	.string "not suitable for the Psychic type!\p"
 	.string "The way you battle is somehow brutal!$"
 
 MossdeepCity_Gym_Text_NicholasPreBattle: @ 82216EE
@@ -952,19 +952,19 @@ MossdeepCity_Gym_Text_ReceivedMindBadge: @ 822196A
 	.string "from Tate and Liza.$"
 
 MossdeepCity_Gym_Text_ExplainMindBadgeTakeThis: @ 8221999
-	.string "Tate: The MIND badge enhances the\n"
-	.string "SP. ATK and SP. DEF of Pokémon.\p"
+	.string "Tate: The Mind badge enhances the\n"
+	.string "SP. Atk and SP. Def of Pokémon.\p"
 	.string "Liza: It also lets you use the HM move\n"
-	.string "DIVE outside of battle.\p"
+	.string "Dive outside of battle.\p"
 	.string "Tate: You should also take this, too.$"
 
 MossdeepCity_Gym_Text_ExplainCalmMind: @ 8221A40
 	.string "Tate: That TM04 contains…\n"
-	.string "Liza: CALM MIND!\p"
-	.string "Tate: It raises SP. ATK and…\n"
-	.string "Liza: It raises SP. DEF!\p"
+	.string "Liza: Calm Mind!\p"
+	.string "Tate: It raises SP. Atk and…\n"
+	.string "Liza: It raises SP. Def!\p"
 	.string "Tate: It's a move that's perfect…\n"
-	.string "Liza: For PSYCHIC Pokémon!\p"
+	.string "Liza: For Psychic Pokémon!\p"
 	.string "… … … … … …$"
 
 MossdeepCity_Gym_Text_RegisteredTateAndLiza: @ 8221AEA
@@ -988,11 +988,11 @@ MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons: @ 8221BCE
 	.string "bring some more Pokémon.$"
 
 MossdeepCity_Gym_Text_GymStatue: @ 8221CB0
-	.string "MOSSDEEP CITY Pokémon Gym$"
+	.string "Mossdeep City Pokémon Gym$"
 
 MossdeepCity_Gym_Text_GymStatueCertified: @ 8221CCA
-	.string "MOSSDEEP CITY Pokémon Gym\p"
-	.string "Liza AND Tate's Certified Trainers:\n"
+	.string "Mossdeep City Pokémon Gym\p"
+	.string "Liza And Tate's Certified Trainers:\n"
 	.string "{PLAYER}$"
 
 MossdeepCity_Gym_Text_TateAndLizaPreRematch: @ 8221D0B

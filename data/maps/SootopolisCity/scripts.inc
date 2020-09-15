@@ -166,7 +166,7 @@ SootopolisCity_EventScript_Maniac:: @ 81E6411
 
 SootopolisCity_Text_GymSign: @ 81E656F
 	.string "Sootopolis City Pokémon Gym\n"
-	.string "LEADER: Juan\p"
+	.string "Leader: Juan\p"
 	.string "“The Gym Leader with the beauty\n"
 	.string "of pure water!”$"
 
@@ -183,7 +183,7 @@ SootopolisCity_Text_PhysicallyFitLivingHere: @ 81E6618
 
 SootopolisCity_Text_CaveOfOriginPleaseLeave: @ 81E6D77
 	.string "Who might you be?\p"
-	.string "This is the CAVE OF ORIGIN.\p"
+	.string "This is the Cave OF Origin.\p"
 	.string "The spirits of Pokémon, becalmed at\n"
 	.string "Mt. Pyre, are said to be revived here.\p"
 	.string "Please leave.$"
@@ -195,21 +195,21 @@ SootopolisCity_Text_LeadSuperiorTrainerToCave: @ 81E6DFE
 	.string "experience of many kinds of Pokémon…\p"
 	.string "If such a person were to appear, I was\n"
 	.string "instructed by Wallace to lead that\l"
-	.string "Trainer to this CAVE.$"
+	.string "Trainer to this Cave.$"
 
 SootopolisCity_Text_CaveOfOriginSleepsToo: @ 81E6F38
-	.string "This is the CAVE OF ORIGIN…\p"
+	.string "This is the Cave OF Origin…\p"
 	.string "With the passing of the crisis,\n"
 	.string "the cave, too, shall sleep…$"
 
 SootopolisCity_Text_SootopolisSkyBeautiful: @ 81E6F90
-	.string "SOOTOPOLIS sprang up as a town in\n"
+	.string "Sootopolis sprang up as a town in\n"
 	.string "the crater of a volcano.\p"
 	.string "If you look up at the sky, the lip of\n"
 	.string "the crater is also visible.\l"
 	.string "So, all you see is the sky in a circle.\p"
 	.string "But that's what makes the sky above\n"
-	.string "SOOTOPOLIS the most beautiful.$"
+	.string "Sootopolis the most beautiful.$"
 
 SootopolisCity_Text_NightSkyFavoriteScenery: @ 81E710B
 	.string "A circle of a night sky framed by\n"
@@ -219,15 +219,15 @@ SootopolisCity_Text_NightSkyFavoriteScenery: @ 81E710B
 	.string "It's my favorite scenery.$"
 
 SootopolisCity_Text_ExplainWaterfallGoToGym: @ 81E7B86
-	.string "That HIDDEN MACHINE contains\n"
-	.string "WATERFALL.\p"
-	.string "If you have the RAIN badge, a Pokémon\n"
+	.string "That Hidden Machine contains\n"
+	.string "Waterfall.\p"
+	.string "If you have the Rain badge, a Pokémon\n"
 	.string "that has learned that HM move can\l"
 	.string "force its way up waterfalls.\p"
-	.string "And where does one get the RAIN badge?\n"
+	.string "And where does one get the Rain badge?\n"
 	.string "You know, don't you?\p"
 	.string "That's right! You have to beat\n"
-	.string "the SOOTOPOLIS Gym Leader.\p"
+	.string "the Sootopolis Gym Leader.\p"
 	.string "When you're all set to go, step through\n"
 	.string "that door.$"
 

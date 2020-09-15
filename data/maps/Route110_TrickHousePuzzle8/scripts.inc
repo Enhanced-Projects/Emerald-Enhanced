@@ -31,7 +31,7 @@ Route110_TrickHousePuzzle8_EventScript_Leroy:: @ 826E84D
 Route110_TrickHousePuzzle8_EventScript_WroteSecretCodeLockOpened:: @ 826E864
 	.string "{PLAYER} wrote down the secret code\n"
 	.string "on the door.\p"
-	.string "“TRICK MASTER I love.”\n"
+	.string "“TRICK Master I love.”\n"
 	.string "… … … … … … … …\p"
 	.string "The lock clicked open!$"
 
@@ -59,8 +59,8 @@ Route110_TrickHousePuzzle8_Text_KeiraPostBattle: @ 826E99F
 	.string "You can brag about it.$"
 
 Route110_TrickHousePuzzle8_Text_LeroyIntro: @ 826E9D7
-	.string "You've been slugging through the TRICK\n"
-	.string "HOUSE challenge, too.$"
+	.string "You've been slugging through the Trick\n"
+	.string "House challenge, too.$"
 
 Route110_TrickHousePuzzle8_Text_LeroyDefeat: @ 826EA14
 	.string "I see…\n"
@@ -68,5 +68,5 @@ Route110_TrickHousePuzzle8_Text_LeroyDefeat: @ 826EA14
 
 Route110_TrickHousePuzzle8_Text_LeroyPostBattle: @ 826EA3F
 	.string "Seeing someone like you should please\n"
-	.string "the TRICK MASTER.$"
+	.string "the Trick Master.$"
 

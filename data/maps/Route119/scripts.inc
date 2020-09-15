@@ -210,48 +210,48 @@ Route119_EventScript_ScottWonAtFortreeGymCall:: @ 81F49EC
 
 Route119_Text_StayAwayFromWeatherInstitute: @ 81F50EB
 	.string "We're standing lookout here.\p"
-	.string "Hey, you! Stay away from the WEATHER\n"
-	.string "INSTITUTE. It's not safe.$"
+	.string "Hey, you! Stay away from the Weather\n"
+	.string "Institute. It's not safe.$"
 
 Route119_Text_DontGoNearWeatherInstitute: @ 81F5147
 	.string "Lookout duty is surprisingly boring.\p"
 	.string "Hey, you! Please don't go near the\n"
-	.string "WEATHER INSTITUTE.$"
+	.string "Weather Institute.$"
 
 Route119_Text_ThoughtFlyByCatchingBirdMons: @ 81F51A2
-	.string "I thought you FLY by catching a whole\n"
-	.string "flock of BIRD Pokémon, and then\l"
+	.string "I thought you Fly by catching a whole\n"
+	.string "flock of Bird Pokémon, and then\l"
 	.string "hanging on to them somehow.\p"
 	.string "But it turns out there's a TM\n"
-	.string "called FLY!\p"
+	.string "called Fly!\p"
 	.string "I wish I'd known about that a long\n"
 	.string "time ago…$"
 
 Route119_Text_TallGrassSnaresBikeTires: @ 81F5261
 	.string "Tch…\n"
 	.string "It's a no-go…\p"
-	.string "The tall grass snares BIKE tires.\n"
+	.string "The tall grass snares Bike tires.\n"
 	.string "There's no way you can cycle here.$"
 
 Route119_Text_CanYourMonMakeSecretBase: @ 81F52B9
-	.string "Can your Pokémon use its SECRET POWER\n"
+	.string "Can your Pokémon use its Secret Power\n"
 	.string "on a big pile of grass and make a\l"
-	.string "SECRET BASE?$"
+	.string "Secret Base?$"
 
 Route119_Text_RouteSignFortree: @ 81F530E
-	.string "ROUTE 119\n"
+	.string "Route 119\n"
 	.string "{RIGHT_ARROW} FORTREE CITY$"
 
 Route119_Text_WeatherInstitute: @ 81F5327
-	.string "WEATHER INSTITUTE$"
+	.string "Weather Institute$"
 
 Route119_Text_TrainerTipsDecoration: @ 81F5339
 	.string "Trainer Tips\p"
 	.string "Up to sixteen decorations and\n"
 	.string "furniture items can be placed in\l"
-	.string "a SECRET BASE.\p"
+	.string "a Secret Base.\p"
 	.string "Pick your favorite items and create\n"
-	.string "your very own SECRET BASE exactly the\l"
+	.string "your very own Secret Base exactly the\l"
 	.string "way you want.$"
 
 @==================================================================================================RIVAL ENCOUNTER

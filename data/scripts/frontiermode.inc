@@ -478,7 +478,7 @@ RF_Fear::
 	end
 
 RF_FearIntro:
-	.string "Showing the FEAR team description.$"
+	.string "Showing the Fear team description.$"
 
 @blank options (also default)
 RF_Blank1::

@@ -499,7 +499,7 @@ PetalburgCity_Text_AreYouRookieTrainer: @ 81DC881
 	.string "is in the town.$"
 
 PetalburgCity_Text_ThisIsPetalburgGym: @ 81DC91B
-	.string "See? This is PETALBURG CITY's Gym.$"
+	.string "See? This is Petalburg City's Gym.$"
 
 PetalburgCity_Text_ThisIsGymSign: @ 81DC93E
 	.string "This is the Gym's sign. Look for it\n"
@@ -515,20 +515,20 @@ PetalburgCity_Text_WaterReflection: @ 81DC985
 PetalburgCity_Text_FullPartyExplanation: @ 81DCA30
 	.string "Let's say you have six Pokémon.\n"
 	.string "If you catch another one…\p"
-	.string "It is automatically sent to a STORAGE\n"
-	.string "BOX over a PC connection.$"
+	.string "It is automatically sent to a Storage\n"
+	.string "Box over a PC connection.$"
 
 PetalburgCity_Text_GymSign: @ 81DCAAA
-	.string "PETALBURG CITY Pokémon Gym\n"
-	.string "LEADER: Norman\l"
+	.string "Petalburg City Pokémon Gym\n"
+	.string "Leader: Norman\l"
 	.string "“A man in pursuit of power!”$"
 
 PetalburgCity_Text_CitySign: @ 81DCAF1
-	.string "PETALBURG CITY\n"
+	.string "Petalburg City\n"
 	.string "“Where people mingle with nature.”$"
 
 PetalburgCity_Text_WallyHouseSign: @ 81DCB23
-	.string "FOR SALE$"
+	.string "For Sale$"
 
 PetalburgCity_Text_AreYouATrainer: @ 81DCB31
 	.string "Excuse me!\p"

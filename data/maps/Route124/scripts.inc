@@ -199,7 +199,7 @@ Route124_EventScript_Isabella:: @ 81F6722
 	end
 
 Route124_Text_HuntersHouse: @ 81F6739
-	.string "HUNTER's HOUSE$"
+	.string "Hunter's House$"
 	
 
 R124_CollapseMaxieCave::	

@@ -101,7 +101,7 @@ RyuNGPInfo:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Welcome to New Game +.\p"
 	.string "In this mode, you get to keep any\n"
 	.string "unique quest reward items, such as\l"
-	.string "the Waystone and the EXP Drive.\p"
+	.string "the Waystone and the Exp Drive.\p"
 	.string "Your Pokémon storage is still\n"
 	.string "intact, including any held items.$"
 
@@ -217,7 +217,7 @@ IT_FrontierIntro:
     .string "be able to leave the Frontier.$"
 	
 IT_HardcoreIntro:
-    .string "Hello, and welcome to HARDCORE\n"
+    .string "Hello, and welcome to Hardcore\n"
     .string "mode.\p"
     .string "In this mode, you are restricted\n"
     .string "even further than Nuzlocke mode.\p"

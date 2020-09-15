@@ -454,7 +454,7 @@ Route119_WeatherInstitute_2F_EventScript_WeatherScientist:: @ 827018B
 	end
 
 Route119_WeatherInstitute_2F_Text_Grunt2Intro: @ 827019C
-	.string "The INSTITUTE created a type of\n"
+	.string "The Institute created a type of\n"
 	.string "Pokémon that has something to do with\l"
 	.string "the weather. We're here to take them!$"
 
@@ -516,7 +516,7 @@ Route119_WeatherInstitute_2F_Text_ShellyPostBattle: @ 82704E4
 Route119_WeatherInstitute_2F_Text_TeamMagmaJustPassedBy: @ 8270568
 	.string "We have a situation here!\p"
 	.string "A Team Magma mob just passed\n"
-	.string "the WEATHER INSTITUTE.\p"
+	.string "the Weather Institute.\p"
 	.string "They appear to be headed for\n"
 	.string "Mt. Pyre!$"
 

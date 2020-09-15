@@ -381,7 +381,7 @@ LG_SHELLY_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Hey, {PLAYER}!\p"
     .string "I got a break from admin stuff, so\n"
     .string "I have time to help you crush this\l"
-    .string "hothead. LETS GO!$"
+    .string "hothead. Lets GO!$"
 
 LG_DAWN_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Hiya {PLAYER}! I'm not the\n"
@@ -568,7 +568,7 @@ LavaridgeTown_Gym_1F_EventScript_GymStatue:: @ 81FE9B5
 LavaridgeTown_Gym_1F_Text_GymGuideAdvice: @ 81FE9BF
 	.string "Hey, how's it going, Champion-\n"
 	.string "bound {PLAYER}?\p"
-	.string "LAVARIDGE's Gym Leader Flannery\n"
+	.string "Lavaridge's Gym Leader Flannery\n"
 	.string "uses FIRE-type Pokémon.\p"
 	.string "Her passion for Pokémon burns stronger\n"
 	.string "and hotter than a volcano.\p"
@@ -617,7 +617,7 @@ LavaridgeTown_Gym_B1F_Text_KeeganDefeat: @ 81FECE3
 
 LavaridgeTown_Gym_B1F_Text_KeeganPostBattle: @ 81FED02
 	.string "Your skill is real…\n"
-	.string "But our LEADER Flannery is strong.\p"
+	.string "But our Leader Flannery is strong.\p"
 	.string "If you don't watch yourself, you'll be\n"
 	.string "burned seriously.$"
 
@@ -656,7 +656,7 @@ LavaridgeTown_Gym_B1F_Text_JaceDefeat: @ 81FEED5
 LavaridgeTown_Gym_B1F_Text_JacePostBattle: @ 81FEF07
 	.string "The way the battling spirit burns\n"
 	.string "within you, you may stand a chance\l"
-	.string "against our LEADER.$"
+	.string "against our Leader.$"
 
 LavaridgeTown_Gym_B1F_Text_JeffPreBattle: @ 81FEF60
 	.string "See how the flames blaze wildly?\n"
@@ -690,10 +690,10 @@ LavaridgeTown_Gym_1F_Text_FlanneryPreBattle: @ 81FF0DC
 	.string "I have been entrusted with the…\n"
 	.string "No, wait.\p"
 	.string "I am Flannery, and I'm the Gym\n"
-	.string "LEADER here!\p"
+	.string "Leader here!\p"
 	.string "Uh…\n"
 	.string "Dare not underestimate me, though\l"
-	.string "I have been LEADER only a short time!\p"
+	.string "I have been Leader only a short time!\p"
 	.string "With skills inherited from my grand-\n"
 	.string "father, I shall, uh…demonstrate the\l"
 	.string "hot moves we have honed on this land!$"
@@ -707,20 +707,20 @@ LavaridgeTown_Gym_1F_Text_ReceivedHeatBadge: @ 81FF32F
 	.string "from Flannery.$"
 
 LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis: @ 81FF359
-	.string "If you have a HEAT badge, all Pokémon\n"
+	.string "If you have a Heat badge, all Pokémon\n"
 	.string "up to Level 50, even those you get in\l"
 	.string "trades from other people, will obey\l"
 	.string "you completely.\p"
 	.string "And, it lets Pokémon use the HM move\n"
-	.string "STRENGTH outside of battle.\p"
+	.string "Strength outside of battle.\p"
 	.string "This is a token of my appreciation.\n"
 	.string "Don't be shy about taking it!$"
 
 LavaridgeTown_Gym_1F_Text_ExplainOverheat: @ 81FF45C
-	.string "That TM50 contains OVERHEAT.\p"
+	.string "That TM50 contains Overheat.\p"
 	.string "That move inflicts serious damage on\n"
 	.string "the opponent.\p"
-	.string "But it also sharply cuts the SP. ATK\n"
+	.string "But it also sharply cuts the SP. Atk\n"
 	.string "of the Pokémon using it. It might not\l"
 	.string "be suitable for longer battles.$"
 
@@ -731,13 +731,13 @@ LavaridgeTown_Gym_1F_Text_RegisteredFlannery: @ 81FF517
 LavaridgeTown_Gym_1F_Text_FlanneryPostBattle: @ 81FF546
 	.string "Your power reminds me of someone…\p"
 	.string "Oh! I know! You battle like Norman,\n"
-	.string "the Gym Leader of PETALBURG.$"
+	.string "the Gym Leader of Petalburg.$"
 
 LavaridgeTown_Gym_1F_Text_GymStatue: @ 81FF5A9
-	.string "LAVARIDGE TOWN Pokémon Gym$"
+	.string "Lavaridge Town Pokémon Gym$"
 
 LavaridgeTown_Gym_1F_Text_GymStatueCertified: @ 81FF5C4
-	.string "LAVARIDGE TOWN Pokémon Gym\p"
+	.string "Lavaridge Town Pokémon Gym\p"
 	.string "Flannery's Certified Trainers:\n"
 	.string "{PLAYER}$"
 

@@ -279,7 +279,7 @@ EGC_BrendanWantedToGoInHOF:
 	.string "Aww, but I wanted to go in and see\nthe crowning ceremony!$"
 	
 EGC_BrendanAlreadyBeatChampion:
-	.string "Wait, WHAT? You already won!\nImpressive! You didn't even\lneed me!$"
+	.string "Wait, What? You already won!\nImpressive! You didn't even\lneed me!$"
 
 EverGrandeCity_ChampionsRoom_Text_PreBattleSpeech: @ 8228C4C
 	.string "We Trainers raise Pokémon by giving\n"
@@ -332,12 +332,12 @@ EverGrandeCity_ChampionsRoom_Text_MayItsAlreadyOver: @ 822910B
 	.string "It's already over?$"
 
 EverGrandeCity_ChampionsRoom_Text_BrendanAdvice: @ 8229152
-	.string "BRENDAN: {PLAYER}!\p"
+	.string "Brendan: {PLAYER}!\p"
 	.string "How would you like some advice before\n"
 	.string "you challenge the Champion?…$"
 
 EverGrandeCity_ChampionsRoom_Text_BrendanYouveWon: @ 82291A2
-	.string "BRENDAN: {PLAYER}…\p"
+	.string "Brendan: {PLAYER}…\p"
 	.string "Are you trying to tell me…\n"
 	.string "You've beaten the Champion?$"
 
@@ -349,7 +349,7 @@ EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex: @ 82291E6
 	.string "… … … … … … … …\n"
 	.string "{PLAYER}, you've finally done it.\p"
 	.string "When I heard that you defeated your\n"
-	.string "own father at the PETALBURG Gym,\l"
+	.string "own father at the Petalburg Gym,\l"
 	.string "I thought perhaps you had a chance…\p"
 	.string "But to think you've actually become\n"
 	.string "the Champion!\p"
@@ -385,7 +385,7 @@ EverGrandeCity_ChampionsRoom_Text_MayCongratulations: @ 8229479
 	.string "Honestly, congratulations!$"
 
 EverGrandeCity_ChampionsRoom_Text_BrendanCongratulations: @ 82294F5
-	.string "BRENDAN: Whaaaat?! … … … … …\n"
+	.string "Brendan: Whaaaat?! … … … … …\n"
 	.string "… … … … … … … …\p"
 	.string "It can't be helped if that's the rule.\p"
 	.string "{PLAYER}, way to go!\n"

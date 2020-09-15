@@ -28,9 +28,9 @@ BattleFrontier_Lounge8_Text_WhatATrainerNeeds: @ 82676E5
 	.string "What's that?$"
 
 BattleFrontier_Lounge8_Text_KnowAboutFrontierBrains: @ 826779C
-	.string "Do you know about the FRONTIER\n"
-	.string "BRAINS?\p"
-	.string "That's what SCOTT calls the seven\n"
+	.string "Do you know about the Frontier\n"
+	.string "Brains?\p"
+	.string "That's what Scott calls the seven\n"
 	.string "special Trainers that run the seven\l"
 	.string "facilities in the Battle Frontier.$"
 

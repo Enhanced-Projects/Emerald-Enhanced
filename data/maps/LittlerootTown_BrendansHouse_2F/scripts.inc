@@ -370,7 +370,7 @@ LRT_BH_GlalieChampionMsg:
     .string "I bet it worked real hard for you\l"
     .string "to get that!\p"
 	.string "Here, take this. It'll make its\n"
-	.string "critical hits REALLY hurt!$"
+	.string "critical hits Really hurt!$"
 
 LRT_BrendanBADEND:
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Sadness and disappointment are\n evident on his face as you turn\l away.)$"

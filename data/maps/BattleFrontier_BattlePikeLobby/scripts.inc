@@ -379,7 +379,7 @@ BattleFrontier_BattlePikeLobby_Text_FailedToSaveBeforeQuitting: @ 825C2E0
 BattleFrontier_BattlePikeLobby_Text_SnatchedVictoryFromQueen: @ 825C383
 	.string "Congratulations…\p"
 	.string "You have snatched victory from the\n"
-	.string "PIKE QUEEN and cleared the event…$"
+	.string "Pike Queen and cleared the event…$"
 
 BattleFrontier_BattlePikeLobby_Text_AwardYouTheseBattlePoints: @ 825C3D9
 	.string "In recognition of your amazing luck,\n"
@@ -422,7 +422,7 @@ BattleFrontier_BattlePikeLobby_Text_ExplainPokenavBagRules: @ 825C644
 
 BattleFrontier_BattlePikeLobby_Text_ExplainHeldItemRules: @ 825C68A
 	.string "During a Battle Choice challenge,\n"
-	.string "any berry or HERB held by Pokémon\l"
+	.string "any berry or Herb held by Pokémon\l"
 	.string "will be effective only once.$"
 
 BattleFrontier_BattlePikeLobby_Text_ExplainMonOrderRules: @ 825C6EB

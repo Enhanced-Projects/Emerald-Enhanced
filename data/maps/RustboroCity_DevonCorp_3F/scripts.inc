@@ -123,7 +123,7 @@ DC_MovePlayer3Scr::
 	end
 
 DC_NoQuest:
-	.string "I'm sorry, but the CEO is busy.\n"
+	.string "I'm sorry, but the Ceo is busy.\n"
 	.string "Please come back later.$"
 
 
@@ -251,9 +251,9 @@ DC_StoneExpShareDriveInfo:
 	.string "production of a one-of-a-kind item\n"
 	.string "...technically speaking however,\p"
 	.string "it's essentially a variant of the\n"
-	.string "EXP Share we produced a few\l"
+	.string "Exp Share we produced a few\l"
 	.string "years back.\p"
-	.string "Dubbed the EXP Drive, its\n"
+	.string "Dubbed the Exp Drive, its\n"
 	.string "function is to accumulate\p"
 	.string "experience gained from pokémon\n"
 	.string "battles, to which it can then be\p"
@@ -283,12 +283,12 @@ DC_NewsMediaLeak:
 	.string "device said to revolutionize\p"
 	.string "pokémon battling and training.\n"
 	.string "I was flabbergasted...how'd they\p"
-	.string "know about it? How could ANYONE\n"
-	.string "ELSE know about it!?\p"
+	.string "know about it? How could Anyone\n"
+	.string "Else know about it!?\p"
 	.string "... ... ...$"
 	
 DC_StufStolenTwice:
-	.string "Not once, but TWICE now has our\n"
+	.string "Not once, but Twice now has our\n"
 	.string "products been snatched right from\l"
 	.string "under our noses...\p"
 	.string "I didn't want to admit it, however\n"
@@ -741,7 +741,7 @@ RC_DG_Delivered:
     .string "him from the Aqua thugs.$"
 	
 RC_DevonThanks:
-	.string "It's a proprietary LIDAR system!\p"
+	.string "It's a proprietary Lidar system!\p"
 	.string "top of the line! Almost priceless!\n"
 	.string "Here, take this Master Ball, it's the only\p"
 	.string "thing I can give that's equal in value.$"
@@ -756,7 +756,7 @@ DC_TalkToCEO: @ 8212C37
 	.string "I can't tell you how much I'm\n"
 	.string "grateful for what you've done.\p"
 	.string "Oh, that's right.\n"
-	.string "Could you go talk to the CEO?\p"
+	.string "Could you go talk to the Ceo?\p"
 	.string "He's behind his desk to our right.$"
 	
 DC_M1CMSG:
@@ -994,23 +994,23 @@ DC_NRYMsg:
 	.string "You've been very valuable to us as\nan employee of Devon.\pWhen you amass more power, I\nwill give you access to a special\pplace that we have been researching.$"
 	
 DC_CEOIntro: @ 8212609
-	.string "I'm MR. STONE, the PRESIDENT of\n"
-	.string "the DEVON CORPORATION.\p"
+	.string "I'm MR. Stone, the President of\n"
+	.string "the Devon Corporation.\p"
 	.string "I'd just got word about you!\p"
 	.string "You saved our staff not just once,\n"
 	.string "but twice!\p"
 	.string "I have a favor to ask of an amazing\n"
 	.string "person like you.\p"
 	.string "I understand that you're delivering\n"
-	.string "a package to SLATEPORT's SHIPYARD.\p"
+	.string "a package to Slateport's Shipyard.\p"
 	.string "Well, on the way, could you stop off in\n"
-	.string "DEWFORD TOWN?\p"
+	.string "Dewford Town?\p"
 	.string "I was hoping that you'd deliver a\n"
-	.string "LETTER to STEVEN in DEWFORD.$"
+	.string "Letter to Steven in Dewford.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis: @ 821277C
-	.string "MR. STONE: Now, you should know that\n"
-	.string "I am a great PRESIDENT.\p"
+	.string "MR. Stone: Now, you should know that\n"
+	.string "I am a great President.\p"
 	.string "So, I'd never be so cheap as to ask\n"
 	.string "a favor for nothing in return.\p"
 	.string "That's why I want you to have this!$"
@@ -1034,29 +1034,29 @@ RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp: @ 8212837
 	.string "up before you go on your way.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare: @ 82129D2
-	.string "MR. STONE: Well, then, {PLAYER},\n"
+	.string "MR. Stone: Well, then, {PLAYER},\n"
 	.string "go with caution and care!$"
 
 RustboroCity_DevonCorp_3F_Text_CountingOnYou: @ 8212A09
-	.string "MR. STONE: I'm counting on you!$"
+	.string "MR. Stone: I'm counting on you!$"
 
 RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter: @ 8212A29
-	.string "MR. STONE: You delivered my LETTER?\n"
+	.string "MR. Stone: You delivered my Letter?\n"
 	.string "Thank you kindly!\p"
 	.string "This is my way of thanking you.\n"
 	.string "It should help you, a Trainer.$"
 
 DC_CEO_ExpShareDesc: @ 8212A9E
-	.string "MR. STONE: A Pokémon holding that\n"
-	.string "EXP. SHARE will be given some of the\l"
-	.string "EXP Points from battle.\p"
-	.string "It will get EXP Points even if it didn't\n"
+	.string "MR. Stone: A Pokémon holding that\n"
+	.string "Exp. Share will be given some of the\l"
+	.string "Exp Points from battle.\p"
+	.string "It will get Exp Points even if it didn't\n"
 	.string "actually battle.\p"
-	.string "I would say EXP. SHARE is quite useful\n"
+	.string "I would say Exp. Share is quite useful\n"
 	.string "for raising weak Pokémon.$"
 
 RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends: @ 8212B78
-	.string "MR. STONE: Since my youth, I've immersed\n"
+	.string "MR. Stone: Since my youth, I've immersed\n"
 	.string "myself in work.\p"
 	.string "Consequently, I'm not familiar with\n"
 	.string "trends and that sort of thing.\p"
@@ -1064,16 +1064,16 @@ RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends: @ 8212B78
 	.string "Trainers in the Pokémon League?$"
 
 RustboroCity_DevonCorp_3F_Text_ThisIs3rdFloorWaitHere: @ 8212C37
-	.string "This is the DEVON CORPORATION's\n"
+	.string "This is the Devon Corporation's\n"
 	.string "third floor.\p"
-	.string "Our PRESIDENT's OFFICE is on\n"
+	.string "Our President's Office is on\n"
 	.string "this floor.\p"
 	.string "Anyway, I can't tell you how much I'm\n"
 	.string "grateful for what you've done.\p"
 	.string "Um… By the way, that parcel\n"
 	.string "you got back for us…\p"
 	.string "Could I get you to deliver that to\n"
-	.string "the SHIPYARD in SLATEPORT?\p"
+	.string "the Shipyard in Slateport?\p"
 	.string "It would be awful if those robbers\n"
 	.string "tried to take it again.\p"
 	.string "Uh… Hehehe, so, uh, could I count\n"
@@ -1082,7 +1082,7 @@ RustboroCity_DevonCorp_3F_Text_ThisIs3rdFloorWaitHere: @ 8212C37
 	.string "Could you wait here a second?$"
 
 RustboroCity_DevonCorp_3F_Text_WordWithPresidentComeWithMe: @ 8212DE8
-	.string "Our PRESIDENT would like to have\n"
+	.string "Our President would like to have\n"
 	.string "a word with you.\p"
 	.string "Please come with me.$"
 
@@ -1090,15 +1090,15 @@ RustboroCity_DevonCorp_3F_Text_PleaseGoAhead: @ 8212E2F
 	.string "Please, go ahead.$"
 
 RustboroCity_DevonCorp_3F_Text_VisitCaptSternShipyard: @ 8212E41
-	.string "If you visit the SHIPYARD in SLATEPORT,\n"
-	.string "you should go see CAPT. STERN.$"
+	.string "If you visit the Shipyard in Slateport,\n"
+	.string "you should go see Capt. Stern.$"
 
 RustboroCity_DevonCorp_3F_Text_RepeatAndTimerHugelyPopular: @ 8212E88
-	.string "DEVON's new products, the REPEAT BALL\n"
-	.string "and TIMER BALL, have become hugely\l"
+	.string "Devon's new products, the Repeat Ball\n"
+	.string "and Timer Ball, have become hugely\l"
 	.string "popular among Trainers.$"
 
 RustboroCity_DevonCorp_3F_Text_RareRocksDisplay: @ 8212EE9
 	.string "It's a collection of rare rocks and\n"
-	.string "stones assembled by the PRESIDENT.$"
+	.string "stones assembled by the President.$"
 

@@ -35,7 +35,7 @@ SSTidalLowerDeck_Text_PhillipDefeat: @ 823C8A0
 	.string "Little bro, I lost!$"
 
 SSTidalLowerDeck_Text_PhillipPostBattle: @ 823C8B4
-	.string "We're the CLEANUP BROTHERS!\p"
+	.string "We're the Cleanup Brothers!\p"
 	.string "The old one dumps the detergent,\n"
 	.string "and the young one does the scrubbing!$"
 
@@ -48,7 +48,7 @@ SSTidalLowerDeck_Text_LeonardDefeat: @ 823C97D
 	.string "Big bro, I lost!$"
 
 SSTidalLowerDeck_Text_LeonardPostBattle: @ 823C98E
-	.string "We're the CLEANUP BROTHERS!\p"
+	.string "We're the Cleanup Brothers!\p"
 	.string "The old one dumps the detergent,\n"
 	.string "and the young one does the scrubbing!$"
 

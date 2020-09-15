@@ -687,12 +687,12 @@ DewfordTown_Gym_EventScript_GymStatue:: @ 81FC9CC
 DewfordTown_Gym_Text_GymGuideAdvice: @ 81FC9D6
 	.string "Hey, how's it going, Champion-\n"
 	.string "bound {PLAYER}?\p"
-	.string "DEWFORD's Gym Leader Brawly commands\n"
+	.string "Dewford's Gym Leader Brawly commands\n"
 	.string "FIGHTING-type Pokémon.\p"
 	.string "Going against him with NORMAL-type\n"
 	.string "Pokémon is asking for trouble.\p"
-	.string "FIGHTING Pokémon will lay a serious\n"
-	.string "smack down on NORMAL Pokémon,\l"
+	.string "Fighting Pokémon will lay a serious\n"
+	.string "smack down on Normal Pokémon,\l"
 	.string "so be careful!\p"
 	.string "What's worse, the Gym is as dark as\n"
 	.string "the ocean floor.\p"
@@ -783,7 +783,7 @@ DewfordTown_Gym_Text_CristianPostBattle: @ 81FCF26
 
 DewfordTown_Gym_Text_BrawlyPreBattle: @ 81FCF44
 	.string "I'm Brawly!\n"
-	.string "DEWFORD's Gym Leader!\p"
+	.string "Dewford's Gym Leader!\p"
 	.string "I've been churned in the rough waves\n"
 	.string "of these parts, and I've grown tough\l"
 	.string "in the pitch-black cave!\p"
@@ -802,18 +802,18 @@ DewfordTown_Gym_Text_ReceivedKnuckleBadge: @ 81FD07D
 	.string "from Brawly.$"
 
 DewfordTown_Gym_Text_KnuckleBadgeInfoTakeThis: @ 81FD0A8
-	.string "The KNUCKLE badge makes all Pokémon\n"
+	.string "The Knuckle badge makes all Pokémon\n"
 	.string "up to Level 30, even those you get in\l"
 	.string "trades, obey without question.\p"
 	.string "And, you'll be able to use the HM move\n"
-	.string "FLASH outside of battle.\p"
-	.string "If you'd like, use this TECHNICAL\n"
-	.string "MACHINE, too.$"
+	.string "Flash outside of battle.\p"
+	.string "If you'd like, use this Technical\n"
+	.string "Machine, too.$"
 
 DewfordTown_Gym_Text_ExplainBulkUp: @ 81FD181
-	.string "That TM08 contains BULK UP.\p"
-	.string "It's a move that raises both ATTACK\n"
-	.string "and DEFENSE stats.\p"
+	.string "That TM08 contains Bulk UP.\p"
+	.string "It's a move that raises both Attack\n"
+	.string "and Defense stats.\p"
 	.string "… … … … … …$"
 
 DewfordTown_Gym_Text_RegisteredBrawly: @ 81FD1E0
@@ -826,10 +826,10 @@ DewfordTown_Gym_Text_BrawlyPostBattle: @ 81FD20D
 	.string "among Trainers one day!$"
 
 DewfordTown_Gym_Text_GymStatue: @ 81FD272
-	.string "DEWFORD TOWN Pokémon Gym$"
+	.string "Dewford Town Pokémon Gym$"
 
 DewfordTown_Gym_Text_GymStatueCertified: @ 81FD28B
-	.string "DEWFORD TOWN Pokémon Gym\p"
+	.string "Dewford Town Pokémon Gym\p"
 	.string "Brawly's Certified Trainers:\n"
 	.string "{PLAYER}$"
 

@@ -234,71 +234,71 @@ BattleFrontier_Lounge3_Text_YouLookToughExplainGambling:: @ 8262061
 
 BattleFrontier_Lounge3_Text_ChallengeBattleTowerSingle:: @ 8262261
 	.string "What I'm looking for is a Trainer who's\n"
-	.string "going to be challenging the BATTLE\l"
-	.string "TOWER's Single Battle ROOMS.\p"
+	.string "going to be challenging the Battle\l"
+	.string "Tower's Single Battle Rooms.\p"
 	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleTowerDouble:: @ 826230D
 	.string "What I'm looking for is a Trainer who's\n"
-	.string "going to be challenging the BATTLE\l"
-	.string "TOWER's Double Battle ROOMS.\p"
+	.string "going to be challenging the Battle\l"
+	.string "Tower's Double Battle Rooms.\p"
 	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleTowerMulti:: @ 82623B9
 	.string "What I'm looking for is a Trainer who's\n"
-	.string "going to be challenging the BATTLE\l"
-	.string "TOWER's MULTI BATTLE ROOMS.\p"
+	.string "going to be challenging the Battle\l"
+	.string "Tower's Multi Battle Rooms.\p"
 	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleDomeSingle:: @ 8262464
 	.string "What I'm looking for is a Trainer who's\n"
-	.string "going to be entering the BATTLE\l"
-	.string "DOME's Single Battle Tourney.\p"
+	.string "going to be entering the Battle\l"
+	.string "Dome's Single Battle Tourney.\p"
 	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleDomeDouble:: @ 826250E
 	.string "What I'm looking for is a Trainer who's\n"
-	.string "going to be entering the BATTLE\l"
-	.string "DOME's Double Battle Tourney.\p"
+	.string "going to be entering the Battle\l"
+	.string "Dome's Double Battle Tourney.\p"
 	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleFactorySingle:: @ 82625B8
 	.string "What I'm looking for is a Trainer who's\n"
-	.string "going to be entering the BATTLE\l"
-	.string "FACTORY's Battle Swap Single Tourney.\p"
+	.string "going to be entering the Battle\l"
+	.string "Factory's Battle Swap Single Tourney.\p"
 	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleFactoryDouble:: @ 826266A
 	.string "What I'm looking for is a Trainer who's\n"
-	.string "going to be entering the BATTLE\l"
-	.string "FACTORY's Battle Swap Double Tourney.\p"
+	.string "going to be entering the Battle\l"
+	.string "Factory's Battle Swap Double Tourney.\p"
 	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattlePalaceSingle:: @ 826271C
 	.string "What I'm looking for is a Trainer who's\n"
-	.string "going to be challenging the BATTLE\l"
-	.string "PALACE's Single Battle HALLS.\p"
+	.string "going to be challenging the Battle\l"
+	.string "Palace's Single Battle Halls.\p"
 	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattlePalaceDouble:: @ 82627C9
 	.string "What I'm looking for is a Trainer who's\n"
-	.string "going to be challenging the BATTLE\l"
-	.string "PALACE's Double Battle HALLS.\p"
+	.string "going to be challenging the Battle\l"
+	.string "Palace's Double Battle Halls.\p"
 	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
 BattleFrontier_Lounge3_Text_ChallengeBattleArena:: @ 8262876
 	.string "What I'm looking for is a Trainer who's\n"
-	.string "going to be entering the BATTLE\l"
-	.string "ARENA's Set KO Tourney.\p"
+	.string "going to be entering the Battle\l"
+	.string "Arena's Set KO Tourney.\p"
 	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
@@ -311,8 +311,8 @@ BattleFrontier_Lounge3_Text_ChallengeBattlePike:: @ 826291A
 
 BattleFrontier_Lounge3_Text_ChallengeBattlePyramid:: @ 82629BC
 	.string "What I'm looking for is a Trainer who's\n"
-	.string "going to be entering the BATTLE\l"
-	.string "PYRAMID's Battle Quest.\p"
+	.string "going to be entering the Battle\l"
+	.string "Pyramid's Battle Quest.\p"
 	.string "But so far, I haven't seen a Trainer\n"
 	.string "that has that winning quality.$"
 
@@ -344,21 +344,21 @@ BattleFrontier_Lounge3_Text_ThanksOffYouGo:: @ 8262BE0
 
 BattleFrontier_Lounge3_Text_GetToBattleTowerSingle:: @ 8262C04
 	.string "Get to the Battle Tower's\n"
-	.string "Single Battle ROOMS pronto!\p"
+	.string "Single Battle Rooms pronto!\p"
 	.string "It's a must-win situation!\n"
 	.string "Don't blow your chance!\l"
 	.string "Both of our futures depend on you!$"
 
 BattleFrontier_Lounge3_Text_GetToBattleTowerDouble:: @ 8262C90
 	.string "Get to the Battle Tower's\n"
-	.string "Double Battle ROOMS pronto!\p"
+	.string "Double Battle Rooms pronto!\p"
 	.string "It's a must-win situation!\n"
 	.string "Don't blow your chance!\l"
 	.string "Both of our futures depend on you!$"
 
 BattleFrontier_Lounge3_Text_GetToBattleTowerMulti:: @ 8262D1C
 	.string "Get to the Battle Tower's\n"
-	.string "MULTI BATTLE ROOMS pronto!\p"
+	.string "Multi Battle Rooms pronto!\p"
 	.string "It's a must-win situation!\n"
 	.string "Don't blow your chance!\l"
 	.string "Both of our futures depend on you!$"
@@ -393,14 +393,14 @@ BattleFrontier_Lounge3_Text_GetToBattleFactoryDouble:: @ 8262F56
 
 BattleFrontier_Lounge3_Text_GetToBattlePalaceSingle:: @ 8262FEB
 	.string "Get to the Battle Palace's\n"
-	.string "Single Battle HALLS pronto!\p"
+	.string "Single Battle Halls pronto!\p"
 	.string "It's a must-win situation!\n"
 	.string "Don't blow your chance!\l"
 	.string "Both of our futures depend on you!$"
 
 BattleFrontier_Lounge3_Text_GetToBattlePalaceDouble:: @ 8263078
 	.string "Get to the Battle Palace's\n"
-	.string "Double Battle HALLS pronto!\p"
+	.string "Double Battle Halls pronto!\p"
 	.string "It's a must-win situation!\n"
 	.string "Don't blow your chance!\l"
 	.string "Both of our futures depend on you!$"

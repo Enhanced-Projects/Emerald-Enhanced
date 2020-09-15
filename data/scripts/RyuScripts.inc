@@ -30,7 +30,7 @@ RyuExpBatteryContd::
 	goto RS_SelectSlot
 
 RyuExpBatteryDevModeMsg::
-	.string "You have Dev Mode active.\nWould you like to max out EXP Drive?$"
+	.string "You have Dev Mode active.\nWould you like to max out Exp Drive?$"
 
 RyuExpBatteryDevMode::
 	msgbox RyuExpBatteryDevModeMsg MSGBOX_YESNO
@@ -144,7 +144,7 @@ RS_ExpEarningDisabled:
 	.string "Experience gain in battle is now\ndisabled.\pThe Drive will continue to collect\nEXP.$"
 
 RS_ExpWillStillBeEarned:
-	.string "Battle EXP will still be earned.$"
+	.string "Battle Exp will still be earned.$"
 
 
 
@@ -229,7 +229,7 @@ RDBM_ResetGCMS::
 	end
 
 RDBM_GCMSReset:
-	.string "GCMS has been reset.$"
+	.string "Gcms has been reset.$"
 
 RDBM_ExitResetMenu::
 	msgbox RDBM_Exiting MSGBOX_DEFAULT

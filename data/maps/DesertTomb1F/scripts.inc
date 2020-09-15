@@ -129,6 +129,6 @@ NM10_CrystalOnixSpeech:
 NM10_NotTooWeak:
     .string "... ... ... ...\p"
     .string "Wait...\p"
-    .string "IT MOVED!?$"
+    .string "IT Moved!?$"
 
 

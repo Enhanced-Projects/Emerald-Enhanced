@@ -130,7 +130,7 @@ LavaridgeTown_EventScript_HerbShopSign:: @ 81EA7B7
 	end
 
 LavaridgeTown_Text_HaveEggWillYouTakeIt: @ 81EAB80
-	.string "I have here an EGG.\p"
+	.string "I have here an Egg.\p"
 	.string "I'd hoped to hatch it by covering it in\n"
 	.string "hot sand by the hot springs.\l"
 	.string "But that doesn't seem to be enough…\p"
@@ -140,27 +140,27 @@ LavaridgeTown_Text_HaveEggWillYouTakeIt: @ 81EAB80
 	.string "You are a Trainer, yes?\n"
 	.string "And your Pokémon radiate vitality.\p"
 	.string "So, what say you?\n"
-	.string "Will you take this EGG to hatch?$"
+	.string "Will you take this Egg to hatch?$"
 
 LavaridgeTown_Text_HopeYoullWalkPlentyWithEgg: @ 81EACC0
 	.string "Good! I hope you'll walk plenty with\n"
-	.string "this here EGG!$"
+	.string "this here Egg!$"
 
 LavaridgeTown_Text_ReceivedTheEgg: @ 81EACF4
 	.string "{PLAYER} received the EGG.$"
 
 LavaridgeTown_Text_NoRoomForThisEgg: @ 81EAD09
 	.string "Oh? You've too many Pokémon.\n"
-	.string "There's no room for this EGG…$"
+	.string "There's no room for this Egg…$"
 
 LavaridgeTown_Text_AsYouWishThen: @ 81EAD44
 	.string "As you wish, then…\p"
 	.string "If you have a change of heart about\n"
-	.string "hatching this EGG, I will be here.$"
+	.string "hatching this Egg, I will be here.$"
 
 LavaridgeTown_Text_EverySoOftenEggFoundAtDayCare: @ 81EAD9E
-	.string "Every so often, an EGG will be found at\n"
-	.string "the Pokémon DAY CARE.\p"
+	.string "Every so often, an Egg will be found at\n"
+	.string "the Pokémon Day Care.\p"
 	.string "Or at least that's how the rumor goes.$"
 
 LavaridgeTown_Text_HotSpringsNeverRunDry: @ 81EAE03
@@ -203,17 +203,17 @@ LavaridgeTown_Text_HotSpringsClaims: @ 81EB092
 	.string "money…$"
 
 LavaridgeTown_Text_TownSign: @ 81EB12B
-	.string "LAVARIDGE TOWN\p"
-	.string "“Pokémon CENTER HOT SPRINGS\n"
+	.string "Lavaridge Town\p"
+	.string "“Pokémon Center Hot Springs\n"
 	.string "An excellent place for relaxing!”$"
 
 LavaridgeTown_Text_GymSign: @ 81EB178
-	.string "LAVARIDGE TOWN Pokémon Gym\n"
-	.string "LEADER: Flannery\l"
+	.string "Lavaridge Town Pokémon Gym\n"
+	.string "Leader: Flannery\l"
 	.string "“One with a fiery passion that burns!”$"
 
 LavaridgeTown_Text_HerbShopSign: @ 81EB1CB
-	.string "Pokémon HERB SHOP\n"
+	.string "Pokémon Herb Shop\n"
 	.string "“Bitter taste--better cure!”$"
 
 

@@ -177,11 +177,11 @@ FT_LanetteNormalIntro: @ 8200C6B
 FallarborTown_PokemonCenter_1F_Text_FossilManiacEdgeOfTown: @ 8200E22
 	.string "I wonder what Pokémon looked like\n"
 	.string "long, long ago?\p"
-	.string "Maybe the FOSSIL MANIAC at the edge\n"
+	.string "Maybe the Fossil Maniac at the edge\n"
 	.string "of town will know.$"
 
 FallarborTown_PokemonCenter_1F_Text_PlantHardyTrees: @ 8200E8B
-	.string "In the fields of FALLARBOR, we plant\n"
+	.string "In the fields of Fallarbor, we plant\n"
 	.string "seedlings of hardy trees that thrive\l"
 	.string "even in volcanic ash.$"
 

@@ -584,7 +584,7 @@ Route120_Text_StevenGiveDevonScope: @ 81F5BAF
 	.string "Steven: I see…\n"
 	.string "Your battle style is intriguing.\p"
 	.string "Your Pokémon have obviously grown\n"
-	.string "since I first met you in DEWFORD.\p"
+	.string "since I first met you in Dewford.\p"
 	.string "I'd like you to have this\n"
 	.string "Devon Scope.\p"
 	.string "Who knows, there may be other\n"

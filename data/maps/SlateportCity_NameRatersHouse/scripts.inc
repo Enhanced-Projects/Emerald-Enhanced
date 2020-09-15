@@ -65,7 +65,7 @@ SlateportCity_NameRatersHouse_EventScript_NewNameDifferent:: @ 8209B84
 	end
 
 SlateportCity_NameRatersHouse_Text_PleasedToRateMonNickname: @ 8209B8E
-	.string "Hi, hi! I'm the NAME RATER!\n"
+	.string "Hi, hi! I'm the Name Rater!\n"
 	.string "I'm the fortune-teller of names!\p"
 	.string "I shall be pleased to rate your\n"
 	.string "Pokémon's nickname.$"
@@ -110,5 +110,5 @@ SlateportCity_NameRatersHouse_Text_MagnificentName: @ 8209DF0
 
 SlateportCity_NameRatersHouse_Text_ThatIsMerelyAnEgg: @ 8209E74
 	.string "Now, now.\n"
-	.string "That is merely an EGG!$"
+	.string "That is merely an Egg!$"
 

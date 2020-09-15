@@ -267,9 +267,9 @@ SlateportCity_PokemonFanClub_EventScript_Azumarill:: @ 820A220
 	end
 
 SlateportCity_PokemonFanClub_Text_MeetChairman: @ 820A233
-	.string "Er-hem! I am the CHAIRMAN of the\n"
-	.string "Pokémon FAN CLUB!\p"
-	.string "Being the CHAIRMAN, I am naturally\n"
+	.string "Er-hem! I am the Chairman of the\n"
+	.string "Pokémon Fan Club!\p"
+	.string "Being the Chairman, I am naturally\n"
 	.string "the most important!\p"
 	.string "No one can best me when it comes\n"
 	.string "to raising Pokémon. No one!\p"
@@ -337,27 +337,27 @@ SlateportCity_PokemonFanClub_Text_MonMostImpressiveGiveItThis: @ 820A795
 	.string "it would grow even better! Indeed!$"
 
 SlateportCity_PokemonFanClub_Text_ExplainRedScarf: @ 820A827
-	.string "Let a Pokémon hold that RED SCARF.\p"
+	.string "Let a Pokémon hold that Red Scarf.\p"
 	.string "Everyone will recognize the coolness\n"
 	.string "of that Pokémon!$"
 
 SlateportCity_PokemonFanClub_Text_ExplainBlueScarf: @ 820A880
-	.string "Let a Pokémon hold that BLUE SCARF.\p"
+	.string "Let a Pokémon hold that Blue Scarf.\p"
 	.string "Its beauty will be accentuated much\n"
 	.string "more than now!$"
 
 SlateportCity_PokemonFanClub_Text_ExplainPinkScarf: @ 820A8D7
-	.string "Let a Pokémon hold that PINK SCARF.\p"
+	.string "Let a Pokémon hold that Pink Scarf.\p"
 	.string "It will draw out the cuteness of\n"
 	.string "the Pokémon some more!$"
 
 SlateportCity_PokemonFanClub_Text_ExplainGreenScarf: @ 820A933
-	.string "Let a Pokémon hold that GREEN SCARF.\p"
+	.string "Let a Pokémon hold that Green Scarf.\p"
 	.string "That will enhance the\n"
 	.string "smartness of Pokémon!$"
 
 SlateportCity_PokemonFanClub_Text_ExplainYellowScarf: @ 820A984
-	.string "Let a Pokémon hold that YELLOW SCARF.\p"
+	.string "Let a Pokémon hold that Yellow Scarf.\p"
 	.string "It will bolster your Pokémon's\n"
 	.string "toughness so much more!$"
 
@@ -381,7 +381,7 @@ SlateportCity_PokemonFanClub_Text_ShowMePokemonThatLoveYou: @ 820AA77
 SlateportCity_PokemonFanClub_Text_PokemonAdoresYou: @ 820AB63
 	.string "Your Pokémon really adores you.\p"
 	.string "For you, a most compassionate\n"
-	.string "Trainer, a gift from the FAN CLUB!$"
+	.string "Trainer, a gift from the Fan Club!$"
 
 SlateportCity_PokemonFanClub_Text_TreatPokemonWithLove: @ 820ABC4
 	.string "Pokémon are very sensitive to\n"
@@ -401,14 +401,14 @@ SlateportCity_PokemonFanClub_Text_MonEnjoyedProtein: @ 820ACF9
 	.string "Do Pokémon enjoy having items used\n"
 	.string "on them?\p"
 	.string "Mine acted really happy when I gave\n"
-	.string "it some PROTEIN.$"
+	.string "it some Protein.$"
 
 SlateportCity_PokemonFanClub_Text_Skitty: @ 820AD5A
-	.string "SKITTY: Fffnyaaaah…$"
+	.string "Skitty: Fffnyaaaah…$"
 
 SlateportCity_PokemonFanClub_Text_Zigzagoon: @ 820AD6E
-	.string "ZIGZAGOON: Kyuuu…$"
+	.string "Zigzagoon: Kyuuu…$"
 
 SlateportCity_PokemonFanClub_Text_Azumarill: @ 820AD80
-	.string "AZUMARILL: Marimari?$"
+	.string "Azumarill: Marimari?$"
 

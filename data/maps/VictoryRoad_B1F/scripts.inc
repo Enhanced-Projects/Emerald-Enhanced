@@ -28,7 +28,7 @@ VictoryRoad_B1F_EventScript_Halle:: @ 8236541
 
 VictoryRoad_B1F_Text_SamuelIntro: @ 8236558
 	.string "The thought that I'm getting closer to\n"
-	.string "the Pokémon LEAGUE…\p"
+	.string "the Pokémon League…\p"
 	.string "I'm getting stage fright…$"
 
 VictoryRoad_B1F_Text_SamuelDefeat: @ 82365AD
@@ -83,7 +83,7 @@ VictoryRoad_B1F_Text_HalleDefeat: @ 823683B
 	.string "Wonderful!$"
 
 VictoryRoad_B1F_Text_HallePostBattle: @ 823684C
-	.string "Sure, this is VICTORY ROAD.\p"
+	.string "Sure, this is Victory Road.\p"
 	.string "But it's not all that different from\n"
 	.string "the path you've taken so far.\p"
 	.string "Try to enjoy things the rest of\n"

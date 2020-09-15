@@ -287,7 +287,7 @@ LC_AH_ShellyQuery:
 	.string "want to trade it in for a reward?$"
 	
 LC_AH_TS_Given:
-	.string "Good choice. This LIDAR system will make\p"
+	.string "Good choice. This Lidar system will make\p"
 	.string "our underwater expeditions a breeze!\n"
 	.string "Here's your reward for supporting\p"
 	.string "our cause.$"
@@ -921,7 +921,7 @@ LC_AH_FirstNight:
 	.string "I think we're going to start doing\n"
 	.string "legitimate business. Probably\p"
 	.string "seafloor tours, since we have that\n"
-	.string "submarine with the LIDAR on it.$"
+	.string "submarine with the Lidar on it.$"
 
 LC_AH_GoToQuarters:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}I was hoping we could spend\n"

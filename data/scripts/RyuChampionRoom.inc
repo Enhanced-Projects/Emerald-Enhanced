@@ -648,7 +648,7 @@ RyuGivesMawilite:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ryu: Nice! I was cheating and\n"
 	.string "you still won!\p"
 	.string "Congratulations on beating the final\n"
-	.string "boss of EMERALD ENHANCED.\p"
+	.string "boss of Emerald Enhanced.\p"
 	.string "Here, take this mega stone, it's\n"
 	.string "for my favorite pokemon!$"
 
@@ -814,7 +814,7 @@ FDawnMsg:
     .string "glad that I can be here with you.\p"
     .string "It's so surreal, being here in the\n"
     .string "Hoenn Champion room...\p"
-    .string "Well... LET'S GO!!$"
+    .string "Well... Let'S GO!!$"
 
 FBrendanMsg:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Not gonna lie, I expected\n"

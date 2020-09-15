@@ -347,12 +347,12 @@ BattleFrontier_OutsideWest_Text_ThisIsBattleTower: @ 823D7A6
 
 BattleFrontier_OutsideWest_Text_MayISeeYourTicket: @ 823D808
 	.string "Hello, are you here for the ferry?\n"
-	.string "May I see your TICKET?$"
+	.string "May I see your Ticket?$"
 
 BattleFrontier_OutsideWest_Text_MustHaveTicketToBoard: @ 823D842
 	.string "{PLAYER} doesn't have the TICKET…\p"
 	.string "I'm terribly sorry.\p"
-	.string "You must have a TICKET to board\n"
+	.string "You must have a Ticket to board\n"
 	.string "the ferry.$"
 
 BattleFrontier_OutsideWest_Text_WhereWouldYouLikeToGo: @ 823D89D
@@ -361,10 +361,10 @@ BattleFrontier_OutsideWest_Text_WhereWouldYouLikeToGo: @ 823D89D
 	.string "And where would you like to go?$"
 
 BattleFrontier_OutsideWest_Text_SlateportItIs: @ 823D8F2
-	.string "SLATEPORT CITY it is, then!$"
+	.string "Slateport City it is, then!$"
 
 BattleFrontier_OutsideWest_Text_LilycoveItIs: @ 823D90E
-	.string "LILYCOVE CITY it is, then!$"
+	.string "Lilycove City it is, then!$"
 
 BattleFrontier_OutsideWest_Text_SailWithUsAnotherTime: @ 823D929
 	.string "Please sail with us another time!$"
@@ -420,8 +420,8 @@ BattleFrontier_OutsideWest_Text_WhosRaisingThoseRentalMons: @ 823DC36
 	.string "Who's raising those rental Pokémon?$"
 
 BattleFrontier_OutsideWest_Text_ScaredOfPikeBecauseSeviper: @ 823DCB0
-	.string "I'm scared of going into the BATTLE\n"
-	.string "PIKE because of SEVIPER…\p"
+	.string "I'm scared of going into the Battle\n"
+	.string "Pike because of Seviper…\p"
 	.string "B-but I came all the way here, so I will\n"
 	.string "try to conquer everything!\l"
 	.string "…Shudder…$"
@@ -467,7 +467,7 @@ BattleFrontier_OutsideWest_Text_DomeIsHereGrandpa: @ 823DF7D
 
 BattleFrontier_OutsideWest_Text_WontLetGentlemenBeatMe: @ 823DFBF
 	.string "Ah, so this here is the Battle Dome?\n"
-	.string "I won't let GENTLEMEN beat me!\p"
+	.string "I won't let Gentlemen beat me!\p"
 	.string "But where is the entrance?$"
 
 BattleFrontier_OutsideWest_Text_NothingHereNotLongAgo: @ 823E01E
@@ -477,8 +477,8 @@ BattleFrontier_OutsideWest_Text_NothingHereNotLongAgo: @ 823E01E
 	.string "I'll bring my mother out to see this.$"
 
 BattleFrontier_OutsideWest_Text_FinallyArrivedAtFrontier: @ 823E09F
-	.string "I've finally arrived at the BATTLE\n"
-	.string "FRONTIER!\p"
+	.string "I've finally arrived at the Battle\n"
+	.string "Frontier!\p"
 	.string "I'm sure to grab attention with\n"
 	.string "my looks and ability!$"
 
@@ -512,7 +512,7 @@ BattleFrontier_OutsideWest_Text_DomeAceLookedBecauseOfMyCheering: @ 823E2E9
 	.string "Pfft!\p"
 	.string "That only happened because\n"
 	.string "I happened to be sitting next to you!\p"
-	.string "The DOME ACE only looked our way\n"
+	.string "The Dome Ace only looked our way\n"
 	.string "because my cheering was so loud!$"
 
 BattleFrontier_OutsideWest_Text_DomeAceIsMine: @ 823E37E
@@ -520,7 +520,7 @@ BattleFrontier_OutsideWest_Text_DomeAceIsMine: @ 823E37E
 	.string "Keep that racket down!\p"
 	.string "You fair-weather fans should stick\n"
 	.string "to cheering for some Gym Leader!\p"
-	.string "The DOME ACE is mine!\n"
+	.string "The Dome Ace is mine!\n"
 	.string "The only idol for me!$"
 
 BattleFrontier_OutsideWest_Text_FansOverThereUsedToBeTrainers: @ 823E410

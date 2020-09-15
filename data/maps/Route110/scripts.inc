@@ -730,7 +730,7 @@ Route110_Text_WeCantTalkAboutAquaActivities: @ 81EFB5D
 	.string "We can't talk about them yet.$"
 
 Route110_Text_KickUpARuckus: @ 81EFB93
-	.string "I want to get going to SLATEPORT and\n"
+	.string "I want to get going to Slateport and\n"
 	.string "kick up a ruckus!$"
 
 Route110_Text_MyFirstJobInAqua: @ 81EFBCA
@@ -798,8 +798,8 @@ Route110_Text_BrendanExplainWaystone: @ 81EFF1C
 	.string "Keep training!$"
 
 Route110_Text_RideBikeAtFullSpeed: @ 81EFFC3
-	.string "Wouldn't it be great to ride a BIKE\n"
-	.string "at full speed on CYCLING ROAD?$"
+	.string "Wouldn't it be great to ride a Bike\n"
+	.string "at full speed on Cycling Road?$"
 
 Route110_Text_HairStreamsBehindMe: @ 81F0006
 	.string "How do you like the way my raven-\n"
@@ -807,18 +807,18 @@ Route110_Text_HairStreamsBehindMe: @ 81F0006
 	.string "I grew my hair out just for that.$"
 
 Route110_Text_YouGotBikeFromRydel: @ 81F006A
-	.string "Oh, hey, you got that BIKE from RYDEL!\p"
+	.string "Oh, hey, you got that Bike from Rydel!\p"
 	.string "Oh, it's glaringly obvious.\n"
 	.string "It says right on your bike…\p"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL…\n"
+	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\n"
+	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\p"
+	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\n"
+	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\p"
+	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\n"
+	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\p"
+	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\n"
+	.string "Rydel, Rydel, Rydel, Rydel, Rydel,\p"
+	.string "Rydel, Rydel, Rydel, Rydel, Rydel…\n"
 	.string "That name's everywhere.\p"
 	.string "You should ride it around all over\n"
 	.string "the place--it's good advertising!$"
@@ -829,27 +829,27 @@ Route110_Text_TwoRoads: @ 81F0261
 	.string "Perhaps that is right and fair.$"
 
 Route110_Text_WalkOnTheLowRoad: @ 81F02CA
-	.string "I don't have a BIKE, so I'll take\n"
+	.string "I don't have a Bike, so I'll take\n"
 	.string "a leisurely walk on the low road.$"
 
 Route110_Text_BikeTechniques: @ 81F030E
-	.string "Learning techniques will make BIKE\n"
+	.string "Learning techniques will make Bike\n"
 	.string "riding even more fun.\p"
 	.string "There are some places that you can\n"
-	.string "reach only by using a BIKE technique.$"
+	.string "reach only by using a Bike technique.$"
 
 Route110_Text_WhichShouldIChoose: @ 81F0390
 	.string "Which should I choose?\p"
-	.string "Make a beeline for MAUVILLE on\n"
-	.string "CYCLING ROAD, or take the low road\l"
+	.string "Make a beeline for Mauville on\n"
+	.string "Cycling Road, or take the low road\l"
 	.string "and look for Pokémon?$"
 
 Route110_Text_SlateportCitySign: @ 81F0812
-	.string "ROUTE 110\n"
+	.string "Route 110\n"
 	.string "{DOWN_ARROW} SLATEPORT CITY$"
 
 Route110_Text_CyclingRoadSign: @ 81F082D
-	.string "SEASIDE CYCLING ROAD$"
+	.string "Seaside Cycling Road$"
 
 Route110_Text_AquaWasHere: @ 81F0842
 	.string "“Team Aqua was here!”\p"
@@ -859,14 +859,14 @@ Route110_Text_AquaWasHere: @ 81F0842
 	.string "says now.$"
 
 Route110_Text_Route103Sign: @ 81F08CD
-	.string "ROUTE 110\n"
+	.string "Route 110\n"
 	.string "{LEFT_ARROW} ROUTE 103$"
 
 Route110_Text_SeasideParkingSign: @ 81F08E3
-	.string "SEASIDE PARKING$"
+	.string "Seaside Parking$"
 
 Route110_Text_MauvilleCitySign: @ 81F08F3
-	.string "ROUTE 110\n"
+	.string "Route 110\n"
 	.string "{UP_ARROW} MAUVILLE CITY$"
 
 Route110_Text_TrainerTipsPrlzSleep: @ 81F090D
@@ -879,19 +879,19 @@ Route110_Text_TrainerTipsPrlzSleep: @ 81F090D
 Route110_Text_TrainerTipsRegisterItems: @ 81F0992
 	.string "Trainer Tips\p"
 	.string "The items in the Pack can be reorganized\n"
-	.string "by pressing SELECT.$"
+	.string "by pressing Select.$"
 
 Route110_Text_TrickHouseSign: @ 81F09DB
 	.string "“Three steps {RIGHT_ARROW} and two steps {UP_ARROW}\n"
-	.string "to reach the wondrous TRICK HOUSE.”$"
+	.string "to reach the wondrous Trick House.”$"
 
 Route110_Text_BestRecord: @ 81F0A1E
-	.string "THE BEST RECORD TO DATE…\p"
+	.string "The Best Record TO Date…\p"
 	.string "No. of collisions: {STR_VAR_1}\p"
 	.string "Elapsed time: {STR_VAR_2}$"
 
 Route110_Text_ThereIsNoRecord: @ 81F0A5E
-	.string "THE BEST RECORD TO DATE…\p"
+	.string "The Best Record TO Date…\p"
 	.string "No one seems to have taken the\n"
 	.string "challenge. There is no record…$"
 
@@ -905,7 +905,7 @@ Route110_Text_HeardYouInstallMatchCall: @ 81F0AFF
 	.string "You two are running separately.\l"
 	.string "Well, that's fine.\p"
 	.string "Oh, yes, I heard that your Pokénav\n"
-	.string "had the MATCH CALL system installed.\p"
+	.string "had the Match Call system installed.\p"
 	.string "Well, then, I should register you in\n"
 	.string "my Pokénav as well.\p"
 	.string "That way, even when we're apart,\n"

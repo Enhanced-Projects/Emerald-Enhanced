@@ -480,7 +480,7 @@ GCMS_NotEnoughPartyMons::
 	end
 	
 GCMS_YouHaveReached:
-	.string "You have reached the maximum\nachievable GCV. No more mons may\lbe consigned.$"
+	.string "You have reached the maximum\nachievable Gcv. No more mons may\lbe consigned.$"
 	
 GCMS_IntroMsg:
 	.string "Welcome to the\n{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Code Mapping System.\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Please make a selection.$"
