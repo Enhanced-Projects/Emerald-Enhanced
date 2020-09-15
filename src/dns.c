@@ -14,7 +14,7 @@
 /********************************************************
  * You can customize the DNS by editing the following   *
  * timelapses and the filters used to change the        *
- * palette colours.                                     *
+ * palette colors.                                     *
  * In addition to that, you can also configure which    *
  * palettes are affected by the system, as well as      *
  * establishing sprite palettes exceptions by its TAG.  *
@@ -35,11 +35,11 @@ enum
 };
 
 /* End hours for each of the timelapses */
-#define MIDNIGHT_END_HOUR   7       //00 - 07
-#define DAWN_END_HOUR       8       //07 - 08
-#define DAY_END_HOUR        19      //08 - 19
-#define SUNSET_END_HOUR     20      //19 - 20
-#define NIGHTFALL_END_HOUR  21      //20 - 21
+#define MIDNIGHT_END_HOUR   7      //00 - 07
+#define DAWN_END_HOUR       9       //07 - 08
+#define DAY_END_HOUR        17      //08 - 19
+#define SUNSET_END_HOUR     18      //19 - 20
+#define NIGHTFALL_END_HOUR  20      //20 - 21
 #define NIGHT_END_HOUR      0       //21 - 00
 
 /* Start and end hour of the lightning system.
@@ -47,48 +47,38 @@ enum
 #define LIGHTNING_START_HOUR    NIGHTFALL_END_HOUR
 #define LIGHTNING_END_HOUR      MIDNIGHT_END_HOUR
 
-/* This array contains the colours used for the windows or          *
+/* This array contains the colors used for the windows or          *
  * other tiles that have to be illuminated at night.                *
  * You can add or remove light slots as you whish, each entry       *
- * requires the paletteNum and the colourNum of each colour slot,   *
- * as well as the RGB 15 bit colour that's gonna be used as         *
- * "light colour".                                                  */
-const struct LightingColour gLightingColours[] =
+ * requires the paletteNum and the colorNum of each color slot,   *
+ * as well as the RGB 15 bit color that's gonna be used as         *
+ * "light color".                                                  */
+const struct LightingColor gLightingColors[] =
 {
     {
         .paletteNum = 6,
-        .colourNum = 10,
-        .lightColour = RGB2(30, 30, 5),
+        .colorNum = 10,
+        .lightColor = RGB2(30, 30, 5),
     },
     {
         .paletteNum = 6,
-        .colourNum = 9,
-        .lightColour = RGB2(30, 30, 5),
-    },
-    {
-        .paletteNum = 9,
-        .colourNum = 10,
-        .lightColour = RGB2(30, 30, 5),
-    },
-    {
-        .paletteNum = 9,
-        .colourNum = 9,
-        .lightColour = RGB2(30, 30, 5),
+        .colorNum = 9,
+        .lightColor = RGB2(30, 30, 5),
     },
     {
         .paletteNum = 8,
-        .colourNum = 10,
-        .lightColour = RGB2(30, 30, 5),
+        .colorNum = 10,
+        .lightColor = RGB2(30, 30, 5),
     },
     {
         .paletteNum = 8,
-        .colourNum = 9,
-        .lightColour = RGB2(30, 30, 5),
+        .colorNum = 9,
+        .lightColor = RGB2(30, 30, 5),
     },
     {
         .paletteNum = 5,
-        .colourNum = 10,
-        .lightColour = RGB2(30, 30, 5),
+        .colorNum = 10,
+        .lightColor = RGB2(30, 30, 5),
     },
 };
 
@@ -183,18 +173,18 @@ const struct DnsPalExceptions gCombatPalExceptions =
 
 
   /*******************************************************/
- /*************    DNS Colour Filters     ***************/
+ /*************    DNS Color Filters     ***************/
 /*******************************************************/
-/* DNS filters are actual 15bit RGB colours.            *
- * This colours R - G - B channels are substracted from *
- * the original colour in the palette buffer during the *
+/* DNS filters are actual 15bit RGB colors.            *
+ * This colors R - G - B channels are substracted from *
+ * the original color in the palette buffer during the *
  * transfer from the buffer to the palette RAM.         *
  *                                                      *
  *  [BUFFER] -> (Value - Filter) -> [PAL_RAM]           *
  *                                                      *
  * This means that you shouln't use too high values for *
  * RGB channels in the filters. Otherwie, the channels  *
- * will easily reach 0, giving you plain colours.       *
+ * will easily reach 0, giving you plain colors.       *
  * I Suggest to not use channels with a value above 16. *
  *                                                      *
  * Feel free to experiment with your own filters.       *
@@ -359,8 +349,8 @@ const u16 gPaletteTagExceptions[] =
 
 
 //Functions
-static u16 DnsApplyFilterToColour(u16 colour, u16 filter);
-static u16 DnsApplyProportionalFilterToColour(u16 colour, u16 filter);
+static u16 DnsApplyFilterToColor(u16 color, u16 filter);
+static u16 DnsApplyProportionalFilterToColor(u16 color, u16 filter);
 static void DoDnsLightning();
 static u16 GetDNSFilter();
 static bool8 IsMapDNSException();
@@ -394,13 +384,13 @@ void DnsTransferPlttBuffer(void *src, void *dest)
     }
 }
 
-/* Applies filter to palette colours, stores new palettes in EWRAM buffer.   *
+/* Applies filter to palette colors, stores new palettes in EWRAM buffer.   *
  * It must be called from CB2 if the DNS wants to be used (similar to        *
  * TransferPlttBuffer)  in VBlank callbacks                                  */
 void DnsApplyFilters()
 {
     u8 palNum, colNum;
-    u16 colour, rgbFilter;
+    u16 color, rgbFilter;
     struct DnsPalExceptions palExceptionFlags;
 
     rgbFilter = GetDNSFilter();
@@ -410,7 +400,7 @@ void DnsApplyFilters()
     for (palNum = 0; palNum < 32; palNum++)
         if (palExceptionFlags.pal[palNum] && (palNum < 15 || !IsSpritePaletteTagDnsException(palNum - 16)))
             for (colNum = 0; colNum < 16; colNum++) //Transfer filtered palette to buffer
-                sDnsPaletteDmaBuffer[palNum * 16 + colNum] = DnsApplyProportionalFilterToColour(gPlttBufferFaded[palNum * 16 + colNum], rgbFilter);
+                sDnsPaletteDmaBuffer[palNum * 16 + colNum] = DnsApplyProportionalFilterToColor(gPlttBufferFaded[palNum * 16 + colNum], rgbFilter);
         else
             for (colNum = 0; colNum < 16; colNum++)  //Transfers palette to buffer without filtering
                 sDnsPaletteDmaBuffer[palNum * 16 + colNum] = gPlttBufferFaded[palNum * 16 + colNum];      
@@ -419,29 +409,29 @@ void DnsApplyFilters()
         DoDnsLightning();
 }
 
-//Applies filter to a colour. Filters RGB channels are substracted from colour RGB channels.
+//Applies filter to a color. Filters RGB channels are substracted from color RGB channels.
 //Based on Andrea's DNS filtering system 
-static u16 DnsApplyFilterToColour(u16 colour, u16 filter)
+static u16 DnsApplyFilterToColor(u16 color, u16 filter)
 {
     u16 red, green, blue;
 
-    red = (colour & 0x1F) - (filter & 0x1F);
-    green = ((colour & 0x3E0) - (filter & 0x3E0)) >> 5;
-    blue = ((colour & 0x7C00) - (filter & 0x7C00)) >> 10;
+    red = (color & 0x1F) - (filter & 0x1F);
+    green = ((color & 0x3E0) - (filter & 0x3E0)) >> 5;
+    blue = ((color & 0x7C00) - (filter & 0x7C00)) >> 10;
 
     return RGB2(red <= 31 ? red : 0, green <= 31 ? green : 0, blue <= 31 ? blue : 0);
 }
 
-/*Alternative way to apply filter. Works similar to the first one, but colours are substracted PROPORTIONALLY.
-This system is great if you want to avoid colours with low rgb channels getting donw to 0 too fast.
+/*Alternative way to apply filter. Works similar to the first one, but colors are substracted PROPORTIONALLY.
+This system is great if you want to avoid colors with low rgb channels getting donw to 0 too fast.
 That's something that can easily happen with above Andrea's filtering system.*/
-static u16 DnsApplyProportionalFilterToColour(u16 colour, u16 filter)
+static u16 DnsApplyProportionalFilterToColor(u16 color, u16 filter)
 {
     u32 red, green, blue;
 
-    red = (colour & 0x1F) * (0x1F - (filter & 0x1F)) >> 5;
-    green = ((colour & 0x3E0) >> 5) * ((0x3E0 - (filter & 0x3E0)) >> 5) >> 5;
-    blue = ((colour & 0x7C00) >> 10) * ((0x7C00 - (filter & 0x7C00)) >> 10) >> 5;
+    red = (color & 0x1F) * (0x1F - (filter & 0x1F)) >> 5;
+    green = ((color & 0x3E0) >> 5) * ((0x3E0 - (filter & 0x3E0)) >> 5) >> 5;
+    blue = ((color & 0x7C00) >> 10) * ((0x7C00 - (filter & 0x7C00)) >> 10) >> 5;
 
     return RGB2(red <= 31 ? red : 0, green <= 31 ? green : 0, blue <= 31 ? blue : 0);  
 }
@@ -483,18 +473,18 @@ static void DoDnsLightning()
 {
     u8 i;
 
-    for (i = 0; i < sizeof(gLightingColours)/sizeof(gLightingColours[0]); i++)
+    for (i = 0; i < sizeof(gLightingColors)/sizeof(gLightingColors[0]); i++)
     {
-        u16 colourSlot = gLightingColours[i].paletteNum * 16 + gLightingColours[i].colourNum;
+        u16 colorSlot = gLightingColors[i].paletteNum * 16 + gLightingColors[i].colorNum;
         
-        if (gPaletteFade.active || gPlttBufferUnfaded[colourSlot] != 0x0000)
+        if (gPaletteFade.active || gPlttBufferUnfaded[colorSlot] != 0x0000)
         {
-            sDnsPaletteDmaBuffer[colourSlot] = gPlttBufferFaded[colourSlot];
-            gPlttBufferUnfaded[colourSlot] = gLightingColours[i].lightColour;
+            sDnsPaletteDmaBuffer[colorSlot] = gPlttBufferFaded[colorSlot];
+            gPlttBufferUnfaded[colorSlot] = gLightingColors[i].lightColor;
         }
         else
         {
-            sDnsPaletteDmaBuffer[colourSlot] = gLightingColours[i].lightColour;
+            sDnsPaletteDmaBuffer[colorSlot] = gLightingColors[i].lightColor;
         }
     }
 }
