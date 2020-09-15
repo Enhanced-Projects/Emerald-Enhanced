@@ -371,7 +371,7 @@ EverGrandeCity_ChampionsRoom_Text_WallaceComeWithMe: @ 8229399
 EverGrandeCity_ChampionsRoom_Text_WallaceWaitOutside: @ 82293EB
 	.string "Wallace: I'm sorry, but…\p"
 	.string "From here on, only those Trainers who\n"
-	.string "have become ChampionS may enter.\p"
+	.string "have become Champions may enter.\p"
 	.string "You'll have to wait outside with\n"
 	.string "Prof. Birch.$"
 

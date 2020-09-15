@@ -103,7 +103,7 @@ VerdanturfTown_Text_EasyToGetToRustboroNow: @ 81EB935
 	.string "That cave next to the Pokémon Mart\n"
 	.string "is now a tunnel to the other side.\p"
 	.string "It's great--it's easy to go shop for\n"
-	.string "new Devon products inRustboro now.$"
+	.string "new Devon products in Rustboro now.$"
 
 VerdanturfTown_Text_TownSign: @ 81EB9C4
 	.string "Verdanturf Town\p"

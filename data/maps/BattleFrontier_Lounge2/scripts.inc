@@ -329,24 +329,24 @@ BattleFrontier_Lounge2_Text_PyramidKingGoldMons:: @ 82618C4
 
 BattleFrontier_Lounge2_Text_DoubleBattleAdvice1:: @ 82619AC
 	.string "Sure, there are several places where\n"
-	.string "you can enter Double BattleS.\p"
+	.string "you can enter Double Battles.\p"
 	.string "But the Double Battle Rooms of\n"
 	.string "the Battle Tower are, like, basic!\p"
 	.string "They're where you should learn about\n"
-	.string "how Double BattleS are played here\l"
+	.string "how Double Battles are played here\l"
 	.string "in the Battle Frontier.$"
 
 BattleFrontier_Lounge2_Text_DoubleBattleAdvice2:: @ 8261A91
 	.string "Watch yourself in the battles here.\p"
 	.string "I hear there are Trainers that have\n"
 	.string "strategies they developed just for\l"
-	.string "Double BattleS.$"
+	.string "Double Battles.$"
 
 BattleFrontier_Lounge2_Text_DoubleBattleAdvice3:: @ 8261B0C
 	.string "Once you're confident and comfortable\n"
-	.string "with Double BattleS here, you should\l"
+	.string "with Double Battles here, you should\l"
 	.string "think about challenging other places\l"
-	.string "offering Double BattleS.$"
+	.string "offering Double Battles.$"
 
 BattleFrontier_Lounge2_Text_MultiBattleAdvice:: @ 8261B95
 	.string "All sorts of Trainers gather in\n"
