@@ -6544,10 +6544,12 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     // check sunny/rain weather
     if (WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_RAIN_ANY)
     {
-        if (moveType == TYPE_FIRE)
-            dmg = ApplyModifier(UQ_4_12(0.5), dmg);
-        else if (moveType == TYPE_WATER)
+        if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
+        else if (moveType == TYPE_FIRE && (FlagGet(FLAG_TOBY_TRAINER_SIGHT) == 1))//Placeholder flag
+        gBattlescriptCurrInstr = BattleScript_PreventFireAttackInRain;
+        else if (moveType == TYPE_FIRE)
+            dmg = ApplyModifier(UQ_4_12(0.5), dmg);
         else if (moveType == TYPE_GRASS)
             dmg = ApplyModifier(UQ_4_12(1.1), dmg);
     }
@@ -6555,6 +6557,8 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     {
         if (moveType == TYPE_FIRE)
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
+        else if (moveType == TYPE_WATER && (FlagGet(FLAG_TOBY_TRAINER_SIGHT) == 1))//Placeholder flag
+        gBattlescriptCurrInstr = BattleScript_PreventWaterAttackInSun;
         else if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
         else if (moveType == TYPE_GRASS)
