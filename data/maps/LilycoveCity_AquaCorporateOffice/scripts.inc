@@ -453,7 +453,7 @@ LC_AH_Shelly_mission2msg:
 	.string "Okay, your next mission is to meet \n"
 	.string "Archie at Mt Chimney, and help stop\p"
 	.string "what Magma's getting into there.\p"
-	.string "They are definetely up to no good.$"
+	.string "They are definitely up to no good.$"
 
 LC_AH_Mcomplete2:
 	.string "Hello, Lt. {PLAYER}. Welcome back.\n"
@@ -471,8 +471,8 @@ LC_AH_M3Desc:
 	.string "All right, so we've discovered what\n"
 	.string "Magma is up to. It's bad. Really bad.\p"
 	.string "We need to go to Magma's hideout\n"
-	.string "in Jagged Pass, and stop them. I'll\p"
-	.string "meet you there.$"
+	.string "in Jagged Pass and stop them.\p"
+	.string "I'll meet you there.$"
 	
 LC_AH_M4DescMsg:
 	.string "Archie is currently at Mt.Pyre\n"
@@ -508,7 +508,7 @@ LC_AH_OnWayM3:
 LC_AH_OnWay4:
 	.string "Our administrator asked to not be\n"
 	.string "bothered while she's preparing to\p"
-	.string "go to Mt.Pyre$"
+	.string "go to Mt.Pyre.$"
 	
 LH_M3Exit:
 	walk_down
@@ -991,7 +991,7 @@ LC_AH_ShellyThanks:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}You're quite the bold one, you are.\p"
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly giggles.)\p"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Shelly: A few people here have been\n"
-	.string "staring at me in wierd ways, you're the\p"
+	.string "staring at me in weird ways. You're the\p"
 	.string "first one to step up. I appreciate that.\n"
 	.string "I love the necklace!\p"
 	.string "It compliments my eyes!$"
