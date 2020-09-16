@@ -55,31 +55,12 @@ enum
  * "light color".                                                  */
 const struct LightingColor gLightingColors[] =
 {
-    {
-        .paletteNum = 6,
-        .colorNum = 10,
-        .lightColor = RGB2(22, 26, 15),
-    },
-    {
-        .paletteNum = 6,
-        .colorNum = 9,
-        .lightColor = RGB2(22, 26, 15),
-    },
-    {
-        .paletteNum = 8,
-        .colorNum = 10,
-        .lightColor = RGB2(22, 26, 15),
-    },
-    {
-        .paletteNum = 8,
-        .colorNum = 9,
-        .lightColor = RGB2(22, 26, 15),
-    },
-    {
-        .paletteNum = 5,
-        .colorNum = 10,
-        .lightColor = RGB2(22, 26, 15),
-    },
+    //{   //example
+    //    .paletteNum = 8,
+    //    .colorNum = 10,
+    //    .lightColor = RGB2(22, 26, 15),
+    //},
+    0,
 };
 
 /* Maptypes that are not affected by DNS */
