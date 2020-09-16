@@ -71,7 +71,7 @@ MPS_SpiritombIntro2:
 MPS_SpiritombAttacks:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Will you give me my Master Ball now?\p"
 	.string "{COLOR RED}{SHADOW LIGHT_GREY}Kekeke!\p"
-	.string "KEKEKE!\p"
+	.string "Kekeke!\p"
 	.string "I have deceived you!\n"
 	.string "You were merely a puppet!\p"
 	.string "I just used you to gather souls!\n"
@@ -547,7 +547,7 @@ MtPyre_Summit_Text_Grunt1Intro: @ 8232459
 	.string "We can't fall behind!$"
 
 MtPyre_Summit_Text_Grunt1Defeat: @ 82324A0
-	.string "I thought you were one of the MAGMAS\n"
+	.string "I thought you were one of the Magmas\n"
 	.string "who happened to come back…$"
 
 MtPyre_Summit_Text_Grunt1PostBattle: @ 82324E0
@@ -572,18 +572,18 @@ MtPyre_Summit_Text_Grunt2PostBattle: @ 82325E4
 
 MtPyre_Summit_Text_Grunt3Intro: @ 823261D
 	.string "You…\n"
-	.string "We saw you at MT. CHIMNEY.\p"
-	.string "You don't belong to either TEAM,\n"
+	.string "We saw you at MT. Chimney.\p"
+	.string "You don't belong to either Team,\n"
 	.string "so why would you be here?$"
 
 MtPyre_Summit_Text_Grunt3Defeat: @ 8232678
 	.string "If you're going to mess with anyone,\n"
-	.string "let it be TEAM MAGMA…$"
+	.string "let it be Team Magma…$"
 
 MtPyre_Summit_Text_Grunt3PostBattle: @ 82326B3
 	.string "Heh, it doesn't matter!\n"
 	.string "We bought ourselves some time!\p"
-	.string "The BOSS should have snatched what\n"
+	.string "The Boss should have snatched what\n"
 	.string "he was after!$"
 
 MtPyre_Summit_Text_Grunt4Intro: @ 823271B
@@ -615,7 +615,7 @@ MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo: @ 823281A
 	.string "Thanks for all your hard work,\n"
 	.string "soldier. You were instrumental to\p"
 	.string "our cause.\p"
-	.string "Team Aqua... MOVE OUT!$"
+	.string "Team Aqua... Move Out!$"
 
 MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis: @ 823290E
 	.string "Well, in their haste, they left this\n"
@@ -626,27 +626,27 @@ MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis: @ 823290E
 	.string "Perhaps it will be useful in some way.$"
 
 MtPyre_Summit_Text_OrbsHaveBeenTaken: @ 8232AD8
-	.string "The BLUE ORB and RED ORB taken by\n"
+	.string "The Blue Orb and Red Orb taken by\n"
 	.string "those sinister men…\p"
 	.string "They must never be apart…\n"
 	.string "I fear something terrible will happen…$"
 
 MtPyre_Summit_Text_GroudonKyogreAwakened: @ 8232B4F
 	.string "Oh, my goodness…\p"
-	.string "You say that both GROUDON and KYOGRE\n"
+	.string "You say that both Groudon and Kyogre\n"
 	.string "have been awakened?\p"
-	.string "It is said that the BLUE ORB and\n"
-	.string "the RED ORB quelled the rage of\l"
+	.string "It is said that the Blue Orb and\n"
+	.string "the Red Orb quelled the rage of\l"
 	.string "the two Pokémon…\p"
 	.string "It is also said that the true owner\n"
-	.string "of the ORBS still exists.\p"
+	.string "of the Orbs still exists.\p"
 	.string "However, no one knows who, or what\n"
-	.string "exactly, the ORBS belong to.\p"
+	.string "exactly, the Orbs belong to.\p"
 	.string "It could be a human, or perhaps\n"
 	.string "a Pokémon, but no one knows.$"
 
 MtPyre_Summit_Text_ThoseTwoMenReturnedOrbs: @ 8232CA6
-	.string "The two men who took the ORBS came\n"
+	.string "The two men who took the Orbs came\n"
 	.string "back to return them on their own.\p"
 	.string "Those men…\n"
 	.string "Perhaps they are not so evil after all…$"
@@ -685,9 +685,9 @@ MtPyre_Summit_Text_GroudonKyogreTale: @ 8232F27
 	.string "Their fierce duel raged without end.\p"
 	.string "The world was engulfed in massive\n"
 	.string "infernos and vicious storms.\p"
-	.string "The BLUE ORB and the RED ORB brought\n"
+	.string "The Blue Orb and the Red Orb brought\n"
 	.string "an end to the calamity.\p"
-	.string "Light poured from the two ORBS and\n"
+	.string "Light poured from the two Orbs and\n"
 	.string "becalmed the enraged adversaries.\p"
 	.string "The pair, made docile, dove deep into\n"
 	.string "the sea where eventually they\l"
@@ -706,7 +706,7 @@ MtPyre_Summit_Text_HearTheNewLegendOfHoenn: @ 82331A6
 	.string "It is my role to pass on the legends\n"
 	.string "of Hoenn to future generations.\p"
 	.string "And the crisis that just ended in\n"
-	.string "SOOTOPOLIS rewrote a legend…\p"
+	.string "Sootopolis rewrote a legend…\p"
 	.string "Have you the time to hear the new\n"
 	.string "legend of Hoenn?$"
 
@@ -754,7 +754,7 @@ MP_Courtney_Intro:
 	.string "I'll put you down!$"
 	
 MP_Courtney_Defeat:	
-	.string "WHY CAN'T I WIN?! It's not fair,\n"
+	.string "Why Can'T I Win?! It's not fair,\n"
 	.string "you're cheating somehow!$"
 	
 MP_Courtney_Outro:

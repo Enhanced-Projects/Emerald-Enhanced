@@ -119,54 +119,54 @@ MossdeepCity_EventScript_BlackBelt:: @ 81E4C7C
 	end
 
 MossdeepCity_Text_WantKingsRockStevenGaveMe: @ 81E4CED
-	.string "I got this from STEVEN, but I don't\n"
+	.string "I got this from Steven, but I don't\n"
 	.string "know what it's good for.\p"
-	.string "I think it's called KING's ROCK.\n"
+	.string "I think it's called King's Rock.\n"
 	.string "Do you want it?$"
 
 MossdeepCity_Text_YouCanKeepIt: @ 81E4D5B
 	.string "Why would you want it?\n"
 	.string "You're weird.\p"
 	.string "You can keep it, but keep it a secret\n"
-	.string "from STEVEN.$"
+	.string "from Steven.$"
 
 MossdeepCity_Text_StevensHouseOverThere: @ 81E4DB3
-	.string "STEVEN's house is right over there!$"
+	.string "Steven's house is right over there!$"
 
 MossdeepCity_Text_WhatToDoWithWeirdRock: @ 81E4DD7
 	.string "Yeah, you think so, too! What are you\n"
 	.string "supposed to do with some weird rock?$"
 
 MossdeepCity_Text_WailmerWatching: @ 81E4E22
-	.string "Around MOSSDEEP, you can see wild\n"
-	.string "WAILMER.\p"
+	.string "Around Mossdeep, you can see wild\n"
+	.string "Wailmer.\p"
 	.string "It's called, uh…\n"
 	.string "What was it now…\p"
-	.string "WAI, WAI, WAI…\p"
-	.string "WAILMER watching!$"
+	.string "Wai, Wai, Wai…\p"
+	.string "Wailmer watching!$"
 
 MossdeepCity_Text_SpaceCenterReceivedLetter: @ 81E4E90
-	.string "The island's SPACE CENTER has been\n"
+	.string "The island's Space Center has been\n"
 	.string "launching huge rockets.\p"
 	.string "There's been some kind of an uproar\n"
 	.string "over a letter they received recently.$"
 
 MossdeepCity_Text_SpaceCenterLaunchingRockets: @ 81E4F15
-	.string "The island's SPACE CENTER has been\n"
+	.string "The island's Space Center has been\n"
 	.string "launching huge rockets.$"
 
 MossdeepCity_Text_MossdeepTargetedByMagma: @ 81E4F50
-	.string "I heard from a SAILOR buddy that\n"
-	.string "Team Aqua set up shop in LILYCOVE.\p"
+	.string "I heard from a Sailor buddy that\n"
+	.string "Team Aqua set up shop in Lilycove.\p"
 	.string "I also heard that someone came along\n"
 	.string "and wiped the floor with them!\p"
 	.string "But Mossdeep here's been targeted\n"
 	.string "by that Team Magma.\p"
 	.string "If you want to know what they're up to,\n"
-	.string "go visit the SPACE CENTER.$"
+	.string "go visit the Space Center.$"
 
 MossdeepCity_Text_FeelReliefOnLand: @ 81E5051
-	.string "I'm a SAILOR, so the sea's obviously\n"
+	.string "I'm a Sailor, so the sea's obviously\n"
 	.string "more important to me.\p"
 	.string "But you know? When I get back on land\n"
 	.string "after a long voyage, I do feel relief!$"
@@ -188,13 +188,13 @@ MossdeepCity_Text_LifeNeedsSeaToLive: @ 81E5135
 MossdeepCity_Text_SurfExhilarating: @ 81E5213
 	.string "A voyage on a ship is fine.\p"
 	.string "But crossing the sea with Pokémon\n"
-	.string "using SURF…\p"
+	.string "using Surf…\p"
 	.string "Now that's an exhilarating trip!\n"
 	.string "Wouldn't you agree, youngster?$"
 
 MossdeepCity_Text_SpecialSpaceCenterRock: @ 81E529D
 	.string "This rock has a special meaning to\n"
-	.string "the people at the SPACE CENTER.\p"
+	.string "the people at the Space Center.\p"
 	.string "They put it here as their wish for\n"
 	.string "their rockets to fly safely.\p"
 	.string "When you make a wish, what do you use?\n"
@@ -206,25 +206,25 @@ MossdeepCity_Text_ItsAWhiteRock: @ 81E5396
 	.string "It's a white rock.$"
 
 MossdeepCity_Text_GymSign: @ 81E53A9
-	.string "MOSSDEEP CITY Pokémon Gym\n"
-	.string "LEADERS: Liza & Tate\p"
+	.string "Mossdeep City Pokémon Gym\n"
+	.string "Leaders: Liza & Tate\p"
 	.string "“The mystic combination!”$"
 
 MossdeepCity_Text_CitySign: @ 81E53F2
-	.string "MOSSDEEP CITY\n"
+	.string "Mossdeep City\n"
 	.string "“Our slogan: Cherish Pokémon!”$"
 
 MossdeepCity_Text_SpaceCenterSign: @ 81E541F
-	.string "MOSSDEEP SPACE CENTER\n"
+	.string "Mossdeep Space Center\n"
 	.string "“The closest place to space.”$"
 
 MossdeepCity_Text_SootopolisNewGymLeader: @ 81E5581
 	.string "Ahh… It feels great letting the waves\n"
 	.string "wash over my feet…\p"
 	.string "Speaking of the waves, you know that\n"
-	.string "island city SOOTOPOLIS?\p"
+	.string "island city Sootopolis?\p"
 	.string "I think the Gym there had a new\n"
-	.string "LEADER come in.\p"
-	.string "People tell me the new LEADER once\n"
+	.string "Leader come in.\p"
+	.string "People tell me the new Leader once\n"
 	.string "mentored Wallace.$"
 

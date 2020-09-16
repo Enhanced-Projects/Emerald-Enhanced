@@ -72,7 +72,7 @@ AquaHideout_1F_EventScript_Grunt1Defeated:: @ 8233513
 AquaHideout_1F_Text_OurBossIsSnatchingSomething: @ 823351D
 	.string "What? What? What do you want with \n"
 	.string "Team Aqua?\p"
-	.string "Our BOSS isn't here! He's gone off to\n"
+	.string "Our Boss isn't here! He's gone off to\n"
 	.string "snatch something important!\p"
 	.string "… …\n"
 	.string "Where did he go?\p"
@@ -84,13 +84,13 @@ AquaHideout_1F_Text_WhereMightMagmaHideoutBe: @ 82335E3
 	.string "Are you a Team Magma grunt?\p"
 	.string "I hear that Team Magma is trying to\n"
 	.string "awaken an awesome Pokémon at their\l"
-	.string "HIDEOUT.\p"
-	.string "But where might their HIDEOUT be?$"
+	.string "Hideout.\p"
+	.string "But where might their Hideout be?$"
 
 AquaHideout_1F_Text_BossWentToJackASubmarine: @ 823367D
 	.string "What? What? What do you want with \n"
 	.string "Team Aqua?\p"
-	.string "Our BOSS isn't here!\n"
+	.string "Our Boss isn't here!\n"
 	.string "He's gone off to jack a submarine!\p"
 	.string "… …\n"
 	.string "Where did he go?\p"
@@ -100,8 +100,8 @@ AquaHideout_1F_Text_BossWentToJackASubmarine: @ 823367D
 AquaHideout_1F_Text_BossIsOnRoute122: @ 8233739
 	.string "What? What? What do you want with \n"
 	.string "Team Aqua?\p"
-	.string "Our BOSS isn't here! He's on his way to\n"
-	.string "Mt. Pyre on ROUTE 122!\p"
+	.string "Our Boss isn't here! He's on his way to\n"
+	.string "Mt. Pyre on Route 122!\p"
 	.string "… …\n"
 	.string "Why did he go?\p"
 	.string "Wahaha! Do you really think I'd tell\n"
@@ -111,14 +111,14 @@ AquaHideout_1F_Text_TeamMagmaAtMtChimney: @ 82337FA
 	.string "What? What?\n"
 	.string "Are you a Team Magma grunt?\p"
 	.string "I hear that Team Magma is after\n"
-	.string "an awesome Pokémon at MT. CHIMNEY.\p"
+	.string "an awesome Pokémon at MT. Chimney.\p"
 	.string "But what is that Pokémon like?$"
 
 AquaHideout_1F_Text_BossIsInSlateportCity: @ 8233884
 	.string "What? What? What do you want with\n"
 	.string "Team Aqua?\p"
-	.string "Our BOSS isn't here!\n"
-	.string "He's on his way to SLATEPORT CITY!\p"
+	.string "Our Boss isn't here!\n"
+	.string "He's on his way to Slateport City!\p"
 	.string "… …\n"
 	.string "Why did he go?\p"
 	.string "Wahaha! Do you really think I'd tell\n"
@@ -133,7 +133,7 @@ AquaHideout_1F_Text_Grunt1Defeat: @ 8233964
 	.string "I lost it!$"
 
 AquaHideout_1F_Text_Grunt1PostBattle: @ 8233977
-	.string "I took the loss for the TEAM,\n"
+	.string "I took the loss for the Team,\n"
 	.string "but I did my job…$"
 
 AH_PlayerMember:	

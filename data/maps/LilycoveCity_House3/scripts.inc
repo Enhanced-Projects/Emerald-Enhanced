@@ -150,12 +150,12 @@ LilycoveCity_House3_Text_HappyToHaveQuadruplets: @ 821F430
 	.string "it makes me happy.$"
 
 LilycoveCity_House3_Text_GoingToWinMultiBattles: @ 821F4A7
-	.string "We're having MULTI BATTLES, but I know\n"
+	.string "We're having Multi Battles, but I know\n"
 	.string "I'm going to win.$"
 
 LilycoveCity_House3_Text_LikeMixingAtRecordCorner: @ 821F4E0
 	.string "We like mixing stuff at\n"
-	.string "the RECORD CORNER.\p"
+	.string "the Record Corner.\p"
 	.string "But what gets mixed up?$"
 
 LilycoveCity_House3_Text_MakePokeblocksWithBerryBlender: @ 821F523

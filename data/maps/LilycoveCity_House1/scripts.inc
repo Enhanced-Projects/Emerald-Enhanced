@@ -22,5 +22,5 @@ LilycoveCity_House1_Text_PokemonPartnersNotTools: @ 821ECEA
 	.string "who fail to understand that…$"
 
 LilycoveCity_House1_Text_Kecleon: @ 821ED63
-	.string "KECLEON: Ruroro?$"
+	.string "Kecleon: Ruroro?$"
 

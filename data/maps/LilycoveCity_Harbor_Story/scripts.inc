@@ -138,7 +138,7 @@ LCC_PlayerTakeCareOf:
 	.string "You take care of Aqua,\nI'll get these insects out.$"
 	
 LCC_ItEndsNow:
-	.string "I will put an end to this NOW!$"
+	.string "I will put an end to this Now!$"
 	
 LCC_What:
 	.string "I'm not strong enough?\n...$"

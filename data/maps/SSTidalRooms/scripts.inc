@@ -68,7 +68,7 @@ SSTidalRooms_Text_TakeRestOnBed: @ 823CAF2
 	.string "Let's take a rest.$"
 
 SSTidalRooms_Text_ColtonIntro: @ 823CB14
-	.string "I often sail to LILYCOVE CITY.\p"
+	.string "I often sail to Lilycove City.\p"
 	.string "I enjoy attending Contests,\n"
 	.string "you see.$"
 
@@ -100,38 +100,38 @@ SSTidalRooms_Text_ThomasDefeat: @ 823CC8A
 
 SSTidalRooms_Text_ThomasPostBattle: @ 823CCBB
 	.string "To be never ruffled in any situation is\n"
-	.string "the GENTLEMAN's code of conduct.$"
+	.string "the Gentleman's code of conduct.$"
 
 SSTidalRooms_Text_JedIntro: @ 823CD04
-	.string "JED: I feel a little shy about this, but…\n"
+	.string "Jed: I feel a little shy about this, but…\n"
 	.string "We'll show you our lovey-dovey power!$"
 
 SSTidalRooms_Text_JedDefeat: @ 823CD54
-	.string "JED: Sigh…$"
+	.string "Jed: Sigh…$"
 
 SSTidalRooms_Text_JedPostBattle: @ 823CD5F
-	.string "JED: It's the first time that our lovey-\n"
+	.string "Jed: It's the first time that our lovey-\n"
 	.string "dovey power couldn't prevail!\l"
 	.string "You must be an awesome Trainer!$"
 
 SSTidalRooms_Text_JedNotEnoughMons: @ 823CDC6
-	.string "JED: You only have one Pokémon?\n"
+	.string "Jed: You only have one Pokémon?\n"
 	.string "Isn't that just too lonesome?$"
 
 SSTidalRooms_Text_LeaIntro: @ 823CE04
-	.string "LEA: I feel a little silly, but…\n"
+	.string "Lea: I feel a little silly, but…\n"
 	.string "We'll show you our lovey-dovey power!$"
 
 SSTidalRooms_Text_LeaDefeat: @ 823CE4B
-	.string "LEA: Oh, boo!$"
+	.string "Lea: Oh, boo!$"
 
 SSTidalRooms_Text_LeaPostBattle: @ 823CE59
-	.string "LEA: I can't believe it!\n"
+	.string "Lea: I can't believe it!\n"
 	.string "Our lovey-dovey power failed…\l"
 	.string "You must be an awesome Trainer!$"
 
 SSTidalRooms_Text_LeaNotEnoughMons: @ 823CEB0
-	.string "LEA: I wanted to battle…\n"
+	.string "Lea: I wanted to battle…\n"
 	.string "But you don't even have two Pokémon…$"
 
 SSTidalRooms_Text_GarretIntro: @ 823CEEE
@@ -165,12 +165,12 @@ SSTidalRooms_Text_NaomiPostBattle: @ 823D013
 SSTidalRooms_Text_NotSuspiciousTakeThis: @ 823D098
 	.string "Uh… Hi! I… I'm not acting suspicious!\n"
 	.string "Uh… You can have this! For free!\p"
-	.string "It… Honestly, I didn't SNATCH it from\n"
+	.string "It… Honestly, I didn't Snatch it from\n"
 	.string "someone! I'd never do such a thing!\l"
 	.string "It's clean! You can use it!$"
 
 SSTidalRooms_Text_ExplainSnatch: @ 823D145
-	.string "SNATCH steals the beneficial effects\n"
+	.string "Snatch steals the beneficial effects\n"
 	.string "of certain moves before they can be\l"
 	.string "used by a foe or ally.$"
 

@@ -643,7 +643,7 @@ BattleFrontier_BattleDomeLobby_Text_24ACD3: @ 824ACD3
 
 BattleFrontier_BattleDomeLobby_Text_24AD67: @ 824AD67
 	.string "Congratulations!\p"
-	.string "You defeated the DOME ACE and won\n"
+	.string "You defeated the Dome Ace and won\n"
 	.string "the Battle Tournament!$"
 
 BattleFrontier_BattleDomeLobby_Text_24ADB1: @ 824ADB1

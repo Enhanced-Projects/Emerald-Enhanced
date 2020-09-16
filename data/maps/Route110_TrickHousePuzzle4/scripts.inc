@@ -31,7 +31,7 @@ Route110_TrickHousePuzzle4_EventScript_Paula:: @ 826C8AC
 Route110_TrickHousePuzzle4_Text_WroteSecretCodeLockOpened: @ 826C8C3
 	.string "{PLAYER} wrote down the secret code\n"
 	.string "on the door.\p"
-	.string "“TRICK MASTER is cool.”\n"
+	.string "“TRICK Master is cool.”\n"
 	.string "… … … … … … … …\p"
 	.string "The lock clicked open!$"
 
@@ -60,7 +60,7 @@ Route110_TrickHousePuzzle4_Text_YujiPostBattle: @ 826CA53
 	.string "You have to use your head. Be brainy!$"
 
 Route110_TrickHousePuzzle4_Text_PaulaIntro: @ 826CA9C
-	.string "The TRICK HOUSE is getting trickier,\n"
+	.string "The Trick House is getting trickier,\n"
 	.string "isn't it?$"
 
 Route110_TrickHousePuzzle4_Text_PaulaDefeat: @ 826CACB

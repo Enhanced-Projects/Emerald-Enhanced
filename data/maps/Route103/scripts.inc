@@ -324,15 +324,15 @@ r103_maleRivalChat: @ 81ECA79
 
 Route103_Text_ShouldHaveBroughtPotion: @ 81ECB73
 	.string "My Pokémon is staggeringly tired…\n"
-	.string "I should have brought a POTION…$"
+	.string "I should have brought a Potion…$"
 
 Route103_Text_ShortcutToOldale: @ 81ECBB5
 	.string "If you cross the sea from here,\n"
-	.string "it'll be a shortcut to OLDALE TOWN.\p"
+	.string "it'll be a shortcut to Oldale Town.\p"
 	.string "Fufufu, that's useful, isn't it?$"
 
 Route103_Text_RouteSign: @ 81ECC1A
-	.string "ROUTE 103\n"
+	.string "Route 103\n"
 	.string "{DOWN_ARROW} OLDALE TOWN$"
 
 

@@ -685,7 +685,7 @@ RyuSetExpMult1::@@exp is vanilla
 	goto RyuDebugMenuScript
 	
 ExpMult1:
-	.string "EXP Multiplier is now default.\n"
+	.string "Exp Multiplier is now default.\n"
 	.string "You gain exp at vanilla rate.$"
 	
 RyuSetExpMultAuto::@@exp is increased by 12.5% per gym badge
@@ -696,7 +696,7 @@ RyuSetExpMultAuto::@@exp is increased by 12.5% per gym badge
 	goto RyuDebugMenuScript
 	
 ExpMultAuto:
-	.string "EXP Multiplier is now Auto.\n"
+	.string "Exp Multiplier is now Auto.\n"
 	.string "You will gain additional exp per badge.$"
 	
 RyuSetExpMult2::@@exp is multiplied by 2
@@ -707,7 +707,7 @@ RyuSetExpMult2::@@exp is multiplied by 2
 	goto RyuDebugMenuScript
 	
 ExpMult2:
-	.string "EXP Multiplier is now 2.0x.$"
+	.string "Exp Multiplier is now 2.0x.$"
 	
 RyuSetExpMult4::@@exp is multiplied by 4
 	setvar VAR_RYU_EXP_MULTIPLIER, 4000
@@ -717,7 +717,7 @@ RyuSetExpMult4::@@exp is multiplied by 4
 	goto RyuDebugMenuScript
 	
 ExpMult4:
-	.string "EXP Multiplier is now 4.0x.$"
+	.string "Exp Multiplier is now 4.0x.$"
 	
 RyuSetExpMult8::@@exp is multiplied by 8
 	setvar VAR_RYU_EXP_MULTIPLIER, 8000
@@ -727,7 +727,7 @@ RyuSetExpMult8::@@exp is multiplied by 8
 	goto RyuDebugMenuScript
 	
 ExpMult8:
-	.string "EXP Multiplier is now 8.0x.$"
+	.string "Exp Multiplier is now 8.0x.$"
 	
 RyuDebug_PasscodeMenu::
 	playse SE_EXPMAX

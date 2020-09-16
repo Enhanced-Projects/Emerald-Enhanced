@@ -24,13 +24,13 @@ LittlerootTown_DawnsHouse_2F_EventScript_1F9576:: @ 81F9576
 
 Common_Text_LookCloserAtMap: @ 81F8820
 	.string "{PLAYER} took a closer look at the\n"
-	.string "HOENN region map.$"
+	.string "Hoenn region map.$"
 
 PlayersHouse_1F_Text_LatiEmergencyNewsFlash: @ 81F826F
 	.string "$"
 
 PlayersHouse_1F_Text_IsntItNiceInHere: @ 81F7A1C
-	.string "MOM: See, {PLAYER}?\n"
+	.string "Mom: See, {PLAYER}?\n"
 	.string "Isn't it nice in here, too?$"
 
 LittlerootTown_DawnsHouse_2F_EventScript_1F956C:: @ 81F956C
@@ -43,7 +43,7 @@ LittlerootTown_EventScript_TownSign:: @ 81E8151
 	end
 
 LittlerootTown_Text_TownSign: @ 81E8D32
-	.string "LITTLEROOT TOWN\n"
+	.string "Littleroot Town\n"
 	.string "“A town that can't be shaded any hue.”$"
 
 gUnknown_08272CD5:: @ 8272CD5

@@ -53,7 +53,7 @@ BattleFrontier_PokemonCenter_1F_Text_NeverSeenPokemon: @ 8267944
 	.string "There was someone here using a \n"
 	.string "Pokémon I've never seen before.\p"
 	.string "I never learned about it at\n"
-	.string "Trainer's SCHOOL at least.\p"
+	.string "Trainer's School at least.\p"
 	.string "I wonder where you can catch Pokémon\n"
 	.string "like that.$"
 
@@ -67,5 +67,5 @@ BattleFrontier_PokemonCenter_1F_Text_GoingThroughEveryChallenge: @ 8267A4B
 	.string "challenge with just this baby!$"
 
 BattleFrontier_PokemonCenter_1F_Text_Skitty: @ 8267A90
-	.string "SKITTY: Mya myaaah!$"
+	.string "Skitty: Mya myaaah!$"
 

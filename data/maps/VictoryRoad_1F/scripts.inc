@@ -70,7 +70,7 @@ VictoryRoad_1F_Text_AlbertPostBattle: @ 82362A4
 
 VictoryRoad_1F_Text_HopeIntro: @ 82362EE
 	.string "This seemingly infinite and harsh road\n"
-	.string "lives up to its name of VICTORY.$"
+	.string "lives up to its name of Victory.$"
 
 VictoryRoad_1F_Text_HopeDefeat: @ 8236336
 	.string "Your battle style is fantastic…$"
@@ -80,7 +80,7 @@ VictoryRoad_1F_Text_HopePostBattle: @ 8236356
 	.string "becoming the Champion.$"
 
 VictoryRoad_1F_Text_QuincyIntro: @ 8236390
-	.string "What is the VICTORY ROAD?\n"
+	.string "What is the Victory Road?\n"
 	.string "I'll tell you if you win!$"
 
 VictoryRoad_1F_Text_QuincyDefeat: @ 82363C4
@@ -91,8 +91,8 @@ VictoryRoad_1F_Text_QuincyPostBattle: @ 82363D5
 	.string "Getting through here safely--that's\n"
 	.string "the final test for any Trainer aiming\l"
 	.string "to become the Pokémon Champion.\p"
-	.string "That's why it's called the VICTORY\n"
-	.string "ROAD.$"
+	.string "That's why it's called the Victory\n"
+	.string "Road.$"
 
 VictoryRoad_1F_Text_KatelynnIntro: @ 8236468
 	.string "I have nothing to say to anyone\n"

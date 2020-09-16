@@ -568,18 +568,18 @@ BattleFrontier_BattleArenaBattleRoom_Text_NowFaceTycoon: @ 8257F45
 	.string "My dear challenger!\p"
 	.string "Your skill level is truly astounding!\p"
 	.string "We now would like you to face our\n"
-	.string "leader, the ARENA TYCOON!$"
+	.string "leader, the Arena Tycoon!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_PreparedForTycoon: @ 8257FBB
-	.string "A battle with the ARENA TYCOON!\n"
+	.string "A battle with the Arena Tycoon!\n"
 	.string "Are you prepared?$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_MakeWayForGreta: @ 8257FED
-	.string "REFEREE: The ARENA TYCOON!\n"
-	.string "Make way for GRETA!$"
+	.string "Referee: The Arena Tycoon!\n"
+	.string "Make way for Greta!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_GretaYoureChallenger: @ 825801C
-	.string "GRETA: Hey!\n"
+	.string "Greta: Hey!\n"
 	.string "Howdy!\p"
 	.string "…Wait, are you the challenger?$"
 
@@ -600,7 +600,7 @@ BattleFrontier_BattleArenaBattleRoom_Text_IgniteMyPassionForBattle: @ 825810D
 	.string "for battle!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_GretaYoureToughAfterAll: @ 825813F
-	.string "GRETA: Ow, wait a second!\n"
+	.string "Greta: Ow, wait a second!\n"
 	.string "You are tough after all!\p"
 	.string "I like you!\n"
 	.string "Let's see your Frontier Pass.$"
@@ -615,7 +615,7 @@ BattleFrontier_BattleArenaBattleRoom_Text_GoingToBeFunNextTime: @ 82581CF
 	.string "I'm looking forward to it!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_GretaLookingForwardToSeeingAgain: @ 8258213
-	.string "GRETA: Hey! Howdy!\n"
+	.string "Greta: Hey! Howdy!\n"
 	.string "You finally won your way up to me!\p"
 	.string "I was getting worried waiting for you!\n"
 	.string "I was really looking forward to seeing\l"
@@ -630,11 +630,11 @@ BattleFrontier_BattleArenaBattleRoom_Text_WontAllowHalfheartedEffort: @ 82582BB
 	.string "Be ready for a thrashing!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_LetsGetThisStarted: @ 82582F9
-	.string "Come on, REFEREE!\n"
+	.string "Come on, Referee!\n"
 	.string "Let's get this started!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_GretaBlownAway: @ 8258323
-	.string "GRETA: Gaaah! Blown away!\n"
+	.string "Greta: Gaaah! Blown away!\n"
 	.string "Let's see your Frontier Pass!$"
 
 BattleFrontier_BattleArenaBattleRoom_Text_GutsSymbolTookGoldenShine: @ 825835B

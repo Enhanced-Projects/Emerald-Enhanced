@@ -206,7 +206,7 @@ MossdeepCity_StevensHouse_Text_UnderwateCavernBetweenMossdeepSootopolis: @ 8222B
 	.string "Steven: Apparently, there's an\n"
 	.string "underwater cavern between\l"
 	.string "Mossdeep and Sootopolis.\p"
-	.string "You know, the one that CAPT. STERN\n"
+	.string "You know, the one that Capt. Stern\n"
 	.string "found in his submarine.$"
 
 MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum: @ 8222B9E
@@ -245,5 +245,5 @@ MossdeepCity_StevensHouse_Text_LetterFromSteven: @ 8222C4E
 
 MossdeepCity_StevensHouse_Text_CollectionOfRareRocks: @ 8222D97
 	.string "It's a collection of rare rocks and\n"
-	.string "stones assembled by STEVEN.$"
+	.string "stones assembled by Steven.$"
 

@@ -390,7 +390,7 @@ MVG_BRENDAN_INTRO:
 	
 MVG_LANA_INTRO:
     .string "{COLOR LIGHT_RED}{SHADOW RED}I fought Lieutenant Surge.\p"
-    .string "He's a REAL electric type user.\p"
+    .string "He's a Real electric type user.\p"
     .string "I wonder if this old codger can\n"
     .string "keep up...$"
 	
@@ -643,7 +643,7 @@ MauvilleCity_Gym_EventScript_GymStatue:: @ 820E175
 MauvilleCity_Gym_Text_GymGuideAdvice: @ 820E17F
 	.string "Hey, how's it going, Champion-\n"
 	.string "bound {PLAYER}?\p"
-	.string "Wattson, the LEADER of MAUVILLE\n"
+	.string "Wattson, the Leader of Mauville\n"
 	.string "Gym, uses ELECTRIC-type Pokémon.\p"
 	.string "If you challenge him with WATER-type\n"
 	.string "Pokémon, he'll zap them! Bzzt!\p"
@@ -699,7 +699,7 @@ MauvilleCity_Gym_Text_VivianDefeat: @ 820E4F4
 	.string "I'm shocked by your power!$"
 
 MauvilleCity_Gym_Text_VivianPostBattle: @ 820E50F
-	.string "I've heard that MAUVILLE was founded\n"
+	.string "I've heard that Mauville was founded\n"
 	.string "by Wattson.\p"
 	.string "He was a Trainer long before we\n"
 	.string "became Trainers.\l"
@@ -713,7 +713,7 @@ MauvilleCity_Gym_Text_AngeloDefeat: @ 820E5A8
 	.string "My eyes are frazzled…$"
 
 MauvilleCity_Gym_Text_AngeloPostBattle: @ 820E5C2
-	.string "MAUVILLE Gym's Wattson has a shiny\n"
+	.string "Mauville Gym's Wattson has a shiny\n"
 	.string "forehead. It makes me happy!$"
 
 MauvilleCity_Gym_Text_WattsonPreBattle: @ 820E602
@@ -726,8 +726,8 @@ MauvilleCity_Gym_Text_WattsonPreBattle: @ 820E602
 	.string "past all my rigged doors?\p"
 	.string "Wahahahah!\n"
 	.string "Now, that is amusing!\p"
-	.string "Then, I, Wattson, the LEADER of\n"
-	.string "MAUVILLE Gym, shall electrify you!$"
+	.string "Then, I, Wattson, the Leader of\n"
+	.string "Mauville Gym, shall electrify you!$"
 
 MauvilleCity_Gym_Text_WattsonDefeat: @ 820E734
 	.string "Wahahahah!\n"
@@ -739,15 +739,15 @@ MauvilleCity_Gym_Text_ReceivedDynamoBadge: @ 820E77F
 	.string "from Wattson.$"
 
 MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis: @ 820E7AA
-	.string "With the DYNAMO badge, Pokémon can\n"
-	.string "use ROCK SMASH out of battle.\p"
+	.string "With the Dynamo badge, Pokémon can\n"
+	.string "use Rock Smash out of battle.\p"
 	.string "And, it will make your Pokémon a little\n"
 	.string "bit faster, too.\p"
 	.string "Hmm…\n"
 	.string "You should take this, too!$"
 
 MauvilleCity_Gym_Text_ExplainShockWave: @ 820E844
-	.string "That TM34 there contains SHOCK WAVE.\p"
+	.string "That TM34 there contains Shock Wave.\p"
 	.string "It's a trustworthy move that never\n"
 	.string "misses! You can count on it!\p"
 	.string "… … … … … …$"
@@ -765,10 +765,10 @@ MauvilleCity_Gym_Text_WattsonGoForthAndEndeavor: @ 820E925
 	.string "Go forth and endeavor, youngster!$"
 
 MauvilleCity_Gym_Text_GymStatue: @ 820E952
-	.string "MAUVILLE CITY Pokémon Gym$"
+	.string "Mauville City Pokémon Gym$"
 
 MauvilleCity_Gym_Text_GymStatueCertified: @ 820E96C
-	.string "MAUVILLE CITY Pokémon Gym\p"
+	.string "Mauville City Pokémon Gym\p"
 	.string "Wattson's Certified Trainers:\n"
 	.string "{PLAYER}$"
 

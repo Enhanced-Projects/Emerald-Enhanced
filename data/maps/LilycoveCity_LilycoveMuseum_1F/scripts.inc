@@ -163,16 +163,16 @@ LilycoveCity_LilycoveMuseum_1F_EventScript_FatMan:: @ 8218E42
 	end
 
 LilycoveCity_LilycoveMuseum_1F_Text_WelcomeToLilycoveMuseum: @ 8218E4B
-	.string "Welcome to LILYCOVE MUSEUM.\p"
+	.string "Welcome to Lilycove Museum.\p"
 	.string "Please take the time to enjoy our\n"
 	.string "collection of fantastic artwork\l"
 	.string "featuring Pokémon.$"
 
 LilycoveCity_LilycoveMuseum_1F_Text_ImCuratorHaveYouViewedOurPaintings: @ 8218EBC
-	.string "I'm the CURATOR of this MUSEUM of\n"
+	.string "I'm the Curator of this Museum of\n"
 	.string "fine arts.\p"
 	.string "It's heartening to see someone so\n"
-	.string "young as you in our MUSEUM.\p"
+	.string "young as you in our Museum.\p"
 	.string "Have you viewed our collection of\n"
 	.string "paintings already?$"
 
@@ -215,7 +215,7 @@ LilycoveCity_LilycoveMuseum_1F_Text_PaintingOfLegendaryPokemon: @ 8219142
 	.string "imagination.$"
 
 LilycoveCity_LilycoveMuseum_1F_Text_PaintingOfGrassPokemon: @ 82191A2
-	.string "It's a painting of GRASS Pokémon\n"
+	.string "It's a painting of Grass Pokémon\n"
 	.string "swaying in a breeze.\p"
 	.string "They appear to be enjoying the wind's\n"
 	.string "gentle caress.$"
@@ -227,7 +227,7 @@ LilycoveCity_LilycoveMuseum_1F_Text_PaintingOfBerries: @ 821920D
 
 LilycoveCity_LilycoveMuseum_Text_BirdPokemonSculptureReplica: @ 8219260
 	.string "It's a replica of a famous sculpture.\p"
-	.string "It depicts an ancient BIRD Pokémon.$"
+	.string "It depicts an ancient Bird Pokémon.$"
 
 LilycoveCity_LilycoveMuseum_1F_Text_BigPokeBallCarvedFromStone: @ 82192AA
 	.string "It's a big Poké ball carved from\n"
@@ -252,10 +252,10 @@ LilycoveCity_LilycoveMuseum_1F_Text_MustntForgetLoveForFineArts: @ 82193B4
 	.string "the fine arts.$"
 
 LilycoveCity_LilycoveMuseum_1F_Text_ThisMuseumIsInspiration: @ 821941A
-	.string "This ART MUSEUM… Well, you could\n"
+	.string "This Art Museum… Well, you could\n"
 	.string "see many fantastic paintings.\p"
-	.string "And the CURATOR is a wonderful person.\p"
-	.string "Among artists like myself, this MUSEUM\n"
+	.string "And the Curator is a wonderful person.\p"
+	.string "Among artists like myself, this Museum\n"
 	.string "is an inspiration.$"
 
 LilycoveCity_LilycoveMuseum_1F_Text_ThisLadyIsPretty: @ 82194BA
@@ -267,14 +267,14 @@ LilycoveCity_LilycoveMuseum_1F_Text_ThisPokemonIsAdorable: @ 82194E1
 	.string "Just like our little boy!$"
 
 LilycoveCity_LilycoveMuseum_1F_Text_HeardMuseumGotNewPaintings: @ 8219515
-	.string "I'd heard that this ART MUSEUM got\n"
+	.string "I'd heard that this Art Museum got\n"
 	.string "in some new paintings.\p"
 	.string "So, naturally I hurried over.\p"
 	.string "Are the new paintings up on\n"
 	.string "the second floor?$"
 
 LilycoveCity_LilycoveMuseum_1F_Text_CuratorHasBeenCheerful: @ 821959B
-	.string "Lately, the CURATOR has been\n"
+	.string "Lately, the Curator has been\n"
 	.string "unusually cheerful.\p"
 	.string "I bet something good happened for him.\n"
 	.string "Definitely.$"
@@ -286,9 +286,9 @@ LilycoveCity_LilycoveMuseum_1F_Text_AimToSeeGreatPaintings: @ 82195FF
 	.string "my artwork exhibited here.$"
 
 LilycoveCity_LilycoveMuseum_1F_Text_MuseumTouristDestination: @ 821967A
-	.string "The ART MUSEUM has become a favorite\n"
+	.string "The Art Museum has become a favorite\n"
 	.string "tourist destination.\p"
-	.string "It's great for LILYCOVE…\n"
+	.string "It's great for Lilycove…\n"
 	.string "No, great for the Hoenn region!\p"
 	.string "This is what I've heard--a lone Trainer\n"
 	.string "procured all the paintings upstairs.$"

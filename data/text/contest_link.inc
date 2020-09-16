@@ -35,4 +35,4 @@ gText_SetEventNumX2:: @ 827E9B9
 
 gText_LinkTVProgramWillNotBeMadeTrainerLost:: @ 827E9CD
 	.string "A link TV program will not be made\n"
-	.string "because the TRAINER lost.{PAUSE_UNTIL_PRESS}$"
+	.string "because the Trainer lost.{PAUSE_UNTIL_PRESS}$"

@@ -34,7 +34,7 @@ MtPyre_1F_Text_TakeThisForYourOwnGood: @ 8230F8A
 
 MtPyre_1F_Text_ExplainCleanseTag: @ 8231005
 	.string "Have a Pokémon hold that\n"
-	.string "CLEANSE TAG.\p"
+	.string "Cleanse Tag.\p"
 	.string "It will help ward off wild Pokémon.$"
 
 MtPyre_1F_Text_ComeToPayRespects: @ 823104F
@@ -44,5 +44,5 @@ MtPyre_1F_Text_ComeToPayRespects: @ 823104F
 
 MtPyre_1F_Text_RestingPlaceOfZigzagoon: @ 82310BA
 	.string "This is the final resting place of my\n"
-	.string "ZIGZAGOON. I cherished it…$"
+	.string "Zigzagoon. I cherished it…$"
 

@@ -287,14 +287,14 @@ SlateportCity_BattleTentLobby_Text_CouldntFindMonForMe: @ 8208B4E
 
 SlateportCity_BattleTentLobby_Text_ExplainTorment: @ 8208C5C
 	.string "That's, like, TM41, you know?\n"
-	.string "Hey, it's TORMENT, you hearing me?\p"
+	.string "Hey, it's Torment, you hearing me?\p"
 	.string "Like, it won't let the other guy\n"
 	.string "use the same move twice in a row, see?\p"
 	.string "Hey, now, you listen here, like,\n"
 	.string "I'm not laying a torment on you!$"
 
 SlateportCity_BattleTentLobby_Text_IllTryUsingBugMons: @ 8208D27
-	.string "I don't really like BUG Pokémon,\n"
+	.string "I don't really like Bug Pokémon,\n"
 	.string "but maybe I'll try using some for\l"
 	.string "a change of pace.\p"
 	.string "Who knows, I might even get to like\n"

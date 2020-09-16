@@ -50,7 +50,7 @@ MtPyre_2F_EventScript_Zander:: @ 823118C
 	end
 
 MtPyre_2F_Text_MemoriesOfSkitty: @ 82311A3
-	.string "Memories of my darling SKITTY…\n"
+	.string "Memories of my darling Skitty…\n"
 	.string "My eyes overflow thinking about it.$"
 
 MtPyre_2F_Text_TumbledFromFloorAbove: @ 82311E6
@@ -72,28 +72,28 @@ MtPyre_2F_Text_MarkPostBattle: @ 82312CB
 	.string "I thought there'd be rare Pokémon.$"
 
 MtPyre_2F_Text_LukeIntro: @ 823130F
-	.string "LUKE: We're here on a dare.\p"
+	.string "Luke: We're here on a dare.\p"
 	.string "Heheh, if I show her how cool I am,\n"
 	.string "she'll fall for me. I know it!\p"
 	.string "I know! I'll cream you and show her\n"
 	.string "how cool I am!$"
 
 MtPyre_2F_Text_LukeDefeat: @ 82313A1
-	.string "LUKE: Whoopsie!$"
+	.string "Luke: Whoopsie!$"
 
 MtPyre_2F_Text_LukePostBattle: @ 82313B1
-	.string "LUKE: Well, we lost but that's okay!\n"
+	.string "Luke: Well, we lost but that's okay!\n"
 	.string "I'm right here by your side.\l"
 	.string "We'll make it through this dare!$"
 
 MtPyre_2F_Text_LukeNotEnoughMons: @ 8231414
-	.string "LUKE: If you want to take me on,\n"
+	.string "Luke: If you want to take me on,\n"
 	.string "bring some more Pokémon.\p"
 	.string "If you don't, I won't be able to show\n"
 	.string "off to my girl how cool I am!$"
 
 MtPyre_2F_Text_DezIntro: @ 8231492
-	.string "DEZ: I came here on a dare with my\n"
+	.string "Dez: I came here on a dare with my\n"
 	.string "boyfriend.\p"
 	.string "It's really scary, but I'm with my\n"
 	.string "boyfriend. It's okay.\p"
@@ -101,14 +101,14 @@ MtPyre_2F_Text_DezIntro: @ 8231492
 	.string "cool by beating you!$"
 
 MtPyre_2F_Text_DezDefeat: @ 8231534
-	.string "DEZ: Waaaah! I'm scared!$"
+	.string "Dez: Waaaah! I'm scared!$"
 
 MtPyre_2F_Text_DezPostBattle: @ 823154D
-	.string "DEZ: We're lovey-dovey, so we don't\n"
+	.string "Dez: We're lovey-dovey, so we don't\n"
 	.string "care if we lose!$"
 
 MtPyre_2F_Text_DezNotEnoughMons: @ 8231582
-	.string "DEZ: If you want to challenge us, you\n"
+	.string "Dez: If you want to challenge us, you\n"
 	.string "should bring at least two Pokémon.\p"
 	.string "My boyfriend's strong.\n"
 	.string "Just one Pokémon won't do at all.$"

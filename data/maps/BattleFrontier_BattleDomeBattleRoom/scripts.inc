@@ -989,12 +989,12 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CA86: @ 824CA86
 	.string "What an unbelievable finish!\n"
 	.string "We have a double knockout!\p"
 	.string "In this event, the Battle Tournament\n"
-	.string "rules call for a REFEREE's decision.\p"
+	.string "rules call for a Referee's decision.\p"
 	.string "Please wait while the judging\n"
 	.string "is under way.$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24CB34: @ 824CB34
-	.string "The REFEREES have reached\n"
+	.string "The Referees have reached\n"
 	.string "a decision!\p"
 	.string "The winner is…\n"
 	.string "Oh, my goodness!\l"
@@ -1002,7 +1002,7 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CB34: @ 824CB34
 	.string "Congratulations!$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24CB9D: @ 824CB9D
-	.string "The REFEREES have reached\n"
+	.string "The Referees have reached\n"
 	.string "a decision!\p"
 	.string "The winner is…\n"
 	.string "Oh, my goodness!\l"
@@ -1091,16 +1091,16 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CEDE: @ 824CEDE
 	.string "And now… The Trainer standing in\n"
 	.string "{PLAYER}'s record-setting path…\p"
 	.string "Yes! The one and only!\n"
-	.string "The Battle Dome COMMISSIONER!\l"
-	.string "Our very own DOME ACE!\l"
-	.string "Make way for TUCKER!$"
+	.string "The Battle Dome Commissioner!\l"
+	.string "Our very own Dome Ace!\l"
+	.string "Make way for Tucker!$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24CF7A: @ 824CF7A
-	.string "Spectators: TUCKER! TUCKER!\n"
-	.string "TUCKER! TUCKER! TUCKER!$"
+	.string "Spectators: Tucker! Tucker!\n"
+	.string "Tucker! Tucker! Tucker!$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24CFAE: @ 824CFAE
-	.string "TUCKER: Ahahah!\p"
+	.string "Tucker: Ahahah!\p"
 	.string "Do you hear it? This crowd!\n"
 	.string "They're all itching to see our match!\p"
 	.string "Ahahah!\p"
@@ -1108,7 +1108,7 @@ BattleFrontier_BattleDomeBattleRoom_Text_24CFAE: @ 824CFAE
 	.string "the tension of getting to battle me!\p"
 	.string "But don't you worry about a thing!\p"
 	.string "I'm the no. 1 star of the Battle Dome!\n"
-	.string "I, TUCKER the DOME ACE, will bathe you\l"
+	.string "I, Tucker the Dome Ace, will bathe you\l"
 	.string "in my brilliant glow!$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24D0D9: @ 824D0D9
@@ -1120,12 +1120,12 @@ BattleFrontier_BattleDomeBattleRoom_Text_24D0F6: @ 824D0F6
 	.string "The victor is {PLAYER}!$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24D127: @ 824D127
-	.string "The winner is TUCKER!\n"
-	.string "The DOME ACE has prevailed!\p"
-	.string "Congratulations, TUCKER!$"
+	.string "The winner is Tucker!\n"
+	.string "The Dome Ace has prevailed!\p"
+	.string "Congratulations, Tucker!$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24D172: @ 824D172
-	.string "TUCKER: Rules are rules!\n"
+	.string "Tucker: Rules are rules!\n"
 	.string "Let me see your Frontier Pass.$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24D1AA: @ 824D1AA
@@ -1147,15 +1147,15 @@ BattleFrontier_BattleDomeBattleRoom_Text_24D26C: @ 824D26C
 	.string "Finally!\n"
 	.string "Finally, the legend has returned!\p"
 	.string "Yes, the name of that legend!\n"
-	.string "Our very own DOME ACE!\l"
-	.string "It's none other than TUCKER!$"
+	.string "Our very own Dome Ace!\l"
+	.string "It's none other than Tucker!$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24D319: @ 824D319
-	.string "TUCKER: Ah…\n"
+	.string "Tucker: Ah…\n"
 	.string "The pummeling roar of the crowd…\l"
 	.string "Their furnace-like heat of excitement…\l"
 	.string "This is a wonderful place…\p"
-	.string "To the crowd, I am the DOME ACE…\n"
+	.string "To the crowd, I am the Dome Ace…\n"
 	.string "I represent their hopes and dreams…\l"
 	.string "I must never fade from their sight…\p"
 	.string "I must burn!\n"
@@ -1167,7 +1167,7 @@ BattleFrontier_BattleDomeBattleRoom_Text_24D43E: @ 824D43E
 	.string "I possess! Right here and now!$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24D47F: @ 824D47F
-	.string "TUCKER: You're genuinely fantastic!\p"
+	.string "Tucker: You're genuinely fantastic!\p"
 	.string "Never before! I haven't ever lost in the\n"
 	.string "times I've had to unleash my power.\p"
 	.string "Yes, quite fantastic!\n"
@@ -1201,11 +1201,11 @@ BattleFrontier_BattleDomeBattleRoom_Text_24D677: @ 824D677
 	.string "Let the battle begin!$"
 
 BattleFrontier_BattleDomeBattleRoom_Text_24D6BE: @ 824D6BE
-	.string "The REFEREES have reached\n"
+	.string "The Referees have reached\n"
 	.string "a decision!\p"
 	.string "The winner is…\n"
 	.string "Oh, my goodness!\l"
-	.string "The winner is our very own DOME ACE!\l"
-	.string "It's TUCKER!\p"
+	.string "The winner is our very own Dome Ace!\l"
+	.string "It's Tucker!\p"
 	.string "Congratulations! And thank you!\n"
-	.string "Let's hear it for the DOME ACE, TUCKER!$"
+	.string "Let's hear it for the Dome Ace, Tucker!$"

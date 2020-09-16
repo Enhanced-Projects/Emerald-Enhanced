@@ -269,11 +269,11 @@ BattleFrontier_OutsideEast_Text_BattlePyramidSign: @ 8242ECF
 	.string "Advance through the Battle Quest!$"
 
 BattleFrontier_OutsideEast_Text_RankingHallSign: @ 8242F0D
-	.string "Battle Frontier RANKING HALL\n"
+	.string "Battle Frontier Ranking Hall\n"
 	.string "Set your sights on new records!$"
 
 BattleFrontier_OutsideEast_Text_ExchangeCornerSign: @ 8242F4A
-	.string "BATTLE POINT EXCHANGE SERVICE CORNER\n"
+	.string "Battle Point Exchange Service Corner\n"
 	.string "Exchange your Battle Points!$"
 
 BattleFrontier_OutsideEast_Text_BattleTowerFeelsSpecial: @ 8242F8C
@@ -287,7 +287,7 @@ BattleFrontier_OutsideEast_Text_ConquerLeagueAndFrontier: @ 8242FDC
 	.string "the Battle Frontier and the Pokémon\l"
 	.string "League.\p"
 	.string "And if my dream comes true…\p"
-	.string "I… I'm going to ask MIMI next door\n"
+	.string "I… I'm going to ask Mimi next door\n"
 	.string "if she will be friends with me!$"
 
 BattleFrontier_OutsideEast_Text_PyramidTooHarsh: @ 824308C
@@ -310,7 +310,7 @@ BattleFrontier_OutsideEast_Text_PutTogetherUltimateTeam: @ 82431A5
 	.string "We're storming the Battle Arena!$"
 
 BattleFrontier_OutsideEast_Text_DidScottBringYouHere: @ 8243230
-	.string "Did SCOTT bring you here, too?\n"
+	.string "Did Scott bring you here, too?\n"
 	.string "What is it with that guy?\p"
 	.string "It sounds like he really does know\n"
 	.string "how to spot talented Trainers, but…\p"
@@ -318,13 +318,13 @@ BattleFrontier_OutsideEast_Text_DidScottBringYouHere: @ 8243230
 	.string "ever.$"
 
 BattleFrontier_OutsideEast_Text_BelieveInYouBuddy: @ 82432DD
-	.string "ZIGG!\n"
+	.string "Zigg!\n"
 	.string "I believe in you, little buddy!\p"
-	.string "I'll make my little ZIGG any favorite\n"
+	.string "I'll make my little Zigg any favorite\n"
 	.string "tasty treats you like if you win!$"
 
 BattleFrontier_OutsideEast_Text_ZigzagoonLooksVacant: @ 824334B
-	.string "ZIGZAGOON looks vacant…$"
+	.string "Zigzagoon looks vacant…$"
 
 BattleFrontier_OutsideEast_Text_PeopleCallMeBusybody: @ 8243363
 	.string "People call me a busybody,\n"
@@ -342,7 +342,7 @@ BattleFrontier_OutsideEast_Text_OnceBeatGymLeader: @ 8243425
 	.string "another shot at glory.$"
 
 BattleFrontier_OutsideEast_Text_FastOnBikeAndBattles: @ 82434A0
-	.string "I'm fast on my BIKE, and that goes for\n"
+	.string "I'm fast on my Bike, and that goes for\n"
 	.string "the way I battle, too.\p"
 	.string "I win matches in the blink of\n"
 	.string "an eye!$"
@@ -394,8 +394,8 @@ BattleFrontier_OutsideEast_Text_GotWipedOut: @ 8243809
 
 BattleFrontier_OutsideEast_Text_ToughTrainerInBattleTower: @ 8243895
 	.string "This guy ran into a horribly tough\n"
-	.string "Trainer while he was on the BATTLE\l"
-	.string "TOWER challenge.\p"
+	.string "Trainer while he was on the Battle\l"
+	.string "Tower challenge.\p"
 	.string "Now look at him…\p"
 	.string "You need to be cautious if you ever\n"
 	.string "decide to go to the Battle Tower.$"
@@ -404,11 +404,11 @@ BattleFrontier_OutsideEast_Text_EnoughBattlePointsForDoll: @ 8243943
 	.string "Yes!\n"
 	.string "I've finally got enough Battle Points!\p"
 	.string "I guess I'll trade for another giant\n"
-	.string "plush DOLL!$"
+	.string "plush Doll!$"
 
 BattleFrontier_OutsideEast_Text_LikeToHaveNameRecordedHere: @ 82439A0
 	.string "Oh, yeah, okay!\n"
-	.string "So this is the RANKING HALL!\p"
+	.string "So this is the Ranking Hall!\p"
 	.string "I'd like to go down in history as\n"
 	.string "a super champ and have my name\l"
 	.string "recorded here for posterity.$"
@@ -419,9 +419,9 @@ BattleFrontier_OutsideEast_Text_CanDoAnythingWithYou: @ 8243A2B
 BattleFrontier_OutsideEast_Text_PowerOfOurLoveWillOvercome: @ 8243A53
 	.string "Ooh, darling, you are so wonderful!\p"
 	.string "Ooh, I just can't wait anymore!\p"
-	.string "Let's go to a MULTI BATTLE ROOM\n"
+	.string "Let's go to a Multi Battle Room\n"
 	.string "right this instant!\p"
-	.string "If we get together in the BATTLE SALON,\n"
+	.string "If we get together in the Battle Salon,\n"
 	.string "the power of our love will overcome\l"
 	.string "everyone we meet.\p"
 	.string "Why, before us, darling, everything\n"
@@ -432,7 +432,7 @@ BattleFrontier_OutsideEast_Text_FrontierNotExclusivelyForToughTrainers: @ 8243B6
 	.string "for tough Trainers.\p"
 	.string "Many people with special abilities\n"
 	.string "have been invited, it seems.\p"
-	.string "That man SCOTT…\p"
+	.string "That man Scott…\p"
 	.string "He may have built this place to serve\n"
 	.string "a bigger objective…$"
 

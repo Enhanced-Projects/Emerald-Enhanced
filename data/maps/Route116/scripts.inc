@@ -362,11 +362,11 @@ Route116_EventScript_Johnson:: @ 81F3086
 
 Route116_Text_ScoundrelMadeOffWithPeeko: @ 81F309D
 	.string "Ohhh, what am I to do?\p"
-	.string "We were on our walk, PEEKO and I, when\n"
+	.string "We were on our walk, Peeko and I, when\n"
 	.string "we were jumped by an odd thug…\p"
 	.string "The scoundrel made off with my\n"
-	.string "darling PEEKO!\p"
-	.string "Wrrrooooooaaaar! PEEKO!$"
+	.string "darling Peeko!\p"
+	.string "Wrrrooooooaaaar! Peeko!$"
 
 Route116_Text_WantToDigTunnel: @ 81F3140
 	.string "Nnn… Roar!\p"
@@ -394,10 +394,10 @@ Route116_Text_GoonHightailedItOutOfTunnel: @ 81F32C1
 Route116_Text_ThankYouTokenOfAppreciation: @ 81F3317
 	.string "Oh! It's you!\p"
 	.string "You're that person who not only helped\n"
-	.string "me in PETALBURG WOODS, but also got\l"
+	.string "me in Petalburg Woods, but also got\l"
 	.string "back my stolen package and then even\l"
-	.string "graciously delivered it to SLATEPORT!\p"
-	.string "CAPT. STERN informed us that the\n"
+	.string "graciously delivered it to Slateport!\p"
+	.string "Capt. Stern informed us that the\n"
 	.string "package arrived, too!\p"
 	.string "I thank you very, very much!\p"
 	.string "Why, if I were a rain cloud, I would\n"
@@ -412,13 +412,13 @@ Route116_Text_ThankYouTokenOfAppreciation: @ 81F3317
 
 Route116_Text_NewBallAvailableAtMart: @ 81F3521
 	.string "Our new Poké ball will be available\n"
-	.string "at the Pokémon MART in RUSTBORO.\p"
+	.string "at the Pokémon Mart in Rustboro.\p"
 	.string "Please do try it out!\n"
 	.string "Thank you and bye-bye!$"
 
 Route116_Text_BagIsJamPacked: @ 81F3593
 	.string "Your Pack is jam-packed.\n"
-	.string "I can't give you this REPEAT BALL.$"
+	.string "I can't give you this Repeat Ball.$"
 
 Route116_Text_TokenOfAppreciation: @ 81F35CE
 	.string "As a token of our appreciation for\n"
@@ -436,7 +436,7 @@ Route116_Text_MayISeeThoseGlasses: @ 81F3688
 
 Route116_Text_NotWhatImLookingForMaybeTheyArentHere: @ 81F36B4
 	.string "Hmm…\n"
-	.string "These are BLACKGLASSES.\l"
+	.string "These are Blackglasses.\l"
 	.string "They're not what I'm looking for…\p"
 	.string "Maybe my glasses aren't around\n"
 	.string "here…$"
@@ -448,21 +448,21 @@ Route116_Text_CantFindGlassesNotHere: @ 81F3718
 
 Route116_Text_NotWhatImLookingFor: @ 81F375E
 	.string "Hmm…\n"
-	.string "These are BLACKGLASSES.\l"
+	.string "These are Blackglasses.\l"
 	.string "They're not what I'm looking for…$"
 
 Route116_Text_RouteSignRustboro: @ 81F379D
-	.string "ROUTE 116\n"
+	.string "Route 116\n"
 	.string "{LEFT_ARROW}Rustboro City$"
 
 Route116_Text_RusturfTunnelSign: @ 81F37B7
-	.string "RUSTURF TUNNEL\n"
-	.string "“LinkingRustboro and VERDANTURF\p"
+	.string "Rusturf Tunnel\n"
+	.string "“LinkingRustboro and Verdanturf\p"
 	.string "“The tunnel project has been\n"
 	.string "canceled.”$"
 
 Route116_Text_TunnelersRestHouse: @ 81F380F
-	.string "TUNNELER's REST HOUSE$"
+	.string "Tunneler's Rest House$"
 
 Route116_Text_TrainerTipsBToStopEvolution: @ 81F3825
 	.string "Trainer Tips\p"
@@ -474,9 +474,9 @@ Route116_Text_TrainerTipsBToStopEvolution: @ 81F3825
 
 Route116_Text_TrainerTipsBagHasPockets: @ 81F38D4
 	.string "Trainer Tips\p"
-	.string "Your Pack has several POCKETS.\p"
+	.string "Your Pack has several Pockets.\p"
 	.string "Items you obtain are automatically\n"
-	.string "placed in the appropriate POCKETS.\p"
+	.string "placed in the appropriate Pockets.\p"
 	.string "No Trainer can afford to be without\n"
 	.string "a Pack of their own.$"
 

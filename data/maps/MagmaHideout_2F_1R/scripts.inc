@@ -509,7 +509,7 @@ MHM_AccessDenied:
 	.string "{COLOR RED}{SHADOW LIGHT_GREY} ACCESS DENIED.$"
 	
 MH2_WelcomeToMachine:
-	.string "Welcome to MAGMATIC ENTERPRISES\n"
+	.string "Welcome to Magmatic Enterprises\n"
 	.string "Please make a selection.$"
 	
 BasicHealingKit:

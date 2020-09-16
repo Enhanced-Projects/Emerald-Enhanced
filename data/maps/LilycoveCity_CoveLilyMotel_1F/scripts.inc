@@ -103,11 +103,11 @@ LilycoveCity_CoveLilyMotel_1F_Text_HeardAquaHideoutBusted: @ 8218470
 	.string "Oh, sorry, sorry!\n"
 	.string "I was too involved in watching TV!\p"
 	.string "I heard that someone busted\n"
-	.string "the Team Aqua HIDEOUT.\p"
+	.string "the Team Aqua Hideout.\p"
 	.string "Thanks to that, we just booked\n"
 	.string "a reservation from a big group.\p"
 	.string "It was a company called… Uh…\n"
-	.string "GAME something…$"
+	.string "Game something…$"
 
 LilycoveCity_CoveLilyMotel_1F_Text_HouseSittingMonCaughtBurglar: @ 8218544
 	.string "Amazing! A house-sitting Pokémon\n"
@@ -122,7 +122,7 @@ LilycoveCity_CoveLilyMotel_1F_Text_BetterGetWorkingOnGuestsDinner: @ 82185F4
 	.string "I was too involved in watching TV.\p"
 	.string "Oh, yes. A big group of guests arrived\n"
 	.string "a little while ago.\p"
-	.string "They booked in as GAME FREAK,\n"
+	.string "They booked in as Game Freak,\n"
 	.string "so I guess they must make games.\p"
 	.string "Uh-oh, I'd better get working on\n"
 	.string "their dinner!$"

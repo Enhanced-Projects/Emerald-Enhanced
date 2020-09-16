@@ -187,7 +187,7 @@ BattleFrontier_Lounge5_Text_NatureGirlCareful:: @ 8264E8F
 	.string "it will turn sneaky!$"
 
 BattleFrontier_Lounge5_Text_NatureGirlEgg:: @ 8264EEE
-	.string "That's silly! An EGG is asleep!\n"
+	.string "That's silly! An Egg is asleep!\n"
 	.string "I can't talk to it!$"
 
 BattleFrontier_Lounge5_Text_LadyClaimsSheUnderstandsPokemon:: @ 8264F22

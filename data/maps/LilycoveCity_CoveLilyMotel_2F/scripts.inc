@@ -68,7 +68,7 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott:: @ 821876A
 	end
 
 LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex: @ 8218774
-	.string "I'm the GAME DESIGNER.\p"
+	.string "I'm the Game Designer.\p"
 	.string "Oh, is that right?\n"
 	.string "You're working on a Pokédex?\p"
 	.string "It's tough trying to complete it,\n"
@@ -87,20 +87,20 @@ LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis: @ 821881C
 
 LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer: @ 82188D6
 	.string "Me? You're talking to me?\n"
-	.string "I'm the PROGRAMMER.\p"
-	.string "I wonder what the SLOTS are\n"
+	.string "I'm the Programmer.\p"
+	.string "I wonder what the Slots are\n"
 	.string "like here.$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist: @ 821892B
-	.string "I'm the GRAPHIC ARTIST! Aren't the\n"
+	.string "I'm the Graphic Artist! Aren't the\n"
 	.string "Pokémon of Hoenn interesting?$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute: @ 821896C
-	.string "The girl TUBERS, they're cute, hey?\n"
-	.string "To battle against a cute TUBER…\p"
+	.string "The girl Tubers, they're cute, hey?\n"
+	.string "To battle against a cute Tuber…\p"
 	.string "Whoop, it's so awesome!\p"
-	.string "And the TWINS! Aren't they cute?\n"
-	.string "A 2-on-2 battle with TWINS…\p"
+	.string "And the Twins! Aren't they cute?\n"
+	.string "A 2-on-2 battle with Twins…\p"
 	.string "Whoop, it's unbearably fun!$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart: @ 8218A21
@@ -111,10 +111,10 @@ LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy: @ 8218A5B
 	.string "You never know when and where\n"
 	.string "people will challenge you.\p"
 	.string "That's why I never leave home without\n"
-	.string "my GAME BOY ADVANCE.$"
+	.string "my Game Boy Advance.$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles: @ 8218ACF
-	.string "SCOTT: … … … … …\n"
+	.string "Scott: … … … … …\n"
 	.string "… … … … … Zzz…\p"
 	.string "… … … … … Huh?!\n"
 	.string "Oh, sorry, sorry! I was snoozing!\p"
@@ -126,11 +126,11 @@ LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles: @ 8218ACF
 	.string "battles and tough Trainers.\p"
 	.string "But that's just me.\p"
 	.string "{PLAYER}, I hope you'll enjoy everything\n"
-	.string "like the Gyms, Contests, BATTLE TENT,\l"
+	.string "like the Gyms, Contests, Battle Tent,\l"
 	.string "the whole works!$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy: @ 8218C33
-	.string "SCOTT: I think it does take strategy\n"
+	.string "Scott: I think it does take strategy\n"
 	.string "to win a Contest.\p"
 	.string "Devising Contest strategies is one way\n"
 	.string "of becoming a better Trainer, I'd say.$"

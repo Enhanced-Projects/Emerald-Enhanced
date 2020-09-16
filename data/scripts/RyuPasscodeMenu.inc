@@ -186,7 +186,7 @@ CompensationMsg:
 	.string "Nothing!\pBecause this code is no longer\navailable.$"
 
 GCMSRewardMsg:
-	.string "Your GCMS Map Status has been set\nto 31.\pYou can now get a free perfect\nspecimen from the GCMS.\pThanks for joining the discord!$"
+	.string "Your Gcms Map Status has been set\nto 31.\pYou can now get a free perfect\nspecimen from the Gcms.\pThanks for joining the discord!$"
 
 MSG_KOUTA_GIFT:
 	.string "A level 80 Adamant Mawile with\ncustom moves, as well as an Expert Belt.\pIt's in slot {STR_VAR_1} of your party!\nCongrats on doing the contest challenge!\pThere's a message attached:\nRyuhouji: Thanks for playing\l{COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced!$"

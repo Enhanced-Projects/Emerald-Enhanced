@@ -36,7 +36,7 @@ MagmaHideout_1F_Text_Grunt1PostBattle: @ 82399B1
 
 MagmaHideout_1F_Text_Grunt2Intro: @ 82399F5
 	.string "Our leader told us to dig into\n"
-	.string "MT. CHIMNEY, so we dug and dug.\p"
+	.string "MT. Chimney, so we dug and dug.\p"
 	.string "And in the course of digging, we came\n"
 	.string "across something that blew our minds!\p"
 	.string "What did we find?\p"
@@ -283,7 +283,7 @@ MH_GruntChatter6:
 	.string "Don't ever make fun of Tabitha's\nname. He gets really upset.$"
 	
 MH_GruntChatter7:
-	.string "I think Courtney's cute\nbut I am not into crazy.\lThat girl is ALL crazy.$"
+	.string "I think Courtney's cute\nbut I am not into crazy.\lThat girl is All crazy.$"
 	
 MH_CheckMagmaExit::
 	lock

@@ -246,7 +246,7 @@ DC_OthersAddress:
 	.string "More than likely, during the\n"
 	.string "second incident, the papers that\p"
 	.string "were laid out in the open were\n"
-	.string "about the EXP Drive, and the news\p"
+	.string "about the Exp Drive, and the news\p"
 	.string "media caught a glimpse of it\n"
 	.string "before security caught them in the\l"
 	.string "act.$"
