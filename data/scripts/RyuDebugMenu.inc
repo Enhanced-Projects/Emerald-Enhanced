@@ -65,14 +65,14 @@ OpeningPokeEdit:
 
 RyuDebug_money::
 	setvar VAR_TEMP_A, 32000
-    givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
+    addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
 	msgbox RyuDebug_money_text MSGBOX_DEFAULT
 	return
 
@@ -186,17 +186,17 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGNURSE
-	waitbuttonpress
-	clearfullscreenimage
-	buffernumberstring 0, SCENEBGNURSE
-	msgbox RDB_TempVarsViewMsg
-	setflag FLAG_RYU_DS_JOY_PARTNERS
-	setflag FLAG_RYU_DS_HAS_PARTNER
-	fadescreen FADE_FROM_BLACK
+	msgbox exampletext
 	release
 	end
+
+exampletext:
+    .string "This is standard text.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}This is a partner speaking.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}This is player speaking\p"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(This is green narration text.\n"
+    .string " There's a space at the beginning of\l"
+    .string " newlines and new pages too.)$"
 
 RDB_CurrentLocationMons:
 	.string "Current area land encounters$"
