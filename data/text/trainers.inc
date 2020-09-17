@@ -4974,74 +4974,127 @@ CraggyCoast_Text_CharlesPostBattle:
 	.string "using the pokemon that seem best,\l"
 	.string "but the pokemon you like most.$"
 
-CraggyCoast_Text_YunaIntro:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_YunaIntro:
+	.string "The spirits shall guide me!$"
 
-CraggyCoast_Text_YunaDefeated:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_YunaDefeated:
+	.string "The spirits have forsaken me…$"
 
-CraggyCoast_Text_YunaPostBattle:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_YunaPostBattle:
+	.string "These mists are swirling with the\n"
+	.string "spirits of the dead…$"
 
-CraggyCoast_Text_JasonIntro:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_JasonIntro:
+	.string "I have come here to commune with\n"
+	.string "the afterlife.$"
 
-CraggyCoast_Text_JasonDefeated:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_JasonDefeated:
+	.string "Will you be stuck on this planet\n"
+	.string "when you die?$"
 
-CraggyCoast_Text_JasonPostBattle:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_JasonPostBattle:
+	.string "I will join these spirits someday…$"
 
-CraggyCoast_Text_RodetteIntro:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_RodetteIntro:
+	.string "Scary places are the best to me.\n"
+	.string "I'd love to live in a cemetery…$"
 
-CraggyCoast_Text_RodetteDefeated:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_RodetteDefeated:
+	.string "In a cemetery where the party begins\n"
+	.string "after the day ends…$"
 
-CraggyCoast_Text_RodettePostBattle:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_RodettePostBattle:
+	.string "I'm not scared by this forest.\n"
+	.string "I feel right at home…$"
 
-CraggyCoast_Text_TyroneIntro:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_TyroneIntro:
+    .string "Does my unseen power scare you?$"
 
-CraggyCoast_Text_TyroneDefeated:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_TyroneDefeated:
+    .string "I never foresaw this!$"
 
-CraggyCoast_Text_TyronePostBattle:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_TyronePostBattle:
+    .string "In a battle of equals, the one\n"
+    .string "with the stronger will wins.\p"
 
-CraggyCoast_Text_LunaIntro:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_LunaIntro:
+    .string "You understand, don't you?\p"
+    .string "That power alone isn't enough to\n"
+    .string "win in the world of Pokémon?$"
 
-CraggyCoast_Text_LunaDefeated:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_LunaDefeated:
+    .string "Not good enough!$"
 
-CraggyCoast_Text_LunaPostBattle:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_LunaPostBattle:
+    .string "I have much to learn still…\p"
 
-CraggyCoast_Text_MelanieIntro:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_MelanieIntro:
+    .string "I think there is a mysterious power\n"
+    .string "at work in this forest.$"
 
-CraggyCoast_Text_MelanieDefeated:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_MelanieDefeated:
+	.string "My spirits are not powerful enough.$"
 
-CraggyCoast_Text_MelaniePostBattle:
-	.string "\n"
-	.string "$"
+FrostyForest_Text_MelaniePostBattle:
+    .string "Once, a boy went to the frozen lake.\n"
+    .string "He never returned…$"
+
+FrostbiteField_Text_NeraIntro:
+	.string "The forest sprits… They are trying\n"
+	.string "to escape. But I won't let them.$"
+
+FrostbiteField_Text_NeraDefeated:
+	.string "You seem posessed… No mortal can\n"
+	.string "be this good…$"
+
+FrostbiteField_Text_NeraPostBattle:
+	.string "I need to get out of here soon…\n"
+	.string "Danger is near…$"
+
+FrostbiteField_Text_ArnoldIntro:
+	.string "Be prepared for anything and more!\n"
+	.string "Let me see how strong you are!$"
+
+FrostbiteField_Text_ArnoldDefeated:
+	.string "Oh, you are quite strong!\n"
+	.string "But are you prepared?$"
+
+FrostbiteField_Text_ArnoldPostBattle:
+	.string "I'll head to Frosty Forest and\n"
+	.string "train some more.$"
+
+FrostbiteField_Text_DeoIntro:
+	.string "From behind a tree I challenge thee!$"
+
+FrostbiteField_Text_DeoDefeated:
+	.string "I can hide from trainers, but not\n"
+	.string "from defeat…$"
+
+FrostbiteField_Text_DeoPostBattle:
+	.string "Did you think I was a pokeball?\n"
+	.string "Concealment is my profession.$"
+
+FrostbiteField_Text_MalcolmIntro:
+	.string "Why do I climb mountains?\n"
+	.string "Because they're there.\p"
+	.string "Why do I train pokemon?\n"
+	.string "Because they're there!$"
+
+FrostbiteField_Text_MalcolmDefeated:
+	.string "Losses…\n"
+	.string "They're there too!$"
+
+FrostbiteField_Text_MalcolmPostBattle:
+	.string "The best thing to ever happen\n"
+	.string "to me was discovering pokemon.$"
+
+FrostbiteField_Text_MauriceIntro:
+	.string "My pokemon are power packed!$"
+
+FrostbiteField_Text_MauriceDefeated:
+	.string "Wahaha! I'm the big loser!$"
+
+FrostbiteField_Text_MauricePostBattle:
+	.string "I'm not much good with thinking,\n"
+	.string "see?\p"
+	.string "So, I just plow ahead with power!$"

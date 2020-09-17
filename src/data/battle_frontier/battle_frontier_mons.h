@@ -1375,7 +1375,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_BEEDRILL_1] = { // Beedrill-KnockOff
         .species = SPECIES_BEEDRILL,
@@ -8823,14 +8823,3 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ability = 1
     }
 };
-    /*
-    [FRONTIER_MON_OVERLORD] = { Overlord-Ryu
-        .species = SPECIES_OVERLORD,
-        .moves = {MOVE_EXECUTE, MOVE_SWAG, MOVE_DISINTEGRATE, MOVE_NO_U},
-        .heldItem = ITEM_SLEDGEHAMMER,
-        .evSpread = F_EV_SPREAD_HP | F_EV_SPREAD_HP | F_EV_SPREAD_DEFENSE,
-        .nature = NATURE_BOOMER,
-        .ivs = 69,
-        .ability = 420
-    }
-    */

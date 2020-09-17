@@ -3422,12 +3422,12 @@ static const struct TrainerMonItemCustomMoves sParty_Phoebe[] = {
 	.moves = {MOVE_EARTHQUAKE, MOVE_REAPING_BLOW, MOVE_STONE_EDGE, MOVE_CLOSE_COMBAT},
 	},
 	{
-	.iv = 255,
+	.iv = 223,
 	.lvl = 91,
-	.species = SPECIES_DOUBLADE,
-	.heldItem = ITEM_EVIOLITE,
+	.species = SPECIES_COFAGRIGUS,
+	.heldItem = ITEM_LEFTOVERS,
 	.ability = 0,
-	.moves = {MOVE_GYRO_BALL, MOVE_REAPING_BLOW, MOVE_SHADOW_SNEAK, MOVE_SWORDS_DANCE},
+	.moves = {MOVE_SHADOW_BALL, MOVE_HIDDEN_POWER, MOVE_TRICK_ROOM, MOVE_NASTY_PLOT},
 	}
 };
 
@@ -3451,10 +3451,10 @@ static const struct TrainerMonItemCustomMoves sParty_Glacia[] = {
 	{
 	.iv = 250,
 	.lvl = 92,
-	.species = SPECIES_SEALEO,
-	.heldItem = ITEM_EVIOLITE,
-	.ability = 1,
-	.moves = {MOVE_BLIZZARD, MOVE_SURF, MOVE_SUBSTITUTE, MOVE_SLACK_OFF},
+	.species = SPECIES_AVALUGG,
+	.heldItem = ITEM_DRY_ICE,
+	.ability = 0,
+	.moves = {MOVE_AVALANCHE, MOVE_EARTHQUAKE, MOVE_CURSE, MOVE_RECOVER},
 	},
 	{
 	.iv = 250,
@@ -9798,6 +9798,76 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Melanie[] = {
     .iv = 0,
     .lvl = 69,
     .species = SPECIES_DRIFBLIM,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Nera[] = {
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_YAMASK,
+    },
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_COFAGRIGUS,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Arnold[] = {
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_PILOSWINE,
+    },
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_BEARTIC,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Deo[] = {
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_SNEASEL,
+    },
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_WEAVILE,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Malcolm[] = {
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_AURORUS,
+    },
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_CRABOMINABLE,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Maurice[] = {
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_GRAVELER,
+    },
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_CRYOGONAL,
+    },
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_MAMOSWINE,
     }
 };
 

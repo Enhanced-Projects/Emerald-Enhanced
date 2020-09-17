@@ -738,7 +738,7 @@
 // Event Flags
 #define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
 #define FLAG_HIDE_APPRENTICE                                        0x2BD
-#define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE // EE-Unused
+#define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF // EE-Unused
 #define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x2C0 // EE-Unused
 #define FLAG_HIDE_UNION_ROOM_PLAYER_3                               0x2C1 // EE-Unused
@@ -803,7 +803,7 @@
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_TRUCK                 0x2FA // EE-Unused
 #define FLAG_HIDE_DEOXYS                                            0x2FB
 #define FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE                      0x2FC
-#define FLAG_HIDE_MAUVILLE_CITY_SCOTT                               0x2FD
+#define FLAG_HIDE_MAUVILLE_CITY_SCOTT                               0x2FD // EE-Unused
 #define FLAG_HIDE_VERDANTURF_TOWN_SCOTT                             0x2FE
 #define FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT                  0x2FF
 #define FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE                        0x300

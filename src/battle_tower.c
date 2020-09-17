@@ -3640,7 +3640,7 @@ void RyuGiveFrontierMon(void)
 {
     s32 count;
     s32 evs[NUM_STATS];
-    u8 level = 50;
+    u8 level = 100;
     u8 level2 = 0;
     u8 i, temp;
     u8 party_id = CalculatePlayerPartyCount();
