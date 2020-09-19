@@ -32,6 +32,7 @@ RCR_FollowerIntroSetup::
 	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, RCR_FollowerBrendanIntro
 	case OBJ_EVENT_GFX_LEAF, RCR_FollowerLeafIntro
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, RCR_FollowerCourtneyIntro
+	case OBJ_EVENT_GFX_NURSE, RCR_FollowerJoyIntro
 	return
 
 
@@ -651,6 +652,11 @@ RCR_FollowerCourtneyIntro::
 	waitmoncry
 	return
 
+RCR_FollowerJoyIntro::
+	msgbox FJoyMsg
+	closemessage
+	return
+
 
 @==================challenger Text
 
@@ -853,6 +859,12 @@ FCourtneyMsg:
     .string "voyeur... But hurting people in\p"
     .string "such a public way really excites me.\p"
     .string "My pupper is hungry!$"
+
+FJoyMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, you brought me all the way to\n"
+	.string "the Championship... I'm not really\p"
+	.string "cut out for this, but I'm here\n"
+	.string "to support you any way I can!$"
 
 
 
