@@ -65,14 +65,14 @@ OpeningPokeEdit:
 
 RyuDebug_money::
 	setvar VAR_TEMP_A, 32000
-    addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
+    givemoney VAR_TEMP_A
+	givemoney VAR_TEMP_A
+	givemoney VAR_TEMP_A
+	givemoney VAR_TEMP_A
+	givemoney VAR_TEMP_A
+	givemoney VAR_TEMP_A
+	givemoney VAR_TEMP_A
+	givemoney VAR_TEMP_A
 	msgbox RyuDebug_money_text MSGBOX_DEFAULT
 	return
 
@@ -186,7 +186,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	msgbox exampletext
+	goto r103_SpecialBattleTest
 	release
 	end
 
