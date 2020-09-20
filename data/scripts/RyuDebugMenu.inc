@@ -186,15 +186,9 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGNURSE
-	waitbuttonpress
-	clearfullscreenimage
-	buffernumberstring 0, SCENEBGNURSE
-	msgbox RDB_TempVarsViewMsg
-	setflag FLAG_RYU_DS_JOY_PARTNERS
-	setflag FLAG_RYU_DS_HAS_PARTNER
-	fadescreen FADE_FROM_BLACK
+	giveitem ITEM_ARTEFACT_1
+	giveitem ITEM_ARTEFACT_2
+	giveitem ITEM_ARTEFACT_3
 	release
 	end
 

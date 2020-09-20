@@ -2308,8 +2308,8 @@ static const u8 sArtefact3Desc[] = _(
 
 static const u8 sDryIceDesc[] = _(
     "A piece of ice that\n"
-    "boosts the defenses\n"
-    "of Ice types.");
+    "makes Ice types\n"
+    "take less damage.");
 
 static const u8 sOldKeyDesc[] = _(
     "An old key used to open\n"

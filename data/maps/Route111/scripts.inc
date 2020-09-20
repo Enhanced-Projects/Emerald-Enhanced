@@ -117,39 +117,8 @@ Route111_EventScript_HidePlayerForMirageTower:: @ 81F0E50
 	end
 
 Route111_OnFrame: @ 81F0E56
-	map_script_2 VAR_MIRAGE_TOWER_STATE, 1, Route111_EventScript_MirageTowerDisappear
 	map_script_2 VAR_RYU_MAGMA, 150, R111_ResumeMagmaScene
 	.2byte 0
-
-Route111_EventScript_MirageTowerDisappear:: @ 81F0E60
-	lockall
-	special StartMirageTowerShake
-	waitstate
-	delay 24
-	playse SE_RU_HYUU
-	addobject 45
-	special StartPlayerDescendMirageTower
-	waitstate
-	showobjectat OBJ_EVENT_ID_PLAYER, MAP_LITTLEROOT_TOWN
-	removeobject 45
-	delay 16
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
-	delay 16
-	special StartMirageTowerDisintegration
-	waitstate
-	special StartMirageTowerFossilFallAndSink
-	waitstate
-	setvar VAR_MIRAGE_TOWER_STATE, 2
-	clearflag FLAG_HIDE_DESERT_UNDERPASS_FOSSIL
-	goto_if_set FLAG_CHOSE_CLAW_FOSSIL, Route111_EventScript_RootFossilDisappeared
-	msgbox Route111_Text_ClawFossilDisappeared, MSGBOX_DEFAULT
-	releaseall
-	end
-
-Route111_EventScript_RootFossilDisappeared:: @ 81F0EA7
-	msgbox Route111_Text_RootFossilDisappeared, MSGBOX_DEFAULT
-	releaseall
-	end
 
 @ Unused
 Route111_Movement_PlayerFall:: @ 81F0EB1
