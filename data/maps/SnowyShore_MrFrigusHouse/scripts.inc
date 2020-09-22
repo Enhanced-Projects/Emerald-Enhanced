@@ -47,8 +47,9 @@ SnowyShore_MrFrigusHouse_PlayerHasAllArtefacts::
 	removeitem ITEM_ARTEFACT_1, 1
 	removeitem ITEM_ARTEFACT_2, 1
 	removeitem ITEM_ARTEFACT_3, 1
-	giveitem ITEM_DRY_ICE
 	giveitem ITEM_SHINY_CHARM @placeholder for Oval Charm
+	msgbox SnowyShore_MrFrigusHouse_Text_TakeThisToo MSGBOX_DEFAULT
+	giveitem ITEM_DRY_ICE
 	setflag FLAG_FRIGUS_QUEST_COMPLETED
 	release
 	end
@@ -59,8 +60,16 @@ SnowyShore_MrFrigusHouse_Text_Introduction:
 	.string "willing to help me with something?$"
 
 SnowyShore_MrFrigusHouse_Text_ExplainQuest:
-	.string "explains\n"
-	.string "explains$"
+	.string "I am an archeologist. When I was\n"
+	.string "younger, I traveled across snowy\l"
+	.string "regions in search for treasure.\p"
+	.string "But when I came here to look for\n"
+	.string "the Three Artefacts, I got injured.\p"
+	.string "That's why I've settled here.\p"
+	.string "Now, are you capable of finding\n"
+	.string "the Three Artefacts for me?\p"
+	.string "I will reward you with something\n"
+	.string "I found on one of my journeys.$"
 
 SnowyShore_MrFrigusHouse_Text_ComeBackIf:
 	.string "Okay, come back if you change your\n"
@@ -71,10 +80,14 @@ SnowyShore_MrFrigusHouse_Text_LooksLike:
 	.string "artefacts yet. Keep searching!$"
 
 SnowyShore_MrFrigusHouse_Text_YouveDoneIt:
-	.string "You've done it! All of my ancestors'\n"
-	.string "artefacts reunited.\p"
+	.string "You've done it! All three of the\n"
+	.string "ancient artefacts.\p"
 	.string "I am very grateful, please take\n"
-	.string "these items as reward.$"
+	.string "this Charm as reward.$"
+
+SnowyShore_MrFrigusHouse_Text_TakeThisToo:
+	.string "Here, take this too. It will boost\n"
+	.string "your Ice type pokemon.$"
 
 @=============================================================================================Dry Ice exchange
 
