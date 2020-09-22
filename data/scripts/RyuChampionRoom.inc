@@ -32,6 +32,7 @@ RCR_FollowerIntroSetup::
 	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, RCR_FollowerBrendanIntro
 	case OBJ_EVENT_GFX_LEAF, RCR_FollowerLeafIntro
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, RCR_FollowerCourtneyIntro
+	case OBJ_EVENT_GFX_NURSE, RCR_FollowerJoyIntro
 	return
 
 
@@ -48,6 +49,7 @@ RyuChampionThroneStart::
 	case TRAINER_REL_LANA, RCR_Lana
 	case TRAINER_REL_LANETTE, RCR_Lanette
 	case TRAINER_REL_COURTNEY_2, RCR_Courtney
+	case TRAINER_REL_NURSE, RCR_Joy
 	
 RCR_SoloChamp::
 	closemessage
@@ -251,6 +253,18 @@ RCR_Courtney::
 	call RCR_ChooseOpponent
 	goto RCR_SetUpBattle
 
+RCR_Joy::
+	closemessage
+	addobject 18
+	applymovement 18, RCR_PartnerToPlayer
+	waitmovement 18
+	applymovement 18, Common_Movement_HeartEmote
+	waitmovement 18
+	msgbox RCR_Joy_Intromsg
+	closemessage
+	call RCR_ChooseOpponent
+	goto RCR_SetUpBattle
+
 	
 RCR_SetUpBattle::
 	playse SE_DOOR
@@ -281,7 +295,7 @@ RCR_ChallengerSteven::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	call_if_eq RCR_ChooseValidMons
-	multi_2_vs_1 TRAINER_SIDNEY, RCR_Steven_DefeatText, VAR_0x8008, VAR_0x8009
+	multi_2_vs_1 TRAINER_STEVEN, RCR_Steven_DefeatText, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
@@ -491,7 +505,7 @@ RCR_FinishChallenge::
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq EventScript_WhiteOut
+	goto_if_eq Ryu_PlayerLostTheGame
 	call Ryu_CheckForPartnerReward
 	applymovement OBJ_EVENT_ID_PLAYER, RCR_ToHOF
 	applymovement OBJ_EVENT_ID_FOLLOWER, RCR_ToHOF
@@ -638,6 +652,11 @@ RCR_FollowerCourtneyIntro::
 	waitmoncry
 	return
 
+RCR_FollowerJoyIntro::
+	msgbox FJoyMsg
+	closemessage
+	return
+
 
 @==================challenger Text
 
@@ -648,7 +667,7 @@ RyuGivesMawilite:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ryu: Nice! I was cheating and\n"
 	.string "you still won!\p"
 	.string "Congratulations on beating the final\n"
-	.string "boss of EMERALD ENHANCED.\p"
+	.string "boss of Emerald Enhanced.\p"
 	.string "Here, take this mega stone, it's\n"
 	.string "for my favorite pokemon!$"
 
@@ -785,6 +804,12 @@ RCR_Courtney_Intromsg:
     .string "But since I'm here, Let's hurt some\n"
     .string "people!$"
 
+RCR_Joy_Intromsg:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Normally, I stand by just in case\n"
+    .string "someone needs healing, but\p"
+    .string "actually being in the battle\n"
+    .string "is a differnet thing entirely!$"
+
 RCR_PlayerPartnerQuery:
 	.string "{COLOR DARK_GREY}{SHADOW RED}Would you like to have one of your\npartners help you defend your title?$"
 
@@ -814,7 +839,7 @@ FDawnMsg:
     .string "glad that I can be here with you.\p"
     .string "It's so surreal, being here in the\n"
     .string "Hoenn Champion room...\p"
-    .string "Well... LET'S GO!!$"
+    .string "Well... Let'S GO!!$"
 
 FBrendanMsg:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Not gonna lie, I expected\n"
@@ -834,6 +859,12 @@ FCourtneyMsg:
     .string "voyeur... But hurting people in\p"
     .string "such a public way really excites me.\p"
     .string "My pupper is hungry!$"
+
+FJoyMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, you brought me all the way to\n"
+	.string "the Championship... I'm not really\p"
+	.string "cut out for this, but I'm here\n"
+	.string "to support you any way I can!$"
 
 
 

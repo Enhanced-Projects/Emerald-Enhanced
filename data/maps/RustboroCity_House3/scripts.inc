@@ -27,11 +27,11 @@ RustboroCity_House3_Text_IGivePerfectlySuitedNicknames: @ 82161B6
 	.string "originality, yes, that's it!$"
 
 RustboroCity_House3_Text_NamingPikachuPekachu: @ 821622A
-	.string "But giving the name PEKACHU to\n"
-	.string "a PIKACHU? It seems pointless.\p"
+	.string "But giving the name Pekachu to\n"
+	.string "a Pikachu? It seems pointless.\p"
 	.string "I suppose it is good to use a name\n"
 	.string "that's easy to understand, but…$"
 
 RustboroCity_House3_Text_Pekachu: @ 82162AB
-	.string "PEKACHU: Peka!$"
+	.string "Pekachu: Peka!$"
 

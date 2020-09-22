@@ -358,7 +358,7 @@ PetalburgWoods_Text_YouveGotSomeNerve: @ 822E563
 	.string "I wish I could say that, but I'm out of\n"
 	.string "Pokémon…\p"
 	.string "And, hey, we of Team Aqua are also\n"
-	.string "after something in RUSTBORO.\p"
+	.string "after something in Rustboro.\p"
 	.string "I'll let you go today!$"
 
 PetalburgWoods_Text_ThatWasAwfullyClose: @ 822E63D
@@ -372,7 +372,7 @@ PetalburgWoods_Text_ThatWasAwfullyClose: @ 822E63D
 PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro: @ 822E6C7
 	.string "Didn't that Team Aqua thug say\n"
 	.string "they were after something in\l"
-	.string "RUSTBORO, too?$"
+	.string "Rustboro, too?$"
 
 PetalburgWoods_Text_ICantBeWastingTime: @ 822E712
 	.string "Uh-oh! It's a crisis!\n"
@@ -385,7 +385,7 @@ PetalburgWoods_Text_YoureLoadedWithItems: @ 822E741
 PetalburgWoods_Text_GoBugPokemonTeam: @ 822E77D
 	.string "I caught a whole bunch of Pokémon!\p"
 	.string "Go, go, go!\n"
-	.string "My BUG Pokémon team!$"
+	.string "My Bug Pokémon team!$"
 
 PetalburgWoods_Text_ICouldntWin: @ 822E7C1
 	.string "I have all these Pokémon,\n"
@@ -396,28 +396,28 @@ PetalburgWoods_Text_ImOutOfPokeBalls: @ 822E7EF
 	.string "Now I'm out ofPoké Balls.$"
 
 PetalburgWoods_Text_InstantlyPopularWithBugPokemon: @ 822E827
-	.string "If you take BUG Pokémon to school,\n"
+	.string "If you take Bug Pokémon to school,\n"
 	.string "you get to be instantly popular!$"
 
 PetalburgWoods_Text_CantBePopularIfILose: @ 822E86B
 	.string "I can't be popular if I lose.$"
 
 PetalburgWoods_Text_PeopleRespectYou: @ 822E889
-	.string "If you have a big BUG Pokémon,\n"
+	.string "If you have a big Bug Pokémon,\n"
 	.string "people respect you for it.$"
 
 PetalburgWoods_Text_IWantRematch1: @ 822E8C3
-	.string "I want a rematch when my BUG\n"
+	.string "I want a rematch when my Bug\n"
 	.string "Pokémon grow up!\p"
 	.string "I'm registering you in my Pokénav!$"
 
 PetalburgWoods_Text_IWantRematch2: @ 822E914
-	.string "I want a rematch when my BUG \n"
+	.string "I want a rematch when my Bug \n"
 	.string "Pokémon grow up!\p"
 	.string "I'm registering you in my Pokénav!$"
 
 PetalburgWoods_Text_MyPokemonHaveGrown: @ 822E966
-	.string "My BUG Pokémon have grown.\n"
+	.string "My Bug Pokémon have grown.\n"
 	.string "I'll be popular again.$"
 
 PetalburgWoods_Text_CantBePopularIfLose: @ 822E998
@@ -456,11 +456,11 @@ PetalburgWoods_Text_MiracleSeedExplanation: @ 822EB63
 PetalburgWoods_Text_TrainerTipsExperience: @ 822EC10
 	.string "Trainer Tips\p"
 	.string "Any Pokémon that appears even once\n"
-	.string "in a battle is awarded EXP Points.\p"
+	.string "in a battle is awarded Exp Points.\p"
 	.string "To raise a weak Pokémon, put it at the\n"
 	.string "left of the team list.\p"
 	.string "As soon as a battle starts, switch it\n"
-	.string "out. It will earn EXP Points without\l"
+	.string "out. It will earn Exp Points without\l"
 	.string "being exposed to any harm.$"
 
 PetalburgWoods_Text_TrainerTipsPP: @ 822ED07

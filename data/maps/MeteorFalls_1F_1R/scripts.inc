@@ -684,7 +684,7 @@ MF_PlayerWonVsMagma:
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} I should have known you\n"
     .string "wouldn't put on much of a fight.\p"
     .string "You avoid people your own size\n"
-    .string "because you KNOW you will get\p"
+    .string "because you Know you will get\p"
     .string "destroyed. Get out of here before\n"
     .string "I have my {STR_VAR_1} turn you\l"
     .string "into a fine red mist.\p"

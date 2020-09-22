@@ -248,7 +248,7 @@ Pidgey_NPCText:
     .string "Hello my name is Pidgey.\p"
     .string "i'm not actually a Pidgey but that's\p"
     .string "what most people on Discord call me!\p"
-    .string "I added this NPC as an easter egg\p"
+    .string "I added this Npc as an easter egg\p"
     .string "without the permission of Ryuhouji!\p"
     .string "Anyways i wanted to know if this\p"
     .string "would slip under his radar or not.\p"
@@ -323,7 +323,7 @@ LRT_HAREM_INTRO_Shelly:
     .string "artifact imported from Kalos.$"
 	
 LRT_HAREM_INTRO_Lanette:
-    .string "Lanette:{COLOR LIGHT_RED}{SHADOW RED} I researched for HOURS to\n"
+    .string "Lanette:{COLOR LIGHT_RED}{SHADOW RED} I researched for Hours to\n"
     .string "track it down!$"
 	
 LRT_HAREM_INTRO_Lana:

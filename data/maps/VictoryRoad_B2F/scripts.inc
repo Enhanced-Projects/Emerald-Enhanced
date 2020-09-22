@@ -55,7 +55,7 @@ VictoryRoad_B2F_Text_OwenDefeat: @ 8236A92
 
 VictoryRoad_B2F_Text_OwenPostBattle: @ 8236AAE
 	.string "The rumors I heard, that tough little\n"
-	.string "kid is from PETALBURG CITY.$"
+	.string "kid is from Petalburg City.$"
 
 VictoryRoad_B2F_Text_CarolineIntro: @ 8236AF0
 	.string "You must be getting a little tired.$"
@@ -64,7 +64,7 @@ VictoryRoad_B2F_Text_CarolineDefeat: @ 8236B14
 	.string "No signs of tiring at all!$"
 
 VictoryRoad_B2F_Text_CarolinePostBattle: @ 8236B2F
-	.string "VICTORY ROAD and the Pokémon League\n"
+	.string "Victory Road and the Pokémon League\n"
 	.string "are long and grueling challenges.\l"
 	.string "Beware of fatigue!$"
 

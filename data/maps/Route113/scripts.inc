@@ -164,21 +164,21 @@ Route113_Text_FunWalkingThroughAsh: @ 81F23CA
 	.string "really neat!$"
 
 Route113_Text_RouteSign111: @ 81F2440
-	.string "ROUTE 113\n"
+	.string "Route 113\n"
 	.string "{RIGHT_ARROW} ROUTE 111$"
 
 Route113_Text_RouteSignFallarbor: @ 81F2456
-	.string "ROUTE 113\n"
+	.string "Route 113\n"
 	.string "{LEFT_ARROW} FALLARBOR TOWN$"
 
 Route113_Text_TrainerTipsRegisterKeyItems: @ 81F2471
 	.string "Trainer Tips\p"
-	.string "You may register one of the KEY ITEMS\n"
-	.string "in your Pack as SELECT.\p"
-	.string "Simply press SELECT to use\n"
+	.string "You may register one of the Key Items\n"
+	.string "in your Pack as Select.\p"
+	.string "Simply press Select to use\n"
 	.string "the registered item conveniently.$"
 
 Route113_Text_GlassWorkshopSign: @ 81F24F8
-	.string "GLASS WORKSHOP\n"
+	.string "Glass Workshop\n"
 	.string "“Turning Volcanic Ash into Glass Items”$"
 

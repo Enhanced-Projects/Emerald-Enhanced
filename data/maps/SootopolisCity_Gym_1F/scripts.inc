@@ -556,7 +556,7 @@ SootopolisCity_Gym_1F_EventScript_GymStatue:: @ 8225089
 SootopolisCity_Gym_1F_Text_GymGuideAdvice: @ 8225093
 	.string "Yo! How's it going, Champion-\n"
 	.string "bound {PLAYER}?\p"
-	.string "SOOTOPOLIS's Gym Leader Juan is\n"
+	.string "Sootopolis's Gym Leader Juan is\n"
 	.string "a master of WATER-type Pokémon.\p"
 	.string "And, to get to Juan, an icy floor\n"
 	.string "will hamper your progress…\p"
@@ -596,18 +596,18 @@ SootopolisCity_Gym_1F_Text_ReceivedRainBadge: @ 8225598
 	.string "from Juan.$"
 
 SootopolisCity_Gym_1F_Text_ExplainRainBadgeTakeThis: @ 82255BE
-	.string "Having the RAIN badge shall assure you\n"
+	.string "Having the Rain badge shall assure you\n"
 	.string "the full obedience of all your Pokémon\l"
 	.string "to your every command.\p"
-	.string "The RAIN badge also allows the use\n"
-	.string "of the HM move WATERFALL to scale\l"
+	.string "The Rain badge also allows the use\n"
+	.string "of the HM move Waterfall to scale\l"
 	.string "walls of cascading water.\p"
 	.string "And, so that you never forget the\n"
 	.string "battle we shared, take this…$"
 
 SootopolisCity_Gym_1F_Text_ExplainWaterPulse: @ 82256C1
-	.string "The TECHNICAL MACHINE I handed you\n"
-	.string "contains WATER PULSE.\p"
+	.string "The Technical Machine I handed you\n"
+	.string "contains Water Pulse.\p"
 	.string "In use, it will occasionally confuse\n"
 	.string "the target with ultrasonic waves.\p"
 	.string "… … … … … …$"
@@ -622,7 +622,7 @@ SootopolisCity_Gym_1F_Text_JuanPostBattle: @ 8225778
 	.string "way to the ultimate destination.\p"
 	.string "The Pokémon League.\p"
 	.string "Travel to the easternmost reaches\n"
-	.string "of Hoenn, to the island EVER GRANDE.\p"
+	.string "of Hoenn, to the island Ever Grande.\p"
 	.string "There, you shall find the Pokémon\n"
 	.string "League.$"
 
@@ -631,7 +631,7 @@ SootopolisCity_Gym_1F_Text_GoGetFortreeBadge: @ 8225865
 	.string "obtain in Hoenn.\p"
 	.string "If you wish to challenge the Pokémon\n"
 	.string "League, you must obtain the last\l"
-	.string "badge from the Gym in FORTREE.$"
+	.string "badge from the Gym in Fortree.$"
 
 SootopolisCity_Gym_1F_Text_GymStatue: @ 82258FA
 	.string "Sootopolis City Pokémon Gym$"

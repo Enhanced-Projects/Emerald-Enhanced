@@ -287,7 +287,7 @@ TH_TM_2:
 	.string "Another visitor?$"
 	
 TH_TM_3:
-	.string "Stranger: Ah,\nso you brought a friend along?\pSplendid! Welcome friend. This home\nbelongs to none other than the\lgreatest mystery man of all Hoenn.\pMe...the one and only\nTRICK MASTER!$"
+	.string "Stranger: Ah,\nso you brought a friend along?\pSplendid! Welcome friend. This home\nbelongs to none other than the\lgreatest mystery man of all Hoenn.\pMe...the one and only\nTRICK Master!$"
 	
 TH_Event1:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lana claps while you stand,\n contemplating life's choices...)\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Come now, why the blank face?\nSurely you've heard of me.\l"
@@ -1038,12 +1038,12 @@ Route110_TrickHouseEntrance_Text_TheyCallMeTrickMaster: @ 826A709
 	.string "For I am the greatest living mystery\n"
 	.string "of a man in all of Hoenn!\l"
 	.string "They call me…\p"
-	.string "The TRICK MASTER!\n"
+	.string "The Trick Master!\n"
 	.string "Wahahaha! Glad to meet you!$"
 
 Route110_TrickHouseEntrance_Text_ComeToChallengeTrickHouse: @ 826A78C
 	.string "You, you've come to challenge\n"
-	.string "my TRICK HOUSE, haven't you?\p"
+	.string "my Trick House, haven't you?\p"
 	.string "That's why you're here, isn't it?\n"
 	.string "Yes, it is!\p"
 	.string "Consider your challenge accepted!\p"
@@ -1061,7 +1061,7 @@ Route110_TrickHouseEntrance_Text_GoInHoleBehindScroll: @ 826A887
 Route110_TrickHouseEntrance_Text_LeavingOnJourneyNote: @ 826A8BD
 	.string "There is a note affixed to the scroll…\p"
 	.string "“I am leaving on a journey.\n"
-	.string "Don't look for me. TRICK MASTER”$"
+	.string "Don't look for me. Trick MASTER”$"
 
 Route110_TrickHouseEntrance_Text_NextTimeUseThisTrick: @ 826A921
 	.string "For the next time, I'll use this trick,\n"
@@ -1091,18 +1091,18 @@ Route110_TrickHouseEntrance_Text_DidYouNotComeToClaimReward: @ 826AB00
 	.string "Did you not come to claim your reward?$"
 
 Route110_TrickHouseEntrance_Text_MechadollWhichTent: @ 826AB2C
-	.string "MECHADOLL 5 I AM!\n"
-	.string "IF REWARD IS NOT TAKEN BY YOU,\l"
-	.string "THEN TRICK MASTER YOU CANNOT FOLLOW.\p"
-	.string "RED TENT OR BLUE TENT,\n"
-	.string "WHICH DO YOU PREFER?$"
+	.string "Mechadoll 5 I AM!\n"
+	.string "IF Reward IS Not Taken BY You,\l"
+	.string "Then Trick Master You Cannot Follow.\p"
+	.string "Red Tent OR Blue Tent,\n"
+	.string "Which DO You Prefer?$"
 
 Route110_TrickHouseEntrance_Text_ThenFarewell: @ 826ABAE
-	.string "THEN FAREWELL.$"
+	.string "Then Farewell.$"
 
 Route110_TrickHouseEntrance_Text_PCFullAgain: @ 826ABBD
-	.string "YOUR PC STATUS: FULL AGAIN.\n"
-	.string "MEAN, YOU ARE.$"
+	.string "Your PC Status: Full Again.\n"
+	.string "Mean, You Are.$"
 
 Route110_TrickHousePuzzle_Text_FoundAScroll: @ 826ABE8
 	.string "{PLAYER} found a scroll.$"

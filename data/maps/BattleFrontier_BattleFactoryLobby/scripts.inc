@@ -457,7 +457,7 @@ BattleFrontier_BattleFactoryLobby_Text_ExplainDoublesChallenge: @ 8259058
 
 BattleFrontier_BattleFactoryLobby_Text_CongratsForDefeatingHead: @ 825926A
 	.string "Congratulations for defeating\n"
-	.string "the FACTORY HEAD and winning\l"
+	.string "the Factory Head and winning\l"
 	.string "seven matches in a row!$"
 
 BattleFrontier_BattleFactoryLobby_Text_AwardBattlePoints: @ 82592BD

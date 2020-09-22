@@ -131,18 +131,18 @@ MagmaHideout_4F_EventScript_Courtney:: @ 823A6D1
 	end
 
 MagmaHideout_4F_Text_Grunt11Intro: @ 823A6E8
-	.string "I want to see GROUDON, too, but they\n"
+	.string "I want to see Groudon, too, but they\n"
 	.string "won't let me see even its tail…\p"
 	.string "It's got me feeling really frustrated.\p"
 	.string "Oh, no!\n"
-	.string "I blabbed about GROUDON!$"
+	.string "I blabbed about Groudon!$"
 
 MagmaHideout_4F_Text_Grunt11Defeat: @ 823A775
 	.string "I guess it's impossible to win if one\n"
 	.string "doesn't have a calm mind…$"
 
 MagmaHideout_4F_Text_Grunt11PostBattle: @ 823A7B5
-	.string "I wonder if GROUDON even has a tail?$"
+	.string "I wonder if Groudon even has a tail?$"
 
 MagmaHideout_4F_Text_Grunt12Intro: @ 823A7DA
 	.string "Fuhahaha!\n"
@@ -154,7 +154,7 @@ MagmaHideout_4F_Text_Grunt12Defeat: @ 823A81B
 	.string "I've come so far, but now this?$"
 
 MagmaHideout_4F_Text_Grunt12PostBattle: @ 823A841
-	.string "MAXIE, sir!\n"
+	.string "Maxie, sir!\n"
 	.string "An intruder is headed your way!$"
 
 MagmaHideout_4F_Text_Grunt13Intro: @ 823A86D
@@ -171,8 +171,8 @@ MagmaHideout_4F_Text_CourtneyIntro: @ 823A8E1
 	.string "Hehehe!\n"
 	.string "You made it this far, so I'll tell you!\p"
 	.string "That's right!\n"
-	.string "Up ahead, GROUDON is sleeping!\p"
-	.string "MAXIE went to GROUDON just seconds\n"
+	.string "Up ahead, Groudon is sleeping!\p"
+	.string "Maxie went to Groudon just seconds\n"
 	.string "ago!\p"
 	.string "It's going to awaken real soon!\n"
 	.string "Hehe! Hehehe!$"
@@ -183,24 +183,24 @@ MagmaHideout_4F_Text_CourtneyDefeat: @ 823A994
 
 MagmaHideout_4F_Text_CourtneyPostBattle: @ 823A9AC
 	.string "…And while you wasted time with me,\n"
-	.string "MAXIE should have awakened GROUDON…$"
+	.string "Maxie should have awakened Groudon…$"
 
 MagmaHideout_4F_Text_MaxieAwakenGroudon: @ 823A9F4
-	.string "Maxie: GROUDON…\p"
+	.string "Maxie: Groudon…\p"
 	.string "Nothing could awaken you from your\n"
 	.string "sleep bathed in magma…\p"
-	.string "This BLUE ORB is what you sought.\n"
+	.string "This Blue Orb is what you sought.\n"
 	.string "Wasn't it?\p"
-	.string "I have brought you the BLUE ORB.\n"
+	.string "I have brought you the Blue Orb.\n"
 	.string "Let its shine awaken you!\p"
 	.string "And show me…\n"
 	.string "Show me the full extent of your power!$"
 
 MagmaHideout_4F_Text_MaxieGroudonWhatsWrong: @ 823AADA
-	.string "Maxie: GROUDON!\n"
+	.string "Maxie: Groudon!\n"
 	.string "What's wrong?\p"
-	.string "Wasn't the BLUE ORB the key?\p"
-	.string "GROUDON!\n"
+	.string "Wasn't the Blue Orb the key?\p"
+	.string "Groudon!\n"
 	.string "Where have you gone…$"
 
 MagmaHideout_4F_Text_MaxieOhItWasYou: @ 823AB33
@@ -216,16 +216,16 @@ MagmaHideout_4F_Text_MaxieDefeat: @ 823ABB5
 
 MagmaHideout_4F_Text_MaxieImGoingAfterGroudon: @ 823ABE2
 	.string "Maxie: There has to be some reason\n"
-	.string "why GROUDON fled…\p"
+	.string "why Groudon fled…\p"
 	.string "That's what you're trying to say,\n"
 	.string "aren't you?\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "Humph…\n"
 	.string "You think I didn't know that?\p"
-	.string "With GROUDON gone, there is no longer\n"
+	.string "With Groudon gone, there is no longer\n"
 	.string "any need for this blasted volcano.\p"
-	.string "I am going after GROUDON, so this\n"
+	.string "I am going after Groudon, so this\n"
 	.string "is where we part!$"
 
 @===========================================ryu aqua
@@ -484,7 +484,7 @@ MH_NormalBoss::
 	.string "It will benefit all of mankind!$"
 	
 MH_MaxieSoloIntro::
-	.string "I will NOT let a child stop me.\p"
+	.string "I will Not let a child stop me.\p"
 	.string "I'm going to defeat you, and then\n"
 	.string "I will force Groudon to reform this\l"
 	.string "world!!$"
@@ -504,7 +504,7 @@ MH_MaxieIntro:
 	
 MH_ShellyAssistIntro:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Maxie and Courtney!\p"
-	.string "Your crazy evil deeds stop NOW!\n"
+	.string "Your crazy evil deeds stop Now!\n"
 	.string "{PLAYER} and I will annihilate you!\p"
 	.string "We won't allow you to destroy the\n"
 	.string "world!$"
@@ -1595,10 +1595,10 @@ MH4_PlayerTakeThis:@courtney gives player maxie's master ball
     .string "Groudon...$"
 
 MH4_CourtneyHowCouldYou:
-	.string "How DARE you steal from ME!\p"
+	.string "How Dare you steal from ME!\p"
     .string "I practially raised you as my own...\n"
     .string "I brought you in from the streets...\l"
-    .string "You were NOTHING before I found you!\p"
+    .string "You were Nothing before I found you!\p"
     .string "I will put an end to your miserable\n"
     .string "existence. Camerupt! use-$"
 

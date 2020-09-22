@@ -903,8 +903,8 @@ rc_femaleRivalBattleIntro: @ 81E1AFA
 	.string "How about a little battle?$"
 
 RustboroCity_Text_WeShortenItToDevon: @ 81E123F
-	.string "The DEVON CORPORATION…\n"
-	.string "We all just shorten it to DEVON.\p"
+	.string "The Devon Corporation…\n"
+	.string "We all just shorten it to Devon.\p"
 	.string "That company makes all sorts of\n"
 	.string "convenient products.$"
 
@@ -921,15 +921,15 @@ RustboroCity_Text_HaveYouChallengedGym: @ 81E130D
 	.string "realize what is required of them.$"
 
 RustboroCity_Text_HeyThatsRustborosGymBadge: @ 81E139E
-	.string "Hey, that's RUSTBORO's Gym Badge!\p"
+	.string "Hey, that's Rustboro's Gym Badge!\p"
 	.string "Out of all the Pokémon Gym Badges,\n"
-	.string "RUSTBORO's is the coolest, I'd say.$"
+	.string "Rustboro's is the coolest, I'd say.$"
 
 RustboroCity_Text_YoureNewAroundHere: @ 81E1407
 	.string "Oh? Who might you be?\n"
 	.string "You're a new face around these parts.\p"
 	.string "Have you just transferred into the\n"
-	.string "Pokémon Trainer's SCHOOL?$"
+	.string "Pokémon Trainer's School?$"
 
 RustboroCity_Text_GymLeaderIsntEasyWithFire: @ 81E1480
 	.string "I challenged the Gym Leader, but…\p"
@@ -939,18 +939,18 @@ RustboroCity_Text_GymLeaderIsntEasyWithFire: @ 81E1480
 	.string "well against ROCK-type Pokémon…$"
 
 RustboroCity_Text_MrBrineyWalksInTheTunnel: @ 81E1520
-	.string "The old sailor MR. BRINEY lives in\n"
+	.string "The old sailor MR. Briney lives in\n"
 	.string "a cottage by the sea.\p"
 	.string "He goes for walks in the tunnel every\n"
 	.string "so often.$"
 
 RustboroCity_Text_MrBrineyLovesPeeko: @ 81E1589
-	.string "The old sailor MR. BRINEY lives in\n"
+	.string "The old sailor MR. Briney lives in\n"
 	.string "a cottage by the sea.\p"
 	.string "He said he was going shopping in\n"
-	.string "SLATEPORT for his pet, PEEKO.\p"
+	.string "Slateport for his pet, Peeko.\p"
 	.string "That old sea dog, he must really love\n"
-	.string "that PEEKO.$"
+	.string "that Peeko.$"
 
 RustboroCity_Text_WowYouHavePokemon: @ 81E1633
 	.string "Wow, you have Pokémon with you, too.\p"
@@ -958,7 +958,7 @@ RustboroCity_Text_WowYouHavePokemon: @ 81E1633
 	.string "places with Pokémon, too.$"
 
 RustboroCity_Text_CatchRarePokemonIfIGoToSchool: @ 81E1695
-	.string "Pokémon Trainer's SCHOOL!\p"
+	.string "Pokémon Trainer's School!\p"
 	.string "If I go to this school, will I be able\n"
 	.string "to catch rare Pokémon easily?$"
 
@@ -983,14 +983,14 @@ RustboroCity_Text_OutOfTheWay: @ 81E17FE
 
 RustboroCity_Text_WaitDontTakeMyGoods: @ 81E1817
 	.string "Wait! Pleeeaaase!\p"
-	.string "Don't take my GOODS!$"
+	.string "Don't take my Goods!$"
 
 RustboroCity_Text_HelpMeIWasRobbed: @ 81E183E
 	.string "Oh, it's you!\p"
 	.string "You're that fantastic Trainer who\n"
-	.string "helped me in PETALBURG WOODS!\p"
+	.string "helped me in Petalburg Woods!\p"
 	.string "Help me! I was robbed by Team Aqua!\n"
-	.string "I have to get the DEVON GOODS back!\p"
+	.string "I have to get the Devon Goods back!\p"
 	.string "If I don't…\n"
 	.string "I'm going to be in serious trouble.$"
 
@@ -1000,7 +1000,7 @@ RustboroCity_Text_ShadyCharacterTookOffTowardsTunnel: @ 81E1904
 
 RustboroCity_Text_YouGotItThankYou: @ 81E194D
 	.string "Oh! How did it go?\n"
-	.string "The DEVON GOODS?\p"
+	.string "The Devon Goods?\p"
 	.string "You did!\n"
 	.string "You got them back!\p"
 	.string "You really are a great Trainer!\p"
@@ -1032,7 +1032,7 @@ RustboroCity_Text_MayDefeat: @ 81E1CC1
 	.string "sharpen my teeth some more.$"
 
 RustboroCity_Text_RegisteredBrendan: @ 81E1E11
-	.string "Registered BRENDAN\n"
+	.string "Registered Brendan\n"
 	.string "in the Pokénav.$"
 
 RustboroCity_Text_BrendanPassedBrineyWantToBattle: @ 81E1E34
@@ -1043,15 +1043,15 @@ RustboroCity_Text_BrendanPassedBrineyWantToBattle: @ 81E1E34
 	.string "far you've progressed?$"
 
 RustboroCity_Text_BrendanNoConfidenceInPokemon: @ 81E1F2F
-	.string "BRENDAN: What's the matter? Don't have\n"
+	.string "Brendan: What's the matter? Don't have\n"
 	.string "any confidence in your Pokémon?$"
 
 RustboroCity_Text_BrendanWantToBattle: @ 81E1F76
-	.string "BRENDAN: What's up?\n"
+	.string "Brendan: What's up?\n"
 	.string "Want to have a battle with me?$"
 
 RustboroCity_Text_BrendanIWontGoEasy: @ 81E1FA9
-	.string "BRENDAN: I know you just became\n"
+	.string "Brendan: I know you just became\n"
 	.string "a Trainer, but I won't go easy!$"
 
 RustboroCity_Text_BrendanDefeat: @ 81E1FE9
@@ -1072,51 +1072,51 @@ RustboroCity_Text_TunnelNearingCompletion: @ 81E20A6
 	.string "across it in red paint…$"
 
 RustboroCity_Text_DevonCorpSign: @ 81E2128
-	.string "DEVON CORPORATION\p"
+	.string "Devon Corporation\p"
 	.string "“For all your living needs, we make\n"
 	.string "it all.”$"
 
 RustboroCity_Text_GymSign: @ 81E2167
-	.string "RUSTBORO CITY Pokémon Gym\n"
-	.string "LEADER: Roxanne\p"
+	.string "Rustboro City Pokémon Gym\n"
+	.string "Leader: Roxanne\p"
 	.string "“The ROCK-loving honors student!”$"
 
 RustboroCity_Text_DevonCorpBranchOfficeSign: @ 81E21B3
-	.string "DEVON CORP. BRANCH OFFICE\p"
-	.string "“Access limited to DEVON employees\n"
+	.string "Devon Corp. Branch Office\p"
+	.string "“Access limited to Devon employees\n"
 	.string "and authorized personnel.”$"
 
 RustboroCity_Text_CitySign: @ 81E220B
-	.string "RUSTBORO CITY\p"
+	.string "Rustboro City\p"
 	.string "“The city probing the integration of\n"
 	.string "nature and science.”$"
 
 RustboroCity_Text_TrainersSchoolSign: @ 81E2253
-	.string "Pokémon Trainer's SCHOOL\p"
+	.string "Pokémon Trainer's School\p"
 	.string "“We'll teach you anything about\n"
 	.string "Pokémon!”$"
 
 RustboroCity_Text_CuttersHouse: @ 81E2296
-	.string "CUTTER's HOUSE$"
+	.string "Cutter's House$"
 
 RustboroCity_Text_DevelopedNewPokenavFeature: @ 81E22A5
 	.string "I've been developing an added feature\n"
 	.string "for the Pokénav…\p"
 	.string "And it turned out great!\p"
 	.string "{PLAYER}, may I see that Pokénav?\n"
-	.string "The one our PRESIDENT gave you?$"
+	.string "The one our President gave you?$"
 
 RustboroCity_Text_AddedMatchCallPleaseCallMrStone: @ 81E2331
 	.string "There you go, {PLAYER}!\p"
 	.string "I added a new feature named\n"
-	.string "MATCH CALL to your Pokénav.\p"
-	.string "Using the MATCH CALL feature,\n"
+	.string "Match Call to your Pokénav.\p"
+	.string "Using the Match Call feature,\n"
 	.string "you can chat with people who have\l"
 	.string "been registered in your Pokénav.\p"
 	.string "{PLAYER}, our PRESIDENT STONE should\n"
 	.string "be registered in your Pokénav.\p"
 	.string "Test it out.\n"
-	.string "Please give our PRESIDENT a call.$"
+	.string "Please give our President a call.$"
 
 RustboroCity_Text_PleaseSelectPokenav: @ 81E2449
 	.string "Please select the Pokénav.$"

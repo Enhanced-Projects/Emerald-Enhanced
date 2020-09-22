@@ -22,43 +22,43 @@ BerryBlender_Text_KnowHowToMakePokeblocks: @ 8292E57
 
 BerryBlender_Text_LetsBerryBlender: @ 8292E78
 	.string "Let's get started, then!\p"
-	.string "Let'sberry blender!$"
+	.string "Let's berry blender!$"
 
 BerryBlender_Text_ExplainBerryBlending: @ 8292EA6
 	.string "Okay, a little explanation, then.\p"
 	.string "Oh, don't worry, it's quite simple.\p"
-	.string "When the BLENDER's arrow comes to\n"
+	.string "When the Blender's arrow comes to\n"
 	.string "your marker, just press the A Button.\p"
 	.string "That's all you have to do.\n"
 	.string "You'll see how easy it is when you try.$"
 
 BerryBlender_Text_DontHaveAnyBerries: @ 8292F77
 	.string "Oh?\n"
-	.string "You don't have anyberries?\p"
-	.string "If you don't have anyberries,\n"
+	.string "You don't have any berries?\p"
+	.string "If you don't have any berries,\n"
 	.string "you can't make any {POKEBLOCK}S.$"
 
 BerryBlender_Text_CanHaveOneOfMyBerries: @ 8292FD1
 	.string "Well, that won't do at all now, will it?\p"
 	.string "If you don't mind leftovers, you can\n"
-	.string "have one of myberries.\p"
+	.string "have one of my berries.\p"
 	.string "That way, we could make some {POKEBLOCK}S\n"
-	.string "together using theberry blender.$"
+	.string "together using the berry blender.$"
 
 BerryBlender_Text_DontHaveAnyBerriesToSpare: @ 829307D
-	.string "If I had someberries left over,\n"
+	.string "If I had some berries left over,\n"
 	.string "I'd gladly give you one…\p"
 	.string "But, I don't have any to spare today.\n"
 	.string "We'll have to do this another time.$"
 
 BerryBlender_Text_PokeblockCaseIsFull: @ 8293101
-	.string "But your {POKEBLOCK} CASE is full.\p"
+	.string "But your {POKEBLOCK} Case is full.\p"
 	.string "You should use some {POKEBLOCK}S before\n"
 	.string "you come see me again.$"
 
 BerryBlender_Text_DontHavePokeblockCase: @ 8293157
-	.string "But you don't have a {POKEBLOCK} CASE.\p"
-	.string "You should get a {POKEBLOCK} CASE and then\n"
+	.string "But you don't have a {POKEBLOCK} Case.\p"
+	.string "You should get a {POKEBLOCK} Case and then\n"
 	.string "come see me.$"
 
 BerryBlender_Text_LetsGetBlendingAlready: @ 82931AA
@@ -86,12 +86,12 @@ BerryBlender_Text_KnowHowToMakePokeblocks2: @ 829328C
 
 BerryBlender_Text_LetsBerryBlender2: @ 82932C3
 	.string "Let's get started, then!\p"
-	.string "Let'sberry blender!$"
+	.string "Let's berry blender!$"
 
 BerryBlender_Text_ExplainBerryBlending2: @ 82932F1
 	.string "Okay!\n"
 	.string "Let me explain it to you!\p"
-	.string "When the spinning BLENDER's arrow\n"
+	.string "When the spinning Blender's arrow\n"
 	.string "reaches your marker, just press\l"
 	.string "the A Button.\p"
 	.string "That's all it takes.\n"
@@ -99,22 +99,22 @@ BerryBlender_Text_ExplainBerryBlending2: @ 82932F1
 
 BerryBlender_Text_DontHaveAnyBerries2: @ 8293394
 	.string "Oh, but wait a second here…\n"
-	.string "You don't have anyberries.\p"
+	.string "You don't have any berries.\p"
 	.string "You can't make any {POKEBLOCK}S without\n"
-	.string "BERRIES…\p"
+	.string "berries…\p"
 	.string "We'll always be around whenever you\n"
-	.string "get hold of someberries to blend.$"
+	.string "get hold of some berries to blend.$"
 
 BerryBlender_Text_PokeblockCaseIsFull2: @ 829343E
 	.string "Oh, but wait a second here…\n"
-	.string "Your {POKEBLOCK} CASE is full.\p"
+	.string "Your {POKEBLOCK} Case is full.\p"
 	.string "You should use some {POKEBLOCK}S and\n"
 	.string "then come back.$"
 
 BerryBlender_Text_DontHavePokeblockCase2: @ 82934A2
 	.string "Oh, but wait a second here…\n"
-	.string "You don't have a {POKEBLOCK} CASE.\p"
-	.string "You should get a {POKEBLOCK} CASE and\n"
+	.string "You don't have a {POKEBLOCK} Case.\p"
+	.string "You should get a {POKEBLOCK} Case and\n"
 	.string "then come back.$"
 
 @ Unused
@@ -136,40 +136,40 @@ BerryBlender_Text_KnowHowToMakePokeblocks3: @ 829357E
 BerryBlender_Text_LetsBerryBlender3: @ 82935B1
 	.string "Okay, dear!\n"
 	.string "Let's get started!\p"
-	.string "Let'sberry blender!$"
+	.string "Let's berry blender!$"
 
 BerryBlender_Text_ExplainBerryBlending3: @ 82935E5
 	.string "Oh, dear!\p"
 	.string "Then, I'll explain it to you nicely.\p"
-	.string "When the BLENDER's arrow spins to\n"
+	.string "When the Blender's arrow spins to\n"
 	.string "your marker, press the A Button.\p"
 	.string "That's all it takes.\n"
 	.string "Isn't it simple?$"
 
 BerryBlender_Text_DontHaveAnyBerries3: @ 829367D
-	.string "You don't have anyberries,\n"
+	.string "You don't have any berries,\n"
 	.string "do you?\p"
-	.string "If you don't have anyberries,\n"
+	.string "If you don't have any berries,\n"
 	.string "you can't make any {POKEBLOCK}S.\p"
 	.string "We'll always be making {POKEBLOCK}S here,\n"
 	.string "so let's make some together when\l"
-	.string "you get aberry or two.$"
+	.string "you get a berry or two.$"
 
 BerryBlender_Text_PokeblockCaseIsFull3: @ 8293738
-	.string "Your {POKEBLOCK} CASE is full,\n"
+	.string "Your {POKEBLOCK} Case is full,\n"
 	.string "it looks like.\p"
 	.string "You should use some {POKEBLOCK}S up\n"
 	.string "and then come back.$"
 
 BerryBlender_Text_DontHavePokeblockCase3: @ 8293792
-	.string "You haven't gotten a {POKEBLOCK} CASE\n"
+	.string "You haven't gotten a {POKEBLOCK} Case\n"
 	.string "yet, it looks like.\p"
-	.string "You need to get a {POKEBLOCK} CASE before\n"
+	.string "You need to get a {POKEBLOCK} Case before\n"
 	.string "you come back.$"
 
 BerryBlender_Text_SetNewBlenderRecord: @ 82937F9
 	.string "Okay! Today's going to be the day that\n"
-	.string "I set a new BLENDER speed record!$"
+	.string "I set a new Blender speed record!$"
 
 BerryBlender_Text_LookGoodAtBlendingJoinUs: @ 8293842
 	.string "Oh, dear!\n"
@@ -182,7 +182,7 @@ BerryBlender_Text_MakeDeliciousPokeblocks: @ 829388F
 
 BerryBlender_Text_SaveGameBeforeBerryBlenderLink: @ 82938CD
 	.string "{POKEBLOCK}S will be made with your friends \n"
-	.string "fromberries in theberry blender.\p"
+	.string "from berries in the berry blender.\p"
 	.string "Is it okay to save the game before\n"
 	.string "linking with your friends?$"
 
@@ -201,40 +201,40 @@ BerryBlender_Text_AllPlayersArrived: @ 82939A5
 	.string "{STR_VAR_3} arrived.$"
 
 BerryBlender_Text_NoBerriesLink: @ 82939BD
-	.string "You have noberries.\n"
-	.string "Theberry blender can't be used.$"
+	.string "You have no berries.\n"
+	.string "The berry blender can't be used.$"
 
 BerryBlender_Text_PokeblockCaseIsFullLink: @ 82939F3
-	.string "Your {POKEBLOCK} CASE is full.\n"
-	.string "Theberry blender can't be used.$"
+	.string "Your {POKEBLOCK} Case is full.\n"
+	.string "The berry blender can't be used.$"
 
 BerryBlender_Text_DontHavePokeblockCaseLink: @ 8293A2D
-	.string "You don't have a {POKEBLOCK} CASE.\n"
-	.string "Theberry blender can't be used.$"
+	.string "You don't have a {POKEBLOCK} Case.\n"
+	.string "The berry blender can't be used.$"
 
 BerryBlender_Text_LoveMakingPokeblocks: @ 8293A6B
 	.string "I love making {POKEBLOCK}S.\p"
-	.string "I always have someberries with me.$"
+	.string "I always have some berries with me.$"
 
 BerryBlender_Text_MakePokeblocksUsingBerryBlender: @ 8293AA5
 	.string "If you'd like, we could make some\n"
 	.string "{POKEBLOCK}S together using the\l"
-	.string "BERRY BLENDER.$"
+	.string "Berry Blender.$"
 
 BerryBlender_Text_DontHaveAnyBerriesHaveOne: @ 8293AF0
 	.string "Oh?\n"
-	.string "You don't have anyberries?\p"
+	.string "You don't have any berries?\p"
 	.string "Well, that won't do at all now, will it?\p"
 	.string "If you don't mind leftovers, you can\n"
-	.string "have one of myberries.$"
+	.string "have one of my berries.$"
 
 BerryBlender_Text_UseItToMakePokeblocksTogether: @ 8293B76
 	.string "We'll use it to make {POKEBLOCK}S together\n"
-	.string "using theberry blender.$"
+	.string "using the berry blender.$"
 
 BerryBlender_Text_DontHaveAnyBerriesNoneToSpare: @ 8293BB4
 	.string "Oh?\n"
-	.string "You don't have anyberries?\p"
+	.string "You don't have any berries?\p"
 	.string "If I had some left over, I'd gladly\n"
 	.string "give you one…\p"
 	.string "But, I don't have any to spare today.\n"

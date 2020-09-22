@@ -29,7 +29,7 @@ SeafloorCavern_Room3_Text_ShellyPostBattle: @ 8234A8A
 	.string "It's terribly disappointing that you're\n"
 	.string "not a Team Aqua member.\p"
 	.string "You could have enjoyed the fabulous\n"
-	.string "world our BOSS has promised as\l"
+	.string "world our Boss has promised as\l"
 	.string "one of us…$"
 
 SeafloorCavern_Room3_Text_Grunt5Intro: @ 8234B3A
@@ -48,7 +48,7 @@ SeafloorCavern_Room3_Text_Grunt5PostBattle: @ 8234C04
 	.string "You know, we don't dare question\n"
 	.string "the motives of our leader.\p"
 	.string "But here you are, just some punk,\n"
-	.string "going up against our BOSS.\p"
+	.string "going up against our Boss.\p"
 	.string "Maybe…\n"
 	.string "You must be something…$"
 

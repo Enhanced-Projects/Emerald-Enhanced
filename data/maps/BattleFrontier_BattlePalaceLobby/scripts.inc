@@ -392,17 +392,17 @@ BattleFrontier_BattlePalaceLobby_Text_WelcomeForSingleBattle: @ 824DD5B
 	.string "Where the hearts of Trainers\n"
 	.string "are put to the test.\p"
 	.string "I welcome you to the Battle Palace.\p"
-	.string "I accept challenges to the SINGLE\n"
-	.string "BATTLE HALLS.$"
+	.string "I accept challenges to the Single\n"
+	.string "Battle Halls.$"
 
 BattleFrontier_BattlePalaceLobby_Text_TakeSingleBattleChallenge: @ 824DDE1
 	.string "Do you wish to take\n"
-	.string "the Single Battle HALL challenge?$"
+	.string "the Single Battle Hall challenge?$"
 
 BattleFrontier_BattlePalaceLobby_Text_ExplainSingleBattleChallenge: @ 824DE17
 	.string "In the Battle Palace, there are\n"
 	.string "several auditoriums for Single BattleS\l"
-	.string "that are named Single Battle HALLS.\p"
+	.string "that are named Single Battle Halls.\p"
 	.string "The Single BattleS are conducted in\n"
 	.string "the usual way, except with one crucial\l"
 	.string "rule that must be obeyed.\p"
@@ -427,7 +427,7 @@ BattleFrontier_BattlePalaceLobby_Text_ReturnWhenFortified: @ 824E0D8
 	.string "and Pokémon, you must return.$"
 
 BattleFrontier_BattlePalaceLobby_Text_WhichChallenge: @ 824E119
-	.string "There are two BATTLE HALLS,\n"
+	.string "There are two Battle Halls,\n"
 	.string "Level 50 and Open Level.\l"
 	.string "Which is your choice of a challenge?$"
 
@@ -463,7 +463,7 @@ BattleFrontier_BattlePalaceLobby_Text_NowSelectThreeMons: @ 824E399
 
 BattleFrontier_BattlePalaceLobby_Text_MustSaveBeforeChallenge2: @ 824E3C8
 	.string "I must save before I show you to\n"
-	.string "the BATTLE HALL. Is that okay?$"
+	.string "the Battle Hall. Is that okay?$"
 
 BattleFrontier_BattlePalaceLobby_Text_FollowMe: @ 824E408
 	.string "Good.\n"
@@ -500,7 +500,7 @@ BattleFrontier_BattlePalaceLobby_Text_WeHaveBeenWaiting: @ 824E5D8
 
 BattleFrontier_BattlePalaceLobby_Text_MustSaveBeforeChallenge: @ 824E5F6
 	.string "I must save before I show you to\n"
-	.string "the BATTLE HALL. Is that okay?$"
+	.string "the Battle Hall. Is that okay?$"
 
 BattleFrontier_BattlePalaceLobby_Text_FailedToSaveBeforeEndingChallenge: @ 824E636
 	.string "Sigh…\p"
@@ -545,7 +545,7 @@ BattleFrontier_BattlePalaceLobby_Text_NatureAndMovesKeyHere: @ 824E851
 
 BattleFrontier_BattlePalaceLobby_Text_MonDocileButTransforms: @ 824E992
 	.string "My Pokémon is usually very docile.\p"
-	.string "But when it's in a BATTLE HALL,\n"
+	.string "But when it's in a Battle Hall,\n"
 	.string "it sometimes seems to become\l"
 	.string "transformed into something wicked!\p"
 	.string "It becomes totally intimidating.\n"
@@ -555,24 +555,24 @@ BattleFrontier_BattlePalaceLobby_Text_WhatNatureFavorsChippingAway: @ 824EA4B
 	.string "I wonder what sort of nature a Pokémon\n"
 	.string "would have if it favored enfeebling its\l"
 	.string "opponents and chipping away slowly.\p"
-	.string "I'd be surprised if it was a LAX nature.\p"
+	.string "I'd be surprised if it was a Lax nature.\p"
 	.string "But, nah, that can't be right.$"
 
 BattleFrontier_BattlePalaceLobby_Text_WelcomeForDoubleBattle: @ 824EB06
 	.string "Where the hearts of Trainers\n"
 	.string "are put to the test.\p"
 	.string "I welcome you to the Battle Palace.\p"
-	.string "I accept challenges to the DOUBLE\n"
-	.string "BATTLE HALLS.$"
+	.string "I accept challenges to the Double\n"
+	.string "Battle Halls.$"
 
 BattleFrontier_BattlePalaceLobby_Text_TakeDoubleBattleChallenge: @ 824EB8C
 	.string "Do you wish to take\n"
-	.string "the Double Battle HALL challenge?$"
+	.string "the Double Battle Hall challenge?$"
 
 BattleFrontier_BattlePalaceLobby_Text_ExplainDoubleBattleChallenge: @ 824EBC2
 	.string "In the Battle Palace, there are\n"
 	.string "several auditoriums for Double BattleS\l"
-	.string "that are named Double Battle HALLS.\p"
+	.string "that are named Double Battle Halls.\p"
 	.string "The Double BattleS are conducted in\n"
 	.string "the usual way, except with one crucial\l"
 	.string "rule that must be obeyed.\p"
@@ -593,7 +593,7 @@ BattleFrontier_BattlePalaceLobby_Text_ExplainDoubleBattleChallenge: @ 824EBC2
 	.string "you will be disqualified.$"
 
 BattleFrontier_BattlePalaceLobby_Text_ToDefeatMavenAnd7Trainers: @ 824EE81
-	.string "To defeat the PALACE MAVEN\n"
+	.string "To defeat the Palace Maven\n"
 	.string "and seven Trainers in a row…$"
 
 BattleFrontier_BattlePalaceLobby_Text_PresentYouWithBattlePoints: @ 824EEB9
@@ -607,7 +607,7 @@ BattleFrontier_BattlePalaceLobby_Text_LikeToRecordMatch: @ 824EF16
 	.string "Frontier Pass?$"
 
 BattleFrontier_BattlePalaceLobby_Text_RulesAreListed: @ 824EF66
-	.string "The BATTLE HALL rules are listed.$"
+	.string "The Battle Hall rules are listed.$"
 
 BattleFrontier_BattlePalaceLobby_Text_ReadWhichHeading: @ 824EF88
 	.string "Which heading do you want to read?$"

@@ -100,5 +100,5 @@ VerdanturfTown_FriendshipRatersHouse_Text_DetestsYou: @ 82032DF
 	.string "Doesn't that make you uncomfortable?$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_Pikachu: @ 820334A
-	.string "PIKACHU: Pika pika!$"
+	.string "Pikachu: Pika pika!$"
 

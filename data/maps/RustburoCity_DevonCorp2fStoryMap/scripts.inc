@@ -149,7 +149,7 @@ DC_YouDontLook:
 	.string "corporate-type...\p"
 	.string "Oh I see now! You're that\n"
 	.string "guy that brought back the\p"
-	.string "LIDAR system from Team Aqua.\n"
+	.string "Lidar system from Team Aqua.\n"
 	.string "That little incident brought about\p"
 	.string "a lotta hardship...and when the\n"
 	.string "company suffers...their employees\p"

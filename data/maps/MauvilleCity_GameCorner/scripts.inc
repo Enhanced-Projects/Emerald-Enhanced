@@ -762,7 +762,7 @@ MauvilleCity_GameCorner_Text_EasyToLoseTrackOfTime: @ 821098E
 	.string "I should get back to work.$"
 
 MauvilleCity_GameCorner_Text_CoinsAreNeededToPlay: @ 82109D3
-	.string "COINS are needed to play here\n"
+	.string "Coins are needed to play here\n"
 	.string "in the Game Corner.$"
 
 MauvilleCity_GameCorner_Text_RouletteOnlyLuck: @ 8210A05

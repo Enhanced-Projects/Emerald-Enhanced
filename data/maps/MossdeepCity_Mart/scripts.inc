@@ -39,20 +39,20 @@ MossdeepCity_Mart_EventScript_Sailor:: @ 8222408
 	end
 
 MossdeepCity_Mart_Text_ReviveIsFantastic: @ 8222411
-	.string "REVIVE is fantastic!\p"
+	.string "Revive is fantastic!\p"
 	.string "Give it to a fainted Pokémon,\n"
 	.string "and the Pokémon will arise.\p"
-	.string "But be careful, REVIVE doesn't restore\n"
+	.string "But be careful, Revive doesn't restore\n"
 	.string "the used-up PP of moves.$"
 
 MossdeepCity_Mart_Text_MaxRepelLastsLongest: @ 82224A0
-	.string "MAX REPEL keeps all weak Pokémon away.\p"
-	.string "Out of all the REPEL sprays, it lasts\n"
+	.string "Max Repel keeps all weak Pokémon away.\p"
+	.string "Out of all the Repel sprays, it lasts\n"
 	.string "the longest.$"
 
 MossdeepCity_Mart_Text_NetAndDiveBallsRare: @ 82224FA
-	.string "A NET BALL is effective against\n"
+	.string "A Net Ball is effective against\n"
 	.string "BUG-type and WATER-type Pokémon.\p"
-	.string "A DIVE BALL works best on Pokémon\n"
+	.string "A Dive Ball works best on Pokémon\n"
 	.string "at the bottom of the sea.$"
 

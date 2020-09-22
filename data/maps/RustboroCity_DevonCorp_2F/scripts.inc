@@ -312,12 +312,12 @@ RustboroCity_DevonCorp_2F_Text_DevelopingNewBalls: @ 8211C50
 RustboroCity_DevonCorp_2F_Text_WeFinallyMadeNewBalls: @ 8211C99
 	.string "We finally made new kinds of\n"
 	.string "Poké balls!\p"
-	.string "The REPEAT BALL makes it easier to\n"
+	.string "The Repeat Ball makes it easier to\n"
 	.string "catch Pokémon you've caught before.\p"
-	.string "The TIMER BALL gets better at catching\n"
+	.string "The Timer Ball gets better at catching\n"
 	.string "Pokémon the longer a battle runs.\p"
 	.string "Both are proudly developed by\n"
-	.string "the DEVON CORPORATION.\p"
+	.string "the Devon Corporation.\p"
 	.string "Please give them a try!$"
 
 RustboroCity_DevonCorp_2F_Text_IMadePokenav: @ 8211D9F
@@ -329,7 +329,7 @@ RustboroCity_DevonCorp_2F_Text_WowThatsAPokenav: @ 8211DF3
 	.string "Oh, wow!\n"
 	.string "That's a Pokénav!\p"
 	.string "It came about as a result of our\n"
-	.string "PRESIDENT's desire to learn about\l"
+	.string "President's desire to learn about\l"
 	.string "the feelings of Pokémon.\p"
 	.string "Would you like me to describe its\n"
 	.string "features in detail?\p"
@@ -353,11 +353,11 @@ RustboroCity_DevonCorp_2F_Text_WantToBringFossilBackToLife: @ 8211FA6
 	.string "Would you like to bring that Pokémon\n"
 	.string "back to life?\p"
 	.string "I can with my newly developed\n"
-	.string "FOSSIL REGENERATOR.$"
+	.string "Fossil Regenerator.$"
 
 RustboroCity_DevonCorp_2F_Text_OhIsThatSo: @ 8212046
 	.string "Oh, is that so?\p"
-	.string "DEVON's technological expertise\n"
+	.string "Devon's technological expertise\n"
 	.string "is outstanding, I tell you.$"
 
 RustboroCity_DevonCorp_2F_Text_TwoFossilsPickOne: @ 8212092
@@ -372,10 +372,10 @@ RustboroCity_DevonCorp_2F_Text_HandedFossilToResearcher: @ 8212153
 	.string "Excellent!\n"
 	.string "Let's do this right away.\p"
 	.string "{PLAYER} handed the {STR_VAR_1} to\n"
-	.string "the DEVON RESEARCHER.$"
+	.string "the Devon Researcher.$"
 
 RustboroCity_DevonCorp_2F_Text_FossilRegeneratorTakesTime: @ 82121A2
-	.string "The FOSSIL REGENERATOR, which I made,\n"
+	.string "The Fossil Regenerator, which I made,\n"
 	.string "is incredible.\p"
 	.string "But it has one drawback--it takes\n"
 	.string "a long time to work.\p"
@@ -391,7 +391,7 @@ RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife: @ 8212251
 
 RustboroCity_DevonCorp_2F_Text_ReceivedMonFromResearcher: @ 82122CB
 	.string "{PLAYER} received {STR_VAR_2} from\n"
-	.string "the DEVON RESEARCHER.$"
+	.string "the Devon Researcher.$"
 
 @ Unused
 RustboroCity_DevonCorp_2F_Text_TooManyPokemon: @ 82122F5

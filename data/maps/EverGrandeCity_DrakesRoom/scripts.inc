@@ -118,7 +118,7 @@ EverGrandeCity_DrakesRoom_EventScript_Defeated:: @ 8228724
 
 EverGrandeCity_DrakesRoom_Text_PreBattleSpeech: @ 822873E
 	.string "I am the last of the Pokémon League\n"
-	.string "ELITE FOUR, DRAKE the DRAGON master!\p"
+	.string "Elite Four, Drake the Dragon master!\p"
 	.string "In their natural state, Pokémon are\n"
 	.string "wild living things. They are free.\p"
 	.string "At times, they hinder us.\n"

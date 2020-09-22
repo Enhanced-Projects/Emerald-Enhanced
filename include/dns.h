@@ -4,10 +4,10 @@
 #define DNS_PAL_EXCEPTION   FALSE
 #define DNS_PAL_ACTIVE      TRUE
 
-struct LightingColour {
+struct LightingColor {
     u8 paletteNum;
-    u8 colourNum;
-    u16 lightColour;
+    u8 colorNum;
+    u16 lightColor;
 };
 
 struct DnsPalExceptions {

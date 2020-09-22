@@ -479,39 +479,39 @@ Route109_EventScript_Elijah:: @ 81EEC06
 	end
 
 DewfordTown_Text_BrineyLandedInSlateportDeliverGoods: @ 81EEC1D
-	.string "MR. BRINEY: Ahoy!\n"
-	.string "We've made land in SLATEPORT!\p"
-	.string "I suppose you're going to visit CAPT.\n"
-	.string "STERN and deliver the DEVON GOODS?$"
+	.string "MR. Briney: Ahoy!\n"
+	.string "We've made land in Slateport!\p"
+	.string "I suppose you're going to visit Capt.\n"
+	.string "Stern and deliver the Devon Goods?$"
 
 Route109_Text_BrineySailToDewfordQuestion: @ 81EEC96
-	.string "MR. BRINEY: I thought you're supposed\n"
-	.string "to deliver the DEVON GOODS.\p"
+	.string "MR. Briney: I thought you're supposed\n"
+	.string "to deliver the Devon Goods.\p"
 	.string "Would you like to sail back to\n"
-	.string "DEWFORD, then?$"
+	.string "Dewford, then?$"
 
 Route109_Text_BrineyDewfordItIs: @ 81EED06
-	.string "MR. BRINEY: DEWFORD it is, then!\p"
+	.string "MR. Briney: Dewford it is, then!\p"
 	.string "Anchors aweigh!\n"
-	.string "PEEKO, we're setting sail, my darling!$"
+	.string "Peeko, we're setting sail, my darling!$"
 
 Route109_Text_BrineyDeliverDevonGoods: @ 81EED5E
-	.string "MR. BRINEY: Then you go on and deliver\n"
-	.string "the DEVON GOODS. I'll be waiting.$"
+	.string "MR. Briney: Then you go on and deliver\n"
+	.string "the Devon Goods. I'll be waiting.$"
 
 DewfordTown_Text_BrineyLandedInSlateport: @ 81EEDA7
-	.string "MR. BRINEY: Ahoy! We've made land in\n"
-	.string "SLATEPORT!\p"
+	.string "MR. Briney: Ahoy! We've made land in\n"
+	.string "Slateport!\p"
 	.string "You just go on and tell me whenever\n"
 	.string "you want to set sail again!$"
 
 Route109_Text_BrineyWhereAreWeBound: @ 81EEE17
-	.string "MR. BRINEY: Ahoy!\n"
+	.string "MR. Briney: Ahoy!\n"
 	.string "For you, I'll go out to sea anytime!\p"
 	.string "Now, my friend, where are we bound?$"
 
 Route109_Text_BrineyTellMeWhenYouNeedToSail: @ 81EEE72
-	.string "MR. BRINEY: You just tell me whenever\n"
+	.string "MR. Briney: You just tell me whenever\n"
 	.string "you need to set sail again!$"
 
 Route109_Text_ChillAtMyPapasSpot: @ 81EEEB4
@@ -543,7 +543,7 @@ Route109_Text_WereGoingToMakeBigCastle: @ 81EEFF1
 
 Route109_Text_ZigzagoonPicksUpLitter: @ 81EF080
 	.string "The water around these parts is clean.\p"
-	.string "But, I get my ZIGZAGOON to pick up\n"
+	.string "But, I get my Zigzagoon to pick up\n"
 	.string "litter from the shoreline at times.\p"
 	.string "Dirty water becomes rain and joins our\n"
 	.string "rivers, which we drink from…\p"
@@ -551,10 +551,10 @@ Route109_Text_ZigzagoonPicksUpLitter: @ 81EF080
 	.string "back to haunt us eventually.$"
 
 Route109_Text_ZigzagoonCry: @ 81EF173
-	.string "ZIGZAGOON: Guguu?$"
+	.string "Zigzagoon: Guguu?$"
 
 Route109_Text_SeashoreHouseSign: @ 81EF185
-	.string "SEASHORE HOUSE\p"
+	.string "Seashore House\p"
 	.string "“May hot battles rage on hot sands!\n"
 	.string "The place for hot Trainers!”$"
 

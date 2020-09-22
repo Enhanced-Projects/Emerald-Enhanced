@@ -454,9 +454,9 @@ void PrintNumberToScreen(s32 num)
     ConvertIntToDecimalStringN(gStringVar2, gLocalTime.seconds, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringAppend(gStringVar3, gStringVar2);
     //print 'day', 'dusk', 'night' or 'dawn' in reference to evolution
-    if (gLocalTime.hours >= 18 || gLocalTime.hours < 6)
+    if (gLocalTime.hours >= 17 || gLocalTime.hours < 6)
     {
-        if (gLocalTime.hours == 18)
+        if (gLocalTime.hours == 17)
         {
             StringAppend(gStringVar3, gText_ColorLightBlueShadowDarkGrey);
             StringAppend(gStringVar3, gText_Dusk);   

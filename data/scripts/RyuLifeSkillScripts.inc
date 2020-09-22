@@ -421,7 +421,7 @@ Ryu_Level3Mining:
 @overworld mining scripts==========================================================================
 
 MiningRock1::
-    @goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
+    goto_if_set FLAG_TEMP_1, Ryu_NoOresHere
     setflag FLAG_TEMP_1
     call Ryu_MineRock
     release

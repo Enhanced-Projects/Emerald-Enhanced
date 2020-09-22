@@ -485,7 +485,7 @@ RustboroCity_Gym_Text_GymGuideAdvice: @ 821309D
 	.string "I'm no Trainer, not me, but I can\n"
 	.string "sure give you winning advice.\p"
 	.string "That's settled, then! We'll aim for the\n"
-	.string "Pokémon CHAMPIONSHIP together!\p"
+	.string "Pokémon Championship together!\p"
 	.string "It's your job as a Trainer to collect\n"
 	.string "Gym Badges, am I right?\p"
 	.string "But Gym Leaders aren't pushovers!\p"
@@ -493,7 +493,7 @@ RustboroCity_Gym_Text_GymGuideAdvice: @ 821309D
 	.string "I'm here to provide expert advice!\p"
 	.string "Roxanne, the Gym Leader, is a user\n"
 	.string "of ROCK-type Pokémon.\p"
-	.string "The ROCK type is very durable, but\n"
+	.string "The Rock type is very durable, but\n"
 	.string "it can't stand WATER-type and\l"
 	.string "GRASS-type moves.\p"
 	.string "Come see me afterwards, if you beat\n"
@@ -505,11 +505,11 @@ RustboroCity_Gym_Text_GymGuidePostVictory: @ 82132E2
 	.string "My cheering must've worked!\p"
 	.string "Great!\n"
 	.string "Check your Trainer Card.\p"
-	.string "The STONE badge you got should be\n"
+	.string "The Stone badge you got should be\n"
 	.string "properly recorded on it.\p"
 	.string "In other words…\p"
 	.string "You've climbed the first step on\n"
-	.string "the stairs to the CHAMPIONSHIP!\p"
+	.string "the stairs to the Championship!\p"
 	.string "That's got to feel awesome!$"
 
 RustboroCity_Gym_Text_JoshPreBattle: @ 82133E9
@@ -520,7 +520,7 @@ RustboroCity_Gym_Text_JoshDefeat: @ 821342D
 	.string "You were too good for me…$"
 
 RustboroCity_Gym_Text_JoshPostBattle: @ 8213447
-	.string "You haven't seen anything of the ROCK\n"
+	.string "You haven't seen anything of the Rock\n"
 	.string "type's terrifying power!$"
 
 RustboroCity_Gym_Text_TommyPreBattle: @ 8213486
@@ -538,7 +538,7 @@ RustboroCity_Gym_Text_TommyPostBattle: @ 82134E6
 RustboroCity_Gym_Text_MarcPreBattle: @ 8213533
 	.string "We might be in the middle of town,\n"
 	.string "but so what?\p"
-	.string "My ROCK Pokémon need room to\n"
+	.string "My Rock Pokémon need room to\n"
 	.string "rampage!$"
 
 RustboroCity_Gym_Text_MarcDefeat: @ 8213589
@@ -546,16 +546,16 @@ RustboroCity_Gym_Text_MarcDefeat: @ 8213589
 	.string "Our challenger is one feisty customer!$"
 
 RustboroCity_Gym_Text_MarcPostBattle: @ 82135C0
-	.string "I have to hand it to our LEADER.\p"
+	.string "I have to hand it to our Leader.\p"
 	.string "It took smarts and sense for her to\n"
-	.string "pick the ROCK type at her young age.$"
+	.string "pick the Rock type at her young age.$"
 
 RustboroCity_Gym_Text_RoxannePreBattle: @ 821362A
-	.string "Hello, I am Roxanne, the RUSTBORO\n"
+	.string "Hello, I am Roxanne, the Rustboro\n"
 	.string "Pokémon Gym Leader.\p"
 	.string "I became a Gym Leader so that I might\n"
 	.string "apply what I learned at the Pokémon\l"
-	.string "Trainer's SCHOOL in battle.\p"
+	.string "Trainer's School in battle.\p"
 	.string "Would you kindly demonstrate how you\n"
 	.string "battle, and with which Pokémon?$"
 
@@ -571,17 +571,17 @@ RustboroCity_Gym_Text_ReceivedStoneBadge: @ 82137EC
 	.string "from Roxanne.$"
 
 RustboroCity_Gym_Text_StoneBadgeInfoTakeThis: @ 8213816
-	.string "The STONE badge heightens the ATTACK\n"
+	.string "The Stone badge heightens the Attack\n"
 	.string "power of your Pokémon.\p"
 	.string "It also enables them to use the HM move\n"
-	.string "CUT outside of battle.\p"
+	.string "Cut outside of battle.\p"
 	.string "Please take this with you, too.$"
 
 RustboroCity_Gym_Text_ExplainRockTomb: @ 82138B1
-	.string "That TECHNICAL MACHINE, TM39,\n"
-	.string "contains ROCK TOMB.\p"
+	.string "That Technical Machine, TM39,\n"
+	.string "contains Rock Tomb.\p"
 	.string "It not only inflicts damage by dropping\n"
-	.string "rocks, it also lowers SPEED.\p"
+	.string "rocks, it also lowers Speed.\p"
 	.string "If you use a TM, it instantly teaches\n"
 	.string "the move to a Pokémon.\p"
 	.string "Remember, a TM can be used only once,\n"
@@ -594,10 +594,10 @@ RustboroCity_Gym_Text_RoxannePostBattle: @ 82139A7
 	.string "learn many things.$"
 
 RustboroCity_Gym_Text_GymStatue: @ 8213A21
-	.string "RUSTBORO CITY Pokémon Gym$"
+	.string "Rustboro City Pokémon Gym$"
 
 RustboroCity_Gym_Text_GymStatueCertified: @ 8213A3B
-	.string "RUSTBORO CITY Pokémon Gym\p"
+	.string "Rustboro City Pokémon Gym\p"
 	.string "Roxanne's Certified Trainers:\n"
 	.string "{PLAYER}$"
 

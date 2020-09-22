@@ -4452,7 +4452,7 @@ const u8 gCrabominablePokedexText[] = _(
 
 const u8 gOricorioPokedexText[] = _(
     "Oricorio can change its body by sipping\n"
-    "different coloured nectar. It's enemies'\n"
+    "different colored nectar. It's enemies'\n"
     "hearts melt at the sight of its varying,\n"
     "beautiful dances.");
 

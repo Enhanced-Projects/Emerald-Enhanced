@@ -168,22 +168,22 @@ MauvilleCity_Text_PokemonCanJumpYouOnBike: @ 81E044A
 	.string "wild Pokémon could jump you.$"
 
 MauvilleCity_Text_CitySign: @ 81E0485
-	.string "MAUVILLE CITY\n"
+	.string "Mauville City\n"
 	.string "“The bright and shiny city of fun!”$"
 
 MauvilleCity_Text_GymSign: @ 81E04B7
-	.string "MAUVILLE CITY POKEMON GYM\n"
+	.string "Mauville City Pokemon Gym\n"
 	.string "Leader: Wattson\l"
 	.string "“The cheerfully electrifying man!”$"
 
 MauvilleCity_Text_BikeShopSign: @ 81E0504
 	.string "“Ride in gravel and shake up your\n"
 	.string "soul!”\l"
-	.string "RYDEL'S CYCLES$"
+	.string "Rydel'S Cycles$"
 
 MauvilleCity_Text_GameCornerSign: @ 81E053C
 	.string "“The play spot for all!”\n"
-	.string "MAUVILLE GAME CORNER$"
+	.string "Mauville Game Corner$"
 
 MauvilleCity_Text_ExplainTV: @ 81E056A
 	.string "Hi, do you check out TV at all?\p"

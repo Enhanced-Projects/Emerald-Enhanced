@@ -1024,7 +1024,7 @@ LilycoveCity_ContestLobby_Text_LadyGaveMePokeblockCase: @ 821AD10
 LilycoveCity_ContestLobby_Text_MakePokeblocksDifferentBerries: @ 821AD55
 	.string "Make {POKEBLOCK}S and put them in there.\p"
 	.string "When you make a {POKEBLOCK}, everyone\n"
-	.string "has to put in a different BERRY.$"
+	.string "has to put in a different Berry.$"
 
 LilycoveCity_ContestLobby_Text_YourPokemonSpurredMeToPaint: @ 821ADB9
 	.string "Congratulations!\p"
@@ -1101,7 +1101,7 @@ LilycoveCity_ContestLobby_Text_ContestFeastForEyes: @ 821B2BA
 	.string "that just scream to be painted?$"
 
 LilycoveCity_ContestLobby_Text_ToughContestIsExtreme: @ 821B334
-	.string "The TOUGHNESS Contest is like\n"
+	.string "The Toughness Contest is like\n"
 	.string "extreme, man!\p"
 	.string "Those muscular appeals…\n"
 	.string "Cascading sweat… I swoon!$"

@@ -115,13 +115,13 @@ AquaHideout_B1F_EventScript_Grunt7:: @ 8233AEC
 
 AquaHideout_B1F_Text_Grunt2Intro: @ 8233B03
 	.string "If you want to know the secret about\n"
-	.string "our HIDEOUT, you have me to beat!$"
+	.string "our Hideout, you have me to beat!$"
 
 AquaHideout_B1F_Text_Grunt2Defeat: @ 8233B4A
 	.string "I can't win at all…$"
 
 AquaHideout_B1F_Text_Grunt2PostBattle: @ 8233B5E
-	.string "Our HIDEOUT's secret?\p"
+	.string "Our Hideout's secret?\p"
 	.string "Well, let's just say…\n"
 	.string "There's a submarine at the far end!\p"
 	.string "But, by now…\n"
@@ -143,15 +143,15 @@ AquaHideout_B1F_Text_Grunt3PostBattle: @ 8233C41
 
 AquaHideout_B1F_Text_Grunt5Intro: @ 8233C89
 	.string "Yawn… Keeping watch over the\n"
-	.string "HIDEOUT bores me. I'll take you on.$"
+	.string "Hideout bores me. I'll take you on.$"
 
 AquaHideout_B1F_Text_Grunt5Defeat: @ 8233CCA
 	.string "Yawn…\n"
 	.string "Oh, I lost…$"
 
 AquaHideout_B1F_Text_Grunt5PostBattle: @ 8233CDC
-	.string "If you scurry too much, other TEAM\n"
-	.string "AQUA members might get you.$"
+	.string "If you scurry too much, other Team\n"
+	.string "Aqua members might get you.$"
 
 AquaHideout_B1F_Text_Grunt7Intro: @ 8233D1B
 	.string "Hey!\n"

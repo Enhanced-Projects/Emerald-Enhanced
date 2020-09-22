@@ -53,7 +53,7 @@ SootopolisCity_Gym_B1F_EventScript_Daphne:: @ 8225D5A
 
 SootopolisCity_Gym_B1F_Text_AndreaPreBattle: @ 8225D71
 	.string "I'll show you the sublime techniques\n"
-	.string "I learned from our LEADER Juan!$"
+	.string "I learned from our Leader Juan!$"
 
 SootopolisCity_Gym_B1F_Text_AndreaDefeat: @ 8225DB6
 	.string "Please forgive me, Juan…$"
@@ -107,7 +107,7 @@ SootopolisCity_Gym_B1F_Text_ConniePostBattle: @ 8225FFE
 SootopolisCity_Gym_B1F_Text_BridgetPreBattle: @ 8226061
 	.string "The Pokémon Gym of the highest level\n"
 	.string "in the Hoenn region…\p"
-	.string "That's the SOOTOPOLIS Gym.$"
+	.string "That's the Sootopolis Gym.$"
 
 SootopolisCity_Gym_B1F_Text_BridgetDefeat: @ 82260B6
 	.string "What a high level you are!$"
