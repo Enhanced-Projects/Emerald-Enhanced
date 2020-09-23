@@ -351,8 +351,7 @@ int RyuChooseWildLevel(void)
     u8 level = (Random() % (sWildRange[badge][1] - sWildRange[badge][0])) + sWildRange[badge][0];
     if (FlagGet(FLAG_RYU_BOSS_WILD) == 1)
         level += 5;
-    //sWildRange is the array declared above, [badge] is the index, [0] and [1] are the first and second values of the index listed.
-    //To get a range of random values, do (array[index][second value] minus array[index][first value]) plus array[index][first value]
+
     return level;
 }
 
