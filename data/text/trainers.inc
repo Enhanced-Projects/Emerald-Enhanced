@@ -2030,14 +2030,14 @@ Route115_Text_TimothyPostRematch: @ 829B385
 
 Route115_Text_KoichiIntro: @ 829B3CC
 	.string "You!\p"
-	.string "My Machop!\p"
+	.string "My Machoke!\p"
 	.string "Demand a battle!$"
 
 Route115_Text_KoichiDefeat: @ 829B3ED
 	.string "Ouch, ouch, ouch!$"
 
 Route115_Text_KoichiPostBattle: @ 829B3FF
-	.string "My Machop crew!\p"
+	.string "My Machoke crew!\p"
 	.string "So long as they seek power, I will\n"
 	.string "grow strong with them!$"
 

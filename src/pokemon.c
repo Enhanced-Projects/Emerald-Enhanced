@@ -6332,7 +6332,10 @@ u16 GetBattleBGM(void)
             case TRAINER_CLASS_OVERLORD:
                 return MUS_VS_REKKU;
             default:
-                return MUS_BATTLE20;
+                if (gMapHeader.regionMapSectionId == MAPSEC_MIRAGE_TOWER)
+                    return MUS_B_PALACE;
+                else
+                    return MUS_BATTLE20;
 
             return MUS_BATTLE27;
         }
