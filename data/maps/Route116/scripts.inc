@@ -1,3 +1,6 @@
+.set LOCALID_BRINEY, 11
+.set LOCALID_WANDAS_BF_OUTSIDE, 21
+
 Route116_MapScripts:: @ 81F2C0C
 	map_script MAP_SCRIPT_ON_TRANSITION, Route116_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Route116_OnLoad
@@ -15,7 +18,7 @@ Route116_OnTransition: @ 81F2C1C
 	end
 
 Route116_EventScript_SetWandasBoyfriendPos:: @ 81F2C47
-	setobjectxyperm 21, 38, 10
+	setobjectxyperm LOCALID_WANDAS_BF_OUTSIDE, 38, 10
 	return
 
 Route116_OnLoad: @ 81F2C4F
@@ -122,7 +125,12 @@ Route116_Movement_DevonEmployeeExitEast: @ 81F2D4C
 	step_end
 
 Route116_EventScript_RouteSignRustboro:: @ 81F2D57
-	msgbox Route116_Text_RouteSignRustboro, MSGBOX_SIGN
+	
+    setvar VAR_0x8000, SPECIES_MUDKIP
+    setvar VAR_0x8001, 0
+    callnative InitDexnavSearch
+    
+    @msgbox Route116_Text_RouteSignRustboro, MSGBOX_SIGN
 	end
 
 Route116_EventScript_RusturfTunnelSign:: @ 81F2D60
@@ -151,7 +159,7 @@ Route116_EventScript_Briney:: @ 81F2D84
 
 Route116_EventScript_BrineyTrigger:: @ 81F2D95
 	lockall
-	applymovement 11, Common_Movement_WalkInPlaceFastestRight
+	applymovement LOCALID_BRINEY, Common_Movement_WalkInPlaceFastestRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
 	msgbox Route116_Text_ScoundrelMadeOffWithPeeko, MSGBOX_DEFAULT

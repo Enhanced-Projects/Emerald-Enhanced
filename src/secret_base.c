@@ -37,6 +37,7 @@
 #include "constants/event_bg.h"
 #include "constants/decorations.h"
 #include "constants/event_objects.h"
+#include "constants/field_specials.h"
 #include "constants/items.h"
 #include "constants/maps.h"
 #include "constants/map_types.h"
@@ -963,7 +964,7 @@ static void HandleRegistryMenuInput(u8 taskId)
 
     data = gTasks[taskId].data;
     input = ListMenu_ProcessInput(data[5]);
-    ListMenuGetScrollAndRow(data[5], &data[2], &data[1]);
+    ListMenuGetScrollAndRow(data[5], (u16 *)&data[2], (u16 *)&data[1]);
     switch (input)
     {
     case LIST_NOTHING_CHOSEN:
@@ -1044,10 +1045,10 @@ void DeleteRegistry_Yes_Callback(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     ClearDialogWindowAndFrame(0, 0);
-    DestroyListMenuTask(data[5], &data[2], &data[1]);
+    DestroyListMenuTask((u8)data[5], (u16 *)&data[2], (u16 *)&data[1]);
     gSaveBlock1Ptr->secretBases[data[4]].registryStatus = 0;
     BuildRegistryMenuItems(taskId);
-    sub_812225C(&data[2], &data[1], data[3], data[0]);
+    sub_812225C((u16 *)&data[2], (u16 *)&data[1], (u16)data[3], (u16)data[0]);
     FinalizeRegistryMenu(taskId);
     gTasks[taskId].func = HandleRegistryMenuInput;
 }
@@ -1061,7 +1062,7 @@ static void DeleteRegistry_No(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     ClearDialogWindowAndFrame(0, 0);
-    DestroyListMenuTask(data[5], &data[2], &data[1]);
+    DestroyListMenuTask((u8)data[5], (u16 *)&data[2], (u16 *)&data[1]);
     FinalizeRegistryMenu(taskId);
     gTasks[taskId].func = HandleRegistryMenuInput;
 }
@@ -1120,7 +1121,7 @@ const u8 *GetSecretBaseTrainerLoseText(void)
 
 void PrepSecretBaseBattleFlags(void)
 {
-    TryGainNewFanFromCounter(1);
+    TryGainNewFanFromCounter(FANCOUNTER_BATTLED_AT_BASE);
     gTrainerBattleOpponent_A = TRAINER_SECRET_BASE;
     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_SECRET_BASE;
 }

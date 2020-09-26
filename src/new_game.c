@@ -146,7 +146,7 @@ static void ClearFrontierRecord(void)
 static void WarpToTruck(void)
 {
     //SetWarpDestination(MAP_GROUP(INSIDE_OF_TRUCK), MAP_NUM(INSIDE_OF_TRUCK), -1, -1, -1);
-    SetWarpDestination(MAP_GROUP(VERDANTURF_TOWN), MAP_NUM(VERDANTURF_TOWN), -1, -1, -1);
+    SetWarpDestination(MAP_GROUP(RUSTBORO_CITY), MAP_NUM(RUSTBORO_CITY), -1, 16, 39);
     WarpIntoMap();
 }
 
@@ -215,7 +215,7 @@ void NewGameInitData(void)
     WarpToTruck();
     ScriptContext2_RunNewScript(EventScript_ResetAllMapFlags);
     ResetMiniGamesResults();
-    copy_strings_to_sav1();
+    InitUnionRoomChatRegisteredTexts();
     InitLilycoveLady();
     ResetAllApprenticeData();
     ClearRankingHallRecords();
