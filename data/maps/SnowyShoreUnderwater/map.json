@@ -28,14 +28,14 @@
       "y": 40,
       "elevation": 0,
       "dest_map": "MAP_UNDERWATER_ROUTE125",
-      "dest_warp_id": 2
+      "dest_warp_id": 3
     },
     {
       "x": 59,
       "y": 39,
       "elevation": 0,
       "dest_map": "MAP_UNDERWATER_ROUTE125",
-      "dest_warp_id": 3
+      "dest_warp_id": 4
     }
   ],
   "coord_events": [
