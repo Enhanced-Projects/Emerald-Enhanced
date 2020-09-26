@@ -961,7 +961,7 @@ gTVPokemonTodaySuccessfulText01:: @ 08283552
 
 gTVPokemonTodaySuccessfulText02:: @ 082835AE
 	.string "Big Bro: The Trainer had to throw this\n"
-	.string "manyPoké Balls to catch it: {STR_VAR_3}!\p"
+	.string "many Poké Balls to catch it: {STR_VAR_3}!\p"
 	.string "It finally took a single {STR_VAR_2}\n"
 	.string "to catch it!$"
 
@@ -1433,7 +1433,7 @@ gTVBreakingNewsText08:: @ 0828596F
 
 gTVBreakingNewsText09:: @ 082859AC
 	.string "However, {STR_VAR_1} seemed to run\n"
-	.string "out ofPoké Balls.\p"
+	.string "out of Poké Balls.\p"
 	.string "The Trainer had to break off\n"
 	.string "the battle with the rare {STR_VAR_2}.\p"
 	.string "In that instant, {STR_VAR_3}\n"

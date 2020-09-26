@@ -41,7 +41,7 @@ PCN_RechargeWirelessPC::
     return
 
 PCN_RechargedWirelessPc:
-    .string "Here, i'll charge your PC device\n"
+    .string "Here, I'll charge your PC device\n"
     .string "as well...$"
 
 PCN_CantUseThisHere::

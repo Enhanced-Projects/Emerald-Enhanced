@@ -373,7 +373,7 @@ LH_chat1:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She nods.)\n"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}... ... ... \p"
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Well... I saw you exiting the\p"
-	.string "PokeCenter. I really like your\n"
+	.string "Poke Center. I really like your\n"
 	.string "perfume. It's nice.\p"
     .string "My name is {PLAYER}. Are you new\n"
     .string "to Slateport, or Hoenn as a whole?\p"

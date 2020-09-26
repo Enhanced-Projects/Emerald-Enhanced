@@ -246,11 +246,11 @@ Pidgey_NPC::
 
 Pidgey_NPCText:
     .string "Hello my name is Pidgey.\p"
-    .string "i'm not actually a Pidgey but that's\p"
+    .string "I'm not actually a Pidgey but that's\p"
     .string "what most people on Discord call me!\p"
-    .string "I added this Npc as an easter egg\p"
+    .string "I added this NPC as an easter egg\p"
     .string "without the permission of Ryuhouji!\p"
-    .string "Anyways i wanted to know if this\p"
+    .string "Anyways I wanted to know if this\p"
     .string "would slip under his radar or not.\p"
     .string "If you see this message chances are\p"
     .string "that it did.$"

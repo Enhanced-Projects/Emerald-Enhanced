@@ -2059,11 +2059,11 @@ MatchCall_Text_Roxanne2:: @ 82B250E
 MatchCall_Text_Roxanne3:: @ 82B25C1
 	.string "Roxanne: {PLAYER}!\n"
 	.string "My Gym is ready!\p"
-	.string "Please visitRustboro whenever\n"
+	.string "Please visit Rustboro whenever\n"
 	.string "you can!$"
 
 MatchCall_Text_Roxanne4:: @ 82B2607
-	.string "Roxanne: At theRustboro Gym,\n"
+	.string "Roxanne: At the Rustboro Gym,\n"
 	.string "the fact that we battled, {PLAYER},\l"
 	.string "is a matter of pride.$"
 
@@ -2367,7 +2367,7 @@ MatchCall_Text_May4:: @ 2B3CF3
 	.string "Dawn: {PLAYER}{KUN}?\p"
 	.string "Rusturf Tunnel…\n"
 	.string "They named it that because it\l"
-	.string "joinsRustboro and Verdanturf.$"
+	.string "joins Rustboro and Verdanturf.$"
 
 MatchCall_Text_May5:: @ 2B3D4B
 	.string "Dawn: {PLAYER}{KUN}, how are you?\p"
@@ -2492,7 +2492,7 @@ MatchCall_Text_Brendan3:: @ 2B4560
 MatchCall_Text_Brendan4:: @ 2B463F
 	.string "Brendan: This voice… {PLAYER}?\p"
 	.string "They gave Rusturf Tunnel its name\n"
-	.string "because it joinsRustboro and\l"
+	.string "because it joins Rustboro and\l"
 	.string "Verdanturf.\p"
 	.string "Did you know that?$"
 
@@ -2882,7 +2882,7 @@ MatchCall_Text_MrStone3:: @ 82B6302
 	.string "MR. Stone: Oh! {PLAYER}{KUN}!\p"
 	.string "Ah, so you've met Steven!\n"
 	.string "I'd better reward you, then!\p"
-	.string "When you visitRustboro again,\n"
+	.string "When you visit Rustboro again,\n"
 	.string "come see me at my office.\p"
 	.string "I'll be waiting for you!$"
 
