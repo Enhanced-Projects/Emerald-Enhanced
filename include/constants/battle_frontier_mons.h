@@ -18,7 +18,7 @@
 #define FRONTIER_MON_QUAGSIRE_3          14
 #define FRONTIER_MON_HITMONTOP_3         15
 #define FRONTIER_MON_HAXORUS_3           16
-#define FRONTIER_MON_LOPUNNY_3           17
+#define FRONTIER_MON_AMBIPOM_4           17
 #define FRONTIER_MON_GOGOAT_3            18
 #define FRONTIER_MON_LUDICOLO_3          19
 #define FRONTIER_MON_MIGHTYENA_3         20

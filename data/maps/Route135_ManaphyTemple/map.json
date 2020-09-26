@@ -8,7 +8,7 @@
     "connections": [
         {
             "direction": "dive",
-            "map": "MAP_UNDERWATER9",
+            "map": "MAP_UNDERWATER_ROUTE135_2",
             "offset": 0
         }
     ],

@@ -7696,3 +7696,19 @@ BattleScript_PrintPlayerForfeitedLinkBattle::
 	atk57
 	waitmessage 0x40
 	end2
+
+BattleScript_PreventFireAttackInRain::
+	attackstring
+	ppreduce
+	pause 0x20
+	printstring STRINGID_FIREFIZZLEDOUT
+	waitmessage 0x40
+	goto BattleScript_MoveEnd
+
+BattleScript_PreventWaterAttackInSun::
+	attackstring
+	ppreduce
+	pause 0x20
+	printstring STRINGID_WATEREVAPORATED
+	waitmessage 0x40
+	goto BattleScript_MoveEnd

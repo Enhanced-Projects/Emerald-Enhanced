@@ -14,11 +14,11 @@
     ],
     "coord_events": [
     ],
-    "id": "MAP_UNDERWATER9",
-    "layout": "LAYOUT_UNDERWATER9",
+    "id": "MAP_UNDERWATER_ROUTE135_2",
+    "layout": "LAYOUT_UNDERWATER_ROUTE135_2",
     "map_type": "MAP_TYPE_UNDERWATER",
     "music": "MUS_DEEPDEEP",
-    "name": "Underwater9",
+    "name": "Underwater_Route135_2",
     "object_events": [
     ],
     "region_map_section": "MAPSEC_ROUTE_135",
@@ -26,7 +26,7 @@
     "show_map_name": false,
     "warp_events": [
         {
-            "dest_map": "MAP_UNDERWATER8",
+            "dest_map": "MAP_UNDERWATER_ROUTE135_1",
             "dest_warp_id": 0,
             "elevation": 0,
             "x": 7,

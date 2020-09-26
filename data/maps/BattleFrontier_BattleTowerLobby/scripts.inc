@@ -1124,8 +1124,6 @@ BattleFrontier_BattleTowerLobby_Text_NotEnoughValidMonsLv50: @ 823FE7F
 	.string "You don't have {STR_VAR_2} eligible Pokémon.\p"
 	.string "You must have {STR_VAR_2} different Pokémon\n"
 	.string "of Level 50 or less to enter.\p"
-	.string "They also must be holding different\n"
-	.string "kinds of items.\p"
 	.string "EGGS{STR_VAR_1} ineligible.\p"
 	.string "Please come see me when you are ready.$"
 
@@ -1135,8 +1133,6 @@ BattleFrontier_BattleTowerLobby_Text_NotEnoughValidMonsLvOpen: @ 823FF5D
 	.string "You don't have {STR_VAR_2} eligible Pokémon.\p"
 	.string "You must have {STR_VAR_2} different Pokémon\n"
 	.string "to enter.\p"
-	.string "They also must be holding different\n"
-	.string "kinds of items.\p"
 	.string "EGGS{STR_VAR_1} ineligible.\p"
 	.string "Please come see me when you are ready.$"
 
@@ -1145,8 +1141,6 @@ BattleFrontier_BattleTowerLobby_Text_NotEnoughValidMonsLv50Singles: @ 8240027
 	.string "You don't have three eligible Pokémon.\p"
 	.string "You must have three different Pokémon\n"
 	.string "of Level 50 or less to enter.\p"
-	.string "They also must be holding different\n"
-	.string "kinds of items.\p"
 	.string "EGGS{STR_VAR_1} ineligible.\p"
 	.string "Please come see me when you are ready.$"
 
@@ -1155,8 +1149,6 @@ BattleFrontier_BattleTowerLobby_Text_NotEnoughValidMonsLvOpenSingles: @ 824010B
 	.string "You don't have three eligible Pokémon.\p"
 	.string "You must have three different Pokémon\n"
 	.string "to enter.\p"
-	.string "They also must be holding different\n"
-	.string "kinds of items.\p"
 	.string "EGGS{STR_VAR_1} ineligible.\p"
 	.string "Please come see me when you are ready.$"
 
@@ -1165,8 +1157,6 @@ BattleFrontier_BattleTowerLobby_Text_NotEnoughValidMonsLv50Doubles: @ 82401DB
 	.string "You don't have four eligible Pokémon.\p"
 	.string "You must have four different Pokémon\n"
 	.string "of Level 50 or less to enter.\p"
-	.string "They also must be holding different\n"
-	.string "kinds of items.\p"
 	.string "EGGS{STR_VAR_1} ineligible.\p"
 	.string "Please come see me when you are ready.$"
 
@@ -1175,8 +1165,6 @@ BattleFrontier_BattleTowerLobby_Text_NotEnoughValidMonsLvOpenDoubles: @ 82402BD
 	.string "You don't have four eligible Pokémon.\p"
 	.string "You must have four different Pokémon\n"
 	.string "to enter.\p"
-	.string "They also must be holding different\n"
-	.string "kinds of items.\p"
 	.string "EGGS{STR_VAR_1} ineligible.\p"
 	.string "Please come see me when you are ready.$"
 
@@ -1185,8 +1173,6 @@ BattleFrontier_BattleTowerLobby_Text_NotEnoughValidMonsLv50Multis: @ 824038B
 	.string "You don't have two eligible Pokémon.\p"
 	.string "You must have two different Pokémon\n"
 	.string "of Level 50 or less to enter.\p"
-	.string "They also must be holding different\n"
-	.string "kinds of items.\p"
 	.string "EGGS{STR_VAR_1} ineligible.\p"
 	.string "Please come see me when you are ready.$"
 
@@ -1195,8 +1181,6 @@ BattleFrontier_BattleTowerLobby_Text_NotEnoughValidMonsLvOpenMultis: @ 824046B
 	.string "You don't have two eligible Pokémon.\p"
 	.string "You must have two different Pokémon\n"
 	.string "to enter.\p"
-	.string "They also must be holding different\n"
-	.string "kinds of items.\p"
 	.string "EGGS{STR_VAR_1} ineligible.\p"
 	.string "Please come see me when you are ready.$"
 

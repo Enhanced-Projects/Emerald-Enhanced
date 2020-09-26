@@ -87,3 +87,33 @@ FrostyForest_SpellTag::
 FrostyForestEnd::
 	release
 	end
+
+FrostyForest_EventScript_Yuna::
+	trainerbattle_single TRAINER_YUNA, FrostyForest_Text_YunaIntro, FrostyForest_Text_YunaDefeated
+	msgbox FrostyForest_Text_YunaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FrostyForest_EventScript_Jason::
+	trainerbattle_single TRAINER_JASON, FrostyForest_Text_JasonIntro, FrostyForest_Text_JasonDefeated
+	msgbox FrostyForest_Text_JasonPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FrostyForest_EventScript_Rodette::
+	trainerbattle_single TRAINER_RODETTE, FrostyForest_Text_RodetteIntro, FrostyForest_Text_RodetteDefeated
+	msgbox FrostyForest_Text_RodettePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FrostyForest_EventScript_Tyrone::
+	trainerbattle_single TRAINER_TYRONE, FrostyForest_Text_TyroneIntro, FrostyForest_Text_TyroneDefeated
+	msgbox FrostyForest_Text_TyronePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FrostyForest_EventScript_Luna::
+	trainerbattle_single TRAINER_LUNA, FrostyForest_Text_LunaIntro, FrostyForest_Text_LunaDefeated
+	msgbox FrostyForest_Text_LunaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FrostyForest_EventScript_Melanie::
+	trainerbattle_single TRAINER_MELANIE, FrostyForest_Text_MelanieIntro, FrostyForest_Text_MelanieDefeated
+	msgbox FrostyForest_Text_MelaniePostBattle, MSGBOX_AUTOCLOSE
+	end

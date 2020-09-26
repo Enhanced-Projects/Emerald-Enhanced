@@ -352,9 +352,9 @@
 #define FLAG_RYU_ARCHIE_SUCCESSFUL           0x14C
 #define FLAG_RYU_DS_SHELLY_SCENE             0x14D
 
-#define FLAG_MIRAGE_TOWER_VISIBLE            0x14E // EE-Unused
+#define FLAG_MIRAGE_TOWER_VISIBLE            0x14E // EE-Unused (but hard to remove from code)
 #define FLAG_HIDE_AQUAHQ_SHELLY              0x14F // hides shelly in the aqua hq when she becomes a follower.
-#define FLAG_CHOSE_CLAW_FOSSIL               0x150 // EE-Unused
+#define FLAG_FRIGUS_QUEST_ACCEPTED           0x150
 #define FLAG_RECEIVED_POWDER_JAR             0x151
 
 #define FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER 0x152
@@ -364,7 +364,7 @@
 #define FLAG_ENTERED_CONTEST                 0x155
 #define FLAG_MET_SLATEPORT_FANCLUB_CHAIRMAN  0x156
 #define FLAG_MET_BATTLE_FRONTIER_GAMBLER     0x157
-#define FLAG_ENABLE_MR_STONE_POKENAV         0x158 // EE-Unused
+#define FLAG_ENABLE_MR_STONE_POKENAV         0x158 // EE-Unused?
 #define FLAG_NURSE_MENTIONS_GOLD_CARD        0x159
 #define FLAG_MET_FRONTIER_BEAUTY_MOVE_TUTOR  0x15A
 #define FLAG_MET_FRONTIER_SWIMMER_MOVE_TUTOR 0x15B
@@ -372,7 +372,7 @@
 // Trainer Rematch Flags
 #define FLAG_ITEM_POLAR_PILLAR_ABOMASITE     0x15C
 #define FLAG_RYU_HIDE_BRINEY_GUARD           0x15D
-#define FLAG_REMATCH_ANDRES                  0x15E // EE-Unused
+#define FLAG_FRIGUS_QUEST_COMPLETED          0x15E
 #define FLAG_REMATCH_DUSTY                   0x15F // EE-Unused
 #define FLAG_REMATCH_LOLA                    0x160 // EE-Unused
 #define FLAG_RYU_COURTNEY_MEGA_REWARD        0x161 // Courtney mega stone reward.
@@ -738,7 +738,7 @@
 // Event Flags
 #define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
 #define FLAG_HIDE_APPRENTICE                                        0x2BD
-#define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE // EE-Unused
+#define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF // EE-Unused
 #define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x2C0 // EE-Unused
 #define FLAG_HIDE_UNION_ROOM_PLAYER_3                               0x2C1 // EE-Unused
@@ -803,7 +803,7 @@
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_TRUCK                 0x2FA // EE-Unused
 #define FLAG_HIDE_DEOXYS                                            0x2FB
 #define FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE                      0x2FC
-#define FLAG_HIDE_MAUVILLE_CITY_SCOTT                               0x2FD
+#define FLAG_HIDE_MAUVILLE_CITY_SCOTT                               0x2FD // EE-Unused
 #define FLAG_HIDE_VERDANTURF_TOWN_SCOTT                             0x2FE
 #define FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT                  0x2FF
 #define FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE                        0x300

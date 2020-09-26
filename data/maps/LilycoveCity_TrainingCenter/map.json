@@ -1,245 +1,245 @@
 {
-    "allow_cycling": false,
-    "allow_escaping": false,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "GCMS_Intro",
-            "type": "sign",
-            "x": 1,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "TC_EvIvCheckerScript",
-            "type": "sign",
-            "x": 5,
-            "y": 7
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-        {
-            "elevation": 3,
-            "script": "TC_Entry",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 16,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "script": "TC_Entry",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 17,
-            "y": 8
-        }
-    ],
-    "id": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
-    "layout": "LAYOUT_LILYCOVE_CITY_TRAINING_CENTER",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_B_FACTORY",
-    "name": "LilycoveCity_TrainingCenter",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TEALA",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 15,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "TC_Drugstore",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 2,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_2",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "TC_Imprint_Shop",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 4,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "TC_HPEV",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 2,
-            "y": 3
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "TC_AtkEV",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 5,
-            "y": 3
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "TC_DefEV",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 8,
-            "y": 3
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "TC_SpcAtkEV",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 11,
-            "y": 3
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "TC_SpdefEV",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 14,
-            "y": 3
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "TC_SpeedEV",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 17,
-            "y": 3
-        }
-    ],
-    "region_map_section": "MAPSEC_LILYCOVE_CITY",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-        {
-            "dest_map": "MAP_LILYCOVE_CITY",
-            "dest_warp_id": 14,
-            "elevation": 0,
-            "x": 9,
-            "y": 21
-        },
-        {
-            "dest_map": "MAP_LILYCOVE_CITY",
-            "dest_warp_id": 14,
-            "elevation": 0,
-            "x": 10,
-            "y": 21
-        },
-        {
-            "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
-            "dest_warp_id": 9,
-            "elevation": 3,
-            "x": 8,
-            "y": 10
-        },
-        {
-            "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
-            "dest_warp_id": 8,
-            "elevation": 3,
-            "x": 9,
-            "y": 10
-        },
-        {
-            "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
-            "dest_warp_id": 7,
-            "elevation": 3,
-            "x": 10,
-            "y": 10
-        },
-        {
-            "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
-            "dest_warp_id": 6,
-            "elevation": 3,
-            "x": 11,
-            "y": 10
-        },
-        {
-            "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
-            "dest_warp_id": 5,
-            "elevation": 3,
-            "x": 11,
-            "y": 18
-        },
-        {
-            "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
-            "dest_warp_id": 4,
-            "elevation": 3,
-            "x": 10,
-            "y": 18
-        },
-        {
-            "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
-            "dest_warp_id": 3,
-            "elevation": 3,
-            "x": 9,
-            "y": 18
-        },
-        {
-            "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
-            "dest_warp_id": 2,
-            "elevation": 3,
-            "x": 8,
-            "y": 18
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
+  "name": "LilycoveCity_TrainingCenter",
+  "layout": "LAYOUT_LILYCOVE_CITY_TRAINING_CENTER",
+  "music": "MUS_B_FACTORY",
+  "region_map_section": "MAPSEC_LILYCOVE_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TEALA",
+      "x": 15,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+      "x": 2,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TC_Drugstore",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_2",
+      "x": 4,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TC_Imprint_Shop",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
+      "x": 2,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TC_HPEV",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
+      "x": 5,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TC_AtkEV",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
+      "x": 8,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TC_DefEV",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
+      "x": 11,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TC_SpcAtkEV",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
+      "x": 14,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TC_SpdefEV",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
+      "x": 17,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TC_SpeedEV",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 9,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_LILYCOVE_CITY",
+      "dest_warp_id": 14
+    },
+    {
+      "x": 10,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_LILYCOVE_CITY",
+      "dest_warp_id": 14
+    },
+    {
+      "x": 8,
+      "y": 10,
+      "elevation": 3,
+      "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
+      "dest_warp_id": 9
+    },
+    {
+      "x": 9,
+      "y": 10,
+      "elevation": 3,
+      "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
+      "dest_warp_id": 8
+    },
+    {
+      "x": 10,
+      "y": 10,
+      "elevation": 3,
+      "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
+      "dest_warp_id": 7
+    },
+    {
+      "x": 11,
+      "y": 10,
+      "elevation": 3,
+      "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
+      "dest_warp_id": 6
+    },
+    {
+      "x": 11,
+      "y": 18,
+      "elevation": 3,
+      "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
+      "dest_warp_id": 5
+    },
+    {
+      "x": 10,
+      "y": 18,
+      "elevation": 3,
+      "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
+      "dest_warp_id": 4
+    },
+    {
+      "x": 9,
+      "y": 18,
+      "elevation": 3,
+      "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
+      "dest_warp_id": 3
+    },
+    {
+      "x": 8,
+      "y": 18,
+      "elevation": 3,
+      "dest_map": "MAP_LILYCOVE_CITY_TRAINING_CENTER",
+      "dest_warp_id": 2
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 8,
+      "elevation": 3,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "TC_Entry"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 8,
+      "elevation": 3,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "TC_Entry"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 1,
+      "y": 7,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "GCMS_Intro"
+    },
+    {
+      "type": "sign",
+      "x": 5,
+      "y": 7,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "TC_EvIvCheckerScript"
+    }
+  ]
 }

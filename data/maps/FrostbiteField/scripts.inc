@@ -9,8 +9,27 @@ FrostbiteField_IceHeal::
 	release
 	end
 
-FrostbiteField_TestBattle::
-	cleartrainerflag TRAINER_OVERLORD_RYU
-	trainerbattle_no_intro TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText
-	release
+FrostbiteField_EventScript_Nera::
+	trainerbattle_single TRAINER_NERA, FrostbiteField_Text_NeraIntro, FrostbiteField_Text_NeraDefeated
+	msgbox FrostbiteField_Text_NeraPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FrostbiteField_EventScript_Arnold::
+	trainerbattle_single TRAINER_ARNOLD, FrostbiteField_Text_ArnoldIntro, FrostbiteField_Text_ArnoldDefeated
+	msgbox FrostbiteField_Text_ArnoldPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FrostbiteField_EventScript_Deo::
+	trainerbattle_single TRAINER_DEO, FrostbiteField_Text_DeoIntro, FrostbiteField_Text_DeoDefeated
+	msgbox FrostbiteField_Text_DeoPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FrostbiteField_EventScript_Malcolm::
+	trainerbattle_single TRAINER_MALCOLM, FrostbiteField_Text_MalcolmIntro, FrostbiteField_Text_MalcolmDefeated
+	msgbox FrostbiteField_Text_MalcolmPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FrostbiteField_EventScript_Maurice::
+	trainerbattle_single TRAINER_MAURICE, FrostbiteField_Text_MauriceIntro, FrostbiteField_Text_MauriceDefeated
+	msgbox FrostbiteField_Text_MauricePostBattle, MSGBOX_AUTOCLOSE
 	end

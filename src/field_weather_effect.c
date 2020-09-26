@@ -2093,6 +2093,23 @@ bool8 RyuCheckPlayerisInColdArea(void)
     return FALSE;
 }
 
+bool8 TobyCheckPlayerisInHailStorm(void)
+{
+    u16 locGroup = gSaveBlock1Ptr->location.mapGroup;
+    u16 locMap = gSaveBlock1Ptr->location.mapNum;
+    if (locGroup == 0)
+    {
+        if (locMap == 19)
+        {
+            {
+                return TRUE;
+            }
+        }
+    }
+    
+    return FALSE;
+}
+
 static void CreateSandstormSprites(void)
 {
     u16 i;

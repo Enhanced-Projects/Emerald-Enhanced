@@ -2973,6 +2973,8 @@ static const u16 gMoveTypeAdvantageTable[] = {
 
 extern bool8 RyuCheckPlayerisInColdArea();
 
+extern bool8 TobyCheckPlayerisInHailStorm();
+
 u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveArg)
 {
     u8 effect = 0;
@@ -3107,7 +3109,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
             }
             if (effect)
             {
-                if (RyuCheckPlayerisInColdArea())
+                if (TobyCheckPlayerisInHailStorm())
                 {
                     gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_SNOW;
                 }
@@ -6542,10 +6544,12 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     // check sunny/rain weather
     if (WEATHER_HAS_EFFECT && gBattleWeather & WEATHER_RAIN_ANY)
     {
-        if (moveType == TYPE_FIRE)
-            dmg = ApplyModifier(UQ_4_12(0.5), dmg);
-        else if (moveType == TYPE_WATER)
+        if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
+        else if (moveType == TYPE_FIRE && (FlagGet(FLAG_TOBY_TRAINER_SIGHT) == 1))//Placeholder flag
+        gBattlescriptCurrInstr = BattleScript_PreventFireAttackInRain;
+        else if (moveType == TYPE_FIRE)
+            dmg = ApplyModifier(UQ_4_12(0.5), dmg);
         else if (moveType == TYPE_GRASS)
             dmg = ApplyModifier(UQ_4_12(1.1), dmg);
     }
@@ -6553,6 +6557,8 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     {
         if (moveType == TYPE_FIRE)
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
+        else if (moveType == TYPE_WATER && (FlagGet(FLAG_TOBY_TRAINER_SIGHT) == 1))//Placeholder flag
+        gBattlescriptCurrInstr = BattleScript_PreventWaterAttackInSun;
         else if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
         else if (moveType == TYPE_GRASS)

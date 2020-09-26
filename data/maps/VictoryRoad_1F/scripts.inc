@@ -132,4 +132,4 @@ VR1_MoltresGotAway::
 	end
 
 OverworldLegendary_IntroMoltres: @put your intro here
-	.string "$"
+	.string "Gyaoo!$"

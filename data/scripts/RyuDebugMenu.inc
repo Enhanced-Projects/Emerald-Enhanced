@@ -186,7 +186,9 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto RyuFert_FertilizerStart
+	giveitem ITEM_ARTEFACT_1
+	giveitem ITEM_ARTEFACT_2
+	giveitem ITEM_ARTEFACT_3
 	release
 	end
 

@@ -6,13 +6,13 @@ MauvilleCity_House2_EventScript_Woman:: @ 8210C5D
 	faceplayer
 	goto_if_set FLAG_RECEIVED_COIN_CASE, MauvilleCity_House2_EventScript_ReceivedCoinCase
 	msgbox MauvilleCity_House2_Text_BuyHarborMailAtSlateport, MSGBOX_DEFAULT
-	checkitem ITEM_HARBOR_MAIL, 1
+	checkitem ITEM_PROTEIN, 1
 	compare VAR_RESULT, TRUE
-	goto_if_eq MauvilleCity_House2_EventScript_AskToTradeForHarborMail
+	goto_if_eq MauvilleCity_House2_EventScript_AskToTradeForProtein
 	release
 	end
 
-MauvilleCity_House2_EventScript_AskToTradeForHarborMail:: @ 8210C82
+MauvilleCity_House2_EventScript_AskToTradeForProtein:: @ 8210C82
 	playse SE_PIN
 	applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -27,7 +27,7 @@ MauvilleCity_House2_EventScript_AskToTradeForHarborMail:: @ 8210C82
 
 MauvilleCity_House2_EventScript_AcceptTrade:: @ 8210CB8
 	msgbox MauvilleCity_House2_Text_IllTradeYouCoinCase, MSGBOX_DEFAULT
-	removeitem ITEM_HARBOR_MAIL, 1
+	removeitem ITEM_PROTEIN, 1
 	giveitem ITEM_COIN_CASE
 	setflag FLAG_RECEIVED_COIN_CASE
 	goto MauvilleCity_House2_EventScript_ReceivedCoinCase
@@ -44,13 +44,13 @@ MauvilleCity_House2_EventScript_DeclineTrade:: @ 8210CE4
 	end
 
 MauvilleCity_House2_Text_BuyHarborMailAtSlateport: @ 8210CEE
-	.string "If I had a Bike, it'd be easy to cycle to\n"
+	.string "If I had a bike, it'd be easy to cycle to\n"
 	.string "Slateport for some shopping.\p"
-	.string "I'd be able to buy Harbor Mail at the\n"
-	.string "Pokémon Mart in Slateport…$"
+	.string "I'd be able to buy Protein from the\n"
+	.string "Energy Guru in Slateport…$"
 
 MauvilleCity_House2_Text_TradeHarborMailForCoinCase: @ 8210D76
-	.string "Oh! You have Harbor Mail?\n"
+	.string "Oh! You have Protein?\n"
 	.string "Will you trade it for a Coin Case?$"
 
 MauvilleCity_House2_Text_IllTradeYouCoinCase: @ 8210DB3

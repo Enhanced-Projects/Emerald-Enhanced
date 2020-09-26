@@ -153,7 +153,7 @@ RyuFert_NotEnoughACMessage:
     .string "You don't have enough {STR_VAR_3}.$"
 
 Ryu_FertilizerIntro:
-    .string "Please select 3 berries to\nrecycle into a Fertilizer.$"
+    .string "Would you like to recycle three\nberries into a Fertilizer?$"
 
 RyuFert_PlsReturnWithMore:
     .string "Come back when you want to\ncompost more berries!$"

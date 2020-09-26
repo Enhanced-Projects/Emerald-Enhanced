@@ -148,6 +148,5 @@ bool8 MetatileBehavior_IsTrainerHillTimer(u8);
 bool8 MetatileBehavior_IsMtFreezeOrPolarPillar(u8);
 bool8 MetatileBehavior_IsSnowyGrass(u8);
 bool8 MetatileBehavior_IsNormalTallGrass(u8);
-bool8 MetatileBehavior_IsColdArea(u8);
 
 #endif // GUARD_METATILE_BEHAVIOR

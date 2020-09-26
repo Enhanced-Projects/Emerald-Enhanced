@@ -3506,16 +3506,16 @@ static void FillTentTrainerParty_(u16 trainerId, u8 firstMonId, u8 monCount)
         if (j != i + firstMonId)
             continue;
 
-        // Ensure this Pokemon's held item isn't a duplicate.
-        for (j = 0; j < i + firstMonId; j++)
-        {
-            if (GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) != 0
-             && GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) == gFacilityTrainerMons[monId].heldItem)
-                break;
-        }
-        if (j != i + firstMonId)
-            continue;
-
+//        // Ensure this Pokemon's held item isn't a duplicate.
+//        for (j = 0; j < i + firstMonId; j++)
+//        {
+//            if (GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) != 0
+//             && GetMonData(&gEnemyParty[j], MON_DATA_HELD_ITEM, NULL) == gFacilityTrainerMons[monId].heldItem)
+//                break;
+//        }
+//        if (j != i + firstMonId)
+//            continue;
+//
         // Ensure this exact pokemon index isn't a duplicate. This check doesn't seem necessary
         // because the species and held items were already checked directly above.
         for (j = 0; j < i; j++)
@@ -3640,7 +3640,7 @@ void RyuGiveFrontierMon(void)
 {
     s32 count;
     s32 evs[NUM_STATS];
-    u8 level = 50;
+    u8 level = 100;
     u8 level2 = 0;
     u8 i, temp;
     u8 party_id = CalculatePlayerPartyCount();

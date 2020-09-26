@@ -18,7 +18,8 @@ const u16 gEggMoves[] = {
         MOVE_PETAL_DANCE,
         MOVE_POWER_WHIP,
         MOVE_SKULL_BASH,
-        MOVE_SLUDGE),
+        MOVE_SLUDGE,
+        MOVE_WEATHER_BALL),
 
     egg_moves(CHARMANDER,
         MOVE_AIR_CUTTER,
@@ -1280,6 +1281,7 @@ const u16 gEggMoves[] = {
         MOVE_ICE_FANG,
         MOVE_METRONOME,
         MOVE_MIMIC,
+        MOVE_MOONLIGHT,
         MOVE_PRESENT,
         MOVE_SMELLING_SALT,
         MOVE_SNORE,
@@ -3155,7 +3157,8 @@ const u16 gEggMoves[] = {
 		MOVE_RAGE,
 		MOVE_BRINE,
 		MOVE_REVENGE,
-		MOVE_HEAD_SMASH),
+		MOVE_HEAD_SMASH,
+		MOVE_PSYCHIC_FANGS),
 
 	egg_moves(SANDILE,
 		MOVE_DOUBLE_EDGE,

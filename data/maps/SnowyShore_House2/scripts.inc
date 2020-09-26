@@ -13,10 +13,3 @@ SnowyShore_House2_Text_IfYouMake:
 	.string "you can make berry trees grow fast.\p"
 	.string "It is very useful for berries that\n"
 	.string "take a long time to grow.$"
-
-SnowyShore_House2_EventScript_RightGirl::
-	lock
-	faceplayer
-	@ composting script
-	release
-	end

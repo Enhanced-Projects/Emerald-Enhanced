@@ -1110,7 +1110,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 
 	.include "data/maps/Route135/scripts.inc"
 
-	.include "data/maps/Underwater8/scripts.inc"
+	.include "data/maps/Underwater_Route135_1/scripts.inc"
 
 	.include "data/maps/Route135_House1/scripts.inc"
 
@@ -1120,7 +1120,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 
 	.include "data/maps/Route135_ManaphyTemple/scripts.inc"
 
-	.include "data/maps/Underwater9/scripts.inc"
+	.include "data/maps/Underwater_Route135_2/scripts.inc"
 
 	.include "data/maps/Route114_SuicuneCave/scripts.inc"
 
