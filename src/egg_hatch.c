@@ -36,6 +36,7 @@
 #include "data.h"
 #include "battle.h" // to get rid of later
 #include "constants/rgb.h"
+#include "item.h"
 
 struct EggHatchData
 {
@@ -879,6 +880,7 @@ static void EggHatchPrintMessage(u8 windowId, u8* string, u8 x, u8 y, u8 speed)
 
 u8 GetEggCyclesToSubtract(void)
 {
+    u8 cycles = 1;
     u8 count, i;
     for (count = CalculatePlayerPartyCount(), i = 0; i < count; i++)
     {
@@ -886,10 +888,12 @@ u8 GetEggCyclesToSubtract(void)
         {
             u8 ability = GetMonAbility(&gPlayerParty[i]);
             if (ability == ABILITY_MAGMA_ARMOR || ability == ABILITY_FLAME_BODY)
-                return 2;
+                cycles++;
         }
     }
-    return 1;
+    if (CheckBagHasItem(ITEM_OVAL_CHARM, 1) == TRUE)
+        cycles *= 2;
+    return cycles;
 }
 
 u16 CountPartyAliveNonEggMons(void)
