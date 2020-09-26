@@ -407,5 +407,4 @@ NewMauville_ZapdosGotAway::
 	end
 
 OverworldLegendary_IntroZapdos: @put your intro here
-	.string "$"
-
+	.string "Gyaoo!$"

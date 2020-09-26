@@ -87,3 +87,9 @@ Route125_EventScript_Auron:: @ 81F68AF
 	msgbox Route125_Text_AuronPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route125_EventScript_SnowyShoreSign::
+	msgbox Route125_Text_SnowyShoreSign, MSGBOX_SIGN
+	end
+
+Route125_Text_SnowyShoreSign:
+	.string "{UP_ARROW} Snowy Shore$"

@@ -5098,3 +5098,16 @@ FrostbiteField_Text_MauricePostBattle:
 	.string "I'm not much good with thinking,\n"
 	.string "see?\p"
 	.string "So, I just plow ahead with power!$"
+
+MtFreeze_Text_MorrisIntro:
+	.string "I keep fit by hiking.\n"
+	.string "Power, I have in spades!$"
+
+MtFreeze_Text_MorrisDefeated:
+	.string "I got trumped in power?$"
+
+MtFreeze_Text_MorrisPostBattle:
+	.string "I hear there are some seriously tough\n"
+	.string "pokemon on top of Mt. Freeze.\p"
+	.string "I intend to get up there and give them\n"
+	.string "a challenge!$"

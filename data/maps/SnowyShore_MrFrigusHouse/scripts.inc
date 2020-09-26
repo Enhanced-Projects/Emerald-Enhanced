@@ -47,7 +47,7 @@ SnowyShore_MrFrigusHouse_PlayerHasAllArtefacts::
 	removeitem ITEM_ARTEFACT_1, 1
 	removeitem ITEM_ARTEFACT_2, 1
 	removeitem ITEM_ARTEFACT_3, 1
-	giveitem ITEM_SHINY_CHARM @placeholder for Oval Charm
+	giveitem ITEM_OVAL_CHARM
 	msgbox SnowyShore_MrFrigusHouse_Text_TakeThisToo MSGBOX_DEFAULT
 	giveitem ITEM_DRY_ICE
 	setflag FLAG_FRIGUS_QUEST_COMPLETED

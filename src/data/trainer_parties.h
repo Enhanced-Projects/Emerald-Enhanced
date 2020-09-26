@@ -489,19 +489,6 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Violet[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Rose2[] = {
-    {
-    .iv = 10,
-    .lvl = 26,
-    .species = SPECIES_SHROOMISH,
-    },
-    {
-    .iv = 10,
-    .lvl = 26,
-    .species = SPECIES_ROSELIA,
-    }
-};
-
 static const struct TrainerMonNoItemDefaultMoves sParty_Rose3[] = {
     {
     .iv = 20,
@@ -9868,6 +9855,19 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Maurice[] = {
     .iv = 0,
     .lvl = 69,
     .species = SPECIES_MAMOSWINE,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Morris[] = {
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_BEARTIC,
+    },
+    {
+    .iv = 0,
+    .lvl = 69,
+    .species = SPECIES_AVALUGG,
     }
 };
 

@@ -76,7 +76,7 @@ SnowyShore_EventScript_OldWoman::
 
 SnowyShore_Text_MtFreeze:
 	.string "Further north along this path is\n"
-	.string "Mt Freeze.\p"
+	.string "Mt. Freeze.\p"
 	.string "The mountain is actually a volcano,\n"
 	.string "it's been dormant for centuries.\p"
 	.string "According to old folklore, a\n"

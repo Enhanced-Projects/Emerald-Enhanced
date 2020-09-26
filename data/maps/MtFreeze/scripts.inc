@@ -51,6 +51,7 @@ MtFreeze_OpenEntrance2::
 MtFreeze_Articuno::
 	goto_if_set FLAG_RYU_ARTICUNO, ryu_end
 	goto_if_set FLAG_RYU_ARTICUNO_RAN, ryu_end
+	playmoncry SPECIES_ARTICUNO, 0
 	msgbox OverworldLegendary_IntroArticuno
 	setvar VAR_TEMP_5, SPECIES_ARTICUNO
 	setvar VAR_TEMP_9, ITEM_DRY_ICE
@@ -72,4 +73,9 @@ MtFreeze_ArticunoGotAway::
 	end
 
 OverworldLegendary_IntroArticuno: @put your intro here
-	.string "$"
+	.string "Gyaoo!$"
+
+MtFreeze_EventScript_Morris::
+	trainerbattle_single TRAINER_MORRIS, MtFreeze_Text_MorrisIntro, MtFreeze_Text_MorrisDefeated
+	msgbox MtFreeze_Text_MorrisPostBattle, MSGBOX_AUTOCLOSE
+	end
