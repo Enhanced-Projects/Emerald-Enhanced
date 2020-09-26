@@ -179,7 +179,7 @@ MauvilleCity_Text_GymSign: @ 81E04B7
 MauvilleCity_Text_BikeShopSign: @ 81E0504
 	.string "“Ride in gravel and shake up your\n"
 	.string "soul!”\l"
-	.string "Rydel'S Cycles$"
+	.string "Rydel's Cycles$"
 
 MauvilleCity_Text_GameCornerSign: @ 81E053C
 	.string "“The play spot for all!”\n"

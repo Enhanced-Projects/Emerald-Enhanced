@@ -1350,7 +1350,7 @@ PetalburgCity_Gym_Text_GymStatueCertified: @ 8207467
 PG_Norman_Not4Badges_Intro:
     .string "I may have gotten older, but I can\n"
     .string "still teach you a lesson\p"
-    .string "Let'S DO This!$"
+    .string "Let's do this!$"
 
 PetalburgCity_Gym_Text_NormanPreRematch: @ 82074A2
 	.string "{PLAYER}…\n"
