@@ -590,6 +590,9 @@ extern u8 BattleFrontier_OutsideEast_EventScript_WaterSudowoodo[];
 
 // Dexnav
 extern const u8 EventScript_StartDexNavBattle[];
+extern const u8 EventScript_NotFoundNearby[];
+extern const u8 EventScript_PokemonGotAway[];
+extern const u8 EventScript_LostSignal[];
 
 // overworld
 extern const u8 EventScript_WhiteOut[];

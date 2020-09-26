@@ -101,9 +101,12 @@ struct FieldEffectScript
 
 
 //src/dexnav.c
-void ToolSelection(u8 taskId);
+//void ToolSelection(u8 taskId);
 void FieldEff_CaveDust(void);
 void FieldEff_Sparkles(void);
+
+void Task_DexNavSearch(u8 taskId);
+void EndDexnavSearch(u8 taskId);
 
 
 #endif //GUARD_DEXNAV_H

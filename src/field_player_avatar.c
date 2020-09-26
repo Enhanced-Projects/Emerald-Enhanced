@@ -141,6 +141,8 @@ static void AlignFishingAnimationFrames(void);
 
 static u8 sub_808D38C(struct ObjectEvent *object, s16 *a1);
 
+static void PlayerGoSlow(u8 direction);
+
 // .rodata
 
 static bool8 (*const sForcedMovementTestFuncs[])(u8) =
@@ -649,6 +651,10 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
         return;
     }
+    else if (FlagGet(FLAG_SYS_DEXNAV_ACTIVE) && (heldKeys & A_BUTTON))
+    {
+        PlayerGoSlow(direction);    //simulate player creeping
+    }
     else
     {
         PlayerGoSpeed1(direction);
@@ -957,6 +963,12 @@ void PlayerSetAnimId(u8 movementActionId, u8 copyableMovement)
         PlayerSetCopyableMovement(copyableMovement);
         ObjectEventSetHeldMovement(&gObjectEvents[gPlayerAvatar.objectEventId], movementActionId);
     }
+}
+
+// slow speed
+static void PlayerGoSlow(u8 direction)
+{
+    PlayerSetAnimId(GetWalkSlowMovementAction(direction), 2);
 }
 
 // normal speed (1 speed)

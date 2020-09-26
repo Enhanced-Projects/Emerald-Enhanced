@@ -1,6 +1,7 @@
 #include "global.h"
 #include "battle_pyramid.h"
 #include "bg.h"
+#include "dexnav.h"
 #include "event_data.h"
 #include "gpu_regs.h"
 #include "international_string_util.h"
@@ -207,7 +208,10 @@ bool8 sub_80D47D4(void)
 
 void ShowMapNamePopup(void)
 {
-    if (FlagGet(FLAG_HIDE_MAP_NAME_POPUP) != TRUE)
+    if (FlagGet(FLAG_SYS_DEXNAV_ACTIVE))
+        EndDexnavSearch(FindTaskIdByFunc(Task_DexNavSearch));
+    
+    if (!FlagGet(FLAG_HIDE_MAP_NAME_POPUP))
     {
         if (!FuncIsActiveTask(Task_MapNamePopUpWindow))
         {
