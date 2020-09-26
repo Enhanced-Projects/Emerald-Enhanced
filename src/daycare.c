@@ -941,7 +941,7 @@ static bool8 TryProduceOrHatchEgg(struct DayCare *daycare)
                 if (eggCycles >= toSub)
                     eggCycles -= toSub;
                 else
-                    eggCycles -= 1;
+                    eggCycles = 0;
 
                 SetMonData(&gPlayerParty[i], MON_DATA_FRIENDSHIP, &eggCycles);
             }
