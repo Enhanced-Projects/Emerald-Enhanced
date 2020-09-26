@@ -412,19 +412,19 @@ static void SerialIntr(void)
 static void IntrDummy(void)
 {}
 
+//static void WaitForVBlank(void)
+//{
+    //gMain.intrCheck &= ~INTR_FLAG_VBLANK;
+
+    //while (!(gMain.intrCheck & INTR_FLAG_VBLANK))
+    //    ;
+//}
+
 static void WaitForVBlank(void)
 {
     gMain.intrCheck &= ~INTR_FLAG_VBLANK;
-
-    while (!(gMain.intrCheck & INTR_FLAG_VBLANK))
-        ;
+    VBlankIntrWait();
 }
-
-//static void WaitForVBlank(void) This hack makes the game run more smoothly in almost every instance, but reduces compatibility.
-//{
-//    gMain.intrCheck &= ~INTR_FLAG_VBLANK;
-//    VBlankIntrWait();
-//}
 
 void SetTrainerHillVBlankCounter(u32 *counter)
 {
