@@ -5,7 +5,7 @@ gText_WhichPCShouldBeAccessed:: @ 827266F
 	.string "Which PC should be accessed?$"
 
 gText_AccessedSomeonesPC:: @ 827268C
-	.string "Accessed Someone'S PC.$"
+	.string "Accessed Someone's PC.$"
 
 gText_StorageSystemOpened:: @ 82726A3
 	.string "Pokémon Storage System opened.$"

@@ -754,7 +754,7 @@ MP_Courtney_Intro:
 	.string "I'll put you down!$"
 	
 MP_Courtney_Defeat:	
-	.string "Why Can'T I Win?! It's not fair,\n"
+	.string "Why can't I win?! It's not fair,\n"
 	.string "you're cheating somehow!$"
 	
 MP_Courtney_Outro:

@@ -839,7 +839,7 @@ FDawnMsg:
     .string "glad that I can be here with you.\p"
     .string "It's so surreal, being here in the\n"
     .string "Hoenn Champion room...\p"
-    .string "Well... Let'S GO!!$"
+    .string "Well... LET'S GO!!$"
 
 FBrendanMsg:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Not gonna lie, I expected\n"

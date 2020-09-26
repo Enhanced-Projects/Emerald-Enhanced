@@ -910,7 +910,7 @@ MatchCall_PersonalizedText25:: @ 82AD44E
 	.string "Roxanne tells me exactly what\n"
 	.string "I did wrong so I can learn from it.\p"
 	.string "You bet I'll be going to\n"
-	.string "the Trainer'S School tomorrow!\p"
+	.string "the Trainer's School tomorrow!\p"
 	.string "See you later!$"
 
 MatchCall_PersonalizedText26:: @ 82AD53A

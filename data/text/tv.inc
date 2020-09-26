@@ -1029,7 +1029,7 @@ gTVPokemonTodaySuccessfulText11:: @ 08283A5F
 
 gTVTodaysSmartShopperText00:: @ 08283B05
 	.string "Hello!\p"
-	.string "It's time for Today'S Smart Shopper.\p"
+	.string "It's time for Today's Smart Shopper.\p"
 	.string "Interviewer: How are you, viewers?\p"
 	.string "Today we're visiting a shop\n"
 	.string "in {STR_VAR_2}.\p"
@@ -1168,7 +1168,7 @@ gTVWorldOfMastersText02:: @ 0828455B
 	.string "Please tune in next time.$"
 
 gTVTodaysRivalTrainerText00:: @ 08284641
-	.string "Today'S Rival Trainer!\p"
+	.string "Today's Rival Trainer!\p"
 	.string "Hello, fellow Pokémon Trainers!\n"
 	.string "How are we all doing today?\p"
 	.string "Today, like every other day,\n"
@@ -2003,7 +2003,7 @@ gTVPokemonNewsBattleFrontierText18:: @ 08287F77
 	.string "That's the news on Pokémon News!$"
 
 gTVWhatsNo1InHoennTodayText00:: @ 08287FE0
-	.string "What'S NO. 1 IN Hoenn Today?\n"
+	.string "What's No. 1 in Hoenn today?\n"
 	.string "Yes, it's that time again!\p"
 	.string "Hello, viewers! Are you giving your\n"
 	.string "best at whatever you do?\p"

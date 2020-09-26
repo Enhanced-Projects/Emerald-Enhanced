@@ -2219,7 +2219,7 @@ Route116_Text_JanicePostBattle: @ 829BCCC
 
 Route116_Text_JerryIntro: @ 829BD0C
 	.string "We learn all sorts of things at the\n"
-	.string "Trainer'S School.\p"
+	.string "Trainer's School.\p"
 	.string "I want to test things out for real!$"
 
 Route116_Text_JerryDefeat: @ 829BD66
@@ -2228,24 +2228,24 @@ Route116_Text_JerryDefeat: @ 829BD66
 
 Route116_Text_JerryPostBattle: @ 829BD92
 	.string "I'll have to redo some courses at\n"
-	.string "the Trainer'S School.\l"
+	.string "the Trainer's School.\l"
 	.string "If I don't, Roxanne will be steamed.$"
 
 Route116_Text_JerryRegister1: @ 829BDEF
-	.string "I learned at the Trainer'S School\n"
+	.string "I learned at the Trainer's School\n"
 	.string "that a POKéNAV can register Trainers.\p"
 	.string "I don't really get what that means,\n"
 	.string "so can I just try it?$"
 
 Route116_Text_JerryRegister2: @ 829BE71
-	.string "I learned at the Trainer'S School\n"
+	.string "I learned at the Trainer's School\n"
 	.string "that a POKéNAV can register Trainers.\p"
 	.string "I don't really get what that means,\n"
 	.string "so can I just try it?$"
 
 Route116_Text_JerryRematchIntro: @ 829BEF3
 	.string "I've been studying seriously at the\n"
-	.string "Trainer'S School.\l"
+	.string "Trainer's School.\l"
 	.string "I won't lose like I did last time.$"
 
 Route116_Text_JerryRematchDefeat: @ 829BF4C
@@ -2254,7 +2254,7 @@ Route116_Text_JerryRematchDefeat: @ 829BF4C
 
 Route116_Text_JerryPostRematch: @ 829BF68
 	.string "I'll have to redo some courses at\n"
-	.string "the Trainer'S School.\l"
+	.string "the Trainer's School.\l"
 	.string "If I don't, Roxanne will be steamed.$"
 
 Route116_Text_KarenIntro: @ 829BFC5
