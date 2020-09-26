@@ -1198,7 +1198,7 @@ BattleFrontier_BattleTowerLobby_Text_TakeSinglesChallenge: @ 82405B3
 BattleFrontier_BattleTowerLobby_Text_ExplainSinglesChallenge: @ 82405EC
 	.string "The Battle Tower's Single Battle\n"
 	.string "Rooms are facilities for conducting\l"
-	.string "Single BattleS with three Pokémon.\p"
+	.string "Single Battles with three Pokémon.\p"
 	.string "There are many Single Battle Rooms\n"
 	.string "in the Battle Tower for team battles.\p"
 	.string "In each of the Single Battle Rooms,\n"
@@ -1228,7 +1228,7 @@ BattleFrontier_BattleTowerLobby_Text_TakeDoublesChallenge: @ 824085E
 BattleFrontier_BattleTowerLobby_Text_ExplainDoublesChallenge: @ 8240897
 	.string "The Battle Tower's Double Battle\n"
 	.string "Rooms are facilities for conducting\l"
-	.string "Double BattleS with four Pokémon.\p"
+	.string "Double Battles with four Pokémon.\p"
 	.string "There are many Double Battle Rooms\n"
 	.string "in the Battle Tower for team battles.\p"
 	.string "In each of the Double Battle Rooms,\n"

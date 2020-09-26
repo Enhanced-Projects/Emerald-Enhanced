@@ -1058,7 +1058,7 @@ Route104_Text_ThrowBallAtWeakenedPokemon: @ 81ED6A2
 Route104_Text_OnlyThrowBallAtWildPokemon: @ 81ED735
 	.string "You're a thief if you try to steal\n"
 	.string "someone else's Pokémon.\p"
-	.string "You should throwPoké Balls only at\n"
+	.string "You should throw Poké Balls only at\n"
 	.string "wild Pokémon.$"
 
 Route104_Text_ImNotATrainer: @ 81ED7A2
@@ -1115,7 +1115,7 @@ Route104_Text_TrainerTipsDoubleBattles: @ 81EDAEF
 	.string "In the Hoenn region there are pairs\n"
 	.string "of Trainers who challenge others\l"
 	.string "for 2-on-2 Pokémon battles called\l"
-	.string "Double BattleS.\p"
+	.string "Double Battles.\p"
 	.string "In a Double Battle, the Trainer must\n"
 	.string "send out two Pokémon, the one at the\l"
 	.string "left of the list and the top one.\l"

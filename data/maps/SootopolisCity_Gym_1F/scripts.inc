@@ -407,9 +407,9 @@ SG_LANETTE_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Hello, Juan. I see that\nyou are as flippant as ever$"
 
 SG_BRENDAN_INTRO:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Brendan: This guy is wierd.. I\n"
-    .string "don't like him... Let's send him\l"
-    .string "packing!$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Brendan: This guy is weird…\n"
+    .string "I don't like him…\l"
+    .string "Let's send him packing!$"
 
 SG_COURTNEY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}An annoying person with\nannoying types.\pI really don't like it here.$"

@@ -231,7 +231,7 @@ static const u8 gCreditsText_Donorsp9[] = _("NjDeli    Cordigoth");
 static const u8 gCreditsText_Donorsp10[] = _("Dylkill    Katara");
 static const u8 gCreditsText_Donorsp11[] = _("MysticR    Vloshko");
 static const u8 gCreditsText_Donorsp12[] = _("Officer12    Vexy");
-static const u8 gCreditsText_Donorsp13[] = _("Galexio");
+static const u8 gCreditsText_Donorsp13[] = _("Galexio    Shikoi");
 
 static const u8 gCreditsText_StoryboardingBy[] = _("Storyboarding by:");
 static const u8 gCreditsText_Kouta[] = _("Kouta Xenova");
@@ -242,6 +242,7 @@ static const u8 gCreditsText_DocumentationBy[] = _("Documentation By:");
 static const u8 gCreditsText_Toby[] = _("Toby");
 static const u8 gCreditsText_QADirectors[] = _("QA Directors:");
 static const u8 gCreditsText_Pidgey[] = _("Pidgey");
+static const u8 gCreditsText_Kageru[] = _("Kageru");
 static const u8 gCreditsText_BaseGameCredits[] = _("");
 static const u8 gCreditsText_Consultation[] = _("Consultants:");
 static const u8 gCreditsText_GriffinR[] = _("GriffinR");
@@ -436,6 +437,7 @@ static const struct CreditsEntry gCreditsEntry_Toby[] = {0, FALSE, gCreditsText_
 //page
 static const struct CreditsEntry gCreditsEntry_QADirectors[] = {0, TRUE, gCreditsText_QADirectors};
 static const struct CreditsEntry gCreditsEntry_Pidgey[] = {0, FALSE, gCreditsText_Pidgey};
+static const struct CreditsEntry gCreditsEntry_Kageru[] = {0, FALSE, gCreditsText_Kageru};
 static const struct CreditsEntry gCreditsEntry_BaseGameCredits[] = {0, FALSE, gCreditsText_BaseGameCredits};
 
 static const struct CreditsEntry gCreditsEntry_Consultation[] ={0, TRUE, gCreditsText_Consultation};
@@ -670,10 +672,11 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][5] =
     },
     {
         gCreditsEntry_QADirectors,
-        _,
+        
         gCreditsEntry_Toby,
+        gCreditsEntry_Kageru,
         _,
-        _
+        _,
 
     },
     {

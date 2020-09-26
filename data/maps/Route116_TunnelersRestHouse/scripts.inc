@@ -49,7 +49,7 @@ Route116_TunnelersRestHouse_Text_ManDiggingHisWayToVerdanturf: @ 822B99F
 	.string "I wonder if he made it through yet.$"
 
 Route116_TunnelersRestHouse_Text_GetToVerdanturfWithoutTunnel: @ 822BAAF
-	.string "To get toVerdanturf without using\n"
+	.string "To get to Verdanturf without using\n"
 	.string "this Tunnel, you'd have to cross the\l"
 	.string "sea to Dewford, sail on to Slateport,\l"
 	.string "then travel through Mauville.$"

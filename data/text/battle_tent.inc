@@ -128,7 +128,7 @@ VerdanturfTown_BattleTentLobby_Text_TakeChallenge: @ 82C5129
 	.string "Battle Tent challenge?$"
 
 VerdanturfTown_BattleTentLobby_Text_ExplainVerdanturfTent: @ 82C5163
-	.string "In theVerdanturf Battle Tent,\n"
+	.string "In the Verdanturf Battle Tent,\n"
 	.string "there is one crucial rule that must\l"
 	.string "be obeyed.\p"
 	.string "Trainers are permitted only to switch\n"
@@ -358,7 +358,7 @@ SlateportCity_BattleTentLobby_Text_ExplainMonRules: @ 82C61FE
 
 @ Unused
 VerdanturfTown_BattleTentLobby_Text_RulesAreListed2: @ 82C6261
-	.string "TheVerdanturf Battle Tent\n"
+	.string "The Verdanturf Battle Tent\n"
 	.string "rules are listed.$"
 
 @ Unused
@@ -367,7 +367,7 @@ VerdanturfTown_BattleTentLobby_Text_ReadWhichHeading: @ 82C628E
 
 @ Unused
 VerdanturfTown_BattleTentLobby_Text_ExplainBasicRules: @ 82C62B1
-	.string "Here at theVerdanturf Battle Tent,\n"
+	.string "Here at the Verdanturf Battle Tent,\n"
 	.string "Pokémon are required to think and\l"
 	.string "battle by themselves.\p"
 	.string "Unlike in the wild, Pokémon that live\n"
@@ -429,5 +429,5 @@ BattleTentLobby_Text_ExplainLevelRules: @ 82C67CD
 	.string "have any Pokémon below Level 30.$"
 
 VerdanturfTown_BattleTentLobby_Text_RulesAreListed: @ 82C6878
-	.string "TheVerdanturf Battle Tent\n"
+	.string "The Verdanturf Battle Tent\n"
 	.string "rules are listed.$"

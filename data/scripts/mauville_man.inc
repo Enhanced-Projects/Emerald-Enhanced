@@ -448,7 +448,7 @@ MauvilleCity_PokemonCenter_1F_Text_UsedPokemonCenterTitle:: @ 828EF73
 	.string "The Pokémon CENTER-Loving Trainer$"
 
 MauvilleCity_PokemonCenter_1F_Text_UsedPokemonCenterAction:: @ 828EF95
-	.string "Used PokémonCenters$"
+	.string "Used Pokémon Centers$"
 
 MauvilleCity_PokemonCenter_1F_Text_UsedPokemonCenterStory:: @ 828EFAA
 	.string "This is a tale of a Trainer\n"
@@ -456,7 +456,7 @@ MauvilleCity_PokemonCenter_1F_Text_UsedPokemonCenterStory:: @ 828EFAA
 	.string "This Trainer healed Pokémon\n"
 	.string "{STR_VAR_1} times at PokémonCenters!\p"
 	.string "There could be no greater lover of\n"
-	.string "PokémonCenters than {STR_VAR_3}!$"
+	.string "Pokémon Centers than {STR_VAR_3}!$"
 
 MauvilleCity_PokemonCenter_1F_Text_RestedAtHomeTitle:: @ 828F045
 	.string "The Homebody Trainer$"
