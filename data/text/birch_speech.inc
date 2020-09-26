@@ -6,7 +6,7 @@ gText_Birch_Pokemon:: @ 82C89FB
 
 gText_Birch_MainSpeech:: @ 82C8A1F
 	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Hello and welcome to\p"
-	.string "             {COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced v6            \p" 
+	.string "             {COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced v7            \p" 
 	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I have spared you Birch's speech.\p"
 	.string "It's boring anyways.\n"
     .string "Emerald Enhanced is quite\p"
