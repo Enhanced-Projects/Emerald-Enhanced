@@ -148,9 +148,20 @@ RustboroCity_EventScript_FatMan:: @ 81E085F
     setflag FLAG_SYS_B_DASH
     @setflag FLAG_SYS_DEXNAV_GET
     
-    callnative DrawHeaderBox
-    waitbuttonpress
-    callnative RemoveHeaderBox
+    settrainerflag TRAINER_CLARK
+    settrainerflag TRAINER_DAWSON
+    settrainerflag TRAINER_DEVAN
+    settrainerflag TRAINER_JANICE
+    settrainerflag TRAINER_JERRY_1
+    settrainerflag TRAINER_JOEY
+    settrainerflag TRAINER_JOHNSON
+    settrainerflag TRAINER_JOSE
+    settrainerflag TRAINER_KAREN_1
+    settrainerflag TRAINER_SARAH
+    
+    @callnative DrawHeaderBox
+    @waitbuttonpress
+    @callnative RemoveHeaderBox
     
     @goto_if_set FLAG_DEVON_GOODS_STOLEN, RustboroCity_EventScript_FatManSawGrunt
 	@msgbox RustboroCity_Text_WeShortenItToDevon, MSGBOX_DEFAULT

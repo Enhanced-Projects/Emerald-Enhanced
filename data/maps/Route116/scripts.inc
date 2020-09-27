@@ -125,12 +125,14 @@ Route116_Movement_DevonEmployeeExitEast: @ 81F2D4C
 	step_end
 
 Route116_EventScript_RouteSignRustboro:: @ 81F2D57
-	
-    setvar VAR_0x8000, SPECIES_MUDKIP
-    setvar VAR_0x8001, 0
-    callnative InitDexnavSearch
+    
+    @goto_if_set FLAG_SYS_DEXNAV_ACTIVE, RouteSignRustboroEnd
+    @setvar VAR_0x8000, SPECIES_MUDKIP
+    @setvar VAR_0x8001, 0
+    @callnative InitDexnavSearch
     
     @msgbox Route116_Text_RouteSignRustboro, MSGBOX_SIGN
+RouteSignRustboroEnd:
 	end
 
 Route116_EventScript_RusturfTunnelSign:: @ 81F2D60

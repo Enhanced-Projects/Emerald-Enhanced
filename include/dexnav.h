@@ -6,6 +6,7 @@
 #define POKETOOLS_COUNT                 2
 #define DEXNAV_TIMEOUT                  15  //15 seconds is the time out. Max of 1092 seconds allowed
 #define SNEAKING_PROXIMITY              5   //Tile amount
+#define CREEPING_PROXIMITY              2
 #define MAX_PROXIMITY                   20
 //Tile Behaviours
 #define FLDEFF_CAVE_DUST    		 	67
@@ -105,6 +106,7 @@ struct FieldEffectScript
 void FieldEff_CaveDust(void);
 void FieldEff_Sparkles(void);
 
+void Task_InitDexnavSearch(u8 taskId);
 void Task_DexNavSearch(u8 taskId);
 void EndDexnavSearch(u8 taskId);
 
