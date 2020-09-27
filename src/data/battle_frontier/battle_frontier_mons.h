@@ -1981,14 +1981,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_KECLEON_1] = { // Kecleon-LifeOrb
+    [FRONTIER_MON_KECLEON_1] = { // Kecleon-1attack
         .species = SPECIES_KECLEON,
-        .moves = {MOVE_KNOCK_OFF, MOVE_DRAIN_PUNCH, MOVE_SHADOW_SNEAK, MOVE_RECOVER},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_ADAMANT,
+        .moves = {MOVE_REVELATION_DANCE, MOVE_NASTY_PLOT, MOVE_RECOVER, MOVE_TRICK_ROOM},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_QUIET,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_SCRAFTY_1] = { // Scrafty-SteelDD
         .species = SPECIES_SCRAFTY,
@@ -2926,14 +2926,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_KECLEON_2] = { // Kecleon-AV
+    [FRONTIER_MON_KECLEON_2] = { // Kecleon-2attacks
         .species = SPECIES_KECLEON,
-        .moves = {MOVE_KNOCK_OFF, MOVE_DRAIN_PUNCH, MOVE_SHADOW_SNEAK, MOVE_SUCKER_PUNCH},
-        .heldItem = ITEM_ASSAULT_VEST,
-        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_ADAMANT,
+        .moves = {MOVE_REVELATION_DANCE, MOVE_ICE_BEAM, MOVE_NASTY_PLOT, MOVE_RECOVER},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_MODEST,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_SCRAFTY_2] = { // Scrafty-BU
         .species = SPECIES_SCRAFTY,
