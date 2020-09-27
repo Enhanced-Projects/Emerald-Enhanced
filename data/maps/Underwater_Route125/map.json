@@ -19,7 +19,9 @@
       "map": "MAP_ROUTE125"
     }
   ],
-  "object_events": [],
+  "object_events": [
+
+  ],
   "warp_events": [
     {
       "x": 22,
@@ -34,8 +36,33 @@
       "elevation": 0,
       "dest_map": "MAP_UNDERWATER_MARINE_CAVE",
       "dest_warp_id": 0
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "elevation": 0,
+      "dest_map": "MAP_UNDERWATER_ROUTE125",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 46,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_SNOWY_SHORE_UNDERWATER",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 53,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_SNOWY_SHORE_UNDERWATER",
+      "dest_warp_id": 1
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }
