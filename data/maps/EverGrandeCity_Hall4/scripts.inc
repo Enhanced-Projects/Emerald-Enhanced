@@ -14,5 +14,5 @@ H4_GoToPartnerChampionRoom::
 	lockall
 	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
 	setflag FLAG_RYU_TITLE_DEFENSE
-	warpteleport MAP_THRONE_ROOM, 255, 9, 17
+	warpteleport MAP_EVER_GRANDE_CITY_THRONE_ROOM, 255, 9, 17
 	waitstate
