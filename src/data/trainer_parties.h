@@ -11210,6 +11210,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyuRematch[] = {
 	.species = SPECIES_MUDSDALE,
 	.heldItem = ITEM_LEFTOVERS,
 	.ability = 1,
+    .nickname = _("Clyde"),
 	.moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_STEALTH_ROCK, MOVE_ROAR},
 	},
 	{
@@ -11218,6 +11219,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyuRematch[] = {
 	.species = SPECIES_PRIMARINA,
 	.heldItem = ITEM_EXPERT_BELT,
 	.ability = 0,
+    .nickname = _("Tsubasa"),
 	.moves = {MOVE_DRAINING_KISS, MOVE_SPARKLING_ARIA, MOVE_PSYCHIC, MOVE_ENERGY_BALL},
 	},
 	{
@@ -11226,6 +11228,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyuRematch[] = {
 	.species = SPECIES_NINETALES,
 	.heldItem = ITEM_LEFTOVERS,
 	.ability = 1,
+    .nickname = _("Foxxy"),
 	.moves = {MOVE_DARK_VOID, MOVE_FLAMETHROWER, MOVE_SHADOW_BALL, MOVE_CALM_MIND},
 	},
 	{
@@ -11234,6 +11237,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyuRematch[] = {
 	.species = SPECIES_MAWILE,
 	.heldItem = ITEM_MAWILITE,
 	.ability = 1,
+    .nickname = _("Mawi"),
 	.moves = {MOVE_PLAY_ROUGH, MOVE_FIRE_FANG, MOVE_STONE_EDGE, MOVE_THUNDER_PUNCH},
 	},
 	{
@@ -11242,6 +11246,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyuRematch[] = {
 	.species = SPECIES_LILLIGANT,
 	.heldItem = ITEM_LEFTOVERS,
 	.ability = 2,
+    .nickname = _("Lily"),
 	.moves = {MOVE_GIGA_DRAIN, MOVE_HIDDEN_POWER, MOVE_DAZZLING_GLEAM, MOVE_QUIVER_DANCE},
 	},
 	{
@@ -11250,6 +11255,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyuRematch[] = {
 	.species = SPECIES_WEAVILE,
 	.heldItem = ITEM_FOCUS_SASH,
 	.ability = 2,
+    .nickname = _("Saya"),
 	.moves = {MOVE_KNOCK_OFF, MOVE_ICICLE_CRASH, MOVE_ICE_SHARD, MOVE_SWORDS_DANCE},
 	}
 };

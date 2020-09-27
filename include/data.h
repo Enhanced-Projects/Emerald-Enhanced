@@ -46,6 +46,7 @@ struct TrainerMonItemCustomMoves
     u16 species;
     u16 heldItem;
     u8 ability;
+    u8 nickname[12];
     u16 moves[4];
 };
 
