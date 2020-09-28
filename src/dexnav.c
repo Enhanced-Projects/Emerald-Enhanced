@@ -2747,6 +2747,7 @@ void Task_InitDexnavSearch(u8 taskId)
     
     DexNavProximityUpdate();
     FlagSet(FLAG_SYS_DEXNAV_ACTIVE);
+    gPlayerAvatar.creeping = FALSE;
     DrawHeaderBox();
     gTasks[taskId].tProximity = gSprites[gPlayerAvatar.spriteId].pos1.x;
     gTasks[taskId].tFrameCount = 0;
