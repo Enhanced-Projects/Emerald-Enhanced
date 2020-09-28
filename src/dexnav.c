@@ -101,8 +101,9 @@ struct DexnavSearch
     /*0x1F*/ u8 spriteIdMove;
     /*0x20*/ u8 spriteIdItem;
     /*0x21*/ u8 fldEffSpriteId;
+             u8 fldEffId;
     /*0x22*/ u8 spriteIdPotential[3];
-    /*0x25*/ u8 movementTimes;
+    /*0x25*/ u8 movementCount;
 // GUI data
     /*0x26*/ u16 grassSpecies[NUM_LAND_MONS];
     /*0x3E*/ u16 waterSpecies[NUM_WATER_MONS];
@@ -240,9 +241,6 @@ static const u16 gInterfaceGfx_emptyPal[] = INCBIN_U16("graphics/dexnav/empty.gb
 
 static const u32 gInterfaceGfx_CapturedAllPokemonTiles[] = INCBIN_U32("graphics/dexnav/captured_all.4bpp.lz");
 static const u32 gInterfaceGfx_CapturedAllPokemonPal[] = INCBIN_U32("graphics/dexnav/captured_all.gbapal.lz");
-
-static const u16 gInterfaceGfx_caveSmokeTiles[] = INCBIN_U16("graphics/dexnav/cave_smoke.4bpp");
-static const u16 gInterfaceGfx_caveSmokePal[] = INCBIN_U16("graphics/dexnav/cave_smoke.gbapal");
 
 static const u32 gInterfaceGfx_SparklesTiles[] = INCBIN_U32("graphics/dexnav/sparkles.4bpp");
 static const u16 gInterfaceGfx_SparklesPal[] = INCBIN_U16("graphics/dexnav/sparkles.gbapal");
@@ -654,7 +652,7 @@ static const struct CompressedSpriteSheet sIconTiles =
     .tag = ICON_GFX_TAG
 };
 
-
+/*
 static const struct SpriteFrameImage sCaveGfx[] =
 {
     overworld_frame(gInterfaceGfx_caveSmokeTiles, 2, 2, 0),
@@ -663,7 +661,7 @@ static const struct SpriteFrameImage sCaveGfx[] =
     overworld_frame(gInterfaceGfx_caveSmokeTiles, 2, 2, 3),
 };
 
-/*
+
 static const struct SpriteTemplate ObjtCave =
 {
     .tileTag = 0xFFFF,
@@ -674,7 +672,7 @@ static const struct SpriteTemplate ObjtCave =
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = WaitFieldEffectSpriteAnim,
 };
-*/
+
 
 static const struct SpritePalette sCaveSmokePalTemplate =
 {
@@ -692,6 +690,7 @@ static const union AnimCmd sFieldEffectObjectImageAnim_Sparkles[] =
     ANIMCMD_FRAME(5, 8),
     ANIMCMD_JUMP(0),
 };
+
 
 static const union AnimCmd* const sFieldEffectObjectImageAnimTable_Sparkles[] =
 {
@@ -725,7 +724,6 @@ static const struct SpritePalette sSparklesPalTemplate =
     .tag = SMOKE_TAG,
 };
 
-/*
 // create empty object of size 64x32 to draw icons on
 static const struct CompressedSpriteSheet sightTiles = 
 {
@@ -1157,35 +1155,7 @@ static void DexNavLoadAreaNames(void)
 // ===== Overworld Field Effects ===== //
 // =================================== //
 */
-void FieldEff_CaveDust(void)
-{
-    u8 spriteId;
-    
-    LoadSpritePalette(&sCaveSmokePalTemplate);
-    LoadPalette(gInterfaceGfx_caveSmokePal, 29 * 16, 32);
-    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
-    //spriteId = CreateSpriteAtEnd(&ObjtCave, gFieldEffectArguments[0], gFieldEffectArguments[1], 0xFF);
-    if (spriteId != MAX_SPRITES)
-    {
-        gSprites[spriteId].coordOffsetEnabled = 1;
-        gSprites[spriteId].data[0] = 22;
-    }
-}
 
-void FieldEff_Sparkles(void)
-{
-    u8 spriteId;
-    
-    LoadSpritePalette(&sSparklesPalTemplate);
-    LoadPalette(gInterfaceGfx_SparklesPal, 29 * 16, 32);
-    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
-    spriteId = CreateSpriteAtEnd(&sSpriteTemplateSparkles, gFieldEffectArguments[0], gFieldEffectArguments[1], 0xFF);
-    if (spriteId != MAX_SPRITES)
-    {
-        gSprites[spriteId].coordOffsetEnabled = 1;
-        gSprites[spriteId].data[0] = 22;
-    }
-}
 
 /*
 // ========================================== //
@@ -2300,7 +2270,7 @@ static void Task_DexNavSearch(u8 taskId)
     }
 
     //Caves and water the pokemon moves around
-    if ((sDexnavSearchDataPtr->environment == ENCOUNTER_TYPE_WATER || !IsMapTypeOutdoors(GetCurrentMapType())) && sDexnavSearchDataPtr->proximity < 2 && sDexnavSearchDataPtr->movementTimes < 2)
+    if ((sDexnavSearchDataPtr->environment == ENCOUNTER_TYPE_WATER || !IsMapTypeOutdoors(GetCurrentMapType())) && sDexnavSearchDataPtr->proximity < 2 && sDexnavSearchDataPtr->movementCount < 2)
     {
         switch(sDexnavSearchDataPtr->environment)
         {
@@ -2317,7 +2287,7 @@ static void Task_DexNavSearch(u8 taskId)
         while(!ShakingGrass(sDexnavSearchDataPtr->environment, 8, 8, 1))
             __asm__("mov r8, r8");
 
-        sDexnavSearchDataPtr->movementTimes++;
+        sDexnavSearchDataPtr->movementCount++;
     }
 
     // check for encounter start
@@ -2503,7 +2473,7 @@ static void ShowMonIconInHeaderBox(u16 species)
 static const u8 sFontColor[3] = {0, 15, 13};
 //static const u8 sText_Test[] = _("{STR_VAR_1}       Ability        Level\nSpecial Move     IVs      Shiny");
 //static const u8 sText_Test[] = _("x: {STR_VAR_1}     y: {STR_VAR_2}\n   proximity: {STR_VAR_3}");
-static const u8 sText_Test[] = _("{STR_VAR_1}");
+static const u8 sText_Test[] = _("{STR_VAR_1}\n     x: {STR_VAR_2}  y: {STR_VAR_3}");
 void DrawHeaderBox(void)
 {
     struct WindowTemplate template;    
@@ -2525,6 +2495,10 @@ void DrawHeaderBox(void)
     DrawStdFrameWithCustomTileAndPalette(sDexnavWindowId, TRUE, 0x214, 14);
     
     StringCopy(gStringVar1, gSpeciesNames[species]);
+    
+    ConvertIntToDecimalStringN(gStringVar2, sDexnavSearchDataPtr->tileX - 7, STR_CONV_MODE_RIGHT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar3, sDexnavSearchDataPtr->tileY - 7, STR_CONV_MODE_RIGHT_ALIGN, 2);
+    
     StringExpandPlaceholders(gStringVar4, sText_Test);
     AddTextPrinterParameterized3(sDexnavWindowId, 0, ITEM_ICON_X + 4, 0, sFontColor, TEXT_SPEED_FF, gStringVar4);
     CopyWindowToVram(sDexnavWindowId, 2);
@@ -2566,16 +2540,20 @@ static bool8 DexNavPickTile(u8 environment, u8 areaX, u8 areaY, bool8 smallScan)
     s16 botY = topY + areaY;
     u8 i;
     bool8 nextIter;
-    u8 scale, weight;
-
+    u8 scale = 0;
+    u8 weight = 0;
+    u8 currMapType = GetCurrentMapType();
+    u8 tileBehaviour;
+    
     // loop through every tile in area and evaluate
+    // to do - random tile checks instead of sequential?
     while (topY < botY)
     {
         while (topX < botX)
         {
-            u8 tileBehaviour = MapGridGetMetatileBehaviorAt(topX, topY);
+            tileBehaviour = MapGridGetMetatileBehaviorAt(topX, topY);
             
-            gSpecialVar_0x8005 = tileBehaviour;
+            //gSpecialVar_0x8005 = tileBehaviour;
             
             //Check for objects
             nextIter = FALSE;
@@ -2594,35 +2572,37 @@ static bool8 DexNavPickTile(u8 environment, u8 areaX, u8 areaY, bool8 smallScan)
                 continue;
             }
             
-            weight = 0;
-            scale = 0;
-            //Tile must be target behaviour (wild tile) and must be passable
-            switch (environment)
-            {
-            case ENCOUNTER_TYPE_LAND:
-                if (IsMapTypeIndoors(GetCurrentMapType()) && MetatileBehavior_IsIndoorEncounter(tileBehaviour))
-                { // inside (cave)
-                    scale = 440 - (smallScan * 200) - (GetPlayerDistance(topX, topY) / 2)  - (2 * (topX + topY));
-                    weight = ((Random() % scale) < 1) && !MapGridIsImpassableAt(topX, topY);
-                }
-                else if (MetatileBehavior_IsLandWildEncounter(tileBehaviour))
-                { // grass
-                    scale = 100 - (GetPlayerDistance(topX, topY) * 2);
-                    weight = (Random() % scale <= 5) && !MapGridIsImpassableAt(topX, topY);
-                }
-                break;
-            case ENCOUNTER_TYPE_WATER:
-                if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehaviour))
+            if (MetatileBehavior_IsEncounterTile(tileBehaviour))
+            {                
+                switch (environment)
                 {
-                    u8 scale = 320 - (smallScan * 200) - (GetPlayerDistance(topX, topY) / 2);
-                    u8 elevDiff = IsZCoordMismatchAt(gObjectEvents[gPlayerAvatar.spriteId].currentElevation, topX, topY);
+                case ENCOUNTER_TYPE_LAND:
+                    if (currMapType == MAP_TYPE_UNDERGROUND)
+                    { // inside (cave)
+                        scale = 440 - (smallScan * 200) - (GetPlayerDistance(topX, topY) / 2)  - (2 * (topX + topY));
+                        weight = ((Random() % scale) < 1) && !MapGridIsImpassableAt(topX, topY);
+                    }
+                    else
+                    { // outdoors: grass
+                        scale = 100 - (GetPlayerDistance(topX, topY) * 2);
+                        weight = (Random() % scale <= 5) && !MapGridIsImpassableAt(topX, topY);
+                    }
+                    break;
+                case ENCOUNTER_TYPE_WATER:
+                    if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehaviour))
+                    {
+                        u8 scale = 320 - (smallScan * 200) - (GetPlayerDistance(topX, topY) / 2);
+                        u8 elevDiff = IsZCoordMismatchAt(gObjectEvents[gPlayerAvatar.spriteId].currentElevation, topX, topY);
 
-                    weight = (Random() % scale <= 1) && elevDiff && !MapGridIsImpassableAt(topX, topY);
+                        weight = (Random() % scale <= 1) && elevDiff && !MapGridIsImpassableAt(topX, topY);
+                    }
+                    break;
+                default:
+                    break;
                 }
-                break;
             }
             
-            gSpecialVar_0x8002 = scale;
+            //gSpecialVar_0x8002 = scale;
             if (weight > 0)
             {
                 sDexnavSearchDataPtr->tileX = topX;
@@ -2644,7 +2624,8 @@ static bool8 DexNavPickTile(u8 environment, u8 areaX, u8 areaY, bool8 smallScan)
 static bool8 ShakingGrass(u8 environment, u8 xSize, u8 ySize, bool8 smallScan)
 {
     u32 i;
-    u8 fldeffSpriteId = MAX_SPRITES;
+    u8 currMapType = GetCurrentMapType();
+    u8 fldEffId = 0;
     
     if (DexNavPickTile(environment, xSize, ySize, smallScan))
     {
@@ -2657,46 +2638,53 @@ static bool8 ShakingGrass(u8 environment, u8 xSize, u8 ySize, bool8 smallScan)
         switch (environment)
         {
         case ENCOUNTER_TYPE_LAND:
-            if (GetCurrentMapType() == MAP_TYPE_UNDERGROUND || IsMapTypeIndoors(GetCurrentMapType()))
+            if (currMapType == MAP_TYPE_UNDERGROUND)
             {
-                fldeffSpriteId = FieldEffectStart(FLDEFF_CAVE_DUST);
+                fldEffId = FLDEFF_CAVE_DUST;
             }
-            else if (IsMapTypeIndoors(GetCurrentMapType()))
+            else if (IsMapTypeIndoors(currMapType))
             {
                 if (MetatileBehavior_IsTallGrass(metatileBehaviour)) //Grass in cave
-                    fldeffSpriteId = FieldEffectStart(FLDEFF_SHAKING_GRASS);
+                    fldEffId = FLDEFF_SHAKING_GRASS;
                 else if (MetatileBehavior_IsLongGrass(metatileBehaviour)) //Really tall grass
-                    fldeffSpriteId = FieldEffectStart(FLDEFF_SHAKING_LONG_GRASS);
+                    fldEffId = FLDEFF_SHAKING_LONG_GRASS;
                 else if (MetatileBehavior_IsSandOrDeepSand(metatileBehaviour))
-                    fldeffSpriteId = FieldEffectStart(FLDEFF_SAND_HOLE);
+                    fldEffId = FLDEFF_SAND_HOLE;
                 else
-                    fldeffSpriteId = FieldEffectStart(FLDEFF_CAVE_DUST); //Default
+                    fldEffId = FLDEFF_CAVE_DUST;
             }
-            else
-            { //outdoor
+            else //outdoor, underwater
+            {
                 if (MetatileBehavior_IsTallGrass(metatileBehaviour)) //Regular grass
-                    fldeffSpriteId = FieldEffectStart(FLDEFF_SHAKING_GRASS);
+                    fldEffId = FLDEFF_SHAKING_GRASS;
                 else if (MetatileBehavior_IsLongGrass(metatileBehaviour)) //Really tall grass
-                    fldeffSpriteId = FieldEffectStart(FLDEFF_SHAKING_LONG_GRASS);
+                    fldEffId = FLDEFF_SHAKING_LONG_GRASS;
                 else if (MetatileBehavior_IsSandOrDeepSand(metatileBehaviour)) //Desert Sand
-                    fldeffSpriteId = FieldEffectStart(FLDEFF_SAND_HOLE);
+                    fldEffId = FLDEFF_SAND_HOLE;
                 else if (MetatileBehavior_IsMountain(metatileBehaviour)) //Rough Terrain
-                    fldeffSpriteId = FieldEffectStart(FLDEFF_CAVE_DUST);
+                    fldEffId = FLDEFF_CAVE_DUST;
                 else
-                    fldeffSpriteId = FieldEffectStart(FLDEFF_REPEATING_SPARKLES); //default
+                    fldEffId = FLDEFF_REPEATING_SPARKLES; //default
             }
             break;
         case ENCOUNTER_TYPE_WATER:
-            fldeffSpriteId = FieldEffectStart(FLDEFF_WATER_SURFACING);
+            fldEffId = FLDEFF_WATER_SURFACING;
             break;
         default:
             //we found a good tile, but somehow ended up here. default effect
-            fldeffSpriteId = FieldEffectStart(FLDEFF_REPEATING_SPARKLES);
+            fldEffId = FLDEFF_REPEATING_SPARKLES;
             break;
         }
         
-        sDexnavSearchDataPtr->fldEffSpriteId = fldeffSpriteId; 
-        return TRUE;
+        if (fldEffId != 0)
+        {
+            sDexnavSearchDataPtr->fldEffSpriteId = FieldEffectStart(fldEffId);
+            if (sDexnavSearchDataPtr->fldEffSpriteId == MAX_SPRITES)
+                return FALSE;
+            
+            sDexnavSearchDataPtr->fldEffId = fldEffId;
+            return TRUE;
+        }
     }
 
     return FALSE;
@@ -2706,8 +2694,8 @@ static bool8 ShakingGrass(u8 environment, u8 xSize, u8 ySize, bool8 smallScan)
 #define tFrameCount         data[1]
 void Task_InitDexnavSearch(u8 taskId)
 {
-    u16 species = gSpecialVar_0x8000;
-    u8 environment = gSpecialVar_0x8001;
+    u16 species = SPECIES_MUDKIP;   //testing
+    u8 environment = 0; //testing
     u8 searchLevel;
     
     sDexnavSearchDataPtr = AllocZeroed(sizeof(struct DexnavSearch));
@@ -2739,6 +2727,7 @@ void Task_InitDexnavSearch(u8 taskId)
     if (!ShakingGrass(environment, 12, 12, 0))
     {
         Free(sDexnavSearchDataPtr);
+        FreeMonIconPalettes();
         ScriptContext1_SetupScript(EventScript_NotFoundNearby);
         DestroyTask(taskId);
         //ShowFieldMessage(sText_NotFoundNearby);
@@ -2747,7 +2736,7 @@ void Task_InitDexnavSearch(u8 taskId)
     
     DexNavProximityUpdate();
     FlagSet(FLAG_SYS_DEXNAV_ACTIVE);
-    gPlayerAvatar.creeping = FALSE;
+    gPlayerAvatar.creeping = TRUE;  //initialize as true in case mon appears beside you
     DrawHeaderBox();
     gTasks[taskId].tProximity = gSprites[gPlayerAvatar.spriteId].pos1.x;
     gTasks[taskId].tFrameCount = 0;
@@ -2763,14 +2752,25 @@ void EndDexnavSearch(u8 taskId)
     FlagClear(FLAG_SYS_DEXNAV_ACTIVE);
     DestroyTask(taskId);
     RemoveHeaderBox();
-    FieldEffectStop(&gSprites[sDexnavSearchDataPtr->fldEffSpriteId], FLDEFF_SHAKING_GRASS);
+    FieldEffectStop(&gSprites[sDexnavSearchDataPtr->fldEffSpriteId], sDexnavSearchDataPtr->fldEffId);
     Free(sDexnavSearchDataPtr);
+    FreeMonIconPalettes();
 }
 
 static void EndDexnavSearchSetupScript(const u8 *script, u8 taskId)
 {
     EndDexnavSearch(taskId);
     ScriptContext1_SetupScript(script);
+}
+
+static u8 GetMovementProximityBySearchLevel(void)
+{
+    if (sDexnavSearchDataPtr->searchLevel < 20)
+        return 2;
+    else if (sDexnavSearchDataPtr->searchLevel < 50)
+        return 3;
+    else
+        return 4;
 }
 
 #include "script_pokemon_util.h"
@@ -2786,7 +2786,7 @@ void Task_DexNavSearch(u8 taskId)
         return;
     }
     
-    if (sDexnavSearchDataPtr->proximity <= CREEPING_PROXIMITY && !gPlayerAvatar.creeping && task->tFrameCount > 10)
+    if (sDexnavSearchDataPtr->proximity <= CREEPING_PROXIMITY && !gPlayerAvatar.creeping && task->tFrameCount > 60)
     { //should be creeping but player walks normally
         EndDexnavSearchSetupScript(EventScript_PokemonGotAway, taskId);
         return;
@@ -2823,6 +2823,9 @@ void Task_DexNavSearch(u8 taskId)
         CreateDexNavMon(sDexnavSearchDataPtr->species, sDexnavSearchDataPtr->potential, sDexnavSearchDataPtr->monLevel, 
           sDexnavSearchDataPtr->abilityNum, sDexnavSearchDataPtr->moves);
         
+        if (sDexNavSearchLevels[dexNum] < 100)
+            sDexNavSearchLevels[dexNum]++;
+        
         ScriptContext1_SetupScript(EventScript_StartDexNavBattle);
         Free(sDexnavSearchDataPtr);
         DestroyTask(taskId);
@@ -2830,7 +2833,8 @@ void Task_DexNavSearch(u8 taskId)
     }
 
     //Caves and water the pokemon moves around
-    if ((sDexnavSearchDataPtr->environment == ENCOUNTER_TYPE_WATER || IsMapTypeIndoors(GetCurrentMapType())) && sDexnavSearchDataPtr->proximity < 2 && sDexnavSearchDataPtr->movementTimes < 2)
+    if ((sDexnavSearchDataPtr->environment == ENCOUNTER_TYPE_WATER || GetCurrentMapType() == MAP_TYPE_UNDERGROUND)
+        && sDexnavSearchDataPtr->proximity < GetMovementProximityBySearchLevel() && sDexnavSearchDataPtr->movementCount < 2)
     {
         bool8 ret;
         
@@ -2845,44 +2849,14 @@ void Task_DexNavSearch(u8 taskId)
         default:
             break;
         }
+
+        while (1) {
+            if (ShakingGrass(sDexnavSearchDataPtr->environment, 8, 8, 1))
+                break;
+        }
         
-        //while(!ShakingGrass(sDexnavSearchDataPtr->environment, 8, 8, 1))
-          //  __asm__("mov r8, r8");
-      
-        do {
-            ret = ShakingGrass(sDexnavSearchDataPtr->environment, 8, 8, 1);
-        } while (!ret);
-
-        sDexnavSearchDataPtr->movementTimes++;
+        sDexnavSearchDataPtr->movementCount++;
     }
-
-    /*
-    // check for encounter start
-    if (sDexnavSearchDataPtr-> proximity < 1)
-    {
-        CreateDexNavMon(sDexnavSearchDataPtr->species, sDexnavSearchDataPtr->potential, sDexnavSearchDataPtr->monLevel,
-        sDexnavSearchDataPtr->abilityNum, sDexnavSearchDataPtr->moves);
-        DestroyTask(taskId);
-
-        // increment the search level
-        dexNum = SpeciesToNationalPokedexNum(sDexnavSearchDataPtr->species);
-        if (sDexNavSearchLevels[dexNum] < 100)
-            sDexNavSearchLevels[dexNum]++;
-
-        // Freeing only the state, objects and hblank cleared on battle start.
-        Free(sDexnavSearchDataPtr);
-
-        ScriptContext1_SetupScript(EventScript_StartDexNavBattle);
-        
-        // exclamation point animation over the player
-        //PlaySE(SE_PIN);
-        //MovementAction_EmoteExclamationMark_Step0(&gObjectEvents[EVENT_OBJ_ID_PLAYER], &gSprites[gPlayerAvatar.spriteId]);
-        //FieldEffectStart();
-
-        // do battle
-        //DoStandardWildBattle();
-    }
-    */
 
     DexNavProximityUpdate();
     if (task->tProximity != sDexnavSearchDataPtr->proximity)
@@ -3261,10 +3235,6 @@ static u8 GetEncounterLevel(u16 species, u8 environment)
     if (max == 0)
         return 0xFF; //Free dexnav display message
 
-    //Mod div by 0 edge case.
-    if (min == max)
-        return min;
-
-    return (min + (Random() % (max - min)));
+    return RandRange(min, max);
 }
 

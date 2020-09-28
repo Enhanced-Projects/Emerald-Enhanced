@@ -73,8 +73,7 @@ gFieldEffectScriptPointers:: @ 82DB9D4
 	.4byte gFieldEffectScript_DestroyDeoxysRock         @ FLDEFF_DESTROY_DEOXYS_ROCK
 	.4byte gFieldEffectScript_MoveDeoxysRock            @ FLDEFF_MOVE_DEOXYS_ROCK
     .4byte gFieldEffectScript_CaveDust                  @ FLDEFF_CAVE_DUST
-    .4byte gFieldEffectScript_NewSparkles               @ FLDEFF_REPEATING_SPARKLES
-
+    
 gFieldEffectScript_ExclamationMarkIcon1:: @ 82DBAE0
 	field_eff_callnative FldEff_ExclamationMarkIcon
 	field_eff_end
@@ -348,11 +347,5 @@ gFieldEffectScript_MoveDeoxysRock:: @ 82DBCFF
     
 @ NEW
 gFieldEffectScript_CaveDust::
-    field_eff_callnative FieldEff_CaveDust
+    field_eff_loadfadedpal_callnative gSpritePalette_CaveDust FldEff_CaveDust
     field_eff_end
-    
-gFieldEffectScript_NewSparkles::
-    field_eff_callnative FieldEff_Sparkles
-    field_eff_end
-   
-    
