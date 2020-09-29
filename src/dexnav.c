@@ -1188,6 +1188,7 @@ bool8 TryStartDexnavSearch(void)
     taskId = CreateTask(Task_InitDexNavSearch, 0);
     gTasks[taskId].tSpecies = val & 0x7FFF;
     gTasks[taskId].tEnvironment = val >> 15;
+    PlaySE(SE_DEX_SEARCH);
     return FALSE;   //we dont actually want to enable the script context
 }
 
