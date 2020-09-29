@@ -113,6 +113,8 @@ DewfordTown_EventScript_TownSign:: @ 81E95BA
     settrainerflag TRAINER_NED
     settrainerflag TRAINER_ELLIOT_1
     
+    callnative DebugDexNav
+    
     @msgbox DewfordTown_Text_TownSign, MSGBOX_SIGN
 	end
 

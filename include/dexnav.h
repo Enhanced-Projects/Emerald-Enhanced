@@ -2,16 +2,14 @@
 #define GUARD_DEXNAV_H
 
 ///// Customizable Options
-#define VAR_DEXNAV                      0x40F7   // unused variable
-#define POKETOOLS_COUNT                 2
+//#define VAR_DEXNAV                      0x40F7   // unused variable
+//#define POKETOOLS_COUNT                 2
+
 #define DEXNAV_TIMEOUT                  15  //15 seconds is the time out. Max of 1092 seconds allowed
 #define SNEAKING_PROXIMITY              5   //Tile amount
 #define CREEPING_PROXIMITY              2
 #define MAX_PROXIMITY                   20
-//Tile Behaviours
-#define FLDEFF_CAVE_DUST    		 	67
-#define FLDEFF_REPEATING_SPARKLES    	68
-//#define FLDEFF_LAVA_BUBBLES             69
+
 //Chance of encountering egg move at search levels
 #define SEARCHLEVEL0_MOVECHANCE         0
 #define SEARCHLEVEL5_MOVECHANCE         21
@@ -58,10 +56,21 @@
 
 
 // Structs
-#define ROW_LAND 0
-#define ROW_WATER 1
+#define ROW_WATER       0
+#define ROW_LAND_TOP    1
+#define ROW_LAND_BOT    2
+#define ROWS_COUNT      3
 
-#define NUM_LAND_MONS           12
+#define ENCOUNTER_TYPE_LAND     0
+#define ENCOUNTER_TYPE_WATER    1
+
+#define COL_WATER_COUNT         5
+#define COL_LAND_COUNT          6
+
+#define COL_WATER_MAX           (COL_WATER_COUNT - 1)
+#define COL_LAND_MAX            (COL_LAND_COUNT - 1)
+
+#define NUM_LAND_MONS           (COL_LAND_COUNT * 2)
 #define NUM_WATER_MONS          5
 
 extern const u8 SystemScript_StartDexNavBattle[];
@@ -92,23 +101,11 @@ struct FieldEffectScript
 
 #define SPECIES_TABLES_TERMIN 0xFEFE
 
-#define ENCOUNTER_TYPE_LAND 0
-#define ENCOUNTER_TYPE_WATER 1
-
-#define TILE_FLAG_ENCOUNTER_TILE 1
-#define TILE_FLAG_SURFABLE 2
-#define TILE_FLAG_WILD_DOUBLE 4
-#define TILE_FLAG_SHAKING 8
-
 
 //src/dexnav.c
-//void ToolSelection(u8 taskId);
-void FieldEff_CaveDust(void);
-void FieldEff_Sparkles(void);
-
-void Task_InitDexnavSearch(u8 taskId);
 void Task_DexNavSearch(u8 taskId);
-void EndDexnavSearch(u8 taskId);
+void EndDexNavSearch(u8 taskId);
+void Task_OpenDexNavFromStartMenu(u8 taskId);
 
 
 #endif //GUARD_DEXNAV_H

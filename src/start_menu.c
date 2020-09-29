@@ -581,8 +581,7 @@ static bool8 HandleStartMenuInput(void)
         if (gMenuCallback != StartMenuSaveCallback
             && gMenuCallback != StartMenuExitCallback
             && gMenuCallback != StartMenuSafariZoneRetireCallback
-            && gMenuCallback != StartMenuBattlePyramidRetireCallback
-            && gMenuCallback != StartMenuDexNavCallback)
+            && gMenuCallback != StartMenuBattlePyramidRetireCallback)
         {
            FadeScreen(FADE_TO_BLACK, 0);
         }
@@ -1411,15 +1410,7 @@ static void CloseStartMenu(void)
 
 static bool8 StartMenuDexNavCallback(void)
 {
-    CloseStartMenu();
-    //PlaySE(SE_WIN_OPEN);
-    
-    //test
-    gSpecialVar_0x8000 = 283;   //mudkip. test
-    gSpecialVar_0x8001 = 0;
-    
-    CreateTask(Task_InitDexnavSearch, 0);
-    
+    CreateTask(Task_OpenDexNavFromStartMenu, 0);
     return TRUE;
 }
 

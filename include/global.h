@@ -985,6 +985,7 @@ struct SaveBlock1
     /*0x3D5A*/ u8 filler3D5A[0xA];
     /*0x3D64*/ struct SaveTrainerHill trainerHill;
     /*0x3D70*/ struct WaldaPhrase waldaPhrase;
+               u16 dexnavRegisteredSpecies;
     // sizeof: 0x3D88
 };
 

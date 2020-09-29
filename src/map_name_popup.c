@@ -209,7 +209,7 @@ bool8 sub_80D47D4(void)
 void ShowMapNamePopup(void)
 {
     if (FlagGet(FLAG_SYS_DEXNAV_ACTIVE))
-        EndDexnavSearch(FindTaskIdByFunc(Task_DexNavSearch));
+        EndDexNavSearch(FindTaskIdByFunc(Task_DexNavSearch));
     
     if (!FlagGet(FLAG_HIDE_MAP_NAME_POPUP))
     {

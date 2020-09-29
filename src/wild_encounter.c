@@ -515,7 +515,9 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
 {
     u16 headerId;
     struct Roamer *roamer;
-
+    
+    return FALSE;   //testing
+    
     if (sWildEncountersDisabled == TRUE)
         return FALSE;
 

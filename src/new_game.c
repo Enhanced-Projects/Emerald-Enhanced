@@ -66,22 +66,6 @@ static const struct ContestWinner sContestWinnerPicDummy =
 };
 
 // code
-static void TestingNewGame(void)
-{
-    u16 i;
-    
-    EnableNationalPokedex();
-    
-    for (i = 0; i < 251; i++)
-        GetSetPokedexFlag(i, FLAG_SET_SEEN);
-    
-    for (i = 277; i < 411; i++)
-        GetSetPokedexFlag(i, FLAG_SET_SEEN);
-}
-
-
-
-
 void SetTrainerId(u32 trainerId, u8 *dst)
 {
     dst[0] = trainerId;
@@ -225,7 +209,7 @@ void NewGameInitData(void)
     ResetTrainerHillResults();
     ResetContestLinkResults();
     
-    TestingNewGame();
+    gSaveBlock1Ptr->dexnavRegisteredSpecies = 0;
 }
 
 static void ResetMiniGamesResults(void)
