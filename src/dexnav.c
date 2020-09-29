@@ -613,10 +613,13 @@ static bool8 ShakingGrass(u8 environment, u8 xSize, u8 ySize, bool8 smallScan)
 
 #define tProximity          data[0]
 #define tFrameCount         data[1]
+#define tSpecies            data[2]
+#define tEnvironment        data[3]
 static void Task_InitDexNavSearch(u8 taskId)
 {
-    u16 species = gDexNavSpecies;   //testing
-    u8 environment = 0; //testing
+    struct Task *task = &gTasks[taskId];
+    u16 species = task->tSpecies;
+    u8 environment = task->tEnvironment;
     u8 searchLevel;
     
     sDexNavSearchDataPtr = AllocZeroed(sizeof(struct DexNavSearch));
@@ -1174,6 +1177,20 @@ static u8 GetEncounterLevel(u16 species, u8 environment)
     return RandRange(min, max);
 }
 
+bool8 TryStartDexnavSearch(void)
+{
+    u8 taskId;
+    u16 val = VarGet(VAR_DEXNAV_SPECIES);
+    
+    if (FlagGet(FLAG_SYS_DEXNAV_ACTIVE) || (val & 0x7FFF) == SPECIES_NONE)
+        return FALSE;
+    
+    taskId = CreateTask(Task_InitDexNavSearch, 0);
+    gTasks[taskId].tSpecies = val & 0x7FFF;
+    gTasks[taskId].tEnvironment = val >> 15;
+    return FALSE;   //we dont actually want to enable the script context
+}
+
 
 ///////////
 /// GUI ///
@@ -1713,13 +1730,15 @@ static bool8 DexNav_DoGfxSetup(void)
         break;
     case 11:
         taskId = CreateTask(Task_DexNavWaitFadeIn, 0);
+        gTasks[taskId].tSpecies = 0;
+        gTasks[taskId].tEnvironment = sDexNavStateDataPtr->environment;
         gMain.state++;
         break;
     case 12:
         DrawSpeciesIcons();
         CreateSelectionCursor();
-        if (gSaveBlock1Ptr->dexnavRegisteredSpecies != SPECIES_NONE)
-            PrintSearchableSpecies(gSaveBlock1Ptr->dexnavRegisteredSpecies);
+        if (VarGet(VAR_DEXNAV_SPECIES) != SPECIES_NONE)
+            PrintSearchableSpecies(VarGet(VAR_DEXNAV_SPECIES));
         
         gMain.state++;
         break;
@@ -1884,7 +1903,7 @@ static void Task_DexNavMain(u8 taskId)
             PlaySE(SE_DEX_SEARCH);
             
             // create value to store in a var
-            gSaveBlock1Ptr->dexnavRegisteredSpecies = (sDexNavStateDataPtr->environment << 15) | species;
+            VarSet(VAR_DEXNAV_SPECIES, ((species & 0x7FFF) | sDexNavStateDataPtr->environment << 15));
         }
         else
         {
@@ -1902,7 +1921,8 @@ static void Task_DexNavMain(u8 taskId)
         }
         else
         {
-            gDexNavSpecies = species;
+            task->tSpecies = species;
+            task->tEnvironment = sDexNavStateDataPtr->environment;
             PlaySE(SE_DEX_SEARCH);
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
             task->func = Task_DexNavExitAndSearch;
