@@ -1221,3 +1221,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/FrostyForest_House/scripts.inc"
 
 	.include "data/maps/FrostbiteField_House/scripts.inc"
+
+	.include "data/maps/DewfordTown_House3/scripts.inc"

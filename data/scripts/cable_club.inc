@@ -1547,7 +1547,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_FELIX
 	cleartrainerflag TRAINER_VIOLET
 	cleartrainerflag TRAINER_MORRIS
-	cleartrainerflag TRAINER_ROSE_3
+	cleartrainerflag TRAINER_BRINEY
 	cleartrainerflag TRAINER_ROSE_4
 	cleartrainerflag TRAINER_ROSE_5
 	cleartrainerflag TRAINER_DUSTY_1

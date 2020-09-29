@@ -925,7 +925,7 @@ static const struct TrHillFloor sDataTagNormal_Floors[] =
                     [3] =
                     {
                         .species = SPECIES_ARTICUNO,
-                        .heldItem = ITEM_LEFTOVERS,
+                        .heldItem = ITEM_DRY_ICE,
                         .moves = {MOVE_AURORA_BEAM, MOVE_HURRICANE, MOVE_BLIZZARD, MOVE_ROOST},
                         .level = 0,
                         .ppBonuses = 0xFF,
@@ -4646,7 +4646,7 @@ static const struct TrHillFloor sDataTagExpert_Floors[] = {
                                     [5] =
                                         {
                                             .species = SPECIES_ARTICUNO,
-                                            .heldItem = ITEM_LEFTOVERS,
+                                            .heldItem = ITEM_DRY_ICE,
                                             .moves = {MOVE_AURORA_BEAM, MOVE_HURRICANE, MOVE_BLIZZARD, MOVE_ROOST},
                                             .level = 0,
                                             .ppBonuses = 0xFF,

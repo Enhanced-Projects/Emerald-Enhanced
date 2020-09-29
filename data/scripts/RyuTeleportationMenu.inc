@@ -106,7 +106,7 @@ RT_Slateport::
 	
 RT_Dewford::
     goto_if_unset FLAG_VISITED_DEWFORD_TOWN, RT_NoFlag
-	warpteleport MAP_DEWFORD_TOWN, 255, 9, 10
+	warpteleport MAP_DEWFORD_TOWN, 255, 29, 10
 	release
 	end
 	

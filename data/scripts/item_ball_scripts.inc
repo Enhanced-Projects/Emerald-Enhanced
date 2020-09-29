@@ -174,8 +174,12 @@ Route105_EventScript_ItemIron:: @ 8290D33
 	finditem ITEM_IRON
 	end
 
-Route106_EventScript_ItemProtein:: @ 8290D40
+Route105_EventScript_ItemProtein:: @ 8290D40
 	finditem ITEM_PROTEIN
+	end
+
+Route106_EventScript_ItemRareCandy::
+	finditem ITEM_RARE_CANDY
 	end
 
 Route108_EventScript_ItemStarPiece:: @ 8290D4D
@@ -452,6 +456,10 @@ PetalburgCity_EventScript_ItemMaxRevive:: @ 82910B4
 
 PetalburgCity_EventScript_ItemEther:: @ 82910C1
 	finditem ITEM_ETHER
+	end
+
+Dewford_EventScript_ItemEnergyRoot::
+	finditem ITEM_ENERGY_ROOT
 	end
 
 MauvilleCity_EventScript_ItemXSpeed:: @ 82910CE

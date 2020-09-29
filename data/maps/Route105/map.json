@@ -19,20 +19,25 @@
       "map": "MAP_ROUTE104"
     },
     {
-      "direction": "down",
-      "offset": 0,
-      "map": "MAP_ROUTE106"
-    },
-    {
       "direction": "dive",
       "offset": 0,
       "map": "MAP_UNDERWATER_ROUTE105"
+    },
+    {
+      "direction": "right",
+      "offset": 80,
+      "map": "MAP_ROUTE106"
+    },
+    {
+      "direction": "right",
+      "offset": 100,
+      "map": "MAP_DEWFORD_TOWN"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
-      "x": 19,
+      "x": 24,
       "y": 60,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -45,7 +50,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
-      "x": 27,
+      "x": 32,
       "y": 36,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
@@ -58,7 +63,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
-      "x": 8,
+      "x": 13,
       "y": 45,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
@@ -71,7 +76,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
-      "x": 19,
+      "x": 24,
       "y": 9,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
@@ -84,7 +89,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 8,
+      "x": 13,
       "y": 73,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -97,7 +102,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
-      "x": 17,
+      "x": 22,
       "y": 48,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
@@ -110,7 +115,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
-      "x": 4,
+      "x": 9,
       "y": 54,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -123,7 +128,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
-      "x": 4,
+      "x": 9,
       "y": 58,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -133,11 +138,76 @@
       "trainer_sight_or_berry_tree_id": "4",
       "script": "Route105_EventScript_Andres",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MR_BRINEYS_BOAT",
+      "x": 12,
+      "y": 108,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
+      "x": 12,
+      "y": 109,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "6",
+      "script": "DewfordTown_EventScript_Briney",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
+      "x": 17,
+      "y": 85,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
+      "movement_range_x": 4,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Route106_EventScript_Douglas",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
+      "x": 29,
+      "y": 90,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Route106_EventScript_Kyla",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 29,
+      "y": 94,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route105_EventScript_ItemProtein",
+      "flag": "FLAG_ITEM_ROUTE_105_PROTEIN"
     }
   ],
   "warp_events": [
     {
-      "x": 9,
+      "x": 14,
       "y": 20,
       "elevation": 0,
       "dest_map": "MAP_ISLAND_CAVE",
@@ -150,7 +220,7 @@
   "bg_events": [
     {
       "type": "hidden_item",
-      "x": 15,
+      "x": 20,
       "y": 68,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
@@ -158,11 +228,18 @@
     },
     {
       "type": "hidden_item",
-      "x": 5,
+      "x": 10,
       "y": 56,
       "elevation": 3,
       "item": "ITEM_BIG_PEARL",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL"
+    },
+    {
+      "type": "secret_base",
+      "x": 33,
+      "y": 101,
+      "elevation": 0,
+      "secret_base_id": "SECRET_BASE_BLUE_CAVE4_1"
     }
   ]
 }
