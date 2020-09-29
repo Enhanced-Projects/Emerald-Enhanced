@@ -288,16 +288,17 @@ LCC_NecklaceMade:
 	.string "happy with this!$"
 
 LCC_BALL_STORE_MSG:
-        .string "Hello and welcome to the\n"
+    .string "Hello and welcome to the\n"
 	.string "Ball Market.\l"
 	.string "Get your balls here!$"
 
 LCC_BATTLE_ITEM_MSG:
-        .string "Hello and welcome to the Battle Item\n"
-	.string "Store. We carry all the latest battle\l"
-	.string "tech and gear here!$"
+    .string "Hello and welcome to the Battle Item\n"
+	.string "Store.\p"
+	.string "We carry all the latest battle tech\n"
+	.string "and gear here!$"
 
 LCC_EVO_STORE_MSG:
-        .string "Hello and welcome to Darwin's market!\n"
+    .string "Hello and welcome to Darwin's market!\n"
 	.string "Evolution needs can be found here!$"
 

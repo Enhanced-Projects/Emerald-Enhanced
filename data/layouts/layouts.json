@@ -4492,14 +4492,14 @@
       "blockdata_filepath": "data/layouts/SlateportCity_LanasHouse/map.bin"
     },
     {
-      "id": "LAYOUT_THRONE_ROOM",
-      "name": "ThroneRoom_Layout",
+      "id": "LAYOUT_EVER_GRANDE_CITY_THRONE_ROOM",
+      "name": "EverGrandeCity_ThroneRoom_Layout",
       "width": 19,
       "height": 19,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_EliteFour",
-      "border_filepath": "data/layouts/ThroneRoom/border.bin",
-      "blockdata_filepath": "data/layouts/ThroneRoom/map.bin"
+      "border_filepath": "data/layouts/EverGrandeCity_ThroneRoom/border.bin",
+      "blockdata_filepath": "data/layouts/EverGrandeCity_ThroneRoom/map.bin"
     },
     {
       "id": "LAYOUT_LILYCOVE_CITY_TRAINING_CENTER",
