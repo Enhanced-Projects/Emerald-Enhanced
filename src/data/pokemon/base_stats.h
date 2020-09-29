@@ -19278,10 +19278,10 @@ const struct BaseStats gBaseStats[] =
     {
         .baseHP        = 97,
         .baseAttack    = 132,
-        .baseDefense   = 77,
+        .baseDefense   = 85,
         .baseSpeed     = 43,
         .baseSpAttack  = 62,
-        .baseSpDefense = 67,
+        .baseSpDefense = 95,
         .type1 = TYPE_FIGHTING,
         .type2 = TYPE_ICE,
         .catchRate = 60,

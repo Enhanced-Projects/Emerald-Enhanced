@@ -8770,10 +8770,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_DELIBIRD_MASOCHIST] = {
         .species = SPECIES_DELIBIRD,
-        .moves = {MOVE_PRESENT, MOVE_DRILL_PECK, MOVE_SEED_BOMB, MOVE_BRICK_BREAK},
-        .heldItem = ITEM_CHOICE_BAND,
+        .moves = {MOVE_FAKE_OUT, MOVE_QUICK_ATTACK, MOVE_DRILL_PECK, MOVE_BRICK_BREAK},
+        .heldItem = ITEM_FOCUS_SASH,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
