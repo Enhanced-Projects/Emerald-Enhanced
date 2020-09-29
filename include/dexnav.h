@@ -102,10 +102,13 @@ struct FieldEffectScript
 #define SPECIES_TABLES_TERMIN 0xFEFE
 
 
-//src/dexnav.c
+//funcs
 void Task_DexNavSearch(u8 taskId);
 void EndDexNavSearch(u8 taskId);
 void Task_OpenDexNavFromStartMenu(u8 taskId);
 
+//ewram
+extern u8 gCurrentDexNavChain;
+extern bool8 gDexnavBattle;
 
 #endif //GUARD_DEXNAV_H

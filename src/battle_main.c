@@ -15,6 +15,7 @@
 #include "berry.h"
 #include "bg.h"
 #include "data.h"
+#include "dexnav.h"
 #include "decompress.h"
 #include "dma3.h"
 #include "event_data.h"
@@ -5072,6 +5073,12 @@ static void FreeResetData_ReturnToOvOrDoEvolutions(void)
 {
     if (!gPaletteFade.active)
     {
+        if (gDexnavBattle && (gBattleOutcome == B_OUTCOME_WON || gBattleOutcome == B_OUTCOME_CAUGHT) && gCurrentDexNavChain < 100)
+            gCurrentDexNavChain++;
+        else
+            gCurrentDexNavChain = 0;
+        
+        gDexnavBattle = FALSE;
         ResetSpriteData();
         if (gLeveledUpInBattle == 0 || gBattleOutcome != B_OUTCOME_WON)
         {

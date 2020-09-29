@@ -136,6 +136,8 @@ EWRAM_DATA u16 gDexNavSpecies = 0;
 EWRAM_DATA u8 gDexNavEnvironment = 0;
 EWRAM_DATA u8 sDexNavWindowId = 0;
 EWRAM_DATA u8 sDexNavSearchSpriteId = 0;
+EWRAM_DATA u8 gCurrentDexNavChain = 0;
+EWRAM_DATA bool8 gDexnavBattle = FALSE;
 
 //// Function Declarations
 //GUI
@@ -149,7 +151,7 @@ static u16 DexNavGenerateHeldItem(u16 species, u8 searchLevel);
 static u8 DexNavGetAbilityNum(u16 species, u8 searchLevel);
 static u8 DexNavGeneratePotential(u8 searchLevel);
 static void DexNavDrawHeldItem(u8* spriteIdAddr);
-static u8 DexNavGenerateMonLevel(u16 species, u8 searchLevel, u8 environment);
+static u8 DexNavGenerateMonLevel(u16 species, u8 environment);
 static u8 GetEncounterLevel(u16 species, u8 environment);
 static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16* moves);
 static u8 GetPlayerDistance(s16 x, s16 y);
@@ -163,31 +165,12 @@ static const u32 sDexNavGuiTiles[] = INCBIN_U32("graphics/dexnav/dexnav_gui_tile
 static const u32 sDexNavGuiTilemap[] = INCBIN_U32("graphics/dexnav/dexnav_gui_tilemap.bin");
 static const u32 sDexNavGuiPal[] = INCBIN_U32("graphics/dexnav/dexnav_gui.gbapal");
 
-//static const u16 sDexNavStarsTiles[] = INCBIN_U16("graphics/dexnav/stars.4bpp");
-static const u8 sDexNavStarsTiles[] = INCBIN_U8("graphics/dexnav/stars.4bpp");
-static const u8 sDexNavStarsPal[] = INCBIN_U8("graphics/dexnav/stars.gbapal");
-
 static const u32 sSelectionCursorGfx[] = INCBIN_U32("graphics/dexnav/cursor.4bpp.lz");
 static const u16 sSelectionCursorPal[] = INCBIN_U16("graphics/dexnav/cursor.gbapal");
 
-static const u32 gInterfaceGfx_emptyTiles[] = INCBIN_U32("graphics/dexnav/empty.4bpp.lz");
-static const u16 gInterfaceGfx_emptyPal[] = INCBIN_U16("graphics/dexnav/empty.gbapal");
-
+// to do -crowns instead
 static const u32 gInterfaceGfx_CapturedAllPokemonTiles[] = INCBIN_U32("graphics/dexnav/captured_all.4bpp.lz");
 static const u32 gInterfaceGfx_CapturedAllPokemonPal[] = INCBIN_U32("graphics/dexnav/captured_all.gbapal.lz");
-
-static const u32 gInterfaceGfx_SparklesTiles[] = INCBIN_U32("graphics/dexnav/sparkles.4bpp");
-static const u16 gInterfaceGfx_SparklesPal[] = INCBIN_U16("graphics/dexnav/sparkles.gbapal");
-
-static const u32 gInterfaceGfx_LavaBubblesTiles[] = INCBIN_U32("graphics/dexnav/lava_bubbles.4bpp");
-static const u16 gInterfaceGfx_LavaBubblesPal[] = INCBIN_U16("graphics/dexnav/lava_bubbles.gbapal");
-
-static const u32 sDexNavNoDataSymbolTiles[] = INCBIN_U32("graphics/dexnav/no_data.4bpp.lz");
-
-static const struct SpritePalette sSpritePalette_Stars =
-{
-    (const u16 *)sDexNavStarsPal, 0x2710
-};
 
 // strings
 static const u8 sText_DexNavText[] = _("Pokédex\nDexNav");
@@ -263,43 +246,6 @@ static const struct OamData CursorOAM =
     .priority = 0, // above BG layers
     .paletteNum = 0,
     .affineParam = 0
-};
-
-// cursor positions for water
-static const u16 CursorPositions2[] =
-{
-    30 + 24 * 0, 48,
-    30 + 24 * 1, 48,
-    30 + 24 * 2, 48,
-    30 + 24 * 3, 48,
-    30 + 24 * 4, 48,
-};
-
-// positions for grass
-static const u16 CursorPositions1[] =
-{
-    20 + 24 * 0, 92,
-    20 + 24 * 1, 92,
-    20 + 24 * 2, 92,
-    20 + 24 * 3, 92,
-    20 + 24 * 4, 92,
-    20 + 24 * 5, 92,
-    20 + 24 * 0, 92 + 28,
-    20 + 24 * 1, 92 + 28,
-    20 + 24 * 2, 92 + 28,
-    20 + 24 * 3, 92 + 28,
-    20 + 24 * 4, 92 + 28,
-    20 + 24 * 5, 92 + 28,
-};
-
-// GUI Windows
-#define rgb5(r, g, b) (u16)((r >> 3) | ((g >> 3) << 5) | ((b >> 3) << 10))
-static const u16 DexNavTextPal[] =
-{
-    rgb5(255, 0, 255), rgb5(248, 248, 248), rgb5(112, 112, 112), rgb5(96, 96, 96),
-    rgb5(208, 208, 208), rgb5(76, 154, 38), rgb5(102, 194, 66), rgb5(168, 75, 76),
-    rgb5(224, 114, 75), rgb5(180, 124, 41), rgb5(241, 188, 60), rgb5(255, 0, 255),
-    rgb5(255, 0, 255), rgb5(255, 0, 255), rgb5(255, 133, 200), rgb5(64, 200, 248)
 };
 
 static const struct WindowTemplate sDexNavGuiWindowTemplates[] =
@@ -387,43 +333,6 @@ static const struct WindowTemplate sDexNavGuiWindowTemplates[] =
     DUMMY_WIN_TEMPLATE
 };
 
-//64x32 oam with second highest priority
-static const struct OamData sBlackBarOAM =
-{
-    .y = ICONY,
-    .affineMode = 0,
-    .objMode = 0,
-    .mosaic = 0,
-    .bpp = 0,
-    .shape = SPRITE_SHAPE(64x32),
-    .x = ICONX,
-    .matrixNum = 0,
-    .size = SPRITE_SIZE(64x32),
-    .tileNum = 0,
-    .priority = 1,
-    .paletteNum = 0,
-    .affineParam = 0,
-};
-
-
-//64x32 oam with highest priority
-static const struct OamData FontOAM =
-{
-    .y = ICONY,
-    .affineMode = 0,
-    .objMode = 0,
-    .mosaic = 0,
-    .bpp = 0,
-    .shape = SPRITE_SHAPE(64x32),
-    .x = ICONX,
-    .matrixNum = 0,
-    .size = SPRITE_SIZE(64x32),
-    .tileNum = 0,
-    .priority = 0,
-    .paletteNum = 0,
-    .affineParam = 0,
-};
-
 // 8x8 oam with highest priority
 static const struct OamData HeldOAM =
 {
@@ -463,36 +372,10 @@ static const struct OamData PIconOAM =
 static const u8 sFontColor_Black[3] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY};
 static const u8 sFontColor_White[3] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GREY};
 
-/*
-static const struct CompressedSpriteSheet sCapturedAllPokemonSpriteSheet = 
-{
-    .data = gInterfaceGfx_CapturedAllPokemonTiles,
-    .size = 8 * 8 / 2,
-    .tag = CAPTURED_ALL_TAG
-};
-
-static const struct SpriteTemplate sCapturedAllPokemonSymbolTemplate =
-{
-    .tileTag = CAPTURED_ALL_TAG,
-    .paletteTag = SELECTION_CURSOR_TAG,
-    .oam = &sCapturedAllPokemonSymbolOAM,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
-};
-
-static const struct CompressedSpriteSheet sIconTiles = 
-{
-    .data = sDexNavNoDataSymbolTiles,
-    .size = 32 * 32,
-    .tag = ICON_GFX_TAG
-};
-
-*/
-
-
-
+//// functions
+///////////////////////
+//// DEXNAV SEARCH ////
+///////////////////////
 #define ITEM_ICON_X 26
 #define ITEM_ICON_Y (16 * 8)
 static void ShowMonIconInHeaderBox(u16 species)
@@ -507,9 +390,7 @@ static void ShowMonIconInHeaderBox(u16 species)
     sDexNavSearchSpriteId = spriteId;
 }
 
-static const u8 sFontColor[3] = {0, 15, 13};
-//static const u8 sText_Test[] = _("{STR_VAR_1}       Ability        Level\nSpecial Move     IVs      Shiny");
-//static const u8 sText_Test[] = _("x: {STR_VAR_1}     y: {STR_VAR_2}\n   proximity: {STR_VAR_3}");
+static const u8 sSearchFontColor[3] = {0, 15, 13};
 static const u8 sText_Test[] = _("{STR_VAR_1}\n     x: {STR_VAR_2}  y: {STR_VAR_3}");
 void DrawHeaderBox(u16 species)
 {
@@ -536,7 +417,7 @@ void DrawHeaderBox(u16 species)
     ConvertIntToDecimalStringN(gStringVar3, sDexNavSearchDataPtr->tileY - 7, STR_CONV_MODE_RIGHT_ALIGN, 2);
     
     StringExpandPlaceholders(gStringVar4, sText_Test);
-    AddTextPrinterParameterized3(sDexNavWindowId, 0, ITEM_ICON_X + 4, 0, sFontColor, TEXT_SPEED_FF, gStringVar4);
+    AddTextPrinterParameterized3(sDexNavWindowId, 0, ITEM_ICON_X + 4, 0, sSearchFontColor, TEXT_SPEED_FF, gStringVar4);
     CopyWindowToVram(sDexNavWindowId, 2);
     
     ShowMonIconInHeaderBox(species);
@@ -755,7 +636,7 @@ static void Task_InitDexNavSearch(u8 taskId)
     sDexNavSearchDataPtr->environment = environment;
     searchLevel = 10;   //sDexNavSearchLevels[SpeciesToNationalPokedexNum(species)];
     sDexNavSearchDataPtr->searchLevel = searchLevel;
-    sDexNavSearchDataPtr->monLevel = 10;   //to do: DexNavGenerateMonLevel(species, searchLevel, environment);
+    sDexNavSearchDataPtr->monLevel = 10;   //to do: DexNavGenerateMonLevel(species, environment);
     
     //DexNavGenerateMoveset(species, searchLevel, sDexNavSearchDataPtr->monLevel, &sDexNavSearchDataPtr->moves[0]);
     sDexNavSearchDataPtr->heldItem = 0; //DexNavGenerateHeldItem(species, searchLevel);
@@ -798,6 +679,7 @@ void EndDexNavSearch(u8 taskId)
 
 static void EndDexNavSearchSetupScript(const u8 *script, u8 taskId)
 {
+    gCurrentDexNavChain = 0;   //reset chain
     EndDexNavSearch(taskId);
     ScriptContext1_SetupScript(script);
 }
@@ -839,12 +721,14 @@ void Task_DexNavSearch(u8 taskId)
     
     if (ScriptContext2_IsEnabled() == TRUE)
     { // check if script just executed
+        //gCurrentDexNavChain = 0;  //issue with reusable repels
         EndDexNavSearch(taskId);
         return;
     }
     
     if (JOY_NEW(B_BUTTON | START_BUTTON))
     { //player manually canceled
+        gCurrentDexNavChain = 0;
         EndDexNavSearch(taskId);
         PlaySE(SE_POKENAV_OFF);
         return;
@@ -865,6 +749,7 @@ void Task_DexNavSearch(u8 taskId)
         if (sDexNavSearchLevels[species] < 100)
             sDexNavSearchLevels[species]++;
         
+        gDexnavBattle = TRUE;
         ScriptContext1_SetupScript(EventScript_StartDexNavBattle);
         Free(sDexNavSearchDataPtr);
         DestroyTask(taskId);
@@ -916,6 +801,18 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     u8 iv[3];
     u8 i;
     u8 perfectIv = 31;
+    u8 charmBonus, randBonus, chainBonus;
+    u8 numChecks = 0;
+    
+    // get num shiny rolls
+    #ifdef ITEM_SHINY_CHARM
+    charmBonus = (CheckBagHasItem(ITEM_SHINY_CHARM, 1) > 0) ? 2 : 0;
+    #else
+    charmBonus = 0;
+    #endif
+    chainBonus = (gCurrentDexNavChain == 50) ? 5 : (gCurrentDexNavChain == 100) ? 10 : 0;
+	randBonus = (Random() % 100 < 4 ? 4 : 0);
+	numChecks = 1 + charmBonus + chainBonus + randBonus;
     
     // to do - updated shiny rate?
     
@@ -948,24 +845,24 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     CalculateMonStats(mon);
 }
 
-static u8 DexNavGenerateMonLevel(u16 species, u8 searchLevel, u8 environment)
+static u8 DexNavGenerateMonLevel(u16 species, u8 environment)
 {
-    u8 levelBase = GetEncounterLevel(species, environment);
-    u8 searchLevelBonus;
-    
-    if (levelBase > MAX_LEVEL)
-        return 0;
+	u8 levelBase;
+    u8 levelBonus;
 
-    searchLevelBonus = 0;
-    if (searchLevel >> 2 > 20)
-        searchLevelBonus = 20;
-    else
-        searchLevelBonus = searchLevel >> 2;
+	levelBase = GetEncounterLevel(species, environment);
+	if (levelBase > MAX_LEVEL)
+		return 0;
 
-    if (searchLevelBonus + levelBase > MAX_LEVEL)
-        return MAX_LEVEL;
-    else
-        return searchLevelBonus + levelBase;
+	levelBonus = gCurrentDexNavChain / 5;
+
+	if (Random() % 100 < 4) //4% chance of having a +10 level
+		levelBonus += 10;
+
+	if (levelBase + levelBonus > MAX_LEVEL)
+		return MAX_LEVEL;
+	else
+		return levelBase + levelBonus;
 }
 
 static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel, u16* moveLoc)
@@ -1021,7 +918,7 @@ static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel
 
     //Generate a wild mon and copy moveset
     //CreateWildMon(species, encounterLevel, sDexNavSearchDataPtr->selectedIndex / 2, TRUE);
-    CreateWildMon(species, encounterLevel);
+    //CreateWildMon(species, encounterLevel);
 
     //Store generated mon moves into Dex Nav Struct
     for (i = 0; i < MAX_MON_MOVES; i++)
