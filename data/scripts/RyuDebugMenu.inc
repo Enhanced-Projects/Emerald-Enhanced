@@ -186,9 +186,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	giveitem ITEM_ARTEFACT_1
-	giveitem ITEM_ARTEFACT_2
-	giveitem ITEM_ARTEFACT_3
+	@setflag FLAG_TEMP_6
+	trainerbattle_no_intro TRAINER_OVERLORD_RYU_REMATCH, ryu_end
 	release
 	end
 

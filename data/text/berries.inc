@@ -4,7 +4,7 @@ PetalburgCity_Gym_Text_GiveEnigmaBerry: @ 82A6D3D
 	.string "I'd like you to have it.$"
 
 Route104_Text_PlantBerriesInSoilTakeThis: @ 82A6D86
-	.string "If you seeberries growing in loamy\n"
+	.string "If you see berries growing in loamy\n"
 	.string "soil, feel free to take them.\p"
 	.string "But make sure you plant a berry in the\n"
 	.string "same spot. That's common courtesy.\p"
@@ -15,7 +15,7 @@ Route104_Text_TrainersOftenMakeMonHoldBerries: @ 82A6E32
 	.string "Trainer, no?\p"
 	.string "Trainers often make Pokémon hold\n"
 	.string "berries.\p"
-	.string "It's up to you whether to growberries\n"
+	.string "It's up to you whether to grow berries\n"
 	.string "or use them.$"
 
 Route111_Text_WateredPlantsEveryDayTakeBerry: @ 82A6EBD

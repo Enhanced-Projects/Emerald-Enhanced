@@ -55,12 +55,11 @@ enum
  * "light color".                                                  */
 const struct LightingColor gLightingColors[] =
 {
-    //{   //example
+    //{   //example                       //disabled until someone manually adjusts them to make sure there aren't bad colors.
     //    .paletteNum = 8,
     //    .colorNum = 10,
     //    .lightColor = RGB2(22, 26, 15),
     //},
-    0,
 };
 
 /* Maptypes that are not affected by DNS */
@@ -452,22 +451,22 @@ static u16 GetDNSFilter()
 
 static void DoDnsLightning()
 {
-    u8 i;
+    //u8 i;
 
-    for (i = 0; i < sizeof(gLightingColors)/sizeof(gLightingColors[0]); i++)
-    {
-        u16 colorSlot = gLightingColors[i].paletteNum * 16 + gLightingColors[i].colorNum;
-        
-        if (gPaletteFade.active || gPlttBufferUnfaded[colorSlot] != 0x0000)
-        {
-            sDnsPaletteDmaBuffer[colorSlot] = gPlttBufferFaded[colorSlot];
-            gPlttBufferUnfaded[colorSlot] = gLightingColors[i].lightColor;
-        }
-        else
-        {
-            sDnsPaletteDmaBuffer[colorSlot] = gLightingColors[i].lightColor;
-        }
-    }
+    //for (i = 0; i < sizeof(gLightingColors)/sizeof(gLightingColors[0]); i++)               //These have been disabled to prevent bad light 
+    //{                                                                                      //colors showing up on the map, until someone 
+    //    u16 colorSlot = gLightingColors[i].paletteNum * 16 + gLightingColors[i].colorNum;  //sets the colors up and makes sure there are
+    //                                                                                       //no bad ones.
+    //    if (gPaletteFade.active || gPlttBufferUnfaded[colorSlot] != 0x0000)
+    //    {
+    //        sDnsPaletteDmaBuffer[colorSlot] = gPlttBufferFaded[colorSlot];
+    //        gPlttBufferUnfaded[colorSlot] = gLightingColors[i].lightColor;
+    //    }
+    //    else
+    //    {
+    //        sDnsPaletteDmaBuffer[colorSlot] = gLightingColors[i].lightColor;
+    //    }
+    //}
 }
 
 //Returns Dns time lapse

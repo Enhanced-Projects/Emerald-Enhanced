@@ -1981,6 +1981,8 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 }
                 SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].ability);
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+                if (FlagGet(FLAG_TEMP_6) == 1)
+                    SetMonData(&party[i], MON_DATA_NICKNAME, &partyData[i].nickname);
 
                 for (j = 0; j < MAX_MON_MOVES; j++)
                 {
@@ -1994,7 +1996,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
         gBattleTypeFlags |= gTrainers[trainerNum].doubleBattle;
     }
-
+    FlagClear(FLAG_TEMP_6);
     return gTrainers[trainerNum].partySize;
 }
 
