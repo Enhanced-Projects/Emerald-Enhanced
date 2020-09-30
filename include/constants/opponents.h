@@ -42,7 +42,7 @@
 #define TRAINER_FELIX                        38
 #define TRAINER_VIOLET                       39
 #define TRAINER_MORRIS                       40
-#define TRAINER_ROSE_3                       41
+#define TRAINER_BRINEY                       41
 #define TRAINER_ROSE_4                       42
 #define TRAINER_ROSE_5                       43
 #define TRAINER_DUSTY_1                      44

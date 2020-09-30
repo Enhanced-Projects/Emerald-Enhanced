@@ -614,19 +614,19 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Morris},
     },
 
-    [TRAINER_ROSE_3] =
+    [TRAINER_BRINEY] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_AROMA_LADY,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_AROMA_LADY,
-        .trainerName = _("Rose"),
-        .items = {},
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_EXPERT,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
+        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .trainerName = _("Briney"),
+        .items = {ITEM_ENERGY_ROOT, ITEM_ENERGY_ROOT, ITEM_NONE, ITEM_NONE},
         .battleStyle = BS_SHIFT,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Rose3),
-        .party = {.NoItemDefaultMoves = sParty_Rose3},
+        .partySize = ARRAY_COUNT(sParty_Briney),
+        .party = {.ItemCustomMoves = sParty_Briney},
     },
 
     [TRAINER_ROSE_4] =

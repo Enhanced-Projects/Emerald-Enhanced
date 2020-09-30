@@ -2951,22 +2951,22 @@ static u8 ForewarnChooseMove(u32 battler)
 static const u16 gMoveTypeAdvantageTable[] = {
     //Type that is SE on Incoming MoveType, //Incoming move type ID
     TYPE_FIGHTING,//0
-    TYPE_FAIRY,//1
+    TYPE_PSYCHIC,//1
     TYPE_ELECTRIC,//2 
-    TYPE_PSYCHIC,//3
-    TYPE_WATER,//4
-    TYPE_FIGHTING,//5
-    TYPE_FIRE,//6
+    TYPE_GROUND,//3
+    TYPE_GRASS,//4
+    TYPE_STEEL,//5
+    TYPE_FLYING,//6
     TYPE_DARK,//7
     TYPE_FIRE,//8
     TYPE_MYSTERY,//9
     TYPE_WATER,//10
-    TYPE_ELECTRIC,//11
+    TYPE_GRASS,//11
     TYPE_FIRE,//12
     TYPE_GROUND,//13
     TYPE_DARK,//14
-    TYPE_FIGHTING,//15
-    TYPE_ICE,//16
+    TYPE_FIRE,//15
+    TYPE_FAIRY,//16
     TYPE_FIGHTING,//17
     TYPE_POISON//18
 };

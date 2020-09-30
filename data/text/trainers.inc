@@ -5111,3 +5111,18 @@ MtFreeze_Text_MorrisPostBattle:
 	.string "pokemon on top of Mt. Freeze.\p"
 	.string "I intend to get up there and give them\n"
 	.string "a challenge!$"
+
+DewfordTown_Text_BrineyIntro:
+	.string "Ahoy! A trainer to battle!$"
+
+DewfordTown_Text_BrineyDefeated:
+	.string "Aye, you're powerful! This old sea\n"
+	.string "dog still has much to learn.$"
+
+DewfordTown_Text_BrineyPostBattle:
+	.string "After having retired, I've been\n"
+	.string "feeling a bit bored.\p"
+	.string "So I figured I would take my ship to\n"
+	.string "sail across the region for pokemon!\p"
+	.string "Ohoho! You're never too old to\n"
+	.string "become a trainer!$"

@@ -11135,6 +11135,7 @@ static const struct LevelUpMove sKecleonLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_TRICK_ROOM),
     LEVEL_UP_MOVE( 1, MOVE_CONFIDE),
     // Level Up Moves
+    LEVEL_UP_MOVE( 1, MOVE_REVELATION_DANCE),
     LEVEL_UP_MOVE( 1, MOVE_THIEF),
     LEVEL_UP_MOVE( 1, MOVE_TAIL_WHIP),
     LEVEL_UP_MOVE( 1, MOVE_ASTONISH),
@@ -11149,6 +11150,7 @@ static const struct LevelUpMove sKecleonLevelUpLearnset[] = {
     LEVEL_UP_MOVE(21, MOVE_ANCIENT_POWER),
     LEVEL_UP_MOVE(25, MOVE_SLASH),
     LEVEL_UP_MOVE(30, MOVE_CAMOUFLAGE),
+    LEVEL_UP_MOVE(30, MOVE_REVELATION_DANCE),
     LEVEL_UP_MOVE(33, MOVE_SHADOW_CLAW),
     LEVEL_UP_MOVE(38, MOVE_SCREECH),
     LEVEL_UP_MOVE(42, MOVE_SUBSTITUTE),
@@ -27596,6 +27598,7 @@ static const struct LevelUpMove sVikavoltLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sCrabrawlerLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 1, MOVE_MACH_PUNCH),
     LEVEL_UP_MOVE( 1, MOVE_BUBBLE),
     LEVEL_UP_MOVE( 5, MOVE_ROCK_SMASH),
     LEVEL_UP_MOVE( 9, MOVE_LEER),

@@ -489,24 +489,6 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Violet[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Rose3[] = {
-    {
-    .iv = 20,
-    .lvl = 28,
-    .species = SPECIES_MEGANIUM,
-    },
-    {
-    .iv = 20,
-    .lvl = 28,
-    .species = SPECIES_VILEPLUME,
-    },
-    {
-    .iv = 20,
-    .lvl = 28,
-    .species = SPECIES_ROSERADE,
-    }
-};
-
 static const struct TrainerMonNoItemDefaultMoves sParty_Rose4[] = {
     {
     .iv = 30,
@@ -9869,6 +9851,54 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Morris[] = {
     .lvl = 69,
     .species = SPECIES_AVALUGG,
     }
+};
+
+static const struct TrainerMonItemCustomMoves sParty_Briney[] = {
+   {
+	.iv = 255,
+	.lvl = 100,
+	.species = SPECIES_LAPRAS,
+	.heldItem = ITEM_DAMP_ROCK,
+	.ability = 2,
+    .nickname = _("Lapras")
+	.moves = {MOVE_HYDRO_PUMP, MOVE_FROST_BREATH, MOVE_THUNDER, MOVE_NONE},
+	},
+	{
+	.iv = 255,
+	.lvl = 100,
+	.species = SPECIES_WINGULL,
+	.heldItem = ITEM_FOCUS_SASH,
+	.ability = 0,
+    .nickname = _("Peeko")
+	.moves = {MOVE_HYDRO_PUMP, MOVE_HURRICANE, MOVE_BLIZZARD, MOVE_NONE},
+	},
+	{
+	.iv = 255,
+	.lvl = 100,
+	.species = SPECIES_CARRACOSTA,
+	.heldItem = ITEM_WHITE_HERB,
+	.ability = 2,
+    .nickname = _("Carracosta")
+	.moves = {MOVE_WATERFALL, MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_SHELL_SMASH},
+	},
+	{
+	.iv = 255,
+	.lvl = 100,
+	.species = SPECIES_PELIPPER,
+	.heldItem = ITEM_LEFTOVERS,
+	.ability = 1,
+    .nickname = _("Pelipper")
+	.moves = {MOVE_SCALD, MOVE_HURRICANE, MOVE_ROOST, MOVE_U_TURN},
+	},
+	{
+	.iv = 255,
+	.lvl = 100,
+	.species = SPECIES_STOUTLAND,
+	.heldItem = ITEM_LIFE_ORB,
+	.ability = 2,
+    .nickname = _("Stoutland")
+	.moves = {MOVE_EXTREME_SPEED, MOVE_HIGH_HORSEPOWER, MOVE_SWORDS_DANCE, MOVE_NONE},
+	}
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Jonah[] = {

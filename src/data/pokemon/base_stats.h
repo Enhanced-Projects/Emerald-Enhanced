@@ -9070,11 +9070,11 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_KECLEON] =
     {
-        .baseHP        = 60,
-        .baseAttack    = 90,
-        .baseDefense   = 70,
+        .baseHP        = 80,
+        .baseAttack    = 70,
+        .baseDefense   = 80,
         .baseSpeed     = 40,
-        .baseSpAttack  = 60,
+        .baseSpAttack  = 110,
         .baseSpDefense = 120,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_NORMAL,
@@ -19278,10 +19278,10 @@ const struct BaseStats gBaseStats[] =
     {
         .baseHP        = 97,
         .baseAttack    = 132,
-        .baseDefense   = 77,
+        .baseDefense   = 85,
         .baseSpeed     = 43,
         .baseSpAttack  = 62,
-        .baseSpDefense = 67,
+        .baseSpDefense = 95,
         .type1 = TYPE_FIGHTING,
         .type2 = TYPE_ICE,
         .catchRate = 60,

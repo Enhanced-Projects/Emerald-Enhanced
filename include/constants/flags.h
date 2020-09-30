@@ -152,8 +152,8 @@
 #define FLAG_RECEIVED_GREAT_BALL_OLDALE      0x84
 #define FLAG_RECEIVED_AMULET_COIN            0x85
 #define FLAG_PENDING_DAYCARE_EGG             0x86
-#define FLAG_THANKED_FOR_PLAYING_WITH_WALLY  0x87 // EE-Unused
-#define FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0x88 // EE-Unused
+#define FLAG_ITEM_ROUTE_106_RARE_CANDY       0x87
+#define FLAG_ITEM_DEWFORD_ENERGY_ROOT        0x88
 #define FLAG_RECEIVED_TM51                   0x89
 #define FLAG_SCOTT_CALL_FORTREE_GYM          0x8A // EE-Unused
 #define FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY   0x8B
@@ -167,7 +167,7 @@
 #define FLAG_MR_BRINEY_SAILING_INTRO         0x93 // EE-Unused?
 #define FLAG_DOCK_REJECTED_DEVON_GOODS       0x94
 #define FLAG_DELIVERED_DEVON_GOODS           0x95
-#define FLAG_RECEIVED_CONTEST_PASS           0x96 // Unused, leftover from R/S
+#define FLAG_DEWFORD_NPC_TRADE_COMPLETED     0x96
 #define FLAG_RECEIVED_CASTFORM               0x97
 #define FLAG_RECEIVED_SUPER_ROD              0x98
 #define FLAG_RUSTBORO_NPC_TRADE_COMPLETED    0x99
@@ -1044,7 +1044,7 @@
 #define FLAG_ITEM_ROUTE_116_X_SPECIAL                               0x3E9
 #define FLAG_ITEM_ROUTE_104_PP_UP                                   0x3EA
 #define FLAG_ITEM_ROUTE_105_IRON                                    0x3EB
-#define FLAG_ITEM_ROUTE_106_PROTEIN                                 0x3EC
+#define FLAG_ITEM_ROUTE_105_PROTEIN                                 0x3EC
 #define FLAG_ITEM_ROUTE_109_PP_UP                                   0x3ED
 #define FLAG_ITEM_ROUTE_109_RARE_CANDY                              0x3EE
 #define FLAG_ITEM_ROUTE_110_DIRE_HIT                                0x3EF

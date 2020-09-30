@@ -982,7 +982,7 @@ static const struct InGameTrade sIngameTrades[] =
     {
         .nickname = _("Dots"), 
         .species = SPECIES_SEEDOT,
-        .ivs = {5, 4, 5, 4, 4, 4},
+        .ivs = {13, 16, 15, 23, 12, 15},
         .abilityNum = 1, 
         .otId = 38726,
         .conditions = {30, 5, 5, 5, 5},
@@ -1014,7 +1014,7 @@ static const struct InGameTrade sIngameTrades[] =
     {
         .nickname = _("Seasor"),
         .species = SPECIES_HORSEA,
-        .ivs = {5, 4, 4, 4, 5, 4},
+        .ivs = {14, 11, 16, 24, 15, 13},
         .abilityNum = 0, 
         .otId = 46285,
         .conditions = {5, 5, 5, 5, 30},
@@ -1030,7 +1030,7 @@ static const struct InGameTrade sIngameTrades[] =
     {
         .nickname = _("Meowow"),
         .species = SPECIES_MEOWTH,
-        .ivs = {4, 5, 4, 5, 4, 4},
+        .ivs = {13, 15, 17, 13, 14, 25},
         .abilityNum = 0, 
         .otId = 91481,
         .conditions = {5, 5, 5, 30, 5},
@@ -1041,6 +1041,22 @@ static const struct InGameTrade sIngameTrades[] =
         .otGender = FEMALE, 
         .sheen = 10,
         .requestedSpecies = SPECIES_SKITTY
+    },
+    [INGAME_TRADE_CRABRAWLER] = 
+    {
+        .nickname = _("Mr Krabs"),
+        .species = SPECIES_CRABRAWLER,
+        .ivs = {17, 27, 14, 16, 15, 13},
+        .abilityNum = 1, 
+        .otId = 42069,
+        .conditions = {5, 5, 30, 5, 5},
+        .personality = 0x3,
+        .heldItem = ITEM_LUCKY_PUNCH, 
+        .mailNum = 1,
+        .otName = _("Pearl"), 
+        .otGender = FEMALE, 
+        .sheen = 10,
+        .requestedSpecies = SPECIES_QWILFISH
     }
 };
 

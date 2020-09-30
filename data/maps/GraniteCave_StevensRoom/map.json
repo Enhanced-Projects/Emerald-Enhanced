@@ -17,7 +17,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_STEVEN",
       "x": 7,
-      "y": 8,
+      "y": 9,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -26,12 +26,51 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GraniteCave_StevensRoom_EventScript_Steven",
       "flag": "FLAG_HIDE_GRANITE_CAVE_STEVEN"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 10,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_10"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 4,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 5,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_12"
     }
   ],
   "warp_events": [
     {
       "x": 7,
-      "y": 2,
+      "y": 3,
       "elevation": 3,
       "dest_map": "MAP_GRANITE_CAVE_1F",
       "dest_warp_id": 3
@@ -43,16 +82,16 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 10,
-      "y": 2,
+      "x": 7,
+      "y": 0,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "GC_JIRACHI_ENC"
     },
     {
       "type": "sign",
-      "x": 4,
-      "y": 11,
+      "x": 5,
+      "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MiningRock1"
@@ -63,7 +102,7 @@
       "y": 10,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "MiningRock10"
+      "script": "MiningRock2"
     }
   ]
 }
