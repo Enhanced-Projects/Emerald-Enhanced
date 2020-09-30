@@ -88,31 +88,28 @@ enum Statuses
 
 struct DexNavSearch
 {
-    /*0x00*/ u16 species;
-    /*0x02*/ u16 moves[MAX_MON_MOVES];
-    /*0x0A*/ u16 heldItem;
-    /*0x0C*/ u8 ability;
-    /*0x0D*/ u8 potential;
-    /*0x0E*/ u8 searchLevel;
-    /*0x0F*/ u8 monLevel;
-    /*0x10*/ u8 moveNameLength;
-    /*0x11*/ u8 proximity;
-    /*0x12*/ u8 environment;
-	/*0x13*/ u8 unownLetter;
-    /*0x14*/ s16 tileX; // position of shaking grass
-    /*0x16*/ s16 tileY;
-    /*0x18*/ u8 spriteIdSpecies;
-    /*0x19*/ u8 spriteIdBlackBar[4];
-    /*0x1D*/ u8 spriteIdSight;
-    /*0x1E*/ u8 spriteIdAbility;
-    /*0x1F*/ u8 spriteIdMove;
-    /*0x20*/ u8 spriteIdItem;
-    /*0x21*/ u8 fldEffSpriteId;
-             u8 fldEffId;
-    /*0x22*/ u8 spriteIdPotential[3];
-    /*0x25*/ u8 movementCount;
-             u8 abilityNum;
-             u8 windowId;
+    u16 species;
+    u16 moves[MAX_MON_MOVES];
+    u16 heldItem;
+    u8 abilityNum;
+    u8 potential;
+    u8 searchLevel;
+    u8 monLevel;
+    u8 moveNameLength;
+    u8 proximity;
+    u8 environment;
+	//u8 unownLetter;
+    s16 tileX; // position of shaking grass
+    s16 tileY;
+    u8 fldEffSpriteId;
+    u8 fldEffId;
+    u8 movementCount;
+    u8 windowId;
+    u8 iconSpriteId;
+    u8 sightSpriteId;
+    u8 itemSpriteId;
+    u8 potentialSpriteIds[3];
+             
 };
 
 struct DexNavGUI
@@ -139,7 +136,6 @@ struct DexNavGUI
 EWRAM_DATA static struct DexNavSearch *sDexNavSearchDataPtr = NULL;  //#define sDexNavSearchDataPtr (*((struct DexNavSearch**) 0x203E038))
 EWRAM_DATA static struct DexNavGUI *sDexNavStateDataPtr = NULL;
 EWRAM_DATA static u8 *sBg1TilemapBuffer = NULL;
-EWRAM_DATA u8 sDexNavSearchSpriteId = 0;
 EWRAM_DATA u8 gCurrentDexNavChain = 0;
 EWRAM_DATA bool8 gDexnavBattle = FALSE;
 
@@ -154,7 +150,6 @@ static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel
 static u16 DexNavGenerateHeldItem(u16 species, u8 searchLevel);
 static u8 DexNavGetAbilityNum(u16 species, u8 searchLevel);
 static u8 DexNavGeneratePotential(u8 searchLevel);
-static void DexNavDrawHeldItem(u8* spriteIdAddr);
 static u8 DexNavGenerateMonLevel(u16 species, u8 environment);
 static u8 GetEncounterLevel(u16 species, u8 environment);
 static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16* moves);
@@ -162,6 +157,7 @@ static u8 GetPlayerDistance(s16 x, s16 y);
 static u8 PickTileScreen(u8 targetBehaviour, u8 areaX, u8 areaY, s16 *xBuff, s16 *yBuff, u8 smallScan);
 static u8 DexNavPickTile(u8 environment, u8 xSize, u8 ySize, bool8 smallScan);
 static void DexNavProximityUpdate(void);
+static void DexNavDrawIcons(void);
 
 //// Const Data
 // image data
@@ -381,18 +377,20 @@ static const u8 sFontColor_White[3] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,
 ///////////////////////
 //// DEXNAV SEARCH ////
 ///////////////////////
-#define ITEM_ICON_X 26
-#define ITEM_ICON_Y (16 * 8)
-static void ShowMonIconInHeaderBox(u16 species)
+static s16 GetSearchWindowY(void)
+{
+    return (GetWindowAttribute(sDexNavSearchDataPtr->windowId, WINDOW_TILEMAP_TOP) * 8);
+}
+
+#define SPECIES_ICON_X 26
+static void ShowMonIconInHeaderBox(u16 species, u8 *dst)
 {
     u8 spriteId;
-    u8 yPos;
-    
-    yPos = (GetWindowAttribute(sDexNavSearchDataPtr->windowId, WINDOW_TILEMAP_TOP) * 8) + 8;
+     
     LoadMonIconPalette(species);
-    spriteId = CreateMonIcon(species, SpriteCB_MonIcon, ITEM_ICON_X - 6, yPos, 0, 0xFFFFFFFF, 0);
+    spriteId = CreateMonIcon(species, SpriteCB_MonIcon, SPECIES_ICON_X - 6, GetSearchWindowY() + 8, 0, 0xFFFFFFFF, 0);
     gSprites[spriteId].oam.priority = 0;
-    sDexNavSearchSpriteId = spriteId;
+    *dst = spriteId;
 }
 
 static const u8 sSearchFontColor[3] = {0, 15, 13};
@@ -422,15 +420,18 @@ void DrawHeaderBox(u16 species)
     ConvertIntToDecimalStringN(gStringVar3, sDexNavSearchDataPtr->tileY - 7, STR_CONV_MODE_RIGHT_ALIGN, 2);
     
     StringExpandPlaceholders(gStringVar4, sText_Test);
-    AddTextPrinterParameterized3(sDexNavSearchDataPtr->windowId, 0, ITEM_ICON_X + 4, 0, sSearchFontColor, TEXT_SPEED_FF, gStringVar4);
+    AddTextPrinterParameterized3(sDexNavSearchDataPtr->windowId, 0, SPECIES_ICON_X + 4, 0, sSearchFontColor, TEXT_SPEED_FF, gStringVar4);
     CopyWindowToVram(sDexNavSearchDataPtr->windowId, 2);
     
-    ShowMonIconInHeaderBox(species);
+    //ShowMonIconInHeaderBox(species);
 }
 
 void RemoveHeaderBox(void)
 {
-    DestroySpriteAndFreeResources(&gSprites[sDexNavSearchSpriteId]);
+    DestroySpriteAndFreeResources(&gSprites[sDexNavSearchDataPtr->iconSpriteId]);   //always exists
+    if (sDexNavSearchDataPtr->itemSpriteId != 0xFF)
+        DestroySpriteAndFreeResources(&gSprites[sDexNavSearchDataPtr->itemSpriteId]);
+
     ClearStdWindowAndFrameToTransparent(sDexNavSearchDataPtr->windowId, FALSE);
     CopyWindowToVram(sDexNavSearchDataPtr->windowId, 3);
     RemoveWindow(sDexNavSearchDataPtr->windowId);
@@ -640,28 +641,16 @@ static void Task_InitDexNavSearch(u8 taskId)
         return;
 	}
     
-    /*if (IS_NEWER_UNOWN_LETTER(species))
-    {
-        sDexNavSearchDataPtr->unownLetter = species - SPECIES_UNOWN_B + 2; //Because B is 1
-        sDexNavSearchDataPtr->species = species = SPECIES_UNOWN;
-    }
-    else //UNOWN A
-    {
-        sDexNavSearchDataPtr->unownLetter = 1;
-    }*/
-    
     sDexNavSearchDataPtr->environment = environment;
     searchLevel = gSaveBlock1Ptr->dexNavSearchLevels[SpeciesToNationalPokedexNum(species)];
     sDexNavSearchDataPtr->searchLevel = searchLevel;
-    sDexNavSearchDataPtr->monLevel = 10;   //to do: DexNavGenerateMonLevel(species, environment);
+    sDexNavSearchDataPtr->monLevel = DexNavGenerateMonLevel(species, environment);
     
-    //DexNavGenerateMoveset(species, searchLevel, sDexNavSearchDataPtr->monLevel, &sDexNavSearchDataPtr->moves[0]);
-    sDexNavSearchDataPtr->heldItem = 0; //DexNavGenerateHeldItem(species, searchLevel);
-    sDexNavSearchDataPtr->abilityNum = 0;   //DexNavGetAbilityNum(species, searchLevel);
+    DexNavGenerateMoveset(species, searchLevel, sDexNavSearchDataPtr->monLevel, &sDexNavSearchDataPtr->moves[0]);
+    sDexNavSearchDataPtr->heldItem = DexNavGenerateHeldItem(species, searchLevel);
+    sDexNavSearchDataPtr->abilityNum = DexNavGetAbilityNum(species, searchLevel);
     sDexNavSearchDataPtr->potential = DexNavGeneratePotential(searchLevel);
     
-    //taskId = CreateTask(Task_DexNavSearch, 1);
-    //gTasks[taskId].tFrameCount = 0;
     if (!ShakingGrass(environment, 12, 12, 0))
     {
         Free(sDexNavSearchDataPtr);
@@ -671,15 +660,57 @@ static void Task_InitDexNavSearch(u8 taskId)
         return;
     }
     
+    DexNavDrawIcons();
     DexNavProximityUpdate();
     FlagSet(FLAG_SYS_DEXNAV_ACTIVE);
     gPlayerAvatar.creeping = TRUE;  //initialize as true in case mon appears beside you
-    DrawHeaderBox(species);
     gTasks[taskId].tProximity = gSprites[gPlayerAvatar.spriteId].pos1.x;
     gTasks[taskId].tFrameCount = 0;
     gTasks[taskId].func = Task_DexNavSearch;
+    IncrementGameStat(GAME_STAT_DEXNAV_SCANNED);
 }
 
+static const struct OamData sHeldItemOam =
+{
+	.affineMode = ST_OAM_AFFINE_OFF,
+	.objMode = ST_OAM_OBJ_NORMAL,
+	.shape = SPRITE_SHAPE(8x8),
+	.size = SPRITE_SIZE(8x8),
+	.priority = 0,
+};
+static const struct SpriteTemplate sHeldItemTemplate =
+{
+	.tileTag = 0xd750,
+	.paletteTag = 0xd750,
+	.oam = &sHeldItemOam,
+	.anims = gDummySpriteAnimTable,
+	.images = NULL,
+	.affineAnims = gDummySpriteAffineAnimTable,
+	.callback = SpriteCallbackDummy,
+};
+static void DexNavDrawHeldItem(u8* dst)
+{
+    LoadHeldItemIcons();
+    *dst = CreateSprite(&sHeldItemTemplate, SPECIES_ICON_X + 6, GetSearchWindowY() + 18, 0);
+}
+
+static void DexNavDrawIcons(void)
+{
+	u8 searchLevel = sDexNavSearchDataPtr->searchLevel;
+    u16 species = sDexNavSearchDataPtr->species;
+    u32 i;
+    
+    // init sprite ids
+    sDexNavSearchDataPtr->iconSpriteId = 0xFF;
+    sDexNavSearchDataPtr->itemSpriteId = 0xFF;
+    for (i = 0; i < NELEMS(sDexNavSearchDataPtr->potentialSpriteIds); i++)
+        sDexNavSearchDataPtr->potentialSpriteIds[i] = 0xFF;
+    
+    DrawHeaderBox(species);
+	DexNavDrawHeldItem(&sDexNavSearchDataPtr->itemSpriteId);
+	//DexNavDrawPotential(sDexNavSearchDataPtr->potential, &sDexNavSearchDataPtr->spriteIdPotential);
+	ShowMonIconInHeaderBox(species, &sDexNavSearchDataPtr->iconSpriteId);
+}
 
 /////////////////////
 //// SEARCH TASK ////
@@ -1032,9 +1063,7 @@ static u8 DexNavGetAbilityNum(u16 species, u8 searchLevel)
     //Only give hidden ability if Pokemon has been caught before
     if (genAbility && gBaseStats[species].abilityHidden != ABILITY_NONE && GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT))
     {
-        sDexNavSearchDataPtr->ability = gBaseStats[species].abilityHidden;
         abilityNum = 2;
-        //return gBaseStats[species].abilityHidden, species;
     }
     else
     {
@@ -1044,7 +1073,7 @@ static u8 DexNavGetAbilityNum(u16 species, u8 searchLevel)
         else
             abilityNum = 0;   // ability1
         
-        sDexNavSearchDataPtr->ability = gBaseStats[species].abilities[abilityNum];
+        sDexNavSearchDataPtr->abilityNum = abilityNum;
     }
 }
 
@@ -1661,6 +1690,9 @@ static u16 DexNavGetSpecies(void)
         return SPECIES_NONE;
     }
     
+    if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_SEEN))
+        return SPECIES_NONE;
+    
     return species;
 }
 
@@ -1961,14 +1993,7 @@ static void Task_DexNavMain(u8 taskId)
         species = DexNavGetSpecies();
         
         if (species != SPECIES_NONE)
-        {
-            /*if (species == SPECIES_UNOWN)
-            {
-                u8 letter = sDexNavStateDataPtr->unownFormsByDNavIndices[sDexNavStateDataPtr->selectedIndex / 2] - 1;
-                if (letter > 0)
-                    species = SPECIES_UNOWN_B + letter - 1;
-            }*/
-            
+        {            
             PrintSearchableSpecies(species);
             PlaySE(SE_DEX_SEARCH);
             
@@ -1978,7 +2003,7 @@ static void Task_DexNavMain(u8 taskId)
         else
         {
             // beep and update
-            PrintDexNavMessage(sText_DexNav_NoDataForSlot);
+            //PrintDexNavMessage(sText_DexNav_NoDataForSlot);
             PlaySE(SE_FAILURE);
         }
     }
@@ -2018,12 +2043,6 @@ void DebugDexNav(void)
     
     for (i = 0; i < NATIONAL_DEX_COUNT; i++)
     {
-        if (i >= SPECIES_OLD_UNOWN_B && i <= SPECIES_OLD_UNOWN_Z)
-            continue;
-        
-        if (i == SpeciesToNationalPokedexNum(SPECIES_MAKUHITA))
-            continue;
-        
         GetSetPokedexFlag(i, FLAG_SET_SEEN);
         GetSetPokedexFlag(i, FLAG_GET_CAUGHT);
     }*/
