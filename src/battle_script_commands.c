@@ -3533,7 +3533,7 @@ static void Cmd_getexp(void)
     u32 multiplier = (VarGet(VAR_RYU_EXP_MULTIPLIER));
     s32 sentIn;
     s32 viaExpShare = 0;
-    u32 *exp = &gBattleStruct->expValue;
+    u16 *exp = &gBattleStruct->expValue;
     u32 RyuExpBatteryTemp = 0;
 
     if ((VarGet(VAR_RYU_EXP_MULTIPLIER)) == 1)//If no multiplier is present, You get 25% exp per badge you own
@@ -3571,7 +3571,7 @@ static void Cmd_getexp(void)
         break;
     case 1: // calculate experience points to redistribute
         {
-            s32 calculatedExp;
+            u16 calculatedExp;
             s32 viaSentIn;
 
             for (viaSentIn = 0, i = 0; i < PARTY_SIZE; i++)
@@ -3590,9 +3590,8 @@ static void Cmd_getexp(void)
             }
 
             calculatedExp = (((gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7) * multiplier) / 1000);
-            if (calculatedExp > 32500)
-                calculatedExp = 32500;
 
+            //RyuExpBatteryTemp = (VarGet(VAR_RYU_EXP_BATTERY));
             RyuExpBatteryTemp = (((VarGet(VAR_RYU_EXP_BATTERY) + ((((gBattleMons[gBattlerFainted].level) * 5) * multiplier) / 1000))));
             if (RyuExpBatteryTemp > 50000)
             {
@@ -3675,8 +3674,8 @@ static void Cmd_getexp(void)
                         gBattleMoveDamage += gExpShareExp;
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
-                    /*if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && B_TRAINER_EXP_MULTIPLIER <= GEN_7)
-                        gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;*/
+                    if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && B_TRAINER_EXP_MULTIPLIER <= GEN_7)
+                        gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
 
                     if (IsTradedMon(&gPlayerParty[gBattleStruct->expGetterMonId]))
                     {
@@ -3753,7 +3752,7 @@ static void Cmd_getexp(void)
             gActiveBattler = gBattleStruct->expGetterBattlerId;
             if (gBattleResources->bufferB[gActiveBattler][0] == CONTROLLER_TWORETURNVALUES && gBattleResources->bufferB[gActiveBattler][1] == RET_VALUE_LEVELED_UP)
             {
-                u32 temp, battlerId = 0xFF;
+                u16 temp, battlerId = 0xFF;
                 if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && gBattlerPartyIndexes[gActiveBattler] == gBattleStruct->expGetterMonId)
                     HandleLowHpMusicChange(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], gActiveBattler);
 
