@@ -3676,13 +3676,13 @@ static void Cmd_getexp(void)
                     // so we just set it to the max value.
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG) {
                         if (gBattleMoveDamage > 21844)
-                            gBattleMoveDamage = 0x7FFF;
+                            gBattleMoveDamage = 0x7EF4;
                         else
                             gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
                     }
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && B_TRAINER_EXP_MULTIPLIER <= GEN_7) {
                         if (gBattleMoveDamage > 21844)
-                            gBattleMoveDamage = 0x7FFF;
+                            gBattleMoveDamage = 0x7EF4;
                         else
                             gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
                     }
