@@ -8,10 +8,115 @@ DewfordTown_OnTransition: @ 81E950D
 	end
 
 DewfordTown_EventScript_Briney:: @ 81E9511
+	goto_if_set FLAG_RYU_DT_BRINEY_BATTLE, ryu_end @@This prevents briney from approaching player if he's been defeated, i.e. not hostile.
+	lockall
+	playse SE_PIN
+	applymovement 10, Common_Movement_ExclamationMark
+	waitmovement 10
+	delay 30
+	getplayerxy VAR_TEMP_2, VAR_TEMP_3
+	switch VAR_TEMP_2
+	case 18, DewfordTown_EventScript_Briney_Move5Right
+	case 17, DewfordTown_EventScript_Briney_Move4Right
+	case 16, DewfordTown_EventScript_Briney_Move3Right
+	case 15, DewfordTown_EventScript_Briney_Move2Right
+	case 14, DewfordTown_EventScript_Briney_FaceRight
+	case 12, DewfordTown_EventScript_Briney_FaceLeft
+	goto DT_Briney_Battle
+
+
+DewfordTown_EventScript_Briney_Move5Right::
+	applymovement 10, DT_Briney_5Right
+	waitmovement 10
+	call DT_TurnPlayer
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	goto DT_Briney_Battle
+
+DewfordTown_EventScript_Briney_Move4Right::
+	applymovement 10, DT_Briney_4Right
+	waitmovement 10
+	goto DT_Briney_Battle
+	
+DewfordTown_EventScript_Briney_Move3Right::
+	applymovement 10, DT_Briney_3Right
+	waitmovement 10
+	goto DT_Briney_Battle
+	
+DewfordTown_EventScript_Briney_Move2Right::
+	applymovement 10, DT_Briney_2Right
+	waitmovement 10
+	goto DT_Briney_Battle
+	
+DewfordTown_EventScript_Briney_FaceRight::
+	applymovement 10, Common_Movement_FaceRight
+	waitmovement 10
+	goto DT_Briney_Battle
+	
+DewfordTown_EventScript_Briney_FaceLeft::
+	getplayerxy VAR_TEMP_2, VAR_TEMP_3
+	compare VAR_TEMP_3, 110
+	goto_if_ne DT_Briney_Battle
+	applymovement 10, Common_Movement_FaceDown
+	waitmovement 10
+	goto DT_Briney_Battle
+
+DT_Briney_Battle::
 	setflag FLAG_TEMP_6
+	setflag FLAG_RYU_DT_BRINEY_BATTLE
 	trainerbattle_single TRAINER_BRINEY, DewfordTown_Text_BrineyIntro, DewfordTown_Text_BrineyDefeated
-	msgbox DewfordTown_Text_BrineyPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
+	
+DT_Briney_PostBattle::
+	msgbox DewfordTown_Text_BrineyPostBattle, MSGBOX_AUTOCLOSE
+	release
+	end
+
+DT_Briney_PostBattleActvate::@@the script that activates when you talk directly to briney
+	goto_if_unset FLAG_RYU_DT_BRINEY_BATTLE, DT_Briney_Battle                        @@Forces a fight with player when interacted
+	msgbox DewfordTown_Text_BrineyPostBattle, MSGBOX_AUTOCLOSE                       @@with directly if not already defeated. 
+	release                                                                         
+	end
+
+DT_TurnPlayer::
+	getplayerxy VAR_TEMP_2, VAR_TEMP_3
+	compare VAR_TEMP_3, 110
+	goto_if_eq DT_TurnPlayerUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+
+DT_TurnPlayerUp::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+
+DT_Briney_5Right:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+DT_Briney_4Right:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+DT_Briney_3Right:
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+DT_Briney_2Right:
+	walk_right
+	walk_right
+	step_end
+	
 
 DewfordTown_EventScript_Woman:: @ 81E95B1
 	msgbox DewfordTown_Text_TinyIslandCommunity, MSGBOX_NPC

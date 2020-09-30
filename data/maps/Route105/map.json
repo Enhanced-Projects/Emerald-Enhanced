@@ -160,8 +160,8 @@
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "6",
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "DewfordTown_EventScript_Briney",
       "flag": "0"
     },
@@ -215,7 +215,60 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 109,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "DewfordTown_EventScript_Briney"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 109,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "DewfordTown_EventScript_Briney"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 109,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "DewfordTown_EventScript_Briney"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 109,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "DewfordTown_EventScript_Briney"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 109,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "DewfordTown_EventScript_Briney"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 109,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "DewfordTown_EventScript_Briney"
+    }
   ],
   "bg_events": [
     {
