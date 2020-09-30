@@ -593,6 +593,7 @@ extern const u8 EventScript_StartDexNavBattle[];
 extern const u8 EventScript_NotFoundNearby[];
 extern const u8 EventScript_PokemonGotAway[];
 extern const u8 EventScript_LostSignal[];
+extern const u8 EventScript_TooDark[];
 
 // overworld
 extern const u8 EventScript_WhiteOut[];

@@ -115,6 +115,8 @@ DewfordTown_EventScript_TownSign:: @ 81E95BA
     
     callnative DebugDexNav
     
+    additem ITEM_MASTER_BALL, 70
+    
     @msgbox DewfordTown_Text_TownSign, MSGBOX_SIGN
 	end
 

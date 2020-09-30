@@ -30,3 +30,10 @@ EventScript_LostSignal::
 sText_LostSignal:
     .string "There is no reaction.\n"
     .string "The signal was lost!$"
+
+
+EventScript_TooDark::
+    msgbox sText_TooDark, MSGBOX_SIGN
+    end
+sText_TooDark:
+    .string "It's too dark to search\nfor a Pokémon!$"

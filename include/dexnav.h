@@ -107,6 +107,7 @@ void Task_DexNavSearch(u8 taskId);
 void EndDexNavSearch(u8 taskId);
 void Task_OpenDexNavFromStartMenu(u8 taskId);
 bool8 TryStartDexnavSearch(void);
+void TryIncrementSpeciesSearchLevel(u16 dexNum);
 
 //ewram
 extern u8 gCurrentDexNavChain;
