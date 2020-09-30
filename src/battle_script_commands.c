@@ -3536,15 +3536,10 @@ static void Cmd_getexp(void)
     u16 *exp = &gBattleStruct->expValue;
     u32 RyuExpBatteryTemp = 0;
 
-    if ((VarGet(VAR_RYU_EXP_MULTIPLIER)) == 1)//If no multiplier is present, You get 25% exp per badge you own
-        {   
-            u16 badges = CountBadges();
-            
-            if (badges == 0)
-                multiplier = 1000;
-            else
-                multiplier = (1000+(badges*250));
-        }
+    if (VarGet(VAR_RYU_EXP_MULTIPLIER) == 1) //If no multiplier is present, You get 25% exp per badge you own
+    {   
+        multiplier = 1000 + (CountBadges() * 250);
+    }
 
     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
     sentIn = gSentPokesToOpponent[(gBattlerFainted & 2) >> 1];
@@ -3571,6 +3566,7 @@ static void Cmd_getexp(void)
         break;
     case 1: // calculate experience points to redistribute
         {
+            u32 rawExp;
             u16 calculatedExp;
             s32 viaSentIn;
 
@@ -3589,7 +3585,9 @@ static void Cmd_getexp(void)
                     holdEffect = ItemId_GetHoldEffect(item);
             }
 
-            calculatedExp = (((gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7) * multiplier) / 1000);
+            rawExp = (u32)(gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7);
+            // Limit actual EXP gain to 32767, the max value of s16, because it’s later stored as s16.
+            calculatedExp = (u16)((rawExp * multiplier / 1000) & 0x7FFF);
 
             //RyuExpBatteryTemp = (VarGet(VAR_RYU_EXP_BATTERY));
             RyuExpBatteryTemp = (((VarGet(VAR_RYU_EXP_BATTERY) + ((((gBattleMons[gBattlerFainted].level) * 5) * multiplier) / 1000))));
@@ -3672,10 +3670,22 @@ static void Cmd_getexp(void)
 
                     if (gSaveBlock2Ptr->expShare)
                         gBattleMoveDamage += gExpShareExp;
-                    if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
-                        gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
-                    if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && B_TRAINER_EXP_MULTIPLIER <= GEN_7)
-                        gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
+                    // If the XP is already at more than 21844,
+                    // applying the 1.5x multiplier will cause it to overflow,
+                    // because it’s cast into s16 later,
+                    // so we just set it to the max value.
+                    if (holdEffect == HOLD_EFFECT_LUCKY_EGG) {
+                        if (gBattleMoveDamage > 21844)
+                            gBattleMoveDamage = 0x7EF4;
+                        else
+                            gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
+                    }
+                    if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && B_TRAINER_EXP_MULTIPLIER <= GEN_7) {
+                        if (gBattleMoveDamage > 21844)
+                            gBattleMoveDamage = 0x7EF4;
+                        else
+                            gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
+                    }
 
                     if (IsTradedMon(&gPlayerParty[gBattleStruct->expGetterMonId]))
                     {
