@@ -9860,7 +9860,7 @@ static const struct TrainerMonItemCustomMoves sParty_Briney[] = {
 	.species = SPECIES_LAPRAS,
 	.heldItem = ITEM_DAMP_ROCK,
 	.ability = 2,
-    .nickname = _("Lapras")
+    .nickname = _("Lapras"),
 	.moves = {MOVE_HYDRO_PUMP, MOVE_FROST_BREATH, MOVE_THUNDER, MOVE_NONE},
 	},
 	{
@@ -9869,7 +9869,7 @@ static const struct TrainerMonItemCustomMoves sParty_Briney[] = {
 	.species = SPECIES_WINGULL,
 	.heldItem = ITEM_FOCUS_SASH,
 	.ability = 0,
-    .nickname = _("Peeko")
+    .nickname = _("Peeko"),
 	.moves = {MOVE_HYDRO_PUMP, MOVE_HURRICANE, MOVE_BLIZZARD, MOVE_NONE},
 	},
 	{
@@ -9878,7 +9878,7 @@ static const struct TrainerMonItemCustomMoves sParty_Briney[] = {
 	.species = SPECIES_CARRACOSTA,
 	.heldItem = ITEM_WHITE_HERB,
 	.ability = 2,
-    .nickname = _("Carracosta")
+    .nickname = _("Carracosta"),
 	.moves = {MOVE_WATERFALL, MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_SHELL_SMASH},
 	},
 	{
@@ -9887,7 +9887,7 @@ static const struct TrainerMonItemCustomMoves sParty_Briney[] = {
 	.species = SPECIES_PELIPPER,
 	.heldItem = ITEM_LEFTOVERS,
 	.ability = 1,
-    .nickname = _("Pelipper")
+    .nickname = _("Pelipper"),
 	.moves = {MOVE_SCALD, MOVE_HURRICANE, MOVE_ROOST, MOVE_U_TURN},
 	},
 	{
@@ -9896,7 +9896,7 @@ static const struct TrainerMonItemCustomMoves sParty_Briney[] = {
 	.species = SPECIES_STOUTLAND,
 	.heldItem = ITEM_LIFE_ORB,
 	.ability = 2,
-    .nickname = _("Stoutland")
+    .nickname = _("Stoutland"),
 	.moves = {MOVE_EXTREME_SPEED, MOVE_HIGH_HORSEPOWER, MOVE_SWORDS_DANCE, MOVE_NONE},
 	}
 };
