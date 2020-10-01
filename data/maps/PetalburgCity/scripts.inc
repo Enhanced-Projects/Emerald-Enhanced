@@ -551,6 +551,7 @@ PetalburgCity_Text_ImLookingForTalentedTrainers: @ 81DCC09
 
 PC_DoMagmaStuffAfterHeist::
 	setvar VAR_RYU_MAGMA, 250
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	release
 	end
 	
@@ -588,10 +589,10 @@ PC_StopPlayerForDad::
 	playbgm 350, 0
 	setvar VAR_RYU_MAGMA, 255 @Dad notices player
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
-	addobject 9
+	addobject 7
 	playse SE_PIN
-	applymovement 9, Common_Movement_ExclamationMark
-	waitmovement 9
+	applymovement 7, Common_Movement_ExclamationMark
+	waitmovement 7
 	addobject 10
 	addobject 11
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
@@ -637,50 +638,50 @@ PC_AdjustPlayerBottom::
 	return
 	
 PC_ContinueScene::
-	applymovement OBJ_EVENT_ID_PLAYER,PC_MoveGuard
-	applymovement 10, PC_MoveGuard
+	applymovement OBJ_EVENT_ID_PLAYER, PC_MoveGuard
+	applymovement 8, PC_MoveGuard
+	waitmovement 8
+	applymovement 10, PC_MagmaGruntEscape
 	waitmovement 10
-	applymovement 12, PC_MagmaGruntEscape
-	waitmovement 12
-	removeobject 12
+	removeobject 10
 	applymovement OBJ_EVENT_ID_PLAYER PC_PlayerAttemptEscape
 	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement 10, Common_Movement_FaceDown
-	applymovement 11, Common_Movement_FaceUp
+	applymovement 8, Common_Movement_FaceDown
+	applymovement 9, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, PC_PlayerStruggle
 	msgbox PC_LetGoYou
 	closemessage
-	applymovement 10, Common_Movement_FaceRight
-	applymovement 11, Common_Movement_FaceRight
-	waitmovement 11
-	addobject 9
+	applymovement 8, Common_Movement_FaceRight
+	applymovement 9, Common_Movement_FaceRight
+	waitmovement 9
+	addobject 7
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement 9, PC_DadToPlayer@leave 2 space gap
-	waitmovement 9
+	applymovement 7, PC_DadToPlayer@leave 2 space gap
+	waitmovement 7
 	msgbox PC_DadPlayerLook
-	applymovement 9, Common_Movement_StepLeft
-	waitmovement 9
+	applymovement 7, Common_Movement_StepLeft
+	waitmovement 7
 	fadescreen FADE_TO_WHITE
 	fadescreen FADE_FROM_WHITE
-	addobject 13
-	applymovement 13, Common_Movement_FaceRight
-	waitmovement 13
+	addobject 11
+	applymovement 11, Common_Movement_FaceRight
+	waitmovement 11
 	msgbox PC_GetAwayFromMe
 	closemessage
-	applymovement 13, Common_Movement_FaceLeft
-	waitmovement 13
+	applymovement 11, Common_Movement_FaceLeft
+	waitmovement 11
 	msgbox PC_WhoAreYou
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
 	delay 20
-	applymovement 13, Common_Movement_StepLeft
-	waitmovement 13
+	applymovement 11, Common_Movement_StepLeft
+	waitmovement 11
 	msgbox PC_Bothersome
 	closemessage
-	applymovement 13, Common_Movement_FaceRight
-	waitmovement 13
+	applymovement 11, Common_Movement_FaceRight
+	waitmovement 11
 	msgbox PC_Deleting
 	closemessage
 	setvar VAR_RYU_MAGMA, 260@Player got warped to slateport beach by courtney
