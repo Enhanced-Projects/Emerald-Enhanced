@@ -413,11 +413,11 @@ r119_RivalExitStepsNorth:
 
 r119_RivalInteractionMale:: @ 81F4585
 	delay 5
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGBRENDAN
+	@fadescreen FADE_TO_BLACK
+	@drawfullscreenimage SCENEBGBRENDAN
 	msgbox r119_maleRivaIntro, MSGBOX_DEFAULT
-	clearfullscreenimage
-	fadescreen FADE_TO_BLACK
+	@clearfullscreenimage
+	@fadescreen FADE_TO_BLACK
     goto r119_RivalBattleMale
 	end
 
@@ -428,13 +428,13 @@ r119_RivalBattleMale:: @ Male Rival battle #4
 
 r119_maleRivalOutro:: @ 81F45E4
 	delay 5	
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGBRENDAN
+	@fadescreen FADE_TO_BLACK
+	@drawfullscreenimage SCENEBGBRENDAN
 	msgbox r119_maleRivalOutroText1, MSGBOX_DEFAULT
 	call r119_giveItemfinder
 	msgbox r119_maleRivalGivesItemfinder, MSGBOX_DEFAULT
-	clearfullscreenimage
-	fadescreen FADE_TO_BLACK
+	@clearfullscreenimage
+	@fadescreen FADE_TO_BLACK
 	closemessage
 	call r119_BrendanExit
 	goto r119_scottEncounter
