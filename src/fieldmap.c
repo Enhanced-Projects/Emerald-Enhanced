@@ -51,8 +51,7 @@ struct MapHeader const *const GetMapHeaderFromConnection(struct MapConnection *c
 }
 
 void InitMap(void)
-{
-    gCurrentDexNavChain = 0;    //reset dex nav chaining on new map
+{   
     InitMapLayoutData(&gMapHeader);
     SetOccupiedSecretBaseEntranceMetatiles(gMapHeader.events);
     RunOnLoadMapScript();

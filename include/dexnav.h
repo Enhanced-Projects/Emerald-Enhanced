@@ -10,6 +10,10 @@
 #define CREEPING_PROXIMITY              2
 #define MAX_PROXIMITY                   20
 
+//hidden pokemon
+#define HIDDEN_POKEMON_STEP_COUNT       10  //look for hidden pokemon every x steps
+#define HIDDEN_POKEMON_RATE             20  //x% chance of finding hidden pokemon every x steps
+
 //Chance of encountering egg move at search levels
 #define SEARCHLEVEL0_MOVECHANCE         0
 #define SEARCHLEVEL5_MOVECHANCE         21
@@ -59,19 +63,36 @@
 #define ROW_WATER       0
 #define ROW_LAND_TOP    1
 #define ROW_LAND_BOT    2
-#define ROWS_COUNT      3
+#define ROW_HIDDEN      3
+#define ROWS_COUNT      4
+
+#define ROW_WATER_ICON_X        30
+#define ROW_WATER_ICON_Y        35
+
+#define ROW_LAND_ICON_X         20
+#define ROW_LAND_TOP_ICON_Y     72
+#define ROW_LAND_BOT_ICON_Y     (ROW_LAND_TOP_ICON_Y + 28)
+
+#define ROW_HIDDEN_ICON_X       52
+#define ROW_HIDDEN_ICON_Y       138
 
 #define ENCOUNTER_TYPE_LAND     0
 #define ENCOUNTER_TYPE_WATER    1
+#define ENCOUNTER_TYPE_HIDDEN   2   //get from species
 
 #define COL_WATER_COUNT         5
 #define COL_LAND_COUNT          6
+#define COL_HIDDEN_COUNT        3
 
 #define COL_WATER_MAX           (COL_WATER_COUNT - 1)
 #define COL_LAND_MAX            (COL_LAND_COUNT - 1)
+#define COL_HIDDEN_MAX          (COL_HIDDEN_COUNT - 1)
 
-#define NUM_LAND_MONS           (COL_LAND_COUNT * 2)
-#define NUM_WATER_MONS          5
+#define SPECIES_INFO_Y          5
+#define TYPE_ICONS_Y            (SPECIES_INFO_Y + 24)
+#define SEARCH_LEVEL_Y          (TYPE_ICONS_Y + 24)
+#define LEVEL_BONUS_Y           (SEARCH_LEVEL_Y + 24)
+#define HA_INFO_Y               (LEVEL_BONUS_Y + 24)
 
 extern const u8 SystemScript_StartDexNavBattle[];
 
@@ -89,9 +110,13 @@ struct FieldEffectScript
 // tags
 #define ICON_PAL_TAG            56000
 #define ICON_GFX_TAG            55130
-#define SELECTION_CURSOR_TAG    512
+#define SELECTION_CURSOR_TAG    0x4005
 #define SMOKE_TAG               10000
-#define CAPTURED_ALL_TAG        55160        // shared by TAG_MEGA_INDICATOR_TILE
+#define CAPTURED_ALL_TAG        0x4002
+#define SIGHT_TAG               0x5424
+#define HELD_ITEM_TAG           0xd750
+#define LIT_STAR_TILE_TAG       0x61
+#define DULL_STAR_TILE_TAG      0x2613
 
 #define ICONX                   16
 #define ICONY                   146
@@ -103,11 +128,12 @@ struct FieldEffectScript
 
 
 //funcs
-void Task_DexNavSearch(u8 taskId);
 void EndDexNavSearch(u8 taskId);
 void Task_OpenDexNavFromStartMenu(u8 taskId);
 bool8 TryStartDexnavSearch(void);
 void TryIncrementSpeciesSearchLevel(u16 dexNum);
+void ResetDexNavSearch(void);
+bool8 TryFindHiddenPokemon(void);
 
 //ewram
 extern u8 gCurrentDexNavChain;

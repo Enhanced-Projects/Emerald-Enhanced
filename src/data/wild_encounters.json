@@ -73,6 +73,14 @@
               9
             ]
           }
+        },
+        {
+          "type": "hidden_mons",
+          "encounter_rates": [
+            33,
+            33,
+            34
+          ]
         }
       ],
       "encounters": [
@@ -1359,6 +1367,26 @@
         {
           "map": "MAP_ROUTE116",
           "base_label": "gRoute116",
+          "hidden_mons": {
+            "encounter_rate": 0,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_KADABRA"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_SNORLAX"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_AERODACTYL"
+              }
+            ]
+          },
           "land_mons": {
             "encounter_rate": 20,
             "mons": [

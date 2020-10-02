@@ -5,6 +5,7 @@
 #define WATER_WILD_COUNT    5
 #define ROCK_WILD_COUNT     5
 #define FISH_WILD_COUNT     10
+#define HIDDEN_WILD_COUNT   3
 
 struct WildPokemon
 {
@@ -27,6 +28,7 @@ struct WildPokemonHeader
     const struct WildPokemonInfo *waterMonsInfo;
     const struct WildPokemonInfo *rockSmashMonsInfo;
     const struct WildPokemonInfo *fishingMonsInfo;
+    const struct WildPokemonInfo *hiddenMonsInfo;
 };
 
 extern const struct WildPokemonHeader gWildMonHeaders[];
