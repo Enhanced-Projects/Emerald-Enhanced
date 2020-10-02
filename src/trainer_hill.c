@@ -414,6 +414,7 @@ static void TrainerHillStartChallenge(void)
     gSaveBlock2Ptr->frontier.trainerFlags = 0;
     gBattleOutcome = 0;
     gSaveBlock1Ptr->trainerHill.receivedPrize = 0;
+    VarSet(VAR_RYU_TH_RNG_VALUE, Random() % 20);
 }
 
 static void GetOwnerState(void)
@@ -1062,7 +1063,9 @@ static u16 GetPrizeItemId(void)
     return prizeList[id];
 }
 
-//New trainer hill reward tables. There's no limit to the size of these arrays, and the function below will scale up to match
+//New trainer hill reward tables. There's no hard limit to these tables,
+//but each table MUST be the same length, and you must adjust the random
+//count in TrainerHillStartChallenge above.  
 
 const u16 sTrainerHillLegendRewards[] = {//legends reward table
     ITEM_SACRED_ASH,
@@ -1076,6 +1079,14 @@ const u16 sTrainerHillLegendRewards[] = {//legends reward table
     ITEM_LANSAT_BERRY,
     ITEM_STARF_BERRY,
     ITEM_ENIGMA_BERRY,
+    ITEM_ENIGMA_BERRY,
+    ITEM_ENIGMA_BERRY,
+    ITEM_ENIGMA_BERRY,
+    ITEM_ENIGMA_BERRY,
+    ITEM_ENIGMA_BERRY,
+    ITEM_ENIGMA_BERRY,
+    ITEM_ENIGMA_BERRY,
+    ITEM_ENIGMA_BERRY,
 };
 
 const u16 sTrainerHillMythicRewards[] = {//mythics reward table
@@ -1085,6 +1096,18 @@ const u16 sTrainerHillMythicRewards[] = {//mythics reward table
     ITEM_FRIEND_BALL,
     ITEM_LOVE_BALL,
     ITEM_HEAVY_BALL,
+    ITEM_FAST_BALL,
+    ITEM_FAST_BALL,
+    ITEM_FAST_BALL,
+    ITEM_FAST_BALL,
+    ITEM_FAST_BALL,
+    ITEM_FAST_BALL,
+    ITEM_FAST_BALL,
+    ITEM_FAST_BALL,
+    ITEM_FAST_BALL,
+    ITEM_FAST_BALL,
+    ITEM_FAST_BALL,
+    ITEM_FAST_BALL,
     ITEM_FAST_BALL,
     ITEM_LUCKY_EGG,
 };
@@ -1098,6 +1121,18 @@ const u16 sTrainerHillBeastRewards[] = {//beast reward table
     ITEM_CHOICE_SCARF,
     ITEM_PP_MAX,
     ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
 };
 
 const u16 sTrainerHillMixedRewards[] = {//mixed reward table
@@ -1108,12 +1143,26 @@ const u16 sTrainerHillMixedRewards[] = {//mixed reward table
     ITEM_WHITE_FLUTE,
     ITEM_LUCKY_EGG,
     ITEM_PP_MAX,
+    ITEM_PP_MAX,
+    ITEM_PP_MAX,
+    ITEM_PP_MAX,
+    ITEM_PP_MAX,
+    ITEM_PP_MAX,
+    ITEM_PP_MAX,
+    ITEM_PP_MAX,
+    ITEM_PP_MAX,
+    ITEM_PP_MAX,
+    ITEM_PP_MAX,
+    ITEM_PP_MAX,
+    ITEM_PP_MAX,
+    ITEM_PP_MAX,
 };
 
 
 int RyuGetTrainerHillReward(void)
 {
     u8 mode = (VarGet(VAR_RYU_TRAINER_HILL_MODE));//game's variable for which th mode you are in
+    u8 reward = (VarGet(VAR_RYU_TH_RNG_VALUE));
 
     if (!(FlagGet(FLAG_RYU_BLASTOISINITE) == 1) &&//if player does NOT already have this AND
      ((FlagGet(FLAG_RYU_BEEDRILLITE) == 1) &&//has this
@@ -1131,7 +1180,7 @@ int RyuGetTrainerHillReward(void)
         {
             if (FlagGet(FLAG_RYU_GYARADOSITE) == 1)
             {
-                return sTrainerHillLegendRewards[Random() %ARRAY_COUNT(sTrainerHillLegendRewards)];
+                return sTrainerHillLegendRewards[reward];
             }
             else
             {   
@@ -1143,7 +1192,7 @@ int RyuGetTrainerHillReward(void)
         {
             if (FlagGet(FLAG_RYU_PINSIRITE) == 1)
             {
-                return sTrainerHillMythicRewards[Random() %ARRAY_COUNT(sTrainerHillMythicRewards)];
+                return sTrainerHillMythicRewards[reward];
             }
             else
             {
@@ -1155,7 +1204,7 @@ int RyuGetTrainerHillReward(void)
         {
             if (FlagGet(FLAG_RYU_HERACRONITE) == 1)
             {
-                return sTrainerHillBeastRewards[Random() %ARRAY_COUNT(sTrainerHillBeastRewards)];
+                return sTrainerHillBeastRewards[reward];
             }
             else
             {
@@ -1167,7 +1216,7 @@ int RyuGetTrainerHillReward(void)
         {
             if (FlagGet(FLAG_RYU_BEEDRILLITE) == 1)
             {
-                return sTrainerHillMixedRewards[Random() %ARRAY_COUNT(sTrainerHillMixedRewards)];
+                return sTrainerHillMixedRewards[reward];
             }
             else
             {
