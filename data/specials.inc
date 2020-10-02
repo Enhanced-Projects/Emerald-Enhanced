@@ -234,11 +234,6 @@ gSpecials:: @ 81DBA64
 	def_special BufferMoveDeleterNicknameAndMove
 	def_special GetNumMovesSelectedMonHas
 	def_special TeachMoveRelearnerMove
-	def_special GetRecordedCyclingRoadResults
-	def_special Special_BeginCyclingRoadChallenge
-	def_special GetPlayerAvatarBike
-	def_special FinishCyclingRoadChallenge
-	def_special UpdateCyclingRoadState
 	def_special GetLeadMonFriendshipScore
 	def_special CallFrontierUtilFunc
 	def_special CallBattleTowerFunc
@@ -554,7 +549,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuBrendanGiftPoke
 	def_special RyuCountLaps
 	def_special RyuIncrementLapCount
-	def_special ResetCyclingRoadChallengeData
 	def_special RyuSetMonMove
 	def_special RyuIvSetter
 	def_special RyuSetFriendship
