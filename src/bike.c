@@ -47,7 +47,6 @@ static u8 Bike_DPadToDirection(u16);
 static u8 GetBikeCollision(u8);
 static u8 GetBikeCollisionAt(struct ObjectEvent *, s16, s16, u8, u8);
 static bool8 IsRunningDisallowedByMetatile(u8);
-static void Bike_TryAdvanceCyclingRoadCollisions();
 static u8 CanBikeFaceDirOnMetatile(u8, u8);
 static bool8 WillPlayerCollideWithCollision(u8, u8);
 static void Bike_SetBikeStill(void);
@@ -885,9 +884,6 @@ static u8 GetBikeCollisionAt(struct ObjectEvent *objectEvent, s16 x, s16 y, u8 d
     if (collision == COLLISION_NONE && IsRunningDisallowedByMetatile(metatitleBehavior))
         collision = COLLISION_IMPASSABLE;
 
-    if (collision)
-        Bike_TryAdvanceCyclingRoadCollisions();
-
     return collision;
 }
 
@@ -906,12 +902,6 @@ static bool8 IsRunningDisallowedByMetatile(u8 tile)
     if (MetatileBehavior_IsFortreeBridge(tile) && (PlayerGetZCoord() & 1) == 0)
         return TRUE;
     return FALSE;
-}
-
-static void Bike_TryAdvanceCyclingRoadCollisions(void)
-{
-    if (gBikeCyclingChallenge != FALSE && gBikeCollisions < 100)
-        gBikeCollisions++;
 }
 
 static bool8 CanBikeFaceDirOnMetatile(u8 direction, u8 tile)

@@ -53,9 +53,9 @@
 #define VAR_MIRAGE_RND_H                     0x4024
 #define VAR_MIRAGE_RND_L                     0x4025
 #define VAR_SECRET_BASE_MAP                  0x4026
-#define VAR_CYCLING_ROAD_RECORD_COLLISIONS   0x4027
-#define VAR_CYCLING_ROAD_RECORD_TIME_L       0x4028
-#define VAR_CYCLING_ROAD_RECORD_TIME_H       0x4029
+#define VAR_CYCLING_ROAD_RECORD_COLLISIONS   0x4027 // unused now
+#define VAR_CYCLING_ROAD_RECORD_TIME_L       0x4028 // unused now
+#define VAR_CYCLING_ROAD_RECORD_TIME_H       0x4029 // unused now
 #define VAR_HAPPINESS_STEP_COUNTER           0x402A
 #define VAR_POISON_STEP_COUNTER              0x402B
 #define VAR_RESET_RTC_ENABLE                 0x402C
@@ -184,7 +184,7 @@
 #define VAR_TRICK_HOUSE_FOUND_TRICK_MASTER   0x40A6
 #define VAR_TRICK_HOUSE_ENTRANCE_STATE       0x40A7
 #define VAR_RYU_TITLE_DEFENSE_WINS           0x40A8 // Unused Var
-#define VAR_CYCLING_CHALLENGE_STATE          0x40A9
+#define VAR_CYCLING_CHALLENGE_STATE          0x40A9 // unused now
 #define VAR_SLATEPORT_MUSEUM_1F_STATE        0x40AA
 #define VAR_TRICK_HOUSE_PUZZLE_1_STATE       0x40AB
 #define VAR_TRICK_HOUSE_PUZZLE_2_STATE       0x40AC

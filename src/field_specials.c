@@ -108,7 +108,6 @@ void TryLoseFansFromPlayTime(void);
 void SetPlayerGotFirstFans(void);
 u16 GetNumFansOfPlayerInTrainerFanClub(void);
 
-static void RecordCyclingRoadResults(u32, u8);
 static void LoadLinkPartnerObjectEventSpritePalette(u8 graphicsId, u8 localEventId, u8 paletteNum);
 static void Task_PetalburgGymSlideOpenRoomDoors(u8 taskId);
 static void PetalburgGymSetDoorMetatiles(u8 roomNumber, u16 metatileId);
@@ -159,149 +158,6 @@ void Special_ViewWallClock(void)
     gMain.savedCallback = CB2_ReturnToField;
     SetMainCallback2(CB2_ViewWallClock);
     ScriptContext2_Enable();
-}
-
-void ResetCyclingRoadChallengeData(void)
-{
-    gBikeCyclingChallenge = FALSE;
-    gBikeCollisions = 0;
-    sBikeCyclingTimer = 0;
-}
-
-void Special_BeginCyclingRoadChallenge(void)
-{
-    gBikeCyclingChallenge = TRUE;
-    gBikeCollisions = 0;
-    sBikeCyclingTimer = gMain.vblankCounter1;
-}
-
-u16 GetPlayerAvatarBike(void)
-{
-    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ACRO_BIKE))
-        return 1;
-    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE))
-        return 2;
-    return 0;
-}
-
-static void DetermineCyclingRoadResults(u32 numFrames, u8 numBikeCollisions)
-{
-    u8 result;
-
-    if (numBikeCollisions < 100)
-    {
-        ConvertIntToDecimalStringN(gStringVar1, numBikeCollisions, STR_CONV_MODE_LEFT_ALIGN, 2);
-        StringAppend(gStringVar1, gText_SpaceTimes);
-    }
-    else
-    {
-        StringCopy(gStringVar1, gText_99TimesPlus);
-    }
-
-    if (numFrames < 3600)
-    {
-        ConvertIntToDecimalStringN(gStringVar2, numFrames / 60, STR_CONV_MODE_RIGHT_ALIGN, 2);
-        gStringVar2[2] = CHAR_PERIOD;
-        ConvertIntToDecimalStringN(&gStringVar2[3], ((numFrames % 60) * 100) / 60, STR_CONV_MODE_LEADING_ZEROS, 2);
-        StringAppend(gStringVar2, gText_SpaceSeconds);
-    }
-    else
-    {
-        StringCopy(gStringVar2, gText_1MinutePlus);
-    }
-
-    result = 0;
-    if (numBikeCollisions == 0)
-    {
-        result = 5;
-    }
-    else if (numBikeCollisions < 4)
-    {
-        result = 4;
-    }
-    else if (numBikeCollisions < 10)
-    {
-        result = 3;
-    }
-    else if (numBikeCollisions < 20)
-    {
-        result = 2;
-    }
-    else if (numBikeCollisions < 100)
-    {
-        result = 1;
-    }
-
-    if (numFrames / 60 <= 10)
-    {
-        result += 5;
-    }
-    else if (numFrames / 60 <= 15)
-    {
-        result += 4;
-    }
-    else if (numFrames / 60 <= 20)
-    {
-        result += 3;
-    }
-    else if (numFrames / 60 <= 40)
-    {
-        result += 2;
-    }
-    else if (numFrames / 60 < 60)
-    {
-        result += 1;
-    }
-
-
-    gSpecialVar_Result = result;
-}
-
-void FinishCyclingRoadChallenge(void) {
-    const u32 numFrames = gMain.vblankCounter1 - sBikeCyclingTimer;
-
-    DetermineCyclingRoadResults(numFrames, gBikeCollisions);
-    RecordCyclingRoadResults(numFrames, gBikeCollisions);
-}
-
-static void RecordCyclingRoadResults(u32 numFrames, u8 numBikeCollisions) {
-    u16 low = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_L);
-    u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
-    u32 framesRecord = low + (high << 16);
-
-    if (framesRecord > numFrames || framesRecord == 0)
-    {
-        VarSet(VAR_CYCLING_ROAD_RECORD_TIME_L, numFrames);
-        VarSet(VAR_CYCLING_ROAD_RECORD_TIME_H, numFrames >> 16);
-        VarSet(VAR_CYCLING_ROAD_RECORD_COLLISIONS, numBikeCollisions);
-    }
-}
-
-u16 GetRecordedCyclingRoadResults(void) {
-    u16 low = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_L);
-    u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
-    u32 framesRecord = low + (high << 16);
-
-    if (framesRecord == 0)
-    {
-        return FALSE;
-    }
-
-    DetermineCyclingRoadResults(framesRecord, VarGet(VAR_CYCLING_ROAD_RECORD_COLLISIONS));
-    return TRUE;
-}
-
-void UpdateCyclingRoadState(void) {
-    if (gLastUsedWarp.mapNum == MAP_NUM(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE) && gLastUsedWarp.mapGroup == MAP_GROUP(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE))
-    {
-        return;
-    }
-
-    if (VarGet(VAR_CYCLING_CHALLENGE_STATE) == 2 || VarGet(VAR_CYCLING_CHALLENGE_STATE) == 3)
-    {
-        VarSet(VAR_CYCLING_CHALLENGE_STATE, 0);
-        Overworld_SetSavedMusic(MUS_DUMMY);
-    }
 }
 
 void SetSSTidalFlag(void)
@@ -4762,16 +4618,17 @@ void RyuDevCheck(void)
     }
 }
 
+int CountBadges(void)
+{
+    int count = 0, badge;
+    for (badge = FLAG_BADGE01_GET; badge <= FLAG_BADGE08_GET; badge++)
+        count += FlagGet(badge);
+    return count;
+}
+
 void checkbadgecount(void)
 {
-    s32 i;
-    s32 badgeCount = 0;
-    for (i = FLAG_BADGE01_GET; i <= FLAG_BADGE08_GET; i++)
-    {
-        if (FlagGet(i))
-            badgeCount++;
-    }
-    gSpecialVar_Result = badgeCount;
+    gSpecialVar_Result = CountBadges();
 }
 
 void checksymbolcount(void)
@@ -4786,15 +4643,6 @@ void checksymbolcount(void)
     }
 
     gSpecialVar_Result = symbolcount;
-}
-
-int CountBadges(void)
-{
-    int count = 0;
-    int i;
-    for (i = 0; i < 8; i++)
-        count += FlagGet(FLAG_BADGE01_GET + i);
-    return count;
 }
 
 extern const u8 gText_EmptyString2[]; 
@@ -4935,9 +4783,9 @@ void RyuSetMonMove(void)
     case 3:
         SetMonData(&gPlayerParty[partyslot], MON_DATA_MOVE4, &move);
         break;
-    default:    break;
+    default:
+        break;
     }
-
 }
 
 int RyuCalculateCurrentExpCoefficient(void)
@@ -4978,7 +4826,6 @@ void RyuGiveKoutaMawile(void)
     partycount = VarGet(gSpecialVar_Result);
     switch (partycount)
     {
-        case 0: break;
         case 1:
             CreateMonWithNature(&gPlayerParty[1], SPECIES_MAWILE, 80, 31, NATURE_ADAMANT);
             SetMonData(&gPlayerParty[1], MON_DATA_ATK_EV, &iv);
@@ -5009,7 +4856,6 @@ void RyuGiveKoutaMawile(void)
             SetMonData(&gPlayerParty[5], MON_DATA_HP_EV, &iv);
             VarSet(VAR_TEMP_3, 6);
             break;
-        case 6: break;
         default: break;
     }
 }
@@ -5036,52 +4882,49 @@ void RyuSetIVs(void)
 }
 
 bool8 IsWailordInParty(void)
-    {
+{
     u8 i;
     u8 partyCount = CalculatePlayerPartyCount();
     
     for (i = 0; i < partyCount; i++)
-        {
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_WAILORD)
-            {
-                return TRUE;
-            }
-        }
-    return FALSE;
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_WAILORD)
+            return TRUE;
     }
+    return FALSE;
+}
 
 void SpecialScriptAdvancer(void)
-    {
+{
         EnableBothScriptContexts();
         return;
-    }
+}
 
 void RyuWarp()
-    {
-        u8 mapGroup = 1;
-        u8 mapNum = 1;
-        u8 warpId = 255;
-        u16 x = 1;
-        u16 y = 4;
-        SetWarpDestination(mapGroup, mapNum, warpId, x, y);
-        WarpIntoMap();
-        SetMainCallback2(CB2_LoadMap);
-        EnableBothScriptContexts();
-    }
+{
+    u8 mapGroup = 1;
+    u8 mapNum = 1;
+    u8 warpId = 255;
+    u16 x = 1;
+    u16 y = 4;
+    SetWarpDestination(mapGroup, mapNum, warpId, x, y);
+    WarpIntoMap();
+    SetMainCallback2(CB2_LoadMap);
+    EnableBothScriptContexts();
+}
 
 void RyuWarp2()
-    {
-        u8 mapGroup = 1;
-        u8 mapNum = 3;
-        u8 warpId = 255;
-        u16 x = 7;
-        u16 y = 4;
-        SetWarpDestination(mapGroup, mapNum, warpId, x, y);
-        WarpIntoMap();
-        SetMainCallback2(CB2_LoadMap);
-        EnableBothScriptContexts();
-    }
-
+{
+    u8 mapGroup = 1;
+    u8 mapNum = 3;
+    u8 warpId = 255;
+    u16 x = 7;
+    u16 y = 4;
+    SetWarpDestination(mapGroup, mapNum, warpId, x, y);
+    WarpIntoMap();
+    SetMainCallback2(CB2_LoadMap);
+    EnableBothScriptContexts();
+}
 
 void RyuCheckTempVars(void)
 {
@@ -5370,7 +5213,6 @@ bool8 checkForOverlordRyuEncounter(void)
     {
         return 0;
     }
-        
 }
 
 void CheckSaveFileSize(void)
@@ -5379,7 +5221,6 @@ void CheckSaveFileSize(void)
     u32 size2 = (sizeof(struct SaveBlock2));
     ConvertIntToDecimalStringN(gStringVar1, size, STR_CONV_MODE_LEFT_ALIGN, 6);
     ConvertIntToDecimalStringN(gStringVar2, size2, STR_CONV_MODE_LEFT_ALIGN, 6);
-    
 }
 
 void ForceSoftReset(void)
@@ -5432,10 +5273,10 @@ void VBCB_FullscreenCutscene(void)
 bool8 ScrCmd_drawfullscreenimage(struct ScriptContext *ctx)
 {
     u8 index = ScriptReadByte(ctx);
-	SetVBlankCallback(NULL);
-	StartBGCutscene(index);
+    SetVBlankCallback(NULL);
+    StartBGCutscene(index);
     SetVBlankCallback(VBCB_FullscreenCutscene);
-	return TRUE;   
+    return TRUE;   
 }
 
 bool8 ScrCmd_clearfullscreenimage(struct ScriptContext *ctx)
@@ -5492,77 +5333,60 @@ bool8 ScrCmd_addmonhappiness(struct ScriptContext *ctx)
 //Follower related
 
 bool8 RyuFollowerToTrainerID(void)
+{
+    if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
     {
-        if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
-            {
-                switch (VarGet(VAR_RYU_FOLLOWER_ID))
-                {
-                case OBJ_EVENT_GFX_TWIN:
-                    {
-                        gSpecialVar_0x8008 = TRAINER_REL_MINNIE;
-	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_MINNIE;
-                        return TRUE;
-                        break;
-                    }
-                case OBJ_EVENT_GFX_WOMAN_2:
-                    {
-                        gSpecialVar_0x8008 = TRAINER_REL_LANETTE;
-	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_LANETTE; 
-                        return TRUE;
-                        break;
-                    }
-                case OBJ_EVENT_GFX_AQUA_MEMBER_F:
-                    {
-                        gSpecialVar_0x8008 = TRAINER_REL_SHELLY;
-	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_SHELLY;
-                        return TRUE;
-                        break;
-                    }
-                case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
-                    {
-                        gSpecialVar_0x8008 = TRAINER_REL_DAWN;
-	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_DAWN;
-                        return TRUE;
-                        break;
-                    }
-                case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
-                    {
-                        gSpecialVar_0x8008 = TRAINER_REL_BRENDAN;
-	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_BRENDAN;
-                        return TRUE;
-                        break;
-                    }
-                case OBJ_EVENT_GFX_LEAF:
-                    {
-                        gSpecialVar_0x8008 = TRAINER_REL_LANA;
-	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_LEAF;
-                        return TRUE;
-                        break;
-                    }
-                case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
-                    {
-                        gSpecialVar_0x8008 = TRAINER_REL_COURTNEY_2;
-	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_COURTNEY;
-                        return TRUE;
-                        break;
-                    }
-                case OBJ_EVENT_GFX_NURSE:
-                    {
-                        gSpecialVar_0x8008 = TRAINER_REL_NURSE;
-	                    gSpecialVar_0x8009 = TRAINER_BACK_PIC_NURSE;
-                        return TRUE;
-                        break;
-                    }
-                }
-                return FALSE;
-            }
-
+        switch (VarGet(VAR_RYU_FOLLOWER_ID))
+        {
+        case OBJ_EVENT_GFX_TWIN:
+            gSpecialVar_0x8008 = TRAINER_REL_MINNIE;
+                gSpecialVar_0x8009 = TRAINER_BACK_PIC_MINNIE;
+            return TRUE;
+            break;
+        case OBJ_EVENT_GFX_WOMAN_2:
+            gSpecialVar_0x8008 = TRAINER_REL_LANETTE;
+                gSpecialVar_0x8009 = TRAINER_BACK_PIC_LANETTE; 
+            return TRUE;
+            break;
+        case OBJ_EVENT_GFX_AQUA_MEMBER_F:
+            gSpecialVar_0x8008 = TRAINER_REL_SHELLY;
+                gSpecialVar_0x8009 = TRAINER_BACK_PIC_SHELLY;
+            return TRUE;
+            break;
+        case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
+            gSpecialVar_0x8008 = TRAINER_REL_DAWN;
+                gSpecialVar_0x8009 = TRAINER_BACK_PIC_DAWN;
+            return TRUE;
+            break;
+        case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+            gSpecialVar_0x8008 = TRAINER_REL_BRENDAN;
+                gSpecialVar_0x8009 = TRAINER_BACK_PIC_BRENDAN;
+            return TRUE;
+            break;
+        case OBJ_EVENT_GFX_LEAF:
+            gSpecialVar_0x8008 = TRAINER_REL_LANA;
+                gSpecialVar_0x8009 = TRAINER_BACK_PIC_LEAF;
+            return TRUE;
+            break;
+        case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
+            gSpecialVar_0x8008 = TRAINER_REL_COURTNEY_2;
+                gSpecialVar_0x8009 = TRAINER_BACK_PIC_COURTNEY;
+            return TRUE;
+            break;
+        case OBJ_EVENT_GFX_NURSE:
+            gSpecialVar_0x8008 = TRAINER_REL_NURSE;
+                gSpecialVar_0x8009 = TRAINER_BACK_PIC_NURSE;
+            return TRUE;
+            break;
+        }
+        return FALSE;
     }
+}
 
 void FillTheDex(void)
 {
     u16 i = 0;
-    u16 idno = 644;
+    u16 idno = 644; // this breaks if/when pokemon are added
     for (i = 0; i < idno; i++)
     {
         GetSetPokedexFlag(i, FLAG_SET_CAUGHT);
@@ -5577,9 +5401,7 @@ bool8 CheckPlayerHasDarmanitan(void)
     for (i = 0; i < PARTY_SIZE; i++)
     {
          if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_DARMANITAN)
-         {
              return TRUE;
-         }
     }
     return FALSE;
 }
@@ -5675,7 +5497,6 @@ int RyuGetItemQuantity(u16 *quantity)
 {
     return gSaveBlock2Ptr->encryptionKey ^ *quantity;
 }
-
 
 void RyuCountGemOres(void)
 {
