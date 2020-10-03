@@ -305,7 +305,7 @@
       "id": "LAYOUT_ROUTE115",
       "name": "Route115_Layout",
       "width": 40,
-      "height": 80,
+      "height": 120,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Fallarbor",
       "border_filepath": "data/layouts/Route115/border.bin",
