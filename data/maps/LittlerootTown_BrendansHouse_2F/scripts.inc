@@ -138,7 +138,6 @@ LRT_BrendanWONT_HAPPEN::
 
 LRT_BrendanNIGHT::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
-	call LRT_BH_CheckTraining
     msgbox LRT_BrendanSTAY, MSGBOX_YESNO	
 	compare VAR_RESULT, 1
 	goto_if_ne LRT_BrendanCANCEL
@@ -172,7 +171,6 @@ LRT_BrendanNIGHT::
 
 LRT_BrendanNight2::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
-	call LRT_BH_CheckTraining
     msgbox LRT_BrendanSTAY2, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	@fadescreen FADE_TO_BLACK
@@ -307,6 +305,11 @@ LRT_BrendanHEART3:
 LRT_BrendanTURN:
     walk_right
 	step_end
+
+
+@========================================================Check out brendan's gift pokemon
+
+
 	
 @========================================================Leaf Events
 	
