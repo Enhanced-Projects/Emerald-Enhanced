@@ -4423,62 +4423,19 @@ void SetMonAbility(void)
 
 bool8 RyuGiveMewtwo(void)
 {
-    u8 iv = 252;
-    u8 partycount = 0;
+    u8 ev = 252;
     u8 slot = 0;
-    partycount = CalculatePlayerPartyCount();
-    switch (partycount)
-    {
-        case 0:
-            return FALSE;
-            break;
-        case 1:
-        {
-            CreateMonWithNature(&gPlayerParty[1], SPECIES_MEWTWO, 95, 31, NATURE_MODEST);
-            SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &iv);
-            return TRUE;
-            break;
-        }
-        case 2:
-        {
-            CreateMonWithNature(&gPlayerParty[2], SPECIES_MEWTWO, 95, 31, NATURE_MODEST);
-            SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &iv);
-            return TRUE;
-            break;
-        }
-        case 3:
-        {
-            CreateMonWithNature(&gPlayerParty[3], SPECIES_MEWTWO, 95, 31, NATURE_MODEST);
-            SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &iv);
-            return TRUE;
-            break;
-        }
-        case 4:
-        {
-            CreateMonWithNature(&gPlayerParty[4], SPECIES_MEWTWO, 95, 31, NATURE_MODEST);
-            SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &iv);
-            return TRUE;
-            break;
-        }
-        case 5:
-        {
-            CreateMonWithNature(&gPlayerParty[5], SPECIES_MEWTWO, 95, 31, NATURE_MODEST);
-            SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &iv);
-            return TRUE;
-            break;
-        }
-        case 6:
-            return FALSE;
-            break;
-        default:
-            return FALSE;
-            break;
+    u8 partyCount = CalculatePlayerPartyCount();
+    // empty party (how?) or full party
+    if (partyCount == 0 || partyCount > 5) {
+      return FALSE;
     }
+    // Give the player a modest mewtwo and max out its atk and spatk
+    // (why max out atk when it’s modest and therefore -10% atk?)
+    CreateMonWithNature(&gPlayerParty[partyCount], SPECIES_MEWTWO, 95, 31, NATURE_MODEST);
+    SetMonData(&gPlayerParty[partyCount], MON_DATA_ATK_EV, &ev);
+    SetMonData(&gPlayerParty[partyCount], MON_DATA_SPATK_EV, &ev);
+    return TRUE;
 }
 
 void RyuIncrementLapCount(void)
@@ -4507,7 +4464,7 @@ bool8 IsSneaselInParty(void)
         }
     }
     return FALSE;
-    }
+}
 
 bool8 IsSnoruntInParty(void)
     {
@@ -4530,7 +4487,7 @@ bool8 IsSnoruntInParty(void)
         }
     }
     return FALSE;
-    }
+}
 
 bool8 IsSneaselTrainedNotChampion(void)
     {
