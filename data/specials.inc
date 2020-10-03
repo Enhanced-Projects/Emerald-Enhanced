@@ -595,4 +595,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuBufferQuestVars
 	def_special DoWhiteOut
 	def_special DoPartnerWhiteOut
+	def_special CheckRivalGiftMonStatus
+	def_special RyuGetTimeOfDay
 

@@ -368,6 +368,12 @@
 #define INFOBOXGCMS2 20
 #define INFOBOXGCMS3 21
 
+//Times
+#define TIME_DAY 0
+#define TIME_EVENING 1
+#define TIME_NIGHT 2
+#define TIME_MORNING 3
+
 #define SPECIAL_VARS_END              0x8015
 
 #endif // GUARD_CONSTANTS_VARS_H

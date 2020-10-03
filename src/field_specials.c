@@ -77,6 +77,7 @@
 #include "money.h"
 #include "menu_helpers.h"
 #include "data/lifeskill.h"
+#include "rtc.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -5735,3 +5736,57 @@ void RyuBufferQuestVars(void)
     ConvertIntToDecimalStringN(gRyuStringVar2, (VarGet(VAR_RYU_LANETTE_VAR)), STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
+
+int CheckRivalGiftMonStatus(void)//well this saved a bunch of lines.
+{
+    u8 gender = gSaveBlock2Ptr->playerGender;
+    u8 i;
+    u8 ret = 0;
+
+    if (gender == MALE)
+    {
+        for (i = 0; i < CalculatePlayerPartyCount(); i++)
+        {
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNEASEL)
+                ret = 1;
+
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_WEAVILE)
+                ret = 2;
+        }
+    }
+    else
+    {
+        for (i = 0; i < CalculatePlayerPartyCount(); i++)
+        {
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNORUNT)
+                ret = 1;
+
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_FROSLASS)
+                ret = 2;
+
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_GLALIE)
+                ret = 3;
+        }
+    }
+
+    if (GetMonData(&gPlayerParty[i], MON_DATA_CHAMPION_RIBBON, NULL) == TRUE)
+        ret = 5;
+
+    return ret;
+}
+
+int RyuGetTimeOfDay(void)
+    {
+        if (!(gLocalTime.hours <= 17 ) && (gLocalTime.hours >= 10)
+            return TIME_DAY;
+
+        if (gLocalTime.hours >= 19)
+            if (gLocalTime.hours <= 5)
+                return TIME_NIGHT;
+
+        if (gLocalTime.hours == 18)
+            return TIME_EVENING;
+
+        if (gLocalTime.hours >= 5 && gLocalTime.hours <= 9)
+            return TIME_MORNING;
+    }
