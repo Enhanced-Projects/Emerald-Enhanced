@@ -4302,81 +4302,69 @@ bool8 IsSneaselInParty(void)
     {
     u8 i;
     u8 partyCount = CalculatePlayerPartyCount();
-    
+
     for (i = 0; i < partyCount; i++)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNEASEL)
         {
-            
             s32 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL, NULL);
             if (level > 29)
-            {
                 return TRUE;
-            } 
         }
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNEASEL)
-        {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_WEAVILE)
             return TRUE;
-        }
     }
     return FALSE;
 }
 
 bool8 IsSnoruntInParty(void)
-    {
+{
     u8 i;
     u8 partyCount = CalculatePlayerPartyCount();
-    
+
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNORUNT)
-        {
+        if (
+          GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNORUNT
+            || GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_GLALIE
+            || GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_FROSLASS
+        )
             return TRUE;
-        }
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_GLALIE)
-        {
-            return TRUE;
-        }
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNORUNT)
-        {
-            return TRUE;
-        }
     }
     return FALSE;
 }
 
+// Returns true if the player has no sneasel/weavile
+// OR if the player has it, but it doesn’t have the champion ribbon.
 bool8 IsSneaselTrainedNotChampion(void)
-    {
+{
     u8 i;
     u8 partyCount = CalculatePlayerPartyCount();
-    
+
     for (i = 0; i < partyCount; i++)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNEASEL)
         {
-            
             s32 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL, NULL);
             if (level > 49 )
             {
                 bool8 ribbon = GetMonData(&gPlayerParty[i], MON_DATA_CHAMPION_RIBBON, NULL);
                 if (ribbon == 0)
-                return FALSE;
-            } 
+                    return FALSE;
+            }
         }
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNEASEL)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_WEAVILE)
         {
-            {
-                bool8 ribbon = GetMonData(&gPlayerParty[i], MON_DATA_CHAMPION_RIBBON, NULL);
-                if (ribbon == 0)
+            bool8 ribbon = GetMonData(&gPlayerParty[i], MON_DATA_CHAMPION_RIBBON, NULL);
+            if (ribbon == 0)
                 return FALSE;
-            } 
         }
     }
     return TRUE;
-    }
+}
 
 bool8 IsSnoruntTrainedNotChampion(void)
-    {
+{
     u8 i;
     u8 partyCount = CalculatePlayerPartyCount();
     
@@ -4395,26 +4383,22 @@ bool8 IsSnoruntTrainedNotChampion(void)
         }
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_GLALIE)
         {
-            {
-                bool8 ribbon = GetMonData(&gPlayerParty[i], MON_DATA_CHAMPION_RIBBON, NULL);
-                if (ribbon == 0)
+            bool8 ribbon = GetMonData(&gPlayerParty[i], MON_DATA_CHAMPION_RIBBON, NULL);
+            if (ribbon == 0)
                 return FALSE;
-            } 
         }
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNORUNT)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_FROSLASS)
         {
-            {
-                bool8 ribbon = GetMonData(&gPlayerParty[i], MON_DATA_CHAMPION_RIBBON, NULL);
-                if (ribbon == 0)
+            bool8 ribbon = GetMonData(&gPlayerParty[i], MON_DATA_CHAMPION_RIBBON, NULL);
+            if (ribbon == 0)
                 return FALSE;
-            } 
         }
     }
     return TRUE;
-    }
+}
 
 bool8 DoesDawnSneaselHaveChampionRibbon(void)
-    {
+{
     u8 i;
     u8 partyCount = CalculatePlayerPartyCount();
     
@@ -4439,7 +4423,7 @@ bool8 DoesDawnSneaselHaveChampionRibbon(void)
         }
     }
     return FALSE;
-    }
+}
 
 bool8 DoesBrendanSnoruntHaveChampionRibbon(void)
     {
@@ -4450,7 +4434,6 @@ bool8 DoesBrendanSnoruntHaveChampionRibbon(void)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNORUNT)
         {
-            
             bool8 ribbon = GetMonData(&gPlayerParty[i], MON_DATA_CHAMPION_RIBBON, NULL);
             if (ribbon == 1)
             {
@@ -4478,56 +4461,53 @@ bool8 DoesBrendanSnoruntHaveChampionRibbon(void)
     }
 
 void RyuKillMon(void)
-    {
-            u8 i;
-            u8 partyCount = CalculatePlayerPartyCount();
+{
+    u8 i;
+    u8 partyCount = CalculatePlayerPartyCount();
 
-            for (i = 0; i < partyCount; i++)
-            {
-                if (GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
-                {
-                    ZeroMonData(&gPlayerParty[i]);
-                    CompactPartySlots();
-                    PlaySE(SE_POKE_DEAD);
-                }
-            }
+    for (i = 0; i < partyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
+        {
+            ZeroMonData(&gPlayerParty[i]);
+            CompactPartySlots();
+            PlaySE(SE_POKE_DEAD);
+        }
     }
+}
 
 bool8 RyuSacrificeMon(void)
-    {
-        u8 slot = (VarGet(VAR_TEMP_9));
-        u16 species = 0;
-        u16 move1 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE1);
-        u16 move2 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE2);
-        u16 move3 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE3);
-        u16 move4 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE4);
-        u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
+{
+    u8 slot = (VarGet(VAR_TEMP_9));
+    u16 species = 0;
+    u16 move1 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE1);
+    u16 move2 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE2);
+    u16 move3 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE3);
+    u16 move4 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE4);
+    u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
 
-        if (FlagGet(FLAG_TEMP_5) == 1)
-        {
-            species = (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL));
-            ZeroMonData(&gPlayerParty[slot]);
-            CompactPartySlots();
-            VarSet(VAR_RYU_GCMS_SPECIES, species);
-            VarSet(VAR_RYU_GCMS_MOVE1, move1);
-            VarSet(VAR_RYU_GCMS_MOVE2, move2);
-            VarSet(VAR_RYU_GCMS_MOVE3, move3);
-            VarSet(VAR_RYU_GCMS_MOVE4, move4);
-            VarSet(VAR_RYU_GCMS_ABILITY, ability);
-            FlagClear(FLAG_TEMP_5);
-            return TRUE;
-        }
-        else if (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL) == (VarGet(VAR_RYU_GCMS_SPECIES)))
-        {
-            ZeroMonData(&gPlayerParty[slot]);
-            CompactPartySlots();
-            return TRUE;
-        }
-        else
-        {
-            return FALSE;
-        }
+    if (FlagGet(FLAG_TEMP_5) == 1)
+    {
+        species = (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL));
+        ZeroMonData(&gPlayerParty[slot]);
+        CompactPartySlots();
+        VarSet(VAR_RYU_GCMS_SPECIES, species);
+        VarSet(VAR_RYU_GCMS_MOVE1, move1);
+        VarSet(VAR_RYU_GCMS_MOVE2, move2);
+        VarSet(VAR_RYU_GCMS_MOVE3, move3);
+        VarSet(VAR_RYU_GCMS_MOVE4, move4);
+        VarSet(VAR_RYU_GCMS_ABILITY, ability);
+        FlagClear(FLAG_TEMP_5);
+        return TRUE;
     }
+    else if (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL) == (VarGet(VAR_RYU_GCMS_SPECIES)))
+    {
+        ZeroMonData(&gPlayerParty[slot]);
+        CompactPartySlots();
+        return TRUE;
+    }
+    return FALSE;
+}
 
 void RyuWipeParty(void)
 {
@@ -4540,6 +4520,7 @@ void RyuWipeParty(void)
     CompactPartySlots();
 }
 
+// Should more accurately be called “Player has Weavile but no Sneasel”
 bool8 IsSneaselWeavile(void)
 {
     u8 i;
@@ -4547,17 +4528,12 @@ bool8 IsSneaselWeavile(void)
     u8 flag = (FlagGet(FLAG_RYU_DAWN_GIFTPOKE_RECEIVED));
     if (flag == 1)
     {
-    
         for (i = 0; i < partyCount; i++)
         {
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNEASEL)
-            {
-                    return FALSE;
-            }
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNEASEL)
-            {
-                    return TRUE;
-            }
+                return FALSE;
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_WEAVILE)
+                return TRUE;
         }
     }
     return FALSE;
@@ -4613,9 +4589,7 @@ void RyuBrendanGiftPoke(void)
 void RyuDevCheck(void)
 {
     if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
-    {
-            gSpecialVar_Result = 69;
-    }
+        gSpecialVar_Result = 69;
 }
 
 int CountBadges(void)
