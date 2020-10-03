@@ -5776,17 +5776,20 @@ int CheckRivalGiftMonStatus(void)//well this saved a bunch of lines.
 }
 
 int RyuGetTimeOfDay(void)
-    {
-        if (!(gLocalTime.hours <= 17 ) && (gLocalTime.hours >= 10)
-            return TIME_DAY;
+{
+    u8 hour;
+    RtcCalcLocalTime();
+    hour = gLocalTime.hours;
 
-        if (gLocalTime.hours >= 19)
-            if (gLocalTime.hours <= 5)
-                return TIME_NIGHT;
+    if (hour >= 5 && hour < 10)
+        return RTC_TIME_MORNING;
 
-        if (gLocalTime.hours == 18)
-            return TIME_EVENING;
+    if (hour >= 10 && hour < 18)
+        return RTC_TIME_DAY;
 
-        if (gLocalTime.hours >= 5 && gLocalTime.hours <= 9)
-            return TIME_MORNING;
-    }
+    if (hour == 18)
+        return RTC_TIME_EVENING;
+
+    // The rest: either before 5:00 or after 18:59
+    return RTC_TIME_NIGHT;
+}

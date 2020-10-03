@@ -369,10 +369,10 @@
 #define INFOBOXGCMS3 21
 
 //Times
-#define TIME_DAY 0
-#define TIME_EVENING 1
-#define TIME_NIGHT 2
-#define TIME_MORNING 3
+#define RTC_TIME_DAY 0
+#define RTC_TIME_EVENING 1
+#define RTC_TIME_NIGHT 2
+#define RTC_TIME_MORNING 3
 
 #define SPECIAL_VARS_END              0x8015
 

@@ -30,5 +30,6 @@ bool8 UsedPokemonCenterWarp(void);
 void ResetFanClub(void);
 bool8 ShouldShowBoxWasFullMessage(void);
 void SetPCBoxToSendMon(u8 boxId);
+int RyuGetTimeOfDay(void);
 
 #endif // GUARD_FIELD_SPECIALS_H
