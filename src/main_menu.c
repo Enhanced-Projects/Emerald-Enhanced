@@ -744,7 +744,10 @@ static void Task_DisplayMainMenu(u8 taskId)
 {
     s16* data = gTasks[taskId].data;
     u16 palette;
-    bool8 previousFile = FlagGet(FLAG_SYS_GAME_CLEAR);
+    bool8 previousFile = FALSE;
+
+    if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
+        previousFile = TRUE;
 
     if (!gPaletteFade.active)
     {
@@ -801,10 +804,10 @@ static void Task_DisplayMainMenu(u8 taskId)
                 FillWindowPixelBuffer(3, PIXEL_FILL(0xA));
                 FillWindowPixelBuffer(4, PIXEL_FILL(0xA));
                 AddTextPrinterParameterized3(2, 1, 0, 1, sTextColor_Headers, -1, gText_MainMenuContinue);
-                if (previousFile == 1)
-                    AddTextPrinterParameterized3(3, 1, 0, 1, sTextColor_Headers, -1, gText_MainMenuNewGamePlus);
-                if (previousFile == 0)
-                    AddTextPrinterParameterized3(3, 1, 0, 1, sTextColor_Headers, -1, gText_MainMenuNewGame);
+                if (previousFile == TRUE)
+                        AddTextPrinterParameterized3(3, 1, 0, 1, sTextColor_Headers, -1, gText_MainMenuNewGamePlus);
+                if (previousFile == FALSE)
+                        AddTextPrinterParameterized3(3, 1, 0, 1, sTextColor_Headers, -1, gText_MainMenuNewGame);
                 AddTextPrinterParameterized3(4, 1, 0, 1, sTextColor_Headers, -1, gText_MainMenuOption);
                 MainMenu_FormatSavegameText();
                 PutWindowTilemap(2);
