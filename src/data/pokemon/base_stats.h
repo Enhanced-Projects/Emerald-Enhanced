@@ -9122,14 +9122,14 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_BANETTE] =
     {
-        .baseHP        = 64,
-        .baseAttack    = 115,
+        .baseHP        = 84,
+        .baseAttack    = 135,
         .baseDefense   = 65,
-        .baseSpeed     = 65,
+        .baseSpeed     = 75,
         .baseSpAttack  = 83,
         .baseSpDefense = 63,
         .type1 = TYPE_GHOST,
-        .type2 = TYPE_GHOST,
+        .type2 = TYPE_DARK,
         .catchRate = 45,
         .expYield = 159,
         .evYield_Attack    = 2,
@@ -9141,7 +9141,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_FAST,
         .eggGroup1 = EGG_GROUP_AMORPHOUS,
         .eggGroup2 = EGG_GROUP_AMORPHOUS,
-        .abilities = {ABILITY_INSOMNIA, ABILITY_FRISK},
+        .abilities = {ABILITY_INSOMNIA, ABILITY_TECHNICIAN},
         .abilityHidden = ABILITY_CURSED_BODY,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BLACK,
@@ -21360,14 +21360,14 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_MEGA_BANETTE] =
     {
-        .baseHP        = 64,
+        .baseHP        = 84,
         .baseAttack    = 165,
         .baseDefense   = 75,
-        .baseSpeed     = 75,
+        .baseSpeed     = 85,
         .baseSpAttack  = 93,
         .baseSpDefense = 83,
         .type1 = TYPE_GHOST,
-        .type2 = TYPE_GHOST,
+        .type2 = TYPE_DARK,
         .catchRate = 45,
         .expYield = 194,
         .evYield_Attack    = 2,
