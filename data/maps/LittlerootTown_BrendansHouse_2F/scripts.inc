@@ -217,6 +217,7 @@ LRT_BrendanCANCEL::
 	end
 
 LRT_BrendanFZ::
+	call LRT_BH_CheckBrendanSnorunt
     msgbox LRT_DS_FZ_Brendan MSGBOX_DEFAULT
 	release
 	end
@@ -309,7 +310,74 @@ LRT_BrendanTURN:
 
 @========================================================Check out brendan's gift pokemon
 
-
+LRT_BH_CheckBrendanSnorunt::@technically speaking, if the player doesn't show the gift mon before becoming champion, first reward is unobtainable. But its okay.
+	goto_if_unset FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_return @player never received the gift mon to begin with
+	msgbox LRT_BH_PullOutGiftMon
+	closemessage
+	specialvar VAR_RESULT, CheckRivalGiftMonStatus @Automagically assumes player gender from the save block.
+	switch VAR_RESULT@Reverse order because things are checked the other way around. Champion flag most important.
+	case 5, LRT_BH_ChampionGiftMon @doesn't matter if player evolved it to glalie, player took it to championship, rival is happy
+	case 3, LRT_BH_Glalie @player evolved snorunt into glalie, rival a little disappointed because of wasted potential
+	case 2, LRT_BH_Froslass @Optimal choice
+	case 1, LRT_BH_Snorunt @player has done nothing with the mon. Sad Rival.
+	case 0, ryu_return @player doesn't have the gift mon with them. Sad Rival.
+	goto ryu_return @prevents UB
+	
+LRT_BH_ChampionGiftMon::
+	msgbox LRT_BH_ChampionMon
+	closemessage
+	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN, ryu_return
+	giveitem ITEM_EXPERT_BELT
+	setflag FLAG_RYU_DS_BRENDAN_PARTNERS @alternate way to get partner benefits without romance.
+	addvar VAR_RYU_PARTNER_COUNT, 1
+	setflag FLAG_RYU_DS_HAS_PARTNER
+	setflag FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN
+	return
+	
+LRT_BH_Glalie::
+	showmonpic SPECIES_GLALIE, 10, 3
+	playmoncry SPECIES_GLALIE, 0
+	waitmoncry
+	msgbox LRT_BH_IsGlalie
+	closemessage
+	hidemonpic
+	return
+	
+LRT_BH_Froslass::
+	showmonpic SPECIES_FROSLASS, 10, 3
+	playmoncry SPECIES_FROSLASS, 0
+	waitmoncry
+	msgbox LRT_BH_IsFroslass
+	closemessage
+	hidemonpic
+	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_1_GIVEN, ryu_return
+	giveitem ITEM_NEVER_MELT_ICE
+	setflag FLAG_RYU_RIVAL_POKEMON_REWARD_1_GIVEN
+	return
+	
+LRT_BH_Snorunt::
+	showmonpic SPECIES_SNORUNT, 10, 3
+	playmoncry SPECIES_SNORUNT, 0
+	waitmoncry
+	msgbox LRT_BH_Unchanged
+	hidemonpic
+	closemessage
+	return
+	
+LRT_BH_PullOutGiftMon:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Pull out Snorunt so I can see\nhow its doing!$"
+	
+LRT_BH_ChampionMon:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh hey, you took it to the\nchampionship!\pThat's great! I definitely made the\nright call.\pHere, take this gift from me!$"
+	
+LRT_BH_IsGlalie:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hmm... Evolving it to Glalie wastes\nso much potential.\pOh well, I'm happy you are\nraising it anyhow.$"
+	
+LRT_BH_IsFroslass:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, awesome!\pFroslass is such a beautiful pokemon.\pIt fits in with its equally\nbeautiful trainer!\pHere, take this gift!$"
+	
+LRT_BH_Unchanged:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Well it looks happy enough, but\nwhen are you going to train it?$"
 	
 @========================================================Leaf Events
 	

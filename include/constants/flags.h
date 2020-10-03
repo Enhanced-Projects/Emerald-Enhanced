@@ -657,8 +657,8 @@
 #define FLAG_RYU_ZAPDOS                                             0x26C
 #define FLAG_HIDE_IC_LANA                                           0x26D
 #define FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED                          0x26E
-#define FLAG_RYU_BRENDAN_GIFT2                                      0x26F
-#define FLAG_RYU_BRENDAN_GIFT1                                      0x270
+#define FLAG_RYU_RIVAL_POKEMON_REWARD_1_GIVEN                       0x26F
+#define FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN                       0x270
 #define FLAG_RYU_NIGHT                                              0x271
 #define FLAG_RYU_LEAF_ALTERNATE_LINE                                0x272
 #define FLAG_RYU_LEAF_MTPYRE                                        0x273

@@ -116,6 +116,7 @@ LRT_CANCEL::
 	end
 
 LRT_FZ::
+	call LRT_DH_CheckDawnSneasel
     msgbox LRT_DS_FZ_DAWN MSGBOX_DEFAULT
 	closemessage
 	release
@@ -310,6 +311,67 @@ GI_LeavingForRoute103:
 	walk_fast_left
 	walk_fast_up
 	step_end
+	
+@========================================================Check out dawn's gift pokemon
+
+LRT_DH_CheckDawnSneasel::@see brendan's equivalent for commentary
+	goto_if_unset FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_return
+	msgbox LRT_DH_PullOutGiftMon
+	closemessage
+	specialvar VAR_RESULT, CheckRivalGiftMonStatus 
+	switch VAR_RESULT
+	case 5, LRT_DH_ChampionGiftMon 
+	case 2, LRT_DH_Weavile
+	case 1, LRT_DH_Sneasel
+	case 0, ryu_return 
+	goto ryu_return 
+	
+LRT_DH_ChampionGiftMon::
+	msgbox LRT_DH_ChampionMon
+	closemessage
+	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN, ryu_return
+	giveitem ITEM_SCOPE_LENS
+	setflag FLAG_RYU_DS_DAWN_PARTNERS
+	addvar VAR_RYU_PARTNER_COUNT, 1
+	setflag FLAG_RYU_DS_HAS_PARTNER
+	setflag FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN
+	return
+	
+LRT_DH_Weavile::
+	showmonpic SPECIES_WEAVILE, 10, 3
+	playmoncry SPECIES_WEAVILE, 0
+	waitmoncry
+	msgbox LRT_DH_IsWeavile
+	closemessage
+	hidemonpic
+	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_1_GIVEN, ryu_return
+	giveitem ITEM_BLACK_GLASSES
+	setflag FLAG_RYU_RIVAL_POKEMON_REWARD_1_GIVEN
+	return
+	
+LRT_DH_Sneasel::
+	showmonpic SPECIES_SNEASEL, 10, 3
+	playmoncry SPECIES_SNEASEL, 0
+	waitmoncry
+	msgbox LRT_DH_Unchanged
+	hidemonpic
+	closemessage
+	return
+	
+LRT_DH_PullOutGiftMon:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hi {PLAYER}! How's Sneasel doing?\nPull it out so I can see!$"
+	
+LRT_DH_ChampionMon:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I sense that it has really\nmatured. It's even got the\l"
+	.string "Champion Ribbon!\pI couldn't have chose a better\ntrainer for it.\p"
+	.string "Here, take this gift from me!$"
+	
+LRT_DH_IsWeavile:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh wow! It's so cool!\nYou've been training it well!\pHere, a present for you!$"
+	
+LRT_DH_Unchanged:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Well, it looks content.\nWhen will you start training it?$"
+
 	
 @======================================================If player has romanced courtney, she will sabotage relationships with rival=======
 
