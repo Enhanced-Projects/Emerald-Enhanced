@@ -42,10 +42,11 @@ Ryu_NewGamePlus::
 	waitse
 	msgbox RyuNGP_DexSuccess
 	msgbox RyuNGP_HCQuery
-	multichoicedefault 1, 2, 142, 0, 0
+	multichoicedefault 1, 2, MULTI_SELECT_NEW_GAME_PLUS_MODE, 3, 0
 	switch VAR_RESULT
 	case 0, IT_NuzlockeMode
-    case 2, IT_HardcoreMode	
+    case 2, IT_HardcoreMode
+	case 3, IT_NormalMode	
 	goto IT_HardMode
 
 RyuNGP_DexInfo:

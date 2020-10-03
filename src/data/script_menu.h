@@ -1081,6 +1081,7 @@ static const struct MenuAction MultichoiceList_142[]=
     {gText_RyuNewGameNuzlockeMode},
     {gText_RyuNewGameMenuHardMode},
     {gText_RyuNewGameHardcoreMode},
+    {gText_RyuNewGameMenuNormalMode},
 };
 
 static const struct MenuAction MultichoiceList_UtilitySubMenu[]=

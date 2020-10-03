@@ -83,6 +83,7 @@ EGC_CR_ChooseValidMons::
 
 
 EverGrandeCity_ChampionsRoom_EventScript_Defeated:: @ 8228A61
+	setflag FLAG_SYS_GAME_CLEAR
 	playse SE_DOOR
 	setmetatile 6, 1, METATILE_EliteFour_OpenDoorChampion_Frame, 0
 	setmetatile 6, 2, METATILE_EliteFour_OpenDoorChampion_Opening, 0

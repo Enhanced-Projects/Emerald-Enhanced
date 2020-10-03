@@ -30,17 +30,17 @@ LRT_BrendanAfterLilycoveScene::
 	
 LRT_BrendanRelationshipScene1::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGBRENDAN
+	@fadescreen FADE_TO_BLACK
+	@drawfullscreenimage SCENEBGBRENDAN
 	msgbox LRT_BRENDAN_SORRYKISSED, MSGBOX_DEFAULT
-	clearfullscreenimage
-	fadescreen FADE_TO_BLACK
+	@clearfullscreenimage
+	@fadescreen FADE_TO_BLACK
 	msgbox LRT_BRENDAN_KISS, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq LRT_BrendanWONT_HAPPEN
     setflag	FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGBRENDAN
+	@fadescreen FADE_TO_BLACK
+	@drawfullscreenimage SCENEBGBRENDAN
 	msgbox LRT_BrendanHAPPY, MSGBOX_DEFAULT
 	goto LRT_BrendanNIGHT
 	release
@@ -51,15 +51,15 @@ LRT_BrendanIntroductionScene::
 	applymovement 2, Common_Movement_QuestionMark
 	waitmovement 0	
 	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGBRENDAN
+	@drawfullscreenimage SCENEBGBRENDAN
 	msgbox GI_BrendanIntro MSGBOX_DEFAULT
 	applymovement 2, GI_MaleLeavingForRoute103
 	waitmovement 0
 	playse SE_DOOR
 	removeobject 2
 	setflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
-	clearfullscreenimage
-	fadescreen FADE_TO_BLACK
+	@clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	msgbox GI_BrendanMetMsg
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_NATIONAL_DEX
@@ -138,39 +138,32 @@ LRT_BrendanWONT_HAPPEN::
 
 LRT_BrendanNIGHT::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
-	call LRT_BH_CheckTraining
-	clearfullscreenimage
-	fadescreen FADE_TO_BLACK
     msgbox LRT_BrendanSTAY, MSGBOX_YESNO	
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGBRENDANNIGHT
 	compare VAR_RESULT, 1
 	goto_if_ne LRT_BrendanCANCEL
 	msgbox LRT_BrendanROMPre MSGBOX_DEFAULT
  	closemessage
-	clearfullscreenimage
-	fadescreen FADE_TO_BLACK
 	applymovement 2, Common_Movement_HeartEmote
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
 	waitmovement 0
 	applymovement 2 LRT_BrendanHEART2
 	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART
 	delay 20
-	fadescreen 1
+	fadescreen FADE_TO_BLACK
 	fadeoutbgm 1
 	special HealPlayerParty
 	delay 20
 	msgbox LRT_BrendanROM, MSGBOX_DEFAULT
-	fadescreen 0
+	fadescreen FADE_FROM_BLACK
 	fadeinbgm 1	
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGBRENDANNIGHT
+	@fadescreen FADE_TO_BLACK
+	@drawfullscreenimage SCENEBGBRENDANNIGHT
 	msgbox LRT_BRENDAN_THANKS, MSGBOX_DEFAULT
 	setflag FLAG_RYU_DS_BRENDAN_LOVERS
 	closemessage
-	clearfullscreenimage
+	@clearfullscreenimage
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
-	fadescreen FADE_FROM_BLACK
+	@fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
 	waitmovement 0
 	release
@@ -178,15 +171,14 @@ LRT_BrendanNIGHT::
 
 LRT_BrendanNight2::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
-	call LRT_BH_CheckTraining
     msgbox LRT_BrendanSTAY2, MSGBOX_YESNO
 	compare VAR_RESULT, 1
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGBRENDANNIGHT
+	@fadescreen FADE_TO_BLACK
+	@drawfullscreenimage SCENEBGBRENDANNIGHT
 	goto_if_ne LRT_BrendanCANCEL
 	msgbox LRT_BrendanROM2Pre MSGBOX_DEFAULT
 	closemessage
-	clearfullscreenimage
+	@clearfullscreenimage
 	fadescreen FADE_TO_BLACK
 	applymovement 2, Common_Movement_HeartEmote
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
@@ -204,11 +196,11 @@ LRT_BrendanNight2::
 	setflag FLAG_RYU_DS_HAS_PARTNER
 	playse SE_PIN
 	fadeinbgm 1	
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGBRENDAN
+	@fadescreen FADE_TO_BLACK
+	@drawfullscreenimage SCENEBGBRENDAN
 	msgbox LRT_BRENDAN_THANKS2 MSGBOX_DEFAULT
 	closemessage
-	clearfullscreenimage
+	@clearfullscreenimage
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
@@ -225,152 +217,15 @@ LRT_BrendanCANCEL::
 	end
 
 LRT_BrendanFZ::
+	call LRT_BH_CheckBrendanSnorunt
     msgbox LRT_DS_FZ_Brendan MSGBOX_DEFAULT
-	specialvar VAR_RESULT, IsSnoruntInParty
-	compare VAR_RESULT, TRUE
-	call_if_eq LRT_BH_CheckTraining
 	release
 	end
-	
-LRT_BH_CheckTraining::
-	goto_if_set FLAG_RYU_BRENDAN_GIFT2, LRT_BH_RcvGift2
-	msgbox LRT_BH_PullItOut
-	specialvar VAR_RESULT WhatStageIsGiftPoke
-	switch VAR_RESULT
-	case 0, ryu_end
-	case 1, LRT_BH_Untrained
-	case 2, LRT_BH_Glalie
-	case 3, LRT_BH_Froslass
-	release
-	end
-	
-LRT_BH_RcvGift2::
-	msgbox LRT_BH_HopeItsDoingWell
-	return
-
-	
-LRT_BH_HopeItsDoingWell:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I hope you and my Pokémon are doing\n"
-    .string "well together!$"
-
-	
-LRT_BH_Untrained::
-	playmoncry SPECIES_SNORUNT, 0
-	showmonpic SPECIES_SNORUNT, 10, 3
-	msgbox LRT_BH_YouShouldTrain
-	return
-	
-LRT_BH_Glalie::
-	playmoncry SPECIES_GLALIE, 0
-	showmonpic SPECIES_GLALIE, 10, 3
-	msgbox LRT_BH_WastedPotential
-	specialvar VAR_RESULT, DoesBrendanSnoruntHaveChampionRibbon
-	compare VAR_RESULT, TRUE
-	goto_if_eq LRT_BH_SnoruntIsChampionGlalie
-	msgbox LRT_BH_Thanks1
-	goto_if_set FLAG_RYU_BRENDAN_GIFT1, LRT_BH_RcvGift1
-	msgbox LRT_BH_Vouchers
-	additem ITEM_RETRO_MAIL, 4
-	setflag FLAG_RYU_BRENDAN_GIFT1
-	hidemonpic
-	return
-	
-LRT_BH_RcvGift1::
-	msgbox LRT_BH_GiftRcvMsg
-	hidemonpic
-	return
-	
-LRT_BH_GiftRcvMsg:
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}It seems like it's doing well!\n"
-    .string "Bring it back and show me if it\l"
-    .string "accomplishes anything else!$"
-
-	
-LRT_BH_Froslass::
-	playmoncry SPECIES_FROSLASS, 0
-	showmonpic SPECIES_FROSLASS, 10, 3
-	msgbox LRT_BH_BeautifulPokemon
-	specialvar VAR_RESULT, DoesBrendanSnoruntHaveChampionRibbon
-	compare VAR_RESULT, TRUE
-	goto_if_eq LRT_BH_SnoruntIsChampionFroslass
-	msgbox LRT_BH_Thanks1
-	closemessage
-	goto_if_set FLAG_RYU_BRENDAN_GIFT1, LRT_BH_RcvGift1
-	msgbox LRT_BH_Vouchers
-	additem ITEM_RETRO_MAIL, 4
-	setflag FLAG_RYU_BRENDAN_GIFT1
-	hidemonpic
-	return
-	
-LRT_BH_SnoruntIsChampionGlalie::
-	msgbox LRT_BH_GlalieChampionMsg
-	closemessage
-	additem ITEM_SCOPE_LENS
-	hidemonpic
-	clearflag FLAG_RYU_DS_BRENDAN_ACQ
-	setflag FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS
-	setflag FLAG_RYU_BRENDAN_GIFT2
-	return
-	
-LRT_BH_SnoruntIsChampionFroslass::
-	msgbox LRT_BH_FroslassChampionMsg
-	closemessage
-	additem ITEM_LIFE_ORB
-	hidemonpic
-	clearflag FLAG_RYU_DS_BRENDAN_ACQ
-	setflag FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS
-	setflag FLAG_RYU_BRENDAN_GIFT2
-	return
 
 Brendan_FollowerQuery:
     .string "{COLOR LIGHT_RED}{SHADOW RED}I know we should have done\n"
     .string "this earlier... but\p"
     .string "Can we travel together for a while?$"
-
-	
-LRT_BH_PullItOut:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}If you have Snorunt with you, pull\n"
-    .string "it out. I wanna see how its doing!$"
-
-LRT_BH_YouShouldTrain:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}You should train it more.\p"
-    .string "It has a lot of untapped potential.$"
-	
-LRT_BH_Thanks1:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Well, thanks for showing it to me.\pIt's nice to see it once in a while!$"
-	
-LRT_BH_Vouchers:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Here, take some tutor vouchers.\n"
-    .string "They will probably be useful to you!$"
-
-LRT_BH_WastedPotential:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}I see you evolved it into Glalie.\p"
-    .string "That's cool, but it doesn't have\n"
-    .string "a good nature for that. Thanks for\p"
-    .string "taking care of my Pokémon, anyways\n"
-    .string "It looks quite happy!$"
-
-LRT_BH_BeautifulPokemon:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, you evolved it into\p"
-    .string "Froslass! That's Awesome!\n"
-    .string "It's a beautiful Pokémon, befitting\l"
-    .string "a beautiful Pokémon trainer!$"	
-	
-LRT_BH_FroslassChampionMsg:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh wow, It has the champion ribbon too!\n"
-    .string "I bet it worked real hard for you\l"
-    .string "to get that!\p"
-	.string "Here, take this. From me!\n"
-	.string "When holding this item, the Pokémon\p"
-	.string "will do a lot more damage if it\n"
-	.string "really likes you!$"
-	
-LRT_BH_GlalieChampionMsg:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh wow, It has the champion ribbon too!\n"
-    .string "I bet it worked real hard for you\l"
-    .string "to get that!\p"
-	.string "Here, take this. It'll make its\n"
-	.string "critical hits Really hurt!$"
 
 LRT_BrendanBADEND:
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Sadness and disappointment are\n evident on his face as you turn\l away.)$"
@@ -451,6 +306,78 @@ LRT_BrendanHEART3:
 LRT_BrendanTURN:
     walk_right
 	step_end
+
+
+@========================================================Check out brendan's gift pokemon
+
+LRT_BH_CheckBrendanSnorunt::@technically speaking, if the player doesn't show the gift mon before becoming champion, first reward is unobtainable. But its okay.
+	goto_if_unset FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_return @player never received the gift mon to begin with
+	msgbox LRT_BH_PullOutGiftMon
+	closemessage
+	specialvar VAR_RESULT, CheckRivalGiftMonStatus @Automagically assumes player gender from the save block.
+	switch VAR_RESULT@Reverse order because things are checked the other way around. Champion flag most important.
+	case 5, LRT_BH_ChampionGiftMon @doesn't matter if player evolved it to glalie, player took it to championship, rival is happy
+	case 3, LRT_BH_Glalie @player evolved snorunt into glalie, rival a little disappointed because of wasted potential
+	case 2, LRT_BH_Froslass @Optimal choice
+	case 1, LRT_BH_Snorunt @player has done nothing with the mon. Sad Rival.
+	case 0, ryu_return @player doesn't have the gift mon with them. Sad Rival.
+	goto ryu_return @prevents UB
+	
+LRT_BH_ChampionGiftMon::
+	msgbox LRT_BH_ChampionMon
+	closemessage
+	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN, ryu_return
+	giveitem ITEM_EXPERT_BELT
+	setflag FLAG_RYU_DS_BRENDAN_PARTNERS @alternate way to get partner benefits without romance.
+	addvar VAR_RYU_PARTNER_COUNT, 1
+	setflag FLAG_RYU_DS_HAS_PARTNER
+	setflag FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN
+	return
+	
+LRT_BH_Glalie::
+	showmonpic SPECIES_GLALIE, 10, 3
+	playmoncry SPECIES_GLALIE, 0
+	waitmoncry
+	msgbox LRT_BH_IsGlalie
+	closemessage
+	hidemonpic
+	return
+	
+LRT_BH_Froslass::
+	showmonpic SPECIES_FROSLASS, 10, 3
+	playmoncry SPECIES_FROSLASS, 0
+	waitmoncry
+	msgbox LRT_BH_IsFroslass
+	closemessage
+	hidemonpic
+	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_1_GIVEN, ryu_return
+	giveitem ITEM_NEVER_MELT_ICE
+	setflag FLAG_RYU_RIVAL_POKEMON_REWARD_1_GIVEN
+	return
+	
+LRT_BH_Snorunt::
+	showmonpic SPECIES_SNORUNT, 10, 3
+	playmoncry SPECIES_SNORUNT, 0
+	waitmoncry
+	msgbox LRT_BH_Unchanged
+	hidemonpic
+	closemessage
+	return
+	
+LRT_BH_PullOutGiftMon:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Pull out Snorunt so I can see\nhow its doing!$"
+	
+LRT_BH_ChampionMon:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh hey, you took it to the\nchampionship!\pThat's great! I definitely made the\nright call.\pHere, take this gift from me!$"
+	
+LRT_BH_IsGlalie:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hmm... Evolving it to Glalie wastes\nso much potential.\pOh well, I'm happy you are\nraising it anyhow.$"
+	
+LRT_BH_IsFroslass:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, awesome!\pFroslass is such a beautiful pokemon.\pIt fits in with its equally\nbeautiful trainer!\pHere, take this gift!$"
+	
+LRT_BH_Unchanged:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Well it looks happy enough, but\nwhen are you going to train it?$"
 	
 @========================================================Leaf Events
 	

@@ -234,11 +234,6 @@ gSpecials:: @ 81DBA64
 	def_special BufferMoveDeleterNicknameAndMove
 	def_special GetNumMovesSelectedMonHas
 	def_special TeachMoveRelearnerMove
-	def_special GetRecordedCyclingRoadResults
-	def_special Special_BeginCyclingRoadChallenge
-	def_special GetPlayerAvatarBike
-	def_special FinishCyclingRoadChallenge
-	def_special UpdateCyclingRoadState
 	def_special GetLeadMonFriendshipScore
 	def_special CallFrontierUtilFunc
 	def_special CallBattleTowerFunc
@@ -543,18 +538,8 @@ gSpecials:: @ 81DBA64
 	def_special RyuSetEVSPE
 	def_special RyuDevCheck
 	def_special RyuDawnGiftPoke
-	def_special IsSneaselInParty
-	def_special DoesDawnSneaselHaveChampionRibbon
-	def_special IsSneaselWeavile
-	def_special IsSneaselTrainedNotChampion
-	def_special IsSnoruntInParty
-	def_special IsSnoruntTrainedNotChampion
-	def_special DoesBrendanSnoruntHaveChampionRibbon
 	def_special WhatStageIsGiftPoke
 	def_special RyuBrendanGiftPoke
-	def_special RyuCountLaps
-	def_special RyuIncrementLapCount
-	def_special ResetCyclingRoadChallengeData
 	def_special RyuSetMonMove
 	def_special RyuIvSetter
 	def_special RyuSetFriendship
@@ -610,4 +595,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuBufferQuestVars
 	def_special DoWhiteOut
 	def_special DoPartnerWhiteOut
+	def_special CheckRivalGiftMonStatus
+	def_special RyuGetTimeOfDay
 

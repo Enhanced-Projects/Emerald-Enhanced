@@ -186,8 +186,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	@setflag FLAG_TEMP_6
-	trainerbattle_no_intro TRAINER_OVERLORD_RYU_REMATCH, ryu_end
+	setvar VAR_ASH_GATHER_COUNT 9000
 	release
 	end
 
@@ -361,13 +360,13 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
-    givemon SPECIES_MEGA_MAWILE, 125, ITEM_EXPERT_BELT
-	givemon SPECIES_VOLCANION, 125, ITEM_EXPERT_BELT
+    givemon SPECIES_MEGA_ABSOL, 125, ITEM_SCOPE_LENS
+	givemon SPECIES_MEGA_GARDEVOIR, 125, ITEM_EXPERT_BELT
 	setmonmove 0, 0, MOVE_CRUNCH
 	setmonmove 0, 1, MOVE_IRON_HEAD
 	setmonmove 0, 2, MOVE_PLAY_ROUGH
 	setmonmove 0, 3, MOVE_CLOSE_COMBAT
-	setmonmove 1, 0, MOVE_SURF
+	setmonmove 1, 0, MOVE_PSYCHIC
 	setmonmove 1, 1, MOVE_FLAMETHROWER
 	setmonmove 1, 2, MOVE_EARTH_POWER
 	setmonmove 1, 3, MOVE_PARABOLIC_CHARGE

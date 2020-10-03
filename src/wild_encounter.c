@@ -43,7 +43,6 @@ static bool8 IsWildLevelAllowedByRepel(u8 level);
 static void ApplyFluteEncounterRateMod(u32 *encRate);
 static void ApplyCleanseTagEncounterRateMod(u32 *encRate);
 static bool8 TryGetAbilityInfluencedWildMonIndexFromTable(const struct WildPokemon *wildMon, u8 *monIndex, u8 encounterType);
-static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, u8 type, u8 ability, u8 *monIndex);
 static bool8 IsAbilityAllowingEncounter(u8 level);
 
 // EWRAM vars
@@ -149,29 +148,35 @@ static void FeebasSeedRng(u16 seed)
     sFeebasRngValue = seed;
 }
 
+/**
+ * The constants for ENCOUNTER_CHANCE_SLOT_X are sorted
+ * and checked from lowest to highest,
+ * so when rand < SLOT_1 is reached,
+ * rand is guaranteed to be greater or equal to SLOT_0.
+ */
 static u8 ChooseWildMonIndex_Land(void)
 {
     u8 rand = Random() % ENCOUNTER_CHANCE_LAND_MONS_TOTAL;
 
     if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_0)
         return 0;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_1)
+    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_1)
         return 1;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_1 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_2)
+    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_2)
         return 2;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_2 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_3)
+    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_3)
         return 3;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_3 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_4)
+    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_4)
         return 4;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_4 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_5)
+    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_5)
         return 5;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_5 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_6)
+    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_6)
         return 6;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_6 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_7)
+    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_7)
         return 7;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_7 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_8)
+    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_8)
         return 8;
-    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_8 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_9)
+    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_9)
         return 9;
     else if (rand == ENCOUNTER_CHANCE_LAND_MONS_SLOT_9)
         return 10;
@@ -185,11 +190,11 @@ static u8 ChooseWildMonIndex_WaterRock(void)
 
     if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_0)
         return 0;
-    else if (rand >= ENCOUNTER_CHANCE_WATER_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_1)
+    else if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_1)
         return 1;
-    else if (rand >= ENCOUNTER_CHANCE_WATER_MONS_SLOT_1 && rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_2)
+    else if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_2)
         return 2;
-    else if (rand >= ENCOUNTER_CHANCE_WATER_MONS_SLOT_2 && rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_3)
+    else if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_3)
         return 3;
     else
         return 4;
@@ -198,8 +203,13 @@ static u8 ChooseWildMonIndex_WaterRock(void)
 static u8 ChooseWildMonIndex_Fishing(u8 rod)
 {
     u8 wildMonIndex = 0;
-    u8 rand = Random() % max(max(ENCOUNTER_CHANCE_FISHING_MONS_OLD_ROD_TOTAL, ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_TOTAL),
-                             ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_TOTAL);
+    u8 rand = Random() % max(
+        max(
+            ENCOUNTER_CHANCE_FISHING_MONS_OLD_ROD_TOTAL,
+            ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_TOTAL
+        ),
+        ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_TOTAL
+    );
 
     switch (rod)
     {
@@ -212,19 +222,19 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
     case GOOD_ROD:
         if (rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_2)
             wildMonIndex = 2;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_2 && rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_3)
+        if (rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_3)
             wildMonIndex = 3;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_3 && rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_4)
+        if (rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_4)
             wildMonIndex = 4;
         break;
     case SUPER_ROD:
         if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_5)
             wildMonIndex = 5;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_5 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6)
+        if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6)
             wildMonIndex = 6;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_7)
+        if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_7)
             wildMonIndex = 7;
-        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_7 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8)
+        if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8)
             wildMonIndex = 8;
         if (rand == ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8)
             wildMonIndex = 9;
@@ -241,16 +251,8 @@ static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon)
     u8 rand;
 
     // Make sure minimum level is less than maximum level
-    if (wildPokemon->maxLevel >= wildPokemon->minLevel)
-    {
-        min = wildPokemon->minLevel;
-        max = wildPokemon->maxLevel;
-    }
-    else
-    {
-        min = wildPokemon->maxLevel;
-        max = wildPokemon->minLevel;
-    }
+    min = min(wildPokemon->maxLevel, wildPokemon->minLevel);
+    max = max(wildPokemon->maxLevel, wildPokemon->minLevel);
     range = max - min + 1;
     rand = Random() % range;
 
@@ -404,15 +406,38 @@ enum
 #define WILD_CHECK_REPEL    0x1
 #define WILD_CHECK_KEEN_EYE 0x2
 
+/*
+ * Entry structure is as follows:
+ * {
+ *   {
+ *     <type attracted on land>,
+ *     <type attracted in water>,
+ *   },
+ *   TRUE to signal that this entry was set explicitly
+ * }
+ *
+ * Most of the entries in this array are not initialized and therefore default to:
+ * {{0, 0}, {0, 0}}
+ * which translates to
+ * {{TYPE_NORMAL, TYPE_NORMAL}, {FALSE, FALSE}}
+ * By setting the boolean in the second array to TRUE,
+ * we can differentiate between abilities that attract normal pokemon and uninitialized values.
+ *
+ * If we ever run out of memory, the size of this can be decreased by 25% by making it u8[ABILITIES_COUNT][3]
+ * and storing the boolean in that third field instead of having an additional dimension.
+ */
 static const u8 sTypeAttractionTable[ABILITIES_COUNT][2][2] =
 {
         [ABILITY_NORMALIZE] = {{TYPE_NORMAL, TYPE_NONE}, {TRUE}},
         [ABILITY_SIMPLE] = {{TYPE_NORMAL, TYPE_NONE}, {TRUE}},
         [ABILITY_DROUGHT] = {{TYPE_FIRE, TYPE_NONE}, {TRUE}},
         [ABILITY_BLAZE] = {{TYPE_FIRE, TYPE_NONE}, {TRUE}},
+        [ABILITY_FLASH_FIRE] = {{TYPE_FIRE, TYPE_NONE}, {TRUE}},
         [ABILITY_DRIZZLE] = {{TYPE_WATER, TYPE_WATER}, {TRUE}},
         [ABILITY_DAMP] = {{TYPE_WATER, TYPE_WATER}, {TRUE}},
+        [ABILITY_STORM_DRAIN] = {{TYPE_WATER, TYPE_WATER}, {TRUE}},
         [ABILITY_FLOWER_VEIL] = {{TYPE_GRASS, TYPE_NONE}, {TRUE}},
+        [ABILITY_HARVEST] = {{TYPE_GRASS, TYPE_NONE}, {TRUE}},
         [ABILITY_OVERGROW] = {{TYPE_GRASS, TYPE_NONE}, {TRUE}},
         [ABILITY_GRASSY_SURGE] = {{TYPE_GRASS, TYPE_NONE}, {TRUE}},
         [ABILITY_STATIC] = {{TYPE_ELECTRIC, TYPE_ELECTRIC}, {TRUE}},
@@ -449,30 +474,19 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
 {
     u8 wildMonIndex = 0;
     u8 level;
-    u8 iv = 31;
     u8 ability = 2;
     u8 newLevel = 0;
 
     switch (area)
     {
     case WILD_AREA_LAND:
-        if (TryGetAbilityInfluencedWildMonIndexFromTable(wildMonInfo->wildPokemon, &wildMonIndex, 0))
+        if (TryGetAbilityInfluencedWildMonIndexFromTable(wildMonInfo->wildPokemon, &wildMonIndex, area))
             break;
-        
         wildMonIndex = ChooseWildMonIndex_Land();
         break;
     case WILD_AREA_WATER:
-        if (TryGetAbilityInfluencedWildMonIndexFromTable(wildMonInfo->wildPokemon, &wildMonIndex, 1))
+        if (TryGetAbilityInfluencedWildMonIndexFromTable(wildMonInfo->wildPokemon, &wildMonIndex, area))
             break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_LIGHTNING_ROD, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_FIRE, ABILITY_FLASH_FIRE, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_GRASS, ABILITY_HARVEST, &wildMonIndex))
-            break;
-        if (TryGetAbilityInfluencedWildMonIndex(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_STORM_DRAIN, &wildMonIndex))
-            break;
-
         wildMonIndex = ChooseWildMonIndex_WaterRock();
         break;
     case WILD_AREA_ROCKS:
@@ -488,6 +502,7 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
     {
         u8 val[1] = {TRUE};
         u8 newAbility = (Random() % 2);
+        u8 iv = 31;
         FlagSet(FLAG_RYU_BOSS_WILD);
         CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
         ShowFieldMessage(gText_PowerfulWildAppears);
@@ -500,15 +515,15 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
         SetMonData(&gEnemyParty[0], MON_DATA_LEVEL, &newLevel);
         SetMonData(&gEnemyParty[0], MON_DATA_GIFT_RIBBON_7, val);
         SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &ability);
+        // If the pokemon has no hidden ability, set it to a random ability
         if (GetMonAbility(&gEnemyParty[0]) == ABILITY_NONE)
-            {
-                SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &newAbility);
-            }
+            SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &newAbility);
 
+        // If the random ability was also none
+        // (if the random ability was 1 but only one ability is defined),
+        // set it to the default ability (whichever is defined at position 0)
         if (GetMonAbility(&gEnemyParty[0]) == ABILITY_NONE)
-            {
-                SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &newAbility);
-            }
+            SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, 0);
         
         CalculateMonStats(&gEnemyParty[0]);
     }
@@ -625,17 +640,6 @@ static bool8 DoGlobalWildEncounterDiceRoll(void)
         return TRUE;
 }
 
-//static bool8 AreLegendariesInSootopolisPreventingEncounters(void)
-//{
-//    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(SOOTOPOLIS_CITY)
-//     || gSaveBlock1Ptr->location.mapNum != MAP_NUM(SOOTOPOLIS_CITY))
-//    {
-//        return FALSE;
-//    }
-//
-//    return FlagGet(FLAG_LEGENDARIES_IN_SOOTOPOLIS);
-//}
-//
 bool8 RyuCheckForDarkGrass(void)
 {
     u16 pX = gSaveBlock1Ptr->location.x;
@@ -748,8 +752,6 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
         else if (MetatileBehavior_IsWaterWildEncounter(currMetaTileBehavior) == TRUE
                  || (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING) && MetatileBehavior_IsBridge(currMetaTileBehavior) == TRUE))
         {
-//            if (AreLegendariesInSootopolisPreventingEncounters() == TRUE)
-//                return FALSE;
             if (gWildMonHeaders[headerId].waterMonsInfo == NULL)
                 return FALSE;
             else if (previousMetaTileBehavior != currMetaTileBehavior && !DoGlobalWildEncounterDiceRoll())
@@ -876,8 +878,6 @@ bool8 SweetScentWildEncounter(void)
         }
         else if (MetatileBehavior_IsWaterWildEncounter(MapGridGetMetatileBehaviorAt(x, y)) == TRUE)
         {
-//            if (AreLegendariesInSootopolisPreventingEncounters() == TRUE)
-//                return FALSE;
             if (gWildMonHeaders[headerId].waterMonsInfo == NULL)
                 return FALSE;
 
@@ -1042,24 +1042,29 @@ static bool8 IsAbilityAllowingEncounter(u8 level)
     return TRUE;
 }
 
-static bool8 TryGetRandomWildMonIndexByType(const struct WildPokemon *wildMon, u8 type, u8 numMon, u8 *monIndex)
+// Mutable static to avoid reallocations.
+// Only used in the function below.
+static u8 validIndicesForWildMonByType[max(LAND_WILD_COUNT, WATER_WILD_COUNT)];
+
+static bool8 TryGetRandomWildMonIndexByType(const struct WildPokemon *wildMon, u8 type, u8 numMons, u8 *monIndex)
 {
-    u8 validIndexes[numMon]; // variable length array, an interesting feature
-    u8 i, validMonCount;
-
-    for (i = 0; i < numMon; i++)
-        validIndexes[i] = 0;
-
-    for (validMonCount = 0, i = 0; i < numMon; i++)
+    u8 validMonCount, currentMon;
+    // zero the relevant portion of the array before reuse
+    for (currentMon = 0; currentMon < numMons; currentMon++)
     {
-        if (gBaseStats[wildMon[i].species].type1 == type || gBaseStats[wildMon[i].species].type2 == type)
-            validIndexes[validMonCount++] = i;
+        validIndicesForWildMonByType[currentMon] = 0;
     }
 
-    if (validMonCount == 0 || validMonCount == numMon)
+    for (validMonCount = 0, currentMon = 0; currentMon < numMons; currentMon++)
+    {
+        if (gBaseStats[wildMon[currentMon].species].type1 == type || gBaseStats[wildMon[currentMon].species].type2 == type)
+            validIndicesForWildMonByType[validMonCount++] = currentMon;
+    }
+
+    if (validMonCount == 0 || validMonCount == numMons)
         return FALSE;
 
-    *monIndex = validIndexes[Random() % validMonCount];
+    *monIndex = validIndicesForWildMonByType[Random() % validMonCount];
     return TRUE;
 }
 
@@ -1071,37 +1076,21 @@ static const u8 sWildCount[] =
     FISH_WILD_COUNT
 };
 
+// Returns true if monIndex has been mutated.
 static bool8 TryGetAbilityInfluencedWildMonIndexFromTable(const struct WildPokemon *wildMon, u8 *monIndex, u8 encounterType)
 {
     u32 ability = GetMonAbility(&gPlayerParty[0]);
+    u8 attractedType = sTypeAttractionTable[ability][0][encounterType];
+    u8 currentAbilityDoesAttract = sTypeAttractionTable[ability][1][0];
 
     if (GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
-    {
         return FALSE;
-    }   
-    else if (sTypeAttractionTable[ability][0][encounterType] == TYPE_NONE || (sTypeAttractionTable[ability][0][encounterType] == 0 && sTypeAttractionTable[ability][1][0] == FALSE))
-    {
+    if (attractedType == TYPE_NONE || currentAbilityDoesAttract == FALSE)
         return FALSE;
-    }   
-    else if (Random() % 2 != 0)
-    {
-        return FALSE;
-    }   
-    
-    return TryGetRandomWildMonIndexByType(wildMon, sTypeAttractionTable[ability][0][encounterType], sWildCount[encounterType], monIndex);
-}
-
-
-static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, u8 type, u8 ability, u8 *monIndex)
-{
-    if (GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
-        return FALSE;
-    else if (GetMonAbility(&gPlayerParty[0]) != ability)
-        return FALSE;
-    else if (Random() % 2 != 0)
+    if (Random() % 2 != 0)
         return FALSE;
 
-    return TryGetRandomWildMonIndexByType(wildMon, type, LAND_WILD_COUNT, monIndex);
+    return TryGetRandomWildMonIndexByType(wildMon, attractedType, sWildCount[encounterType], monIndex);
 }
 
 static void ApplyFluteEncounterRateMod(u32 *encRate)

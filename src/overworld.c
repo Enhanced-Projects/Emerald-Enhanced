@@ -475,7 +475,6 @@ static void Overworld_ResetStateAfterWhiteOut(void)
 static void sub_8084788(void)
 {
     ChooseAmbientCrySpecies();
-    ResetCyclingRoadChallengeData();
     UpdateLocationHistoryForRoamer();
     RoamerMoveToOtherLocationSet();
 }
@@ -847,7 +846,6 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     LoadObjEventTemplatesFromHeader();
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
-    ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
     DoTimeBasedEvents();
     SetSav1WeatherFromCurrMapHeader();
@@ -900,7 +898,6 @@ static void LoadMapFromWarp(bool32 a1)
     CheckLeftFriendsSecretBase();
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
-    ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
     if (a1 != 1)
         DoTimeBasedEvents();

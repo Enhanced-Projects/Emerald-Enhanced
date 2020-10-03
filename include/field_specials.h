@@ -26,10 +26,10 @@ bool8 InPokemonCenter(void);
 void SetShoalItemFlag(u16 unused);
 void UpdateFrontierManiac(u16 daysSince);
 void UpdateFrontierGambler(u16 daysSince);
-void ResetCyclingRoadChallengeData(void);
 bool8 UsedPokemonCenterWarp(void);
 void ResetFanClub(void);
 bool8 ShouldShowBoxWasFullMessage(void);
 void SetPCBoxToSendMon(u8 boxId);
+int RyuGetTimeOfDay(void);
 
 #endif // GUARD_FIELD_SPECIALS_H
