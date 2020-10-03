@@ -5386,7 +5386,7 @@ bool8 RyuFollowerToTrainerID(void)
 void FillTheDex(void)
 {
     u16 i = 0;
-    u16 idno = 644; // this breaks if/when pokemon are added
+    u16 idno = NATIONAL_DEX_COUNT; // this breaks if/when pokemon are added
     for (i = 0; i < idno; i++)
     {
         GetSetPokedexFlag(i, FLAG_SET_CAUGHT);
