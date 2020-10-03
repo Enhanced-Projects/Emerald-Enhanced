@@ -10,9 +10,6 @@ LRT_DawnAfterLilycoveSequence:: @ 81F951D
 	faceplayer
 	goto_if_set FLAG_RYU_DS_DAWN_LOVERS, LRT_NIGHT2
 	goto_if_set FLAG_RYU_DS_DAWN_ACQ, LRT_FZ
-	specialvar VAR_RESULT, IsSneaselInParty
-	compare VAR_RESULT, 1
-	call_if_eq LRT_RivalsPokemonIsInParty
 	msgbox LRT_DAWN_SORRYKISSED, MSGBOX_DEFAULT
 	msgbox LRT_DAWN_KISS, MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -22,61 +19,6 @@ LRT_DawnAfterLilycoveSequence:: @ 81F951D
 	goto LRT_NIGHT
 	release
 	end
-	
-LRT_RivalsPokemonIsInParty::
-    goto_if_unset FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, LRT_NotReceived
-	setflag FLAG_RYU_DS_DAWN_CLOSEFRIENDS
-	msgbox LRT_RivalHappy MSGBOX_DEFAULT
-	msgbox LRT_KeepQuery MSGBOX_YESNO
-	compare VAR_RESULT, 0
-	goto_if_eq LRT_RivalLetDown
-	msgbox LRT_ThanksForRaisingPokemon MSGBOX_DEFAULT
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
-	goto LRT_NIGHT
-	
-LRT_NotReceived::
-	setflag FLAG_RYU_DAWN_GIFTPOKE_RECEIVED
-	msgbox LRT_DAWN_SORRYKISSED, MSGBOX_DEFAULT
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
-	msgbox LRT_DAWN_KISS, MSGBOX_YESNO
-	nop
-    compare VAR_RESULT, 1
-	goto_if_eq LRT_WONT_HAPPEN
-    setflag	FLAG_RYU_DS_DAWN_CLOSEFRIENDS
-	msgbox LRT_HAPPY, MSGBOX_DEFAULT
-	goto LRT_NIGHT
-	release
-	end
-	
-LRT_RivalLetDown::
-	msgbox LRT_RLD MSGBOX_DEFAULT
-	goto LRT_NotReceived
-	
-LRT_RLD:
-	.string "Well at least it got to stretch a\n"
-	.string "little bit, I don't think I'd have\p"
-	.string "been able to train it at all. \n"
-	.string "thanks for keeping it company\p"
-	.string "So, anyways...$"
-	
-LRT_RivalHappy:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}I'm so glad you decided to\n"
-	.string "raise Sneasel. It really needed a\p"
-	.string "masculine touch.$"
-
-LRT_KeepQuery:
-	.string "Do you plan on keeping it for\p"
-	.string "the rest of your quest to \n"
-	.string "become the Hoenn Master?$"
-	
-LRT_ThanksForRaisingPokemon:
-	.string "Awesome. I think it'll be a great\n"
-	.string "addition to your team!\p"
-	.string "... ... ...\n"
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(her face flushes a little)\p"
-	.string "umm...$"
 
 LRT_WONT_HAPPEN::
 	setflag FLAG_RYU_DAWN_GIFTPOKE_RECEIVED @Makes it impossible to get the sneasel after this event.
@@ -141,7 +83,6 @@ LRT_NIGHT2::
 	applymovement OBJ_EVENT_ID_PLAYER, LRT_HEART
 	delay 20
 	fadescreen FADE_TO_BLACK
-	
 	fadeoutbgm 1
 	special HealPlayerParty
 	delay 20
@@ -277,8 +218,6 @@ LRT_HEART3:
 LRT_TURN:
     walk_left
 	step_end
-
-	@goto_if_set FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE, LittlerootTown_BrendansHouse_2F_EventScript_1F954A
 
 EventScript_PlayerPCFemale:: @ 81F9553
 	lockall
