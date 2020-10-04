@@ -4259,6 +4259,7 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_ENDURE)),
 
     [SPECIES_SAMUROTT]      = TUTOR_LEARNSET(TUTOR(MOVE_METRONOME)
+											| TUTOR(MOVE_LIQUIDATION)
 											| TUTOR(MOVE_HELPING_HAND)
 											| TUTOR(MOVE_ENDURE)),
 
