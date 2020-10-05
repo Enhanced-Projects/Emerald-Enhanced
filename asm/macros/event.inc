@@ -1734,6 +1734,8 @@
 	.2byte \var2
 	.endm
 
+	@Checks if player has species in their party. If so, VAR_RESULT is true,
+	@and the slot number is loaded into VAR_TEMP_F. Using the slot number is optional.
 	.macro checkspecies species:req
 	.byte 0xf7
 	.2byte \species

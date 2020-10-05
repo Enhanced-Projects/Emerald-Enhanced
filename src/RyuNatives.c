@@ -904,9 +904,12 @@ bool8 ScrCmd_checkspecies(struct ScriptContext *ctx)
     for (i = 0; i < CalculatePlayerPartyCount(); i++)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == speciesId)
+        {
             gSpecialVar_Result = TRUE;
+            VarSet(VAR_TEMP_F, i);
+            return TRUE
+        }
     }
-    gSpecialVar_Result = FALSE;
     return TRUE;
 }
 
