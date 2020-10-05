@@ -907,7 +907,7 @@ bool8 ScrCmd_checkspecies(struct ScriptContext *ctx)
         {
             gSpecialVar_Result = TRUE;
             VarSet(VAR_TEMP_F, i);
-            return TRUE
+            return TRUE;
         }
     }
     return TRUE;
