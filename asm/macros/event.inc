@@ -1728,6 +1728,12 @@
 	.byte 0xf5
 	.endm
 
+	.macro addvars var1:req, var2:req
+	.byte 0xf6
+	.2byte \var1
+	.2byte \var2
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req
