@@ -352,45 +352,6 @@ void RyuClearStringVars(void)
     StringCopy(gRyuStringVar2, gText_EmptyString2);
 }
 
-void RyuIvChecker(void)
-{
-    u8 HpIv, AtkIv, DefIv, SpAtkIv, SpDefIv, SpdIv;
-
-    RyuClearStringVars();
-    HpIv = GetMonData(&gPlayerParty[0], MON_DATA_HP_IV);
-    DefIv = GetMonData(&gPlayerParty[0], MON_DATA_DEF_IV);
-    SpDefIv = GetMonData(&gPlayerParty[0], MON_DATA_SPDEF_IV);
-    AtkIv = GetMonData(&gPlayerParty[0], MON_DATA_ATK_IV);
-    SpAtkIv = GetMonData(&gPlayerParty[0], MON_DATA_SPATK_IV);
-    SpdIv = GetMonData(&gPlayerParty[0], MON_DATA_SPEED_IV);
-    ConvertIntToDecimalStringN(gStringVar1, HpIv, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, AtkIv, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar3, DefIv, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar1, SpAtkIv, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar2, SpDefIv, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar3, SpdIv, STR_CONV_MODE_LEFT_ALIGN, 3);
-}
-
-void RyuEvChecker(void)
-{
-    u8 HpEv, AtkEv, DefEv, SpAtkEv, SpDefEv, SpdEv;
-
-    RyuClearStringVars();
-    HpEv = GetMonData(&gPlayerParty[0], MON_DATA_HP_EV);
-    DefEv = GetMonData(&gPlayerParty[0], MON_DATA_DEF_EV);
-    SpDefEv = GetMonData(&gPlayerParty[0], MON_DATA_SPDEF_EV);
-    AtkEv = GetMonData(&gPlayerParty[0], MON_DATA_ATK_EV);
-    SpAtkEv = GetMonData(&gPlayerParty[0], MON_DATA_SPATK_EV);
-    SpdEv = GetMonData(&gPlayerParty[0], MON_DATA_SPEED_EV);
-    ConvertIntToDecimalStringN(gStringVar1, HpEv, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar1, AtkEv, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, DefEv, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar1, SpAtkEv, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar2, SpDefEv, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar3, SpdEv, STR_CONV_MODE_LEFT_ALIGN, 3);
-}
-
-
 void RyuIvSetter(void)
 {
     u8 iv = 31;
@@ -544,19 +505,6 @@ void RyuSetIVs(void)
     SetMonData(&gPlayerParty[1], MON_DATA_ABILITY_NUM, &ab);
     CalculateMonStats(&gPlayerParty[1]);
     CalculateMonStats(&gPlayerParty[0]);
-}
-
-bool8 IsWailordInParty(void)
-{
-    u8 i;
-    u8 partyCount = CalculatePlayerPartyCount();
-    
-    for (i = 0; i < partyCount; i++)
-    {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_WAILORD)
-            return TRUE;
-    }
-    return FALSE;
 }
 
 void RyuWarp()
@@ -948,6 +896,20 @@ bool8 ScrCmd_clearfullscreenimage(struct ScriptContext *ctx)
     return TRUE;
 }
 
+bool8 ScrCmd_checkspecies(struct ScriptContext *ctx)
+{
+    u16 speciesId = VarGet(ScriptReadHalfword(ctx));
+    u8 i;
+
+    for (i = 0; i < CalculatePlayerPartyCount(); i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == speciesId)
+            gSpecialVar_Result = TRUE;
+    }
+    gSpecialVar_Result = FALSE;
+    return TRUE;
+}
+
 static EWRAM_DATA u8 specialCutsceneSprite = 0;
 
 bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)
@@ -994,7 +956,7 @@ bool8 ScrCmd_addmonhappiness(struct ScriptContext *ctx)
 
 //Follower related
 
-bool8 RyuFollowerToTrainerID(void)
+bool8 RyuFollowerToTrainerID(void)//this function fills in the necessary temporary variables for setting up partner multibattles
 {
     if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
     {
@@ -1002,42 +964,42 @@ bool8 RyuFollowerToTrainerID(void)
         {
         case OBJ_EVENT_GFX_TWIN:
             gSpecialVar_0x8008 = TRAINER_REL_MINNIE;
-                gSpecialVar_0x8009 = TRAINER_BACK_PIC_MINNIE;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_MINNIE;
             return TRUE;
             break;
         case OBJ_EVENT_GFX_WOMAN_2:
             gSpecialVar_0x8008 = TRAINER_REL_LANETTE;
-                gSpecialVar_0x8009 = TRAINER_BACK_PIC_LANETTE; 
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_LANETTE; 
             return TRUE;
             break;
         case OBJ_EVENT_GFX_AQUA_MEMBER_F:
             gSpecialVar_0x8008 = TRAINER_REL_SHELLY;
-                gSpecialVar_0x8009 = TRAINER_BACK_PIC_SHELLY;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_SHELLY;
             return TRUE;
             break;
         case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
             gSpecialVar_0x8008 = TRAINER_REL_DAWN;
-                gSpecialVar_0x8009 = TRAINER_BACK_PIC_DAWN;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_DAWN;
             return TRUE;
             break;
         case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
             gSpecialVar_0x8008 = TRAINER_REL_BRENDAN;
-                gSpecialVar_0x8009 = TRAINER_BACK_PIC_BRENDAN;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_BRENDAN;
             return TRUE;
             break;
         case OBJ_EVENT_GFX_LEAF:
             gSpecialVar_0x8008 = TRAINER_REL_LANA;
-                gSpecialVar_0x8009 = TRAINER_BACK_PIC_LEAF;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_LEAF;
             return TRUE;
             break;
         case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
             gSpecialVar_0x8008 = TRAINER_REL_COURTNEY_2;
-                gSpecialVar_0x8009 = TRAINER_BACK_PIC_COURTNEY;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_COURTNEY;
             return TRUE;
             break;
         case OBJ_EVENT_GFX_NURSE:
             gSpecialVar_0x8008 = TRAINER_REL_NURSE;
-                gSpecialVar_0x8009 = TRAINER_BACK_PIC_NURSE;
+            gSpecialVar_0x8009 = TRAINER_BACK_PIC_NURSE;
             return TRUE;
             break;
         }
@@ -1048,24 +1010,13 @@ bool8 RyuFollowerToTrainerID(void)
 void FillTheDex(void)
 {
     u16 i = 0;
-    u16 idno = NATIONAL_DEX_COUNT; // this breaks if/when pokemon are added
+    u16 idno = NATIONAL_DEX_COUNT;
     for (i = 0; i < idno; i++)
     {
         GetSetPokedexFlag(i, FLAG_SET_CAUGHT);
         GetSetPokedexFlag(i, FLAG_SET_SEEN);
     }
     
-}
-
-bool8 CheckPlayerHasDarmanitan(void)
-{
-    u8 i;
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_DARMANITAN)
-             return TRUE;
-    }
-    return FALSE;
 }
 
 bool8 ChangeDarmanitanForm(void)
@@ -1530,51 +1481,10 @@ bool8 RyuFillStatsBuffers(void)
     return TRUE;
 }
 
-bool8 TobyCheckPlayerHasMon(void)//called with "specialvar VAR_RESULT, TobyCheckPlayerHasMon"
-    {//                            then followed with a comparison like "compare VAR_RESULT TRUE"
-    u8 i;//                                                             "goto_if_eq YourScriptFunctionHere"
-    u8 partyCount = CalculatePlayerPartyCount();//                      "end"
-    
-    for (i = 0; i < partyCount; i++)
-        {
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_CRYOGONAL)//change species here
-            {
-                return TRUE;
-            }
-        }
-    return FALSE;
-    }
-
 void RyuSetUpSaveBlockStuff(void)
 {
     gSaveBlock1Ptr->registeredItem = ITEM_WAYSTONE;
     VarSet(VAR_RYU_THEME_NUMBER, 1);
-}
-
-EWRAM_DATA static u8 sDebugWindowId = 0xFF;
-EWRAM_DATA static u8 sDebugWindow2Id = 0xEE;
-static const u8 gText_HighlightTransparent[] = _("{HIGHLIGHT TRANSPARENT}");
-static const u8 gText_DarkTextColors[] = _("{COLOR LIGHT_GREY}{SHADOW DARK_GREY}");
-static const u8 gText_LightTextColors[] = _("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
-
-void RyuPrintDebugMessage(u8 *str)
-{
-    struct WindowTemplate template;
-    SetWindowTemplateFields(&template, 0, 0, 15, 15, 5, 15, 8);
-    sDebugWindowId = AddWindow(&template);
-    FillWindowPixelBuffer(sDebugWindowId, 0);
-    PutWindowTilemap(sDebugWindowId);
-    CopyWindowToVram(sDebugWindowId, 1);
-    StringCopy(gStringVar4, gText_DarkTextColors);
-    StringAppend(gStringVar4, str);
-    AddTextPrinterParameterized(sDebugWindowId, 0, gStringVar4, 0, 0, 0, NULL);
-}
-
-void RyuTestDebug(void)
-{
-    u8 gTextBuffer1[] = _("");
-    ConvertIntToDecimalStringN(gTextBuffer1, (VarGet(VAR_TEMP_0)), STR_CONV_MODE_LEFT_ALIGN, 3);
-    RyuPrintDebugMessage(gTextBuffer1);
 }
 
 void Ryu_ClearAquaSFCTrainerFlags(void)
@@ -1667,7 +1577,6 @@ void BotanyCheck(void)
 {
     u16 currentMapGroup = VarGet(VAR_TEMP_6);
     u16 reward1, reward2, reward3, reward4, reward5;
-    Random();//randomizes the rng
 
     switch (currentMapGroup)
     {

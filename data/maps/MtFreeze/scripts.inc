@@ -5,7 +5,7 @@ MtFreeze_MapScripts::
 MtFreeze_EntranceTrigger::
 	lock
 	goto_if_set FLAG_MT_FREEZE_OPENED, MtFreeze_Release
-	specialvar VAR_RESULT, TobyCheckPlayerHasMon
+	checkspecies SPECIES_CRYOGONAL
 	compare VAR_RESULT, TRUE
 	goto_if_eq MtFreeze_OpenEntrance1
 	releaseall

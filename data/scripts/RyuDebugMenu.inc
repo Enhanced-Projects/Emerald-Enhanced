@@ -178,7 +178,6 @@ RyuDebug_enableWaystone::
 RyuDebug_ViewTempVars::
 	special RyuCheckTempVars
 	msgbox RDB_TempVarsViewMsg
-	special RyuTestDebug
 	releaseall
 	end
 

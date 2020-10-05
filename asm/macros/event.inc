@@ -1734,6 +1734,11 @@
 	.2byte \var2
 	.endm
 
+	.macro checkspecies species:req
+	.byte 0xf7
+	.2byte \species
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

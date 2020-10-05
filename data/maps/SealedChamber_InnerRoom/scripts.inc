@@ -111,8 +111,8 @@ SCH_LanaEvent::
 	faceplayer
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1
-	specialvar VAR_RESULT, IsWailordInParty
-	compare VAR_RESULT, 1
+	checkspecies SPECIES_WAILORD
+	compare VAR_RESULT, TRUE
 	goto_if_ne SCH_LanaDispt
 	applymovement 1, Common_Movement_ExclamationMark
 	playse SE_PIN

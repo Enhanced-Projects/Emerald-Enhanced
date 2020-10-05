@@ -45,7 +45,7 @@ MT_Shanti::
 
 MT_ShantiFormChangeQuery::
 	msgbox MT_DarmanitanDeclined
-	specialvar VAR_RESULT, CheckPlayerHasDarmanitan
+	checkspecies SPECIES_DARMANITAN
 	compare VAR_RESULT, TRUE
 	goto_if_eq MT_PlayerhasDarmanitan
 	msgbox MT_Shanti_DarmanitanDesc

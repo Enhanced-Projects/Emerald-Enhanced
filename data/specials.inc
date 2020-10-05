@@ -528,8 +528,6 @@ gSpecials:: @ 81DBA64
 	def_special CloseDeptStoreElevatorWindow
 	def_special TrySetBattleTowerLinkType
 	def_special checkbadgecount
-	def_special RyuIvChecker
-	def_special RyuEvChecker
 	def_special RyuSetEVHP
 	def_special RyuSetEVATK
 	def_special RyuSetEVDEF
@@ -548,7 +546,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuGenerateReward
 	def_special RyuGiveKoutaMawile
 	def_special RyuSetIVs
-	def_special IsWailordInParty
 	def_special RyuWarp
 	def_special RyuWarp2
 	def_special RyuGiveExpUnloadBattery
@@ -576,7 +573,6 @@ gSpecials:: @ 81DBA64
 	def_special ForceSoftReset
 	def_special RyuMeloettaFormSwitcher
 	def_special SwapPlayerGender
-	def_special CheckPlayerHasDarmanitan
 	def_special ChangeDarmanitanForm
 	def_special RyuGetTrainerHillReward
 	def_special RyuCountGemOres
@@ -587,9 +583,7 @@ gSpecials:: @ 81DBA64
 	def_special RyuCheckRelMegaReward
 	def_special CountBadges
 	def_special RyuFillStatsBuffers
-	def_special TobyCheckPlayerHasMon
 	def_special RyuSetUpSaveBlockStuff
-	def_special RyuTestDebug
 	def_special ObjectEventInteractionFertilizeBerryTree
 	def_special RyuBufferQuestVars
 	def_special DoWhiteOut
