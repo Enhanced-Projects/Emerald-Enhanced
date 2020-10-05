@@ -1869,3 +1869,23 @@ gTilesetPalettes_Safari::
 	.align 2
 gTilesetTiles_Safari::
 	.incbin "data/tilesets/primary/safari/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_MirageIsland::
+	.incbin "data/tilesets/secondary/mirageisland/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/mirageisland/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/mirageisland/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/mirageisland/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/mirageisland/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/mirageisland/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/mirageisland/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/mirageisland/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/mirageisland/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/mirageisland/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/mirageisland/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/mirageisland/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/mirageisland/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_MirageIsland::
+	.incbin "data/tilesets/secondary/mirageisland/tiles.4bpp.lz"

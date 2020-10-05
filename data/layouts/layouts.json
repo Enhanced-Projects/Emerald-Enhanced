@@ -2627,7 +2627,7 @@
       "width": 80,
       "height": 40,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Cave",
+      "secondary_tileset": "gTileset_MirageIsland",
       "border_filepath": "data/layouts/Route130/border.bin",
       "blockdata_filepath": "data/layouts/Route130/map.bin"
     },
@@ -5160,6 +5160,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/DewfordTown_House3/border.bin",
       "blockdata_filepath": "data/layouts/DewfordTown_House3/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_CAVE",
+      "name": "MirageCave_Layout",
+      "width": 66,
+      "height": 55,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageIsland",
+      "border_filepath": "data/layouts/MirageCave/border.bin",
+      "blockdata_filepath": "data/layouts/MirageCave/map.bin"
     }
   ]
 }
