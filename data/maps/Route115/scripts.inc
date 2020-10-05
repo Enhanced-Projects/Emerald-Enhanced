@@ -306,11 +306,11 @@ r115_YourBestInterest:
 	.string "idea what you're talking about,\l"
 	.string "but you've got it all wrong.\p"
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Do I? Information has been leaking\n"
-	.string "out of Devon Corporation, and it's\p"
-	.string "suspected that the source is from\n"
-	.string "within...\p"
+	.string "out of Devon Corporation,\p"
+	.string "and it's suspected that the source\n"
+	.string "is from within...\p"
 	.string "Coupled with the fact that you've\n"
-	.string "been M.I.A. for over an hour now, \p"
+	.string "been M.I.A. for over an hour now,\p"
 	.string "and is found actively associating\n"
 	.string "with an Aqua member, the very same\l"
 	.string "one who stole the Devon Goods...\p"
@@ -321,30 +321,29 @@ r115_YourBestInterest:
 
 r115_BackThen:
 	.string "What I did back then was just an\n"
-	.string "assignment from Boss, nothing more\p"
-	.string "and nothing less. We didn't even\n"
-	.string "know each other until that day,\p"
-	.string "much less be able to communicate\n"
-	.string "with each other. I hadn't set foot\l"
-	.string "in Rustboro since!$"
+	.string "assignment from Boss, nothing more\l"
+	.string "and nothing less.\p"
+	.string "We didn't even know each other until\n"
+	.string "that day, much less be able to\l"
+	.string "communicate with each other.\p"
+	.string "I hadn't set foot in Rustboro since!$"
 
 r115_HowMeetUp:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Then, how did you two meet up?$"
 
 r115_ITakeBreasOutHere:
 	.string "I usually take my breaks out here,\n"
-	.string " away from city life, and just\p"
-	.string "stare at the ocean. One day, he\n"
-	.string "approached me, noticing how\l"
-	.string "frustrated I was at that time.\p"
+	.string "away from city life, and just\l"
+	.string "stare at the ocean.\p"
+	.string "One day, he approached me, noticing\n"
+	.string "how frustrated I was at that time.\p"
 	.string "Granted, I was afraid at first\n"
-	.string "but as we began talking and\p"
-	.string "venting, we opened up to each\n"
-	.string "other. And ever since then, we've\p"
-	.string "promised to meet right here. It's\n"
-	.string "through faith and trust in each\p"
-	.string "other that we continue to meet\n"
-	.string "like this.$"
+	.string "but as we began talking and venting\l"
+	.string "we opened up to each other\p"
+	.string "And ever since then, we've\n"
+	.string "promised to meet right here.\p"
+	.string "It's through faith and trust in each\n"
+	.string "other that we continue to meet.$"
 
 r115_WasntExpecting:
 	.string "Although, I really wasn't\n"
@@ -504,5 +503,4 @@ R115_RaikouGotAway::
 	end
 
 OverworldLegendary_IntroRaikou: @put your intro here
-	.string "$"
-
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ouch! You got zapped!$"

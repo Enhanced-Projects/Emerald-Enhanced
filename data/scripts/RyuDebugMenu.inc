@@ -363,13 +363,13 @@ RyuDebug_GiveAllBeginMsg:
 RyuDebug_quickstart::
     givemon SPECIES_MEGA_ABSOL, 125, ITEM_SCOPE_LENS
 	givemon SPECIES_MEGA_GARDEVOIR, 125, ITEM_EXPERT_BELT
-	setmonmove 0, 0, MOVE_CRUNCH
-	setmonmove 0, 1, MOVE_IRON_HEAD
-	setmonmove 0, 2, MOVE_PLAY_ROUGH
-	setmonmove 0, 3, MOVE_CLOSE_COMBAT
-	setmonmove 1, 0, MOVE_PSYCHIC
-	setmonmove 1, 1, MOVE_FLAMETHROWER
-	setmonmove 1, 2, MOVE_EARTH_POWER
+	setmonmove 0, 0, MOVE_PLAY_ROUGH
+	setmonmove 0, 1, MOVE_CRUNCH
+	setmonmove 0, 2, MOVE_SACRED_SWORD
+	setmonmove 0, 3, MOVE_PSYCHIC_FANGS
+	setmonmove 1, 0, MOVE_DRAINING_KISS
+	setmonmove 1, 1, MOVE_PSYSTRIKE
+	setmonmove 1, 2, MOVE_FIERY_DANCE
 	setmonmove 1, 3, MOVE_PARABOLIC_CHARGE
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 0
