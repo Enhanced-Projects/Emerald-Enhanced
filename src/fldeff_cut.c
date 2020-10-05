@@ -286,22 +286,20 @@ const u16 gMapSecsForBotanySkill[NUM_BOTANY_MAP_CATEGORIES][NUM_MAPS_PER_BOTANY_
     {MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE}                                                            
 };
 
-//If the function that reads this table reaches the end, the groupid will be 5,
-//which means the map the player is in isn't in any of the groups.
-//The reward function will return a general reward instead.
-
 static void RyuGetMapsecForFieldCut(void)
 {
    u8 i, j;
 
-   for(i = 0; i < 5; i++) {
-      for(j = 0; j < 5; j++) {
+   for(i = 0; i < NUM_BOTANY_MAP_CATEGORIES; i++) {
+      for(j = 0; j < NUM_MAPS_PER_BOTANY_CATEGORY; j++) {
          if (gMapHeader.regionMapSectionId == gMapSecsForBotanySkill[i][j]) {
             VarSet(VAR_TEMP_6, i);
             return;
          }
       }
    }
+   // If no map matches, fall back to default.
+   VarSet(VAR_TEMP_6, BOTANY_MAP_CATEGORY_GENERAL);
 }
 
 
