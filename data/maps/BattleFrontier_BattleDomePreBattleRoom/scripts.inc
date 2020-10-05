@@ -141,7 +141,7 @@ BattleFrontier_BattleDomePreBattleRoom_EventScript_24B46D:: @ 824B46D
 	fadescreen FADE_TO_BLACK
 	call BattleFrontier_EventScript_GetLvlMode
 	copyvar VAR_0x8004, VAR_RESULT
-	setvar VAR_0x8005, FRONTIER_PARTY_SIZE  @ 2 of the 3 party mons are selected for battle
+	setvar VAR_0x8005, DOME_BATTLE_PARTY_SIZE @ 2 of the 3 party mons are selected for battle
 	special ChoosePartyForBattleFrontier
 	waitstate
 	frontier_resetsketch
@@ -290,7 +290,7 @@ BattleFrontier_BattleDomePreBattleRoom_Text_24B6E3: @ 824B6E3
 	.string "Are you ready?$"
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24B70C: @ 824B70C
-	.string "Please choose the Pokémon order.$"
+	.string "Please choose your Pokémon.$"
 
 BattleFrontier_BattleDomePreBattleRoom_Text_24B748: @ 824B748
 	.string "Right this way, please.$"

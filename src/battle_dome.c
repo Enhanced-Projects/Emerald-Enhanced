@@ -2275,22 +2275,22 @@ static void InitDomeTrainers(void)
     // Populate the tourney roster with random frontier trainers (dependent on streak)
     for (i = 1; i < DOME_TOURNAMENT_TRAINERS_COUNT; i++)
     {
-        //// Choose trainer. First 5/16 trainers are easier than the rest
-        //if (i > 5)
-        //{
-        //    do
-        //    {
-        //        trainerId = GetRandomScaledFrontierTrainerId(GetCurrentFacilityWinStreak(), 0);
-        //        for (j = 1; j < i; j++)
-        //        {
-        //            if (DOME_TRAINERS[j].trainerId == trainerId)
-        //                break;
-        //        }
-        //    } while (j != i);
-        //    DOME_TRAINERS[i].trainerId = trainerId;
-        //}
-        //else
-        //{
+        // Choose trainer. First 5/16 trainers are easier than the rest
+        if (i > 5)
+        {
+            do
+            {
+                trainerId = GetRandomScaledFrontierTrainerId(GetCurrentFacilityWinStreak(), 0);
+                for (j = 1; j < i; j++)
+                {
+                    if (DOME_TRAINERS[j].trainerId == trainerId)
+                        break;
+                }
+            } while (j != i);
+            DOME_TRAINERS[i].trainerId = trainerId;
+        }
+        else
+        {
             do
             {
                 trainerId = GetRandomScaledFrontierTrainerId(GetCurrentFacilityWinStreak() + 1, 0);
@@ -2301,7 +2301,7 @@ static void InitDomeTrainers(void)
                 }
             } while (j != i);
             DOME_TRAINERS[i].trainerId = trainerId;
-        //}
+        }
 
         // Choose party
         for (j = 0; j < FRONTIER_PARTY_SIZE; j++)
