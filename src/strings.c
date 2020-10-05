@@ -1850,8 +1850,6 @@ const u8 gText_Berries[] = _("Berries");
 
 const u8 gText_MainMenuNewGamePlus[] = _("New Game +");
 
-const u8 gRyu_TempVarIntro[] = _("\n");
-
 const u8 gText_Date1[] = _("Slateport Beach");
 const u8 gText_Date2[] = _("CoveLily Motel");
 const u8 gText_Date3[] = _("Mossdeep Quays");

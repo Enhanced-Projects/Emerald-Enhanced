@@ -54,6 +54,7 @@
 #include "constants/field_effects.h"
 #include "constants/field_specials.h"
 #include "constants/items.h"
+#include "constants/item.h"
 #include "constants/heal_locations.h"
 #include "constants/map_types.h"
 #include "constants/maps.h"
@@ -69,6 +70,7 @@
 #include "constants/weather.h"
 #include "constants/metatile_labels.h"
 #include "constants/rgb.h"
+#include "constants/trainers.h"
 #include "palette.h"
 #include "item.h"
 #include "decompress.h"
@@ -79,6 +81,10 @@
 #include "data/lifeskill.h"
 #include "rtc.h"
 #include "constants/region_map_sections.h"
+#include "field_specials.h"
+#include "constants/items.h"
+#include "constants/songs.h"
+#include "strings.h"
 
 void ApplyDaycareExperience(struct Pokemon *mon)
 {
@@ -252,25 +258,6 @@ void RyuWipeParty(void)
     ZeroMonData(&gPlayerParty[1]);
     ZeroMonData(&gPlayerParty[0]);
     CompactPartySlots();
-}
-
-// Should more accurately be called “Player has Weavile but no Sneasel”
-bool8 IsSneaselWeavile(void)
-{
-    u8 i;
-    u8 partyCount = CalculatePlayerPartyCount();
-    u8 flag = (FlagGet(FLAG_RYU_DAWN_GIFTPOKE_RECEIVED));
-    if (flag == 1)
-    {
-        for (i = 0; i < partyCount; i++)
-        {
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNEASEL)
-                return FALSE;
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_WEAVILE)
-                return TRUE;
-        }
-    }
-    return FALSE;
 }
 
 u8 WhatStageIsGiftPoke(void)
@@ -530,42 +517,12 @@ void RyuGenerateReward(void)
 void RyuGiveKoutaMawile(void)
 {
     u8 iv = 252;
-    u8 partycount = 0;
-    partycount = VarGet(gSpecialVar_Result);
-    switch (partycount)
-    {
-        case 1:
-            CreateMonWithNature(&gPlayerParty[1], SPECIES_MAWILE, 80, 31, NATURE_ADAMANT);
-            SetMonData(&gPlayerParty[1], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[1], MON_DATA_HP_EV, &iv);
-            VarSet(VAR_TEMP_3, 2);
-            break;
-        case 2:
-            CreateMonWithNature(&gPlayerParty[2], SPECIES_MAWILE, 80, 31, NATURE_ADAMANT);
-            SetMonData(&gPlayerParty[2], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[2], MON_DATA_HP_EV, &iv);
-            VarSet(VAR_TEMP_3, 3);
-            break;
-        case 3:
-            CreateMonWithNature(&gPlayerParty[3], SPECIES_MAWILE, 80, 31, NATURE_ADAMANT);
-            SetMonData(&gPlayerParty[3], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[3], MON_DATA_HP_EV, &iv);
-            VarSet(VAR_TEMP_3, 4);
-            break;
-        case 4:
-            CreateMonWithNature(&gPlayerParty[4], SPECIES_MAWILE, 80, 31, NATURE_ADAMANT);
-            SetMonData(&gPlayerParty[4], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[4], MON_DATA_HP_EV, &iv);
-            VarSet(VAR_TEMP_3, 5);
-            break;
-        case 5:
-            CreateMonWithNature(&gPlayerParty[5], SPECIES_MAWILE, 80, 31, NATURE_ADAMANT);
-            SetMonData(&gPlayerParty[5], MON_DATA_ATK_EV, &iv);
-            SetMonData(&gPlayerParty[5], MON_DATA_HP_EV, &iv);
-            VarSet(VAR_TEMP_3, 6);
-            break;
-        default: break;
-    }
+    u8 partycount = CalculatePlayerPartyCount();
+
+    CreateMonWithNature(&gPlayerParty[partycount], SPECIES_MAWILE, 80, 31, NATURE_ADAMANT);
+    SetMonData(&gPlayerParty[partycount], MON_DATA_ATK_EV, &iv);
+    SetMonData(&gPlayerParty[partycount], MON_DATA_HP_EV, &iv);
+    VarSet(VAR_TEMP_3, 2);
 }
 
 void RyuSetIVs(void)
@@ -602,12 +559,6 @@ bool8 IsWailordInParty(void)
     return FALSE;
 }
 
-void SpecialScriptAdvancer(void)
-{
-        EnableBothScriptContexts();
-        return;
-}
-
 void RyuWarp()
 {
     u8 mapGroup = 1;
@@ -634,6 +585,9 @@ void RyuWarp2()
     EnableBothScriptContexts();
 }
 
+const u8 gText_OneSpace[] = _(" ");
+const u8 gRyu_TempVarIntro[] = _("\n");
+
 void RyuCheckTempVars(void)
 {
     u16 v0 = VarGet(VAR_TEMP_0);
@@ -658,31 +612,31 @@ void RyuCheckTempVars(void)
     ConvertIntToDecimalStringN(gStringVar1, v0, STR_CONV_MODE_LEFT_ALIGN, 5);
     //2
     ConvertIntToDecimalStringN(gStringVar3, v1, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //3
     ConvertIntToDecimalStringN(gStringVar3, v2, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //4
     ConvertIntToDecimalStringN(gStringVar3, v3, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //5
     ConvertIntToDecimalStringN(gStringVar3, v4, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //6
     ConvertIntToDecimalStringN(gStringVar3, v5, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //7
     ConvertIntToDecimalStringN(gStringVar3, v6, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //8
     ConvertIntToDecimalStringN(gStringVar3, v7, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //adding linbreak
     StringAppend(gStringVar1, gRyu_TempVarIntro);
@@ -691,31 +645,31 @@ void RyuCheckTempVars(void)
     StringAppend(gStringVar1, gStringVar3);
     //10
     ConvertIntToDecimalStringN(gStringVar3, v9, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //11
     ConvertIntToDecimalStringN(gStringVar3, vA, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //12
     ConvertIntToDecimalStringN(gStringVar3, vB, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //13
     ConvertIntToDecimalStringN(gStringVar3, vC, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //14
     ConvertIntToDecimalStringN(gStringVar3, vD, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //15
     ConvertIntToDecimalStringN(gStringVar3, vE, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
     //16
     ConvertIntToDecimalStringN(gStringVar3, vF, STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gText_ThisIsAPokemon);
+    StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
 }
 

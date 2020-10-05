@@ -549,7 +549,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuGiveKoutaMawile
 	def_special RyuSetIVs
 	def_special IsWailordInParty
-	def_special SpecialScriptAdvancer
 	def_special RyuWarp
 	def_special RyuWarp2
 	def_special RyuGiveExpUnloadBattery
