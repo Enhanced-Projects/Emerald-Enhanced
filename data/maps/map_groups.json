@@ -479,8 +479,7 @@
     "MeteorFalls_1F_3R",
     "MeteorFalls_3F",
     "MagmaHideout_AdminQuarters",
-    "LRT_BirchLab_MagmaEvent",
-    "MirageCave"
+    "LRT_BirchLab_MagmaEvent"
   ],
   "gMapGroup25": [
     "SecretBase_RedCave1",
@@ -663,11 +662,14 @@
     "MtFreeze_3F"
   ],
   "gMapGroup28": [
+    "MirageCave"
+  ],
+  "gMapGroup29": [
     "Route109_SeashoreHouse",
     "Route104_Prototype",
     "Route104_PrototypePrettyPetalFlowerShop"
   ],
-  "gMapGroup29": [
+  "gMapGroup30": [
     "Route110_TrickHouseEntrance",
     "Route110_TrickHouseEnd",
     "Route110_TrickHouseCorridor",
@@ -682,10 +684,8 @@
     "Route110_SeasideCyclingRoadNorthEntrance",
     "Route110_SeasideCyclingRoadSouthEntrance"
   ],
-  "gMapGroup30": [
-    "Route113_GlassWorkshop"
-  ],
   "gMapGroup31": [
+    "Route113_GlassWorkshop",
     "Route123_BerryMastersHouse"
   ],
   "gMapGroup32": [

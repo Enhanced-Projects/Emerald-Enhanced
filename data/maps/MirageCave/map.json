@@ -3,7 +3,7 @@
   "name": "MirageCave",
   "layout": "LAYOUT_MIRAGE_CAVE",
   "music": "MUS_ABANDONED_SHIP",
-  "region_map_section": "MAPSEC_ROUTE_130",
+  "region_map_section": "MAPSEC_MIRAGE_ISLAND",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",
@@ -18,7 +18,7 @@
   ],
   "warp_events": [
     {
-      "x": 27,
+      "x": 32,
       "y": 5,
       "elevation": 3,
       "dest_map": "MAP_ROUTE130",
