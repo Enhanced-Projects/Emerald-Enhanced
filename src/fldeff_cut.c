@@ -289,15 +289,17 @@ const u16 gMapSecsForBotanySkill[NUM_BOTANY_MAP_CATEGORIES][NUM_MAPS_PER_BOTANY_
 //If the function that reads this table reaches the end, the groupid will be 5,
 //which means the map the player is in isn't in any of the groups.
 //The reward function will return a general reward instead.
-                                                                     
+
 static void RyuGetMapsecForFieldCut(void)
 {
    u8 i, j;
 
    for(i = 0; i < 5; i++) {
       for(j = 0; j < 5; j++) {
-         if (gMapHeader.regionMapSectionId == gMapSecsForBotanySkill[i][j])
+         if (gMapHeader.regionMapSectionId == gMapSecsForBotanySkill[i][j]) {
             VarSet(VAR_TEMP_6, i);
+            return;
+         }
       }
    }
 }
