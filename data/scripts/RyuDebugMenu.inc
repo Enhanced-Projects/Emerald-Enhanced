@@ -186,7 +186,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setvar VAR_ASH_GATHER_COUNT 9000
+	setvar VAR_RYU_PLAYER_BOTANY_SKILL, 5
+	setvar VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 550
 	release
 	end
 

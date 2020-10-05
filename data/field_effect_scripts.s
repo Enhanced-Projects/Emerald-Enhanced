@@ -79,6 +79,7 @@ gFieldEffectScript_ExclamationMarkIcon1:: @ 82DBAE0
 
 gFieldEffectScript_UseCutOnTallGrass:: @ 82DBAE6
 	field_eff_callnative FldEff_UseCutOnGrass
+	field_eff_callnative RyuBotanySpecial
 	field_eff_end
 
 gFieldEffectScript_UseCutOnTree:: @ 82DBAEC

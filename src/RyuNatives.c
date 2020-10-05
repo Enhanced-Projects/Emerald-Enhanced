@@ -78,7 +78,7 @@
 #include "menu_helpers.h"
 #include "data/lifeskill.h"
 #include "rtc.h"
-#include "data/botany.h"
+#include "constants/region_map_sections.h"
 
 void ApplyDaycareExperience(struct Pokemon *mon)
 {
@@ -1699,4 +1699,64 @@ int RyuGetTimeOfDay(void)
 
     // The rest: either before 5:00 or after 18:59
     return RTC_TIME_NIGHT;
+}
+
+extern u8 RyuScript_FieldCut[];
+
+bool32 RyuBotanySpecial(void)
+{
+    ScriptContext1_SetupScript(RyuScript_FieldCut);
+    return FALSE;
+}
+
+void BotanyCheck(void)
+{
+    u16 currentMapGroup = VarGet(VAR_TEMP_6);
+    u16 reward1, reward2, reward3, reward4, reward5;
+    Random();//randomizes the rng
+
+    switch (currentMapGroup)
+    {
+    case BOTANY_MAP_CATEGORY_JUNGLE:
+            reward1 = gBotanyJungleTable[(Random() % ARRAY_COUNT(gBotanyJungleTable))];//I'd like to compress this but i don't know how @kageru
+            reward2 = gBotanyJungleTable[(Random() % ARRAY_COUNT(gBotanyJungleTable))];//Ideally, it would only generate a reward for each level in the skill
+            reward3 = gBotanyJungleTable[(Random() % ARRAY_COUNT(gBotanyJungleTable))];//so for now, it just rolls the max and then only
+            reward4 = gBotanyJungleTable[(Random() % ARRAY_COUNT(gBotanyJungleTable))];//rewards the player items for the levels they've earned.
+            reward5 = gBotanyJungleTable[(Random() % ARRAY_COUNT(gBotanyJungleTable))];
+            break;
+    case BOTANY_MAP_CATEGORY_COLD:
+            reward1 = gBotanyColdTable[(Random() % ARRAY_COUNT(gBotanyColdTable))];
+            reward2 = gBotanyColdTable[(Random() % ARRAY_COUNT(gBotanyColdTable))];
+            reward3 = gBotanyColdTable[(Random() % ARRAY_COUNT(gBotanyColdTable))];
+            reward4 = gBotanyColdTable[(Random() % ARRAY_COUNT(gBotanyColdTable))];
+            reward5 = gBotanyColdTable[(Random() % ARRAY_COUNT(gBotanyColdTable))];
+            break;
+    case BOTANY_MAP_CATEGORY_VOLCANIC:
+            reward1 = gBotanyVolcanicTable[(Random() % ARRAY_COUNT(gBotanyVolcanicTable))];
+            reward2 = gBotanyVolcanicTable[(Random() % ARRAY_COUNT(gBotanyVolcanicTable))];
+            reward3 = gBotanyVolcanicTable[(Random() % ARRAY_COUNT(gBotanyVolcanicTable))];
+            reward4 = gBotanyVolcanicTable[(Random() % ARRAY_COUNT(gBotanyVolcanicTable))];
+            reward5 = gBotanyVolcanicTable[(Random() % ARRAY_COUNT(gBotanyVolcanicTable))];
+            break;
+    case BOTANY_MAP_CATEGORY_SEASIDE:
+            reward1 = gBotanySeasideTable[(Random() % ARRAY_COUNT(gBotanySeasideTable))];
+            reward2 = gBotanySeasideTable[(Random() % ARRAY_COUNT(gBotanySeasideTable))];
+            reward3 = gBotanySeasideTable[(Random() % ARRAY_COUNT(gBotanySeasideTable))];
+            reward4 = gBotanySeasideTable[(Random() % ARRAY_COUNT(gBotanySeasideTable))];
+            reward5 = gBotanySeasideTable[(Random() % ARRAY_COUNT(gBotanySeasideTable))];
+            break;
+    case BOTANY_MAP_CATEGORY_GENERAL:
+            reward1 = gBotanySeasideTable[(Random() % ARRAY_COUNT(gBotanyGeneralTable))];
+            reward2 = gBotanyGeneralTable[(Random() % ARRAY_COUNT(gBotanyGeneralTable))];
+            reward3 = gBotanyGeneralTable[(Random() % ARRAY_COUNT(gBotanyGeneralTable))];
+            reward4 = gBotanyGeneralTable[(Random() % ARRAY_COUNT(gBotanyGeneralTable))];
+            reward5 = gBotanyGeneralTable[(Random() % ARRAY_COUNT(gBotanyGeneralTable))];
+            break;
+    }
+
+    VarSet(VAR_TEMP_0, reward1);
+    VarSet(VAR_TEMP_1, reward2);
+    VarSet(VAR_TEMP_2, reward3);
+    VarSet(VAR_TEMP_3, reward4);
+    VarSet(VAR_TEMP_4, reward5);
 }

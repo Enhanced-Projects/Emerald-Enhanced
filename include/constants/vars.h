@@ -130,7 +130,7 @@
 #define VAR_RYU_PLAYER_MINING_EXP            0x4070 // Unused Var
 #define VAR_ROUTE118_STATE                   0x4071
 #define VAR_ROUTE119_STATE                   0x4072
-#define VAR_ROUTE120_STATE                   0x4073 // Unused Var
+#define VAR_RYU_PLAYER_BOTANY_SKILL_EXP      0x4073 // Unused Var
 #define VAR_ROUTE121_STATE                   0x4074
 #define VAR_ROUTE122_STATE                   0x4075 // Unused Var
 #define VAR_ROUTE123_STATE                   0x4076 // Unused Var
@@ -373,6 +373,17 @@
 #define RTC_TIME_EVENING 1
 #define RTC_TIME_NIGHT 2
 #define RTC_TIME_MORNING 3
+
+
+//Botany Defines
+ #define NUM_BOTANY_MAP_CATEGORIES 5
+ #define NUM_MAPS_PER_BOTANY_CATEGORY 5
+
+ #define BOTANY_MAP_CATEGORY_JUNGLE 0
+ #define BOTANY_MAP_CATEGORY_COLD 1
+ #define BOTANY_MAP_CATEGORY_VOLCANIC 2
+ #define BOTANY_MAP_CATEGORY_SEASIDE 3
+ #define BOTANY_MAP_CATEGORY_GENERAL 4
 
 #define SPECIAL_VARS_END              0x8015
 

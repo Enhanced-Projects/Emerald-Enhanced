@@ -589,6 +589,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuFollowerSystem.inc"
 	.include "data/scripts/frontiermode.inc"
 	.include "data/scripts/fertilizer.inc"
+	.include "data/scripts/RyuBotany.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED

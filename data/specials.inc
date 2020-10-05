@@ -597,4 +597,4 @@ gSpecials:: @ 81DBA64
 	def_special DoPartnerWhiteOut
 	def_special CheckRivalGiftMonStatus
 	def_special RyuGetTimeOfDay
-
+	def_special BotanyCheck

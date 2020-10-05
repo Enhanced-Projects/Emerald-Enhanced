@@ -222,3 +222,51 @@ const u16 gOutsideMiningTier3[] = {//level 3
     ITEM_COPPER_ORE,
     ITEM_FOSSIL_ORE
 };
+
+//LIFESKILL BOTANY=================================================================================
+
+
+
+//reward tables
+//These can be any size, similar to my other tables.
+//I recommend at least 20 per table, but up to whoever.
+
+const u16 gBotanyJungleTable[] = {//all of the items here are placeholder until we decide what we're going to do with all this stuff.
+    ITEM_WHITE_HERB,
+    ITEM_BRIGHT_POWDER,
+    ITEM_ORAN_BERRY,
+    ITEM_MIRACLE_SEED,
+    ITEM_ENERGY_POWDER,
+};
+
+const u16 gBotanyColdTable[] = {
+    ITEM_ENERGY_ROOT,
+    ITEM_CYAN_SHARD,
+    ITEM_HEAL_POWDER,
+    ITEM_MENTAL_HERB,
+    ITEM_REVIVAL_HERB,
+};
+
+const u16 gBotanyVolcanicTable[] = {
+    ITEM_CHARCOAL,
+    ITEM_LAVA_COOKIE,
+    ITEM_ABSORB_BULB,
+    ITEM_BIG_MUSHROOM,
+    ITEM_HARD_STONE,
+};
+
+const u16 gBotanySeasideTable[] = {
+    ITEM_SHOAL_SALT,
+    ITEM_MYSTIC_WATER,
+    ITEM_BLUE_SHARD,
+    ITEM_HEART_SCALE,
+    ITEM_MISTY_SEED,
+};
+
+const u16 gBotanyGeneralTable[] = {
+    ITEM_ANTIDOTE,
+    ITEM_POTION,
+    ITEM_POKE_BALL,
+    ITEM_PARALYZE_HEAL,
+    ITEM_BURN_HEAL,
+};

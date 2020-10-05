@@ -484,7 +484,7 @@ bool8 ScrCmd_addvar(struct ScriptContext *ctx)
 bool8 ScrCmd_addvars(struct ScriptContext *ctx)
 {
     u16 *ptr = (GetVarPointer(ScriptReadHalfword(ctx)));
-    u16 var2value = (VarGet(ScriptReadHalfWord(ctx)));
+    u16 var2value = (VarGet(ScriptReadHalfword(ctx)));
     *ptr += var2value;
     return FALSE;
 }
