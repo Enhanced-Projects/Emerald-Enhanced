@@ -158,7 +158,7 @@ BattleFrontier_BattlePalaceLobby_EventScript_TryEnterChallenge:: @ 824D9E6
 	fadescreen FADE_TO_BLACK
 	call BattleFrontier_EventScript_GetLvlMode
 	copyvar VAR_0x8004, VAR_RESULT
-	setvar VAR_0x8005, FRONTIER_PARTY_SIZE
+	setvar VAR_0x8005, FRONTIER_PALACE_PARTY_SIZE
 	special ChoosePartyForBattleFrontier
 	waitstate
 	compare VAR_RESULT, 0
@@ -185,7 +185,7 @@ BattleFrontier_BattlePalaceLobby_EventScript_SaveBeforeChallenge:: @ 824DA87
 	goto_if_eq BattleFrontier_BattlePalaceLobby_EventScript_CancelChallengeSaveFailed
 BattleFrontier_BattlePalaceLobby_EventScript_EnterChallenge:: @ 824DAF3
 	special SavePlayerParty
-	frontier_setpartyorder FRONTIER_PARTY_SIZE
+	frontier_setpartyorder FRONTIER_PALACE_PARTY_SIZE
 	msgbox BattleFrontier_BattlePalaceLobby_Text_FollowMe, MSGBOX_DEFAULT
 	closemessage
 	call BattleFrontier_BattlePalaceLobby_EventScript_WalkToDoor
@@ -433,9 +433,9 @@ BattleFrontier_BattlePalaceLobby_Text_WhichChallenge: @ 824E119
 
 BattleFrontier_BattlePalaceLobby_Text_NotEnoughValidMonsLv50: @ 824E173
 	.string "Sigh…\p"
-	.string "You do not have the three Pokémon\n"
+	.string "You do not have the six Pokémon\n"
 	.string "required for the challenge.\p"
-	.string "To enter, you must provide three\n"
+	.string "To enter, you must provide six\n"
 	.string "different kinds of Pokémon.\p"
 	.string "These Pokémon must all be of\n"
 	.string "Level 50 or lower.\p"
@@ -445,17 +445,17 @@ BattleFrontier_BattlePalaceLobby_Text_NotEnoughValidMonsLv50: @ 824E173
 
 BattleFrontier_BattlePalaceLobby_Text_NotEnoughValidMonsLvOpen: @ 824E29E
 	.string "Sigh…\p"
-	.string "You do not have the three Pokémon\n"
+	.string "You do not have the six Pokémon\n"
 	.string "required for the challenge.\p"
-	.string "To enter, you must provide three\n"
+	.string "To enter, you must provide six\n"
 	.string "different kinds of Pokémon.\p"
 	.string "EGGS{STR_VAR_1} ineligible.\p"
 	.string "Come back when you have made\n"
 	.string "your preparations.$"
 
 BattleFrontier_BattlePalaceLobby_Text_NowSelectThreeMons: @ 824E399
-	.string "Good. Now, you must select your\n"
-	.string "three Pokémon.$"
+	.string "Good. Now, you must select the\n"
+	.string "order of your Pokémon.$"
 
 BattleFrontier_BattlePalaceLobby_Text_MustSaveBeforeChallenge2: @ 824E3C8
 	.string "I must save before I show you to\n"
