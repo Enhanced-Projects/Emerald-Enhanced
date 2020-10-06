@@ -17,6 +17,14 @@ sText_NotFoundNearby:
     .string "Try looking in a different area!$"
 
 
+EventScript_MovedTooFast::
+    msgbox sText_TryMovingSlower, MSGBOX_SIGN
+    end
+sText_TryMovingSlower:
+    .string "The Pokémon got away!\n"
+    .string "Try moving more slowly.$"
+
+
 EventScript_PokemonGotAway::
     msgbox sText_PokemonGotAway, MSGBOX_SIGN
     end

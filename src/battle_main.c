@@ -5073,10 +5073,10 @@ static void FreeResetData_ReturnToOvOrDoEvolutions(void)
 {
     if (!gPaletteFade.active)
     {
-        if (gDexnavBattle && (gBattleOutcome == B_OUTCOME_WON || gBattleOutcome == B_OUTCOME_CAUGHT) && gCurrentDexNavChain < 100)
-            gCurrentDexNavChain++;
+        if (gDexnavBattle && (gBattleOutcome == B_OUTCOME_WON || gBattleOutcome == B_OUTCOME_CAUGHT) && gSaveBlock1Ptr->dexNavChain < 100)
+            gSaveBlock1Ptr->dexNavChain++;
         else
-            gCurrentDexNavChain = 0;
+            gSaveBlock1Ptr->dexNavChain = 0;
         
         gDexnavBattle = FALSE;
         ResetSpriteData();

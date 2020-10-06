@@ -1,19 +1,18 @@
 #ifndef GUARD_DEXNAV_H
 #define GUARD_DEXNAV_H
 
-///// Customizable Options
-//#define VAR_DEXNAV                      0x40F7   // unused variable
-//#define POKETOOLS_COUNT                 2
-
 #define DEXNAV_TIMEOUT                  15  //15 seconds is the time out. Max of 1092 seconds allowed
-#define SNEAKING_PROXIMITY              5   //Tile amount
+#define SNEAKING_PROXIMITY              4   //Tile amount
 #define CREEPING_PROXIMITY              2
 #define MAX_PROXIMITY                   20
 
-//hidden pokemon
-#define HIDDEN_POKEMON_STEP_COUNT       10  //look for hidden pokemon every x steps
-#define HIDDEN_POKEMON_RATE             20  //x% chance of finding hidden pokemon every x steps
+//hidden pokemon rate
+#define HIDDEN_MON_STEP_COUNT       10  //look for hidden pokemon every x steps
+#define HIDDEN_MON_SEARCH_RATE      100  //x% chance of finding hidden pokemon every x steps
+#define HIDDEN_MON_PROBABILTY       30  //x% chance of finding hidden mon compared to regular encounter data
 
+//// SEARCH PROBABILITIES
+// see https://m.bulbapedia.bulbagarden.net/wiki/DexNav#Benefits
 //Chance of encountering egg move at search levels
 #define SEARCHLEVEL0_MOVECHANCE         0
 #define SEARCHLEVEL5_MOVECHANCE         21
@@ -57,9 +56,7 @@
 #define SEARCHLEVEL50_THREESTAR         6
 #define SEARCHLEVEL100_THREESTAR        12
 
-
-
-// Structs
+// GUI Info
 #define ROW_WATER       0
 #define ROW_LAND_TOP    1
 #define ROW_LAND_BOT    2
@@ -88,44 +85,37 @@
 #define COL_LAND_MAX            (COL_LAND_COUNT - 1)
 #define COL_HIDDEN_MAX          (COL_HIDDEN_COUNT - 1)
 
+// SEARCH INFO
+#define SCANSTART_X             0
+#define SCANSTART_Y             0
+#define SCANSIZE_X              12
+#define SCANSIZE_Y              12
+
 #define SPECIES_INFO_Y          5
 #define TYPE_ICONS_Y            (SPECIES_INFO_Y + 24)
 #define SEARCH_LEVEL_Y          (TYPE_ICONS_Y + 24)
 #define LEVEL_BONUS_Y           (SEARCH_LEVEL_Y + 24)
 #define HA_INFO_Y               (LEVEL_BONUS_Y + 24)
 
-extern const u8 SystemScript_StartDexNavBattle[];
+#define MON_LEVEL_NONEXISTENT   255 //if mon not in area GetEncounterLevel returns this to exit the search
 
-struct FieldEffectScript
-{
-	u8 command;
-	bool8 (*func)(void);
-};
-
-#define SCANSTART_X             0
-#define SCANSTART_Y             0
-#define SCANSIZE_X              12
-#define SCANSIZE_Y              12
-
-// tags
+// gui tags
 #define ICON_PAL_TAG            56000
 #define ICON_GFX_TAG            55130
 #define SELECTION_CURSOR_TAG    0x4005
-#define SMOKE_TAG               10000
 #define CAPTURED_ALL_TAG        0x4002
-#define SIGHT_TAG               0x5424
+
+//search tags
+#define OWNED_ICON_TAG          0x4003
+#define HIDDEN_SEARCH_TAG       SELECTION_CURSOR_TAG
+#define HIDDEN_MON_ICON_TAG     0x4006
+#define LIT_STAR_TILE_TAG       0x4010
+//#define SIGHT_TAG               0x5424
 #define HELD_ITEM_TAG           0xd750
-#define LIT_STAR_TILE_TAG       0x61
-#define DULL_STAR_TILE_TAG      0x2613
 
-#define ICONX                   16
-#define ICONY                   146
-
-#define CPUFSSET 1
-#define CPUModeFS(size, mode) ((size >> 2) | (mode << 24))
-
-#define SPECIES_TABLES_TERMIN 0xFEFE
-
+// dexnav search variable
+#define MASK_SPECIES         0x3FFF  //first 14 bits
+#define MASK_ENVIRONMENT     0xC000  //last two bit
 
 //funcs
 void EndDexNavSearch(u8 taskId);
@@ -134,6 +124,7 @@ bool8 TryStartDexnavSearch(void);
 void TryIncrementSpeciesSearchLevel(u16 dexNum);
 void ResetDexNavSearch(void);
 bool8 TryFindHiddenPokemon(void);
+bool8 DexNavTryMakeShinyMon(void);
 
 //ewram
 extern u8 gCurrentDexNavChain;

@@ -639,8 +639,16 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
 
     if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
     {
-    // speed 2 is fast, same speed as running
-        PlayerGoSpeed2(direction);
+        if (FlagGet(FLAG_SYS_DEXNAV_SEARCH) && (heldKeys & A_BUTTON))
+        {
+            gPlayerAvatar.creeping = TRUE;
+            PlayerGoSpeed1(direction);
+        }
+        else
+        {
+            gPlayerAvatar.creeping = FALSE;
+            PlayerGoSpeed2(direction);
+        }
         return;
     }
 
