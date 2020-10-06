@@ -71,53 +71,7 @@ DewfordTown_EventScript_Woman:: @ 81E95B1
 	end
 
 DewfordTown_EventScript_TownSign:: @ 81E95BA
-	givemon SPECIES_BLAZIKEN, 40 0
-    givemon SPECIES_LAPRAS, 30, 0
-    givemon SPECIES_RAICHU, 35, 0
-    givemon SPECIES_SKARMORY, 30, 0
-    
-    setflag FLAG_SYS_POKEMON_GET
-    setflag FLAG_SYS_POKEDEX_GET
-    setflag FLAG_SYS_B_DASH
-    
-    setflag FLAG_BADGE01_GET
-    setflag FLAG_BADGE02_GET
-    setflag FLAG_BADGE03_GET
-    setflag FLAG_BADGE04_GET
-    setflag FLAG_BADGE05_GET
-    setflag FLAG_BADGE06_GET
-    setflag FLAG_BADGE07_GET
-    setflag FLAG_BADGE08_GET
-    
-    additem ITEM_HM03_SURF
-    additem ITEM_HM05_FLASH
-    additem ITEM_HM02_FLY
-    
-    setflag FLAG_VISITED_LITTLEROOT_TOWN
-    setflag FLAG_VISITED_OLDALE_TOWN
-    setflag FLAG_VISITED_DEWFORD_TOWN
-    setflag FLAG_VISITED_LAVARIDGE_TOWN
-    setflag FLAG_VISITED_FALLARBOR_TOWN
-    setflag FLAG_VISITED_VERDANTURF_TOWN
-    setflag FLAG_VISITED_PACIFIDLOG_TOWN
-    setflag FLAG_VISITED_PETALBURG_CITY
-    setflag FLAG_VISITED_SLATEPORT_CITY
-    setflag FLAG_VISITED_MAUVILLE_CITY
-    setflag FLAG_VISITED_RUSTBORO_CITY
-    setflag FLAG_VISITED_FORTREE_CITY
-    setflag FLAG_VISITED_LILYCOVE_CITY
-    setflag FLAG_VISITED_MOSSDEEP_CITY
-    setflag FLAG_VISITED_SOOTOPOLIS_CITY
-    setflag FLAG_VISITED_EVER_GRANDE_CITY
-    
-    settrainerflag TRAINER_NED
-    settrainerflag TRAINER_ELLIOT_1
-    
-    additem ITEM_MASTER_BALL, 70
-    
-    setflag FLAG_SYS_DETECTOR_MODE
-    
-    @msgbox DewfordTown_Text_TownSign, MSGBOX_SIGN
+	msgbox DewfordTown_Text_TownSign, MSGBOX_SIGN
 	end
 
 DewfordTown_EventScript_GymSign:: @ 81E95C3

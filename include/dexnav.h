@@ -6,10 +6,10 @@
 #define CREEPING_PROXIMITY              2
 #define MAX_PROXIMITY                   20
 
-//hidden pokemon rate
-#define HIDDEN_MON_STEP_COUNT       10  //look for hidden pokemon every x steps
-#define HIDDEN_MON_SEARCH_RATE      100  //x% chance of finding hidden pokemon every x steps
-#define HIDDEN_MON_PROBABILTY       30  //x% chance of finding hidden mon compared to regular encounter data
+//hidden pokemon options - no info so I just guessed at values
+#define HIDDEN_MON_STEP_COUNT       100  //look for hidden pokemon every x steps
+#define HIDDEN_MON_SEARCH_RATE      25  //x% chance of finding hidden pokemon every x steps
+#define HIDDEN_MON_PROBABILTY       15  //x% chance of finding hidden mon compared to regular encounter data
 
 //// SEARCH PROBABILITIES
 // see https://m.bulbapedia.bulbagarden.net/wiki/DexNav#Benefits

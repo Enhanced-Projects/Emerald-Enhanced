@@ -129,8 +129,7 @@ static void ClearFrontierRecord(void)
 
 static void WarpToTruck(void)
 {
-    //SetWarpDestination(MAP_GROUP(INSIDE_OF_TRUCK), MAP_NUM(INSIDE_OF_TRUCK), -1, -1, -1);
-    SetWarpDestination(MAP_GROUP(DEWFORD_TOWN), MAP_NUM(DEWFORD_TOWN), -1, 9, 10);
+    SetWarpDestination(MAP_GROUP(INSIDE_OF_TRUCK), MAP_NUM(INSIDE_OF_TRUCK), -1, -1, -1);
     WarpIntoMap();
 }
 
@@ -210,6 +209,7 @@ void NewGameInitData(void)
     ResetContestLinkResults();
     
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
+    gSaveBlock1Ptr->dexNavChain = 0;
 }
 
 static void ResetMiniGamesResults(void)

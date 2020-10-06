@@ -142,29 +142,8 @@ RustboroCity_Movement_ScientistLeave: @ 81E085D
 RustboroCity_EventScript_FatMan:: @ 81E085F
 	lock
 	faceplayer
-	givemon SPECIES_TORCHIC, 15 0
-    setflag FLAG_SYS_POKEMON_GET
-    setflag FLAG_SYS_POKEDEX_GET
-    setflag FLAG_SYS_B_DASH
-    @setflag FLAG_SYS_DEXNAV_GET
-    
-    settrainerflag TRAINER_CLARK
-    settrainerflag TRAINER_DAWSON
-    settrainerflag TRAINER_DEVAN
-    settrainerflag TRAINER_JANICE
-    settrainerflag TRAINER_JERRY_1
-    settrainerflag TRAINER_JOEY
-    settrainerflag TRAINER_JOHNSON
-    settrainerflag TRAINER_JOSE
-    settrainerflag TRAINER_KAREN_1
-    settrainerflag TRAINER_SARAH
-    
-    @callnative DrawHeaderBox
-    @waitbuttonpress
-    @callnative RemoveHeaderBox
-    
-    @goto_if_set FLAG_DEVON_GOODS_STOLEN, RustboroCity_EventScript_FatManSawGrunt
-	@msgbox RustboroCity_Text_WeShortenItToDevon, MSGBOX_DEFAULT
+	goto_if_set FLAG_DEVON_GOODS_STOLEN, RustboroCity_EventScript_FatManSawGrunt
+	msgbox RustboroCity_Text_WeShortenItToDevon, MSGBOX_DEFAULT
 	release
 	end
 

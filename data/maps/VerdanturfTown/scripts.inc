@@ -48,9 +48,7 @@ VerdanturfTown_EventScript_BoyTunnelOpen:: @ 81EB5CF
 	end
 
 VerdanturfTown_EventScript_TownSign:: @ 81EB5D9
-    givemon SPECIES_BLAZIKEN, 50, 0
-	setflag FLAG_SYS_POKEMON_GET
-    @msgbox VerdanturfTown_Text_TownSign, MSGBOX_SIGN
+	msgbox VerdanturfTown_Text_TownSign, MSGBOX_SIGN
 	end
 
 VerdanturfTown_EventScript_WandasHouseSign:: @ 81EB5E2

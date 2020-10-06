@@ -974,7 +974,7 @@ struct SaveBlock1
     /*0x31DC*/ struct Roamer roamer;
     /*0x31F8*/ struct EnigmaBerry enigmaBerry;
     /*0x322C*/ struct MEventBuffers unk_322C;
-    ///*0x3598*/ u8 field_3598[0x180];
+    /*0x3598*/ u8 field_3598[0x180];
     /*0x3718*/ u32 trainerHillTimes[4];
     /*0x3728*/ struct RamScript ramScript;
     /*0x3B14*/ struct RecordMixingGift recordMixingGift;
@@ -982,7 +982,7 @@ struct SaveBlock1
     /*0x3B58*/ LilycoveLady lilycoveLady;
     /*0x3B98*/ struct TrainerNameRecord trainerNameRecords[20];
     /*0x3C88*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21];
-   // /*0x3D5A*/ u8 filler3D5A[0xA];
+    /*0x3D5A*/ u8 filler3D5A[0xA];
     /*0x3D64*/ struct SaveTrainerHill trainerHill;
     /*0x3D70*/ struct WaldaPhrase waldaPhrase;
                u8 dexNavSearchLevels[POKEMON_SLOTS_NUMBER];
