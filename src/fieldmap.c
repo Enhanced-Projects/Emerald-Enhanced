@@ -1,7 +1,6 @@
 #include "global.h"
 #include "battle_pyramid.h"
 #include "bg.h"
-#include "dexnav.h"
 #include "fieldmap.h"
 #include "fldeff.h"
 #include "fldeff_misc.h"
@@ -51,7 +50,7 @@ struct MapHeader const *const GetMapHeaderFromConnection(struct MapConnection *c
 }
 
 void InitMap(void)
-{   
+{
     InitMapLayoutData(&gMapHeader);
     SetOccupiedSecretBaseEntranceMetatiles(gMapHeader.events);
     RunOnLoadMapScript();

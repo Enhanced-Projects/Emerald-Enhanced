@@ -923,13 +923,17 @@ static void ApplyCleanseTagEncounterRateMod(u32 *encRate)
 
 u8 ChooseHiddenMonIndex(void)
 {
-    u8 rand = Random() % ENCOUNTER_CHANCE_HIDDEN_MONS_TOTAL;
+    #ifdef ENCOUNTER_CHANCE_HIDDEN_MONS_TOTAL
+        u8 rand = Random() % ENCOUNTER_CHANCE_HIDDEN_MONS_TOTAL;
 
-    if (rand < ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_0)
-        return 0;
-    else if (rand >= ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_1)
-        return 1;
-    else
-        return 2;
+        if (rand < ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_0)
+            return 0;
+        else if (rand >= ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_1)
+            return 1;
+        else
+            return 2;
+    #else
+        return 0xFF;
+    #endif
 }
 

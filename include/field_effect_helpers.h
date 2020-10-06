@@ -2,8 +2,6 @@
 #define GUARD_FIELD_EFFECT_HELPERS_H
 
 // Exported type declarations
-#define FLDEFF_CALLASM 3
-#define FLDEFF_END 4
 
 // Exported RAM declarations
 

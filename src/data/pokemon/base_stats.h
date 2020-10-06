@@ -2328,7 +2328,7 @@ const struct BaseStats gBaseStats[] =
         .evYield_Speed     = 0,
         .evYield_SpAttack  = 0,
         .evYield_SpDefense = 1,
-        .item1 = ITEM_POISON_BARB,
+        .item1 = ITEM_NONE,
         .item2 = ITEM_NONE,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -2340,7 +2340,6 @@ const struct BaseStats gBaseStats[] =
         .safariZoneFleeRate = 0,
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
-        .abilityHidden = ABILITY_RAIN_DISH,
     },
 
     [SPECIES_TENTACRUEL] =

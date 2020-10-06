@@ -64,7 +64,7 @@ static void FillPalBufferWhite(void)
     CpuFastFill16(RGB_WHITE, gPlttBufferFaded, PLTT_SIZE);
 }
 
-void FillPalBufferBlack(void)
+static void FillPalBufferBlack(void)
 {
     CpuFastFill16(RGB_BLACK, gPlttBufferFaded, PLTT_SIZE);
 }

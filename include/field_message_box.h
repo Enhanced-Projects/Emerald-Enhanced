@@ -18,8 +18,5 @@ bool8 IsFieldMessageBoxHidden(void);
 u8 GetFieldMessageBoxMode(void);
 void StopFieldMessage(void);
 void InitFieldMessageBox(void);
-void textbox_fdecode_auto_and_task_add(const u8*, bool32);
-
-extern u8 gFieldMessageBoxMode;
 
 #endif // GUARD_FIELD_MESSAGE_BOX_H

@@ -2532,7 +2532,10 @@ bool8 TryFindHiddenPokemon(void)
             // there are surely better ways to do this, but this allows greatest flexibility
             if (Random() % 100 < HIDDEN_MON_PROBABILTY)
             {
-                species = hiddenMonsInfo->wildPokemon[ChooseHiddenMonIndex()].species;
+                index = ChooseHiddenMonIndex();
+                if (index == 0xFF)
+                    return FALSE;//no hidden info
+                species = hiddenMonsInfo->wildPokemon[index].species;
                 isHiddenMon = TRUE;
                 environment = ENCOUNTER_TYPE_HIDDEN;
             }
@@ -2547,7 +2550,10 @@ bool8 TryFindHiddenPokemon(void)
             {
                 if (Random() % 100 < HIDDEN_MON_PROBABILTY)
                 {
-                    species = hiddenMonsInfo->wildPokemon[ChooseHiddenMonIndex()].species;
+                    index = ChooseHiddenMonIndex();
+                    if (index == 0xFF)
+                        return FALSE;//no hidden info
+                    species = hiddenMonsInfo->wildPokemon[index].species;
                     isHiddenMon = TRUE;
                     environment = ENCOUNTER_TYPE_HIDDEN;
                 }
