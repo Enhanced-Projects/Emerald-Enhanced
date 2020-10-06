@@ -22,6 +22,8 @@
 #include "constants/field_effects.h"
 #include "constants/songs.h"
 #include "constants/metatile_labels.h"
+#include "event_data.h"
+#include "constants/region_map_sections.h"
 
 extern struct MapPosition gPlayerFacingPosition;
 
@@ -274,6 +276,33 @@ static void FieldCallback_CutGrass(void)
     gFieldEffectArguments[0] = GetCursorSelectionMonId();
 }
 
+//This can be expanded by increasing the number of categories and items per category
+//in include/constants/vars.h
+const u16 gMapSecsForBotanySkill[NUM_BOTANY_MAP_CATEGORIES][NUM_MAPS_PER_BOTANY_CATEGORY] = {
+    {MAPSEC_ROUTE_66, MAPSEC_ROUTE_119, MAPSEC_ROUTE_120, MAPSEC_NONE, MAPSEC_NONE},
+    {MAPSEC_SNOWY_SHORE, MAPSEC_CRAGGY_COAST, MAPSEC_FROSTY_FOREST, MAPSEC_FROSTBITE_FIELD, MAPSEC_MT_FREEZE},
+    {MAPSEC_JAGGED_PASS, MAPSEC_JAGGED_PASS2, MAPSEC_ROUTE_113, MAPSEC_NONE, MAPSEC_NONE},
+    {MAPSEC_ROUTE_104, MAPSEC_ROUTE_110, MAPSEC_ROUTE_118, MAPSEC_ROUTE_121, MAPSEC_ROUTE_103},
+    {MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE}                                                            
+};
+
+static void RyuGetMapsecForFieldCut(void)
+{
+   u8 i, j;
+
+   for(i = 0; i < NUM_BOTANY_MAP_CATEGORIES; i++) {
+      for(j = 0; j < NUM_MAPS_PER_BOTANY_CATEGORY; j++) {
+         if (gMapHeader.regionMapSectionId == gMapSecsForBotanySkill[i][j]) {
+            VarSet(VAR_TEMP_6, i);
+            return;
+         }
+      }
+   }
+   // If no map matches, fall back to default.
+   VarSet(VAR_TEMP_6, BOTANY_MAP_CATEGORY_GENERAL);
+}
+
+
 bool8 FldEff_UseCutOnGrass(void)
 {
     u8 taskId = CreateFieldMoveTask();
@@ -281,6 +310,8 @@ bool8 FldEff_UseCutOnGrass(void)
     gTasks[taskId].data[8] = (u32)StartCutGrassFieldEffect >> 16;
     gTasks[taskId].data[9] = (u32)StartCutGrassFieldEffect;
     IncrementGameStat(GAME_STAT_USED_CUT);
+    //if (VarGet(VAR_RYU_PLAYER_BOTANY_SKILL) > 0)
+    //    RyuGetMapsecForFieldCut();
     return FALSE;
 }
 

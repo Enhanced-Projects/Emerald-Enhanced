@@ -12,30 +12,27 @@ FieryPath_EventScript_MoveScottToFallarbor:: @ 8230F37
 	clearflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
 	return
 
-FP_Entei::
+RyuLegendary_Entei::
 	goto_if_set FLAG_RYU_ENTEI, ryu_end
 	goto_if_set FLAG_RYU_ENTEI_RAN, ryu_end
-	msgbox OverworldLegendary_IntroEntei
+	msgbox RyuLegendary_IntroEntei
 	setvar VAR_TEMP_5, SPECIES_ENTEI
 	setvar VAR_TEMP_9, ITEM_FLAME_ORB
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
-	case B_OUTCOME_RAN, FP_EnteiGotAway
-	case B_OUTCOME_LOST, FP_EnteiGotAway
-	case B_OUTCOME_MON_FLED, FP_EnteiGotAway
-	case B_OUTCOME_PLAYER_TELEPORTED, FP_EnteiGotAway
-	setflag FLAG_RYU_ENTEI
+	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtEntei @if the mon was caught, set main flag and delete object permanently.
+	setflag FLAG_RYU_ENTEI_RAN @since the outcome wasn't caught, the mon will disappear until player clears champion or title defense again.
 	removeobject 9 @Put the porymap object ID here
 	release
 	end
 
-FP_EnteiGotAway::
-	setflag FLAG_RYU_ENTEI_RAN
-	removeobject 9 @Put the porymap object ID here
+RyuLegendary_CaughtEntei::
+	setflag FLAG_RYU_ENTEI @once this flag is set, the mon will never come back.
+	removeobject 9 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release
 	end
 
-OverworldLegendary_IntroEntei: @put your intro here
+RyuLegendary_IntroEntei: @put your intro here
 	.string "Something is emerging from the\n"
     .string "magma!$"
 	

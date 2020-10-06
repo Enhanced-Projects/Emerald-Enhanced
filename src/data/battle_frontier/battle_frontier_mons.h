@@ -6806,7 +6806,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_ARTICUNO_1] = { // Cobalion-Bulky
+    [FRONTIER_MON_COBALION_1] = { // Cobalion-Bulky
         .species = SPECIES_COBALION,
         .moves = {MOVE_SACRED_SWORD, MOVE_STEALTH_ROCK, MOVE_THUNDER_WAVE, MOVE_VOLT_SWITCH},
         .heldItem = ITEM_LEFTOVERS,
@@ -6815,7 +6815,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_ZAPDOS_1] = { // Terrakion-ExBelt
+    [FRONTIER_MON_TERRAKION_1] = { // Terrakion-ExBelt
         .species = SPECIES_TERRAKION,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_X_SCISSOR},
         .heldItem = ITEM_EXPERT_BELT,
@@ -6824,7 +6824,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_MOLTRES_1] = { // Virizion-ExBelt
+    [FRONTIER_MON_VIRIZION_1] = { // Virizion-ExBelt
         .species = SPECIES_VIRIZION,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_LEAF_BLADE, MOVE_STONE_EDGE, MOVE_X_SCISSOR},
         .heldItem = ITEM_EXPERT_BELT,
@@ -6905,7 +6905,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_ARTICUNO_2] = { // Cobalion-Band
+    [FRONTIER_MON_COBALION_2] = { // Cobalion-Band
         .species = SPECIES_COBALION,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_IRON_HEAD, MOVE_STONE_EDGE, MOVE_X_SCISSOR},
         .heldItem = ITEM_CHOICE_BAND,
@@ -6914,7 +6914,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_ZAPDOS_2] = { // Terrakion-Scarf
+    [FRONTIER_MON_TERRAKION_2] = { // Terrakion-Scarf
         .species = SPECIES_TERRAKION,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_X_SCISSOR},
         .heldItem = ITEM_CHOICE_SCARF,
@@ -6923,7 +6923,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_MOLTRES_2] = { // Virizion-Band
+    [FRONTIER_MON_VIRIZION_2] = { // Virizion-Band
         .species = SPECIES_VIRIZION,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_LEAF_BLADE, MOVE_STONE_EDGE, MOVE_X_SCISSOR},
         .heldItem = ITEM_CHOICE_BAND,
@@ -7004,7 +7004,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 27,
         .ability = 0
     },
-    [FRONTIER_MON_ARTICUNO_3] = { // Cobalion-3attacksCM
+    [FRONTIER_MON_COBALION_3] = { // Cobalion-3attacksCM
         .species = SPECIES_COBALION,
         .moves = {MOVE_FOCUS_BLAST, MOVE_FLASH_CANNON, MOVE_HIDDEN_POWER, MOVE_CALM_MIND},
         .heldItem = ITEM_LIFE_ORB,
@@ -7013,7 +7013,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 25,
         .ability = 0
     },
-    [FRONTIER_MON_ZAPDOS_3] = { // Terrakion-DualSetup
+    [FRONTIER_MON_TERRAKION_3] = { // Terrakion-DualSetup
         .species = SPECIES_TERRAKION,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_STONE_EDGE, MOVE_ROCK_POLISH, MOVE_SWORDS_DANCE},
         .heldItem = ITEM_LIFE_ORB,
@@ -7022,7 +7022,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_MOLTRES_3] = { // Virizion-3attacksCM
+    [FRONTIER_MON_VIRIZION_3] = { // Virizion-3attacksCM
         .species = SPECIES_VIRIZION,
         .moves = {MOVE_FOCUS_BLAST, MOVE_ENERGY_BALL, MOVE_HIDDEN_POWER, MOVE_CALM_MIND},
         .heldItem = ITEM_LIFE_ORB,
@@ -7103,7 +7103,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 27,
         .ability = 0
     },
-    [FRONTIER_MON_ARTICUNO_4] = { // Cobalion-SubCM
+    [FRONTIER_MON_COBALION_4] = { // Cobalion-SubCM
         .species = SPECIES_COBALION,
         .moves = {MOVE_FOCUS_BLAST, MOVE_FLASH_CANNON, MOVE_SUBSTITUTE, MOVE_CALM_MIND},
         .heldItem = ITEM_LEFTOVERS,
@@ -7112,7 +7112,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_ZAPDOS_4] = { // Terrakion-Band
+    [FRONTIER_MON_TERRAKION_4] = { // Terrakion-Band
         .species = SPECIES_TERRAKION,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_QUICK_ATTACK},
         .heldItem = ITEM_CHOICE_BAND,
@@ -7121,7 +7121,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_MOLTRES_4] = { // Virizion-SubCM
+    [FRONTIER_MON_VIRIZION_4] = { // Virizion-SubCM
         .species = SPECIES_VIRIZION,
         .moves = {MOVE_FOCUS_BLAST, MOVE_GIGA_DRAIN, MOVE_SUBSTITUTE, MOVE_CALM_MIND},
         .heldItem = ITEM_LEFTOVERS,
@@ -7832,7 +7832,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_ARTICUNO_5] = { // Cobalion-SD
+    [FRONTIER_MON_COBALION_5] = { // Cobalion-SD
         .species = SPECIES_COBALION,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_IRON_HEAD, MOVE_STONE_EDGE, MOVE_SWORDS_DANCE},
         .heldItem = ITEM_LIFE_ORB,
@@ -7841,7 +7841,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_ARTICUNO_6] = { // Keldeo-Specs
+    [FRONTIER_MON_KELDEO_1] = { // Keldeo-Specs
         .species = SPECIES_KELDEO,
         .moves = {MOVE_FOCUS_BLAST, MOVE_HYDRO_PUMP, MOVE_SECRET_SWORD, MOVE_SCALD},
         .heldItem = ITEM_CHOICE_SPECS,
@@ -7850,7 +7850,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_ZAPDOS_5] = { // Terrakion-SD
+    [FRONTIER_MON_TERRAKION_5] = { // Terrakion-SD
         .species = SPECIES_TERRAKION,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_SWORDS_DANCE},
         .heldItem = ITEM_LIFE_ORB,
@@ -7859,7 +7859,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_ZAPDOS_6] = { // Keldeo-SubCM
+    [FRONTIER_MON_KELDEO_3] = { // Keldeo-SubCM
         .species = SPECIES_KELDEO,
         .moves = {MOVE_SCALD, MOVE_SECRET_SWORD, MOVE_SUBSTITUTE, MOVE_CALM_MIND},
         .heldItem = ITEM_LEFTOVERS,
@@ -7868,7 +7868,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_MOLTRES_5] = { // Virizion-SD
+    [FRONTIER_MON_VIRIZION_5] = { // Virizion-SD
         .species = SPECIES_VIRIZION,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_LEAF_BLADE, MOVE_STONE_EDGE, MOVE_SWORDS_DANCE},
         .heldItem = ITEM_LIFE_ORB,
@@ -7877,7 +7877,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_MOLTRES_6] = { // Keldeo-3attacksCM
+    [FRONTIER_MON_KELDEO_2] = { // Keldeo-3attacksCM
         .species = SPECIES_KELDEO,
         .moves = {MOVE_FOCUS_BLAST, MOVE_HYDRO_PUMP, MOVE_SECRET_SWORD, MOVE_CALM_MIND},
         .heldItem = ITEM_LIFE_ORB,

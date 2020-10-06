@@ -1,28 +1,26 @@
 MeteorFalls_3F_MapScripts::
 	.byte 0
 
-MeteorFalls_Necrozma::
+RyuLegendary_Necrozma::
 	goto_if_set FLAG_RYU_NECROZMA, ryu_end
 	goto_if_set FLAG_RYU_NECROZMA_RAN, ryu_end
-	msgbox OverworldLegendary_IntroNecrozma
+	msgbox RyuLegendary_IntroNecrozma
 	setvar VAR_TEMP_5, SPECIES_NECROZMA
 	setvar VAR_TEMP_9, ITEM_DARK_GEM
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
-	case B_OUTCOME_RAN, MeteorFalls_NecrozmaGotAway
-	case B_OUTCOME_LOST, MeteorFalls_NecrozmaGotAway
-	case B_OUTCOME_MON_FLED, MeteorFalls_NecrozmaGotAway
-	case B_OUTCOME_PLAYER_TELEPORTED, MeteorFalls_NecrozmaGotAway
-	setflag FLAG_RYU_NECROZMA
+	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtNecrozma @if the mon was caught, set main flag and delete object permanently.
+	setflag FLAG_RYU_NECROZMA_RAN @since the outcome wasn't caught, the mon will disappear until player clears champion or title defense again.
 	removeobject 1 @Put the porymap object ID here
 	release
 	end
 
-MeteorFalls_NecrozmaGotAway::
-	setflag FLAG_RYU_NECROZMA_RAN
-	removeobject 1 @Put the porymap object ID here
+	RyuLegendary_CaughtNecrozma::
+	setflag FLAG_RYU_NECROZMA @once this flag is set, the mon will never come back.
+	removeobject 1 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release
 	end
 
-OverworldLegendary_IntroNecrozma: @put your intro here
+
+RyuLegendary_IntroNecrozma: @put your intro here
 	.string "$"

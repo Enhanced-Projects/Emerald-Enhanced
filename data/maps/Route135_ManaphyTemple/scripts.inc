@@ -1,29 +1,27 @@
 Route135_ManaphyTemple_MapScripts::
 	.byte 0
 
-r135_Manaphy::
-	goto_if_set FLAG_RYU_HIDE_MANAPHY, ryu_end
+RyuLegendary_Manaphy::
+	goto_if_set FLAG_RYU_MANAPHY, ryu_end
 	goto_if_set FLAG_RYU_MANAPHY_RAN, ryu_end
-	msgbox OverworldLegendary_IntroManaphy
+	msgbox RyuLegendary_IntroManaphy
 	setvar VAR_TEMP_5, SPECIES_MANAPHY
 	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
-	case B_OUTCOME_RAN, r135_ManaphyGotAway
-	case B_OUTCOME_LOST, r135_ManaphyGotAway
-	case B_OUTCOME_MON_FLED, r135_ManaphyGotAway
-	case B_OUTCOME_PLAYER_TELEPORTED, r135_ManaphyGotAway
-	setflag FLAG_RYU_HIDE_MANAPHY
+	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtManaphy @if the mon was caught, set main flag and delete object permanently.
+	setflag FLAG_RYU_MANAPHY_RAN @since the outcome wasn't caught, the mon will disappear until player clears champion or title defense again.
 	removeobject 1 @Put the porymap object ID here
 	release
 	end
 
-r135_ManaphyGotAway::
-	setflag FLAG_RYU_MANAPHY_RAN
-	removeobject 1 @Put the porymap object ID here
+	RyuLegendary_CaughtManaphy::
+	setflag FLAG_RYU_MANAPHY @once this flag is set, the mon will never come back.
+	removeobject 1 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release
 	end
 
-OverworldLegendary_IntroManaphy: @put your intro here
+
+RyuLegendary_IntroManaphy: @put your intro here
 	.string "$"
 

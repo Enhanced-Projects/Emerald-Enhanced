@@ -383,28 +383,26 @@ NM_Warp2::
 
 @==================================================================================================End Lana Events
 
-NewMauville_Zapdos::
+RyuLegendary_Zapdos::
 	goto_if_set FLAG_RYU_ZAPDOS, ryu_end
 	goto_if_set FLAG_RYU_ZAPDOS_RAN, ryu_end
-	msgbox OverworldLegendary_IntroZapdos
+	msgbox RyuLegendary_IntroZapdos
 	setvar VAR_TEMP_5, SPECIES_ZAPDOS
 	setvar VAR_TEMP_9, ITEM_SHARP_BEAK
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
-	case B_OUTCOME_RAN, NewMauville_ZapdosGotAway
-	case B_OUTCOME_LOST, NewMauville_ZapdosGotAway
-	case B_OUTCOME_MON_FLED, NewMauville_ZapdosGotAway
-	case B_OUTCOME_PLAYER_TELEPORTED, NewMauville_ZapdosGotAway
-	setflag FLAG_RYU_ZAPDOS
+	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtZapdos @if the mon was caught, set main flag and delete object permanently.
+	setflag FLAG_RYU_ZAPDOS_RAN @since the outcome wasn't caught, the mon will disappear until player clears champion or title defense again.
 	removeobject 9 @Put the porymap object ID here
 	release
 	end
 
-NewMauville_ZapdosGotAway::
-	setflag FLAG_RYU_ZAPDOS_RAN
-	removeobject 9 @Put the porymap object ID here
+	RyuLegendary_CaughtZapdos::
+	setflag FLAG_RYU_ZAPDOS @once this flag is set, the mon will never come back.
+	removeobject 9 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release
 	end
 
-OverworldLegendary_IntroZapdos: @put your intro here
-	.string "Gyaoo!$"
+
+RyuLegendary_IntroZapdos: @put your intro here
+	.string "$"

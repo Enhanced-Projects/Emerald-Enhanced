@@ -5,7 +5,7 @@ MtFreeze_MapScripts::
 MtFreeze_EntranceTrigger::
 	lock
 	goto_if_set FLAG_MT_FREEZE_OPENED, MtFreeze_Release
-	specialvar VAR_RESULT, TobyCheckPlayerHasMon
+	checkspecies SPECIES_CRYOGONAL
 	compare VAR_RESULT, TRUE
 	goto_if_eq MtFreeze_OpenEntrance1
 	releaseall
@@ -48,31 +48,27 @@ MtFreeze_OpenEntrance2::
 	special DrawWholeMapView @if the game still freezes when this activates, remove this line
 	end
 
-MtFreeze_Articuno::
+RyuLegendary_Articuno::
 	goto_if_set FLAG_RYU_ARTICUNO, ryu_end
 	goto_if_set FLAG_RYU_ARTICUNO_RAN, ryu_end
-	playmoncry SPECIES_ARTICUNO, 0
-	msgbox OverworldLegendary_IntroArticuno
+	msgbox RyuLegendary_IntroArticuno
 	setvar VAR_TEMP_5, SPECIES_ARTICUNO
 	setvar VAR_TEMP_9, ITEM_DRY_ICE
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
-	case B_OUTCOME_RAN, MtFreeze_ArticunoGotAway
-	case B_OUTCOME_LOST, MtFreeze_ArticunoGotAway
-	case B_OUTCOME_MON_FLED, MtFreeze_ArticunoGotAway
-	case B_OUTCOME_PLAYER_TELEPORTED, MtFreeze_ArticunoGotAway
-	setflag FLAG_RYU_ARTICUNO
+	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtArticuno @if the mon was caught, set main flag and delete object permanently.
+	setflag FLAG_RYU_ARTICUNO_RAN @since the outcome wasn't caught, the mon will disappear until player clears champion or title defense again.
 	removeobject 3 @Put the porymap object ID here
 	release
 	end
 
-MtFreeze_ArticunoGotAway::
-	setflag FLAG_RYU_ARTICUNO_RAN
-	removeobject 3 @Put the porymap object ID here
+	RyuLegendary_CaughtArticuno::
+	setflag FLAG_RYU_ARTICUNO @once this flag is set, the mon will never come back.
+	removeobject 3 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release
 	end
 
-OverworldLegendary_IntroArticuno: @put your intro here
+RyuLegendary_IntroArticuno: @put your intro here
 	.string "Gyaoo!$"
 
 MtFreeze_EventScript_Morris::

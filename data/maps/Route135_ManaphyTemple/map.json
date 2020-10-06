@@ -1,43 +1,46 @@
 {
-    "allow_cycling": false,
-    "allow_escaping": false,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-    ],
-    "connections": [
-        {
-            "direction": "dive",
-            "map": "MAP_UNDERWATER_ROUTE135_2",
-            "offset": 0
-        }
-    ],
-    "coord_events": [
-    ],
-    "id": "MAP_ROUTE135_MANAPHY_TEMPLE",
-    "layout": "LAYOUT_ROUTE135_MANAPHY_TEMPLE",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_TOZAN",
-    "name": "Route135_ManaphyTemple",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_HIDE_MANAPHY",
-            "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "r135_Manaphy",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 7,
-            "y": 7
-        }
-    ],
-    "region_map_section": "MAPSEC_ROUTE_135",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_ROUTE135_MANAPHY_TEMPLE",
+  "name": "Route135_ManaphyTemple",
+  "layout": "LAYOUT_ROUTE135_MANAPHY_TEMPLE",
+  "music": "MUS_TOZAN",
+  "region_map_section": "MAPSEC_ROUTE_135",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "direction": "dive",
+      "offset": 0,
+      "map": "MAP_UNDERWATER_ROUTE135_2"
+    }
+  ],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
+      "x": 7,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RyuLegendary_Manaphy",
+      "flag": "FLAG_RYU_HIDE_MANAPHY"
+    }
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }

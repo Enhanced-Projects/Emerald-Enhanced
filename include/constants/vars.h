@@ -121,16 +121,16 @@
 #define VAR_RYU_GCMS_MOVE4                   0x4067 // GCMS
 #define VAR_RYU_GCMS_ABILITY                 0x4068 // GCMS
 #define VAR_ROUTE110_STATE                   0x4069
-#define VAR_RYU_TH_RNG_VALUE                 0x406A // Unused Var
-#define VAR_RYU_TRAINER_HILL_MODE            0x406B // Unused Var
-#define VAR_RYU_PLAYER_MINING_SKILL          0x406C // Unused Var
-#define VAR_RYU_PLAYER_BOTANY_SKILL          0x406D // Unused Var
-#define VAR_RYU_PLAYER_ALCHEMY_SKILL         0x406E // Unused Var
+#define VAR_RYU_TH_RNG_VALUE                 0x406A
+#define VAR_RYU_TRAINER_HILL_MODE            0x406B
+#define VAR_RYU_PLAYER_MINING_SKILL          0x406C
+#define VAR_RYU_PLAYER_BOTANY_SKILL          0x406D
+#define VAR_RYU_PLAYER_ALCHEMY_SKILL         0x406E
 #define VAR_ROUTE116_STATE                   0x406F
-#define VAR_RYU_PLAYER_MINING_EXP            0x4070 // Unused Var
+#define VAR_RYU_PLAYER_MINING_EXP            0x4070
 #define VAR_ROUTE118_STATE                   0x4071
 #define VAR_ROUTE119_STATE                   0x4072
-#define VAR_ROUTE120_STATE                   0x4073 // Unused Var
+#define VAR_RYU_PLAYER_BOTANY_SKILL_EXP      0x4073
 #define VAR_ROUTE121_STATE                   0x4074
 #define VAR_ROUTE122_STATE                   0x4075 // Unused Var
 #define VAR_ROUTE123_STATE                   0x4076 // Unused Var
@@ -141,7 +141,7 @@
 #define VAR_ROUTE128_STATE                   0x407B
 #define VAR_ROUTE129_STATE                   0x407C // Unused Var
 #define VAR_ROUTE130_STATE                   0x407D // Unused Var
-#define FLAG_RYU_MOLTRES                     0x407E // Unused Var
+#define FLAG_RYU_MOLTRES                     0x407E
 #define VAR_UNUSED_0x407F                    0x407F // Unused Var
 #define VAR_UNUSED_0x4080                    0x4080 // Unused Var
 #define VAR_UNUSED_0x4081                    0x4081 // Unused Var
@@ -170,20 +170,20 @@
 #define VAR_PETALBURG_WOODS_STATE            0x4098
 #define VAR_LILYCOVE_CONTEST_LOBBY_STATE     0x4099
 #define VAR_RUSTURF_TUNNEL_STATE             0x409A
-#define VAR_RYU_PC_USES                      0x409B // Unused Var
+#define VAR_RYU_PC_USES                      0x409B
 #define VAR_ELITE_4_STATE                    0x409C
-#define VAR_RYU_EXP_MULTIPLIER               0x409D // Unused Var
+#define VAR_RYU_EXP_MULTIPLIER               0x409D
 #define VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE    0x409E
 #define VAR_MOSSDEEP_SPACE_CENTER_STATE      0x409F
 #define VAR_SLATEPORT_HARBOR_STATE           0x40A0
-#define VAR_RYU_JUKEBOX                      0x40A1 // Unused var
+#define VAR_RYU_JUKEBOX                      0x40A1
 #define VAR_SEAFLOOR_CAVERN_STATE            0x40A2
 #define VAR_CABLE_CAR_STATION_STATE          0x40A3
 #define VAR_SAFARI_ZONE_STATE                0x40A4  // 0: In or out of SZ, 1: Player exiting SZ, 2: Player entering SZ
 #define VAR_TRICK_HOUSE_BEING_WATCHED_STATE  0x40A5
 #define VAR_TRICK_HOUSE_FOUND_TRICK_MASTER   0x40A6
 #define VAR_TRICK_HOUSE_ENTRANCE_STATE       0x40A7
-#define VAR_RYU_TITLE_DEFENSE_WINS           0x40A8 // Unused Var
+#define VAR_RYU_TITLE_DEFENSE_WINS           0x40A8
 #define VAR_CYCLING_CHALLENGE_STATE          0x40A9 // unused now
 #define VAR_SLATEPORT_MUSEUM_1F_STATE        0x40AA
 #define VAR_TRICK_HOUSE_PUZZLE_1_STATE       0x40AB
@@ -199,10 +199,10 @@
 #define VAR_TRICK_HOUSE_ENTER_FROM_CORRIDOR  0x40B5
 #define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     0x40B6 // Leftover from RS, never set
 #define VAR_SLATEPORT_FAN_CLUB_STATE         0x40B7
-#define VAR_RYU_SCRIPT_PTR                   0x40B8 // Unused Var
+#define VAR_RYU_SCRIPT_PTR                   0x40B8
 #define VAR_MT_PYRE_STATE                    0x40B9
 #define VAR_NEW_MAUVILLE_STATE               0x40BA
-#define VAR_RYU_SHELLY_STATUS                0x40BB // Unused Var
+#define VAR_RYU_SHELLY_STATUS                0x40BB
 #define VAR_BRAVO_TRAINER_BATTLE_TOWER_ON    0x40BC
 #define VAR_JAGGED_PASS_ASH_WEATHER          0x40BD
 #define VAR_GLASS_WORKSHOP_STATE             0x40BE
@@ -234,17 +234,17 @@
 #define VAR_SOOTOPOLIS_WALLACE_STATE         0x40D8
 #define VAR_HAS_TALKED_TO_SEAFLOOR_CAVERN_ENTRANCE_GRUNT 0x40D9
 #define VAR_REGISTER_BIRCH_STATE             0x40DA
-#define VAR_RYU_FOLLOWER_ID                  0x40DB // Unused Var
-#define VAR_RYU_SAVED_BGM                    0x40DC // Unused Var
+#define VAR_RYU_FOLLOWER_ID                  0x40DB
+#define VAR_RYU_SAVED_BGM                    0x40DC
 #define VAR_EVENT_PICHU_SLOT                 0x40DD
-#define VAR_RYU_LANETTE_VAR                    0x40DE // Var is written to, but never read
-#define VAR_UNUSED_0x40DF                     0x40DF // Var is written to, but never read
-#define VAR_UNUSED_0x40E0                     0x40E0 // Var is written to, but never read
-#define VAR_UNUSED_0x40E1                     0x40E1 // Var is written to, but never read
-#define VAR_UNUSED_0x40E2                     0x40E2 // Var is written to, but never read
-#define VAR_UNUSED_0x40E3                     0x40E3 // Var is written to, but never read
-#define VAR_UNUSED_0x40E4                     0x40E4 // var is written to, but never read
-#define VAR_UNUSED_0x40E5                     0x40E5 // Unused Var
+#define VAR_RYU_LANETTE_VAR                  0x40DE
+#define VAR_UNUSED_0x40DF                    0x40DF // Var is written to, but never read
+#define VAR_UNUSED_0x40E0                    0x40E0 // Var is written to, but never read
+#define VAR_UNUSED_0x40E1                    0x40E1 // Var is written to, but never read
+#define VAR_UNUSED_0x40E2                    0x40E2 // Var is written to, but never read
+#define VAR_UNUSED_0x40E3                    0x40E3 // Var is written to, but never read
+#define VAR_UNUSED_0x40E4                    0x40E4 // var is written to, but never read
+#define VAR_UNUSED_0x40E5                    0x40E5 // Unused Var
 #define VAR_DAILY_SLOTS                      0x40E6
 #define VAR_DAILY_WILDS                      0x40E7
 #define VAR_DAILY_BLENDER                    0x40E8
@@ -262,14 +262,14 @@
 #define VAR_ROXANNE_CALL_STEP_COUNTER        0x40F4
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER       0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER 0x40F6
-#define VAR_RYU_GCMS_SPECIES                 0x40F7 // Unused Var
-#define VAR_RYU_GCMS_VALUE                   0x40F8 // Unused Var
-#define VAR_RYU_BANK_APR                     0x40F9 // Unused Var
-#define VAR_RYU_EXP_BATTERY                  0x40FA // Unused Var
-#define VAR_RYU_NUZLOCKE_WAYSTONE_USES       0x40FB // Unused Var
-#define VAR_RYU_PRICE_MULTIPLIER             0x40FC // Unused Var
-#define VAR_RYU_WEATHER                      0x40FD // Unused Var
-#define VAR_RYU_DS_LANA_STAGE                0x40FE // Unused Var
+#define VAR_RYU_GCMS_SPECIES                 0x40F7
+#define VAR_RYU_GCMS_VALUE                   0x40F8
+#define VAR_RYU_BANK_APR                     0x40F9
+#define VAR_RYU_EXP_BATTERY                  0x40FA
+#define VAR_RYU_NUZLOCKE_WAYSTONE_USES       0x40FB
+#define VAR_RYU_PRICE_MULTIPLIER             0x40FC
+#define VAR_RYU_WEATHER                      0x40FD
+#define VAR_RYU_DS_LANA_STAGE                0x40FE
 #define VAR_RYU_MAGMA                        0x40FF // Magma quest var
 
 #define VARS_END                             0x40FF
@@ -373,6 +373,17 @@
 #define RTC_TIME_EVENING 1
 #define RTC_TIME_NIGHT 2
 #define RTC_TIME_MORNING 3
+
+
+//Botany Defines
+#define NUM_MAPS_PER_BOTANY_CATEGORY 5
+
+#define BOTANY_MAP_CATEGORY_JUNGLE 0
+#define BOTANY_MAP_CATEGORY_COLD 1
+#define BOTANY_MAP_CATEGORY_VOLCANIC 2
+#define BOTANY_MAP_CATEGORY_SEASIDE 3
+#define BOTANY_MAP_CATEGORY_GENERAL 4
+#define NUM_BOTANY_MAP_CATEGORIES 5
 
 #define SPECIAL_VARS_END              0x8015
 

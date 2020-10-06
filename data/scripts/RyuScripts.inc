@@ -1320,7 +1320,7 @@ JuanMega:
 RyuLegendary_GeneralLegendEncounter::
 	playmoncry VAR_TEMP_5, 0
 	specialvar VAR_TEMP_7, CountBadges
-	multvar VAR_TEMP_7, 20
+	multvar VAR_TEMP_7, 12
 	compare VAR_TEMP_7, 110
 	call_if_gt RyuLegendary_SetMaxScale
 	compare VAR_TEMP_7, 20
@@ -1328,22 +1328,11 @@ RyuLegendary_GeneralLegendEncounter::
 	setwildbattle VAR_TEMP_5, VAR_TEMP_7, VAR_TEMP_9
 	special BattleSetup_StartLegendaryBattle
 	waitstate
-	call RyuLegendary_HandleEndLegendaryBattle
 	return
 	end
 
 TestMsg:
 	.string "{STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}$"
-
-RyuLegendary_HandleEndLegendaryBattle::
-	specialvar VAR_RESULT, GetBattleOutcome
-	switch VAR_RESULT
-	case B_OUTCOME_MON_FLED, RyuLegendary_MonEscaped
-	case B_OUTCOME_RAN, RyuLegendary_MonEscaped
-	case B_OUTCOME_PLAYER_TELEPORTED, RyuLegendary_MonEscaped
-	case B_OUTCOME_CAUGHT, RyuLegendaryFinish
-	case B_OUTCOME_WON, RyuLegendaryFinish
-	return
 
 RyuLegendary_SetMaxScale::
 	setvar VAR_TEMP_7, 110

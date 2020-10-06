@@ -1472,7 +1472,6 @@ if (ability == ABILITY_MAGIC_GUARD) \
             break;\
 }
 
-extern void RyuPrintDebugMessage();
 u8 DoBattlerEndTurnEffects(void)
 {
     u32 ability, i, effect = 0;

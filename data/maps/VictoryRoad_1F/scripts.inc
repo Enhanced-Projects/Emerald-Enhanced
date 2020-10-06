@@ -106,30 +106,26 @@ VictoryRoad_1F_Text_KatelynnPostBattle: @ 82364BB
 	.string "See if I care.$"
 @==================================================================================================
 
-VR1_Moltres::
-	applymovement 8, Common_Movement_FaceUp
-	waitmovement 8
+RyuLegendary_Moltres::
 	goto_if_set FLAG_RYU_MOLTRES, ryu_end
 	goto_if_set FLAG_RYU_MOLTRES_RAN, ryu_end
-	msgbox OverworldLegendary_IntroMoltres
+	msgbox RyuLegendary_IntroMoltres
 	setvar VAR_TEMP_5, SPECIES_MOLTRES
 	setvar VAR_TEMP_9, ITEM_CHARCOAL
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
-	case B_OUTCOME_RAN, VR1_MoltresGotAway
-	case B_OUTCOME_LOST, VR1_MoltresGotAway
-	case B_OUTCOME_MON_FLED, VR1_MoltresGotAway
-	case B_OUTCOME_PLAYER_TELEPORTED, VR1_MoltresGotAway
-	setflag FLAG_RYU_MOLTRES
+	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtMoltres @if the mon was caught, set main flag and delete object permanently.
+	setflag FLAG_RYU_MOLTRES_RAN @since the outcome wasn't caught, the mon will disappear until player clears champion or title defense again.
 	removeobject 8 @Put the porymap object ID here
 	release
 	end
 
-VR1_MoltresGotAway::
-	setflag FLAG_RYU_MOLTRES_RAN
-	removeobject 8 @Put the porymap object ID here
+	RyuLegendary_CaughtMoltres::
+	setflag FLAG_RYU_MOLTRES @once this flag is set, the mon will never come back.
+	removeobject 8 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release
 	end
 
-OverworldLegendary_IntroMoltres: @put your intro here
-	.string "Gyaoo!$"
+
+RyuLegendary_IntroMoltres: @put your intro here
+	.string "$"

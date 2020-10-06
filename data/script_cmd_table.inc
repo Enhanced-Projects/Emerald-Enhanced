@@ -246,6 +246,8 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_dominingcheck
 	.4byte ScrCmd_drawinfobox
 	.4byte ScrCmd_removeinfobox
+	.4byte ScrCmd_addvars
+	.4byte ScrCmd_checkspecies
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop
