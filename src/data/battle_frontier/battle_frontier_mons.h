@@ -693,7 +693,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_SALAMENCE_5] = { // Salamence-Scarf
+    [FRONTIER_MON_SALAMENCE_SCARF] = { // Salamence-Scarf
         .species = SPECIES_SALAMENCE,
         .moves = {MOVE_DRAGON_PULSE, MOVE_AEROBLAST, MOVE_BLAST_OFF, MOVE_HYDRO_PUMP},
         .heldItem = ITEM_CHOICE_SCARF,
