@@ -5170,6 +5170,36 @@
       "secondary_tileset": "gTileset_MirageIsland",
       "border_filepath": "data/layouts/MirageCave/border.bin",
       "blockdata_filepath": "data/layouts/MirageCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_CAVE_UNDERWATER1",
+      "name": "MirageCave_Underwater1_Layout",
+      "width": 48,
+      "height": 47,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/MirageCave_Underwater1/border.bin",
+      "blockdata_filepath": "data/layouts/MirageCave_Underwater1/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_CAVE_UNDERWATER2",
+      "name": "MirageCave_Underwater2_Layout",
+      "width": 11,
+      "height": 16,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/MirageCave_Underwater2/border.bin",
+      "blockdata_filepath": "data/layouts/MirageCave_Underwater2/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_CAVE_LAKE_CAVE",
+      "name": "MirageCave_LakeCave_Layout",
+      "width": 13,
+      "height": 14,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageIsland",
+      "border_filepath": "data/layouts/MirageCave_LakeCave/border.bin",
+      "blockdata_filepath": "data/layouts/MirageCave_LakeCave/map.bin"
     }
   ]
 }

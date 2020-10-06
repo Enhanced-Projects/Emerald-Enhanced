@@ -662,7 +662,10 @@
     "MtFreeze_3F"
   ],
   "gMapGroup28": [
-    "MirageCave"
+    "MirageCave",
+    "MirageCave_Underwater1",
+    "MirageCave_Underwater2",
+    "MirageCave_LakeCave"
   ],
   "gMapGroup29": [
     "Route109_SeashoreHouse",
