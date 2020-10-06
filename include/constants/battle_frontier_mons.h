@@ -765,8 +765,8 @@
 #define FRONTIER_MON_SLAKING_2           755
 
 #define FRONTIER_MON_COBALION_1          756
-#define FRONTIER_MON_TERRAKION_1            757
-#define FRONTIER_MON_VIRIZION_1           758
+#define FRONTIER_MON_TERRAKION_1         757
+#define FRONTIER_MON_VIRIZION_1          758
 #define FRONTIER_MON_RAIKOU_1            759
 #define FRONTIER_MON_ENTEI_1             760
 #define FRONTIER_MON_SUICUNE_1           761
@@ -776,8 +776,8 @@
 #define FRONTIER_MON_LATIAS_1            765
 #define FRONTIER_MON_LATIOS_1            766
 #define FRONTIER_MON_COBALION_2          767
-#define FRONTIER_MON_TERRAKION_2            768
-#define FRONTIER_MON_VIRIZION_2           769
+#define FRONTIER_MON_TERRAKION_2         768
+#define FRONTIER_MON_VIRIZION_2          769
 #define FRONTIER_MON_RAIKOU_2            770
 #define FRONTIER_MON_ENTEI_2             771
 #define FRONTIER_MON_SUICUNE_2           772
@@ -787,8 +787,8 @@
 #define FRONTIER_MON_LATIAS_2            776
 #define FRONTIER_MON_LATIOS_2            777
 #define FRONTIER_MON_COBALION_3          778
-#define FRONTIER_MON_TERRAKION_3            779
-#define FRONTIER_MON_VIRIZION_3           780
+#define FRONTIER_MON_TERRAKION_3         779
+#define FRONTIER_MON_VIRIZION_3          780
 #define FRONTIER_MON_RAIKOU_3            781
 #define FRONTIER_MON_ENTEI_3             782
 #define FRONTIER_MON_SUICUNE_3           783
@@ -798,8 +798,8 @@
 #define FRONTIER_MON_LATIAS_3            787
 #define FRONTIER_MON_LATIOS_3            788
 #define FRONTIER_MON_COBALION_4          789
-#define FRONTIER_MON_TERRAKION_4            790
-#define FRONTIER_MON_VIRIZION_4           791
+#define FRONTIER_MON_TERRAKION_4         790
+#define FRONTIER_MON_VIRIZION_4          791
 #define FRONTIER_MON_RAIKOU_4            792
 #define FRONTIER_MON_ENTEI_4             793
 #define FRONTIER_MON_SUICUNE_4           794
@@ -882,11 +882,11 @@
 #define FRONTIER_MON_TYRANITAR_9         868
 #define FRONTIER_MON_TYRANITAR_10        869
 #define FRONTIER_MON_COBALION_5          870
-#define FRONTIER_MON_KELDEO_1          871
-#define FRONTIER_MON_TERRAKION_5            872
-#define FRONTIER_MON_KELDEO_3            873
-#define FRONTIER_MON_VIRIZION_5           874
-#define FRONTIER_MON_KELDEO_2           875
+#define FRONTIER_MON_TERRAKION_5         871
+#define FRONTIER_MON_VIRIZION_5          872
+#define FRONTIER_MON_KELDEO_1            873
+#define FRONTIER_MON_KELDEO_2            874
+#define FRONTIER_MON_KELDEO_3            875
 #define FRONTIER_MON_RAIKOU_5            876
 #define FRONTIER_MON_RAIKOU_6            877
 #define FRONTIER_MON_ENTEI_5             878
