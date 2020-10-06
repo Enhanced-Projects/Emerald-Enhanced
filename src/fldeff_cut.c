@@ -310,8 +310,8 @@ bool8 FldEff_UseCutOnGrass(void)
     gTasks[taskId].data[8] = (u32)StartCutGrassFieldEffect >> 16;
     gTasks[taskId].data[9] = (u32)StartCutGrassFieldEffect;
     IncrementGameStat(GAME_STAT_USED_CUT);
-    if (VarGet(VAR_RYU_PLAYER_BOTANY_SKILL) > 0)
-        RyuGetMapsecForFieldCut();
+    //if (VarGet(VAR_RYU_PLAYER_BOTANY_SKILL) > 0)
+    //    RyuGetMapsecForFieldCut();
     return FALSE;
 }
 
