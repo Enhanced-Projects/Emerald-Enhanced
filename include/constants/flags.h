@@ -1021,8 +1021,8 @@
 #define FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE      0x3D4 // EE-Unused?
 #define FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_VISIBLE                  0x3D5
 #define FLAG_HIDE_ROUTE_120_KECLEON_1                               0x3D6
-#define FLAG_HIDE_RUSTURF_TUNNEL_WANDA                              0x3D7 // EE-Unused
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA                0x3D8 // EE-Unused
+#define FLAG_RYU_HOOPA                                              0x3D7
+#define FLAG_RYU_HOOPA_RAN                                          0x3D8
 #define FLAG_HIDE_ROUTE_120_KECLEON_2                               0x3D9
 #define FLAG_HIDE_ROUTE_120_KECLEON_3                               0x3DA
 #define FLAG_HIDE_ROUTE_120_KECLEON_4                               0x3DB

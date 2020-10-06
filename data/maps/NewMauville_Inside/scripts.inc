@@ -405,4 +405,4 @@ RyuLegendary_Zapdos::
 
 
 RyuLegendary_IntroZapdos: @put your intro here
-	.string "$"
+	.string "Gyaoo!$"

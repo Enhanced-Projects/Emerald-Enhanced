@@ -128,4 +128,4 @@ RyuLegendary_Moltres::
 
 
 RyuLegendary_IntroMoltres: @put your intro here
-	.string "$"
+	.string "Gyaoo!$"
