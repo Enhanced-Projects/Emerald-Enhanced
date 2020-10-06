@@ -459,8 +459,8 @@
     FRONTIER_MON_ILLUMISE_3,            \
     FRONTIER_MON_VOLBEAT_3,             \
     FRONTIER_MON_DRAPION_3,             \
-    FRONTIER_MON_##species1,                      \
-    FRONTIER_MON_##species2,                      \
+    FRONTIER_MON_##species1,            \
+    FRONTIER_MON_##species2,            \
     FRONTIER_MON_SHEDINJA,              \
     FRONTIER_MON_HERACROSS_3,           \
     FRONTIER_MON_YANMEGA_2,             \
@@ -1130,7 +1130,7 @@
 
 #define FRONTIER_MONS_EXPERT_1B \
     FRONTIER_MON_DUNSPARCE_1,           \
-    FRONTIER_MON_GOODRA_5,              \
+    FRONTIER_MON_GOODRA_2,              \
     FRONTIER_MON_MIGHTYENA_1,           \
     FRONTIER_MON_LINOONE_1,             \
     FRONTIER_MON_CASTFORM_1,            \
@@ -1344,7 +1344,7 @@
 
 #define FRONTIER_MONS_GENTLEMAN_1B \
     FRONTIER_MON_DUNSPARCE_2,           \
-    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_GOODRA_3,              \
     FRONTIER_MON_MIGHTYENA_2,           \
     FRONTIER_MON_LINOONE_2,             \
     FRONTIER_MON_CASTFORM_2,            \
@@ -2812,25 +2812,25 @@
     FRONTIER_MON_##lati##_7,            \
     FRONTIER_MON_##lati##_8,            \
     FRONTIER_MON_DRAGONITE_1,           \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_DRAGONITE_2,           \
+    FRONTIER_MON_GOODRA_5,              \
     FRONTIER_MON_DRAGONITE_3,           \
+    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_VOLCARONA_1,           \
+    FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_DRAGONITE_5,           \
-    FRONTIER_MON_DRAGONITE_6,           \
-    FRONTIER_MON_DRAGONITE_7,           \
-    FRONTIER_MON_DRAGONITE_8,           \
-    FRONTIER_MON_DRAGONITE_9,           \
-    FRONTIER_MON_DRAGONITE_10,          \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_TYRANITAR_1,           \
+    FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
+    FRONTIER_MON_HYDREIGON_2,           \
     FRONTIER_MON_TYRANITAR_3,           \
+    FRONTIER_MON_HYDREIGON_3,           \
+    FRONTIER_MON_VOLCARONA_3,           \
+    FRONTIER_MON_VOLCARONA_4,           \
     FRONTIER_MON_TYRANITAR_4,           \
-    FRONTIER_MON_TYRANITAR_5,           \
-    FRONTIER_MON_TYRANITAR_6,           \
-    FRONTIER_MON_TYRANITAR_7,           \
-    FRONTIER_MON_TYRANITAR_8,           \
-    FRONTIER_MON_TYRANITAR_9,           \
-    FRONTIER_MON_TYRANITAR_10,          \
+    FRONTIER_MON_HYDREIGON_4,           \
     -1
 
 // Also used by Pkmn Ranger M/F
@@ -2887,25 +2887,25 @@
     FRONTIER_MON_##lati##_7,            \
     FRONTIER_MON_##lati##_8,            \
     FRONTIER_MON_DRAGONITE_1,           \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_DRAGONITE_2,           \
+    FRONTIER_MON_GOODRA_5,              \
     FRONTIER_MON_DRAGONITE_3,           \
+    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_VOLCARONA_1,           \
+    FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_DRAGONITE_5,           \
-    FRONTIER_MON_DRAGONITE_6,           \
-    FRONTIER_MON_DRAGONITE_7,           \
-    FRONTIER_MON_DRAGONITE_8,           \
-    FRONTIER_MON_DRAGONITE_9,           \
-    FRONTIER_MON_DRAGONITE_10,          \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_TYRANITAR_1,           \
+    FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
+    FRONTIER_MON_HYDREIGON_2,           \
     FRONTIER_MON_TYRANITAR_3,           \
+    FRONTIER_MON_HYDREIGON_3,           \
+    FRONTIER_MON_VOLCARONA_3,           \
+    FRONTIER_MON_VOLCARONA_4,           \
     FRONTIER_MON_TYRANITAR_4,           \
-    FRONTIER_MON_TYRANITAR_5,           \
-    FRONTIER_MON_TYRANITAR_6,           \
-    FRONTIER_MON_TYRANITAR_7,           \
-    FRONTIER_MON_TYRANITAR_8,           \
-    FRONTIER_MON_TYRANITAR_9,           \
-    FRONTIER_MON_TYRANITAR_10,          \
+    FRONTIER_MON_HYDREIGON_4,           \
     FRONTIER_MON_COBALION_5,            \
     FRONTIER_MON_KELDEO_1,              \
     FRONTIER_MON_TERRAKION_5,           \
@@ -3599,25 +3599,25 @@
     FRONTIER_MON_LATIOS_7,              \
     FRONTIER_MON_LATIOS_8,              \
     FRONTIER_MON_DRAGONITE_1,           \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_DRAGONITE_2,           \
+    FRONTIER_MON_GOODRA_5,              \
     FRONTIER_MON_DRAGONITE_3,           \
+    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_VOLCARONA_1,           \
+    FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_DRAGONITE_5,           \
-    FRONTIER_MON_DRAGONITE_6,           \
-    FRONTIER_MON_DRAGONITE_7,           \
-    FRONTIER_MON_DRAGONITE_8,           \
-    FRONTIER_MON_DRAGONITE_9,           \
-    FRONTIER_MON_DRAGONITE_10,          \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_TYRANITAR_1,           \
+    FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
+    FRONTIER_MON_HYDREIGON_2,           \
     FRONTIER_MON_TYRANITAR_3,           \
+    FRONTIER_MON_HYDREIGON_3,           \
+    FRONTIER_MON_VOLCARONA_3,           \
+    FRONTIER_MON_VOLCARONA_4,           \
     FRONTIER_MON_TYRANITAR_4,           \
-    FRONTIER_MON_TYRANITAR_5,           \
-    FRONTIER_MON_TYRANITAR_6,           \
-    FRONTIER_MON_TYRANITAR_7,           \
-    FRONTIER_MON_TYRANITAR_8,           \
-    FRONTIER_MON_TYRANITAR_9,           \
-    FRONTIER_MON_TYRANITAR_10,          \
+    FRONTIER_MON_HYDREIGON_4,           \
     -1
 
 #define FRONTIER_MONS_BLACK_BELT_2A \
@@ -3952,16 +3952,16 @@
     FRONTIER_MON_REGICE_6,              \
     FRONTIER_MON_REGISTEEL_5,           \
     FRONTIER_MON_REGISTEEL_6,           \
-    FRONTIER_MON_##lastmon##_1,                   \
-    FRONTIER_MON_##lastmon##_2,                   \
-    FRONTIER_MON_##lastmon##_3,                   \
-    FRONTIER_MON_##lastmon##_4,                   \
-    FRONTIER_MON_##lastmon##_5,                   \
-    FRONTIER_MON_##lastmon##_6,                   \
-    FRONTIER_MON_##lastmon##_7,                   \
-    FRONTIER_MON_##lastmon##_8,                   \
-    FRONTIER_MON_##lastmon##_9,                   \
-    FRONTIER_MON_##lastmon##_10,\
+    FRONTIER_MON_##lastmon##_1,         \
+    FRONTIER_MON_##lastmon##_2,         \
+    FRONTIER_MON_##lastmon##_3,         \
+    FRONTIER_MON_##lastmon##_4,         \
+    FRONTIER_MON_GOODRA_2,              \
+    FRONTIER_MON_GOODRA_3,              \
+    FRONTIER_MON_HYDREIGON_3,           \
+    FRONTIER_MON_HYDREIGON_4,           \
+    FRONTIER_MON_VOLCARONA_3,           \
+    FRONTIER_MON_VOLCARONA_4,           \
     -1
 
 // For this group, Expert M uses Latios, Expert F uses Latias
@@ -4057,15 +4057,15 @@
     FRONTIER_MON_##lati##_7,            \
     FRONTIER_MON_##lati##_8,            \
     FRONTIER_MON_TYRANITAR_1,           \
+    FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
+    FRONTIER_MON_HYDREIGON_2,           \
     FRONTIER_MON_TYRANITAR_3,           \
+    FRONTIER_MON_HYDREIGON_3,           \
+    FRONTIER_MON_VOLCARONA_3,           \
+    FRONTIER_MON_VOLCARONA_4,           \
     FRONTIER_MON_TYRANITAR_4,           \
-    FRONTIER_MON_TYRANITAR_5,           \
-    FRONTIER_MON_TYRANITAR_6,           \
-    FRONTIER_MON_TYRANITAR_7,           \
-    FRONTIER_MON_TYRANITAR_8,           \
-    FRONTIER_MON_TYRANITAR_9,           \
-    FRONTIER_MON_TYRANITAR_10,          \
+    FRONTIER_MON_HYDREIGON_4,           \
     -1 
 
 // For this group, Expert M uses Tyranitar, Expert F uses Dragonite
@@ -4160,16 +4160,16 @@
     FRONTIER_MON_REGICE_6,              \
     FRONTIER_MON_REGISTEEL_5,           \
     FRONTIER_MON_REGISTEEL_6,           \
-    FRONTIER_MON_##lastmon##_1,                   \
-    FRONTIER_MON_##lastmon##_2,                   \
-    FRONTIER_MON_##lastmon##_3,                   \
-    FRONTIER_MON_##lastmon##_4,                   \
-    FRONTIER_MON_##lastmon##_5,                   \
-    FRONTIER_MON_##lastmon##_6,                   \
-    FRONTIER_MON_##lastmon##_7,                   \
-    FRONTIER_MON_##lastmon##_8,                   \
-    FRONTIER_MON_##lastmon##_9,                   \
-    FRONTIER_MON_##lastmon##_10,\
+    FRONTIER_MON_##lastmon##_1,         \
+    FRONTIER_MON_##lastmon##_2,         \
+    FRONTIER_MON_##lastmon##_3,         \
+    FRONTIER_MON_##lastmon##_4,         \
+    FRONTIER_MON_GOODRA_2,              \
+    FRONTIER_MON_GOODRA_3,              \
+    FRONTIER_MON_HYDREIGON_3,           \
+    FRONTIER_MON_HYDREIGON_4,           \
+    FRONTIER_MON_VOLCARONA_3,           \
+    FRONTIER_MON_VOLCARONA_4,           \
     -1 
 
 // The strong Psychic M/F trainers all use the below pokemon
@@ -4523,25 +4523,25 @@
     FRONTIER_MON_KOMMO_O_1,             \
     FRONTIER_MON_SLAKING_1,             \
     FRONTIER_MON_DRAGONITE_1,           \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_DRAGONITE_2,           \
+    FRONTIER_MON_GOODRA_5,              \
     FRONTIER_MON_DRAGONITE_3,           \
+    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_VOLCARONA_1,           \
+    FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_DRAGONITE_5,           \
-    FRONTIER_MON_DRAGONITE_6,           \
-    FRONTIER_MON_DRAGONITE_7,           \
-    FRONTIER_MON_DRAGONITE_8,           \
-    FRONTIER_MON_DRAGONITE_9,           \
-    FRONTIER_MON_DRAGONITE_10,          \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_TYRANITAR_1,           \
+    FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
+    FRONTIER_MON_HYDREIGON_2,           \
     FRONTIER_MON_TYRANITAR_3,           \
+    FRONTIER_MON_HYDREIGON_3,           \
+    FRONTIER_MON_VOLCARONA_3,           \
+    FRONTIER_MON_VOLCARONA_4,           \
     FRONTIER_MON_TYRANITAR_4,           \
-    FRONTIER_MON_TYRANITAR_5,           \
-    FRONTIER_MON_TYRANITAR_6,           \
-    FRONTIER_MON_TYRANITAR_7,           \
-    FRONTIER_MON_TYRANITAR_8,           \
-    FRONTIER_MON_TYRANITAR_9,           \
-    FRONTIER_MON_TYRANITAR_10,          \
+    FRONTIER_MON_HYDREIGON_4,           \
     -1 
 
 #define FRONTIER_MONS_POKEMANIAC_2B \
@@ -4613,25 +4613,25 @@
     FRONTIER_MON_KOMMO_O_2,             \
     FRONTIER_MON_SLAKING_2,             \
     FRONTIER_MON_DRAGONITE_1,           \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_DRAGONITE_2,           \
+    FRONTIER_MON_GOODRA_5,              \
     FRONTIER_MON_DRAGONITE_3,           \
+    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_VOLCARONA_1,           \
+    FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_DRAGONITE_5,           \
-    FRONTIER_MON_DRAGONITE_6,           \
-    FRONTIER_MON_DRAGONITE_7,           \
-    FRONTIER_MON_DRAGONITE_8,           \
-    FRONTIER_MON_DRAGONITE_9,           \
-    FRONTIER_MON_DRAGONITE_10,          \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_TYRANITAR_1,           \
+    FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
+    FRONTIER_MON_HYDREIGON_2,           \
     FRONTIER_MON_TYRANITAR_3,           \
+    FRONTIER_MON_HYDREIGON_3,           \
+    FRONTIER_MON_VOLCARONA_3,           \
+    FRONTIER_MON_VOLCARONA_4,           \
     FRONTIER_MON_TYRANITAR_4,           \
-    FRONTIER_MON_TYRANITAR_5,           \
-    FRONTIER_MON_TYRANITAR_6,           \
-    FRONTIER_MON_TYRANITAR_7,           \
-    FRONTIER_MON_TYRANITAR_8,           \
-    FRONTIER_MON_TYRANITAR_9,           \
-    FRONTIER_MON_TYRANITAR_10,          \
+    FRONTIER_MON_HYDREIGON_4,           \
     -1
 
 #define FRONTIER_MONS_POKEMANIAC_2C \
@@ -4705,25 +4705,25 @@
     FRONTIER_MON_METAGROSS_4,           \
     FRONTIER_MON_KOMMO_O_4,             \
     FRONTIER_MON_DRAGONITE_1,           \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_DRAGONITE_2,           \
+    FRONTIER_MON_GOODRA_5,              \
     FRONTIER_MON_DRAGONITE_3,           \
+    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_VOLCARONA_1,           \
+    FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_DRAGONITE_5,           \
-    FRONTIER_MON_DRAGONITE_6,           \
-    FRONTIER_MON_DRAGONITE_7,           \
-    FRONTIER_MON_DRAGONITE_8,           \
-    FRONTIER_MON_DRAGONITE_9,           \
-    FRONTIER_MON_DRAGONITE_10,          \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_TYRANITAR_1,           \
+    FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
+    FRONTIER_MON_HYDREIGON_2,           \
     FRONTIER_MON_TYRANITAR_3,           \
+    FRONTIER_MON_HYDREIGON_3,           \
+    FRONTIER_MON_VOLCARONA_3,           \
+    FRONTIER_MON_VOLCARONA_4,           \
     FRONTIER_MON_TYRANITAR_4,           \
-    FRONTIER_MON_TYRANITAR_5,           \
-    FRONTIER_MON_TYRANITAR_6,           \
-    FRONTIER_MON_TYRANITAR_7,           \
-    FRONTIER_MON_TYRANITAR_8,           \
-    FRONTIER_MON_TYRANITAR_9,           \
-    FRONTIER_MON_TYRANITAR_10,          \
+    FRONTIER_MON_HYDREIGON_4,           \
     -1
 
 // Identical to FRONTIER_MONS_COOLTRAINER_2C but with both latias and latios
@@ -4809,25 +4809,25 @@
     FRONTIER_MON_METAGROSS_4,           \
     FRONTIER_MON_KOMMO_O_4,             \
     FRONTIER_MON_DRAGONITE_1,           \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_DRAGONITE_2,           \
+    FRONTIER_MON_GOODRA_5,              \
     FRONTIER_MON_DRAGONITE_3,           \
+    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_VOLCARONA_1,           \
+    FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_DRAGONITE_5,           \
-    FRONTIER_MON_DRAGONITE_6,           \
-    FRONTIER_MON_DRAGONITE_7,           \
-    FRONTIER_MON_DRAGONITE_8,           \
-    FRONTIER_MON_DRAGONITE_9,           \
-    FRONTIER_MON_DRAGONITE_10,          \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_TYRANITAR_1,           \
+    FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
+    FRONTIER_MON_HYDREIGON_2,           \
     FRONTIER_MON_TYRANITAR_3,           \
+    FRONTIER_MON_HYDREIGON_3,           \
+    FRONTIER_MON_VOLCARONA_3,           \
+    FRONTIER_MON_VOLCARONA_4,           \
     FRONTIER_MON_TYRANITAR_4,           \
-    FRONTIER_MON_TYRANITAR_5,           \
-    FRONTIER_MON_TYRANITAR_6,           \
-    FRONTIER_MON_TYRANITAR_7,           \
-    FRONTIER_MON_TYRANITAR_8,           \
-    FRONTIER_MON_TYRANITAR_9,           \
-    FRONTIER_MON_TYRANITAR_10,          \
+    FRONTIER_MON_HYDREIGON_4,           \
     -1 
 
 // Identical to FRONTIER_MONS_COOLTRAINER_2D but with both latias and latios
@@ -4891,25 +4891,25 @@
     FRONTIER_MON_LATIOS_7,              \
     FRONTIER_MON_LATIOS_8,              \
     FRONTIER_MON_DRAGONITE_1,           \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_DRAGONITE_2,           \
+    FRONTIER_MON_GOODRA_5,              \
     FRONTIER_MON_DRAGONITE_3,           \
+    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_VOLCARONA_1,           \
+    FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_DRAGONITE_5,           \
-    FRONTIER_MON_DRAGONITE_6,           \
-    FRONTIER_MON_DRAGONITE_7,           \
-    FRONTIER_MON_DRAGONITE_8,           \
-    FRONTIER_MON_DRAGONITE_9,           \
-    FRONTIER_MON_DRAGONITE_10,          \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_TYRANITAR_1,           \
+    FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
+    FRONTIER_MON_HYDREIGON_2,           \
     FRONTIER_MON_TYRANITAR_3,           \
+    FRONTIER_MON_HYDREIGON_3,           \
+    FRONTIER_MON_VOLCARONA_3,           \
+    FRONTIER_MON_VOLCARONA_4,           \
     FRONTIER_MON_TYRANITAR_4,           \
-    FRONTIER_MON_TYRANITAR_5,           \
-    FRONTIER_MON_TYRANITAR_6,           \
-    FRONTIER_MON_TYRANITAR_7,           \
-    FRONTIER_MON_TYRANITAR_8,           \
-    FRONTIER_MON_TYRANITAR_9,           \
-    FRONTIER_MON_TYRANITAR_10,          \
+    FRONTIER_MON_HYDREIGON_4,           \
     FRONTIER_MON_COBALION_5,            \
     FRONTIER_MON_KELDEO_1,              \
     FRONTIER_MON_TERRAKION_5,           \
@@ -5587,15 +5587,15 @@
     FRONTIER_MON_METAGROSS_4,           \
     FRONTIER_MON_KOMMO_O_4,             \
     FRONTIER_MON_TYRANITAR_1,           \
+    FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
+    FRONTIER_MON_HYDREIGON_2,           \
     FRONTIER_MON_TYRANITAR_3,           \
+    FRONTIER_MON_HYDREIGON_3,           \
+    FRONTIER_MON_VOLCARONA_3,           \
+    FRONTIER_MON_VOLCARONA_4,           \
     FRONTIER_MON_TYRANITAR_4,           \
-    FRONTIER_MON_TYRANITAR_5,           \
-    FRONTIER_MON_TYRANITAR_6,           \
-    FRONTIER_MON_TYRANITAR_7,           \
-    FRONTIER_MON_TYRANITAR_8,           \
-    FRONTIER_MON_TYRANITAR_9,           \
-    FRONTIER_MON_TYRANITAR_10,          \
+    FRONTIER_MON_HYDREIGON_4,           \
     -1 
 
 #define FRONTIER_MONS_KINDLER_3 \
@@ -5652,15 +5652,15 @@
     FRONTIER_MON_GENGAR_4,              \
     FRONTIER_MON_CHANDELURE_4,          \
     FRONTIER_MON_DRAGONITE_1,           \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_DRAGONITE_2,           \
+    FRONTIER_MON_GOODRA_5,              \
     FRONTIER_MON_DRAGONITE_3,           \
+    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_VOLCARONA_1,           \
+    FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_DRAGONITE_5,           \
-    FRONTIER_MON_DRAGONITE_6,           \
-    FRONTIER_MON_DRAGONITE_7,           \
-    FRONTIER_MON_DRAGONITE_8,           \
-    FRONTIER_MON_DRAGONITE_9,           \
-    FRONTIER_MON_DRAGONITE_10,          \
+    FRONTIER_MON_GOODRA_1,              \
     -1 
 
 #define FRONTIER_MONS_PARASOL_LADY_3 \
