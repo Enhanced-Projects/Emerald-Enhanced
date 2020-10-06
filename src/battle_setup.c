@@ -395,7 +395,7 @@ void BattleSetup_StartBattlePikeWildBattle(void)
     DoBattlePikeWildBattle();
 }
 
-void DoStandardWildBattle(void)
+static void DoStandardWildBattle(void)
 {
     ScriptContext2_Enable();
     FreezeObjectEvents();
