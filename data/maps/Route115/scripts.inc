@@ -479,28 +479,26 @@ r115_StepLeft:
 	step_end
 
 
-R115_Raikou::
+RyuLegendary_Raikou::
 	goto_if_set FLAG_RYU_RAIKOU, ryu_end
 	goto_if_set FLAG_RYU_RAIKOU_RAN, ryu_end
-	msgbox OverworldLegendary_IntroRaikou
+	msgbox RyuLegendary_IntroRaikou
 	setvar VAR_TEMP_5, SPECIES_RAIKOU
 	setvar VAR_TEMP_9, ITEM_ELECTRIC_SEED
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
-	case B_OUTCOME_RAN, R115_RaikouGotAway
-	case B_OUTCOME_LOST, R115_RaikouGotAway
-	case B_OUTCOME_MON_FLED, R115_RaikouGotAway
-	case B_OUTCOME_PLAYER_TELEPORTED, R115_RaikouGotAway
-	setflag FLAG_RYU_RAIKOU
+	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtRaikou @if the mon was caught, set main flag and delete object permanently.
+	setflag FLAG_RYU_RAIKOU_RAN @since the outcome wasn't caught, the mon will disappear until player clears champion or title defense again.
 	removeobject 24 @Put the porymap object ID here
 	release
 	end
 
-R115_RaikouGotAway::
-	setflag FLAG_RYU_RAIKOU_RAN
-	removeobject 24 @Put the porymap object ID here
+	RyuLegendary_CaughtRaikou::
+	setflag FLAG_RYU_RAIKOU @once this flag is set, the mon will never come back.
+	removeobject 24 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release
 	end
 
-OverworldLegendary_IntroRaikou: @put your intro here
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Ouch! You got zapped!$"
+
+RyuLegendary_IntroRaikou: @put your intro here
+	.string "$"

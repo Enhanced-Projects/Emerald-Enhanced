@@ -254,30 +254,31 @@ KyogreGuardianLeaves:
 
 AHQ_KyogreTrigger::
 	goto_if_unset FLAG_RYU_AQUA_LINE_DONE, ryu_end
-	goto AHQ_Kyogre
+	goto RyuLegendary_Kyogre
 
-AHQ_Kyogre::
+RyuLegendary_Kyogre::
 	goto_if_set FLAG_RYU_KYOGRE, ryu_end
 	goto_if_set FLAG_RYU_KYOGRE_RAN, ryu_end
-	msgbox AHQ_KYOGRE_STARING
+	msgbox RyuLegendary_IntroKyogre
 	setvar VAR_TEMP_5, SPECIES_KYOGRE
 	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
-	case B_OUTCOME_RAN, AHQ_KyogreGotAway
-	case B_OUTCOME_LOST, AHQ_KyogreGotAway
-	case B_OUTCOME_MON_FLED, AHQ_KyogreGotAway
-	case B_OUTCOME_PLAYER_TELEPORTED, AHQ_KyogreGotAway
-	setflag FLAG_RYU_KYOGRE
+	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtKyogre @if the mon was caught, set main flag and delete object permanently.
+	setflag FLAG_RYU_KYOGRE_RAN @since the outcome wasn't caught, the mon will disappear until player clears champion or title defense again.
 	removeobject 7 @Put the porymap object ID here
 	release
 	end
 
-AHQ_KyogreGotAway::
-	setflag FLAG_RYU_KYOGRE_RAN
-	removeobject 7 @Put the porymap object ID here
+	RyuLegendary_CaughtKyogre::
+	setflag FLAG_RYU_KYOGRE @once this flag is set, the mon will never come back.
+	removeobject 7 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release
 	end
+
+
+RyuLegendary_IntroKyogre: @put your intro here
+	.string "$"
 	
 AHQ_KYOGRE_STARING:
 	.string "Kyogre is staring intently at you.$"

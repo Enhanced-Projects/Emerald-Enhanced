@@ -2,7 +2,7 @@ Route114_SuicuneCave_MapScripts::
 	.byte 0
 
 
-Route114_Suicune::
+RyuLegendary_Suicune::
 	goto_if_set FLAG_RYU_SUICUNE, ryu_end
 	goto_if_set FLAG_RYU_SUICUNE_RAN, ryu_end
 	msgbox OverworldLegendary_IntroSuicune
@@ -10,20 +10,18 @@ Route114_Suicune::
 	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
-	case B_OUTCOME_RAN, Route114_SuicuneGotAway
-	case B_OUTCOME_LOST, Route114_SuicuneGotAway
-	case B_OUTCOME_MON_FLED, Route114_SuicuneGotAway
-	case B_OUTCOME_PLAYER_TELEPORTED, Route114_SuicuneGotAway
-	setflag FLAG_RYU_SUICUNE
+	case B_OUTCOME_CAUGHT, Route114_CaughtSuicune @if the mon was caught, set main flag and delete object permanently.
+	setflag FLAG_RYU_SUICUNE_RAN @since the outcome wasn't caught, the mon will disappear until player clears champion or title defense again.
 	removeobject 1 @Put the porymap object ID here
 	release
 	end
 
-Route114_SuicuneGotAway::
-	setflag FLAG_RYU_SUICUNE_RAN
-	removeobject 1 @Put the porymap object ID here
+	Route114_CaughtSuicune::
+	setflag FLAG_RYU_SUICUNE @once this flag is set, the mon will never come back.
+	removeobject 1 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release
 	end
+
 
 OverworldLegendary_IntroSuicune: @put your intro here
 	.string "$"
