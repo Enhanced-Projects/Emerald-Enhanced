@@ -236,21 +236,21 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][MAX_FRONTIER_PARTY
             // Lead Lapras to set up rain
             {
                 .species = SPECIES_LAPRAS,
-                .heldItem = ITEM_CHESTO_BERRY,
+                .heldItem = ITEM_DAMP_ROCK,
                 .fixedIV = 31,
                 .nature = NATURE_MODEST,
-                .evs = {252, 0, 0, 6, 0, 252},
+                .evs = {248, 0, 0, 8, 252, 0},
                 .ability = 2,
-                .moves = {MOVE_SURF, MOVE_FROST_BREATH, MOVE_TOXIC, MOVE_REST},
+                .moves = {MOVE_SURF, MOVE_FROST_BREATH, MOVE_CALM_MIND, MOVE_THUNDER},
             },
             {
                 .species = SPECIES_BRELOOM,
-                .heldItem = ITEM_TOXIC_ORB,
+                .heldItem = ITEM_FOCUS_SASH,
                 .fixedIV = 31,
                 .nature = NATURE_ADAMANT,
                 .evs = {252, 252, 6, 0, 0, 0},
-                .ability = 1,
-                .moves = {MOVE_FOCUS_PUNCH, MOVE_ROCK_TOMB, MOVE_MACH_PUNCH, MOVE_SPORE},
+                .ability = 2,
+                .moves = {MOVE_BULLET_SEED, MOVE_ROCK_TOMB, MOVE_MACH_PUNCH, MOVE_SPORE},
             },
             {
                 .species = SPECIES_SCIZOR,
@@ -294,12 +294,12 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][MAX_FRONTIER_PARTY
             // Lead Hippowdon to set up sand
             {
                 .species = SPECIES_HIPPOWDON,
-                .heldItem = ITEM_LEFTOVERS,
+                .heldItem = ITEM_SMOOTH_ROCK,
                 .fixedIV = 31,
                 .nature = NATURE_ADAMANT,
                 .evs = {252, 252, 6, 0, 0, 0},
                 .ability = 0,
-                .moves = {MOVE_EARTHQUAKE, MOVE_ROAR, MOVE_STEALTH_ROCK, MOVE_SLACK_OFF},
+                .moves = {MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_STEALTH_ROCK, MOVE_ICE_FANG},
             },
             {
                 .species = SPECIES_ALAKAZAM,
@@ -324,7 +324,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][MAX_FRONTIER_PARTY
                 .heldItem = ITEM_SOFT_SAND,
                 .fixedIV = 31,
                 .nature = NATURE_ADAMANT,
-                .evs = {252, 252, 0, 0, 0, 6}, // no need for speed EVs because it has sand rush
+                .evs = {118, 252, 0, 140, 0, 0},
                 .ability = 0,
                 .moves = {MOVE_EARTHQUAKE, MOVE_IRON_HEAD, MOVE_ROCK_SLIDE, MOVE_SWORDS_DANCE},
             },
@@ -333,7 +333,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][MAX_FRONTIER_PARTY
                 .heldItem = ITEM_LIFE_ORB,
                 .fixedIV = 31,
                 .nature = NATURE_ADAMANT,
-                .evs = {252, 252, 0, 0, 0, 6}, // no need for speed EVs because it has sand rush
+                .evs = {54, 252, 0, 204, 0, 0},
                 .ability = 1,
                 .moves = {MOVE_RETURN, MOVE_HIGH_HORSEPOWER, MOVE_FIRE_FANG, MOVE_SWORDS_DANCE},
             },
