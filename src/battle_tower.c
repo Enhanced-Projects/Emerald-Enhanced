@@ -81,90 +81,6 @@ static void FillPartnerParty(u16 trainerId);
 static void SetEReaderTrainerChecksum(struct BattleTowerEReaderTrainer *ereaderTrainer);
 static u8 SetTentPtrsGetLevel(void);
 
-// Const rom data.
-const u16 gBattleFrontierHeldItems[] =//FRONTIER_ITEM_TABLE
-{
-    ITEM_NONE,
-    ITEM_KINGS_ROCK,
-    ITEM_SITRUS_BERRY,
-    ITEM_ORAN_BERRY,
-    ITEM_CHESTO_BERRY,
-    ITEM_HARD_STONE,
-    ITEM_FOCUS_BAND,
-    ITEM_PERSIM_BERRY,
-    ITEM_MIRACLE_SEED,
-    ITEM_BERRY_JUICE,
-    ITEM_MACHO_BRACE,
-    ITEM_SILVER_POWDER,
-    ITEM_CHERI_BERRY,
-    ITEM_BLACK_GLASSES,
-    ITEM_BLACK_BELT,
-    ITEM_SOUL_DEW,
-    ITEM_CHOICE_BAND,
-    ITEM_MAGNET,
-    ITEM_SILK_SCARF,
-    ITEM_WHITE_HERB,
-    ITEM_DEEP_SEA_SCALE,
-    ITEM_DEEP_SEA_TOOTH,
-    ITEM_MYSTIC_WATER,
-    ITEM_SHARP_BEAK,
-    ITEM_QUICK_CLAW,
-    ITEM_LEFTOVERS,
-    ITEM_RAWST_BERRY,
-    ITEM_LIGHT_BALL,
-    ITEM_POISON_BARB,
-    ITEM_NEVER_MELT_ICE,
-    ITEM_ASPEAR_BERRY,
-    ITEM_SPELL_TAG,
-    ITEM_BRIGHT_POWDER,
-    ITEM_LEPPA_BERRY,
-    ITEM_SCOPE_LENS,
-    ITEM_TWISTED_SPOON,
-    ITEM_METAL_COAT,
-    ITEM_MENTAL_HERB,
-    ITEM_CHARCOAL,
-    ITEM_PECHA_BERRY,
-    ITEM_SOFT_SAND,
-    ITEM_LUM_BERRY,
-    ITEM_DRAGON_SCALE,
-    ITEM_DRAGON_FANG,
-    ITEM_IAPAPA_BERRY,
-    ITEM_WIKI_BERRY,
-    ITEM_SEA_INCENSE,
-    ITEM_SHELL_BELL,
-    ITEM_SALAC_BERRY,
-    ITEM_LANSAT_BERRY,
-    ITEM_APICOT_BERRY,
-    ITEM_STARF_BERRY,
-    ITEM_LIECHI_BERRY,
-    ITEM_CHOPLE_BERRY,
-    ITEM_COLBUR_BERRY,
-    ITEM_SHUCA_BERRY,
-    ITEM_STICK,
-    ITEM_LAX_INCENSE,
-    ITEM_AGUAV_BERRY,
-    ITEM_FIGY_BERRY,
-    ITEM_THICK_CLUB,
-    ITEM_MAGO_BERRY,
-    ITEM_METAL_POWDER,
-    ITEM_PETAYA_BERRY,
-    ITEM_LUCKY_PUNCH,
-    ITEM_GANLON_BERRY,
-    ITEM_ASSAULT_VEST,
-    ITEM_CHOICE_SCARF,
-    ITEM_CHOICE_SPECS,
-    ITEM_EXPERT_BELT,
-    ITEM_FOCUS_SASH,
-    ITEM_LIFE_ORB,
-    ITEM_FLAME_ORB,
-    ITEM_TOXIC_ORB,
-    ITEM_WEAKNESS_POLICY,
-    ITEM_BLACK_SLUDGE,
-    ITEM_FLYING_GEM,
-    ITEM_ROCKY_HELMET,
-    ITEM_AIR_BALLOON
-};
-
 #include "data/battle_frontier/battle_frontier_trainer_mons.h"
 #include "data/battle_frontier/battle_frontier_trainers.h"
 #include "data/battle_frontier/battle_frontier_mons.h"
@@ -3645,7 +3561,7 @@ void RyuGiveFrontierMon(void)
     u8 i, temp;
     u8 party_id = CalculatePlayerPartyCount();
     bool8 IsPickingFrontierStarter = (FlagGet(FLAG_RYU_CHOOSING_FRONTIER_STARTER));
-    const struct FacilityMon *mon = &gBattleFrontierMons[Random() % 881];
+    const struct FacilityMon *mon = &gBattleFrontierMons[Random() % FRONTIER_MON_TRUBBISH]; // trubbish is the last before the megas start
 
     if (IsPickingFrontierStarter == TRUE)
     {

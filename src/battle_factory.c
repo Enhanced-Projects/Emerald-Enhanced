@@ -348,14 +348,14 @@ static void GenerateOpponentMons(void)
 
         for (k = firstMonId; k < firstMonId + i; k++)
         {
-            if (heldItems[k] != 0 && heldItems[k] == gBattleFrontierHeldItems[gFacilityTrainerMons[monId].heldItem])
+            if (heldItems[k] != 0 && heldItems[k] == gFacilityTrainerMons[monId].heldItem)
                 break;
         }
         if (k != firstMonId + i)
             continue;
 
         species[i] = gFacilityTrainerMons[monId].species;
-        heldItems[i] = gBattleFrontierHeldItems[gFacilityTrainerMons[monId].heldItem];
+        heldItems[i] = gFacilityTrainerMons[monId].heldItem;
         gUnknown_03006298[i] = monId;
         i++;
     }
@@ -381,7 +381,7 @@ static void SetRentalsToOpponentParty(void)
         gSaveBlock2Ptr->frontier.rentalMons[i + 3].ivs = GetBoxMonData(&gEnemyParty[i].box, MON_DATA_ATK_IV, NULL);
         gSaveBlock2Ptr->frontier.rentalMons[i + 3].personality = GetMonData(&gEnemyParty[i], MON_DATA_PERSONALITY, NULL);
         gSaveBlock2Ptr->frontier.rentalMons[i + 3].abilityNum = GetBoxMonData(&gEnemyParty[i].box, MON_DATA_ABILITY_NUM, NULL);
-        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[gFacilityTrainerMons[gUnknown_03006298[i]].heldItem]);
+        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gFacilityTrainerMons[gUnknown_03006298[i]].heldItem);
     }
 }
 
@@ -445,7 +445,7 @@ static void SetPlayerAndOpponentParties(void)
             for (k = 0; k < MAX_MON_MOVES; k++)
                 SetMonMoveAvoidReturn(&gPlayerParty[i], gFacilityTrainerMons[monId].moves[k], k);
             SetMonData(&gPlayerParty[i], MON_DATA_FRIENDSHIP, &friendship);
-            SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[gFacilityTrainerMons[monId].heldItem]);
+            SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &gFacilityTrainerMons[monId].heldItem);
             SetMonData(&gPlayerParty[i], MON_DATA_ABILITY_NUM, &gSaveBlock2Ptr->frontier.rentalMons[i].abilityNum);
         }
     }
