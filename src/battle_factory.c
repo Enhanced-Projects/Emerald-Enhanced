@@ -297,7 +297,6 @@ static void GenerateOpponentMons(void)
 {
     int i, j, k;
     u16 species[FRONTIER_PARTY_SIZE];
-    u16 heldItems[FRONTIER_PARTY_SIZE];
     int firstMonId = 0;
     u16 trainerId = 0;
     u32 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
@@ -346,16 +345,7 @@ static void GenerateOpponentMons(void)
         if (k != firstMonId + i)
             continue;
 
-        for (k = firstMonId; k < firstMonId + i; k++)
-        {
-            if (heldItems[k] != 0 && heldItems[k] == gFacilityTrainerMons[monId].heldItem)
-                break;
-        }
-        if (k != firstMonId + i)
-            continue;
-
         species[i] = gFacilityTrainerMons[monId].species;
-        heldItems[i] = gFacilityTrainerMons[monId].heldItem;
         gUnknown_03006298[i] = monId;
         i++;
     }
@@ -505,14 +495,12 @@ static void GenerateInitialRentalMons(void)
     u16 currSpecies;
     u16 species[PARTY_SIZE];
     u16 monIds[PARTY_SIZE];
-    u16 heldItems[PARTY_SIZE];
 
     gFacilityTrainers = gBattleFrontierTrainers;
     for (i = 0; i < PARTY_SIZE; i++)
     {
         species[i] = 0;
         monIds[i] = 0;
-        heldItems[i] = 0;
     }
     lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
@@ -567,7 +555,6 @@ static void GenerateInitialRentalMons(void)
 
         gSaveBlock2Ptr->frontier.rentalMons[i].monId = monId;
         species[i] = gFacilityTrainerMons[monId].species;
-        heldItems[i] = gFacilityTrainerMons[monId].heldItem;
         monIds[i] = monId;
         i++;
     }
@@ -699,7 +686,6 @@ void FillFactoryBrainParty(void)
 {
     int i, j, k;
     u16 species[FRONTIER_PARTY_SIZE];
-    u16 heldItems[FRONTIER_PARTY_SIZE];
     u8 friendship;
     int monLevel;
     u8 fixedIV = 31;
@@ -737,23 +723,16 @@ void FillFactoryBrainParty(void)
         if (k != i)
             continue;
 
-        for (k = 0; k < i; k++)
-        {
-            if (heldItems[k] != 0 && heldItems[k] == gFacilityTrainerMons[monId].heldItem)
-                break;
-        }
-        if (k != i)
-            continue;
-
         species[i] = gFacilityTrainerMons[monId].species;
-        heldItems[i] = gFacilityTrainerMons[monId].heldItem;
-        CreateMonWithEVSpreadNatureOTID(&gEnemyParty[i],
-                                             gFacilityTrainerMons[monId].species,
-                                             monLevel,
-                                             gFacilityTrainerMons[monId].nature,
-                                             fixedIV,
-                                             gFacilityTrainerMons[monId].evSpread,
-                                             otId);
+        CreateMonWithEVSpreadNatureOTID(
+            &gEnemyParty[i],
+            gFacilityTrainerMons[monId].species,
+            monLevel,
+            gFacilityTrainerMons[monId].nature,
+            fixedIV,
+            gFacilityTrainerMons[monId].evSpread,
+            otId
+        );
 
         friendship = 0;
         for (k = 0; k < MAX_MON_MOVES; k++)
