@@ -85,6 +85,10 @@ LRT_FemaleRivalDSStage3::
 	return
 	
 LRT_FRDSS3::
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_FOLLOWER
 	applymovement 2, LRT_MeetMalePlayer
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, LRT_facedown

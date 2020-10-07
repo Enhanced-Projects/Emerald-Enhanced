@@ -316,6 +316,7 @@ GI_LeavingForRoute103:
 
 LRT_DH_CheckDawnSneasel::@see brendan's equivalent for commentary
 	goto_if_unset FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_return
+	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN, ryu_return
 	msgbox LRT_DH_PullOutGiftMon
 	closemessage
 	specialvar VAR_RESULT, CheckRivalGiftMonStatus 
@@ -332,6 +333,10 @@ LRT_DH_ChampionGiftMon::
 	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN, ryu_return
 	giveitem ITEM_SCOPE_LENS
 	setflag FLAG_RYU_DS_DAWN_PARTNERS
+	setflag FLAG_RYU_DS_DAWN_LOVERS
+	setflag FLAG_RYU_DS_DAWN_CLOSEFRIENDS
+	setflag FLAG_RYU_DS_DAWN_FRIENDS
+	clearflag FLAG_RYU_DS_DAWN_ACQ
 	addvar VAR_RYU_PARTNER_COUNT, 1
 	setflag FLAG_RYU_DS_HAS_PARTNER
 	setflag FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN

@@ -312,6 +312,7 @@ LRT_BrendanTURN:
 
 LRT_BH_CheckBrendanSnorunt::@technically speaking, if the player doesn't show the gift mon before becoming champion, first reward is unobtainable. But its okay.
 	goto_if_unset FLAG_RYU_BRENDAN_GIFTPOKE_RECEIVED, ryu_return @player never received the gift mon to begin with
+	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN, ryu_return
 	msgbox LRT_BH_PullOutGiftMon
 	closemessage
 	specialvar VAR_RESULT, CheckRivalGiftMonStatus @Automagically assumes player gender from the save block.
@@ -329,7 +330,10 @@ LRT_BH_ChampionGiftMon::
 	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN, ryu_return
 	giveitem ITEM_EXPERT_BELT
 	setflag FLAG_RYU_DS_BRENDAN_PARTNERS @alternate way to get partner benefits without romance.
-	addvar VAR_RYU_PARTNER_COUNT, 1
+	setflag FLAG_RYU_DS_BRENDAN_LOVERS
+	setflag FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS
+	setflag FLAG_RYU_DS_BRENDAN_FRIENDS
+	clearflag FLAG_RYU_DS_BRENDAN_ACQ
 	setflag FLAG_RYU_DS_HAS_PARTNER
 	setflag FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN
 	return

@@ -1482,21 +1482,29 @@ void RyuBufferQuestVars(void)
 }
 
 
-int CheckRivalGiftMonStatus(void)//well this saved a bunch of lines.
+bool8 hasChampionRibbon(u8 index) {
+    return GetMonData(&gPlayerParty[index], MON_DATA_CHAMPION_RIBBON, NULL);
+}
+
+/**
+ * Return 0 if the player does not have the gift mon,
+ * 1-4 if the player has it depending on the evolution stage,
+ * and 5 if the player has it and has beaten the elite 4 with it.
+ */
+int CheckRivalGiftMonStatus(void)
 {
     u8 gender = gSaveBlock2Ptr->playerGender;
     u8 i;
-    u8 ret = 0;
 
     if (gender == MALE)
     {
         for (i = 0; i < CalculatePlayerPartyCount(); i++)
         {
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNEASEL)
-                ret = 1;
+                return hasChampionRibbon(i) ? 5 : 1;
 
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_WEAVILE)
-                ret = 2;
+                return hasChampionRibbon(i) ? 5 : 2;
         }
     }
     else
@@ -1504,21 +1512,17 @@ int CheckRivalGiftMonStatus(void)//well this saved a bunch of lines.
         for (i = 0; i < CalculatePlayerPartyCount(); i++)
         {
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNORUNT)
-                ret = 1;
+                return hasChampionRibbon(i) ? 5 : 1;
 
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_FROSLASS)
-                ret = 2;
+                return hasChampionRibbon(i) ? 5 : 2;
 
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_GLALIE)
-                ret = 3;
+                return hasChampionRibbon(i) ? 5 : 3;
         }
     }
-
-    if (GetMonData(&gPlayerParty[i], MON_DATA_CHAMPION_RIBBON, NULL) == TRUE)
-        ret = 5;
-
-    return ret;
-}
+    return 0;
+} 
 
 int RyuGetTimeOfDay(void)
 {

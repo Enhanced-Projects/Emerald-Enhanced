@@ -94,7 +94,11 @@ LRT_maleRivalDSStage3::
 	goto_if_set FLAG_RYU_DS_BRENDAN_PARTNERS, LRT_MRDSS3
 	return
 	
-LRT_MRDSS3::
+LRT_MRDSS3::	
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_FOLLOWER
 	applymovement 2, LRT_MeetFemalePlayer
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, LRT_facedown
