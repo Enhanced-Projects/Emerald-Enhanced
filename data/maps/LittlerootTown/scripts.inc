@@ -27,10 +27,10 @@ LRT_FollowerTest::
 	compare VAR_RESULT, 1
 	goto_if_ne LRT_CancelFollower
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, LRT_AlreadyHasFollower
 	setflag FLAG_RYU_HIDE_MINNIE
 	setflag FLAG_RYU_RECRUITED_MINNIE
 	removeobject 4
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, LRT_AlreadyHasFollower
 	createfollower OBJ_EVENT_GFX_TWIN, RyuFollowerSelectNPCScript, 1
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
