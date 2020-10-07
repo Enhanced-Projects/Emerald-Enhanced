@@ -43,6 +43,7 @@ struct FrontierBrainMon
     u16 heldItem;
     u8 fixedIV;
     u8 nature;
+    // Order of stats is: HP, Atk, Def, Speed, SpAtk, SpDef
     u8 evs[NUM_STATS];
     u16 moves[MAX_MON_MOVES];
     u8 ability;
@@ -93,14 +94,14 @@ static const u8 sFrontierBrainStreakAppearances[NUM_FRONTIER_FACILITIES][4] =
 {
     [FRONTIER_FACILITY_TOWER]   = {35,  70, 35, 1},
     [FRONTIER_FACILITY_DOME]    = { 4,   9,  5, 0},
-    [FRONTIER_FACILITY_PALACE]  = {21,  42, 21, 1},
+    [FRONTIER_FACILITY_PALACE]  = {14,  28, 21, 1},
     [FRONTIER_FACILITY_ARENA]   = {28,  56, 28, 1},
     [FRONTIER_FACILITY_FACTORY] = {21,  42, 21, 1},
     [FRONTIER_FACILITY_PIKE]    = {28, 140, 56, 1},
     [FRONTIER_FACILITY_PYRAMID] = {21,  70, 35, 0},
 };
 
-static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZE] =
+static const struct FrontierBrainMon sFrontierBrainsMons[][2][MAX_FRONTIER_PARTY_SIZE] =
 {
     [FRONTIER_FACILITY_TOWER] =
     {
@@ -232,24 +233,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
     {
         // Silver Symbol.
         {
-            {
-                .species = SPECIES_BRELOOM,
-                .heldItem = ITEM_TOXIC_ORB,
-                .fixedIV = 31,
-                .nature = NATURE_BRAVE,
-                .evs = {252, 252, 6, 0, 0, 0},
-                .ability = 1,
-                .moves = {MOVE_FOCUS_PUNCH, MOVE_ROCK_TOMB, MOVE_SYNTHESIS, MOVE_SPORE},
-            },
-            {
-                .species = SPECIES_SCIZOR,
-                .heldItem = ITEM_LEFTOVERS,
-                .fixedIV = 31,
-                .nature = NATURE_JOLLY,
-                .evs = {252, 0, 48, 0, 0, 208},
-                .ability = 1,
-                .moves = {MOVE_BULLET_PUNCH, MOVE_TOXIC, MOVE_ROOST, MOVE_CURSE},
-            },
+            // Lead Lapras to set up rain
             {
                 .species = SPECIES_LAPRAS,
                 .heldItem = ITEM_CHESTO_BERRY,
@@ -259,35 +243,108 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
                 .ability = 2,
                 .moves = {MOVE_SURF, MOVE_FROST_BREATH, MOVE_TOXIC, MOVE_REST},
             },
-        },
-        // Gold Symbol.
-        {
             {
-                .species = SPECIES_VENUSAUR,
-                .heldItem = ITEM_BLACK_SLUDGE,
+                .species = SPECIES_BRELOOM,
+                .heldItem = ITEM_TOXIC_ORB,
                 .fixedIV = 31,
-                .nature = NATURE_BRAVE,
-                .evs = {252, 0, 252, 0, 6, 0},
-                .ability = 2,
-                .moves = {MOVE_SLUDGE_BOMB, MOVE_EARTHQUAKE, MOVE_LEECH_SEED, MOVE_SYNTHESIS},
+                .nature = NATURE_ADAMANT,
+                .evs = {252, 252, 6, 0, 0, 0},
+                .ability = 1,
+                .moves = {MOVE_FOCUS_PUNCH, MOVE_ROCK_TOMB, MOVE_MACH_PUNCH, MOVE_SPORE},
             },
             {
                 .species = SPECIES_SCIZOR,
                 .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
-                .nature = NATURE_JOLLY,
-                .evs = {252, 0, 48, 0, 0, 208},
+                .nature = NATURE_ADAMANT,
+                .evs = {252, 252, 0, 0, 0, 6},
                 .ability = 1,
-                .moves = {MOVE_BULLET_PUNCH, MOVE_TOXIC, MOVE_ROOST, MOVE_CURSE},
+                .moves = {MOVE_BULLET_PUNCH, MOVE_BUG_BITE, MOVE_ROOST, MOVE_SWORDS_DANCE},
             },
+            { // It seems counterintuitive, but Volcarona is great on rain teams
+                .species = SPECIES_VOLCARONA,
+                .heldItem = ITEM_LEFTOVERS,
+                .fixedIV = 23, // HP water
+                .nature = NATURE_MODEST,
+                .evs = {0, 0, 0, 252, 252, 6},
+                .ability = 0,
+                .moves = {MOVE_BUG_BUZZ, MOVE_HIDDEN_POWER, MOVE_HURRICANE, MOVE_QUIVER_DANCE},
+            },
+            {
+                .species = SPECIES_KELDEO,
+                .heldItem = ITEM_LIFE_ORB,
+                .fixedIV = 31,
+                .nature = NATURE_TIMID,
+                .evs = {0, 0, 0, 252, 252, 6},
+                .ability = 0,
+                .moves = {MOVE_FOCUS_BLAST, MOVE_HYDRO_PUMP, MOVE_SECRET_SWORD, MOVE_CALM_MIND},
+            },
+            {
+                .species = SPECIES_SLAKING,
+                .heldItem = ITEM_LEFTOVERS,
+                .fixedIV = 31,
+                .nature = NATURE_ADAMANT,
+                .evs = {252, 252, 6, 0, 0, 0},
+                .ability = 0,
+                .moves = {MOVE_RETURN, MOVE_DRAIN_PUNCH, MOVE_SUCKER_PUNCH, MOVE_SLACK_OFF},
+            },
+        },
+        // Gold Symbol.
+        {
+            // Lead Hippowdon to set up sand
             {
                 .species = SPECIES_HIPPOWDON,
                 .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
-                .nature = NATURE_BRAVE,
+                .nature = NATURE_ADAMANT,
                 .evs = {252, 252, 6, 0, 0, 0},
                 .ability = 0,
-                .moves = {MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_CURSE, MOVE_SLACK_OFF},
+                .moves = {MOVE_EARTHQUAKE, MOVE_ROAR, MOVE_STEALTH_ROCK, MOVE_SLACK_OFF},
+            },
+            {
+                .species = SPECIES_ALAKAZAM,
+                .heldItem = ITEM_FOCUS_SASH, // It has magic guard, so the sash won’t be broken by sand storm
+                .fixedIV = 30,
+                .nature = NATURE_TIMID,
+                .evs = {6, 0, 0, 252, 252, 0},
+                .ability = 2,
+                .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_SHADOW_BALL, MOVE_HIDDEN_POWER},
+            },
+            {
+                .species = SPECIES_SCIZOR,
+                .heldItem = ITEM_SCIZORITE,
+                .fixedIV = 31,
+                .nature = NATURE_ADAMANT,
+                .evs = {252, 252, 0, 0, 0, 6},
+                .ability = 1,
+                .moves = {MOVE_BULLET_PUNCH, MOVE_BUG_BITE, MOVE_ROOST, MOVE_SWORDS_DANCE},
+            },
+            {
+                .species = SPECIES_EXCADRILL,
+                .heldItem = ITEM_SOFT_SAND,
+                .fixedIV = 31,
+                .nature = NATURE_ADAMANT,
+                .evs = {252, 252, 0, 0, 0, 6}, // no need for speed EVs because it has sand rush
+                .ability = 0,
+                .moves = {MOVE_EARTHQUAKE, MOVE_IRON_HEAD, MOVE_ROCK_SLIDE, MOVE_SWORDS_DANCE},
+            },
+            {
+                .species = SPECIES_STOUTLAND,
+                .heldItem = ITEM_LIFE_ORB,
+                .fixedIV = 31,
+                .nature = NATURE_ADAMANT,
+                .evs = {252, 252, 0, 0, 0, 6}, // no need for speed EVs because it has sand rush
+                .ability = 1,
+                .moves = {MOVE_RETURN, MOVE_HIGH_HORSEPOWER, MOVE_FIRE_FANG, MOVE_SWORDS_DANCE},
+            },
+            {
+                .species = SPECIES_SALAMENCE,
+                .heldItem = ITEM_CHOICE_SPECS,
+                .fixedIV = 31,
+                .nature = NATURE_TIMID,
+                .evs = {6, 0, 0, 252, 252, 0},
+                .ability = 0,
+                .moves = {MOVE_AEROBLAST, MOVE_DRAGON_PULSE, MOVE_BLAST_OFF, MOVE_HYDRO_PUMP},
             },
         },
     },
@@ -2549,31 +2606,34 @@ void CreateFrontierBrainPokemon(void)
     s32 monLevel = 0;
     u8 friendship;
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
+    u8 partySize = facility == FRONTIER_FACILITY_PALACE ? FRONTIER_PALACE_PARTY_SIZE : FRONTIER_PARTY_SIZE;
     s32 symbol = GetFrontierBrainSymbol();
     u8 ability = sFrontierBrainsMons[facility][symbol][i].ability;
 
     if (facility == FRONTIER_FACILITY_DOME)
         selectedMonBits = GetDomeTrainerSelectedMons(TrainerIdToDomeTournamentId(TRAINER_FRONTIER_BRAIN));
     else
-        selectedMonBits = (1 << FRONTIER_PARTY_SIZE) - 1; // all 3 mons selected
+        selectedMonBits = (1 << partySize) - 1; // all mons selected
 
     ZeroEnemyPartyMons();
     monPartyId = 0;
     monLevel = SetFacilityPtrsGetLevel();
-    for (i = 0; i < FRONTIER_PARTY_SIZE; selectedMonBits >>= 1, i++)
+    for (i = 0; i < partySize; selectedMonBits >>= 1, i++)
     {
         if (!(selectedMonBits & 1))
             continue;
         do {
             j = Random32();
         } while (sFrontierBrainsMons[facility][symbol][i].nature != GetNatureFromPersonality(j));
-        CreateMon(&gEnemyParty[monPartyId],
-                  sFrontierBrainsMons[facility][symbol][i].species,
-                  monLevel,
-                  sFrontierBrainsMons[facility][symbol][i].fixedIV,
-                  TRUE,
-                  j, // force personality value so the nature matches
-                  OT_ID_PRESET, FRONTIER_BRAIN_OTID);
+        CreateMon(
+            &gEnemyParty[monPartyId],
+            sFrontierBrainsMons[facility][symbol][i].species,
+            monLevel,
+            sFrontierBrainsMons[facility][symbol][i].fixedIV,
+            TRUE,
+            j, // force personality value so the nature matches
+            OT_ID_PRESET, FRONTIER_BRAIN_OTID
+        );
         SetMonData(&gEnemyParty[monPartyId], MON_DATA_HELD_ITEM, &sFrontierBrainsMons[facility][symbol][i].heldItem);
         for (j = 0; j < NUM_STATS; j++)
             SetMonData(&gEnemyParty[monPartyId], MON_DATA_HP_EV + j, &sFrontierBrainsMons[facility][symbol][i].evs[j]);
