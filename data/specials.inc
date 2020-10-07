@@ -536,7 +536,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuSetEVSPE
 	def_special RyuDevCheck
 	def_special RyuDawnGiftPoke
-	def_special WhatStageIsGiftPoke
 	def_special RyuBrendanGiftPoke
 	def_special RyuSetMonMove
 	def_special RyuIvSetter
