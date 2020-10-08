@@ -2026,6 +2026,8 @@ static void DrawSpeciesIcons(void)
         y = ROW_HIDDEN_ICON_Y;
         if (FlagGet(FLAG_SYS_DETECTOR_MODE))
             TryDrawIconInSlot(species, x, y);
+       else if (species == SPECIES_NONE)
+            CreateNoDataIcon(x, y);
         else
             CreateMonIcon(SPECIES_NONE, SpriteCB_MonIcon, x, y, 0, 0xFFFFFFFF, 0); //question mark if detector mode inactive
     }
