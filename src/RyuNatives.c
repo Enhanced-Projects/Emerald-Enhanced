@@ -215,7 +215,10 @@ void RyuKillMon(void)
     }
 }
 
-bool8 RyuSacrificeMon(void)//eats the selected mon and saves certain values to be used by gcms.
+extern const u16 gFrontierBannedSpecies[27];
+
+
+int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be used by gcms.
 {
     u8 slot = (VarGet(VAR_TEMP_9));
     u16 species = 0;
@@ -224,6 +227,14 @@ bool8 RyuSacrificeMon(void)//eats the selected mon and saves certain values to b
     u16 move3 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE3);
     u16 move4 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE4);
     u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
+    u8 i;
+
+    for (; gFrontierBannedSpecies[i] != 0xFFFF; i++)
+        {
+            mgba_printf(LOGINFO, "checking %d", gFrontierBannedSpecies[i]);
+            if (gFrontierBannedSpecies[i] == (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2)))
+                return 2;
+        }
 
     if (FlagGet(FLAG_TEMP_5) == 1)
     {
@@ -237,15 +248,15 @@ bool8 RyuSacrificeMon(void)//eats the selected mon and saves certain values to b
         VarSet(VAR_RYU_GCMS_MOVE4, move4);
         VarSet(VAR_RYU_GCMS_ABILITY, ability);
         FlagClear(FLAG_TEMP_5);
-        return TRUE;
+        return 1;
     }
     else if (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL) == (VarGet(VAR_RYU_GCMS_SPECIES)))
     {
         ZeroMonData(&gPlayerParty[slot]);
         CompactPartySlots();
-        return TRUE;
+        return 1;
     }
-    return FALSE;
+    return 0;
 }
 
 void RyuWipeParty(void)
