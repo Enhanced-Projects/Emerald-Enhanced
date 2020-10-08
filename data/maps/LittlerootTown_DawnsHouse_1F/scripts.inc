@@ -33,7 +33,7 @@ LRT_GameClearTriggerFemale::
 	clearflag FLAG_SYS_TV_LATIAS_LATIOS
 	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
 	setvar VAR_RESULT, 0
-	setvar VAR_0x8004, 0
+	setvar VAR_0x8004, 1
 	special InitRoamer
 	copyvar VAR_ROAMER_POKEMON, VAR_RESULT
 	setflag FLAG_HIDE_PLAYERS_HOUSE_DAD
