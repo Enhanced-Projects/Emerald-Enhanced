@@ -46,7 +46,7 @@
 #define VAR_OBJ_GFX_ID_F           0x401F
 
 // general purpose vars
-#define VAR_RECYCLE_GOODS                    0x4020
+#define VAR_RYU_SAVE_VIEWER_ENTRYPOINT       0x4020// the value of this variable is searched for by my save file vewer to let it know where saveblock vars start.
 #define VAR_REPEL_STEP_COUNT                 0x4021
 #define VAR_ICE_STEP_COUNT                   0x4022
 #define VAR_STARTER_MON                      0x4023 // 0=Treecko, 1=Torchic, 2=Mudkip
@@ -134,7 +134,7 @@
 #define VAR_ROUTE121_STATE                   0x4074
 #define VAR_ROUTE122_STATE                   0x4075 // Unused Var
 #define VAR_ROUTE123_STATE                   0x4076 // Unused Var
-#define VAR_ROUTE124_STATE                   0x4077 // Unused Var
+#define VAR_RYU_AUTOLEVEL_MODIFIER           0x4077 // level modifier for autolevel
 #define VAR_ROUTE125_STATE                   0x4078 // Unused Var
 #define VAR_ROUTE126_STATE                   0x4079 // Unused Var
 #define VAR_ROUTE127_STATE                   0x407A // Unused Var
@@ -264,7 +264,7 @@
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER 0x40F6
 #define VAR_RYU_GCMS_SPECIES                 0x40F7
 #define VAR_RYU_GCMS_VALUE                   0x40F8
-#define VAR_RYU_BANK_APR                     0x40F9
+#define VAR_UNUSED_0x40F9                    0x40F9//now unused, previously bank APR, bank was removed in 5.0.
 #define VAR_RYU_EXP_BATTERY                  0x40FA
 #define VAR_RYU_NUZLOCKE_WAYSTONE_USES       0x40FB
 #define VAR_RYU_PRICE_MULTIPLIER             0x40FC
@@ -320,8 +320,6 @@
 //battle style defines
 #define BS_SHIFT 0
 #define BS_SET 1
-
-
 
 //drawFullscreenImage defines
 #define SCENEBGDAWN 0

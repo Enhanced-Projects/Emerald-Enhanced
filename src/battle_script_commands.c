@@ -3537,9 +3537,10 @@ static void Cmd_getexp(void)
     u32 RyuExpBatteryTemp = 0;
 
     if (VarGet(VAR_RYU_EXP_MULTIPLIER) == 1) //If no multiplier is present, You get 25% exp per badge you own
-    {   
         multiplier = 1000 + (CountBadges() * 250);
-    }
+
+    if (VarGet(VAR_RYU_EXP_MULTIPLIER) == 10) //If new game plus, the autoscaled exp is slightly less.
+        multiplier = 1000 + (CountBadges() * 125);
 
     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
     sentIn = gSentPokesToOpponent[(gBattlerFainted & 2) >> 1];

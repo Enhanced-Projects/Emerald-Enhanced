@@ -221,7 +221,6 @@ void NewGameInitData(void)
     FlagSet(FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA);
     FlagSet(FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE);
     VarSet(VAR_MT_PYRE_STATE, 10);
-    VarSet(VAR_RYU_BANK_APR, 0);
     FlagSet(FLAG_RYU_LT_RIVAL2);
     FlagSet(FLAG_RYU_LT_RIVAL);
     VarSet(VAR_RYU_JUKEBOX, 999);
@@ -259,7 +258,6 @@ void NewGameInitData(void)
     VarSet(VAR_RYU_GCMS_MOVE2, 0);
     VarSet(VAR_RYU_GCMS_MOVE3, 0);
     VarSet(VAR_RYU_GCMS_MOVE4, 0);
-    VarSet(VAR_RYU_BANK_APR, 0);
     FlagClear(FLAG_RYU_TEMPTP);
     FlagClear(FLAG_RYU_HAS_FOLLOWER);
     VarSet(VAR_WEATHER_INSTITUTE_STATE, 1);

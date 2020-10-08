@@ -7,7 +7,7 @@ LRT_IntroMsg1:
 
 GameModeSelect:: @ 823BF04
 	lockall
-	goto_if_set FLAG_RYU_SKIPDIFFICULTYCHECK, Ryu_NewGamePlus
+	goto_if_set FLAG_RYU_ISNGPLUS, Ryu_NewGamePlus
 	multichoicedefault 1, 2, 125, 0, 0
 	switch VAR_RESULT
 	case 0, IT_EasyMode
@@ -104,7 +104,9 @@ RyuNGPInfo:
 	.string "unique quest reward items, such as\l"
 	.string "the Waystone and the Exp Drive.\p"
 	.string "Your Pokémon storage is still\n"
-	.string "intact, including any held items.$"
+	.string "intact, including any held items.\p"
+	.string "In addition, enemy levels are scaled\n"
+	.string "to your own party instead of badges.$"
 
 RyuSetTime:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} put a new battery in the alarm.)$"
@@ -112,7 +114,6 @@ RyuSetTime:
 IT_EasyMode::
 	setvar VAR_RYU_EXP_MULTIPLIER, 4000
 	setvar VAR_RYU_PRICE_MULTIPLIER, 500
-	setvar VAR_RYU_BANK_APR, 90
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -124,18 +125,23 @@ IT_EasyMode::
 IT_NormalMode::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
-	setvar VAR_RYU_BANK_APR, 95
+	call_if_set FLAG_RYU_ISNGPLUS, Normalmode_NGP
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq SetMaleStartingVariables
 	compare VAR_RESULT, FEMALE
 	goto_if_eq SetFemaleStartingVariables
 	end
+
+Normalmode_NGP::
+	setvar VAR_RYU_AUTOLEVEL_MODIFIER, 0
+	setvar VAR_RYU_EXP_MULTIPLIER, 10 @arbitrary value to tell getExp to use the ngp scaling
+	return
 	
 IT_HardMode::
 	setvar VAR_RYU_EXP_MULTIPLIER, 1000
 	setvar VAR_RYU_PRICE_MULTIPLIER, 4000
-	setvar VAR_RYU_BANK_APR, 100
+	call_if_set FLAG_RYU_ISNGPLUS, Hardmode_NGP
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	checkplayergender
 	compare VAR_RESULT, MALE
@@ -143,12 +149,16 @@ IT_HardMode::
 	compare VAR_RESULT, FEMALE
 	goto_if_eq SetFemaleStartingVariables
 	end
+
+Hardmode_NGP::
+	setvar VAR_RYU_AUTOLEVEL_MODIFIER, 3
+	return
 	
 IT_NuzlockeMode::
 	msgbox IT_NuzlockeIntro MSGBOX_SIGN
+	call_if_set FLAG_RYU_ISNGPLUS, Nuzlockemode_NGP
 	setvar VAR_RYU_EXP_MULTIPLIER, 2000
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1500
-	setvar VAR_RYU_BANK_APR, 100
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 3
 	setvar VAR_RYU_PC_USES, 3
 	additem ITEM_POKE_BALL, 10
@@ -165,6 +175,10 @@ IT_NuzlockeMode::
 	compare VAR_RESULT, FEMALE
 	goto_if_eq SetFemaleStartingVariables
 	end
+
+Nuzlockemode_NGP::
+	setvar VAR_RYU_AUTOLEVEL_MODIFIER, -2
+	return
 
 IT_FrontierMode::
 	msgbox IT_FrontierIntro
@@ -187,7 +201,8 @@ IT_FrontierMode::
 
 IT_HardcoreMode::
 	msgbox IT_HardcoreIntro
-	setvar VAR_RYU_EXP_MULTIPLIER, 1000
+	setvar VAR_RYU_AUTOLEVEL_MODIFIER, 5
+	setvar VAR_RYU_EXP_MULTIPLIER, 2000
 	setvar VAR_RYU_PRICE_MULTIPLIER, 2000
 	setflag FLAG_RYU_HARDCORE_MODE
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 1
@@ -222,8 +237,6 @@ IT_HardcoreIntro:
     .string "mode.\p"
     .string "In this mode, you are restricted\n"
     .string "even further than Nuzlocke mode.\p"
-    .string "You will be dealing 20% less\n"
-    .string "damage and you will take 20% more.\p"
     .string "You make 15% the money you normally\n"
     .string "you normally would.\p"
     .string "You can't use pokecenters, and you\n"

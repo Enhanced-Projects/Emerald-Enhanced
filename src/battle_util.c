@@ -6689,18 +6689,6 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     if (gBattleMoves[move].flags & FLAG_DMG_IN_AIR      && gStatuses3[battlerDef] & STATUS3_ON_AIR)
         MulModifier(&finalModifier, UQ_4_12(2.0));
 
-    if (FlagGet(FLAG_RYU_MAX_SCALE) == 1)
-        if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
-        {
-            MulModifier(&finalModifier, UQ_4_12(0.2));
-        }
-
-    if (FlagGet(FLAG_RYU_MAX_SCALE) == 1)
-        if (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT)
-        {
-            MulModifier(&finalModifier, UQ_4_12(1.2));
-        }
-
     dmg = ApplyModifier(finalModifier, dmg);
     if (dmg == 0)
         dmg = 1;

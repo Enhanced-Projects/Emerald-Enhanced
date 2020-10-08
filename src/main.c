@@ -169,7 +169,7 @@ void AgbMain()
 
         PlayTimeCounter_Update();
         VarSet(VAR_LAST_KNOWN_GAME_VERSION, 701);
-        VarSet(VAR_RECYCLE_GOODS, 45454);
+        VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
         FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
         mgba_open();
         MapMusicMain(); 

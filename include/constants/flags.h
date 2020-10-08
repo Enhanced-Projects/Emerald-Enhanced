@@ -1225,7 +1225,7 @@
 #define FLAG_RYU_DEV_DISENC                                         0x497
 #define FLAG_RYU_LANDMARK_MH                                        0x498
 #define FLAG_RYU_LANDMARK_LCCDEPTSTORE                              0x499
-#define FLAG_RYU_SKIPDIFFICULTYCHECK                                0x49A
+#define FLAG_RYU_ISNGPLUS                                0x49A
 #define FLAG_RYU_HAS_IMPRINTER                                      0x49B
 #define FLAG_RYU_INTRO_COMPLETE                                     0x49C
 #define FLAG_RYU_ON_DATE                                            0x49D
