@@ -2024,7 +2024,7 @@ static u8 AppendCaughtBannedMonSpeciesName(u16 species, u8 count, s32 numBannedM
     return count;
 }
 
-static void AppendIfValid(u16 species, u16 heldItem, u16 hp, u8 lvlMode, u8 monLevel, u16 *speciesArray, u16 *itemsArray, u8 *count)
+static void AppendIfValid(u16 species, u16 heldItem, u16 hp, u8 lvlMode, u8 monLevel, u16 *speciesArray, u8 *count)
 {
     s32 i = 0;
 
@@ -2044,16 +2044,7 @@ static void AppendIfValid(u16 species, u16 heldItem, u16 hp, u8 lvlMode, u8 monL
     if (i != *count)
         return;
 
-    if (heldItem != 0)
-    {
-        for (i = 0; i < *count && itemsArray[i] != heldItem; i++)
-            ;
-        if (i != *count)
-            return;
-    }
-
     speciesArray[*count] = species;
-    itemsArray[*count] = heldItem;
     (*count)++;
 }
 
@@ -2063,7 +2054,6 @@ static void AppendIfValid(u16 species, u16 heldItem, u16 hp, u8 lvlMode, u8 monL
 static void CheckPartyIneligibility(void)
 {
     u16 speciesArray[PARTY_SIZE];
-    u16 itemArray[PARTY_SIZE];
     s32 monId = 0;
     s32 toChoose = 0;
     u8 count = 0;
@@ -2104,11 +2094,11 @@ static void CheckPartyIneligibility(void)
             if (VarGet(VAR_FRONTIER_FACILITY) == FRONTIER_FACILITY_PYRAMID)
             {
                 if (heldItem == ITEM_NONE)
-                    AppendIfValid(species, heldItem, hp, gSpecialVar_Result, level, speciesArray, itemArray, &numEligibleMons);
+                    AppendIfValid(species, heldItem, hp, gSpecialVar_Result, level, speciesArray, &numEligibleMons);
             }
             else
             {
-                AppendIfValid(species, heldItem, hp, gSpecialVar_Result, level, speciesArray, itemArray, &numEligibleMons);
+                AppendIfValid(species, heldItem, hp, gSpecialVar_Result, level, speciesArray, &numEligibleMons);
             }
             monId++;
             if (monId >= PARTY_SIZE)
@@ -2562,18 +2552,15 @@ void CreateFrontierBrainPokemon(void)
     {
         if (!(selectedMonBits & 1))
             continue;
-        do
-        {
-            do
-            {
-                j = Random32(); //Should be one while loop, but that doesn't match
-            } while (IsShinyOtIdPersonality(FRONTIER_BRAIN_OTID, j));
+        do {
+            j = Random32();
         } while (sFrontierBrainsMons[facility][symbol][i].nature != GetNatureFromPersonality(j));
         CreateMon(&gEnemyParty[monPartyId],
                   sFrontierBrainsMons[facility][symbol][i].species,
                   monLevel,
                   sFrontierBrainsMons[facility][symbol][i].fixedIV,
-                  TRUE, j,
+                  TRUE,
+                  j, // force personality value so the nature matches
                   OT_ID_PRESET, FRONTIER_BRAIN_OTID);
         SetMonData(&gEnemyParty[monPartyId], MON_DATA_HELD_ITEM, &sFrontierBrainsMons[facility][symbol][i].heldItem);
         for (j = 0; j < NUM_STATS; j++)
