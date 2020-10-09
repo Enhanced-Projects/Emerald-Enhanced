@@ -323,8 +323,6 @@ static void GenerateOpponentMons(void)
     while (i != FRONTIER_PARTY_SIZE)
     {
         u16 monId = GetFactoryMonId(lvlMode, challengeNum, FALSE);
-        if (gFacilityTrainerMons[monId].species == SPECIES_UNOWN)
-            continue;
 
         for (j = 0; j < 6; j++)
         {
