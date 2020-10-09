@@ -1809,46 +1809,36 @@ static void sub_8038538(struct Sprite *sprite)
     }
 }
 
-// Not pretty but faster than sorting.
-static s16 averageOfStrongestThree(u8 partyCount) {
-    s16 highest = 0, second = 0, third = 0;
-    u8 level, i;
-
-    for (i = 0; i < partyCount; i++) {
-        level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
-        if (level > highest)
-          highest = level;
-        else if (level > second)
-          second = level;
-        else if (level > third)
-          third = level;
-    }
-    return (highest + second + third) / 3;
-}
-
 /*
  * Calculate the player’s relative party strength for enemy autoscaling.
  * This is defined as the average level of the three strongest Pokemon.
  */
 s16 CalculatePlayerPartyStrength(void) {
     u8 partyCount = CalculatePlayerPartyCount();
+    s16 highest = 0, second = 0, third = 0;
+    u8 level, i;
 
-    // easy case: just use the average
-    if (partyCount <= 3) {
-        u8 i;
-        s16 sum = 0;
-        for (i = 0; i < partyCount; i++)
-            sum += GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
-        return sum / partyCount;
+    for (i = 0; i < partyCount; i++) {
+        level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+        if (level > highest)
+            highest = level;
+        else if (level > second)
+            second = level;
+        else if (level > third)
+            third = level;
     }
-    return averageOfStrongestThree(partyCount);
+    // in case people bring very weak mons to drag down the average
+    return max(
+        highest - 20,
+        (highest + second + third) / min(partyCount, 3)
+    );
 }
 
 u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStrength)
 {
     if (maxScale)
         return MAX_LEVEL;
-    
+
     if (FlagGet(FLAG_RYU_ISNGPLUS)) {
         // Vars are usually u16, but we need a signed number here.
         // Scripts might write negative numbers which wrap to 65535, but the cast to s16 converts that back to -1.
@@ -1867,8 +1857,7 @@ u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStr
         case SCALING_TYPE_TRAINER: 
             return Random() % (sRange[badges][1] - sRange[badges][0]) + sRange[badges][0];
         case SCALING_TYPE_WILD:
-            return Random() % (sWildRange[badges][1] - sWildRange[badges][0]) + sWildRange[badges][0]
-              + FlagGet(FLAG_RYU_BOSS_WILD) * 5; // Add 5 for boss mons
+            return Random() % (sWildRange[badges][1] - sWildRange[badges][0]) + sWildRange[badges][0];
         default:
             // This should never happen, so we’ll return 0 here so people submit bug reports if it does happen.
             return 0;
