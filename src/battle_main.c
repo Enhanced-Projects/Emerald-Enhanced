@@ -1830,7 +1830,7 @@ static s16 averageOfStrongestThree(u8 partyCount) {
  * Calculate the player’s relative party strength for enemy autoscaling.
  * This is defined as the average level of the three strongest Pokemon.
  */
-static s16 calculatePlayerPartyStrength() {
+s16 CalculatePlayerPartyStrength(void) {
     u8 partyCount = CalculatePlayerPartyCount();
 
     // easy case: just use the average
@@ -1844,7 +1844,7 @@ static s16 calculatePlayerPartyStrength() {
     return averageOfStrongestThree(partyCount);
 }
 
-static u32 RyuChooseTrainerLevel(u32 badges, bool32 maxScale, u8 scalingType, s16 playerPartyStrength)
+u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStrength)
 {
     if (maxScale)
         return MAX_LEVEL;
@@ -1857,15 +1857,22 @@ static u32 RyuChooseTrainerLevel(u32 badges, bool32 maxScale, u8 scalingType, s1
             + (Random() % 5)
             + sAutoscalingAdjustments[scalingType]
             + autolevelModifier;
-        return min(level, MAX_LEVEL);
+        // Clamp the result to 0-MAX_LEVEL.
+        return max(0, min(level, MAX_LEVEL));
     }
 
-    // sRange is the array declared above, [badges] is the index, [0] and [1] are the first and second values of the index listed.
-    // To get a range of random values, do (array[index][second value] minus array[index][first value]) plus array[index][first value]
-    if (scalingType == SCALING_TYPE_GYM_LEADER)
-        return Random() % (sGymRange[badges][1] - sGymRange[badges][0]) + sGymRange[badges][0];
-    else
-        return Random() % (sRange[badges][1] - sRange[badges][0]) + sRange[badges][0];
+    switch (scalingType) {
+        case SCALING_TYPE_GYM_LEADER: 
+            return Random() % (sGymRange[badges][1] - sGymRange[badges][0]) + sGymRange[badges][0];
+        case SCALING_TYPE_TRAINER: 
+            return Random() % (sRange[badges][1] - sRange[badges][0]) + sRange[badges][0];
+        case SCALING_TYPE_WILD:
+            return Random() % (sWildRange[badges][1] - sWildRange[badges][0]) + sWildRange[badges][0]
+              + FlagGet(FLAG_RYU_BOSS_WILD) * 5; // Add 5 for boss mons
+        default:
+            // This should never happen, so we’ll return 0 here so people submit bug reports if it does happen.
+            return 0;
+    }
 }
 
 static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
@@ -1919,7 +1926,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
             maxScale = FlagGet(FLAG_RYU_MAX_SCALE);
             // alternate scale is set for gym leader battles and increases levels
             scalingType = FlagGet(FLAG_RYU_ALTERNATE_SCALE) ? SCALING_TYPE_GYM_LEADER : SCALING_TYPE_TRAINER;
-            playerPartyStrength = calculatePlayerPartyStrength();
+            playerPartyStrength = CalculatePlayerPartyStrength();
         }
 
         for (i = 0; i < monsCount; i++)
@@ -1948,7 +1955,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 if (noScale)
                     CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 else
-                    CreateMon(&party[i], partyData[i].species, RyuChooseTrainerLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                    CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 break;
             }
             case F_TRAINER_PARTY_CUSTOM_MOVESET:
@@ -1963,7 +1970,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 if (noScale)
                     CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 else
-                    CreateMon(&party[i], partyData[i].species, RyuChooseTrainerLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                    CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
 
                 break;
 
@@ -1987,7 +1994,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 if (noScale)
                     CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 else
-                    CreateMon(&party[i], partyData[i].species, RyuChooseTrainerLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                    CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
 
                 break;
 
@@ -2007,7 +2014,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 if (noScale)
                     CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 else
-                    CreateMon(&party[i], partyData[i].species, RyuChooseTrainerLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                    CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].ability);
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
                 if (FlagGet(FLAG_TEMP_6) == 1)
