@@ -665,7 +665,14 @@
     "MirageCave",
     "MirageCave_Underwater1",
     "MirageCave_Underwater2",
-    "MirageCave_LakeCave"
+    "MirageCave_LakeCave",
+    "MirageCave_House1",
+    "MirageCave_House2",
+    "MirageCave_House3",
+    "MirageCave_House4",
+    "MirageCave_House5",
+    "MirageCave_House6",
+    "MirageCave_House7"
   ],
   "gMapGroup29": [
     "Route109_SeashoreHouse",

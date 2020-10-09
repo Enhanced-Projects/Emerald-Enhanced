@@ -373,7 +373,7 @@
 #define FLAG_ITEM_POLAR_PILLAR_ABOMASITE     0x15C
 #define FLAG_RYU_HIDE_BRINEY_GUARD           0x15D
 #define FLAG_FRIGUS_QUEST_COMPLETED          0x15E
-#define FLAG_REMATCH_DUSTY                   0x15F // EE-Unused
+#define FLAG_ITEM_ROUTE_111_PP_MAX           0x15F
 #define FLAG_REMATCH_LOLA                    0x160 // EE-Unused
 #define FLAG_RYU_COURTNEY_MEGA_REWARD        0x161 // Courtney mega stone reward.
 #define FLAG_RYU_DS_JOY_ACQ                  0x162
@@ -382,12 +382,12 @@
 #define FLAG_RYU_DS_JOY_LOVERS               0x165
 #define FLAG_RYU_DS_JOY_PARTNERS             0x166
 #define FLAG_RYU_HIDE_JOY                    0x167
-#define FLAG_REMATCH_THALIA                  0x168 // EE-Unused
-#define FLAG_REMATCH_JESSICA                 0x169 // EE-Unused
-#define FLAG_REMATCH_WINSTON                 0x16A // EE-Unused
-#define FLAG_REMATCH_STEVE                   0x16B // EE-Unused
-#define FLAG_REMATCH_TONY                    0x16C // EE-Unused
-#define FLAG_REMATCH_NOB                     0x16D // EE-Unused
+#define FLAG_ITEM_MIRAGE_CAVE_RARE_BONE_1    0x168
+#define FLAG_ITEM_MIRAGE_CAVE_DOME_FOSSIL    0x169
+#define FLAG_ITEM_MIRAGE_CAVE_THICK_CLUB     0x16A
+#define FLAG_ITEM_MIRAGE_CAVE_RARE_BONE_2    0x16B
+#define FLAG_ITEM_MIRAGE_CAVE_HELIX_FOSSIL   0x16C
+#define FLAG_ITEM_MIRAGE_CAVE_ROSE_INCENSE   0x16D
 #define FLAG_REMATCH_KOJI                    0x16E // EE-Unused
 #define FLAG_REMATCH_FERNANDO                0x16F // EE-Unused
 #define FLAG_REMATCH_DALTON                  0x170 // EE-Unused
@@ -887,7 +887,7 @@
 #define FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE                      0x34E
 #define FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD                           0x34F
 #define FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW            0x350
-#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_2F_SLAKOTH_DOLL         0x351
+#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_2F_SLAKOTH_DOLL       0x351
 #define FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2                        0x352
 #define FLAG_HIDE_ROUTE_119_RIVAL                                   0x353
 #define FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS                         0x354

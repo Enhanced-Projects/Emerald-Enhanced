@@ -5200,6 +5200,76 @@
       "secondary_tileset": "gTileset_MirageIsland",
       "border_filepath": "data/layouts/MirageCave_LakeCave/border.bin",
       "blockdata_filepath": "data/layouts/MirageCave_LakeCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_CAVE_HOUSE1",
+      "name": "MirageCave_House1_Layout",
+      "width": 6,
+      "height": 7,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageIsland",
+      "border_filepath": "data/layouts/MirageCave_House1/border.bin",
+      "blockdata_filepath": "data/layouts/MirageCave_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_CAVE_HOUSE2",
+      "name": "MirageCave_House2_Layout",
+      "width": 8,
+      "height": 7,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageIsland",
+      "border_filepath": "data/layouts/MirageCave_House2/border.bin",
+      "blockdata_filepath": "data/layouts/MirageCave_House2/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_CAVE_HOUSE3",
+      "name": "MirageCave_House3_Layout",
+      "width": 10,
+      "height": 7,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageIsland",
+      "border_filepath": "data/layouts/MirageCave_House3/border.bin",
+      "blockdata_filepath": "data/layouts/MirageCave_House3/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_CAVE_HOUSE4",
+      "name": "MirageCave_House4_Layout",
+      "width": 8,
+      "height": 7,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageIsland",
+      "border_filepath": "data/layouts/MirageCave_House4/border.bin",
+      "blockdata_filepath": "data/layouts/MirageCave_House4/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_CAVE_HOUSE5",
+      "name": "MirageCave_House5_Layout",
+      "width": 8,
+      "height": 7,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageIsland",
+      "border_filepath": "data/layouts/MirageCave_House5/border.bin",
+      "blockdata_filepath": "data/layouts/MirageCave_House5/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_CAVE_HOUSE6",
+      "name": "MirageCave_House6_Layout",
+      "width": 8,
+      "height": 7,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageIsland",
+      "border_filepath": "data/layouts/MirageCave_House6/border.bin",
+      "blockdata_filepath": "data/layouts/MirageCave_House6/map.bin"
+    },
+    {
+      "id": "LAYOUT_MIRAGE_CAVE_HOUSE7",
+      "name": "MirageCave_House7_Layout",
+      "width": 10,
+      "height": 7,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageIsland",
+      "border_filepath": "data/layouts/MirageCave_House7/border.bin",
+      "blockdata_filepath": "data/layouts/MirageCave_House7/map.bin"
     }
   ]
 }

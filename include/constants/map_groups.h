@@ -631,6 +631,13 @@
 #define MAP_MIRAGE_CAVE_UNDERWATER1 (1 | (28 << 8))
 #define MAP_MIRAGE_CAVE_UNDERWATER2 (2 | (28 << 8))
 #define MAP_MIRAGE_CAVE_LAKE_CAVE   (3 | (28 << 8))
+#define MAP_MIRAGE_CAVE_HOUSE1      (4 | (28 << 8))
+#define MAP_MIRAGE_CAVE_HOUSE2      (5 | (28 << 8))
+#define MAP_MIRAGE_CAVE_HOUSE3      (6 | (28 << 8))
+#define MAP_MIRAGE_CAVE_HOUSE4      (7 | (28 << 8))
+#define MAP_MIRAGE_CAVE_HOUSE5      (8 | (28 << 8))
+#define MAP_MIRAGE_CAVE_HOUSE6      (9 | (28 << 8))
+#define MAP_MIRAGE_CAVE_HOUSE7      (10 | (28 << 8))
 
 // Map Group 29
 #define MAP_ROUTE109_SEASHORE_HOUSE                     (0 | (29 << 8))

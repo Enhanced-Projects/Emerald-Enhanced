@@ -72,6 +72,13 @@
       "elevation": 3,
       "dest_map": "MAP_MIRAGE_CAVE",
       "dest_warp_id": 0
+    },
+    {
+      "x": 42,
+      "y": 9,
+      "elevation": 4,
+      "dest_map": "MAP_MIRAGE_CAVE",
+      "dest_warp_id": 1
     }
   ],
   "coord_events": [

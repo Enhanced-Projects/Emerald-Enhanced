@@ -1,4 +1,28 @@
 
+MirageCave_EventScript_ItemRareBone1::
+	finditem ITEM_RARE_BONE
+	end
+
+MirageCave_EventScript_ItemDomeFossil::
+	finditem ITEM_DOME_FOSSIL
+	end
+
+MirageCave_EventScript_ItemThickClub::
+	finditem ITEM_THICK_CLUB
+	end
+
+MirageCave_EventScript_ItemRareBone2::
+	finditem ITEM_RARE_BONE
+	end
+
+MirageCave_EventScript_ItemHelixFossil::
+	finditem ITEM_HELIX_FOSSIL
+	end
+
+MirageCave_EventScript_ItemRoseIncense::
+	finditem ITEM_ROSE_INCENSE
+	end
+
 CraggyCoast_EventScript_ItemDiveBall::
 	finditem ITEM_DIVE_BALL
 	end
@@ -222,8 +246,12 @@ Route111_EventScript_ItemElixir:: @ 8290DC2
 	finditem ITEM_ELIXIR
 	end
 
+Route111_EventScript_ItemPPMax::
+	finditem ITEM_PP_MAX
+	end
+
 Route112_EventScript_ItemNugget:: @ 8290DCF
-	finditem ITEM_PP_UP
+	finditem ITEM_BIG_PEARL
 	end
 
 Route113_EventScript_ItemMaxEther:: @ 8290DDC
