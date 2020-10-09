@@ -1700,7 +1700,7 @@ u8 CreateFollowerObjectEvent(u8 graphicsId, const u8 *script, int direction)
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
         if (gObjectEvents[i].active && gObjectEvents[i].localId == OBJ_EVENT_ID_FOLLOWER)
-            return;
+            return 0;
     }
 
     playerObjectEvent = &gObjectEvents[playerObjectId];
