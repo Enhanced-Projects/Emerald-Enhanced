@@ -62,8 +62,6 @@ MC_GC_GetReward::
 	case 649, MasterBallReward
 	case 910, TutorVoucherReward
 	case 622, KoutaMawileReward
-	case 842, GCMSReward
-	case 392, Compensationreward
 	msgbox MC_GC_NOREWARD MSGBOX_DEFAULT
 	closemessage
 	release
@@ -168,25 +166,6 @@ KoutaMawileReward::
 	release
 	end
 	
-
-GCMSReward:
-	goto_if_set FLAG_RYU_PASSCODE_GCMS_GIFT, MC_GC_Received
-	setvar VAR_RYU_GCMS_VALUE, 31
-	msgbox GCMSRewardMsg
-	setflag FLAG_RYU_PASSCODE_GCMS_GIFT
-	release
-	end
-
-Compensationreward::
-	msgbox CompensationMsg
-	release
-	end
-
-CompensationMsg:
-	.string "Nothing!\pBecause this code is no longer\navailable.$"
-
-GCMSRewardMsg:
-	.string "Your Gcms Map Status has been set\nto 31.\pYou can now get a free perfect\nspecimen from the Gcms.\pThanks for joining the discord!$"
 
 MSG_KOUTA_GIFT:
 	.string "A level 80 Adamant Mawile with\ncustom moves, as well as an Expert Belt.\pIt's in slot {STR_VAR_1} of your party!\nCongrats on doing the contest challenge!\pThere's a message attached:\nRyuhouji: Thanks for playing\l{COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced!$"
