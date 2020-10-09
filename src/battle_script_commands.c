@@ -3677,13 +3677,13 @@ static void Cmd_getexp(void)
                     // so we just set it to the max value.
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG) {
                         if (gBattleMoveDamage > 21844)
-                            gBattleMoveDamage = 0x7EF4;
+                            gBattleMoveDamage = 32500;
                         else
                             gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
                     }
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && B_TRAINER_EXP_MULTIPLIER <= GEN_7) {
                         if (gBattleMoveDamage > 21844)
-                            gBattleMoveDamage = 0x7EF4;
+                            gBattleMoveDamage = 32500;
                         else
                             gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
                     }
@@ -3697,7 +3697,10 @@ static void Cmd_getexp(void)
                         }
                         else
                         {
-                            gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
+                            if (gBattleMoveDamage > 21844)
+                                gBattleMoveDamage = 32500;
+                            else
+                                gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
                             i = STRINGID_ABOOSTED;
                         }
                     }
@@ -3705,6 +3708,9 @@ static void Cmd_getexp(void)
                     {
                         i = STRINGID_EMPTYSTRING4;
                     }
+
+                    // Just to be sure
+                    gBattleMoveDamage = min(gBattleMoveDamage, 32500);
 
                     // get exp getter battlerId
                     if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
