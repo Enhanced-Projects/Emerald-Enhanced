@@ -8669,7 +8669,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_PRIMAL_GROUDON_1] = { // Mega_Groudon-DualSetup
+    [FRONTIER_MON_PRIMAL_GROUDON_1] = { // Primal_Groudon-DualSetup
         .species = SPECIES_PRIMAL_GROUDON,
         .moves = {MOVE_PRECIPICE_BLADES, MOVE_FIRE_PUNCH, MOVE_SWORDS_DANCE, MOVE_ROCK_POLISH},
         .heldItem = ITEM_RED_ORB,
@@ -8678,7 +8678,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_PRIMAL_GROUDON_2] = { // Mega_Groudon-RestTalk
+    [FRONTIER_MON_PRIMAL_GROUDON_2] = { // Primal_Groudon-RestTalk
         .species = SPECIES_PRIMAL_GROUDON,
         .moves = {MOVE_PRECIPICE_BLADES, MOVE_FIRE_PUNCH, MOVE_REST, MOVE_SLEEP_TALK},
         .heldItem = ITEM_RED_ORB,
@@ -8687,7 +8687,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_PRIMAL_KYOGRE_1] = { // Mega_Kyogre-CM
+    [FRONTIER_MON_PRIMAL_KYOGRE_1] = { // Primal_Kyogre-CM
         .species = SPECIES_PRIMAL_KYOGRE,
         .moves = {MOVE_ORIGIN_PULSE, MOVE_HURRICANE, MOVE_THUNDER, MOVE_CALM_MIND},
         .heldItem = ITEM_BLUE_ORB,
@@ -8696,7 +8696,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_PRIMAL_KYOGRE_2] = { // Mega_Kyogre-RestTalk
+    [FRONTIER_MON_PRIMAL_KYOGRE_2] = { // Primal_Kyogre-RestTalk
         .species = SPECIES_PRIMAL_KYOGRE,
         .moves = {MOVE_SCALD, MOVE_HURRICANE, MOVE_REST, MOVE_SLEEP_TALK},
         .heldItem = ITEM_BLUE_ORB,

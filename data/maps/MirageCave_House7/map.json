@@ -1,0 +1,41 @@
+{
+  "id": "MAP_MIRAGE_CAVE_HOUSE7",
+  "name": "MirageCave_House7",
+  "layout": "LAYOUT_MIRAGE_CAVE_HOUSE7",
+  "music": "MUS_SEALED_CHAMBER",
+  "region_map_section": "MAPSEC_MIRAGE_CAVE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_MIRAGE_CAVE",
+      "dest_warp_id": 8
+    },
+    {
+      "x": 5,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_MIRAGE_CAVE",
+      "dest_warp_id": 8
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

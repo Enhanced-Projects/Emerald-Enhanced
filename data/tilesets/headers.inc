@@ -907,3 +907,14 @@ gTileset_Safari::
 	.4byte gMetatiles_Safari
 	.4byte gMetatileAttributes_Safari
 	.4byte InitTilesetAnim_Safari
+
+	.align 2
+gTileset_MirageIsland::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_MirageIsland
+	.4byte gTilesetPalettes_MirageIsland
+	.4byte gMetatiles_MirageIsland
+	.4byte gMetatileAttributes_MirageIsland
+	.4byte NULL

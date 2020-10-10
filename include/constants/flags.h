@@ -373,7 +373,7 @@
 #define FLAG_ITEM_POLAR_PILLAR_ABOMASITE     0x15C
 #define FLAG_RYU_HIDE_BRINEY_GUARD           0x15D
 #define FLAG_FRIGUS_QUEST_COMPLETED          0x15E
-#define FLAG_REMATCH_DUSTY                   0x15F // EE-Unused
+#define FLAG_ITEM_ROUTE_111_PP_MAX           0x15F
 #define FLAG_REMATCH_LOLA                    0x160 // EE-Unused
 #define FLAG_RYU_COURTNEY_MEGA_REWARD        0x161 // Courtney mega stone reward.
 #define FLAG_RYU_DS_JOY_ACQ                  0x162
@@ -382,20 +382,20 @@
 #define FLAG_RYU_DS_JOY_LOVERS               0x165
 #define FLAG_RYU_DS_JOY_PARTNERS             0x166
 #define FLAG_RYU_HIDE_JOY                    0x167
-#define FLAG_REMATCH_THALIA                  0x168 // EE-Unused
-#define FLAG_REMATCH_JESSICA                 0x169 // EE-Unused
-#define FLAG_REMATCH_WINSTON                 0x16A // EE-Unused
-#define FLAG_REMATCH_STEVE                   0x16B // EE-Unused
-#define FLAG_REMATCH_TONY                    0x16C // EE-Unused
-#define FLAG_REMATCH_NOB                     0x16D // EE-Unused
-#define FLAG_REMATCH_KOJI                    0x16E // EE-Unused
-#define FLAG_REMATCH_FERNANDO                0x16F // EE-Unused
-#define FLAG_REMATCH_DALTON                  0x170 // EE-Unused
-#define FLAG_REMATCH_BERNIE                  0x171 // EE-Unused
-#define FLAG_REMATCH_ETHAN                   0x172 // EE-Unused
-#define FLAG_REMATCH_JOHN_AND_JAY            0x173 // EE-Unused
-#define FLAG_REMATCH_JEFFREY                 0x174 // EE-Unused
-#define FLAG_REMATCH_CAMERON                 0x175 // EE-Unused
+#define FLAG_ITEM_MIRAGE_CAVE_RARE_BONE_1    0x168
+#define FLAG_ITEM_MIRAGE_CAVE_DOME_FOSSIL    0x169
+#define FLAG_ITEM_MIRAGE_CAVE_THICK_CLUB     0x16A
+#define FLAG_ITEM_MIRAGE_CAVE_RARE_BONE_2    0x16B
+#define FLAG_ITEM_MIRAGE_CAVE_HELIX_FOSSIL   0x16C
+#define FLAG_ITEM_MIRAGE_CAVE_ROSE_INCENSE   0x16D
+#define FLAG_NIGILEGO_ESCAPED                0x16E
+#define FLAG_BUZZWOLE_ESCAPED                0x16F
+#define FLAG_PHEROMOSA_ESCAPED               0x170
+#define FLAG_XURKITREE_ESCAPED               0x171
+#define FLAG_CELESTEELA_ESCAPED              0x172
+#define FLAG_KARTANA_ESCAPED                 0x173
+#define FLAG_GUZZLORD_ESCAPED                0x174
+#define FLAG_STAKATAKA_ESCAPED               0x175
 #define FLAG_REMATCH_JACKI                   0x176 // EE-Unused
 #define FLAG_REMATCH_WALTER                  0x177 // EE-Unused
 #define FLAG_REMATCH_KAREN                   0x178 // EE-Unused
@@ -887,7 +887,7 @@
 #define FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE                      0x34E
 #define FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD                           0x34F
 #define FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW            0x350
-#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_2F_SLAKOTH_DOLL         0x351
+#define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_2F_SLAKOTH_DOLL       0x351
 #define FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2                        0x352
 #define FLAG_HIDE_ROUTE_119_RIVAL                                   0x353
 #define FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS                         0x354
@@ -1021,8 +1021,8 @@
 #define FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE      0x3D4 // EE-Unused?
 #define FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_VISIBLE                  0x3D5
 #define FLAG_HIDE_ROUTE_120_KECLEON_1                               0x3D6
-#define FLAG_HIDE_RUSTURF_TUNNEL_WANDA                              0x3D7 // EE-Unused
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA                0x3D8 // EE-Unused
+#define FLAG_RYU_HOOPA                                              0x3D7
+#define FLAG_RYU_HOOPA_RAN                                          0x3D8
 #define FLAG_HIDE_ROUTE_120_KECLEON_2                               0x3D9
 #define FLAG_HIDE_ROUTE_120_KECLEON_3                               0x3DA
 #define FLAG_HIDE_ROUTE_120_KECLEON_4                               0x3DB

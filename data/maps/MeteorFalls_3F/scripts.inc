@@ -15,7 +15,7 @@ RyuLegendary_Necrozma::
 	release
 	end
 
-	RyuLegendary_CaughtNecrozma::
+RyuLegendary_CaughtNecrozma::
 	setflag FLAG_RYU_NECROZMA @once this flag is set, the mon will never come back.
 	removeobject 1 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release
