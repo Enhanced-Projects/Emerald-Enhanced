@@ -785,7 +785,6 @@ static const u8 sForbiddenMoves[MOVES_COUNT] =
 static const u16 sMoveEffectsForbiddenToInstruct[] =
 {
     EFFECT_ASSIST,
-    //EFFECT_BEAK_BLAST,
     EFFECT_BIDE,
     EFFECT_FOCUS_PUNCH,
     //EFFECT_GEOMANCY,

@@ -388,14 +388,14 @@
 #define FLAG_ITEM_MIRAGE_CAVE_RARE_BONE_2    0x16B
 #define FLAG_ITEM_MIRAGE_CAVE_HELIX_FOSSIL   0x16C
 #define FLAG_ITEM_MIRAGE_CAVE_ROSE_INCENSE   0x16D
-#define FLAG_REMATCH_KOJI                    0x16E // EE-Unused
-#define FLAG_REMATCH_FERNANDO                0x16F // EE-Unused
-#define FLAG_REMATCH_DALTON                  0x170 // EE-Unused
-#define FLAG_REMATCH_BERNIE                  0x171 // EE-Unused
-#define FLAG_REMATCH_ETHAN                   0x172 // EE-Unused
-#define FLAG_REMATCH_JOHN_AND_JAY            0x173 // EE-Unused
-#define FLAG_REMATCH_JEFFREY                 0x174 // EE-Unused
-#define FLAG_REMATCH_CAMERON                 0x175 // EE-Unused
+#define FLAG_NIGILEGO_ESCAPED                0x16E
+#define FLAG_BUZZWOLE_ESCAPED                0x16F
+#define FLAG_PHEROMOSA_ESCAPED               0x170
+#define FLAG_XURKITREE_ESCAPED               0x171
+#define FLAG_CELESTEELA_ESCAPED              0x172
+#define FLAG_KARTANA_ESCAPED                 0x173
+#define FLAG_GUZZLORD_ESCAPED                0x174
+#define FLAG_STAKATAKA_ESCAPED               0x175
 #define FLAG_REMATCH_JACKI                   0x176 // EE-Unused
 #define FLAG_REMATCH_WALTER                  0x177 // EE-Unused
 #define FLAG_REMATCH_KAREN                   0x178 // EE-Unused

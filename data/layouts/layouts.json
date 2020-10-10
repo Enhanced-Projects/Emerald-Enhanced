@@ -4514,8 +4514,8 @@
     {
       "id": "LAYOUT_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE",
       "name": "LilycoveCity_AquaCorporateOffice_Layout",
-      "width": 26,
-      "height": 16,
+      "width": 18,
+      "height": 13,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/LilycoveCity_AquaCorporateOffice/border.bin",
