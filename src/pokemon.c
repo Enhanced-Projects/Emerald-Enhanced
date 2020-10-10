@@ -3156,13 +3156,37 @@ void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon)
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     s32 level = GetLevelFromBoxMonExp(boxMon);
     s32 i;
+    u8 knownMoves = 0;
+    u16 highestLevelMove;
 
+    // The original code worked like this:
+    // for newMove in levelUpLearnset:
+    //    if pokemon has 4 moves:
+    //        replace firstMove with newMove
+    //    else:
+    //        learn newMove
+    //
+    // which means that the move slots 2-4 contain the second to fourth move the pokemon learns,
+    // and slot 1 contains the last move (because it’s constantly being overwritten).
+    // We can optimize the loop by skipping the move learning after 4th and then only learning the very last move.
+    // The reason this was never a problem in the original games but is in EE is that our level up tables are a lot longer.
+    // Fully evolved pokemon learn all gen 7 tutor and TM moves to make them available via heart scale,
+    // so this loop can be executed over 100 times for some pokemon.
     for (i = 0; gLevelUpLearnsets[species][i].move != LEVEL_UP_END; i++)
     {
         if (gLevelUpLearnsets[species][i].level > level)
             break;
-        if (GiveMoveToBoxMon(boxMon, gLevelUpLearnsets[species][i].move) == MON_HAS_MAX_MOVES)
-            DeleteFirstMoveAndGiveMoveToBoxMon(boxMon, gLevelUpLearnsets[species][i].move);
+        // can’t break here because we need to increment i
+        if (knownMoves >= 4)
+            continue;
+        GiveMoveToBoxMon(boxMon, gLevelUpLearnsets[species][i].move);
+        knownMoves++;
+    }
+    highestLevelMove = gLevelUpLearnsets[species][i-1].move;
+    // If the pokemon already knows the move, this function will return MON_ALREADY_KNOWS_MOVE,
+    // so it’s safe to just replace a move without causing duplicates.
+    if (GiveMoveToBoxMon(boxMon, highestLevelMove) == MON_HAS_MAX_MOVES) {
+        DeleteFirstMoveAndGiveMoveToBoxMon(boxMon, highestLevelMove);
     }
 }
 
@@ -3225,6 +3249,7 @@ void DeleteFirstMoveAndGiveMoveToMon(struct Pokemon *mon, u16 move)
     SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
 }
 
+// This overwrites move 3. Why is it called Delete*First*Move?
 void DeleteFirstMoveAndGiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move)
 {
     s32 i;

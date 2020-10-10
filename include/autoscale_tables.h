@@ -1,29 +1,26 @@
-
-
 static const u16 sRange[9][2] = {//Trainer level ranges
-    {14,18},
-    {19,23},
-    {24,29},
-    {31,36},
-    {37,46},
-    {47,53},
-    {53,64}, 
-    {64,70},
-    {71,82},
+    {11,16},
+    {17,22},
+    {23,28},
+    {29,34},
+    {35,40},
+    {42,49},
+    {50,57}, 
+    {58,65},
+    {66,72},
 };
 
 static const u16 sGymRange[9][2] = {//Gym Leader level ranges
-    {16,21},
-    {22,26},
-    {27,33},
-    {34,40},
-    {42,48},
-    {49,55},
-    {55,66}, 
-    {67,76},
+    {14,19},
+    {20,24},
+    {25,33},
+    {34,39},
+    {40,45},
+    {50,54},
+    {55,62}, 
+    {69,76},
     {77,84},
 };
-
 
 static const u16 sWildRange[9][2] = {//Wild level ranges
     {5,10},
@@ -32,7 +29,23 @@ static const u16 sWildRange[9][2] = {//Wild level ranges
     {28,35},
     {36,41},
     {40,45},
-    {44,49}, 
+    {44,49},
     {48,53},
     {52,60},
+};
+
+enum
+{
+    SCALING_TYPE_WILD,
+    SCALING_TYPE_TRAINER,
+    SCALING_TYPE_GYM_LEADER,
+    SCALING_TYPE_ELITE_FOUR,
+};
+
+// Final levels will be player party average + the adjustment here + Random() % 5
+static const s16 sAutoscalingAdjustments[4] = {
+    [SCALING_TYPE_WILD] = -8,
+    [SCALING_TYPE_TRAINER] = -5,
+    [SCALING_TYPE_GYM_LEADER] = 0,
+    [SCALING_TYPE_ELITE_FOUR] = 3,
 };

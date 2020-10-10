@@ -61,6 +61,8 @@ void FaintClearSetData(void);
 void sub_803B3AC(void); // unused
 void sub_803B598(void); // unused
 void BattleTurnPassed(void);
+u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStrength);
+s16 CalculatePlayerPartyStrength(void);
 u8 IsRunningFromBattleImpossible(void);
 void SwitchPartyOrder(u8 battlerId);
 void SwapTurnOrder(u8 id1, u8 id2);

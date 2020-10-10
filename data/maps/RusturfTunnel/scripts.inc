@@ -82,7 +82,6 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	clearflag FLAG_DEVON_GOODS_STOLEN
 	setflag FLAG_RECOVERED_DEVON_GOODS
 	setvar VAR_RUSTBORO_CITY_STATE, 4
-	setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
 	msgbox RT_ThiefLeftMsg MSGBOX_DEFAULT
 	waitmessage
 	closemessage

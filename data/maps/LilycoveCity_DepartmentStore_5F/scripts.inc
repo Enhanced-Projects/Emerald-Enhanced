@@ -1,14 +1,5 @@
 LilycoveCity_DepartmentStore_5F_MapScripts:: @ 821FF7A
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LilycoveCity_DepartmentStore_5F_OnWarp
 	.byte 0
-
-@ During the abnormal weather from Kyogre/Groudon awakening the dept store rooftop is inaccessible
-@ Likely done to avoid dealing with showing the weather. Technically the rooftop is indoors
-LilycoveCity_DepartmentStore_5F_OnWarp: @ 821FF80
-	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 1, LilycoveCity_DepartmentStore_5F_EventScript_BlockRoofStairs
-	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 2, LilycoveCity_DepartmentStore_5F_EventScript_BlockRoofStairs
-	map_script_2 VAR_SOOTOPOLIS_CITY_STATE, 3, LilycoveCity_DepartmentStore_5F_EventScript_BlockRoofStairs
-	.2byte 0
 
 LilycoveCity_DepartmentStore_5F_EventScript_BlockRoofStairs:: @ 821FF9A
 	setobjectxy 7, 16, 2
@@ -150,11 +141,7 @@ LilycoveCity_DepartmentStore_5F_EventScript_Woman:: @ 8220075
 	lockall
 	applymovement 7, Common_Movement_FacePlayer
 	waitmovement 0
-	compare VAR_SOOTOPOLIS_CITY_STATE, 0
-	goto_if_eq LilycoveCity_DepartmentStore_5F_EventScript_WomanNormal
-	compare VAR_SOOTOPOLIS_CITY_STATE, 4
-	goto_if_ge LilycoveCity_DepartmentStore_5F_EventScript_WomanNormal
-	goto LilycoveCity_DepartmentStore_5F_EventScript_WomanLegendaryWeather
+	goto LilycoveCity_DepartmentStore_5F_EventScript_WomanNormal
 	end
 
 LilycoveCity_DepartmentStore_5F_EventScript_WomanNormal:: @ 822009C
@@ -195,7 +182,6 @@ LilycoveCity_DepartmentStore_5F_Text_ClosedRooftopForWeather: @ 82201C4
 	.string "because the weather is wild today.$"
 
 LCC_Jeweler::
-	goto_if_set FLAG_RYU_PLAYER_AQUA_STONE, LCC_Jeweler_Customwork
 	msgbox LCC_Jeweler_Welcome MSGBOX_DEFAULT
 	pokemart LCC_Jewels
 	msgbox LCC_Jeweler_exit MSGBOX_DEFAULT
@@ -227,25 +213,6 @@ LCC_Jewels:
 	.2byte ITEM_FAIRY_GEM
 	.2byte ITEM_NONE
 	
-LCC_Jeweler_Customwork::
-	msgbox LCC_Jeweler_MakeNecklace MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_ne LCC_JewelEnd
-	checkitem ITEM_STAR_PIECE, 1
-	compare VAR_RESULT, 1
-	goto_if_eq LCC_JewelerMakingNecklace
-	goto LCC_JewelEndNoItem
-	
-LCC_JewelerMakingNecklace::
-	msgbox LCC_JewelerMakingNecklaceMsg MSGBOX_DEFAULT
-	removeitem ITEM_STAR_PIECE, 1
-	msgbox LCC_NecklaceMade MSGBOX_DEFAULT
-	clearflag FLAG_RYU_PLAYER_AQUA_STONE
-	setflag FLAG_RYU_PLAYER_AQUA_NECKLACE
-	release
-	end
-	
-	
 LCC_Jeweler_Welcome:
 	.string "Welcome to my jewel gift shop.\p"
 	.string "Get that special item for that special\n"
@@ -253,39 +220,6 @@ LCC_Jeweler_Welcome:
 
 LCC_Jeweler_exit:
 	.string "Thanks for your patronage!$"
-	
-LCC_Jeweler_MakeNecklace:
-	.string "Oh, my, that's a high quality star\n"
-	.string "piece.\p"
-	.string "Would you like me to turn it into a\n"
-	.string "necklace? It would be so beautiful!$"
-	
-LCC_JewelEnd::
-	msgbox LCC_JewelEndMsg MSGBOX_DEFAULT
-	release
-	end
-
-LCC_JewelEndMsg:
-	.string "Oh, that's such a shame. Any woman\n"
-	.string "would absolutely love it.\p"
-	.string "My offer has a limited time window,\n"
-	.string "come back if you change your mind!$"
-	
-LCC_JewelEndNoItem:
-	.string "Oh, I was mistaken. That's just a\n"
-	.string "mundane stone.\p"
-	.string "I must be too tired.$"
-	
-LCC_JewelerMakingNecklaceMsg:
-	.string "Give me a couple minutes to work\n"
-	.string "with this stone.\p"
-	.string "It will be worth it, I promise!$"
-	
-LCC_NecklaceMade:
-	.string "All done! It turned out even more\n"
-	.string "beautiful than I thought it would.\p"
-	.string "You're going to make a girl very\n"
-	.string "happy with this!$"
 
 LCC_BALL_STORE_MSG:
     .string "Hello and welcome to the\n"

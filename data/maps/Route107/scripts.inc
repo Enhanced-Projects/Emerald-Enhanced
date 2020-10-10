@@ -8,9 +8,6 @@ Route107_EventScript_Darrin:: @ 81EE595
 
 Route107_EventScript_Tony:: @ 81EE5AC
 	trainerbattle_single TRAINER_TONY_1, Route107_Text_TonyIntro, Route107_Text_TonyDefeated, Route107_EventScript_TonyRegisterMatchCallAfterBattle
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route107_EventScript_TonyRematch
 	msgbox Route107_Text_TonyPostBattle, MSGBOX_DEFAULT
 	release
 	end

@@ -47,7 +47,7 @@ EWRAM_DATA const struct BattleFrontierTrainer *gFacilityTrainers = NULL;
 EWRAM_DATA const struct FacilityMon *gFacilityTrainerMons = NULL;
 
 // IWRAM common
-u16 gUnknown_03006298[MAX_FRONTIER_PARTY_SIZE];
+u16 gFrontierNpcTeam[MAX_FRONTIER_PARTY_SIZE];
 
 // This file's functions.
 static void InitTowerChallenge(void);
@@ -80,90 +80,6 @@ static u8 GetFrontierTrainerFixedIvs(u16 trainerId);
 static void FillPartnerParty(u16 trainerId);
 static void SetEReaderTrainerChecksum(struct BattleTowerEReaderTrainer *ereaderTrainer);
 static u8 SetTentPtrsGetLevel(void);
-
-// Const rom data.
-const u16 gBattleFrontierHeldItems[] =//FRONTIER_ITEM_TABLE
-{
-    ITEM_NONE,
-    ITEM_KINGS_ROCK,
-    ITEM_SITRUS_BERRY,
-    ITEM_ORAN_BERRY,
-    ITEM_CHESTO_BERRY,
-    ITEM_HARD_STONE,
-    ITEM_FOCUS_BAND,
-    ITEM_PERSIM_BERRY,
-    ITEM_MIRACLE_SEED,
-    ITEM_BERRY_JUICE,
-    ITEM_MACHO_BRACE,
-    ITEM_SILVER_POWDER,
-    ITEM_CHERI_BERRY,
-    ITEM_BLACK_GLASSES,
-    ITEM_BLACK_BELT,
-    ITEM_SOUL_DEW,
-    ITEM_CHOICE_BAND,
-    ITEM_MAGNET,
-    ITEM_SILK_SCARF,
-    ITEM_WHITE_HERB,
-    ITEM_DEEP_SEA_SCALE,
-    ITEM_DEEP_SEA_TOOTH,
-    ITEM_MYSTIC_WATER,
-    ITEM_SHARP_BEAK,
-    ITEM_QUICK_CLAW,
-    ITEM_LEFTOVERS,
-    ITEM_RAWST_BERRY,
-    ITEM_LIGHT_BALL,
-    ITEM_POISON_BARB,
-    ITEM_NEVER_MELT_ICE,
-    ITEM_ASPEAR_BERRY,
-    ITEM_SPELL_TAG,
-    ITEM_BRIGHT_POWDER,
-    ITEM_LEPPA_BERRY,
-    ITEM_SCOPE_LENS,
-    ITEM_TWISTED_SPOON,
-    ITEM_METAL_COAT,
-    ITEM_MENTAL_HERB,
-    ITEM_CHARCOAL,
-    ITEM_PECHA_BERRY,
-    ITEM_SOFT_SAND,
-    ITEM_LUM_BERRY,
-    ITEM_DRAGON_SCALE,
-    ITEM_DRAGON_FANG,
-    ITEM_IAPAPA_BERRY,
-    ITEM_WIKI_BERRY,
-    ITEM_SEA_INCENSE,
-    ITEM_SHELL_BELL,
-    ITEM_SALAC_BERRY,
-    ITEM_LANSAT_BERRY,
-    ITEM_APICOT_BERRY,
-    ITEM_STARF_BERRY,
-    ITEM_LIECHI_BERRY,
-    ITEM_CHOPLE_BERRY,
-    ITEM_COLBUR_BERRY,
-    ITEM_SHUCA_BERRY,
-    ITEM_STICK,
-    ITEM_LAX_INCENSE,
-    ITEM_AGUAV_BERRY,
-    ITEM_FIGY_BERRY,
-    ITEM_THICK_CLUB,
-    ITEM_MAGO_BERRY,
-    ITEM_METAL_POWDER,
-    ITEM_PETAYA_BERRY,
-    ITEM_LUCKY_PUNCH,
-    ITEM_GANLON_BERRY,
-    ITEM_ASSAULT_VEST,
-    ITEM_CHOICE_SCARF,
-    ITEM_CHOICE_SPECS,
-    ITEM_EXPERT_BELT,
-    ITEM_FOCUS_SASH,
-    ITEM_LIFE_ORB,
-    ITEM_FLAME_ORB,
-    ITEM_TOXIC_ORB,
-    ITEM_WEAKNESS_POLICY,
-    ITEM_BLACK_SLUDGE,
-    ITEM_FLYING_GEM,
-    ITEM_ROCKY_HELMET,
-    ITEM_AIR_BALLOON
-};
 
 #include "data/battle_frontier/battle_frontier_trainer_mons.h"
 #include "data/battle_frontier/battle_frontier_trainers.h"
@@ -1873,7 +1789,7 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
     otID = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
-        u16 monId = gUnknown_03006298[i];
+        u16 monId = gFrontierNpcTeam[i];
         CreateMonWithEVSpreadNatureOTID(&gEnemyParty[firstMonId + i],
                                              gFacilityTrainerMons[monId].species,
                                              level,
@@ -1902,7 +1818,7 @@ static void FillFactoryTentTrainerParty(u16 trainerId, u8 firstMonId)
 
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
-        u16 monId = gUnknown_03006298[i];
+        u16 monId = gFrontierNpcTeam[i];
         CreateMonWithEVSpreadNatureOTID(&gEnemyParty[firstMonId + i],
                                              gFacilityTrainerMons[monId].species,
                                              level,
@@ -2278,11 +2194,11 @@ static void GetApprenticeMultiPartnerParty(u16 trainerId)
         }
     }
 
-    gUnknown_03006298[0] = validSpecies[Random() % count];
+    gFrontierNpcTeam[0] = validSpecies[Random() % count];
     do
     {
-        gUnknown_03006298[1] = validSpecies[Random() % count];
-    } while (gUnknown_03006298[0] == gUnknown_03006298[1]);
+        gFrontierNpcTeam[1] = validSpecies[Random() % count];
+    } while (gFrontierNpcTeam[0] == gFrontierNpcTeam[1]);
 }
 
 static void GetRecordMixFriendMultiPartnerParty(u16 trainerId)
@@ -2306,11 +2222,11 @@ static void GetRecordMixFriendMultiPartnerParty(u16 trainerId)
         }
     }
 
-    gUnknown_03006298[2] = validSpecies[Random() % count];
+    gFrontierNpcTeam[2] = validSpecies[Random() % count];
     do
     {
-        gUnknown_03006298[3] = validSpecies[Random() % count];
-    } while (gUnknown_03006298[2] == gUnknown_03006298[3]);
+        gFrontierNpcTeam[3] = validSpecies[Random() % count];
+    } while (gFrontierNpcTeam[2] == gFrontierNpcTeam[3]);
 }
 
 static void LoadMultiPartnerCandidatesData(void)
@@ -2474,15 +2390,15 @@ static void sub_81646BC(u16 trainerId, u16 monId)
         }
         else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
         {
-            move = gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].party[gUnknown_03006298[gSpecialVar_0x8005 + 1]].moves[0];
-            species = gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].party[gUnknown_03006298[gSpecialVar_0x8005 + 1]].species;
+            move = gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].party[gFrontierNpcTeam[gSpecialVar_0x8005 + 1]].moves[0];
+            species = gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].party[gFrontierNpcTeam[gSpecialVar_0x8005 + 1]].species;
         }
         else
         {
             s32 i;
 
-            move = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].party[gUnknown_03006298[gSpecialVar_0x8005 - 1]].moves[0];
-            species = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].party[gUnknown_03006298[gSpecialVar_0x8005 - 1]].species;
+            move = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].party[gFrontierNpcTeam[gSpecialVar_0x8005 - 1]].moves[0];
+            species = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].party[gFrontierNpcTeam[gSpecialVar_0x8005 - 1]].species;
             for (i = 0; i < PLAYER_NAME_LENGTH; i++)
                 gStringVar3[i] = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].playerName[i];
             gStringVar3[i] = EOS;
@@ -2551,13 +2467,13 @@ static void ShowPartnerCandidateMessage(void)
         }
         else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
         {
-            gSaveBlock2Ptr->frontier.trainerIds[18] = gUnknown_03006298[2];
-            gSaveBlock2Ptr->frontier.trainerIds[19] = gUnknown_03006298[3];
+            gSaveBlock2Ptr->frontier.trainerIds[18] = gFrontierNpcTeam[2];
+            gSaveBlock2Ptr->frontier.trainerIds[19] = gFrontierNpcTeam[3];
         }
         else
         {
-            gSaveBlock2Ptr->frontier.trainerIds[18] = gUnknown_03006298[0];
-            gSaveBlock2Ptr->frontier.trainerIds[19] = gUnknown_03006298[1];
+            gSaveBlock2Ptr->frontier.trainerIds[18] = gFrontierNpcTeam[0];
+            gSaveBlock2Ptr->frontier.trainerIds[19] = gFrontierNpcTeam[1];
         }
         for (k = 0; k < 14; k++)
         {
@@ -3645,7 +3561,7 @@ void RyuGiveFrontierMon(void)
     u8 i, temp;
     u8 party_id = CalculatePlayerPartyCount();
     bool8 IsPickingFrontierStarter = (FlagGet(FLAG_RYU_CHOOSING_FRONTIER_STARTER));
-    const struct FacilityMon *mon = &gBattleFrontierMons[Random() % 881];
+    const struct FacilityMon *mon = &gBattleFrontierMons[Random() % FRONTIER_MON_TRUBBISH]; // trubbish is the last before the megas start
 
     if (IsPickingFrontierStarter == TRUE)
     {

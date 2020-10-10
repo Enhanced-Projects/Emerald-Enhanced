@@ -68,9 +68,6 @@ gSpecials:: @ 81DBA64
 	def_special GetTrainerFlag
 	def_special EndTrainerApproach
 	def_special SetUpTrainerEncounterMusic
-	def_special ShouldTryRematchBattle
-	def_special IsTrainerReadyForRematch
-	def_special BattleSetup_StartRematchBattle
 	def_special ShowPokemonStorageSystemPC
 	def_special HasEnoughMonsForDoubleBattle
 	def_special TurnOffTVScreen
@@ -491,13 +488,10 @@ gSpecials:: @ 81DBA64
 	def_special ShouldShowBoxWasFullMessage
 	def_special SetMatchCallRegisteredFlag
 	def_special DoDomeConfetti
-	def_special CreateAbnormalWeatherEvent
-	def_special GetAbnormalWeatherMapNameAndType
 	def_special GetMartEmployeeObjectEventId
 	def_special SaveForBattleTowerLink
 	def_special Unused_SetWeatherSunny
 	def_special SetUnlockedPokedexFlags
-	def_special IsTrainerRegistered
 	def_special ShouldDoBrailleRegicePuzzle
 	def_special EnableNationalPokedex
 	def_special ScriptMenu_CreateLilycoveSSTidalMultichoice
@@ -536,7 +530,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuSetEVSPE
 	def_special RyuDevCheck
 	def_special RyuDawnGiftPoke
-	def_special WhatStageIsGiftPoke
 	def_special RyuBrendanGiftPoke
 	def_special RyuSetMonMove
 	def_special RyuIvSetter

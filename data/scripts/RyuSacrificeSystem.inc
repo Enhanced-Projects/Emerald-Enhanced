@@ -109,6 +109,8 @@ GCMS_CreateMon::
 	getpartysize
 	compare VAR_RESULT, 6
 	goto_if_eq GCMS_NoSpace
+	compare VAR_RYU_GCMS_SPECIES, 0
+	goto_if_eq GCMS_NotMapping
 	copyvar VAR_TEMP_8, VAR_RESULT
 	bufferspeciesname 0, VAR_RYU_GCMS_SPECIES
 	msgbox GCMS_CreateConfirm MSGBOX_YESNO
@@ -116,6 +118,11 @@ GCMS_CreateMon::
 	goto_if_ne GCMS_CancelCreate
 	goto GCMS_NatureMenu
 
+GCMS_NotMapping:
+	msgbox GCMS_NoMonInGCMS
+	closemessage
+	goto GCMS_Intro
+	
 GCMS_ShinyCharmPresent::
 	msgbox GCMS_ShinyCharmWarningMsg
 	release
@@ -383,8 +390,52 @@ GCMS_ChooseInitialSpecies:
 GCMS_Slot1Selected::
 	setvar VAR_TEMP_9, 0
 	specialvar VAR_RESULT, RyuSacrificeMon
-	compare VAR_RESULT, FALSE
-	goto_if_eq GCMS_SpeciesNotCorrect
+	switch VAR_RESULT
+	case 0, GCMS_SpeciesNotCorrect
+	case 1, GCMS_Confirm
+	case 2, GCMS_Legendary
+	
+GCMS_Slot2Selected::
+	setvar VAR_TEMP_9, 1
+	specialvar VAR_RESULT, RyuSacrificeMon
+	switch VAR_RESULT
+	case 0, GCMS_SpeciesNotCorrect
+	case 1, GCMS_Confirm
+	case 2, GCMS_Legendary
+	
+GCMS_Slot3Selected::
+	setvar VAR_TEMP_9, 2
+	specialvar VAR_RESULT, RyuSacrificeMon
+	switch VAR_RESULT
+	case 0, GCMS_SpeciesNotCorrect
+	case 1, GCMS_Confirm
+	case 2, GCMS_Legendary
+	
+GCMS_Slot4Selected::
+	setvar VAR_TEMP_9, 3
+	specialvar VAR_RESULT, RyuSacrificeMon
+	switch VAR_RESULT
+	case 0, GCMS_SpeciesNotCorrect
+	case 1, GCMS_Confirm
+	case 2, GCMS_Legendary
+	
+GCMS_Slot5Selected::
+	setvar VAR_TEMP_9, 4
+	specialvar VAR_RESULT, RyuSacrificeMon
+	switch VAR_RESULT
+	case 0, GCMS_SpeciesNotCorrect
+	case 1, GCMS_Confirm
+	case 2, GCMS_Legendary
+	
+GCMS_Slot6Selected::
+	setvar VAR_TEMP_9, 5
+	specialvar VAR_RESULT, RyuSacrificeMon
+	switch VAR_RESULT
+	case 0, GCMS_SpeciesNotCorrect
+	case 1, GCMS_Confirm
+	case 2, GCMS_Legendary
+
+GCMS_Confirm::
 	compare VAR_RYU_GCMS_VALUE, 31
 	goto_if_ge GCMS_MaxReached
 	addvar VAR_RYU_GCMS_VALUE, 1
@@ -394,66 +445,11 @@ GCMS_Slot1Selected::
 	closemessage
 	goto GCMS_Consignment
 	end
-	
-GCMS_Slot2Selected::
-	setvar VAR_TEMP_9, 1
-	specialvar VAR_RESULT, RyuSacrificeMon
-	compare VAR_RESULT, FALSE
-	goto_if_eq GCMS_SpeciesNotCorrect
-	addvar VAR_RYU_GCMS_VALUE, 1
-	addvar VAR_TEMP_9, 1
-	buffernumberstring 0, VAR_TEMP_9
-	msgbox GCMS_ConsignSuccess
+
+GCMS_Legendary::
+	msgbox GCMS_CantConsignLegendaries
+	closemessage
 	goto GCMS_Consignment
-	end
-	
-GCMS_Slot3Selected::
-	setvar VAR_TEMP_9, 2
-	specialvar VAR_RESULT, RyuSacrificeMon
-	compare VAR_RESULT, FALSE
-	goto_if_eq GCMS_SpeciesNotCorrect
-	addvar VAR_RYU_GCMS_VALUE, 1
-	addvar VAR_TEMP_9, 1
-	buffernumberstring 0, VAR_TEMP_9
-	msgbox GCMS_ConsignSuccess
-	goto GCMS_Consignment
-	end
-	
-GCMS_Slot4Selected::
-	setvar VAR_TEMP_9, 3
-	specialvar VAR_RESULT, RyuSacrificeMon
-	compare VAR_RESULT, FALSE
-	goto_if_eq GCMS_SpeciesNotCorrect
-	addvar VAR_RYU_GCMS_VALUE, 1
-	addvar VAR_TEMP_9, 1
-	buffernumberstring 0, VAR_TEMP_9
-	msgbox GCMS_ConsignSuccess
-	goto GCMS_Consignment
-	end
-	
-GCMS_Slot5Selected::
-	setvar VAR_TEMP_9, 4
-	specialvar VAR_RESULT, RyuSacrificeMon
-	compare VAR_RESULT, FALSE
-	goto_if_eq GCMS_SpeciesNotCorrect
-	addvar VAR_RYU_GCMS_VALUE, 1
-	addvar VAR_TEMP_9, 1
-	buffernumberstring 0, VAR_TEMP_9
-	msgbox GCMS_ConsignSuccess
-	goto GCMS_Consignment
-	end
-	
-GCMS_Slot6Selected::
-	setvar VAR_TEMP_9, 5
-	specialvar VAR_RESULT, RyuSacrificeMon
-	compare VAR_RESULT, FALSE
-	goto_if_eq GCMS_SpeciesNotCorrect
-	addvar VAR_RYU_GCMS_VALUE, 1
-	addvar VAR_TEMP_9, 1
-	buffernumberstring 0, VAR_TEMP_9
-	msgbox GCMS_ConsignSuccess
-	goto GCMS_Consignment
-	end
 
 GCMS_MaxReached::
 	msgbox GCMS_YouHaveReached
@@ -478,9 +474,15 @@ GCMS_NotEnoughPartyMons::
 	msgbox GCMS_PartyCantBeEmpty
 	release
 	end
+
+GCMS_NoMonInGCMS::
+	.string "You are not currently mapping\ngenes for any species.\pPlease return to main menu and\nconsign a mon to start the process.$"
+
+GCMS_CantConsignLegendaries:
+	.string "You cannot consign legendaries\nor mythicals.$"
 	
 GCMS_YouHaveReached:
-	.string "You have reached the maximum\nachievable Gcv. No more mons may\lbe consigned.$"
+	.string "You have reached the maximum\nachievable GCV. No more mons may\lbe consigned.$"
 	
 GCMS_IntroMsg:
 	.string "Welcome to the\n{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Code Mapping System.\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Please make a selection.$"

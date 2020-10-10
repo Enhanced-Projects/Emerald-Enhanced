@@ -51,48 +51,6 @@ EventScript_DoNoIntroTrainerBattle:: @ 82713C2
 	trainerbattlebegin
 	gotopostbattlescript
 
-EventScript_TryDoRematchBattle:: @ 82713D1
-	call EventScript_RevealTrainer
-	specialvar VAR_RESULT, IsTrainerReadyForRematch
-	compare VAR_RESULT, FALSE
-	goto_if_eq EventScript_NoRematchTrainerBattle
-	special SetUpTrainerEncounterMusic
-	special SetUpTrainerMovement
-	special ShowTrainerIntroSpeech
-	waitmessage
-	waitbuttonpress
-	special BattleSetup_StartRematchBattle
-	waitstate
-	releaseall
-	end
-EventScript_NoRematchTrainerBattle:: @ 82713F7
-	gotopostbattlescript
-
-EventScript_TryDoDoubleRematchBattle:: @ 82713F8
-	specialvar VAR_RESULT, IsTrainerReadyForRematch
-	compare VAR_RESULT, FALSE
-	goto_if_eq EventScript_NoDoubleRematchTrainerBattle
-	special HasEnoughMonsForDoubleBattle
-	compare VAR_RESULT, PLAYER_HAS_TWO_USABLE_MONS
-	goto_if_ne EventScript_NotEnoughMonsForDoubleRematchBattle
-	special SetUpTrainerEncounterMusic
-	special SetUpTrainerMovement
-	special ShowTrainerIntroSpeech
-	waitmessage
-	waitbuttonpress
-	special BattleSetup_StartRematchBattle
-	waitstate
-	releaseall
-	end
-EventScript_NoDoubleRematchTrainerBattle:: @ 8271427
-	gotopostbattlescript
-EventScript_NotEnoughMonsForDoubleRematchBattle:: @ 8271428
-	special ShowTrainerCantBattleSpeech
-	waitmessage
-	waitbuttonpress
-	release
-	end
-
 EventScript_RevealTrainer:: @ 827142F
 	applymovement VAR_LAST_TALKED, Movement_RevealTrainer
 	waitmovement 0

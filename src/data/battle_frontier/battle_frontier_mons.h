@@ -1810,7 +1810,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_GOODRA_5] = { // Goodra-RestTalk
+    [FRONTIER_MON_GOODRA_2] = { // Goodra-RestTalk
         .species = SPECIES_GOODRA,
         .moves = {MOVE_OUTRAGE, MOVE_CURSE, MOVE_REST, MOVE_SLEEP_TALK},
         .heldItem = ITEM_LEFTOVERS,
@@ -2755,7 +2755,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_GOODRA_6] = { // Goodra-Hydration
+    [FRONTIER_MON_GOODRA_3] = { // Goodra-Hydration
         .species = SPECIES_GOODRA,
         .moves = {MOVE_DRAGON_PULSE, MOVE_MUDDY_WATER, MOVE_RAIN_DANCE, MOVE_REST},
         .heldItem = ITEM_LEFTOVERS,
@@ -7661,7 +7661,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_DRAGONITE_2] = { // Goodra-Scarf
+    [FRONTIER_MON_GOODRA_4] = { // Goodra-Scarf
         .species = SPECIES_GOODRA,
         .moves = {MOVE_DRACO_METEOR, MOVE_FIRE_BLAST, MOVE_EARTHQUAKE, MOVE_THUNDERBOLT},
         .heldItem = ITEM_CHOICE_SCARF,
@@ -7670,7 +7670,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_DRAGONITE_3] = { // Dragonite-BulkyDD
+    [FRONTIER_MON_DRAGONITE_2] = { // Dragonite-BulkyDD
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_FLY, MOVE_DRAGON_DANCE, MOVE_SUBSTITUTE, MOVE_ROOST},
         .heldItem = ITEM_LEFTOVERS,
@@ -7679,7 +7679,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_DRAGONITE_4] = { // Goodra-Band
+    [FRONTIER_MON_GOODRA_5] = { // Goodra-Band
         .species = SPECIES_GOODRA,
         .moves = {MOVE_OUTRAGE, MOVE_EARTHQUAKE, MOVE_POWER_WHIP, MOVE_IRON_TAIL},
         .heldItem = ITEM_CHOICE_BAND,
@@ -7688,7 +7688,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_DRAGONITE_5] = { // Dragonite-Band
+    [FRONTIER_MON_DRAGONITE_3] = { // Dragonite-Band
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_OUTRAGE, MOVE_FLY, MOVE_EARTHQUAKE, MOVE_EXTREME_SPEED},
         .heldItem = ITEM_CHOICE_BAND,
@@ -7697,7 +7697,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_DRAGONITE_6] = { // Goodra-Specs
+    [FRONTIER_MON_GOODRA_6] = { // Goodra-Specs
         .species = SPECIES_GOODRA,
         .moves = {MOVE_DRACO_METEOR, MOVE_FIRE_BLAST, MOVE_SLUDGE_BOMB, MOVE_THUNDERBOLT},
         .heldItem = ITEM_CHOICE_SPECS,
@@ -7706,7 +7706,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_DRAGONITE_7] = { // Volcarona-LifeOrbHPground
+    [FRONTIER_MON_VOLCARONA_1] = { // Volcarona-LifeOrbHPground
         .species = SPECIES_VOLCARONA,
         .moves = {MOVE_FIRE_BLAST, MOVE_HIDDEN_POWER, MOVE_GIGA_DRAIN, MOVE_QUIVER_DANCE},
         .heldItem = ITEM_LIFE_ORB,
@@ -7715,7 +7715,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 29,
         .ability = 0
     },
-    [FRONTIER_MON_DRAGONITE_8] = { // Volcarona-SashHPground
+    [FRONTIER_MON_VOLCARONA_2] = { // Volcarona-SashHPground
         .species = SPECIES_VOLCARONA,
         .moves = {MOVE_FIRE_BLAST, MOVE_BUG_BUZZ, MOVE_HIDDEN_POWER, MOVE_QUIVER_DANCE},
         .heldItem = ITEM_FOCUS_SASH,
@@ -7724,7 +7724,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 29,
         .ability = 2
     },
-    [FRONTIER_MON_DRAGONITE_9] = { // Dragonite-OffensiveDD
+    [FRONTIER_MON_DRAGONITE_4] = { // Dragonite-OffensiveDD
         .species = SPECIES_DRAGONITE,
         .moves = {MOVE_OUTRAGE, MOVE_FLY, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
         .heldItem = ITEM_LUM_BERRY,
@@ -7733,7 +7733,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_DRAGONITE_10] = { // Goodra-AV
+    [FRONTIER_MON_GOODRA_1] = { // Goodra-AV
         .species = SPECIES_GOODRA,
         .moves = {MOVE_DRAGON_PULSE, MOVE_FLAMETHROWER, MOVE_SLUDGE_BOMB, MOVE_THUNDERBOLT},
         .heldItem = ITEM_ASSAULT_VEST,
@@ -7751,7 +7751,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_TYRANITAR_2] = { // Hydreigon-Specs
+    [FRONTIER_MON_HYDREIGON_1] = { // Hydreigon-Specs
         .species = SPECIES_HYDREIGON,
         .moves = {MOVE_DARK_PULSE, MOVE_DRACO_METEOR, MOVE_FLASH_CANNON, MOVE_FIRE_BLAST},
         .heldItem = ITEM_CHOICE_SPECS,
@@ -7760,7 +7760,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_TYRANITAR_3] = { // Tyranitar-Curse
+    [FRONTIER_MON_TYRANITAR_2] = { // Tyranitar-Curse
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_CRUNCH, MOVE_STONE_EDGE, MOVE_REST, MOVE_CURSE},
         .heldItem = ITEM_CHESTO_BERRY,
@@ -7769,7 +7769,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_TYRANITAR_4] = { // Hydreigon-4attacks
+    [FRONTIER_MON_HYDREIGON_2] = { // Hydreigon-4attacks
         .species = SPECIES_HYDREIGON,
         .moves = {MOVE_DARK_PULSE, MOVE_DRACO_METEOR, MOVE_FLASH_CANNON, MOVE_FIRE_BLAST},
         .heldItem = ITEM_LIFE_ORB,
@@ -7778,7 +7778,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_TYRANITAR_5] = { // Tyranitar-BulkyDD
+    [FRONTIER_MON_TYRANITAR_3] = { // Tyranitar-BulkyDD
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_CRUNCH, MOVE_STONE_EDGE, MOVE_DRAGON_DANCE, MOVE_REST},
         .heldItem = ITEM_CHESTO_BERRY,
@@ -7787,7 +7787,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_TYRANITAR_6] = { // Hydreigon-3attacksRoost
+    [FRONTIER_MON_HYDREIGON_3] = { // Hydreigon-3attacksRoost
         .species = SPECIES_HYDREIGON,
         .moves = {MOVE_DARK_PULSE, MOVE_DRACO_METEOR, MOVE_FLASH_CANNON, MOVE_ROOST},
         .heldItem = ITEM_LIFE_ORB,
@@ -7796,7 +7796,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_TYRANITAR_7] = { // Volcarona-Bulky
+    [FRONTIER_MON_VOLCARONA_3] = { // Volcarona-Bulky
         .species = SPECIES_VOLCARONA,
         .moves = {MOVE_FIERY_DANCE, MOVE_BUG_BUZZ, MOVE_ROOST, MOVE_QUIVER_DANCE},
         .heldItem = ITEM_LEFTOVERS,
@@ -7805,7 +7805,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_TYRANITAR_8] = { // Volcarona-LifeOrbBugBuzz
+    [FRONTIER_MON_VOLCARONA_4] = { // Volcarona-LifeOrbBugBuzz
         .species = SPECIES_VOLCARONA,
         .moves = {MOVE_FIRE_BLAST, MOVE_BUG_BUZZ, MOVE_GIGA_DRAIN, MOVE_QUIVER_DANCE},
         .heldItem = ITEM_LIFE_ORB,
@@ -7814,7 +7814,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_TYRANITAR_9] = { // Tyranitar-OffensiveDD
+    [FRONTIER_MON_TYRANITAR_4] = { // Tyranitar-OffensiveDD
         .species = SPECIES_TYRANITAR,
         .moves = {MOVE_CRUNCH, MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
         .heldItem = ITEM_LUM_BERRY,
@@ -7823,7 +7823,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_TYRANITAR_10] = { // Hydreigon-Scarf
+    [FRONTIER_MON_HYDREIGON_4] = { // Hydreigon-Scarf
         .species = SPECIES_HYDREIGON,
         .moves = {MOVE_DARK_PULSE, MOVE_DRAGON_PULSE, MOVE_FLASH_CANNON, MOVE_FIRE_BLAST},
         .heldItem = ITEM_CHOICE_SCARF,

@@ -102,7 +102,6 @@ MtChimney_EventScript_Maxie:: @ 822EE0B
 	call_if_eq MtChimney_EventScript_ArchieApproachPlayerNorth
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
-	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, MC_PlayerAqua
 	goto MC_PlayerNotAqua
 
 MC_PlayerNotAqua::
@@ -121,55 +120,6 @@ MC_PlayerNotAqua::
 	setflag FLAG_RYU_DEVON_MISSION_3_DONE
 	releaseall
 	end
-	
-MC_PlayerAqua::
-	msgbox MC_PlayerHelpedAqua, MSGBOX_DEFAULT
-	closemessage
-	compare VAR_FACING, 4
-	call_if_eq MtChimney_EventScript_ArchieExitEast
-	compare VAR_FACING, 2
-	call_if_eq MtChimney_EventScript_ArchieExitNorth
-	removeobject 1
-	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
-	setflag FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY
-	setflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
-	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
-	clearflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
-	setflag FLAG_RYU_PLAYER_AQUA_ADMIN
-	setflag FLAG_RYU_AQUA_MISSION2COMPLETE
-	goto MC_FoundStone
-	releaseall
-	end
-	
-MC_PlayerHelpedAqua:
-	.string "Nice job, {PLAYER}, you managed to beat\n"
-    .string "Maxie on your own!\p"
-    .string "Who was that girl back there crying?\n"
-    .string "The one with purple hair? ... ... ...\p"
-    .string "Oh well, it doesn't matter. What does\n"
-    .string "matter is that we're done here.\p"
-    .string "Report back to Shelly. I'm very\n"
-    .string "impressed with your work for us.\p"
-    .string "I now officially promote you to\n"
-    .string "Lieutenant.\p"
-    .string "You'll be working directly for\n"
-    .string "Shelly. Congratulations.$"
-	
-MC_FoundStone::
-	goto_if_set FLAG_RYU_PLAYER_ARCHIE_ACQ, ryu_end
-	msgbox MC_DroppedFragment MSGBOX_DEFAULT
-	additem ITEM_STAR_PIECE, 1
-	setflag FLAG_RYU_PLAYER_AQUA_STONE
-	release
-	end
-	
-MC_DroppedFragment:
-	.string "You see something sparkling on the\n"
-	.string "ground. It's a glowing white gemstone\p"
-	.string "{PLAYER} pocketed the star fragment.\p"
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You vaguely remember that there's a\n"
-	.string " jeweler in Lilycove gift corner that\p"
-	.string " can turn a stone into a necklace.)$"
 
 MtChimney_EventScript_ArchieApproachPlayerEast:: @ 822EEC7
 	applymovement 1, MtChimney_Movement_ArchieApproachPlayerEast
@@ -366,9 +316,6 @@ MtChimney_EventScript_RouteSign:: @ 822F141
 
 MtChimney_EventScript_Shelby:: @ 822F14A
 	trainerbattle_single TRAINER_SHELBY_1, MtChimney_Text_ShelbyIntro, MtChimney_Text_ShelbyDefeat, MtChimney_EventScript_DefeatedShelby
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq MtChimney_EventScript_RematchShelby
 	msgbox MtChimney_Text_ShelbyPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -408,9 +355,6 @@ MtChimney_EventScript_Grunt1:: @ 822F1F1
 
 MtChimney_EventScript_Sawyer:: @ 822F208
 	trainerbattle_single TRAINER_SAWYER_1, MtChimney_Text_SawyerIntro, MtChimney_Text_SawyerDefeat, MtChimney_EventScript_SawyerDefeated
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq MtChimney_EventScript_SawyerRematch
 	msgbox MtChimney_Text_SawyerPostBattle, MSGBOX_DEFAULT
 	release
 	end

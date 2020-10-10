@@ -225,8 +225,7 @@ LilycoveCity_EventScript_RichBoy:: @ 81E2C4A
 LilycoveCity_EventScript_Sailor2:: @ 81E2C53
 	lock
 	faceplayer
-	goto_if_set FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, LilycoveCity_EventScript_Sailor2AquaGone
-	msgbox LilycoveCity_Text_TeamAquaBeenTrainingWailmer, MSGBOX_DEFAULT
+	goto LilycoveCity_EventScript_Sailor2AquaGone
 	release
 	end
 
@@ -238,8 +237,7 @@ LilycoveCity_EventScript_Sailor2AquaGone:: @ 81E2C68
 LilycoveCity_EventScript_Woman2:: @ 81E2C72
 	lock
 	faceplayer
-	goto_if_set FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, LilycoveCity_EventScript_Woman2AquaGone
-	msgbox LilycoveCity_Text_SomeoneStoleMyPokemon, MSGBOX_DEFAULT
+	goto LilycoveCity_EventScript_Woman2AquaGone
 	release
 	end
 

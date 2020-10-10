@@ -7,8 +7,6 @@ Route111_MapScripts:: @ 81F0CA7
 
 Route111_OnLoad: @ 81F0CBC
 	call_if_unset FLAG_REGI_DOORS_OPENED, Route111_EventScript_CloseDesertRuins
-	compare VAR_MIRAGE_TOWER_STATE, 1
-	call_if_eq Route111_EventScript_ShowTemporaryMirageTower
 	end
 
 Route111_EventScript_CloseDesertRuins:: @ 81F0CD1
@@ -41,11 +39,6 @@ Route111_EventScript_ShowTemporaryMirageTower:: @ 81F0CE4
 Route111_OnTransition: @ 81F0D87
 	setvar VAR_TRAINER_HILL_IS_ACTIVE, 0
 	special SetMirageTowerVisibility
-	call_if_unset FLAG_MIRAGE_TOWER_VISIBLE, Route111_EventScript_SetLayoutNoMirageTower
-	compare VAR_MIRAGE_TOWER_STATE, 1
-	call_if_eq Route111_EventScript_SetFallingPlayerGfx
-	compare VAR_MIRAGE_TOWER_STATE, 2
-	call_if_eq Route111_EventScript_SetMirageTowerGone
 	call Route111_EventScript_CheckSetSandstorm
 	call GabbyAndTy_EventScript_UpdateLocation
 	checktrainerflag TRAINER_VICKY
@@ -99,14 +92,6 @@ Route111_EventScript_SetWinstratesNotDefeated:: @ 81F0E26
 	cleartrainerflag TRAINER_VICTORIA
 	cleartrainerflag TRAINER_VIVI
 	end
-
-Route111_EventScript_SetLayoutNoMirageTower:: @ 81F0E3C
-	setmaplayoutindex LAYOUT_ROUTE111_NO_MIRAGE_TOWER
-	return
-
-Route111_EventScript_SetMirageTowerGone:: @ 81F0E40
-	setvar VAR_MIRAGE_TOWER_STATE, 3
-	return
 
 Route111_OnWarp: @ 81F0E46
 	map_script_2 VAR_MIRAGE_TOWER_STATE, 1, Route111_EventScript_HidePlayerForMirageTower
@@ -304,12 +289,7 @@ Route111_EventScript_Man2:: @ 81F1192
 Route111_EventScript_Hiker:: @ 81F119B
 	lock
 	faceplayer
-	compare VAR_MIRAGE_TOWER_STATE, 3
-	goto_if_eq Route111_EventScript_HikerMirageTowerGone
-	compare VAR_MIRAGE_TOWER_STATE, 2
-	goto_if_eq Route111_EventScript_HikerMirageTowerDisintegrated
-	goto_if_set FLAG_MIRAGE_TOWER_VISIBLE, Route111_EventScript_HikerMirageTowerVisible
-	msgbox Route111_Text_ShouldBeMirageTowerAroundHere, MSGBOX_DEFAULT
+	goto Route111_EventScript_HikerMirageTowerVisible
 	release
 	end
 
@@ -361,9 +341,6 @@ Route111_EventScript_Becky:: @ 81F1249
 
 Route111_EventScript_Dusty:: @ 81F1260
 	trainerbattle_single TRAINER_DUSTY_1, Route111_Text_DustyIntro, Route111_Text_DustyDefeat, Route111_EventScript_RegisterDusty
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route111_EventScript_RematchDusty
 	msgbox Route111_Text_DustyPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -398,9 +375,6 @@ Route111_EventScript_Daisuke:: @ 81F12F0
 
 Route111_EventScript_Wilton:: @ 81F1307
 	trainerbattle_single TRAINER_WILTON_1, Route111_Text_WiltonIntro, Route111_Text_WiltonDefeat, Route111_EventScript_RegisterWilton
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route111_EventScript_RematchWilton
 	msgbox Route111_Text_WiltonPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -420,9 +394,6 @@ Route111_EventScript_RematchWilton:: @ 81F1352
 
 Route111_EventScript_Brooke:: @ 81F1369
 	trainerbattle_single TRAINER_BROOKE_1, Route111_Text_BrookeIntro, Route111_Text_BrookeDefeat, Route111_EventScript_RegisterBrooke
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route111_EventScript_RematchBrooke
 	msgbox Route111_Text_BrookePostBattle, MSGBOX_DEFAULT
 	release
 	end

@@ -50,7 +50,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LC_AH_Guard",
+      "script": "NULL",
       "flag": "0"
     },
     {
@@ -123,33 +123,8 @@
     }
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 7,
-      "y": 12,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "LC_AH_Security1"
-    },
-    {
-      "type": "trigger",
-      "x": 8,
-      "y": 12,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "LC_AH_Security1"
-    }
   ],
   "bg_events": [
-    {
-      "type": "sign",
-      "x": 13,
-      "y": 10,
-      "elevation": 3,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "LC_AH_Shelly"
-    }
+
   ]
 }

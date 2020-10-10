@@ -27,6 +27,7 @@ LRT_FollowerTest::
 	compare VAR_RESULT, 1
 	goto_if_ne LRT_CancelFollower
 	closemessage
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, LRT_AlreadyHasFollower
 	setflag FLAG_RYU_HIDE_MINNIE
 	setflag FLAG_RYU_RECRUITED_MINNIE
 	removeobject 4
@@ -35,6 +36,17 @@ LRT_FollowerTest::
 	fadescreen FADE_FROM_BLACK
 	release
 	end
+
+LRT_AlreadyHasFollower::
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	msgbox LRT_AlreadyFollowerMsg
+	closemessage
+	release
+	end
+
+LRT_AlreadyFollowerMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}But you already have a friend\nwith you...$"
 	
 LRT_CancelFollower::
 	msgbox LRT_NoFollower

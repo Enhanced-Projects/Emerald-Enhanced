@@ -685,9 +685,6 @@ void sub_81C8B70(struct UnknownSubSubStruct_0203CF40 *a0, s32 a1, s32 a2)
         CopyWindowToVram(a0->windowId, 2);
     }
 
-    for (a2--; a2 != -1; a1 = (a1 + 1) & 0xF, a2--)
-        ClearRematchPokeballIcon(a0->windowId, a1);
-
     CopyWindowToVram(a0->windowId, 1);
 }
 

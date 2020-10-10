@@ -10,6 +10,7 @@
 #include "overworld.h"
 #include "pokeblock.h"
 #include "battle_setup.h"
+#include "battle_main.h"
 #include "roamer.h"
 #include "tv.h"
 #include "link.h"
@@ -243,36 +244,6 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
     return wildMonIndex;
 }
 
-static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon)
-{
-    u8 min;
-    u8 max;
-    u8 range;
-    u8 rand;
-
-    // Make sure minimum level is less than maximum level
-    min = min(wildPokemon->maxLevel, wildPokemon->minLevel);
-    max = max(wildPokemon->maxLevel, wildPokemon->minLevel);
-    range = max - min + 1;
-    rand = Random() % range;
-
-    // check ability for max level mon
-    if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
-    {
-        u8 ability = GetMonAbility(&gPlayerParty[0]);
-        if (ability == ABILITY_HUSTLE || ability == ABILITY_VITAL_SPIRIT || ability == ABILITY_PRESSURE)
-        {
-            if (Random() % 2 == 0)
-                return max;
-
-            if (rand != 0)
-                rand--;
-        }
-    }
-
-    return min + rand;
-}
-
 static u16 GetCurrentMapWildMonHeaderId(void)
 {
     u16 i;
@@ -347,14 +318,15 @@ static u8 PickWildMonNature(void)
     return Random() % NUM_NATURES;
 }
 
-int RyuChooseWildLevel(void)
+u32 RyuChooseWildLevel(void)
 {
-    u8 badge = (CountBadges());
-    u8 level = (Random() % (sWildRange[badge][1] - sWildRange[badge][0])) + sWildRange[badge][0];
-    if (FlagGet(FLAG_RYU_BOSS_WILD) == 1)
-        level += 5;
-
-    return level;
+    return RyuChooseLevel(
+        CountBadges(),
+        FALSE,
+        SCALING_TYPE_WILD,
+        // The value is only used in NG+, so we can skip the calculation in the normal playthrough.
+        FlagGet(FLAG_RYU_ISNGPLUS) ? CalculatePlayerPartyStrength() : 0
+    );
 }
 
 static void CreateWildMon(u16 species, u8 level)
@@ -388,11 +360,11 @@ static void CreateWildMon(u16 species, u8 level)
         else
             gender = MON_FEMALE;
 
-        CreateMonWithGenderNatureLetter(&gEnemyParty[0], species, (RyuChooseWildLevel()), 32, gender, PickWildMonNature(), 0);
+        CreateMonWithGenderNatureLetter(&gEnemyParty[0], species, level, 32, gender, PickWildMonNature(), 0);
         return;
     }
 
-    CreateMonWithNature(&gEnemyParty[0], species, (RyuChooseWildLevel()), 32, PickWildMonNature());
+    CreateMonWithNature(&gEnemyParty[0], species, level, 32, PickWildMonNature());
 }
 
 enum
@@ -473,9 +445,8 @@ static const u8 sTypeAttractionTable[ABILITIES_COUNT][2][2] =
 static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 area, u8 flags)
 {
     u8 wildMonIndex = 0;
-    u8 level;
+    u8 level = RyuChooseWildLevel();
     u8 ability = 2;
-    u8 newLevel = 0;
 
     switch (area)
     {
@@ -494,15 +465,15 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
         break;
     }
 
-    level = ChooseWildMonLevel(&wildMonInfo->wildPokemon[wildMonIndex]);
     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
         return FALSE;
   
     if ((Random() % 128) == 69)// || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {
         u8 val[1] = {TRUE};
-        u8 newAbility = (Random() % 2);
+        u8 newAbility = Random() % 2;
         u8 iv = 31;
+        level = min(MAX_LEVEL, level + 5);
         FlagSet(FLAG_RYU_BOSS_WILD);
         CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
         ShowFieldMessage(gText_PowerfulWildAppears);
@@ -512,7 +483,7 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
         SetMonData(&gEnemyParty[0], MON_DATA_SPATK_IV, &iv);
         SetMonData(&gEnemyParty[0], MON_DATA_SPDEF_IV, &iv);
         SetMonData(&gEnemyParty[0], MON_DATA_SPEED_IV, &iv);
-        SetMonData(&gEnemyParty[0], MON_DATA_LEVEL, &newLevel);
+        SetMonData(&gEnemyParty[0], MON_DATA_LEVEL, &level);
         SetMonData(&gEnemyParty[0], MON_DATA_GIFT_RIBBON_7, val);
         SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &ability);
         // If the pokemon has no hidden ability, set it to a random ability
@@ -528,16 +499,14 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
         CalculateMonStats(&gEnemyParty[0]);
     }
     else
-    {
         CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
-    }
     return TRUE;
 }
 
 static u16 GenerateFishingWildMon(const struct WildPokemonInfo *wildMonInfo, u8 rod)
 {
     u8 wildMonIndex = ChooseWildMonIndex_Fishing(rod);
-    u8 level = ChooseWildMonLevel(&wildMonInfo->wildPokemon[wildMonIndex]);
+    u8 level = RyuChooseWildLevel();
 
     CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
     return wildMonInfo->wildPokemon[wildMonIndex].species;
@@ -572,27 +541,17 @@ static bool8 DoMassOutbreakEncounterTest(void)
 static bool8 DoWildEncounterRateDiceRoll(u16 encounterRate)
 {
     if (FlagGet(FLAG_RYU_DEV_DISENC) == 1)
-    {
         return FALSE;
-    }
-    else if (VarGet(VAR_REPEL_STEP_COUNT) >= 1)
-    {
-        if ((RyuChooseWildLevel()) < (GetMonData(&gPlayerParty[0], MON_DATA_LEVEL)))
-        {
-            return FALSE;
-        }
-    }
+    // Bug: This check might return a random number higher than the party lead,
+    // but since it’s rerolled during encounter generation, we might get a lower number there,
+    // so repel will sometimes not work properly.
+    else if (
+        VarGet(VAR_REPEL_STEP_COUNT) >= 1
+        && RyuChooseWildLevel() < GetMonData(&gPlayerParty[0], MON_DATA_LEVEL)
+    )
+        return FALSE;
     else
-    {
-        if (Random() % 2880 < encounterRate)
-        {
-            return TRUE;
-        }  
-        else
-        {
-            return FALSE;
-        }
-    }
+        return (Random() % 2880) < encounterRate;
 }
 
 static bool8 DoWildEncounterRateTest(u32 encounterRate, bool8 ignoreAbility)
@@ -705,17 +664,13 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
             if (TryStartRoamerEncounter() == TRUE)
             {
                 roamer = &gSaveBlock1Ptr->roamer;
-                    if (FlagGet(FLAG_RYU_DEV_DISENC) ==1 )
-                    {
-                        return FALSE;
-                    }
-                    else if (!(VarGet(VAR_REPEL_STEP_COUNT == 0)))
-                    {
-                        if ((RyuChooseWildLevel()) < (GetMonData(&gPlayerParty[0], MON_DATA_LEVEL)))
-                        {
-                            return FALSE;
-                        }
-                    }
+                if (FlagGet(FLAG_RYU_DEV_DISENC) == 1)
+                    return FALSE;
+                else if (
+                    VarGet(VAR_REPEL_STEP_COUNT)
+                    && RyuChooseWildLevel() < GetMonData(&gPlayerParty[0], MON_DATA_LEVEL)
+                )
+                    return FALSE;
 
                 BattleSetup_StartRoamerBattle();
                 return TRUE;
@@ -739,13 +694,9 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
                         BattleSetup_StartDoubleWildBattle();
                     }
                     else
-                    {
                         BattleSetup_StartWildBattle();
-                    }   
                     return TRUE;
                 }
-                
-
                 return FALSE;
             }
         }
@@ -762,21 +713,8 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
             if (TryStartRoamerEncounter() == TRUE)
             {
                 roamer = &gSaveBlock1Ptr->roamer;
-                if (!IsWildLevelAllowedByRepel(roamer->level))
-                {
-                        if (FlagGet(FLAG_RYU_DEV_DISENC) ==1 )
-                        {
-                            return FALSE;
-                        }
-                        else if (!(VarGet(VAR_REPEL_STEP_COUNT == 0)))
-                        {
-                            if ((RyuChooseWildLevel()) < (GetMonData(&gPlayerParty[0], MON_DATA_LEVEL)))
-                            {
-                                return FALSE;
-                            }
-                        }
-                }
-
+                if (!IsWildLevelAllowedByRepel(RyuChooseWildLevel()))
+                    return FALSE;
                 BattleSetup_StartRoamerBattle();
                 return TRUE;
             }
@@ -787,7 +725,6 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
                     BattleSetup_StartWildBattle();
                     return TRUE;
                 }
-
                 return FALSE;
             }
         }
@@ -805,9 +742,7 @@ void RockSmashWildEncounter(void)
         const struct WildPokemonInfo *wildPokemonInfo = gWildMonHeaders[headerId].rockSmashMonsInfo;
 
         if (wildPokemonInfo == NULL)
-        {
             gSpecialVar_Result = FALSE;
-        }
         else if (DoWildEncounterRateTest(wildPokemonInfo->encounterRate, 1) == TRUE
          && TryGenerateWildMon(wildPokemonInfo, 2, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
         {
@@ -815,14 +750,10 @@ void RockSmashWildEncounter(void)
             gSpecialVar_Result = TRUE;
         }
         else
-        {
             gSpecialVar_Result = FALSE;
-        }
     }
     else
-    {
         gSpecialVar_Result = FALSE;
-    }
 }
 
 bool8 SweetScentWildEncounter(void)
@@ -912,8 +843,7 @@ void FishingWildEncounter(u8 rod)
 
     if (CheckFeebas() == TRUE)
     {
-        u8 level = ChooseWildMonLevel(&gWildFeebasRoute119Data);
-
+        u8 level = RyuChooseWildLevel();
         species = gWildFeebasRoute119Data.species;
         CreateWildMon(species, level);
     }

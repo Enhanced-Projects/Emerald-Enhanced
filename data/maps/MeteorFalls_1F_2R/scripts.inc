@@ -3,9 +3,6 @@ MeteorFalls_1F_2R_MapScripts:: @ 822C4DD
 
 MeteorFalls_1F_2R_EventScript_Nicolas:: @ 822C4DE
 	trainerbattle_single TRAINER_NICOLAS_1, MeteorFalls_1F_2R_Text_NicolasIntro, MeteorFalls_1F_2R_Text_NicolasDefeat, MeteorFalls_1F_2R_EventScript_RegisterNicolas
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq MeteorFalls_1F_2R_EventScript_RematchNicolas
 	msgbox MeteorFalls_1F_2R_Text_NicolasPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -25,9 +22,6 @@ MeteorFalls_1F_2R_EventScript_RematchNicolas:: @ 822C529
 
 MeteorFalls_1F_2R_EventScript_John:: @ 822C540
 	trainerbattle_double TRAINER_JOHN_AND_JAY_1, MeteorFalls_1F_2R_Text_JohnIntro, MeteorFalls_1F_2R_Text_JohnDefeat, MeteorFalls_1F_2R_Text_JohnNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJohn
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq MeteorFalls_1F_2R_EventScript_RematchJohn
 	msgbox MeteorFalls_1F_2R_Text_JohnPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -45,9 +39,6 @@ MeteorFalls_1F_2R_EventScript_RematchJohn:: @ 822C589
 
 MeteorFalls_1F_2R_EventScript_Jay:: @ 822C5A4
 	trainerbattle_double TRAINER_JOHN_AND_JAY_1, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq MeteorFalls_1F_2R_EventScript_RematchJay
 	msgbox MeteorFalls_1F_2R_Text_JayPostBattle, MSGBOX_DEFAULT
 	release
 	end

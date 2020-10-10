@@ -356,18 +356,14 @@ int GetNumberRegistered(void);
 int sub_81CAE48(void);
 struct PokenavMatchCallEntries *sub_81CAE94(void);
 u16 GetMatchCallMapSec(int);
-bool32 ShouldDrawRematchPokeballIcon(int index);
-void ClearRematchPokeballIcon(u16 windowId, u32 a1);
 int GetMatchCallTrainerPic(int index);
 const u8 *GetMatchCallFlavorText(int index, int textType);
 const u8 *GetMatchCallMessageText(int index, u8 *arg1);
 u16 GetMatchCallOptionCursorPos(void);
 u16 GetMatchCallOptionId(int arg0);
-void BufferMatchCallNameAndDesc(struct PokenavMatchCallEntries * arg0, u8 *str);
-u8 sub_81CB0C8(int rematchIndex);
+void BufferMatchCallNameAndDesc(struct PokenavMatchCallEntries * arg0, u8 *str);;
 int GetIndexDeltaOfNextCheckPageDown(int index);
 int GetIndexDeltaOfNextCheckPageUp(int index);
-bool32 IsRematchEntryRegistered(int index);
 
 // pokenav_match_call_2.c
 bool32 OpenMatchCall(void);

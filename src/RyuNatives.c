@@ -192,8 +192,7 @@ bool8 RyuGiveMewtwo(void)
     if (slot == 0 || slot > 5) {
       return FALSE;
     }
-    // Give the player a modest mewtwo and max out its atk and spatk
-    // (why max out atk when it’s modest and therefore -10% atk?)
+
     CreateMonWithNature(&gPlayerParty[slot], SPECIES_MEWTWO, 95, 31, NATURE_MODEST);
     SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &ev);
     SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &ev);
@@ -216,7 +215,10 @@ void RyuKillMon(void)
     }
 }
 
-bool8 RyuSacrificeMon(void)
+extern const u16 gFrontierBannedSpecies[27];
+
+
+int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be used by gcms.
 {
     u8 slot = (VarGet(VAR_TEMP_9));
     u16 species = 0;
@@ -225,6 +227,14 @@ bool8 RyuSacrificeMon(void)
     u16 move3 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE3);
     u16 move4 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE4);
     u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
+    u8 i;
+
+    for (; gFrontierBannedSpecies[i] != 0xFFFF; i++)
+        {
+            mgba_printf(LOGINFO, "checking %d", gFrontierBannedSpecies[i]);
+            if (gFrontierBannedSpecies[i] == (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2)))
+                return 2;
+        }
 
     if (FlagGet(FLAG_TEMP_5) == 1)
     {
@@ -238,15 +248,15 @@ bool8 RyuSacrificeMon(void)
         VarSet(VAR_RYU_GCMS_MOVE4, move4);
         VarSet(VAR_RYU_GCMS_ABILITY, ability);
         FlagClear(FLAG_TEMP_5);
-        return TRUE;
+        return 1;
     }
     else if (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL) == (VarGet(VAR_RYU_GCMS_SPECIES)))
     {
         ZeroMonData(&gPlayerParty[slot]);
         CompactPartySlots();
-        return TRUE;
+        return 1;
     }
-    return FALSE;
+    return 0;
 }
 
 void RyuWipeParty(void)
@@ -258,28 +268,6 @@ void RyuWipeParty(void)
     ZeroMonData(&gPlayerParty[1]);
     ZeroMonData(&gPlayerParty[0]);
     CompactPartySlots();
-}
-
-u8 WhatStageIsGiftPoke(void)
-{//returns between 1 and 3 based on state of the snorunt
-    u8 i;
-    u8 partyCount = CalculatePlayerPartyCount();
-    for (i = 0; i < partyCount; i++)//i is starting point, partyCount is ending point, i++ steps up
-    {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNORUNT)// if the mon's species is x
-            {
-                    return 1;//unevolved
-            }
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_GLALIE)
-            {
-                    return 2;//default evo
-            }
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_FROSLASS)
-            {
-                    return 3;//special evo
-            }
-    }
-    return 0;
 }
 
 void RyuDawnGiftPoke(void)
@@ -372,8 +360,8 @@ void RyuSetFriendship(void)
     CalculateMonStats(&gPlayerParty[slot]);
 }
 
-void RyuSetEVHP(void)
-{
+void RyuSetEVHP(void)//I would like to combine all of these into a single function, but I don't think it would save much space or time.
+{                    //there may be a better way to do this.
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
     SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV, &value);
@@ -444,7 +432,7 @@ void RyuSetMonMove(void)
     }
 }
 
-int RyuCalculateCurrentExpCoefficient(void)
+int RyuCalculateCurrentExpCoefficient(void)//uses the same formula as my exp multiplier. see `calculatedExp` in battle_script_commands.c
 {
     u16 calc = 0;
     u16 badges = (CountBadges());
@@ -465,9 +453,9 @@ void RyuResetEvs(void)
     CalculateMonStats(&gPlayerParty[0]);
 }
 
-void RyuGenerateReward(void)
-{
-    u8 v1 = VarGet(VAR_TEMP_1);
+void RyuGenerateReward(void)//combines the return values from the passcode menu into one integer, 
+{                           //which is then returned to the script to determine if and what reward
+    u8 v1 = VarGet(VAR_TEMP_1);//the player gets.
     u8 v2 = VarGet(VAR_TEMP_2);
     u8 v3 = VarGet(VAR_TEMP_3);
     gSpecialVar_Result = (v1 * 100) + (v2 * 10) + v3;
@@ -486,7 +474,7 @@ void RyuGiveKoutaMawile(void)
     VarSet(VAR_TEMP_3, 2);
 }
 
-void RyuSetIVs(void)
+void RyuSetIVs(void)//used in quickstart for devmons.
 {
     u8 iv = 31;
     u8 ab = 0; 
@@ -507,8 +495,8 @@ void RyuSetIVs(void)
     CalculateMonStats(&gPlayerParty[0]);
 }
 
-void RyuWarp()
-{
+void RyuWarp()//this and the function below were added because lana's quest script was so complicated, it overwrote other bits of RAM causing random crashes on
+{             //warp. I have since avoided making such long scripts, but for now these are still necessary until they can be fixed.
     u8 mapGroup = 1;
     u8 mapNum = 1;
     u8 warpId = 255;
@@ -536,7 +524,7 @@ void RyuWarp2()
 const u8 gText_OneSpace[] = _(" ");
 const u8 gRyu_TempVarIntro[] = _("\n");
 
-void RyuCheckTempVars(void)
+void RyuCheckTempVars(void)//buffers the values of all temporary map vars to a single text buffer to be displayed in a string.
 {
     u16 v0 = VarGet(VAR_TEMP_0);
     u16 v1 = VarGet(VAR_TEMP_1);
@@ -554,8 +542,6 @@ void RyuCheckTempVars(void)
     u16 vD = VarGet(VAR_TEMP_D);
     u16 vE = VarGet(VAR_TEMP_E);
     u16 vF = VarGet(VAR_TEMP_F);
-    //ConvertIntToDecimalStringN(gStringVar1, 0, STR_CONV_MODE_LEFT_ALIGN, 1);
-
     //1
     ConvertIntToDecimalStringN(gStringVar1, v0, STR_CONV_MODE_LEFT_ALIGN, 5);
     //2
@@ -621,9 +607,9 @@ void RyuCheckTempVars(void)
     StringAppend(gStringVar1, gStringVar3);
 }
 
-void RyuGetCaughtMonsFromPCForDex(void)
-{
-    u16 i, j;
+void RyuGetCaughtMonsFromPCForDex(void)//used to rebuild dex based on what player has in their pc at the time of calling this function.
+{                                      //I'd rather it kept the player's whole dex so that a living dex can be maintained, thus deprecating this
+    u16 i, j;                          //function. However, I wasn't able to figure that out, so this function lives here still.
     u16 natDexNum;
     u16 species = SPECIES_NONE;
 
@@ -650,7 +636,7 @@ void RyuChangeUsedPokeball(void)
     SetMonData(&gPlayerParty[0], MON_DATA_POKEBALL, &newBall);
 }
 
-void SwapPlayerGender(void)
+void SwapPlayerGender(void)//only used by debug menu sometimes to check graphics.
 {
     if (gSaveBlock2Ptr->playerGender == 1)
     {
@@ -662,7 +648,7 @@ void SwapPlayerGender(void)
     }
 }
 
-bool8 RyuSwapAbility(void)
+bool8 RyuSwapAbility(void)//ability switcher, which requires a big pearl in the script.
 {
     u8 currentAbility = (GetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM));
 
@@ -712,16 +698,12 @@ bool8 RyuCheckContestMastery(void)
         i += 10;
 
     if (i == 5)
-    {
         return TRUE;
-    }
-    else
-    {
-        return FALSE;
-    }
+
+    return FALSE;
 }
 
-int RyuNumberOfFullBoxes(void)
+int RyuNumberOfFullBoxes(void)//used by lanette to determine how many full boxes player has for her quest. She requires 4.
 {
     u8 i;
     u8 fullBoxes = 0;
@@ -752,8 +734,8 @@ static const u16 sRotomMoves[6] = {
     437,
 };
 
-int RyuSwapRotomForm(void)
-{
+int RyuSwapRotomForm(void)//Toby had concerns that this wasn't as 'nice' as the one he saw somewhere else, but this performs all the same functions.
+{                         //He just wanted it so that base rotom doesn't require thunder.
     u16 i = 0;
     u16 j = 0;
     u16 rotomSpecies = 0;
@@ -825,7 +807,7 @@ bool8 checkForOverlordRyuEncounter(void)
     }
 }
 
-void CheckSaveFileSize(void)
+void CheckSaveFileSize(void)//used in debug menu from time to time as a special to check saveblock space and buffer to strings for output.
 {
     u32 size = (sizeof(struct SaveBlock1));
     u32 size2 = (sizeof(struct SaveBlock2));
@@ -833,7 +815,7 @@ void CheckSaveFileSize(void)
     ConvertIntToDecimalStringN(gStringVar2, size2, STR_CONV_MODE_LEFT_ALIGN, 6);
 }
 
-void ForceSoftReset(void)
+void ForceSoftReset(void)//only used when you use Random Battle from the main menu. Otherwise, the player would lose their party and/or keep their random mons.
 {
     DoSoftReset();
 }
@@ -874,15 +856,15 @@ int RyuMeloettaFormSwitcher(void)
     }
 }
 
-void VBCB_FullscreenCutscene(void) 
+void VBCB_FullscreenCutscene(void) //callback for below function
 {
 	UpdatePidgeyPaletteFade();
 	UpdateBgPan();
 }
 
-bool8 ScrCmd_drawfullscreenimage(struct ScriptContext *ctx)
-{
-    u8 index = ScriptReadByte(ctx);
+bool8 ScrCmd_drawfullscreenimage(struct ScriptContext *ctx)//draws the fullscreen pic with index. Needs to be removed with the below function
+{                                                          //also causes a screen refresh, so if you're hiding npc's or changing map tiles
+    u8 index = ScriptReadByte(ctx);                        //you don't need to also special DrawWholeScreenView.
     SetVBlankCallback(NULL);
     StartBGCutscene(index);
     SetVBlankCallback(VBCB_FullscreenCutscene);
@@ -896,9 +878,9 @@ bool8 ScrCmd_clearfullscreenimage(struct ScriptContext *ctx)
     return TRUE;
 }
 
-bool8 ScrCmd_checkspecies(struct ScriptContext *ctx)
-{
-    u16 speciesId = VarGet(ScriptReadHalfword(ctx));
+bool8 ScrCmd_checkspecies(struct ScriptContext *ctx)//this lewd function checks if player has mon, and if so,
+{                                                   //returns TRUE to VAR_RESULT, and slot number to VAR_TEMP_F
+    u16 speciesId = VarGet(ScriptReadHalfword(ctx));//see the relevant script command in asm/macros/event.inc
     u8 i;
 
     for (i = 0; i < CalculatePlayerPartyCount(); i++)
@@ -915,20 +897,20 @@ bool8 ScrCmd_checkspecies(struct ScriptContext *ctx)
 
 static EWRAM_DATA u8 specialCutsceneSprite = 0;
 
-bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)
-{
+bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)//this function draws either a pokemon sprite or a trainer sprite depending on mode.
+{                                                    //I may just remove this function entirely, since it's unused. Always had trouble with this anyway.
     u8 mode = ScriptReadByte(ctx);
     u16 id = VarGet(ScriptReadHalfword(ctx));
     u16 x = VarGet(ScriptReadHalfword(ctx));
     u16 y = VarGet(ScriptReadHalfword(ctx));
 
-    if (mode == 1)
+    if (mode == 1)//I intended to use this for when the player talks to npc's but couldn't find a way to dynamically call this function based on the OW GraphicsID
     {
-        specialCutsceneSprite = (CreateTrainerSprite(FacilityClassToPicIndex(id), x, y, 0, &gDecompressionBuffer[0x800]));
+        specialCutsceneSprite = (CreateTrainerSprite(FacilityClassToPicIndex(id), x, y, 0, &gDecompressionBuffer[0x800]));//trainer sprites i.e. FACILITY_CLASS_COOLTRAINER_M
         return FALSE;
     }
 
-    if (mode == 2)
+    if (mode == 2)//you can theoretically just use the drawmonpic script command, but this has the ability to draw backsprites as well.
     {
         VarSet(VAR_TEMP_7, id);
         VarSet(VAR_TEMP_8, 2);
@@ -936,7 +918,7 @@ bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)
         return FALSE;
     }
 
-    if (mode == 3)
+    if (mode == 3)//i don't remember why i did this
     {
         CreateMonSprite_PicBox(id, x, y, 0);
     }
@@ -1038,7 +1020,7 @@ bool8 ChangeDarmanitanForm(void)
     return FALSE;
 }
 
-bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx)
+bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx) //rolls the inside/outside table for items from the relevant skill level
 {
     u16 reward = 0;
     bool8 inside = TRUE;
@@ -1054,7 +1036,7 @@ bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx)
         }
     }
 
-    switch (VarGet(VAR_RYU_PLAYER_MINING_SKILL))
+    switch (VarGet(VAR_RYU_PLAYER_MINING_SKILL))//I feel like this could be made more efficient
     {
     case 0:
         {
@@ -1114,7 +1096,7 @@ int RyuGetItemQuantity(u16 *quantity)
     return gSaveBlock2Ptr->encryptionKey ^ *quantity;
 }
 
-void RyuCountGemOres(void)
+void RyuCountGemOres(void)//buffers the number of each gem ore the player has to be used in a dynamic menu.
 {
     u8 i;
     u16 total1 = 0;
@@ -1144,7 +1126,7 @@ void RyuCountGemOres(void)
     ConvertIntToDecimalStringN(gRyuStringVar1, total1, STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
-void RyuChooseFromGemList(void)
+void RyuChooseFromGemList(void)//rolls the relevant table for gems
 {
     u16 mode = (VarGet(VAR_TEMP_A));
     u16 Result = 0;
@@ -1170,7 +1152,7 @@ void RyuChooseFromGemList(void)
     VarSet(VAR_TEMP_B, Result);
 }
 
-int RyuFossilReward(void)
+int RyuFossilReward(void)//rolls a table for a random fossil reward
 {
     u16 itemReward = gFossilTable[(Random() %(ARRAY_COUNT(gFossilTable)))];
     bool8 hasItem = (CheckBagHasItem(ITEM_FOSSIL_ORE, 1));
@@ -1186,7 +1168,7 @@ int RyuFossilReward(void)
 
 }
 
-int RyuShardReward(void)
+int RyuShardReward(void)//Rolls shard table for a random shard.
 {
     u16 itemReward = gShardOreTable[(Random() %(ARRAY_COUNT(gShardOreTable)))];
     bool8 hasItem = (CheckBagHasItem(ITEM_SHARD_ORE, 1));
@@ -1202,7 +1184,7 @@ int RyuShardReward(void)
 
 }
 
-int Ryu_GiveRevivedFossilEgg(void)
+int Ryu_GiveRevivedFossilEgg(void)//gives the player a revived fossil mon with 3 random stats at 31 IV
 {
     u16 species = (VarGet(VAR_TEMP_4));
     u8 iv = 31;
@@ -1222,11 +1204,11 @@ int Ryu_GiveRevivedFossilEgg(void)
         rnd1 = ((Random() %6) + 39);
         rnd2 = ((Random() %6) + 39);
         rnd3 = ((Random() %6) + 39);
-    }while (((rnd1 != rnd2) && (rnd2 != rnd3) && (rnd3 != rnd1)) == FALSE);
+    }while (((rnd1 != rnd2) && (rnd2 != rnd3) && (rnd3 != rnd1)) == FALSE);//This loop makes sure that rnd 1 - 3 are not the same
 
-    CreateMon(&gPlayerParty[slot], species, level, fixedIV, 0, 0, OT_ID_PLAYER_ID, 0);
-
-    switch (rnd1)
+    CreateMon(&gPlayerParty[slot], species, level, fixedIV, 0, 0, OT_ID_PLAYER_ID, 0);//this creates a fossil mon with 3 random iv's of 31
+                                                                                      //I wish there was a better way to do this
+    switch (rnd1)//this sets the mon data rnd1 (which refers to the define of MON_DATA_STAT_IV where stat is the random one)
     {
         case 39:
             {
@@ -1511,21 +1493,29 @@ void RyuBufferQuestVars(void)
 }
 
 
-int CheckRivalGiftMonStatus(void)//well this saved a bunch of lines.
+bool8 hasChampionRibbon(u8 index) {
+    return GetMonData(&gPlayerParty[index], MON_DATA_CHAMPION_RIBBON, NULL);
+}
+
+/**
+ * Return 0 if the player does not have the gift mon,
+ * 1-4 if the player has it depending on the evolution stage,
+ * and 5 if the player has it and has beaten the elite 4 with it.
+ */
+int CheckRivalGiftMonStatus(void)
 {
     u8 gender = gSaveBlock2Ptr->playerGender;
     u8 i;
-    u8 ret = 0;
 
     if (gender == MALE)
     {
         for (i = 0; i < CalculatePlayerPartyCount(); i++)
         {
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNEASEL)
-                ret = 1;
+                return hasChampionRibbon(i) ? 5 : 1;
 
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_WEAVILE)
-                ret = 2;
+                return hasChampionRibbon(i) ? 5 : 2;
         }
     }
     else
@@ -1533,21 +1523,17 @@ int CheckRivalGiftMonStatus(void)//well this saved a bunch of lines.
         for (i = 0; i < CalculatePlayerPartyCount(); i++)
         {
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_SNORUNT)
-                ret = 1;
+                return hasChampionRibbon(i) ? 5 : 1;
 
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_FROSLASS)
-                ret = 2;
+                return hasChampionRibbon(i) ? 5 : 2;
 
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2, NULL) == SPECIES_GLALIE)
-                ret = 3;
+                return hasChampionRibbon(i) ? 5 : 3;
         }
     }
-
-    if (GetMonData(&gPlayerParty[i], MON_DATA_CHAMPION_RIBBON, NULL) == TRUE)
-        ret = 5;
-
-    return ret;
-}
+    return 0;
+} 
 
 int RyuGetTimeOfDay(void)
 {

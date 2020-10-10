@@ -106,7 +106,7 @@ RyuDebug_DisableDebug::
 	end
 
 RyuDebug_EnableSaveViewer::
-	setvar VAR_RECYCLE_GOODS, 45454
+	setvar VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454
 	msgbox Ryu_saveViewerEnabled
 	release
 	end

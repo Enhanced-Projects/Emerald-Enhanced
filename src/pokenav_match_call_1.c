@@ -235,11 +235,11 @@ static u32 sub_81CAD20(s32 taskState)
     case 2:
         for (i = 0, j = state->headerId; i < 30; i++, j++)
         {
-            if (!MatchCall_HasRematchId(state->headerId) && IsRematchEntryRegistered(state->headerId))
+            if (!MatchCall_HasRematchId(state->headerId))
             {
                 state->matchCallEntries[state->numRegistered].headerId = state->headerId;
                 state->matchCallEntries[state->numRegistered].isSpecialTrainer = FALSE;
-                state->matchCallEntries[state->numRegistered].mapSec = sub_81CB0C8(j);
+                state->matchCallEntries[state->numRegistered].mapSec = 0;
                 state->numRegistered++;
             }
 
@@ -254,14 +254,6 @@ static u32 sub_81CAD20(s32 taskState)
     }
 
     return LT_FINISH;
-}
-
-bool32 IsRematchEntryRegistered(int rematchIndex)
-{
-    //if (rematchIndex < REMATCH_TABLE_ENTRIES)
-    //    return FlagGet(FLAG_MATCH_CALL_REGISTERED + rematchIndex);
-    //
-    return FALSE;
 }
 
 int sub_81CAE28(void)
@@ -306,77 +298,22 @@ struct PokenavMatchCallEntries *sub_81CAE94(void)
 
 u16 GetMatchCallMapSec(int index)
 {
-    //struct Pokenav3Struct *state = GetSubstructPtr(5);
-    return 0;//state->matchCallEntries[index].mapSec;
-}
-
-bool32 ShouldDrawRematchPokeballIcon(int index)
-{
-    //struct Pokenav3Struct *state = GetSubstructPtr(5);
-    //if (!state->matchCallEntries[index].isSpecialTrainer)
-    //    index = state->matchCallEntries[index].headerId;
-    //else
-    //    index = MatchCall_GetRematchTableIdx(state->matchCallEntries[index].headerId);
-    //
-    //if (index == REMATCH_TABLE_ENTRIES)
-    return FALSE;
-    //
-    //return gSaveBlock1Ptr->trainerRematches[index] != 0;
+    return 0;
 }
 
 int GetMatchCallTrainerPic(int index)
 {
-    //int headerId;
-    //struct Pokenav3Struct *state = GetSubstructPtr(5);
-    //if (!state->matchCallEntries[index].isSpecialTrainer)
-    //{
-    //    index = GetTrainerIdxByRematchIdx(state->matchCallEntries[index].headerId);
-    //    return gTrainers[index].trainerPic;
-    //}
-    //
-    //headerId = state->matchCallEntries[index].headerId;
-    //index = MatchCall_GetRematchTableIdx(headerId);
-    //if (index != REMATCH_TABLE_ENTRIES)
-    //{
-    //    index = GetTrainerIdxByRematchIdx(index);
-    //    return gTrainers[index].trainerPic;
-    //}
-    //
-    //index = MatchCall_GetOverrideFacilityClass(headerId);
-    return 0;//gFacilityClassToPicIndex[index];
+    return 0;
 }
 
 const u8 *GetMatchCallMessageText(int index, u8 *arg1)
 {
-    //struct Pokenav3Struct *state = GetSubstructPtr(5);
-    //*arg1 = 0;
-    //if (!Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType))
-    //    return gText_CallCantBeMadeHere;
-    //
-    //if (!state->matchCallEntries[index].isSpecialTrainer)
-    //    *arg1 = SelectMatchCallMessage(GetTrainerIdxByRematchIdx(state->matchCallEntries[index].headerId), gStringVar4);
-    //else
-    //    MatchCall_GetMessage(state->matchCallEntries[index].headerId, gStringVar4);
-    //
     return 0;
 }
 
 const u8 *GetMatchCallFlavorText(int index, int checkPageEntry)
 {
-    //int rematchId;
-    //struct Pokenav3Struct *state = GetSubstructPtr(5);
-    //if (state->matchCallEntries[index].isSpecialTrainer)
-    //{
-    //    rematchId = MatchCall_GetRematchTableIdx(state->matchCallEntries[index].headerId);
-    //    if (rematchId == REMATCH_TABLE_ENTRIES)
-    //        return MatchCall_GetOverrideFlavorText(state->matchCallEntries[index].headerId, checkPageEntry);
-    //}
-    //else
-    //{
-    //    rematchId = state->matchCallEntries[index].headerId;
-    //}
-    //
-    return 0;//gMatchCallFlavorTexts[rematchId][checkPageEntry];
+    return 0;
 }
 
 u16 GetMatchCallOptionCursorPos(void)
@@ -387,46 +324,12 @@ u16 GetMatchCallOptionCursorPos(void)
 
 u16 GetMatchCallOptionId(int optionId)
 {
-    //struct Pokenav3Struct *state = GetSubstructPtr(5);
-    //if (state->maxOptionId < optionId)
-    //    return MATCH_CALL_OPTION_COUNT;
-    //
-    //return state->matchCallOptions[optionId];
+
 }
 
 void BufferMatchCallNameAndDesc(struct PokenavMatchCallEntries *matchCallEntry, u8 *str)
 {
-    //const u8 *trainerName;
-    //const u8 *className;
-    //if (!matchCallEntry->isSpecialTrainer)
-    //{
-    //    int index = GetTrainerIdxByRematchIdx(matchCallEntry->headerId);
-    //    const struct Trainer *trainer = &gTrainers[index];
-    //    int class = trainer->trainerClass;
-    //    className = gTrainerClassNames[class];
-    //    trainerName = trainer->trainerName;
-    //}
-    //else
-    //{
-    //    MatchCall_GetNameAndDesc(matchCallEntry->headerId, &className, &trainerName);
-    //}
-    //
-    //if (className && trainerName)
-    //{
-    //    u8 *str2 = sub_81DB494(str, 7, className, 69);
-    //    sub_81DB494(str2, 7, trainerName, 51);
-    //}
-    //else
-    //{
-    //    sub_81DB494(str, 7, NULL, 120);
-    //}
-}
 
-u8 sub_81CB0C8(int rematchIndex)
-{
-    int mapGroup = gRematchTable[rematchIndex].mapGroup;
-    int mapNum = gRematchTable[rematchIndex].mapNum;
-    return Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum)->regionMapSectionId;
 }
 
 int GetIndexDeltaOfNextCheckPageDown(int index)
@@ -465,51 +368,10 @@ int GetIndexDeltaOfNextCheckPageUp(int index)
 
 bool32 unref_sub_81CB16C(void)
 {
-    //int i;
-    //
-    //for (i = 0; i < REMATCH_TABLE_ENTRIES; i++)
-    //{
-    //    if (IsRematchEntryRegistered(i) && gSaveBlock1Ptr->trainerRematches[i])
-    //        return TRUE;
-    //}
-    //
-    //for (i = 0; i < MC_HEADER_COUNT; i++)
-    //{
-    //    if (MatchCall_GetEnabled(i))
-    //    {
-    //        int index = MatchCall_GetRematchTableIdx(i);
-    //        if (gSaveBlock1Ptr->trainerRematches[index])
-    //            return TRUE;
-    //    }
-    //}
-    //
     return FALSE;
 }
 
 static bool32 sub_81CB1D0(void)
 {
-    //struct Pokenav3Struct *state = GetSubstructPtr(5);
-    //int selection = GetSelectedMatchCall();
-    //if (!state->matchCallEntries[selection].isSpecialTrainer)
-    //{
-    //    if (GetMatchCallMapSec(selection) == gMapHeader.regionMapSectionId)
-    //    {
-    //        if (!gSaveBlock1Ptr->trainerRematches[state->matchCallEntries[selection].headerId])
-    //            return TRUE;
-    //    }
-    //}
-    //else
-    //{
-    //    if (state->matchCallEntries[selection].headerId == MC_HEADER_WATTSON)
-    //    {
-    //        if (GetMatchCallMapSec(selection) == gMapHeader.regionMapSectionId
-    //         && FlagGet(FLAG_BADGE05_GET) == TRUE)
-    //        {
-    //            if (!FlagGet(FLAG_WATTSON_REMATCH_AVAILABLE))
-    //                return TRUE;
-    //        }
-    //    }
-    //}
-    //
     return FALSE;
 }

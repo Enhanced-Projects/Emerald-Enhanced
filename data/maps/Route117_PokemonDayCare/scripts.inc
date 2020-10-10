@@ -39,7 +39,6 @@ DC_PcTrigger::
 	msgbox DC_PCMSG MSGBOX_DEFAULT
 	setflag FLAG_RYU_DAYCARE_LEAFEVENTPC
 	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
-	clearflag FLAG_HIDE_LANETTES_HOUSE_LANA
 	closemessage
 	release
 	end

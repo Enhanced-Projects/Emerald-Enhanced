@@ -208,7 +208,7 @@ static void InitFactoryChallenge(void)
     for (i = 0; i < 6; i++)
         gSaveBlock2Ptr->frontier.rentalMons[i].monId = 0xFFFF;
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
-        gUnknown_03006298[i] = 0xFFFF;
+        gFrontierNpcTeam[i] = 0xFFFF;
 
     SetDynamicWarp(0, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, -1);
     gTrainerBattleOpponent_A = 0;
@@ -297,7 +297,6 @@ static void GenerateOpponentMons(void)
 {
     int i, j, k;
     u16 species[FRONTIER_PARTY_SIZE];
-    u16 heldItems[FRONTIER_PARTY_SIZE];
     int firstMonId = 0;
     u16 trainerId = 0;
     u32 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
@@ -324,8 +323,6 @@ static void GenerateOpponentMons(void)
     while (i != FRONTIER_PARTY_SIZE)
     {
         u16 monId = GetFactoryMonId(lvlMode, challengeNum, FALSE);
-        if (gFacilityTrainerMons[monId].species == SPECIES_UNOWN)
-            continue;
 
         for (j = 0; j < 6; j++)
         {
@@ -346,17 +343,8 @@ static void GenerateOpponentMons(void)
         if (k != firstMonId + i)
             continue;
 
-        for (k = firstMonId; k < firstMonId + i; k++)
-        {
-            if (heldItems[k] != 0 && heldItems[k] == gBattleFrontierHeldItems[gFacilityTrainerMons[monId].heldItem])
-                break;
-        }
-        if (k != firstMonId + i)
-            continue;
-
         species[i] = gFacilityTrainerMons[monId].species;
-        heldItems[i] = gBattleFrontierHeldItems[gFacilityTrainerMons[monId].heldItem];
-        gUnknown_03006298[i] = monId;
+        gFrontierNpcTeam[i] = monId;
         i++;
     }
 }
@@ -377,11 +365,11 @@ static void SetRentalsToOpponentParty(void)
 
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
-        gSaveBlock2Ptr->frontier.rentalMons[i + 3].monId = gUnknown_03006298[i];
+        gSaveBlock2Ptr->frontier.rentalMons[i + 3].monId = gFrontierNpcTeam[i];
         gSaveBlock2Ptr->frontier.rentalMons[i + 3].ivs = GetBoxMonData(&gEnemyParty[i].box, MON_DATA_ATK_IV, NULL);
         gSaveBlock2Ptr->frontier.rentalMons[i + 3].personality = GetMonData(&gEnemyParty[i], MON_DATA_PERSONALITY, NULL);
         gSaveBlock2Ptr->frontier.rentalMons[i + 3].abilityNum = GetBoxMonData(&gEnemyParty[i].box, MON_DATA_ABILITY_NUM, NULL);
-        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[gFacilityTrainerMons[gUnknown_03006298[i]].heldItem]);
+        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gFacilityTrainerMons[gFrontierNpcTeam[i]].heldItem);
     }
 }
 
@@ -445,7 +433,7 @@ static void SetPlayerAndOpponentParties(void)
             for (k = 0; k < MAX_MON_MOVES; k++)
                 SetMonMoveAvoidReturn(&gPlayerParty[i], gFacilityTrainerMons[monId].moves[k], k);
             SetMonData(&gPlayerParty[i], MON_DATA_FRIENDSHIP, &friendship);
-            SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &gBattleFrontierHeldItems[gFacilityTrainerMons[monId].heldItem]);
+            SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &gFacilityTrainerMons[monId].heldItem);
             SetMonData(&gPlayerParty[i], MON_DATA_ABILITY_NUM, &gSaveBlock2Ptr->frontier.rentalMons[i].abilityNum);
         }
     }
@@ -505,14 +493,12 @@ static void GenerateInitialRentalMons(void)
     u16 currSpecies;
     u16 species[PARTY_SIZE];
     u16 monIds[PARTY_SIZE];
-    u16 heldItems[PARTY_SIZE];
 
     gFacilityTrainers = gBattleFrontierTrainers;
     for (i = 0; i < PARTY_SIZE; i++)
     {
         species[i] = 0;
         monIds[i] = 0;
-        heldItems[i] = 0;
     }
     lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
@@ -567,7 +553,6 @@ static void GenerateInitialRentalMons(void)
 
         gSaveBlock2Ptr->frontier.rentalMons[i].monId = monId;
         species[i] = gFacilityTrainerMons[monId].species;
-        heldItems[i] = gFacilityTrainerMons[monId].heldItem;
         monIds[i] = monId;
         i++;
     }
@@ -584,7 +569,7 @@ static void GetOpponentMostCommonMonType(void)
         typesCount[i] = 0;
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
-        u32 species = gFacilityTrainerMons[gUnknown_03006298[i]].species;
+        u32 species = gFacilityTrainerMons[gFrontierNpcTeam[i]].species;
 
         typesCount[gBaseStats[species].type1]++;
         if (gBaseStats[species].type1 != gBaseStats[species].type2)
@@ -620,7 +605,7 @@ static void GetOpponentBattleStyle(void)
 
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
-        u16 monId = gUnknown_03006298[i];
+        u16 monId = gFrontierNpcTeam[i];
         for (j = 0; j < MAX_MON_MOVES; j++)
         {
             u8 battleStyle = GetMoveBattleStyle(gFacilityTrainerMons[monId].moves[j]);
@@ -699,7 +684,6 @@ void FillFactoryBrainParty(void)
 {
     int i, j, k;
     u16 species[FRONTIER_PARTY_SIZE];
-    u16 heldItems[FRONTIER_PARTY_SIZE];
     u8 friendship;
     int monLevel;
     u8 fixedIV = 31;
@@ -737,23 +721,16 @@ void FillFactoryBrainParty(void)
         if (k != i)
             continue;
 
-        for (k = 0; k < i; k++)
-        {
-            if (heldItems[k] != 0 && heldItems[k] == gFacilityTrainerMons[monId].heldItem)
-                break;
-        }
-        if (k != i)
-            continue;
-
         species[i] = gFacilityTrainerMons[monId].species;
-        heldItems[i] = gFacilityTrainerMons[monId].heldItem;
-        CreateMonWithEVSpreadNatureOTID(&gEnemyParty[i],
-                                             gFacilityTrainerMons[monId].species,
-                                             monLevel,
-                                             gFacilityTrainerMons[monId].nature,
-                                             fixedIV,
-                                             gFacilityTrainerMons[monId].evSpread,
-                                             otId);
+        CreateMonWithEVSpreadNatureOTID(
+            &gEnemyParty[i],
+            gFacilityTrainerMons[monId].species,
+            monLevel,
+            gFacilityTrainerMons[monId].nature,
+            fixedIV,
+            gFacilityTrainerMons[monId].evSpread,
+            otId
+        );
 
         friendship = 0;
         for (k = 0; k < MAX_MON_MOVES; k++)

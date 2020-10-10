@@ -211,17 +211,12 @@ void NewGameInitData(void)
     InitLilycoveLady();
     ResetAllApprenticeData();
     ClearRankingHallRecords();
-    InitMatchCallCounters();
     sub_801AFD8();
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
     ResetContestLinkResults();
     ClearMysteryEventFlags();
     VarSet(VAR_RYU_EXP_MULTIPLIER, 1);
-    FlagSet(FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA);
-    FlagSet(FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE);
-    VarSet(VAR_MT_PYRE_STATE, 10);
-    VarSet(VAR_RYU_BANK_APR, 0);
     FlagSet(FLAG_RYU_LT_RIVAL2);
     FlagSet(FLAG_RYU_LT_RIVAL);
     VarSet(VAR_RYU_JUKEBOX, 999);
@@ -241,7 +236,6 @@ void NewGameInitData(void)
     FlagSet(FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN);
     FlagSet(FLAG_HIDE_103_TEST_TRAINER);
     FlagSet(FLAG_HIDE_GRANITE_CAVE_STEVEN);
-    FlagSet(FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA);
     FlagSet(FLAG_RYU_HIDE_R120_LANA_AND_HIKER);
     FlagSet(FLAG_RYU_HIDE_REL_OBJECTS);
     FlagSet(FLAG_HIDE_AQUA_HIDEOUT_GRUNTS);
@@ -259,7 +253,6 @@ void NewGameInitData(void)
     VarSet(VAR_RYU_GCMS_MOVE2, 0);
     VarSet(VAR_RYU_GCMS_MOVE3, 0);
     VarSet(VAR_RYU_GCMS_MOVE4, 0);
-    VarSet(VAR_RYU_BANK_APR, 0);
     FlagClear(FLAG_RYU_TEMPTP);
     FlagClear(FLAG_RYU_HAS_FOLLOWER);
     VarSet(VAR_WEATHER_INSTITUTE_STATE, 1);
@@ -272,7 +265,6 @@ void NewGameInitData(void)
     FlagSet(FLAG_HIDE_IC_LANA);
     FlagSet(FLAG_HIDE_AT1_LEAF);
     FlagSet(FLAG_HIDE_R110_LANA);
-    FlagSet(FLAG_FORCE_MIRAGE_TOWER_VISIBLE);
     VarSet(VAR_CONTEST_HALL_STATE, 0);
     FlagSet(FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER);
     FlagSet(FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA);
@@ -302,7 +294,6 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_103_MAGMA_MEETING);
     FlagSet(FLAG_RYU_HIDE_114_MAXIE);
     FlagSet(FLAG_RYU_RUSTURF_CLEARING_MAGMA);
-    FlagSet(FLAG_HIDE_LANETTES_HOUSE_LANA);
 }
 
 static void ResetMiniGamesResults(void)
