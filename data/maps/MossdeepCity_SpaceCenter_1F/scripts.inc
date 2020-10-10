@@ -1,5 +1,4 @@
 MossdeepCity_SpaceCenter_1F_MapScripts:: @ 8222F41
-	map_script ON_LOAD , MossdeepCity_SpaceCenter_1F_OnLoad
 	map_script ON_TRANSITION, MossdeepCity_SpaceCenter_1F_OnTransition
 	map_script ON_FRAME, SPC_CheckDevonQuest
 	.byte 0
@@ -100,15 +99,6 @@ MossdeepCity_SpaceCenter_1F_EventScript_MoveStairGuardDown:: @ 8222FB2
 MossdeepCity_SpaceCenter_1F_EventScript_MoveStairGuardRight:: @ 8222FBA
 	setobjectxyperm 9, 14, 2
 	end
-
-MossdeepCity_SpaceCenter_1F_OnLoad: @ 8222FC2
-	compare VAR_MOSSDEEP_CITY_STATE, 2
-	goto_if_le MossdeepCity_SpaceCenter_1F_EventScript_SetMagmaNote
-	end
-
-MossdeepCity_SpaceCenter_1F_EventScript_SetMagmaNote:: @ 8222FCE
-	setmetatile 2, 5, METATILE_Facility_DataPad, 1
-	return
 
 MossdeepCity_SpaceCenter_1F_EventScript_RocketLaunchCounter:: @ 8222FD8
 	lock
@@ -269,12 +259,6 @@ MossdeepCity_SpaceCenter_1F_EventScript_Steven:: @ 82231B9
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
-	end
-
-MossdeepCity_SpaceCenter_1F_EventScript_MagmaNote:: @ 82231CF
-	lockall
-	msgbox MossdeepCity_SpaceCenter_1F_Text_MagmaIntentToStealNotice, MSGBOX_DEFAULT
-	releaseall
 	end
 
 MossdeepCity_SpaceCenter_1F_EventScript_Grunt3:: @ 82231DA
