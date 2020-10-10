@@ -72,8 +72,8 @@
 #define VAR_DEOXYS_ROCK_LEVEL                0x4035
 #define VAR_PC_BOX_TO_SEND_MON               0x4036
 #define VAR_ABNORMAL_WEATHER_LOCATION        0x4037
-#define VAR_ABNORMAL_WEATHER_STEP_COUNTER    0x4038
-#define VAR_SHOULD_END_ABNORMAL_WEATHER      0x4039
+#define VAR_UNUSED_0x4038                    0x4038
+#define VAR_UNUSED_0x4039                    0x4039
 #define VAR_FARAWAY_ISLAND_STEP_COUNTER      0x403A
 #define VAR_REGICE_STEPS_1                   0x403B
 #define VAR_REGICE_STEPS_2                   0x403C
@@ -200,7 +200,7 @@
 #define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     0x40B6 // Leftover from RS, never set
 #define VAR_SLATEPORT_FAN_CLUB_STATE         0x40B7
 #define VAR_RYU_SCRIPT_PTR                   0x40B8
-#define VAR_MT_PYRE_STATE                    0x40B9
+#define VAR_UNUSED_0x40B9                    0x40B9
 #define VAR_NEW_MAUVILLE_STATE               0x40BA
 #define VAR_RYU_SHELLY_STATUS                0x40BB
 #define VAR_BRAVO_TRAINER_BATTLE_TOWER_ON    0x40BC
@@ -260,8 +260,8 @@
 #define VAR_WALLY_CALL_STEP_COUNTER          0x40F2
 #define VAR_SCOTT_FORTREE_CALL_STEP_COUNTER  0x40F3
 #define VAR_ROXANNE_CALL_STEP_COUNTER        0x40F4
-#define VAR_SCOTT_BF_CALL_STEP_COUNTER       0x40F5
-#define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER 0x40F6
+#define VAR_UNUSED_0x40F5                    0x40F5
+#define VAR_UNUSED_0x40F6                    0x40F6
 #define VAR_RYU_GCMS_SPECIES                 0x40F7
 #define VAR_RYU_GCMS_VALUE                   0x40F8
 #define VAR_UNUSED_0x40F9                    0x40F9//now unused, previously bank APR, bank was removed in 5.0.

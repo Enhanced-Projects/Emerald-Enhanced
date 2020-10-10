@@ -184,8 +184,6 @@ AbnormalWeather_EventScript_EndEventAndCleanup_2:: @ 8273D31
 	doweather
 	call AbnormalWeather_EventScript_CleanupMapTiles
 	special DrawWholeMapView
-	setvar VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_NONE
-	setvar VAR_SHOULD_END_ABNORMAL_WEATHER, 0
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
 	fadescreenswapbuffers FADE_FROM_BLACK
 	releaseall

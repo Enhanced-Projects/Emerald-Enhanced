@@ -1,51 +1,10 @@
 MeteorFalls_1F_1R_MapScripts:: @ 822BD2A
-	@map_script ON_LOAD, MeteorFalls_1F_1R_MapScript1_22BD30
 	.byte 0
-	
-MF_DevMovement::
-	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_ne ryu_end
-	lock
-	applymovement OBJ_EVENT_ID_PLAYER, MF_RyuDevMove
-	waitmovement 0
-	release
-	end
-	
-MF_DevonToAquaSwitch::
-	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_ne ryu_end
-	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
-	clearflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
-	setvar VAR_METEOR_FALLS_STATE, 2
-	clearflag FLAG_RYU_DEVON_MISSION1START
-	setflag FLAG_RYU_PLAYER_HELPING_AQUA
-	clearflag FLAG_RYU_PLAYER_HELPING_DEVON
-	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
-	release
-	end
-	
-	
-MF_RyuDevMove:
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_right
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	step_end
 	
 MF_SetStage::
 	goto_if_set FLAG_MET_ARCHIE_METEOR_FALLS, ryu_end
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, MF_SS_Devon
-	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, MF_SS_Devon
 	goto_if_set FLAG_RYU_DEVON_M1C, ryu_end
-	goto_if_set FLAG_RYU_AQUA_MISSION1COMPLETE, ryu_end
 	release
 	end
 	
@@ -69,144 +28,10 @@ MF_Event2start::
 	goto MF_MainEvent
 	
 MF_MainEvent::
-	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, MF_AquaEventNorth
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, MF_DevonEventNorth
 	release
 	end
-	
-MF_AquaEventNorth::
-	compare VAR_TEMP_8, 1
-	goto_if_eq MF_AquaEventSouth
-	special SpawnCameraObject
-	playbgm MUS_MGM0, 0
-	applymovement OBJ_EVENT_ID_CAMERA, MH_cameraPanDown
-    applymovement 5, MF_Magma2Down
-	applymovement 6, MF_Magma1Down
-	msgbox MF_MagmaMsg1 MSGBOX_DEFAULT
-	closemessage
-	applymovement 5, Common_Movement_ExclamationMark
-	applymovement 6, Common_Movement_ExclamationMark
-	waitmovement 5
-	playbgm MUS_AQA_0, 0
-	applymovement 8, MF_AquaRight @(6 right)
-	applymovement 7, MF_AquaRight
-	msgbox MF_Archie1 MSGBOX_DEFAULT
-	applymovement 5, Common_Movement_ExclamationMark
-	applymovement 5, MF_MagmaBackUp
-	waitmovement 5
-	msgbox MF_MagmaRetreat MSGBOX_DEFAULT
-	applymovement 5, MF_FaceOther2
-	applymovement 6, MF_FaceOther
-	applymovement 6, Common_Movement_ExclamationMark
-	waitmovement 5	
-	msgbox MF_MagmaRetreat1 MSGBOX_DEFAULT
-	applymovement OBJ_EVENT_ID_PLAYER, MF_PlayerStepLeft
-	applymovement 5, MF_MagmaEscape
-	applymovement 6, MF_MagmaEscape2
-	waitmovement 6
-	removeobject 5
-	removeobject 6
-	special RemoveCameraObject
-	compare VAR_TEMP_8, 1
-	goto_if_eq MF_continue_aqua_south
-	goto MF_continue_aqua_north
-	
-MF_AquaEventSouth::
-	playbgm MUS_MGM0, 0
-    applymovement 5, MF_Magma2Down
-	applymovement 6, MF_Magma1Down
-	msgbox MF_MagmaMsg1 MSGBOX_DEFAULT
-	closemessage
-	applymovement 5, Common_Movement_ExclamationMark
-	applymovement 6, Common_Movement_ExclamationMark
-	waitmovement 5
-	playbgm MUS_AQA_0, 0
-	applymovement 8, MF_AquaRight @(6 right)
-	applymovement 7, MF_AquaRight
-	msgbox MF_Archie1 MSGBOX_DEFAULT
-	applymovement 5, Common_Movement_ExclamationMark
-	applymovement 5, MF_MagmaBackUp
-	waitmovement 5
-	msgbox MF_MagmaRetreat MSGBOX_DEFAULT
-	applymovement 5, MF_FaceOther2
-	applymovement 6, MF_FaceOther
-	applymovement 6, Common_Movement_ExclamationMark
-	waitmovement 5	
-	msgbox MF_MagmaRetreat1 MSGBOX_DEFAULT
-	applymovement 5, MF_MagmaEscape
-	applymovement 6, MF_MagmaEscape2
-	waitmovement 6
-	removeobject 5
-	removeobject 6
-	compare VAR_TEMP_8, 1
-	goto_if_eq MF_continue_aqua_south
-	goto MF_continue_aqua_north
-	
-MF_continue_aqua_south::
-	applymovement 7, MF_ArchieMeetPlayerSouth
-	waitmovement 7
-	msgbox MF_ArchieRecognizesPlayer MSGBOX_DEFAULT
-	msgbox MF_ArchiKnowsPlayer MSGBOX_DEFAULT
-	msgbox MF_PlayerAqua2 MSGBOX_DEFAULT
-	msgbox MF_AquaGruntWarnsChaseMagma MSGBOX_DEFAULT
-	applymovement 7, MF_ArchieLeavesSouth
-	applymovement 8, MF_AquaLeaves
-	waitmovement 8
-	removeobject 7
-	removeobject 8
-	fadedefaultbgm
-	setvar VAR_METEOR_FALLS_STATE, 1
-	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
-	setflag FLAG_MET_ARCHIE_METEOR_FALLS
-	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
-	setflag FLAG_RYU_AQUA_MISSION1COMPLETE
-	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
-	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
-	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
-	release
-	end
 
-MF_continue_aqua_north::
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-	applymovement 7, MF_ArchieMeetPlayerNorth
-	waitmovement 7
-	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, MH_CamerabackUpAqua
-	msgbox MF_ArchieRecognizesPlayer MSGBOX_DEFAULT
-	msgbox MF_ArchiKnowsPlayer MSGBOX_DEFAULT
-	msgbox MF_PlayerAqua2 MSGBOX_DEFAULT
-	applymovement 7, MF_ArchieLeavesNorth
-	applymovement 8, MF_AquaLeaves
-	waitmovement 8
-	removeobject 7
-	fadedefaultbgm
-	removeobject 8
-	applymovement OBJ_EVENT_ID_CAMERA, MH_CameraResetAquaDone
-	waitmovement 0
-	special RemoveCameraObject
-	setvar VAR_METEOR_FALLS_STATE, 1
-	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
-	setflag FLAG_MET_ARCHIE_METEOR_FALLS
-	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
-	setflag FLAG_RYU_AQUA_MISSION1COMPLETE
-	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
-	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
-	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
-	release
-	end
-	
-MH_CamerabackUpAqua:
-	walk_diag_northeast
-	walk_diag_northeast
-	step_end
-	
-MH_CameraResetAquaDone:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_left
-	step_end
 	
 MH_cameraPanDown:
 	walk_diag_southwest

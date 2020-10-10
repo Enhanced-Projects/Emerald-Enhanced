@@ -79,8 +79,6 @@ static u32 GetCurrentTotalMinutes(struct Time *);
 static u32 GetNumRegisteredNPCs(void);
 static u32 GetActiveMatchCallTrainerId(u32);
 static int GetTrainerMatchCallId(int);
-static u16 GetRematchTrainerLocation(int);
-static bool32 TrainerIsEligibleForRematch(int);
 static void StartMatchCall(void);
 static void ExecuteMatchCall(u8);
 static void DrawMatchCallTextBoxBorder(u32, u32, u32);
@@ -137,120 +135,9 @@ extern const u8 gBirchDexRatingText_AreYouCurious[];
 extern const u8 gBirchDexRatingText_SoYouveSeenAndCaught[];
 extern const u8 gBirchDexRatingText_OnANationwideBasis[];
 
-void InitMatchCallCounters(void)
-{
-    //RtcCalcLocalTime();
-    //gMatchCallState.minutes = GetCurrentTotalMinutes(&gLocalTime) + 10;
-    //gMatchCallState.stepCounter = 0;
-}
-
 static u32 GetCurrentTotalMinutes(struct Time *time)
 {
     return time->days * 1440 + time->hours * 60 + time->minutes;
-}
-
-static bool32 UpdateMatchCallMinutesCounter(void)
-{
-    //int curMinutes;
-    //RtcCalcLocalTime();
-    //curMinutes = GetCurrentTotalMinutes(&gLocalTime);
-    //if (gMatchCallState.minutes > curMinutes || curMinutes - gMatchCallState.minutes > 9)
-    //{
-    //    gMatchCallState.minutes = curMinutes;
-    //    return TRUE;
-    //}
-    //
-    return FALSE;
-}
-
-static bool32 CheckMatchCallChance(void)
-{
-    //int callChance = 1;
-    //if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG) && GetMonAbility(&gPlayerParty[0]) == ABILITY_LIGHTNING_ROD)
-    //    callChance = 2;
-    //
-    //if (Random() % 10 < callChance * 3) 
-    //    return TRUE;
-    //else
-    return FALSE;
-}
-
-static bool32 MapAllowsMatchCall(void)
-{
-    //if (!Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) || gMapHeader.regionMapSectionId == MAPSEC_SAFARI_ZONE)
-    //    return FALSE;
-    //
-    //if (gMapHeader.regionMapSectionId == MAPSEC_SOOTOPOLIS_CITY
-    // && FlagGet(FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA) == TRUE)
-    //    return FALSE;
-    //
-    //if (gMapHeader.regionMapSectionId == MAPSEC_MT_CHIMNEY
-    // && FlagGet(FLAG_MET_ARCHIE_METEOR_FALLS) == TRUE
-    // && FlagGet(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY) == FALSE)
-    //    return FALSE;
-    //
-    return FALSE;
-}
-
-static bool32 UpdateMatchCallStepCounter(void)
-{
-    //if (++gMatchCallState.stepCounter >= 10)
-    //{
-    //    gMatchCallState.stepCounter = 0;
-    //    return TRUE;
-    //}
-    //else
-    //{
-    return FALSE;
-    //}
-}
-
-static bool32 SelectMatchCallTrainer(void)
-{
-    //u32 matchCallId;
-    //u32 numRegistered = GetNumRegisteredNPCs();
-    //if (!numRegistered)
-    //    return FALSE;
-    //
-    //gMatchCallState.trainerId = GetActiveMatchCallTrainerId(Random() % numRegistered);
-    //gMatchCallState.triggeredFromScript = 0;
-    //if (gMatchCallState.trainerId == REMATCH_TABLE_ENTRIES)
-    //    return FALSE;
-    //
-    //matchCallId = GetTrainerMatchCallId(gMatchCallState.trainerId);
-    //if (GetRematchTrainerLocation(matchCallId) == gMapHeader.regionMapSectionId && !TrainerIsEligibleForRematch(matchCallId))
-    //    return FALSE;
-    //
-    return FALSE;
-}
-
-static u32 GetNumRegisteredNPCs(void)
-{
-    //u32 i, count;
-    //for (i = 0, count = 0; i < REMATCH_SPECIAL_TRAINER_START; i++)
-    //{
-    //    if (FlagGet(FLAG_MATCH_CALL_REGISTERED + i))
-    //        count++;
-    //}
-    //
-    return 0;
-}
-
-static u32 GetActiveMatchCallTrainerId(u32 activeMatchCallId)
-{
-    //u32 i;
-    //for (i = 0; i < REMATCH_SPECIAL_TRAINER_START; i++)
-    //{
-    //    if (FlagGet(FLAG_MATCH_CALL_REGISTERED + i))
-    //    {
-    //        if (!activeMatchCallId)
-    //            return gRematchTable[i].trainerIds[0];
-    //
-    //        activeMatchCallId--;
-    //    }
-    //}
-    //
-    return 0;
 }
 
 bool32 TryStartMatchCall(void)
@@ -530,47 +417,6 @@ static void sub_8196694(u8 taskId)
     }
 }
 
-static bool32 TrainerIsEligibleForRematch(int matchCallId)
-{
-    return 0; //gSaveBlock1Ptr->trainerRematches[matchCallId] > 0;
-}
-
-static u16 GetRematchTrainerLocation(int matchCallId)
-{
-    const struct MapHeader *mapHeader = Overworld_GetMapHeaderByGroupAndId(gRematchTable[matchCallId].mapGroup, gRematchTable[matchCallId].mapNum);
-    return mapHeader->regionMapSectionId;
-}
-
-static u32 GetNumRematchTrainersFought(void)
-{
-    //u32 i, count;
-    //for (i = 0, count = 0; i < REMATCH_SPECIAL_TRAINER_START; i++)
-    //{
-    //    if (HasTrainerBeenFought(gRematchTable[i].trainerIds[0]))
-    //        count++;
-    //}
-
-    return 0;
-}
-
-static u32 sub_8196774(int arg0)
-{
-    u32 i, count;
-
-    for (i = 0, count = 0; i < REMATCH_TABLE_ENTRIES; i++)
-    {
-        if (HasTrainerBeenFought(gRematchTable[i].trainerIds[0]))
-        {
-            if (count == arg0)
-                return i;
-
-            count++;
-        }
-    }
-
-    return REMATCH_TABLE_ENTRIES;
-}
-
 bool32 SelectMatchCallMessage(int trainerId, u8 *str)
 {
     u32 matchCallId;
@@ -579,16 +425,10 @@ bool32 SelectMatchCallMessage(int trainerId, u8 *str)
 
     matchCallId = GetTrainerMatchCallId(trainerId);
     gBattleFrontierStreakInfo.facilityId = 0;
-    if (TrainerIsEligibleForRematch(matchCallId)
-     && GetRematchTrainerLocation(matchCallId) == gMapHeader.regionMapSectionId)
-    {
-        matchCallText = GetSameRouteMatchCallText(matchCallId, str);
-    }
-    else if (sub_8196D74(matchCallId))
+    if (sub_8196D74(matchCallId))
     {
         matchCallText = GetDifferentRouteMatchCallText(matchCallId, str);
         retVal = TRUE;
-        UpdateRematchIfDefeated(matchCallId);
     }
     else if (Random() % 3)
     {
@@ -753,7 +593,7 @@ static void PopulateTrainerName(int matchCallId, u8 *destStr)
 
 static void PopulateMapName(int matchCallId, u8 *destStr)
 {
-    GetMapName(destStr, GetRematchTrainerLocation(matchCallId), 0);
+
 }
 
 static u8 GetLandEncounterSlot(void)
@@ -809,15 +649,6 @@ static void PopulateSpeciesFromTrainerLocation(int matchCallId, u8 *destStr)
 
     if (gWildMonHeaders[i].mapGroup != MAP_GROUP(UNDEFINED)) // ??? This check is nonsense.
     {
-        while (gWildMonHeaders[i].mapGroup != MAP_GROUP(UNDEFINED))
-        {
-            if (gWildMonHeaders[i].mapGroup == gRematchTable[matchCallId].mapGroup
-             && gWildMonHeaders[i].mapNum == gRematchTable[matchCallId].mapNum)
-                break;
-
-            i++;
-        }
-
         if (gWildMonHeaders[i].mapGroup != MAP_GROUP(UNDEFINED))
         {
             numSpecies = 0;
@@ -853,7 +684,7 @@ static void PopulateSpeciesFromTrainerParty(int matchCallId, u8 *destStr)
     u8 monId;
     const u8 *speciesName;
 
-    trainerId = GetLastBeatenRematchTrainerId(sMatchCallTrainers[matchCallId].trainerId);
+    trainerId = 0;
     party = gTrainers[trainerId].party;
     monId = Random() % gTrainers[trainerId].partySize;
 
@@ -933,29 +764,6 @@ static int GetNumOwnedBadges(void)
 
 static bool32 sub_8196D74(int matchCallId)
 {
-    int dayCount;
-    u32 otId;
-    u16 easyChatWord;
-    int numRematchTrainersFought;
-    int var0, var1, var2;
-
-    if (GetNumOwnedBadges() < 5)
-        return FALSE;
-
-    dayCount = RtcGetLocalDayCount();
-    otId = GetTrainerId(gSaveBlock2Ptr->playerTrainerId) & 0xFFFF;
-
-    easyChatWord = gSaveBlock1Ptr->easyChatPairs[0].unk2;
-    numRematchTrainersFought = GetNumRematchTrainersFought();
-    var0 = (numRematchTrainersFought * 13) / 10;
-    var1 = ((dayCount ^ easyChatWord) + (easyChatWord ^ GetGameStat(GAME_STAT_TRAINER_BATTLES))) ^ otId;
-    var2 = var1 % var0;
-    if (var2 < numRematchTrainersFought)
-    {
-        if (sub_8196774(var2) == matchCallId)
-            return TRUE;
-    }
-
     return FALSE;
 }
 

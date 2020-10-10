@@ -259,13 +259,6 @@ EWRAM_DATA struct MirageTowerPulseBlend *sMirageTowerPulseBlend = NULL;
 
 static u16 gUnknown_030012A8[8];
 
-bool8 IsMirageTowerVisible(void)
-{
-    if (!(gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE111) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE111)))
-        return FALSE;
-    return FlagGet(FLAG_MIRAGE_TOWER_VISIBLE);
-}
-
 static void UpdateMirageTowerPulseBlend(u8 taskId)
 {
     UpdatePulseBlend(&sMirageTowerPulseBlend->pulseBlend);
@@ -285,8 +278,7 @@ void TryStartMirageTowerPulseBlendEffect(void)
     }
 
     if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE111)
-     || gSaveBlock1Ptr->location.mapNum != MAP_NUM(ROUTE111)
-     || !FlagGet(FLAG_MIRAGE_TOWER_VISIBLE))
+     || gSaveBlock1Ptr->location.mapNum != MAP_NUM(ROUTE111))
         return;
 
     sMirageTowerPulseBlend = AllocZeroed(sizeof(*sMirageTowerPulseBlend));
@@ -300,7 +292,6 @@ void ClearMirageTowerPulseBlendEffect(void)
 {
     if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE111)
      || gSaveBlock1Ptr->location.mapNum   != MAP_NUM(ROUTE111)
-     || !FlagGet(FLAG_MIRAGE_TOWER_VISIBLE)
      || sMirageTowerPulseBlend == NULL)
         return;
 
@@ -314,28 +305,8 @@ void ClearMirageTowerPulseBlendEffect(void)
 
 void SetMirageTowerVisibility(void)
 {
-    u16 rand;
-    bool8 visible;
-
-    if (VarGet(VAR_MIRAGE_TOWER_STATE))
-    {
-        FlagClear(FLAG_MIRAGE_TOWER_VISIBLE);
-        return;
-    }
-
-    rand = Random();
-    visible = rand & 1;
-    if (FlagGet(FLAG_FORCE_MIRAGE_TOWER_VISIBLE) == TRUE)
-        visible = TRUE;
-
-    if (visible)
-    {
-        FlagSet(FLAG_MIRAGE_TOWER_VISIBLE);
-        TryStartMirageTowerPulseBlendEffect();
-        return;
-    }
-
-    FlagClear(FLAG_MIRAGE_TOWER_VISIBLE);
+    TryStartMirageTowerPulseBlendEffect();
+    return;
 }
 
 void StartPlayerDescendMirageTower(void)

@@ -7,8 +7,6 @@ extern const u8 EventScript_271354[];
 extern const u8 EventScript_DoNoIntroTrainerBattle[];
 extern const u8 EventScript_TryDoDoubleTrainerBattle[];
 extern const u8 EventScript_TryDoNormalTrainerBattle[];
-extern const u8 EventScript_TryDoDoubleRematchBattle[];
-extern const u8 EventScript_TryDoRematchBattle[];
 
 extern const u8 BerryTreeScript[];
 
@@ -587,7 +585,6 @@ extern u8 BattleFrontier_OutsideEast_EventScript_WaterSudowoodo[];
 
 // overworld
 extern const u8 EventScript_WhiteOut[];
-extern const u8 EventScript_ResetMrBriney[];
 extern const u8 EventScript_DoLinkRoomExit[];
 extern const u8 CableClub_EventScript_TooBusyToNotice[];
 extern const u8 CableClub_EventScript_ReadTrainerCard[];

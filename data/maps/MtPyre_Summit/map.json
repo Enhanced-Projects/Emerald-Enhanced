@@ -1,319 +1,109 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": false,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "flag": "FLAG_HIDDEN_ITEM_MT_PYRE_SUMMIT_ZINC",
-            "item": "ITEM_ZINC",
-            "type": "hidden_item",
-            "x": 9,
-            "y": 25
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_MT_PYRE_SUMMIT_RARE_CANDY",
-            "item": "ITEM_RARE_CANDY",
-            "type": "hidden_item",
-            "x": 37,
-            "y": 7
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "MPS_Spiritomb",
-            "type": "sign",
-            "x": 12,
-            "y": 4
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-        {
-            "elevation": 3,
-            "script": "MtPyre_Summit_EventScript_TeamAquaTrigger0",
-            "type": "trigger",
-            "var": "VAR_MT_PYRE_STATE",
-            "var_value": "0",
-            "x": 18,
-            "y": 6
-        },
-        {
-            "elevation": 3,
-            "script": "MtPyre_Summit_EventScript_TeamAquaTrigger1",
-            "type": "trigger",
-            "var": "VAR_MT_PYRE_STATE",
-            "var_value": "0",
-            "x": 18,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "script": "MtPyre_Summit_EventScript_TeamAquaTrigger2",
-            "type": "trigger",
-            "var": "VAR_MT_PYRE_STATE",
-            "var_value": "0",
-            "x": 18,
-            "y": 5
-        },
-        {
-            "elevation": 3,
-            "script": "MtPyre_Summit_EventScript_ArchieMaxieTrigger0",
-            "type": "trigger",
-            "var": "VAR_MT_PYRE_STATE",
-            "var_value": "2",
-            "x": 22,
-            "y": 10
-        },
-        {
-            "elevation": 3,
-            "script": "MtPyre_Summit_EventScript_ArchieMaxieTrigger1",
-            "type": "trigger",
-            "var": "VAR_MT_PYRE_STATE",
-            "var_value": "2",
-            "x": 23,
-            "y": 10
-        },
-        {
-            "elevation": 3,
-            "script": "MtPyre_Summit_EventScript_ArchieMaxieTrigger2",
-            "type": "trigger",
-            "var": "VAR_MT_PYRE_STATE",
-            "var_value": "2",
-            "x": 24,
-            "y": 10
-        },
-        {
-            "elevation": 0,
-            "script": "MP_Landmark",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 23,
-            "y": 29
-        },
-        {
-            "elevation": 0,
-            "script": "MP_Landmark",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 22,
-            "y": 29
-        },
-        {
-            "elevation": 0,
-            "script": "MP_Landmark",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 24,
-            "y": 29
-        }
-    ],
-    "id": "MAP_MT_PYRE_SUMMIT",
-    "layout": "LAYOUT_MT_PYRE_SUMMIT",
-    "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_MACHUPI",
-    "name": "MtPyre_Summit",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "MtPyre_Summit_EventScript_OldMan",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 22,
-            "y": 5
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE",
-            "graphics_id": "OBJ_EVENT_GFX_ARCHIE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "0x0",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 23,
-            "y": 6
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "MtPyre_Summit_EventScript_OldLady",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 23,
-            "y": 5
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA",
-            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "MtPyre_Summit_EventScript_Grunt1",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 21,
-            "y": 15
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA",
-            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "MtPyre_Summit_EventScript_Grunt2",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 25,
-            "y": 18
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA",
-            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "MtPyre_Summit_EventScript_Grunt3",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 21,
-            "y": 11
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA",
-            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "MtPyre_Summit_EventScript_Grunt4",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 25,
-            "y": 11
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE",
-            "graphics_id": "OBJ_EVENT_GFX_MAXIE",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "0x0",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 23,
-            "y": 9
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
-            "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "MP_Courtney",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 25,
-            "y": 28
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL",
-            "graphics_id": "OBJ_EVENT_GFX_MAXIE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "MP_Maxie",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 21,
-            "y": 28
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA",
-            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 24,
-            "y": 6
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA",
-            "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 22,
-            "y": 6
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_RYU_OBTAINED_GENGARITE",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "MP_Gengarite",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 9,
-            "y": 4
-        }
-    ],
-    "region_map_section": "MAPSEC_MT_PYRE",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_MT_PYRE_EXTERIOR",
-            "dest_warp_id": 1,
-            "elevation": 3,
-            "x": 22,
-            "y": 31
-        },
-        {
-            "dest_map": "MAP_MT_PYRE_EXTERIOR",
-            "dest_warp_id": 1,
-            "elevation": 3,
-            "x": 23,
-            "y": 31
-        },
-        {
-            "dest_map": "MAP_MT_PYRE_EXTERIOR",
-            "dest_warp_id": 1,
-            "elevation": 3,
-            "x": 24,
-            "y": 31
-        }
-    ],
-    "weather": "WEATHER_FOG_HORIZONTAL"
+  "id": "MAP_MT_PYRE_SUMMIT",
+  "name": "MtPyre_Summit",
+  "layout": "LAYOUT_MT_PYRE_SUMMIT",
+  "music": "MUS_MACHUPI",
+  "region_map_section": "MAPSEC_MT_PYRE",
+  "requires_flash": false,
+  "weather": "WEATHER_FOG_HORIZONTAL",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "x": 22,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MtPyre_Summit_EventScript_OldMan",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
+      "x": 23,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MtPyre_Summit_EventScript_OldLady",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 9,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MP_Gengarite",
+      "flag": "FLAG_RYU_OBTAINED_GENGARITE"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 22,
+      "y": 31,
+      "elevation": 3,
+      "dest_map": "MAP_MT_PYRE_EXTERIOR",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 23,
+      "y": 31,
+      "elevation": 3,
+      "dest_map": "MAP_MT_PYRE_EXTERIOR",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 24,
+      "y": 31,
+      "elevation": 3,
+      "dest_map": "MAP_MT_PYRE_EXTERIOR",
+      "dest_warp_id": 1
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 9,
+      "y": 25,
+      "elevation": 0,
+      "item": "ITEM_ZINC",
+      "flag": "FLAG_HIDDEN_ITEM_MT_PYRE_SUMMIT_ZINC"
+    },
+    {
+      "type": "hidden_item",
+      "x": 37,
+      "y": 7,
+      "elevation": 3,
+      "item": "ITEM_RARE_CANDY",
+      "flag": "FLAG_HIDDEN_ITEM_MT_PYRE_SUMMIT_RARE_CANDY"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MPS_Spiritomb"
+    }
+  ]
 }

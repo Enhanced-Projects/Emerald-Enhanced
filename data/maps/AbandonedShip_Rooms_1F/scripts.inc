@@ -12,9 +12,6 @@ AbandonedShip_Rooms_1F_EventScript_Demetrius:: @ 8237A9C
 
 AbandonedShip_Rooms_1F_EventScript_Thalia:: @ 8237AB3
 	trainerbattle_single TRAINER_THALIA_1, AbandonedShip_Rooms_1F_Text_ThaliaIntro, AbandonedShip_Rooms_1F_Text_ThaliaDefeat, AbandonedShip_Rooms_1F_EventScript_RegisterThalia
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq AbandonedShip_Rooms_1F_EventScript_ThaliaRematch
 	msgbox AbandonedShip_Rooms_1F_Text_ThaliaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -25,11 +22,6 @@ AbandonedShip_Rooms_1F_EventScript_RegisterThalia:: @ 8237ADF
 	msgbox AbandonedShip_Rooms_1F_Text_ThaliaRegister, MSGBOX_DEFAULT
 	@nop Trainer_THALIA_1
 	release
-	end
-
-AbandonedShip_Rooms_1F_EventScript_ThaliaRematch:: @ 8237AFE
-	trainerbattle_rematch TRAINER_THALIA_1, AbandonedShip_Rooms_1F_Text_ThaliaRematchIntro, AbandonedShip_Rooms_1F_Text_ThaliaRematchDefeat
-	msgbox AbandonedShip_Rooms_1F_Text_ThaliaPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 AbandonedShip_Rooms_1F_Text_TakingALookAround: @ 8237B15
@@ -53,17 +45,6 @@ AbandonedShip_Rooms_1F_Text_ThaliaPostBattle: @ 8237BDB
 AbandonedShip_Rooms_1F_Text_ThaliaRegister: @ 8237C2A
 	.string "You're such a tough Trainer!\n"
 	.string "Let me register you as a memento!$"
-
-AbandonedShip_Rooms_1F_Text_ThaliaRematchIntro: @ 8237C69
-	.string "What on earth would compel you to\n"
-	.string "come back? You must really be curious!$"
-
-AbandonedShip_Rooms_1F_Text_ThaliaRematchDefeat: @ 8237CB2
-	.string "Aren't you too strong?$"
-
-AbandonedShip_Rooms_1F_Text_ThaliaPostRematch: @ 8237CC9
-	.string "I'm sure that man's up to something!\n"
-	.string "He just acts so suspiciously!$"
 
 AbandonedShip_Rooms_1F_Text_DemetriusIntro: @ 8237D0C
 	.string "Waaah!\n"

@@ -914,23 +914,6 @@ static void TryDrawRematchPokeballIcon(u16 windowId, u32 rematchId, u32 arg2)
     u8 bg = GetWindowAttribute(windowId, WINDOW_BG);
     u16 *tilemap = GetBgTilemapBuffer(bg);
     tilemap += arg2 * 0x40 + 0x1D;
-    if (ShouldDrawRematchPokeballIcon(rematchId))
-    {
-        tilemap[0] = 0x5000;
-        tilemap[0x20] = 0x5001;
-    }
-    else
-    {
-        tilemap[0] = 0x5002;
-        tilemap[0x20] = 0x5002;
-    }
-}
-
-void ClearRematchPokeballIcon(u16 windowId, u32 arg0)
-{
-    u8 bg = GetWindowAttribute(windowId, WINDOW_BG);
-    u16 *tilemap = GetBgTilemapBuffer(bg);
-    tilemap += arg0 * 0x40 + 0x1D;
     tilemap[0] = 0x5002;
     tilemap[0x20] = 0x5002;
 }

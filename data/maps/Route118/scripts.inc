@@ -1,29 +1,10 @@
 Route118_MapScripts:: @ 81F3DBC
 	map_script ON_TRANSITION, Route118_OnTransition
-	map_script ON_LOAD , Route118_OnLoad
-	map_script ON_FRAME, Route118_OnFrame
 	.byte 0
 
 Route118_OnTransition: @ 81F3DCC
 	call GabbyAndTy_EventScript_UpdateLocation
-	compare VAR_SHOULD_END_ABNORMAL_WEATHER, 1
-	call_if_eq AbnormalWeather_EventScript_HideMapNamePopup
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_118_EAST
-	call_if_eq AbnormalWeather_StartGroudonWeather
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_118_WEST
-	call_if_eq AbnormalWeather_StartGroudonWeather
 	end
-
-Route118_OnLoad: @ 81F3DF3
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_118_EAST
-	call_if_eq AbnormalWeather_EventScript_PlaceTilesRoute118East
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_118_WEST
-	call_if_eq AbnormalWeather_EventScript_PlaceTilesRoute118West
-	end
-
-Route118_OnFrame: @ 81F3E0A
-	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
-	.2byte 0
 
 Route118_EventScript_GoodRodFisherman:: @ 81F3E14
 	lock
@@ -187,9 +168,6 @@ Route118_Movement_StevenExit2: @ 81F3F7E
 
 Route118_EventScript_Rose:: @ 81F3F87
 	trainerbattle_single TRAINER_ROSE_1, Route118_Text_RoseIntro, Route118_Text_RoseDefeat, Route118_EventScript_RegisterRose
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route118_EventScript_RematchRose
 	msgbox Route118_Text_RosePostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -219,9 +197,6 @@ Route118_EventScript_Wade:: @ 81F4000
 
 Route118_EventScript_Dalton:: @ 81F4017
 	trainerbattle_single TRAINER_DALTON_1, Route118_Text_DaltonIntro, Route118_Text_DaltonDefeat, Route118_EventScript_RegisterDalton
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route118_EventScript_RematchDalton
 	msgbox Route118_Text_DaltonPostBattle, MSGBOX_DEFAULT
 	release
 	end

@@ -1,34 +1,15 @@
 Route105_MapScripts:: @ 81EE1DB
 	map_script ON_LOAD , Route105_OnLoad
-	map_script ON_TRANSITION, Route105_OnTransition
-	map_script ON_FRAME, Route105_OnFrame
 	.byte 0
 
 Route105_OnLoad: @ 81EE1EB
 	call_if_unset FLAG_REGI_DOORS_OPENED, Route105_CloseRegiEntrance
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_105_NORTH
-	call_if_eq AbnormalWeather_EventScript_PlaceTilesRoute105North
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_105_SOUTH
-	call_if_eq AbnormalWeather_EventScript_PlaceTilesRoute105South
 	end
 
 Route105_CloseRegiEntrance:: @ 81EE20B
 	setmetatile 9, 19, METATILE_General_RockWall_RockBase, 1
 	setmetatile 9, 20, METATILE_General_RockWall_SandBase, 1
 	return
-
-Route105_OnTransition: @ 81EE21E
-	compare VAR_SHOULD_END_ABNORMAL_WEATHER, 1
-	call_if_eq AbnormalWeather_EventScript_HideMapNamePopup
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_105_NORTH
-	call_if_eq AbnormalWeather_StartKyogreWeather
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_105_SOUTH
-	call_if_eq AbnormalWeather_StartKyogreWeather
-	end
-
-Route105_OnFrame: @ 81EE240
-	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
-	.2byte 0
 
 Route105_EventScript_Foster:: @ 81EE24A
 	trainerbattle_single TRAINER_FOSTER, Route105_Text_FosterIntro, Route105_Text_FosterDefeated
@@ -62,9 +43,6 @@ Route105_EventScript_Josue:: @ 81EE2BD
 
 Route105_EventScript_Andres:: @ 81EE2D4
 	trainerbattle_single TRAINER_ANDRES_1, Route105_Text_AndresIntro, Route105_Text_AndresDefeated, Route105_EventScript_AndresRegisterMatchCallAfterBattle
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route105_EventScript_AndresRematch
 	msgbox Route105_Text_AndresPostBattle, MSGBOX_DEFAULT
 	release
 	end

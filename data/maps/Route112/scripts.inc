@@ -3,7 +3,6 @@ Route112_MapScripts:: @ 81F1DA8
 	.byte 0
 
 Route112_OnTransition: @ 81F1DAE
-	setflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 0
 	end
 
@@ -67,9 +66,6 @@ Route112_EventScript_Brice:: @ 81F1E6A
 
 Route112_EventScript_Trent:: @ 81F1E81
 	trainerbattle_single TRAINER_TRENT_1, Route112_Text_TrentIntro, Route112_Text_TrentDefeat, Route112_EventScript_RegisterTrent
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route112_EventScript_RematchTrent
 	msgbox Route112_Text_TrentPostBattle, MSGBOX_DEFAULT
 	release
 	end

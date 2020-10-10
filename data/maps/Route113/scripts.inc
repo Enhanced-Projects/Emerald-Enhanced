@@ -9,7 +9,6 @@ Route113_OnResume: @ 81F215E
 	end
 
 Route113_OnTransition: @ 81F2161
-	setflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
 	call Route113_EventScript_CheckSetAshWeather
 	end
 	
@@ -74,9 +73,6 @@ Route113_EventScript_Dillon:: @ 81F21D7
 
 Route113_EventScript_Madeline:: @ 81F21EE
 	trainerbattle_single TRAINER_MADELINE_1, Route113_Text_MadelineIntro, Route113_Text_MadelineDefeat, Route113_EventScript_RegisterMadeline
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route113_EventScript_RematchMadeline
 	msgbox Route113_Text_MadelinePostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -96,9 +92,6 @@ Route113_EventScript_RematchMadeline:: @ 81F2239
 
 Route113_EventScript_Lao:: @ 81F2250
 	trainerbattle_single TRAINER_LAO_1, Route113_Text_LaoIntro, Route113_Text_LaoDefeat, Route113_EventScript_RegisterLao
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route113_EventScript_RematchLao
 	msgbox Route113_Text_LaoPostBattle, MSGBOX_DEFAULT
 	release
 	end

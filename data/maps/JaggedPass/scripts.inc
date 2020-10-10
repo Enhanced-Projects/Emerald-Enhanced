@@ -42,8 +42,6 @@ JaggedPass_EventScript_ConcealHideoutEntrance:: @ 82306A8
 	end
 
 JaggedPass_EventScript_OpenMagmaHideout:: @ 82306BB
-	compare VAR_RYU_MAGMA, 300
-	call_if_lt JP_CheckifAquaMission3
 	lockall
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
@@ -68,10 +66,6 @@ JaggedPass_EventScript_OpenMagmaHideout:: @ 82306BB
 	waitse
 	releaseall
 	end
-
-JP_CheckifAquaMission3::
-	goto_if_unset FLAG_RYU_STARTING_M3, ryu_end
-	return
 
 JaggedPass_EventScript_MagmaHideoutGuard:: @ 8230718
 	lockall
@@ -114,9 +108,6 @@ JaggedPass_EventScript_Eric:: @ 8230785
 
 JaggedPass_EventScript_Diana:: @ 823079C
 	trainerbattle_single TRAINER_DIANA_1, JaggedPass_Text_DianaIntro, JaggedPass_Text_DianaDefeat, JaggedPass_EventScript_RegisterDiana
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, 1
-	goto_if_eq JaggedPass_EventScript_DianaRematch
 	msgbox JaggedPass_Text_DianaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -135,9 +126,6 @@ JaggedPass_EventScript_DianaRematch:: @ 82307E4
 
 JaggedPass_EventScript_Ethan:: @ 82307FB
 	trainerbattle_single TRAINER_ETHAN_1, JaggedPass_Text_EthanIntro, JaggedPass_Text_EthanDefeat, JaggedPass_EventScript_RegisterEthan
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, 1
-	goto_if_eq JaggedPass_EventScript_EthanRematch
 	msgbox JaggedPass_Text_EthanPostBattle, MSGBOX_DEFAULT
 	release
 	end

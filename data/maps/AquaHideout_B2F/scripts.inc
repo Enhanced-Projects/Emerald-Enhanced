@@ -1,14 +1,5 @@
 AquaHideout_B2F_MapScripts:: @ 8233DCF
-	map_script ON_TRANSITION, AquaHideout_B2F_OnTransition
 	.byte 0
-
-AquaHideout_B2F_OnTransition: @ 8233DD5
-	call_if_set FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, AquaHideout_B2F_EventScript_PreventMattNoticing
-	end
-
-AquaHideout_B2F_EventScript_PreventMattNoticing:: @ 8233DDF
-	setvar VAR_TEMP_1, 1
-	return
 
 AquaHideout_B2F_EventScript_MattNoticePlayer:: @ 8233DE5
 	lockall
@@ -253,7 +244,6 @@ KyogreGuardianLeaves:
 	step_end
 
 AHQ_KyogreTrigger::
-	goto_if_unset FLAG_RYU_AQUA_LINE_DONE, ryu_end
 	goto RyuLegendary_Kyogre
 
 RyuLegendary_Kyogre::
@@ -284,33 +274,9 @@ AHQ_KYOGRE_STARING:
 	.string "Kyogre is staring intently at you.$"
 
 AquaHideout_B2F_EventScript_SubmarineEscape:: @ 8233E25
-	setvar VAR_0x8008, 1  @ Matt object event id
-	setvar VAR_0x8009, 4  @ Submarine object event id
-	applymovement VAR_0x8008, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
-	delay 20
-	applymovement VAR_0x8008, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox AquaHideout_B2F_Text_OurBossGotThroughHisPreparations, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_0x8008, Common_Movement_WalkInPlaceFastestLeft
-	applymovement VAR_0x8009, AquaHideout_B2F_Movement_SumbarineDepartLeft
-	waitmovement 0
-	removeobject VAR_0x8009
-	delay 20
-	applymovement VAR_0x8008, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox AquaHideout_B2F_Text_MattPostBattle, MSGBOX_DEFAULT
-	setflag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE
-	setflag FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS
-	release
 	end
 
 AquaHideout_B2F_Movement_SumbarineDepartLeft: @ 8233E80
-	walk_left
-	walk_left
-	walk_left
-	walk_left
 	step_end
 
 AquaHideout_B2F_EventScript_Grunt4:: @ 8233E8A

@@ -1,28 +1,6 @@
 Route115_MapScripts:: @ 81F2920
-	map_script ON_LOAD , Route115_OnLoad
-	map_script ON_TRANSITION, Route115_OnTransition
-	map_script ON_FRAME, Route115_OnFrame
 	.byte 0
 
-Route115_OnLoad: @ 81F2930
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_115_WEST
-	call_if_eq AbnormalWeather_EventScript_PlaceTilesRoute115West
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_115_EAST
-	call_if_eq AbnormalWeather_EventScript_PlaceTilesRoute115East
-	end
-
-Route115_OnTransition: @ 81F2947
-	compare VAR_SHOULD_END_ABNORMAL_WEATHER, 1
-	call_if_eq AbnormalWeather_EventScript_HideMapNamePopup
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_115_WEST
-	call_if_eq AbnormalWeather_StartGroudonWeather
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_115_EAST
-	call_if_eq AbnormalWeather_StartGroudonWeather
-	end
-
-Route115_OnFrame: @ 81F2969
-	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
-	.2byte 0
 
 Route115_EventScript_Woman:: @ 81F2973
 	msgbox Route115_Text_NeverKnowWhenCavePokemonWillAppear, MSGBOX_NPC
@@ -38,9 +16,6 @@ Route115_EventScript_MeteorFallsSign:: @ 81F2985
 
 Route115_EventScript_Timothy:: @ 81F298E
 	trainerbattle_single TRAINER_TIMOTHY_1, Route115_Text_TimothyIntro, Route115_Text_TimothyDefeat, Route115_EventScript_RegisterTimothy
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route115_EventScript_RematchTimothy
 	msgbox Route115_Text_TimothyPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -65,9 +40,6 @@ Route115_EventScript_Koichi:: @ 81F29F0
 
 Route115_EventScript_Nob:: @ 81F2A07
 	trainerbattle_single TRAINER_NOB_1, Route115_Text_NobIntro, Route115_Text_NobDefeat, Route115_EventScript_RegisterNob
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route115_EventScript_RematchNob
 	msgbox Route115_Text_NobPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -87,9 +59,6 @@ Route115_EventScript_RematchNob:: @ 81F2A52
 
 Route115_EventScript_Cyndy:: @ 81F2A69
 	trainerbattle_single TRAINER_CYNDY_1, Route115_Text_CyndyIntro, Route115_Text_CyndyDefeat, Route115_EventScript_RegisterCyndy
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route115_EventScript_RematchCyndy
 	msgbox Route115_Text_CyndyPostBattle, MSGBOX_DEFAULT
 	release
 	end

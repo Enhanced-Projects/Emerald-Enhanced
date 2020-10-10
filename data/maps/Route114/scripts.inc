@@ -1,28 +1,5 @@
 Route114_MapScripts:: @ 81F252F
-	map_script ON_TRANSITION, Route114_OnTransition
-	map_script ON_LOAD , Route114_OnLoad
-	map_script ON_FRAME, Route114_OnFrame
 	.byte 0
-
-Route114_OnTransition: @ 81F253F
-	compare VAR_SHOULD_END_ABNORMAL_WEATHER, 1
-	call_if_eq AbnormalWeather_EventScript_HideMapNamePopup
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_NORTH
-	call_if_eq AbnormalWeather_StartGroudonWeather
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_SOUTH
-	call_if_eq AbnormalWeather_StartGroudonWeather
-	end
-
-Route114_OnLoad: @ 81F2561
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_NORTH
-	call_if_eq AbnormalWeather_EventScript_PlaceTilesRoute114North
-	compare VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_SOUTH
-	call_if_eq AbnormalWeather_EventScript_PlaceTilesRoute114South
-	end
-
-Route114_OnFrame: @ 81F2578
-	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
-	.2byte 0
 
 Route114_EventScript_Man:: @ 81F2582
 	lock
@@ -108,9 +85,6 @@ Route114_EventScript_Nancy:: @ 81F2685
 
 Route114_EventScript_Steve:: @ 81F269C
 	trainerbattle_single TRAINER_STEVE_1, Route114_Text_SteveIntro, Route114_Text_SteveDefeat, Route114_EventScript_RegisterSteve
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route114_EventScript_RematchSteve
 	msgbox Route114_Text_StevePostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -130,9 +104,6 @@ Route114_EventScript_RematchSteve:: @ 81F26E7
 
 Route114_EventScript_Bernie:: @ 81F26FE
 	trainerbattle_single TRAINER_BERNIE_1, Route114_Text_BernieIntro, Route114_Text_BernieDefeat, Route114_EventScript_RegisterBernie
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route114_EventScript_RematchBernie
 	msgbox Route114_Text_BerniePostBattle, MSGBOX_DEFAULT
 	release
 	end
