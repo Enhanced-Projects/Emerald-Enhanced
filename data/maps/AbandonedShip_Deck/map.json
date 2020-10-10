@@ -1,76 +1,77 @@
 {
-    "allow_cycling": true,
-    "allow_escaping": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "AS_Dev_skip",
-            "type": "sign",
-            "x": 7,
-            "y": 5
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-        {
-            "elevation": 0,
-            "script": "AS_CheckLana",
-            "type": "trigger",
-            "var": "VAR_RYU_DS_LANA_STAGE",
-            "var_value": "20",
-            "x": 12,
-            "y": 6
-        }
-    ],
-    "id": "MAP_ABANDONED_SHIP_DECK",
-    "layout": "LAYOUT_ABANDONED_SHIP_DECK",
-    "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN02",
-    "name": "AbandonedShip_Deck",
-    "object_events": [
-    ],
-    "region_map_section": "MAPSEC_ABANDONED_SHIP",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_ROUTE108",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 13,
-            "y": 15
-        },
-        {
-            "dest_map": "MAP_ROUTE108",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 14,
-            "y": 15
-        },
-        {
-            "dest_map": "MAP_ABANDONED_SHIP_CORRIDORS_1F",
-            "dest_warp_id": 1,
-            "elevation": 3,
-            "x": 13,
-            "y": 9
-        },
-        {
-            "dest_map": "MAP_ABANDONED_SHIP_CORRIDORS_1F",
-            "dest_warp_id": 2,
-            "elevation": 3,
-            "x": 8,
-            "y": 9
-        },
-        {
-            "dest_map": "MAP_ABANDONED_SHIP_CAPTAINS_OFFICE",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 12,
-            "y": 5
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_ABANDONED_SHIP_DECK",
+  "name": "AbandonedShip_Deck",
+  "layout": "LAYOUT_ABANDONED_SHIP_DECK",
+  "music": "MUS_DAN02",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 13,
+      "y": 15,
+      "elevation": 3,
+      "dest_map": "MAP_ROUTE108",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 14,
+      "y": 15,
+      "elevation": 3,
+      "dest_map": "MAP_ROUTE108",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 13,
+      "y": 9,
+      "elevation": 3,
+      "dest_map": "MAP_ABANDONED_SHIP_CORRIDORS_1F",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 8,
+      "y": 9,
+      "elevation": 3,
+      "dest_map": "MAP_ABANDONED_SHIP_CORRIDORS_1F",
+      "dest_warp_id": 2
+    },
+    {
+      "x": 12,
+      "y": 5,
+      "elevation": 3,
+      "dest_map": "MAP_ABANDONED_SHIP_CAPTAINS_OFFICE",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_RYU_DS_LANA_STAGE",
+      "var_value": "20",
+      "script": "AS_CheckLana"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AS_Dev_skip"
+    }
+  ]
 }

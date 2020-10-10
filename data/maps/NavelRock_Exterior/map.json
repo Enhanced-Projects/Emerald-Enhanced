@@ -26,7 +26,7 @@
     },
     {
       "x": 10,
-      "y": 10,
+      "y": 9,
       "elevation": 0,
       "dest_map": "MAP_NAVEL_ROCK_ENTRANCE",
       "dest_warp_id": 1
