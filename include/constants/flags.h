@@ -113,12 +113,12 @@
 #define FLAG_MET_TEAM_AQUA_HARBOR            0x61
 #define FLAG_TV_EXPLAINED                    0x62
 #define FLAG_MAUVILLE_GYM_BARRIERS_STATE     0x63
-#define FLAG_MOSSDEEP_GYM_SWITCH_1           0x64
-#define FLAG_MOSSDEEP_GYM_SWITCH_2           0x65
-#define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66
-#define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67
+#define FLAG_UNUSED_0x64                     0x64
+#define FLAG_UNUSED_0x65                     0x65
+#define FLAG_UNUSED_0x66                     0x66
+#define FLAG_UNUSED_0x67                     0x67
 
-#define FLAG_UNUSED_0x68                    0x68
+#define FLAG_UNUSED_0x68                     0x68
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_TM54                   0x6A
@@ -775,7 +775,7 @@
 #define FLAG_HIDE_PLAYERS_HOUSE_DAD                                 0x2DE
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING      0x2DF
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_SIBLING         0x2E0
-#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE             0x2E1
+#define FLAG_UNUSED_0x2E1                                           0x2E1
 #define FLAG_HIDE_ROUTE_104_MR_BRINEY                               0x2E2 // EE-Unused?
 #define FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY                           0x2E3 // EE-Unused?
 #define FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN                            0x2E4 // EE-Unused?
@@ -953,7 +953,7 @@
 #define FLAG_HIDE_MAUVILLE_CITY_WATTSON                             0x390
 #define FLAG_HIDE_MAUVILLE_GYM_WATTSON                              0x391
 #define FLAG_UNUSED_0x392                                           0x392
-#define FLAG_UNUSED_0x393                                           0x393 // EE-Unused
+#define FLAG_UNUSED_0x393                                           0x393
 #define FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE                             0x394
 #define FLAG_UNUSED_0x395                                           0x395
 #define FLAG_HIDE_BATTLE_TOWER_REPORTER                             0x396

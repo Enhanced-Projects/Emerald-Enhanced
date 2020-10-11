@@ -1,73 +1,74 @@
 {
-    "allow_cycling": false,
-    "allow_escaping": false,
-    "allow_running": false,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "flag": "FLAG_HIDDEN_ITEM_SS_TIDAL_LOWER_DECK_LEFTOVERS",
-            "item": "ITEM_LEFTOVERS",
-            "type": "hidden_item",
-            "x": 0,
-            "y": 2
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "SST_Basement_CharizarditeX",
-            "type": "sign",
-            "x": 0,
-            "y": 12
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_SS_TIDAL_LOWER_DECK",
-    "layout": "LAYOUT_SS_TIDAL_LOWER_DECK",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_M_BOAT",
-    "name": "SSTidalLowerDeck",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SAILOR",
-            "movement_range_x": 4,
-            "movement_range_y": 4,
-            "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_RIGHT_UP_LEFT",
-            "script": "SSTidalLowerDeck_EventScript_Phillip",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 10,
-            "y": 4
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SAILOR",
-            "movement_range_x": 7,
-            "movement_range_y": 4,
-            "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT",
-            "script": "SSTidalLowerDeck_EventScript_Leonard",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 7,
-            "y": 4
-        }
-    ],
-    "region_map_section": "MAPSEC_DYNAMIC",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-        {
-            "dest_map": "MAP_SS_TIDAL_CORRIDOR",
-            "dest_warp_id": 8,
-            "elevation": 3,
-            "x": 15,
-            "y": 2
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_SS_TIDAL_LOWER_DECK",
+  "name": "SSTidalLowerDeck",
+  "layout": "LAYOUT_SS_TIDAL_LOWER_DECK",
+  "music": "MUS_M_BOAT",
+  "region_map_section": "MAPSEC_DYNAMIC",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+      "x": 10,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_RIGHT_UP_LEFT",
+      "movement_range_x": 4,
+      "movement_range_y": 4,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "SSTidalLowerDeck_EventScript_Phillip",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+      "x": 7,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT",
+      "movement_range_x": 7,
+      "movement_range_y": 4,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "SSTidalLowerDeck_EventScript_Leonard",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 15,
+      "y": 2,
+      "elevation": 3,
+      "dest_map": "MAP_SS_TIDAL_CORRIDOR",
+      "dest_warp_id": 8
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 0,
+      "y": 2,
+      "elevation": 0,
+      "item": "ITEM_LEFTOVERS",
+      "flag": "FLAG_HIDDEN_ITEM_SS_TIDAL_LOWER_DECK_LEFTOVERS"
+    },
+    {
+      "type": "sign",
+      "x": 0,
+      "y": 12,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SST_Basement_CharizarditeX"
+    }
+  ]
 }
