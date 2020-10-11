@@ -450,7 +450,7 @@
 #define FRONTIER_MON_LUXRAY_1            443
 #define FRONTIER_MON_FLAREON_1           444
 #define FRONTIER_MON_CHESNAUGHT_1        445
-#define FRONTIER_MON_ESPEON_1            446
+#define FRONTIER_MON_URSARING_1            446
 #define FRONTIER_MON_BISHARP_1           447
 #define FRONTIER_MON_BLASTOISE_1         448
 #define FRONTIER_MON_SAMUROTT_1          449
@@ -526,7 +526,7 @@
 #define FRONTIER_MON_TOGEDEMARU_1        518
 #define FRONTIER_MON_SCIZOR_1            519
 #define FRONTIER_MON_GALVANTULA_1        520
-#define FRONTIER_MON_URSARING_1          521
+#define FRONTIER_MON_ESPEON_1          521
 #define FRONTIER_MON_LYCANROC_MIDNIGHT_1 522
 #define FRONTIER_MON_DONPHAN_1           523
 #define FRONTIER_MON_PALOSSAND_1         524
@@ -644,7 +644,7 @@
 #define FRONTIER_MON_LUXRAY_2            635
 #define FRONTIER_MON_FLAREON_2           636
 #define FRONTIER_MON_CHESNAUGHT_2        637
-#define FRONTIER_MON_ESPEON_2            638
+#define FRONTIER_MON_URSARING_2            638
 #define FRONTIER_MON_BISHARP_2           639
 #define FRONTIER_MON_BLASTOISE_2         640
 #define FRONTIER_MON_SAMUROTT_2          641
@@ -720,7 +720,7 @@
 #define FRONTIER_MON_TOGEDEMARU_2        710
 #define FRONTIER_MON_SCIZOR_2            711
 #define FRONTIER_MON_GALVANTULA_2        712
-#define FRONTIER_MON_URSARING_2          713
+#define FRONTIER_MON_ESPEON_2          713
 #define FRONTIER_MON_LYCANROC_MIDNIGHT_2 714
 #define FRONTIER_MON_DONPHAN_2           715
 #define FRONTIER_MON_PALOSSAND_2         716
@@ -812,9 +812,9 @@
 #define FRONTIER_MON_CHANDELURE_3        801
 #define FRONTIER_MON_GENGAR_4            802
 #define FRONTIER_MON_CHANDELURE_4        803
-#define FRONTIER_MON_URSARING_3          804
+#define FRONTIER_MON_ESPEON_3          804
 #define FRONTIER_MON_LUCARIO_3           805
-#define FRONTIER_MON_URSARING_4          806
+#define FRONTIER_MON_ESPEON_4          806
 #define FRONTIER_MON_LUCARIO_4           807
 #define FRONTIER_MON_MACHAMP_3           808
 #define FRONTIER_MON_CONKELDURR_3        809
@@ -865,7 +865,6 @@
 #define FRONTIER_MON_DRAGONITE_2         851
 #define FRONTIER_MON_DRAGONITE_3         852
 #define FRONTIER_MON_DRAGONITE_4         853
-// does it really make sense for Goodra to be in the high tier list?
 #define FRONTIER_MON_GOODRA_3            854
 #define FRONTIER_MON_GOODRA_4            855
 #define FRONTIER_MON_GOODRA_5            856
