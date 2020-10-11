@@ -22,10 +22,10 @@ SPC_StevenApproach::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 106
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
-	applymovement 11, Common_Movement_StepDown
-	waitmovement 11
-	applymovement 11, Common_Movement_QuestionMark
-	waitmovement 11
+	applymovement 10, Common_Movement_StepDown
+	waitmovement 10
+	applymovement 10, Common_Movement_QuestionMark
+	waitmovement 10
 	msgbox SPC_ItsBeenAwhile
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN

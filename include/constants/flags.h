@@ -775,7 +775,7 @@
 #define FLAG_HIDE_PLAYERS_HOUSE_DAD                                 0x2DE
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING      0x2DF
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_SIBLING         0x2E0
-#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE             0x2E1
+#define FLAG_UNUSED_0x2E1                                           0x2E1
 #define FLAG_HIDE_ROUTE_104_MR_BRINEY                               0x2E2 // EE-Unused?
 #define FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY                           0x2E3 // EE-Unused?
 #define FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN                            0x2E4 // EE-Unused?
@@ -953,7 +953,7 @@
 #define FLAG_HIDE_MAUVILLE_CITY_WATTSON                             0x390
 #define FLAG_HIDE_MAUVILLE_GYM_WATTSON                              0x391
 #define FLAG_UNUSED_0x392                                           0x392
-#define FLAG_UNUSED_0x393                                           0x393 // EE-Unused
+#define FLAG_UNUSED_0x393                                           0x393
 #define FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE                             0x394
 #define FLAG_UNUSED_0x395                                           0x395
 #define FLAG_HIDE_BATTLE_TOWER_REPORTER                             0x396
