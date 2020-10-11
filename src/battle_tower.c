@@ -47,7 +47,7 @@ EWRAM_DATA const struct BattleFrontierTrainer *gFacilityTrainers = NULL;
 EWRAM_DATA const struct FacilityMon *gFacilityTrainerMons = NULL;
 
 // IWRAM common
-u16 gFrontierNpcTeam[MAX_FRONTIER_PARTY_SIZE];
+u16 gFrontierTempParty[MAX_FRONTIER_PARTY_SIZE];
 
 // This file's functions.
 static void InitTowerChallenge(void);
@@ -1789,7 +1789,7 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
     otID = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
-        u16 monId = gFrontierNpcTeam[i];
+        u16 monId = gFrontierTempParty[i];
         CreateMonWithEVSpreadNatureOTID(&gEnemyParty[firstMonId + i],
                                              gFacilityTrainerMons[monId].species,
                                              level,
@@ -1818,7 +1818,7 @@ static void FillFactoryTentTrainerParty(u16 trainerId, u8 firstMonId)
 
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
-        u16 monId = gFrontierNpcTeam[i];
+        u16 monId = gFrontierTempParty[i];
         CreateMonWithEVSpreadNatureOTID(&gEnemyParty[firstMonId + i],
                                              gFacilityTrainerMons[monId].species,
                                              level,
@@ -2192,11 +2192,11 @@ static void GetApprenticeMultiPartnerParty(u16 trainerId)
         }
     }
 
-    gFrontierNpcTeam[0] = validSpecies[Random() % count];
+    gFrontierTempParty[0] = validSpecies[Random() % count];
     do
     {
-        gFrontierNpcTeam[1] = validSpecies[Random() % count];
-    } while (gFrontierNpcTeam[0] == gFrontierNpcTeam[1]);
+        gFrontierTempParty[1] = validSpecies[Random() % count];
+    } while (gFrontierTempParty[0] == gFrontierTempParty[1]);
 }
 
 static void GetRecordMixFriendMultiPartnerParty(u16 trainerId)
@@ -2220,11 +2220,11 @@ static void GetRecordMixFriendMultiPartnerParty(u16 trainerId)
         }
     }
 
-    gFrontierNpcTeam[2] = validSpecies[Random() % count];
+    gFrontierTempParty[2] = validSpecies[Random() % count];
     do
     {
-        gFrontierNpcTeam[3] = validSpecies[Random() % count];
-    } while (gFrontierNpcTeam[2] == gFrontierNpcTeam[3]);
+        gFrontierTempParty[3] = validSpecies[Random() % count];
+    } while (gFrontierTempParty[2] == gFrontierTempParty[3]);
 }
 
 static void LoadMultiPartnerCandidatesData(void)
@@ -2388,15 +2388,15 @@ static void sub_81646BC(u16 trainerId, u16 monId)
         }
         else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
         {
-            move = gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].party[gFrontierNpcTeam[gSpecialVar_0x8005 + 1]].moves[0];
-            species = gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].party[gFrontierNpcTeam[gSpecialVar_0x8005 + 1]].species;
+            move = gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].party[gFrontierTempParty[gSpecialVar_0x8005 + 1]].moves[0];
+            species = gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].party[gFrontierTempParty[gSpecialVar_0x8005 + 1]].species;
         }
         else
         {
             s32 i;
 
-            move = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].party[gFrontierNpcTeam[gSpecialVar_0x8005 - 1]].moves[0];
-            species = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].party[gFrontierNpcTeam[gSpecialVar_0x8005 - 1]].species;
+            move = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].party[gFrontierTempParty[gSpecialVar_0x8005 - 1]].moves[0];
+            species = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].party[gFrontierTempParty[gSpecialVar_0x8005 - 1]].species;
             for (i = 0; i < PLAYER_NAME_LENGTH; i++)
                 gStringVar3[i] = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].playerName[i];
             gStringVar3[i] = EOS;
@@ -2465,13 +2465,13 @@ static void ShowPartnerCandidateMessage(void)
         }
         else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
         {
-            gSaveBlock2Ptr->frontier.trainerIds[18] = gFrontierNpcTeam[2];
-            gSaveBlock2Ptr->frontier.trainerIds[19] = gFrontierNpcTeam[3];
+            gSaveBlock2Ptr->frontier.trainerIds[18] = gFrontierTempParty[2];
+            gSaveBlock2Ptr->frontier.trainerIds[19] = gFrontierTempParty[3];
         }
         else
         {
-            gSaveBlock2Ptr->frontier.trainerIds[18] = gFrontierNpcTeam[0];
-            gSaveBlock2Ptr->frontier.trainerIds[19] = gFrontierNpcTeam[1];
+            gSaveBlock2Ptr->frontier.trainerIds[18] = gFrontierTempParty[0];
+            gSaveBlock2Ptr->frontier.trainerIds[19] = gFrontierTempParty[1];
         }
         for (k = 0; k < 14; k++)
         {

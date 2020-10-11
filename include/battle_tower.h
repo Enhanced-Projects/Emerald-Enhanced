@@ -45,7 +45,7 @@ extern const struct FacilityMon gSlateportBattleTentMons[];
 extern const struct BattleFrontierTrainer gSlateportBattleTentTrainers[];
 
 // Pokemon IDs of the enemy team during team generation.
-extern u16 gFrontierNpcTeam[];
+extern u16 gFrontierTempParty[];
 
 extern const struct BattleFrontierTrainer *gFacilityTrainers;
 extern const struct FacilityMon *gFacilityTrainerMons;

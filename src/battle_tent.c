@@ -421,7 +421,7 @@ static void GenerateOpponentMons(void)
 
         species[i] = gFacilityTrainerMons[sRandMonSetId].species;
         heldItems[i] = gFacilityTrainerMons[sRandMonSetId].heldItem;
-        gFrontierNpcTeam[i] = sRandMonSetId;
+        gFrontierTempParty[i] = sRandMonSetId;
         i++;
     }
 }

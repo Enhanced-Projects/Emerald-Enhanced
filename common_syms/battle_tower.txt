@@ -1,1 +1,1 @@
-gFrontierNpcTeam
+gFrontierTempParty
