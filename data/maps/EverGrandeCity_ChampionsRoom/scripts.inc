@@ -48,7 +48,7 @@ EverGrandeCity_ChampionsRoom_Movement_PlayerApproachWallace: @ 8228A42
 EverGrandeCity_ChampionsRoom_EventScript_Wallace:: @ 8228A45
 	playbgm MUS_DAIGO, 0
 	msgbox EverGrandeCity_ChampionsRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
-	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 98
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_AltWallaceFollower
 	trainerbattle_no_intro TRAINER_WALLACE, EverGrandeCity_ChampionsRoom_Text_Defeat
@@ -70,7 +70,6 @@ EGC_AltWallaceFollower::
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame
-	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated

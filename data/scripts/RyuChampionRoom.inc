@@ -10,7 +10,6 @@ RyuThroneRoomCheckFollower::
 
 RyuChampionThrone::
 	lock
-	setflag FLAG_RYU_DO_NOT_AUTOSCALE
 	applymovement OBJ_EVENT_ID_PLAYER, RCR_EnterThrone
 	waitmovement OBJ_EVENT_ID_PLAYER
 	specialvar VAR_RESULT, RyuFollowerToTrainerID
@@ -37,6 +36,8 @@ RCR_FollowerIntroSetup::
 
 
 RyuChampionThroneStart::
+	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 110
+	setflag FLAG_RYU_BOSS_SCALE
 	goto_if_unset FLAG_RYU_DS_HAS_PARTNER, RCR_SoloChamp
 	msgbox RCR_PlayerPartnerQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -87,7 +88,6 @@ RCR_OverlordRyuBossFight::
 	msgbox RCR_RYU_Intro
 	closemessage
 	setflag FLAG_RYU_MAX_SCALE
-	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	setflag FLAG_TEMP_6
 	trainerbattle_no_intro TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -112,7 +112,6 @@ RCR_OverlordRyuRematch::
 	closemessage
 	setflag FLAG_TEMP_3
 	setflag FLAG_RYU_MAX_SCALE
-	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	setflag FLAG_TEMP_6
 	trainerbattle_no_intro TRAINER_OVERLORD_RYU_REMATCH, RCR_RYU_DefeatText
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -503,7 +502,6 @@ RCR_FinishChallenge::
 	call_if_set FLAG_TEMP_B, RCR_CheckStevenGift
 	addvar VAR_RYU_TITLE_DEFENSE_WINS, 1
 	closemessage
-	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -533,7 +531,6 @@ EGC_RYU_PLAYER_LOST::
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	clearflag FLAG_RYU_MAX_SCALE
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
-	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	msgbox EGC_PlayerLostMsg
 	checkplayergender
 	compare VAR_RESULT, FEMALE

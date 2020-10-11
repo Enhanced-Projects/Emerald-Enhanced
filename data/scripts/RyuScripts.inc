@@ -190,7 +190,6 @@ RDBM_DisplayQuestVarsMsg:
 	.string "Lana: {RYU_STR_1}, Lanette: {RYU_STR_2}$"
 
 RDBM_ResetTemporaryBattleFlags::
-	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	clearflag FLAG_RYU_MAX_SCALE
 	clearflag FLAG_RYU_BOSS_WILD
 	clearflag FLAG_RYU_RANDOMBATTLE

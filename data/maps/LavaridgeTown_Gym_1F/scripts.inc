@@ -48,7 +48,7 @@ LavaridgeTown_Gym_1F_EventScript_EndCheckHideTrainers:: @ 81FE78B
 
 LavaridgeTown_Gym_1F_EventScript_Flannery:: @ 81FE78C
 	lock
-	setflag FLAG_RYU_ALTERNATE_SCALE
+	setflag FLAG_RYU_BOSS_SCALE
 	special checkbadgecount
     switch VAR_RESULT
 	case 0, FLANNERY1
@@ -99,7 +99,7 @@ LG_Reset::
 	cleartrainerflag TRAINER_FLANNERY_2
 	cleartrainerflag TRAINER_FLANNERY_3
 	cleartrainerflag TRAINER_FLANNERY_4
-	clearflag FLAG_RYU_ALTERNATE_SCALE
+	clearflag FLAG_RYU_BOSS_SCALE
 	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPostBattle, MSGBOX_DEFAULT
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym

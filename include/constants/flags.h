@@ -97,7 +97,7 @@
 #define FLAG_TOBY_TRAINER_SIGHT              0x53
 
 #define FLAG_RYU_JUKEBOX_ENABLED             0x54
-#define FLAG_RYU_ALTERNATE_SCALE             0x55 // Uses gym scaling instead of normal scaling.
+#define FLAG_RYU_BOSS_SCALE                  0x55 // Autoscale enemies to higher levels.
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56 // Always set after new game, object it hides is added directly
 #define FLAG_MET_RIVAL_MOM                   0x57
@@ -668,7 +668,7 @@
 #define FLAG_RYU_LEAF_LCC_EVENT_DONE                                0x277
 #define FLAG_LH_EVENT                                               0x278
 #define FLAG_HIDE_ABN_SHIP_LANA                                     0x279
-#define FLAG_RYU_DO_NOT_AUTOSCALE                                   0x27A // Set this flag to make the game not autoscale until cleared.
+#define FLAG_NO_LONGER_USED_1                                       0x27A
 #define FLAG_RYU_DS_FEMALE_MOM_MET                                  0x27B
 #define FLAG_RYU_LANA_ALTEVENT2                                     0x27C
 #define FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO                          0x27D

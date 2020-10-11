@@ -44,7 +44,8 @@ EverGrandeCity_DrakesRoom_EventScript_Drake:: @ 82286F3
 	goto_if_set FLAG_DEFEATED_ELITE_4_DRAKE, EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
 	msgbox EverGrandeCity_DrakesRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
-	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 94
+	setflag FLAG_RYU_BOSS_SCALE
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltDrake
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerDrake
 	trainerbattle_no_intro TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat

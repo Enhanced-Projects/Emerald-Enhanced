@@ -57,7 +57,8 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney:: @ 8227F64
 	goto_if_set FLAG_DEFEATED_ELITE_4_SIDNEY, EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
 	msgbox EverGrandeCity_SidneysRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
-	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 82
+	setflag FLAG_RYU_BOSS_SCALE
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltSidney
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidney

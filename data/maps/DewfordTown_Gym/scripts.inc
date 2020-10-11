@@ -153,7 +153,7 @@ DewfordTown_Gym_EventScript_StopCountingTrainers:: @ 81FC7C1
 DewfordTown_Gym_EventScript_Brawly:: @ 81FC7C2
 	lock
 	faceplayer
-	setflag FLAG_RYU_ALTERNATE_SCALE
+	setflag FLAG_RYU_BOSS_SCALE
 	special checkbadgecount
 	switch VAR_RESULT
 	case 0, brawly1
@@ -179,7 +179,7 @@ DFG_Reset::
 	cleartrainerflag TRAINER_BRAWLY_2
 	cleartrainerflag TRAINER_BRAWLY_3
 	cleartrainerflag TRAINER_BRAWLY_4
-	clearflag FLAG_RYU_ALTERNATE_SCALE
+	clearflag FLAG_RYU_BOSS_SCALE
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
 	call_if_unset FLAG_RYU_GYM2HANDOUT, RyuGymItemReward2

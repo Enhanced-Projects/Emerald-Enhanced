@@ -122,7 +122,8 @@ SCH_LanaEvent::
 	playse SE_PIN
 	waitmovement 0
 	msgbox SCH_LanaMsg2 MSGBOX_DEFAULT
-	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 115
+	setflag FLAG_RYU_BOSS_SCALE
 	setvar VAR_RYU_DS_LANA_STAGE, 40
 	cleartrainerflag TRAINER_STORY_LEAF
 	trainerbattle_no_intro TRAINER_STORY_LEAF, SCH_Victory
@@ -140,7 +141,6 @@ SCH_LanaDispt::
 SCH_AfterBattle::
 	setvar VAR_RYU_DS_LANA_STAGE, 41
 	applymovement 1, SCH_Fall
-	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	setflag FLAG_TEMP_B
 	call SCH_OpenDoors
 	applymovement 1, SCH_diagonal

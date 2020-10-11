@@ -1815,7 +1815,7 @@ static void sub_8038538(struct Sprite *sprite)
  */
 s16 CalculatePlayerPartyStrength(void) {
     u8 partyCount = CalculatePlayerPartyCount();
-    s16 highest = 0, second = 0, third = 0;
+    s16 highest = 0, second = 0, third = 0, average;
     u8 level, i;
 
     for (i = 0; i < partyCount; i++) {
@@ -1827,15 +1827,18 @@ s16 CalculatePlayerPartyStrength(void) {
         else if (level > third)
             third = level;
     }
+    average = (highest + second + third) / min(partyCount, 3);
     // in case people bring very weak mons to drag down the average
-    return max(
-        highest - 20,
-        (highest + second + third) / min(partyCount, 3)
-    );
+    return max(highest - 20, average);
 }
 
 u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStrength)
 {
+    u8 level = 0;
+    // Allows overriding the autoscaling from scripts.
+    // Usually, this will just be 2 to make sure we don’t generate level 0 or 1 mons.
+    u8 minLevel = VarGet(VAR_RYU_AUTOSCALE_MIN_LEVEL) + (Random() % 5);
+
     if (maxScale)
         return MAX_LEVEL;
 
@@ -1847,21 +1850,21 @@ u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStr
             + (Random() % 5)
             + sAutoscalingAdjustments[scalingType]
             + autolevelModifier;
-        // Clamp the result to 0-MAX_LEVEL.
-        return max(0, min(level, MAX_LEVEL));
+        return min(max(minLevel, level), MAX_LEVEL);
     }
 
     switch (scalingType) {
-        case SCALING_TYPE_GYM_LEADER: 
-            return Random() % (sGymRange[badges][1] - sGymRange[badges][0]) + sGymRange[badges][0];
+        case SCALING_TYPE_BOSS: 
+            level = Random() % (sGymRange[badges][1] - sGymRange[badges][0]) + sGymRange[badges][0];
+            break;
         case SCALING_TYPE_TRAINER: 
-            return Random() % (sRange[badges][1] - sRange[badges][0]) + sRange[badges][0];
+            level = Random() % (sRange[badges][1] - sRange[badges][0]) + sRange[badges][0];
+            break;
         case SCALING_TYPE_WILD:
-            return Random() % (sWildRange[badges][1] - sWildRange[badges][0]) + sWildRange[badges][0];
-        default:
-            // This should never happen, so we’ll return 0 here so people submit bug reports if it does happen.
-            return 0;
+            level = Random() % (sWildRange[badges][1] - sWildRange[badges][0]) + sWildRange[badges][0];
+            break;
     }
+    return max(level, minLevel);
 }
 
 static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
@@ -1870,11 +1873,6 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
     u32 personalityValue, personalityAdd;
     u32 fixedIV, monsCount, badges = 0;
     s32 i, j;
-    bool32 maxScale = FALSE;
-    bool8 noScale = FlagGet(FLAG_RYU_DO_NOT_AUTOSCALE);
-    u8 scalingType;
-    s16 playerPartyStrength;
-
 
     if (trainerNum == TRAINER_SECRET_BASE)
         return 0;
@@ -1882,8 +1880,13 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
     if (
         gBattleTypeFlags & BATTLE_TYPE_TRAINER
         && !(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_TRAINER_HILL))
-    )
-    {
+    ) {
+        u8 badges = CountBadges();
+        bool8 maxScale = FlagGet(FLAG_RYU_MAX_SCALE);
+        // alternate scale is set for gym leader battles and increases levels
+        u8 scalingType = FlagGet(FLAG_RYU_BOSS_SCALE) ? SCALING_TYPE_BOSS : SCALING_TYPE_TRAINER;
+        s16 playerPartyStrength = CalculatePlayerPartyStrength();
+
         if (firstTrainer == TRUE)
             ZeroEnemyPartyMons();
 
@@ -1909,15 +1912,6 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         for (j = 0; gTrainers[trainerNum].trainerName[j] != EOS; j++)
             trainerNameHash += gTrainers[trainerNum].trainerName[j];
 
-        if (!noScale)
-        {
-            badges = CountBadges();
-            maxScale = FlagGet(FLAG_RYU_MAX_SCALE);
-            // alternate scale is set for gym leader battles and increases levels
-            scalingType = FlagGet(FLAG_RYU_ALTERNATE_SCALE) ? SCALING_TYPE_GYM_LEADER : SCALING_TYPE_TRAINER;
-            playerPartyStrength = CalculatePlayerPartyStrength();
-        }
-
         for (i = 0; i < monsCount; i++)
         {
             nameHash += trainerNameHash;
@@ -1941,10 +1935,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 personalityValue = personalityAdd + (nameHash << 8);
                 fixedIV = partyData[i].iv * 31 / 255;
-                if (noScale)
-                    CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                else
-                    CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 break;
             }
             case F_TRAINER_PARTY_CUSTOM_MOVESET:
@@ -1956,10 +1947,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 personalityValue = personalityAdd + (nameHash << 8);
                 fixedIV = partyData[i].iv * 31 / 255;
-                if (noScale)
-                    CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                else
-                    CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
 
                 break;
 
@@ -1980,10 +1968,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 personalityValue = personalityAdd + (nameHash << 8);
                 fixedIV = partyData[i].iv * 31 / 255;
-                if (noScale)
-                    CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                else
-                    CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
 
                 break;
 
@@ -1997,13 +1982,9 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 for (j = 0; gSpeciesNames[partyData[i].species][j] != EOS; j++)
                     nameHash += gSpeciesNames[partyData[i].species][j];
 
-
                 personalityValue = personalityAdd + (nameHash << 8);
                 fixedIV = partyData[i].iv * 31 / 255;
-                if (noScale)
-                    CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                else
-                    CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].ability);
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
                 if (FlagGet(FLAG_TEMP_6) == 1)

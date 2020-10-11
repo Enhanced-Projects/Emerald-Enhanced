@@ -76,7 +76,7 @@ MauvilleCity_Gym_EventScript_DeactivatePuzzle:: @ 820DEE7
 MauvilleCity_Gym_EventScript_Wattson:: @ 820DEEB
 	lock
 	faceplayer
-	setflag FLAG_RYU_ALTERNATE_SCALE
+	setflag FLAG_RYU_BOSS_SCALE
 	special checkbadgecount
     switch VAR_RESULT
 	case 0, WATTSON1
@@ -100,7 +100,7 @@ MG_Reset::
 	cleartrainerflag TRAINER_WATTSON_2
 	cleartrainerflag TRAINER_WATTSON_3
 	cleartrainerflag TRAINER_WATTSON_4
-	clearflag FLAG_RYU_ALTERNATE_SCALE
+	clearflag FLAG_RYU_BOSS_SCALE
 	msgbox MauvilleCity_Gym_Text_WattsonPostBattle
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym

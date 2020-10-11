@@ -53,7 +53,7 @@
 #define VAR_MIRAGE_RND_H                     0x4024
 #define VAR_MIRAGE_RND_L                     0x4025
 #define VAR_SECRET_BASE_MAP                  0x4026
-#define VAR_CYCLING_ROAD_RECORD_COLLISIONS   0x4027 // unused now
+#define VAR_RYU_AUTOSCALE_MIN_LEVEL          0x4027
 #define VAR_CYCLING_ROAD_RECORD_TIME_L       0x4028 // unused now
 #define VAR_CYCLING_ROAD_RECORD_TIME_H       0x4029 // unused now
 #define VAR_HAPPINESS_STEP_COUNTER           0x402A
