@@ -123,7 +123,6 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_BIG_PEARL] = {gItemIcon_BigPearl, gItemIconPalette_Pearl},
     [ITEM_STARDUST] = {gItemIcon_Stardust, gItemIconPalette_Star},
     [ITEM_STAR_PIECE] = {gItemIcon_StarPiece, gItemIconPalette_Star},
-    [ITEM_WAYSTONE] = {gItemIcon_Nugget, gItemIconPalette_Nugget},
     [ITEM_HEART_SCALE] = {gItemIcon_HeartScale, gItemIconPalette_HeartScale},
     // Mail
     [ITEM_ORANGE_MAIL] = {gItemIcon_OrangeMail, gItemIconPalette_OrangeMail},
@@ -266,6 +265,10 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_ROOT_FOSSIL] = {gItemIcon_RootFossil, gItemIconPalette_HoennFossil},
     [ITEM_CLAW_FOSSIL] = {gItemIcon_ClawFossil, gItemIconPalette_HoennFossil},
     [ITEM_DEVON_SCOPE] = {gItemIcon_DevonScope, gItemIconPalette_DevonScope},
+    [ITEM_WAYSTONE] = {gItemIcon_Nugget, gItemIconPalette_Nugget},
+    [ITEM_ARTEFACT_1] = {gItemIcon_Gem, gItemIconPalette_Sapphire},
+    [ITEM_ARTEFACT_2] = {gItemIcon_LustrousOrb, gItemIconPalette_LustrousOrb},
+    [ITEM_ARTEFACT_3] = {gItemIcon_AdamantOrb, gItemIconPalette_AdamantOrb},
     // TMs / HMs
     [ITEM_TM01] = {gItemIcon_TM, gItemIconPalette_FightingTMHM},
     [ITEM_TM02] = {gItemIcon_TM, gItemIconPalette_DragonTMHM},
@@ -394,10 +397,6 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_ADAMANT_ORB] = {gItemIcon_AdamantOrb, gItemIconPalette_AdamantOrb},
     [ITEM_LUSTROUS_ORB] = {gItemIcon_LustrousOrb, gItemIconPalette_LustrousOrb},
     [ITEM_GRISEOUS_ORB] = {gItemIcon_GriseousOrb, gItemIconPalette_GriseousOrb},
-    [ITEM_ARTEFACT_1] = {gItemIcon_Gem, gItemIconPalette_Sapphire},
-    [ITEM_ARTEFACT_2] = {gItemIcon_LustrousOrb, gItemIconPalette_LustrousOrb},
-    [ITEM_ARTEFACT_3] = {gItemIcon_AdamantOrb, gItemIconPalette_AdamantOrb},
-    [ITEM_DRY_ICE] = {gItemIcon_NeverMeltIce, gItemIconPalette_NeverMeltIce},
     [ITEM_OLD_KEY] = {gItemIcon_SkyPlate, gItemIconPalette_SkyPlate},
     [ITEM_MIND_PLATE] = {gItemIcon_MindPlate, gItemIconPalette_MindPlate},
     [ITEM_SPOOKY_PLATE] = {gItemIcon_SpookyPlate, gItemIconPalette_SpookyPlate},
@@ -509,7 +508,6 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_OVAL_CHARM] = {gItemIcon_OvalCharm, gItemIconPalette_OvalCharm},
 	// Gen 6 Items
     [ITEM_ASSAULT_VEST] = {gItemIcon_AssaultVest, gItemIconPalette_AssaultVest},
-    [ITEM_FERTILIZER] = {gItemIcon_PixiePlate, gItemIconPalette_PixiePlate},
     [ITEM_SAFETY_GOGGLES] = {gItemIcon_SafetyGoggles, gItemIconPalette_SafetyGoggles},
     [ITEM_GENGARITE] = {gItemIcon_Gengarite, gItemIconPalette_Gengarite},
     [ITEM_GARDEVOIRITE] = {gItemIcon_Gardevoirite, gItemIconPalette_Gardevoirite},
@@ -601,4 +599,7 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_ROCK_MEMORY] = {gItemIcon_RockMemory, gItemIconPalette_RockMemory},
     [ITEM_STEEL_MEMORY] = {gItemIcon_SteelMemory, gItemIconPalette_SteelMemory},
     [ITEM_WATER_MEMORY] = {gItemIcon_WaterMemory, gItemIconPalette_WaterMemory},
+    // Custom Items
+    [ITEM_FERTILIZER] = {gItemIcon_BerryPouch, gItemIconPalette_BerryPouch},
+    [ITEM_DRY_ICE] = {gItemIcon_NeverMeltIce, gItemIconPalette_NeverMeltIce},
 };
