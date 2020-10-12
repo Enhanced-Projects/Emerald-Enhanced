@@ -294,7 +294,10 @@ extern const struct Song gSongTable[];
 
 #define MAX_DIRECTSOUND_CHANNELS 12
 
-#define PCM_DMA_BUF_SIZE 1584 // size of Direct Sound buffer
+// The size of this buffer is important and shouldn't be changed unless strictly needed
+// and it also has to kept in sync with a constant with the same name
+// which is located in constants/m4a_constants.inc
+#define PCM_DMA_BUF_SIZE 4256 // size of Direct Sound buffer
 
 struct SoundInfo
 {

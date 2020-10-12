@@ -161,7 +161,6 @@ LilycoveCity_ContestLobby_EventScript_ChooseContestType:: @ 8279EE1
 	case 5, LilycoveCity_ContestLobby_EventScript_CancelEnterContest
 	case MULTI_B_PRESSED, LilycoveCity_ContestLobby_EventScript_CancelEnterContest
 	copyvar VAR_CONTEST_CATEGORY, VAR_RESULT
-	copyvar VAR_RYU_CONTEST_TYPE, VAR_CONTEST_CATEGORY
 	goto LilycoveCity_ContestLobby_EventScript_ChooseContestMon
 	end
 
@@ -1172,7 +1171,7 @@ ContestHall_EventScript_GiveContestPrizes:: @ 827AC77
 	return
 
 CH_CheckForMegaGift::
-	switch VAR_RYU_CONTEST_TYPE
+	switch VAR_CONTEST_CATEGORY
 	case COOL, CH_CoolMegaReward
 	case BEAUTY, CH_BeautyMegaReward
 	case CUTE, CH_CuteMegaReward
@@ -1253,7 +1252,7 @@ ContestHall_EventScript_NoRoomForLuxuryBall:: @ 827ACA8
 	return
 
 ContestHall_EventScript_GiveLuxuryBall:: @ 827ACBD
-	switch VAR_RYU_CONTEST_TYPE
+	switch VAR_CONTEST_CATEGORY
 	case COOL, SetMasterRankClearedCool
 	case BEAUTY, SetMasterRankClearedBeauty
 	case TOUGH, SetMasterRankClearedTough
