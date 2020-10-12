@@ -231,7 +231,6 @@ int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be 
 
     for (; gFrontierBannedSpecies[i] != 0xFFFF; i++)
         {
-            mgba_printf(LOGINFO, "checking %d", gFrontierBannedSpecies[i]);
             if (gFrontierBannedSpecies[i] == (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2)))
                 return 2;
         }
