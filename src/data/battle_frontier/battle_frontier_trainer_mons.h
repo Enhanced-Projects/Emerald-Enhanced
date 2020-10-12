@@ -2366,7 +2366,7 @@
     FRONTIER_MON_TOGEDEMARU_2,          \
     FRONTIER_MON_SCIZOR_2,              \
     FRONTIER_MON_GALVANTULA_2,          \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_LYCANROC_MIDNIGHT_2,   \
     FRONTIER_MON_DONPHAN_2,             \
     FRONTIER_MON_PALOSSAND_2,           \
@@ -2399,7 +2399,7 @@
     FRONTIER_MON_BEHEEYEM_2,            \
     FRONTIER_MON_MILTANK_2,             \
     FRONTIER_MON_CLAWITZER_2,           \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_WAILORD_2,             \
     FRONTIER_MON_MACHAMP_2,             \
     FRONTIER_MON_JELLICENT_2,           \
@@ -2436,7 +2436,7 @@
     FRONTIER_MON_BEHEEYEM_2,            \
     FRONTIER_MON_MILTANK_2,             \
     FRONTIER_MON_CLAWITZER_2,           \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_WAILORD_2,             \
     FRONTIER_MON_JELLICENT_2,           \
     FRONTIER_MON_CINCCINO_2,            \
@@ -2609,7 +2609,7 @@
     FRONTIER_MON_TOGEDEMARU_2,          \
     FRONTIER_MON_SCIZOR_2,              \
     FRONTIER_MON_GALVANTULA_2,          \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_LYCANROC_MIDNIGHT_2,   \
     FRONTIER_MON_DONPHAN_2,             \
     FRONTIER_MON_PALOSSAND_2,           \
@@ -2759,7 +2759,7 @@
     FRONTIER_MON_GARCHOMP_2,            \
     FRONTIER_MON_METAGROSS_2,           \
     FRONTIER_MON_GENGAR_2,              \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_MACHAMP_2,             \
     FRONTIER_MON_GARDEVOIR_2,           \
     FRONTIER_MON_STARMIE_2,             \
@@ -2775,9 +2775,9 @@
     FRONTIER_MON_CHANDELURE_3,          \
     FRONTIER_MON_GENGAR_4,              \
     FRONTIER_MON_CHANDELURE_4,          \
-    FRONTIER_MON_URSARING_3,            \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_LUCARIO_3,             \
-    FRONTIER_MON_URSARING_4,            \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_LUCARIO_4,             \
     FRONTIER_MON_MACHAMP_3,             \
     FRONTIER_MON_CONKELDURR_3,          \
@@ -3173,7 +3173,7 @@
     FRONTIER_MON_TOGEDEMARU_2,          \
     FRONTIER_MON_SCIZOR_2,              \
     FRONTIER_MON_GALVANTULA_2,          \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_LYCANROC_MIDNIGHT_2,   \
     FRONTIER_MON_DONPHAN_2,             \
     FRONTIER_MON_PALOSSAND_2,           \
@@ -3909,7 +3909,7 @@
     FRONTIER_MON_RHYPERIOR_2,           \
     FRONTIER_MON_SCIZOR_2,              \
     FRONTIER_MON_GALVANTULA_2,          \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_MACHAMP_2,             \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_AERODACTYL_2,          \
@@ -3930,9 +3930,9 @@
     FRONTIER_MON_REGIROCK_4,            \
     FRONTIER_MON_REGICE_4,              \
     FRONTIER_MON_REGISTEEL_4,           \
-    FRONTIER_MON_URSARING_3,            \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_LUCARIO_3,             \
-    FRONTIER_MON_URSARING_4,            \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_LUCARIO_4,             \
     FRONTIER_MON_MACHAMP_3,             \
     FRONTIER_MON_CONKELDURR_3,          \
@@ -4591,7 +4591,7 @@
     FRONTIER_MON_MILTANK_2,             \
     FRONTIER_MON_NIDOQUEEN_2,           \
     FRONTIER_MON_KROOKODILE_2,          \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_DONPHAN_2,             \
     FRONTIER_MON_WAILORD_2,             \
     FRONTIER_MON_STEELIX_2,             \
@@ -4672,7 +4672,7 @@
     FRONTIER_MON_SNORLAX_2,             \
     FRONTIER_MON_GARCHOMP_2,            \
     FRONTIER_MON_METAGROSS_2,           \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_AERODACTYL_2,          \
     FRONTIER_MON_MEGANIUM_2,            \
@@ -4684,9 +4684,9 @@
     FRONTIER_MON_TOGEKISS_2,            \
     FRONTIER_MON_SALAMENCE_2,           \
     FRONTIER_MON_KOMMO_O_2,             \
-    FRONTIER_MON_URSARING_3,            \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_LUCARIO_3,             \
-    FRONTIER_MON_URSARING_4,            \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_LUCARIO_4,             \
     FRONTIER_MON_LAPRAS_3,              \
     FRONTIER_MON_GRENINJA_3,            \
@@ -4756,7 +4756,7 @@
     FRONTIER_MON_GARCHOMP_2,            \
     FRONTIER_MON_METAGROSS_2,           \
     FRONTIER_MON_GENGAR_2,              \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_MACHAMP_2,             \
     FRONTIER_MON_GARDEVOIR_2,           \
     FRONTIER_MON_STARMIE_2,             \
@@ -4776,9 +4776,9 @@
     FRONTIER_MON_CHANDELURE_3,          \
     FRONTIER_MON_GENGAR_4,              \
     FRONTIER_MON_CHANDELURE_4,          \
-    FRONTIER_MON_URSARING_3,            \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_LUCARIO_3,             \
-    FRONTIER_MON_URSARING_4,            \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_LUCARIO_4,             \
     FRONTIER_MON_MACHAMP_3,             \
     FRONTIER_MON_CONKELDURR_3,          \
@@ -5702,30 +5702,31 @@
     -1 
 
 // Only used by one Beauty
-#define FRONTIER_MONS_EEVEELUTIONS \
+#define FRONTIER_MONS_EEVEELUTIONS      \
     FRONTIER_MON_VAPOREON_1,            \
-    FRONTIER_MON_LUXRAY_1,              \
-    FRONTIER_MON_FLAREON_1,             \
-    FRONTIER_MON_ESPEON_1,              \
-    FRONTIER_MON_BISHARP_1,             \
-    FRONTIER_MON_SEISMITOAD_1,          \
-    FRONTIER_MON_JOLTEON_1,             \
-    FRONTIER_MON_DARMANITAN_1,          \
-    FRONTIER_MON_SYLVEON_1,             \
-    FRONTIER_MON_UMBREON_1,             \
     FRONTIER_MON_VAPOREON_2,            \
-    FRONTIER_MON_LUXRAY_2,              \
-    FRONTIER_MON_FLAREON_2,             \
-    FRONTIER_MON_ESPEON_2,              \
-    FRONTIER_MON_BISHARP_2,             \
-    FRONTIER_MON_SEISMITOAD_2,          \
+    FRONTIER_MON_JOLTEON_1,             \
     FRONTIER_MON_JOLTEON_2,             \
-    FRONTIER_MON_DARMANITAN_2,          \
-    FRONTIER_MON_SYLVEON_2,             \
+    FRONTIER_MON_FLAREON_1,             \
+    FRONTIER_MON_FLAREON_2,             \
+    FRONTIER_MON_FLAREON_3,             \
+    FRONTIER_MON_ESPEON_1,              \
+    FRONTIER_MON_ESPEON_2,              \
+    FRONTIER_MON_ESPEON_3,              \
+    FRONTIER_MON_ESPEON_4,              \
+    FRONTIER_MON_UMBREON_1,             \
     FRONTIER_MON_UMBREON_2,             \
+    FRONTIER_MON_LEAFEON_1,             \
+    FRONTIER_MON_LEAFEON_2,             \
+    FRONTIER_MON_LEAFEON_3,             \
+    FRONTIER_MON_GLACEON_1,             \
+    FRONTIER_MON_GLACEON_2,             \
+    FRONTIER_MON_SYLVEON_1,             \
+    FRONTIER_MON_SYLVEON_2,             \
+    FRONTIER_MON_SYLVEON_3,             \
     -1 
 
-#define FRONTIER_MONS_BEAUTY_2  \
+#define FRONTIER_MONS_BEAUTY_2          \
     FRONTIER_MON_FROSLASS_1,            \
     FRONTIER_MON_ROTOM_FAN_1,           \
     FRONTIER_MON_SLOWKING_1,            \
@@ -5759,7 +5760,7 @@
     FRONTIER_MON_WALREIN_2,             \
     FRONTIER_MON_ROTOM_WASH_2,          \
     FRONTIER_MON_SYLVEON_2,             \
-    FRONTIER_MON_URSARING_3,            \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_MACHAMP_4,             \
     FRONTIER_MON_SERPERIOR_4,           \
     FRONTIER_MON_GRENINJA_4,            \

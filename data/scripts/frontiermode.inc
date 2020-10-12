@@ -76,13 +76,13 @@ RF_HyperOffense::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu1
-	setvar VAR_TEMP_A, 983
+	setvar VAR_TEMP_A, FRONTIER_MON_ARIADOS_HYPER_OFFENSE
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 984
+	setvar VAR_TEMP_A, FRONTIER_MON_TOXICROAK_HYPER_OFFENSE
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 985
+	setvar VAR_TEMP_A, FRONTIER_MON_ZANGOOSE_HYPER_OFFENSE
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -100,13 +100,13 @@ RF_Offense::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu1
-	setvar VAR_TEMP_A, 986
+	setvar VAR_TEMP_A, FRONTIER_MON_AURORUS_OFFENSE
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 987
+	setvar VAR_TEMP_A, FRONTIER_MON_BEARTIC_OFFENSE
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 988
+	setvar VAR_TEMP_A, FRONTIER_MON_MEGA_GALLADE_OFFENSE
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -124,13 +124,13 @@ RF_Balance::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu1
-	setvar VAR_TEMP_A, 989
+	setvar VAR_TEMP_A, FRONTIER_MON_TYPHLOSION_BALANCE
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 990
+	setvar VAR_TEMP_A, FRONTIER_MON_FERALIGATR_BALANCE
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 991
+	setvar VAR_TEMP_A, FRONTIER_MON_VENUSAUR_BALANCE
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -148,13 +148,13 @@ RF_BulkyOffense::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu1
-	setvar VAR_TEMP_A, 992
+	setvar VAR_TEMP_A, FRONTIER_MON_SWAMPERT_BULKY_OFFENSE
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 993
+	setvar VAR_TEMP_A, FRONTIER_MON_RHYDON_BULKY_OFFENSE
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 994
+	setvar VAR_TEMP_A, FRONTIER_MON_MEGANIUM_BULKY_OFFENSE
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -172,13 +172,13 @@ RF_Stall::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu1
-	setvar VAR_TEMP_A, 995
+	setvar VAR_TEMP_A, FRONTIER_MON_REGICE_STALL
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 996
+	setvar VAR_TEMP_A, FRONTIER_MON_SLOWBRO_STALL
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 997
+	setvar VAR_TEMP_A, FRONTIER_MON_GLISCOR_STALL
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -197,13 +197,13 @@ RF_Hail::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu2
-	setvar VAR_TEMP_A, 1004
+	setvar VAR_TEMP_A, FRONTIER_MON_WALREIN_HAIL
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1005
+	setvar VAR_TEMP_A, FRONTIER_MON_DEWGONG_HAIL
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1006
+	setvar VAR_TEMP_A, FRONTIER_MON_RAIKOU_HAIL
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -221,13 +221,13 @@ RF_Rain::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu2
-	setvar VAR_TEMP_A, 1007
+	setvar VAR_TEMP_A, FRONTIER_MON_LAPRAS_RAIN
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1008
+	setvar VAR_TEMP_A, FRONTIER_MON_SEISMITOAD_RAIN
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1009
+	setvar VAR_TEMP_A, FRONTIER_MON_ROTOM_FAN_RAIN
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -245,13 +245,13 @@ RF_Sun::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu2
-	setvar VAR_TEMP_A, 1010
+	setvar VAR_TEMP_A, FRONTIER_MON_MAGCARGO_SUN
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1011
+	setvar VAR_TEMP_A, FRONTIER_MON_VICTREEBEL_SUN
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1012
+	setvar VAR_TEMP_A, FRONTIER_MON_MEGA_HOUNDOOM_SUN
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -269,13 +269,13 @@ RF_Sandstorm::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu2
-	setvar VAR_TEMP_A, 1013
+	setvar VAR_TEMP_A, FRONTIER_MON_GIGALITH_SANDSTORM
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1014
+	setvar VAR_TEMP_A, FRONTIER_MON_EXCADRILL_SANDSTORM
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1015
+	setvar VAR_TEMP_A, FRONTIER_MON_STOUTLAND_SANDSTORM
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -293,13 +293,13 @@ RF_GrassyTerrain::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu2
-	setvar VAR_TEMP_A, 1016
+	setvar VAR_TEMP_A, FRONTIER_MON_ROTOM_MOW_GRASSY_TERRAIN
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1017
+	setvar VAR_TEMP_A, FRONTIER_MON_GOGOAT_GRASSY_TERRAIN
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1018
+	setvar VAR_TEMP_A, FRONTIER_MON_SEVIPER_GRASSY_TERRAIN
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -317,13 +317,13 @@ RF_PsychicTerrain::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu2
-	setvar VAR_TEMP_A, 1019
+	setvar VAR_TEMP_A, FRONTIER_MON_BEHEEYEM_PSYCHIC_TERRAIN
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1020
+	setvar VAR_TEMP_A, FRONTIER_MON_DELPHOX_PSYCHIC_TERRAIN
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1021
+	setvar VAR_TEMP_A, FRONTIER_MON_MEGA_SHARPEDO_PSYCHIC_TERRAIN
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -341,13 +341,13 @@ RF_TrickRoom::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu2
-	setvar VAR_TEMP_A, 1022
+	setvar VAR_TEMP_A, FRONTIER_MON_OCTILLERY_TRICK_ROOM
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1023
+	setvar VAR_TEMP_A, FRONTIER_MON_DARMANITAN_ZEN_TRICK_ROOM
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1024
+	setvar VAR_TEMP_A, FRONTIER_MON_RAMPARDOS_TRICK_ROOM
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -366,13 +366,13 @@ RF_BatonPass::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu3
-	setvar VAR_TEMP_A, 1025
+	setvar VAR_TEMP_A, FRONTIER_MON_JOLTEON_BATON_PASS
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1026
+	setvar VAR_TEMP_A, FRONTIER_MON_VAPOREON_BATON_PASS
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1027
+	setvar VAR_TEMP_A, FRONTIER_MON_ESPEON_BATON_PASS
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -390,13 +390,13 @@ RF_Gimmick::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu3
-	setvar VAR_TEMP_A, 1028
+	setvar VAR_TEMP_A, FRONTIER_MON_TOXICROAK_GIMMICK
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1029
+	setvar VAR_TEMP_A, FRONTIER_MON_TOXAPEX_GIMMICK
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1030
+	setvar VAR_TEMP_A, FRONTIER_MON_SKARMORY_GIMMICK
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -414,13 +414,13 @@ RF_Eggtactical::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu3
-	setvar VAR_TEMP_A, 1031
+	setvar VAR_TEMP_A, FRONTIER_MON_NINJASK_EGGTACTICAL
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1032
+	setvar VAR_TEMP_A, FRONTIER_MON_SCIZOR_EGGTACTICAL
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1033
+	setvar VAR_TEMP_A, FRONTIER_MON_UMBREON_EGGTACTICAL
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -438,13 +438,13 @@ RF_Masochist::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu3
-	setvar VAR_TEMP_A, 1034
+	setvar VAR_TEMP_A, FRONTIER_MON_DELIBIRD_MASOCHIST
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1035
+	setvar VAR_TEMP_A, FRONTIER_MON_DUNSPARCE_MASOCHIST
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1036
+	setvar VAR_TEMP_A, FRONTIER_MON_LUVDISC_MASOCHIST
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter
 	clearflag FLAG_RYU_CHOOSING_FRONTIER_STARTER
@@ -462,14 +462,14 @@ RF_Fear::
 	msgbox RF_ChooseThisSet, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne RyuFrontierStarterMenu3
-	setvar VAR_TEMP_A, 1037
+	setvar VAR_TEMP_A, FRONTIER_MON_HIPPOWDON_FEAR
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1038
+	setvar VAR_TEMP_A, FRONTIER_MON_TOGEDEMARU_FEAR
 	setflag FLAG_TEMP_D
 	special RyuGiveFrontierMon
 	delay 20
-	setvar VAR_TEMP_A, 1039
+	setvar VAR_TEMP_A, FRONTIER_MON_MAGNEMITE_FEAR
 	setflag FLAG_TEMP_D
 	special RyuGiveFrontierMon
 	msgbox RF_CompletedGivingStarter

@@ -866,7 +866,6 @@
 #define FRONTIER_MON_DRAGONITE_2                           851
 #define FRONTIER_MON_DRAGONITE_3                           852
 #define FRONTIER_MON_DRAGONITE_4                           853
-// does it really make sense for Goodra to be in the high tier list?
 #define FRONTIER_MON_GOODRA_3                              854
 #define FRONTIER_MON_GOODRA_4                              855
 #define FRONTIER_MON_GOODRA_5                              856
