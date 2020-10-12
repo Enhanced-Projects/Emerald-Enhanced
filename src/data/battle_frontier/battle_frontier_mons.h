@@ -1810,14 +1810,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_GOODRA_2] = { // Goodra-RestTalk
+    [FRONTIER_MON_GOODRA_2] = { // Goodra-Curse
         .species = SPECIES_GOODRA,
         .moves = {MOVE_OUTRAGE, MOVE_CURSE, MOVE_REST, MOVE_SLEEP_TALK},
-        .heldItem = ITEM_LEFTOVERS,
+        .heldItem = ITEM_BLACK_SLUDGE,
         .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_CAREFUL,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_MIGHTYENA_1] = { // Mightyena-QuickFeetProtect
         .species = SPECIES_MIGHTYENA,
@@ -2755,12 +2755,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_GOODRA_3] = { // Goodra-Hydration
+    [FRONTIER_MON_GOODRA_3] = { // Goodra-DefensiveAV
         .species = SPECIES_GOODRA,
-        .moves = {MOVE_DRAGON_PULSE, MOVE_MUDDY_WATER, MOVE_RAIN_DANCE, MOVE_REST},
-        .heldItem = ITEM_LEFTOVERS,
+        .moves = {MOVE_SLUDGE_BOMB, MOVE_DRACO_METEOR, MOVE_FOCUS_BLAST, MOVE_DRAGON_TAIL},
+        .heldItem = ITEM_ASSAULT_VEST,
         .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
-        .nature = NATURE_CAREFUL,
+        .nature = NATURE_BOLD,
         .ivs = 31,
         .ability = 1
     },
@@ -7663,12 +7663,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_GOODRA_4] = { // Goodra-Scarf
         .species = SPECIES_GOODRA,
-        .moves = {MOVE_DRACO_METEOR, MOVE_FIRE_BLAST, MOVE_EARTHQUAKE, MOVE_THUNDERBOLT},
+        .moves = {MOVE_DRACO_METEOR, MOVE_SLUDGE_BOMB, MOVE_FOCUS_BLAST, MOVE_THUNDERBOLT},
         .heldItem = ITEM_CHOICE_SCARF,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_HASTY,
+        .nature = NATURE_TIMID,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_DRAGONITE_2] = { // Dragonite-BulkyDD
         .species = SPECIES_DRAGONITE,
@@ -7679,14 +7679,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_GOODRA_5] = { // Goodra-Band
+    [FRONTIER_MON_GOODRA_5] = { // Goodra-Defensive
         .species = SPECIES_GOODRA,
-        .moves = {MOVE_OUTRAGE, MOVE_EARTHQUAKE, MOVE_POWER_WHIP, MOVE_IRON_TAIL},
-        .heldItem = ITEM_CHOICE_BAND,
-        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
-        .nature = NATURE_ADAMANT,
+        .moves = {MOVE_SLUDGE_BOMB, MOVE_EARTHQUAKE, MOVE_REST, MOVE_SLEEP_TALK},
+        .heldItem = ITEM_BLACK_SLUDGE,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_RELAXED,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_DRAGONITE_3] = { // Dragonite-Band
         .species = SPECIES_DRAGONITE,
@@ -7699,12 +7699,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_GOODRA_6] = { // Goodra-Specs
         .species = SPECIES_GOODRA,
-        .moves = {MOVE_DRACO_METEOR, MOVE_FIRE_BLAST, MOVE_SLUDGE_BOMB, MOVE_THUNDERBOLT},
+        .moves = {MOVE_SLUDGE_BOMB, MOVE_DRACO_METEOR, MOVE_FOCUS_BLAST, MOVE_THUNDERBOLT},
         .heldItem = ITEM_CHOICE_SPECS,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_MODEST,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_VOLCARONA_1] = { // Volcarona-LifeOrbHPground
         .species = SPECIES_VOLCARONA,
@@ -7733,14 +7733,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_GOODRA_1] = { // Goodra-AV
+    [FRONTIER_MON_GOODRA_1] = { // Goodra-OffensiveAV
         .species = SPECIES_GOODRA,
-        .moves = {MOVE_DRAGON_PULSE, MOVE_FLAMETHROWER, MOVE_SLUDGE_BOMB, MOVE_THUNDERBOLT},
+        .moves = {MOVE_SLUDGE_BOMB, MOVE_DRACO_METEOR, MOVE_FOCUS_BLAST, MOVE_THUNDERBOLT},
         .heldItem = ITEM_ASSAULT_VEST,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_TYRANITAR_1] = { // Tyranitar-Band
         .species = SPECIES_TYRANITAR,
