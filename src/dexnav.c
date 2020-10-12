@@ -1802,7 +1802,7 @@ static bool8 CapturedAllHiddenMons(u8 headerId)
     
     if (hiddenMonsInfo != NULL)
     {
-        for (i = 0; i < WATER_WILD_COUNT; ++i)
+        for (i = 0; i < HIDDEN_WILD_COUNT; ++i)
         {
             species = hiddenMonsInfo->wildPokemon[i].species;
             if (species != SPECIES_NONE)
@@ -1813,7 +1813,7 @@ static bool8 CapturedAllHiddenMons(u8 headerId)
             }
         }
 
-        if (i >= WATER_WILD_COUNT && count > 0)
+        if (i >= HIDDEN_WILD_COUNT && count > 0)
             return TRUE;
     }
     else
