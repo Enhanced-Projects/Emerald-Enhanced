@@ -232,7 +232,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_drawheadshot
 	.4byte ScrCmd_drawcustompic
 	.4byte ScrCmd_addmonhappiness
-	.4byte ScrCmd_takebp
+	.4byte ScrCmd_scriptdebug
 	.4byte ScrCmd_givebp
 	.4byte ScrCmd_checkbp
 	.4byte ScrCmd_gfec

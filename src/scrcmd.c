@@ -2338,10 +2338,15 @@ bool8 ScrCmd_destroyfollower(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_takebp(struct ScriptContext *ctx)//Currently working on
+bool8 ScrCmd_scriptdebug(struct ScriptContext *ctx)
 {
-    u16 value = (VarGet(ScriptReadHalfword(ctx)));
-    gSaveBlock2Ptr->frontier.battlePoints = (gSaveBlock2Ptr->frontier.battlePoints - value);
+    const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+
+    if (msg == NULL)
+        msg = (const u8 *)ctx->data[0];
+
+    StringExpandPlaceholders(gStringVar4, msg);
+    mgba_printf(LOGINFO, "%s", ConvertToAscii(gStringVar4));
     return FALSE;
 }
 

@@ -1650,9 +1650,9 @@
 	.endm
 
 	@Takes battle points away from the player's balance
-	.macro takebp value:req
+	.macro scriptdebug address:req
 	.byte 0xe8
-	.2byte \value
+	.4byte \address
 	.endm
 
 	@gives value battle points to player
