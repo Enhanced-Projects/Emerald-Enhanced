@@ -12052,6 +12052,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM38_FIRE_BLAST)
 											| TMHM(TM35_FLAMETHROWER)
 											| TMHM(TM21_FRUSTRATION)
+											| TMHM(TM61_GRAVEL_STORM)
 											| TMHM(TM10_HIDDEN_POWER)
 											| TMHM(TM15_HYPER_BEAM)
 											| TMHM(TM59_IRON_HEAD)

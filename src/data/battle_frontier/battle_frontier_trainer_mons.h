@@ -2842,6 +2842,7 @@
     FRONTIER_MON_RAIKOU_1,              \
     FRONTIER_MON_ENTEI_1,               \
     FRONTIER_MON_SUICUNE_1,             \
+    FRONTIER_MON_HEATRAN_1,             \
     FRONTIER_MON_REGIROCK_1,            \
     FRONTIER_MON_REGICE_1,              \
     FRONTIER_MON_REGISTEEL_1,           \
@@ -2852,6 +2853,7 @@
     FRONTIER_MON_RAIKOU_2,              \
     FRONTIER_MON_ENTEI_2,               \
     FRONTIER_MON_SUICUNE_2,             \
+    FRONTIER_MON_HEATRAN_2,             \
     FRONTIER_MON_REGIROCK_2,            \
     FRONTIER_MON_REGICE_2,              \
     FRONTIER_MON_REGISTEEL_2,           \
@@ -2862,6 +2864,7 @@
     FRONTIER_MON_RAIKOU_3,              \
     FRONTIER_MON_ENTEI_3,               \
     FRONTIER_MON_SUICUNE_3,             \
+    FRONTIER_MON_HEATRAN_3,             \
     FRONTIER_MON_REGIROCK_3,            \
     FRONTIER_MON_REGICE_3,              \
     FRONTIER_MON_REGISTEEL_3,           \
@@ -2872,6 +2875,7 @@
     FRONTIER_MON_RAIKOU_4,              \
     FRONTIER_MON_ENTEI_4,               \
     FRONTIER_MON_SUICUNE_4,             \
+    FRONTIER_MON_HEATRAN_4,             \
     FRONTIER_MON_REGIROCK_4,            \
     FRONTIER_MON_REGICE_4,              \
     FRONTIER_MON_REGISTEEL_4,           \
@@ -2918,6 +2922,8 @@
     FRONTIER_MON_ENTEI_6,               \
     FRONTIER_MON_SUICUNE_5,             \
     FRONTIER_MON_SUICUNE_6,             \
+    FRONTIER_MON_HEATRAN_5,             \
+    FRONTIER_MON_HEATRAN_6,             \
     -1
 
 #define FRONTIER_MONS_COOLTRAINER_F_2A \
@@ -4838,6 +4844,7 @@
     FRONTIER_MON_RAIKOU_1,              \
     FRONTIER_MON_ENTEI_1,               \
     FRONTIER_MON_SUICUNE_1,             \
+    FRONTIER_MON_HEATRAN_1,             \
     FRONTIER_MON_REGIROCK_1,            \
     FRONTIER_MON_REGICE_1,              \
     FRONTIER_MON_REGISTEEL_1,           \
@@ -4849,6 +4856,7 @@
     FRONTIER_MON_RAIKOU_2,              \
     FRONTIER_MON_ENTEI_2,               \
     FRONTIER_MON_SUICUNE_2,             \
+    FRONTIER_MON_HEATRAN_2,             \
     FRONTIER_MON_REGIROCK_2,            \
     FRONTIER_MON_REGICE_2,              \
     FRONTIER_MON_REGISTEEL_2,           \
@@ -4860,6 +4868,7 @@
     FRONTIER_MON_RAIKOU_3,              \
     FRONTIER_MON_ENTEI_3,               \
     FRONTIER_MON_SUICUNE_3,             \
+    FRONTIER_MON_HEATRAN_3,             \
     FRONTIER_MON_REGIROCK_3,            \
     FRONTIER_MON_REGICE_3,              \
     FRONTIER_MON_REGISTEEL_3,           \
@@ -4871,6 +4880,7 @@
     FRONTIER_MON_RAIKOU_4,              \
     FRONTIER_MON_ENTEI_4,               \
     FRONTIER_MON_SUICUNE_4,             \
+    FRONTIER_MON_HEATRAN_4,             \
     FRONTIER_MON_REGIROCK_4,            \
     FRONTIER_MON_REGICE_4,              \
     FRONTIER_MON_REGISTEEL_4,           \
@@ -4922,6 +4932,8 @@
     FRONTIER_MON_ENTEI_6,               \
     FRONTIER_MON_SUICUNE_5,             \
     FRONTIER_MON_SUICUNE_6,             \
+    FRONTIER_MON_HEATRAN_5,             \
+    FRONTIER_MON_HEATRAN_6,             \
     -1 
 
 #define FRONTIER_MONS_SWIMMING_TRIATHLETE_M_3 \

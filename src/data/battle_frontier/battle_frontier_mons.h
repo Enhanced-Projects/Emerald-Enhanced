@@ -6860,6 +6860,15 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
+    [FRONTIER_MON_HEATRAN_1] = { // Heatran-StallBreaker
+        .species = SPECIES_HEATRAN,
+        .moves = {MOVE_MAGMA_STORM, MOVE_EARTH_POWER, MOVE_TAUNT, MOVE_TOXIC},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
+        .ability = 0
+    },
     [FRONTIER_MON_REGIROCK_1] = { // Regirock-PUP
         .species = SPECIES_REGIROCK,
         .moves = {MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_POWER_UP_PUNCH, MOVE_RECOVER},
@@ -6956,6 +6965,15 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .heldItem = ITEM_ASSAULT_VEST,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_HEATRAN_2] = { // Heatran-AirBalloon
+        .species = SPECIES_HEATRAN,
+        .moves = {MOVE_FLAMETHROWER, MOVE_FLASH_CANNON, MOVE_EARTH_POWER, MOVE_STEALTH_ROCK},
+        .heldItem = ITEM_AIR_BALLOON,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
         .ivs = 31,
         .ability = 0
     },
@@ -7058,6 +7076,15 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
+    [FRONTIER_MON_HEATRAN_3] = { // Heatran-Specs
+        .species = SPECIES_HEATRAN,
+        .moves = {MOVE_OVERHEAT, MOVE_FLASH_CANNON, MOVE_EARTH_POWER, MOVE_FLAMETHROWER},
+        .heldItem = ITEM_CHOICE_SPECS,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_MODEST,
+        .ivs = 31,
+        .ability = 0
+    },
     [FRONTIER_MON_REGIROCK_3] = { // Regirock-ExplosionWP
         .species = SPECIES_REGIROCK,
         .moves = {MOVE_ROCK_SLIDE, MOVE_EXPLOSION, MOVE_EARTHQUAKE, MOVE_ROCK_POLISH},
@@ -7155,6 +7182,15 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
         .ivs = 28,
+        .ability = 0
+    },
+    [FRONTIER_MON_HEATRAN_4] = { // Heatran-Scarf
+        .species = SPECIES_HEATRAN,
+        .moves = {MOVE_OVERHEAT, MOVE_FLASH_CANNON, MOVE_EARTH_POWER, MOVE_FLAMETHROWER},
+        .heldItem = ITEM_CHOICE_SCARF,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
+        .ivs = 31,
         .ability = 0
     },
     [FRONTIER_MON_REGIROCK_4] = { // Regirock-Bulky
@@ -7937,6 +7973,24 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
         .nature = NATURE_BOLD,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_HEATRAN_5] = { // Heatran-AV
+        .species = SPECIES_HEATRAN,
+        .moves = {MOVE_LAVA_PLUME, MOVE_FLASH_CANNON, MOVE_EARTH_POWER, MOVE_GRAVEL_STORM},
+        .heldItem = ITEM_ASSAULT_VEST,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_MODEST,
+        .ivs = 31,
+        .ability = 0
+    },
+    [FRONTIER_MON_HEATRAN_6] = { // Heatran-Defensive
+        .species = SPECIES_HEATRAN,
+        .moves = {MOVE_LAVA_PLUME, MOVE_EARTH_POWER, MOVE_TOXIC, MOVE_EE_PROTECT},
+        .heldItem = ITEM_LEFTOVERS,
+        .evSpread = F_EV_SPREAD_SP_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_CALM,
         .ivs = 31,
         .ability = 0
     },
