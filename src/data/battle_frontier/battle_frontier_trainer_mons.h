@@ -7,7 +7,7 @@
     FRONTIER_MON_DRAPION_3,             \
     FRONTIER_MON_GALLADE_3,             \
     FRONTIER_MON_GYARADOS_3,            \
-    FRONTIER_MON_MILOTIC_3,             \
+    FRONTIER_MON_SLOWKING_3,             \
     FRONTIER_MON_TOGEDEMARU_3,          \
     FRONTIER_MON_WHIMSICOTT_3,          \
     FRONTIER_MON_QUAGSIRE_3,            \
@@ -210,7 +210,7 @@
 #define FRONTIER_MONS_TUBER_1   \
     FRONTIER_MON_GALLADE_3,             \
     FRONTIER_MON_GYARADOS_3,            \
-    FRONTIER_MON_MILOTIC_3,             \
+    FRONTIER_MON_SLOWKING_3,             \
     FRONTIER_MON_QUAGSIRE_3,            \
     FRONTIER_MON_LUDICOLO_3,            \
     FRONTIER_MON_AZUMARILL_3,           \
@@ -569,7 +569,7 @@
 
 #define FRONTIER_MONS_FISHERMAN_1 \
     FRONTIER_MON_GYARADOS_3,            \
-    FRONTIER_MON_MILOTIC_3,             \
+    FRONTIER_MON_SLOWKING_3,             \
     FRONTIER_MON_WHISCASH_3,            \
     FRONTIER_MON_MANTINE_3,             \
     FRONTIER_MON_POLIWRATH_3,           \
