@@ -53,7 +53,7 @@ static const u8 sMatchCallOptionsHasCheckPage[] =
 
 bool32 PokenavCallback_Init_MatchCall(void)
 {
-    struct Pokenav3Struct *state = AllocSubstruct(5, sizeof(struct Pokenav3Struct));
+    struct Pokenav3Struct *state = AllocSubstruct(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN, sizeof(struct Pokenav3Struct));
     if (!state)
         return FALSE;
 
@@ -66,13 +66,13 @@ bool32 PokenavCallback_Init_MatchCall(void)
 
 u32 GetMatchCallCallback(void)
 {
-    struct Pokenav3Struct *state = GetSubstructPtr(5);
+    struct Pokenav3Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
     return state->callback(state);
 }
 
 void FreeMatchCallSubstruct1(void)
 {
-    FreePokenavSubstruct(5);
+    FreePokenavSubstruct(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
 }
 
 static u32 CB2_HandleMatchCallInput(struct Pokenav3Struct *state)
@@ -92,7 +92,7 @@ static u32 CB2_HandleMatchCallInput(struct Pokenav3Struct *state)
     {
         state->callback = CB2_HandleMatchCallOptionsInput;
         state->optionCursorPos = 0;
-        selection = GetSelectedMatchCall();
+        selection = GetSelectedPokenavListIndex();
 
         if (!state->matchCallEntries[selection].isSpecialTrainer || MatchCall_HasCheckPage(state->matchCallEntries[selection].headerId))
         {
@@ -205,7 +205,7 @@ static u32 CB2_HandleCallInput(struct Pokenav3Struct *state)
 static u32 sub_81CAD20(s32 taskState)
 {
     int i, j;
-    struct Pokenav3Struct *state = GetSubstructPtr(5);
+    struct Pokenav3Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
     switch (taskState)
     {
     case 0:
@@ -258,31 +258,31 @@ static u32 sub_81CAD20(s32 taskState)
 
 int sub_81CAE28(void)
 {
-    struct Pokenav3Struct *state = GetSubstructPtr(5);
+    struct Pokenav3Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
     return state->unk10;
 }
 
 int GetNumberRegistered(void)
 {
-    struct Pokenav3Struct *state = GetSubstructPtr(5);
+    struct Pokenav3Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
     return state->numRegistered;
 }
 
 int sub_81CAE48(void)
 {
-    struct Pokenav3Struct *state = GetSubstructPtr(5);
+    struct Pokenav3Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
     return state->unkC;
 }
 
 int unref_sub_81CAE58(void)
 {
-    struct Pokenav3Struct *state = GetSubstructPtr(5);
+    struct Pokenav3Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
     return state->numRegistered - state->unkC;
 }
 
 int unref_sub_81CAE6C(int arg0)
 {
-    struct Pokenav3Struct *state = GetSubstructPtr(5);
+    struct Pokenav3Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
     arg0 += state->unkC;
     if (arg0 >= state->numRegistered)
         return REMATCH_TABLE_ENTRIES;
@@ -292,7 +292,7 @@ int unref_sub_81CAE6C(int arg0)
 
 struct PokenavMatchCallEntries *sub_81CAE94(void)
 {
-    struct Pokenav3Struct *state = GetSubstructPtr(5);
+    struct Pokenav3Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
     return state->matchCallEntries;
 }
 
@@ -318,7 +318,7 @@ const u8 *GetMatchCallFlavorText(int index, int checkPageEntry)
 
 u16 GetMatchCallOptionCursorPos(void)
 {
-    struct Pokenav3Struct *state = GetSubstructPtr(5);
+    struct Pokenav3Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
     return state->optionCursorPos;
 }
 
@@ -334,7 +334,7 @@ void BufferMatchCallNameAndDesc(struct PokenavMatchCallEntries *matchCallEntry, 
 
 int GetIndexDeltaOfNextCheckPageDown(int index)
 {
-    struct Pokenav3Struct *state = GetSubstructPtr(5);
+    struct Pokenav3Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
     int count = 1;
     while (++index < state->numRegistered)
     {
@@ -351,7 +351,7 @@ int GetIndexDeltaOfNextCheckPageDown(int index)
 
 int GetIndexDeltaOfNextCheckPageUp(int index)
 {
-    struct Pokenav3Struct *state = GetSubstructPtr(5);
+    struct Pokenav3Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
     int count = -1;
     while (--index >= 0)
     {

@@ -598,8 +598,8 @@ struct BattleScripting
     u8 savedBattler;
     u8 reshowMainState;
     u8 reshowHelperState;
-    u8 field_23;
-    u8 windowsType; // 0 - normal, 1 - Battle Arena
+    u8 levelUpHP;
+    u8 windowsType; // 0 - normal, 1 - battle arena
     u8 multiplayerId;
     u8 specialTrainerBattleType;
     bool8 monCaught;

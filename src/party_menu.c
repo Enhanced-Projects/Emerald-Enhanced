@@ -74,8 +74,6 @@
 #include "constants/party_menu.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
-#include "constants/species.h"
-#include "constants/vars.h"
 #include "random.h"
 
 #define PARTY_PAL_SELECTED     (1 << 0)
