@@ -1206,6 +1206,16 @@ static void DexNavUpdateSearchWindow(u8 proximity, u8 searchLevel)
     }
 }
 
+int RyuGetMaxBossChance()
+{
+    u8 MaxChance = 2;
+
+    MaxChance -= (gSaveBlock1Ptr->dexNavChain * 2);
+
+    mgba_printf(LOGINFO, "DexNav chain is %d, max chance is now %d", gSaveBlock1Ptr->dexNavChain, MaxChance);
+    return MaxChance;
+}
+
 //////////////////////////////
 //// DEXNAV MON GENERATOR ////
 //////////////////////////////
@@ -1215,14 +1225,24 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     u8 iv[3];
     u8 i;
     u8 perfectIv = 31;
+    mgba_printf(LOGINFO, "Current chance is 1/%d", RyuGetMaxBossChance());
     
-    CreateWildMon(species, level);  // shiny rate bonus handled in CreateBoxMon
+    
+    if ((Random() % RyuGetMaxBossChance() <= 1))// || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+    {
+        RyuGenerateBossMon(species, level);
+        FlagSet(FLAG_RYU_BOSS_WILD);
+    }
+    else
+    {
+        CreateWildMon(species, level);  // shiny rate bonus handled in CreateBoxMon
+    }
     
     //Pick potential ivs to set to 31
     iv[0] = Random() % 6;
     iv[1] = Random() % 6;
     iv[2] = Random() % 6;
-    if ((iv[0] != iv[1]) && (iv[0] != iv[2]) && (iv[1] != iv[2]))
+    if ((iv[0] != iv[1]) && (iv[0] != iv[2]) && (iv[1] != iv[2]) && (FlagGet(FLAG_RYU_BOSS_WILD) == 0))//if boss mon, don't change iv's, they are already max
     {
         if (potential > 2)
             SetMonData(mon, MON_DATA_HP_IV + iv[2], &perfectIv);
@@ -1230,17 +1250,16 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
             SetMonData(mon, MON_DATA_HP_IV + iv[1], &perfectIv);
         else if (potential)
             SetMonData(mon, MON_DATA_HP_IV + iv[0], &perfectIv);
+        //Set ability
+        SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
     }
-
-    //Set ability
-    SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
-
-    //Set moves
+        //Set moves
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonMoveSlot(mon, moves[i], i);
 
     CalculateMonStats(mon);
 }
+
 extern int CountBadges();
 // gets a random level of the species based on map data.
 //if it was a hidden encounter, updates the environment it is to be found from the wildheader encounterRate

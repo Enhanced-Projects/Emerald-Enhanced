@@ -185,10 +185,14 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setflag FLAG_SYS_DEXNAV_GET
-	goto RyuDebug_SaveFileDebug
+	specialvar VAR_RESULT, RyuGetMaxBossChance
+	buffernumberstring 0, VAR_RESULT
+	msgbox DexNavInfo
 	release
 	end
+
+DexNavInfo:
+	.string "Current Max Boss Range is: {STR_VAR_1}$"
 
 RyuDebug_SaveFileDebug::
 	special CheckSaveFileSize

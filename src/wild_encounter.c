@@ -460,14 +460,28 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
         return FALSE;
   
-    if ((Random() % 128) == 69)// || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+    if ((Random() % 128 < gSaveBlock1Ptr->dexNavChain) || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+    {
+        RyuGenerateBossMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
+    }
+    else
+    {
+        CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
+    }
+
+    return TRUE;
+}
+
+void RyuGenerateBossMon(u16 species, u8 level)
     {
         u8 val[1] = {TRUE};
         u8 newAbility = Random() % 2;
         u8 iv = 31;
+        u8 ability = 2;
+
         level = min(MAX_LEVEL, level + 5);
         FlagSet(FLAG_RYU_BOSS_WILD);
-        CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
+        CreateWildMon(species, level);
         ShowFieldMessage(gText_PowerfulWildAppears);
         SetMonData(&gEnemyParty[0], MON_DATA_HP_IV, &iv);
         SetMonData(&gEnemyParty[0], MON_DATA_ATK_IV, &iv);
@@ -490,10 +504,6 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
         
         CalculateMonStats(&gEnemyParty[0]);
     }
-    else
-        CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
-    return TRUE;
-}
 
 static u16 GenerateFishingWildMon(const struct WildPokemonInfo *wildMonInfo, u8 rod)
 {
