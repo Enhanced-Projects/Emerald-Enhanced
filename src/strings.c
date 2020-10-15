@@ -1544,6 +1544,7 @@ const u8 gText_MenuOption[] = _("Options");
 const u8 gText_MenuExit[] = _("BetaInfo");
 const u8 gText_MenuRetire[] = _("Forfeit");
 const u8 gText_MenuRest[] = _("Rest");
+const u8 gText_MenuDexNav[] = _("DexNav");
 const u8 gText_SafariBallStock[] = _("Safari balls\nStock: {STR_VAR_1}");
 const u8 gText_BattlePyramidFloor[] = _("Battle Pyramid\n{STR_VAR_1}");
 const u8 gText_Floor1[] = _("Floor 1");

@@ -10,6 +10,7 @@
 #include "battle_setup.h"
 #include "battle_tower.h"
 #include "data.h"
+#include "dexnav.h"
 #include "event_data.h"
 #include "evolution_scene.h"
 #include "field_specials.h"
@@ -2370,6 +2371,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     u32 personality;
     u32 value;
     u16 checksum;
+    u32 shinyValue;
 
     ZeroBoxMonData(boxMon);
 
@@ -2377,7 +2379,6 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         personality = fixedPersonality;
     else
         personality = Random32();
-
     //Determine original trainer ID
     if (otIdType == OT_ID_RANDOM_NO_SHINY) //Pokemon cannot be shiny
     {
@@ -2393,23 +2394,35 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         value = fixedOtId;
     }
     else //Player is the OT
-    {
+    {        
         value = gSaveBlock2Ptr->playerTrainerId[0]
               | (gSaveBlock2Ptr->playerTrainerId[1] << 8)
               | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
               | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
         
-        if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
-        {
-            u32 shinyValue;
-            u32 rolls = 0;
-            do
-            {
+        
+        if (FlagGet(FLAG_SYS_DEXNAV_SEARCH) && DexNavTryMakeShinyMon())
+        {            
+            do {
                 personality = Random32();
                 shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-                rolls++;
-            } while (shinyValue >= SHINY_ODDS && rolls < SHINY_CHARM_REROLLS);
+            } while (shinyValue >= SHINY_ODDS);
         }
+        else
+        {
+            if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
+            {
+                u32 shinyValue;
+                u32 rolls = 0;
+                do
+                {
+                    personality = Random32();
+                    shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
+                    rolls++;
+                } while (shinyValue >= SHINY_ODDS && rolls < SHINY_CHARM_REROLLS);
+            }
+        }
+        
     }
 
     SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
@@ -6852,6 +6865,9 @@ void HandleSetPokedexFlag(u16 nationalNum, u8 caseId, u32 personality)
         if (NationalPokedexNumToSpecies(nationalNum) == SPECIES_SPINDA)
             gSaveBlock2Ptr->pokedex.spindaPersonality = personality;
     }
+    
+    if (caseId == FLAG_SET_SEEN)
+        TryIncrementSpeciesSearchLevel(nationalNum);    //encountering pokemon increments its search level
 }
 
 const u8 *GetTrainerClassNameFromId(u16 trainerId)

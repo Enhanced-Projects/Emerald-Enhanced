@@ -93,6 +93,7 @@ static const u8 sTextWindowFrame17d_Gfx[] = INCBIN_U8("graphics/text_window/17d.
 static const u8 sTextWindowFrame18d_Gfx[] = INCBIN_U8("graphics/text_window/18d.4bpp");
 static const u8 sTextWindowFrame19d_Gfx[] = INCBIN_U8("graphics/text_window/19d.4bpp");
 static const u8 sTextWindowFrame20d_Gfx[] = INCBIN_U8("graphics/text_window/20d.4bpp");
+static const u16 sTextWindowDexnavFrame[] = INCBIN_U16("graphics/text_window/dexnav_pal.gbapal");
 
 static const u16 sTextWindowPalettes[][16] =
 {
@@ -150,6 +151,7 @@ static const struct TilesPal sWindowFramesDark[WINDOW_FRAMES_COUNT] =
     {sTextWindowFrame19d_Gfx, sTextWindowFrame19d_Pal},
     {sTextWindowFrame20d_Gfx, sTextWindowFrame20d_Pal}
 };
+static const struct TilesPal sDexnavWindowFrame = {gTextWindowFrame1_Gfx, sTextWindowDexnavFrame};
 
 // code
 const struct TilesPal *GetWindowFrameTilesPal(u8 id)
@@ -302,3 +304,10 @@ void sub_8098C6C(u8 bg, u16 destOffset, u8 palOffset)
     LoadBgTiles(bg, sWindowFrames[gSaveBlock2Ptr->optionsWindowFrameType].tiles, 0x120, destOffset);
     LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, palOffset, 0x20);
 }
+
+void LoadDexNavWindowGfx(u8 windowId, u16 destOffset, u8 palOffset)
+{
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sDexnavWindowFrame.tiles, 0x120, destOffset);
+    LoadPalette(sDexnavWindowFrame.pal, palOffset, 32);
+}
+

@@ -206,7 +206,7 @@ struct BaseStats
  /* 0x19 */ u8 safariZoneFleeRate;
  /* 0x1A */ u8 bodyColor : 7;
             u8 noFlip : 1;
-};
+}; /* size = 28 */
 
 struct BattleMove
 {
