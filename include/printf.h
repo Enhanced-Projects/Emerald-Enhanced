@@ -28,7 +28,6 @@
 //        These routines are thread safe and reentrant.
 //
 ///////////////////////////////////////////////////////////////////////////////
-#if DEBUG==1
 
 #ifndef _PRINTF_H_
 #define _PRINTF_H_
@@ -115,5 +114,3 @@ int fctprintf(void (*out)(char character, void* arg), void* arg, const char* for
 
 
 #endif  // _PRINTF_H_
-
-#endif // debug

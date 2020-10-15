@@ -1,4 +1,3 @@
-#if DEBUG==1
 ///////////////////////////////////////////////////////////////////////////////
 // \author (c) Marco Paland (info@paland.com)
 //             2014-2019, PALANDesign Hannover, Germany
@@ -915,4 +914,3 @@ int fctprintf(void (*out)(char character, void* arg), void* arg, const char* for
   va_end(va);
   return ret;
 }
-#endif
