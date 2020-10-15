@@ -23,6 +23,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+#include "printf.h"
 #include "mgba.h"
  
 #define REG_DEBUG_ENABLE (vu16*) 0x4FFF780
@@ -30,14 +31,12 @@
 #define REG_DEBUG_STRING (char*) 0x4FFF600
  
 void mgba_printf(int level, const char* ptr, ...) {
-#if !MODERN
     va_list args;
     level &= 0x7;
     va_start(args, ptr);
-    vsprintf(REG_DEBUG_STRING, ptr, args);
+    vsnprintf(REG_DEBUG_STRING, 0x200, ptr, args);
     va_end(args);
     *REG_DEBUG_FLAGS = level | 0x100;
-#endif
 }
  
 bool8 mgba_open(void) {
