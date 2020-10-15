@@ -538,7 +538,7 @@ static void AddSearchWindowText(u16 species, u8 proximity, u8 searchLevel, bool8
         StringExpandPlaceholders(gStringVar4, sText_DexNavChainLong);
     else
         StringExpandPlaceholders(gStringVar4, sText_DexNavChain);
-    AddTextPrinterParameterized3(windowId, 0, SEARCH_ARROW_X - 16, 12, sSearchFontColor, TEXT_SPEED_FF, gStringVar4);
+    AddTextPrinterParameterized3(windowId, 0, SEARCH_ARROW_X - 16, 12, sSearchFontColor, TEXT_SPEED_FF, gStringVar4);    
     
     CopyWindowToVram(sDexNavSearchDataPtr->windowId, 2);
 }
@@ -658,11 +658,11 @@ static bool8 DexNavPickTile(u8 environment, u8 areaX, u8 areaY, bool8 smallScan)
                 continue;
             }
             
-            if (MetatileBehavior_IsEncounterTile(tileBehaviour))
-            {                
-                switch (environment)
+            switch (environment)
+            {
+            case ENCOUNTER_TYPE_LAND:
+                if (MetatileBehavior_IsLandWildEncounter(tileBehaviour))
                 {
-                case ENCOUNTER_TYPE_LAND:
                     if (currMapType == MAP_TYPE_UNDERGROUND)
                     { // inside (cave)
                         if (IsZCoordMismatchAt(gObjectEvents[gPlayerAvatar.spriteId].currentElevation, topX, topY))
@@ -676,20 +676,20 @@ static bool8 DexNavPickTile(u8 environment, u8 areaX, u8 areaY, bool8 smallScan)
                         scale = 100 - (GetPlayerDistance(topX, topY) * 2);
                         weight = (Random() % scale <= 5) && !MapGridIsImpassableAt(topX, topY);
                     }
-                    break;
-                case ENCOUNTER_TYPE_WATER:
-                    if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehaviour))
-                    {
-                        u8 scale = 320 - (smallScan * 200) - (GetPlayerDistance(topX, topY) / 2);
-                        if (IsZCoordMismatchAt(gObjectEvents[gPlayerAvatar.spriteId].currentElevation, topX, topY))
-                            break;
-
-                        weight = (Random() % scale <= 1) && !MapGridIsImpassableAt(topX, topY);
-                    }
-                    break;
-                default:
-                    break;
                 }
+                break;
+            case ENCOUNTER_TYPE_WATER:
+                if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehaviour))
+                {
+                    u8 scale = 320 - (smallScan * 200) - (GetPlayerDistance(topX, topY) / 2);
+                    if (IsZCoordMismatchAt(gObjectEvents[gPlayerAvatar.spriteId].currentElevation, topX, topY))
+                        break;
+
+                    weight = (Random() % scale <= 1) && !MapGridIsImpassableAt(topX, topY);
+                }
+                break;
+            default:
+                break;
             }
             
             if (weight > 0)
@@ -756,9 +756,7 @@ static bool8 TryStartHiddenMonFieldEffect(u8 environment, u8 xSize, u8 ySize, bo
             fldEffId = FLDEFF_WATER_SURFACING;
             break;
         default:
-            //we found a good tile, but somehow ended up here. default effect
-            fldEffId = FLDEFF_BERRY_TREE_GROWTH_SPARKLE;
-            break;
+            return FALSE;
         }
         
         if (fldEffId != 0)
