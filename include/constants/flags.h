@@ -775,7 +775,7 @@
 #define FLAG_HIDE_PLAYERS_HOUSE_DAD                                 0x2DE
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING      0x2DF
 #define FLAG_HIDE_LITTLEROOT_TOWN_DAWNS_HOUSE_RIVAL_SIBLING         0x2E0
-#define FLAG_UNUSED_0x2E1                                           0x2E1
+#define FLAG_SYS_DEXNAV_GET                                         0x2E1
 #define FLAG_HIDE_ROUTE_104_MR_BRINEY                               0x2E2 // EE-Unused?
 #define FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY                           0x2E3 // EE-Unused?
 #define FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN                            0x2E4 // EE-Unused?
@@ -1001,8 +1001,8 @@
 #define FLAG_HIDE_ROUTE_111_SECRET_POWER_MAN                        0x3C0
 #define FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION                       0x3C1
 #define FLAG_HIDE_LILYCOVE_DEPARTMENT_STORE_ROOFTOP_SALE_WOMAN      0x3C2
-#define FLAG_UNUSED_0x3C3                                           0x3C3
-#define FLAG_UNUSED_0x3C4                                           0x3C4
+#define FLAG_SYS_DEXNAV_SEARCH                                      0x3C3
+#define FLAG_SYS_DETECTOR_MODE                                      0x3C4
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_FAMILIAR_AQUA_GRUNT 0x3C5
 #define FLAG_HIDE_ROUTE_118_STEVEN                                  0x3C6
 #define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN                0x3C7

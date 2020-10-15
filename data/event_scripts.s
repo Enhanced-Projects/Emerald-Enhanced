@@ -1194,3 +1194,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/MirageCave_House6/scripts.inc"
 
 	.include "data/maps/MirageCave_House7/scripts.inc"
+    .include "data/scripts/dexnav.inc"
+    

@@ -583,6 +583,14 @@ extern u8 BerryTree_EventScript_ItemUsePlantBerry[];
 extern u8 BerryTree_EventScript_ItemUseWailmerPail[];
 extern u8 BattleFrontier_OutsideEast_EventScript_WaterSudowoodo[];
 
+// Dexnav
+extern const u8 EventScript_StartDexNavBattle[];
+extern const u8 EventScript_NotFoundNearby[];
+extern const u8 EventScript_PokemonGotAway[];
+extern const u8 EventScript_LostSignal[];
+extern const u8 EventScript_TooDark[];
+extern const u8 EventScript_MovedTooFast[];
+
 // overworld
 extern const u8 EventScript_WhiteOut[];
 extern const u8 EventScript_DoLinkRoomExit[];

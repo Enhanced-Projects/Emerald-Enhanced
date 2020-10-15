@@ -95,6 +95,15 @@ const struct WildPokemon gLittlerootTown_WaterMons[] =
 
 const struct WildPokemonInfo gLittlerootTown_WaterMonsInfo = {4, gLittlerootTown_WaterMons};
 
+ const struct WildPokemon gLittlerootTown_HiddenMons[] =//dexnav only special species
+{
+	{5, 5, SPECIES_IGGLYBUFF},
+	{5, 5, SPECIES_PICHU},
+	{5, 5, SPECIES_HAPPINY},
+};
+
+const struct WildPokemonInfo gLittlerootTown_HiddenMonsInfo = {3, gLittlerootTown_HiddenMons};
+
 const struct WildPokemon gLittlerootTown_FishingMons[] =
 {
 	{15, 20, SPECIES_MUDKIP},//70% old
