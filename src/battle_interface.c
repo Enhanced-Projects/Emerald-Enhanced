@@ -1075,8 +1075,8 @@ void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
             ConvertIntToDecimalStringN(text, value, STR_CONV_MODE_LEFT_ALIGN, 4);
             windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 3, 5, bgThemeColor, &windowId);
             objVram = (void*)(OBJ_VRAM0);
-            objVram += spriteTileNum + 0xB40;
-            HpTextIntoHealthboxObject(objVram, windowTileData, 2);
+            objVram += spriteTileNum + 0xB20;
+            HpTextIntoHealthboxObject(objVram, windowTileData, 3);
             RemoveWindowOnHealthbox(windowId);
         }
         else // singles, current
@@ -1086,11 +1086,11 @@ void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
             text[5] = EOS;
             windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 0, 5, bgThemeColor, &windowId);
             objVram = (void*)(OBJ_VRAM0);
-            objVram += spriteTileNum + 0x3E0;
-            HpTextIntoHealthboxObject(objVram, windowTileData, 1);
+            objVram += spriteTileNum + 0x3C0;
+            HpTextIntoHealthboxObject(objVram, windowTileData, 2);
             objVram = (void*)(OBJ_VRAM0);
             objVram += spriteTileNum + 0xB00;
-            HpTextIntoHealthboxObject(objVram, windowTileData + 0x20, 2);
+            HpTextIntoHealthboxObject(objVram, windowTileData + 0x40, 2);
             RemoveWindowOnHealthbox(windowId);
         }
     }
@@ -1155,7 +1155,7 @@ static void UpdateHpTextInHealthboxInDoubles(u8 healthboxSpriteId, s16 value, u8
             {
                 ConvertIntToDecimalStringN(text, value, STR_CONV_MODE_LEFT_ALIGN, 4);
                 windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 0, 5, 0, &windowId);
-                HpTextIntoHealthboxObject((void*)(OBJ_VRAM0) + spriteTileNum + 0xC0, windowTileData, 2);
+                HpTextIntoHealthboxObject((void*)(OBJ_VRAM0) + spriteTileNum + 0xA0, windowTileData, 3);
                 RemoveWindowOnHealthbox(windowId);
                 CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_116),
                           (void*)(OBJ_VRAM0 + 0x680) + (gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP),
@@ -1168,7 +1168,7 @@ static void UpdateHpTextInHealthboxInDoubles(u8 healthboxSpriteId, s16 value, u8
                 text[5] = EOS;
                 windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 4, 5, 0, &windowId);
                 FillHealthboxObject(objVram, 0, 3); // Erases HP bar leftover.
-                HpTextIntoHealthboxObject((void*)(OBJ_VRAM0 + 0x60) + spriteTileNum, windowTileData, 3);
+                HpTextIntoHealthboxObject((void*)(OBJ_VRAM0 + 0x20) + spriteTileNum, windowTileData, 4);
                 RemoveWindowOnHealthbox(windowId);
             }
         }
@@ -1322,13 +1322,15 @@ void SwapHpBarsWithHpText(void)
                 if (noBars == TRUE) // bars to text
                 {
                     healthBarSpriteId = gSprites[gHealthboxSpriteIds[i]].hMain_HealthBarSpriteId;
-
+                    gSprites[healthBarSpriteId].oam.paletteNum = 4;
                     CpuFill32(0, (void*)(OBJ_VRAM0 + gSprites[healthBarSpriteId].oam.tileNum * TILE_SIZE_4BPP), 0x100);
                     UpdateHpTextInHealthboxInDoubles(gHealthboxSpriteIds[i], GetMonData(&gPlayerParty[gBattlerPartyIndexes[i]], MON_DATA_HP), HP_CURRENT);
                     UpdateHpTextInHealthboxInDoubles(gHealthboxSpriteIds[i], GetMonData(&gPlayerParty[gBattlerPartyIndexes[i]], MON_DATA_MAX_HP), HP_MAX);
                 }
                 else // text to bars
                 {
+                    healthBarSpriteId = gSprites[gHealthboxSpriteIds[i]].hMain_HealthBarSpriteId;
+                    gSprites[healthBarSpriteId].oam.paletteNum = 5;
                     UpdateStatusIconInHealthbox(gHealthboxSpriteIds[i]);
                     UpdateHealthboxAttribute(gHealthboxSpriteIds[i], &gPlayerParty[gBattlerPartyIndexes[i]], HEALTHBOX_HEALTH_BAR);
                     CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_117), (void*)(OBJ_VRAM0 + 0x680 + gSprites[gHealthboxSpriteIds[i]].oam.tileNum * TILE_SIZE_4BPP), 32);
@@ -1346,7 +1348,7 @@ void SwapHpBarsWithHpText(void)
                     else
                     {
                         healthBarSpriteId = gSprites[gHealthboxSpriteIds[i]].hMain_HealthBarSpriteId;
-
+                        gSprites[healthBarSpriteId].oam.paletteNum = 4;
                         CpuFill32(0, (void *)(OBJ_VRAM0 + gSprites[healthBarSpriteId].oam.tileNum * 32), 0x100);
                         UpdateHpTextInHealthboxInDoubles(gHealthboxSpriteIds[i], GetMonData(&gEnemyParty[gBattlerPartyIndexes[i]], MON_DATA_HP), HP_CURRENT);
                         UpdateHpTextInHealthboxInDoubles(gHealthboxSpriteIds[i], GetMonData(&gEnemyParty[gBattlerPartyIndexes[i]], MON_DATA_MAX_HP), HP_MAX);
@@ -1354,6 +1356,8 @@ void SwapHpBarsWithHpText(void)
                 }
                 else // text to bars
                 {
+                    healthBarSpriteId = gSprites[gHealthboxSpriteIds[i]].hMain_HealthBarSpriteId;
+                    gSprites[healthBarSpriteId].oam.paletteNum = 5;
                     UpdateStatusIconInHealthbox(gHealthboxSpriteIds[i]);
                     UpdateHealthboxAttribute(gHealthboxSpriteIds[i], &gEnemyParty[gBattlerPartyIndexes[i]], HEALTHBOX_HEALTH_BAR);
                     if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
@@ -1362,6 +1366,24 @@ void SwapHpBarsWithHpText(void)
             }
             gSprites[gHealthboxSpriteIds[i]].hMain_Data7 ^= 1;
         }
+    }
+}
+
+void ResetHpPalette(void)
+{
+    s32 i;
+    u8 healthBarSpriteId;
+
+    for (i = 0; i < gBattlersCount; i++)
+    {
+        bool8 noBars;
+
+        noBars = gBattleSpritesDataPtr->battlerData[i].hpNumbersNoBars;
+        healthBarSpriteId = gSprites[gHealthboxSpriteIds[i]].hMain_HealthBarSpriteId;
+        if (noBars == TRUE)
+            gSprites[healthBarSpriteId].oam.paletteNum = 4;
+        else
+            gSprites[healthBarSpriteId].oam.paletteNum = 5;
     }
 }
 
