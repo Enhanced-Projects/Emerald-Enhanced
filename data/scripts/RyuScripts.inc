@@ -1039,6 +1039,8 @@ SB_CheckMeloettaEncounter::
 	case 255, Ryu_DoMeloettaRoll
     case 200, Ryu_MeloettaWatchingMsg
 	case 100, Ryu_BeingWatched
+	compare VAR_RESULT, 255
+	goto_if_ge Ryu_DoMeloettaRoll
 	release
 	end
 
