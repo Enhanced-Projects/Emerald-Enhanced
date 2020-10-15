@@ -1210,9 +1210,7 @@ int RyuGetMaxBossChance()
 {
     u8 MaxChance = 2;
 
-    MaxChance -= (gSaveBlock1Ptr->dexNavChain * 2);
-
-    mgba_printf(LOGINFO, "DexNav chain is %d, max chance is now %d", gSaveBlock1Ptr->dexNavChain, MaxChance);
+    MaxChance -= (gSaveBlock1Ptr->dexNavChain * 3);
     return MaxChance;
 }
 
