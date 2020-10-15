@@ -1089,7 +1089,7 @@ void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
             HpTextIntoHealthboxObject(objVram, windowTileData, 2);
             objVram = (void*)(OBJ_VRAM0);
             objVram += spriteTileNum + 0xB00;
-            HpTextIntoHealthboxObject(objVram, windowTileData + 0x40, 2);
+            HpTextIntoHealthboxObject(objVram, windowTileData + 0x40, 1);
             RemoveWindowOnHealthbox(windowId);
         }
     }
