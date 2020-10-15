@@ -157,6 +157,7 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
         }
         break;
     default:
+        ResetHpPalette();
         SetVBlankCallback(VBlankCB_Battle);
         sub_80A95F4();
         BeginHardwarePaletteFade(0xFF, 0, 0x10, 0, 1);
