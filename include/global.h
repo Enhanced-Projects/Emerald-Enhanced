@@ -9,6 +9,7 @@
 #include "mgba.h"
 #include "constants/flags.h"
 #include "constants/vars.h"
+#include "constants/species.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");

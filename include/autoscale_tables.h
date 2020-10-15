@@ -38,14 +38,12 @@ enum
 {
     SCALING_TYPE_WILD,
     SCALING_TYPE_TRAINER,
-    SCALING_TYPE_GYM_LEADER,
-    SCALING_TYPE_ELITE_FOUR,
+    SCALING_TYPE_BOSS,
 };
 
 // Final levels will be player party average + the adjustment here + Random() % 5
-static const s16 sAutoscalingAdjustments[4] = {
+static const s16 sAutoscalingAdjustments[3] = {
     [SCALING_TYPE_WILD] = -8,
     [SCALING_TYPE_TRAINER] = -5,
-    [SCALING_TYPE_GYM_LEADER] = 0,
-    [SCALING_TYPE_ELITE_FOUR] = 3,
+    [SCALING_TYPE_BOSS] = 0, // E4, gym leaders, etc.
 };

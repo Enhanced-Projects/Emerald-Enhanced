@@ -8,7 +8,6 @@
 #include "frontier_util.h"
 #include "battle_tower.h"
 #include "random.h"
-#include "constants/species.h"
 #include "constants/battle_ai.h"
 #include "constants/battle_factory.h"
 #include "constants/battle_frontier.h"
@@ -208,7 +207,7 @@ static void InitFactoryChallenge(void)
     for (i = 0; i < 6; i++)
         gSaveBlock2Ptr->frontier.rentalMons[i].monId = 0xFFFF;
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
-        gFrontierNpcTeam[i] = 0xFFFF;
+        gFrontierTempParty[i] = 0xFFFF;
 
     SetDynamicWarp(0, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, -1);
     gTrainerBattleOpponent_A = 0;
@@ -344,7 +343,7 @@ static void GenerateOpponentMons(void)
             continue;
 
         species[i] = gFacilityTrainerMons[monId].species;
-        gFrontierNpcTeam[i] = monId;
+        gFrontierTempParty[i] = monId;
         i++;
     }
 }
@@ -365,11 +364,11 @@ static void SetRentalsToOpponentParty(void)
 
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
-        gSaveBlock2Ptr->frontier.rentalMons[i + 3].monId = gFrontierNpcTeam[i];
+        gSaveBlock2Ptr->frontier.rentalMons[i + 3].monId = gFrontierTempParty[i];
         gSaveBlock2Ptr->frontier.rentalMons[i + 3].ivs = GetBoxMonData(&gEnemyParty[i].box, MON_DATA_ATK_IV, NULL);
         gSaveBlock2Ptr->frontier.rentalMons[i + 3].personality = GetMonData(&gEnemyParty[i], MON_DATA_PERSONALITY, NULL);
         gSaveBlock2Ptr->frontier.rentalMons[i + 3].abilityNum = GetBoxMonData(&gEnemyParty[i].box, MON_DATA_ABILITY_NUM, NULL);
-        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gFacilityTrainerMons[gFrontierNpcTeam[i]].heldItem);
+        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gFacilityTrainerMons[gFrontierTempParty[i]].heldItem);
     }
 }
 
@@ -569,7 +568,7 @@ static void GetOpponentMostCommonMonType(void)
         typesCount[i] = 0;
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
-        u32 species = gFacilityTrainerMons[gFrontierNpcTeam[i]].species;
+        u32 species = gFacilityTrainerMons[gFrontierTempParty[i]].species;
 
         typesCount[gBaseStats[species].type1]++;
         if (gBaseStats[species].type1 != gBaseStats[species].type2)
@@ -605,7 +604,7 @@ static void GetOpponentBattleStyle(void)
 
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
-        u16 monId = gFrontierNpcTeam[i];
+        u16 monId = gFrontierTempParty[i];
         for (j = 0; j < MAX_MON_MOVES; j++)
         {
             u8 battleStyle = GetMoveBattleStyle(gFacilityTrainerMons[monId].moves[j]);

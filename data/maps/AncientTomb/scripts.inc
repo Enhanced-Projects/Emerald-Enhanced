@@ -194,7 +194,7 @@ AT_LanaEvent3::
 AT_SV_Battle::
 	setvar VAR_RYU_DS_LANA_STAGE, 86
 	savebgm MUS_RG_NANADUNGEON
-	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 115
 	special SavePlayerParty
 	trainerbattle 10 TRAINER_RED, 0, NULL, AT_SV_GaryBattleDefeat
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
@@ -208,7 +208,6 @@ AT_SV_Battle::
 	
 AT_SV_ReturnFromBattle::
 	fadenewbgm MUS_RG_NANADUNGEON
-	clearflag FLAG_RYU_DO_NOT_AUTOSCALE
 	msgbox AT_SV_Story10 MSGBOX_DEFAULT
 	closemessage
 	playmoncry SPECIES_REGISTEEL, 0

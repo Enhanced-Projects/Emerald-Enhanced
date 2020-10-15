@@ -4,7 +4,7 @@ RustboroCity_Gym_MapScripts:: @ 8212F30
 RustboroCity_Gym_EventScript_Roxanne:: @ 8212F31
 	lock
 	faceplayer
-	setflag FLAG_RYU_ALTERNATE_SCALE
+	setflag FLAG_RYU_BOSS_SCALE
 	special checkbadgecount
     switch VAR_RESULT
 	case 0, ROXANNE1
@@ -27,7 +27,7 @@ RG_Reset::
 	cleartrainerflag TRAINER_ROXANNE_2
 	cleartrainerflag TRAINER_ROXANNE_3
 	cleartrainerflag TRAINER_ROXANNE_4
-	clearflag FLAG_RYU_ALTERNATE_SCALE
+	clearflag FLAG_RYU_BOSS_SCALE
 	setflag FLAG_BADGE01_GET
 	setflag FLAG_DEFEATED_RUSTBORO_GYM
 	msgbox RustboroCity_Gym_Text_RoxannePostBattle

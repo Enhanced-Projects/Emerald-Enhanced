@@ -64,7 +64,7 @@ PBG_MoveNormanSouth::
 PBG_NEWGYMBATTLE::
 	lock
 	faceplayer
-	setflag FLAG_RYU_ALTERNATE_SCALE
+	setflag FLAG_RYU_BOSS_SCALE
 	special checkbadgecount
     switch VAR_RESULT
 	case 0, norman1
@@ -110,7 +110,7 @@ PG_Reset::
 	cleartrainerflag TRAINER_NORMAN_2
 	cleartrainerflag TRAINER_NORMAN_3
 	cleartrainerflag TRAINER_NORMAN_4
-	clearflag FLAG_RYU_ALTERNATE_SCALE
+	clearflag FLAG_RYU_BOSS_SCALE
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
 	call_if_unset FLAG_RYU_GYM5HANDOUT, RyuGymItemReward5

@@ -810,8 +810,10 @@ void CheckSaveFileSize(void)//used in debug menu from time to time as a special 
 {
     u32 size = (sizeof(struct SaveBlock1));
     u32 size2 = (sizeof(struct SaveBlock2));
+    u32 size3 = (sizeof(struct BoxPokemon));
     ConvertIntToDecimalStringN(gStringVar1, size, STR_CONV_MODE_LEFT_ALIGN, 6);
     ConvertIntToDecimalStringN(gStringVar2, size2, STR_CONV_MODE_LEFT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gStringVar3, size3, STR_CONV_MODE_LEFT_ALIGN, 6);
 }
 
 void ForceSoftReset(void)//only used when you use Random Battle from the main menu. Otherwise, the player would lose their party and/or keep their random mons.

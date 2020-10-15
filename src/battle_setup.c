@@ -43,7 +43,6 @@
 #include "constants/songs.h"
 #include "constants/map_types.h"
 #include "constants/maps.h"
-#include "constants/species.h"
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
 
@@ -1233,8 +1232,8 @@ void BattleSetup_StartTrainerBattle(void)
 
 static void CB2_EndTrainerBattle(void)
 {
-    FlagClear(FLAG_RYU_DO_NOT_AUTOSCALE);
-    FlagClear(FLAG_RYU_ALTERNATE_SCALE);
+    VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
+    FlagClear(FLAG_RYU_BOSS_SCALE);
     FlagClear(FLAG_RYU_MAX_SCALE);
     
     if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)

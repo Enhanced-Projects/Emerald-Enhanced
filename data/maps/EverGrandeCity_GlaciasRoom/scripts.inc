@@ -43,7 +43,8 @@ EverGrandeCity_GlaciasRoom_EventScript_Glacia:: @ 8228469
 	goto_if_set FLAG_DEFEATED_ELITE_4_GLACIA, EverGrandeCity_GlaciasRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
 	msgbox EverGrandeCity_GlaciasRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
-	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 90
+	setflag FLAG_RYU_BOSS_SCALE
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltGlacia
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerGlacia	
 	trainerbattle_no_intro TRAINER_GLACIA, EverGrandeCity_GlaciasRoom_Text_Defeat

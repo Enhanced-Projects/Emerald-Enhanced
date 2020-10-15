@@ -5,7 +5,7 @@ FortreeCity_Gym_MapScripts:: @ 82165AB
 FortreeCity_Gym_EventScript_Winona:: @ 82165C8
     lock
     faceplayer
-	setflag FLAG_RYU_ALTERNATE_SCALE
+	setflag FLAG_RYU_BOSS_SCALE
     special checkbadgecount
     switch VAR_RESULT
 	case 0, WINONA1
@@ -51,7 +51,7 @@ FG_Reset::
 	cleartrainerflag TRAINER_WINONA_2
 	cleartrainerflag TRAINER_WINONA_3
 	cleartrainerflag TRAINER_WINONA_4
-	clearflag FLAG_RYU_ALTERNATE_SCALE
+	clearflag FLAG_RYU_BOSS_SCALE
 	msgbox FortreeCity_Gym_Text_WinonaPostBattle, MSGBOX_DEFAULT
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym

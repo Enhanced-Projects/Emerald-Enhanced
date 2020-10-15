@@ -43,7 +43,8 @@ EverGrandeCity_PhoebesRoom_EventScript_Phoebe:: @ 82281CB
 	goto_if_set FLAG_DEFEATED_ELITE_4_PHOEBE, EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
 	msgbox EverGrandeCity_PhoebesRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
-	setflag FLAG_RYU_DO_NOT_AUTOSCALE
+	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 86
+	setflag FLAG_RYU_BOSS_SCALE
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltPhoebe
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerPhoebe
 	trainerbattle_no_intro TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat

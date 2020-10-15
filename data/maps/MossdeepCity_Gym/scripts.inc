@@ -5,7 +5,7 @@ MossdeepCity_Gym_EventScript_TateAndLiza:: @ 8220898
 	lock
 	faceplayer
 	setflag FLAG_RYU_IN_MOSSDEEP_GYM
-	setflag FLAG_RYU_ALTERNATE_SCALE
+	setflag FLAG_RYU_BOSS_SCALE
 	special checkbadgecount
 	switch VAR_RESULT
     case 0, SABRINA1
@@ -31,7 +31,7 @@ MDG_Reset::
 	cleartrainerflag TRAINER_TATE_AND_LIZA_3
 	cleartrainerflag TRAINER_TATE_AND_LIZA_4
 	cleartrainerflag TRAINER_TATE_AND_LIZA_SINGLE
-	clearflag FLAG_RYU_ALTERNATE_SCALE
+	clearflag FLAG_RYU_BOSS_SCALE
 	clearflag FLAG_RYU_IN_MOSSDEEP_GYM
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym

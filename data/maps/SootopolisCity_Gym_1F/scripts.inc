@@ -85,7 +85,7 @@ SootopolisCity_Gym_1F_Movement_FallThroughIce: @ 8224F42
 SootopolisCity_Gym_1F_EventScript_Juan:: @ 8224F44
 	lock
 	faceplayer
-	setflag FLAG_RYU_ALTERNATE_SCALE
+	setflag FLAG_RYU_BOSS_SCALE
 	special checkbadgecount
     switch VAR_RESULT
     case 0, Juan1
@@ -110,7 +110,7 @@ SG_Reset::
 	cleartrainerflag TRAINER_JUAN_2
 	cleartrainerflag TRAINER_JUAN_3
 	cleartrainerflag TRAINER_JUAN_4
-	clearflag FLAG_RYU_ALTERNATE_SCALE
+	clearflag FLAG_RYU_BOSS_SCALE
 	msgbox SootopolisCity_Gym_1F_Text_JuanPostBattle, MSGBOX_DEFAULT
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
