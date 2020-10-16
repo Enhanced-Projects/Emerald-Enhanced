@@ -161,7 +161,7 @@ void ResetMenuAndMonGlobals(void)
 
 void NewGameInitData(void)
 {
-    if (!(FlagGet(FLAG_SYS_GAME_CLEAR)))
+    if (!FlagGet(FLAG_SYS_GAME_CLEAR))
         RtcReset();
 
     gDifferentSaveFile = 1;
@@ -295,7 +295,8 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_103_MAGMA_MEETING);
     FlagSet(FLAG_RYU_HIDE_114_MAXIE);
     FlagSet(FLAG_RYU_RUSTURF_CLEARING_MAGMA);
-    
+    VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
+
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;
 }
