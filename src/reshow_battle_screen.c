@@ -28,17 +28,6 @@ void nullsub_35(void)
 
 }
 
-void ReshowBattleScreenAfterMenu(void)
-{
-    gPaletteFade.bufferTransferDisabled = 1;
-    SetHBlankCallback(NULL);
-    SetVBlankCallback(NULL);
-    SetGpuReg(REG_OFFSET_MOSAIC, 0);
-    gBattleScripting.reshowMainState = 0;
-    gBattleScripting.reshowHelperState = 0;
-    SetMainCallback2(CB2_ReshowBattleScreenAfterMenu);
-}
-
 static void CB2_ReshowBattleScreenAfterMenu(void)
 {
     switch (gBattleScripting.reshowMainState)
@@ -168,6 +157,17 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
     }
 
     gBattleScripting.reshowMainState++;
+}
+
+void ReshowBattleScreenAfterMenu(void)
+{
+    gPaletteFade.bufferTransferDisabled = 1;
+    SetHBlankCallback(NULL);
+    SetVBlankCallback(NULL);
+    SetGpuReg(REG_OFFSET_MOSAIC, 0);
+    gBattleScripting.reshowMainState = 0;
+    gBattleScripting.reshowHelperState = 0;
+    SetMainCallback2(CB2_ReshowBattleScreenAfterMenu);
 }
 
 static void sub_80A95F4(void)
