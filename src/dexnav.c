@@ -1223,8 +1223,6 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     u8 iv[3];
     u8 i;
     u8 perfectIv = 31;
-    mgba_printf(LOGINFO, "Current chance is 1/%d", RyuGetMaxBossChance());
-    
     
     if ((Random() % RyuGetMaxBossChance() <= 1))// || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {

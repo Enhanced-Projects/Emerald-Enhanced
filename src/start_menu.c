@@ -434,15 +434,18 @@ static void RemoveExtraStartMenuWindows(void)
 
 EWRAM_DATA static u8 sPrintNumberWindowId = 1;
 EWRAM_DATA static u8 sPrintNumberWindow2Id = 2;
-const u8 gText_RyuLifeSkills[] = _("Skills");
-const u8 gText_RyuMiningSkillPrefix[] = _(" M:");
-const u8 gText_RyuBotanySkillPrefix[] = _(" B:");
+const u8 gText_RyuLifeSkills[] = _("Skills    ");
+const u8 gText_RyuMiningSkillPrefix[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE} M:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
+const u8 gText_RyuBotanySkillPrefix[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}  B:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
+const u8 gText_RyuAlchemySkillPrefix[] = _("{COLOR LIGHT_RED}{SHADOW RED} A:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
+const u8 gText_SomeSpaces[] = _("  ");
+
 void PrintNumberToScreen(s32 num)
 {
     struct WindowTemplate template;
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 1, 1, 13, 7, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 1, 13, 6, 15, 8);
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
@@ -459,14 +462,13 @@ void PrintNumberToScreen(s32 num)
     RtcCalcLocalTime();
     StringCopy(gStringVar3, gText_HighlightTransparent);
     StringAppend(gStringVar3, gText_SpaceTime);
-    ConvertIntToDecimalStringN(gStringVar2, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
+    ConvertIntToDecimalStringN(gStringVar2, gLocalTime.hours, STR_CONV_MODE_RIGHT_ALIGN, 2);
     StringAppend(gStringVar3, gStringVar2);
     StringAppend(gStringVar3, gText_colon);
     ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringAppend(gStringVar3, gStringVar2);
-    StringAppend(gStringVar3, gText_colon);
-    ConvertIntToDecimalStringN(gStringVar2, gLocalTime.seconds, STR_CONV_MODE_LEADING_ZEROS, 2);
-    StringAppend(gStringVar3, gStringVar2);
+    StringAppend(gStringVar3, gText_ThisIsAPokemon);
+    StringAppend(gStringVar3, gText_SomeSpaces);
     //print 'day', 'dusk', 'night' or 'dawn' in reference to evolution
     if (gLocalTime.hours >= 17 || gLocalTime.hours < 6)
     {
@@ -503,7 +505,7 @@ void PrintNumberToScreen(s32 num)
 
     //print all text
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 0, 0, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 56, 0, 0, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 62, 0, 0, NULL);
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 0, 10, 0, NULL);
     //print KO's
     StringCopy(gStringVar1, gText_RyuKills);
@@ -514,7 +516,7 @@ void PrintNumberToScreen(s32 num)
     StringCopy(gStringVar1, gText_RyuBadges);
     ConvertIntToDecimalStringN(gStringVar2, (CountBadges()), STR_CONV_MODE_LEFT_ALIGN, 1);
     StringAppend(gStringVar1, gStringVar2);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 56, 22, 0, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 61, 22, 0, NULL);
 
     //print skill levels
     StringCopy(gStringVar1, gText_RyuLifeSkills);
@@ -524,8 +526,10 @@ void PrintNumberToScreen(s32 num)
     StringAppend(gStringVar1, gText_RyuBotanySkillPrefix);
     ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_PLAYER_BOTANY_SKILL)), STR_CONV_MODE_LEFT_ALIGN, 1);
     StringAppend(gStringVar1, gStringVar2);
-    mgba_printf(LOGINFO, "%s", ConvertToAscii(gStringVar1));
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 36, 0, NULL);
+    StringAppend(gStringVar1, gText_RyuAlchemySkillPrefix);
+    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL)), STR_CONV_MODE_LEFT_ALIGN, 1);
+    StringAppend(gStringVar1, gStringVar2);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 34, 0, NULL);
 }
 
 void RemovePrintedNumber(void)
@@ -812,13 +816,13 @@ void DrawDevonLogo(void)
     {
         LoadSpriteSheet(&DevonScientistLogoSheet);
         LoadSpritePalette(&DevonLogoPalette);
-        MenuSpriteId1 = (CreateSprite(&DevonLogoSpriteTemplate, 16, 86, 0));
+        MenuSpriteId1 = (CreateSprite(&DevonLogoSpriteTemplate, 16, 80, 0));
     }
     else
     {
         LoadSpriteSheet(&DevonLogoSheet);
         LoadSpritePalette(&DevonLogoPalette);
-        MenuSpriteId1 = (CreateSprite(&DevonScientistLogoSpriteTemplate, 16, 86, 0));
+        MenuSpriteId1 = (CreateSprite(&DevonScientistLogoSpriteTemplate, 16, 80, 0));
     }
 
     //prepare window
@@ -844,13 +848,13 @@ void DrawAquaLogo(void)
     {
         LoadSpriteSheet(&AquaShellyLogoSheet);
         LoadSpritePalette(&AquaLogoPalette);
-        MenuSpriteId1 = (CreateSprite(&AquaShellyLogoSpriteTemplate, 16, 86, 0));
+        MenuSpriteId1 = (CreateSprite(&AquaShellyLogoSpriteTemplate, 16, 80, 0));
     }
     else
     {
         LoadSpriteSheet(&AquaLogoSheet);
         LoadSpritePalette(&AquaLogoPalette);
-        MenuSpriteId1 = (CreateSprite(&AquaLogoSpriteTemplate, 16, 86, 0));
+        MenuSpriteId1 = (CreateSprite(&AquaLogoSpriteTemplate, 16, 80, 0));
     }
 
     //prepare window
@@ -874,13 +878,13 @@ void DrawMagmaLogo(void)
     {
         LoadSpriteSheet(&MagmaAltLogoSheet);
         LoadSpritePalette(&MagmaAltLogoPalette);
-        MenuSpriteId1 = (CreateSprite(&MagmaAltLogoSpriteTemplate, 15, 86, 0));
+        MenuSpriteId1 = (CreateSprite(&MagmaAltLogoSpriteTemplate, 15, 80, 0));
     }
     else
     {
         LoadSpriteSheet(&MagmaMainLogoSheet);
         LoadSpritePalette(&MagmaMainLogoPalette);
-        MenuSpriteId1 = (CreateSprite(&MagmaMainLogoSpriteTemplate, 15, 86, 0));
+        MenuSpriteId1 = (CreateSprite(&MagmaMainLogoSpriteTemplate, 15, 80, 0));
     }
 
     //prepare window
@@ -904,7 +908,7 @@ void DrawNeutralLogo(void)
 
     LoadSpriteSheet(&PokeballLogoSheet);
     LoadSpritePalette(&PokeballLogoPalette);
-    MenuSpriteId1 = (CreateSprite(&PokeballLogoSpriteTemplate, 15, 86, 0));
+    MenuSpriteId1 = (CreateSprite(&PokeballLogoSpriteTemplate, 15, 80, 0));
 }
 
 static bool32 InitStartMenuStep(void)

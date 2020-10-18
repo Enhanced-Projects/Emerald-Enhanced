@@ -2103,13 +2103,13 @@ const u8 gText_HighlightTransparent[] = _("{HIGHLIGHT 0}");
 
 const u8 gText_Buffer1Contents[] = _("{STR_VAR_1}");
 const u8 gText_DawnHi[] = _("{COLOR LIGHT_RED}{SHADOW RED}Dawn: Hi, {PLAYER}");
-const u8 gText_SpaceTime[] = _("Time: ");
+const u8 gText_SpaceTime[] = _("Time:");
 const u8 gText_Night[] = _("(Night)");
 const u8 gText_RyuDay[] = _("(Day)");
 const u8 gText_RyuDawn[] = _("(Dawn)");
 const u8 gText_Dusk[] = _("(Dusk)");
-const u8 gText_RyuKills[] = _("KO's: ");
-const u8 gText_RyuBadges[] = _("Badges: ");
+const u8 gText_RyuKills[] = _("ko's:");
+const u8 gText_RyuBadges[] = _("Badges:");
 const u8 gText_colon[] = _(":");
 const u8 gText_ColorLightBlueShadowBlue[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}");
 const u8 gText_ColorLightRedShadowRed[] = _("{COLOR LIGHT_RED}{SHADOW RED}");
@@ -2122,7 +2122,7 @@ const u8 gText_ItemRepel[] = _("Repel (100 steps)");
 const u8 gText_ItemSuperRepel[] = _("Super Repel (200 steps)");
 const u8 gText_ItemMaxRepel[] = _("Max Repel (250 steps)");
 
-const u8 gText_RyuVersion[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}Ver: ");
+const u8 gText_RyuVersion[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}Ver:");
 
 
 const u8 gText_RyuFrontierStarter1_1[] = _("Hyper Offense");
