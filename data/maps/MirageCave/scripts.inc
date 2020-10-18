@@ -12,8 +12,9 @@ MirageCave_TriggerPortal::
 	waitstate
 	fadescreen FADE_TO_BLACK
 	playse SE_THUNDER
-	@ move the player one down, one left, facing right
+	waitse
 	applymovement OBJ_EVENT_ID_PLAYER, MirageCave_PlayerMovement
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playmoncry SPECIES_GUZZLORD, 0
 	waitmoncry
 	playmoncry SPECIES_PHEROMOSA, 0
@@ -50,6 +51,7 @@ MirageCave_TriggerPortal::
 	setmetatile 13, 7, 882, 1
 	setmetatile 14, 7, 883, 1
 	special DrawWholeMapView
+	fadescreen FADE_FROM_BLACK
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
 	setvar VAR_0x8006, 8  @ num shakes

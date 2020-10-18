@@ -185,7 +185,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setvar VAR_RYU_PLAYER_BOTANY_SKILL, 5
+	warpsilent MAP_MIRAGE_CAVE, 255, 13, 8
+	waitstate
 	release
 	end
 
