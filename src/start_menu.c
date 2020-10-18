@@ -909,6 +909,9 @@ void DrawNeutralLogo(void)
     LoadSpriteSheet(&PokeballLogoSheet);
     LoadSpritePalette(&PokeballLogoPalette);
     MenuSpriteId1 = (CreateSprite(&PokeballLogoSpriteTemplate, 15, 80, 0));
+
+    SetWindowTemplateFields(&template, 0, 4, 12, 3, 2, 15, 76);
+    sPrintNumberWindow2Id = AddWindow(&template);
 }
 
 static bool32 InitStartMenuStep(void)
