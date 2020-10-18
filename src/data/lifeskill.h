@@ -270,3 +270,18 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][5] = {
         ITEM_BURN_HEAL,
     },
 };
+
+const u16 gBotanyTreeRewards[] = {//need some placeholders for 'none', as the reward function loads item names into text buffers, which will cause overflow and glitchy text.
+    ITEM_RED_APRICORN,
+    ITEM_BLUE_APRICORN,
+    ITEM_YELLOW_APRICORN,
+    ITEM_GREEN_APRICORN,
+    ITEM_PINK_APRICORN,
+    ITEM_WHITE_APRICORN,
+    ITEM_BLACK_APRICORN,
+    ITEM_STICK,
+    ITEM_MIRACLE_SEED,
+    ITEM_POISON_BARB,
+    ITEM_NONE,
+    ITEM_NONE
+};

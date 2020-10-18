@@ -160,6 +160,7 @@ bool8 SetUpFieldMove_Cut(void)
         userAbility = GetMonAbility(&gPlayerParty[GetCursorSelectionMonId()]);
         if (userAbility == ABILITY_HYPER_CUTTER)
         {
+            FlagSet(FLAG_BOTANY_HAS_HYPER_CUTTER);//tells the reward function to double results if mon has hyper cutter
             sCutSquareSide = CUT_HYPER_SIDE;
             sTileCountFromPlayer_X = 2;
             sTileCountFromPlayer_Y = 2;
@@ -310,8 +311,8 @@ bool8 FldEff_UseCutOnGrass(void)
     gTasks[taskId].data[8] = (u32)StartCutGrassFieldEffect >> 16;
     gTasks[taskId].data[9] = (u32)StartCutGrassFieldEffect;
     IncrementGameStat(GAME_STAT_USED_CUT);
-    //if (VarGet(VAR_RYU_PLAYER_BOTANY_SKILL) > 0)
-    //    RyuGetMapsecForFieldCut();
+    if (VarGet(VAR_RYU_PLAYER_BOTANY_SKILL) > 0)
+        RyuGetMapsecForFieldCut();
     return FALSE;
 }
 

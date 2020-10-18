@@ -23,6 +23,8 @@ EventScript_CutTreeDown:: @ 8290710
 	applymovement VAR_LAST_TALKED, Movement_CutTreeDown
 	waitmovement 0
 	removeobject VAR_LAST_TALKED
+	compare VAR_RYU_PLAYER_BOTANY_SKILL, 1
+	goto_if_ge RyuBotany_CheckTreeRewardItem
 	releaseall
 	end
 

@@ -1567,12 +1567,14 @@ void BotanyCheck(void)
 {
     u16 currentMapGroup = VarGet(VAR_TEMP_6);
     u16 tableSize = ARRAY_COUNT(gBotanyRewardTables[currentMapGroup]);
-    // Ideally, it would only generate a reward for each level in the skill,
-    // so for now, it just rolls the max and then only
-    // rewards the player items for the levels they've earned.
+    bool16 isHyperCutting = FlagGet(FLAG_BOTANY_HAS_HYPER_CUTTER);
     VarSet(VAR_TEMP_0, gBotanyRewardTables[currentMapGroup][Random() % tableSize]);
-    VarSet(VAR_TEMP_1, gBotanyRewardTables[currentMapGroup][Random() % tableSize]);
-    VarSet(VAR_TEMP_2, gBotanyRewardTables[currentMapGroup][Random() % tableSize]);
-    VarSet(VAR_TEMP_3, gBotanyRewardTables[currentMapGroup][Random() % tableSize]);
-    VarSet(VAR_TEMP_4, gBotanyRewardTables[currentMapGroup][Random() % tableSize]);
+    gSpecialVar_Result = isHyperCutting;
+}
+
+void BotanyTreeChop(void)
+{
+    u16 treeTableSize = (sizeof(gBotanyTreeRewards));
+    u16 rewardItem = gBotanyTreeRewards[Random() % (ARRAY_COUNT(gBotanyTreeRewards))];
+    VarSet(VAR_TEMP_0, rewardItem);
 }

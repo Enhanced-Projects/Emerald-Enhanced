@@ -2,19 +2,104 @@
 
 @The main script called when using cut on grass
 RyuScript_FieldCut::
-    special BotanyCheck
+    setvar VAR_TEMP_5, 1
+    compare VAR_RESULT, TRUE
+    call_if_eq RyuBotany_DoubleRewardHC
     delay 60
     switch VAR_RYU_PLAYER_BOTANY_SKILL
-    case 0, ryu_end
-    case 1, RyuBotany_LevelOne
-    case 2, RyuBotany_LevelTwo
-    case 3, RyuBotany_LevelThree
-    case 4, RyuBotany_LevelFour
-    case 5, RyuBotany_LevelFive
+    case 1, RyuBotanyGrass_GiveOneItem
+    case 3, RyuBotanyGrass_TryGive2Items
+    case 5, RyuBotanyGrass_TryGive3Items
+    goto ryu_end
+    end
+
+RyuBotanyGiveTreeRewardItem::
+    buffernumberstring 0, VAR_RESULT
+    buffernumberstring 1, VAR_RYU_PLAYER_BOTANY_SKILL
+    scriptdebug RBDB_BotanyDebug
+    switch VAR_RYU_PLAYER_BOTANY_SKILL
+    case 1, RyuBotanyTree_GiveOneItem
+    case 3, RyuBotanyTree_TryGive2Items
+    case 5, RyuBotanyTree_TryGive3Items
+    goto ryu_end
+
+
+@the script called when cutting trees
+RyuBotany_CheckTreeRewardItem::
+    random 4
+    compare VAR_RESULT, 2 @25% chance to get nothing from trees
+    goto_if_le RyuBotanyGiveTreeRewardItem
+    release
+    end
+
+RyuBotany_DoubleRewardHC::
+    random 2
+    compare VAR_RESULT, 1
+    goto_if_eq, ryu_return
+    setvar VAR_TEMP_5, 2
+    return
+
+RBDB_BotanyDebug::
+    .string "Random result was {STR_VAR_1}, Skill is {STR_VAR_2}$"
+
+RyuBotanyTree_GiveOneItem::
+    callnative BotanyTreeChop
+    giveitem VAR_TEMP_0, 1
+    return
+
+RyuBotanyGrass_GiveOneItem::
+    callnative BotanyCheck
+    setvar VAR_TEMP_5, 1
+    call_if_set FLAG_BOTANY_HAS_HYPER_CUTTER, RyuBotany_DoubleRewardHC
+    additem VAR_TEMP_0, VAR_TEMP_5
+    bufferitemname 0, VAR_TEMP_0
+    buffernumberstring 1, VAR_TEMP_5
+    msgbox RyuBotany_RewardMessage
+    return
+
+RyuBotany_RewardMessage:
+    .string "Obtained {STR_VAR_2} {STR_VAR_1}(s)$"
+
+RyuBotanyTree_TryGive2Items::
+    call RyuBotanyTree_GiveOneItem
+    random 2
+    compare VAR_RESULT, 1 @50% chance to get one bonus roll at rank 3
+    call_if_eq RyuBotanyTree_GiveOneItem
+    release
+    end
+
+RyuBotanyTree_TryGive3Items::
+    call RyuBotanyGrass_GiveOneItem
+    random 2
+    compare VAR_RESULT, 1
+    call_if_eq RyuBotanyGrass_GiveOneItem
+    random 4
+    compare VAR_RESULT, 1 @25% chance to get a 3rd bonus roll at rank 5.
+    call_if_eq RyuBotanyGrass_GiveOneItem
+    release
+    end
+
+RyuBotanyGrass_TryGive2Items::
+    call RyuBotanyGrass_GiveOneItem
+    random 2
+    compare VAR_RESULT, 1 @50% chance to get one bonus roll at rank 3
+    call_if_eq RyuBotanyGrass_GiveOneItem
+    release
+    end
+
+RyuBotanyGrass_TryGive3Items::
+    call RyuBotanyGrass_GiveOneItem
+    random 2
+    compare VAR_RESULT, 1
+    call_if_eq RyuBotanyGrass_GiveOneItem
+    random 4
+    compare VAR_RESULT, 1 @25% chance to get a 3rd bonus roll.
+    call_if_eq RyuBotanyGrass_GiveOneItem
+    release
     end
 
 RyuBotany_LevelOne::
-    additem VAR_TEMP_0, 1
+    additem VAR_TEMP_0, VAR_TEMP_5
     bufferitemname 0, VAR_TEMP_0
     msgbox RyuBotany_Obtained1Item
     closemessage
@@ -23,22 +108,10 @@ RyuBotany_LevelOne::
     release
     end
 
-RyuBotany_LevelTwo::
-    additem VAR_TEMP_0, 1
-    additem VAR_TEMP_1, 1
-    bufferitemname 0, VAR_TEMP_0
-    bufferitemname 1, VAR_TEMP_1
-    msgbox RyuBotany_Obtained2Items
-    closemessage
-    addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL@Player gains 1 exp per level of botany per botany check.
-    call RyuBotany_CheckLevelUp
-    release
-    end
-
 RyuBotany_LevelThree::
-    additem VAR_TEMP_0, 1
-    additem VAR_TEMP_1, 1
-    additem VAR_TEMP_2, 1
+    additem VAR_TEMP_0, VAR_TEMP_5
+    additem VAR_TEMP_1, VAR_TEMP_5
+    additem VAR_TEMP_2, VAR_TEMP_5
     bufferitemname 0, VAR_TEMP_0
     bufferitemname 1, VAR_TEMP_1
     bufferitemname 2, VAR_TEMP_2
@@ -49,33 +122,9 @@ RyuBotany_LevelThree::
     release
     end
 
-RyuBotany_LevelFour::
-    additem VAR_TEMP_0, 1 
-    additem VAR_TEMP_1, 1 
-    additem VAR_TEMP_2, 1 
-    additem VAR_TEMP_3, 1 
-    bufferitemname 0, VAR_TEMP_0
-    bufferitemname 1, VAR_TEMP_1
-    bufferitemname 2, VAR_TEMP_2
-    bufferitemname 3, VAR_TEMP_3
-    msgbox RyuBotany_Obtained4Items
-    closemessage
-    addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL@Player gains 1 exp per level of botany per botany check.
-    call RyuBotany_CheckLevelUp
-    release
-    end
-
 RyuBotany_LevelFive::
-    additem VAR_TEMP_0, 1
-    additem VAR_TEMP_1, 1
-    additem VAR_TEMP_2, 1
-    additem VAR_TEMP_3, 1
-    additem VAR_TEMP_4, 1
+    additem VAR_TEMP_0, VAR_TEMP_5
     bufferitemname 0, VAR_TEMP_0
-    bufferitemname 1, VAR_TEMP_1
-    bufferitemname 2, VAR_TEMP_2
-    bufferitemname 3, VAR_TEMP_3
-    bufferitemname 4, VAR_TEMP_4
     msgbox RyuBotany_Obtained5Items
     closemessage
     addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL@Player gains 1 exp per level of botany per botany check.

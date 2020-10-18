@@ -185,9 +185,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	specialvar VAR_RESULT, RyuGetMaxBossChance
-	buffernumberstring 0, VAR_RESULT
-	msgbox DexNavInfo
+	setvar VAR_RYU_PLAYER_BOTANY_SKILL, 5
 	release
 	end
 
