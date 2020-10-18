@@ -2,6 +2,7 @@ MirageCave_MapScripts::
 	.byte 0
 
 MirageCave_TriggerPortal::
+	goto_if_set FLAG_RYU_ULTRA_BEASTS_ESCAPED, ryu_end
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_FaceUp
 	setvar VAR_0x8004, 1  @ vertical pan
@@ -58,6 +59,7 @@ MirageCave_TriggerPortal::
 	setvar VAR_0x8007, 5  @ shake delay
 	special ShakeCamera
 	waitstate
+	setflag FLAG_RYU_ULTRA_BEASTS_ESCAPED
 	@ some text I'll put in myself
 	releaseall
 	end

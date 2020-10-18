@@ -82,7 +82,7 @@
 #define FLAG_RYU_DEVON_MISSION3START         0x46
 #define FLAG_RYU_DEVON_MISSION4COMPLETE      0x47
 #define FLAG_RYU_DEVON_CORPORATE             0x48
-#define FLAG_UNUSED_0x49                     0x49
+#define FLAG_RYU_ULTRA_BEASTS_ESCAPED        0x49
 #define FLAG_UNUSED_0x4A                     0x4A
 #define FLAG_UNUSED_0x4B                     0x4B
 #define FLAG_UNUSED_0x4C                     0x4C
