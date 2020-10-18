@@ -4,11 +4,22 @@ MirageCave_MapScripts::
 MirageCave_TriggerPortal::
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_FaceUp
-	@ shake screen
-	@ fade screen to black
-	@ play Thunder sound effect
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 5  @ shake delay
+	special ShakeCamera
+	waitstate
+	fadescreen FADE_TO_BLACK
+	playse SE_THUNDER
 	@ move the player one down, one left, facing right
-	@ play the cries of Guzzlord, Pheromosa and Xurkitree
+	applymovement OBJ_EVENT_ID_PLAYER, MirageCave_PlayerMovement
+	playmoncry SPECIES_GUZZLORD, 0
+	waitmoncry
+	playmoncry SPECIES_PHEROMOSA, 0
+	waitmoncry
+	playmoncry SPECIES_XURKITREE, 0
+	waitmoncry
 	setflag FLAG_NIGILEGO_ESCAPED
 	setflag FLAG_BUZZWOLE_ESCAPED
 	setflag FLAG_PHEROMOSA_ESCAPED
@@ -39,7 +50,18 @@ MirageCave_TriggerPortal::
 	setmetatile 13, 7, 882, 1
 	setmetatile 14, 7, 883, 1
 	special DrawWholeMapView
-	@ show screen again
+	setvar VAR_0x8004, 1  @ vertical pan
+	setvar VAR_0x8005, 1  @ horizontal pan
+	setvar VAR_0x8006, 8  @ num shakes
+	setvar VAR_0x8007, 5  @ shake delay
+	special ShakeCamera
+	waitstate
 	@ some text I'll put in myself
 	releaseall
 	end
+
+MirageCave_PlayerMovement::
+	walk_down
+	walk_left
+	face_right
+	step_end
