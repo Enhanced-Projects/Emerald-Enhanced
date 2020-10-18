@@ -14,9 +14,6 @@ RyuScript_FieldCut::
     end
 
 RyuBotanyGiveTreeRewardItem::
-    buffernumberstring 0, VAR_RESULT
-    buffernumberstring 1, VAR_RYU_PLAYER_BOTANY_SKILL
-    scriptdebug RBDB_BotanyDebug
     switch VAR_RYU_PLAYER_BOTANY_SKILL
     case 1, RyuBotanyTree_GiveOneItem
     case 3, RyuBotanyTree_TryGive2Items
@@ -35,12 +32,9 @@ RyuBotany_CheckTreeRewardItem::
 RyuBotany_DoubleRewardHC::
     random 2
     compare VAR_RESULT, 1
-    goto_if_eq, ryu_return
+    goto_if_eq ryu_return
     setvar VAR_TEMP_5, 2
     return
-
-RBDB_BotanyDebug::
-    .string "Random result was {STR_VAR_1}, Skill is {STR_VAR_2}$"
 
 RyuBotanyTree_GiveOneItem::
     callnative BotanyTreeChop
