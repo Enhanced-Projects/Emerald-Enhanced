@@ -185,7 +185,17 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	warpsilent MAP_MIRAGE_CAVE, 255, 13, 8
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGBRENDAN
+	waitbuttonpress
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	delay 30
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGBRENDANNIGHT
+	waitbuttonpress
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
 	waitstate
 	release
 	end
