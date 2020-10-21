@@ -3168,40 +3168,19 @@ void GiveMonInitialMoveset(struct Pokemon *mon)
 void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon)
 {
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
-    s32 level = GetLevelFromBoxMonExp(boxMon);
-    s32 i;
-    u8 knownMoves = 0;
-    u16 highestLevelMove;
+    u8 level = GetLevelFromBoxMonExp(boxMon);
+    u8 i, knownMoves;
 
-    // The original code worked like this:
-    // for newMove in levelUpLearnset:
-    //    if pokemon has 4 moves:
-    //        replace firstMove with newMove
-    //    else:
-    //        learn newMove
-    //
-    // which means that the move slots 2-4 contain the second to fourth move the pokemon learns,
-    // and slot 1 contains the last move (because it’s constantly being overwritten).
-    // We can optimize the loop by skipping the move learning after 4th and then only learning the very last move.
-    // The reason this was never a problem in the original games but is in EE is that our level up tables are a lot longer.
-    // Fully evolved pokemon learn all gen 7 tutor and TM moves to make them available via heart scale,
-    // so this loop can be executed over 100 times for some pokemon.
-    for (i = 0; gLevelUpLearnsets[species][i].move != LEVEL_UP_END; i++)
-    {
-        if (gLevelUpLearnsets[species][i].level > level)
-            break;
-        // can’t break here because we need to increment i
-        if (knownMoves >= 4)
-            continue;
+    // The original code executed the learn/forget move logic for every single move, twice if the pokemon already knew four moves.
+    // That is rather inefficient and doesn’t scale well with EE’s very long learnsets
+    // (containing all the Gen 7 TM and tutor moves at level 1 to make them available via heart scale),
+    // so the new implementation simply counts all eligible moves and learn the last 4.
+    for (i = 0; gLevelUpLearnsets[species][i].move != LEVEL_UP_END && gLevelUpLearnsets[species][i].level <= level; ++i) {} // empty loop body, just counting up i
+    // If the pokemon is high enough to know all of it’s moves, decrement i to move it away from LEVEL_UP_END
+    if (gLevelUpLearnsets[species][i].move == LEVEL_UP_END)
+        i--;
+    for (knownMoves = 0; i >= 0 && knownMoves < MAX_MON_MOVES; knownMoves++, i--)
         GiveMoveToBoxMon(boxMon, gLevelUpLearnsets[species][i].move);
-        knownMoves++;
-    }
-    highestLevelMove = gLevelUpLearnsets[species][i-1].move;
-    // If the pokemon already knows the move, this function will return MON_ALREADY_KNOWS_MOVE,
-    // so it’s safe to just replace a move without causing duplicates.
-    if (GiveMoveToBoxMon(boxMon, highestLevelMove) == MON_HAS_MAX_MOVES) {
-        DeleteFirstMoveAndGiveMoveToBoxMon(boxMon, highestLevelMove);
-    }
 }
 
 u16 MonTryLearningNewMove(struct Pokemon *mon, bool8 firstMove)
