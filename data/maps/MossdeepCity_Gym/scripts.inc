@@ -8,7 +8,7 @@ MossdeepCity_Gym_EventScript_TateAndLiza:: @ 8220898
 	setflag FLAG_RYU_BOSS_SCALE
 	special checkbadgecount
 	switch VAR_RESULT
-    case 0, SABRINA1
+	case 0, SABRINA1
 	case 1, SABRINA1
 	case 2, SABRINA1
 	case 3, SABRINA2
@@ -62,7 +62,7 @@ SABRINA4::
 	end
 	
 MG_PartnerQuery::
-    msgbox RyuPartnerMultiText MSGBOX_YESNO
+	msgbox RyuPartnerMultiText MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq MG_RelDialog
 	goto MG_NoRelGymBattle
@@ -310,25 +310,25 @@ MG_GymBattleEndJoy::
 	end
 	
 MG_SHELLY_INTRO:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}I've technically got an\n"
-    .string "edge here, but I can't help but\l"
-    .string "feel uncomfortable...$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I've technically got an\n"
+	.string "edge here, but I can't help but\l"
+	.string "feel uncomfortable...$"
 	
 MG_DAWN_INTRO:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}This gym is so creepy...\n"
-    .string "I'll power through it!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}This gym is so creepy...\n"
+	.string "I'll power through it!$"
 	
 MG_LEAF_INTRO:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Hmm, I didn't know gym leaders\n"
-    .string "were allowed to be this young.\p"
-    .string "Oh well, I won't be nice about it.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hmm, I didn't know gym leaders\n"
+	.string "were allowed to be this young.\p"
+	.string "Oh well, I won't be nice about it.$"
 
 MG_LANETTE_INTRO:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}This will be quite the\nbout. May the smartest team win!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}This will be quite the\nbout. May the smartest team win!$"
 
 MG_BRENDAN_INTRO:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Brainpower really isn't\n"
-    .string "my specialty, So, you take the lead!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Brainpower really isn't\n"
+	.string "my specialty, So, you take the lead!$"
 
 MG_COURTNEY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}No problem at all, pshychic types\ncan't stand up to my Mightyena.\pFree snack for the pupper!$"
@@ -337,34 +337,34 @@ MG_JOY_INTRO:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}They're so cute!\nTo think such young people\lcan be Gym Leaders!$"
 	
 MG_PreBattleText:
-    .string "Tate: I see you levelled the\n"
+	.string "Tate: I see you levelled the\n"
 	.string "playing field. Smart thinking.\p"
 	.string "Liza: Our bond as twins is much\n"
 	.string "stronger than yours. You don't\l"
 	.string "stand a chance!$"
 
 MG_DefeatText:
-    .string "Both: How could you defeat\n"
+	.string "Both: How could you defeat\n"
 	.string "our bond?$"
 	
 MG_ShellyGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}It worked itself out.\n"
-    .string "I'm glad I had dark types with me!$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}It worked itself out.\n"
+	.string "I'm glad I had dark types with me!$"
 
 MG_DawnGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED} (Dawn seems a little off...)$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED} (Dawn seems a little off...)$"
 	
 MG_LanaGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Impressive teamwork, but you\n"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Impressive teamwork, but you\n"
 	.string "should have known that the bond of\l"
 	.string "love is stronger than any other.$"
 	
 MG_LanetteGymBattleComplete:
-    .string "L{COLOR LIGHT_RED}{SHADOW RED}I had no doubts.\nLet's do this again sometime!$"
+	.string "L{COLOR LIGHT_RED}{SHADOW RED}I had no doubts.\nLet's do this again sometime!$"
 
 MG_BrendanGymBattleComplete:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Brute strength wins again!\n"
-    .string "Catch ya later, neighbor.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Brute strength wins again!\n"
+	.string "Catch ya later, neighbor.$"
 
 MG_CourtneyGymBattleComplete:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}My doggo looks very satisfied.$"

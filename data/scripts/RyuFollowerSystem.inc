@@ -131,7 +131,7 @@ FollowerDawnSetup::
 	createfollower OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RyuFollowerSelectNPCScript, DIR_EAST
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceLeft
 	waitmovement 0
-    clearfullscreenimage
+	clearfullscreenimage
 	setflag FLAG_HIDE_DAWNS_HOUSE_DAWN
 	msgbox DawnOkLetsGo
 	release
@@ -142,24 +142,24 @@ FollowerBrendanSetup::
 	createfollower OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, RyuFollowerSelectNPCScript, DIR_WEST
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
 	waitmovement 0
-    clearfullscreenimage
+	clearfullscreenimage
 	setflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
 	msgbox BrendanOkLetsGo
 	release
 	end
 
 FollowerLeafSetup::
-    removeobject 2
+	removeobject 2
 	createfollower OBJ_EVENT_GFX_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
 	waitmovement 0
-    setflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
+	setflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
 	msgbox LeafOkLetsGo
 	release
 	end
 
 FollowerNurseSetup::
-    applymovement 1, Common_Movement_FaceDown
+	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1
 	playse SE_DOOR
 	setmetatile 7, 3, 514, 0
@@ -200,7 +200,7 @@ RF_FollowerLeaveCall::
 	case OBJ_EVENT_GFX_TWIN, Ryu_RestoreMinnie
 	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, Ryu_RestoreDawn
 	case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, Ryu_RestoreBrendan
-    case OBJ_EVENT_GFX_LEAF, Ryu_RestoreLeaf
+	case OBJ_EVENT_GFX_LEAF, Ryu_RestoreLeaf
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, Ryu_RestoreCourtney
 	case OBJ_EVENT_GFX_AQUA_MEMBER_F, Ryu_RestoreShelly
 	case OBJ_EVENT_GFX_NURSE, Ryu_RestoreNurse
@@ -231,15 +231,15 @@ Ryu_RestoreDawn::
 
 Ryu_RestoreBrendan::
 	destroyfollower
-    clearflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
-    release
-    end
+	clearflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
+	release
+	end
 
 Ryu_RestoreLeaf::
 	destroyfollower
-    clearflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
-    release
-    end
+	clearflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO
+	release
+	end
 
 Ryu_RestoreCourtney::
 	destroyfollower
@@ -267,7 +267,7 @@ RyuFollowerAllySelector::
 	return
 
 LeafOkLetsGo:
-    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}Okay, {PLAYER}!\nI'm as ready as I can be!$"
+	.string "Lana: {COLOR LIGHT_RED}{SHADOW RED}Okay, {PLAYER}!\nI'm as ready as I can be!$"
 
 DawnOkLetsGo:
 	.string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}Okay! I'm ready to go!$"
@@ -285,31 +285,31 @@ RyuFollowerLeavesService:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Your follower\nleaves your service...$"
 
 RyuCantHaveFollower:
-    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You're attempting to do a\n"
-    .string "cinematic quest.\p"
-    .string "You can't have a follower present\n"
-    .string "for this quest. Would you like\l"
-    .string "to dismiss your follower?$"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You're attempting to do a\n"
+	.string "cinematic quest.\p"
+	.string "You can't have a follower present\n"
+	.string "for this quest. Would you like\l"
+	.string "to dismiss your follower?$"
 
 FollowerDawnChatter:
-    .string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}It's been really nice, hanging\n"
-    .string "out with you. I wish we did this\p"
-    .string "from the beginning.\p"
-    .string "Would you like me to leave?$"
+	.string "Dawn: {COLOR LIGHT_RED}{SHADOW RED}It's been really nice, hanging\n"
+	.string "out with you. I wish we did this\p"
+	.string "from the beginning.\p"
+	.string "Would you like me to leave?$"
 
 FollowerBrendanChatter:
-    .string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}You should have tagged\n"
-    .string "along with me from the start. This\p"
-    .string "has been some of the most enjoyable\n"
-    .string "time in my life!\p"
-    .string "Do you need to be alone?$"
+	.string "Brendan: {COLOR LIGHT_BLUE}{SHADOW BLUE}You should have tagged\n"
+	.string "along with me from the start. This\p"
+	.string "has been some of the most enjoyable\n"
+	.string "time in my life!\p"
+	.string "Do you need to be alone?$"
 
 FollowerLeafChatter:
-    .string "Lana: {COLOR LIGHT_RED}{SHADOW RED}Boy, this sure brings back\n"
-    .string "memories... with Him...\p"
-    .string "I'm glad we found each other, really.\n"
-    .string "I was in a real dark, place.\p"
-    .string "Do you need some space?$"
+	.string "Lana: {COLOR LIGHT_RED}{SHADOW RED}Boy, this sure brings back\n"
+	.string "memories... with Him...\p"
+	.string "I'm glad we found each other, really.\n"
+	.string "I was in a real dark, place.\p"
+	.string "Do you need some space?$"
 
 
 ryu_return::
