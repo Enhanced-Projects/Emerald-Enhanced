@@ -260,6 +260,8 @@ Ryu_RestoreNurse::
 	release
 	end
 
+@ RyuFollowerToTrainerID will write the current follower’s ID and sprite to VAR_0x8008 and 0x8009
+@ and return true if there is a follower or do nothing and return false otherwise.
 RyuFollowerAllySelector::
 	specialvar VAR_RESULT, RyuFollowerToTrainerID
 	compare VAR_RESULT, FALSE

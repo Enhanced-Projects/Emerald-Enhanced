@@ -940,11 +940,14 @@ bool8 ScrCmd_addmonhappiness(struct ScriptContext *ctx)
     return FALSE;
 }
 
-//Follower related
+//////////////////////
+// Follower related //
+//////////////////////
 
-bool8 RyuFollowerToTrainerID(void)//this function fills in the necessary temporary variables for setting up partner multibattles
+// This function fills in the necessary temporary variables for setting up partner multibattles
+bool8 RyuFollowerToTrainerID(void)
 {
-    if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
+    if (FlagGet(FLAG_RYU_HAS_FOLLOWER))
     {
         switch (VarGet(VAR_RYU_FOLLOWER_ID))
         {
@@ -952,42 +955,34 @@ bool8 RyuFollowerToTrainerID(void)//this function fills in the necessary tempora
             gSpecialVar_0x8008 = TRAINER_REL_MINNIE;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_MINNIE;
             return TRUE;
-            break;
         case OBJ_EVENT_GFX_WOMAN_2:
             gSpecialVar_0x8008 = TRAINER_REL_LANETTE;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_LANETTE; 
             return TRUE;
-            break;
         case OBJ_EVENT_GFX_AQUA_MEMBER_F:
             gSpecialVar_0x8008 = TRAINER_REL_SHELLY;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_SHELLY;
             return TRUE;
-            break;
         case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
             gSpecialVar_0x8008 = TRAINER_REL_DAWN;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_DAWN;
             return TRUE;
-            break;
         case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
             gSpecialVar_0x8008 = TRAINER_REL_BRENDAN;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_BRENDAN;
             return TRUE;
-            break;
         case OBJ_EVENT_GFX_LEAF:
             gSpecialVar_0x8008 = TRAINER_REL_LANA;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_LEAF;
             return TRUE;
-            break;
         case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
             gSpecialVar_0x8008 = TRAINER_REL_COURTNEY_2;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_COURTNEY;
             return TRUE;
-            break;
         case OBJ_EVENT_GFX_NURSE:
             gSpecialVar_0x8008 = TRAINER_REL_NURSE;
             gSpecialVar_0x8009 = TRAINER_BACK_PIC_NURSE;
             return TRUE;
-            break;
         }
         return FALSE;
     }
