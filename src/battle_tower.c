@@ -2918,12 +2918,15 @@ static void FillPartnerParty(u16 trainerId)
             {
                 j = Random32();
             } while (IsShinyOtIdPersonality(STEVEN_OTID, j) || sStevenMons[i].nature != GetNatureFromPersonality(j));
-            CreateMon(&gPlayerParty[MULTI_PARTY_SIZE + i],
-                      sStevenMons[i].species,
-                      sStevenMons[i].level,
-                      sStevenMons[i].fixedIV,
-                      TRUE, i, // BUG: personality was stored in the 'j' variable. As a result, Steven's pokemon do not have the intended natures.
-                      OT_ID_PRESET, STEVEN_OTID);
+            CreateMon(
+                &gPlayerParty[MULTI_PARTY_SIZE + i],
+                sStevenMons[i].species,
+                sStevenMons[i].level,
+                sStevenMons[i].fixedIV,
+                TRUE,
+                j,
+                OT_ID_PRESET, STEVEN_OTID
+            );
             for (j = 0; j < PARTY_SIZE; j++)
                 SetMonData(&gPlayerParty[MULTI_PARTY_SIZE + i], MON_DATA_HP_EV + j, &sStevenMons[i].evs[j]);
             for (j = 0; j < MAX_MON_MOVES; j++)
