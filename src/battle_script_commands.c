@@ -3531,7 +3531,7 @@ static void Cmd_getexp(void)
     u32 multiplier = (VarGet(VAR_RYU_EXP_MULTIPLIER));
     s32 sentIn;
     s32 viaExpShare = 0;
-    u16 *exp = &gBattleStruct->expValue;
+    u32 *exp = &gBattleStruct->expValue;
     u32 RyuExpBatteryTemp = 0;
 
     if (VarGet(VAR_RYU_EXP_MULTIPLIER) == 1) //If no multiplier is present, You get 25% exp per badge you own
@@ -3565,8 +3565,7 @@ static void Cmd_getexp(void)
         break;
     case 1: // calculate experience points to redistribute
         {
-            u32 rawExp;
-            u16 calculatedExp;
+            u32 calculatedExp;
             s32 viaSentIn;
 
             for (viaSentIn = 0, i = 0; i < PARTY_SIZE; i++)
@@ -3584,9 +3583,8 @@ static void Cmd_getexp(void)
                     holdEffect = ItemId_GetHoldEffect(item);
             }
 
-            rawExp = (u32)(gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7);
-            // Limit actual EXP gain to 32767, the max value of s16, because it’s later stored as s16.
-            calculatedExp = (u16)((rawExp * multiplier / 1000) & 0x7FFF);
+            calculatedExp = (u32)(gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7);
+            calculatedExp = (calculatedExp * multiplier / 1000);
 
             //RyuExpBatteryTemp = (VarGet(VAR_RYU_EXP_BATTERY));
             RyuExpBatteryTemp = (((VarGet(VAR_RYU_EXP_BATTERY) + ((((gBattleMons[gBattlerFainted].level) * 5) * multiplier) / 1000))));
@@ -3634,13 +3632,8 @@ static void Cmd_getexp(void)
             else
                 holdEffect = ItemId_GetHoldEffect(item);
 
-            if (!gSaveBlock2Ptr->expShare && !(gBattleStruct->sentInPokes & 1))
-            {
-                *(&gBattleStruct->sentInPokes) >>= 1;
-                gBattleScripting.getexpState = 5;
-                gBattleMoveDamage = 0; // used for exp
-            }
-            else if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) == MAX_LEVEL)
+            if ((!gSaveBlock2Ptr->expShare && !(gBattleStruct->sentInPokes & 1))
+                || (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) == MAX_LEVEL))
             {
                 *(&gBattleStruct->sentInPokes) >>= 1;
                 gBattleScripting.getexpState = 5;
@@ -3669,21 +3662,11 @@ static void Cmd_getexp(void)
 
                     if (gSaveBlock2Ptr->expShare)
                         gBattleMoveDamage += gExpShareExp;
-                    // If the XP is already at more than 21844,
-                    // applying the 1.5x multiplier will cause it to overflow,
-                    // because it’s cast into s16 later,
-                    // so we just set it to the max value.
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG) {
-                        if (gBattleMoveDamage > 21844)
-                            gBattleMoveDamage = 32500;
-                        else
-                            gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
+                        gBattleMoveDamage = gBattleMoveDamage * 150 / 100;
                     }
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && B_TRAINER_EXP_MULTIPLIER <= GEN_7) {
-                        if (gBattleMoveDamage > 21844)
-                            gBattleMoveDamage = 32500;
-                        else
-                            gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
+                        gBattleMoveDamage = gBattleMoveDamage * 150 / 100;
                     }
 
                     if (IsTradedMon(&gPlayerParty[gBattleStruct->expGetterMonId]))
@@ -3695,10 +3678,7 @@ static void Cmd_getexp(void)
                         }
                         else
                         {
-                            if (gBattleMoveDamage > 21844)
-                                gBattleMoveDamage = 32500;
-                            else
-                                gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
+                            gBattleMoveDamage = gBattleMoveDamage * 150 / 100;
                             i = STRINGID_ABOOSTED;
                         }
                     }
@@ -3706,9 +3686,6 @@ static void Cmd_getexp(void)
                     {
                         i = STRINGID_EMPTYSTRING4;
                     }
-
-                    // Just to be sure
-                    gBattleMoveDamage = min(gBattleMoveDamage, 32500);
 
                     // get exp getter battlerId
                     if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
@@ -3731,7 +3708,7 @@ static void Cmd_getexp(void)
                     PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, gBattleStruct->expGetterBattlerId, gBattleStruct->expGetterMonId);
                     // buffer 'gained' or 'gained a boosted'
                     PREPARE_STRING_BUFFER(gBattleTextBuff2, i);
-                    PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 5, gBattleMoveDamage);
+                    PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleMoveDamage);
 
                     PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
                     MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
@@ -3777,7 +3754,7 @@ static void Cmd_getexp(void)
                 BattleScriptPushCursor();
                 gLeveledUpInBattle |= gBitTable[gBattleStruct->expGetterMonId];
                 gBattlescriptCurrInstr = BattleScript_LevelUp;
-                gBattleMoveDamage = (gBattleResources->bufferB[gActiveBattler][2] | (gBattleResources->bufferB[gActiveBattler][3] << 8));
+                gBattleMoveDamage = T1_READ_32(&gBattleResources->bufferB[gActiveBattler][2]);
                 AdjustFriendship(&gPlayerParty[gBattleStruct->expGetterMonId], FRIENDSHIP_EVENT_GROW_LEVEL);
 
                 // update battle mon structure after level up
