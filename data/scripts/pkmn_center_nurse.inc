@@ -1,38 +1,83 @@
-Common_EventScript_PkmnCenterNurse:: @ 827191E
-    lock
-    faceplayer
-    goto_if_set FLAG_RYU_HARDCORE_MODE, Common_NurseDisabledHardcore
-    goto EventScript_PkmnCenterNurse_HealPkmn
-    end
-
-Common_NurseDisabledHardcore::
-    msgbox HardcoreNurseDisabled
-    release
-    end
-
-HardcoreNurseDisabled:
-    .string "I'm sorry, but our machine isn't\nworking. You can purchase healing\litems at a mart.$"
-
-EventScript_PkmnCenterNurse_Goodbye:: @ 8271954
-    message gText_WeHopeToSeeYouAgain
-    return
-
-@ VAR_0x8004 is 1 when player has Gold Card; jumps are identical
-EventScript_PkmnCenterNurse_HealPkmn:: @ 827195A
-    call Ryu_CheckHealPermissions
+Common_EventScript_PkmnCenterNurse:: @ 827195A
     call_if_set FLAG_RYU_USED_WIRELESSPC, PCN_RechargeWirelessPC
     incrementgamestat GAME_STAT_USED_POKECENTER
     readgamestat GAME_STAT_USED_POKECENTER
     compare VAR_RESULT, 256
     call_if_eq PkmnCenterNurse_MegaAudinite
-    compare VAR_0x8004, 0
-    call_if_eq EventScript_PkmnCenterNurse_IllTakeYourPkmn
-    compare VAR_0x8004, 1
-    call_if_eq EventScript_PkmnCenterNurse_IllTakeYourPkmn2
-    waitmessage
-    call EventScript_PkmnCenterNurse_TakeAndHealPkmn
+    call Ryu_CheckHealPermissions
+    switch VAR_RYU_DS_NURSE_STAGE
+    case 3, PCN_Stage1HealMsg
+    case 5, PCN_Stage2HealMsg
+    case 7, PCN_Stage3HealMsg
+    case 10, PCN_Stage4HealMsg
+    goto PCN_Stage1HealMsg
+
+PCN_Stage1HealMsg::
+    message gText_IllTakeYourPkmn
+    goto PCN_HealMons
+
+PCN_Stage2HealMsg::
+    msgbox PCN_S2HealText
+	goto PCN_HealMons
+
+PCN_Stage3HealMsg::
+    msgbox PCN_S3HealText
+	goto PCN_HealMons
+
+PCN_Stage4HealMsg::
+    msgbox PCN_S4HealText
+	goto PCN_HealMons
+	
+PCN_S2HealText:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh! Hi!\nLet me heal you up real quick!$"
+
+PCN_S3HealText:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}It's nice to see you again!\nYou've been busy, I see!$"
+
+PCN_S4HealText:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! Welcome back.\nLet me make you feel batter...$"
+
+PCN_HealMons::
+    applymovement VAR_0x800B, Common_Movement_WalkInPlaceFastestLeft
+    waitmovement 0
+    dofieldeffect FLDEFF_POKECENTER_HEAL
+    waitfieldeffect FLDEFF_POKECENTER_HEAL
+    applymovement VAR_0x800B, Common_Movement_WalkInPlaceFastestDown
+    waitmovement 0
+    special HealPlayerParty
+	switch VAR_RYU_DS_NURSE_STAGE
+	case 3, PCN_HealOutroText2
+	case 5, PCN_HealOutroText3
+	case 7, PCN_HealOutroText4
+	case 10,PCN_NurseFollower
+	goto PCN_HealOutroText1
+	
+PCN_HealOutroText1:
+    msgbox HaveANiceDay
+    closemessage
     releaseall
     end
+	
+PCN_HealOutroText2:
+	msgbox S2OutroText
+	goto ryu_end
+	
+PCN_HealOutroText3:
+	msgbox S3OutroText
+	goto ryu_end
+
+PCN_HealOutroText4:
+	msgbox S4OutroText
+	goto ryu_end
+	
+S2OutroText:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Nice seeing you again!$"
+	
+S3OutroText:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I wish you would come visit\nme under other circumstances...$"
+	
+S4OutroText:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}It's always a pleasure to see\nyou.$"
 
 PCN_RechargeWirelessPC::
     msgbox PCN_RechargedWirelessPc
@@ -77,27 +122,6 @@ Ryu_CheckHealPermissions::
     goto_if_set FLAG_RYU_NUZLOCKEMODE, Ryu_CheckSetNuzlockPCUseVar
     return
 
-EventScript_PkmnCenterNurse_IllTakeYourPkmn:: @ 8271987
-    message gText_IllTakeYourPkmn
-    return
-
-EventScript_PkmnCenterNurse_IllTakeYourPkmn2:: @ 827198D
-    message gText_IllTakeYourPkmn2
-    return
-
-EventScript_PkmnCenterNurse_TakeAndHealPkmn:: @ 8271993
-    applymovement VAR_0x800B, Common_Movement_WalkInPlaceFastestLeft
-    waitmovement 0
-    dofieldeffect FLDEFF_POKECENTER_HEAL
-    waitfieldeffect FLDEFF_POKECENTER_HEAL
-    applymovement VAR_0x800B, Common_Movement_WalkInPlaceFastestDown
-    waitmovement 0
-    call_if_set FLAG_RYU_HIDE_MINNIE, CheckRestoreMinnie
-    special HealPlayerParty
-    msgbox HaveANiceDay
-    goto_if_set FLAG_RYU_DS_JOY_PARTNERS, PCN_NurseFollower
-    closemessage
-    return
 
 PCN_NurseFollower::
     msgbox PCN_CanIComeWith, MSGBOX_YESNO
@@ -108,13 +132,6 @@ PCN_NurseFollower::
 
 PCN_CanIComeWith:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Did you... by chance...\nwant a companion for your travels?$"
-
-CheckRestoreMinnie::
-    goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_return
-    compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_TWIN
-    goto_if_ne ryu_return
-    clearflag FLAG_RYU_HIDE_MINNIE
-    return
 
 HaveANiceDay:
     .string "Have a nice day!$"
@@ -197,8 +214,6 @@ EventScript_PkmnCenterNurse_AskForUsual:: @ 8271AAC
     return
 
 EventScript_PkmnCenterNurse_GoldCardHealPkmn:: @ 8271AC5
-    setvar VAR_0x8004, 1
-    goto EventScript_PkmnCenterNurse_HealPkmn
     end
 
 EventScript_PkmnCenterNurse_Bow: @ 8271AD0

@@ -260,7 +260,7 @@
 #define VAR_WALLY_CALL_STEP_COUNTER          0x40F2
 #define VAR_SCOTT_FORTREE_CALL_STEP_COUNTER  0x40F3
 #define VAR_ROXANNE_CALL_STEP_COUNTER        0x40F4
-#define VAR_UNUSED_0x40F5                    0x40F5
+#define VAR_RYU_DS_NURSE_STAGE               0x40F5
 #define VAR_UNUSED_0x40F6                    0x40F6
 #define VAR_RYU_GCMS_SPECIES                 0x40F7
 #define VAR_RYU_GCMS_VALUE                   0x40F8

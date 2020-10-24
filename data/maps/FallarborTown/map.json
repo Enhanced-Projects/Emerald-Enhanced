@@ -116,7 +116,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RF_CheckPlayerQualifiesForNurseQuest"
+    }
   ],
   "bg_events": [
     {

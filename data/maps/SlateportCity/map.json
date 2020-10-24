@@ -447,6 +447,15 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "SC_LH_DoorLock"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RF_CheckPlayerQualifiesForNurseQuest"
     }
   ],
   "bg_events": [

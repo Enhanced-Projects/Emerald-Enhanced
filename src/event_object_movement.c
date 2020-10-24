@@ -1607,57 +1607,33 @@ u32 GetSafeDirectionForFollower(struct ObjectEvent *playerObjectEvent, s16 xOffs
 }
 
 void GetSafeCoordsForFollower(struct ObjectEvent *playerObjectEvent, int playerX, int playerY, int direction, int *followerX, int *followerY)
-{
-    int dx, dy;
-    if (!GetCollisionInDirection(playerObjectEvent, direction))
+{              //nothing to see here. The function originally checked for wether the direction supplied in the script command was
+    int dx, dy;//'safe'. I don't need this, and it was causing a wierd bug anyway. 
+    switch (direction)
     {
-        switch (direction)
-        {
-        case DIR_SOUTH:
-            dx = 0;
-            dy = 1;
-            break;
-        case DIR_NORTH:
-            dx = 0;
-            dy = -1;
-            break;
-        case DIR_WEST:
-            dx = -1;
-            dy = 0;
-            break;
-        case DIR_EAST:
-            dx = 1;
-            dy = 0;
-            break;
-        default:
-            dx = 1;
-            dy = 0;
-            break;
-        }
-
-        *followerX = playerX + dx;
-        *followerY = playerY + dy;
+    case DIR_SOUTH:
+        dx = 0;
+        dy = 1;
+        break;
+    case DIR_NORTH:
+        dx = 0;
+        dy = -1;
+        break;
+    case DIR_WEST:
+        dx = -1;
+        dy = 0;
+        break;
+    case DIR_EAST:
+        dx = 1;
+        dy = 0;
+        break;
+    default:
+        dx = 1;
+        dy = 0;
+        break;
     }
-    else if (!GetCollisionInDirection(playerObjectEvent, DIR_SOUTH))
-    {
-        *followerX = playerX;
-        *followerY = playerY + 1;
-    }
-    else if (!GetCollisionInDirection(playerObjectEvent, DIR_NORTH))
-    {
-        *followerX = playerX;
-        *followerY = playerY - 1;
-    }
-    else if (!GetCollisionInDirection(playerObjectEvent, DIR_WEST))
-    {
-        *followerX = playerX - 1;
-        *followerY = playerY;
-    }
-    else
-    {
-        *followerX = playerX + 1;
-        *followerY = playerY;
-    }
+    *followerX = playerX + dx;
+    *followerY = playerY + dy;
 }
 
 const struct ObjectEventTemplate gFollowerObjectEventTemplate = {

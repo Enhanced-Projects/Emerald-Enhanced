@@ -321,3 +321,81 @@ ryu_end::
 	release
 	end
 
+@+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Nurse quest
+
+RyuFollower_CheckNurseQuestStage::
+	switch VAR_RYU_DS_NURSE_STAGE
+	case 0, ryu_end @@player hasn't met requirements for quest
+	case 1, RF_NurseQuestStage1
+	case 2, ryu_end
+	@case 3, RF_NurseQuestStage2
+	@case 5, RF_NurseQuestStage3
+	@case 7, RF_NurseQuestStage4
+	@case 10, ryu_end @@Player already partners with nurse, or declined to help her. Check is no longer necessary.
+	goto ryu_end @@prevent UB
+
+RF_SetupNurseSpawnEvent::
+	lockall
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_end @@can't do quest if follower is already present.
+	setflag FLAG_RYU_HIDE_JOY
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown @@move player down to make space for nurse to spawn
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	drawfullscreenimage SCENEBGNURSE
+	createfollower OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_NORTH
+	return
+
+RF_NurseQuestStage1::
+	call RF_SetupNurseSpawnEvent
+	msgbox RF_NurseRequestEscort1, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq RF_PlayerDeclinedNurseQuest1
+	msgbox RF_NurseEscortQuestIntro1
+	closemessage
+	delay 10
+	clearfullscreenimage
+	setvar VAR_RYU_DS_NURSE_STAGE, 2
+	release
+	end
+
+RF_CheckPlayerQualifiesForNurseQuest::@@this is sort of confusing, but it has to check for specific circumstances in order to work globally as is the intent.
+	special checkbadgecount
+	compare VAR_RESULT, 2
+	goto_if_lt ryu_end
+	compare VAR_RYU_DS_NURSE_STAGE, 10
+	goto_if_eq ryu_end
+	compare VAR_RYU_DS_NURSE_STAGE, 0
+	call_if_eq RF_StartNurseQuest
+	compare VAR_RYU_DS_NURSE_STAGE, 1
+	goto_if_ge RF_NurseQuestStage1
+	goto ryu_end
+
+RF_StartNurseQuest::
+	setvar VAR_RYU_DS_NURSE_STAGE, 2
+	goto RyuFollower_CheckNurseQuestStage
+
+RF_NurseRequestEscort1:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey!\nPlease wait a moment!\pWould you be willing to escort\nme to Verdanturf town?$"
+
+RF_NurseEscortQuestIntro1:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh! Wonderful! You're so kind!\pI just need help getting to\nVerdanturf.\pI'm not much of a fighter.$"
+
+RF_PlayerDeclinedNurseQuest1::
+	setvar VAR_RYU_DS_NURSE_STAGE, 10 @@ends the nurse quest. No partner.
+	msgbox RF_NurseQuestCancelledText
+	closemessage
+	clearfullscreenimage
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	destroyfollower
+	release
+	end
+
+RF_NurseQuestCancelledText:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I see... well... I'm sure another\nstrong trainer will come along...\pSorry for taking up your time.$"
+

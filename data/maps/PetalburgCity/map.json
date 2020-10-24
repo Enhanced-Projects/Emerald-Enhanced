@@ -312,6 +312,15 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "PC_NoTimeToSwim"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RF_CheckPlayerQualifiesForNurseQuest"
     }
   ],
   "bg_events": [

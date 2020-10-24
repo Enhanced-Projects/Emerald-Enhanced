@@ -7,6 +7,27 @@ VerdanturfTown_OnTransition: @ 81EB56C
 	setvar VAR_CONTEST_HALL_STATE, 0
 	end
 
+VT_FinishNurseQuest1::
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_NURSE
+	goto_if_ne ryu_end
+	lockall
+	msgbox VT_NurseStage1Done
+	giveitem ITEM_FULL_RESTORE, 1
+	setflag FLAG_RYU_DS_JOY_FRIENDS
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	destroyfollower
+	clearflag FLAG_RYU_HIDE_JOY
+	setvar VAR_RYU_DS_NURSE_STAGE, 3
+	release
+	end
+
+VT_NurseStage1Done:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah! here we are!\pThank you so much for escorting\nme!\pI can't really offer much\npayment, but perhaps this would\lbe useful.$"
+
+
 VerdanturfTown_EventScript_Twin:: @ 81EB575
 	lock
 	faceplayer

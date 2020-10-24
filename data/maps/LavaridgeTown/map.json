@@ -218,6 +218,15 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "LT_RivalEnter3"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RF_CheckPlayerQualifiesForNurseQuest"
     }
   ],
   "bg_events": [

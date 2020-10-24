@@ -13,7 +13,6 @@ RustboroCity_OnTransition: @ 81E06C8
 	goto_if_eq RustboroCity_EventScript_PositionScientistForExit
 	end
 	
-	
 RC_DevonEntranceCheck::
 	lock
 	goto_if_unset FLAG_RYU_PLAYER_MAGMA_MEMBER, ryu_end
