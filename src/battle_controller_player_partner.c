@@ -308,18 +308,25 @@ static void CompleteOnInactiveTextPrinter(void)
 }
 
 // the whole exp task is copied&pasted from player controller
-#define tExpTask_monId      data[0]
-#define tExpTask_gainedExp  data[1]
-#define tExpTask_bank       data[2]
-#define tExpTask_frames     data[10]
+#define tExpTask_monId           data[0]
+#define tExpTask_gainedExpLower  data[1]
+#define tExpTask_gainedExpUpper  data[2]
+#define tExpTask_bank            data[3]
+#define tExpTask_frames          data[10]
+
+// The tasks store their data in an array of s16. We use two slots in that to store a u32 for the experience.
+static inline u32 Task_GetExpFromTask(u8 taskId) {
+    return (u32) gTasks[taskId].tExpTask_gainedExpLower
+      + ((u32) gTasks[taskId].tExpTask_gainedExpUpper << 16);
+}
 
 static void Task_GiveExpToMon(u8 taskId)
 {
     u32 monId = (u8)(gTasks[taskId].tExpTask_monId);
     u8 battlerId = gTasks[taskId].tExpTask_bank;
-    s16 gainedExp = gTasks[taskId].tExpTask_gainedExp;
+    u32 gainedExp = Task_GetExpFromTask(taskId);
 
-    if (IsDoubleBattle() == TRUE || monId != gBattlerPartyIndexes[battlerId]) // give exp without the expbar
+    if (IsDoubleBattle() == TRUE || monId != gBattlerPartyIndexes[battlerId]) // Give exp without moving the expbar.
     {
         struct Pokemon *mon = &gPlayerParty[monId];
         u16 species = GetMonData(mon, MON_DATA_SPECIES);
@@ -336,7 +343,7 @@ static void Task_GiveExpToMon(u8 taskId)
             gainedExp -= nextLvlExp - currExp;
             savedActiveBank = gActiveBattler;
             gActiveBattler = battlerId;
-            BtlController_EmitTwoReturnValues(1, RET_VALUE_LEVELED_UP, gainedExp);
+            BtlController_EmitTwoReturnValuesWithU32Arg(1, RET_VALUE_LEVELED_UP, gainedExp);
             gActiveBattler = savedActiveBank;
 
             if (IsDoubleBattle() == TRUE
@@ -362,7 +369,7 @@ static void Task_GiveExpToMon(u8 taskId)
 static void Task_PrepareToGiveExpWithExpBar(u8 taskId)
 {
     u8 monIndex = gTasks[taskId].tExpTask_monId;
-    s32 gainedExp = gTasks[taskId].tExpTask_gainedExp;
+    u32 gainedExp = Task_GetExpFromTask(taskId);
     u8 battlerId = gTasks[taskId].tExpTask_bank;
     struct Pokemon *mon = &gPlayerParty[monIndex];
     u8 level = GetMonData(mon, MON_DATA_LEVEL);
@@ -387,7 +394,7 @@ static void sub_81BB4E4(u8 taskId)
     else
     {
         u8 monId = gTasks[taskId].tExpTask_monId;
-        s16 gainedExp = gTasks[taskId].tExpTask_gainedExp;
+        u32 gainedExp = Task_GetExpFromTask(taskId);
         u8 battlerId = gTasks[taskId].tExpTask_bank;
         s16 r4;
 
@@ -1599,7 +1606,7 @@ static void PlayerPartnerHandleExpUpdate(void)
     }
     else
     {
-        s16 expPointsToGive;
+        u32 expPointsToGive;
         u8 taskId;
 
         LoadBattleBarGfx(1);
@@ -1607,14 +1614,16 @@ static void PlayerPartnerHandleExpUpdate(void)
         expPointsToGive = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
         taskId = CreateTask(Task_GiveExpToMon, 10);
         gTasks[taskId].tExpTask_monId = monId;
-        gTasks[taskId].tExpTask_gainedExp = expPointsToGive;
+        gTasks[taskId].tExpTask_gainedExpUpper = (u16)(expPointsToGive >> 16);
+        gTasks[taskId].tExpTask_gainedExpLower = (u16)(expPointsToGive & 0xFFFF);
         gTasks[taskId].tExpTask_bank = gActiveBattler;
         gBattlerControllerFuncs[gActiveBattler] = nullsub_21;
     }
 }
 
 #undef tExpTask_monId
-#undef tExpTask_gainedExp
+#undef tExpTask_gainedExpUpper
+#undef tExpTask_gainedExpLower
 #undef tExpTask_bank
 #undef tExpTask_frames
 
