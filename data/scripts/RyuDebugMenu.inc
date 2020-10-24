@@ -232,8 +232,8 @@ RDB_GiveRandomFrontierMons::
 	goto RDB_GiveRandomFrontierMonsLoop
 
 RDB_GiveRandomFrontierMonsLoop::
-	random 199
-	addvar VAR_RESULT, 601
+	random 735
+	addvar VAR_RESULT, 97
 	copyvar VAR_TEMP_6, VAR_RESULT 
 	special RyuGiveFrontierMon
 	goto RDB_GiveRandomFrontierMons
