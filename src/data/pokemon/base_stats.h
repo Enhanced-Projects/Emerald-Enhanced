@@ -1,5 +1,10 @@
 // Maximum value for a female Pokémon is 254 (MON_FEMALE) which is 100% female.
 // 255 (MON_GENDERLESS) is reserved for genderless Pokémon.
+
+
+// @TOBY: There were hundreds of conflicts in this file because of the
+// updated move data battle config. That option is useless in battle config
+// and should be ignored. I kept all of our existing data and yeeted rhh changes.
 #define PERCENT_FEMALE(percent) min(254, ((percent * 255) / 100))
 
 const struct BaseStats gBaseStats[] =
