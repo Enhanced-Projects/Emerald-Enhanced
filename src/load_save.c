@@ -259,13 +259,13 @@ void SavePlayerBag(void)
     for (i = 0; i < BAG_ITEMS_COUNT; i++)
         gSaveBlock1Ptr->bagPocket_Items[i] = gLoadedSaveData.items[i];
 
-    // save player key items.
+    // save player medicine items.
     for (i = 0; i < BAG_MEDICINES_COUNT; i++)
-        gSaveBlock1Ptr->bagPocket_KeyItems[i] = gLoadedSaveData.medicines[i];
+        gSaveBlock1Ptr->bagPocket_Medicine[i] = gLoadedSaveData.medicines[i];
 
-    // save player key items.
+    // save player collectibles.
     for (i = 0; i < BAG_COLLECTIBLES_COUNT; i++)
-        gSaveBlock1Ptr->bagPocket_KeyItems[i] = gLoadedSaveData.collectibles[i];
+        gSaveBlock1Ptr->bagPocket_Collectibles[i] = gLoadedSaveData.collectibles[i];
 
     // save player key items.
     for (i = 0; i < BAG_KEYITEMS_COUNT; i++)
