@@ -1,959 +1,543 @@
 // Also used by early Pkmn Breeder, Collector, and Beauty trainers
 #define FRONTIER_MONS_YOUNGSTER_LASS_1  \
-    FRONTIER_MON_LEAFEON_3,             \
-    FRONTIER_MON_AZUMARILL_4,           \
-    FRONTIER_MON_ILLUMISE_3,            \
-    FRONTIER_MON_VOLBEAT_3,             \
-    FRONTIER_MON_DRAPION_3,             \
-    FRONTIER_MON_GALLADE_3,             \
-    FRONTIER_MON_GYARADOS_3,            \
-    FRONTIER_MON_MILOTIC_3,             \
-    FRONTIER_MON_TOGEDEMARU_3,          \
-    FRONTIER_MON_WHIMSICOTT_3,          \
-    FRONTIER_MON_QUAGSIRE_3,            \
-    FRONTIER_MON_HITMONTOP_3,           \
-    FRONTIER_MON_HAXORUS_3,             \
-    FRONTIER_MON_AMBIPOM_4,             \
-    FRONTIER_MON_GOGOAT_3,              \
-    FRONTIER_MON_LUDICOLO_3,            \
-    FRONTIER_MON_MIGHTYENA_3,           \
-    FRONTIER_MON_SHEDINJA,              \
-    FRONTIER_MON_SCRAFTY_3,             \
-    FRONTIER_MON_PORYGON2_3,            \
-    FRONTIER_MON_LINOONE_3,             \
-    FRONTIER_MON_CROBAT_3,              \
-    FRONTIER_MON_SMEARGLE_1,            \
-    FRONTIER_MON_HERACROSS_3,           \
-    FRONTIER_MON_AZUMARILL_3,           \
-    FRONTIER_MON_SCEPTILE_4,            \
-    FRONTIER_MON_MAGMORTAR_3,           \
-    FRONTIER_MON_MAMOSWINE_3,           \
-    FRONTIER_MON_SMEARGLE_2,            \
-    FRONTIER_MON_GLISCOR_3,             \
-    FRONTIER_MON_RATICATE_3,            \
-    FRONTIER_MON_WOBBUFFET_3,           \
-    FRONTIER_MON_DELCATTY_3,            \
-    FRONTIER_MON_NOIVERN_3,             \
-    FRONTIER_MON_ARCHEOPS_3,            \
-    FRONTIER_MON_YANMEGA_2,             \
-    FRONTIER_MON_SCYTHER_3,             \
-    FRONTIER_MON_SCIZOR_3,              \
-    FRONTIER_MON_GOLISOPOD_3,           \
-    FRONTIER_MON_SKARMORY_3,            \
-    FRONTIER_MON_SWELLOW_3,             \
-    FRONTIER_MON_PIDGEOT_3,             \
-    FRONTIER_MON_NIDOKING_3,            \
-    FRONTIER_MON_NIDOQUEEN_3,           \
-    FRONTIER_MON_SYLVEON_3,             \
-    FRONTIER_MON_LUXRAY_3,              \
-    FRONTIER_MON_AUDINO_3,              \
-    FRONTIER_MON_SLAKING_3,             \
-    FRONTIER_MON_GALVANTULA_3,          \
-    FRONTIER_MON_ARBOK_3,               \
-    FRONTIER_MON_DITTO,                 \
-    FRONTIER_MON_WHISCASH_3,            \
-    FRONTIER_MON_PERSIAN_3,             \
-    FRONTIER_MON_FORRETRESS_3,          \
-    FRONTIER_MON_SHUCKLE_3,             \
-    FRONTIER_MON_VANILLUXE_3,           \
-    FRONTIER_MON_MANTINE_3,             \
-    FRONTIER_MON_DURANT_3,              \
-    FRONTIER_MON_MIMIKYU_3,             \
-    FRONTIER_MON_DUSKNOIR_3,            \
-    FRONTIER_MON_VIKAVOLT_3,            \
-    FRONTIER_MON_NINETALES_3,           \
+    FRONTIER_MON_IVYSAUR,               \
+    FRONTIER_MON_CLEFAIRY,              \
+    FRONTIER_MON_GLOOM,                 \
+    FRONTIER_MON_TANGELA,               \
+    FRONTIER_MON_LAIRON,                \
+    FRONTIER_MON_SHELGON,               \
+    FRONTIER_MON_MONFERNO,              \
+    FRONTIER_MON_CRANIDOS,              \
+    FRONTIER_MON_SHIELDON,              \
+    FRONTIER_MON_RIOLU,                 \
+    FRONTIER_MON_HIPPOPOTAS,            \
+    FRONTIER_MON_SERVINE,               \
+    FRONTIER_MON_DUOSION,               \
+    FRONTIER_MON_LAMPENT,               \
+    FRONTIER_MON_PAWNIARD,              \
+    FRONTIER_MON_RUFFLET,               \
+    FRONTIER_MON_QUILLADIN,             \
+    FRONTIER_MON_FLETCHINDER,           \
+    FRONTIER_MON_TORRACAT,              \
+    FRONTIER_MON_DUNSPARCE,             \
     -1
 
 // Also used by early Pkmn Breeder, Collector, and Beauty trainers
 #define FRONTIER_MONS_SCHOOL_KID_1      \
-    FRONTIER_MON_ROTOM_FROST_3,         \
-    FRONTIER_MON_SANDSLASH_3,           \
-    FRONTIER_MON_POLIWRATH_3,           \
-    FRONTIER_MON_MASQUERAIN_3,          \
-    FRONTIER_MON_RHYPERIOR_3,           \
-    FRONTIER_MON_WAILORD_4,             \
-    FRONTIER_MON_PORYGON_Z_3,           \
-    FRONTIER_MON_OCTILLERY_3,           \
-    FRONTIER_MON_GARCHOMP_5,            \
-    FRONTIER_MON_CLAYDOL_3,             \
-    FRONTIER_MON_AURORUS_3,             \
-    FRONTIER_MON_SALAMENCE_5,           \
-    FRONTIER_MON_ZANGOOSE_3,            \
-    FRONTIER_MON_SEVIPER_3,             \
-    FRONTIER_MON_VENOMOTH_3,            \
-    FRONTIER_MON_PRIMEAPE_3,            \
-    FRONTIER_MON_EMBOAR_3,              \
-    FRONTIER_MON_CLOYSTER_3,            \
-    FRONTIER_MON_JYNX_3,                \
-    FRONTIER_MON_CAMERUPT_3,            \
-    FRONTIER_MON_SHARPEDO_3,            \
-    FRONTIER_MON_CRAWDAUNT_3,           \
-    FRONTIER_MON_CHARIZARD_3,           \
-    FRONTIER_MON_DELPHOX_3,             \
-    FRONTIER_MON_ALAKAZAM_3,            \
-    FRONTIER_MON_DODRIO_3,              \
-    FRONTIER_MON_SCOLIPEDE_3,           \
-    FRONTIER_MON_HAWLUCHA_3,            \
-    FRONTIER_MON_SCEPTILE_3,            \
-    FRONTIER_MON_TALONFLAME_3,          \
-    FRONTIER_MON_WAILORD_3,             \
-    FRONTIER_MON_BLASTOISE_3,           \
-    FRONTIER_MON_FERALIGATR_3,          \
-    FRONTIER_MON_SLOWBRO_3,             \
-    FRONTIER_MON_TORTERRA_3,            \
-    FRONTIER_MON_MEGANIUM_3,            \
-    FRONTIER_MON_VILEPLUME_3,           \
-    FRONTIER_MON_TENTACRUEL_3,          \
-    FRONTIER_MON_MAROWAK_3,             \
-    FRONTIER_MON_SEAKING_3,             \
-    FRONTIER_MON_TROPIUS_3,             \
-    FRONTIER_MON_CLEFABLE_3,            \
-    FRONTIER_MON_MAGNEZONE_3,           \
-    FRONTIER_MON_DEWGONG_3,             \
+    FRONTIER_MON_IVYSAUR,               \
+    FRONTIER_MON_GLOOM,                 \
+    FRONTIER_MON_TANGELA,               \
+    FRONTIER_MON_MAGMAR,                \
+    FRONTIER_MON_MARILL,                \
+    FRONTIER_MON_ROSELIA,               \
+    FRONTIER_MON_MONFERNO,              \
+    FRONTIER_MON_STARAVIA,              \
+    FRONTIER_MON_CRANIDOS,              \
+    FRONTIER_MON_SHIELDON,              \
+    FRONTIER_MON_MUNCHLAX,              \
+    FRONTIER_MON_RIOLU,                 \
+    FRONTIER_MON_LAMPENT,               \
+    FRONTIER_MON_PAWNIARD,              \
+    FRONTIER_MON_RUFFLET,               \
+    FRONTIER_MON_QUILLADIN,             \
+    FRONTIER_MON_FLETCHINDER,           \
+    FRONTIER_MON_TRUMBEAK,              \
     -1
 
 #define FRONTIER_MONS_RICH_BOY_LADY_1   \
-    FRONTIER_MON_GALLADE_3,             \
-    FRONTIER_MON_MIGHTYENA_3,           \
-    FRONTIER_MON_SHEDINJA,              \
-    FRONTIER_MON_CROBAT_3,              \
-    FRONTIER_MON_HERACROSS_3,           \
-    FRONTIER_MON_WOBBUFFET_3,           \
-    FRONTIER_MON_NIDOKING_3,            \
-    FRONTIER_MON_NIDOQUEEN_3,           \
-    FRONTIER_MON_SYLVEON_3,             \
-    FRONTIER_MON_AUDINO_3,              \
-    FRONTIER_MON_ARBOK_3,               \
-    FRONTIER_MON_MIMIKYU_3,             \
-    FRONTIER_MON_DUSKNOIR_3,            \
-    FRONTIER_MON_MASQUERAIN_3,          \
-    FRONTIER_MON_CLAYDOL_3,             \
-    FRONTIER_MON_ZANGOOSE_3,            \
-    FRONTIER_MON_SEVIPER_3,             \
-    FRONTIER_MON_VENOMOTH_3,            \
-    FRONTIER_MON_JYNX_3,                \
-    FRONTIER_MON_ALAKAZAM_3,            \
-    FRONTIER_MON_SCOLIPEDE_3,           \
-    FRONTIER_MON_SLOWBRO_3,             \
-    FRONTIER_MON_TORTERRA_3,            \
-    FRONTIER_MON_VILEPLUME_3,           \
-    FRONTIER_MON_TROPIUS_3,             \
-    FRONTIER_MON_TOXICROAK_3,           \
-    FRONTIER_MON_EXEGGUTOR_3,           \
-    FRONTIER_MON_CINCCINO_3,            \
-    FRONTIER_MON_ROTOM_HEAT_3,          \
-    FRONTIER_MON_GRUMPIG_3,             \
-    FRONTIER_MON_TOXAPEX_3,             \
-    FRONTIER_MON_DRAGALGE_3,            \
-    FRONTIER_MON_ZOROARK_3,             \
-    FRONTIER_MON_ZOROARK_4,             \
-    FRONTIER_MON_BEEDRILL_2,            \
-    FRONTIER_MON_DUSTOX,                \
-    FRONTIER_MON_ARIADOS,               \
+    FRONTIER_MON_CLEFAIRY,              \
+    FRONTIER_MON_KADABRA,               \
+    FRONTIER_MON_TANGELA,               \
+    FRONTIER_MON_TOGETIC,               \
+    FRONTIER_MON_PILOSWINE,             \
+    FRONTIER_MON_DUSCLOPS,              \
+    FRONTIER_MON_ROSELIA,               \
+    FRONTIER_MON_LAIRON,                \
+    FRONTIER_MON_SHELGON,               \
+    FRONTIER_MON_METANG,                \
+    FRONTIER_MON_LUXIO,                 \
+    FRONTIER_MON_RIOLU,                 \
+    FRONTIER_MON_SERVINE,               \
+    FRONTIER_MON_DUOSION,               \
+    FRONTIER_MON_LAMPENT,               \
+    FRONTIER_MON_PAWNIARD,              \
+    FRONTIER_MON_RUFFLET,               \
+    FRONTIER_MON_ZWEILOUS,              \
+    FRONTIER_MON_SLIGGOO,               \
+    FRONTIER_MON_TORRACAT,              \
     -1
 
 // Also used by early Pkmn Breeder, Collector, and Beauty trainers
 #define FRONTIER_MONS_CAMPER_PICNICKER_1 \
-    FRONTIER_MON_TOXICROAK_3,           \
-    FRONTIER_MON_KINGLER_3,             \
-    FRONTIER_MON_EXEGGUTOR_3,           \
-    FRONTIER_MON_TOUCANNON_3,           \
-    FRONTIER_MON_CINCCINO_3,            \
-    FRONTIER_MON_ROTOM_FAN_3,           \
-    FRONTIER_MON_EELEKTROSS_3,          \
-    FRONTIER_MON_PELIPPER_3,            \
-    FRONTIER_MON_DELIBIRD,              \
-    FRONTIER_MON_ROTOM_HEAT_3,          \
-    FRONTIER_MON_HIPPOWDON_3,           \
-    FRONTIER_MON_GRUMPIG_3,             \
-    FRONTIER_MON_TYRANTRUM_3,           \
-    FRONTIER_MON_LUVDISC,               \
-    FRONTIER_MON_TOXAPEX_3,             \
-    FRONTIER_MON_CACTURNE_3,            \
-    FRONTIER_MON_DRAGALGE_3,            \
-    FRONTIER_MON_PRIMARINA_4,           \
-    FRONTIER_MON_LILLIGANT_3,           \
-    FRONTIER_MON_ROTOM_MOW_3,           \
-    FRONTIER_MON_CLAWITZER_3,           \
-    FRONTIER_MON_FLYGON_3,              \
-    FRONTIER_MON_MUDSDALE_3,            \
-    FRONTIER_MON_PRIMARINA_3,           \
-    FRONTIER_MON_STARAPTOR_3,           \
-    FRONTIER_MON_SALAZZLE_3,            \
-    FRONTIER_MON_FARFETCHD,             \
-    FRONTIER_MON_OMASTAR_3,             \
-    FRONTIER_MON_KABUTOPS_3,            \
-    FRONTIER_MON_CRADILY_3,             \
-    FRONTIER_MON_ARMALDO_3,             \
-    FRONTIER_MON_AMBIPOM_3,             \
-    FRONTIER_MON_ELECTIVIRE_3,          \
-    FRONTIER_MON_EXPLOUD_3,             \
-    FRONTIER_MON_SPINDA,                \
-    FRONTIER_MON_ZOROARK_3,             \
-    FRONTIER_MON_ZOROARK_4,             \
-    FRONTIER_MON_AMPHAROS_3,            \
-    FRONTIER_MON_FLAREON_3,             \
-    FRONTIER_MON_PROBOPASS,             \
-    FRONTIER_MON_CORSOLA,               \
-    FRONTIER_MON_MAWILE,                \
-    FRONTIER_MON_BEEDRILL_1,            \
-    FRONTIER_MON_BEEDRILL_2,            \
-    FRONTIER_MON_EMPOLEON_3,            \
-    FRONTIER_MON_STEELIX_3,             \
-    FRONTIER_MON_BEAUTIFLY,             \
-    FRONTIER_MON_DUSTOX,                \
-    FRONTIER_MON_LEDIAN,                \
-    FRONTIER_MON_ARIADOS,               \
-    FRONTIER_MON_YANMEGA_1,             \
+    FRONTIER_MON_IVYSAUR,               \
+    FRONTIER_MON_GLOOM,                 \
+    FRONTIER_MON_WEEPINBELL,            \
+    FRONTIER_MON_TANGELA,               \
+    FRONTIER_MON_BAYLEEF,               \
+    FRONTIER_MON_QUILAVA,               \
+    FRONTIER_MON_ROSELIA,               \
+    FRONTIER_MON_LILEEP,                \
+    FRONTIER_MON_MONFERNO,              \
+    FRONTIER_MON_HIPPOPOTAS,            \
+    FRONTIER_MON_SERVINE,               \
+    FRONTIER_MON_WHIRLIPEDE,            \
+    FRONTIER_MON_ARCHEN,                \
+    FRONTIER_MON_FERROSEED,             \
+    FRONTIER_MON_FRAXURE,               \
+    FRONTIER_MON_PAWNIARD,              \
+    FRONTIER_MON_RUFFLET,               \
+    FRONTIER_MON_QUILLADIN,             \
+    FRONTIER_MON_FLETCHINDER,           \
+    FRONTIER_MON_PUMPKABOO,             \
+    FRONTIER_MON_DARTRIX,               \
+    FRONTIER_MON_MUDBRAY,               \
     -1
 
 #define FRONTIER_MONS_TUBER_1   \
-    FRONTIER_MON_GALLADE_3,             \
-    FRONTIER_MON_GYARADOS_3,            \
-    FRONTIER_MON_MILOTIC_3,             \
-    FRONTIER_MON_QUAGSIRE_3,            \
-    FRONTIER_MON_LUDICOLO_3,            \
-    FRONTIER_MON_AZUMARILL_3,           \
-    FRONTIER_MON_WOBBUFFET_3,           \
-    FRONTIER_MON_GOLISOPOD_3,           \
-    FRONTIER_MON_PIDGEOT_3,             \
-    FRONTIER_MON_SYLVEON_3,             \
-    FRONTIER_MON_AUDINO_3,              \
-    FRONTIER_MON_WHISCASH_3,            \
-    FRONTIER_MON_VANILLUXE_3,           \
-    FRONTIER_MON_MANTINE_3,             \
-    FRONTIER_MON_POLIWRATH_3,           \
-    FRONTIER_MON_OCTILLERY_3,           \
-    FRONTIER_MON_CLOYSTER_3,            \
-    FRONTIER_MON_JYNX_3,                \
-    FRONTIER_MON_SHARPEDO_3,            \
-    FRONTIER_MON_CRAWDAUNT_3,           \
-    FRONTIER_MON_ALAKAZAM_3,            \
-    FRONTIER_MON_WAILORD_3,             \
-    FRONTIER_MON_BLASTOISE_3,           \
-    FRONTIER_MON_FERALIGATR_3,          \
-    FRONTIER_MON_SLOWBRO_3,             \
-    FRONTIER_MON_TENTACRUEL_3,          \
-    FRONTIER_MON_SEAKING_3,             \
-    FRONTIER_MON_TROPIUS_3,             \
-    FRONTIER_MON_DEWGONG_3,             \
-    FRONTIER_MON_EXEGGUTOR_3,           \
-    FRONTIER_MON_CINCCINO_3,            \
-    FRONTIER_MON_GRUMPIG_3,             \
+    FRONTIER_MON_PIKACHU,               \
+    FRONTIER_MON_CLEFAIRY,              \
+    FRONTIER_MON_BAYLEEF,               \
+    FRONTIER_MON_CROCONAW,              \
+    FRONTIER_MON_TOGETIC,               \
+    FRONTIER_MON_MARILL,                \
+    FRONTIER_MON_MARSHTOMP,             \
+    FRONTIER_MON_WINGULL,               \
+    FRONTIER_MON_SEALEO,                \
+    FRONTIER_MON_ROSELIA,               \
+    FRONTIER_MON_PRINPLUP,              \
+    FRONTIER_MON_MUNCHLAX,              \
+    FRONTIER_MON_PALPITOAD,             \
+    FRONTIER_MON_SLIGGOO,               \
+    FRONTIER_MON_PUMPKABOO,             \
+    FRONTIER_MON_TRUMBEAK,              \
+    FRONTIER_MON_CRABRAWLER,            \
+    FRONTIER_MON_MAREANIE,              \
+    FRONTIER_MON_DEWPIDER,              \
     -1
 
 #define FRONTIER_MONS_SWIMMER_M_1 \
-    FRONTIER_MON_AZUMARILL_4,           \
-    FRONTIER_MON_WHIMSICOTT_3,          \
-    FRONTIER_MON_HITMONTOP_3,           \
-    FRONTIER_MON_HAXORUS_3,             \
-    FRONTIER_MON_AMBIPOM_4,             \
-    FRONTIER_MON_SCRAFTY_3,             \
-    FRONTIER_MON_PORYGON2_3,            \
-    FRONTIER_MON_LINOONE_3,             \
-    FRONTIER_MON_SMEARGLE_1,            \
-    FRONTIER_MON_SMEARGLE_2,            \
-    FRONTIER_MON_RATICATE_3,            \
-    FRONTIER_MON_DELCATTY_3,            \
-    FRONTIER_MON_SKARMORY_3,            \
-    FRONTIER_MON_AUDINO_3,              \
-    FRONTIER_MON_SLAKING_3,             \
-    FRONTIER_MON_DITTO,                 \
-    FRONTIER_MON_PERSIAN_3,             \
-    FRONTIER_MON_POLIWRATH_3,           \
-    FRONTIER_MON_PORYGON_Z_3,           \
-    FRONTIER_MON_OCTILLERY_3,           \
-    FRONTIER_MON_PRIMEAPE_3,            \
-    FRONTIER_MON_EMBOAR_3,              \
-    FRONTIER_MON_CLOYSTER_3,            \
-    FRONTIER_MON_SHARPEDO_3,            \
-    FRONTIER_MON_CRAWDAUNT_3,           \
-    FRONTIER_MON_WAILORD_3,             \
-    FRONTIER_MON_BLASTOISE_3,           \
-    FRONTIER_MON_FERALIGATR_3,          \
-    FRONTIER_MON_SLOWBRO_3,             \
-    FRONTIER_MON_TENTACRUEL_3,          \
-    FRONTIER_MON_SEAKING_3,             \
-    FRONTIER_MON_CLEFABLE_3,            \
-    FRONTIER_MON_DEWGONG_3,             \
-    FRONTIER_MON_KINGLER_3,             \
-    FRONTIER_MON_TOUCANNON_3,           \
-    FRONTIER_MON_EELEKTROSS_3,          \
-    FRONTIER_MON_PELIPPER_3,            \
-    FRONTIER_MON_LUVDISC,               \
-    FRONTIER_MON_TOXAPEX_3,             \
-    FRONTIER_MON_PRIMARINA_4,           \
-    FRONTIER_MON_CLAWITZER_3,           \
-    FRONTIER_MON_PRIMARINA_3,           \
-    FRONTIER_MON_OMASTAR_3,             \
-    FRONTIER_MON_KABUTOPS_3,            \
-    FRONTIER_MON_AMBIPOM_3,             \
-    FRONTIER_MON_EXPLOUD_3,             \
-    FRONTIER_MON_SPINDA,                \
-    FRONTIER_MON_CORSOLA,               \
-    FRONTIER_MON_MAWILE,                \
-    FRONTIER_MON_EMPOLEON_3,            \
+    FRONTIER_MON_KADABRA,               \
+    FRONTIER_MON_MACHOKE,               \
+    FRONTIER_MON_HAUNTER,               \
+    FRONTIER_MON_CROCONAW,              \
+    FRONTIER_MON_MARILL,                \
+    FRONTIER_MON_PILOSWINE,             \
+    FRONTIER_MON_MARSHTOMP,             \
+    FRONTIER_MON_WINGULL,               \
+    FRONTIER_MON_SEALEO,                \
+    FRONTIER_MON_LILEEP,                \
+    FRONTIER_MON_ANORITH,               \
+    FRONTIER_MON_PRINPLUP,              \
+    FRONTIER_MON_MUNCHLAX,              \
+    FRONTIER_MON_GURDURR,               \
+    FRONTIER_MON_PALPITOAD,             \
+    FRONTIER_MON_EELEKTRIK,             \
+    FRONTIER_MON_FRAXURE,               \
+    FRONTIER_MON_MIENFOO,               \
+    FRONTIER_MON_CRABRAWLER,            \
+    FRONTIER_MON_MAREANIE,              \
+    FRONTIER_MON_DEWPIDER,              \
     -1
 
 #define FRONTIER_MONS_SWIMMER_F_1 \
-    FRONTIER_MON_AZUMARILL_4,           \
-    FRONTIER_MON_WHIMSICOTT_3,          \
-    FRONTIER_MON_HAXORUS_3,             \
-    FRONTIER_MON_AMBIPOM_4,             \
-    FRONTIER_MON_PORYGON2_3,            \
-    FRONTIER_MON_LINOONE_3,             \
-    FRONTIER_MON_SMEARGLE_1,            \
-    FRONTIER_MON_SMEARGLE_2,            \
-    FRONTIER_MON_RATICATE_3,            \
-    FRONTIER_MON_DELCATTY_3,            \
-    FRONTIER_MON_SKARMORY_3,            \
-    FRONTIER_MON_SLAKING_3,             \
-    FRONTIER_MON_DITTO,                 \
-    FRONTIER_MON_PERSIAN_3,             \
-    FRONTIER_MON_POLIWRATH_3,           \
-    FRONTIER_MON_PORYGON_Z_3,           \
-    FRONTIER_MON_OCTILLERY_3,           \
-    FRONTIER_MON_AURORUS_3,             \
-    FRONTIER_MON_CLOYSTER_3,            \
-    FRONTIER_MON_JYNX_3,                \
-    FRONTIER_MON_SHARPEDO_3,            \
-    FRONTIER_MON_CRAWDAUNT_3,           \
-    FRONTIER_MON_WAILORD_3,             \
-    FRONTIER_MON_BLASTOISE_3,           \
-    FRONTIER_MON_FERALIGATR_3,          \
-    FRONTIER_MON_SLOWBRO_3,             \
-    FRONTIER_MON_TENTACRUEL_3,          \
-    FRONTIER_MON_SEAKING_3,             \
-    FRONTIER_MON_CLEFABLE_3,            \
-    FRONTIER_MON_DEWGONG_3,             \
-    FRONTIER_MON_KINGLER_3,             \
-    FRONTIER_MON_TOUCANNON_3,           \
-    FRONTIER_MON_EELEKTROSS_3,          \
-    FRONTIER_MON_PELIPPER_3,            \
-    FRONTIER_MON_DELIBIRD,              \
+    FRONTIER_MON_CLEFAIRY,              \
+    FRONTIER_MON_BAYLEEF,               \
+    FRONTIER_MON_CROCONAW,              \
+    FRONTIER_MON_TOGETIC,               \
+    FRONTIER_MON_MARILL,                \
+    FRONTIER_MON_MARSHTOMP,             \
+    FRONTIER_MON_WINGULL,               \
+    FRONTIER_MON_SEALEO,                \
+    FRONTIER_MON_ROSELIA,               \
+    FRONTIER_MON_LILEEP,                \
+    FRONTIER_MON_ANORITH,               \
+    FRONTIER_MON_PRINPLUP,              \
+    FRONTIER_MON_MUNCHLAX,              \
+    FRONTIER_MON_PALPITOAD,             \
+    FRONTIER_MON_EELEKTRIK,             \
+    FRONTIER_MON_SLIGGOO,               \
+    FRONTIER_MON_CRABRAWLER,            \
+    FRONTIER_MON_MAREANIE,              \
+    FRONTIER_MON_DEWPIDER,              \
     FRONTIER_MON_LUVDISC,               \
-    FRONTIER_MON_TOXAPEX_3,             \
-    FRONTIER_MON_PRIMARINA_4,           \
-    FRONTIER_MON_CLAWITZER_3,           \
-    FRONTIER_MON_PRIMARINA_3,           \
-    FRONTIER_MON_OMASTAR_3,             \
-    FRONTIER_MON_KABUTOPS_3,            \
-    FRONTIER_MON_AMBIPOM_3,             \
-    FRONTIER_MON_EXPLOUD_3,             \
-    FRONTIER_MON_SPINDA,                \
-    FRONTIER_MON_CORSOLA,               \
-    FRONTIER_MON_EMPOLEON_3,            \
     -1 
 
 #define FRONTIER_MONS_POKEFAN_M_1 \
-    FRONTIER_MON_JYNX_3,                \
-    FRONTIER_MON_CAMERUPT_3,            \
-    FRONTIER_MON_CRAWDAUNT_3,           \
-    FRONTIER_MON_CHARIZARD_3,           \
-    FRONTIER_MON_DELPHOX_3,             \
-    FRONTIER_MON_HAWLUCHA_3,            \
-    FRONTIER_MON_SCEPTILE_3,            \
-    FRONTIER_MON_TALONFLAME_3,          \
-    FRONTIER_MON_WAILORD_3,             \
-    FRONTIER_MON_BLASTOISE_3,           \
-    FRONTIER_MON_FERALIGATR_3,          \
-    FRONTIER_MON_SLOWBRO_3,             \
-    FRONTIER_MON_TORTERRA_3,            \
-    FRONTIER_MON_MEGANIUM_3,            \
-    FRONTIER_MON_VILEPLUME_3,           \
-    FRONTIER_MON_TENTACRUEL_3,          \
-    FRONTIER_MON_SEAKING_3,             \
-    FRONTIER_MON_TROPIUS_3,             \
-    FRONTIER_MON_CLEFABLE_3,            \
-    FRONTIER_MON_DEWGONG_3,             \
-    FRONTIER_MON_EXEGGUTOR_3,           \
-    FRONTIER_MON_TOUCANNON_3,           \
-    FRONTIER_MON_PELIPPER_3,            \
-    FRONTIER_MON_HIPPOWDON_3,           \
-    FRONTIER_MON_GRUMPIG_3,             \
-    FRONTIER_MON_LUVDISC,               \
-    FRONTIER_MON_LILLIGANT_3,           \
-    FRONTIER_MON_PRIMARINA_3,           \
-    FRONTIER_MON_AMBIPOM_3,             \
-    FRONTIER_MON_ELECTIVIRE_3,          \
-    FRONTIER_MON_SPINDA,                \
-    FRONTIER_MON_AMPHAROS_3,            \
-    FRONTIER_MON_FLAREON_3,             \
-    FRONTIER_MON_CORSOLA,               \
-    FRONTIER_MON_MAWILE,                \
-    FRONTIER_MON_EMPOLEON_3,            \
+    FRONTIER_MON_PIKACHU,               \
+    FRONTIER_MON_GLOOM,                 \
+    FRONTIER_MON_KADABRA,               \
+    FRONTIER_MON_MACHOKE,               \
+    FRONTIER_MON_QUILAVA,               \
+    FRONTIER_MON_PILOSWINE,             \
+    FRONTIER_MON_COMBUSKEN,             \
+    FRONTIER_MON_DUSCLOPS,              \
+    FRONTIER_MON_LAIRON,                \
+    FRONTIER_MON_SHELGON,               \
+    FRONTIER_MON_METANG,                \
+    FRONTIER_MON_GABITE,                \
+    FRONTIER_MON_GURDURR,               \
+    FRONTIER_MON_KROKOROK,              \
+    FRONTIER_MON_DUOSION,               \
+    FRONTIER_MON_FRAXURE,               \
+    FRONTIER_MON_MIENFOO,               \
+    FRONTIER_MON_ZWEILOUS,              \
+    FRONTIER_MON_MUDBRAY,               \
+    FRONTIER_MON_HAKAMO_O,              \
     -1
 
 #define FRONTIER_MONS_POKEFAN_F_1 \
-    FRONTIER_MON_AZUMARILL_4,           \
-    FRONTIER_MON_GALLADE_3,             \
-    FRONTIER_MON_GYARADOS_3,            \
-    FRONTIER_MON_TOGEDEMARU_3,          \
-    FRONTIER_MON_WHIMSICOTT_3,          \
-    FRONTIER_MON_QUAGSIRE_3,            \
-    FRONTIER_MON_HAXORUS_3,             \
-    FRONTIER_MON_AMBIPOM_4,             \
-    FRONTIER_MON_GOGOAT_3,              \
-    FRONTIER_MON_LUDICOLO_3,            \
-    FRONTIER_MON_MIGHTYENA_3,           \
-    FRONTIER_MON_PORYGON2_3,            \
-    FRONTIER_MON_LINOONE_3,             \
-    FRONTIER_MON_SMEARGLE_1,            \
-    FRONTIER_MON_AZUMARILL_3,           \
-    FRONTIER_MON_SCEPTILE_4,            \
-    FRONTIER_MON_MAMOSWINE_3,           \
-    FRONTIER_MON_SMEARGLE_2,            \
-    FRONTIER_MON_GLISCOR_3,             \
-    FRONTIER_MON_RATICATE_3,            \
-    FRONTIER_MON_WOBBUFFET_3,           \
-    FRONTIER_MON_DELCATTY_3,            \
-    FRONTIER_MON_GOLISOPOD_3,           \
-    FRONTIER_MON_SKARMORY_3,            \
-    FRONTIER_MON_SWELLOW_3,             \
-    FRONTIER_MON_PIDGEOT_3,             \
-    FRONTIER_MON_NIDOKING_3,            \
-    FRONTIER_MON_NIDOQUEEN_3,           \
-    FRONTIER_MON_SYLVEON_3,             \
-    FRONTIER_MON_LUXRAY_3,              \
-    FRONTIER_MON_DITTO,                 \
-    FRONTIER_MON_PERSIAN_3,             \
-    FRONTIER_MON_VANILLUXE_3,           \
-    FRONTIER_MON_DURANT_3,              \
-    FRONTIER_MON_NINETALES_3,           \
-    FRONTIER_MON_ROTOM_FROST_3,         \
-    FRONTIER_MON_SANDSLASH_3,           \
-    FRONTIER_MON_POLIWRATH_3,           \
-    FRONTIER_MON_WAILORD_4,             \
-    FRONTIER_MON_PORYGON_Z_3,           \
-    FRONTIER_MON_SEVIPER_3,             \
+    FRONTIER_MON_PIKACHU,               \
+    FRONTIER_MON_CLEFAIRY,              \
+    FRONTIER_MON_MAGNETON,              \
+    FRONTIER_MON_MAGMAR,                \
+    FRONTIER_MON_BAYLEEF,               \
+    FRONTIER_MON_TOGETIC,               \
+    FRONTIER_MON_COMBUSKEN,             \
+    FRONTIER_MON_SHELGON,               \
+    FRONTIER_MON_METANG,                \
+    FRONTIER_MON_SHIELDON,              \
+    FRONTIER_MON_GABITE,                \
+    FRONTIER_MON_MUNCHLAX,              \
+    FRONTIER_MON_SERVINE,               \
+    FRONTIER_MON_KROKOROK,              \
+    FRONTIER_MON_DUOSION,               \
+    FRONTIER_MON_FRAXURE,               \
+    FRONTIER_MON_MIENFOO,               \
+    FRONTIER_MON_ZWEILOUS,              \
+    FRONTIER_MON_FLETCHINDER,           \
+    FRONTIER_MON_SLIGGOO,               \
+    FRONTIER_MON_MUDBRAY,               \
+    FRONTIER_MON_HAKAMO_O,              \
+    FRONTIER_MON_SPINDA,                \
     -1
 
 #define FRONTIER_MONS_BUG_CATCHER_1 \
-    FRONTIER_MON_ILLUMISE_3,            \
-    FRONTIER_MON_VOLBEAT_3,             \
-    FRONTIER_MON_DRAPION_3,             \
-    FRONTIER_MON_SHEDINJA,              \
-    FRONTIER_MON_HERACROSS_3,           \
-    FRONTIER_MON_YANMEGA_2,             \
-    FRONTIER_MON_SCYTHER_3,             \
-    FRONTIER_MON_SCIZOR_3,              \
-    FRONTIER_MON_GOLISOPOD_3,           \
-    FRONTIER_MON_GALVANTULA_3,          \
-    FRONTIER_MON_FORRETRESS_3,          \
-    FRONTIER_MON_SHUCKLE_3,             \
-    FRONTIER_MON_VENOMOTH_3,            \
-    FRONTIER_MON_EXEGGUTOR_3,           \
-    FRONTIER_MON_FLYGON_3,              \
-    FRONTIER_MON_ARMALDO_3,             \
-    FRONTIER_MON_BEEDRILL_1,            \
-    FRONTIER_MON_BEEDRILL_2,            \
-    FRONTIER_MON_BEAUTIFLY,             \
-    FRONTIER_MON_DUSTOX,                \
-    FRONTIER_MON_LEDIAN,                \
-    FRONTIER_MON_ARIADOS,               \
-    FRONTIER_MON_YANMEGA_1,             \
+    FRONTIER_MON_GOLBAT,                \
+    FRONTIER_MON_WEEPINBELL,            \
+    FRONTIER_MON_VIBRAVA,               \
+    FRONTIER_MON_ANORITH,               \
+    FRONTIER_MON_WHIRLIPEDE,            \
+    FRONTIER_MON_FERROSEED,             \
+    FRONTIER_MON_DEWPIDER,              \
     -1
 
 // Identical to above with 2 additions. Might be possible to merge the two
 #define FRONTIER_MONS_BUG_CATCHER_1_EXTRA(species1, species2) \
-    FRONTIER_MON_ILLUMISE_3,            \
-    FRONTIER_MON_VOLBEAT_3,             \
-    FRONTIER_MON_DRAPION_3,             \
-    FRONTIER_MON_##species1,            \
-    FRONTIER_MON_##species2,            \
-    FRONTIER_MON_SHEDINJA,              \
-    FRONTIER_MON_HERACROSS_3,           \
-    FRONTIER_MON_YANMEGA_2,             \
-    FRONTIER_MON_SCYTHER_3,             \
-    FRONTIER_MON_SCIZOR_3,              \
-    FRONTIER_MON_GOLISOPOD_3,           \
-    FRONTIER_MON_GALVANTULA_3,          \
-    FRONTIER_MON_FORRETRESS_3,          \
-    FRONTIER_MON_SHUCKLE_3,             \
-    FRONTIER_MON_VENOMOTH_3,            \
-    FRONTIER_MON_EXEGGUTOR_3,           \
-    FRONTIER_MON_FLYGON_3,              \
-    FRONTIER_MON_ARMALDO_3,             \
-    FRONTIER_MON_BEEDRILL_1,            \
-    FRONTIER_MON_BEEDRILL_2,            \
-    FRONTIER_MON_BEAUTIFLY,             \
-    FRONTIER_MON_DUSTOX,                \
-    FRONTIER_MON_LEDIAN,                \
-    FRONTIER_MON_ARIADOS,               \
-    FRONTIER_MON_YANMEGA_1,             \
+    FRONTIER_MON_##species1##_2,        \
+    FRONTIER_MON_##species2##_2,        \
+    FRONTIER_MON_GOLBAT,                \
+    FRONTIER_MON_WEEPINBELL,            \
+    FRONTIER_MON_VIBRAVA,               \
+    FRONTIER_MON_ANORITH,               \
+    FRONTIER_MON_WHIRLIPEDE,            \
+    FRONTIER_MON_FERROSEED,             \
+    FRONTIER_MON_DEWPIDER,              \
+    FRONTIER_MON_LEDIAN_1,              \
+    FRONTIER_MON_ARIADOS_1,             \
+    FRONTIER_MON_NINJASK_1,             \
+    FRONTIER_MON_SHEDINJA_1,            \
     -1
 
 #define FRONTIER_MONS_NINJA_BOY_1 \
-    FRONTIER_MON_GALLADE_3,             \
-    FRONTIER_MON_SHEDINJA,              \
-    FRONTIER_MON_CROBAT_3,              \
-    FRONTIER_MON_HERACROSS_3,           \
-    FRONTIER_MON_WOBBUFFET_3,           \
-    FRONTIER_MON_YANMEGA_2,             \
-    FRONTIER_MON_SCYTHER_3,             \
-    FRONTIER_MON_SCIZOR_3,              \
-    FRONTIER_MON_GOLISOPOD_3,           \
-    FRONTIER_MON_NIDOKING_3,            \
-    FRONTIER_MON_NIDOQUEEN_3,           \
-    FRONTIER_MON_SYLVEON_3,             \
-    FRONTIER_MON_AUDINO_3,              \
-    FRONTIER_MON_GALVANTULA_3,          \
-    FRONTIER_MON_ARBOK_3,               \
-    FRONTIER_MON_FORRETRESS_3,          \
-    FRONTIER_MON_SHUCKLE_3,             \
-    FRONTIER_MON_MIMIKYU_3,             \
-    FRONTIER_MON_DUSKNOIR_3,            \
-    FRONTIER_MON_MASQUERAIN_3,          \
-    FRONTIER_MON_CLAYDOL_3,             \
-    FRONTIER_MON_ZANGOOSE_3,            \
-    FRONTIER_MON_SEVIPER_3,             \
-    FRONTIER_MON_VENOMOTH_3,            \
-    FRONTIER_MON_JYNX_3,                \
-    FRONTIER_MON_ALAKAZAM_3,            \
-    FRONTIER_MON_SCOLIPEDE_3,           \
-    FRONTIER_MON_SLOWBRO_3,             \
-    FRONTIER_MON_TORTERRA_3,            \
-    FRONTIER_MON_VILEPLUME_3,           \
-    FRONTIER_MON_TROPIUS_3,             \
-    FRONTIER_MON_TOXICROAK_3,           \
-    FRONTIER_MON_EXEGGUTOR_3,           \
-    FRONTIER_MON_CINCCINO_3,            \
-    FRONTIER_MON_GRUMPIG_3,             \
-    FRONTIER_MON_TOXAPEX_3,             \
-    FRONTIER_MON_DRAGALGE_3,            \
-    FRONTIER_MON_FLYGON_3,              \
-    FRONTIER_MON_ARMALDO_3,             \
-    FRONTIER_MON_ZOROARK_3,             \
-    FRONTIER_MON_ZOROARK_4,             \
-    FRONTIER_MON_BEEDRILL_1,            \
-    FRONTIER_MON_BEEDRILL_2,            \
-    FRONTIER_MON_BEAUTIFLY,             \
-    FRONTIER_MON_DUSTOX,                \
-    FRONTIER_MON_LEDIAN,                \
-    FRONTIER_MON_ARIADOS,               \
-    FRONTIER_MON_YANMEGA_1,             \
+    FRONTIER_MON_IVYSAUR,               \
+    FRONTIER_MON_GOLBAT,                \
+    FRONTIER_MON_GLOOM,                 \
+    FRONTIER_MON_WEEPINBELL,            \
+    FRONTIER_MON_MAGMAR,                \
+    FRONTIER_MON_QUILAVA,               \
+    FRONTIER_MON_MURKROW,               \
+    FRONTIER_MON_SNEASEL,               \
+    FRONTIER_MON_VIBRAVA,               \
+    FRONTIER_MON_DUSCLOPS,              \
+    FRONTIER_MON_LUXIO,                 \
+    FRONTIER_MON_RIOLU,                 \
+    FRONTIER_MON_WHIRLIPEDE,            \
+    FRONTIER_MON_KROKOROK,              \
+    FRONTIER_MON_PAWNIARD,              \
+    FRONTIER_MON_ZWEILOUS,              \
+    FRONTIER_MON_FROGADIER,             \
+    FRONTIER_MON_PUMPKABOO,             \
+    FRONTIER_MON_TORRACAT,              \
     -1 
 
 #define FRONTIER_MONS_BUG_MANIAC_1 \
-    FRONTIER_MON_SHEDINJA,              \
-    FRONTIER_MON_HERACROSS_3,           \
-    FRONTIER_MON_SCEPTILE_4,            \
-    FRONTIER_MON_YANMEGA_2,             \
-    FRONTIER_MON_SCYTHER_3,             \
-    FRONTIER_MON_SCIZOR_3,              \
-    FRONTIER_MON_GOLISOPOD_3,           \
-    FRONTIER_MON_GALVANTULA_3,          \
-    FRONTIER_MON_FORRETRESS_3,          \
-    FRONTIER_MON_SHUCKLE_3,             \
-    FRONTIER_MON_DURANT_3,              \
-    FRONTIER_MON_MIMIKYU_3,             \
-    FRONTIER_MON_DUSKNOIR_3,            \
-    FRONTIER_MON_MASQUERAIN_3,          \
-    FRONTIER_MON_VENOMOTH_3,            \
-    FRONTIER_MON_SCOLIPEDE_3,           \
-    FRONTIER_MON_VILEPLUME_3,           \
-    FRONTIER_MON_EXEGGUTOR_3,           \
-    FRONTIER_MON_CACTURNE_3,            \
-    FRONTIER_MON_LILLIGANT_3,           \
-    FRONTIER_MON_FLYGON_3,              \
-    FRONTIER_MON_CRADILY_3,             \
-    FRONTIER_MON_ARMALDO_3,             \
+    FRONTIER_MON_KADABRA,               \
+    FRONTIER_MON_WEEPINBELL,            \
+    FRONTIER_MON_VIBRAVA,               \
+    FRONTIER_MON_ANORITH,               \
+    FRONTIER_MON_WHIRLIPEDE,            \
+    FRONTIER_MON_DEWPIDER,              \
+    FRONTIER_MON_BUTTERFREE_1,          \
     FRONTIER_MON_BEEDRILL_1,            \
-    FRONTIER_MON_BEEDRILL_2,            \
-    FRONTIER_MON_BEAUTIFLY,             \
-    FRONTIER_MON_DUSTOX,                \
-    FRONTIER_MON_LEDIAN,                \
-    FRONTIER_MON_ARIADOS,               \
-    FRONTIER_MON_YANMEGA_1,             \
+    FRONTIER_MON_LEDIAN_1,              \
+    FRONTIER_MON_ARIADOS_1,             \
+    FRONTIER_MON_BEAUTIFLY_1,           \
+    FRONTIER_MON_DUSTOX_1,              \
+    FRONTIER_MON_NINJASK_1,             \
+    FRONTIER_MON_SHEDINJA_1,            \
     -1 
 
 #define FRONTIER_MONS_FISHERMAN_1 \
-    FRONTIER_MON_GYARADOS_3,            \
-    FRONTIER_MON_MILOTIC_3,             \
-    FRONTIER_MON_WHISCASH_3,            \
-    FRONTIER_MON_MANTINE_3,             \
-    FRONTIER_MON_POLIWRATH_3,           \
-    FRONTIER_MON_OCTILLERY_3,           \
-    FRONTIER_MON_CLOYSTER_3,            \
-    FRONTIER_MON_SHARPEDO_3,            \
-    FRONTIER_MON_CRAWDAUNT_3,           \
-    FRONTIER_MON_SEAKING_3,             \
-    FRONTIER_MON_KINGLER_3,             \
-    FRONTIER_MON_EELEKTROSS_3,          \
-    FRONTIER_MON_LUVDISC,               \
-    FRONTIER_MON_TOXAPEX_3,             \
-    FRONTIER_MON_PRIMARINA_4,           \
-    FRONTIER_MON_PRIMARINA_3,           \
-    FRONTIER_MON_OMASTAR_3,             \
-    FRONTIER_MON_KABUTOPS_3,            \
+    FRONTIER_MON_GOLBAT,                \
+    FRONTIER_MON_MACHOKE,               \
+    FRONTIER_MON_HAUNTER,               \
+    FRONTIER_MON_CROCONAW,              \
+    FRONTIER_MON_MARILL,                \
+    FRONTIER_MON_MARSHTOMP,             \
+    FRONTIER_MON_SEALEO,                \
+    FRONTIER_MON_PRINPLUP,              \
+    FRONTIER_MON_HIPPOPOTAS,            \
+    FRONTIER_MON_GURDURR,               \
+    FRONTIER_MON_PALPITOAD,             \
+    FRONTIER_MON_EELEKTRIK,             \
+    FRONTIER_MON_FRAXURE,               \
+    FRONTIER_MON_FROGADIER,             \
+    FRONTIER_MON_SLIGGOO,               \
+    FRONTIER_MON_CRABRAWLER,            \
+    FRONTIER_MON_MAREANIE,              \
     FRONTIER_MON_CORSOLA,               \
     -1
 
 #define FRONTIER_MONS_RUIN_MANIAC_1 \
-    FRONTIER_MON_MAMOSWINE_3,           \
-    FRONTIER_MON_YANMEGA_2,             \
-    FRONTIER_MON_SHUCKLE_3,             \
-    FRONTIER_MON_SANDSLASH_3,           \
-    FRONTIER_MON_RHYPERIOR_3,           \
-    FRONTIER_MON_GARCHOMP_5,            \
-    FRONTIER_MON_CLAYDOL_3,             \
-    FRONTIER_MON_ZANGOOSE_3,            \
-    FRONTIER_MON_CAMERUPT_3,            \
-    FRONTIER_MON_MAROWAK_3,             \
-    FRONTIER_MON_MAGNEZONE_3,           \
-    FRONTIER_MON_HIPPOWDON_3,           \
-    FRONTIER_MON_TYRANTRUM_3,           \
-    FRONTIER_MON_MUDSDALE_3,            \
-    FRONTIER_MON_OMASTAR_3,             \
-    FRONTIER_MON_KABUTOPS_3,            \
-    FRONTIER_MON_CRADILY_3,             \
-    FRONTIER_MON_ARMALDO_3,             \
-    FRONTIER_MON_PROBOPASS,             \
-    FRONTIER_MON_CORSOLA,               \
-    FRONTIER_MON_MAWILE,                \
-    FRONTIER_MON_STEELIX_3,             \
+    FRONTIER_MON_GOLBAT,                \
+    FRONTIER_MON_KADABRA,               \
+    FRONTIER_MON_MAGNETON,              \
+    FRONTIER_MON_HAUNTER,               \
+    FRONTIER_MON_MURKROW,               \
+    FRONTIER_MON_PILOSWINE,             \
+    FRONTIER_MON_VIBRAVA,               \
+    FRONTIER_MON_DUSCLOPS,              \
+    FRONTIER_MON_LAIRON,                \
+    FRONTIER_MON_CRANIDOS,              \
+    FRONTIER_MON_SHIELDON,              \
+    FRONTIER_MON_HIPPOPOTAS,            \
+    FRONTIER_MON_KROKOROK,              \
+    FRONTIER_MON_ARCHEN,                \
+    FRONTIER_MON_FERROSEED,             \
+    FRONTIER_MON_TYRUNT,                \
+    FRONTIER_MON_MUDBRAY,               \
+    FRONTIER_MON_HAKAMO_O,              \
     -1 
 
 #define FRONTIER_MONS_PARASOL_LADY_1 \
-    FRONTIER_MON_LEAFEON_3,             \
-    FRONTIER_MON_QUAGSIRE_3,            \
-    FRONTIER_MON_LUDICOLO_3,            \
-    FRONTIER_MON_AZUMARILL_3,           \
-    FRONTIER_MON_GOLISOPOD_3,           \
-    FRONTIER_MON_SHUCKLE_3,             \
-    FRONTIER_MON_VANILLUXE_3,           \
-    FRONTIER_MON_SANDSLASH_3,           \
-    FRONTIER_MON_POLIWRATH_3,           \
-    FRONTIER_MON_CAMERUPT_3,            \
-    FRONTIER_MON_DELIBIRD,              \
-    FRONTIER_MON_HIPPOWDON_3,           \
-    FRONTIER_MON_LUVDISC,               \
-    FRONTIER_MON_EMPOLEON_3,            \
-    FRONTIER_MON_STEELIX_3,             \
-    FRONTIER_MON_SUDOWOODO_1,           \
+    FRONTIER_MON_IVYSAUR,               \
+    FRONTIER_MON_CLEFAIRY,              \
+    FRONTIER_MON_TANGELA,               \
+    FRONTIER_MON_MAGMAR,                \
+    FRONTIER_MON_BAYLEEF,               \
+    FRONTIER_MON_TOGETIC,               \
+    FRONTIER_MON_MURKROW,               \
+    FRONTIER_MON_COMBUSKEN,             \
+    FRONTIER_MON_STARAVIA,              \
+    FRONTIER_MON_MUNCHLAX,              \
+    FRONTIER_MON_SERVINE,               \
+    FRONTIER_MON_ARCHEN,                \
+    FRONTIER_MON_DUOSION,               \
+    FRONTIER_MON_LAMPENT,               \
+    FRONTIER_MON_RUFFLET,               \
+    FRONTIER_MON_ZWEILOUS,              \
+    FRONTIER_MON_QUILLADIN,             \
+    FRONTIER_MON_PUMPKABOO,             \
+    FRONTIER_MON_DARTRIX,               \
     -1
 
 #define FRONTIER_MONS_AROMA_LADY_1 \
-    FRONTIER_MON_LEAFEON_3,             \
-    FRONTIER_MON_GALLADE_3,             \
-    FRONTIER_MON_GOGOAT_3,              \
-    FRONTIER_MON_LUDICOLO_3,            \
-    FRONTIER_MON_SCEPTILE_4,            \
-    FRONTIER_MON_WOBBUFFET_3,           \
-    FRONTIER_MON_SYLVEON_3,             \
-    FRONTIER_MON_AUDINO_3,              \
-    FRONTIER_MON_GALVANTULA_3,          \
-    FRONTIER_MON_DURANT_3,              \
-    FRONTIER_MON_MASQUERAIN_3,          \
-    FRONTIER_MON_CLAYDOL_3,             \
-    FRONTIER_MON_ZANGOOSE_3,            \
-    FRONTIER_MON_JYNX_3,                \
-    FRONTIER_MON_ALAKAZAM_3,            \
-    FRONTIER_MON_SCEPTILE_3,            \
-    FRONTIER_MON_SLOWBRO_3,             \
-    FRONTIER_MON_TORTERRA_3,            \
-    FRONTIER_MON_MEGANIUM_3,            \
-    FRONTIER_MON_VILEPLUME_3,           \
-    FRONTIER_MON_TROPIUS_3,             \
-    FRONTIER_MON_EXEGGUTOR_3,           \
-    FRONTIER_MON_CINCCINO_3,            \
-    FRONTIER_MON_GRUMPIG_3,             \
-    FRONTIER_MON_CACTURNE_3,            \
-    FRONTIER_MON_LILLIGANT_3,           \
-    FRONTIER_MON_ROTOM_MOW_3,           \
-    FRONTIER_MON_CLAWITZER_3,           \
-    FRONTIER_MON_CRADILY_3,             \
+    FRONTIER_MON_IVYSAUR,               \
+    FRONTIER_MON_GLOOM,                 \
+    FRONTIER_MON_WEEPINBELL,            \
+    FRONTIER_MON_TANGELA,               \
+    FRONTIER_MON_BAYLEEF,               \
+    FRONTIER_MON_ROSELIA,               \
+    FRONTIER_MON_LILEEP,                \
+    FRONTIER_MON_SERVINE,               \
+    FRONTIER_MON_WHIRLIPEDE,            \
+    FRONTIER_MON_DUOSION,               \
+    FRONTIER_MON_FERROSEED,             \
+    FRONTIER_MON_QUILLADIN,             \
+    FRONTIER_MON_SLIGGOO,               \
+    FRONTIER_MON_PUMPKABOO,             \
+    FRONTIER_MON_DARTRIX,               \
     -1
 
 #define FRONTIER_MONS_GUITARIST_1 \
-    FRONTIER_MON_GALLADE_3,             \
-    FRONTIER_MON_TOGEDEMARU_3,          \
-    FRONTIER_MON_MIGHTYENA_3,           \
-    FRONTIER_MON_WOBBUFFET_3,           \
-    FRONTIER_MON_SYLVEON_3,             \
-    FRONTIER_MON_LUXRAY_3,              \
-    FRONTIER_MON_AUDINO_3,              \
-    FRONTIER_MON_MIMIKYU_3,             \
-    FRONTIER_MON_DUSKNOIR_3,            \
-    FRONTIER_MON_VIKAVOLT_3,            \
-    FRONTIER_MON_ROTOM_FROST_3,         \
-    FRONTIER_MON_WAILORD_4,             \
-    FRONTIER_MON_CLAYDOL_3,             \
-    FRONTIER_MON_SALAMENCE_5,           \
-    FRONTIER_MON_ZANGOOSE_3,            \
-    FRONTIER_MON_JYNX_3,                \
-    FRONTIER_MON_ALAKAZAM_3,            \
-    FRONTIER_MON_SCOLIPEDE_3,           \
-    FRONTIER_MON_SLOWBRO_3,             \
-    FRONTIER_MON_TROPIUS_3,             \
-    FRONTIER_MON_MAGNEZONE_3,           \
-    FRONTIER_MON_EXEGGUTOR_3,           \
-    FRONTIER_MON_CINCCINO_3,            \
-    FRONTIER_MON_ROTOM_FAN_3,           \
-    FRONTIER_MON_EELEKTROSS_3,          \
-    FRONTIER_MON_ROTOM_HEAT_3,          \
-    FRONTIER_MON_GRUMPIG_3,             \
-    FRONTIER_MON_TYRANTRUM_3,           \
-    FRONTIER_MON_ELECTIVIRE_3,          \
-    FRONTIER_MON_AMPHAROS_3,            \
-    FRONTIER_MON_MAWILE,                \
+    FRONTIER_MON_PIKACHU,               \
+    FRONTIER_MON_KADABRA,               \
+    FRONTIER_MON_MAGNETON,              \
+    FRONTIER_MON_ELECTABUZZ,            \
+    FRONTIER_MON_MAGMAR,                \
+    FRONTIER_MON_LAIRON,                \
+    FRONTIER_MON_SHELGON,               \
+    FRONTIER_MON_METANG,                \
+    FRONTIER_MON_LUXIO,                 \
+    FRONTIER_MON_SHIELDON,              \
+    FRONTIER_MON_GABITE,                \
+    FRONTIER_MON_GURDURR,               \
+    FRONTIER_MON_FERROSEED,             \
+    FRONTIER_MON_EELEKTRIK,             \
+    FRONTIER_MON_PAWNIARD,              \
+    FRONTIER_MON_ZWEILOUS,              \
+    FRONTIER_MON_TYRUNT,                \
     -1 
 
 #define FRONTIER_MONS_BIRD_KEEPER_1 \
-    FRONTIER_MON_AZUMARILL_4,           \
-    FRONTIER_MON_WHIMSICOTT_3,          \
-    FRONTIER_MON_HAXORUS_3,             \
-    FRONTIER_MON_AMBIPOM_4,             \
-    FRONTIER_MON_PORYGON2_3,            \
-    FRONTIER_MON_LINOONE_3,             \
-    FRONTIER_MON_CROBAT_3,              \
-    FRONTIER_MON_SMEARGLE_1,            \
-    FRONTIER_MON_SMEARGLE_2,            \
-    FRONTIER_MON_GLISCOR_3,             \
-    FRONTIER_MON_RATICATE_3,            \
-    FRONTIER_MON_DELCATTY_3,            \
-    FRONTIER_MON_NOIVERN_3,             \
-    FRONTIER_MON_ARCHEOPS_3,            \
-    FRONTIER_MON_SKARMORY_3,            \
-    FRONTIER_MON_SWELLOW_3,             \
-    FRONTIER_MON_PIDGEOT_3,             \
-    FRONTIER_MON_SLAKING_3,             \
-    FRONTIER_MON_DITTO,                 \
-    FRONTIER_MON_PERSIAN_3,             \
-    FRONTIER_MON_PORYGON_Z_3,           \
-    FRONTIER_MON_DODRIO_3,              \
-    FRONTIER_MON_HAWLUCHA_3,            \
-    FRONTIER_MON_TALONFLAME_3,          \
-    FRONTIER_MON_TROPIUS_3,             \
-    FRONTIER_MON_CLEFABLE_3,            \
-    FRONTIER_MON_TOUCANNON_3,           \
-    FRONTIER_MON_PELIPPER_3,            \
+    FRONTIER_MON_GOLBAT,                \
+    FRONTIER_MON_TOGETIC,               \
+    FRONTIER_MON_MURKROW,               \
+    FRONTIER_MON_COMBUSKEN,             \
+    FRONTIER_MON_WINGULL,               \
+    FRONTIER_MON_PRINPLUP,              \
+    FRONTIER_MON_STARAVIA,              \
+    FRONTIER_MON_ARCHEN,                \
+    FRONTIER_MON_RUFFLET,               \
+    FRONTIER_MON_FLETCHINDER,           \
+    FRONTIER_MON_DARTRIX,               \
+    FRONTIER_MON_TRUMBEAK,              \
     FRONTIER_MON_DELIBIRD,              \
-    FRONTIER_MON_STARAPTOR_3,           \
     FRONTIER_MON_FARFETCHD,             \
-    FRONTIER_MON_AMBIPOM_3,             \
-    FRONTIER_MON_EXPLOUD_3,             \
-    FRONTIER_MON_SPINDA,                \
     -1
 
 #define FRONTIER_MONS_SAILOR_1  \
-    FRONTIER_MON_HITMONTOP_3,           \
-    FRONTIER_MON_SCRAFTY_3,             \
-    FRONTIER_MON_AUDINO_3,              \
-    FRONTIER_MON_SANDSLASH_3,           \
-    FRONTIER_MON_RHYPERIOR_3,           \
-    FRONTIER_MON_WAILORD_4,             \
-    FRONTIER_MON_GARCHOMP_5,            \
-    FRONTIER_MON_SALAMENCE_5,           \
-    FRONTIER_MON_PRIMEAPE_3,            \
-    FRONTIER_MON_EMBOAR_3,              \
-    FRONTIER_MON_CLOYSTER_3,            \
-    FRONTIER_MON_SHARPEDO_3,            \
-    FRONTIER_MON_CRAWDAUNT_3,           \
-    FRONTIER_MON_WAILORD_3,             \
-    FRONTIER_MON_BLASTOISE_3,           \
-    FRONTIER_MON_FERALIGATR_3,          \
-    FRONTIER_MON_SLOWBRO_3,             \
-    FRONTIER_MON_TENTACRUEL_3,          \
-    FRONTIER_MON_MAROWAK_3,             \
-    FRONTIER_MON_DEWGONG_3,             \
-    FRONTIER_MON_KINGLER_3,             \
-    FRONTIER_MON_HIPPOWDON_3,           \
-    FRONTIER_MON_TOXAPEX_3,             \
-    FRONTIER_MON_PRIMARINA_4,           \
-    FRONTIER_MON_CLAWITZER_3,           \
-    FRONTIER_MON_MUDSDALE_3,            \
-    FRONTIER_MON_PRIMARINA_3,           \
-    FRONTIER_MON_OMASTAR_3,             \
-    FRONTIER_MON_KABUTOPS_3,            \
-    FRONTIER_MON_CORSOLA,               \
-    FRONTIER_MON_EMPOLEON_3,            \
-    FRONTIER_MON_STEELIX_3,             \
+    FRONTIER_MON_MACHOKE,               \
+    FRONTIER_MON_HAUNTER,               \
+    FRONTIER_MON_ELECTABUZZ,            \
+    FRONTIER_MON_CROCONAW,              \
+    FRONTIER_MON_MURKROW,               \
+    FRONTIER_MON_SNEASEL,               \
+    FRONTIER_MON_PILOSWINE,             \
+    FRONTIER_MON_MARSHTOMP,             \
+    FRONTIER_MON_WINGULL,               \
+    FRONTIER_MON_SEALEO,                \
+    FRONTIER_MON_GABITE,                \
+    FRONTIER_MON_GURDURR,               \
+    FRONTIER_MON_PALPITOAD,             \
+    FRONTIER_MON_QUILLADIN,             \
+    FRONTIER_MON_FROGADIER,             \
+    FRONTIER_MON_CRABRAWLER,            \
+    FRONTIER_MON_MAREANIE,              \
     -1 
 
 #define FRONTIER_MONS_HIKER_1   \
-    FRONTIER_MON_HITMONTOP_3,           \
-    FRONTIER_MON_SCRAFTY_3,             \
-    FRONTIER_MON_MAMOSWINE_3,           \
-    FRONTIER_MON_YANMEGA_2,             \
-    FRONTIER_MON_AUDINO_3,              \
-    FRONTIER_MON_SLAKING_3,             \
-    FRONTIER_MON_SHUCKLE_3,             \
-    FRONTIER_MON_SANDSLASH_3,           \
-    FRONTIER_MON_RHYPERIOR_3,           \
-    FRONTIER_MON_GARCHOMP_5,            \
-    FRONTIER_MON_CLAYDOL_3,             \
-    FRONTIER_MON_PRIMEAPE_3,            \
-    FRONTIER_MON_EMBOAR_3,              \
-    FRONTIER_MON_CAMERUPT_3,            \
-    FRONTIER_MON_MAROWAK_3,             \
-    FRONTIER_MON_HIPPOWDON_3,           \
-    FRONTIER_MON_TYRANTRUM_3,           \
-    FRONTIER_MON_FLYGON_3,              \
-    FRONTIER_MON_MUDSDALE_3,            \
-    FRONTIER_MON_OMASTAR_3,             \
-    FRONTIER_MON_KABUTOPS_3,            \
-    FRONTIER_MON_CRADILY_3,             \
-    FRONTIER_MON_ARMALDO_3,             \
-    FRONTIER_MON_AMBIPOM_3,             \
-    FRONTIER_MON_EXPLOUD_3,             \
-    FRONTIER_MON_PROBOPASS,             \
-    FRONTIER_MON_STEELIX_3,             \
+    FRONTIER_MON_MACHOKE,               \
+    FRONTIER_MON_ELECTABUZZ,            \
+    FRONTIER_MON_QUILAVA,               \
+    FRONTIER_MON_SNEASEL,               \
+    FRONTIER_MON_PILOSWINE,             \
+    FRONTIER_MON_VIBRAVA,               \
+    FRONTIER_MON_DUSCLOPS,              \
+    FRONTIER_MON_LAIRON,                \
+    FRONTIER_MON_LILEEP,                \
+    FRONTIER_MON_SHELGON,               \
+    FRONTIER_MON_METANG,                \
+    FRONTIER_MON_CRANIDOS,              \
+    FRONTIER_MON_SHIELDON,              \
+    FRONTIER_MON_GABITE,                \
+    FRONTIER_MON_HIPPOPOTAS,            \
+    FRONTIER_MON_KROKOROK,              \
+    FRONTIER_MON_ARCHEN,                \
+    FRONTIER_MON_LAMPENT,               \
+    FRONTIER_MON_TYRUNT,                \
+    FRONTIER_MON_MUDBRAY,               \
+    FRONTIER_MON_HAKAMO_O,              \
     -1 
 
 #define FRONTIER_MONS_KINDLER_1 \
-    FRONTIER_MON_MAGMORTAR_3,           \
-    FRONTIER_MON_MIMIKYU_3,             \
-    FRONTIER_MON_DUSKNOIR_3,            \
-    FRONTIER_MON_NINETALES_3,           \
-    FRONTIER_MON_RHYPERIOR_3,           \
-    FRONTIER_MON_GARCHOMP_5,            \
-    FRONTIER_MON_SALAMENCE_5,           \
-    FRONTIER_MON_ZANGOOSE_3,            \
-    FRONTIER_MON_CAMERUPT_3,            \
-    FRONTIER_MON_CHARIZARD_3,           \
-    FRONTIER_MON_DELPHOX_3,             \
-    FRONTIER_MON_TALONFLAME_3,          \
-    FRONTIER_MON_MAGNEZONE_3,           \
-    FRONTIER_MON_ROTOM_HEAT_3,          \
-    FRONTIER_MON_TYRANTRUM_3,           \
-    FRONTIER_MON_MUDSDALE_3,            \
-    FRONTIER_MON_SALAZZLE_3,            \
-    FRONTIER_MON_FLAREON_3,             \
-    FRONTIER_MON_PROBOPASS,             \
-    FRONTIER_MON_MAWILE,                \
-    FRONTIER_MON_STEELIX_3,             \
+    FRONTIER_MON_HAUNTER,               \
+    FRONTIER_MON_ELECTABUZZ,            \
+    FRONTIER_MON_MAGMAR,                \
+    FRONTIER_MON_QUILAVA,               \
+    FRONTIER_MON_MURKROW,               \
+    FRONTIER_MON_COMBUSKEN,             \
+    FRONTIER_MON_DUSCLOPS,              \
+    FRONTIER_MON_MONFERNO,              \
+    FRONTIER_MON_LUXIO,                 \
+    FRONTIER_MON_GABITE,                \
+    FRONTIER_MON_HIPPOPOTAS,            \
+    FRONTIER_MON_GURDURR,               \
+    FRONTIER_MON_KROKOROK,              \
+    FRONTIER_MON_LAMPENT,               \
+    FRONTIER_MON_FRAXURE,               \
+    FRONTIER_MON_MIENFOO,               \
+    FRONTIER_MON_FLETCHINDER,           \
+    FRONTIER_MON_TYRUNT,                \
+    FRONTIER_MON_PUMPKABOO,             \
+    FRONTIER_MON_TORRACAT,              \
+    FRONTIER_MON_HAKAMO_O,              \
     -1 
 
 #define FRONTIER_MONS_RUNNING_TRIATHLETE_1 \
-    FRONTIER_MON_AZUMARILL_4,           \
-    FRONTIER_MON_WHIMSICOTT_3,          \
-    FRONTIER_MON_HITMONTOP_3,           \
-    FRONTIER_MON_HAXORUS_3,             \
-    FRONTIER_MON_AMBIPOM_4,             \
-    FRONTIER_MON_SCRAFTY_3,             \
-    FRONTIER_MON_PORYGON2_3,            \
-    FRONTIER_MON_LINOONE_3,             \
-    FRONTIER_MON_SMEARGLE_1,            \
-    FRONTIER_MON_SMEARGLE_2,            \
-    FRONTIER_MON_GLISCOR_3,             \
-    FRONTIER_MON_RATICATE_3,            \
-    FRONTIER_MON_DELCATTY_3,            \
-    FRONTIER_MON_NOIVERN_3,             \
-    FRONTIER_MON_ARCHEOPS_3,            \
-    FRONTIER_MON_SKARMORY_3,            \
-    FRONTIER_MON_SWELLOW_3,             \
-    FRONTIER_MON_AUDINO_3,              \
-    FRONTIER_MON_SLAKING_3,             \
-    FRONTIER_MON_DITTO,                 \
-    FRONTIER_MON_PERSIAN_3,             \
-    FRONTIER_MON_SANDSLASH_3,           \
-    FRONTIER_MON_RHYPERIOR_3,           \
-    FRONTIER_MON_PORYGON_Z_3,           \
-    FRONTIER_MON_GARCHOMP_5,            \
-    FRONTIER_MON_CLAYDOL_3,             \
-    FRONTIER_MON_PRIMEAPE_3,            \
-    FRONTIER_MON_EMBOAR_3,              \
-    FRONTIER_MON_CAMERUPT_3,            \
-    FRONTIER_MON_DODRIO_3,              \
-    FRONTIER_MON_HAWLUCHA_3,            \
-    FRONTIER_MON_MAROWAK_3,             \
-    FRONTIER_MON_CLEFABLE_3,            \
-    FRONTIER_MON_TOUCANNON_3,           \
-    FRONTIER_MON_PELIPPER_3,            \
-    FRONTIER_MON_HIPPOWDON_3,           \
-    FRONTIER_MON_FLYGON_3,              \
-    FRONTIER_MON_MUDSDALE_3,            \
-    FRONTIER_MON_STARAPTOR_3,           \
-    FRONTIER_MON_FARFETCHD,             \
-    FRONTIER_MON_AMBIPOM_3,             \
-    FRONTIER_MON_EXPLOUD_3,             \
-    FRONTIER_MON_SPINDA,                \
-    FRONTIER_MON_STEELIX_3,             \
+    FRONTIER_MON_PIKACHU,               \
+    FRONTIER_MON_MACHOKE,               \
+    FRONTIER_MON_MAGNETON,              \
+    FRONTIER_MON_ELECTABUZZ,            \
+    FRONTIER_MON_SNEASEL,               \
+    FRONTIER_MON_COMBUSKEN,             \
+    FRONTIER_MON_MONFERNO,              \
+    FRONTIER_MON_STARAVIA,              \
+    FRONTIER_MON_LUXIO,                 \
+    FRONTIER_MON_CRANIDOS,              \
+    FRONTIER_MON_RIOLU,                 \
+    FRONTIER_MON_MIENFOO,               \
+    FRONTIER_MON_FROGADIER,             \
+    FRONTIER_MON_TYRUNT,                \
+    FRONTIER_MON_DARTRIX,               \
+    FRONTIER_MON_TORRACAT,              \
+    FRONTIER_MON_TRUMBEAK,              \
+    FRONTIER_MON_MUDBRAY,               \
+    FRONTIER_MON_HAKAMO_O,              \
     -1 
 
 #define FRONTIER_MONS_SWIMMING_TRIATHLETE_1 \
-    FRONTIER_MON_HITMONTOP_3,           \
-    FRONTIER_MON_SCRAFTY_3,             \
-    FRONTIER_MON_AUDINO_3,              \
-    FRONTIER_MON_WAILORD_4,             \
-    FRONTIER_MON_PORYGON_Z_3,           \
-    FRONTIER_MON_AURORUS_3,             \
-    FRONTIER_MON_SALAMENCE_5,           \
-    FRONTIER_MON_PRIMEAPE_3,            \
-    FRONTIER_MON_EMBOAR_3,              \
-    FRONTIER_MON_CLOYSTER_3,            \
-    FRONTIER_MON_JYNX_3,                \
-    FRONTIER_MON_CRAWDAUNT_3,           \
-    FRONTIER_MON_WAILORD_3,             \
-    FRONTIER_MON_BLASTOISE_3,           \
-    FRONTIER_MON_FERALIGATR_3,          \
-    FRONTIER_MON_SLOWBRO_3,             \
-    FRONTIER_MON_TENTACRUEL_3,          \
-    FRONTIER_MON_CLEFABLE_3,            \
-    FRONTIER_MON_DEWGONG_3,             \
-    FRONTIER_MON_KINGLER_3,             \
-    FRONTIER_MON_TOUCANNON_3,           \
-    FRONTIER_MON_PELIPPER_3,            \
-    FRONTIER_MON_DELIBIRD,              \
-    FRONTIER_MON_CLAWITZER_3,           \
-    FRONTIER_MON_PRIMARINA_3,           \
-    FRONTIER_MON_OMASTAR_3,             \
-    FRONTIER_MON_KABUTOPS_3,            \
-    FRONTIER_MON_AMBIPOM_3,             \
-    FRONTIER_MON_EXPLOUD_3,             \
-    FRONTIER_MON_SPINDA,                \
-    FRONTIER_MON_CORSOLA,               \
-    FRONTIER_MON_EMPOLEON_3,            \
+    FRONTIER_MON_MAGNETON,              \
+    FRONTIER_MON_HAUNTER,               \
+    FRONTIER_MON_CROCONAW,              \
+    FRONTIER_MON_MARILL,                \
+    FRONTIER_MON_SNEASEL,               \
+    FRONTIER_MON_MARSHTOMP,             \
+    FRONTIER_MON_WINGULL,               \
+    FRONTIER_MON_SEALEO,                \
+    FRONTIER_MON_LILEEP,                \
+    FRONTIER_MON_ANORITH,               \
+    FRONTIER_MON_PRINPLUP,              \
+    FRONTIER_MON_STARAVIA,              \
+    FRONTIER_MON_PALPITOAD,             \
+    FRONTIER_MON_EELEKTRIK,             \
+    FRONTIER_MON_FROGADIER,             \
+    FRONTIER_MON_TRUMBEAK,              \
+    FRONTIER_MON_CRABRAWLER,            \
+    FRONTIER_MON_MAREANIE,              \
     -1 
 
 #define FRONTIER_MONS_CYCLING_TRIATHLETE_1 \
-    FRONTIER_MON_TOGEDEMARU_3,          \
-    FRONTIER_MON_HITMONTOP_3,           \
-    FRONTIER_MON_SCRAFTY_3,             \
-    FRONTIER_MON_LUXRAY_3,              \
-    FRONTIER_MON_AUDINO_3,              \
-    FRONTIER_MON_VIKAVOLT_3,            \
-    FRONTIER_MON_ROTOM_FROST_3,         \
-    FRONTIER_MON_WAILORD_4,             \
-    FRONTIER_MON_PORYGON_Z_3,           \
-    FRONTIER_MON_SALAMENCE_5,           \
-    FRONTIER_MON_ZANGOOSE_3,            \
-    FRONTIER_MON_PRIMEAPE_3,            \
-    FRONTIER_MON_EMBOAR_3,              \
-    FRONTIER_MON_DODRIO_3,              \
-    FRONTIER_MON_HAWLUCHA_3,            \
-    FRONTIER_MON_CLEFABLE_3,            \
-    FRONTIER_MON_MAGNEZONE_3,           \
-    FRONTIER_MON_TOUCANNON_3,           \
-    FRONTIER_MON_ROTOM_FAN_3,           \
-    FRONTIER_MON_PELIPPER_3,            \
-    FRONTIER_MON_TYRANTRUM_3,           \
-    FRONTIER_MON_STARAPTOR_3,           \
-    FRONTIER_MON_FARFETCHD,             \
-    FRONTIER_MON_AMBIPOM_3,             \
-    FRONTIER_MON_ELECTIVIRE_3,          \
-    FRONTIER_MON_EXPLOUD_3,             \
-    FRONTIER_MON_SPINDA,                \
-    FRONTIER_MON_AMPHAROS_3,            \
-    FRONTIER_MON_MAWILE,                \
+    FRONTIER_MON_PIKACHU,               \
+    FRONTIER_MON_MAGNETON,              \
+    FRONTIER_MON_ELECTABUZZ,            \
+    FRONTIER_MON_QUILAVA,               \
+    FRONTIER_MON_SNEASEL,               \
+    FRONTIER_MON_METANG,                \
+    FRONTIER_MON_MONFERNO,              \
+    FRONTIER_MON_STARAVIA,              \
+    FRONTIER_MON_LUXIO,                 \
+    FRONTIER_MON_CRANIDOS,              \
+    FRONTIER_MON_RIOLU,                 \
+    FRONTIER_MON_ARCHEN,                \
+    FRONTIER_MON_EELEKTRIK,             \
+    FRONTIER_MON_MIENFOO,               \
+    FRONTIER_MON_FROGADIER,             \
+    FRONTIER_MON_TYRUNT,                \
+    FRONTIER_MON_TORRACAT,              \
+    FRONTIER_MON_TRUMBEAK,              \
     -1 
 
 #define FRONTIER_MONS_RUNNING_TRIATHLETE_2 \
+    FRONTIER_MON_MAWILE_1,              \
     FRONTIER_MON_DELCATTY_1,            \
     FRONTIER_MON_LICKILICKY_1,          \
     FRONTIER_MON_AUDINO_1,              \
-    FRONTIER_MON_HITMONLEE_3,           \
-    FRONTIER_MON_RAICHU_3,              \
-    FRONTIER_MON_NOCTOWL_3,             \
-    FRONTIER_MON_INFERNAPE_3,           \
     FRONTIER_MON_RATICATE_1,            \
     FRONTIER_MON_FURRET_1,              \
-    FRONTIER_MON_DUNSPARCE_1,           \
     FRONTIER_MON_LINOONE_1,             \
     FRONTIER_MON_CASTFORM_1,            \
     FRONTIER_MON_WIGGLYTUFF_1,          \
-    FRONTIER_MON_CONKELDURR_5,          \
     FRONTIER_MON_PELIPPER_1,            \
     FRONTIER_MON_SWELLOW_1,             \
     FRONTIER_MON_PERSIAN_1,             \
@@ -967,28 +551,19 @@
     FRONTIER_MON_HITMONCHAN_1,          \
     FRONTIER_MON_GIRAFARIG_1,           \
     FRONTIER_MON_HITMONTOP_1,           \
-    FRONTIER_MON_NINJASK_1,             \
     FRONTIER_MON_ZANGOOSE_1,            \
     FRONTIER_MON_TROPIUS_1,             \
     FRONTIER_MON_MANTINE_1,             \
     FRONTIER_MON_STANTLER_1,            \
+    FRONTIER_MON_VIGOROTH_1,            \
     FRONTIER_MON_PIDGEOT_1,             \
     FRONTIER_MON_SCYTHER_1,             \
     -1 
 
 #define FRONTIER_MONS_SWIMMING_TRIATHLETE_2 \
-    FRONTIER_MON_ROTOM_WASH_3,          \
-    FRONTIER_MON_SAMUROTT_3,            \
-    FRONTIER_MON_HITMONLEE_3,           \
-    FRONTIER_MON_GRENINJA_5,            \
-    FRONTIER_MON_INFERNAPE_3,           \
-    FRONTIER_MON_SWAMPERT_3,            \
     FRONTIER_MON_AZUMARILL_1,           \
-    FRONTIER_MON_WALREIN_3,             \
     FRONTIER_MON_QWILFISH_1,            \
-    FRONTIER_MON_JELLICENT_3,           \
     FRONTIER_MON_PELIPPER_1,            \
-    FRONTIER_MON_KINGDRA_3,             \
     FRONTIER_MON_SEAKING_1,             \
     FRONTIER_MON_BASTIODON_1,           \
     FRONTIER_MON_PRIMEAPE_1,            \
@@ -1011,23 +586,18 @@
     -1 
 
 #define FRONTIER_MONS_CYCLING_TRIATHLETE_2 \
+    FRONTIER_MON_MAWILE_1,              \
     FRONTIER_MON_DELCATTY_1,            \
     FRONTIER_MON_LICKILICKY_1,          \
     FRONTIER_MON_AUDINO_1,              \
-    FRONTIER_MON_HITMONLEE_3,           \
-    FRONTIER_MON_RAICHU_3,              \
     FRONTIER_MON_PLUSLE_1,              \
     FRONTIER_MON_MINUN_1,               \
-    FRONTIER_MON_INFERNAPE_3,           \
     FRONTIER_MON_RATICATE_1,            \
     FRONTIER_MON_FURRET_1,              \
-    FRONTIER_MON_DUNSPARCE_1,           \
     FRONTIER_MON_LINOONE_1,             \
     FRONTIER_MON_CASTFORM_1,            \
-    FRONTIER_MON_METAGROSS_5,           \
     FRONTIER_MON_WIGGLYTUFF_1,          \
     FRONTIER_MON_SWELLOW_1,             \
-    FRONTIER_MON_LYCANROC_MIDNIGHT_3,   \
     FRONTIER_MON_PERSIAN_1,             \
     FRONTIER_MON_KECLEON_1,             \
     FRONTIER_MON_SCRAFTY_1,             \
@@ -1041,30 +611,20 @@
     FRONTIER_MON_ZANGOOSE_1,            \
     FRONTIER_MON_MAGNEZONE_1,           \
     FRONTIER_MON_STANTLER_1,            \
+    FRONTIER_MON_VIGOROTH_1,            \
     FRONTIER_MON_PIDGEOT_1,             \
     -1 
 
 #define FRONTIER_MONS_BLACK_BELT_BATTLE_GIRL_1 \
+    FRONTIER_MON_PROBOPASS_1,           \
     FRONTIER_MON_LICKILICKY_1,          \
-    FRONTIER_MON_GOLEM_3,               \
-    FRONTIER_MON_INCINEROAR_3,          \
-    FRONTIER_MON_HITMONLEE_3,           \
-    FRONTIER_MON_TYPHLOSION_3,          \
-    FRONTIER_MON_INFERNAPE_3,           \
-    FRONTIER_MON_DARMANITAN_3,          \
     FRONTIER_MON_SUDOWOODO_1,           \
     FRONTIER_MON_MAGCARGO_1,            \
-    FRONTIER_MON_PANGORO_3,             \
     FRONTIER_MON_RATICATE_1,            \
     FRONTIER_MON_FURRET_1,              \
-    FRONTIER_MON_DUNSPARCE_1,           \
     FRONTIER_MON_MIGHTYENA_1,           \
     FRONTIER_MON_LINOONE_1,             \
-    FRONTIER_MON_KOMMO_O_5,             \
-    FRONTIER_MON_METAGROSS_5,           \
     FRONTIER_MON_WIGGLYTUFF_1,          \
-    FRONTIER_MON_CONKELDURR_5,          \
-    FRONTIER_MON_LYCANROC_MIDNIGHT_3,   \
     FRONTIER_MON_PERSIAN_1,             \
     FRONTIER_MON_KECLEON_1,             \
     FRONTIER_MON_SCRAFTY_1,             \
@@ -1080,7 +640,9 @@
     FRONTIER_MON_HITMONTOP_1,           \
     FRONTIER_MON_ZANGOOSE_1,            \
     FRONTIER_MON_CAMERUPT_1,            \
+    FRONTIER_MON_GLIGAR_1,              \
     FRONTIER_MON_STANTLER_1,            \
+    FRONTIER_MON_VIGOROTH_1,            \
     FRONTIER_MON_ABSOL_1,               \
     FRONTIER_MON_TORKOAL_1,             \
     FRONTIER_MON_CACTURNE_1,            \
@@ -1088,67 +650,45 @@
     -1 
 
 #define FRONTIER_MONS_EXPERT_1A \
+    FRONTIER_MON_MAWILE_1,              \
+    FRONTIER_MON_YANMEGA_1,             \
+    FRONTIER_MON_PROBOPASS_1,           \
     FRONTIER_MON_DELCATTY_1,            \
     FRONTIER_MON_SABLEYE_1,             \
     FRONTIER_MON_LICKILICKY_1,          \
-    FRONTIER_MON_FERROTHORN_3,          \
-    FRONTIER_MON_GOLEM_3,               \
     FRONTIER_MON_CHERRIM_1,             \
     FRONTIER_MON_AUDINO_1,              \
     FRONTIER_MON_DARMANITAN_ZEN_1,      \
-    FRONTIER_MON_ROTOM_WASH_3,          \
     FRONTIER_MON_WHIMSICOTT_1,          \
     FRONTIER_MON_VOLBEAT_1,             \
     FRONTIER_MON_ILLUMISE_1,            \
     FRONTIER_MON_MARACTUS_1,            \
-    FRONTIER_MON_INCINEROAR_3,          \
-    FRONTIER_MON_SAMUROTT_3,            \
     FRONTIER_MON_PARASECT_1,            \
-    FRONTIER_MON_HITMONLEE_3,           \
-    FRONTIER_MON_AEGISLASH_3,           \
     FRONTIER_MON_GOGOAT_1,              \
-    FRONTIER_MON_TYPHLOSION_3,          \
-    FRONTIER_MON_GRENINJA_5,            \
-    FRONTIER_MON_RAICHU_3,              \
-    FRONTIER_MON_NOCTOWL_3,             \
     FRONTIER_MON_WOBBUFFET_1,           \
     FRONTIER_MON_PLUSLE_1,              \
     FRONTIER_MON_MINUN_1,               \
     FRONTIER_MON_LURANTIS_1,            \
-    FRONTIER_MON_INFERNAPE_3,           \
-    FRONTIER_MON_SWAMPERT_3,            \
-    FRONTIER_MON_DARMANITAN_3,          \
     FRONTIER_MON_AZUMARILL_1,           \
     FRONTIER_MON_SUDOWOODO_1,           \
     FRONTIER_MON_MAGCARGO_1,            \
-    FRONTIER_MON_PANGORO_3,             \
-    FRONTIER_MON_WALREIN_3,             \
     FRONTIER_MON_RATICATE_1,            \
     FRONTIER_MON_MASQUERAIN_1,          \
     FRONTIER_MON_FURRET_1,              \
-    -1 
-
-#define FRONTIER_MONS_EXPERT_1B \
-    FRONTIER_MON_DUNSPARCE_1,           \
-    FRONTIER_MON_GOODRA_2,              \
     FRONTIER_MON_MIGHTYENA_1,           \
     FRONTIER_MON_LINOONE_1,             \
     FRONTIER_MON_CASTFORM_1,            \
-    FRONTIER_MON_KOMMO_O_5,             \
-    FRONTIER_MON_METAGROSS_5,           \
     FRONTIER_MON_WIGGLYTUFF_1,          \
     FRONTIER_MON_SUNFLORA_1,            \
-    FRONTIER_MON_BUTTERFREE_1,          \
-    FRONTIER_MON_CONKELDURR_5,          \
     FRONTIER_MON_QWILFISH_1,            \
-    FRONTIER_MON_JELLICENT_3,           \
     FRONTIER_MON_PELIPPER_1,            \
     FRONTIER_MON_SWELLOW_1,             \
-    FRONTIER_MON_LYCANROC_MIDNIGHT_3,   \
+    -1 
+
+#define FRONTIER_MONS_EXPERT_1B \
     FRONTIER_MON_LILLIGANT_1,           \
     FRONTIER_MON_ARBOK_1,               \
     FRONTIER_MON_PERSIAN_1,             \
-    FRONTIER_MON_KINGDRA_3,             \
     FRONTIER_MON_KECLEON_1,             \
     FRONTIER_MON_SCRAFTY_1,             \
     FRONTIER_MON_LUNATONE_1,            \
@@ -1166,11 +706,7 @@
     FRONTIER_MON_HITMONCHAN_1,          \
     FRONTIER_MON_GIRAFARIG_1,           \
     FRONTIER_MON_HITMONTOP_1,           \
-    -1 
-
-#define FRONTIER_MONS_EXPERT_1C \
     FRONTIER_MON_BANETTE_1,             \
-    FRONTIER_MON_NINJASK_1,             \
     FRONTIER_MON_SEVIPER_1,             \
     FRONTIER_MON_ZANGOOSE_1,            \
     FRONTIER_MON_CAMERUPT_1,            \
@@ -1182,6 +718,9 @@
     FRONTIER_MON_ABSOL_1,               \
     FRONTIER_MON_SWALOT_1,              \
     FRONTIER_MON_CRAWDAUNT_1,           \
+    -1 
+
+#define FRONTIER_MONS_EXPERT_1C         \
     FRONTIER_MON_PIDGEOT_1,             \
     FRONTIER_MON_GRUMPIG_1,             \
     FRONTIER_MON_TORKOAL_1,             \
@@ -1199,25 +738,37 @@
     FRONTIER_MON_PINSIR_1,              \
     FRONTIER_MON_POLITOED_1,            \
     FRONTIER_MON_CLOYSTER_1,            \
+    FRONTIER_MON_ABOMASNOW_1,           \
+    FRONTIER_MON_AVALUGG_1,             \
+    FRONTIER_MON_BEARTIC_1,             \
+    FRONTIER_MON_CARBINK_1,             \
+    FRONTIER_MON_CARRACOSTA_1,          \
+    FRONTIER_MON_CRUSTLE_1,             \
+    FRONTIER_MON_CRYOGONAL_1,           \
+    FRONTIER_MON_CRABOMINABLE_1,        \
+    FRONTIER_MON_LUMINEON_1,            \
+    FRONTIER_MON_SAWSBUCK_1,            \
+    FRONTIER_MON_BASCULIN_1,            \
+    FRONTIER_MON_CARNIVINE_1,           \
+    FRONTIER_MON_STUNFISK_1,            \
+    FRONTIER_MON_PHIONE_1,              \
+    FRONTIER_MON_GLIGAR_1,              \
+    FRONTIER_MON_VIGOROTH_1,            \
     -1 
 
 #define FRONTIER_MONS_PSYCHIC_1 \
+    FRONTIER_MON_MAWILE_2,              \
     FRONTIER_MON_DELCATTY_2,            \
     FRONTIER_MON_SABLEYE_2,             \
     FRONTIER_MON_AUDINO_2,              \
     FRONTIER_MON_DARMANITAN_ZEN_2,      \
     FRONTIER_MON_WHIMSICOTT_2,          \
-    FRONTIER_MON_AEGISLASH_4,           \
-    FRONTIER_MON_NOCTOWL_4,             \
     FRONTIER_MON_WOBBUFFET_2,           \
     FRONTIER_MON_PLUSLE_2,              \
     FRONTIER_MON_MINUN_2,               \
     FRONTIER_MON_MIGHTYENA_2,           \
     FRONTIER_MON_LINOONE_2,             \
-    FRONTIER_MON_METAGROSS_6,           \
     FRONTIER_MON_WIGGLYTUFF_2,          \
-    FRONTIER_MON_BUTTERFREE_2,          \
-    FRONTIER_MON_JELLICENT_4,           \
     FRONTIER_MON_KECLEON_2,             \
     FRONTIER_MON_LUNATONE_2,            \
     FRONTIER_MON_SOLROCK_2,             \
@@ -1229,6 +780,7 @@
     FRONTIER_MON_SHARPEDO_2,            \
     FRONTIER_MON_MAGNEZONE_2,           \
     FRONTIER_MON_STANTLER_2,            \
+    FRONTIER_MON_VIGOROTH_2,            \
     FRONTIER_MON_ABSOL_2,               \
     FRONTIER_MON_CRAWDAUNT_2,           \
     FRONTIER_MON_GRUMPIG_2,             \
@@ -1239,18 +791,12 @@
 
 #define FRONTIER_MONS_HEX_MANIAC_1 \
     FRONTIER_MON_SABLEYE_2,             \
-    FRONTIER_MON_FERROTHORN_4,          \
     FRONTIER_MON_CHERRIM_2,             \
     FRONTIER_MON_DARMANITAN_ZEN_2,      \
     FRONTIER_MON_PARASECT_2,            \
-    FRONTIER_MON_AEGISLASH_4,           \
-    FRONTIER_MON_NOCTOWL_4,             \
     FRONTIER_MON_WOBBUFFET_2,           \
     FRONTIER_MON_MASQUERAIN_2,          \
     FRONTIER_MON_MIGHTYENA_2,           \
-    FRONTIER_MON_METAGROSS_6,           \
-    FRONTIER_MON_BUTTERFREE_2,          \
-    FRONTIER_MON_JELLICENT_4,           \
     FRONTIER_MON_ARBOK_2,               \
     FRONTIER_MON_LUNATONE_2,            \
     FRONTIER_MON_SOLROCK_2,             \
@@ -1269,24 +815,11 @@
 
 #define FRONTIER_MONS_POKEMANIAC_1 \
     FRONTIER_MON_LICKILICKY_2,          \
-    FRONTIER_MON_GOLEM_4,               \
-    FRONTIER_MON_ROTOM_WASH_4,          \
     FRONTIER_MON_MARACTUS_2,            \
-    FRONTIER_MON_INCINEROAR_4,          \
-    FRONTIER_MON_SAMUROTT_4,            \
-    FRONTIER_MON_HITMONLEE_4,           \
     FRONTIER_MON_GOGOAT_2,              \
-    FRONTIER_MON_TYPHLOSION_4,          \
-    FRONTIER_MON_GRENINJA_6,            \
     FRONTIER_MON_LURANTIS_2,            \
-    FRONTIER_MON_INFERNAPE_4,           \
-    FRONTIER_MON_EXCADRILL_3,           \
-    FRONTIER_MON_PUPITAR,               \
     FRONTIER_MON_RATICATE_2,            \
     FRONTIER_MON_MIGHTYENA_2,           \
-    FRONTIER_MON_KOMMO_O_6,             \
-    FRONTIER_MON_METAGROSS_6,           \
-    FRONTIER_MON_LYCANROC_MIDNIGHT_4,   \
     FRONTIER_MON_ARBOK_2,               \
     FRONTIER_MON_SCRAFTY_2,             \
     FRONTIER_MON_SANDSLASH_2,           \
@@ -1295,6 +828,7 @@
     FRONTIER_MON_SEVIPER_2,             \
     FRONTIER_MON_ZANGOOSE_2,            \
     FRONTIER_MON_CAMERUPT_2,            \
+    FRONTIER_MON_GLIGAR_2,              \
     FRONTIER_MON_TROPIUS_2,             \
     FRONTIER_MON_MANTINE_2,             \
     FRONTIER_MON_SWALOT_2,              \
@@ -1302,119 +836,108 @@
     -1 
 
 #define FRONTIER_MONS_GENTLEMAN_1A \
-    FRONTIER_MON_DELCATTY_2,            \
-    FRONTIER_MON_SABLEYE_2,             \
-    FRONTIER_MON_LICKILICKY_2,          \
-    FRONTIER_MON_FERROTHORN_4,          \
-    FRONTIER_MON_GOLEM_4,               \
-    FRONTIER_MON_CHERRIM_2,             \
-    FRONTIER_MON_AUDINO_2,              \
-    FRONTIER_MON_DARMANITAN_ZEN_2,      \
-    FRONTIER_MON_ROTOM_WASH_4,          \
-    FRONTIER_MON_WHIMSICOTT_2,          \
-    FRONTIER_MON_VOLBEAT_2,             \
-    FRONTIER_MON_ILLUMISE_2,            \
-    FRONTIER_MON_MARACTUS_2,            \
-    FRONTIER_MON_INCINEROAR_4,          \
-    FRONTIER_MON_SAMUROTT_4,            \
-    FRONTIER_MON_PARASECT_2,            \
-    FRONTIER_MON_HITMONLEE_4,           \
-    FRONTIER_MON_AEGISLASH_4,           \
-    FRONTIER_MON_GOGOAT_2,              \
-    FRONTIER_MON_TYPHLOSION_4,          \
-    FRONTIER_MON_GRENINJA_6,            \
-    FRONTIER_MON_RAICHU_4,              \
-    FRONTIER_MON_NOCTOWL_4,             \
-    FRONTIER_MON_WOBBUFFET_2,           \
-    FRONTIER_MON_PLUSLE_2,              \
-    FRONTIER_MON_MINUN_2,               \
-    FRONTIER_MON_LURANTIS_2,            \
-    FRONTIER_MON_INFERNAPE_4,           \
-    FRONTIER_MON_EXCADRILL_3,           \
-    FRONTIER_MON_DARMANITAN_4,          \
-    FRONTIER_MON_AZUMARILL_2,           \
-    FRONTIER_MON_SUDOWOODO_2,           \
-    FRONTIER_MON_MAGCARGO_2,            \
-    FRONTIER_MON_PUPITAR,               \
-    FRONTIER_MON_SEISMITOAD_3,          \
-    FRONTIER_MON_RATICATE_2,            \
-    FRONTIER_MON_MASQUERAIN_2,          \
-    FRONTIER_MON_FURRET_2,              \
+    FRONTIER_MON_MAWILE_1,              \
+    FRONTIER_MON_YANMEGA_1,             \
+    FRONTIER_MON_PROBOPASS_1,           \
+    FRONTIER_MON_DELCATTY_1,            \
+    FRONTIER_MON_SABLEYE_1,             \
+    FRONTIER_MON_LICKILICKY_1,          \
+    FRONTIER_MON_CHERRIM_1,             \
+    FRONTIER_MON_AUDINO_1,              \
+    FRONTIER_MON_DARMANITAN_ZEN_1,      \
+    FRONTIER_MON_WHIMSICOTT_1,          \
+    FRONTIER_MON_VOLBEAT_1,             \
+    FRONTIER_MON_ILLUMISE_1,            \
+    FRONTIER_MON_MARACTUS_1,            \
+    FRONTIER_MON_PARASECT_1,            \
+    FRONTIER_MON_GOGOAT_1,              \
+    FRONTIER_MON_WOBBUFFET_1,           \
+    FRONTIER_MON_PLUSLE_1,              \
+    FRONTIER_MON_MINUN_1,               \
+    FRONTIER_MON_LURANTIS_1,            \
+    FRONTIER_MON_AZUMARILL_1,           \
+    FRONTIER_MON_SUDOWOODO_1,           \
+    FRONTIER_MON_MAGCARGO_1,            \
+    FRONTIER_MON_RATICATE_1,            \
+    FRONTIER_MON_MASQUERAIN_1,          \
+    FRONTIER_MON_FURRET_1,              \
+    FRONTIER_MON_MIGHTYENA_1,           \
+    FRONTIER_MON_LINOONE_1,             \
+    FRONTIER_MON_CASTFORM_1,            \
+    FRONTIER_MON_WIGGLYTUFF_1,          \
+    FRONTIER_MON_SUNFLORA_1,            \
+    FRONTIER_MON_QWILFISH_1,            \
+    FRONTIER_MON_PELIPPER_1,            \
+    FRONTIER_MON_SWELLOW_1,             \
     -1 
 
 #define FRONTIER_MONS_GENTLEMAN_1B \
-    FRONTIER_MON_DUNSPARCE_2,           \
-    FRONTIER_MON_GOODRA_3,              \
-    FRONTIER_MON_MIGHTYENA_2,           \
-    FRONTIER_MON_LINOONE_2,             \
-    FRONTIER_MON_CASTFORM_2,            \
-    FRONTIER_MON_KOMMO_O_6,             \
-    FRONTIER_MON_METAGROSS_6,           \
-    FRONTIER_MON_WIGGLYTUFF_2,          \
-    FRONTIER_MON_SUNFLORA_2,            \
-    FRONTIER_MON_BUTTERFREE_2,          \
-    FRONTIER_MON_CONKELDURR_6,          \
-    FRONTIER_MON_QWILFISH_2,            \
-    FRONTIER_MON_JELLICENT_4,           \
-    FRONTIER_MON_PELIPPER_2,            \
-    FRONTIER_MON_SWELLOW_2,             \
-    FRONTIER_MON_LYCANROC_MIDNIGHT_4,   \
-    FRONTIER_MON_LILLIGANT_2,           \
-    FRONTIER_MON_ARBOK_2,               \
-    FRONTIER_MON_PERSIAN_2,             \
-    FRONTIER_MON_ARAQUANID_3,           \
-    FRONTIER_MON_KECLEON_2,             \
-    FRONTIER_MON_SCRAFTY_2,             \
-    FRONTIER_MON_LUNATONE_2,            \
-    FRONTIER_MON_SOLROCK_2,             \
-    FRONTIER_MON_NOCTOWL_2,             \
-    FRONTIER_MON_SANDSLASH_2,           \
-    FRONTIER_MON_VENOMOTH_2,            \
-    FRONTIER_MON_BLISSEY_2,             \
-    FRONTIER_MON_SEAKING_2,             \
-    FRONTIER_MON_JUMPLUFF_2,            \
-    FRONTIER_MON_BASTIODON_2,           \
-    FRONTIER_MON_LIEPARD_2,             \
-    FRONTIER_MON_PRIMEAPE_2,            \
-    FRONTIER_MON_HITMONLEE_2,           \
-    FRONTIER_MON_HITMONCHAN_2,          \
-    FRONTIER_MON_GIRAFARIG_2,           \
-    FRONTIER_MON_HITMONTOP_2,           \
+    FRONTIER_MON_LILLIGANT_1,           \
+    FRONTIER_MON_ARBOK_1,               \
+    FRONTIER_MON_PERSIAN_1,             \
+    FRONTIER_MON_KECLEON_1,             \
+    FRONTIER_MON_SCRAFTY_1,             \
+    FRONTIER_MON_LUNATONE_1,            \
+    FRONTIER_MON_SOLROCK_1,             \
+    FRONTIER_MON_NOCTOWL_1,             \
+    FRONTIER_MON_SANDSLASH_1,           \
+    FRONTIER_MON_VENOMOTH_1,            \
+    FRONTIER_MON_BLISSEY_1,             \
+    FRONTIER_MON_SEAKING_1,             \
+    FRONTIER_MON_JUMPLUFF_1,            \
+    FRONTIER_MON_BASTIODON_1,           \
+    FRONTIER_MON_LIEPARD_1,             \
+    FRONTIER_MON_PRIMEAPE_1,            \
+    FRONTIER_MON_HITMONLEE_1,           \
+    FRONTIER_MON_HITMONCHAN_1,          \
+    FRONTIER_MON_GIRAFARIG_1,           \
+    FRONTIER_MON_HITMONTOP_1,           \
+    FRONTIER_MON_BANETTE_1,             \
+    FRONTIER_MON_SEVIPER_1,             \
+    FRONTIER_MON_ZANGOOSE_1,            \
+    FRONTIER_MON_CAMERUPT_1,            \
+    FRONTIER_MON_SHARPEDO_1,            \
+    FRONTIER_MON_TROPIUS_1,             \
+    FRONTIER_MON_MAGNEZONE_1,           \
+    FRONTIER_MON_MANTINE_1,             \
+    FRONTIER_MON_STANTLER_1,            \
+    FRONTIER_MON_ABSOL_1,               \
+    FRONTIER_MON_SWALOT_1,              \
+    FRONTIER_MON_CRAWDAUNT_1,           \
     -1 
 
 #define FRONTIER_MONS_BUG_MANIAC_2 \
-    FRONTIER_MON_LEDIAN,                \
-    FRONTIER_MON_ARIADOS,               \
+    FRONTIER_MON_BUTTERFREE_2,          \
+    FRONTIER_MON_BEEDRILL_2,            \
+    FRONTIER_MON_LEDIAN_2,              \
+    FRONTIER_MON_ARIADOS_2,             \
+    FRONTIER_MON_BEAUTIFLY_2,           \
+    FRONTIER_MON_DUSTOX_2,              \
+    FRONTIER_MON_NINJASK_2,             \
+    FRONTIER_MON_SHEDINJA_2,            \
     FRONTIER_MON_YANMEGA_1,             \
     FRONTIER_MON_VOLBEAT_1,             \
     FRONTIER_MON_ILLUMISE_1,            \
     FRONTIER_MON_PARASECT_1,            \
     FRONTIER_MON_MASQUERAIN_1,          \
     FRONTIER_MON_VENOMOTH_1,            \
-    FRONTIER_MON_NINJASK_1,             \
     FRONTIER_MON_SCYTHER_1,             \
     FRONTIER_MON_PINSIR_1,              \
+    FRONTIER_MON_YANMEGA_2,             \
     FRONTIER_MON_VOLBEAT_2,             \
     FRONTIER_MON_ILLUMISE_2,            \
     FRONTIER_MON_PARASECT_2,            \
     FRONTIER_MON_MASQUERAIN_2,          \
     FRONTIER_MON_VENOMOTH_2,            \
-    FRONTIER_MON_NINJASK_2,             \
     FRONTIER_MON_SCYTHER_2,             \
     FRONTIER_MON_PINSIR_2,              \
     -1 
 
 #define FRONTIER_MONS_RUIN_MANIAC_2 \
-    FRONTIER_MON_GOLEM_4,               \
-    FRONTIER_MON_HITMONLEE_4,           \
-    FRONTIER_MON_INFERNAPE_4,           \
-    FRONTIER_MON_EXCADRILL_3,           \
+    FRONTIER_MON_MAWILE_2,              \
+    FRONTIER_MON_PROBOPASS_2,           \
     FRONTIER_MON_SUDOWOODO_2,           \
     FRONTIER_MON_MAGCARGO_2,            \
-    FRONTIER_MON_PUPITAR,               \
-    FRONTIER_MON_METAGROSS_6,           \
-    FRONTIER_MON_CONKELDURR_6,          \
-    FRONTIER_MON_LYCANROC_MIDNIGHT_4,   \
     FRONTIER_MON_LUNATONE_2,            \
     FRONTIER_MON_SOLROCK_2,             \
     FRONTIER_MON_SANDSLASH_2,           \
@@ -1424,47 +947,50 @@
     FRONTIER_MON_HITMONCHAN_2,          \
     FRONTIER_MON_HITMONTOP_2,           \
     FRONTIER_MON_CAMERUPT_2,            \
+    FRONTIER_MON_GLIGAR_2,              \
     FRONTIER_MON_RELICANTH_2,           \
     FRONTIER_MON_OMASTAR_2,             \
     FRONTIER_MON_KABUTOPS_2,            \
     -1 
 
 #define FRONTIER_MONS_COLLECTOR_1 \
-    FRONTIER_MON_BANETTE_2,             \
-    FRONTIER_MON_NINJASK_2,             \
-    FRONTIER_MON_SEVIPER_2,             \
-    FRONTIER_MON_ZANGOOSE_2,            \
-    FRONTIER_MON_CAMERUPT_2,            \
-    FRONTIER_MON_SHARPEDO_2,            \
-    FRONTIER_MON_TROPIUS_2,             \
-    FRONTIER_MON_MAGNEZONE_2,           \
-    FRONTIER_MON_MANTINE_2,             \
-    FRONTIER_MON_STANTLER_2,            \
-    FRONTIER_MON_ABSOL_2,               \
-    FRONTIER_MON_SWALOT_2,              \
-    FRONTIER_MON_CRAWDAUNT_2,           \
-    FRONTIER_MON_PIDGEOT_2,             \
-    FRONTIER_MON_GRUMPIG_2,             \
-    FRONTIER_MON_TORKOAL_2,             \
-    FRONTIER_MON_KINGLER_2,             \
-    FRONTIER_MON_CACTURNE_2,            \
-    FRONTIER_MON_BELLOSSOM_2,           \
-    FRONTIER_MON_OCTILLERY_2,           \
-    FRONTIER_MON_HUNTAIL_2,             \
-    FRONTIER_MON_GOREBYSS_2,            \
-    FRONTIER_MON_RELICANTH_2,           \
-    FRONTIER_MON_OMASTAR_2,             \
-    FRONTIER_MON_KABUTOPS_2,            \
-    FRONTIER_MON_POLIWRATH_2,           \
-    FRONTIER_MON_SCYTHER_2,             \
-    FRONTIER_MON_PINSIR_2,              \
-    FRONTIER_MON_POLITOED_2,            \
-    FRONTIER_MON_CLOYSTER_2,            \
+    FRONTIER_MON_PIDGEOT_1,             \
+    FRONTIER_MON_GRUMPIG_1,             \
+    FRONTIER_MON_TORKOAL_1,             \
+    FRONTIER_MON_KINGLER_1,             \
+    FRONTIER_MON_CACTURNE_1,            \
+    FRONTIER_MON_BELLOSSOM_1,           \
+    FRONTIER_MON_OCTILLERY_1,           \
+    FRONTIER_MON_HUNTAIL_1,             \
+    FRONTIER_MON_GOREBYSS_1,            \
+    FRONTIER_MON_RELICANTH_1,           \
+    FRONTIER_MON_OMASTAR_1,             \
+    FRONTIER_MON_KABUTOPS_1,            \
+    FRONTIER_MON_POLIWRATH_1,           \
+    FRONTIER_MON_SCYTHER_1,             \
+    FRONTIER_MON_PINSIR_1,              \
+    FRONTIER_MON_POLITOED_1,            \
+    FRONTIER_MON_CLOYSTER_1,            \
+    FRONTIER_MON_ABOMASNOW_1,           \
+    FRONTIER_MON_AVALUGG_1,             \
+    FRONTIER_MON_BEARTIC_1,             \
+    FRONTIER_MON_CARBINK_1,             \
+    FRONTIER_MON_CARRACOSTA_1,          \
+    FRONTIER_MON_CRUSTLE_1,             \
+    FRONTIER_MON_CRYOGONAL_1,           \
+    FRONTIER_MON_CRABOMINABLE_1,        \
+    FRONTIER_MON_LUMINEON_1,            \
+    FRONTIER_MON_SAWSBUCK_1,            \
+    FRONTIER_MON_BASCULIN_1,            \
+    FRONTIER_MON_CARNIVINE_1,           \
+    FRONTIER_MON_STUNFISK_1,            \
+    FRONTIER_MON_PHIONE_1,              \
+    FRONTIER_MON_GLIGAR_1,              \
+    FRONTIER_MON_VIGOROTH_1,            \
     -1 
 
 #define FRONTIER_MONS_PARASOL_LADY_2 \
     FRONTIER_MON_CHERRIM_2,             \
-    FRONTIER_MON_SEISMITOAD_3,          \
     FRONTIER_MON_CASTFORM_2,            \
     FRONTIER_MON_SANDSLASH_2,           \
     FRONTIER_MON_TROPIUS_2,             \
@@ -1478,18 +1004,15 @@
     -1 
 
 #define FRONTIER_MONS_BEAUTY_1  \
+    FRONTIER_MON_MAWILE_2,              \
     FRONTIER_MON_DELCATTY_2,            \
     FRONTIER_MON_LICKILICKY_2,          \
-    FRONTIER_MON_FERROTHORN_4,          \
     FRONTIER_MON_CHERRIM_2,             \
     FRONTIER_MON_AUDINO_2,              \
     FRONTIER_MON_WHIMSICOTT_2,          \
     FRONTIER_MON_MARACTUS_2,            \
-    FRONTIER_MON_AEGISLASH_4,           \
-    FRONTIER_MON_RAICHU_4,              \
     FRONTIER_MON_RATICATE_2,            \
     FRONTIER_MON_FURRET_2,              \
-    FRONTIER_MON_DUNSPARCE_2,           \
     FRONTIER_MON_LINOONE_2,             \
     FRONTIER_MON_CASTFORM_2,            \
     FRONTIER_MON_WIGGLYTUFF_2,          \
@@ -1507,12 +1030,13 @@
     FRONTIER_MON_SEVIPER_2,             \
     FRONTIER_MON_ZANGOOSE_2,            \
     FRONTIER_MON_STANTLER_2,            \
+    FRONTIER_MON_VIGOROTH_2,            \
     FRONTIER_MON_SWALOT_2,              \
     FRONTIER_MON_PIDGEOT_2,             \
     -1 
 
 #define FRONTIER_MONS_AROMA_LADY_2 \
-    FRONTIER_MON_FERROTHORN_4,          \
+    FRONTIER_MON_YANMEGA_2,             \
     FRONTIER_MON_CHERRIM_2,             \
     FRONTIER_MON_DARMANITAN_ZEN_2,      \
     FRONTIER_MON_WHIMSICOTT_2,          \
@@ -1522,7 +1046,6 @@
     FRONTIER_MON_WOBBUFFET_2,           \
     FRONTIER_MON_LURANTIS_2,            \
     FRONTIER_MON_SUNFLORA_2,            \
-    FRONTIER_MON_BUTTERFREE_2,          \
     FRONTIER_MON_LILLIGANT_2,           \
     FRONTIER_MON_JUMPLUFF_2,            \
     FRONTIER_MON_GIRAFARIG_2,           \
@@ -1532,7 +1055,9 @@
     FRONTIER_MON_BELLOSSOM_2,           \
     -1 
 
-#define FRONTIER_MONS_COOLTRAINER_1A \
+#define FRONTIER_MONS_COOLTRAINER_1A    \
+    FRONTIER_MON_MISDREAVUS_1,          \
+    FRONTIER_MON_DOUBLADE_1,            \
     FRONTIER_MON_DUGTRIO_1,             \
     FRONTIER_MON_HAWLUCHA_1,            \
     FRONTIER_MON_MISMAGIUS_1,           \
@@ -1613,7 +1138,7 @@
     FRONTIER_MON_LUXRAY_1,              \
     FRONTIER_MON_FLAREON_1,             \
     FRONTIER_MON_CHESNAUGHT_1,          \
-    FRONTIER_MON_ESPEON_1,              \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_BISHARP_1,             \
     FRONTIER_MON_BLASTOISE_1,           \
     FRONTIER_MON_SAMUROTT_1,            \
@@ -1638,9 +1163,7 @@
     -1 
 
 #define FRONTIER_MONS_PKMN_RANGER_1 \
-    FRONTIER_MON_NINJASK_1,             \
     FRONTIER_MON_VENOMOTH_2,            \
-    FRONTIER_MON_NINJASK_2,             \
     FRONTIER_MON_SCYTHER_2,             \
     FRONTIER_MON_PINSIR_2,              \
     FRONTIER_MON_TALONFLAME_1,          \
@@ -1745,7 +1268,7 @@
     FRONTIER_MON_LUXRAY_1,              \
     FRONTIER_MON_FLAREON_1,             \
     FRONTIER_MON_CHESNAUGHT_1,          \
-    FRONTIER_MON_ESPEON_1,              \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_BISHARP_1,             \
     FRONTIER_MON_BLASTOISE_1,           \
     FRONTIER_MON_SAMUROTT_1,            \
@@ -1767,9 +1290,13 @@
     FRONTIER_MON_GARCHOMP_1,            \
     FRONTIER_MON_METAGROSS_1,           \
     FRONTIER_MON_REGIGIGAS_1,           \
+    FRONTIER_MON_DITTO,                 \
+    FRONTIER_MON_SMEARGLE,              \
     -1 
 
-#define FRONTIER_MONS_PKMN_BREEDER_F_1 \
+#define FRONTIER_MONS_PKMN_BREEDER_F_1  \
+    FRONTIER_MON_MISDREAVUS_1,          \
+    FRONTIER_MON_DOUBLADE_1,            \
     FRONTIER_MON_DUGTRIO_1,             \
     FRONTIER_MON_HAWLUCHA_1,            \
     FRONTIER_MON_MISMAGIUS_1,           \
@@ -1818,10 +1345,12 @@
     FRONTIER_MON_GOLISOPOD_1,           \
     FRONTIER_MON_GOLDUCK_1,             \
     FRONTIER_MON_AMBIPOM_1,             \
+    FRONTIER_MON_DITTO,                 \
     -1 
 
-// Odd, all the other Youngster/Lass trainers of this group have Dugtrio, but one does not
-#define FRONTIER_MONS_YOUNGSTER_LASS_2_NO_DUGTRIO \
+#define FRONTIER_MONS_YOUNGSTER_LASS_2  \
+    FRONTIER_MON_RHYDON_1,              \
+    FRONTIER_MON_GLISCOR_1,             \
     FRONTIER_MON_MEDICHAM_1,            \
     FRONTIER_MON_MAROWAK_1,             \
     FRONTIER_MON_GASTRODON_1,           \
@@ -1856,10 +1385,6 @@
     FRONTIER_MON_GALLADE_1,             \
     -1 
 
-#define FRONTIER_MONS_YOUNGSTER_LASS_2 \
-    FRONTIER_MON_GLISCOR_1,             \
-    FRONTIER_MONS_YOUNGSTER_LASS_2_NO_DUGTRIO
-
 #define FRONTIER_MONS_SCHOOL_KID_2 \
     FRONTIER_MON_WEEZING_1,             \
     FRONTIER_MON_BEWEAR_1,              \
@@ -1881,7 +1406,7 @@
     FRONTIER_MON_TOGEDEMARU_1,          \
     FRONTIER_MON_SCIZOR_1,              \
     FRONTIER_MON_GALVANTULA_1,          \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_1,              \
     FRONTIER_MON_LYCANROC_MIDNIGHT_1,   \
     FRONTIER_MON_DONPHAN_1,             \
     FRONTIER_MON_PALOSSAND_1,           \
@@ -1889,6 +1414,7 @@
     FRONTIER_MON_TURTONATOR_1,          \
     FRONTIER_MON_MACHAMP_1,             \
     FRONTIER_MON_LYCANROC_DUSK_1,       \
+    FRONTIER_MON_TYPE_NULL_1,           \
     FRONTIER_MON_STEELIX_1,             \
     FRONTIER_MON_JELLICENT_1,           \
     FRONTIER_MON_AERODACTYL_1,          \
@@ -1930,7 +1456,14 @@
     -1 
 
 #define FRONTIER_MONS_BUG_CATCHER_2 \
+    FRONTIER_MON_BUTTERFREE_2,          \
+    FRONTIER_MON_BEEDRILL_2,            \
+    FRONTIER_MON_LEDIAN_2,              \
+    FRONTIER_MON_ARIADOS_2,             \
+    FRONTIER_MON_BEAUTIFLY_2,           \
+    FRONTIER_MON_DUSTOX_2,              \
     FRONTIER_MON_NINJASK_2,             \
+    FRONTIER_MON_SHEDINJA_2,            \
     FRONTIER_MON_SCYTHER_2,             \
     FRONTIER_MON_PINSIR_2,              \
     FRONTIER_MON_VIKAVOLT_1,            \
@@ -1956,9 +1489,9 @@
     -1 
 
 #define FRONTIER_MONS_NINJA_BOY_2 \
+    FRONTIER_MON_NINJASK_2,             \
     FRONTIER_MON_PARASECT_2,            \
     FRONTIER_MON_VENOMOTH_2,            \
-    FRONTIER_MON_NINJASK_2,             \
     FRONTIER_MON_SCYTHER_2,             \
     FRONTIER_MON_PINSIR_2,              \
     FRONTIER_MON_MEDICHAM_1,            \
@@ -2007,7 +1540,7 @@
     FRONTIER_MON_BEHEEYEM_1,            \
     FRONTIER_MON_MILTANK_1,             \
     FRONTIER_MON_CLAWITZER_1,           \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_1,              \
     FRONTIER_MON_WAILORD_1,             \
     FRONTIER_MON_JELLICENT_1,           \
     FRONTIER_MON_CINCCINO_1,            \
@@ -2027,12 +1560,20 @@
     -1
 
 #define FRONTIER_MONS_BUG_MANIAC_3 \
+    FRONTIER_MON_BUTTERFREE_2,          \
+    FRONTIER_MON_BEEDRILL_2,            \
+    FRONTIER_MON_LEDIAN_2,              \
+    FRONTIER_MON_ARIADOS_2,             \
+    FRONTIER_MON_BEAUTIFLY_2,           \
+    FRONTIER_MON_DUSTOX_2,              \
+    FRONTIER_MON_NINJASK_2,             \
+    FRONTIER_MON_SHEDINJA_2,            \
+    FRONTIER_MON_YANMEGA_2,             \
     FRONTIER_MON_VOLBEAT_2,             \
     FRONTIER_MON_ILLUMISE_2,            \
     FRONTIER_MON_PARASECT_2,            \
     FRONTIER_MON_MASQUERAIN_2,          \
     FRONTIER_MON_VENOMOTH_2,            \
-    FRONTIER_MON_NINJASK_2,             \
     FRONTIER_MON_SCYTHER_2,             \
     FRONTIER_MON_PINSIR_2,              \
     FRONTIER_MON_VIKAVOLT_1,            \
@@ -2071,6 +1612,7 @@
     -1 
 
 #define FRONTIER_MONS_RUIN_MANIAC_3 \
+    FRONTIER_MON_DOUBLADE_2,            \
     FRONTIER_MON_DUGTRIO_2,             \
     FRONTIER_MON_VIKAVOLT_2,            \
     FRONTIER_MON_WHISCASH_2,            \
@@ -2095,7 +1637,9 @@
     FRONTIER_MON_METAGROSS_2,           \
     -1 
 
-#define FRONTIER_MONS_COLLECTOR_2 \
+#define FRONTIER_MONS_COLLECTOR_2       \
+    FRONTIER_MON_MISDREAVUS_2,          \
+    FRONTIER_MON_DOUBLADE_2,            \
     FRONTIER_MON_DUGTRIO_2,             \
     FRONTIER_MON_HAWLUCHA_2,            \
     FRONTIER_MON_MISMAGIUS_2,           \
@@ -2120,7 +1664,7 @@
     FRONTIER_MON_ZEBSTRIKA_2,           \
     FRONTIER_MON_VILEPLUME_2,           \
     FRONTIER_MON_ROSERADE_2,            \
-    FRONTIER_MON_ELECTRODE_3,           \
+    FRONTIER_MON_ELECTRODE_2,           \
     FRONTIER_MON_ZOROARK_2,             \
     FRONTIER_MON_SHIFTRY_2,             \
     FRONTIER_MON_GLACEON_2,             \
@@ -2144,18 +1688,18 @@
     FRONTIER_MON_GOLISOPOD_2,           \
     FRONTIER_MON_GOLDUCK_2,             \
     FRONTIER_MON_AMBIPOM_2,             \
+    FRONTIER_MON_SMEARGLE,              \
     -1 
 
 #define FRONTIER_MONS_GUITARIST_2 \
     FRONTIER_MON_SABLEYE_2,             \
     FRONTIER_MON_MIGHTYENA_2,           \
-    FRONTIER_MON_JELLICENT_4,           \
     FRONTIER_MON_MAGNEZONE_2,           \
     FRONTIER_MON_ABSOL_2,               \
     FRONTIER_MON_ROTOM_FAN_2,           \
     FRONTIER_MON_EMOLGA_2,              \
     FRONTIER_MON_ZEBSTRIKA_2,           \
-    FRONTIER_MON_ELECTRODE_3,           \
+    FRONTIER_MON_ELECTRODE_2,           \
     FRONTIER_MON_SHIFTRY_2,             \
     FRONTIER_MON_EELEKTROSS_2,          \
     FRONTIER_MON_AMPHAROS_2,            \
@@ -2165,7 +1709,6 @@
     -1 
 
 #define FRONTIER_MONS_BIRD_KEEPER_2 \
-    FRONTIER_MON_NOCTOWL_4,             \
     FRONTIER_MON_PELIPPER_2,            \
     FRONTIER_MON_SWELLOW_2,             \
     FRONTIER_MON_NOCTOWL_2,             \
@@ -2213,7 +1756,8 @@
     FRONTIER_MON_ROTOM_WASH_2,          \
     -1
 
-#define FRONTIER_MONS_HIKER_2   \
+#define FRONTIER_MONS_HIKER_2           \
+    FRONTIER_MON_DOUBLADE_2,            \
     FRONTIER_MON_DUGTRIO_2,             \
     FRONTIER_MON_HAWLUCHA_2,            \
     FRONTIER_MON_BRELOOM_2,             \
@@ -2285,7 +1829,7 @@
     FRONTIER_MON_LUXRAY_2,              \
     FRONTIER_MON_FLAREON_2,             \
     FRONTIER_MON_CHESNAUGHT_2,          \
-    FRONTIER_MON_ESPEON_2,              \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_BISHARP_2,             \
     FRONTIER_MON_BLASTOISE_2,           \
     FRONTIER_MON_SAMUROTT_2,            \
@@ -2309,7 +1853,8 @@
     FRONTIER_MON_REGIGIGAS_2,           \
     -1 
 
-#define FRONTIER_MONS_YOUNGSTER_LASS_3 \
+#define FRONTIER_MONS_YOUNGSTER_LASS_3  \
+    FRONTIER_MON_RHYDON_2,              \
     FRONTIER_MON_GLISCOR_2,             \
     FRONTIER_MON_MEDICHAM_2,            \
     FRONTIER_MON_WEAVILE_2,             \
@@ -2366,7 +1911,7 @@
     FRONTIER_MON_TOGEDEMARU_2,          \
     FRONTIER_MON_SCIZOR_2,              \
     FRONTIER_MON_GALVANTULA_2,          \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_2,              \
     FRONTIER_MON_LYCANROC_MIDNIGHT_2,   \
     FRONTIER_MON_DONPHAN_2,             \
     FRONTIER_MON_PALOSSAND_2,           \
@@ -2374,6 +1919,7 @@
     FRONTIER_MON_TURTONATOR_2,          \
     FRONTIER_MON_MACHAMP_2,             \
     FRONTIER_MON_LYCANROC_DUSK_2,       \
+    FRONTIER_MON_TYPE_NULL_2,           \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_JELLICENT_2,           \
     FRONTIER_MON_AERODACTYL_2,          \
@@ -2399,7 +1945,7 @@
     FRONTIER_MON_BEHEEYEM_2,            \
     FRONTIER_MON_MILTANK_2,             \
     FRONTIER_MON_CLAWITZER_2,           \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_2,              \
     FRONTIER_MON_WAILORD_2,             \
     FRONTIER_MON_MACHAMP_2,             \
     FRONTIER_MON_JELLICENT_2,           \
@@ -2436,7 +1982,7 @@
     FRONTIER_MON_BEHEEYEM_2,            \
     FRONTIER_MON_MILTANK_2,             \
     FRONTIER_MON_CLAWITZER_2,           \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_2,              \
     FRONTIER_MON_WAILORD_2,             \
     FRONTIER_MON_JELLICENT_2,           \
     FRONTIER_MON_CINCCINO_2,            \
@@ -2456,9 +2002,9 @@
     -1
 
 #define FRONTIER_MONS_POKEFAN_3 \
+    FRONTIER_MON_MAWILE_2,              \
     FRONTIER_MON_DELCATTY_2,            \
     FRONTIER_MON_AUDINO_2,              \
-    FRONTIER_MON_DUNSPARCE_2,           \
     FRONTIER_MON_WIGGLYTUFF_2,          \
     FRONTIER_MON_KECLEON_2,             \
     FRONTIER_MON_BLISSEY_2,             \
@@ -2529,6 +2075,7 @@
     FRONTIER_MON_SALAMENCE_2,           \
     FRONTIER_MON_KOMMO_O_2,             \
     FRONTIER_MON_SLAKING_2,             \
+    FRONTIER_MON_DITTO,                 \
     -1
 
 #define FRONTIER_MONS_COOLTRAINER_M_2A \
@@ -2561,7 +2108,7 @@
     FRONTIER_MON_TOGEDEMARU_1,          \
     FRONTIER_MON_SCIZOR_1,              \
     FRONTIER_MON_GALVANTULA_1,          \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_1,              \
     FRONTIER_MON_LYCANROC_MIDNIGHT_1,   \
     FRONTIER_MON_DONPHAN_1,             \
     FRONTIER_MON_PALOSSAND_1,           \
@@ -2569,6 +2116,7 @@
     FRONTIER_MON_TURTONATOR_1,          \
     FRONTIER_MON_MACHAMP_1,             \
     FRONTIER_MON_LYCANROC_DUSK_1,       \
+    FRONTIER_MON_TYPE_NULL_1,           \
     FRONTIER_MON_STEELIX_1,             \
     FRONTIER_MON_JELLICENT_1,           \
     FRONTIER_MON_AERODACTYL_1,          \
@@ -2609,7 +2157,7 @@
     FRONTIER_MON_TOGEDEMARU_2,          \
     FRONTIER_MON_SCIZOR_2,              \
     FRONTIER_MON_GALVANTULA_2,          \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_2,              \
     FRONTIER_MON_LYCANROC_MIDNIGHT_2,   \
     FRONTIER_MON_DONPHAN_2,             \
     FRONTIER_MON_PALOSSAND_2,           \
@@ -2617,6 +2165,7 @@
     FRONTIER_MON_TURTONATOR_2,          \
     FRONTIER_MON_MACHAMP_2,             \
     FRONTIER_MON_LYCANROC_DUSK_2,       \
+    FRONTIER_MON_TYPE_NULL_2,           \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_JELLICENT_2,           \
     FRONTIER_MON_AERODACTYL_2,          \
@@ -2633,7 +2182,7 @@
 #define FRONTIER_MONS_COOLTRAINER_M_2B \
     FRONTIER_MON_FLAREON_1,             \
     FRONTIER_MON_CHESNAUGHT_1,          \
-    FRONTIER_MON_ESPEON_1,              \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_BISHARP_1,             \
     FRONTIER_MON_BLASTOISE_1,           \
     FRONTIER_MON_SAMUROTT_1,            \
@@ -2681,7 +2230,7 @@
     FRONTIER_MON_SLAKING_1,             \
     FRONTIER_MON_FLAREON_2,             \
     FRONTIER_MON_CHESNAUGHT_2,          \
-    FRONTIER_MON_ESPEON_2,              \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_BISHARP_2,             \
     FRONTIER_MON_BLASTOISE_2,           \
     FRONTIER_MON_SAMUROTT_2,            \
@@ -2741,7 +2290,7 @@
     FRONTIER_MON_GARCHOMP_1,            \
     FRONTIER_MON_METAGROSS_1,           \
     FRONTIER_MON_GENGAR_1,              \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_1,              \
     FRONTIER_MON_MACHAMP_1,             \
     FRONTIER_MON_GARDEVOIR_1,           \
     FRONTIER_MON_STARMIE_1,             \
@@ -2759,7 +2308,7 @@
     FRONTIER_MON_GARCHOMP_2,            \
     FRONTIER_MON_METAGROSS_2,           \
     FRONTIER_MON_GENGAR_2,              \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_2,              \
     FRONTIER_MON_MACHAMP_2,             \
     FRONTIER_MON_GARDEVOIR_2,           \
     FRONTIER_MON_STARMIE_2,             \
@@ -2775,9 +2324,9 @@
     FRONTIER_MON_CHANDELURE_3,          \
     FRONTIER_MON_GENGAR_4,              \
     FRONTIER_MON_CHANDELURE_4,          \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_ESPEON_3,              \
     FRONTIER_MON_LUCARIO_3,             \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_ESPEON_4,              \
     FRONTIER_MON_LUCARIO_4,             \
     FRONTIER_MON_MACHAMP_3,             \
     FRONTIER_MON_CONKELDURR_3,          \
@@ -2812,15 +2361,15 @@
     FRONTIER_MON_##lati##_7,            \
     FRONTIER_MON_##lati##_8,            \
     FRONTIER_MON_DRAGONITE_1,           \
-    FRONTIER_MON_GOODRA_4,              \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_DRAGONITE_2,           \
-    FRONTIER_MON_GOODRA_5,              \
+    FRONTIER_MON_GOODRA_2,              \
     FRONTIER_MON_DRAGONITE_3,           \
-    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_GOODRA_3,              \
     FRONTIER_MON_VOLCARONA_1,           \
     FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_GOODRA_1,              \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_TYRANITAR_1,           \
     FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
@@ -2842,6 +2391,7 @@
     FRONTIER_MON_RAIKOU_1,              \
     FRONTIER_MON_ENTEI_1,               \
     FRONTIER_MON_SUICUNE_1,             \
+    FRONTIER_MON_HEATRAN_1,             \
     FRONTIER_MON_REGIROCK_1,            \
     FRONTIER_MON_REGICE_1,              \
     FRONTIER_MON_REGISTEEL_1,           \
@@ -2852,6 +2402,7 @@
     FRONTIER_MON_RAIKOU_2,              \
     FRONTIER_MON_ENTEI_2,               \
     FRONTIER_MON_SUICUNE_2,             \
+    FRONTIER_MON_HEATRAN_2,             \
     FRONTIER_MON_REGIROCK_2,            \
     FRONTIER_MON_REGICE_2,              \
     FRONTIER_MON_REGISTEEL_2,           \
@@ -2862,6 +2413,7 @@
     FRONTIER_MON_RAIKOU_3,              \
     FRONTIER_MON_ENTEI_3,               \
     FRONTIER_MON_SUICUNE_3,             \
+    FRONTIER_MON_HEATRAN_3,             \
     FRONTIER_MON_REGIROCK_3,            \
     FRONTIER_MON_REGICE_3,              \
     FRONTIER_MON_REGISTEEL_3,           \
@@ -2872,6 +2424,7 @@
     FRONTIER_MON_RAIKOU_4,              \
     FRONTIER_MON_ENTEI_4,               \
     FRONTIER_MON_SUICUNE_4,             \
+    FRONTIER_MON_HEATRAN_4,             \
     FRONTIER_MON_REGIROCK_4,            \
     FRONTIER_MON_REGICE_4,              \
     FRONTIER_MON_REGISTEEL_4,           \
@@ -2887,15 +2440,15 @@
     FRONTIER_MON_##lati##_7,            \
     FRONTIER_MON_##lati##_8,            \
     FRONTIER_MON_DRAGONITE_1,           \
-    FRONTIER_MON_GOODRA_4,              \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_DRAGONITE_2,           \
-    FRONTIER_MON_GOODRA_5,              \
+    FRONTIER_MON_GOODRA_2,              \
     FRONTIER_MON_DRAGONITE_3,           \
-    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_GOODRA_3,              \
     FRONTIER_MON_VOLCARONA_1,           \
     FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_GOODRA_1,              \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_TYRANITAR_1,           \
     FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
@@ -2918,9 +2471,13 @@
     FRONTIER_MON_ENTEI_6,               \
     FRONTIER_MON_SUICUNE_5,             \
     FRONTIER_MON_SUICUNE_6,             \
+    FRONTIER_MON_HEATRAN_5,             \
+    FRONTIER_MON_HEATRAN_6,             \
     -1
 
-#define FRONTIER_MONS_COOLTRAINER_F_2A \
+#define FRONTIER_MONS_COOLTRAINER_F_2A  \
+    FRONTIER_MON_MISDREAVUS_1,          \
+    FRONTIER_MON_DOUBLADE_1,            \
     FRONTIER_MON_DUGTRIO_1,             \
     FRONTIER_MON_HAWLUCHA_1,            \
     FRONTIER_MON_MISMAGIUS_1,           \
@@ -2945,6 +2502,7 @@
     FRONTIER_MON_ZEBSTRIKA_1,           \
     FRONTIER_MON_VILEPLUME_1,           \
     FRONTIER_MON_ROSERADE_1,            \
+    FRONTIER_MON_RHYDON_1,              \
     FRONTIER_MON_GLISCOR_1,             \
     FRONTIER_MON_MEDICHAM_1,            \
     FRONTIER_MON_MAROWAK_1,             \
@@ -2969,6 +2527,8 @@
     FRONTIER_MON_MANECTRIC_1,           \
     FRONTIER_MON_TANGROWTH_1,           \
     FRONTIER_MON_VICTREEBEL_1,          \
+    FRONTIER_MON_MISDREAVUS_2,          \
+    FRONTIER_MON_DOUBLADE_2,            \
     FRONTIER_MON_DUGTRIO_2,             \
     FRONTIER_MON_HAWLUCHA_2,            \
     FRONTIER_MON_MISMAGIUS_2,           \
@@ -2993,6 +2553,7 @@
     FRONTIER_MON_ZEBSTRIKA_2,           \
     FRONTIER_MON_VILEPLUME_2,           \
     FRONTIER_MON_ROSERADE_2,            \
+    FRONTIER_MON_RHYDON_2,              \
     FRONTIER_MON_GLISCOR_2,             \
     FRONTIER_MON_MEDICHAM_2,            \
     FRONTIER_MON_WEAVILE_2,             \
@@ -3068,7 +2629,7 @@
     FRONTIER_MON_ARMALDO_1,             \
     FRONTIER_MON_CLAWITZER_1,           \
     FRONTIER_MON_RAPIDASH_1,            \
-    FRONTIER_MON_ELECTRODE_3,           \
+    FRONTIER_MON_ELECTRODE_2,           \
     FRONTIER_MON_ZOROARK_2,             \
     FRONTIER_MON_SHIFTRY_2,             \
     FRONTIER_MON_GLACEON_2,             \
@@ -3120,6 +2681,7 @@
 
 // Used by Pkmn Ranger M, Gentleman, Running Triathlete, and Cycling Triathlete
 #define FRONTIER_MONS_GENERAL_A \
+    FRONTIER_MON_RHYDON_2,              \
     FRONTIER_MON_GLISCOR_2,             \
     FRONTIER_MON_MEDICHAM_2,            \
     FRONTIER_MON_WEAVILE_2,             \
@@ -3173,7 +2735,7 @@
     FRONTIER_MON_TOGEDEMARU_2,          \
     FRONTIER_MON_SCIZOR_2,              \
     FRONTIER_MON_GALVANTULA_2,          \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_2,              \
     FRONTIER_MON_LYCANROC_MIDNIGHT_2,   \
     FRONTIER_MON_DONPHAN_2,             \
     FRONTIER_MON_PALOSSAND_2,           \
@@ -3181,6 +2743,7 @@
     FRONTIER_MON_TURTONATOR_2,          \
     FRONTIER_MON_MACHAMP_2,             \
     FRONTIER_MON_LYCANROC_DUSK_2,       \
+    FRONTIER_MON_TYPE_NULL_2,           \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_JELLICENT_2,           \
     FRONTIER_MON_AERODACTYL_2,          \
@@ -3220,7 +2783,9 @@
 
 // Identical to FRONTIER_MONS_GENERAL_A but _3
 // Used by Pkmn Ranger, Running Triathlete, and Cycling Triathlete
-#define FRONTIER_MONS_GENERAL_B \
+#define FRONTIER_MONS_GENERAL_B         \
+    FRONTIER_MON_MISDREAVUS_2,          \
+    FRONTIER_MON_DOUBLADE_2,            \
     FRONTIER_MON_DUGTRIO_2,             \
     FRONTIER_MON_HAWLUCHA_2,            \
     FRONTIER_MON_MISMAGIUS_2,           \
@@ -3245,7 +2810,7 @@
     FRONTIER_MON_ZEBSTRIKA_2,           \
     FRONTIER_MON_VILEPLUME_2,           \
     FRONTIER_MON_ROSERADE_2,            \
-    FRONTIER_MON_ELECTRODE_3,           \
+    FRONTIER_MON_ELECTRODE_2,           \
     FRONTIER_MON_ZOROARK_2,             \
     FRONTIER_MON_SHIFTRY_2,             \
     FRONTIER_MON_GLACEON_2,             \
@@ -3295,7 +2860,7 @@
     FRONTIER_MON_LUXRAY_2,              \
     FRONTIER_MON_FLAREON_2,             \
     FRONTIER_MON_CHESNAUGHT_2,          \
-    FRONTIER_MON_ESPEON_2,              \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_BISHARP_2,             \
     FRONTIER_MON_BLASTOISE_2,           \
     FRONTIER_MON_SAMUROTT_2,            \
@@ -3322,6 +2887,7 @@
 // Similar to FRONTIER_MONS_GENERAL_A/B but _2
 // Used by Pkmn Ranger, Running Triathlete, and Cycling Triathlete
 #define FRONTIER_MONS_GENERAL_C \
+    FRONTIER_MON_RHYDON_1,              \
     FRONTIER_MON_GLISCOR_1,             \
     FRONTIER_MON_MEDICHAM_1,            \
     FRONTIER_MON_MAROWAK_1,             \
@@ -3375,7 +2941,7 @@
     FRONTIER_MON_TOGEDEMARU_1,          \
     FRONTIER_MON_SCIZOR_1,              \
     FRONTIER_MON_GALVANTULA_1,          \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_1,              \
     FRONTIER_MON_LYCANROC_MIDNIGHT_1,   \
     FRONTIER_MON_DONPHAN_1,             \
     FRONTIER_MON_PALOSSAND_1,           \
@@ -3383,6 +2949,7 @@
     FRONTIER_MON_TURTONATOR_1,          \
     FRONTIER_MON_MACHAMP_1,             \
     FRONTIER_MON_LYCANROC_DUSK_1,       \
+    FRONTIER_MON_TYPE_NULL_1,           \
     FRONTIER_MON_STEELIX_1,             \
     FRONTIER_MON_JELLICENT_1,           \
     FRONTIER_MON_AERODACTYL_1,          \
@@ -3422,7 +2989,9 @@
 
 // Similar to FRONTIER_MONS_GENERAL_C but _1 (would be identical if not for re-ordering)
 // Used by Pkmn Ranger, Running Triathlete, Cycling Triathlete
-#define FRONTIER_MONS_GENERAL_D \
+#define FRONTIER_MONS_GENERAL_D         \
+    FRONTIER_MON_MISDREAVUS_1,          \
+    FRONTIER_MON_DOUBLADE_1,            \
     FRONTIER_MON_DUGTRIO_1,             \
     FRONTIER_MON_HAWLUCHA_1,            \
     FRONTIER_MON_MISMAGIUS_1,           \
@@ -3497,7 +3066,7 @@
     FRONTIER_MON_LUXRAY_1,              \
     FRONTIER_MON_FLAREON_1,             \
     FRONTIER_MON_CHESNAUGHT_1,          \
-    FRONTIER_MON_ESPEON_1,              \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_BISHARP_1,             \
     FRONTIER_MON_BLASTOISE_1,           \
     FRONTIER_MON_SAMUROTT_1,            \
@@ -3540,6 +3109,7 @@
     FRONTIER_MON_NOIVERN_1,             \
     FRONTIER_MON_NIDOQUEEN_1,           \
     FRONTIER_MON_KROOKODILE_1,          \
+    FRONTIER_MON_TYPE_NULL_1,           \
     FRONTIER_MON_STEELIX_1,             \
     FRONTIER_MON_AERODACTYL_1,          \
     FRONTIER_MON_HAXORUS_1,             \
@@ -3568,6 +3138,7 @@
     FRONTIER_MON_NOIVERN_2,             \
     FRONTIER_MON_NIDOQUEEN_2,           \
     FRONTIER_MON_KROOKODILE_2,          \
+    FRONTIER_MON_TYPE_NULL_2,           \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_AERODACTYL_2,          \
     FRONTIER_MON_HAXORUS_2,             \
@@ -3599,15 +3170,15 @@
     FRONTIER_MON_LATIOS_7,              \
     FRONTIER_MON_LATIOS_8,              \
     FRONTIER_MON_DRAGONITE_1,           \
-    FRONTIER_MON_GOODRA_4,              \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_DRAGONITE_2,           \
-    FRONTIER_MON_GOODRA_5,              \
+    FRONTIER_MON_GOODRA_2,              \
     FRONTIER_MON_DRAGONITE_3,           \
-    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_GOODRA_3,              \
     FRONTIER_MON_VOLCARONA_1,           \
     FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_GOODRA_1,              \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_TYRANITAR_1,           \
     FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
@@ -3704,6 +3275,7 @@
     FRONTIER_MON_GALVANTULA_1,          \
     FRONTIER_MON_DONPHAN_1,             \
     FRONTIER_MON_MACHAMP_1,             \
+    FRONTIER_MON_TYPE_NULL_1,           \
     FRONTIER_MON_STEELIX_1,             \
     FRONTIER_MON_INCINEROAR_1,          \
     FRONTIER_MON_HAWLUCHA_2,            \
@@ -3730,6 +3302,7 @@
     FRONTIER_MON_GALVANTULA_2,          \
     FRONTIER_MON_DONPHAN_2,             \
     FRONTIER_MON_MACHAMP_2,             \
+    FRONTIER_MON_TYPE_NULL_2,           \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_INCINEROAR_2,          \
     FRONTIER_MON_MACHAMP_3,             \
@@ -3822,6 +3395,7 @@
     FRONTIER_MON_SCIZOR_1,              \
     FRONTIER_MON_GALVANTULA_1,          \
     FRONTIER_MON_MACHAMP_1,             \
+    FRONTIER_MON_TYPE_NULL_1,           \
     FRONTIER_MON_STEELIX_1,             \
     FRONTIER_MON_TYRANTRUM_1,           \
     FRONTIER_MON_INCINEROAR_1,          \
@@ -3846,6 +3420,7 @@
     FRONTIER_MON_SCIZOR_2,              \
     FRONTIER_MON_GALVANTULA_2,          \
     FRONTIER_MON_MACHAMP_2,             \
+    FRONTIER_MON_TYPE_NULL_2,           \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_TYRANTRUM_2,           \
     FRONTIER_MON_INCINEROAR_2,          \
@@ -3881,8 +3456,9 @@
     FRONTIER_MON_RHYPERIOR_1,           \
     FRONTIER_MON_SCIZOR_1,              \
     FRONTIER_MON_GALVANTULA_1,          \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_1,              \
     FRONTIER_MON_MACHAMP_1,             \
+    FRONTIER_MON_TYPE_NULL_1,           \
     FRONTIER_MON_STEELIX_1,             \
     FRONTIER_MON_AERODACTYL_1,          \
     FRONTIER_MON_TYRANTRUM_1,           \
@@ -3909,8 +3485,9 @@
     FRONTIER_MON_RHYPERIOR_2,           \
     FRONTIER_MON_SCIZOR_2,              \
     FRONTIER_MON_GALVANTULA_2,          \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_2,              \
     FRONTIER_MON_MACHAMP_2,             \
+    FRONTIER_MON_TYPE_NULL_2,           \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_AERODACTYL_2,          \
     FRONTIER_MON_TYRANTRUM_2,           \
@@ -3930,9 +3507,9 @@
     FRONTIER_MON_REGIROCK_4,            \
     FRONTIER_MON_REGICE_4,              \
     FRONTIER_MON_REGISTEEL_4,           \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_ESPEON_3,              \
     FRONTIER_MON_LUCARIO_3,             \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_ESPEON_4,              \
     FRONTIER_MON_LUCARIO_4,             \
     FRONTIER_MON_MACHAMP_3,             \
     FRONTIER_MON_CONKELDURR_3,          \
@@ -4069,7 +3646,8 @@
     -1 
 
 // For this group, Expert M uses Tyranitar, Expert F uses Dragonite
-#define FRONTIER_MONS_EXPERT_2C(lastmon) \
+#define FRONTIER_MONS_EXPERT_2C(lastmon)\
+    FRONTIER_MON_MISDREAVUS_1,          \
     FRONTIER_MON_DUSKNOIR_1,            \
     FRONTIER_MON_QUAGSIRE_1,            \
     FRONTIER_MON_LUDICOLO_1,            \
@@ -4102,6 +3680,7 @@
     FRONTIER_MON_TOGEKISS_1,            \
     FRONTIER_MON_TOXAPEX_1,             \
     FRONTIER_MON_MILOTIC_1,             \
+    FRONTIER_MON_MISDREAVUS_2,          \
     FRONTIER_MON_DUSKNOIR_2,            \
     FRONTIER_MON_QUAGSIRE_2,            \
     FRONTIER_MON_LUDICOLO_2,            \
@@ -4256,7 +3835,8 @@
     FRONTIER_MON_METAGROSS_3,           \
     FRONTIER_MON_KOMMO_O_3,             \
     FRONTIER_MON_METAGROSS_4,           \
-    FRONTIER_MON_KOMMO_O_4,
+    FRONTIER_MON_KOMMO_O_4,             \
+    FRONTIER_MON_UNOWN,
 
 #define FRONTIER_MONS_PSYCHIC_2A(lati) \
     FRONTIER_MONS_PSYCHIC_2(lati, COBALION, VIRIZION, TERRAKION) \
@@ -4301,10 +3881,11 @@
     FRONTIER_MON_##lati##_8,            \
     -1 
 
-#define FRONTIER_MONS_HEX_MANIAC_2A \
+#define FRONTIER_MONS_HEX_MANIAC_2A     \
     FRONTIER_MON_SHARPEDO_2,            \
     FRONTIER_MON_ABSOL_2,               \
     FRONTIER_MON_MISMAGIUS_1,           \
+    FRONTIER_MON_MISDREAVUS_1,          \
     FRONTIER_MON_DUSKNOIR_1,            \
     FRONTIER_MON_SHIFTRY_1,             \
     FRONTIER_MON_CHANDELURE_1,          \
@@ -4316,6 +3897,7 @@
     FRONTIER_MON_GENGAR_1,              \
     FRONTIER_MON_LYCANROC_MIDNIGHT_1,   \
     FRONTIER_MON_UMBREON_1,             \
+    FRONTIER_MON_MISDREAVUS_2,          \
     FRONTIER_MON_MISMAGIUS_2,           \
     FRONTIER_MON_DUSKNOIR_2,            \
     FRONTIER_MON_SHIFTRY_2,             \
@@ -4334,9 +3916,10 @@
     FRONTIER_MON_CHANDELURE_4,          \
     -1 
 
-#define FRONTIER_MONS_HEX_MANIAC_2B \
+#define FRONTIER_MONS_HEX_MANIAC_2B     \
     FRONTIER_MON_SEVIPER_2,             \
     FRONTIER_MON_MISMAGIUS_1,           \
+    FRONTIER_MON_MISDREAVUS_1,          \
     FRONTIER_MON_DUSKNOIR_1,            \
     FRONTIER_MON_VILEPLUME_1,           \
     FRONTIER_MON_ROSERADE_1,            \
@@ -4360,6 +3943,7 @@
     FRONTIER_MON_JELLICENT_1,           \
     FRONTIER_MON_VENUSAUR_1,            \
     FRONTIER_MON_CROBAT_1,              \
+    FRONTIER_MON_MISDREAVUS_2,          \
     FRONTIER_MON_MISMAGIUS_2,           \
     FRONTIER_MON_DUSKNOIR_2,            \
     FRONTIER_MON_VILEPLUME_2,           \
@@ -4501,9 +4085,10 @@
     FRONTIER_MON_MILTANK_1,             \
     FRONTIER_MON_NIDOQUEEN_1,           \
     FRONTIER_MON_KROOKODILE_1,          \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_1,              \
     FRONTIER_MON_DONPHAN_1,             \
     FRONTIER_MON_WAILORD_1,             \
+    FRONTIER_MON_TYPE_NULL_1,           \
     FRONTIER_MON_STEELIX_1,             \
     FRONTIER_MON_AERODACTYL_1,          \
     FRONTIER_MON_HAXORUS_1,             \
@@ -4523,15 +4108,15 @@
     FRONTIER_MON_KOMMO_O_1,             \
     FRONTIER_MON_SLAKING_1,             \
     FRONTIER_MON_DRAGONITE_1,           \
-    FRONTIER_MON_GOODRA_4,              \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_DRAGONITE_2,           \
-    FRONTIER_MON_GOODRA_5,              \
+    FRONTIER_MON_GOODRA_2,              \
     FRONTIER_MON_DRAGONITE_3,           \
-    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_GOODRA_3,              \
     FRONTIER_MON_VOLCARONA_1,           \
     FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_GOODRA_1,              \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_TYRANITAR_1,           \
     FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
@@ -4591,9 +4176,10 @@
     FRONTIER_MON_MILTANK_2,             \
     FRONTIER_MON_NIDOQUEEN_2,           \
     FRONTIER_MON_KROOKODILE_2,          \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_2,              \
     FRONTIER_MON_DONPHAN_2,             \
     FRONTIER_MON_WAILORD_2,             \
+    FRONTIER_MON_TYPE_NULL_2,           \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_AERODACTYL_2,          \
     FRONTIER_MON_HAXORUS_2,             \
@@ -4613,15 +4199,15 @@
     FRONTIER_MON_KOMMO_O_2,             \
     FRONTIER_MON_SLAKING_2,             \
     FRONTIER_MON_DRAGONITE_1,           \
-    FRONTIER_MON_GOODRA_4,              \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_DRAGONITE_2,           \
-    FRONTIER_MON_GOODRA_5,              \
+    FRONTIER_MON_GOODRA_2,              \
     FRONTIER_MON_DRAGONITE_3,           \
-    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_GOODRA_3,              \
     FRONTIER_MON_VOLCARONA_1,           \
     FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_GOODRA_1,              \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_TYRANITAR_1,           \
     FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
@@ -4648,7 +4234,8 @@
     FRONTIER_MON_SNORLAX_1,             \
     FRONTIER_MON_GARCHOMP_1,            \
     FRONTIER_MON_METAGROSS_1,           \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_1,              \
+    FRONTIER_MON_TYPE_NULL_1,           \
     FRONTIER_MON_STEELIX_1,             \
     FRONTIER_MON_AERODACTYL_1,          \
     FRONTIER_MON_MEGANIUM_1,            \
@@ -4672,7 +4259,8 @@
     FRONTIER_MON_SNORLAX_2,             \
     FRONTIER_MON_GARCHOMP_2,            \
     FRONTIER_MON_METAGROSS_2,           \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_2,              \
+    FRONTIER_MON_TYPE_NULL_2,           \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_AERODACTYL_2,          \
     FRONTIER_MON_MEGANIUM_2,            \
@@ -4684,9 +4272,9 @@
     FRONTIER_MON_TOGEKISS_2,            \
     FRONTIER_MON_SALAMENCE_2,           \
     FRONTIER_MON_KOMMO_O_2,             \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_ESPEON_3,              \
     FRONTIER_MON_LUCARIO_3,             \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_ESPEON_4,              \
     FRONTIER_MON_LUCARIO_4,             \
     FRONTIER_MON_LAPRAS_3,              \
     FRONTIER_MON_GRENINJA_3,            \
@@ -4705,15 +4293,15 @@
     FRONTIER_MON_METAGROSS_4,           \
     FRONTIER_MON_KOMMO_O_4,             \
     FRONTIER_MON_DRAGONITE_1,           \
-    FRONTIER_MON_GOODRA_4,              \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_DRAGONITE_2,           \
-    FRONTIER_MON_GOODRA_5,              \
+    FRONTIER_MON_GOODRA_2,              \
     FRONTIER_MON_DRAGONITE_3,           \
-    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_GOODRA_3,              \
     FRONTIER_MON_VOLCARONA_1,           \
     FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_GOODRA_1,              \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_TYRANITAR_1,           \
     FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
@@ -4738,7 +4326,7 @@
     FRONTIER_MON_GARCHOMP_1,            \
     FRONTIER_MON_METAGROSS_1,           \
     FRONTIER_MON_GENGAR_1,              \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_1,              \
     FRONTIER_MON_MACHAMP_1,             \
     FRONTIER_MON_GARDEVOIR_1,           \
     FRONTIER_MON_STARMIE_1,             \
@@ -4756,7 +4344,7 @@
     FRONTIER_MON_GARCHOMP_2,            \
     FRONTIER_MON_METAGROSS_2,           \
     FRONTIER_MON_GENGAR_2,              \
-    FRONTIER_MON_URSARING_1,            \
+    FRONTIER_MON_ESPEON_2,              \
     FRONTIER_MON_MACHAMP_2,             \
     FRONTIER_MON_GARDEVOIR_2,           \
     FRONTIER_MON_STARMIE_2,             \
@@ -4776,9 +4364,9 @@
     FRONTIER_MON_CHANDELURE_3,          \
     FRONTIER_MON_GENGAR_4,              \
     FRONTIER_MON_CHANDELURE_4,          \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_ESPEON_3,              \
     FRONTIER_MON_LUCARIO_3,             \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_ESPEON_4,              \
     FRONTIER_MON_LUCARIO_4,             \
     FRONTIER_MON_MACHAMP_3,             \
     FRONTIER_MON_CONKELDURR_3,          \
@@ -4809,15 +4397,15 @@
     FRONTIER_MON_METAGROSS_4,           \
     FRONTIER_MON_KOMMO_O_4,             \
     FRONTIER_MON_DRAGONITE_1,           \
-    FRONTIER_MON_GOODRA_4,              \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_DRAGONITE_2,           \
-    FRONTIER_MON_GOODRA_5,              \
+    FRONTIER_MON_GOODRA_2,              \
     FRONTIER_MON_DRAGONITE_3,           \
-    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_GOODRA_3,              \
     FRONTIER_MON_VOLCARONA_1,           \
     FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_GOODRA_1,              \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_TYRANITAR_1,           \
     FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
@@ -4838,6 +4426,7 @@
     FRONTIER_MON_RAIKOU_1,              \
     FRONTIER_MON_ENTEI_1,               \
     FRONTIER_MON_SUICUNE_1,             \
+    FRONTIER_MON_HEATRAN_1,             \
     FRONTIER_MON_REGIROCK_1,            \
     FRONTIER_MON_REGICE_1,              \
     FRONTIER_MON_REGISTEEL_1,           \
@@ -4849,6 +4438,7 @@
     FRONTIER_MON_RAIKOU_2,              \
     FRONTIER_MON_ENTEI_2,               \
     FRONTIER_MON_SUICUNE_2,             \
+    FRONTIER_MON_HEATRAN_2,             \
     FRONTIER_MON_REGIROCK_2,            \
     FRONTIER_MON_REGICE_2,              \
     FRONTIER_MON_REGISTEEL_2,           \
@@ -4860,6 +4450,7 @@
     FRONTIER_MON_RAIKOU_3,              \
     FRONTIER_MON_ENTEI_3,               \
     FRONTIER_MON_SUICUNE_3,             \
+    FRONTIER_MON_HEATRAN_3,             \
     FRONTIER_MON_REGIROCK_3,            \
     FRONTIER_MON_REGICE_3,              \
     FRONTIER_MON_REGISTEEL_3,           \
@@ -4871,6 +4462,7 @@
     FRONTIER_MON_RAIKOU_4,              \
     FRONTIER_MON_ENTEI_4,               \
     FRONTIER_MON_SUICUNE_4,             \
+    FRONTIER_MON_HEATRAN_4,             \
     FRONTIER_MON_REGIROCK_4,            \
     FRONTIER_MON_REGICE_4,              \
     FRONTIER_MON_REGISTEEL_4,           \
@@ -4891,15 +4483,15 @@
     FRONTIER_MON_LATIOS_7,              \
     FRONTIER_MON_LATIOS_8,              \
     FRONTIER_MON_DRAGONITE_1,           \
-    FRONTIER_MON_GOODRA_4,              \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_DRAGONITE_2,           \
-    FRONTIER_MON_GOODRA_5,              \
+    FRONTIER_MON_GOODRA_2,              \
     FRONTIER_MON_DRAGONITE_3,           \
-    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_GOODRA_3,              \
     FRONTIER_MON_VOLCARONA_1,           \
     FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_GOODRA_1,              \
+    FRONTIER_MON_GOODRA_4,              \
     FRONTIER_MON_TYRANITAR_1,           \
     FRONTIER_MON_HYDREIGON_1,           \
     FRONTIER_MON_TYRANITAR_2,           \
@@ -4922,10 +4514,11 @@
     FRONTIER_MON_ENTEI_6,               \
     FRONTIER_MON_SUICUNE_5,             \
     FRONTIER_MON_SUICUNE_6,             \
+    FRONTIER_MON_HEATRAN_5,             \
+    FRONTIER_MON_HEATRAN_6,             \
     -1 
 
 #define FRONTIER_MONS_SWIMMING_TRIATHLETE_M_3 \
-    FRONTIER_MON_JELLICENT_4,           \
     FRONTIER_MON_CLOYSTER_2,            \
     FRONTIER_MON_HAWLUCHA_1,            \
     FRONTIER_MON_FROSLASS_1,            \
@@ -5008,7 +4601,6 @@
     -1 
 
 #define FRONTIER_MONS_SWIMMING_TRIATHLETE_F_3 \
-    FRONTIER_MON_JELLICENT_4,           \
     FRONTIER_MON_CLOYSTER_2,            \
     FRONTIER_MON_HAWLUCHA_1,            \
     FRONTIER_MON_FROSLASS_1,            \
@@ -5091,12 +4683,18 @@
     -1
 
 #define FRONTIER_MONS_BUG_MANIAC_4 \
-    FRONTIER_MON_SHEDINJA,              \
-    FRONTIER_MON_NINJASK_1,             \
+    FRONTIER_MON_BUTTERFREE_2,          \
+    FRONTIER_MON_BEEDRILL_2,            \
+    FRONTIER_MON_LEDIAN_2,              \
+    FRONTIER_MON_ARIADOS_2,             \
+    FRONTIER_MON_BEAUTIFLY_2,           \
+    FRONTIER_MON_DUSTOX_2,              \
+    FRONTIER_MON_NINJASK_2,             \
+    FRONTIER_MON_SHEDINJA_2,            \
+    FRONTIER_MON_YANMEGA_2,             \
     FRONTIER_MON_PARASECT_2,            \
     FRONTIER_MON_MASQUERAIN_2,          \
     FRONTIER_MON_VENOMOTH_2,            \
-    FRONTIER_MON_NINJASK_2,             \
     FRONTIER_MON_SCYTHER_2,             \
     FRONTIER_MON_PINSIR_2,              \
     FRONTIER_MON_VIKAVOLT_1,            \
@@ -5179,6 +4777,7 @@
     FRONTIER_MON_ARMALDO_1,             \
     FRONTIER_MON_SCIZOR_1,              \
     FRONTIER_MON_LYCANROC_DUSK_1,       \
+    FRONTIER_MON_TYPE_NULL_1,           \
     FRONTIER_MON_STEELIX_1,             \
     FRONTIER_MON_AERODACTYL_1,          \
     FRONTIER_MON_TYRANTRUM_1,           \
@@ -5203,6 +4802,7 @@
     FRONTIER_MON_ARMALDO_2,             \
     FRONTIER_MON_SCIZOR_2,              \
     FRONTIER_MON_LYCANROC_DUSK_2,       \
+    FRONTIER_MON_TYPE_NULL_2,           \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_AERODACTYL_2,          \
     FRONTIER_MON_TYRANTRUM_2,           \
@@ -5268,6 +4868,7 @@
     FRONTIER_MON_INFERNAPE_2,           \
     FRONTIER_MON_TYPHLOSION_2,          \
     FRONTIER_MON_PRIMARINA_2,           \
+    FRONTIER_MON_SMEARGLE,              \
     -1 
 
 #define FRONTIER_MONS_GUITARIST_3A \
@@ -5295,7 +4896,7 @@
     FRONTIER_MON_ROTOM_FAN_2,           \
     FRONTIER_MON_EMOLGA_2,              \
     FRONTIER_MON_ZEBSTRIKA_2,           \
-    FRONTIER_MON_ELECTRODE_3,           \
+    FRONTIER_MON_ELECTRODE_2,           \
     FRONTIER_MON_SHIFTRY_2,             \
     FRONTIER_MON_EELEKTROSS_2,          \
     FRONTIER_MON_AMPHAROS_2,            \
@@ -5351,7 +4952,7 @@
     FRONTIER_MON_TYRANTRUM_1,           \
     FRONTIER_MON_MISMAGIUS_2,           \
     FRONTIER_MON_ZEBSTRIKA_2,           \
-    FRONTIER_MON_ELECTRODE_3,           \
+    FRONTIER_MON_ELECTRODE_2,           \
     FRONTIER_MON_PORYGON2_2,            \
     FRONTIER_MON_LUXRAY_2,              \
     FRONTIER_MON_RAICHU_2,              \
@@ -5518,6 +5119,7 @@
     -1 
 
 #define FRONTIER_MONS_HIKER_3   \
+    FRONTIER_MON_DOUBLADE_1,            \
     FRONTIER_MON_DUGTRIO_1,             \
     FRONTIER_MON_RAMPARDOS_1,           \
     FRONTIER_MON_GOLEM_1,               \
@@ -5534,6 +5136,7 @@
     FRONTIER_MON_FLYGON_1,              \
     FRONTIER_MON_AGGRON_1,              \
     FRONTIER_MON_METAGROSS_1,           \
+    FRONTIER_MON_RHYDON_1,              \
     FRONTIER_MON_GLISCOR_1,             \
     FRONTIER_MON_MAROWAK_1,             \
     FRONTIER_MON_GIGALITH_1,            \
@@ -5545,11 +5148,13 @@
     FRONTIER_MON_DONPHAN_1,             \
     FRONTIER_MON_PALOSSAND_1,           \
     FRONTIER_MON_LYCANROC_DUSK_1,       \
+    FRONTIER_MON_TYPE_NULL_1,           \
     FRONTIER_MON_STEELIX_1,             \
     FRONTIER_MON_AERODACTYL_1,          \
     FRONTIER_MON_HAXORUS_1,             \
     FRONTIER_MON_TYRANTRUM_1,           \
     FRONTIER_MON_KOMMO_O_1,             \
+    FRONTIER_MON_DOUBLADE_2,            \
     FRONTIER_MON_DUGTRIO_2,             \
     FRONTIER_MON_RAMPARDOS_2,           \
     FRONTIER_MON_GOLEM_2,               \
@@ -5566,6 +5171,7 @@
     FRONTIER_MON_FLYGON_2,              \
     FRONTIER_MON_AGGRON_2,              \
     FRONTIER_MON_METAGROSS_2,           \
+    FRONTIER_MON_RHYDON_2,              \
     FRONTIER_MON_GLISCOR_2,             \
     FRONTIER_MON_MAROWAK_2,             \
     FRONTIER_MON_GIGALITH_2,            \
@@ -5577,6 +5183,7 @@
     FRONTIER_MON_DONPHAN_2,             \
     FRONTIER_MON_PALOSSAND_2,           \
     FRONTIER_MON_LYCANROC_DUSK_2,       \
+    FRONTIER_MON_TYPE_NULL_2,           \
     FRONTIER_MON_STEELIX_2,             \
     FRONTIER_MON_AERODACTYL_2,          \
     FRONTIER_MON_HAXORUS_2,             \
@@ -5598,8 +5205,9 @@
     FRONTIER_MON_HYDREIGON_4,           \
     -1 
 
-#define FRONTIER_MONS_KINDLER_3 \
+#define FRONTIER_MONS_KINDLER_3         \
     FRONTIER_MON_MISMAGIUS_1,           \
+    FRONTIER_MON_MISDREAVUS_1,          \
     FRONTIER_MON_DUSKNOIR_1,            \
     FRONTIER_MON_GOLURK_1,              \
     FRONTIER_MON_AMBIPOM_1,             \
@@ -5623,6 +5231,7 @@
     FRONTIER_MON_INFERNAPE_1,           \
     FRONTIER_MON_TYPHLOSION_1,          \
     FRONTIER_MON_ROTOM_HEAT_1,          \
+    FRONTIER_MON_MISDREAVUS_2,          \
     FRONTIER_MON_MISMAGIUS_2,           \
     FRONTIER_MON_DUSKNOIR_2,            \
     FRONTIER_MON_GOLURK_2,              \
@@ -5652,15 +5261,15 @@
     FRONTIER_MON_GENGAR_4,              \
     FRONTIER_MON_CHANDELURE_4,          \
     FRONTIER_MON_DRAGONITE_1,           \
-    FRONTIER_MON_GOODRA_4,              \
+    FRONTIER_MON_GOODRA_1,              \
     FRONTIER_MON_DRAGONITE_2,           \
-    FRONTIER_MON_GOODRA_5,              \
+    FRONTIER_MON_GOODRA_2,              \
     FRONTIER_MON_DRAGONITE_3,           \
-    FRONTIER_MON_GOODRA_6,              \
+    FRONTIER_MON_GOODRA_3,              \
     FRONTIER_MON_VOLCARONA_1,           \
     FRONTIER_MON_VOLCARONA_2,           \
     FRONTIER_MON_DRAGONITE_4,           \
-    FRONTIER_MON_GOODRA_1,              \
+    FRONTIER_MON_GOODRA_4,              \
     -1 
 
 #define FRONTIER_MONS_PARASOL_LADY_3 \
@@ -5709,7 +5318,6 @@
     FRONTIER_MON_JOLTEON_2,             \
     FRONTIER_MON_FLAREON_1,             \
     FRONTIER_MON_FLAREON_2,             \
-    FRONTIER_MON_FLAREON_3,             \
     FRONTIER_MON_ESPEON_1,              \
     FRONTIER_MON_ESPEON_2,              \
     FRONTIER_MON_ESPEON_3,              \
@@ -5718,12 +5326,10 @@
     FRONTIER_MON_UMBREON_2,             \
     FRONTIER_MON_LEAFEON_1,             \
     FRONTIER_MON_LEAFEON_2,             \
-    FRONTIER_MON_LEAFEON_3,             \
     FRONTIER_MON_GLACEON_1,             \
     FRONTIER_MON_GLACEON_2,             \
     FRONTIER_MON_SYLVEON_1,             \
     FRONTIER_MON_SYLVEON_2,             \
-    FRONTIER_MON_SYLVEON_3,             \
     -1 
 
 #define FRONTIER_MONS_BEAUTY_2          \
@@ -5760,7 +5366,7 @@
     FRONTIER_MON_WALREIN_2,             \
     FRONTIER_MON_ROTOM_WASH_2,          \
     FRONTIER_MON_SYLVEON_2,             \
-    FRONTIER_MON_URSARING_2,            \
+    FRONTIER_MON_ESPEON_4,              \
     FRONTIER_MON_MACHAMP_4,             \
     FRONTIER_MON_SERPERIOR_4,           \
     FRONTIER_MON_GRENINJA_4,            \
@@ -5794,7 +5400,7 @@
     FRONTIER_MON_BLAZIKEN_1,            \
     FRONTIER_MON_TORTERRA_1,            \
     FRONTIER_MON_CHESNAUGHT_1,          \
-    FRONTIER_MON_ESPEON_1,              \
+    FRONTIER_MON_URSARING_1,            \
     FRONTIER_MON_DECIDUEYE_1,           \
     FRONTIER_MON_JYNX_1,                \
     FRONTIER_MON_MIMIKYU_1,             \
@@ -5834,7 +5440,7 @@
     FRONTIER_MON_BLAZIKEN_2,            \
     FRONTIER_MON_TORTERRA_2,            \
     FRONTIER_MON_CHESNAUGHT_2,          \
-    FRONTIER_MON_ESPEON_2,              \
+    FRONTIER_MON_URSARING_2,            \
     FRONTIER_MON_DECIDUEYE_2,           \
     FRONTIER_MON_JYNX_2,                \
     FRONTIER_MON_MIMIKYU_2,             \
@@ -6109,7 +5715,7 @@ const u16 gBattleFrontierTrainerMons_Marisa[] =
 
 const u16 gBattleFrontierTrainerMons_Lewis[] = 
 {
-    FRONTIER_MONS_BUG_CATCHER_1_EXTRA(LEDIAN, ARIADOS)
+    FRONTIER_MONS_BUG_CATCHER_1_EXTRA(BUTTERFREE, BEEDRILL)
 };
 
 const u16 gBattleFrontierTrainerMons_Yoshi[] = 
@@ -6676,7 +6282,7 @@ const u16 gBattleFrontierTrainerMons_Zachery[] =
 
 const u16 gBattleFrontierTrainerMons_Johan[] = 
 {
-    FRONTIER_MONS_YOUNGSTER_LASS_2_NO_DUGTRIO
+    FRONTIER_MONS_YOUNGSTER_LASS_2
 };
 
 const u16 gBattleFrontierTrainerMons_Shea[] = 

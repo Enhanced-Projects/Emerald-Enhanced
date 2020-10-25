@@ -3346,7 +3346,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_SLOW,
         .eggGroup1 = EGG_GROUP_WATER_2,
         .eggGroup2 = EGG_GROUP_DRAGON,
-        .abilities = {ABILITY_SWIFT_SWIM, ABILITY_WIMP_OUT},
+        .abilities = {ABILITY_SWIFT_SWIM, ABILITY_SWIFT_SWIM},
         .abilityHidden = ABILITY_RATTLED,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_RED,
@@ -3371,8 +3371,8 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_SLOW,
         .eggGroup1 = EGG_GROUP_WATER_2,
         .eggGroup2 = EGG_GROUP_DRAGON,
-        .abilities = {ABILITY_INTIMIDATE, ABILITY_ANGER_POINT},
-        .abilityHidden = ABILITY_MOXIE,
+        .abilities = {ABILITY_INTIMIDATE, ABILITY_INTIMIDATE},
+        .abilityHidden = ABILITY_ANGER_POINT,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BLUE,
     },
@@ -10518,7 +10518,7 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_CRANIDOS] =
     {
-        .baseHP        = 110,
+        .baseHP        = 100,
         .baseAttack    = 125,
         .baseDefense   = 40,
         .baseSpeed     = 58,
@@ -18516,11 +18516,11 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_PUMPKABOO] =
     {
-        .baseHP        = 49,
-        .baseAttack    = 66,
+        .baseHP        = 59,
+        .baseAttack    = 44,
         .baseDefense   = 70,
         .baseSpeed     = 51,
-        .baseSpAttack  = 44,
+        .baseSpAttack  = 66,
         .baseSpDefense = 55,
         .type1 = TYPE_GHOST,
         .type2 = TYPE_GRASS,
@@ -18533,7 +18533,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_AMORPHOUS,
         .eggGroup2 = EGG_GROUP_AMORPHOUS,
-        .abilities = {ABILITY_PICKUP, ABILITY_FRISK},
+        .abilities = {ABILITY_PICKUP, ABILITY_FLASH_FIRE},
         .abilityHidden = ABILITY_INSOMNIA,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BROWN,
@@ -18541,11 +18541,11 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_GOURGEIST] =
     {
-        .baseHP        = 65,
-        .baseAttack    = 90,
+        .baseHP        = 85,
+        .baseAttack    = 58,
         .baseDefense   = 122,
         .baseSpeed     = 84,
-        .baseSpAttack  = 58,
+        .baseSpAttack  = 90,
         .baseSpDefense = 75,
         .type1 = TYPE_GHOST,
         .type2 = TYPE_GRASS,
@@ -18558,7 +18558,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_AMORPHOUS,
         .eggGroup2 = EGG_GROUP_AMORPHOUS,
-        .abilities = {ABILITY_PICKUP, ABILITY_FRISK},
+        .abilities = {ABILITY_PICKUP, ABILITY_FLASH_FIRE},
         .abilityHidden = ABILITY_INSOMNIA,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BROWN,
