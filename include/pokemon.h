@@ -209,6 +209,7 @@ struct BaseStats
             u8 noFlip : 1;
 }; /* size = 28 */
 
+#include "constants/battle_config.h"
 struct BattleMove
 {
     u16 effect;
