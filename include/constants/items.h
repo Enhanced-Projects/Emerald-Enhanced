@@ -638,7 +638,7 @@
 #define ITEM_TM63_EMPTY 544
 #define ITEM_TM64_EMPTY 545
 
-// FireRed/LeafGreen
+// FireRed/LeafGreen @TOBY! these need to be renumbered directly after tm64 soon-ish with an upcoming RHH IE pr.
 #define ITEM_OAKS_PARCEL 590
 #define ITEM_IMPRINTER 591
 #define ITEM_SECRET_KEY 592
@@ -664,11 +664,11 @@
 #define ITEM_RUBY 612
 #define ITEM_SAPPHIRE 613
 // Emerald
-#define ITEM_MAGMA_EMBLEM 614
-#define ITEM_OLD_SEA_MAP 615
+#define ITEM_MAGMA_EMBLEM 564
+#define ITEM_OLD_SEA_MAP 565
 
-#define ITEM_SHINY_CHARM 616
-#define ITEM_OVAL_CHARM 617
+#define ITEM_SHINY_CHARM 566
+#define ITEM_OVAL_CHARM 567
 
 #define ITEM_COPPER_ORE 618
 #define ITEM_SILVER_ORE 619

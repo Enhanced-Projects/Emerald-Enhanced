@@ -4306,7 +4306,7 @@ u32 GetBattlerTotalSpeedStat(u8 battlerId)
 
     // player's badge boost
     if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_x2000000 | BATTLE_TYPE_FRONTIER))
-        && FlagGet(FLAG_BADGE03_GET)
+        && ShouldGetStatBadgeBoost(FLAG_BADGE03_GET, battlerId)
         && GetBattlerSide(battlerId) == B_SIDE_PLAYER)
     {
         speed = (speed * 110) / 100;
@@ -4941,7 +4941,7 @@ static void TryEvolvePokemon(void)
                 levelUpBits &= ~(gBitTable[i]);
                 gLeveledUpInBattle = levelUpBits;
 
-                species = GetEvolutionTargetSpecies(&gPlayerParty[i], 0, levelUpBits);
+                species = GetEvolutionTargetSpecies(&gPlayerParty[i], 0, levelUpBits, SPECIES_NONE);
                 if (species != SPECIES_NONE)
                 {
                     FreeAllWindowBuffers();

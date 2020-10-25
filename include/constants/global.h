@@ -30,6 +30,7 @@
 
 #define GAME_VERSION (VERSION_EMERALD)
 #define GAME_LANGUAGE (LANGUAGE_ENGLISH)
+#define ITEM_EXPANSION 1
 
 // capacities of various saveblock objects 120 bytes free
 #define DAYCARE_MON_COUNT 2

@@ -688,7 +688,7 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
                 // try a regular wild land encounter
                 if (TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
                 {
-                    if (USE_BATTLE_DEBUG && GetMonsStateToDoubles() == PLAYER_HAS_TWO_USABLE_MONS && (RyuCheckForDarkGrass() == TRUE) && (Random() % 100 >= 50))
+                    if (TryDoDoubleWildBattle() && (RyuCheckForDarkGrass() == TRUE) && (Random() % 100 >= 50))
                     {
                         struct Pokemon mon1 = gEnemyParty[0];
                         TryGenerateWildMon(gWildMonHeaders[headerId].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_KEEN_EYE);
@@ -724,7 +724,17 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
             {
                 if (TryGenerateWildMon(gWildMonHeaders[headerId].waterMonsInfo, WILD_AREA_WATER, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
                 {
-                    BattleSetup_StartWildBattle();
+                    if (TryDoDoubleWildBattle())
+                    {
+                        struct Pokemon mon1 = gEnemyParty[0];
+                        TryGenerateWildMon(gWildMonHeaders[headerId].waterMonsInfo, WILD_AREA_WATER, WILD_CHECK_KEEN_EYE);
+                        gEnemyParty[1] = mon1;
+                        BattleSetup_StartDoubleWildBattle();
+                    }
+                    else
+                    {
+                        BattleSetup_StartWildBattle();
+                    }
                     return TRUE;
                 }
                 return FALSE;
@@ -1055,3 +1065,15 @@ u8 ChooseHiddenMonIndex(void)
     #endif
 }
 
+bool8 TryDoDoubleWildBattle(void)
+{
+    if (GetSafariZoneFlag() || GetMonsStateToDoubles() != PLAYER_HAS_TWO_USABLE_MONS)
+        return FALSE;
+    else if (B_FLAG_FORCE_DOUBLE_WILD != 0 && FlagGet(B_FLAG_FORCE_DOUBLE_WILD))
+        return TRUE;
+    #if B_DOUBLE_WILD_CHANCE != 0
+    else if ((Random() % 100) + 1 < B_DOUBLE_WILD_CHANCE)
+        return TRUE;
+    #endif
+    return FALSE;
+}
