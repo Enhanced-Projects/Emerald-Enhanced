@@ -7655,7 +7655,7 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
-
+    
     [ITEM_OVAL_CHARM] =
     {
         .name = _("Oval Charm"),
