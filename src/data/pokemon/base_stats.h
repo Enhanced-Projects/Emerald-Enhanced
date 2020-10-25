@@ -10518,7 +10518,7 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_CRANIDOS] =
     {
-        .baseHP        = 110,
+        .baseHP        = 100,
         .baseAttack    = 125,
         .baseDefense   = 40,
         .baseSpeed     = 58,

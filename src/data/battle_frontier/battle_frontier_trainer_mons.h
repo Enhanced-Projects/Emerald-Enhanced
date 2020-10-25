@@ -3836,7 +3836,7 @@
     FRONTIER_MON_KOMMO_O_3,             \
     FRONTIER_MON_METAGROSS_4,           \
     FRONTIER_MON_KOMMO_O_4,             \
-    FRONTIER_MON_UNOWN,                 \
+    FRONTIER_MON_UNOWN,
 
 #define FRONTIER_MONS_PSYCHIC_2A(lati) \
     FRONTIER_MONS_PSYCHIC_2(lati, COBALION, VIRIZION, TERRAKION) \

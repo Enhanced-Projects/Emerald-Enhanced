@@ -6072,41 +6072,41 @@ const struct PokedexEntry gPokedexEntries[] =
 	//	.trainerOffset = 0,
 	//},
 
-	//[NATIONAL_DEX_LILLIPUP] =
-	//{
-	//	.categoryName = _("Puppy"),
-	//	.height = 4,
-	//	.weight = 41,
-	//	.description = gLillipupPokedexText,
-	//	.pokemonScale = 356,
-	//	.pokemonOffset = 17,
-	//	.trainerScale = 256,
-	//	.trainerOffset = 0,
-	//},
+	[NATIONAL_DEX_LILLIPUP] =
+	{
+		.categoryName = _("Puppy"),
+		.height = 4,
+		.weight = 41,
+		.description = gLillipupPokedexText,
+		.pokemonScale = 356,
+		.pokemonOffset = 17,
+		.trainerScale = 256,
+		.trainerOffset = 0,
+	},
 
-	//[NATIONAL_DEX_HERDIER] =
-	//{
-	//	.categoryName = _("Loyal Dog"),
-	//	.height = 9,
-	//	.weight = 147,
-	//	.description = gHerdierPokedexText,
-	//	.pokemonScale = 356,
-	//	.pokemonOffset = 17,
-	//	.trainerScale = 256,
-	//	.trainerOffset = 0,
-	//},
+	[NATIONAL_DEX_HERDIER] =
+	{
+		.categoryName = _("Loyal Dog"),
+		.height = 9,
+		.weight = 147,
+		.description = gHerdierPokedexText,
+		.pokemonScale = 356,
+		.pokemonOffset = 17,
+		.trainerScale = 256,
+		.trainerOffset = 0,
+	},
 
-	//[NATIONAL_DEX_STOUTLAND] =
-	//{
-	//	.categoryName = _("Big-Hearted"),
-	//	.height = 12,
-	//	.weight = 610,
-	//	.description = gStoutlandPokedexText,
-	//	.pokemonScale = 356,
-	//	.pokemonOffset = 17,
-	//	.trainerScale = 256,
-	//	.trainerOffset = 0,
-	//},
+	[NATIONAL_DEX_STOUTLAND] =
+	{
+		.categoryName = _("Big-Hearted"),
+		.height = 12,
+		.weight = 610,
+		.description = gStoutlandPokedexText,
+		.pokemonScale = 356,
+		.pokemonOffset = 17,
+		.trainerScale = 256,
+		.trainerOffset = 0,
+	},
 
 	[NATIONAL_DEX_PURRLOIN] =
 	{
