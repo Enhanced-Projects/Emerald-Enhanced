@@ -5270,6 +5270,16 @@
       "secondary_tileset": "gTileset_MirageIsland",
       "border_filepath": "data/layouts/MirageCave_House7/border.bin",
       "blockdata_filepath": "data/layouts/MirageCave_House7/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEBUG_MAP",
+      "name": "DebugMap_Layout",
+      "width": 80,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/DebugMap/border.bin",
+      "blockdata_filepath": "data/layouts/DebugMap/map.bin"
     }
   ]
 }
