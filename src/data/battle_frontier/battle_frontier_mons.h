@@ -2043,7 +2043,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_SWELLOW_2] = { // Swellow-BoomburstSpecs
+    [FRONTIER_MON_SWELLOW_2] = { // Swellow-Specs
         .species = SPECIES_SWELLOW,
         .moves = {MOVE_BOOMBURST, MOVE_HEAT_WAVE, MOVE_AIR_SLASH, MOVE_HIDDEN_POWER},
         .heldItem = ITEM_CHOICE_SPECS,
@@ -2052,7 +2052,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 28,
         .ability = 2
     },
-    [FRONTIER_MON_LILLIGANT_2] = { // Lilligant-BulkyQD
+    [FRONTIER_MON_LILLIGANT_2] = { // Lilligant-QD
         .species = SPECIES_LILLIGANT,
         .moves = {MOVE_GIGA_DRAIN, MOVE_HIDDEN_POWER, MOVE_SYNTHESIS, MOVE_QUIVER_DANCE},
         .heldItem = ITEM_LEFTOVERS,
@@ -2135,7 +2135,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_VENOMOTH_2] = { // Venomoth-OffensiveQD
         .species = SPECIES_VENOMOTH,
-        .moves = {MOVE_BUG_BUZZ, MOVE_QUIVER_DANCE, MOVE_SLEEP_POWDER, MOVE_ROOSTy},
+        .moves = {MOVE_BUG_BUZZ, MOVE_QUIVER_DANCE, MOVE_SLEEP_POWDER, MOVE_ROOST},
         .heldItem = ITEM_BLACK_SLUDGE,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
