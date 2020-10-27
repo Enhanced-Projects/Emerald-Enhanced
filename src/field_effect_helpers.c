@@ -265,34 +265,41 @@ void UpdateShadowFieldEffect(struct Sprite *sprite)
     }
 }
 
-u32 FldEff_TallGrass(void)
+static u32 FldEff_Grass(u32 id, u8 priority, u8 animId)
 {
-    s16 x;
-    s16 y;
+    s16 x, y;
     u8 spriteId;
+    struct SpriteTemplate sprTemplate = *gFieldEffectObjectTemplatePointers[id];
     struct Sprite *sprite;
 
     x = gFieldEffectArguments[0];
     y = gFieldEffectArguments[1];
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TALL_GRASS], x, y, 0);
+    if (gFieldEffectArguments[7] & 2) // Use safari grass palette
+        sprTemplate.paletteTag = 0x1019;
+    spriteId = CreateSpriteAtEnd(&sprTemplate, x, y, 0);
     if (spriteId != MAX_SPRITES)
     {
         sprite = &gSprites[spriteId];
         sprite->coordOffsetEnabled = TRUE;
-        sprite->oam.priority = gFieldEffectArguments[3];
+        sprite->oam.priority = priority;
         sprite->data[0] = gFieldEffectArguments[2];
         sprite->data[1] = gFieldEffectArguments[0];
         sprite->data[2] = gFieldEffectArguments[1];
         sprite->data[3] = gFieldEffectArguments[4];
         sprite->data[4] = gFieldEffectArguments[5];
         sprite->data[5] = gFieldEffectArguments[6];
-        if (gFieldEffectArguments[7])
+        if (gFieldEffectArguments[7] & 1) // spawn
         {
-            SeekSpriteAnim(sprite, 4);
+            SeekSpriteAnim(sprite, animId);
         }
     }
     return 0;
+}
+
+u32 FldEff_TallGrass(void)
+{
+    return FldEff_Grass(FLDEFFOBJ_TALL_GRASS, gFieldEffectArguments[3], 4);
 }
 
 void UpdateTallGrassFieldEffect(struct Sprite *sprite)
@@ -373,32 +380,7 @@ u8 FindTallGrassFieldEffectSpriteId(u8 localId, u8 mapNum, u8 mapGroup, s16 x, s
 
 u32 FldEff_LongGrass(void)
 {
-    s16 x;
-    s16 y;
-    u8 spriteId;
-    struct Sprite *sprite;
-
-    x = gFieldEffectArguments[0];
-    y = gFieldEffectArguments[1];
-    SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_LONG_GRASS], x, y, 0);
-    if (spriteId != MAX_SPRITES)
-    {
-        sprite = &gSprites[spriteId];
-        sprite->coordOffsetEnabled = TRUE;
-        sprite->oam.priority = ZCoordToPriority(gFieldEffectArguments[2]);
-        sprite->data[0] = gFieldEffectArguments[2];
-        sprite->data[1] = gFieldEffectArguments[0];
-        sprite->data[2] = gFieldEffectArguments[1];
-        sprite->data[3] = gFieldEffectArguments[4];
-        sprite->data[4] = gFieldEffectArguments[5];
-        sprite->data[5] = gFieldEffectArguments[6];
-        if (gFieldEffectArguments[7])
-        {
-            SeekSpriteAnim(sprite, 6);
-        }
-    }
-    return 0;
+    return FldEff_Grass(FLDEFFOBJ_LONG_GRASS, ZCoordToPriority(gFieldEffectArguments[2]), 6);
 }
 
 void UpdateLongGrassFieldEffect(struct Sprite *sprite)
