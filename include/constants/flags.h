@@ -396,10 +396,10 @@
 #define FLAG_KARTANA_ESCAPED                 0x173
 #define FLAG_GUZZLORD_ESCAPED                0x174
 #define FLAG_STAKATAKA_ESCAPED               0x175
-#define FLAG_REMATCH_JACKI                   0x176 // EE-Unused
-#define FLAG_REMATCH_WALTER                  0x177 // EE-Unused
-#define FLAG_REMATCH_KAREN                   0x178 // EE-Unused
-#define FLAG_REMATCH_JERRY                   0x179 // EE-Unused
+#define FLAG_RYU_AQUA_LINE_DONE              0x176 // finished aqua. Checked for battle music scenarios.
+#define FLAG_RYU_AQUA_1_NOTIFY               0x177 // First aqua notification given
+#define FLAG_RYU_AQUA_2_NOTIFY               0x178 // Second aqua notification given
+#define FLAG_RYU_AQUA_3_NOTIFY               0x179 // Third aqua notification given
 #define FLAG_REMATCH_ANNA_AND_MEG            0x17A // EE-Unused
 #define FLAG_REMATCH_ISABEL                  0x17B // EE-Unused
 #define FLAG_REMATCH_MIGUEL                  0x17C // EE-Unused

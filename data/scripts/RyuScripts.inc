@@ -1746,16 +1746,106 @@ Ryu_SootSackReadout:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You have {COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1}{COLOR LIGHT_GREEN}{SHADOW GREEN} grams of ash.$"
 
 
-@==================================================================================================Magma Related Global Scripts
+@==================================================================================================Magma/Aqua Related Global Scripts
 
 Ryu_CheckMagmaStatusForMissionCall::
 	setvar VAR_TEMP_A, 100
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, Ryu_CheckAquaStatusForMissionCall
 	goto_if_unset FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
 	switch VAR_RYU_MAGMA
 	case 130, Ryu_InitializeMagmaPart4
 	case 210, Ryu_InitializeMagmaPart6
 	case 350, Ryu_InitializeMagmaPart8
 	goto ryu_end
+
+Ryu_CheckAquaStatusForMissionCall::
+	switch VAR_RYU_AQUA
+	case 10, Ryu_initializeAquaStage1
+	case 55, Ryu_InitializeAquaStage2
+	case 80, Ryu_InitializeAquaStage3NR
+	goto ryu_end
+
+Ryu_initializeAquaStage1::
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 3
+	goto_if_lt ryu_end
+	goto_if_set FLAG_RYU_AQUA_1_NOTIFY, ryu_end
+	lockall
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitse
+	msgbox Ryu_AquaStage1NotifyIntro
+	closemessage
+	pokenavcall Ryu_AquaStage1NotifyMessage
+	closemessage
+	msgbox Ryu_AquaStep1OutroMessage
+	closemessage
+	setvar VAR_RYU_AQUA, 25 @received instructions to go to aqua at museum
+	setflag FLAG_RYU_AQUA_1_NOTIFY
+	release
+	end
+
+Ryu_InitializeAquaStage2::
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 5
+	goto_if_lt ryu_end
+	goto_if_set FLAG_RYU_AQUA_2_NOTIFY, ryu_end
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox Ryu_AquaStage1NotifyIntro
+	closemessage
+	pokenavcall Ryu_AquaStage2NotifyMsg
+	closemessage
+	setvar VAR_RYU_AQUA, 60 @player is off to meteor falls
+	setflag FLAG_RYU_AQUA_2_NOTIFY
+	release
+	end
+
+Ryu_InitializeAquaStage3NR::
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 6
+	goto_if_lt ryu_end
+	goto_if_set FLAG_RYU_AQUA_3_NOTIFY, ryu_end
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox Ryu_AquaStage1NotifyIntro
+	closemessage
+	pokenavcall Ryu_AquaStage3NotifyMsg
+	closemessage
+	setvar VAR_RYU_AQUA, 60 @player is off to meteor falls
+	setflag FLAG_RYU_AQUA_3_NOTIFY
+	release
+	end
+
+Ryu_AquaStage3NotifyMsg::
+	.string "This is an urgent message from Admin\n"
+    .string "Matt!\p"
+    .string "Calling all members to mobilize at\n"
+    .string "the peak of Mt. Pyre!\p"
+    .string "I repeat: the peak of Mt. Pyre!$"
+
+Ryu_AquaStage2NotifyMsg:
+	.string "Admin Shelly speaking.\p"
+    .string "I'm sending you to Meteor Falls to\n"
+    .string "provide some assistance to those\l"
+    .string "already in the area.\p"
+    .string "Don't be a hero!$"
+
+Ryu_AquaStage1NotifyIntro:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(A notification shows up on your\n"
+    .string " Pokénav.)$"
+	
+Ryu_AquaStage1NotifyMessage:
+	.string "{COLOR LIGHT_GREY}{SHADOW DARK_GREY}This is Admin Shelly speaking.\p"
+    .string "You're to rendezvous with the rest of\n"
+    .string "the crew at Slateport Museum.\p"
+    .string "Your objective is to detain and\n"
+    .string "interrogate Captain Stern.$"
+	
+Ryu_AquaStep1OutroMessage:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Time to get to work.$"
 
 Ryu_InitializeMagmaPart4::
 	specialvar VAR_RESULT, CountBadges

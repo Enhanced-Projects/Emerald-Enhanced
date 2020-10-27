@@ -53,7 +53,8 @@ FT_DM3Done::
 	faceplayer
 	msgbox FT_MeteorReward1 MSGBOX_DEFAULT
 	removeitem ITEM_METEORITE, 1
-	givemoney 40000
+	setvar VAR_TEMP_6, 40000
+	addmoney VAR_TEMP_6
 	setflag FLAG_RYU_DEVON_MISSION4COMPLETE
 	goto FT_Mission4
 	
@@ -249,7 +250,8 @@ FT_Mission4Intro:
 FT_AlreadyHaveMeteorite::
 	msgbox FT_AlreadyhaveMsg MSGBOX_DEFAULT
 	removeitem ITEM_METEORITE, 1
-	givemoney 60000
+	setvar VAR_TEMP_6, 60000
+	addmoney VAR_TEMP_6
 	msgbox FT_MeteorReward1 MSGBOX_DEFAULT
 	goto FT_Mission4
 

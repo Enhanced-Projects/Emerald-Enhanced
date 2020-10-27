@@ -479,7 +479,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Zander},
     },
 
-    [TRAINER_SHELLY_WEATHER_INSTITUTE] =
+    [TRAINER_SHELLY_1] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,

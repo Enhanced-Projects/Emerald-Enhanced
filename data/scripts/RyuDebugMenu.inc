@@ -64,15 +64,12 @@ OpeningPokeEdit:
 	.string "Opening Poke Edit...$"
 
 RyuDebug_money::
-	setvar VAR_TEMP_A, 32000
-    givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
+	setvar VAR_TEMP_A, 50000
+    addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
 	msgbox RyuDebug_money_text MSGBOX_DEFAULT
 	return
 
@@ -189,9 +186,7 @@ RyuDebug_Utility1::
 	@setvar VAR_RYU_AQUA, 5
 	@warpsilent MAP_DEBUG_MAP, 255, 59, 13
 	@waitstate
-	setflag FLAG_RYU_PLAYER_HELPING_MAGMA
-	setvar VAR_RYU_MAGMA, 69
-	clearflag FLAG_RYU_PLAYER_HELPING_AQUA
+	clearflag FLAG_HIDE_AQUAHQ_SHELLY
 	release
 	end
 

@@ -1,5 +1,10 @@
 SlateportCity_OceanicMuseum_1F_MapScripts:: @ 820AD95
+	map_script ON_FRAME, OM_FirstFloorOnFrameScript
 	.byte 0
+
+OM_FirstFloorOnFrameScript::
+	map_script_2 VAR_RYU_AQUA, 25, OM_FirstFloorDevonEmployee
+	.2byte 0
 
 SlateportCity_OceanicMuseum_1F_EventScript_EntranceAttendant:: @ 820AD96
 	msgbox SlateportCity_OceanicMuseum_1F_Text_PleaseEnjoyYourself, MSGBOX_NPC
@@ -64,30 +69,6 @@ SlateportCity_OceanicMuseum_1F_EventScript_AllowEntranceAnyway:: @ 820AE39
 SlateportCity_OceanicMuseum_1F_Movement_PushPlayerBackFromCounter: @ 820AE4B
 	walk_down
 	step_end
-
-SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt1:: @ 820AE4D
-	msgbox SlateportCity_OceanicMuseum_1F_Text_AquaExistForGoodOfAll, MSGBOX_NPC
-	end
-
-SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt2:: @ 820AE56
-	msgbox SlateportCity_OceanicMuseum_1F_Text_OurBossIsntHere, MSGBOX_NPC
-	end
-
-SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt3:: @ 820AE5F
-	msgbox SlateportCity_OceanicMuseum_1F_Text_WouldStuffHereMakeMeRich, MSGBOX_NPC
-	end
-
-SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt4:: @ 820AE68
-	msgbox SlateportCity_OceanicMuseum_1F_Text_CanLearnForNefariousDeeds, MSGBOX_SIGN
-	end
-
-SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt5:: @ 820AE71
-	msgbox SlateportCity_OceanicMuseum_1F_Text_RustboroBungled, MSGBOX_NPC
-	end
-
-SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt6:: @ 820AE7A
-	msgbox SlateportCity_OceanicMuseum_1F_Text_DidntHaveMoney, MSGBOX_NPC
-	end
 
 SlateportCity_OceanicMuseum_1F_EventScript_WhirlpoolExperiment:: @ 820AE83
 	msgbox SlateportCity_OceanicMuseum_1F_Text_WhirlpoolExperiment, MSGBOX_SIGN
@@ -247,31 +228,6 @@ SlateportCity_OceanicMuseum_1F_Text_CatchUpWithYourGroup: @ 820B075
 	.string "You're the only one who's late.\n"
 	.string "You'd better go catch up to them!$"
 
-SlateportCity_OceanicMuseum_1F_Text_AquaExistForGoodOfAll: @ 820B0E8
-	.string "We, Team Aqua, exist for the good\n"
-	.string "of all!$"
-
-SlateportCity_OceanicMuseum_1F_Text_OurBossIsntHere: @ 820B112
-	.string "We were told to assemble here,\n"
-	.string "so we did, but…\p"
-	.string "Our Boss, the linchpin, isn't here.$"
-
-SlateportCity_OceanicMuseum_1F_Text_WouldStuffHereMakeMeRich: @ 820B165
-	.string "If I ripped off the stuff here,\n"
-	.string "would it make me rich?$"
-
-SlateportCity_OceanicMuseum_1F_Text_CanLearnForNefariousDeeds: @ 820B19C
-	.string "What I learn here, I can put to use on\n"
-	.string "nefarious deeds…$"
-
-SlateportCity_OceanicMuseum_1F_Text_RustboroBungled: @ 820B1D4
-	.string "If our goons didn't bungle things\n"
-	.string "in Rustboro, we wouldn't be here!$"
-
-SlateportCity_OceanicMuseum_1F_Text_DidntHaveMoney: @ 820B218
-	.string "I didn't have ¥50, so it took a long\n"
-	.string "time getting by the receptionist.$"
-
 SlateportCity_OceanicMuseum_1F_Text_LearnAboutSeaForBattling: @ 820B25F
 	.string "I want to learn about the sea and\n"
 	.string "use that knowledge for battling.$"
@@ -383,3 +339,44 @@ SlateportCity_OceanicMuseum_1F_Text_DepthMeasuringMachine: @ 820BA9C
 	.string "Maybe it's for measuring the depth\n"
 	.string "of something…$"
 
+
+@==================================================================================================Aqua Event 1
+OM_FirstFloorDevonEmployee::
+	setvar VAR_RYU_AQUA, 28 @player entered floor one and is on aqua quest, load devon guard.
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	addobject 9
+	end
+
+OM_FirstFloorDevonGuard::
+	lockall
+	msgbox OM_DevonGuardBattleIntro
+	trainerbattle_single TRAINER_DEVON_2, OM_DevonBattleIntroMsg, OM_DevonBattleDefeatMsg, OM_PostBatleScriptDevonGuard
+	waitstate
+
+OM_PostBatleScriptDevonGuard::
+	msgbox OM_DevonGuyDefeated
+	closemessage
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	applymovement 9, OM_FirstFloorDevonMove
+	waitmovement 9
+	setvar VAR_RYU_AQUA, 30 @Player defeated the devon guard in museum 1f and should go upstairs.
+	releaseall
+	end
+
+OM_DevonGuardBattleIntro:
+	.string "Another one attempting to pass, huh?$"
+
+OM_DevonBattleIntroMsg:
+	.string "You will not disturb this important\p"
+    .string "meeting!$"
+
+OM_DevonBattleDefeatMsg:
+	.string "How unfortunate.\nWe won't let you get away with this!$"
+
+OM_DevonGuyDefeated:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (He appears to be leaving.\n You wonder what's upstairs.)$"
+
+OM_FirstFloorDevonMove:
+	walk_left
+	face_down
+	step_end

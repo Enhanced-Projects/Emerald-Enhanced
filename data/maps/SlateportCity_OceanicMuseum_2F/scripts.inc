@@ -1,5 +1,10 @@
 SlateportCity_OceanicMuseum_2F_MapScripts:: @ 820BAFF
+	map_script ON_FRAME, OM_OnFrameScript
 	.byte 0
+
+OM_OnFrameScript::
+	map_script_2 VAR_RYU_AQUA, 30, OM_AquaEvent2
+	.2byte 0
 
 SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample1:: @ 820BD0A
 	msgbox SlateportCity_OceanicMuseum_2F_Text_WaterQualitySample1, MSGBOX_SIGN
@@ -131,4 +136,154 @@ SlateportCity_OceanicMuseum_2F_Text_SSAnneReplica: @ 820C93A
 	.string "“S.S. Anne\p"
 	.string "“A replica of the luxury liner that\n"
 	.string "circles the globe.”$"
+
+
+
+@==================================================================================================Aqua Events
+
+OM_AquaEvent2::
+	setvar VAR_RYU_AQUA, 35 @player entered museum 2f
+	addobject 4
+	addobject 5
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, OM_CameraToStern
+	waitmovement OBJ_EVENT_ID_CAMERA
+	msgbox OM_ISeeThats
+	closemessage
+	playse SE_PIN
+	applymovement 5, Common_Movement_ExclamationMark
+	waitmovement 5
+	msgbox OM_WhosThere
+	closemessage
+	applymovement 5, Common_Movement_FaceLeft
+	waitmovement 5
+	applymovement OBJ_EVENT_ID_CAMERA, OM_CameraToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, OM_PlayerToSteven
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox OM_ATrainer
+	closemessage
+	msgbox OM_StevenNotices
+	closemessage
+	msgbox OM_NoYoure
+	closemessage
+	applymovement 5, Common_Movement_FaceRight
+	waitmovement 5
+	msgbox OM_WellContinue
+	closemessage
+	applymovement 4, OM_SternExit
+	waitmovement 4
+	removeobject 4
+	applymovement 5, Common_Movement_StepLeft
+	waitmovement 5
+	setvar VAR_RYU_AQUA, 40@Player is about to lose to steven
+	setflag FLAG_TEMP_E@Required for calcDmg to make steven actually deadly.
+	trainerbattle_single TRAINER_STEVEN, OM_IllMakeYouRegret, OM_YouBroughtThis, OM_PlayerLostTheFight
+
+OM_PlayerLostTheFight::
+	fadescreen FADE_TO_BLACK
+	playbgm MUS_DUMMY
+	msgbox OM_PlayerWhitedOut
+	closemessage
+	setvar VAR_RYU_AQUA, 45 @player lost to steven, teleporting to aqua office
+	clearflag FLAG_TEMP_E
+	warpsilent MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE, 255, 27, 2
+	waitstate
+
+
+OM_ISeeThats:
+	.string "I see...that's quite a setback.\n"
+    .string "On behalf of President Stone, as well\p"
+    .string "as Devon Corp., rest assured that we\n"
+    .string "will be able to-$"
+
+OM_WhosThere:
+	.string "Who's there?$"
+	
+OM_ATrainer:
+	.string "A Trainer?$"
+	
+OM_StevenNotices:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Steven notices the Aqua Pendant.)$"
+	
+OM_NoYoure:
+	.string "No...you're with Team Aqua, aren't\n"
+    .string "you?\p"
+    .string "The lot of you are becoming quite\n"
+    .string "bold as of late.$"
+
+OM_WellContinue:
+	.string "We'll continue our talks later.\n"
+    .string "For now, it'd be best if you're not\p"
+    .string "here.\n"
+    .string "Let my employee downstairs accompany\p"
+    .string "you.$"
+
+OM_IllMakeYouRegret:
+	.string "I'll make you regret choosing to walk\n"
+    .string "this path.$"
+
+OM_YouBroughtThis:
+	.string "You brought this upon yourself.$"
+	
+OM_PlayerWhitedOut:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} {PLAYER}'s vision fades...$"
+	
+OM_CameraToStern:
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_down
+	step_end
+	
+OM_CameraToPlayer:
+	walk_up
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	walk_diag_northwest
+	step_end
+	
+OM_PlayerToSteven:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+	
+OM_SternExit:
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+
+
+
+
+
+
+
+
+
+
+
 

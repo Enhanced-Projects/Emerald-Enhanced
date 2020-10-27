@@ -182,8 +182,8 @@
       "x": 12,
       "y": 24,
       "elevation": 0,
-      "var": "VAR_METEOR_FALLS_STATE",
-      "var_value": "2",
+      "var": "VAR_TEMP_B",
+      "var_value": "0",
       "script": "MF_Event1start"
     },
     {
@@ -191,8 +191,8 @@
       "x": 14,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_METEOR_FALLS_STATE",
-      "var_value": "2",
+      "var": "VAR_TEMP_B",
+      "var_value": "0",
       "script": "MF_Event2start"
     },
     {
@@ -200,7 +200,7 @@
       "x": 13,
       "y": 37,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_TEMP_A",
       "var_value": "0",
       "script": "MF_SetStage"
     },
@@ -218,7 +218,7 @@
       "x": 26,
       "y": 17,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_TEMP_A",
       "var_value": "0",
       "script": "MF_SetStage"
     },

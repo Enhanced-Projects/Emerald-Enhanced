@@ -6317,9 +6317,9 @@ u16 GetBattleBGM(void)
         return MUS_BATTLE20;
     else if (FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == 1)
         return sBattleThemes[(Random() % 9)];
-    else if (FlagGet(FLAG_RYU_PLAYER_MAGMA_MEMBER) == 1)
+    else if ((FlagGet(FLAG_RYU_PLAYER_MAGMA_MEMBER) == 1) || (FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA) == 1))
     {
-        if (FlagGet(FLAG_RYU_MAGMA_LINE_DONE) == 1)
+        if ((FlagGet(FLAG_RYU_MAGMA_LINE_DONE) == 1) || (FlagGet(FLAG_RYU_AQUA_LINE_DONE) == 1))
             return MUS_BATTLE30;
         else
             return MUS_BATTLE31;
