@@ -826,7 +826,7 @@ void DrawDevonLogo(void)
     }
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 4, 8, 3, 2, 15, 76);
+    SetWindowTemplateFields(&template, 0, 4, 12, 3, 2, 15, 76);
     sPrintNumberWindow2Id = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindow2Id, 0);
     PutWindowTilemap(sPrintNumberWindow2Id);
@@ -834,17 +834,23 @@ void DrawDevonLogo(void)
 
     //Show quest stage
     StringCopy(gRyuStringVar1, gText_HighlightTransparent);
-    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_MAGMA)), 0, 3);
+    if (FlagGet(FLAG_RYU_DEVON_CORPORATE) == 1)
+        {
+            ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_DEVON_MAIN_QUEST_VAR)), 0, 3);
+        }
+    else
+        {
+            ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_DEVON_SCIENTIST_STAGE)), 0, 3);
+        }
     StringAppend(gRyuStringVar1, gStringVar2);
     AddTextPrinterParameterized(sPrintNumberWindow2Id, 1, gRyuStringVar1, 0, 0, 0, NULL);
 }
 
-static const u8 sText_RyuAquaNotApplicable[] = _("N/A");
 void DrawAquaLogo(void)
 {
     struct WindowTemplate template;
 
-    if (FlagGet(FLAG_RYU_PLAYER_ARCHIE_ACQ) == 1)
+    if (FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA) == 1)
     {
         LoadSpriteSheet(&AquaShellyLogoSheet);
         LoadSpritePalette(&AquaLogoPalette);
@@ -866,7 +872,8 @@ void DrawAquaLogo(void)
 
     //Show quest stage
     StringCopy(gRyuStringVar1, gText_HighlightTransparent);
-    StringAppend(gRyuStringVar1, sText_RyuAquaNotApplicable);
+    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_AQUA)), 0, 3);
+    StringAppend(gRyuStringVar1, gStringVar2);
     AddTextPrinterParameterized(sPrintNumberWindow2Id, 1, gRyuStringVar1, 0, 0, 0, NULL);
 }
 

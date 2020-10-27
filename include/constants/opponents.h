@@ -33,7 +33,7 @@
 #define TRAINER_FREDRICK                     29
 #define TRAINER_MATT                         30
 #define TRAINER_ZANDER                       31
-#define TRAINER_SHELLY_WEATHER_INSTITUTE     32
+#define TRAINER_SHELLY_1                     32
 #define TRAINER_SHELLY_2                     33
 #define TRAINER_ARCHIE                       34
 #define TRAINER_LEAH                         35

@@ -106,14 +106,37 @@ RT_PostBattle::
 	delay 60
 	msgbox RT_Listen
 	closemessage
-	multichoice 0, 110, MULTI_MAGMA_CHOICE, 1
+	multichoice 0, 102, MULTI_MAGMA_CHOICE, 1
 	switch VAR_RESULT
 	case 0, RT_ADIntro
 	case 1, RT_MagmaIntro
+	case 2, RT_AquaIntro
 	release
 	end
-	
-	
+
+RT_AquaIntro::
+	setflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	applymovement OBJ_EVENT_ID_PLAYER, RT_PlayerEscapeMagma
+	msgbox RT_WaitWhereYou
+	closemessage
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setvar VAR_RYU_AQUA, 5 @player started aqua
+	setflag FLAG_RYU_PLAYER_HELPING_AQUA
+	warp MAP_ROUTE116, 255, 47, 9
+	waitstate
+
+RT_PlayerEscapeMagma:
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	step_end
+
+RT_WaitWhereYou:
+	.string "Wait! Where are you going?\pGet back here!$"
+
 RT_ADIntro:
 	msgbox RT_IsEverything
 	playse SE_PIN

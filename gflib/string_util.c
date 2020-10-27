@@ -688,6 +688,18 @@ char * ConvertToAscii(const u8 *str)
         {
             modifiedCode = ' '; // space
         }
+        else if (*str == CHAR_COMMA)
+        {
+            modifiedCode = ',';
+        }
+        else if (*str == CHAR_COLON)
+        {
+            modifiedCode = ':';
+        }
+        else if (*str == CHAR_PERIOD)
+        {
+            modifiedCode = '.';
+        }
         textBuffer[i] = modifiedCode;
         i++;
     }

@@ -2,10 +2,18 @@ MeteorFalls_1F_1R_MapScripts:: @ 822BD2A
 	.byte 0
 	
 MF_SetStage::
+	setvar VAR_TEMP_A, 20
 	goto_if_set FLAG_MET_ARCHIE_METEOR_FALLS, ryu_end
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, MF_SS_Devon
 	goto_if_set FLAG_RYU_DEVON_M1C, ryu_end
+	compare VAR_RYU_AQUA, 60 @Player should be doing meteor falls now
+	goto_if_eq MF_SetAquaStage
 	release
+	end
+
+MF_SetAquaStage::
+	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	clearflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	end
 	
 MF_SS_Devon::
@@ -20,10 +28,18 @@ MF_SS_Devon::
 	end
 	
 MF_Event1start::
+	setvar VAR_TEMP_A, 20
+	setvar VAR_TEMP_B, 20
 	setvar VAR_TEMP_8, 1
+	compare VAR_RYU_AQUA, 60
+	goto_if_eq MF_StartAqua
 	goto MF_MainEvent
 	
 MF_Event2start::
+	setvar VAR_TEMP_A, 10
+	setvar VAR_TEMP_B, 10
+	compare VAR_RYU_AQUA, 60
+	goto_if_eq MF_StartAqua
 	setvar VAR_TEMP_8, 2
 	goto MF_MainEvent
 	
@@ -623,3 +639,402 @@ MF_DM1_Cozmo:
     .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Cozmo: Well anyways, meet me at my\n"
     .string "house in Fallarbor. I'll have a\l"
     .string "reward for you there.$"
+
+@==================================================================================================Aqua
+
+MF_StartAqua::
+	setvar VAR_RYU_AQUA, 65 @start Meteor Falls Event
+	playbgm MUS_MGM0, 0
+	getplayerxy VAR_TEMP_3, VAR_TEMP_4
+	compare VAR_TEMP_4, 18
+	goto_if_gt MF_AquaSouth
+	goto MF_AquaNorth
+
+MF_AquaSouth::
+    applymovement 5, MF_Magma2Down
+	applymovement 6, MF_Magma1Down
+	msgbox MF_ThanksForMeteor
+	closemessage
+	addobject 7
+	addobject 8
+	applymovement 8, MF_AquaToCozmo
+	applymovement 7, MF_AquaToCozmo
+	waitmovement 7
+	msgbox MF_NotSoFast
+	closemessage
+	playse SE_PIN
+	applymovement 5, Common_Movement_ExclamationMark
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 6
+	msgbox MF_ResortingTo
+	closemessage
+	applymovement 5, Common_Movement_FaceRight
+	waitmovement 5
+	msgbox MF_TheLeaderOf
+	closemessage
+	applymovement 5, Common_Movement_FaceDown
+	waitmovement 5
+	msgbox MF_AndWithThis
+	closemessage
+	applymovement 6, Common_Movement_FaceLeft
+	waitmovement 6
+	msgbox MF_TimeToMake
+	closemessage
+	applymovement 5, MF_MagmaEscape
+	applymovement 6, MF_MagmaEscape2
+	waitmovement 6
+	removeobject 5
+	removeobject 6
+	goto MF_AquaSouthContd
+
+MF_AquaSouthContd::
+	applymovement 7, MF_ArchieToPlayer
+	waitmovement 7
+	msgbox MF_WhoMightYouBe
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MF_HahaIJest
+	closemessage
+	applymovement 8, MF_MattToPlayer
+	waitmovement 8
+	msgbox MF_BossWeReally
+	closemessage
+	applymovement 7, Common_Movement_FaceLeft
+	waitmovement 7
+	msgbox MF_YoureRight
+	closemessage
+	applymovement 7, Common_Movement_FaceDown
+	msgbox MF_HowAboutIt, MSGBOX_YESNO
+	closemessage
+	compare VAR_RESULT, NO
+	goto_if_eq MF_PlayerChoseNoRomance
+	msgbox MF_OkayLetsGo
+	closemessage
+	applymovement 7, MF_ArchieLeavesNorthAqua
+	applymovement 8, MF_MattLeavesNorth
+	waitmovement 8
+	removeobject 7
+	removeobject 8
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	setvar VAR_RYU_AQUA, 70 @Player is doing the romance line for aqua. Go to Mt Chihmney.
+	release
+	end
+	
+MF_AquaNorth: @This is basically a copy of the event above, but it was a logistical nightmare to make everything dynamic, so... :shrug:
+	special SpawnCameraObject
+	playbgm MUS_AQA_0
+	delay 20
+	applymovement OBJ_EVENT_ID_CAMERA, MH_cameraPanDown
+	waitmovement OBJ_EVENT_ID_CAMERA
+	delay 30
+	special RemoveCameraObject
+    applymovement 5, MF_Magma2Down
+	applymovement 6, MF_Magma1Down
+	msgbox MF_ThanksForMeteor
+	closemessage
+	addobject 7
+	addobject 8
+	applymovement 8, MF_AquaToCozmo
+	applymovement 7, MF_AquaToCozmo
+	waitmovement 7
+	msgbox MF_NotSoFast
+	closemessage
+	playse SE_PIN
+	applymovement 5, Common_Movement_ExclamationMark
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 6
+	msgbox MF_ResortingTo
+	closemessage
+	applymovement 5, Common_Movement_FaceRight
+	waitmovement 5
+	msgbox MF_TheLeaderOf
+	closemessage
+	goto AquaNorthContd
+
+AquaNorthContd::
+	applymovement 5, Common_Movement_FaceDown
+	waitmovement 5
+	msgbox MF_AndWithThis
+	closemessage
+	applymovement 6, Common_Movement_FaceLeft
+	waitmovement 6
+	msgbox MF_TimeToMake
+	closemessage
+	applymovement 5, MF_MagmaEscapeNorth
+	applymovement 6, MF_MagmaEscape2North
+	waitmovement 6
+	applymovement 7, MF_ArchieToPlayerNorth
+	waitmovement 7
+	msgbox MF_WhoMightYouBe
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MF_HahaIJest
+	closemessage
+	applymovement 8, MF_MattToPlayerNorth
+	waitmovement 8
+	msgbox MF_BossWeReally
+	closemessage
+	applymovement 7, Common_Movement_FaceLeft
+	waitmovement 7
+	msgbox MF_YoureRight
+	closemessage
+	applymovement 7, Common_Movement_FaceUp
+	waitmovement 7
+	msgbox MF_HowAboutIt, MSGBOX_YESNO
+	closemessage
+	compare VAR_RESULT, NO
+	goto_if_eq MF_PlayerChoseNoRomanceNorth
+	msgbox MF_OkayLetsGo
+	closemessage
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, MF_AquaReturnCameraToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 7, MF_ArchieLeavesSouthAqua
+	applymovement 8, MF_MattLeavesSouth
+	waitmovement 8
+	removeobject 7
+	removeobject 8
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	setvar VAR_RYU_AQUA, 70 @Player is doing the romance line for aqua. Go to Mt Chihmney.
+	release
+	end
+	
+MF_PlayerChoseNoRomance::
+	setvar VAR_RYU_AQUA, 72 @Player chose the non-romance aqua line, report back to shelly.
+	applymovement 7, MF_ArchieLeavesNorthAqua
+	applymovement 8, MF_MattLeavesNorth
+	waitmovement 8
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	msgbox  MF_OkayReturnToShelly
+	release
+	end
+	
+MF_PlayerChoseNoRomanceNorth::
+	setvar VAR_RYU_AQUA, 72 @Player chose the non-romance aqua line, report back to shelly.
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, MF_AquaReturnCameraToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 7, MF_ArchieLeavesSouthAqua
+	applymovement 8, MF_MattLeavesSouth
+	waitmovement 8
+	removeobject 7
+	removeobject 8
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	msgbox  MF_OkayReturnToShelly
+	release
+	end
+	
+	
+MF_ThanksForMeteor:
+	.string "Thanks for the meteor, Professor.\n"
+	.string "We'll have to silence you now...can't\l"
+	.string "have anyone knowing our plans.$"
+
+MF_NotSoFast:
+	.string "Not so fast, Magma scum!$"
+	
+MF_ResortingTo:
+	.string "Resorting to picking on gullible old\n"
+	.string "men now?$"
+
+MF_TheLeaderOf:
+	.string "The leader of Team Aqua, here!?$"
+	
+MF_AndWithThis:
+	.string "And with this stranger blocking our\n"
+	.string "way, there's no other choice.$"
+
+MF_TimeToMake:
+	.string "Time to make a strategic retreat...$"
+	
+MF_WhoMightYouBe:
+	.string "And who might you be?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ...\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Ah, so you're the new member of our\n"
+    .string "crew!\p"
+    .string "Nice timing, mate!\n"
+    .string "We ousted Team Magma much easier\p"
+    .string "with your help.\p"
+    .string "I've heard interesting things about\n"
+    .string "you from Shelly...that you're a bit\p"
+    .string "of a daredevil.$"
+
+MF_HahaIJest:
+	.string "Haha I jest!\p"
+    .string "Anyways, she's seen much promise in\n"
+    .string "you, so I'm glad you're with us.$"
+
+MF_BossWeReally:
+	.string "Boss, we really need to chase after\n"
+    .string "them.\p"
+    .string "Who knows what they might be doing\n"
+    .string "at Mt. Chimney...$"
+
+MF_YoureRight:
+	.string "You're right, Matt.\n"
+    .string "Let's go.$"
+
+MF_HowAboutIt:
+	.string "How about it, {PLAYER}?\n"
+    .string "Would you like to join us?$"
+
+MF_OkayLetsGo:
+	.string "Okay, We'll meet you there!\nHurry along!$"
+	
+MF_OkayReturnToShelly:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}All right, then.\pTime to return to Shelly.\nShe probably has more work.$"
+	
+MF_AquaReturnCameraToPlayer:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_diag_northeast
+	walk_diag_northeast
+	step_end
+	
+MF_MagmaEscapeNorth:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+MF_MagmaEscape2North:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+MF_ArchieToPlayerNorth:
+	walk_right
+	walk_right
+	walk_right
+	face_up
+	step_end
+	
+MF_MattToPlayerNorth:
+	walk_right
+	walk_right
+	face_up
+	step_end
+
+MF_AquaToCozmo:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_right
+	step_end
+
+MF_ArchieToPlayer:
+	walk_right
+	walk_down
+	walk_down
+	step_end
+	
+MF_MattToPlayer:
+	walk_down
+	face_right
+	step_end
+
+MF_ArchieLeavesNorthAqua:
+	walk_up
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	step_end
+
+MF_MattLeavesNorth:
+	delay_16
+	walk_right
+	walk_up
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	step_end
+	
+MF_ArchieLeavesSouthAqua:
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+	
+MF_MattLeavesSouth:
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+
+
+
+
+
+
+
+
+
+

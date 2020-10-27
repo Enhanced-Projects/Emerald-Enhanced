@@ -64,15 +64,12 @@ OpeningPokeEdit:
 	.string "Opening Poke Edit...$"
 
 RyuDebug_money::
-	setvar VAR_TEMP_A, 32000
-    givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
-	givemoney VAR_TEMP_A
+	setvar VAR_TEMP_A, 50000
+    addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
 	msgbox RyuDebug_money_text MSGBOX_DEFAULT
 	return
 
@@ -185,20 +182,25 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGBRENDAN
-	waitbuttonpress
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
-	delay 30
-	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGBRENDANNIGHT
-	waitbuttonpress
-	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
-	waitstate
+	@fadescreen FADE_TO_BLACK
+	@setvar VAR_RYU_AQUA, 5
+	@warpsilent MAP_DEBUG_MAP, 255, 59, 13
+	@waitstate
+	clearflag FLAG_HIDE_AQUAHQ_SHELLY
 	release
 	end
+
+RDB_Text:
+	.string "test$"
+
+RDB_DesyncCamera:
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	step_end
 
 DexNavInfo:
 	.string "Current Max Boss Range is: {STR_VAR_1}$"

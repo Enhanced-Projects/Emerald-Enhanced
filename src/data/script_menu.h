@@ -1211,7 +1211,8 @@ static const struct MenuAction MultichoiceList_FrontierStarter3[]=
 static const struct MenuAction MultichoiceList_MagmaIntroChoice[]=
 {
     {gText_RyuMagmaMultichoice1},
-    {gText_RyuMagmaMultichoice2}
+    {gText_RyuMagmaMultichoice2},
+    {gText_RyuMagmaMultichoice3}
 };
 
 static const struct MenuAction MultiChoiceList_MagmaMachineMenu[]=
