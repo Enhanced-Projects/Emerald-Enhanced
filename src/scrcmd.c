@@ -964,10 +964,7 @@ bool8 ScrCmd_waitfanfare(struct ScriptContext *ctx)
 bool8 ScrCmd_playbgm(struct ScriptContext *ctx)
 {
     u16 songId = ScriptReadHalfword(ctx);
-    bool8 val = ScriptReadByte(ctx);
-
-    if (val == TRUE)
-        Overworld_SetSavedMusic(songId);
+    
     PlayNewMapMusic(songId);
     return FALSE;
 }
@@ -1749,7 +1746,7 @@ bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
 
 bool8 ScrCmd_addmoney(struct ScriptContext *ctx)
 {
-    u32 amount = (VarGet(ScriptReadWord(ctx)));
+    u32 amount = (VarGet(ScriptReadHalfword(ctx)));
     AddMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }
