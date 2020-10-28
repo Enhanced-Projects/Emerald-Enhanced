@@ -181,44 +181,11 @@ RyuDebug_ViewTempVars::
 RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
-RyuDebug_Utility1::  
-    switch VAR_TEMP_5
-    case 0, RDB_AquaToDevon
-    case 1, RDB_DevonToNone
-    case 2, RDB_NoneToMagma
-    case 3, RDB_MagmaToAqua
-    goto ryu_end
-
-RDB_AquaToDevon:
-  setflag FLAG_RYU_PLAYER_HELPING_DEVON
-  clearflag FLAG_RYU_PLAYER_HELPING_AQUA
-  setvar FLAG_RYU_PLAYER_HELPING_DEVON, 169
-  addvar VAR_TEMP_5, 1
-  release
-  end
-
-RDB_DevonToNone:
-  clearflag FLAG_RYU_PLAYER_HELPING_DEVON
-  setvar FLAG_RYU_PLAYER_HELPING_DEVON, 0
-  addvar VAR_TEMP_5, 1
-  release
-  end
-
-RDB_NoneToMagma:
-  setflag FLAG_RYU_PLAYER_HELPING_MAGMA
-  clearflag FLAG_RYU_PLAYER_HELPING_DEVON
-  setvar VAR_RYU_MAGMA, 169
-  addvar VAR_TEMP_5, 1
-  release
-  end
-
-RDB_MagmaToAqua:
-  setflag FLAG_RYU_PLAYER_HELPING_AQUA
-  clearflag FLAG_RYU_PLAYER_HELPING_MAGMA
-  setvar VAR_RYU_AQUA, 160
-  setvar VAR_TEMP_5, 0
-  release
-  end
+RyuDebug_Utility1::
+	setflag FLAG_SYS_DEXNAV_GET
+	setflag FLAG_SYS_DETECTOR_MODE
+	release
+	end
 
 RDB_Text:
 	.string "test$"
