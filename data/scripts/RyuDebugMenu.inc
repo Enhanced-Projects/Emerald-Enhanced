@@ -182,11 +182,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	@fadescreen FADE_TO_BLACK
-	@setvar VAR_RYU_AQUA, 5
-	@warpsilent MAP_DEBUG_MAP, 255, 59, 13
-	@waitstate
-	clearflag FLAG_HIDE_AQUAHQ_SHELLY
+	setflag FLAG_SYS_DEXNAV_GET
+	setflag FLAG_SYS_DETECTOR_MODE
 	release
 	end
 
