@@ -61,7 +61,6 @@ LRT_BrendanIntroductionScene::
 	@clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	msgbox GI_BrendanMetMsg
-	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_NATIONAL_DEX
 	setflag FLAG_RYU_LT_RIVAL
 	setflag FLAG_RYU_LT_RIVAL2

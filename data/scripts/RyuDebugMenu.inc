@@ -193,15 +193,6 @@ RyuDebug_Utility1::
 RDB_Text:
 	.string "test$"
 
-RDB_DesyncCamera:
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	step_end
-
 DexNavInfo:
 	.string "Current Max Boss Range is: {STR_VAR_1}$"
 

@@ -1,4 +1,5 @@
 MagmaHideout_4F_MapScripts:: @ 823A55F
+	map_script ON_WARP, SFC_OnWarp
 	map_script ON_FRAME, MH_CheckSetMaxiePosition
 	.byte 0
 
@@ -316,6 +317,7 @@ MH_GroudonMsg:
 @==================================================================================================Magma side scripts
 
 MH_CheckSetMaxiePosition:
+	map_script_2 VAR_RYU_AQUA, 122, MH4_DoGroudonAquaScene
 	map_script_2 VAR_RYU_MAGMA, 301, SetMaxiePosition2
 	map_script_2 VAR_TEMP_6, 0, CheckOpenAdminQuarters
 	.2byte 0
@@ -1423,3 +1425,39 @@ MH4_HideDeadMagmaMembers::
 	setobjectxy 22, 37, 0
 	setobjectxy 20, 37, 0
 	end
+
+@==================================================================================================Aqua
+
+MH4_DoGroudonAquaScene::
+	fadenewbgm 480
+	setvar VAR_RYU_AQUA, 124 @player is watching scene in magma hideout
+	addobject 25
+	delay 60
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, MH4_MoveCameraDownForGroudon
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	playmoncry SPECIES_GROUDON, 0
+	waitmoncry
+	applymovement 25, Common_Movement_StepDown
+	waitmovement 25
+	delay 20
+	applymovement 25, MH4_MoveGroudonUpFast
+	waitmovement 25
+	removeobject 25
+	clearflag FLAG_RYU_HIDE_CHIMNEY_GROUDON
+	warpsilent MAP_MT_CHIMNEY, 255, 20, 4
+	waitstate
+
+MH4_MoveCameraDownForGroudon:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+MH4_MoveGroudonUpFast:
+	slide_up
+	slide_up
+	slide_up
+	step_end

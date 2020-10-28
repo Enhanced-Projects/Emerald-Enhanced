@@ -707,7 +707,6 @@ MF_AquaSouthContd::
 	closemessage
 	applymovement 7, Common_Movement_FaceDown
 	msgbox MF_HowAboutIt, MSGBOX_YESNO
-	closemessage
 	compare VAR_RESULT, NO
 	goto_if_eq MF_PlayerChoseNoRomance
 	msgbox MF_OkayLetsGo

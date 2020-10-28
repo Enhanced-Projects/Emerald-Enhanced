@@ -649,7 +649,6 @@ Common_ShowEasyChatScreen:: @ 8271E7C
 
 Common_EventScript_ReadyPetalburgGymForBattle:: @ 8271E84
 	clearflag FLAG_HIDE_PETALBURG_GYM_GREETER
-	setflag FLAG_PETALBURG_MART_EXPANDED_ITEMS
 	return
 
 Common_EventScript_BufferTrendyPhrase:: @ 8271E8B
@@ -1198,3 +1197,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
     
 
 	.include "data/maps/DebugMap/scripts.inc"
+
+	.include "data/maps/StoryMap_KyogreChase/scripts.inc"

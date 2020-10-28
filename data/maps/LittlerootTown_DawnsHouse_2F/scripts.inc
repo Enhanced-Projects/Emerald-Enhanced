@@ -265,7 +265,6 @@ LRT_DawnIntroductionScene::
 	setflag FLAG_HIDE_DAWNS_HOUSE_DAWN
 	msgbox GI_DawnMetMsg
 	closemessage
-	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_NATIONAL_DEX
 	setflag FLAG_RYU_LT_RIVAL
 	setflag FLAG_RYU_LT_RIVAL2

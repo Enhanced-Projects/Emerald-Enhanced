@@ -372,7 +372,7 @@ RF_CheckPlayerQualifiesForNurseQuest::@@this is sort of confusing, but it has to
 	compare VAR_RYU_DS_NURSE_STAGE, 0
 	call_if_eq RF_StartNurseQuest
 	compare VAR_RYU_DS_NURSE_STAGE, 1
-	goto_if_ge RF_NurseQuestStage1
+	goto_if_eq RF_NurseQuestStage1
 	goto ryu_end
 
 RF_StartNurseQuest::

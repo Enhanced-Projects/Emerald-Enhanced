@@ -295,6 +295,8 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_103_MAGMA_MEETING);
     FlagSet(FLAG_RYU_HIDE_114_MAXIE);
     FlagSet(FLAG_RYU_RUSTURF_CLEARING_MAGMA);
+    FlagSet(FLAG_RYU_HIDE_AQUA_MTPYRE_EXT);
+    FlagSet(FLAG_RYU_HIDE_CHIMNEY_GROUDON);
     VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));

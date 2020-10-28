@@ -246,6 +246,7 @@
 #define MAP_MOSSDEEP_CITY_MART              (10 | (13 << 8))
 #define MAP_MOSSDEEP_CITY_POKEMON_CENTER_1F (11 | (13 << 8))
 #define MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F (12 | (13 << 8))
+#define MAP_STORY_MAP_KYOGRE_CHASE          (13 | (13 << 8))
 
 // Map Group 14
 #define MAP_SOOTOPOLIS_CITY_MAGMA_EVENT              (0 | (14 << 8))

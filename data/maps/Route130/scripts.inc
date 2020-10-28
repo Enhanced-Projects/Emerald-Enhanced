@@ -1,6 +1,11 @@
 Route130_MapScripts:: @ 81F735F
 	map_script ON_TRANSITION, Route130_OnTransition
+	map_script ON_FRAME, R130_OnFrame
 	.byte 0
+
+R130_OnFrame::
+	map_script_2 VAR_TEMP_6, 0, R130_SetupAquaKyogreEvent
+	.2byte 0
 
 Route130_OnTransition: @ 81F7365
 	compare VAR_SOOTOPOLIS_CITY_STATE, 4
@@ -48,4 +53,47 @@ Route130_EventScript_Santiago:: @ 81F73ED
 	trainerbattle_single TRAINER_SANTIAGO, Route130_Text_SantiagoIntro, Route130_Text_SantiagoDefeat
 	msgbox Route130_Text_SantiagoPostBattle, MSGBOX_AUTOCLOSE
 	end
+
+R130_SetupAquaKyogreEvent::
+	setvar VAR_TEMP_6, 20
+	compare VAR_RYU_AQUA, 130
+	goto_if_ne ryu_end
+	goto_if_set FLAG_RYU_KYOGRE, ryu_end
+	clearflag FLAG_RYU_HIDE_R130_KYOGRE
+	setweather WEATHER_RAIN_THUNDERSTORM
+	doweather
+	end
+
+R130_Kyogre::
+	goto_if_unset FLAG_RYU_PLAYER_HELPING_AQUA, ryu_end
+	goto_if_set FLAG_RYU_KYOGRE, ryu_end
+	goto_if_set FLAG_RYU_KYOGRE_RAN, ryu_end
+	msgbox RyuLegendary_IntroKyogreRoute130
+	setvar VAR_TEMP_5, SPECIES_KYOGRE
+	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtKyogreRoute130 
+	setflag FLAG_RYU_KYOGRE_RAN
+	removeobject 4
+	pokenavcall R130_Kyogre_ReturnToMossdeep
+	waitmessage
+	setvar VAR_RYU_AQUA, 150
+	warpsilent MAP_MOSSDEEP_CITY, 255, 46, 8
+	waitstate
+
+	RyuLegendary_CaughtKyogreRoute130::
+	setflag FLAG_RYU_KYOGRE
+	removeobject 4 
+	pokenavcall R130_Kyogre_ReturnToMossdeep
+	waitmessage
+	setvar VAR_RYU_AQUA, 150
+	warpsilent MAP_MOSSDEEP_CITY, 255, 46, 8
+	waitstate
+
+RyuLegendary_IntroKyogreRoute130:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It appears to be focused on\n keeping the rain active.)$"
+
+R130_Kyogre_ReturnToMossdeep:
+	.string "{PLAYER}? This is Matt, Return to Mossdeep!\nON THE DOUBLE!!$"
 

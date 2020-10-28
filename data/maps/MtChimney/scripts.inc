@@ -1,7 +1,13 @@
 MtChimney_MapScripts:: @ 822EDC1
+	map_script ON_WARP, SFC_OnWarp
 	map_script ON_RESUME, MtChimney_OnResume
 	map_script ON_TRANSITION, MtChimney_OnTransition
+	map_script ON_FRAME, MC_OnFrameScript
 	.byte 0
+	
+MC_OnFrameScript::
+	map_script_2 VAR_RYU_AQUA, 124, MC_DoAquaGroudonScene
+	.2byte 0
 
 MtChimney_OnTransition: @ 822EDCC
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 1
@@ -682,3 +688,26 @@ MtChimney_Text_SawyerRematchDefeat: @ 82305E3
 MtChimney_Text_SawyerPostRematch: @ 8230614
 	.string "Actually, it really is hot here.\n"
 	.string "I'm overdressed for these parts.$"
+
+
+@==================================================================================================
+MC_DoAquaGroudonScene::
+	setvar VAR_RYU_AQUA, 128 @player is watching scene in mtchimney
+	applymovement 32, Common_Movement_FaceRight
+	waitmovement 32
+	delay 20
+	applymovement 32, Common_Movement_FaceLeft
+	waitmovement 32
+	delay 20
+	applymovement 32, Common_Movement_FaceUp
+	waitmovement 32
+	delay 20
+	setweather WEATHER_DROUGHT
+	doweather
+	playmoncry SPECIES_GROUDON, 0
+	waitmoncry
+	delay 60
+	warpsilent MAP_MOSSDEEP_CITY, 255, 46, 8
+	waitstate
+
+

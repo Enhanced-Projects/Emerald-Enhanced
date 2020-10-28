@@ -14,6 +14,7 @@ ACO_EntranceScriptTrigger::
 	case 55, ryu_end
 	case 72, ryu_end
 	case 80, ryu_end
+	case 160, ryu_end
 	goto ACO_BlockEntry
 
 ACO_Shelly::

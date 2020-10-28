@@ -268,7 +268,7 @@ MH_GruntChatter1:
 	.string "I really need a raise.$"
 	
 MH_GruntChatter2:
-	.string "I heard that Cortney's Mightyena\neats people. That's crazy!$"
+	.string "I heard that Courtney's Mightyena\neats people. That's crazy!$"
 	
 MH_GruntChatter3:
 	.string "You really don't wanna get on\nMaxie's bad side.\pBut Courtney is way harsher.\nBest to do what you're told.$"
