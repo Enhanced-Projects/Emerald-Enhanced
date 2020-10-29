@@ -2095,14 +2095,14 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_EMPTY_214
 	cleartrainerflag TRAINER_EMPTY_215
 	cleartrainerflag TRAINER_EMPTY_216
-	cleartrainerflag TRAINER_EMPTY_217
+	cleartrainerflag TRAINER_MR_STONE
 	cleartrainerflag TRAINER_DEZ_AND_LUKE
 	cleartrainerflag TRAINER_LEA_AND_JED
 	cleartrainerflag TRAINER_KIRA_AND_DAN_1
-	cleartrainerflag TRAINER_EMPTY_222
-	cleartrainerflag TRAINER_EMPTY_223
-	cleartrainerflag TRAINER_EMPTY_224
-	cleartrainerflag TRAINER_EMPTY_225
+	cleartrainerflag TRAINER_DEVON_ENFORCER_5
+	cleartrainerflag TRAINER_DEVON_ENFORCER_4
+	cleartrainerflag TRAINER_DEVON_ENFORCER_3
+	cleartrainerflag TRAINER_DEVON_ENFORCER_2
 	cleartrainerflag TRAINER_JOHANNA
 	cleartrainerflag TRAINER_GERALD
 	cleartrainerflag TRAINER_VIVIAN

@@ -8291,7 +8291,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Jonathan[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_DevonEnforcer2[] = {//Brendan12
+static const struct TrainerMonNoItemDefaultMoves sParty_Devon2[] = {//Brendan12
     {
     .iv = 250,
     .lvl = 50,
@@ -8907,26 +8907,38 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Trent4[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Trent5[] = {
+static const struct TrainerMonItemCustomMoves sParty_MrStone[] = {
     {
-    .iv = 40,
-    .lvl = 33,
-    .species = SPECIES_GRAVELER,
+    .iv = 255,
+    .lvl = 50,
+    .species = SPECIES_STOUTLAND,
+    .heldItem = ITEM_SITRUS_BERRY,
+	.ability = 2,
+	.moves = {MOVE_EXTREME_SPEED, MOVE_ICE_FANG, MOVE_THUNDER_FANG, MOVE_NONE},
     },
     {
-    .iv = 40,
-    .lvl = 33,
-    .species = SPECIES_GRAVELER,
+    .iv = 255,
+    .lvl = 50,
+    .species = SPECIES_RELICANTH,
+    .heldItem = ITEM_CHOICE_BAND,
+	.ability = 1,
+	.moves = {MOVE_HEAD_SMASH, MOVE_DIVE, MOVE_EARTHQUAKE, MOVE_NONE},
     },
     {
-    .iv = 40,
-    .lvl = 33,
-    .species = SPECIES_GRAVELER,
+    .iv = 255,
+    .lvl = 50,
+    .species = SPECIES_ALAKAZAM,
+    .heldItem = ITEM_ALAKAZITE,
+	.ability = 2,
+	.moves = {MOVE_PSYBEAM, MOVE_DAZZLING_GLEAM, MOVE_CHARGE_BEAM, MOVE_TRI_ATTACK},
     },
     {
-    .iv = 40,
-    .lvl = 33,
-    .species = SPECIES_GOLEM,
+    .iv = 255,
+    .lvl = 50,
+    .species = SPECIES_PROBOPASS,
+    .heldItem = ITEM_DRY_ICE,
+	.ability = 2,
+	.moves = {MOVE_ZAP_CANNON, MOVE_ANCIENT_POWER, MOVE_EARTH_POWER, MOVE_VOLT_SWITCH},
     }
 };
 
@@ -8969,55 +8981,55 @@ static const struct TrainerMonNoItemDefaultMoves sParty_KiraAndDan1[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_KiraAndDan2[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_DevonEnforcer5[] = {
     {
     .iv = 10,
     .lvl = 30,
-    .species = SPECIES_VOLBEAT,
+    .species = SPECIES_MANECTRIC,
     },
     {
     .iv = 10,
     .lvl = 30,
-    .species = SPECIES_ILLUMISE,
+    .species = SPECIES_LUCARIO,
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_KiraAndDan3[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_DevonEnforcer4[] = {
     {
     .iv = 20,
     .lvl = 33,
-    .species = SPECIES_VOLBEAT,
+    .species = SPECIES_LYCANROC,
     },
     {
     .iv = 20,
     .lvl = 33,
-    .species = SPECIES_ILLUMISE,
+    .species = SPECIES_ARCANINE,
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_KiraAndDan4[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_DevonEnforcer3[] = {
     {
     .iv = 30,
     .lvl = 36,
-    .species = SPECIES_VOLBEAT,
+    .species = SPECIES_MANECTRIC,
     },
     {
     .iv = 30,
     .lvl = 36,
-    .species = SPECIES_ILLUMISE,
+    .species = SPECIES_GALLADE,
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_KiraAndDan5[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_DevonEnforcer2[] = {
     {
     .iv = 40,
     .lvl = 39,
-    .species = SPECIES_VOLBEAT,
+    .species = SPECIES_STOUTLAND
     },
     {
     .iv = 40,
     .lvl = 39,
-    .species = SPECIES_ILLUMISE,
+    .species = SPECIES_LUCARIO,
     }
 };
 

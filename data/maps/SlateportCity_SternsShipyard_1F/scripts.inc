@@ -144,22 +144,22 @@ SS_DevonEmployee1::
 	end
 
 SS_DevonEmployee2::
-	trainerbattle_single TRAINER_DEVON_ENFORCER_1 SS_Devon2Intro, SS_Devon2Defeat @these need changed to their respective numbers
+	trainerbattle_single TRAINER_DEVON_ENFORCER_2 SS_Devon2Intro, SS_Devon2Defeat
 	msgbox SS_Devon2Msg
 	end
 
 SS_DevonEmployee3::
-	trainerbattle_single TRAINER_DEVON_ENFORCER_1 SS_Devon3Intro, SS_Devon3Defeat
+	trainerbattle_single TRAINER_DEVON_ENFORCER_3 SS_Devon3Intro, SS_Devon3Defeat
 	msgbox SS_Devon3Msg
 	end
 
 SS_DevonEmployee4::
-	trainerbattle_single TRAINER_DEVON_ENFORCER_1 SS_Devon4Intro, SS_Devon4Defeat
+	trainerbattle_single TRAINER_DEVON_ENFORCER_4 SS_Devon4Intro, SS_Devon4Defeat
 	msgbox SS_Devon4Msg
 	end
 
 SS_DevonEmployee5::
-	trainerbattle_single TRAINER_DEVON_ENFORCER_1 SS_Devon5Intro, SS_Devon5Defeat
+	trainerbattle_single TRAINER_DEVON_ENFORCER_5 SS_Devon5Intro, SS_Devon5Defeat
 	msgbox SS_Devon5Msg
 	end
 

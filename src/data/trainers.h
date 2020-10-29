@@ -8996,8 +8996,8 @@ const struct Trainer gTrainers[] = {
         .battleStyle = BS_SET,
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
-        .partySize = ARRAY_COUNT(sParty_DevonEnforcer2),
-        .party = {.NoItemDefaultMoves = sParty_DevonEnforcer2},
+        .partySize = ARRAY_COUNT(sParty_Devon2),
+        .party = {.NoItemDefaultMoves = sParty_Devon2},
     },
 
     [TRAINER_STORY_MEWTWO] =
@@ -9585,19 +9585,19 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Trent4},
     },
 
-    [TRAINER_EMPTY_217] =
+    [TRAINER_MR_STONE] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_HIKER,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
-        .trainerPic = TRAINER_PIC_HIKER,
-        .trainerName = _("Trent"),
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_GENTLEMAN,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_RICH,
+        .trainerPic = TRAINER_PIC_GENTLEMAN,
+        .trainerName = _("Mr. Stone"),
         .items = {},
-        .battleStyle = BS_SHIFT,
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Trent5),
-        .party = {.NoItemDefaultMoves = sParty_Trent5},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_CHECK_VIABILITY | AI_SCRIPT_HP_AWARE,
+        .partySize = ARRAY_COUNT(sParty_MrStone),
+        .party = {.ItemCustomMoves = sParty_MrStone},
     },
 
     [TRAINER_DEZ_AND_LUKE] =
@@ -9645,64 +9645,64 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_KiraAndDan1},
     },
 
-    [TRAINER_EMPTY_222] =
+    [TRAINER_DEVON_ENFORCER_5] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_YOUNG_COUPLE,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_GIRL,
-        .trainerPic = TRAINER_PIC_YOUNG_COUPLE,
-        .trainerName = _("Kira & Dan"),
+        .trainerClass = TRAINER_CLASS_DEVON_ENFORCER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_RICH,
+        .trainerPic = TRAINER_PIC_DEVON_M,
+        .trainerName = _("Jake"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = TRUE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_KiraAndDan2),
-        .party = {.NoItemDefaultMoves = sParty_KiraAndDan2},
+        .partySize = ARRAY_COUNT(sParty_DevonEnforcer5),
+        .party = {.NoItemDefaultMoves = sParty_DevonEnforcer5},
     },
 
-    [TRAINER_EMPTY_223] =
+    [TRAINER_DEVON_ENFORCER_4] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_YOUNG_COUPLE,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_GIRL,
-        .trainerPic = TRAINER_PIC_YOUNG_COUPLE,
-        .trainerName = _("Kira & Dan"),
+        .trainerClass = TRAINER_CLASS_DEVON_ENFORCER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_RICH,
+        .trainerPic = TRAINER_PIC_DEVON_M,
+        .trainerName = _("Tim"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = TRUE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_KiraAndDan3),
-        .party = {.NoItemDefaultMoves = sParty_KiraAndDan3},
+        .partySize = ARRAY_COUNT(sParty_DevonEnforcer4),
+        .party = {.NoItemDefaultMoves = sParty_DevonEnforcer4},
     },
 
-    [TRAINER_EMPTY_224] =
+    [TRAINER_DEVON_ENFORCER_3] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_YOUNG_COUPLE,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_GIRL,
-        .trainerPic = TRAINER_PIC_YOUNG_COUPLE,
-        .trainerName = _("Kira & Dan"),
+        .trainerClass = TRAINER_CLASS_DEVON_ENFORCER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_RICH,
+        .trainerPic = TRAINER_PIC_DEVON_M,
+        .trainerName = _("Mark"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = TRUE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_KiraAndDan4),
-        .party = {.NoItemDefaultMoves = sParty_KiraAndDan4},
+        .partySize = ARRAY_COUNT(sParty_DevonEnforcer3),
+        .party = {.NoItemDefaultMoves = sParty_DevonEnforcer3},
     },
 
-    [TRAINER_EMPTY_225] =
+    [TRAINER_DEVON_ENFORCER_2] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_YOUNG_COUPLE,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_GIRL,
-        .trainerPic = TRAINER_PIC_YOUNG_COUPLE,
-        .trainerName = _("Kira & Dan"),
+        .trainerClass = TRAINER_CLASS_DEVON_ENFORCER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_RICH,
+        .trainerPic = TRAINER_PIC_DEVON_M,
+        .trainerName = _("Dan"),
         .items = {},
         .battleStyle = BS_SHIFT,
         .doubleBattle = TRUE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_KiraAndDan5),
-        .party = {.NoItemDefaultMoves = sParty_KiraAndDan5},
+        .partySize = ARRAY_COUNT(sParty_DevonEnforcer2),
+        .party = {.NoItemDefaultMoves = sParty_DevonEnforcer2},
     },
 
     [TRAINER_JOHANNA] =
