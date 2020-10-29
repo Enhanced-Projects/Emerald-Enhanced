@@ -331,7 +331,7 @@ RyuFollower_CheckNurseQuestStage::
 	@case 3, RF_NurseQuestStage2
 	@case 5, RF_NurseQuestStage3
 	@case 7, RF_NurseQuestStage4
-	@case 10, ryu_end @@Player already partners with nurse, or declined to help her. Check is no longer necessary.
+	case 10, ryu_end @@Player already partners with nurse, or declined to help her. Check is no longer necessary.
 	goto ryu_end @@prevent UB
 
 RF_SetupNurseSpawnEvent::

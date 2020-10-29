@@ -68,6 +68,7 @@ PCN_HealOutroText3:
 
 PCN_HealOutroText4:
 	msgbox S4OutroText
+    goto_if_set FLAG_RYU_DS_JOY_PARTNERS, PCN_NurseFollower
 	goto ryu_end
 	
 S2OutroText:
