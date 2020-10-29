@@ -1583,29 +1583,6 @@ u8 CreateObjectSprite(u8 graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction)
     return spriteId;
 }
 
-u32 GetSafeDirectionForFollower(struct ObjectEvent *playerObjectEvent, s16 xOffset, s16 yOffset)
-{
-    struct ObjectEvent playerCopy = *playerObjectEvent;
-    playerCopy.currentCoords.x += xOffset;
-    playerCopy.currentCoords.y += yOffset;
-    if (!GetCollisionInDirection(&playerCopy, DIR_SOUTH))
-    {
-        return DIR_SOUTH;
-    }
-    else if (!GetCollisionInDirection(&playerCopy, DIR_NORTH))
-    {
-        return DIR_NORTH;
-    }
-    else if (!GetCollisionInDirection(&playerCopy, DIR_WEST))
-    {
-        return DIR_WEST;
-    }
-    else
-    {
-        return DIR_EAST;
-    }
-}
-
 void GetSafeCoordsForFollower(struct ObjectEvent *playerObjectEvent, int playerX, int playerY, int direction, int *followerX, int *followerY)
 {              //nothing to see here. The function originally checked for wether the direction supplied in the script command was
     int dx, dy;//'safe'. I don't need this, and it was causing a wierd bug anyway. 
@@ -1613,23 +1590,23 @@ void GetSafeCoordsForFollower(struct ObjectEvent *playerObjectEvent, int playerX
     {
     case DIR_SOUTH:
         dx = 0;
-        dy = 1;
+        dy = -1;
         break;
     case DIR_NORTH:
         dx = 0;
-        dy = -1;
+        dy = 1;
         break;
     case DIR_WEST:
-        dx = -1;
+        dx = 1;
         dy = 0;
         break;
     case DIR_EAST:
-        dx = 1;
+        dx = -1;
         dy = 0;
         break;
     default:
-        dx = 1;
-        dy = 0;
+        dx = 0;
+        dy = 1;
         break;
     }
     *followerX = playerX + dx;
@@ -1706,11 +1683,11 @@ u8 CreateFollowerObjectEvent(u8 graphicsId, const u8 *script, int direction)
     if (subspriteTables)
         SetSubspriteTables(&gSprites[followerObjectEvent->spriteId], subspriteTables);
 
-    // Face player.
+    // Face same direction as player.
     FaceDirection(
         followerObjectEvent,
         &gSprites[followerObjectEvent->spriteId],
-        GetDirectionToFace(followerObjectEvent->currentCoords.x, followerObjectEvent->currentCoords.y, playerObjectEvent->currentCoords.x, playerObjectEvent->currentCoords.y));
+        GetPlayerFacingDirection());
     return objectEventId;
 }
 
@@ -5050,7 +5027,7 @@ void obj_npc_animation_step(struct ObjectEvent *objectEvent, struct Sprite *spri
 }
 
 // file boundary?
-
+                            //   Follower |    Player
 static u8 GetDirectionToFace(s16 x1, s16 y1, s16 x2, s16 y2)
 {
     if (x1 > x2)

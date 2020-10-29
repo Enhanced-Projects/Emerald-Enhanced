@@ -40,7 +40,6 @@ MossdeepCity_StevensHouse_EventScript_StevenGivesDive:: @ 82227CA
 	msgbox MossdeepCity_StevensHouse_Text_YouveEarnedHMDive, MSGBOX_DEFAULT
 	giveitem ITEM_TM58
 	setflag FLAG_RECEIVED_TM58
-	setflag FLAG_OMIT_DIVE_FROM_STEVEN_LETTER
 	msgbox MossdeepCity_StevensHouse_Text_ExplainDive, MSGBOX_DEFAULT
 	closemessage
 	delay 20

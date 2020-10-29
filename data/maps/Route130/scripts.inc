@@ -59,7 +59,6 @@ R130_SetupAquaKyogreEvent::
 	compare VAR_RYU_AQUA, 130
 	goto_if_ne ryu_end
 	goto_if_set FLAG_RYU_KYOGRE, ryu_end
-	clearflag FLAG_RYU_HIDE_R130_KYOGRE
 	setweather WEATHER_RAIN_THUNDERSTORM
 	doweather
 	end

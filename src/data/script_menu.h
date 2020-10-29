@@ -921,7 +921,6 @@ static const struct MenuAction MultichoiceList_128[]=
     {gText_RyuTeleportBattleFrontier},
     {gText_RyuTeleportMtPyreExterior},
     {gText_RyuTeleportLCCDEPT},
-    {gText_RyuTeleportLCAH},
     {gText_RyuTeleportMCMH},
     {gText_RyuTeleportSnowyShore},
     {gText_RyuTeleportBattleFrontierCallback},  

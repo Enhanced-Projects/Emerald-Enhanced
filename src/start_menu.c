@@ -850,7 +850,7 @@ void DrawAquaLogo(void)
 {
     struct WindowTemplate template;
 
-    if (FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA) == 1)
+    if (FlagGet(FLAG_RYU_DS_SHELLY_CLOSEFRIENDS) == 1)
     {
         LoadSpriteSheet(&AquaShellyLogoSheet);
         LoadSpritePalette(&AquaLogoPalette);

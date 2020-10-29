@@ -45,7 +45,7 @@
 #define FLAG_RYU_LT_RIVAL                    0x21
 #define FLAG_HIDE_CHAMPIONS_ROOM_STEVEN      0x22
 #define FLAG_RYU_STARTER_CHOSEN              0x23
-#define FLAG_RYU_MH_COURTNEY_DUOMODE         0x24
+#define FLAG_RYU_AQUA_HIDE_MH4_COURTNEY_BOSS         0x24
 #define FLAG_RYU_MH_COURTNEY_SOLOMODE        0x25
 #define FLAG_HIDE_BRENDANS_HOUSE_BRENDAN     0x26
 #define FLAG_RYU_HAS_WAYSTONE                0x27
@@ -69,7 +69,7 @@
 #define FLAG_RYU_DEV_MODE                    0x39
 #define FLAG_RYU_AQUA_THIEF_SEEN             0x3A
 #define FLAG_RYU_PLAYER_HELPING_DEVON        0x3B
-#define FLAG_MAGMA_HIDEOUT_EVENT_DONE        0x3C
+#define FLAG_RYU_AQUA_MET_SHELLY_AT_MH        0x3C
 #define FLAG_RYU_DEVON_MISSION2START         0x3D
 #define FLAG_RYU_DEVON_M1C                   0x3E
 #define FLAG_RYU_DEVON_MISSION1START         0x3F
@@ -313,13 +313,13 @@
 #define FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE 0x125
 #define FLAG_RYU_HIDE_AQUA_OFFICE_AQUA       0x126 // Hides aqua in their office if the player did the no-romance line.
 #define FLAG_KECLEON_FLED_FORTREE            0x127
-#define FLAG_RYU_HIDE_R130_KYOGRE            0x128 // EE-Unused
+#define FLAG_RYU_AQUA_ALT_LINE               0x128 // Player's doing the Shelly line for aqua.
 #define FLAG_RECEIVED_MIRACLE_SEED           0x129
 #define FLAG_RECEIVED_BELDUM                 0x12A
 #define FLAG_RECEIVED_FANCLUB_TM_THIS_WEEK   0x12B // EE-Unused
 #define FLAG_MET_FANCLUB_YOUNGER_BROTHER     0x12C
 #define FLAG_RIVAL_LEFT_FOR_ROUTE103         0x12D
-#define FLAG_OMIT_DIVE_FROM_STEVEN_LETTER    0x12E // EE-Unused?
+#define FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES    0x12E // Hides the devon enforcers in the shipyard during the aqua quest shelly line
 #define FLAG_RYU_RECEIVED_MEGA_BRACELET      0x12F
 #define FLAG_ADDED_MATCH_CALL_TO_POKENAV     0x130 // EE-Unused
 #define FLAG_REGISTERED_STEVEN_POKENAV       0x131 // EE-Unused

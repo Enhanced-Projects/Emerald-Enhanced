@@ -160,11 +160,10 @@ RT_Landmarks::
 	case 0, RT_BattleFrontier
 	case 1, RT_MtPyre
 	case 2, RT_LCCDEPT
-	case 3, RT_LCAH
-	case 4, RT_MCMH
-	case 5, RT_SnowyShore
-	case 6, RT_BF_CB
-	case 127, RyuTeleport
+	case 3, RT_BerryFarm
+	case 4, RT_SnowyShore
+	case 5, RT_BF_CB
+	goto RyuTeleport
 	release
 	end
 	
@@ -201,7 +200,7 @@ RT_LCAH::
 	@warpteleport MAP_NEW_MAP4, 255, 7, 14
 	waitstate
 	
-RT_MCMH::
+RT_BerryFarm::
 	goto_if_unset FLAG_LANDMARK_BERRY_MASTERS_HOUSE, RT_NoFlag
 	warpteleport MAP_ROUTE123, 255, 14, 4
 	waitstate

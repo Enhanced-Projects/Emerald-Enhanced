@@ -20,3 +20,10 @@ SlateportCity_SternsShipyard_2F_Text_FloatsBecauseBuoyancy: @ 82086BA
 	.string "It floats because of a principle\n"
 	.string "called buoyancy.$"
 
+@==================================================================================================Aqua
+
+SS_2FDevonPresTrigger::
+	setvar VAR_RYU_AQUA, 113 @player cleared first floor of shipyard out, start president event.
+	lockall
+	
+

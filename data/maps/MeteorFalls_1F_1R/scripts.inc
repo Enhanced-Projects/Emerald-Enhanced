@@ -709,6 +709,10 @@ MF_AquaSouthContd::
 	msgbox MF_HowAboutIt, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq MF_PlayerChoseNoRomance
+	setflag FLAG_RYU_AQUA_ALT_LINE
+	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
+	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+	setflag FLAG_HIDE_MT_CHIMNEY_TRAINERS
 	msgbox MF_OkayLetsGo
 	closemessage
 	applymovement 7, MF_ArchieLeavesNorthAqua
@@ -720,6 +724,7 @@ MF_AquaSouthContd::
 	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
 	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	setvar VAR_RYU_AQUA, 70 @Player is doing the romance line for aqua. Go to Mt Chihmney.
+	warpsilent MAP_MT_CHIMNEY, 255, 26, 31
 	release
 	end
 	

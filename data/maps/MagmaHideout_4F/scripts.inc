@@ -230,6 +230,120 @@ MagmaHideout_4F_Text_MaxieImGoingAfterGroudon: @ 823ABE2
 
 @===========================================ryu aqua
 
+MH4_Aqua_Bossfight::
+	lockall
+	setvar VAR_RYU_AQUA, 101 @Player is doing courtney/maxie boss fight
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	msgbox MH4_Aqua_Boss_Shelly_Intro
+	closemessage
+	delay 20
+	msgbox MH4_CourtneyBattleStart
+	closemessage
+	delay 20
+	msgbox MH4_MaxieBattleStart
+	goto MH4_DoBossFight
+
+MH4_DoBossFight::	
+	call RyuFollowerAllySelector
+	choose_mons
+	compare VAR_RESULT, FALSE
+	goto_if_eq MH4_ChooseValidMons
+	multi_2_vs_2 TRAINER_COURTNEY_3, MH4_CourtneyDefeated, TRAINER_MAXIE_MAGMA_HIDEOUT, MH4_MaxieDefeated, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq MH4_PlayerLost
+	goto MH4_PostBossBattle
+
+MH4_PostBossBattle::
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	removeobject 12
+	setflag FLAG_RYU_MAXIE_END_EVENT
+	removeobject 21
+	setvar VAR_RYU_AQUA, 103 @Player defeated maxie and courtney in magma hideout
+	msgbox MH4_MaxieCourtneyDefeated
+	closemessage
+	applymovement 10, MH4_CourtneyLeavesAqua
+	waitmovement 10
+	applymovement 11, MH4_MaxieLeavesAqua
+	waitmovement 11
+	removeobject 10
+	removeobject 11
+	setflag FLAG_RYU_AQUA_HIDE_MH4_COURTNEY_BOSS
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MH4_LetsGoBack
+	closemessage
+	setvar VAR_RYU_AQUA, 105 @Player and shelly should be heading back to office.
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	releaseall
+	end
+
+MH4_ChooseValidMons::
+	msgbox EGC_NeedToChoose
+	goto MH4_DoBossFight
+
+MH4_PlayerLost::
+	msgbox MH4_OhNoYouDont
+	special HealPlayerParty
+	goto MH4_DoBossFight
+
+MH4_CourtneyLeavesAqua:
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+MH4_MaxieLeavesAqua:
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+
+MH4_LetsGoBack:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Let's head back to the office.\nOur work here is done.$"
+
+MH4_Aqua_Boss_Shelly_Intro:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} Ah, there you are.\pMaxie and Courtney. On behalf\nof Hoenn, I hereby sentence you\lto exile.$"
+
+MH4_CourtneyBattleStart:
+	.string "Courtney: I can't wait to roast\nyou on a spit like the pig\lyou are...$"
+
+MH4_MaxieBattleStart:
+	.string "Maxie: You cannot stop that\nwhich is destined. Hoenn will be a better\lplace after we're done.\pAnd you'll thank me for it\nlater.$"
+
+MH4_CourtneyDefeated:
+	.string "Leader Maxie... I'm so sorry...$"
+
+MH4_MaxieDefeated:
+	.string "No... NO! This cannot BE!$"
+
+MH4_OhNoYouDont:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Nope, not today, You're not\ngoing to pass out on me!$"
+
+MH4_MaxieCourtneyDefeated:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}If I ever see you again, I\nwill feed you to a tank of\lSharpedo. BE GONE!$"
+
+@===========================================Other
+
 MH_CheckForStatus::
 	compare VAR_RYU_MAGMA, 200
 	goto_if_ge ryu_end
@@ -383,9 +497,17 @@ MH4_MagmaAdminCheck::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
+
+MH4_AquaShowMaxieBoss::
+	setvar VAR_TEMP_5, 20
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	release
+	end
 	
 	
 MH4_MagmaMaxieEvent::
+	compare VAR_RYU_AQUA, 95
+	goto_if_eq MH4_AquaShowMaxieBoss
 	compare VAR_RYU_MAGMA, 550
 	goto_if_eq MH_CheckForStatus
 	compare VAR_RYU_MAGMA, 450

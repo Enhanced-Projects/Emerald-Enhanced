@@ -64,7 +64,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_RYU_AQUA",
+      "var_value": "111",
+      "script": "SS_2FDevonPresTrigger"
+    }
   ],
   "bg_events": [
 

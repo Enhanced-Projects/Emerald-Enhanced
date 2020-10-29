@@ -930,8 +930,6 @@ void RyuAddFollower(void)
     else if ((GetPlayerFacingDirection()) == DIR_SOUTH)
     {
         CreateFollowerObjectEvent(graphicsId, script, DIR_NORTH);
-        //TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup,
-        //gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 2));
     }
     else
     { 
