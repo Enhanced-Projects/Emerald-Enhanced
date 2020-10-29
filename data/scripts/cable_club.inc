@@ -1548,29 +1548,29 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_VIOLET
 	cleartrainerflag TRAINER_MORRIS
 	cleartrainerflag TRAINER_BRINEY
-	cleartrainerflag TRAINER_ROSE_4
-	cleartrainerflag TRAINER_ROSE_5
+	cleartrainerflag TRAINER_EMPTY_2
+	cleartrainerflag TRAINER_EMPTY_3
 	cleartrainerflag TRAINER_DUSTY_1
 	cleartrainerflag TRAINER_CHIP
 	cleartrainerflag TRAINER_FOSTER
-	cleartrainerflag TRAINER_DUSTY_2
-	cleartrainerflag TRAINER_DUSTY_3
-	cleartrainerflag TRAINER_DUSTY_4
-	cleartrainerflag TRAINER_DUSTY_5
+	cleartrainerflag TRAINER_EMPTY_8
+	cleartrainerflag TRAINER_EMPTY_9
+	cleartrainerflag TRAINER_EMPTY_10
+	cleartrainerflag TRAINER_EMPTY_11
 	cleartrainerflag TRAINER_LOLA_1
 	cleartrainerflag TRAINER_AUSTINA
 	cleartrainerflag TRAINER_GWEN
-	cleartrainerflag TRAINER_LOLA_2
-	cleartrainerflag TRAINER_LOLA_3
-	cleartrainerflag TRAINER_LOLA_4
-	cleartrainerflag TRAINER_LOLA_5
+	cleartrainerflag TRAINER_EMPTY_12
+	cleartrainerflag TRAINER_EMPTY_13
+	cleartrainerflag TRAINER_EMPTY_14
+	cleartrainerflag TRAINER_EMPTY_15
 	cleartrainerflag TRAINER_RICKY_1
 	cleartrainerflag TRAINER_SIMON
 	cleartrainerflag TRAINER_CHARLIE
-	cleartrainerflag TRAINER_RICKY_2
-	cleartrainerflag TRAINER_RICKY_3
-	cleartrainerflag TRAINER_RICKY_4
-	cleartrainerflag TRAINER_RICKY_5
+	cleartrainerflag TRAINER_EMPTY_16
+	cleartrainerflag TRAINER_EMPTY_17
+	cleartrainerflag TRAINER_EMPTY_18
+	cleartrainerflag TRAINER_EMPTY_19
 	cleartrainerflag TRAINER_RANDALL
 	cleartrainerflag TRAINER_PARKER
 	cleartrainerflag TRAINER_GEORGE
@@ -1584,10 +1584,10 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_SAMUEL
 	cleartrainerflag TRAINER_VITO
 	cleartrainerflag TRAINER_OWEN
-	cleartrainerflag TRAINER_WILTON_2
-	cleartrainerflag TRAINER_WILTON_3
-	cleartrainerflag TRAINER_WILTON_4
-	cleartrainerflag TRAINER_WILTON_5
+	cleartrainerflag TRAINER_EMPTY_29
+	cleartrainerflag TRAINER_EMPTY_30
+	cleartrainerflag TRAINER_EMPTY_31
+	cleartrainerflag TRAINER_EMPTY_32
 	cleartrainerflag TRAINER_WARREN
 	cleartrainerflag TRAINER_MARY
 	cleartrainerflag TRAINER_ALEXIA
@@ -1601,7 +1601,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_MICHELLE
 	cleartrainerflag TRAINER_CAROLINE
 	cleartrainerflag TRAINER_JULIE
-	cleartrainerflag TRAINER_BROOKE_2
+	cleartrainerflag TRAINER_EMPTY_28
 	cleartrainerflag TRAINER_BROOKE_3
 	cleartrainerflag TRAINER_BROOKE_4
 	cleartrainerflag TRAINER_BROOKE_5
@@ -1610,17 +1610,17 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_TAMMY
 	cleartrainerflag TRAINER_VALERIE_1
 	cleartrainerflag TRAINER_TASHA
-	cleartrainerflag TRAINER_VALERIE_2
-	cleartrainerflag TRAINER_VALERIE_3
-	cleartrainerflag TRAINER_VALERIE_4
-	cleartrainerflag TRAINER_VALERIE_5
+	cleartrainerflag TRAINER_EMPTY_33
+	cleartrainerflag TRAINER_EMPTY_34
+	cleartrainerflag TRAINER_EMPTY_35
+	cleartrainerflag TRAINER_EMPTY_36
 	cleartrainerflag TRAINER_CINDY_1
 	cleartrainerflag TRAINER_DAPHNE
 	cleartrainerflag TRAINER_CINDY_2
 	cleartrainerflag TRAINER_BRIANNA
 	cleartrainerflag TRAINER_NAOMI
-	cleartrainerflag TRAINER_CINDY_3
-	cleartrainerflag TRAINER_CINDY_4
+	cleartrainerflag TRAINER_EMPTY_37
+	cleartrainerflag TRAINER_EMPTY_38
 	cleartrainerflag TRAINER_CINDY_5
 	cleartrainerflag TRAINER_CINDY_6
 	cleartrainerflag TRAINER_MELISSA
@@ -1631,24 +1631,24 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_BRIDGET
 	cleartrainerflag TRAINER_OLIVIA
 	cleartrainerflag TRAINER_TIFFANY
-	cleartrainerflag TRAINER_JESSICA_2
-	cleartrainerflag TRAINER_JESSICA_3
-	cleartrainerflag TRAINER_JESSICA_4
-	cleartrainerflag TRAINER_JESSICA_5
+	cleartrainerflag TRAINER_EMPTY_41
+	cleartrainerflag TRAINER_EMPTY_42
+	cleartrainerflag TRAINER_EMPTY_43
+	cleartrainerflag TRAINER_EMPTY_44
 	cleartrainerflag TRAINER_WINSTON_1
 	cleartrainerflag TRAINER_MOLLIE
 	cleartrainerflag TRAINER_GARRET
-	cleartrainerflag TRAINER_WINSTON_2
-	cleartrainerflag TRAINER_WINSTON_3
-	cleartrainerflag TRAINER_WINSTON_4
-	cleartrainerflag TRAINER_WINSTON_5
+	cleartrainerflag TRAINER_EMPTY_45
+	cleartrainerflag TRAINER_EMPTY_46
+	cleartrainerflag TRAINER_EMPTY_47
+	cleartrainerflag TRAINER_EMPTY_48
 	cleartrainerflag TRAINER_STEVE_1
 	cleartrainerflag TRAINER_THALIA_1
 	cleartrainerflag TRAINER_MARK
-	cleartrainerflag TRAINER_STEVE_2
-	cleartrainerflag TRAINER_STEVE_3
-	cleartrainerflag TRAINER_STEVE_4
-	cleartrainerflag TRAINER_STEVE_5
+	cleartrainerflag TRAINER_EMPTY_49
+	cleartrainerflag TRAINER_EMPTY_50
+	cleartrainerflag TRAINER_EMPTY_51
+	cleartrainerflag TRAINER_EMPTY_52
 	cleartrainerflag TRAINER_LUIS
 	cleartrainerflag TRAINER_DOMINIK
 	cleartrainerflag TRAINER_DOUGLAS
@@ -1673,19 +1673,19 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_JACK
 	cleartrainerflag TRAINER_DUDLEY
 	cleartrainerflag TRAINER_CHAD
-	cleartrainerflag TRAINER_TONY_2
-	cleartrainerflag TRAINER_TONY_3
-	cleartrainerflag TRAINER_TONY_4
-	cleartrainerflag TRAINER_TONY_5
+	cleartrainerflag TRAINER_EMPTY_53
+	cleartrainerflag TRAINER_EMPTY_54
+	cleartrainerflag TRAINER_EMPTY_55
+	cleartrainerflag TRAINER_EMPTY_56
 	cleartrainerflag TRAINER_TAKAO
 	cleartrainerflag TRAINER_HITOSHI
 	cleartrainerflag TRAINER_KIYO
 	cleartrainerflag TRAINER_KOICHI
 	cleartrainerflag TRAINER_NOB_1
-	cleartrainerflag TRAINER_NOB_2
-	cleartrainerflag TRAINER_NOB_3
-	cleartrainerflag TRAINER_NOB_4
-	cleartrainerflag TRAINER_NOB_5
+	cleartrainerflag TRAINER_EMPTY_57
+	cleartrainerflag TRAINER_EMPTY_58
+	cleartrainerflag TRAINER_EMPTY_59
+	cleartrainerflag TRAINER_EMPTY_60
 	cleartrainerflag TRAINER_YUJI
 	cleartrainerflag TRAINER_DAISUKE
 	cleartrainerflag TRAINER_ATSUSHI
@@ -1693,7 +1693,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_SHAWN
 	cleartrainerflag TRAINER_FERNANDO_1
 	cleartrainerflag TRAINER_DALTON_1
-	cleartrainerflag TRAINER_DALTON_2
+	cleartrainerflag TRAINER_EMPTY_69
 	cleartrainerflag TRAINER_DALTON_3
 	cleartrainerflag TRAINER_DALTON_4
 	cleartrainerflag TRAINER_DALTON_5
@@ -1703,10 +1703,10 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_JACE
 	cleartrainerflag TRAINER_KEEGAN
 	cleartrainerflag TRAINER_BERNIE_1
-	cleartrainerflag TRAINER_BERNIE_2
-	cleartrainerflag TRAINER_BERNIE_3
-	cleartrainerflag TRAINER_BERNIE_4
-	cleartrainerflag TRAINER_BERNIE_5
+	cleartrainerflag TRAINER_EMPTY_70
+	cleartrainerflag TRAINER_EMPTY_71
+	cleartrainerflag TRAINER_EMPTY_72
+	cleartrainerflag TRAINER_EMPTY_73
 	cleartrainerflag TRAINER_DREW
 	cleartrainerflag TRAINER_BEAU
 	cleartrainerflag TRAINER_LARRY
@@ -1715,16 +1715,16 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_ETHAN_1
 	cleartrainerflag TRAINER_AUTUMN
 	cleartrainerflag TRAINER_TRAVIS
-	cleartrainerflag TRAINER_ETHAN_2
-	cleartrainerflag TRAINER_ETHAN_3
-	cleartrainerflag TRAINER_ETHAN_4
-	cleartrainerflag TRAINER_ETHAN_5
+	cleartrainerflag TRAINER_EMPTY_74
+	cleartrainerflag TRAINER_EMPTY_75
+	cleartrainerflag TRAINER_EMPTY_76
+	cleartrainerflag TRAINER_EMPTY_77
 	cleartrainerflag TRAINER_BRENT
 	cleartrainerflag TRAINER_DONALD
 	cleartrainerflag TRAINER_TAYLOR
 	cleartrainerflag TRAINER_JEFFREY_1
 	cleartrainerflag TRAINER_DEREK
-	cleartrainerflag TRAINER_JEFFREY_2
+	cleartrainerflag TRAINER_EMPTY_79
 	cleartrainerflag TRAINER_JEFFREY_3
 	cleartrainerflag TRAINER_JEFFREY_4
 	cleartrainerflag TRAINER_JEFFREY_5
@@ -1735,10 +1735,10 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_WILLIAM
 	cleartrainerflag TRAINER_JOSHUA
 	cleartrainerflag TRAINER_CAMERON_1
-	cleartrainerflag TRAINER_CAMERON_2
-	cleartrainerflag TRAINER_CAMERON_3
-	cleartrainerflag TRAINER_CAMERON_4
-	cleartrainerflag TRAINER_CAMERON_5
+	cleartrainerflag TRAINER_EMPTY_80
+	cleartrainerflag TRAINER_EMPTY_81
+	cleartrainerflag TRAINER_EMPTY_82
+	cleartrainerflag TRAINER_EMPTY_83
 	cleartrainerflag TRAINER_JACLYN
 	cleartrainerflag TRAINER_HANNAH
 	cleartrainerflag TRAINER_SAMANTHA
@@ -1746,62 +1746,62 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_KAYLA
 	cleartrainerflag TRAINER_ALEXIS
 	cleartrainerflag TRAINER_JACKI_1
-	cleartrainerflag TRAINER_JACKI_2
-	cleartrainerflag TRAINER_JACKI_3
-	cleartrainerflag TRAINER_JACKI_4
-	cleartrainerflag TRAINER_JACKI_5
+	cleartrainerflag TRAINER_EMPTY_84
+	cleartrainerflag TRAINER_EMPTY_85
+	cleartrainerflag TRAINER_EMPTY_86
+	cleartrainerflag TRAINER_EMPTY_87
 	cleartrainerflag TRAINER_WALTER_1
 	cleartrainerflag TRAINER_MICAH
 	cleartrainerflag TRAINER_THOMAS
-	cleartrainerflag TRAINER_WALTER_2
-	cleartrainerflag TRAINER_WALTER_3
-	cleartrainerflag TRAINER_WALTER_4
-	cleartrainerflag TRAINER_WALTER_5
+	cleartrainerflag TRAINER_EMPTY_88
+	cleartrainerflag TRAINER_EMPTY_89
+	cleartrainerflag TRAINER_EMPTY_90
+	cleartrainerflag TRAINER_EMPTY_91
 	cleartrainerflag TRAINER_JERRY_1
 	cleartrainerflag TRAINER_TED
 	cleartrainerflag TRAINER_PAUL
-	cleartrainerflag TRAINER_JERRY_2
-	cleartrainerflag TRAINER_JERRY_3
-	cleartrainerflag TRAINER_JERRY_4
-	cleartrainerflag TRAINER_JERRY_5
+	cleartrainerflag TRAINER_EMPTY_96
+	cleartrainerflag TRAINER_EMPTY_97
+	cleartrainerflag TRAINER_EMPTY_98
+	cleartrainerflag TRAINER_EMPTY_99
 	cleartrainerflag TRAINER_KAREN_1
 	cleartrainerflag TRAINER_GEORGIA
-	cleartrainerflag TRAINER_KAREN_2
-	cleartrainerflag TRAINER_KAREN_3
-	cleartrainerflag TRAINER_KAREN_4
-	cleartrainerflag TRAINER_KAREN_5
+	cleartrainerflag TRAINER_EMPTY_92
+	cleartrainerflag TRAINER_EMPTY_93
+	cleartrainerflag TRAINER_EMPTY_94
+	cleartrainerflag TRAINER_EMPTY_95
 	cleartrainerflag TRAINER_KATE_AND_JOY
 	cleartrainerflag TRAINER_ANNA_AND_MEG_1
-	cleartrainerflag TRAINER_ANNA_AND_MEG_2
-	cleartrainerflag TRAINER_ANNA_AND_MEG_3
-	cleartrainerflag TRAINER_ANNA_AND_MEG_4
-	cleartrainerflag TRAINER_ANNA_AND_MEG_5
+	cleartrainerflag TRAINER_EMPTY_100
+	cleartrainerflag TRAINER_EMPTY_101
+	cleartrainerflag TRAINER_EMPTY_102
+	cleartrainerflag TRAINER_EMPTY_103
 	cleartrainerflag TRAINER_VICTOR
 	cleartrainerflag TRAINER_MIGUEL_1
 	cleartrainerflag TRAINER_COLTON
-	cleartrainerflag TRAINER_MIGUEL_2
-	cleartrainerflag TRAINER_MIGUEL_3
-	cleartrainerflag TRAINER_MIGUEL_4
-	cleartrainerflag TRAINER_MIGUEL_5
+	cleartrainerflag TRAINER_EMPTY_108
+	cleartrainerflag TRAINER_EMPTY_109
+	cleartrainerflag TRAINER_EMPTY_110
+	cleartrainerflag TRAINER_EMPTY_111
 	cleartrainerflag TRAINER_VICTORIA
 	cleartrainerflag TRAINER_VANESSA
 	cleartrainerflag TRAINER_BETHANY
 	cleartrainerflag TRAINER_ISABEL_1
-	cleartrainerflag TRAINER_ISABEL_2
-	cleartrainerflag TRAINER_ISABEL_3
-	cleartrainerflag TRAINER_ISABEL_4
-	cleartrainerflag TRAINER_ISABEL_5
+	cleartrainerflag TRAINER_EMPTY_104
+	cleartrainerflag TRAINER_EMPTY_105
+	cleartrainerflag TRAINER_EMPTY_106
+	cleartrainerflag TRAINER_EMPTY_107
 	cleartrainerflag TRAINER_TIMOTHY_1
-	cleartrainerflag TRAINER_TIMOTHY_2
-	cleartrainerflag TRAINER_TIMOTHY_3
-	cleartrainerflag TRAINER_TIMOTHY_4
-	cleartrainerflag TRAINER_TIMOTHY_5
+	cleartrainerflag TRAINER_EMPTY_112
+	cleartrainerflag TRAINER_EMPTY_113
+	cleartrainerflag TRAINER_EMPTY_114
+	cleartrainerflag TRAINER_EMPTY_115
 	cleartrainerflag TRAINER_VICKY
 	cleartrainerflag TRAINER_SHELBY_1
-	cleartrainerflag TRAINER_SHELBY_2
-	cleartrainerflag TRAINER_SHELBY_3
-	cleartrainerflag TRAINER_SHELBY_4
-	cleartrainerflag TRAINER_SHELBY_5
+	cleartrainerflag TRAINER_EMPTY_116
+	cleartrainerflag TRAINER_EMPTY_117
+	cleartrainerflag TRAINER_EMPTY_118
+	cleartrainerflag TRAINER_EMPTY_119
 	cleartrainerflag TRAINER_CALVIN_1
 	cleartrainerflag TRAINER_BILLY
 	cleartrainerflag TRAINER_JOSH
@@ -1812,10 +1812,10 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_KATELYNN
 	cleartrainerflag TRAINER_JAYLEN
 	cleartrainerflag TRAINER_DILLON
-	cleartrainerflag TRAINER_CALVIN_2
-	cleartrainerflag TRAINER_CALVIN_3
-	cleartrainerflag TRAINER_CALVIN_4
-	cleartrainerflag TRAINER_CALVIN_5
+	cleartrainerflag TRAINER_EMPTY_120
+	cleartrainerflag TRAINER_EMPTY_121
+	cleartrainerflag TRAINER_EMPTY_122
+	cleartrainerflag TRAINER_EMPTY_123
 	cleartrainerflag TRAINER_EDDIE
 	cleartrainerflag TRAINER_ALLEN
 	cleartrainerflag TRAINER_TIMMY
@@ -1829,7 +1829,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_BARNY
 	cleartrainerflag TRAINER_WADE
 	cleartrainerflag TRAINER_CARTER
-	cleartrainerflag TRAINER_ELLIOT_2
+	cleartrainerflag TRAINER_EMPTY_124
 	cleartrainerflag TRAINER_ELLIOT_3
 	cleartrainerflag TRAINER_ELLIOT_4
 	cleartrainerflag TRAINER_ELLIOT_5
@@ -1837,49 +1837,49 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_JACOB
 	cleartrainerflag TRAINER_ANTHONY
 	cleartrainerflag TRAINER_BENJAMIN_1
-	cleartrainerflag TRAINER_BENJAMIN_2
-	cleartrainerflag TRAINER_BENJAMIN_3
-	cleartrainerflag TRAINER_BENJAMIN_4
-	cleartrainerflag TRAINER_BENJAMIN_5
+	cleartrainerflag TRAINER_EMPTY_145
+	cleartrainerflag TRAINER_EMPTY_146
+	cleartrainerflag TRAINER_EMPTY_147
+	cleartrainerflag TRAINER_EMPTY_148
 	cleartrainerflag TRAINER_ABIGAIL_1
 	cleartrainerflag TRAINER_JASMINE
-	cleartrainerflag TRAINER_ABIGAIL_2
-	cleartrainerflag TRAINER_ABIGAIL_3
-	cleartrainerflag TRAINER_ABIGAIL_4
-	cleartrainerflag TRAINER_ABIGAIL_5
+	cleartrainerflag TRAINER_EMPTY_133
+	cleartrainerflag TRAINER_EMPTY_134
+	cleartrainerflag TRAINER_EMPTY_135
+	cleartrainerflag TRAINER_EMPTY_136
 	cleartrainerflag TRAINER_DYLAN_1
-	cleartrainerflag TRAINER_DYLAN_2
-	cleartrainerflag TRAINER_DYLAN_3
-	cleartrainerflag TRAINER_DYLAN_4
-	cleartrainerflag TRAINER_DYLAN_5
+	cleartrainerflag TRAINER_EMPTY_137
+	cleartrainerflag TRAINER_EMPTY_138
+	cleartrainerflag TRAINER_EMPTY_139
+	cleartrainerflag TRAINER_EMPTY_140
 	cleartrainerflag TRAINER_MARIA_1
-	cleartrainerflag TRAINER_MARIA_2
-	cleartrainerflag TRAINER_MARIA_3
-	cleartrainerflag TRAINER_MARIA_4
-	cleartrainerflag TRAINER_MARIA_5
+	cleartrainerflag TRAINER_EMPTY_129
+	cleartrainerflag TRAINER_EMPTY_130
+	cleartrainerflag TRAINER_EMPTY_131
+	cleartrainerflag TRAINER_EMPTY_132
 	cleartrainerflag TRAINER_CAMDEN
 	cleartrainerflag TRAINER_DEMETRIUS
 	cleartrainerflag TRAINER_ISAIAH_1
 	cleartrainerflag TRAINER_PABLO_1
 	cleartrainerflag TRAINER_CHASE
-	cleartrainerflag TRAINER_ISAIAH_2
-	cleartrainerflag TRAINER_ISAIAH_3
-	cleartrainerflag TRAINER_ISAIAH_4
-	cleartrainerflag TRAINER_ISAIAH_5
+	cleartrainerflag TRAINER_EMPTY_125
+	cleartrainerflag TRAINER_EMPTY_126
+	cleartrainerflag TRAINER_EMPTY_127
+	cleartrainerflag TRAINER_EMPTY_128
 	cleartrainerflag TRAINER_ISOBEL
 	cleartrainerflag TRAINER_DONNY
 	cleartrainerflag TRAINER_TALIA
 	cleartrainerflag TRAINER_KATELYN_1
 	cleartrainerflag TRAINER_ALLISON
-	cleartrainerflag TRAINER_KATELYN_2
-	cleartrainerflag TRAINER_KATELYN_3
-	cleartrainerflag TRAINER_KATELYN_4
-	cleartrainerflag TRAINER_KATELYN_5
+	cleartrainerflag TRAINER_EMPTY_141
+	cleartrainerflag TRAINER_EMPTY_142
+	cleartrainerflag TRAINER_EMPTY_143
+	cleartrainerflag TRAINER_EMPTY_144
 	cleartrainerflag TRAINER_NICOLAS_1
-	cleartrainerflag TRAINER_NICOLAS_2
-	cleartrainerflag TRAINER_NICOLAS_3
-	cleartrainerflag TRAINER_NICOLAS_4
-	cleartrainerflag TRAINER_NICOLAS_5
+	cleartrainerflag TRAINER_EMPTY_153
+	cleartrainerflag TRAINER_EMPTY_154
+	cleartrainerflag TRAINER_EMPTY_155
+	cleartrainerflag TRAINER_EMPTY_156
 	cleartrainerflag TRAINER_AARON
 	cleartrainerflag TRAINER_PERRY
 	cleartrainerflag TRAINER_HUGH
@@ -1892,10 +1892,10 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_ROBERT_1
 	cleartrainerflag TRAINER_BENNY
 	cleartrainerflag TRAINER_CHESTER
-	cleartrainerflag TRAINER_ROBERT_2
-	cleartrainerflag TRAINER_ROBERT_3
-	cleartrainerflag TRAINER_ROBERT_4
-	cleartrainerflag TRAINER_ROBERT_5
+	cleartrainerflag TRAINER_EMPTY_157
+	cleartrainerflag TRAINER_EMPTY_158
+	cleartrainerflag TRAINER_EMPTY_159
+	cleartrainerflag TRAINER_EMPTY_160
 	cleartrainerflag TRAINER_ALEX
 	cleartrainerflag TRAINER_BECK
 	cleartrainerflag TRAINER_YASU
@@ -1904,26 +1904,26 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_JANI
 	cleartrainerflag TRAINER_LAO_1
 	cleartrainerflag TRAINER_LUNG
-	cleartrainerflag TRAINER_LAO_2
-	cleartrainerflag TRAINER_LAO_3
-	cleartrainerflag TRAINER_LAO_4
-	cleartrainerflag TRAINER_LAO_5
+	cleartrainerflag TRAINER_EMPTY_161
+	cleartrainerflag TRAINER_EMPTY_162
+	cleartrainerflag TRAINER_EMPTY_163
+	cleartrainerflag TRAINER_EMPTY_164
 	cleartrainerflag TRAINER_JOCELYN
 	cleartrainerflag TRAINER_LAURA
 	cleartrainerflag TRAINER_CYNDY_1
 	cleartrainerflag TRAINER_CORA
 	cleartrainerflag TRAINER_PAULA
-	cleartrainerflag TRAINER_CYNDY_2
-	cleartrainerflag TRAINER_CYNDY_3
-	cleartrainerflag TRAINER_CYNDY_4
-	cleartrainerflag TRAINER_CYNDY_5
+	cleartrainerflag TRAINER_EMPTY_165
+	cleartrainerflag TRAINER_EMPTY_166
+	cleartrainerflag TRAINER_EMPTY_167
+	cleartrainerflag TRAINER_EMPTY_168
 	cleartrainerflag TRAINER_MADELINE_1
 	cleartrainerflag TRAINER_CLARISSA
 	cleartrainerflag TRAINER_ANGELICA
-	cleartrainerflag TRAINER_MADELINE_2
-	cleartrainerflag TRAINER_MADELINE_3
-	cleartrainerflag TRAINER_MADELINE_4
-	cleartrainerflag TRAINER_MADELINE_5
+	cleartrainerflag TRAINER_EMPTY_169
+	cleartrainerflag TRAINER_EMPTY_170
+	cleartrainerflag TRAINER_EMPTY_171
+	cleartrainerflag TRAINER_EMPTY_172
 	cleartrainerflag TRAINER_BEVERLY
 	cleartrainerflag TRAINER_IMANI
 	cleartrainerflag TRAINER_KYLA
@@ -1948,10 +1948,10 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_KAYLEE
 	cleartrainerflag TRAINER_LAUREL
 	cleartrainerflag TRAINER_CARLEE
-	cleartrainerflag TRAINER_JENNY_2
-	cleartrainerflag TRAINER_JENNY_3
-	cleartrainerflag TRAINER_JENNY_4
-	cleartrainerflag TRAINER_JENNY_5
+	cleartrainerflag TRAINER_EMPTY_173
+	cleartrainerflag TRAINER_EMPTY_174
+	cleartrainerflag TRAINER_EMPTY_175
+	cleartrainerflag TRAINER_EMPTY_176
 	cleartrainerflag TRAINER_HEIDI
 	cleartrainerflag TRAINER_BECKY
 	cleartrainerflag TRAINER_CAROL
@@ -1960,19 +1960,19 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_DIANA_1
 	cleartrainerflag TRAINER_CEDRIC
 	cleartrainerflag TRAINER_IRENE
-	cleartrainerflag TRAINER_DIANA_2
-	cleartrainerflag TRAINER_DIANA_3
-	cleartrainerflag TRAINER_DIANA_4
-	cleartrainerflag TRAINER_DIANA_5
+	cleartrainerflag TRAINER_EMPTY_177
+	cleartrainerflag TRAINER_EMPTY_178
+	cleartrainerflag TRAINER_EMPTY_179
+	cleartrainerflag TRAINER_EMPTY_180
 	cleartrainerflag TRAINER_AMY_AND_LIV_1
-	cleartrainerflag TRAINER_AMY_AND_LIV_2
+	cleartrainerflag TRAINER_EMPTY_181
 	cleartrainerflag TRAINER_GINA_AND_MIA_1
 	cleartrainerflag TRAINER_MIU_AND_YUKI
 	cleartrainerflag TRAINER_AMY_AND_LIV_3
 	cleartrainerflag TRAINER_GINA_AND_MIA_2
-	cleartrainerflag TRAINER_AMY_AND_LIV_4
-	cleartrainerflag TRAINER_AMY_AND_LIV_5
-	cleartrainerflag TRAINER_AMY_AND_LIV_6
+	cleartrainerflag TRAINER_EMPTY_182
+	cleartrainerflag TRAINER_EMPTY_183
+	cleartrainerflag TRAINER_EMPTY_184
 	cleartrainerflag TRAINER_HUEY
 	cleartrainerflag TRAINER_EDMOND
 	cleartrainerflag TRAINER_ERNEST_1
@@ -1980,10 +1980,10 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_PHILLIP
 	cleartrainerflag TRAINER_LEONARD
 	cleartrainerflag TRAINER_DUNCAN
-	cleartrainerflag TRAINER_ERNEST_2
-	cleartrainerflag TRAINER_ERNEST_3
-	cleartrainerflag TRAINER_ERNEST_4
-	cleartrainerflag TRAINER_ERNEST_5
+	cleartrainerflag TRAINER_EMPTY_185
+	cleartrainerflag TRAINER_EMPTY_186
+	cleartrainerflag TRAINER_EMPTY_187
+	cleartrainerflag TRAINER_EMPTY_188
 	cleartrainerflag TRAINER_ELI
 	cleartrainerflag TRAINER_ANNIKA
 	cleartrainerflag TRAINER_JAZMYN
@@ -1997,10 +1997,10 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_CONOR
 	cleartrainerflag TRAINER_EDWIN_1
 	cleartrainerflag TRAINER_HECTOR
-	cleartrainerflag TRAINER_EDWIN_2
-	cleartrainerflag TRAINER_EDWIN_3
-	cleartrainerflag TRAINER_EDWIN_4
-	cleartrainerflag TRAINER_EDWIN_5
+	cleartrainerflag TRAINER_EMPTY_193
+	cleartrainerflag TRAINER_EMPTY_194
+	cleartrainerflag TRAINER_EMPTY_195
+	cleartrainerflag TRAINER_EMPTY_196
 	cleartrainerflag TRAINER_HAROLD
 	cleartrainerflag TRAINER_TIM
 	cleartrainerflag TRAINER_JIM
@@ -2015,31 +2015,31 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_ISAAC_1
 	cleartrainerflag TRAINER_DAVIS
 	cleartrainerflag TRAINER_MITCHELL
-	cleartrainerflag TRAINER_ISAAC_2
-	cleartrainerflag TRAINER_ISAAC_3
-	cleartrainerflag TRAINER_ISAAC_4
-	cleartrainerflag TRAINER_ISAAC_5
+	cleartrainerflag TRAINER_EMPTY_201
+	cleartrainerflag TRAINER_EMPTY_202
+	cleartrainerflag TRAINER_EMPTY_203
+	cleartrainerflag TRAINER_EMPTY_204
 	cleartrainerflag TRAINER_LYDIA_1
 	cleartrainerflag TRAINER_HALLE
 	cleartrainerflag TRAINER_GARRISON
-	cleartrainerflag TRAINER_LYDIA_2
-	cleartrainerflag TRAINER_LYDIA_3
-	cleartrainerflag TRAINER_LYDIA_4
-	cleartrainerflag TRAINER_LYDIA_5
+	cleartrainerflag TRAINER_EMPTY_197
+	cleartrainerflag TRAINER_EMPTY_198
+	cleartrainerflag TRAINER_EMPTY_199
+	cleartrainerflag TRAINER_EMPTY_200
 	cleartrainerflag TRAINER_JACKSON_1
 	cleartrainerflag TRAINER_LORENZO
 	cleartrainerflag TRAINER_SEBASTIAN
-	cleartrainerflag TRAINER_JACKSON_2
+	cleartrainerflag TRAINER_EMPTY_211
 	cleartrainerflag TRAINER_JACKSON_3
 	cleartrainerflag TRAINER_JACKSON_4
 	cleartrainerflag TRAINER_JACKSON_5
 	cleartrainerflag TRAINER_CATHERINE_1
 	cleartrainerflag TRAINER_JENNA
 	cleartrainerflag TRAINER_SOPHIA
-	cleartrainerflag TRAINER_CATHERINE_2
-	cleartrainerflag TRAINER_CATHERINE_3
-	cleartrainerflag TRAINER_CATHERINE_4
-	cleartrainerflag TRAINER_CATHERINE_5
+	cleartrainerflag TRAINER_EMPTY_207
+	cleartrainerflag TRAINER_EMPTY_208
+	cleartrainerflag TRAINER_EMPTY_209
+	cleartrainerflag TRAINER_EMPTY_210
 	cleartrainerflag TRAINER_JULIO
 	cleartrainerflag TRAINER_MARC
 	cleartrainerflag TRAINER_BRENDEN
@@ -2063,7 +2063,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_HALEY_1
 	cleartrainerflag TRAINER_JANICE
 	cleartrainerflag TRAINER_VIVI
-	cleartrainerflag TRAINER_HALEY_2
+	cleartrainerflag TRAINER_EMPTY_212
 	cleartrainerflag TRAINER_HALEY_3
 	cleartrainerflag TRAINER_HALEY_4
 	cleartrainerflag TRAINER_HALEY_5
@@ -2081,7 +2081,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_JAMES_2
 	cleartrainerflag TRAINER_JAMES_3
 	cleartrainerflag TRAINER_JAMES_4
-	cleartrainerflag TRAINER_JAMES_5
+	cleartrainerflag TRAINER_EMPTY_213
 	cleartrainerflag TRAINER_BRICE
 	cleartrainerflag TRAINER_TRENT_1
 	cleartrainerflag TRAINER_LENNY
@@ -2092,17 +2092,17 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_LUCAS_2
 	cleartrainerflag TRAINER_MIKE_1
 	cleartrainerflag TRAINER_MIKE_2
-	cleartrainerflag TRAINER_TRENT_2
-	cleartrainerflag TRAINER_TRENT_3
-	cleartrainerflag TRAINER_TRENT_4
-	cleartrainerflag TRAINER_TRENT_5
+	cleartrainerflag TRAINER_EMPTY_214
+	cleartrainerflag TRAINER_EMPTY_215
+	cleartrainerflag TRAINER_EMPTY_216
+	cleartrainerflag TRAINER_EMPTY_217
 	cleartrainerflag TRAINER_DEZ_AND_LUKE
 	cleartrainerflag TRAINER_LEA_AND_JED
 	cleartrainerflag TRAINER_KIRA_AND_DAN_1
-	cleartrainerflag TRAINER_KIRA_AND_DAN_2
-	cleartrainerflag TRAINER_KIRA_AND_DAN_3
-	cleartrainerflag TRAINER_KIRA_AND_DAN_4
-	cleartrainerflag TRAINER_KIRA_AND_DAN_5
+	cleartrainerflag TRAINER_EMPTY_222
+	cleartrainerflag TRAINER_EMPTY_223
+	cleartrainerflag TRAINER_EMPTY_224
+	cleartrainerflag TRAINER_EMPTY_225
 	cleartrainerflag TRAINER_JOHANNA
 	cleartrainerflag TRAINER_GERALD
 	cleartrainerflag TRAINER_VIVIAN
@@ -2131,13 +2131,13 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_JOHN_AND_JAY_2
 	cleartrainerflag TRAINER_JOHN_AND_JAY_3
 	cleartrainerflag TRAINER_JOHN_AND_JAY_4
-	cleartrainerflag TRAINER_JOHN_AND_JAY_5
+	cleartrainerflag TRAINER_EMPTY_78
 	cleartrainerflag TRAINER_RELI_AND_IAN
 	cleartrainerflag TRAINER_LILA_AND_ROY_1
-	cleartrainerflag TRAINER_LILA_AND_ROY_2
-	cleartrainerflag TRAINER_LILA_AND_ROY_3
-	cleartrainerflag TRAINER_LILA_AND_ROY_4
-	cleartrainerflag TRAINER_LILA_AND_ROY_5
+	cleartrainerflag TRAINER_EMPTY_20
+	cleartrainerflag TRAINER_EMPTY_21
+	cleartrainerflag TRAINER_EMPTY_22
+	cleartrainerflag TRAINER_EMPTY_23
 	cleartrainerflag TRAINER_LISA_AND_RAY
 	cleartrainerflag TRAINER_CHRIS
 	cleartrainerflag TRAINER_DAWSON
