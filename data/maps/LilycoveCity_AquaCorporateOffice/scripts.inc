@@ -82,7 +82,7 @@ ACO_ShellyAfterJaggedPassRomanceEvent::
 	applymovement 1, Common_Movement_HeartEmote
 	waitmovement 1
 	delay 20
-	applymovement 1, Common_Movement_StepRight
+	applymovement 1, Common_Movement_StepLeft
 	waitmovement 1
 	turnobject 1, DIR_WEST
 	msgbox ACO_ThatsToCongrat
@@ -156,7 +156,7 @@ ACO_ThatWasAClose:
 ACO_PlayerAchievedQuartermaster:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} has risen to Quartermaster!\p"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Again, another fancy term, but for an\n"
-    .string "Admin./p"
+    .string "Admin.\p"
     .string "That's right, now we're equals, so\n"
     .string "congratulations, you've earned it.$"
 	
@@ -177,7 +177,7 @@ ACO_NowTheresSomething:
     .string "In the meantime, I need you to head\n"
     .string "over to Stern's Shipyard in Slateport\p"
     .string "to retrieve files about the submarine\n"
-    .string "we've taken off their hands.p"
+    .string "we've taken off their hands.\p"
     .string "Be careful, though.\p"
     .string "At this point, it must be crawling\n"
     .string "with law enforcement.\p"

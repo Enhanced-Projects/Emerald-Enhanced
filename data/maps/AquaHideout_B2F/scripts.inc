@@ -3,8 +3,10 @@ AquaHideout_B2F_MapScripts:: @ 8233DCF
 
 AquaHideout_B2F_EventScript_MattNoticePlayer:: @ 8233DE5
 	lockall
+	compare VAR_RYU_AQUA, 125
+	goto_if_eq AH_AquaScene
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, AC_DevonTrigger
-	goto_if_set FLAG_RYU_ARCHIE_SUCCESSFUL, ryu_end
+	goto_if_set FLAG_RYU_AQUA_BAD_END, ryu_end
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	applymovement OBJ_EVENT_ID_PLAYER, AC_MoveLeft
 	setvar VAR_0x8008, 1  @ Matt object event id
@@ -107,12 +109,6 @@ AC_DevonMattTrigger::
 	release
 	end
 	
-AC_SetMissionDone::
-	lockall
-	setflag FLAG_RYU_DEVON_MISSION5COMPLETE
-	release
-	end
-	
 AC_MattTrigger::
 	lockall
 	goto_if_set FLAG_HIDE_CHAMPIONS_ROOM_RIVAL, ryu_end
@@ -185,102 +181,13 @@ AC_NormalWarp::
 	end
 
 AquaHideout_B2F_EventScript_Matt:: @ 8233E09
-	goto_if_set FLAG_RYU_ARCHIE_SUCCESSFUL, AquaHideoutKyogreGuardian
-	trainerbattle_single TRAINER_MATT, AquaHideout_B2F_Text_MattIntro, AquaHideout_B2F_Text_MattDefeat, AquaHideout_B2F_EventScript_SubmarineEscape
-	msgbox AquaHideout_B2F_Text_MattPostBattle, MSGBOX_DEFAULT
-	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	release
 	end
-
-AquaHideoutKyogreGuardian::
-	lockall
-	faceplayer
-	msgbox KyogreGuardian
-	closemessage
-	giveitem ITEM_NET_BALL, 20
-	msgbox KGGoodluck
-	closemessage
-	setflag FLAG_RYU_DEVON_HIDE_MATT_SUB
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_StepRight
-	waitmovement EVENT_OBJ_ID_PLAYER
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_FaceDown
-	applymovement 1, KyogreGuardianLeaves
-	waitmovement 1
-	playse SE_TK_WARPOUT
-	removeobject 1
-	waitse
-	release
-	end
-
-KyogreGuardian:
-    .string "Matt: Heya {PLAYER}. I've been\n"
-    .string "keeping an eye on Kyogre until you\p"
-    .string "got here. It's been suprisingly calm,\n"
-    .string "though I think it's because Archie\p"
-    .string "told it that a powerful trainer was\n"
-    .string "coming.\p"
-    .string "Anyways... Here's some Net Balls, you\n"
-    .string "may need them.$"
-
-KGGoodluck:
-    .string "Well... I'm off to explore the ocean\n"
-    .string "to see where would be good ingress\p"
-    .string "points to start expanding the sea.\n"
-    .string "Good Luck, Soldier!$"
-
-KyogreGuardianLeaves:
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_up
-	step_end
-
-AHQ_KyogreTrigger::
-	goto RyuLegendary_Kyogre
-
-RyuLegendary_Kyogre::
-	goto_if_set FLAG_RYU_KYOGRE, ryu_end
-	goto_if_set FLAG_RYU_KYOGRE_RAN, ryu_end
-	msgbox RyuLegendary_IntroKyogre
-	setvar VAR_TEMP_5, SPECIES_KYOGRE
-	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
-	call RyuLegendary_GeneralLegendEncounter
-	switch VAR_RESULT
-	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtKyogre @if the mon was caught, set main flag and delete object permanently.
-	setflag FLAG_RYU_KYOGRE_RAN @since the outcome wasn't caught, the mon will disappear until player clears champion or title defense again.
-	removeobject 7 @Put the porymap object ID here
-	release
-	end
-
-	RyuLegendary_CaughtKyogre::
-	setflag FLAG_RYU_KYOGRE @once this flag is set, the mon will never come back.
-	removeobject 7 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
-	release
-	end
-
-
-RyuLegendary_IntroKyogre: @put your intro here
-	.string "$"
-	
-AHQ_KYOGRE_STARING:
-	.string "Kyogre is staring intently at you.$"
-
-AquaHideout_B2F_EventScript_SubmarineEscape:: @ 8233E25
-	end
-
-AquaHideout_B2F_Movement_SumbarineDepartLeft: @ 8233E80
-	step_end
 
 AquaHideout_B2F_EventScript_Grunt4:: @ 8233E8A
 	trainerbattle_single TRAINER_GRUNT_4, AquaHideout_B2F_Text_Grunt4Intro, AquaHideout_B2F_Text_Grunt4Defeat, AquaHideout_B2F_EventScript_Grunt4Defeated
+	compare VAR_RYU_AQUA, 100
+	goto_if_ge AH_RandomGruntSpeak
 	msgbox AquaHideout_B2F_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -291,11 +198,15 @@ AquaHideout_B2F_EventScript_Grunt4Defeated:: @ 8233EA5
 
 AquaHideout_B2F_EventScript_Grunt6:: @ 8233EAF
 	trainerbattle_single TRAINER_GRUNT_22, AquaHideout_B2F_Text_Grunt6Intro, AquaHideout_B2F_Text_Grunt6Defeat
+	compare VAR_RYU_AQUA, 100
+	goto_if_ge AH_RandomGruntSpeak
 	msgbox AquaHideout_B2F_Text_Grunt6PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 AquaHideout_B2F_EventScript_Grunt8:: @ 8233EC6
 	trainerbattle_single TRAINER_GRUNT_26, AquaHideout_B2F_Text_Grunt8Intro, AquaHideout_B2F_Text_Grunt8Defeat
+	compare VAR_RYU_AQUA, 100
+	goto_if_ge AH_RandomGruntSpeak
 	msgbox AquaHideout_B2F_Text_Grunt8PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -370,3 +281,83 @@ AquaHideout_B2F_Text_Grunt8Defeat: @ 82342CC
 AquaHideout_B2F_Text_Grunt8PostBattle: @ 82342FF
 	.string "I'll have to learn about how I can\n"
 	.string "battle more effectively…$"
+
+
+@==================================================================================================aqua quest
+
+AH_AquaScene::
+	setvar VAR_RYU_AQUA, 127 @Scene from aqua b2f starting
+	getplayerxy VAR_TEMP_8, VAR_TEMP_9
+	compare VAR_TEMP_9, 16
+	call_if_eq AH_MovePlayerDownForScene
+	applymovement OBJ_EVENT_ID_PLAYER, AH_PlayerFromTopWarps
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto AH_ContinueScene
+
+AH_ContinueScene::
+	applymovement  1, Common_Movement_FaceRight
+	waitmovement 1
+	msgbox AH_PlayerPreparations
+	closemessage
+	applymovement 1, Common_Movement_StepLeft
+	waitmovement 1
+	removeobject 1
+	setflag FLAG_RYU_DEVON_HIDE_MATT_SUB
+	applymovement OBJ_EVENT_ID_PLAYER, AH_PlayerToSub
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 4, AH_MoveSubToExit
+	waitmovement 4
+	warpsilent MAP_UNDERWATER_SEAFLOOR_CAVERN, 255, 6, 5
+	waitstate
+
+AH_MovePlayerDownForScene::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+
+
+AH_BottomSubRoomTrigger::
+	setvar VAR_RYU_AQUA, 127 @Scene from aqua b2f starting
+	applymovement OBJ_EVENT_ID_PLAYER, AH_PlayerFromBottomWarp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto AH_ContinueScene
+
+AH_PlayerPreparations:
+	.string "{PLAYER}! Our preparations are\n"
+    .string "finally complete!\p"
+    .string "Let's go!$"
+
+AH_MoveSubToExit:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+AH_PlayerFromTopWarps:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+AH_PlayerToSub:
+	walk_left
+	walk_left
+	walk_in_place_left
+	set_invisible
+	step_end
+
+AH_PlayerFromBottomWarp:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_left
+	face_left
+	step_end

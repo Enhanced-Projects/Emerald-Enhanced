@@ -1764,6 +1764,7 @@ Ryu_CheckAquaStatusForMissionCall::
 	case 55, Ryu_InitializeAquaStage2
 	case 80, Ryu_InitializeAquaStage3NR
 	case 91, Ryu_InitializeAquaStage3R
+	case 123, Ryu_InitializeAquaStage4R
 	goto ryu_end
 
 Ryu_initializeAquaStage1::
@@ -1840,6 +1841,35 @@ Ryu_InitializeAquaStage3R::
 	setflag FLAG_RYU_AQUA_3_NOTIFY
 	release
 	end
+
+Ryu_InitializeAquaStage4R::
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 7
+	goto_if_lt ryu_end
+	goto_if_set FLAG_RYU_AQUA_4_NOTIFY, ryu_end
+	lockall
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox Ryu_AquaStage1NotifyIntro
+	closemessage
+	pokenavcall Ryu_AquaStage4RomanceNotifyMsg
+	closemessage
+	setflag FLAG_RYU_AQUA_4_NOTIFY
+	clearflag FLAG_RYU_DEVON_HIDE_MATT_SUB
+	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE
+	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE
+	clearflag FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW
+	clearflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
+	call Ryu_SetAquaHideoutTrainerflags
+	setvar VAR_RYU_AQUA, 125 @Player received the call to go to the aqua hideout.
+	release
+	end
+
+Ryu_AquaStage4RomanceNotifyMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, it's time...meet us in the\n"
+    .string "main Team Aqua Headquarters.\p"
+    .string "We'll be waiting by the dock.$"
 
 Ryu_AquaStage3RomanceNotifyMsg:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, this is Shelly.\p"
@@ -1979,6 +2009,19 @@ RyuSetMagmaTrainerFlags::
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_14
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_15
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_16
+	return
+
+Ryu_SetAquaHideoutTrainerflags:
+	settrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_1
+	settrainerflag TRAINER_GRUNT_2
+	settrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_3
+	settrainerflag TRAINER_GRUNT_21
+	settrainerflag TRAINER_GRUNT_25
+	settrainerflag TRAINER_GRUNT_4
+	settrainerflag TRAINER_GRUNT_22
+	settrainerflag TRAINER_GRUNT_26
+	settrainerflag TRAINER_SHELLY_2
+	settrainerflag TRAINER_MATT
 	return
 
 Ryu_Magma8Notice:

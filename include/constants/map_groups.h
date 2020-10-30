@@ -451,6 +451,7 @@
 #define MAP_METEOR_FALLS_3F                          (115 | (24 << 8))
 #define MAP_MAGMA_HIDEOUT_ADMIN_QUARTERS             (116 | (24 << 8))
 #define MAP_LRT_BIRCH_LAB_MAGMA_EVENT                (117 | (24 << 8))
+#define MAP_AQUA_SUBMARINE                           (118 | (24 << 8))
 
 // Map Group 25
 #define MAP_SECRET_BASE_RED_CAVE1           (0 | (25 << 8))

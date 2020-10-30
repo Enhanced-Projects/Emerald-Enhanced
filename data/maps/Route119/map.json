@@ -575,6 +575,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
+      "x": 24,
+      "y": 34,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_REL_OBJECTS"
     }
   ],
   "warp_events": [
@@ -785,6 +798,24 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "r119_CheckOnQuest"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 33,
+      "elevation": 0,
+      "var": "VAR_RYU_AQUA",
+      "var_value": "117",
+      "script": "R119_ShellyAqua"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_RYU_AQUA",
+      "var_value": "117",
+      "script": "R119_ShellyAqua"
     }
   ],
   "bg_events": [

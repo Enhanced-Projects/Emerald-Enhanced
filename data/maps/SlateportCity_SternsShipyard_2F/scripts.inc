@@ -47,7 +47,7 @@ SS_PostStoneBattle::
 	msgbox SS_FutureDoesntLookBright
 	closemessage
 	setflag FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES
-	warpsilent MAP_SLATEPORT_CITY, 255, 56, 39
+	warpsilent MAP_SLATEPORT_CITY, 255, 26, 39
 	waitstate
 
 SS_AndHereIThought:

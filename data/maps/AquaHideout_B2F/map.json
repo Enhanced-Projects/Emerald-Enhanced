@@ -91,19 +91,6 @@
       "trainer_sight_or_berry_tree_id": "5",
       "script": "AquaHideout_B2F_EventScript_Grunt8",
       "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
-      "x": 24,
-      "y": 21,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "5",
-      "script": "AquaHideout_B2F_EventScript_Grunt6",
-      "flag": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL"
     }
   ],
   "warp_events": [
@@ -205,6 +192,15 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "AC_DevonMattTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "AH_BottomSubRoomTrigger"
     }
   ],
   "bg_events": [

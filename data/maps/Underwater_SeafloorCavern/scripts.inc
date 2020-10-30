@@ -2,6 +2,8 @@ Underwater_SeafloorCavern_MapScripts:: @ 823433B
 	map_script ON_RESUME, Underwater_SeafloorCavern_OnResume
 	map_script ON_TRANSITION, Underwater_SeafloorCavern_OnTransition
 	map_script ON_LOAD , Underwater_SeafloorCavern_OnLoad
+	map_script ON_WARP, UW_OnWarpScript
+	map_script ON_FRAME, UW_OnFrameScript
 	.byte 0
 
 Underwater_SeafloorCavern_OnTransition: @ 823434B
@@ -16,6 +18,30 @@ Underwater_SeafloorCavern_EventScript_HideSubmarine:: @ 8234358
 Underwater_SeafloorCavern_OnLoad: @ 823435C
 	call_if_set FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, Underwater_SeafloorCavern_EventScript_SetSubmarineGoneMetatiles
 	end
+
+UW_OnFrameScript::
+	map_script_2 VAR_RYU_AQUA, 129, UW_DoAquaScene
+	.2byte 0
+
+UW_DoAquaScene::
+	delay 30
+	setvar VAR_RYU_AQUA, 131 @Player watched the scene underwater from seafloor cavern
+	clearflag FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT
+	warpsilent MAP_SEAFLOOR_CAVERN_ENTRANCE, 255, 10, 6
+	waitstate
+
+UW_OnWarpScript::
+	map_script_2 VAR_RYU_AQUA, 127, UW_HidePlayerForScene
+	.2byte 0
+
+UW_HidePlayerForScene::
+	setvar VAR_RYU_AQUA, 129 @@player hidden for underwater scene
+	applymovement OBJ_EVENT_ID_PLAYER, UW_SetInvisible
+	end
+
+UW_SetInvisible:
+	set_invisible
+	step_end
 
 Underwater_SeafloorCavern_EventScript_SetSubmarineGoneMetatiles:: @ 8234366
 	setmetatile 5, 3, METATILE_Underwater_RockWall, 1

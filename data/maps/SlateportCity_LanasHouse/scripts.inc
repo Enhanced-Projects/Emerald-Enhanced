@@ -87,7 +87,7 @@ LH_EventStart::
 	end
 	
 LH_AquaMember::
-	goto_if_set FLAG_RYU_ARCHIE_SUCCESSFUL, LH_LeafBadEnd
+	goto_if_set FLAG_RYU_AQUA_BAD_END, LH_LeafBadEnd
 	return
 
 LH_MagmaMember::

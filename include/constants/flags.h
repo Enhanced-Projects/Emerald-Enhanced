@@ -321,7 +321,7 @@
 #define FLAG_RIVAL_LEFT_FOR_ROUTE103         0x12D
 #define FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES    0x12E // Hides the devon enforcers in the shipyard during the aqua quest shelly line
 #define FLAG_RYU_RECEIVED_MEGA_BRACELET      0x12F
-#define FLAG_ADDED_MATCH_CALL_TO_POKENAV     0x130 // EE-Unused
+#define FLAG_RYU_AQUA_4_NOTIFY               0x130 // Player received the pokenav call from the stage 4(romance) aqua quest.
 #define FLAG_REGISTERED_STEVEN_POKENAV       0x131 // EE-Unused
 #define FLAG_ENABLE_NORMAN_MATCH_CALL        0x132 // EE-Unused
 #define FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN 0x133 // EE-Unused
@@ -349,7 +349,7 @@
 #define FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS     0x149
 #define FLAG_RYU_DS_BRENDAN_LOVERS           0x14A
 #define FLAG_RYU_DS_BRENDAN_PARTNERS         0x14B
-#define FLAG_RYU_ARCHIE_SUCCESSFUL           0x14C
+#define FLAG_RYU_AQUA_BAD_END           0x14C
 #define FLAG_RYU_DS_SHELLY_SCENE             0x14D
 
 #define FLAG_UNUSED_0x14E                    0x14E

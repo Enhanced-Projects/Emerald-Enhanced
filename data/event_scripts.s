@@ -591,6 +591,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/frontiermode.inc"
 	.include "data/scripts/fertilizer.inc"
 	.include "data/scripts/RyuBotany.inc"
+	.include "data/scripts/RyuRandomGruntChatterScripts.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
@@ -1199,3 +1200,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/DebugMap/scripts.inc"
 
 	.include "data/maps/StoryMap_KyogreChase/scripts.inc"
+
+	.include "data/maps/AquaSubmarine/scripts.inc"
