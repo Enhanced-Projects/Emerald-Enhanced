@@ -1925,10 +1925,10 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = 0x87,
         .y_offset = 6,
     },
-    [SPECIES_CRYSTAL_ONIX] =
+    [SPECIES_CHIMECHO] =
     {
-        .size = 0x87,
-        .y_offset = 9,
+        .size = 0x47,
+        .y_offset = 7,
     },
     [SPECIES_TURTWIG] =
     {
@@ -4034,6 +4034,11 @@ const struct MonCoords gMonBackPicCoords[] =
     {
         .size = 0x87,
         .y_offset = 11,
+    },
+    [SPECIES_CRYSTAL_ONIX] =
+    {
+        .size = 0x87,
+        .y_offset = 9,
     },
     [SPECIES_MELTAN] =
     {

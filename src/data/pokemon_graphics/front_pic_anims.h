@@ -4566,7 +4566,7 @@ static const union AnimCmd sAnim_DEOXYS_2[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_CRYSTAL_ONIX_1[] =
+static const union AnimCmd sAnim_CHIMECHO_1[] =
 {
     ANIMCMD_FRAME(0, 15),
     ANIMCMD_FRAME(1, 15),
@@ -7888,6 +7888,20 @@ static const union AnimCmd sAnim_ZERAORA_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sAnim_CRYSTAL_ONIX_1[] =
+{
+    ANIMCMD_FRAME(0, 15),
+    ANIMCMD_FRAME(1, 15),
+    ANIMCMD_FRAME(0, 15),
+    ANIMCMD_FRAME(1, 15),
+    ANIMCMD_FRAME(0, 15),
+    ANIMCMD_FRAME(1, 15),
+    ANIMCMD_FRAME(0, 15),
+    ANIMCMD_FRAME(1, 15),
+    ANIMCMD_FRAME(0, 15),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd sAnim_MELTAN_1[] =
 {
     ANIMCMD_FRAME(0, 1),
@@ -10467,9 +10481,9 @@ static const union AnimCmd *const sAnims_DEOXYS[] ={
     sAnim_DEOXYS_2,
 };
 
-static const union AnimCmd *const sAnims_CRYSTAL_ONIX[] ={
+static const union AnimCmd *const sAnims_CHIMECHO[] ={
     sAnim_GeneralFrame0,
-    sAnim_CRYSTAL_ONIX_1,
+    sAnim_CHIMECHO_1,
 };
 
 static const union AnimCmd *const sAnims_EGG[] ={
@@ -12742,6 +12756,11 @@ static const union AnimCmd *const sAnims_ZERAORA[] ={
     sAnim_ZERAORA_1,
 };
 
+static const union AnimCmd *const sAnims_CRYSTAL_ONIX[] ={
+    sAnim_GeneralFrame0,
+    sAnim_CRYSTAL_ONIX_1,
+};
+
 static const union AnimCmd *const sAnims_MELTAN[] ={
     sAnim_GeneralFrame0,
     sAnim_MELTAN_1,
@@ -13591,7 +13610,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
     ANIM_CMD(LATIOS),
     ANIM_CMD(JIRACHI),
     ANIM_CMD(DEOXYS),
-    ANIM_CMD(CRYSTAL_ONIX),
+    ANIM_CMD(CHIMECHO),
     ANIM_CMD(TURTWIG),
     ANIM_CMD(GROTLE),
     ANIM_CMD(TORTERRA),
@@ -14023,6 +14042,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[] =
     ANIM_CMD(STAKATAKA),
     ANIM_CMD(BLACEPHALON),
     ANIM_CMD(ZERAORA),
+    ANIM_CMD(CRYSTAL_ONIX),
     ANIM_CMD(MELTAN),
     ANIM_CMD(MELMETAL),
     ANIM_CMD(EGG),
