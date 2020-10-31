@@ -1222,7 +1222,6 @@ bool8 ScrCmd_turnvobject(struct ScriptContext *ctx)
 
 bool8 ScrCmd_lockall(struct ScriptContext *ctx)
 {
-    //ScriptContext2_RunNewScript(RyuResetFollowerPosition);
     ScriptFreezeObjectEvents();
     SetupNativeScript(ctx, sub_80983C4);
     return TRUE;
@@ -1230,7 +1229,6 @@ bool8 ScrCmd_lockall(struct ScriptContext *ctx)
 
 bool8 ScrCmd_lock(struct ScriptContext *ctx)
 {
-    //ScriptContext2_RunNewScript(RyuResetFollowerPosition);
 
     if (gObjectEvents[gSelectedObjectEvent].active)
     {

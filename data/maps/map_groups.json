@@ -276,7 +276,8 @@
     "MossdeepCity_Gym",
     "MossdeepCity_Mart",
     "MossdeepCity_PokemonCenter_1F",
-    "MossdeepCity_PokemonCenter_2F"
+    "MossdeepCity_PokemonCenter_2F",
+    "StoryMap_KyogreChase"
   ],
   "gMapGroup14": [
     "SootopolisCity_MagmaEvent",
@@ -480,7 +481,8 @@
     "MeteorFalls_1F_3R",
     "MeteorFalls_3F",
     "MagmaHideout_AdminQuarters",
-    "LRT_BirchLab_MagmaEvent"
+    "LRT_BirchLab_MagmaEvent",
+    "AquaSubmarine"
   ],
   "gMapGroup25": [
     "SecretBase_RedCave1",

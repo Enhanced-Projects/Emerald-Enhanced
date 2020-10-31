@@ -1763,6 +1763,8 @@ Ryu_CheckAquaStatusForMissionCall::
 	case 10, Ryu_initializeAquaStage1
 	case 55, Ryu_InitializeAquaStage2
 	case 80, Ryu_InitializeAquaStage3NR
+	case 91, Ryu_InitializeAquaStage3R
+	case 123, Ryu_InitializeAquaStage4R
 	goto ryu_end
 
 Ryu_initializeAquaStage1::
@@ -1777,7 +1779,7 @@ Ryu_initializeAquaStage1::
 	msgbox Ryu_AquaStage1NotifyIntro
 	closemessage
 	pokenavcall Ryu_AquaStage1NotifyMessage
-	closemessage
+	waitmessage
 	msgbox Ryu_AquaStep1OutroMessage
 	closemessage
 	setvar VAR_RYU_AQUA, 25 @received instructions to go to aqua at museum
@@ -1790,6 +1792,7 @@ Ryu_InitializeAquaStage2::
 	compare VAR_RESULT, 5
 	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_AQUA_2_NOTIFY, ryu_end
+	lockall
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -1807,6 +1810,7 @@ Ryu_InitializeAquaStage3NR::
 	compare VAR_RESULT, 6
 	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_AQUA_3_NOTIFY, ryu_end
+	lockall
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -1814,10 +1818,71 @@ Ryu_InitializeAquaStage3NR::
 	closemessage
 	pokenavcall Ryu_AquaStage3NotifyMsg
 	closemessage
-	setvar VAR_RYU_AQUA, 60 @player is off to meteor falls
+	setvar VAR_RYU_AQUA, 80 @player is being called to Mt Pyre
 	setflag FLAG_RYU_AQUA_3_NOTIFY
 	release
 	end
+
+Ryu_InitializeAquaStage3R::
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 6
+	goto_if_lt ryu_end
+	goto_if_set FLAG_RYU_AQUA_3_NOTIFY, ryu_end
+	lockall
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox Ryu_AquaStage1NotifyIntro
+	closemessage
+	pokenavcall Ryu_AquaStage3RomanceNotifyMsg
+	closemessage
+	setvar VAR_JAGGED_PASS_STATE, 1
+	setvar VAR_RYU_AQUA, 93 @player is being called to Jagged Pass by Shelly.
+	setflag FLAG_RYU_AQUA_3_NOTIFY
+	release
+	end
+
+Ryu_InitializeAquaStage4R::
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 7
+	goto_if_lt ryu_end
+	goto_if_set FLAG_RYU_AQUA_4_NOTIFY, ryu_end
+	lockall
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox Ryu_AquaStage1NotifyIntro
+	closemessage
+	pokenavcall Ryu_AquaStage4RomanceNotifyMsg
+	closemessage
+	setflag FLAG_RYU_AQUA_4_NOTIFY
+	clearflag FLAG_RYU_DEVON_HIDE_MATT_SUB
+	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE
+	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE
+	clearflag FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW
+	clearflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
+	call Ryu_SetAquaHideoutTrainerflags
+	setvar VAR_RYU_AQUA, 125 @Player received the call to go to the aqua hideout.
+	release
+	end
+
+Ryu_AquaStage4RomanceNotifyMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, it's time...meet us in the\n"
+    .string "main Team Aqua Headquarters.\p"
+    .string "We'll be waiting by the dock.$"
+
+Ryu_AquaStage3RomanceNotifyMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, this is Shelly.\p"
+    .string "We've discovered what Magma is\n"
+    .string "scheming, and it's far from good.\p"
+    .string "We were able to weaken their forces\n"
+    .string "at Mt. Chimney, so now they're\l"
+    .string "desperate.\p"
+    .string "It's time to hit them while they're\n"
+    .string "still down!\p"
+    .string "Meet me at their hideout located in\n"
+    .string "Jagged Pass.$"
+
 
 Ryu_AquaStage3NotifyMsg::
 	.string "This is an urgent message from Admin\n"
@@ -1838,7 +1903,7 @@ Ryu_AquaStage1NotifyIntro:
     .string " Pokénav.)$"
 	
 Ryu_AquaStage1NotifyMessage:
-	.string "{COLOR LIGHT_GREY}{SHADOW DARK_GREY}This is Admin Shelly speaking.\p"
+	.string "This is Admin Shelly speaking.\p"
     .string "You're to rendezvous with the rest of\n"
     .string "the crew at Slateport Museum.\p"
     .string "Your objective is to detain and\n"
@@ -1944,6 +2009,19 @@ RyuSetMagmaTrainerFlags::
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_14
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_15
 	settrainerflag TRAINER_GRUNT_MAGMA_HIDEOUT_16
+	return
+
+Ryu_SetAquaHideoutTrainerflags:
+	settrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_1
+	settrainerflag TRAINER_GRUNT_2
+	settrainerflag TRAINER_GRUNT_AQUA_HIDEOUT_3
+	settrainerflag TRAINER_GRUNT_21
+	settrainerflag TRAINER_GRUNT_25
+	settrainerflag TRAINER_GRUNT_4
+	settrainerflag TRAINER_GRUNT_22
+	settrainerflag TRAINER_GRUNT_26
+	settrainerflag TRAINER_SHELLY_2
+	settrainerflag TRAINER_MATT
 	return
 
 Ryu_Magma8Notice:

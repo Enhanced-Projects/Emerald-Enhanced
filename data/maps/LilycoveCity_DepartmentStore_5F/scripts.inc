@@ -182,11 +182,36 @@ LilycoveCity_DepartmentStore_5F_Text_ClosedRooftopForWeather: @ 82201C4
 	.string "because the weather is wild today.$"
 
 LCC_Jeweler::
+	call_if_set FLAG_RYU_PLAYER_HELPING_AQUA, LCC_JewelerNecklace
 	msgbox LCC_Jeweler_Welcome MSGBOX_DEFAULT
 	pokemart LCC_Jewels
 	msgbox LCC_Jeweler_exit MSGBOX_DEFAULT
 	release
 	end
+
+LCC_JewelerNecklace::
+	compare VAR_RYU_AQUA, 81
+	goto_if_ne ryu_return
+	checkitem ITEM_STAR_PIECE, 1
+	compare VAR_RESULT, TRUE
+	goto_if_ne ryu_return
+	msgbox LCC_BeautifulStone
+	closemessage
+	removeitem ITEM_STAR_PIECE, 1
+	fadescreen FADE_TO_BLACK
+	delay 60 
+	fadescreen FADE_FROM_BLACK
+	msgbox LCC_ReceivedNecklace
+	closemessage
+	setvar VAR_RYU_AQUA, 85 @Player had necklace made for shelly
+	release
+	end
+
+LCC_ReceivedNecklace:
+	.string "Perfection! Such a beautiful\nstone needed to be made into\lan equally beautiful necklace!\pIt was practically begging\nfor it!\pAnyways, here you are!$"
+
+LCC_BeautifulStone:
+	.string "Oh, my! that's an incredibly\nrare version of a Star Piece!\pPlease! You must let me make\na necklace with it!\lI won't take 'no' for an answer!$"
 
 	.align 2
 LCC_Jewels:

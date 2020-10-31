@@ -1,5 +1,28 @@
 SeafloorCavern_Room9_MapScripts:: @ 8234DC8
+	map_script ON_WARP, SFC_OnWarp
+	map_script ON_FRAME, SFC_OnFrame
 	.byte 0
+
+SFC_OnFrame::
+	map_script_2 VAR_RYU_AQUA, 112, SFC_AquaCutScene
+	.2byte 0
+
+SFC_OnWarp:
+	map_script_2 VAR_TEMP_7, 0, SFC_InvisPlayer
+	.2byte 0
+
+SFC_InvisPlayer:: @this is an annoying hack to make the player invisible for the entire aqua cutscene, except in certain cases where the player shouldn't be.
+	compare VAR_RYU_AQUA, 130
+	goto_if_eq ryu_end
+	compare VAR_RYU_AQUA, 110
+	goto_if_lt ryu_end
+	compare VAR_RYU_AQUA, 150
+	goto_if_gt ryu_end
+	goto SFC_MakePlayerInvis
+
+SFC_MakePlayerInvis::
+	applymovement OBJ_EVENT_ID_PLAYER, SCH_SetInvisible
+	end
 	
 SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
     releaseall
@@ -233,7 +256,7 @@ SFC_DoKyogreAnimation::
 	return
 	
 SFC_BlueOrbShines:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (The Blue Orb shines brightly)$"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (The Orb shines brightly)$"
 	
 SeafloorCavern_Room9_Movement_KyogreExit: @ 823504B
 	slide_up
@@ -275,7 +298,6 @@ SCME_BlueOrbEffect::
 	setvar VAR_0x8007, 5  @ shake delay
 	special ShakeCamera
 	waitstate
-	removeobject 2
 	delay 4
 	setvar VAR_0x8004, 2  @ vertical pan
 	setvar VAR_0x8005, 2  @ horizontal pan
@@ -291,10 +313,63 @@ SCME_BlueOrbEffect::
 	return
 
 
+@==================================================================================================Aqua Events
+SFC_AquaCutScene::
+	setvar VAR_RYU_AQUA, 114 @Player watched part 1 of main aqua cutscene
+	addobject 7
+	addobject 2
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, SFC_MoveCamera1
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	msgbox SFC_HaHaHa
+	closemessage
+	applymovement 5, SFC_ShellyToArchie
+	waitmovement 5
+	msgbox SFC_ArchieNo
+	closemessage
+	call SCME_BlueOrbEffect
+	removeobject 1
+	removeobject 4
+	fadescreen FADE_TO_BLACK
+	warpsilent MAP_MOSSDEEP_CITY, 255, 46, 8
+	end
 
 
+SFC_HaHaHa:
+	.string "Hahahaha!\p"
+    .string "Listen up, Kyogre!\p"
+    .string "The name's Archie, and I call the\n"
+    .string "shots in Team Aqua!\p"
+    .string "I've waited for this day!\n"
+    .string "Now then, Kyogre!\p"
+    .string "The only thing humans care about is\n"
+    .string "pursuing their own selfish desires!\p"
+    .string "That is why, nature...and pokémon...\n"
+    .string "are all suffering!\p"
+    .string "Now, Kyogre...awaken!$"
+
+SFC_ArchieNo:
+	 .string "Archie, no!$"
 
 
+SFC_ShellyToArchie:
+	walk_fastest_right
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	step_end
+
+SFC_MoveCamera1:
+	walk_up
+	walk_up
+	walk_up
+	step_end
 
 
 

@@ -20,7 +20,6 @@ GraniteCave_StevensRoom_EventScript_Steven:: @ 822DC7B
 	waitfanfare
 	closemessage
 	delay 30
-	setflag FLAG_REGISTERED_STEVEN_POKENAV
 	msgbox GraniteCave_StevensRoom_Text_IveGotToHurryAlong, MSGBOX_DEFAULT
 	closemessage
 	compare VAR_FACING, DIR_NORTH

@@ -1,6 +1,7 @@
 MossdeepCity_MapScripts:: @ 81E4A96
 	map_script ON_TRANSITION, MossdeepCity_OnTransition
 	map_script ON_FRAME, SC_DoMagmaCheck
+	map_script ON_WARP, SFC_OnWarp
 	.byte 0
 
 MossdeepCity_OnTransition: @ 81E4A9C
@@ -222,3 +223,207 @@ MossdeepCity_Text_SootopolisNewGymLeader: @ 81E5581
 	.string "People tell me the new Leader once\n"
 	.string "mentored Wallace.$"
 
+@==================================================================================================Aqua
+
+DoMattScene::
+	setvar VAR_RYU_AQUA, 112 @Player met with matt in mossdeep
+	lockall
+	faceplayer
+	msgbox MDC_ItsAlmostTime
+	closemessage
+	warpsilent MAP_SEAFLOOR_CAVERN_ROOM9, 255, 17, 44
+	waitstate
+
+MDC_DoMossDeepScene2::
+	applymovement OBJ_EVENT_ID_PLAYER, FarawayIsland_Interior_Movement_MewAppear
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	fadenewbgm MUS_OOAME
+	delay 60
+	setvar VAR_RYU_AQUA, 116
+	setweather WEATHER_RAIN_THUNDERSTORM
+	doweather
+	delay 60
+	playse SE_PIN
+	applymovement 12, Common_Movement_ExclamationMark
+	waitmovement 12
+	pokenavcall MDC_MattReceivesCall
+	waitmessage
+	msgbox MDC_ThisIsntGood
+	warpsilent MAP_STORY_MAP_KYOGRE_CHASE, 255, 65, 10
+	waitstate
+
+MDC_ScenePart4::
+	applymovement OBJ_EVENT_ID_PLAYER, FarawayIsland_Interior_Movement_MewAppear
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setvar VAR_RYU_AQUA, 122 @player watched the 4th part of the aqua cutscene
+	msgbox MDC_BossShelly
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MDC_RedOrbStartsToGlow
+	call SCME_BlueOrbEffect
+	closemessage
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1
+	warpsilent MAP_MAGMA_HIDEOUT_4F, 255, 16, 12
+	waitstate
+
+MDC_ScenePart6::
+	applymovement OBJ_EVENT_ID_PLAYER, FarawayIsland_Interior_Movement_MewAppear
+	waitmovement OBJ_EVENT_ID_PLAYER
+	fadenewbgm MUS_HIDERI
+	delay 60
+	setweather WEATHER_DROUGHT
+	doweather
+	delay 60
+	setvar VAR_RYU_AQUA, 130 @scene returned to player after watching kyogre and groudon
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MDC_TheSun
+	closemessage
+	addobject 13
+	applymovement 13, MDC_MaxieToPlayer @5 up
+	waitmovement 13
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MDC_BearerOfRed
+	closemessage
+	giveitem ITEM_MASTER_BALL, 1
+	msgbox MDC_KyogreIs
+	clearflag FLAG_RYU_KYOGRE
+	closemessage
+	release
+	end
+
+MDC_FinalScene:
+	lockall
+	addobject 13
+	applymovement 13, MDC_MaxieToPlayer
+	waitmovement 13
+	applymovement 12, Common_Movement_FaceDown
+	waitmovement 12
+	msgbox MDC_SoWeManaged
+	closemessage
+	applymovement 13, Common_Movement_FaceUp
+	waitmovement 13
+	msgbox MDC_FoolsTheLot
+	closemessage
+	delay 20
+	applymovement 13, Common_Movement_FaceDown
+	waitmovement 13
+	msgbox MDC_AlthoughICant
+	closemessage
+	applymovement 13, Common_Movement_FaceUp
+	waitmovement 13
+	msgbox MDC_YouWereHis
+	closemessage
+	applymovement 12, Common_Movement_FaceDown
+	waitmovement 12
+	msgbox MDC_InChargeOfWhat
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject 13
+	delay 40
+	fadescreen FADE_FROM_BLACK
+	addobject 14
+	addobject 15
+	applymovement 14, MDC_DevonGuy2ToMatt
+	applymovement 15, MDC_DevonGuy1ToMatt
+	waitmovement 14
+	msgbox MDC_OverThereSieze
+	closemessage
+	setvar VAR_RYU_AQUA, 160 @Player finished the Non-Romance aqua line. Neutral End (Aqua disbanded)
+	setflag FLAG_RYU_HIDE_AQUA_OFFICE_AQUA
+	setflag FLAG_HIDE_AQUAHQ_SHELLY
+	setflag FLAG_RYU_AQUA_LINE_DONE
+	setflag FLAG_RYU_HIDE_MOSSDEEP_MATT
+	warpsilent MAP_LILYCOVE_CITY, 255, 48, 9 
+	waitstate
+
+
+MDC_ThisIsntGood:
+	.string "This isn't good...$"
+
+MDC_ItsAlmostTime:
+	.string "It's almost time...$"
+
+MDC_MattReceivesCall:
+	.string "Matt: Yes, boss, it's raining,\nbut hard.\p... ... ... ...\pThat's what I'm trying to\ntell you!\pIt's way more than we expected!$"
+
+MDC_BossShelly:
+	.string "The line went dead! I can't reach\n"
+	.string "them!\p"
+	.string "Boss! Shelly!\p"
+    .string "I don't believe it...they're...!$"
+
+MDC_RedOrbStartsToGlow:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You feel a surge of power from\n your backpack.)$"
+
+MDC_TheSun:
+	.string "The sun...!\n"
+    .string "This is Groudon's...but how?$"
+
+MDC_BearerOfRed:
+	.string "Bearer of the Red Orb.\n"
+    .string "I suggest we take the opportunity\l"
+    .string "and defeat Kyogre.\p"
+    .string "Take this.$"
+
+MDC_KyogreIs:
+	.string "Kyogre must still be somewhere on\p"
+    .string "Route 130.\n"
+    .string "Go now!$"
+
+MDC_SoWeManaged:
+	.string "So, we managed to avoid complete\n"
+    .string "disaster after all...\p"
+    .string "Archie, Shelly...Team Aqua...$"
+
+MDC_FoolsTheLot:
+	.string "Fools, the lot of you.\n"
+    .string "What did you hope to achieve?$"
+
+MDC_AlthoughICant:
+	.string "Although I can't go off and pretend I\n"
+    .string "wasn't doing something similar.$"
+
+MDC_YouWereHis:
+	.string "You were his number 2...in effect,\n"
+    .string "you're in charge now.$"
+
+MDC_InChargeOfWhat:
+	.string "'In charge'...of what, exactly?\n"
+    .string "Team Aqua is no more...\p"
+    .string "... ... ...$"
+
+MDC_OverThereSieze:
+	.string "Over there, seize that Aqua!$"
+
+MDC_MaxieToPlayer:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+MDC_DevonGuy1ToMatt:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+MDC_DevonGuy2ToMatt:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	face_left
+	step_end

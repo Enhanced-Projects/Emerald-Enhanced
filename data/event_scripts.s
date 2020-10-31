@@ -591,6 +591,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/frontiermode.inc"
 	.include "data/scripts/fertilizer.inc"
 	.include "data/scripts/RyuBotany.inc"
+	.include "data/scripts/RyuRandomGruntChatterScripts.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
@@ -649,7 +650,6 @@ Common_ShowEasyChatScreen:: @ 8271E7C
 
 Common_EventScript_ReadyPetalburgGymForBattle:: @ 8271E84
 	clearflag FLAG_HIDE_PETALBURG_GYM_GREETER
-	setflag FLAG_PETALBURG_MART_EXPANDED_ITEMS
 	return
 
 Common_EventScript_BufferTrendyPhrase:: @ 8271E8B
@@ -1198,3 +1198,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
     
 
 	.include "data/maps/DebugMap/scripts.inc"
+
+	.include "data/maps/StoryMap_KyogreChase/scripts.inc"
+
+	.include "data/maps/AquaSubmarine/scripts.inc"

@@ -63,48 +63,48 @@ MH_Shortcut::
 	end
 	
 MH_ShellyArrival::
-	goto_if_set FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
+	setvar VAR_RYU_MAGMA, 95 @Player met up with shelly in magma hideout 1f
 	lock
-	goto_if_set FLAG_MAGMA_HIDEOUT_EVENT_DONE, ryu_end
 	addobject 7
+	fadenewbgm 441
 	applymovement 7, MH_ShellyWalk
 	waitmovement 0
-	msgbox MH_ShellyIntro MSGBOX_DEFAULT
-	goto_if_unset FLAG_RYU_DS_SHELLY_FRIENDS, MH_ShellyAcq
-	msgbox MH_ShellyRelQuery MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq MH_ShellyCF
-	msgbox MH_Declined MSGBOX_DEFAULT
+	msgbox MH_ShellyIntro
 	closemessage
-	applymovement 7, MH_ShellyLeave
-	waitmovement 0
-	removeobject 7
-	setflag FLAG_MAGMA_HIDEOUT_EVENT_DONE
-	release
-	end
-	
-MH_ShellyCF::
+	msgbox MH_ShellyRelQuery
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
-	setflag FLAG_RYU_DS_SHELLY_CLOSEFRIENDS
-	msgbox MH_ShellyPreparing MSGBOX_DEFAULT
-	msgbox MH_observation MSGBOX_DEFAULT
+	msgbox MH_ShellyPreparing
 	closemessage
+	msgbox MH_observation
+	closemessage
+	setflag FLAG_RYU_DS_SHELLY_CLOSEFRIENDS
 	removeobject 7
-	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, MH_FollowerShellyScript, 2
+	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, MH_FollowerShellyScript, DIR_NORTH
 	setflag FLAG_RYU_WAYSTONE_DISABLED
-	setflag FLAG_MAGMA_HIDEOUT_EVENT_DONE
-	clearflag FLAG_RYU_MH_COURTNEY_DUOMODE
+	clearflag FLAG_RYU_AQUA_HIDE_MH4_COURTNEY_BOSS
 	setflag FLAG_RYU_MH_COURTNEY_SOLOMODE
+	setflag FLAG_HIDE_AQUAHQ_SHELLY
 	release
 	end
 
 MH_FollowerShellyScript::
+	compare VAR_RYU_AQUA, 105
+	goto_if_eq MH_FollowerShellyPostBoss
 	msgbox ShellyOfferHeal MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq MH_ShellyHeal
 	msgbox MH_ShellyChatter
 	closemessage
 	end
+
+MH_FollowerShellyPostBoss::
+	msgbox MH_ShellyReturnToOffice
+	closemessage
+	release
+	end
+
+MH_ShellyReturnToOffice:
+	.string "We really need to get back\nto the office.$"
 
 MH_ShellyHeal::
 	special HealPlayerParty
@@ -138,17 +138,6 @@ ShellyOfferHeal:
 MH_ShellyChatter:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Man, it's so dry here.\pThis is wreaking havok\non my hair!$"
 	
-MH_ShellyAcq::
-	msgbox MH_ShellyNoRel MSGBOX_DEFAULT
-	closemessage
-	applymovement 7, MH_ShellyLeave
-	waitmovement 0
-	removeobject 7
-	setflag FLAG_MAGMA_HIDEOUT_EVENT_DONE
-	setflag FLAG_RYU_MH_COURTNEY_DUOMODE
-	clearflag FLAG_RYU_MH_COURTNEY_SOLOMODE
-	release
-	end
 	
 MH_ShellyWalk:
 	walk_left
@@ -216,75 +205,7 @@ MH_CheckPlayerIsMagma::
 	compare VAR_RYU_MAGMA, 301
 	goto_if_ge MH_RandomGruntSpeak
 	return
-	
-MH_RandomGruntSpeak::
-	random 7
-	switch VAR_RESULT
-	case 0, MH_RandomGruntChatter1
-	case 1, MH_RandomGruntChatter2
-	case 2, MH_RandomGruntChatter3
-	case 3, MH_RandomGruntChatter4
-	case 4, MH_RandomGruntChatter5
-	case 5, MH_RandomGruntChatter6
-	case 6, MH_RandomGruntChatter7
-	goto MH_RandomGruntChatter1
-	
-MH_RandomGruntChatter1::
-	msgbox MH_GruntChatter1
-	release
-	end
-	
-MH_RandomGruntChatter2::
-	msgbox MH_GruntChatter2
-	release
-	end
-	
-MH_RandomGruntChatter3::
-	msgbox MH_GruntChatter3
-	release
-	end
 
-MH_RandomGruntChatter4::
-	msgbox MH_GruntChatter4
-	release
-	end
-
-MH_RandomGruntChatter5::
-	msgbox MH_GruntChatter5
-	release
-	end
-
-MH_RandomGruntChatter6::
-	msgbox MH_GruntChatter6
-	release
-	end
-
-MH_RandomGruntChatter7::
-	msgbox MH_GruntChatter7
-	release
-	end
-	
-MH_GruntChatter1:
-	.string "I really need a raise.$"
-	
-MH_GruntChatter2:
-	.string "I heard that Cortney's Mightyena\neats people. That's crazy!$"
-	
-MH_GruntChatter3:
-	.string "You really don't wanna get on\nMaxie's bad side.\pBut Courtney is way harsher.\nBest to do what you're told.$"
-	
-MH_GruntChatter4:
-	.string "Why did I join Magma...\n it's way too hot here!$"
-	
-MH_GruntChatter5:
-	.string "Blaise is kinda the cool\nguy. I much prefer getting\lassignments from him.$"
-	
-MH_GruntChatter6:
-	.string "Don't ever make fun of Tabitha's\nname. He gets really upset.$"
-	
-MH_GruntChatter7:
-	.string "I think Courtney's cute\nbut I am not into crazy.\lThat girl is All crazy.$"
-	
 MH_CheckMagmaExit::
 	lock
 	playse SE_PIN

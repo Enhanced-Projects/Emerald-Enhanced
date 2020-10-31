@@ -16,7 +16,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_KYOGRE_3",
-      "x": 56,
+      "x": 62,
       "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -29,7 +29,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SUBMARINE_SHADOW",
-      "x": 62,
+      "x": 68,
       "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",

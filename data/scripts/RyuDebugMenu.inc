@@ -182,25 +182,12 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	@fadescreen FADE_TO_BLACK
-	@setvar VAR_RYU_AQUA, 5
-	@warpsilent MAP_DEBUG_MAP, 255, 59, 13
-	@waitstate
-	clearflag FLAG_HIDE_AQUAHQ_SHELLY
+	setvar VAR_RYU_AQUA, 95
 	release
 	end
 
 RDB_Text:
 	.string "test$"
-
-RDB_DesyncCamera:
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	step_end
 
 DexNavInfo:
 	.string "Current Max Boss Range is: {STR_VAR_1}$"

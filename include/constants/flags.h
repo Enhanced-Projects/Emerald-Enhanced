@@ -45,7 +45,7 @@
 #define FLAG_RYU_LT_RIVAL                    0x21
 #define FLAG_HIDE_CHAMPIONS_ROOM_STEVEN      0x22
 #define FLAG_RYU_STARTER_CHOSEN              0x23
-#define FLAG_RYU_MH_COURTNEY_DUOMODE         0x24
+#define FLAG_RYU_AQUA_HIDE_MH4_COURTNEY_BOSS         0x24
 #define FLAG_RYU_MH_COURTNEY_SOLOMODE        0x25
 #define FLAG_HIDE_BRENDANS_HOUSE_BRENDAN     0x26
 #define FLAG_RYU_HAS_WAYSTONE                0x27
@@ -69,7 +69,7 @@
 #define FLAG_RYU_DEV_MODE                    0x39
 #define FLAG_RYU_AQUA_THIEF_SEEN             0x3A
 #define FLAG_RYU_PLAYER_HELPING_DEVON        0x3B
-#define FLAG_MAGMA_HIDEOUT_EVENT_DONE        0x3C
+#define FLAG_RYU_AQUA_MET_SHELLY_AT_MH        0x3C
 #define FLAG_RYU_DEVON_MISSION2START         0x3D
 #define FLAG_RYU_DEVON_M1C                   0x3E
 #define FLAG_RYU_DEVON_MISSION1START         0x3F
@@ -288,17 +288,17 @@
 #define FLAG_SECRET_BASE_REGISTRY_ENABLED    0x10C
 #define FLAG_RECEIVED_TM46                   0x10D
 #define FLAG_RYU_PLAYER_AQUA_ADMIN           0x10E
-#define FLAG_EVIL_TEAM_ESCAPED_STERN_SPOKE   0x10F // EE-Unused?
+#define FLAG_RYU_HIDE_MOSSDEEP_MATT          0x10F // Hides matt in mossdeep
 #define FLAG_RECEIVED_EXP_SHARE              0x110
 #define FLAG_POKERUS_EXPLAINED               0x111
-#define FLAG_RECEIVED_RUNNING_SHOES          0x112 // EE-Unused
+#define FLAG_UNUSED_0x112                    0x112
 #define FLAG_RECEIVED_QUICK_CLAW             0x113
 #define FLAG_RECEIVED_KINGS_ROCK             0x114
 #define FLAG_RECEIVED_MACHO_BRACE            0x115
 #define FLAG_RECEIVED_SOOTHE_BELL            0x116
 #define FLAG_RECEIVED_WHITE_HERB             0x117
 #define FLAG_RECEIVED_SOFT_SAND              0x118
-#define FLAG_ENABLE_PROF_BIRCH_MATCH_CALL    0x119 // EE-Unused
+#define FLAG_RYU_HIDE_CHIMNEY_GROUDON        0x119 // groudon sprite in chimney for aqua cutscene
 #define FLAG_RECEIVED_CLEANSE_TAG            0x11A
 #define FLAG_RECEIVED_FOCUS_BAND             0x11B
 #define FLAG_MT_FREEZE_OPENED                0x11C
@@ -311,17 +311,17 @@
 #define FLAG_RECEIVED_SS_TICKET              0x123
 #define FLAG_MET_RIVAL_LILYCOVE              0x124
 #define FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE 0x125
-#define FLAG_EXCHANGED_SCANNER               0x126 // EE-Unused?
+#define FLAG_RYU_HIDE_AQUA_OFFICE_AQUA       0x126 // Hides aqua in their office if the player did the no-romance line.
 #define FLAG_KECLEON_FLED_FORTREE            0x127
-#define FLAG_PETALBURG_MART_EXPANDED_ITEMS   0x128 // EE-Unused
+#define FLAG_RYU_AQUA_ALT_LINE               0x128 // Player's doing the Shelly line for aqua.
 #define FLAG_RECEIVED_MIRACLE_SEED           0x129
 #define FLAG_RECEIVED_BELDUM                 0x12A
 #define FLAG_RECEIVED_FANCLUB_TM_THIS_WEEK   0x12B // EE-Unused
 #define FLAG_MET_FANCLUB_YOUNGER_BROTHER     0x12C
 #define FLAG_RIVAL_LEFT_FOR_ROUTE103         0x12D
-#define FLAG_OMIT_DIVE_FROM_STEVEN_LETTER    0x12E // EE-Unused?
+#define FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES    0x12E // Hides the devon enforcers in the shipyard during the aqua quest shelly line
 #define FLAG_RYU_RECEIVED_MEGA_BRACELET      0x12F
-#define FLAG_ADDED_MATCH_CALL_TO_POKENAV     0x130 // EE-Unused
+#define FLAG_RYU_AQUA_4_NOTIFY               0x130 // Player received the pokenav call from the stage 4(romance) aqua quest.
 #define FLAG_REGISTERED_STEVEN_POKENAV       0x131 // EE-Unused
 #define FLAG_ENABLE_NORMAN_MATCH_CALL        0x132 // EE-Unused
 #define FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN 0x133 // EE-Unused
@@ -349,7 +349,7 @@
 #define FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS     0x149
 #define FLAG_RYU_DS_BRENDAN_LOVERS           0x14A
 #define FLAG_RYU_DS_BRENDAN_PARTNERS         0x14B
-#define FLAG_RYU_ARCHIE_SUCCESSFUL           0x14C
+#define FLAG_RYU_AQUA_BAD_END           0x14C
 #define FLAG_RYU_DS_SHELLY_SCENE             0x14D
 
 #define FLAG_UNUSED_0x14E                    0x14E
@@ -400,8 +400,8 @@
 #define FLAG_RYU_AQUA_1_NOTIFY               0x177 // First aqua notification given
 #define FLAG_RYU_AQUA_2_NOTIFY               0x178 // Second aqua notification given
 #define FLAG_RYU_AQUA_3_NOTIFY               0x179 // Third aqua notification given
-#define FLAG_REMATCH_ANNA_AND_MEG            0x17A // EE-Unused
-#define FLAG_REMATCH_ISABEL                  0x17B // EE-Unused
+#define FLAG_RYU_HIDE_AQUA_MTPYRE_EXT        0x17A // Group of aqua goons on mtpyre
+#define FLAG_RYU_HIDE_NPCS_MTPYRE_SUMMIT     0x17B // Aqua and Magma goons in the mountaintop
 #define FLAG_REMATCH_MIGUEL                  0x17C // EE-Unused
 #define FLAG_REMATCH_TIMOTHY                 0x17D // EE-Unused
 #define FLAG_REMATCH_SHELBY                  0x17E // EE-Unused

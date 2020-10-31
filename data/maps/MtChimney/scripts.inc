@@ -1,7 +1,13 @@
 MtChimney_MapScripts:: @ 822EDC1
+	map_script ON_WARP, SFC_OnWarp
 	map_script ON_RESUME, MtChimney_OnResume
 	map_script ON_TRANSITION, MtChimney_OnTransition
+	map_script ON_FRAME, MC_OnFrameScript
 	.byte 0
+	
+MC_OnFrameScript::
+	map_script_2 VAR_RYU_AQUA, 124, MC_DoAquaGroudonScene
+	.2byte 0
 
 MtChimney_OnTransition: @ 822EDCC
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 1
@@ -102,6 +108,7 @@ MtChimney_EventScript_Maxie:: @ 822EE0B
 	call_if_eq MtChimney_EventScript_ArchieApproachPlayerNorth
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
 	waitmovement 0
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, MC_PlayerAqua
 	goto MC_PlayerNotAqua
 
 MC_PlayerNotAqua::
@@ -120,6 +127,43 @@ MC_PlayerNotAqua::
 	setflag FLAG_RYU_DEVON_MISSION_3_DONE
 	releaseall
 	end
+
+MC_PlayerAqua::
+	msgbox MC_NiceJobPlayer
+	closemessage
+	compare VAR_FACING, 4
+	call_if_eq MtChimney_EventScript_ArchieExitEast
+	compare VAR_FACING, 2
+	call_if_eq MtChimney_EventScript_ArchieExitNorth
+	removeobject 1
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MC_YouSeeStarPiece
+	closemessage
+	giveitem ITEM_STAR_PIECE, 1
+	setvar VAR_RYU_AQUA, 81 @Player finished event at Mt. Chimney. Take star piece to jeweler or return to shelly.
+	release
+	end
+
+MC_NiceJobPlayer:
+	.string "Nice job, {PLAYER}!\p"
+    .string "With your help, we managed to beat\n"
+    .string "Team Magma.\p"
+    .string "I must say, I'm quite impressed with\n"
+    .string "you, scamp!\p"
+    .string "Report back to Shelly.\n"
+    .string "We're done here.$"
+
+MC_YouSeeStarPiece:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You see the meteorite Team Magma\n"
+    .string " was using in the machine.\p"
+    .string " It's actually a very shiny white\n"
+    .string " fragment of some sort.)\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}{PLAYER} pocketed the fragment.\p"
+	.string "Perhaps something beautiful could\n"
+	.string "be made out of this?\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You vaguely remember a jeweler at\n"
+	.string " the department store.)$"
 
 MtChimney_EventScript_ArchieApproachPlayerEast:: @ 822EEC7
 	applymovement 1, MtChimney_Movement_ArchieApproachPlayerEast
@@ -385,10 +429,6 @@ MtChimney_Text_MaxieIntro: @ 822F32E
 	.string "Who are you?\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
-	.string "I'd heard Archie bemoaning a child\n"
-	.string "who's been meddling in Team Aqua's\l"
-	.string "affairs.\p"
-	.string "It must be you he meant.\p"
 	.string "Humph! So you're thinking of\n"
 	.string "interfering with us, Team Magma?\p"
 	.string "Now you listen.\n"
@@ -682,3 +722,26 @@ MtChimney_Text_SawyerRematchDefeat: @ 82305E3
 MtChimney_Text_SawyerPostRematch: @ 8230614
 	.string "Actually, it really is hot here.\n"
 	.string "I'm overdressed for these parts.$"
+
+
+@==================================================================================================
+MC_DoAquaGroudonScene::
+	setvar VAR_RYU_AQUA, 128 @player is watching scene in mtchimney
+	applymovement 32, Common_Movement_FaceRight
+	waitmovement 32
+	delay 20
+	applymovement 32, Common_Movement_FaceLeft
+	waitmovement 32
+	delay 20
+	applymovement 32, Common_Movement_FaceUp
+	waitmovement 32
+	delay 20
+	setweather WEATHER_DROUGHT
+	doweather
+	playmoncry SPECIES_GROUDON, 0
+	waitmoncry
+	delay 60
+	warpsilent MAP_MOSSDEEP_CITY, 255, 46, 8
+	waitstate
+
+

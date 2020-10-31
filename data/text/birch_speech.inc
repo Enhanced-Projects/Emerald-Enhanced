@@ -6,21 +6,24 @@ gText_Birch_Pokemon:: @ 82C89FB
 
 gText_Birch_MainSpeech:: @ 82C8A1F
 	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Hello and welcome to\p"
-	.string "             {COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced v{STR_VAR_1}      \p" 
-	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I have spared you Birch's speech.\p"
-	.string "It's boring anyways.\n"
-    .string "Emerald Enhanced is quite\p"
-	.string "a bit more difficult than the\n"
-	.string "vanilla game.\p"
-	.string "Lastly, you should forget most\n"
-	.string "of what you remember from the\l"
-	.string "default story. $"
+	.string "             {COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced v{STR_VAR_1}      \p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}You can find us on Discord here:\n"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}https://discord.gg/UhmsDqHUHF {COLOR DARK_GREY}{SHADOW LIGHT_GREY}\p"
+	.string "Join the discord for guides,\n"
+	.string "useful information, and bug reports.\p"
+	.string "We look forward to seeing you!\p"
+	.string "As for the game itself, expect\n"
+	.string "it to be much harder than\p"
+	.string "vanilla, and don't try to follow\n"
+	.string "the normal storyline.\p"
+	.string "  We have replaced the vanilla\n"
+	.string "  storyline entirely.$"
 
 gText_Birch_AndYouAre:: @ 82C8BD0
-	.string "$"
+	.string " \n $"
 
 gText_Birch_BoyOrGirl:: @ 82C8BDD
-	.string "Would you like to play as a {COLOR LIGHT_BLUE}{SHADOW BLUE}male{COLOR DARK_GREY}{SHADOW LIGHT_GREY} or {COLOR LIGHT_RED}{SHADOW RED}female{SHADOW LIGHT_GREY}{COLOR DARK_GREY} \pcharacter?$"
+	.string "Would you like to play as a {COLOR LIGHT_BLUE}{SHADOW BLUE}male{COLOR DARK_GREY}{SHADOW LIGHT_GREY} or {COLOR LIGHT_RED}{SHADOW RED}female{SHADOW LIGHT_GREY}{COLOR DARK_GREY} \ncharacter?$"
 
 gText_Birch_WhatsYourName:: @ 82C8BFF
 	.string "What name would you like to\n"

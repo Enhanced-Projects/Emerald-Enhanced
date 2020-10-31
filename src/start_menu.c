@@ -826,7 +826,7 @@ void DrawDevonLogo(void)
     }
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 4, 12, 3, 2, 15, 76);
+    SetWindowTemplateFields(&template, 0, 4, 8, 3, 2, 15, 100);
     sPrintNumberWindow2Id = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindow2Id, 0);
     PutWindowTilemap(sPrintNumberWindow2Id);
@@ -850,7 +850,7 @@ void DrawAquaLogo(void)
 {
     struct WindowTemplate template;
 
-    if (FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA) == 1)
+    if (FlagGet(FLAG_RYU_DS_SHELLY_CLOSEFRIENDS) == 1)
     {
         LoadSpriteSheet(&AquaShellyLogoSheet);
         LoadSpritePalette(&AquaLogoPalette);
@@ -862,9 +862,9 @@ void DrawAquaLogo(void)
         LoadSpritePalette(&AquaLogoPalette);
         MenuSpriteId1 = (CreateSprite(&AquaLogoSpriteTemplate, 16, 80, 0));
     }
-
+    
     //prepare window
-    SetWindowTemplateFields(&template, 0, 4, 12, 3, 2, 15, 76);
+    SetWindowTemplateFields(&template, 0, 4, 8, 3, 2, 15, 100);
     sPrintNumberWindow2Id = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindow2Id, 0);
     PutWindowTilemap(sPrintNumberWindow2Id);
@@ -875,6 +875,7 @@ void DrawAquaLogo(void)
     ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_AQUA)), 0, 3);
     StringAppend(gRyuStringVar1, gStringVar2);
     AddTextPrinterParameterized(sPrintNumberWindow2Id, 1, gRyuStringVar1, 0, 0, 0, NULL);
+    
 }
 
 void DrawMagmaLogo(void)
@@ -895,7 +896,7 @@ void DrawMagmaLogo(void)
     }
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 4, 12, 3, 2, 15, 76);
+    SetWindowTemplateFields(&template, 0, 4, 8, 3, 2, 15, 100);
     sPrintNumberWindow2Id = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindow2Id, 0);
     PutWindowTilemap(sPrintNumberWindow2Id);

@@ -136,3 +136,90 @@ SlateportCity_SternsShipyard_1F_Text_GetSeasickEasily: @ 82085FF
 	.string "I get seasick real easily.\n"
 	.string "So I get to help out here instead.$"
 
+@=========================================aqua events
+
+SS_DevonEmployee1::
+	trainerbattle_single TRAINER_DEVON_ENFORCER_1 SS_Devon1Intro, SS_Devon1Defeat
+	msgbox SS_Devon1Msg
+	closemessage
+	goto_if_unset FLAG_TEMP_5, SS_DE1_MoveOutOfWay
+	end
+
+SS_DE1_MoveOutOfWay::
+	applymovement 9, Common_Movement_StepLeft
+	waitmovement 9
+	applymovement 9, Common_Movement_FaceDown
+	waitmovement 9
+	setflag FLAG_TEMP_5
+	releaseall
+	end
+
+SS_DevonEmployee2::
+	trainerbattle_single TRAINER_DEVON_ENFORCER_2 SS_Devon2Intro, SS_Devon2Defeat
+	msgbox SS_Devon2Msg
+	end
+
+SS_DevonEmployee3::
+	trainerbattle_single TRAINER_DEVON_ENFORCER_3 SS_Devon3Intro, SS_Devon3Defeat
+	msgbox SS_Devon3Msg
+	end
+
+SS_DevonEmployee4::
+	trainerbattle_single TRAINER_DEVON_ENFORCER_4 SS_Devon4Intro, SS_Devon4Defeat
+	msgbox SS_Devon4Msg
+	end
+
+SS_DevonEmployee5::
+	trainerbattle_single TRAINER_DEVON_ENFORCER_5 SS_Devon5Intro, SS_Devon5Defeat
+	msgbox SS_Devon5Msg
+	end
+
+SS_Devon1Intro:
+	.string "I knew a criminal would\nfind its way in here.$"
+
+SS_Devon1Defeat:
+	.string "When did criminals get so strong?$"
+
+SS_Devon1Msg:
+	.string "You're still a criminal.$"
+
+
+SS_Devon2Intro:	
+	.string "I could use a vacation.\nOh well, you should make for\la good diversion.$"
+
+SS_Devon2Defeat:
+	.string "I don't get paid enough\nfor this.$"
+
+SS_Devon2Msg:
+	.string "I'm still waiting to get\nmore vacation days...$"
+
+
+SS_Devon3Intro:
+	.string "If I can stop you, I'll\nget a big fat bonus.\pThat bonus is as good as mine!$"
+
+SS_Devon3Defeat:
+	.string "No! My bonus! Curse you!$"
+
+SS_Devon3Msg:
+	.string "What am I going to do for\nmy son's birthday now?$"
+
+
+SS_Devon4Intro:
+	.string "Stop right there, criminal scum!$"
+
+SS_Devon4Defeat:
+	.string "I may have lost, but there\nare always more enforcers.$"
+
+SS_Devon4Msg:
+	.string "I made sure the others knew\nthat you were here!$"
+
+
+SS_Devon5Intro:
+	.string "Devon was employed to provide\nsecurity for Stern.\pThat means end of the line\nfor you!$"
+
+SS_Devon5Defeat:
+	.string "Good thing there's more of us!$"
+
+SS_Devon5Msg:
+	.string "We'll definitely stop you\neventually!$"
+

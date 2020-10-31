@@ -1,6 +1,6 @@
 SlateportCity_MapScripts:: @ 81DCC61
 	map_script ON_TRANSITION, SlateportCity_OnTransition
-	@map_script ON_FRAME, SlateportCity_OnFrame
+	map_script ON_FRAME, SlateportCity_OnFrame
 	.byte 0
 
 SlateportCity_OnTransition: @ 81DCC6C
@@ -35,8 +35,9 @@ SlateportCity_EventScript_EnterSlateport:: @ 81DCC8D
 	setflag FLAG_VISITED_SLATEPORT_CITY
 	return
 
-@SlateportCity_OnFrame: @ 81DCD12
-	@.2byte 0\
+SlateportCity_OnFrame: @ 81DCD12
+	map_script_2 VAR_RYU_AQUA, 115, SC_AquaShellyCall
+	.2byte 0
 	
 SC1_LeafHouseSign::
 	msgbox SC1_LeafSignMsg
@@ -1295,3 +1296,20 @@ SlateportCity_Text_TakingBattleTentChallenge: @ 81DF28C
 	.string "After all, a tough Trainer is\n"
 	.string "the perfect fit for the Battle Tent!\p"
 	.string "Give it your best effort!$"
+
+
+@==================================================================================================Aqua Events
+
+SC_AquaShellyCall::
+	setvar VAR_RYU_AQUA, 117 @Player received the call from shelly to meet near weather institute
+	pokenavcall SC_ShellyAquaCallMsg
+	waitmessage
+	release
+	end
+
+SC_ShellyAquaCallMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, it's me, Shelly.\n"
+    .string "I...need to talk to you.\p"
+    .string "I'll be waiting for you on the bridge\n"
+    .string "next to the Weather Institute.\p"
+    .string "Please hurry!$"

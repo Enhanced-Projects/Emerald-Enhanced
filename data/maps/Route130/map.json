@@ -63,6 +63,19 @@
       "trainer_sight_or_berry_tree_id": "5",
       "script": "Route130_EventScript_Santiago",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_KYOGRE_3",
+      "x": 25,
+      "y": 24,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "R130_Kyogre",
+      "flag": "FLAG_RYU_KYOGRE"
     }
   ],
   "warp_events": [

@@ -1,12 +1,17 @@
 SlateportCity_Harbor_MapScripts:: @ 820C97D
 	map_script ON_TRANSITION, SlateportCity_Harbor_OnTransition
+	map_script ON_FRAME, SCH_CheckAquaEvent
 	.byte 0
 
+SCH_CheckAquaEvent:
+	map_script_2 VAR_RYU_AQUA, 102, SCH_AquaEvent
+	.2byte 0
+
 SlateportCity_Harbor_OnTransition: @ 820C983
+	compare VAR_RYU_AQUA, 100
+	goto_if_eq SCH_SetupAquaScene
 	setescapewarp MAP_SLATEPORT_CITY, 255, 28, 13
 	setvar VAR_TEMP_1, 0
-	compare VAR_SLATEPORT_HARBOR_STATE, 1
-	call_if_eq SlateportCity_Harbor_EventScript_ReadyAquaEscapeScene
 	call_if_set FLAG_SYS_GAME_CLEAR, SlateportCity_Harbor_EventScript_ShowSSTidal
 	end
 
@@ -14,72 +19,23 @@ SlateportCity_Harbor_EventScript_ShowSSTidal:: @ 820C9A5
 	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SS_TIDAL
 	return
 
-SlateportCity_Harbor_EventScript_ReadyAquaEscapeScene:: @ 820C9A9
-	savebgm MUS_AQA_0
-	setobjectxyperm 4, 12, 13
-	setobjectmovementtype 4, MOVEMENT_TYPE_FACE_LEFT
+SCH_SetupAquaScene::
+	setvar VAR_RYU_AQUA, 102
+	setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SS_TIDAL
+	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW
 	setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS
-	return
-
-SlateportCity_Harbor_EventScript_AquaEscapeTrigger0:: @ 820C9BB
-	lockall
-	setvar VAR_0x8008, 0
-	goto SlateportCity_Harbor_EventScript_AquaEscapeScene
+	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN
+	addobject 9
+	addobject 7
+	addobject 8
 	end
 
-SlateportCity_Harbor_EventScript_AquaEscapeTrigger1:: @ 820C9C7
-	lockall
-	setvar VAR_0x8008, 1
-	goto SlateportCity_Harbor_EventScript_AquaEscapeScene
-	end
-
-SlateportCity_Harbor_EventScript_AquaEscapeTrigger2:: @ 820C9D3
-	lockall
-	setvar VAR_0x8008, 2
-	goto SlateportCity_Harbor_EventScript_AquaEscapeScene
-	end
-
-SlateportCity_Harbor_EventScript_AquaEscapeTrigger3:: @ 820C9DF
-	lockall
-	setvar VAR_0x8008, 3
-	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Harbor_Movement_PlayerWalkUp
-	waitmovement 0
-	goto SlateportCity_Harbor_EventScript_AquaEscapeScene
-	end
-
-SlateportCity_Harbor_EventScript_AquaEscapeScene:: @ 820C9F5
-	applymovement 7, Common_Movement_WalkInPlaceFastestDown
-	waitmovement 0
-	applymovement 6, Common_Movement_WalkInPlaceFastestDown
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
-	waitmovement 0
-	msgbox SlateportCity_Harbor_Text_ArchieYouAgainHideoutInLilycove, MSGBOX_DEFAULT
-	closemessage
-	applymovement 6, SlateportCity_Harbor_Movement_AquaBoardSub
-	applymovement 7, SlateportCity_Harbor_Movement_AquaBoardSub
-	applymovement 8, SlateportCity_Harbor_Movement_SubmarineExit
-	waitmovement 0
-	removeobject 6
-	removeobject 7
-	removeobject 8
-	setvar VAR_SLATEPORT_HARBOR_STATE, 2
-	setflag FLAG_MET_TEAM_AQUA_HARBOR
-	setflag FLAG_HIDE_LILCOVE_MOTEL_SCOTT
-	compare VAR_0x8008, 0
-	call_if_eq SlateportCity_Harbor_EventScript_SternApproachPlayer0
-	compare VAR_0x8008, 1
-	call_if_eq SlateportCity_Harbor_EventScript_SternApproachPlayer1
-	compare VAR_0x8008, 2
-	call_if_eq SlateportCity_Harbor_EventScript_SternApproachPlayer
-	compare VAR_0x8008, 3
-	call_if_eq SlateportCity_Harbor_EventScript_SternApproachPlayer
-	msgbox SlateportCity_Harbor_Text_CaptSternWhyStealMySubmarine, MSGBOX_DEFAULT
-	closemessage
-	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE
-	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE
-	copyobjectxytoperm 4
-	setobjectmovementtype 4, MOVEMENT_TYPE_FACE_RIGHT
-	releaseall
+SCH_CantLeaveYet::
+	compare VAR_RYU_AQUA, 102
+	goto_if_ne ryu_end
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
 	end
 
 SlateportCity_Harbor_EventScript_SternApproachPlayer0:: @ 820CA89
@@ -102,37 +58,6 @@ SlateportCity_Harbor_EventScript_SternApproachPlayer:: @ 820CAB3
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	return
-
-SlateportCity_Harbor_Movement_AquaBoardSub: @ 820CAC8
-	delay_16
-	delay_16
-	jump_up
-	set_invisible
-	step_end
-
-@ Unused, Archie instead shares above identical movement script with Grunt
-SlateportCity_Harbor_Movement_ArchieBoardSub: @ 820CACD
-	delay_16
-	delay_16
-	jump_up
-	set_invisible
-	step_end
-
-SlateportCity_Harbor_Movement_SubmarineExit: @ 820CAD2
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	walk_right
-	walk_right
-	walk_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	step_end
 
 SlateportCity_Harbor_Movement_SternApproachPlayer0: @ 820CAE0
 	walk_left
@@ -292,25 +217,6 @@ SlateportCity_Harbor_EventScript_FatMan:: @ 820CC99
 	msgbox SlateportCity_Harbor_Text_SubTooSmallForMe, MSGBOX_NPC
 	end
 
-SlateportCity_Harbor_EventScript_CaptStern:: @ 820CCA2
-	end
-
-SlateportCity_Harbor_EventScript_WhyStealSubmarine:: @ 820CCDF
-	msgbox SlateportCity_Harbor_Text_CaptSternWhyStealMySubmarine, MSGBOX_DEFAULT
-	release
-	end
-
-SlateportCity_Harbor_EventScript_TeamAquaLeftNeedDive:: @ 820CCE9
-	setflag FLAG_EVIL_TEAM_ESCAPED_STERN_SPOKE
-	msgbox SlateportCity_Harbor_Text_TeamAquaLeftNeedDive, MSGBOX_DEFAULT
-	release
-	end
-
-SlateportCity_Harbor_EventScript_NeedDive:: @ 820CCF6
-	msgbox SlateportCity_Harbor_Text_NeedDiveToCatchSub, MSGBOX_DEFAULT
-	release
-	end
-
 SlateportCity_Harbor_EventScript_CaptSternFerryOrScannerComment:: @ 820CD00
 	compare VAR_TEMP_1, 1
 	goto_if_eq SlateportCity_Harbor_EventScript_TradedScanner
@@ -351,7 +257,6 @@ SlateportCity_Harbor_EventScript_DeepSeaTooth:: @ 820CD7B
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	removeitem ITEM_SCANNER, 1
 	msgbox SlateportCity_Harbor_Text_HandedScannerToStern, MSGBOX_DEFAULT
-	setflag FLAG_EXCHANGED_SCANNER
 	goto SlateportCity_Harbor_EventScript_TradedScanner
 	end
 
@@ -364,7 +269,6 @@ SlateportCity_Harbor_EventScript_DeepSeaScale:: @ 820CDBB
 	goto_if_eq Common_EventScript_ShowBagIsFull
 	removeitem ITEM_SCANNER, 1
 	msgbox SlateportCity_Harbor_Text_HandedScannerToStern, MSGBOX_DEFAULT
-	setflag FLAG_EXCHANGED_SCANNER
 	goto SlateportCity_Harbor_EventScript_TradedScanner
 	end
 
@@ -445,46 +349,6 @@ SlateportCity_Harbor_Text_SubTooSmallForMe: @ 820D194
 	.string "If I squeezed in, there wouldn't be\n"
 	.string "any room for the Captain…$"
 
-SlateportCity_Harbor_Text_SameThugsTriedToRobAtMuseum: @ 820D232
-	.string "Capt. Stern: Those thugs…\p"
-	.string "They're the same lot who tried to rob\n"
-	.string "the Devon Goods at the Museum.$"
-
-SlateportCity_Harbor_Text_ArchieYouAgainHideoutInLilycove: @ 820D291
-	.string "Archie: Oh?\n"
-	.string "Not you again…\p"
-	.string "You are tenacious to track us here,\n"
-	.string "that much I will give you.\p"
-	.string "But now…\n"
-	.string "No one can stop us! No one!\p"
-	.string "Or, will you follow us back to our\n"
-	.string "Hideout in Lilycove City?\p"
-	.string "Fwahahahaha…$"
-
-SlateportCity_Harbor_Text_CaptSternWhyStealMySubmarine: @ 820D35A
-	.string "Capt. Stern: Why…\p"
-	.string "Why would Team Aqua steal my\n"
-	.string "Submarine Explorer 1?\p"
-	.string "They can't be after the slumbering\n"
-	.string "Pokémon at the bottom of the sea…\p"
-	.string "But even if I were to chase them,\n"
-	.string "I don't stand a chance against them…$"
-
-SlateportCity_Harbor_Text_TeamAquaLeftNeedDive: @ 820D42B
-	.string "Capt. Stern: Oh, {PLAYER}…\p"
-	.string "Okay… So Team Aqua left before you\n"
-	.string "could stop them…\p"
-	.string "Oh, no, don't blame yourself.\n"
-	.string "You're not responsible for this.\p"
-	.string "Trying to catch a submarine…\n"
-	.string "It's impossible for most people.\p"
-	.string "You would need a Pokémon that knows\n"
-	.string "how to Dive…\p"
-	.string "Perhaps if you went out to\n"
-	.string "Mossdeep City…\p"
-	.string "A lot of divers live out there, so\n"
-	.string "someone might teach you…$"
-
 SlateportCity_Harbor_Text_NeedDiveToCatchSub: @ 820D58A
 	.string "Capt. Stern: Trying to catch a\n"
 	.string "submarine… It's impossible.\p"
@@ -543,3 +407,122 @@ SlateportCity_Harbor_Text_HandedScannerToStern: @ 820D94A
 SlateportCity_Harbor_Text_ThisWillHelpResearch: @ 820D970
 	.string "Capt. Stern: Thanks, {PLAYER}!\n"
 	.string "This will help our research a lot!$"
+
+@==================================================================================================Aqua
+
+SCH_AquaEvent::
+	applymovement OBJ_EVENT_ID_PLAYER, SCH_WalktoStern
+	msgbox SCH_NowThenCapt
+	closemessage
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox SCH_YouWillNot
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, SCH_HitStern
+	playse SE_W003
+	waitse
+	fadescreen FADE_TO_BLACK
+	setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN
+	removeobject 4
+	fadescreen FADE_FROM_BLACK
+	msgbox GoodRiddance
+	closemessage
+	applymovement 8, Common_Movement_FaceUp
+	waitmovement 8
+	msgbox SCH_AhSeemsLike
+	closemessage
+	applymovement 8, Common_Movement_FaceDown
+	waitmovement 8
+	msgbox SCH_NowThenPlayer
+	closemessage
+	playse SE_DOOR
+	waitse
+	applymovement 8, Common_Movement_FaceUp
+	applymovement 7, Common_Movement_FaceUp
+	waitmovement 7
+	setflag FLAG_RYU_HIDE_REL_OBJECTS
+	removeobject 8
+	removeobject 7
+	applymovement 6, SCH_SubExits @ right 18, remove
+	waitmovement 6
+	removeobject 6
+	setvar VAR_RYU_AQUA, 108 @player should be headed to Mossdeep to meet with Matt
+	clearflag FLAG_RYU_HIDE_MOSSDEEP_MATT
+	release
+	end
+	
+SCH_NowThenCapt:
+	.string "Now then, Capt. Stern, in the name\n"
+    .string "of Team Aqua, I'll be taking command\l"
+    .string "of this here vessel!$"
+
+SCH_YouWillNot:
+	.string "You absolutely will not!\n"
+    .string "You think you can just waltz in her-$"
+
+GoodRiddance:
+	.string "Good riddance.$"
+	
+SCH_AhSeemsLike:
+	.string "Ah, seems like the crew's all set.$"
+	
+SCH_NowThenPlayer:
+	.string "Now then, {PLAYER}, I'd actually like\n"
+    .string "for you to be stationed in Mossdeep\l"
+    .string "City.\p"
+    .string "Matt should already have arrived so\n"
+    .string "rendezvous with him and witness our\l"
+    .string "glory unfold!$"
+
+
+SCH_WalktoStern:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+	
+SCH_HitStern:
+	walk_in_place_fast_up
+	step_end
+	
+SCH_SubExits:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+SCH_SetInvisible::
+	set_invisible
+	step_end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

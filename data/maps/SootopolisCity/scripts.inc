@@ -6,6 +6,10 @@ SootopolisCity_MapScripts:: @ 81E565C
 	
 SC_DoMagmaCheck::
 	map_script_2 VAR_TEMP_A, 0, Ryu_CheckMagmaStatusForMissionCall
+	map_script_2 VAR_RYU_AQUA, 114, MDC_DoMossDeepScene2
+	map_script_2 VAR_RYU_AQUA, 122, MDC_ScenePart4
+	map_script_2 VAR_RYU_AQUA, 128, MDC_ScenePart6
+	map_script_2 VAR_RYU_AQUA, 150, MDC_FinalScene
 	.2byte 0
 
 SootopolisCity_OnResume: @ 81E590B

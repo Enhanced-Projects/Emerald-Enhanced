@@ -256,3 +256,249 @@ MtPyre_Summit_Text_HoennTrioTale: @ 823325D
 
 MP_OldPeopleGiveEonTicket:
 	.string "Hello, there, child. We were\ninstructed to give this to you.\p... ... ... ... ...\pWho instructed us?\nThe powers that be.  It's your fate.$"
+
+@===================================================================================================Aqua
+
+MPS_Aqua_StartMinibossBattle::
+	switch VAR_RYU_AQUA
+	case 88, MPS_AquaMiniBossFight1
+	case 92, MPS_AquaMiniBossFight1
+	case 94, MPS_AfterCourtney
+	goto ryu_end
+	
+MPS_AquaMiniBossFight1::
+	setvar VAR_RYU_AQUA, 92
+	addobject 14
+	applymovement 14 MPS_MattToPlayer
+	waitmovement 14
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MPS_MattBackup
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, MPS_PlayerToCourtney
+	applymovement 14, MPS_MattToTabitha
+	waitmovement 14
+	msgbox MPS_TabithaMattBattleIntro
+	closemessage
+	msgbox MPS_CourtneyBattleIntro
+	closemessage
+	trainerbattle_single TRAINER_COURTNEY_3, MPS_Courtney_Intro, MPS_Courtney_Defeat, MPS_AfterCourtney
+	goto MPS_AfterCourtney
+	
+MPS_AfterCourtney::
+	setvar VAR_RYU_AQUA, 94 @Player defeated Courtney, Maxie coming in
+	msgbox MPS_MaxieSirDefeated
+	closemessage
+	applymovement 15, MPS_MaxieToPlayer
+	waitmovement 15
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MPS_SoYouveComeAgain
+	closemessage
+	trainerbattle_single TRAINER_MAXIE_MAGMA_HIDEOUT, MPS_Maxie_Intro, MPS_Maxie_Defeat, MPS_AfterMaxie
+	goto MPS_AfterMaxie
+	
+MPS_AfterMaxie::
+	setflag FLAG_RYU_HIDE_NPCS_MTPYRE_SUMMIT
+	call MPS_RemoveAquaMagmaObjects
+	setvar VAR_RYU_AQUA, 96 @player defeated Maxie in mt pyre
+	addobject 16
+	addobject 17
+	applymovement 17, MPS_ArchieToPlayer @delay 16, 7 up
+	applymovement 16, MPS_ShellyToPlayer @7 up, 1 right
+	waitmovement 17
+	msgbox MPS_Player
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 17, Common_Movement_FaceLeft
+	waitmovement 17
+	msgbox MPS_YouAlongWith
+	closemessage
+	applymovement 17, MPS_ArchieToOldPpl
+	waitmovement 17
+	msgbox MPS_SoThatMagma
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, MPS_PlayerToArchieOldCouple
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 17, Common_Movement_FaceDown
+	waitmovement 17
+	giveitem ITEM_RED_ORB, 1
+	msgbox MPS_JoinMeAt
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject 14
+	removeobject 16
+	removeobject 17
+	setvar VAR_RYU_AQUA, 100 @Player finished MtPyre, now headed to slateport harbor
+	fadescreen FADE_FROM_BLACK
+	release
+	end
+	
+MPS_MattBackup:
+	.string "{PLAYER}! Wait!\nI'll help you out.$"
+	
+MPS_TabithaMattBattleIntro:
+	.string "I'll not allow you to take another\n"
+    .string "towards Maxie!$"
+
+MPS_CourtneyBattleIntro:
+	.string "I'm going to delete you once and for\n"
+    .string "all!$"
+
+MPS_Courtney_Intro:
+	.string "Prepare to be deleted.$"
+	
+MPS_Courtney_Defeat:
+	.string "Impossible...$"
+	
+MPS_MaxieSirDefeated:
+	.string "Maxie, sir...\p"
+    .string "Deleted...?$"
+
+MPS_SoYouveComeAgain:
+	.string "So...you've come again to hinder\n"
+    .string "progress.\p"
+    .string "Know that I was showing restraint\n"
+    .string "against you during our first battle,\l"
+    .string "but this is a different story.\p"
+    .string "You shall experience pain!$"
+	
+MPS_Maxie_Intro:
+	.string "I will not lose!$"
+	
+MPS_Maxie_Defeat:
+	.string "No... I've failed?!$"
+	
+MPS_Player:
+	.string "{PLAYER}!$"
+
+MPS_YouAlongWith:
+	.string "You, along with the rest of the crew\n"
+    .string "have cleared the way for us.\p"
+    .string "The Blue Orb is ours!\p"
+    .string "Now, nothing will stop us from\n"
+    .string "shaping Hoenn into our beloved\l"
+    .string "utopia!$"
+
+MPS_SoThatMagma:
+	.string "So that Magma doesn't show up later,\n"
+    .string "claim the Red Orb for yourself.$"
+
+MPS_JoinMeAt:
+	.string "Join me at Slateport's Pier.\p"
+    .string "The submarine that Cpt. Stern and\n"
+    .string "his crew put together is just the\l"
+    .string "vessel we need for our expedition.$"
+
+
+MPS_MattToPlayer:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+MPS_PlayerToCourtney:
+	walk_up
+	walk_right
+	step_end
+
+MPS_MattToTabitha:
+	delay_16
+	walk_up
+	walk_up
+	walk_left
+	step_end
+	
+MPS_MaxieToPlayer:
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	face_down
+	step_end
+	
+MPS_ArchieToPlayer: @delay 16, 7 up
+	delay_16
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	face_right
+	step_end
+	
+MPS_ShellyToPlayer: @7 up, 1 right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	face_right
+	step_end
+	
+MPS_ArchieToOldPpl:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	
+MPS_PlayerToArchieOldCouple:
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+MPS_RemoveAquaMagmaObjects::
+	removeobject 4
+	removeobject 5
+	removeobject 6
+	removeobject 7
+	removeobject 8
+	removeobject 9
+	removeobject 10
+	removeobject 11
+	removeobject 12
+	removeobject 13
+	removeobject 15
+	return
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -601,3 +601,123 @@ Route119_EventScript_DoorIsLocked:: @ placeholder
 
 Route119_Text_DoorIsLocked: @ placeholder
 	.string "The door is locked.$"
+
+
+@==================================================================================================Aqua
+R119_ShellyAqua::
+	addobject 43
+	getplayerxy VAR_TEMP_8, VAR_TEMP_9
+	compare VAR_TEMP_9, 33
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	call_if_eq R119_ShellyUp1
+	applymovement 43, R119_ShellyToPlayer
+	waitmovement 43
+	setvar VAR_RYU_AQUA, 121 @Player is meeting shelly on route 119
+	msgbox R119_HeyWhatsGoing
+	closemessage
+	applymovement 43, Common_Movement_FaceDown
+	waitmovement 43
+	msgbox R119_ItSoundsPleasant
+	closemessage
+	applymovement 43, Common_Movement_FaceLeft
+	waitmovement 43
+	msgbox R119_EvenIfIDid
+	closemessage
+	delay 30
+	msgbox R119_PlayerImDevoted
+	closemessage
+	applymovement 43, Common_Movement_StepLeft
+	waitmovement 43
+	applymovement 43, Common_Movement_FaceLeft
+	waitmovement 43
+	msgbox R119_ShellyHugsPlayer
+	closemessage
+	applymovement 43, Common_Movement_StepRight
+	waitmovement 43
+	applymovement 43, Common_Movement_FaceLeft
+	waitmovement 43
+	msgbox R119_AnywaysTakeThese
+	closemessage
+	applymovement 43, Common_Movement_FaceDown
+	waitmovement 43
+	applymovement 43, Common_Movement_WalkInPlaceFastestDown
+	waitmovement 43
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject 43
+	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setobjectxy 43, 0, 0
+	setvar VAR_RYU_AQUA, 123 @Player met with shelly on route 119, Player should get to 7 badges. 
+	release
+	end
+	
+R119_HeyWhatsGoing:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Hey..what's going on?\p"
+    .string "You sounded upset when you\n"
+    .string "called.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}It's about Team Aqua.\n"
+    .string "Or rather...Archie.\p"
+    .string "He intends to use the power of the\n"
+    .string "legendary Kyogre to realize his\l"
+    .string "vision...a utopia for all pokémon.$"
+
+R119_ItSoundsPleasant:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}It sounds pleasant on paper, but I've\n"
+    .string "always had my worries.\p"
+    .string "The info I received from my contact\n"
+    .string "in the Weather Institute confirmed my\l"
+    .string "suspicions.\p"
+    .string "Our utopia, and the world Kyogre will\n"
+    .string "create...are two completely different\l"
+    .string "things.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Have you talked to him about it?$"
+	
+R119_EvenIfIDid:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Even if I did, he won't listen.\p"
+    .string "Besides, he's already stormed off to\n"
+    .string "Mt. Pyre to claim the Blue Orb.\p"
+    .string "Everything's going to plan as far as\n"
+    .string "he's concerned.\p"
+    .string "There's no way I can stop him.$"
+
+
+R119_PlayerImDevoted:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}...I'm devoted to Team Aqua,\n"
+    .string "but...I'm honestly afraid of what's\l"
+    .string "to come.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}We'll get through this babe...\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}How can you be so sure?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Because...we have no other choice.\p"
+    .string "We'll figure something out to get\n"
+    .string "Archie to come to his senses.$"
+
+R119_ShellyHugsPlayer:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly hugs {PLAYER}.)\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I really hope so...$"
+	
+R119_AnywaysTakeThese:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Anyways, I'll take those documents.\p"
+    .string "It'll help in remodeling the sub.\p"
+    .string "Hopefully it wasn't too much of a\n"
+    .string "hassle.\p"
+    .string " {COLOR LIGHT_BLUE}{SHADOW BLUE}(If you only knew...)\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'll call you once it's complete.\n"
+    .string "See you...$"
+
+
+R119_ShellyToPlayer:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+R119_ShellyUp1:
+	applymovement 43, Common_Movement_StepUp
+	waitmovement 43
+	return

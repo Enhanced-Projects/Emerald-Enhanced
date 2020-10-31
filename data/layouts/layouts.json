@@ -5280,6 +5280,26 @@
       "secondary_tileset": "gTileset_Underwater",
       "border_filepath": "data/layouts/DebugMap/border.bin",
       "blockdata_filepath": "data/layouts/DebugMap/map.bin"
+    },
+    {
+      "id": "LAYOUT_STORY_MAP_KYOGRE_CHASE",
+      "name": "StoryMap_KyogreChase_Layout",
+      "width": 80,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/StoryMap_KyogreChase/border.bin",
+      "blockdata_filepath": "data/layouts/StoryMap_KyogreChase/map.bin"
+    },
+    {
+      "id": "LAYOUT_AQUA_SUBMARINE",
+      "name": "AquaSubmarine_Layout",
+      "width": 9,
+      "height": 24,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/AquaSubmarine/border.bin",
+      "blockdata_filepath": "data/layouts/AquaSubmarine/map.bin"
     }
   ]
 }

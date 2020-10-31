@@ -11,16 +11,38 @@ ACO_EntranceScriptTrigger::
 	switch VAR_RYU_AQUA
 	case 5, ACO_StartAquaQuest
 	case 10, ryu_end
-	case 55, ryu_end
-	case 72, ryu_end
-	case 80, ryu_end
+	compare VAR_RYU_AQUA, 105
+	goto_if_eq ACO_PlayerShellyReturnFromJaggedPass
+	compare VAR_RYU_AQUA, 55
+	goto_if_ge ryu_end	
 	goto ACO_BlockEntry
+	
+ACO_PlayerShellyReturnFromJaggedPass:
+	lockall
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepRight
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	turnobject OBJ_EVENT_ID_FOLLOWER, DIR_NORTH
+	msgbox ACO_WereBack
+	closemessage
+	applymovement OBJ_EVENT_ID_FOLLOWER, ACO_ShellyFromplayerToDesk
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	setvar VAR_RYU_AQUA, 107 @Player returned to the aqua office from jagged pass. Player should see shelly for rewards.
+	call RF_FollowerLeaveCall
+	release
+	end
 
 ACO_Shelly::
 	compare VAR_RYU_AQUA, 72
 	goto_if_lt ryu_end
-	compare VAR_RYU_AQUA, 80
-	goto_If_eq ACO_AquaStage3_Waitforcall
+	switch VAR_RYU_AQUA
+	case 80, ACO_AquaStage3_Waitforcall
+	case 81, ACO_AquaStage3_Waitforcall
+	case 85, ACO_PlayerReturnedFromChimneyWithNecklace
+	case 91, ACO_PlayerWaitingForCallRomance
+	case 107, ACO_ShellyAfterJaggedPassRomanceEvent
+	case 111, ACO_PlayerShouldGoToShipyard
 	lockall
 	msgbox ACO_SoHowDid
 	closemessage
@@ -37,12 +59,183 @@ ACO_Shelly::
 	setvar VAR_RYU_AQUA, 80
 	release
 	end
+
+ACO_ShellyAfterJaggedPassRomanceEvent::
+	setflag FLAG_RYU_DS_SHELLY_CLOSEFRIENDS
+	setvar VAR_RYU_AQUA, 109 @player talked to shelly after returning from jagged pass
+	msgbox ACO_ThatWasAClose
+	closemessage
+	applymovement 1, ACO_ShellyWalkAroundDesk 
+	waitmovement 1
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox ACO_PlayerAchievedQuartermaster
+	playfanfare MUS_FANFA4
+	waitfanfare
+	closemessage
+	delay 30
+	msgbox ACO_YouNoticeShelly
+	closemessage
+	applymovement 1, Common_Movement_FaceLeft
+	waitmovement 1
+	playse SE_PIN
+	applymovement 1, Common_Movement_HeartEmote
+	waitmovement 1
+	delay 20
+	applymovement 1, Common_Movement_StepLeft
+	waitmovement 1
+	turnobject 1, DIR_WEST
+	msgbox ACO_ThatsToCongrat
+	closemessage
+	applymovement 1, ACO_ShellyBackBehindDesk @2 up, 2 left, face down
+	waitmovement 1
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox ACO_NowTheresSomething
+	closemessage
+	setvar VAR_RYU_AQUA, 111 @player should head to slateport shipyard to fight the enemies there.
+	clearflag FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES
+	warpsilent MAP_LILYCOVE_CITY, 255, 48, 9
+	waitstate
+
+ACO_PlayerShouldGoToShipyard:
+	msgbox ACO_PlayerGoToShipyardMsg
+	closemessage
+	release
+	end
+
+ACO_PlayerWaitingForCallRomance:
+	msgbox ACO_AquaStage3_WaitForCallMsg
+	release
+	end
+
+ACO_PlayerReturnedFromChimneyWithNecklace:: @Romance line is much longer than non-romance line
+	setvar VAR_RYU_AQUA, 87 @Player is giving necklace to Shelly. 
+	msgbox ACO_SoHowDid
+	closemessage
+	applymovement 1, Common_Movement_FaceLeft
+	waitmovement 1
+	msgbox ACO_LostInThought
+	setflag FLAG_RYU_DS_SHELLY_FRIENDS
+	closemessage
+	applymovement 1, Common_Movement_FaceDown
+	waitmovement 1
+	msgbox ACO_HmmWhatsThis
+	closemessage
+	delay 30
+	msgbox ACO_ShellyGiggles
+	closemessage
+	delay 30
+	msgbox ACO_ToBeFrank
+	closemessage
+	playse SE_PIN
+	applymovement 1, Common_Movement_ExclamationMark
+	waitmovement 1
+	msgbox ACO_OhHeresYourPayment2
+	setvar VAR_TEMP_B, 10000
+	addmoney VAR_TEMP_B
+	setvar VAR_RYU_AQUA, 91 @Player is doing romance line, wait for 6 badges.
+	release
+	end
 	
 ACO_AquaStage3_Waitforcall:
 	msgbox ACO_AquaStage3_WaitForCallMsg
 	release
 	end
+
+
+ACO_ThatWasAClose:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}That was a close one.\p"
+    .string "We barely averted the disaster that\n"
+    .string "would've been if Groudon had been\l"
+    .string "awakened...and yet...\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Is something wrong?\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}It's nothing, don't worry about it.\p"
+    .string "Come to think of it, I believe you\n"
+    .string "deserve a promotion.$"
+
+ACO_PlayerAchievedQuartermaster:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} has risen to Quartermaster!\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Again, another fancy term, but for an\n"
+    .string "Admin.\p"
+    .string "That's right, now we're equals, so\n"
+    .string "congratulations, you've earned it.$"
 	
+ACO_YouNoticeShelly:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You notice that Shelly is wearing\n"
+    .string " the necklace you gave her.)\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I was right...it really suits you.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Ah, so you noticed...well then...$"
+
+ACO_ThatsToCongrat:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}That's to congratulate you on your\n"
+    .string "promotion.\p"
+    .string "Don't expect anything else!$"
+
+ACO_NowTheresSomething:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Now, there's something I need to\n"
+    .string "verify.\p"
+    .string "In the meantime, I need you to head\n"
+    .string "over to Stern's Shipyard in Slateport\p"
+    .string "to retrieve files about the submarine\n"
+    .string "we've taken off their hands.\p"
+    .string "Be careful, though.\p"
+    .string "At this point, it must be crawling\n"
+    .string "with law enforcement.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Got it, see you soon.$"
+
+ACO_PlayerGoToShipyardMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}You should be heading to the\nshipyard in Slateport.$"
+
+ACO_ShellyBackBehindDesk:
+	walk_right
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	face_down
+	step_end
+
+ACO_ShellyWalkAroundDesk:
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+ACO_WereBack:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah Finally, air conditioning.\pIt was way too hot there!\nSee me at my desk.$"
+
+ACO_LostInThought:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (She seems lost in thought...\n You take this opportunity\l to give her the necklace.)$"
+
+ACO_HmmWhatsThis:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hm...? What's this?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}It's something I got made for you.\n"
+    .string "Thought it'd look best on a beauty\l"
+    .string "such as yourself...$"
+
+ACO_ShellyGiggles:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly giggles.)\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I knew you were bold, but not this\n"
+    .string "bold...I underestimated you!$"
+
+ACO_ToBeFrank:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}To be frank, I've noticed quite a few\n"
+    .string "of the crew have been eyeing me for\p"
+    .string "a while, and yet none of them had the\n"
+    .string "guts to step up...until now, that is.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}So...?\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'll think about it.\p"
+    .string "I really appreciate the thoughtful\n"
+    .string "gift.$"
+
+ACO_OhHeresYourPayment2:
+	.string "Oh, here's your payment.\n"
+    .string "Keep up the good work.\p"
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} received ¥10,000.\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'll call you when there's more work.$"
+
 ACO_OhHeresYourPayment:
 	.string "Oh, here's your payment.\n"
     .string "Keep up the good work.\p"
@@ -58,6 +251,16 @@ ACO_SoHowDid:
 
 ACO_AquaStage3_WaitForCallMsg:
 	.string "I'll call you when there's\nmore work to do.$"
+
+ACO_ShellyFromplayerToDesk:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
 
 ACO_StartAquaQuest::
 	msgbox ACO_WelcomeToAqueus
