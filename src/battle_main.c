@@ -1817,7 +1817,7 @@ u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStr
     // Allows overriding the autoscaling from scripts.
     // Usually, this will just be 2 to make sure we don’t generate level 0 or 1 mons.
     u8 minLevel = VarGet(VAR_RYU_AUTOSCALE_MIN_LEVEL) + (Random() % 5);
-    u8 maxLevel = GetCurrentMaxLevel();
+    u8 maxLevel = MAX_LEVEL;
 
     if (maxScale)
         return maxLevel;

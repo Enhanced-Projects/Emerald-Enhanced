@@ -3094,7 +3094,7 @@ u8 GetLevelFromMonExp(struct Pokemon *mon)
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 exp = GetMonData(mon, MON_DATA_EXP, NULL);
     s32 level = 1;
-    u8 maxLevel = GetCurrentMaxLevel();
+    u8 maxLevel = MAX_LEVEL;
 
     while (level <= maxLevel && gExperienceTables[gBaseStats[species].growthRate][level] <= exp)
         level++;
@@ -3107,7 +3107,7 @@ u8 GetLevelFromBoxMonExp(struct BoxPokemon *boxMon)
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     u32 exp = GetBoxMonData(boxMon, MON_DATA_EXP, NULL);
     s32 level = 1;
-    u8 maxLevel = GetCurrentMaxLevel();
+    u8 maxLevel = MAX_LEVEL;
 
     while (level <= maxLevel && gExperienceTables[gBaseStats[species].growthRate][level] <= exp)
         level++;
@@ -4722,7 +4722,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 retVal = FALSE;
             }
             if ((itemEffect[cmdIndex] & ITEM3_LEVEL_UP)
-             && GetMonData(mon, MON_DATA_LEVEL, NULL) != GetCurrentMaxLevel())
+             && GetMonData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL)
             {
                 dataUnsigned = gExperienceTables[gBaseStats[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
                 SetMonData(mon, MON_DATA_EXP, &dataUnsigned);
@@ -6128,7 +6128,7 @@ bool8 TryIncrementMonLevel(struct Pokemon *mon)
     u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
     u8 nextLevel = GetMonData(mon, MON_DATA_LEVEL, 0) + 1;
     u32 expPoints = GetMonData(mon, MON_DATA_EXP, 0);
-    u8 maxLevel = GetCurrentMaxLevel();
+    u8 maxLevel = MAX_LEVEL;
     if (expPoints > gExperienceTables[gBaseStats[species].growthRate][maxLevel])
     {
         expPoints = gExperienceTables[gBaseStats[species].growthRate][maxLevel];

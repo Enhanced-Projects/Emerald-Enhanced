@@ -4985,7 +4985,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
     u16 *itemPtr = &gSpecialVar_ItemId;
     bool8 cannotUseEffect;
 
-    if (GetMonData(mon, MON_DATA_LEVEL) != GetCurrentMaxLevel())
+    if (GetMonData(mon, MON_DATA_LEVEL) != MAX_LEVEL)
     {
         BufferMonStatsToTaskData(mon, arrayPtr);
         cannotUseEffect = ExecuteTableBasedItemEffect_(gPartyMenu.slotId, *itemPtr, 0);
@@ -5750,13 +5750,13 @@ static u8 GetBattleEntryLevelCap(void)
     switch (VarGet(VAR_FRONTIER_FACILITY))
     {
     case FACILITY_MULTI_OR_EREADER:
-        return GetCurrentMaxLevel();
+        return MAX_LEVEL;
     case FACILITY_UNION_ROOM:
         return 30;
     default: // Battle Frontier
         if (gSpecialVar_0x8004 == FRONTIER_LVL_50)
             return 50;
-        return GetCurrentMaxLevel();
+        return MAX_LEVEL;
     }
 }
 

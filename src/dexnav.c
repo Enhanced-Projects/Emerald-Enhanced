@@ -1270,7 +1270,7 @@ static u8 DexNavTryGenerateMonLevel(u16 species, u8 environment)
     if (Random() % 100 < 4)
         levelBonus += 10; //4% chance of having a +10 level
 
-    return min(levelBase + levelBonus, GetCurrentMaxLevel());
+    return min(levelBase + levelBonus, MAX_LEVEL);
 }
 
 static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel, u16* moveDst)

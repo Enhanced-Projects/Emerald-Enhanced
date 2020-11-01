@@ -185,6 +185,7 @@
 #define MON_DATA_SPDEF2            88
 
 #define MIN_LEVEL 1
+#define MAX_LEVEL GetCurrentMaxLevel()
 #define BASE_MAX_LEVEL 125
 #define MAX_NGPLUS_COUNT 3
 #define LEVELS_PER_NGPLUS 25

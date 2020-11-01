@@ -92,7 +92,7 @@ void ApplyDaycareExperience(struct Pokemon *mon)
     bool8 firstMove;
     u16 learnedMove;
 
-    for (i = 0; i < GetCurrentMaxLevel(); i++)
+    for (i = 0; i < MAX_LEVEL; i++)
     {
         // Add the mon's gained daycare experience level by level until it can't level up anymore.
         if (TryIncrementMonLevel(mon))
