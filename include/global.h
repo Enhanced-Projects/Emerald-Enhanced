@@ -11,6 +11,9 @@
 #include "constants/vars.h"
 #include "constants/species.h"
 
+//remove special case defines for when NOT using Item Expansion
+#define ITEM_EXPANSION 1
+
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
 
