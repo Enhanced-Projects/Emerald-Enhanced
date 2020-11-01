@@ -35,7 +35,7 @@ SFCEntrance_DoAquaScene::
 	setflag FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT
 	call SFC_RemoveObjects
 	fadenewbgm 438
-	delay 20
+	delay 60
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_RYU_AQUA, 135 @Player is watching second part of seafloor cavern scene.
 	goto SFC_DoAquaScenePart2
@@ -105,7 +105,7 @@ SFC_DoAquaScenePart3::
 	msgbox SFC_HahaWeDidIt
 	closemessage
 	setvar VAR_RYU_AQUA, 139 @Player is in the sub for the 4th part of the aqua shelly scene
-	warpsilent MAP_AQUA_SUBMARINE, 255, 4, 17
+	warpsilent MAP_AQUA_SUBMARINE, 255, 1, 18
 	waitstate
 
 

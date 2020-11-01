@@ -182,7 +182,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setvar VAR_RYU_AQUA, 95
+	clearflag FLAG_RYU_KYOGRE
 	release
 	end
 
