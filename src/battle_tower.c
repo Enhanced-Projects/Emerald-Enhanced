@@ -2906,9 +2906,8 @@ static void FillPartnerParty(u16 trainerId)
     u16 monId;
     u32 otID;
     u8 trainerName[(PLAYER_NAME_LENGTH * 3) + 1];
+    bool8 shouldAutoscale = !(gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER;
     SetFacilityPtrsGetLevel();
-    bool8 shouldAutoscale = (gBattleTypeFlags ^ BATTLE_TYPE_BATTLE_TOWER) & BATTLE_TYPE_INGAME_PARTNER > 0;
-    // ^ Should autoscale if the battle flags do *not* contain tower but *do* contain ingame_partner
 
     if (trainerId == TRAINER_STEVEN_PARTNER)
     {
@@ -2942,9 +2941,9 @@ static void FillPartnerParty(u16 trainerId)
         u8 badges = CountBadges();
         s16 partyStrength = CalculatePlayerPartyStrength();
         bool8 maxScale = FlagGet(FLAG_RYU_MAX_SCALE);
-        otID = Random32();
         u8 scalingType = FlagGet(FLAG_RYU_BOSS_SCALE) ? SCALING_TYPE_BOSS : SCALING_TYPE_TRAINER;
         u32 level = RyuChooseLevel(badges, maxScale, scalingType, partyStrength);
+        otID = Random32();
 
         for (i = 0; i < 3; i++)
             ZeroMonData(&gPlayerParty[i + 3]);

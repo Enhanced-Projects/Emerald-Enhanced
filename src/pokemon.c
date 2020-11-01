@@ -3083,6 +3083,13 @@ void BoxMonToMon(const struct BoxPokemon *src, struct Pokemon *dest)
     CalculateMonStats(dest);
 }
 
+inline u8 GetCurrentMaxLevel()
+{
+    u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
+    // limit scaling to level 225 (base of 125 + 4 * 25)
+    return BASE_MAX_LEVEL + min(ngPlusCount, 4) * 25;
+}
+
 u8 GetLevelFromMonExp(struct Pokemon *mon)
 {
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
@@ -3180,8 +3187,10 @@ void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon)
     // If the pokemon is high enough to know all of it’s moves, decrement i to move it away from LEVEL_UP_END
     if (gLevelUpLearnsets[species][i].move == LEVEL_UP_END)
         i--;
-    for (knownMoves = 0; i >= 0 && knownMoves < MAX_MON_MOVES; knownMoves++, i--)
+    for (knownMoves = 0; knownMoves < MAX_MON_MOVES; knownMoves++, i--)
         GiveMoveToBoxMon(boxMon, gLevelUpLearnsets[species][i].move);
+        if (i == 0)
+            return;
 }
 
 u16 MonTryLearningNewMove(struct Pokemon *mon, bool8 firstMove)
@@ -7066,11 +7075,4 @@ u8 *sub_806F4F8(u8 id, u8 arg1)
         arg1 = 0;
 
     return structPtr->byteArrays[arg1];
-}
-
-inline u8 GetCurrentMaxLevel()
-{
-    u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
-    // limit scaling to level 225 (base of 125 + 4 * 25)
-    return BASE_MAX_LEVEL + min(ngPlusCount, 4) * 25;
 }
