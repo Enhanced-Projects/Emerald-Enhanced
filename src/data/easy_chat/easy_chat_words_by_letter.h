@@ -246,7 +246,7 @@ const u16 gEasyChatWordsByLetter_C[] = {
     EC_POKEMON2(CHIKORITA),
     EC_WORD_CHILD_S_PLAY,
     EC_WORD_CHILDREN,
-    EC_POKEMON(CHIMECHO),
+    EC_POKEMON(CRYSTAL_ONIX),
     -1, 2, // Doubled pokemon species name
     EC_POKEMON(CHINCHOU),
     EC_POKEMON2(CHINCHOU),
@@ -317,7 +317,6 @@ const u16 gEasyChatWordsByLetter_C[] = {
     EC_WORD_CRUSH,
     EC_MOVE2(CRUSH_CLAW),
     EC_WORD_CRY,
-    EC_POKEMON(CRYSTAL_ONIX),
     EC_POKEMON2(CUBONE),
     EC_WORD_CURRENT,
     EC_MOVE2(CURSE),

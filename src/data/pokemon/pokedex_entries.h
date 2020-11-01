@@ -4296,15 +4296,15 @@ const struct PokedexEntry gPokedexEntries[] =
         .trainerOffset = 7,
     },
 
-    [NATIONAL_DEX_CHIMECHO] =
+    [NATIONAL_DEX_CRYSTAL_ONIX] =
     {
-        .categoryName = _("Wind Chime"),
-        .height = 6,
-        .weight = 10,
+        .categoryName = _("Resplendent"),
+        .height = 88,
+        .weight = 2450,
         .description = gChimechoPokedexText,
-        .pokemonScale = 505,
+        .pokemonScale = 256,
         .pokemonOffset = 0,
-        .trainerScale = 256,
+        .trainerScale = 515,
         .trainerOffset = 0,
     },
 
@@ -9695,18 +9695,6 @@ const struct PokedexEntry gPokedexEntries[] =
 		.trainerScale = 256,
 		.trainerOffset = 0,
 	},
-
-    [NATIONAL_DEX_CRYSTAL_ONIX] =
-    {
-        .categoryName = _("Resplendent"),
-        .height = 88,
-        .weight = 2450,
-        .description = gCrystalOnixPokedexText,
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 515,
-        .trainerOffset = 0,
-    },
 
 	/*[NATIONAL_DEX_MELTAN] =
 	{

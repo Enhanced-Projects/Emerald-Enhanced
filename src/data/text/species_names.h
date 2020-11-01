@@ -386,7 +386,6 @@ const u8 gSpeciesNames[][POKEMON_NAME_LENGTH + 1] = {
     [SPECIES_RAYQUAZA] = _("Rayquaza"),
     [SPECIES_JIRACHI] = _("Jirachi"),
     [SPECIES_DEOXYS] = _("Deoxys"),
-    [SPECIES_CHIMECHO] = _("Chimecho"),
     [SPECIES_TURTWIG] = _("Turtwig"),
     [SPECIES_GROTLE] = _("Grotle"),
     [SPECIES_TORTERRA] = _("Torterra"),
@@ -820,7 +819,6 @@ const u8 gSpeciesNames[][POKEMON_NAME_LENGTH + 1] = {
     [SPECIES_STAKATAKA] = _("Stakataka"),
     [SPECIES_BLACEPHALON] = _("Blacefalon"),
     [SPECIES_ZERAORA] = _("Zeraora"),
-    [SPECIES_CRYSTAL_ONIX] = _("C. Onix"),
     [SPECIES_MELTAN] = _("Meltan"),
     [SPECIES_MELMETAL] = _("Melmetal"),
 

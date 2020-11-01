@@ -66,37 +66,37 @@
 // Calculation settings
 #define B_CRIT_CHANCE               GEN_7 // Chances of a critical hit landing. See CalcCritChanceStage.
 #define B_CRIT_MULTIPLIER           GEN_5 // In Gen6+, critical hits multiply damage by 1.5 instead of 2.
-#define B_EXP_CATCH                 GEN_7 // In Gen6+, Pokémon get experience from catching.
+#define B_EXP_CATCH                 GEN_6 // In Gen6+, Pokémon get experience from catching.
 #define B_TRAINER_EXP_MULTIPLIER    GEN_6 // In Gen7+, trainer battles no longer give a 1.5 multiplier to exp gain.
 #define B_BURN_DAMAGE               GEN_6 // In Gen7+, burn damage is 1/16th of max HP instead of 1/8th.
 #define B_PARALYSIS_SPEED           GEN_7 // In Gen7+, speed is decreased by 50% instead of 75%.
-#define B_TERRAIN_TYPE_BOOST        GEN_7 // In Gen8+, speed is boosted by 30% instead of 50%.
-#define B_BINDING_DAMAGE            GEN_7 // In Gen6+, binding damage is 1/8 of max HP instead of 1/16. (With Binding Band, 1/6 and 1/8 respectively.)
+#define B_TERRAIN_TYPE_BOOST        GEN_6 // In Gen8+, speed is boosted by 30% instead of 50%.
+#define B_BINDING_DAMAGE            GEN_6 // In Gen6+, binding damage is 1/8 of max HP instead of 1/16. (With Binding Band, 1/6 and 1/8 respectively.)
 #define B_CONFUSION_SELF_DMG_CHANCE GEN_7 // In Gen7+, confusion has a 33.3% of self-damage, instead of 50%.
-#define B_MULTI_HIT_CHANCE          GEN_7 // In Gen5+, multi-hit moves have different %. See Cmd_setmultihitcounter for values.
-#define B_RECOIL_IF_MISS_DMG        GEN_7 // In Gen5+, Jump Kick and Hi Jump Kick will always do half of the user's max HP when missing.
-#define B_PSYWAVE_DMG               GEN_7 // Psywave's damage formula. See Cmd_psywavedamageeffect.
-#define B_BADGE_BOOST               GEN_7 // In Gen4+, Gym Badges no longer boost a Pokémon's stats
+#define B_MULTI_HIT_CHANCE          GEN_6 // In Gen5+, multi-hit moves have different %. See Cmd_setmultihitcounter for values.
+#define B_RECOIL_IF_MISS_DMG        GEN_6 // In Gen5+, Jump Kick and Hi Jump Kick will always do half of the user's max HP when missing.
+#define B_PSYWAVE_DMG               GEN_6 // Psywave's damage formula. See Cmd_psywavedamageeffect.
+#define B_BADGE_BOOST               GEN_6 // In Gen4+, Gym Badges no longer boost a Pokémon's stats
 
 // Move data settings
 #define B_UPDATED_MOVE_DATA         GEN_7 // Updates move data in gBattleMoves, including Power, Accuracy, PP, stat changes, targets, chances of secondary effects, etc.
-#define B_FELL_STINGER_STAT_RAISE   GEN_7 // In Gen7+, it raises Atk by 3 stages instead of 2 if it causes the target to faint.
-#define B_KINGS_SHIELD_LOWER_ATK    GEN_8 // In Gen7+, it lowers Atk by 1 stage instead of 2 of oponents that hit it.
+#define B_FELL_STINGER_STAT_RAISE   GEN_6 // In Gen7+, it raises Atk by 3 stages instead of 2 if it causes the target to faint.
+#define B_KINGS_SHIELD_LOWER_ATK    GEN_6 // In Gen7+, it lowers Atk by 1 stage instead of 2 of oponents that hit it.
 #define B_SPEED_BUFFING_RAPID_SPIN  GEN_8 // In Gen8, Rapid Spin raises the user's Speed by 1 stage.
 #define B_WATER_SHURIKEN_SPLIT      GEN_7 // In Gen7, Water Shuriken was changed from Physical to Special.
 
 // Other move settings
-#define B_SOUND_SUBSTITUTE          GEN_7 // In Gen6+, sound moves bypass Substitute.
-#define B_TOXIC_NEVER_MISS          GEN_7 // In Gen6+, if Toxic is used by a Poison type, it will never miss.
-#define B_PAYBACK_SWITCH_BOOST      GEN_7 // In Gen5+, if the opponent switches out, Payback's damage will no longer be doubled.
-#define B_BINDING_TURNS             GEN_7 // In Gen5+, binding moves last for 4-5 turns instead of 2-5 turns. (With Grip Claw, 7 and 5 turns respectively.)
-#define B_UPROAR_TURNS              GEN_7 // In Gen5+, Uproar lasts for 3 turns instead of 2-5 turns.
-#define B_DISABLE_TURNS             GEN_7 // Disable's turns. See Cmd_disablelastusedattack.
-#define B_INCINERATE_GEMS           GEN_7 // In Gen6+, Incinerate can destroy Gems.
-#define B_MINIMIZE_DMG_ACC          GEN_7 // In Gen6+, moves that causes double damage to minimized Pokémon will also skip accuracy checks.
+#define B_SOUND_SUBSTITUTE          GEN_6 // In Gen6+, sound moves bypass Substitute.
+#define B_TOXIC_NEVER_MISS          GEN_6 // In Gen6+, if Toxic is used by a Poison type, it will never miss.
+#define B_PAYBACK_SWITCH_BOOST      GEN_6 // In Gen5+, if the opponent switches out, Payback's damage will no longer be doubled.
+#define B_BINDING_TURNS             GEN_6 // In Gen5+, binding moves last for 4-5 turns instead of 2-5 turns. (With Grip Claw, 7 and 5 turns respectively.)
+#define B_UPROAR_TURNS              GEN_6 // In Gen5+, Uproar lasts for 3 turns instead of 2-5 turns.
+#define B_DISABLE_TURNS             GEN_6 // Disable's turns. See Cmd_disablelastusedattack.
+#define B_INCINERATE_GEMS           GEN_6 // In Gen6+, Incinerate can destroy Gems.
+#define B_MINIMIZE_DMG_ACC          GEN_6 // In Gen6+, moves that causes double damage to minimized Pokémon will also skip accuracy checks.
 
 // Ability settings
-#define B_ABILITY_WEATHER           GEN_7 // In Gen5+, weather caused by abilities lasts the same amount of turns as induced from a move. Before, they lasted till the battle's end or weather change by a move.
+#define B_ABILITY_WEATHER           GEN_6 // In Gen5+, weather caused by abilities lasts the same amount of turns as induced from a move. Before, they lasted till the battle's end or weather change by a move.
 #define B_GALE_WINGS                GEN_7 // In Gen7+ requires full HP to trigger.
 #define B_STANCE_CHANGE_FAIL        GEN_7 // In Gen7+, Aegislash's form change does not happen, if the Pokémon cannot use a move, because of confusion, paralysis, etc. In gen6, the form change occurs despite not being able to move.
 #define B_GHOSTS_ESCAPE             GEN_7 // In Gen6+, ghosts can escape even when blocked by abilities such as Shadow Tag.
@@ -119,21 +119,21 @@
 
 // Other
 #define B_DOUBLE_WILD_CHANCE        0     // % chance of encountering two Pokémon in a Wild Encounter.
-#define B_SLEEP_TURNS               GEN_7 // In Gen5+, sleep lasts for 1-3 turns instead of 2-5 turns.
-#define B_PARALYZE_ELECTRIC         GEN_7 // In Gen6+, Electric type Pokémon can't be paralyzed.
-#define B_POWDER_GRASS              GEN_7 // In Gen6+, Grass type Pokémon are immune to powder and spore moves.
+#define B_SLEEP_TURNS               GEN_6 // In Gen5+, sleep lasts for 1-3 turns instead of 2-5 turns.
+#define B_PARALYZE_ELECTRIC         GEN_6 // In Gen6+, Electric type Pokémon can't be paralyzed.
+#define B_POWDER_GRASS              GEN_6 // In Gen6+, Grass type Pokémon are immune to powder and spore moves.
 
 // Animation Settings
-#define B_NEW_SWORD_PARTICLE            TRUE    //update swords dance particle
+#define B_NEW_SWORD_PARTICLE            TRUE    // update swords dance particle
 #define B_NEW_LEECH_SEED_PARTICLE       TRUE    //update leech seed's animation particle
 #define B_NEW_HORN_ATTACK_PARTICLE      TRUE    //update horn attack's horn
-#define B_NEW_LEAF_PARTICLE             TRUE    //update leaf particle
-#define B_NEW_EMBER_PARTICLES           TRUE    //update ember fire particle
+#define B_NEW_LEAF_PARTICLE             TRUE    // update leaf particle
+#define B_NEW_EMBER_PARTICLES           TRUE    //updates ember fire particle
 #define B_NEW_MEAN_LOOK_PARTICLE        TRUE    //update mean look eye
 #define B_NEW_TEETH_PARTICLE            TRUE    //update bite/crunch teeth particle
 #define B_NEW_HANDS_FEET_PARTICLE       TRUE    //update chop/kick/punch particles
 #define B_NEW_SPIKES_PARTICLE           TRUE    //update spikes particle
 #define B_NEW_FLY_BUBBLE_PARTICLE       TRUE    //update fly 'bubble' particle
-#define B_NEW_CURSE_NAIL_PARTICLE       TRUE    //update curse nail
+#define B_NEW_CURSE_NAIL_PARTICLE       TRUE    //updates curse nail
 
 #endif // GUARD_CONSTANTS_BATTLE_CONFIG_H

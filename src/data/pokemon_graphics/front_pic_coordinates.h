@@ -1925,10 +1925,10 @@ const struct MonCoords gMonFrontPicCoords[] =
         .size = 0x88,
         .y_offset = 0,
     },
-    [SPECIES_CHIMECHO] =
+    [SPECIES_CRYSTAL_ONIX] =
     {
         .size = 0x37,
-        .y_offset = 6,
+        .y_offset = 11,
     },
     [SPECIES_TURTWIG] =
     {
@@ -4035,11 +4035,6 @@ const struct MonCoords gMonFrontPicCoords[] =
     {
         .size = 0x45,
         .y_offset = 4,
-    },
-    [SPECIES_CRYSTAL_ONIX] =
-    {
-        .size = 0x37,
-        .y_offset = 11,
     },
     [SPECIES_MELTAN] =
     {

@@ -1943,9 +1943,9 @@ const struct WildPokemon gMtPyre_Summit_LandMons[] =
 	{33, 33, SPECIES_SHUPPET},
 	{28, 28, SPECIES_DUSKULL},
 	{26, 26, SPECIES_DUSKULL},
-	{30, 30, SPECIES_VULPIX},
+	{30, 30, SPECIES_DUSKULL},
 	{28, 28, SPECIES_GASTLY},
-	{28, 28, SPECIES_CHIMECHO},
+	{28, 28, SPECIES_VULPIX},
 };
 
 const struct WildPokemonInfo gMtPyre_Summit_LandMonsInfo = {10, gMtPyre_Summit_LandMons};
