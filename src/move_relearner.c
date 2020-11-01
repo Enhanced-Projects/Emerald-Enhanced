@@ -150,8 +150,6 @@
 #define JAM_HEART_EMPTY 2
 #define JAM_HEART_FULL 3
 
-#define MAX_RELEARNER_MOVES (MAX_LEVEL_UP_MOVES > 25 ? MAX_LEVEL_UP_MOVES : 25)
-
 static EWRAM_DATA struct
 {
     u8 state;

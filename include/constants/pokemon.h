@@ -185,7 +185,9 @@
 #define MON_DATA_SPDEF2            88
 
 #define MIN_LEVEL 1
-#define MAX_LEVEL 125
+#define BASE_MAX_LEVEL 125
+// Used for XP tables and the likes. I’d like to make this 250, but that overflows EXP_FLUCTUATING at level 242 and above.
+#define TRUE_MAX_LEVEL 225
 
 #define OT_ID_PLAYER_ID       0
 #define OT_ID_PRESET          1
@@ -205,8 +207,6 @@
 #define LEVEL_UP_MOVE_ID   0x01FF
 #define LEVEL_UP_MOVE_LV   0xFE00
 #define LEVEL_UP_END       0xFFFF
-
-#define MAX_LEVEL_UP_MOVES       20
 
 #define MON_MALE       0x00
 #define MON_FEMALE     0xFE

@@ -54,7 +54,7 @@
 #define VAR_MIRAGE_RND_L                     0x4025
 #define VAR_SECRET_BASE_MAP                  0x4026
 #define VAR_RYU_AUTOSCALE_MIN_LEVEL          0x4027
-#define VAR_CYCLING_ROAD_RECORD_TIME_L       0x4028 // unused now
+#define VAR_RYU_NGPLUS_COUNT                 0x4028
 #define VAR_CYCLING_ROAD_RECORD_TIME_H       0x4029 // unused now
 #define VAR_HAPPINESS_STEP_COUNTER           0x402A
 #define VAR_POISON_STEP_COUNTER              0x402B
@@ -141,7 +141,7 @@
 #define VAR_ROUTE128_STATE                   0x407B
 #define VAR_ROUTE129_STATE                   0x407C // Unused Var
 #define VAR_ROUTE130_STATE                   0x407D // Unused Var
-#define FLAG_RYU_MOLTRES                     0x407E
+#define FLAG_RYU_MOLTRES                     0x407E // why is there a flag in the var block?
 #define VAR_UNUSED_0x407F                    0x407F // Unused Var
 #define VAR_UNUSED_0x4080                    0x4080 // Unused Var
 #define VAR_UNUSED_0x4081                    0x4081 // Unused Var

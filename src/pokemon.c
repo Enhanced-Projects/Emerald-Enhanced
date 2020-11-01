@@ -3088,8 +3088,9 @@ u8 GetLevelFromMonExp(struct Pokemon *mon)
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 exp = GetMonData(mon, MON_DATA_EXP, NULL);
     s32 level = 1;
+    u8 maxLevel = GetCurrentMaxLevel();
 
-    while (level <= MAX_LEVEL && gExperienceTables[gBaseStats[species].growthRate][level] <= exp)
+    while (level <= maxLevel && gExperienceTables[gBaseStats[species].growthRate][level] <= exp)
         level++;
 
     return level - 1;
@@ -3100,8 +3101,9 @@ u8 GetLevelFromBoxMonExp(struct BoxPokemon *boxMon)
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     u32 exp = GetBoxMonData(boxMon, MON_DATA_EXP, NULL);
     s32 level = 1;
+    u8 maxLevel = GetCurrentMaxLevel();
 
-    while (level <= MAX_LEVEL && gExperienceTables[gBaseStats[species].growthRate][level] <= exp)
+    while (level <= maxLevel && gExperienceTables[gBaseStats[species].growthRate][level] <= exp)
         level++;
 
     return level - 1;
@@ -4712,7 +4714,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 retVal = FALSE;
             }
             if ((itemEffect[cmdIndex] & ITEM3_LEVEL_UP)
-             && GetMonData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL)
+             && GetMonData(mon, MON_DATA_LEVEL, NULL) != GetCurrentMaxLevel())
             {
                 dataUnsigned = gExperienceTables[gBaseStats[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
                 SetMonData(mon, MON_DATA_EXP, &dataUnsigned);
@@ -6118,12 +6120,13 @@ bool8 TryIncrementMonLevel(struct Pokemon *mon)
     u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
     u8 nextLevel = GetMonData(mon, MON_DATA_LEVEL, 0) + 1;
     u32 expPoints = GetMonData(mon, MON_DATA_EXP, 0);
-    if (expPoints > gExperienceTables[gBaseStats[species].growthRate][MAX_LEVEL])
+    u8 maxLevel = GetCurrentMaxLevel();
+    if (expPoints > gExperienceTables[gBaseStats[species].growthRate][maxLevel])
     {
-        expPoints = gExperienceTables[gBaseStats[species].growthRate][MAX_LEVEL];
+        expPoints = gExperienceTables[gBaseStats[species].growthRate][maxLevel];
         SetMonData(mon, MON_DATA_EXP, &expPoints);
     }
-    if (nextLevel > MAX_LEVEL || expPoints < gExperienceTables[gBaseStats[species].growthRate][nextLevel])
+    if (nextLevel > maxLevel || expPoints < gExperienceTables[gBaseStats[species].growthRate][nextLevel])
     {
         return FALSE;
     }
@@ -7063,4 +7066,11 @@ u8 *sub_806F4F8(u8 id, u8 arg1)
         arg1 = 0;
 
     return structPtr->byteArrays[arg1];
+}
+
+inline u8 GetCurrentMaxLevel()
+{
+    u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
+    // limit scaling to level 225 (base of 125 + 4 * 25)
+    return BASE_MAX_LEVEL + min(ngPlusCount, 4) * 25;
 }

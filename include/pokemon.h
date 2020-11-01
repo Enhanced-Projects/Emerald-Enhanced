@@ -257,7 +257,7 @@ extern const u8 gFacilityClassToTrainerClass[];
 extern const struct BaseStats gBaseStats[];
 extern const u8 *const gItemEffectTable[];
 extern const struct Evolution gEvolutionTable[][EVOS_PER_MON];
-extern const u32 gExperienceTables[][MAX_LEVEL + 1];
+extern const u32 gExperienceTables[][TRUE_MAX_LEVEL + 1];
 extern const struct LevelUpMove *const gLevelUpLearnsets[];
 extern const u8 gPPUpGetMask[];
 extern const u8 gPPUpSetMask[];
@@ -424,5 +424,6 @@ bool8 HasTwoFramesAnimation(u16 species);
 struct Unknown_806F160_Struct *sub_806F2AC(u8 id, u8 arg1);
 void sub_806F47C(u8 id);
 u8 *sub_806F4F8(u8 id, u8 arg1);
+u8 GetCurrentMaxLevel();
 
 #endif // GUARD_POKEMON_H

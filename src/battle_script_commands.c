@@ -3633,7 +3633,7 @@ static void Cmd_getexp(void)
                 holdEffect = ItemId_GetHoldEffect(item);
 
             if ((!gSaveBlock2Ptr->expShare && !(gBattleStruct->sentInPokes & 1))
-                || (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) == MAX_LEVEL))
+                || (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) == GetCurrentMaxLevel()))
             {
                 *(&gBattleStruct->sentInPokes) >>= 1;
                 gBattleScripting.getexpState = 5;
@@ -3722,7 +3722,7 @@ static void Cmd_getexp(void)
         if (gBattleControllerExecFlags == 0)
         {
             gBattleResources->bufferB[gBattleStruct->expGetterBattlerId][0] = 0;
-            if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP) && GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) != MAX_LEVEL)
+            if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP) && GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) != GetCurrentMaxLevel())
             {
                 gBattleResources->beforeLvlUp->stats[STAT_HP]    = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_MAX_HP);
                 gBattleResources->beforeLvlUp->stats[STAT_ATK]   = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_ATK);

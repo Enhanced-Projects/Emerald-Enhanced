@@ -479,7 +479,7 @@ void RyuGenerateBossMon(u16 species, u8 level)
         u8 iv = 31;
         u8 ability = 2;
 
-        level = min(MAX_LEVEL, level + 5);
+        level = min(GetCurrentMaxLevel(), level + 5);
         FlagSet(FLAG_RYU_BOSS_WILD);
         CreateWildMon(species, level);
         ShowFieldMessage(gText_PowerfulWildAppears);
