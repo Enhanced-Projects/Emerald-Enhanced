@@ -3086,8 +3086,7 @@ void BoxMonToMon(const struct BoxPokemon *src, struct Pokemon *dest)
 inline u8 GetCurrentMaxLevel()
 {
     u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
-    // limit scaling to level 225 (base of 125 + 4 * 25)
-    return BASE_MAX_LEVEL + min(ngPlusCount, 4) * 25;
+    return BASE_MAX_LEVEL + min(ngPlusCount, MAX_NGPLUS_COUNT) * LEVELS_PER_NGPLUS;
 }
 
 u8 GetLevelFromMonExp(struct Pokemon *mon)

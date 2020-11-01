@@ -186,8 +186,10 @@
 
 #define MIN_LEVEL 1
 #define BASE_MAX_LEVEL 125
+#define MAX_NGPLUS_COUNT 3
+#define LEVELS_PER_NGPLUS 25
 // Used for XP tables and the likes. I’d like to make this 250, but that overflows EXP_FLUCTUATING at level 242 and above.
-#define TRUE_MAX_LEVEL 225
+#define TRUE_MAX_LEVEL BASE_MAX_LEVEL + LEVELS_PER_NGPLUS * MAX_NGPLUS_COUNT
 
 #define OT_ID_PLAYER_ID       0
 #define OT_ID_PRESET          1
