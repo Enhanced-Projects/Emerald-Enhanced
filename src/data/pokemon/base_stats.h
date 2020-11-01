@@ -1,10 +1,6 @@
 // Maximum value for a female Pokémon is 254 (MON_FEMALE) which is 100% female.
 // 255 (MON_GENDERLESS) is reserved for genderless Pokémon.
 
-
-// @TOBY: There were hundreds of conflicts in this file because of the
-// updated move data battle config. That option is useless in battle config
-// and should be ignored. I kept all of our existing data and yeeted rhh changes.
 #define PERCENT_FEMALE(percent) min(254, ((percent * 255) / 100))
 
 const struct BaseStats gBaseStats[] =
@@ -2680,10 +2676,10 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_CUBONE] =
     {
-        .baseHP        = 50,
+        .baseHP        = 60,
         .baseAttack    = 50,
         .baseDefense   = 95,
-        .baseSpeed     = 35,
+        .baseSpeed     = 45,
         .baseSpAttack  = 40,
         .baseSpDefense = 50,
         .type1 = TYPE_GROUND,
@@ -2707,7 +2703,7 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_MAROWAK] =
     {
-        .baseHP        = 60,
+        .baseHP        = 75,
         .baseAttack    = 80,
         .baseDefense   = 110,
         .baseSpeed     = 55,
@@ -9230,30 +9226,6 @@ const struct BaseStats gBaseStats[] =
         .bodyColor = BODY_COLOR_GREEN,
     },
 
-    [SPECIES_CRYSTAL_ONIX] =
-    {
-        .baseHP        = 155,
-        .baseAttack    = 130,
-        .baseDefense   = 255,
-        .baseSpeed     = 115,
-        .baseSpAttack  = 10,
-        .baseSpDefense = 115,
-        .type1 = TYPE_ROCK,
-        .type2 = TYPE_STEEL,
-        .catchRate = 3,
-        .expYield = 306,
-        .evYield_Defense  = 3,
-        .genderRatio = MON_GENDERLESS,
-        .eggCycles = 35,
-        .friendship = 70,
-        .growthRate = GROWTH_SLOW,
-        .eggGroup1 = EGG_GROUP_UNDISCOVERED,
-        .eggGroup2 = EGG_GROUP_UNDISCOVERED,
-        .abilities = {ABILITY_ROCK_HEAD, ABILITY_IRON_BARBS},
-        .noFlip = FALSE,
-        .bodyColor = BODY_COLOR_BLUE,
-    },
-
     [SPECIES_ABSOL] =
     {
         .baseHP        = 65,
@@ -9983,6 +9955,32 @@ const struct BaseStats gBaseStats[] =
         .abilities = {ABILITY_PRESSURE, ABILITY_NONE},
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_RED,
+    },
+
+    [SPECIES_CHIMECHO] =
+    {
+        .baseHP        = 65,
+        .baseAttack    = 50,
+        .baseDefense   = 70,
+        .baseSpeed     = 65,
+        .baseSpAttack  = 95,
+        .baseSpDefense = 80,
+        .type1 = TYPE_PSYCHIC,
+        .type2 = TYPE_PSYCHIC,
+        .catchRate = 45,
+        .expYield = 147,
+        .evYield_SpAttack  = 1,
+        .evYield_SpDefense = 1,
+        .item2 = ITEM_CLEANSE_TAG,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 25,
+        .friendship = 70,
+        .growthRate = GROWTH_FAST,
+        .eggGroup1 = EGG_GROUP_AMORPHOUS,
+        .eggGroup2 = EGG_GROUP_AMORPHOUS,
+        .abilities = {ABILITY_LEVITATE, ABILITY_LEVITATE},
+        .noFlip = FALSE,
+        .bodyColor = BODY_COLOR_BLUE,
     },
 
     [SPECIES_TURTWIG] =
@@ -21009,6 +21007,30 @@ const struct BaseStats gBaseStats[] =
         .abilities = {ABILITY_TOUGH_CLAWS, ABILITY_TOUGH_CLAWS},
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_YELLOW,
+    },
+
+    [SPECIES_CRYSTAL_ONIX] =
+    {
+        .baseHP        = 155,
+        .baseAttack    = 130,
+        .baseDefense   = 255,
+        .baseSpeed     = 115,
+        .baseSpAttack  = 10,
+        .baseSpDefense = 115,
+        .type1 = TYPE_ROCK,
+        .type2 = TYPE_STEEL,
+        .catchRate = 3,
+        .expYield = 306,
+        .evYield_Defense  = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 35,
+        .friendship = 70,
+        .growthRate = GROWTH_SLOW,
+        .eggGroup1 = EGG_GROUP_UNDISCOVERED,
+        .eggGroup2 = EGG_GROUP_UNDISCOVERED,
+        .abilities = {ABILITY_ROCK_HEAD, ABILITY_IRON_BARBS},
+        .noFlip = FALSE,
+        .bodyColor = BODY_COLOR_BLUE,
     },
 
     [SPECIES_MELTAN] =

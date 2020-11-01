@@ -2387,6 +2387,12 @@ const u16 gEggMoves[] = {
         MOVE_THRASH,
         MOVE_TWISTER),
 
+    egg_moves(CHIMECHO,
+        MOVE_DISABLE,
+        MOVE_CURSE,
+        MOVE_HYPNOSIS,
+        MOVE_DREAM_EATER),
+
 	egg_moves(TURTWIG,
 		MOVE_WORRY_SEED,
 		MOVE_GROWTH,

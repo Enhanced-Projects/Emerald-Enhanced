@@ -5294,8 +5294,8 @@
     {
       "id": "LAYOUT_AQUA_SUBMARINE",
       "name": "AquaSubmarine_Layout",
-      "width": 9,
-      "height": 24,
+      "width": 7,
+      "height": 23,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_InsideShip",
       "border_filepath": "data/layouts/AquaSubmarine/border.bin",
