@@ -17,38 +17,8 @@ R128U_MovePlayerToKyogre::
 	release
 	end
 
-RDB_1Text:
-	.string "Kyroge hidden$"
-
-RDB_2Text:
-	.string "Kyroge Ran$"
-
-RDB_3Text:
-	.string "Temp 5 set$"
-
-RDB_R128U:
-	.string "{STR_VAR_1}$"
-
-
-R128U_1::
-	scriptdebug RDB_1Text
-	return
-
-R128U_2::
-	scriptdebug RDB_2Text
-	return
-
-R128U_3::
-	scriptdebug RDB_3Text
-	return
-
 R128U_CheckKyogreInteraction::
-	call_if_set FLAG_RYU_KYOGRE, R128U_1
-	call_if_set FLAG_RYU_KYOGRE_RAN, R128U_2
-	call_if_set FLAG_TEMP_A, R128U_3
 	setvar VAR_TEMP_5, 40
-	buffernumberstring 0, VAR_TEMP_5
-	scriptdebug RDB_R128U
 	goto_if_set FLAG_TEMP_A, ryu_end
 	setflag FLAG_TEMP_A
 	goto R128U_AddKyogre
