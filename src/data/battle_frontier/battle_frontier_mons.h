@@ -2665,7 +2665,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ability = 2
     },
     [FRONTIER_MON_ORANGURU_1] = { // Oranguru-NP
-        .species = SPECIES_COFAGRIGUS,
+        .species = SPECIES_ORANGURU,
         .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_SHADOW_BALL, MOVE_NASTY_PLOT},
         .heldItem = ITEM_COLBUR_BERRY,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
@@ -4501,7 +4501,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ability = 2
     },
     [FRONTIER_MON_ORANGURU_2] = { // Oranguru-TR
-        .species = SPECIES_COFAGRIGUS,
+        .species = SPECIES_ORANGURU,
         .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_TRICK_ROOM, MOVE_NASTY_PLOT},
         .heldItem = ITEM_COLBUR_BERRY,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
