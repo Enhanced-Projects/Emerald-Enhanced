@@ -53,7 +53,7 @@ RyuLegendary_CaughtKyogre128::
 	end
 
 RyuLegendary_IntroKyogre128:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It looks like it may eat\nyou at any point.)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It looks like it may eat\n you at any point.)$"
 
 R128U_ToKyogre:
 	walk_down

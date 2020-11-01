@@ -25,8 +25,8 @@
 #define SPECIES_ZYGARDE_COMPLETE 10006 // 100 %*/
 
 
-// Items with peculiar battle effects.
-#ifndef ITEM_EXPANSION
+// Items with peculiar battle effects. STOP REVERTING THIS CHANGE, THESE NEED TO NOT BE DEFINED FFS
+/*#ifndef ITEM_EXPANSION
     #define ITEM_CHOPLE_BERRY   177
     #define ITEM_KEBIA_BERRY    178
     #define ITEM_SHUCA_BERRY    179
@@ -52,7 +52,7 @@
     #define ITEM_RINDO_BERRY    207
     #define ITEM_YACHE_BERRY    208
     #define ITEM_GRISEOUS_ORB   369
-#endif
+#endif*/
 
 #ifndef GEN_3
     #define GEN_3 0
