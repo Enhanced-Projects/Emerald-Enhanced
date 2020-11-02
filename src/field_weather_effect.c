@@ -12,6 +12,7 @@
 #include "task.h"
 #include "trig.h"
 #include "gpu_regs.h"
+#include "event_data.h"
 
 // EWRAM
 EWRAM_DATA static u8 gCurrentAbnormalWeather = 0;
@@ -2498,7 +2499,15 @@ u8 GetSav1Weather(void)
 void SetSav1WeatherFromCurrMapHeader(void)
 {
     u8 oldWeather = gSaveBlock1Ptr->weather;
-    gSaveBlock1Ptr->weather = TranslateWeatherNum(gMapHeader.weather);
+    if (VarGet(VAR_RYU_AQUA) == 149)
+    {
+        gSaveBlock1Ptr->weather = TranslateWeatherNum(WEATHER_RAIN_THUNDERSTORM);
+    }
+    else
+    {
+        gSaveBlock1Ptr->weather = TranslateWeatherNum(gMapHeader.weather);
+    }
+    
     UpdateRainCounter(gSaveBlock1Ptr->weather, oldWeather);
 }
 
