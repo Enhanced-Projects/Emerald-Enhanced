@@ -63,7 +63,7 @@ MH_Shortcut::
 	end
 	
 MH_ShellyArrival::
-	setvar VAR_RYU_MAGMA, 95 @Player met up with shelly in magma hideout 1f
+	setvar VAR_RYU_AQUA, 95 @Player met up with shelly in magma hideout 1f
 	lock
 	addobject 7
 	fadenewbgm 441
