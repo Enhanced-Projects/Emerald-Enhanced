@@ -185,7 +185,12 @@
 #define MON_DATA_SPDEF2            88
 
 #define MIN_LEVEL 1
-#define MAX_LEVEL 125
+#define MAX_LEVEL GetCurrentMaxLevel()
+#define BASE_MAX_LEVEL 125
+// up to 5 for a max of level 250
+#define MAX_NGPLUS_COUNT 5
+#define LEVELS_PER_NGPLUS 25
+#define TRUE_MAX_LEVEL BASE_MAX_LEVEL + LEVELS_PER_NGPLUS * MAX_NGPLUS_COUNT
 
 #define OT_ID_PLAYER_ID       0
 #define OT_ID_PRESET          1
@@ -205,8 +210,6 @@
 #define LEVEL_UP_MOVE_ID   0x01FF
 #define LEVEL_UP_MOVE_LV   0xFE00
 #define LEVEL_UP_END       0xFFFF
-
-#define MAX_LEVEL_UP_MOVES       20
 
 #define MON_MALE       0x00
 #define MON_FEMALE     0xFE

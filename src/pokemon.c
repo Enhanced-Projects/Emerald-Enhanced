@@ -3083,13 +3083,20 @@ void BoxMonToMon(const struct BoxPokemon *src, struct Pokemon *dest)
     CalculateMonStats(dest);
 }
 
+inline u8 GetCurrentMaxLevel()
+{
+    u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
+    return BASE_MAX_LEVEL + min(ngPlusCount, MAX_NGPLUS_COUNT) * LEVELS_PER_NGPLUS;
+}
+
 u8 GetLevelFromMonExp(struct Pokemon *mon)
 {
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 exp = GetMonData(mon, MON_DATA_EXP, NULL);
     s32 level = 1;
+    u8 maxLevel = MAX_LEVEL;
 
-    while (level <= MAX_LEVEL && gExperienceTables[gBaseStats[species].growthRate][level] <= exp)
+    while (level <= maxLevel && gExperienceTables[gBaseStats[species].growthRate][level] <= exp)
         level++;
 
     return level - 1;
@@ -3100,8 +3107,9 @@ u8 GetLevelFromBoxMonExp(struct BoxPokemon *boxMon)
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     u32 exp = GetBoxMonData(boxMon, MON_DATA_EXP, NULL);
     s32 level = 1;
+    u8 maxLevel = MAX_LEVEL;
 
-    while (level <= MAX_LEVEL && gExperienceTables[gBaseStats[species].growthRate][level] <= exp)
+    while (level <= maxLevel && gExperienceTables[gBaseStats[species].growthRate][level] <= exp)
         level++;
 
     return level - 1;
@@ -3178,8 +3186,10 @@ void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon)
     // If the pokemon is high enough to know all of it’s moves, decrement i to move it away from LEVEL_UP_END
     if (gLevelUpLearnsets[species][i].move == LEVEL_UP_END)
         i--;
-    for (knownMoves = 0; i >= 0 && knownMoves < MAX_MON_MOVES; knownMoves++, i--)
+    for (knownMoves = 0; knownMoves < MAX_MON_MOVES; knownMoves++, i--)
         GiveMoveToBoxMon(boxMon, gLevelUpLearnsets[species][i].move);
+        if (i == 0)
+            return;
 }
 
 u16 MonTryLearningNewMove(struct Pokemon *mon, bool8 firstMove)
@@ -6118,12 +6128,13 @@ bool8 TryIncrementMonLevel(struct Pokemon *mon)
     u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
     u8 nextLevel = GetMonData(mon, MON_DATA_LEVEL, 0) + 1;
     u32 expPoints = GetMonData(mon, MON_DATA_EXP, 0);
-    if (expPoints > gExperienceTables[gBaseStats[species].growthRate][MAX_LEVEL])
+    u8 maxLevel = MAX_LEVEL;
+    if (expPoints > gExperienceTables[gBaseStats[species].growthRate][maxLevel])
     {
-        expPoints = gExperienceTables[gBaseStats[species].growthRate][MAX_LEVEL];
+        expPoints = gExperienceTables[gBaseStats[species].growthRate][maxLevel];
         SetMonData(mon, MON_DATA_EXP, &expPoints);
     }
-    if (nextLevel > MAX_LEVEL || expPoints < gExperienceTables[gBaseStats[species].growthRate][nextLevel])
+    if (nextLevel > maxLevel || expPoints < gExperienceTables[gBaseStats[species].growthRate][nextLevel])
     {
         return FALSE;
     }

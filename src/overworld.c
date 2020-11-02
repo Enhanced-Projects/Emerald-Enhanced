@@ -1683,6 +1683,7 @@ void CB2_NewGame(void)
         FlagSet(FLAG_SYS_POKEDEX_GET);
         FlagSet(FLAG_SYS_NATIONAL_DEX);
         FlagSet(FLAG_RYU_ISNGPLUS);
+        VarSet(VAR_RYU_NGPLUS_COUNT, VarGet(VAR_RYU_NGPLUS_COUNT) + 1);
     }
     else
     {
