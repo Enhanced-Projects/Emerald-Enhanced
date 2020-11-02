@@ -345,6 +345,28 @@ MDC_FinalScene:
 	warpsilent MAP_LILYCOVE_CITY, 255, 48, 9 
 	waitstate
 
+MDC_DoFinalShellyScene::
+	setvar VAR_RYU_AQUA, 153 @rain stopped in mossdeep, return to submarine
+	setweather WEATHER_NONE
+	doweather
+	delay 240
+	playse SE_PIN
+	applymovement 12, Common_Movement_ExclamationMark
+	waitmovement 12
+	delay 30
+	msgbox MDC_ItStopped
+	closemessage
+	pokenavcall MDC_ArchieItsMatt
+	waitmessage
+	warpsilent MAP_AQUA_SUBMARINE, 255, 3, 18
+	waitstate
+
+MDC_ItStopped:
+	.string "It... stopped?$"
+
+MDC_ArchieItsMatt:
+	.string "Archie... Yes, this is Matt...$"
+
 
 MDC_ThisIsntGood:
 	.string "This isn't good...$"

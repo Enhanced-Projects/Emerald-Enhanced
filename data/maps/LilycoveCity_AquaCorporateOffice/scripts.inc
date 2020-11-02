@@ -11,6 +11,7 @@ ACO_EntranceScriptTrigger::
 	switch VAR_RYU_AQUA
 	case 5, ACO_StartAquaQuest
 	case 10, ryu_end
+	case 157, ACO_DoAquaOutro
 	compare VAR_RYU_AQUA, 105
 	goto_if_eq ACO_PlayerShellyReturnFromJaggedPass
 	compare VAR_RYU_AQUA, 55
@@ -142,126 +143,6 @@ ACO_AquaStage3_Waitforcall:
 	release
 	end
 
-
-ACO_ThatWasAClose:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}That was a close one.\p"
-    .string "We barely averted the disaster that\n"
-    .string "would've been if Groudon had been\l"
-    .string "awakened...and yet...\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Is something wrong?\p"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}It's nothing, don't worry about it.\p"
-    .string "Come to think of it, I believe you\n"
-    .string "deserve a promotion.$"
-
-ACO_PlayerAchievedQuartermaster:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} has risen to Quartermaster!\p"
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Again, another fancy term, but for an\n"
-    .string "Admin.\p"
-    .string "That's right, now we're equals, so\n"
-    .string "congratulations, you've earned it.$"
-	
-ACO_YouNoticeShelly:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You notice that Shelly is wearing\n"
-    .string " the necklace you gave her.)\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I was right...it really suits you.\p"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Ah, so you noticed...well then...$"
-
-ACO_ThatsToCongrat:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}That's to congratulate you on your\n"
-    .string "promotion.\p"
-    .string "Don't expect anything else!$"
-
-ACO_NowTheresSomething:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Now, there's something I need to\n"
-    .string "verify.\p"
-    .string "In the meantime, I need you to head\n"
-    .string "over to Stern's Shipyard in Slateport\p"
-    .string "to retrieve files about the submarine\n"
-    .string "we've taken off their hands.\p"
-    .string "Be careful, though.\p"
-    .string "At this point, it must be crawling\n"
-    .string "with law enforcement.\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Got it, see you soon.$"
-
-ACO_PlayerGoToShipyardMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}You should be heading to the\nshipyard in Slateport.$"
-
-ACO_ShellyBackBehindDesk:
-	walk_right
-	walk_up
-	walk_up
-	walk_left
-	walk_left
-	face_down
-	step_end
-
-ACO_ShellyWalkAroundDesk:
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	face_left
-	step_end
-
-ACO_WereBack:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah Finally, air conditioning.\pIt was way too hot there!\nSee me at my desk.$"
-
-ACO_LostInThought:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (She seems lost in thought...\n You take this opportunity\l to give her the necklace.)$"
-
-ACO_HmmWhatsThis:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Hm...? What's this?\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}It's something I got made for you.\n"
-    .string "Thought it'd look best on a beauty\l"
-    .string "such as yourself...$"
-
-ACO_ShellyGiggles:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly giggles.)\p"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}I knew you were bold, but not this\n"
-    .string "bold...I underestimated you!$"
-
-ACO_ToBeFrank:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}To be frank, I've noticed quite a few\n"
-    .string "of the crew have been eyeing me for\p"
-    .string "a while, and yet none of them had the\n"
-    .string "guts to step up...until now, that is.\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}So...?\p"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}I'll think about it.\p"
-    .string "I really appreciate the thoughtful\n"
-    .string "gift.$"
-
-ACO_OhHeresYourPayment2:
-	.string "Oh, here's your payment.\n"
-    .string "Keep up the good work.\p"
-    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} received ¥10,000.\n"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}I'll call you when there's more work.$"
-
-ACO_OhHeresYourPayment:
-	.string "Oh, here's your payment.\n"
-    .string "Keep up the good work.\p"
-    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} received ¥10,000.$"
-
-ACO_SoHowDid:
-	.string "So, how did things go?\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ...\p"
-    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see...well, in any case, it seems\n"
-    .string "we stopped Magma just in time.\p"
-    .string "Although, their true goal is yet to\n"
-    .string "be known...$"
-
-ACO_AquaStage3_WaitForCallMsg:
-	.string "I'll call you when there's\nmore work to do.$"
-
-ACO_ShellyFromplayerToDesk:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
 ACO_StartAquaQuest::
 	msgbox ACO_WelcomeToAqueus
 	closemessage
@@ -370,6 +251,279 @@ ACO_ReturnedFromMuseumWhiteout:
 	waitse
 	warpsilent MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE, 255, 5, 4
 	waitstate
+
+ACO_DoAquaOutro::
+	lockall
+	msgbox ACO_OneMomentPlease
+	closemessage
+	setflag FLAG_HIDE_AQUAHQ_SHELLY
+	addobject 11
+	applymovement 11, ACO_GentlemanExit
+	waitmovement 11
+	playse SE_DOOR
+	waitse
+	removeobject 11
+	addobject 10
+	applymovement 10, ACO_ShellyToEntrance
+	waitmovement 10
+	applymovement 10, Common_Movement_StepDown
+	waitmovement 10
+	msgbox ACO_PlayerPleaseComeIn
+	closemessage
+	applymovement 10, ACO_Outro_FromEntranceToBedroom
+	applymovement OBJ_EVENT_ID_PLAYER, ACO_Outro_FromEntranceToBedroom2
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_DOOR
+	waitse
+	removeobject 10
+	fadescreen FADE_TO_BLACK
+	applymovement OBJ_EVENT_ID_PLAYER, ACO_PlayerFromBehindDeskToBedroom
+	waitmovement OBJ_EVENT_ID_PLAYER
+	addobject 9
+	applymovement 9, Common_Movement_StepDown
+	waitmovement 9
+	fadescreen FADE_FROM_BLACK
+	applymovement 9, ACO_ShellyFromBedroomDoorToCouch
+	waitmovement 9
+	applymovement OBJ_EVENT_ID_PLAYER, ACO_PlayerFromBedroomDoorToShelly
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox ACO_WhoWasThat
+	closemessage
+	fadenewbgm 456
+	playse SE_PIN
+	waitse
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox ACO_OhWell
+	closemessage
+	delay 30
+	msgbox ACO_WellOfCourse
+	closemessage
+	applymovement 9 ACO_PlayerSlideUp
+	waitmovement 9
+	playse SE_W204
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 9, Common_Movement_StepDown
+	waitmovement 9
+	applymovement 9, Common_Movement_FaceUp
+	waitmovement 9
+	goto ACO_ShellyNightScene
+	
+ACO_ShellyNightScene::
+	applymovement 9, Common_Movement_StepRight
+	waitmovement 9
+	applymovement 9, Common_Movement_StepUp
+	waitmovement 9
+	applymovement 9, Common_Movement_FaceLeft
+	waitmovement 9
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox ACO_QuartersScene MSGBOX_DEFAULT
+	closemessage
+	special SpawnCameraObject
+	fadeoutbgm 2
+	applymovement EVENT_OBJ_ID_CAMERA, ACO_CameraPan
+	msgbox ACO_QuartersScene2 MSGBOX_DEFAULT
+	applymovement 9, ACO_ShellySlide
+	waitmovement 9
+	msgbox ACO_CONCLUSION MSGBOX_AUTOCLOSE
+	fadescreenspeed 1, 10
+	msgbox ACO_CONCLUSION2 MSGBOX_DEFAULT
+	closemessage
+	delay 40
+	removeobject 9
+	applymovement EVENT_OBJ_ID_CAMERA, ACO_CameraPan2
+	waitmovement EVENT_OBJ_ID_CAMERA
+	special RemoveCameraObject
+	msgbox ACO_TRANSITION MSGBOX_DEFAULT
+	fadescreenspeed 0, 10
+	playbgm MUS_HIGHTOWN, 0
+	clearflag FLAG_HIDE_AQUAHQ_SHELLY
+	setflag FLAG_RYU_DS_SHELLY_PARTNERS
+	setflag FLAG_RYU_DS_HAS_PARTNER
+	setflag FLAG_RYU_AQUA_LINE_DONE
+	setvar VAR_RYU_AQUA, 161 @Aqua line finished.
+	special DrawWholeMapView
+	releaseall
+	end
+	
+ACO_OneMomentPlease:
+	.string "One moment, please.\n"
+    .string "The Manager will be ready for you\p"
+    .string "shortly.$"
+
+ACO_PlayerPleaseComeIn:
+	.string "{PLAYER}, please come in.$"
+	
+ACO_WhoWasThat:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Who was that?\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}No one special.\p"
+    .string "Just going through the initial stages\n"
+    .string "on conducting legitimate business.\p"
+    .string "I've been tasked with spearheading\n"
+    .string "the operation.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}What about Archie and Matt?\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}They're cooperating with authorities\n"
+    .string "and pled guilty to all charges.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I see...so that means you're in\n"
+    .string "charge.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Did you forget?\n"
+    .string "You're an Admin too.$"
+
+ACO_OhWell:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Oh, well...\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}You thought you were really kicked\n"
+    .string "out of Team Aqua?\p"
+    .string "How gullible of you.\p"
+    .string "I, for one, am not letting you go\n"
+    .string "that easily after you stole my heart.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}So you admit you love me.$"
+	
+ACO_WellOfCourse:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Well of course I do, isn't that\n"
+    .string "obvious?\p"
+    .string "Seriously, you can be so dense...$"
+	
+ACO_TRANSITION:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You awaken to a few voices\n"
+	.string " chattering in the main room.\p"
+	.string " There's a nice breeze coming\n"
+	.string " through the window, and you don't\l"
+	.string " want to get up.)$"
+
+ACO_ShellySlide:
+	walk_slow_left
+	step_end
+
+ACO_GentlemanExit:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+	
+ACO_Outro_FromEntranceToBedroom:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+ACO_Outro_FromEntranceToBedroom2:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+ACO_PlayerFromBehindDeskToBedroom: @could have done a map script here, but at this point, i just cant be bothered
+	walk_up
+	walk_up
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	face_up
+	step_end
+	
+ACO_ShellyFromBedroomDoorToCouch:
+	walk_down
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	walk_up
+	face_up
+	step_end
+
+ACO_PlayerFromBedroomDoorToShelly:
+	walk_right
+	walk_right
+	walk_up
+	walk_right
+	face_down
+	step_end
+
+ACO_PlayerSlideUp:
+	slide_up
+	step_end
+
+ACO_QuartersScene:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}You know, before I met you\n"
+	.string "I failed to see any of the signs\p"
+	.string "that Archie was only thinking about\l"
+	.string "himself.\p"
+	.string "Ever since you started coming around\n"
+	.string "I started to see the difference\l"
+	.string "between good and evil.\p"
+	.string "I'm so glad we're together.$"
+
+ACO_QuartersScene2:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Speaking of which...\p{COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly slides over and\n leans against your chest...)$"
+	
+ACO_CONCLUSION:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Shelly snuggle\n closely and cover up.)$"
+	
+ACO_CONCLUSION2:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Shelly fall into a\n"
+	.string " peaceful sleep as the humid ocean\p"
+	.string " air slightly jostles the curtains\n"
+	.string " in the window.$"
 	
 ACO_HowYouFeeling:
 	.string "How're you feeling?$"
@@ -493,6 +647,143 @@ ACO_AWorkerShouldNot:
     .string "You may leave.\p"
     .string "We'll contact you when there's a job.$"
 	
+ACO_WereBack:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah Finally, air conditioning.\pIt was way too hot there!\nSee me at my desk.$"
+
+ACO_LostInThought:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (She seems lost in thought...\n You take this opportunity\l to give her the necklace.)$"
+
+ACO_HmmWhatsThis:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hm...? What's this?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}It's something I got made for you.\n"
+    .string "Thought it'd look best on a beauty\l"
+    .string "such as yourself...$"
+
+ACO_ShellyGiggles:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Shelly giggles.)\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I knew you were bold, but not this\n"
+    .string "bold...I underestimated you!$"
+
+ACO_ToBeFrank:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}To be frank, I've noticed quite a few\n"
+    .string "of the crew have been eyeing me for\p"
+    .string "a while, and yet none of them had the\n"
+    .string "guts to step up...until now, that is.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}So...?\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'll think about it.\p"
+    .string "I really appreciate the thoughtful\n"
+    .string "gift.$"
+
+ACO_OhHeresYourPayment2:
+	.string "Oh, here's your payment.\n"
+    .string "Keep up the good work.\p"
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} received ¥10,000.\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'll call you when there's more work.$"
+
+ACO_OhHeresYourPayment:
+	.string "Oh, here's your payment.\n"
+    .string "Keep up the good work.\p"
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} received ¥10,000.$"
+
+ACO_SoHowDid:
+	.string "So, how did things go?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}... ... ...\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see...well, in any case, it seems\n"
+    .string "we stopped Magma just in time.\p"
+    .string "Although, their true goal is yet to\n"
+    .string "be known...$"
+
+ACO_AquaStage3_WaitForCallMsg:
+	.string "I'll call you when there's\nmore work to do.$"
+	
+ACO_ThatWasAClose:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}That was a close one.\p"
+    .string "We barely averted the disaster that\n"
+    .string "would've been if Groudon had been\l"
+    .string "awakened...and yet...\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Is something wrong?\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}It's nothing, don't worry about it.\p"
+    .string "Come to think of it, I believe you\n"
+    .string "deserve a promotion.$"
+
+ACO_PlayerAchievedQuartermaster:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} has risen to Quartermaster!\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Again, another fancy term, but for an\n"
+    .string "Admin.\p"
+    .string "That's right, now we're equals, so\n"
+    .string "congratulations, you've earned it.$"
+	
+ACO_YouNoticeShelly:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You notice that Shelly is wearing\n"
+    .string " the necklace you gave her.)\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I was right...it really suits you.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Ah, so you noticed...well then...$"
+
+ACO_ThatsToCongrat:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}That's to congratulate you on your\n"
+    .string "promotion.\p"
+    .string "Don't expect anything else!$"
+
+ACO_NowTheresSomething:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Now, there's something I need to\n"
+    .string "verify.\p"
+    .string "In the meantime, I need you to head\n"
+    .string "over to Stern's Shipyard in Slateport\p"
+    .string "to retrieve files about the submarine\n"
+    .string "we've taken off their hands.\p"
+    .string "Be careful, though.\p"
+    .string "At this point, it must be crawling\n"
+    .string "with law enforcement.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Got it, see you soon.$"
+
+ACO_PlayerGoToShipyardMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}You should be heading to the\nshipyard in Slateport.$"
+	
+ACO_CameraPan:
+	walk_slow_left
+	walk_slow_left
+	walk_slow_left
+	walk_slow_left
+	walk_slow_left
+	walk_slow_left
+	step_end
+	
+ACO_CameraPan2:	
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	step_end
+	
+ACO_ShellyBackBehindDesk:
+	walk_right
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	face_down
+	step_end
+
+ACO_ShellyWalkAroundDesk:
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+
+ACO_ShellyFromplayerToDesk:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
 	
 ACO_ShellyToPlayer2:
 	walk_down

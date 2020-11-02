@@ -1,11 +1,21 @@
 AquaSubmarine_MapScripts::
 	map_script ON_FRAME AS_OnFrameScript
+	map_script ON_WARP, AS_OnWarpScript
 	.byte 0
 
 AS_OnFrameScript::
 	map_script_2 VAR_RYU_AQUA, 139, AS_DoMainAquaScene
 	map_script_2 VAR_RYU_AQUA, 143, AS_DoUpperFloorScene
+	map_script_2 VAR_RYU_AQUA, 153, AS_DoFinalSubScene
 	.2byte 0
+
+AS_OnWarpScript:
+	map_script_2 VAR_RYU_AQUA, 153, AS_MakePlayerInvisible
+	.2byte 0
+
+AS_MakePlayerInvisible:
+	applymovement OBJ_EVENT_ID_PLAYER, SCH_SetInvisible
+	end
 
 
 AS_DoMainAquaScene::
@@ -159,6 +169,25 @@ AS_DoUpperFloorScene::
 	setvar VAR_RYU_AQUA, 145
 	warpsilent MAP_UNDERWATER_ROUTE128, 255, 71, 5
 	waitstate
+
+AS_DoFinalSubScene::
+	setvar VAR_RYU_AQUA, 155 @Player needs to return to aqua headquarters
+	pokenavcall AS_ArchiesCall
+	waitmessage
+	delay 30
+	applymovement 3, Common_Movement_FaceLeft
+	waitmovement 3
+	msgbox AS_ArchiePlayer
+	closemessage
+	warpsilent MAP_UNDERWATER_ROUTE128, 255, 50, 15
+	waitstate
+	
+
+AS_ArchiesCall:
+	.string "... ... ... ...\pIt stopped you say?\n{PLAYER} must have done it then...$"
+
+AS_ArchiePlayer:
+	.string "{PLAYER}...$"
 	
 	
 

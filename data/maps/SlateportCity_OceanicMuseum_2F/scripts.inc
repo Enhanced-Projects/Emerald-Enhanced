@@ -190,7 +190,7 @@ OM_PlayerLostTheFight::
 	closemessage
 	setvar VAR_RYU_AQUA, 45 @player lost to steven, teleporting to aqua office
 	clearflag FLAG_TEMP_E
-	warpsilent MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE, 255, 27, 2
+	warpsilent MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE, 255, 30, 2
 	waitstate
 
 

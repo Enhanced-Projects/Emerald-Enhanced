@@ -4,6 +4,7 @@ Underwater_Route128_MapScripts:: @ 81F7730
 
 R128U_OnFrameScript::
 	map_script_2 VAR_RYU_AQUA, 145, R128U_MovePlayerToKyogre
+	map_script_2 VAR_RYU_AQUA, 155, R128U_PlayerShouldReturn
 	map_script_2 VAR_TEMP_5, 0, R128U_CheckKyogreInteraction
 	.2byte 0
 
@@ -48,9 +49,19 @@ RyuLegendary_CaughtKyogre128::
 	setflag FLAG_RYU_KYOGRE
 	removeobject 1
 	setvar VAR_RYU_AQUA, 149@Player got Kyogre.
-	@Do end scenes here.
+	clearflag FLAG_RYU_HIDE_MOSSDEEP_MATT
+	warpsilent MAP_MOSSDEEP_CITY, 255, 46, 7
+	waitstate
+
+R128U_PlayerShouldReturn::
+	setvar VAR_RYU_AQUA, 157
+	msgbox R128U_playerShould
+	closemessage
 	release
 	end
+
+R128U_playerShould:
+	.string " (I should return to the\n Aqua Office to see what's\l going on...)$"
 
 RyuLegendary_IntroKyogre128:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It looks like it may eat\n you at any point.)$"
