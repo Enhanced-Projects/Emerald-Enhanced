@@ -1818,7 +1818,7 @@ Ryu_InitializeAquaStage3NR::
 	closemessage
 	pokenavcall Ryu_AquaStage3NotifyMsg
 	closemessage
-	setvar VAR_RYU_AQUA, 80 @player is being called to Mt Pyre
+	setvar VAR_RYU_AQUA, 82 @player is being called to Mt Pyre
 	setflag FLAG_RYU_AQUA_3_NOTIFY
 	release
 	end

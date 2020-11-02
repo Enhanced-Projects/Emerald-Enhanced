@@ -75,18 +75,15 @@ R130_Kyogre::
 	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtKyogreRoute130 
 	setflag FLAG_RYU_KYOGRE_RAN
 	removeobject 4
-	pokenavcall R130_Kyogre_ReturnToMossdeep
-	waitmessage
-	setvar VAR_RYU_AQUA, 150
-	warpsilent MAP_MOSSDEEP_CITY, 255, 46, 8
-	waitstate
+	release
+	end
 
 	RyuLegendary_CaughtKyogreRoute130::
 	setflag FLAG_RYU_KYOGRE
 	removeobject 4 
 	pokenavcall R130_Kyogre_ReturnToMossdeep
 	waitmessage
-	setvar VAR_RYU_AQUA, 150
+	setvar VAR_RYU_AQUA, 150 @Player captured Kyogre.
 	warpsilent MAP_MOSSDEEP_CITY, 255, 46, 8
 	waitstate
 

@@ -57,7 +57,7 @@ ACO_Shelly::
 	closemessage
 	msgbox ACO_AquaStage3_WaitForCallMsg
 	closemessage
-	setvar VAR_RYU_AQUA, 80
+	setvar VAR_RYU_AQUA, 80 @returned from meteor falls. Player needs to get 6 badges to continue.
 	release
 	end
 
