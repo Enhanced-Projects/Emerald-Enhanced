@@ -309,6 +309,29 @@ const u16 gBotanyTreeRewards[] = {//need some placeholders for 'none', as the re
 #define ITEM_LEEK 5
 #define ITEM_BANANA 6
 
+#define ITEM_MUSCLE_POWDER 0
+#define ITEM_TOUGH_POWDER 1
+#define ITEM_SMART_POWDER 2
+#define ITEM_RESIST_POWDER 3
+#define ITEM_SWIFT_POWDER 4
+#define ITEM_SMALL_SALAD 5
+#define ITEM_MEDIUM_SALAD 6
+#define ITEM_LARGE_SALAD 7
+#define ITEM_REVITAL_ICE 8
+//recipe to item mapping
+
+const u16 sBotanyRecipeToItemId[NUM_RECIPES] = {
+    ITEM_MUSCLE_POWDER,
+    ITEM_TOUGH_POWDER,
+    ITEM_SMART_POWDER,
+    ITEM_RESIST_POWDER,
+    ITEM_SWIFT_POWDER,
+    ITEM_SMALL_SALAD,
+    ITEM_MEDIUM_SALAD,
+    ITEM_LARGE_SALAD,
+    ITEM_REVITAL_ICE
+};
+
 //recipe tables for lookup
 
 const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2] = {

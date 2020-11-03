@@ -1557,6 +1557,7 @@ bool8 ScrCmd_trycraftingrecipe(struct ScriptContext *ctx)
     u16 recipeNum = VarGet(ScriptReadHalfword(ctx)); //the recipe to try to craft
     u8 i;
     u16 itemId, requiredQuantity, quantityInBag;
+    u16 rewardItem = (sBotanyRecipeToItemId[recipeNum]);
 
     for (i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++) {
         itemId = sBotanyRecipes[recipeNum][i][0];
@@ -1584,6 +1585,7 @@ bool8 ScrCmd_trycraftingrecipe(struct ScriptContext *ctx)
         requiredQuantity = sBotanyRecipes[recipeNum][i][1];
         RemoveBagItem(itemId, requiredQuantity);
     }
+    VarSet(VAR_TEMP_C, rewardItem);
 
     return FALSE;
 }
