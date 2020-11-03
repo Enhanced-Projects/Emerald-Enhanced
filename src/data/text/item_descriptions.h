@@ -2885,3 +2885,7 @@ static const u8 sOvalCharmDesc[] = _(
     "Increases the rate\n"
     "of finding and\n"
     "hatching eggs.");
+
+static const u8 sRecipeBookDesc[] = _(
+    "A book that stores\n"
+    "known item recipes.");

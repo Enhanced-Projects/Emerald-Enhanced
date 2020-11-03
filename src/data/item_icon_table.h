@@ -602,4 +602,5 @@ const u32 *const gItemIconTable[][2] =
     // Custom Items
     [ITEM_FERTILIZER] = {gItemIcon_BerryPouch, gItemIconPalette_BerryPouch},
     [ITEM_DRY_ICE] = {gItemIcon_NeverMeltIce, gItemIconPalette_NeverMeltIce},
+    [ITEM_RECIPE_BOOK] = {gItemIcon_RecipeBook, gItemIconPalette_RecipeBook},
 };

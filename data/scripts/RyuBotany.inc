@@ -164,6 +164,9 @@ RyuBotany_CheckLevel4Progress::
     release
     end
 
+RyuBotanyRecipeBookScript::
+    end
+
 
 RyuBotany_Obtained1Item:
     .string "You obtained a {STR_VAR_1}.$"
