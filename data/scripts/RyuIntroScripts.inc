@@ -3,11 +3,12 @@ GameIntroSequencePart1::
 	goto GameModeSelect
 	
 LRT_IntroMsg1:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You awaken later than you wanted\n to. \p It seems like your clock's\nbattery died.)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You awaken later than you expected.\p It seems like your clock's\n battery died.)$"
 
 GameModeSelect:: @ 823BF04
 	lockall
 	goto_if_set FLAG_RYU_ISNGPLUS, Ryu_NewGamePlus
+	msgbox Ryu_PleaseSelectDifficulty
 	multichoicedefault 1, 2, MULTI_SELECT_FRESH_NEW_GAME_MODE, 0, 0
 	switch VAR_RESULT
 	case 0, IT_EasyMode
@@ -16,6 +17,9 @@ GameModeSelect:: @ 823BF04
 	case 3, IT_FrontierMode
 	goto IT_NormalMode
 	end
+
+Ryu_PleaseSelectDifficulty::
+	.string "Please choose a mode to play.$"
 
 Ryu_NewGamePlus::
 	clearflag FLAG_RYU_RANDOMBATTLE
@@ -29,18 +33,13 @@ Ryu_NewGamePlus::
 	call_if_set FLAG_RYU_HAS_EXPSHARE, Ryu_NGP_ExpShare
 	call_if_set FLAG_HAS_ACRO_BIKE, Ryu_NGP_AcroBike
 	call_if_set FLAG_HAS_MACH_BIKE, Ryu_NGP_MachBike
-	msgbox RyuNGP_DexInfo
-	closemessage
 	setflag FLAG_SYS_POKEDEX_GET
 	setflag FLAG_SYS_NATIONAL_DEX
 	special EnableNationalPokedex
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
-	special RyuGetCaughtMonsFromPCForDex
-	playse SE_EXPMAX
-	waitse
-	msgbox RyuNGP_DexSuccess
-	msgbox RyuNGP_HCQuery
+	closemessage
+	msgbox Ryu_PleaseSelectDifficulty
 	multichoicedefault 1, 2, MULTI_SELECT_NEW_GAME_PLUS_MODE, 3, 0
 	switch VAR_RESULT
 	case 0, IT_NormalMode	
@@ -60,10 +59,6 @@ RyuNGP_DexSuccess:
     .string "The dex rebuild appears to have\n"
     .string "been successful. Please check at\l"
     .string "your earliest convenience.$"
-	
-RyuNGP_HCQuery:
-	.string "Please select a difficulty.$"
-
 
 Ryu_NGP_Waystone:
 	additem ITEM_WAYSTONE, 1

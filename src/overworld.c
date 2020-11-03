@@ -72,6 +72,7 @@
 #include "constants/items.h"
 #include "pokemon_storage_system.h"
 #include "item.h"
+#include "pokedex.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -1609,6 +1610,13 @@ void ClearKeyItems(void)
     }
 }
 
+void ClearPokedexFlags(void)
+{
+    gUnusedPokedexU8 = 0;
+    memset(&gSaveBlock1Ptr->dexCaught, 0, sizeof(gSaveBlock1Ptr->dexCaught));
+    memset(&gSaveBlock1Ptr->dexSeen, 0, sizeof(gSaveBlock1Ptr->dexSeen));
+}
+
 
 void CB2_NewGame(void)
 {
@@ -1688,6 +1696,9 @@ void CB2_NewGame(void)
     else
     {
         ResetPokemonStorageSystem();
+        ResetPokedex();
+        ClearPokedexFlags();
+        ClearSav1();
     }
 }
 
