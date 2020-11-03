@@ -262,6 +262,13 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][5] = {
         ITEM_HEART_SCALE,
         ITEM_MISTY_SEED,
     },
+    [BOTANY_MAP_CATEGORY_AQUATIC] = {//new aquatic rewards
+        ITEM_NONE,//seaweed?
+        ITEM_PEARL,
+        ITEM_BLUE_SHARD,
+        ITEM_HEART_SCALE,
+        ITEM_MISTY_SEED,
+    },
     [BOTANY_MAP_CATEGORY_GENERAL] = {
         ITEM_ANTIDOTE,
         ITEM_POTION,
