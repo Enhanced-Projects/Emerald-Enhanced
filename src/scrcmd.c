@@ -2449,3 +2449,12 @@ bool8 ScrCmd_removeinfobox(struct ScriptContext *ctx)
     RemoveInfoBox();
     return FALSE;
 }
+
+bool8 ScrCmd_trycraftingrecipe(struct ScriptContext *ctx)
+{
+    u16 recipeNum = (VarGet(ScriptReadHalfword(ctx))); //the recipe to try to craft
+
+    //code here, put the resulting item in VAR_TEMP_C IF the player has all the prerequisites, be sure to removeBagItem(incredient, quantity) for each component.
+
+    return FALSE;// required for script command to work.
+}

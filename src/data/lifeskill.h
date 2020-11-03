@@ -285,3 +285,99 @@ const u16 gBotanyTreeRewards[] = {//need some placeholders for 'none', as the re
     ITEM_NONE,
     ITEM_NONE
 };
+
+
+#define NUM_INGREDIENTS_PER_RECIPE 5
+#define NUM_RECIPES 9
+
+//recipe defines
+#define MUSCLE_POWDER_RECIPE 0
+#define TOUGH_POWDER_RECIPE 1
+#define SMART_POWDER_RECIPE 2
+#define RESIST_POWDER_RECIPE 3
+#define SWIFT_POWDER_RECIPE 4
+#define SMALL_SALAD_RECIPE 5
+#define MEDIUM_SALAD_RECIPE 6
+#define LARGE_SALAD_RECIPE 7
+#define REVITAL_ICE_RECIPE 8
+
+
+//TEMPORARY Item defines
+
+#define ITEM_SEASIDE_SPINACH 0
+#define ITEM_JUNGLE_CHESTNUT 1
+#define ITEM_DEEPSEA_KELP 2
+#define ITEM_FROST_MINT 3
+#define ITEM_CHIMNEY_PEPPER 4
+#define ITEM_LEEK 5
+#define ITEM_BANANA 6
+#define ITEM_SEASIDE_SPINACH 7
+
+
+//recipe tables for lookup
+
+const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2] = {
+    [MUSCLE_POWDER_RECIPE] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_ORAN_BERRY, 1},
+        {ITEM_SEASIDE_SPINACH, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [TOUGH_POWDER_RECIPE] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_ORAN_BERRY, 1},
+        {ITEM_JUNGLE_CHESTNUT, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [SMART_POWDER_RECIPE] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_ORAN_BERRY, 1},
+        {ITEM_DEEPSEA_KELP, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [RESIST_POWDER_RECIPE] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_ORAN_BERRY, 1},
+        {ITEM_FROST_MINT, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [SWIFT_POWDER_RECIPE] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_ORAN_BERRY, 1},
+        {ITEM_CHIMNEY_PEPPER, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [SMALL_SALAD_RECIPE] = {
+        {ITEM_LEEK, 1},
+        {ITEM_BANANA, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [MEDIUM_SALAD_RECIPE] = {
+        {ITEM_GRASSY_SEED, 1},
+        {ITEM_TINY_MUSHROOM, 1},
+        {ITEM_LUMINOUS_MOSS, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [LARGE_SALAD_RECIPE] = {
+        {ITEM_MIRACLE_SEED, 1},
+        {ITEM_BIG_MUSHROOM, 1},
+        {ITEM_BIG_ROOT, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [REVITAL_ICE_RECIPE] = {
+        {ITEM_SNOWBALL, 1},
+        {ITEM_MOOMOO_MILK, 1},
+        {ITEM_BANANA, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    }
+};
