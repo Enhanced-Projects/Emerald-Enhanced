@@ -8,14 +8,13 @@ LRT_IntroMsg1:
 GameModeSelect:: @ 823BF04
 	lockall
 	goto_if_set FLAG_RYU_ISNGPLUS, Ryu_NewGamePlus
-	multichoicedefault 1, 2, 125, 0, 0
+	multichoicedefault 1, 2, MULTI_SELECT_FRESH_NEW_GAME_MODE, 0, 0
 	switch VAR_RESULT
 	case 0, IT_EasyMode
 	case 1, IT_NormalMode
-	case 2, IT_HardMode
-	case 3, IT_NuzlockeMode
-	case 4, IT_FrontierMode
-	case 127, IT_NormalMode
+	case 2, IT_NuzlockeMode
+	case 3, IT_FrontierMode
+	goto IT_NormalMode
 	end
 
 Ryu_NewGamePlus::
@@ -44,10 +43,10 @@ Ryu_NewGamePlus::
 	msgbox RyuNGP_HCQuery
 	multichoicedefault 1, 2, MULTI_SELECT_NEW_GAME_PLUS_MODE, 3, 0
 	switch VAR_RESULT
-	case 0, IT_NuzlockeMode
+	case 0, IT_NormalMode	
+	case 1, IT_NuzlockeMode
     case 2, IT_HardcoreMode
-	case 3, IT_NormalMode	
-	goto IT_HardMode
+	goto IT_NormalMode
 
 RyuNGP_DexInfo:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}We will now attempt to restore the\n"
@@ -136,22 +135,6 @@ IT_NormalMode::
 Normalmode_NGP::
 	setvar VAR_RYU_AUTOLEVEL_MODIFIER, 0
 	setvar VAR_RYU_EXP_MULTIPLIER, 10 @arbitrary value to tell getExp to use the ngp scaling
-	return
-	
-IT_HardMode::
-	setvar VAR_RYU_EXP_MULTIPLIER, 1000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 4000
-	call_if_set FLAG_RYU_ISNGPLUS, Hardmode_NGP
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	checkplayergender
-	compare VAR_RESULT, MALE
-	goto_if_eq SetMaleStartingVariables
-	compare VAR_RESULT, FEMALE
-	goto_if_eq SetFemaleStartingVariables
-	end
-
-Hardmode_NGP::
-	setvar VAR_RYU_AUTOLEVEL_MODIFIER, 3
 	return
 	
 IT_NuzlockeMode::
