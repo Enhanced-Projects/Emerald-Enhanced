@@ -30,8 +30,8 @@ gText_Birch_BoyOrGirl:: @ 82C8BDD
 	.string "Would you like to play as a {COLOR LIGHT_BLUE}{SHADOW BLUE}male{COLOR DARK_GREY}{SHADOW LIGHT_GREY} or {COLOR LIGHT_RED}{SHADOW RED}female{SHADOW LIGHT_GREY}{COLOR DARK_GREY} \ncharacter?$"
 
 gText_Birch_WhatsYourName:: @ 82C8BFF
-	.string "What name would you like to                         \n"
-	.string "use for your character?        $"
+	.string "What name would you like to use for your  \n"
+	.string "character?$"
 
 gText_Birch_SoItsPlayer:: @ 82C8C1C
 	.string "You want to use {PLAYER}?      $"
