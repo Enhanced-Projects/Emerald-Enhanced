@@ -189,7 +189,7 @@
 #define METATILE_Fortree_BridgeOverTrees_Lowered           0x257
 #define METATILE_Fortree_BridgeOverTrees_Raised            0x256
 #define METATILE_Fortree_LongGrass_Root                    0x208
-#define METATILE_Fortree_SecretBase_LongGrass_BottomLeft   0x281
+#define METATILE_Fortree_SecretBase_LongGrass_BottomLeft   0x348
 #define METATILE_Fortree_SecretBase_LongGrass_BottomMid    0x282
 #define METATILE_Fortree_SecretBase_LongGrass_BottomRight  0x283
 #define METATILE_Fortree_SecretBase_LongGrass_TopLeft      0x279
@@ -780,7 +780,11 @@
 #define METATILE_TrickHousePuzzle_Stairs_Down                 0x20B
 
 // gTileset_Underwater
-#define METATILE_Underwater_FloorShadow  0x228
-#define METATILE_Underwater_RockWall     0x21E
+#define METATILE_Underwater_Dark           0x2A9
+#define METATILE_Underwater_FloorShadow    0x228
+#define METATILE_Underwater_Light          0x216
+#define METATILE_Underwater_RockWall       0x21E
+#define METATILE_Underwater_Seaweed_Dark   0x281
+#define METATILE_Underwater_Seaweed_Light  0x201
 
 #endif // GUARD_METATILE_LABELS_H

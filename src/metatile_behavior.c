@@ -1349,7 +1349,9 @@ bool8 MetatileBehavior_IsCuttableGrass(u8 metatileBehavior)
      || metatileBehavior == MB_LONG_GRASS
      || metatileBehavior == MB_SAFARI_GRASS
      || metatileBehavior == MB_ASHGRASS
-     || metatileBehavior == MB_LONG_GRASS_SOUTH_EDGE)
+     || metatileBehavior == MB_LONG_GRASS_SOUTH_EDGE
+     || metatileBehavior == MB_SEAWEED
+     || metatileBehavior == MB_SEAWEED_NO_SURFACING)
         return TRUE;
     else
         return FALSE;

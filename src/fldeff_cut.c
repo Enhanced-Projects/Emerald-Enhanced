@@ -189,7 +189,8 @@ bool8 SetUpFieldMove_Cut(void)
                 {
                     tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
                     if (MetatileBehavior_IsPokeGrass(tileBehavior) == TRUE
-                    || MetatileBehavior_IsAshGrass(tileBehavior) == TRUE)
+                    || MetatileBehavior_IsAshGrass(tileBehavior) == TRUE
+                    || MetatileBehavior_IsSeaweed(tileBehavior) == TRUE)
                     {
                         // Standing in front of grass.
                         sHyperCutTiles[6 + (i * 5) + j] = TRUE;
@@ -247,7 +248,8 @@ bool8 SetUpFieldMove_Cut(void)
                         u8 tileArrayId = ((sHyperCutStruct[i].y * 5) + 12) + (sHyperCutStruct[i].x);
                         tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
                         if (MetatileBehavior_IsPokeGrass(tileBehavior) == TRUE
-                        || MetatileBehavior_IsAshGrass(tileBehavior) == TRUE)
+                        || MetatileBehavior_IsAshGrass(tileBehavior) == TRUE
+                        || MetatileBehavior_IsSeaweed(tileBehavior) == TRUE)
                         {
                             gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
                             gPostMenuFieldCallback = FieldCallback_CutGrass;
@@ -412,6 +414,12 @@ static void SetCutGrassMetatile(s16 x, s16 y)
         break;
     case METATILE_General_TallGrass_TreeUp:
         MapGridSetMetatileIdAt(x, y, METATILE_General_Grass_TreeUp);
+        break;
+    case METATILE_Underwater_Seaweed_Light:
+        MapGridSetMetatileIdAt(x, y, METATILE_Underwater_Light);
+        break;
+    case METATILE_Underwater_Seaweed_Dark:
+        MapGridSetMetatileIdAt(x, y, METATILE_Underwater_Dark);
         break;
     }
 }
