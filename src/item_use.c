@@ -1242,7 +1242,6 @@ void ItemUseInBattle_EnigmaBerry(u8 taskId)
 void ItemUseOutOfBattle_RecipeBook(u8 taskId)
 {
     SetMainCallback2(CB2_ReturnToField);
-    ScriptContext2_Enable();
     ScriptContext1_SetupScript(RyuBotanyRecipeBookScript);
 }
 

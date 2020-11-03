@@ -165,7 +165,20 @@ RyuBotany_CheckLevel4Progress::
     end
 
 RyuBotanyRecipeBookScript::
+    lock
+    msgbox RB_WhichRecipe
+    scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYRECIPE, 1, 2, 5, 0
+    buffernumberstring 0, VAR_RESULT
+    msgbox RB_YouSelected
+    closemessage
+    release
     end
+
+RB_YouSelected:
+    .string "You selected option number {STR_VAR_1}.$"
+
+RB_WhichRecipe:
+    .string "Which recipe would you like to\ncraft?$"
 
 
 RyuBotany_Obtained1Item:

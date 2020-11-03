@@ -765,42 +765,29 @@ int ScriptMenu_AdjustLeftCoordFromWidth(int left, int width)
     return adjustedLeft;
 }
 
-// Text displayed as options.
-static const u8 sText_Example1[] = _("Example 1");
-static const u8 sText_Example2[] = _("Example 2");
-static const u8 sText_Example3[] = _("Example 3");
-static const u8 sText_Example4[] = _("Example 4");
-static const u8 sText_Example5[] = _("Example 5");
-static const u8 sText_Example6[] = _("Example 6");
-static const u8 sText_Example7[] = _("Example 7");
-static const u8 sText_Example8[] = _("Example 8");
-static const u8 sText_Example9[] = _("Example 9");
+// strings to display as items.
+static const u8 sText_BotanyItem1[] = _("Muscle Powder");
+static const u8 sText_BotanyItem2[] = _("Tough Powder");
+static const u8 sText_BotanyItem3[] = _("Smart Powder");
+static const u8 sText_BotanyItem4[] = _("Resist Powder");
+static const u8 sText_BotanyItem5[] = _("Swift Powder");
+static const u8 sText_BotanyItem6[] = _("Small Salad");
+static const u8 sText_BotanyItem7[] = _("Medium Salad");
+static const u8 sText_BotanyItem8[] = _("Large Salad");
+static const u8 sText_BotanyItem9[] = _("Revital Ice");
 
 // Sets of multichoices.
-static const struct ListMenuItem sSet1[] =
+static const struct ListMenuItem sBotanyScrollingSet[] =
 {
-    {sText_Example1, 0},
-    {sText_Example2, 1},
-    {sText_Example3, 2},
-    {sText_Example4, 3},
-    {sText_Example5, 4},
-    {sText_Example6, 5},
-    {sText_Example7, 6},
-    {sText_Example8, 7},
-    {sText_Example9, 8},
-};
-
-static const struct ListMenuItem sSet2[] =
-{
-    {sText_Example9, 0},
-    {sText_Example8, 1},
-    {sText_Example7, 2},
-    {sText_Example6, 3},
-    {sText_Example5, 4},
-    {sText_Example4, 5},
-    {sText_Example3, 6},
-    {sText_Example2, 7},
-    {sText_Example1, 8},
+    {sText_BotanyItem1, 0},
+    {sText_BotanyItem2, 1},
+    {sText_BotanyItem3, 2},
+    {sText_BotanyItem4, 3},
+    {sText_BotanyItem5, 4},
+    {sText_BotanyItem6, 5},
+    {sText_BotanyItem7, 6},
+    {sText_BotanyItem8, 7},
+    {sText_BotanyItem9, 8},
 };
 
 // Table of your multichoice sets.
@@ -808,10 +795,9 @@ struct
 {
     const struct ListMenuItem *set;
     int count;
-} static const sScrollingSets[] =
+} static const sScrollingSets[] =//each scrolling menu goes here
 {
-    {sSet1, ARRAY_COUNT(sSet1)},
-    {sSet2, ARRAY_COUNT(sSet2)},
+    {sBotanyScrollingSet, ARRAY_COUNT(sBotanyScrollingSet)},
 };
 
 static void Task_ScrollingMultichoiceInput(u8 taskId);
