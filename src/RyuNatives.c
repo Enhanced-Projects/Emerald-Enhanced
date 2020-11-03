@@ -1551,3 +1551,39 @@ void BotanyTreeChop(void)
     u16 rewardItem = gBotanyTreeRewards[Random() % (ARRAY_COUNT(gBotanyTreeRewards))];
     VarSet(VAR_TEMP_0, rewardItem);
 }
+
+bool8 ScrCmd_trycraftingrecipe(struct ScriptContext *ctx)
+{
+    u16 recipeNum = VarGet(ScriptReadHalfword(ctx)); //the recipe to try to craft
+    u8 i;
+    u16 itemId, requiredQuantity, quantityInBag;
+
+    for (i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++) {
+        itemId = sBotanyRecipes[recipeNum][i][0];
+        if (itemId == ITEM_NONE) // NONE is used as a placeholder for trailing slots, so we can early exit here
+            break;
+        requiredQuantity = sBotanyRecipes[recipeNum][i][1];
+        quantityInBag = GetItemQuantity(itemId);
+        // 4000 is the magic number for “you don’t have the ingredient”
+        if (quantityInBag < requiredQuantity) {
+            VarSet(VAR_TEMP_C, 4000);
+            // 8000 is the magic number for “you have at least one but need more of that ingredient”
+            if (quantityInBag > 0)
+                VarSet(VAR_TEMP_C, 8000);
+            return FALSE;
+        }
+    }
+
+    // TODO for ryu: the resulting item isn’t specified in any table right now.
+    // VarSet(VAR_TEMP_C, RESULTING_ITEM);
+
+    for (i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++) {
+        itemId = sBotanyRecipes[recipeNum][i][0];
+        if (itemId == ITEM_NONE)
+            break;
+        requiredQuantity = sBotanyRecipes[recipeNum][i][1];
+        RemoveBagItem(itemId, requiredQuantity);
+    }
+
+    return FALSE;
+}

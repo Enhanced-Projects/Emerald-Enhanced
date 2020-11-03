@@ -286,11 +286,10 @@ const u16 gBotanyTreeRewards[] = {//need some placeholders for 'none', as the re
     ITEM_NONE
 };
 
-
 #define NUM_INGREDIENTS_PER_RECIPE 5
 #define NUM_RECIPES 9
 
-//recipe defines
+//Recipe defines
 #define MUSCLE_POWDER_RECIPE 0
 #define TOUGH_POWDER_RECIPE 1
 #define SMART_POWDER_RECIPE 2
@@ -301,9 +300,7 @@ const u16 gBotanyTreeRewards[] = {//need some placeholders for 'none', as the re
 #define LARGE_SALAD_RECIPE 7
 #define REVITAL_ICE_RECIPE 8
 
-
 //TEMPORARY Item defines
-
 #define ITEM_SEASIDE_SPINACH 0
 #define ITEM_JUNGLE_CHESTNUT 1
 #define ITEM_DEEPSEA_KELP 2
@@ -311,8 +308,6 @@ const u16 gBotanyTreeRewards[] = {//need some placeholders for 'none', as the re
 #define ITEM_CHIMNEY_PEPPER 4
 #define ITEM_LEEK 5
 #define ITEM_BANANA 6
-#define ITEM_SEASIDE_SPINACH 7
-
 
 //recipe tables for lookup
 

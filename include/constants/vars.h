@@ -301,6 +301,8 @@
 #define VAR_UNUSED_0x8014             0x8014
 #define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of gTrainerBattleOpponent_A
 
+#define SPECIAL_VARS_END              0x8015
+
 //drawheadshot defines
 
 #define HEAD_DAWN 1
@@ -382,7 +384,5 @@
 #define BOTANY_MAP_CATEGORY_SEASIDE 3
 #define BOTANY_MAP_CATEGORY_GENERAL 4
 #define NUM_BOTANY_MAP_CATEGORIES 5
-
-#define SPECIAL_VARS_END              0x8015
 
 #endif // GUARD_CONSTANTS_VARS_H
