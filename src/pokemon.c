@@ -3186,10 +3186,11 @@ void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon)
     // If the pokemon is high enough to know all of it’s moves, decrement i to move it away from LEVEL_UP_END
     if (gLevelUpLearnsets[species][i].move == LEVEL_UP_END)
         i--;
-    for (knownMoves = 0; knownMoves < MAX_MON_MOVES; knownMoves++, i--)
+    for (knownMoves = 0; knownMoves < MAX_MON_MOVES; knownMoves++, i--) {
         GiveMoveToBoxMon(boxMon, gLevelUpLearnsets[species][i].move);
         if (i == 0)
             return;
+    }
 }
 
 u16 MonTryLearningNewMove(struct Pokemon *mon, bool8 firstMove)
