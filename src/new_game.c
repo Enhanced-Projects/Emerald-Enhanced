@@ -157,6 +157,7 @@ void NewGameInitData(void)
     if (!FlagGet(FLAG_SYS_GAME_CLEAR))
         RtcReset();
 
+    ClearSav1();
     gDifferentSaveFile = 1;
     gSaveBlock2Ptr->encryptionKey = 0;
     ZeroPlayerPartyMons();

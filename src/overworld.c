@@ -1696,9 +1696,6 @@ void CB2_NewGame(void)
     else
     {
         ResetPokemonStorageSystem();
-        ResetPokedex();
-        ClearPokedexFlags();
-        ClearSav1();
     }
 }
 
