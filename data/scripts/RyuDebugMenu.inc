@@ -136,7 +136,7 @@ DevModeDisabled:
 	.string "{PLAYER} is no longer a developer.$"
 	
 EGC_CLEARGAMECLEARFLAG::
-    clearflag FLAG_SYS_GAME_CLEAR
+	clearflag FLAG_SYS_GAME_CLEAR
 	end
 
 RyuDebug_waystone::
@@ -182,8 +182,9 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	clearflag FLAG_SYS_DEXNAV_GET
-	clearflag FLAG_SYS_DEXNAV_SEARCH
+	clearflag FLAG_RYU_KYOGRE
+	setflag FLAG_RYU_PLAYER_HELPING_AQUA
+	setflag FLAG_SYS_GAME_CLEAR
 	release
 	end
 
@@ -372,8 +373,8 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
-    givemon SPECIES_MEGA_ABSOL, 125, ITEM_SCOPE_LENS
-	givemon SPECIES_MEGA_GARDEVOIR, 125, ITEM_EXPERT_BELT
+	givemon SPECIES_MEGA_ABSOL, BASE_MAX_LEVEL, ITEM_SCOPE_LENS
+	givemon SPECIES_MEGA_GARDEVOIR, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
 	setmonmove 0, 0, MOVE_PLAY_ROUGH
 	setmonmove 0, 1, MOVE_CRUNCH
 	setmonmove 0, 2, MOVE_SACRED_SWORD
@@ -397,7 +398,7 @@ RyuDebug_quickstart::
 	special RyuSetIVs
 	special RyuSetEVSPE
 	additem ITEM_WAYSTONE, 1
-    setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV
 	call RyuDebug_enableWaystone

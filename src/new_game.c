@@ -154,6 +154,8 @@ void ResetMenuAndMonGlobals(void)
 
 void NewGameInitData(void)
 {
+    u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
+
     if (!FlagGet(FLAG_SYS_GAME_CLEAR))
         RtcReset();
 
@@ -293,6 +295,7 @@ void NewGameInitData(void)
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;
+    VarSet(VAR_RYU_NGPLUS_COUNT, ngPlusCount);
 }
 
 static void ResetMiniGamesResults(void)
