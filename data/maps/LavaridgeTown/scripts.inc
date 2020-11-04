@@ -14,7 +14,7 @@ LavaridgeTown_OnTransition: @ 81EA4DE
 
 LT_CheckRivalGiftStatus::
 	map_script_2 VAR_TEMP_D, 0, LT_SetRivalPosForReGift
-	map_script_2 VAR_TEMP_A, 0, Ryu_CheckMagmaStatusForMissionCall
+	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
 	.2byte 0
 
 LT_SetRivalPosForReGift::

@@ -14,8 +14,7 @@ MauvilleCity_OnTransition: @ 81DF38B
 
 MauvilleCity_OnFrame::
 	map_script_2 VAR_TEMP_5, 0, CheckFollowerLanette
-	map_script_2 VAR_TEMP_A, 0, Ryu_CheckMagmaStatusForMissionCall
-	map_script_2 VAR_TEMP_6, 0, Ryu_CheckEnableDexNav
+	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
 	.2byte 0
 
 CheckFollowerLanette::
