@@ -1,5 +1,22 @@
 @@Custom Scripts
 
+@@dexnav
+
+Ryu_CheckEnableDexNav::
+	setvar VAR_TEMP_6, 20
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 6
+	goto_if_lt ryu_end
+	goto_if_set FLAG_SYS_DEXNAV_GET, ryu_end
+	pokenavcall Ryu_DexnavGive
+	waitmessage
+	setflag FLAG_SYS_DEXNAV_GET
+	setflag FLAG_SYS_DEXNAV_SEARCH
+	release
+	end
+
+Ryu_DexnavGive:
+	.string "Congratulations, {PLAYER}!\pYou have been randomly selected\nto receive the free DexNav upgrade\lfor your Pokenav.\pWe hope you will enjoy this new\nbeta feature!$"
 
 @@=================================================================================================EXP BATTERY
 
