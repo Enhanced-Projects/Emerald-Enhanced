@@ -167,6 +167,10 @@ AS_DoUpperFloorScene::
 	applymovement OBJ_EVENT_ID_PLAYER, AS_PlayerExitSub
 	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_RYU_AQUA, 145
+	setflag FLAG_RYU_PLAYER_HELPING_AQUA
+	setflag FLAG_RYU_DS_SHELLY_LOVERS
+	clearflag FLAG_RYU_KYOGRE_RAN
+	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	warpsilent MAP_UNDERWATER_ROUTE128, 255, 71, 5
 	waitstate
 

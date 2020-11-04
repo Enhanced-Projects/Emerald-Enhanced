@@ -33,7 +33,7 @@ R128U_AddKyogre::
 R128U_Kyogre::
 	goto_if_unset FLAG_RYU_PLAYER_HELPING_AQUA, ryu_end
 	goto_if_set FLAG_RYU_KYOGRE, ryu_end
-	goto_if_set FLAG_RYU_KYOGRE_RAN, ryu_end
+	@goto_if_set FLAG_RYU_KYOGRE_RAN, ryu_end
 	msgbox RyuLegendary_IntroKyogre128
 	setvar VAR_TEMP_5, SPECIES_KYOGRE
 	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
@@ -61,7 +61,7 @@ R128U_PlayerShouldReturn::
 	end
 
 R128U_playerShould:
-	.string " (I should return to the\n Aqua Office to see what's\l going on...)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(I should return to the\n Aqua Office to see what's\l going on...)$"
 
 RyuLegendary_IntroKyogre128:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(It looks like it may eat\n you at any point.)$"
