@@ -75,9 +75,10 @@ void ClearSav1(void)
 {
     u8 dexSeenOld[DEX_FLAGS_NO];
     u8 dexCaughtOld[DEX_FLAGS_NO];
+    u16 i;
 
     //Copy dex information temporarily
-    for (int i = 0; i < DEX_FLAGS_NO; i++)
+    for (i = 0; i < DEX_FLAGS_NO; i++)
     {
         dexSeenOld[i] = gSaveblock1.dexSeen[i];
         dexCaughtOld[i] = gSaveblock1.dexCaught[i];
@@ -89,7 +90,7 @@ void ClearSav1(void)
     ClearPokedexFlags();
 
     //Re-enter all dex information
-    for (int i = 0; i < DEX_FLAGS_NO; i++)
+    for (i = 0; i < DEX_FLAGS_NO; i++)
     {
         gSaveblock1.dexSeen[i] = dexSeenOld[i];
         gSaveblock1.dexCaught[i] = dexCaughtOld[i];
