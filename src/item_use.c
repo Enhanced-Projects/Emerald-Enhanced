@@ -52,6 +52,7 @@ extern u8 Ryu_AbilityCapsule[];
 extern u8 Ryu_CantUsePcCharging[];
 extern u8 RyuCheckSootSackContents[];
 extern u8 PCN_CantUseThisHere[];
+extern u8 RyuBotanyRecipeBookScript[];
 
 static void SetUpItemUseCallback(u8 taskId);
 static void FieldCB_UseItemOnField(void);
@@ -1236,6 +1237,12 @@ void ItemUseInBattle_EnigmaBerry(u8 taskId)
         ItemUseOutOfBattle_CannotUse(taskId);
         break;
     }
+}
+
+void ItemUseOutOfBattle_RecipeBook(u8 taskId)
+{
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext1_SetupScript(RyuBotanyRecipeBookScript);
 }
 
 void ItemUseOutOfBattle_CannotUse(u8 taskId)

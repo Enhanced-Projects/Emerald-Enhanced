@@ -542,7 +542,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuWarp
 	def_special RyuWarp2
 	def_special RyuGiveExpUnloadBattery
-	def_special RyuGetCaughtMonsFromPCForDex
 	def_special RyuCheckTempVars
 	def_special RyuNumberOfFullBoxes
 	def_special RyuWipeParty

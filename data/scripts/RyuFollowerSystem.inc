@@ -158,6 +158,16 @@ FollowerLeafSetup::
 	release
 	end
 
+FollowerShellySetup::
+	applymovement 1, ACO_ShellyWalkAroundDesk
+	waitmovement 1
+	removeobject 1
+	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_EAST
+	setflag FLAG_HIDE_AQUAHQ_SHELLY
+	release
+	end
+
+
 FollowerNurseSetup::
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1

@@ -1741,6 +1741,11 @@
 	.2byte \var2
 	.endm
 
+	.macro trycraftingrecipe recipe:req
+	.byte 0xf7
+	.2byte \recipe
+	.endm
+
 	@Checks if player has species in their party. If so, VAR_RESULT is true,
 	@and the slot number is loaded into VAR_TEMP_F. Using the slot number is optional.
 	.macro checkspecies species:req
@@ -1905,10 +1910,20 @@
 	setorcopyvar VAR_0x8000, \trainer
 	callstd STD_REGISTER_MATCH_CALL
 	.endm
-
+	
 	.macro dofieldeffectsparkle x:req, y:req, priority:req
 	setfieldeffectargument 0, \x
 	setfieldeffectargument 1, \y
 	setfieldeffectargument 2, \priority
 	dofieldeffect FLDEFF_SPARKLE
+	.endm
+	
+	.macro scrollingmultichoice id:req, x:req, y:req, show:req, b:req
+	setvar VAR_0x8004, \id,
+	setvar VAR_0x8005, \x,
+	setvar VAR_0x8006, \y,
+	setvar VAR_0x8007, \show,
+	setvar VAR_0x8008, \b,
+	callnative ScriptMenu_ScrollingMultichoice
+	waitstate
 	.endm

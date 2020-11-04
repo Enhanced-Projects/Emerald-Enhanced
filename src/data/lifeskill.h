@@ -262,13 +262,13 @@ const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][5] = {
         ITEM_HEART_SCALE,
         ITEM_MISTY_SEED,
     },
-//    [BOTANY_MAP_CATEGORY_UNDERWATER] = {
-//        ITEM_NONE, //ITEM_DEEPSEA_KELP,
-//        ITEM_ENERGY_POWDER,
-//        ITEM_ENERGY_POWDER,
-//        ITEM_HEART_SCALE,
-//        ITEM_MISTY_SEED,
-//    },
+    [BOTANY_MAP_CATEGORY_AQUATIC] = {//new aquatic rewards
+        ITEM_NONE,//seaweed?
+        ITEM_PEARL,
+        ITEM_BLUE_SHARD,
+        ITEM_HEART_SCALE,
+        ITEM_MISTY_SEED,
+    },
     [BOTANY_MAP_CATEGORY_GENERAL] = {
         ITEM_ANTIDOTE,
         ITEM_ENERGY_POWDER,
@@ -291,4 +291,118 @@ const u16 gBotanyTreeRewards[] = {//need some placeholders for 'none', as the re
     ITEM_POISON_BARB,
     ITEM_NONE,
     ITEM_NONE
+};
+
+#define NUM_INGREDIENTS_PER_RECIPE 5
+#define NUM_RECIPES 9
+
+//Recipe defines
+#define MUSCLE_POWDER_RECIPE 0
+#define TOUGH_POWDER_RECIPE 1
+#define SMART_POWDER_RECIPE 2
+#define RESIST_POWDER_RECIPE 3
+#define SWIFT_POWDER_RECIPE 4
+#define SMALL_SALAD_RECIPE 5
+#define MEDIUM_SALAD_RECIPE 6
+#define LARGE_SALAD_RECIPE 7
+#define REVITAL_ICE_RECIPE 8
+
+//TEMPORARY Item defines
+#define ITEM_SEASIDE_SPINACH 0
+#define ITEM_JUNGLE_CHESTNUT 1
+#define ITEM_DEEPSEA_KELP 2
+#define ITEM_FROST_MINT 3
+#define ITEM_CHIMNEY_PEPPER 4
+#define ITEM_LEEK 5
+#define ITEM_BANANA 6
+
+#define ITEM_MUSCLE_POWDER 0
+#define ITEM_TOUGH_POWDER 1
+#define ITEM_SMART_POWDER 2
+#define ITEM_RESIST_POWDER 3
+#define ITEM_SWIFT_POWDER 4
+#define ITEM_SMALL_SALAD 5
+#define ITEM_MEDIUM_SALAD 6
+#define ITEM_LARGE_SALAD 7
+#define ITEM_REVITAL_ICE 8
+//recipe to item mapping
+
+const u16 sBotanyRecipeToItemId[NUM_RECIPES] = {
+    ITEM_MUSCLE_POWDER,
+    ITEM_TOUGH_POWDER,
+    ITEM_SMART_POWDER,
+    ITEM_RESIST_POWDER,
+    ITEM_SWIFT_POWDER,
+    ITEM_SMALL_SALAD,
+    ITEM_MEDIUM_SALAD,
+    ITEM_LARGE_SALAD,
+    ITEM_REVITAL_ICE
+};
+
+//recipe tables for lookup
+
+const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2] = {
+    [MUSCLE_POWDER_RECIPE] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_ORAN_BERRY, 1},
+        {ITEM_SEASIDE_SPINACH, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [TOUGH_POWDER_RECIPE] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_ORAN_BERRY, 1},
+        {ITEM_JUNGLE_CHESTNUT, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [SMART_POWDER_RECIPE] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_ORAN_BERRY, 1},
+        {ITEM_DEEPSEA_KELP, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [RESIST_POWDER_RECIPE] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_ORAN_BERRY, 1},
+        {ITEM_FROST_MINT, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [SWIFT_POWDER_RECIPE] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_ORAN_BERRY, 1},
+        {ITEM_CHIMNEY_PEPPER, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [SMALL_SALAD_RECIPE] = {
+        {ITEM_LEEK, 1},
+        {ITEM_BANANA, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [MEDIUM_SALAD_RECIPE] = {
+        {ITEM_GRASSY_SEED, 1},
+        {ITEM_TINY_MUSHROOM, 1},
+        {ITEM_LUMINOUS_MOSS, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [LARGE_SALAD_RECIPE] = {
+        {ITEM_MIRACLE_SEED, 1},
+        {ITEM_BIG_MUSHROOM, 1},
+        {ITEM_BIG_ROOT, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [REVITAL_ICE_RECIPE] = {
+        {ITEM_SNOWBALL, 1},
+        {ITEM_MOOMOO_MILK, 1},
+        {ITEM_BANANA, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    }
 };

@@ -605,28 +605,6 @@ void RyuCheckTempVars(void)//buffers the values of all temporary map vars to a s
     StringAppend(gStringVar1, gText_OneSpace);
     StringAppend(gStringVar1, gStringVar3);
 }
-
-void RyuGetCaughtMonsFromPCForDex(void)//used to rebuild dex based on what player has in their pc at the time of calling this function.
-{                                      //I'd rather it kept the player's whole dex so that a living dex can be maintained, thus deprecating this
-    u16 i, j;                          //function. However, I wasn't able to figure that out, so this function lives here still.
-    u16 natDexNum;
-    u16 species = SPECIES_NONE;
-
-    for (i = 0; i < TOTAL_BOXES_COUNT; i++)
-    {
-        for (j = 0; j < IN_BOX_COUNT; j++)
-        {
-            species = GetBoxMonData(&gPokemonStoragePtr->boxes[i][j], MON_DATA_SPECIES);
-            if (species != SPECIES_NONE && !GetBoxMonData(&gPokemonStoragePtr->boxes[i][j], MON_DATA_IS_EGG))
-            {
-                natDexNum = SpeciesToNationalPokedexNum(species);
-                GetSetPokedexFlag(natDexNum, FLAG_SET_CAUGHT);
-                GetSetPokedexFlag(natDexNum, FLAG_SET_SEEN);
-            }
-        }
-    }
-}
-
 //Ball changer
 
 void RyuChangeUsedPokeball(void)
@@ -1572,4 +1550,42 @@ void BotanyTreeChop(void)
     u16 treeTableSize = (sizeof(gBotanyTreeRewards));
     u16 rewardItem = gBotanyTreeRewards[Random() % (ARRAY_COUNT(gBotanyTreeRewards))];
     VarSet(VAR_TEMP_0, rewardItem);
+}
+
+bool8 ScrCmd_trycraftingrecipe(struct ScriptContext *ctx)
+{
+    u16 recipeNum = VarGet(ScriptReadHalfword(ctx)); //the recipe to try to craft
+    u8 i;
+    u16 itemId, requiredQuantity, quantityInBag;
+    u16 rewardItem = (sBotanyRecipeToItemId[recipeNum]);
+
+    for (i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++) {
+        itemId = sBotanyRecipes[recipeNum][i][0];
+        if (itemId == ITEM_NONE) // NONE is used as a placeholder for trailing slots, so we can early exit here
+            break;
+        requiredQuantity = sBotanyRecipes[recipeNum][i][1];
+        quantityInBag = GetItemQuantity(itemId);
+        // 4000 is the magic number for “you don’t have the ingredient”
+        if (quantityInBag < requiredQuantity) {
+            VarSet(VAR_TEMP_C, 4000);
+            // 8000 is the magic number for “you have at least one but need more of that ingredient”
+            if (quantityInBag > 0)
+                VarSet(VAR_TEMP_C, 8000);
+            return FALSE;
+        }
+    }
+
+    // TODO for ryu: the resulting item isn’t specified in any table right now.
+    // VarSet(VAR_TEMP_C, RESULTING_ITEM);
+
+    for (i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++) {
+        itemId = sBotanyRecipes[recipeNum][i][0];
+        if (itemId == ITEM_NONE)
+            break;
+        requiredQuantity = sBotanyRecipes[recipeNum][i][1];
+        RemoveBagItem(itemId, requiredQuantity);
+    }
+    VarSet(VAR_TEMP_C, rewardItem);
+
+    return FALSE;
 }

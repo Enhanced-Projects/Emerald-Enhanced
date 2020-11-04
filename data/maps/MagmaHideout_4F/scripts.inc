@@ -280,6 +280,8 @@ MH4_PostBossBattle::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox MH4_LetsGoBack
 	closemessage
+	setflag FLAG_RYU_DS_SHELLY_CLOSEFRIENDS
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
 	setvar VAR_RYU_AQUA, 105 @Player and shelly should be heading back to office.
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	releaseall

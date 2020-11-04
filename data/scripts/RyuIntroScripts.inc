@@ -3,20 +3,23 @@ GameIntroSequencePart1::
 	goto GameModeSelect
 	
 LRT_IntroMsg1:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You awaken later than you wanted\n to. \p It seems like your clock's\nbattery died.)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You awaken later than you expected.\p It seems like your clock's\n battery died.)$"
 
 GameModeSelect:: @ 823BF04
 	lockall
 	goto_if_set FLAG_RYU_ISNGPLUS, Ryu_NewGamePlus
-	multichoicedefault 1, 2, 125, 0, 0
+	msgbox Ryu_PleaseSelectDifficulty
+	multichoicedefault 1, 2, MULTI_SELECT_FRESH_NEW_GAME_MODE, 0, 0
 	switch VAR_RESULT
 	case 0, IT_EasyMode
 	case 1, IT_NormalMode
-	case 2, IT_HardMode
-	case 3, IT_NuzlockeMode
-	case 4, IT_FrontierMode
-	case 127, IT_NormalMode
+	case 2, IT_NuzlockeMode
+	case 3, IT_FrontierMode
+	goto IT_NormalMode
 	end
+
+Ryu_PleaseSelectDifficulty::
+	.string "Please choose a mode to play.$"
 
 Ryu_NewGamePlus::
 	clearflag FLAG_RYU_RANDOMBATTLE
@@ -30,24 +33,19 @@ Ryu_NewGamePlus::
 	call_if_set FLAG_RYU_HAS_EXPSHARE, Ryu_NGP_ExpShare
 	call_if_set FLAG_HAS_ACRO_BIKE, Ryu_NGP_AcroBike
 	call_if_set FLAG_HAS_MACH_BIKE, Ryu_NGP_MachBike
-	msgbox RyuNGP_DexInfo
-	closemessage
 	setflag FLAG_SYS_POKEDEX_GET
 	setflag FLAG_SYS_NATIONAL_DEX
 	special EnableNationalPokedex
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
-	special RyuGetCaughtMonsFromPCForDex
-	playse SE_EXPMAX
-	waitse
-	msgbox RyuNGP_DexSuccess
-	msgbox RyuNGP_HCQuery
+	closemessage
+	msgbox Ryu_PleaseSelectDifficulty
 	multichoicedefault 1, 2, MULTI_SELECT_NEW_GAME_PLUS_MODE, 3, 0
 	switch VAR_RESULT
-	case 0, IT_NuzlockeMode
+	case 0, IT_NormalMode	
+	case 1, IT_NuzlockeMode
     case 2, IT_HardcoreMode
-	case 3, IT_NormalMode	
-	goto IT_HardMode
+	goto IT_NormalMode
 
 RyuNGP_DexInfo:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}We will now attempt to restore the\n"
@@ -61,10 +59,6 @@ RyuNGP_DexSuccess:
     .string "The dex rebuild appears to have\n"
     .string "been successful. Please check at\l"
     .string "your earliest convenience.$"
-	
-RyuNGP_HCQuery:
-	.string "Please select a difficulty.$"
-
 
 Ryu_NGP_Waystone:
 	additem ITEM_WAYSTONE, 1
@@ -136,22 +130,6 @@ IT_NormalMode::
 Normalmode_NGP::
 	setvar VAR_RYU_AUTOLEVEL_MODIFIER, 0
 	setvar VAR_RYU_EXP_MULTIPLIER, 10 @arbitrary value to tell getExp to use the ngp scaling
-	return
-	
-IT_HardMode::
-	setvar VAR_RYU_EXP_MULTIPLIER, 1000
-	setvar VAR_RYU_PRICE_MULTIPLIER, 4000
-	call_if_set FLAG_RYU_ISNGPLUS, Hardmode_NGP
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	checkplayergender
-	compare VAR_RESULT, MALE
-	goto_if_eq SetMaleStartingVariables
-	compare VAR_RESULT, FEMALE
-	goto_if_eq SetFemaleStartingVariables
-	end
-
-Hardmode_NGP::
-	setvar VAR_RYU_AUTOLEVEL_MODIFIER, 3
 	return
 	
 IT_NuzlockeMode::

@@ -183,6 +183,7 @@ RDB_TempVarsViewMsg:
 
 RyuDebug_Utility1::
 	clearflag FLAG_RYU_KYOGRE
+	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	release
 	end
 

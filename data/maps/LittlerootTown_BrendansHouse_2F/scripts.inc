@@ -30,17 +30,13 @@ LRT_BrendanAfterLilycoveScene::
 	
 LRT_BrendanRelationshipScene1::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
-	@fadescreen FADE_TO_BLACK
-	@drawfullscreenimage SCENEBGBRENDAN
+	drawfullscreenimage SCENEBGBRENDAN
 	msgbox LRT_BRENDAN_SORRYKISSED, MSGBOX_DEFAULT
-	@clearfullscreenimage
-	@fadescreen FADE_TO_BLACK
 	msgbox LRT_BRENDAN_KISS, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq LRT_BrendanWONT_HAPPEN
     setflag	FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS
-	@fadescreen FADE_TO_BLACK
-	@drawfullscreenimage SCENEBGBRENDAN
+	clearfullscreenimage
 	msgbox LRT_BrendanHAPPY, MSGBOX_DEFAULT
 	goto LRT_BrendanNIGHT
 	release
@@ -51,15 +47,15 @@ LRT_BrendanIntroductionScene::
 	applymovement 2, Common_Movement_QuestionMark
 	waitmovement 0	
 	fadescreen FADE_TO_BLACK
-	@drawfullscreenimage SCENEBGBRENDAN
+	drawfullscreenimage SCENEBGBRENDAN
 	msgbox GI_BrendanIntro MSGBOX_DEFAULT
+	closemessage
+	clearfullscreenimage
 	applymovement 2, GI_MaleLeavingForRoute103
 	waitmovement 0
 	playse SE_DOOR
 	removeobject 2
 	setflag FLAG_HIDE_BRENDANS_HOUSE_BRENDAN
-	@clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
 	msgbox GI_BrendanMetMsg
 	setflag FLAG_SYS_NATIONAL_DEX
 	setflag FLAG_RYU_LT_RIVAL
@@ -155,12 +151,11 @@ LRT_BrendanNIGHT::
 	msgbox LRT_BrendanROM, MSGBOX_DEFAULT
 	fadescreen FADE_FROM_BLACK
 	fadeinbgm 1	
-	@fadescreen FADE_TO_BLACK
-	@drawfullscreenimage SCENEBGBRENDANNIGHT
+	drawfullscreenimage SCENEBGBRENDANNIGHT
 	msgbox LRT_BRENDAN_THANKS, MSGBOX_DEFAULT
 	setflag FLAG_RYU_DS_BRENDAN_LOVERS
 	closemessage
-	@clearfullscreenimage
+	clearfullscreenimage
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
 	@fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3
@@ -172,12 +167,11 @@ LRT_BrendanNight2::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
     msgbox LRT_BrendanSTAY2, MSGBOX_YESNO
 	compare VAR_RESULT, 1
-	@fadescreen FADE_TO_BLACK
-	@drawfullscreenimage SCENEBGBRENDANNIGHT
+	drawfullscreenimage SCENEBGBRENDANNIGHT
 	goto_if_ne LRT_BrendanCANCEL
 	msgbox LRT_BrendanROM2Pre MSGBOX_DEFAULT
 	closemessage
-	@clearfullscreenimage
+	clearfullscreenimage
 	fadescreen FADE_TO_BLACK
 	applymovement 2, Common_Movement_HeartEmote
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
@@ -195,11 +189,10 @@ LRT_BrendanNight2::
 	setflag FLAG_RYU_DS_HAS_PARTNER
 	playse SE_PIN
 	fadeinbgm 1	
-	@fadescreen FADE_TO_BLACK
-	@drawfullscreenimage SCENEBGBRENDAN
+	drawfullscreenimage SCENEBGBRENDAN
 	msgbox LRT_BRENDAN_THANKS2 MSGBOX_DEFAULT
 	closemessage
-	@clearfullscreenimage
+	clearfullscreenimage
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
 	fadescreen FADE_FROM_BLACK
 	applymovement OBJ_EVENT_ID_PLAYER LRT_BrendanHEART3

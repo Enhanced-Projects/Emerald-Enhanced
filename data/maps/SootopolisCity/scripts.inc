@@ -5,6 +5,7 @@ SootopolisCity_MapScripts:: @ 81E565C
 	.byte 0
 	
 SC_DoMagmaCheck::
+	map_script_2 VAR_TEMP_6, 0, Ryu_CheckEnableDexNav
 	map_script_2 VAR_TEMP_A, 0, Ryu_CheckMagmaStatusForMissionCall
 	map_script_2 VAR_RYU_AQUA, 114, MDC_DoMossDeepScene2
 	map_script_2 VAR_RYU_AQUA, 122, MDC_ScenePart4

@@ -139,7 +139,13 @@ SlateportCity_SternsShipyard_1F_Text_GetSeasickEasily: @ 82085FF
 @=========================================aqua events
 
 SS_DevonEmployee1::
-	trainerbattle_single TRAINER_DEVON_ENFORCER_1 SS_Devon1Intro, SS_Devon1Defeat
+	trainerbattle_single TRAINER_DEVON_ENFORCER_1 SS_Devon1Intro, SS_Devon1Defeat, SS_DevonEmployee1PostBattle
+	msgbox SS_Devon1Msg
+	closemessage
+	goto_if_unset FLAG_TEMP_5, SS_DE1_MoveOutOfWay
+	end
+
+SS_DevonEmployee1PostBattle::
 	msgbox SS_Devon1Msg
 	closemessage
 	goto_if_unset FLAG_TEMP_5, SS_DE1_MoveOutOfWay

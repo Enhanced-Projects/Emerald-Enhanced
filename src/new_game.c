@@ -99,16 +99,9 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
     gSaveBlock2Ptr->optionsWindowFrameType = 12;
     gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_STEREO;
-    gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
+    gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SET;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
-}
-
-static void ClearPokedexFlags(void)
-{
-    gUnusedPokedexU8 = 0;
-    memset(&gSaveBlock1Ptr->dexCaught, 0, sizeof(gSaveBlock1Ptr->dexCaught));
-    memset(&gSaveBlock1Ptr->dexSeen, 0, sizeof(gSaveBlock1Ptr->dexSeen));
 }
 
 void ClearAllContestWinnerPics(void)
@@ -164,19 +157,17 @@ void NewGameInitData(void)
     if (!FlagGet(FLAG_SYS_GAME_CLEAR))
         RtcReset();
 
+    ClearSav1();
     gDifferentSaveFile = 1;
     gSaveBlock2Ptr->encryptionKey = 0;
     ZeroPlayerPartyMons();
     ZeroEnemyPartyMons();
-    ResetPokedex();
     ClearFrontierRecord();
-    ClearSav1();
     ClearMailData();
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
     gSaveBlock2Ptr->gcnLinkFlags = 0;
     InitPlayerTrainerId();
     PlayTimeCounter_Reset();
-    ClearPokedexFlags();
     InitEventData();
     ClearTVShowData();
     ResetGabbyAndTy();
@@ -192,7 +183,6 @@ void NewGameInitData(void)
     InitLotadSizeRecord();
     gPlayerPartyCount = 0;
     ZeroPlayerPartyMons();
-    //ResetPokemonStorageSystem();
     ClearRoamerData();
     ClearRoamerLocationData();
     gSaveBlock1Ptr->registeredItem = 0;
@@ -217,6 +207,7 @@ void NewGameInitData(void)
     ResetTrainerHillResults();
     ResetContestLinkResults();
     ClearMysteryEventFlags();
+    VarSet(VAR_RYU_THEME_NUMBER, 1);
     VarSet(VAR_RYU_EXP_MULTIPLIER, 1);
     FlagSet(FLAG_RYU_LT_RIVAL2);
     FlagSet(FLAG_RYU_LT_RIVAL);

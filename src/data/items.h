@@ -7750,4 +7750,17 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
+
+    [ITEM_RECIPE_BOOK] =
+    {
+        .name = _("Recipe Book"),
+        .itemId = ITEM_RECIPE_BOOK,
+        .price = 0,
+        .importance = 1,
+        .description = sRecipeBookDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_RecipeBook,
+        .secondaryId = 0,
+    },
 };

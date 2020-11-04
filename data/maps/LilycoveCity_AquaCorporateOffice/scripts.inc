@@ -4,6 +4,7 @@ LilycoveCity_AquaCorporateOffice_MapScripts::
 	
 ACO_OnFrameScript::
 	map_script_2 VAR_RYU_AQUA, 45, ACO_ReturnedFromMuseumWhiteout
+	map_script_2 VAR_RYU_AQUA, 162, ACO_Night2Scene
 	.2byte 0
 
 
@@ -44,6 +45,7 @@ ACO_Shelly::
 	case 91, ACO_PlayerWaitingForCallRomance
 	case 107, ACO_ShellyAfterJaggedPassRomanceEvent
 	case 111, ACO_PlayerShouldGoToShipyard
+	case 161, ACO_ShellyAfterStory
 	lockall
 	msgbox ACO_SoHowDid
 	closemessage
@@ -254,6 +256,7 @@ ACO_ReturnedFromMuseumWhiteout:
 
 ACO_DoAquaOutro::
 	lockall
+	call_if_set FLAG_RYU_DS_HAS_PARTNER, RF_FollowerLeaveCall
 	msgbox ACO_OneMomentPlease
 	closemessage
 	setflag FLAG_HIDE_AQUAHQ_SHELLY
@@ -323,8 +326,8 @@ ACO_ShellyNightScene::
 	closemessage
 	special SpawnCameraObject
 	fadeoutbgm 2
-	applymovement EVENT_OBJ_ID_CAMERA, ACO_CameraPan
 	msgbox ACO_QuartersScene2 MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan
 	applymovement 9, ACO_ShellySlide
 	waitmovement 9
 	msgbox ACO_CONCLUSION MSGBOX_AUTOCLOSE
@@ -333,8 +336,8 @@ ACO_ShellyNightScene::
 	closemessage
 	delay 40
 	removeobject 9
-	applymovement EVENT_OBJ_ID_CAMERA, ACO_CameraPan2
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan2
+	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
 	msgbox ACO_TRANSITION MSGBOX_DEFAULT
 	fadescreenspeed 0, 10
@@ -347,6 +350,96 @@ ACO_ShellyNightScene::
 	special DrawWholeMapView
 	releaseall
 	end
+
+ACO_ShellyAfterStory::
+	lockall
+	msgbox ACO_ShellyAfterstoryIntro
+	closemessage
+	msgbox ACO_ShellyStayTheNightQuery, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq ACO_CheckFollowerShelly
+	
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RF_FollowerLeaveCall
+	setvar VAR_RYU_AQUA, 162
+	warpsilent MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE, 255, 30, 2 
+	waitstate
+
+ACO_CheckFollowerShelly::
+	goto_if_unset FLAG_RYU_DS_SHELLY_PARTNERS, ryu_end
+	msgbox ACO_ShellyFollowerQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	msgbox ACO_LetsGo
+	closemessage
+	goto_if_eq FollowerShellySetup
+	goto ryu_end
+
+ACO_Night2Scene::
+	setvar VAR_RYU_AQUA, 161
+	addobject 9
+	applymovement 9, ACO_Night_ShellyToCouch
+	waitmovement 9
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	special SpawnCameraObject
+	fadeoutbgm 2
+	msgbox ACO_ShellyNight2Msg1
+	closemessage
+	msgbox ACO_ShellySlides
+	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan
+	closemessage
+	applymovement 9, ACO_ShellySlide
+	waitmovement 9
+	fadescreenspeed 1, 10
+	msgbox ACO_ShellyNight2Msg2
+	closemessage
+	delay 60
+	msgbox ACO_NightScene2Wakeup
+	closemessage
+	delay 40
+	removeobject 9
+	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan2
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	fadescreenspeed 0, 10
+	playbgm MUS_HIGHTOWN, 0
+	release
+	end
+
+ACO_ShellyFollowerQuery:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I'm free if you want to hang\nout for a while.\pCan I come with you?$"
+
+ACO_ShellyAfterstoryIntro:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Well I have Aqua's affairs in order.\nShould be smooth sailing from here!$"
+
+ACO_ShellyStayTheNightQuery:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Did you come to stay the night?\nI could use the stress relief.$"
+
+ACO_LetsGo:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}The Admins will take care of\nbusiness while I'm away.\pI'm ready to go when you are!$"
+
+ACO_ShellyNight2Msg1:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}So, my hero, are you here to\nsweep me off my feet?\pLet's find out if you can\nkeep up... eheheh.$"
+
+ACO_ShellySlides:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Shelly slides over to {PLAYER}...)$"
+
+ACO_ShellyNight2Msg2:
+	.string  "{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} and Shelly spend a blissful\n night in each other's arms...)$"
+
+ACO_NightScene2Wakeup:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (As you wake up, Shelly is\n already gone.\p Probably attending business dealings.\p The briny air empowers you\n as you come to.)$"
+
+
+ACO_Night_ShellyToCouch:
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	face_left
+	step_end
+
 	
 ACO_OneMomentPlease:
 	.string "One moment, please.\n"

@@ -876,7 +876,6 @@ static const struct MenuAction MultichoiceList_125[]=
 {
     {gText_RyuNewGameMenuEasyMode},
     {gText_RyuNewGameMenuNormalMode},
-    {gText_RyuNewGameMenuHardMode},
     {gText_RyuNewGameNuzlockeMode},
     {gText_RyuNewGameFrontierMode},
 };
@@ -1077,10 +1076,9 @@ static const struct MenuAction MultichoiceList_141[]=
 
 static const struct MenuAction MultichoiceList_142[]=
 {
-    {gText_RyuNewGameNuzlockeMode},
-    {gText_RyuNewGameMenuHardMode},
-    {gText_RyuNewGameHardcoreMode},
     {gText_RyuNewGameMenuNormalMode},
+    {gText_RyuNewGameNuzlockeMode},
+    {gText_RyuNewGameHardcoreMode},
 };
 
 static const struct MenuAction MultichoiceList_UtilitySubMenu[]=

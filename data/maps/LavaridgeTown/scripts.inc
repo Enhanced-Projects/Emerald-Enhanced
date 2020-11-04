@@ -291,13 +291,11 @@ LT_MaleRivalInteraction:: @ 81EA5B5
 	lockall
 	faceplayer
 	delay 5	
-	@fadescreen FADE_TO_BLACK
-	@drawfullscreenimage SCENEBGBRENDAN
+	drawfullscreenimage SCENEBGBRENDAN
 	msgbox LT_MaleRivalIntro, MSGBOX_DEFAULT
 	waitmessage
 	closemessage
-	@clearfullscreenimage
-	@fadescreen FADE_TO_BLACK
+	clearfullscreenimage
 	getpartysize
 	compare VAR_RESULT, 6
 	goto_if_eq LT_MaleRivalGiftPokeNoSpace
@@ -312,13 +310,11 @@ LT_MaleRivalInteraction:: @ 81EA5B5
 	waitfanfare
 	hidemonpic
 	msgbox LT_MaleRECEIVEDPOKE, MSGBOX_SIGN	
-	@fadescreen FADE_TO_BLACK
-	@drawfullscreenimage SCENEBGBRENDAN
+	drawfullscreenimage SCENEBGBRENDAN
 	msgbox LT_MaleGivePokeExplanation, MSGBOX_DEFAULT
 	waitmessage
 	savebgm MUS_DUMMY
-	@clearfullscreenimage
-	@fadescreen FADE_TO_BLACK
+	clearfullscreenimage
 	fadedefaultbgm
 	goto_if_unset FLAG_RYU_LT_RIVAL2, LT_maleRival2Leave
 	applymovement 7, LT_RivalLeavesTown

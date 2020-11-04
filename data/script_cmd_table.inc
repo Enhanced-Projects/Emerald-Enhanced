@@ -248,6 +248,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_removeinfobox
 	.4byte ScrCmd_addvars
 	.4byte ScrCmd_checkspecies
+	.4byte ScrCmd_trycraftingrecipe
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop

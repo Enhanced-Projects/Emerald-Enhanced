@@ -68,9 +68,33 @@ void ClearSav2(void)
     CpuFill16(0, &gSaveblock2, sizeof(struct SaveBlock2) + sizeof(gSaveblock2_DMA));
 }
 
+extern void ResetPokedex();
+extern void ClearPokedexFlags();
+
 void ClearSav1(void)
 {
+    u8 dexSeenOld[DEX_FLAGS_NO];
+    u8 dexCaughtOld[DEX_FLAGS_NO];
+    u16 i;
+
+    //Copy dex information temporarily
+    for (i = 0; i < DEX_FLAGS_NO; i++)
+    {
+        dexSeenOld[i] = gSaveblock1.dexSeen[i];
+        dexCaughtOld[i] = gSaveblock1.dexCaught[i];
+    }
+
+    //Zero out the entirety of SaveBlock1
     CpuFill16(0, &gSaveblock1, sizeof(struct SaveBlock1) + sizeof(gSaveblock1_DMA));
+    ResetPokedex();
+    ClearPokedexFlags();
+
+    //Re-enter all dex information
+    for (i = 0; i < DEX_FLAGS_NO; i++)
+    {
+        gSaveblock1.dexSeen[i] = dexSeenOld[i];
+        gSaveblock1.dexCaught[i] = dexCaughtOld[i];
+    }
 }
 
 void SetSaveBlocksPointers(u16 offset)
