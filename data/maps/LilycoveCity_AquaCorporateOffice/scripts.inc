@@ -256,7 +256,7 @@ ACO_ReturnedFromMuseumWhiteout:
 
 ACO_DoAquaOutro::
 	lockall
-	call RF_FollowerLeaveCall
+	call_if_set FLAG_RYU_DS_HAS_PARTNER, RF_FollowerLeaveCall
 	msgbox ACO_OneMomentPlease
 	closemessage
 	setflag FLAG_HIDE_AQUAHQ_SHELLY
@@ -327,7 +327,7 @@ ACO_ShellyNightScene::
 	special SpawnCameraObject
 	fadeoutbgm 2
 	msgbox ACO_QuartersScene2 MSGBOX_DEFAULT
-	applymovement EVENT_OBJ_ID_CAMERA, ACO_CameraPan
+	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan
 	applymovement 9, ACO_ShellySlide
 	waitmovement 9
 	msgbox ACO_CONCLUSION MSGBOX_AUTOCLOSE
@@ -336,8 +336,8 @@ ACO_ShellyNightScene::
 	closemessage
 	delay 40
 	removeobject 9
-	applymovement EVENT_OBJ_ID_CAMERA, ACO_CameraPan2
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan2
+	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
 	msgbox ACO_TRANSITION MSGBOX_DEFAULT
 	fadescreenspeed 0, 10
@@ -356,11 +356,10 @@ ACO_ShellyAfterStory::
 	msgbox ACO_ShellyAfterstoryIntro
 	closemessage
 	msgbox ACO_ShellyStayTheNightQuery, MSGBOX_YESNO
-	compare VAR_RESULT, FALSE
+	compare VAR_RESULT, NO
 	goto_if_eq ACO_CheckFollowerShelly
-	msgbox ACO_LetsGo
-	closemessage
-	call RF_FollowerLeaveCall
+	
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RF_FollowerLeaveCall
 	setvar VAR_RYU_AQUA, 162
 	warpsilent MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE, 255, 30, 2 
 	waitstate
@@ -369,6 +368,8 @@ ACO_CheckFollowerShelly::
 	goto_if_unset FLAG_RYU_DS_SHELLY_PARTNERS, ryu_end
 	msgbox ACO_ShellyFollowerQuery, MSGBOX_YESNO
 	compare VAR_RESULT, YES
+	msgbox ACO_LetsGo
+	closemessage
 	goto_if_eq FollowerShellySetup
 	goto ryu_end
 
@@ -378,22 +379,26 @@ ACO_Night2Scene::
 	applymovement 9, ACO_Night_ShellyToCouch
 	waitmovement 9
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
-	msgbox ACO_ShellyNight2Msg1
-	closemessage
 	special SpawnCameraObject
 	fadeoutbgm 2
-	msgbox ACO_ShellyNight2Msg2
-	applymovement EVENT_OBJ_ID_CAMERA, ACO_CameraPan
+	msgbox ACO_ShellyNight2Msg1
+	closemessage
+	msgbox ACO_ShellySlides
+	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan
+	closemessage
 	applymovement 9, ACO_ShellySlide
 	waitmovement 9
 	fadescreenspeed 1, 10
+	msgbox ACO_ShellyNight2Msg2
+	closemessage
+	delay 60
+	msgbox ACO_NightScene2Wakeup
 	closemessage
 	delay 40
 	removeobject 9
-	applymovement EVENT_OBJ_ID_CAMERA, ACO_CameraPan2
-	waitmovement EVENT_OBJ_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan2
+	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
-	msgbox ACO_NightScene2Wakeup
 	fadescreenspeed 0, 10
 	playbgm MUS_HIGHTOWN, 0
 	release
@@ -414,8 +419,11 @@ ACO_LetsGo:
 ACO_ShellyNight2Msg1:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}So, my hero, are you here to\nsweep me off my feet?\pLet's find out if you can\nkeep up... eheheh.$"
 
+ACO_ShellySlides:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Shelly slides over to {PLAYER}...)$"
+
 ACO_ShellyNight2Msg2:
-	.string  "{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} and Shelly spend a blissful\n night in each other's arms...$"
+	.string  "{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} and Shelly spend a blissful\n night in each other's arms...)$"
 
 ACO_NightScene2Wakeup:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (As you wake up, Shelly is\n already gone.\p Probably attending business dealings.\p The briny air empowers you\n as you come to.)$"
