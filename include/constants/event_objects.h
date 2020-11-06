@@ -114,7 +114,7 @@
 #define OBJ_EVENT_GFX_CAMERAMAN                  110
 #define OBJ_EVENT_GFX_BRENDAN_UNDERWATER         111
 #define OBJ_EVENT_GFX_DAWN_UNDERWATER            112
-#define OBJ_EVENT_GFX_MOVING_BOX                 113
+#define OBJ_EVENT_GFX_SLAKOTH                    113
 #define OBJ_EVENT_GFX_CABLE_CAR                  114
 #define OBJ_EVENT_GFX_SCIENTIST_2                115
 #define OBJ_EVENT_GFX_DEVON_EMPLOYEE             116

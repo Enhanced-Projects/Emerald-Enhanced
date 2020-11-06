@@ -101,7 +101,7 @@ PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor: @ 81F7C35
 LittlerootTown_BrendansHouse_1F_OnLoad: @ 81F7765
 	end
 
-LittlerootTown_BrendansHouse_1F_EventScript_SetMovingBoxes:: @ 81F777A
+LittlerootTown_BrendansHouse_1F_EventScript_SetSlakothes:: @ 81F777A
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_CheckShowShoesManual:: @ 81F778D

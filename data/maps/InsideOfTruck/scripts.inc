@@ -49,7 +49,7 @@ InsideOfTruck_EventScript_SetIntroFlagsFemale:: @ 823BF46
 	releaseall
 	end
 
-InsideOfTruck_EventScript_MovingBox:: @ 823BF6C
+InsideOfTruck_EventScript_Slakoth:: @ 823BF6C
 	msgbox InsideOfTruck_Text_BoxPrintedWithMonLogo, MSGBOX_SIGN
 	end
 

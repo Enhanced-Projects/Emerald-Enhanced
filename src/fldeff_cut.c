@@ -189,7 +189,8 @@ bool8 SetUpFieldMove_Cut(void)
                 {
                     tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
                     if (MetatileBehavior_IsPokeGrass(tileBehavior) == TRUE
-                    || MetatileBehavior_IsAshGrass(tileBehavior) == TRUE)
+                    || MetatileBehavior_IsAshGrass(tileBehavior) == TRUE
+                    || MetatileBehavior_IsSeaweed(tileBehavior) == TRUE)
                     {
                         // Standing in front of grass.
                         sHyperCutTiles[6 + (i * 5) + j] = TRUE;
@@ -247,7 +248,8 @@ bool8 SetUpFieldMove_Cut(void)
                         u8 tileArrayId = ((sHyperCutStruct[i].y * 5) + 12) + (sHyperCutStruct[i].x);
                         tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
                         if (MetatileBehavior_IsPokeGrass(tileBehavior) == TRUE
-                        || MetatileBehavior_IsAshGrass(tileBehavior) == TRUE)
+                        || MetatileBehavior_IsAshGrass(tileBehavior) == TRUE
+                        || MetatileBehavior_IsSeaweed(tileBehavior) == TRUE)
                         {
                             gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
                             gPostMenuFieldCallback = FieldCallback_CutGrass;
@@ -285,6 +287,7 @@ const u16 gMapSecsForBotanySkill[NUM_BOTANY_MAP_CATEGORIES][NUM_MAPS_PER_BOTANY_
     {MAPSEC_JAGGED_PASS, MAPSEC_JAGGED_PASS2, MAPSEC_ROUTE_113, MAPSEC_NONE, MAPSEC_NONE},
     {MAPSEC_ROUTE_104, MAPSEC_ROUTE_110, MAPSEC_ROUTE_118, MAPSEC_ROUTE_121, MAPSEC_ROUTE_103},
     {MAPSEC_UNDERWATER_124, MAPSEC_UNDERWATER_126, MAPSEC_UNDERWATER_135, MAPSEC_SNOWY_SHORE, MAPSEC_CRAGGY_COAST},
+    {MAPSEC_SAFARI_ZONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE},
     {MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE, MAPSEC_NONE}                                                            
 };
 
@@ -413,6 +416,12 @@ static void SetCutGrassMetatile(s16 x, s16 y)
         break;
     case METATILE_General_TallGrass_TreeUp:
         MapGridSetMetatileIdAt(x, y, METATILE_General_Grass_TreeUp);
+        break;
+    case METATILE_Underwater_Seaweed_Light:
+        MapGridSetMetatileIdAt(x, y, METATILE_Underwater_Light);
+        break;
+    case METATILE_Underwater_Seaweed_Dark:
+        MapGridSetMetatileIdAt(x, y, METATILE_Underwater_Dark);
         break;
     }
 }

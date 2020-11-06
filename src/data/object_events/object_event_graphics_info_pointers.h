@@ -111,7 +111,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalDawnFieldMove
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cameraman;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanUnderwater;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnUnderwater;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MovingBox;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Slakoth;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CableCar;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scientist2;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DevonEmployee;
@@ -352,15 +352,15 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_ACRO_BIKE] =  &gObjectEventGraphicsInfo_RivalBrendanAcroBike,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_SURFING] =    &gObjectEventGraphicsInfo_RivalBrendanSurfing,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_FIELD_MOVE] = &gObjectEventGraphicsInfo_RivalBrendanFieldMove,
-    [OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL] =         &gObjectEventGraphicsInfo_RivalDawnNormal,
-    [OBJ_EVENT_GFX_RIVAL_DAWN_MACH_BIKE] =      &gObjectEventGraphicsInfo_RivalDawnMachBike,
-    [OBJ_EVENT_GFX_RIVAL_DAWN_ACRO_BIKE] =      &gObjectEventGraphicsInfo_RivalDawnAcroBike,
-    [OBJ_EVENT_GFX_RIVAL_DAWN_SURFING] =        &gObjectEventGraphicsInfo_RivalDawnSurfing,
-    [OBJ_EVENT_GFX_RIVAL_DAWN_FIELD_MOVE] =     &gObjectEventGraphicsInfo_RivalDawnFieldMove,
+    [OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL] =        &gObjectEventGraphicsInfo_RivalDawnNormal,
+    [OBJ_EVENT_GFX_RIVAL_DAWN_MACH_BIKE] =     &gObjectEventGraphicsInfo_RivalDawnMachBike,
+    [OBJ_EVENT_GFX_RIVAL_DAWN_ACRO_BIKE] =     &gObjectEventGraphicsInfo_RivalDawnAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_DAWN_SURFING] =       &gObjectEventGraphicsInfo_RivalDawnSurfing,
+    [OBJ_EVENT_GFX_RIVAL_DAWN_FIELD_MOVE] =    &gObjectEventGraphicsInfo_RivalDawnFieldMove,
     [OBJ_EVENT_GFX_CAMERAMAN] =                &gObjectEventGraphicsInfo_Cameraman,
     [OBJ_EVENT_GFX_BRENDAN_UNDERWATER] =       &gObjectEventGraphicsInfo_BrendanUnderwater,
-    [OBJ_EVENT_GFX_DAWN_UNDERWATER] =           &gObjectEventGraphicsInfo_DawnUnderwater,
-    [OBJ_EVENT_GFX_MOVING_BOX] =               &gObjectEventGraphicsInfo_MovingBox,
+    [OBJ_EVENT_GFX_DAWN_UNDERWATER] =          &gObjectEventGraphicsInfo_DawnUnderwater,
+    [OBJ_EVENT_GFX_SLAKOTH] =                  &gObjectEventGraphicsInfo_Slakoth,
     [OBJ_EVENT_GFX_CABLE_CAR] =                &gObjectEventGraphicsInfo_CableCar,
     [OBJ_EVENT_GFX_SCIENTIST_2] =              &gObjectEventGraphicsInfo_Scientist2,
     [OBJ_EVENT_GFX_DEVON_EMPLOYEE] =           &gObjectEventGraphicsInfo_DevonEmployee,
@@ -385,11 +385,11 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_WALLY] =                    &gObjectEventGraphicsInfo_Wally,
     [OBJ_EVENT_GFX_LITTLE_BOY_3] =             &gObjectEventGraphicsInfo_RubySapphireLittleBoy,
     [OBJ_EVENT_GFX_BRENDAN_FISHING] =          &gObjectEventGraphicsInfo_BrendanFishing,
-    [OBJ_EVENT_GFX_DAWN_FISHING] =              &gObjectEventGraphicsInfo_DawnFishing,
+    [OBJ_EVENT_GFX_DAWN_FISHING] =             &gObjectEventGraphicsInfo_DawnFishing,
     [OBJ_EVENT_GFX_HOT_SPRINGS_OLD_WOMAN] =    &gObjectEventGraphicsInfo_HotSpringsOldWoman,
     [OBJ_EVENT_GFX_SS_TIDAL] =                 &gObjectEventGraphicsInfo_SSTidal,
     [OBJ_EVENT_GFX_SUBMARINE_SHADOW] =         &gObjectEventGraphicsInfo_SubmarineShadow,
-    [OBJ_EVENT_GFX_SLAKOTH_DOLL] =               &gObjectEventGraphicsInfo_BigSlakothDoll,
+    [OBJ_EVENT_GFX_SLAKOTH_DOLL] =             &gObjectEventGraphicsInfo_BigSlakothDoll,
     [OBJ_EVENT_GFX_PIKACHU_DOLL] =             &gObjectEventGraphicsInfo_PikachuDoll,
     [OBJ_EVENT_GFX_MARILL_DOLL] =              &gObjectEventGraphicsInfo_MarillDoll,
     [OBJ_EVENT_GFX_TOGEPI_DOLL] =              &gObjectEventGraphicsInfo_TogepiDoll,

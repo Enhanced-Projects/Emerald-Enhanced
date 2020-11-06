@@ -235,44 +235,51 @@ const u16 gOutsideMiningTier3[] = {//level 3
 // all of the items here are placeholder until we decide what we're going to do with all this stuff.
 const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][5] = {
     [BOTANY_MAP_CATEGORY_JUNGLE] = {
-        ITEM_WHITE_HERB,
-        ITEM_BRIGHT_POWDER,
-        ITEM_ORAN_BERRY,
+        ITEM_NONE, //ITEM_JUNGLE_CHESTNUT,
+        ITEM_ENERGY_POWDER,
+        ITEM_ENERGY_POWDER,
         ITEM_MIRACLE_SEED,
         ITEM_ENERGY_POWDER,
     },
     [BOTANY_MAP_CATEGORY_COLD] = {
-        ITEM_ENERGY_ROOT,
-        ITEM_CYAN_SHARD,
-        ITEM_HEAL_POWDER,
+        ITEM_NONE, //ITEM_FROST_MINT,
+        ITEM_ENERGY_POWDER,
+        ITEM_ENERGY_POWDER,
         ITEM_MENTAL_HERB,
         ITEM_REVIVAL_HERB,
     },
     [BOTANY_MAP_CATEGORY_VOLCANIC] = {
-        ITEM_CHARCOAL,
-        ITEM_LAVA_COOKIE,
-        ITEM_ABSORB_BULB,
+        ITEM_NONE, //ITEM_CHIMNEY_PEPPER,
+        ITEM_ENERGY_POWDER,
+        ITEM_ENERGY_POWDER,
         ITEM_BIG_MUSHROOM,
         ITEM_HARD_STONE,
     },
     [BOTANY_MAP_CATEGORY_SEASIDE] = {
-        ITEM_SHOAL_SALT,
-        ITEM_MYSTIC_WATER,
-        ITEM_BLUE_SHARD,
+        ITEM_NONE, //ITEM_SEASIDE_SPINACH,
+        ITEM_ENERGY_POWDER,
+        ITEM_ENERGY_POWDER,
         ITEM_HEART_SCALE,
         ITEM_MISTY_SEED,
     },
-    [BOTANY_MAP_CATEGORY_AQUATIC] = {//new aquatic rewards
-        ITEM_NONE,//seaweed?
-        ITEM_PEARL,
-        ITEM_BLUE_SHARD,
+    [BOTANY_MAP_CATEGORY_AQUATIC] = {
+        ITEM_NONE, //ITEM_DEEPSEA_KELP
+        ITEM_ENERGY_POWDER,
+        ITEM_ENERGY_POWDER,
+        ITEM_HEART_SCALE,
+        ITEM_MISTY_SEED,
+    },
+    [BOTANY_MAP_CATEGORY_SAVANNA] = {
+        ITEM_NONE, //ITEM_SAVANNA_MELON
+        ITEM_ENERGY_POWDER,
+        ITEM_ENERGY_POWDER,
         ITEM_HEART_SCALE,
         ITEM_MISTY_SEED,
     },
     [BOTANY_MAP_CATEGORY_GENERAL] = {
         ITEM_ANTIDOTE,
-        ITEM_POTION,
-        ITEM_POKE_BALL,
+        ITEM_ENERGY_POWDER,
+        ITEM_ENERGY_POWDER,
         ITEM_PARALYZE_HEAL,
         ITEM_BURN_HEAL,
     },
