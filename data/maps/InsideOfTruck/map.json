@@ -15,7 +15,7 @@
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_MOVING_BOX",
+      "graphics_id": "OBJ_EVENT_GFX_SLAKOTH",
       "x": 0,
       "y": 0,
       "elevation": 8,
@@ -24,11 +24,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InsideOfTruck_EventScript_MovingBox",
+      "script": "InsideOfTruck_EventScript_Slakoth",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MOVING_BOX",
+      "graphics_id": "OBJ_EVENT_GFX_SLAKOTH",
       "x": 0,
       "y": 3,
       "elevation": 8,
@@ -37,11 +37,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InsideOfTruck_EventScript_MovingBox",
+      "script": "InsideOfTruck_EventScript_Slakoth",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MOVING_BOX",
+      "graphics_id": "OBJ_EVENT_GFX_SLAKOTH",
       "x": 2,
       "y": 3,
       "elevation": 8,
@@ -50,7 +50,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "InsideOfTruck_EventScript_MovingBox",
+      "script": "InsideOfTruck_EventScript_Slakoth",
       "flag": "0"
     }
   ],
@@ -113,7 +113,7 @@
       "y": 0,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "InsideOfTruck_EventScript_MovingBox"
+      "script": "InsideOfTruck_EventScript_Slakoth"
     },
     {
       "type": "sign",
@@ -121,7 +121,7 @@
       "y": 4,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "InsideOfTruck_EventScript_MovingBox"
+      "script": "InsideOfTruck_EventScript_Slakoth"
     },
     {
       "type": "sign",
@@ -129,7 +129,7 @@
       "y": 3,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "InsideOfTruck_EventScript_MovingBox"
+      "script": "InsideOfTruck_EventScript_Slakoth"
     },
     {
       "type": "sign",
@@ -137,7 +137,7 @@
       "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "InsideOfTruck_EventScript_MovingBox"
+      "script": "InsideOfTruck_EventScript_Slakoth"
     },
     {
       "type": "sign",
@@ -145,7 +145,7 @@
       "y": 2,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "InsideOfTruck_EventScript_MovingBox"
+      "script": "InsideOfTruck_EventScript_Slakoth"
     }
   ]
 }

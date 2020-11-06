@@ -182,9 +182,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	clearflag FLAG_RYU_KYOGRE
-	setflag FLAG_RYU_PLAYER_HELPING_AQUA
-	release
+	createfollower OBJ_EVENT_GFX_SLAKOTH, RyuFollowerSelectNPCScript, DIR_NORTH
 	end
 
 RDB_Text:

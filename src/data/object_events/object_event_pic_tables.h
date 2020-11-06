@@ -1086,8 +1086,16 @@ const struct SpriteFrameImage gObjectEventPicTable_Cameraman[] = {
     overworld_frame(gObjectEventPic_Cameraman, 2, 4, 8),
 };
 
-const struct SpriteFrameImage gObjectEventPicTable_MovingBox[] = {
-    obj_frame_tiles(gObjectEventPic_MovingBox),
+const struct SpriteFrameImage gObjectEventPicTable_Slakoth[] = {
+    overworld_frame(gObjectEventPic_Slakoth, 2, 2, 0),
+    overworld_frame(gObjectEventPic_Slakoth, 2, 2, 2),
+    overworld_frame(gObjectEventPic_Slakoth, 2, 2, 4),
+    overworld_frame(gObjectEventPic_Slakoth, 2, 2, 1),
+    overworld_frame(gObjectEventPic_Slakoth, 2, 2, 1),
+    overworld_frame(gObjectEventPic_Slakoth, 2, 2, 3),
+    overworld_frame(gObjectEventPic_Slakoth, 2, 2, 3),
+    overworld_frame(gObjectEventPic_Slakoth, 2, 2, 5),
+    overworld_frame(gObjectEventPic_Slakoth, 2, 2, 5),
 };
 
 const struct SpriteFrameImage gObjectEventPicTable_CableCar[] = {
