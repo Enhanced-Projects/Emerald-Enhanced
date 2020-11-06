@@ -3390,8 +3390,8 @@ static void BufferLeftColumnStats(void)
     const s8 *natureMod = gNatureStatTable[sMonSummaryScreen->summary.nature];
 
     DynamicPlaceholderTextUtil_Reset();
-    BufferStat(currentHPString, 0, sMonSummaryScreen->summary.currentHP, 0, 3);
-    BufferStat(maxHPString, 0, sMonSummaryScreen->summary.maxHP, 1, 3);
+    BufferStat(currentHPString, 0, sMonSummaryScreen->summary.currentHP, 0, 4);
+    BufferStat(maxHPString, 0, sMonSummaryScreen->summary.maxHP, 1, 4);
     BufferStat(attackString, natureMod[STAT_ATK - 1], sMonSummaryScreen->summary.atk, 2, 7);
     BufferStat(defenseString, natureMod[STAT_DEF - 1], sMonSummaryScreen->summary.def, 3, 7);
     DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsLeftColumnLayout);
@@ -3430,7 +3430,7 @@ static void PrintExpPointsNextLevel(void)
     int x;
     u32 expToNextLevel;
 
-    ConvertIntToDecimalStringN(gStringVar1, sum->exp, STR_CONV_MODE_RIGHT_ALIGN, 7);
+    ConvertIntToDecimalStringN(gStringVar1, sum->exp, STR_CONV_MODE_RIGHT_ALIGN, 8);
     x = GetStringRightAlignXOffset(1, gStringVar1, 42) + 2;
     PrintTextOnWindow(windowId, gStringVar1, x, 1, 0, 0);
 
@@ -3439,7 +3439,7 @@ static void PrintExpPointsNextLevel(void)
     else
         expToNextLevel = 0;
 
-    ConvertIntToDecimalStringN(gStringVar1, expToNextLevel, STR_CONV_MODE_RIGHT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gStringVar1, expToNextLevel, STR_CONV_MODE_RIGHT_ALIGN, 8);
     x = GetStringRightAlignXOffset(1, gStringVar1, 42) + 2;
     PrintTextOnWindow(windowId, gStringVar1, x, 17, 0, 0);
 }
