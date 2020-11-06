@@ -638,7 +638,6 @@
 #define ITEM_TM63_EMPTY 544
 #define ITEM_TM64_EMPTY 545
 
-// FireRed/LeafGreen @TOBY! these need to be renumbered directly after tm64 soon-ish with an upcoming RHH IE pr.
 #define ITEM_OAKS_PARCEL 546
 #define ITEM_IMPRINTER 547
 #define ITEM_SECRET_KEY 548

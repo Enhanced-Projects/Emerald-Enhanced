@@ -3855,7 +3855,7 @@ const struct Item gItems[] =
 
     [ITEM_STICK] =
     {
-        .name = _("Stick"),
+        .name = _("Leek"),
         .itemId = ITEM_STICK,
         .price = 200,
         .holdEffect = HOLD_EFFECT_STICK,
