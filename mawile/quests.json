@@ -80,10 +80,22 @@
         "580": "Player needs to go to the cave just northwest of the treasure hunter's house.",
         "596": "Player completed the **Magma Alt** quest and romanced courtney. (Best End)"
     },
-    "rival": {
-        "1": "this is stage 1",
-        "2": "this is stage 2",
-        "999": "this is stage 999",
-        "69": "this is a _nice_ stage"
+    "devon": {
+        "5": "Player chose devon quest. Player should go to Devon Corp.",
+        "15": "Player met president. Go deliver letter to steven in dewford cave.",
+        "16": "Player delivered letter, go to the oceanic museum to meet stern.",
+        "17": "Player is on second floor to speak with Stern.",
+        "18": "Player spoke with stern and protected him from archie. Return to Devon.",
+        "19": "Player completed Mr. Stone's tasks. Talk to him again to get mission to go to Meteor Falls.",
+        "20": "Player completed Meteor Falls. Go see Cozmo at his house in Fallarbor.",
+        "21": "Player is tasked with going to Mt. Chimney and retreiving the meteorite.",
+        "22": "Player got the meteorite. Return to Cozmo.",
+        "23": "Player is tasked with going to the aqua hideout and recovering the Radiation Detector.",
+        "24": "Player obtained the Radiation Detector. Return to Cozmo.",
+        "25": "Player finished all of Cozmo's missions and should return to the President.",
+        "35": "Player is meeting devon employees. Talk to all of them to continue.",
+        "40": "Player can now leave 2f to go to 1f. (Right side staircase.) ",
+        "45": "Player needs to go find Ms. Ito north of Rustburo.",
+        "60": "Player completed the **DEVON CORPORATE** questline. Return after being champion to get access to Rayquaza."
     }
 }
