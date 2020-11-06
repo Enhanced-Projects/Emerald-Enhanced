@@ -1208,7 +1208,7 @@ static void DexNavUpdateSearchWindow(u8 proximity, u8 searchLevel)
 
 int RyuGetMaxBossChance()
 {
-    u8 MaxChance = 2;
+    u8 MaxChance = 255;
 
     MaxChance -= (gSaveBlock1Ptr->dexNavChain * 3);
     return MaxChance;
