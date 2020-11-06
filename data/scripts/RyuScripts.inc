@@ -1,22 +1,5 @@
 @@Custom Scripts
 
-@@dexnav
-
-Ryu_CheckEnableDexNav::
-	setvar VAR_TEMP_6, 20
-	specialvar VAR_RESULT, CountBadges
-	compare VAR_RESULT, 6
-	goto_if_lt ryu_end
-	goto_if_set FLAG_SYS_DEXNAV_GET, ryu_end
-	pokenavcall Ryu_DexnavGive
-	waitmessage
-	setflag FLAG_SYS_DEXNAV_GET
-	setflag FLAG_SYS_DEXNAV_SEARCH
-	release
-	end
-
-Ryu_DexnavGive:
-	.string "Congratulations, {PLAYER}!\pYou have been randomly selected\nto receive the free DexNav upgrade\lfor your Pokenav.\pWe hope you will enjoy this new\nbeta feature!$"
 
 @@=================================================================================================EXP BATTERY
 
@@ -1750,6 +1733,13 @@ RyuAC_SuccessMsg::
 RyuAC_CancelMsg::
 	.string "Leaving menu without changes.$"
 
+@==================================================================================================Ryu Global Scripts
+
+RyuGlobal_CheckMissionCallStatus::
+	setvar VAR_TEMP_A, 10
+	goto RyuGlobal_CheckMagmaStatus
+	
+
 @==================================================================================================Soot Sack
 
 RyuCheckSootSackContents::
@@ -1763,11 +1753,25 @@ Ryu_SootSackReadout:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You have {COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1}{COLOR LIGHT_GREEN}{SHADOW GREEN} grams of ash.$"
 
 
-@==================================================================================================Magma/Aqua Related Global Scripts
+@=================================================================================================Global Scripts
 
-Ryu_CheckMagmaStatusForMissionCall::
+RyuGlobal_CheckDexnavStatus::
+	goto_if_set FLAG_SYS_DEXNAV_GET, ryu_return
+	pokenavcall Ryu_DexnavGive
+	waitmessage
+	setflag FLAG_SYS_DEXNAV_GET
+	setflag FLAG_SYS_DEXNAV_SEARCH
+	return
+
+Ryu_DexnavGive:
+	.string "Congratulations, {PLAYER}!\pYou have been randomly selected\nto receive the free DexNav upgrade\lfor your Pokenav.\pWe hope you will enjoy this new\nbeta feature!$"
+
+RyuGlobal_CheckMagmaStatus::
 	setvar VAR_TEMP_A, 100
-	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, Ryu_CheckAquaStatusForMissionCall
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 6
+	call_if_ge RyuGlobal_CheckDexnavStatus
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, RyuGlobal_CheckAquaStatus
 	goto_if_unset FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
 	switch VAR_RYU_MAGMA
 	case 130, Ryu_InitializeMagmaPart4
@@ -1775,7 +1779,7 @@ Ryu_CheckMagmaStatusForMissionCall::
 	case 350, Ryu_InitializeMagmaPart8
 	goto ryu_end
 
-Ryu_CheckAquaStatusForMissionCall::
+RyuGlobal_CheckAquaStatus::
 	switch VAR_RYU_AQUA
 	case 10, Ryu_initializeAquaStage1
 	case 55, Ryu_InitializeAquaStage2
@@ -2045,7 +2049,7 @@ Ryu_Magma8Notice:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I suppose it's time to head back to\n"
     .string "base and see what's happened so far.$"
 
-@==================================================================================================Player lost a RyuMultiBattlePartnerBrendan
+@==================================================================================================Player lost a multibattle
 
 Ryu_PlayerLostTheGame::
 	goto_if_unset FLAG_RYU_HAS_FOLLOWER, RyuPlayerLostTheGameSolo

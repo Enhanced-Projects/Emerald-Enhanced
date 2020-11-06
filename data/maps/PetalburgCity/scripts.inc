@@ -35,8 +35,8 @@ PetalburgCity_EventScript_SetGymDoorsUnlocked:: @ 81DC316
 	return
 
 PetalburgCity_OnFrame: @ 81DC31C
-	map_script_2 VAR_TEMP_A, 0, Ryu_CheckMagmaStatusForMissionCall
 	map_script_2 VAR_RYU_MAGMA, 245, PC_DoMagmaStuffAfterHeist
+	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
 	.2byte 0
 
 PetalburgCity_EventScript_Boy1:: @ 81DC3E6

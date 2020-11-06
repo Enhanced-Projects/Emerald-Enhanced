@@ -1,8 +1,12 @@
 FortreeCity_MapScripts:: @ 81E25A4
 	map_script ON_TRANSITION, FortreeCity_OnTransition
 	map_script ON_RESUME, FortreeCity_OnResume
-	map_script ON_FRAME, SC_DoMagmaCheck
+	map_script ON_FRAME, FortreeCity_OnFrameScripts
 	.byte 0
+
+FortreeCity_OnFrameScripts::
+	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
+	.2byte 0 
 
 FortreeCity_OnTransition: @ 81E25AF
 	setflag FLAG_VISITED_FORTREE_CITY

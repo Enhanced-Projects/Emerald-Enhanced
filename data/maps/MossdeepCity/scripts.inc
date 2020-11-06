@@ -1,12 +1,21 @@
 MossdeepCity_MapScripts:: @ 81E4A96
 	map_script ON_TRANSITION, MossdeepCity_OnTransition
-	map_script ON_FRAME, SC_DoMagmaCheck
+	map_script ON_FRAME, MDC_OnFrameScripts
 	map_script ON_WARP, SFC_OnWarp
 	.byte 0
 
 MossdeepCity_OnTransition: @ 81E4A9C
 	setflag FLAG_VISITED_MOSSDEEP_CITY
 	end
+
+MDC_OnFrameScripts::
+	map_script_2 VAR_RYU_AQUA, 114, MDC_DoMossDeepScene2
+	map_script_2 VAR_RYU_AQUA, 122, MDC_ScenePart4
+	map_script_2 VAR_RYU_AQUA, 128, MDC_ScenePart6
+	map_script_2 VAR_RYU_AQUA, 150, MDC_FinalScene
+	map_script_2 VAR_RYU_AQUA, 149, MDC_DoFinalShellyScene
+	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
+	.2byte 0
 
 MossdeepCity_EventScript_PokefanF:: @ 81E4AB2
 	lock

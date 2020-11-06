@@ -1,7 +1,11 @@
 DewfordTown_MapScripts:: @ 81E9507
 	map_script ON_TRANSITION, DewfordTown_OnTransition
-	map_script ON_FRAME, SC_DoMagmaCheck
+	map_script ON_FRAME, DFT_OnFrameScripts
 	.byte 0
+
+DFT_OnFrameScripts::
+	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
+	.2byte 0
 
 DewfordTown_OnTransition: @ 81E950D
 	setflag FLAG_VISITED_DEWFORD_TOWN
