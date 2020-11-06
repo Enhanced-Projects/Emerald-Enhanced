@@ -801,7 +801,7 @@ DC_DeliveredLetterAndGoods:: @ 8212595
 	msgbox DC_CEO_ExpShareDesc, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	setvar VAR_RYU_DEVON, 19
+	setvar VAR_RYU_DEVON, 19 @Player completed Mr. Stone's tasks. Talk to him again for the next mission.
 	waitmovement 0
 	release
 	end
