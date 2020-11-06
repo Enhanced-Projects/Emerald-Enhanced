@@ -235,6 +235,8 @@ MossdeepCity_Text_SootopolisNewGymLeader: @ 81E5581
 @==================================================================================================Aqua
 
 DoMattScene::
+	compare VAR_RYU_AQUA, 112
+	goto_if_eq ryu_end
 	setvar VAR_RYU_AQUA, 112 @Player met with matt in mossdeep
 	lockall
 	faceplayer
