@@ -12,18 +12,19 @@ FT_FixCozmo::
 FallarborTown_CozmosHouse_EventScript_ProfCozmo:: @ 8200F13
 	lock
 	faceplayer
-	goto_if_set FLAG_RYU_DEVON_MISSION6START, FT_Mission6
-	goto_if_set FLAG_RYU_DEVON_MISSION5COMPLETE, FT_Mission5Done
-	goto_if_set FLAG_RYU_DEVON_MISSION5START, FT_OnMission5
-	goto_if_set FLAG_RYU_DEVON_MISSION_3_DONE, FT_DM3Done
-	goto_if_set FLAG_RYU_DEVON_MISSION3START, FT_OnMission3
+	switch VAR_RYU_DEVON
+	case 20, FT_CozmoMission1
+	case 21, FT_OnMission3
+	case 22, FT_Mission4
+	case 23, FT_OnMission4
+	case 24, FT_Mission4Done
+	goto ryu_end
+
+FT_CozmoMission1::
+	setvar VAR_RYU_DEVON, 21 @Player is tasked with going to Mt. Chimney and retreiving the meteorite.
 	msgbox FT_CozmoIntro MSGBOX_DEFAULT
-	additem ITEM_BIG_PEARL, 1
+	giveitem ITEM_BIG_PEARL, 1
 	msgbox FT_OnMission3Msg MSGBOX_DEFAULT
-	checkitem ITEM_METEORITE, 1
-	compare VAR_RESULT, 1
-	goto_if_eq FT_AlreadyHaveMeteorite
-	setflag FLAG_RYU_DEVON_MISSION3START
 	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
 	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
 	release
@@ -39,7 +40,6 @@ FT_OnMission3:
 	end
 	
 FT_DevonMission3::
-	goto_if_set FLAG_RYU_DEVON_MISSION_3_DONE, FT_DM3Done
 	lock
 	faceplayer
 	msgbox FT_OnMission3Msg MSGBOX_DEFAULT
@@ -48,21 +48,15 @@ FT_DevonMission3::
 	release
 	end
 	
-FT_DM3Done::
-    lock
+FT_Mission4::
+	lock
 	faceplayer
 	msgbox FT_MeteorReward1 MSGBOX_DEFAULT
 	removeitem ITEM_METEORITE, 1
 	setvar VAR_TEMP_6, 40000
 	addmoney VAR_TEMP_6
-	setflag FLAG_RYU_DEVON_MISSION4COMPLETE
-	goto FT_Mission4
-	
-FT_Mission4::
-	lock
-	faceplayer
+	setvar VAR_RYU_DEVON, 23 @Player is tasked with going to the aqua hideout and recovering the Radiation Detector.
 	msgbox FT_Mission4Intro MSGBOX_DEFAULT
-	setflag FLAG_RYU_DEVON_MISSION5START
 	setflag FLAG_RYU_DEVON_HIDE_MATT_SUB
 	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE
 	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE
@@ -70,15 +64,14 @@ FT_Mission4::
 	release
 	end
 	
-FT_Mission5Done::
+FT_Mission4Done::
 	msgbox FT_M5Done MSGBOX_DEFAULT
 	removeitem ITEM_FAME_CHECKER, 1
 	giveitem ITEM_CHOICE_SCARF
 	msgbox FT_M5RewardDesc MSGBOX_DEFAULT
-	setflag FLAG_RYU_DEVON_MISSION6START
-	goto FT_Mission6
+	goto FT_DevonScientistCorporateChoice
 	
-FT_Mission6::
+FT_DevonScientistCorporateChoice::
 	goto_if_set FLAG_RYU_DEVON_CORPORATE, FT_NoInteract
     msgbox FT_CozmoOutro MSGBOX_DEFAULT
 	multichoice 20, 8, 135, 1
@@ -93,44 +86,26 @@ FT_NoInteract:
 	end
 	
 FT_CozmoNextMission::
-	call_if_set FLAG_RYU_DS_LANETTE_ACQ, FT_CheckLanette
-	call_if_set FLAG_RYU_DS_LANETTE_ACQ, FT_CheckLanette2
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	closemessage
 	msgbox FT_wait MSGBOX_DEFAULT
 	setflag FLAG_RYU_DEVON_SCIENTIST
 	fadescreen 0
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 101
+	setvar VAR_RYU_DEVON, 1000 @Player finished the main devon stuff and chose to be a scientist.
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 101 @Player started the scientist quest
 	setvar VAR_WEATHER_INSTITUTE_STATE, 0
 	warp MAP_ROUTE119_WEATHER_INSTITUTE_1F, 255, 10, 12
 	release
 	end
-	
-FT_CheckLanette::
-	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, FT_FinishQuestFirst
-	return
-	
-FT_CheckLanette2::
-	goto_if_unset FLAG_RYU_DS_LANETTE_BADEND, FT_FinishQuestFirst
-	return
-	
-FT_FinishQuestFirst::
-	msgbox FT_MustFinishLanette
-	release
-	end
-	
-FT_MustFinishLanette:
-	.string "{COLOR RED}{SHADOW LIGHT_GREY} You must finish the Lanette quest\n"
-	.string "before starting the Devon Line.$"
-	
 
-FT_OnMission5::
-	msgbox FT_OnMission5Msg MSGBOX_DEFAULT
+FT_OnMission4::
+	msgbox FT_OnMission4Msg MSGBOX_DEFAULT
 	release
 	end
 	
 FT_ReturnToDevon::
+	setvar VAR_RYU_DEVON, 25 @Player finished all of Cozmo's missions and should return to the President.
 	msgbox FT_DevonMsg MSGBOX_DEFAULT
 	setflag FLAG_RYU_DEVON_CORPORATE
 	closemessage
@@ -199,8 +174,7 @@ FT_M5RewardDesc:
 	.string "Head back to Devon Corp and\n"
     .string "give Mr. Stone my regards!$"
 
-
-FT_OnMission5Msg:
+FT_OnMission4Msg:
     .string "Cozmo: You should be on your way\n"
     .string "to Lilycove. I need my Radiation\l"
     .string "Detector.$"

@@ -69,18 +69,18 @@
 #define FLAG_RYU_DEV_MODE                    0x39
 #define FLAG_RYU_AQUA_THIEF_SEEN             0x3A
 #define FLAG_RYU_PLAYER_HELPING_DEVON        0x3B
-#define FLAG_RYU_AQUA_MET_SHELLY_AT_MH        0x3C
-#define FLAG_RYU_DEVON_MISSION2START         0x3D
-#define FLAG_RYU_DEVON_M1C                   0x3E
-#define FLAG_RYU_DEVON_MISSION1START         0x3F
+#define FLAG_UNUSED_0x3C                     0x3C
+#define FLAG_UNUSED_0x3D                     0x3D
+#define FLAG_UNUSED_0x3E                     0x3E
+#define FLAG_UNUSED_0x3F                     0x3F
 #define FLAG_RYU_PLAYER_HELPING_AQUA         0x40
-#define FLAG_RYU_DEVON_MISSION6START         0x41
-#define FLAG_RYU_DEVON_MISSION5COMPLETE      0x42
+#define FLAG_UNUSED_0x41                     0x41
+#define FLAG_UNUSED_0x42                     0x42
 #define FLAG_RYU_DG_REWARD_RECEIVED          0x43
-#define FLAG_RYU_DEVON_MISSION5START         0x44
-#define FLAG_RYU_DEVON_MISSION_3_DONE        0x45
-#define FLAG_RYU_DEVON_MISSION3START         0x46
-#define FLAG_RYU_DEVON_MISSION4COMPLETE      0x47
+#define FLAG_UNUSED_0x44                     0x44
+#define FLAG_UNUSED_0x45                     0x45
+#define FLAG_UNUSED_0x46                     0x46
+#define FLAG_UNUSED_0x47                     0x47
 #define FLAG_RYU_DEVON_CORPORATE             0x48
 #define FLAG_RYU_ULTRA_BEASTS_ESCAPED        0x49
 #define FLAG_UNUSED_0x4A                     0x4A
@@ -166,7 +166,7 @@
 #define FLAG_CAUGHT_HO_OH                    0x92
 #define FLAG_UNUSED_0x93                     0x93
 #define FLAG_UNUSED_0x94                     0x94
-#define FLAG_DELIVERED_DEVON_GOODS           0x95
+#define FLAG_UNUSED_0x95                     0x95
 #define FLAG_DEWFORD_NPC_TRADE_COMPLETED     0x96
 #define FLAG_RECEIVED_CASTFORM               0x97
 #define FLAG_RECEIVED_SUPER_ROD              0x98
@@ -706,7 +706,7 @@
 #define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2                      0x29D
 #define FLAG_RYU_DEVON_LINE_FINISHED                                0x29E
 #define FLAG_RYU_DEVON_SCIENTIST                                    0x29F
-#define FLAG_RYU_DEVON_CEO_INTRO                                    0x2A0
+#define FLAG_UNUSED_0x2A0                                           0x2A0
 #define FLAG_RYU_MEWTWO_OBTAINED                                    0x2A1
 #define FLAG_RYU_GROUDON_ENCOUNTERED                                0x2A2
 #define FLAG_RYU_LANA_EVENT14                                       0x2A3
@@ -925,7 +925,7 @@
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_1     0x374
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_2     0x375
 #define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE           0x376
-#define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN    0x377
+#define FLAG_UNUSED_0x377                                           0x377
 #define FLAG_HIDE_BATTLE_TOWER_OPPONENT                             0x378
 #define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL                  0x379
 #define FLAG_HIDE_ROUTE_119_TEAM_AQUA                               0x37A
@@ -1037,7 +1037,7 @@
 #define FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA                          0x3E4 // EE-Unused
 #define FLAG_HIDE_SOOTOPOLIS_CITY_KYOGRE                            0x3E5 // EE-Unused
 #define FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON                           0x3E6 // EE-Unused
-#define FLAG_HIDE_RUSTBORO_CITY_POKEMON_SCHOOL_SCOTT                0x3E7
+#define FLAG_UNUSED_0x3E7                                           0x3E7
 
 // Item Ball Flags
 #define FLAG_ITEM_ROUTE_102_POTION                                  0x3E8

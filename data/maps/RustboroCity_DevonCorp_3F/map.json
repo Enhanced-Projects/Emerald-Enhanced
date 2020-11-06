@@ -200,8 +200,8 @@
       "x": 11,
       "y": 3,
       "elevation": 0,
-      "var": "VAR_TEMP_9",
-      "var_value": "4",
+      "var": "VAR_RYU_DEVON",
+      "var_value": "25",
       "script": "DC_CorporateLine"
     }
   ],

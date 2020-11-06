@@ -353,7 +353,6 @@ RyuGivePokenav::
 	waitfanfare
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV
-	setflag FLAG_HIDE_RUSTBORO_CITY_POKEMON_SCHOOL_SCOTT
 	clearflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	return
 

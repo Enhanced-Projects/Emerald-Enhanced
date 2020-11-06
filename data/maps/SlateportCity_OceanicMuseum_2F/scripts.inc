@@ -4,6 +4,7 @@ SlateportCity_OceanicMuseum_2F_MapScripts:: @ 820BAFF
 
 OM_OnFrameScript::
 	map_script_2 VAR_RYU_AQUA, 30, OM_AquaEvent2
+	map_script_2 VAR_RYU_DEVON, 16, OM_SetupSternForDevon
 	.2byte 0
 
 SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample1:: @ 820BD0A
@@ -274,6 +275,120 @@ OM_SternExit:
 	walk_up
 	walk_up
 	step_end
+	
+	
+@==================================================================================================Devon Events
+
+OM_SetupSternForDevon::
+	setvar VAR_RYU_DEVON, 17 @Player is on second floor to speak with Stern.
+	addobject 4
+	end
+	
+OM_CaptainStern::
+	compare VAR_RYU_DEVON, 18
+	goto_if_ge OM_AlreadyDoneScene
+	msgbox OM_ThanksForBringing
+	closemessage
+	fadescreen FADE_TO_BLACK
+	msgbox OM_WhatHappenedToTheLights
+	closemessage
+	createfollower OBJ_EVENT_GFX_ARCHIE, NULL, DIR_WEST
+	applymovement OBJ_EVENT_ID_FOLLOWER, OM_ArchieToEntrance
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	fadescreen FADE_FROM_BLACK
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement 4, Common_Movement_ExclamationMark
+	waitmovement 4
+	msgbox OM_WhatAreYouDoing
+	closemessage
+	applymovement OBJ_EVENT_ID_FOLLOWER, OM_ArchieToPlayer
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	msgbox OM_ImArchieHandOver
+	closemessage
+	trainerbattle_single TRAINER_ARCHIE, OM_ArchieIntro, OM_ArchieDefeat, OM_ArchieSceneEnd
+	goto OM_ArchieSceneEnd
+	
+OM_ArchieSceneEnd::
+	applymovement 4, Common_Movement_FaceLeft
+	waitmovement 4
+	msgbox OM_IllLetYouGetAway
+	closemessage
+	applymovement OBJ_EVENT_ID_FOLLOWER, OM_ArchieToEntrance
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	playse SE_KAIDAN
+	destroyfollower
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	msgbox OM_ThanksForProtecting
+	removeitem ITEM_DEVON_GOODS, 1
+	setvar VAR_RYU_DEVON, 18 @player spoke with stern and protected him from archie. Return to Devon.
+	release
+	end
+
+OM_AlreadyDoneScene::
+	msgbox OM_ReturnToDevon
+	closemessage
+	release
+	end
+
+OM_ReturnToDevon:
+	.string "I've got the package, please\nreturn to Devon.$"
+	
+OM_ThanksForBringing:
+	.string "Thanks for bringing the package.\nIt's late, but from what I hear,\pI'm lucky we were able to get\nit at all.$"
+	
+OM_WhatHappenedToTheLights:
+	.string "What's happening, why were the\nlights turned off?!$"
+	
+OM_WhatAreYouDoing:
+	.string "Aqua? What are you doing here?$"
+	
+OM_ImArchieHandOver:
+	.string "I'm Archie of team Aqua.\nI'm here to liberate those\lgoods from you.$"
+	
+OM_ArchieIntro:
+	.string "If you won't hand them over\nthen I'll just have to take them!$"
+	
+OM_ArchieDefeat:
+	.string "Just my luck to attack at\nthe one time a competent trainer\lis around...$"
+	
+OM_IllLetYouGetAway:
+	.string "Grr... I'll let you get away\nthis time.$"
+
+OM_ThanksForProtecting:
+	.string "Oh, wow, am I fortunate.\nThank you so much for protecting\lme!$"
+
+
+OM_ArchieToEntrance:
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	face_down
+	step_end
+
+OM_ArchieToPlayer:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+	
 
 
 

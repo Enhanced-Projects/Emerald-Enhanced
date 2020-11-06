@@ -2,7 +2,7 @@
   "id": "MAP_RUSTBURO_CITY_DEVON_CORP2F_STORY_MAP",
   "name": "RustburoCity_DevonCorp2fStoryMap",
   "layout": "LAYOUT_RUSTBURO_CITY_DEVON_CORP2F_STORY_MAP",
-  "music": "MUS_DAN02",
+  "music": "MUS_HIGHTOWN",
   "region_map_section": "MAPSEC_RUSTBORO_CITY",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -50,7 +50,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_DevonCorp_2F_EventScript_TalkToPokemonScientist",
+      "script": "DC_QuestScientist1",
       "flag": "0"
     },
     {
@@ -63,7 +63,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_DevonCorp_2F_EventScript_PokemonDreamsScientist",
+      "script": "DC_QuestScientist2",
       "flag": "0"
     },
     {
@@ -76,7 +76,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "RustboroCity_DevonCorp_2F_EventScript_MatchCallScientist",
+      "script": "\nDC_QuestScientist1",
       "flag": "0"
     },
     {
@@ -128,7 +128,7 @@
       "x": 14,
       "y": 2,
       "elevation": 0,
-      "var": "VAR_RYU_DEVON_MAIN_QUEST_VAR",
+      "var": "VAR_RYU_DEVON",
       "var_value": "5",
       "script": "DC_ProgressCheck"
     },
@@ -137,7 +137,7 @@
       "x": 2,
       "y": 2,
       "elevation": 0,
-      "var": "VAR_RYU_DEVON_MAIN_QUEST_VAR",
+      "var": "VAR_RYU_DEVON",
       "var_value": "5",
       "script": "DC_ProgressCheck"
     }

@@ -182,7 +182,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	createfollower OBJ_EVENT_GFX_SLAKOTH, RyuFollowerSelectNPCScript, DIR_NORTH
+	warpsilent MAP_RUSTBURO_CITY_DEVON_CORP2F_STORY_MAP, 255, 9, 2
 	end
 
 RDB_Text:

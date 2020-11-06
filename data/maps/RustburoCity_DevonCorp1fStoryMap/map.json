@@ -2,7 +2,7 @@
   "id": "MAP_RUSTBURO_CITY_DEVON_CORP1F_STORY_MAP",
   "name": "RustburoCity_DevonCorp1fStoryMap",
   "layout": "LAYOUT_RUSTBURO_CITY_DEVON_CORP1F_STORY_MAP",
-  "music": "MUS_DAN02",
+  "music": "MUS_HIGHTOWN",
   "region_map_section": "MAPSEC_RUSTBORO_CITY",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -82,8 +82,8 @@
       "x": 14,
       "y": 3,
       "elevation": 0,
-      "var": "VAR_RYU_DEVON_MAIN_QUEST_VAR",
-      "var_value": "15",
+      "var": "VAR_RYU_DEVON",
+      "var_value": "40",
       "script": "DC_FirstFloorSceneStart"
     }
   ],
