@@ -325,42 +325,42 @@ const u8 gItemEffect_DireHit[8] = {
 };
 
 const u8 gItemEffect_XAttack[8] = {
-    [0] = 1,
+    [1] = ITEM1_X_ATTACK,
     [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
     [6] = 1,
     [7] = 1,
 };
 
 const u8 gItemEffect_XDefend[8] = {
-    [1] = 1 << 4,
+    [1] = ITEM1_X_DEFEND,
     [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
     [6] = 1,
     [7] = 1,
 };
 
 const u8 gItemEffect_XSpeed[8] = {
-    [1] = 1,
-    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
-    [6] = 1,
-    [7] = 1,
-};
-
-const u8 gItemEffect_XAccuracy[8] = {
-    [2] = 1 << 4,
+    [1] = ITEM1_X_SPEED,
     [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
     [6] = 1,
     [7] = 1,
 };
 
 const u8 gItemEffect_XSpecialAttack[8] = {
-    [2] = 1,
+    [1] = ITEM1_X_SPATK,
     [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
     [6] = 1,
     [7] = 1,
 };
 
 const u8 gItemEffect_XSpecialDefense[8] = {
-    [2] = 1,
+    [1] = ITEM1_X_SPDEF,
+    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
+    [6] = 1,
+    [7] = 1,
+};
+
+const u8 gItemEffect_XAccuracy[8] = {
+    [1] = ITEM1_X_ACCURACY,
     [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
     [6] = 1,
     [7] = 1,
@@ -519,9 +519,9 @@ const u8 *const gItemEffectTable[] =
     [ITEM_X_ATTACK - ITEM_POTION] = gItemEffect_XAttack,
     [ITEM_X_DEFENSE - ITEM_POTION] = gItemEffect_XDefend,
     [ITEM_X_SPEED - ITEM_POTION] = gItemEffect_XSpeed,
-    [ITEM_X_ACCURACY - ITEM_POTION] = gItemEffect_XAccuracy,
     [ITEM_X_SP_ATK - ITEM_POTION] = gItemEffect_XSpecialAttack,
     [ITEM_X_SP_DEF - ITEM_POTION] = gItemEffect_XSpecialDefense,
+    [ITEM_X_ACCURACY - ITEM_POTION] = gItemEffect_XAccuracy,
     [ITEM_SUN_STONE - ITEM_POTION] = gItemEffect_EvoStone,
     [ITEM_MOON_STONE - ITEM_POTION] = gItemEffect_EvoStone,
     [ITEM_FIRE_STONE - ITEM_POTION] = gItemEffect_EvoStone,
