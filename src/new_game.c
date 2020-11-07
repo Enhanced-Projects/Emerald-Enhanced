@@ -291,6 +291,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_CHIMNEY_GROUDON);
     FlagSet(FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES);
     VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
+    FlagSet(FLAG_RYU_HIDE_MOSSDEEP_MATT);
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;
