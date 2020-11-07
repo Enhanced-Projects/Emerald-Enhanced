@@ -1194,7 +1194,7 @@ RC_LookForIto:
 RustboroCity_EventScript_FatMan::
 	lock
 	faceplayer
-	compare VAR_RYU_DEVON_MAIN_QUEST_VAR, 16
+	compare VAR_RYU_DEVON, 16
 	goto_if_eq DC_FatManHelpText
 	msgbox RustboroCity_Text_WeShortenItToDevon, MSGBOX_DEFAULT
 	release

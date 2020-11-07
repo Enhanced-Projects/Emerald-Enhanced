@@ -2,33 +2,16 @@ RustboroCity_DevonCorp_3F_MapScripts:: @ 821242D
 	map_script ON_FRAME, RustboroCity_DevonCorp_3F_OnFrame
 	.byte 0
 
-RustboroCity_DevonCorp_3F_OnTransition: @ 821243D
-	compare VAR_DEVON_CORP_3F_STATE, 0
-	call_if_eq RustboroCity_DevonCorp_3F_EventScript_SetEmployeePos
-	end
-
-RustboroCity_DevonCorp_3F_EventScript_SetEmployeePos:: @ 8212449
-	setobjectxyperm 2, 3, 2
-	setobjectmovementtype 2, MOVEMENT_TYPE_FACE_LEFT
-	return
-
-RustboroCity_DevonCorp_3F_OnWarp: @ 8212455
-	map_script_2 VAR_DEVON_CORP_3F_STATE, 0, RustboroCity_DevonCorp_3F_EventScript_PlayerFaceEast
-	.2byte 0
-
-RustboroCity_DevonCorp_3F_EventScript_PlayerFaceEast:: @ 821245F
-	end
-
 RustboroCity_DevonCorp_3F_OnFrame: @ 8212464
-	map_script_2 VAR_RYU_DEVON_MAIN_QUEST_VAR, 22, DC_CorporateInterrogation
+	map_script_2 VAR_RYU_DEVON, 50, DC_CorporateInterrogation
 	.2byte 0
 @==================================================================================================RYU DEVON
+
 DC_QuestCheck::
 	lock
-	goto_if_set FLAG_RYU_DEVON_LINE_FINISHED, ryu_end
+	compare VAR_RYU_DEVON, 15
+	goto_if_ge ryu_end
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
-	compare VAR_RYU_DEVON_MAIN_QUEST_VAR, 30
-	goto_if_eq ryu_end
 	goto_if_set FLAG_RYU_DEVON_CORPORATE, DC_BeginCorporate
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, DC_ENEMY
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
@@ -46,7 +29,6 @@ DC_BeginCorporate::
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE
 	setflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
 	setflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE4
-	setvar VAR_TEMP_9, 4
 	special DrawWholeMapView
 	release
 	end
@@ -59,30 +41,11 @@ DC_ENEMY::
 	release
 	end
 	
-DC_QuestCheck1::
-	lock
-	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
-	compare VAR_RYU_DEVON_MAIN_QUEST_VAR, 30
-	goto_if_eq ryu_end
-	goto_if_set FLAG_RYU_DEVON_CORPORATE, DC_BeginCorporate
-	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, DC_ENEMY
-	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
-	checkitem ITEM_DEVON_GOODS, 1
-	compare VAR_RESULT, 1
-	goto_if_eq DC_BeginQuest
-	msgbox DC_NoQuest MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER DC_Turnaround1
-	waitmovement 0
-	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
-	release
-	end
-	
 DC_QuestCheck2::
 	lock
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
-	compare VAR_RYU_DEVON_MAIN_QUEST_VAR, 30
-	goto_if_eq ryu_end
+	compare VAR_RYU_DEVON, 15
+	goto_if_ge ryu_end
 	goto_if_set FLAG_RYU_DEVON_CORPORATE, DC_BeginCorporate
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, DC_ENEMY
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
@@ -126,6 +89,18 @@ DC_NoQuest:
 	.string "I'm sorry, but the Ceo is busy.\n"
 	.string "Please come back later.$"
 
+RustboroCity_DevonCorp_3F_EventScript_MrStone:: @ 821256C
+	lock
+	faceplayer
+	switch VAR_RYU_DEVON
+	case 5, RustboroCity_DevonCorp_3F_EventScript_MeetPresident
+	case 18, DC_DeliveredLetterAndGoods
+	case 19, DC_GoToMeteorFalls
+	case 20, DC_Mission2
+	goto_if_set FLAG_RYU_DEVON_SCIENTIST, DC_Scientist
+	goto_if_set FLAG_RYU_DEVON_LINE_FINISHED, DC_Afterstory
+	release
+	end
 
 DC_MovePlayer1:
 	walk_right
@@ -217,7 +192,7 @@ DC_CorporateLine::
 	additem ITEM_TRI_PASS
 	msgbox DC_OfficialEmployee
 	closemessage
-	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 4
+	setvar VAR_RYU_DEVON, 30
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3
 	warpsilent MAP_RUSTBURO_CITY_DEVON_CORP2F_STORY_MAP, 255, 9, 2
 	release
@@ -226,12 +201,11 @@ DC_CorporateLine::
 	
 DC_IntroDone::
 	msgbox DC_INTROQUEST_MSG MSGBOX_DEFAULT
-	clearflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN
 	release
 	end
 	
 DC_INTROQUEST_MSG:
-	.string "Steven was last spotted in Dewford,\nand Captain Stern likes to spend time\lin his museum.$"
+	.string "Steven was last spotted in Dewford.$"
 	
 DC_WhatToDo:
 	.string "Oh, what to do...what am I going\nto do?$"
@@ -347,6 +321,7 @@ DC_FranticPace:
 	step_end
 
 DC_CorporateInterrogation:: @Due to size limitations, all dialogue and movement are in data/scripts/RyuDevonLine.inc
+	setvar VAR_RYU_DEVON, 55
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
 	playbgm 438, 1
@@ -562,7 +537,7 @@ DC_CorporateInterrogation4::
 	closemessage
 	msgbox DC_TheExpDrive
 	closemessage
-	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 30
+	setvar VAR_RYU_DEVON, 60 @player finished the Devon Corporate line.
 	setflag FLAG_RYU_DEVON_LINE_FINISHED
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	releaseall
@@ -651,12 +626,7 @@ DC_YouAreScientist:
 	.string "I heard you became Cozmo's\nunderstudy. Congratulations!$"
 	
 DC_BeginQuest::
-	lock
-	msgbox DC_WorkForDevon MSGBOX_YESNO
-	compare VAR_RESULT, 1
 	goto_if_eq DC_HelpingDevon
-	warpsilent MAP_RUSTBORO_CITY_DEVON_CORP_2F, 255, 2, 1
-	
 
 DC_HelpingDevon::
 	applymovement 2, Common_Movement_ExclamationMark
@@ -667,71 +637,20 @@ DC_HelpingDevon::
 	release
 	end
 	
-DC_Mission1Done::
-	msgbox DC_M1CMSG MSGBOX_DEFAULT
-	goto DC_Mission2
-	release
-	end
-	
 DC_Mission2::
 	msgbox DC_M2Msg MSGBOX_DEFAULT
-	setflag FLAG_RYU_DEVON_MISSION2START
-    clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
-	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
 	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
-	release
-	end
-	
-DC_OnMission2:
-	msgbox DC_GoSeeCozmo MSGBOX_DEFAULT
-	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
-	release
-	end
-
-DC_DeliveredLetterCheck:: @ 8212595
-	goto_if_set FLAG_RECEIVED_EXP_SHARE, RC_ES_Recieved
-	msgbox DC_CEO_DeliveredLetter, MSGBOX_DEFAULT
-	additem ITEM_EXP_SHARE
-	compare VAR_RESULT, 0
-	goto_if_eq Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_EXP_SHARE
-	msgbox DC_CEO_ExpShareDesc, MSGBOX_DEFAULT
-	closemessage
-	goto_if_set FLAG_DELIVERED_DEVON_GOODS RC_DevonGoodsReward
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceDown
-	waitmovement 0
 	release
 	end
 	
 RC_ES_Recieved::
 	msgbox RC_AlreadyDeliveredLetter MSGBOX_DEFAULT
-	clearflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN
-	release
-	end
-
-RustboroCity_DevonCorp_3F_EventScript_2125CC:: @ 82125CC
-    goto_if_set FLAG_RYU_DG_REWARD_RECEIVED RC_GoodsRcv
-	msgbox DC_Msg_StoneLookingAtPaperwork, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceDown
-	waitmovement 0
-	goto_if_set FLAG_DELIVERED_DEVON_GOODS RC_DevonGoodsReward
-	release
-	end
-
-RC_DevonGoodsReward::
-	msgbox RC_DG_Delivered MSGBOX_DEFAULT
-	goto_if_set FLAG_RYU_DG_REWARD_RECEIVED RC_GoodsRcv
-	setflag FLAG_RYU_DG_REWARD_RECEIVED
-	msgbox RC_DevonThanks MSGBOX_DEFAULT
-	additem ITEM_MASTER_BALL
 	release
 	end
 	
 RC_AlreadyDeliveredLetter:
 	.string "Mr Stone: Thanks for delivering\nmy letter. My son already replied.\pHave you had a chance to visit\nSlateport yet?$"
 
-	
 DC_WorkForDevon:
 	.string "Devon Employee: Oh, hi!\ndid you come here for a job?\p {COLOR LIGHT_GREEN} {SHADOW GREEN}(Are you sure you want to\n work for Devon Corp? You won't be\l able to pursue any other main line\l if you do!)$"
 	
@@ -767,14 +686,6 @@ DC_M2Msg:
 	
 DC_GoSeeCozmo:
 	.string "Mr. Stone: {PLAYER}! Please go visit Cozmo,\nhe's waiting for you.$"
-
-
-RC_GoodsRcv:
-	goto_if_set FLAG_RYU_DEVON_MISSION1START, DC_OnQuest1
-	msgbox DC_Msg_StoneLookingAtPaperwork MSGBOX_DEFAULT
-	goto DC_MFQuest
-	release
-	end
 	
 DC_OnQuest1::
 	msgbox DC_M1Desc MSGBOX_DEFAULT
@@ -785,18 +696,17 @@ DC_OnQuest1::
 	release
 	end
 	
-DC_MFQuest::
+DC_GoToMeteorFalls::
 	msgbox DC_MFQuestdescription MSGBOX_DEFAULT
-	setflag FLAG_RYU_DEVON_MISSION1START
 	release
 	end
 
 
 RustboroCity_DevonCorp_3F_EventScript_MeetPresident:: @ 821246E
 	lockall
-	call_if_set FLAG_RYU_DS_LANETTE_ACQ, DC_CheckLanette
-	call_if_set FLAG_RYU_DS_LANETTE_ACQ, DC_CheckLanette2
-	goto_if_set FLAG_RYU_DEVON_CEO_INTRO, DC_IntroDone
+	compare VAR_RYU_DEVON, 15
+	goto_if_eq DC_IntroDone
+	setvar VAR_RYU_DEVON, 15 @Player met president. Go deliver letter to steven in dewford cave.
 	msgbox DC_CEOIntro, MSGBOX_DEFAULT
 	additem ITEM_LETTER
 	playfanfare MUS_FANFA4
@@ -805,15 +715,12 @@ RustboroCity_DevonCorp_3F_EventScript_MeetPresident:: @ 821246E
 	closemessage
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV
-	setflag FLAG_HIDE_RUSTBORO_CITY_POKEMON_SCHOOL_SCOTT
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp, MSGBOX_DEFAULT
 	closemessage
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare, MSGBOX_DEFAULT
 	closemessage
 	clearflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
 	setvar VAR_DEVON_CORP_3F_STATE, 1
-	setflag FLAG_RYU_DEVON_CEO_INTRO
-	clearflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN
 	releaseall
 	end
 
@@ -885,21 +792,7 @@ RustboroCity_DevonCorp_3F_Movement_PlayerApproachDesk: @ 8212566
 	walk_in_place_fastest_right
 	step_end
 
-RustboroCity_DevonCorp_3F_EventScript_MrStone:: @ 821256C
-	lock
-	faceplayer
-	goto_if_set FLAG_RYU_DEVON_SCIENTIST, DC_Scientist
-	goto_if_set FLAG_RYU_DEVON_LINE_FINISHED, DC_Afterstory
-	goto_if_set FLAG_RYU_DEVON_MISSION2START, DC_OnMission2
-	goto_if_set FLAG_RYU_DEVON_M1C, DC_Mission1Done
-	goto_if_set FLAG_RYU_DG_REWARD_RECEIVED, RustboroCity_DevonCorp_3F_EventScript_2125CC
-	goto_if_set FLAG_DELIVERED_DEVON_GOODS,  RC_DevonGoodsReward
-	goto_if_set FLAG_DELIVERED_STEVEN_LETTER, DC_DeliveredLetterCheck
-	goto_if_set FLAG_RECOVERED_DEVON_GOODS, RustboroCity_DevonCorp_3F_EventScript_MeetPresident
-	release
-	end
-
-RustboroCity_DevonCorp_3F_EventScript_GiveExpShare:: @ 8212595
+DC_DeliveredLetterAndGoods:: @ 8212595
 	msgbox RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter, MSGBOX_DEFAULT
 	additem ITEM_EXP_SHARE
 	compare VAR_RESULT, 0
@@ -908,17 +801,8 @@ RustboroCity_DevonCorp_3F_EventScript_GiveExpShare:: @ 8212595
 	msgbox DC_CEO_ExpShareDesc, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	setvar VAR_RYU_DEVON, 19 @Player completed Mr. Stone's tasks. Talk to him again for the next mission.
 	waitmovement 0
-	release
-	end
-
-RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor:: @ 82125CC
-	goto_if_set FLAG_RYU_DG_REWARD_RECEIVED RC_GoodsRcv
-	msgbox RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	goto_if_set FLAG_DELIVERED_DEVON_GOODS RC_DevonGoodsReward
 	release
 	end
 
@@ -943,7 +827,7 @@ DC_Afterstory:
 	goto_if_set FLAG_DEFEATED_RAYQUAZA, DC_AfterAfterStory
 	goto_if_unset FLAG_SYS_GAME_CLEAR, DC_NotReadyYet
 	msgbox DC_AfterstoryMsg
-	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 69
+	setvar VAR_RYU_DEVON, 69
 	release
 	end
 	
@@ -960,26 +844,11 @@ DC_AfterAfterStory::
 	release
 	end
 
-DC_CheckLanette::
-	goto_if_unset FLAG_RYU_DS_LANETTE_PARTNERS, DC_FinishQuestFirst
-	return
-
-DC_CheckLanette2::
-	goto_if_unset FLAG_RYU_DS_LANETTE_BADEND, DC_FinishQuestFirst
-	return
-	
-DC_FinishQuestFirst::
-	msgbox FT_MustFinishLanette
-	closemessage
-	release
-	end
-
 DC_Msg_StoneLookingAtPaperwork: @ 8212B78
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Mr. Stone appears to be looking over some\npaperwork.)$"
 
-
 DC_MFQuestdescription:
-	.string "Mr. Stone: One of our associates\nreached out.\pProf. Cozmo is having trouble with\lcriminals interfering with his work\l in Meteor Falls.\pDo you think you can go over there\nand provide some help for him there?$"
+	.string "Mr. Stone: One of our associates\nreached out.\pProf. Cozmo is having trouble with\ncriminals interfering with his work\l in Meteor Falls.\pDo you think you can go over there\nand provide some help for him there?$"
 	
 DC_M1Desc:
 	.string "Mr. Stone: {PLAYER}! Hurry to Meteor Falls\nand help Prof. Cozmo!$"
@@ -1042,7 +911,8 @@ RustboroCity_DevonCorp_3F_Text_CountingOnYou: @ 8212A09
 
 RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter: @ 8212A29
 	.string "MR. Stone: You delivered my Letter?\n"
-	.string "Thank you kindly!\p"
+	.string "And the package for Stern as well?\p"
+	.string "Excellent work!\p"
 	.string "This is my way of thanking you.\n"
 	.string "It should help you, a Trainer.$"
 

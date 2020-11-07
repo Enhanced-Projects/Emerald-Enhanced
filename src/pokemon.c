@@ -5774,7 +5774,7 @@ u8 GetTrainerEncounterMusicId(u16 trainerOpponentId)
 
 u32 ModifyStatByNature(u8 nature, u32 n, u8 statIndex)
 {
-    u16 retVal;
+    u32 retVal;
     // Dont modify HP, Accuracy, or Evasion by nature
     if (statIndex <= STAT_HP || statIndex > NUM_NATURE_STATS)
     {
@@ -5784,12 +5784,10 @@ u32 ModifyStatByNature(u8 nature, u32 n, u8 statIndex)
     switch (gNatureStatTable[nature][statIndex - 1])
     {
     case 1:
-        retVal = n * 110;
-        retVal /= 100;
+        retVal = ((n * 110) / 100);
         break;
     case -1:
-        retVal = n * 90;
-        retVal /= 100;
+        retVal = ((n * 90) / 100);
         break;
     default:
         retVal = n;

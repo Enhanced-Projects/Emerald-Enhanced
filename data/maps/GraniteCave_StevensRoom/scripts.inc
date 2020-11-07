@@ -7,14 +7,11 @@ GraniteCave_StevensRoom_EventScript_Steven:: @ 822DC7B
 	msgbox GraniteCave_StevensRoom_Text_ImStevenLetterForMe, MSGBOX_DEFAULT
 	setvar VAR_0x8004, ITEM_LETTER
 	call Common_EventScript_PlayerHandedOverTheItem
-	setflag FLAG_DELIVERED_STEVEN_LETTER
+	setvar VAR_RYU_DEVON, 16 @Player delivered letter, go to the oceanic museum to meet stern.
 	msgbox GraniteCave_StevensRoom_Text_ThankYouTakeThis, MSGBOX_DEFAULT
 	additem ITEM_TM47
 	compare VAR_RESULT, FALSE
 	call_if_eq GraniteCave_StevensRoom_EventScript_BagFull
-	msgbox GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister, MSGBOX_DEFAULT
-	closemessage
-	delay 30
 	playfanfare MUS_ME_TORE_EYE
 	msgbox GraniteCave_StevensRoom_Text_RegisteredSteven, MSGBOX_DEFAULT
 	waitfanfare
@@ -31,6 +28,7 @@ GraniteCave_StevensRoom_EventScript_Steven:: @ 822DC7B
 	compare VAR_FACING, DIR_EAST
 	call_if_eq GraniteCave_StevensRoom_EventScript_StevenExitWestEast
 	playse SE_KAIDAN
+	setflag FLAG_HIDE_GRANITE_CAVE_STEVEN
 	removeobject 1
 	release
 	end

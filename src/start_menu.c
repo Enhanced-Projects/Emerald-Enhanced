@@ -834,9 +834,9 @@ void DrawDevonLogo(void)
 
     //Show quest stage
     StringCopy(gRyuStringVar1, gText_HighlightTransparent);
-    if (FlagGet(FLAG_RYU_DEVON_CORPORATE) == 1)
+    if (FlagGet(FLAG_RYU_DEVON_SCIENTIST) == 0)
         {
-            ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_DEVON_MAIN_QUEST_VAR)), 0, 3);
+            ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_DEVON)), 0, 3);
         }
     else
         {

@@ -223,7 +223,7 @@
 #define VAR_CABLE_CLUB_TUTORIAL_STATE        0x40CD
 #define VAR_FRONTIER_BATTLE_MODE             0x40CE
 #define VAR_FRONTIER_FACILITY                0x40CF
-#define VAR_RYU_DEVON_MAIN_QUEST_VAR         0x40D0 // devon main
+#define VAR_RYU_DEVON         0x40D0 // devon main
 #define VAR_SCOTT_STATE                      0x40D1
 #define VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE   0x40D2
 #define VAR_DEX_UPGRADE_JOHTO_STARTER_STATE  0x40D3

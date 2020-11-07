@@ -170,6 +170,7 @@ ACO_StartAquaQuest::
 	closemessage
 	msgbox ACO_IsThatSo
 	closemessage
+	removeitem ITEM_DEVON_GOODS, 1
 	trainerbattle_single TRAINER_SHELLY_1, ACO_TryToBestMe, ACO_ShellyDefeated1, ACO_AfterShellyBattle, MUS_ENCOUNTER_AQUA
 	waitstate
 	

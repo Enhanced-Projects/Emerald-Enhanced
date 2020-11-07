@@ -231,7 +231,7 @@ r115_scenePart3::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox r115_FiguredSomethingOut
 	closemessage
-	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 22
+	setvar VAR_RYU_DEVON, 50 @Player found Ms Ito and is returning to Devon Corp.
 	setflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE
 	setflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3

@@ -27,7 +27,7 @@ MC_Houndoomite::
 MtChimney_EventScript_Archie:: @ 822EDD5
 	lock
 	faceplayer
-	goto_if_set FLAG_RYU_DEVON_MISSION3START, MC_ArchieEnemyIntro
+	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, MC_ArchieEnemyIntro
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, MC_ArchiIntro
 	call_if_unset FLAG_EVIL_LEADER_PLEASE_STOP, MtChimney_EventScript_ArchieGoStopTeamMagma
 	call_if_set FLAG_EVIL_LEADER_PLEASE_STOP, MtChimney_EventScript_ArchieBusyFighting
@@ -124,7 +124,9 @@ MC_PlayerNotAqua::
 	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
 	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	clearflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
-	setflag FLAG_RYU_DEVON_MISSION_3_DONE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto MtChimney_EventScript_MeteoriteMachine
 	releaseall
 	end
 
@@ -328,24 +330,12 @@ MtChimney_EventScript_AquaPoochyena:: @ 822F0DB
 
 MtChimney_EventScript_MeteoriteMachine:: @ 822F0E4
 	lockall
-	goto_if_unset FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, MtChimney_EventScript_MachineOn
-	goto_if_set FLAG_RECEIVED_METEORITE, MtChimney_EventScript_MachineOff
-	msgbox MtChimney_Text_RemoveTheMeteorite, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq MtChimney_EventScript_LeaveMeteoriteAlone
+	goto_if_set FLAG_RECEIVED_METEORITE, ryu_end
+	goto_if_unset FLAG_RYU_PLAYER_HELPING_DEVON, MtChimney_EventScript_MachineOn
 	msgbox MtChimney_Text_PlayerRemovedMeteorite, MSGBOX_DEFAULT
 	giveitem ITEM_METEORITE
 	setflag FLAG_RECEIVED_METEORITE
-	releaseall
-	end
-
-MtChimney_EventScript_LeaveMeteoriteAlone:: @ 822F123
-	msgbox MtChimney_Text_PlayerLeftMeteorite, MSGBOX_DEFAULT
-	releaseall
-	end
-
-MtChimney_EventScript_MachineOff:: @ 822F12D
-	msgbox MtChimney_Text_MachineMakesNoResponse, MSGBOX_DEFAULT
+	setvar VAR_RYU_DEVON, 22 @Player got the meteorite. Return to Cozmo.
 	releaseall
 	end
 

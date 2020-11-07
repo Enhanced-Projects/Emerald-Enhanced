@@ -138,6 +138,7 @@ RT_WaitWhereYou:
 	.string "Wait! Where are you going?\pGet back here!$"
 
 RT_ADIntro:
+	setvar VAR_RYU_DEVON, 5 @Player chose devon quest. Player should go to Devon Corp.
 	msgbox RT_IsEverything
 	playse SE_PIN
 	applymovement 4, Common_Movement_ExclamationMark

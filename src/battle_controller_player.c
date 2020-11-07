@@ -2781,6 +2781,8 @@ static void PlayerHandleHealthBarUpdate(void)
 
     LoadBattleBarGfx(0);
     hpVal = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
+    if(gBattleMoveDamage >= gBattleMons[gBattlerTarget].hp)
+        hpVal = INSTANT_HP_BAR_DROP;
 
     // gPlayerPartyLostHP used by Battle Dome, but never read
     if (hpVal > 0)

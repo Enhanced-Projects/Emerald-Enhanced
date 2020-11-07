@@ -14,7 +14,7 @@ RustboroCity_DevonCorp_2F_EventScript_SetFossilReady:: @ 8211869
 RustboroCity_DevonCorp_2F_EventScript_TalkToPokemonScientist:: @ 821186F
 	lock
 	faceplayer
-	compare VAR_RYU_DEVON_MAIN_QUEST_VAR, 5
+	compare VAR_RYU_DEVON, 5
 	goto_if_eq DC_QuestScientist1
 	compare VAR_FOSSIL_RESURRECTION_STATE, 1
 	call_if_eq RustboroCity_DevonCorp_2F_EventScript_SetFossilReady
@@ -55,7 +55,7 @@ RustboroCity_DevonCorp_2F_EventScript_HasPokenav:: @ 82118D0
 RustboroCity_DevonCorp_2F_EventScript_PokemonDreamsScientist:: @ 82118DA
 	lock
 	faceplayer
-	compare VAR_RYU_DEVON_MAIN_QUEST_VAR, 5
+	compare VAR_RYU_DEVON, 5
 	goto_if_eq DC_QuestScientist2
 	compare VAR_FOSSIL_RESURRECTION_STATE, 1
 	call_if_eq RustboroCity_DevonCorp_2F_EventScript_SetFossilReady
@@ -284,7 +284,7 @@ RustboroCity_DevonCorp_2F_EventScript_CancelFossilSelect:: @ 8211BCD
 RustboroCity_DevonCorp_2F_EventScript_MatchCallScientist:: @ 8211BCF
 	lock
 	faceplayer
-	compare VAR_RYU_DEVON_MAIN_QUEST_VAR, 5
+	compare VAR_RYU_DEVON, 5
 	goto_if_eq DC_QuestScientist3
 	compare VAR_FOSSIL_RESURRECTION_STATE, 1
 	call_if_eq RustboroCity_DevonCorp_2F_EventScript_SetFossilReady

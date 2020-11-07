@@ -3,12 +3,12 @@ RustburoCity_DevonCorp2fStoryMap_MapScripts::
 	.byte 0
 	
 DC_MainDevonLineCheck::
-	map_script_2 VAR_RYU_DEVON_MAIN_QUEST_VAR, 4, DC_MainDevonLineContinued
+	map_script_2 VAR_RYU_DEVON, 30, DC_MainDevonLineContinued
 	.2byte 0
 	
 DC_MainDevonLineContinued::
 	lock
-	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 0
+	setvar VAR_RYU_DEVON, 35 @Player is meeting devon employees. Talk to all of them to continue.
 	msgbox DC_NewHire
 	closemessage
 	applymovement 1, Common_Movement_QuestionMark
@@ -61,7 +61,6 @@ DC_MainDevonLineContinued::
 	waitmovement 6
 	msgbox DC_WhatsThat
 	closemessage
-	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 5
 	release
 	end
 	
@@ -112,7 +111,7 @@ DC_CanLeaveNow::
 	call_if_unset FLAG_TEMP_6, ryu_end
 	call_if_unset FLAG_TEMP_7, ryu_end
 	msgbox DC_AllDone2F
-	setvar VAR_RYU_DEVON_MAIN_QUEST_VAR, 15
+	setvar VAR_RYU_DEVON, 40 @Player can now leave 2f to go to 1f. 
 	release
 	end
 

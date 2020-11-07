@@ -227,7 +227,6 @@ void NewGameInitData(void)
     FlagSet(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
     FlagSet(FLAG_HIDE_DAWNS_HOUSE_DAWN);
     FlagSet(FLAG_RYU_KYOGRE);
-    FlagSet(FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN);
     FlagSet(FLAG_HIDE_103_TEST_TRAINER);
     FlagSet(FLAG_HIDE_GRANITE_CAVE_STEVEN);
     FlagSet(FLAG_RYU_HIDE_R120_LANA_AND_HIKER);
@@ -292,6 +291,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_CHIMNEY_GROUDON);
     FlagSet(FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES);
     VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
+    FlagSet(FLAG_RYU_HIDE_MOSSDEEP_MATT);
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;

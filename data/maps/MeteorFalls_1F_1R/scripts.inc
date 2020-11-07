@@ -5,7 +5,6 @@ MF_SetStage::
 	setvar VAR_TEMP_A, 20
 	goto_if_set FLAG_MET_ARCHIE_METEOR_FALLS, ryu_end
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, MF_SS_Devon
-	goto_if_set FLAG_RYU_DEVON_M1C, ryu_end
 	compare VAR_RYU_AQUA, 60 @Player should be doing meteor falls now
 	goto_if_eq MF_SetAquaStage
 	release
@@ -44,10 +43,10 @@ MF_Event2start::
 	goto MF_MainEvent
 	
 MF_MainEvent::
-	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, MF_DevonEventNorth
+	compare VAR_RYU_DEVON, 19
+	goto_if_eq MF_DevonEventNorth
 	release
 	end
-
 	
 MH_cameraPanDown:
 	walk_diag_southwest
@@ -204,8 +203,7 @@ MF_PlayerDevonContdNorth::
 	waitmovement 7
 	removeobject 8
 	removeobject 7
-	setflag FLAG_RYU_DEVON_M1C
-	clearflag FLAG_RYU_DEVON_MISSION1START
+	setvar VAR_RYU_DEVON, 20 @Player completed Meteor Falls. Go see Cozmo at his house in Fallarbor.
 	setvar VAR_METEOR_FALLS_STATE, 1
 	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
 	setflag FLAG_MET_ARCHIE_METEOR_FALLS
@@ -238,8 +236,7 @@ MF_PlayerDevonContdSouth::
 	waitmovement 7
 	removeobject 8
 	removeobject 7
-	setflag FLAG_RYU_DEVON_M1C
-	clearflag FLAG_RYU_DEVON_MISSION1START
+	setvar VAR_RYU_DEVON, 20
 	setvar VAR_METEOR_FALLS_STATE, 1
 	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
 	setflag FLAG_MET_ARCHIE_METEOR_FALLS

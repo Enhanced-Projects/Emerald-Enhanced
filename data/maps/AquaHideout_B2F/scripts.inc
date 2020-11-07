@@ -21,9 +21,9 @@ AquaHideout_B2F_EventScript_MattNoticePlayer:: @ 8233DE5
 
 AC_DevonTrigger:
 	goto_if_set FLAG_RYU_SUB_ROOM_SHELLY, ryu_end
-	addobject 8
-	applymovement 8, AC_ShellyAttacksPlayer
-	waitmovement 8
+	addobject 7
+	applymovement 7, AC_ShellyAttacksPlayer
+	waitmovement 7
 	msgbox AC_ShellyAttacks MSGBOX_DEFAULT
 	closemessage
 	cleartrainerflag TRAINER_SHELLY_2
@@ -32,11 +32,11 @@ AC_DevonTrigger:
 AC_AfterFight:
 	msgbox AC_ShellyOutro MSGBOX_DEFAULT
 	closemessage
-	applymovement 8, AC_ShellyExiting
-	waitmovement 8
+	applymovement 7, AC_ShellyExiting
+	waitmovement 7
 	playse SE_TK_WARPOUT
 	waitse
-	removeobject 8
+	removeobject 7
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	setflag FLAG_RYU_SUB_ROOM_SHELLY
 	release
@@ -67,14 +67,15 @@ AC_ShellyExiting:
 	walk_right
 	walk_right
 	walk_right
+	walk_right
 	walk_up
 	step_end
 	
 AC_ShellyAttacks:
-	.string "Woman: Who the hell are you and\n"
+	.string "Who the hell are you and\n"
     .string "why are you trespassing in our\l"
     .string "hideout? Who let you in?\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} I'm here to reclaim some\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I'm here to reclaim some\n"
     .string "stolen property. Heard of a\l"
     .string "radiation detector? It's owner\p"
     .string "wants it back, and I'm not leaving\n"
@@ -82,7 +83,7 @@ AC_ShellyAttacks:
 	
 AC_Intro:
     .string "Shelly: Well, buddy, you stumbled\n"
-    .string "onto the Worst possible person.\p"
+    .string "onto the worst possible person.\p"
     .string "I'm the administrator of this here\n"
     .string "structure. You will regret your\l"
     .string "trespassing very soon!$"
@@ -169,9 +170,7 @@ AC_PlayerMove:
 	step_end
 
 AC_MattToPlayer:
-	walk_left
 	walk_down
-	walk_right
 	walk_in_place_right
 	step_end
 
@@ -319,6 +318,7 @@ AH_MovePlayerDownForScene::
 
 
 AH_BottomSubRoomTrigger::
+	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
 	setvar VAR_RYU_AQUA, 127 @Scene from aqua b2f starting
 	applymovement OBJ_EVENT_ID_PLAYER, AH_PlayerFromBottomWarp
 	waitmovement OBJ_EVENT_ID_PLAYER
