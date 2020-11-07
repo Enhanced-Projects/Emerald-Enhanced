@@ -11825,27 +11825,27 @@ static const struct TrainerMonItemCustomMoves sParty_Wattson4[] = {
 static const struct TrainerMonItemCustomMoves sParty_DoppelF[] = {//unused
     {
     .iv = 255,
-    .lvl = 80,
-    .species = SPECIES_PORYGON2,
+    .lvl = 250,
+    .species = SPECIES_BLISSEY,
     .heldItem = ITEM_NONE,
     .ability = 0,
-    .moves = {MOVE_HELPING_HAND, MOVE_FLAMETHROWER, MOVE_SUNNY_DAY, MOVE_ROAR},
+    .moves = {MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS},
     },
     {
     .iv = 255,
-    .lvl = 80,
-    .species = SPECIES_PORYGON2,
+    .lvl = 250,
+    .species = SPECIES_MAGIKARP,
     .heldItem = ITEM_WHITE_HERB,
     .ability = 0,
-    .moves = {MOVE_OVERHEAT, MOVE_ATTRACT, MOVE_LIGHT_SCREEN, MOVE_ROCK_SLIDE},
+    .moves = {MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS},
     },
     {
     .iv = 255,
-    .lvl = 80,
-    .species = SPECIES_PORYGON2,
+    .lvl = 250,
+    .species = SPECIES_LANTURN,
     .heldItem = ITEM_NONE,
     .ability = 0,
-    .moves = {MOVE_ROAR, MOVE_SOLAR_BEAM, MOVE_TAUNT, MOVE_SUNNY_DAY},
+    .moves = {MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS},
     }
 };
 
@@ -12006,27 +12006,27 @@ static const struct TrainerMonItemCustomMoves sParty_Flannery4[] = {
 static const struct TrainerMonItemCustomMoves sParty_DoppelM[] = {//unused
     {
     .iv = 255,
-    .lvl = 80,
-    .species = SPECIES_DUGTRIO,
+    .lvl = 250,
+    .species = SPECIES_BLISSEY,
     .heldItem = ITEM_NONE,
     .ability = 0,
-    .moves = {MOVE_HELPING_HAND, MOVE_FLAMETHROWER, MOVE_SUNNY_DAY, MOVE_ROAR},
+    .moves = {MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS},
     },
     {
     .iv = 255,
-    .lvl = 80,
-    .species = SPECIES_DUGTRIO,
+    .lvl = 250,
+    .species = SPECIES_MAGIKARP,
     .heldItem = ITEM_WHITE_HERB,
     .ability = 0,
-    .moves = {MOVE_OVERHEAT, MOVE_ATTRACT, MOVE_LIGHT_SCREEN, MOVE_ROCK_SLIDE},
+    .moves = {MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS},
     },
     {
     .iv = 255,
-    .lvl = 80,
-    .species = SPECIES_DUGTRIO,
+    .lvl = 250,
+    .species = SPECIES_LANTURN,
     .heldItem = ITEM_NONE,
     .ability = 0,
-    .moves = {MOVE_ROAR, MOVE_SOLAR_BEAM, MOVE_TAUNT, MOVE_SUNNY_DAY},
+    .moves = {MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS, MOVE_SEISMIC_TOSS},
     }
 };
 

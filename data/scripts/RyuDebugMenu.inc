@@ -182,7 +182,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	createfollower OBJ_EVENT_GFX_SLAKOTH, RyuFollowerSelectNPCScript, DIR_NORTH
+	destroyfollower
 	end
 
 RDB_Text:
@@ -754,12 +754,14 @@ RyuDebug_BattleSim::
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_ne RDB_BattleSimFemale
+	cleartrainerflag TRAINER_DOPPELGANGER_M
 	trainerbattle_single TRAINER_DOPPELGANGER_M, BS_Intro, BS_Defeat
 	waitstate
 	release
 	end
 
 RDB_BattleSimFemale::
+	cleartrainerflag TRAINER_DOPPELGANGER_F
 	trainerbattle_single TRAINER_DOPPELGANGER_F, BS_Intro, BS_Defeat
 	waitstate
 	release
