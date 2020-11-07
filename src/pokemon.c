@@ -45,6 +45,7 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
+#include "constants/item_config.h"
 
 struct SpeciesItem
 {
