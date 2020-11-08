@@ -673,8 +673,8 @@ static const u8 sWoodMailDesc[] = _(
 
 static const u8 sWaveMailDesc[] = _(
     "An imprint used to\n"
-    "minimize the HP\n"
-    "EV's of a Pokémon.");
+    "minimize the EV\n"
+    "value of a stat.");
 
 static const u8 sBeadMailDesc[] = _(
     "An imprint used to\n"

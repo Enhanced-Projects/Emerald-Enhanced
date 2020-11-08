@@ -359,51 +359,22 @@ void RyuSetFriendship(void)
     CalculateMonStats(&gPlayerParty[slot]);
 }
 
-void RyuSetEVHP(void)//I would like to combine all of these into a single function, but I don't think it would save much space or time.
-{                    //there may be a better way to do this.
-    u8 value = VarGet(VAR_TEMP_1);
-    u8 slot = VarGet(VAR_TEMP_2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV, &value);
-    CalculateMonStats(&gPlayerParty[slot]);
-}
+static const u16 RyuValToEv[] = {
+    MON_DATA_HP_EV,
+    MON_DATA_ATK_EV,
+    MON_DATA_DEF_EV,
+    MON_DATA_SPATK_EV,
+    MON_DATA_SPDEF_EV,
+    MON_DATA_SPEED_EV
+};
 
-void RyuSetEVATK(void)
+void RyuSetSlotStatEV(void)//This is super lewd, you don't even know
 {
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &value);
-    CalculateMonStats(&gPlayerParty[slot]);
-}
+    u8 stat = VarGet(VAR_TEMP_3);
 
-void RyuSetEVDEF(void)
-{
-    u8 value = VarGet(VAR_TEMP_1);
-    u8 slot = VarGet(VAR_TEMP_2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_DEF_EV, &value);
-    CalculateMonStats(&gPlayerParty[slot]);
-}
-
-void RyuSetEVSPATK(void)
-{
-    u8 value = VarGet(VAR_TEMP_1);
-    u8 slot = VarGet(VAR_TEMP_2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &value);
-    CalculateMonStats(&gPlayerParty[slot]);
-}
-
-void RyuSetEVSPDEF(void)
-{
-    u8 value = VarGet(VAR_TEMP_1);
-    u8 slot = VarGet(VAR_TEMP_2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_EV, &value);
-    CalculateMonStats(&gPlayerParty[slot]);
-}
-
-void RyuSetEVSPE(void)
-{
-    u8 value = VarGet(VAR_TEMP_1);
-    u8 slot = VarGet(VAR_TEMP_2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_EV, &value);
+    SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);
     CalculateMonStats(&gPlayerParty[slot]);
 }
 

@@ -382,18 +382,31 @@ RyuDebug_quickstart::
 	setmonmove 1, 3, MOVE_PARABOLIC_CHARGE
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 0
-	special RyuSetEVATK
-	special RyuSetEVHP
-	special RyuSetEVSPDEF
-	special RyuSetEVDEF
-	special RyuSetEVSPE
+	setvar VAR_TEMP_3, 0
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 1
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 2
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 3
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 4
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 5
+	special RyuSetSlotStatEV
 	setvar VAR_TEMP_2, 1
-	special RyuSetEVSPATK
-	special RyuSetEVHP
-	special RyuSetEVSPDEF
-	special RyuSetEVDEF
-	special RyuSetIVs
-	special RyuSetEVSPE
+	setvar VAR_TEMP_3, 0
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 1
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 2
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 3
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 4
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 5
+	special RyuSetSlotStatEV
 	additem ITEM_WAYSTONE, 1
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKENAV_GET
@@ -490,6 +503,12 @@ retutor:
 	.string "Relearn another move?$"
 
 RyuSetEvDebugMenu::
+	msgbox RyuEv_ChooseSlot
+	call RyuBufferPartyMonNames
+	multichoicedefault 1, 1, MULTI_SELECT_PARTY_SLOT, 0, 0
+	compare VAR_RESULT, 6
+	goto_if_eq RyuPokeEditMenu
+	copyvar VAR_TEMP_2, VAR_RESULT
 	msgbox RyuEvIntro MSGBOX_SIGN
 	multichoicegrid 1, 0, 116, 4, 0
 	switch VAR_RESULT
@@ -512,6 +531,9 @@ RyuSetEvDebugMenu::
 	case 127, RyuEvMenuExit
 	release
 	end
+
+RyuEv_ChooseSlot:
+	.string "Choose a party slot.$"
 
 RyuEvMenuQuery:
 	.string "Modify more EV's?$"
@@ -540,7 +562,8 @@ RyuEvMenuExit::
 RyuEvMenuHP::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
-	special RyuSetEVHP
+	setvar VAR_TEMP_3, 0 
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -548,7 +571,8 @@ RyuEvMenuHP::
 RyuEvMenuHP126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
-	special RyuSetEVHP
+	setvar VAR_TEMP_3, 0
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -556,7 +580,8 @@ RyuEvMenuHP126::
 RyuEvMenuAtk::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
-	special RyuSetEVATK
+	setvar VAR_TEMP_3, 1
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -564,7 +589,8 @@ RyuEvMenuAtk::
 RyuEvMenuAtk126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
-	special RyuSetEVATK
+	setvar VAR_TEMP_3, 1
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -572,7 +598,8 @@ RyuEvMenuAtk126::
 RyuEvMenuDef::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
-	special RyuSetEVDEF
+	setvar VAR_TEMP_3, 2
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -580,7 +607,8 @@ RyuEvMenuDef::
 RyuEvMenuDef126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
-	special RyuSetEVDEF
+	setvar VAR_TEMP_3, 2
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -588,7 +616,8 @@ RyuEvMenuDef126::
 RyuEvMenuSpAtk::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
-	special RyuSetEVSPATK
+	setvar VAR_TEMP_3, 3
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -596,7 +625,8 @@ RyuEvMenuSpAtk::
 RyuEvMenuSpAtk126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
-	special RyuSetEVSPATK
+	setvar VAR_TEMP_3, 3
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -604,7 +634,8 @@ RyuEvMenuSpAtk126::
 RyuEvMenuSpDef::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
-	special RyuSetEVSPDEF
+	setvar VAR_TEMP_3, 4
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -612,7 +643,8 @@ RyuEvMenuSpDef::
 RyuEvMenuSpDef126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
-	special RyuSetEVSPDEF
+	setvar VAR_TEMP_3, 4
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -620,7 +652,8 @@ RyuEvMenuSpDef126::
 RyuEvMenuSpe::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
-	special RyuSetEVSPE
+	setvar VAR_TEMP_3, 5
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -628,7 +661,8 @@ RyuEvMenuSpe::
 RyuEvMenuSpe126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
-	special RyuSetEVSPE
+	setvar VAR_TEMP_3, 5
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end

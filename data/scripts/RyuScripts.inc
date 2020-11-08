@@ -361,96 +361,23 @@ RyuGivePokenav::
 
 RyuUserModeEVMenu::
 	msgbox RyuUserEVInfo MSGBOX_DEFAULT
-	
-	multichoicegrid 0, 4, 131, 2, 0
-	switch VAR_RESULT
-	case 0, RyuUserEVHp
-	case 1, RyuUserEVAtk
-	case 2, RyuUserEVDef
-	case 3, RyuUserEVSpatk
-	case 4, RyuUserEVSpdef
-	case 5, RyuUserEVSpeed
-	case 6, RyuUserEvExit
-	case 7, RyuUserEvExit
-	case 127, RyuUserEvExit
-	release
-	end
-	
-RyuUserEVHp::
+	multichoicegrid 0, 4, MULTI_GENETIC_IMPRINTER_MENU, 2, 0
+	compare VAR_RESULT, 6
+	goto_if_ge ryu_end
+	copyvar VAR_TEMP_3, VAR_RESULT
+	call RyuBufferPartyMonNames
+	multichoicedefault 1, 1, MULTI_SELECT_PARTY_SLOT, 0, 0
+	comapre VAR_RESULT, 6
+	goto_if_eq ryu_end
 	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 0
+	copyvar VAR_TEMP_2, VAR_RESULT
 	checkitem ITEM_WAVE_MAIL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne RyuUserEvNoImprint
-	special RyuSetEVHP
+	special RyuSetSlotStatEV
 	addmonhappiness VAR_TEMP_2, 25
 	removeitem ITEM_WAVE_MAIL, 1
-	msgbox RyuEvSuccessMsgHP MSGBOX_DEFAULT
-	release
-	end
-
-RyuUserEVAtk::
-	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 0
-	checkitem ITEM_BEAD_MAIL, 1
-	compare VAR_RESULT, 1
-	goto_if_lt RyuUserEvNoImprint
-	special RyuSetEVATK
-	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_BEAD_MAIL, 1
-	msgbox RyuEvSuccessMsgAtk MSGBOX_DEFAULT
-	release
-	end
-	
-RyuUserEVDef::
-	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 0
-	checkitem ITEM_SHADOW_MAIL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne RyuUserEvNoImprint
-	special RyuSetEVDEF
-	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_SHADOW_MAIL, 1
-	msgbox RyuEvSuccessMsgDef MSGBOX_DEFAULT
-	release
-	end
-	
-RyuUserEVSpatk::
-	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 0
-	checkitem ITEM_TROPIC_MAIL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne RyuUserEvNoImprint
-	special RyuSetEVSPATK
-	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_TROPIC_MAIL, 1
-	msgbox RyuEvSuccessMsgSpatk MSGBOX_DEFAULT
-	release
-	end
-	
-RyuUserEVSpdef::
-	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 0
-	checkitem ITEM_DREAM_MAIL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne RyuUserEvNoImprint
-	special RyuSetEVSPDEF
-	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_DREAM_MAIL, 1
-	msgbox RyuEvSuccessMsgSpdef MSGBOX_DEFAULT
-	release
-	end
-	
-RyuUserEVSpeed::
-	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 0
-	checkitem ITEM_FAB_MAIL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne RyuUserEvNoImprint
-	special RyuSetEVSPE
-	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_FAB_MAIL, 1
-	msgbox RyuEvSuccessMsgSpeed MSGBOX_DEFAULT
+	msgbox RyuEvSuccessMsg MSGBOX_DEFAULT
 	release
 	end
 	
@@ -467,28 +394,10 @@ RyuUserEvNoImprint::
 	
 RyuUserEVInfo:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Imprinter\p"
-	.string "{SHADOW LIGHT_GREY}Select a stat to reduce to\n"
-	.string "0 for the first Pokémon\l"
-	.string "in your party.\pThis operation cannot be\n"
-	.string "undone.$"
+	.string "{SHADOW LIGHT_GREY}Select an EV stat to reduce to 0.$"
 
-RyuEvSuccessMsgHP:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}HP EV's were reduced to 0.\nOne HP Imprint consumed.$"
-	
-RyuEvSuccessMsgAtk:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Atk EV's were reduced to 0.\nOne Atk Imprint consumed.$"
-	
-RyuEvSuccessMsgDef:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Def EV's were reduced to 0.\nOne Def Imprint consumed.$"
-	
-RyuEvSuccessMsgSpatk:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}SpAtk EV's were reduced to 0.\nOne SpAtk Imprint consumed.$"
-	
-RyuEvSuccessMsgSpdef:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}SpDef EV's were reduced to 0.\nOne SpDef Imprint consumed.$"
-	
-RyuEvSuccessMsgSpeed:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Speed EV's were reduced to 0.\nOne Speed Imprint consumed.$"
+RyuEvSuccessMsg:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}EV's for the selected slot\nhave been reduced to 0.$"
 
 EvNoImprints:
 	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough imprints.\pObtain more at Lilycove\nTraining Center.$"

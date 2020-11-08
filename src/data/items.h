@@ -1908,9 +1908,9 @@ const struct Item gItems[] =
 
     [ITEM_WAVE_MAIL] =
     {
-        .name = _("HP Imprint"),
+        .name = _("Gene Imprint"),
         .itemId = ITEM_WAVE_MAIL,
-        .price = 50,
+        .price = 1000,
         .description = sWaveMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
@@ -1918,7 +1918,7 @@ const struct Item gItems[] =
         .secondaryId = 5,
     },
 
-    [ITEM_BEAD_MAIL] =
+    [ITEM_BEAD_MAIL] =  //EE-unused
     {
         .name = _("Atk Imprint"),
         .itemId = ITEM_BEAD_MAIL,
@@ -1930,7 +1930,7 @@ const struct Item gItems[] =
         .secondaryId = 6,
     },
 
-    [ITEM_SHADOW_MAIL] =
+    [ITEM_SHADOW_MAIL] = //EE-unused
     {
         .name = _("Def Imprint"),
         .itemId = ITEM_SHADOW_MAIL,
@@ -1942,7 +1942,7 @@ const struct Item gItems[] =
         .secondaryId = 7,
     },
 
-    [ITEM_TROPIC_MAIL] =
+    [ITEM_TROPIC_MAIL] = //EE-unused
     {
         .name = _("SpAtk Imprint"),
         .itemId = ITEM_TROPIC_MAIL,
@@ -1954,7 +1954,7 @@ const struct Item gItems[] =
         .secondaryId = 8,
     },
 
-    [ITEM_DREAM_MAIL] =
+    [ITEM_DREAM_MAIL] = //EE-unused
     {
         .name = _("SpDef Imprint"),
         .itemId = ITEM_DREAM_MAIL,
@@ -1966,7 +1966,7 @@ const struct Item gItems[] =
         .secondaryId = 9,
     },
 
-    [ITEM_FAB_MAIL] =
+    [ITEM_FAB_MAIL] = //EE-unused
     {
         .name = _("Speed Imprint"),
         .itemId = ITEM_FAB_MAIL,
@@ -1978,7 +1978,7 @@ const struct Item gItems[] =
         .secondaryId = 10,
     },
 
-    [ITEM_RETRO_MAIL] =
+    [ITEM_RETRO_MAIL] = //EE-unused
     {
         .name = _("Tutor Voucher"),
         .itemId = ITEM_RETRO_MAIL,
