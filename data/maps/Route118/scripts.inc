@@ -284,3 +284,54 @@ Route118_Text_RouteSign119: @ 81F440E
 	.string "Route 118\n"
 	.string "{UP_ARROW} ROUTE 119$"
 
+@======================================Ferryman/woman
+
+R118_FerryWoman::
+	lock
+	faceplayer
+	msgbox R118_Ferrywomanintro
+	closemessage
+	setvar VAR_TEMP_8, 5000
+	checkmoney VAR_TEMP_8
+	compare VAR_RESULT, TRUE
+	goto_if_ne ryu_end
+	msgbox R118_FerryQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_ne R118_FerryDeclined
+	takemoney VAR_TEMP_8
+	warpteleport MAP_ROUTE118, 255, 15, 9
+	waitstate
+
+R118_FerryMan::
+	lock
+	faceplayer
+	msgbox R118_Ferrymanintro
+	closemessage
+	setvar VAR_TEMP_8, 5000
+	checkmoney VAR_TEMP_8
+	compare VAR_RESULT, TRUE
+	goto_if_ne ryu_end
+	msgbox R118_FerryQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_ne R118_FerryDeclined
+	takemoney VAR_TEMP_8
+	warpteleport MAP_ROUTE118, 255, 32, 10
+	waitstate
+
+R118_FerryDeclined::
+	msgbox R118_DeclinedMsg
+	release
+	end
+
+R118_Ferrywomanintro:
+	.string "Hey there, dearie, I'm the\nFerry Woman.\pI'll get you across this here\nriver. For a fee of course.$"
+
+R118_Ferrymanintro:
+	.string "Hi there, kiddo. I'm the\nFerry Man.\pI'll help you and any friends\nyou have get across the river.\pFor a small fee, of course.$"
+
+R118_FerryQuery:
+	.string "Accept ferry service for ¥5000?$"
+
+R118_DeclinedMsg:
+	.string "That's too bad.\nLet me know if you change\lyour mind!$"
+

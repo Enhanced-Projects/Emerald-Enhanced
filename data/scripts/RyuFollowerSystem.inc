@@ -360,6 +360,7 @@ RF_NurseQuestStage1::
 	specialvar VAR_RESULT, RyuGetCurrentMapsec
 	compare VAR_RESULT, 0x05 @player is already in verdanturf
 	goto_if_eq ryu_end
+	setflag FLAG_RYU_WAYSTONE_DISABLED
 	call RF_SetupNurseSpawnEvent
 	msgbox RF_NurseRequestEscort1, MSGBOX_YESNO
 	compare VAR_RESULT, NO
@@ -376,6 +377,7 @@ RF_NurseQuestStage2::
 	specialvar VAR_RESULT, RyuGetCurrentMapsec
 	compare VAR_RESULT, 0x04 @player is already in fallarbor
 	goto_if_eq ryu_end
+	setflag FLAG_RYU_WAYSTONE_DISABLED
 	call RF_SetupNurseSpawnEvent
 	msgbox RF_NurseRequestEscort2, MSGBOX_YESNO
 	compare VAR_RESULT, NO
@@ -392,6 +394,7 @@ RF_NurseQuestStage3::
 	specialvar VAR_RESULT, RyuGetCurrentMapsec
 	compare VAR_RESULT, 0x01 @player is already in oldale
 	goto_if_eq ryu_end
+	setflag FLAG_RYU_WAYSTONE_DISABLED
 	call RF_SetupNurseSpawnEvent
 	msgbox RF_NurseRequestEscort3, MSGBOX_YESNO
 	compare VAR_RESULT, NO
@@ -423,6 +426,7 @@ VT_FinishNurseQuest1::
 	lockall
 	msgbox VT_NurseStage1Done
 	giveitem ITEM_FULL_RESTORE, 1
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_DS_JOY_ACQ
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_FOLLOWER
@@ -440,6 +444,7 @@ FT_FinishNurseQuest2::
 	lockall
 	msgbox FT_NurseStage2Done
 	giveitem ITEM_MAX_ELIXIR, 1
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_DS_JOY_FRIENDS
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_FOLLOWER
@@ -460,6 +465,7 @@ OT_FinishNurseQuest3::
 	lockall
 	msgbox RC_NurseStage3Done
 	giveitem ITEM_PP_MAX, 1
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_DS_JOY_CLOSEFRIENDS
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_FOLLOWER
@@ -492,6 +498,7 @@ RF_FinishNurseQuest4:: @Will take player to lilycove city as that is Hoenn's cap
 
 RF_PlayerDeclinedNurseQuest1::
 	setvar VAR_RYU_DS_NURSE_STAGE, 10 @@ends the nurse quest. No partner.
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	msgbox RF_NurseQuestCancelledText
 	closemessage
 	clearfullscreenimage

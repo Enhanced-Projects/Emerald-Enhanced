@@ -490,3 +490,57 @@ OT_MoveIntoPlace:
 	walk_fast_down
 	walk_fast_down
 	step_end
+
+@======================================Ferryman/woman
+
+R103_FerryWoman::
+	lock
+	faceplayer
+	msgbox R103_Ferrywomanintro
+	closemessage
+	setvar VAR_TEMP_8, 5000
+	checkmoney VAR_TEMP_8
+	compare VAR_RESULT, TRUE
+	goto_if_ne ryu_end
+	msgbox R103_FerryQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_ne R103_FerryDeclined
+	takemoney VAR_TEMP_8
+	warpteleport MAP_ROUTE103, 255, 50, 10
+	waitstate
+
+R103_FerryMan::
+	lock
+	faceplayer
+	msgbox R103_Ferrymanintro
+	closemessage
+	setvar VAR_TEMP_8, 5000
+	checkmoney VAR_TEMP_8
+	compare VAR_RESULT, TRUE
+	goto_if_ne ryu_end
+	msgbox R103_FerryQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_ne R103_FerryDeclined
+	takemoney VAR_TEMP_8
+	warpteleport MAP_ROUTE103, 255, 20, 9
+	waitstate
+
+R103_FerryDeclined::
+	msgbox R103_DeclinedMsg
+	release
+	end
+
+R103_Ferrywomanintro:
+	.string "Hey there, dearie, I'm the\nFerry Woman.\pI'll get you across this here\nriver. For a fee of course.$"
+
+R103_Ferrymanintro:
+	.string "Hi there, kiddo. I'm the\nFerry Man.\pI'll help you and any friends\nyou have get across the river.\pFor a small fee, of course.$"
+
+R103_FerryQuery:
+	.string "Accept ferry service for ¥5000?$"
+
+R103_DeclinedMsg:
+	.string "That's too bad.\nLet me know if you change\lyour mind!$"
+
+
+

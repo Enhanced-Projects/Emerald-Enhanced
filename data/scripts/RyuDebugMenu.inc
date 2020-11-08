@@ -530,7 +530,7 @@ RyuSetEvDebugMenu::
 	case 13, RyuEvMenuExit
 	case 14, RyuEvMenuExit
 	case 15, RyuEvMenuExit
-	case 127, RyuEvMenuExit
+	goto RyuEvMenuExit
 	release
 	end
 
