@@ -182,8 +182,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	buffernumberstring 0, VAR_RYU_DS_NURSE_STAGE
-	msgbox RDB_TempVarsViewMsg
+	special FillTheDex
 	release
 	end
 

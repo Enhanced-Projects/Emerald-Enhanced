@@ -32,6 +32,7 @@
 #include "decoration.h"
 #include "secret_base.h"
 #include "tv.h"
+#include "pokeball.h"
 #include "data.h"
 #include "constants/battle_frontier.h"
 #include "constants/contest.h"
@@ -43,7 +44,6 @@
 #include "constants/region_map_sections.h"
 #include "constants/script_menu.h"
 #include "constants/tv.h"
-#include "pokeball.h"
 
 // Static type declarations
 
