@@ -571,7 +571,7 @@ RF_NurseEscortQuestIntro4:
 RF_NurseStage4Done:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, We made it to the primary\n"
 	.string "Pokecenter in Hoenn.\p"
-	,string "My favorite living quarters are\n"
+	.string "My favorite living quarters are\n"
 	.string "here.\p"
 	.string "Follow me upstairs, please.$"
 

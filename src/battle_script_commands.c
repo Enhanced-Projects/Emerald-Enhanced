@@ -1955,12 +1955,7 @@ static void Cmd_critmessage(void)
     {
         if (gIsCriticalHit == TRUE && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
         {
-            if (FlagGet(FLAG_RYU_BATTLE_SIMULATION) == 1)
-            {
-                PrepareStringBattle(STRINGID_SIMULATIONCRITDAMAGE, gBattlerAttacker);
-                gBattleCommunication[MSG_DISPLAY] = 1;
-            }
-            else if (gBattleMoveDamage > gHpDealt)
+            if (gBattleMoveDamage > gHpDealt)
             {
                 PrepareStringBattle(STRINGID_ITDEALTOVERKILLDAMAGECRIT, gBattlerAttacker);
                 gBattleCommunication[MSG_DISPLAY] = 1;

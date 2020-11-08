@@ -787,7 +787,6 @@ RyuSetIvDebugMenu::
 	goto RyuPokeEditMenu
 
 RyuDebug_BattleSim::
-	setflag FLAG_RYU_BATTLE_SIMULATION
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_ne RDB_BattleSimFemale
