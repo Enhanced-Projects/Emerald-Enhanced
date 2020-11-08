@@ -422,7 +422,7 @@ OT_CheckPlayerMagmaEvent::
 	goto ryu_end
 	
 OT_CheckIfPlayerCanEnter::
-	goto_if_unset FLAG_RYU_BANNED_FROM_OLDALE, ryu_end
+	goto_if_unset FLAG_RYU_BANNED_FROM_OLDALE, OT_FinishNurseQuest3
 	lock
 	msgbox OT_YouCantGoInHere
 	closemessage

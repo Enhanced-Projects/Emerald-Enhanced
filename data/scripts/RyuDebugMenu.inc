@@ -182,7 +182,9 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	createfollower OBJ_EVENT_GFX_SLAKOTH, RyuFollowerSelectNPCScript, DIR_NORTH
+	buffernumberstring 0, VAR_RYU_DS_NURSE_STAGE
+	msgbox RDB_TempVarsViewMsg
+	release
 	end
 
 RDB_Text:
@@ -370,16 +372,16 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
-	givemon SPECIES_MEGA_ABSOL, BASE_MAX_LEVEL, ITEM_SCOPE_LENS
-	givemon SPECIES_MEGA_GARDEVOIR, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
-	setmonmove 0, 0, MOVE_PLAY_ROUGH
+	givemon SPECIES_MEGA_RAYQUAZA, BASE_MAX_LEVEL, ITEM_SCOPE_LENS
+	givemon SPECIES_MAGEARNA, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
+	setmonmove 0, 0, MOVE_FLY
 	setmonmove 0, 1, MOVE_CRUNCH
 	setmonmove 0, 2, MOVE_SACRED_SWORD
-	setmonmove 0, 3, MOVE_PSYCHIC_FANGS
-	setmonmove 1, 0, MOVE_DRAINING_KISS
-	setmonmove 1, 1, MOVE_PSYSTRIKE
-	setmonmove 1, 2, MOVE_FIERY_DANCE
-	setmonmove 1, 3, MOVE_PARABOLIC_CHARGE
+	setmonmove 0, 3, MOVE_DRAGON_CLAW
+	setmonmove 1, 0, MOVE_MOONBLAST
+	setmonmove 1, 1, MOVE_THUNDERBOLT
+	setmonmove 1, 2, MOVE_SLUDGE_BOMB
+	setmonmove 1, 3, MOVE_MIRROR_SHOT
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_3, 0
@@ -407,6 +409,7 @@ RyuDebug_quickstart::
 	special RyuSetSlotStatEV
 	setvar VAR_TEMP_3, 5
 	special RyuSetSlotStatEV
+	special RyuSetIVs
 	additem ITEM_WAYSTONE, 1
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKENAV_GET

@@ -6,10 +6,11 @@ Common_EventScript_PkmnCenterNurse:: @ 827195A
     call_if_eq PkmnCenterNurse_MegaAudinite
     call Ryu_CheckHealPermissions
     switch VAR_RYU_DS_NURSE_STAGE
-    case 3, PCN_Stage1HealMsg
-    case 5, PCN_Stage2HealMsg
-    case 7, PCN_Stage3HealMsg
-    case 10, PCN_Stage4HealMsg
+    case 1, PCN_Stage1HealMsg
+    case 3, PCN_Stage2HealMsg
+    case 5, PCN_Stage3HealMsg
+    case 7, PCN_Stage4HealMsg
+    case 10, PCN_Stage5HealMsg
     goto PCN_Stage1HealMsg
 
 PCN_Stage1HealMsg::
@@ -27,6 +28,10 @@ PCN_Stage3HealMsg::
 PCN_Stage4HealMsg::
     msgbox PCN_S4HealText
 	goto PCN_HealMons
+
+PCN_Stage5HealMsg::
+    msgbox PCN_S5HealText
+	goto PCN_HealMons
 	
 PCN_S2HealText:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh! Hi!\nLet me heal you up real quick!$"
@@ -36,6 +41,9 @@ PCN_S3HealText:
 
 PCN_S4HealText:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! Welcome back.\nLet me make you feel batter...$"
+
+PCN_S5HealText:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I missed you!\nI'll make the kids all better...$"
 
 PCN_HealMons::
     applymovement VAR_0x800B, Common_Movement_WalkInPlaceFastestLeft
@@ -49,7 +57,7 @@ PCN_HealMons::
 	case 3, PCN_HealOutroText2
 	case 5, PCN_HealOutroText3
 	case 7, PCN_HealOutroText4
-	case 10,PCN_NurseFollower
+	case 10, PCN_HealOutroText5
 	goto PCN_HealOutroText1
 	
 PCN_HealOutroText1:
@@ -68,8 +76,12 @@ PCN_HealOutroText3:
 
 PCN_HealOutroText4:
 	msgbox S4OutroText
-    goto_if_set FLAG_RYU_DS_JOY_PARTNERS, PCN_NurseFollower
 	goto ryu_end
+
+PCN_HealOutroText5:
+    msgbox S5OutroText
+    goto ryu_end
+
 	
 S2OutroText:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Nice seeing you again!$"
@@ -79,6 +91,9 @@ S3OutroText:
 	
 S4OutroText:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}It's always a pleasure to see\nyou.$"
+
+S5OutroText:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, when will you come stay\nwith me again?$"
 
 PCN_RechargeWirelessPC::
     msgbox PCN_RechargedWirelessPc
