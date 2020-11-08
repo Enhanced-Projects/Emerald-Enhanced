@@ -333,18 +333,20 @@ ryu_end::
 
 @+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Nurse quest
 
-RyuFollower_CheckNurseQuestStage::
+RF_CheckPlayerQualifiesForNurseQuest::@ This is the script that activates when player is about to enter a pokemon center that has a gym on it.
+	special checkbadgecount
+	compare VAR_RESULT, 2
+	goto_if_lt ryu_end
 	switch VAR_RYU_DS_NURSE_STAGE
-	case 0, ryu_end @@player hasn't met requirements for quest
+	case 10, ryu_end @@Player finished or cancelled quest. Don't even bother checking other stages.
+	case 0, RF_NurseQuestStage1
 	case 1, RF_NurseQuestStage1
-	case 2, ryu_end
-	@case 3, RF_NurseQuestStage2
-	@case 5, RF_NurseQuestStage3
-	@case 7, RF_NurseQuestStage4
-	case 10, ryu_end @@Player already partners with nurse, or declined to help her. Check is no longer necessary.
-	goto ryu_end @@prevent UB
+	case 3, RF_NurseQuestStage2
+	case 5, RF_NurseQuestStage3
+	case 7, RF_NurseQuestStage4
+	goto ryu_end
 
-RF_SetupNurseSpawnEvent::
+RF_SetupNurseSpawnEvent:: @Generates a nurse NPC to interact with.
 	lockall
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_end @@can't do quest if follower is already present.
 	setflag FLAG_RYU_HIDE_JOY
@@ -361,6 +363,9 @@ RF_SetupNurseSpawnEvent::
 	return
 
 RF_NurseQuestStage1::
+	specialvar VAR_RESULT, RyuGetCurrentMapsec
+	compare VAR_RESULT, 0x05 @player is already in verdanturf
+	goto_if_eq ryu_end
 	call RF_SetupNurseSpawnEvent
 	msgbox RF_NurseRequestEscort1, MSGBOX_YESNO
 	compare VAR_RESULT, NO
@@ -373,27 +378,121 @@ RF_NurseQuestStage1::
 	release
 	end
 
-RF_CheckPlayerQualifiesForNurseQuest::@@this is sort of confusing, but it has to check for specific circumstances in order to work globally as is the intent.
-	special checkbadgecount
-	compare VAR_RESULT, 2
-	goto_if_lt ryu_end
-	compare VAR_RYU_DS_NURSE_STAGE, 10
+RF_NurseQuestStage2::
+	specialvar VAR_RESULT, RyuGetCurrentMapsec
+	compare VAR_RESULT, 0x04 @player is already in fallarbor
 	goto_if_eq ryu_end
-	compare VAR_RYU_DS_NURSE_STAGE, 0
-	call_if_eq RF_StartNurseQuest
-	compare VAR_RYU_DS_NURSE_STAGE, 1
-	goto_if_eq RF_NurseQuestStage1
-	goto ryu_end
+	call RF_SetupNurseSpawnEvent
+	msgbox RF_NurseRequestEscort2, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq RF_PlayerDeclinedNurseQuest1
+	msgbox RF_NurseEscortQuestIntro2
+	closemessage
+	delay 10
+	clearfullscreenimage
+	setvar VAR_RYU_DS_NURSE_STAGE, 4
+	release
+	end
 
-RF_StartNurseQuest::
-	setvar VAR_RYU_DS_NURSE_STAGE, 2
-	goto RyuFollower_CheckNurseQuestStage
+RF_NurseQuestStage3::
+	specialvar VAR_RESULT, RyuGetCurrentMapsec
+	compare VAR_RESULT, 0x0A @player is already in rustburo
+	goto_if_eq ryu_end
+	call RF_SetupNurseSpawnEvent
+	msgbox RF_NurseRequestEscort3, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq RF_PlayerDeclinedNurseQuest1
+	msgbox RF_NurseEscortQuestIntro3
+	closemessage
+	delay 10
+	clearfullscreenimage
+	setvar VAR_RYU_DS_NURSE_STAGE, 6
+	release
+	end
 
-RF_NurseRequestEscort1:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey!\nPlease wait a moment!\pWould you be willing to escort\nme to Verdanturf town?$"
+RF_NurseQuestStage4::
+	call RF_SetupNurseSpawnEvent
+	msgbox RF_NurseRequestEscort4, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq RF_PlayerDeclinedNurseQuest1
+	msgbox RF_NurseEscortQuestIntro4
+	closemessage
+	delay 10
+	clearfullscreenimage
+	setvar VAR_RYU_DS_NURSE_STAGE, 8
+	warpsilent MAP_LILYCOVE_CITY_POKEMON_CENTER_2F, 255, 3, 6
+	waitstate
 
-RF_NurseEscortQuestIntro1:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh! Wonderful! You're so kind!\pI just need help getting to\nVerdanturf.\pI'm not much of a fighter.$"
+VT_FinishNurseQuest1::
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_NURSE
+	goto_if_ne ryu_end
+	lockall
+	msgbox VT_NurseStage1Done
+	giveitem ITEM_FULL_RESTORE, 1
+	setflag FLAG_RYU_DS_JOY_ACQ
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	destroyfollower
+	clearflag FLAG_RYU_HIDE_JOY
+	setvar VAR_RYU_DS_NURSE_STAGE, 3
+	release
+	end
+
+FT_FinishNurseQuest2::
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_NURSE
+	goto_if_ne ryu_end
+	lockall
+	msgbox FT_NurseStage2Done
+	giveitem ITEM_MAX_ELIXIR, 1
+	setflag FLAG_RYU_DS_JOY_FRIENDS
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	destroyfollower
+	clearflag FLAG_RYU_HIDE_JOY
+	setvar VAR_RYU_DS_NURSE_STAGE, 5
+	release
+	end
+
+
+RC_FinishNurseQuest3::
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_NURSE
+	goto_if_ne ryu_end
+	lockall
+	msgbox RC_NurseStage3Done
+	giveitem ITEM_PP_MAX, 1
+	setflag FLAG_RYU_DS_JOY_CLOSEFRIENDS
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	destroyfollower
+	clearflag FLAG_RYU_HIDE_JOY
+	setvar VAR_RYU_DS_NURSE_STAGE, 7
+	release
+	end
+
+
+RF_FinishNurseQuest4:: @Will take player to lilycove city as that is Hoenn's capital.
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_NURSE
+	goto_if_ne ryu_end
+	lockall
+	msgbox RF_NurseStage4Done
+	giveitem ITEM_HP_UP, 4
+	setflag FLAG_RYU_DS_JOY_LOVERS
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	destroyfollower
+	clearflag FLAG_RYU_HIDE_JOY
+	setvar VAR_RYU_DS_NURSE_STAGE, 10 @Player did all the nurse quest stages, no longer need to check.
+	release
+	end
+
 
 RF_PlayerDeclinedNurseQuest1::
 	setvar VAR_RYU_DS_NURSE_STAGE, 10 @@ends the nurse quest. No partner.
@@ -406,6 +505,81 @@ RF_PlayerDeclinedNurseQuest1::
 	release
 	end
 
+VT_NurseStage1Done:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Ah! here we are!\p"
+	.string "Thank you so much for escorting\n"
+	.string "me!\p"
+	.string "I can't really offer much\n"
+	.string "payment, but perhaps this would\l"
+	.string "be useful.$"
+
+RF_NurseRequestEscort1:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey!\n"
+	.string "Please wait a moment!\p"
+	.string "Would you be willing to escort\n"
+	.string "me to Verdanturf town?$"
+
+FT_NurseStage2Done:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh we made it already!\n"
+	.string "Wow, time really flew by.\p"
+	.string "Thanks so much for helping, {PLAYER}!$"
+
+RC_NurseStage3Done:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh we made it already!\n"
+	.string "Wow, time really flew by.\p"
+	.string "Thanks so much for helping, {PLAYER}!$"
+
+RF_NurseStage4Done:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, We made it to the primary\nPokecenter in Hoenn.\pMy favorite living quarters are\nhere.\pFollow me upstairs, please.$"
+
+RF_NurseEscortQuestIntro1:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh! Wonderful! You're so kind!\p"
+	.string "I just need help getting to\n"
+	.string "Verdanturf.\p"
+	.string "I'm not much of a fighter.$"
+
+RF_NurseRequestEscort2:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey!\n"
+	.string "{PLAYER}!\p"
+	.string "Can you accompany me to Fallarbor,\n"
+	.string "please?$"
+
+RF_NurseEscortQuestIntro2:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Great! It really makes me feel\n"
+	.string "safer. I appreciate it.$"
+
+RF_NurseRequestEscort3:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hi, {PLAYER}!\n"
+	.string "Fancy meeting you here.\p"
+	.string "I was just heading to Rustburo\n"
+	.string "city.\p"
+	.string "Could you please go with me?$"
+
+RF_NurseEscortQuestIntro3:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Excellent!\n"
+	.string "I always feel so much safer with\l"
+	.string	"you around.$"
+
+RF_NurseRequestEscort4:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You notice that she's a little more\n"
+	.string " flushed than usual)\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hiya, {PLAYER}!\n"
+	.string "Can I escort you...\p"
+	.string "To my room?$"
+
+RF_NurseEscortQuestIntro4:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Yay!\n"
+	.string "I mean... let's go to Lilycove.\p" 
+	.string "It's got my favorite quarters.\n"
+	.string "This time I'll take you there!$"
+
+VT_NurseStage2Done:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh we made it already!\n"
+	.string "Wow, time really flew by.\p"
+	.string "Thanks so much for helping, {PLAYER}!$"
+
 RF_NurseQuestCancelledText:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}I see... well... I'm sure another\nstrong trainer will come along...\pSorry for taking up your time.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I see... well... I'm sure another\n"
+	.string "strong trainer will come along...\p"
+	.string "Sorry for taking up your time.$"
 

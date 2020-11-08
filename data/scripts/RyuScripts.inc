@@ -367,7 +367,7 @@ RyuUserModeEVMenu::
 	copyvar VAR_TEMP_3, VAR_RESULT
 	call RyuBufferPartyMonNames
 	multichoicedefault 1, 1, MULTI_SELECT_PARTY_SLOT, 0, 0
-	comapre VAR_RESULT, 6
+	compare VAR_RESULT, 6
 	goto_if_eq ryu_end
 	setvar VAR_TEMP_1, 0
 	copyvar VAR_TEMP_2, VAR_RESULT

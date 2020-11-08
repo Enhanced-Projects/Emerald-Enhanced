@@ -1560,3 +1560,8 @@ bool8 ScrCmd_trycraftingrecipe(struct ScriptContext *ctx)
 
     return FALSE;
 }
+
+int RyuGetCurrentMapsec(void)
+{
+    return gMapHeader.regionMapSectionId;
+}

@@ -579,3 +579,4 @@ gSpecials:: @ 81DBA64
 	def_special RyuGetTimeOfDay
 	def_special BotanyCheck
 	def_special RyuGetMaxBossChance
+	def_special RyuGetCurrentMapsec
