@@ -32,15 +32,11 @@ RyuFollowerSelectNPCScript::
 	end
 
 RyuFollower_ShellyScript::
-	goto_if_set FLAG_RYU_WAYSTONE_DISABLED, RyuFollower_MagmaShelly
+	goto_if_set FLAG_RYU_WAYSTONE_DISABLED, MH_FollowerShellyScript
 	msgbox RyuFollower_ShellyLeaveMsg MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq RF_FollowerLeave
 	release
-	end
-
-RyuFollower_MagmaShelly::
-	goto MH_FollowerShellyScript
 	end
 	
 RyuFollower_LanetteScript::

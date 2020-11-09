@@ -170,7 +170,7 @@ void PasscodeGiveMonWithNature(void)
     u16 species = (VarGet(VAR_TEMP_4));
     u8 nature = (VarGet(VAR_TEMP_C));
     u8 fixedIv = 31;
-    u8 level = 250;
+    u8 level = 100;
 
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
     CalculateMonStats(&gPlayerParty[slot]);
