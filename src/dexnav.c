@@ -1224,7 +1224,7 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     u8 i;
     u8 perfectIv = 31;
     
-    if ((Random() % RyuGetMaxBossChance() <= 1))// || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+    if ((Random() % RyuGetMaxBossChance() <= 1) || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {
         RyuGenerateBossMon(species, level);
         FlagSet(FLAG_RYU_BOSS_WILD);

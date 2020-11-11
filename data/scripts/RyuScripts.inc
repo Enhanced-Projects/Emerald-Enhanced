@@ -1239,10 +1239,7 @@ RyuLegendary_GeneralLegendEncounter::
 	waitstate
 	return
 	end
-
-TestMsg:
-	.string "{STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}$"
-
+	
 RyuLegendary_SetMaxScale::
 	setvar VAR_TEMP_7, 110
 	return
@@ -1250,12 +1247,6 @@ RyuLegendary_SetMaxScale::
 RyuLegendary_SetBaseScale::
 	setvar VAR_TEMP_7, 30
 	return
-
-RyuLegendary_MonEscaped::
-	goto ryu_return
-
-RyuLegendaryFinish::
-	goto ryu_end
 
 RyuLegendary_GameClearResetLegends::
 	call_if_set FLAG_RYU_ZAPDOS_RAN, RL_ResetZapdos

@@ -182,8 +182,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	clearflag FLAG_RYU_KYOGRE
-	clearflag FLAG_RYU_KYOGRE_RAN
+	setflag FLAG_SYS_DEXNAV_GET
+	setflag FLAG_SYS_DEXNAV_SEARCH
 	release
 	end
 
