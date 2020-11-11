@@ -1153,7 +1153,7 @@ void PutPokemonTodayCaughtOnAir(void)
                     }
                     else
                     {
-                        for (i = 0; i < POKEBALL_COUNT - 11; i ++)
+                        for (i = 0; i < POKEBALL_COUNT - 1; i ++)
                         {
                             ct += gBattleResults.catchAttempts[i];
                         }
