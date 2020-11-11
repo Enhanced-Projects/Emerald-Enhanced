@@ -841,6 +841,7 @@ DC_NotReadyYet::
 	
 DC_AfterAfterStory::
 	msgbox DC_AASMsg
+	additem ITEM_TRI_PASS @for those who didn't get it before.
 	closemessage
 	release
 	end
