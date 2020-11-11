@@ -11977,6 +11977,7 @@ static u8 GetCatchingBattler(void)
 static void Cmd_handleballthrow(void)
 {
     u8 ballMultiplier = 10;
+    s8 ballAddition = 0;
 
     if (gBattleControllerExecFlags)
         return;
@@ -11994,6 +11995,19 @@ static void Cmd_handleballthrow(void)
     {
         u32 odds, i;
         u8 catchRate = gBaseStats[gBattleMons[gBattlerTarget].species].catchRate;
+
+        
+        #ifdef POKEMON_EXPANSION
+        if (IS_ULTRA_BEAST(gBattleMons[gBattlerTarget].species))
+        {
+            if (gLastUsedItem == ITEM_BEAST_BALL)
+                ballMultiplier = 50;
+            else
+                ballMultiplier = 1;
+        }
+        else
+        {
+        #endif
 
         if (gLastUsedItem > ITEM_SAFARI_BALL)
         {
@@ -12117,7 +12131,17 @@ static void Cmd_handleballthrow(void)
         else
             ballMultiplier = 10;
 
-        odds = (catchRate * ballMultiplier / 10)
+        #ifdef POKEMON_EXPANSION
+        }
+        #endif
+
+        // catchRate is unsigned, which means that it may potentially overflow if sum is applied directly.
+        if (catchRate < 21 && ballAddition == -20)
+            catchRate = 1;
+        else
+            catchRate = catchRate + ballAddition;
+
+        odds = ((catchRate) * ballMultiplier / 10)
             * (gBattleMons[gBattlerTarget].maxHP * 3 - gBattleMons[gBattlerTarget].hp * 2)
             / (3 * gBattleMons[gBattlerTarget].maxHP);
 

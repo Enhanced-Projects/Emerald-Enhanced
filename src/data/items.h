@@ -1450,9 +1450,16 @@ const struct Item gItems[] =
     {
         .name = _("Escape Rope"),
         .itemId = ITEM_ESCAPE_ROPE,
-        .price = 550,
         .description = sEscapeRopeDesc,
+        #if I_KEY_ESCAPE_ROPE >= GEN_8
+        .price = 0,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        #else
+        .price = 550,
+        .importance = 0,
         .pocket = POCKET_ITEMS,
+        #endif
         .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_EscapeRope,
         .secondaryId = 0,
@@ -5263,8 +5270,13 @@ const struct Item gItems[] =
         .itemId = ITEM_HELIX_FOSSIL,
         .price = 0,
         .description = sHelixFossilDesc,
-        .importance = 0,
-        .pocket = POCKET_ITEMS,
+        #if I_KEY_FOSSILS >= GEN_4
+            .importance = 0,
+            .pocket = POCKET_ITEMS,
+        #else
+            .importance = 1,
+            .pocket = POCKET_KEY_ITEMS,
+        #endif
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
@@ -5276,8 +5288,13 @@ const struct Item gItems[] =
         .itemId = ITEM_DOME_FOSSIL,
         .price = 0,
         .description = sDomeFossilDesc,
-        .importance = 0,
-        .pocket = POCKET_ITEMS,
+        #if I_KEY_FOSSILS >= GEN_4
+            .importance = 0,
+            .pocket = POCKET_ITEMS,
+        #else
+            .importance = 1,
+            .pocket = POCKET_KEY_ITEMS,
+        #endif
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
@@ -5289,8 +5306,13 @@ const struct Item gItems[] =
         .itemId = ITEM_ROOT_FOSSIL,
         .price = 0,
         .description = sRootFossilDesc,
-        .importance = 0,
-        .pocket = POCKET_ITEMS,
+        #if I_KEY_FOSSILS >= GEN_4
+            .importance = 0,
+            .pocket = POCKET_ITEMS,
+        #else
+            .importance = 1,
+            .pocket = POCKET_KEY_ITEMS,
+        #endif
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
@@ -5302,8 +5324,13 @@ const struct Item gItems[] =
         .itemId = ITEM_CLAW_FOSSIL,
         .price = 0,
         .description = sClawFossilDesc,
-        .importance = 0,
-        .pocket = POCKET_ITEMS,
+        #if I_KEY_FOSSILS >= GEN_4
+            .importance = 0,
+            .pocket = POCKET_ITEMS,
+        #else
+            .importance = 1,
+            .pocket = POCKET_KEY_ITEMS,
+        #endif
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
@@ -6294,7 +6321,7 @@ const struct Item gItems[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
+        .secondaryId = TYPE_FIRE,
     },
 
     [ITEM_ARTEFACT_2] =
@@ -6307,7 +6334,7 @@ const struct Item gItems[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
+        .secondaryId = TYPE_FIGHTING,
     },
 
     [ITEM_ARTEFACT_3] =
@@ -6320,7 +6347,7 @@ const struct Item gItems[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
+        .secondaryId = TYPE_POISON,
     },
 
     [ITEM_DRY_ICE] =
@@ -6334,7 +6361,7 @@ const struct Item gItems[] =
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
+        .secondaryId = TYPE_GROUND,
     },
 
 //Old Key is not used
@@ -6348,7 +6375,7 @@ const struct Item gItems[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
+        .secondaryId = TYPE_FLYING,
     },
 
     [ITEM_MIND_PLATE] =
@@ -6362,7 +6389,7 @@ const struct Item gItems[] =
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
+        .secondaryId = TYPE_PSYCHIC,
     },
 
 
@@ -6371,13 +6398,13 @@ const struct Item gItems[] =
         .name = _("Spooky Plate"),
         .itemId = ITEM_SPOOKY_PLATE,
         .price = 200,
-        .holdEffect = HOLD_EFFECT_GHOST_POWER,
+        .holdEffect = HOLD_EFFECT_PLATE,
         .holdEffectParam = 20,
         .description = sSpookyPlateDesc,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
+        .secondaryId = TYPE_GHOST,
     },
     
     [ITEM_FERTILIZER] =
@@ -6390,7 +6417,7 @@ const struct Item gItems[] =
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
+        .secondaryId = TYPE_STEEL,
     },
 
     [ITEM_EVIOLITE] =
