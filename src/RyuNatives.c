@@ -209,10 +209,13 @@ void RyuKillMon(void)
         if (GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
         {
             ZeroMonData(&gPlayerParty[i]);
-            CompactPartySlots();
             PlaySE(SE_POKE_DEAD);
         }
     }
+
+    CompactPartySlots();
+    if ((CalculatePlayerPartyCount) == 0)
+        FlagSet(FLAG_RYU_NUZLOCKEFAILED);
 }
 
 extern const u16 gFrontierBannedSpecies[27];

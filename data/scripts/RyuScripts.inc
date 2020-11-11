@@ -1316,6 +1316,15 @@ RL_ResetKyogre::
 	clearflag FLAG_RYU_KYOGRE_RAN
 	return
 
+@==================================================================================================Failed Nuzlocke/Hardcore
+
+Ryu_PlayerFailedNuzlockeHardcore::
+	msgbox Ryu_failedNZHC
+	waitstate
+
+Ryu_failedNZHC:
+	.string "You have failed Nuzlocke or\nhardcore mode.\pIf you were on New Game Plus,\nyour dex/pcbox/key item progress\lhas been saved.\pPlease reset the game and\nstart a New file.$"
+
 @==================================================================================================Randombattle
 
 Ryu_StartRandomBattle::

@@ -503,6 +503,7 @@ void CB2_ChooseStarter(void)
 
 static void CB2_StarterChoose(void)
 {
+    FlagSet(FLAG_RYU_STARTER_CHOSEN);
     RunTasks();
     AnimateSprites();
     BuildOamBuffer();
