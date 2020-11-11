@@ -6,7 +6,6 @@ SkyPillar_Outside_OnTransition: @ 82392B8
 
 SP_Guardian::
 	lockall
-	goto_if_unset FLAG_RYU_DEVON_LINE_FINISHED, SP_NoEntryDevonNotDone
 	checkitem ITEM_TRI_PASS, 1
 	compare VAR_RESULT, 1
 	goto_if_ne SP_NoEntryNoDevonCard

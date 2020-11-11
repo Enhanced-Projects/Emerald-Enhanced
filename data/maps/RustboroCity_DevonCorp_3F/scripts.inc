@@ -827,6 +827,7 @@ DC_Afterstory:
 	goto_if_set FLAG_DEFEATED_RAYQUAZA, DC_AfterAfterStory
 	goto_if_unset FLAG_SYS_GAME_CLEAR, DC_NotReadyYet
 	msgbox DC_AfterstoryMsg
+	giveitem ITEM_TRI_PASS
 	setvar VAR_RYU_DEVON, 69
 	release
 	end
