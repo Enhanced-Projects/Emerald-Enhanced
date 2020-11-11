@@ -372,7 +372,7 @@ TC_StatShopGiveImprinter::
 	msgbox BuyImprinter MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne TC_StatShopNoBuyImprinter
-	checkmoney 65000
+	checkmoney 22500
 	compare VAR_RESULT, 0
 	goto_if_eq TC_StatShopCantAffordImprinter
 	setvar VAR_TEMP_B, 22500
