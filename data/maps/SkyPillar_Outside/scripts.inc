@@ -19,10 +19,10 @@ SP_Guardian::
 	setmetatile 14, 5, 690, 0
 	setmetatile 14, 4, 682, 0
 	special DrawWholeMapView
-	applymovement 2, Common_Movement_StepLeft
-	waitmovement 2
-	applymovement 2, Common_Movement_FaceDown
-	waitmovement 2
+	applymovement 1, Common_Movement_StepLeft
+	waitmovement 1
+	applymovement 1, Common_Movement_FaceDown
+	waitmovement 1
 	release
 	end
 	
