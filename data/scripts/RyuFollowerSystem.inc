@@ -92,6 +92,9 @@ RyuFollower_NurseJoy::
 	case 2, RF_Nurse_Stage1
 	case 4, RF_Nurse_Stage2
 	case 6, RF_Nurse_Stage3
+	msgbox RF_DismissNurseQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuForceCancelFollowerForQuest
 	release
 	end
 
@@ -523,11 +526,14 @@ RF_Nurse_Stage3::
 	release
 	end
 
+RF_DismissNurseQuery::
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Would you like for me to leave?$"
+
 RF_NurseS1Text:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Let's continue to Verdanturf!$"
 
 RF_NurseS2Text:
-	.striung "{COLOR LIGHT_RED}{SHADOW RED}Let's take our time heading\nto Fallarbor.$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Let's take our time heading\nto Fallarbor.$"
 
 RF_NurseS3Text:	
 	.string "{COLOR LIGHT_RED}{SHADOW RED}I'm so happy to have you with me.\pI do need to get to Oldale\neventually though. No hurry!$"
