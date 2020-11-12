@@ -152,7 +152,7 @@ void AgbMain()
         }
 
         PlayTimeCounter_Update();
-        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 7104);
+        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 7105);
         VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
         FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
         mgba_open();
