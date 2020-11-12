@@ -461,7 +461,7 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
         return FALSE;
   
-    if ((Random() % 128 == 69) || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+    if ((Random() % 128 == 69))// || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {
         RyuGenerateBossMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
     }
