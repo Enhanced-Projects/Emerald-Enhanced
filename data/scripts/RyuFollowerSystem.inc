@@ -88,6 +88,10 @@ RyuFollower_NurseJoy::
 	msgbox RF_OkayHereIfYouNeed
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
+	switch VAR_RYU_DS_NURSE_STAGE
+	case 2, RF_Nurse_Stage1
+	case 4, RF_Nurse_Stage2
+	case 6, RF_Nurse_Stage3
 	release
 	end
 
@@ -503,6 +507,30 @@ RF_PlayerDeclinedNurseQuest1::
 	call RF_FollowerLeaveCall
 	release
 	end
+
+RF_Nurse_Stage1::
+	msgbox RF_NurseS1Text
+	release
+	end
+
+RF_Nurse_Stage2::
+	msgbox RF_NurseS2Text
+	release
+	end
+	
+RF_Nurse_Stage3::
+	msgbox RF_NurseS3Text
+	release
+	end
+
+RF_NurseS1Text:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Let's continue to Verdanturf!$"
+
+RF_NurseS2Text:
+	.striung "{COLOR LIGHT_RED}{SHADOW RED}Let's take our time heading\nto Fallarbor.$"
+
+RF_NurseS3Text:	
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I'm so happy to have you with me.\pI do need to get to Oldale\neventually though. No hurry!$"
 
 RF_NurseRequestEscort1:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey!\n"

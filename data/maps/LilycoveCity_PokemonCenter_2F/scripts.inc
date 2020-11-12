@@ -92,7 +92,9 @@ LCPC_NurseFollowerQuery::
 	compare VAR_RESULT, YES
 	goto_if_ne LCPC_NurseDispt
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RF_FollowerLeaveCall
+	removeobject 5
 	createfollower OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_EAST
+	setflag FLAG_RYU_HIDE_JOY
 	release
 	end
 	
