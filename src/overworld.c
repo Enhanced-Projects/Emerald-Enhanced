@@ -398,6 +398,8 @@ void DoWhiteOut(void)
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuWipeParty();
 
+    FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
+
     if (CalculatePlayerPartyCount() == 0 && (FlagGet(FLAG_RYU_NUZLOCKEFAILED) == 1))
     {
         if (VarGet(VAR_RYU_NGPLUS_COUNT) > 1)
