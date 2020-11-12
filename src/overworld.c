@@ -442,7 +442,7 @@ void DoPartnerWhiteOut(void)
     SetMoney(&gSaveBlock1Ptr->money, ((GetMoney(&gSaveBlock1Ptr->money) / 5) * 4));
     HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
-    if (&gSaveBlock2Ptr->playerGender == MALE)
+    if (&gSaveBlock2Ptr->playerGender == 0)
         RyuWarp();
     RyuWarp2();
 }
