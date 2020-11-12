@@ -3659,31 +3659,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
 
     GET_MOVE_TYPE(move, moveType);
 
-    if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_BOSS_WILD) == 1))
-    {
-        StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
-        StringCopy(gStringVar2, gText_PokemonStringBuffer);
-        if (gBattleMons[gBattlerAttacker].statStages[STAT_DEF] < 0xC)
-            {
-                gBattleMons[gBattlerAttacker].statStages[STAT_DEF] += 6;
-                gBattleScripting.animArg1 = 0x11;
-                gBattleScripting.animArg2 = 0;
-                BattleScriptPushCursorAndCallback(BattleScript_WildBossStatsRaise);
-                FlagClear(FLAG_RYU_BOSS_WILD);
-                effect++;
-            }
-        if (gBattleMons[gBattlerAttacker].statStages[STAT_SPDEF] < 0xC)
-            {
-                gBattleMons[gBattlerAttacker].statStages[STAT_SPDEF] += 6;
-                gBattleScripting.animArg1 = 0x11;
-                gBattleScripting.animArg2 = 0;
-                BattleScriptPushCursorAndCallback(BattleScript_WildBossStatsRaise);
-                FlagClear(FLAG_RYU_BOSS_WILD);
-                effect++;
-            }
-        PrepareStringBattle(STRINGID_BOSSWILDPRESENCE, gBattlerAttacker);
-    }
-
     if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT && (FlagGet(FLAG_RYU_MAX_SCALE) == 1))
     {
         StringCopy(gStringVar1, gText_OverlordRyuBossNameBuffer);
