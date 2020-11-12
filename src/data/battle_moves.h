@@ -7204,11 +7204,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_DARK_VOID] =
     {
-        #if B_UPDATED_MOVE_DATA >= GEN_7
-            .accuracy = 50,
-        #else
-            .accuracy = 80,
-        #endif
+        .accuracy = 80,
         .effect = EFFECT_SLEEP,
         .power = 0,
         .type = TYPE_DARK,
