@@ -2430,6 +2430,12 @@ static void PlayerHandleDrawTrainerPic(void)
         gSprites[gBattlerSpriteIds[gActiveBattler]].callback = sub_805D7AC;
     }
 
+    if (gSaveBlock2Ptr->optionsTransitionSpeed == OPTIONS_TRANSITION_INSTANT)
+    {
+        gSprites[gBattlerSpriteIds[gActiveBattler]].pos2.x = 0;
+        gSprites[gBattlerSpriteIds[gActiveBattler]].pos2.y = 0;
+        gSprites[gBattlerSpriteIds[gActiveBattler]].callback = SpriteCallbackDummy;
+    }
     gBattlerControllerFuncs[gActiveBattler] = CompleteOnBattlerSpriteCallbackDummy;
 }
 
