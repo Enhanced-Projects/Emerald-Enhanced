@@ -1,10 +1,22 @@
 MossdeepCity_SpaceCenter_1F_MapScripts:: @ 8222F41
 	map_script ON_TRANSITION, MossdeepCity_SpaceCenter_1F_OnTransition
 	map_script ON_FRAME, SPC_CheckDevonQuest
+	map_script ON_WARP, SPC_OnWarpScripts1
 	.byte 0
 
+SPC_OnWarpScripts1:
+	map_script_2 VAR_RYU_DEVON_SCIENTIST_STAGE, 105, SPC_AddSteven
+	.byte 0
+
+
+SPC_AddSteven:
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 1055
+	end
+	
+
 SPC_CheckDevonQuest::
-	map_script_2 VAR_RYU_DEVON_SCIENTIST_STAGE, 105, SPC_StevenApproach
+	map_script_2 VAR_RYU_DEVON_SCIENTIST_STAGE, 1055, SPC_StevenApproach
 	.2byte 0
 
 MossdeepCity_SpaceCenter_1F_OnTransition: @ 8222F4C

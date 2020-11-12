@@ -21,7 +21,6 @@ MF_SS_Devon::
 	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
 	clearflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
-	setvar VAR_METEOR_FALLS_STATE, 2
 	special DrawWholeMapView
 	release
 	end
@@ -204,7 +203,6 @@ MF_PlayerDevonContdNorth::
 	removeobject 8
 	removeobject 7
 	setvar VAR_RYU_DEVON, 20 @Player completed Meteor Falls. Go see Cozmo at his house in Fallarbor.
-	setvar VAR_METEOR_FALLS_STATE, 1
 	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
 	setflag FLAG_MET_ARCHIE_METEOR_FALLS
 	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
@@ -237,7 +235,6 @@ MF_PlayerDevonContdSouth::
 	removeobject 8
 	removeobject 7
 	setvar VAR_RYU_DEVON, 20
-	setvar VAR_METEOR_FALLS_STATE, 1
 	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
 	setflag FLAG_MET_ARCHIE_METEOR_FALLS
 	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
