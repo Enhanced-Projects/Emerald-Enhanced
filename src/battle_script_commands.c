@@ -2412,8 +2412,7 @@ static void Cmd_waitmessage(void)
         }
         else
         {
-            u16 toWait = T2_READ_16(gBattlescriptCurrInstr + 1);
-            if (++gPauseCounterBattle >= toWait)
+            if ((gMain.newKeys & (A_BUTTON | B_BUTTON)) || ++gPauseCounterBattle >= T2_READ_16(gBattlescriptCurrInstr + 1))
             {
                 gPauseCounterBattle = 0;
                 gBattlescriptCurrInstr += 3;
