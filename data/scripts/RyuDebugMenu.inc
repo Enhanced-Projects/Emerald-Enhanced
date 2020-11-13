@@ -182,7 +182,10 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	special FillTheDex
+	setflag FLAG_SYS_DEXNAV_GET
+	setflag FLAG_SYS_DEXNAV_SEARCH
+	setflag FLAG_OPTIONS_INSTANT_TRANSITION
+	setvar VAR_OPTIONS_HP_BAR_SPEED 9
 	release
 	end
 

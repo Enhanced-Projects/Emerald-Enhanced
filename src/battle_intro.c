@@ -10,6 +10,7 @@
 #include "task.h"
 #include "trig.h"
 #include "constants/trainers.h"
+#include "event_data.h" //so it can see vars and flags
 
 static EWRAM_DATA u16 sBgCnt = 0;
 
@@ -120,7 +121,7 @@ void HandleIntroSlide(u8 terrain)
 {
     u8 taskId;
 
-    if (gSaveBlock2Ptr->optionsTransitionSpeed == OPTIONS_TRANSITION_INSTANT)
+    if (FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION) == OPTIONS_TRANSITION_INSTANT)
         taskId = CreateTask(Task_InstantIntro, 0);
     if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) && gPartnerTrainerId != TRAINER_STEVEN_PARTNER && gPartnerTrainerId < TRAINER_CUSTOM_PARTNER)
     {

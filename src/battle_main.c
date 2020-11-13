@@ -2594,14 +2594,14 @@ u32 sub_80397C4(u32 setId, u32 tableId)
 
 void SpriteCb_WildMon(struct Sprite *sprite)
 {
-    if (gSaveBlock2Ptr->optionsTransitionSpeed == OPTIONS_TRANSITION_INSTANT)
+    if (FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION) == OPTIONS_TRANSITION_INSTANT)
     {
         sprite->pos2.x = 0;
         sub_8076918(sprite->sBattler);
         SetHealthboxSpriteVisible(gHealthboxSpriteIds[sprite->sBattler]);
         sprite->callback = SpriteCb_WildMonAnimate;
         StartSpriteAnimIfDifferent(sprite, 0);
-        //BeginNormalPaletteFade((0x10000 << sprite->sBattler), 0, 10, 10, RGB(8, 8, 8)); //not sure about this one, BE changed this maybe
+        //BeginNormalPaletteFade((0x10000 << sprite->sBattler), 0, 10, 10, RGB(8, 8, 8)); // KAGERU: Xaman had this commented out because he wasn't sure what it was for, i think it's for egg's change, can't confirm.
     }
     else
     {

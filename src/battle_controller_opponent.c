@@ -33,6 +33,7 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "trainer_hill.h"
+#include "event_data.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
 
@@ -1314,7 +1315,7 @@ static void OpponentHandleDrawTrainerPic(void)
     gSprites[gBattlerSpriteIds[gActiveBattler]].oam.affineParam = trainerPicId;
     gSprites[gBattlerSpriteIds[gActiveBattler]].callback = sub_805D7AC;
 
-    if (gSaveBlock2Ptr->optionsTransitionSpeed == OPTIONS_TRANSITION_INSTANT)
+    if (FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION) == OPTIONS_TRANSITION_INSTANT)
     {
         gSprites[gBattlerSpriteIds[gActiveBattler]].pos2.x = 0;
         gSprites[gBattlerSpriteIds[gActiveBattler]].callback = SpriteCallbackDummy;

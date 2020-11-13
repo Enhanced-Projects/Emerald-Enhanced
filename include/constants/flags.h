@@ -69,7 +69,7 @@
 #define FLAG_RYU_DEV_MODE                    0x39
 #define FLAG_RYU_AQUA_THIEF_SEEN             0x3A
 #define FLAG_RYU_PLAYER_HELPING_DEVON        0x3B
-#define FLAG_UNUSED_0x3C                     0x3C
+#define FLAG_OPTIONS_INSTANT_TRANSITION      0x3C
 #define FLAG_UNUSED_0x3D                     0x3D
 #define FLAG_UNUSED_0x3E                     0x3E
 #define FLAG_UNUSED_0x3F                     0x3F

@@ -1854,7 +1854,7 @@ void Task_HidePartyStatusSummary(u8 taskId)
     for (i = 0; i < PARTY_SIZE; i++)
         ballIconSpriteIds[i] = gTasks[taskId].tBallIconSpriteId(i);
 
-    if (isBattleStart && gSaveBlock2Ptr->optionsTransitionSpeed == OPTIONS_TRANSITION_INSTANT)
+    if (isBattleStart && (FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION) == OPTIONS_TRANSITION_INSTANT))
     {
         gBattleSpritesDataPtr->healthBoxesData[battlerId].partyStatusSummaryShown = 0;
         if (--gBattleSpritesDataPtr->animationData->field_9_x1C == 0)
@@ -2505,16 +2505,17 @@ s32 MoveBattleBar(u8 battlerId, u8 healthboxSpriteId, u8 whichBar, u8 unused)
 {
     s32 i, currentBarValue, previousVal = 0, toLoop;
     bool32 instant;
+    u16 hpBarSpeed = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
 
     if (whichBar == HEALTH_BAR)
     {
-        instant = (gSaveBlock2Ptr->optionsHpBarSpeed >= 10);
-        toLoop = sMoveBarTable[gSaveBlock2Ptr->optionsHpBarSpeed][gBattleSpritesDataPtr->battleBars[battlerId].oddFrame];
+        instant = (hpBarSpeed >= 10);
+        toLoop = sMoveBarTable[(VarGet(VAR_OPTIONS_HP_BAR_SPEED))][gBattleSpritesDataPtr->battleBars[battlerId].oddFrame];
     }
     else
     {
-        instant = (gSaveBlock2Ptr->optionsHpBarSpeed >= 10);
-        toLoop = sMoveBarTable[gSaveBlock2Ptr->optionsHpBarSpeed][gBattleSpritesDataPtr->battleBars[battlerId].oddFrame];
+        instant = (hpBarSpeed >= 10);
+        toLoop = sMoveBarTable[hpBarSpeed][gBattleSpritesDataPtr->battleBars[battlerId].oddFrame];
     }
     gBattleSpritesDataPtr->battleBars[battlerId].oddFrame ^= 1;
 

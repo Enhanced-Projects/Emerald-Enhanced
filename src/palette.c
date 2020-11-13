@@ -6,6 +6,7 @@
 #include "task.h"
 #include "dns.h"
 #include "constants/rgb.h"
+#include "event_data.h" //allows the code here to see the constants for saveblock vars and flags.
 
 enum
 {
@@ -166,7 +167,7 @@ bool8 BeginNormalPaletteFade(u32 selectedPalettes, s8 delay, u8 startY, u8 targe
     else
     {
         static const u8 deltaByTransitionSpeed[] = {2, 3, 4, 10};
-        gPaletteFade.deltaY = deltaByTransitionSpeed[gSaveBlock2Ptr->optionsTransitionSpeed];
+        //gPaletteFade.deltaY = deltaByTransitionSpeed[gSaveBlock2Ptr->optionsTransitionSpeed]; KAGERU: Uhm, excuse me, what the fuck is this? pls fix
 
         if (delay < 0)
         {

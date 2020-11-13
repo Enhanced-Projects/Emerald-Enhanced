@@ -24,6 +24,7 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "constants/rgb.h"
+#include "event_data.h" //once again, for vars and flags
 
 struct TransitionData
 {
@@ -964,7 +965,7 @@ bool8 IsBattleTransitionDone(void)
 
 static void LaunchBattleTransitionTask(u8 transitionId)
 {
-    if (gSaveBlock2Ptr->optionsTransitionSpeed != OPTIONS_TRANSITION_INSTANT)
+    if (FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION) != OPTIONS_TRANSITION_INSTANT)
     {
         u8 taskId = CreateTask(Task_BattleTransitionMain, 2);
         gTasks[taskId].tTransitionId = transitionId;

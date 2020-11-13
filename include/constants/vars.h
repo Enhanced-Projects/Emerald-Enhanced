@@ -200,13 +200,13 @@
 #define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     0x40B6 // Leftover from RS, never set
 #define VAR_SLATEPORT_FAN_CLUB_STATE         0x40B7
 #define VAR_RYU_SCRIPT_PTR                   0x40B8
-#define VAR_UNUSED_0x40B9                    0x40B9
+#define VAR_OPTIONS_EXP_BAR_SPEED            0x40B9
 #define VAR_NEW_MAUVILLE_STATE               0x40BA
 #define VAR_UNUSED_0x40BB                    0x40BB
 #define VAR_BRAVO_TRAINER_BATTLE_TOWER_ON    0x40BC
 #define VAR_JAGGED_PASS_ASH_WEATHER          0x40BD
 #define VAR_GLASS_WORKSHOP_STATE             0x40BE
-#define VAR_UNUSED_0x40BF                    0x40BF
+#define VAR_OPTIONS_HP_BAR_SPEED             0x40BF
 #define VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE  0x40C0
 #define VAR_TRICK_HOUSE_PRIZE_PICKUP         0x40C1
 #define VAR_PACIFIDLOG_TM_RECEIVED_DAY       0x40C2

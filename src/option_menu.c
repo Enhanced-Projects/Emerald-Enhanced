@@ -270,9 +270,9 @@ void CB2_InitOptionMenu(void)
         sOptions->sel[MENUITEM_SOUND] = gSaveBlock2Ptr->optionsSound;
         sOptions->sel[MENUITEM_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
         sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
-        sOptions->sel[MENUITEM_HP_BAR] = gSaveBlock2Ptr->optionsHpBarSpeed;
-        sOptions->sel[MENUITEM_EXP_BAR] = gSaveBlock2Ptr->optionsExpBarSpeed;
-        sOptions->sel[MENUITEM_TRANSITION] = gSaveBlock2Ptr->optionsTransitionSpeed;
+        sOptions->sel[MENUITEM_HP_BAR] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
+        sOptions->sel[MENUITEM_EXP_BAR] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
+        sOptions->sel[MENUITEM_TRANSITION] = FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION);
 
         for (i = 0; i < 7; i++)
             DrawChoices(i, i * Y_DIFF, 0xFF);
@@ -431,10 +431,11 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsSound = sOptions->sel[MENUITEM_SOUND];
     gSaveBlock2Ptr->optionsButtonMode = sOptions->sel[MENUITEM_BUTTONMODE];
     gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_FRAMETYPE];
-    gSaveBlock2Ptr->optionsHpBarSpeed = sOptions->sel[MENUITEM_HP_BAR];
-    gSaveBlock2Ptr->optionsExpBarSpeed = sOptions->sel[MENUITEM_EXP_BAR];
-    gSaveBlock2Ptr->optionsTransitionSpeed = sOptions->sel[MENUITEM_TRANSITION];
-
+    (VarSet(VAR_OPTIONS_HP_BAR_SPEED, sOptions->sel[MENUITEM_HP_BAR]));
+    //gSaveBlock2Ptr->optionsExpBarSpeed = sOptions->sel[MENUITEM_EXP_BAR]; Just using the HP bar speed for exp bar.
+    //gSaveBlock2Ptr->optionsTransitionSpeed = sOptions->sel[MENUITEM_TRANSITION]; not sure how to convert this to a setflag, but i tried, fix if its not correct:
+    if (sOptions->sel[MENUITEM_TRANSITION] == 1)
+        FlagSet(FLAG_OPTIONS_INSTANT_TRANSITION);
 
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
