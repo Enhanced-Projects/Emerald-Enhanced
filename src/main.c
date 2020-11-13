@@ -152,7 +152,10 @@ void AgbMain()
         }
 
         PlayTimeCounter_Update();
-        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 7105);
+        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 7106);
+        if (VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION) != 0)//This should let me know what the original save file version was, so i can tell if someone used an old save or not.
+            VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, VarGet(VAR_LAST_KNOWN_GAME_VERSION));
+        VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, 7105);
         VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
         FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
         mgba_open();

@@ -155,6 +155,9 @@ RyuDebugBetaMenuScript::
 	setflag FLAG_RYU_BETA_MENU_USED
 	msgbox BetaMenuIntro MSGBOX_DEFAULT
 	closemessage
+	goto RDB_BetaMenuStandalone
+
+RDB_BetaMenuStandalone::
 	multichoicedefault 30, 0, MULTI_BETA_MENU, 7, 0
 	switch VAR_RESULT
 	case 0, RDBM_Option1
@@ -174,6 +177,11 @@ BetaMenuIntro:
 	.string "{COLOR LIGHT_RED}{SHADOW TRANSPARENT}YOU HAVE BEEN WARNED!!$"
 
 RDBM_Option1::
+	buffernumberstring 0, VAR_SAVE_FILE_CREATED_ON_VERSION
+	msgbox RDBM_ShowSaveFileOriginalVersion
+	release
+	end
+
 RDBM_Option2::
 	msgbox RDBM_Unimplemented
 	release
@@ -185,9 +193,12 @@ RDBM_DisplayQuestVars::
 	release
 	end
 
+RDBM_ShowSaveFileOriginalVersion:
+	.string "The save file was created on\nversion number {STR_VAR_1}.$"
+
 RDBM_DisplayQuestVarsMsg:
 	.string "Magma: {STR_VAR_1}, DevonM: {STR_VAR_2}, DevonS: {STR_VAR_3}\n"
-	.string "Lana: {RYU_STR_1}, Lanette: {RYU_STR_2}$"
+	.string "Lana: {RYU_STR_1}, Lanette: {RYU_STR_2} Aqua: {RYU_STR_3}$"
 
 RDBM_ResetTemporaryBattleFlags::
 	clearflag FLAG_RYU_MAX_SCALE

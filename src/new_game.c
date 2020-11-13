@@ -98,7 +98,6 @@ static void SetDefaultOptions(void)
 {
     gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
     gSaveBlock2Ptr->optionsWindowFrameType = 12;
-    gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_STEREO;
     gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SET;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
@@ -155,6 +154,7 @@ void ResetMenuAndMonGlobals(void)
 void NewGameInitData(void)
 {
     u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
+    u16 originalSaveFileVersion = VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION);
 
     if (!FlagGet(FLAG_SYS_GAME_CLEAR))
         RtcReset();
@@ -281,6 +281,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_NPCS_MTPYRE_SUMMIT);
     FlagClear(FLAG_RYU_TEMPTP);
     FlagClear(FLAG_RYU_HAS_FOLLOWER);
+    FlagClear(FLAG_OPTIONS_INSTANT_TRANSITION);
 
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
@@ -298,6 +299,8 @@ void NewGameInitData(void)
     VarSet(VAR_RYU_JUKEBOX, 999);
     VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
     VarSet(VAR_RYU_NGPLUS_COUNT, ngPlusCount);
+    VarSet(VAR_OPTIONS_HP_BAR_SPEED, 6);
+    VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, originalSaveFileVersion);
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;

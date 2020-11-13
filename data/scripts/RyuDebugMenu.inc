@@ -11,7 +11,7 @@ RyuNowDeveloper:
 	
 RyuDebugMenuScript::
 	msgbox RyuDebug_msg MSGBOX_SIGN
-	multichoicedefault 0, 0, 115, 8, 0
+	multichoicedefault 0, 0, MULTI_DEV_MENU_MAIN, 8, 0
 	switch VAR_RESULT
 	case 0, RyuDebug_PasscodeMenu
 	case 1, RyuDebug_UtilitiesMenu
@@ -20,25 +20,33 @@ RyuDebugMenuScript::
 	case 4, RyuDebug_enableWaystone
 	case 5, RyuDebug_Init_GiveAllItems
 	case 6, RyuDebug_DisableDebug
-	case 7, RyuDebug_cancel
+	case 7, RyuDebug_ShowBetaMenu
+	case 8, RyuDebug_cancel
 	goto RyuDebug_cancel
-	releaseall
-	end
 	
 RyuDebug_menu_nodevcheck::
 	msgbox RyuDebug_msg MSGBOX_SIGN
-	multichoicedefault 0, 0, 115, 7, 0
+	multichoicedefault 0, 0, MULTI_DEV_MENU_MAIN, 8, 0
 	switch VAR_RESULT
-	case 0, RyuDebug_PasscodeMenu
-	case 1, RyuDebug_UtilitiesMenu
+	case 0, RyuDebug_UtilitiesMenu
+	case 1, RyuDebug_PasscodeMenu
 	case 2, RyuDebug_quickstart
 	case 3, RyuDebug_pokeedit
 	case 4, RyuDebug_enableWaystone
 	case 5, RyuDebug_Init_GiveAllItems
 	case 6, RyuDebug_DisableDebug
-	case 7, RyuDebug_cancel
-	releaseall
-	end
+	case 7, RyuDebug_ShowBetaMenu
+	case 8, RyuDebug_cancel
+	goto RyuDebug_cancel
+
+RyuDebug_ShowBetaMenu::
+	msgbox RDB_OpeningBetaMenu
+	closemessage
+	goto RDB_BetaMenuStandalone
+
+RDB_OpeningBetaMenu:
+	.string "Opening beta menu.$"
+
 
 RyuDebug_UtilitiesMenu:
 	multichoicedefault 0, 0, 143, 0, 0
@@ -183,9 +191,7 @@ RDB_TempVarsViewMsg:
 
 RyuDebug_Utility1::
 	setflag FLAG_SYS_DEXNAV_GET
-	setflag FLAG_SYS_DEXNAV_SEARCH
-	setflag FLAG_OPTIONS_INSTANT_TRANSITION
-	setvar VAR_OPTIONS_HP_BAR_SPEED 9
+	@setflag FLAG_SYS_DEXNAV_SEARCH
 	release
 	end
 

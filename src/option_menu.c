@@ -26,14 +26,14 @@ enum
 {
     MENUITEM_TEXTSPEED,
     MENUITEM_BATTLESCENE,
-    MENUITEM_BATTLESTYLE,
-    MENUITEM_SOUND,
+    MENUITEM_THEME,
+    MENUITEM_RDM_MUSIC,
     MENUITEM_BUTTONMODE,
-    MENUITEM_HP_BAR,
-    MENUITEM_EXP_BAR,
+    MENUITEM_BAR_SPEED,
+    //MENUITEM_EXP_BAR,
     MENUITEM_TRANSITION,
     MENUITEM_FRAMETYPE,
-    MENUITEM_CANCEL,
+    MENUITEM_SAVE,
     MENUITEM_COUNT,
 };
 
@@ -80,18 +80,20 @@ struct
 {
     void (*drawChoices)(int selection, int y, u8 textSpeed);
     int (*processInput)(int selection);
-} static const sItemFunctions[MENUITEM_COUNT] =
+} 
+
+static const sItemFunctions[MENUITEM_COUNT] =
 {
     [MENUITEM_TEXTSPEED] = {TextSpeed_DrawChoices, FourOptions_ProcessInput},
     [MENUITEM_BATTLESCENE] = {BattleScene_DrawChoices, TwoOptions_ProcessInput},
-    [MENUITEM_BATTLESTYLE] = {BattleStyle_DrawChoices, BattleStyle_ProcessInput},
-    [MENUITEM_SOUND] = {Sound_DrawChoices, Sound_ProcessInput},
+    [MENUITEM_THEME] = {BattleStyle_DrawChoices, BattleStyle_ProcessInput},
+    [MENUITEM_RDM_MUSIC] = {Sound_DrawChoices, Sound_ProcessInput},
     [MENUITEM_BUTTONMODE] = {ButtonMode_DrawChoices, ThreeOptions_ProcessInput},
     [MENUITEM_FRAMETYPE] = {FrameType_DrawChoices, FrameType_ProcessInput},
-    [MENUITEM_HP_BAR] = {HpBar_DrawChoices, ElevenOptions_ProcessInput},
-    [MENUITEM_EXP_BAR] = {HpBar_DrawChoices, ElevenOptions_ProcessInput},
+    [MENUITEM_BAR_SPEED] = {HpBar_DrawChoices, ElevenOptions_ProcessInput},
+    //[MENUITEM_EXP_BAR] = {HpBar_DrawChoices, ElevenOptions_ProcessInput},
     [MENUITEM_TRANSITION] = {Transition_DrawChoices, TwoOptions_ProcessInput},
-    [MENUITEM_CANCEL] = {NULL, NULL},
+    [MENUITEM_SAVE] = {NULL, NULL},
 };
 
 // EWRAM vars
@@ -101,25 +103,25 @@ EWRAM_DATA static struct OptionMenu *sOptions = NULL;
 static const u16 sUnknown_0855C604[] = INCBIN_U16("graphics/misc/option_menu_text.gbapal");
 // note: this is only used in the Japanese release
 static const u8 sEqualSignGfx[] = INCBIN_U8("graphics/misc/option_menu_equals_sign.4bpp");
-static const u8 sText_HpBar[] = _("HP BAR");
+static const u8 sTextBarSpeed[] = _("Bar Anim Spe");
 static const u8 sText_ExpBar[] = _("EXP BAR");
-static const u8 sText_Transition[] = _("TRANSITION");
+static const u8 sText_Transition[] = _("B. Transition");
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
     [MENUITEM_TEXTSPEED]   = gText_TextSpeed,
     [MENUITEM_BATTLESCENE] = gText_BattleScene,
-    [MENUITEM_BATTLESTYLE] = gText_BattleStyle,
-    [MENUITEM_SOUND]       = gText_Sound,
+    [MENUITEM_THEME]       = gText_ThemeSelector,
+    [MENUITEM_RDM_MUSIC]   = gText_RandomRouteMusic,
     [MENUITEM_BUTTONMODE]  = gText_ButtonMode,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
-    [MENUITEM_HP_BAR]      = sText_HpBar,
-    [MENUITEM_EXP_BAR]     = sText_ExpBar,
+    [MENUITEM_BAR_SPEED]      = sTextBarSpeed,
     [MENUITEM_TRANSITION]  = sText_Transition,
-    [MENUITEM_CANCEL]      = gText_OptionMenuCancel,
+    //[MENUITEM_EXP_BAR]     = sText_ExpBar, //reserved option for later.
+    [MENUITEM_SAVE]        = gText_OptionMenuSave,
 };
 
-static const u8 sText_Instant[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}INSTANT");
+static const u8 sText_Instant[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Instant");
 
 static const u8 *const sTextSpeedStrings[] = {gText_TextSpeedSlow, gText_TextSpeedMid, gText_TextSpeedFast, sText_Instant};
 
@@ -266,12 +268,12 @@ void CB2_InitOptionMenu(void)
         sOptions = AllocZeroed(sizeof(*sOptions));
         sOptions->sel[MENUITEM_TEXTSPEED] = gSaveBlock2Ptr->optionsTextSpeed;
         sOptions->sel[MENUITEM_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleSceneOff;
-        sOptions->sel[MENUITEM_BATTLESTYLE] = VarGet(VAR_RYU_THEME_NUMBER);
-        sOptions->sel[MENUITEM_SOUND] = gSaveBlock2Ptr->optionsSound;
+        sOptions->sel[MENUITEM_THEME] = VarGet(VAR_RYU_THEME_NUMBER);
+        sOptions->sel[MENUITEM_RDM_MUSIC] = FlagGet(FLAG_RYU_RANDOMIZE_MUSIC);
         sOptions->sel[MENUITEM_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
         sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
-        sOptions->sel[MENUITEM_HP_BAR] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
-        sOptions->sel[MENUITEM_EXP_BAR] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
+        sOptions->sel[MENUITEM_BAR_SPEED] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
+        //sOptions->sel[MENUITEM_EXP_BAR] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
         sOptions->sel[MENUITEM_TRANSITION] = FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION);
 
         for (i = 0; i < 7; i++)
@@ -353,7 +355,7 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     int i, scrollCount = 0, itemsToRedraw;
     if (gMain.newKeys & A_BUTTON)
     {
-        if (sOptions->menuCursor == MENUITEM_CANCEL)
+        if (sOptions->menuCursor == MENUITEM_SAVE)
             gTasks[taskId].func = Task_OptionMenuSave;
     }
     else if (gMain.newKeys & B_BUTTON)
@@ -426,12 +428,13 @@ static void Task_OptionMenuSave(u8 taskId)
 {
     gSaveBlock2Ptr->optionsTextSpeed = sOptions->sel[MENUITEM_TEXTSPEED];
     gSaveBlock2Ptr->optionsBattleSceneOff = sOptions->sel[MENUITEM_BATTLESCENE];
-    gSaveBlock2Ptr->optionsBattleStyle = sOptions->sel[MENUITEM_BATTLESTYLE];
-    VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_BATTLESTYLE]);
-    gSaveBlock2Ptr->optionsSound = sOptions->sel[MENUITEM_SOUND];
+    gSaveBlock2Ptr->optionsBattleStyle = sOptions->sel[MENUITEM_THEME];
+    VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
+    if (sOptions->sel[MENUITEM_RDM_MUSIC])
+        FlagSet(FLAG_RYU_RANDOMIZE_MUSIC);
     gSaveBlock2Ptr->optionsButtonMode = sOptions->sel[MENUITEM_BUTTONMODE];
     gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_FRAMETYPE];
-    (VarSet(VAR_OPTIONS_HP_BAR_SPEED, sOptions->sel[MENUITEM_HP_BAR]));
+    (VarSet(VAR_OPTIONS_HP_BAR_SPEED, sOptions->sel[MENUITEM_BAR_SPEED]));
     //gSaveBlock2Ptr->optionsExpBarSpeed = sOptions->sel[MENUITEM_EXP_BAR]; Just using the HP bar speed for exp bar.
     //gSaveBlock2Ptr->optionsTransitionSpeed = sOptions->sel[MENUITEM_TRANSITION]; not sure how to convert this to a setflag, but i tried, fix if its not correct:
     if (sOptions->sel[MENUITEM_TRANSITION] == 1)

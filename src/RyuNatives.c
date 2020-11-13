@@ -1438,6 +1438,7 @@ void RyuBufferQuestVars(void)
     ConvertIntToDecimalStringN(gStringVar3, (VarGet(VAR_RYU_DEVON_SCIENTIST_STAGE)), STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gRyuStringVar1, (VarGet(VAR_RYU_DS_LANA_STAGE)), STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gRyuStringVar2, (VarGet(VAR_RYU_LANETTE_VAR)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar3, (VarGet(VAR_RYU_AQUA)), STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
 

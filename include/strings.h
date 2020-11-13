@@ -316,10 +316,10 @@ extern const u8 gText_Option[];
 extern const u8 gText_OptionMenu[];
 extern const u8 gText_TextSpeed[];
 extern const u8 gText_BattleScene[];
-extern const u8 gText_BattleStyle[];
-extern const u8 gText_Sound[];
+extern const u8 gText_ThemeSelector[];
+extern const u8 gText_RandomRouteMusic[];
 extern const u8 gText_Frame[];
-extern const u8 gText_OptionMenuCancel[];
+extern const u8 gText_OptionMenuSave[];
 extern const u8 gText_ButtonMode[];
 
 extern const u8 gText_MaleSymbol[];
@@ -3087,6 +3087,8 @@ extern const u8 gText_DisableDevMode[];
 extern const u8 gText_QuickStart[];
 extern const u8 gText_ItemsKit[];
 extern const u8 gText_DebugCancel[];
+extern const u8 gText_ShowBetaMenu[];
+extern const u8 gText_BetaMenuShowSaveVersion[];
 
 extern const u8 gText_HpEvMenu252[];
 extern const u8 gText_HpEvMenu126[];

@@ -780,13 +780,14 @@ static const struct MenuAction MultichoiceList_114[] =
 
 static const struct MenuAction MultichoiceList_RyuDebugMulti[] =
 {
-    {gText_PasscodeMenu},
     {gText_Utilities},
+    {gText_PasscodeMenu},
     {gText_QuickStart},
     {gText_PokeEdit},
     {gText_TownFlags},
     {gText_ItemsKit},
     {gText_DisableDevMode},
+    {gText_ShowBetaMenu},
     {gText_DebugCancel},
 };
 
@@ -975,7 +976,7 @@ static const struct MenuAction MultichoiceList_132[]=
 
 static const struct MenuAction MultichoiceList_133[]=
 {
-    {gText_RyuBetaMenuBlank},
+    {gText_BetaMenuShowSaveVersion},
     {gText_RyuBetaMenuBlank},
     {gText_RyuBetaMenuViewQuestVars},
     {gText_RyuBetaMenuResetTempBattleFlags},
