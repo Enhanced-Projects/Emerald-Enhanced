@@ -10,9 +10,9 @@
 #define ITEM1_X_ATTACK          0x1
 #define ITEM1_X_DEFEND          0x2
 #define ITEM1_X_SPEED           0x4
-#define ITEM1_X_ACCURACY        0x8
-#define ITEM1_X_SPATK           0x10
-#define ITEM1_X_SPDEF           0x20
+#define ITEM1_X_SPATK           0x8
+#define ITEM1_X_SPDEF           0x10
+#define ITEM1_X_ACCURACY        0x20
 
 // field 2 masks
 // formerly used by the item effects of the X Sp. Atk and the X Accuracy
