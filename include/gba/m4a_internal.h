@@ -445,7 +445,7 @@ void SetPokemonCryRelease(u8 val);
 void SetPokemonCryProgress(u32 val);
 int IsPokemonCryPlaying(struct MusicPlayerInfo *mplayInfo);
 void SetPokemonCryChorus(s8 val);
-void SetPokemonCryStereo(u32 val);
+void SetPokemonCryStereo(void);
 void SetPokemonCryPriority(u8 val);
 
 // sound command handler functions

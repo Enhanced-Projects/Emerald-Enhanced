@@ -513,12 +513,6 @@ static int BattleStyle_ProcessInput(int selection)
 
 static int Sound_ProcessInput(int selection)
 {
-    if (gMain.newKeys & (DPAD_LEFT | DPAD_RIGHT))
-    {
-        selection ^= 1;
-        SetPokemonCryStereo(selection);
-    }
-
     return selection;
 }
 
