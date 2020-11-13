@@ -432,6 +432,9 @@ static void Task_OptionMenuSave(u8 taskId)
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
     if (sOptions->sel[MENUITEM_RDM_MUSIC])
         FlagSet(FLAG_RYU_RANDOMIZE_MUSIC);
+    else
+        FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
+
     gSaveBlock2Ptr->optionsButtonMode = sOptions->sel[MENUITEM_BUTTONMODE];
     gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_FRAMETYPE];
     VarSet(VAR_OPTIONS_HP_BAR_SPEED, sOptions->sel[MENUITEM_BAR_SPEED]);
