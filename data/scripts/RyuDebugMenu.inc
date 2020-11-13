@@ -13,8 +13,8 @@ RyuDebugMenuScript::
 	msgbox RyuDebug_msg MSGBOX_SIGN
 	multichoicedefault 0, 0, MULTI_DEV_MENU_MAIN, 8, 0
 	switch VAR_RESULT
-	case 0, RyuDebug_PasscodeMenu
-	case 1, RyuDebug_UtilitiesMenu
+	case 0, RyuDebug_UtilitiesMenu
+	case 1, RyuDebug_PasscodeMenu
 	case 2, RyuDebug_quickstart
 	case 3, RyuDebug_pokeedit
 	case 4, RyuDebug_enableWaystone
