@@ -166,8 +166,12 @@ bool8 BeginNormalPaletteFade(u32 selectedPalettes, s8 delay, u8 startY, u8 targe
     }
     else
     {
-        static const u8 deltaByTransitionSpeed[] = {2, 3, 4, 10};
-        //gPaletteFade.deltaY = deltaByTransitionSpeed[gSaveBlock2Ptr->optionsTransitionSpeed]; KAGERU: Uhm, excuse me, what the fuck is this? pls fix
+        // Uncommenting this makes the screen black whenever the palette is changed.
+        // We have to find out what deltaY is at this point, and perhaps why Xaman wanted to change it.
+        // The 4-element array is also odd because instant transision is a boolean flag,
+        // so we can’t even access the last 2 elements.
+        // static const u8 deltaByTransitionSpeed[] = {2, 3, 4, 10};
+        // gPaletteFade.deltaY = deltaByTransitionSpeed[FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION)];
 
         if (delay < 0)
         {

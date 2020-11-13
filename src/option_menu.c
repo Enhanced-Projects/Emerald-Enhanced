@@ -434,11 +434,11 @@ static void Task_OptionMenuSave(u8 taskId)
         FlagSet(FLAG_RYU_RANDOMIZE_MUSIC);
     gSaveBlock2Ptr->optionsButtonMode = sOptions->sel[MENUITEM_BUTTONMODE];
     gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_FRAMETYPE];
-    (VarSet(VAR_OPTIONS_HP_BAR_SPEED, sOptions->sel[MENUITEM_BAR_SPEED]));
-    //gSaveBlock2Ptr->optionsExpBarSpeed = sOptions->sel[MENUITEM_EXP_BAR]; Just using the HP bar speed for exp bar.
-    //gSaveBlock2Ptr->optionsTransitionSpeed = sOptions->sel[MENUITEM_TRANSITION]; not sure how to convert this to a setflag, but i tried, fix if its not correct:
-    if (sOptions->sel[MENUITEM_TRANSITION] == 1)
+    VarSet(VAR_OPTIONS_HP_BAR_SPEED, sOptions->sel[MENUITEM_BAR_SPEED]);
+    if (sOptions->sel[MENUITEM_TRANSITION])
         FlagSet(FLAG_OPTIONS_INSTANT_TRANSITION);
+    else
+        FlagClear(FLAG_OPTIONS_INSTANT_TRANSITION);
 
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
