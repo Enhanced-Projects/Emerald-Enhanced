@@ -4,7 +4,7 @@ SlateportCity_OceanicMuseum_2F_MapScripts:: @ 820BAFF
 
 OM_OnFrameScript::
 	map_script_2 VAR_RYU_AQUA, 30, OM_AquaEvent2
-	map_script_2 VAR_RYU_DEVON, 16, OM_SetupSternForDevon
+	map_script_2 VAR_RYU_DEVON, 165, OM_SetupSternForDevon
 	.2byte 0
 
 SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample1:: @ 820BD0A
@@ -279,6 +279,34 @@ OM_SternExit:
 	
 @==================================================================================================Devon Events
 
+OM_checkFollowerForDevonEvent::
+	lockall
+	setvar VAR_RYU_DEVON, 165
+	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_end
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_NURSE
+	goto_if_eq OMDevonCheckForNurse
+	call RyuForceCancelFollowerForQuest
+	releaseall
+	end
+
+OMDevonCheckForNurse::
+	compare VAR_RYU_DS_NURSE_STAGE, 10
+	goto_if_ne OM_CantDoThisQuestBecauseNurse
+	setvar VAR_RYU_DEVON, 165
+	releaseall
+	end
+
+OM_CantDoThisQuestBecauseNurse::
+	msgbox OM_NurseCancel
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	release
+	end
+
+OM_NurseCancel:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You cannot do this quest stage\nbecause you are presently doing\lthe Nurse quest.\pPlease come back when you have\nfinished the Nurse quest.$"
+
 OM_SetupSternForDevon::
 	setvar VAR_RYU_DEVON, 17 @Player is on second floor to speak with Stern.
 	addobject 4
@@ -367,6 +395,7 @@ OM_ArchieToEntrance:
 	walk_fastest_left
 	walk_fastest_left
 	walk_fastest_left
+	walk_fastest_left
 	walk_fastest_up
 	walk_fastest_up
 	walk_fastest_up
@@ -381,7 +410,6 @@ OM_ArchieToPlayer:
 	walk_down
 	walk_down
 	walk_down
-	walk_right
 	walk_right
 	walk_right
 	walk_right
