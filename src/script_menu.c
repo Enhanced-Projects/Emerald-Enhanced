@@ -776,7 +776,6 @@ static const u8 sText_BotanyItem7[] = _("Medium Salad");
 static const u8 sText_BotanyItem8[] = _("Large Salad");
 static const u8 sText_BotanyItem9[] = _("Revital Ice");
 
-// Sets of multichoices.
 static const struct ListMenuItem sBotanyScrollingSet[] =
 {
     {sText_BotanyItem1, 0},
@@ -790,14 +789,42 @@ static const struct ListMenuItem sBotanyScrollingSet[] =
     {sText_BotanyItem9, 8},
 };
 
-// Table of your multichoice sets.
+static const u8 sText_DebugUtilityItem1[] = _("Utility 1");
+static const u8 sText_DebugUtilityItem2[] = _("Phasing");
+static const u8 sText_DebugUtilityItem3[] = _("Dev Repel");
+static const u8 sText_DebugUtilityItem4[] = _("View Temp Vars");
+static const u8 sText_DebugUtilityItem5[] = _("Set Time");
+static const u8 sText_DebugUtilityItem6[] = _("Battle Sim");
+static const u8 sText_DebugUtilityItem7[] = _("Set Exp Mult");
+static const u8 sText_DebugUtilityItem8[] = _("All Badges");
+static const u8 sText_DebugUtilityItem9[] = _("Heal Party");
+static const u8 sText_DebugUtilityItem10[] = _("Saveblock Size");
+static const u8 sText_DebugUtilityItem11[] = _("Exit");
+
+static const struct ListMenuItem sDebugUtilitySet[] =
+{
+    {sText_DebugUtilityItem1, 0},
+    {sText_DebugUtilityItem2, 1},
+    {sText_DebugUtilityItem3, 2},
+    {sText_DebugUtilityItem4, 3},
+    {sText_DebugUtilityItem5, 4},
+    {sText_DebugUtilityItem6, 5},
+    {sText_DebugUtilityItem7, 6},
+    {sText_DebugUtilityItem8, 7},
+    {sText_DebugUtilityItem9, 8},
+    {sText_DebugUtilityItem10, 9},
+    {sText_DebugUtilityItem11, 10},
+};
+
+
 struct
 {
     const struct ListMenuItem *set;
     int count;
-} static const sScrollingSets[] =//each scrolling menu goes here
+} static const sScrollingSets[] =
 {
     {sBotanyScrollingSet, ARRAY_COUNT(sBotanyScrollingSet)},
+    {sDebugUtilitySet, ARRAY_COUNT(sDebugUtilitySet)},
 };
 
 static void Task_ScrollingMultichoiceInput(u8 taskId);

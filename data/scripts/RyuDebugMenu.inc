@@ -49,18 +49,39 @@ RDB_OpeningBetaMenu:
 
 
 RyuDebug_UtilitiesMenu:
-	multichoicedefault 0, 0, 143, 0, 0
+	scrollingmultichoice SCROLLINGMULTICHOICE_DEBUGUTILITIES, 0, 0, 9, 0
 	switch VAR_RESULT
-	case 0, RyuDebug_Phasing
-	case 1, RyuDebug_Encounters
-	case 2, RyuDebug_EnableSaveViewer
+	case 0, RyuDebug_Utility1
+	case 1, RyuDebug_Phasing
+	case 2, RyuDebug_Encounters
 	case 3, RyuDebug_ViewTempVars
-	case 4, RyuDebug_Utility1
-	case 5, RyuDebug_setTime
-	case 6, RyuDebug_BattleSim
-	case 7, RyuSetExpMultMenu
-	case 8, RyuDebug_cancel
+	case 4, RyuDebug_setTime
+	case 5, RyuDebug_BattleSim
+	case 6, RyuSetExpMultMenu
+	case 7, RyuDebug_giveAllBadges
+	case 8, RyuDebug_HealParty
+	case 9, RyuDebug_SaveFileDebug
+	case 10, RyuDebug_menu_nodevcheck
 	goto RyuDebug_cancel
+
+RyuDebug_giveAllBadges::
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_BADGE02_GET
+	setflag FLAG_BADGE03_GET
+	setflag FLAG_BADGE04_GET
+	setflag FLAG_BADGE05_GET
+	setflag FLAG_BADGE06_GET
+	setflag FLAG_BADGE07_GET
+	setflag FLAG_BADGE08_GET
+	playse SE_EXPMAX
+	release
+	end
+
+RyuDebug_HealParty::
+	special HealPlayerParty
+	playse SE_EXPMAX
+	release
+	end
 	
 RyuDebug_pokeedit::
 	msgbox OpeningPokeEdit
