@@ -6,7 +6,7 @@ MossdeepCity_SpaceCenter_1F_MapScripts:: @ 8222F41
 
 SPC_OnWarpScripts1:
 	map_script_2 VAR_RYU_DEVON_SCIENTIST_STAGE, 105, SPC_AddSteven
-	.byte 0
+	.2byte 0
 
 
 SPC_AddSteven:
