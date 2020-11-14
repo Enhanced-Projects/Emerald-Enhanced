@@ -171,7 +171,7 @@ bool8 RyuCheckPlayerisInMtPyreAndHasPikachu(void)
                 return TRUE;
         }
     }
-    
+    FlagSet(FLAG_TEMP_D);
     return FALSE;
 }
 
@@ -180,7 +180,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     struct MapPosition position;
     u8 playerDirection;
     u16 metatileBehavior;
-    u16 rand = (Random() % 256);
+    u16 rand = 0;
 
     gSpecialVar_LastTalked = 0;
     gSelectedObjectEvent = 0;
@@ -188,9 +188,6 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     playerDirection = GetPlayerFacingDirection();
     GetPlayerPosition(&position);
     metatileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);
-
-    if (CheckForTrainersWantingBattle() == TRUE)
-        return TRUE;
 
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
@@ -207,36 +204,47 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         {
             if (!(gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE111)))
             {
+                rand = (Random() % 256);
                 if ((rand == 69) || (rand == 169))
                 {
                     ScriptContext1_SetupScript(SB_SetupRandomSteppedOnEncounter);
                 }
             }
         }
-        if (RyuCheckPlayerisInMtPyreAndHasPikachu() == TRUE)
+        if (FlagGet(FLAG_TEMP_D) == 0)
         {
-            if (rand == 128)
+            if (RyuCheckPlayerisInMtPyreAndHasPikachu() == TRUE)
             {
-                ScriptContext1_SetupScript(SB_SetupRandomMimikyuEncounter);
+                rand = (Random() % 256);
+                if (rand == 128)
+                {
+                    ScriptContext1_SetupScript(SB_SetupRandomMimikyuEncounter);
+                }
             }
         }
         
-        if (MetatileBehavior_IsTallGrass(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)))
-        {
-            if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 255 && (FlagGet(FLAG_RYU_CAPTURED_MELOETTA) == 0))
+        if (FlagGet(FLAG_TEMP_C) == 0)
             {
-                ScriptContext1_SetupScript(SB_CheckMeloettaEncounter);
+                if (MetatileBehavior_IsTallGrass(GetPlayerCurMetatileBehavior(gPlayerAvatar.runningState)))
+                {
+                    if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 255 && (FlagGet(FLAG_RYU_CAPTURED_MELOETTA) == 0))
+                    {
+                        ScriptContext1_SetupScript(SB_CheckMeloettaEncounter);
+                    }
+                    else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 200)
+                    {
+                        ScriptContext1_SetupScript(Ryu_MeloettaWatchingMsg);
+                    }
+                    else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 100)
+                    {
+                        ScriptContext1_SetupScript(Ryu_BeingWatched);
+                    }
+                    else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) < 50)
+                    {
+                        FlagSet(FLAG_TEMP_C);
+                    }
+                }
             }
-            else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 200)
-            {
-                ScriptContext1_SetupScript(Ryu_MeloettaWatchingMsg);
-            }
-            else if (GetGameStat(GAME_STAT_USED_SOUND_MOVE) >= 100)
-            {
-                ScriptContext1_SetupScript(Ryu_BeingWatched);
-            }
-        }
-
     }
     if (input->checkStandardWildEncounter && CheckStandardWildEncounter(metatileBehavior) == TRUE)
         return TRUE;
@@ -275,8 +283,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
         return TRUE;
     
-    if (input->tookStep && TryFindHiddenPokemon())
-        return TRUE;
+    //if (input->tookStep && TryFindHiddenPokemon())  //dont think this works anyway
+        //return TRUE;
     
     if (input->pressedRButton && TryStartDexnavSearch())
         return TRUE;
@@ -636,33 +644,19 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
 
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED_MOVE) && !MetatileBehavior_IsForcedMovementTile(metatileBehavior))
     {
-        if (UpdatePoisonStepCounter() == TRUE)
-        {
-            ScriptContext1_SetupScript(EventScript_FieldPoison);
-            return TRUE;
-        }
         if (ShouldEggHatch())
         {
             IncrementGameStat(GAME_STAT_HATCHED_EGGS);
             ScriptContext1_SetupScript(EventScript_EggHatch);
             return TRUE;
         }
-        if (ShouldDoBrailleRegicePuzzle() == TRUE)
-        {
-            ScriptContext1_SetupScript(IslandCave_EventScript_OpenRegiEntrance);
-            return TRUE;
-        }
     }
 
-    if (SafariZoneTakeStep() == TRUE)
-        return TRUE;
     if (CountSSTidalStep(1) == TRUE)
     {
         ScriptContext1_SetupScript(SSTidalCorridor_EventScript_ReachedStepCount);
         return TRUE;
     }
-    if (TryStartMatchCall())
-        return TRUE;
     return FALSE;
 }
 
@@ -1056,9 +1050,7 @@ int SetCableClubWarp(void)
 {
     struct MapPosition position;
 
-    GetPlayerMovementDirection();  //unnecessary
     GetPlayerPosition(&position);
-    MapGridGetMetatileBehaviorAt(position.x, position.y);  //unnecessary
     SetupWarp(&gMapHeader, GetWarpEventAtMapPosition(&gMapHeader, &position), &position);
     return 0;
 }
