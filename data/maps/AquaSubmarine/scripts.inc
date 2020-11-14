@@ -170,6 +170,7 @@ AS_DoUpperFloorScene::
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	setflag FLAG_RYU_DS_SHELLY_LOVERS
 	clearflag FLAG_RYU_KYOGRE_RAN
+	clearflag FLAG_RYU_KYOGRE
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	warpsilent MAP_UNDERWATER_ROUTE128, 255, 71, 5
 	waitstate
