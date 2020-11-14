@@ -189,6 +189,9 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     GetPlayerPosition(&position);
     metatileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);
 
+    if (CheckForTrainersWantingBattle() == TRUE)
+        return TRUE;
+
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
 
