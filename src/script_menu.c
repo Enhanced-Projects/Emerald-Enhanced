@@ -799,7 +799,8 @@ static const u8 sText_DebugUtilityItem7[] = _("Set Exp Mult");
 static const u8 sText_DebugUtilityItem8[] = _("All Badges");
 static const u8 sText_DebugUtilityItem9[] = _("Heal Party");
 static const u8 sText_DebugUtilityItem10[] = _("Saveblock Size");
-static const u8 sText_DebugUtilityItem11[] = _("Exit");
+static const u8 sText_DebugUtilityItem11[] = _("Complete Dex");
+static const u8 sText_DebugUtilityItem12[] = _("Exit");
 
 static const struct ListMenuItem sDebugUtilitySet[] =
 {
@@ -814,6 +815,7 @@ static const struct ListMenuItem sDebugUtilitySet[] =
     {sText_DebugUtilityItem9, 8},
     {sText_DebugUtilityItem10, 9},
     {sText_DebugUtilityItem11, 10},
+    {sText_DebugUtilityItem12, 11},
 };
 
 

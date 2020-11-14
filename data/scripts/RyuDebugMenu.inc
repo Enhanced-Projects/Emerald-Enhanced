@@ -61,7 +61,8 @@ RyuDebug_UtilitiesMenu:
 	case 7, RyuDebug_giveAllBadges
 	case 8, RyuDebug_HealParty
 	case 9, RyuDebug_SaveFileDebug
-	case 10, RyuDebug_menu_nodevcheck
+	case 10, RyuDebug_FillTheDex
+	case 11, RyuDebug_menu_nodevcheck
 	goto RyuDebug_cancel
 
 RyuDebug_giveAllBadges::
@@ -74,14 +75,20 @@ RyuDebug_giveAllBadges::
 	setflag FLAG_BADGE07_GET
 	setflag FLAG_BADGE08_GET
 	playse SE_EXPMAX
-	release
-	end
+	goto RyuDebug_UtilitiesMenu
+
+RyuDebug_FillTheDex::
+	special FillTheDex
+	msgbox RDB_FillDex
+	goto RyuDebug_UtilitiesMenu
+
+RDB_FillDex:
+	.string "Dex pages filled in.$"
 
 RyuDebug_HealParty::
 	special HealPlayerParty
 	playse SE_EXPMAX
-	release
-	end
+	goto RyuDebug_UtilitiesMenu
 	
 RyuDebug_pokeedit::
 	msgbox OpeningPokeEdit
@@ -106,14 +113,12 @@ RyuDebug_Encounters::
 	goto_if_set FLAG_RYU_DEV_DISENC, RyuDebug_EnENC
 	setflag FLAG_RYU_DEV_DISENC
 	msgbox RyuEncDisabled
-	release
-	end
+	goto RyuDebug_UtilitiesMenu
 	
 RyuDebug_EnENC::
 	clearflag FLAG_RYU_DEV_DISENC
 	msgbox RyuEncEnabled
-	release
-	end
+	goto RyuDebug_UtilitiesMenu
 	
 RyuEncDisabled:
 	.string "Dev Repel on$"
@@ -131,12 +136,6 @@ RyuDebug_DisableDebug::
 	releaseall
 	end
 
-RyuDebug_EnableSaveViewer::
-	setvar VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454
-	msgbox Ryu_saveViewerEnabled
-	release
-	end
-
 Ryu_saveViewerEnabled:
 	.string "First variable set to beacon the\nsave viewer.\pSave the game twice to make sure\nboth save banks are the same!$"
 
@@ -145,15 +144,13 @@ RyuDebug_Phasing::
 	setflag FLAG_RYU_COLLISION_OFF
 	setflag FLAG_TOBY_TRAINER_SIGHT
 	msgbox Ryu_CollisionOffMsg
-	release
-	end
+	goto RyuDebug_UtilitiesMenu
 
 Ryu_DisablePhasing::
 	clearflag FLAG_RYU_COLLISION_OFF
 	clearflag FLAG_TOBY_TRAINER_SIGHT
 	msgbox Ryu_CollisionOnMsg
-	release
-	end
+	goto RyuDebug_UtilitiesMenu
 
 Ryu_CollisionOffMsg:
 	.string "Entered the Ethereal plane.$"
@@ -204,15 +201,12 @@ RyuDebug_enableWaystone::
 RyuDebug_ViewTempVars::
 	special RyuCheckTempVars
 	msgbox RDB_TempVarsViewMsg
-	releaseall
-	end
+	goto RyuDebug_UtilitiesMenu
 
 RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setflag FLAG_SYS_DEXNAV_GET
-	@setflag FLAG_SYS_DEXNAV_SEARCH
 	release
 	end
 
@@ -241,27 +235,6 @@ exampletext:
 
 RDB_CurrentLocationMons:
 	.string "Current area land encounters$"
-
-RDB_ClosingDexNav:
-	.string "Closing DexNav$"
-
-RDB_DrawTempDexNavInfoGrid::
-	setvar VAR_TEMP_A, 3
-	setvar VAR_TEMP_B, 1
-	drawinfobox INFOGRID_TESTDEXNAV, 2
-	goto ryu_return
-
-@   msgbox RDB_SwapGenderQuery, MSGBOX_YESNO
-@	compare VAR_RESULT, YES
-@	goto_if_eq RDB_SwapPlayerGender
-
-RDB_SwapGenderQuery:
-	.string "Change Gender?$"
-
-RDB_SwapPlayerGender::
-	special SwapPlayerGender
-	release
-	end
 
 RDB_GiveRandomFrontierMons::
 	compare VAR_TEMP_5, 0
@@ -312,8 +285,7 @@ RyuDebug_setTime::
 	buffernumberstring 1, VAR_0x8001
 	buffernumberstring 2, VAR_0x8002
 	msgbox RDB_Readout_2
-	release
-	end
+	goto RyuDebug_UtilitiesMenu
 
 settimequery:
 	.string "Would you like to change the time?$"
@@ -744,7 +716,7 @@ RyuSetExpMultMenu2::
 
 RyuExitExpMult::
 	msgbox ExpMultNoChange
-	goto ryu_end
+	goto RyuDebug_UtilitiesMenu
 
 ExpMultNoChange:
 	.string "Exp mult not changed.$"
@@ -769,7 +741,7 @@ RyuSetExpMultAuto::@@exp is increased by 12.5% per gym badge
 	setvar VAR_RYU_EXP_MULTIPLIER, 1
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
 	closemessage
-	goto RyuDebugMenuScript
+	goto RyuDebug_UtilitiesMenu
 	
 ExpMultAuto:
 	.string "Exp Multiplier is now Auto.\n"
@@ -780,7 +752,7 @@ RyuSetExpMult2::@@exp is multiplied by 2
 	setvar VAR_RYU_PRICE_MULTIPLIER, 750
 	msgbox ExpMult2 MSGBOX_DEFAULT
 	closemessage
-	goto RyuDebugMenuScript
+	goto RyuDebug_UtilitiesMenu
 	
 ExpMult2:
 	.string "Exp Multiplier is now 2.0x.$"
@@ -790,7 +762,7 @@ RyuSetExpMult4::@@exp is multiplied by 4
 	setvar VAR_RYU_PRICE_MULTIPLIER, 500
 	msgbox ExpMult4 MSGBOX_DEFAULT
 	closemessage
-	goto RyuDebugMenuScript
+	goto RyuDebug_UtilitiesMenu
 	
 ExpMult4:
 	.string "Exp Multiplier is now 4.0x.$"
@@ -800,7 +772,7 @@ RyuSetExpMult8::@@exp is multiplied by 8
 	setvar VAR_RYU_PRICE_MULTIPLIER, 250
 	msgbox ExpMult8 MSGBOX_DEFAULT
 	closemessage
-	goto RyuDebugMenuScript
+	goto RyuDebug_UtilitiesMenu
 	
 ExpMult8:
 	.string "Exp Multiplier is now 8.0x.$"
