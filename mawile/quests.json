@@ -97,5 +97,29 @@
         "40": "Player can now leave 2f to go to 1f. (Right side staircase.) ",
         "45": "Player needs to go find Ms. Ito north of Rustburo.",
         "60": "Player completed the **DEVON CORPORATE** questline. Return after being champion to get access to Rayquaza."
-    }
+		"102": "Player was just transported to the Weather Institute. Clear out the enemy team and defeat shelly above.",
+		"103": "Player should be heading to the bottom of the Desert to work with Castform.",
+		"104": "Player finished working with Castform in the desert. Return to the weather institute.",
+		"105": "Player returned to the institute. It was recommended to ask the space center for help. Go there.",
+		"106": "Player should clear out the magma goons on the bottom floor. Then go upstairs and deal with Maxie.",
+		"107": "Player cleared out magma and met the mysterious talking pokemon, who challenged them. Go to Victory Road. There's a hidden cave at the top left that should be open during this quest.",
+		"108": "Player faced the mysterious talking pokemon in Victory Road. You must become champion to continue. Once you are, head to the northeast area of the Safari Zone. There will be another cave at the top left.",
+		"115": "Player finished devon scientist and the mysterious pokemon joined their party.",
+		"111": "Player defeated the mysterious pokemon, but needs to make space in their party and return."
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
