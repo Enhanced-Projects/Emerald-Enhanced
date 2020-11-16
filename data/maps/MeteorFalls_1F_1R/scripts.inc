@@ -637,7 +637,6 @@ MF_AquaSouthContd::
 	
 MF_PlayerChoseNoRomance::
 	setvar VAR_RYU_AQUA, 72 @Player chose the non-romance aqua line, report back to shelly.
-	setflag FLAG
 	applymovement 7, MF_ArchieLeavesNorthAqua
 	applymovement 8, MF_MattLeavesNorth
 	waitmovement 8

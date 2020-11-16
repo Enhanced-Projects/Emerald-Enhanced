@@ -158,7 +158,7 @@ void AgbMain()
         VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, 7105);
         VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
         FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
-        mgba_open();
+        //mgba_open(); Disable this on releases, causes lag
         MapMusicMain(); 
         WaitForVBlank();
     }
