@@ -1652,13 +1652,6 @@ RyuAC_SuccessMsg::
 RyuAC_CancelMsg::
 	.string "Leaving menu without changes.$"
 
-@==================================================================================================Ryu Global Scripts
-
-RyuGlobal_CheckMissionCallStatus::
-	setvar VAR_TEMP_A, 10
-	goto RyuGlobal_CheckMagmaStatus
-	
-
 @==================================================================================================Soot Sack
 
 RyuCheckSootSackContents::
@@ -1674,12 +1667,33 @@ Ryu_SootSackReadout:
 
 @=================================================================================================Global Scripts
 
+RyuGlobal_CheckMissionCallStatus::
+	setvar VAR_TEMP_A, 10
+	goto RyuGlobal_CheckMagmaStatus
+
+Ryu_FFTextSpeedWarning::
+	msgbox FFTextMsg
+	setflag FLAG_NOTIFIED_FF_TEXT
+	release
+	end	
+
+FFTextMsg::
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You have selected Instant text speed.\p"
+	.string "Note that this option has been\n"
+	.string "reported to skip certain story\l"
+	.string "quest dialogues.\p"
+	.string "It is recommended that you use\n"
+	.string "fast instead.$"
+
 RyuGlobal_CheckDexnavStatus::
 	goto_if_set FLAG_SYS_DEXNAV_GET, ryu_return
 	pokenavcall Ryu_DexnavGive
 	waitmessage
 	setflag FLAG_SYS_DEXNAV_GET
 	setflag FLAG_SYS_DEXNAV_SEARCH
+	fadescreen FADE_TO_BLACK
+	delay 10
+	fadescreen FADE_FROM_BLACK
 	return
 
 Ryu_DexnavGive:

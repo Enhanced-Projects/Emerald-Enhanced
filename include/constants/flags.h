@@ -352,7 +352,7 @@
 #define FLAG_RYU_AQUA_BAD_END           0x14C
 #define FLAG_RYU_DS_SHELLY_SCENE             0x14D
 
-#define FLAG_UNUSED_0x14E                    0x14E
+#define FLAG_NOTIFIED_FF_TEXT                0x14E //player was warned that instant text speed can cause skipped dialogues.
 #define FLAG_HIDE_AQUAHQ_SHELLY              0x14F // hides shelly in the aqua hq when she becomes a follower.
 #define FLAG_FRIGUS_QUEST_ACCEPTED           0x150
 #define FLAG_RECEIVED_POWDER_JAR             0x151

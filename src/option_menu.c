@@ -427,6 +427,10 @@ static void Task_OptionMenuProcessInput(u8 taskId)
 static void Task_OptionMenuSave(u8 taskId)
 {
     gSaveBlock2Ptr->optionsTextSpeed = sOptions->sel[MENUITEM_TEXTSPEED];
+    if (sOptions->sel[MENUITEM_TEXTSPEED] == 3)
+        FlagClear(FLAG_NOTIFIED_FF_TEXT);
+    else
+        FlagSet(FLAG_NOTIFIED_FF_TEXT);
     gSaveBlock2Ptr->optionsBattleSceneOff = sOptions->sel[MENUITEM_BATTLESCENE];
     gSaveBlock2Ptr->optionsBattleStyle = sOptions->sel[MENUITEM_THEME];
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);

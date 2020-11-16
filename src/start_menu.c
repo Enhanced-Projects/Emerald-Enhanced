@@ -56,6 +56,8 @@ static EWRAM_DATA u8 MenuSpriteId2 = 0;
 extern u8 RyuDebugMenuScript[];
 extern u8 RyuStartMenuConfigInfoScript[];
 extern const u8 gText_RyuVersion[];
+extern const u8 Ryu_FFTextSpeedWarning[];
+extern const u8 ryu_end[];
 
 // Menu actions
 enum
@@ -524,6 +526,10 @@ void RemovePrintedNumber(void)
     ClearStdWindowAndFrameToTransparent(sPrintNumberWindow2Id, FALSE);
     CopyWindowToVram(sPrintNumberWindow2Id, 2);
     RemoveWindow(sPrintNumberWindow2Id);
+    if (FlagGet(FLAG_NOTIFIED_FF_TEXT) == 0)
+        ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
+    else
+        ScriptContext1_SetupScript(ryu_end);//For some reason, this fixes the start meny info window border from sticking around, i call it a win.
 }
 
 void PrintSongNumber(u16 song)

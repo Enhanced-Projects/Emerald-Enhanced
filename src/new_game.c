@@ -282,6 +282,7 @@ void NewGameInitData(void)
     FlagClear(FLAG_RYU_TEMPTP);
     FlagClear(FLAG_RYU_HAS_FOLLOWER);
     FlagClear(FLAG_OPTIONS_INSTANT_TRANSITION);
+    FlagSet(FLAG_NOTIFIED_FF_TEXT);
 
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
