@@ -5,7 +5,7 @@ LittlerootTown_BrendansHouse_2F_MapScripts:: @ 81F83E3
 GameIntroSequenceCheck::
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 4, GameIntroSequencePart1
 	map_script_2 VAR_RYU_DS_LANA_STAGE, 75, LRT_LeafEvent
-	map_script_2 VAR_RYU_PARTNER_COUNT, 4, LRT_BeginHaremSequence
+	map_script_2 VAR_RYU_PARTNER_COUNT, 5, LRT_BeginHaremSequence
 	.2byte 0
 	
 LRT_RemoveFemaleClone::

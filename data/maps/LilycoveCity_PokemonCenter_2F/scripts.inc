@@ -176,6 +176,7 @@ LCPC_ContinueNightScene1::
 	fadescreenspeed FADE_FROM_BLACK, 2
 	setflag FLAG_TEMP_9
 	setflag FLAG_RYU_DS_JOY_PARTNERS
+	addvar VAR_RYU_PARTNER_COUNT, 1
 	release
 	end
 	

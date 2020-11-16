@@ -5,7 +5,7 @@ LittlerootTown_MapScripts:: @ 81E7DCB
 	.byte 0
 
 Ryu_HaremEventCheck::
-	map_script_2 VAR_RYU_PARTNER_COUNT, 4, Ryu_HaremEvent
+	map_script_2 VAR_RYU_PARTNER_COUNT, 5, Ryu_HaremEvent
 	.2byte 0
 	
 LRT_CheckMagmaWarp::
@@ -289,13 +289,13 @@ Ryu_HaremEvent::
 	compare VAR_RESULT, MALE
 	call_if_eq Ryu_HaremEventFemale
 	call_if_set FLAG_RYU_RECRUITED_MINNIE, LRT_Harem_AlsoMinnie
-	fadescreen FADE_TO_BLACK
-	@drawfullscreenimage SCENEBGHAREM
 	msgbox LRT_Harem_Outro
 	closemessage
 	additem ITEM_SHINY_CHARM
 	closemessage
 	delay 60
+	fadescreen FADE_TO_BLACK
+	@drawfullscreenimage SCENEBGHAREM
 	setflag FLAG_RYU_HAREM_EVENT_COMPLETED
 	setflag FLAG_RYU_HIDE_HAREM_EVENT_NPCS
 	setflag FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN
@@ -313,7 +313,7 @@ Ryu_HaremEvent::
 	waitmovement 10
 	removeobject 7
 	removeobject 10
-	setvar VAR_RYU_PARTNER_COUNT, 10
+	setvar VAR_RYU_PARTNER_COUNT, 10 @Finished harem event.
 	release
 	end
 	
@@ -342,6 +342,9 @@ LRT_HAREM_INTRO_Lana:
     .string "Lana:{COLOR LIGHT_RED}{SHADOW RED} I went to Kanto to fill out the\n"
     .string "paperwork to have it shipped here!$"
 
+LRT_HAREM_INTRO_Nurse:
+	.string "Joy:{COLOR LIGHT_RED}{SHADOW RED} I contacted my sisters in Kalos\nto speak with port authority and\lexpedite the export!$"
+
 LRT_HAREM_INTRO_Rival:
     .string "{RIVAL}:{COLOR LIGHT_RED}{SHADOW RED} We hope you like it!\p"
     .string "You gave us your all, so we\n"
@@ -354,14 +357,77 @@ LRT_Harem_AlsoMinnie::
 	playse SE_PIN
 	msgbox AlsoMinnieMsg
 	closemessage
+	goto_if_unset FLAG_RYU_MINNIE_GAME_CLEAR, ryu_return
+	checkplayergender
+	compare VAR_RESULT, MALE
+	call_if_eq MinnieToMalePlayer
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	call_if_eq MinnieToFemalePlayer
+	playse SE_W204
+	applymovement 4, Common_Movement_HeartEmote
+	waitmovement 4
+	msgbox MinnieHugsPlayer
+	closemessage
+	applymovement 4, MinnieDiagFromPlayer
+	waitmovement 4
+	playse SE_PIN
+	applymovement 6, Common_Movement_ExclamationMark
+	applymovement 8, Common_Movement_ExclamationMark
+	applymovement 9, Common_Movement_ExclamationMark
+	applymovement 10, Common_Movement_ExclamationMark
+	applymovement 12, Common_Movement_ExclamationMark
+	applymovement 7, Common_Movement_ExclamationMark
+	waitmovement 7
+	msgbox AlsoChampionMinnieMsg
+	closemessage
 	return
-	
+
+MinnieToMalePlayer:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_diag_southeast
+	walk_diag_southeast
+	face_up
+	step_end
+
+MinnieToFemalePlayer:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_diag_southeast
+	walk_diag_southeast
+	face_up
+	step_end
+
+MinnieDiagFromPlayer:
+	walk_diag_northwest
+	face_down
+	step_end
+
 AlsoMinnieMsg:
     .string "Minnie: {COLOR LIGHT_RED}{SHADOW RED}Hey! don't forget about me!\p"
-    .string "You became my friend when I didn't\n"
-    .string "have any. When I get older, I want to\p"
-    .string "be with you like these other girls!\n"
-    .string "Please wait for me!$"
+    .string "You didn't treat me like a little\n"
+	.string "kid, and took me with you on your\l"
+	.string "adventures!\p"
+	.string "I had a lot of fun!$"
+
+AlsoChampionMinnieMsg:
+	.string "Minnie: {COLOR LIGHT_RED}{SHADOW RED}We even beat the big boss\n"
+	.string "together!\p"
+	.string "I'll never forget that!\p"
+	.string "I wish I could stay with you\n"
+	.string "like the others, but, It's okay!\p"
+	.string "When I get older, we can do\n"
+	.string "even more!$"
+
+MinnieHugsPlayer:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Minnie suddenly jumps on you\n"
+	.string " and gives a big bear hug.)$"
 	
 MinnieToGroup:
 	walk_fast_down
@@ -405,6 +471,11 @@ Ryu_HaremEventMale::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox LRT_HAREM_INTRO_Lanette
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 10, Common_Movement_FaceRight
+	msgbox LRT_HAREM_INTRO_Nurse
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
