@@ -49,7 +49,7 @@ RDB_OpeningBetaMenu:
 
 
 RyuDebug_UtilitiesMenu:
-	scrollingmultichoice SCROLLINGMULTICHOICE_DEBUGUTILITIES, 0, 0, 9, 0
+	scrollingmultichoice SCROLLINGMULTICHOICE_DEBUGUTILITIES, 0, 0, 9, 1
 	switch VAR_RESULT
 	case 0, RyuDebug_Utility1
 	case 1, RyuDebug_Phasing
@@ -207,6 +207,14 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	setflag FLAG_RYU_DS_LEAF_PARTNERS
+	setflag FLAG_RYU_DS_JOY_PARTNERS
+	setflag FLAG_RYU_DS_SHELLY_PARTNERS
+	setflag FLAG_RYU_DS_DAWN_PARTNERS
+	setflag FLAG_RYU_DS_LANETTE_PARTNERS
+	setflag FLAG_RYU_RECRUITED_MINNIE
+	setflag FLAG_RYU_MINNIE_GAME_CLEAR
+	setvar VAR_RYU_PARTNER_COUNT, 5
 	release
 	end
 
