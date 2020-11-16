@@ -1750,6 +1750,7 @@ static void CB2_LoadMap2(void)
     SetFieldVBlankCallback();
     SetMainCallback1(CB1_Overworld);
     SetMainCallback2(CB2_Overworld);
+    ResetDexNavSearch();
 }
 
 void CB2_ReturnToFieldContestHall(void)

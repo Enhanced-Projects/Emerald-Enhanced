@@ -1690,10 +1690,6 @@ RyuGlobal_CheckDexnavStatus::
 	pokenavcall Ryu_DexnavGive
 	waitmessage
 	setflag FLAG_SYS_DEXNAV_GET
-	setflag FLAG_SYS_DEXNAV_SEARCH
-	fadescreen FADE_TO_BLACK
-	delay 10
-	fadescreen FADE_FROM_BLACK
 	return
 
 Ryu_DexnavGive:
