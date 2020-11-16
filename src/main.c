@@ -157,7 +157,7 @@ void AgbMain()
             VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, VarGet(VAR_LAST_KNOWN_GAME_VERSION));
         VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
         FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
-        //mgba_open(); Disable this on releases, causes lag
+        mgba_open(); //Disable this on releases, causes lag
         MapMusicMain(); 
         WaitForVBlank();
     }

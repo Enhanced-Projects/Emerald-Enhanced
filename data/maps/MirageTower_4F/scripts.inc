@@ -46,9 +46,10 @@ MT_Shanti::
 MT_ShantiFormChangeQuery::
 	msgbox MT_DarmanitanDeclined
 	checkspecies SPECIES_DARMANITAN
-	compare VAR_RESULT, TRUE
-	goto_if_eq MT_PlayerhasDarmanitan
-	msgbox MT_Shanti_DarmanitanDesc
+	goto_if_set FLAG_TEMP_C, MT_PlayerhasDarmanitan
+	checkspecies SPECIES_DARMANITAN_ZEN
+	goto_if_set FLAG_TEMP_C, MT_PlayerhasDarmanitan
+	msgbox MT_DontHaveDarmanitan
 	closemessage
 	release
 	end
@@ -64,20 +65,35 @@ MT_PlayerhasDarmanitan::
 	fadedefaultbgm
 	fadescreen FADE_FROM_BLACK
 	specialvar VAR_RESULT, ChangeDarmanitanForm
-	delay 20
-	compare VAR_RESULT, FALSE
-	goto_if_eq MT_ChangeFailed
-	msgbox MT_ChangeSuccessful
-	release
-	end
+	switch VAR_RESULT
+	case 0, MT_ChangeFailed
+	case 1, MT_ChangeToZen
+	case 2, MT_ChangeFromZen
+	goto MT_ChangeFailed
 	
 MT_ChangeFailed::
 	msgbox MT_DontHaveDarmanitan
 	release
 	end
+
+MT_ChangeToZen::
+	msgbox MT_SuccessZen
+	release
+	end
+
+MT_ChangeFromZen::
+	msgbox MT_SuccessBase
+	release
+	end
 	
 MT_DontHaveDarmanitan:
-	.string "This meditation only works/nwith a base form Darmanitan!$"
+	.string "You do not have a Darmanitan\nto meditate with!$"
+
+MT_SuccessZen:
+	.string "We have meditated and now it has\nachieved Zen!$"
+
+MT_SuccessBase:
+	.string "We have meditated and now it has\nreturned to its base form.$"
 	
 MT_PlayerDeclinedShanti::
 	msgbox MT_DarmanitanDeclined

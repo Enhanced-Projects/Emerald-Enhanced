@@ -832,19 +832,22 @@ bool8 ScrCmd_clearfullscreenimage(struct ScriptContext *ctx)
 }
 
 bool8 ScrCmd_checkspecies(struct ScriptContext *ctx)//this lewd function checks if player has mon, and if so,
-{                                                   //returns TRUE to VAR_RESULT, and slot number to VAR_TEMP_F
+{                                                   //sets flag FLAG_TEMP_C, and slot number to VAR_TEMP_F
     u16 speciesId = VarGet(ScriptReadHalfword(ctx));//see the relevant script command in asm/macros/event.inc
     u8 i;
 
     for (i = 0; i < CalculatePlayerPartyCount(); i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == speciesId)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == speciesId)
         {
-            gSpecialVar_Result = TRUE;
+
+            FlagSet(FLAG_TEMP_C);
             VarSet(VAR_TEMP_F, i);
             return TRUE;
         }
     }
+    FlagClear(FLAG_TEMP_C);
+    VarSet(VAR_TEMP_F, 65535);
     return TRUE;
 }
 
@@ -952,20 +955,31 @@ void FillTheDex(void)
     
 }
 
-bool8 ChangeDarmanitanForm(void)
+int ChangeDarmanitanForm(void)
 {
     u8 i;
-    u16 darmi = SPECIES_DARMANITAN_ZEN;
+    u16 darmi = SPECIES_DARMANITAN;
+    u16 darm2 = SPECIES_DARMANITAN_ZEN;
+    u8 hasDarmi = 0;
     for (i = 0; i < PARTY_SIZE; i++)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_DARMANITAN)
         {
+            hasDarmi = 1;
+            SetMonData(&gPlayerParty[i], MON_DATA_SPECIES, &darm2);
+            CalculateMonStats(&gPlayerParty[i]);
+            return hasDarmi;
+        }
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_DARMANITAN_ZEN)
+        {
+            hasDarmi = 2;
             SetMonData(&gPlayerParty[i], MON_DATA_SPECIES, &darmi);
             CalculateMonStats(&gPlayerParty[i]);
-            return TRUE;
+            return hasDarmi;
         }
+
     }
-    return FALSE;
+    return hasDarmi;
 }
 
 bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx) //rolls the inside/outside table for items from the relevant skill level
