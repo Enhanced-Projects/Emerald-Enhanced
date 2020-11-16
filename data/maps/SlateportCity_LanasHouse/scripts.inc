@@ -130,6 +130,8 @@ LH_LeafNight:
 	fadenewbgm MUS_DUMMY
 	fadescreen 1
 	msgbox LH_LeafNightSceneMsg MSGBOX_DEFAULT
+	applymovement 2, LH_LeafToTable
+	waitmovement 2
 	delay 40
 	closemessage
 	fadedefaultbgm
@@ -205,6 +207,17 @@ LH_CourtneyLeave:
 	walk_left
 	walk_down
 	walk_down
+	step_end
+
+LH_LeafToTable:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
 	step_end
 
 LH_CourtneyCaughtMsg:
