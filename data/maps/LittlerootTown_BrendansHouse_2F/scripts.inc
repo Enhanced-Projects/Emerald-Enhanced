@@ -553,6 +553,7 @@ HaremBegin:
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement OBJ_EVENT_ID_PLAYER
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	applymovement 4, LRT_Harem_RivalMove
 	waitmovement 4
 	msgbox LRT_HaremBeginRivalMsg
@@ -563,6 +564,7 @@ HaremBegin:
 	compare VAR_RESULT, FEMALE
 	goto_if_eq HaremBeginFemale
 	clearflag FLAG_RYU_HIDE_HAREM_EVENT_DAWN
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
 	warpsilent MAP_LITTLEROOT_TOWN, 255, 9, 8
 	release
 	end
@@ -583,8 +585,8 @@ LRT_HaremBeginRivalMsg:
 	.string "I have a suprise for you!$"
 	
 LRT_Harem_RivalMove:
-	walk_down
-	walk_down
+	walk_left
+	walk_left
 	emote_heart
 	step_end
 

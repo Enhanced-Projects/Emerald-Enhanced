@@ -1,12 +1,12 @@
 LittlerootTown_MapScripts:: @ 81E7DCB
 	map_script ON_TRANSITION, LittlerootTown_MapScript1_1E7DDB
 	map_script ON_FRAME, Ryu_HaremEventCheck
-	@map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_MapScript2_1E7FE2
 	.byte 0
 
 Ryu_HaremEventCheck::
 	map_script_2 VAR_RYU_PARTNER_COUNT, 5, Ryu_HaremEvent
 	.2byte 0
+
 	
 LRT_CheckMagmaWarp::
 	setvar VAR_TEMP_7, 0
@@ -16,6 +16,7 @@ LRT_CheckMagmaWarp::
 	waitstate
 
 LittlerootTown_MapScript1_1E7DDB: @ 81E7DDB
+	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
 	end
 	
@@ -280,6 +281,9 @@ LRT_FM2:
 
 @HAREM EVENT=======================================================================================
 Ryu_HaremEvent::
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, LRT_Cam1
+	waitmovement OBJ_EVENT_ID_CAMERA
 	goto_if_set FLAG_RYU_HAREM_EVENT_COMPLETED, ryu_end
 	lockall
 	checkplayergender
@@ -288,7 +292,6 @@ Ryu_HaremEvent::
 	checkplayergender
 	compare VAR_RESULT, MALE
 	call_if_eq Ryu_HaremEventFemale
-	call_if_set FLAG_RYU_RECRUITED_MINNIE, LRT_Harem_AlsoMinnie
 	msgbox LRT_Harem_Outro
 	closemessage
 	additem ITEM_SHINY_CHARM
@@ -300,9 +303,11 @@ Ryu_HaremEvent::
 	setflag FLAG_RYU_HIDE_HAREM_EVENT_NPCS
 	setflag FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN
 	setflag FLAG_RYU_HIDE_HAREM_EVENT_DAWN
+	removeobject 4
 	removeobject 6
 	removeobject 8
 	removeobject 9
+	removeobject 12
 	@clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	msgbox LRT_HAREM_END_RIVALMSG
@@ -314,6 +319,8 @@ Ryu_HaremEvent::
 	removeobject 7
 	removeobject 10
 	setvar VAR_RYU_PARTNER_COUNT, 10 @Finished harem event.
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
+	special SpawnCameraObject
 	release
 	end
 	
@@ -350,20 +357,34 @@ LRT_HAREM_INTRO_Rival:
     .string "You gave us your all, so we\n"
     .string "returned the favor!$"
 
+LRT_Cam1:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+LRT_Cam2:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
 	
 LRT_Harem_AlsoMinnie::
-	applymovement 4, MinnieToGroup
-	waitmovement 4
-	playse SE_PIN
-	msgbox AlsoMinnieMsg
-	closemessage
-	goto_if_unset FLAG_RYU_MINNIE_GAME_CLEAR, ryu_return
 	checkplayergender
 	compare VAR_RESULT, MALE
 	call_if_eq MinnieToMalePlayer
 	checkplayergender
 	compare VAR_RESULT, FEMALE
 	call_if_eq MinnieToFemalePlayer
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	playse SE_PIN
+	msgbox AlsoMinnieMsg
+	closemessage
+	goto_if_unset FLAG_RYU_MINNIE_GAME_CLEAR, ryu_return
+	applymovement 4, MinnieDiag1
+	waitmovement 4
 	playse SE_W204
 	applymovement 4, Common_Movement_HeartEmote
 	waitmovement 4
@@ -383,30 +404,43 @@ LRT_Harem_AlsoMinnie::
 	closemessage
 	return
 
-MinnieToMalePlayer:
+MinnieToMalePlayer::
+	applymovement 4, MinnieToMalePlayerMV
+	waitmovement 4
+	return
+
+MinnieToMalePlayerMV:
 	walk_down
 	walk_down
 	walk_down
 	walk_down
 	walk_diag_southeast
-	walk_diag_southeast
-	face_up
+	face_down
 	step_end
 
-MinnieToFemalePlayer:
+MinnieToFemalePlayer::
+	applymovement 4, MinnieToFemalePlayerMV
+	waitmovement 4
+	return
+
+MinnieToFemalePlayerMV:
 	walk_down
 	walk_down
 	walk_down
 	walk_down
 	walk_right
 	walk_diag_southeast
-	walk_diag_southeast
-	face_up
+	face_down
 	step_end
 
 MinnieDiagFromPlayer:
 	walk_diag_northwest
 	face_down
+	step_end
+
+MinnieDiag1:
+	walk_diag_southeast
+	face_up
 	step_end
 
 AlsoMinnieMsg:
@@ -474,9 +508,15 @@ Ryu_HaremEventMale::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 12, NurseToDawn
+	waitmovement 12
+	applymovement OBJ_EVENT_ID_CAMERA, LRT_Cam2
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
 	applymovement 10, Common_Movement_FaceRight
 	msgbox LRT_HAREM_INTRO_Nurse
 	closemessage
+	call_if_set FLAG_RYU_RECRUITED_MINNIE, LRT_Harem_AlsoMinnie
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 10, Common_Movement_FaceRight
@@ -494,6 +534,13 @@ Ryu_HaremEventFemale::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox LRT_HAREM_INTRO_Lanette
 	closemessage
+	applymovement 12, NurseToBrendan
+	waitmovement 12
+	applymovement 10, Common_Movement_FaceLeft
+	msgbox LRT_HAREM_INTRO_Nurse
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 8, LanaToBrendan
 	waitmovement 8
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
@@ -502,10 +549,14 @@ Ryu_HaremEventFemale::
 	closemessage
 	applymovement 9, ShellyToBrendan
 	waitmovement 9
+	applymovement OBJ_EVENT_ID_CAMERA, LRT_Cam2
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox LRT_HAREM_INTRO_Shelly
 	closemessage
+	call_if_set FLAG_RYU_RECRUITED_MINNIE, LRT_Harem_AlsoMinnie
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	applymovement 7, Common_Movement_FaceLeft
@@ -522,7 +573,13 @@ LanetteToDawn:
 	walk_up
 	face_left
 	step_end
-	
+
+NurseToDawn:
+	walk_up
+	walk_up
+	face_left
+	step_end
+
 LanaToDawn:
 	walk_up
 	walk_up
@@ -545,7 +602,16 @@ LanetteToBrendan:
 	walk_up
 	face_right
 	step_end
-	
+
+NurseToBrendan:
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	face_right
+	step_end
+
 LanaToBrendan:
 	walk_up
 	walk_up
