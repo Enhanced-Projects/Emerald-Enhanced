@@ -785,6 +785,7 @@ int RyuMeloettaFormSwitcher(void)
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_MELOETTA)
             {
                 SetMonData(&gPlayerParty[i], MON_DATA_SPECIES, &m2);
+                CalculateMonStats(&gPlayerParty[i]);
                 VarSet(VAR_TEMP_9, i);
                 VarSet(VAR_TEMP_A, SPECIES_MELOETTA_PIROUETTE);
                 return 2;
@@ -793,6 +794,7 @@ int RyuMeloettaFormSwitcher(void)
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_MELOETTA_PIROUETTE)
             {
                 SetMonData(&gPlayerParty[i], MON_DATA_SPECIES, &m1);
+                CalculateMonStats(&gPlayerParty[i]);
                 VarSet(VAR_TEMP_9, i);
                 VarSet(VAR_TEMP_A, SPECIES_MELOETTA);
                 return 2;
