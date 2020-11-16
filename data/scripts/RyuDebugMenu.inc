@@ -207,14 +207,6 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setflag FLAG_RYU_DS_LEAF_PARTNERS
-	setflag FLAG_RYU_DS_JOY_PARTNERS
-	setflag FLAG_RYU_DS_SHELLY_PARTNERS
-	setflag FLAG_RYU_DS_DAWN_PARTNERS
-	setflag FLAG_RYU_DS_LANETTE_PARTNERS
-	setflag FLAG_RYU_RECRUITED_MINNIE
-	setflag FLAG_RYU_MINNIE_GAME_CLEAR
-	setvar VAR_RYU_PARTNER_COUNT, 5
 	release
 	end
 
@@ -381,16 +373,16 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
+	givemon SPECIES_MEGA_MEWTWO_Y, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
 	givemon SPECIES_MEGA_RAYQUAZA, BASE_MAX_LEVEL, ITEM_SCOPE_LENS
-	givemon SPECIES_MAGEARNA, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
-	setmonmove 0, 0, MOVE_FLY
-	setmonmove 0, 1, MOVE_CRUNCH
-	setmonmove 0, 2, MOVE_SACRED_SWORD
-	setmonmove 0, 3, MOVE_DRAGON_CLAW
-	setmonmove 1, 0, MOVE_MOONBLAST
-	setmonmove 1, 1, MOVE_THUNDERBOLT
-	setmonmove 1, 2, MOVE_SLUDGE_BOMB
-	setmonmove 1, 3, MOVE_MIRROR_SHOT
+	setmonmove 1, 0, MOVE_FLY
+	setmonmove 1, 1, MOVE_CRUNCH
+	setmonmove 1, 2, MOVE_SACRED_SWORD
+	setmonmove 1, 3, MOVE_DRAGON_CLAW
+	setmonmove 0, 0, MOVE_MOONBLAST
+	setmonmove 0, 1, MOVE_THUNDERBOLT
+	setmonmove 0, 2, MOVE_SLUDGE_BOMB
+	setmonmove 0, 3, MOVE_MIRROR_SHOT
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_3, 0
