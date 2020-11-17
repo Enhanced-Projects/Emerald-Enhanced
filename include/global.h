@@ -292,7 +292,7 @@ struct EmeraldBattleTowerRecord
     /*0x10*/ u16 greeting[EASY_CHAT_BATTLE_WORDS_COUNT];
     /*0x1C*/ u16 speechWon[EASY_CHAT_BATTLE_WORDS_COUNT];
     /*0x28*/ u16 speechLost[EASY_CHAT_BATTLE_WORDS_COUNT];
-    /*0x34*/ struct BattleTowerPokemon party[MAX_FRONTIER_PARTY_SIZE];
+    /*0x34*/ struct BattleTowerPokemon party[FRONTIER_DOUBLES_PARTY_SIZE];
     /*0xE4*/ u8 language;
     /*0xE8*/ u32 checksum;
 };

@@ -945,7 +945,7 @@ static bool8 ChooseSpecialBattleTowerTrainer(void)
             checksum += record[j];
         }
         validMons = 0;
-        for (j = 0; j < 4; j++)
+        for (j = 0; j < FRONTIER_DOUBLES_PARTY_SIZE; j++)
         {
             if (gSaveBlock2Ptr->frontier.towerRecords[i].party[j].species != 0
                 && gSaveBlock2Ptr->frontier.towerRecords[i].party[j].level <= GetFrontierEnemyMonLevel(lvlMode))
@@ -1773,7 +1773,7 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
 
     level = SetFacilityPtrsGetLevel();
     otID = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < FRONTIER_DOUBLES_PARTY_SIZE; i++)
     {
         u16 monId = gFrontierTempParty[i];
         CreateMonWithEVSpreadNatureOTID(&gEnemyParty[firstMonId + i],
@@ -2125,7 +2125,7 @@ static void sub_8163EE4(void)
         playerRecord->speechLost[i] = gSaveBlock1Ptr->easyChatBattleLost[i];
     }
 
-    for (i = 0; i < MAX_FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < FRONTIER_DOUBLES_PARTY_SIZE; i++)
     {
         if (gSaveBlock2Ptr->frontier.selectedPartyMons[i] != 0)
             sub_80686FC(&gPlayerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1], &playerRecord->party[i]);
@@ -2195,7 +2195,7 @@ static void GetRecordMixFriendMultiPartnerParty(u16 trainerId)
     u16 species2 = GetMonData(&gPlayerParty[1], MON_DATA_SPECIES, NULL);
 
     count = 0;
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < FRONTIER_DOUBLES_PARTY_SIZE; i++)
     {
         if (gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].party[i].species != species1
             && gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].party[i].species != species2
