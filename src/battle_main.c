@@ -2601,9 +2601,6 @@ void SpriteCb_WildMon(struct Sprite *sprite)
         SetHealthboxSpriteVisible(gHealthboxSpriteIds[sprite->sBattler]);
         sprite->callback = SpriteCb_WildMonAnimate;
         StartSpriteAnimIfDifferent(sprite, 0);
-        // Ryu: Xaman had this commented out because he wasn't sure what it was for, i think it's for egg's change, can't confirm.
-        // kageru: I tested it, and this palette change seems to make wild pokemon kind of grey for some reason.
-        // BeginNormalPaletteFade((0x10000 << sprite->sBattler), 0, 10, 10, RGB(8, 8, 8));
     }
     else
     {
