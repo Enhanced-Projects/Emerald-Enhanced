@@ -73,6 +73,13 @@ extern void ClearPokedexFlags();
 
 void ClearSav1(void)
 {
+    ResetPokedex();
+    ClearPokedexFlags();
+    CpuFill16(0, &gSaveblock1, sizeof(struct SaveBlock1) + sizeof(gSaveblock1_DMA));
+}
+
+void ClearSav1_SkipDex(void)
+{
     u8 dexSeenOld[DEX_FLAGS_NO];
     u8 dexCaughtOld[DEX_FLAGS_NO];
     u16 i;

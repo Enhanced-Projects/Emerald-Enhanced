@@ -12,6 +12,7 @@ extern struct PokemonStorage *gPokemonStoragePtr;
 
 void CheckForFlashMemory(void);
 void ClearSav2(void);
+void ClearSav1_SkipDex(void);
 void ClearSav1(void);
 void SetSaveBlocksPointers(u16 offset);
 void MoveSaveBlocks_ResetHeap(void);
