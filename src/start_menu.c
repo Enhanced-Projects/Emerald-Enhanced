@@ -1055,7 +1055,7 @@ void PlayNextTrack(void)
     u16 song = (VarGet(VAR_RYU_JUKEBOX));
     PlaySE(SE_PIN);
     PlayBGM(song);
-    RemovePrintedNumber();
+    //RemovePrintedNumber(); had to do it for song changing.
     PrintSongNumber(song);
 }
 
