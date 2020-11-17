@@ -1278,14 +1278,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_JUMPLUFF_1] = { // Jumpluff-SeedBomb
+    [FRONTIER_MON_JUMPLUFF_1] = { // Jumpluff-1attack
         .species = SPECIES_JUMPLUFF,
-        .moves = {MOVE_ACROBATICS, MOVE_SEED_BOMB, MOVE_SLEEP_POWDER, MOVE_SWORDS_DANCE},
+        .moves = {MOVE_ACROBATICS, MOVE_SLEEP_POWDER, MOVE_SWORDS_DANCE, MOVE_STRENGTH_SAP},
         .heldItem = ITEM_FLYING_GEM,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_BASTIODON_1] = { // Bastiodon-DualHazards
         .species = SPECIES_BASTIODON,
@@ -2160,14 +2160,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_JUMPLUFF_2] = { // Jumpluff-StrengthSap
+    [FRONTIER_MON_JUMPLUFF_2] = { // Jumpluff-2attacks
         .species = SPECIES_JUMPLUFF,
-        .moves = {MOVE_ACROBATICS, MOVE_STRENGTH_SAP, MOVE_SLEEP_POWDER, MOVE_SWORDS_DANCE},
+        .moves = {MOVE_ACROBATICS, MOVE_SECRET_POWER, MOVE_SWORDS_DANCE, MOVE_SLEEP_POWDER},
         .heldItem = ITEM_FLYING_GEM,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
-        .ivs = 31,
-        .ability = 2
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
+        .ivs = 29,
+        .ability = 0
     },
     [FRONTIER_MON_BASTIODON_2] = { // Bastiodon-Taunt
         .species = SPECIES_BASTIODON,
@@ -6264,7 +6264,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_ROTOM_WASH_2] = { // Rotom_Wash-BulkyLeftovers
+    [FRONTIER_MON_ROTOM_WASH_2] = { // Rotom_Wash-Bulky
         .species = SPECIES_ROTOM_WASH,
         .moves = {MOVE_HYDRO_PUMP, MOVE_VOLT_SWITCH, MOVE_WILL_O_WISP, MOVE_PAIN_SPLIT},
         .heldItem = ITEM_LEFTOVERS,

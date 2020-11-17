@@ -4814,9 +4814,9 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_HOPPIP] =
     {
-        .baseHP        = 35,
-        .baseAttack    = 35,
-        .baseDefense   = 40,
+        .baseHP        = 40,
+        .baseAttack    = 45,
+        .baseDefense   = 50,
         .baseSpeed     = 50,
         .baseSpAttack  = 35,
         .baseSpDefense = 55,
@@ -4831,7 +4831,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroup1 = EGG_GROUP_FAIRY,
         .eggGroup2 = EGG_GROUP_GRASS,
-        .abilities = {ABILITY_CHLOROPHYLL, ABILITY_LEAF_GUARD},
+        .abilities = {ABILITY_SPEED_BOOST, ABILITY_LEAF_GUARD},
         .abilityHidden = ABILITY_INFILTRATOR,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_PINK,
@@ -4839,9 +4839,9 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_SKIPLOOM] =
     {
-        .baseHP        = 55,
-        .baseAttack    = 45,
-        .baseDefense   = 50,
+        .baseHP        = 60,
+        .baseAttack    = 60,
+        .baseDefense   = 60,
         .baseSpeed     = 80,
         .baseSpAttack  = 45,
         .baseSpDefense = 65,
@@ -4856,7 +4856,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroup1 = EGG_GROUP_FAIRY,
         .eggGroup2 = EGG_GROUP_GRASS,
-        .abilities = {ABILITY_CHLOROPHYLL, ABILITY_LEAF_GUARD},
+        .abilities = {ABILITY_SPEED_BOOST, ABILITY_LEAF_GUARD},
         .abilityHidden = ABILITY_INFILTRATOR,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_GREEN,
@@ -4864,9 +4864,9 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_JUMPLUFF] =
     {
-        .baseHP        = 75,
-        .baseAttack    = 55,
-        .baseDefense   = 70,
+        .baseHP        = 85,
+        .baseAttack    = 75,
+        .baseDefense   = 80,
         .baseSpeed     = 110,
         .baseSpAttack  = 55,
         .baseSpDefense = 95,
@@ -4881,7 +4881,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroup1 = EGG_GROUP_FAIRY,
         .eggGroup2 = EGG_GROUP_GRASS,
-        .abilities = {ABILITY_CHLOROPHYLL, ABILITY_LEAF_GUARD},
+        .abilities = {ABILITY_SPEED_BOOST, ABILITY_LEAF_GUARD},
         .abilityHidden = ABILITY_INFILTRATOR,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_BLUE,
