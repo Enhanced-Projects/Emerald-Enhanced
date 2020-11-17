@@ -706,7 +706,7 @@
 #define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2                      0x29D
 #define FLAG_RYU_DEVON_LINE_FINISHED                                0x29E
 #define FLAG_RYU_DEVON_SCIENTIST                                    0x29F
-#define FLAG_UNUSED_0x2A0                                           0x2A0
+#define FLAG_RYU_PLAYER_NOOB                                        0x2A0
 #define FLAG_RYU_MEWTWO_OBTAINED                                    0x2A1
 #define FLAG_RYU_GROUDON_ENCOUNTERED                                0x2A2
 #define FLAG_RYU_LANA_EVENT14                                       0x2A3
