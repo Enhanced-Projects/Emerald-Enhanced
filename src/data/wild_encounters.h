@@ -150,7 +150,7 @@ const struct WildPokemon gRoute66_WaterMons[] =
 	{35, 45, SPECIES_CARVANHA},
 	{35, 45, SPECIES_WHISCASH},
 	{35, 45, SPECIES_WOOPER},
-	{35, 45, SPECIES_SLAKOTH},
+	{35, 45, SPECIES_FEEBAS},
 };
 
 const struct WildPokemonInfo gRoute66_WaterMonsInfo = {4, gRoute66_WaterMons};
@@ -164,8 +164,8 @@ const struct WildPokemon gRoute66_FishingMons[] =
 	{35, 45, SPECIES_QWILFISH},
 	{35, 45, SPECIES_CARVANHA},
 	{35, 45, SPECIES_REMORAID},
-	{35, 45, SPECIES_TYNAMO},
 	{35, 45, SPECIES_STUNFISK},
+	{35, 45, SPECIES_FEEBAS},
 	{35, 45, SPECIES_FEEBAS},
 };
 
@@ -1640,7 +1640,7 @@ const struct WildPokemon gRoute119_WaterMons[] =
 	{20, 25, SPECIES_WINGULL},
 	{15, 25, SPECIES_SHELLOS},
 	{25, 30, SPECIES_PELIPPER},
-	{25, 30, SPECIES_GASTRODON},
+	{25, 30, SPECIES_FEEBAS},
 };
 
 const struct WildPokemonInfo gRoute119_WaterMonsInfo = {4, gRoute119_WaterMons};
@@ -1655,7 +1655,7 @@ const struct WildPokemon gRoute119_FishingMons[] =
 	{25, 30, SPECIES_CARVANHA},
 	{30, 35, SPECIES_CARVANHA},
 	{20, 25, SPECIES_SHELLOS},
-	{35, 40, SPECIES_SHELLOS},
+	{35, 40, SPECIES_FEEBAS},
 	{40, 45, SPECIES_FEEBAS},//normal encounter, no tile-specific shenanigans
 };
 
