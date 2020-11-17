@@ -48,7 +48,6 @@ Iron:           [Power Herb + Tough Powder]
 Calcium:        [Power Herb + Smart Powder]
 Zinc:           [Power Herb + Resist Powder]
 Carbos:         [Power Herb + Swift Powder]
-Ether:          [Big Root + Fresh Water + Banana]
 Ether:          [Big Root + Lemonade]
 Elixir:         [2 Ether + Big Root]
 

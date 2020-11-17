@@ -227,7 +227,8 @@
 #define MAPSEC_MIRAGE_CAVE                  0xDF
 #define MAPSEC_UNDERWATER_SNOWY_SHORE       0xE0
 #define MAPSEC_UNDERWATER_FROSTY_FOREST     0xE1
-#define MAPSEC_NONE                         0xE2
+#define MAPSEC_LILYCOVE_TRAINING_CENTER     0xE2
+#define MAPSEC_NONE                         0xE3
 
 
 #define METLOC_SPECIAL_EGG                  0xFD
