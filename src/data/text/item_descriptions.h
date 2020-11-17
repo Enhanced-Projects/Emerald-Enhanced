@@ -2889,3 +2889,93 @@ static const u8 sOvalCharmDesc[] = _(
 static const u8 sRecipeBookDesc[] = _(
     "A book that stores\n"
     "known item recipes.");
+
+static const u8 sMusclePowderDesc[] = _(
+    "Sharply raises\n"
+    "Attack during\n"
+    "one battle.");
+
+static const u8 sToughPowderDesc[] = _(
+    "Sharply raises\n"
+    "Defense during\n"
+    "one battle.");
+
+static const u8 sSmartPowderDesc[] = _(
+    "Sharply raises\n"
+    "Sp. Atk during\n"
+    "one battle.");
+
+static const u8 sResistPowderDesc[] = _(
+    "Sharply raises\n"
+    "Sp. Def during\n"
+    "one battle.");
+
+static const u8 sSwiftPowderDesc[] = _(
+    "Sharply raises\n"
+    "Speed during\n"
+    "one battle.");
+
+static const u8 sFocusPowderDesc[] = _(
+    "Raises Accuracy\n"
+    "and crit rate\n"
+    "during one battle.");
+
+static const u8 sBananaDesc[] = _(
+    "A nutritious fruit\n"
+    "that restores a\n"
+    "little HP.");
+
+static const u8 sSmallSaladDesc[] = _(
+    "A tasty salad\n"
+    "that restores a\n"
+    "third of HP.");
+
+static const u8 sMediumSaladDesc[] = _(
+    "A savory salad\n"
+    "that restores two\n"
+    "thirds of HP.");
+
+static const u8 sLargeSaladDesc[] = _(
+    "A delicious salad\n"
+    "that fully\n"
+    "restores HP.");
+
+static const u8 sHealChowderDesc[] = _(
+    "A soup that heals\n"
+    "status and\n"
+    "restores 1/3 HP.");
+
+static const u8 sRevitalIceDesc[] = _(
+    "A delicous sorbet\n"
+    "that revives and\n"
+    "fully restores HP.");
+
+static const u8 sSeasideAlmondDesc[] = _(
+    "Protein rich and\n"
+    "found near sea.\n"
+    "Used in recipes.");
+
+static const u8 sSavannaMelonDesc[] = _(
+    "A melon encased in\n"
+    "a horned peel.\n"
+    "Used in recipes.");
+
+static const u8 sDeepseaKelpDesc[] = _(
+    "Calcium rich algae\n"
+    "found underwater.\n"
+    "Used in recipes.");
+
+static const u8 sFrostMintDesc[] = _(
+    "Resistance-raising\n"
+    "herb with a chill.\n"
+    "Used in recipes.");
+
+static const u8 sChimneyPepperDesc[] = _(
+    "Spicy chili that'll\n"
+    "get you moving.\n"
+    "Used in recipes.");
+
+static const u8 sJungleBeansDesc[] = _(
+    "Caffeine rich cacoa\n"
+    "from the jungle.\n"
+    "Used in recipes.");

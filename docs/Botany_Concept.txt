@@ -1,0 +1,89 @@
+Organic items:
+
+Tiny Mushroom    |    Revival Herb     |    Heart Scale
+Big Mushroom     |    Mental Herb      |    Shoal Salt
+Leek             |    White Herb       |    Shoal Shell
+Banana           |    Power Herb       |    Pearl
+Luminous Moss    |    Grassy Seed      |    Big Pearl
+Absorb Bulb      |    Psychic Seed     |    Seaside Almond
+Miracle Seed     |    Electric Seed    |    Savanna Melon
+Heal Powder      |    Misty Seed       |    Deepsea Kelp
+Energy Powder    |    Snowball         |    Frost Mint
+Energy Root      |    Hard Stone       |    Chimney Pepper
+Big Root         |    Soft Sand        |    Jungle Beans
+Never-Melt Ice   |    Charcoal         |
+
+______________________________________________________________________
+
+HP:                         Energy Powder   -->   HP Up
+Atk: Seaside Almond   -->   Muscle Powder   -->   Protein
+Def: Savanna Melon    -->   Tough Powder    -->   Iron
+SpA: Deepsea Kelp     -->   Smart Powder    -->   Calcium
+SpD: Frost Mint       -->   Resist Powder   -->   Zinc
+Spe: Chimney Pepper   -->   Swift Powder    -->   Carbos
+Acc: Jungle Beans     -->   Focus Powder
+
+______________________________________________________________________
+
+Recipes:
+
+CONSUMABLES
+Muscle Powder:  [Energy Powder + Banana + 2 Seaside Almond]
+Tough Powder:   [Energy Powder + Banana + 2 Savanna Melon]
+Smart Powder:   [Energy Powder + Banana + 2 Deepsea Kelp]
+Resist Powder:  [Energy Powder + Banana + 2 Frost Mint]
+Swift Powder:   [Energy Powder + Banana + 2 Chimney Pepper]
+Focus Powder:   [Energy Powder + Banana + 2 Jungle Beans]
+Small Salad:    [Leek + 2 Banana + Miracle Seed]
+Medium Salad:   [Grassy Seed + Tiny Mushroom + Absorb Bulb]
+Large Salad:    [Luminous Moss + Big Mushroom + Big Root]
+Heal Chowder:   [Heal Powder + Moomoo Milk]
+Lemonade:       [Fresh Water + Banana]
+Revital Ice:    [2 Snowball + Moomoo Milk + Banana]
+
+MEDICINE
+HP Up:          [Power Herb + Energy Powder]
+Protein:        [Power Herb + Muscle Powder]
+Iron:           [Power Herb + Tough Powder]
+Calcium:        [Power Herb + Smart Powder]
+Zinc:           [Power Herb + Resist Powder]
+Carbos:         [Power Herb + Swift Powder]
+Ether:          [Big Root + Fresh Water + Banana]
+Ether:          [Big Root + Lemonade]
+Elixir:         [2 Ether + Big Root]
+
+EVO STONES
+Fire Stone:     [Power Herb + Soft Sand + Fire Gem]
+Water Stone:    [Power Herb + Soft Sand + Water Gem]
+Thunder Stone:  [Power Herb + Soft Sand + Electric Gem]
+Leaf Stone:     [Power Herb + Soft Sand + Grass Gem]
+Moon Stone:     [Power Herb + Soft Sand + Ghost Gem]
+Sun Stone:      [Power Herb + Soft Sand + Psychic Gem]
+Shiny Stone:    [Power Herb + Soft Sand + Fairy Gem]
+Dusk Stone:     [Power Herb + Soft Sand + Dark Gem]
+Dawn Stone:     [Power Herb + Soft Sand + Normal Gem]
+Ice Stone:      [Power Herb + Soft Sand + Ice Gem]
+
+______________________________________________________________________
+
+New items and their effects::
+
+Muscle Powder:  Sharply raises Atk
+Tough Powder:   Sharply raises Def
+Smart Powder:   Sharply raises SpA
+Resist Powder:  Sharply raises SpD
+Swift Powder:   Sharply raises Spe
+Focus Powder:   Raises Acc and crit rate
+Banana:         Restores 5% of HP
+Small Salad:    Restores 33% of HP
+Medium Salad:   Restores 67% of HP
+Large Salad:    Restores 100% of HP
+Heal Chowder:   Restores 33% of HP and heals status
+Revital Ice:    Revives and fully restores
+
+Seaside Almond: No effect
+Savanna Melon:  No effect
+Deepsea Kelp:   No effect
+Frost Mint:     No effect
+Chimney Pepper: No effect
+Jungle Beans:   No effect
