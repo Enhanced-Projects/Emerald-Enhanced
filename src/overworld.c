@@ -196,6 +196,7 @@ u8 gLocalLinkPlayerId; // This is our player id in a multiplayer mode.
 u8 gFieldLinkPlayerCount;
 extern u8 RyuFollowerSelectNPCScript[];
 extern u8 Ryu_StartRandomBattle[];
+extern u8 Ryu_PlayerFailedNuzlockeHardcore[];
 
 // EWRAM vars
 EWRAM_DATA static u8 sObjectEventLoadFlag = 0;
@@ -397,6 +398,19 @@ void DoWhiteOut(void)
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuWipeParty();
 
+    FlagClear(FLAG_RYU_PERSISTENT_WEATHER);
+
+    if (CalculatePlayerPartyCount() == 0 && (FlagGet(FLAG_RYU_NUZLOCKEFAILED) == 1))
+    {
+        if (VarGet(VAR_RYU_NGPLUS_COUNT) > 1)
+        {
+            FlagSet(FLAG_SYS_GAME_CLEAR);
+            VarSet(VAR_RYU_NGPLUS_COUNT, ((VarGet(VAR_RYU_NGPLUS_COUNT) - 1)));
+        }
+        HandleSavingData(SAVE_OVERWRITE_DIFFERENT_FILE);
+        DoSoftReset();
+    }
+
     FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
     ScriptContext2_RunNewScript(EventScript_WhiteOut);
     SetMoney(&gSaveBlock1Ptr->money, ((GetMoney(&gSaveBlock1Ptr->money) / 5) * 4));
@@ -428,7 +442,7 @@ void DoPartnerWhiteOut(void)
     SetMoney(&gSaveBlock1Ptr->money, ((GetMoney(&gSaveBlock1Ptr->money) / 5) * 4));
     HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
-    if (&gSaveBlock2Ptr->playerGender == MALE)
+    if (&gSaveBlock2Ptr->playerGender == 0)
         RyuWarp();
     RyuWarp2();
 }
@@ -1736,6 +1750,7 @@ static void CB2_LoadMap2(void)
     SetFieldVBlankCallback();
     SetMainCallback1(CB1_Overworld);
     SetMainCallback2(CB2_Overworld);
+    ResetDexNavSearch();
 }
 
 void CB2_ReturnToFieldContestHall(void)
@@ -1889,7 +1904,14 @@ void CB2_ContinueSavedGame(void)
         ScriptContext2_Enable();
         ScriptContext1_SetupScript(Ryu_StartRandomBattle);
     }
-    
+
+    if (FlagGet(FLAG_RYU_NUZLOCKEFAILED) == 1)
+    {
+        FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
+        ScriptContext2_Enable();
+        ScriptContext1_SetupScript(Ryu_PlayerFailedNuzlockeHardcore);
+    }
+
     if (UseContinueGameWarp() == TRUE)
     {
         ClearContinueGameWarpStatus();

@@ -25,6 +25,14 @@ MtPyre_6F_EventScript_Cedric:: @ 8231D9D
 	msgbox MtPyre_6F_Text_CedricPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+MP_EmptyChanneler::
+	msgbox MP_BlankChanneler
+	release
+	end
+
+MP_BlankChanneler:
+	.string "I'm channeling the spirits.\nGo away.$"
+
 MtPyre_6F_Text_ValerieIntro: @ 8231DB4
 	.string "When I'm here…\n"
 	.string "A curious power flows into me…$"

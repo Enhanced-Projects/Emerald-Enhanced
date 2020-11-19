@@ -21,7 +21,6 @@ MF_SS_Devon::
 	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
 	clearflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
 	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
-	setvar VAR_METEOR_FALLS_STATE, 2
 	special DrawWholeMapView
 	release
 	end
@@ -44,7 +43,7 @@ MF_Event2start::
 	
 MF_MainEvent::
 	compare VAR_RYU_DEVON, 19
-	goto_if_eq MF_DevonEventNorth
+	goto_if_eq MF_DevonEventSouth
 	release
 	end
 	
@@ -74,33 +73,14 @@ MH_PlayerDownIntoScene:
 	walk_down
 	step_end
 
-	
-MF_DevonEventNorth::
-    compare VAR_TEMP_8, 1
-	goto_if_eq MF_DevonEventSouth
-	special SpawnCameraObject
-	playbgm MUS_MGM0, 0
-	delay 20
-	applymovement OBJ_EVENT_ID_CAMERA, MH_cameraPanDown
-	delay 30
-    applymovement 5, MF_Magma2Down
-	applymovement 6, MF_Magma1Down
-	msgbox MF_MagmaMsg2 MSGBOX_DEFAULT
+R114_AquaGoon::
+	msgbox SorryCantComeThrough
 	closemessage
-	playbgm MUS_GOTOWN, 0
-	msgbox MF_PlayerStepsIn MSGBOX_DEFAULT
-	applymovement 5, Common_Movement_ExclamationMark
-	applymovement 6, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, MH_PlayerDownIntoScene
-	applymovement 5, Common_Movement_FaceUp
-	applymovement 6, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
-	special RemoveCameraObject
-	msgbox MF_PlayerAttacksMagma MSGBOX_DEFAULT
-	cleartrainerflag TRAINER_GRUNT_16
-	savebgm MUS_GOTOWN
-	trainerbattle_single TRAINER_GRUNT_16, MF_MagmaFightIntro, MF_ellipsis, MF_DevonContd
+	release
+	end
+
+SorryCantComeThrough::
+	.string "Boss says I can't let any one through, sorry.$"
 	
 MF_DevonEventSouth::
 	playbgm MUS_MGM0, 0
@@ -123,9 +103,7 @@ MF_DevonContd::
 	bufferpartymonnick 0, 0
 	msgbox MF_PlayerWonVsMagma MSGBOX_DEFAULT
 	closemessage
-	compare VAR_TEMP_8, 1
-	goto_if_eq MF_continue_magma_south
-	goto MF_continue_magma_north
+	goto MF_continue_magma_south
 
 MH_camera2Move:
 	walk_fast_up
@@ -142,25 +120,6 @@ MF_continue_magma_south:
 	applymovement 8, MF_AquaRight @(6 right)
 	applymovement 7, MF_AquaRight
 	goto MF_continue_devon_south
-	
-MF_continue_magma_north:
-	applymovement OBJ_EVENT_ID_PLAYER, MF_PlayerStepLeft
-	waitmovement 0
-	applymovement 5, MF_MagmaEscape
-	applymovement 6, MF_MagmaEscape2
-	waitmovement 6
-	removeobject 6
-	removeobject 5
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, MH_camera2Move
-	waitmovement OBJ_EVENT_ID_CAMERA
-	special RemoveCameraObject
-	delay 20
-	playbgm MUS_AQA_0, 0
-	applymovement 8, MF_AquaRight @(6 right)
-	applymovement 7, MF_AquaRight
-	goto MF_continue_devon_north
 	
 MF_continue_devon_south::
 	applymovement 7, MF_ArchieMeetPlayerSouth
@@ -180,51 +139,6 @@ MF_continue_devon_south::
 	release
 	end
 	
-MF_continue_devon_north::
-	applymovement 7, MF_ArchieMeetPlayerNorth
-	waitmovement 7
-	msgbox MF_ArchieWarned MSGBOX_DEFAULT
-	closemessage
-	applymovement 8, Common_Movement_ExclamationMark
-	waitmovement 8
-	applymovement 8, MF_GruntToPlayerNorth
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	cleartrainerflag TRAINER_GRUNT_15
-	savebgm MUS_GOTOWN
-	trainerbattle_single TRAINER_GRUNT_15, MF_GruntAttacks, MF_ellipsis, MF_PlayerDevonContdNorth
-	release
-	end
-	
-MF_PlayerDevonContdNorth::
-	msgbox MF_GruntLost MSGBOX_DEFAULT
-	closemessage
-	applymovement 8, MF_AquaLeavesNorth
-	applymovement 7, MF_ArchieLeavesNorth
-	waitmovement 7
-	removeobject 8
-	removeobject 7
-	setvar VAR_RYU_DEVON, 20 @Player completed Meteor Falls. Go see Cozmo at his house in Fallarbor.
-	setvar VAR_METEOR_FALLS_STATE, 1
-	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
-	setflag FLAG_MET_ARCHIE_METEOR_FALLS
-	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
-	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
-	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
-	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
-	applymovement 9, MF_CozmoToPlayerNorth
-	waitmovement 9
-	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_FaceRight
-	msgbox MF_DM1_Cozmo MSGBOX_DEFAULT
-	closemessage
-	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
-	savebgm MUS_DAN03
-	applymovement 9, MF_CozmoLeavesNorth
-	waitmovement 9
-	removeobject 9
-	fadedefaultbgm
-	release
-	end
-	
 MF_PlayerDevonContdSouth::
 	delay 10
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
@@ -237,7 +151,6 @@ MF_PlayerDevonContdSouth::
 	removeobject 8
 	removeobject 7
 	setvar VAR_RYU_DEVON, 20
-	setvar VAR_METEOR_FALLS_STATE, 1
 	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
 	setflag FLAG_MET_ARCHIE_METEOR_FALLS
 	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
@@ -642,10 +555,7 @@ MF_DM1_Cozmo:
 MF_StartAqua::
 	setvar VAR_RYU_AQUA, 65 @start Meteor Falls Event
 	playbgm MUS_MGM0, 0
-	getplayerxy VAR_TEMP_3, VAR_TEMP_4
-	compare VAR_TEMP_4, 18
-	goto_if_gt MF_AquaSouth
-	goto MF_AquaNorth
+	goto MF_AquaSouth
 
 MF_AquaSouth::
     applymovement 5, MF_Magma2Down
@@ -725,94 +635,6 @@ MF_AquaSouthContd::
 	release
 	end
 	
-MF_AquaNorth: @This is basically a copy of the event above, but it was a logistical nightmare to make everything dynamic, so... :shrug:
-	special SpawnCameraObject
-	playbgm MUS_AQA_0
-	delay 20
-	applymovement OBJ_EVENT_ID_CAMERA, MH_cameraPanDown
-	waitmovement OBJ_EVENT_ID_CAMERA
-	delay 30
-	special RemoveCameraObject
-    applymovement 5, MF_Magma2Down
-	applymovement 6, MF_Magma1Down
-	msgbox MF_ThanksForMeteor
-	closemessage
-	addobject 7
-	addobject 8
-	applymovement 8, MF_AquaToCozmo
-	applymovement 7, MF_AquaToCozmo
-	waitmovement 7
-	msgbox MF_NotSoFast
-	closemessage
-	playse SE_PIN
-	applymovement 5, Common_Movement_ExclamationMark
-	applymovement 6, Common_Movement_ExclamationMark
-	waitmovement 6
-	msgbox MF_ResortingTo
-	closemessage
-	applymovement 5, Common_Movement_FaceRight
-	waitmovement 5
-	msgbox MF_TheLeaderOf
-	closemessage
-	goto AquaNorthContd
-
-AquaNorthContd::
-	applymovement 5, Common_Movement_FaceDown
-	waitmovement 5
-	msgbox MF_AndWithThis
-	closemessage
-	applymovement 6, Common_Movement_FaceLeft
-	waitmovement 6
-	msgbox MF_TimeToMake
-	closemessage
-	applymovement 5, MF_MagmaEscapeNorth
-	applymovement 6, MF_MagmaEscape2North
-	waitmovement 6
-	applymovement 7, MF_ArchieToPlayerNorth
-	waitmovement 7
-	msgbox MF_WhoMightYouBe
-	closemessage
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	waitmovement OBJ_EVENT_ID_PLAYER
-	msgbox MF_HahaIJest
-	closemessage
-	applymovement 8, MF_MattToPlayerNorth
-	waitmovement 8
-	msgbox MF_BossWeReally
-	closemessage
-	applymovement 7, Common_Movement_FaceLeft
-	waitmovement 7
-	msgbox MF_YoureRight
-	closemessage
-	applymovement 7, Common_Movement_FaceUp
-	waitmovement 7
-	msgbox MF_HowAboutIt, MSGBOX_YESNO
-	closemessage
-	compare VAR_RESULT, NO
-	goto_if_eq MF_PlayerChoseNoRomanceNorth
-	msgbox MF_OkayLetsGo
-	closemessage
-	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, MF_AquaReturnCameraToPlayer
-	waitmovement OBJ_EVENT_ID_CAMERA
-	special RemoveCameraObject
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement 7, MF_ArchieLeavesSouthAqua
-	applymovement 8, MF_MattLeavesSouth
-	waitmovement 8
-	removeobject 7
-	removeobject 8
-	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
-	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
-	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
-	setvar VAR_RYU_AQUA, 70 @Player is doing the romance line for aqua. Go to Mt Chihmney.
-	release
-	end
-	
 MF_PlayerChoseNoRomance::
 	setvar VAR_RYU_AQUA, 72 @Player chose the non-romance aqua line, report back to shelly.
 	applymovement 7, MF_ArchieLeavesNorthAqua
@@ -824,29 +646,6 @@ MF_PlayerChoseNoRomance::
 	msgbox  MF_OkayReturnToShelly
 	release
 	end
-	
-MF_PlayerChoseNoRomanceNorth::
-	setvar VAR_RYU_AQUA, 72 @Player chose the non-romance aqua line, report back to shelly.
-	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, MF_AquaReturnCameraToPlayer
-	waitmovement OBJ_EVENT_ID_CAMERA
-	special RemoveCameraObject
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement 7, MF_ArchieLeavesSouthAqua
-	applymovement 8, MF_MattLeavesSouth
-	waitmovement 8
-	removeobject 7
-	removeobject 8
-	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
-	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
-	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
-	msgbox  MF_OkayReturnToShelly
-	release
-	end
-	
 	
 MF_ThanksForMeteor:
 	.string "Thanks for the meteor, Professor.\n"

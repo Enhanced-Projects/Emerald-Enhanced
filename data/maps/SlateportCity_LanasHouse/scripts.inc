@@ -69,7 +69,7 @@ LH_alreadytalked::
 LH_EventStart::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
 	call_if_set FLAG_RYU_PLAYER_HELPING_AQUA, LH_AquaMember
-	call_if_set FLAG_RYU_PLAYER_HELPING_MAGMA, LH_MagmaMember
+	call_if_set FLAG_RYU_PLAYER_HELPING_MAGMA, LH_MagmaMember @Yo, Magma is like... Evil and stuff, didn't you know?
 	msgbox LH_BeginQuest MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LH_PlayerShoved
@@ -87,7 +87,7 @@ LH_EventStart::
 	end
 	
 LH_AquaMember::
-	goto_if_set FLAG_RYU_AQUA_BAD_END, LH_LeafBadEnd
+	goto_if_unset FLAG_RYU_AQUA_ALT_LINE, LH_LeafBadEnd @Player is working for Aqua and did not choose Shelly, aka good guys route.
 	return
 
 LH_MagmaMember::
@@ -130,6 +130,8 @@ LH_LeafNight:
 	fadenewbgm MUS_DUMMY
 	fadescreen 1
 	msgbox LH_LeafNightSceneMsg MSGBOX_DEFAULT
+	applymovement 2, LH_LeafToTable
+	waitmovement 2
 	delay 40
 	closemessage
 	fadedefaultbgm
@@ -205,6 +207,17 @@ LH_CourtneyLeave:
 	walk_left
 	walk_down
 	walk_down
+	step_end
+
+LH_LeafToTable:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
 	step_end
 
 LH_CourtneyCaughtMsg:

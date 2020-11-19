@@ -522,12 +522,7 @@ gSpecials:: @ 81DBA64
 	def_special CloseDeptStoreElevatorWindow
 	def_special TrySetBattleTowerLinkType
 	def_special checkbadgecount
-	def_special RyuSetEVHP
-	def_special RyuSetEVATK
-	def_special RyuSetEVDEF
-	def_special RyuSetEVSPATK
-	def_special RyuSetEVSPDEF
-	def_special RyuSetEVSPE
+	def_special RyuSetSlotStatEV
 	def_special RyuDevCheck
 	def_special RyuDawnGiftPoke
 	def_special RyuBrendanGiftPoke
@@ -584,3 +579,4 @@ gSpecials:: @ 81DBA64
 	def_special RyuGetTimeOfDay
 	def_special BotanyCheck
 	def_special RyuGetMaxBossChance
+	def_special RyuGetCurrentMapsec

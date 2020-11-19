@@ -82,27 +82,13 @@ void InitIntrHandlers(void);
 static void WaitForVBlank(void);
 void EnableVCountIntrAtLine150(void);
 
+#define B_START_SELECT (B_BUTTON | START_BUTTON | SELECT_BUTTON)
+
 void AgbMain()
 {
-#if MODERN
     // Modern compilers are liberal with the stack on entry to this function,
     // so RegisterRamReset may crash if it resets IWRAM.
-    RegisterRamReset(RESET_ALL & ~RESET_IWRAM);
-    asm("mov\tr1, #0xC0\n"
-        "\tlsl\tr1, r1, #0x12\n"
-        "\tmov r2, #0xFC\n"
-        "\tlsl r2, r2, #0x7\n"
-        "\tadd\tr2, r1, r2\n"
-        "\tmov\tr0, #0\n"
-        "\tmov\tr3, r0\n"
-        "\tmov\tr4, r0\n"
-        "\tmov\tr5, r0\n"
-        ".LCU0:\n"
-        "\tstmia r1!, {r0, r3, r4, r5}\n"
-        "\tcmp\tr1, r2\n"
-        "\tbcc\t.LCU0\n"
-    );
-#else
+#if !MODERN
     RegisterRamReset(RESET_ALL);
 #endif //MODERN
     *(vu16 *)BG_PLTT = 0x7FFF;
@@ -131,15 +117,20 @@ void AgbMain()
     gLinkTransferringData = FALSE;
     gUnknown_03000000 = 0xFC0;
 
+    mgba_open();
+    VarSet(VAR_LAST_KNOWN_GAME_VERSION, 7203);
+    //This should let me know what the original save file version was, so i can tell if someone used an old save or not.
+    if (VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION) == 0)
+        VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, VarGet(VAR_LAST_KNOWN_GAME_VERSION));
+    VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
+    FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
     for (;;)
     {
         ReadKeys();
 
-        if (!gSoftResetDisabled
-         && JOY_HELD_RAW(A_BUTTON)
-         && JOY_HELD_RAW(B_BUTTON)
-         && JOY_HELD_RAW(START_BUTTON)
-         && JOY_HELD_RAW(SELECT_BUTTON)) //The reset key combo A + B + START + SELECT
+        if (gSoftResetDisabled == FALSE
+         && (gMain.heldKeysRaw & A_BUTTON)
+         && (gMain.heldKeysRaw & B_START_SELECT) == B_START_SELECT)
         {
             rfu_REQ_stopMode();
             rfu_waitREQComplete();
@@ -168,10 +159,6 @@ void AgbMain()
         }
 
         PlayTimeCounter_Update();
-        VarSet(VAR_LAST_KNOWN_GAME_VERSION, 7103);
-        VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
-        FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
-        mgba_open();
         MapMusicMain(); 
         WaitForVBlank();
     }
@@ -267,7 +254,9 @@ static void ReadKeys(void)
 
     if (keyInput != 0 && gMain.heldKeys == keyInput)
     {
-        if (--gMain.keyRepeatCounter == 0)
+        gMain.keyRepeatCounter--;
+
+        if (gMain.keyRepeatCounter == 0)
         {
             gMain.newAndRepeatedKeys = keyInput;
             gMain.keyRepeatCounter = gKeyRepeatContinueDelay;
@@ -346,7 +335,7 @@ static void VBlankIntr(void)
 {
     if (gWirelessCommType != 0)
         RfuVSync();
-    else if (!gLinkVSyncDisabled)
+    else if (gLinkVSyncDisabled == FALSE)
         LinkVSync();
 
     gMain.vblankCounter1++;

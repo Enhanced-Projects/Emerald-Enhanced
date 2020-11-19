@@ -2430,6 +2430,12 @@ static void PlayerHandleDrawTrainerPic(void)
         gSprites[gBattlerSpriteIds[gActiveBattler]].callback = sub_805D7AC;
     }
 
+    if (FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION) == OPTIONS_TRANSITION_INSTANT)
+    {
+        gSprites[gBattlerSpriteIds[gActiveBattler]].pos2.x = 0;
+        gSprites[gBattlerSpriteIds[gActiveBattler]].pos2.y = 0;
+        gSprites[gBattlerSpriteIds[gActiveBattler]].callback = SpriteCallbackDummy;
+    }
     gBattlerControllerFuncs[gActiveBattler] = CompleteOnBattlerSpriteCallbackDummy;
 }
 
@@ -2781,8 +2787,6 @@ static void PlayerHandleHealthBarUpdate(void)
 
     LoadBattleBarGfx(0);
     hpVal = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
-    if(gBattleMoveDamage >= gBattleMons[gBattlerTarget].hp)
-        hpVal = INSTANT_HP_BAR_DROP;
 
     // gPlayerPartyLostHP used by Battle Dome, but never read
     if (hpVal > 0)

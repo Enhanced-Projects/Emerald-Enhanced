@@ -1,20 +1,362 @@
-LilycoveCity_PokemonCenter_2F_MapScripts:: @ 821C75D
-	map_script ON_FRAME, CableClub_OnFrame
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, CableClub_OnWarp
+LilycoveCity_PokemonCenter_2F_MapScripts:: @ Linking should be disabled here since i needed to use the map scripts.
+	map_script ON_FRAME, LCPC_OnFrameScript
+	map_script ON_WARP, LCPC_OnWarpScripts
 	map_script ON_LOAD , CableClub_OnLoad
-	map_script ON_TRANSITION, CableClub_OnTransition
 	.byte 0
 
-@ The below 3 are unused and leftover from RS
-LilycoveCity_PokemonCenter_2F_EventScript_Colosseum:: @ 821C772
-	call CableClub_EventScript_Colosseum
+LCPC_SwitchToAlternateGuard::
+	compare VAR_RYU_DS_NURSE_STAGE, 10
+	goto_if_ne LCPC_NormalLayout
+	addobject 6
+	removeobject 1
 	end
 
-LilycoveCity_PokemonCenter_2F_EventScript_TradeCenter:: @ 821C778
-	call CableClub_EventScript_TradeCenter
+LCPC_NormalLayout::
+	addobject 1
+	removeobject 6
 	end
 
-LilycoveCity_PokemonCenter_2F_EventScript_RecordCorner:: @ 821C77E
-	call CableClub_EventScript_RecordCorner
+LCPC_OnWarpScripts::
+	map_script_2 VAR_RYU_DS_NURSE_STAGE, 8, LCPC_DoNurseSceneSetup
+	map_script_2 VAR_RYU_DS_NURSE_STAGE, 10, LCPC_SwitchToAlternateGuard
+	.2byte 0
+
+LCPC_OnFrameScript::
+	map_script_2 VAR_RYU_DS_NURSE_STAGE, 9, LCPC_DoNurseScene
+	.2byte 0
+
+LCPC_DoNurseSceneSetup::
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	setobjectxy OBJ_EVENT_ID_FOLLOWER, 2, 6
+	addobject 1
+	setvar VAR_RYU_DS_NURSE_STAGE, 9
 	end
+
+LCPC_YouMayEnter::
+	msgbox LCPC_ApprovedPassageMsg
+	release
+	end
+
+LCPC_ApprovedPassageMsg:
+	.string "Joy has informed me to allow\nyou passage. You may enter.$"
+
+LCPC_blockedPassageMsg:
+	.string "The nurse doesn't allow anyone\nbesides myself and her inside.\lSorry.$"
+
+LCPC_NurseGuard::
+	msgbox LCPC_blockedPassageMsg
+	release
+	end
+
+LCPC_DoNurseScene::
+	lockall
+	setvar VAR_RYU_DS_NURSE_STAGE, 10
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox LCPC_OneMomentPlease
+	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	applymovement OBJ_EVENT_ID_FOLLOWER, LCPC_NurseToGuard
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement 1, Common_Movement_StepLeft
+	waitmovement 1
+	applymovement 1, Common_Movement_FaceDown
+	waitmovement 1
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, LCPC_StepInPlaceDownTwice
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	msgbox LCPC_PlayerComeHere
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, LCPC_PlayerToNurse
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox LCPC_LetsGoIn
+	closemessage
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	playse SE_KAIDAN
+	waitse
+	call RF_FollowerLeaveCall
+	applymovement OBJ_EVENT_ID_PLAYER, LCPC_PlayerToNurseRoom
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_KAIDAN
+	waitse
+	setvar VAR_TEMP_8, 69
+	warpsilent MAP_LILYCOVE_CITY_POKEMON_CENTER_2F, 255, 2, 21
+	waitstate
+	
+LCPC_NurseFollowerQuery::
+	msgbox LCPC_NurseFollowerQueryMsg, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_ne LCPC_NurseDispt
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RF_FollowerLeaveCall
+	removeobject 5
+	createfollower OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_EAST
+	setflag FLAG_RYU_HIDE_JOY
+	release
+	end
+	
+LCPC_NurseDispt::
+	msgbox LCPC_NurseDisappointed
+	closemessage
+	release
+	end
+
+LCPC_NurseNight::
+	lockall
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RF_FollowerLeaveCall
+	faceplayer
+	drawfullscreenimage SCENEBGNURSE
+	goto_if_set FLAG_TEMP_9, LCPC_NurseAfterNight1
+	goto_if_set FLAG_RYU_DS_JOY_PARTNERS, LCPC_NurseNight2
+	msgbox LCPC_NurseStayQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_ne LCPC_NurseFollowerQuery
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	msgbox LCPC_NurseStayNight1
+	closemessage
+	applymovement 5, LCPC_NurseToBed
+	waitmovement 5
+	specialvar VAR_RESULT, GetPlayerFacingDirection
+	switch VAR_RESULT
+	case DIR_NORTH, LCPC_PlayerSouth
+	case DIR_EAST, LCPC_PlayerWest
+	case DIR_SOUTH, LCPC_PlayerNorth
+	goto ryu_end
+	
+LCPC_NurseNight2::
+	goto_if_set FLAG_TEMP_8, LCPC_NurseAfterNight2
+	msgbox LCPC_NurseStayNight2Query, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	clearfullscreenimage
+	goto_if_ne LCPC_NurseFollowerQuery
+	msgbox LCPC_NurseStayNight2
+	closemessage
+	applymovement 5, LCPC_NurseToBed
+	waitmovement 5
+	specialvar VAR_RESULT, GetPlayerFacingDirection
+	switch VAR_RESULT
+	case DIR_NORTH, LCPC_PlayerSouth
+	case DIR_EAST, LCPC_PlayerWest
+	case DIR_SOUTH, LCPC_PlayerNorth
+	goto ryu_end
+	
+LCPC_PlayerSouth::
+	applymovement OBJ_EVENT_ID_PLAYER, LCPC_PlayerToBed1
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto_if_set FLAG_RYU_DS_JOY_PARTNERS, LCPC_ContinueNightScene2
+	goto LCPC_ContinueNightScene1
+
+LCPC_PlayerWest::
+	applymovement OBJ_EVENT_ID_PLAYER, LCPC_PlayerToBed2
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto_if_set FLAG_RYU_DS_JOY_PARTNERS, LCPC_ContinueNightScene2
+	goto LCPC_ContinueNightScene1
+
+LCPC_PlayerNorth::
+	applymovement OBJ_EVENT_ID_PLAYER, LCPC_PlayerToBed3
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto_if_set FLAG_RYU_DS_JOY_PARTNERS, LCPC_ContinueNightScene2
+	goto LCPC_ContinueNightScene1
+	
+LCPC_ContinueNightScene1::
+	fadescreenspeed FADE_TO_BLACK, 5
+	fadeoutbgm 2
+	msgbox LCPC_PlayerNurseSnuggle
+	closemessage
+	delay 60
+	fadeinbgm 2
+	msgbox LCPC_PlayerWakesUp
+	closemessage
+	setobjectxy 5, 4, 19
+	turnobject 5, DIR_EAST
+	fadescreenspeed FADE_FROM_BLACK, 2
+	setflag FLAG_TEMP_9
+	setflag FLAG_RYU_DS_JOY_PARTNERS
+	addvar VAR_RYU_PARTNER_COUNT, 1
+	release
+	end
+	
+LCPC_ContinueNightScene2::
+	fadescreenspeed FADE_TO_BLACK, 5
+	fadeoutbgm 2
+	msgbox LCPC_PlayerNurseSnuggle2
+	closemessage
+	delay 60
+	fadeinbgm 2
+	msgbox LCPC_PlayerWakesUp2
+	closemessage
+	setobjectxy 5, 4, 19
+	turnobject 5, DIR_EAST
+	fadescreenspeed FADE_FROM_BLACK, 2
+	setflag FLAG_TEMP_8
+	release
+	end
+	
+LCPC_NurseAfterNight1:
+	msgbox LCPC_HiPlayerThanksFor
+	closemessage
+	clearfullscreenimage
+	turnobject 5, DIR_EAST
+	release
+	end
+	
+LCPC_NurseAfterNight2::
+	msgbox LCPC_HiPlayerThanksAgain
+	closemessage
+	clearfullscreenimage
+	turnobject 5, DIR_EAST
+	releaseall
+	end
+
+LCPC_OneMomentPlease:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}One moment please.$"
+
+LCPC_PlayerComeHere:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}, come on over.$"
+
+LCPC_LetsGoIn:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}This is my private quarters.\p"
+    .string "No one but me and my attendant have\n"
+    .string "ever set foot in here.\p"
+    .string "I hope the pink doesn't bother you\n"
+    .string "too much...$"
+	
+LCPC_NurseFollowerQueryMsg:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Would you like a companion\n"
+	.string "for your travels?$"
+	
+LCPC_NurseDisappointed:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh... Okay, then...\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She looks very sad)$"
+
+LCPC_NurseStayQuery:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hey... did you want to spend the\n"
+    .string "night with me?$"
+
+LCPC_NurseStayNight2Query:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Are you here to stay with\nme again?$"
+
+LCPC_NurseStayNight1:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay... good. I'm ready!\p"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She's looking rather nervous.\n"
+    .string " better be gentle...)\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}My bed's over here...$"
+
+LCPC_PlayerNurseSnuggle:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Even though she's older than you,\n"
+    .string " she seems so innocent...\p"
+    .string " She's very soft... and warm... and\n"
+    .string " you can't help but love her...)$"
+
+LCPC_PlayerWakesUp:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(When you wake up, the room is very\n"
+    .string " warm. Joy seems to be sitting at her\l"
+    .string " computer, doing some work.)$"
+	
+LCPC_NurseStayNight2:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She seems very happy to see you.\n"
+    .string " As if she was looking forward\l"
+    .string " to you visiting her.)\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I couldn't resist staying the night\n"
+    .string "with you if I tried.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh... well I'm happy that you enjoy\n"
+    .string "my company so much!$"
+
+LCPC_PlayerNurseSnuggle2:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Joy and {PLAYER} enter a blissful\n"
+    .string " dreamland together and get a good,\l"
+    .string " long, well deserved rest.)$"
+
+LCPC_PlayerWakesUp2:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Once again you wake up in the very\n"
+    .string " warm and aromatic room, and see Joy\l"
+    .string " sitting at her computer.)$"
+
+LCPC_HiPlayerThanksFor:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Good morning, {PLAYER}. I hope you\n"
+    .string "slept well... I certainly did.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Yes, I've never felt so comfortable\n"
+    .string "in my life before last night.\p"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She blushes and turns away)\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Thanks... Me too...$"
+
+LCPC_HiPlayerThanksAgain:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Good morning, {PLAYER}!\n"
+    .string "Can I get you something? Coffee? Tea?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}No, I'm fine, thanks. Waking up to\n"
+    .string "see your beautiful face is more than\l"
+    .string "enough to kickstart my day.\p"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Her face turns beet red.)\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh... my... um... okay...\n"
+	.string "Well, good luck on your travels!$"
+
+LCPC_NurseToGuard:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	step_end
+
+LCPC_StepInPlaceDownTwice:
+	walk_in_place_fast_down
+	walk_in_place_fast_down
+	step_end
+	
+LCPC_PlayerToNurse:
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	step_end
+
+LCPC_PlayerToNurseRoom:
+	walk_up
+	walk_up
+	step_end
+	
+LCPC_NurseToBed:
+	walk_up
+	walk_up
+	walk_slow_left
+	face_down
+	step_end
+	
+LCPC_PlayerToBed1:
+	walk_left
+	walk_up
+	walk_left
+	walk_up
+	walk_up
+	walk_slow_right
+	face_right
+	step_end
+
+LCPC_PlayerToBed2:
+	walk_left
+	walk_up
+	walk_up
+	walk_slow_right
+	face_right
+	step_end
+	
+LCPC_PlayerToBed3:
+	walk_up
+	walk_slow_left
+	step_end
+
+
+
+
+
+
+
+
+
+
 

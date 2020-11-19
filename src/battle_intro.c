@@ -10,6 +10,7 @@
 #include "task.h"
 #include "trig.h"
 #include "constants/trainers.h"
+#include "event_data.h" //so it can see vars and flags
 
 static EWRAM_DATA u16 sBgCnt = 0;
 
@@ -21,6 +22,7 @@ static void BattleIntroSlide2(u8);
 static void BattleIntroSlide3(u8);
 static void BattleIntroSlideLink(u8);
 static void BattleIntroSlidePartner(u8);
+static void sub_811828C(u8);
 
 static const TaskFunc sBattleIntroSlideFuncs[] =
 {
@@ -102,10 +104,25 @@ int GetAnimBgAttribute(u8 bgId, u8 attributeId)
     return 0;
 }
 
+static void Task_InstantIntro(u8 taskId)
+{
+    gIntroSlideFlags &= ~1;
+    gScanlineEffect.state = 3;
+    gTasks[taskId].data[0]++;
+    CpuFill32(0, (void *)BG_SCREEN_ADDR(28), BG_SCREEN_SIZE);
+    SetBgAttribute(1, BG_ATTR_CHARBASEINDEX, 0);
+    SetBgAttribute(2, BG_ATTR_CHARBASEINDEX, 0);
+    SetGpuReg(REG_OFFSET_BG1CNT, BGCNT_PRIORITY(0) | BGCNT_CHARBASE(0) | BGCNT_16COLOR | BGCNT_SCREENBASE(28) | BGCNT_TXT256x512);
+    SetGpuReg(REG_OFFSET_BG2CNT, BGCNT_PRIORITY(0) | BGCNT_CHARBASE(0) | BGCNT_16COLOR | BGCNT_SCREENBASE(30) | BGCNT_TXT512x256);
+    sub_811828C(taskId);
+}
+
 void HandleIntroSlide(u8 terrain)
 {
     u8 taskId;
 
+    if (FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION) == OPTIONS_TRANSITION_INSTANT)
+        taskId = CreateTask(Task_InstantIntro, 0);
     if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) && gPartnerTrainerId != TRAINER_STEVEN_PARTNER && gPartnerTrainerId < TRAINER_CUSTOM_PARTNER)
     {
         taskId = CreateTask(BattleIntroSlidePartner, 0);

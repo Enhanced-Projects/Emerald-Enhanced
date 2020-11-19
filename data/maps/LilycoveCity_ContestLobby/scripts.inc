@@ -319,6 +319,7 @@ LilycoveCity_ContestLobby_Movement_LinkArtistReturnToPlayer: @ 821A54B
 
 @ EventScript_SpeakToContestReceptionist either ends or returns after a contest entry is submitted
 LilycoveCity_ContestLobby_EventScript_ContestReceptionist:: @ 821A554
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	special ClearLinkContestFlags
 	specialvar VAR_RESULT, IsContestDebugActive  @ Always FALSE
 	compare VAR_RESULT, TRUE

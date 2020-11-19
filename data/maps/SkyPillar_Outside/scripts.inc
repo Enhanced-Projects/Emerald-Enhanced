@@ -6,7 +6,6 @@ SkyPillar_Outside_OnTransition: @ 82392B8
 
 SP_Guardian::
 	lockall
-	goto_if_unset FLAG_RYU_DEVON_LINE_FINISHED, SP_NoEntryDevonNotDone
 	checkitem ITEM_TRI_PASS, 1
 	compare VAR_RESULT, 1
 	goto_if_ne SP_NoEntryNoDevonCard
@@ -20,10 +19,10 @@ SP_Guardian::
 	setmetatile 14, 5, 690, 0
 	setmetatile 14, 4, 682, 0
 	special DrawWholeMapView
-	applymovement 2, Common_Movement_StepLeft
-	waitmovement 2
-	applymovement 2, Common_Movement_FaceDown
-	waitmovement 2
+	applymovement 1, Common_Movement_StepLeft
+	waitmovement 1
+	applymovement 1, Common_Movement_FaceDown
+	waitmovement 1
 	release
 	end
 	

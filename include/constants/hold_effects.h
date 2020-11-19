@@ -134,6 +134,7 @@
 #define HOLD_EFFECT_SEEDS            151
 #define HOLD_EFFECT_ADRENALINE_ORB   152
 #define HOLD_EFFECT_MEMORY           153
+#define HOLD_EFFECT_PLATE            154
 
 // Custom hold effects
 #define HOLD_EFFECT_DRY_ICE           154

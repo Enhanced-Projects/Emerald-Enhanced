@@ -780,13 +780,14 @@ static const struct MenuAction MultichoiceList_114[] =
 
 static const struct MenuAction MultichoiceList_RyuDebugMulti[] =
 {
-    {gText_PasscodeMenu},
     {gText_Utilities},
+    {gText_PasscodeMenu},
     {gText_QuickStart},
     {gText_PokeEdit},
     {gText_TownFlags},
     {gText_ItemsKit},
     {gText_DisableDevMode},
+    {gText_ShowBetaMenu},
     {gText_DebugCancel},
 };
 
@@ -975,7 +976,7 @@ static const struct MenuAction MultichoiceList_132[]=
 
 static const struct MenuAction MultichoiceList_133[]=
 {
-    {gText_RyuBetaMenuBlank},
+    {gText_BetaMenuShowSaveVersion},
     {gText_RyuBetaMenuBlank},
     {gText_RyuBetaMenuViewQuestVars},
     {gText_RyuBetaMenuResetTempBattleFlags},
@@ -1231,6 +1232,13 @@ static const struct MenuAction MultiChoiceList_MagmaMachineKitMenu[]=
     {gText_Exit}
 };
 
+static const struct MenuAction MultiChoiceList_BotanyBookChapterSelect[]=
+{
+    {gText_RyuBotanyConsumableChapter},
+    {gText_RyuBotanyMedicinesChapter},
+    {gText_RyuBotanyEvolutionChapter},
+    {gText_RyuBotanyExitBook},
+};
 
 static const struct MenuAction MultichoiceList_Exit[] =
 {
@@ -1402,6 +1410,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_MAGMA_CHOICE]               = MULTICHOICE(MultichoiceList_MagmaIntroChoice),
     [MULTI_MAGMA_MACHINE]              = MULTICHOICE(MultiChoiceList_MagmaMachineMenu),
     [MULTI_MAGMA_MACHINE_KITS]         = MULTICHOICE(MultiChoiceList_MagmaMachineKitMenu),
+    [MULTI_BOTANY_CHAPTER_SELECT]      = MULTICHOICE(MultiChoiceList_BotanyBookChapterSelect),
 };
 
 const u8 *const gStdStrings[] =

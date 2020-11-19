@@ -691,7 +691,6 @@ DC_OnQuest1::
 	msgbox DC_M1Desc MSGBOX_DEFAULT
 	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
 	clearflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
-	setvar VAR_METEOR_FALLS_STATE, 2
 	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
 	release
 	end
@@ -827,6 +826,7 @@ DC_Afterstory:
 	goto_if_set FLAG_DEFEATED_RAYQUAZA, DC_AfterAfterStory
 	goto_if_unset FLAG_SYS_GAME_CLEAR, DC_NotReadyYet
 	msgbox DC_AfterstoryMsg
+	giveitem ITEM_TRI_PASS
 	setvar VAR_RYU_DEVON, 69
 	release
 	end
@@ -840,6 +840,7 @@ DC_NotReadyYet::
 	
 DC_AfterAfterStory::
 	msgbox DC_AASMsg
+	additem ITEM_TRI_PASS @for those who didn't get it before.
 	closemessage
 	release
 	end

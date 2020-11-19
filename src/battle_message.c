@@ -517,7 +517,7 @@ static const u8 sText_TwoInGameTrainersDefeated[];
 static const u8 sText_Trainer2LoseText[];
 
 // New battle strings.
-static const s8 sText_EnduredViaSturdy[] = _("{B_DEF_NAME_WITH_PREFIX} ENDURED\nthe hit using {B_DEF_ABILITY}!");
+static const s8 sText_EnduredViaSturdy[] = _("{B_DEF_NAME_WITH_PREFIX} endured\nthe hit using {B_DEF_ABILITY}!");
 static const s8 sText_PowerHerbActivation[] = _("{B_ATK_NAME_WITH_PREFIX} became fully charged\ndue to its {B_LAST_ITEM}!");
 static const s8 sText_HurtByItem[] = _("{B_ATK_NAME_WITH_PREFIX} was hurt\nby its {B_LAST_ITEM}!");
 static const s8 sText_BadlyPoisonedByItem[] = _("{B_EFF_NAME_WITH_PREFIX} was badly \npoisoned by the {B_LAST_ITEM}!");
@@ -685,11 +685,9 @@ static const u8 sText_RyuItDealtNVEOverkillDamage[] = _("Its move wasn't very ef
 static const u8 sText_RyuItDealtOHKOOverkillDamage[] = _("{B_ATK_NAME_WITH_PREFIX} executed {B_DEF_NAME_WITH_PREFIX}\nfor {STR_VAR_3} damage!");
 static const u8 sText_RyuItDealtDamageHungOn[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_3} damage but\n{B_DEF_NAME_WITH_PREFIX} barely clung to life anyway!");
 static const u8 sText_RyuItDealtNoDamage[] = _("{B_ATK_NAME_WITH_PREFIX} didn't do any damage.");
-static const u8 sText_RyuSimulationDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_1} damage.");
 static const u8 sText_RyuBossModeHeal[] = _("Ryu's legendary status\nrecovers health for their Pokemon.");
 static const u8 sText_RyuBossRaisedStats[] = _("Ryu's legendary status\nraises offenses for their Pokemon.");
 static const u8 sText_RyuBossWildStatBoost[] = _("The wild Pokémon emits an\nopressive aura...");
-static const u8 sText_RyuSimulationCritDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {STR_VAR_1} damage\nwith a critical hit.");
 static const u8 sText_RyuPkmnResolvedToFight[] = _("{B_DEF_NAME_WITH_PREFIX} has resolved to stick\nthis fight out.");
 static const u8 sText_RyuMimikyuDisguiseBlocked[] = _("Its disguise served it as a decoy!");
 static const u8 sText_AttackerCuredTargetStatus[] = _("{B_ATK_NAME_WITH_PREFIX} cured\n{B_DEF_NAME_WITH_PREFIX}'s problem!");
@@ -703,9 +701,11 @@ static const u8 sText_CloakedInAFreezingLight[] = _("{B_ATK_NAME_WITH_PREFIX} be
 static const u8 sText_HailIsBrewing[] = _("A hail storm is brewing...");
 static const u8 sText_FireFizzledOut[] = _("The Fire-type attack fizzled\nout in the heavy rain!");
 static const u8 sText_WaterEvaporated[] = _("The Water-type attack evaporated\nin the harsh sunlight!");
+static const u8 sText_StatWasNotLowered[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\nwas not lowered!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
+    [STRINGID_STATWASNOTLOWERED - 12] = sText_StatWasNotLowered,
     [STRINGID_CLOAKEDINAFREEZINGLIGHT - 12] = sText_CloakedInAFreezingLight,
     [STRINGID_DESTINYKNOTACTIVATES - 12] = sText_DestinyKnotActivates,
     [STRINGID_NOONEWILLBEABLETORUNAWAY - 12] = sText_NoOneWillBeAbleToRun,
@@ -3619,7 +3619,7 @@ void BattlePutTextOnWindow(const u8 *text, u8 windowId)
     printerTemplate.currentY = printerTemplate.y;
     printerTemplate.letterSpacing = textInfo[windowId].letterSpacing;
     printerTemplate.lineSpacing = textInfo[windowId].lineSpacing;
-    printerTemplate.style = 0;
+    printerTemplate.unk = 0;
     printerTemplate.fgColor = textInfo[windowId].fgColor;
     printerTemplate.bgColor = textInfo[windowId].bgColor;
     printerTemplate.shadowColor = textInfo[windowId].shadowColor;

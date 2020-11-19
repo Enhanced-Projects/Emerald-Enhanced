@@ -372,10 +372,11 @@ TC_StatShopGiveImprinter::
 	msgbox BuyImprinter MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne TC_StatShopNoBuyImprinter
-	checkmoney 65000
+	checkmoney 22500
 	compare VAR_RESULT, 0
 	goto_if_eq TC_StatShopCantAffordImprinter
-	takemoney 65000
+	setvar VAR_TEMP_B, 22500
+	takemoney VAR_TEMP_B
 	additem ITEM_IMPRINTER
 	msgbox TC_BoughtImprinter MSGBOX_DEFAULT
 	waitmessage
@@ -383,7 +384,7 @@ TC_StatShopGiveImprinter::
 	goto TC_Imprint_Shop
 	
 BuyImprinter:
-	.string "In order to use these items,\nyou must have an Imprinter.\pWould you like to buy an Imprinter\nfor ¥65000?$"
+	.string "In order to use these items,\nyou must have an Imprinter.\pWould you like to buy an Imprinter\nfor ¥22500?$"
 	
 TC_StatShopNoBuyImprinter::
 	msgbox TC_DidntBuyImprinter MSGBOX_DEFAULT
@@ -399,7 +400,7 @@ TC_StatShopCantAffordImprinter::
 	end
 	
 TC_CantaffordImprinterMsg:
-	.string "You can't afford the Imprinter.\nYou need ¥65000 to buy it.$"
+	.string "You can't afford the Imprinter.\nYou need ¥22500 to buy it.$"
 	
 TC_BoughtImprinter:
 	.string "Enjoy your Imprinter!$"
@@ -407,11 +408,6 @@ TC_BoughtImprinter:
 	@.align 2
 TC_Imprint_Mart:
 	.2byte ITEM_WAVE_MAIL
-	.2byte ITEM_BEAD_MAIL
-	.2byte ITEM_SHADOW_MAIL
-	.2byte ITEM_TROPIC_MAIL
-	.2byte ITEM_DREAM_MAIL
-	.2byte ITEM_FAB_MAIL
 	.2byte ITEM_NONE
 	
 TC_Imprint_Txt:
@@ -440,7 +436,8 @@ TC_TutDisabled:
 	
 TC_SelectSlot::
 	msgbox TC_WhichSlot MSGBOX_DEFAULT
-	multichoicedefault 1, 1, 118, 0, 0
+	call RyuBufferPartyMonNames
+	multichoicedefault 1, 1, MULTI_SELECT_PARTY_SLOT, 0, 0
 	switch VAR_RESULT
 	case 0, TC_Slot1Selected
 	case 1, TC_Slot2Selected

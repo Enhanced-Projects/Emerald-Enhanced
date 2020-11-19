@@ -945,7 +945,7 @@ static bool8 ChooseSpecialBattleTowerTrainer(void)
             checksum += record[j];
         }
         validMons = 0;
-        for (j = 0; j < 4; j++)
+        for (j = 0; j < FRONTIER_DOUBLES_PARTY_SIZE; j++)
         {
             if (gSaveBlock2Ptr->frontier.towerRecords[i].party[j].species != 0
                 && gSaveBlock2Ptr->frontier.towerRecords[i].party[j].level <= GetFrontierEnemyMonLevel(lvlMode))
@@ -1381,7 +1381,7 @@ u8 GetFrontierOpponentClass(u16 trainerId)
     }
     else if (trainerId == TRAINER_FRONTIER_BRAIN)
     {
-        return GetFrontierBrainTrainerClass(); // This sticks out like a sore thumb, but this is the only other way that matches. Maybe it SHOULD be assigned to ret, or all early returns. I don't know.
+        return GetFrontierBrainTrainerClass();
     }
     else if (trainerId == TRAINER_STEVEN_PARTNER)
     {
@@ -1579,7 +1579,7 @@ static void FillTentTrainerParty(u8 monsCount)
 static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
 {
     s32 i, j;
-    u16 chosenMonIndices[4];
+    u16 chosenMonIndices[MAX_FRONTIER_PARTY_SIZE];
     u8 friendship = MAX_FRIENDSHIP;
     u8 level = SetFacilityPtrsGetLevel();
     u8 fixedIV = 0;
@@ -1629,8 +1629,9 @@ static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
     // Attempt to fill the trainer's party with random Pokemon until 3 have been
     // successfully chosen. The trainer's party may not have duplicate pokemon species
     // or duplicate held items.
-    for (bfMonCount = 0; monSet[bfMonCount] != 0xFFFF; bfMonCount++)
-        ;
+    // The possible pokemon of a trainer are defined in battle_frontier_trainer_mons.h,
+    // and the last element of the array is always -1 (0xFFFF since this is a u16).
+    for (bfMonCount = 0; monSet[bfMonCount] != 0xFFFF; bfMonCount++);
     i = 0;
     otID = Random32();
     while (i != monCount)
@@ -1648,16 +1649,6 @@ static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
         if (j != i + firstMonId)
             continue;
 
-        // Ensure this exact pokemon index isn't a duplicate. This check doesn't seem necessary
-        // because the species and held items were already checked directly above.
-        for (j = 0; j < i; j++)
-        {
-            if (chosenMonIndices[j] == monId)
-                break;
-        }
-        if (j != i)
-            continue;
-
         chosenMonIndices[i] = monId;
 
         // Place the chosen pokemon into the trainer's party.
@@ -1668,7 +1659,6 @@ static void FillTrainerParty(u16 trainerId, u8 firstMonId, u8 monCount)
                                              gFacilityTrainerMons[monId].ivs,
                                              gFacilityTrainerMons[monId].evSpread,
                                              otID);
-
         friendship = MAX_FRIENDSHIP;
         // Give the chosen pokemon its specified moves.
         for (j = 0; j < MAX_MON_MOVES; j++)
@@ -1783,7 +1773,7 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
 
     level = SetFacilityPtrsGetLevel();
     otID = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
-    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < FRONTIER_DOUBLES_PARTY_SIZE; i++)
     {
         u16 monId = gFrontierTempParty[i];
         CreateMonWithEVSpreadNatureOTID(&gEnemyParty[firstMonId + i],
@@ -1994,11 +1984,12 @@ void DoSpecialTrainerBattle(void)
         BattleTransition_StartOnField(GetSpecialBattleTransition(3));
         break;
     case SPECIAL_BATTLE_PALACE:
-        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_PALACE;
+        // Set type flags to tower here to avoid the vanilla palace behavior of disabling move selection in favor of nature-based AI
+        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER;
         if (VarGet(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_DOUBLES)
             gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
         if (gSaveBlock2Ptr->frontier.lvlMode != FRONTIER_LVL_TENT)
-            FillFrontierTrainerParty(FRONTIER_PARTY_SIZE);
+            FillFrontierTrainerParty(FRONTIER_PALACE_PARTY_SIZE);
         else
             FillTentTrainerParty(FRONTIER_PARTY_SIZE);
         CreateTask(Task_StartBattleAfterTransition, 1);
@@ -2134,7 +2125,7 @@ static void sub_8163EE4(void)
         playerRecord->speechLost[i] = gSaveBlock1Ptr->easyChatBattleLost[i];
     }
 
-    for (i = 0; i < MAX_FRONTIER_PARTY_SIZE; i++)
+    for (i = 0; i < FRONTIER_DOUBLES_PARTY_SIZE; i++)
     {
         if (gSaveBlock2Ptr->frontier.selectedPartyMons[i] != 0)
             sub_80686FC(&gPlayerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1], &playerRecord->party[i]);
@@ -2204,7 +2195,7 @@ static void GetRecordMixFriendMultiPartnerParty(u16 trainerId)
     u16 species2 = GetMonData(&gPlayerParty[1], MON_DATA_SPECIES, NULL);
 
     count = 0;
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < FRONTIER_DOUBLES_PARTY_SIZE; i++)
     {
         if (gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].party[i].species != species1
             && gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].party[i].species != species2

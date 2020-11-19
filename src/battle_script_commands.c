@@ -62,7 +62,224 @@ extern int CountBadges();
 
 extern const u8* const gBattleScriptsForMoveEffects[];
 
-// this file's functions
+// table to avoid ugly powing on gba (courtesy of doesnt)
+// this returns (i^2.5)/4
+// the quarters cancel so no need to re-quadruple them in actual calculation
+static const s32 sExperienceScalingFactors[] = 
+{
+    0,
+    0,
+    1,
+    3,
+    8,
+    13,
+    22,
+    32,
+    45,
+    60,
+    79,
+    100,
+    124,
+    152,
+    183,
+    217,
+    256,
+    297,
+    343,
+    393,
+    447,
+    505,
+    567,
+    634,
+    705,
+    781,
+    861,
+    946,
+    1037,
+    1132,
+    1232,
+    1337,
+    1448,
+    1563,
+    1685,
+    1811,
+    1944,
+    2081,
+    2225,
+    2374,
+    2529,
+    2690,
+    2858,
+    3031,
+    3210,
+    3396,
+    3587,
+    3786,
+    3990,
+    4201,
+    4419,
+    4643,
+    4874,
+    5112,
+    5357,
+    5608,
+    5866,
+    6132,
+    6404,
+    6684,
+    6971,
+    7265,
+    7566,
+    7875,
+    8192,
+    8515,
+    8847,
+    9186,
+    9532,
+    9886,
+    10249,
+    10619,
+    10996,
+    11382,
+    11776,
+    12178,
+    12588,
+    13006,
+    13433,
+    13867,
+    14310,
+    14762,
+    15222,
+    15690,
+    16167,
+    16652,
+    17146,
+    17649,
+    18161,
+    18681,
+    19210,
+    19748,
+    20295,
+    20851,
+    21417,
+    21991,
+    22574,
+    23166,
+    23768,
+    24379,
+    25000,
+    25629,
+    26268,
+    26917,
+    27575,
+    28243,
+    28920,
+    29607,
+    30303,
+    31010,
+    31726,
+    32452,
+    33188,
+    33934,
+    34689,
+    35455,
+    36231,
+    37017,
+    37813,
+    38619,
+    39436,
+    40262,
+    41099,
+    41947,
+    42804,
+    43673,
+    44551,
+    45441,
+    46340,
+    47251,
+    48172,
+    49104,
+    50046,
+    50999,
+    51963,
+    52938,
+    53924,
+    54921,
+    55929,
+    56947,
+    57977,
+    59018,
+    60070,
+    61133,
+    62208,
+    63293,
+    64390,
+    65498,
+    66618,
+    67749,
+    68891,
+    70045,
+    71211,
+    72388,
+    73576,
+    74777,
+    75989,
+    77212,
+    78448,
+    79695,
+    80954,
+    82225,
+    83507,
+    84802,
+    86109,
+    87427,
+    88758,
+    90101,
+    91456,
+    92823,
+    94202,
+    95593,
+    96997,
+    98413,
+    99841,
+    101282,
+    102735,
+    104201,
+    105679,
+    107169,
+    108672,
+    110188,
+    111716,
+    113257,
+    114811,
+    116377,
+    117956,
+    119548,
+    121153,
+    122770,
+    124401,
+    126044,
+    127700,
+    129369,
+    131052,
+    132747,
+    134456,
+    136177,
+    137912,
+    139660,
+    141421,
+    143195,
+    144983,
+    146784,
+    148598,
+    150426,
+    152267,
+    154122,
+    155990,
+    157872,
+    159767,
+};
+
 #define STAT_CHANGE_WORKED      0
 #define STAT_CHANGE_DIDNT_WORK  1
 
@@ -1955,12 +2172,7 @@ static void Cmd_critmessage(void)
     {
         if (gIsCriticalHit == TRUE && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
         {
-            if (FlagGet(FLAG_RYU_BATTLE_SIMULATION) == 1)
-            {
-                PrepareStringBattle(STRINGID_SIMULATIONCRITDAMAGE, gBattlerAttacker);
-                gBattleCommunication[MSG_DISPLAY] = 1;
-            }
-            else if (gBattleMoveDamage > gHpDealt)
+            if (gBattleMoveDamage > gHpDealt)
             {
                 PrepareStringBattle(STRINGID_ITDEALTOVERKILLDAMAGECRIT, gBattlerAttacker);
                 gBattleCommunication[MSG_DISPLAY] = 1;
@@ -2200,8 +2412,7 @@ static void Cmd_waitmessage(void)
         }
         else
         {
-            u16 toWait = T2_READ_16(gBattlescriptCurrInstr + 1);
-            if (++gPauseCounterBattle >= toWait)
+            if ((gMain.newKeys & (A_BUTTON | B_BUTTON)) || ++gPauseCounterBattle >= T2_READ_16(gBattlescriptCurrInstr + 1))
             {
                 gPauseCounterBattle = 0;
                 gBattlescriptCurrInstr += 3;
@@ -3582,6 +3793,11 @@ static void Cmd_getexp(void)
                 else
                     holdEffect = ItemId_GetHoldEffect(item);
             }
+            #if (B_SCALED_EXP >= GEN_5) && (B_SCALED_EXP != GEN_6)
+                calculatedExp = gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 5;
+            #else
+                calculatedExp = gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7;
+            #endif
 
             calculatedExp = (u32)(gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7);
             calculatedExp = (calculatedExp * multiplier / 1000);
@@ -3881,8 +4097,9 @@ static void atk24(void)
             if ((gHitMarker & HITMARKER_FAINTED2(i)) && (!gSpecialStatuses[i].flag40))
                 foundPlayer++;
         }
-
+        
         foundOpponent = 0;
+
         for (i = 1; i < gBattlersCount; i += 2)
         {
             if ((gHitMarker & HITMARKER_FAINTED2(i)) && (!gSpecialStatuses[i].flag40))
@@ -3892,14 +4109,14 @@ static void atk24(void)
         if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
         {
             if (foundOpponent + foundPlayer > 1)
-                gBattlescriptCurrInstr = (u8*) T2_READ_32(gBattlescriptCurrInstr + 1);
+                gBattlescriptCurrInstr = T2_READ_PTR(gBattlescriptCurrInstr + 1);
             else
                 gBattlescriptCurrInstr += 5;
         }
         else
         {
             if (foundOpponent != 0 && foundPlayer != 0)
-                gBattlescriptCurrInstr = (u8*) T2_READ_32(gBattlescriptCurrInstr + 1);
+                gBattlescriptCurrInstr = T2_READ_PTR(gBattlescriptCurrInstr + 1);
             else
                 gBattlescriptCurrInstr += 5;
         }
@@ -6101,8 +6318,8 @@ static void Cmd_hitanimation(void)
 static u32 GetTrainerMoneyToGive(u16 trainerId)
 {
     u32 i = 0;
+    u32 lastMonLevel = 0;
     u32 moneyReward;
-    u8 lastMonLevel = 0;
 
     if (trainerId == TRAINER_SECRET_BASE)
     {
@@ -6621,7 +6838,7 @@ static void PutLevelAndGenderOnLvlUpBox(void)
     printerTemplate.currentY = 0;
     printerTemplate.letterSpacing = 0;
     printerTemplate.lineSpacing = 0;
-    printerTemplate.style = 0;
+    printerTemplate.unk = 0;
     printerTemplate.fgColor = TEXT_COLOR_WHITE;
     printerTemplate.bgColor = TEXT_COLOR_TRANSPARENT;
     printerTemplate.shadowColor = TEXT_COLOR_DARK_GREY;
@@ -9065,6 +9282,7 @@ static void Cmd_forcerandomswitch(void)
     s32 i;
     s32 battler1PartyId = 0;
     s32 battler2PartyId = 0;
+
     s32 firstMonId;
     s32 lastMonId = 0; // + 1
     s32 monsCount;
@@ -11758,6 +11976,7 @@ static u8 GetCatchingBattler(void)
 static void Cmd_handleballthrow(void)
 {
     u8 ballMultiplier = 10;
+    s8 ballAddition = 0;
 
     if (gBattleControllerExecFlags)
         return;
@@ -11775,6 +11994,19 @@ static void Cmd_handleballthrow(void)
     {
         u32 odds, i;
         u8 catchRate = gBaseStats[gBattleMons[gBattlerTarget].species].catchRate;
+
+        
+        #ifdef POKEMON_EXPANSION
+        if (IS_ULTRA_BEAST(gBattleMons[gBattlerTarget].species))
+        {
+            if (gLastUsedItem == ITEM_BEAST_BALL)
+                ballMultiplier = 50;
+            else
+                ballMultiplier = 1;
+        }
+        else
+        {
+        #endif
 
         if (gLastUsedItem > ITEM_SAFARI_BALL)
         {
@@ -11898,7 +12130,17 @@ static void Cmd_handleballthrow(void)
         else
             ballMultiplier = 10;
 
-        odds = (catchRate * ballMultiplier / 10)
+        #ifdef POKEMON_EXPANSION
+        }
+        #endif
+
+        // catchRate is unsigned, which means that it may potentially overflow if sum is applied directly.
+        if (catchRate < 21 && ballAddition == -20)
+            catchRate = 1;
+        else
+            catchRate = catchRate + ballAddition;
+
+        odds = ((catchRate) * ballMultiplier / 10)
             * (gBattleMons[gBattlerTarget].maxHP * 3 - gBattleMons[gBattlerTarget].hp * 2)
             / (3 * gBattleMons[gBattlerTarget].maxHP);
 
@@ -12389,25 +12631,34 @@ static void Cmd_metalburstdamagecalculator(void)
 
 static bool32 CriticalCapture(u32 odds)
 {
-    u16 numCaught = GetNationalPokedexCount(FLAG_GET_CAUGHT);
+    #if B_CRITICAL_CAPTURE == TRUE
+        u32 numCaught = GetNationalPokedexCount(FLAG_GET_CAUGHT);
 
-    if (numCaught <= 30)
-        odds = 0;
-    else if (numCaught <= 150)
-        odds /= 2;
-    else if (numCaught <= 300)
-        ;
-    else if (numCaught <= 450)
-        odds = (odds * 150) / 100;
-    else if (numCaught <= 600)
-        odds *= 2;
-    else
-        odds = (odds * 250) / 100;
+        if (numCaught <= (NATIONAL_DEX_COUNT * 30) / 650)
+            odds = 0;
+        else if (numCaught <= (NATIONAL_DEX_COUNT * 150) / 650)
+            odds /= 2;
+        else if (numCaught <= (NATIONAL_DEX_COUNT * 300) / 650)
+            ;   // odds = (odds * 100) / 100;
+        else if (numCaught <= (NATIONAL_DEX_COUNT * 450) / 650)
+            odds = (odds * 150) / 100;
+        else if (numCaught <= (NATIONAL_DEX_COUNT * 600) / 650)
+            odds *= 2;
+        else
+            odds = (odds * 250) / 100;
 
-    odds /= 6;
-    if ((Random() % 255) < odds)
-        return TRUE;
+        #ifdef ITEM_CATCHING_CHARM
+        if (CheckBagHasItem(ITEM_CATCHING_CHARM, 1))
+            odds = (odds * (100 + B_CATCHING_CHARM_BOOST)) / 100;
+        #endif
 
-    return FALSE;
+        odds /= 6;
+        if ((Random() % 255) < odds)
+            return TRUE;
+
+        return FALSE;
+    #else
+        return FALSE;
+    #endif
 }
 

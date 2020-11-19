@@ -29,6 +29,7 @@ MossdeepCity_SpaceCenter_2F_OnTransition: @ 8223D63
 	end
 
 MossdeepCity_SpaceCenter_2F_EventScript_MoveStevenMaxieCourtney:: @ 8223D7A
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAXIE
 	clearflag FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER
 	setobjectxyperm 3, 16, 9
 	setobjectmovementtype 3, MOVEMENT_TYPE_FACE_RIGHT

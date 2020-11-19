@@ -6,6 +6,7 @@
 #include "task.h"
 #include "dns.h"
 #include "constants/rgb.h"
+#include "event_data.h" //allows the code here to see the constants for saveblock vars and flags.
 
 enum
 {

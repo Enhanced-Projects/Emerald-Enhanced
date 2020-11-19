@@ -11,48 +11,84 @@ RyuNowDeveloper:
 	
 RyuDebugMenuScript::
 	msgbox RyuDebug_msg MSGBOX_SIGN
-	multichoicedefault 0, 0, 115, 8, 0
+	multichoicedefault 0, 0, MULTI_DEV_MENU_MAIN, 8, 0
 	switch VAR_RESULT
-	case 0, RyuDebug_PasscodeMenu
-	case 1, RyuDebug_UtilitiesMenu
+	case 0, RyuDebug_UtilitiesMenu
+	case 1, RyuDebug_PasscodeMenu
 	case 2, RyuDebug_quickstart
 	case 3, RyuDebug_pokeedit
 	case 4, RyuDebug_enableWaystone
 	case 5, RyuDebug_Init_GiveAllItems
 	case 6, RyuDebug_DisableDebug
-	case 7, RyuDebug_cancel
+	case 7, RyuDebug_ShowBetaMenu
+	case 8, RyuDebug_cancel
 	goto RyuDebug_cancel
-	releaseall
-	end
 	
 RyuDebug_menu_nodevcheck::
 	msgbox RyuDebug_msg MSGBOX_SIGN
-	multichoicedefault 0, 0, 115, 7, 0
+	multichoicedefault 0, 0, MULTI_DEV_MENU_MAIN, 8, 0
 	switch VAR_RESULT
-	case 0, RyuDebug_PasscodeMenu
-	case 1, RyuDebug_UtilitiesMenu
+	case 0, RyuDebug_UtilitiesMenu
+	case 1, RyuDebug_PasscodeMenu
 	case 2, RyuDebug_quickstart
 	case 3, RyuDebug_pokeedit
 	case 4, RyuDebug_enableWaystone
 	case 5, RyuDebug_Init_GiveAllItems
 	case 6, RyuDebug_DisableDebug
-	case 7, RyuDebug_cancel
-	releaseall
-	end
-
-RyuDebug_UtilitiesMenu:
-	multichoicedefault 0, 0, 143, 0, 0
-	switch VAR_RESULT
-	case 0, RyuDebug_Phasing
-	case 1, RyuDebug_Encounters
-	case 2, RyuDebug_EnableSaveViewer
-	case 3, RyuDebug_ViewTempVars
-	case 4, RyuDebug_Utility1
-	case 5, RyuDebug_setTime
-	case 6, RyuDebug_BattleSim
-	case 7, RyuSetExpMultMenu
+	case 7, RyuDebug_ShowBetaMenu
 	case 8, RyuDebug_cancel
 	goto RyuDebug_cancel
+
+RyuDebug_ShowBetaMenu::
+	msgbox RDB_OpeningBetaMenu
+	closemessage
+	goto RDB_BetaMenuStandalone
+
+RDB_OpeningBetaMenu:
+	.string "Opening beta menu.$"
+
+
+RyuDebug_UtilitiesMenu:
+	scrollingmultichoice SCROLLINGMULTICHOICE_DEBUGUTILITIES, 0, 0, 9, 1
+	switch VAR_RESULT
+	case 0, RyuDebug_Utility1
+	case 1, RyuDebug_Phasing
+	case 2, RyuDebug_Encounters
+	case 3, RyuDebug_ViewTempVars
+	case 4, RyuDebug_setTime
+	case 5, RyuDebug_BattleSim
+	case 6, RyuSetExpMultMenu
+	case 7, RyuDebug_giveAllBadges
+	case 8, RyuDebug_HealParty
+	case 9, RyuDebug_SaveFileDebug
+	case 10, RyuDebug_FillTheDex
+	case 11, RyuDebug_menu_nodevcheck
+	goto RyuDebug_cancel
+
+RyuDebug_giveAllBadges::
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_BADGE02_GET
+	setflag FLAG_BADGE03_GET
+	setflag FLAG_BADGE04_GET
+	setflag FLAG_BADGE05_GET
+	setflag FLAG_BADGE06_GET
+	setflag FLAG_BADGE07_GET
+	setflag FLAG_BADGE08_GET
+	playse SE_EXPMAX
+	goto RyuDebug_UtilitiesMenu
+
+RyuDebug_FillTheDex::
+	special FillTheDex
+	msgbox RDB_FillDex
+	goto RyuDebug_UtilitiesMenu
+
+RDB_FillDex:
+	.string "Dex pages filled in.$"
+
+RyuDebug_HealParty::
+	special HealPlayerParty
+	playse SE_EXPMAX
+	goto RyuDebug_UtilitiesMenu
 	
 RyuDebug_pokeedit::
 	msgbox OpeningPokeEdit
@@ -77,14 +113,12 @@ RyuDebug_Encounters::
 	goto_if_set FLAG_RYU_DEV_DISENC, RyuDebug_EnENC
 	setflag FLAG_RYU_DEV_DISENC
 	msgbox RyuEncDisabled
-	release
-	end
+	goto RyuDebug_UtilitiesMenu
 	
 RyuDebug_EnENC::
 	clearflag FLAG_RYU_DEV_DISENC
 	msgbox RyuEncEnabled
-	release
-	end
+	goto RyuDebug_UtilitiesMenu
 	
 RyuEncDisabled:
 	.string "Dev Repel on$"
@@ -102,12 +136,6 @@ RyuDebug_DisableDebug::
 	releaseall
 	end
 
-RyuDebug_EnableSaveViewer::
-	setvar VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454
-	msgbox Ryu_saveViewerEnabled
-	release
-	end
-
 Ryu_saveViewerEnabled:
 	.string "First variable set to beacon the\nsave viewer.\pSave the game twice to make sure\nboth save banks are the same!$"
 
@@ -116,15 +144,13 @@ RyuDebug_Phasing::
 	setflag FLAG_RYU_COLLISION_OFF
 	setflag FLAG_TOBY_TRAINER_SIGHT
 	msgbox Ryu_CollisionOffMsg
-	release
-	end
+	goto RyuDebug_UtilitiesMenu
 
 Ryu_DisablePhasing::
 	clearflag FLAG_RYU_COLLISION_OFF
 	clearflag FLAG_TOBY_TRAINER_SIGHT
 	msgbox Ryu_CollisionOnMsg
-	release
-	end
+	goto RyuDebug_UtilitiesMenu
 
 Ryu_CollisionOffMsg:
 	.string "Entered the Ethereal plane.$"
@@ -175,14 +201,13 @@ RyuDebug_enableWaystone::
 RyuDebug_ViewTempVars::
 	special RyuCheckTempVars
 	msgbox RDB_TempVarsViewMsg
-	releaseall
-	end
+	goto RyuDebug_UtilitiesMenu
 
 RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	destroyfollower
+	release
 	end
 
 RDB_Text:
@@ -210,27 +235,6 @@ exampletext:
 
 RDB_CurrentLocationMons:
 	.string "Current area land encounters$"
-
-RDB_ClosingDexNav:
-	.string "Closing DexNav$"
-
-RDB_DrawTempDexNavInfoGrid::
-	setvar VAR_TEMP_A, 3
-	setvar VAR_TEMP_B, 1
-	drawinfobox INFOGRID_TESTDEXNAV, 2
-	goto ryu_return
-
-@   msgbox RDB_SwapGenderQuery, MSGBOX_YESNO
-@	compare VAR_RESULT, YES
-@	goto_if_eq RDB_SwapPlayerGender
-
-RDB_SwapGenderQuery:
-	.string "Change Gender?$"
-
-RDB_SwapPlayerGender::
-	special SwapPlayerGender
-	release
-	end
 
 RDB_GiveRandomFrontierMons::
 	compare VAR_TEMP_5, 0
@@ -281,8 +285,7 @@ RyuDebug_setTime::
 	buffernumberstring 1, VAR_0x8001
 	buffernumberstring 2, VAR_0x8002
 	msgbox RDB_Readout_2
-	release
-	end
+	goto RyuDebug_UtilitiesMenu
 
 settimequery:
 	.string "Would you like to change the time?$"
@@ -370,30 +373,44 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
-	givemon SPECIES_MEGA_ABSOL, BASE_MAX_LEVEL, ITEM_SCOPE_LENS
-	givemon SPECIES_MEGA_GARDEVOIR, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
-	setmonmove 0, 0, MOVE_PLAY_ROUGH
-	setmonmove 0, 1, MOVE_CRUNCH
-	setmonmove 0, 2, MOVE_SACRED_SWORD
-	setmonmove 0, 3, MOVE_PSYCHIC_FANGS
-	setmonmove 1, 0, MOVE_DRAINING_KISS
-	setmonmove 1, 1, MOVE_PSYSTRIKE
-	setmonmove 1, 2, MOVE_FIERY_DANCE
-	setmonmove 1, 3, MOVE_PARABOLIC_CHARGE
+	givemon SPECIES_MEGA_MEWTWO_Y, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
+	givemon SPECIES_MEGA_RAYQUAZA, BASE_MAX_LEVEL, ITEM_SCOPE_LENS
+	setmonmove 1, 0, MOVE_FLY
+	setmonmove 1, 1, MOVE_CRUNCH
+	setmonmove 1, 2, MOVE_SACRED_SWORD
+	setmonmove 1, 3, MOVE_DRAGON_CLAW
+	setmonmove 0, 0, MOVE_MOONBLAST
+	setmonmove 0, 1, MOVE_THUNDERBOLT
+	setmonmove 0, 2, MOVE_SLUDGE_BOMB
+	setmonmove 0, 3, MOVE_MIRROR_SHOT
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 0
-	special RyuSetEVATK
-	special RyuSetEVHP
-	special RyuSetEVSPDEF
-	special RyuSetEVDEF
-	special RyuSetEVSPE
+	setvar VAR_TEMP_3, 0
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 1
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 2
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 3
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 4
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 5
+	special RyuSetSlotStatEV
 	setvar VAR_TEMP_2, 1
-	special RyuSetEVSPATK
-	special RyuSetEVHP
-	special RyuSetEVSPDEF
-	special RyuSetEVDEF
+	setvar VAR_TEMP_3, 0
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 1
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 2
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 3
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 4
+	special RyuSetSlotStatEV
+	setvar VAR_TEMP_3, 5
+	special RyuSetSlotStatEV
 	special RyuSetIVs
-	special RyuSetEVSPE
 	additem ITEM_WAYSTONE, 1
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKENAV_GET
@@ -490,6 +507,12 @@ retutor:
 	.string "Relearn another move?$"
 
 RyuSetEvDebugMenu::
+	msgbox RyuEv_ChooseSlot
+	call RyuBufferPartyMonNames
+	multichoicedefault 1, 1, MULTI_SELECT_PARTY_SLOT, 0, 0
+	compare VAR_RESULT, 6
+	goto_if_eq RyuPokeEditMenu
+	copyvar VAR_TEMP_2, VAR_RESULT
 	msgbox RyuEvIntro MSGBOX_SIGN
 	multichoicegrid 1, 0, 116, 4, 0
 	switch VAR_RESULT
@@ -509,9 +532,12 @@ RyuSetEvDebugMenu::
 	case 13, RyuEvMenuExit
 	case 14, RyuEvMenuExit
 	case 15, RyuEvMenuExit
-	case 127, RyuEvMenuExit
+	goto RyuEvMenuExit
 	release
 	end
+
+RyuEv_ChooseSlot:
+	.string "Choose a party slot.$"
 
 RyuEvMenuQuery:
 	.string "Modify more EV's?$"
@@ -540,7 +566,8 @@ RyuEvMenuExit::
 RyuEvMenuHP::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
-	special RyuSetEVHP
+	setvar VAR_TEMP_3, 0 
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -548,7 +575,8 @@ RyuEvMenuHP::
 RyuEvMenuHP126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
-	special RyuSetEVHP
+	setvar VAR_TEMP_3, 0
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -556,7 +584,8 @@ RyuEvMenuHP126::
 RyuEvMenuAtk::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
-	special RyuSetEVATK
+	setvar VAR_TEMP_3, 1
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -564,7 +593,8 @@ RyuEvMenuAtk::
 RyuEvMenuAtk126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
-	special RyuSetEVATK
+	setvar VAR_TEMP_3, 1
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -572,7 +602,8 @@ RyuEvMenuAtk126::
 RyuEvMenuDef::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
-	special RyuSetEVDEF
+	setvar VAR_TEMP_3, 2
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -580,7 +611,8 @@ RyuEvMenuDef::
 RyuEvMenuDef126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
-	special RyuSetEVDEF
+	setvar VAR_TEMP_3, 2
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -588,7 +620,8 @@ RyuEvMenuDef126::
 RyuEvMenuSpAtk::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
-	special RyuSetEVSPATK
+	setvar VAR_TEMP_3, 3
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -596,7 +629,8 @@ RyuEvMenuSpAtk::
 RyuEvMenuSpAtk126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
-	special RyuSetEVSPATK
+	setvar VAR_TEMP_3, 3
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -604,7 +638,8 @@ RyuEvMenuSpAtk126::
 RyuEvMenuSpDef::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
-	special RyuSetEVSPDEF
+	setvar VAR_TEMP_3, 4
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -612,7 +647,8 @@ RyuEvMenuSpDef::
 RyuEvMenuSpDef126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
-	special RyuSetEVSPDEF
+	setvar VAR_TEMP_3, 4
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -620,7 +656,8 @@ RyuEvMenuSpDef126::
 RyuEvMenuSpe::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 252
-	special RyuSetEVSPE
+	setvar VAR_TEMP_3, 5
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -628,7 +665,8 @@ RyuEvMenuSpe::
 RyuEvMenuSpe126::
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_1, 126
-	special RyuSetEVSPE
+	setvar VAR_TEMP_3, 5
+	special RyuSetSlotStatEV
 	call RyuEvMenuExit
 	release
 	end
@@ -678,7 +716,7 @@ RyuSetExpMultMenu2::
 
 RyuExitExpMult::
 	msgbox ExpMultNoChange
-	goto ryu_end
+	goto RyuDebug_UtilitiesMenu
 
 ExpMultNoChange:
 	.string "Exp mult not changed.$"
@@ -703,7 +741,7 @@ RyuSetExpMultAuto::@@exp is increased by 12.5% per gym badge
 	setvar VAR_RYU_EXP_MULTIPLIER, 1
 	setvar VAR_RYU_PRICE_MULTIPLIER, 1000
 	closemessage
-	goto RyuDebugMenuScript
+	goto RyuDebug_UtilitiesMenu
 	
 ExpMultAuto:
 	.string "Exp Multiplier is now Auto.\n"
@@ -714,7 +752,7 @@ RyuSetExpMult2::@@exp is multiplied by 2
 	setvar VAR_RYU_PRICE_MULTIPLIER, 750
 	msgbox ExpMult2 MSGBOX_DEFAULT
 	closemessage
-	goto RyuDebugMenuScript
+	goto RyuDebug_UtilitiesMenu
 	
 ExpMult2:
 	.string "Exp Multiplier is now 2.0x.$"
@@ -724,7 +762,7 @@ RyuSetExpMult4::@@exp is multiplied by 4
 	setvar VAR_RYU_PRICE_MULTIPLIER, 500
 	msgbox ExpMult4 MSGBOX_DEFAULT
 	closemessage
-	goto RyuDebugMenuScript
+	goto RyuDebug_UtilitiesMenu
 	
 ExpMult4:
 	.string "Exp Multiplier is now 4.0x.$"
@@ -734,7 +772,7 @@ RyuSetExpMult8::@@exp is multiplied by 8
 	setvar VAR_RYU_PRICE_MULTIPLIER, 250
 	msgbox ExpMult8 MSGBOX_DEFAULT
 	closemessage
-	goto RyuDebugMenuScript
+	goto RyuDebug_UtilitiesMenu
 	
 ExpMult8:
 	.string "Exp Multiplier is now 8.0x.$"
@@ -750,18 +788,15 @@ RyuSetIvDebugMenu::
 	goto RyuPokeEditMenu
 
 RyuDebug_BattleSim::
-	setflag FLAG_RYU_BATTLE_SIMULATION
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_ne RDB_BattleSimFemale
-	cleartrainerflag TRAINER_DOPPELGANGER_M
 	trainerbattle_single TRAINER_DOPPELGANGER_M, BS_Intro, BS_Defeat
 	waitstate
 	release
 	end
 
 RDB_BattleSimFemale::
-	cleartrainerflag TRAINER_DOPPELGANGER_F
 	trainerbattle_single TRAINER_DOPPELGANGER_F, BS_Intro, BS_Defeat
 	waitstate
 	release

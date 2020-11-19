@@ -110,7 +110,7 @@
 #define T2_READ_PTR(ptr) (void*) T2_READ_32(ptr)
 
 // Macros for checking the joypad
-#define TEST_BUTTON(field, button) ((field) & (button))
+#define TEST_BUTTON(field, button) ({(field) & (button);})
 #define JOY_NEW(button) TEST_BUTTON(gMain.newKeys,  button)
 #define JOY_HELD(button)  TEST_BUTTON(gMain.heldKeys, button)
 #define JOY_HELD_RAW(button) TEST_BUTTON(gMain.heldKeysRaw, button)
@@ -123,6 +123,13 @@
     if(v < 0) f += 65536.0f; \
     f;                       \
 })
+
+// Branch defines: Used by other branches to detect each other.
+// Each define must be here for each of RHH's branch you have pulled.
+// e.g. If you have both the battle_engine and pokemon_expansion branch,
+//      then both BATTLE_ENGINE and POKEMON_EXPANSION must be defined here.
+#define BATTLE_ENGINE
+#define POKEMON_EXPANSION
 
 #define ROUND_BITS_TO_BYTES(numBits)(((numBits) / 8) + (((numBits) % 8) ? 1 : 0))
 
@@ -285,7 +292,7 @@ struct EmeraldBattleTowerRecord
     /*0x10*/ u16 greeting[EASY_CHAT_BATTLE_WORDS_COUNT];
     /*0x1C*/ u16 speechWon[EASY_CHAT_BATTLE_WORDS_COUNT];
     /*0x28*/ u16 speechLost[EASY_CHAT_BATTLE_WORDS_COUNT];
-    /*0x34*/ struct BattleTowerPokemon party[MAX_FRONTIER_PARTY_SIZE];
+    /*0x34*/ struct BattleTowerPokemon party[FRONTIER_DOUBLES_PARTY_SIZE];
     /*0xE4*/ u8 language;
     /*0xE8*/ u32 checksum;
 };

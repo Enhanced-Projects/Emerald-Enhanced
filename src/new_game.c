@@ -98,7 +98,6 @@ static void SetDefaultOptions(void)
 {
     gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
     gSaveBlock2Ptr->optionsWindowFrameType = 12;
-    gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_STEREO;
     gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SET;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
@@ -155,11 +154,22 @@ void ResetMenuAndMonGlobals(void)
 void NewGameInitData(void)
 {
     u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
+    u16 originalSaveFileVersion = VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION);
 
+    //I don't want people being able to newgame plus unless they have defeated the champion. Nuzlocke/Hardcore failure circumvents this.
+    //It also allows people to start over if they want a fresh start without having to physically delete their save file.
     if (!FlagGet(FLAG_SYS_GAME_CLEAR))
+    {
+        // reset ngPlusCount here. The var is overwritten with this value later in this function.
+        ngPlusCount = 0;
         RtcReset();
-
-    ClearSav1();
+        ClearSav1();
+    }
+    else //hacky, I know but it's the only way I could get it to work :shrug:
+    {
+        ClearSav1_SkipDex();
+    }
+    
     gDifferentSaveFile = 1;
     gSaveBlock2Ptr->encryptionKey = 0;
     ZeroPlayerPartyMons();
@@ -209,21 +219,16 @@ void NewGameInitData(void)
     ResetTrainerHillResults();
     ResetContestLinkResults();
     ClearMysteryEventFlags();
-    VarSet(VAR_RYU_THEME_NUMBER, 1);
-    VarSet(VAR_RYU_EXP_MULTIPLIER, 1);
+
+    //flags
     FlagSet(FLAG_RYU_LT_RIVAL2);
     FlagSet(FLAG_RYU_LT_RIVAL);
-    VarSet(VAR_RYU_JUKEBOX, 999);
     FlagSet(FLAG_HIDE_CHAMPIONS_ROOM_STEVEN);
-    VarSet(VAR_RYU_SHELLY_STATUS, 0);
-    FlagSet(FLAG_RYU_STARTER_CHOSEN);
-    VarSet(VAR_METEOR_FALLS_STATE, 10);
     FlagSet(FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA);
     FlagSet(FLAG_HIDE_METEOR_FALLS_TEAM_AQUA);
     FlagSet(FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO);
     FlagSet(FLAG_RYU_AQUA_HIDE_MH4_COURTNEY_BOSS);
     FlagSet(FLAG_RYU_MH_COURTNEY_SOLOMODE);
-    VarSet(VAR_LITTLEROOT_INTRO_STATE, 4);
     FlagSet(FLAG_HIDE_BRENDANS_HOUSE_BRENDAN);
     FlagSet(FLAG_HIDE_DAWNS_HOUSE_DAWN);
     FlagSet(FLAG_RYU_KYOGRE);
@@ -232,7 +237,6 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_HIDE_R120_LANA_AND_HIKER);
     FlagSet(FLAG_RYU_HIDE_REL_OBJECTS);
     FlagSet(FLAG_HIDE_AQUA_HIDEOUT_GRUNTS);
-    VarSet(VAR_JAGGED_PASS_STATE, 0);
     FlagSet(FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3);
     FlagSet(FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE);
     FlagSet(FLAG_RYU_DEVON_CORPORATE_HIDE_SCIENTIST);
@@ -240,15 +244,6 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE4);
     FlagSet(FLAG_RYU_DEFEATED_SS);
     FlagSet(FLAG_RYU_HIDE_LANETTE_BASEMENT);
-    VarSet(VAR_RYU_GCMS_SPECIES, 0);
-    VarSet(VAR_RYU_GCMS_VALUE, 0);
-    VarSet(VAR_RYU_GCMS_MOVE1, 0);
-    VarSet(VAR_RYU_GCMS_MOVE2, 0);
-    VarSet(VAR_RYU_GCMS_MOVE3, 0);
-    VarSet(VAR_RYU_GCMS_MOVE4, 0);
-    FlagClear(FLAG_RYU_TEMPTP);
-    FlagClear(FLAG_RYU_HAS_FOLLOWER);
-    VarSet(VAR_WEATHER_INSTITUTE_STATE, 1);
     FlagSet(FLAG_HIDE_TRICK_HOUSE_LANA);
     FlagSet(FLAG_HIDE_NM_LANA);
     FlagSet(FLAG_HIDE_ABN_SHIP_LANA);
@@ -258,7 +253,6 @@ void NewGameInitData(void)
     FlagSet(FLAG_HIDE_IC_LANA);
     FlagSet(FLAG_HIDE_AT1_LEAF);
     FlagSet(FLAG_HIDE_R110_LANA);
-    VarSet(VAR_CONTEST_HALL_STATE, 0);
     FlagSet(FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER);
     FlagSet(FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA);
     FlagSet(FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA);
@@ -289,13 +283,38 @@ void NewGameInitData(void)
     FlagSet(FLAG_RYU_RUSTURF_CLEARING_MAGMA);
     FlagSet(FLAG_RYU_HIDE_AQUA_MTPYRE_EXT);
     FlagSet(FLAG_RYU_HIDE_CHIMNEY_GROUDON);
-    FlagSet(FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES);
-    VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
+    FlagSet(FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES);    
     FlagSet(FLAG_RYU_HIDE_MOSSDEEP_MATT);
+    FlagSet(FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_MAXIE);
+    FlagSet(FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN);
+    FlagSet(FLAG_HIDE_ROUTE_118_STEVEN);
+    FlagSet(FLAG_RYU_HIDE_NPCS_MTPYRE_SUMMIT);
+    FlagClear(FLAG_RYU_TEMPTP);
+    FlagClear(FLAG_RYU_HAS_FOLLOWER);
+    FlagClear(FLAG_OPTIONS_INSTANT_TRANSITION);
+    FlagSet(FLAG_NOTIFIED_FF_TEXT);
+
+    //vars
+    VarSet(VAR_RYU_GCMS_SPECIES, 0);
+    VarSet(VAR_RYU_GCMS_VALUE, 0);
+    VarSet(VAR_RYU_GCMS_MOVE1, 0);
+    VarSet(VAR_RYU_GCMS_MOVE2, 0);
+    VarSet(VAR_RYU_GCMS_MOVE3, 0);
+    VarSet(VAR_RYU_GCMS_MOVE4, 0);
+    VarSet(VAR_WEATHER_INSTITUTE_STATE, 1);
+    VarSet(VAR_CONTEST_HALL_STATE, 0);
+    VarSet(VAR_JAGGED_PASS_STATE, 0);
+    VarSet(VAR_LITTLEROOT_INTRO_STATE, 4);
+    VarSet(VAR_RYU_THEME_NUMBER, 1);
+    VarSet(VAR_RYU_EXP_MULTIPLIER, 1);
+    VarSet(VAR_RYU_JUKEBOX, 999);
+    VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
+    VarSet(VAR_RYU_NGPLUS_COUNT, ngPlusCount);
+    VarSet(VAR_OPTIONS_HP_BAR_SPEED, 6);
+    VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, originalSaveFileVersion);
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;
-    VarSet(VAR_RYU_NGPLUS_COUNT, ngPlusCount);
 }
 
 static void ResetMiniGamesResults(void)

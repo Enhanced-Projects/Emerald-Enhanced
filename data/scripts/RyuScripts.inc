@@ -155,6 +155,9 @@ RyuDebugBetaMenuScript::
 	setflag FLAG_RYU_BETA_MENU_USED
 	msgbox BetaMenuIntro MSGBOX_DEFAULT
 	closemessage
+	goto RDB_BetaMenuStandalone
+
+RDB_BetaMenuStandalone::
 	multichoicedefault 30, 0, MULTI_BETA_MENU, 7, 0
 	switch VAR_RESULT
 	case 0, RDBM_Option1
@@ -174,6 +177,11 @@ BetaMenuIntro:
 	.string "{COLOR LIGHT_RED}{SHADOW TRANSPARENT}YOU HAVE BEEN WARNED!!$"
 
 RDBM_Option1::
+	buffernumberstring 0, VAR_SAVE_FILE_CREATED_ON_VERSION
+	msgbox RDBM_ShowSaveFileOriginalVersion
+	release
+	end
+
 RDBM_Option2::
 	msgbox RDBM_Unimplemented
 	release
@@ -185,9 +193,12 @@ RDBM_DisplayQuestVars::
 	release
 	end
 
+RDBM_ShowSaveFileOriginalVersion:
+	.string "The save file was created on\nversion number {STR_VAR_1}.$"
+
 RDBM_DisplayQuestVarsMsg:
 	.string "Magma: {STR_VAR_1}, DevonM: {STR_VAR_2}, DevonS: {STR_VAR_3}\n"
-	.string "Lana: {RYU_STR_1}, Lanette: {RYU_STR_2}$"
+	.string "Lana: {RYU_STR_1}, Lanette: {RYU_STR_2} Aqua: {RYU_STR_3}$"
 
 RDBM_ResetTemporaryBattleFlags::
 	clearflag FLAG_RYU_MAX_SCALE
@@ -361,96 +372,23 @@ RyuGivePokenav::
 
 RyuUserModeEVMenu::
 	msgbox RyuUserEVInfo MSGBOX_DEFAULT
-	
-	multichoicegrid 0, 4, 131, 2, 0
-	switch VAR_RESULT
-	case 0, RyuUserEVHp
-	case 1, RyuUserEVAtk
-	case 2, RyuUserEVDef
-	case 3, RyuUserEVSpatk
-	case 4, RyuUserEVSpdef
-	case 5, RyuUserEVSpeed
-	case 6, RyuUserEvExit
-	case 7, RyuUserEvExit
-	case 127, RyuUserEvExit
-	release
-	end
-	
-RyuUserEVHp::
+	multichoicegrid 0, 4, MULTI_GENETIC_IMPRINTER_MENU, 2, 0
+	compare VAR_RESULT, 6
+	goto_if_ge ryu_end
+	copyvar VAR_TEMP_3, VAR_RESULT
+	call RyuBufferPartyMonNames
+	multichoicedefault 1, 1, MULTI_SELECT_PARTY_SLOT, 0, 0
+	compare VAR_RESULT, 6
+	goto_if_eq ryu_end
 	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 0
+	copyvar VAR_TEMP_2, VAR_RESULT
 	checkitem ITEM_WAVE_MAIL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne RyuUserEvNoImprint
-	special RyuSetEVHP
+	special RyuSetSlotStatEV
 	addmonhappiness VAR_TEMP_2, 25
 	removeitem ITEM_WAVE_MAIL, 1
-	msgbox RyuEvSuccessMsgHP MSGBOX_DEFAULT
-	release
-	end
-
-RyuUserEVAtk::
-	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 0
-	checkitem ITEM_BEAD_MAIL, 1
-	compare VAR_RESULT, 1
-	goto_if_lt RyuUserEvNoImprint
-	special RyuSetEVATK
-	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_BEAD_MAIL, 1
-	msgbox RyuEvSuccessMsgAtk MSGBOX_DEFAULT
-	release
-	end
-	
-RyuUserEVDef::
-	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 0
-	checkitem ITEM_SHADOW_MAIL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne RyuUserEvNoImprint
-	special RyuSetEVDEF
-	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_SHADOW_MAIL, 1
-	msgbox RyuEvSuccessMsgDef MSGBOX_DEFAULT
-	release
-	end
-	
-RyuUserEVSpatk::
-	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 0
-	checkitem ITEM_TROPIC_MAIL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne RyuUserEvNoImprint
-	special RyuSetEVSPATK
-	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_TROPIC_MAIL, 1
-	msgbox RyuEvSuccessMsgSpatk MSGBOX_DEFAULT
-	release
-	end
-	
-RyuUserEVSpdef::
-	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 0
-	checkitem ITEM_DREAM_MAIL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne RyuUserEvNoImprint
-	special RyuSetEVSPDEF
-	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_DREAM_MAIL, 1
-	msgbox RyuEvSuccessMsgSpdef MSGBOX_DEFAULT
-	release
-	end
-	
-RyuUserEVSpeed::
-	setvar VAR_TEMP_1, 0
-	setvar VAR_TEMP_2, 0
-	checkitem ITEM_FAB_MAIL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne RyuUserEvNoImprint
-	special RyuSetEVSPE
-	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_FAB_MAIL, 1
-	msgbox RyuEvSuccessMsgSpeed MSGBOX_DEFAULT
+	msgbox RyuEvSuccessMsg MSGBOX_DEFAULT
 	release
 	end
 	
@@ -467,28 +405,10 @@ RyuUserEvNoImprint::
 	
 RyuUserEVInfo:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Genetic Imprinter\p"
-	.string "{SHADOW LIGHT_GREY}Select a stat to reduce to\n"
-	.string "0 for the first Pokémon\l"
-	.string "in your party.\pThis operation cannot be\n"
-	.string "undone.$"
+	.string "{SHADOW LIGHT_GREY}Select an EV stat to reduce to 0.$"
 
-RyuEvSuccessMsgHP:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}HP EV's were reduced to 0.\nOne HP Imprint consumed.$"
-	
-RyuEvSuccessMsgAtk:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Atk EV's were reduced to 0.\nOne Atk Imprint consumed.$"
-	
-RyuEvSuccessMsgDef:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Def EV's were reduced to 0.\nOne Def Imprint consumed.$"
-	
-RyuEvSuccessMsgSpatk:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}SpAtk EV's were reduced to 0.\nOne SpAtk Imprint consumed.$"
-	
-RyuEvSuccessMsgSpdef:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}SpDef EV's were reduced to 0.\nOne SpDef Imprint consumed.$"
-	
-RyuEvSuccessMsgSpeed:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Speed EV's were reduced to 0.\nOne Speed Imprint consumed.$"
+RyuEvSuccessMsg:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}EV's for the selected slot\nhave been reduced to 0.$"
 
 EvNoImprints:
 	.string "{COLOR LIGHT_RED}{SHADOW LIGHT_GREY}You don't have enough imprints.\pObtain more at Lilycove\nTraining Center.$"
@@ -1330,10 +1250,7 @@ RyuLegendary_GeneralLegendEncounter::
 	waitstate
 	return
 	end
-
-TestMsg:
-	.string "{STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3}$"
-
+	
 RyuLegendary_SetMaxScale::
 	setvar VAR_TEMP_7, 110
 	return
@@ -1341,12 +1258,6 @@ RyuLegendary_SetMaxScale::
 RyuLegendary_SetBaseScale::
 	setvar VAR_TEMP_7, 30
 	return
-
-RyuLegendary_MonEscaped::
-	goto ryu_return
-
-RyuLegendaryFinish::
-	goto ryu_end
 
 RyuLegendary_GameClearResetLegends::
 	call_if_set FLAG_RYU_ZAPDOS_RAN, RL_ResetZapdos
@@ -1415,6 +1326,15 @@ RL_ResetKyogre::
 	clearflag FLAG_RYU_KYOGRE
 	clearflag FLAG_RYU_KYOGRE_RAN
 	return
+
+@==================================================================================================Failed Nuzlocke/Hardcore
+
+Ryu_PlayerFailedNuzlockeHardcore::
+	msgbox Ryu_failedNZHC
+	waitstate
+
+Ryu_failedNZHC:
+	.string "You have failed Nuzlocke or\nhardcore mode.\pIf you were on New Game Plus,\nyour dex/pcbox/key item progress\lhas been saved.\pPlease reset the game and\nstart a New file.$"
 
 @==================================================================================================Randombattle
 
@@ -1732,13 +1652,6 @@ RyuAC_SuccessMsg::
 RyuAC_CancelMsg::
 	.string "Leaving menu without changes.$"
 
-@==================================================================================================Ryu Global Scripts
-
-RyuGlobal_CheckMissionCallStatus::
-	setvar VAR_TEMP_A, 10
-	goto RyuGlobal_CheckMagmaStatus
-	
-
 @==================================================================================================Soot Sack
 
 RyuCheckSootSackContents::
@@ -1754,12 +1667,29 @@ Ryu_SootSackReadout:
 
 @=================================================================================================Global Scripts
 
+RyuGlobal_CheckMissionCallStatus::
+	setvar VAR_TEMP_A, 10
+	goto RyuGlobal_CheckMagmaStatus
+
+Ryu_FFTextSpeedWarning::
+	msgbox FFTextMsg
+	setflag FLAG_NOTIFIED_FF_TEXT
+	release
+	end	
+
+FFTextMsg::
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You have selected Instant text speed.\p"
+	.string "Note that this option has been\n"
+	.string "reported to skip certain story\l"
+	.string "quest dialogues.\p"
+	.string "It is recommended that you use\n"
+	.string "fast instead.$"
+
 RyuGlobal_CheckDexnavStatus::
 	goto_if_set FLAG_SYS_DEXNAV_GET, ryu_return
 	pokenavcall Ryu_DexnavGive
 	waitmessage
 	setflag FLAG_SYS_DEXNAV_GET
-	setflag FLAG_SYS_DEXNAV_SEARCH
 	return
 
 Ryu_DexnavGive:

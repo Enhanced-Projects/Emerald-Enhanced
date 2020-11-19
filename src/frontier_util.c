@@ -43,6 +43,7 @@ struct FrontierBrainMon
     u16 heldItem;
     u8 fixedIV;
     u8 nature;
+    // Order of stats is: HP, Atk, Def, Speed, SpAtk, SpDef
     u8 evs[NUM_STATS];
     u16 moves[MAX_MON_MOVES];
     u8 ability;
@@ -82,19 +83,25 @@ static void ShowPyramidResultsWindow(void);
 static void ShowLinkContestResultsWindow(void);
 static void CopyFrontierBrainText(bool8 playerWonText);
 
-// const rom data
+// Streak appearances of frontier brains.
+// Structure is {silver, gold, recurring, offset}.
+// Where recurring means the brain appears each x battles after gold has been obtained,
+// and offset is added to the current streak before being compared to the symbol streak values.
+// It’s 1 for Tower because you fight the brain after 34 battles (making her the 35th),
+// but 0 for Dome because Tucker is generated at the beginning of round 5, where your streak is 4,
+// and also 0 for Pyramid because you fight Brandon on floor 8 of the Pyramid, thus *after* streak 21.
 static const u8 sFrontierBrainStreakAppearances[NUM_FRONTIER_FACILITIES][4] =
 {
     [FRONTIER_FACILITY_TOWER]   = {35,  70, 35, 1},
     [FRONTIER_FACILITY_DOME]    = { 4,   9,  5, 0},
-    [FRONTIER_FACILITY_PALACE]  = {21,  42, 21, 1},
+    [FRONTIER_FACILITY_PALACE]  = {14,  28, 21, 1},
     [FRONTIER_FACILITY_ARENA]   = {28,  56, 28, 1},
     [FRONTIER_FACILITY_FACTORY] = {21,  42, 21, 1},
     [FRONTIER_FACILITY_PIKE]    = {28, 140, 56, 1},
     [FRONTIER_FACILITY_PYRAMID] = {21,  70, 35, 0},
 };
 
-static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZE] =
+static const struct FrontierBrainMon sFrontierBrainsMons[][2][MAX_FRONTIER_PARTY_SIZE] =
 {
     [FRONTIER_FACILITY_TOWER] =
     {
@@ -226,62 +233,118 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
     {
         // Silver Symbol.
         {
+            // Lead Lapras to set up rain
+            {
+                .species = SPECIES_LAPRAS,
+                .heldItem = ITEM_DAMP_ROCK,
+                .fixedIV = 31,
+                .nature = NATURE_MODEST,
+                .evs = {248, 0, 0, 8, 252, 0},
+                .ability = 2,
+                .moves = {MOVE_SURF, MOVE_FROST_BREATH, MOVE_CALM_MIND, MOVE_THUNDER},
+            },
             {
                 .species = SPECIES_BRELOOM,
-                .heldItem = ITEM_TOXIC_ORB,
+                .heldItem = ITEM_FOCUS_SASH,
                 .fixedIV = 31,
-                .nature = NATURE_BRAVE,
+                .nature = NATURE_ADAMANT,
                 .evs = {252, 252, 6, 0, 0, 0},
-                .ability = 1,
-                .moves = {MOVE_FOCUS_PUNCH, MOVE_ROCK_TOMB, MOVE_SYNTHESIS, MOVE_SPORE},
+                .ability = 2,
+                .moves = {MOVE_BULLET_SEED, MOVE_ROCK_TOMB, MOVE_MACH_PUNCH, MOVE_SPORE},
             },
             {
                 .species = SPECIES_SCIZOR,
                 .heldItem = ITEM_LEFTOVERS,
                 .fixedIV = 31,
-                .nature = NATURE_JOLLY,
-                .evs = {252, 0, 48, 0, 0, 208},
+                .nature = NATURE_ADAMANT,
+                .evs = {252, 252, 0, 0, 0, 6},
                 .ability = 1,
-                .moves = {MOVE_BULLET_PUNCH, MOVE_TOXIC, MOVE_ROOST, MOVE_CURSE},
+                .moves = {MOVE_BULLET_PUNCH, MOVE_BUG_BITE, MOVE_ROOST, MOVE_SWORDS_DANCE},
+            },
+            { // It seems counterintuitive, but Volcarona is great on rain teams
+                .species = SPECIES_VOLCARONA,
+                .heldItem = ITEM_LEFTOVERS,
+                .fixedIV = 23, // HP water
+                .nature = NATURE_MODEST,
+                .evs = {0, 0, 0, 252, 252, 6},
+                .ability = 0,
+                .moves = {MOVE_BUG_BUZZ, MOVE_HIDDEN_POWER, MOVE_HURRICANE, MOVE_QUIVER_DANCE},
             },
             {
-                .species = SPECIES_LAPRAS,
-                .heldItem = ITEM_CHESTO_BERRY,
+                .species = SPECIES_KELDEO,
+                .heldItem = ITEM_LIFE_ORB,
                 .fixedIV = 31,
-                .nature = NATURE_MODEST,
-                .evs = {252, 0, 0, 6, 0, 252},
-                .ability = 2,
-                .moves = {MOVE_SURF, MOVE_FROST_BREATH, MOVE_TOXIC, MOVE_REST},
+                .nature = NATURE_TIMID,
+                .evs = {0, 0, 0, 252, 252, 6},
+                .ability = 0,
+                .moves = {MOVE_FOCUS_BLAST, MOVE_HYDRO_PUMP, MOVE_SECRET_SWORD, MOVE_CALM_MIND},
+            },
+            {
+                .species = SPECIES_SLAKING,
+                .heldItem = ITEM_LEFTOVERS,
+                .fixedIV = 31,
+                .nature = NATURE_ADAMANT,
+                .evs = {252, 252, 6, 0, 0, 0},
+                .ability = 0,
+                .moves = {MOVE_RETURN, MOVE_DRAIN_PUNCH, MOVE_SUCKER_PUNCH, MOVE_SLACK_OFF},
             },
         },
         // Gold Symbol.
         {
+            // Lead Hippowdon to set up sand
             {
-                .species = SPECIES_VENUSAUR,
-                .heldItem = ITEM_BLACK_SLUDGE,
+                .species = SPECIES_HIPPOWDON,
+                .heldItem = ITEM_SMOOTH_ROCK,
                 .fixedIV = 31,
-                .nature = NATURE_BRAVE,
-                .evs = {252, 0, 252, 0, 6, 0},
+                .nature = NATURE_ADAMANT,
+                .evs = {252, 252, 6, 0, 0, 0},
+                .ability = 0,
+                .moves = {MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_STEALTH_ROCK, MOVE_ICE_FANG},
+            },
+            {
+                .species = SPECIES_ALAKAZAM,
+                .heldItem = ITEM_FOCUS_SASH, // It has magic guard, so the sash won’t be broken by sand storm
+                .fixedIV = 30,
+                .nature = NATURE_TIMID,
+                .evs = {6, 0, 0, 252, 252, 0},
                 .ability = 2,
-                .moves = {MOVE_SLUDGE_BOMB, MOVE_EARTHQUAKE, MOVE_LEECH_SEED, MOVE_SYNTHESIS},
+                .moves = {MOVE_PSYCHIC, MOVE_FOCUS_BLAST, MOVE_SHADOW_BALL, MOVE_HIDDEN_POWER},
             },
             {
                 .species = SPECIES_SCIZOR,
-                .heldItem = ITEM_LEFTOVERS,
+                .heldItem = ITEM_SCIZORITE,
                 .fixedIV = 31,
-                .nature = NATURE_JOLLY,
-                .evs = {252, 0, 48, 0, 0, 208},
+                .nature = NATURE_ADAMANT,
+                .evs = {252, 252, 0, 0, 0, 6},
                 .ability = 1,
-                .moves = {MOVE_BULLET_PUNCH, MOVE_TOXIC, MOVE_ROOST, MOVE_CURSE},
+                .moves = {MOVE_BULLET_PUNCH, MOVE_BUG_BITE, MOVE_ROOST, MOVE_SWORDS_DANCE},
             },
             {
-                .species = SPECIES_HIPPOWDON,
-                .heldItem = ITEM_LEFTOVERS,
+                .species = SPECIES_EXCADRILL,
+                .heldItem = ITEM_SOFT_SAND,
                 .fixedIV = 31,
-                .nature = NATURE_BRAVE,
-                .evs = {252, 252, 6, 0, 0, 0},
+                .nature = NATURE_ADAMANT,
+                .evs = {118, 252, 0, 140, 0, 0},
                 .ability = 0,
-                .moves = {MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_CURSE, MOVE_SLACK_OFF},
+                .moves = {MOVE_EARTHQUAKE, MOVE_IRON_HEAD, MOVE_ROCK_SLIDE, MOVE_SWORDS_DANCE},
+            },
+            {
+                .species = SPECIES_STOUTLAND,
+                .heldItem = ITEM_LIFE_ORB,
+                .fixedIV = 31,
+                .nature = NATURE_ADAMANT,
+                .evs = {54, 252, 0, 204, 0, 0},
+                .ability = 1,
+                .moves = {MOVE_RETURN, MOVE_HIGH_HORSEPOWER, MOVE_FIRE_FANG, MOVE_SWORDS_DANCE},
+            },
+            {
+                .species = SPECIES_SALAMENCE,
+                .heldItem = ITEM_CHOICE_SPECS,
+                .fixedIV = 31,
+                .nature = NATURE_TIMID,
+                .evs = {6, 0, 0, 252, 252, 0},
+                .ability = 0,
+                .moves = {MOVE_AEROBLAST, MOVE_DRAGON_PULSE, MOVE_BLAST_OFF, MOVE_HYDRO_PUMP},
             },
         },
     },
@@ -539,97 +602,99 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][FRONTIER_PARTY_SIZ
     },
 };
 
+// Order is Tower, Dome, Palace, Arena, Factory, Pike, Pyramid.
+// Palace singles are higher than the rest because it’s 6v6 now, thus taking considerably longer.
 static const u8 sBattlePointAwards[][NUM_FRONTIER_FACILITIES][FRONTIER_MODE_COUNT] =
 {
     {
-        {1, 2, 3, 3}, {1, 1, 0, 0}, {4, 5, 0, 0}, {1, 0, 0, 0}, {3, 4, 0, 0}, {1, 0, 0, 0}, {5, 0, 0, 0}
+        {1, 2, 3, 3}, {1, 1, 0, 0}, {6, 5, 0, 0}, {1, 0, 0, 0}, {3, 4, 0, 0}, {1, 0, 0, 0}, {5, 0, 0, 0}
     },
     {
-        {2, 3, 4, 4}, {1, 1, 0, 0}, {4, 5, 0, 0}, {1, 0, 0, 0}, {3, 4, 0, 0}, {1, 0, 0, 0}, {5, 0, 0, 0}
+        {2, 3, 4, 4}, {1, 1, 0, 0}, {6, 5, 0, 0}, {1, 0, 0, 0}, {3, 4, 0, 0}, {1, 0, 0, 0}, {5, 0, 0, 0}
     },
     {
-        {3, 4, 5, 5}, {2, 2, 0, 0}, {5, 6, 0, 0}, {1, 0, 0, 0}, {4, 5, 0, 0}, {2, 0, 0, 0}, {6, 0, 0, 0}
+        {3, 4, 5, 5}, {2, 2, 0, 0}, {7, 6, 0, 0}, {1, 0, 0, 0}, {4, 5, 0, 0}, {2, 0, 0, 0}, {6, 0, 0, 0}
     },
     {
-        {4, 5, 6, 6}, {2, 2, 0, 0}, {5, 6, 0, 0}, {2, 0, 0, 0}, {4, 5, 0, 0}, {2, 0, 0, 0}, {6, 0, 0, 0}
+        {4, 5, 6, 6}, {2, 2, 0, 0}, {8, 6, 0, 0}, {2, 0, 0, 0}, {4, 5, 0, 0}, {2, 0, 0, 0}, {6, 0, 0, 0}
     },
     {
-        {5, 6, 7, 7}, {3, 3, 0, 0}, {6, 7, 0, 0}, {2, 0, 0, 0}, {5, 6, 0, 0}, {2, 0, 0, 0}, {7, 0, 0, 0}
+        {5, 6, 7, 7}, {3, 3, 0, 0}, {9, 7, 0, 0}, {2, 0, 0, 0}, {5, 6, 0, 0}, {2, 0, 0, 0}, {7, 0, 0, 0}
     },
     {
-        {6, 7, 8, 8}, {3, 3, 0, 0}, {6, 7, 0, 0}, {2, 0, 0, 0}, {5, 6, 0, 0}, {4, 0, 0, 0}, {7, 0, 0, 0}
+        {6, 7, 8, 8}, {3, 3, 0, 0}, {9, 7, 0, 0}, {2, 0, 0, 0}, {5, 6, 0, 0}, {4, 0, 0, 0}, {7, 0, 0, 0}
     },
     {
-        {7, 8, 9, 9}, {4, 4, 0, 0}, {7, 8, 0, 0}, {3, 0, 0, 0}, {6, 7, 0, 0}, {4, 0, 0, 0}, {8, 0, 0, 0}
+        {7, 8, 9, 9}, {4, 4, 0, 0}, {10, 8, 0, 0}, {3, 0, 0, 0}, {6, 7, 0, 0}, {4, 0, 0, 0}, {8, 0, 0, 0}
     },
     {
-        {8, 9, 10, 10}, {4, 4, 0, 0}, {7, 8, 0, 0}, {3, 0, 0, 0},{6, 7, 0, 0}, {4, 0, 0, 0}, {8, 0, 0, 0}
+        {8, 9, 10, 10}, {4, 4, 0, 0}, {10, 8, 0, 0}, {3, 0, 0, 0},{6, 7, 0, 0}, {4, 0, 0, 0}, {8, 0, 0, 0}
     },
     {
-        {9, 10, 11, 11}, {5, 5, 0, 0}, {8, 9, 0, 0}, {4, 0, 0, 0}, {7, 8, 0, 0}, {8, 0, 0, 0}, {9, 0, 0, 0}
+        {9, 10, 11, 11}, {5, 5, 0, 0}, {11, 9, 0, 0}, {4, 0, 0, 0}, {7, 8, 0, 0}, {8, 0, 0, 0}, {9, 0, 0, 0}
     },
     {
-        {10, 11, 12, 12}, {5, 5, 0, 0}, {8, 9, 0, 0}, {4, 0, 0, 0}, {7, 8, 0, 0}, {8, 0, 0, 0}, {9, 0, 0, 0}
+        {10, 11, 12, 12}, {5, 5, 0, 0}, {11, 9, 0, 0}, {4, 0, 0, 0}, {7, 8, 0, 0}, {8, 0, 0, 0}, {9, 0, 0, 0}
     },
     {
-        {11, 12, 13, 13}, {6, 6, 0, 0}, {9, 10, 0, 0}, {5, 0, 0,0}, {8, 9, 0, 0}, {8, 0, 0, 0}, {10, 0, 0, 0}
+        {11, 12, 13, 13}, {6, 6, 0, 0}, {12, 10, 0, 0}, {5, 0, 0,0}, {8, 9, 0, 0}, {8, 0, 0, 0}, {10, 0, 0, 0}
     },
     {
-        {12, 13, 14, 14}, {6, 6, 0, 0}, {9, 10, 0, 0}, {6, 0, 0,0}, {8, 9, 0, 0}, {8, 0, 0, 0}, {10, 0, 0, 0}
+        {12, 13, 14, 14}, {6, 6, 0, 0}, {12, 10, 0, 0}, {6, 0, 0,0}, {8, 9, 0, 0}, {8, 0, 0, 0}, {10, 0, 0, 0}
     },
     {
-        {13, 14, 15, 15}, {7, 7, 0, 0}, {10, 11, 0, 0}, {7, 0, 0, 0}, {9, 10, 0, 0}, {10, 0, 0, 0}, {11, 0, 0, 0}
+        {13, 14, 15, 15}, {7, 7, 0, 0}, {13, 11, 0, 0}, {7, 0, 0, 0}, {9, 10, 0, 0}, {10, 0, 0, 0}, {11, 0, 0, 0}
     },
     {
-        {14, 15, 15, 15}, {7, 7, 0, 0}, {10, 11, 0, 0}, {8, 0, 0, 0}, {9, 10, 0, 0}, {10, 0, 0, 0}, {11, 0, 0, 0}
+        {14, 15, 15, 15}, {7, 7, 0, 0}, {14, 11, 0, 0}, {8, 0, 0, 0}, {9, 10, 0, 0}, {10, 0, 0, 0}, {11, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {8, 8, 0, 0}, {11, 12, 0, 0}, {9, 0, 0, 0}, {10, 11, 0, 0}, {10, 0, 0, 0}, {12, 0, 0, 0}
+        {15, 15, 15, 15}, {8, 8, 0, 0}, {14, 12, 0, 0}, {9, 0, 0, 0}, {10, 11, 0, 0}, {10, 0, 0, 0}, {12, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {8, 8, 0, 0}, {11, 12, 0, 0}, {10, 0, 0, 0}, {10, 11, 0, 0}, {10, 0, 0, 0}, {12, 0, 0, 0}
+        {15, 15, 15, 15}, {8, 8, 0, 0}, {15, 12, 0, 0}, {10, 0, 0, 0}, {10, 11, 0, 0}, {10, 0, 0, 0}, {12, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {9, 9, 0, 0}, {12, 13, 0, 0}, {11, 0, 0, 0}, {11, 12, 0, 0}, {12, 0, 0, 0}, {13, 0, 0, 0}
+        {15, 15, 15, 15}, {9, 9, 0, 0}, {15, 13, 0, 0}, {11, 0, 0, 0}, {11, 12, 0, 0}, {12, 0, 0, 0}, {13, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {9, 9, 0, 0}, {12, 13, 0, 0}, {12, 0, 0, 0}, {11, 12, 0, 0}, {12, 0, 0, 0}, {13, 0, 0, 0}
+        {15, 15, 15, 15}, {9, 9, 0, 0}, {16, 13, 0, 0}, {12, 0, 0, 0}, {11, 12, 0, 0}, {12, 0, 0, 0}, {13, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {10, 10, 0, 0}, {13, 14, 0, 0}, {13, 0, 0, 0}, {12, 13, 0, 0}, {12, 0, 0, 0}, {14, 0, 0, 0}
+        {15, 15, 15, 15}, {10, 10, 0, 0}, {16, 14, 0, 0}, {13, 0, 0, 0}, {12, 13, 0, 0}, {12, 0, 0, 0}, {14, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {10, 10, 0, 0}, {13, 14, 0, 0}, {14, 0, 0, 0}, {12, 13, 0, 0}, {12, 0, 0, 0}, {14, 0, 0, 0}
+        {15, 15, 15, 15}, {10, 10, 0, 0}, {17, 14, 0, 0}, {14, 0, 0, 0}, {12, 13, 0, 0}, {12, 0, 0, 0}, {14, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {11, 11, 0, 0}, {14, 15, 0, 0}, {15, 0, 0, 0}, {13, 14, 0, 0}, {12, 0, 0, 0}, {15, 0, 0, 0}
+        {15, 15, 15, 15}, {11, 11, 0, 0}, {17, 15, 0, 0}, {15, 0, 0, 0}, {13, 14, 0, 0}, {12, 0, 0, 0}, {15, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {11, 11, 0, 0}, {14, 15, 0, 0}, {15, 0, 0, 0}, {13, 14, 0, 0}, {14, 0, 0, 0}, {15, 0, 0, 0}
+        {15, 15, 15, 15}, {11, 11, 0, 0}, {18, 15, 0, 0}, {15, 0, 0, 0}, {13, 14, 0, 0}, {14, 0, 0, 0}, {15, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {12, 12, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {14, 15, 0, 0}, {14, 0, 0, 0}, {15, 0, 0, 0}
+        {15, 15, 15, 15}, {12, 12, 0, 0}, {19, 15, 0, 0}, {15, 0, 0, 0}, {14, 15, 0, 0}, {14, 0, 0, 0}, {15, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {12, 12, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {14, 15, 0, 0}, {14, 0, 0, 0}, {15, 0, 0, 0}
+        {15, 15, 15, 15}, {12, 12, 0, 0}, {20, 15, 0, 0}, {15, 0, 0, 0}, {14, 15, 0, 0}, {14, 0, 0, 0}, {15, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {13, 13, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 15, 0, 0}, {14, 0, 0, 0}, {15, 0, 0, 0}
+        {15, 15, 15, 15}, {13, 13, 0, 0}, {20, 15, 0, 0}, {15, 0, 0, 0}, {15, 15, 0, 0}, {14, 0, 0, 0}, {15, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {13, 13, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 0, 0, 0}
+        {15, 15, 15, 15}, {13, 13, 0, 0}, {20, 15, 0, 0}, {15, 0, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {14, 14, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 0, 0, 0}
+        {15, 15, 15, 15}, {14, 14, 0, 0}, {20, 15, 0, 0}, {15, 0, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {14, 14, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 0, 0, 0}
+        {15, 15, 15, 15}, {14, 14, 0, 0}, {20, 15, 0, 0}, {15, 0, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {15, 15, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 0, 0, 0}
+        {15, 15, 15, 15}, {15, 15, 0, 0}, {20, 15, 0, 0}, {15, 0, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 0, 0, 0}
     },
     {
-        {15, 15, 15, 15}, {15, 15, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 0, 0, 0}
+        {15, 15, 15, 15}, {15, 15, 0, 0}, {20, 15, 0, 0}, {15, 0, 0, 0}, {15, 15, 0, 0}, {15, 0, 0, 0}, {15, 0, 0, 0}
     },
 };
 
@@ -1702,46 +1767,53 @@ static void Script_GetFrontierBrainStatus(void)
 
 u8 GetFrontierBrainStatus(void)
 {
-    s32 status = FRONTIER_BRAIN_NOT_READY;
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
-    u16 winStreakNoModifier = GetCurrentFacilityWinStreak();
-    s32 winStreak = winStreakNoModifier + sFrontierBrainStreakAppearances[facility][3];
-    s32 symbolsCount;
 
-    if (battleMode != FRONTIER_MODE_SINGLES)
+    if (VarGet(VAR_FRONTIER_BATTLE_MODE) != FRONTIER_MODE_SINGLES)
         return FRONTIER_BRAIN_NOT_READY;
 
     if (FlagGet(FLAG_RYU_FORCE_TUCKER) == 1)
-    {
         return FRONTIER_BRAIN_STREAK_LONG;
-    }
 
-    symbolsCount = GetPlayerSymbolCountForFacility(facility);
-    switch (symbolsCount)
+    return CalculateFrontierBrainStatus(facility, GetCurrentFacilityWinStreak());
+}
+
+u8 CalculateFrontierBrainStatus(s32 facility, u16 winStreak) {
+    u8 silverStreak = sFrontierBrainStreakAppearances[facility][0];
+    u8 goldStreak = sFrontierBrainStreakAppearances[facility][1];
+    // Whenever the streak is higher than goldStreak by a multiple of this value, trigger another gold battle.
+    // Example for the tower: gold is 70 and repeatedStreak is 35, so another gold battle will happen at 105, 140, 175, etc.
+    u8 repeatedStreak = sFrontierBrainStreakAppearances[facility][2];
+    // Add the offset (element 3) to compensate e.g. for Brendan technically being on floor 8 of the pyramid.
+    winStreak += sFrontierBrainStreakAppearances[facility][3];
+
+    switch (GetPlayerSymbolCountForFacility(facility))
     {
-    // Missing a symbol
+    // Received nothing
     case 0:
+        if (winStreak == silverStreak)
+            return FRONTIER_BRAIN_SILVER;
+        break;
+    // Received silver, missing gold
     case 1:
-        if (winStreak == sFrontierBrainStreakAppearances[facility][symbolsCount])
-            status = symbolsCount + 1; // FRONTIER_BRAIN_SILVER and FRONTIER_BRAIN_GOLD
+        if (winStreak == silverStreak)
+            return FRONTIER_BRAIN_STREAK;
+        else if (winStreak == goldStreak)
+            return FRONTIER_BRAIN_GOLD;
         break;
     // Already received both symbols
     case 2:
     default:
-        // Silver streak is reached
-        if (winStreak == sFrontierBrainStreakAppearances[facility][0])
-            status = FRONTIER_BRAIN_STREAK;
-        // Gold streak is reached
-        else if (winStreak == sFrontierBrainStreakAppearances[facility][1])
-            status = FRONTIER_BRAIN_STREAK_LONG;
-        // Some increment of the gold streak is reached
-        else if (winStreak > sFrontierBrainStreakAppearances[facility][1] && (winStreak - sFrontierBrainStreakAppearances[facility][1]) % sFrontierBrainStreakAppearances[facility][2] == 0)
-            status = FRONTIER_BRAIN_STREAK_LONG;
+        if (winStreak == silverStreak)
+            return FRONTIER_BRAIN_STREAK;
+        else if (winStreak == goldStreak)
+            return FRONTIER_BRAIN_STREAK_LONG;
+        // Some increment of the gold streak is reached; see comment above
+        else if (winStreak > goldStreak && (winStreak - goldStreak) % repeatedStreak == 0)
+            return FRONTIER_BRAIN_STREAK_LONG;
         break;
     }
-
-    return status;
+    return FRONTIER_BRAIN_NOT_READY;
 }
 
 void CopyFrontierTrainerText(u8 whichText, u16 trainerId)
@@ -2536,31 +2608,34 @@ void CreateFrontierBrainPokemon(void)
     s32 monLevel = 0;
     u8 friendship;
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetFronterBrainSymbol();
+    u8 partySize = facility == FRONTIER_FACILITY_PALACE ? FRONTIER_PALACE_PARTY_SIZE : FRONTIER_PARTY_SIZE;
+    s32 symbol = GetFrontierBrainSymbol();
     u8 ability = sFrontierBrainsMons[facility][symbol][i].ability;
 
     if (facility == FRONTIER_FACILITY_DOME)
         selectedMonBits = GetDomeTrainerSelectedMons(TrainerIdToDomeTournamentId(TRAINER_FRONTIER_BRAIN));
     else
-        selectedMonBits = (1 << FRONTIER_PARTY_SIZE) - 1; // all 3 mons selected
+        selectedMonBits = (1 << partySize) - 1; // all mons selected
 
     ZeroEnemyPartyMons();
     monPartyId = 0;
     monLevel = SetFacilityPtrsGetLevel();
-    for (i = 0; i < FRONTIER_PARTY_SIZE; selectedMonBits >>= 1, i++)
+    for (i = 0; i < partySize; selectedMonBits >>= 1, i++)
     {
         if (!(selectedMonBits & 1))
             continue;
         do {
             j = Random32();
         } while (sFrontierBrainsMons[facility][symbol][i].nature != GetNatureFromPersonality(j));
-        CreateMon(&gEnemyParty[monPartyId],
-                  sFrontierBrainsMons[facility][symbol][i].species,
-                  monLevel,
-                  sFrontierBrainsMons[facility][symbol][i].fixedIV,
-                  TRUE,
-                  j, // force personality value so the nature matches
-                  OT_ID_PRESET, FRONTIER_BRAIN_OTID);
+        CreateMon(
+            &gEnemyParty[monPartyId],
+            sFrontierBrainsMons[facility][symbol][i].species,
+            monLevel,
+            sFrontierBrainsMons[facility][symbol][i].fixedIV,
+            TRUE,
+            j, // force personality value so the nature matches
+            OT_ID_PRESET, FRONTIER_BRAIN_OTID
+        );
         SetMonData(&gEnemyParty[monPartyId], MON_DATA_HELD_ITEM, &sFrontierBrainsMons[facility][symbol][i].heldItem);
         for (j = 0; j < NUM_STATS; j++)
             SetMonData(&gEnemyParty[monPartyId], MON_DATA_HP_EV + j, &sFrontierBrainsMons[facility][symbol][i].evs[j]);
@@ -2581,7 +2656,7 @@ void CreateFrontierBrainPokemon(void)
 u16 GetFrontierBrainMonSpecies(u8 monId)
 {
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetFronterBrainSymbol();
+    s32 symbol = GetFrontierBrainSymbol();
 
     return sFrontierBrainsMons[facility][symbol][monId].species;
 }
@@ -2595,7 +2670,7 @@ void SetFrontierBrainObjEventGfx(u8 facility)
 u16 GetFrontierBrainMonMove(u8 monId, u8 moveSlotId)
 {
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetFronterBrainSymbol();
+    s32 symbol = GetFrontierBrainSymbol();
 
     return sFrontierBrainsMons[facility][symbol][monId].moves[moveSlotId];
 }
@@ -2603,7 +2678,7 @@ u16 GetFrontierBrainMonMove(u8 monId, u8 moveSlotId)
 u8 GetFrontierBrainMonNature(u8 monId)
 {
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetFronterBrainSymbol();
+    s32 symbol = GetFrontierBrainSymbol();
 
     return sFrontierBrainsMons[facility][symbol][monId].nature;
 }
@@ -2611,28 +2686,28 @@ u8 GetFrontierBrainMonNature(u8 monId)
 u8 GetFrontierBrainMonEvs(u8 monId, u8 evStatId)
 {
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetFronterBrainSymbol();
+    s32 symbol = GetFrontierBrainSymbol();
 
     return sFrontierBrainsMons[facility][symbol][monId].evs[evStatId];
 }
 
-s32 GetFronterBrainSymbol(void)
+s32 GetFrontierBrainSymbol(void)
 {
     s32 facility = VarGet(VAR_FRONTIER_FACILITY);
-    s32 symbol = GetPlayerSymbolCountForFacility(facility);
+    u16 winStreak = GetCurrentFacilityWinStreak();
 
-    if (symbol == 2)
-    {
-        u16 winStreak = GetCurrentFacilityWinStreak();
-        if (winStreak + sFrontierBrainStreakAppearances[facility][3] == sFrontierBrainStreakAppearances[facility][0])
-            symbol = 0;
-        else if (winStreak + sFrontierBrainStreakAppearances[facility][3] == sFrontierBrainStreakAppearances[facility][1])
-            symbol = 1;
-        else if (winStreak + sFrontierBrainStreakAppearances[facility][3] > sFrontierBrainStreakAppearances[facility][1]
-                 && (winStreak + sFrontierBrainStreakAppearances[facility][3] - sFrontierBrainStreakAppearances[facility][1]) % sFrontierBrainStreakAppearances[facility][2] == 0)
-            symbol = 1;
-    }
-    return symbol;
+    // First silver
+    if (winStreak + sFrontierBrainStreakAppearances[facility][3] == sFrontierBrainStreakAppearances[facility][0])
+        return 0;
+    // First gold
+    else if (winStreak + sFrontierBrainStreakAppearances[facility][3] == sFrontierBrainStreakAppearances[facility][1])
+        return 1;
+    // Repeated gold battle for longer streaks
+    else if (winStreak + sFrontierBrainStreakAppearances[facility][3] > sFrontierBrainStreakAppearances[facility][1]
+             && (winStreak + sFrontierBrainStreakAppearances[facility][3] - sFrontierBrainStreakAppearances[facility][1]) % sFrontierBrainStreakAppearances[facility][2] == 0)
+        return 1;
+    // Fallback that shouldn’t actually happen.
+    return max(GetPlayerSymbolCountForFacility(facility), 1);
 }
 
 // Called for intro speech as well despite the fact that its handled in the map scripts files instead
@@ -2649,7 +2724,7 @@ static void CopyFrontierBrainText(bool8 playerWonText)
     else
     {
         facility = VarGet(VAR_FRONTIER_FACILITY);
-        symbol = GetFronterBrainSymbol();
+        symbol = GetFrontierBrainSymbol();
     }
 
     switch (playerWonText)

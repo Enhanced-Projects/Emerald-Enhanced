@@ -29,7 +29,6 @@
 #include "party_menu.h"
 #include "pokedex.h"
 #include "pokenav.h"
-#include "safari_zone.h"
 #include "save.h"
 #include "scanline_effect.h"
 #include "script.h"
@@ -57,10 +56,13 @@ static EWRAM_DATA u8 MenuSpriteId2 = 0;
 extern u8 RyuDebugMenuScript[];
 extern u8 RyuStartMenuConfigInfoScript[];
 extern const u8 gText_RyuVersion[];
+extern const u8 Ryu_FFTextSpeedWarning[];
+extern const u8 ryu_end[];
 
 // Menu actions
 enum
 {
+    MENU_ACTION_DEXNAV,
     MENU_ACTION_POKEDEX,
     MENU_ACTION_POKEMON,
     MENU_ACTION_BAG,
@@ -68,13 +70,11 @@ enum
     MENU_ACTION_PLAYER,
     MENU_ACTION_SAVE,
     MENU_ACTION_OPTION,
-    MENU_ACTION_EXIT,
-    MENU_ACTION_RETIRE_SAFARI,
     MENU_ACTION_PLAYER_LINK,
     MENU_ACTION_REST_FRONTIER,
     MENU_ACTION_RETIRE_FRONTIER,
     MENU_ACTION_PYRAMID_BAG,
-    MENU_ACTION_DEXNAV
+    MENU_ACTION_EXIT
 };
 
 // Save status
@@ -90,7 +90,6 @@ enum
 bool8 (*gMenuCallback)(void);
 
 // EWRAM
-EWRAM_DATA static u8 sSafariBallsWindowId = 0;
 EWRAM_DATA static u8 sBattlePyramidFloorWindowId = 0;
 EWRAM_DATA static u8 sStartMenuCursorPos = 0;
 EWRAM_DATA static u8 sNumStartMenuActions = 0;
@@ -111,7 +110,6 @@ static bool8 StartMenuPlayerNameCallback(void);
 static bool8 StartMenuSaveCallback(void);
 static bool8 StartMenuOptionCallback(void);
 static bool8 StartMenuExitCallback(void);
-static bool8 StartMenuSafariZoneRetireCallback(void);
 static bool8 StartMenuLinkModePlayerNameCallback(void);
 static bool8 StartMenuBattlePyramidRetireCallback(void);
 static bool8 StartMenuBattlePyramidBagCallback(void);
@@ -122,7 +120,7 @@ static bool8 SaveStartCallback(void);
 static bool8 SaveCallback(void);
 static bool8 BattlePyramidRetireStartCallback(void);
 static bool8 BattlePyramidRetireReturnCallback(void);
-static bool8 BattlePyramidRetireCallback(void);
+static bool8 BattlePyramidRetireCallback(void); 
 static bool8 HandleStartMenuInput(void);
 
 // Save dialog callbacks
@@ -152,8 +150,6 @@ static bool8 FieldCB_ReturnToFieldStartMenu(void);
 
 extern int CountBadges();
 
-static const struct WindowTemplate sSafariBallsWindowTemplate = {0, 1, 1, 9, 4, 0xF, 8};
-
 static const u8* const sPyramindFloorNames[] =
 {
     gText_Floor1,
@@ -171,6 +167,7 @@ static const struct WindowTemplate sPyramidFloorWindowTemplate_1 = {0, 1, 1, 0xC
 
 static const struct MenuAction sStartMenuItems[] =
 {
+    {gText_MenuDexNav, {.u8_void = StartMenuDexNavCallback}},
     {gText_MenuPokedex, {.u8_void = StartMenuPokedexCallback}},
     {gText_MenuPokemon, {.u8_void = StartMenuPokemonCallback}},
     {gText_MenuBag, {.u8_void = StartMenuBagCallback}},
@@ -179,12 +176,10 @@ static const struct MenuAction sStartMenuItems[] =
     {gText_MenuSave, {.u8_void = StartMenuSaveCallback}},
     {gText_MenuOption, {.u8_void = StartMenuOptionCallback}},
     {gText_MenuExit, {.u8_void = StartMenuExitCallback}},
-    {gText_MenuRetire, {.u8_void = StartMenuSafariZoneRetireCallback}},
     {gText_MenuPlayer, {.u8_void = StartMenuLinkModePlayerNameCallback}},
     {gText_MenuRest, {.u8_void = StartMenuSaveCallback}},
     {gText_MenuRetire, {.u8_void = StartMenuBattlePyramidRetireCallback}},
-    {gText_MenuBag, {.u8_void = StartMenuBattlePyramidBagCallback}},
-    {gText_MenuDexNav, {.u8_void = StartMenuDexNavCallback}}
+    {gText_MenuBag, {.u8_void = StartMenuBattlePyramidBagCallback}}
 };
 
 static const struct BgTemplate sUnknown_085105A8[] =
@@ -212,13 +207,12 @@ static const struct WindowTemplate sSaveInfoWindowTemplate = {0, 1, 1, 0xE, 0xA,
 static void BuildStartMenuActions(void);
 static void AddStartMenuAction(u8 action);
 static void BuildNormalStartMenu(void);
-static void BuildSafariZoneStartMenu(void);
 static void BuildLinkModeStartMenu(void);
 static void BuildUnionRoomStartMenu(void);
 static void BuildBattlePikeStartMenu(void);
 static void BuildBattlePyramidStartMenu(void);
 static void BuildMultiPartnerRoomStartMenu(void);
-static void ShowSafariBallsWindow(void);
+static void BuildDexnavStartMenu(void);
 static void ShowPyramidFloorWindow(void);
 static void RemoveExtraStartMenuWindows(void);
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count);
@@ -248,6 +242,12 @@ void SetDexPokemonPokenavFlags(void) // unused
     FlagSet(FLAG_SYS_POKENAV_GET);
 }
 
+bool8 PlayerHasDexnav(void)
+{
+    if (FlagGet(FLAG_SYS_DEXNAV_GET) == 1)
+        return TRUE;
+}
+
 static void BuildStartMenuActions(void)
 {
     sNumStartMenuActions = 0;
@@ -260,10 +260,6 @@ static void BuildStartMenuActions(void)
     {
         BuildUnionRoomStartMenu();
     }
-    else if (GetSafariZoneFlag() == TRUE)
-    {
-        BuildSafariZoneStartMenu();
-    }
     else if (InBattlePike())
     {
         BuildBattlePikeStartMenu();
@@ -275,6 +271,10 @@ static void BuildStartMenuActions(void)
     else if (InMultiPartnerRoom())
     {
         BuildMultiPartnerRoomStartMenu();
+    }
+    else if (PlayerHasDexnav())
+    {
+        BuildDexnavStartMenu();
     }
     else
     {
@@ -291,15 +291,6 @@ static void BuildNormalStartMenu(void)
 {    
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEDEX);
-    
-    if (FlagGet(FLAG_SYS_DEXNAV_GET))
-    {
-        AddStartMenuAction(MENU_ACTION_DEXNAV);
-    }
-    else
-    {
-        AddStartMenuAction(MENU_ACTION_EXIT);
-    }
     
     if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
     {
@@ -322,15 +313,32 @@ static void BuildNormalStartMenu(void)
     AddStartMenuAction(MENU_ACTION_OPTION);
 }
 
-static void BuildSafariZoneStartMenu(void)
-{
-    AddStartMenuAction(MENU_ACTION_RETIRE_SAFARI);
-    AddStartMenuAction(MENU_ACTION_POKEDEX);
-    AddStartMenuAction(MENU_ACTION_POKEMON);
+static void BuildDexnavStartMenu(void)
+{    
+    AddStartMenuAction(MENU_ACTION_DEXNAV);
+
+    if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+        AddStartMenuAction(MENU_ACTION_POKEDEX);
+    
+    if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
+    {
+        if (!(CalculatePlayerPartyCount() == 0))
+            AddStartMenuAction(MENU_ACTION_POKEMON);
+    }
+
     AddStartMenuAction(MENU_ACTION_BAG);
+
+    if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
+    {
+        if (!(CalculatePlayerPartyCount() == 0))
+        {
+            AddStartMenuAction(MENU_ACTION_POKENAV);
+        }
+    }
+
     AddStartMenuAction(MENU_ACTION_PLAYER);
+    AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildLinkModeStartMenu(void)
@@ -345,7 +353,6 @@ static void BuildLinkModeStartMenu(void)
 
     AddStartMenuAction(MENU_ACTION_PLAYER_LINK);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildUnionRoomStartMenu(void)
@@ -360,7 +367,6 @@ static void BuildUnionRoomStartMenu(void)
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildBattlePikeStartMenu(void)
@@ -369,7 +375,6 @@ static void BuildBattlePikeStartMenu(void)
     AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildBattlePyramidStartMenu(void)
@@ -380,7 +385,6 @@ static void BuildBattlePyramidStartMenu(void)
     AddStartMenuAction(MENU_ACTION_REST_FRONTIER);
     AddStartMenuAction(MENU_ACTION_RETIRE_FRONTIER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildMultiPartnerRoomStartMenu(void)
@@ -388,18 +392,6 @@ static void BuildMultiPartnerRoomStartMenu(void)
     AddStartMenuAction(MENU_ACTION_POKEMON);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
-}
-
-static void ShowSafariBallsWindow(void)
-{
-    sSafariBallsWindowId = AddWindow(&sSafariBallsWindowTemplate);
-    PutWindowTilemap(sSafariBallsWindowId);
-    DrawStdWindowFrame(sSafariBallsWindowId, FALSE);
-    ConvertIntToDecimalStringN(gStringVar1, gNumSafariBalls, STR_CONV_MODE_RIGHT_ALIGN, 2);
-    StringExpandPlaceholders(gStringVar4, gText_SafariBallStock);
-    AddTextPrinterParameterized(sSafariBallsWindowId, 1, gStringVar4, 0, 1, 0xFF, NULL);
-    CopyWindowToVram(sSafariBallsWindowId, 2);
 }
 
 static void ShowPyramidFloorWindow(void)
@@ -419,12 +411,6 @@ static void ShowPyramidFloorWindow(void)
 
 static void RemoveExtraStartMenuWindows(void)
 {
-    if (GetSafariZoneFlag())
-    {
-        ClearStdWindowAndFrameToTransparent(sSafariBallsWindowId, FALSE);
-        CopyWindowToVram(sSafariBallsWindowId, 2);
-        RemoveWindow(sSafariBallsWindowId);
-    }
     if (InBattlePyramid())
     {
         ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
@@ -540,6 +526,10 @@ void RemovePrintedNumber(void)
     ClearStdWindowAndFrameToTransparent(sPrintNumberWindow2Id, FALSE);
     CopyWindowToVram(sPrintNumberWindow2Id, 2);
     RemoveWindow(sPrintNumberWindow2Id);
+    if (FlagGet(FLAG_NOTIFIED_FF_TEXT) == 0)
+        ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
+    else
+        ScriptContext1_SetupScript(ryu_end);//For some reason, this fixes the start meny info window border from sticking around, i call it a win.
 }
 
 void PrintSongNumber(u16 song)
@@ -942,14 +932,12 @@ static bool32 InitStartMenuStep(void)
         sInitStartMenuData[0]++;
         break;
     case 3:
-        if (GetSafariZoneFlag())
-            ShowSafariBallsWindow();
         if (InBattlePyramid())
             ShowPyramidFloorWindow();
         sInitStartMenuData[0]++;
         break;
     case 4:
-        if (PrintStartMenuActions((s8 *)&sInitStartMenuData[1], 2))
+        if (PrintStartMenuActions(&sInitStartMenuData[1], 2))
             sInitStartMenuData[0]++;
         break;
     case 5:
@@ -1067,9 +1055,11 @@ void PlayNextTrack(void)
     u16 song = (VarGet(VAR_RYU_JUKEBOX));
     PlaySE(SE_PIN);
     PlayBGM(song);
-    RemovePrintedNumber();
+    //RemovePrintedNumber(); had to do it for song changing.
     PrintSongNumber(song);
 }
+
+extern u8 RyuFollowerSelectNPCScript[];
 
 static bool8 HandleStartMenuInput(void)
 {
@@ -1103,8 +1093,10 @@ static bool8 HandleStartMenuInput(void)
         PlayNextTrack();
     }
 
-    if (gMain.newKeys & SELECT_BUTTON && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+    if (gMain.newKeys & SELECT_BUTTON)
     {
+        if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
+        {
             RemovePrintedNumber();
             RemoveExtraStartMenuWindows();
             if (!(MenuSpriteId1 == 0))
@@ -1119,9 +1111,28 @@ static bool8 HandleStartMenuInput(void)
             ScriptContext2_Enable();
             ScriptContext1_SetupScript(RyuDebugMenuScript);
             return TRUE;
+        }
+        else
+        {
+            RemovePrintedNumber();
+            RemoveExtraStartMenuWindows();
+            if (!(MenuSpriteId1 == 0))
+            {
+                DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
+                MenuSpriteId1 = 0;
+            }
+
+            HideStartMenu();
+            HideFieldMessageBox();
+            RemovePrintedNumber();
+            ScriptContext2_Enable();
+            ScriptContext1_SetupScript(RyuStartMenuConfigInfoScript);
+            return TRUE;
+        }
+        
     }
 
-    if (gMain.newKeys & DPAD_UP)
+    if (JOY_NEW(DPAD_UP))
     {
         PlaySE(SE_SELECT);
         sStartMenuCursorPos = Menu_MoveCursor(-1);
@@ -1133,26 +1144,14 @@ static bool8 HandleStartMenuInput(void)
         sStartMenuCursorPos = Menu_MoveCursor(1);
     }
 
-    if (gMain.newKeys & DPAD_LEFT)
+    if (JOY_NEW(DPAD_LEFT))
     {
         if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
-            TryMoveObjectEventToMapCoords(OBJ_EVENT_ID_FOLLOWER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->pos.x, ((gSaveBlock1Ptr->pos.y) + 1));
-    }
-
-    if ((gMain.newKeys & DPAD_RIGHT) && (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 0))
-    {
-        if (FlagGet(FLAG_RYU_RANDOMIZE_MUSIC) == 1)
         {
-            FlagClear(FLAG_RYU_RANDOMIZE_MUSIC);
-            PlaySE(SE_PIN);
-        }
-        else
-        {
-            FlagSet(FLAG_RYU_RANDOMIZE_MUSIC);
-            PlaySE(SE_EXPMAX);
+            DestroyFollowerObjectEvent();
+            CreateFollowerObjectEvent((VarGet(VAR_RYU_FOLLOWER_ID)), RyuFollowerSelectNPCScript, (GetPlayerFacingDirection()));
         }
     }
-
 
     if (gMain.newKeys & A_BUTTON)
     {
@@ -1167,7 +1166,6 @@ static bool8 HandleStartMenuInput(void)
 
         if (gMenuCallback != StartMenuSaveCallback
             && gMenuCallback != StartMenuExitCallback
-            && gMenuCallback != StartMenuSafariZoneRetireCallback
             && gMenuCallback != StartMenuBattlePyramidRetireCallback)
         {
            FadeScreen(FADE_TO_BLACK, 0);
@@ -1341,30 +1339,11 @@ static bool8 StartMenuOptionCallback(void)
 
 static bool8 StartMenuExitCallback(void)
 {
-    if (gMain.newKeys & A_BUTTON || gMain.heldKeys & A_BUTTON)
-    {
-        HideStartMenu();
-        RemovePrintedNumber();
-        HideFieldMessageBox();
-        ScriptContext2_Enable();
-        ScriptContext1_SetupScript(RyuStartMenuConfigInfoScript);
-        return TRUE;
-    }
-    else
     RemoveExtraStartMenuWindows();
     HideStartMenu(); // Hide start menu
     RemoveExtraStartMenuWindows();
     HideFieldMessageBox();
     RemovePrintedNumber();
-    return TRUE;
-}
-
-static bool8 StartMenuSafariZoneRetireCallback(void)
-{
-    RemoveExtraStartMenuWindows();
-    HideStartMenu();
-    SafariZoneRetirePrompt();
-
     return TRUE;
 }
 

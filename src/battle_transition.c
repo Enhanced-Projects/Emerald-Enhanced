@@ -24,6 +24,7 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "constants/rgb.h"
+#include "event_data.h" //once again, for vars and flags
 
 struct TransitionData
 {
@@ -948,6 +949,8 @@ void BattleTransition_Start(u8 transitionId)
 bool8 IsBattleTransitionDone(void)
 {
     u8 taskId = FindTaskIdByFunc(Task_BattleTransitionMain);
+    if (taskId == 0xFF)
+        return TRUE;
     if (gTasks[taskId].tTransitionDone)
     {
         DestroyTask(taskId);
@@ -962,9 +965,12 @@ bool8 IsBattleTransitionDone(void)
 
 static void LaunchBattleTransitionTask(u8 transitionId)
 {
-    u8 taskId = CreateTask(Task_BattleTransitionMain, 2);
-    gTasks[taskId].tTransitionId = transitionId;
-    sTransitionStructPtr = AllocZeroed(sizeof(*sTransitionStructPtr));
+    if (FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION) != OPTIONS_TRANSITION_INSTANT)
+    {
+        u8 taskId = CreateTask(Task_BattleTransitionMain, 2);
+        gTasks[taskId].tTransitionId = transitionId;
+        sTransitionStructPtr = AllocZeroed(sizeof(*sTransitionStructPtr));
+    }
 }
 
 static void Task_BattleTransitionMain(u8 taskId)
@@ -3973,7 +3979,7 @@ static bool8 Phase2_FrontierLogoWave_Func4(struct Task *task)
 
     for (i = 0; i < 160; i++, var6 += var8)
     {
-        const u16 index = var6 >> 8;
+        s16 index = var6 / 256;
         gScanlineEffectRegBuffers[0][i] = sTransitionStructPtr->field_16 + Sin(index & 0xff, amplitude);
     }
 

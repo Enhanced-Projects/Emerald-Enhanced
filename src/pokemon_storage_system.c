@@ -2157,7 +2157,7 @@ static void Cb2_EnterPSS(u8 boxOption)
 {
     ResetTasks();
     sCurrentBoxOption = boxOption;
-    sPSSData = Alloc(sizeof(struct PokemonStorageSystemData));
+    sPSSData = Alloc(sizeof(*sPSSData));
     if (sPSSData == NULL)
     {
         SetMainCallback2(Cb2_ExitPSS);
@@ -2177,7 +2177,7 @@ static void Cb2_EnterPSS(u8 boxOption)
 static void Cb2_ReturnToPSS(void)
 {
     ResetTasks();
-    sPSSData = Alloc(sizeof(struct PokemonStorageSystemData));
+    sPSSData = Alloc(sizeof(*sPSSData));
     if (sPSSData == NULL)
     {
         SetMainCallback2(Cb2_ExitPSS);
@@ -5146,7 +5146,7 @@ static void sub_80CC100(struct Sprite *sprite)
     sprite->pos1.y = sPSSData->field_CB4->pos1.y + sPSSData->field_CB4->pos2.y + 4;
 }
 
-static u16 sub_80CC124(u16 species)
+static u16 sub_80CC124(u16 species, u32 personality)
 {
     u16 i, var;
 
@@ -5170,7 +5170,7 @@ static u16 sub_80CC124(u16 species)
     sPSSData->field_B58[i] = species;
     sPSSData->field_B08[i]++;
     var = 16 * i;
-    CpuCopy32(GetMonIconTiles(species, TRUE), (void*)(OBJ_VRAM0) + var * 32, 0x200);
+    CpuCopy32(GetMonIconTiles(species, TRUE, personality), (void*)(OBJ_VRAM0) + var * 32, 0x200);
 
     return var;
 }
@@ -5198,7 +5198,7 @@ static struct Sprite *CreateMonIconSprite(u16 species, u32 personality, s16 x, s
 
     species = GetIconSpecies(species, personality);
     tempalte.paletteTag = 0xDAC0 + gMonIconPaletteIndices[species];
-    tileNum = sub_80CC124(species);
+    tileNum = sub_80CC124(species, personality);
     if (tileNum == 0xFFFF)
         return NULL;
 
@@ -7441,7 +7441,7 @@ static u8 HandleInput_OnButtons(void)
             sPSSData->field_CD7 = 1;
             break;
         }
-        
+
         if (JOY_REPEAT(DPAD_DOWN | START_BUTTON))
         {
             retVal = 1;

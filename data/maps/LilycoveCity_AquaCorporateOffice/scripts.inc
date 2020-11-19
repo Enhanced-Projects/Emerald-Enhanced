@@ -39,6 +39,7 @@ ACO_Shelly::
 	compare VAR_RYU_AQUA, 72
 	goto_if_lt ryu_end
 	switch VAR_RYU_AQUA
+	case 72, ACO_NonRomanceShelly
 	case 80, ACO_AquaStage3_Waitforcall
 	case 81, ACO_AquaStage3_Waitforcall
 	case 85, ACO_PlayerReturnedFromChimneyWithNecklace
@@ -46,6 +47,17 @@ ACO_Shelly::
 	case 107, ACO_ShellyAfterJaggedPassRomanceEvent
 	case 111, ACO_PlayerShouldGoToShipyard
 	case 161, ACO_ShellyAfterStory
+	goto ACO_ShellyNeutral
+
+ACO_ShellyNeutral::
+	msgbox ACO_ShellyNMsg
+	release
+	end
+
+ACO_ShellyNMsg:
+	.string "{PLAYER}, you have your orders.$"
+
+ACO_NonRomanceShelly::
 	lockall
 	msgbox ACO_SoHowDid
 	closemessage

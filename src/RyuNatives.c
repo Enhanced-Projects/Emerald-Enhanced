@@ -170,7 +170,7 @@ void PasscodeGiveMonWithNature(void)
     u16 species = (VarGet(VAR_TEMP_4));
     u8 nature = (VarGet(VAR_TEMP_C));
     u8 fixedIv = 31;
-    u8 level = 250;
+    u8 level = 100;
 
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
     CalculateMonStats(&gPlayerParty[slot]);
@@ -209,10 +209,13 @@ void RyuKillMon(void)
         if (GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
         {
             ZeroMonData(&gPlayerParty[i]);
-            CompactPartySlots();
             PlaySE(SE_POKE_DEAD);
         }
     }
+
+    CompactPartySlots();
+    if ((CalculatePlayerPartyCount) == 0)
+        FlagSet(FLAG_RYU_NUZLOCKEFAILED);
 }
 
 extern const u16 gFrontierBannedSpecies[27];
@@ -359,51 +362,22 @@ void RyuSetFriendship(void)
     CalculateMonStats(&gPlayerParty[slot]);
 }
 
-void RyuSetEVHP(void)//I would like to combine all of these into a single function, but I don't think it would save much space or time.
-{                    //there may be a better way to do this.
-    u8 value = VarGet(VAR_TEMP_1);
-    u8 slot = VarGet(VAR_TEMP_2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV, &value);
-    CalculateMonStats(&gPlayerParty[slot]);
-}
+static const u16 RyuValToEv[] = {
+    MON_DATA_HP_EV,
+    MON_DATA_ATK_EV,
+    MON_DATA_DEF_EV,
+    MON_DATA_SPATK_EV,
+    MON_DATA_SPDEF_EV,
+    MON_DATA_SPEED_EV
+};
 
-void RyuSetEVATK(void)
+void RyuSetSlotStatEV(void)//This is super lewd, you don't even know
 {
     u8 value = VarGet(VAR_TEMP_1);
     u8 slot = VarGet(VAR_TEMP_2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &value);
-    CalculateMonStats(&gPlayerParty[slot]);
-}
+    u8 stat = VarGet(VAR_TEMP_3);
 
-void RyuSetEVDEF(void)
-{
-    u8 value = VarGet(VAR_TEMP_1);
-    u8 slot = VarGet(VAR_TEMP_2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_DEF_EV, &value);
-    CalculateMonStats(&gPlayerParty[slot]);
-}
-
-void RyuSetEVSPATK(void)
-{
-    u8 value = VarGet(VAR_TEMP_1);
-    u8 slot = VarGet(VAR_TEMP_2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &value);
-    CalculateMonStats(&gPlayerParty[slot]);
-}
-
-void RyuSetEVSPDEF(void)
-{
-    u8 value = VarGet(VAR_TEMP_1);
-    u8 slot = VarGet(VAR_TEMP_2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_EV, &value);
-    CalculateMonStats(&gPlayerParty[slot]);
-}
-
-void RyuSetEVSPE(void)
-{
-    u8 value = VarGet(VAR_TEMP_1);
-    u8 slot = VarGet(VAR_TEMP_2);
-    SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_EV, &value);
+    SetMonData(&gPlayerParty[slot], RyuValToEv[stat], &value);
     CalculateMonStats(&gPlayerParty[slot]);
 }
 
@@ -811,6 +785,7 @@ int RyuMeloettaFormSwitcher(void)
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_MELOETTA)
             {
                 SetMonData(&gPlayerParty[i], MON_DATA_SPECIES, &m2);
+                CalculateMonStats(&gPlayerParty[i]);
                 VarSet(VAR_TEMP_9, i);
                 VarSet(VAR_TEMP_A, SPECIES_MELOETTA_PIROUETTE);
                 return 2;
@@ -819,6 +794,7 @@ int RyuMeloettaFormSwitcher(void)
             if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_MELOETTA_PIROUETTE)
             {
                 SetMonData(&gPlayerParty[i], MON_DATA_SPECIES, &m1);
+                CalculateMonStats(&gPlayerParty[i]);
                 VarSet(VAR_TEMP_9, i);
                 VarSet(VAR_TEMP_A, SPECIES_MELOETTA);
                 return 2;
@@ -858,19 +834,22 @@ bool8 ScrCmd_clearfullscreenimage(struct ScriptContext *ctx)
 }
 
 bool8 ScrCmd_checkspecies(struct ScriptContext *ctx)//this lewd function checks if player has mon, and if so,
-{                                                   //returns TRUE to VAR_RESULT, and slot number to VAR_TEMP_F
+{                                                   //sets flag FLAG_TEMP_C, and slot number to VAR_TEMP_F
     u16 speciesId = VarGet(ScriptReadHalfword(ctx));//see the relevant script command in asm/macros/event.inc
     u8 i;
 
     for (i = 0; i < CalculatePlayerPartyCount(); i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == speciesId)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == speciesId)
         {
-            gSpecialVar_Result = TRUE;
+
+            FlagSet(FLAG_TEMP_C);
             VarSet(VAR_TEMP_F, i);
             return TRUE;
         }
     }
+    FlagClear(FLAG_TEMP_C);
+    VarSet(VAR_TEMP_F, 65535);
     return TRUE;
 }
 
@@ -978,20 +957,31 @@ void FillTheDex(void)
     
 }
 
-bool8 ChangeDarmanitanForm(void)
+int ChangeDarmanitanForm(void)
 {
     u8 i;
-    u16 darmi = SPECIES_DARMANITAN_ZEN;
+    u16 darmi = SPECIES_DARMANITAN;
+    u16 darm2 = SPECIES_DARMANITAN_ZEN;
+    u8 hasDarmi = 0;
     for (i = 0; i < PARTY_SIZE; i++)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_DARMANITAN)
         {
+            hasDarmi = 1;
+            SetMonData(&gPlayerParty[i], MON_DATA_SPECIES, &darm2);
+            CalculateMonStats(&gPlayerParty[i]);
+            return hasDarmi;
+        }
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_DARMANITAN_ZEN)
+        {
+            hasDarmi = 2;
             SetMonData(&gPlayerParty[i], MON_DATA_SPECIES, &darmi);
             CalculateMonStats(&gPlayerParty[i]);
-            return TRUE;
+            return hasDarmi;
         }
+
     }
-    return FALSE;
+    return hasDarmi;
 }
 
 bool8 ScrCmd_dominingcheck(struct ScriptContext *ctx) //rolls the inside/outside table for items from the relevant skill level
@@ -1464,6 +1454,7 @@ void RyuBufferQuestVars(void)
     ConvertIntToDecimalStringN(gStringVar3, (VarGet(VAR_RYU_DEVON_SCIENTIST_STAGE)), STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gRyuStringVar1, (VarGet(VAR_RYU_DS_LANA_STAGE)), STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gRyuStringVar2, (VarGet(VAR_RYU_LANETTE_VAR)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar3, (VarGet(VAR_RYU_AQUA)), STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
 
@@ -1557,7 +1548,13 @@ bool8 ScrCmd_trycraftingrecipe(struct ScriptContext *ctx)
     u16 recipeNum = VarGet(ScriptReadHalfword(ctx)); //the recipe to try to craft
     u8 i;
     u16 itemId, requiredQuantity, quantityInBag;
-    u16 rewardItem = (sBotanyRecipeToItemId[recipeNum]);
+    u16 rewardItem = sBotanyRecipeToItemId[recipeNum];
+
+    // 2000 is the magic number for "You do not have enough space for the resulting item"
+    if (!CheckBagHasSpace(rewardItem, 1)) {
+        VarSet(VAR_TEMP_C, 2000);
+        return FALSE;
+    }
 
     for (i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++) {
         itemId = sBotanyRecipes[recipeNum][i][0];
@@ -1565,18 +1562,16 @@ bool8 ScrCmd_trycraftingrecipe(struct ScriptContext *ctx)
             break;
         requiredQuantity = sBotanyRecipes[recipeNum][i][1];
         quantityInBag = GetItemQuantity(itemId);
-        // 4000 is the magic number for “you don’t have the ingredient”
         if (quantityInBag < requiredQuantity) {
+            // 4000 is the magic number for “you don’t have the ingredient”
             VarSet(VAR_TEMP_C, 4000);
-            // 8000 is the magic number for “you have at least one but need more of that ingredient”
             if (quantityInBag > 0)
+                // 8000 is the magic number for “you have at least one but need more of that ingredient”
                 VarSet(VAR_TEMP_C, 8000);
+
             return FALSE;
         }
     }
-
-    // TODO for ryu: the resulting item isn’t specified in any table right now.
-    // VarSet(VAR_TEMP_C, RESULTING_ITEM);
 
     for (i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++) {
         itemId = sBotanyRecipes[recipeNum][i][0];
@@ -1588,4 +1583,9 @@ bool8 ScrCmd_trycraftingrecipe(struct ScriptContext *ctx)
     VarSet(VAR_TEMP_C, rewardItem);
 
     return FALSE;
+}
+
+int RyuGetCurrentMapsec(void)
+{
+    return gMapHeader.regionMapSectionId;
 }

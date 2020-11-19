@@ -6,8 +6,7 @@ MtFreeze_EntranceTrigger::
 	lock
 	goto_if_set FLAG_MT_FREEZE_OPENED, MtFreeze_Release
 	checkspecies SPECIES_CRYOGONAL
-	compare VAR_RESULT, TRUE
-	goto_if_eq MtFreeze_OpenEntrance1
+	goto_if_set FLAG_TEMP_C, MtFreeze_OpenEntrance1
 	releaseall
 	end
 

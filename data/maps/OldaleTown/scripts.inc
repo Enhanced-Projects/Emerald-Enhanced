@@ -56,6 +56,7 @@ OldaleTown_EventScript_MartEmployee:: @ 81E8EFC
 OldaleTown_EventScript_GoToMartSouth:: @ 81E8F47
 	applymovement 2, OldaleTown_Movement_EmployeeSouth
 	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerSouth
+	applymovement OBJ_EVENT_ID_FOLLOWER, OldaleTown_Movement_PlayerSouth
 	waitmovement 0
 	goto OldaleTown_EventScript_ExplainPokemonMart
 	end
@@ -63,12 +64,14 @@ OldaleTown_EventScript_GoToMartSouth:: @ 81E8F47
 OldaleTown_EventScript_GoToMartNorth:: @ 81E8F5E
 	applymovement 2, OldaleTown_Movement_EmployeeNorth
 	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerNorth
+	applymovement OBJ_EVENT_ID_FOLLOWER, OldaleTown_Movement_PlayerNorth
 	waitmovement 0
 	goto OldaleTown_EventScript_ExplainPokemonMart
 	end
 
 OldaleTown_EventScript_GoToMartEast:: @ 81E8F75
 	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerEast
+	applymovement OBJ_EVENT_ID_FOLLOWER, OldaleTown_Movement_PlayerEast
 	applymovement 2, OldaleTown_Movement_EmployeeEast
 	waitmovement 0
 	goto OldaleTown_EventScript_ExplainPokemonMart
@@ -422,7 +425,7 @@ OT_CheckPlayerMagmaEvent::
 	goto ryu_end
 	
 OT_CheckIfPlayerCanEnter::
-	goto_if_unset FLAG_RYU_BANNED_FROM_OLDALE, ryu_end
+	goto_if_unset FLAG_RYU_BANNED_FROM_OLDALE, OT_FinishNurseQuest3
 	lock
 	msgbox OT_YouCantGoInHere
 	closemessage

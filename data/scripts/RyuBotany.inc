@@ -166,20 +166,90 @@ RyuBotany_CheckLevel4Progress::
 
 RyuBotanyRecipeBookScript::
     lock
+    msgbox RB_WhichChapter
+    multichoice 18, 4, MULTI_BOTANY_CHAPTER_SELECT, 0
+    switch VAR_RESULT
+    case 0, RB_ShowConsumablesChapter
+    case 1, RB_ShowMedicinesChapter
+    case 2, RB_ShowEvolutionChapter
+    goto ryu_end
+
+RB_DB_MSG1:
+    .string "Resulting item is {STR_VAR_1}.$"
+
+RB_ShowConsumablesChapter::
     msgbox RB_WhichRecipe
-    scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYRECIPE, 1, 2, 5, 0
-    buffernumberstring 0, VAR_RESULT
-    msgbox RB_YouSelected
+    scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYCONSUMABLECHAPTER, 0, 2, 5, 1
+    trycraftingrecipe VAR_RESULT
+    goto RB_CheckCraftingResult
+
+RB_ShowMedicinesChapter::
+    msgbox RB_WhichRecipe
+    scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYMEDICINECHAPTER, 0, 2, 5, 1
+    addvar VAR_RESULT, NUM_CONSUMABLE_RECIPES
+    trycraftingrecipe VAR_RESULT
+    goto RB_CheckCraftingResult
+
+RB_ShowEvolutionChapter::
+    msgbox RB_WhichRecipe
+    scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYEVOLUTIONCHAPTER, 0, 2, 5, 1
+    addvar VAR_RESULT, NUM_CONSUMABLE_RECIPES
+    addvar VAR_RESULT, NUM_MEDICINE_RECIPES
+    trycraftingrecipe VAR_RESULT
+    goto RB_CheckCraftingResult
+
+RB_CheckCraftingResult::
+    buffernumberstring 0, VAR_TEMP_C
+    scriptdebug RB_DB_MSG1
+    switch VAR_TEMP_C
+    case 2000, RB_NotEnoughSpaceForResult
+    case 4000, RB_MissingSomething
+    case 8000, RB_NeedMoreOfSomething
+    additem VAR_TEMP_C, 1
+    bufferitemname 0, VAR_RESULT
+    playfanfare MUS_FANFA1
+    msgbox RB_Success
+    release
+    end
+
+RB_MissingSomething::
+    msgbox RB_SeemToBeMissingSomething
     closemessage
     release
     end
+
+RB_NeedMoreOfSomething::
+    msgbox RB_SeemToNeedMoreOfSomething
+    closemessage
+    release
+    end
+
+RB_NotEnoughSpaceForResult::
+    msgbox RB_NeedMoreSpace
+    closemessage
+    release
+    end
+
+RB_NeedMoreSpace::
+    .string "You don't have enough space for\nthe item you're trying to craft.$"
+
+RB_SeemToBeMissingSomething:
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} You seem to be missing something...$"
+
+RB_SeemToNeedMoreOfSomething:
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}The mixture appears to be right,\nbut you seem to need more of\lsomething...$"
+
+RB_WhichChapter:
+    .string "Open which chapter?$"
+
+RB_Success:
+    .string "You successfully crafted one\n{STR_VAR_1}!$"
 
 RB_YouSelected:
     .string "You selected option number {STR_VAR_1}.$"
 
 RB_WhichRecipe:
     .string "Which recipe would you like to\ncraft?$"
-
 
 RyuBotany_Obtained1Item:
     .string "You obtained a {STR_VAR_1}.$"

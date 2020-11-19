@@ -69,7 +69,7 @@
 #define FLAG_RYU_DEV_MODE                    0x39
 #define FLAG_RYU_AQUA_THIEF_SEEN             0x3A
 #define FLAG_RYU_PLAYER_HELPING_DEVON        0x3B
-#define FLAG_UNUSED_0x3C                     0x3C
+#define FLAG_OPTIONS_INSTANT_TRANSITION      0x3C
 #define FLAG_UNUSED_0x3D                     0x3D
 #define FLAG_UNUSED_0x3E                     0x3E
 #define FLAG_UNUSED_0x3F                     0x3F
@@ -352,7 +352,7 @@
 #define FLAG_RYU_AQUA_BAD_END           0x14C
 #define FLAG_RYU_DS_SHELLY_SCENE             0x14D
 
-#define FLAG_UNUSED_0x14E                    0x14E
+#define FLAG_NOTIFIED_FF_TEXT                0x14E //player was warned that instant text speed can cause skipped dialogues.
 #define FLAG_HIDE_AQUAHQ_SHELLY              0x14F // hides shelly in the aqua hq when she becomes a follower.
 #define FLAG_FRIGUS_QUEST_ACCEPTED           0x150
 #define FLAG_RECEIVED_POWDER_JAR             0x151
@@ -706,7 +706,7 @@
 #define FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2                      0x29D
 #define FLAG_RYU_DEVON_LINE_FINISHED                                0x29E
 #define FLAG_RYU_DEVON_SCIENTIST                                    0x29F
-#define FLAG_UNUSED_0x2A0                                           0x2A0
+#define FLAG_RYU_PLAYER_NOOB                                        0x2A0
 #define FLAG_RYU_MEWTWO_OBTAINED                                    0x2A1
 #define FLAG_RYU_GROUDON_ENCOUNTERED                                0x2A2
 #define FLAG_RYU_LANA_EVENT14                                       0x2A3
@@ -733,7 +733,7 @@
 #define FLAG_RYU_PERSISTENT_WEATHER                                 0x2B8
 #define FLAG_RYU_MINNIE_POKEMON_SCHOOL                              0x2B9
 #define FLAG_JAGGED_PASS_TM54                                       0x2BA
-#define FLAG_RYU_BATTLE_SIMULATION                                  0x2BB // EE-Unused?
+#define FLAG_UNUSED_0x2BB                                           0x2BB // EE-Unused?
 
 // Event Flags
 #define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC

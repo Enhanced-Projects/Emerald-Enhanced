@@ -47,125 +47,6 @@ Route118_EventScript_RouteSign119:: @ 81F3E85
 	msgbox Route118_Text_RouteSign119, MSGBOX_SIGN
 	end
 
-Route118_EventScript_StevenTrigger0:: @ 81F3E8E
-	lockall
-	setvar VAR_0x8008, 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement 0
-	applymovement 19, Route118_Movement_StevenApproachLedge0
-	waitmovement 0
-	goto Route118_EventScript_StevenTrigger
-	end
-
-Route118_EventScript_StevenTrigger1:: @ 81F3EAE
-	lockall
-	setvar VAR_0x8008, 1
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement 0
-	goto Route118_EventScript_StevenTrigger
-	end
-
-Route118_EventScript_StevenTrigger2:: @ 81F3EC4
-	lockall
-	setvar VAR_0x8008, 2
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement 0
-	applymovement 19, Route118_Movement_StevenApproachLedge2
-	waitmovement 0
-	goto Route118_EventScript_StevenTrigger
-	end
-
-Route118_EventScript_StevenTrigger:: @ 81F3EE4
-	playse SE_DANSA
-	applymovement 19, Route118_Movement_StevenJumpLedge
-	waitmovement 0
-	delay 30
-	msgbox Route118_Text_StevenQuestions, MSGBOX_DEFAULT
-	closemessage
-	compare VAR_0x8008, 0
-	call_if_eq Route118_EventScript_StevenExit0
-	compare VAR_0x8008, 1
-	call_if_eq Route118_EventScript_StevenExit1
-	compare VAR_0x8008, 2
-	call_if_eq Route118_EventScript_StevenExit2
-	setvar VAR_ROUTE118_STATE, 1
-	removeobject 19
-	releaseall
-	end
-
-Route118_EventScript_StevenExit0:: @ 81F3F28
-	applymovement OBJ_EVENT_ID_PLAYER, Route118_Movement_PlayerWatchStevenExit
-	applymovement 19, Route118_Movement_StevenExit0
-	waitmovement 0
-	return
-
-Route118_EventScript_StevenExit1:: @ 81F3F3A
-	applymovement OBJ_EVENT_ID_PLAYER, Route118_Movement_PlayerWatchStevenExit
-	applymovement 19, Route118_Movement_StevenExit1
-	waitmovement 0
-	return
-
-Route118_EventScript_StevenExit2:: @ 81F3F4C
-	applymovement OBJ_EVENT_ID_PLAYER, Route118_Movement_PlayerWatchStevenExit
-	applymovement 19, Route118_Movement_StevenExit2
-	waitmovement 0
-	return
-
-Route118_Movement_PlayerWatchStevenExit: @ 81F3F5E
-	delay_16
-	walk_in_place_fastest_right
-	step_end
-
-Route118_Movement_StevenApproachLedge0: @ 81F3F61
-	walk_left
-	step_end
-
-Route118_Movement_StevenApproachLedge2: @ 81F3F63
-	walk_right
-	step_end
-
-Route118_Movement_StevenJumpLedge: @ 81F3F65
-	jump_2_down
-	delay_16
-	walk_down
-	step_end
-
-Route118_Movement_StevenExit0: @ 81F3F69
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-Route118_Movement_StevenExit1: @ 81F3F74
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-Route118_Movement_StevenExit2: @ 81F3F7E
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
 Route118_EventScript_Rose:: @ 81F3F87
 	trainerbattle_single TRAINER_ROSE_1, Route118_Text_RoseIntro, Route118_Text_RoseDefeat, Route118_EventScript_RegisterRose
 	msgbox Route118_Text_RosePostBattle, MSGBOX_DEFAULT
@@ -283,4 +164,55 @@ Route118_Text_RouteSignMauville: @ 81F43F4
 Route118_Text_RouteSign119: @ 81F440E
 	.string "Route 118\n"
 	.string "{UP_ARROW} ROUTE 119$"
+
+@======================================Ferryman/woman
+
+R118_FerryWoman::
+	lock
+	faceplayer
+	msgbox R118_Ferrywomanintro
+	closemessage
+	setvar VAR_TEMP_8, 5000
+	checkmoney VAR_TEMP_8
+	compare VAR_RESULT, TRUE
+	goto_if_ne ryu_end
+	msgbox R118_FerryQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_ne R118_FerryDeclined
+	takemoney VAR_TEMP_8
+	warpteleport MAP_ROUTE118, 255, 15, 9
+	waitstate
+
+R118_FerryMan::
+	lock
+	faceplayer
+	msgbox R118_Ferrymanintro
+	closemessage
+	setvar VAR_TEMP_8, 5000
+	checkmoney VAR_TEMP_8
+	compare VAR_RESULT, TRUE
+	goto_if_ne ryu_end
+	msgbox R118_FerryQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_ne R118_FerryDeclined
+	takemoney VAR_TEMP_8
+	warpteleport MAP_ROUTE118, 255, 32, 10
+	waitstate
+
+R118_FerryDeclined::
+	msgbox R118_DeclinedMsg
+	release
+	end
+
+R118_Ferrywomanintro:
+	.string "Hey there, dearie, I'm the\nFerry Woman.\pI'll get you across this here\nriver. For a fee of course.$"
+
+R118_Ferrymanintro:
+	.string "Hi there, kiddo. I'm the\nFerry Man.\pI'll help you and any friends\nyou have get across the river.\pFor a small fee, of course.$"
+
+R118_FerryQuery:
+	.string "Accept ferry service for ¥5000?$"
+
+R118_DeclinedMsg:
+	.string "That's too bad.\nLet me know if you change\lyour mind!$"
 

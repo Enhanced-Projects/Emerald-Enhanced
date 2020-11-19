@@ -112,7 +112,7 @@
 #define VAR_SOOTOPOLIS_CITY_STATE            0x405E
 #define VAR_RYU_PARTNER_COUNT                0x405F // Used to track how many partners the player has
 #define VAR_ROUTE101_STATE                   0x4060
-#define VAR_ROUTE102_STATE                   0x4061 // Unused Var
+#define VAR_SAVE_FILE_CREATED_ON_VERSION     0x4061 // Unused Var
 #define VAR_ROUTE103_STATE                   0x4062 // Unused Var
 #define VAR_ROUTE104_STATE                   0x4063
 #define VAR_RYU_GCMS_MOVE1                   0x4064 //GCMS
@@ -200,13 +200,13 @@
 #define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     0x40B6 // Leftover from RS, never set
 #define VAR_SLATEPORT_FAN_CLUB_STATE         0x40B7
 #define VAR_RYU_SCRIPT_PTR                   0x40B8
-#define VAR_UNUSED_0x40B9                    0x40B9
+#define VAR_OPTIONS_EXP_BAR_SPEED            0x40B9
 #define VAR_NEW_MAUVILLE_STATE               0x40BA
-#define VAR_RYU_SHELLY_STATUS                0x40BB
+#define VAR_UNUSED_0x40BB                    0x40BB
 #define VAR_BRAVO_TRAINER_BATTLE_TOWER_ON    0x40BC
 #define VAR_JAGGED_PASS_ASH_WEATHER          0x40BD
 #define VAR_GLASS_WORKSHOP_STATE             0x40BE
-#define VAR_METEOR_FALLS_STATE               0x40BF
+#define VAR_OPTIONS_HP_BAR_SPEED             0x40BF
 #define VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE  0x40C0
 #define VAR_TRICK_HOUSE_PRIZE_PICKUP         0x40C1
 #define VAR_PACIFIDLOG_TM_RECEIVED_DAY       0x40C2
@@ -386,5 +386,9 @@
 #define BOTANY_MAP_CATEGORY_SAVANNA 5
 #define BOTANY_MAP_CATEGORY_GENERAL 6
 #define NUM_BOTANY_MAP_CATEGORIES 7
+
+#define NUM_CONSUMABLE_RECIPES 12
+#define NUM_MEDICINE_RECIPES 8
+#define NUM_RECIPES (BR_ICE_STONE + 1)
 
 #endif // GUARD_CONSTANTS_VARS_H

@@ -142,7 +142,7 @@ void sub_8184E58(void)
     {
         gRecordedBattleRngSeed = gRngValue;
         sFrontierFacility = VarGet(VAR_FRONTIER_FACILITY);
-        sFrontierBrainSymbol = GetFronterBrainSymbol();
+        sFrontierBrainSymbol = GetFrontierBrainSymbol();
     }
     else if (sUnknown_0203C7AC == 2)
     {

@@ -370,7 +370,7 @@ NM_ScavengerHuntClue2:
 	
 NM_Warp1::
 	lock
-	warpteleport MAP_NEW_MAUVILLE_INSIDE, 255, 31, 16
+	warpteleport MAP_NEW_MAUVILLE_INSIDE, 255, 34, 16
 	release
 	end
 	

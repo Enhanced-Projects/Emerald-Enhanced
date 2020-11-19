@@ -120,7 +120,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VIGOROTH_CARRYING_BOX",
-      "x": 35,
+      "x": 39,
       "y": 16,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -206,7 +206,7 @@
     },
     {
       "type": "trigger",
-      "x": 31,
+      "x": 34,
       "y": 16,
       "elevation": 0,
       "var": "VAR_TEMP_0",

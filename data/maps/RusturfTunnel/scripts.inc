@@ -37,6 +37,7 @@ RusturfTunnel_EventScript_TunnelBlockagePos3:: @ 822D07D
 	end
 
 RusturfTunnel_EventScript_AquaGruntBackUp:: @ 822D083
+	goto_if_set FLAG_RYU_PLAYER_NOOB, RT_SummonMagmaGruntBecausePlayerNoob
 	lockall
 	msgbox RusturfTunnel_Text_ComeAndGetSome, MSGBOX_DEFAULT
 	closemessage
@@ -46,6 +47,31 @@ RusturfTunnel_EventScript_AquaGruntBackUp:: @ 822D083
 	setvar VAR_RUSTURF_TUNNEL_STATE, 3
 	releaseall
 	end
+
+RT_SummonMagmaGruntBecausePlayerNoob::
+	addobject 4
+	applymovement 4, RT_MagmaToPlayer @6 left
+	applymovement OBJ_EVENT_ID_PLAYER, RT_PlayerToMagma @6 right
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto RT_MagmaPortion
+
+RT_MagmaToPlayer::
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+RT_PlayerToMagma::
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
 
 RusturfTunnel_Movement_GruntAndPeekoBackUp: @ 822D0AB
 	lock_facing_direction
@@ -88,6 +114,7 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	playse SE_PIN
 	waitse
 	msgbox RT_ThiefNote MSGBOX_DEFAULT
+	closemessage
 	setflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE@@Magma intro starts here
 	addobject 4
 	applymovement 4, RT_MagmaGruntEnters
@@ -98,9 +125,20 @@ RusturfTunnel_EventScript_Grunt:: @ 822D0C2
 	playse SE_PIN
 	applymovement 4, Common_Movement_ExclamationMark
 	waitmovement 4
+	goto RT_MagmaPortion
+
+RT_MagmaPortion::
+	setflag FLAG_RYU_PLAYER_NOOB
+	setvar VAR_RUSTURF_TUNNEL_STATE, 2
+	setflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	trainerbattle_single TRAINER_GRUNT_RUSTURF_MAGMA, RT_SoItsAFight, RT_MG_Defeat, RT_PostBattle
+	goto RT_PostBattle
 	
 RT_PostBattle::
+	clearflag FLAG_RYU_PLAYER_NOOB
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	setvar VAR_RUSTURF_TUNNEL_STATE, 3
 	playbgm 366, 0
 	msgbox RT_SoThisIsHow
 	delay 60

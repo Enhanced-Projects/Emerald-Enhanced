@@ -303,6 +303,8 @@ extern const u8 gText_BattleSceneOn[];
 extern const u8 gText_BattleSceneOff[];
 extern const u8 gText_BattleStyleShift[];
 extern const u8 gText_BattleStyleSet[];
+extern const u8 gText_TransitionStyleNormal[];
+extern const u8 gText_TransitionStyleInstant[];
 extern const u8 gText_SoundMono[];
 extern const u8 gText_SoundStereo[];
 extern const u8 gText_FrameTypeNumber[];
@@ -314,10 +316,10 @@ extern const u8 gText_Option[];
 extern const u8 gText_OptionMenu[];
 extern const u8 gText_TextSpeed[];
 extern const u8 gText_BattleScene[];
-extern const u8 gText_BattleStyle[];
-extern const u8 gText_Sound[];
+extern const u8 gText_ThemeSelector[];
+extern const u8 gText_RandomRouteMusic[];
 extern const u8 gText_Frame[];
-extern const u8 gText_OptionMenuCancel[];
+extern const u8 gText_OptionMenuSave[];
 extern const u8 gText_ButtonMode[];
 
 extern const u8 gText_MaleSymbol[];
@@ -3085,6 +3087,8 @@ extern const u8 gText_DisableDevMode[];
 extern const u8 gText_QuickStart[];
 extern const u8 gText_ItemsKit[];
 extern const u8 gText_DebugCancel[];
+extern const u8 gText_ShowBetaMenu[];
+extern const u8 gText_BetaMenuShowSaveVersion[];
 
 extern const u8 gText_HpEvMenu252[];
 extern const u8 gText_HpEvMenu126[];
@@ -3324,5 +3328,10 @@ extern const u8 gText_RyuMHM_Kits_8[];
 extern const u8 gText_SavingDontTurnOff2[];
 extern const u8 gText_BlenderMaxSpeedRecord[];
 extern const u8 gText_234Players[];
+
+extern const u8 gText_RyuBotanyConsumableChapter[];
+extern const u8 gText_RyuBotanyMedicinesChapter[];
+extern const u8 gText_RyuBotanyEvolutionChapter[];
+extern const u8 gText_RyuBotanyExitBook[];
 
 #endif // GUARD_STRINGS_H

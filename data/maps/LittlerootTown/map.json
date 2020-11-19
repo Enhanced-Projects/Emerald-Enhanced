@@ -57,7 +57,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "LRT_BoyChatter",
-      "flag": "0"
+      "flag": "FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TWIN",
@@ -99,7 +99,7 @@
       "flag": "FLAG_RYU_HIDE_HAREM_EVENT_NPCS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL",
+      "graphics_id": "OBJ_EVENT_GFX_VAR_3",
       "x": 10,
       "y": 8,
       "elevation": 3,
@@ -138,7 +138,7 @@
       "flag": "FLAG_RYU_HIDE_HAREM_EVENT_NPCS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL",
+      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
       "x": 9,
       "y": 8,
       "elevation": 3,
@@ -162,6 +162,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "LittlerootTown_EventScript_ItemPotion",
       "flag": "FLAG_ITEM_LITTLEROOT_TOWN_POTION"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NURSE",
+      "x": 11,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RYU_HIDE_HAREM_EVENT_NPCS"
     }
   ],
   "warp_events": [

@@ -47,6 +47,7 @@ static bool8 IsAbilityAllowingEncounter(u8 level);
 // EWRAM vars
 EWRAM_DATA static u8 sWildEncountersDisabled = 0;
 EWRAM_DATA bool8 gIsFishingEncounter = 0;
+EWRAM_DATA bool8 gIsSurfingEncounter = 0;
 EWRAM_DATA static u32 sFeebasRngValue = 0;
 
 #include "data/wild_encounters.h"
@@ -460,7 +461,7 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
         return FALSE;
   
-    if ((Random() % 128 < gSaveBlock1Ptr->dexNavChain))// || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+    if ((Random() % 128 == 69))// || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {
         RyuGenerateBossMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
     }

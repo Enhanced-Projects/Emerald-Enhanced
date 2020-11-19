@@ -336,97 +336,289 @@ const u16 gBotanyTreeRewards[] = {
 };
 
 #define NUM_INGREDIENTS_PER_RECIPE 5
-#define NUM_RECIPES 9
 
 //Recipe defines
-#define MUSCLE_POWDER_RECIPE 0
-#define TOUGH_POWDER_RECIPE 1
-#define SMART_POWDER_RECIPE 2
-#define RESIST_POWDER_RECIPE 3
-#define SWIFT_POWDER_RECIPE 4
-#define SMALL_SALAD_RECIPE 5
-#define MEDIUM_SALAD_RECIPE 6
-#define LARGE_SALAD_RECIPE 7
-#define REVITAL_ICE_RECIPE 8
+//consumable recipes
+#define BR_MUSCLE_POWDER 0
+#define BR_TOUGH_POWDER 1
+#define BR_SMART_POWDER 2
+#define BR_RESIST_POWDER 3
+#define BR_SWIFT_POWDER 4
+#define BR_FOCUS_POWDER 5
+#define BR_SM_SALAD 6
+#define BR_MD_SALAD 7
+#define BR_LG_SALAD 8
+#define BR_HEAL_CHOWDER 9
+#define BR_LEMONADE 10
+#define BR_REVITAL_ICE 11
+//medicine recipes
+#define BR_HP_UP 12
+#define BR_PROTEIN 13
+#define BR_IRON 14
+#define BR_CALCIUM 15
+#define BR_ZINC 16
+#define BR_CARBOS 17
+#define BR_ETHER 18
+#define BR_ELIXIR 19
+//evolution recipes
+#define BR_FIRE_STONE 20
+#define BR_WATER_STONE 21
+#define BR_THUNDER_STONE 22
+#define BR_LEAF_STONE 23
+#define BR_MOON_STONE 24
+#define BR_SUN_STONE 25
+#define BR_SHINY_STONE 26
+#define BR_DUSK_STONE 27
+#define BR_DAWN_STONE 28
+#define BR_ICE_STONE 29
+//WHEN YOU ADD ANYTHING TO THE THREE ABOVE GROUPS, YOU MUST ALSO ADJUST THE DEFINES FOR THE
+//NUM RECIPES IN include/constants/vars.h. THIS MAKES IT POSSIBLE FOR SCRIPT TO READ THEM
 
 //recipe to item mapping
-
-const u16 sBotanyRecipeToItemId[NUM_RECIPES] = {
+const u16 sBotanyRecipeToItemId[NUM_RECIPES] = {//must have exactly the same number of items as NUM_RECIPES, or rewards wont work.
     ITEM_MUSCLE_POWDER,
     ITEM_TOUGH_POWDER,
     ITEM_SMART_POWDER,
     ITEM_RESIST_POWDER,
     ITEM_SWIFT_POWDER,
+    ITEM_FOCUS_POWDER,
     ITEM_SMALL_SALAD,
     ITEM_MEDIUM_SALAD,
     ITEM_LARGE_SALAD,
-    ITEM_REVITAL_ICE
+    ITEM_HEAL_CHOWDER,
+    ITEM_LEMONADE,
+    ITEM_REVITAL_ICE,
+    ITEM_HP_UP,
+    ITEM_PROTEIN,
+    ITEM_IRON,
+    ITEM_CALCIUM,
+    ITEM_ZINC,
+    ITEM_CARBOS,
+    ITEM_ETHER,
+    ITEM_ELIXIR,
+    ITEM_FIRE_STONE,
+    ITEM_WATER_STONE,
+    ITEM_THUNDER_STONE,
+    ITEM_LEAF_STONE,
+    ITEM_MOON_STONE,
+    ITEM_SUN_STONE,
+    ITEM_SHINY_STONE,
+    ITEM_DUSK_STONE,
+    ITEM_DAWN_STONE,
+    ITEM_ICE_STONE
 };
 
 //recipe tables for lookup
 
 const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2] = {
-    [MUSCLE_POWDER_RECIPE] = {
+    [BR_MUSCLE_POWDER] = {
         {ITEM_ENERGY_POWDER, 1},
-        {ITEM_ORAN_BERRY, 1},
-        {ITEM_SEASIDE_ALMOND, 1},
-        {ITEM_NONE, 0},
-        {ITEM_NONE, 0},
-    },
-    [TOUGH_POWDER_RECIPE] = {
-        {ITEM_ENERGY_POWDER, 1},
-        {ITEM_ORAN_BERRY, 1},
-        {ITEM_JUNGLE_BEANS, 1},
-        {ITEM_NONE, 0},
-        {ITEM_NONE, 0},
-    },
-    [SMART_POWDER_RECIPE] = {
-        {ITEM_ENERGY_POWDER, 1},
-        {ITEM_ORAN_BERRY, 1},
-        {ITEM_DEEPSEA_KELP, 1},
-        {ITEM_NONE, 0},
-        {ITEM_NONE, 0},
-    },
-    [RESIST_POWDER_RECIPE] = {
-        {ITEM_ENERGY_POWDER, 1},
-        {ITEM_ORAN_BERRY, 1},
-        {ITEM_FROST_MINT, 1},
-        {ITEM_NONE, 0},
-        {ITEM_NONE, 0},
-    },
-    [SWIFT_POWDER_RECIPE] = {
-        {ITEM_ENERGY_POWDER, 1},
-        {ITEM_ORAN_BERRY, 1},
-        {ITEM_CHIMNEY_PEPPER, 1},
-        {ITEM_NONE, 0},
-        {ITEM_NONE, 0},
-    },
-    [SMALL_SALAD_RECIPE] = {
-        {ITEM_LEEK, 1},
         {ITEM_BANANA, 1},
-        {ITEM_NONE, 0},
-        {ITEM_NONE, 0},
-        {ITEM_NONE, 0},
-    },
-    [MEDIUM_SALAD_RECIPE] = {
-        {ITEM_GRASSY_SEED, 1},
-        {ITEM_TINY_MUSHROOM, 1},
-        {ITEM_LUMINOUS_MOSS, 1},
+        {ITEM_SEASIDE_ALMOND, 2},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0},
     },
-    [LARGE_SALAD_RECIPE] = {
+    [BR_TOUGH_POWDER] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_BANANA, 1},
+        {ITEM_SAVANNA_MELON, 2},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [BR_SMART_POWDER] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_BANANA, 1},
+        {ITEM_DEEPSEA_KELP, 2},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [BR_RESIST_POWDER] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_BANANA, 1},
+        {ITEM_FROST_MINT, 2},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [BR_SWIFT_POWDER] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_BANANA, 1},
+        {ITEM_CHIMNEY_PEPPER, 2},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [BR_FOCUS_POWDER] = {
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_BANANA, 1},
+        {ITEM_JUNGLE_BEANS, 2},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [BR_SM_SALAD] = {
+        {ITEM_LEEK, 1},
+        {ITEM_BANANA, 2},
         {ITEM_MIRACLE_SEED, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [BR_MD_SALAD] = {
+        {ITEM_GRASSY_SEED, 1},
+        {ITEM_TINY_MUSHROOM, 2},
+        {ITEM_ABSORB_BULB, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [BR_LG_SALAD] = {
+        {ITEM_LUMINOUS_MOSS, 1},
         {ITEM_BIG_MUSHROOM, 1},
         {ITEM_BIG_ROOT, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0},
     },
-    [REVITAL_ICE_RECIPE] = {
-        {ITEM_SNOWBALL, 1},
+    [BR_HEAL_CHOWDER] = {
+        {ITEM_HEAL_POWDER, 1},
+        {ITEM_MOOMOO_MILK, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [BR_LEMONADE] = {
+        {ITEM_FRESH_WATER, 1},
+        {ITEM_BANANA, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+    },
+    [BR_REVITAL_ICE] = {
+        {ITEM_SNOWBALL, 2},
         {ITEM_MOOMOO_MILK, 1},
         {ITEM_BANANA, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0},
-    }
+    },
+    [BR_HP_UP] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_ENERGY_POWDER, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_PROTEIN] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_MUSCLE_POWDER, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_IRON] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_TOUGH_POWDER, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_CALCIUM] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_SMART_POWDER, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_ZINC] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_RESIST_POWDER, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_CARBOS] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_SWIFT_POWDER, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_ETHER] = {
+        {ITEM_BIG_ROOT, 1},
+        {ITEM_LEMONADE, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_ELIXIR] = {
+        {ITEM_ETHER, 2},
+        {ITEM_BIG_ROOT, 1},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_FIRE_STONE] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_SOFT_SAND, 1},
+        {ITEM_FIRE_GEM, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_WATER_STONE] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_SOFT_SAND, 1},
+        {ITEM_WATER_GEM, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_THUNDER_STONE] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_SOFT_SAND, 1},
+        {ITEM_ELECTRIC_GEM, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_LEAF_STONE] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_SOFT_SAND, 1},
+        {ITEM_GRASS_GEM, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_MOON_STONE] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_SOFT_SAND, 1},
+        {ITEM_GHOST_GEM, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_SUN_STONE] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_SOFT_SAND, 1},
+        {ITEM_PSYCHIC_GEM, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_SHINY_STONE] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_SOFT_SAND, 1},
+        {ITEM_FAIRY_GEM, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_DUSK_STONE] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_SOFT_SAND, 1},
+        {ITEM_DARK_GEM, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_DAWN_STONE] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_SOFT_SAND, 1},
+        {ITEM_NORMAL_GEM, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
+    [BR_ICE_STONE] = {
+        {ITEM_POWER_HERB, 1},
+        {ITEM_SOFT_SAND, 1},
+        {ITEM_ICE_GEM, 0},
+        {ITEM_NONE, 0},
+        {ITEM_NONE, 0}
+    },
 };

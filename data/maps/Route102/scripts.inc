@@ -18,37 +18,9 @@ Route102_EventScript_Boy:: @ 81EC0FC
 	end
 
 Route102_EventScript_Calvin:: @ 81EC105
-	trainerbattle_single TRAINER_CALVIN_1, Route102_Text_CalvinIntro, Route102_Text_CalvinDefeated, Route102_EventScript_CalvinRegisterMatchCallAfterBattle
+	trainerbattle_single TRAINER_CALVIN_1, Route102_Text_CalvinIntro, Route102_Text_CalvinDefeated
 	msgbox Route102_Text_CalvinPostBattle, MSGBOX_DEFAULT
 	release
-	end
-
-Route102_EventScript_CalvinRegisterMatchCallAfterBattle:: @ 81EC146
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	release
-	end
-
-Route102_EventScript_CalvinRegisterMatchCall:: @ 81EC157
-	msgbox Route102_Text_CalvinRegisterShort, MSGBOX_DEFAULT
-	@nop Trainer_CALVIN_1
-	release
-	end
-
-Route102_EventScript_CalvinTryRegister:: @ 81EC170
-	msgbox Route102_Text_CalvinPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
-Route102_EventScript_CalvinRegister:: @ 81EC183
-	msgbox Route102_Text_CalvinRegister, MSGBOX_DEFAULT
-	@nop Trainer_CALVIN_1
-	release
-	end
-
-Route102_EventScript_CalvinRematch:: @ 81EC19C
-	trainerbattle_rematch TRAINER_CALVIN_1, Route102_Text_CalvinRematchIntro, Route102_Text_CalvinRematchDefeated
-	msgbox Route102_Text_CalvinRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route102_EventScript_Rick:: @ 81EC1B3
