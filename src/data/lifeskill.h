@@ -228,64 +228,102 @@ const u16 gOutsideMiningTier3[] = {//level 3
 
 
 // reward tables
-// These can be any size, similar to my other tables.
-// I recommend at least 20 per table, but up to whoever,
-// just make sure they’re all the same size.
-
-// all of the items here are placeholder until we decide what we're going to do with all this stuff.
-const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][5] = {
+// These tables can be any size, as long as they're all the same size
+const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     [BOTANY_MAP_CATEGORY_JUNGLE] = {
-        ITEM_NONE, //ITEM_JUNGLE_CHESTNUT,
-        ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
+        ITEM_JUNGLE_BEANS,
+        ITEM_LUMINOUS_MOSS,
+        ITEM_BIG_ROOT,
+        ITEM_GRASSY_SEED,
+        //Shared items:
         ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
         ITEM_ENERGY_POWDER,
+        ITEM_POWER_HERB,
+        ITEM_MENTAL_HERB,
+        ITEM_WHITE_HERB,
     },
     [BOTANY_MAP_CATEGORY_COLD] = {
-        ITEM_NONE, //ITEM_FROST_MINT,
+        ITEM_FROST_MINT,
+        ITEM_SNOWBALL,
+        ITEM_NEVER_MELT_ICE,
+        ITEM_MISTY_SEED,
+        //Shared items:
+        ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
         ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
+        ITEM_POWER_HERB,
         ITEM_MENTAL_HERB,
-        ITEM_REVIVAL_HERB,
+        ITEM_WHITE_HERB,
     },
     [BOTANY_MAP_CATEGORY_VOLCANIC] = {
-        ITEM_NONE, //ITEM_CHIMNEY_PEPPER,
-        ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
-        ITEM_BIG_MUSHROOM,
+        ITEM_CHIMNEY_PEPPER,
         ITEM_HARD_STONE,
+        ITEM_CHARCOAL,
+        ITEM_SOFT_SAND,
+        //Shared items:
+        ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
+        ITEM_ENERGY_POWDER,
+        ITEM_POWER_HERB,
+        ITEM_MENTAL_HERB,
+        ITEM_WHITE_HERB,
     },
     [BOTANY_MAP_CATEGORY_SEASIDE] = {
-        ITEM_NONE, //ITEM_SEASIDE_ALMOND,
+        ITEM_SEASIDE_ALMOND,
+        ITEM_SOFT_SAND,
+        ITEM_SHOAL_SALT,
+        ITEM_SHOAL_SHELL,
+        //Shared items:
+        ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
         ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
-        ITEM_HEART_SCALE,
-        ITEM_MISTY_SEED,
+        ITEM_POWER_HERB,
+        ITEM_MENTAL_HERB,
+        ITEM_WHITE_HERB,
     },
     [BOTANY_MAP_CATEGORY_AQUATIC] = {
-        ITEM_NONE, //ITEM_DEEPSEA_KELP
-        ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
+        ITEM_DEEPSEA_KELP,
         ITEM_HEART_SCALE,
-        ITEM_MISTY_SEED,
+        ITEM_PEARL,
+        ITEM_PSYCHIC_SEED,
+        //Shared items:
+        ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
+        ITEM_ENERGY_POWDER,
+        ITEM_POWER_HERB,
+        ITEM_MENTAL_HERB,
+        ITEM_WHITE_HERB,
     },
     [BOTANY_MAP_CATEGORY_SAVANNA] = {
-        ITEM_NONE, //ITEM_SAVANNA_MELON
+        ITEM_SAVANNA_MELON,
+        ITEM_SOFT_SAND,
+        ITEM_RARE_BONE,
+        ITEM_ELECTRIC_SEED,
+        //Shared items:
+        ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
         ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
-        ITEM_HEART_SCALE,
-        ITEM_MISTY_SEED,
+        ITEM_POWER_HERB,
+        ITEM_MENTAL_HERB,
+        ITEM_WHITE_HERB,
     },
     [BOTANY_MAP_CATEGORY_GENERAL] = {
-        ITEM_ANTIDOTE,
+        ITEM_ABSORB_BULB,
+        ITEM_LEEK,
+        ITEM_TINY_MUSHROOM,
+        ITEM_BIG_MUSHROOM,
+        //Shared items:
+        ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
         ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
-        ITEM_PARALYZE_HEAL,
-        ITEM_BURN_HEAL,
+        ITEM_POWER_HERB,
+        ITEM_MENTAL_HERB,
+        ITEM_WHITE_HERB,
     },
 };
 
-const u16 gBotanyTreeRewards[] = {//need some placeholders for 'none', as the reward function loads item names into text buffers, which will cause overflow and glitchy text.
+const u16 gBotanyTreeRewards[] = {
     ITEM_RED_APRICORN,
     ITEM_BLUE_APRICORN,
     ITEM_YELLOW_APRICORN,
@@ -293,11 +331,11 @@ const u16 gBotanyTreeRewards[] = {//need some placeholders for 'none', as the re
     ITEM_PINK_APRICORN,
     ITEM_WHITE_APRICORN,
     ITEM_BLACK_APRICORN,
-    ITEM_LEEK,
     ITEM_MIRACLE_SEED,
-    ITEM_POISON_BARB,
-    ITEM_NONE,
-    ITEM_NONE
+    ITEM_GRASSY_SEED,
+    ITEM_ABSORB_BULB,
+    ITEM_LUMINOUS_MOSS,
+    ITEM_BIG_ROOT
 };
 
 #define NUM_INGREDIENTS_PER_RECIPE 5
