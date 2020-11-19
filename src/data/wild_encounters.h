@@ -385,8 +385,8 @@ const struct WildPokemon gFrostyForestUnderwaterCave_LandMons[] =
 	{35, 45, SPECIES_SABLEYE},
 	{35, 45, SPECIES_GLISCOR},
 	{35, 45, SPECIES_DEINO},
+	{35, 45, SPECIES_DOUBLADE},
 	{35, 45, SPECIES_ZWEILOUS},
-	{35, 45, SPECIES_MAGIKARP},
 };
 
 const struct WildPokemonInfo gFrostyForestUnderwaterCave_LandMonsInfo = {15, gFrostyForestUnderwaterCave_LandMons};
