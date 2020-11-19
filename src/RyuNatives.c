@@ -1556,18 +1556,19 @@ bool8 ScrCmd_trycraftingrecipe(struct ScriptContext *ctx)
             break;
         requiredQuantity = sBotanyRecipes[recipeNum][i][1];
         quantityInBag = GetItemQuantity(itemId);
-        // 4000 is the magic number for “you don’t have the ingredient”
+            // 4000 is the magic number for “you don’t have the ingredient”
         if (quantityInBag < requiredQuantity) {
             VarSet(VAR_TEMP_C, 4000);
             // 8000 is the magic number for “you have at least one but need more of that ingredient”
-            if (quantityInBag > 0)
-                VarSet(VAR_TEMP_C, 8000);
-            return FALSE;
+        if (quantityInBag > 0)
+            VarSet(VAR_TEMP_C, 8000);
+            //2000 is the magic number for "You do not have enough space for the resulting item"
+        if (!(CheckBagHasSpace(rewardItem, 1)))
+            VarSet(VAR_TEMP_C, 2000);
+
+        return FALSE;
         }
     }
-
-    // TODO for ryu: the resulting item isn’t specified in any table right now.
-    // VarSet(VAR_TEMP_C, RESULTING_ITEM);
 
     for (i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++) {
         itemId = sBotanyRecipes[recipeNum][i][0];

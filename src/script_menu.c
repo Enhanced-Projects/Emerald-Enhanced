@@ -764,31 +764,6 @@ int ScriptMenu_AdjustLeftCoordFromWidth(int left, int width)
 
     return adjustedLeft;
 }
-
-// strings to display as items.
-static const u8 sText_BotanyItem1[] = _("Muscle Powder");
-static const u8 sText_BotanyItem2[] = _("Tough Powder");
-static const u8 sText_BotanyItem3[] = _("Smart Powder");
-static const u8 sText_BotanyItem4[] = _("Resist Powder");
-static const u8 sText_BotanyItem5[] = _("Swift Powder");
-static const u8 sText_BotanyItem6[] = _("Small Salad");
-static const u8 sText_BotanyItem7[] = _("Medium Salad");
-static const u8 sText_BotanyItem8[] = _("Large Salad");
-static const u8 sText_BotanyItem9[] = _("Revital Ice");
-
-static const struct ListMenuItem sBotanyScrollingSet[] =
-{
-    {sText_BotanyItem1, 0},
-    {sText_BotanyItem2, 1},
-    {sText_BotanyItem3, 2},
-    {sText_BotanyItem4, 3},
-    {sText_BotanyItem5, 4},
-    {sText_BotanyItem6, 5},
-    {sText_BotanyItem7, 6},
-    {sText_BotanyItem8, 7},
-    {sText_BotanyItem9, 8},
-};
-
 static const u8 sText_DebugUtilityItem1[] = _("Utility 1");
 static const u8 sText_DebugUtilityItem2[] = _("Phasing");
 static const u8 sText_DebugUtilityItem3[] = _("Dev Repel");
@@ -801,6 +776,82 @@ static const u8 sText_DebugUtilityItem9[] = _("Heal Party");
 static const u8 sText_DebugUtilityItem10[] = _("Saveblock Size");
 static const u8 sText_DebugUtilityItem11[] = _("Complete Dex");
 static const u8 sText_DebugUtilityItem12[] = _("Exit");
+
+// strings to display as items.
+static const u8 sText_BotanyConsumableItem1[] = _("Muscle Powder");
+static const u8 sText_BotanyConsumableItem2[] = _("Tough Powder");
+static const u8 sText_BotanyConsumableItem3[] = _("Smart Powder");
+static const u8 sText_BotanyConsumableItem4[] = _("Resist Powder");
+static const u8 sText_BotanyConsumableItem5[] = _("Swift Powder");
+static const u8 sText_BotanyConsumableItem6[] = _("Focus Powder");
+static const u8 sText_BotanyConsumableItem7[] = _("Small Salad");
+static const u8 sText_BotanyConsumableItem8[] = _("Medium Salad");
+static const u8 sText_BotanyConsumableItem9[] = _("Large Salad");
+static const u8 sText_BotanyConsumableItem10[] = _("Heal Chowder");
+static const u8 sText_BotanyConsumableItem11[] = _("Lemonade");
+static const u8 sText_BotanyConsumableItem12[] = _("Revital Ice");
+
+static const u8 sText_BotanyMedicineItem1[] = _("HP Up");
+static const u8 sText_BotanyMedicineItem2[] = _("Protein");
+static const u8 sText_BotanyMedicineItem3[] = _("Iron");
+static const u8 sText_BotanyMedicineItem4[] = _("Calcium");
+static const u8 sText_BotanyMedicineItem5[] = _("Zinc");
+static const u8 sText_BotanyMedicineItem6[] = _("Carbos");
+static const u8 sText_BotanyMedicineItem7[] = _("Ether");
+static const u8 sText_BotanyMedicineItem8[] = _("Elixir");
+
+static const u8 sText_BotanyEvolutionItem1[] = _("Fire Stone");
+static const u8 sText_BotanyEvolutionItem2[] = _("Water Stone");
+static const u8 sText_BotanyEvolutionItem3[] = _("Thunder Stone");
+static const u8 sText_BotanyEvolutionItem4[] = _("Leaf Stone");
+static const u8 sText_BotanyEvolutionItem5[] = _("Moon Stone");
+static const u8 sText_BotanyEvolutionItem6[] = _("Sun Stone");
+static const u8 sText_BotanyEvolutionItem7[] = _("Shiny Stone");
+static const u8 sText_BotanyEvolutionItem8[] = _("Dusk Stone");
+static const u8 sText_BotanyEvolutionItem9[] = _("Dawn Stone");
+static const u8 sText_BotanyEvolutionItem10[] = _("Ice Stone");
+
+static const struct ListMenuItem sBotanyConsumablesSet[] =
+{
+    {sText_BotanyConsumableItem1, 0},
+    {sText_BotanyConsumableItem2, 1},
+    {sText_BotanyConsumableItem3, 2},
+    {sText_BotanyConsumableItem4, 3},
+    {sText_BotanyConsumableItem5, 4},
+    {sText_BotanyConsumableItem6, 5},
+    {sText_BotanyConsumableItem7, 6},
+    {sText_BotanyConsumableItem8, 7},
+    {sText_BotanyConsumableItem9, 8},
+    {sText_BotanyConsumableItem10, 9},
+    {sText_BotanyConsumableItem11, 10},
+    {sText_BotanyConsumableItem12, 11}
+};
+
+static const struct ListMenuItem sBotanyMedicineSet[] =
+{
+    {sText_BotanyMedicineItem1, 0},
+    {sText_BotanyMedicineItem2, 1},
+    {sText_BotanyMedicineItem3, 2},
+    {sText_BotanyMedicineItem4, 3},
+    {sText_BotanyMedicineItem5, 4},
+    {sText_BotanyMedicineItem6, 5},
+    {sText_BotanyMedicineItem7, 6},
+    {sText_BotanyMedicineItem8, 7}
+};
+
+static const struct ListMenuItem sBotanyEvolutionSet[] =
+{
+    {sText_BotanyEvolutionItem1, 0},
+    {sText_BotanyEvolutionItem2, 1},
+    {sText_BotanyEvolutionItem3, 2},
+    {sText_BotanyEvolutionItem4, 3},
+    {sText_BotanyEvolutionItem5, 4},
+    {sText_BotanyEvolutionItem6, 5},
+    {sText_BotanyEvolutionItem7, 6},
+    {sText_BotanyEvolutionItem8, 7},
+    {sText_BotanyEvolutionItem9, 8},
+    {sText_BotanyEvolutionItem10, 9}
+};
 
 static const struct ListMenuItem sDebugUtilitySet[] =
 {
@@ -815,7 +866,7 @@ static const struct ListMenuItem sDebugUtilitySet[] =
     {sText_DebugUtilityItem9, 8},
     {sText_DebugUtilityItem10, 9},
     {sText_DebugUtilityItem11, 10},
-    {sText_DebugUtilityItem12, 11},
+    {sText_DebugUtilityItem12, 11}
 };
 
 
@@ -825,8 +876,10 @@ struct
     int count;
 } static const sScrollingSets[] =
 {
-    {sBotanyScrollingSet, ARRAY_COUNT(sBotanyScrollingSet)},
     {sDebugUtilitySet, ARRAY_COUNT(sDebugUtilitySet)},
+    {sBotanyConsumablesSet, ARRAY_COUNT(sBotanyConsumablesSet)},
+    {sBotanyMedicineSet, ARRAY_COUNT(sBotanyMedicineSet)},
+    {sBotanyEvolutionSet, ARRAY_COUNT(sBotanyEvolutionSet)},
 };
 
 static void Task_ScrollingMultichoiceInput(u8 taskId);

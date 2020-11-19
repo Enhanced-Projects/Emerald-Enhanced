@@ -2174,3 +2174,8 @@ const u8 gText_RyuMHM_Kits_6[] = _("Advanced Capture (¥2500)");
 const u8 gText_RyuMHM_Kits_7[] = _("Performance Boost (¥25000)");
 const u8 gText_RyuMHM_Kits_8[] = _("Master Kit (¥20000)");
 
+const u8 gText_RyuBotanyConsumableChapter[] = _("Consumables");
+const u8 gText_RyuBotanyMedicinesChapter[] = _("Medicines");
+const u8 gText_RyuBotanyEvolutionChapter[] = _("Evo Stones");
+const u8 gText_RyuBotanyExitBook[] = _("Close Book");
+
