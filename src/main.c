@@ -117,8 +117,8 @@ void AgbMain()
     gLinkTransferringData = FALSE;
     gUnknown_03000000 = 0xFC0;
 
-    mgba_open();
-    VarSet(VAR_LAST_KNOWN_GAME_VERSION, 7202);
+    //mgba_open();
+    VarSet(VAR_LAST_KNOWN_GAME_VERSION, 7203);
     //This should let me know what the original save file version was, so i can tell if someone used an old save or not.
     if (VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION) == 0)
         VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, VarGet(VAR_LAST_KNOWN_GAME_VERSION));

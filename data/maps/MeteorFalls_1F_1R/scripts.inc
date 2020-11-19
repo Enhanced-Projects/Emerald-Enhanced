@@ -80,7 +80,7 @@ R114_AquaGoon::
 	end
 
 SorryCantComeThrough::
-	.string "Boss says I can't let any one through, sorry."
+	.string "Boss says I can't let any one through, sorry.$"
 	
 MF_DevonEventSouth::
 	playbgm MUS_MGM0, 0
