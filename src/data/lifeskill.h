@@ -554,70 +554,70 @@ const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2] = {
     [BR_FIRE_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_FIRE_GEM, 0},
+        {ITEM_FIRE_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_WATER_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_WATER_GEM, 0},
+        {ITEM_WATER_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_THUNDER_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_ELECTRIC_GEM, 0},
+        {ITEM_ELECTRIC_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_LEAF_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_GRASS_GEM, 0},
+        {ITEM_GRASS_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_MOON_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_GHOST_GEM, 0},
+        {ITEM_GHOST_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_SUN_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_PSYCHIC_GEM, 0},
+        {ITEM_PSYCHIC_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_SHINY_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_FAIRY_GEM, 0},
+        {ITEM_FAIRY_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_DUSK_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_DARK_GEM, 0},
+        {ITEM_DARK_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_DAWN_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_NORMAL_GEM, 0},
+        {ITEM_NORMAL_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_ICE_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_ICE_GEM, 0},
+        {ITEM_ICE_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
