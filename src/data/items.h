@@ -916,7 +916,7 @@ const struct Item gItems[] =
     {
         .name = _("Shoal Salt"),
         .itemId = ITEM_SHOAL_SALT,
-        .price = 20,
+        .price = 200,
         .description = sShoalSaltDesc,
         .pocket = POCKET_COLLECTIBLES,
         .type = 4,
@@ -928,7 +928,7 @@ const struct Item gItems[] =
     {
         .name = _("Shoal Shell"),
         .itemId = ITEM_SHOAL_SHELL,
-        .price = 20,
+        .price = 200,
         .description = sShoalShellDesc,
         .pocket = POCKET_COLLECTIBLES,
         .type = 4,
@@ -1146,7 +1146,7 @@ const struct Item gItems[] =
         .itemId = ITEM_SHARD_ORE,
         .price = 400,
         .description = sShardOreDesc,
-        .pocket = POCKET_ITEMS,
+        .pocket = POCKET_COLLECTIBLES,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
@@ -2930,7 +2930,7 @@ const struct Item gItems[] =
     {
         .name = _("White Herb"),
         .itemId = ITEM_WHITE_HERB,
-        .price = 1000,
+        .price = 200,
         .holdEffect = HOLD_EFFECT_RESTORE_STATS,
         .description = sWhiteHerbDesc,
         .pocket = POCKET_ITEMS,
@@ -2996,7 +2996,7 @@ const struct Item gItems[] =
     {
         .name = _("Mental Herb"),
         .itemId = ITEM_MENTAL_HERB,
-        .price = 1000,
+        .price = 200,
         .holdEffect = HOLD_EFFECT_CURE_ATTRACT,
         .description = sMentalHerbDesc,
         .pocket = POCKET_ITEMS,
@@ -3402,7 +3402,7 @@ const struct Item gItems[] =
     {
         .name = _("Miracle Seed"),
         .itemId = ITEM_MIRACLE_SEED,
-        .price = 100,
+        .price = 200,
         .holdEffect = HOLD_EFFECT_GRASS_POWER,
         .holdEffectParam = 10,
         .description = sMiracleSeedDesc,
@@ -3860,10 +3860,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_STICK] =
+    [ITEM_LEEK] =
     {
         .name = _("Leek"),
-        .itemId = ITEM_STICK,
+        .itemId = ITEM_LEEK,
         .price = 200,
         .holdEffect = HOLD_EFFECT_STICK,
         .description = sStickDesc,
@@ -5737,7 +5737,7 @@ const struct Item gItems[] =
     {
         .name = _("Power Herb"),
         .itemId = ITEM_POWER_HERB,
-        .price = 1000,
+        .price = 200,
         .holdEffect = HOLD_EFFECT_POWER_HERB,
         .description = sPowerHerbDesc,
         .pocket = POCKET_ITEMS,
@@ -6411,7 +6411,7 @@ const struct Item gItems[] =
     {
         .name = _("Fertilizer"),
         .itemId = ITEM_FERTILIZER,
-        .price = 20000,
+        .price = 0,
         .holdEffect = HOLD_EFFECT_NONE,
         .description = sFertilizerDesc,
         .pocket = POCKET_ITEMS,
@@ -6534,7 +6534,7 @@ const struct Item gItems[] =
     {
         .name = _("Absorb Bulb"),
         .itemId = ITEM_ABSORB_BULB,
-        .price = 2000,
+        .price = 200,
         .holdEffect = HOLD_EFFECT_ABSORB_BULB,
         .holdEffectParam = 0,
         .description = sAbsorbBulbDesc,
@@ -6562,7 +6562,7 @@ const struct Item gItems[] =
     {
         .name = _("LuminousMoss"),
         .itemId = ITEM_LUMINOUS_MOSS,
-        .price = 2000,
+        .price = 200,
         .holdEffect = HOLD_EFFECT_LUMINOUS_MOSS,
         .holdEffectParam = 0,
         .description = sLuminousMossDesc,
@@ -6576,7 +6576,7 @@ const struct Item gItems[] =
     {
         .name = _("Snowball"),
         .itemId = ITEM_SNOWBALL,
-        .price = 2000,
+        .price = 200,
         .holdEffect = HOLD_EFFECT_SNOWBALL,
         .holdEffectParam = 0,
         .description = sSnowballDesc,
@@ -7584,7 +7584,7 @@ const struct Item gItems[] =
     {
         .name = _("Electric Seed"),
         .itemId = ITEM_ELECTRIC_SEED,
-        .price = 4000,
+        .price = 500,
         .holdEffect = HOLD_EFFECT_SEEDS,
         .description = sElectricSeedDesc,
         .pocket = POCKET_ITEMS,
@@ -7597,7 +7597,7 @@ const struct Item gItems[] =
     {
         .name = _("Grassy Seed"),
         .itemId = ITEM_GRASSY_SEED,
-        .price = 4000,
+        .price = 500,
         .holdEffect = HOLD_EFFECT_SEEDS,
         .description = sGrassySeedDesc,
         .pocket = POCKET_ITEMS,
@@ -7610,7 +7610,7 @@ const struct Item gItems[] =
     {
         .name = _("Misty Seed"),
         .itemId = ITEM_MISTY_SEED,
-        .price = 4000,
+        .price = 500,
         .holdEffect = HOLD_EFFECT_SEEDS,
         .description = sMistySeedDesc,
         .pocket = POCKET_ITEMS,
@@ -7623,7 +7623,7 @@ const struct Item gItems[] =
     {
         .name = _("Psychic Seed"),
         .itemId = ITEM_PSYCHIC_SEED,
-        .price = 4000,
+        .price = 500,
         .holdEffect = HOLD_EFFECT_SEEDS,
         .description = sPsychicSeedDesc,
         .pocket = POCKET_ITEMS,
@@ -7788,6 +7788,246 @@ const struct Item gItems[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_RecipeBook,
+        .secondaryId = 0,
+    },
+
+    [ITEM_MUSCLE_POWDER] =
+    {
+        .name = _("Muscle Powder"),
+        .itemId = ITEM_MUSCLE_POWDER,
+        .price = 1000,
+        .description = sMusclePowderDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .battleUsage = 2,
+        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .secondaryId = 0,
+    },
+
+    [ITEM_TOUGH_POWDER] =
+    {
+        .name = _("Tough Powder"),
+        .itemId = ITEM_TOUGH_POWDER,
+        .price = 1000,
+        .description = sToughPowderDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .battleUsage = 2,
+        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .secondaryId = 0,
+    },
+
+    [ITEM_SMART_POWDER] =
+    {
+        .name = _("Smart Powder"),
+        .itemId = ITEM_SMART_POWDER,
+        .price = 1000,
+        .description = sSmartPowderDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .battleUsage = 2,
+        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .secondaryId = 0,
+    },
+
+    [ITEM_RESIST_POWDER] =
+    {
+        .name = _("Resist Powder"),
+        .itemId = ITEM_RESIST_POWDER,
+        .price = 1000,
+        .description = sResistPowderDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .battleUsage = 2,
+        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .secondaryId = 0,
+    },
+
+    [ITEM_SWIFT_POWDER] =
+    {
+        .name = _("Swift Powder"),
+        .itemId = ITEM_SWIFT_POWDER,
+        .price = 1000,
+        .description = sSwiftPowderDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .battleUsage = 2,
+        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .secondaryId = 0,
+    },
+
+    [ITEM_FOCUS_POWDER] =
+    {
+        .name = _("Focus Powder"),
+        .itemId = ITEM_FOCUS_POWDER,
+        .price = 1000,
+        .description = sFocusPowderDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .battleUsage = 2,
+        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .secondaryId = 0,
+    },
+
+    [ITEM_BANANA] =
+    {
+        .name = _("Banana"),
+        .itemId = ITEM_BANANA,
+        .price = 100,
+        .description = sBananaDesc,
+        .pocket = POCKET_MEDICINE,
+        .type = 1,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
+        .secondaryId = 0,
+    },
+
+    [ITEM_SMALL_SALAD] =
+    {
+        .name = _("Small Salad"),
+        .itemId = ITEM_SMALL_SALAD,
+        .price = 1000,
+        .description = sSmallSaladDesc,
+        .pocket = POCKET_MEDICINE,
+        .type = 1,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
+        .secondaryId = 0,
+    },
+
+    [ITEM_MEDIUM_SALAD] =
+    {
+        .name = _("Medium Salad"),
+        .itemId = ITEM_MEDIUM_SALAD,
+        .price = 5000,
+        .description = sMediumSaladDesc,
+        .pocket = POCKET_MEDICINE,
+        .type = 1,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
+        .secondaryId = 0,
+    },
+
+    [ITEM_LARGE_SALAD] =
+    {
+        .name = _("Large Salad"),
+        .itemId = ITEM_LARGE_SALAD,
+        .price = 10000,
+        .description = sLargeSaladDesc,
+        .pocket = POCKET_MEDICINE,
+        .type = 1,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
+        .secondaryId = 0,
+    },
+
+    [ITEM_HEAL_CHOWDER] =
+    {
+        .name = _("Heal Chowder"),
+        .itemId = ITEM_HEAL_CHOWDER,
+        .price = 1000,
+        .description = sHealChowderDesc,
+        .pocket = POCKET_MEDICINE,
+        .type = 1,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
+        .secondaryId = 0,
+    },
+
+    [ITEM_REVITAL_ICE] =
+    {
+        .name = _("Revital Ice"),
+        .itemId = ITEM_REVITAL_ICE,
+        .price = 5000,
+        .description = sRevitalIceDesc,
+        .pocket = POCKET_MEDICINE,
+        .type = 1,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
+        .secondaryId = 0,
+    },
+
+    [ITEM_SEASIDE_ALMOND] =
+    {
+        .name = _("Seaside Almond"),
+        .itemId = ITEM_SEASIDE_ALMOND,
+        .price = 500,
+        .description = sSeasideAlmondDesc,
+        .pocket = POCKET_COLLECTIBLES,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_SAVANNA_MELON] =
+    {
+        .name = _("Savanna Melon"),
+        .itemId = ITEM_SAVANNA_MELON,
+        .price = 500,
+        .description = sSavannaMelonDesc,
+        .pocket = POCKET_COLLECTIBLES,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_DEEPSEA_KELP] =
+    {
+        .name = _("Deepsea Kelp"),
+        .itemId = ITEM_DEEPSEA_KELP,
+        .price = 500,
+        .description = sDeepseaKelpDesc,
+        .pocket = POCKET_COLLECTIBLES,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_FROST_MINT] =
+    {
+        .name = _("Frost Mint"),
+        .itemId = ITEM_FROST_MINT,
+        .price = 500,
+        .description = sFrostMintDesc,
+        .pocket = POCKET_COLLECTIBLES,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_CHIMNEY_PEPPER] =
+    {
+        .name = _("Chimney Pepper"),
+        .itemId = ITEM_CHIMNEY_PEPPER,
+        .price = 500,
+        .description = sChimneyPepperDesc,
+        .pocket = POCKET_COLLECTIBLES,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_JUNGLE_BEANS] =
+    {
+        .name = _("Jungle Beans"),
+        .itemId = ITEM_JUNGLE_BEANS,
+        .price = 500,
+        .description = sJungleBeansDesc,
+        .pocket = POCKET_COLLECTIBLES,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 };

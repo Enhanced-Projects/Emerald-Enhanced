@@ -225,67 +225,102 @@ const u16 gOutsideMiningTier3[] = {//level 3
 
 //LIFESKILL BOTANY=================================================================================
 
-
-
-// reward tables
-// These can be any size, similar to my other tables.
-// I recommend at least 20 per table, but up to whoever,
-// just make sure they’re all the same size.
-
-// all of the items here are placeholder until we decide what we're going to do with all this stuff.
-const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][5] = {
+// These tables can be any size, as long as they're all the same size
+const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10] = {
     [BOTANY_MAP_CATEGORY_JUNGLE] = {
-        ITEM_NONE, //ITEM_JUNGLE_CHESTNUT,
-        ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
+        ITEM_JUNGLE_BEANS,
+        ITEM_LUMINOUS_MOSS,
+        ITEM_BIG_ROOT,
+        ITEM_GRASSY_SEED,
+        //Shared items:
         ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
         ITEM_ENERGY_POWDER,
+        ITEM_POWER_HERB,
+        ITEM_MENTAL_HERB,
+        ITEM_WHITE_HERB,
     },
     [BOTANY_MAP_CATEGORY_COLD] = {
-        ITEM_NONE, //ITEM_FROST_MINT,
+        ITEM_FROST_MINT,
+        ITEM_SNOWBALL,
+        ITEM_NEVER_MELT_ICE,
+        ITEM_MISTY_SEED,
+        //Shared items:
+        ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
         ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
+        ITEM_POWER_HERB,
         ITEM_MENTAL_HERB,
-        ITEM_REVIVAL_HERB,
+        ITEM_WHITE_HERB,
     },
     [BOTANY_MAP_CATEGORY_VOLCANIC] = {
-        ITEM_NONE, //ITEM_CHIMNEY_PEPPER,
-        ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
-        ITEM_BIG_MUSHROOM,
+        ITEM_CHIMNEY_PEPPER,
         ITEM_HARD_STONE,
+        ITEM_CHARCOAL,
+        ITEM_SOFT_SAND,
+        //Shared items:
+        ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
+        ITEM_ENERGY_POWDER,
+        ITEM_POWER_HERB,
+        ITEM_MENTAL_HERB,
+        ITEM_WHITE_HERB,
     },
     [BOTANY_MAP_CATEGORY_SEASIDE] = {
-        ITEM_NONE, //ITEM_SEASIDE_ALMOND,
+        ITEM_SEASIDE_ALMOND,
+        ITEM_SOFT_SAND,
+        ITEM_SHOAL_SALT,
+        ITEM_SHOAL_SHELL,
+        //Shared items:
+        ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
         ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
-        ITEM_HEART_SCALE,
-        ITEM_MISTY_SEED,
+        ITEM_POWER_HERB,
+        ITEM_MENTAL_HERB,
+        ITEM_WHITE_HERB,
     },
     [BOTANY_MAP_CATEGORY_AQUATIC] = {
-        ITEM_NONE, //ITEM_DEEPSEA_KELP
-        ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
+        ITEM_DEEPSEA_KELP,
         ITEM_HEART_SCALE,
-        ITEM_MISTY_SEED,
+        ITEM_PEARL,
+        ITEM_PSYCHIC_SEED,
+        //Shared items:
+        ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
+        ITEM_ENERGY_POWDER,
+        ITEM_POWER_HERB,
+        ITEM_MENTAL_HERB,
+        ITEM_WHITE_HERB,
     },
     [BOTANY_MAP_CATEGORY_SAVANNA] = {
-        ITEM_NONE, //ITEM_SAVANNA_MELON
+        ITEM_SAVANNA_MELON,
+        ITEM_SOFT_SAND,
+        ITEM_RARE_BONE,
+        ITEM_ELECTRIC_SEED,
+        //Shared items:
+        ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
         ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
-        ITEM_HEART_SCALE,
-        ITEM_MISTY_SEED,
+        ITEM_POWER_HERB,
+        ITEM_MENTAL_HERB,
+        ITEM_WHITE_HERB,
     },
     [BOTANY_MAP_CATEGORY_GENERAL] = {
-        ITEM_ANTIDOTE,
+        ITEM_ABSORB_BULB,
+        ITEM_LEEK,
+        ITEM_TINY_MUSHROOM,
+        ITEM_BIG_MUSHROOM,
+        //Shared items:
+        ITEM_MIRACLE_SEED,
+        ITEM_HEAL_POWDER,
         ITEM_ENERGY_POWDER,
-        ITEM_ENERGY_POWDER,
-        ITEM_PARALYZE_HEAL,
-        ITEM_BURN_HEAL,
+        ITEM_POWER_HERB,
+        ITEM_MENTAL_HERB,
+        ITEM_WHITE_HERB,
     },
 };
 
-const u16 gBotanyTreeRewards[] = {//need some placeholders for 'none', as the reward function loads item names into text buffers, which will cause overflow and glitchy text.
+const u16 gBotanyTreeRewards[] = {
     ITEM_RED_APRICORN,
     ITEM_BLUE_APRICORN,
     ITEM_YELLOW_APRICORN,
@@ -293,11 +328,11 @@ const u16 gBotanyTreeRewards[] = {//need some placeholders for 'none', as the re
     ITEM_PINK_APRICORN,
     ITEM_WHITE_APRICORN,
     ITEM_BLACK_APRICORN,
-    ITEM_STICK,
     ITEM_MIRACLE_SEED,
-    ITEM_POISON_BARB,
-    ITEM_NONE,
-    ITEM_NONE
+    ITEM_GRASSY_SEED,
+    ITEM_ABSORB_BULB,
+    ITEM_LUMINOUS_MOSS,
+    ITEM_BIG_ROOT
 };
 
 #define NUM_INGREDIENTS_PER_RECIPE 5
@@ -338,30 +373,8 @@ const u16 gBotanyTreeRewards[] = {//need some placeholders for 'none', as the re
 #define BR_ICE_STONE 29
 //WHEN YOU ADD ANYTHING TO THE THREE ABOVE GROUPS, YOU MUST ALSO ADJUST THE DEFINES FOR THE
 //NUM RECIPES IN include/constants/vars.h. THIS MAKES IT POSSIBLE FOR SCRIPT TO READ THEM
-//TEMPORARY Item defines
-#define ITEM_SEASIDE_ALMOND 0
-#define ITEM_JUNGLE_BEANS 1
-#define ITEM_DEEPSEA_KELP 2
-#define ITEM_FROST_MINT 3
-#define ITEM_CHIMNEY_PEPPER 4
-#define ITEM_LEEK 5
-#define ITEM_BANANA 6
-#define ITEM_SAVANNA_MELON 7
-#define ITEM_FOCUS_POWDER 8
-#define ITEM_HEAL_CHOWDER 9
 
-
-#define ITEM_MUSCLE_POWDER 0
-#define ITEM_TOUGH_POWDER 1
-#define ITEM_SMART_POWDER 2
-#define ITEM_RESIST_POWDER 3
-#define ITEM_SWIFT_POWDER 4
-#define ITEM_SMALL_SALAD 5
-#define ITEM_MEDIUM_SALAD 6
-#define ITEM_LARGE_SALAD 7
-#define ITEM_REVITAL_ICE 8
 //recipe to item mapping
-
 const u16 sBotanyRecipeToItemId[NUM_RECIPES] = {//must have exactly the same number of items as NUM_RECIPES, or rewards wont work.
     ITEM_MUSCLE_POWDER,
     ITEM_TOUGH_POWDER,
@@ -541,70 +554,70 @@ const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2] = {
     [BR_FIRE_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_FIRE_GEM, 0},
+        {ITEM_FIRE_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_WATER_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_WATER_GEM, 0},
+        {ITEM_WATER_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_THUNDER_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_ELECTRIC_GEM, 0},
+        {ITEM_ELECTRIC_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_LEAF_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_GRASS_GEM, 0},
+        {ITEM_GRASS_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_MOON_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_GHOST_GEM, 0},
+        {ITEM_GHOST_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_SUN_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_PSYCHIC_GEM, 0},
+        {ITEM_PSYCHIC_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_SHINY_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_FAIRY_GEM, 0},
+        {ITEM_FAIRY_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_DUSK_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_DARK_GEM, 0},
+        {ITEM_DARK_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_DAWN_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_NORMAL_GEM, 0},
+        {ITEM_NORMAL_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_ICE_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_ICE_GEM, 0},
+        {ITEM_ICE_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },

@@ -263,6 +263,7 @@ const struct RegionMapLocation gRegionMapEntries[] = {
     [MAPSEC_LAVARIDGE_TOWN]             = {5, 3, 1, 1, sMapName_LavaridgeTown},
     [MAPSEC_LAVENDER_TOWN]              = {0, 0, 1, 1, sMapName_LavenderTown},
     [MAPSEC_LILYCOVE_CITY]              = {18, 3, 2, 1, sMapName_LilycoveCity},
+    [MAPSEC_LILYCOVE_TRAINING_CENTER]   = {19, 3, 1, 1, sMapName_LilycoveCity},
     [MAPSEC_LIPTOO_CHAMBER]             = {0, 0, 1, 1, sMapName_LiptooChamber},
     [MAPSEC_LITTLEROOT_TOWN]            = {4, 11, 1, 2, sMapName_LittlerootTown},
     [MAPSEC_LOST_CAVE]                  = {0, 0, 1, 1, sMapName_LostCave},

@@ -382,7 +382,7 @@
 #define ITEM_LUCKY_PUNCH 360
 #define ITEM_METAL_POWDER 361
 #define ITEM_THICK_CLUB 362
-#define ITEM_STICK 363
+#define ITEM_LEEK 363
 #define ITEM_LIGHT_BALL 364
 #define ITEM_QUICK_POWDER 365
 #define ITEM_ODD_KEYSTONE 366
@@ -669,15 +669,34 @@
 #define ITEM_SHINY_CHARM 572
 #define ITEM_OVAL_CHARM 573
 
+// Mining
 #define ITEM_COPPER_ORE 574
 #define ITEM_SILVER_ORE 575
 #define ITEM_GOLD_ORE 576
 #define ITEM_FOSSIL_ORE 577
 #define ITEM_SHARD_ORE 578
+//Botany
+#define ITEM_RECIPE_BOOK 579 //new
+#define ITEM_MUSCLE_POWDER 580 //recolored Energy Powder
+#define ITEM_TOUGH_POWDER 581 //recolored Energy Powder
+#define ITEM_SMART_POWDER 582 //recolored Energy Powder
+#define ITEM_RESIST_POWDER 583 //recolored Energy Powder
+#define ITEM_SWIFT_POWDER 584 //recolored Energy Powder
+#define ITEM_FOCUS_POWDER 585 //recolored Energy Powder
+#define ITEM_BANANA 586 //new
+#define ITEM_SMALL_SALAD 587 //new
+#define ITEM_MEDIUM_SALAD 588 //new
+#define ITEM_LARGE_SALAD 589 //new
+#define ITEM_HEAL_CHOWDER 590 //new
+#define ITEM_REVITAL_ICE 591 //new
+#define ITEM_SEASIDE_ALMOND 592 //new
+#define ITEM_SAVANNA_MELON 593 //recolored Wiki Berry
+#define ITEM_DEEPSEA_KELP 594 //new
+#define ITEM_FROST_MINT 595 //new
+#define ITEM_CHIMNEY_PEPPER 596 //new
+#define ITEM_JUNGLE_BEANS 597 //recolored terrain seed
 
-#define ITEM_RECIPE_BOOK 623
-
-#define ITEMS_COUNT 624
+#define ITEMS_COUNT 598
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 #define FIRST_BERRY_INDEX             ITEM_CHERI_BERRY
