@@ -202,13 +202,20 @@ RB_CheckCraftingResult::
     buffernumberstring 0, VAR_TEMP_C
     scriptdebug RB_DB_MSG1
     switch VAR_TEMP_C
+    case 0, RB_RecipeFailed
     case 2000, RB_NotEnoughSpaceForResult
     case 4000, RB_MissingSomething
     case 8000, RB_NeedMoreOfSomething
     additem VAR_TEMP_C, 1
-    bufferitemname 0, VAR_RESULT
+    bufferitemname 0, VAR_TEMP_C
     playfanfare MUS_FANFA1
     msgbox RB_Success
+    release
+    end
+
+RB_RecipeFailed::
+    msgbox RB_Error
+    closemessage
     release
     end
 
@@ -229,6 +236,9 @@ RB_NotEnoughSpaceForResult::
     closemessage
     release
     end
+
+RB_Error:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}There was an error crafting this recipe.$"
 
 RB_NeedMoreSpace::
     .string "You don't have enough space for\nthe item you're trying to craft.$"
