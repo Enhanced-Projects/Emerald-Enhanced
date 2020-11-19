@@ -227,28 +227,28 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_warpsootopolislegend      @ 0xe0
 	.4byte ScrCmd_buffercontesttype         @ 0xe1
 	.4byte ScrCmd_bufferitemnameplural      @ 0xe2	
-    .4byte ScrCmd_createfollower
-	.4byte ScrCmd_destroyfollower
-	.4byte ScrCmd_drawheadshot
-	.4byte ScrCmd_drawcustompic
-	.4byte ScrCmd_addmonhappiness
-	.4byte ScrCmd_scriptdebug
-	.4byte ScrCmd_givebp
-	.4byte ScrCmd_checkbp
-	.4byte ScrCmd_gfec
-	.4byte ScrCmd_multvar
-	.4byte ScrCmd_divvar
-	.4byte ScrCmd_drawfullscreenimage
-	.4byte ScrCmd_clearfullscreenimage
-	.4byte ScrCmd_giveitem_silent
-	.4byte ScrCmd_readgamestat
-	.4byte ScrCmd_messageoneline
-	.4byte ScrCmd_dominingcheck
-	.4byte ScrCmd_drawinfobox
-	.4byte ScrCmd_removeinfobox
-	.4byte ScrCmd_addvars
-	.4byte ScrCmd_checkspecies
-	.4byte ScrCmd_trycraftingrecipe
+	.4byte ScrCmd_createfollower            @ 0xe3
+	.4byte ScrCmd_destroyfollower           @ 0xe4
+	.4byte ScrCmd_drawheadshot              @ 0xe5
+	.4byte ScrCmd_drawcustompic             @ 0xe6
+	.4byte ScrCmd_addmonhappiness           @ 0xe7
+	.4byte ScrCmd_scriptdebug               @ 0xe8
+	.4byte ScrCmd_givebp                    @ 0xe9
+	.4byte ScrCmd_checkbp                   @ 0xea
+	.4byte ScrCmd_gfec                      @ 0xeb
+	.4byte ScrCmd_multvar                   @ 0xec
+	.4byte ScrCmd_divvar                    @ 0xed
+	.4byte ScrCmd_drawfullscreenimage       @ 0xee
+	.4byte ScrCmd_clearfullscreenimage      @ 0xef
+	.4byte ScrCmd_giveitem_silent           @ 0xf0
+	.4byte ScrCmd_readgamestat              @ 0xf1
+	.4byte ScrCmd_messageoneline            @ 0xf2
+	.4byte ScrCmd_dominingcheck             @ 0xf3
+	.4byte ScrCmd_drawinfobox               @ 0xf4
+	.4byte ScrCmd_removeinfobox             @ 0xf5
+	.4byte ScrCmd_addvars                   @ 0xf6
+	.4byte ScrCmd_checkspecies              @ 0xf7
+	.4byte ScrCmd_trycraftingrecipe         @ 0xf8
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop

@@ -1741,16 +1741,16 @@
 	.2byte \var2
 	.endm
 
-	.macro trycraftingrecipe recipe:req
-	.byte 0xf7
-	.2byte \recipe
-	.endm
-
 	@Checks if player has species in their party. If so, VAR_RESULT is true,
 	@and the slot number is loaded into VAR_TEMP_F. Using the slot number is optional.
 	.macro checkspecies species:req
 	.byte 0xf7
 	.2byte \species
+	.endm
+
+	.macro trycraftingrecipe recipe:req
+	.byte 0xf8
+	.2byte \recipe
 	.endm
 
 @ Supplementary
