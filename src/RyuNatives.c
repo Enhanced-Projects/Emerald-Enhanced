@@ -1548,7 +1548,13 @@ bool8 ScrCmd_trycraftingrecipe(struct ScriptContext *ctx)
     u16 recipeNum = VarGet(ScriptReadHalfword(ctx)); //the recipe to try to craft
     u8 i;
     u16 itemId, requiredQuantity, quantityInBag;
-    u16 rewardItem = (sBotanyRecipeToItemId[recipeNum]);
+    u16 rewardItem = sBotanyRecipeToItemId[recipeNum];
+
+    // 2000 is the magic number for "You do not have enough space for the resulting item"
+    if (!CheckBagHasSpace(rewardItem, 1)) {
+        VarSet(VAR_TEMP_C, 2000);
+        return FALSE;
+    }
 
     for (i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++) {
         itemId = sBotanyRecipes[recipeNum][i][0];
@@ -1556,17 +1562,14 @@ bool8 ScrCmd_trycraftingrecipe(struct ScriptContext *ctx)
             break;
         requiredQuantity = sBotanyRecipes[recipeNum][i][1];
         quantityInBag = GetItemQuantity(itemId);
-            // 4000 is the magic number for “you don’t have the ingredient”
         if (quantityInBag < requiredQuantity) {
+            // 4000 is the magic number for “you don’t have the ingredient”
             VarSet(VAR_TEMP_C, 4000);
-            // 8000 is the magic number for “you have at least one but need more of that ingredient”
-        if (quantityInBag > 0)
-            VarSet(VAR_TEMP_C, 8000);
-            //2000 is the magic number for "You do not have enough space for the resulting item"
-        if (!(CheckBagHasSpace(rewardItem, 1)))
-            VarSet(VAR_TEMP_C, 2000);
+            if (quantityInBag > 0)
+                // 8000 is the magic number for “you have at least one but need more of that ingredient”
+                VarSet(VAR_TEMP_C, 8000);
 
-        return FALSE;
+            return FALSE;
         }
     }
 
