@@ -3334,4 +3334,9 @@ extern const u8 gText_RyuBotanyMedicinesChapter[];
 extern const u8 gText_RyuBotanyEvolutionChapter[];
 extern const u8 gText_RyuBotanyExitBook[];
 
+extern const u8 gText_PBGBulbasaur[];
+extern const u8 gText_PBGRhydon[];
+extern const u8 gText_PBGMew[];
+extern const u8 gText_PBGArceus[];
+
 #endif // GUARD_STRINGS_H

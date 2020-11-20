@@ -17,8 +17,6 @@ PetalburgCity_OnTransition: @ 81DC2D7
 	call_if_eq PetalburgCity_EventScript_DisableMapNameAndMusic
 	compare VAR_PETALBURG_CITY_STATE, 4
 	call_if_eq PetalburgCity_EventScript_DisableMapNameAndMusic
-	compare VAR_PETALBURG_GYM_STATE, 8
-	call_if_eq PetalburgCity_EventScript_SetGymDoorsUnlocked
 	end
 
 PetalburgCity_EventScript_MoveBoyToWestEntrance:: @ 81DC307
@@ -31,7 +29,6 @@ PetalburgCity_EventScript_DisableMapNameAndMusic:: @ 81DC30F
 	return
 
 PetalburgCity_EventScript_SetGymDoorsUnlocked:: @ 81DC316
-	setvar VAR_PETALBURG_GYM_STATE, 7
 	return
 
 PetalburgCity_OnFrame: @ 81DC31C

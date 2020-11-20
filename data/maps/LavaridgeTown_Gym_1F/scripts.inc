@@ -70,11 +70,6 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated:: @ 81FE7C1
 	setflag FLAG_WHITEOUT_TO_LAVARIDGE
 	setflag FLAG_DEFEATED_LAVARIDGE_GYM
 	setflag FLAG_BADGE04_GET
-	addvar VAR_PETALBURG_GYM_STATE, 1
-	compare VAR_PETALBURG_GYM_STATE, 6
-	call_if_eq Common_EventScript_ReadyPetalburgGymForBattle
-	setvar VAR_0x8008, 4
-	call Common_EventScript_SetGymTrainers
 	setvar VAR_LAVARIDGE_TOWN_STATE, 1
 	call LavaridgeTown_Gym_1F_EventScript_GiveOverheat
 	closemessage

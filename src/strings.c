@@ -2179,3 +2179,7 @@ const u8 gText_RyuBotanyMedicinesChapter[] = _("Medicines");
 const u8 gText_RyuBotanyEvolutionChapter[] = _("Evo Stones");
 const u8 gText_RyuBotanyExitBook[] = _("Close Book");
 
+const u8 gText_PBGBulbasaur[] = _("Bulbasaur");
+const u8 gText_PBGRhydon[] = _("Rhydon");
+const u8 gText_PBGMew[] = _("Mew");
+const u8 gText_PBGArceus[] = _("Arceus");

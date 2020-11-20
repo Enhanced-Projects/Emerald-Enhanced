@@ -665,7 +665,6 @@ EventScript_BackupMrBrineyLocation:: @ 8271E95
 
 	.include "data/scripts/surf.inc"
 	.include "data/scripts/rival_graphics.inc"
-	.include "data/scripts/set_gym_trainers.inc"
 
 Common_EventScript_ShowBagIsFull:: @ 8272054
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
