@@ -45,7 +45,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 14,
+      "x": 27,
       "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -58,7 +58,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 15,
+      "x": 28,
       "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -71,7 +71,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 16,
+      "x": 29,
       "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -84,7 +84,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 17,
+      "x": 30,
       "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -227,7 +227,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
-      "x": 11,
+      "x": 12,
       "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -279,7 +279,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MANIAC",
-      "x": 11,
+      "x": 12,
       "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
@@ -376,45 +376,16 @@
       "elevation": 0,
       "dest_map": "MAP_ROUTE121_SAFARI_ZONE_ENTRANCE",
       "dest_warp_id": 2
+    },
+    {
+      "x": 9,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE121_BANANA_SLAKOTH_GARDEN_ENTRANCE",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 25,
-      "y": 0,
-      "elevation": 3,
-      "var": "VAR_ROUTE121_STATE",
-      "var_value": "0",
-      "script": "Route121_EventScript_AquaGruntsMoveOut"
-    },
-    {
-      "type": "trigger",
-      "x": 25,
-      "y": 1,
-      "elevation": 3,
-      "var": "VAR_ROUTE121_STATE",
-      "var_value": "0",
-      "script": "Route121_EventScript_AquaGruntsMoveOut"
-    },
-    {
-      "type": "trigger",
-      "x": 25,
-      "y": 2,
-      "elevation": 3,
-      "var": "VAR_ROUTE121_STATE",
-      "var_value": "0",
-      "script": "Route121_EventScript_AquaGruntsMoveOut"
-    },
-    {
-      "type": "trigger",
-      "x": 25,
-      "y": 3,
-      "elevation": 3,
-      "var": "VAR_ROUTE121_STATE",
-      "var_value": "0",
-      "script": "Route121_EventScript_AquaGruntsMoveOut"
-    },
     {
       "type": "trigger",
       "x": 79,
@@ -519,6 +490,14 @@
       "elevation": 3,
       "item": "ITEM_MAX_REVIVE",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_121_MAX_REVIVE"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 6,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route121_EventScript_BananaSlakothGardenSign"
     }
   ]
 }

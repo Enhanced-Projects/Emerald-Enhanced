@@ -326,7 +326,8 @@
 #define MAP_ROUTE117_POKEMON_DAY_CARE (0 | (22 << 8))
 
 // Map Group 23
-#define MAP_ROUTE121_SAFARI_ZONE_ENTRANCE (0 | (23 << 8))
+#define MAP_ROUTE121_SAFARI_ZONE_ENTRANCE           (0 | (23 << 8))
+#define MAP_ROUTE121_BANANA_SLAKOTH_GARDEN_ENTRANCE (1 | (23 << 8))
 
 // Map Group 24
 #define MAP_METEOR_FALLS_1F_1R                       (0 | (24 << 8))
