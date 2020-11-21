@@ -207,6 +207,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	buffernumberstring 0, VAR_LAST_KNOWN_GAME_VERSION
+	msgbox RDB_TempVarsViewMsg
 	release
 	end
 
