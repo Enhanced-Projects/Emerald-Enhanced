@@ -40,9 +40,3 @@
 	.4byte \palette_address
 	.4byte \function_address
 	.endm
-
-	.macro field_eff_chooseloadfadedpal palette_address1, palette_address2
-	.byte 8
-	.4byte \palette_address1
-	.4byte \palette_address2
-	.endm
