@@ -997,6 +997,12 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
     sInitStartMenuData[1] = 0;
     taskId = CreateTask(StartMenuTask, 0x50);
     SetTaskFuncWithFollowupFunc(taskId, StartMenuTask, followupFunc);
+    VarSet(VAR_LAST_KNOWN_GAME_VERSION, EE_GAME_VERSION);
+    //This should let me know what the original save file version was, so i can tell if someone used an old save or not.
+    if (VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION) == 0)
+        VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, EE_GAME_VERSION);
+    VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
+    FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
 }
 
 static bool8 FieldCB_ReturnToFieldStartMenu(void)
