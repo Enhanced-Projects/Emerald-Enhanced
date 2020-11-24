@@ -66,6 +66,10 @@ static const u8 sNurseBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/
 static const u8 sNurseBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/nurse_map.bin");
 static const u8 sNurseBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/nurse_palette.gbapal");
 
+static const u8 sNurseNightBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/night_tiles.8bpp");
+static const u8 sNurseNightBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/night_map.bin");
+static const u8 sNurseNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/night_palette.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -223,6 +227,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sNurseBgMap),
         .palette = sNurseBgPalette,
 		.palIdxCnt = 224
+	},
+	[SCENEBGNURSENIGHT] = 
+	{
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sNurseNightBgTiles,
+		.tileSize = sizeof(sNurseNightBgTiles),
+        .map = sNurseNightBgMap,
+		.mapSize = sizeof(sNurseNightBgMap),
+        .palette = sNurseNightBgPalette,
+		.palIdxCnt = 48
 	},
 };
 

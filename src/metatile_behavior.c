@@ -40,7 +40,7 @@ static const u8 sTileBitAttributes[] =
     [MB_STAIRS_OUTSIDE_ABANDONED_SHIP] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_SHOAL_CAVE_ENTRANCE] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_MT_FREEZE_EXTERIOR] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
-    [MB_SAFARI_GRASS] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
+    [MB_SAFARI_GRASS] = TILE_ATTRIBUTES(FALSE, FALSE, TRUE),
     [MB_UNUSED_1F] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_ICE] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_SAND] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
@@ -299,7 +299,7 @@ bool8 MetatileBehavior_IsJumpSouth(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsPokeGrass(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_TALL_GRASS || metatileBehavior == MB_LONG_GRASS)
+    if (metatileBehavior == MB_TALL_GRASS || metatileBehavior == MB_LONG_GRASS || metatileBehavior == MB_SAFARI_GRASS)
         return TRUE;
     else
         return FALSE;
@@ -841,7 +841,7 @@ bool8 MetatileBehavior_IsTallGrass(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsLongGrass(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_LONG_GRASS)
+    if (metatileBehavior == MB_LONG_GRASS || metatileBehavior == MB_SAFARI_GRASS)
         return TRUE;
     else
         return FALSE;
@@ -1347,6 +1347,7 @@ bool8 MetatileBehavior_IsCuttableGrass(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_TALL_GRASS
      || metatileBehavior == MB_LONG_GRASS
+     || metatileBehavior == MB_SAFARI_GRASS
      || metatileBehavior == MB_ASHGRASS
      || metatileBehavior == MB_LONG_GRASS_SOUTH_EDGE
      || metatileBehavior == MB_SEAWEED
