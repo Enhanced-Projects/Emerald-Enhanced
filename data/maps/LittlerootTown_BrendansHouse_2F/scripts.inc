@@ -184,7 +184,7 @@ LRT_BrendanNight2::
 	special HealPlayerParty
 	delay 20
 	msgbox LRT_BrendanROM2, MSGBOX_DEFAULT
-	fadescreen 0
+	fadescreen FADE_FROM_BLACK
 	setflag FLAG_RYU_DS_BRENDAN_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
 	playse SE_PIN

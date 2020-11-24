@@ -271,6 +271,7 @@ IslandCave_EventScript_CaveEntranceMiddle:: @ 8238EEF
 	playse SE_W089
 	special DoSealedChamberShakingEffect1
 	waitse
+	fadeinbgm 0
 	goto IslandCave_EventScript_OpenRegiEntrance
 	end
 

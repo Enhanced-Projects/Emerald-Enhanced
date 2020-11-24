@@ -56,6 +56,7 @@ DesertRuins_EventScript_CaveEntranceMiddle:: @ 822D9DB
 	special DoSealedChamberShakingEffect1
 	waitse
 	call DR_LeafOpenDoor
+	fadeinbgm 0
 	releaseall
 	end
 

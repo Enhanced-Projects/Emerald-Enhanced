@@ -58,6 +58,7 @@ AncientTomb_EventScript_CaveEntranceMiddle:: @ 8239033
 	setflag FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED
 	waitse
 	call DR_LeafOpenDoor
+	fadeinbgm 0
 	releaseall
 	end
 
