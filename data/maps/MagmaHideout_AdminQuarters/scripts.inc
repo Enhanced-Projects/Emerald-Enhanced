@@ -40,7 +40,7 @@ MHAQ_StayingWithCourtney1::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
 	waitmovement OBJ_EVENT_ID_PLAYER
 	fadescreen FADE_FROM_BLACK
-	fadeinbm 0
+	fadeinbgm 0
 	playbgm MUS_AJITO, 0
 	msgbox MHAQ_PlayerWakesUp
 	closemessage
@@ -90,7 +90,7 @@ MHAQ_StayingWithCourtney2::
 	applymovement 1, Common_Movement_HeartEmote
 	waitmovement 1
 	delay 20
-	fadeinbm
+	fadeinbgm 0
 	applymovement OBJ_EVENT_ID_PLAYER, MHAQ_PlayerToExit2
 	waitmovement OBJ_EVENT_ID_PLAYER
 	setobjectxy 1, 1, 3
