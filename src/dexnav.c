@@ -160,6 +160,10 @@ static void DrawHiddenSearchWindow(u8 width);
 static const u32 sDexNavGuiTiles[] = INCBIN_U32("graphics/dexnav/gui_tiles.4bpp.lz");
 static const u32 sDexNavGuiTilemap[] = INCBIN_U32("graphics/dexnav/gui_tilemap.bin.lz");
 static const u32 sDexNavGuiPal[] = INCBIN_U32("graphics/dexnav/gui.gbapal");
+// gui image data
+static const u32 sDexNavGuiTilesDark[] = INCBIN_U32("graphics/dexnav/gui_tiles_dark.4bpp.lz");
+static const u32 sDexNavGuiTilemapDark[] = INCBIN_U32("graphics/dexnav/gui_tilemap_dark.bin.lz");
+static const u32 sDexNavGuiPalDark[] = INCBIN_U32("graphics/dexnav/gui_dark.gbapal");
 
 static const u32 sSelectionCursorGfx[] = INCBIN_U32("graphics/dexnav/cursor.4bpp.lz");
 static const u16 sSelectionCursorPal[] = INCBIN_U16("graphics/dexnav/cursor.gbapal");
@@ -177,13 +181,13 @@ static const u32 sHiddenMonIconGfx[] = INCBIN_U32("graphics/dexnav/hidden.4bpp.l
 // strings
 static const u8 sText_DexNav_NoInfo[] = _("--------");
 static const u8 sText_DexNav_CaptureToSee[] = _("Capture first!");
-static const u8 sText_DexNav_PressRToRegister[] = _("R TO REGISTER!");
+static const u8 sText_DexNav_PressRToRegister[] = _("{R_BUTTON} = register search");
 static const u8 sText_DexNav_SearchForRegisteredSpecies[] = _("Search {STR_VAR_1}");
 static const u8 sText_DexNav_NotFoundHere[] = _("This Pokémon cannot be found here!");
 static const u8 sText_ThreeQmarks[] = _("???");
 static const u8 sText_SearchLevel[] = _("Search {LV}. {STR_VAR_1}");
 static const u8 sText_MonLevel[] = _("{LV}. {STR_VAR_1}");
-static const u8 sText_EggMove[] = _("MOVE: {STR_VAR_1}");
+static const u8 sText_EggMove[] = _("Move: {STR_VAR_1}");
 static const u8 sText_HeldItem[] = _("{STR_VAR_1}");
 static const u8 sText_StartExit[] = _("{START_BUTTON} Exit");
 static const u8 sText_DexNavChain[] = _("{NO} {STR_VAR_1}");
@@ -222,6 +226,9 @@ static const struct WindowTemplate sDexNavGuiWindowTemplates[] =
 //gui font
 static const u8 sFontColor_Black[3] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY};
 static const u8 sFontColor_White[3] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GREY};
+//gui font theme 2
+static const u8 sFontColor_BlackDark[3] = {TEXT_COLOR_TRANSPARENT, 9, 3};
+static const u8 sFontColor_WhiteDark[3] = {TEXT_COLOR_TRANSPARENT, 2, 3};
 //search window font
 static const u8 sSearchFontColor[3] = {0, 15, 13};
 
@@ -434,6 +441,27 @@ static const struct CompressedSpriteSheet sPotentialStarSpriteSheet = {sPotentia
 //static const struct CompressedSpriteSheet sSightSpriteSheet = {sEyeGfx, (16 * 8 * 3) / 2, SIGHT_TAG};
 static const struct CompressedSpriteSheet sOwnedIconSpriteSheet = {sOwnedIconGfx, (8 * 8) / 2, OWNED_ICON_TAG};
 static const struct CompressedSpriteSheet sHiddenMonIconSpriteSheet = {sHiddenMonIconGfx, (8 * 8) / 2, HIDDEN_MON_ICON_TAG};
+
+
+//theme selection
+
+const u8* RyuReturnThemeColors(u8 isDark)
+{
+    if (isDark == TRUE)
+    {
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+            return sFontColor_BlackDark;
+         else
+            return sFontColor_Black;
+    }
+    else
+    {
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+            return sFontColor_WhiteDark;
+        else
+            return sFontColor_White;
+    }
+}
 
 //// functions
 ///////////////////////
@@ -1208,9 +1236,12 @@ static void DexNavUpdateSearchWindow(u8 proximity, u8 searchLevel)
 
 int RyuGetMaxBossChance()
 {
-    u8 MaxChance = 255;
+    u8 MaxChance = 109;
+    u8 currentChain = gSaveBlock1Ptr->dexNavChain;
 
-    MaxChance -= (gSaveBlock1Ptr->dexNavChain * 3);
+    MaxChance -= currentChain;
+    mgba_printf(LOGINFO, "Current chance is 1 in %d", MaxChance);
+
     return MaxChance;
 }
 
@@ -1223,6 +1254,8 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     u8 iv[3];
     u8 i;
     u8 perfectIv = 31;
+    u16 heldItem = (sDexNavSearchDataPtr->heldItem);
+    u8 ability = 2;
     
     if ((Random() % RyuGetMaxBossChance() <= 1))// || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
     {
@@ -1233,6 +1266,13 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     {
         CreateWildMon(species, level);  // shiny rate bonus handled in CreateBoxMon
     }
+
+    if (FlagGet(FLAG_RYU_BOSS_WILD) == 1)
+        SetMonData(mon, MON_DATA_ABILITY_NUM, &ability);
+    else
+        SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
+
+    SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem); //give the item generated earlier to the mon.
     
     //Pick potential ivs to set to 31
     iv[0] = Random() % 6;
@@ -1530,7 +1570,7 @@ static u8 DexNavGeneratePotential(u8 searchLevel)
     return 0;   // No potential
 }
 
-static u8 GetEncounterLevelFromMapData(u16 species, u8 environment)
+/*static u8 GetEncounterLevelFromMapData(u16 species, u8 environment)
 {
     u16 headerId = GetCurrentMapWildMonHeaderId();
     const struct WildPokemonInfo *landMonsInfo = gWildMonHeaders[headerId].landMonsInfo;
@@ -1595,7 +1635,7 @@ static u8 GetEncounterLevelFromMapData(u16 species, u8 environment)
         return MON_LEVEL_NONEXISTENT;
 
     return RandRange(min, max);
-}
+}*/
 
 
 ///////////
@@ -1659,18 +1699,30 @@ static bool8 DexNav_LoadGraphics(void)
     {
     case 0:
         ResetTempTileDataBuffers();
-        DecompressAndCopyTileDataToVram(1, sDexNavGuiTiles, 0, 0, 0);
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+            DecompressAndCopyTileDataToVram(1, sDexNavGuiTilesDark, 0, 0, 0);
+        else
+            DecompressAndCopyTileDataToVram(1, sDexNavGuiTiles, 0, 0, 0);
+
         sDexNavUiDataPtr->state++;
         break;
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            LZDecompressWram(sDexNavGuiTilemap, sBg1TilemapBuffer);
+            if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+                LZDecompressWram(sDexNavGuiTilemapDark, sBg1TilemapBuffer);
+            else
+                LZDecompressWram(sDexNavGuiTilemap, sBg1TilemapBuffer);
+            
             sDexNavUiDataPtr->state++;
         }
         break;
     case 2:
-        LoadPalette(sDexNavGuiPal, 0, 32);
+        if (VarGet(VAR_RYU_THEME_NUMBER) == 1)
+            LoadPalette(sDexNavGuiPalDark, 0, 32);
+        else
+            LoadPalette(sDexNavGuiPal, 0, 32);
+        
         sDexNavUiDataPtr->state++;
         break;
     default:
@@ -2136,9 +2188,9 @@ static void PrintCurrentSpeciesInfo(void)
     
     //species name
     if (species == SPECIES_NONE)
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, SPECIES_INFO_Y, sFontColor_Black, 0, sText_DexNav_NoInfo);
+        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, SPECIES_INFO_Y, RyuReturnThemeColors(TRUE), 0, sText_DexNav_NoInfo);
     else
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, SPECIES_INFO_Y, sFontColor_Black, 0, gSpeciesNames[species]);
+        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, SPECIES_INFO_Y, RyuReturnThemeColors(TRUE), 0, gSpeciesNames[species]);
     
     //type icon(s)
     type1 = gBaseStats[species].type1;
@@ -2160,12 +2212,12 @@ static void PrintCurrentSpeciesInfo(void)
     //search level
     if (species == SPECIES_NONE)
     {
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, SEARCH_LEVEL_Y, sFontColor_Black, 0, sText_DexNav_NoInfo);
+        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, SEARCH_LEVEL_Y, RyuReturnThemeColors(TRUE), 0, sText_DexNav_NoInfo);
     }
     else
     {
         ConvertIntToDecimalStringN(gStringVar4, gSaveBlock1Ptr->dexNavSearchLevels[dexNum], 0, 4);
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, SEARCH_LEVEL_Y, sFontColor_Black, 0, gStringVar4);
+        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, SEARCH_LEVEL_Y, RyuReturnThemeColors(TRUE), 0, gStringVar4);
     }
     
     // search bonus
@@ -2176,25 +2228,25 @@ static void PrintCurrentSpeciesInfo(void)
     
     ConvertIntToDecimalStringN(gStringVar4, searchLevelBonus, 0, 4);
     if (species == SPECIES_NONE)
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, LEVEL_BONUS_Y, sFontColor_Black, 0, sText_DexNav_NoInfo);
+        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, LEVEL_BONUS_Y, RyuReturnThemeColors(TRUE), 0, sText_DexNav_NoInfo);
     else
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, LEVEL_BONUS_Y, sFontColor_Black, 0, gStringVar4);
+        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, LEVEL_BONUS_Y, RyuReturnThemeColors(TRUE), 0, gStringVar4);
     
     //hidden ability
     if (species == SPECIES_NONE)
     {
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, sFontColor_Black, 0, sText_DexNav_NoInfo);
+        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, RyuReturnThemeColors(TRUE), 0, sText_DexNav_NoInfo);
     }
     else if (GetSetPokedexFlag(dexNum, FLAG_GET_CAUGHT))
     {
         if (gBaseStats[species].abilityHidden != ABILITY_NONE)
-            AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, sFontColor_Black, 0, gAbilityNames[gBaseStats[species].abilityHidden]);
+            AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, RyuReturnThemeColors(TRUE), 0, gAbilityNames[gBaseStats[species].abilityHidden]);
         else
-            AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, sFontColor_Black, 0, gText_None);
+            AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, RyuReturnThemeColors(TRUE), 0, gText_None);
     }
     else
     {
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, sFontColor_Black, 0, sText_DexNav_CaptureToSee);
+        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, RyuReturnThemeColors(TRUE), 0, sText_DexNav_CaptureToSee);
     }
     
     CopyWindowToVram(WINDOW_INFO, 3);
@@ -2205,7 +2257,7 @@ static void PrintMapName(void)
 {
     GetMapName(gStringVar3, GetCurrentRegionMapSectionId(), 0);
     AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, 108 +
-      GetStringRightAlignXOffset(1, gStringVar3, MAP_NAME_LENGTH * GetFontAttribute(1, FONTATTR_MAX_LETTER_WIDTH)), 0, sFontColor_White, 0, gStringVar3);
+      GetStringRightAlignXOffset(1, gStringVar3, MAP_NAME_LENGTH * GetFontAttribute(1, FONTATTR_MAX_LETTER_WIDTH)), 0, RyuReturnThemeColors(FALSE), 0, gStringVar3);
     CopyWindowToVram(WINDOW_REGISTERED, 3);
 }
 
@@ -2215,13 +2267,13 @@ static void PrintSearchableSpecies(u16 species)
     PutWindowTilemap(WINDOW_REGISTERED);
     if (species == SPECIES_NONE)
     {
-        AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, 0, 0, sFontColor_White, TEXT_SPEED_FF, sText_DexNav_PressRToRegister);
+        AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, 0, 0, RyuReturnThemeColors(FALSE), TEXT_SPEED_FF, sText_DexNav_PressRToRegister);
     }
     else
     {
         StringCopy(gStringVar1, gSpeciesNames[species]);
         StringExpandPlaceholders(gStringVar4, sText_DexNav_SearchForRegisteredSpecies);
-        AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, 0, 0, sFontColor_White, TEXT_SPEED_FF, gStringVar4);
+        AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, 0, 0, RyuReturnThemeColors(FALSE), TEXT_SPEED_FF, gStringVar4);
     }
     
     PrintMapName();
