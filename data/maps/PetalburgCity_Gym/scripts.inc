@@ -474,68 +474,61 @@ PG_PartnerExit:
 
 PBG_UpdateVar:
 	goto_if_set FLAG_BADGE05_GET, PBG_SetVar10
-	checktrainerflag TRAINER_JODY
-	call_if_eq PBG_SetVar2
-	checktrainerflag TRAINER_BERKE
-	call_if_eq PBG_SetVar3
-	checktrainerflag TRAINER_PARKER
-	call_if_eq PBG_SetVar4
-	checktrainerflag TRAINER_ALEXIA
-	call_if_eq PBG_SetVar5
-	checktrainerflag TRAINER_GEORGE
-	call_if_eq PBG_SetVar6
-	checktrainerflag TRAINER_RANDALL
-	call_if_eq PBG_SetVar7
-	checktrainerflag TRAINER_MARY
-	call_if_eq PBG_SetVar8
+	call_if_set (TRAINER_FLAGS_START + TRAINER_JODY), PBG_SetVar2     @Even more fancy script work mmmm
+	call_if_set (TRAINER_FLAGS_START + TRAINER_BERKE), PBG_SetVar3
+	call_if_set (TRAINER_FLAGS_START + TRAINER_PARKER), PBG_SetVar4
+	call_if_set (TRAINER_FLAGS_START + TRAINER_ALEXIA), PBG_SetVar5
+	call_if_set (TRAINER_FLAGS_START + TRAINER_GEORGE), PBG_SetVar6
+	call_if_set (TRAINER_FLAGS_START + TRAINER_RANDALL), PBG_SetVar7
+	call_if_set (TRAINER_FLAGS_START + TRAINER_MARY), PBG_SetVar8
 	call_if_set FLAG_RYU_PLAYER_CLEARED_PBG_DOORS, PBG_SetVar9
 	goto PBG_CheckDoors
 
 PBG_SetVar2:
 	compare VAR_PETALBURG_GYM_STATE, 2
-	goto_if_eq ryu_return
+	goto_if_ge ryu_return
 	setvar VAR_PETALBURG_GYM_STATE, 2
 	return
 
 PBG_SetVar3:
 	compare VAR_PETALBURG_GYM_STATE, 3
-	goto_if_eq ryu_return
+	goto_if_ge ryu_return
 	setvar VAR_PETALBURG_GYM_STATE, 3
 	return
 
 PBG_SetVar4:
 	compare VAR_PETALBURG_GYM_STATE, 4
-	goto_if_eq ryu_return
+	goto_if_ge ryu_return
 	setvar VAR_PETALBURG_GYM_STATE, 4
 	return
 
 PBG_SetVar5:
 	compare VAR_PETALBURG_GYM_STATE, 5
-	goto_if_eq ryu_return
+	goto_if_ge ryu_return
 	setvar VAR_PETALBURG_GYM_STATE, 5
 	return
 
 PBG_SetVar6:
 	compare VAR_PETALBURG_GYM_STATE, 6
-	goto_if_eq ryu_return
+	goto_if_ge ryu_return
 	setvar VAR_PETALBURG_GYM_STATE, 6
 	return
 
 PBG_SetVar7:
 	compare VAR_PETALBURG_GYM_STATE, 7
-	goto_if_eq ryu_return
+	goto_if_ge ryu_return
 	setvar VAR_PETALBURG_GYM_STATE, 7
 	return
 
 PBG_SetVar8:
 	compare VAR_PETALBURG_GYM_STATE, 8
-	goto_if_eq ryu_return
+	goto_if_ge ryu_return
 	setvar VAR_PETALBURG_GYM_STATE, 8
 	return
 
 PBG_SetVar9:
 	compare VAR_PETALBURG_GYM_STATE, 9
-	goto_if_eq ryu_return
+	goto_if_ge ryu_return
 	setvar VAR_PETALBURG_GYM_STATE, 9
 	return
 
@@ -544,17 +537,17 @@ PBG_SetVar10:
 	end
 
 PBG_CheckDoors::
-	setvar VAR_TEMP_4, 10
-	switch VAR_PETALBURG_GYM_STATE
+	setvar VAR_TEMP_4, 10          @These have to be in reverse order so that the game doesn't stop at
+	switch VAR_PETALBURG_GYM_STATE @the first door opening
 	case 10, PBG_FinalDoor
-	case 2, PBG_FirstDoor
-	case 3, PBG_SecondDoor
-	case 4, PBG_ThirdDoor
-	case 5, PBG_FourthDoor
-	case 6, PBG_FifthDoor
-	case 7, PBG_SixthDoor
-	case 8, PBG_SeventhDoor
 	case 9, PBG_FinalDoor
+	case 8, PBG_SeventhDoor
+	case 7, PBG_SixthDoor
+	case 6, PBG_FifthDoor
+	case 5, PBG_FourthDoor
+	case 4, PBG_ThirdDoor
+	case 3, PBG_SecondDoor
+	case 2, PBG_FirstDoor
 	end
 
 PBG_FinalDoor::                @@Theoretically, since none of these have terminators except the last one, each one should also
@@ -917,7 +910,7 @@ PetalburgCity_Gym_Text_NormanPostRematch: @ 82075F7
 PBG_Door1Question::
 	msgbox PBG_Quiz1, MSGBOX_YESNO
 	closemessage
-	compare VAR_RESULT, YES @put the correct answer, YES or NO here, it goes to the success script.
+	compare VAR_RESULT, YES 
 	goto_if_eq PBG_Quiz1Success
 	playse SE_FAILURE
 	waitse
@@ -935,7 +928,7 @@ PBG_Quiz1Success::
 PBG_Door2Question::
 	msgbox PBG_Quiz2, MSGBOX_YESNO
 	closemessage
-	compare VAR_RESULT, YES @put the correct answer, YES or NO here, it goes to the success script.
+	compare VAR_RESULT, NO 
 	goto_if_eq PBG_Quiz2Success
 	playse SE_FAILURE
 	waitse
@@ -953,7 +946,7 @@ PBG_Quiz2Success::
 PBG_Door3Question::
 	msgbox PBG_Quiz3, MSGBOX_YESNO
 	closemessage
-	compare VAR_RESULT, YES @put the correct answer, YES or NO here, it goes to the success script.
+	compare VAR_RESULT, YES 
 	goto_if_eq PBG_Quiz3Success
 	playse SE_FAILURE
 	waitse
@@ -992,7 +985,7 @@ PBG_Quiz4Success::
 PBG_Door5Question::
 	msgbox PBG_Quiz5, MSGBOX_YESNO
 	closemessage
-	compare VAR_RESULT, YES @put the correct answer, YES or NO here, it goes to the success script.
+	compare VAR_RESULT, YES 
 	goto_if_eq PBG_Quiz5Success
 	playse SE_FAILURE
 	waitse
@@ -1016,7 +1009,7 @@ PBG_Quiz5Success::
 PBG_Door6Question::
 	msgbox PBG_Quiz6, MSGBOX_YESNO
 	closemessage
-	compare VAR_RESULT, YES @put the correct answer, YES or NO here, it goes to the success script.
+	compare VAR_RESULT, NO 
 	goto_if_eq PBG_Quiz6Success
 	playse SE_FAILURE
 	waitse
@@ -1034,7 +1027,7 @@ PBG_Quiz6Success::
 PBG_Door7Question::
 	msgbox PBG_Quiz7, MSGBOX_YESNO
 	closemessage
-	compare VAR_RESULT, YES @put the correct answer, YES or NO here, it goes to the success script.
+	compare VAR_RESULT, NO 
 	goto_if_eq PBG_Quiz7Success
 	playse SE_FAILURE
 	waitse
@@ -1061,7 +1054,7 @@ PBG_Door8Question::
 	goto_if_lt ryu_end  @@Assures that the player can't interact with gym leader door until they clear all the other doors.
 	msgbox PBG_Quiz8, MSGBOX_YESNO
 	closemessage
-	compare VAR_RESULT, YES @put the correct answer, YES or NO here, it goes to the success script.
+	compare VAR_RESULT, NO
 	goto_if_eq PBG_Quiz8Success
 	playse SE_FAILURE
 	waitse
@@ -1070,8 +1063,6 @@ PBG_Door8Question::
 
 PBG_Quiz8Success::
 	playse SE_SUCCESS
-	buffernumberstring 0, VAR_PETALBURG_GYM_STATE
-	msgbox PBGDB_Msg
 	closemessage
 	setflag FLAG_RYU_PLAYER_CLEARED_PBG_DOORS
 	call PBG_SetVar9
@@ -1083,26 +1074,26 @@ PBGDB_Msg:
 	.string "{STR_VAR_1}$"
 
 PBG_Quiz1::
-	.string "YesNo Question Here.$"
+	.string "Can Tail Whip hit Ghost types?$"
 
 PBG_Quiz2::
-	.string "YesNo Question Here.$"
+	.string "Is Rest a Normal type move?$"
 
 PBG_Quiz3::
-	.string "YesNo Question Here.$"
+	.string "Does Munchlax have the lowest base\nSpeed?$"
 
 PBG_Quiz4::
 	.string "Which pokemon was the first?$"
 
 PBG_Quiz5::
-	.string "YesNo Question Here.$"
+	.string "Does Constrict have the lowest Base\nPower? $"
 
 PBG_Quiz6::
-	.string "YesNo Question Here.$"
+	.string "Is Slaking known as the Slacker\nPokemon?$"
 
 PBG_Quiz7::
-	.string "YesNo Question Here.$"
+	.string "Is Normal the most common Pokemon\ntype?$"
 
-PBG_Quiz8::
-	.string "YesNo Question Here.$"
+PBG_Quiz8:: @gym leader door
+	.string "Are there only 19 types?$"
 
