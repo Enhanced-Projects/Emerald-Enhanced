@@ -45,6 +45,9 @@ FT_FinishedMission3Early:
 	msgbox FT_Mission3EarlyMsg
 	closemessage
 	goto FT_Mission4
+
+FT_Mission3EarlyMsg:
+	.string "Oh! you already have my meteorite!\nExcellent!$"
 	
 FT_DevonMission3::
 	lock
