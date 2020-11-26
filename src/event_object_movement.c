@@ -8262,8 +8262,6 @@ bool8 RyuCheckPlayerIsInSafariArea(void)
 {
     u16 locGroup = gSaveBlock1Ptr->location.mapGroup;
     u16 locMap = gSaveBlock1Ptr->location.mapNum;
-
-    mgba_printf(LOGINFO, "group is %d and map is %d", locGroup, locMap);
     
     if (locGroup == 26 && (locMap < 4 || (locMap > 10 && locMap < 14)))
         return TRUE;
@@ -8293,7 +8291,6 @@ void GroundEffect_SpawnOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *
 
 void GroundEffect_StepOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
-    mgba_printf(LOGINFO, "Stepped on tall grass");
     gFieldEffectArguments[0] = objEvent->currentCoords.x;
     gFieldEffectArguments[1] = objEvent->currentCoords.y;
     gFieldEffectArguments[2] = objEvent->previousElevation;

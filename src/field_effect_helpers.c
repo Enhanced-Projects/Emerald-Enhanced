@@ -329,8 +329,6 @@ bool8 RyuCheckPlayerIsInSafariArea2(void)
 {
     u16 locGroup = gSaveBlock1Ptr->location.mapGroup;
     u16 locMap = gSaveBlock1Ptr->location.mapNum;
-
-    mgba_printf(LOGINFO, "group is %d and map is %d", locGroup, locMap);
     
     if (locGroup == 26 && (locMap < 4 || (locMap > 10 && locMap < 14)))
         return TRUE;
