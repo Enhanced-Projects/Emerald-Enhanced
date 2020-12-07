@@ -391,8 +391,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KECLEON_1",
-      "x": 12,
-      "y": 16,
+      "x": -4,
+      "y": -2,
       "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_INVISIBLE",
       "movement_range_x": 1,
@@ -404,8 +404,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_STEVEN",
-      "x": 13,
-      "y": 15,
+      "x": -5,
+      "y": -2,
       "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -469,8 +469,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KECLEON_2",
-      "x": 12,
-      "y": 16,
+      "x": -4,
+      "y": -2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
