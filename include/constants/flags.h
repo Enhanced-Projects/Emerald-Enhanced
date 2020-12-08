@@ -289,7 +289,7 @@
 #define FLAG_RECEIVED_TM46                   0x10D
 #define FLAG_RYU_PLAYER_AQUA_ADMIN           0x10E
 #define FLAG_RYU_HIDE_MOSSDEEP_MATT          0x10F // Hides matt in mossdeep
-#define FLAG_RECEIVED_EXP_SHARE              0x110
+#define FLAG_UNUSED_0x110                    0x110
 #define FLAG_POKERUS_EXPLAINED               0x111
 #define FLAG_UNUSED_0x112                    0x112
 #define FLAG_RECEIVED_QUICK_CLAW             0x113
