@@ -225,7 +225,7 @@ RyuDebug_SaveFileDebug::
 	end
 
 SaveFileStructMsg:
-	.string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.\pA BoxPokemon takes up {STR_VAR_3} bytes.$"
+	.string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.$"
 
 exampletext:
     .string "This is standard text.\p"
