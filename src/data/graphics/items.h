@@ -1584,3 +1584,9 @@ const u32 gItemIconPalette_ChimneyPepper[] = INCBIN_U32("graphics/items/icon_pal
 
 const u32 gItemIcon_JungleBeans[] = INCBIN_U32("graphics/items/icons/jungle_beans.4bpp.lz");
 const u32 gItemIconPalette_JungleBeans[] = INCBIN_U32("graphics/items/icon_palettes/jungle_beans.gbapal.lz");
+
+const u32 gItemIcon_TastyLeaf[] = INCBIN_U32("graphics/items/icons/tasty_leaf.4bpp.lz");
+const u32 gItemIconPalette_TastyLeaf[] = INCBIN_U32("graphics/items/icon_palettes/tasty_leaf.gbapal.lz");
+
+const u32 gItemIcon_BoxingGlove[] = INCBIN_U32("graphics/items/icons/boxing_glove.4bpp.lz");
+const u32 gItemIconPalette_BoxingGlove[] = INCBIN_U32("graphics/items/icon_palettes/boxing_glove.gbapal.lz");

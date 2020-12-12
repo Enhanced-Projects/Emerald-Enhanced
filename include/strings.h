@@ -1169,6 +1169,11 @@ extern const u8 gText_DexEmptyString[];
 extern const u8 gText_DexSearchDontSpecify[];
 extern const u8 gText_DexSearchTypeNone[];
 
+extern const u8 gText_SweetHeartAndPrice[];
+extern const u8 gText_BerryJuiceAndPrice[];
+extern const u8 gText_MoomooMilkAndPrice[];
+extern const u8 gText_OldGateauAndPrice[];
+extern const u8 gText_BigMalasadaAndPrice[];
 extern const u8 gText_FreshWaterAndPrice[];
 extern const u8 gText_SodaPopAndPrice[];
 extern const u8 gText_LemonadeAndPrice[];

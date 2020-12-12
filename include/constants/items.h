@@ -695,8 +695,11 @@
 #define ITEM_FROST_MINT 595 //new
 #define ITEM_CHIMNEY_PEPPER 596 //new
 #define ITEM_JUNGLE_BEANS 597 //recolored terrain seed
+#define ITEM_TASTY_LEAF 598 //new
 
-#define ITEMS_COUNT 598
+#define ITEM_BOXING_GLOVE 599
+
+#define ITEMS_COUNT 600
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 #define FIRST_BERRY_INDEX             ITEM_CHERI_BERRY

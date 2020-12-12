@@ -621,4 +621,6 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_FROST_MINT] = {gItemIcon_FrostMint, gItemIconPalette_FrostMint},
     [ITEM_CHIMNEY_PEPPER] = {gItemIcon_ChimneyPepper, gItemIconPalette_ChimneyPepper},
     [ITEM_JUNGLE_BEANS] = {gItemIcon_JungleBeans, gItemIconPalette_JungleBeans},
+    [ITEM_TASTY_LEAF] = {gItemIcon_TastyLeaf, gItemIconPalette_TastyLeaf},
+    [ITEM_BOXING_GLOVE] = {gItemIcon_BoxingGlove, gItemIconPalette_BoxingGlove},
 };

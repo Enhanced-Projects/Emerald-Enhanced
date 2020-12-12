@@ -13,8 +13,8 @@ Route121_EventScript_SafariZoneSign:: @ 81F5E0F
 	msgbox Route121_Text_SafariZoneSign, MSGBOX_SIGN
 	end
 
-Route121_EventScript_BananaGardenSign::
-	msgbox Route121_Text_BananaGardenSign, MSGBOX_SIGN
+Route121_EventScript_BananaSlakothGardenSign::
+	msgbox Route121_Text_BananaSlakothGardenSign, MSGBOX_SIGN
 	end
 
 R121_CheckMagmaBan::

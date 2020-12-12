@@ -155,7 +155,7 @@
 #define FLAG_ITEM_ROUTE_106_RARE_CANDY       0x87
 #define FLAG_ITEM_DEWFORD_ENERGY_ROOT        0x88
 #define FLAG_RECEIVED_TM51                   0x89
-#define FLAG_UNUSED_0x8A                     0x8A
+#define FLAG_ITEM_SLAKOTHGARDEN_REVIVAL_HERB 0x8A
 #define FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY   0x8B
 #define FLAG_RECEIVED_6_SODA_POP             0x8C
 #define FLAG_DEFEATED_SEASHORE_HOUSE         0x8D
@@ -1578,7 +1578,7 @@
 #define FLAG_RYU_TEMP_HIDE_FOLLOWER_COURTNEY           (DAILY_FLAGS_START + 0x4) // hack for follower courtney quest
 #define FLAG_DAILY_SNOWY_SHORE_RECEIVED_BERRY          (DAILY_FLAGS_START + 0x5)
 #define FLAG_DAILY_FROSTBITE_FIELD_RECEIVED_FERTILIZER (DAILY_FLAGS_START + 0x6)
-#define FLAG_UNUSED_0x927                              (DAILY_FLAGS_START + 0x7) // Unused Flag
+#define FLAG_DAILY_SLAKOTH_BANANA_GARDEN_BANANAS       (DAILY_FLAGS_START + 0x7)
 #define FLAG_UNUSED_0x928                              (DAILY_FLAGS_START + 0x8) // Unused Flag
 #define FLAG_UNUSED_0x929                              (DAILY_FLAGS_START + 0x9) // Unused Flag
 #define FLAG_DAILY_PICKED_LOTO_TICKET                  (DAILY_FLAGS_START + 0xA)

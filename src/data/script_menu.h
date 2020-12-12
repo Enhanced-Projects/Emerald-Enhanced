@@ -210,6 +210,16 @@ static const struct MenuAction MultichoiceList_Mechadoll5_Q3[] =
     {gTrickHouse_Mechadoll_Eight2},
 };
 
+static const struct MenuAction MultichoiceList_SlakothVendingMachine[] =
+{
+    {gText_SweetHeartAndPrice},
+    {gText_BerryJuiceAndPrice},
+    {gText_MoomooMilkAndPrice},
+    {gText_OldGateauAndPrice},
+    {gText_BigMalasadaAndPrice},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_VendingMachine[] =
 {
     {gText_FreshWaterAndPrice},
@@ -245,18 +255,6 @@ static const struct MenuAction MultichoiceList_SternDeepSea[] =
     {gText_DeepSeaTooth},
     {gText_DeepSeaScale},
     {gText_Exit},
-};
-
-static const struct MenuAction MultichoiceList_UnusedAshVendor[] =
-{
-    {gText_BlueFlute2},
-    {gText_YellowFlute2},
-    {gText_RedFlute2},
-    {gText_WhiteFlute2},
-    {gText_BlackFlute2},
-    {gText_GlassChair},
-    {gText_GlassDesk},
-    {gText_Cancel2},
 };
 
 static const struct MenuAction MultichoiceList_GameCornerDolls[] =
@@ -1294,13 +1292,13 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_MECHADOLL5_Q2]              = MULTICHOICE(MultichoiceList_Mechadoll5_Q2),
     [MULTI_MECHADOLL5_Q3]              = MULTICHOICE(MultichoiceList_Mechadoll5_Q3),
     [MULTI_UNUSED_40]                  = MULTICHOICE(MultichoiceList_Exit),
-    [MULTI_UNUSED_41]                  = MULTICHOICE(MultichoiceList_Exit),
+    [MULTI_SLAKOTH_VENDING_MACHINE]    = MULTICHOICE(MultichoiceList_SlakothVendingMachine),
     [MULTI_VENDING_MACHINE]            = MULTICHOICE(MultichoiceList_VendingMachine),
     [MULTI_MACH_BIKE_INFO]             = MULTICHOICE(MultichoiceList_MachBikeInfo),
     [MULTI_ACRO_BIKE_INFO]             = MULTICHOICE(MultichoiceList_AcroBikeInfo),
     [MULTI_SATISFACTION]               = MULTICHOICE(MultichoiceList_Satisfaction),
     [MULTI_STERN_DEEPSEA]              = MULTICHOICE(MultichoiceList_SternDeepSea),
-    [MULTI_UNUSED_ASH_VENDOR]          = MULTICHOICE(MultichoiceList_UnusedAshVendor),
+    [MULTI_UNUSED_47]                  = MULTICHOICE(MultichoiceList_Exit),
     [MULTI_GAME_CORNER_DOLLS]          = MULTICHOICE(MultichoiceList_GameCornerDolls),
     [MULTI_GAME_CORNER_COINS]          = MULTICHOICE(MultichoiceList_GameCornerCoins),
     [MULTI_HOWS_FISHING]               = MULTICHOICE(MultichoiceList_HowsFishing),

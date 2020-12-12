@@ -1,6 +1,10 @@
 #ifndef GUARD_CONSTANTS_MAP_GROUPS_H
 #define GUARD_CONSTANTS_MAP_GROUPS_H
 
+//
+// DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/map_groups.json
+//
+
 // Map Group 0
 #define MAP_LITTLEROOT_TOWN       (0 | (0 << 8))
 #define MAP_OLDALE_TOWN           (1 | (0 << 8))
@@ -604,6 +608,8 @@
 #define MAP_NAVEL_ROCK_BOTTOM                               (87 | (26 << 8))
 #define MAP_TRAINER_HILL_ELEVATOR                           (88 | (26 << 8))
 #define MAP_SAFARI_ZONE_HIDDEN_GROTTO                       (89 | (26 << 8))
+#define MAP_BANANA_SLAKOTH_GARDEN                           (90 | (26 << 8))
+#define MAP_BANANA_SLAKOTH_GARDEN_SOUTH                     (91 | (26 << 8))
 
 // Map Group 27
 #define MAP_SNOWY_SHORE_UNDERWATER        (0 | (27 << 8))

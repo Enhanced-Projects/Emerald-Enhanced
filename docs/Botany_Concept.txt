@@ -11,7 +11,7 @@ Heal Powder      |    Misty Seed       |    Deepsea Kelp
 Energy Powder    |    Snowball         |    Frost Mint
 Energy Root      |    Hard Stone       |    Chimney Pepper
 Big Root         |    Soft Sand        |    Jungle Beans
-Never-Melt Ice   |    Charcoal         |
+Never-Melt Ice   |    Charcoal         |    Tasty Leaf
 
 ______________________________________________________________________
 
@@ -65,7 +65,7 @@ Ice Stone:      [Power Herb + Soft Sand + Ice Gem]
 
 ______________________________________________________________________
 
-New items and their effects::
+New items and their effects:
 
 Muscle Powder:  Sharply raises Atk
 Tough Powder:   Sharply raises Def
@@ -86,3 +86,83 @@ Deepsea Kelp:   No effect
 Frost Mint:     No effect
 Chimney Pepper: No effect
 Jungle Beans:   No effect
+Tasty Leaf:     No effect
+
+______________________________________________________________________
+
+Biome drop tables:
+
+Shared items:
+- Miracle Seed
+- Heal Powder
+- Energy Powder
+- Power Herb
+- Mental Herb
+- White Herb
+
+Jungle:
+- Jungle Beans
+- Luminous Moss
+- Big Root
+- Grassy Seed
+- (shared items)
+
+Cold:
+- Frost Mint
+- Snowball
+- Never Melt Ice
+- Misty Seed
+- (shared items)
+
+Volcanic:
+- Chimney Pepper
+- Hard Stone
+- Charcoal
+- Soft Sand
+- (shared items)
+
+Seaside:
+- Seaside Almond
+- Soft Sand
+- Shoal Salt
+- Shoal Shell
+- (shared items)
+
+Aquatic:
+- Deepsea Kelp
+- Heart Scale
+- Pearl
+- Psychic Seed
+- (shared items)
+
+Savanna:
+- Savanna Melon
+- Soft Sand
+- Rare Bone
+- Electric Seed
+- (shared items)
+
+General:
+- Absorb Bulb
+- Leek
+- Tiny Mushroom
+- Big Mushroom
+- (shared items)
+
+Cuttable Trees:
+- Red Apricorn
+- Blue Apricorn
+- Yellow Apricorn
+- Green Apricorn
+- Pink Apricorn
+- White Apricorn
+- Black Apricorn
+- Miracle Seed
+- Grassy Seed
+- Absorb Bulb
+- Luminous Moss
+- Big Root
+- Tasty Leaf
+- Tasty Leaf
+- Tasty Leaf
+- Tasty Leaf

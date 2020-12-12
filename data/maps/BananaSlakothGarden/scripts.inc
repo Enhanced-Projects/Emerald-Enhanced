@@ -1,0 +1,161 @@
+BananaSlakothGarden_MapScripts::
+	.byte 0
+
+BananaSlakothGarden_EventScript_Camper::
+	lock
+	faceplayer
+	msgbox BananaSlakothGarden_Text_TrainedSlakoth, MSGBOX_DEFAULT
+	release
+	end
+
+BananaSlakothGarden_Text_TrainedSlakoth:
+	.string "I trained my Slakoth to harvest\n"
+	.string "the Bananas that grow on these\l"
+	.string "tall trees!$"
+
+BananaSlakothGarden_EventScript_Picnicker::
+	lock
+	faceplayer
+	msgbox BananaSlakothGarden_Text_TastyLeaf, MSGBOX_DEFAULT
+	release
+	end
+
+BananaSlakothGarden_Text_TastyLeaf:
+	.string "Did you know Slakoth love to eat\n"
+	.string "Tasty Leafs? You can get those from\l"
+	.string "cutting down small trees.$"
+
+BananaSlakothGarden_Slakoth1::
+	lock
+	faceplayer
+	checkitem ITEM_TASTY_LEAF, 1
+	compare VAR_RESULT, TRUE
+	goto_if_eq BananaSlakothGarden_Slakoth1_EventScript_AskToGiveTastyLeaf
+	msgbox BananaSlakothGarden_Text_Slakoth, MSGBOX_DEFAULT
+	release
+	end
+
+BananaSlakothGarden_Slakoth1_EventScript_AskToGiveTastyLeaf::
+	msgbox BananaSlakothGarden_Text_GiveTastyLeaf, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq BananaSlakothGarden_Slakoth1_EventScript_AcceptTrade
+	compare VAR_RESULT, NO
+	goto_if_eq BananaSlakothGarden_Slakoth1_EventScript_DeclineTrade
+	end
+
+BananaSlakothGarden_Slakoth1_EventScript_AcceptTrade::
+	applymovement 4, Common_Movement_HeartEmote
+	waitmovement 4
+	removeitem ITEM_TASTY_LEAF, 1
+	giveitem ITEM_BANANA
+	release
+	end
+
+BananaSlakothGarden_Slakoth1_EventScript_DeclineTrade::
+	applymovement 4, Common_Movement_QuestionMark
+	waitmovement 4
+	release
+	end
+
+BananaSlakothGarden_Slakoth2::
+	lock
+	faceplayer
+	checkitem ITEM_TASTY_LEAF, 1
+	compare VAR_RESULT, TRUE
+	goto_if_eq BananaSlakothGarden_Slakoth2_EventScript_AskToGiveTastyLeaf
+	msgbox BananaSlakothGarden_Text_Slakoth, MSGBOX_DEFAULT
+	release
+	end
+
+BananaSlakothGarden_Slakoth2_EventScript_AskToGiveTastyLeaf::
+	msgbox BananaSlakothGarden_Text_GiveTastyLeaf, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq BananaSlakothGarden_Slakoth2_EventScript_AcceptTrade
+	compare VAR_RESULT, NO
+	goto_if_eq BananaSlakothGarden_Slakoth2_EventScript_DeclineTrade
+	end
+
+BananaSlakothGarden_Slakoth2_EventScript_AcceptTrade::
+	applymovement 6, Common_Movement_HeartEmote
+	waitmovement 6
+	removeitem ITEM_TASTY_LEAF, 1
+	giveitem ITEM_BANANA
+	release
+	end
+
+BananaSlakothGarden_Slakoth2_EventScript_DeclineTrade::
+	applymovement 6, Common_Movement_QuestionMark
+	waitmovement 6
+	release
+	end
+
+BananaSlakothGarden_Slakoth3::
+	lock
+	faceplayer
+	checkitem ITEM_TASTY_LEAF, 1
+	compare VAR_RESULT, TRUE
+	goto_if_eq BananaSlakothGarden_Slakoth3_EventScript_AskToGiveTastyLeaf
+	msgbox BananaSlakothGarden_Text_Slakoth, MSGBOX_DEFAULT
+	release
+	end
+
+BananaSlakothGarden_Slakoth3_EventScript_AskToGiveTastyLeaf::
+	msgbox BananaSlakothGarden_Text_GiveTastyLeaf, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq BananaSlakothGarden_Slakoth3_EventScript_AcceptTrade
+	compare VAR_RESULT, NO
+	goto_if_eq BananaSlakothGarden_Slakoth3_EventScript_DeclineTrade
+	end
+
+BananaSlakothGarden_Slakoth3_EventScript_AcceptTrade::
+	applymovement 7, Common_Movement_HeartEmote
+	waitmovement 7
+	removeitem ITEM_TASTY_LEAF, 1
+	giveitem ITEM_BANANA
+	release
+	end
+
+BananaSlakothGarden_Slakoth3_EventScript_DeclineTrade::
+	applymovement 7, Common_Movement_QuestionMark
+	waitmovement 7
+	release
+	end
+
+BananaSlakothGarden_Slakoth4::
+	lock
+	faceplayer
+	checkitem ITEM_TASTY_LEAF, 1
+	compare VAR_RESULT, TRUE
+	goto_if_eq BananaSlakothGarden_Slakoth4_EventScript_AskToGiveTastyLeaf
+	msgbox BananaSlakothGarden_Text_Slakoth, MSGBOX_DEFAULT
+	release
+	end
+
+BananaSlakothGarden_Slakoth4_EventScript_AskToGiveTastyLeaf::
+	msgbox BananaSlakothGarden_Text_GiveTastyLeaf, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq BananaSlakothGarden_Slakoth4_EventScript_AcceptTrade
+	compare VAR_RESULT, NO
+	goto_if_eq BananaSlakothGarden_Slakoth4_EventScript_DeclineTrade
+	end
+
+BananaSlakothGarden_Slakoth4_EventScript_AcceptTrade::
+	applymovement 1, Common_Movement_HeartEmote
+	waitmovement 1
+	removeitem ITEM_TASTY_LEAF, 1
+	giveitem ITEM_BANANA
+	release
+	end
+
+BananaSlakothGarden_Slakoth4_EventScript_DeclineTrade::
+	applymovement 1, Common_Movement_QuestionMark
+	waitmovement 1
+	release
+	end
+
+BananaSlakothGarden_Text_GiveTastyLeaf:
+	.string "Would you like to give Slakoth\n"
+	.string "a Tasty Leaf?$"
+
+BananaSlakothGarden_Text_Slakoth:
+	.string "Slakoth: Zzzzzzzz...$"

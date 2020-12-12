@@ -638,7 +638,9 @@
     "NavelRock_Down11",
     "NavelRock_Bottom",
     "TrainerHill_Elevator",
-    "SafariZone_HiddenGrotto"
+    "SafariZone_HiddenGrotto",
+    "BananaSlakothGarden",
+    "BananaSlakothGarden_South"
   ],
   "gMapGroup27": [
     "SnowyShoreUnderwater",

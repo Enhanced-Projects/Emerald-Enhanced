@@ -22,6 +22,16 @@
       "direction": "right",
       "offset": 80,
       "map": "MAP_ROUTE121"
+    },
+    {
+      "direction": "right",
+      "offset": 20,
+      "map": "MAP_BANANA_SLAKOTH_GARDEN"
+    },
+    {
+      "direction": "right",
+      "offset": 63,
+      "map": "MAP_BANANA_SLAKOTH_GARDEN_SOUTH"
     }
   ],
   "object_events": [
@@ -609,6 +619,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_RYU_HIDE_R120_LANA_AND_HIKER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 43,
+      "y": 50,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ITEM_SLAKOTHGARDEN_REVIVAL_HERB"
     }
   ],
   "warp_events": [
