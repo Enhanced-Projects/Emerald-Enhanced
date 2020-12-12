@@ -70,7 +70,7 @@
 #define FLAG_RYU_AQUA_THIEF_SEEN             0x3A
 #define FLAG_RYU_PLAYER_HELPING_DEVON        0x3B
 #define FLAG_OPTIONS_INSTANT_TRANSITION      0x3C
-#define FLAG_UNUSED_0x3D                     0x3D
+#define FLAG_RYU_PLAYER_CLEARED_PBG_DOORS    0x3D
 #define FLAG_UNUSED_0x3E                     0x3E
 #define FLAG_UNUSED_0x3F                     0x3F
 #define FLAG_RYU_PLAYER_HELPING_AQUA         0x40
@@ -289,7 +289,7 @@
 #define FLAG_RECEIVED_TM46                   0x10D
 #define FLAG_RYU_PLAYER_AQUA_ADMIN           0x10E
 #define FLAG_RYU_HIDE_MOSSDEEP_MATT          0x10F // Hides matt in mossdeep
-#define FLAG_RECEIVED_EXP_SHARE              0x110
+#define FLAG_UNUSED_0x110                    0x110
 #define FLAG_POKERUS_EXPLAINED               0x111
 #define FLAG_UNUSED_0x112                    0x112
 #define FLAG_RECEIVED_QUICK_CLAW             0x113

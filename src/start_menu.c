@@ -989,6 +989,12 @@ static void StartMenuTask(u8 taskId)
         SwitchTaskToFollowupFunc(taskId);
 }
 
+void RyuDoOneTImeSaveFixes(void)
+{
+    if (VarGet(VAR_RYU_DEVON) == 110)//It is no longer possible to have 110, so this resets it to 108 so that player can continue normally.
+        VarSet(VAR_RYU_DEVON, 108);
+}
+
 static void CreateStartMenuTask(TaskFunc followupFunc)
 {
     u8 taskId;
@@ -997,6 +1003,13 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
     sInitStartMenuData[1] = 0;
     taskId = CreateTask(StartMenuTask, 0x50);
     SetTaskFuncWithFollowupFunc(taskId, StartMenuTask, followupFunc);
+    VarSet(VAR_LAST_KNOWN_GAME_VERSION, EE_GAME_VERSION);
+    //This should let me know what the original save file version was, so i can tell if someone used an old save or not.
+    if (VarGet(VAR_SAVE_FILE_CREATED_ON_VERSION) == 0)
+        VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, EE_GAME_VERSION);
+    VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
+    FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
+    RyuDoOneTImeSaveFixes(); //this should let me put in one time use fixes for various quest things
 }
 
 static bool8 FieldCB_ReturnToFieldStartMenu(void)

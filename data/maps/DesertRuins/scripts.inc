@@ -56,6 +56,7 @@ DesertRuins_EventScript_CaveEntranceMiddle:: @ 822D9DB
 	special DoSealedChamberShakingEffect1
 	waitse
 	call DR_LeafOpenDoor
+	fadeinbgm 0
 	releaseall
 	end
 
@@ -203,12 +204,12 @@ DR_Warp::
 	end
 	
 DR_LeafOpenDoor::
-	setmetatile 7, 19, 554, 1
-	setmetatile 8, 19, 555, 1
-	setmetatile 9, 19, 556, 1
-	setmetatile 7, 20, 562, 1
-	setmetatile 8, 20, 563, 1
-	setmetatile 9, 20, 564, 1
+	setmetatile 7, 19, 554, 0
+	setmetatile 8, 19, 555, 0
+	setmetatile 9, 19, 556, 0
+	setmetatile 7, 20, 562, 0
+	setmetatile 8, 20, 563, 0
+	setmetatile 9, 20, 564, 0
 	special DrawWholeMapView
 	return
 	

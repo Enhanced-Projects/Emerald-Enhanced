@@ -435,3 +435,49 @@ MoveTutor_EventScript_CanOnlyBeLearnedOnce:: @ 82C832D
 	bufferitemname 0, VAR_TEMP_5
 	msgbox MoveTutor_Text_ThisMoveCanOnlyBeLearnedOnce, MSGBOX_YESNO
 	return
+
+@cut
+RyuBotany_CutTutor::
+	lock
+	compare VAR_RYU_PLAYER_BOTANY_SKILL, 1
+	goto_if_lt RyuBotany_NoBotanySkill 
+	msgbox RyuBotany_CutTutorMsg, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq RyuBotany_CutTutorDeclined
+	msgbox RyuBotany_CutTotorWhichMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, TUTOR_MOVE_CUT
+	call MoveTutor_EventScript_OpenPartyMenu
+	compare VAR_RESULT, 0
+	goto_if_eq RyuBotany_CutTutorDeclined
+	goto RyuBotany_CutTutorTaught
+	end
+
+RyuBotany_NoBotanySkill::
+	msgbox RyuBotany_NoBotanySkillMsg
+	release
+	end
+
+RyuBotany_NoBotanySkillMsg:
+	.string "In order to harvest herbs,\nyou must be trained in Botany.$"
+
+RyuBotany_CutTutorDeclined:: @ 82C8172
+	msgbox RyuBotany_CutDeclinedMsg, MSGBOX_DEFAULT
+	release
+	end
+
+RyuBotany_CutTutorTaught:: @ 82C817C
+	msgbox RyuBotany_CutTutorTaughtMsg, MSGBOX_DEFAULT
+	release
+	end
+
+RyuBotany_CutTutorMsg:
+	.string "Would you like to teach a pokemon\nhow to harvest herbs?$"
+
+RyuBotany_CutTotorWhichMove:
+	.string "Which pokemon should learn Cut?$"
+
+RyuBotany_CutDeclinedMsg:
+	.string "Come back if you change your mind!$"
+
+RyuBotany_CutTutorTaughtMsg:
+	.string "Your pokemon has learned to\nCut herbs!$"

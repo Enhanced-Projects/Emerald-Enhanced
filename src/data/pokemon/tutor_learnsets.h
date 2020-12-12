@@ -30,6 +30,7 @@ const u16 gTutorMoves[] =
     [TUTOR_MOVE_THUNDER_PUNCH] = MOVE_THUNDER_PUNCH,
     [TUTOR_MOVE_FIRE_PUNCH] = MOVE_FIRE_PUNCH,
     [TUTOR_MOVE_SIGNAL_BEAM] = MOVE_SIGNAL_BEAM,
+    [TUTOR_MOVE_CUT] = MOVE_CUT,
 };
 
 #define TUTOR_LEARNSET(moves) ((u32)(moves))
@@ -2743,7 +2744,8 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_FOUL_PLAY)
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_ICE_PUNCH)
-											| TUTOR(MOVE_THUNDER_PUNCH)),
+											| TUTOR(MOVE_THUNDER_PUNCH)
+											| TUTOR(MOVE_CUT)),
 
     [SPECIES_ARON]          = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)
 											| TUTOR(MOVE_DOUBLE_EDGE)

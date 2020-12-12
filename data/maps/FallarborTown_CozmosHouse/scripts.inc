@@ -33,11 +33,21 @@ FT_CozmoMission1::
 FT_OnMission3:
 	lock
 	faceplayer
+	checkitem ITEM_METEORITE, 1
+	goto_if_eq FT_FinishedMission3Early
 	msgbox M3InProgress MSGBOX_DEFAULT
 	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
 	clearflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
 	release
 	end
+
+FT_FinishedMission3Early:
+	msgbox FT_Mission3EarlyMsg
+	closemessage
+	goto FT_Mission4
+
+FT_Mission3EarlyMsg:
+	.string "Oh! you already have my meteorite!\nExcellent!$"
 	
 FT_DevonMission3::
 	lock

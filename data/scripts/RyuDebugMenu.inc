@@ -171,6 +171,11 @@ RyuDebug_waystone::
 	releaseall
 	end
 
+RyuDebug_EnableDexnav::
+	setflag FLAG_SYS_DEXNAV_GET
+	release
+	end
+
 RyuDebug_enableWaystone::
 	additem ITEM_WAYSTONE, 1
     setflag FLAG_VISITED_LITTLEROOT_TOWN
@@ -213,9 +218,6 @@ RyuDebug_Utility1::
 RDB_Text:
 	.string "test$"
 
-DexNavInfo:
-	.string "Current Max Boss Range is: {STR_VAR_1}$"
-
 RyuDebug_SaveFileDebug::
 	special CheckSaveFileSize
 	msgbox SaveFileStructMsg
@@ -223,7 +225,7 @@ RyuDebug_SaveFileDebug::
 	end
 
 SaveFileStructMsg:
-	.string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.\pA BoxPokemon takes up {STR_VAR_3} bytes.$"
+	.string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.$"
 
 exampletext:
     .string "This is standard text.\p"
@@ -232,9 +234,6 @@ exampletext:
     .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(This is green narration text.\n"
     .string " There's a space at the beginning of\l"
     .string " newlines and new pages too.)$"
-
-RDB_CurrentLocationMons:
-	.string "Current area land encounters$"
 
 RDB_GiveRandomFrontierMons::
 	compare VAR_TEMP_5, 0

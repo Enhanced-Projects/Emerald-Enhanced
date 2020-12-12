@@ -148,7 +148,7 @@
 #define VAR_LITTLEROOT_HOUSES_STATE_DAWN     0x4082
 #define VAR_UNUSED_0x4083                    0x4083 // Unused Var
 #define VAR_BIRCH_LAB_STATE                  0x4084
-#define VAR_PETALBURG_GYM_STATE              0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman 
+#define VAR_PETALBURG_GYM_STATE              0x4085 // used to determine which petalburg doors are open.
 #define VAR_CONTEST_HALL_STATE               0x4086
 #define VAR_CABLE_CLUB_STATE                 0x4087
 #define VAR_CONTEST_TYPE                     0x4088
@@ -338,6 +338,7 @@
 #define SCENEBGCOURTNEY 11
 #define SCENEBGHEATRAN 12
 #define SCENEBGNURSE 13
+#define SCENEBGNURSENIGHT 14
 
 //InfoBox Defines
 #define INFOBOXPOKEMONDATA 0
@@ -390,5 +391,7 @@
 #define NUM_CONSUMABLE_RECIPES 12
 #define NUM_MEDICINE_RECIPES 8
 #define NUM_RECIPES (BR_ICE_STONE + 1)
+
+#define EE_GAME_VERSION 7204
 
 #endif // GUARD_CONSTANTS_VARS_H

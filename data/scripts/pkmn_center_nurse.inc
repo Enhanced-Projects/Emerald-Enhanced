@@ -40,7 +40,7 @@ PCN_S3HealText:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}It's nice to see you again!\nYou've been busy, I see!$"
 
 PCN_S4HealText:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! Welcome back.\nLet me make you feel batter...$"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! Welcome back.\nLet me make you feel better...$"
 
 PCN_S5HealText:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}! I missed you!\nI'll make the kids all better...$"

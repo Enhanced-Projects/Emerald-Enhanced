@@ -793,10 +793,7 @@ RustboroCity_DevonCorp_3F_Movement_PlayerApproachDesk: @ 8212566
 
 DC_DeliveredLetterAndGoods:: @ 8212595
 	msgbox RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter, MSGBOX_DEFAULT
-	additem ITEM_EXP_SHARE
-	compare VAR_RESULT, 0
-	goto_if_eq Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_EXP_SHARE
+	giveitem ITEM_MASTER_BALL
 	msgbox DC_CEO_ExpShareDesc, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -918,13 +915,9 @@ RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter: @ 8212A29
 	.string "It should help you, a Trainer.$"
 
 DC_CEO_ExpShareDesc: @ 8212A9E
-	.string "MR. Stone: A Pokémon holding that\n"
-	.string "Exp. Share will be given some of the\l"
-	.string "Exp Points from battle.\p"
-	.string "It will get Exp Points even if it didn't\n"
-	.string "actually battle.\p"
-	.string "I would say Exp. Share is quite useful\n"
-	.string "for raising weak Pokémon.$"
+	.string "That is our most cutting edge\n"
+	.string "ball. It will capture any\l"
+	.string "pokémon without fail.$"
 
 RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends: @ 8212B78
 	.string "MR. Stone: Since my youth, I've immersed\n"
