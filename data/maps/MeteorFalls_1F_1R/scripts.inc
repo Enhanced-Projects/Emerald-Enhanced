@@ -17,6 +17,8 @@ MF_SetAquaStage::
 	
 MF_SS_Devon::
 	lock
+	compare VAR_RYU_DEVON, 19
+	goto_if_ne ryu_end
 	goto_if_set FLAG_MET_ARCHIE_METEOR_FALLS, ryu_end
 	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
 	clearflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
