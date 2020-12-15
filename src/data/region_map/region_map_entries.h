@@ -208,7 +208,7 @@ static const u8 sMapName_FrostbiteField[] = _("Frostbite Field");
 static const u8 sMapName_MtFreeze[] = _("Mt Freeze");
 static const u8 sMapName_PolarPillar[] = _("Polar Pillar");
 static const u8 sMapName_MirageCave[] = _("Mirage Cave");
-static const u8 sMapName_BananaSlakothGarden[] = _("Banana Slakoth Garden");
+static const u8 sMapName_BananaSlakothGarden[] = _("Banana Garden");
 
 const struct RegionMapLocation gRegionMapEntries[] = {
     [MAPSEC_ABANDONED_SHIP]             = {6, 14, 1, 1, sMapName_AbandonedShip},

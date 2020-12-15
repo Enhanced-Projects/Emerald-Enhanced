@@ -6,8 +6,7 @@ FallarborTown_MiningMasterHouse_EventScript_Wife::
 	end
 
 FallarborTown_MiningMasterHouse_Text_MadeSoMuchMoney:
-	.string "My husband made so much money from\n"
-	.string "mining for rare ores that we could\l"
+	.string "My husband made so much money from\nmining for rare ores that we could\l"
 	.string "afford this big house.\p"
 	.string "Once he and his friend next door\n"
 	.string "started making money from mining,\l"
@@ -84,21 +83,35 @@ FTCT_MiningMasterIntro3::@@Intro shown when the player is level 3 mining.
 	msgbox FTCT_Level3DescriptiveText
 	release
 	end
-	
-FTCT_MiningIntroduction:
-	.string "Welcome to our cavern town!\pI am the Mining Master.\pI will teach you the skill to\nmine rocks to get natural\lresources.$"
-	
-FTCT_GoForthAndMine:
-	.string "...and that's all there is to it!\pNow go forth and discover\nsome earthen treasures!$"
-	
+
 FTCT_MiningMasterDefaultIntro:
-	.string "Hello, traveller.\nThey call me the mining master.\pIf you show me your power by\nobtaining 4 badges, I'll teach you\la special skill!$"
-	
+	.string "Hello, traveller.\n"
+	.string "They call me the Mining Master.\p"
+	.string "If you show me your power by\n"
+	.string "obtaining 4 badges, I'll teach you\l"
+	.string "a special skill!$"
+
+FTCT_MiningIntroduction:
+	.string "Welcome to our cavern town!\p"
+	.string "I am the Mining Master.\p"
+	.string "I will teach you the skill to mine\n"
+	.string "rocks to get natural resources.$"
+
+FTCT_GoForthAndMine:
+	.string "...and that's all there is to it!\p"
+	.string "Now go forth and discover\n"
+	.string "some earthen treasures!$"
+
 FTCT_Level1DescriptiveText:
-	.string "You're still a rookie.\pIf you keep digging, you'll get\nmore skilled and find rarer items!$"
-	
+	.string "You're still a rookie.\p"
+	.string "If you keep digging, you'll get\n"
+	.string "more skilled and find rarer items!$"
+
 FTCT_Level2DescriptiveText:
-	.string "I see you've advanced. Keep it up!\nYou can still get more skilled.$"
-	
+	.string "I see you've advanced. Keep it up!\n"
+	.string "You can still get more skilled.$"
+
 FTCT_Level3DescriptiveText:
-	.string "You're the most skilled miner I know!\pI don't think you can get any\n better than this!$"
+	.string "You're the most skilled miner I know!\p"
+	.string "I don't think you can get any\n"
+	.string "better than this!$"

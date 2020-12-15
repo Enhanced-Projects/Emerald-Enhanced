@@ -3683,7 +3683,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona1[] = {
 	.lvl = 31,
 	.species = SPECIES_SKARMORY,
 	.heldItem = ITEM_LEFTOVERS,
-	.ability = 1,
+	.ability = 0,
 	.moves = {MOVE_WHIRLWIND, MOVE_SPIKES, MOVE_ROOST, MOVE_DRILL_PECK},
 	},
 	{
@@ -3708,7 +3708,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona1[] = {
 	.species = SPECIES_FLETCHLING,
 	.heldItem = ITEM_FLYING_GEM,
 	.ability = 2,
-	.moves = {MOVE_BRAVE_BIRD, MOVE_OVERHEAT, MOVE_NONE, MOVE_NONE},
+	.moves = {MOVE_ACROBATICS, MOVE_OVERHEAT, MOVE_NONE, MOVE_NONE},
 	}
 };
 
@@ -12240,7 +12240,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona2[] = {
 	.lvl = 83,
 	.species = SPECIES_SKARMORY,
 	.heldItem = ITEM_LEFTOVERS,
-	.ability = 1,
+	.ability = 0,
 	.moves = {MOVE_WHIRLWIND, MOVE_SPIKES, MOVE_ROOST, MOVE_DRILL_PECK},
 	},
 	{
@@ -12291,7 +12291,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona3[] = {
 	.lvl = 83,
 	.species = SPECIES_SKARMORY,
 	.heldItem = ITEM_LEFTOVERS,
-	.ability = 1,
+	.ability = 0,
 	.moves = {MOVE_WHIRLWIND, MOVE_SPIKES, MOVE_ROOST, MOVE_DRILL_PECK},
 	},
 	{
@@ -12342,7 +12342,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona4[] = {
 	.lvl = 83,
 	.species = SPECIES_SKARMORY,
 	.heldItem = ITEM_LEFTOVERS,
-	.ability = 1,
+	.ability = 0,
 	.moves = {MOVE_WHIRLWIND, MOVE_SPIKES, MOVE_ROOST, MOVE_DRILL_PECK},
 	},
 	{
