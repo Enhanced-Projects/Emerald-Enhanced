@@ -4,6 +4,7 @@ GraniteCave_B2F_MapScripts:: @ 822DC79
 
 GC_Everstone_2::
 	goto_if_set FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
+	goto_if_set FLAG_HIDDEN_ITEM_GRANITE_CAVE_B2F_EVERSTONE_1, ryu_end
 	giveitem ITEM_EVERSTONE, 1
 	setflag FLAG_HIDDEN_ITEM_GRANITE_CAVE_B2F_EVERSTONE_1
 	release
