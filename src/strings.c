@@ -2167,6 +2167,7 @@ const u8 gText_RyuBufferedString3[] = _("{STR_VAR_3}");
 const u8 gText_RyuBufferedString4[] = _("{RYU_STR_1}");
 const u8 gText_RyuBufferedString5[] = _("{RYU_STR_2}");
 const u8 gText_RyuBufferedString6[] = _("{RYU_STR_3}");
+const u8 gText_RyuBufferedString7[] = _("{RYU_STR_4}");
 
 const u8 gText_RyuMHM_Main[] = _("Heal Party");
 const u8 gText_RyuMHM_Kits[] = _("Magma Kits Shop");
@@ -2188,3 +2189,11 @@ const u8 gText_PBGBulbasaur[] = _("Bulbasaur");
 const u8 gText_PBGRhydon[] = _("Rhydon");
 const u8 gText_PBGMew[] = _("Mew");
 const u8 gText_PBGArceus[] = _("Arceus");
+
+const u8 gText_RyuBotanyApricornLine1[] = _("Red Apricorn ({STR_VAR_1})");
+const u8 gText_RyuBotanyApricornLine2[] = _("Blue Apricorn ({STR_VAR_2})");
+const u8 gText_RyuBotanyApricornLine3[] = _("Yellow Apricorn ({STR_VAR_3})");
+const u8 gText_RyuBotanyApricornLine4[] = _("Green Apricorn ({RYU_STR_1})");
+const u8 gText_RyuBotanyApricornLine5[] = _("Pink Apricorn ({RYU_STR_2})");
+const u8 gText_RyuBotanyApricornLine6[] = _("White Apricorn ({RYU_STR_3})");
+const u8 gText_RyuBotanyApricornLine7[] = _("Black Apricorn ({RYU_STR_4})");

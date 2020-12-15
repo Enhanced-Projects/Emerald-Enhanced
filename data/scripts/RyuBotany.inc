@@ -275,3 +275,148 @@ RyuBotany_Obtained4Items:
 
 RyuBotany_Obtained5Items:
     .string "You obtained the following items:\p{STR_VAR_1}, {STR_VAR_2}, {STR_VAR_3},\n {RYU_STR_1}, {RYU_STR_2}.$"
+
+
+@Apricorn ball maker
+
+RyuBotany_ApricornBallCrafter::  @Add this script to the npc you want to craft balls out of apricorns
+    msgbox RB_SeeApricornMenuQuery, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    call_if_eq RB_BallMenu
+    msgbox RB_RefineApricornIntro
+    closemessage
+    setvar VAR_TEMP_B, 1000
+    checkmoney VAR_TEMP_B
+    compare VAR_RESULT, FALSE
+    goto_if_eq RB_CantAfford
+    callnative RyuBufferNumApricornsForMenu
+    multichoicedefault 0, 0, MULTI_BOTANY_APRICORN_MENU, 7, 0
+    switch VAR_RESULT
+    case 0, RB_RefineRedApcn
+    case 1, RB_RefineBlueApcn
+    case 2, RB_RefineYellowApcn
+    case 3, RB_RefineGreenApcn
+    case 4, RB_RefinePinkApcn
+    case 5, RB_RefineWhiteApcn
+    case 6, RB_RefineBlackApcn
+    goto RB_CancelRefineApcn
+
+RB_BallMenu::
+    drawinfobox INFOBOXAPCNBALLMENU
+    msgbox RB_PressBToReturn
+    closemessage
+    removeinfobox
+    return
+
+RB_RefineRedApcn::
+    checkitem ITEM_RED_APRICORN, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RB_NotEnoughApricorns
+    removeitem ITEM_RED_APRICORN, 2
+    additem ITEM_LEVEL_BALL, 1
+    bufferitemname 0, ITEM_LEVEL_BALL
+    goto RB_FinishRefining
+
+RB_RefineBlueApcn::
+    checkitem ITEM_BLUE_APRICORN, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RB_NotEnoughApricorns
+    removeitem ITEM_BLUE_APRICORN, 2
+    additem ITEM_LURE_BALL, 1
+    bufferitemname 0, ITEM_LURE_BALL
+    goto RB_FinishRefining
+
+RB_RefineYellowApcn::
+    checkitem ITEM_YELLOW_APRICORN, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RB_NotEnoughApricorns
+    removeitem ITEM_YELLOW_APRICORN, 2
+    additem ITEM_MOON_BALL, 1
+    bufferitemname 0, ITEM_MOON_BALL
+    goto RB_FinishRefining
+
+RB_RefineGreenApcn::
+    checkitem ITEM_GREEN_APRICORN, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RB_NotEnoughApricorns
+    removeitem ITEM_GREEN_APRICORN, 2
+    additem ITEM_FRIEND_BALL, 1
+    bufferitemname 0, ITEM_FRIEND_BALL
+    goto RB_FinishRefining
+
+RB_RefinePinkApcn::
+    checkitem ITEM_PINK_APRICORN, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RB_NotEnoughApricorns
+    removeitem ITEM_PINK_APRICORN, 2
+    additem ITEM_LOVE_BALL, 1
+    bufferitemname 0, ITEM_LOVE_BALL
+    goto RB_FinishRefining
+
+RB_RefineWhiteApcn::
+    checkitem ITEM_WHITE_APRICORN, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RB_NotEnoughApricorns
+    removeitem ITEM_WHITE_APRICORN, 2
+    additem ITEM_FAST_BALL, 1
+    bufferitemname 0, ITEM_FAST_BALL
+    goto RB_FinishRefining
+
+RB_RefineBlackApcn::
+    checkitem ITEM_BLACK_APRICORN, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RB_NotEnoughApricorns
+    removeitem ITEM_BLACK_APRICORN, 2
+    additem ITEM_HEAVY_BALL, 1
+    bufferitemname 0, ITEM_HEAVY_BALL
+    goto RB_FinishRefining
+
+RB_FinishRefining::
+    msgbox RB_ThanksForRefining
+    closemessage
+    release
+    end
+
+RB_NotEnoughApricorns::
+    msgbox RB_NotEnoughApcnMsg
+    closemessage
+    release
+    end
+
+RB_CantAfford::
+    msgbox RB_CantAffordMsg
+    closemessage
+    release
+    end
+
+RB_CancelRefineApcn::
+    msgbox RB_ComeAgain
+    closemessage
+    release
+    end
+
+RB_RefineApricornIntro:
+    .string "Welcome! I'm Kurt.\pI'll turn your harvested apricorns\ninto balls you can use on\lyour journey for ¥1000.$"
+    
+RB_WhichApricorn:
+    .string "Which apricorns should I use?$"
+
+RB_CantAffordMsg:
+    .string "Time is money, kid.\pI need money for my time!$"
+
+RB_NotEnoughApcnMsg:
+    .string "I need at least two of a kind\nof apricorn to create a ball.$"
+
+RB_ThanksForRefining:
+    .string "Here's your {STR_VAR_1}.\nThanks for your business!$"
+
+RB_PressBToReturn:
+    .string "Here's what balls I can make.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Press B to return)$"
+
+RB_ComeAgain:
+    .string "Return when you want me to make\na ball for you!$"
+
+RB_SeeApricornMenuQuery:
+    .string "Would you like to see the\nlist of balls that can be made?$"
+
+

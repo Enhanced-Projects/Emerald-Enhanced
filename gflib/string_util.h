@@ -8,6 +8,7 @@ extern u8 gStringVar4[];
 extern u8 gRyuStringVar1[];
 extern u8 gRyuStringVar2[];
 extern u8 gRyuStringVar3[];
+extern u8 gRyuStringVar4[];
 
 enum StringConvertMode
 {

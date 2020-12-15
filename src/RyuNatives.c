@@ -1589,3 +1589,61 @@ int RyuGetCurrentMapsec(void)
 {
     return gMapHeader.regionMapSectionId;
 }
+
+void RyuBufferNumApricornsForMenu(void)//buffers the number of apricorns player has for the dynamic menu @@Kageru feel free to optimize this, if you can. If so, see RyuCountGemOres
+{
+    u8 i;
+    u16 total1 = 0;
+    u16 total2 = 0;
+    u16 total3 = 0;
+    u16 total4 = 0;
+    u16 total5 = 0;
+    u16 total6 = 0;
+    u16 total7 = 0;
+
+    for (i = 0; i < gBagPockets[ITEMS_POCKET].capacity; i++)
+    {
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_RED_APRICORN)
+        {
+            total1 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_BLUE_APRICORN)
+        {
+            total2 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_YELLOW_APRICORN)
+        {
+            total3 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_GREEN_APRICORN)
+        {
+            total4 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_PINK_APRICORN)
+        {
+            total5 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_WHITE_APRICORN)
+        {
+            total6 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+
+        if (gBagPockets[ITEMS_POCKET].itemSlots[i].itemId == ITEM_BLACK_APRICORN)
+        {
+            total7 = RyuGetItemQuantity(&gBagPockets[ITEMS_POCKET].itemSlots[i].quantity);
+        }
+    }
+
+    ConvertIntToDecimalStringN(gStringVar1, total1, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, total2, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, total3, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, total4, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar2, total5, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar3, total6, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar4, total7, STR_CONV_MODE_LEFT_ALIGN, 3);
+}

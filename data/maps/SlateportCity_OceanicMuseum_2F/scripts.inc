@@ -4,6 +4,7 @@ SlateportCity_OceanicMuseum_2F_MapScripts:: @ 820BAFF
 
 OM_OnFrameScript::
 	map_script_2 VAR_RYU_AQUA, 30, OM_AquaEvent2
+	map_script_2 VAR_TEMP_5, 0, OM_ReEnableStern
 	map_script_2 VAR_RYU_DEVON, 165, OM_SetupSternForDevon
 	.2byte 0
 
@@ -308,6 +309,8 @@ OM_NurseCancel:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You cannot do this quest stage\nbecause you are presently doing\lthe Nurse quest.\pPlease come back when you have\nfinished the Nurse quest.$"
 
 OM_SetupSternForDevon::
+OM_ReEnableStern::
+	setvar VAR_TEMP_5, 10
 	setvar VAR_RYU_DEVON, 17 @Player is on second floor to speak with Stern.
 	addobject 4
 	end

@@ -1391,7 +1391,6 @@ BF_battledefeat:
 @==================================================================================================Start Menu Config Info
 
 RyuStartMenuConfigInfoScript::
-	fadescreen FADE_FROM_BLACK
 	buffernumberstring 0, VAR_LAST_KNOWN_GAME_VERSION
 	msgbox RyuTemp_StartMenuConfig, MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -1406,9 +1405,7 @@ RyuTemp_StartMenuConfig:
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}In Start menu inputs:\n"
     .string "{COLOR LIGHT_RED}{SHADOW RED}L+R {COLOR DARK_GREY}{SHADOW LIGHT_GREY}: Enable/Disable Jukebox\l"
     .string "{COLOR LIGHT_RED}{SHADOW RED}R(With Jukebox On){COLOR DARK_GREY}{SHADOW LIGHT_GREY}:Skip to Next Song\l"
-	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Right:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Tgl Rdm route/battle music.\l"
-	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Left:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Realign Follower\l"
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Theme switcher in Option menu.\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Left:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Realign Follower\p"
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Open Beta Menu?$"
 
 

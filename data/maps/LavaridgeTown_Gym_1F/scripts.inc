@@ -163,7 +163,7 @@ LG_FollowerMatch::
 	choose_mons
 	compare VAR_RESULT, FALSE
 	goto_if_eq LG_ChooseValidMons
-	multi_2_vs_1 TRAINER_ROXANNE_4, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, VAR_0x8008, VAR_0x8009
+	multi_2_vs_1 TRAINER_FLANNERY_4, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, VAR_0x8008, VAR_0x8009
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq Ryu_PlayerLostTheGame

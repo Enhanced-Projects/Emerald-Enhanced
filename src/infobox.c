@@ -188,6 +188,13 @@ const u8 gText_GCMS3Line4[] = _("will be asked to select a nature.");
 const u8 gText_GCMS3Line5[] = _("Once you have done so, you will");
 const u8 gText_GCMS3Line6[] = _("receive the egg.");
 
+const u8 gText_RyuBallMenu1[] = _("I make balls from Apricorns.");
+const u8 gText_RyuBallMenu2[] = _("Red: Level Ball, Blue: Lure Ball");
+const u8 gText_RyuBallMenu3[] = _("Green: Friend Ball, Pink: Love Ball");
+const u8 gText_RyuBallMenu4[] = _("White: Fast Ball, Black: Heavy Ball");
+const u8 gText_RyuBallMenu5[] = _("Yellow: Moon Ball.");
+const u8 gText_RyuBallMenu6[] = _("The service costs ¥1000.");
+
 //String list groups for individual infoboxes
 
 static const struct InfoBox sInfoBoxPokemonData[] = 
@@ -198,6 +205,16 @@ static const struct InfoBox sInfoBoxPokemonData[] =
     {gText_RyuStatSpAtkDisplay},
     {gText_RyuStatSpDefDisplay},
     {gText_RyuStatSpeedDisplay},
+};
+
+static const struct InfoBox sInfoBoxBotanyBallMenu[] = 
+{
+    {gText_RyuBallMenu1},
+    {gText_RyuBallMenu2},
+    {gText_RyuBallMenu3},
+    {gText_RyuBallMenu4},
+    {gText_RyuBallMenu5},
+    {gText_RyuBallMenu6},
 };
 
 static const struct InfoBox sInfoBoxFHyperOffenseStarter[] = 
@@ -443,6 +460,7 @@ static const struct InfoBoxListStruct sInfoBoxes[] =
     BOXLIST(sInfoBoxGCMS1), //gcms tutorial
     BOXLIST(sInfoBoxGCMS2), //gcms tutorial
     BOXLIST(sInfoBoxGCMS3), //gcms tutorial
+    BOXLIST(sInfoBoxBotanyBallMenu) //Kurt's information about balls you can create with apricorns
 };
 
 void PrintInfoTable(u8 windowId, u8 itemCount, const struct InfoBox *strs)
