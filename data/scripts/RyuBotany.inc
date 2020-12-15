@@ -88,6 +88,7 @@ RyuBotany_DoubleRewardHC::
 RyuBotanyTree_GiveOneItem::
     callnative BotanyTreeChop
     giveitem VAR_TEMP_0, 1
+    closemessage
     return
 
 RyuBotanyGrass_GiveOneItem::
@@ -98,6 +99,7 @@ RyuBotanyGrass_GiveOneItem::
     bufferitemname 0, VAR_TEMP_0
     buffernumberstring 1, VAR_TEMP_5
     msgbox RyuBotany_RewardMessage
+    closemessage
     return
 
 RyuBotany_RewardMessage:
