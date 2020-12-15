@@ -2162,6 +2162,7 @@ const u8 gText_RyuBufferedString3[] = _("{STR_VAR_3}");
 const u8 gText_RyuBufferedString4[] = _("{RYU_STR_1}");
 const u8 gText_RyuBufferedString5[] = _("{RYU_STR_2}");
 const u8 gText_RyuBufferedString6[] = _("{RYU_STR_3}");
+const u8 gText_RyuBufferedString7[] = _("{RYU_STR_4}");
 
 const u8 gText_RyuMHM_Main[] = _("Heal Party");
 const u8 gText_RyuMHM_Kits[] = _("Magma Kits Shop");

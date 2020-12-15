@@ -9,6 +9,7 @@ EWRAM_DATA u8 gStringVar3[0x100] = {0};
 EWRAM_DATA u8 gRyuStringVar1[0x100] = {0};
 EWRAM_DATA u8 gRyuStringVar2[0x100] = {0};
 EWRAM_DATA u8 gRyuStringVar3[0x100] = {0};
+EWRAM_DATA u8 gRyuStringVar4[0x100] = {0};
 EWRAM_DATA u8 gStringVar4[0x3E8] = {0};
 EWRAM_DATA static u8 sUnknownStringVar[16] = {0};
 EWRAM_DATA static char sAsciiConversionBuffer[128] = {0};
@@ -464,6 +465,11 @@ static const u8 *ExpandPlaceholder_RyuStringVar3(void)
     return gRyuStringVar3;
 }
 
+static const u8 *ExpandPlaceholder_RyuStringVar4(void)
+{
+    return gRyuStringVar4;
+}
+
 static const u8 *ExpandPlaceholder_KunChan(void)
 {
     if (gSaveBlock2Ptr->playerGender == MALE)
@@ -529,6 +535,7 @@ const u8 *GetExpandedPlaceholder(u32 id)
         [PLACEHOLDER_ID_RYU_STRING_VAR_1] = ExpandPlaceholder_RyuStringVar1,
         [PLACEHOLDER_ID_RYU_STRING_VAR_2] = ExpandPlaceholder_RyuStringVar2,
         [PLACEHOLDER_ID_RYU_STRING_VAR_3] = ExpandPlaceholder_RyuStringVar3,
+        [PLACEHOLDER_ID_RYU_STRING_VAR_4] = ExpandPlaceholder_RyuStringVar4,
         [PLACEHOLDER_ID_KUN]          = ExpandPlaceholder_KunChan,
         [PLACEHOLDER_ID_RIVAL]        = ExpandPlaceholder_RivalName,
         [PLACEHOLDER_ID_VERSION]      = ExpandPlaceholder_Version,
