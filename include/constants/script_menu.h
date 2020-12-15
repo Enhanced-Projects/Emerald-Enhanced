@@ -167,6 +167,7 @@
 #define MULTI_MAGMA_MACHINE_KITS           156
 #define MULTI_BOTANY_CHAPTER_SELECT        157
 #define MULTI_PBG_TRICK_QUESTION           158
+#define MULTI_BOTANY_APRICORN_MENU         159
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

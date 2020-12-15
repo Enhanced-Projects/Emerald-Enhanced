@@ -1248,6 +1248,18 @@ static const struct MenuAction MultiChoiceList_PetalburgGymTrickQuestion[]=
     {gText_PBGArceus}
 };
 
+static const struct MenuAction MultiChoiceList_BotanyRefineApricornMenu[]=
+{
+    {gText_RyuBotanyApricornLine1},
+    {gText_RyuBotanyApricornLine2},
+    {gText_RyuBotanyApricornLine3},
+    {gText_RyuBotanyApricornLine4},
+    {gText_RyuBotanyApricornLine5},
+    {gText_RyuBotanyApricornLine6},
+    {gText_RyuBotanyApricornLine7},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1420,6 +1432,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_MAGMA_MACHINE_KITS]         = MULTICHOICE(MultiChoiceList_MagmaMachineKitMenu),
     [MULTI_BOTANY_CHAPTER_SELECT]      = MULTICHOICE(MultiChoiceList_BotanyBookChapterSelect),
     [MULTI_PBG_TRICK_QUESTION]         = MULTICHOICE(MultiChoiceList_PetalburgGymTrickQuestion),
+    [MULTI_BOTANY_APRICORN_MENU]       = MULTICHOICE(MultiChoiceList_BotanyRefineApricornMenu),
 };
 
 const u8 *const gStdStrings[] =

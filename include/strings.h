@@ -3339,4 +3339,12 @@ extern const u8 gText_PBGRhydon[];
 extern const u8 gText_PBGMew[];
 extern const u8 gText_PBGArceus[];
 
+extern const u8 gText_RyuBotanyApricornLine1[];
+extern const u8 gText_RyuBotanyApricornLine2[];
+extern const u8 gText_RyuBotanyApricornLine3[];
+extern const u8 gText_RyuBotanyApricornLine4[];
+extern const u8 gText_RyuBotanyApricornLine5[];
+extern const u8 gText_RyuBotanyApricornLine6[];
+extern const u8 gText_RyuBotanyApricornLine7[];
+
 #endif // GUARD_STRINGS_H
