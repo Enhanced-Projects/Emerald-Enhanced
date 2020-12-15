@@ -12953,7 +12953,7 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyRematch[] = {
 	.species = SPECIES_TYRANITAR,
 	.heldItem = ITEM_TYRANITARITE,
 	.ability = 0,
-	.moves = {MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_FIRE_PUNCH, MOVE_DRAGON_DANCE},
+	.moves = {MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_ICE_PUNCH, MOVE_DRAGON_DANCE},
 	},
 	{
 	.iv = 250,
@@ -13971,7 +13971,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch[] = {
 	.iv = 250,
 	.lvl = 106,
 	.species = SPECIES_GARCHOMP,
-	.heldItem = ITEM_FOCUS_SASH,
+	.heldItem = ITEM_ROCKY_HELMET,
 	.ability = 2,
 	.moves = {MOVE_STEALTH_ROCK, MOVE_EARTHQUAKE, MOVE_OUTRAGE, MOVE_FIRE_FANG},
 	},
@@ -13996,7 +13996,7 @@ static const struct TrainerMonItemCustomMoves sParty_DrakeRematch[] = {
 	.lvl = 107,
 	.species = SPECIES_GYARADOS,
 	.heldItem = ITEM_LUM_BERRY,
-	.ability = 2,
+	.ability = 0,
 	.moves = {MOVE_WATERFALL, MOVE_OUTRAGE, MOVE_EARTHQUAKE, MOVE_DRAGON_DANCE},
 	},
 	{
