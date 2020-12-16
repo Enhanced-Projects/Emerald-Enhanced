@@ -24,8 +24,41 @@ static const u16 sAtlasCursorPalette[] = INCBIN_U16("graphics/achievement_atlas/
 
 static const u8 sTextColors[] = { TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_BLUE, TEXT_COLOR_BLUE };
 
-static const u8 sMyDick[] = _("My Dick");
-static const u8 sIsFlaccid[] = _("Is Flaccid");
+static const u8 sWholeNewWorldAchLabel[] = _("A Whole New World");
+static const u8 sWholeNewWorldAchDesc[] = _("Welcome to Emerald Enhanced.\nExplore to your heart's content!");
+
+static const u8 sEnhancedBattleAchLabel[] = _("Enhanced Battle");
+static const u8 sEnhancedBattleAchDesc[] = _("You have awakened as a battle master!");
+
+static const u8 sNewRegionWhoDisAchLabel[] = _("New Region Who Dis");
+static const u8 sNewRegionWhoDisAchDesc[] = _("You made a friend!\nEverything is better with friends.");
+
+static const u8 sAdventureTimeAchLabel[] = _("Adventure Time");
+static const u8 sAdventureTimeAchDesc[] = _("You started your first quest.\nGood Luck!");
+
+static const u8 sTrueLoveAchLabel[] = _("Love at First Sight");
+static const u8 sTrueLoveAchDesc[] = _("You have entered a relationship.\nNow you wonder what you would do\pwithout them.");
+
+static const u8 sSilentStrongTypeAchLabel[] = _("Silent, Strong type");
+static const u8 sSilentStrongTypeAchDesc[] = _("The quiet ones usually have the\nmost to say!\n{COLOR LIGHT_GREEN}{SHADOW GREEN} (Romanced Lana)");
+
+static const u8 sChildhoodFriendAchLabel[] = _("A Childhood Friend");
+static const u8 sChildhoodFriendAchDesc[] = _("{RIVAL} would follow you off\nof a cliff.\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Romanced {RIVAL})");
+
+static const u8 sNerdLoveAchLabel[] = _("Nerd Love");
+static const u8 sNerdLoveAchDesc[] = _("You feel her rubbing off on you.\n {COLOR LIGHT_GREEN}{SHADOW GREEN}(Romanced Lanette)");
+
+static const u8 sFWBAchLabel[] = _("Friends with Benefits");
+static const u8 sFWBAchDesc[] = _("You have a secret weapon!\nYour own, personal nurse.\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Romanced Joy)");
+
+static const u8 sWetnWildAchLabel[] = _("Wet and Wild");
+static const u8 sWetnWildAchDesc[] = _("You found a girl who loves to\nget wet.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Romanced Shelly)");
+
+static const u8 sFieryPassionAchLabel[] = _("Fiery Passion");
+static const u8 sFieryPassionAchDesc[] = _("She's blazing hot!\n{COLOR LIGHT_GREEN}{SHADOW GREEN} (Romanced Courtney");
+
+static const u8 sTrueEndingAchLabel[] = _("The True Ending");
+static const u8 sTrueEndingAchDesc[] = _("You're quite the lady killer, eh?\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Got the Harem ending)");
 
 void DecideActionFromInput(u32 * action);
 void AtlasCursorSpriteCB(struct Sprite *);
@@ -40,8 +73,18 @@ struct AtlasAchPointData
 
 static const struct AtlasAchPointData sTestAtlasData[] =
 {
-    {4, 26, sMyDick, NULL},
-    {14, 26, sIsFlaccid, NULL}
+    {4, 36, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc},
+    {14, 36, sEnhancedBattleAchLabel, sEnhancedBattleAchDesc},
+    {33, 36, sNewRegionWhoDisAchLabel, sWholeNewWorldAchDesc},
+    {23, 36, sAdventureTimeAchLabel, sAdventureTimeAchLabel},
+    {33, 23, sTrueLoveAchLabel, sTrueLoveAchDesc},
+    {35, 23, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc},
+    {37, 23, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc},
+    {35, 21, sNerdLoveAchLabel, sNerdLoveAchDesc},
+    {37, 21, sFWBAchLabel, sFWBAchDesc},
+    {35, 19, sWetnWildAchLabel, sWetnWildAchDesc},
+    {37, 19, sFieryPassionAchLabel, sFieryPassionAchDesc},
+    {36, 17, sTrueEndingAchLabel, sTrueEndingAchDesc},
 };
 
 static const struct WindowTemplate sAtlasWindowTemplate[] =
