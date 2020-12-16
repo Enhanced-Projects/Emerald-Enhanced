@@ -69,22 +69,28 @@ struct AtlasAchPointData
     u8 y;
     const u8 * nameString;
     const u8 * descString;
-};
+    u8 category; //0 - 3, determines the font colors of the achievement name and description.
+};               //0 for grey/lightgrey, 1 for light red/red, 2 for light blue/blue, and 3 for lightgreen/green
+
+#define CATEGORY_EXPLORATION 0  //also for misc achievements
+#define CATEGORY_BATTLE 1
+#define CATEGORY_COMPANIONS 2
+#define CATEGORY_QUESTING 3
 
 static const struct AtlasAchPointData sTestAtlasData[] =
 {
-    {4, 36, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc},
-    {14, 36, sEnhancedBattleAchLabel, sEnhancedBattleAchDesc},
-    {33, 36, sNewRegionWhoDisAchLabel, sWholeNewWorldAchDesc},
-    {23, 36, sAdventureTimeAchLabel, sAdventureTimeAchLabel},
-    {33, 23, sTrueLoveAchLabel, sTrueLoveAchDesc},
-    {35, 23, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc},
-    {37, 23, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc},
-    {35, 21, sNerdLoveAchLabel, sNerdLoveAchDesc},
-    {37, 21, sFWBAchLabel, sFWBAchDesc},
-    {35, 19, sWetnWildAchLabel, sWetnWildAchDesc},
-    {37, 19, sFieryPassionAchLabel, sFieryPassionAchDesc},
-    {36, 17, sTrueEndingAchLabel, sTrueEndingAchDesc},
+    {12, 55, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc, CATEGORY_EXPLORATION},
+    {28, 55, sEnhancedBattleAchLabel, sEnhancedBattleAchDesc, CATEGORY_BATTLE},
+    {57, 55, sNewRegionWhoDisAchLabel, sNewRegionWhoDisAchDesc, CATEGORY_COMPANIONS},
+    {43, 55, sAdventureTimeAchLabel, sAdventureTimeAchLabelm, CATEGORY_QUESTING},
+    {57, 52, sTrueLoveAchLabel, sTrueLoveAchDesc, CATEGORY_COMPANIONS},
+    {59, 48, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc, CATEGORY_COMPANIONS},
+    {59, 50, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc, CATEGORY_COMPANIONS},
+    {59, 52, sFieryPassionAchLabel, sFieryPassionAchDesc, CATEGORY_COMPANIONS},
+    {61, 48, sNerdLoveAchLabel, sNerdLoveAchDesc, CATEGORY_COMPANIONS},
+    {61, 50, sFWBAchLabel, sFWBAchDesc, CATEGORY_COMPANIONS},
+    {61, 52, sWetnWildAchLabel, sWetnWildAchDesc, CATEGORY_COMPANIONS},
+    {60, 46, sTrueEndingAchLabel, sTrueEndingAchDesc, CATEGORY_COMPANIONS}, 
 };
 
 static const struct WindowTemplate sAtlasWindowTemplate[] =
