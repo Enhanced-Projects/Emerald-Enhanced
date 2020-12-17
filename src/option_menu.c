@@ -26,11 +26,11 @@ enum
 {
     MENUITEM_TEXTSPEED,
     MENUITEM_BATTLESCENE,
+    MENUITEM_FORCESETBATTLE,
     MENUITEM_THEME,
     MENUITEM_RDM_MUSIC,
     MENUITEM_BUTTONMODE,
     MENUITEM_BAR_SPEED,
-    //MENUITEM_EXP_BAR,
     MENUITEM_TRANSITION,
     MENUITEM_FRAMETYPE,
     MENUITEM_SAVE,
@@ -59,17 +59,17 @@ static void Task_OptionMenuFadeOut(u8 taskId);
 static void HighlightOptionMenuItem(int cursor);
 static void TextSpeed_DrawChoices(int selection, int y, u8 textSpeed);
 static void BattleScene_DrawChoices(int selection, int y, u8 textSpeed);
-static void BattleStyle_DrawChoices(int selection, int y, u8 textSpeed);
+static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed);
 static void HpBar_DrawChoices(int selection, int y, u8 textSpeed);
 static void Transition_DrawChoices(int selection, int y, u8 textSpeed);
-static void Sound_DrawChoices(int selection, int y, u8 textSpeed);
+static void RandomMusic_DrawChoices(int selection, int y, u8 textSpeed);
 static void FrameType_DrawChoices(int selection, int y, u8 textSpeed);
 static void ButtonMode_DrawChoices(int selection, int y, u8 textSpeed);
+static void ForceBattleSet_DrawChoices(int selection, int y, u8 textSpeed);
 static int FrameType_ProcessInput(int selection);
 static int FourOptions_ProcessInput(int selection);
 static int ThreeOptions_ProcessInput(int selection);
 static int TwoOptions_ProcessInput(int selection);
-static int BattleStyle_ProcessInput(int selection);
 static int ElevenOptions_ProcessInput(int selection);
 static int Sound_ProcessInput(int selection);
 static void DrawTextOption(void);
@@ -86,12 +86,12 @@ static const sItemFunctions[MENUITEM_COUNT] =
 {
     [MENUITEM_TEXTSPEED] = {TextSpeed_DrawChoices, FourOptions_ProcessInput},
     [MENUITEM_BATTLESCENE] = {BattleScene_DrawChoices, TwoOptions_ProcessInput},
-    [MENUITEM_THEME] = {BattleStyle_DrawChoices, BattleStyle_ProcessInput},
-    [MENUITEM_RDM_MUSIC] = {Sound_DrawChoices, TwoOptions_ProcessInput},
+    [MENUITEM_FORCESETBATTLE] = {ForceBattleSet_DrawChoices, TwoOptions_ProcessInput},
+    [MENUITEM_THEME] = {ThemeSelection_DrawChoices, TwoOptions_ProcessInput},
+    [MENUITEM_RDM_MUSIC] = {RandomMusic_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_BUTTONMODE] = {ButtonMode_DrawChoices, ThreeOptions_ProcessInput},
     [MENUITEM_FRAMETYPE] = {FrameType_DrawChoices, FrameType_ProcessInput},
     [MENUITEM_BAR_SPEED] = {HpBar_DrawChoices, ElevenOptions_ProcessInput},
-    //[MENUITEM_EXP_BAR] = {HpBar_DrawChoices, ElevenOptions_ProcessInput},
     [MENUITEM_TRANSITION] = {Transition_DrawChoices, TwoOptions_ProcessInput},
     [MENUITEM_SAVE] = {NULL, NULL},
 };
@@ -106,18 +106,21 @@ static const u8 sEqualSignGfx[] = INCBIN_U8("graphics/misc/option_menu_equals_si
 static const u8 sTextBarSpeed[] = _("Bar Anim Spe");
 static const u8 sText_ExpBar[] = _("EXP BAR");
 static const u8 sText_Transition[] = _("B. Transition");
+static const u8 sText_ForceSetBattleMode[] = _("Battle Style");
+static const u8 sText_Dynamic[] = _("Dynamic");
+static const u8 sText_Set[] = _("Set");
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
     [MENUITEM_TEXTSPEED]   = gText_TextSpeed,
     [MENUITEM_BATTLESCENE] = gText_BattleScene,
+    [MENUITEM_FORCESETBATTLE]     = sText_ForceSetBattleMode,
     [MENUITEM_THEME]       = gText_ThemeSelector,
     [MENUITEM_RDM_MUSIC]   = gText_RandomRouteMusic,
     [MENUITEM_BUTTONMODE]  = gText_ButtonMode,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
-    [MENUITEM_BAR_SPEED]      = sTextBarSpeed,
+    [MENUITEM_BAR_SPEED]   = sTextBarSpeed,
     [MENUITEM_TRANSITION]  = sText_Transition,
-    //[MENUITEM_EXP_BAR]     = sText_ExpBar, //reserved option for later.
     [MENUITEM_SAVE]        = gText_OptionMenuSave,
 };
 
@@ -268,15 +271,15 @@ void CB2_InitOptionMenu(void)
         sOptions = AllocZeroed(sizeof(*sOptions));
         sOptions->sel[MENUITEM_TEXTSPEED] = gSaveBlock2Ptr->optionsTextSpeed;
         sOptions->sel[MENUITEM_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleSceneOff;
+        sOptions->sel[MENUITEM_FORCESETBATTLE] = gSaveBlock2Ptr->forceSetBattleType;
         sOptions->sel[MENUITEM_THEME] = VarGet(VAR_RYU_THEME_NUMBER);
         sOptions->sel[MENUITEM_RDM_MUSIC] = FlagGet(FLAG_RYU_RANDOMIZE_MUSIC);
         sOptions->sel[MENUITEM_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
         sOptions->sel[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
         sOptions->sel[MENUITEM_BAR_SPEED] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
-        //sOptions->sel[MENUITEM_EXP_BAR] = (VarGet(VAR_OPTIONS_HP_BAR_SPEED));
         sOptions->sel[MENUITEM_TRANSITION] = FlagGet(FLAG_OPTIONS_INSTANT_TRANSITION);
 
-        for (i = 0; i < 7; i++)
+        for (i = 0; i < 8; i++)
             DrawChoices(i, i * Y_DIFF, 0xFF);
 
         HighlightOptionMenuItem(sOptions->menuCursor);
@@ -432,8 +435,9 @@ static void Task_OptionMenuSave(u8 taskId)
     else
         FlagSet(FLAG_NOTIFIED_FF_TEXT);
     gSaveBlock2Ptr->optionsBattleSceneOff = sOptions->sel[MENUITEM_BATTLESCENE];
-    gSaveBlock2Ptr->optionsBattleStyle = sOptions->sel[MENUITEM_THEME];
+    gSaveBlock2Ptr->optionsThemeNumber = sOptions->sel[MENUITEM_THEME];
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
+    gSaveBlock2Ptr->forceSetBattleType = sOptions->sel[MENUITEM_FORCESETBATTLE];
     if (sOptions->sel[MENUITEM_RDM_MUSIC])
         FlagSet(FLAG_RYU_RANDOMIZE_MUSIC);
     else
@@ -500,14 +504,6 @@ static int ElevenOptions_ProcessInput(int selection)
 }
 
 static int TwoOptions_ProcessInput(int selection)
-{
-    if (gMain.newKeys & (DPAD_LEFT | DPAD_RIGHT))
-        selection ^= 1;
-
-    return selection;
-}
-
-static int BattleStyle_ProcessInput(int selection)
 {
     if (gMain.newKeys & (DPAD_LEFT | DPAD_RIGHT))
         selection ^= 1;
@@ -599,13 +595,13 @@ static void BattleScene_DrawChoices(int selection, int y, u8 textSpeed)
     DrawOptionMenuChoice(gText_BattleSceneOff, GetStringRightAlignXOffset(1, gText_BattleSceneOff, 198), y, styles[1], textSpeed);
 }
 
-static void BattleStyle_DrawChoices(int selection, int y, u8 textSpeed)
+static void ThemeSelection_DrawChoices(int selection, int y, u8 textSpeed)
 {
     u8 styles[2] = {0, 0};
 
     styles[selection] = 1;
-    DrawOptionMenuChoice(gText_BattleStyleShift, 104, y, styles[0], textSpeed);
-    DrawOptionMenuChoice(gText_BattleStyleSet, GetStringRightAlignXOffset(1, gText_BattleStyleSet, 198), y, styles[1], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeLight, 104, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(gText_UiThemeDark, GetStringRightAlignXOffset(1, gText_UiThemeDark, 198), y, styles[1], textSpeed);
 }
 
 static void Transition_DrawChoices(int selection, int y, u8 textSpeed)
@@ -648,7 +644,7 @@ static void TextSpeed_DrawChoices(int selection, int y, u8 textSpeed)
 }
 
 
-static void Sound_DrawChoices(int selection, int y, u8 textSpeed)
+static void RandomMusic_DrawChoices(int selection, int y, u8 textSpeed)
 {
     u8 styles[2] = {0, 0};
 
@@ -704,6 +700,15 @@ static void DrawTextOption(void)
     FillWindowPixelBuffer(WIN_TEXT_OPTION, PIXEL_FILL(1));
     AddTextPrinterParameterized(WIN_TEXT_OPTION, 1, gText_Option, 8, 1, 0, NULL);
     CopyWindowToVram(WIN_TEXT_OPTION, 3);
+}
+
+static void ForceBattleSet_DrawChoices(int selection, int y, u8 textSpeed)
+{
+    u8 styles[2] = {0, 0};
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(sText_Dynamic, 104, y, styles[0], textSpeed);
+    DrawOptionMenuChoice(sText_Set, GetStringRightAlignXOffset(1, sText_Set, 198), y, styles[1], textSpeed);
 }
 
 static void DrawOptionMenuTexts(void)

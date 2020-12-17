@@ -1873,7 +1873,10 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         if (firstTrainer == TRUE)
             ZeroEnemyPartyMons();
 
-        gSaveBlock2Ptr->optionsBattleStyle = gTrainers[trainerNum].battleStyle;
+        if (gSaveBlock2Ptr->forceSetBattleType == 0)
+            gBattleScripting.battleStyle = gTrainers[trainerNum].battleStyle;
+        else
+            gBattleScripting.battleStyle = 1;
 
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
         {
@@ -3005,7 +3008,6 @@ static void BattleStartClearSetData(void)
         gHitMarker |= HITMARKER_NO_ANIMATIONS;
     }
 
-    gBattleScripting.battleStyle = gSaveBlock2Ptr->optionsBattleStyle;
 	gBattleScripting.expOnCatch = (B_EXP_CATCH >= GEN_6);
 	gBattleScripting.monCaught = FALSE;
 
