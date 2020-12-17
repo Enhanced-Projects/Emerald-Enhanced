@@ -13,6 +13,8 @@
 #include "text.h"
 #include "strings.h"
 #include "menu.h"
+#include "string_util.h"
+#include "constants/flags.h"
 #include "constants/rgb.h"
 
 static const u8 sAchievementAtlasTileset[] = INCBIN_U8("graphics/achievement_atlas/achievement_atlas.4bpp");
@@ -21,8 +23,6 @@ static const u8 sAchievementAtlasPalette[] = INCBIN_U8("graphics/achievement_atl
 
 static const u8 sAtlasCursorTiles[] = INCBIN_U8("graphics/achievement_atlas/cursor.4bpp");
 static const u16 sAtlasCursorPalette[] = INCBIN_U16("graphics/achievement_atlas/cursor.gbapal");
-
-static const u8 sTextColors[] = { TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_BLUE, TEXT_COLOR_BLUE };
 
 static const u8 sWholeNewWorldAchLabel[] = _("A Whole New World");
 static const u8 sWholeNewWorldAchDesc[] = _("Welcome to Emerald Enhanced.\nExplore to your heart's content!");
@@ -37,31 +37,39 @@ static const u8 sAdventureTimeAchLabel[] = _("Adventure Time");
 static const u8 sAdventureTimeAchDesc[] = _("You started your first quest.\nGood Luck!");
 
 static const u8 sTrueLoveAchLabel[] = _("Love at First Sight");
-static const u8 sTrueLoveAchDesc[] = _("You have entered a relationship.\nNow you wonder what you would do\pwithout them.");
+static const u8 sTrueLoveAchDesc[] = _("You have entered a relationship.\nNow you wonder what you would\ndo without them.");
 
 static const u8 sSilentStrongTypeAchLabel[] = _("Silent, Strong type");
-static const u8 sSilentStrongTypeAchDesc[] = _("The quiet ones usually have the\nmost to say!\n{COLOR LIGHT_GREEN}{SHADOW GREEN} (Romanced Lana)");
+static const u8 sSilentStrongTypeAchDesc[] = _("The quiet ones usually have the\nmost to say!\n {COLOR LIGHT_GREEN}{SHADOW GREEN}(Romanced Lana)");
 
 static const u8 sChildhoodFriendAchLabel[] = _("A Childhood Friend");
-static const u8 sChildhoodFriendAchDesc[] = _("{RIVAL} would follow you off\nof a cliff.\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Romanced {RIVAL})");
+static const u8 sChildhoodFriendAchDesc[] = _("{RIVAL} would follow you off\nof a cliff.\n {COLOR LIGHT_GREEN}{SHADOW GREEN}(Romanced {RIVAL})");
 
 static const u8 sNerdLoveAchLabel[] = _("Nerd Love");
 static const u8 sNerdLoveAchDesc[] = _("You feel her rubbing off on you.\n {COLOR LIGHT_GREEN}{SHADOW GREEN}(Romanced Lanette)");
 
 static const u8 sFWBAchLabel[] = _("Friends with Benefits");
-static const u8 sFWBAchDesc[] = _("You have a secret weapon!\nYour own, personal nurse.\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Romanced Joy)");
+static const u8 sFWBAchDesc[] = _("You have a secret weapon!\nYour own, personal nurse.\n {COLOR LIGHT_GREEN}{SHADOW GREEN}(Romanced Joy)");
 
 static const u8 sWetnWildAchLabel[] = _("Wet and Wild");
-static const u8 sWetnWildAchDesc[] = _("You found a girl who loves to\nget wet.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Romanced Shelly)");
+static const u8 sWetnWildAchDesc[] = _("You found a girl who loves to\nget wet.\n {COLOR LIGHT_GREEN}{SHADOW GREEN}(Romanced Shelly)");
 
 static const u8 sFieryPassionAchLabel[] = _("Fiery Passion");
-static const u8 sFieryPassionAchDesc[] = _("She's blazing hot!\n{COLOR LIGHT_GREEN}{SHADOW GREEN} (Romanced Courtney");
+static const u8 sFieryPassionAchDesc[] = _("She's blazing hot!\n {COLOR LIGHT_GREEN}{SHADOW GREEN}(Romanced Courtney)");
 
 static const u8 sTrueEndingAchLabel[] = _("The True Ending");
-static const u8 sTrueEndingAchDesc[] = _("You're quite the lady killer, eh?\p{COLOR LIGHT_GREEN}{SHADOW GREEN} (Got the Harem ending)");
+static const u8 sTrueEndingAchDesc[] = _("You're quite the lady killer, eh?\n {COLOR LIGHT_GREEN}{SHADOW GREEN}(Got the Harem ending)");
 
 void DecideActionFromInput(u32 * action);
 void AtlasCursorSpriteCB(struct Sprite *);
+
+enum
+{
+    CATEGORY_EXPLORATION,  //dark_grey/light_grey. also for misc achievements
+    CATEGORY_BATTLE,       //light_red/red
+    CATEGORY_COMPANIONS,   //light_blue/blue
+    CATEGORY_QUESTING      //light_green/green
+};
 
 struct AtlasAchPointData
 {
@@ -73,10 +81,12 @@ struct AtlasAchPointData
     const u8 * descString;
 };
 
-#define CATEGORY_EXPLORATION 0  //dark_grey/light_grey. also for misc achievements
-#define CATEGORY_BATTLE 1       //light_red/red
-#define CATEGORY_COMPANIONS 2   //light_blue/blue
-#define CATEGORY_QUESTING 3     //light_green/green
+static const u8 sTextColors[][3] = {
+    [CATEGORY_EXPLORATION] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY},
+    [CATEGORY_BATTLE] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_RED, TEXT_COLOR_RED},
+    [CATEGORY_COMPANIONS] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_BLUE, TEXT_COLOR_BLUE},
+    [CATEGORY_QUESTING] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GREEN, TEXT_COLOR_GREEN},
+};
 
 static const struct AtlasAchPointData sTestAtlasData[] =
 {
@@ -94,8 +104,12 @@ static const struct AtlasAchPointData sTestAtlasData[] =
     {60, 46, CATEGORY_COMPANIONS, FLAG_ACH_TRUE_ENDING, sTrueEndingAchLabel, sTrueEndingAchDesc}, 
 };
 
+#define WIN_ACH_LABEL 0
+#define WIN_ACH_DESC 1
+
 static const struct WindowTemplate sAtlasWindowTemplate[] =
 {
+    [WIN_ACH_LABEL] = 
     {
         .bg = 0,
         .tilemapLeft = 1,
@@ -104,6 +118,16 @@ static const struct WindowTemplate sAtlasWindowTemplate[] =
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 1,
+    },
+    [WIN_ACH_DESC] = 
+    {
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 14,
+        .width = 28,
+        .height = 5,
+        .paletteNum = 15,
+        .baseBlock = 31,
     },
     DUMMY_WIN_TEMPLATE
 };
@@ -167,7 +191,7 @@ static const struct BgTemplate sAtlasBGTemplates[] =
 {
     {
         .bg = 0,
-        .charBaseIndex = 1,
+        .charBaseIndex = 2,
         .mapBaseIndex = 28,
         .screenSize = 0,
         .paletteMode = 0,
@@ -411,8 +435,8 @@ static void FreeBgAndWindowBuffers(void)
 #define WAIT_FAST_SCROLL 60
 #define WAIT_SLOW_SCROLL 15
 
-#define TEMP_TEST_ATLAS_WIDTH 40
-#define TEMP_TEST_ATLAS_HEIGHT 30
+#define TEMP_TEST_ATLAS_WIDTH 64
+#define TEMP_TEST_ATLAS_HEIGHT 64
 
 void UpdateAtlasScroll(void);
 void Task_UpdateAtlasStatus(u8 taskId);
@@ -505,18 +529,37 @@ void Task_HandleAtlasInput(u8 taskId)
 
 void Task_UpdateAtlasStatus(u8 taskId)
 {
+    struct WindowTemplate window;
     u8 spriteId = sAchAtlas.cursorSpriteId;
     u32 achTileId;
     u32 i;
-    for(i = 0; i < 2; i++)
+    u32 stringWidth;
+    
+    for(i = 0; i < ARRAY_COUNT(sTestAtlasData); i++)
     {
         if(sTestAtlasData[i].x == sAchAtlas.cursorX && sTestAtlasData[i].y == sAchAtlas.cursorY)
         {
             StartSpriteAnim(&gSprites[spriteId], 1);
-            ClearStdWindowAndFrameToTransparent(0, TRUE);
-            DrawStdWindowFrame(0, TRUE);
+            ClearStdWindowAndFrameToTransparent(WIN_ACH_LABEL, TRUE);
+            ClearStdWindowAndFrameToTransparent(WIN_ACH_DESC, TRUE);
+            if(sAchAtlas.cursorY >= (13 + sAchAtlas.tilemapPosY))
+            {
+                SetWindowAttribute(WIN_ACH_LABEL, WINDOW_TILEMAP_TOP, 17);
+                SetWindowAttribute(WIN_ACH_DESC, WINDOW_TILEMAP_TOP, 1);
+            }
+            else
+            {
+                SetWindowAttribute(WIN_ACH_LABEL, WINDOW_TILEMAP_TOP, 1);
+                SetWindowAttribute(WIN_ACH_DESC, WINDOW_TILEMAP_TOP, 14);
+            }
+            stringWidth = GetStringWidth(0, sTestAtlasData[i].nameString, 0);
+            SetWindowAttribute(WIN_ACH_LABEL, WINDOW_WIDTH, (stringWidth + 7) / 8);
+            DrawStdWindowFrame(WIN_ACH_LABEL, TRUE);
+            DrawStdWindowFrame(WIN_ACH_DESC, TRUE);
             sAchAtlas.shouldClearAchText = TRUE;
-            AddTextPrinterParameterized3(0, 0, 0, 0, sTextColors, 0, sTestAtlasData[i].nameString);
+            AddTextPrinterParameterized3(WIN_ACH_LABEL, 0, 0, 0, sTextColors[sTestAtlasData[i].category], 0, sTestAtlasData[i].nameString);
+            StringExpandPlaceholders(gStringVar4, sTestAtlasData[i].descString);
+            AddTextPrinterParameterized3(WIN_ACH_DESC, 0, 0, 0, sTextColors[sTestAtlasData[i].category], 0, gStringVar4);
             achTileId = i;
             break;
         }
@@ -525,7 +568,10 @@ void Task_UpdateAtlasStatus(u8 taskId)
     if(achTileId == -1u)
     {
         if(sAchAtlas.shouldClearAchText)
-            ClearStdWindowAndFrameToTransparent(0, TRUE);
+        {
+            ClearStdWindowAndFrameToTransparent(WIN_ACH_LABEL, TRUE);
+            ClearStdWindowAndFrameToTransparent(WIN_ACH_DESC, TRUE);
+        }
         sAchAtlas.shouldClearAchText = FALSE;
         StartSpriteAnimIfDifferent(&gSprites[spriteId], 0);
     }

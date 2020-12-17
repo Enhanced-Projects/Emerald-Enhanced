@@ -556,6 +556,8 @@ bool8 SetWindowAttribute(u8 windowId, u8 attributeId, u32 value)
         return TRUE;
     case WINDOW_BG:
     case WINDOW_WIDTH:
+        gWindows[windowId].window.width = value; // added by Pidgey GF didn't have this for some reason.. hm.
+        return FALSE;
     case WINDOW_HEIGHT:
     default:
         return TRUE;
