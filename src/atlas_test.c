@@ -67,30 +67,31 @@ struct AtlasAchPointData
 {
     u8 x;
     u8 y;
+    u8 category;
+    u8 flagId;
     const u8 * nameString;
     const u8 * descString;
-    u8 category; //0 - 3, determines the font colors of the achievement name and description.
-};               //0 for grey/lightgrey, 1 for light red/red, 2 for light blue/blue, and 3 for lightgreen/green
+};
 
-#define CATEGORY_EXPLORATION 0  //also for misc achievements
-#define CATEGORY_BATTLE 1
-#define CATEGORY_COMPANIONS 2
-#define CATEGORY_QUESTING 3
+#define CATEGORY_EXPLORATION 0  //dark_grey/light_grey. also for misc achievements
+#define CATEGORY_BATTLE 1       //light_red/red
+#define CATEGORY_COMPANIONS 2   //light_blue/blue
+#define CATEGORY_QUESTING 3     //light_green/green
 
 static const struct AtlasAchPointData sTestAtlasData[] =
 {
-    {12, 55, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc, CATEGORY_EXPLORATION},
-    {28, 55, sEnhancedBattleAchLabel, sEnhancedBattleAchDesc, CATEGORY_BATTLE},
-    {57, 55, sNewRegionWhoDisAchLabel, sNewRegionWhoDisAchDesc, CATEGORY_COMPANIONS},
-    {43, 55, sAdventureTimeAchLabel, sAdventureTimeAchLabelm, CATEGORY_QUESTING},
-    {57, 52, sTrueLoveAchLabel, sTrueLoveAchDesc, CATEGORY_COMPANIONS},
-    {59, 48, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc, CATEGORY_COMPANIONS},
-    {59, 50, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc, CATEGORY_COMPANIONS},
-    {59, 52, sFieryPassionAchLabel, sFieryPassionAchDesc, CATEGORY_COMPANIONS},
-    {61, 48, sNerdLoveAchLabel, sNerdLoveAchDesc, CATEGORY_COMPANIONS},
-    {61, 50, sFWBAchLabel, sFWBAchDesc, CATEGORY_COMPANIONS},
-    {61, 52, sWetnWildAchLabel, sWetnWildAchDesc, CATEGORY_COMPANIONS},
-    {60, 46, sTrueEndingAchLabel, sTrueEndingAchDesc, CATEGORY_COMPANIONS}, 
+    {12, 55, CATEGORY_EXPLORATION, FLAG_ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc},
+    {28, 55, CATEGORY_BATTLE, FLAG_ACH_ENHANCED_BATTLE, sEnhancedBattleAchLabel, sEnhancedBattleAchDesc},
+    {57, 55, CATEGORY_COMPANIONS, FLAG_ACH_NEW_REGION_WHO_DIS, sNewRegionWhoDisAchLabel, sNewRegionWhoDisAchDesc},
+    {43, 55, CATEGORY_QUESTING, FLAG_ACH_ADVENTURE_TIME, sAdventureTimeAchLabel, sAdventureTimeAchLabel},
+    {57, 52, CATEGORY_COMPANIONS, FLAG_ACH_TRUE_LOVE, sTrueLoveAchLabel, sTrueLoveAchDesc},
+    {59, 48, CATEGORY_COMPANIONS, FLAG_ACH_SILENT_STRONG_TYPE, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc},
+    {59, 50, CATEGORY_COMPANIONS, FLAG_ACH_CHILDHOOD_FRIEND, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc},
+    {59, 52, CATEGORY_COMPANIONS, FLAG_ACH_FIERY_PASSION, sFieryPassionAchLabel, sFieryPassionAchDesc},
+    {61, 48, CATEGORY_COMPANIONS, FLAG_ACH_NERD_LOVE, sNerdLoveAchLabel, sNerdLoveAchDesc},
+    {61, 50, CATEGORY_COMPANIONS, FLAG_ACH_FWB, sFWBAchLabel, sFWBAchDesc},
+    {61, 52, CATEGORY_COMPANIONS, FLAG_ACH_WET_N_WILD, sWetnWildAchLabel, sWetnWildAchDesc},
+    {60, 46, CATEGORY_COMPANIONS, FLAG_ACH_TRUE_ENDING, sTrueEndingAchLabel, sTrueEndingAchDesc}, 
 };
 
 static const struct WindowTemplate sAtlasWindowTemplate[] =
