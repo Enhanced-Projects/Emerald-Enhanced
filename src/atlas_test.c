@@ -24,6 +24,8 @@ static const u8 sAchievementAtlasPalette[] = INCBIN_U8("graphics/achievement_atl
 static const u8 sAtlasCursorTiles[] = INCBIN_U8("graphics/achievement_atlas/cursor.4bpp");
 static const u16 sAtlasCursorPalette[] = INCBIN_U16("graphics/achievement_atlas/cursor.gbapal");
 
+static const u8 sDescriptionNotAvailable[] = _("Desctiption not available.");
+
 static const u8 sWholeNewWorldAchLabel[] = _("A Whole New World");
 static const u8 sWholeNewWorldAchDesc[] = _("Welcome to Emerald Enhanced.\nExplore to your heart's content!");
 
@@ -232,6 +234,10 @@ static void VBlankCB_Atlas(void);
 static void Task_DrawAtlas(u8);
 static void Task_HandleAtlasInput(u8);
 
+void GiveAchievement(u32 id);
+bool32 CheckAchievement(u32 id);
+void TakeAchievement(u32 id);
+
 struct AchAtlas
 {
     u8 cursorSpriteId;
@@ -241,7 +247,7 @@ struct AchAtlas
     s8 tilemapPosX;
     s8 tilemapPosY;
     bool8 shouldUpdateTilemap;
-    bool8 shouldClearAchText;
+    bool8 isOnAchTile;
 };
 
 EWRAM_DATA static struct AchAtlas sAchAtlas = {0};
@@ -451,90 +457,138 @@ void Task_HandleAtlasInput(u8 taskId)
     DecideActionFromInput(&action);
 
     sAchAtlas.shouldUpdateTilemap = FALSE;
-    
-    switch(action)
+    if(!gTasks[taskId].data[1])
     {
-    case 0:
-    default:
-        break;
-    case 1:
-        gSprites[spriteId].data[0] = action;
-        gSprites[spriteId].data[1] = speed;
-        sAchAtlas.cursorX -= speed / 8;
-        if(sAchAtlas.cursorX < 1)
-            sAchAtlas.cursorX = 1;
-        if(sAchAtlas.tilemapPosX != 0 && sAchAtlas.cursorX <= (10 + sAchAtlas.tilemapPosX))
+        switch(action)
         {
-            gSprites[spriteId].data[0] = 0;
-            //sAchAtlas.cursorX = 10;
-            sAchAtlas.tilemapPosX -= speed / 8;
-            if(sAchAtlas.tilemapPosX < 0)
-                sAchAtlas.tilemapPosX = 0;
-            sAchAtlas.shouldUpdateTilemap = TRUE;
+        case 0:
+        default:
+            break;
+        case 1:
+            gSprites[spriteId].data[0] = action;
+            gSprites[spriteId].data[1] = speed;
+            sAchAtlas.cursorX -= speed / 8;
+            if(sAchAtlas.cursorX < 1)
+                sAchAtlas.cursorX = 1;
+            if(sAchAtlas.tilemapPosX != 0 && sAchAtlas.cursorX <= (10 + sAchAtlas.tilemapPosX))
+            {
+                gSprites[spriteId].data[0] = 0;
+                //sAchAtlas.cursorX = 10;
+                sAchAtlas.tilemapPosX -= speed / 8;
+                if(sAchAtlas.tilemapPosX < 0)
+                    sAchAtlas.tilemapPosX = 0;
+                sAchAtlas.shouldUpdateTilemap = TRUE;
+            }
+            break;
+        case 2:
+            gSprites[spriteId].data[0] = action;
+            gSprites[spriteId].data[1] = speed;
+            sAchAtlas.cursorX += speed / 8;
+            if(sAchAtlas.cursorX >= TEMP_TEST_ATLAS_WIDTH-2)
+                sAchAtlas.cursorX = TEMP_TEST_ATLAS_WIDTH-2;
+            if(sAchAtlas.tilemapPosX != TEMP_TEST_ATLAS_WIDTH-30 && sAchAtlas.cursorX >= (20 + sAchAtlas.tilemapPosX))
+            {
+                gSprites[spriteId].data[0] = 0;
+                //sAchAtlas.cursorX = 20;
+                sAchAtlas.tilemapPosX += speed / 8;
+                if(sAchAtlas.tilemapPosX >= TEMP_TEST_ATLAS_WIDTH-30)
+                    sAchAtlas.tilemapPosX = TEMP_TEST_ATLAS_WIDTH-30;
+                sAchAtlas.shouldUpdateTilemap = TRUE;
+            }
+            break;
+        case 3:
+            gSprites[spriteId].data[0] = action;
+            gSprites[spriteId].data[1] = speed;
+            sAchAtlas.cursorY -= speed / 8;
+            if(sAchAtlas.cursorY < 1)
+                sAchAtlas.cursorY = 1;
+            if(sAchAtlas.tilemapPosY != 0 && sAchAtlas.cursorY <= (5 + sAchAtlas.tilemapPosY))
+            {
+                gSprites[spriteId].data[0] = 0;
+                //sAchAtlas.cursorY = 5;
+                sAchAtlas.tilemapPosY -= speed / 8;
+                if(sAchAtlas.tilemapPosY < 0)
+                    sAchAtlas.tilemapPosY = 0;
+                sAchAtlas.shouldUpdateTilemap = TRUE;
+            }
+            break;
+        case 4:
+            gSprites[spriteId].data[0] = action;
+            gSprites[spriteId].data[1] = speed;
+            sAchAtlas.cursorY += speed / 8;
+            if(sAchAtlas.cursorY >= TEMP_TEST_ATLAS_HEIGHT-2)
+                sAchAtlas.cursorY = TEMP_TEST_ATLAS_HEIGHT-2;
+            if(sAchAtlas.tilemapPosY != TEMP_TEST_ATLAS_HEIGHT-20 && sAchAtlas.cursorY >= (15 + sAchAtlas.tilemapPosY))
+            {
+                gSprites[spriteId].data[0] = 0;
+                //sAchAtlas.cursorY = 15;
+                sAchAtlas.tilemapPosY += speed / 8;
+                if(sAchAtlas.tilemapPosY >= TEMP_TEST_ATLAS_HEIGHT-20)
+                    sAchAtlas.tilemapPosY = TEMP_TEST_ATLAS_HEIGHT-20;
+                sAchAtlas.shouldUpdateTilemap = TRUE;   
+            }
+            break;
         }
-        break;
-    case 2:
-        gSprites[spriteId].data[0] = action;
-        gSprites[spriteId].data[1] = speed;
-        sAchAtlas.cursorX += speed / 8;
-        if(sAchAtlas.cursorX >= TEMP_TEST_ATLAS_WIDTH-2)
-            sAchAtlas.cursorX = TEMP_TEST_ATLAS_WIDTH-2;
-        if(sAchAtlas.tilemapPosX != TEMP_TEST_ATLAS_WIDTH-30 && sAchAtlas.cursorX >= (20 + sAchAtlas.tilemapPosX))
-        {
-            gSprites[spriteId].data[0] = 0;
-            //sAchAtlas.cursorX = 20;
-            sAchAtlas.tilemapPosX += speed / 8;
-            if(sAchAtlas.tilemapPosX >= TEMP_TEST_ATLAS_WIDTH-30)
-                sAchAtlas.tilemapPosX = TEMP_TEST_ATLAS_WIDTH-30;
-            sAchAtlas.shouldUpdateTilemap = TRUE;
-        }
-        break;
-    case 3:
-        gSprites[spriteId].data[0] = action;
-        gSprites[spriteId].data[1] = speed;
-        sAchAtlas.cursorY -= speed / 8;
-        if(sAchAtlas.cursorY < 1)
-            sAchAtlas.cursorY = 1;
-        if(sAchAtlas.tilemapPosY != 0 && sAchAtlas.cursorY <= (5 + sAchAtlas.tilemapPosY))
-        {
-            gSprites[spriteId].data[0] = 0;
-            //sAchAtlas.cursorY = 5;
-            sAchAtlas.tilemapPosY -= speed / 8;
-            if(sAchAtlas.tilemapPosY < 0)
-                sAchAtlas.tilemapPosY = 0;
-            sAchAtlas.shouldUpdateTilemap = TRUE;
-        }
-        break;
-    case 4:
-        gSprites[spriteId].data[0] = action;
-        gSprites[spriteId].data[1] = speed;
-        sAchAtlas.cursorY += speed / 8;
-        if(sAchAtlas.cursorY >= TEMP_TEST_ATLAS_HEIGHT-2)
-            sAchAtlas.cursorY = TEMP_TEST_ATLAS_HEIGHT-2;
-        if(sAchAtlas.tilemapPosY != TEMP_TEST_ATLAS_HEIGHT-20 && sAchAtlas.cursorY >= (15 + sAchAtlas.tilemapPosY))
-        {
-            gSprites[spriteId].data[0] = 0;
-            //sAchAtlas.cursorY = 15;
-            sAchAtlas.tilemapPosY += speed / 8;
-            if(sAchAtlas.tilemapPosY >= TEMP_TEST_ATLAS_HEIGHT-20)
-                sAchAtlas.tilemapPosY = TEMP_TEST_ATLAS_HEIGHT-20;
-            sAchAtlas.shouldUpdateTilemap = TRUE;   
-        }
-        break;
     }
     UpdateAtlasScroll();
     if(action != 0)
+    {
+        gTasks[taskId].data[0] = action;
         gTasks[taskId].func = Task_UpdateAtlasStatus;
+    }
 }
 
 void Task_UpdateAtlasStatus(u8 taskId)
 {
-    struct WindowTemplate window;
+    u32 action = gTasks[taskId].data[0];
     u8 spriteId = sAchAtlas.cursorSpriteId;
     u32 achTileId;
     u32 i;
     u32 stringWidth;
-    
+    if(sAchAtlas.isOnAchTile)
+    {
+        if(action == 6 && gTasks[taskId].data[1])
+        {
+            ClearStdWindowAndFrameToTransparent(WIN_ACH_DESC, TRUE);
+            gTasks[taskId].data[1] = FALSE;
+            gTasks[taskId].func = Task_HandleAtlasInput;
+            return;
+        }
+        else if(action == 5 && !gTasks[taskId].data[1])
+        {
+            for(i = 0; i < ARRAY_COUNT(sTestAtlasData); i++)
+            {
+                if(sTestAtlasData[i].x == sAchAtlas.cursorX && sTestAtlasData[i].y == sAchAtlas.cursorY)
+                {
+                    
+                    gTasks[taskId].data[1] = TRUE; 
+                    DrawStdWindowFrame(WIN_ACH_DESC, TRUE);
+                    if(CheckAchievement(sTestAtlasData[i].flagId))
+                    {
+                        StringExpandPlaceholders(gStringVar4, sTestAtlasData[i].descString);
+                        AddTextPrinterParameterized3(WIN_ACH_DESC, 0, 0, 0, sTextColors[sTestAtlasData[i].category], 0, gStringVar4);
+                    }
+                    else
+                    {
+                        AddTextPrinterParameterized3(WIN_ACH_DESC, 0, 0, 0, sTextColors[0], 0, sDescriptionNotAvailable);
+                    }
+                    
+                }
+            }
+            gTasks[taskId].func = Task_HandleAtlasInput;
+            return;
+        }
+        else if((action == 6 && !gTasks[taskId].data[1]) || (action == 5 && gTasks[taskId].data[1]))
+        {
+            gTasks[taskId].func = Task_HandleAtlasInput;
+            return;
+        }
+        else if(gTasks[taskId].data[1])
+        {
+            gTasks[taskId].func = Task_HandleAtlasInput;
+            return;
+        }
+    }
     for(i = 0; i < ARRAY_COUNT(sTestAtlasData); i++)
     {
         if(sTestAtlasData[i].x == sAchAtlas.cursorX && sTestAtlasData[i].y == sAchAtlas.cursorY)
@@ -555,11 +609,8 @@ void Task_UpdateAtlasStatus(u8 taskId)
             stringWidth = GetStringWidth(0, sTestAtlasData[i].nameString, 0);
             SetWindowAttribute(WIN_ACH_LABEL, WINDOW_WIDTH, (stringWidth + 7) / 8);
             DrawStdWindowFrame(WIN_ACH_LABEL, TRUE);
-            DrawStdWindowFrame(WIN_ACH_DESC, TRUE);
-            sAchAtlas.shouldClearAchText = TRUE;
+            sAchAtlas.isOnAchTile = TRUE;
             AddTextPrinterParameterized3(WIN_ACH_LABEL, 0, 0, 0, sTextColors[sTestAtlasData[i].category], 0, sTestAtlasData[i].nameString);
-            StringExpandPlaceholders(gStringVar4, sTestAtlasData[i].descString);
-            AddTextPrinterParameterized3(WIN_ACH_DESC, 0, 0, 0, sTextColors[sTestAtlasData[i].category], 0, gStringVar4);
             achTileId = i;
             break;
         }
@@ -567,19 +618,28 @@ void Task_UpdateAtlasStatus(u8 taskId)
     }
     if(achTileId == -1u)
     {
-        if(sAchAtlas.shouldClearAchText)
+        if(sAchAtlas.isOnAchTile)
         {
             ClearStdWindowAndFrameToTransparent(WIN_ACH_LABEL, TRUE);
             ClearStdWindowAndFrameToTransparent(WIN_ACH_DESC, TRUE);
         }
-        sAchAtlas.shouldClearAchText = FALSE;
+        sAchAtlas.isOnAchTile = FALSE;
         StartSpriteAnimIfDifferent(&gSprites[spriteId], 0);
     }
+
     gTasks[taskId].func = Task_HandleAtlasInput;
 }
 
 void DecideActionFromInput(u32 * action)
 {
+    if(JOY_NEW(SELECT_BUTTON) && JOY_HELD(B_BUTTON) && JOY_HELD(A_BUTTON))
+    {
+        GiveAchievement(0);
+        GiveAchievement(1);
+        GiveAchievement(2);
+        GiveAchievement(3);
+        GiveAchievement(4);
+    }
     if(JOY_NEW(DPAD_LEFT))
         *action = 1;
     else if(JOY_HELD(DPAD_LEFT)) 
@@ -644,7 +704,12 @@ void DecideActionFromInput(u32 * action)
     {
         sAchAtlas.cursorHeldCounter -= 5;
         if(sAchAtlas.cursorHeldCounter < 10) sAchAtlas.cursorHeldCounter = 1;
-    }   
+    }
+
+    if(JOY_NEW(A_BUTTON))
+        *action = 5;
+    else if(JOY_NEW(B_BUTTON))
+        *action = 6;
 }
 
 void UpdateAtlasScroll(void)
@@ -701,4 +766,28 @@ void AtlasCursorSpriteCB(struct Sprite *sprite)
             break;
     }
     sprite->data[0] = 0;
+}
+
+void GiveAchievement(u32 id)
+{
+    if(id > ACH_FLAGS_COUNT)
+        return;
+
+    gSaveBlock2Ptr->achFlags[id / 8] |= 1 << (id % 8);
+}
+
+bool32 CheckAchievement(u32 id)
+{
+    if(id > ACH_FLAGS_COUNT)
+        return FALSE;
+
+    return !!((gSaveBlock2Ptr->achFlags[id / 8] >> (id % 8)) & 1);
+}
+
+void TakeAchievement(u32 id)
+{
+    if(id > ACH_FLAGS_COUNT)
+        return;
+        
+    gSaveBlock2Ptr->achFlags[id / 8] &= ~(1 << (id % 8));
 }
