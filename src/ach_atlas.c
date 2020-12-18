@@ -37,7 +37,7 @@ static const u8 sAchievementAtlasBorderTilemap[] = INCBIN_U8("graphics/achieveme
 static const u8 sAtlasCursorTiles[] = INCBIN_U8("graphics/achievement_atlas/cursor.4bpp");
 static const u16 sAtlasCursorPalette[] = INCBIN_U16("graphics/achievement_atlas/cursor.gbapal");
 
-static const u8 sDescriptionNotAvailable[] = _("{COLOR LIGHT_GREY}{SHADOW LIGHT_RED}Locked.");
+static const u8 sDescriptionNotAvailable[] = _("{COLOR LIGHT_GREY}{SHADOW RED}Locked.");
 
 #include "data/achievements.h"
 
