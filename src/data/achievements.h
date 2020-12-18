@@ -36,16 +36,16 @@ static const u8 sTrueEndingAchDesc[] = _("You're quite the lady killer, eh?\n {C
 
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
-    {12, 55, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc},
-    {28, 55, CATEGORY_BATTLE, ACH_ENHANCED_BATTLE, sEnhancedBattleAchLabel, sEnhancedBattleAchDesc},
-    {57, 55, CATEGORY_COMPANIONS, ACH_NEW_REGION_WHO_DIS, sNewRegionWhoDisAchLabel, sNewRegionWhoDisAchDesc},
-    {43, 55, CATEGORY_QUESTING, ACH_ADVENTURE_TIME, sAdventureTimeAchLabel, sAdventureTimeAchDesc},
-    {57, 52, CATEGORY_COMPANIONS, ACH_TRUE_LOVE, sTrueLoveAchLabel, sTrueLoveAchDesc},
-    {59, 48, CATEGORY_COMPANIONS, ACH_SILENT_STRONG_TYPE, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc},
-    {59, 50, CATEGORY_COMPANIONS, ACH_CHILDHOOD_FRIEND, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc},
-    {59, 52, CATEGORY_COMPANIONS, ACH_FIERY_PASSION, sFieryPassionAchLabel, sFieryPassionAchDesc},
-    {61, 48, CATEGORY_COMPANIONS, ACH_NERD_LOVE, sNerdLoveAchLabel, sNerdLoveAchDesc},
-    {61, 50, CATEGORY_COMPANIONS, ACH_FWB, sFWBAchLabel, sFWBAchDesc},
-    {61, 52, CATEGORY_COMPANIONS, ACH_WET_N_WILD, sWetnWildAchLabel, sWetnWildAchDesc},
-    {60, 46, CATEGORY_COMPANIONS, ACH_TRUE_ENDING, sTrueEndingAchLabel, sTrueEndingAchDesc}, 
+    [ACH_WHOLE_NEW_WORLD] = {12, 55, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc},
+    [ACH_ENHANCED_BATTLE] = {28, 55, CATEGORY_BATTLE, ACH_ENHANCED_BATTLE, sEnhancedBattleAchLabel, sEnhancedBattleAchDesc},
+    [ACH_NEW_REGION_WHO_DIS] = {57, 55, CATEGORY_COMPANIONS, ACH_NEW_REGION_WHO_DIS, sNewRegionWhoDisAchLabel, sNewRegionWhoDisAchDesc},
+    [ACH_ADVENTURE_TIME] = {43, 55, CATEGORY_QUESTING, ACH_ADVENTURE_TIME, sAdventureTimeAchLabel, sAdventureTimeAchDesc},
+    [ACH_TRUE_LOVE] = {57, 52, CATEGORY_COMPANIONS, ACH_TRUE_LOVE, sTrueLoveAchLabel, sTrueLoveAchDesc},
+    [ACH_SILENT_STRONG_TYPE] = {59, 48, CATEGORY_COMPANIONS, ACH_SILENT_STRONG_TYPE, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc},
+    [ACH_CHILDHOOD_FRIEND] = {59, 50, CATEGORY_COMPANIONS, ACH_CHILDHOOD_FRIEND, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc},
+    [ACH_FIERY_PASSION] = {59, 52, CATEGORY_COMPANIONS, ACH_FIERY_PASSION, sFieryPassionAchLabel, sFieryPassionAchDesc},
+    [ACH_NERD_LOVE] = {61, 48, CATEGORY_COMPANIONS, ACH_NERD_LOVE, sNerdLoveAchLabel, sNerdLoveAchDesc},
+    [ACH_FWB] = {61, 50, CATEGORY_COMPANIONS, ACH_FWB, sFWBAchLabel, sFWBAchDesc},
+    [ACH_WET_N_WILD] = {61, 52, CATEGORY_COMPANIONS, ACH_WET_N_WILD, sWetnWildAchLabel, sWetnWildAchDesc},
+    [ACH_TRUE_ENDING] = {60, 46, CATEGORY_COMPANIONS, ACH_TRUE_ENDING, sTrueEndingAchLabel, sTrueEndingAchDesc}, 
 };
