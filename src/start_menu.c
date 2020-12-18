@@ -48,6 +48,7 @@
 #include "field_message_box.h"
 #include "constants/event_objects.h"
 #include "rtc.h"
+#include "ach_atlas.h"
 #include "gba/m4a_internal.h"
 
 static EWRAM_DATA u8 MenuSpriteId1 = 0;
@@ -1243,8 +1244,6 @@ static bool8 HandleStartMenuInput(void)
 
     return FALSE;
 }
-
-void CB2_OpenAtlas(void);
 
 bool8 StartMenuAtlasCallback(void)
 {
