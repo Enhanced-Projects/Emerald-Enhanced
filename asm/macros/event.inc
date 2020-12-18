@@ -1753,6 +1753,13 @@
 	.2byte \recipe
 	.endm
 
+	@Will give, take, or set VAR_RESULT to value of, achievement id.
+	.macro ach mode:req, id:req
+	.byte 0xf9
+	.byte \mode
+	.byte \id
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

@@ -62,7 +62,8 @@ RyuDebug_UtilitiesMenu:
 	case 8, RyuDebug_HealParty
 	case 9, RyuDebug_SaveFileDebug
 	case 10, RyuDebug_FillTheDex
-	case 11, RyuDebug_menu_nodevcheck
+	case 11, RDB_GiveOrTakeAllAchievements
+	case 12, RyuDebug_menu_nodevcheck
 	goto RyuDebug_cancel
 
 RyuDebug_giveAllBadges::
@@ -214,6 +215,32 @@ RDB_TempVarsViewMsg:
 RyuDebug_Utility1::
 	release
 	end
+
+RDB_GiveOrTakeAllAchievements::
+	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq RDB_GiveAllAch
+	goto RDB_TakeAllAch
+
+RDB_TakeAllAch::
+	setvar VAR_TEMP_B, 0
+	callnative Ryu_GiveOrTakeAllAchievments
+	msgbox RDB_Finished
+	release
+	end
+
+RDB_GiveAllAch::
+	setvar VAR_TEMP_B, 69
+	callnative Ryu_GiveOrTakeAllAchievments
+	msgbox RDB_Finished
+	release
+	end
+
+RDB_Finished:
+	.string "Finished giving or taking ach's.$"
+
+RDB_GiveTakeAchMsg::
+	.string "Select yes to give\nor no to take all achievements.$"
 
 RDB_Text:
 	.string "test$"

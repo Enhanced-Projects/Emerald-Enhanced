@@ -20,6 +20,8 @@
 #include "constants/flags.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "event_data.h"
+#include "script.h"
 
 static const u8 sAchievementAtlasTileset[] = INCBIN_U8("graphics/achievement_atlas/achievement_atlas.4bpp");
 static const u16 sAchievementAtlasTilemap[] = INCBIN_U16("graphics/achievement_atlas/achievement_atlas.bin");
@@ -28,7 +30,7 @@ static const u8 sAchievementAtlasPalette[] = INCBIN_U8("graphics/achievement_atl
 static const u8 sAtlasCursorTiles[] = INCBIN_U8("graphics/achievement_atlas/cursor.4bpp");
 static const u16 sAtlasCursorPalette[] = INCBIN_U16("graphics/achievement_atlas/cursor.gbapal");
 
-static const u8 sDescriptionNotAvailable[] = _("Desctiption not available.");
+static const u8 sDescriptionNotAvailable[] = _("{COLOR LIGHT_GREY}{SHADOW LIGHT_RED}Locked.");
 
 #include "data/achievements.h"
 
@@ -675,6 +677,52 @@ static void AtlasCursorSpriteCB(struct Sprite *sprite)
             break;
     }
     sprite->data[0] = ACTION_NONE;
+}
+
+void Ryu_GiveOrTakeAllAchievments(void)
+{
+    u8 current = 0;
+
+    if (VarGet(VAR_TEMP_B) == 69)
+    {
+        do
+        {
+            GiveAchievement(current);
+            current++;
+        } while(current < 255);
+    }
+    else
+    {
+        do
+        {
+            TakeAchievement(current);
+            current++;
+        } while (current < 255);
+        
+    }
+    
+}
+
+bool8 ScrCmd_ach(struct ScriptContext *ctx)// sorry for hacky solution, but we are nearly out of script commands.
+{
+    u8 mode = ScriptReadByte(ctx);
+    u8 id = ScriptReadByte(ctx);
+
+    switch (mode)
+    {
+    case 0:
+            GiveAchievement(id);
+            return FALSE;
+    case 1:
+            TakeAchievement(id);
+            return FALSE;
+    case 2:
+            gSpecialVar_Result = (CheckAchievement(id));
+            return FALSE;
+    default:
+            return FALSE;
+    }
+    
 }
 
 void GiveAchievement(u32 id)
