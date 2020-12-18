@@ -630,7 +630,7 @@ const struct Item gItems[] =
     {
         .name = _("Moomoo Milk"),
         .itemId = ITEM_MOOMOO_MILK,
-        .price = 500,
+        .price = 750,
         .holdEffectParam = 100,
         .description = sMoomooMilkDesc,
         .pocket = POCKET_MEDICINE,
@@ -5669,7 +5669,7 @@ const struct Item gItems[] =
     {
         .name = _("Muscle Band"),
         .itemId = ITEM_MUSCLE_BAND,
-        .price = 200,
+        .price = 10000,
         .holdEffect = HOLD_EFFECT_MUSCLE_BAND,
         .holdEffectParam = 10,
         .description = sMuscleBandDesc,
@@ -5683,7 +5683,7 @@ const struct Item gItems[] =
     {
         .name = _("Wise Glasses"),
         .itemId = ITEM_WISE_GLASSES,
-        .price = 200,
+        .price = 10000,
         .holdEffect = HOLD_EFFECT_WISE_GLASSES,
         .holdEffectParam = 10,
         .description = sWiseGlassesDesc,
@@ -8026,6 +8026,32 @@ const struct Item gItems[] =
         .price = 500,
         .description = sJungleBeansDesc,
         .pocket = POCKET_COLLECTIBLES,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_TASTY_LEAF] =
+    {
+        .name = _("Tasty Leaf"),
+        .itemId = ITEM_TASTY_LEAF,
+        .price = 50,
+        .description = sTastyLeafDesc,
+        .pocket = POCKET_COLLECTIBLES,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_BOXING_GLOVE] =
+    {
+        .name = _("Boxing Glove"),
+        .itemId = ITEM_BOXING_GLOVE,
+        .price = 10000,
+        .holdEffect = HOLD_EFFECT_BOXING_GLOVE,
+        .holdEffectParam = 20,
+        .description = sBoxingGloveDesc,
+        .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,

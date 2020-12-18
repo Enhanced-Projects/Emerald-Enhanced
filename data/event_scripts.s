@@ -1201,3 +1201,9 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/StoryMap_KyogreChase/scripts.inc"
 
 	.include "data/maps/AquaSubmarine/scripts.inc"
+
+	.include "data/maps/Route121_BananaSlakothGardenEntrance/scripts.inc"
+
+	.include "data/maps/BananaSlakothGarden/scripts.inc"
+
+	.include "data/maps/BananaSlakothGarden_South/scripts.inc"

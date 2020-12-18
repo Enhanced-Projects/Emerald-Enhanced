@@ -361,7 +361,8 @@
     "Route117_PokemonDayCare"
   ],
   "gMapGroup23": [
-    "Route121_SafariZoneEntrance"
+    "Route121_SafariZoneEntrance",
+    "Route121_BananaSlakothGardenEntrance"
   ],
   "gMapGroup24": [
     "MeteorFalls_1F_1R",
@@ -637,7 +638,9 @@
     "NavelRock_Down11",
     "NavelRock_Bottom",
     "TrainerHill_Elevator",
-    "SafariZone_HiddenGrotto"
+    "SafariZone_HiddenGrotto",
+    "BananaSlakothGarden",
+    "BananaSlakothGarden_South"
   ],
   "gMapGroup27": [
     "SnowyShoreUnderwater",

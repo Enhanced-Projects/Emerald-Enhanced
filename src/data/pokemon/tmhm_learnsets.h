@@ -15514,6 +15514,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM06_TOXIC)),
 
     [SPECIES_COBALION]    = TMHM_LEARNSET(TMHM(TM40_AERIAL_ACE)
+											| TMHM(TM08_BULK_UP)
 											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM42_FACADE)
@@ -15535,6 +15536,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM06_TOXIC)),
 
     [SPECIES_TERRAKION]   = TMHM_LEARNSET(TMHM(TM40_AERIAL_ACE)
+											| TMHM(TM08_BULK_UP)
 											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM56_EARTH_POWER)
@@ -15560,6 +15562,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM06_TOXIC)),
 
     [SPECIES_VIRIZION]    = TMHM_LEARNSET(TMHM(TM40_AERIAL_ACE)
+											| TMHM(TM08_BULK_UP)
 											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM42_FACADE)
@@ -15728,6 +15731,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM06_TOXIC)),
 
     [SPECIES_KELDEO]      = TMHM_LEARNSET(TMHM(TM40_AERIAL_ACE)
+											| TMHM(TM08_BULK_UP)
 											| TMHM(TM04_CALM_MIND)
 											| TMHM(TM32_DOUBLE_TEAM)
 											| TMHM(TM42_FACADE)

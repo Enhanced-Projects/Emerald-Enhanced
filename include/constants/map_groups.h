@@ -330,7 +330,8 @@
 #define MAP_ROUTE117_POKEMON_DAY_CARE (0 | (22 << 8))
 
 // Map Group 23
-#define MAP_ROUTE121_SAFARI_ZONE_ENTRANCE (0 | (23 << 8))
+#define MAP_ROUTE121_SAFARI_ZONE_ENTRANCE           (0 | (23 << 8))
+#define MAP_ROUTE121_BANANA_SLAKOTH_GARDEN_ENTRANCE (1 | (23 << 8))
 
 // Map Group 24
 #define MAP_METEOR_FALLS_1F_1R                       (0 | (24 << 8))
@@ -607,6 +608,8 @@
 #define MAP_NAVEL_ROCK_BOTTOM                               (87 | (26 << 8))
 #define MAP_TRAINER_HILL_ELEVATOR                           (88 | (26 << 8))
 #define MAP_SAFARI_ZONE_HIDDEN_GROTTO                       (89 | (26 << 8))
+#define MAP_BANANA_SLAKOTH_GARDEN                           (90 | (26 << 8))
+#define MAP_BANANA_SLAKOTH_GARDEN_SOUTH                     (91 | (26 << 8))
 
 // Map Group 27
 #define MAP_SNOWY_SHORE_UNDERWATER        (0 | (27 << 8))

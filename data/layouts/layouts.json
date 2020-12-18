@@ -5300,6 +5300,36 @@
       "secondary_tileset": "gTileset_InsideShip",
       "border_filepath": "data/layouts/AquaSubmarine/border.bin",
       "blockdata_filepath": "data/layouts/AquaSubmarine/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE121_BANANA_SLAKOTH_GARDEN_ENTRANCE",
+      "name": "Route121_BananaSlakothGardenEntrance_Layout",
+      "width": 14,
+      "height": 14,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Shop",
+      "border_filepath": "data/layouts/Route121_BananaSlakothGardenEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/Route121_BananaSlakothGardenEntrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_BANANA_SLAKOTH_GARDEN",
+      "name": "BananaSlakothGarden_Layout",
+      "width": 30,
+      "height": 43,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/BananaSlakothGarden/border.bin",
+      "blockdata_filepath": "data/layouts/BananaSlakothGarden/map.bin"
+    },
+    {
+      "id": "LAYOUT_BANANA_SLAKOTH_GARDEN_SOUTH",
+      "name": "BananaSlakothGarden_South_Layout",
+      "width": 30,
+      "height": 17,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/BananaSlakothGarden_South/border.bin",
+      "blockdata_filepath": "data/layouts/BananaSlakothGarden_South/map.bin"
     }
   ]
 }

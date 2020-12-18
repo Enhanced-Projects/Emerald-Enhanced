@@ -6958,6 +6958,10 @@ extern const u32 gItemIcon_ChimneyPepper[];
 extern const u32 gItemIconPalette_ChimneyPepper[];
 extern const u32 gItemIcon_JungleBeans[];
 extern const u32 gItemIconPalette_JungleBeans[];
+extern const u32 gItemIcon_TastyLeaf[];
+extern const u32 gItemIconPalette_TastyLeaf[];
+extern const u32 gItemIcon_BoxingGlove[];
+extern const u32 gItemIconPalette_BoxingGlove[];
 
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];

@@ -1,54 +1,5 @@
 @Scripts for the botany skill
 
-@The script for botany teacher
-RyuBotany_Teacher::
-    compare VAR_RYU_PLAYER_BOTANY_SKILL, 1
-    goto_if_ge RyuBotany_AlreadyTaught
-    msgbox BotanyIntro
-    closemessage
-    specialvar VAR_RESULT, CountBadges
-    compare VAR_RESULT, 2
-    goto_if_lt RyuBotany_TeacherNoBadges
-    msgbox RyuBotany_TeachBotany
-    closemessage
-    setvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
-    setvar VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 0
-    release
-    end
-
-RyuBotany_AlreadyTaught:
-    msgbox RyuBotany_LearnCutQuery, MSGBOX_YESNO
-    compare VAR_RESULT, YES
-    goto_if_eq RyuBotany_CutTutor
-    msgbox RB_AlreadyTaughtMsg
-    closemessage
-    release
-    end
-
-RyuBotany_TeacherNoBadges:
-    msgbox RB_NotEnoughBadgesMsg
-    closemessage
-    release
-    end
-
-RB_NotEnoughBadgesMsg:  @This is the message shown when player does not have the skill and does not have at least 2 badges.
-    .string "Not enough Badges$"
-
-BotanyIntro:  @This is an explanation of the botany skill.
-    .string "Intro$"
-
-RB_AlreadyTaughtMsg: @This is the message that will show up when you've already learned the skill and talk to the guy.
-    .string "Already Taught$"
-
-RyuBotany_TeachBotany:  @This message shows while the player is 'learning' botany.
-    .string "Teaching...$"
-
-RyuBotany_LearnCutQuery:
-    .string "Do you need Cut tutoring?$"
-
-@The script for the botany teacher is: RyuBotany_CutTutor
-@It can be found in data/scripts/move_tutors.inc
-
 @The main script called when using cut on grass
 RyuScript_FieldCut::
     setvar VAR_TEMP_5, 1

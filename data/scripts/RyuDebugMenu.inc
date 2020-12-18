@@ -213,6 +213,11 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_BADGE02_GET
+	setflag FLAG_BADGE03_GET
+	setflag FLAG_BADGE04_GET
+	msgbox RDB_Text
 	release
 	end
 
@@ -243,7 +248,7 @@ RDB_GiveTakeAchMsg::
 	.string "Select yes to give\nor no to take all achievements.$"
 
 RDB_Text:
-	.string "test$"
+	.string "Gained 4 badges.$"
 
 RyuDebug_SaveFileDebug::
 	special CheckSaveFileSize
@@ -401,14 +406,14 @@ RyuDebug_GiveAllBeginMsg:
 RyuDebug_quickstart::
 	givemon SPECIES_MEGA_MEWTWO_Y, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
 	givemon SPECIES_MEGA_RAYQUAZA, BASE_MAX_LEVEL, ITEM_SCOPE_LENS
-	setmonmove 1, 0, MOVE_FLY
-	setmonmove 1, 1, MOVE_CRUNCH
-	setmonmove 1, 2, MOVE_SACRED_SWORD
-	setmonmove 1, 3, MOVE_DRAGON_CLAW
-	setmonmove 0, 0, MOVE_MOONBLAST
-	setmonmove 0, 1, MOVE_THUNDERBOLT
-	setmonmove 0, 2, MOVE_SLUDGE_BOMB
-	setmonmove 0, 3, MOVE_MIRROR_SHOT
+	setmonmove 1, 0, MOVE_OBLIVION_WING
+	setmonmove 1, 1, MOVE_SPACIAL_REND
+	setmonmove 1, 2, MOVE_BEAK_BLAST
+	setmonmove 1, 3, MOVE_EARTHQUAKE
+	setmonmove 0, 0, MOVE_PSYSTRIKE
+	setmonmove 0, 1, MOVE_DRAINING_KISS
+	setmonmove 0, 2, MOVE_AURA_SPHERE
+	setmonmove 0, 3, MOVE_PARABOLIC_CHARGE
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_3, 0

@@ -2979,3 +2979,13 @@ static const u8 sJungleBeansDesc[] = _(
     "Caffeine rich cacoa\n"
     "from the jungle.\n"
     "Used in recipes.");
+
+static const u8 sTastyLeafDesc[] = _(
+    "A nutritious leaf\n"
+    "dropped from a tree.\n"
+    "Enjoyed by Slakoth.");
+
+static const u8 sBoxingGloveDesc[] = _(
+    "A boxing glove that\n"
+    "boosts the power of\n"
+    "punching moves.");

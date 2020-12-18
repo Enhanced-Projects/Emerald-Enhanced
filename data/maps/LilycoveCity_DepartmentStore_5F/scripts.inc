@@ -74,36 +74,24 @@ LilycoveCity_DepartmentStore_5F_EventScript_ClerkMidRight:: @ 822000A
 	faceplayer
 	message LCC_BATTLE_ITEM_MSG
 	waitmessage
-	pokemart LCC_BattleItemMart
+	pokemart LCC_BattleItemMart1
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 
 	.align 2
-LCC_BattleItemMart: @ 8220024
+LCC_BattleItemMart1: @ 8220024
 	.2byte ITEM_CHOICE_BAND
 	.2byte ITEM_CHOICE_SPECS
     .2byte ITEM_CHOICE_SCARF
 	.2byte ITEM_LIFE_ORB
 	.2byte ITEM_EXPERT_BELT
-	.2byte ITEM_WEAKNESS_POLICY
+	.2byte ITEM_BOXING_GLOVE
 	.2byte ITEM_SCOPE_LENS
-	.2byte ITEM_LEFTOVERS
-	.2byte ITEM_BLACK_SLUDGE
-	.2byte ITEM_ASSAULT_VEST
-	.2byte ITEM_EVIOLITE
-	.2byte ITEM_FOCUS_SASH
-	.2byte ITEM_FOCUS_BAND
-	.2byte ITEM_TOXIC_ORB
-	.2byte ITEM_FLAME_ORB
-	.2byte ITEM_ROCKY_HELMET
 	.2byte ITEM_KINGS_ROCK
 	.2byte ITEM_QUICK_CLAW
 	.2byte ITEM_WIDE_LENS
 	.2byte ITEM_ZOOM_LENS
-	.2byte ITEM_IRON_BALL
-	.2byte ITEM_LAGGING_TAIL
-	.2byte ITEM_AIR_BALLOON
 	.2byte ITEM_NONE
 	release
 	end
@@ -111,19 +99,28 @@ LCC_BattleItemMart: @ 8220024
 LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarRight:: @ 822003A
 	lock
 	faceplayer
-	message gText_HowMayIServeYou
+	message LCC_BATTLE_ITEM_MSG
 	waitmessage
-	pokemart LilycoveCity_DepartmentStore_5F_RegionalSpecialtiesMarket
+	pokemart LCC_BattleItemMart2
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 
 	.align 2
-LilycoveCity_DepartmentStore_5F_RegionalSpecialtiesMarket: @ 8220054
-	.2byte ITEM_BERRY_JUICE
-	.2byte ITEM_SWEET_HEART
-	.2byte ITEM_BIG_MALASADA
-	.2byte ITEM_OLD_GATEAU
+LCC_BattleItemMart2: @ 8220054
+	.2byte ITEM_LEFTOVERS
+	.2byte ITEM_BLACK_SLUDGE
+	.2byte ITEM_ASSAULT_VEST
+	.2byte ITEM_EVIOLITE
+	.2byte ITEM_FOCUS_SASH
+	.2byte ITEM_FOCUS_BAND
+	.2byte ITEM_ROCKY_HELMET
+	.2byte ITEM_AIR_BALLOON
+	.2byte ITEM_IRON_BALL
+	.2byte ITEM_LAGGING_TAIL
+	.2byte ITEM_WEAKNESS_POLICY
+	.2byte ITEM_TOXIC_ORB
+	.2byte ITEM_FLAME_ORB
 	.2byte ITEM_NONE
 	release
 	end

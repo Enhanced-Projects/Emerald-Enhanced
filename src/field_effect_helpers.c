@@ -1052,7 +1052,7 @@ void UpdateSurfBlobFieldEffect(struct Sprite *sprite)
     linkedSprite = &gSprites[objectEvent->spriteId];
     SynchroniseSurfAnim(objectEvent, sprite);
     sub_81556E8(objectEvent, sprite);
-    CreateBobbingEffect(objectEvent, linkedSprite, sprite);
+    //CreateBobbingEffect(objectEvent, linkedSprite, sprite);
     sprite->oam.priority = linkedSprite->oam.priority;
 }
 

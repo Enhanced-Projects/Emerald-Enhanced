@@ -6716,6 +6716,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         if (IS_MOVE_SPECIAL(move))
             MulModifier(&modifier, holdEffectModifier);
         break;
+    case HOLD_EFFECT_BOXING_GLOVE:
+        if (gBattleMoves[move].flags & FLAG_IRON_FIST_BOOST)
+           MulModifier(&modifier, holdEffectModifier);
+        break;
     case HOLD_EFFECT_LUSTROUS_ORB:
         if (gBattleMons[battlerAtk].species == SPECIES_PALKIA && (moveType == TYPE_WATER || moveType == TYPE_DRAGON))
             MulModifier(&modifier, holdEffectModifier);

@@ -12,7 +12,11 @@ Route121_EventScript_MtPyrePierSign:: @ 81F5E06
 Route121_EventScript_SafariZoneSign:: @ 81F5E0F
 	msgbox Route121_Text_SafariZoneSign, MSGBOX_SIGN
 	end
-	
+
+Route121_EventScript_BananaSlakothGardenSign::
+	msgbox Route121_Text_BananaSlakothGardenSign, MSGBOX_SIGN
+	end
+
 R121_CheckMagmaBan::
 	goto_if_unset FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE, ryu_end
 	lockall
@@ -194,3 +198,6 @@ Route121_Text_SafariZoneSign: @ 81F611E
 	.string "“Filled with rare Pokémon!”\n"
 	.string "Safari Zone$"
 
+Route121_Text_BananaSlakothGardenSign:
+	.string "“Yellow delicacies as ripe as they get!”\n"
+	.string "Banana Slakoth Garden$"

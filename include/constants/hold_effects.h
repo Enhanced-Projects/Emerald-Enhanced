@@ -137,7 +137,8 @@
 #define HOLD_EFFECT_PLATE            154
 
 // Custom hold effects
-#define HOLD_EFFECT_DRY_ICE           154
+#define HOLD_EFFECT_DRY_ICE          155
+#define HOLD_EFFECT_BOXING_GLOVE     156
 
 #define HOLD_EFFECT_CHOICE(holdEffect)((holdEffect == HOLD_EFFECT_CHOICE_BAND || holdEffect == HOLD_EFFECT_CHOICE_SCARF || holdEffect == HOLD_EFFECT_CHOICE_SPECS))
 
