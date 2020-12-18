@@ -393,6 +393,12 @@
 #define NUM_MEDICINE_RECIPES 8
 #define NUM_RECIPES (BR_ICE_STONE + 1)
 
-#define EE_GAME_VERSION 7204
+//Hack to make it so I only need one script command to perform all functions. Yes, i know, constants should be capsed, but this is for my sanity since i'll be the
+//one scripting in all the achievements.
+#define give 0
+#define take 1
+#define query 2
+
+#define EE_GAME_VERSION 7205
 
 #endif // GUARD_CONSTANTS_VARS_H

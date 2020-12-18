@@ -48,6 +48,7 @@
 #include "field_message_box.h"
 #include "constants/event_objects.h"
 #include "rtc.h"
+#include "ach_atlas.h"
 #include "gba/m4a_internal.h"
 
 static EWRAM_DATA u8 MenuSpriteId1 = 0;
@@ -114,6 +115,7 @@ static bool8 StartMenuLinkModePlayerNameCallback(void);
 static bool8 StartMenuBattlePyramidRetireCallback(void);
 static bool8 StartMenuBattlePyramidBagCallback(void);
 static bool8 StartMenuDexNavCallback(void);
+static bool8 StartMenuAtlasCallback(void);
 
 // Menu callbacks
 static bool8 SaveStartCallback(void);
@@ -122,7 +124,6 @@ static bool8 BattlePyramidRetireStartCallback(void);
 static bool8 BattlePyramidRetireReturnCallback(void);
 static bool8 BattlePyramidRetireCallback(void); 
 static bool8 HandleStartMenuInput(void);
-
 // Save dialog callbacks
 static u8 SaveConfirmSaveCallback(void);
 static u8 SaveYesNoCallback(void);
@@ -1106,6 +1107,13 @@ static bool8 HandleStartMenuInput(void)
         PlayNextTrack();
     }
 
+    if(gMain.heldKeys & DPAD_RIGHT && gMain.newKeys & SELECT_BUTTON)
+    {
+        gMenuCallback = StartMenuAtlasCallback;
+        FadeScreen(FADE_TO_BLACK, 0);
+        return FALSE;
+    }
+
     if (gMain.newKeys & SELECT_BUTTON)
     {
         if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
@@ -1233,6 +1241,21 @@ static bool8 HandleStartMenuInput(void)
             }
 
         }
+
+    return FALSE;
+}
+
+bool8 StartMenuAtlasCallback(void)
+{
+    if (!gPaletteFade.active)
+    {
+        PlayRainStoppingSoundEffect();
+        RemoveExtraStartMenuWindows();
+        CleanupOverworldWindowsAndTilemaps();
+        SetMainCallback2(CB2_OpenAtlas);
+
+        return TRUE;
+    }
 
     return FALSE;
 }
