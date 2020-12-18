@@ -1107,12 +1107,14 @@ static bool8 HandleStartMenuInput(void)
         PlayNextTrack();
     }
 
+    /*
+    // place holder keycombo
     if(gMain.heldKeys & DPAD_RIGHT && gMain.newKeys & SELECT_BUTTON)
     {
         gMenuCallback = StartMenuAtlasCallback;
         FadeScreen(FADE_TO_BLACK, 0);
         return FALSE;
-    }
+    }*/
 
     if (gMain.newKeys & SELECT_BUTTON)
     {
@@ -1184,6 +1186,9 @@ static bool8 HandleStartMenuInput(void)
         }
 
         gMenuCallback = sStartMenuItems[sCurrentStartMenuActions[sStartMenuCursorPos]].func.u8_void;
+        
+        if(JOY_HELD(L_BUTTON) && gMenuCallback == StartMenuPlayerNameCallback)
+            gMenuCallback = StartMenuAtlasCallback;
 
         if (gMenuCallback != StartMenuSaveCallback
             && gMenuCallback != StartMenuExitCallback
@@ -1330,7 +1335,10 @@ static bool8 StartMenuPlayerNameCallback(void)
         CleanupOverworldWindowsAndTilemaps();
 
         if (IsUpdateLinkStateCBActive() || InUnionRoom())
+        {
             ShowPlayerTrainerCard(CB2_ReturnToFieldWithOpenMenu); // Display trainer card
+
+        }
         else if (FlagGet(FLAG_SYS_FRONTIER_PASS))
             ShowFrontierPass(CB2_ReturnToFieldWithOpenMenu); // Display frontier pass
         else
