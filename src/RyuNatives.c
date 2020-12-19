@@ -1647,3 +1647,23 @@ void RyuBufferNumApricornsForMenu(void)//buffers the number of apricorns player 
     ConvertIntToDecimalStringN(gRyuStringVar3, total6, STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gRyuStringVar4, total7, STR_CONV_MODE_LEFT_ALIGN, 3);
 }
+
+
+void RyuHolidayGiftMonSetData(void)
+{
+    u8 slot = VarGet(VAR_TEMP_E);
+    u8 iv = 31;
+    u8 ability = 2;
+    u8 ribbon[1] = {TRUE};
+
+    SetMonData(&gPlayerParty[slot], MON_DATA_ATK_IV, &iv);
+    SetMonData(&gPlayerParty[slot], MON_DATA_DEF_IV, &iv);
+    SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_IV, &iv);
+    SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_IV, &iv);
+    SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_IV, &iv);
+    SetMonData(&gPlayerParty[slot], MON_DATA_HP_IV, &iv);
+
+    SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &ribbon);
+    SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
+
+}

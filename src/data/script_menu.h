@@ -1258,6 +1258,16 @@ static const struct MenuAction MultiChoiceList_BotanyRefineApricornMenu[]=
     {gText_Exit},
 };
 
+static const struct MenuAction MultiChoiceList_Holiday2020[]=
+{
+    {gText_RyuHolidayKyuremWhite},
+    {gText_RyuHolidayKyuremBlack},
+    {gText_RyuHolidayMagearna},
+    {gText_RyuHolidayVictini},
+    {gText_RyuHolidayMarshadow},
+    {gText_RyuHolidayShaymin},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1431,6 +1441,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BOTANY_CHAPTER_SELECT]      = MULTICHOICE(MultiChoiceList_BotanyBookChapterSelect),
     [MULTI_PBG_TRICK_QUESTION]         = MULTICHOICE(MultiChoiceList_PetalburgGymTrickQuestion),
     [MULTI_BOTANY_APRICORN_MENU]       = MULTICHOICE(MultiChoiceList_BotanyRefineApricornMenu),
+    [MULTI_HOLIDAY_2020]               = MULTICHOICE(MultiChoiceList_Holiday2020),
 };
 
 const u8 *const gStdStrings[] =
