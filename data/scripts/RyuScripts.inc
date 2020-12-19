@@ -2020,3 +2020,96 @@ RyuScript_CheckGivenAchievement::
 
 RS_ACH_RECEIVED:
 	.string "ACHIEVEMENT GET!!!\n{RYU_STR_4}$"
+
+@===================================================================================================Holiday 2020
+
+RyuScript_GiveHolidayGiftMon::
+	msgbox RS_LucyIntro
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_ge RyuScript_NoRoomForHolidayMon
+	multichoice  0, 0, MULTI_HOLIDAY_2020, 1
+	switch VAR_RESULT
+	case 0, RS_HGM01
+	case 1, RS_HGM02
+	case 2, RS_HGM03
+	case 3, RS_HGM04
+	case 4, RS_HGM05
+	case 5, RS_HGM06
+
+RS_HGM01::
+	getpartysize
+	copyvar VAR_TEMP_E, VAR_RESULT
+	givemon SPECIES_KYUREM_WHITE, 30, ITEM_NONE
+	bufferspeciesname 0, SPECIES_KYUREM_WHITE
+	goto RS_HolidayOutro
+
+RS_HGM02::
+	getpartysize
+	copyvar VAR_TEMP_E, VAR_RESULT
+	givemon SPECIES_KYUREM_BLACK 30, ITEM_NONE
+	bufferspeciesname 0, SPECIES_KYUREM_BLACK
+	goto RS_HolidayOutro
+
+RS_HGM03::
+	getpartysize
+	copyvar VAR_TEMP_E, VAR_RESULT
+	givemon SPECIES_MAGEARNA, 30, ITEM_NONE
+	bufferspeciesname 0, SPECIES_MAGEARNA
+	goto RS_HolidayOutro
+
+RS_HGM04::
+	getpartysize
+	copyvar VAR_TEMP_E, VAR_RESULT
+	givemon SPECIES_VICTINI, 30, ITEM_NONE
+	bufferspeciesname 0, SPECIES_VICTINI
+	goto RS_HolidayOutro
+
+RS_HGM05::
+	getpartysize
+	copyvar VAR_TEMP_E, VAR_RESULT
+	givemon SPECIES_MARSHADOW, 30, ITEM_NONE
+	bufferspeciesname 0, SPECIES_MARSHADOW
+	goto RS_HolidayOutro
+
+RS_HGM06::
+	getpartysize
+	copyvar VAR_TEMP_E, VAR_RESULT
+	givemon SPECIES_SHAYMIN_SKY, 30, ITEM_NONE
+	bufferspeciesname 0, SPECIES_SHAYMIN_SKY
+	goto RS_HolidayOutro
+
+RS_HolidayOutro::
+	callnative RyuHolidayGiftMonSetData
+	msgbox RS_HolidayOutroMsg
+	setflag FLAG_RYU_HIDE_HOLIDAY_NPC
+	applymovement 13, LucyExit
+	waitmovement 13
+	removeobject 13
+	release
+	end
+
+LucyExit:
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	
+
+RyuScript_NoRoomForHolidayMon::
+	msgbox RS_HolidayNoSpace
+	release
+	end
+
+RS_HolidayOutroMsg::
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Our lord Ryu thanks you for\nplaying {COLOR LIGHT_GREEN}{SHADOW GREEN}Emerald Enhanced.\p{COLOR LIGHT_RED}{SHADOW RED}Please enjoy your {STR_VAR_1}.$"
+
+RS_HolidayNoSpace::
+	.string "{COLOR LIGHT_RED}{SHADOW RED}You don't have space for\nthe gift. Please make space in\lyour party and return.$"
+
+RS_LucyIntro::
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Greetings, {PLAYER}.\pI have travelled far to\ngive you season's tidings.\pPlease Choose a gift Pokémon\nfrom the list.$"

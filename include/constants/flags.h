@@ -71,7 +71,7 @@
 #define FLAG_RYU_PLAYER_HELPING_DEVON        0x3B
 #define FLAG_OPTIONS_INSTANT_TRANSITION      0x3C
 #define FLAG_RYU_PLAYER_CLEARED_PBG_DOORS    0x3D
-#define FLAG_UNUSED_0x3E                     0x3E
+#define FLAG_RYU_HIDE_HOLIDAY_NPC            0x3E
 #define FLAG_UNUSED_0x3F                     0x3F
 #define FLAG_RYU_PLAYER_HELPING_AQUA         0x40
 #define FLAG_UNUSED_0x41                     0x41

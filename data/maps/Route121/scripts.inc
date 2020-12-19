@@ -6,7 +6,7 @@ Route121_EventScript_Blocker::
 	end
 
 Route121_Text_Unfinished:
-	.string "This area will be available in\"
+	.string "This area will be available in\n"
 	.string "the next update.$"
 
 Route121_EventScript_Woman:: @ 81F5DFD
