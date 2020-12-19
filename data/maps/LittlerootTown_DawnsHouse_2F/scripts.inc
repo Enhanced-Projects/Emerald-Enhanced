@@ -90,6 +90,7 @@ LRT_NIGHT2::
 	closemessage
 	setflag FLAG_RYU_DS_DAWN_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
+	ach give ACH_CHILDHOOD_FRIEND
 	fadescreen FADE_TO_BLACK
 	drawfullscreenimage SCENEBGNIGHTDAWN
 	fadeinbgm 1
@@ -335,6 +336,8 @@ LRT_DH_ChampionGiftMon::
 	setflag FLAG_RYU_DS_DAWN_LOVERS
 	setflag FLAG_RYU_DS_DAWN_CLOSEFRIENDS
 	setflag FLAG_RYU_DS_DAWN_FRIENDS
+	ach give ACH_NEW_REGION_WHO_DIS
+	ach give ACH_CHILDHOOD_FRIEND
 	clearflag FLAG_RYU_DS_DAWN_ACQ
 	addvar VAR_RYU_PARTNER_COUNT, 1
 	setflag FLAG_RYU_DS_HAS_PARTNER

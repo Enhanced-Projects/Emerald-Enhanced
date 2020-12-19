@@ -17,20 +17,27 @@
 #include "string_util.h"
 #include "sound.h"
 #include "overworld.h"
+#include "event_data.h"
+#include "script.h"
 #include "constants/flags.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
-#include "event_data.h"
-#include "script.h"
 
-static const u8 sAchievementAtlasTileset[] = INCBIN_U8("graphics/achievement_atlas/achievement_atlas.4bpp");
-static const u16 sAchievementAtlasTilemap[] = INCBIN_U16("graphics/achievement_atlas/achievement_atlas.bin");
-static const u8 sAchievementAtlasPalette[] = INCBIN_U8("graphics/achievement_atlas/achievement_atlas.gbapal");
+static const u8 sAchievementAtlasStarTileset[] = INCBIN_U8("graphics/achievement_atlas/achievement_atlas.4bpp");
+static const u16 sAchievementAtlasStarTilemap[] = INCBIN_U16("graphics/achievement_atlas/achievement_atlas.bin");
+static const u8 sAchievementAtlasStarPalette[] = INCBIN_U8("graphics/achievement_atlas/achievement_atlas.gbapal");
+
+static const u8 sAchievementAtlasPointsTile[] = INCBIN_U8("graphics/achievement_atlas/point_tiles.4bpp");
+static const u8 sAchievementAtlasPointsPal[] = INCBIN_U8("graphics/achievement_atlas/point_tiles.gbapal");
+
+static const u8 sAchievementAtlasBorderTiles[] = INCBIN_U8("graphics/achievement_atlas/border.4bpp");
+static const u8 sAchievementAtlasBorderPal[] = INCBIN_U8("graphics/achievement_atlas/border.gbapal");
+static const u8 sAchievementAtlasBorderTilemap[] = INCBIN_U8("graphics/achievement_atlas/border.bin");
 
 static const u8 sAtlasCursorTiles[] = INCBIN_U8("graphics/achievement_atlas/cursor.4bpp");
 static const u16 sAtlasCursorPalette[] = INCBIN_U16("graphics/achievement_atlas/cursor.gbapal");
 
-static const u8 sDescriptionNotAvailable[] = _("{COLOR LIGHT_GREY}{SHADOW LIGHT_RED}Locked.");
+static const u8 sDescriptionNotAvailable[] = _("{COLOR LIGHT_GREY}{SHADOW RED}Locked.");
 
 #include "data/achievements.h"
 
@@ -52,8 +59,8 @@ static const struct WindowTemplate sAtlasWindowTemplate[] =
     [WIN_ACH_LABEL] = 
     {
         .bg = 0,
-        .tilemapLeft = 1,
-        .tilemapTop = 1,
+        .tilemapLeft = 2,
+        .tilemapTop = 2,
         .width = 15,
         .height = 2,
         .paletteNum = 15,
@@ -62,9 +69,9 @@ static const struct WindowTemplate sAtlasWindowTemplate[] =
     [WIN_ACH_DESC] = 
     {
         .bg = 0,
-        .tilemapLeft = 1,
-        .tilemapTop = 14,
-        .width = 28,
+        .tilemapLeft = 2,
+        .tilemapTop = 13,
+        .width = 26,
         .height = 5,
         .paletteNum = 15,
         .baseBlock = 31,
@@ -122,7 +129,7 @@ static const struct BgTemplate sAtlasBGTemplates[] =
     {
         .bg = 0,
         .charBaseIndex = 2,
-        .mapBaseIndex = 28,
+        .mapBaseIndex = 25,
         .screenSize = 0,
         .paletteMode = 0,
         .priority = 0,
@@ -130,20 +137,20 @@ static const struct BgTemplate sAtlasBGTemplates[] =
     },
     {
         .bg = 1,
-        .charBaseIndex = 3,
-        .mapBaseIndex = 29,
-        .screenSize = 0,
+        .charBaseIndex = 0,
+        .mapBaseIndex = 26,
+        .screenSize = 3,
         .paletteMode = 0,
-        .priority = 1,
+        .priority = 2,
         .baseTile = 0
     },
     {
         .bg = 2,
-        .charBaseIndex = 3,
+        .charBaseIndex = 0,
         .mapBaseIndex = 30,
         .screenSize = 0,
         .paletteMode = 0,
-        .priority = 2,
+        .priority = 1,
         .baseTile = 0
     },
     {
@@ -256,27 +263,23 @@ static bool8 IntializeAtlas(void)
         InitBgsFromTemplates(0, sAtlasBGTemplates, ARRAY_COUNT(sAtlasBGTemplates));
         SetBgTilemapBuffer(3, AllocZeroed(BG_SCREEN_SIZE));
         SetBgTilemapBuffer(2, AllocZeroed(BG_SCREEN_SIZE));
-        SetBgTilemapBuffer(1, AllocZeroed(BG_SCREEN_SIZE));
+        SetBgTilemapBuffer(1, AllocZeroed(BG_SCREEN_SIZE*4));
         SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
-        RequestDma3Copy(sAchievementAtlasTileset, (u8*)VRAM, sizeof(sAchievementAtlasTileset), 0);
-        map = GetBgTilemapBuffer(3);
+        DmaCopy16(3, sAchievementAtlasStarTilemap, GetBgTilemapBuffer(3), sizeof(sAchievementAtlasStarTilemap));
+        DmaCopy16(3, sAchievementAtlasPointsTile, BG_CHAR_ADDR(0), sizeof(sAchievementAtlasPointsTile));
+        DmaCopy16(3, sAchievementAtlasBorderTiles, BG_CHAR_ADDR(0)+0x20*3, sizeof(sAchievementAtlasBorderTiles));
+        DmaCopy16(3, sAchievementAtlasStarTileset, BG_CHAR_ADDR(0)+0x20*6, sizeof(sAchievementAtlasStarTileset));
+        DmaCopy16(3, sAchievementAtlasBorderTilemap, GetBgTilemapBuffer(2), sizeof(sAchievementAtlasBorderTilemap));
         sAchAtlas.tilemapPosX = TILEMAP_START_X;
         sAchAtlas.tilemapPosY = TILEMAP_START_Y;
-        tileY = sAchAtlas.tilemapPosY;
-        for(i = 0; i < 22; i++, tileY++)
-        {
-            tileX = sAchAtlas.tilemapPosX;
-            for(j = 0; j < 32; j++, tileX++)
-            {
-                map[i*32+j] = sAchievementAtlasTilemap[tileY*64+tileX];
-            }
-        }
-        LoadPalette(sAchievementAtlasPalette, 0, 0x20);
+        LoadPalette(sAchievementAtlasStarPalette, 0, 0x20);
+        LoadPalette(sAchievementAtlasPointsPal, 0x10, 0x20);
+        LoadPalette(sAchievementAtlasBorderPal, 0x20, 0x20);
         InitWindows(sAtlasWindowTemplate);
+        InitTextBoxGfxAndPrinters();
         DeactivateAllTextPrinters();
         PutWindowTilemap(0);
         CopyWindowToVram(0, 3);
-        InitTextBoxGfxAndPrinters();
         gMain.state = 1;
         break;
     case 1:
@@ -291,7 +294,16 @@ static bool8 IntializeAtlas(void)
         gMain.state++;
         break;
     case 2:
-        // i don't remember what this case was for but i copy pasted this from pokedex code so idk
+        // this was empty before
+        // now it isn't
+        map = GetBgTilemapBuffer(1);
+        for(i = 0; i < ARRAY_COUNT(sAchAtlasData); i++)
+        {
+            u32 x = sAchAtlasData[i].x;
+            u32 y = sAchAtlasData[i].y;
+            u32 index = ((y%32)*32 + ((y/32)*2048) + ((x)%32) + ((x/32)*1024));
+            map[index] = CheckAchievement(i) ? (1 + 0x1000) : (2 + 0x1000);
+        }
         gMain.state++;
         break;
     case 3:
@@ -309,12 +321,12 @@ static bool8 IntializeAtlas(void)
     case 5:
         SetGpuReg(REG_OFFSET_BG0HOFS, 0);
         SetGpuReg(REG_OFFSET_BG0VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1HOFS, sAchAtlas.tilemapPosX*8);
+        SetGpuReg(REG_OFFSET_BG1VOFS, sAchAtlas.tilemapPosY*8);
         SetGpuReg(REG_OFFSET_BG2HOFS, 0);
         SetGpuReg(REG_OFFSET_BG2VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG3HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG3VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG3HOFS, sAchAtlas.tilemapPosX*3);
+        SetGpuReg(REG_OFFSET_BG3VOFS, sAchAtlas.tilemapPosY*3);
         SetGpuReg(REG_OFFSET_BLDCNT, 0);
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BLDY, 0);
@@ -500,15 +512,15 @@ static void Task_UpdateAtlasStatus(u8 taskId)
             StartSpriteAnim(&gSprites[spriteId], 1);
             ClearStdWindowAndFrameToTransparent(WIN_ACH_LABEL, TRUE);
             ClearStdWindowAndFrameToTransparent(WIN_ACH_DESC, TRUE);
-            if(sAchAtlas.cursorY >= (13 + sAchAtlas.tilemapPosY)) // move around the windows because cursor will get in the way and we don't want that
+            if(sAchAtlas.cursorY >= (12 + sAchAtlas.tilemapPosY)) // move around the windows because cursor will get in the way and we don't want that
             {
-                SetWindowAttribute(WIN_ACH_LABEL, WINDOW_TILEMAP_TOP, 17);
-                SetWindowAttribute(WIN_ACH_DESC, WINDOW_TILEMAP_TOP, 1);
+                SetWindowAttribute(WIN_ACH_LABEL, WINDOW_TILEMAP_TOP, 16);
+                SetWindowAttribute(WIN_ACH_DESC, WINDOW_TILEMAP_TOP, 2);
             }
             else
             {
-                SetWindowAttribute(WIN_ACH_LABEL, WINDOW_TILEMAP_TOP, 1);
-                SetWindowAttribute(WIN_ACH_DESC, WINDOW_TILEMAP_TOP, 14);
+                SetWindowAttribute(WIN_ACH_LABEL, WINDOW_TILEMAP_TOP, 2);
+                SetWindowAttribute(WIN_ACH_DESC, WINDOW_TILEMAP_TOP, 13);
             }
             stringWidth = GetStringWidth(0, sAchAtlasData[i].nameString, 0);
             SetWindowAttribute(WIN_ACH_LABEL, WINDOW_WIDTH, (stringWidth + 7) / 8); // This was not allowed in GF's own code so i edited the function to be able to do it
@@ -631,6 +643,7 @@ static void UpdateAtlasScroll(void)
 
     if(sAchAtlas.shouldUpdateTilemap)
     {
+        /*
         map = GetBgTilemapBuffer(3);
         tileY = sAchAtlas.tilemapPosY;
         for(i = 0; i < 22; i++, tileY++)
@@ -642,6 +655,11 @@ static void UpdateAtlasScroll(void)
             }
         }
         CopyBgTilemapBufferToVram(3);
+        */
+        SetGpuReg(REG_OFFSET_BG3VOFS, sAchAtlas.tilemapPosY*3);
+        SetGpuReg(REG_OFFSET_BG3HOFS, sAchAtlas.tilemapPosX*3);
+        SetGpuReg(REG_OFFSET_BG1VOFS, sAchAtlas.tilemapPosY*8);
+        SetGpuReg(REG_OFFSET_BG1HOFS, sAchAtlas.tilemapPosX*8);
     }
 }
 
@@ -683,20 +701,18 @@ void Ryu_GiveOrTakeAllAchievments(void)
 {
     u8 current = 0;
 
-    if (VarGet(VAR_TEMP_B) == 69)
+    if (VarGet(VAR_TEMP_B) == 69) // why ryu why
     {
         do
         {
-            GiveAchievement(current);
-            current++;
+            GiveAchievement(current++);
         } while(current < 255);
     }
     else
     {
         do
         {
-            TakeAchievement(current);
-            current++;
+            TakeAchievement(current++);
         } while (current < 255);
         
     }
@@ -725,12 +741,25 @@ bool8 ScrCmd_ach(struct ScriptContext *ctx)// sorry for hacky solution, but we a
     
 }
 
+void BufferGivenAchievement(void) //Buffers the last given achievement label for use in script.
+{
+    u16 ach = VarGet(VAR_TEMP_C);
+    StringExpandPlaceholders(gStringVar4, sAchAtlasData[ach].nameString);
+    StringCopy(gRyuStringVar4, gStringVar4);
+}
+
 void GiveAchievement(u32 id)
 {
     if(id > ACH_FLAGS_COUNT)
         return;
 
+    if (CheckAchievement(id) == FALSE)
+        VarSet(VAR_RYU_LAST_ACH, id);//let the global script know that player received an achievement recently.
+    else
+        VarSet(VAR_RYU_LAST_ACH, 300);//the achievment that was given was already owned by player.
+
     gSaveBlock2Ptr->achFlags[id / 8] |= 1 << (id % 8);
+    
 }
 
 bool32 CheckAchievement(u32 id)

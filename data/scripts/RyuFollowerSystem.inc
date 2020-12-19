@@ -449,6 +449,8 @@ FT_FinishNurseQuest2::
 	giveitem ITEM_MAX_ELIXIR, 1
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_DS_JOY_FRIENDS
+	ach give ACH_NEW_REGION_WHO_DIS
+	ach give ACH_TRUE_LOVE
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote

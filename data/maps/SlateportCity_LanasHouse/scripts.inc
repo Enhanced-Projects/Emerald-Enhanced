@@ -71,6 +71,7 @@ LH_EventStart::
 	call_if_set FLAG_RYU_PLAYER_HELPING_AQUA, LH_AquaMember
 	call_if_set FLAG_RYU_PLAYER_HELPING_MAGMA, LH_MagmaMember @Yo, Magma is like... Evil and stuff, didn't you know?
 	msgbox LH_BeginQuest MSGBOX_DEFAULT
+	ach give ACH_ADVENTURE_TIME
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LH_PlayerShoved
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark

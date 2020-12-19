@@ -9,6 +9,7 @@
 #include "tv.h"
 #include "constants/heal_locations.h"
 #include "constants/tv.h"
+#include "ach_atlas.h"
 
 int GameClear(void)
 {
@@ -21,6 +22,7 @@ int GameClear(void)
     } ribbonCounts[6];
 
     HealPlayerParty();
+
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == TRUE)
     {
@@ -85,22 +87,40 @@ int GameClear(void)
     }
 
     if ((FlagGet(FLAG_RYU_DS_DAWN_PARTNERS) == 1) || (FlagGet(FLAG_RYU_DS_BRENDAN_PARTNERS) == 1))
+    {
         partners++;
+        GiveAchievement(ACH_CHILDHOOD_FRIEND);
+    }
 
     if (FlagGet(FLAG_RYU_DS_LANETTE_PARTNERS) == 1)
+    {
         partners++;
+        GiveAchievement(ACH_NERD_LOVE);
+    }
 
     if (FlagGet(FLAG_RYU_DS_LEAF_PARTNERS) == 1)
+    {
         partners++;
+        GiveAchievement(ACH_SILENT_STRONG_TYPE);
+    }
 
     if (FlagGet(FLAG_RYU_DS_SHELLY_PARTNERS) == 1)
-        partners++;
+        {
+            partners++;
+            GiveAchievement(ACH_WET_N_WILD);
+        }
 
     if (FlagGet(FLAG_RYU_DS_JOY_PARTNERS) == 1)
-        partners++;
+        {
+            partners++;
+            GiveAchievement(ACH_FWB);
+        }
 
     if ((partners == 5) && (FlagGet(FLAG_RYU_FIRST_GAME_CLEAR) == 1))
-        VarSet(VAR_RYU_PARTNER_COUNT, partners);
+        {
+            GiveAchievement(ACH_TRUE_ENDING);
+            VarSet(VAR_RYU_PARTNER_COUNT, partners);
+        }
 
     SetMainCallback2(CB2_DoHallOfFameScreen);
     return 0;

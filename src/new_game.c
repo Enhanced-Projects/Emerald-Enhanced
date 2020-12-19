@@ -164,6 +164,7 @@ void NewGameInitData(void)
         ngPlusCount = 0;
         RtcReset();
         ClearSav1();
+        memset(gSaveBlock2Ptr->achFlags, 0, 32);//initialize achievements on raw new game.
     }
     else //hacky, I know but it's the only way I could get it to work :shrug:
     {
@@ -312,6 +313,7 @@ void NewGameInitData(void)
     VarSet(VAR_RYU_NGPLUS_COUNT, ngPlusCount);
     VarSet(VAR_OPTIONS_HP_BAR_SPEED, 6);
     VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, originalSaveFileVersion);
+    VarSet(VAR_RYU_LAST_ACH, 300);
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;

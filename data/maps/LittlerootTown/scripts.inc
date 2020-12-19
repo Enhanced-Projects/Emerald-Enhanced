@@ -31,6 +31,7 @@ LRT_FollowerTest::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, LRT_AlreadyHasFollower
 	setflag FLAG_RYU_HIDE_MINNIE
 	setflag FLAG_RYU_RECRUITED_MINNIE
+	ach give ACH_NEW_REGION_WHO_DIS
 	removeobject 4
 	createfollower OBJ_EVENT_GFX_TWIN, RyuFollowerSelectNPCScript, 1
 	clearfullscreenimage

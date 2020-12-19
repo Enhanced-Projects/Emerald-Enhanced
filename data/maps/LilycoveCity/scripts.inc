@@ -738,6 +738,8 @@ lcc_femaleRivalRelChoice1:: @ 81E3006
 	compare VAR_RESULT, 1
 	goto_if_ne lcc_dawn_declined
 	setflag FLAG_RYU_DS_DAWN_CLOSEFRIENDS
+	ach give ACH_NEW_REGION_WHO_DIS
+	ach give ACH_TRUE_LOVE
 	delay 50
 	additem ITEM_TOWN_MAP
 	msgbox LCC_Dawn_DS_TC_MEM MSGBOX_DEFAULT
@@ -769,6 +771,8 @@ lcc_maleRivalRelChoice1::
 	compare VAR_RESULT, 1
 	goto_if_ne lcc_brendan_declined
 	setflag FLAG_RYU_DS_BRENDAN_FRIENDS
+	ach give ACH_NEW_REGION_WHO_DIS
+	ach give ACH_TRUE_LOVE
 	delay 50
 	additem ITEM_TOWN_MAP
 	msgbox LCC_BRENDAN_DS_TC_MEM MSGBOX_DEFAULT

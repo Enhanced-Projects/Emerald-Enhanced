@@ -64,6 +64,7 @@ r110_LeafSceneEnding::
 	fadescreenspeed 1, 5
 	setflag FLAG_RYU_DS_LEAF_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
+	ach give ACH_SILENT_STRONG_TYPE
 	addvar VAR_RYU_PARTNER_COUNT, 1
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	clearflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO

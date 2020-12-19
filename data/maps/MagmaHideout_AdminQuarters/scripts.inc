@@ -49,6 +49,7 @@ MHAQ_StayingWithCourtney1::
 	setobjectxy 1, 1, 3
 	setflag FLAG_RYU_DS_COURTNEY_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
+	ach give ACH_FIERY_PASSION
 	release
 	end
 	
@@ -96,6 +97,7 @@ MHAQ_StayingWithCourtney2::
 	setobjectxy 1, 1, 3
 	setflag FLAG_RYU_DS_COURTNEY_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
+	ach give ACH_FIERY_PASSION
 	release
 	end
 	
