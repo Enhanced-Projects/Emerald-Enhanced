@@ -633,6 +633,7 @@ DC_HelpingDevon::
 	waitmovement 0
 	msgbox DC_TalkToCEO MSGBOX_DEFAULT
 	setflag FLAG_RYU_PLAYER_HELPING_DEVON 
+	ach give ACH_ADVENTURE_TIME
 	clearflag FLAG_HIDE_GRANITE_CAVE_STEVEN
 	release
 	end

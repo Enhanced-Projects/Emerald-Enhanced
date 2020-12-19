@@ -2005,3 +2005,18 @@ Ryu_ShowStarterInfo::
 	msgbox Ryu_Stats
 	removeinfobox
 	return
+
+@==================================================================================================Achievement RELATED
+
+RyuScript_CheckGivenAchievement::
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	copyvar VAR_TEMP_C, VAR_RYU_LAST_ACH
+	callnative BufferGivenAchievement
+	playse SE_EXPMAX
+	msgbox RS_ACH_RECEIVED
+	setvar VAR_RYU_LAST_ACH, 300
+	release
+	end
+
+RS_ACH_RECEIVED:
+	.string "ACHIEVEMENT GET!!!\n{RYU_STR_4}$"

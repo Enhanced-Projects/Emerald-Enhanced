@@ -107,7 +107,7 @@
 #define VAR_RYU_SPIRITOMB_FAINTS             0x4059 // Tracks up to 107 KO's for spiritomb diversion
 #define VAR_RUSTBORO_CITY_STATE              0x405A
 #define VAR_FORTREE_CITY_STATE               0x405B // Unused Var
-#define VAR_LILYCOVE_CITY_STATE              0x405C // Unused Var
+#define VAR_RYU_LAST_ACH                     0x405C // stores the most recently given achievement if the player didn't have it previously.
 #define VAR_MOSSDEEP_CITY_STATE              0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE            0x405E
 #define VAR_RYU_PARTNER_COUNT                0x405F // Used to track how many partners the player has
@@ -399,6 +399,6 @@
 #define take 1
 #define query 2
 
-#define EE_GAME_VERSION 7205
+#define EE_GAME_VERSION 7300
 
 #endif // GUARD_CONSTANTS_VARS_H

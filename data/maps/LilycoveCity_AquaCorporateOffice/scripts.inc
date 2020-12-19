@@ -131,6 +131,8 @@ ACO_PlayerReturnedFromChimneyWithNecklace:: @Romance line is much longer than no
 	waitmovement 1
 	msgbox ACO_LostInThought
 	setflag FLAG_RYU_DS_SHELLY_FRIENDS
+	ach give ACH_NEW_REGION_WHO_DIS
+	ach give ACH_TRUE_LOVE
 	closemessage
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1
@@ -358,6 +360,7 @@ ACO_ShellyNightScene::
 	clearflag FLAG_HIDE_AQUAHQ_SHELLY
 	setflag FLAG_RYU_DS_SHELLY_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
+	ach give ACH_WET_N_WILD
 	setflag FLAG_RYU_AQUA_LINE_DONE
 	setvar VAR_RYU_AQUA, 161 @Aqua line finished.
 	special DrawWholeMapView

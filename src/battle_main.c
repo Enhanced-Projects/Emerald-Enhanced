@@ -66,6 +66,7 @@
 #include "cable_club.h"
 #include "pokemon.h"
 #include "autoscale_tables.h"
+#include "ach_atlas.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_SE1;
 extern struct MusicPlayerInfo gMPlayInfo_SE2;
@@ -5010,6 +5011,9 @@ static void ReturnFromBattleToOverworld(void)
         if ((gBattleOutcome & B_OUTCOME_WON) || gBattleOutcome == B_OUTCOME_CAUGHT)
             SetRoamerInactive();
     }
+
+    if (VarGet(VAR_LITTLEROOT_INTRO_STATE) == 10)//player already finished tutorial
+        GiveAchievement(ACH_ENHANCED_BATTLE);
 
     m4aSongNumStop(SE_LOW_HEALTH);
     SetMainCallback2(gMain.savedCallback);

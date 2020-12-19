@@ -53,6 +53,7 @@ Ryu_LNH_RomSceneStart::
 	setflag FLAG_RYU_DS_LANETTE_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
 	setflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
+	ach give ACH_NERD_LOVE
 	clearflag FLAG_RYU_HIDE_LANETTE_BASEMENT
 	release
 	end
@@ -133,6 +134,7 @@ LNH_GiveRotomFullParty::
 	setflag FLAG_RYU_DS_LANETTE_PARTNERS
 	setflag FLAG_RYU_RECIEVED_ROTOM
 	setflag FLAG_RYU_DS_HAS_PARTNER
+	ach give ACH_NERD_LOVE
 	release
 	end
 

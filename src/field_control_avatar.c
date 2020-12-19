@@ -51,6 +51,7 @@ extern const u8 SB_SetupRandomMimikyuEncounter[];
 extern const u8 SB_CheckMeloettaEncounter[];
 extern const u8 Ryu_BeingWatched[];
 extern const u8 Ryu_MeloettaWatchingMsg[];
+extern const u8 RyuScript_CheckGivenAchievement[];
 
 void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -194,6 +195,13 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
+
+    if (VarGet(VAR_RYU_LAST_ACH) < 256)
+        {
+            FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
+            ScriptContext1_SetupScript(RyuScript_CheckGivenAchievement);
+            return TRUE;
+        }
 
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)
         return TRUE;

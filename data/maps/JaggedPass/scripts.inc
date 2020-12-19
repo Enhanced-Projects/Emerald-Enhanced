@@ -300,6 +300,8 @@ JP_MagmaBlaiseEvent::
 	msgbox JP_CourtneyOutro
 	closemessage
 	setflag FLAG_RYU_DS_COURTNEY_FRIENDS
+	ach give ACH_NEW_REGION_WHO_DIS
+	ach give ACH_TRUE_LOVE
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	destroyfollower

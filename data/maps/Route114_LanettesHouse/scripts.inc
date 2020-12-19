@@ -41,6 +41,8 @@ Ryu_LNH_RomQuest::
 	applymovement 1, Common_Movement_FaceDown
 	waitmovement 1
 	setflag FLAG_RYU_DS_LANETTE_FRIENDS
+	ach give ACH_NEW_REGION_WHO_DIS
+	ach give ACH_TRUE_LOVE
 	msgbox LNH_mynameis
 	closemessage
 	msgbox LNH_myjobis
@@ -102,6 +104,7 @@ LNH_Outro::
 	closemessage
 	setflag FLAG_RYU_DS_LANETTE_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
+	ach give ACH_NERD_LOVE
 	msgbox LNH_TakeMeToBattleSometime
 	goto LNH_PartnerStayTheNight
 	release

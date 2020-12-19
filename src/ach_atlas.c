@@ -741,12 +741,25 @@ bool8 ScrCmd_ach(struct ScriptContext *ctx)// sorry for hacky solution, but we a
     
 }
 
+void BufferGivenAchievement(void) //Buffers the last given achievement label for use in script.
+{
+    u16 ach = VarGet(VAR_TEMP_C);
+    StringExpandPlaceholders(gStringVar4, sAchAtlasData[ach].nameString);
+    StringCopy(gRyuStringVar4, gStringVar4);
+}
+
 void GiveAchievement(u32 id)
 {
     if(id > ACH_FLAGS_COUNT)
         return;
 
+    if (CheckAchievement(id) == FALSE)
+        VarSet(VAR_RYU_LAST_ACH, id);//let the global script know that player received an achievement recently.
+    else
+        VarSet(VAR_RYU_LAST_ACH, 300);//the achievment that was given was already owned by player.
+
     gSaveBlock2Ptr->achFlags[id / 8] |= 1 << (id % 8);
+    
 }
 
 bool32 CheckAchievement(u32 id)
