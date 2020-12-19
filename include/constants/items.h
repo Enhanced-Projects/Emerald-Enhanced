@@ -676,26 +676,26 @@
 #define ITEM_FOSSIL_ORE 577
 #define ITEM_SHARD_ORE 578
 //Botany
-#define ITEM_RECIPE_BOOK 579 //new
-#define ITEM_MUSCLE_POWDER 580 //recolored Energy Powder
-#define ITEM_TOUGH_POWDER 581 //recolored Energy Powder
-#define ITEM_SMART_POWDER 582 //recolored Energy Powder
-#define ITEM_RESIST_POWDER 583 //recolored Energy Powder
-#define ITEM_SWIFT_POWDER 584 //recolored Energy Powder
-#define ITEM_FOCUS_POWDER 585 //recolored Energy Powder
-#define ITEM_BANANA 586 //new
-#define ITEM_SMALL_SALAD 587 //new
-#define ITEM_MEDIUM_SALAD 588 //new
-#define ITEM_LARGE_SALAD 589 //new
-#define ITEM_HEAL_CHOWDER 590 //new
-#define ITEM_REVITAL_ICE 591 //new
-#define ITEM_SEASIDE_ALMOND 592 //new
-#define ITEM_SAVANNA_MELON 593 //recolored Wiki Berry
-#define ITEM_DEEPSEA_KELP 594 //new
-#define ITEM_FROST_MINT 595 //new
-#define ITEM_CHIMNEY_PEPPER 596 //new
-#define ITEM_JUNGLE_BEANS 597 //recolored terrain seed
-#define ITEM_TASTY_LEAF 598 //new
+#define ITEM_RECIPE_BOOK 579
+#define ITEM_MUSCLE_POWDER 580
+#define ITEM_TOUGH_POWDER 581
+#define ITEM_SMART_POWDER 582
+#define ITEM_RESIST_POWDER 583
+#define ITEM_SWIFT_POWDER 584
+#define ITEM_FOCUS_POWDER 585
+#define ITEM_BANANA 586
+#define ITEM_SMALL_SALAD 587 //todo
+#define ITEM_MEDIUM_SALAD 588 //todo
+#define ITEM_LARGE_SALAD 589 //todo
+#define ITEM_HEAL_CHOWDER 590 //todo
+#define ITEM_REVITAL_ICE 591 //todo
+#define ITEM_SEASIDE_ALMOND 592
+#define ITEM_SAVANNA_MELON 593
+#define ITEM_DEEPSEA_KELP 594
+#define ITEM_FROST_MINT 595
+#define ITEM_CHIMNEY_PEPPER 596
+#define ITEM_JUNGLE_BEANS 597
+#define ITEM_TASTY_LEAF 598
 
 #define ITEM_BOXING_GLOVE 599
 
