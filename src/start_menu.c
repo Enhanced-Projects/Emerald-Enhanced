@@ -992,8 +992,8 @@ static void StartMenuTask(u8 taskId)
 
 void RyuDoOneTImeSaveFixes(void)
 {
-    if (VarGet(VAR_RYU_DEVON) == 110)//It is no longer possible to have 110, so this resets it to 108 so that player can continue normally.
-        VarSet(VAR_RYU_DEVON, 108);
+    if (FlagGet(FLAG_HIDE_ALL_KECLEON_OWS) == 0)
+        FlagSet(FLAG_HIDE_ALL_KECLEON_OWS);
 }
 
 static void CreateStartMenuTask(TaskFunc followupFunc)

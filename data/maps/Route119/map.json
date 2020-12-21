@@ -457,7 +457,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route119_EventScript_Kecleon1",
-      "flag": "FLAG_HIDE_ROUTE_119_KECLEON_1"
+      "flag": "FLAG_HIDE_ALL_KECLEON_OWS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KECLEON_1",
@@ -470,7 +470,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route119_EventScript_Kecleon2",
-      "flag": "FLAG_HIDE_ROUTE_119_KECLEON_2"
+      "flag": "FLAG_HIDE_ALL_KECLEON_OWS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
