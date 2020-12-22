@@ -90,6 +90,7 @@ LCPC_DoNurseScene::
 LCPC_NurseFollowerQuery::
 	msgbox LCPC_NurseFollowerQueryMsg, MSGBOX_YESNO
 	compare VAR_RESULT, YES
+	clearfullscreenimage
 	goto_if_ne LCPC_NurseDispt
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RF_FollowerLeaveCall
 	removeobject 5
