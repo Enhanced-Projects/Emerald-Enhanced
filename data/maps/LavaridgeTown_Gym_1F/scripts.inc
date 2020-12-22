@@ -290,6 +290,8 @@ LG_GymBattleEnd::
 	goto_if_eq LG_GymBattleEndLanette
 	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
 	goto_if_eq LG_GymBattleEndCourtney
+	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
+	goto_if_eq LG_GymBattleEndJoy
 	release
 	end
 	

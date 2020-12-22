@@ -226,6 +226,8 @@ MG_GymBattleEnd::
 	goto_if_eq MG_GymBattleEndLanette
 	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
 	goto_if_eq MG_GymBattleEndCourtney
+	compare VAR_0x8008, TRAINER_REL_NURSE
+	goto_if_eq MG_GymBattleEndJoy
 	release
 	end
 	
