@@ -74,7 +74,7 @@
 #define FLAG_RYU_HIDE_HOLIDAY_NPC            0x3E
 #define FLAG_UNUSED_0x3F                     0x3F
 #define FLAG_RYU_PLAYER_HELPING_AQUA         0x40
-#define FLAG_UNUSED_0x41                     0x41
+#define FLAG_RYU_TC_EXP_DISABLED             0x41
 #define FLAG_UNUSED_0x42                     0x42
 #define FLAG_RYU_DG_REWARD_RECEIVED          0x43
 #define FLAG_UNUSED_0x44                     0x44
