@@ -74,7 +74,7 @@
 #define FLAG_RYU_HIDE_HOLIDAY_NPC            0x3E
 #define FLAG_UNUSED_0x3F                     0x3F
 #define FLAG_RYU_PLAYER_HELPING_AQUA         0x40
-#define FLAG_UNUSED_0x41                     0x41
+#define FLAG_RYU_TC_EXP_DISABLED             0x41
 #define FLAG_UNUSED_0x42                     0x42
 #define FLAG_RYU_DG_REWARD_RECEIVED          0x43
 #define FLAG_UNUSED_0x44                     0x44
@@ -312,7 +312,7 @@
 #define FLAG_MET_RIVAL_LILYCOVE              0x124
 #define FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE 0x125
 #define FLAG_RYU_HIDE_AQUA_OFFICE_AQUA       0x126 // Hides aqua in their office if the player did the no-romance line.
-#define FLAG_KECLEON_FLED_FORTREE            0x127
+#define FLAG_UNUSED_0x127                    0x127
 #define FLAG_RYU_AQUA_ALT_LINE               0x128 // Player's doing the Shelly line for aqua.
 #define FLAG_RECEIVED_MIRACLE_SEED           0x129
 #define FLAG_RECEIVED_BELDUM                 0x12A
@@ -1007,8 +1007,8 @@
 #define FLAG_HIDE_ROUTE_118_STEVEN                                  0x3C6
 #define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN                0x3C7
 #define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL       0x3C8
-#define FLAG_HIDE_FORTREE_CITY_KECLEON                              0x3C9
-#define FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_INVISIBLE                0x3CA
+#define FLAG_HIDE_ALL_KECLEON_OWS                                   0x3C9
+#define FLAG_UNUSED_0x3CA                                           0x3CA
 #define FLAG_HIDE_LILYCOVE_CITY_RIVAL                               0x3CB
 #define FLAG_HIDE_ROUTE_120_STEVEN                                  0x3CC
 #define FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN                            0x3CD // EE-Unused
@@ -1019,16 +1019,16 @@
 #define FLAG_HIDE_AQUA_HIDEOUT_B1F_ELECTRODE_2                      0x3D2
 #define FLAG_HIDE_OLDALE_TOWN_RIVAL                                 0x3D3
 #define FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE      0x3D4 // EE-Unused?
-#define FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_VISIBLE                  0x3D5
-#define FLAG_HIDE_ROUTE_120_KECLEON_1                               0x3D6
+#define FLAG_UNUSED_0x3D5                                           0x3D5
+#define FLAG_UNUSED_0x3D6                                           0x3D6
 #define FLAG_RYU_HOOPA                                              0x3D7
 #define FLAG_RYU_HOOPA_RAN                                          0x3D8
-#define FLAG_HIDE_ROUTE_120_KECLEON_2                               0x3D9
-#define FLAG_HIDE_ROUTE_120_KECLEON_3                               0x3DA
-#define FLAG_HIDE_ROUTE_120_KECLEON_4                               0x3DB
-#define FLAG_HIDE_ROUTE_120_KECLEON_5                               0x3DC
-#define FLAG_HIDE_ROUTE_119_KECLEON_1                               0x3DD
-#define FLAG_HIDE_ROUTE_119_KECLEON_2                               0x3DE
+#define FLAG_UNUSED_0x3D9                                           0x3D9
+#define FLAG_UNUSED_0x3DA                                           0x3DA
+#define FLAG_UNUSED_0x3DB                                           0x3DB
+#define FLAG_UNUSED_0x3DC                                           0x3DC
+#define FLAG_UNUSED_0x3DD                                           0x3DD
+#define FLAG_UNUSED_0x3DE                                           0x3DE
 #define FLAG_HIDE_ROUTE_101_BOY                                     0x3DF
 #define FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M                 0x3E0
 #define FLAG_HIDE_LILYCOVE_POKEMON_CENTER_CONTEST_LADY_MON          0x3E1

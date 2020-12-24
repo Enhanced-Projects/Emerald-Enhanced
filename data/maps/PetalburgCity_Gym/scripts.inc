@@ -75,7 +75,6 @@ PG_Reset::
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
 	call_if_unset FLAG_RYU_GYM5HANDOUT, RyuGymItemReward5
-	special InitBirchState
 	release
 	end
 
@@ -302,6 +301,8 @@ PG_GymBattleEnd::
 	goto_if_eq PG_GymBattleEndLanette
 	compare VAR_0x8008, TRAINER_REL_COURTNEY_2
 	goto_if_eq PG_GymBattleEndCourtney
+	compare VAR_0x8008, TRAINER_REL_NURSE
+	goto_if_eq PG_GymBattleEndJoy
 	release
 	end
 	
@@ -549,6 +550,9 @@ PBG_CheckDoors::
 	case 3, PBG_SecondDoor
 	case 2, PBG_FirstDoor
 	end
+
+PBG_DB_1:
+	.string "Petalburg state: {STR_VAR_1}\pTemp 1: {STR_VAR_2}\pTemp 4: {STR_VAR_3}\pTemp 8: {RYU_STR_1}.$"
 
 PBG_FinalDoor::                @@Theoretically, since none of these have terminators except the last one, each one should also
 	setmetatile 16, 21, 645, 0 @@execute each one that follows, thus opening all doors up to the number called. Fancy script magic.

@@ -2,25 +2,25 @@ LilycoveCity_House1_MapScripts:: @ 821ECCD
 	.byte 0
 
 LilycoveCity_House1_EventScript_ExpertM:: @ 821ECCE
-	msgbox LilycoveCity_House1_Text_PokemonPartnersNotTools, MSGBOX_NPC
+	msgbox LilycoveCity_House1_Text_PokemonCloseToPeople, MSGBOX_NPC
 	end
 
 LilycoveCity_House1_EventScript_Kecleon:: @ 821ECD7
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_KECLEON, 0
-	msgbox LilycoveCity_House1_Text_Kecleon, MSGBOX_DEFAULT
+	playmoncry SPECIES_PIKACHU, 0
+	msgbox LilycoveCity_House1_Text_Pikachu, MSGBOX_DEFAULT
 	waitmoncry
 	release
 	end
 
-LilycoveCity_House1_Text_PokemonPartnersNotTools: @ 821ECEA
-	.string "Pokémon are partners to people.\n"
-	.string "They aren't our tools.\p"
-	.string "Unfortunately, there are some people\n"
-	.string "who fail to understand that…$"
+LilycoveCity_House1_Text_PokemonCloseToPeople: @ 821ECEA
+	.string "Pokémon aren't just tools, they\n"
+	.string "are family to some, partners to\p"
+	.string "others, and even more to some\n"
+	.string "people. It warms my heart.$"
 
-LilycoveCity_House1_Text_Kecleon: @ 821ED63
-	.string "Kecleon: Ruroro?$"
+LilycoveCity_House1_Text_Pikachu: @ 821ED63
+	.string "Pikachu: Pikapi?$"
 

@@ -18,6 +18,33 @@ TC_EvIvCheckerScript::
 	release
 	end
 
+TC_EvIvCheckerNoHealScript::
+    specialvar VAR_RESULT, RyuFillStatsBuffers
+	compare VAR_RESULT, TRUE
+	goto_if_ne RyuDebug_StatsFailed
+	delay 30
+    drawinfobox INFOBOXPOKEMONDATA
+	bufferpartymonnick 1, 0
+	msgbox Ryu_Stats
+	removeinfobox
+	goto_if_set FLAG_TEMP_9, ryu_end
+	msgbox TCToggleEXP, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq TC_ToggleExpGain
+	clearflag FLAG_RYU_TC_EXP_DISABLED
+	setflag FLAG_TEMP_9
+	release
+	end
+
+TC_ToggleExpGain::
+	setflag FLAG_RYU_TC_EXP_DISABLED
+	setflag FLAG_TEMP_9
+	release
+	end
+
+TCToggleEXP:
+	.string "Would you like to disable EXP earning?$"
+
 RyuDebug_StatsFailed::
 	msgbox statsfailedmsg
 	release

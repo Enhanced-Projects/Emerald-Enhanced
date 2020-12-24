@@ -3734,6 +3734,22 @@ static void Cmd_jumpbasedontype(void)
     }
 }
 
+//This is just to make sure that the exp ONLY gets disabled in the training center, should the player leave the TC by unconventional means.
+bool8 RyuCheckIfPlayerDisabledTCExp(void)
+{
+    u16 locGroup = gSaveBlock1Ptr->location.mapGroup;
+    u16 locMap = gSaveBlock1Ptr->location.mapNum;
+    bool8 PlayerDisabledExp = (FlagGet(FLAG_RYU_TC_EXP_DISABLED));
+
+    if (PlayerDisabledExp == TRUE)
+    {
+        if (locGroup == 12 && locMap == 3)
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 static void Cmd_getexp(void)
 {
     u16 item;
@@ -3821,10 +3837,8 @@ static void Cmd_getexp(void)
                 if (gExpShareExp == 0)
                     gExpShareExp = 1;
             }
-            else if (FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1)
-            {
+            else if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
                 calculatedExp = 0;
-            }
             else
             {
                 *exp = calculatedExp / viaSentIn;
