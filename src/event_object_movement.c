@@ -8257,17 +8257,6 @@ bool8 AreZCoordsCompatible(u8 a, u8 b)
     return TRUE;
 }
 
-
-bool8 RyuCheckPlayerIsInSafariArea(void)
-{
-    u16 locGroup = gSaveBlock1Ptr->location.mapGroup;
-    u16 locMap = gSaveBlock1Ptr->location.mapNum;
-    
-    if (locGroup == 26 && (locMap < 4 || (locMap > 10 && locMap < 14)))
-        return TRUE;
-
-}
-
 void GroundEffect_SpawnOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
     gFieldEffectArguments[0] = objEvent->currentCoords.x;
@@ -8278,15 +8267,7 @@ void GroundEffect_SpawnOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *
     gFieldEffectArguments[5] = objEvent->mapGroup;
     gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
     gFieldEffectArguments[7] = 1;
-    if (RyuCheckPlayerIsInSafariArea() == TRUE)
-    {
-        FieldEffectStart(FLDEFF_SAFARI_GRASS);
-    }
-    else
-    {
-        FieldEffectStart(FLDEFF_TALL_GRASS);
-    }
-    
+    FieldEffectStart(FLDEFF_TALL_GRASS);
 }
 
 void GroundEffect_StepOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
@@ -8299,14 +8280,7 @@ void GroundEffect_StepOnTallGrass(struct ObjectEvent *objEvent, struct Sprite *s
     gFieldEffectArguments[5] = objEvent->mapGroup;
     gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
     gFieldEffectArguments[7] = 0;
-    if (RyuCheckPlayerIsInSafariArea() == TRUE)
-    {
-        FieldEffectStart(FLDEFF_SAFARI_GRASS);
-    }
-    else
-    {
-        FieldEffectStart(FLDEFF_TALL_GRASS);
-    }
+    FieldEffectStart(FLDEFF_TALL_GRASS);
 }
 
 void GroundEffect_SpawnOnLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
