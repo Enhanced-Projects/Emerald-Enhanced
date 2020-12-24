@@ -16,8 +16,8 @@ Common_EventScript_PkmnCenterNurse:: @ 827195A
     goto PCN_Stage1HealMsg
 
 RyuCheckIfQualifiesForNurseQuest::
-    compare VAR_RYU_DS_NURSE_STAGE, 2
-    call_if_ge RyuEnableNurseQuest
+    compare VAR_RYU_DS_NURSE_STAGE, 0
+    call_if_eq RyuEnableNurseQuest
     return
 
 RyuEnableNurseQuest::
