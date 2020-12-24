@@ -410,7 +410,7 @@ const u8 gItemEffect_LumBerry[6] = {
 
 const u8 gItemEffect_SitrusBerry[7] = {
     [4] = ITEM4_HEAL_HP,
-    [6] = 25,
+    [6] = ITEM6_HEAL_QUARTER,
 };
 
 const u8 gItemEffect_PomegBerry[10] = {
@@ -461,6 +461,79 @@ const u8 gItemEffect_TamatoBerry[10] = {
     [7] = 10,
     [8] = 5,
     [9] = 2,
+};
+
+const u8 gItemEffect_MusclePowder[8] = {
+    [1] = ITEM1_X_ATTACK,
+    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
+    [6] = 1,
+    [7] = 1,
+};
+
+const u8 gItemEffect_ToughPowder[8] = {
+    [1] = ITEM1_X_DEFEND,
+    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
+    [6] = 1,
+    [7] = 1,
+};
+
+const u8 gItemEffect_SmartPowder[8] = {
+    [1] = ITEM1_X_SPATK,
+    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
+    [6] = 1,
+    [7] = 1,
+};
+
+const u8 gItemEffect_ResistPowder[8] = {
+    [1] = ITEM1_X_SPDEF,
+    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
+    [6] = 1,
+    [7] = 1,
+};
+
+const u8 gItemEffect_SwiftPowder[8] = {
+    [1] = ITEM1_X_SPEED,
+    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
+    [6] = 1,
+    [7] = 1,
+};
+
+const u8 gItemEffect_FocusPowder[8] = {
+    [1] = ITEM1_X_ACCURACY,
+    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
+    [6] = 1,
+    [7] = 1,
+};
+
+const u8 gItemEffect_Banana[7] = {
+    [4] = ITEM4_HEAL_HP,
+    [6] = ITEM6_HEAL_TWENTIETH,
+};
+
+const u8 gItemEffect_SmallSalad[7] = {
+    [4] = ITEM4_HEAL_HP,
+    [6] = ITEM6_HEAL_THIRD,
+};
+
+const u8 gItemEffect_MediumSalad[7] = {
+    [4] = ITEM4_HEAL_HP,
+    [6] = ITEM6_HEAL_TWOTHIRDS,
+};
+
+const u8 gItemEffect_LargeSalad[7] = {
+    [4] = ITEM4_HEAL_HP,
+    [6] = ITEM6_HEAL_FULL,
+};
+
+const u8 gItemEffect_HealChowder[7] = {
+    [3] = ITEM3_STATUS_ALL,
+    [4] = ITEM4_HEAL_HP,
+    [6] = ITEM6_HEAL_THIRD,
+};
+
+const u8 gItemEffect_RevitalIce[7] = {
+    [4] = ITEM4_REVIVE | ITEM4_HEAL_HP,
+    [6] = ITEM6_HEAL_FULL,
 };
 
 const u8 *const gItemEffectTable[] =
@@ -548,5 +621,17 @@ const u8 *const gItemEffectTable[] =
     [ITEM_HONDEW_BERRY - ITEM_POTION] = gItemEffect_HondewBerry,
     [ITEM_GREPA_BERRY - ITEM_POTION] = gItemEffect_GrepaBerry,
     [ITEM_TAMATO_BERRY - ITEM_POTION] = gItemEffect_TamatoBerry,
+    [ITEM_MUSCLE_POWDER - ITEM_POTION] = gItemEffect_MusclePowder,
+    [ITEM_TOUGH_POWDER - ITEM_POTION] = gItemEffect_ToughPowder,
+    [ITEM_SMART_POWDER - ITEM_POTION] = gItemEffect_SmartPowder,
+    [ITEM_RESIST_POWDER - ITEM_POTION] = gItemEffect_ResistPowder,
+    [ITEM_SWIFT_POWDER - ITEM_POTION] = gItemEffect_SwiftPowder,
+    [ITEM_FOCUS_POWDER - ITEM_POTION] = gItemEffect_FocusPowder,
+    [ITEM_BANANA - ITEM_POTION] = gItemEffect_Banana,
+    [ITEM_SMALL_SALAD - ITEM_POTION] = gItemEffect_SmallSalad,
+    [ITEM_MEDIUM_SALAD - ITEM_POTION] = gItemEffect_MediumSalad,
+    [ITEM_LARGE_SALAD - ITEM_POTION] = gItemEffect_LargeSalad,
+    [ITEM_HEAL_CHOWDER - ITEM_POTION] = gItemEffect_HealChowder,
+    [ITEM_REVITAL_ICE - ITEM_POTION] = gItemEffect_RevitalIce,
     [LAST_BERRY_INDEX - ITEM_POTION] = NULL
 };

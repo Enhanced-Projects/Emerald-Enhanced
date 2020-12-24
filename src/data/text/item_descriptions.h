@@ -427,34 +427,34 @@ static const u8 sDireHitDesc[] = _(
     "during one battle.");
 
 static const u8 sXAttackDesc[] = _(
-    "Raises the stat\n"
-    "Attack during one\n"
-    "battle.");
+    "Sharply raises\n"
+    "Attack during\n"
+    "one battle.");
 
 static const u8 sXDefendDesc[] = _(
-    "Raises the stat\n"
-    "Defense during one\n"
-    "battle.");
+    "Sharply raises\n"
+    "Defense during\n"
+    "one battle.");
 
 static const u8 sXSpeedDesc[] = _(
-    "Raises the stat\n"
-    "Speed during one\n"
-    "battle.");
+    "Sharply raises\n"
+    "Speed during\n"
+    "one battle.");
 
 static const u8 sXAccuracyDesc[] = _(
-    "Raises accuracy\n"
-    "of attack moves\n"
-    "during one battle.");
+    "Sharply raises\n"
+    "Accuracy during\n"
+    "one battle.");
 
 static const u8 sXSpecialAttackDesc[] = _(
-    "Raises the stat\n"
-    "Sp. Atk during one\n"
-    "battle.");
+    "Sharply raises\n"
+    "Sp. Atk during\n"
+    "one battle.");
 
 static const u8 sXSpecialDefenseDesc[] = _(
-    "Raises the stat\n"
-    "Sp. Def during one\n"
-    "battle.");
+    "Sharply raises\n"
+    "Sp. Def during\n"
+    "one battle.");
 
 static const u8 sPokeDollDesc[] = _(
     "Use to flee from\n"
@@ -2916,9 +2916,9 @@ static const u8 sSwiftPowderDesc[] = _(
     "one battle.");
 
 static const u8 sFocusPowderDesc[] = _(
-    "Raises Accuracy\n"
-    "and crit rate\n"
-    "during one battle.");
+    "Sharply raises\n"
+    "Accuracy during\n"
+    "one battle.");
 
 static const u8 sBananaDesc[] = _(
     "A nutritious fruit\n"
