@@ -1553,13 +1553,12 @@ const u32 gItemIcon_Banana[] = INCBIN_U32("graphics/items/icons/banana.4bpp.lz")
 const u32 gItemIconPalette_Banana[] = INCBIN_U32("graphics/items/icon_palettes/banana.gbapal.lz");
 
 const u32 gItemIcon_SmallSalad[] = INCBIN_U32("graphics/items/icons/small_salad.4bpp.lz");
-const u32 gItemIconPalette_SmallSalad[] = INCBIN_U32("graphics/items/icon_palettes/small_salad.gbapal.lz");
 
 const u32 gItemIcon_MediumSalad[] = INCBIN_U32("graphics/items/icons/medium_salad.4bpp.lz");
-const u32 gItemIconPalette_MediumSalad[] = INCBIN_U32("graphics/items/icon_palettes/medium_salad.gbapal.lz");
 
 const u32 gItemIcon_LargeSalad[] = INCBIN_U32("graphics/items/icons/large_salad.4bpp.lz");
-const u32 gItemIconPalette_LargeSalad[] = INCBIN_U32("graphics/items/icon_palettes/large_salad.gbapal.lz");
+
+const u32 gItemIconPalette_Salad[] = INCBIN_U32("graphics/items/icon_palettes/salad.gbapal.lz");
 
 const u32 gItemIcon_HealChowder[] = INCBIN_U32("graphics/items/icons/heal_chowder.4bpp.lz");
 const u32 gItemIconPalette_HealChowder[] = INCBIN_U32("graphics/items/icon_palettes/heal_chowder.gbapal.lz");
