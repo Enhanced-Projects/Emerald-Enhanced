@@ -72,7 +72,7 @@
 #define FLAG_OPTIONS_INSTANT_TRANSITION      0x3C
 #define FLAG_RYU_PLAYER_CLEARED_PBG_DOORS    0x3D
 #define FLAG_RYU_HIDE_HOLIDAY_NPC            0x3E
-#define FLAG_UNUSED_0x3F                     0x3F
+#define FLAG_RYU_CAN_DO_NURSE_QUEST          0x3F
 #define FLAG_RYU_PLAYER_HELPING_AQUA         0x40
 #define FLAG_RYU_TC_EXP_DISABLED             0x41
 #define FLAG_UNUSED_0x42                     0x42

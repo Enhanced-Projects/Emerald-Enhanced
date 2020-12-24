@@ -331,6 +331,7 @@ ryu_end::
 @+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Nurse quest
 
 RF_CheckPlayerQualifiesForNurseQuest::@ This is the script that activates when player is about to enter a pokemon center that has a gym on it.
+	goto_if_unset FLAG_RYU_CAN_DO_NURSE_QUEST, ryu_end
 	special checkbadgecount
 	compare VAR_RESULT, 2
 	goto_if_lt ryu_end

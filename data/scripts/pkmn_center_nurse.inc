@@ -4,6 +4,8 @@ Common_EventScript_PkmnCenterNurse:: @ 827195A
     readgamestat GAME_STAT_USED_POKECENTER
     compare VAR_RESULT, 256
     call_if_eq PkmnCenterNurse_MegaAudinite
+    compare VAR_RESULT, 50
+    call_if_eq RyuCheckIfQualifiesForNurseQuest
     call Ryu_CheckHealPermissions
     switch VAR_RYU_DS_NURSE_STAGE
     case 1, PCN_Stage1HealMsg
@@ -12,6 +14,15 @@ Common_EventScript_PkmnCenterNurse:: @ 827195A
     case 7, PCN_Stage4HealMsg
     case 10, PCN_Stage5HealMsg
     goto PCN_Stage1HealMsg
+
+RyuCheckIfQualifiesForNurseQuest::
+    compare VAR_RYU_DS_NURSE_STAGE, 2
+    call_if_ge RyuEnableNurseQuest
+    return
+
+RyuEnableNurseQuest::
+    setflag FLAG_RYU_CAN_DO_NURSE_QUEST
+    return
 
 PCN_Stage1HealMsg::
     message gText_IllTakeYourPkmn
