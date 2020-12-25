@@ -51,7 +51,8 @@ static const u8 sTextColors[][3] = {
 enum
 {
     WIN_ACH_LABEL,
-    WIN_ACH_DESC
+    WIN_ACH_DESC,
+    WIN_ACH_DEBUG
 };
 
 static const struct WindowTemplate sAtlasWindowTemplate[] =
@@ -61,7 +62,7 @@ static const struct WindowTemplate sAtlasWindowTemplate[] =
         .bg = 0,
         .tilemapLeft = 2,
         .tilemapTop = 2,
-        .width = 15,
+        .width = 26,
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 1,
@@ -74,7 +75,17 @@ static const struct WindowTemplate sAtlasWindowTemplate[] =
         .width = 26,
         .height = 5,
         .paletteNum = 15,
-        .baseBlock = 31,
+        .baseBlock = 53,
+    },
+    [WIN_ACH_DEBUG] =
+    {
+        .bg = 0,
+        .tilemapLeft = 23,
+        .tilemapTop = 2,
+        .width = 5,
+        .height = 3,
+        .paletteNum = 15,
+        .baseBlock = 183,
     },
     DUMMY_WIN_TEMPLATE
 };
@@ -450,6 +461,9 @@ static void Task_CloseAtlas(u8 taskId)
     }
 }
 
+static const u8 sXColon[] = _("X:");
+static const u8 sYColon[] = _("Y:");
+
 static void Task_UpdateAtlasStatus(u8 taskId)
 {
     u32 action = gTasks[taskId].data[0];
@@ -458,6 +472,19 @@ static void Task_UpdateAtlasStatus(u8 taskId)
     u32 i;
     u32 stringWidth;
 
+    if(FlagGet(FLAG_RYU_DEV_MODE))
+    {
+        u8 str[6];
+        DrawStdWindowFrame(WIN_ACH_DEBUG, TRUE); // inefficient but it's for debugging
+        StringCopy(str, sXColon);
+        ConvertIntToDecimalStringN(gStringVar1, sAchAtlas.cursorX, STR_CONV_MODE_RIGHT_ALIGN, 2);
+        StringAppend(str, gStringVar1);
+        AddTextPrinterParameterized3(WIN_ACH_DEBUG, 0, 0, 0, sTextColors[0], 0, str);
+        StringCopy(str, sYColon);
+        ConvertIntToDecimalStringN(gStringVar1, sAchAtlas.cursorY, STR_CONV_MODE_RIGHT_ALIGN, 2);
+        StringAppend(str, gStringVar1);
+        AddTextPrinterParameterized3(WIN_ACH_DEBUG, 0, 0, 8, sTextColors[0], 0, str);
+    }
     // really bad code to stop the cursor from moving when description window is visible
     if(sAchAtlas.isOnAchTile)
     {
@@ -482,7 +509,7 @@ static void Task_UpdateAtlasStatus(u8 taskId)
                     if(CheckAchievement(sAchAtlasData[i].flagId))
                     {
                         StringExpandPlaceholders(gStringVar4, sAchAtlasData[i].descString);
-                        AddTextPrinterParameterized3(WIN_ACH_DESC, 0, 0, 0, sTextColors[sAchAtlasData[i].category], 0, gStringVar4);
+                        AddTextPrinterParameterized3(WIN_ACH_DESC, 0, 0, 0, sTextColors[0], 0, gStringVar4);
                     }
                     else
                     {
