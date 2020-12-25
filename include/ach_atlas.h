@@ -54,6 +54,7 @@ struct AchAtlas // this would be better off as a u8 array lmao
 void CB2_OpenAtlas(void);
 
 void GiveAchievement(u32 id);
+void GiveAchievementDebug(u32 id);
 bool32 CheckAchievement(u32 id);
 void TakeAchievement(u32 id);
 

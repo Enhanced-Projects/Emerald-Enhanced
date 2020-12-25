@@ -701,11 +701,11 @@ void Ryu_GiveOrTakeAllAchievments(void)
 {
     u8 current = 0;
 
-    if (VarGet(VAR_TEMP_B) == 69) // why ryu why
+    if (VarGet(VAR_TEMP_B) == 69) // because nice
     {
         do
         {
-            GiveAchievement(current++);
+            GiveAchievementDebug(current++);
         } while(current < 255);
     }
     else
@@ -716,7 +716,6 @@ void Ryu_GiveOrTakeAllAchievments(void)
         } while (current < 255);
         
     }
-    
 }
 
 bool8 ScrCmd_ach(struct ScriptContext *ctx)// sorry for hacky solution, but we are nearly out of script commands.
@@ -746,6 +745,11 @@ void BufferGivenAchievement(void) //Buffers the last given achievement label for
     u16 ach = VarGet(VAR_TEMP_C);
     StringExpandPlaceholders(gStringVar4, sAchAtlasData[ach].nameString);
     StringCopy(gRyuStringVar4, gStringVar4);
+}
+
+void GiveAchievementDebug(u32 id)
+{
+    gSaveBlock2Ptr->achFlags[id / 8] |= 1 << (id % 8);
 }
 
 void GiveAchievement(u32 id)
