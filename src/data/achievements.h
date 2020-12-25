@@ -36,20 +36,28 @@ static const u8 sTrueEndingAchDesc[] = _("You're quite the lady killer, eh?\n(Go
 
 static const u8 sEternalDamnationLabel[] = _("Eternal Damnation");
 static const u8 sEternalDamnationAchDesc[] = _("And thus, a new monarchy was born!\n(Completed Magma Alt Romance line)");
+
 static const u8 sHuntingTripAchLabel[] = _("Hunting Trip");
 static const u8 sHuntingTripAchDesc[] = _("There's something strangely cathartic about\nhunting a person down and finishing the job.\n(Completed the Magma Alt line)");
+
 static const u8 sThroughTheFireAchLabel[] = _("Through the Fire and Flames");
 static const u8 sThroughTheFireAchDesc[] = _("You made a deal with the devil.\nAll who stand in your way will perish.\n(Completed Magma main Romance line)");
+
 static const u8 sHeatedArgumentLabel[] = _("A Heated Argument");
 static const u8 sHeatedArgumentAchDesc[] = _("You could say he... went up in flames.\n(Completed Magma Main line)");
+
 static const u8 sEyeOfTheStormLabel[] = _("Eye of the Storm");
 static const u8 sEyeOfTheStormAchDesc[] = _("You travelled into the eye of the storm,\nand lived to tell the tale.\n(Completed Aqua Romance line)");
+
 static const u8 sWaterLoggedLabel[] = _("Water Logged");
 static const u8 sWaterLoggedAchDesc[] = _("You're a little wet and very disappointed.\nAt least you didn't go to jail!\n(Completed Aqua Neutral line)");
+
 static const u8 sAstronomicalLabel[] = _("Astronomical!");
 static const u8 sAstronomicalAchDesc[] = _("The possibilities are {SHADOW GREEN}literally{SHADOW LIGHT_GREY} endless!\n(Completed Devon Scientist line)");
+
 static const u8 sCorporateShillLabel[] = _("Corporate Shill");
 static const u8 sCorporateShillAchDesc[] = _("Stocks, lobbying, tax evasion, oh my!\n(Completed Devon Corporate line)");
+
 static const u8 sDejaVuLabel[] = _("Deja Vu?");
 static const u8 sDejaVuDesc[] = _("Hey! a lot of this looks familiar!\n(Got every main quest ending possible.)");
 
@@ -59,14 +67,14 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_ENHANCED_BATTLE] = {28, 40, CATEGORY_BATTLE, ACH_ENHANCED_BATTLE, sEnhancedBattleAchLabel, sEnhancedBattleAchDesc},
     [ACH_NEW_REGION_WHO_DIS] = {57, 40, CATEGORY_COMPANIONS, ACH_NEW_REGION_WHO_DIS, sNewRegionWhoDisAchLabel, sNewRegionWhoDisAchDesc},
     [ACH_ADVENTURE_TIME] = {43, 40, CATEGORY_QUESTING, ACH_ADVENTURE_TIME, sAdventureTimeAchLabel, sAdventureTimeAchDesc},
-    [ACH_TRUE_LOVE] = {57, 37, CATEGORY_COMPANIONS, ACH_TRUE_LOVE, sTrueLoveAchLabel, sTrueLoveAchDesc},
-    [ACH_SILENT_STRONG_TYPE] = {59, 33, CATEGORY_COMPANIONS, ACH_SILENT_STRONG_TYPE, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc},
-    [ACH_CHILDHOOD_FRIEND] = {59, 35, CATEGORY_COMPANIONS, ACH_CHILDHOOD_FRIEND, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc},
-    [ACH_FIERY_PASSION] = {59, 37, CATEGORY_COMPANIONS, ACH_FIERY_PASSION, sFieryPassionAchLabel, sFieryPassionAchDesc},
-    [ACH_NERD_LOVE] = {61, 33, CATEGORY_COMPANIONS, ACH_NERD_LOVE, sNerdLoveAchLabel, sNerdLoveAchDesc},
-    [ACH_FWB] = {61, 35, CATEGORY_COMPANIONS, ACH_FWB, sFWBAchLabel, sFWBAchDesc},
-    [ACH_WET_N_WILD] = {61, 37, CATEGORY_COMPANIONS, ACH_WET_N_WILD, sWetnWildAchLabel, sWetnWildAchDesc},
-    [ACH_TRUE_ENDING] = {60, 31, CATEGORY_COMPANIONS, ACH_TRUE_ENDING, sTrueEndingAchLabel, sTrueEndingAchDesc}, 
+    [ACH_TRUE_LOVE] = {55, 37, CATEGORY_COMPANIONS, ACH_TRUE_LOVE, sTrueLoveAchLabel, sTrueLoveAchDesc},
+    [ACH_SILENT_STRONG_TYPE] = {57, 33, CATEGORY_COMPANIONS, ACH_SILENT_STRONG_TYPE, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc},
+    [ACH_CHILDHOOD_FRIEND] = {57, 35, CATEGORY_COMPANIONS, ACH_CHILDHOOD_FRIEND, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc},
+    [ACH_FIERY_PASSION] = {57, 37, CATEGORY_COMPANIONS, ACH_FIERY_PASSION, sFieryPassionAchLabel, sFieryPassionAchDesc},
+    [ACH_NERD_LOVE] = {59, 33, CATEGORY_COMPANIONS, ACH_NERD_LOVE, sNerdLoveAchLabel, sNerdLoveAchDesc},
+    [ACH_FWB] = {59, 35, CATEGORY_COMPANIONS, ACH_FWB, sFWBAchLabel, sFWBAchDesc},
+    [ACH_WET_N_WILD] = {59, 37, CATEGORY_COMPANIONS, ACH_WET_N_WILD, sWetnWildAchLabel, sWetnWildAchDesc},
+    [ACH_TRUE_ENDING] = {57, 31, CATEGORY_COMPANIONS, ACH_TRUE_ENDING, sTrueEndingAchLabel, sTrueEndingAchDesc}, 
     [ACH_ETERNAL_DAMNATION] = {39, 37, CATEGORY_QUESTING, ACH_ETERNAL_DAMNATION, sEternalDamnationLabel, sEternalDamnationAchDesc}, //magma alt romance ending
     [ACH_HUNTING_TRIP] = {39, 35, CATEGORY_QUESTING, ACH_HUNTING_TRIP, sHuntingTripAchLabel, sHuntingTripAchDesc}, //magma alt non romance ending
     [ACH_THROUGH_THE_FIRE] = {41, 35, CATEGORY_QUESTING, ACH_THROUGH_THE_FIRE, sThroughTheFireAchLabel, sThroughTheFireAchDesc}, // magma main romance ending
