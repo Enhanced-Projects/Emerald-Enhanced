@@ -540,6 +540,7 @@ DC_CorporateInterrogation4::
 	setvar VAR_RYU_DEVON, 60 @player finished the Devon Corporate line.
 	setflag FLAG_RYU_DEVON_LINE_FINISHED
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	ach give ACH_CORPORATE_SHILL
 	releaseall
 	end
 	

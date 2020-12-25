@@ -369,12 +369,12 @@ ACO_ShellyNightScene::
 
 ACO_ShellyAfterStory::
 	lockall
+	ach give ACH_EYE_OF_STORM
 	msgbox ACO_ShellyAfterstoryIntro
 	closemessage
 	msgbox ACO_ShellyStayTheNightQuery, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq ACO_CheckFollowerShelly
-	
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RF_FollowerLeaveCall
 	setvar VAR_RYU_AQUA, 162
 	warpsilent MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE, 255, 30, 2 

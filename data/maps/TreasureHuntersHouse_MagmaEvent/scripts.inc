@@ -29,6 +29,7 @@ THH_ME_NotHere::
 	
 THH_ME_NotHereEnd::
 	setvar VAR_RYU_MAGMA, 597@Player looked for maxie in treasure house, but didn't find him there. End of Magma alternate default line.
+	ach give ACH_HUNTING_TRIP
 	msgbox THH_ME_ThatsTheEnd
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp

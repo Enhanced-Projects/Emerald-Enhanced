@@ -1262,6 +1262,7 @@ MH4_NormalMagmaEnding2::
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
 	clearflag FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE
 	setvar VAR_RYU_MAGMA, 598@Player finished the main magma line with the non-romance ending and failed to capture Groudon.
+	ach give ACH_HEATED_ARGUMENT
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	fadescreen FADE_TO_BLACK
 	removeobject 20
@@ -1371,6 +1372,7 @@ MH4_CourtneyGivesMasterBall::
 	setflag FLAG_RYU_MAGMA_LINE_DONE
 	clearflag FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE
 	setvar VAR_RYU_MAGMA, 599@Player finished the magma main line with the romance courtney ending.
+	ach give ACH_THROUGH_THE_FIRE
 	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_COURTNEY

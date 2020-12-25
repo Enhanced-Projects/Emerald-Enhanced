@@ -85,6 +85,7 @@
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "strings.h"
+#include "ach_atlas.h"
 
 void ApplyDaycareExperience(struct Pokemon *mon)
 {
@@ -1666,4 +1667,38 @@ void RyuHolidayGiftMonSetData(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &ribbon);
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
 
+}
+
+void RyuCheckForDejavuAch(void)
+{
+    u8 questAch = 0;
+
+    if (CheckAchievement(ACH_ETERNAL_DAMNATION) == 1)
+        questAch++;
+    
+    if (CheckAchievement(ACH_HUNTING_TRIP) == 1)
+        questAch++;
+
+    if (CheckAchievement(ACH_THROUGH_THE_FIRE) == 1)
+        questAch++;
+
+    if (CheckAchievement(ACH_HEATED_ARGUMENT) == 1)
+        questAch++;
+
+    if (CheckAchievement(ACH_EYE_OF_STORM) == 1)
+        questAch++;
+
+    if (CheckAchievement(ACH_WATER_LOGGED) == 1)
+        questAch++;
+
+    if (CheckAchievement(ACH_ASTRONOMICAL) == 1)
+        questAch++;
+
+    if (CheckAchievement(ACH_CORPORATE_SHILL) == 1)
+        questAch++;
+
+    if(questAch >= 8)
+        gSpecialVar_Result = TRUE;
+    else
+        gSpecialVar_Result = FALSE;
 }
