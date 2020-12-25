@@ -48,8 +48,8 @@ struct AchAtlas // this would be better off as a u8 array lmao
 #define ACH_ATLAS_WIDTH 64
 #define ACH_ATLAS_HEIGHT 64
 
-#define TILEMAP_START_X 28 
-#define TILEMAP_START_Y 41
+#define TILEMAP_START_X 21 
+#define TILEMAP_START_Y 27
 
 void CB2_OpenAtlas(void);
 
