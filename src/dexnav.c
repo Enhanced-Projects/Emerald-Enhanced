@@ -2404,9 +2404,16 @@ void Task_OpenDexNavFromStartMenu(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
+        if (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)
+        {
         CleanupOverworldWindowsAndTilemaps();
         DexNavGuiInit(CB2_ReturnToFieldWithOpenMenu);
         DestroyTask(taskId);
+        }
+        else 
+        {
+            SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
+        }
     }
 }
 

@@ -1643,6 +1643,7 @@ void CB2_NewGame(void)
     bool8 hasExpShare = FALSE;
     bool8 hasMachBike = FALSE;
     bool8 hasAcroBike = FALSE;
+    bool8 hasDexNav = FALSE;
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
         isNGPlus = TRUE;
 
@@ -1669,6 +1670,9 @@ void CB2_NewGame(void)
         
     if (CheckBagHasItem(ITEM_ACRO_BIKE, 1))
         hasAcroBike = TRUE;
+
+    if (FlagGet(FLAG_SYS_DEXNAV_GET) == 1)
+        hasDexNav = TRUE;
 
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
@@ -1701,6 +1705,9 @@ void CB2_NewGame(void)
 
         if (hasExpShare == TRUE)
             FlagSet(FLAG_RYU_HAS_EXPSHARE);
+
+        if (hasDexNav == TRUE)
+            FlagSet(FLAG_SYS_DEXNAV_GET);
 
         FlagSet(FLAG_SYS_POKEDEX_GET);
         FlagSet(FLAG_SYS_NATIONAL_DEX);
