@@ -1358,7 +1358,7 @@ bool8 RyuFillStatsBuffers(void)
 
     StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey);
     StringAppend(gTextBuffer1, gText_RyuStatsHP);
-    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_HP, NULL)), STR_CONV_MODE_LEFT_ALIGN, 4);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_MAX_HP, NULL)), STR_CONV_MODE_LEFT_ALIGN, 4);
     StringAppend(gTextBuffer1, gTextBuffer2);
     StringAppend(gTextBuffer1, gText_RyuStatsIv);
     ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_HP_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 4);
