@@ -15,6 +15,7 @@ BotanyMaster_Master::
 	fadescreen FADE_FROM_BLACK
     setvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
     setvar VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 0
+	giveitem ITEM_RECIPE_BOOK, 1
 	msgbox BotanyMaster_GoForthAndCut
     release
     end
