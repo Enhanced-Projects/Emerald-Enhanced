@@ -1907,22 +1907,35 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
             case 0:
             {
                 const struct TrainerMonNoItemDefaultMoves *partyData = gTrainers[trainerNum].party.NoItemDefaultMoves;
+                u16 species = partyData[i].species;
+                u16 level = RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength);
+                // If either the required level is reached or the mon is level 50
+                // (at which point we can assume that any reasonable trainer would have found the evolution stone,
+                // done the necessaty trade, etc. for the evolution), evolve the Pokemon.
+                // This is done so our autoscaled enemies don’t end up with level 200 Zigzagoons.
+                while ((
+                      (gEvolutionTable[species][0].method == EVO_LEVEL && gEvolutionTable[species][0].param <= level)
+                      || (gEvolutionTable[species][0].method != EVO_MEGA_EVOLUTION && level >= 50)
+                      // while there is an evolution available at all (the method is 0 if there isn’t)
+                    ) && gEvolutionTable[species][0].method != 0) {
+                    species = gEvolutionTable[species][0].targetSpecies;
+                }
 
                 if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
                 {
-                    u32 em1 = (Random() % 902) + 1;
-                    u32 pm1 = (Random() % 902) + 1;
+                    u32 em1 = (Random() % 902) + 1; // should this 902 be the number of species in the game?
+                    u32 pm1 = (Random() % 902) + 1; // same here
                     CreateMon(&gEnemyParty[i], em1, 100, 31, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
                     CreateMon(&gPlayerParty[i], pm1, 100, 31, FALSE, 0, OT_ID_PLAYER_ID, 0);
                     break;
                 }
 
-                for (j = 0; gSpeciesNames[partyData[i].species][j] != EOS; j++)
-                    nameHash += gSpeciesNames[partyData[i].species][j];
+                for (j = 0; gSpeciesNames[species][j] != EOS; j++)
+                    nameHash += gSpeciesNames[species][j];
 
                 personalityValue = personalityAdd + (nameHash << 8);
                 fixedIV = partyData[i].iv * 31 / 255;
-                CreateMon(&party[i], partyData[i].species, RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength), fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                CreateMon(&party[i], species, level, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 break;
             }
             case F_TRAINER_PARTY_CUSTOM_MOVESET:
