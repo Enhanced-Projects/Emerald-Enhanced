@@ -19,6 +19,7 @@ LCPC_NormalLayout::
 LCPC_OnWarpScripts::
 	map_script_2 VAR_RYU_DS_NURSE_STAGE, 8, LCPC_DoNurseSceneSetup
 	map_script_2 VAR_RYU_DS_NURSE_STAGE, 10, LCPC_SwitchToAlternateGuard
+	map_script_2 VAR_RYU_DS_NURSE_STAGE, 11, LCPC_NormalLayout
 	.2byte 0
 
 LCPC_OnFrameScript::
