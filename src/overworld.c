@@ -1644,6 +1644,9 @@ void CB2_NewGame(void)
     bool8 hasMachBike = FALSE;
     bool8 hasAcroBike = FALSE;
     bool8 hasDexNav = FALSE;
+    bool8 hasShinyCharm = FALSE;
+    bool8 hasOvalCharm = FALSE;
+
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
         isNGPlus = TRUE;
 
@@ -1668,8 +1671,17 @@ void CB2_NewGame(void)
     if (CheckBagHasItem(ITEM_MACH_BIKE, 1))
         hasMachBike = TRUE;
         
+    if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
+        hasShinyCharm = TRUE;
+
+    if (CheckBagHasItem(ITEM_OVAL_CHARM, 1))
+        hasOvalCharm = TRUE;
+
     if (CheckBagHasItem(ITEM_ACRO_BIKE, 1))
         hasAcroBike = TRUE;
+
+    if (CheckBagHasItem(ITEM_MEGA_BRACELET, 1))
+        hasMegaBracelet = TRUE;
 
     if (FlagGet(FLAG_SYS_DEXNAV_GET) == 1)
         hasDexNav = TRUE;
@@ -1708,6 +1720,15 @@ void CB2_NewGame(void)
 
         if (hasDexNav == TRUE)
             FlagSet(FLAG_SYS_DEXNAV_GET);
+
+        if (hasOvalCharm == TRUE)
+            FlagSet(FLAG_RYU_HAS_OVAL_CHARM);
+
+        if (hasShinyCharm == TRUE)
+            FlagSet(FLAG_RYU_HAS_SHINY_CHARM);
+        
+        if (hasMegaBracelet == TRUE)
+            FlagSet(FLAG_RYU_HAS_MEGA_BRACELET)
 
         FlagSet(FLAG_SYS_POKEDEX_GET);
         FlagSet(FLAG_SYS_NATIONAL_DEX);

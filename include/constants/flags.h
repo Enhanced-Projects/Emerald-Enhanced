@@ -75,10 +75,10 @@
 #define FLAG_RYU_CAN_DO_NURSE_QUEST          0x3F
 #define FLAG_RYU_PLAYER_HELPING_AQUA         0x40
 #define FLAG_RYU_TC_EXP_DISABLED             0x41
-#define FLAG_UNUSED_0x42                     0x42
+#define FLAG_RYU_HAS_OVAL_CHARM              0x42
 #define FLAG_RYU_DG_REWARD_RECEIVED          0x43
-#define FLAG_UNUSED_0x44                     0x44
-#define FLAG_UNUSED_0x45                     0x45
+#define FLAG_RYU_HAS_SHINY_CHARM             0x44
+#define FLAG_RYU_HAS_MEGA_BRACELET           0x45
 #define FLAG_UNUSED_0x46                     0x46
 #define FLAG_UNUSED_0x47                     0x47
 #define FLAG_RYU_DEVON_CORPORATE             0x48
