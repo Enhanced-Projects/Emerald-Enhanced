@@ -1646,6 +1646,7 @@ void CB2_NewGame(void)
     bool8 hasDexNav = FALSE;
     bool8 hasShinyCharm = FALSE;
     bool8 hasOvalCharm = FALSE;
+    bool8 hasMegaBracelet = FALSE;
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == 1)
         isNGPlus = TRUE;
@@ -1728,7 +1729,7 @@ void CB2_NewGame(void)
             FlagSet(FLAG_RYU_HAS_SHINY_CHARM);
         
         if (hasMegaBracelet == TRUE)
-            FlagSet(FLAG_RYU_HAS_MEGA_BRACELET)
+            FlagSet(FLAG_RYU_HAS_MEGA_BRACELET);
 
         FlagSet(FLAG_SYS_POKEDEX_GET);
         FlagSet(FLAG_SYS_NATIONAL_DEX);
