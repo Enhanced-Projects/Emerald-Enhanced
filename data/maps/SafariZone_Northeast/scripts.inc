@@ -11,6 +11,8 @@ SZ_SetWall::
 	setvar VAR_TEMP_6, 10
 	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 108
 	goto_if_eq ryu_end
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 110
+	goto_if_eq ryu_end
 	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 111
 	goto_if_eq ryu_end
 	setmetatile 8, 5, 124, 1
