@@ -1749,6 +1749,7 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
     u8 level;
     u8 fixedIV = gFacilityTrainerMons[firstMonId].ivs;
     u32 otID;
+    u8 partySize = gBattleTypeFlags & BATTLE_TYPE_DOUBLE ? FRONTIER_DOUBLES_PARTY_SIZE : FRONTIER_PARTY_SIZE;
 
     if (trainerId < FRONTIER_TRAINERS_COUNT)
     {
@@ -1773,7 +1774,7 @@ static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)
 
     level = SetFacilityPtrsGetLevel();
     otID = T1_READ_32(gSaveBlock2Ptr->playerTrainerId);
-    for (i = 0; i < FRONTIER_DOUBLES_PARTY_SIZE; i++)
+    for (i = 0; i < partySize; i++)
     {
         u16 monId = gFrontierTempParty[i];
         CreateMonWithEVSpreadNatureOTID(&gEnemyParty[firstMonId + i],
