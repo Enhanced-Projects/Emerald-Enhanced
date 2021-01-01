@@ -79,7 +79,7 @@
 #define FLAG_RYU_DG_REWARD_RECEIVED          0x43
 #define FLAG_RYU_HAS_SHINY_CHARM             0x44
 #define FLAG_RYU_HAS_MEGA_BRACELET           0x45
-#define FLAG_UNUSED_0x46                     0x46
+#define FLAG_RYU_DEVON_STERN_EVENT_DONE      0x46
 #define FLAG_UNUSED_0x47                     0x47
 #define FLAG_RYU_DEVON_CORPORATE             0x48
 #define FLAG_RYU_ULTRA_BEASTS_ESCAPED        0x49

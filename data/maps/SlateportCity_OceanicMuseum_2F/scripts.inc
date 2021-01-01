@@ -311,8 +311,14 @@ OM_NurseCancel:
 OM_SetupSternForDevon::
 OM_ReEnableStern::
 	setvar VAR_TEMP_5, 10
+	goto_if_set FLAG_RYU_DEVON_STERN_EVENT_DONE, OM_FinishedSternEvent
 	setvar VAR_RYU_DEVON, 17 @Player is on second floor to speak with Stern.
 	addobject 4
+	end
+
+OM_FinishedSternEvent::
+	setvar VAR_RYU_DEVON, 18
+	release
 	end
 	
 OM_CaptainStern::
@@ -354,6 +360,7 @@ OM_ArchieSceneEnd::
 	msgbox OM_ThanksForProtecting
 	removeitem ITEM_DEVON_GOODS, 1
 	setvar VAR_RYU_DEVON, 18 @player spoke with stern and protected him from archie. Return to Devon.
+	setflag FLAG_RYU_DEVON_STERN_EVENT_DONE
 	release
 	end
 
