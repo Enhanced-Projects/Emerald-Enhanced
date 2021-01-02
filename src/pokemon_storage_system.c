@@ -2796,10 +2796,10 @@ static void Cb_OnSelectedMon(u8 taskId)
             {
                 sPSSData->state = 3;
             }
-            else if (sPSSData->cursorMonIsEgg)
-            {
-                sPSSData->state = 5; // Cannot release an Egg.
-            }
+            //else if (sPSSData->cursorMonIsEgg)
+            //{
+            //    sPSSData->state = 5; // Cannot release an Egg.
+            //}
             else if (ItemIsMail(sPSSData->cursorMonItem))
             {
                 sPSSData->state = 4;
@@ -2847,11 +2847,11 @@ static void Cb_OnSelectedMon(u8 taskId)
         PrintStorageActionText(PC_TEXT_LAST_POKE);
         sPSSData->state = 6;
         break;
-    case 5:
-        PlaySE(SE_FAILURE);
-        PrintStorageActionText(PC_TEXT_CANT_RELEASE_EGG);
-        sPSSData->state = 6;
-        break;
+    //case 5:
+        //PlaySE(SE_FAILURE);
+        //PrintStorageActionText(PC_TEXT_CANT_RELEASE_EGG);
+        //sPSSData->state = 6;
+        //break;
     case 4:
         PlaySE(SE_FAILURE);
         PrintStorageActionText(PC_TEXT_PLEASE_REMOVE_MAIL);
@@ -6790,10 +6790,10 @@ static void SetCursorMonData(void *pokemon, u8 mode)
         sPSSData->cursorMonSpecies = GetMonData(mon, MON_DATA_SPECIES2);
         if (sPSSData->cursorMonSpecies != SPECIES_NONE)
         {
-            sanityIsBagEgg = GetMonData(mon, MON_DATA_SANITY_IS_BAD_EGG);
-            if (sanityIsBagEgg)
-                sPSSData->cursorMonIsEgg = TRUE;
-            else
+            //sanityIsBagEgg = GetMonData(mon, MON_DATA_SANITY_IS_BAD_EGG);
+            //if (sanityIsBagEgg)
+            //    sPSSData->cursorMonIsEgg = TRUE;
+            //else
                 sPSSData->cursorMonIsEgg = GetMonData(mon, MON_DATA_IS_EGG);
 
             GetMonData(mon, MON_DATA_NICKNAME, sPSSData->cursorMonNick);
@@ -9485,8 +9485,8 @@ bool32 CheckBoxMonSanityAt(u32 boxId, u32 boxPosition)
     if (boxId < TOTAL_BOXES_COUNT
         && boxPosition < IN_BOX_COUNT
         && GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SANITY_HAS_SPECIES)
-        && !GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SANITY_IS_EGG)
-        && !GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SANITY_IS_BAD_EGG))
+        && !GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SANITY_IS_EGG))
+        //&& !GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SANITY_IS_BAD_EGG))
         return TRUE;
     else
         return FALSE;
