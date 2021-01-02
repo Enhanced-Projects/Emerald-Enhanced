@@ -226,7 +226,7 @@ static const u8 *const sPageDescriptions[] =
 {
     [POKENAV_MENUITEM_MAP]                     = gText_CheckMapOfHoenn,
     [POKENAV_MENUITEM_CONDITION]               = gText_CheckPokemonInDetail,
-    [POKENAV_MENUITEM_MATCH_CALL]              = gText_CallRegisteredTrainer,
+    [POKENAV_MENUITEM_ACHIEVEMENTS]            = gText_CheckAchievements,
     [POKENAV_MENUITEM_RIBBONS]                 = gText_CheckObtainedRibbons,
     [POKENAV_MENUITEM_SWITCH_OFF]              = gText_PutAwayPokenav,
     [POKENAV_MENUITEM_CONDITION_PARTY]         = gText_CheckPartyPokemonInDetail,
