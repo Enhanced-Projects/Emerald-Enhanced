@@ -3564,18 +3564,14 @@ void RyuGiveFrontierMon(void)
         level = 100;
         level2 = 1;
     }
-    else if ((FlagGet(FLAG_RYU_PASSCODE_FRONTIER_MON_DEV) ==1 ) && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
-    {
-        mon = &gBattleFrontierMons[(VarGet(VAR_TEMP_6))];
-        level = 125;
-    }
     else
     {
-    }
-    
-
-    Random();
-
+        if ((FlagGet(FLAG_RYU_PASSCODE_FRONTIER_MON_DEV) ==1 ) && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+        {
+            mon = &gBattleFrontierMons[(VarGet(VAR_TEMP_6))];
+            level = 125;
+        }
+    } 
 
     temp = mon->evSpread;
     count = 0;
@@ -3594,7 +3590,7 @@ void RyuGiveFrontierMon(void)
 
     if (party_id != 6)
     {
-        if (FlagGet(FLAG_TEMP_D) == 1)
+        if (FlagGet(FLAG_TEMP_D) == 1)//flag is set to tell the game to create a level 1 pokemon for the purposes of FEAR.
             CreateMonWithNature(&gPlayerParty[party_id], mon->species, level2, mon->ivs, mon->nature);
         else
             CreateMonWithNature(&gPlayerParty[party_id], mon->species, level, mon->ivs, mon->nature);
