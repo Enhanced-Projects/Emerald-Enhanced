@@ -46,6 +46,7 @@
 #include "constants/species.h"
 #include "constants/trainers.h"
 #include "constants/weather.h"
+#include "constants/event_objects.h"
 
 /*
 NOTE: The data and functions in this file up until (but not including) sSoundMovesTable
@@ -7339,7 +7340,7 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
     dmg = (dmg / 50) + 2;
 
     //Courtney has a special mightyena for the purposes of the magma questline.
-    if ((VarGet(VAR_RYU_FOLLOWER_ID) == 120) &&//courtney
+    if ((VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_MAGMA_MEMBER_F) &&//courtney
      (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1) &&//is following
      (move == MOVE_CRUNCH) &&//used crunch
      (GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_RIGHT))//is the player's partner in battle
@@ -7353,6 +7354,46 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
 
     if ((VarGet(VAR_RYU_AQUA) == 40) && (FlagGet(FLAG_TEMP_E) == 1) && GetBattlerPosition(gBattlerAttacker) == B_POSITION_OPPONENT_LEFT)
         dmg *= 20;
+
+    //Followers may grant different bonuses
+
+    if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)//player has a follower and the move being calc'd is player/partner's
+        {
+            switch (VarGet(VAR_RYU_FOLLOWER_ID))
+            {
+                case OBJ_EVENT_GFX_AQUA_MEMBER_F://Shelly grants increase to dark and water type moves
+                    {
+                        if ((moveType == TYPE_WATER) || (moveType == TYPE_DARK))
+                            dmg = (dmg * 105 / 100);
+                            break;
+                    }
+                case OBJ_EVENT_GFX_MAGMA_MEMBER_F://courtney grants increase to dark and fire type moves
+                    {
+                        if ((moveType == TYPE_FIRE) || (moveType == TYPE_DARK))
+                            dmg = (dmg * 105 / 100);
+                            break;
+                    }
+            }
+        }
+    else if ((FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1) && (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT))//player has a follower and is taking damage
+        {
+            switch (VarGet(VAR_RYU_FOLLOWER_ID))
+            {
+                case OBJ_EVENT_GFX_TWIN:
+                    {
+                        dmg = (dmg * 95 / 100); //5% damage decrease from all sources
+                        break;
+                    }
+                case OBJ_EVENT_GFX_LEAF:
+                    {
+                        if ((moveType == TYPE_FIRE) || (moveType == TYPE_WATER) || (moveType == TYPE_GRASS))
+                        {
+                            dmg = (dmg * 90 / 100); //10% damage reduction from fire water and grass types
+                            break;
+                        }
+                    }
+            }
+        }
 
     // Calculate final modifiers.
     dmg = CalcFinalDmg(dmg, move, battlerAtk, battlerDef, moveType, typeEffectivenessModifier, isCrit, updateFlags);
