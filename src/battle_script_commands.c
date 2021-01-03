@@ -6416,7 +6416,7 @@ static void Cmd_getmoneyreward(void)
 
     //if player has their rival following them, they get a bonus to money earned.
     if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && ((VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL) || (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)))
-        moneyReward = (moneyReward * 115 / 100);
+        moneyReward = ((moneyReward * 115) / 100);
 
     AddMoney(&gSaveBlock1Ptr->money, moneyReward);
 
@@ -12164,7 +12164,7 @@ static void Cmd_handleballthrow(void)
             / (3 * gBattleMons[gBattlerTarget].maxHP);
 
         if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_WOMAN_2))//If Lanette is following player, catch rate gets an additional 5% boost.
-            odds = (odds * 105 / 100);
+            odds = ((odds * 105) / 100);
 
         if (gBattleMons[gBattlerTarget].status1 & (STATUS1_POISON | STATUS1_BURN | STATUS1_TOXIC_POISON))
             odds = (odds * 15) / 10;

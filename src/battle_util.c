@@ -7364,13 +7364,13 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
                 case OBJ_EVENT_GFX_AQUA_MEMBER_F://Shelly grants increase to dark and water type moves
                     {
                         if ((moveType == TYPE_WATER) || (moveType == TYPE_DARK))
-                            dmg = (dmg * 105 / 100);
+                            dmg = ((dmg) * 105 / 100);
                             break;
                     }
                 case OBJ_EVENT_GFX_MAGMA_MEMBER_F://courtney grants increase to dark and fire type moves
                     {
                         if ((moveType == TYPE_FIRE) || (moveType == TYPE_DARK))
-                            dmg = (dmg * 105 / 100);
+                            dmg = ((dmg * 105) / 100);
                             break;
                     }
             }
@@ -7381,14 +7381,14 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
             {
                 case OBJ_EVENT_GFX_TWIN:
                     {
-                        dmg = (dmg * 95 / 100); //5% damage decrease from all sources
+                        dmg = ((dmg * 95) / 100); //5% damage decrease from all sources
                         break;
                     }
                 case OBJ_EVENT_GFX_LEAF:
                     {
                         if ((moveType == TYPE_FIRE) || (moveType == TYPE_WATER) || (moveType == TYPE_GRASS))
                         {
-                            dmg = (dmg * 90 / 100); //10% damage reduction from fire water and grass types
+                            dmg = ((dmg * 90) / 100); //10% damage reduction from fire water and grass types
                             break;
                         }
                     }
