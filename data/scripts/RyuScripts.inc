@@ -2014,6 +2014,17 @@ RyuScript_CheckGivenAchievement::
 	callnative BufferGivenAchievement
 	playse SE_EXPMAX
 	msgbox RS_ACH_RECEIVED
+	closemessage
+	setvar VAR_RYU_LAST_ACH, 300
+	callnative RyuCheckForDejavuAch
+	compare VAR_RESULT, TRUE
+	call_if_eq RyuScript_GiveDejaVu
+	release
+	end
+
+RyuScript_GiveDejaVu::
+	ach give ACH_DEJA_VU
+	msgbox RS_ACH_RECEIVED
 	setvar VAR_RYU_LAST_ACH, 300
 	release
 	end

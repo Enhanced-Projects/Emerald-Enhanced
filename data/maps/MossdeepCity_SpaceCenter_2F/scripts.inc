@@ -440,6 +440,7 @@ SPC_GoCheckSafariZone::
 SPC_Afterstory:
 	msgbox SPC_LineCompleted
 	setflag FLAG_RYU_DEVON_LINE_FINISHED
+	ach give ACH_ASTRONOMICAL
 	release
 	end
 	

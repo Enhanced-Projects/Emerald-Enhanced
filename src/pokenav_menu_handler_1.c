@@ -53,14 +53,14 @@ static const u8 sMenuItems[][6] =
     {
         POKENAV_MENUITEM_MAP,
         POKENAV_MENUITEM_CONDITION,
-        POKENAV_MENUITEM_MATCH_CALL,
+        POKENAV_MENUITEM_ACHIEVEMENTS,
         [3 ... 5] = POKENAV_MENUITEM_SWITCH_OFF
     },
     [POKENAV_MENU_TYPE_UNLOCK_MC_RIBBONS] = 
     { 
         POKENAV_MENUITEM_MAP, 
         POKENAV_MENUITEM_CONDITION,  
-        //POKENAV_MENUITEM_MATCH_CALL,  
+        //POKENAV_MENUITEM_ACHIEVEMENTS,  
         POKENAV_MENUITEM_RIBBONS,  
         [3 ... 5] = POKENAV_MENUITEM_SWITCH_OFF
     },
@@ -113,8 +113,8 @@ bool32 PokenavCallback_Init_MainMenuCursorOnMatchCall(void)
         return FALSE;
 
     state->menuType = GetPokenavMainMenuType();
-    state->cursorPos = POKENAV_MENUITEM_MATCH_CALL;
-    state->currMenuItem = POKENAV_MENUITEM_MATCH_CALL;
+    state->cursorPos = POKENAV_MENUITEM_ACHIEVEMENTS;
+    state->currMenuItem = POKENAV_MENUITEM_ACHIEVEMENTS;
     state->helpBarIndex = HELPBAR_NONE;
     SetMenuInputHandler(state);
     return TRUE;
@@ -127,7 +127,7 @@ bool32 PokenavCallback_Init_MainMenuCursorOnRibbons(void)
         return FALSE;
 
     state->menuType = GetPokenavMainMenuType();
-    state->cursorPos = POKENAV_MENUITEM_MATCH_CALL;
+    state->cursorPos = POKENAV_MENUITEM_ACHIEVEMENTS;
     state->currMenuItem = POKENAV_MENUITEM_RIBBONS;
     SetMenuInputHandler(state);
     return TRUE;
@@ -225,7 +225,7 @@ static u32 HandleMainMenuInput(struct Pokenav1Struct *state)
             state->currMenuItem = sMenuItems[POKENAV_MENU_TYPE_CONDITION][0];
             state->callback = HandleConditionMenuInput;
             return POKENAV_MENU_FUNC_OPEN_CONDITION;
-        case POKENAV_MENUITEM_MATCH_CALL:
+        case POKENAV_MENUITEM_ACHIEVEMENTS:
             state->helpBarIndex = HELPBAR_MC_TRAINER_LIST;
             SetMenuIdAndCB(state, POKENAV_MATCH_CALL);
             return POKENAV_MENU_FUNC_OPEN_FEATURE;
@@ -260,7 +260,7 @@ static u32 HandleMainMenuInputTutorial(struct Pokenav1Struct *state)
 
     if (JOY_NEW(A_BUTTON))
     {
-        if (sMenuItems[state->menuType][state->cursorPos] == POKENAV_MENUITEM_MATCH_CALL)
+        if (sMenuItems[state->menuType][state->cursorPos] == POKENAV_MENUITEM_ACHIEVEMENTS)
         {
             state->helpBarIndex = HELPBAR_MC_TRAINER_LIST;
             SetMenuIdAndCB(state, POKENAV_MATCH_CALL);
@@ -291,12 +291,12 @@ static u32 HandleMainMenuInputEndTutorial(struct Pokenav1Struct *state)
     if (JOY_NEW(A_BUTTON))
     {
         u32 menuItem = sMenuItems[state->menuType][state->cursorPos];
-        if (menuItem != POKENAV_MENUITEM_MATCH_CALL && menuItem != POKENAV_MENUITEM_SWITCH_OFF)
+        if (menuItem != POKENAV_MENUITEM_ACHIEVEMENTS && menuItem != POKENAV_MENUITEM_SWITCH_OFF)
         {
             PlaySE(SE_FAILURE);
             return POKENAV_MENU_FUNC_NONE;
         }
-        else if (menuItem == POKENAV_MENUITEM_MATCH_CALL)
+        else if (menuItem == POKENAV_MENUITEM_ACHIEVEMENTS)
         {
             state->helpBarIndex = HELPBAR_MC_TRAINER_LIST;
             SetMenuIdAndCB(state, POKENAV_MATCH_CALL);

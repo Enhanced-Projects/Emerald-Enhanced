@@ -14,6 +14,7 @@ BF_GetRandomMon::
 	msgbox FrontierMonQuery  MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne BF_RandomMonDeclined
+	goto_if_set FLAG_RYU_DEV_MODE, SkipBPCheck
 	specialvar VAR_RESULT, GetFrontierBattlePoints
 	compare VAR_RESULT, 40
 	goto_if_lt BF_CantAffordMon
@@ -24,6 +25,14 @@ BF_GetRandomMon::
 	msgbox gratz
 	release
 	end
+
+SkipBPCheck::
+	special RyuGiveFrontierMon
+	delay 50
+	msgbox gratz
+	release
+	end
+
 	
 BF_CantAffordMon::
     msgbox BF_CantAfford 

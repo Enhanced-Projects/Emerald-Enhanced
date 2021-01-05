@@ -85,6 +85,7 @@
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "strings.h"
+#include "ach_atlas.h"
 
 void ApplyDaycareExperience(struct Pokemon *mon)
 {
@@ -1357,7 +1358,7 @@ bool8 RyuFillStatsBuffers(void)
 
     StringCopy(gTextBuffer1, gText_ColorDarkGreyShadowLightGrey);
     StringAppend(gTextBuffer1, gText_RyuStatsHP);
-    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_HP, NULL)), STR_CONV_MODE_LEFT_ALIGN, 4);
+    ConvertIntToDecimalStringN(gTextBuffer2, (GetMonData(&gPlayerParty[0], MON_DATA_MAX_HP, NULL)), STR_CONV_MODE_LEFT_ALIGN, 4);
     StringAppend(gTextBuffer1, gTextBuffer2);
     StringAppend(gTextBuffer1, gText_RyuStatsIv);
     ConvertIntToDecimalStringN(gTextBuffer3, (GetMonData(&gPlayerParty[0], MON_DATA_HP_IV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 4);
@@ -1666,4 +1667,38 @@ void RyuHolidayGiftMonSetData(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &ribbon);
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
 
+}
+
+void RyuCheckForDejavuAch(void)
+{
+    u8 questAch = 0;
+
+    if (CheckAchievement(ACH_ETERNAL_DAMNATION) == 1)
+        questAch++;
+    
+    if (CheckAchievement(ACH_HUNTING_TRIP) == 1)
+        questAch++;
+
+    if (CheckAchievement(ACH_THROUGH_THE_FIRE) == 1)
+        questAch++;
+
+    if (CheckAchievement(ACH_HEATED_ARGUMENT) == 1)
+        questAch++;
+
+    if (CheckAchievement(ACH_EYE_OF_STORM) == 1)
+        questAch++;
+
+    if (CheckAchievement(ACH_WATER_LOGGED) == 1)
+        questAch++;
+
+    if (CheckAchievement(ACH_ASTRONOMICAL) == 1)
+        questAch++;
+
+    if (CheckAchievement(ACH_CORPORATE_SHILL) == 1)
+        questAch++;
+
+    if(questAch >= 8)
+        gSpecialVar_Result = TRUE;
+    else
+        gSpecialVar_Result = FALSE;
 }

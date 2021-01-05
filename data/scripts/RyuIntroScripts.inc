@@ -33,6 +33,9 @@ Ryu_NewGamePlus::
 	call_if_set FLAG_RYU_HAS_EXPSHARE, Ryu_NGP_ExpShare
 	call_if_set FLAG_HAS_ACRO_BIKE, Ryu_NGP_AcroBike
 	call_if_set FLAG_HAS_MACH_BIKE, Ryu_NGP_MachBike
+	call_if_set FLAG_RYU_HAS_MEGA_BRACELET, Ryu_NGP_MegaBracelet
+	call_if_set FLAG_RYU_HAS_SHINY_CHARM, Ryu_NGP_ShinyCharm
+	call_if_set FLAG_RYU_HAS_OVAL_CHARM, Ryu_NGP_OvalCharm
 	setflag FLAG_SYS_POKEDEX_GET
 	setflag FLAG_SYS_NATIONAL_DEX
 	special EnableNationalPokedex
@@ -46,19 +49,6 @@ Ryu_NewGamePlus::
 	case 1, IT_NuzlockeMode
     case 2, IT_HardcoreMode
 	goto IT_NormalMode
-
-RyuNGP_DexInfo:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}We will now attempt to restore the\n"
-	.string "pokedex from your existing boxes.\p"
-	.string "{COLOR DARK_GREY}{SHADOW RED}Note that previous evolutions\n"
-	.string "will not be registerred, unless\p"
-	.string "you have a copy stored.\p"
-	.string "One moment please... ... ...$"
-
-RyuNGP_DexSuccess:
-    .string "The dex rebuild appears to have\n"
-    .string "been successful. Please check at\l"
-    .string "your earliest convenience.$"
 
 Ryu_NGP_Waystone:
 	additem ITEM_WAYSTONE, 1
@@ -90,6 +80,18 @@ Ryu_NGP_AcroBike::
 
 Ryu_NGP_MachBike::
 	additem ITEM_MACH_BIKE, 1
+	return
+
+Ryu_NGP_OvalCharm::
+	additem ITEM_OVAL_CHARM, 1
+	return
+
+Ryu_NGP_MegaBracelet::
+	additem ITEM_MEGA_BRACELET, 1
+	return
+
+Ryu_NGP_ShinyCharm::
+	additem ITEM_SHINY_CHARM, 1
 	return
 
 RyuNGPInfo:
@@ -128,7 +130,7 @@ IT_NormalMode::
 	end
 
 Normalmode_NGP::
-	setvar VAR_RYU_AUTOLEVEL_MODIFIER, 0
+	setvar VAR_RYU_AUTOLEVEL_MODIFIER, -2
 	setvar VAR_RYU_EXP_MULTIPLIER, 10 @arbitrary value to tell getExp to use the ngp scaling
 	return
 	

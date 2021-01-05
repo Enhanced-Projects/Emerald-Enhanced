@@ -55,6 +55,7 @@
 #include "constants/rgb.h"
 #include "data.h"
 #include "constants/party_menu.h"
+#include "constants/event_objects.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
 extern bool8 gHasAmuletEffectActive;
@@ -3826,7 +3827,10 @@ static void Cmd_getexp(void)
             }
             VarSet(VAR_RYU_EXP_BATTERY, RyuExpBatteryTemp);
 
-            if (gSaveBlock2Ptr->expShare) // exp share is turned on
+            
+            if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))//changing the order of these should make it so that if exp is off, that overrides exp share
+                calculatedExp = 0;
+            else if (gSaveBlock2Ptr->expShare) // exp share is turned on
             {
                 *exp = calculatedExp / 2 / viaSentIn;
                 if (*exp == 0)
@@ -3837,8 +3841,6 @@ static void Cmd_getexp(void)
                 if (gExpShareExp == 0)
                     gExpShareExp = 1;
             }
-            else if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
-                calculatedExp = 0;
             else
             {
                 *exp = calculatedExp / viaSentIn;
@@ -3865,6 +3867,7 @@ static void Cmd_getexp(void)
             if ((!gSaveBlock2Ptr->expShare && !(gBattleStruct->sentInPokes & 1))
                 || (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) == MAX_LEVEL))
             {
+                MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
                 *(&gBattleStruct->sentInPokes) >>= 1;
                 gBattleScripting.getexpState = 5;
                 gBattleMoveDamage = 0; // used for exp
@@ -3941,7 +3944,6 @@ static void Cmd_getexp(void)
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleMoveDamage);
 
                     PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
-                    MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
                 }
                 gBattleStruct->sentInPokes >>= 1;
                 gBattleScripting.getexpState++;
@@ -6411,6 +6413,11 @@ static void Cmd_getmoneyreward(void)
         moneyReward *= 2;   
         gHasAmuletEffectActive = FALSE;
     }
+
+    //if player has their rival following them, they get a bonus to money earned.
+    if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && ((VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL) || (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)))
+        moneyReward = ((moneyReward * 115) / 100);
+
     AddMoney(&gSaveBlock1Ptr->money, moneyReward);
 
     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, moneyReward);
@@ -12144,9 +12151,7 @@ static void Cmd_handleballthrow(void)
         else
             ballMultiplier = 10;
 
-        #ifdef POKEMON_EXPANSION
         }
-        #endif
 
         // catchRate is unsigned, which means that it may potentially overflow if sum is applied directly.
         if (catchRate < 21 && ballAddition == -20)
@@ -12157,6 +12162,9 @@ static void Cmd_handleballthrow(void)
         odds = ((catchRate) * ballMultiplier / 10)
             * (gBattleMons[gBattlerTarget].maxHP * 3 - gBattleMons[gBattlerTarget].hp * 2)
             / (3 * gBattleMons[gBattlerTarget].maxHP);
+
+        if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_WOMAN_2))//If Lanette is following player, catch rate gets an additional 5% boost.
+            odds = ((odds * 105) / 100);
 
         if (gBattleMons[gBattlerTarget].status1 & (STATUS1_POISON | STATUS1_BURN | STATUS1_TOXIC_POISON))
             odds = (odds * 15) / 10;

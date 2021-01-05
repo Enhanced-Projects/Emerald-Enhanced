@@ -29,6 +29,7 @@ Route124_DoFinalMagmaEvent:
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_RYU_MAGMA, 596@@Magma alternate Romance Complete
+	ach give ACH_ETERNAL_DAMNATION
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	lockall

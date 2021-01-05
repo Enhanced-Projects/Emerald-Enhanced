@@ -1277,16 +1277,19 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     iv[0] = Random() % 6;
     iv[1] = Random() % 6;
     iv[2] = Random() % 6;
-    if ((iv[0] != iv[1]) && (iv[0] != iv[2]) && (iv[1] != iv[2]) && (FlagGet(FLAG_RYU_BOSS_WILD) == 0))//if boss mon, don't change iv's, they are already max
+    if (FlagGet(FLAG_RYU_BOSS_WILD) == 0)//if boss mon, don't change iv's, they are already max
     {
-        if (potential > 2)
-            SetMonData(mon, MON_DATA_HP_IV + iv[2], &perfectIv);
-        else if (potential > 1)
-            SetMonData(mon, MON_DATA_HP_IV + iv[1], &perfectIv);
-        else if (potential)
-            SetMonData(mon, MON_DATA_HP_IV + iv[0], &perfectIv);
-        //Set ability
-        SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
+        if ((iv[0] != iv[1]) && (iv[0] != iv[2]) && (iv[1] != iv[2]))
+        {
+            if (potential > 2)
+                SetMonData(mon, MON_DATA_HP_IV + iv[2], &perfectIv);
+            else if (potential > 1)
+                SetMonData(mon, MON_DATA_HP_IV + iv[1], &perfectIv);
+            else if (potential)
+                SetMonData(mon, MON_DATA_HP_IV + iv[0], &perfectIv);
+            //Set ability
+            SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
+        }
     }
         //Set moves
     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -2404,9 +2407,16 @@ void Task_OpenDexNavFromStartMenu(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
+        if (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)
+        {
         CleanupOverworldWindowsAndTilemaps();
         DexNavGuiInit(CB2_ReturnToFieldWithOpenMenu);
         DestroyTask(taskId);
+        }
+        else 
+        {
+            SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
+        }
     }
 }
 

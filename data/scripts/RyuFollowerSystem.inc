@@ -331,11 +331,13 @@ ryu_end::
 @+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Nurse quest
 
 RF_CheckPlayerQualifiesForNurseQuest::@ This is the script that activates when player is about to enter a pokemon center that has a gym on it.
+	goto_if_unset FLAG_RYU_CAN_DO_NURSE_QUEST, ryu_end
 	special checkbadgecount
 	compare VAR_RESULT, 2
 	goto_if_lt ryu_end
 	switch VAR_RYU_DS_NURSE_STAGE
-	case 10, ryu_end @@Player finished or cancelled quest. Don't even bother checking other stages.
+	case 11, ryu_end @@Player cancelled quest, don't check stages.
+	case 10, ryu_end @@Player finished quest. Don't even bother checking other stages.
 	case 0, RF_NurseQuestStage1
 	case 1, RF_NurseQuestStage1
 	case 3, RF_NurseQuestStage2
@@ -502,7 +504,7 @@ RF_FinishNurseQuest4:: @Will take player to lilycove city as that is Hoenn's cap
 
 
 RF_PlayerDeclinedNurseQuest1::
-	setvar VAR_RYU_DS_NURSE_STAGE, 10 @@ends the nurse quest. No partner.
+	setvar VAR_RYU_DS_NURSE_STAGE, 11 @@ends the nurse quest. No partner.
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	msgbox RF_NurseQuestCancelledText
 	closemessage
