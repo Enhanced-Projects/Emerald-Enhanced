@@ -1,14 +1,6 @@
 Route121_MapScripts:: @ 81F5DFC
 	.byte 0
 
-Route121_EventScript_Blocker::
-	msgbox Route121_Text_Unfinished, MSGBOX_NPC
-	end
-
-Route121_Text_Unfinished:
-	.string "This area will be available in\n"
-	.string "the next update.$"
-
 Route121_EventScript_Woman:: @ 81F5DFD
 	msgbox Route121_Text_AheadLoomsMtPyre, MSGBOX_NPC
 	end
