@@ -72,7 +72,7 @@ Tough Powder:   Sharply raises Def
 Smart Powder:   Sharply raises SpA
 Resist Powder:  Sharply raises SpD
 Swift Powder:   Sharply raises Spe
-Focus Powder:   Raises Acc and crit rate
+Focus Powder:   Sharply raises Acc
 Banana:         Restores 5% of HP
 Small Salad:    Restores 33% of HP
 Medium Salad:   Restores 67% of HP

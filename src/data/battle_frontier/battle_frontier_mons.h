@@ -163,7 +163,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ability = 1
     },
     [FRONTIER_MON_MURKROW] = { // Murkrow-Mixed
-        .species = SPECIES_HONCHKROW,
+        .species = SPECIES_MURKROW,
         .moves = {MOVE_BRAVE_BIRD, MOVE_SUCKER_PUNCH, MOVE_HEAT_WAVE, MOVE_HIDDEN_POWER},
         .heldItem = ITEM_LIFE_ORB,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
@@ -3735,7 +3735,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_STARAPTOR_1] = { // Staraptor-JollyBand
+    [FRONTIER_MON_STARAPTOR_1] = { // Staraptor-Band
         .species = SPECIES_STARAPTOR,
         .moves = {MOVE_BRAVE_BIRD, MOVE_DOUBLE_EDGE, MOVE_CLOSE_COMBAT, MOVE_U_TURN},
         .heldItem = ITEM_CHOICE_BAND,

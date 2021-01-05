@@ -18,27 +18,26 @@ GC_ME_CantLeaveUntilMission:
 GraniteCave_1F_EventScript_Hiker:: @ 822DA5E
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_TM51, GraniteCave_1F_EventScript_ReceivedFlash
+	goto_if_set FLAG_RECEIVED_TM61, GraniteCave_1F_EventScript_ReceivedGravelStorm
 	msgbox GraniteCave_1F_Text_GetsDarkAheadHereYouGo, MSGBOX_DEFAULT
 	giveitem ITEM_TM61
-	setflag FLAG_RECEIVED_TM51
-	msgbox GraniteCave_1F_Text_ExplainFlash, MSGBOX_DEFAULT
+	setflag FLAG_RECEIVED_TM61
+	msgbox GraniteCave_1F_Text_ExplainGravelStorm, MSGBOX_DEFAULT
 	release
 	end
 
-GraniteCave_1F_EventScript_ReceivedFlash:: @ 822DA8A
-	msgbox GraniteCave_1F_Text_ExplainFlash, MSGBOX_DEFAULT
+GraniteCave_1F_EventScript_ReceivedGravelStorm:: @ 822DA8A
+	msgbox GraniteCave_1F_Text_ExplainGravelStorm, MSGBOX_DEFAULT
 	release
 	end
 
 GraniteCave_1F_Text_GetsDarkAheadHereYouGo: @ 822DA94
 	.string "Hey, you.\n"
-	.string "It gets awfully dark ahead.\l"
-	.string "It'll be tough trying to explore.\p"
-	.string "That guy who came by earlier…\n"
-	.string "He didn't need this, so I'll\l"
+	.string "That guy who came by earlier…\p"
+	.string "He didn't need this, so I'll\n"
 	.string "give it to you!$"
 
-GraniteCave_1F_Text_ExplainFlash: @ 822DBB7
-	.string "That move flings gravel at\nthe enemy and can flinch.$"
+GraniteCave_1F_Text_ExplainGravelStorm: @ 822DBB7
+	.string "That move flings gravel at\n"
+	.string "the enemy and can flinch.$"
 

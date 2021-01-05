@@ -77,5 +77,4 @@ const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[] = {
     [FLDEFFOBJ_SMALL_SPARKLE]         = &gFieldEffectObjectTemplate_SmallSparkle,
     [FLDEFFOBJ_RAYQUAZA]              = &gFieldEffectObjectTemplate_Rayquaza,
     [FLDEFFOBJ_CAVE_DUST]             = &gFieldEffectObjectTemplate_CaveDust,
-    [FLDEFFOBJ_SAFARI_TALL_GRASS]     = &gFieldEffectObjectTemplate_SafariTallGrass,
 };

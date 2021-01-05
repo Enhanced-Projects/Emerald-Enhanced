@@ -3277,7 +3277,7 @@
       "width": 20,
       "height": 30,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Cave",
+      "secondary_tileset": "gTileset_MtFreeze",
       "border_filepath": "data/layouts/ShoalCave_LowTideIceRoom/border.bin",
       "blockdata_filepath": "data/layouts/ShoalCave_LowTideIceRoom/map.bin"
     },

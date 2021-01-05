@@ -684,11 +684,11 @@
 #define ITEM_SWIFT_POWDER 584
 #define ITEM_FOCUS_POWDER 585
 #define ITEM_BANANA 586
-#define ITEM_SMALL_SALAD 587 //todo
-#define ITEM_MEDIUM_SALAD 588 //todo
-#define ITEM_LARGE_SALAD 589 //todo
-#define ITEM_HEAL_CHOWDER 590 //todo
-#define ITEM_REVITAL_ICE 591 //todo
+#define ITEM_SMALL_SALAD 587
+#define ITEM_MEDIUM_SALAD 588
+#define ITEM_LARGE_SALAD 589
+#define ITEM_HEAL_CHOWDER 590
+#define ITEM_REVITAL_ICE 591
 #define ITEM_SEASIDE_ALMOND 592
 #define ITEM_SAVANNA_MELON 593
 #define ITEM_DEEPSEA_KELP 594
@@ -740,6 +740,6 @@
 #define SUPER_ROD 2
 
 // Check if the item is one that can be used on a Pokemon.
-#define ITEM_HAS_EFFECT(item) ((item) >= ITEM_POTION && (item) <= LAST_BERRY_INDEX)
+#define ITEM_HAS_EFFECT(item) (((item) >= ITEM_POTION && (item) <= LAST_BERRY_INDEX) || ((item) >= ITEM_MUSCLE_POWDER && (item) < ITEM_SEASIDE_ALMOND))
 
 #endif  // GUARD_CONSTANTS_ITEMS_H
