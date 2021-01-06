@@ -181,12 +181,14 @@ RB_DB_MSG1:
 
 RB_ShowConsumablesChapter::
     msgbox RB_WhichRecipe
+    setflag FLAG_TEMP_1A
     scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYCONSUMABLECHAPTER, 0, 2, 5, 1
     trycraftingrecipe VAR_RESULT
     goto RB_CheckCraftingResult
 
 RB_ShowMedicinesChapter::
     msgbox RB_WhichRecipe
+    setflag FLAG_TEMP_1A
     scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYMEDICINECHAPTER, 0, 2, 5, 1
     addvar VAR_RESULT, NUM_CONSUMABLE_RECIPES
     trycraftingrecipe VAR_RESULT
@@ -194,6 +196,7 @@ RB_ShowMedicinesChapter::
 
 RB_ShowEvolutionChapter::
     msgbox RB_WhichRecipe
+    setflag FLAG_TEMP_1A
     scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYEVOLUTIONCHAPTER, 0, 2, 5, 1
     addvar VAR_RESULT, NUM_CONSUMABLE_RECIPES
     addvar VAR_RESULT, NUM_MEDICINE_RECIPES
@@ -201,8 +204,8 @@ RB_ShowEvolutionChapter::
     goto RB_CheckCraftingResult
 
 RB_CheckCraftingResult::
+    clearflag  FLAG_TEMP_1A
     buffernumberstring 0, VAR_TEMP_C
-    scriptdebug RB_DB_MSG1
     switch VAR_TEMP_C
     case 0, RB_RecipeFailed
     case 2000, RB_NotEnoughSpaceForResult

@@ -12,6 +12,9 @@
 #include "strings.h"
 #include "sound.h"
 #include "constants/songs.h"
+#include "event_data.h"
+#include "string_util.h"
+#include "item.h"
 
 struct UnkIndicatorsStruct
 {
@@ -833,10 +836,54 @@ static void ListMenuScroll(struct ListMenu *list, u8 count, bool8 movingDown)
     }
 }
 
+EWRAM_DATA static u8 sPrintRecipeWindowId = 1;
+
+void RyuShowRecipeInfoWindow(u16 selection)
+{
+    u8 buffer1[] = _("item1");
+    u8 buffer2[] = _("item2");
+    u8 buffer3[] = _("item3");
+    u8 buffer4[] = _("item4");
+    u8 buffer5[] = _("item5");
+    u16 group = VarGet(VAR_TEMP_D);
+    struct WindowTemplate template;
+
+    if (group == 1)
+        {
+            selection = (selection + NUM_CONSUMABLE_RECIPES);
+        }
+    else if (group == 2)
+        {
+            selection = (selection + NUM_CONSUMABLE_RECIPES + NUM_MEDICINE_RECIPES);
+        }
+    
+    /*CopyItemName(sBotanyRecipes[selection][0][0], buffer1);
+    CopyItemName(sBotanyRecipes[selection][1][0], buffer2);
+    CopyItemName(sBotanyRecipes[selection][2][0], buffer3);
+    CopyItemName(sBotanyRecipes[selection][3][0], buffer4);
+    CopyItemName(sBotanyRecipes[selection][4][0], buffer5);
+    @Pidgey please fix, including lifeskill.h here causes duplicate definitions everywhere
+    */
+
+
+    SetWindowTemplateFields(&template, 0, 20, 3, 8, 10, 18, 21); //@pidgey please fix, the window is remaining empty except for the bottom right tile, which is incorrect.
+    sPrintRecipeWindowId = AddWindow(&template);
+    FillWindowPixelBuffer(sPrintRecipeWindowId, 0);
+    PutWindowTilemap(sPrintRecipeWindowId);
+    CopyWindowToVram(sPrintRecipeWindowId, 1);
+    DrawStdFrameWithCustomTileAndPalette(sPrintRecipeWindowId, FALSE, 0x214, 14);
+    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer1, 0, 0, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer2, 0, 10, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer3, 0, 20, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer4, 0, 30, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer5, 0, 40, 0xFF, NULL);
+}
+
 static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)
 {
     u16 oldSelectedRow;
     u8 selectionChange, i, cursorCount;
+    u16 currentSelection = 0;
 
     oldSelectedRow = list->selectedRow;
     cursorCount = 0;
@@ -853,6 +900,14 @@ static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAn
         } while (list->template.items[list->scrollOffset + list->selectedRow].id == LIST_HEADER);
     }
 
+    currentSelection = (list->selectedRow + list->scrollOffset);
+    mgba_printf(LOGINFO, "Currently: %d", currentSelection);
+
+    if (FlagGet(FLAG_TEMP_1A) == 1)
+        {
+            RyuShowRecipeInfoWindow(currentSelection);
+        }
+    
     if (updateCursorAndCallCallback)
     {
         switch (selectionChange)
