@@ -15,6 +15,8 @@
 #include "event_data.h"
 #include "string_util.h"
 #include "item.h"
+#include "lifeskill.h"
+#include "constants/items.h"
 
 struct UnkIndicatorsStruct
 {
@@ -309,6 +311,10 @@ static const u32 sRedArrowOtherGfx[] = INCBIN_U32("graphics/interface/red_arrow_
 static const u32 sSelectorOutlineGfx[] = INCBIN_U32("graphics/interface/selector_outline.4bpp.lz");
 static const u32 sRedArrowGfx[] = INCBIN_U32("graphics/interface/red_arrow.4bpp.lz");
 
+
+EWRAM_DATA static u8 sPrintRecipeWindowId = 0;
+static void RyuShowRecipeInfoWindow(u16);
+
 // code
 static void ListMenuDummyTask(u8 taskId)
 {
@@ -366,13 +372,14 @@ s32 DoMysteryGiftListMenu(const struct WindowTemplate *windowTemplate, const str
                     break;
                 }
             }
-
+            ClearStdWindowAndFrame(sPrintRecipeWindowId, TRUE);
             CopyWindowToVram(sMysteryGiftLinkMenu.windowId, 1);
         }
         break;
     case 2:
         DestroyListMenuTask(sMysteryGiftLinkMenu.listTaskId, NULL, NULL);
         RemoveWindow(sMysteryGiftLinkMenu.windowId);
+        RemoveWindow(sPrintRecipeWindowId);
         sMysteryGiftLinkMenu.state = 0;
         return sMysteryGiftLinkMenu.currItemId;
     }
@@ -415,10 +422,22 @@ s32 ListMenu_ProcessInput(u8 listTaskId)
 
     if (JOY_NEW(A_BUTTON))
     {
+        if(sPrintRecipeWindowId != 0)
+        {
+            ClearStdWindowAndFrame(sPrintRecipeWindowId, TRUE);
+            RemoveWindow(sPrintRecipeWindowId);
+            sPrintRecipeWindowId = 0;
+        }
         return list->template.items[list->scrollOffset + list->selectedRow].id;
     }
     else if (JOY_NEW(B_BUTTON))
     {
+        if(sPrintRecipeWindowId != 0)
+        {
+            ClearStdWindowAndFrame(sPrintRecipeWindowId, TRUE);
+            RemoveWindow(sPrintRecipeWindowId);
+            sPrintRecipeWindowId = 0;
+        }
         return LIST_CANCEL;
     }
     else if (JOY_REPEAT(DPAD_UP))
@@ -836,17 +855,18 @@ static void ListMenuScroll(struct ListMenu *list, u8 count, bool8 movingDown)
     }
 }
 
-EWRAM_DATA static u8 sPrintRecipeWindowId = 1;
-
 void RyuShowRecipeInfoWindow(u16 selection)
 {
+    /* // the fuck is this ryu???
     u8 buffer1[] = _("item1");
     u8 buffer2[] = _("item2");
     u8 buffer3[] = _("item3");
     u8 buffer4[] = _("item4");
     u8 buffer5[] = _("item5");
-    u16 group = VarGet(VAR_TEMP_D);
+    */
     struct WindowTemplate template;
+    u32 i = 0;
+    u16 group = VarGet(VAR_TEMP_D);
 
     if (group == 1)
         {
@@ -856,27 +876,27 @@ void RyuShowRecipeInfoWindow(u16 selection)
         {
             selection = (selection + NUM_CONSUMABLE_RECIPES + NUM_MEDICINE_RECIPES);
         }
-    
-    /*CopyItemName(sBotanyRecipes[selection][0][0], buffer1);
-    CopyItemName(sBotanyRecipes[selection][1][0], buffer2);
-    CopyItemName(sBotanyRecipes[selection][2][0], buffer3);
-    CopyItemName(sBotanyRecipes[selection][3][0], buffer4);
-    CopyItemName(sBotanyRecipes[selection][4][0], buffer5);
-    @Pidgey please fix, including lifeskill.h here causes duplicate definitions everywhere
-    */
-
-
-    SetWindowTemplateFields(&template, 0, 20, 3, 8, 10, 18, 21); //@pidgey please fix, the window is remaining empty except for the bottom right tile, which is incorrect.
-    sPrintRecipeWindowId = AddWindow(&template);
+    if(sPrintRecipeWindowId == 0)
+    {
+        SetWindowTemplateFields(&template, 0, 20, 3, 8, 10, 15, 1);
+        sPrintRecipeWindowId = AddWindow(&template);
+    }
     FillWindowPixelBuffer(sPrintRecipeWindowId, 0);
-    PutWindowTilemap(sPrintRecipeWindowId);
+    //PutWindowTilemap(sPrintRecipeWindowId);
     CopyWindowToVram(sPrintRecipeWindowId, 1);
-    DrawStdFrameWithCustomTileAndPalette(sPrintRecipeWindowId, FALSE, 0x214, 14);
-    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer1, 0, 0, 0xFF, NULL);
+    DrawStdFrameWithCustomTileAndPalette(sPrintRecipeWindowId, TRUE, 0x214, 14);
+    for(i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++)
+    {
+        if(sBotanyRecipes[selection][i][0] != ITEM_NONE)    
+            AddTextPrinterParameterized(sPrintRecipeWindowId, 1, ItemId_GetName(sBotanyRecipes[selection][i][0]), 0, i * 16, 0, NULL);
+    }
+    
+    /*
     AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer2, 0, 10, 0xFF, NULL);
     AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer3, 0, 20, 0xFF, NULL);
     AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer4, 0, 30, 0xFF, NULL);
     AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer5, 0, 40, 0xFF, NULL);
+    */
 }
 
 static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)

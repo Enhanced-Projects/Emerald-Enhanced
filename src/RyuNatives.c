@@ -78,7 +78,6 @@
 #include "pokedex.h"
 #include "money.h"
 #include "menu_helpers.h"
-#include "data/lifeskill.h"
 #include "rtc.h"
 #include "constants/region_map_sections.h"
 #include "field_specials.h"
@@ -86,6 +85,9 @@
 #include "constants/songs.h"
 #include "strings.h"
 #include "ach_atlas.h"
+#include "lifeskill.h"
+
+#include "data/lifeskill.h"
 
 void ApplyDaycareExperience(struct Pokemon *mon)
 {
