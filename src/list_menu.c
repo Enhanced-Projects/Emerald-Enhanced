@@ -875,7 +875,6 @@ void RyuShowRecipeInfoWindow(u16 selection)
         sPrintRecipeWindowId = AddWindow(&template);
     }
     FillWindowPixelBuffer(sPrintRecipeWindowId, 0);
-    //PutWindowTilemap(sPrintRecipeWindowId);
     CopyWindowToVram(sPrintRecipeWindowId, 1);
     DrawStdFrameWithCustomTileAndPalette(sPrintRecipeWindowId, TRUE, 0x214, 14);
     for(i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++)
@@ -926,7 +925,6 @@ static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAn
     }
 
     currentSelection = (list->selectedRow + list->scrollOffset);
-    mgba_printf(LOGINFO, "Currently: %d", currentSelection);
 
     if (FlagGet(FLAG_TEMP_1A) == 1)
         {

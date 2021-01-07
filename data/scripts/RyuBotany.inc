@@ -182,14 +182,20 @@ RB_DB_MSG1:
 RB_ShowConsumablesChapter::
     msgbox RB_WhichRecipe
     setflag FLAG_TEMP_1A
+    setvar VAR_TEMP_D, 0
     scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYCONSUMABLECHAPTER, 0, 2, 5, 1
+    compare VAR_RESULT, 127
+    goto_if_eq RyuBotanyRecipeBookScript
     trycraftingrecipe VAR_RESULT
     goto RB_CheckCraftingResult
 
 RB_ShowMedicinesChapter::
     msgbox RB_WhichRecipe
     setflag FLAG_TEMP_1A
+    setvar VAR_TEMP_D, 1
     scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYMEDICINECHAPTER, 0, 2, 5, 1
+    compare VAR_RESULT, 127
+    goto_if_eq RyuBotanyRecipeBookScript
     addvar VAR_RESULT, NUM_CONSUMABLE_RECIPES
     trycraftingrecipe VAR_RESULT
     goto RB_CheckCraftingResult
@@ -197,7 +203,10 @@ RB_ShowMedicinesChapter::
 RB_ShowEvolutionChapter::
     msgbox RB_WhichRecipe
     setflag FLAG_TEMP_1A
+    setvar VAR_TEMP_D, 2
     scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYEVOLUTIONCHAPTER, 0, 2, 5, 1
+    compare VAR_RESULT, 127
+    goto_if_eq RyuBotanyRecipeBookScript
     addvar VAR_RESULT, NUM_CONSUMABLE_RECIPES
     addvar VAR_RESULT, NUM_MEDICINE_RECIPES
     trycraftingrecipe VAR_RESULT

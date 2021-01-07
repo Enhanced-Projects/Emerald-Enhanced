@@ -955,7 +955,6 @@ static void Task_ScrollingMultichoiceInput(u8 taskId)
         break;
     default:
         gSpecialVar_Result = input;
-        mgba_printf(LOGINFO, "Currently: %d", gSpecialVar_Result);
         done = TRUE;
         break;
     }
