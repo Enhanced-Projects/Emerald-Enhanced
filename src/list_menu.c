@@ -866,6 +866,7 @@ void RyuShowRecipeInfoWindow(u16 selection)
     */
     struct WindowTemplate template;
     u32 i = 0;
+    u32 width = 0;
     u16 group = VarGet(VAR_TEMP_D);
 
     if (group == 1)
@@ -876,9 +877,15 @@ void RyuShowRecipeInfoWindow(u16 selection)
         {
             selection = (selection + NUM_CONSUMABLE_RECIPES + NUM_MEDICINE_RECIPES);
         }
+    if(sPrintRecipeWindowId != 0) // giant motherfucking hack, causes flicker but who cares
+    {
+        ClearStdWindowAndFrameToTransparent(sPrintRecipeWindowId, TRUE);
+        RemoveWindow(sPrintRecipeWindowId);
+        sPrintRecipeWindowId = 0;
+    }
     if(sPrintRecipeWindowId == 0)
     {
-        SetWindowTemplateFields(&template, 0, 20, 3, 8, 10, 15, 1);
+        SetWindowTemplateFields(&template, 0, 16, 5, 12, 8, 15, 1);
         sPrintRecipeWindowId = AddWindow(&template);
     }
     FillWindowPixelBuffer(sPrintRecipeWindowId, 0);
@@ -887,8 +894,28 @@ void RyuShowRecipeInfoWindow(u16 selection)
     DrawStdFrameWithCustomTileAndPalette(sPrintRecipeWindowId, TRUE, 0x214, 14);
     for(i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++)
     {
-        if(sBotanyRecipes[selection][i][0] != ITEM_NONE)    
-            AddTextPrinterParameterized(sPrintRecipeWindowId, 1, ItemId_GetName(sBotanyRecipes[selection][i][0]), 0, i * 16, 0, NULL);
+        static const u8 sIngredColors[][3] = {
+            {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_RED, TEXT_COLOR_RED},
+            {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GREEN, TEXT_COLOR_GREEN},
+        };
+
+        if(sBotanyRecipes[selection][i][0] != ITEM_NONE)
+        {
+            u8 * strp;
+            u8 str[7];
+            u32 itemCount = CountTotalItemQuantityInBag(sBotanyRecipes[selection][i][0]);
+            u8 const * color = itemCount >= sBotanyRecipes[selection][i][1] ? sIngredColors[1] : sIngredColors[0];
+            str[0] = CHAR_LEFT_PAREN;
+            str[1] = EOS;
+            ConvertIntToDecimalStringN(gStringVar1, sBotanyRecipes[selection][i][1], STR_CONV_MODE_LEADING_ZEROS, 1);
+            strp = StringAppend(str, gStringVar1);
+            strp[0] = CHAR_RIGHT_PAREN;
+            strp[1] = EOS;
+            StringCopy(gStringVar1, ItemId_GetName(sBotanyRecipes[selection][i][0]));
+            StringAppend(gStringVar1, str);
+            AddTextPrinterParameterized3(sPrintRecipeWindowId, 0, 0, i * 12, color, 0, gStringVar1);
+            //AddTextPrinterParameterized(sPrintRecipeWindowId, 1, , 0, i * 16, 0, NULL);
+        }  
     }
     
     /*
