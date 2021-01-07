@@ -857,16 +857,8 @@ static void ListMenuScroll(struct ListMenu *list, u8 count, bool8 movingDown)
 
 void RyuShowRecipeInfoWindow(u16 selection)
 {
-    /* // the fuck is this ryu???
-    u8 buffer1[] = _("item1");
-    u8 buffer2[] = _("item2");
-    u8 buffer3[] = _("item3");
-    u8 buffer4[] = _("item4");
-    u8 buffer5[] = _("item5");
-    */
     struct WindowTemplate template;
     u32 i = 0;
-    u32 width = 0;
     u16 group = VarGet(VAR_TEMP_D);
 
     if (group == 1)
@@ -877,12 +869,6 @@ void RyuShowRecipeInfoWindow(u16 selection)
         {
             selection = (selection + NUM_CONSUMABLE_RECIPES + NUM_MEDICINE_RECIPES);
         }
-    if(sPrintRecipeWindowId != 0) // giant motherfucking hack, causes flicker but who cares
-    {
-        ClearStdWindowAndFrameToTransparent(sPrintRecipeWindowId, TRUE);
-        RemoveWindow(sPrintRecipeWindowId);
-        sPrintRecipeWindowId = 0;
-    }
     if(sPrintRecipeWindowId == 0)
     {
         SetWindowTemplateFields(&template, 0, 16, 5, 12, 8, 15, 1);
@@ -914,16 +900,8 @@ void RyuShowRecipeInfoWindow(u16 selection)
             StringCopy(gStringVar1, ItemId_GetName(sBotanyRecipes[selection][i][0]));
             StringAppend(gStringVar1, str);
             AddTextPrinterParameterized3(sPrintRecipeWindowId, 0, 0, i * 12, color, 0, gStringVar1);
-            //AddTextPrinterParameterized(sPrintRecipeWindowId, 1, , 0, i * 16, 0, NULL);
         }  
     }
-    
-    /*
-    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer2, 0, 10, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer3, 0, 20, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer4, 0, 30, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer5, 0, 40, 0xFF, NULL);
-    */
 }
 
 static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)
