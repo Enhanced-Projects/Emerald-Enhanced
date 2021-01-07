@@ -857,13 +857,7 @@ static void ListMenuScroll(struct ListMenu *list, u8 count, bool8 movingDown)
 
 void RyuShowRecipeInfoWindow(u16 selection)
 {
-    /* // the fuck is this ryu???
-    u8 buffer1[] = _("item1");
-    u8 buffer2[] = _("item2");
-    u8 buffer3[] = _("item3");
-    u8 buffer4[] = _("item4");
-    u8 buffer5[] = _("item5");
-    */
+
     struct WindowTemplate template;
     u32 i = 0;
     u16 group = VarGet(VAR_TEMP_D);
@@ -878,11 +872,10 @@ void RyuShowRecipeInfoWindow(u16 selection)
         }
     if(sPrintRecipeWindowId == 0)
     {
-        SetWindowTemplateFields(&template, 0, 20, 3, 8, 10, 15, 1);
+        SetWindowTemplateFields(&template, 0, 17, 3, 12, 10, 15, 1);
         sPrintRecipeWindowId = AddWindow(&template);
     }
     FillWindowPixelBuffer(sPrintRecipeWindowId, 0);
-    //PutWindowTilemap(sPrintRecipeWindowId);
     CopyWindowToVram(sPrintRecipeWindowId, 1);
     DrawStdFrameWithCustomTileAndPalette(sPrintRecipeWindowId, TRUE, 0x214, 14);
     for(i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++)
@@ -890,13 +883,8 @@ void RyuShowRecipeInfoWindow(u16 selection)
         if(sBotanyRecipes[selection][i][0] != ITEM_NONE)    
             AddTextPrinterParameterized(sPrintRecipeWindowId, 1, ItemId_GetName(sBotanyRecipes[selection][i][0]), 0, i * 16, 0, NULL);
     }
-    
-    /*
-    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer2, 0, 10, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer3, 0, 20, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer4, 0, 30, 0xFF, NULL);
-    AddTextPrinterParameterized(sPrintRecipeWindowId, 1, buffer5, 0, 40, 0xFF, NULL);
-    */
+//@pidgey IT BROKE AGAIN
+//Also, can you make the window appear at the same time as the menu? currently you have to change selection to make it show up
 }
 
 static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)
@@ -921,7 +909,6 @@ static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAn
     }
 
     currentSelection = (list->selectedRow + list->scrollOffset);
-    mgba_printf(LOGINFO, "Currently: %d", currentSelection);
 
     if (FlagGet(FLAG_TEMP_1A) == 1)
         {

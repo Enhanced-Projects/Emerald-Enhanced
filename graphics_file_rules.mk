@@ -708,10 +708,10 @@ $(BATTRANSGFXDIR)/frontier_logo_center.4bpp: %.4bpp: %.png
 
 
 ### Pokenav ###
+###$(PKNAVOPTIONSGFXDIR)/achievements.4bpp \###
 
 $(PKNAVOPTIONSGFXDIR)/options.4bpp: $(PKNAVOPTIONSGFXDIR)/hoenn_map.4bpp \
 								$(PKNAVOPTIONSGFXDIR)/condition.4bpp \
-								$(PKNAVOPTIONSGFXDIR)/achievements.4bpp \
 								$(PKNAVOPTIONSGFXDIR)/ribbons.4bpp \
 								$(PKNAVOPTIONSGFXDIR)/switch_off.4bpp \
 								$(PKNAVOPTIONSGFXDIR)/party.4bpp \
