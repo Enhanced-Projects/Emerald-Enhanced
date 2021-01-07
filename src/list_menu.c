@@ -857,7 +857,6 @@ static void ListMenuScroll(struct ListMenu *list, u8 count, bool8 movingDown)
 
 void RyuShowRecipeInfoWindow(u16 selection)
 {
-
     struct WindowTemplate template;
     u32 i = 0;
     u16 group = VarGet(VAR_TEMP_D);
@@ -872,7 +871,7 @@ void RyuShowRecipeInfoWindow(u16 selection)
         }
     if(sPrintRecipeWindowId == 0)
     {
-        SetWindowTemplateFields(&template, 0, 17, 3, 12, 10, 15, 1);
+        SetWindowTemplateFields(&template, 0, 16, 5, 12, 8, 15, 1);
         sPrintRecipeWindowId = AddWindow(&template);
     }
     FillWindowPixelBuffer(sPrintRecipeWindowId, 0);
@@ -880,11 +879,28 @@ void RyuShowRecipeInfoWindow(u16 selection)
     DrawStdFrameWithCustomTileAndPalette(sPrintRecipeWindowId, TRUE, 0x214, 14);
     for(i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++)
     {
-        if(sBotanyRecipes[selection][i][0] != ITEM_NONE)    
-            AddTextPrinterParameterized(sPrintRecipeWindowId, 1, ItemId_GetName(sBotanyRecipes[selection][i][0]), 0, i * 16, 0, NULL);
+        static const u8 sIngredColors[][3] = {
+            {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_RED, TEXT_COLOR_RED},
+            {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GREEN, TEXT_COLOR_GREEN},
+        };
+
+        if(sBotanyRecipes[selection][i][0] != ITEM_NONE)
+        {
+            u8 * strp;
+            u8 str[7];
+            u32 itemCount = CountTotalItemQuantityInBag(sBotanyRecipes[selection][i][0]);
+            u8 const * color = itemCount >= sBotanyRecipes[selection][i][1] ? sIngredColors[1] : sIngredColors[0];
+            str[0] = CHAR_LEFT_PAREN;
+            str[1] = EOS;
+            ConvertIntToDecimalStringN(gStringVar1, sBotanyRecipes[selection][i][1], STR_CONV_MODE_LEADING_ZEROS, 1);
+            strp = StringAppend(str, gStringVar1);
+            strp[0] = CHAR_RIGHT_PAREN;
+            strp[1] = EOS;
+            StringCopy(gStringVar1, ItemId_GetName(sBotanyRecipes[selection][i][0]));
+            StringAppend(gStringVar1, str);
+            AddTextPrinterParameterized3(sPrintRecipeWindowId, 0, 0, i * 12, color, 0, gStringVar1);
+        }  
     }
-//@pidgey IT BROKE AGAIN
-//Also, can you make the window appear at the same time as the menu? currently you have to change selection to make it show up
 }
 
 static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)
