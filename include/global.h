@@ -136,6 +136,7 @@
 #define DEX_FLAGS_NO (ROUND_BITS_TO_BYTES(POKEMON_SLOTS_NUMBER))
 #define NUM_FLAG_BYTES (ROUND_BITS_TO_BYTES(FLAGS_COUNT))
 #define NUM_ACH_FLAG_BYTES (ROUND_BITS_TO_BYTES(ACH_FLAGS_COUNT))
+#define NUM_ACH_PWR_BYTES (ROUND_BITS_TO_BYTES(AP_FLAGS_COUNT))
 
 struct Coords8
 {
@@ -503,6 +504,7 @@ struct SaveBlock2
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
     /*0x64C*/ struct BattleFrontier frontier;
               u8 achFlags[NUM_ACH_FLAG_BYTES];
+              u8 achievementPowerFlags[NUM_ACH_PWR_BYTES];
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

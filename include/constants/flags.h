@@ -1639,6 +1639,7 @@
 
 #define FLAGS_COUNT (DAILY_FLAGS_END + 1)
 #define ACH_FLAGS_COUNT 256
+#define AP_FLAGS_COUNT 32
 
 // Special Flags (Stored in EWRAM (gSpecialFlags), not in the SaveBlock)
 #define SPECIAL_FLAGS_START                     0x4000
@@ -1651,7 +1652,28 @@
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 
-//Achievement flags. Stored in Save Block 2, 256 total.
+//Achievement Power related
+
+//PLATINUM AP's (You can only use one at a time)
+#define AP_SPRINT_BOOST 0//lets player move faster
+#define AP_GLOBAL_REPEL 1//lets player have dev repel
+#define AP_TRAINER_REPEL 2//lets player have dev phasing without the noclip
+#define AP_LOOTING 3//lets player get random loot after battle sometimes
+
+//GOLD AP's (you can use up to 3 of these)
+#define AP_MOBILE_STAT_CHECKER 4//lets player use a mobile ev/iv checker while active
+#define AP_PDA 5//lets player access a mart remotely
+
+//SILVER AP's (you can use up to 4 of these at a time)
+#define AP_WINNINGS_BOOST 6 //Gives the player 10% more winnings after battle
+
+//COPPER AP's (you can use many of these at the same time)
+#define AP_CAPTURE_BOOST 7 //Gives the player 5% boost to capture rate
+
+//the total number of achievements that can be owned, this is what will be used for the ap percentage check.
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 21
+
+//Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
 
 #define ACH_WHOLE_NEW_WORLD   0

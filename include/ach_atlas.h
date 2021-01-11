@@ -51,11 +51,24 @@ struct AchAtlas // this would be better off as a u8 array lmao
 #define TILEMAP_START_X 21 
 #define TILEMAP_START_Y 27
 
+#define MAXIMUM_AP 100 //this is probably never going to change, but people like constants so it's whatever.
+
 void CB2_OpenAtlas(void);
 
 void GiveAchievement(u32 id);
 void GiveAchievementDebug(u32 id);
 bool32 CheckAchievement(u32 id);
 void TakeAchievement(u32 id);
+
+//AP internal
+void SetAPFlag(u32 id);
+bool32 CheckAPFlag(u32 id);
+void ClearAPFlag(u32 id);
+int GetPlayerAPMax(void);
+int GetCurrentAPUsed(void);
+
+
+//AP utility
+bool8 CheckCanIgnoreTrainers();
 
 #endif//GUARD_ACH_ATLAS_H
