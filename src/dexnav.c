@@ -1236,12 +1236,15 @@ static void DexNavUpdateSearchWindow(u8 proximity, u8 searchLevel)
 
 int RyuGetMaxBossChance()
 {
-    u8 MaxChance = 109;
+    // Design is to target 1/64 "max" while granting ~ .5% increase per chain. Odds starts at 1 against 114 and linearly decreases to 1/64 at chain >= 100
+    // It actually takes 2 levels for 1% increase (round down). Neglectible statistical impact < stronger architecture.
+    u8 rarityAtMaxChain = 64;
     u8 currentChain = gSaveBlock1Ptr->dexNavChain;
+    u8 penaltyFromLowChainCount = currentChain >= 100 
+        ? 0 
+        : (100 - currentChain) / 2;
 
-    MaxChance -= currentChain;
-
-    return MaxChance;
+    return rarityAtMaxChain + penaltyFromLowChainCount;
 }
 
 //////////////////////////////
@@ -1256,14 +1259,8 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     u16 heldItem = (sDexNavSearchDataPtr->heldItem);
     u8 ability = 2;
     
-    if ((Random() % RyuGetMaxBossChance() <= 1))// || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
-    {
-        RyuGenerateBossMon(species, level);
+    if (GenerateWildMonWithBossProbability(species, level, RyuGetMaxBossChance())) {
         FlagSet(FLAG_RYU_BOSS_WILD);
-    }
-    else
-    {
-        CreateWildMon(species, level);  // shiny rate bonus handled in CreateBoxMon
     }
 
     if (FlagGet(FLAG_RYU_BOSS_WILD) == 1)
