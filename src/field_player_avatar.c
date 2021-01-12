@@ -30,6 +30,7 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/trainer_types.h"
+#include "ach_atlas.h"
 
 static EWRAM_DATA u8 gUnknown_0203734C = 0;
 EWRAM_DATA struct ObjectEvent gObjectEvents[OBJECT_EVENTS_COUNT] = {};
@@ -648,17 +649,34 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         }
         else
         {
-            gPlayerAvatar.creeping = FALSE;
-            PlayerGoSpeed2(direction);
+            if (CheckAPFlag(AP_SPRINT_BOOST) == TRUE)
+            {
+                PlayerGoSpeed4(direction);
+                gPlayerAvatar.creeping = FALSE;
+            }
+            else
+            {
+                PlayerGoSpeed2(direction);
+                gPlayerAvatar.creeping = FALSE;
+            }
         }
         return;
     }
 
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (!(heldKeys & B_BUTTON)))
     {
-        PlayerRun(direction);
-        gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
-        return;
+        if (CheckAPFlag(AP_SPRINT_BOOST) == TRUE)
+        {
+            PlayerGoSpeed4(direction);
+            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+            return;
+        }
+        else
+        {
+            PlayerRun(direction);
+            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+            return;
+        }
     }
     else if (FlagGet(FLAG_SYS_DEXNAV_SEARCH))
     {

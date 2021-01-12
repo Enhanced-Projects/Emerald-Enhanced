@@ -1658,7 +1658,7 @@
 #define AP_SPRINT_BOOST 0//lets player move faster
 #define AP_GLOBAL_REPEL 1//lets player have dev repel
 #define AP_TRAINER_REPEL 2//lets player have dev phasing without the noclip
-#define AP_LOOTING 3//lets player get random loot after battle sometimes
+#define AP_EV_BOOST 3//doubles final EV gain
 
 //GOLD AP's (you can use up to 3 of these)
 #define AP_MOBILE_STAT_CHECKER 4//lets player use a mobile ev/iv checker while active

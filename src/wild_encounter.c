@@ -29,6 +29,7 @@
 #include "constants/weather.h"
 #include "autoscale_tables.h"
 #include "constants/metatile_behaviors.h"
+#include "ach_atlas.h"
 
 extern const u8 EventScript_RepelWoreOff[];
 extern int CountBadges();
@@ -548,7 +549,7 @@ static bool8 DoMassOutbreakEncounterTest(void)
 
 static bool8 DoWildEncounterRateDiceRoll(u16 encounterRate)
 {
-    if (FlagGet(FLAG_RYU_DEV_DISENC) == 1)
+    if ((CheckAPFlag(AP_GLOBAL_REPEL) == TRUE) || (FlagGet(FLAG_RYU_DEV_DISENC) == 1))
         return FALSE;
     // Bug: This check might return a random number higher than the party lead,
     // but since it’s rerolled during encounter generation, we might get a lower number there,
@@ -672,7 +673,7 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
             if (TryStartRoamerEncounter() == TRUE)
             {
                 roamer = &gSaveBlock1Ptr->roamer;
-                if (FlagGet(FLAG_RYU_DEV_DISENC) == 1)
+                if ((CheckAPFlag(AP_GLOBAL_REPEL) == TRUE) || (FlagGet(FLAG_RYU_DEV_DISENC) == 1))
                     return FALSE;
                 else if (
                     VarGet(VAR_REPEL_STEP_COUNT)

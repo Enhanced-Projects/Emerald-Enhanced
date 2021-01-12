@@ -2346,10 +2346,10 @@ static const u8 sOldKeyDesc[] = _(
     "Mt Freeze. Belonged to\n"
     "an ancient civilization.");
 
-static const u8 sMindPlateDesc[] = _(
-    "A tablet that ups\n"
-    "the power of Psy\n"
-    "chic-type moves.");
+static const u8 sPDADesc[] = _(
+    "A device that\n"
+    "remotely accesses.\n"
+    "a shop.");
 
 static const u8 sInsectPlateDesc[] = _(
     "A tablet that ups\n"
@@ -2361,10 +2361,10 @@ static const u8 sStonePlateDesc[] = _(
     "the power of\n"
     "Rock-type moves.");
 
-static const u8 sSpookyPlateDesc[] = _(
-    "A tablet that ups\n"
-    "the power of\n"
-    "Ghost-type moves.");
+static const u8 sStatAssistDesc[] = _(
+    "Lets you check\n"
+    "battle stats at\n"
+    "any time.");
 
 static const u8 sDracoPlateDesc[] = _(
     "A tablet that ups\n"

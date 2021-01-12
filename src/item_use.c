@@ -53,6 +53,8 @@ extern u8 Ryu_CantUsePcCharging[];
 extern u8 RyuCheckSootSackContents[];
 extern u8 PCN_CantUseThisHere[];
 extern u8 RyuBotanyRecipeBookScript[];
+extern u8 RyuAP_PDA[];
+extern u8 RyuAP_StatAssist[];
 
 static void SetUpItemUseCallback(u8 taskId);
 static void FieldCB_UseItemOnField(void);
@@ -847,6 +849,20 @@ void ItemUseOutOfBattle_RyuExpBattery(u8 taskId)
     SetMainCallback2(CB2_ReturnToField);
     ScriptContext2_Enable();
     ScriptContext1_SetupScript(RyuExpBattery);
+}
+
+void ItemUseOutOfBattle_StatAssist(u8 taskId)
+{
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext2_Enable();
+    ScriptContext1_SetupScript(RyuAP_StatAssist);
+}
+
+void ItemUseOutOfBattle_PDA(u8 taskId)
+{
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext2_Enable();
+    ScriptContext1_SetupScript(RyuAP_PDA);
 }
 
 void ItemUseOutOfBattle_RemotePC(u8 taskId)
