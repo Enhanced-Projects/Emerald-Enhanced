@@ -1207,3 +1207,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/BananaSlakothGarden/scripts.inc"
 
 	.include "data/maps/BananaSlakothGarden_South/scripts.inc"
+
+	.include "data/maps/RustboroCity_PidgeysCoop/scripts.inc"

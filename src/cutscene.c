@@ -70,6 +70,10 @@ static const u8 sNurseNightBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/n
 static const u8 sNurseNightBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/night_map.bin");
 static const u8 sNurseNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/night_palette.gbapal");
 
+static const u8 sPidgeyScreenshotTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/pidgey_scrsht/pidgey_pc.4bpp");
+static const u8 sPidgeyScreenshotMap[] = INCBIN_U8("graphics/cutscene/fscutscene/pidgey_scrsht/pidgey_pc.bin");
+static const u8 sPidgeyScreenshotPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/pidgey_scrsht/pidgey_pc.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -238,6 +242,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sNurseNightBgMap),
         .palette = sNurseNightBgPalette,
 		.palIdxCnt = 48
+	},
+	[SCENEBGPIDGEYSCREENSHOT] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sPidgeyScreenshotTiles,
+		.tileSize = sizeof(sPidgeyScreenshotTiles),
+        .map = sPidgeyScreenshotMap,
+		.mapSize = sizeof(sPidgeyScreenshotMap),
+        .palette = sPidgeyScreenshotPalette,
+		.palIdxCnt = 16
 	},
 };
 
