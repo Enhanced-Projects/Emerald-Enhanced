@@ -29,6 +29,7 @@
 #include "constants/weather.h"
 #include "autoscale_tables.h"
 #include "constants/metatile_behaviors.h"
+#include "ach_atlas.h"
 
 extern const u8 EventScript_RepelWoreOff[];
 extern int CountBadges();
@@ -461,22 +462,15 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, u8 ar
     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
         return FALSE;
   
-    if ((Random() % 128 == 69))// || (FlagGet(FLAG_RYU_DEV_MODE) == 1))
-    {
-        RyuGenerateBossMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
-    }
-    else
-    {
-        CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
-    }
+    GenerateWildMonWithBossProbability(wildMonInfo->wildPokemon[wildMonIndex].species, level, 128);
 
     return TRUE;
 }
 
-void RyuGenerateBossMon(u16 species, u8 level)
+static void RyuGenerateBossMon(u16 species, u8 level)
     {
         u8 val[1] = {TRUE};
-        u8 newAbility = Random() % 2;
+        u8 newAbility = Random() & 1;
         u8 iv = 31;
         u8 ability = 2;
 
@@ -506,12 +500,24 @@ void RyuGenerateBossMon(u16 species, u8 level)
         CalculateMonStats(&gEnemyParty[0]);
     }
 
+bool8 GenerateWildMonWithBossProbability(u16 species, u8 level, u16 rarity) {
+    if ((Random() % rarity == 0)
+        )// || (FlagGet(FLAG_RYU_DEV_MODE) == 1)) 
+    {
+        RyuGenerateBossMon(species, level);
+        return TRUE;
+    }
+        
+    CreateWildMon(species, level);
+    return FALSE;
+}
+
 static u16 GenerateFishingWildMon(const struct WildPokemonInfo *wildMonInfo, u8 rod)
 {
     u8 wildMonIndex = ChooseWildMonIndex_Fishing(rod);
     u8 level = RyuChooseWildLevel();
 
-    CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
+    GenerateWildMonWithBossProbability(wildMonInfo->wildPokemon[wildMonIndex].species, level, 128);
     return wildMonInfo->wildPokemon[wildMonIndex].species;
 }
 
@@ -543,7 +549,7 @@ static bool8 DoMassOutbreakEncounterTest(void)
 
 static bool8 DoWildEncounterRateDiceRoll(u16 encounterRate)
 {
-    if (FlagGet(FLAG_RYU_DEV_DISENC) == 1)
+    if ((CheckAPFlag(AP_GLOBAL_REPEL) == TRUE) || (FlagGet(FLAG_RYU_DEV_DISENC) == 1))
         return FALSE;
     // Bug: This check might return a random number higher than the party lead,
     // but since it’s rerolled during encounter generation, we might get a lower number there,
@@ -667,7 +673,7 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
             if (TryStartRoamerEncounter() == TRUE)
             {
                 roamer = &gSaveBlock1Ptr->roamer;
-                if (FlagGet(FLAG_RYU_DEV_DISENC) == 1)
+                if ((CheckAPFlag(AP_GLOBAL_REPEL) == TRUE) || (FlagGet(FLAG_RYU_DEV_DISENC) == 1))
                     return FALSE;
                 else if (
                     VarGet(VAR_REPEL_STEP_COUNT)

@@ -63,8 +63,20 @@ RyuDebug_UtilitiesMenu:
 	case 9, RyuDebug_SaveFileDebug
 	case 10, RyuDebug_FillTheDex
 	case 11, RDB_GiveOrTakeAllAchievements
-	case 12, RyuDebug_menu_nodevcheck
+	case 12, RDB_GetCurrentAndMaxAP
+	case 13, RyuDebug_menu_nodevcheck
 	goto RyuDebug_cancel
+
+RDB_GetCurrentAndMaxAP::
+	callnative APDebugInfo
+	buffernumberstring 0, VAR_TEMP_1
+	buffernumberstring 1, VAR_TEMP_2
+	msgbox RDB_APDebug
+	closemessage
+	goto RyuDebug_UtilitiesMenu
+
+RDB_APDebug:
+	.string "You currently have {STR_VAR_2}/{STR_VAR_1} AP active.$"
 
 RyuDebug_giveAllBadges::
 	setflag FLAG_BADGE01_GET

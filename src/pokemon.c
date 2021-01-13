@@ -50,6 +50,7 @@
 #include "constants/trainers.h"
 #include "constants/weather.h"
 #include "constants/item_config.h"
+#include "ach_atlas.h"
 
 struct SpeciesItem
 {
@@ -6012,6 +6013,10 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
 
         evs[i] += evIncrease;
         totalEVs += evIncrease;
+
+        if (CheckAPFlag(AP_EV_BOOST) == TRUE)
+            totalEVs *= 2;
+
         SetMonData(mon, MON_DATA_HP_EV + i, &evs[i]);
         CalculateMonStats(mon);
     }

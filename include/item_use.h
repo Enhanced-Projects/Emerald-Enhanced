@@ -8,6 +8,8 @@ void ItemUseOutOfBattle_Teleport(u8);//done
 void ItemUseOutOfBattle_CheckSootSack(u8);
 void ItemUseOutOfBattle_RyuExpBattery(u8);
 void ItemUseOutOfBattle_RemotePC(u8);
+void ItemUseOutOfBattle_PDA(u8);
+void ItemUseOutOfBattle_StatAssist(u8);
 void ItemUseOutOfBattle_Mail(u8);
 void ItemUseOutOfBattle_Bike(u8);
 void ItemUseOutOfBattle_Rod(u8);

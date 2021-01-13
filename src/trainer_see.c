@@ -18,6 +18,7 @@
 #include "constants/event_object_movement.h"
 #include "constants/field_effects.h"
 #include "constants/trainer_types.h"
+#include "ach_atlas.h"
 
 // this file's functions
 static u8 CheckTrainer(u8 objectEventId);
@@ -177,7 +178,7 @@ bool8 CheckForTrainersWantingBattle(void)
 {
     u8 i;
     
-    if (FlagGet(FLAG_TOBY_TRAINER_SIGHT))
+    if (CheckCanIgnoreTrainers() == TRUE)
         return FALSE;
     
     gNoOfApproachingTrainers = 0;

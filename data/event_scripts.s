@@ -592,6 +592,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/fertilizer.inc"
 	.include "data/scripts/RyuBotany.inc"
 	.include "data/scripts/RyuRandomGruntChatterScripts.inc"
+	.include "data/scripts/RyuAchievementPowerScripts.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED

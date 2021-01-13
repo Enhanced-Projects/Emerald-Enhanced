@@ -6378,33 +6378,33 @@ const struct Item gItems[] =
         .secondaryId = TYPE_FLYING,
     },
 
-    [ITEM_MIND_PLATE] =
+    [ITEM_PDA] =
     {
-        .name = _("Mind Plate"),
-        .itemId = ITEM_MIND_PLATE,
-        .price = 20000,
-        .holdEffect = HOLD_EFFECT_PSYCHIC_POWER,
+        .name = _("PDA"),
+        .itemId = ITEM_PDA,
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_NONE,
         .holdEffectParam = 50,
-        .description = sMindPlateDesc,
-        .pocket = POCKET_ITEMS,
+        .description = sPDADesc,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_PSYCHIC,
+        .fieldUseFunc = ItemUseOutOfBattle_PDA,
+        .importance = 1,
     },
 
 
-    [ITEM_SPOOKY_PLATE] =
+    [ITEM_STATASSIST] =
     {
-        .name = _("Spooky Plate"),
-        .itemId = ITEM_SPOOKY_PLATE,
-        .price = 200,
+        .name = _("StatAssist"),
+        .itemId = ITEM_STATASSIST,
+        .price = 0,
         .holdEffect = HOLD_EFFECT_PLATE,
         .holdEffectParam = 20,
-        .description = sSpookyPlateDesc,
-        .pocket = POCKET_ITEMS,
+        .description = sStatAssistDesc,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = TYPE_GHOST,
+        .fieldUseFunc = ItemUseOutOfBattle_StatAssist,
+        .importance = 1,
     },
     
     [ITEM_FERTILIZER] =

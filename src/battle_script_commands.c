@@ -56,6 +56,7 @@
 #include "data.h"
 #include "constants/party_menu.h"
 #include "constants/event_objects.h"
+#include "ach_atlas.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
 extern bool8 gHasAmuletEffectActive;
@@ -6331,63 +6332,6 @@ static void Cmd_hitanimation(void)
     }
 }
 
-static u32 GetTrainerMoneyToGive(u16 trainerId)
-{
-    u32 i = 0;
-    u32 lastMonLevel = 0;
-    u32 moneyReward;
-
-    if (trainerId == TRAINER_SECRET_BASE)
-    {
-        moneyReward = 20 * gBattleResources->secretBase->party.levels[0] * gBattleStruct->moneyMultiplier;
-    }
-    else
-    {
-        switch (gTrainers[trainerId].partyFlags)
-        {
-        case 0:
-            {
-                const struct TrainerMonNoItemDefaultMoves *party = gTrainers[trainerId].party.NoItemDefaultMoves;
-                lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
-            }
-            break;
-        case F_TRAINER_PARTY_CUSTOM_MOVESET:
-            {
-                const struct TrainerMonNoItemCustomMoves *party = gTrainers[trainerId].party.NoItemCustomMoves;
-                lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
-            }
-            break;
-        case F_TRAINER_PARTY_HELD_ITEM:
-            {
-                const struct TrainerMonItemDefaultMoves *party = gTrainers[trainerId].party.ItemDefaultMoves;
-                lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
-            }
-            break;
-        case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM:
-            {
-                const struct TrainerMonItemCustomMoves *party = gTrainers[trainerId].party.ItemCustomMoves;
-                lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
-            }
-            break;
-        }
-
-        for (; gTrainerMoneyTable[i].classId != 0xFF; i++)
-        {
-            if (gTrainerMoneyTable[i].classId == gTrainers[trainerId].trainerClass)
-                break;
-        }
-
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
-        else if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * 2 * gTrainerMoneyTable[i].value;
-        else
-            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
-    }
-
-    return moneyReward;
-}
-
 static void Cmd_getmoneyreward(void)
 {
     u32 moneyReward = 200;
@@ -6417,6 +6361,10 @@ static void Cmd_getmoneyreward(void)
     //if player has their rival following them, they get a bonus to money earned.
     if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && ((VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL) || (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)))
         moneyReward = ((moneyReward * 115) / 100);
+
+    //if player has the winnings boost AP active, they get 5% more money
+    if (CheckAPFlag(AP_WINNINGS_BOOST) == TRUE)
+        moneyReward = ((moneyReward * 110) / 100);
 
     AddMoney(&gSaveBlock1Ptr->money, moneyReward);
 
@@ -12165,6 +12113,9 @@ static void Cmd_handleballthrow(void)
 
         if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_WOMAN_2))//If Lanette is following player, catch rate gets an additional 5% boost.
             odds = ((odds * 105) / 100);
+        
+        if (CheckAPFlag(AP_CAPTURE_BOOST) == TRUE)
+            odds = ((odds * 105) /100);
 
         if (gBattleMons[gBattlerTarget].status1 & (STATUS1_POISON | STATUS1_BURN | STATUS1_TOXIC_POISON))
             odds = (odds * 15) / 10;
