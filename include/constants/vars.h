@@ -399,6 +399,6 @@
 #define take 1
 #define query 2
 
-#define EE_GAME_VERSION 7400
+#define EE_GAME_VERSION 7401
 
 #endif // GUARD_CONSTANTS_VARS_H

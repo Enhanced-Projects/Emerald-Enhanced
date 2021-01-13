@@ -6362,7 +6362,7 @@ static void Cmd_getmoneyreward(void)
     if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && ((VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL) || (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)))
         moneyReward = ((moneyReward * 115) / 100);
 
-    //if player has the winnings boost AP active, they get 5% more money
+    //if player has the winnings boost AP active, they get 10% more money
     if (CheckAPFlag(AP_WINNINGS_BOOST) == TRUE)
         moneyReward = ((moneyReward * 110) / 100);
 
