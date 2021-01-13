@@ -1803,12 +1803,17 @@ s16 CalculatePlayerPartyStrength(void) {
 
     for (i = 0; i < partyCount; i++) {
         level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
-        if (level > highest)
+        // shift the previous highest down by one
+        if (level > highest) {
+            third = second;
+            second = highest;
             highest = level;
-        else if (level > second)
+        } else if (level > second) {
+            third = second;
             second = level;
-        else if (level > third)
+        } else if (level > third) {
             third = level;
+        }
     }
     average = (highest + second + third) / min(partyCount, 3);
     // in case people bring very weak mons to drag down the average
