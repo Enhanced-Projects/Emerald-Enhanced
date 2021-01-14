@@ -3797,7 +3797,6 @@ static void Cmd_getexp(void)
             u32 calculatedExp;
             s32 viaSentIn;
 
-            MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
 
             for (viaSentIn = 0, i = 0; i < PARTY_SIZE; i++)
             {
@@ -3813,22 +3812,23 @@ static void Cmd_getexp(void)
                 else
                     holdEffect = ItemId_GetHoldEffect(item);
             }
-            #if (B_SCALED_EXP >= GEN_5) && (B_SCALED_EXP != GEN_6)
-                calculatedExp = gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 5;
-            #else
-                calculatedExp = gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7;
-            #endif
 
             calculatedExp = (u32)(gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7);
             calculatedExp = (calculatedExp * multiplier / 1000);
 
-            //RyuExpBatteryTemp = (VarGet(VAR_RYU_EXP_BATTERY));
             RyuExpBatteryTemp = (((VarGet(VAR_RYU_EXP_BATTERY) + ((((gBattleMons[gBattlerFainted].level) * 5) * multiplier) / 1000))));
             if (RyuExpBatteryTemp > 50000)
             {
                 RyuExpBatteryTemp = 50000;
             }
             VarSet(VAR_RYU_EXP_BATTERY, RyuExpBatteryTemp);
+
+            if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
+            {
+                *exp = 1;
+                calculatedExp = 1;
+                gBattleMoveDamage = 1;
+            }
 
             if (gSaveBlock2Ptr->expShare) // exp share is turned on
             {
@@ -3841,14 +3841,12 @@ static void Cmd_getexp(void)
                 if (gExpShareExp == 0)
                     gExpShareExp = 1;
             }
-            else if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
-                calculatedExp = 1;
             else
             {
                 *exp = calculatedExp / viaSentIn;
                 if (*exp == 0)
                     *exp = 1;
-                gExpShareExp = 1;
+                gExpShareExp = 0;
             }
 
             gBattleScripting.getexpState++;
@@ -3869,6 +3867,7 @@ static void Cmd_getexp(void)
             if ((!gSaveBlock2Ptr->expShare && !(gBattleStruct->sentInPokes & 1))
                 || (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) == MAX_LEVEL))
             {
+                MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
                 *(&gBattleStruct->sentInPokes) >>= 1;
                 gBattleScripting.getexpState = 5;
                 gBattleMoveDamage = 0; // used for exp
@@ -3945,7 +3944,7 @@ static void Cmd_getexp(void)
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleMoveDamage);
 
                     PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
-                    //MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
+                    MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
                 }
                 gBattleStruct->sentInPokes >>= 1;
                 gBattleScripting.getexpState++;
