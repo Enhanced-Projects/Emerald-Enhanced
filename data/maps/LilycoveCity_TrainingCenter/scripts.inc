@@ -2,9 +2,7 @@ LilycoveCity_TrainingCenter_MapScripts::
 	.byte 0
 	
 TC_EvIvCheckerScript::
-    specialvar VAR_RESULT, RyuFillStatsBuffers
-	compare VAR_RESULT, TRUE
-	goto_if_ne RyuDebug_StatsFailed
+    special RyuFillStatsBuffers
 	delay 30
     drawinfobox INFOBOXPOKEMONDATA
 	bufferpartymonnick 1, 0
@@ -19,9 +17,7 @@ TC_EvIvCheckerScript::
 	end
 
 TC_EvIvCheckerNoHealScript::
-    specialvar VAR_RESULT, RyuFillStatsBuffers
-	compare VAR_RESULT, TRUE
-	goto_if_ne RyuDebug_StatsFailed
+    special RyuFillStatsBuffers
 	delay 30
     drawinfobox INFOBOXPOKEMONDATA
 	bufferpartymonnick 1, 0

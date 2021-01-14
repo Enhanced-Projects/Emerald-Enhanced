@@ -1432,8 +1432,6 @@ bool8 RyuFillStatsBuffers(void)
     ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[slot], MON_DATA_SPEED_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 4);
     StringAppend(gTextBuffer1, gTextBuffer4);
     StringCopy(gRyuStringVar3, gTextBuffer1);
-
-    return TRUE;
 }
 
 void RyuSetUpSaveBlockStuff(void)

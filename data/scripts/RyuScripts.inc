@@ -1981,7 +1981,7 @@ RyuPlayerLostTheGameSoloFemale::
 
 @===================================================================================================
 Ryu_ShowStarterInfo::
-	specialvar VAR_RESULT, RyuFillStatsBuffers
+	special RyuFillStatsBuffers
     drawinfobox INFOBOXPOKEMONDATA
 	bufferpartymonnick 1, 0
 	msgbox Ryu_Stats
