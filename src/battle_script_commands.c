@@ -3842,13 +3842,13 @@ static void Cmd_getexp(void)
                     gExpShareExp = 1;
             }
             else if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
-                calculatedExp = 0;
+                calculatedExp = 1;
             else
             {
                 *exp = calculatedExp / viaSentIn;
                 if (*exp == 0)
                     *exp = 1;
-                gExpShareExp = 0;
+                gExpShareExp = 1;
             }
 
             gBattleScripting.getexpState++;
