@@ -3828,10 +3828,7 @@ static void Cmd_getexp(void)
             }
             VarSet(VAR_RYU_EXP_BATTERY, RyuExpBatteryTemp);
 
-            
-            if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))//changing the order of these should make it so that if exp is off, that overrides exp share
-                calculatedExp = 0;
-            else if (gSaveBlock2Ptr->expShare) // exp share is turned on
+            if (gSaveBlock2Ptr->expShare) // exp share is turned on
             {
                 *exp = calculatedExp / 2 / viaSentIn;
                 if (*exp == 0)
@@ -3842,6 +3839,8 @@ static void Cmd_getexp(void)
                 if (gExpShareExp == 0)
                     gExpShareExp = 1;
             }
+            else if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
+                calculatedExp = 0;
             else
             {
                 *exp = calculatedExp / viaSentIn;
@@ -3945,6 +3944,7 @@ static void Cmd_getexp(void)
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleMoveDamage);
 
                     PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
+                    MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
                 }
                 gBattleStruct->sentInPokes >>= 1;
                 gBattleScripting.getexpState++;
