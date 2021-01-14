@@ -709,6 +709,10 @@ RyuCantUsePCCHARGING:
 
 
 RyuBallChanger::
+	setvar VAR_TEMP_0, 10000
+	checkmoney VAR_TEMP_0
+	compare VAR_RESULT, 1
+	goto_if_ne BC_NotEnoughMoney
 	msgbox BCIntro
 	multichoicegrid 2, 0, 141, 3, 1
 	switch VAR_RESULT
@@ -727,165 +731,143 @@ RyuBallChanger::
 	end
 
 BCPokeball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_POKE_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 4
 	removeitem ITEM_POKE_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCGreatball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_GREAT_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 3
 	removeitem ITEM_GREAT_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCUltraball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_ULTRA_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 2
 	removeitem ITEM_ULTRA_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCLuxuryball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_LUXURY_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 11
 	removeitem ITEM_LUXURY_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCPremierball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_PREMIER_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 11
 	removeitem ITEM_PREMIER_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCRepeatball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_REPEAT_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 9
 	removeitem ITEM_REPEAT_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCTimerball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_TIMER_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 10
 	removeitem ITEM_TIMER_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCNestball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_NEST_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 8
 	removeitem ITEM_NEST_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCNetball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_NET_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 6
 	removeitem ITEM_NET_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCSafariball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_SAFARI_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 5
 	removeitem ITEM_SAFARI_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCDiveball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_DIVE_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 7
 	removeitem ITEM_DIVE_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release

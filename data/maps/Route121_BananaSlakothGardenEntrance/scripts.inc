@@ -165,7 +165,8 @@ Route121_BananaSlakothGardenEntrance_EventScript_BigMalasada::
 	end
 
 Route121_BananaSlakothGardenEntrance_EventScript_CheckMoneySweetHeart::
-	checkmoney 4000
+	setvar VAR_TEMP_0, 4000
+	checkmoney VAR_TEMP_0
 	return
 
 Route121_BananaSlakothGardenEntrance_EventScript_CheckMoneyBerryJuice::
@@ -177,7 +178,8 @@ Route121_BananaSlakothGardenEntrance_EventScript_CheckMoneyMoomooMilk::
 	return
 
 Route121_BananaSlakothGardenEntrance_EventScript_CheckMoneyOldGateau::
-	checkmoney 4000
+	setvar VAR_TEMP_0, 4000
+	checkmoney VAR_TEMP_0
 	return
 
 Route121_BananaSlakothGardenEntrance_EventScript_CheckMoneyBigMalasada::
@@ -185,11 +187,11 @@ Route121_BananaSlakothGardenEntrance_EventScript_CheckMoneyBigMalasada::
 	return
 
 Route121_BananaSlakothGardenEntrance_EventScript_TakeMoneySweetHeart::
-	takemoney 4000
+	takemoney VAR_TEMP_0
 	return
 
 Route121_BananaSlakothGardenEntrance_EventScript_TakeMoneyBerryJuice::
-	takemoney 1000
+	takemoney VAR_TEMP_0
 	return
 
 Route121_BananaSlakothGardenEntrance_EventScript_TakeMoneyMoomooMilk::
@@ -197,7 +199,7 @@ Route121_BananaSlakothGardenEntrance_EventScript_TakeMoneyMoomooMilk::
 	return
 
 Route121_BananaSlakothGardenEntrance_EventScript_TakeMoneyOldGateau::
-	takemoney 4000
+	takemoney VAR_TEMP_0
 	return
 
 Route121_BananaSlakothGardenEntrance_EventScript_TakeMoneyBigMalasada::
