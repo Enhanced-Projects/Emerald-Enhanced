@@ -175,6 +175,16 @@ BerryTree_EventScript_PlantBerry:: @ 82744DD
 	special ObjectEventInteractionPlantBerryTree
 	incrementgamestat GAME_STAT_PLANTED_BERRIES
 	special IncrementDailyPlantedBerries
+	readgamestat GAME_STAT_PLANTED_BERRIES
+	compare VAR_RESULT, 50
+	call_if_ge RyuBerry_CheckGreenThumbAchievement
+	return
+
+RyuBerry_CheckGreenThumbAchievement::
+	ach query ACH_GREEN_THUMB
+	compare VAR_RESULT, TRUE
+	goto_if_eq ryu_return
+	ach give ACH_GREEN_THUMB
 	return
 
 BerryTree_CheckIfWantToFertilize::

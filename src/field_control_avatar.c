@@ -182,6 +182,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     u8 playerDirection;
     u16 metatileBehavior;
     u16 rand = 0;
+    u16 lastAchievement = VarGet(VAR_RYU_LAST_ACH);
+
 
     gSpecialVar_LastTalked = 0;
     gSelectedObjectEvent = 0;

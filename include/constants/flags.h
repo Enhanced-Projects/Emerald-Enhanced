@@ -1649,6 +1649,8 @@
 #define FLAG_SPECIAL_FLAG_UNUSED_0x4003         (SPECIAL_FLAGS_START + 0x3) // Unused Flag
 #define FLAG_STORING_ITEMS_IN_PYRAMID_BAG       (SPECIAL_FLAGS_START + 0x4)
 #define FLAG_BOTANY_HAS_HYPER_CUTTER            (SPECIAL_FLAGS_START + 0x5)
+#define FLAG_ONLY_GIVE_ACHIEVEMENT_ONCE         (SPECIAL_FLAGS_START + 0x6)
+#define FLAG_IS_FIGHTING_RYU                    (SPECIAL_FLAGS_START + 0x7)
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 
@@ -1671,7 +1673,7 @@
 #define AP_CAPTURE_BOOST 7 //Gives the player 5% boost to capture rate
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 21
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 22
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -1697,17 +1699,17 @@
 #define ACH_ASTRONOMICAL  18
 #define ACH_CORPORATE_SHILL  19
 #define ACH_DEJA_VU  20
-#define ACH_UNUSED_22  21
-#define ACH_UNUSED_23  22
-#define ACH_UNUSED_24  23
-#define ACH_UNUSED_25  24
-#define ACH_UNUSED_26  25
-#define ACH_UNUSED_27  26
-#define ACH_UNUSED_28  27
-#define ACH_UNUSED_29  28
-#define ACH_UNUSED_30  29
-#define ACH_UNUSED_31  30
-#define ACH_UNUSED_32  31
+#define ACH_NTMO  21
+#define ACH_POKEMON_MASTER  22
+#define ACH_MASTER_BREEDER  23
+#define ACH_ASCENDED  24
+#define ACH_EVIL_INCARNATE  25
+#define ACH_1337  26
+#define ACH_YOU_DIED  27
+#define ACH_WASTED  28
+#define ACH_FITNESS_GURU  29
+#define ACH_GREEN_THUMB  30
+#define ACH_HOENN_CHAMPION  31
 #define ACH_UNUSED_33  32
 #define ACH_UNUSED_34  33
 #define ACH_UNUSED_35  34

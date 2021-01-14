@@ -24,9 +24,12 @@
 #include "constants/items.h"
 #include "constants/tv.h"
 #include "constants/battle_frontier.h"
+#include "ach_atlas.h"
 
 static void CB2_ReturnFromChooseHalfParty(void);
 static void CB2_ReturnFromChooseBattleFrontierParty(void);
+
+extern void TryGiveFitnessGuruAch();
 
 void HealPlayerParty(void)
 {
@@ -56,6 +59,9 @@ void HealPlayerParty(void)
         arg[2] = 0;
         arg[3] = 0;
         SetMonData(&gPlayerParty[i], MON_DATA_STATUS, arg);
+
+        if (CheckAchievement(ACH_FITNESS_GURU) == FALSE)
+            TryGiveFitnessGuruAch();
     }
 }
 

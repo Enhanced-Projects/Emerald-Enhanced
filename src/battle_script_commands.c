@@ -11964,8 +11964,6 @@ static void Cmd_handleballthrow(void)
         u32 odds, i;
         u8 catchRate = gBaseStats[gBattleMons[gBattlerTarget].species].catchRate;
 
-        
-        #ifdef POKEMON_EXPANSION
         if (IS_ULTRA_BEAST(gBattleMons[gBattlerTarget].species))
         {
             if (gLastUsedItem == ITEM_BEAST_BALL)
@@ -11975,8 +11973,6 @@ static void Cmd_handleballthrow(void)
         }
         else
         {
-        #endif
-
         if (gLastUsedItem > ITEM_SAFARI_BALL)
         {
             switch (gLastUsedItem)
