@@ -145,7 +145,7 @@ TC_Discount_entering::
 
 TC_Discount_Welcome:
 	.string "Oh, I see you have a VIP Pass.\n"
-	.string "That reduces the cost to ¥6500.\p"
+	.string "That reduces the cost to ¥2250.\p"
 	.string "Lots of the professor's research is\n"
 	.string "used here!$"
 	
@@ -159,7 +159,7 @@ TC_Disc_Broke::
 
 TC_Leave_Disc_broke:
 	.string "I'm sorry, but even with the guest\n"
-	.string "pass, it still costs ¥10,000 to enter.\p"
+	.string "pass, it still costs ¥2250 to enter.\p"
 	.string "We still have maintenance costs!\n"
 	.string "Please come back later. Thanks!$"
 	
@@ -213,7 +213,7 @@ TC_Exiting_Nomoney::
 TC_Broke:
 	.string "I'm sorry, but you cannot afford\n"
 	.string "to use the training center currently.\p"
-	.string "You need ¥65000 to enter.\p"
+	.string "You need ¥22500 to enter.\p"
 	.string "Perhaps you can find a friend with\n"
 	.string "a membership or VIP pass.\p"
 	.string "Have a nice day!$"
@@ -267,7 +267,7 @@ TC_Exiting_pokeballs::
 TC_Entry_Cost:
 	.string "Hello and welcome to Lilycove\n"
 	.string "Training Center.\p"
-	.string "It will cost ¥65000 to use this service.\p"
+	.string "It will cost ¥22500 to use this service.\p"
 	.string "You're also not permitted to have\n"
     .string "any pokeballs with you. \p"
 	.string "Please deposit any you have\n"
