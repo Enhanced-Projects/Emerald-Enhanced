@@ -1673,7 +1673,7 @@
 #define AP_CAPTURE_BOOST 7 //Gives the player 5% boost to capture rate
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 22
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 32
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
