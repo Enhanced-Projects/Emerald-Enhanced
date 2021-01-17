@@ -20,10 +20,11 @@ const u8 sAPNamePDA[] =             _("PDA Device Access");
 //silver powers
 const u8 sSilverLabel[] = _("Silver");
 const u8 sAPNameWinningsBoost[] =   _("Winnings Boost");
+const u8 sAPNameStrongerWildMons[]  = _("Stronger Wild Encounters")
 
 //copper powers
 const u8 sCopperLabel[] = _("Copper");
-const u8 sAPNameCaptureBoost[] =    _("Capture Boost");
+const u8 sAPNameCaptureBoost[] = _("Capture Boost");
 
 //Descriptions
 const u8 sSprintBoostAPDesc[] = _("Allows you to run twice as fast.");
@@ -34,6 +35,7 @@ const u8 sMobileStatCheckAPDesc[] = _("Grants the StatAssist item which\nlets yo
 const u8 sPDAAPDesc[] = _("Grants the PDA item which\nlets you shop remotely.");
 const u8 sWinningsBoostAPDesc[] = _("Gain 10 percent more money\nfrom winning battles.");
 const u8 sCaptureBoostAPDesc[] = _("Boost your base capture rate by\n5 percent.");
+const u8 sStrongerWildsAPDesc[] = _("Wild pokemon will scale to\nyour party instead of badges.");
 
 const struct APInfoTier gAP_InfoPlat[] = 
 {
@@ -52,6 +54,7 @@ const struct APInfoTier gAP_InfoGold[] =
 const struct APInfoTier gAP_InfoSilver[] = 
 {
     {AP_WINNINGS_BOOST, sAPNameWinningsBoost, sWinningsBoostAPDesc},
+    {AP_STRONGER_WILDS, sAPNameStrongerWildMons, sStrongerWildsAPDesc},
 };
 
 const struct APInfoTier gAP_InfoCopper[] = 
@@ -135,6 +138,22 @@ bool8 CheckCanIgnoreTrainers(void)//toggles trainer repel
         return TRUE;
 
     return FALSE;
+}
+
+bool8 CheckIfAutolevelWilds(void) //@kageru please use this check to determine if wild mons should badge scale or autolevel. If this returns true, wilds should autolevel.
+{
+    if (CheckAPFlag(AP_STRONGER_WILDS) == TRUE)
+        return TRUE;
+
+    return FALSE;
+}
+
+void ToggleAPStrongerWilds(void)
+{
+    if (CheckAPFlag(AP_STRONGER_WILDS) == TRUE)
+        ClearAPFlag(AP_STRONGER_WILDS);
+    else
+        SetAPFlag(AP_STRONGER_WILDS);
 }
 
 void GiveTakePDAItem(void)//gives the pda item when ap is active, You need to set/clear the flag in the function that calls this one.

@@ -1676,17 +1676,18 @@
 
 //SILVER AP's (you can use up to 4 of these at a time)
 #define AP_WINNINGS_BOOST 6 //Gives the player 10% more winnings after battle
-#define AP_SILVER_COUNT 1
+#define AP_STRONGER_WILDS 8 //Wild pokemon use autolevel
+#define AP_SILVER_COUNT 2
 
 //COPPER AP's (you can use many of these at the same time)
 #define AP_CAPTURE_BOOST 7 //Gives the player 5% boost to capture rate
 #define AP_COPPER_COUNT 1
 
 // total number of achivement powers available
-#define TOTAL_AP_COUNT 8
+#define TOTAL_AP_COUNT 9
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 32
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 38
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
