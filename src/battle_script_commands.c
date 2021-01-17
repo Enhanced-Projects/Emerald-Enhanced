@@ -3428,18 +3428,22 @@ static void Cmd_tryfaintmon(void)
             battlerId = gBattlerAttacker;
             if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 20))
             {
+                GiveAchievement(ACH_EXPONENTIAL);
                 BS_ptr = BattleScript_FaintTarget20x;
             }
             else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 10))
             {
+                GiveAchievement(ACH_MULTIPLICATIVE);
                 BS_ptr = BattleScript_FaintTarget10x;
             }
             else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 4)) 
             {
+                GiveAchievement(ACH_ADDITIVE);
                 BS_ptr = BattleScript_FaintTarget4x;
             }
             else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 2)) 
             {
+                GiveAchievement(ACH_NO_KILL_LIKE_OVERKILL);
                 BS_ptr = BattleScript_FaintTarget2x;
             }
             else if (gBattleMoveDamage <= (gBattleMons[gActiveBattler].maxHP)) 

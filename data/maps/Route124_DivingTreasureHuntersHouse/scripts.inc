@@ -4,6 +4,7 @@ Route124_DivingTreasureHuntersHouse_MapScripts:: @ 8270A28
 
 Route124_DivingTreasureHuntersHouse_OnTransition: @ 8270A2E
 	setflag FLAG_LANDMARK_HUNTERS_HOUSE
+	call RyuCheckForLNSUAch
 	end
 
 Route124_DivingTreasureHuntersHouse_EventScript_TreasureHunter:: @ 8270A32

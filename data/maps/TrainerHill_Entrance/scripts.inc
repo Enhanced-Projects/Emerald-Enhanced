@@ -8,6 +8,7 @@ TrainerHill_Entrance_MapScripts:: @ 82680AC
 
 TrainerHill_Entrance_OnTransition: @ 82680C6
 	setflag FLAG_LANDMARK_TRAINER_HILL
+	call RyuCheckForLNSUAch
 	getplayerxy VAR_TEMP_D, VAR_RESULT
 	end
 

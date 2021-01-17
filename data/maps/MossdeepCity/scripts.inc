@@ -6,6 +6,7 @@ MossdeepCity_MapScripts:: @ 81E4A96
 
 MossdeepCity_OnTransition: @ 81E4A9C
 	setflag FLAG_VISITED_MOSSDEEP_CITY
+	call RyuCheckForWellTravelledAch
 	end
 
 MDC_OnFrameScripts::
@@ -77,6 +78,7 @@ MossdeepCity_EventScript_SpaceCenterSign:: @ 81E4B2F
 
 MossdeepCity_EventScript_VisitedMossdeep:: @ 81E4B38
 	setflag FLAG_VISITED_MOSSDEEP_CITY
+	call RyuCheckForWellTravelledAch
 	setvar VAR_TEMP_5, 1
 	end
 

@@ -4,6 +4,7 @@ FallarborTown_MapScripts:: @ 81EB1FA
 
 FallarborTown_OnTransition: @ 81EB200
 	setflag FLAG_VISITED_FALLARBOR_TOWN
+	call RyuCheckForWellTravelledAch
 	setvar VAR_CONTEST_HALL_STATE, 0
 	end
 

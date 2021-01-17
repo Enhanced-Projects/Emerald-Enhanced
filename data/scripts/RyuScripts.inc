@@ -2107,3 +2107,68 @@ RS_HolidayNoSpace::
 
 RS_LucyIntro::
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Greetings, {PLAYER}.\pI have travelled far to\ngive you season's tidings.\pPlease Choose a gift Pokémon\nfrom the list.$"
+
+
+@@--------------landmark and visited achievements--------------------------------------------------
+
+RyuCheckForWellTravelledAch::
+	ach query ACH_WELL_TRAVELLED @@Don't bother checking these flags if achievement is already owned.
+	compare VAR_RESULT, TRUE
+	goto_if_eq ryu_return
+	goto_if_unset FLAG_VISITED_LITTLEROOT_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_OLDALE_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_DEWFORD_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_LAVARIDGE_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_FALLARBOR_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_VERDANTURF_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_PACIFIDLOG_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_PETALBURG_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_SLATEPORT_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_MAUVILLE_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_RUSTBORO_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_FORTREE_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_LILYCOVE_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_MOSSDEEP_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_SOOTOPOLIS_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_EVER_GRANDE_CITY, ryu_return
+	ach give ACH_WELL_TRAVELLED
+	return
+
+RyuCheckForLNSUAch::
+	ach query ACH_LEAVE_NO_STONE_UNTURNED @@Don't bother checking these flags if achievement is already owned.
+	compare VAR_RESULT, TRUE
+	goto_if_eq ryu_return
+	goto_if_unset FLAG_LANDMARK_FLOWER_SHOP, ryu_return
+	goto_if_unset FLAG_LANDMARK_ABANDONED_SHIP, ryu_return
+	goto_if_unset FLAG_LANDMARK_SEASHORE_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_NEW_MAUVILLE, ryu_return
+	goto_if_unset FLAG_LANDMARK_OLD_LADY_REST_SHOP, ryu_return
+	goto_if_unset FLAG_LANDMARK_TRICK_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_WINSTRATE_FAMILY, ryu_return
+	goto_if_unset FLAG_LANDMARK_GLASS_WORKSHOP, ryu_return
+	goto_if_unset FLAG_LANDMARK_LANETTES_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_POKEMON_DAYCARE, ryu_return
+	goto_if_unset FLAG_LANDMARK_SEAFLOOR_CAVERN, ryu_return
+	goto_if_unset FLAG_LANDMARK_BATTLE_FRONTIER, ryu_return
+	goto_if_unset FLAG_LANDMARK_FIERY_PATH, ryu_return
+	goto_if_unset FLAG_LANDMARK_POKEMON_LEAGUE, ryu_return
+	goto_if_unset FLAG_LANDMARK_ISLAND_CAVE, ryu_return
+	goto_if_unset FLAG_LANDMARK_DESERT_RUINS, ryu_return
+	goto_if_unset FLAG_LANDMARK_FOSSIL_MANIACS_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_SCORCHED_SLAB, ryu_return
+	goto_if_unset FLAG_LANDMARK_ANCIENT_TOMB, ryu_return
+	goto_if_unset FLAG_LANDMARK_TUNNELERS_REST_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_HUNTERS_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_SEALED_CHAMBER, ryu_return
+	goto_if_unset FLAG_LANDMARK_BERRY_MASTERS_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_ALTERING_CAVE, ryu_return
+	goto_if_unset FLAG_LANDMARK_DESERT_UNDERPASS, ryu_return
+	goto_if_unset FLAG_LANDMARK_ARTISAN_CAVE, ryu_return
+	goto_if_unset FLAG_LANDMARK_TRAINER_HILL, ryu_return
+	goto_if_unset FLAG_LANDMARK_MIRAGE_TOWER, ryu_return
+	goto_if_unset FLAG_LANDMARK_SNOWY_SHORE, ryu_return
+	ach give ACH_LEAVE_NO_STONE_UNTURNED
+	return	
+
+
+

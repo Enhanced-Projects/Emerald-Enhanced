@@ -4,6 +4,7 @@ SnowyShore_MapScripts::
 
 SnowyShore_OnTransition:
 	setflag FLAG_LANDMARK_SNOWY_SHORE
+	call RyuCheckForLNSUAch
 	end
 
 SnowyShore_EventScript_TownSign::

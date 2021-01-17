@@ -14,6 +14,7 @@ SootopolisCity_OnResume: @ 81E590B
 
 SootopolisCity_OnTransition: @ 81E56EF
 	setflag FLAG_VISITED_SOOTOPOLIS_CITY
+	call RyuCheckForWellTravelledAch
 	end
 
 SootopolisCity_EventScript_Kiri:: @ 81E5ED8

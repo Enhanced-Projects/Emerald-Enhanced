@@ -8,6 +8,7 @@ Underwater_SeafloorCavern_MapScripts:: @ 823433B
 
 Underwater_SeafloorCavern_OnTransition: @ 823434B
 	setflag FLAG_LANDMARK_SEAFLOOR_CAVERN
+	call RyuCheckForLNSUAch
 	goto_if_set FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, Underwater_SeafloorCavern_EventScript_HideSubmarine
 	end
 

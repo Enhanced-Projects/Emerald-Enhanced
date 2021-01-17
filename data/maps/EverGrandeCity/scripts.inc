@@ -20,6 +20,7 @@ EverGrandeCity_EventScript_PokemonLeagueSign:: @ 81E7D3D
 
 EverGrandeCity_EventScript_SetVisitedEverGrande:: @ 81E7D46
 	setflag FLAG_VISITED_EVER_GRANDE_CITY
+	call RyuCheckForWellTravelledAch
 	setvar VAR_TEMP_1, 1
 	end
 

@@ -18,6 +18,7 @@ LRT_CheckMagmaWarp::
 LittlerootTown_MapScript1_1E7DDB: @ 81E7DDB
 	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
+	call RyuCheckForWellTravelledAch
 	end
 	
 LRT_FollowerTest::

@@ -94,6 +94,24 @@ static const u8 sGreenThumbDesc[] = _("You're a practiced berry farmer.\n(Plante
 static const u8 sHoennChampionLabel[] = _("Hoenn Champion");
 static const u8 sHoennChampionDesc[] = _("You've become the champion of Hoenn.\nCongratulations!");
 
+static const u8 sLNSULabel[] = _("Leave No Stone Unturned");
+static const u8 sLNSUDesc[] = _("You've visited every landmark location\nin the game.\nColumbus would be proud!");
+
+static const u8 sOverkill2xLabel[] = _("No Kill Like Overkill");
+static const u8 sOverkill2xDesc[] = _("You dealt more than twice a target's\nhealth in damage.");
+
+static const u8 sOverkill4xLabel[] = _("Additive Overkill");
+static const u8 sOverkill4xDesc[] = _("You dealt more than quadruple a target's\nhealth in damage. Ouch!");
+
+static const u8 sOverkill10xLabel[] = _("Multiplicative Overkill");
+static const u8 sOverkill10xDesc[] = _("You really smashed a target for\nmore than ten times their health!\nYikes!");
+
+static const u8 sOverkill20xLabel[] = _("Exponential Overkill");
+static const u8 sOverkill20xDesc[] = _("You atomized a target for more than\nTWENTY TIMES their health! Hot damn!");
+
+static const u8 sWellTravelledLabel[] = _("Well Travelled");
+static const u8 sWellTravelledDesc[] = _("You've visited every single city\nin the game!\nTime to set up trade routes!");
+
 
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
@@ -118,15 +136,21 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_ASTRONOMICAL] = {43, 37, CATEGORY_QUESTING, ACH_ASTRONOMICAL, sAstronomicalLabel, sAstronomicalAchDesc}, // Devon Scientist ending
     [ACH_CORPORATE_SHILL] = {43, 35, CATEGORY_QUESTING, ACH_CORPORATE_SHILL, sCorporateShillLabel, sCorporateShillAchDesc}, // Devon Corporate ending
     [ACH_DEJA_VU] = {43, 33, CATEGORY_QUESTING, ACH_DEJA_VU, sDejaVuLabel, sDejaVuDesc}, // Completed all main quest endings
-    [ACH_NTMO] = {10, 34, CATEGORY_EXPLORATION, ACH_NTMO, sNTMOLabel, sNTMODesc}, //capture a legendary with a poke ball
-    [ACH_POKEMON_MASTER] = {10, 36, CATEGORY_EXPLORATION, ACH_POKEMON_MASTER, sPokemonMasterLabel, sPokemonMasterDesc}, //Own at least 386 unique pokemon
-    [ACH_MASTER_BREEDER] = {10, 38, CATEGORY_EXPLORATION, ACH_MASTER_BREEDER, sMasterBreederLabel, sMasterBreederDesc}, //Hatch 100 or more eggs
-    [ACH_ASCENDED] = {28, 34, CATEGORY_BATTLE, ACH_ASCENDED, sAscendedLabel, sAscendedDesc}, //Hatch 100 or more eggs
-    [ACH_EVIL_INCARNATE] = {26, 34, CATEGORY_BATTLE, ACH_EVIL_INCARNATE, sEvilIncarnateLabel, sEvilIncarnateDesc}, //KO 666 pokemon or more
-    [ACH_1337] = {12, 38, CATEGORY_EXPLORATION, ACH_1337, s1337Label, s1337Desc}, //Game clear in 13:37 or less
-    [ACH_YOU_DIED] = {12, 36, CATEGORY_EXPLORATION, ACH_YOU_DIED, sYouDiedLabel, sYouDiedDesc}, //Blacked Out in normal modes.
-    [ACH_WASTED] = {12, 34, CATEGORY_EXPLORATION, ACH_WASTED, sWastedLabel, sWastedDesc}, //Blacked Out in nuzlocke modes.
-    [ACH_FITNESS_GURU] = {28, 36, CATEGORY_BATTLE, ACH_FITNESS_GURU, sFitnessGuruLabel, sFitnessGuruDesc}, //Fully trained EV's in a stat.
-    [ACH_GREEN_THUMB] = {14, 38, CATEGORY_EXPLORATION, ACH_GREEN_THUMB, sGreenThumbLabel, sGreenThumbDesc}, //planted 50 or more berries
-    [ACH_HOENN_CHAMPION] = {28, 38, CATEGORY_BATTLE, ACH_HOENN_CHAMPION, sHoennChampionLabel, sHoennChampionDesc},
+    [ACH_NTMO] = {10, 33, CATEGORY_EXPLORATION, ACH_NTMO, sNTMOLabel, sNTMODesc}, //capture a legendary with a poke ball
+    [ACH_POKEMON_MASTER] = {10, 35, CATEGORY_EXPLORATION, ACH_POKEMON_MASTER, sPokemonMasterLabel, sPokemonMasterDesc}, //Own at least 386 unique pokemon
+    [ACH_MASTER_BREEDER] = {10, 37, CATEGORY_EXPLORATION, ACH_MASTER_BREEDER, sMasterBreederLabel, sMasterBreederDesc}, //Hatch 100 or more eggs
+    [ACH_ASCENDED] = {28, 33, CATEGORY_BATTLE, ACH_ASCENDED, sAscendedLabel, sAscendedDesc}, //Hatch 100 or more eggs
+    [ACH_EVIL_INCARNATE] = {26, 33, CATEGORY_BATTLE, ACH_EVIL_INCARNATE, sEvilIncarnateLabel, sEvilIncarnateDesc}, //KO 666 pokemon or more
+    [ACH_1337] = {12, 37, CATEGORY_EXPLORATION, ACH_1337, s1337Label, s1337Desc}, //Game clear in 13:37 or less
+    [ACH_YOU_DIED] = {12, 35, CATEGORY_EXPLORATION, ACH_YOU_DIED, sYouDiedLabel, sYouDiedDesc}, //Blacked Out in normal modes.
+    [ACH_WASTED] = {12, 33, CATEGORY_EXPLORATION, ACH_WASTED, sWastedLabel, sWastedDesc}, //Blacked Out in nuzlocke modes.
+    [ACH_FITNESS_GURU] = {28, 35, CATEGORY_BATTLE, ACH_FITNESS_GURU, sFitnessGuruLabel, sFitnessGuruDesc}, //Fully trained EV's in a stat.
+    [ACH_GREEN_THUMB] = {14, 37, CATEGORY_EXPLORATION, ACH_GREEN_THUMB, sGreenThumbLabel, sGreenThumbDesc}, //planted 50 or more berries
+    [ACH_HOENN_CHAMPION] = {28, 37, CATEGORY_BATTLE, ACH_HOENN_CHAMPION, sHoennChampionLabel, sHoennChampionDesc}, //duh
+    [ACH_LEAVE_NO_STONE_UNTURNED] = {14, 33, CATEGORY_EXPLORATION, ACH_LEAVE_NO_STONE_UNTURNED, sLNSULabel, sLNSUDesc}, //collect all Landmark flags.
+    [ACH_NO_KILL_LIKE_OVERKILL] = {26, 37, CATEGORY_BATTLE, ACH_NO_KILL_LIKE_OVERKILL, sOverkill2xLabel, sOverkill2xDesc}, //Dealt 2x damage to an enemy in battle
+    [ACH_ADDITIVE] = {26, 35, CATEGORY_BATTLE, ACH_ADDITIVE, sOverkill4xLabel, sOverkill4xDesc}, //Dealt 4x damage to an enemy in battle
+    [ACH_MULTIPLICATIVE] = {30, 37, CATEGORY_BATTLE, ACH_MULTIPLICATIVE, sOverkill10xLabel, sOverkill10xDesc}, //Dealt 10x damage to an enemy in battle
+    [ACH_EXPONENTIAL] = {30, 35, CATEGORY_BATTLE, ACH_EXPONENTIAL, sOverkill20xLabel, sOverkill20xDesc}, //Dealt 20x damage to an enemy in battle
+    [ACH_WELL_TRAVELLED] = {12, 31, CATEGORY_EXPLORATION, ACH_WELL_TRAVELLED, sWellTravelledLabel, sWellTravelledDesc}, //Visit every City in the game.
 };

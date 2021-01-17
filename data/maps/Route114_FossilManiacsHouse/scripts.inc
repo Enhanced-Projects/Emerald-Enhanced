@@ -4,6 +4,7 @@ Route114_FossilManiacsHouse_MapScripts:: @ 822AD30
 
 Route114_FossilManiacsHouse_OnTransition: @ 822AD36
 	setflag FLAG_LANDMARK_FOSSIL_MANIACS_HOUSE
+	call RyuCheckForLNSUAch
 	end
 
 Route114_FossilManiacsHouse_EventScript_FossilManiacsBrother:: @ 822AD3A
