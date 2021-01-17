@@ -1654,21 +1654,34 @@
 
 //Achievement Power related
 
+// AP tiers 
+#define AP_TIER_PLATINUM 0
+#define AP_TIER_GOLD 1
+#define AP_TIER_SILVER 2
+#define AP_TIER_COPPER 3
+
 //PLATINUM AP's (You can only use one at a time)
 #define AP_SPRINT_BOOST 0//lets player move faster
 #define AP_GLOBAL_REPEL 1//lets player have dev repel
 #define AP_TRAINER_REPEL 2//lets player have dev phasing without the noclip
 #define AP_EV_BOOST 3//doubles final EV gain
+#define AP_PLATINUM_COUNT 4
 
 //GOLD AP's (you can use up to 3 of these)
 #define AP_MOBILE_STAT_CHECKER 4//lets player use a mobile ev/iv checker while active
 #define AP_PDA 5//lets player access a mart remotely
+#define AP_GOLD_COUNT 2
 
 //SILVER AP's (you can use up to 4 of these at a time)
 #define AP_WINNINGS_BOOST 6 //Gives the player 10% more winnings after battle
+#define AP_SILVER_COUNT 1
 
 //COPPER AP's (you can use many of these at the same time)
 #define AP_CAPTURE_BOOST 7 //Gives the player 5% boost to capture rate
+#define AP_COPPER_COUNT 1
+
+// total number of achivement powers available
+#define TOTAL_AP_COUNT 8
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
 #define TOTAL_OBTAINABLE_ACHIEVEMENTS 21
