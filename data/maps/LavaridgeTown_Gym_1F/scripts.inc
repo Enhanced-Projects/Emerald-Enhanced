@@ -99,6 +99,7 @@ LG_Reset::
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
 	call_if_unset FLAG_RYU_GYM4HANDOUT, RyuGymItemReward4
+	call Ryu_CheckForPartnerReward
 	release
 	end
 

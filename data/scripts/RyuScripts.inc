@@ -1485,6 +1485,9 @@ CLM_NotInPartyMsg:
 
 Ryu_CheckForPartnerReward::
 	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_return
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 7
+	goto_if_lt ryu_return
 	specialvar VAR_RESULT, RyuCheckRelMegaReward
 	compare VAR_RESULT, 0
 	goto_if_eq ryu_return
