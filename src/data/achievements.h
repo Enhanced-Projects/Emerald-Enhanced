@@ -5,13 +5,13 @@ static const u8 sEnhancedBattleAchLabel[] = _("Enhanced Battle");
 static const u8 sEnhancedBattleAchDesc[] = _("You have awakened as a battle master!\n(Finished your first battle)");
 
 static const u8 sNewRegionWhoDisAchLabel[] = _("New Region Who Dis");
-static const u8 sNewRegionWhoDisAchDesc[] = _("You made a friend!\nEverything is better with friends.\n(Befriended someone for the first time.)");
+static const u8 sNewRegionWhoDisAchDesc[] = _("You made a friend!\nEverything is better with friends.\n(Befriended someone for the first time)");
 
 static const u8 sAdventureTimeAchLabel[] = _("Adventure Time");
 static const u8 sAdventureTimeAchDesc[] = _("You started your first quest.\nGood Luck!\n");
 
 static const u8 sTrueLoveAchLabel[] = _("Love at First Sight");
-static const u8 sTrueLoveAchDesc[] = _("You have entered a relationship.\nNow you wonder what you would\ndo without them.");
+static const u8 sTrueLoveAchDesc[] = _("You have entered a relationship.\nNow you wonder what you would\ndo without them");
 
 static const u8 sSilentStrongTypeAchLabel[] = _("Silent, Strong type");
 static const u8 sSilentStrongTypeAchDesc[] = _("The quiet ones usually have the most to say!\n(Romanced Lana)");
@@ -55,26 +55,60 @@ static const u8 sWaterLoggedAchDesc[] = _("You're a little wet and very disappoi
 static const u8 sAstronomicalLabel[] = _("Astronomical!");
 static const u8 sAstronomicalAchDesc[] = _("The possibilities are {SHADOW GREEN}literally{SHADOW LIGHT_GREY} endless!\n(Completed Devon Scientist line)");
 
+static const u8 sDejaVuLabel[] = _("Deja Vu?");
+static const u8 sDejaVuDesc[] = _("Hey! a lot of this looks familiar!\n(Got every main quest ending possible)");
+
+static const u8 sNTMOLabel[] = _("Never tell me the odds");
+static const u8 sNTMODesc[] = _("You really don't wanna know...\n(Captured a legendary with a Poke Ball)");
+
+static const u8 sPokemonMasterLabel[] = _("Pokemon Master");
+static const u8 sPokemonMasterDesc[] = _("You did what Ash couldn't.\n(Own at least 386 different pokemon)");
+
 static const u8 sCorporateShillLabel[] = _("Corporate Shill");
 static const u8 sCorporateShillAchDesc[] = _("Stocks, lobbying, tax evasion, oh my!\n(Completed Devon Corporate line)");
 
-static const u8 sDejaVuLabel[] = _("Deja Vu?");
-static const u8 sDejaVuDesc[] = _("Hey! a lot of this looks familiar!\n(Got every main quest ending possible.)");
+static const u8 sMasterBreederLabel[] = _("The birds and the bees");
+static const u8 sMasterBreederDesc[] = _("You know a thing or two about mating.\n(Hatched at least 100 eggs)");
+
+static const u8 sAscendedLabel[] = _("Ascended");
+static const u8 sAscendedDesc[] = _("You are the god of this world, now.\n(Defeated Overlord Ryu with no faints)");
+
+static const u8 sEvilIncarnateLabel[] = _("Evil Incarnate");
+static const u8 sEvilIncarnateDesc[] = _("You're the sign of the Apocalypse!\n(KO'd 666 or more pokemon)");
+
+static const u8 s1337Label[] = _("1337");
+static const u8 s1337Desc[] = _("y0u 4r3 7h3 l337357 0f 7h3m 4ll\n(Completed the game in 13:37 or less)");
+
+static const u8 sYouDiedLabel[] = _("YOU DIED");
+static const u8 sYouDiedDesc[] = _("Your team fainted, and you blacked out.\nThis isn't child's play. Get better.\n(Lost a fight)");
+
+static const u8 sWastedLabel[] = _("Wasted");
+static const u8 sWastedDesc[] = _("You and your team died in a previous life.\nDo better this time!\n(Lost a nuzlocke or hardcore run)");
+
+static const u8 sFitnessGuruLabel[] = _("Fitness Guru");
+static const u8 sFitnessGuruDesc[] = _("You're well on your way to a perfect\ntraining regimen.\n(Fully trained EV's in a stat)");
+
+static const u8 sGreenThumbLabel[] = _("Green Thumb");
+static const u8 sGreenThumbDesc[] = _("You're a practiced berry farmer.\n(Planted 50 or more berries)");
+
+static const u8 sHoennChampionLabel[] = _("Hoenn Champion");
+static const u8 sHoennChampionDesc[] = _("You've become the champion of Hoenn.\nCongratulations!");
+
 
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
-    [ACH_WHOLE_NEW_WORLD] = {12, 40, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc},
-    [ACH_ENHANCED_BATTLE] = {28, 40, CATEGORY_BATTLE, ACH_ENHANCED_BATTLE, sEnhancedBattleAchLabel, sEnhancedBattleAchDesc},
-    [ACH_NEW_REGION_WHO_DIS] = {57, 40, CATEGORY_COMPANIONS, ACH_NEW_REGION_WHO_DIS, sNewRegionWhoDisAchLabel, sNewRegionWhoDisAchDesc},
-    [ACH_ADVENTURE_TIME] = {43, 40, CATEGORY_QUESTING, ACH_ADVENTURE_TIME, sAdventureTimeAchLabel, sAdventureTimeAchDesc},
-    [ACH_TRUE_LOVE] = {55, 37, CATEGORY_COMPANIONS, ACH_TRUE_LOVE, sTrueLoveAchLabel, sTrueLoveAchDesc},
-    [ACH_SILENT_STRONG_TYPE] = {57, 33, CATEGORY_COMPANIONS, ACH_SILENT_STRONG_TYPE, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc},
-    [ACH_CHILDHOOD_FRIEND] = {57, 35, CATEGORY_COMPANIONS, ACH_CHILDHOOD_FRIEND, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc},
-    [ACH_FIERY_PASSION] = {57, 37, CATEGORY_COMPANIONS, ACH_FIERY_PASSION, sFieryPassionAchLabel, sFieryPassionAchDesc},
-    [ACH_NERD_LOVE] = {59, 33, CATEGORY_COMPANIONS, ACH_NERD_LOVE, sNerdLoveAchLabel, sNerdLoveAchDesc},
-    [ACH_FWB] = {59, 35, CATEGORY_COMPANIONS, ACH_FWB, sFWBAchLabel, sFWBAchDesc},
-    [ACH_WET_N_WILD] = {59, 37, CATEGORY_COMPANIONS, ACH_WET_N_WILD, sWetnWildAchLabel, sWetnWildAchDesc},
-    [ACH_TRUE_ENDING] = {57, 31, CATEGORY_COMPANIONS, ACH_TRUE_ENDING, sTrueEndingAchLabel, sTrueEndingAchDesc}, 
+    [ACH_WHOLE_NEW_WORLD] = {12, 40, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc}, //started exploring enhanced hoenn
+    [ACH_ENHANCED_BATTLE] = {28, 40, CATEGORY_BATTLE, ACH_ENHANCED_BATTLE, sEnhancedBattleAchLabel, sEnhancedBattleAchDesc}, //completed a non-tutorial battle
+    [ACH_NEW_REGION_WHO_DIS] = {57, 40, CATEGORY_COMPANIONS, ACH_NEW_REGION_WHO_DIS, sNewRegionWhoDisAchLabel, sNewRegionWhoDisAchDesc}, // Befriended any romanceable npc
+    [ACH_ADVENTURE_TIME] = {43, 40, CATEGORY_QUESTING, ACH_ADVENTURE_TIME, sAdventureTimeAchLabel, sAdventureTimeAchDesc}, //Began your adventure
+    [ACH_TRUE_LOVE] = {55, 37, CATEGORY_COMPANIONS, ACH_TRUE_LOVE, sTrueLoveAchLabel, sTrueLoveAchDesc}, //fully romanced any character
+    [ACH_SILENT_STRONG_TYPE] = {57, 33, CATEGORY_COMPANIONS, ACH_SILENT_STRONG_TYPE, sSilentStrongTypeAchLabel, sSilentStrongTypeAchDesc}, //fully romanced lana
+    [ACH_CHILDHOOD_FRIEND] = {57, 35, CATEGORY_COMPANIONS, ACH_CHILDHOOD_FRIEND, sChildhoodFriendAchLabel, sChildhoodFriendAchDesc}, //fully romanced rival
+    [ACH_FIERY_PASSION] = {57, 37, CATEGORY_COMPANIONS, ACH_FIERY_PASSION, sFieryPassionAchLabel, sFieryPassionAchDesc}, //fully romanced courtney
+    [ACH_NERD_LOVE] = {59, 33, CATEGORY_COMPANIONS, ACH_NERD_LOVE, sNerdLoveAchLabel, sNerdLoveAchDesc}, //fully romanced lanette
+    [ACH_FWB] = {59, 35, CATEGORY_COMPANIONS, ACH_FWB, sFWBAchLabel, sFWBAchDesc}, //fully romanced Joy
+    [ACH_WET_N_WILD] = {59, 37, CATEGORY_COMPANIONS, ACH_WET_N_WILD, sWetnWildAchLabel, sWetnWildAchDesc}, //fully romanced shelly
+    [ACH_TRUE_ENDING] = {57, 31, CATEGORY_COMPANIONS, ACH_TRUE_ENDING, sTrueEndingAchLabel, sTrueEndingAchDesc}, //get the harem end
     [ACH_ETERNAL_DAMNATION] = {39, 37, CATEGORY_QUESTING, ACH_ETERNAL_DAMNATION, sEternalDamnationLabel, sEternalDamnationAchDesc}, //magma alt romance ending
     [ACH_HUNTING_TRIP] = {39, 35, CATEGORY_QUESTING, ACH_HUNTING_TRIP, sHuntingTripAchLabel, sHuntingTripAchDesc}, //magma alt non romance ending
     [ACH_THROUGH_THE_FIRE] = {41, 35, CATEGORY_QUESTING, ACH_THROUGH_THE_FIRE, sThroughTheFireAchLabel, sThroughTheFireAchDesc}, // magma main romance ending
@@ -84,4 +118,15 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_ASTRONOMICAL] = {43, 37, CATEGORY_QUESTING, ACH_ASTRONOMICAL, sAstronomicalLabel, sAstronomicalAchDesc}, // Devon Scientist ending
     [ACH_CORPORATE_SHILL] = {43, 35, CATEGORY_QUESTING, ACH_CORPORATE_SHILL, sCorporateShillLabel, sCorporateShillAchDesc}, // Devon Corporate ending
     [ACH_DEJA_VU] = {43, 33, CATEGORY_QUESTING, ACH_DEJA_VU, sDejaVuLabel, sDejaVuDesc}, // Completed all main quest endings
+    [ACH_NTMO] = {10, 34, CATEGORY_EXPLORATION, ACH_NTMO, sNTMOLabel, sNTMODesc}, //capture a legendary with a poke ball
+    [ACH_POKEMON_MASTER] = {10, 36, CATEGORY_EXPLORATION, ACH_POKEMON_MASTER, sPokemonMasterLabel, sPokemonMasterDesc}, //Own at least 386 unique pokemon
+    [ACH_MASTER_BREEDER] = {10, 38, CATEGORY_EXPLORATION, ACH_MASTER_BREEDER, sMasterBreederLabel, sMasterBreederDesc}, //Hatch 100 or more eggs
+    [ACH_ASCENDED] = {28, 34, CATEGORY_BATTLE, ACH_ASCENDED, sAscendedLabel, sAscendedDesc}, //Hatch 100 or more eggs
+    [ACH_EVIL_INCARNATE] = {26, 34, CATEGORY_BATTLE, ACH_EVIL_INCARNATE, sEvilIncarnateLabel, sEvilIncarnateDesc}, //KO 666 pokemon or more
+    [ACH_1337] = {12, 38, CATEGORY_EXPLORATION, ACH_1337, s1337Label, s1337Desc}, //Game clear in 13:37 or less
+    [ACH_YOU_DIED] = {12, 36, CATEGORY_EXPLORATION, ACH_YOU_DIED, sYouDiedLabel, sYouDiedDesc}, //Blacked Out in normal modes.
+    [ACH_WASTED] = {12, 34, CATEGORY_EXPLORATION, ACH_WASTED, sWastedLabel, sWastedDesc}, //Blacked Out in nuzlocke modes.
+    [ACH_FITNESS_GURU] = {28, 36, CATEGORY_BATTLE, ACH_FITNESS_GURU, sFitnessGuruLabel, sFitnessGuruDesc}, //Fully trained EV's in a stat.
+    [ACH_GREEN_THUMB] = {14, 38, CATEGORY_EXPLORATION, ACH_GREEN_THUMB, sGreenThumbLabel, sGreenThumbDesc}, //planted 50 or more berries
+    [ACH_HOENN_CHAMPION] = {28, 38, CATEGORY_BATTLE, ACH_HOENN_CHAMPION, sHoennChampionLabel, sHoennChampionDesc},
 };

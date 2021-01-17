@@ -1803,12 +1803,17 @@ s16 CalculatePlayerPartyStrength(void) {
 
     for (i = 0; i < partyCount; i++) {
         level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
-        if (level > highest)
+        // shift the previous highest down by one
+        if (level > highest) {
+            third = second;
+            second = highest;
             highest = level;
-        else if (level > second)
+        } else if (level > second) {
+            third = second;
             second = level;
-        else if (level > third)
+        } else if (level > third) {
             third = level;
+        }
     }
     average = (highest + second + third) / min(partyCount, 3);
     // in case people bring very weak mons to drag down the average
@@ -5013,6 +5018,14 @@ static void WaitForEvoSceneToFinish(void)
         gBattleMainFunc = TryEvolvePokemon;
 }
 
+bool32 RyuCheckForLegendary(u16 species)
+{
+    if (gBaseStats[species].isLegendary == TRUE)
+        return TRUE;
+    
+    return FALSE;
+}
+
 static void ReturnFromBattleToOverworld(void)
 {
     if (!(gBattleTypeFlags & BATTLE_TYPE_LINK))
@@ -5037,6 +5050,35 @@ static void ReturnFromBattleToOverworld(void)
 
     if (VarGet(VAR_LITTLEROOT_INTRO_STATE) == 10)//player already finished tutorial
         GiveAchievement(ACH_ENHANCED_BATTLE);
+
+    if ((RyuCheckForLegendary(gBattleMons[gBattlerTarget].species) == TRUE) && (gLastUsedItem == ITEM_POKE_BALL) && gBattleOutcome == B_OUTCOME_CAUGHT)
+    {
+        if (FlagGet(FLAG_ONLY_GIVE_ACHIEVEMENT_ONCE) == 0)
+        {
+            GiveAchievement(ACH_NTMO);
+            FlagSet(FLAG_ONLY_GIVE_ACHIEVEMENT_ONCE);
+        }
+    }
+
+    if ((FlagGet(FLAG_IS_FIGHTING_RYU) == TRUE) && (CheckAchievement(ACH_ASCENDED) == FALSE))
+            {
+                u8 i = 0;
+                u8 fainted = 0;
+                for (i = 0; i < CalculatePlayerPartyCount(); i++)
+                {
+                    if (GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
+                       fainted++;
+                }
+
+                if (fainted == 0)
+                {
+                    FlagClear(FLAG_IS_FIGHTING_RYU);
+                    GiveAchievement(ACH_ASCENDED);
+                }
+            }
+
+        if ((VarGet(VAR_RYU_TOTAL_FAINTS) >= 666) && (CheckAchievement(ACH_EVIL_INCARNATE) == FALSE))
+            GiveAchievement(ACH_EVIL_INCARNATE);
 
     m4aSongNumStop(SE_LOW_HEALTH);
     SetMainCallback2(gMain.savedCallback);

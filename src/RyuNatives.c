@@ -1432,8 +1432,6 @@ bool8 RyuFillStatsBuffers(void)
     ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[slot], MON_DATA_SPEED_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 4);
     StringAppend(gTextBuffer1, gTextBuffer4);
     StringCopy(gRyuStringVar3, gTextBuffer1);
-
-    return TRUE;
 }
 
 void RyuSetUpSaveBlockStuff(void)
@@ -1711,4 +1709,42 @@ void RyuCheckForDejavuAch(void)
 void SetSprintBoost(void)
 {
     SetAPFlag(AP_SPRINT_BOOST);
+}
+
+
+int RyuGetTotalCaughtMons(void)
+{
+    return GetNationalPokedexCount(FLAG_GET_CAUGHT);
+}
+
+void TryGiveLeetAch(void)
+{
+    if ((gSaveBlock2Ptr->playTimeHours <= 13) && (gSaveBlock2Ptr->playTimeMinutes <= 37))
+        if (CheckAchievement(ACH_1337) == FALSE)
+            GiveAchievement(ACH_1337);
+}
+
+void TryGiveFitnessGuruAch(void)
+{
+    u8 i, k;
+    u8 maxEvStat = 0;
+
+    for (k = 0; k < CalculatePlayerPartyCount(); k++)
+    {
+        for (i = 0; i < 6; i++)
+        {
+            if (GetMonData(&gPlayerParty[k], MON_DATA_HP_EV + i) == 252)
+                maxEvStat++;
+        }
+    }
+    
+    if ((maxEvStat > 0) && (CheckAchievement(ACH_FITNESS_GURU) == FALSE))
+        GiveAchievement(ACH_FITNESS_GURU);
+}
+
+void RyuDebug_Plant49Berries(void)
+{
+    u8 i;
+    for (i = 0; i < 50; i++)
+        IncrementGameStat(GAME_STAT_PLANTED_BERRIES);
 }

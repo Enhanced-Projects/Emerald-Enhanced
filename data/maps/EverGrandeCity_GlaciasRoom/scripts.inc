@@ -60,8 +60,8 @@ EGC_AltGlacia::
 
 RyuGlaciaMegaReward::
 	goto_if_set FLAG_RYU_GLACIA_MEGA, EverGrandeCity_GlaciasRoom_EventScript_Defeated
-	additem ITEM_GLALITITE
 	msgbox GlaciaMegaRewardMsg
+	giveitem ITEM_GLALITITE
 	setflag FLAG_RYU_GLACIA_MEGA
 	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
 

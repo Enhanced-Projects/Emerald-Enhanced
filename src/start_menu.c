@@ -996,6 +996,8 @@ void RyuDoOneTImeSaveFixes(void)
         FlagSet(FLAG_HIDE_ALL_KECLEON_OWS);
 }
 
+extern int RyuGetTotalCaughtMons();
+
 static void CreateStartMenuTask(TaskFunc followupFunc)
 {
     u8 taskId;
@@ -1011,6 +1013,9 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
     VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
     FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
     RyuDoOneTImeSaveFixes(); //this should let me put in one time use fixes for various quest things
+    if (CheckAchievement(ACH_POKEMON_MASTER) == FALSE)
+        if (RyuGetTotalCaughtMons() >= 386)
+            GiveAchievement(ACH_POKEMON_MASTER);
 }
 
 static bool8 FieldCB_ReturnToFieldStartMenu(void)

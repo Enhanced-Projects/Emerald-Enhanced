@@ -3797,6 +3797,7 @@ static void Cmd_getexp(void)
             u32 calculatedExp;
             s32 viaSentIn;
 
+
             for (viaSentIn = 0, i = 0; i < PARTY_SIZE; i++)
             {
                 if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE || GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
@@ -3811,16 +3812,10 @@ static void Cmd_getexp(void)
                 else
                     holdEffect = ItemId_GetHoldEffect(item);
             }
-            #if (B_SCALED_EXP >= GEN_5) && (B_SCALED_EXP != GEN_6)
-                calculatedExp = gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 5;
-            #else
-                calculatedExp = gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7;
-            #endif
 
             calculatedExp = (u32)(gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7);
             calculatedExp = (calculatedExp * multiplier / 1000);
 
-            //RyuExpBatteryTemp = (VarGet(VAR_RYU_EXP_BATTERY));
             RyuExpBatteryTemp = (((VarGet(VAR_RYU_EXP_BATTERY) + ((((gBattleMons[gBattlerFainted].level) * 5) * multiplier) / 1000))));
             if (RyuExpBatteryTemp > 50000)
             {
@@ -3828,10 +3823,14 @@ static void Cmd_getexp(void)
             }
             VarSet(VAR_RYU_EXP_BATTERY, RyuExpBatteryTemp);
 
-            
-            if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))//changing the order of these should make it so that if exp is off, that overrides exp share
-                calculatedExp = 0;
-            else if (gSaveBlock2Ptr->expShare) // exp share is turned on
+            if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
+            {
+                *exp = 1;
+                calculatedExp = 1;
+                gBattleMoveDamage = 1;
+            }
+
+            if (gSaveBlock2Ptr->expShare) // exp share is turned on
             {
                 *exp = calculatedExp / 2 / viaSentIn;
                 if (*exp == 0)
@@ -3945,6 +3944,7 @@ static void Cmd_getexp(void)
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleMoveDamage);
 
                     PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
+                    MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
                 }
                 gBattleStruct->sentInPokes >>= 1;
                 gBattleScripting.getexpState++;
@@ -6362,7 +6362,7 @@ static void Cmd_getmoneyreward(void)
     if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && ((VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL) || (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)))
         moneyReward = ((moneyReward * 115) / 100);
 
-    //if player has the winnings boost AP active, they get 5% more money
+    //if player has the winnings boost AP active, they get 10% more money
     if (CheckAPFlag(AP_WINNINGS_BOOST) == TRUE)
         moneyReward = ((moneyReward * 110) / 100);
 
@@ -11964,8 +11964,6 @@ static void Cmd_handleballthrow(void)
         u32 odds, i;
         u8 catchRate = gBaseStats[gBattleMons[gBattlerTarget].species].catchRate;
 
-        
-        #ifdef POKEMON_EXPANSION
         if (IS_ULTRA_BEAST(gBattleMons[gBattlerTarget].species))
         {
             if (gLastUsedItem == ITEM_BEAST_BALL)
@@ -11975,8 +11973,6 @@ static void Cmd_handleballthrow(void)
         }
         else
         {
-        #endif
-
         if (gLastUsedItem > ITEM_SAFARI_BALL)
         {
             switch (gLastUsedItem)

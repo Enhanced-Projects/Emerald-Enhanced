@@ -1759,7 +1759,7 @@ bool8 ScrCmd_removemoney(struct ScriptContext *ctx)
 
 bool8 ScrCmd_checkmoney(struct ScriptContext *ctx)
 {
-    u32 amount = ScriptReadWord(ctx);
+    u16 amount = VarGet(ScriptReadWord(ctx));
     gSpecialVar_Result = IsEnoughMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }
