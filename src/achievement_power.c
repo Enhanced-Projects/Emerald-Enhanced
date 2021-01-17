@@ -7,23 +7,23 @@
 
 //platinum powers
 const u8 sPlatinumLabel[] = _("Platinum");
-const u8 sExtendedAPNameSprintBoost[] =     _("Sprint Boost        ...51AP");
-const u8 sExtendedAPNameGlobalRepel[] =     _("Ignore Wild Enc     ...51AP");
-const u8 sExtendedAPNameTrainerRepel[] =    _("Ignore Trainers     ...51AP");
-const u8 sExtendedAPNameEVBoost[] =         _("Double EV Gain      ...51AP");
+const u8 sAPNameSprintBoost[] =     _("Sprint Boost");
+const u8 sAPNameGlobalRepel[] =     _("Ignore Wild Enc");
+const u8 sAPNameTrainerRepel[] =    _("Ignore Trainers");
+const u8 sAPNameEVBoost[] =         _("Double EV Gain");
 
 //gold powers
 const u8 sGoldLabel[] = _("Gold");
-const u8 sExtendedAPNameMobileStatCheck[] = _("Stat Device Access  ...33AP");
-const u8 sExtendedAPNamePDA[] =             _("PDA Device Access   ...33AP");
+const u8 sAPNameMobileStatCheck[] = _("Stat Device Access");
+const u8 sAPNamePDA[] =             _("PDA Device Access");
 
 //silver powers
 const u8 sSilverLabel[] = _("Silver");
-const u8 sExtendedAPNameWinningsBoost[] =   _("Winnings Boost      ...33AP");
+const u8 sAPNameWinningsBoost[] =   _("Winnings Boost");
 
 //copper powers
 const u8 sCopperLabel[] = _("Copper");
-const u8 sExtendedAPNameCaptureBoost[] =    _("Capture Boost       ...25AP");
+const u8 sAPNameCaptureBoost[] =    _("Capture Boost");
 
 //Descriptions
 const u8 sSprintBoostAPDesc[] = _("Allows you to run twice as fast.");
@@ -35,16 +35,36 @@ const u8 sPDAAPDesc[] = _("Grants the PDA item which\nlets you shop remotely.");
 const u8 sWinningsBoostAPDesc[] = _("Gain 10 percent more money\nfrom winning battles.");
 const u8 sCaptureBoostAPDesc[] = _("Boost your base capture rate by\n5 percent.");
 
+const struct APInfoTier gAP_InfoPlat[] = 
+{
+    {AP_SPRINT_BOOST, sAPNameSprintBoost, sSprintBoostAPDesc},
+    {AP_GLOBAL_REPEL, sAPNameGlobalRepel, sGlobalRepelAPDesc},
+    {AP_TRAINER_REPEL, sAPNameTrainerRepel, sTrainerRepelAPDesc},
+    {AP_EV_BOOST, sAPNameEVBoost, sEVBoostAPDesc},
+};
 
-const u16 sAP_Requirements[][2] = {
-    {AP_SPRINT_BOOST, 51},
-    {AP_GLOBAL_REPEL, 51},
-    {AP_TRAINER_REPEL, 51},
-    {AP_EV_BOOST, 51},
-    {AP_MOBILE_STAT_CHECKER, 33},
-    {AP_PDA, 33},
-    {AP_WINNINGS_BOOST, 25},
-    {AP_CAPTURE_BOOST, 10},
+const struct APInfoTier gAP_InfoGold[] = 
+{
+    {AP_MOBILE_STAT_CHECKER, sAPNameMobileStatCheck, sMobileStatCheckAPDesc},
+    {AP_PDA, sAPNamePDA, sPDAAPDesc},
+};
+
+const struct APInfoTier gAP_InfoSilver[] = 
+{
+    {AP_WINNINGS_BOOST, sAPNameWinningsBoost, sWinningsBoostAPDesc},
+};
+
+const struct APInfoTier gAP_InfoCopper[] = 
+{
+    {AP_CAPTURE_BOOST, sAPNameCaptureBoost, sCaptureBoostAPDesc},
+};
+
+const struct APInfo gAP_Info[4] =
+{
+    {gAP_InfoPlat, AP_TIER_PLATINUM, AP_PLATINUM_COUNT, 51},
+    {gAP_InfoGold, AP_TIER_GOLD, AP_GOLD_COUNT, 34},
+    {gAP_InfoSilver, AP_TIER_SILVER, AP_SILVER_COUNT, 26},
+    {gAP_InfoCopper, AP_TIER_COPPER, AP_COPPER_COUNT, 10}
 };
 
 void APDebugInfo(void)
@@ -55,13 +75,14 @@ void APDebugInfo(void)
 
 int GetCurrentAPUsed(void)//gets player's currently used AP's
 {
-    u8 i;
+    u32 i, j;
     u8 currentTotal = 0;
 
-    for (i = 0; i < TOTAL_OBTAINABLE_ACHIEVEMENTS; i++)
+    for (i = 0; i < 4; i++)
     {
-        if (CheckAPFlag(i) == TRUE)
-            currentTotal += (sAP_Requirements[i][1]);
+        for(j = 0; j < gAP_Info[i].tierCount; j++)
+        if (CheckAPFlag(gAP_Info[i].apInfo[j].apId) == TRUE)
+            currentTotal += (gAP_Info[i].requiredAP);
     }
 
     return currentTotal;
@@ -71,7 +92,7 @@ int GetCurrentAPUsed(void)//gets player's currently used AP's
 int GetPlayerAPMax(void)//checks how many achievements the player has and turns it into a percentage of maximum achivements obtained.
 {
     u8 current = 0;
-    u8 i = 0;
+    u32 i = 0;
 
     for (i = 0; i < TOTAL_OBTAINABLE_ACHIEVEMENTS; i++)
         if (CheckAchievement(i) == TRUE)

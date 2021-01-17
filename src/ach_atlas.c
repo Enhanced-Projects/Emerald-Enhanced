@@ -23,6 +23,14 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
+static const u8 sAPMenuBackgroundTileset[] = INCBIN_U8("graphics/achievement_atlas/apscreen.8bpp");
+static const u16 sAPMenuBackgroundTilemap[] = INCBIN_U16("graphics/achievement_atlas/apscreen.bin");
+static const u8 sAPMenuBackgroundPalette[] = INCBIN_U8("graphics/achievement_atlas/apscreen.gbapal");
+
+static const u8 sAPSelectTileset[] = INCBIN_U8("graphics/achievement_atlas/apselect_tile.4bpp");
+static const u16 sAPSelectTilemap[] = INCBIN_U16("graphics/achievement_atlas/apselect.bin");
+static const u8 sAPSelectPalette[] = INCBIN_U8("graphics/achievement_atlas/apselect_tile.gbapal");
+
 static const u8 sAchievementAtlasStarTileset[] = INCBIN_U8("graphics/achievement_atlas/achievement_atlas.4bpp");
 static const u16 sAchievementAtlasStarTilemap[] = INCBIN_U16("graphics/achievement_atlas/achievement_atlas.bin");
 static const u8 sAchievementAtlasStarPalette[] = INCBIN_U8("graphics/achievement_atlas/achievement_atlas.gbapal");
@@ -52,7 +60,7 @@ enum
 {
     WIN_ACH_LABEL,
     WIN_ACH_DESC,
-    WIN_ACH_DEBUG
+    WIN_ACH_DEBUG,
 };
 
 static const struct WindowTemplate sAtlasWindowTemplate[] =
@@ -90,6 +98,70 @@ static const struct WindowTemplate sAtlasWindowTemplate[] =
     DUMMY_WIN_TEMPLATE
 };
 
+enum
+{
+    WIN_AP_TIERS,
+    WIN_AP_TOTAL_AP,
+    WIN_AP_SCROLL_NAME,
+    WIN_AP_SCROLL_POWER_USAGE,
+    WIN_AP_DESC
+};
+
+static const struct WindowTemplate sAPMenuWindowTemplates[] =
+{
+    [WIN_AP_TIERS] = 
+    {
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 1,
+        .width = 21,
+        .height = 2,
+        .paletteNum = 15,
+        .baseBlock = 1,
+    },
+    [WIN_AP_TOTAL_AP] = 
+    {
+        .bg = 0,
+        .tilemapLeft = 24,
+        .tilemapTop = 1,
+        .width = 5,
+        .height = 3,
+        .paletteNum = 15,
+        .baseBlock = 43,
+    },
+    [WIN_AP_SCROLL_NAME] =
+    {
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 6,
+        .width = 16,
+        .height = 6,
+        .paletteNum = 15,
+        .baseBlock = 58,
+    },
+    [WIN_AP_SCROLL_POWER_USAGE] =
+    {
+        .bg = 0,
+        .tilemapLeft = 19,
+        .tilemapTop = 6,
+        .width = 10,
+        .height = 6,
+        .paletteNum = 15,
+        .baseBlock = 154,
+    },
+    [WIN_AP_DESC] = 
+    {
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 15,
+        .width = 28,
+        .height = 4,
+        .paletteNum = 15,
+        .baseBlock = 214,
+    },
+    DUMMY_WIN_TEMPLATE
+};
+
 static const struct SpriteSheet sCursorTestTile = {
     .data = sAtlasCursorTiles,
     .size = sizeof(sAtlasCursorTiles),
@@ -98,6 +170,33 @@ static const struct SpriteSheet sCursorTestTile = {
 static const struct SpritePalette sCursorTestPal = {
     .data = sAtlasCursorPalette,
     .tag = 0x6969
+};
+
+extern const u16 sEasyChatTriangleCursorPalette[];
+extern const u32 sEasyChatTriangleCursorGfx[];
+
+static const struct SpriteSheet sAPTierSelectTile = {
+    .data = sEasyChatTriangleCursorGfx,
+    .size = TILE_SIZE_4BPP,
+    .tag = 0x7000
+};
+static const struct SpritePalette sAPTierSelectPal = {
+    .data = sEasyChatTriangleCursorPalette,
+    .tag = 0x7000
+};
+
+const struct OamData sAPTierSelectOam =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(8x8),
+    .x = 0,
+    .size = SPRITE_SIZE(8x8),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 0,
 };
 
 const struct OamData sAtlasCursorOam =
@@ -174,7 +273,47 @@ static const struct BgTemplate sAtlasBGTemplates[] =
         .baseTile = 0
     }
 };
-
+/*
+static const struct BgTemplate sAPMenuTemplates[] =
+{
+    {
+        .bg = 0,
+        .charBaseIndex = 2,
+        .mapBaseIndex = 25,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 0,
+        .baseTile = 0
+    },
+    {
+        .bg = 1,
+        .charBaseIndex = 0,
+        .mapBaseIndex = 26,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 2,
+        .baseTile = 0
+    },
+    {
+        .bg = 2,
+        .charBaseIndex = 0,
+        .mapBaseIndex = 30,
+        .screenSize = 0,
+        .paletteMode = 1,
+        .priority = 1,
+        .baseTile = 0
+    },
+    {
+        .bg = 3,
+        .charBaseIndex = 1,
+        .mapBaseIndex = 31,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 3,
+        .baseTile = 0
+    }
+};
+*/
 static void AtlasCursorSpriteCB(struct Sprite *); // sprite template
 
 const struct SpriteTemplate sAtlasCursorSpriteTemplate =
@@ -188,6 +327,17 @@ const struct SpriteTemplate sAtlasCursorSpriteTemplate =
     .callback = AtlasCursorSpriteCB,
 };
 
+const struct SpriteTemplate sAPTierSelectSpriteTemplate =
+{
+    .tileTag = 0x7000,
+    .paletteTag = 0x7000,
+    .oam = &sAPTierSelectOam,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
 static void CB2_Atlas(void);
 static void VBlankCB_Atlas(void);
 
@@ -199,6 +349,9 @@ static void Task_InitAtlas(u8);
 static void Task_HandleAtlasInput(u8);
 static void Task_UpdateAtlasStatus(u8);
 static void Task_CloseAtlas(u8);
+
+static void Task_OpenAPMenu(u8);
+static void Task_HandleAPInput(u8);
 
 EWRAM_DATA static struct AchAtlas sAchAtlas = {0};
 
@@ -438,7 +591,7 @@ static void Task_HandleAtlasInput(u8 taskId)
             break;
         case ACTION_GO_BACK:
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
-            gTasks[taskId].func = Task_CloseAtlas;
+            gTasks[taskId].func = Task_OpenAPMenu;
             return;
         }
     }
@@ -452,13 +605,210 @@ static void Task_HandleAtlasInput(u8 taskId)
 
 static void Task_CloseAtlas(u8 taskId)
 {
+    u32 i;
     if (!gPaletteFade.active)
     {
         FreeAllWindowBuffers();
+        for(i = 0; i < 4; i++)
+        {
+            Free(GetBgTilemapBuffer(i));
+            UnsetBgTilemapBuffer(i);
+        }
+        RemoveWindow(WIN_ACH_LABEL);
+        RemoveWindow(WIN_ACH_DESC);
+        RemoveWindow(WIN_ACH_DEBUG);
         DestroyTask(taskId);
         SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100);
     }
+}
+
+#define MCDBGAP
+
+#define tSelectedTier data[0]
+#define tSelectedAP data[1]
+#define tSelectingAP data[2]
+#define tChangedTier data[3]
+#define tAPOffset data[4]
+#define tChangedAP data[5]
+
+static void Task_UpdateSelections(u8 taskId);
+
+static void PrintAPUsageString(void)
+{
+    u8 * str;
+    ClearWindowTilemap(WIN_AP_TOTAL_AP);
+    str = ConvertUIntToDecimalStringN(gStringVar1, GetCurrentAPUsed(), STR_CONV_MODE_LEADING_ZEROS, 3);
+    str[0] = CHAR_SLASH;
+    ConvertUIntToDecimalStringN(str+1, GetPlayerAPMax(), STR_CONV_MODE_LEADING_ZEROS, 3);
+    AddTextPrinterParameterized3(WIN_AP_TOTAL_AP, 0, 4, 2, sTextColors[0], 0, gStringVar1);
+    
+}
+
+static void Task_OpenAPMenu(u8 taskId) // inefficient right from the start and that's how i like it jesus please help i'm stuck at home destroying my sanity
+{
+    //u16 * tilemaps[4];
+    u32 i;
+    
+    if (gPaletteFade.active)
+        return;
+
+    //for(i = 0; i < 4; i++)
+        //tilemaps[i] = GetBgTilemapBuffer(i);
+    DestroySprite(&gSprites[sAchAtlas.cursorSpriteId]);
+    LoadSpritePalette(&sAPTierSelectPal);
+    LoadSpriteSheet(&sAPTierSelectTile);
+    // repurposed the cursorspriteid field for later use since we delete the cursor sprite anyways
+    sAchAtlas.cursorSpriteId = CreateSprite(&sAPTierSelectSpriteTemplate, 12, 19, 0);
+    // selected tier
+    gTasks[taskId].tSelectedTier = AP_TIER_PLATINUM;
+    // selected AP
+    gTasks[taskId].tSelectedAP = 0;
+    //help
+    /*
+    // init slected Tier AP Count
+    gTasks[taskId].tSelectedTierAPCount = 0;
+    for(i = 0; i < TOTAL_AP_COUNT; i++) // this is redundant but the data containing this stuff is not necessarily structured the best way and i have myself to blame for that
+    {
+        if(gTasks[taskId].tSelectedTier == gAP_Info[i].tier)
+            gTasks[taskId].tSelectedTierAPCount++;    
+    }
+    */
+    HideBg(1);
+    DmaCopy16(3, sAPMenuBackgroundTileset, BG_CHAR_ADDR(0), sizeof(sAPMenuBackgroundTileset));
+    DmaCopy16(3, sAPMenuBackgroundTilemap, GetBgTilemapBuffer(2), sizeof(sAPMenuBackgroundTilemap));
+    LoadPalette(sAPMenuBackgroundPalette, 0, sizeof(sAPMenuBackgroundPalette));
+    SetBgAttribute(2, BG_ATTR_PALETTEMODE, 1);
+    SetBgAttribute(2, BG_ATTR_PRIORITY, 3);
+    ShowBg(2);
+    DmaCopy16(3, sAPSelectTileset, BG_CHAR_ADDR(0)+0xF0*TILE_SIZE_4BPP, sizeof(sAPSelectTileset));
+    DmaCopy16(3, sAPSelectTilemap, GetBgTilemapBuffer(3), sizeof(sAPSelectTilemap));
+    LoadPalette(sAPSelectPalette, 0x80, sizeof(sAPSelectPalette));
+    SetGpuReg(REG_OFFSET_BG3HOFS, 0);
+    SetGpuReg(REG_OFFSET_BG3VOFS, 0);
+    SetGpuReg(REG_OFFSET_BG3X, 4);
+    SetGpuReg(REG_OFFSET_BG3Y, 4);
+    SetBgAttribute(3, BG_ATTR_PRIORITY, 2);
+    ShowBg(3);
+    CopyBgTilemapBufferToVram(2);
+    CopyBgTilemapBufferToVram(3);
+    //FreeAllWindowBuffers();
+    ClearWindowTilemap(WIN_ACH_LABEL);
+    ClearWindowTilemap(WIN_ACH_DESC);
+    ClearWindowTilemap(WIN_ACH_DEBUG);
+    RemoveWindow(WIN_ACH_LABEL);
+    RemoveWindow(WIN_ACH_DESC);
+    RemoveWindow(WIN_ACH_DEBUG);
+    InitWindows(sAPMenuWindowTemplates);
+    InitTextBoxGfxAndPrinters();
+    DeactivateAllTextPrinters();
+#ifdef MCDBGAP
+    for(i = 0; i <= WIN_AP_DESC; i++)
+    {
+        PutWindowTilemap(i);
+        CopyWindowToVram(i, 3);
+        //DrawStdWindowFrame(i, TRUE);
+    }
+#endif
+    PrintAPUsageString();
+    //AddTextPrinterParameterized3(WIN_AP_TOTAL_AP)
+    //AddTextPrinterParameterized3(WIN_AP_SCROLL_NAME, 0, 0, 0, sTextColors[0], 0xFF, gAP_Info[0].name);
+    //CopyWindowToVram(WIN_AP_DESC, 2);
+    gTasks[taskId].tChangedTier = TRUE; // debug
+    gTasks[taskId].func = Task_UpdateSelections;
+}
+
+static void Task_HandleAPInput(u8 taskId)
+{
+    if(gMain.newKeys & A_BUTTON)
+    {
+        if(!gTasks[taskId].tSelectingAP)
+        {
+            gTasks[taskId].tSelectingAP = TRUE;
+            FillWindowPixelBuffer(WIN_AP_DESC, 0);
+            AddTextPrinterParameterized3(WIN_AP_DESC, 0, 4, 2, sTextColors[0], 0, gAP_Info[gTasks[taskId].tSelectedTier].apInfo[gTasks[taskId].tSelectedAP].desc);
+        }
+    }
+    if(gMain.newKeys & B_BUTTON)
+    {
+        if(gTasks[taskId].tSelectingAP)
+        {
+            gTasks[taskId].tSelectingAP = FALSE;
+            // what the hell man
+            FillWindowPixelBuffer(WIN_AP_DESC, 0);
+            CopyWindowToVram(WIN_AP_DESC, 2);
+        }
+    }
+        //gTasks[taskId].func = Task_CloseAtlas;
+    if(gTasks[taskId].tSelectingAP)
+    {
+        if (gMain.newKeys & DPAD_UP)
+        {
+            if(--gTasks[taskId].tSelectedAP < 0)
+                gTasks[taskId].tSelectedAP = gAP_Info[gTasks[taskId].tSelectedTier].tierCount-1;
+            gTasks[taskId].tChangedAP = TRUE;
+            gTasks[taskId].func = Task_UpdateSelections;
+        }
+        else if (gMain.newKeys & DPAD_DOWN)
+        {
+            if(++gTasks[taskId].tSelectedAP > gAP_Info[gTasks[taskId].tSelectedTier].tierCount-1)
+                gTasks[taskId].tSelectedAP = 0;
+            gTasks[taskId].tChangedAP = TRUE;
+            gTasks[taskId].func = Task_UpdateSelections;
+        }
+    }
+    else
+    {
+        if(gMain.newKeys & DPAD_LEFT)
+        {
+            if(--gTasks[taskId].tSelectedTier < AP_TIER_PLATINUM)
+                gTasks[taskId].tSelectedTier = AP_TIER_COPPER;
+            gTasks[taskId].tChangedTier = TRUE;
+            gTasks[taskId].func = Task_UpdateSelections;
+        }
+        else if(gMain.newKeys & DPAD_RIGHT)
+        {   
+            if(++gTasks[taskId].tSelectedTier > AP_TIER_COPPER)
+                gTasks[taskId].tSelectedTier = AP_TIER_PLATINUM;
+            gTasks[taskId].tChangedTier = TRUE;
+            gTasks[taskId].func = Task_UpdateSelections;
+        }
+    }
+}
+
+static void Task_UpdateSelections(u8 taskId)
+{
+    const u8 sTierCursorXPos[] = {12, 67, 100, 140}; // evil hardcoding
+    u32 i;
+
+    if(gTasks[taskId].tChangedTier) //ugh
+    {
+        gTasks[taskId].tChangedTier = FALSE;
+        gTasks[taskId].tSelectedAP = 0;
+        gSprites[sAchAtlas.cursorSpriteId].pos1.x = sTierCursorXPos[gTasks[taskId].tSelectedTier];
+        FillWindowPixelBuffer(WIN_AP_SCROLL_NAME, 0);
+        FillWindowPixelBuffer(WIN_AP_SCROLL_POWER_USAGE, 0);
+        for(i = 0; i < 4 && i < gAP_Info[gTasks[taskId].tSelectedTier].tierCount; i++)
+        {
+            static const u8 usedAP[] = _("{STR_VAR_1}AP"); 
+            const u8 * color = sTextColors[2];
+            if(CheckAPFlag(gAP_Info[gTasks[taskId].tSelectedTier].apInfo[i].apId))
+                color = sTextColors[3];
+            else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP > (GetPlayerAPMax()-GetCurrentAPUsed())) // oh jesus christ
+                color = sTextColors[1];
+            AddTextPrinterParameterized3(WIN_AP_SCROLL_NAME, 0, 4, i * 12, color, 0, gAP_Info[gTasks[taskId].tSelectedTier].apInfo[i].name);
+            ConvertUIntToDecimalStringN(gStringVar1, gAP_Info[gTasks[taskId].tSelectedTier].requiredAP, STR_CONV_MODE_LEFT_ALIGN, 2);
+            StringExpandPlaceholders(gStringVar4, usedAP);
+            AddTextPrinterParameterized3(WIN_AP_SCROLL_POWER_USAGE, 0, 4, i * 12, color, 0, gStringVar4);
+        }
+    }
+    else if(gTasks[taskId].tChangedAP)
+    {
+        gTasks[taskId].tChangedAP = FALSE;
+        FillWindowPixelBuffer(WIN_AP_DESC, 0);
+        AddTextPrinterParameterized3(WIN_AP_DESC, 0, 4, 2, sTextColors[0], 0, gAP_Info[gTasks[taskId].tSelectedTier].apInfo[gTasks[taskId].tSelectedAP].desc);
+    }
+    gTasks[taskId].func = Task_HandleAPInput;
 }
 
 static const u8 sXColon[] = _("X:");

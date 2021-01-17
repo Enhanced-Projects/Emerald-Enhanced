@@ -299,6 +299,20 @@ RustboroCity_DevonCorp_2F_EventScript_WorkOnNext:: @ 8211BF1
 	release
 	end
 
+RustboroCity_DevonCorp_2F_EventScript_PidgeyWarpComputer:: @ 8211BF1
+	msgbox RustboroCity_DevonCorp_2F_Text_PidgeyWarpComputer, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq RustboroCity_DevonCorp_2F_EventScript_PidgeyWarpComputer_Exit
+	call RustboroCity_DevonCorp_2F_EventScript_PidgeyWarpComputerYes
+RustboroCity_DevonCorp_2F_EventScript_PidgeyWarpComputer_Exit:
+	release
+	end
+
+RustboroCity_DevonCorp_2F_EventScript_PidgeyWarpComputerYes::
+	msgbox RustboroCity_DevonCorp_2F_Text_PidgeyWarpComputerLogin, MSGBOX_DEFAULT
+	warpsilent MAP_RUSTBORO_CITY_PIDGEYS_COOP, 0xFF, 13, 2
+	return
+
 RustboroCity_DevonCorp_2F_Text_DeviceForTalkingToPokemon: @ 8211BFB
 	.string "We're developing a device for talking\n"
 	.string "with Pokémon.\p"
@@ -411,3 +425,10 @@ RustboroCity_DevonCorp_2F_Text_WhatToWorkOnNext: @ 8212386
 	.string "One couldn't ask for a better\n"
 	.string "environment as an engineer.$"
 
+RustboroCity_DevonCorp_2F_Text_PidgeyWarpComputer::
+	.string "This computer has a login screen\p"
+	.string "Do you want to try and login?$"
+
+RustboroCity_DevonCorp_2F_Text_PidgeyWarpComputerLogin::
+	.string "Logging in{PAUSE 0x0F}.{PAUSE 0x0F}.{PAUSE 0x0F}.{PAUSE 0x0F}.{PAUSE 0x0F}.{PAUSE 0x0F}.\n"
+	.string "Success!$"

@@ -106,7 +106,7 @@
 #define MAPSEC_ROUTE_2                      0x66
 #define MAPSEC_ROUTE_3                      0x67
 #define MAPSEC_ROUTE_4                      0x68
-#define MAPSEC_ROUTE_5                      0x69
+#define MAPSEC_PIDGEY_COOP                  0x69 // sorry ryu i'm using this
 #define MAPSEC_ROUTE_6                      0x6A
 #define MAPSEC_ROUTE_7                      0x6B
 #define MAPSEC_ROUTE_8                      0x6C

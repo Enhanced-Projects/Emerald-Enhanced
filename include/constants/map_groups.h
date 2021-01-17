@@ -1,6 +1,10 @@
 #ifndef GUARD_CONSTANTS_MAP_GROUPS_H
 #define GUARD_CONSTANTS_MAP_GROUPS_H
 
+//
+// DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/map_groups.json
+//
+
 // Map Group 0
 #define MAP_LITTLEROOT_TOWN       (0 | (0 << 8))
 #define MAP_OLDALE_TOWN           (1 | (0 << 8))
@@ -114,6 +118,7 @@
 #define MAP_RUSTBORO_CITY_MART                   (16 | (4 << 8))
 #define MAP_RUSTBORO_CITY_POKEMON_CENTER_1F      (17 | (4 << 8))
 #define MAP_RUSTBORO_CITY_POKEMON_CENTER_2F      (18 | (4 << 8))
+#define MAP_RUSTBORO_CITY_PIDGEYS_COOP           (19 | (4 << 8))
 
 // Map Group 5
 #define MAP_DEWFORD_TOWN_HALL              (0 | (5 << 8))

@@ -30,6 +30,23 @@ struct AtlasAchPointData
     const u8 * descString;
 };
 
+struct APInfoTier
+{
+    u16 apId;
+    const u8 * name;
+    const u8 * desc;
+};
+
+struct APInfo
+{
+    const struct APInfoTier * apInfo;  
+    u8 tier;
+    u8 tierCount;
+    u16 requiredAP;
+};
+
+extern const struct APInfo gAP_Info[];
+
 struct AchAtlas // this would be better off as a u8 array lmao
 {
     u8 cursorSpriteId;
