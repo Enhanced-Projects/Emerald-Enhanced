@@ -62,8 +62,8 @@ EGC_AltDrake::
 
 Ryu_DrakeMegaReward::
 	goto_if_set FLAG_RYU_DRAKE_MEGA, EverGrandeCity_DrakesRoom_EventScript_Defeated
-	additem ITEM_SALAMENCITE
 	msgbox DrakeMegaRewardMsg
+	giveitem ITEM_SALAMENCITE
 	setflag FLAG_RYU_DRAKE_MEGA
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 
