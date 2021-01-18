@@ -39,27 +39,27 @@ const u8 sStrongerWildsAPDesc[] = _("Wild pokemon will scale to\nyour party inst
 
 const struct APInfoTier gAP_InfoPlat[] = 
 {
-    {AP_SPRINT_BOOST, sAPNameSprintBoost, sSprintBoostAPDesc, APSprintBoostToggle()},
-    {AP_GLOBAL_REPEL, sAPNameGlobalRepel, sGlobalRepelAPDesc, APGlobalRepelToggle()},
-    {AP_TRAINER_REPEL, sAPNameTrainerRepel, sTrainerRepelAPDesc, APTrainerRepelToggle()},
-    {AP_EV_BOOST, sAPNameEVBoost, sEVBoostAPDesc, ToggleEVBoostAP()},
+    {AP_SPRINT_BOOST, sAPNameSprintBoost, sSprintBoostAPDesc},
+    {AP_GLOBAL_REPEL, sAPNameGlobalRepel, sGlobalRepelAPDesc},
+    {AP_TRAINER_REPEL, sAPNameTrainerRepel, sTrainerRepelAPDesc},
+    {AP_EV_BOOST, sAPNameEVBoost, sEVBoostAPDesc},
 };
 
 const struct APInfoTier gAP_InfoGold[] = 
 {
-    {AP_MOBILE_STAT_CHECKER, sAPNameMobileStatCheck, sMobileStatCheckAPDesc, GiveTakeStatAssistItem()},
-    {AP_PDA, sAPNamePDA, sPDAAPDesc, GiveTakePDAItem()},
+    {AP_MOBILE_STAT_CHECKER, sAPNameMobileStatCheck, sMobileStatCheckAPDesc},
+    {AP_PDA, sAPNamePDA, sPDAAPDesc},
 };
 
 const struct APInfoTier gAP_InfoSilver[] = 
 {
-    {AP_WINNINGS_BOOST, sAPNameWinningsBoost, sWinningsBoostAPDesc, APWinningsBoostToggle()},
-    {AP_STRONGER_WILDS, sAPNameStrongerWildMons, sStrongerWildsAPDesc, ToggleAPStrongerWilds()},
+    {AP_WINNINGS_BOOST, sAPNameWinningsBoost, sWinningsBoostAPDesc},
+    {AP_STRONGER_WILDS, sAPNameStrongerWildMons, sStrongerWildsAPDesc},
 };
 
 const struct APInfoTier gAP_InfoCopper[] = 
 {
-    {AP_CAPTURE_BOOST, sAPNameCaptureBoost, sCaptureBoostAPDesc, APCaptureBoostToggle()},
+    {AP_CAPTURE_BOOST, sAPNameCaptureBoost, sCaptureBoostAPDesc},
 };
 
 const struct APInfo gAP_Info[4] =
@@ -146,14 +146,6 @@ bool8 CheckIfAutolevelWilds(void) //@kageru please use this check to determine i
         return TRUE;
 
     return FALSE;
-}
-
-void ToggleEVBoostAP(void)
-{
-    if (CheckAPFlag(AP_EV_BOOST) == TRUE)
-        ClearAPFlag(AP_EV_BOOST);
-    else
-        SetAPFlag(AP_EV_BOOST);
 }
 
 void ToggleAPStrongerWilds(void)

@@ -35,7 +35,6 @@ struct APInfoTier
     u16 apId;
     const u8 * name;
     const u8 * desc;
-    const u8 * functionPointer; //The function that toggles this AP Id.
 };
 
 struct APInfo
