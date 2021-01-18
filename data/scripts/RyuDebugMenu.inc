@@ -225,7 +225,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	callnative RyuDebug_Plant49Berries
+	callnative ToggleAPStrongerWilds
 	release
 	end
 

@@ -20,7 +20,7 @@ const u8 sAPNamePDA[] =             _("PDA Device Access");
 //silver powers
 const u8 sSilverLabel[] = _("Silver");
 const u8 sAPNameWinningsBoost[] =   _("Winnings Boost");
-const u8 sAPNameStrongerWildMons[]  = _("Stronger Wild Encounters")
+const u8 sAPNameStrongerWildMons[]  = _("Stronger Wild Encounters");
 
 //copper powers
 const u8 sCopperLabel[] = _("Copper");
@@ -132,7 +132,7 @@ void ClearAPFlag(u32 id)
 }
 
 //actual ap powers
-bool8 CheckCanIgnoreTrainers(void)//toggles trainer repel
+bool8 CheckCanIgnoreTrainers(void)//Check if can ignore trainer sight
 {
     if ((FlagGet(FLAG_TOBY_TRAINER_SIGHT) == 1) || (CheckAPFlag(AP_TRAINER_REPEL) == TRUE))
         return TRUE;
@@ -140,7 +140,7 @@ bool8 CheckCanIgnoreTrainers(void)//toggles trainer repel
     return FALSE;
 }
 
-bool8 CheckIfAutolevelWilds(void) //@kageru please use this check to determine if wild mons should badge scale or autolevel. If this returns true, wilds should autolevel.
+bool8 CheckIfAutolevelWilds(void) //checks if wilds should use autolevel for the AP
 {
     if (CheckAPFlag(AP_STRONGER_WILDS) == TRUE)
         return TRUE;
@@ -148,7 +148,7 @@ bool8 CheckIfAutolevelWilds(void) //@kageru please use this check to determine i
     return FALSE;
 }
 
-void ToggleAPStrongerWilds(void)
+void ToggleAPStrongerWilds(void) //Allows wild mons to use autolevel, for faster training.
 {
     if (CheckAPFlag(AP_STRONGER_WILDS) == TRUE)
         ClearAPFlag(AP_STRONGER_WILDS);

@@ -84,8 +84,18 @@ void ClearAPFlag(u32 id);
 int GetPlayerAPMax(void);
 int GetCurrentAPUsed(void);
 
+//AP's for external use
+void ToggleAPStrongerWilds();
+void GiveTakePDAItem();
+void GiveTakeStatAssistItem();
+void APTrainerRepelToggle();
+void APSprintBoostToggle();
+void APWinningsBoostToggle();
+void APCaptureBoostToggle();
+void APGlobalRepelToggle();
 
 //AP utility
 bool8 CheckCanIgnoreTrainers();
+bool8 CheckIfAutolevelWilds();
 
 #endif//GUARD_ACH_ATLAS_H
