@@ -141,8 +141,8 @@
 #define VAR_ROUTE128_STATE                   0x407B
 #define VAR_ROUTE129_STATE                   0x407C // Unused Var
 #define VAR_ROUTE130_STATE                   0x407D // Unused Var
-#define FLAG_RYU_MOLTRES                     0x407E // why is there a flag in the var block?
-#define VAR_UNUSED_0x407F                    0x407F // Unused Var
+#define VAR_UNUSED_0x407E                    0x407E // Unused Var
+#define VAR_RYU_QUESTLINE_ID                0x407F // Which main quest the player chose.
 #define VAR_UNUSED_0x4080                    0x4080 // Unused Var
 #define VAR_UNUSED_0x4081                    0x4081 // Unused Var
 #define VAR_LITTLEROOT_HOUSES_STATE_DAWN     0x4082
@@ -340,6 +340,7 @@
 #define SCENEBGNURSE 13
 #define SCENEBGNURSENIGHT 14
 #define SCENEBGPIDGEYSCREENSHOT 15
+#define SCENEBGGAMEOVER 16
 
 //InfoBox Defines
 #define INFOBOXPOKEMONDATA 0

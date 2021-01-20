@@ -223,6 +223,7 @@ SPC_MaxieDefeat:
 SPC_Maxie::
 	goto_if_unset FLAG_RYU_PLAYER_HELPING_DEVON, ryu_killMaxie
 	goto_if_unset FLAG_RYU_DEVON_SCIENTIST, ryu_killMaxie
+	setflag FLAG_RYU_GAME_OVER
 	trainerbattle_single TRAINER_MAXIE_3, SPC_MaxieIntro, SPC_MaxieDefeat, SPC_MaxieDefeated
 	goto SPC_MaxieDefeated
 	end
@@ -235,6 +236,7 @@ ryu_killMaxie::
 	end
 	
 SPC_MaxieDefeated:: @ 8224071
+	clearflag FLAG_RYU_GAME_OVER
 	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieWeFailedIsAquaAlsoMisguided, MSGBOX_DEFAULT
 	closemessage
 	delay 20

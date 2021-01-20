@@ -74,6 +74,10 @@ static const u8 sPidgeyScreenshotTiles[] = INCBIN_U8("graphics/cutscene/fscutsce
 static const u8 sPidgeyScreenshotMap[] = INCBIN_U8("graphics/cutscene/fscutscene/pidgey_scrsht/pidgey_pc.bin");
 static const u8 sPidgeyScreenshotPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/pidgey_scrsht/pidgey_pc.gbapal");
 
+static const u8 sGameOverBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/gameover/gameover_tiles.8bpp");
+static const u8 sGameOverBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/gameover/gameover_map.bin");
+static const u8 sGameOverBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/gameover/gameover_palette.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -253,6 +257,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sPidgeyScreenshotMap),
         .palette = sPidgeyScreenshotPalette,
 		.palIdxCnt = 16
+	},
+	[SCENEBGGAMEOVER] = 
+	{
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sGameOverBgTiles,
+		.tileSize = sizeof(sGameOverBgTiles),
+        .map = sGameOverBgMap,
+		.mapSize = sizeof(sGameOverBgMap),
+        .palette = sGameOverBgPalette,
+		.palIdxCnt = 240
 	},
 };
 

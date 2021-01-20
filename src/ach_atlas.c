@@ -591,7 +591,8 @@ static void Task_HandleAtlasInput(u8 taskId)
             break;
         case ACTION_GO_BACK:
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
-            gTasks[taskId].func = Task_OpenAPMenu;
+            //gTasks[taskId].func = Task_OpenAPMenu;
+            gTasks[taskId].func = Task_CloseAtlas;
             return;
         }
     }

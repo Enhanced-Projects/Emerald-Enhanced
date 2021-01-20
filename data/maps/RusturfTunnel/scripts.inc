@@ -161,6 +161,7 @@ RT_AquaIntro::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_RYU_AQUA, 5 @player started aqua
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
+	setvar VAR_RYU_QUESTLINE_ID, 1
 	ach give ACH_ADVENTURE_TIME
 	warp MAP_ROUTE116, 255, 47, 9
 	waitstate
@@ -209,6 +210,7 @@ RT_MagmaIntro::
 	setflag FLAG_RYU_PLAYER_HELPING_MAGMA
 	ach give ACH_ADVENTURE_TIME
 	setvar VAR_RYU_MAGMA, 100 @@player chose magma
+	setvar VAR_RYU_QUESTLINE_ID, 2
 	msgbox RT_AndThats
 	closemessage
 	applymovement 4 Common_Movement_StepRight

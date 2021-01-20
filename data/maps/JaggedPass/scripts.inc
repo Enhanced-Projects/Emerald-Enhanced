@@ -18,6 +18,7 @@ JaggedPass_EventScript_CheckHasMagmaEmblem:: @ 8230674
 	return
 
 JaggedPass_EventScript_SetReadyToOpenHideout:: @ 8230685
+	goto_if_set FLAG_RYU_GAME_OVER, ryu_end
 	setvar VAR_JAGGED_PASS_STATE, 1
 	return
 

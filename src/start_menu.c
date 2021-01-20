@@ -994,6 +994,16 @@ void RyuDoOneTImeSaveFixes(void)
 {
     if (FlagGet(FLAG_HIDE_ALL_KECLEON_OWS) == 0)
         FlagSet(FLAG_HIDE_ALL_KECLEON_OWS);
+
+    if (FlagGet(FLAG_RYU_GAME_OVER) == FALSE)// makes sure game over works for everyone, including people who keep save.
+        {
+            if (FlagGet(FLAG_RYU_PLAYER_HELPING_DEVON) == TRUE)
+                VarSet(VAR_RYU_QUESTLINE_ID, 0);
+            else if (FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA) == TRUE)
+                VarSet(VAR_RYU_QUESTLINE_ID, 1);
+            else if (FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA) == TRUE)
+                VarSet(VAR_RYU_QUESTLINE_ID, 2);
+        }
 }
 
 extern int RyuGetTotalCaughtMons();

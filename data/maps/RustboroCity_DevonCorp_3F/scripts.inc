@@ -633,7 +633,8 @@ DC_HelpingDevon::
 	applymovement 2, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox DC_TalkToCEO MSGBOX_DEFAULT
-	setflag FLAG_RYU_PLAYER_HELPING_DEVON 
+	setflag FLAG_RYU_PLAYER_HELPING_DEVON
+	setvar VAR_RYU_QUESTLINE_ID, 0
 	ach give ACH_ADVENTURE_TIME
 	clearflag FLAG_HIDE_GRANITE_CAVE_STEVEN
 	release

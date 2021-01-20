@@ -344,10 +344,12 @@ OM_CaptainStern::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	msgbox OM_ImArchieHandOver
 	closemessage
+	setflag FLAG_RYU_GAME_OVER
 	trainerbattle_single TRAINER_ARCHIE, OM_ArchieIntro, OM_ArchieDefeat, OM_ArchieSceneEnd
 	goto OM_ArchieSceneEnd
 	
 OM_ArchieSceneEnd::
+	clearflag FLAG_RYU_GAME_OVER
 	applymovement 4, Common_Movement_FaceLeft
 	waitmovement 4
 	msgbox OM_IllLetYouGetAway

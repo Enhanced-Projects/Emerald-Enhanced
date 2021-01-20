@@ -39,10 +39,12 @@ SFC9_Archie::
 	faceplayer
 	msgbox SFC9_SoYoureThe
 	closemessage
+	setflag FLAG_RYU_GAME_OVER
 	trainerbattle_single TRAINER_ARCHIE, SFC9ArchieIntro, SFC9ArchieDefeat, SFC9_ArchieSceneEnd
 	goto SFC9_ArchieSceneEnd
 	
 SFC9_ArchieSceneEnd::
+	clearflag FLAG_RYU_GAME_OVER
 	msgbox SFC9_ItSeemsIm, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq SFC9_TakeOpportunity

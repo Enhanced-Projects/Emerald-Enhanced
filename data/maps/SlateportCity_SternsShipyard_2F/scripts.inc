@@ -39,10 +39,12 @@ SS_2FDevonPresTrigger::
 	delay 30
 	msgbox SS_ToSeeThe
 	closemessage
+	setflag FLAG_RYU_GAME_OVER
 	trainerbattle_single TRAINER_MR_STONE, SS_StoneIntro, SS_StoneDefeat, SS_PostStoneBattle
 	goto SS_PostStoneBattle
 
 SS_PostStoneBattle::
+	clearflag FLAG_RYU_GAME_OVER
 	setvar VAR_RYU_AQUA, 115 @player defeated Mr Stone
 	msgbox SS_FutureDoesntLookBright
 	closemessage

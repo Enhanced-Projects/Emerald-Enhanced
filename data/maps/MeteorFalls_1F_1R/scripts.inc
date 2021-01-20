@@ -98,9 +98,11 @@ MF_DevonEventSouth::
 	msgbox MF_PlayerAttacksMagma MSGBOX_DEFAULT
 	cleartrainerflag TRAINER_GRUNT_16
 	savebgm MUS_GOTOWN
+	setflag FLAG_RYU_GAME_OVER
 	trainerbattle_single TRAINER_GRUNT_16, MF_MagmaFightIntro, MF_ellipsis, MF_DevonContd
 	
 MF_DevonContd::
+	clearflag FLAG_RYU_GAME_OVER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	bufferpartymonnick 0, 0
 	msgbox MF_PlayerWonVsMagma MSGBOX_DEFAULT
@@ -137,11 +139,13 @@ MF_continue_devon_south::
 	waitmovement 0
 	cleartrainerflag TRAINER_GRUNT_15
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	setflag FLAG_RYU_GAME_OVER
 	trainerbattle_single TRAINER_GRUNT_15, MF_GruntAttacks, MF_ellipsis, MF_PlayerDevonContdSouth
 	release
 	end
 	
 MF_PlayerDevonContdSouth::
+	clearflag FLAG_RYU_GAME_OVER
 	delay 10
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER

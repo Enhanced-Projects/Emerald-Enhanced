@@ -2108,6 +2108,95 @@ RS_HolidayNoSpace::
 RS_LucyIntro::
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Greetings, {PLAYER}.\pI have travelled far to\ngive you season's tidings.\pPlease Choose a gift Pokémon\nfrom the list.$"
 
+@@GAME OVER========================================================================================
+
+@This is the global script that's called when someone loses an important fight.
+
+RyuScript_GameOver::
+	goto_if_unset FLAG_RYU_GAME_OVER, ryu_end
+	drawfullscreenimage SCENEBGGAMEOVER
+	destroyfollower
+	msgbox RS_GO_GameOverDesc
+	call RyuGameOver_ResetGeneralFlags
+	call RyuGameOver_HideQuestNPCs
+	call RyuGameOver_ResetMainQuestData
+	closemessage
+	clearfullscreenimage
+	goto ryu_end
+
+RyuGameOver_ResetMainQuestData::
+	setvar VAR_RYU_QUESTLINE_ID, 5
+	setvar VAR_RYU_DEVON, 0
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 0
+	setvar VAR_RYU_MAGMA, 0
+	setvar VAR_RYU_AQUA, 0
+	return
+
+RyuGameOver_ResetGeneralFlags::
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+	setflag FLAG_RYU_HIDE_REL_OBJECTS
+	clearflag FLAG_RYU_MAX_SCALE
+	return
+
+RyuGameOver_HideQuestNPCs::
+	setflag FLAG_HIDE_MAGMA_ARMY
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
+	setflag FLAG_RYU_HIDE_103_MAGMA_MEETING
+	setflag FLAG_RYU_HIDE_111_MAGMA_MEETING
+	setflag FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA1
+	setflag FLAG_RYU_HIDE_GC_BLAISE
+	setflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
+	setflag FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS
+	setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE
+	setflag FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT
+	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
+	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+	clearflag FLAG_HIDE_MT_CHIMNEY_TRAINERS
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	setflag FLAG_RYU_HIDE_NPCS_MTPYRE_SUMMIT
+	setflag FLAG_RYU_HIDE_AQUA_MTPYRE_EXT
+	setflag FLAG_RYU_HIDE_MOSSDEEP_MATT
+	setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
+	clearflag FLAG_HIDE_MT_CHIMNEY_TRAINERS
+	setflag FLAG_HIDE_GRANITE_CAVE_STEVEN
+	setflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
+	setflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
+	return
+
+RS_GO_GameOverDesc::
+	.string "You have failed this quest. You\n"
+	.string "may load an earlier save to\l"
+	.string "retry.\p"
+	.string "Otherwise, you can continue with\n"
+	.string "the current playthrough and\p"
+	.string "still do the pokemon league\n"
+	.string "and become champion, however\l"
+	.string "you cannot continue this quest.$"
+
+RS_PreventEntryNorth::
+	lockall
+	msgbox RS_DeniedEntry
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
+
+RS_DeniedEntry:
+	.string "You failed a questline, you\nmay not enter this quest area.$"
+
+
 
 @@--------------landmark and visited achievements--------------------------------------------------
 

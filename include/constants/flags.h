@@ -80,10 +80,10 @@
 #define FLAG_RYU_HAS_SHINY_CHARM             0x44
 #define FLAG_RYU_HAS_MEGA_BRACELET           0x45
 #define FLAG_RYU_DEVON_STERN_EVENT_DONE      0x46
-#define FLAG_UNUSED_0x47                     0x47
+#define FLAG_RYU_GAME_OVER                   0x47 //set when player loses a story fight.
 #define FLAG_RYU_DEVON_CORPORATE             0x48
 #define FLAG_RYU_ULTRA_BEASTS_ESCAPED        0x49
-#define FLAG_UNUSED_0x4A                     0x4A
+#define FLAG_RYU_MOLTRES                     0x4A
 #define FLAG_UNUSED_0x4B                     0x4B
 #define FLAG_UNUSED_0x4C                     0x4C
 #define FLAG_UNUSED_0x4D                     0x4D

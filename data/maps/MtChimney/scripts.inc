@@ -88,7 +88,9 @@ MtChimney_EventScript_Maxie:: @ 822EE0B
 	applymovement 2, Common_Movement_Delay48
 	waitmovement 0
 	msgbox MtChimney_Text_MaxieIntro, MSGBOX_DEFAULT
+	setflag FLAG_RYU_GAME_OVER
 	trainerbattle_no_intro TRAINER_MAXIE_MT_CHIMNEY, MtChimney_Text_MaxieDefeat
+	clearflag FLAG_RYU_GAME_OVER
 	msgbox MtChimney_Text_MaxieYouHaventSeenLastOfMagma, MSGBOX_DEFAULT
 	closemessage
 	delay 30
@@ -330,6 +332,8 @@ MtChimney_EventScript_AquaPoochyena:: @ 822F0DB
 
 MtChimney_EventScript_MeteoriteMachine:: @ 822F0E4
 	lockall
+	compare VAR_RYU_QUESTLINE_ID, 5
+	goto_if_eq ryu_end
 	goto_if_set FLAG_RECEIVED_METEORITE, ryu_end
 	goto_if_unset FLAG_RYU_PLAYER_HELPING_DEVON, MtChimney_EventScript_MachineOn
 	msgbox MtChimney_Text_PlayerRemovedMeteorite, MSGBOX_DEFAULT

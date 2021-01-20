@@ -4,6 +4,7 @@ LittlerootTown_BrendansHouse_2F_MapScripts:: @ 81F83E3
 	
 GameIntroSequenceCheck::
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 4, GameIntroSequencePart1
+	map_script_2 VAR_TEMP_E, 0, LRT_CheckGameOver
 	map_script_2 VAR_RYU_DS_LANA_STAGE, 75, LRT_LeafEvent
 	map_script_2 VAR_RYU_PARTNER_COUNT, 5, LRT_BeginHaremSequence
 	.2byte 0
@@ -593,6 +594,12 @@ LRT_Harem_RivalMove:
 	walk_left
 	emote_heart
 	step_end
+
+LRT_CheckGameOver::
+	setvar VAR_TEMP_E, 10
+	goto_if_unset FLAG_RYU_GAME_OVER, ryu_end
+	goto RyuScript_GameOver
+	
 
 
 
