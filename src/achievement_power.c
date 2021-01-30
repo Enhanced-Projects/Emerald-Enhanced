@@ -8,8 +8,8 @@
 //platinum powers
 const u8 sPlatinumLabel[] = _("Platinum");
 const u8 sAPNameSprintBoost[] =     _("Sprint Boost");
-const u8 sAPNameGlobalRepel[] =     _("Ignore Wild Enc");
-const u8 sAPNameTrainerRepel[] =    _("Ignore Trainers");
+const u8 sAPNameGlobalRepel[] =     _("Global Repel");
+const u8 sAPNameTrainerRepel[] =    _("Trainer Repel");
 const u8 sAPNameEVBoost[] =         _("Double EV Gain");
 
 //gold powers
@@ -20,7 +20,7 @@ const u8 sAPNamePDA[] =             _("PDA Device Access");
 //silver powers
 const u8 sSilverLabel[] = _("Silver");
 const u8 sAPNameWinningsBoost[] =   _("Winnings Boost");
-const u8 sAPNameStrongerWildMons[]  = _("Stronger Wild Encounters");
+const u8 sAPNameStrongerWildMons[]  = _("Stronger Wilds");
 
 //copper powers
 const u8 sCopperLabel[] = _("Copper");
