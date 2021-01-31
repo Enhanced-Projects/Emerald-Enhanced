@@ -1831,7 +1831,10 @@ u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStr
     if (maxScale)
         return maxLevel;
 
-    if ((FlagGet(FLAG_RYU_ISNGPLUS) && scalingType != SCALING_TYPE_WILD) || CheckIfAutolevelWilds()) { // wild pokemon should always use badge scaling
+    // Wild pokemon should always use badge scaling, unless the AP is enabled,
+    // in which case they always scale to slightly below team level, even before NG+.
+    if ((FlagGet(FLAG_RYU_ISNGPLUS) && scalingType != SCALING_TYPE_WILD)
+        || (CheckIfAutolevelWilds() && scalingType == SCALING_TYPE_WILD)) {
         // Vars are usually u16, but we need a signed number here.
         // Scripts might write negative numbers which wrap to 65535, but the cast to s16 converts that back to -1.
         s16 autolevelModifier = (s16) VarGet(VAR_RYU_AUTOLEVEL_MODIFIER);
