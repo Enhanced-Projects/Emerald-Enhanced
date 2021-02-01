@@ -593,6 +593,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuBotany.inc"
 	.include "data/scripts/RyuRandomGruntChatterScripts.inc"
 	.include "data/scripts/RyuAchievementPowerScripts.inc"
+	.include "data/scripts/slakoth_vending_machine.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
