@@ -411,6 +411,7 @@ SlateportCity_Harbor_Text_ThisWillHelpResearch: @ 820D970
 @==================================================================================================Aqua
 
 SCH_AquaEvent::
+	clearflag FLAG_RYU_HIDE_REL_OBJECTS
 	applymovement OBJ_EVENT_ID_PLAYER, SCH_WalktoStern
 	msgbox SCH_NowThenCapt
 	closemessage

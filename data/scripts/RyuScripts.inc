@@ -1750,6 +1750,7 @@ Ryu_InitializeAquaStage3NR::
 	closemessage
 	pokenavcall Ryu_AquaStage3NotifyMsg
 	closemessage
+	clearflag FLAG_RYU_HIDE_AQUA_MTPYRE_EXT
 	setvar VAR_RYU_AQUA, 82 @player is being called to Mt Pyre
 	setflag FLAG_RYU_AQUA_3_NOTIFY
 	release
@@ -1768,7 +1769,7 @@ Ryu_InitializeAquaStage3R::
 	closemessage
 	pokenavcall Ryu_AquaStage3RomanceNotifyMsg
 	closemessage
-	setvar VAR_JAGGED_PASS_STATE, 1
+	setflag FLAG_RYU_PLAYER_SENT_TO_JP_BY_SHELLY
 	setvar VAR_RYU_AQUA, 93 @player is being called to Jagged Pass by Shelly.
 	setflag FLAG_RYU_AQUA_3_NOTIFY
 	release

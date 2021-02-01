@@ -413,11 +413,10 @@ MPS_MattToTabitha:
 	delay_16
 	walk_up
 	walk_up
-	walk_left
+	face_left
 	step_end
 	
 MPS_MaxieToPlayer:
-	walk_down
 	walk_down
 	walk_down
 	walk_right
