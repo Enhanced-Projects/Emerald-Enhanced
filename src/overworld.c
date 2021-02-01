@@ -384,6 +384,15 @@ static void (*const gMovementStatusHandler[])(struct LinkPlayerObjectEvent *, st
     MovementStatusHandler_TryAdvanceScript,
 };
 
+void SetWarpDestinationToHome(void)
+{
+    if (gSaveBlock2Ptr->playerGender == 0)
+        SetWarpDestination(1, 1, 255, 4, 4);
+    else
+        SetWarpDestination(1, 3, 255, 4, 4);
+    
+}
+
 // code
 void DoWhiteOut(void)
 {
@@ -421,7 +430,7 @@ void DoWhiteOut(void)
     SetMoney(&gSaveBlock1Ptr->money, ((GetMoney(&gSaveBlock1Ptr->money) / 5) * 4));
     HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
-    SetWarpDestinationToLastHealLocation();
+    SetWarpDestinationToHome();//had to force blackout location here because it does screwy things otherwise.
     WarpIntoMap();
 }
 
