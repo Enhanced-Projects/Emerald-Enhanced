@@ -179,6 +179,13 @@ u8 *ConvertIntToDecimalStringN(u8 *dest, s32 value, enum StringConvertMode mode,
     if (mode == STR_CONV_MODE_LEADING_ZEROS)
         state = WRITING_DIGITS;
 
+    if(value < 0)
+    {
+        u8 whatTheFuck[] = _("-");
+        *dest++ = whatTheFuck[0];
+        value = -value;
+    }    
+
     for (powerOfTen = largestPowerOfTen; powerOfTen > 0; powerOfTen /= 10)
     {
         u8 c;
