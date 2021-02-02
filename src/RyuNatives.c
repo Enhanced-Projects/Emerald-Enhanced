@@ -1749,15 +1749,15 @@ void RyuDebug_Plant49Berries(void)
         IncrementGameStat(GAME_STAT_PLANTED_BERRIES);
 }
 
-void RyuDebug_SetFactionRelations(void)
+void RyuDebug_ViewFactionRelations(void)
 {
-    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEFANS] = 100;
-    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NATURALISTS] = -50;
-    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_ATHLETES] = 69;
-    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NERDS] = 20;
-    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_PROFESSIONALS] = 122;
-    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_RICHKIDS] = 80;
-    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_SCHOOLKIDS] = 127;
+    ConvertIntToDecimalStringN(gStringVar1, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEFANS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NATURALISTS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_ATHLETES], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NERDS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_PROFESSIONALS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_RICHKIDS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar4, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_SCHOOLKIDS], STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
 bool8 ScrCmd_checkfaction(struct ScriptContext *ctx)

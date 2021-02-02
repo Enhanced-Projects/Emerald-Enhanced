@@ -19,6 +19,7 @@
 #include "constants/field_effects.h"
 #include "constants/trainer_types.h"
 #include "ach_atlas.h"
+#include "data.h"
 
 // this file's functions
 static u8 CheckTrainer(u8 objectEventId);
@@ -239,6 +240,8 @@ static u8 CheckTrainer(u8 objectEventId)
     const u8 *scriptPtr;
     u8 ret = 1;
     u8 approachDistance;
+    u8 k;
+    u8 currentTrainerFaction = 0;
 
     if (InTrainerHill() == TRUE)
         scriptPtr = GetTrainerHillTrainerScript();
@@ -260,6 +263,12 @@ static u8 CheckTrainer(u8 objectEventId)
         if (GetTrainerFlagFromScriptPointer(scriptPtr))
             return 0;
     }
+
+    currentTrainerFaction = gTrainers[T1_READ_16(scriptPtr + 2)].trainerFaction;
+    for (k = 0; k < NUM_NPC_FACTIONS; k++)
+        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[currentTrainerFaction] > 100)
+            return 0;
+
 
     approachDistance = GetTrainerApproachDistance(&gObjectEvents[objectEventId]);
 

@@ -64,8 +64,23 @@ RyuDebug_UtilitiesMenu:
 	case 10, RyuDebug_FillTheDex
 	case 11, RDB_GiveOrTakeAllAchievements
 	case 12, RDB_GetCurrentAndMaxAP
-	case 13, RyuDebug_menu_nodevcheck
+	case 13, RDB_CheckFactionRelations
+	case 14, RyuDebug_menu_nodevcheck
 	goto RyuDebug_cancel
+
+RDB_CheckFactionRelations::
+	callnative RyuDebug_ViewFactionRelations
+	msgbox factiondebugmsg
+	closemessage
+	release
+	end
+
+factiondebugmsg:
+	.string "Faction Relations Values:\p"
+	.string "Pokefans: {STR_VAR_1}. Naturalists: {STR_VAR_2}.\n"
+	.string "Athletes: {STR_VAR_3}. Nerds: {RYU_STR_1}.\p"
+	.string "Professionals: {RYU_STR_2}. Rich Kids: {RYU_STR_3}.\n"
+	.string "School Kids: {RYU_STR_4}. Others: N/A.$"
 
 RDB_GetCurrentAndMaxAP::
 	callnative APDebugInfo
@@ -225,17 +240,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	callnative RyuDebug_SetFactionRelations
-	checkfaction TRAINER_TIANA
-	buffernumberstring 0, TRAINER_TIANA
-	buffernumberstring 1, VAR_RESULT
-	buffernumberstring 2, VAR_TEMP_A
-	msgbox factiondebugmsg
-	release
 	end
-
-factiondebugmsg:
-	.string "Trainer Tiana's ID is {STR_VAR_1},\nHer Faction ID is {STR_VAR_2},\pand that faction's opinion of {PLAYER} is\n{STR_VAR_3}.$"
 
 RDB_GiveOrTakeAllAchievements::
 	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO
