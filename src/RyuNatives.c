@@ -1767,5 +1767,18 @@ bool8 ScrCmd_checkfaction(struct ScriptContext *ctx)
     u8 currentStanding = gSaveBlock1Ptr->gNPCTrainerFactionRelations[targetTrainerFaction];
 
     gSpecialVar_Result = targetTrainerFaction;
-    VarSet(VAR_TEMP_A, currentStanding);
+    ConvertIntToDecimalStringN(gRyuStringVar4, targetTrainerFaction, 2, 3);
+}
+
+bool8 ScrCmd_changefactionstanding(struct ScriptContext *ctx)
+{
+    u8 factionId = ScriptReadByte(ctx);
+    bool8 negative = ScriptReadByte(ctx);
+    u8 amount = ScriptReadByte(ctx);
+
+    if (negative == TRUE)
+        gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] -= amount;
+    else
+        gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] += amount;
+    
 }

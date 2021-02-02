@@ -114,7 +114,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_multichoice               @ 0x6f
 	.4byte ScrCmd_multichoicedefault        @ 0x70
 	.4byte ScrCmd_multichoicegrid           @ 0x71
-	.4byte ScrCmd_drawbox                   @ 0x72
+	.4byte ScrCmd_changefactionstanding     @ 0x72
 	.4byte ScrCmd_checkfaction              @ 0x73
 	.4byte ScrCmd_drawboxtext               @ 0x74
 	.4byte ScrCmd_showmonpic                @ 0x75

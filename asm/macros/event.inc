@@ -884,12 +884,15 @@
 	.byte \B
 	.endm
 
-	@ Nopped in Emerald.
-	.macro drawbox
+	@ Apply a change to faction standing. Increasing one always decreases another or others. Negative to determine if adding or subtracting standing. 
+	.macro changefactionstanding factionid:req, negative:req, amount
 	.byte 0x72
+	.byte \factionid
+	.byte \negative
+	.byte \amount
 	.endm
 
-	@ Checks faction of trainer, sets vars to relations (VAR_RESULT: faction ID, VAR_TEMP_A: relation level)
+	@ Checks faction of trainer, sets VAR_RESULT to faction ID, buffers value of that faction in {STR_VAR_4}
 	.macro checkfaction trainer:req
 	.byte 0x73
 	.2byte \trainer
