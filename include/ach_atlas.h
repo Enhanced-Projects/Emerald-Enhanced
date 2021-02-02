@@ -17,7 +17,8 @@ enum
     ACTION_MOVE_UP,
     ACTION_MOVE_DOWN,
     ACTION_DISPLAY_DESC,
-    ACTION_GO_BACK
+    ACTION_GO_BACK,
+    ACTION_OPEN_APMENU
 };
 
 struct AtlasAchPointData
@@ -35,6 +36,7 @@ struct APInfoTier
     u16 apId;
     const u8 * name;
     const u8 * desc;
+    void (*func)(void); // didn't know what to name, used for actions that happen when an AP is activated or deactivated
 };
 
 struct APInfo
