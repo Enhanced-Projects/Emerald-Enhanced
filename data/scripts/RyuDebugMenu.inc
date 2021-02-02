@@ -240,7 +240,14 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	msgbox settingfaction
+	closemessage
+	changefactionstanding FACTION_SCHOOLKIDS, 50, FALSE
+	release
 	end
+
+settingfaction:
+	.string "Setting School Kids faction to +50$"
 
 RDB_GiveOrTakeAllAchievements::
 	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO

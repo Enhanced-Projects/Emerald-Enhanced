@@ -1751,6 +1751,13 @@ void RyuDebug_Plant49Berries(void)
 
 void RyuDebug_ViewFactionRelations(void)
 {
+    mgba_printf(LOGINFO, "faction 0 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEFANS]);
+    mgba_printf(LOGINFO, "faction 1 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NATURALISTS]);
+    mgba_printf(LOGINFO, "faction 2 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_ATHLETES]);
+    mgba_printf(LOGINFO, "faction 3 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NERDS]);
+    mgba_printf(LOGINFO, "faction 4 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_PROFESSIONALS]);
+    mgba_printf(LOGINFO, "faction 5 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_RICHKIDS]);
+    mgba_printf(LOGINFO, "faction 6 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_SCHOOLKIDS]);
     ConvertIntToDecimalStringN(gStringVar1, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEFANS], STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gStringVar2, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NATURALISTS], STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_ATHLETES], STR_CONV_MODE_LEFT_ALIGN, 3);
@@ -1767,18 +1774,74 @@ bool8 ScrCmd_checkfaction(struct ScriptContext *ctx)
     u8 currentStanding = gSaveBlock1Ptr->gNPCTrainerFactionRelations[targetTrainerFaction];
 
     gSpecialVar_Result = targetTrainerFaction;
-    ConvertIntToDecimalStringN(gRyuStringVar4, targetTrainerFaction, 2, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar4, targetTrainerFaction, STR_CONV_MODE_LEFT_ALIGN, 3);
+}
+
+void RyuAdjustFactionValueInternal(u8 id, u8 amount, bool8 negative)
+{
+    if (negative == TRUE)
+    {
+        gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] -= amount;
+    }
+    else
+    {
+        gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] += amount;
+    }
+}
+
+void RyuAdjustOpposingFactionValues(u8 id, u8 amount, bool8 negative)
+{
+    switch (id)
+    {
+    case FACTION_NATURALISTS:
+        {
+            RyuAdjustFactionValueInternal(FACTION_RICHKIDS, amount, negative);
+            break;
+        }
+    case FACTION_SCHOOLKIDS:
+        {
+            RyuAdjustFactionValueInternal(FACTION_NERDS, amount, negative);
+            break;
+        }
+    case FACTION_RICHKIDS:
+        {
+            RyuAdjustFactionValueInternal(FACTION_NATURALISTS, amount, negative);
+            break;
+        }
+    case FACTION_POKEFANS:
+        {
+            RyuAdjustFactionValueInternal(FACTION_ATHLETES, amount, negative);
+            break;
+        }
+    case FACTION_NERDS:
+        {
+            RyuAdjustFactionValueInternal(FACTION_SCHOOLKIDS, amount, negative);
+            break;
+        }
+    case FACTION_PROFESSIONALS:
+        {
+            RyuAdjustFactionValueInternal(FACTION_POKEFANS, amount, negative);
+            break;
+        }
+    case FACTION_ATHLETES:
+        {
+            RyuAdjustFactionValueInternal(FACTION_POKEFANS, (amount / 2), negative);
+            RyuAdjustFactionValueInternal(FACTION_RICHKIDS, (amount / 2), negative);
+            break;
+        }
+    }
+    mgba_printf(LOGINFO, "Adjusted opposing faction by %d. negative is: %d", amount, negative);
 }
 
 bool8 ScrCmd_changefactionstanding(struct ScriptContext *ctx)
 {
     u8 factionId = ScriptReadByte(ctx);
-    bool8 negative = ScriptReadByte(ctx);
     u8 amount = ScriptReadByte(ctx);
+    bool8 negative = ScriptReadByte(ctx);
 
-    if (negative == TRUE)
-        gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] -= amount;
-    else
-        gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] += amount;
+    RyuAdjustFactionValueInternal(factionId, amount, negative);
+    RyuAdjustOpposingFactionValues(factionId, amount, !negative);
+
+    mgba_printf(LOGINFO, "Faction is %d, adjusting by %d, is negative: %d", factionId, amount, negative);
     
 }

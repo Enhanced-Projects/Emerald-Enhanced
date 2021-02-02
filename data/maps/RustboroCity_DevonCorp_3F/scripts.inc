@@ -634,6 +634,9 @@ DC_HelpingDevon::
 	waitmovement 0
 	msgbox DC_TalkToCEO MSGBOX_DEFAULT
 	setflag FLAG_RYU_PLAYER_HELPING_DEVON
+	changefactionstanding FACTION_SCHOOLKIDS, 10, FALSE
+	changefactionstanding FACTION_PROFESSIONALS, 20, FALSE
+	changefactionstanding FACTION_POKEFANS, 20, FALSE
 	setvar VAR_RYU_QUESTLINE_ID, 0
 	ach give ACH_ADVENTURE_TIME
 	clearflag FLAG_HIDE_GRANITE_CAVE_STEVEN

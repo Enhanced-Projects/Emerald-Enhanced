@@ -402,14 +402,14 @@
 #define query 2
 
 //factions related
-#define FACTION_NATURALISTS 0 //Trainers who like to be in nature, surrounded by nature, simple existence. Campers, picknickers, rangers
-#define FACTION_SCHOOLKIDS 1 //Trainers still in school and learning, aka the gossip girls. Lass, Youngster, Twins, Jr+Sr
-#define FACTION_RICHKIDS 2 //The rich assholes that no one likes except the other rich people. Rich boy, Lady, Expert, Parasol Lady
-#define FACTION_POKEFANS 3 //The people who just like having their pokemon around. Love pokemon for what they are, companions or pets.
-#define FACTION_NERDS 4 //The intense people that are eccentric, shunned, or generally out of it. Hex maniacs, bug maniacs, pokemaniacs, etc
-#define FACTION_PROFESSIONALS 5 //people who chose a pokemon related career with specific paths, like kindlers, or guitarists.
-#define FACTION_ATHLETES 6 //bodybuilders, meatheads, jocks, those whose entire existence is self improvement. Martial artists, fighters, etc
-#define FACTION_OTHERS 7 //everything else unclassified like aqua, magma, leaders, etc
+#define FACTION_NATURALISTS 0 //Trainers who like to be in nature, surrounded by nature, simple existence. Campers, picknickers, rangers.          Opposed: Richkids(x1) "Pokemon are fine as they are!"
+#define FACTION_SCHOOLKIDS 1 //Trainers still in school and learning, aka the gossip girls. Lass, Youngster, Twins, Jr+Sr.                         Opposed: Nerds(x1) "The best pokemon are the easiest to train!"
+#define FACTION_RICHKIDS 2 //The rich assholes that no one likes except the other rich people. Rich boy, Lady, Expert, Parasol Lady.               Opposed: Naturalists(x1) "Pokemon are status symbols!"
+#define FACTION_POKEFANS 3 //The people who just like having their pokemon around. Love pokemon for what they are, companions or pets.             Opposed: Athletes(x1) "Pokemon aren't tools of war, they're friends!"
+#define FACTION_NERDS 4 //The intense people that are eccentric, shunned, or generally out of it. Hex maniacs, bug maniacs, pokemaniacs, etc.      Opposed: Schoolkids(x1) "The wierd pokemons are the coolest!"
+#define FACTION_PROFESSIONALS 5 //people who chose a pokemon related career with specific paths, like kindlers, or guitarists.                     Opposed: Pokefans(x1) "Pokemon should be used to their strengths"
+#define FACTION_ATHLETES 6 //bodybuilders, meatheads, jocks, those whose entire existence is self improvement. Martial artists, fighters, etc.     Opposed: Pokefans(x0.5) Richkids(x0.5)  "Pokemon are best when trained to their potential, not left to rot and spoil!"
+#define FACTION_OTHERS 7 //everything else unclassified like aqua, magma, leaders, etc.
 
 #define EE_GAME_VERSION 7404
 

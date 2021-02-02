@@ -161,6 +161,9 @@ RT_AquaIntro::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_RYU_AQUA, 5 @player started aqua
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
+	changefactionstanding FACTION_SCHOOLKIDS, 10, TRUE
+	changefactionstanding FACTION_NERDS, 20, FALSE
+	changefactionstanding FACTION_ATHLETES, 20, FALSE
 	setvar VAR_RYU_QUESTLINE_ID, 1
 	ach give ACH_ADVENTURE_TIME
 	warp MAP_ROUTE116, 255, 47, 9
@@ -208,6 +211,9 @@ RT_ADIntro:
 	
 RT_MagmaIntro::
 	setflag FLAG_RYU_PLAYER_HELPING_MAGMA
+	changefactionstanding FACTION_SCHOOLKIDS, 10, TRUE
+	changefactionstanding FACTION_RICHKIDS, 20, FALSE
+	changefactionstanding FACTION_NATURALISTS, 20, FALSE
 	ach give ACH_ADVENTURE_TIME
 	setvar VAR_RYU_MAGMA, 100 @@player chose magma
 	setvar VAR_RYU_QUESTLINE_ID, 2
