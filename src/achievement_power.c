@@ -37,29 +37,31 @@ const u8 sWinningsBoostAPDesc[] = _("Gain 10 percent more money\nfrom winning ba
 const u8 sCaptureBoostAPDesc[] = _("Boost your base capture rate by\n5 percent.");
 const u8 sStrongerWildsAPDesc[] = _("Wild pokemon will scale to\nyour party instead of badges.");
 
+static void DummyFunc(void);
+
 const struct APInfoTier gAP_InfoPlat[] = 
 {
-    {AP_SPRINT_BOOST, sAPNameSprintBoost, sSprintBoostAPDesc},
-    {AP_GLOBAL_REPEL, sAPNameGlobalRepel, sGlobalRepelAPDesc},
-    {AP_TRAINER_REPEL, sAPNameTrainerRepel, sTrainerRepelAPDesc},
-    {AP_EV_BOOST, sAPNameEVBoost, sEVBoostAPDesc},
+    {AP_SPRINT_BOOST, sAPNameSprintBoost, sSprintBoostAPDesc, DummyFunc},
+    {AP_GLOBAL_REPEL, sAPNameGlobalRepel, sGlobalRepelAPDesc, DummyFunc},
+    {AP_TRAINER_REPEL, sAPNameTrainerRepel, sTrainerRepelAPDesc, DummyFunc},
+    {AP_EV_BOOST, sAPNameEVBoost, sEVBoostAPDesc, DummyFunc},
 };
 
 const struct APInfoTier gAP_InfoGold[] = 
 {
-    {AP_MOBILE_STAT_CHECKER, sAPNameMobileStatCheck, sMobileStatCheckAPDesc},
-    {AP_PDA, sAPNamePDA, sPDAAPDesc},
+    {AP_MOBILE_STAT_CHECKER, sAPNameMobileStatCheck, sMobileStatCheckAPDesc, GiveTakeStatAssistItem},
+    {AP_PDA, sAPNamePDA, sPDAAPDesc, GiveTakePDAItem},
 };
 
 const struct APInfoTier gAP_InfoSilver[] = 
 {
-    {AP_WINNINGS_BOOST, sAPNameWinningsBoost, sWinningsBoostAPDesc},
-    {AP_STRONGER_WILDS, sAPNameStrongerWildMons, sStrongerWildsAPDesc},
+    {AP_WINNINGS_BOOST, sAPNameWinningsBoost, sWinningsBoostAPDesc, DummyFunc},
+    {AP_STRONGER_WILDS, sAPNameStrongerWildMons, sStrongerWildsAPDesc, DummyFunc},
 };
 
 const struct APInfoTier gAP_InfoCopper[] = 
 {
-    {AP_CAPTURE_BOOST, sAPNameCaptureBoost, sCaptureBoostAPDesc},
+    {AP_CAPTURE_BOOST, sAPNameCaptureBoost, sCaptureBoostAPDesc, DummyFunc},
 };
 
 const struct APInfo gAP_Info[4] =
@@ -132,6 +134,11 @@ void ClearAPFlag(u32 id)
 }
 
 //actual ap powers
+static void DummyFunc(void)
+{
+
+}
+
 bool8 CheckCanIgnoreTrainers(void)//Check if can ignore trainer sight
 {
     if ((FlagGet(FLAG_TOBY_TRAINER_SIGHT) == 1) || (CheckAPFlag(AP_TRAINER_REPEL) == TRUE))
@@ -161,7 +168,7 @@ void GiveTakePDAItem(void)//gives the pda item when ap is active, You need to se
     if (CheckAPFlag(AP_PDA) == TRUE)
         AddBagItem(ITEM_PDA, 1);
     else
-        RemoveBagItem(ITEM_PDA, 2);
+        RemoveBagItem(ITEM_PDA, 1);
 }
 
 void GiveTakeStatAssistItem(void)//gives the pda item when ap is active. You need to set the AP flag in the function that calls this one.
@@ -169,7 +176,7 @@ void GiveTakeStatAssistItem(void)//gives the pda item when ap is active. You nee
     if (CheckAPFlag(AP_MOBILE_STAT_CHECKER) == TRUE)
         AddBagItem(ITEM_STATASSIST, 1);
     else
-        RemoveBagItem(ITEM_STATASSIST, 2);
+        RemoveBagItem(ITEM_STATASSIST, 1);
 }
 
 void APGlobalRepelToggle(void) //toggles the global repel
