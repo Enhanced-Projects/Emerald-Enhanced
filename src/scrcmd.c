@@ -1436,16 +1436,6 @@ bool8 ScrCmd_erasebox(struct ScriptContext *ctx)
 
 bool8 ScrCmd_drawboxtext(struct ScriptContext *ctx)
 {
-    u8 left = ScriptReadByte(ctx);
-    u8 top = ScriptReadByte(ctx);
-    u8 multichoiceId = ScriptReadByte(ctx);
-    u8 ignoreBPress = ScriptReadByte(ctx);
-
-    /*if (Multichoice(left, top, multichoiceId, ignoreBPress) == TRUE)
-    {
-        ScriptContext1_Stop();
-        return TRUE;
-    }*/
     return FALSE;
 }
 

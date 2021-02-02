@@ -898,13 +898,12 @@
 	.2byte \trainer
 	.endm
 
-	@ Nopped in Emerald, but still consumes parameters.
-	.macro drawboxtext byte1:req, byte2:req, byte3:req, byte4:req
+	@ sets VAR_RESULT to TRUE if player has up to (or below) amount of standing in id faction
+	.macro checkfactionstanding id:req, amount:req, negative:req
 	.byte 0x74
-	.byte \byte1
-	.byte \byte2
-	.byte \byte3
-	.byte \byte4
+	.byte \id
+	.byte \amount
+	.byte \negative
 	.endm
 
 	@ Displays a box containing the front sprite for the specified (species) Pokemon species.

@@ -2005,6 +2005,7 @@ RyuScript_CheckGivenAchievement::
 	compare VAR_RESULT, TRUE
 	call_if_eq RyuScript_GiveDejaVu
 	setvar VAR_RYU_LAST_ACH, 300
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, RyuScript_CheckFollowerFactionChanges
 	release
 	end
 
@@ -2015,6 +2016,16 @@ RyuScript_GiveDejaVu::
 
 RS_ACH_RECEIVED:
 	.string "ACHIEVEMENT GET!!!\n{RYU_STR_4}$"
+
+RyuScript_CheckFollowerFactionChanges::
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LASS
+	goto_if_ne ryu_end
+	checkfactionstanding FACTION_SCHOOLKIDS, 80, FALSE
+	compare VAR_RESULT, TRUE
+	goto_if_eq ryu_end
+	changefactionstanding FACTION_SCHOOLKIDS, 1, FALSE
+	release
+	end
 
 @===================================================================================================Holiday 2020
 
