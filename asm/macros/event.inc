@@ -889,13 +889,10 @@
 	.byte 0x72
 	.endm
 
-	@ Nopped in Emerald, but still consumes parameters.
-	.macro erasebox byte1:req, byte2:req, byte3:req, byte4:req
+	@ Checks faction of trainer, sets vars to relations (VAR_RESULT: faction ID, VAR_TEMP_A: relation level)
+	.macro checkfaction trainer:req
 	.byte 0x73
-	.byte \byte1
-	.byte \byte2
-	.byte \byte3
-	.byte \byte4
+	.2byte \trainer
 	.endm
 
 	@ Nopped in Emerald, but still consumes parameters.

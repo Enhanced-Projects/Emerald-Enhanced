@@ -61,6 +61,7 @@ struct Trainer
 {
     /*0x00*/ u8 partyFlags;
     /*0x01*/ u8 trainerClass;
+             u8 trainerFaction;
     /*0x02*/ u8 encounterMusic_gender; // last bit is gender
     /*0x03*/ u8 trainerPic;
     /*0x04*/ u8 trainerName[12];

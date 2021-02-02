@@ -1748,3 +1748,24 @@ void RyuDebug_Plant49Berries(void)
     for (i = 0; i < 50; i++)
         IncrementGameStat(GAME_STAT_PLANTED_BERRIES);
 }
+
+void RyuDebug_SetFactionRelations(void)
+{
+    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEFANS] = 100;
+    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NATURALISTS] = -50;
+    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_ATHLETES] = 69;
+    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NERDS] = 20;
+    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_PROFESSIONALS] = 122;
+    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_RICHKIDS] = 80;
+    gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_SCHOOLKIDS] = 127;
+}
+
+bool8 ScrCmd_checkfaction(struct ScriptContext *ctx)
+{
+    u16 trainerToCheck = (VarGet(ScriptReadHalfword(ctx)));
+    u8 targetTrainerFaction = gTrainers[trainerToCheck].trainerFaction;
+    u8 currentStanding = gSaveBlock1Ptr->gNPCTrainerFactionRelations[targetTrainerFaction];
+
+    gSpecialVar_Result = targetTrainerFaction;
+    VarSet(VAR_TEMP_A, currentStanding);
+}

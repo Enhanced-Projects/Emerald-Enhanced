@@ -137,6 +137,7 @@
 #define NUM_FLAG_BYTES (ROUND_BITS_TO_BYTES(FLAGS_COUNT))
 #define NUM_ACH_FLAG_BYTES (ROUND_BITS_TO_BYTES(ACH_FLAGS_COUNT))
 #define NUM_ACH_PWR_BYTES (ROUND_BITS_TO_BYTES(AP_FLAGS_COUNT))
+#define NUM_NPC_FACTIONS 8
 
 struct Coords8
 {
@@ -1015,6 +1016,7 @@ struct SaveBlock1
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
                u8 dexNavSearchLevels[NUM_SPECIES];
                u8 dexNavChain;
+               s8 gNPCTrainerFactionRelations[NUM_NPC_FACTIONS];
     // sizeof: 0x3???
 };
 

@@ -225,11 +225,17 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	drawfullscreenimage SCENEBGGAMEOVER
-	waitbuttonpress
-	clearfullscreenimage
+	callnative RyuDebug_SetFactionRelations
+	checkfaction TRAINER_TIANA
+	buffernumberstring 0, TRAINER_TIANA
+	buffernumberstring 1, VAR_RESULT
+	buffernumberstring 2, VAR_TEMP_A
+	msgbox factiondebugmsg
 	release
 	end
+
+factiondebugmsg:
+	.string "Trainer Tiana's ID is {STR_VAR_1},\nHer Faction ID is {STR_VAR_2},\pand that faction's opinion of {PLAYER} is\n{STR_VAR_3}.$"
 
 RDB_GiveOrTakeAllAchievements::
 	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO
