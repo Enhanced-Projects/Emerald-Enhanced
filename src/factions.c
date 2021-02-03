@@ -36,62 +36,46 @@ bool8 ScrCmd_checkfaction(struct ScriptContext *ctx)
 
 void RyuAdjustFactionValueInternal(u8 id, u8 amount, bool8 negative)
 {
-    if (negative == TRUE)
-    {
+    if (negative)
         gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] -= amount;
-    }
     else
-    {
         gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] += amount;
-    }
 }
 
+// If/when there are more switches like this in the future, it might be worth making an array of opposites.
 void RyuAdjustOpposingFactionValues(u8 id, u8 amount, bool8 negative)
 {
     switch (id)
     {
     case FACTION_NATURALISTS:
-        {
-            RyuAdjustFactionValueInternal(FACTION_RICHKIDS, amount, negative);
-            break;
-        }
+        RyuAdjustFactionValueInternal(FACTION_RICHKIDS, amount, negative);
+        break;
     case FACTION_SCHOOLKIDS:
-        {
-            RyuAdjustFactionValueInternal(FACTION_NERDS, amount, negative);
-            break;
-        }
+        RyuAdjustFactionValueInternal(FACTION_NERDS, amount, negative);
+        break;
     case FACTION_RICHKIDS:
-        {
-            RyuAdjustFactionValueInternal(FACTION_NATURALISTS, amount, negative);
-            break;
-        }
+        RyuAdjustFactionValueInternal(FACTION_NATURALISTS, amount, negative);
+        break;
     case FACTION_POKEFANS:
-        {
-            RyuAdjustFactionValueInternal(FACTION_ATHLETES, amount, negative);
-            break;
-        }
+        RyuAdjustFactionValueInternal(FACTION_ATHLETES, amount, negative);
+        break;
     case FACTION_NERDS:
-        {
-            RyuAdjustFactionValueInternal(FACTION_SCHOOLKIDS, amount, negative);
-            break;
-        }
+        RyuAdjustFactionValueInternal(FACTION_SCHOOLKIDS, amount, negative);
+        break;
     case FACTION_PROFESSIONALS:
-        {
-            RyuAdjustFactionValueInternal(FACTION_POKEFANS, amount, negative);
-            break;
-        }
+        RyuAdjustFactionValueInternal(FACTION_POKEFANS, amount, negative);
+        break;
     case FACTION_ATHLETES:
-        {
-            RyuAdjustFactionValueInternal(FACTION_POKEFANS, (amount / 2), negative);
-            RyuAdjustFactionValueInternal(FACTION_RICHKIDS, (amount / 2), negative);
-            break;
-        }
+        RyuAdjustFactionValueInternal(FACTION_POKEFANS, (amount / 2), negative);
+        RyuAdjustFactionValueInternal(FACTION_RICHKIDS, (amount / 2), negative);
+        break;
     }
 }
 
 bool8 ScrCmd_changefactionstanding(struct ScriptContext *ctx)
 {
     u8 factionId = ScriptReadByte(ctx);
+    // could this just be s8? then we wouldn’t need negative and could get rid of some more branching
     u8 amount = ScriptReadByte(ctx);
     bool8 negative = ScriptReadByte(ctx);
 
@@ -106,19 +90,8 @@ bool8 ScrCmd_checkfactionstanding(struct ScriptContext *ctx)
     s8 amount = (s8)ScriptReadByte(ctx); //cast to s8 so that i could check if a faction is lower than -20 for example.
     bool8 negative = ScriptReadByte(ctx);
 
-    if (negative == FALSE)
-    {
-        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] >= amount)
-            gSpecialVar_Result = TRUE;
-        else
-            gSpecialVar_Result = FALSE;
-    }
-    else
-    {
-        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] <= amount)
-            gSpecialVar_Result = TRUE;
-        else
-            gSpecialVar_Result = FALSE;
-    }
+    gSpecialVar_Result = negative
+      ? gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] <= amount
+      : gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] >= amount;
     return FALSE;
 }
