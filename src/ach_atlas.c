@@ -881,7 +881,7 @@ static void Task_HandleAPInput(u8 taskId)
                     gTasks[taskId].tDisEnaAP = 0;
                     gTasks[taskId].func = Task_ActivateAPYesNoChoice; 
                 }
-                else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP > 0x100)//(GetPlayerAPMax()-GetCurrentAPUsed()))
+                else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP > (GetPlayerAPMax()-GetCurrentAPUsed()))
                 {
                     FillWindowPixelBuffer(WIN_AP_DESC, 0);
                     AddTextPrinterParameterized3(WIN_AP_DESC, 0, 4, 2, sTextColors[1], 0xFF, gText_NotEnoughAP);

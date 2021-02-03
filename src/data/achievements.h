@@ -112,6 +112,9 @@ static const u8 sOverkill20xDesc[] = _("You atomized a target for more than\nTWE
 static const u8 sWellTravelledLabel[] = _("Well Travelled");
 static const u8 sWellTravelledDesc[] = _("You've visited every single city\nin the game!\nTime to set up trade routes!");
 
+static const u8 sMentorLabel[] = _("Mentor");
+static const u8 sMentorDesc[] = _("You finished mentoring a girl from\nthe School Kids faction.\nWell done, teach!");
+
 
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
@@ -153,4 +156,5 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_MULTIPLICATIVE] = {30, 37, CATEGORY_BATTLE, ACH_MULTIPLICATIVE, sOverkill10xLabel, sOverkill10xDesc}, //Dealt 10x damage to an enemy in battle
     [ACH_EXPONENTIAL] = {30, 35, CATEGORY_BATTLE, ACH_EXPONENTIAL, sOverkill20xLabel, sOverkill20xDesc}, //Dealt 20x damage to an enemy in battle
     [ACH_WELL_TRAVELLED] = {12, 31, CATEGORY_EXPLORATION, ACH_WELL_TRAVELLED, sWellTravelledLabel, sWellTravelledDesc}, //Visit every City in the game.
+    [ACH_MENTOR] = {57, 43, CATEGORY_COMPANIONS, ACH_MENTOR, sMentorLabel, sMentorDesc},
 };

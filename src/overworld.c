@@ -74,8 +74,6 @@
 #include "item.h"
 #include "pokedex.h"
 #include "ach_atlas.h"
-#include "factions.h"
-#include "constants/event_objects.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -1846,10 +1844,6 @@ void CB2_ReturnToFieldLocal(void)
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuKillMon();
-
-    if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == TRUE && VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_LASS)
-        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_SCHOOLKIDS] >= 80)
-            RyuAdjustFactionValueInternal(FACTION_SCHOOLKIDS, 1, FALSE);
 
 } 
 

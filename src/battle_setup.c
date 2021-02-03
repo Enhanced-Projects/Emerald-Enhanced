@@ -45,6 +45,10 @@
 #include "constants/maps.h"
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
+#include "factions.h"
+#include "constants/event_objects.h"
+#include "ach_atlas.h"
+#include "data/achievements.h"
 
 enum
 {
@@ -1254,6 +1258,19 @@ static void CB2_EndTrainerBattle(void)
         {
             SetBattledTrainersFlags();
         }
+    }
+
+    if ((FlagGet(FLAG_RYU_HAS_FOLLOWER) == TRUE) && (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_LASS))
+    {
+        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_SCHOOLKIDS] < 80)
+            {
+                RyuAdjustFactionValueInternal(FACTION_SCHOOLKIDS, 1, FALSE);
+                RyuAdjustOpposingFactionValues(FACTION_SCHOOLKIDS, 1, TRUE);
+            }
+        else
+            {
+                GiveAchievement(ACH_MENTOR);
+            }
     }
 }
 
