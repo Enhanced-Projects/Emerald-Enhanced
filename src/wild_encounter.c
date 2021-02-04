@@ -318,8 +318,7 @@ u32 RyuChooseWildLevel(void)
         CountBadges(),
         FALSE,
         SCALING_TYPE_WILD,
-        // The value is only used in NG+, so we can skip the calculation in the normal playthrough.
-        FlagGet(FLAG_RYU_ISNGPLUS) ? CalculatePlayerPartyStrength() : 0
+        CalculatePlayerPartyStrength()
     );
 }
 
