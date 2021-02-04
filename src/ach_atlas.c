@@ -967,12 +967,16 @@ static void Task_HandleAPInput(u8 taskId)
                 ShowSelectionCorners();
                 UpdateSelectionCorners(taskId);
                 PlaySE(SE_SELECT);
+                return;
             }
             else if(gMain.newKeys & B_BUTTON)
             {
                 PlaySE(SE_SELECT);
                 BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
+                gTasks[taskId].data[0] = 0;
+                gTasks[taskId].data[1] = 0;
                 gTasks[taskId].func = Task_InitAtlas; // TODO: make a proper function for going back or just tell it to not go back to the predefined atlas start
+                return;
             }
             if(gMain.newKeys & DPAD_LEFT)
             {
