@@ -43,11 +43,17 @@ r102_FollowerTiana::
 	removeobject 4
 	createfollower OBJ_EVENT_GFX_LASS, r102_FollowerTianaScript, DIR_NORTH
 	msgbox r102_TianaStartsFollowing
-	changefactionstanding FACTION_SCHOOLKIDS, 30, FALSE
+	closemessage
+	call_if_unset FLAG_RYU_RECRUITED_TIANA, r102_AdjustSchoolkidsFaction
 	setflag FLAG_TEMP_D
 	closemessage
 	release
 	end
+
+r102_AdjustSchoolkidsFaction::
+	changefactionstanding FACTION_SCHOOLKIDS, 30, FALSE
+	setflag FLAG_RYU_RECRUITED_TIANA
+	return
 
 Route102_EventScript_Allen:: @ 81EC1E1
 	trainerbattle_single TRAINER_ALLEN, Route102_Text_AllenIntro, Route102_Text_AllenDefeated
@@ -66,7 +72,7 @@ r102_TianaStartsFollowing:
 
 r102_FollowerTianaScript:
 	goto_if_set FLAG_TEMP_D, r102_InitialTianaMsg
-	random 8
+	random 9
 	switch VAR_RESULT
 	case 0, r102_TianaMsg0
 	case 1, r102_TianaMsg1
@@ -83,56 +89,79 @@ r102_FollowerTianaScript:
 r102_TianaMsg0::
 	msgbox r102_tm0
 	closemessage
+	call r102_DismissTianaQuery
 	release
 	end
 
 r102_TianaMsg1::
 	msgbox r102_tm1
 	closemessage
+	call r102_DismissTianaQuery
 	release
 	end
 
 r102_TianaMsg2::
 	msgbox r102_tm2
 	closemessage
+	call r102_DismissTianaQuery
 	release
 	end
 	
 r102_TianaMsg3::
 	msgbox r102_tm3
 	closemessage
+	call r102_DismissTianaQuery
 	release
 	end
 	
 r102_TianaMsg4::
 	msgbox r102_tm4
 	closemessage
+	call r102_DismissTianaQuery
 	release
 	end
 	
 r102_TianaMsg5::
 	msgbox r102_tm5
 	closemessage
+	call r102_DismissTianaQuery
 	release
 	end
 	
 r102_TianaMsg6::
 	msgbox r102_tm6
 	closemessage
+	call r102_DismissTianaQuery
 	release
 	end
 	
 r102_TianaMsg7::
 	msgbox r102_tm7
 	closemessage
+	call r102_DismissTianaQuery
 	release
 	end
 	
 r102_TianaMsg8::
 	msgbox r102_tm8
 	closemessage
+	call r102_DismissTianaQuery
 	release
 	end
+
+r102_DismissTianaQuery::
+	msgbox r102_ShouldDismissTiana, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_ne ryu_end
+	msgbox r102_TianaBye
+	call RyuForceCancelFollowerForQuest
+	goto ryu_end
+
+r102_ShouldDismissTiana:
+	.string "Should I head out?$"
+
+r102_TianaBye:
+	.string "Okay! Come find me again\nif you want my company!$"
 	
 r102_tm0::
 	.string "I see. We didn't learn that\nin school.$"
@@ -164,6 +193,7 @@ r102_tm8::
 r102_InitialTianaMsg::
 	msgbox r102_FollowerTianaFirstMsg
 	closemessage
+	call r102_DismissTianaQuery
 	release
 	end
 

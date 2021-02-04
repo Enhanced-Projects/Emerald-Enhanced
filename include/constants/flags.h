@@ -106,14 +106,14 @@
 #define FLAG_RECEIVED_BIKE                   0x5A
 #define FLAG_RYU_DT_BRINEY_BATTLE            0x5B // Prevents briney from approaching player in route 105 after he has been defeated.
 #define FLAG_COLLECTED_ALL_SILVER_SYMBOLS    0x5C
-#define FLAG_GOOD_LUCK_SAFARI_ZONE           0x5D // EE-Unused?
+#define FLAG_UNUSED_0x5D                     0x5D
 #define FLAG_RECEIVED_WAILMER_PAIL           0x5E
 #define FLAG_RECEIVED_POKEBLOCK_CASE         0x5F
 #define FLAG_RECEIVED_SECRET_POWER           0x60
 #define FLAG_MET_TEAM_AQUA_HARBOR            0x61
 #define FLAG_TV_EXPLAINED                    0x62
 #define FLAG_MAUVILLE_GYM_BARRIERS_STATE     0x63
-#define FLAG_UNUSED_0x64                     0x64
+#define FLAG_RYU_RECRUITED_TIANA             0x64
 #define FLAG_UNUSED_0x65                     0x65
 #define FLAG_UNUSED_0x66                     0x66
 #define FLAG_UNUSED_0x67                     0x67

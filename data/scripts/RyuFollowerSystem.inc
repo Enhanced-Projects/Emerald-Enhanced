@@ -29,6 +29,7 @@ RyuFollowerSelectNPCScript::
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_M, GC_BlaiseScript
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, MH4_CourtneyScript
 	case OBJ_EVENT_GFX_NURSE, RyuFollower_NurseJoy
+	case OBJ_EVENT_GFX_LASS, r102_FollowerTianaScript
 	end
 
 RyuFollower_ShellyScript::
@@ -218,6 +219,7 @@ RF_FollowerLeaveCall::
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, Ryu_RestoreCourtney
 	case OBJ_EVENT_GFX_AQUA_MEMBER_F, Ryu_RestoreShelly
 	case OBJ_EVENT_GFX_NURSE, Ryu_RestoreNurse
+	case OBJ_EVENT_GFX_LASS, Ryu_RestoreTiana
 	return
 	
 RF_FollowerLeave::
@@ -265,6 +267,11 @@ Ryu_RestoreShelly::
 Ryu_RestoreNurse::
 	destroyfollower
 	clearflag FLAG_RYU_HIDE_JOY
+	return
+
+Ryu_RestoreTiana::
+	destroyfollower
+	clearflag FLAG_RYU_HIDE_101_TIANA
 	return
 
 @ RyuFollowerToTrainerID will write the current follower’s ID and sprite to VAR_0x8008 and 0x8009

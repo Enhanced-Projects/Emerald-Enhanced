@@ -1266,6 +1266,7 @@ static void CB2_EndTrainerBattle(void)
             {
                 RyuAdjustFactionValueInternal(FACTION_SCHOOLKIDS, 1, FALSE);
                 RyuAdjustOpposingFactionValues(FACTION_SCHOOLKIDS, 1, TRUE);
+                FlagClear(FLAG_TEMP_D);
             }
         else
             {

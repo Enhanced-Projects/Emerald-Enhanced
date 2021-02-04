@@ -240,9 +240,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	msgbox settingfaction
-	closemessage
-	changefactionstanding FACTION_SCHOOLKIDS, 50, FALSE
+	clearflag FLAG_RYU_HIDE_101_TIANA
 	release
 	end
 
