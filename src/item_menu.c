@@ -585,6 +585,19 @@ void QuizLadyOpenBagMenu(void)
     gSpecialVar_Result = FALSE;
 }
 
+void CB2_ChooseMedicine(void)
+{
+    GoToBagMenu(ITEMMENULOCATION_BERRY_TREE, MEDICINE_POCKET, CB2_ReturnToFieldContinueScript);
+    //GoToBagMenu(ITEMMENULOCATION_APPRENTICE, POCKETS_COUNT, CB2_ApprenticeExitBagMenu);
+    //gSpecialVar_0x8005 = ITEM_NONE;
+    //gSpecialVar_Result = FALSE;
+}
+
+void Bag_ChooseMedicine(void)
+{
+    SetMainCallback2(CB2_ChooseMedicine);
+}
+
 void GoToBagMenu(u8 location, u8 pocket, void ( *postExitMenuMainCallback2)())
 {
     gBagMenu = AllocZeroed(sizeof(struct BagMenuStruct));

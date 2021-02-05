@@ -114,16 +114,16 @@
 #define FLAG_TV_EXPLAINED                    0x62
 #define FLAG_MAUVILLE_GYM_BARRIERS_STATE     0x63
 #define FLAG_RYU_RECRUITED_TIANA             0x64
-#define FLAG_UNUSED_0x65                     0x65
-#define FLAG_UNUSED_0x66                     0x66
-#define FLAG_UNUSED_0x67                     0x67
+#define FLAG_RYU_HELPED_POKEFAN_PIKACHU      0x65
+#define FLAG_RYU_DID_NOT_HELP_POKEFAN        0x66
+#define FLAG_RYU_REWARDED_FOR_HELPING_POKEFAN    0x67
 
 #define FLAG_UNUSED_0x68                     0x68
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_TM54                   0x6A
 #define FLAG_RECEIVED_TM56                   0x6B
-#define FLAG_WHITEOUT_TO_LAVARIDGE           0x6C // Set after defeating Flannery, so the player cant white out from poison before receiving Go Goggles
+#define FLAG_UNUSED_0x6C                     0x6C
 #define FLAG_RECEIVED_TM55                   0x6D
 #define FLAG_RECEIVED_TM52                   0x6E
 #define FLAG_UNUSED_0x6F                     0x6F
@@ -145,7 +145,7 @@
 #define FLAG_DEFEATED_RIVAL_ROUTE_104        0x7D
 #define FLAG_HIDDEN_CRAGGY_COAST_HEART_SCALE 0x7E
 #define FLAG_MET_PRETTY_PETAL_SHOP_OWNER     0x7F
-#define FLAG_ENABLE_ROXANNE_FIRST_CALL       0x80 // EE-Unused
+#define FLAG_UNUSED_0x80                     0x80
 #define FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN  0x81
 #define FLAG_DEFEATED_RIVAL_ROUTE103         0x82
 #define FLAG_RECEIVED_DOLL_LANETTE           0x83
