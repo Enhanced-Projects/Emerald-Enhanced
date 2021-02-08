@@ -336,6 +336,8 @@ MtChimney_EventScript_MeteoriteMachine:: @ 822F0E4
 	goto_if_eq ryu_end
 	goto_if_set FLAG_RECEIVED_METEORITE, ryu_end
 	goto_if_unset FLAG_RYU_PLAYER_HELPING_DEVON, MtChimney_EventScript_MachineOn
+	compare VAR_RYU_DEVON, 21
+	goto_if_lt MtChimney_EventScript_MachineOn
 	msgbox MtChimney_Text_PlayerRemovedMeteorite, MSGBOX_DEFAULT
 	giveitem ITEM_METEORITE
 	setflag FLAG_RECEIVED_METEORITE

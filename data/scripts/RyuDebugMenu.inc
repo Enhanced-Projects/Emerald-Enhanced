@@ -240,12 +240,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	clearflag FLAG_RYU_HIDE_101_TIANA
 	release
 	end
-
-settingfaction:
-	.string "Setting School Kids faction to +50$"
 
 RDB_GiveOrTakeAllAchievements::
 	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO
