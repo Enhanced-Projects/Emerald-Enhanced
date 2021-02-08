@@ -274,6 +274,9 @@ static bool32 CanFish(void)
     if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_UNDERWATER))
         return FALSE;
 
+    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
+        return FALSE;
+        
     if (!TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
     {
         if (IsPlayerFacingSurfableFishableWater())
