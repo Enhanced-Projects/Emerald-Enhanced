@@ -2153,10 +2153,7 @@ void BufferSaveMenuText(u8 textId, u8 *dest, u8 color)
             StringCopy(string, gSaveBlock2Ptr->playerName);
             break;
         case SAVE_MENU_CAUGHT:
-            if (IsNationalPokedexEnabled())
-                string = ConvertIntToDecimalStringN(string, GetNationalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 3);
-            else
-                string = ConvertIntToDecimalStringN(string, GetHoennPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 3);
+            string = ConvertIntToDecimalStringN(string, GetNationalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 3);
             *string = EOS;
             break;
         case SAVE_MENU_PLAY_TIME:

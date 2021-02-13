@@ -6336,17 +6336,7 @@ u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)
 
 u16 SpeciesToPokedexNum(u16 species)
 {
-    if (IsNationalPokedexEnabled())
-    {
-        return SpeciesToNationalPokedexNum(species);
-    }
-    else
-    {
-        species = SpeciesToHoennPokedexNum(species);
-        if (species <= HOENN_DEX_COUNT)
-            return species;
-        return 0xFFFF;
-    }
+    return SpeciesToNationalPokedexNum(species);
 }
 
 bool32 IsSpeciesInHoennDex(u16 species)

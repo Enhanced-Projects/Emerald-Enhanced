@@ -272,7 +272,6 @@ LRT_DawnIntroductionScene::
 	setflag FLAG_RIVAL_LEFT_FOR_ROUTE103
 	setvar VAR_OLDALE_RIVAL_STATE, 2
 	setflag FLAG_HIDE_OLDALE_TOWN_RIVAL
-	special EnableNationalPokedex
 	setvar VAR_LITTLEROOT_INTRO_STATE, 8
 	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
 	release

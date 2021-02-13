@@ -1945,14 +1945,7 @@ void TryPutTodaysRivalTrainerOnAir(void)
             }
         }
         show->rivalTrainer.badgeCount = nBadges;
-        if (IsNationalPokedexEnabled())
-        {
-            show->rivalTrainer.dexCount = GetNationalPokedexCount(FLAG_GET_CAUGHT);
-        }
-        else
-        {
-            show->rivalTrainer.dexCount = GetHoennPokedexCount(FLAG_GET_CAUGHT);
-        }
+        show->rivalTrainer.dexCount = GetNationalPokedexCount(FLAG_GET_CAUGHT);
         show->rivalTrainer.location = gMapHeader.regionMapSectionId;
         show->rivalTrainer.mapLayoutId = gMapHeader.mapLayoutId;
         show->rivalTrainer.nSilverSymbols = 0;
