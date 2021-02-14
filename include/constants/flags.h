@@ -1669,24 +1669,25 @@
 #define AP_EV_BOOST 3//doubles final EV gain
 #define AP_PLATINUM_COUNT 4
 
-//GOLD AP's (you can use up to 3 of these)
+//GOLD AP's (you can use up to 2 of these)
 #define AP_MOBILE_STAT_CHECKER 4//lets player use a mobile ev/iv checker while active
 #define AP_PDA 5//lets player access a mart remotely
-#define AP_ALPHA_AURA 9 //10% increased boss chance
+#define AP_ALPHA_AURA 10 //10% increased boss chance
 #define AP_GOLD_COUNT 3
 
-//SILVER AP's (you can use up to 4 of these at a time)
+//SILVER AP's (you can use up to 3 of these at a time)
 #define AP_WINNINGS_BOOST 6 //Gives the player 10% more winnings after battle
 #define AP_STRONGER_WILDS 8 //Wild pokemon use autolevel
-#define AP_SILVER_COUNT 2
+#define AP_BREEDER 11 //Doubles final hatch progress gain per step after other modifiers.
+#define AP_SILVER_COUNT 3
 
 //COPPER AP's (you can use many of these at the same time)
 #define AP_CAPTURE_BOOST 7 //Gives the player 5% boost to capture rate
-#define AP_NATURAL_TALENT 8 //Lets the player open secret bases without the move.
+#define AP_NATURAL_TALENT 9 //Lets the player open secret bases without the move.
 #define AP_COPPER_COUNT 2
 
 // total number of achivement powers available
-#define TOTAL_AP_COUNT 11
+#define TOTAL_AP_COUNT 12
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
 #define TOTAL_OBTAINABLE_ACHIEVEMENTS 38

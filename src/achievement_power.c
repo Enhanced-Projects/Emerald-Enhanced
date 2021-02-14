@@ -22,6 +22,7 @@ const u8 sAPNameAlphaAura[] =       _("Alpha Aura");
 const u8 sSilverLabel[] = _("Silver");
 const u8 sAPNameWinningsBoost[] =   _("Winnings Boost");
 const u8 sAPNameStrongerWildMons[]  = _("Stronger Wilds");
+const u8 sAPNameBreeder[]  = _("Breeder");
 
 //copper powers
 const u8 sCopperLabel[] = _("Copper");
@@ -33,13 +34,14 @@ const u8 sSprintBoostAPDesc[] = _("Allows you to run twice as fast.");
 const u8 sGlobalRepelAPDesc[] = _("Ignore all wild encounters.");
 const u8 sTrainerRepelAPDesc[] = _("Ignore trainer sight.");
 const u8 sEVBoostAPDesc[] = _("Earn double EV's in battle.");
-const u8 sMobileStatCheckAPDesc[] = _("Grants the StatAssist item which\nlets you see your IV's and EV's.");
-const u8 sPDAAPDesc[] = _("Grants the PDA item which\nlets you shop remotely.");
-const u8 sWinningsBoostAPDesc[] = _("Gain 10 percent more money\nfrom winning battles.");
-const u8 sCaptureBoostAPDesc[] = _("Boost your base capture rate by\n5 percent.");
-const u8 sStrongerWildsAPDesc[] = _("Wild pokemon will scale to\nyour party instead of badges.");
-const u8 sNaturalTalentAPDesc[] = _("You have the natural\nability to open secret bases.");
-const u8 sAlphaAuraAPDesc[] = _("You are attacked more often\nby Boss pokemon in the area.");
+const u8 sMobileStatCheckAPDesc[] = _("Grants the StatAssist item which lets you see\nyour lead Pokemon's IV and EV values.");
+const u8 sPDAAPDesc[] = _("Grants the PDA item which lets you shop\nremotely.");
+const u8 sWinningsBoostAPDesc[] = _("Gain 10 percent more money from winning\nbattles.");
+const u8 sCaptureBoostAPDesc[] = _("Boost your base capture rate by 5 percent.");
+const u8 sStrongerWildsAPDesc[] = _("Wild pokemon will scale to your party\ninstead of badges.");
+const u8 sNaturalTalentAPDesc[] = _("You have the natural ability to open secret\nbases.");
+const u8 sAlphaAuraAPDesc[] = _("You are attacked more often by Boss pokemon\nin the area.");
+const u8 sBreederAPDesc[] = _("Pokemon Eggs hatch twice as fast.\nStacks with Oval Charm and abilities.");
 
 static void DummyFunc(void);
 
@@ -61,7 +63,8 @@ const struct APInfoTier gAP_InfoGold[] =
 const struct APInfoTier gAP_InfoSilver[] = 
 {
     {AP_WINNINGS_BOOST, sAPNameWinningsBoost, sWinningsBoostAPDesc, DummyFunc},
-    {AP_STRONGER_WILDS, sAPNameStrongerWildMons, sStrongerWildsAPDesc, DummyFunc},
+    {AP_STRONGER_WILDS, sAPNameStrongerWildMons, sStrongerWildsAPDesc, DummyFunc}, 
+    {AP_BREEDER, sAPNameBreeder, sBreederAPDesc, DummyFunc}, 
 };
 
 const struct APInfoTier gAP_InfoCopper[] = 
