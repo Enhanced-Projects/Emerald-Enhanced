@@ -86,7 +86,7 @@
 #include "strings.h"
 #include "ach_atlas.h"
 #include "lifeskill.h"
-
+#include "script_pokemon_util.h"
 #include "data/lifeskill.h"
 
 void ApplyDaycareExperience(struct Pokemon *mon)
@@ -1749,3 +1749,60 @@ void RyuDebug_Plant49Berries(void)
         IncrementGameStat(GAME_STAT_PLANTED_BERRIES);
 }
 
+/*void RyuDebug_PrintBoxMonData(u8 boxNum, u8 slotNum)
+{
+    mgba_printf(LOGINFO, "Pers = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_PERSONALITY));
+    mgba_printf(LOGINFO, "otid = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_OT_ID));
+    mgba_printf(LOGINFO, "Bad Egg? = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_SANITY_IS_BAD_EGG));
+    mgba_printf(LOGINFO, "Has Species? = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_SANITY_HAS_SPECIES));
+    mgba_printf(LOGINFO, "is Egg? = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_SANITY_IS_EGG));
+    mgba_printf(LOGINFO, "checksum = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_CHECKSUM));
+    mgba_printf(LOGINFO, "species = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_SPECIES));
+    mgba_printf(LOGINFO, "species2 = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_SPECIES2));
+}
+
+u16 RyuDebug_FixCorruptedPCSlots(void)// will remove bad eggs and return the number of empty slots.
+{
+    u16 i, k;
+    u16 numEmptySlots = 0;
+
+    for (i = 0; i < 14; i++)
+    {
+        for (k = 0; k < 30; k++)
+        {
+            if ((GetBoxMonData(&gPokemonStoragePtr->boxes[i][k], MON_DATA_SANITY_HAS_SPECIES) == 0))
+            {
+                ZeroBoxMonAt(i, k);
+                numEmptySlots++;
+                mgba_printf(LOGINFO, "Resetting pokemon in box %d, slot %d", i, k);
+            }
+
+        }
+    }
+    return numEmptySlots;
+}
+
+void RDB_PrintData(void)
+{
+    mgba_printf(LOGINFO, "there are %d slots", (RyuDebug_FixCorruptedPCSlots()));
+}
+
+void RyuDebug_FillEmptySlots(void)
+{
+    u16 slots = 0;
+    u16 i = 0;
+    u16 party = 0;
+    u16 numPartySlotsToFill = 0;
+    party = CalculatePlayerPartyCount();
+
+    if (party < 6)
+        numPartySlotsToFill = (6 - numPartySlotsToFill);
+
+    slots = (RyuDebug_FixCorruptedPCSlots());
+    slots += numPartySlotsToFill;
+
+    for (i = 1; i < slots; i++)
+    {
+        ScriptGiveMon((Random() % NATIONAL_DEX_COUNT), 50, ITEM_NONE, 0, 0, 0);
+    }
+}*/
