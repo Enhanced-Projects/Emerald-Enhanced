@@ -25,6 +25,7 @@ const u8 sAPNameStrongerWildMons[]  = _("Stronger Wilds");
 //copper powers
 const u8 sCopperLabel[] = _("Copper");
 const u8 sAPNameCaptureBoost[] = _("Capture Boost");
+const u8 sAPNameNaturalTalent[] = _("Natural Talent");
 
 //Descriptions
 const u8 sSprintBoostAPDesc[] = _("Allows you to run twice as fast.");
@@ -36,6 +37,7 @@ const u8 sPDAAPDesc[] = _("Grants the PDA item which\nlets you shop remotely.");
 const u8 sWinningsBoostAPDesc[] = _("Gain 10 percent more money\nfrom winning battles.");
 const u8 sCaptureBoostAPDesc[] = _("Boost your base capture rate by\n5 percent.");
 const u8 sStrongerWildsAPDesc[] = _("Wild pokemon will scale to\nyour party instead of badges.");
+const u8 sNaturalTalentAPDesc[] = _("You have the natural\nability to open secret bases.");
 
 static void DummyFunc(void);
 
@@ -62,6 +64,7 @@ const struct APInfoTier gAP_InfoSilver[] =
 const struct APInfoTier gAP_InfoCopper[] = 
 {
     {AP_CAPTURE_BOOST, sAPNameCaptureBoost, sCaptureBoostAPDesc, DummyFunc},
+    {AP_NATURAL_TALENT, sAPNameNaturalTalent, sNaturalTalentAPDesc, DummyFunc},
 };
 
 const struct APInfo gAP_Info[4] =
@@ -217,4 +220,12 @@ void APCaptureBoostToggle(void) //toggles capture boost
         ClearAPFlag(AP_CAPTURE_BOOST);
     else
         SetAPFlag(AP_CAPTURE_BOOST);
+}
+
+void APNaturalTalentToggle(void)
+{
+    if (CheckAPFlag(AP_NATURAL_TALENT) == TRUE)
+        ClearAPFlag(AP_NATURAL_TALENT);
+    else
+        SetAPFlag(AP_NATURAL_TALENT);    
 }

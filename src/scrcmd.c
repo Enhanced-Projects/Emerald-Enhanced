@@ -54,6 +54,7 @@
 #include "load_save.h"
 #include "battle_setup.h"
 #include "infobox.h"
+#include "ach_atlas.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -1718,6 +1719,10 @@ bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
             break;
         }
     }
+
+    if ((CheckAPFlag(AP_NATURAL_TALENT) == TRUE) && (moveId == MOVE_SECRET_POWER))
+        gSpecialVar_Result = 0;
+        
     return FALSE;
 }
 

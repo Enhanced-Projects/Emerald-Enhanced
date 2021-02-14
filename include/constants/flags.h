@@ -1681,10 +1681,11 @@
 
 //COPPER AP's (you can use many of these at the same time)
 #define AP_CAPTURE_BOOST 7 //Gives the player 5% boost to capture rate
-#define AP_COPPER_COUNT 1
+#define AP_NATURAL_TALENT 8 //Lets the player open secret bases without the move.
+#define AP_COPPER_COUNT 2
 
 // total number of achivement powers available
-#define TOTAL_AP_COUNT 9
+#define TOTAL_AP_COUNT 10
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
 #define TOTAL_OBTAINABLE_ACHIEVEMENTS 38
