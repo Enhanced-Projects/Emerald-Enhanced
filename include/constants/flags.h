@@ -1672,7 +1672,8 @@
 //GOLD AP's (you can use up to 3 of these)
 #define AP_MOBILE_STAT_CHECKER 4//lets player use a mobile ev/iv checker while active
 #define AP_PDA 5//lets player access a mart remotely
-#define AP_GOLD_COUNT 2
+#define AP_ALPHA_AURA 9 //10% increased boss chance
+#define AP_GOLD_COUNT 3
 
 //SILVER AP's (you can use up to 4 of these at a time)
 #define AP_WINNINGS_BOOST 6 //Gives the player 10% more winnings after battle
@@ -1685,7 +1686,7 @@
 #define AP_COPPER_COUNT 2
 
 // total number of achivement powers available
-#define TOTAL_AP_COUNT 10
+#define TOTAL_AP_COUNT 11
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
 #define TOTAL_OBTAINABLE_ACHIEVEMENTS 38

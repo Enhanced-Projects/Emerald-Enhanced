@@ -16,6 +16,7 @@ const u8 sAPNameEVBoost[] =         _("Double EV Gain");
 const u8 sGoldLabel[] = _("Gold");
 const u8 sAPNameMobileStatCheck[] = _("Stat Device Access");
 const u8 sAPNamePDA[] =             _("PDA Device Access");
+const u8 sAPNameAlphaAura[] =       _("Alpha Aura");
 
 //silver powers
 const u8 sSilverLabel[] = _("Silver");
@@ -38,6 +39,7 @@ const u8 sWinningsBoostAPDesc[] = _("Gain 10 percent more money\nfrom winning ba
 const u8 sCaptureBoostAPDesc[] = _("Boost your base capture rate by\n5 percent.");
 const u8 sStrongerWildsAPDesc[] = _("Wild pokemon will scale to\nyour party instead of badges.");
 const u8 sNaturalTalentAPDesc[] = _("You have the natural\nability to open secret bases.");
+const u8 sAlphaAuraAPDesc[] = _("You are attacked more often\nby Boss pokemon in the area.");
 
 static void DummyFunc(void);
 
@@ -53,6 +55,7 @@ const struct APInfoTier gAP_InfoGold[] =
 {
     {AP_MOBILE_STAT_CHECKER, sAPNameMobileStatCheck, sMobileStatCheckAPDesc, GiveTakeStatAssistItem},
     {AP_PDA, sAPNamePDA, sPDAAPDesc, GiveTakePDAItem},
+    {AP_ALPHA_AURA, sAPNameAlphaAura, sAlphaAuraAPDesc, DummyFunc},
 };
 
 const struct APInfoTier gAP_InfoSilver[] = 
@@ -182,6 +185,8 @@ void GiveTakeStatAssistItem(void)//gives the pda item when ap is active. You nee
         RemoveBagItem(ITEM_STATASSIST, 1);
 }
 
+// @pidgey do i even need these?
+
 void APGlobalRepelToggle(void) //toggles the global repel
 {
     if (CheckAPFlag(AP_GLOBAL_REPEL) == TRUE)
@@ -222,7 +227,7 @@ void APCaptureBoostToggle(void) //toggles capture boost
         SetAPFlag(AP_CAPTURE_BOOST);
 }
 
-void APNaturalTalentToggle(void)
+void APNaturalTalentToggle(void) 
 {
     if (CheckAPFlag(AP_NATURAL_TALENT) == TRUE)
         ClearAPFlag(AP_NATURAL_TALENT);
