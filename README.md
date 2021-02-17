@@ -1,7 +1,7 @@
 # Emerald Enhanced
 
 
-##This is a derivative work of DizzyEggg and pret's pokeemerald projects.
+## This is a derivative work of DizzyEggg and pret's pokeemerald projects.
 
 
 
