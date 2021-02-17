@@ -1,36 +1,29 @@
-# Pokémon Emerald
-
-[![Build Status][travis-badge]][travis]
-
-[travis]: https://travis-ci.org/pret/pokeemerald
-[travis-badge]: https://travis-ci.org/pret/pokeemerald.svg?branch=master
-
-This is a decompilation of Pokémon Emerald.
-
-It builds the following ROM:
-
-* [**pokeemerald.gba**](https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=1961) `sha1: f3ae088181bf583e55daf962a92bb46f4f1d07b7`
-
-To set up the repository, see [INSTALL.md](INSTALL.md).
+# Emerald Enhanced
 
 
-## See also
-
-Other disassembly and/or decompilation projects:
-* [**Pokémon Red and Blue**](https://github.com/pret/pokered)
-* [**Pokémon Gold and Silver (Space World '97 demo)**](https://github.com/pret/pokegold-spaceworld)
-* [**Pokémon Yellow**](https://github.com/pret/pokeyellow)
-* [**Pokémon Trading Card Game**](https://github.com/pret/poketcg)
-* [**Pokémon Pinball**](https://github.com/pret/pokepinball)
-* [**Pokémon Stadium**](https://github.com/pret/pokestadium)
-* [**Pokémon Gold and Silver**](https://github.com/pret/pokegold)
-* [**Pokémon Crystal**](https://github.com/pret/pokecrystal)
-* [**Pokémon Ruby and Sapphire**](https://github.com/pret/pokeruby)
-* [**Pokémon Pinball: Ruby & Sapphire**](https://github.com/pret/pokepinballrs)
-* [**Pokémon FireRed and LeafGreen**](https://github.com/pret/pokefirered)
-* [**Pokémon Mystery Dungeon: Red Rescue Team**](https://github.com/pret/pmd-red)
+##This is a derivative work of DizzyEggg and pret's pokeemerald projects.
 
 
-## Contacts
 
-You can find us on [Discord](https://discord.gg/d5dubZ3) and [IRC](https://kiwiirc.com/client/irc.freenode.net/?#pret).
+###### Emerald Enhanced is **NOT** free to clone and redistribute. 
+
+Emerald Enhanced (further referred to as EE) is made public to provide reference
+material for other enthusiast ROM hackers.
+
+EE is **not** to be redistributed under any other name, 
+and you may not claim credit for things you get from this repository.
+
+If you use some of my functions or systems in your own projects, you are 
+free to do so, however, proper credit must be given.
+
+If you would like to contribute to the project and help us out, we are
+always looking for telented and like-minded individuals to assist development.
+
+###### We are currently looking for individuals to volunteer in the following capacities:
+* General Graphics desinger for tilesets and tile art
+* Sprite designer for sprite works throughout the project
+* Someone who can create new music and/or modify the existing MIDI tracks in the game.
+* Someone highly skilled in scripting to assist me with larger scale scripted events. Currently all of the scripting is done by me.
+
+You can find us on discord here:
+https://discord.gg/NXgTPKgsNP
