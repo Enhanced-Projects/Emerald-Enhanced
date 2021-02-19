@@ -306,7 +306,11 @@ OM_CantDoThisQuestBecauseNurse::
 	end
 
 OM_NurseCancel:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You cannot do this quest stage\nbecause you are presently doing\lthe Nurse quest.\pPlease come back when you have\nfinished the Nurse quest.$"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You cannot do this quest stage\n"
+	.string "because you are presently doing\l"
+	.string "the Nurse quest.\p"
+	.string "Please come back when you have\n"
+	.string "finished the Nurse quest.$"
 
 OM_SetupSternForDevon::
 OM_ReEnableStern::
