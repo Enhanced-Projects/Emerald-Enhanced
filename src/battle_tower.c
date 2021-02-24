@@ -3552,24 +3552,19 @@ void RyuGiveFrontierMon(void)
     s32 count;
     s32 evs[NUM_STATS];
     u8 level = 100;
-    u8 level2 = 0;
     u8 i, temp;
     u8 party_id = CalculatePlayerPartyCount();
-    bool8 IsPickingFrontierStarter = (FlagGet(FLAG_RYU_CHOOSING_FRONTIER_STARTER));
+    bool8 isPickingFrontierStarter = FlagGet(FLAG_RYU_CHOOSING_FRONTIER_STARTER);
     const struct FacilityMon *mon = &gBattleFrontierMons[Random() % FRONTIER_MON_TRUBBISH]; // trubbish is the last before the megas start
 
-    if (IsPickingFrontierStarter == TRUE)
-    {
+    if (isPickingFrontierStarter)
         mon = &gBattleFrontierMons[(VarGet(VAR_TEMP_A))];
-        level = 100;
-        level2 = 1;
-    }
     else
     {
-        if ((FlagGet(FLAG_RYU_PASSCODE_FRONTIER_MON_DEV) ==1 ) && (FlagGet(FLAG_RYU_DEV_MODE) == 1))
+        if (FlagGet(FLAG_RYU_PASSCODE_FRONTIER_MON_DEV) && FlagGet(FLAG_RYU_DEV_MODE))
         {
             mon = &gBattleFrontierMons[(VarGet(VAR_TEMP_6))];
-            level = 125;
+            level = MAX_LEVEL;
         }
     } 
 
@@ -3590,8 +3585,9 @@ void RyuGiveFrontierMon(void)
 
     if (party_id != 6)
     {
-        if (FlagGet(FLAG_TEMP_D) == 1)//flag is set to tell the game to create a level 1 pokemon for the purposes of FEAR.
-            CreateMonWithNature(&gPlayerParty[party_id], mon->species, level2, mon->ivs, mon->nature);
+        // TODO: This flag is sometimes set when it shouldn’t, resulting in level 1 Pokemon being handed out. Investigate why and when, and fix it.
+        if (FlagGet(FLAG_TEMP_D)) // flag is set to tell the game to create a level 1 pokemon for the purposes of FEAR.
+            CreateMonWithNature(&gPlayerParty[party_id], mon->species, 1, mon->ivs, mon->nature);
         else
             CreateMonWithNature(&gPlayerParty[party_id], mon->species, level, mon->ivs, mon->nature);
 

@@ -120,7 +120,7 @@ RyuDebug_HealParty::
 	
 RyuDebug_pokeedit::
 	msgbox OpeningPokeEdit
-    goto RyuPokeEditMenu
+	goto RyuPokeEditMenu
 	release
 	end
 
@@ -129,7 +129,7 @@ OpeningPokeEdit:
 
 RyuDebug_money::
 	setvar VAR_TEMP_A, 50000
-    addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
 	addmoney VAR_TEMP_A
 	addmoney VAR_TEMP_A
 	addmoney VAR_TEMP_A
@@ -155,7 +155,7 @@ RyuEncEnabled:
 	.string "Dev Repel off$"
 
 RyuDebug_money_text:
-    .string "Given ¥250,000.$"
+	.string "Given ¥250,000.$"
 
 RyuDebug_DisableDebug::
 	clearflag FLAG_RYU_DEV_MODE
@@ -206,22 +206,22 @@ RyuDebug_EnableDexnav::
 
 RyuDebug_enableWaystone::
 	additem ITEM_WAYSTONE, 1
-    setflag FLAG_VISITED_LITTLEROOT_TOWN
-    setflag FLAG_VISITED_OLDALE_TOWN
-    setflag FLAG_VISITED_DEWFORD_TOWN
-    setflag FLAG_VISITED_LAVARIDGE_TOWN
-    setflag FLAG_VISITED_FALLARBOR_TOWN
-    setflag FLAG_VISITED_VERDANTURF_TOWN
-    setflag FLAG_VISITED_PACIFIDLOG_TOWN
-    setflag FLAG_VISITED_PETALBURG_CITY
-    setflag FLAG_VISITED_SLATEPORT_CITY
-    setflag FLAG_VISITED_MAUVILLE_CITY
-    setflag FLAG_VISITED_RUSTBORO_CITY
-    setflag FLAG_VISITED_FORTREE_CITY
-    setflag FLAG_VISITED_LILYCOVE_CITY
-    setflag FLAG_VISITED_MOSSDEEP_CITY
-    setflag FLAG_VISITED_SOOTOPOLIS_CITY
-    setflag FLAG_VISITED_EVER_GRANDE_CITY
+	setflag FLAG_VISITED_LITTLEROOT_TOWN
+	setflag FLAG_VISITED_OLDALE_TOWN
+	setflag FLAG_VISITED_DEWFORD_TOWN
+	setflag FLAG_VISITED_LAVARIDGE_TOWN
+	setflag FLAG_VISITED_FALLARBOR_TOWN
+	setflag FLAG_VISITED_VERDANTURF_TOWN
+	setflag FLAG_VISITED_PACIFIDLOG_TOWN
+	setflag FLAG_VISITED_PETALBURG_CITY
+	setflag FLAG_VISITED_SLATEPORT_CITY
+	setflag FLAG_VISITED_MAUVILLE_CITY
+	setflag FLAG_VISITED_RUSTBORO_CITY
+	setflag FLAG_VISITED_FORTREE_CITY
+	setflag FLAG_VISITED_LILYCOVE_CITY
+	setflag FLAG_VISITED_MOSSDEEP_CITY
+	setflag FLAG_VISITED_SOOTOPOLIS_CITY
+	setflag FLAG_VISITED_EVER_GRANDE_CITY
 	setflag FLAG_LANDMARK_BATTLE_FRONTIER
 	setflag FLAG_LANDMARK_POKEMON_LEAGUE
 	setflag FLAG_RYU_LANDMARK_MH
@@ -282,12 +282,12 @@ SaveFileStructMsg:
 	.string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.$"
 
 exampletext:
-    .string "This is standard text.\p"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}This is a partner speaking.\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}This is player speaking\p"
-    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(This is green narration text.\n"
-    .string " There's a space at the beginning of\l"
-    .string " newlines and new pages too.)$"
+	.string "This is standard text.\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}This is a partner speaking.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}This is player speaking\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(This is green narration text.\n"
+	.string " There's a space at the beginning of\l"
+	.string " newlines and new pages too.)$"
 
 RDB_GiveRandomFrontierMons::
 	compare VAR_TEMP_5, 0
@@ -393,11 +393,11 @@ RyuDebug_givemonsquery:
 	.string "Would you like to be given\nall the Pokémon in the game?$"
 
 RyuDebug_cancel::
-    closemessage
+	closemessage
 	end
 
 RyuDebug_msg:
-    .string "What would you like to activate?$"
+	.string "What would you like to activate?$"
 	
 RyuDebug_Init_GiveAll::
 	setvar VAR_TEMP_0, 1
@@ -426,16 +426,20 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
+	specialvar VAR_TEMP_6, CalculatePlayerPartyCount
+	compare VAR_TEMP_6, 4
+	goto_if_gt RyuDebugGivePokeDone
 	givemon SPECIES_MEGA_MEWTWO_Y, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
+	setmonmove VAR_TEMP_6, 0, MOVE_PSYSTRIKE
+	setmonmove VAR_TEMP_6, 1, MOVE_DRAINING_KISS
+	setmonmove VAR_TEMP_6, 2, MOVE_AURA_SPHERE
+	setmonmove VAR_TEMP_6, 3, MOVE_PARABOLIC_CHARGE
+	specialvar VAR_TEMP_6, CalculatePlayerPartyCount
 	givemon SPECIES_MEGA_RAYQUAZA, BASE_MAX_LEVEL, ITEM_SCOPE_LENS
-	setmonmove 1, 0, MOVE_OBLIVION_WING
-	setmonmove 1, 1, MOVE_SPACIAL_REND
-	setmonmove 1, 2, MOVE_BEAK_BLAST
-	setmonmove 1, 3, MOVE_EARTHQUAKE
-	setmonmove 0, 0, MOVE_PSYSTRIKE
-	setmonmove 0, 1, MOVE_DRAINING_KISS
-	setmonmove 0, 2, MOVE_AURA_SPHERE
-	setmonmove 0, 3, MOVE_PARABOLIC_CHARGE
+	setmonmove VAR_TEMP_6, 0, MOVE_OBLIVION_WING
+	setmonmove VAR_TEMP_6, 1, MOVE_SPACIAL_REND
+	setmonmove VAR_TEMP_6, 2, MOVE_BEAK_BLAST
+	setmonmove VAR_TEMP_6, 3, MOVE_EARTHQUAKE
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_3, 0

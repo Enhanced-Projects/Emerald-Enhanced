@@ -35,7 +35,7 @@ SkipBPCheck::
 
 	
 BF_CantAffordMon::
-    msgbox BF_CantAfford 
+	msgbox BF_CantAfford 
 	release
 	end
 
@@ -55,9 +55,9 @@ BF_RandomMonDeclined::
 	end
 
 BF_CantAfford:
-    .string "I'm sorry but you do not have enough\n"
-    .string "battle points to make this purchase.\p"
-    .string "Come back with more.$"
+	.string "I'm sorry but you do not have enough\n"
+	.string "battle points to make this purchase.\p"
+	.string "Come back with more.$"
 
 PartyIsFull:
 	.string "We're sorry, but your party is\ncurrently full.\pPlease make space and\ncome back later.$"
@@ -75,13 +75,13 @@ OkayBye:
 	.string "Very well. Return when you want\nto make the exchange!$"
 	
 WelcomeToFrontierMonStore:
-    .string "Welcome to the Frontier Mon\n"
-    .string "Exchange.\p"
-    .string "Here you can exchange 40 BP to\n"
-    .string "get a random competitive pokemon.$"
+	.string "Welcome to the Frontier Mon\n"
+	.string "Exchange.\p"
+	.string "Here you can exchange 40 BP to\n"
+	.string "get a random competitive pokemon.$"
 	
 FrontierMonQuery:
-    .string "Would you like to make an exchange\n"
+	.string "Would you like to make an exchange\n"
 	.string "with your points?$"
 
 BattleFrontier_ExchangeServiceCorner_EventScript_ClerkWelcome:: @ 825F071
