@@ -1673,7 +1673,8 @@
 #define AP_MOBILE_STAT_CHECKER 4//lets player use a mobile ev/iv checker while active
 #define AP_PDA 5//lets player access a mart remotely
 #define AP_ALPHA_AURA 10 //10% increased boss chance
-#define AP_GOLD_COUNT 3
+#define AP_BIOHAZARD 12 //double pokerus chance
+#define AP_GOLD_COUNT 4
 
 //SILVER AP's (you can use up to 3 of these at a time)
 #define AP_WINNINGS_BOOST 6 //Gives the player 10% more winnings after battle
@@ -1684,13 +1685,14 @@
 //COPPER AP's (you can use many of these at the same time)
 #define AP_CAPTURE_BOOST 7 //Gives the player 5% boost to capture rate
 #define AP_NATURAL_TALENT 9 //Lets the player open secret bases without the move.
-#define AP_COPPER_COUNT 2
+#define AP_LUCKY_LOOT 13 //Wild pokemon held item chance is collectively increased by 25% of their base value.
+#define AP_COPPER_COUNT 3
 
 // total number of achivement powers available
-#define TOTAL_AP_COUNT 12
+#define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 38
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 39
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0

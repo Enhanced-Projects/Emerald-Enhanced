@@ -17,6 +17,7 @@ const u8 sGoldLabel[] = _("Gold");
 const u8 sAPNameMobileStatCheck[] = _("Stat Device Access");
 const u8 sAPNamePDA[] =             _("PDA Device Access");
 const u8 sAPNameAlphaAura[] =       _("Alpha Aura");
+const u8 sAPNameBiohazard[] =       _("Biohazard");
 
 //silver powers
 const u8 sSilverLabel[] = _("Silver");
@@ -28,6 +29,7 @@ const u8 sAPNameBreeder[]  = _("Breeder");
 const u8 sCopperLabel[] = _("Copper");
 const u8 sAPNameCaptureBoost[] = _("Capture Boost");
 const u8 sAPNameNaturalTalent[] = _("Natural Talent");
+const u8 sAPNameLuckyLoot[] = _("Lucky Loot");
 
 //Descriptions
 const u8 sSprintBoostAPDesc[] = _("Allows you to run twice as fast.");
@@ -42,6 +44,8 @@ const u8 sStrongerWildsAPDesc[] = _("Wild pokemon will scale to your party\ninst
 const u8 sNaturalTalentAPDesc[] = _("You have the natural ability to open secret\nbases.");
 const u8 sAlphaAuraAPDesc[] = _("You are attacked more often by Boss pokemon\nin the area.");
 const u8 sBreederAPDesc[] = _("Pokemon Eggs hatch twice as fast.\nStacks with Oval Charm and abilities.");
+const u8 sBiohazardAPDesc[] = _("Chance of getting Pokerus is doubled.");
+const u8 sLuckyLootAPDesc[] = _("Wild pokemon held item rate is increased.\nStacks with mon abilities.");
 
 static void DummyFunc(void);
 
@@ -58,6 +62,7 @@ const struct APInfoTier gAP_InfoGold[] =
     {AP_MOBILE_STAT_CHECKER, sAPNameMobileStatCheck, sMobileStatCheckAPDesc, GiveTakeStatAssistItem},
     {AP_PDA, sAPNamePDA, sPDAAPDesc, GiveTakePDAItem},
     {AP_ALPHA_AURA, sAPNameAlphaAura, sAlphaAuraAPDesc, DummyFunc},
+    {AP_BIOHAZARD, sAPNameBiohazard, sBiohazardAPDesc, DummyFunc},
 };
 
 const struct APInfoTier gAP_InfoSilver[] = 
@@ -71,6 +76,7 @@ const struct APInfoTier gAP_InfoCopper[] =
 {
     {AP_CAPTURE_BOOST, sAPNameCaptureBoost, sCaptureBoostAPDesc, DummyFunc},
     {AP_NATURAL_TALENT, sAPNameNaturalTalent, sNaturalTalentAPDesc, DummyFunc},
+    {AP_LUCKY_LOOT, sAPNameLuckyLoot, sLuckyLootAPDesc, DummyFunc,}
 };
 
 const struct APInfo gAP_Info[4] =
@@ -78,7 +84,7 @@ const struct APInfo gAP_Info[4] =
     {gAP_InfoPlat, AP_TIER_PLATINUM, AP_PLATINUM_COUNT, 51},
     {gAP_InfoGold, AP_TIER_GOLD, AP_GOLD_COUNT, 34},
     {gAP_InfoSilver, AP_TIER_SILVER, AP_SILVER_COUNT, 26},
-    {gAP_InfoCopper, AP_TIER_COPPER, AP_COPPER_COUNT, 10}
+    {gAP_InfoCopper, AP_TIER_COPPER, AP_COPPER_COUNT, 15}
 };
 
 void APDebugInfo(void)

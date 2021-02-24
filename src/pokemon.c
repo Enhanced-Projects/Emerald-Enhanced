@@ -6035,7 +6035,8 @@ u16 GetMonEVCount(struct Pokemon *mon)
 void RandomlyGivePartyPokerus(struct Pokemon *party)
 {
     u16 rnd = Random();
-    if (rnd == 0x4000 || rnd == 0x8000 || rnd == 0xC000)
+    int odds = CheckAPFlag(AP_BIOHAZARD) ? 6 : 3; //If biohazard is on, double chance, otherwise, standard chance.
+    if (rnd < odds)
     {
         struct Pokemon *mon;
 
@@ -6637,13 +6638,31 @@ static s32 GetWildMonTableIdInAlteringCave(u16 species)
 void SetWildMonHeldItem(void)
 {
     u16 rnd, species, var1, var2, i, count;
+    bool32 isItemBoostedByAbility = FALSE;
+
     if (gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE))
         return;
 
+    if (GetMonAbility(&gPlayerParty[0]) == ABILITY_COMPOUND_EYES || GetMonAbility(&gPlayerParty[0]) == ABILITY_SUPER_LUCK)
+    {
+        isItemBoostedByAbility = TRUE;
+    }
+
     count = (WILD_DOUBLE_BATTLE) ? 2 : 1;
-    if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG, 0)
-        && (GetMonAbility(&gPlayerParty[0]) == ABILITY_COMPOUND_EYES
-            || GetMonAbility(&gPlayerParty[0]) == ABILITY_SUPER_LUCK))
+    if (isItemBoostedByAbility == TRUE)
+    {
+        if (CheckAPFlag(AP_LUCKY_LOOT) == TRUE)
+        {
+            var1 = 15;
+            var2 = 60;
+        }
+        else
+        {
+            var1 = 20;
+            var2 = 80;
+        }
+    }
+    else if ((isItemBoostedByAbility == FALSE) && (CheckAPFlag(AP_LUCKY_LOOT) == TRUE))
     {
         var1 = 20;
         var2 = 80;
