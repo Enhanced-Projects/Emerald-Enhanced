@@ -411,6 +411,6 @@
 #define FACTION_ATHLETES 6 //bodybuilders, meatheads, jocks, those whose entire existence is self improvement. Martial artists, fighters, etc.     Opposed: Pokefans(x0.5) Richkids(x0.5)  "Pokemon are best when trained 
 #define FACTION_OTHERS 7 //everything else unclassified like aqua, magma, leaders, etc.                                                                     to their potential, not left to rot and spoil!"
 
-#define EE_GAME_VERSION 7502
+#define EE_GAME_VERSION 7503
 
 #endif // GUARD_CONSTANTS_VARS_H
