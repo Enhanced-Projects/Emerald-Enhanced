@@ -65,7 +65,8 @@ RyuDebug_UtilitiesMenu:
 	case 11, RDB_GiveOrTakeAllAchievements
 	case 12, RDB_GetCurrentAndMaxAP
 	case 13, RDB_CheckFactionRelations
-	case 14, RyuDebug_menu_nodevcheck
+	case 14, RDB_AlchemyInfo
+	case 15, RyuDebug_menu_nodevcheck
 	goto RyuDebug_cancel
 
 RDB_CheckFactionRelations::
@@ -240,8 +241,35 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	additem ITEM_MUSCLE_POWDER, 12
+	additem ITEM_STARDUST, 8
+	additem ITEM_FRESH_WATER, 10
+	setvar VAR_RYU_PLAYER_ALCHEMY_SKILL, 1
+	msgbox recipequery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_ne ryu_end
+	setvar VAR_TEMP_A, 1
+	specialvar VAR_RESULT, RyuAlchemy_TryCraftingItem
+	buffernumberstring 5, VAR_RESULT
+	msgbox reciperesult
 	release
 	end
+
+reciperesult:
+	.string "Result was: {RYU_STR_3}$"
+
+recipequery:
+	.string "Do recipe?$"
+
+RDB_AlchemyInfo::
+	callnative RyuDebug_CheckAlchemyStatus
+	msgbox RDB_AlchemyInfoMsg
+	closemessage
+	release
+	end
+
+RDB_AlchemyInfoMsg:
+	.string "Has Alchemy effect active? {STR_VAR_1}\nCurrent effect is {STR_VAR_2}, with {STR_VAR_3} charges left.$"
 
 RDB_GiveOrTakeAllAchievements::
 	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO

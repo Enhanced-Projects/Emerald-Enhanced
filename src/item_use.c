@@ -55,6 +55,8 @@ extern u8 PCN_CantUseThisHere[];
 extern u8 RyuBotanyRecipeBookScript[];
 extern u8 RyuAP_PDA[];
 extern u8 RyuAP_StatAssist[];
+extern u8 Ryu_ReagentPouchScript[];
+extern u8 Ryu_RefineMetalDust[];
 
 static void SetUpItemUseCallback(u8 taskId);
 static void FieldCB_UseItemOnField(void);
@@ -797,6 +799,23 @@ void ItemUseOutOfBattle_AbilityCapsule(u8 taskId)
     SetMainCallback2(CB2_ReturnToField);
     ScriptContext2_Enable();
     ScriptContext1_SetupScript(Ryu_AbilityCapsule);
+}
+
+void ItemUseOutOfBattle_Powderise(u8 taskId)
+{
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext2_Enable();
+    ScriptContext1_SetupScript(Ryu_RefineMetalDust);
+}
+
+void ItemUseOutOfBattle_RyuReagentPouch(u8 taskId)
+{
+    ConvertIntToDecimalStringN(gStringVar1, (VarGet(VAR_RYU_ALCHEMY_COPPER)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_ALCHEMY_SILVER)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, (VarGet(VAR_RYU_ALCHEMY_GOLD)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    SetMainCallback2(CB2_ReturnToField);
+    ScriptContext2_Enable();
+    ScriptContext1_SetupScript(Ryu_ReagentPouchScript);
 }
 
 void ItemUseOutOfBattle_ReduceEV(u8 taskId)

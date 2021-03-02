@@ -117,7 +117,7 @@ void AgbMain()
     gLinkTransferringData = FALSE;
     gUnknown_03000000 = 0xFC0;
 
-    //mgba_open();
+    mgba_open();
     for (;;)
     {
         ReadKeys();

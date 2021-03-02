@@ -7,6 +7,8 @@ void ItemUseOutOfBattle_RyuForecaster(u8);
 void ItemUseOutOfBattle_Teleport(u8);//done
 void ItemUseOutOfBattle_CheckSootSack(u8);
 void ItemUseOutOfBattle_RyuExpBattery(u8);
+void ItemUseOutOfBattle_Powderise(u8);
+void ItemUseOutOfBattle_RyuReagentPouch(u8);
 void ItemUseOutOfBattle_RemotePC(u8);
 void ItemUseOutOfBattle_PDA(u8);
 void ItemUseOutOfBattle_StatAssist(u8);

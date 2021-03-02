@@ -1749,60 +1749,76 @@ void RyuDebug_Plant49Berries(void)
         IncrementGameStat(GAME_STAT_PLANTED_BERRIES);
 }
 
-/*void RyuDebug_PrintBoxMonData(u8 boxNum, u8 slotNum)
-{
-    mgba_printf(LOGINFO, "Pers = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_PERSONALITY));
-    mgba_printf(LOGINFO, "otid = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_OT_ID));
-    mgba_printf(LOGINFO, "Bad Egg? = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_SANITY_IS_BAD_EGG));
-    mgba_printf(LOGINFO, "Has Species? = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_SANITY_HAS_SPECIES));
-    mgba_printf(LOGINFO, "is Egg? = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_SANITY_IS_EGG));
-    mgba_printf(LOGINFO, "checksum = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_CHECKSUM));
-    mgba_printf(LOGINFO, "species = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_SPECIES));
-    mgba_printf(LOGINFO, "species2 = %d", GetBoxMonData(&gPokemonStoragePtr->boxes[boxNum][slotNum], MON_DATA_SPECIES2));
-}
 
-u16 RyuDebug_FixCorruptedPCSlots(void)// will remove bad eggs and return the number of empty slots.
+u16 RyuAlchemy_TryCraftingItem(void)
 {
-    u16 i, k;
-    u16 numEmptySlots = 0;
+    u8 recipe = (VarGet(VAR_TEMP_A));
+    u8 levelReq = 0;
+    u8 currentLevel = (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL));
+    u8 metal = 0;
+    u16 item1 = 0;
+    u16 item2 = 0;
+    u16 item3 = 0;
+    u16 metalAmountRequired = 0;
+    u16 playerMetalAmt = 0;
 
-    for (i = 0; i < 14; i++)
+    //fill vars
+    item1 = sAlchemyRecipes[recipe].ingredients[0].itemId;
+    item2 = sAlchemyRecipes[recipe].ingredients[1].itemId;
+    item3 = sAlchemyRecipes[recipe].ingredients[2].itemId;
+    metal = sAlchemyRecipes[recipe].metal;
+    metalAmountRequired = sAlchemyRecipes[recipe].metalDustAmt;
+
+    if (sAlchemyRecipes[recipe].requiredLevel > currentLevel)
+        return 2000; //Level requirement not met for recipe
+    
+    if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients->quantity)) == FALSE)
+        return 4100; //Player doesn't have enough of ingredient 1
+
+    if (CheckBagHasItem(item2, (sAlchemyRecipes[recipe].ingredients->quantity)) == FALSE)
+        return 4200; //Player doesn't have enough of ingredient 2
+
+    if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients->quantity)) == FALSE)
+        return 4300; //Player doesn't have enough of ingredient 3
+
+    switch (metal)
     {
-        for (k = 0; k < 30; k++)
-        {
-            if ((GetBoxMonData(&gPokemonStoragePtr->boxes[i][k], MON_DATA_SANITY_HAS_SPECIES) == 0))
-            {
-                ZeroBoxMonAt(i, k);
-                numEmptySlots++;
-                mgba_printf(LOGINFO, "Resetting pokemon in box %d, slot %d", i, k);
-            }
-
-        }
+        case 0:
+            playerMetalAmt = (VarGet(VAR_RYU_ALCHEMY_COPPER));
+            if (playerMetalAmt < metalAmountRequired)
+                return 1000; //Player doesn't have enough metal dust for this recipe
+            VarSet(VAR_RYU_ALCHEMY_COPPER, (VarGet(VAR_RYU_ALCHEMY_COPPER) - metalAmountRequired));
+            break;
+        case 1:
+            playerMetalAmt = (VarGet(VAR_RYU_ALCHEMY_SILVER));
+            if (playerMetalAmt < metalAmountRequired)
+                return 1000; //Player doesn't have enough metal dust for this recipe
+            VarSet(VAR_RYU_ALCHEMY_SILVER, (VarGet(VAR_RYU_ALCHEMY_SILVER) - metalAmountRequired));
+            break;
+        case 2:
+            playerMetalAmt = (VarGet(VAR_RYU_ALCHEMY_GOLD));
+            if (playerMetalAmt < metalAmountRequired)
+                return 1000; //Player doesn't have enough metal dust for this recipe
+            VarSet(VAR_RYU_ALCHEMY_GOLD, (VarGet(VAR_RYU_ALCHEMY_GOLD) - metalAmountRequired));
+            break;
     }
-    return numEmptySlots;
-}
 
-void RDB_PrintData(void)
-{
-    mgba_printf(LOGINFO, "there are %d slots", (RyuDebug_FixCorruptedPCSlots()));
-}
+    RemoveBagItem(item1, (sAlchemyRecipes[recipe].ingredients->quantity));
+    RemoveBagItem(item2, (sAlchemyRecipes[recipe].ingredients->quantity));
+    RemoveBagItem(item3, (sAlchemyRecipes[recipe].ingredients->quantity));
 
-void RyuDebug_FillEmptySlots(void)
-{
-    u16 slots = 0;
-    u16 i = 0;
-    u16 party = 0;
-    u16 numPartySlotsToFill = 0;
-    party = CalculatePlayerPartyCount();
-
-    if (party < 6)
-        numPartySlotsToFill = (6 - numPartySlotsToFill);
-
-    slots = (RyuDebug_FixCorruptedPCSlots());
-    slots += numPartySlotsToFill;
-
-    for (i = 1; i < slots; i++)
+    if (recipe < ALCHEMY_ITEM_RECIPE_STARDUST) //don't set an effect if the crafting result is an item instead of effect.
     {
-        ScriptGiveMon((Random() % NATIONAL_DEX_COUNT), 50, ITEM_NONE, 0, 0, 0);
+        gSaveBlock2Ptr->alchemyEffect = recipe;
+        gSaveBlock2Ptr->alchemyCharges = sAlchemyRecipes[recipe].givenCharges;
+        VarSet(VAR_TEMP_A, (sAlchemyRecipes[recipe].givenCharges));
     }
-}*/
+    return recipe;
+}
+
+void RyuDebug_CheckAlchemyStatus(void)
+{
+    ConvertIntToDecimalStringN(gStringVar1, gSaveBlock2Ptr->alchemyEffect, STR_CONV_MODE_LEFT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar2, gSaveBlock2Ptr->hasAlchemyEffectActive, STR_CONV_MODE_LEFT_ALIGN, 1);
+    ConvertIntToDecimalStringN(gStringVar3, gSaveBlock2Ptr->alchemyCharges, STR_CONV_MODE_LEFT_ALIGN, 2);
+}

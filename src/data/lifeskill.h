@@ -521,71 +521,339 @@ const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2] = {
     [BR_FIRE_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_FIRE_GEM, 0},
+        {ITEM_FIRE_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_WATER_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_WATER_GEM, 0},
+        {ITEM_WATER_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_THUNDER_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_ELECTRIC_GEM, 0},
+        {ITEM_ELECTRIC_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_LEAF_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_GRASS_GEM, 0},
+        {ITEM_GRASS_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_MOON_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_GHOST_GEM, 0},
+        {ITEM_GHOST_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_SUN_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_PSYCHIC_GEM, 0},
+        {ITEM_PSYCHIC_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_SHINY_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_FAIRY_GEM, 0},
+        {ITEM_FAIRY_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_DUSK_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_DARK_GEM, 0},
+        {ITEM_DARK_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_DAWN_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_NORMAL_GEM, 0},
+        {ITEM_NORMAL_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_ICE_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_ICE_GEM, 0},
+        {ITEM_ICE_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
 };
+
+typedef struct Ingredient {
+  u16 itemId;
+  u8 quantity;
+} Ingredient;
+
+
+typedef struct AlchemyRecipe {
+  Ingredient ingredients[3];
+  u16 metal;
+  u16 metalDustAmt;
+  u8 requiredLevel;
+  u8 givenCharges;
+} AlchemyRecipe;
+
+const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
+    [ALCHEMY_EFFECT_NONE] = {
+        .ingredients = {
+          {ITEM_NONE, 0 },
+          {ITEM_NONE, 0 },
+          {ITEM_NONE, 0 },
+        },
+        .metal = 0,
+        .metalDustAmt = 0,
+        .requiredLevel = 1,
+        .givenCharges = 0
+  },
+    [ALCHEMY_EFFECT_DAMAGE_BOOST_T1] = {
+        .ingredients = {
+          {ITEM_MUSCLE_POWDER, 3 },
+          {ITEM_STARDUST, 2 },
+          {ITEM_FRESH_WATER, 1 },
+        },
+        .metal = 0,
+        .metalDustAmt = 500,
+        .requiredLevel = 1,
+        .givenCharges = 5,
+  },
+    [ALCHEMY_EFFECT_DAMAGE_BOOST_T2] = {
+        .ingredients = {
+          {ITEM_MUSCLE_POWDER, 6 },
+          {ITEM_STARDUST, 4 },
+          {ITEM_TONIC_WATER, 1 },
+        },
+        .metal = 2,
+        .metalDustAmt = 500,
+        .requiredLevel = 3,
+        .givenCharges = 5,
+  },
+    [ALCHEMY_EFFECT_DAMAGE_BOOST_T3] = {
+        .ingredients = {
+          {ITEM_MUSCLE_POWDER, 12 },
+          {ITEM_STARDUST, 8 },
+          {ITEM_MINERAL_WATER, 4 },
+        },
+        .metal = 3,
+        .metalDustAmt = 750,
+        .requiredLevel = 5,
+        .givenCharges = 5,
+  },
+    [ALCHEMY_EFFECT_DEFENSE_BOOST_T1] = {
+        .ingredients = {
+          {ITEM_TOUGH_POWDER, 3 },
+          {ITEM_STARDUST, 2 },
+          {ITEM_FRESH_WATER, 1 },
+        },
+        .metal = 0,
+        .metalDustAmt = 500,
+        .requiredLevel = 1,
+        .givenCharges = 5,
+  },
+    [ALCHEMY_EFFECT_DEFENSE_BOOST_T2] = {
+        .ingredients = {
+          {ITEM_TOUGH_POWDER, 6 },
+          {ITEM_STARDUST, 4 },
+          {ITEM_TONIC_WATER, 2 },
+        },
+        .metal = 2,
+        .metalDustAmt = 500,
+        .requiredLevel = 3,
+        .givenCharges = 5,
+  },
+    [ALCHEMY_EFFECT_DEFENSE_BOOST_T3] = {
+        .ingredients = {
+          {ITEM_TOUGH_POWDER, 12 },
+          {ITEM_STARDUST, 8 },
+          {ITEM_MINERAL_WATER, 4 },
+        },
+        .metal = 3,
+        .metalDustAmt = 750,
+        .requiredLevel = 5,
+        .givenCharges = 5,
+  },
+    [ALCHEMY_EFFECT_REPEL_T1] = {
+        .ingredients = {
+          {ITEM_RAWST_BERRY, 2 },
+          {ITEM_STARDUST, 2 },
+          {ITEM_TONIC_WATER, 1 },
+        },
+        .metal = 0,
+        .metalDustAmt = 100,
+        .requiredLevel = 2,
+        .givenCharges = 69,
+  },
+    [ALCHEMY_EFFECT_REPEL_T2] = {
+        .ingredients = {
+          {ITEM_RAWST_BERRY, 4 },
+          {ITEM_STARDUST, 4 },
+          {ITEM_TONIC_WATER, 1 },
+        },
+        .metal = 2,
+        .metalDustAmt = 100,
+        .requiredLevel = 2,
+        .givenCharges = 96,
+  },
+    [ALCHEMY_EFFECT_SUPER_CAPTURE] = {
+        .ingredients = {
+            {ITEM_BRIGHT_POWDER, 1},
+            {ITEM_FRESH_WATER, 1},
+            {ITEM_GREAT_BALL, 1},
+        },
+        .metal = 0,
+        .metalDustAmt = 250,
+        .requiredLevel = 1,
+        .givenCharges = 1,
+    },
+    [ALCHEMY_EFFECT_ULTRA_CAPTURE] = {
+        .ingredients = {
+            {ITEM_LUMINOUS_MOSS, 1},
+            {ITEM_TONIC_WATER, 1},
+            {ITEM_ULTRA_BALL, 1},
+        },
+        .metal = 2,
+        .metalDustAmt = 250,
+        .requiredLevel = 3,
+        .givenCharges = 1,
+    },
+    [ALCHEMY_EFFECT_MASTER_CAPTURE] = {
+        .ingredients = {
+            {ITEM_MENTAL_HERB, 1},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_LUXURY_BALL, 1},
+        },
+        .metal = 3,
+        .metalDustAmt = 250,
+        .requiredLevel = 5,
+        .givenCharges = 1,
+    },
+    [ALCHEMY_EFFECT_EXP_BOOST_T1] = {
+        .ingredients = {
+            {ITEM_RARE_CANDY, 1},
+            {ITEM_FRESH_WATER, 1},
+            {ITEM_STAR_PIECE, 1},
+        },
+        .metal = 0,
+        .metalDustAmt = 250,
+        .requiredLevel = 2,
+        .givenCharges = 10,
+    },
+    [ALCHEMY_EFFECT_EXP_BOOST_T2] = {
+        .ingredients = {
+            {ITEM_RARE_CANDY, 2},
+            {ITEM_TONIC_WATER, 1},
+            {ITEM_BIG_PEARL, 1},
+        },
+        .metal = 2,
+        .metalDustAmt = 250,
+        .requiredLevel = 2,
+        .givenCharges = 10,
+    },
+    [ALCHEMY_EFFECT_EXP_BOOST_T3] = {
+        .ingredients = {
+            {ITEM_RARE_CANDY, 3},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_GOLD_NUGGET, 1},
+        },
+        .metal = 3,
+        .metalDustAmt = 250,
+        .requiredLevel = 2,
+        .givenCharges = 10,
+    },
+    [ALCHEMY_EFFECT_HEALING_FACTOR] = {
+        .ingredients = {
+            {ITEM_HEAL_POWDER, 3},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_ORAN_BERRY, 1},
+        },
+        .metal = 0,
+        .metalDustAmt = 200,
+        .requiredLevel = 2,
+        .givenCharges = 5,
+    },
+
+    //Alchemy Item Recipes Below.
+    [ALCHEMY_ITEM_RECIPE_STARDUST] = {
+        .ingredients = {
+            {ITEM_SOFT_SAND, 2},
+            {ITEM_GEM_POWDER, 2},
+            {ITEM_NONE, 0},
+        },
+        .metal = 2,
+        .metalDustAmt = 200,
+        .requiredLevel = 1,
+        .givenCharges = 255,
+    },
+
+    [ALCHEMY_ITEM_RECIPE_FRESH_WATER] = {
+        .ingredients = {
+            {ITEM_SNOWBALL, 2},
+            {ITEM_FIRE_STONE, 1},
+            {ITEM_NONE, 1},
+        },
+        .metal = 2,
+        .metalDustAmt = 100,
+        .requiredLevel = 1,
+        .givenCharges = 255,
+    },
+
+    [ALCHEMY_ITEM_RECIPE_TONIC_WATER] = {
+        .ingredients = {
+            {ITEM_FRESH_WATER, 2},
+            {ITEM_CHARCOAL, 1},
+            {ITEM_NONE, 1},
+        },
+        .metal = 2,
+        .metalDustAmt = 200,
+        .requiredLevel = 1,
+        .givenCharges = 255,
+    },
+
+    [ALCHEMY_ITEM_RECIPE_MINERAL_WATER] = {
+        .ingredients = {
+            {ITEM_TONIC_WATER, 2},
+            {ITEM_SOFT_SAND, 1},
+          {ITEM_SHOAL_SALT, 1},
+        },
+        .metal = 2,
+        .metalDustAmt = 300,
+        .requiredLevel = 1,
+        .givenCharges = 255,
+    },
+
+    [ALCHEMY_ITEM_RECIPE_RARE_CANDY] = {
+        .ingredients = {
+            {ITEM_LEMONADE, 1},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_SMART_POWDER, 1},
+        },
+        .metal = 3,
+        .metalDustAmt = 200,
+        .requiredLevel = 2,
+        .givenCharges = 255,
+    },
+
+    [ALCHEMY_ITEM_RECIPE_GOLD_NUGGET] = {
+        .ingredients = {
+            {ITEM_LEMONADE, 1},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_SMART_POWDER, 1},
+        },
+        .metal = 3,
+        .metalDustAmt = 200,
+        .requiredLevel = 2,
+        .givenCharges = 255,
+    },
+};
+
+

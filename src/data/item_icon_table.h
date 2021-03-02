@@ -351,7 +351,7 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_FORECASTER] = {gItemIcon_VSSeeker, gItemIconPalette_VSSeeker},
     [ITEM_FAME_CHECKER] = {gItemIcon_FameChecker, gItemIconPalette_FameChecker},
     [ITEM_TM_CASE] = {gItemIcon_TMCase, gItemIconPalette_TMCase},
-    [ITEM_BERRY_POUCH] = {gItemIcon_BerryPouch, gItemIconPalette_BerryPouch},
+    [ITEM_REAGENT_POUCH] = {gItemIcon_BerryPouch, gItemIconPalette_BerryPouch},
     [ITEM_WIRELESSPC] = {gItemIcon_TeachyTV, gItemIconPalette_TeachyTV},
     [ITEM_TRI_PASS] = {gItemIcon_TriPass, gItemIconPalette_TriPass},
     [ITEM_RAINBOW_PASS] = {gItemIcon_RainbowPass, gItemIconPalette_RainbowPass},
@@ -623,4 +623,8 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_JUNGLE_BEANS] = {gItemIcon_JungleBeans, gItemIconPalette_JungleBeans},
     [ITEM_TASTY_LEAF] = {gItemIcon_TastyLeaf, gItemIconPalette_TastyLeaf},
     [ITEM_BOXING_GLOVE] = {gItemIcon_BoxingGlove, gItemIconPalette_BoxingGlove},
+    [ITEM_TONIC_WATER] =   {gItemIcon_FreshWater, gItemIconPalette_FreshWater},
+    [ITEM_MINERAL_WATER] = {gItemIcon_FreshWater, gItemIconPalette_FreshWater},
+    [ITEM_GOLD_NUGGET] = {gItemIcon_Nugget, gItemIconPalette_Nugget},
+    [ITEM_GEM_POWDER] = {gItemIcon_SoftSand, gItemIconPalette_SoftSand},
 };

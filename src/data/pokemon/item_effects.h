@@ -536,6 +536,16 @@ const u8 gItemEffect_RevitalIce[7] = {
     [6] = ITEM6_HEAL_FULL,
 };
 
+const u8 gItemEffect_TonicWater[7] = {
+    [4] = ITEM4_HEAL_HP,
+    [6] = 100,
+};
+
+const u8 gItemEffect_MineralWater[7] = {
+    [4] = ITEM4_HEAL_HP,
+    [6] = 250,
+};
+
 const u8 *const gItemEffectTable[] =
 {
     [ITEM_POTION - ITEM_POTION] = gItemEffect_Potion,
@@ -633,5 +643,7 @@ const u8 *const gItemEffectTable[] =
     [ITEM_LARGE_SALAD - ITEM_POTION] = gItemEffect_LargeSalad,
     [ITEM_HEAL_CHOWDER - ITEM_POTION] = gItemEffect_HealChowder,
     [ITEM_REVITAL_ICE - ITEM_POTION] = gItemEffect_RevitalIce,
+    [ITEM_TONIC_WATER - ITEM_POTION] = gItemEffect_TonicWater,
+    [ITEM_MINERAL_WATER - ITEM_POTION] = gItemEffect_MineralWater,
     [LAST_BERRY_INDEX - ITEM_POTION] = NULL
 };

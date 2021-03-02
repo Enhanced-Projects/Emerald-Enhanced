@@ -240,9 +240,9 @@
 #define VAR_RYU_LANETTE_VAR                  0x40DE
 #define VAR_DEXNAV_SPECIES                   0x40DF // Var is written to, but never read
 #define VAR_DEXNAV_STEP_COUNTER              0x40E0 // Var is written to, but never read
-#define VAR_UNUSED_0x40E1                    0x40E1 // Var is written to, but never read
-#define VAR_UNUSED_0x40E2                    0x40E2 // Var is written to, but never read
-#define VAR_UNUSED_0x40E3                    0x40E3 // Var is written to, but never read
+#define VAR_RYU_ALCHEMY_COPPER               0x40E1 // Player's copper dust count
+#define VAR_RYU_ALCHEMY_SILVER               0x40E2 // Player's silver dust count
+#define VAR_RYU_ALCHEMY_GOLD                 0x40E3 // Player's gold dust count
 #define VAR_UNUSED_0x40E4                    0x40E4 // var is written to, but never read
 #define VAR_RYU_AQUA                         0x40E5 // Aqua quest stages
 #define VAR_DAILY_SLOTS                      0x40E6

@@ -506,6 +506,25 @@ struct SaveBlock2
     /*0x64C*/ struct BattleFrontier frontier;
               u8 achFlags[NUM_ACH_FLAG_BYTES];
               u8 achievementPowerFlags[NUM_ACH_PWR_BYTES];
+              u8 alchemyEffect; //Which alchemy effect is currently active.
+              u8 alchemyCharges; //how many charges, if any, are left for the currently active alchemy effect.
+              u16 hasAlchemyEffectActive:1; //a block of 16 utility-use flags in save block. This one is used to tell if player has an effect active or not.
+              /*
+              u16 unusedSaveblockFlag1:1
+              u16 unusedSaveblockFlag2:1
+              u16 unusedSaveblockFlag3:1
+              u16 unusedSaveblockFlag4:1
+              u16 unusedSaveblockFlag5:1
+              u16 unusedSaveblockFlag6:1
+              u16 unusedSaveblockFlag7:1
+              u16 unusedSaveblockFlag8:1
+              u16 unusedSaveblockFlag9:1
+              u16 unusedSaveblockFlag10:1
+              u16 unusedSaveblockFlag11:1
+              u16 unusedSaveblockFlag12:1
+              u16 unusedSaveblockFlag13:1
+              u16 unusedSaveblockFlag14:1
+              */
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

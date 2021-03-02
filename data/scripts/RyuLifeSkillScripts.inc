@@ -478,7 +478,7 @@ MiningRock8::
     end
 
 MiningRock9::
-    goto_if_set FLAG_TEMP_9, Ryu_NoOresHere
+    @goto_if_set FLAG_TEMP_9, Ryu_NoOresHere
     setflag FLAG_TEMP_9
     call Ryu_MineRock
     release
@@ -490,3 +490,87 @@ MiningRock10::
     call Ryu_MineRock
     release
     end
+
+@alchemy related
+
+Ryu_ReagentPouchScript::
+    msgbox RA_ShowPowderCounts
+    closemessage
+    release
+    end
+
+RA_ShowPowderCounts:
+    .string "Metal Dust Counts:\nCopper: {STR_VAR_1}, Silver: {STR_VAR_2}, Gold: {STR_VAR_3}$"
+
+Ryu_RefineMetalDust::
+    switch VAR_ITEM_ID
+    case ITEM_SILVER_ORE, RyuAlchemy_RefineMetalDustSilver
+    case ITEM_COPPER_ORE, RyuAlchemy_RefineMetalDustCopper
+    case ITEM_GOLD_ORE, RyuAlchemy_RefineMetalDustGold
+    goto ryu_end
+
+RyuAlchemy_RefineMetalDustSilver::
+    checkitem ITEM_SILVER_ORE, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RyuAlchemy_NotEnoughOre
+    msgbox RyuAlchemy_RefineOreQuery, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_ne ryu_end
+    removeitem ITEM_SILVER_ORE, 2
+    addvar VAR_RYU_ALCHEMY_SILVER, 200
+    msgbox RyuAlchemy_OreRefined, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_eq RA_BufferShowPowderCounts    
+    release
+    end
+
+RyuAlchemy_RefineMetalDustGold::
+    checkitem ITEM_GOLD_ORE, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RyuAlchemy_NotEnoughOre
+    msgbox RyuAlchemy_RefineOreQuery, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_ne ryu_end
+    removeitem ITEM_GOLD_ORE, 2
+    addvar VAR_RYU_ALCHEMY_GOLD, 200
+    msgbox RyuAlchemy_OreRefined, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_eq RA_BufferShowPowderCounts
+    release
+    end
+
+RyuAlchemy_RefineMetalDustCopper::
+    checkitem ITEM_COPPER_ORE, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RyuAlchemy_NotEnoughOre
+    msgbox RyuAlchemy_RefineOreQuery, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_ne ryu_end
+    removeitem ITEM_COPPER_ORE, 2
+    addvar VAR_RYU_ALCHEMY_COPPER, 200
+    msgbox RyuAlchemy_OreRefined, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_eq RA_BufferShowPowderCounts
+    release
+    end
+
+RA_BufferShowPowderCounts::
+    buffernumberstring 0, VAR_RYU_ALCHEMY_COPPER
+    buffernumberstring 1, VAR_RYU_ALCHEMY_SILVER
+    buffernumberstring 2, VAR_RYU_ALCHEMY_GOLD
+    goto Ryu_ReagentPouchScript
+
+RyuAlchemy_NotEnoughOre::
+    msgbox RA_NotEnoughOreWarning
+    closemessage
+    release
+    end
+
+RA_NotEnoughOreWarning::
+    .string "You don't have enough of the ore\nto refine into dust.$"
+
+RyuAlchemy_OreRefined:
+    .string "The ores have been refined.\pWould you like to view counts?$"
+
+RyuAlchemy_RefineOreQuery:
+    .string "Would you like to turn 2 ores\ninto dust?$"
