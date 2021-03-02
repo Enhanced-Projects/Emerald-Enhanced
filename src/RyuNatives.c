@@ -1772,13 +1772,13 @@ u16 RyuAlchemy_TryCraftingItem(void)
     if (sAlchemyRecipes[recipe].requiredLevel > currentLevel)
         return 2000; //Level requirement not met for recipe
     
-    if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients->quantity)) == FALSE)
+    if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients[0].quantity)) == FALSE)
         return 4100; //Player doesn't have enough of ingredient 1
 
-    if (CheckBagHasItem(item2, (sAlchemyRecipes[recipe].ingredients->quantity)) == FALSE)
+    if (CheckBagHasItem(item2, (sAlchemyRecipes[recipe].ingredients[1].quantity)) == FALSE)
         return 4200; //Player doesn't have enough of ingredient 2
 
-    if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients->quantity)) == FALSE)
+    if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients[2].quantity)) == FALSE)
         return 4300; //Player doesn't have enough of ingredient 3
 
     switch (metal)
@@ -1803,9 +1803,9 @@ u16 RyuAlchemy_TryCraftingItem(void)
             break;
     }
 
-    RemoveBagItem(item1, (sAlchemyRecipes[recipe].ingredients->quantity));
-    RemoveBagItem(item2, (sAlchemyRecipes[recipe].ingredients->quantity));
-    RemoveBagItem(item3, (sAlchemyRecipes[recipe].ingredients->quantity));
+    RemoveBagItem(item1, (sAlchemyRecipes[recipe].ingredients[0].quantity));
+    RemoveBagItem(item2, (sAlchemyRecipes[recipe].ingredients[1].quantity));
+    RemoveBagItem(item3, (sAlchemyRecipes[recipe].ingredients[2].quantity));
 
     if (recipe < ALCHEMY_ITEM_RECIPE_STARDUST) //don't set an effect if the crafting result is an item instead of effect.
     {
