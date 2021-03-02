@@ -856,4 +856,41 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
     },
 };
 
+const u8 sRAEffectNoneDesc[] =         _("No Effect");
+const u8 sRAEffectDamage1[] =          _("T1 Damage Boost");
+const u8 sRAEffectDamage2[] =          _("T2 Damage Boost");
+const u8 sRAEffectDamage3[] =          _("T3 Damage Boost");
+const u8 sRAEffectDefense1[] =         _("T1 Defense Boost");
+const u8 sRAEffectDefense2[] =         _("T2 Defense Boost");
+const u8 sRAEffectDefense3[] =         _("T3 Defense Boost");
+const u8 sRAEffectRepelT1[] =          _("T1 Ultra Repel");
+const u8 sRAEffectRepelT2[] =          _("T2 Ultra Repel");
+const u8 sRAEffectSuperCapture1[] =    _("T1 Capture Boost");
+const u8 sRAEffectSuperCapture2[] =    _("T2 Capture Boost");
+const u8 sRAEffectSuperCapture3[] =    _("T3 Capture Boost");
+const u8 sRAEffectEXPBoost1[] =        _("T1 Exp Boost");
+const u8 sRAEffectEXPBoost2[] =        _("T2 Exp Boost");
+const u8 sRAEffectEXPBoost3[] =        _("T3 Exp Boost");
+const u8 sRAEffectHealingFactor[] =    _("Healing Factor");
+
+
+/*const u8 *gRyuAlchemyEffectItemToStringTable[16] = { @ pidgey or kageru, i need this to be a id:string lookup table, see RyuNatives for your names
+    sRAEffectNoneDesc,
+    sRAEffectDamage1,
+    sRAEffectDamage2,
+    sRAEffectDamage3,
+    sRAEffectDefense1,
+    sRAEffectDefense2,
+    sRAEffectDefense3,
+    sRAEffectRepelT1,
+    sRAEffectRepelT2,
+    sRAEffectSuperCapture1,
+    sRAEffectSuperCapture2,
+    sRAEffectSuperCapture3,
+    sRAEffectEXPBoost1,
+    sRAEffectEXPBoost2,
+    sRAEffectEXPBoost3,
+    sRAEffectHealingFactor
+};*/
+
 

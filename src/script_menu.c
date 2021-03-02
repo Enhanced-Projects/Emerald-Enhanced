@@ -815,6 +815,28 @@ static const u8 sText_BotanyEvolutionItem8[] = _("Dusk Stone");
 static const u8 sText_BotanyEvolutionItem9[] = _("Dawn Stone");
 static const u8 sText_BotanyEvolutionItem10[] = _("Ice Stone");
 
+extern const u8 sRAEffectDamage1[];
+extern const u8 sRAEffectDamage2[];
+extern const u8 sRAEffectDamage3[];
+extern const u8 sRAEffectDefense1[];
+extern const u8 sRAEffectDefense2[];
+extern const u8 sRAEffectDefense3[];
+extern const u8 sRAEffectRepelT1[];
+extern const u8 sRAEffectRepelT2[];
+extern const u8 sRAEffectSuperCapture1[];
+extern const u8 sRAEffectSuperCapture2[];
+extern const u8 sRAEffectSuperCapture3[];
+extern const u8 sRAEffectEXPBoost1[];
+extern const u8 sRAEffectEXPBoost2[];
+extern const u8 sRAEffectEXPBoost3[];
+extern const u8 sRAEffectHealingFactor[];
+static const u8 sRAItemStardust[] = _("Make Stardust");
+static const u8 sRAItemFreshWater[] = _("Make Fresh Water");
+static const u8 sRAItemTonicWater[] = _("Make Tonic Water");
+static const u8 sRAItemMineralWater[] = _("Make Mineral Water");
+static const u8 sRAItemRareCandy[] = _("Make Rare Candy");
+static const u8 sRAItemGoldNugget[] = _("Make Gold Nugget");
+
 static const struct ListMenuItem sBotanyConsumablesSet[] =
 {
     {sText_BotanyConsumableItem1, 0},
@@ -877,6 +899,31 @@ static const struct ListMenuItem sDebugUtilitySet[] =
     {sText_DebugUtilityItem16, 15}
 };
 
+static const struct ListMenuItem sAlchemyMenu[] =
+{
+    {sRAEffectDamage1, 0},
+    {sRAEffectDamage2, 1},
+    {sRAEffectDamage3, 2},
+    {sRAEffectDefense1, 3},
+    {sRAEffectDefense2, 4},
+    {sRAEffectDefense3, 5},
+    {sRAEffectRepelT1, 6},
+    {sRAEffectRepelT2, 7},
+    {sRAEffectSuperCapture1, 8},
+    {sRAEffectSuperCapture2, 9},
+    {sRAEffectSuperCapture3, 10},
+    {sRAEffectEXPBoost1, 11},
+    {sRAEffectEXPBoost2, 12},
+    {sRAEffectEXPBoost3, 13},
+    {sRAEffectHealingFactor, 14},
+    {sRAItemStardust, 15},
+    {sRAItemFreshWater, 16},
+    {sRAItemTonicWater, 17},
+    {sRAItemMineralWater, 18},
+    {sRAItemRareCandy, 19},
+    {sRAItemGoldNugget, 20},
+};
+
 
 struct
 {
@@ -888,6 +935,7 @@ struct
     {sBotanyConsumablesSet, ARRAY_COUNT(sBotanyConsumablesSet)},
     {sBotanyMedicineSet, ARRAY_COUNT(sBotanyMedicineSet)},
     {sBotanyEvolutionSet, ARRAY_COUNT(sBotanyEvolutionSet)},
+    {sAlchemyMenu, ARRAY_COUNT(sAlchemyMenu)},
 };
 
 static void Task_ScrollingMultichoiceInput(u8 taskId);

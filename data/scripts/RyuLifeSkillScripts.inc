@@ -574,3 +574,40 @@ RyuAlchemy_OreRefined:
 
 RyuAlchemy_RefineOreQuery:
     .string "Would you like to turn 2 ores\ninto dust?$"
+
+@actual alchemy check
+
+RyuAlchemy_AttemptCreateEffect::
+    scrollingmultichoice SCROLLINGMULTICHOICE_RYUALCHEMYMENU, 0, 0, 6, 1
+    compare VAR_RESULT, 127
+    goto_if_eq ryu_end
+    copyvar VAR_TEMP_A, VAR_RESULT
+    specialvar VAR_RESULT, RyuAlchemy_TryCraftingItem
+    switch VAR_RESULT
+    case 1000, RA_NotEnoughMetalDust
+    case 2000, RA_LevelNotHighEnough
+    case 4100, RA_Ingredient1Missing
+    case 4200, RA_Ingredient2Missing
+    case 4300, RA_Ingredient3Missing
+    compare VAR_RESULT, ALCHEMY_ITEM_RECIPE_STARDUST
+    goto_if_ge RA_CreateItem
+    callnative RyuBufferEffectName
+    buffernumberstring 1, VAR_TEMP_A
+    msgbox AlchemyEffectSuccessful
+    release
+    end
+
+RA_CreateItem::
+    giveitem VAR_RESULT, 1
+    bufferitemname 0, VAR_RESULT
+    msgbox RA_AlchemyItemSuccessful
+    release
+    end
+
+AlchemyEffectSuccessful:
+    .string "The effect was successfully created!$" @@\n{STR_VAR_2} with {STR_VAR_1} charges available.$"
+    @@ Pidgey or Kageru, this script activates when effect creation was successful
+    @@ See your names in RyuNatives and lifeskill.h
+
+RA_AlchemyItemSuccessful:
+    .string "The {STR_VAR_1} was created\nsuccessfully!$"

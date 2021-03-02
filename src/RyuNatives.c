@@ -1823,3 +1823,11 @@ void RyuDebug_CheckAlchemyStatus(void)
     ConvertIntToDecimalStringN(gStringVar2, gSaveBlock2Ptr->hasAlchemyEffectActive, STR_CONV_MODE_LEFT_ALIGN, 1);
     ConvertIntToDecimalStringN(gStringVar3, gSaveBlock2Ptr->alchemyCharges, STR_CONV_MODE_LEFT_ALIGN, 2);
 }
+
+extern const u8 gRyuAlchemyEffectItemToStringTable;
+
+void RyuBufferEffectName(void)
+{
+    //StringCopy(gStringVar2, *gRyuAlchemyEffectItemToStringTable[gSpecialVar_Result]); 
+    //@pidgey or kageru, this should use the lookup table in lifeskill.h to buffer the name of the active effect when the recipe craft is successful
+}
