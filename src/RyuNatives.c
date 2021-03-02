@@ -1811,6 +1811,7 @@ u16 RyuAlchemy_TryCraftingItem(void)
     {
         gSaveBlock2Ptr->alchemyEffect = recipe;
         gSaveBlock2Ptr->alchemyCharges = sAlchemyRecipes[recipe].givenCharges;
+        gSaveBlock2Ptr->hasAlchemyEffectActive = TRUE;
         VarSet(VAR_TEMP_A, (sAlchemyRecipes[recipe].givenCharges));
     }
     return recipe;
