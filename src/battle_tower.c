@@ -3585,8 +3585,9 @@ void RyuGiveFrontierMon(void)
 
     if (party_id != 6)
     {
-        // TODO: This flag is sometimes set when it shouldn’t, resulting in level 1 Pokemon being handed out. Investigate why and when, and fix it.
-        if (FlagGet(FLAG_TEMP_D)) // flag is set to tell the game to create a level 1 pokemon for the purposes of FEAR.
+        // Flag is set to tell the game to create a level 1 pokemon for the purposes of FEAR.
+        // This can only be set while giving the starting team in frontier mode.
+        if (isPickingFrontierStarter && FlagGet(FLAG_TEMP_D))
             CreateMonWithNature(&gPlayerParty[party_id], mon->species, 1, mon->ivs, mon->nature);
         else
             CreateMonWithNature(&gPlayerParty[party_id], mon->species, level, mon->ivs, mon->nature);
