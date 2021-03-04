@@ -478,7 +478,7 @@ MiningRock8::
     end
 
 MiningRock9::
-    @goto_if_set FLAG_TEMP_9, Ryu_NoOresHere
+    goto_if_set FLAG_TEMP_9, Ryu_NoOresHere
     setflag FLAG_TEMP_9
     call Ryu_MineRock
     release
