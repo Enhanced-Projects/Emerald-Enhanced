@@ -11946,6 +11946,8 @@ static u8 GetCatchingBattler(void)
         return GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
 }
 
+extern void RyuClearAlchemyEffect();
+
 static void Cmd_handleballthrow(void)
 {
     u8 ballMultiplier = 10;
@@ -12101,6 +12103,7 @@ static void Cmd_handleballthrow(void)
 
         }
 
+
         // catchRate is unsigned, which means that it may potentially overflow if sum is applied directly.
         if (catchRate < 21 && ballAddition == -20)
             catchRate = 1;
@@ -12124,6 +12127,32 @@ static void Cmd_handleballthrow(void)
         if (gBattleMons[gBattlerTarget].status1 & (STATUS1_PARALYSIS | STATUS1_FREEZE))
             odds = (odds * 30) / 10;
 
+        if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_MASTER_CAPTURE && gSaveBlock2Ptr->alchemyCharges == 1)
+            {
+                gBattleSpritesDataPtr->animationData->isCriticalCapture = TRUE;
+                gBattleSpritesDataPtr->animationData->criticalCaptureSuccess = TRUE;
+                odds = 255;
+                RyuClearAlchemyEffect();
+            }
+
+        if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_SUPER_CAPTURE && gSaveBlock2Ptr->alchemyCharges == 1 && (Random() % 100 <= 25))
+            {
+                gBattleSpritesDataPtr->animationData->isCriticalCapture = TRUE;
+                gBattleSpritesDataPtr->animationData->criticalCaptureSuccess = TRUE;
+                odds = 255;
+                RyuClearAlchemyEffect();
+            }
+
+        if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_ULTRA_CAPTURE && gSaveBlock2Ptr->alchemyCharges == 1 && (Random() % 100 <= 50))
+            {
+                gBattleSpritesDataPtr->animationData->isCriticalCapture = TRUE;
+                gBattleSpritesDataPtr->animationData->criticalCaptureSuccess = TRUE;
+                odds = 255;
+                RyuClearAlchemyEffect();
+            }
+
+        mgba_printf(LOGINFO, "odds are %d", odds);
+
         if (gLastUsedItem != ITEM_SAFARI_BALL)
         {
             if (gLastUsedItem == ITEM_MASTER_BALL)
@@ -12136,6 +12165,8 @@ static void Cmd_handleballthrow(void)
                     gBattleResults.catchAttempts[gLastUsedItem - ITEM_ULTRA_BALL]++;
             }
         }
+        mgba_printf(LOGINFO, "odds are %d", odds);
+
 
         if (odds > 254) // mon caught
         {

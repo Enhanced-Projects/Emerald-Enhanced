@@ -243,7 +243,7 @@
 #define VAR_RYU_ALCHEMY_COPPER               0x40E1 // Player's copper dust count
 #define VAR_RYU_ALCHEMY_SILVER               0x40E2 // Player's silver dust count
 #define VAR_RYU_ALCHEMY_GOLD                 0x40E3 // Player's gold dust count
-#define VAR_UNUSED_0x40E4                    0x40E4 // var is written to, but never read
+#define VAR_RYU_ALCHEMY_EXP                  0x40E4 // var is written to, but never read
 #define VAR_RYU_AQUA                         0x40E5 // Aqua quest stages
 #define VAR_DAILY_SLOTS                      0x40E6
 #define VAR_DAILY_WILDS                      0x40E7

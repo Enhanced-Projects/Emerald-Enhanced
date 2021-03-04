@@ -1594,7 +1594,7 @@ int RyuGetCurrentMapsec(void)
     return gMapHeader.regionMapSectionId;
 }
 
-void RyuBufferNumApricornsForMenu(void)//buffers the number of apricorns player has for the dynamic menu @@Kageru feel free to optimize this, if you can. If so, see RyuCountGemOres
+void RyuBufferNumApricornsForMenu(void)
 {
     u8 i;
     u16 total1 = 0;
@@ -1755,6 +1755,7 @@ u16 RyuAlchemy_TryCraftingItem(void)
     u8 recipe = (VarGet(VAR_TEMP_A));
     u8 levelReq = 0;
     u8 currentLevel = (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL));
+    u16 currentExp = (VarGet(VAR_RYU_ALCHEMY_EXP));
     u8 metal = 0;
     u16 item1 = 0;
     u16 item2 = 0;
@@ -1770,37 +1771,64 @@ u16 RyuAlchemy_TryCraftingItem(void)
     metalAmountRequired = sAlchemyRecipes[recipe].metalDustAmt;
 
     if (sAlchemyRecipes[recipe].requiredLevel > currentLevel)
+    {
+        mgba_printf(LOGINFO, "Level too low.");
         return 2000; //Level requirement not met for recipe
+    }
     
     if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients[0].quantity)) == FALSE)
+    {
+        mgba_printf(LOGINFO, "Not enough ingr1.");
         return 4100; //Player doesn't have enough of ingredient 1
+    }
 
     if (CheckBagHasItem(item2, (sAlchemyRecipes[recipe].ingredients[1].quantity)) == FALSE)
+    {
+        mgba_printf(LOGINFO, "Not enough ingr2.");
         return 4200; //Player doesn't have enough of ingredient 2
+    }
 
     if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients[2].quantity)) == FALSE)
+    {
+        mgba_printf(LOGINFO, "Not enough ingr3.");
         return 4300; //Player doesn't have enough of ingredient 3
+    }
 
     switch (metal)
     {
         case 0:
+        {
             playerMetalAmt = (VarGet(VAR_RYU_ALCHEMY_COPPER));
             if (playerMetalAmt < metalAmountRequired)
+            {
+                mgba_printf(LOGINFO, "Not enough Metal1.");
                 return 1000; //Player doesn't have enough metal dust for this recipe
+            }
             VarSet(VAR_RYU_ALCHEMY_COPPER, (VarGet(VAR_RYU_ALCHEMY_COPPER) - metalAmountRequired));
             break;
+        }
         case 1:
+        {
             playerMetalAmt = (VarGet(VAR_RYU_ALCHEMY_SILVER));
             if (playerMetalAmt < metalAmountRequired)
-                return 1000; //Player doesn't have enough metal dust for this recipe
+                {
+                    mgba_printf(LOGINFO, "Not enough Metal2.");
+                    return 1000; //Player doesn't have enough metal dust for this recipe
+                }
             VarSet(VAR_RYU_ALCHEMY_SILVER, (VarGet(VAR_RYU_ALCHEMY_SILVER) - metalAmountRequired));
             break;
+        }
         case 2:
+        {
             playerMetalAmt = (VarGet(VAR_RYU_ALCHEMY_GOLD));
             if (playerMetalAmt < metalAmountRequired)
-                return 1000; //Player doesn't have enough metal dust for this recipe
+                {
+                    mgba_printf(LOGINFO, "Not enough Metal3.");
+                    return 1000; //Player doesn't have enough metal dust for this recipe
+                }
             VarSet(VAR_RYU_ALCHEMY_GOLD, (VarGet(VAR_RYU_ALCHEMY_GOLD) - metalAmountRequired));
             break;
+        }
     }
 
     RemoveBagItem(item1, (sAlchemyRecipes[recipe].ingredients[0].quantity));
@@ -1812,8 +1840,12 @@ u16 RyuAlchemy_TryCraftingItem(void)
         gSaveBlock2Ptr->alchemyEffect = recipe;
         gSaveBlock2Ptr->alchemyCharges = sAlchemyRecipes[recipe].givenCharges;
         gSaveBlock2Ptr->hasAlchemyEffectActive = TRUE;
-        VarSet(VAR_TEMP_A, (sAlchemyRecipes[recipe].givenCharges));
     }
+    StringCopy(gStringVar1, gRyuAlchemyEffectItemToStringTable[(recipe)]);
+    ConvertIntToDecimalStringN(gStringVar2, sAlchemyRecipes[recipe].givenCharges, STR_CONV_MODE_LEFT_ALIGN, 4);
+    currentExp += sAlchemyRecipes[recipe].expGiven;
+    VarSet(VAR_RYU_ALCHEMY_EXP, currentExp);
+    mgba_printf(LOGINFO, "Successful. Returning %d", recipe);
     return recipe;
 }
 
@@ -1822,12 +1854,13 @@ void RyuDebug_CheckAlchemyStatus(void)
     ConvertIntToDecimalStringN(gStringVar1, gSaveBlock2Ptr->alchemyEffect, STR_CONV_MODE_LEFT_ALIGN, 2);
     ConvertIntToDecimalStringN(gStringVar2, gSaveBlock2Ptr->hasAlchemyEffectActive, STR_CONV_MODE_LEFT_ALIGN, 1);
     ConvertIntToDecimalStringN(gStringVar3, gSaveBlock2Ptr->alchemyCharges, STR_CONV_MODE_LEFT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gRyuStringVar1, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
+    ConvertIntToDecimalStringN(gRyuStringVar2, VarGet(VAR_RYU_ALCHEMY_EXP), STR_CONV_MODE_LEFT_ALIGN, 5);
 }
 
-extern const u8 gRyuAlchemyEffectItemToStringTable;
-
-void RyuBufferEffectName(void)
+void RyuClearAlchemyEffect(void)
 {
-    //StringCopy(gStringVar2, *gRyuAlchemyEffectItemToStringTable[gSpecialVar_Result]); 
-    //@pidgey or kageru, this should use the lookup table in lifeskill.h to buffer the name of the active effect when the recipe craft is successful
+    gSaveBlock2Ptr->alchemyCharges = 0;
+    gSaveBlock2Ptr->alchemyEffect = 0;
+    gSaveBlock2Ptr->hasAlchemyEffectActive = 0;
 }

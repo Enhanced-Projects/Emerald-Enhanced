@@ -151,6 +151,8 @@ void ResetMenuAndMonGlobals(void)
     ResetPokeblockScrollPositions();
 }
 
+extern void RyuClearAlchemyEffect();
+
 void NewGameInitData(void)
 {
     u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
@@ -321,6 +323,7 @@ void NewGameInitData(void)
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;
+    RyuClearAlchemyEffect();
 }
 
 static void ResetMiniGamesResults(void)

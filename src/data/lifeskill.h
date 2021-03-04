@@ -597,6 +597,7 @@ typedef struct Ingredient {
 
 
 typedef struct AlchemyRecipe {
+  u16 expGiven;
   Ingredient ingredients[3];
   u16 metal;
   u16 metalDustAmt;
@@ -606,7 +607,8 @@ typedef struct AlchemyRecipe {
 
 const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
     [ALCHEMY_EFFECT_NONE] = {
-        .ingredients = {
+          .expGiven = 0,
+          .ingredients = {
           {ITEM_NONE, 0 },
           {ITEM_NONE, 0 },
           {ITEM_NONE, 0 },
@@ -614,10 +616,11 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .metal = 0,
         .metalDustAmt = 0,
         .requiredLevel = 1,
-        .givenCharges = 0
+        .givenCharges = 5
   },
     [ALCHEMY_EFFECT_DAMAGE_BOOST_T1] = {
-        .ingredients = {
+          .expGiven = 5,
+          .ingredients = {
           {ITEM_MUSCLE_POWDER, 3 },
           {ITEM_STARDUST, 2 },
           {ITEM_FRESH_WATER, 1 },
@@ -628,7 +631,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 5,
   },
     [ALCHEMY_EFFECT_DAMAGE_BOOST_T2] = {
-        .ingredients = {
+          .expGiven = 10,
+          .ingredients = {
           {ITEM_MUSCLE_POWDER, 6 },
           {ITEM_STARDUST, 4 },
           {ITEM_TONIC_WATER, 1 },
@@ -639,7 +643,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 5,
   },
     [ALCHEMY_EFFECT_DAMAGE_BOOST_T3] = {
-        .ingredients = {
+          .expGiven = 15,
+          .ingredients = {
           {ITEM_MUSCLE_POWDER, 12 },
           {ITEM_STARDUST, 8 },
           {ITEM_MINERAL_WATER, 4 },
@@ -650,7 +655,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 5,
   },
     [ALCHEMY_EFFECT_DEFENSE_BOOST_T1] = {
-        .ingredients = {
+          .expGiven = 5,
+          .ingredients = {
           {ITEM_TOUGH_POWDER, 3 },
           {ITEM_STARDUST, 2 },
           {ITEM_FRESH_WATER, 1 },
@@ -661,7 +667,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 5,
   },
     [ALCHEMY_EFFECT_DEFENSE_BOOST_T2] = {
-        .ingredients = {
+          .expGiven = 10,
+          .ingredients = {
           {ITEM_TOUGH_POWDER, 6 },
           {ITEM_STARDUST, 4 },
           {ITEM_TONIC_WATER, 2 },
@@ -672,7 +679,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 5,
   },
     [ALCHEMY_EFFECT_DEFENSE_BOOST_T3] = {
-        .ingredients = {
+          .expGiven = 15,
+          .ingredients = {
           {ITEM_TOUGH_POWDER, 12 },
           {ITEM_STARDUST, 8 },
           {ITEM_MINERAL_WATER, 4 },
@@ -683,7 +691,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 5,
   },
     [ALCHEMY_EFFECT_REPEL_T1] = {
-        .ingredients = {
+          .expGiven = 7,
+          .ingredients = {
           {ITEM_RAWST_BERRY, 2 },
           {ITEM_STARDUST, 2 },
           {ITEM_TONIC_WATER, 1 },
@@ -694,7 +703,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 69,
   },
     [ALCHEMY_EFFECT_REPEL_T2] = {
-        .ingredients = {
+          .expGiven = 14,
+          .ingredients = {
           {ITEM_RAWST_BERRY, 4 },
           {ITEM_STARDUST, 4 },
           {ITEM_TONIC_WATER, 1 },
@@ -705,7 +715,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 96,
   },
     [ALCHEMY_EFFECT_SUPER_CAPTURE] = {
-        .ingredients = {
+          .expGiven = 10,
+          .ingredients = {
             {ITEM_BRIGHT_POWDER, 1},
             {ITEM_FRESH_WATER, 1},
             {ITEM_GREAT_BALL, 1},
@@ -716,7 +727,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 1,
     },
     [ALCHEMY_EFFECT_ULTRA_CAPTURE] = {
-        .ingredients = {
+          .expGiven = 20,
+          .ingredients = {
             {ITEM_LUMINOUS_MOSS, 1},
             {ITEM_TONIC_WATER, 1},
             {ITEM_ULTRA_BALL, 1},
@@ -727,7 +739,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 1,
     },
     [ALCHEMY_EFFECT_MASTER_CAPTURE] = {
-        .ingredients = {
+          .expGiven = 30,
+          .ingredients = {
             {ITEM_MENTAL_HERB, 1},
             {ITEM_MINERAL_WATER, 1},
             {ITEM_LUXURY_BALL, 1},
@@ -738,7 +751,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 1,
     },
     [ALCHEMY_EFFECT_EXP_BOOST_T1] = {
-        .ingredients = {
+          .expGiven = 5,
+          .ingredients = {
             {ITEM_RARE_CANDY, 1},
             {ITEM_FRESH_WATER, 1},
             {ITEM_STAR_PIECE, 1},
@@ -749,7 +763,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 10,
     },
     [ALCHEMY_EFFECT_EXP_BOOST_T2] = {
-        .ingredients = {
+          .expGiven = 10,
+          .ingredients = {
             {ITEM_RARE_CANDY, 2},
             {ITEM_TONIC_WATER, 1},
             {ITEM_BIG_PEARL, 1},
@@ -760,7 +775,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 10,
     },
     [ALCHEMY_EFFECT_EXP_BOOST_T3] = {
-        .ingredients = {
+          .expGiven = 15,
+          .ingredients = {
             {ITEM_RARE_CANDY, 3},
             {ITEM_MINERAL_WATER, 1},
             {ITEM_GOLD_NUGGET, 1},
@@ -771,7 +787,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .givenCharges = 10,
     },
     [ALCHEMY_EFFECT_HEALING_FACTOR] = {
-        .ingredients = {
+          .expGiven = 10,
+          .ingredients = {
             {ITEM_HEAL_POWDER, 3},
             {ITEM_MINERAL_WATER, 1},
             {ITEM_ORAN_BERRY, 1},
@@ -784,7 +801,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
 
     //Alchemy Item Recipes Below.
     [ALCHEMY_ITEM_RECIPE_STARDUST] = {
-        .ingredients = {
+          .expGiven = 5,
+          .ingredients = {
             {ITEM_SOFT_SAND, 2},
             {ITEM_GEM_POWDER, 2},
             {ITEM_NONE, 0},
@@ -796,7 +814,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
     },
 
     [ALCHEMY_ITEM_RECIPE_FRESH_WATER] = {
-        .ingredients = {
+          .expGiven = 10,
+          .ingredients = {
             {ITEM_SNOWBALL, 2},
             {ITEM_FIRE_STONE, 1},
             {ITEM_NONE, 1},
@@ -808,7 +827,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
     },
 
     [ALCHEMY_ITEM_RECIPE_TONIC_WATER] = {
-        .ingredients = {
+          .expGiven = 20,
+          .ingredients = {
             {ITEM_FRESH_WATER, 2},
             {ITEM_CHARCOAL, 1},
             {ITEM_NONE, 1},
@@ -820,7 +840,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
     },
 
     [ALCHEMY_ITEM_RECIPE_MINERAL_WATER] = {
-        .ingredients = {
+          .expGiven = 40,
+          .ingredients = {
             {ITEM_TONIC_WATER, 2},
             {ITEM_SOFT_SAND, 1},
           {ITEM_SHOAL_SALT, 1},
@@ -832,7 +853,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
     },
 
     [ALCHEMY_ITEM_RECIPE_RARE_CANDY] = {
-        .ingredients = {
+          .expGiven = 20,
+          .ingredients = {
             {ITEM_LEMONADE, 1},
             {ITEM_MINERAL_WATER, 1},
             {ITEM_SMART_POWDER, 1},
@@ -844,7 +866,8 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
     },
 
     [ALCHEMY_ITEM_RECIPE_GOLD_NUGGET] = {
-        .ingredients = {
+          .expGiven = 20,
+          .ingredients = {
             {ITEM_LEMONADE, 1},
             {ITEM_MINERAL_WATER, 1},
             {ITEM_SMART_POWDER, 1},
@@ -873,8 +896,7 @@ const u8 sRAEffectEXPBoost2[] =        _("T2 Exp Boost");
 const u8 sRAEffectEXPBoost3[] =        _("T3 Exp Boost");
 const u8 sRAEffectHealingFactor[] =    _("Healing Factor");
 
-
-/*const u8 *gRyuAlchemyEffectItemToStringTable[16] = { @ pidgey or kageru, i need this to be a id:string lookup table, see RyuNatives for your names
+const u8 * const gRyuAlchemyEffectItemToStringTable[16] = {
     sRAEffectNoneDesc,
     sRAEffectDamage1,
     sRAEffectDamage2,
@@ -891,6 +913,6 @@ const u8 sRAEffectHealingFactor[] =    _("Healing Factor");
     sRAEffectEXPBoost2,
     sRAEffectEXPBoost3,
     sRAEffectHealingFactor
-};*/
+};
 
 

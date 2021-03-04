@@ -581,6 +581,7 @@ RyuAlchemy_AttemptCreateEffect::
     scrollingmultichoice SCROLLINGMULTICHOICE_RYUALCHEMYMENU, 0, 0, 6, 1
     compare VAR_RESULT, 127
     goto_if_eq ryu_end
+    addvar VAR_RESULT, 1
     copyvar VAR_TEMP_A, VAR_RESULT
     specialvar VAR_RESULT, RyuAlchemy_TryCraftingItem
     switch VAR_RESULT
@@ -591,23 +592,113 @@ RyuAlchemy_AttemptCreateEffect::
     case 4300, RA_Ingredient3Missing
     compare VAR_RESULT, ALCHEMY_ITEM_RECIPE_STARDUST
     goto_if_ge RA_CreateItem
-    callnative RyuBufferEffectName
-    buffernumberstring 1, VAR_TEMP_A
     msgbox AlchemyEffectSuccessful
+    closemessage
+    call RyuAlchemy_CheckForLevelup
     release
     end
+
+RADB_1:
+    .string "Player selected {STR_VAR_1}$"
+
+RADB_2:
+    .string "Function returned {STR_VAR_1}$"
 
 RA_CreateItem::
     giveitem VAR_RESULT, 1
     bufferitemname 0, VAR_RESULT
     msgbox RA_AlchemyItemSuccessful
+    closemessage
+    call RyuAlchemy_CheckForLevelup
     release
     end
 
+RA_NotEnoughMetalDust::
+    msgbox RA_DontHaveEnoughDust
+    closemessage
+    goto RyuAlchemy_AttemptCreateEffect
+
+RA_LevelNotHighEnough::
+    msgbox RA_DontHaveEnoughLevels
+    closemessage
+    goto RyuAlchemy_AttemptCreateEffect
+    
+RA_Ingredient1Missing::
+    msgbox RA_DontHaveEnoughIngr1
+    closemessage
+    goto RyuAlchemy_AttemptCreateEffect
+    
+RA_Ingredient2Missing::
+    msgbox RA_DontHaveEnoughIngr2
+    closemessage
+    goto RyuAlchemy_AttemptCreateEffect
+    
+RA_Ingredient3Missing::
+    msgbox RA_DontHaveEnoughIngr3
+    closemessage
+    goto RyuAlchemy_AttemptCreateEffect
+
+RyuAlchemy_CheckForLevelup::
+    switch VAR_RYU_PLAYER_ALCHEMY_SKILL
+    case 5, RA_LevelFive
+    case 4, RA_LevelFour
+    case 3, RA_LevelThree
+    case 2, RA_LevelTwo
+    case 1, RA_LevelOne
+    case 0, RA_LevelZero
+    goto ryu_return
+
+RA_LevelZero::
+    goto ryu_return
+
+RA_LevelOne::
+    compare VAR_RYU_ALCHEMY_EXP, 1024
+    goto_if_ge RA_LevelUp
+    goto ryu_return
+
+RA_LevelTwo::
+    compare VAR_RYU_ALCHEMY_EXP, 2560
+    goto_if_ge RA_LevelUp
+    goto ryu_return
+
+RA_LevelThree::
+    compare VAR_RYU_ALCHEMY_EXP, 3584
+    goto_if_ge RA_LevelUp
+    goto ryu_return
+
+RA_LevelFour::
+    compare VAR_RYU_ALCHEMY_EXP, 4720
+    goto_if_ge RA_LevelUp
+    goto ryu_return
+
+RA_LevelFive::
+    goto ryu_return
+
+RA_LevelUp::
+    msgbox RA_LevelIncreased
+    closemessage
+    return
+
+RA_LevelIncreased:
+    .string "You feel increasingly more in-tune\nwith the ancients.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Alchemy Level increased.)$"
+
+RA_DontHaveEnoughDust:
+    .string "You don't have enough metal dust\nfor this recipe.$"
+
+RA_DontHaveEnoughLevels:
+    .string "Your Alchemy level is not high\nenough to create this recipe.$"
+
+RA_DontHaveEnoughIngr1:
+    .string "You're missing some or all of\nIngredient 1.$"
+
+RA_DontHaveEnoughIngr2:
+    .string "You're missing some or all of\nIngredient 2.$"
+
+RA_DontHaveEnoughIngr3:
+    .string "You're missing some or all of\nIngredient 3.$"
+
 AlchemyEffectSuccessful:
-    .string "The effect was successfully created!$" @@\n{STR_VAR_2} with {STR_VAR_1} charges available.$"
-    @@ Pidgey or Kageru, this script activates when effect creation was successful
-    @@ See your names in RyuNatives and lifeskill.h
+    .string "The effect was successfully created!\n{STR_VAR_1} with {STR_VAR_2} charges left.$"
 
 RA_AlchemyItemSuccessful:
     .string "The {STR_VAR_1} was created\nsuccessfully!$"

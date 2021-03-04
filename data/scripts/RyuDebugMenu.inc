@@ -18,7 +18,7 @@ RyuDebugMenuScript::
 	case 2, RyuDebug_quickstart
 	case 3, RyuDebug_pokeedit
 	case 4, RyuDebug_enableWaystone
-	case 5, RyuDebug_Init_GiveAllItems
+	case 5, RyuDebug_GiveItems
 	case 6, RyuDebug_DisableDebug
 	case 7, RyuDebug_ShowBetaMenu
 	case 8, RyuDebug_cancel
@@ -33,7 +33,7 @@ RyuDebug_menu_nodevcheck::
 	case 2, RyuDebug_quickstart
 	case 3, RyuDebug_pokeedit
 	case 4, RyuDebug_enableWaystone
-	case 5, RyuDebug_Init_GiveAllItems
+	case 5, RyuDebug_GiveItems
 	case 6, RyuDebug_DisableDebug
 	case 7, RyuDebug_ShowBetaMenu
 	case 8, RyuDebug_cancel
@@ -241,25 +241,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	additem ITEM_MUSCLE_POWDER, 12
-	additem ITEM_STARDUST, 8
-	additem ITEM_FRESH_WATER, 10
-	setvar VAR_RYU_PLAYER_ALCHEMY_SKILL, 1
-	msgbox recipequery, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_ne ryu_end
-	setvar VAR_TEMP_A, 1
-	specialvar VAR_RESULT, RyuAlchemy_TryCraftingItem
-	buffernumberstring 5, VAR_RESULT
-	msgbox reciperesult
-	release
-	end
-
-reciperesult:
-	.string "Result was: {RYU_STR_3}$"
-
-recipequery:
-	.string "Do recipe?$"
+	goto RyuAlchemy_AttemptCreateEffect
 
 RDB_AlchemyInfo::
 	callnative RyuDebug_CheckAlchemyStatus
@@ -269,7 +251,11 @@ RDB_AlchemyInfo::
 	end
 
 RDB_AlchemyInfoMsg:
-	.string "Has Alchemy effect active? {STR_VAR_1}\nCurrent effect is {STR_VAR_2}, with {STR_VAR_3} charges left.$"
+	.string "Has Alchemy effect active? {STR_VAR_1}\n"
+	.string "Current effect is {STR_VAR_2},\l"
+	.string "with {STR_VAR_3} charges left.\p"
+	.string "Player's alchemy level is {RYU_STR_1}.\n"
+	.string "Player's Alchemy exp is {RYU_STR_2}.$"
 
 RDB_GiveOrTakeAllAchievements::
 	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO
@@ -374,22 +360,61 @@ settimequery:
 RDB_Readout_2:
 	.string "Time was changed to: {STR_VAR_1}:{STR_VAR_2}:{STR_VAR_3}  $"
 
-RyuDebug_Init_GiveAllItems::
+RyuDebug_GiveItems::
+	msgbox RDB_GiveTMsQuery MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuDebug_Init_GiveAllTMs
+	msgbox AlchemyKitQuery MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuDebug_GiveAlchemyKit
+	msgbox ItemsKitQuery MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuDebug_GiveItemsKit
+	msgbox RyuDebug_MoneyMsg MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	call_if_eq RyuDebug_money
+	msgbox KeyItemsKitQuery MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuDebug_GiveKeyItemsKit
+	goto RyuDebug_menu_nodevcheck
+
+RyuDebug_Init_GiveAllTMs::
 	setvar VAR_TEMP_2, 482
-	msgbox RyuDebug_GiveAllItemsBeginMsg MSGBOX_DEFAULT
-	goto RyuDebug_GiveAllItems
+	msgbox RyuDebug_GiveAllTMsBeginMsg MSGBOX_DEFAULT
+	closemessage
+	goto RyuDebug_GiveAllTMs
 	
-RyuDebug_GiveAllItems::
-	additem VAR_TEMP_2, 100
+RyuDebug_GiveAllTMs::
+	additem VAR_TEMP_2, 1
 	addvar VAR_TEMP_2, 1
-	goto RyuDebug_ReturnCallItems
+	goto RyuDebug_ReturnCallTMs
 	
-RyuDebug_ReturnCallItems::
+RyuDebug_ReturnCallTMs::
 	compare VAR_TEMP_2, 546
-	goto_if_eq RyuDebugGiveItemsDone
-	goto RyuDebug_GiveAllItems
+	goto_if_eq RyuDebugGiveTMsDone
+	goto RyuDebug_GiveAllTMs
 	
-RyuDebugGiveItemsDone::
+RyuDebugGiveTMsDone::
+	goto ryu_return
+
+RyuDebug_GiveAlchemyKit::
+	setvar VAR_RYU_PLAYER_ALCHEMY_SKILL, 5
+	setvar VAR_RYU_ALCHEMY_EXP, 5000
+	additem ITEM_FRESH_WATER, 100
+	additem ITEM_TONIC_WATER, 100
+	additem ITEM_MINERAL_WATER, 100
+	additem ITEM_MUSCLE_POWDER, 100
+	additem ITEM_SMART_POWDER, 100
+	additem ITEM_STARDUST, 100
+	additem ITEM_TOUGH_POWDER, 100
+	additem ITEM_RAWST_BERRY, 100
+	additem ITEM_BRIGHT_POWDER, 100
+	additem ITEM_ORAN_BERRY, 100
+	setvar VAR_RYU_ALCHEMY_COPPER, 50000
+	setvar VAR_RYU_ALCHEMY_SILVER, 50000
+	setvar VAR_RYU_ALCHEMY_GOLD, 50000
+
+RyuDebug_GiveItemsKit:
 	additem ITEM_FULL_RESTORE, 100
 	additem ITEM_MAX_ELIXIR, 100
 	additem ITEM_MAX_REVIVE, 100
@@ -399,23 +424,40 @@ RyuDebugGiveItemsDone::
 	additem ITEM_LUXURY_BALL, 100
 	additem ITEM_MASTER_BALL, 100
 	additem ITEM_MAX_REPEL, 100
+	additem ITEM_BIG_PEARL, 100
+	return
+
+RyuDebug_GiveKeyItemsKit::
 	additem ITEM_MEGA_BRACELET, 1
 	additem ITEM_EXP_DRIVE, 1
-	msgbox RyuDebug_GiveAllItemsDoneMsg MSGBOX_DEFAULT
-	msgbox RyuDebug_MoneyMsg MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_eq RyuDebug_money
-	release
-	end
+	additem ITEM_FORECASTER, 1
+	additem ITEM_IMPRINTER, 1
+	additem ITEM_EXP_SHARE, 1
+	additem ITEM_SOOT_SACK, 1
+	additem ITEM_RECIPE_BOOK, 1
+	additem ITEM_REAGENT_POUCH, 1
+	return
 
 RyuDebug_MoneyMsg:
 	.string "Give Dev Mode money payout?$"
+
+RDB_GiveTMsQuery:
+	.string "Would you like all TMs?$"
 	
-RyuDebug_GiveAllItemsDoneMsg:
+RyuDebug_GiveAllTMsDoneMsg:
 	.string "Finished giving starter kit.$"
 	
-RyuDebug_GiveAllItemsBeginMsg:
+RyuDebug_GiveAllTMsBeginMsg:
 	.string "Giving all tms...$"
+
+AlchemyKitQuery:
+	.string "Do you want Alchemy items?$"
+
+ItemsKitQuery:
+	.string "Do you want adventuring items?$"
+
+KeyItemsKitQuery:	
+	.string "Do you want special Key Items?$"
 
 RyuDebug_givemonsquery:
 	.string "Would you like to be given\nall the Pokémon in the game?$"
@@ -536,7 +578,7 @@ RyuDebug_SkipTutorial::
 	closemessage
 	msgbox RyuDebug_GiveItemQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1
-	goto_if_eq RyuDebug_Init_GiveAllItems
+	call_if_eq RyuDebug_Init_GiveAllTMs
 	release
 	end
 
@@ -544,7 +586,7 @@ LRT_GameStartVariablesInfoMsg:
 	.string "New Game Flags and Variables Set.$"
 
 RyuDebug_GiveItemQuery:
-	.string "Would you like the starter kit\nfor core items?$"
+	.string "Would you like to have all TMs?$"
 
 RyuNewGameQuery:
 	.string "Would you like to activate the new\ngame scripts?$"
