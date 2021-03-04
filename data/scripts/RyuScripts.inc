@@ -1388,6 +1388,7 @@ RyuTemp_StartMenuConfig:
     .string "{COLOR LIGHT_RED}{SHADOW RED}L+R {COLOR DARK_GREY}{SHADOW LIGHT_GREY}: Enable/Disable Jukebox\l"
     .string "{COLOR LIGHT_RED}{SHADOW RED}R(With Jukebox On){COLOR DARK_GREY}{SHADOW LIGHT_GREY}:Skip to Next Song\l"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Left:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Realign Follower\p"
+	.string "You can hold L while selecting\nyour name in the start menu to open\lthe Achievement Atlas.\p"
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Open Beta Menu?$"
 
 
