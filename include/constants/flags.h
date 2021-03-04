@@ -1692,7 +1692,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 40
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 41
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -1737,7 +1737,7 @@
 #define ACH_WELL_TRAVELLED  37
 #define ACH_MENTOR  38
 #define ACH_UNDERTAKER 39
-#define ACH_UNUSED_41  40
+#define ACH_FIELD_MEDIC  40
 #define ACH_UNUSED_42  41
 #define ACH_UNUSED_43  42
 #define ACH_UNUSED_44  43

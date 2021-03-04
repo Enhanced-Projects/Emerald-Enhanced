@@ -118,6 +118,9 @@ static const u8 sMentorDesc[] = _("You finished mentoring a girl from\nthe Schoo
 static const u8 sUndertakerLabel[] = _("Undertaker");
 static const u8 sUndertakerDesc[] = _("You laid an ailing spirit to rest.\nMimi is eternally grateful!");
 
+static const u8 sFieldMedicLabel[] = _("Field Medic");
+static const u8 sFieldMedicDesc[] = _("You healed another trainer's Pokemon.\nYou're practically an Army doctor!");
+
 
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
@@ -141,7 +144,7 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_WATER_LOGGED] = {45, 37, CATEGORY_QUESTING, ACH_WATER_LOGGED, sWaterLoggedLabel, sWaterLoggedAchDesc}, // Aqua neutral ending
     [ACH_ASTRONOMICAL] = {43, 37, CATEGORY_QUESTING, ACH_ASTRONOMICAL, sAstronomicalLabel, sAstronomicalAchDesc}, // Devon Scientist ending
     [ACH_CORPORATE_SHILL] = {43, 35, CATEGORY_QUESTING, ACH_CORPORATE_SHILL, sCorporateShillLabel, sCorporateShillAchDesc}, // Devon Corporate ending
-    [ACH_DEJA_VU] = {43, 33, CATEGORY_QUESTING, ACH_DEJA_VU, sDejaVuLabel, sDejaVuDesc}, // Completed all main quest endings
+    [ACH_DEJA_VU] = {47, 35, CATEGORY_QUESTING, ACH_DEJA_VU, sDejaVuLabel, sDejaVuDesc}, // Completed all main quest endings
     [ACH_NTMO] = {10, 33, CATEGORY_EXPLORATION, ACH_NTMO, sNTMOLabel, sNTMODesc}, //capture a legendary with a poke ball
     [ACH_POKEMON_MASTER] = {10, 35, CATEGORY_EXPLORATION, ACH_POKEMON_MASTER, sPokemonMasterLabel, sPokemonMasterDesc}, //Own at least 386 unique pokemon
     [ACH_MASTER_BREEDER] = {10, 37, CATEGORY_EXPLORATION, ACH_MASTER_BREEDER, sMasterBreederLabel, sMasterBreederDesc}, //Hatch 100 or more eggs
@@ -159,6 +162,7 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_MULTIPLICATIVE] = {30, 37, CATEGORY_BATTLE, ACH_MULTIPLICATIVE, sOverkill10xLabel, sOverkill10xDesc}, //Dealt 10x damage to an enemy in battle
     [ACH_EXPONENTIAL] = {30, 35, CATEGORY_BATTLE, ACH_EXPONENTIAL, sOverkill20xLabel, sOverkill20xDesc}, //Dealt 20x damage to an enemy in battle
     [ACH_WELL_TRAVELLED] = {12, 31, CATEGORY_EXPLORATION, ACH_WELL_TRAVELLED, sWellTravelledLabel, sWellTravelledDesc}, //Visit every City in the game.
-    [ACH_MENTOR] = {57, 43, CATEGORY_COMPANIONS, ACH_MENTOR, sMentorLabel, sMentorDesc},// Mentored the lass in route 103.
-    [ACH_UNDERTAKER] = {10, 31, CATEGORY_EXPLORATION, ACH_UNDERTAKER, sUndertakerLabel, sUndertakerDesc}, //put the Hexer's beloved Mimi to rest.
+    [ACH_MENTOR] = {39, 33, CATEGORY_QUESTING, ACH_MENTOR, sMentorLabel, sMentorDesc},// Mentored the lass in route 103.
+    [ACH_UNDERTAKER] = {41, 33, CATEGORY_QUESTING, ACH_UNDERTAKER, sUndertakerLabel, sUndertakerDesc}, //put the Hexer's beloved Mimi to rest.
+    [ACH_FIELD_MEDIC] = {43, 33, CATEGORY_QUESTING, ACH_FIELD_MEDIC, sFieldMedicLabel, sFieldMedicDesc},
 };

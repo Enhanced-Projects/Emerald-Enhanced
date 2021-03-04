@@ -969,6 +969,7 @@ r110_SelectedAdequateItem::
 	msgbox r110_PikachuLooksBetter
 	changefactionstanding FACTION_POKEFANS, 30, FALSE
 	setflag FLAG_RYU_HELPED_POKEFAN_PIKACHU
+	ach give ACH_FIELD_MEDIC
 	release
 	end
 
@@ -977,6 +978,7 @@ r110_SelectedBestItem::
 	msgbox r110_PikaPerkedUp
 	changefactionstanding FACTION_POKEFANS, 50, FALSE
 	setflag FLAG_RYU_HELPED_POKEFAN_PIKACHU
+	ach give ACH_FIELD_MEDIC
 	release
 	end
 
