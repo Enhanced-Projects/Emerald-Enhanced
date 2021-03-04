@@ -84,9 +84,9 @@
 #define FLAG_RYU_DEVON_CORPORATE             0x48
 #define FLAG_RYU_ULTRA_BEASTS_ESCAPED        0x49
 #define FLAG_RYU_MOLTRES                     0x4A
-#define FLAG_UNUSED_0x4B                     0x4B
-#define FLAG_UNUSED_0x4C                     0x4C
-#define FLAG_UNUSED_0x4D                     0x4D
+#define FLAG_RYU_HIDE_MTPYRE_HEXER           0x4B
+#define FLAG_RYU_HEXER_FACTION_QUEST_ACTIVE  0x4C
+#define FLAG_RYU_PLAYER_RECEIVED_STANDING_FROM_MIMIS_GRAVE    0x4D
 #define FLAG_UNUSED_0x4E                     0x4E
 #define FLAG_UNUSED_0x4F                     0x4F
 
@@ -1692,7 +1692,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 39
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 40
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -1736,7 +1736,7 @@
 #define ACH_EXPONENTIAL  36
 #define ACH_WELL_TRAVELLED  37
 #define ACH_MENTOR  38
-#define ACH_UNUSED_40  39
+#define ACH_UNDERTAKER 39
 #define ACH_UNUSED_41  40
 #define ACH_UNUSED_42  41
 #define ACH_UNUSED_43  42

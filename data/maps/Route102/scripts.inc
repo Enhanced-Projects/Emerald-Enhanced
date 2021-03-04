@@ -32,6 +32,9 @@ Route102_EventScript_Tiana:: @ 81EC1CA
 	trainerbattle_single TRAINER_TIANA, Route102_Text_TianaIntro, Route102_Text_TianaDefeated
 	msgbox Route102_Text_TianaPostBattle
 	closemessage
+	checkfactionstanding FACTION_SCHOOLKIDS, 50
+	compare VAR_RESULT, TRUE
+	goto_if_eq ryu_end
 	msgbox r102_FollowerTianaQuery, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq r102_FollowerTiana

@@ -30,6 +30,7 @@ RyuFollowerSelectNPCScript::
 	case OBJ_EVENT_GFX_MAGMA_MEMBER_F, MH4_CourtneyScript
 	case OBJ_EVENT_GFX_NURSE, RyuFollower_NurseJoy
 	case OBJ_EVENT_GFX_LASS, r102_FollowerTianaScript
+	case OBJ_EVENT_GFX_HEX_MANIAC, MP_FQ_HexerFollowerScript
 	end
 
 RyuFollower_ShellyScript::

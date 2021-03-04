@@ -115,6 +115,9 @@ static const u8 sWellTravelledDesc[] = _("You've visited every single city\nin t
 static const u8 sMentorLabel[] = _("Mentor");
 static const u8 sMentorDesc[] = _("You finished mentoring a girl from\nthe School Kids faction.\nWell done, teach!");
 
+static const u8 sUndertakerLabel[] = _("Undertaker");
+static const u8 sUndertakerDesc[] = _("You laid an ailing spirit to rest.\nMimi is eternally grateful!");
+
 
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
@@ -156,5 +159,6 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_MULTIPLICATIVE] = {30, 37, CATEGORY_BATTLE, ACH_MULTIPLICATIVE, sOverkill10xLabel, sOverkill10xDesc}, //Dealt 10x damage to an enemy in battle
     [ACH_EXPONENTIAL] = {30, 35, CATEGORY_BATTLE, ACH_EXPONENTIAL, sOverkill20xLabel, sOverkill20xDesc}, //Dealt 20x damage to an enemy in battle
     [ACH_WELL_TRAVELLED] = {12, 31, CATEGORY_EXPLORATION, ACH_WELL_TRAVELLED, sWellTravelledLabel, sWellTravelledDesc}, //Visit every City in the game.
-    [ACH_MENTOR] = {57, 43, CATEGORY_COMPANIONS, ACH_MENTOR, sMentorLabel, sMentorDesc},
+    [ACH_MENTOR] = {57, 43, CATEGORY_COMPANIONS, ACH_MENTOR, sMentorLabel, sMentorDesc},// Mentored the lass in route 103.
+    [ACH_UNDERTAKER] = {10, 31, CATEGORY_EXPLORATION, ACH_UNDERTAKER, sUndertakerLabel, sUndertakerDesc}, //put the Hexer's beloved Mimi to rest.
 };
