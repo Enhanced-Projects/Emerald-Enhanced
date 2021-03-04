@@ -47,6 +47,7 @@
 #include "mevent.h"
 #include "union_room_chat.h"
 #include "constants/map_groups.h"
+#include "factions.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -174,6 +175,7 @@ void NewGameInitData(void)
         ClearSav1_SkipDex();
     }
     
+    RyuFactions_ResetAllStanding();
     gDifferentSaveFile = 1;
     gSaveBlock2Ptr->encryptionKey = 0;
     ZeroPlayerPartyMons();

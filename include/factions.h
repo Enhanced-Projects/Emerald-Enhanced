@@ -8,7 +8,7 @@
 #include "string_util.h"
 #include "event_data.h"
 
-
+void RyuFactions_ResetAllStanding(void);
 bool8 ScrCmd_checkfaction(struct ScriptContext *ctx);
 void RyuAdjustFactionValueInternal(u8 id, u8 amount, bool8 negative);
 void RyuAdjustOpposingFactionValues(u8 id, u8 amount, bool8 negative);

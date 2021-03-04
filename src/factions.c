@@ -5,16 +5,14 @@
 #include "string_util.h"
 #include "event_data.h"
 
+void RyuFactions_ResetAllStanding(void)
+{
+    memset(gSaveBlock1Ptr->gNPCTrainerFactionRelations, 0, sizeof(gSaveBlock1Ptr->gNPCTrainerFactionRelations));
+}
+
 
 void RyuDebug_ViewFactionRelations(void)
 {
-    mgba_printf(LOGINFO, "faction 0 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEFANS]);
-    mgba_printf(LOGINFO, "faction 1 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NATURALISTS]);
-    mgba_printf(LOGINFO, "faction 2 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_ATHLETES]);
-    mgba_printf(LOGINFO, "faction 3 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NERDS]);
-    mgba_printf(LOGINFO, "faction 4 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_PROFESSIONALS]);
-    mgba_printf(LOGINFO, "faction 5 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_RICHKIDS]);
-    mgba_printf(LOGINFO, "faction 6 has %d standing", gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_SCHOOLKIDS]);
     ConvertIntToDecimalStringN(gStringVar1, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEFANS], STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gStringVar2, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NATURALISTS], STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_ATHLETES], STR_CONV_MODE_LEFT_ALIGN, 3);
