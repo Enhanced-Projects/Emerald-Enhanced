@@ -61,7 +61,7 @@ MP_PreventLeavingIfOnFactionQuest::
 	end
 
 MP_CantLeave:
-	.string "You must escort the Wiccan\nto the summit of Mt. Pyre.$"
+	.string "You must escort the Wiccan\nto the 6th floor of Mt. Pyre.$"
 
 MP_FactionQuestHexer::
 	compare VAR_RYU_AQUA, 80
@@ -127,7 +127,7 @@ MP_FQ_HexerIntroQuery:
 	.string "Mimi was my only Pokémon, and um...\n"
 	.string "she... unfortunately passed away.\p"
 	.string "Could you escort me to the\n"
-	.string "summit?$"
+	.string "sixth floor?$"
 
 MP_FQ_HexerExplain::
 	.string "I can see you're confused.\p"
@@ -141,7 +141,7 @@ MP_FQ_HexerExplain::
 MP_FQ_HexerStartQuest::
 	.string "Since I don't have any living\n"
 	.string "Pokémon, I need a trainer to\l"
-	.string "take me to the summit, where\p"
+	.string "take me to the sixth floor, so\p"
 	.string "I can bury my dear Mimi.$"
 
 MP_FQ_HexerFollowDialogue::

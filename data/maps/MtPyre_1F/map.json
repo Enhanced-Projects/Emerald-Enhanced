@@ -128,7 +128,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_5",
       "var_value": "0",
-      "script": "NULL"
+      "script": "MP_PreventLeavingIfOnFactionQuest"
     }
   ],
   "bg_events": [
