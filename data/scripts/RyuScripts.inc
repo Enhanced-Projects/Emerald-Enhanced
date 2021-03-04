@@ -2020,7 +2020,7 @@ RS_ACH_RECEIVED:
 RyuScript_CheckFollowerFactionChanges::
 	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LASS
 	goto_if_ne ryu_end
-	checkfactionstanding FACTION_SCHOOLKIDS, 80, FALSE
+	checkfactionstanding FACTION_SCHOOLKIDS, 80
 	compare VAR_RESULT, TRUE
 	goto_if_eq ryu_end
 	changefactionstanding FACTION_SCHOOLKIDS, 1, FALSE

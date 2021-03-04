@@ -67,6 +67,7 @@
 #include "pokemon.h"
 #include "autoscale_tables.h"
 #include "ach_atlas.h"
+#include "factions.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_SE1;
 extern struct MusicPlayerInfo gMPlayInfo_SE2;
@@ -1929,6 +1930,12 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         for (i = 0; i < monsCount; i++)
         {
             u16 level = RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength);
+
+            if ((GetFactionStanding(trainerNum)) <= 20 && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))//If faction standing is low enough, this trainer is stronger. EXCEPT IN FRONTIER.
+                level += 12;
+            else if ((GetFactionStanding(trainerNum)) <= 50  && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))
+                level += 7;
+
             nameHash += trainerNameHash;
             switch (gTrainers[trainerNum].partyFlags)
             {

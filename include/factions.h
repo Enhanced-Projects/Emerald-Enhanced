@@ -10,6 +10,7 @@
 
 void RyuFactions_ResetAllStanding(void);
 bool8 ScrCmd_checkfaction(struct ScriptContext *ctx);
+u8 GetFactionStanding(u16 trainerId);
 void RyuAdjustFactionValueInternal(u8 id, u8 amount, bool8 negative);
 void RyuAdjustOpposingFactionValues(u8 id, u8 amount, bool8 negative);
 bool8 ScrCmd_changefactionstanding(struct ScriptContext *ctx);

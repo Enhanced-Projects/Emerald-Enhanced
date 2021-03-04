@@ -7,7 +7,11 @@
 
 void RyuFactions_ResetAllStanding(void)
 {
-    memset(gSaveBlock1Ptr->gNPCTrainerFactionRelations, 0, sizeof(gSaveBlock1Ptr->gNPCTrainerFactionRelations));
+    u8 i = 0;
+    for (i = 0; i < 7; i++)
+        {
+            gSaveBlock1Ptr->gNPCTrainerFactionRelations[i] = 100;//new default/neutral standing is 100
+        }
 }
 
 
@@ -29,15 +33,31 @@ bool8 ScrCmd_checkfaction(struct ScriptContext *ctx)
     u8 currentStanding = gSaveBlock1Ptr->gNPCTrainerFactionRelations[targetTrainerFaction];
 
     gSpecialVar_Result = targetTrainerFaction;
-    ConvertIntToDecimalStringN(gRyuStringVar4, targetTrainerFaction, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar4, currentStanding, STR_CONV_MODE_LEFT_ALIGN, 3);
+}
+
+u8 GetFactionStanding(u16 trainerId) //this should return the value of player's standing in trainerId's faction
+{
+    return gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)];
 }
 
 void RyuAdjustFactionValueInternal(u8 id, u8 amount, bool8 negative)
 {
+    s16 currentStanding = gSaveBlock1Ptr->gNPCTrainerFactionRelations[id]; //i need this to be able to hold values larger than 255 and lower than 0, just in case.
     if (negative)
-        gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] -= amount;
+    {
+        if (currentStanding - amount >= 0)//new minimum value is 0.
+            gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] -= amount;
+        else
+            gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] = 0;
+    }
     else
-        gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] += amount;
+    {
+        if (currentStanding + amount <= 200)//new maximum value is 200.
+            gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] += amount;
+        else
+            gSaveBlock1Ptr->gNPCTrainerFactionRelations[id] = 200;
+    }
 }
 
 // If/when there are more switches like this in the future, it might be worth making an array of opposites.
@@ -73,7 +93,6 @@ void RyuAdjustOpposingFactionValues(u8 id, u8 amount, bool8 negative)
 bool8 ScrCmd_changefactionstanding(struct ScriptContext *ctx)
 {
     u8 factionId = ScriptReadByte(ctx);
-    // could this just be s8? then we wouldn’t need negative and could get rid of some more branching
     u8 amount = ScriptReadByte(ctx);
     bool8 negative = ScriptReadByte(ctx);
 
@@ -85,11 +104,12 @@ bool8 ScrCmd_changefactionstanding(struct ScriptContext *ctx)
 bool8 ScrCmd_checkfactionstanding(struct ScriptContext *ctx)
 {
     u8 factionId = ScriptReadByte(ctx);
-    s8 amount = (s8)ScriptReadByte(ctx); //cast to s8 so that i could check if a faction is lower than -20 for example.
-    bool8 negative = ScriptReadByte(ctx);
+    u8 amount = ScriptReadByte(ctx); //no longer doing negatives, script logic doesn't like it.
 
-    gSpecialVar_Result = negative
-      ? gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] <= amount
-      : gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] >= amount;
+    if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] <= amount)//just see if factionid's standing is less than or equal to amount.
+        gSpecialVar_Result = TRUE;
+    else
+        gSpecialVar_Result = FALSE;
+
     return FALSE;
 }

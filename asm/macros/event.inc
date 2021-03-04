@@ -898,12 +898,11 @@
 	.2byte \trainer
 	.endm
 
-	@ sets VAR_RESULT to TRUE if player has up to (or below) amount of standing in id faction
-	.macro checkfactionstanding id:req, amount:req, negative:req
+	@ sets VAR_RESULT to TRUE if player has up to amount of standing in id faction
+	.macro checkfactionstanding id:req, amount:req
 	.byte 0x74
 	.byte \id
 	.byte \amount
-	.byte \negative
 	.endm
 
 	@ Displays a box containing the front sprite for the specified (species) Pokemon species.

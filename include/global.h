@@ -1035,7 +1035,7 @@ struct SaveBlock1
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
                u8 dexNavSearchLevels[NUM_SPECIES];
                u8 dexNavChain;
-               s8 gNPCTrainerFactionRelations[NUM_NPC_FACTIONS];
+               u8 gNPCTrainerFactionRelations[NUM_NPC_FACTIONS];
     // sizeof: 0x3???
 };
 
