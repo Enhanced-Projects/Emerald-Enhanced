@@ -3756,6 +3756,21 @@ bool8 RyuCheckIfPlayerDisabledTCExp(void)
     return FALSE;
 }
 
+int RyuCalculateAlchemyExpModifier(s32 exp)
+{
+    if (gSaveBlock2Ptr->hasAlchemyEffectActive == FALSE || gSaveBlock2Ptr->alchemyCharges < 1)
+        return exp;
+
+    if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_EXP_BOOST_T1)
+        exp = ((exp * 120) / 100);
+    else if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_EXP_BOOST_T2)
+        exp = ((exp * 150) / 100);
+    else if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_EXP_BOOST_T3)
+        exp = ((exp * 200) / 100);
+    else
+        return exp;
+}
+
 static void Cmd_getexp(void)
 {
     u16 item;
@@ -3819,6 +3834,8 @@ static void Cmd_getexp(void)
 
             calculatedExp = (u32)(gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7);
             calculatedExp = (calculatedExp * multiplier / 1000);
+
+            calculatedExp = (RyuCalculateAlchemyExpModifier(calculatedExp));
 
             RyuExpBatteryTemp = (((VarGet(VAR_RYU_EXP_BATTERY) + ((((gBattleMons[gBattlerFainted].level) * 5) * multiplier) / 1000))));
             if (RyuExpBatteryTemp > 50000)
@@ -12151,8 +12168,6 @@ static void Cmd_handleballthrow(void)
                 RyuClearAlchemyEffect();
             }
 
-        mgba_printf(LOGINFO, "odds are %d", odds);
-
         if (gLastUsedItem != ITEM_SAFARI_BALL)
         {
             if (gLastUsedItem == ITEM_MASTER_BALL)
@@ -12165,7 +12180,6 @@ static void Cmd_handleballthrow(void)
                     gBattleResults.catchAttempts[gLastUsedItem - ITEM_ULTRA_BALL]++;
             }
         }
-        mgba_printf(LOGINFO, "odds are %d", odds);
 
 
         if (odds > 254) // mon caught

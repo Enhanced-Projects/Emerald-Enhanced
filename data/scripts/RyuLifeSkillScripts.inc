@@ -578,6 +578,7 @@ RyuAlchemy_RefineOreQuery:
 @actual alchemy check
 
 RyuAlchemy_AttemptCreateEffect::
+    msgbox RA_DoWhichAlchemyRecipe
     scrollingmultichoice SCROLLINGMULTICHOICE_RYUALCHEMYMENU, 0, 0, 6, 1
     compare VAR_RESULT, 127
     goto_if_eq ryu_end
@@ -594,9 +595,21 @@ RyuAlchemy_AttemptCreateEffect::
     goto_if_ge RA_CreateItem
     msgbox AlchemyEffectSuccessful
     closemessage
+    compare VAR_RESULT, ALCHEMY_EFFECT_REPEL_T1
+    call_if_eq RA_DoNativeRepelSetup
+    compare VAR_RESULT, ALCHEMY_EFFECT_REPEL_T2
+    call_if_eq RA_DoNativeRepelSetup
     call RyuAlchemy_CheckForLevelup
     release
     end
+
+RA_DB_1:
+    .string "Crafting returned {RYU_STR_3}.$"
+
+RA_DoNativeRepelSetup::
+    callnative RyuSetupAlchemicalRepel
+    call RyuRepel_AppliedAlchemicalRepel
+    return
 
 RA_CreateItem::
     giveitem VAR_RESULT, 1
@@ -672,6 +685,9 @@ RA_LevelUp::
     msgbox RA_LevelIncreased
     closemessage
     return
+
+RA_DoWhichAlchemyRecipe:
+    .string "Craft which effect/item?$"
 
 RA_LevelIncreased:
     .string "You feel increasingly more in-tune\nwith the ancients.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Alchemy Level increased.)$"

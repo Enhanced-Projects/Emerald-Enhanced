@@ -1273,6 +1273,12 @@ static void CB2_EndTrainerBattle(void)
                 GiveAchievement(ACH_MENTOR);
             }
     }
+
+    if (gSaveBlock2Ptr->alchemyEffect > 0 && gSaveBlock2Ptr->alchemyEffect < 10 && gSaveBlock2Ptr->alchemyCharges > 0)
+        gSaveBlock2Ptr->alchemyCharges--;
+
+    if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_HEALING_FACTOR && gSaveBlock2Ptr->alchemyCharges > 0)
+        gSaveBlock2Ptr->alchemyCharges--;
 }
 
 void ShowTrainerIntroSpeech(void)

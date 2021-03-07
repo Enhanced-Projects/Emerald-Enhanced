@@ -1749,6 +1749,24 @@ void RyuDebug_Plant49Berries(void)
         IncrementGameStat(GAME_STAT_PLANTED_BERRIES);
 }
 
+void RyuClearAlchemyEffect(void)
+{
+    gSaveBlock2Ptr->alchemyCharges = 0;
+    gSaveBlock2Ptr->alchemyEffect = 0;
+    gSaveBlock2Ptr->hasAlchemyEffectActive = 0;
+}
+
+void RyuSetupAlchemicalRepel(void) //There's no need to assume there's an alchemy effect active with this.
+{                                  //The idea being, player created an alchemical repel that's more potent. Won't hurt to stack it with other things.
+    if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_REPEL_T1)
+        VarSet(VAR_REPEL_STEP_COUNT, 500);
+    if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_REPEL_T2)
+        VarSet(VAR_REPEL_STEP_COUNT, 1000);
+    
+    PlaySE(SE_TU_SAA);
+    RyuClearAlchemyEffect();
+}
+
 
 u16 RyuAlchemy_TryCraftingItem(void)
 {
@@ -1840,9 +1858,4 @@ void RyuDebug_CheckAlchemyStatus(void)
     ConvertIntToDecimalStringN(gRyuStringVar2, VarGet(VAR_RYU_ALCHEMY_EXP), STR_CONV_MODE_LEFT_ALIGN, 5);
 }
 
-void RyuClearAlchemyEffect(void)
-{
-    gSaveBlock2Ptr->alchemyCharges = 0;
-    gSaveBlock2Ptr->alchemyEffect = 0;
-    gSaveBlock2Ptr->hasAlchemyEffectActive = 0;
-}
+

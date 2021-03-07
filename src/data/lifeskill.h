@@ -690,6 +690,43 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .requiredLevel = 5,
         .givenCharges = 5,
   },
+
+    [ALCHEMY_EFFECT_EXP_BOOST_T1] = {
+          .expGiven = 5,
+          .ingredients = {
+            {ITEM_RARE_CANDY, 1},
+            {ITEM_FRESH_WATER, 1},
+            {ITEM_STAR_PIECE, 1},
+        },
+        .metal = 0,
+        .metalDustAmt = 250,
+        .requiredLevel = 2,
+        .givenCharges = 1,
+    },
+    [ALCHEMY_EFFECT_EXP_BOOST_T2] = {
+          .expGiven = 10,
+          .ingredients = {
+            {ITEM_RARE_CANDY, 2},
+            {ITEM_TONIC_WATER, 1},
+            {ITEM_BIG_PEARL, 1},
+        },
+        .metal = 2,
+        .metalDustAmt = 250,
+        .requiredLevel = 2,
+        .givenCharges = 1,
+    },
+    [ALCHEMY_EFFECT_EXP_BOOST_T3] = {
+          .expGiven = 15,
+          .ingredients = {
+            {ITEM_RARE_CANDY, 3},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_GOLD_NUGGET, 1},
+        },
+        .metal = 3,
+        .metalDustAmt = 250,
+        .requiredLevel = 2,
+        .givenCharges = 10,
+    },
     [ALCHEMY_EFFECT_REPEL_T1] = {
           .expGiven = 7,
           .ingredients = {
@@ -700,7 +737,7 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .metal = 0,
         .metalDustAmt = 100,
         .requiredLevel = 2,
-        .givenCharges = 69,
+        .givenCharges = 1,
   },
     [ALCHEMY_EFFECT_REPEL_T2] = {
           .expGiven = 14,
@@ -712,7 +749,7 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .metal = 2,
         .metalDustAmt = 100,
         .requiredLevel = 2,
-        .givenCharges = 96,
+        .givenCharges = 1,
   },
     [ALCHEMY_EFFECT_SUPER_CAPTURE] = {
           .expGiven = 10,
@@ -749,42 +786,6 @@ const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
         .metalDustAmt = 250,
         .requiredLevel = 5,
         .givenCharges = 1,
-    },
-    [ALCHEMY_EFFECT_EXP_BOOST_T1] = {
-          .expGiven = 5,
-          .ingredients = {
-            {ITEM_RARE_CANDY, 1},
-            {ITEM_FRESH_WATER, 1},
-            {ITEM_STAR_PIECE, 1},
-        },
-        .metal = 0,
-        .metalDustAmt = 250,
-        .requiredLevel = 2,
-        .givenCharges = 10,
-    },
-    [ALCHEMY_EFFECT_EXP_BOOST_T2] = {
-          .expGiven = 10,
-          .ingredients = {
-            {ITEM_RARE_CANDY, 2},
-            {ITEM_TONIC_WATER, 1},
-            {ITEM_BIG_PEARL, 1},
-        },
-        .metal = 2,
-        .metalDustAmt = 250,
-        .requiredLevel = 2,
-        .givenCharges = 10,
-    },
-    [ALCHEMY_EFFECT_EXP_BOOST_T3] = {
-          .expGiven = 15,
-          .ingredients = {
-            {ITEM_RARE_CANDY, 3},
-            {ITEM_MINERAL_WATER, 1},
-            {ITEM_GOLD_NUGGET, 1},
-        },
-        .metal = 3,
-        .metalDustAmt = 250,
-        .requiredLevel = 2,
-        .givenCharges = 10,
     },
     [ALCHEMY_EFFECT_HEALING_FACTOR] = {
           .expGiven = 10,
@@ -904,14 +905,14 @@ const u8 * const gRyuAlchemyEffectItemToStringTable[16] = {
     sRAEffectDefense1,
     sRAEffectDefense2,
     sRAEffectDefense3,
+    sRAEffectEXPBoost1,
+    sRAEffectEXPBoost2,
+    sRAEffectEXPBoost3,
     sRAEffectRepelT1,
     sRAEffectRepelT2,
     sRAEffectSuperCapture1,
     sRAEffectSuperCapture2,
     sRAEffectSuperCapture3,
-    sRAEffectEXPBoost1,
-    sRAEffectEXPBoost2,
-    sRAEffectEXPBoost3,
     sRAEffectHealingFactor
 };
 

@@ -241,9 +241,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	callnative RyuFactions_ResetAllStanding
-	clearflag FLAG_RYU_HEXER_FACTION_QUEST_ACTIVE
-	clearflag FLAG_RYU_HIDE_MTPYRE_HEXER
+	additem ITEM_HEAL_POWDER, 100
+	additem ITEM_ORAN_BERRY, 100
 	release
 	end
 
