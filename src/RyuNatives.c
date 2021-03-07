@@ -1771,28 +1771,16 @@ u16 RyuAlchemy_TryCraftingItem(void)
     metalAmountRequired = sAlchemyRecipes[recipe].metalDustAmt;
 
     if (sAlchemyRecipes[recipe].requiredLevel > currentLevel)
-    {
-        mgba_printf(LOGINFO, "Level too low.");
         return 2000; //Level requirement not met for recipe
-    }
     
     if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients[0].quantity)) == FALSE)
-    {
-        mgba_printf(LOGINFO, "Not enough ingr1.");
         return 4100; //Player doesn't have enough of ingredient 1
-    }
 
     if (CheckBagHasItem(item2, (sAlchemyRecipes[recipe].ingredients[1].quantity)) == FALSE)
-    {
-        mgba_printf(LOGINFO, "Not enough ingr2.");
         return 4200; //Player doesn't have enough of ingredient 2
-    }
 
     if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients[2].quantity)) == FALSE)
-    {
-        mgba_printf(LOGINFO, "Not enough ingr3.");
         return 4300; //Player doesn't have enough of ingredient 3
-    }
 
     switch (metal)
     {
@@ -1800,10 +1788,8 @@ u16 RyuAlchemy_TryCraftingItem(void)
         {
             playerMetalAmt = (VarGet(VAR_RYU_ALCHEMY_COPPER));
             if (playerMetalAmt < metalAmountRequired)
-            {
-                mgba_printf(LOGINFO, "Not enough Metal1.");
                 return 1000; //Player doesn't have enough metal dust for this recipe
-            }
+
             VarSet(VAR_RYU_ALCHEMY_COPPER, (VarGet(VAR_RYU_ALCHEMY_COPPER) - metalAmountRequired));
             break;
         }
@@ -1811,10 +1797,8 @@ u16 RyuAlchemy_TryCraftingItem(void)
         {
             playerMetalAmt = (VarGet(VAR_RYU_ALCHEMY_SILVER));
             if (playerMetalAmt < metalAmountRequired)
-                {
-                    mgba_printf(LOGINFO, "Not enough Metal2.");
                     return 1000; //Player doesn't have enough metal dust for this recipe
-                }
+
             VarSet(VAR_RYU_ALCHEMY_SILVER, (VarGet(VAR_RYU_ALCHEMY_SILVER) - metalAmountRequired));
             break;
         }
@@ -1822,10 +1806,8 @@ u16 RyuAlchemy_TryCraftingItem(void)
         {
             playerMetalAmt = (VarGet(VAR_RYU_ALCHEMY_GOLD));
             if (playerMetalAmt < metalAmountRequired)
-                {
-                    mgba_printf(LOGINFO, "Not enough Metal3.");
                     return 1000; //Player doesn't have enough metal dust for this recipe
-                }
+
             VarSet(VAR_RYU_ALCHEMY_GOLD, (VarGet(VAR_RYU_ALCHEMY_GOLD) - metalAmountRequired));
             break;
         }
@@ -1844,8 +1826,8 @@ u16 RyuAlchemy_TryCraftingItem(void)
     StringCopy(gStringVar1, gRyuAlchemyEffectItemToStringTable[(recipe)]);
     ConvertIntToDecimalStringN(gStringVar2, sAlchemyRecipes[recipe].givenCharges, STR_CONV_MODE_LEFT_ALIGN, 4);
     currentExp += sAlchemyRecipes[recipe].expGiven;
+    ConvertIntToDecimalStringN(gStringVar3, sAlchemyRecipes[recipe].expGiven, STR_CONV_MODE_LEFT_ALIGN, 3);
     VarSet(VAR_RYU_ALCHEMY_EXP, currentExp);
-    mgba_printf(LOGINFO, "Successful. Returning %d", recipe);
     return recipe;
 }
 

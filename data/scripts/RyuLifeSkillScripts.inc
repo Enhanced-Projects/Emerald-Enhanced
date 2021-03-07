@@ -598,12 +598,6 @@ RyuAlchemy_AttemptCreateEffect::
     release
     end
 
-RADB_1:
-    .string "Player selected {STR_VAR_1}$"
-
-RADB_2:
-    .string "Function returned {STR_VAR_1}$"
-
 RA_CreateItem::
     giveitem VAR_RESULT, 1
     bufferitemname 0, VAR_RESULT
@@ -698,7 +692,7 @@ RA_DontHaveEnoughIngr3:
     .string "You're missing some or all of\nIngredient 3.$"
 
 AlchemyEffectSuccessful:
-    .string "The effect was successfully created!\n{STR_VAR_1} with {STR_VAR_2} charges left.$"
+    .string "The effect was successfully created!\n{STR_VAR_1} with {STR_VAR_2} charges left.\lYou gained {STR_VAR_3} Alchemy exp.$"
 
 RA_AlchemyItemSuccessful:
     .string "The {STR_VAR_1} was created\nsuccessfully!$"
