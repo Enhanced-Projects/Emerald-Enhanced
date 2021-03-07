@@ -2204,3 +2204,6 @@ const u8 gText_RyuHolidayMagearna[] = _("Magearna");
 const u8 gText_RyuHolidayVictini[] = _("Victini");
 const u8 gText_RyuHolidayMarshadow[] = _("Marshadow");
 const u8 gText_RyuHolidayShaymin[] = _("Shaymin");
+
+const u8 gText_RyuBotanyLabel[] = _("Botany");
+const u8 gText_RyuAlchemyLabel[] = _("Alchemy");

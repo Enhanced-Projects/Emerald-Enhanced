@@ -3359,4 +3359,7 @@ extern const u8 gText_RyuHolidayVictini[];
 extern const u8 gText_RyuHolidayMarshadow[];
 extern const u8 gText_RyuHolidayShaymin[];
 
+extern const u8 gText_RyuBotanyLabel[];
+extern const u8 gText_RyuAlchemyLabel[];
+
 #endif // GUARD_STRINGS_H

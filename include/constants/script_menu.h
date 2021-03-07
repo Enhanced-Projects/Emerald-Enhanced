@@ -169,6 +169,7 @@
 #define MULTI_PBG_TRICK_QUESTION           158
 #define MULTI_BOTANY_APRICORN_MENU         159
 #define MULTI_HOLIDAY_2020                 160
+#define MULTI_BOTANY_OR_ALCHEMY            161
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0
