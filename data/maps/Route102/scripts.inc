@@ -35,6 +35,7 @@ Route102_EventScript_Tiana:: @ 81EC1CA
 	checkfactionstanding FACTION_SCHOOLKIDS, 50
 	compare VAR_RESULT, TRUE
 	goto_if_eq ryu_end
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_end
 	msgbox r102_FollowerTianaQuery, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq r102_FollowerTiana

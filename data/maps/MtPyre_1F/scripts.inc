@@ -73,8 +73,7 @@ MP_FactionQuestHexer::
 	faceplayer
 	msgbox MP_FQ_HexerIntroQuery, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq MP_FQ_CancelledQuest
-	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, MP_FQ_NotAvailable
 	msgbox MP_FQ_HexerExplain
 	playmoncry SPECIES_MIMIKYU, 1
 	closemessage
