@@ -738,6 +738,7 @@ lcc_femaleRivalRelChoice1:: @ 81E3006
 	msgbox lcc_dawnRelQuery1 MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne lcc_dawn_declined
+	setflag FLAG_RYU_PREVENT_ACH_POPUP
 	setflag FLAG_RYU_DS_DAWN_CLOSEFRIENDS
 	ach give ACH_NEW_REGION_WHO_DIS
 	ach give ACH_TRUE_LOVE
@@ -746,7 +747,6 @@ lcc_femaleRivalRelChoice1:: @ 81E3006
 	msgbox LCC_Dawn_DS_TC_MEM MSGBOX_DEFAULT
 	delay 60
 	clearfullscreenimage
-	fadescreen FADE_FROM_BLACK
 	setfieldeffectargument 0, 1
 	applymovement 17, LCC_DAWN_KISS
 	waitmovement 0
@@ -763,6 +763,7 @@ lcc_femaleRivalRelChoice1:: @ 81E3006
 	setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
 	clearflag FLAG_HIDE_DAWNS_HOUSE_DAWN
 	closemessage
+	clearflag FLAG_RYU_PREVENT_ACH_POPUP
 	release
 	end
 	

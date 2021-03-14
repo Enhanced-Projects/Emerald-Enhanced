@@ -733,7 +733,7 @@
 #define FLAG_RYU_PERSISTENT_WEATHER                                 0x2B8
 #define FLAG_RYU_MINNIE_POKEMON_SCHOOL                              0x2B9
 #define FLAG_JAGGED_PASS_TM54                                       0x2BA
-#define FLAG_UNUSED_0x2BB                                           0x2BB // EE-Unused?
+#define FLAG_RYU_PREVENT_ACH_POPUP                                  0x2BB // EE-Unused?
 
 // Event Flags
 #define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC

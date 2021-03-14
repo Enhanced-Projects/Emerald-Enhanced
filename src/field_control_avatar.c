@@ -201,8 +201,11 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (VarGet(VAR_RYU_LAST_ACH) < 256)
         {
             FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
-            ScriptContext1_SetupScript(RyuScript_CheckGivenAchievement);
-            return TRUE;
+            if (FlagGet(FLAG_RYU_PREVENT_ACH_POPUP) == FALSE)
+            {
+                ScriptContext1_SetupScript(RyuScript_CheckGivenAchievement);
+                return TRUE;
+            }
         }
 
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)
