@@ -7350,10 +7350,10 @@ int RyuCalculateAlchemyModifiers(s32 damage)
                 damage = ((damage * 110) / 100);
                 break;
             case ALCHEMY_EFFECT_DAMAGE_BOOST_T2:
-                damage = ((damage * 110) / 100);
+                damage = ((damage * 125) / 100);
                 break;
             case ALCHEMY_EFFECT_DAMAGE_BOOST_T3:
-                damage = ((damage * 110) / 100);
+                damage = ((damage * 150) / 100);
                 break;
         }
     }
@@ -7372,7 +7372,7 @@ int RyuCalculateAlchemyModifiers(s32 damage)
                 break;
         }
     }
-    
+    return damage;
 
 }
 
