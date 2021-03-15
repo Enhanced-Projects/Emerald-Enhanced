@@ -241,8 +241,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	additem ITEM_HEAL_POWDER, 100
-	additem ITEM_ORAN_BERRY, 100
+	goto ryudebug_testpory
 	release
 	end
 
