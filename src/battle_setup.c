@@ -1236,6 +1236,7 @@ void BattleSetup_StartTrainerBattle(void)
 
 static void CB2_EndTrainerBattle(void)
 {
+    IncrementGameStat(GAME_STAT_BATTLES_WON);
     VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
     FlagClear(FLAG_RYU_BOSS_SCALE);
     FlagClear(FLAG_RYU_MAX_SCALE);
