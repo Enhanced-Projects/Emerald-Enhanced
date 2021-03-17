@@ -107,6 +107,7 @@ static bool8 StartMenuPokedexCallback(void);
 static bool8 StartMenuPokemonCallback(void);
 static bool8 StartMenuBagCallback(void);
 static bool8 StartMenuPokeNavCallback(void);
+static bool8 StartMenuJournalCallback(void);
 static bool8 StartMenuPlayerNameCallback(void);
 static bool8 StartMenuSaveCallback(void);
 static bool8 StartMenuOptionCallback(void);
@@ -173,7 +174,7 @@ static const struct MenuAction sStartMenuItems[] =
     {gText_MenuPokemon, {.u8_void = StartMenuPokemonCallback}},
     {gText_MenuBag, {.u8_void = StartMenuBagCallback}},
     {gText_MenuPokenav, {.u8_void = StartMenuPokeNavCallback}},
-    {gText_MenuPlayer, {.u8_void = StartMenuPlayerNameCallback}},
+    {gText_MenuJournal, {.u8_void = StartMenuJournalCallback}},
     {gText_MenuSave, {.u8_void = StartMenuSaveCallback}},
     {gText_MenuOption, {.u8_void = StartMenuOptionCallback}},
     {gText_MenuExit, {.u8_void = StartMenuExitCallback}},
@@ -544,11 +545,13 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
 
     do
     {
+        /*
         if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void == StartMenuPlayerNameCallback)
         {
             PrintPlayerNameOnWindow(GetStartMenuWindowId(), sStartMenuItems[sCurrentStartMenuActions[index]].text, 8, (index << 4) + 9);
         }
         else
+        */
         {
             StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
             AddTextPrinterParameterized(GetStartMenuWindowId(), 1, gStringVar4, 8, (index << 4) + 9, 0xFF, NULL);
@@ -1340,6 +1343,19 @@ static bool8 StartMenuPokeNavCallback(void)
 
     return FALSE;
 }
+void CB2_OpenJournal(void);
+static bool8 StartMenuJournalCallback(void)
+{
+    if (!gPaletteFade.active)
+    {
+        PlayRainStoppingSoundEffect();
+        RemoveExtraStartMenuWindows();
+        CleanupOverworldWindowsAndTilemaps();
+        SetMainCallback2(CB2_OpenJournal);
+    }
+    return FALSE;
+}
+
 
 static bool8 StartMenuPlayerNameCallback(void)
 {

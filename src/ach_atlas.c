@@ -19,6 +19,7 @@
 #include "overworld.h"
 #include "event_data.h"
 #include "script.h"
+#include "graphics.h"
 #include "constants/flags.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -381,12 +382,12 @@ static bool8 IntializeAtlas(void);
 static void DecideActionFromInput(u32 * action);
 static void UpdateAtlasScroll(void);
 
-static void Task_InitAtlas(u8);
+void Task_InitAtlas(u8);
 static void Task_HandleAtlasInput(u8);
 static void Task_UpdateAtlasStatus(u8);
 static void Task_CloseAtlas(u8);
 
-static void Task_OpenAPMenu(u8);
+void Task_OpenAPMenu(u8);
 static void Task_HandleAPInput(u8);
 
 EWRAM_DATA static struct AchAtlas sAchAtlas = {0};
@@ -443,10 +444,19 @@ static void VBlankCB_Atlas(void)
 }
 
 
-static void Task_InitAtlas(u8 taskId)
+void Task_InitAtlas(u8 taskId)
 {
     if(IntializeAtlas())
         gTasks[taskId].func = Task_HandleAtlasInput;
+}
+
+void CB2_OpenJournal(void);
+
+static void Task_OpenJournalAfterFade(u8 taskId)
+{
+    if(gPaletteFade.active)
+        return;
+    SetMainCallback2(CB2_OpenJournal);
 }
 
 static bool8 IntializeAtlas(void)
@@ -631,10 +641,12 @@ static void Task_HandleAtlasInput(u8 taskId)
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
             gTasks[taskId].func = Task_CloseAtlas;
             return;
+        /*
         case ACTION_OPEN_APMENU:
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
             gTasks[taskId].func = Task_OpenAPMenu;
             return;
+        */
         }
     }
     UpdateAtlasScroll();
@@ -660,7 +672,8 @@ static void Task_CloseAtlas(u8 taskId)
         RemoveWindow(WIN_ACH_DESC);
         RemoveWindow(WIN_ACH_DEBUG);
         DestroyTask(taskId);
-        SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
+        SetMainCallback2(CB2_OpenJournal);
+        //SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100);
     }
 }
@@ -751,7 +764,172 @@ static void ShowSelectionCorners(void)
     }
 }
 
-static void Task_OpenAPMenu(u8 taskId) // inefficient right from the start and that's how i like it jesus please help i'm stuck at home destroying my sanity
+static bool8 IntializeAP(u8 taskId);
+void Task_InitAPMenu(u8 taskId)
+{
+    if(IntializeAP(taskId))
+        gTasks[taskId].func = Task_UpdateTierSelections;
+}
+
+void CB2_OpenAPMenu(void)
+{
+    switch (gMain.state)
+    {
+    case 0:
+    default:
+        SetVBlankCallback(NULL);
+        DmaFillLarge16(3, 0, (u8 *)VRAM, VRAM_SIZE, 0x1000);
+        DmaClear32(3, OAM, OAM_SIZE);
+        DmaClear16(3, PLTT, PLTT_SIZE);
+        gMain.state = 1;
+        break;
+    case 1:
+        ScanlineEffect_Stop();
+        ResetTasks();
+        ResetSpriteData();
+        ResetPaletteFade();
+        FreeAllSpritePalettes();
+        gReservedSpritePaletteCount = 0;
+        gMain.state++;
+        break;
+    case 2:
+        CreateTask(Task_InitAPMenu, 0);
+        gMain.state++;
+        break;
+    case 3:
+        EnableInterrupts(1);
+        SetVBlankCallback(VBlankCB_Atlas);
+        SetMainCallback2(CB2_Atlas);
+        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x80);
+        break;
+    }
+}
+
+static bool8 IntializeAP(u8 taskId)
+{
+    static const u8 usedAP[] = _("{STR_VAR_1}AP");
+    u16 * map;
+    u32 i;
+    u32 spriteId;
+    switch (gMain.state)
+    {
+    case 0:
+    default:
+        if (gPaletteFade.active)
+            return 0;
+        SetVBlankCallback(NULL);
+        ResetBgsAndClearDma3BusyFlags(0);
+        InitBgsFromTemplates(0, sAtlasBGTemplates, ARRAY_COUNT(sAtlasBGTemplates));
+        //SetBgTilemapBuffer(3, AllocZeroed(BG_SCREEN_SIZE));
+        SetBgTilemapBuffer(2, AllocZeroed(BG_SCREEN_SIZE));
+        SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
+        DmaCopy16(3, sAPMenuBackgroundTileset, BG_CHAR_ADDR(0), sizeof(sAPMenuBackgroundTileset));
+        DmaCopy16(3, sAPMenuBackgroundTilemap, GetBgTilemapBuffer(2), sizeof(sAPMenuBackgroundTilemap));
+        LoadPalette(sAPMenuBackgroundPalette, 0, sizeof(sAPMenuBackgroundPalette));
+        InitWindows(sAPMenuWindowTemplates);
+        InitTextBoxGfxAndPrinters();
+        LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
+        DeactivateAllTextPrinters();
+        for(i = 0; i <= WIN_AP_DESC; i++)
+        {
+            PutWindowTilemap(i);
+            CopyWindowToVram(i, 3);
+            //DrawStdWindowFrame(i, TRUE);
+        }
+        PrintAPUsageString();
+        gMain.state = 1;
+        break;
+    case 1:
+        ResetSpriteData();
+        FreeAllSpritePalettes();
+        gReservedSpritePaletteCount = 0;
+        LoadSpritePalette(&sAPSelectSpritePal);
+        LoadSpriteSheet(&sAPSelectSpriteSheet);
+        for(i = 0; i < 4; i++)
+        {   
+            spriteId = sAPBorderSpriteIDs[i] = CreateSprite(&sAPSelectSpriteTemplate, 0, 0, 4);
+            gSprites[spriteId].invisible = TRUE;
+            gSprites[spriteId].oam.matrixNum = i << 3; // i'm proud of this one
+        }
+        //UpdateSelectionCorners(taskId);
+        gMain.state++;
+        break;
+    case 2: // redundant case didn't bother to delete
+        LoadSpritePalette(&sAPTierSelectPal);
+        LoadSpriteSheet(&sAPTierSelectTile);
+        // repurposed the cursorspriteid field for later use since we delete the cursor sprite anyways
+        sAchAtlas.cursorSpriteId = CreateSprite(&sAPTierSelectSpriteTemplate, 12, 19, 0);
+        // selected tier
+        gTasks[taskId].tSelectedTier = AP_TIER_PLATINUM;
+        // selected AP
+        gTasks[taskId].tSelectedAP = 0;
+        //help
+        gTasks[taskId].tSelectAPPos = 0;
+        FillWindowPixelBuffer(WIN_AP_SCROLL_NAME, 0);
+        FillWindowPixelBuffer(WIN_AP_SCROLL_POWER_USAGE, 0);
+        for(i = 0; i < 4 && i < gAP_Info[gTasks[taskId].tSelectedTier].tierCount; i++)
+        { 
+            const u8 * color = sTextColors[2];
+            if(CheckAPFlag(gAP_Info[gTasks[taskId].tSelectedTier].apInfo[i].apId))
+                color = sTextColors[3];
+            else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP > (GetPlayerAPMax()-GetCurrentAPUsed())) // oh jesus christ
+                color = sTextColors[1];
+            AddTextPrinterParameterized3(WIN_AP_SCROLL_NAME, 0, 4, i * 12, color, 0xFF, gAP_Info[gTasks[taskId].tSelectedTier].apInfo[i].name);
+            ConvertUIntToDecimalStringN(gStringVar1, gAP_Info[gTasks[taskId].tSelectedTier].requiredAP, STR_CONV_MODE_LEFT_ALIGN, 2);
+            StringExpandPlaceholders(gStringVar4, usedAP);
+            AddTextPrinterParameterized3(WIN_AP_SCROLL_POWER_USAGE, 0, 4, i * 12, color, 0xFF, gStringVar4);
+        }
+        CopyWindowToVram(WIN_AP_SCROLL_NAME, 2);
+        CopyWindowToVram(WIN_AP_SCROLL_POWER_USAGE, 2);
+        gMain.state++;
+        break;
+    case 3:
+        CopyBgTilemapBufferToVram(0);
+        //CopyBgTilemapBufferToVram(1);
+        CopyBgTilemapBufferToVram(2);
+        //CopyBgTilemapBufferToVram(3);
+        gMain.state++;
+        break;
+    case 4:
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0x10, 0, RGB_BLACK);
+        SetVBlankCallback(VBlankCB_Atlas);
+        gMain.state++;
+        break;
+    case 5:
+        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+        //SetGpuReg(REG_OFFSET_BG1HOFS, sAchAtlas.tilemapPosX*8);
+        //SetGpuReg(REG_OFFSET_BG1VOFS, sAchAtlas.tilemapPosY*8);
+        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG3HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG3VOFS, 0);
+        SetGpuReg(REG_OFFSET_BLDCNT, 0);
+        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+        SetGpuReg(REG_OFFSET_BLDY, 0);
+        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_OBJ_ON);
+        SetBgAttribute(2, BG_ATTR_PALETTEMODE, 1);
+        SetBgAttribute(2, BG_ATTR_PRIORITY, 3);
+        SetBgAttribute(3, BG_ATTR_PRIORITY, 2);
+        ShowBg(0);
+        HideBg(1);
+        ShowBg(2);
+        HideBg(3);
+        gMain.state++;
+        break;
+    case 6:
+        if (!gPaletteFade.active)
+        {
+            gMain.state = 0;
+            return TRUE;
+        }
+        break;
+    }
+    return FALSE;
+}
+
+#if 0
+void Task_OpenAPMenu(u8 taskId) // inefficient right from the start and that's how i like it jesus please help i'm stuck at home destroying my sanity
 {
     //u16 * tilemaps[4];
     u32 i;
@@ -762,17 +940,8 @@ static void Task_OpenAPMenu(u8 taskId) // inefficient right from the start and t
 
     //for(i = 0; i < 4; i++)
         //tilemaps[i] = GetBgTilemapBuffer(i);
-    DestroySprite(&gSprites[sAchAtlas.cursorSpriteId]);
-    LoadSpritePalette(&sAPTierSelectPal);
-    LoadSpriteSheet(&sAPTierSelectTile);
-    // repurposed the cursorspriteid field for later use since we delete the cursor sprite anyways
-    sAchAtlas.cursorSpriteId = CreateSprite(&sAPTierSelectSpriteTemplate, 12, 19, 0);
-    // selected tier
-    gTasks[taskId].tSelectedTier = AP_TIER_PLATINUM;
-    // selected AP
-    gTasks[taskId].tSelectedAP = 0;
-    //help
-    gTasks[taskId].tSelectAPPos = 0;
+    //DestroySprite(&gSprites[sAchAtlas.cursorSpriteId]);
+
     /*
     // init slected Tier AP Count
     gTasks[taskId].tSelectedTierAPCount = 0;
@@ -782,26 +951,6 @@ static void Task_OpenAPMenu(u8 taskId) // inefficient right from the start and t
             gTasks[taskId].tSelectedTierAPCount++;    
     }
     */
-    HideBg(1);
-    HideBg(3);
-    DmaCopy16(3, sAPMenuBackgroundTileset, BG_CHAR_ADDR(0), sizeof(sAPMenuBackgroundTileset));
-    DmaCopy16(3, sAPMenuBackgroundTilemap, GetBgTilemapBuffer(2), sizeof(sAPMenuBackgroundTilemap));
-    LoadPalette(sAPMenuBackgroundPalette, 0, sizeof(sAPMenuBackgroundPalette));
-    SetBgAttribute(2, BG_ATTR_PALETTEMODE, 1);
-    SetBgAttribute(2, BG_ATTR_PRIORITY, 3);
-    ShowBg(2);
-    
-    LoadSpritePalette(&sAPSelectSpritePal);
-    LoadSpriteSheet(&sAPSelectSpriteSheet);
-    for(i = 0; i < 4; i++)
-    {   
-        spriteId = sAPBorderSpriteIDs[i] = CreateSprite(&sAPSelectSpriteTemplate, 0, 0, 4);
-        gSprites[spriteId].invisible = TRUE;
-        gSprites[spriteId].oam.matrixNum = i << 3; // i'm proud of this one
-        //gSprites[spriteId].pos1.x = 12 + (!!(i & 1)) * 8; 
-        //gSprites[spriteId].pos1.y = 8 + (!!(i & 2)) * 8; 
-    }
-    UpdateSelectionCorners(taskId);
     //if (GetSpriteTileStartByTag(ANIM_TAG_ICE_CUBE) == 0xFFFF)
     //SetSubspriteTables(&gSprites[spriteId], sAPSelectSubspriteTable);
 
@@ -813,25 +962,25 @@ static void Task_OpenAPMenu(u8 taskId) // inefficient right from the start and t
     SetGpuReg(REG_OFFSET_BG3HOFS, 0);
     SetGpuReg(REG_OFFSET_BG3VOFS, 0);
     SetGpuReg(REG_OFFSET_BG3X, 4);
-    SetGpuReg(REG_OFFSET_BG3Y, 4);
-    SetBgAttribute(3, BG_ATTR_PRIORITY, 2);
+    SetGpuReg(REG_OFFSET_BG3Y, 4); 
     CopyBgTilemapBufferToVram(2);
     CopyBgTilemapBufferToVram(3);
     //FreeAllWindowBuffers();
     //FillWindowPixelBuffer(WIN_ACH_LABEL, 0);
     //FillWindowPixelBuffer(WIN_ACH_DESC, 0);
     //FillWindowPixelBuffer(WIN_ACH_DEBUG, 0);
-    ClearStdWindowAndFrameToTransparent(WIN_ACH_LABEL, 0);
-    ClearStdWindowAndFrameToTransparent(WIN_ACH_DESC, 0);
-    ClearStdWindowAndFrameToTransparent(WIN_ACH_DEBUG, 0);
-    CopyWindowToVram(WIN_ACH_LABEL, 3);
-    CopyWindowToVram(WIN_ACH_DESC, 3);
-    CopyWindowToVram(WIN_ACH_DEBUG, 3);
-    RemoveWindow(WIN_ACH_LABEL);
-    RemoveWindow(WIN_ACH_DESC);
-    RemoveWindow(WIN_ACH_DEBUG);
+    //ClearStdWindowAndFrameToTransparent(WIN_ACH_LABEL, 0);
+    //ClearStdWindowAndFrameToTransparent(WIN_ACH_DESC, 0);
+    //ClearStdWindowAndFrameToTransparent(WIN_ACH_DEBUG, 0);
+    //CopyWindowToVram(WIN_ACH_LABEL, 3);
+    //CopyWindowToVram(WIN_ACH_DESC, 3);
+    //CopyWindowToVram(WIN_ACH_DEBUG, 3);
+    //RemoveWindow(WIN_ACH_LABEL);
+    //RemoveWindow(WIN_ACH_DESC);
+    //RemoveWindow(WIN_ACH_DEBUG);
     InitWindows(sAPMenuWindowTemplates);
     InitTextBoxGfxAndPrinters();
+    LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
     DeactivateAllTextPrinters();
     for(i = 0; i <= WIN_AP_DESC; i++)
     {
@@ -841,11 +990,12 @@ static void Task_OpenAPMenu(u8 taskId) // inefficient right from the start and t
     }
     PrintAPUsageString();
     //AddTextPrinterParameterized3(WIN_AP_TOTAL_AP)
-    //AddTextPrinterParameterized3(WIN_AP_SCROLL_NAME, 0, 0, 0, sTextColors[0], 0xFF, gAP_Info[0].name);
+    //AddTextPrinterParameterized3(WIN_AP_SCROLL_NAME, 0, 0, 0, sTextColors[1], 0xFF, gAP_Info[0].name);
     //CopyWindowToVram(WIN_AP_DESC, 2);
     //gTasks[taskId].tAPState = APSTATE_TIER_CHANGE; // debug
     gTasks[taskId].func = Task_UpdateTierSelections;
 }
+#endif
 
 static const struct WindowTemplate sWindowTemplate_YesNoBox = {
     .bg = 0x00,
@@ -973,9 +1123,10 @@ static void Task_HandleAPInput(u8 taskId)
             {
                 PlaySE(SE_SELECT);
                 BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
-                gTasks[taskId].data[0] = 0;
-                gTasks[taskId].data[1] = 0;
-                gTasks[taskId].func = Task_InitAtlas; // TODO: make a proper function for going back or just tell it to not go back to the predefined atlas start
+                //gTasks[taskId].data[0] = 0;
+                //gTasks[taskId].data[1] = 0;
+                gTasks[taskId].func = Task_OpenJournalAfterFade;
+                //SetMainCallback2(CB2_OpenJournal);
                 return;
             }
             if(gMain.newKeys & DPAD_LEFT)
@@ -1061,11 +1212,13 @@ static void Task_UpdateTierSelections(u8 taskId)
             color = sTextColors[3];
         else if(gAP_Info[gTasks[taskId].tSelectedTier].requiredAP > (GetPlayerAPMax()-GetCurrentAPUsed())) // oh jesus christ
             color = sTextColors[1];
-        AddTextPrinterParameterized3(WIN_AP_SCROLL_NAME, 0, 4, i * 12, color, 0, gAP_Info[gTasks[taskId].tSelectedTier].apInfo[i].name);
+        AddTextPrinterParameterized3(WIN_AP_SCROLL_NAME, 0, 4, i * 12, color, 0xFF, gAP_Info[gTasks[taskId].tSelectedTier].apInfo[i].name);
         ConvertUIntToDecimalStringN(gStringVar1, gAP_Info[gTasks[taskId].tSelectedTier].requiredAP, STR_CONV_MODE_LEFT_ALIGN, 2);
         StringExpandPlaceholders(gStringVar4, usedAP);
-        AddTextPrinterParameterized3(WIN_AP_SCROLL_POWER_USAGE, 0, 4, i * 12, color, 0, gStringVar4);
+        AddTextPrinterParameterized3(WIN_AP_SCROLL_POWER_USAGE, 0, 4, i * 12, color, 0xFF, gStringVar4);
     }
+    CopyWindowToVram(WIN_AP_SCROLL_NAME, 2);
+    CopyWindowToVram(WIN_AP_SCROLL_POWER_USAGE, 2);
     UpdateSelectionCorners(taskId);
     gTasks[taskId].tAPState = APSTATE_INPUT_TIERSELECT;
     gTasks[taskId].func = Task_HandleAPInput;
@@ -1451,4 +1604,18 @@ void TakeAchievement(u32 id)
         return;
         
     gSaveBlock2Ptr->achFlags[id / 8] &= ~(1 << (id % 8));
+}
+
+u32 CountTakenAchievements(void)
+{
+    u32 count = 0;
+    u32 i, j;
+    for(i = 0; i < ARRAY_COUNT(gSaveBlock2Ptr->achFlags); i++)
+    {
+        u32 flagBits = gSaveBlock2Ptr->achFlags[i];
+        for(j = 0; flagBits; j++)
+            flagBits &= flagBits - 1;
+        count += j;
+    }
+    return count;
 }
