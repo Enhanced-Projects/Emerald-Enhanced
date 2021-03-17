@@ -6,9 +6,14 @@ RyuNaturalistsDailyQuest_8:
 RyuNaturalistsDailyQuest_4:
 	random 2
 	switch VAR_RESULT
-	case 0, RyuNaturalistsDailyQuest_14
-	case 1, RyuNaturalistsDailyQuest_15
-	return
+	case 0, RyuNaturalistsDailyQuest_15
+	case 1, RyuNaturalistsDailyQuest_16
+RyuNaturalistsDailyQuest_13:
+	setflag FLAG_DAILY_QUEST_ACTIVE
+	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS
+	closemessage
+	release
+	end
 
 RyuNaturalistsDailyQuest_2:
 	msgbox RyuNaturalistsDailyQuest_Text_0
@@ -17,8 +22,8 @@ RyuNaturalistsDailyQuest_2:
 
 RyuNaturalistsDailyQuest_5:
 	switch VAR_RYU_DAILY_QUEST_TYPE
-	case 1, RyuNaturalistsDailyQuest_17
-	case 2, RyuNaturalistsDailyQuest_18
+	case 1, RyuNaturalistsDailyQuest_18
+	case 2, RyuNaturalistsDailyQuest_19
 	goto RyuNaturalistsDailyQuest_4
 
 RyuNaturalistsDailyQuest_6:
@@ -35,44 +40,36 @@ RyuNaturalistsDailyQuest_10:
 	goto_if_eq RyuNaturalistsDailyQuest_5
 	goto RyuNaturalistsDailyQuest_8
 
-RyuNaturalistsDailyQuest_14:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuNaturalistsDailyQuest_15:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_SITRUS_BERRY
 	setvar VAR_RYU_DAILY_QUEST_DATA, 3
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS
 	msgbox RyuNaturalistsDailyQuest_Text_2
-	closemessage
-	release
-	end
+	goto RyuNaturalistsDailyQuest_13
 
-RyuNaturalistsDailyQuest_15:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuNaturalistsDailyQuest_16:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_PECHA_BERRY
 	setvar VAR_RYU_DAILY_QUEST_DATA, 2
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS
 	msgbox RyuNaturalistsDailyQuest_Text_3
-	closemessage
-	release
-	end
-
-RyuNaturalistsDailyQuest_17:
-	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
-	switch VAR_RESULT
-	case TRUE, RyuNaturalistsDailyQuest_20
-	case FALSE, RyuNaturalistsDailyQuest_21
-	goto RyuNaturalistsDailyQuest_4
+	goto RyuNaturalistsDailyQuest_13
 
 RyuNaturalistsDailyQuest_18:
+	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
+	switch VAR_RESULT
+	case TRUE, RyuNaturalistsDailyQuest_21
+	case FALSE, RyuNaturalistsDailyQuest_22
+	goto RyuNaturalistsDailyQuest_4
+
+RyuNaturalistsDailyQuest_19:
 	end
 
-RyuNaturalistsDailyQuest_20:
+RyuNaturalistsDailyQuest_21:
 	removeitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	goto CommonNaturalistRewardScript
 	goto RyuNaturalistsDailyQuest_4
 
-RyuNaturalistsDailyQuest_21:
+RyuNaturalistsDailyQuest_22:
 	buffernumberstring 0, VAR_RYU_DAILY_QUEST_DATA
 	bufferitemnameplural 1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	msgbox RyuNaturalistsDailyQuest_Text_1
@@ -88,9 +85,14 @@ RyuStudentsDailyQuest_8:
 RyuStudentsDailyQuest_4:
 	random 2
 	switch VAR_RESULT
-	case 0, RyuStudentsDailyQuest_14
-	case 1, RyuStudentsDailyQuest_15
-	return
+	case 0, RyuStudentsDailyQuest_15
+	case 1, RyuStudentsDailyQuest_16
+RyuStudentsDailyQuest_13:
+	setflag FLAG_DAILY_QUEST_ACTIVE
+	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_STUDENTS
+	closemessage
+	release
+	end
 
 RyuStudentsDailyQuest_2:
 	msgbox RyuStudentsDailyQuest_Text_0
@@ -99,8 +101,8 @@ RyuStudentsDailyQuest_2:
 
 RyuStudentsDailyQuest_5:
 	switch VAR_RYU_DAILY_QUEST_TYPE
-	case 1, RyuStudentsDailyQuest_17
-	case 2, RyuStudentsDailyQuest_18
+	case 1, RyuStudentsDailyQuest_18
+	case 2, RyuStudentsDailyQuest_19
 	goto RyuStudentsDailyQuest_4
 
 RyuStudentsDailyQuest_6:
@@ -117,44 +119,36 @@ RyuStudentsDailyQuest_10:
 	goto_if_eq RyuStudentsDailyQuest_5
 	goto RyuStudentsDailyQuest_8
 
-RyuStudentsDailyQuest_14:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuStudentsDailyQuest_15:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_POTION
 	setvar VAR_RYU_DAILY_QUEST_DATA, 5
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_STUDENTS
 	msgbox RyuStudentsDailyQuest_Text_2
-	closemessage
-	release
-	end
+	goto RyuStudentsDailyQuest_13
 
-RyuStudentsDailyQuest_15:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuStudentsDailyQuest_16:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_POKE_BALL
 	setvar VAR_RYU_DAILY_QUEST_DATA, 10
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_STUDENTS
 	msgbox RyuStudentsDailyQuest_Text_3
-	closemessage
-	release
-	end
-
-RyuStudentsDailyQuest_17:
-	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
-	switch VAR_RESULT
-	case TRUE, RyuStudentsDailyQuest_20
-	case FALSE, RyuStudentsDailyQuest_21
-	goto RyuStudentsDailyQuest_4
+	goto RyuStudentsDailyQuest_13
 
 RyuStudentsDailyQuest_18:
+	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
+	switch VAR_RESULT
+	case TRUE, RyuStudentsDailyQuest_21
+	case FALSE, RyuStudentsDailyQuest_22
+	goto RyuStudentsDailyQuest_4
+
+RyuStudentsDailyQuest_19:
 	end
 
-RyuStudentsDailyQuest_20:
+RyuStudentsDailyQuest_21:
 	removeitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	goto CommonStudentRewardScript
 	goto RyuStudentsDailyQuest_4
 
-RyuStudentsDailyQuest_21:
+RyuStudentsDailyQuest_22:
 	buffernumberstring 0, VAR_RYU_DAILY_QUEST_DATA
 	bufferitemnameplural 1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	msgbox RyuStudentsDailyQuest_Text_1
@@ -170,9 +164,14 @@ RyuNoblesDailyQuest_8:
 RyuNoblesDailyQuest_4:
 	random 2
 	switch VAR_RESULT
-	case 0, RyuNoblesDailyQuest_14
-	case 1, RyuNoblesDailyQuest_15
-	return
+	case 0, RyuNoblesDailyQuest_15
+	case 1, RyuNoblesDailyQuest_16
+RyuNoblesDailyQuest_13:
+	setflag FLAG_DAILY_QUEST_ACTIVE
+	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NOBLES
+	closemessage
+	release
+	end
 
 RyuNoblesDailyQuest_2:
 	msgbox RyuNoblesDailyQuest_Text_0
@@ -181,8 +180,8 @@ RyuNoblesDailyQuest_2:
 
 RyuNoblesDailyQuest_5:
 	switch VAR_RYU_DAILY_QUEST_TYPE
-	case 1, RyuNoblesDailyQuest_17
-	case 2, RyuNoblesDailyQuest_18
+	case 1, RyuNoblesDailyQuest_18
+	case 2, RyuNoblesDailyQuest_19
 	goto RyuNoblesDailyQuest_4
 
 RyuNoblesDailyQuest_6:
@@ -199,44 +198,36 @@ RyuNoblesDailyQuest_10:
 	goto_if_eq RyuNoblesDailyQuest_5
 	goto RyuNoblesDailyQuest_8
 
-RyuNoblesDailyQuest_14:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuNoblesDailyQuest_15:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_TEA
 	setvar VAR_RYU_DAILY_QUEST_DATA, 5
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NOBLES
 	msgbox RyuNoblesDailyQuest_Text_2
-	closemessage
-	release
-	end
+	goto RyuNoblesDailyQuest_13
 
-RyuNoblesDailyQuest_15:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuNoblesDailyQuest_16:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_BIG_PEARL
 	setvar VAR_RYU_DAILY_QUEST_DATA, 8
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NOBLES
 	msgbox RyuNoblesDailyQuest_Text_3
-	closemessage
-	release
-	end
-
-RyuNoblesDailyQuest_17:
-	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
-	switch VAR_RESULT
-	case TRUE, RyuNoblesDailyQuest_20
-	case FALSE, RyuNoblesDailyQuest_21
-	goto RyuNoblesDailyQuest_4
+	goto RyuNoblesDailyQuest_13
 
 RyuNoblesDailyQuest_18:
+	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
+	switch VAR_RESULT
+	case TRUE, RyuNoblesDailyQuest_21
+	case FALSE, RyuNoblesDailyQuest_22
+	goto RyuNoblesDailyQuest_4
+
+RyuNoblesDailyQuest_19:
 	end
 
-RyuNoblesDailyQuest_20:
+RyuNoblesDailyQuest_21:
 	removeitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	goto CommonNobleRewardScript
 	goto RyuNoblesDailyQuest_4
 
-RyuNoblesDailyQuest_21:
+RyuNoblesDailyQuest_22:
 	buffernumberstring 0, VAR_RYU_DAILY_QUEST_DATA
 	bufferitemnameplural 1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	msgbox RyuNoblesDailyQuest_Text_1
@@ -252,9 +243,14 @@ RyuPokefansDailyQuest_8:
 RyuPokefansDailyQuest_4:
 	random 2
 	switch VAR_RESULT
-	case 0, RyuPokefansDailyQuest_14
-	case 1, RyuPokefansDailyQuest_15
-	return
+	case 0, RyuPokefansDailyQuest_15
+	case 1, RyuPokefansDailyQuest_16
+RyuPokefansDailyQuest_13:
+	setflag FLAG_DAILY_QUEST_ACTIVE
+	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_POKEFANS
+	closemessage
+	release
+	end
 
 RyuPokefansDailyQuest_2:
 	msgbox RyuPokefansDailyQuest_Text_0
@@ -263,8 +259,8 @@ RyuPokefansDailyQuest_2:
 
 RyuPokefansDailyQuest_5:
 	switch VAR_RYU_DAILY_QUEST_TYPE
-	case 1, RyuPokefansDailyQuest_17
-	case 2, RyuPokefansDailyQuest_18
+	case 1, RyuPokefansDailyQuest_18
+	case 2, RyuPokefansDailyQuest_19
 	goto RyuPokefansDailyQuest_4
 
 RyuPokefansDailyQuest_6:
@@ -281,44 +277,36 @@ RyuPokefansDailyQuest_10:
 	goto_if_eq RyuPokefansDailyQuest_5
 	goto RyuPokefansDailyQuest_8
 
-RyuPokefansDailyQuest_14:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuPokefansDailyQuest_15:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_POKE_DOLL
 	setvar VAR_RYU_DAILY_QUEST_DATA, 5
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_POKEFANS
 	msgbox RyuPokefansDailyQuest_Text_2
-	closemessage
-	release
-	end
+	goto RyuPokefansDailyQuest_13
 
-RyuPokefansDailyQuest_15:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuPokefansDailyQuest_16:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_HEART_SCALE
 	setvar VAR_RYU_DAILY_QUEST_DATA, 5
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_POKEFANS
 	msgbox RyuPokefansDailyQuest_Text_3
-	closemessage
-	release
-	end
-
-RyuPokefansDailyQuest_17:
-	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
-	switch VAR_RESULT
-	case TRUE, RyuPokefansDailyQuest_20
-	case FALSE, RyuPokefansDailyQuest_21
-	goto RyuPokefansDailyQuest_4
+	goto RyuPokefansDailyQuest_13
 
 RyuPokefansDailyQuest_18:
+	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
+	switch VAR_RESULT
+	case TRUE, RyuPokefansDailyQuest_21
+	case FALSE, RyuPokefansDailyQuest_22
+	goto RyuPokefansDailyQuest_4
+
+RyuPokefansDailyQuest_19:
 	end
 
-RyuPokefansDailyQuest_20:
+RyuPokefansDailyQuest_21:
 	removeitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	goto CommonPokefansRewardScript
 	goto RyuPokefansDailyQuest_4
 
-RyuPokefansDailyQuest_21:
+RyuPokefansDailyQuest_22:
 	buffernumberstring 0, VAR_RYU_DAILY_QUEST_DATA
 	bufferitemnameplural 1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	msgbox RyuPokefansDailyQuest_Text_1
@@ -334,9 +322,14 @@ RyuOutcastsDailyQuest_8:
 RyuOutcastsDailyQuest_4:
 	random 2
 	switch VAR_RESULT
-	case 0, RyuOutcastsDailyQuest_14
-	case 1, RyuOutcastsDailyQuest_15
-	return
+	case 0, RyuOutcastsDailyQuest_15
+	case 1, RyuOutcastsDailyQuest_16
+RyuOutcastsDailyQuest_13:
+	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS
+	setflag FLAG_DAILY_QUEST_ACTIVE
+	closemessage
+	release
+	end
 
 RyuOutcastsDailyQuest_2:
 	msgbox RyuOutcastsDailyQuest_Text_0
@@ -345,8 +338,8 @@ RyuOutcastsDailyQuest_2:
 
 RyuOutcastsDailyQuest_5:
 	switch VAR_RYU_DAILY_QUEST_TYPE
-	case 1, RyuOutcastsDailyQuest_17
-	case 2, RyuOutcastsDailyQuest_18
+	case 1, RyuOutcastsDailyQuest_18
+	case 2, RyuOutcastsDailyQuest_19
 	goto RyuOutcastsDailyQuest_4
 
 RyuOutcastsDailyQuest_6:
@@ -363,44 +356,36 @@ RyuOutcastsDailyQuest_10:
 	goto_if_eq RyuOutcastsDailyQuest_5
 	goto RyuOutcastsDailyQuest_8
 
-RyuOutcastsDailyQuest_14:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuOutcastsDailyQuest_15:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_ENERGY_POWDER
 	setvar VAR_RYU_DAILY_QUEST_DATA, 5
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS
 	msgbox RyuOutcastsDailyQuest_Text_2
-	closemessage
-	release
-	end
+	goto RyuOutcastsDailyQuest_13
 
-RyuOutcastsDailyQuest_15:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuOutcastsDailyQuest_16:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_STARDUST
 	setvar VAR_RYU_DAILY_QUEST_DATA, 5
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS
 	msgbox RyuOutcastsDailyQuest_Text_3
-	closemessage
-	release
-	end
-
-RyuOutcastsDailyQuest_17:
-	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
-	switch VAR_RESULT
-	case TRUE, RyuOutcastsDailyQuest_20
-	case FALSE, RyuOutcastsDailyQuest_21
-	goto RyuOutcastsDailyQuest_4
+	goto RyuOutcastsDailyQuest_13
 
 RyuOutcastsDailyQuest_18:
+	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
+	switch VAR_RESULT
+	case TRUE, RyuOutcastsDailyQuest_21
+	case FALSE, RyuOutcastsDailyQuest_22
+	goto RyuOutcastsDailyQuest_4
+
+RyuOutcastsDailyQuest_19:
 	end
 
-RyuOutcastsDailyQuest_20:
+RyuOutcastsDailyQuest_21:
 	removeitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	goto CommonOutcastRewardScript
 	goto RyuOutcastsDailyQuest_4
 
-RyuOutcastsDailyQuest_21:
+RyuOutcastsDailyQuest_22:
 	buffernumberstring 0, VAR_RYU_DAILY_QUEST_DATA
 	bufferitemnameplural 1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	msgbox RyuOutcastsDailyQuest_Text_1
@@ -416,9 +401,14 @@ RyuProfessionalsDailyQuest_8:
 RyuProfessionalsDailyQuest_4:
 	random 2
 	switch VAR_RESULT
-	case 0, RyuProfessionalsDailyQuest_14
-	case 1, RyuProfessionalsDailyQuest_15
-	return
+	case 0, RyuProfessionalsDailyQuest_15
+	case 1, RyuProfessionalsDailyQuest_16
+RyuProfessionalsDailyQuest_13:
+	setflag FLAG_DAILY_QUEST_ACTIVE
+	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS
+	closemessage
+	release
+	end
 
 RyuProfessionalsDailyQuest_2:
 	msgbox RyuProfessionalsDailyQuest_Text_0
@@ -427,8 +417,8 @@ RyuProfessionalsDailyQuest_2:
 
 RyuProfessionalsDailyQuest_5:
 	switch VAR_RYU_DAILY_QUEST_TYPE
-	case 1, RyuProfessionalsDailyQuest_17
-	case 2, RyuProfessionalsDailyQuest_18
+	case 1, RyuProfessionalsDailyQuest_18
+	case 2, RyuProfessionalsDailyQuest_19
 	goto RyuProfessionalsDailyQuest_4
 
 RyuProfessionalsDailyQuest_6:
@@ -445,44 +435,36 @@ RyuProfessionalsDailyQuest_10:
 	goto_if_eq RyuProfessionalsDailyQuest_5
 	goto RyuProfessionalsDailyQuest_8
 
-RyuProfessionalsDailyQuest_14:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuProfessionalsDailyQuest_15:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_SODA_POP
 	setvar VAR_RYU_DAILY_QUEST_DATA, 12
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS
 	msgbox RyuProfessionalsDailyQuest_Text_2
-	closemessage
-	release
-	end
+	goto RyuProfessionalsDailyQuest_13
 
-RyuProfessionalsDailyQuest_15:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuProfessionalsDailyQuest_16:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_HYPER_POTION
 	setvar VAR_RYU_DAILY_QUEST_DATA, 2
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS
 	msgbox RyuProfessionalsDailyQuest_Text_3
-	closemessage
-	release
-	end
-
-RyuProfessionalsDailyQuest_17:
-	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
-	switch VAR_RESULT
-	case TRUE, RyuProfessionalsDailyQuest_20
-	case FALSE, RyuProfessionalsDailyQuest_21
-	goto RyuProfessionalsDailyQuest_4
+	goto RyuProfessionalsDailyQuest_13
 
 RyuProfessionalsDailyQuest_18:
+	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
+	switch VAR_RESULT
+	case TRUE, RyuProfessionalsDailyQuest_21
+	case FALSE, RyuProfessionalsDailyQuest_22
+	goto RyuProfessionalsDailyQuest_4
+
+RyuProfessionalsDailyQuest_19:
 	end
 
-RyuProfessionalsDailyQuest_20:
+RyuProfessionalsDailyQuest_21:
 	removeitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	goto CommonProfessionalsRewardScript
 	goto RyuProfessionalsDailyQuest_4
 
-RyuProfessionalsDailyQuest_21:
+RyuProfessionalsDailyQuest_22:
 	buffernumberstring 0, VAR_RYU_DAILY_QUEST_DATA
 	bufferitemnameplural 1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	msgbox RyuProfessionalsDailyQuest_Text_1
@@ -498,9 +480,14 @@ RyuAthletesDailyQuest_8:
 RyuAthletesDailyQuest_4:
 	random 2
 	switch VAR_RESULT
-	case 0, RyuAthletesDailyQuest_14
-	case 1, RyuAthletesDailyQuest_15
-	return
+	case 0, RyuAthletesDailyQuest_15
+	case 1, RyuAthletesDailyQuest_16
+RyuAthletesDailyQuest_13:
+	setflag FLAG_DAILY_QUEST_ACTIVE
+	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_ATHLETES
+	closemessage
+	release
+	end
 
 RyuAthletesDailyQuest_2:
 	msgbox RyuAthletesDailyQuest_Text_0
@@ -509,8 +496,8 @@ RyuAthletesDailyQuest_2:
 
 RyuAthletesDailyQuest_5:
 	switch VAR_RYU_DAILY_QUEST_TYPE
-	case 1, RyuAthletesDailyQuest_17
-	case 2, RyuAthletesDailyQuest_18
+	case 1, RyuAthletesDailyQuest_18
+	case 2, RyuAthletesDailyQuest_19
 	goto RyuAthletesDailyQuest_4
 
 RyuAthletesDailyQuest_6:
@@ -527,44 +514,36 @@ RyuAthletesDailyQuest_10:
 	goto_if_eq RyuAthletesDailyQuest_5
 	goto RyuAthletesDailyQuest_8
 
-RyuAthletesDailyQuest_14:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuAthletesDailyQuest_15:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_PROTEIN
 	setvar VAR_RYU_DAILY_QUEST_DATA, 2
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_ATHLETES
 	msgbox RyuAthletesDailyQuest_Text_2
-	closemessage
-	release
-	end
+	goto RyuAthletesDailyQuest_13
 
-RyuAthletesDailyQuest_15:
-	setflag FLAG_DAILY_QUEST_ACTIVE
+RyuAthletesDailyQuest_16:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_WAVE_MAIL
 	setvar VAR_RYU_DAILY_QUEST_DATA, 10
-	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_ATHLETES
 	msgbox RyuAthletesDailyQuest_Text_3
-	closemessage
-	release
-	end
-
-RyuAthletesDailyQuest_17:
-	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
-	switch VAR_RESULT
-	case TRUE, RyuAthletesDailyQuest_20
-	case FALSE, RyuAthletesDailyQuest_21
-	goto RyuAthletesDailyQuest_4
+	goto RyuAthletesDailyQuest_13
 
 RyuAthletesDailyQuest_18:
+	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
+	switch VAR_RESULT
+	case TRUE, RyuAthletesDailyQuest_21
+	case FALSE, RyuAthletesDailyQuest_22
+	goto RyuAthletesDailyQuest_4
+
+RyuAthletesDailyQuest_19:
 	end
 
-RyuAthletesDailyQuest_20:
+RyuAthletesDailyQuest_21:
 	removeitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	goto CommonAthletesRewardScript
 	goto RyuAthletesDailyQuest_4
 
-RyuAthletesDailyQuest_21:
+RyuAthletesDailyQuest_22:
 	buffernumberstring 0, VAR_RYU_DAILY_QUEST_DATA
 	bufferitemnameplural 1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	msgbox RyuAthletesDailyQuest_Text_1

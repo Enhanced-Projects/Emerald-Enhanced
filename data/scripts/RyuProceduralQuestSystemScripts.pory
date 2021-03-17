@@ -43,26 +43,21 @@ script(global) RyuNaturalistsDailyQuest  {
     random(2)
     switch(var(VAR_RESULT)) {
         case 0:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SITRUS_BERRY)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 3)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS)
             msgbox("Hi, {PLAYER}!\nCan you get some Sitrus Berries\lfor me?\pThree of them should do.")
-            closemessage
-            release
-            end
         case 1:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_PECHA_BERRY)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS)
             msgbox("Hi, {PLAYER}!\nCan you get some Pecha Berries\lfor me?\pTwo of them should do.")
-            closemessage
-            release
-            end
     }
+    setflag(FLAG_DAILY_QUEST_ACTIVE)
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS)
+    closemessage
+    release
+    end
 }
 
 script(global) RyuStudentsDailyQuest  {
@@ -99,26 +94,21 @@ script(global) RyuStudentsDailyQuest  {
     random(2)
     switch(var(VAR_RESULT)) {
         case 0:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_POTION)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_STUDENTS)
             msgbox("Sup {PLAYER}!\pThe student council wants some\npotions for new members.\pWe need a total of five.")
-            closemessage
-            release
-            end
         case 1:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_POKE_BALL)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 10)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_STUDENTS)
             msgbox("Heya {PLAYER}!\pThe Council wants you to get some\npoke balls for our members.\pWe need a total of ten.")
-            closemessage
-            release
-            end
     }
+    setflag(FLAG_DAILY_QUEST_ACTIVE)
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_STUDENTS)
+    closemessage
+    release
+    end
 }
 
 script(global) RyuNoblesDailyQuest  {
@@ -156,26 +146,21 @@ script(global) RyuNoblesDailyQuest  {
     random(2)
     switch(var(VAR_RESULT)) {
         case 0:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_TEA)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NOBLES)
             msgbox("The board of Directors would like\nsome Tea for their upcoming meeting.\pPlease acquire five servings.")
-            closemessage
-            release
-            end
         case 1:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_BIG_PEARL)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 8)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NOBLES)
             msgbox("The board is trying to expand it's\nportfolio of riches.\pPlease acquire some Big Pearls\nfor us to hold.\pWe need at least eight.")
-            closemessage
-            release
-            end
     }
+    setflag(FLAG_DAILY_QUEST_ACTIVE)
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NOBLES)
+    closemessage
+    release
+    end
 }
 
 script(global) RyuPokefansDailyQuest  {
@@ -213,26 +198,21 @@ script(global) RyuPokefansDailyQuest  {
     random(2)
     switch(var(VAR_RESULT)) {
         case 0:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_POKE_DOLL)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_POKEFANS)
             msgbox("Hello, dear.\pWe're trying to find some dolls\nto give to our kids.\pPlease find us 5 Poke Dolls.")
-            closemessage
-            release
-            end
         case 1:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_HEART_SCALE)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_POKEFANS)
             msgbox("Hi, {PLAYER}!\nIs there a small chance you could\lfind us five Heart Scales?\pThey're beautiful collector's items\nand we want to reward them for\la talent contest!")
-            closemessage
-            release
-            end
     }
+    setflag(FLAG_DAILY_QUEST_ACTIVE)
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_POKEFANS)
+    closemessage
+    release
+    end
 }
 
 script(global) RyuOutcastsDailyQuest  {
@@ -270,26 +250,21 @@ script(global) RyuOutcastsDailyQuest  {
     random(2)
     switch(var(VAR_RESULT)) {
         case 0:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_ENERGY_POWDER)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS)
             msgbox("Greetings, familiar stranger.\pWe're trying to conduct a ritual\nthat will summon more rare\lpokemon.\pCan you bring us some Energy Powder?\nfive portions should do. ")
-            closemessage
-            release
-            end
         case 1:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_STARDUST)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS)
             msgbox("Heya {PLAYER}.\pWe recently got word that some\nrare pokemon can be attracted\lby anointing stones with stardust.\pPlease bring us five pouches of it.")
-            closemessage
-            release
-            end
     }
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS)
+    setflag(FLAG_DAILY_QUEST_ACTIVE)
+    closemessage
+    release
+    end
 }
 
 script(global) RyuProfessionalsDailyQuest  {
@@ -327,26 +302,21 @@ script(global) RyuProfessionalsDailyQuest  {
     random(2)
     switch(var(VAR_RESULT)) {
         case 0:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SODA_POP)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 12)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
             msgbox("We're running low on energy.\pCan you bring us some Soda Pops?\pWe're in a crunch to meet\nsome deadlines, the caffeine will\lhelp.\p12 of them should be enough.")
-            closemessage
-            release
-            end
         case 1:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_HYPER_POTION)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
             msgbox("I'm too busy to travel to a\nPokemon Center.\pDo you happen to have a couple\nHyper Potions?\pI'll be able to continue my work.")
-            closemessage
-            release
-            end
     }
+    setflag(FLAG_DAILY_QUEST_ACTIVE)
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
+    closemessage
+    release
+    end
 }
 
 script(global) RyuAthletesDailyQuest  {
@@ -384,26 +354,21 @@ script(global) RyuAthletesDailyQuest  {
     random(2)
     switch(var(VAR_RESULT)) {
         case 0:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_PROTEIN)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_ATHLETES)
             msgbox("We're almost out of protein powder.\pCan you bring us 2 bottles of Protein?\nIt's needed for all of us who are\nactively working out!")
-            closemessage
-            release
-            end
         case 1:
-            setflag(FLAG_DAILY_QUEST_ACTIVE)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_WAVE_MAIL)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 10)
-            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_ATHLETES)
             msgbox("We need to do some imprinting at\nthe Training Center.\pCan you bring us ten imprints?\nThis will save us a lot of time.")
-            closemessage
-            release
-            end
     }
+    setflag(FLAG_DAILY_QUEST_ACTIVE)
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_ATHLETES)
+    closemessage
+    release
+    end
 }
 
 
