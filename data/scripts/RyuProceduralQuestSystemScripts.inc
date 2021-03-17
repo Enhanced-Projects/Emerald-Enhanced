@@ -288,7 +288,7 @@ RyuPokefansDailyQuest_16:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_HEART_SCALE
 	setvar VAR_RYU_DAILY_QUEST_DATA, 5
-	msgbox RyuPokefansDailyQuest_Text_3
+	msgbox PokefansQuest2Desc
 	goto RyuPokefansDailyQuest_13
 
 RyuPokefansDailyQuest_18:
@@ -360,14 +360,14 @@ RyuOutcastsDailyQuest_15:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_ENERGY_POWDER
 	setvar VAR_RYU_DAILY_QUEST_DATA, 5
-	msgbox RyuOutcastsDailyQuest_Text_2
+	msgbox OutcastsQuest1Desc
 	goto RyuOutcastsDailyQuest_13
 
 RyuOutcastsDailyQuest_16:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_STARDUST
 	setvar VAR_RYU_DAILY_QUEST_DATA, 5
-	msgbox RyuOutcastsDailyQuest_Text_3
+	msgbox RyuOutcastsDailyQuest_Text_2
 	goto RyuOutcastsDailyQuest_13
 
 RyuOutcastsDailyQuest_18:
@@ -439,14 +439,14 @@ RyuProfessionalsDailyQuest_15:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_SODA_POP
 	setvar VAR_RYU_DAILY_QUEST_DATA, 12
-	msgbox RyuProfessionalsDailyQuest_Text_2
+	msgbox ProfessionalsQuestDesc1
 	goto RyuProfessionalsDailyQuest_13
 
 RyuProfessionalsDailyQuest_16:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_HYPER_POTION
 	setvar VAR_RYU_DAILY_QUEST_DATA, 2
-	msgbox RyuProfessionalsDailyQuest_Text_3
+	msgbox RyuProfessionalsDailyQuest_Text_2
 	goto RyuProfessionalsDailyQuest_13
 
 RyuProfessionalsDailyQuest_18:
@@ -554,96 +554,71 @@ RyuAthletesDailyQuest_22:
 CommonNaturalistRewardScript::
 	msgbox CommonNaturalistRewardScript_Text_0
 	setflag FLAG_FINISHED_NATURALIST_DAILY
-	clearflag FLAG_DAILY_QUEST_ACTIVE
 	changefactionstanding FACTION_NATURALISTS, 25, FALSE
 	setvar VAR_TEMP_B, 1000
-	addmoney VAR_TEMP_B
-	buffernumberstring 0, VAR_TEMP_B
-	msgbox CommonNaturalistRewardScript_Text_1
-	closemessage
-	release
-	end
+	goto CommonDailyQuestEnd
+	return
 
 
 CommonStudentRewardScript::
 	msgbox CommonStudentRewardScript_Text_0
 	setflag FLAG_FINISHED_STUDENT_DAILY
-	clearflag FLAG_DAILY_QUEST_ACTIVE
 	changefactionstanding FACTION_STUDENTS, 25, FALSE
 	setvar VAR_TEMP_B, 3000
-	addmoney VAR_TEMP_B
-	buffernumberstring 0, VAR_TEMP_B
-	msgbox CommonNaturalistRewardScript_Text_1
-	closemessage
-	release
-	end
+	goto CommonDailyQuestEnd
+	return
 
 
 CommonNobleRewardScript::
 	msgbox CommonNobleRewardScript_Text_0
 	setflag FLAG_FINISHED_NOBLE_DAILY
-	clearflag FLAG_DAILY_QUEST_ACTIVE
 	changefactionstanding FACTION_NOBLES, 25, FALSE
 	setvar VAR_TEMP_B, 10000
-	addmoney VAR_TEMP_B
-	buffernumberstring 0, VAR_TEMP_B
-	msgbox CommonNaturalistRewardScript_Text_1
-	closemessage
-	release
-	end
+	goto CommonDailyQuestEnd
+	return
 
 
 CommonPokefansRewardScript::
 	msgbox CommonPokefansRewardScript_Text_0
 	setflag FLAG_FINISHED_POKEFAN_DAILY
-	clearflag FLAG_DAILY_QUEST_ACTIVE
 	changefactionstanding FACTION_POKEFANS, 25, FALSE
 	setvar VAR_TEMP_B, 2500
-	addmoney VAR_TEMP_B
-	buffernumberstring 0, VAR_TEMP_B
-	msgbox CommonNaturalistRewardScript_Text_1
-	closemessage
-	release
-	end
+	goto CommonDailyQuestEnd
+	return
 
 
 CommonOutcastRewardScript::
 	msgbox CommonOutcastRewardScript_Text_0
 	setflag FLAG_FINISHED_OUTCAST_DAILY
-	clearflag FLAG_DAILY_QUEST_ACTIVE
 	changefactionstanding FACTION_OUTCASTS, 25, FALSE
 	setvar VAR_TEMP_B, 2000
-	addmoney VAR_TEMP_B
-	buffernumberstring 0, VAR_TEMP_B
-	msgbox CommonNaturalistRewardScript_Text_1
-	closemessage
-	release
-	end
+	goto CommonDailyQuestEnd
+	return
 
 
 CommonProfessionalsRewardScript::
 	msgbox CommonNobleRewardScript_Text_0
 	setflag FLAG_FINISHED_PROFESSIONAL_DAILY
-	clearflag FLAG_DAILY_QUEST_ACTIVE
 	changefactionstanding FACTION_PROFESSIONALS, 25, FALSE
 	setvar VAR_TEMP_B, 4000
-	addmoney VAR_TEMP_B
-	buffernumberstring 0, VAR_TEMP_B
-	msgbox CommonNaturalistRewardScript_Text_1
-	closemessage
-	release
-	end
+	goto CommonDailyQuestEnd
+	return
 
 
 CommonAthletesRewardScript::
 	msgbox CommonAthletesRewardScript_Text_0
 	setflag FLAG_FINISHED_ATHLETE_DAILY
-	clearflag FLAG_DAILY_QUEST_ACTIVE
 	changefactionstanding FACTION_ATHLETES, 25, FALSE
 	setvar VAR_TEMP_B, 1750
+	goto CommonDailyQuestEnd
+	return
+
+
+CommonDailyQuestEnd::
 	addmoney VAR_TEMP_B
+	clearflag FLAG_DAILY_QUEST_ACTIVE
 	buffernumberstring 0, VAR_TEMP_B
-	msgbox CommonNaturalistRewardScript_Text_1
+	msgbox CommonDailyQuestEnd_Text_0
 	closemessage
 	release
 	end
@@ -694,9 +669,6 @@ RyuPokefansDailyQuest_Text_1:
 RyuPokefansDailyQuest_Text_2:
 	.string "Hello, dear.\pWe're trying to find some dolls\nto give to our kids.\pPlease find us 5 Poke Dolls.$"
 
-RyuPokefansDailyQuest_Text_3:
-	.string "Hi, {PLAYER}!\nIs there a small chance you could\lfind us five Heart Scales?\pThey're beautiful collector's items\nand we want to reward them for\la talent contest!$"
-
 RyuOutcastsDailyQuest_Text_0:
 	.string "The rituals are going as intended.$"
 
@@ -704,9 +676,6 @@ RyuOutcastsDailyQuest_Text_1:
 	.string "Yo... we still need {STR_VAR_1} {STR_VAR_2}.$"
 
 RyuOutcastsDailyQuest_Text_2:
-	.string "Greetings, familiar stranger.\pWe're trying to conduct a ritual\nthat will summon more rare\lpokemon.\pCan you bring us some Energy Powder?\nfive portions should do. $"
-
-RyuOutcastsDailyQuest_Text_3:
 	.string "Heya {PLAYER}.\pWe recently got word that some\nrare pokemon can be attracted\lby anointing stones with stardust.\pPlease bring us five pouches of it.$"
 
 RyuProfessionalsDailyQuest_Text_0:
@@ -716,9 +685,6 @@ RyuProfessionalsDailyQuest_Text_1:
 	.string "Ahh, {PLAYER}!\nHave you brought the {STR_VAR_1} {STR_VAR_2} yet?$"
 
 RyuProfessionalsDailyQuest_Text_2:
-	.string "We're running low on energy.\pCan you bring us some Soda Pops?\pWe're in a crunch to meet\nsome deadlines, the caffeine will\lhelp.\p12 of them should be enough.$"
-
-RyuProfessionalsDailyQuest_Text_3:
 	.string "I'm too busy to travel to a\nPokemon Center.\pDo you happen to have a couple\nHyper Potions?\pI'll be able to continue my work.$"
 
 RyuAthletesDailyQuest_Text_0:
@@ -736,9 +702,6 @@ RyuAthletesDailyQuest_Text_3:
 CommonNaturalistRewardScript_Text_0:
 	.string "Thanks for getting the stuff!$"
 
-CommonNaturalistRewardScript_Text_1:
-	.string "You earned ¥{STR_VAR_1}.$"
-
 CommonStudentRewardScript_Text_0:
 	.string "The new kids will need all the\nhelp they can get. \pThanks, {PLAYER}!$"
 
@@ -753,3 +716,30 @@ CommonOutcastRewardScript_Text_0:
 
 CommonAthletesRewardScript_Text_0:
 	.string "Continue to be the best you\ncan be!$"
+
+CommonDailyQuestEnd_Text_0:
+	.string "You earned ¥{STR_VAR_1}.$"
+
+ProfessionalsQuestDesc1::
+	.string "We're running low on energy.\p"
+	.string "Can you bring us some Soda Pops?\p"
+	.string "We're in a crunch to meet\n"
+	.string "some deadlines, the caffeine will\l"
+	.string "help.\p"
+	.string "Twelve of them should be enough.$"
+
+OutcastsQuest1Desc::
+	.string "Greetings, familiar stranger.\p"
+	.string "We're trying to conduct a ritual\n"
+	.string "that will summon more rare\l"
+	.string "pokemon.\p"
+	.string "Can you bring us some Energy Powder?\n"
+	.string "five portions should do.$"
+
+PokefansQuest2Desc::
+	.string "Hi, {PLAYER}!\n"
+	.string "Is there a small chance you could\l"
+	.string "find us five Heart Scales?\p"
+	.string "They're beautiful collector's items\n"
+	.string "and we want to reward them for\l"
+	.string "a talent contest!$"

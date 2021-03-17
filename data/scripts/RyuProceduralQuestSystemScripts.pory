@@ -206,7 +206,7 @@ script(global) RyuPokefansDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_HEART_SCALE)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
-            msgbox("Hi, {PLAYER}!\nIs there a small chance you could\lfind us five Heart Scales?\pThey're beautiful collector's items\nand we want to reward them for\la talent contest!")
+            msgbox(PokefansQuest2Desc)
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_POKEFANS)
@@ -253,7 +253,7 @@ script(global) RyuOutcastsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_ENERGY_POWDER)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
-            msgbox("Greetings, familiar stranger.\pWe're trying to conduct a ritual\nthat will summon more rare\lpokemon.\pCan you bring us some Energy Powder?\nfive portions should do. ")
+            msgbox(OutcastsQuest1Desc)
         case 1:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_STARDUST)
@@ -305,7 +305,7 @@ script(global) RyuProfessionalsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SODA_POP)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 12)
-            msgbox("We're running low on energy.\pCan you bring us some Soda Pops?\pWe're in a crunch to meet\nsome deadlines, the caffeine will\lhelp.\p12 of them should be enough.")
+            msgbox(ProfessionalsQuestDesc1)
         case 1:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_HYPER_POTION)
@@ -377,80 +377,62 @@ script(global) RyuAthletesDailyQuest  {
 script CommonNaturalistRewardScript {
     msgbox("Thanks for getting the stuff!")
     setflag(FLAG_FINISHED_NATURALIST_DAILY)
-    clearflag(FLAG_DAILY_QUEST_ACTIVE)
     changefactionstanding(FACTION_NATURALISTS, 25, FALSE)
     setvar(VAR_TEMP_B, 1000)
-    addmoney(VAR_TEMP_B)
-    buffernumberstring(0, VAR_TEMP_B)
-    msgbox("You earned ¥{STR_VAR_1}.")
-    closemessage
-    release
-    end
+    goto(CommonDailyQuestEnd)
 }
 
 script CommonStudentRewardScript {
     msgbox("The new kids will need all the\nhelp they can get. \pThanks, {PLAYER}!")
     setflag(FLAG_FINISHED_STUDENT_DAILY)
-    clearflag(FLAG_DAILY_QUEST_ACTIVE)
     changefactionstanding(FACTION_STUDENTS, 25, FALSE)
     setvar(VAR_TEMP_B, 3000)
-    addmoney(VAR_TEMP_B)
-    buffernumberstring(0, VAR_TEMP_B)
-    msgbox("You earned ¥{STR_VAR_1}.")
-    closemessage
-    release
-    end
+    goto(CommonDailyQuestEnd)
 }
 
 script CommonNobleRewardScript {
     msgbox("The Board should be pleased.\nYou are dismissed.")
     setflag(FLAG_FINISHED_NOBLE_DAILY)
-    clearflag(FLAG_DAILY_QUEST_ACTIVE)
     changefactionstanding(FACTION_NOBLES, 25, FALSE)
     setvar(VAR_TEMP_B, 10000)
-    addmoney(VAR_TEMP_B)
-    buffernumberstring(0, VAR_TEMP_B)
-    msgbox("You earned ¥{STR_VAR_1}.")
-    closemessage
-    release
-    end
+    goto(CommonDailyQuestEnd)
 }
 
 script CommonPokefansRewardScript {
     msgbox("Thanks, dear.\nWe really appreciate your work!")
     setflag(FLAG_FINISHED_POKEFAN_DAILY)
-    clearflag(FLAG_DAILY_QUEST_ACTIVE)
     changefactionstanding(FACTION_POKEFANS, 25, FALSE)
     setvar(VAR_TEMP_B, 2500)
-    addmoney(VAR_TEMP_B)
-    buffernumberstring(0, VAR_TEMP_B)
-    msgbox("You earned ¥{STR_VAR_1}.")
-    closemessage
-    release
-    end
+    goto(CommonDailyQuestEnd)
 }
 
 script CommonOutcastRewardScript {
     msgbox("The gods shine upon you\nthis day.\lMany thanks.")
     setflag(FLAG_FINISHED_OUTCAST_DAILY)
-    clearflag(FLAG_DAILY_QUEST_ACTIVE)
     changefactionstanding(FACTION_OUTCASTS, 25, FALSE)
     setvar(VAR_TEMP_B, 2000)
-    addmoney(VAR_TEMP_B)
-    buffernumberstring(0, VAR_TEMP_B)
-    msgbox("You earned ¥{STR_VAR_1}.")
-    closemessage
-    release
-    end
+    goto(CommonDailyQuestEnd)
 }
 
 script CommonProfessionalsRewardScript {
     msgbox("The Board should be pleased.\nYou are dismissed.")
     setflag(FLAG_FINISHED_PROFESSIONAL_DAILY)
-    clearflag(FLAG_DAILY_QUEST_ACTIVE)
     changefactionstanding(FACTION_PROFESSIONALS, 25, FALSE)
     setvar(VAR_TEMP_B, 4000)
+    goto(CommonDailyQuestEnd)
+}
+
+script CommonAthletesRewardScript {
+    msgbox("Continue to be the best you\ncan be!")
+    setflag(FLAG_FINISHED_ATHLETE_DAILY)
+    changefactionstanding(FACTION_ATHLETES, 25, FALSE)
+    setvar(VAR_TEMP_B, 1750)
+    goto(CommonDailyQuestEnd)
+}
+
+script CommonDailyQuestEnd {
     addmoney(VAR_TEMP_B)
+    clearflag(FLAG_DAILY_QUEST_ACTIVE)
     buffernumberstring(0, VAR_TEMP_B)
     msgbox("You earned ¥{STR_VAR_1}.")
     closemessage
@@ -458,16 +440,29 @@ script CommonProfessionalsRewardScript {
     end
 }
 
-script CommonAthletesRewardScript {
-    msgbox("Continue to be the best you\ncan be!")
-    setflag(FLAG_FINISHED_ATHLETE_DAILY)
-    clearflag(FLAG_DAILY_QUEST_ACTIVE)
-    changefactionstanding(FACTION_ATHLETES, 25, FALSE)
-    setvar(VAR_TEMP_B, 1750)
-    addmoney(VAR_TEMP_B)
-    buffernumberstring(0, VAR_TEMP_B)
-    msgbox("You earned ¥{STR_VAR_1}.")
-    closemessage
-    release
-    end
+text ProfessionalsQuestDesc1 {
+    "We're running low on energy.\p"
+    "Can you bring us some Soda Pops?\p"
+    "We're in a crunch to meet\n"
+    "some deadlines, the caffeine will\l"
+    "help.\p"
+    "Twelve of them should be enough."
+}
+
+text OutcastsQuest1Desc {
+    "Greetings, familiar stranger.\p"
+    "We're trying to conduct a ritual\n"
+    "that will summon more rare\l"
+    "pokemon.\p"
+    "Can you bring us some Energy Powder?\n"
+    "five portions should do."
+}
+
+text PokefansQuest2Desc {
+    "Hi, {PLAYER}!\n"
+    "Is there a small chance you could\l"
+    "find us five Heart Scales?\p"
+    "They're beautiful collector's items\n"
+    "and we want to reward them for\l"
+    "a talent contest!"
 }
