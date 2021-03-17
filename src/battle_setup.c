@@ -1263,10 +1263,10 @@ static void CB2_EndTrainerBattle(void)
 
     if ((FlagGet(FLAG_RYU_HAS_FOLLOWER) == TRUE) && (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_LASS))
     {
-        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_SCHOOLKIDS] < 80)
+        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS] < 80)
             {
-                RyuAdjustFactionValueInternal(FACTION_SCHOOLKIDS, 1, FALSE);
-                RyuAdjustOpposingFactionValues(FACTION_SCHOOLKIDS, 1, TRUE);
+                RyuAdjustFactionValueInternal(FACTION_STUDENTS, 1, FALSE);
+                RyuAdjustOpposingFactionValues(FACTION_STUDENTS, 1, TRUE);
                 FlagClear(FLAG_TEMP_D);
             }
         else

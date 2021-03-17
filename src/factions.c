@@ -5,6 +5,14 @@
 #include "string_util.h"
 #include "event_data.h"
 
+extern const u8 RyuNaturalistsDailyQuest[];
+extern const u8 RyuStudentsDailyQuest[];
+extern const u8 RyuNoblesDailyQuest[];
+extern const u8 RyuPokefansDailyQuest[];
+extern const u8 RyuOutcastsDailyQuest[];
+extern const u8 RyuProfessionalsDailyQuest[];
+extern const u8 RyuAthletesDailyQuest[];
+
 void RyuFactions_ResetAllStanding(void)
 {
     u8 i = 0;
@@ -20,10 +28,10 @@ void RyuDebug_ViewFactionRelations(void)
     ConvertIntToDecimalStringN(gStringVar1, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_POKEFANS], STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gStringVar2, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NATURALISTS], STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_ATHLETES], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar1, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NERDS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_OUTCASTS], STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gRyuStringVar2, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_PROFESSIONALS], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_RICHKIDS], STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar4, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_SCHOOLKIDS], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar3, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_NOBLES], STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar4, gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS], STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
 bool8 ScrCmd_checkfaction(struct ScriptContext *ctx)
@@ -66,26 +74,26 @@ void RyuAdjustOpposingFactionValues(u8 id, u8 amount, bool8 negative)
     switch (id)
     {
     case FACTION_NATURALISTS:
-        RyuAdjustFactionValueInternal(FACTION_RICHKIDS, amount, negative);
+        RyuAdjustFactionValueInternal(FACTION_NOBLES, amount, negative);
         break;
-    case FACTION_SCHOOLKIDS:
-        RyuAdjustFactionValueInternal(FACTION_NERDS, amount, negative);
+    case FACTION_STUDENTS:
+        RyuAdjustFactionValueInternal(FACTION_OUTCASTS, amount, negative);
         break;
-    case FACTION_RICHKIDS:
+    case FACTION_NOBLES:
         RyuAdjustFactionValueInternal(FACTION_NATURALISTS, amount, negative);
         break;
     case FACTION_POKEFANS:
         RyuAdjustFactionValueInternal(FACTION_ATHLETES, amount, negative);
         break;
-    case FACTION_NERDS:
-        RyuAdjustFactionValueInternal(FACTION_SCHOOLKIDS, amount, negative);
+    case FACTION_OUTCASTS:
+        RyuAdjustFactionValueInternal(FACTION_STUDENTS, amount, negative);
         break;
     case FACTION_PROFESSIONALS:
         RyuAdjustFactionValueInternal(FACTION_POKEFANS, amount, negative);
         break;
     case FACTION_ATHLETES:
         RyuAdjustFactionValueInternal(FACTION_POKEFANS, (amount / 2), negative);
-        RyuAdjustFactionValueInternal(FACTION_RICHKIDS, (amount / 2), negative);
+        RyuAdjustFactionValueInternal(FACTION_NOBLES, (amount / 2), negative);
         break;
     }
 }
@@ -112,4 +120,27 @@ bool8 ScrCmd_checkfactionstanding(struct ScriptContext *ctx)
         gSpecialVar_Result = FALSE;
 
     return FALSE;
+}
+
+const u8 *RyuGetFactionDailyQuestScriptPtr(u8 factionId)
+{
+    switch (factionId)
+    {
+        case FACTION_NATURALISTS:
+            return RyuNaturalistsDailyQuest;
+        case FACTION_STUDENTS:
+            return RyuStudentsDailyQuest;
+        case FACTION_NOBLES:
+            return RyuNoblesDailyQuest;
+        case FACTION_POKEFANS:
+            return RyuPokefansDailyQuest;
+        case FACTION_OUTCASTS:
+            return RyuOutcastsDailyQuest;
+        case FACTION_PROFESSIONALS:
+            return RyuProfessionalsDailyQuest;
+        case FACTION_ATHLETES:
+            return RyuAthletesDailyQuest;
+        case FACTION_OTHERS:
+            return NULL;
+    }
 }

@@ -1599,14 +1599,14 @@
 #define FLAG_HIDDEN_MT_FREEZE_2F_PEARL_5               (DAILY_FLAGS_START + 0x19)
 #define FLAG_HIDDEN_MT_FREEZE_3F_PEARL_1               (DAILY_FLAGS_START + 0x1A)
 #define FLAG_HIDDEN_MT_FREEZE_3F_PEARL_2               (DAILY_FLAGS_START + 0x1B)
-#define FLAG_UNUSED_0x93C                              (DAILY_FLAGS_START + 0x1C) // Unused Flag
-#define FLAG_UNUSED_0x93D                              (DAILY_FLAGS_START + 0x1D) // Unused Flag
-#define FLAG_UNUSED_0x93E                              (DAILY_FLAGS_START + 0x1E) // Unused Flag
-#define FLAG_UNUSED_0x93F                              (DAILY_FLAGS_START + 0x1F) // Unused Flag
-#define FLAG_UNUSED_0x940                              (DAILY_FLAGS_START + 0x20) // Unused Flag
-#define FLAG_UNUSED_0x941                              (DAILY_FLAGS_START + 0x21) // Unused Flag
-#define FLAG_UNUSED_0x942                              (DAILY_FLAGS_START + 0x22) // Unused Flag
-#define FLAG_UNUSED_0x943                              (DAILY_FLAGS_START + 0x23) // Unused Flag
+#define FLAG_FINISHED_NATURALIST_DAILY                    (DAILY_FLAGS_START + 0x1C) // Unused Flag
+#define FLAG_FINISHED_STUDENT_DAILY                       (DAILY_FLAGS_START + 0x1D) // Unused Flag
+#define FLAG_FINISHED_NOBLE_DAILY                         (DAILY_FLAGS_START + 0x1E) // Unused Flag
+#define FLAG_FINISHED_POKEFAN_DAILY                       (DAILY_FLAGS_START + 0x1F) // Unused Flag
+#define FLAG_FINISHED_OUTCAST_DAILY                       (DAILY_FLAGS_START + 0x20) // Unused Flag
+#define FLAG_FINISHED_PROFESSIONAL_DAILY                  (DAILY_FLAGS_START + 0x21) // Unused Flag
+#define FLAG_FINISHED_ATHLETE_DAILY                       (DAILY_FLAGS_START + 0x22) // Unused Flag
+#define FLAG_DAILY_QUEST_ACTIVE                        (DAILY_FLAGS_START + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x944                              (DAILY_FLAGS_START + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x945                              (DAILY_FLAGS_START + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x946                              (DAILY_FLAGS_START + 0x26) // Unused Flag

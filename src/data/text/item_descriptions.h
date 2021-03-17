@@ -2015,9 +2015,9 @@ static const u8 sRainbowPassDesc[] = _(
     "Sevii Islands.");
 
 static const u8 sTeaDesc[] = _(
-    "A thirst-quenching\n"
-    "tea prepared by an\n"
-    "old lady.");
+    "A smooth tasting\n"
+    "Earl Grey tea\n"
+    "blend. Delicious.");
 
 static const u8 sMysticTicketDesc[] = _(
     "A ticket required\n"

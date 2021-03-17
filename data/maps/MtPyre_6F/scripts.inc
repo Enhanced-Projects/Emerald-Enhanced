@@ -34,7 +34,7 @@ MP_HexerStartFactionEvent::
 	playmoncry SPECIES_MIMIKYU, 2
 	msgbox MP_HexerThanks
 	closemessage
-	changefactionstanding FACTION_NERDS, 50, FALSE
+	changefactionstanding FACTION_OUTCASTS, 50, FALSE
 	applymovement OBJ_EVENT_ID_FOLLOWER, MP_FollowerOffScreen
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	playse SE_DOOR
@@ -59,7 +59,7 @@ MP_FQ_MimisGrave::
 
 MP_FQ_GiveStanding::
 	setflag FLAG_RYU_PLAYER_RECEIVED_STANDING_FROM_MIMIS_GRAVE
-	changefactionstanding FACTION_NERDS, 10, FALSE
+	changefactionstanding FACTION_OUTCASTS, 10, FALSE
 	release
 	end
 

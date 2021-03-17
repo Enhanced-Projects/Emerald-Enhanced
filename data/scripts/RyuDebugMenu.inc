@@ -79,9 +79,9 @@ RDB_CheckFactionRelations::
 factiondebugmsg:
 	.string "Faction Relations Values:\p"
 	.string "Pokefans: {STR_VAR_1}. Naturalists: {STR_VAR_2}.\n"
-	.string "Athletes: {STR_VAR_3}. Nerds: {RYU_STR_1}.\p"
-	.string "Professionals: {RYU_STR_2}. Rich Kids: {RYU_STR_3}.\n"
-	.string "School Kids: {RYU_STR_4}. Others: N/A.$"
+	.string "Athletes: {STR_VAR_3}. Outcasts: {RYU_STR_1}.\p"
+	.string "Professionals: {RYU_STR_2}. Nobles: {RYU_STR_3}.\n"
+	.string "Students: {RYU_STR_4}. Others: N/A.$"
 
 RDB_GetCurrentAndMaxAP::
 	callnative APDebugInfo

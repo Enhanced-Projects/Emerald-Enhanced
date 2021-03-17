@@ -32,7 +32,7 @@ Route102_EventScript_Tiana:: @ 81EC1CA
 	trainerbattle_single TRAINER_TIANA, Route102_Text_TianaIntro, Route102_Text_TianaDefeated
 	msgbox Route102_Text_TianaPostBattle
 	closemessage
-	checkfactionstanding FACTION_SCHOOLKIDS, 50
+	checkfactionstanding FACTION_STUDENTS, 50
 	compare VAR_RESULT, TRUE
 	goto_if_eq ryu_end
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_end
@@ -55,7 +55,7 @@ r102_FollowerTiana::
 	end
 
 r102_AdjustSchoolkidsFaction::
-	changefactionstanding FACTION_SCHOOLKIDS, 30, FALSE
+	changefactionstanding FACTION_STUDENTS, 30, FALSE
 	setflag FLAG_RYU_RECRUITED_TIANA
 	return
 

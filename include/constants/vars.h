@@ -141,12 +141,12 @@
 #define VAR_ROUTE128_STATE                   0x407B
 #define VAR_ROUTE129_STATE                   0x407C // Unused Var
 #define VAR_ROUTE130_STATE                   0x407D // Unused Var
-#define VAR_UNUSED_0x407E                    0x407E // Unused Var
-#define VAR_RYU_QUESTLINE_ID                0x407F // Which main quest the player chose.
-#define VAR_UNUSED_0x4080                    0x4080 // Unused Var
-#define VAR_UNUSED_0x4081                    0x4081 // Unused Var
+#define VAR_RYU_DAILY_QUEST_TYPE             0x407E // Type of daily quest player is on
+#define VAR_RYU_QUESTLINE_ID                 0x407F // Which main quest the player chose.
+#define VAR_RYU_DAILY_QUEST_TARGET           0x4080 // ID or target value to complete daily quest.
+#define VAR_RYU_DAILY_QUEST_DATA             0x4081 // Multi-Purpose component for daily quests.
 #define VAR_LITTLEROOT_HOUSES_STATE_DAWN     0x4082
-#define VAR_UNUSED_0x4083                    0x4083 // Unused Var
+#define VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION 0x4083 // The faction that assigned the current daily quest.
 #define VAR_BIRCH_LAB_STATE                  0x4084
 #define VAR_PETALBURG_GYM_STATE              0x4085 // used to determine which petalburg doors are open.
 #define VAR_CONTEST_HALL_STATE               0x4086
@@ -403,10 +403,10 @@
 
 //factions related
 #define FACTION_NATURALISTS 0 //Trainers who like to be in nature, surrounded by nature, simple existence. Campers, picknickers, rangers.          Opposed: Richkids(x1) "Pokemon are fine as they are!"
-#define FACTION_SCHOOLKIDS 1 //Trainers still in school and learning, aka the gossip girls. Lass, Youngster, Twins, Jr+Sr.                         Opposed: Nerds(x1) "The best pokemon are the easiest to train!"
-#define FACTION_RICHKIDS 2 //The rich assholes that no one likes except the other rich people. Rich boy, Lady, Expert, Parasol Lady.               Opposed: Naturalists(x1) "Pokemon are status symbols!"
+#define FACTION_STUDENTS 1 //Trainers still in school and learning, aka the gossip girls. Lass, Youngster, Twins, Jr+Sr.                         Opposed: Nerds(x1) "The best pokemon are the easiest to train!"
+#define FACTION_NOBLES 2 //The rich assholes that no one likes except the other rich people. Rich boy, Lady, Expert, Parasol Lady.               Opposed: Naturalists(x1) "Pokemon are status symbols!"
 #define FACTION_POKEFANS 3 //The people who just like having their pokemon around. Love pokemon for what they are, companions or pets.             Opposed: Athletes(x1) "Pokemon aren't tools of war, they're friends!"
-#define FACTION_NERDS 4 //The intense people that are eccentric, shunned, or generally out of it. Hex maniacs, bug maniacs, pokemaniacs, etc.      Opposed: Schoolkids(x1) "The wierd pokemons are the coolest!"
+#define FACTION_OUTCASTS 4 //The intense people that are eccentric, shunned, or generally out of it. Hex maniacs, bug maniacs, pokemaniacs, etc.      Opposed: Schoolkids(x1) "The wierd pokemons are the coolest!"
 #define FACTION_PROFESSIONALS 5 //people who chose a pokemon related career with specific paths, like kindlers, or guitarists.                     Opposed: Pokefans(x1) "Pokemon should be used to their strengths"
 #define FACTION_ATHLETES 6 //bodybuilders, meatheads, jocks, those whose entire existence is self improvement. Martial artists, fighters, etc.     Opposed: Pokefans(x0.5) Richkids(x0.5)  "Pokemon are best when trained 
 #define FACTION_OTHERS 7 //everything else unclassified like aqua, magma, leaders, etc.                                                                     to their potential, not left to rot and spoil!"

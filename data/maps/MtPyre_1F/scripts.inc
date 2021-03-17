@@ -66,7 +66,7 @@ MP_CantLeave:
 MP_FactionQuestHexer::
 	compare VAR_RYU_AQUA, 80
 	goto_if_ge MP_FQ_NotAvailable
-	checkfactionstanding FACTION_NERDS, 50
+	checkfactionstanding FACTION_OUTCASTS, 50
 	compare VAR_RESULT, TRUE
 	goto_if_eq MP_FQ_NotAvailable
 	lock

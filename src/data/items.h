@@ -5533,15 +5533,16 @@ const struct Item gItems[] =
 
     [ITEM_TEA] =
     {
-        .name = _("Tea"),
+        .name = _("Black Tea"),
         .itemId = ITEM_TEA,
-        .price = 0,
+        .price = 1000,
+        .holdEffectParam = 90,
         .description = sTeaDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .pocket = POCKET_MEDICINE,
+        .type = 1,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
 

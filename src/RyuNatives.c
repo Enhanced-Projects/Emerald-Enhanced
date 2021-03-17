@@ -1901,3 +1901,11 @@ int RyuGetPartnerCount(void)//also gives partner based achievements.
 
     return partners;
 }
+
+extern const u8 *gOriginalNPCScript;
+
+void RyuSummonOriginalNPCscript(void)
+{
+    const u8 *script = GetRamScript(gSpecialVar_LastTalked, gOriginalNPCScript);
+    ScriptContext1_SetupScript(script);
+}

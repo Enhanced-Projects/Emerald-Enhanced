@@ -1,0 +1,508 @@
+//This is the scripts file for the procedural generation of mini-quests for factions
+
+
+//Procedural components
+const FETCH_TYPE = 1
+const CAPTURE_TYPE = 2
+const TRAVEL_TYPE = 3
+const HATCH_TYPE = 4
+
+
+script(global) RyuNaturalistsDailyQuest  {
+    if (flag(FLAG_FINISHED_NATURALIST_DAILY) == true) { //quest done
+        msgbox("I don't have anything else\nfor you to do right now, sorry!")
+        release
+        end
+    }
+
+    if ((flag(FLAG_DAILY_QUEST_ACTIVE) == true) && (var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_NATURALISTS)) { //currently doing a daily quest for this faction
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+            case FETCH_TYPE:
+                checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                switch(var(VAR_RESULT)) {
+                    case TRUE:
+                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        goto(CommonNaturalistRewardScript)
+                    case FALSE:
+                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        msgbox("We still need {STR_VAR_1} {STR_VAR_2}.")
+                        release
+                        end
+                }
+            case CAPTURE_TYPE:
+                end
+        }
+
+    }
+    elif (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) != FACTION_NATURALISTS) {//currently doing a daily for another faction
+        callnative(RyuSummonOriginalNPCscript)
+        end
+    }
+
+    random(2)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SITRUS_BERRY)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 3)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS)
+            msgbox("Hi, {PLAYER}!\nCan you get some Sitrus Berries\lfor me?\pThree of them should do.")
+            closemessage
+            release
+            end
+        case 1:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_PECHA_BERRY)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS)
+            msgbox("Hi, {PLAYER}!\nCan you get some Pecha Berries\lfor me?\pTwo of them should do.")
+            closemessage
+            release
+            end
+    }
+}
+
+script(global) RyuStudentsDailyQuest  {
+     if (flag(FLAG_FINISHED_STUDENT_DAILY) == true) { //quest done
+        msgbox("We don't have any requests\nright now!")
+        release
+        end
+    }
+
+    if (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_STUDENTS) { //currently doing a daily quest for this faction
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+            case FETCH_TYPE:
+                checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                switch(var(VAR_RESULT)) {
+                    case TRUE:
+                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        goto(CommonStudentRewardScript)
+                    case FALSE:
+                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        msgbox("The student council still wants \n{STR_VAR_1} {STR_VAR_2}.")
+                        release
+                        end
+                }
+            case CAPTURE_TYPE:
+                end
+            }
+    }
+    elif (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) != FACTION_STUDENTS) {//currently doing a daily for another faction
+        callnative(RyuSummonOriginalNPCscript)
+        end
+    }
+
+    random(2)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_POTION)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_STUDENTS)
+            msgbox("Sup {PLAYER}!\pThe student council wants some\npotions for new members.\pWe need a total of five.")
+            closemessage
+            release
+            end
+        case 1:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_POKE_BALL)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 10)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_STUDENTS)
+            msgbox("Heya {PLAYER}!\pThe Council wants you to get some\npoke balls for our members.\pWe need a total of ten.")
+            closemessage
+            release
+            end
+    }
+}
+
+script(global) RyuNoblesDailyQuest  {
+     if (flag(FLAG_FINISHED_NOBLE_DAILY) == true) { //quest done
+        msgbox("There are no outstanding contracts.")
+        release
+        end
+    }
+
+    if (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_NOBLES) { //currently doing a daily quest for this faction
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+            case FETCH_TYPE:
+                checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                switch(var(VAR_RESULT)) {
+                    case TRUE:
+                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        goto(CommonNobleRewardScript)
+                    case FALSE:
+                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        msgbox("The Board is still looking to\nacquire {STR_VAR_1} {STR_VAR_2}.")
+                        release
+                        end
+                }
+            case CAPTURE_TYPE:
+                end
+        }
+
+    }
+    elif (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) != FACTION_NOBLES) {//currently doing a daily for another faction
+        callnative(RyuSummonOriginalNPCscript)
+        end
+    }
+
+    random(2)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_TEA)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NOBLES)
+            msgbox("The board of Directors would like\nsome Tea for their upcoming meeting.\pPlease acquire five servings.")
+            closemessage
+            release
+            end
+        case 1:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_BIG_PEARL)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 8)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NOBLES)
+            msgbox("The board is trying to expand it's\nportfolio of riches.\pPlease acquire some Big Pearls\nfor us to hold.\pWe need at least eight.")
+            closemessage
+            release
+            end
+    }
+}
+
+script(global) RyuPokefansDailyQuest  {
+     if (flag(FLAG_FINISHED_POKEFAN_DAILY) == true) { //quest done
+        msgbox("We're all happy with what we\nhave at the moment, thanks!")
+        release
+        end
+    }
+
+    if (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_POKEFANS) { //currently doing a daily quest for this faction
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+            case FETCH_TYPE:
+                checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                switch(var(VAR_RESULT)) {
+                    case TRUE:
+                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        goto(CommonPokefansRewardScript)
+                    case FALSE:
+                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        msgbox("Hello, dear, we're still trying\nto get {STR_VAR_1} {STR_VAR_2}.")
+                        release
+                        end
+                }
+            case CAPTURE_TYPE:
+                end
+        }
+
+    }
+    elif (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) != FACTION_POKEFANS) {//currently doing a daily for another faction
+        callnative(RyuSummonOriginalNPCscript)
+        end
+    }
+
+    random(2)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_POKE_DOLL)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_POKEFANS)
+            msgbox("Hello, dear.\pWe're trying to find some dolls\nto give to our kids.\pPlease find us 5 Poke Dolls.")
+            closemessage
+            release
+            end
+        case 1:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_HEART_SCALE)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_POKEFANS)
+            msgbox("Hi, {PLAYER}!\nIs there a small chance you could\lfind us five Heart Scales?\pThey're beautiful collector's items\nand we want to reward them for\la talent contest!")
+            closemessage
+            release
+            end
+    }
+}
+
+script(global) RyuOutcastsDailyQuest  {
+     if (flag(FLAG_FINISHED_OUTCAST_DAILY) == true) { //quest done
+        msgbox("The rituals are going as intended.")
+        release
+        end
+    }
+
+    if (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_OUTCASTS) { //currently doing a daily quest for this faction
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+            case FETCH_TYPE:
+                checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                switch(var(VAR_RESULT)) {
+                    case TRUE:
+                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        goto(CommonOutcastRewardScript)
+                    case FALSE:
+                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        msgbox("Yo... we still need {STR_VAR_1} {STR_VAR_2}.")
+                        release
+                        end
+                }
+            case CAPTURE_TYPE:
+                end
+        }
+
+    }
+    elif (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) != FACTION_OUTCASTS) {//currently doing a daily for another faction
+        callnative(RyuSummonOriginalNPCscript)
+        end
+    }
+
+    random(2)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_ENERGY_POWDER)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS)
+            msgbox("Greetings, familiar stranger.\pWe're trying to conduct a ritual\nthat will summon more rare\lpokemon.\pCan you bring us some Energy Powder?\nfive portions should do. ")
+            closemessage
+            release
+            end
+        case 1:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_STARDUST)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS)
+            msgbox("Heya {PLAYER}.\pWe recently got word that some\nrare pokemon can be attracted\lby anointing stones with stardust.\pPlease bring us five pouches of it.")
+            closemessage
+            release
+            end
+    }
+}
+
+script(global) RyuProfessionalsDailyQuest  {
+     if (flag(FLAG_FINISHED_PROFESSIONAL_DAILY) == true) { //quest done
+        msgbox("I'm currently working,\nPlease come back later.")
+        release
+        end
+    }
+
+    if (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_PROFESSIONALS) { //currently doing a daily quest for this faction
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+            case FETCH_TYPE:
+                checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                switch(var(VAR_RESULT)) {
+                    case TRUE:
+                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        goto(CommonProfessionalsRewardScript)
+                    case FALSE:
+                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        msgbox("Ahh, {PLAYER}!\nHave you brought the {STR_VAR_1} {STR_VAR_2} yet?")
+                        release
+                        end
+                }
+            case CAPTURE_TYPE:
+                end
+        }
+
+    }
+    elif (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) != FACTION_PROFESSIONALS) {//currently doing a daily for another faction
+        callnative(RyuSummonOriginalNPCscript)
+        end
+    }
+
+    random(2)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SODA_POP)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 12)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
+            msgbox("We're running low on energy.\pCan you bring us some Soda Pops?\pWe're in a crunch to meet\nsome deadlines, the caffeine will\lhelp.\p12 of them should be enough.")
+            closemessage
+            release
+            end
+        case 1:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_HYPER_POTION)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
+            msgbox("I'm too busy to travel to a\nPokemon Center.\pDo you happen to have a couple\nHyper Potions?\pI'll be able to continue my work.")
+            closemessage
+            release
+            end
+    }
+}
+
+script(global) RyuAthletesDailyQuest  {
+     if (flag(FLAG_FINISHED_ATHLETE_DAILY) == true) { //quest done
+        msgbox("Want to join me for some\nexercise?")
+        release
+        end
+    }
+
+    if (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_ATHLETES) { //currently doing a daily quest for this faction
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+            case FETCH_TYPE:
+                checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                switch(var(VAR_RESULT)) {
+                    case TRUE:
+                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        goto(CommonAthletesRewardScript)
+                    case FALSE:
+                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        msgbox("Hey, I'm in a hurry.\pDo you have the {STR_VAR_1} {STR_VAR_2} yet?")
+                        release
+                        end
+                }
+            case CAPTURE_TYPE:
+                end
+        }
+
+    }
+    elif (flag(FLAG_DAILY_QUEST_ACTIVE) == true && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) != FACTION_ATHLETES) {//currently doing a daily for another faction
+        callnative(RyuSummonOriginalNPCscript)
+        end
+    }
+
+    random(2)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_PROTEIN)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_ATHLETES)
+            msgbox("We're almost out of protein powder.\pCan you bring us 2 bottles of Protein?\nIt's needed for all of us who are\nactively working out!")
+            closemessage
+            release
+            end
+        case 1:
+            setflag(FLAG_DAILY_QUEST_ACTIVE)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_WAVE_MAIL)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 10)
+            setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_ATHLETES)
+            msgbox("We need to do some imprinting at\nthe Training Center.\pCan you bring us ten imprints?\nThis will save us a lot of time.")
+            closemessage
+            release
+            end
+    }
+}
+
+
+//Common reward scripts for dailies
+
+script CommonNaturalistRewardScript {
+    msgbox("Thanks for getting the stuff!")
+    setflag(FLAG_FINISHED_NATURALIST_DAILY)
+    clearflag(FLAG_DAILY_QUEST_ACTIVE)
+    changefactionstanding(FACTION_NATURALISTS, 25, FALSE)
+    setvar(VAR_TEMP_B, 1000)
+    addmoney(VAR_TEMP_B)
+    buffernumberstring(0, VAR_TEMP_B)
+    msgbox("You earned ¥{STR_VAR_1}.")
+    closemessage
+    release
+    end
+}
+
+script CommonStudentRewardScript {
+    msgbox("The new kids will need all the\nhelp they can get. \pThanks, {PLAYER}!")
+    setflag(FLAG_FINISHED_STUDENT_DAILY)
+    clearflag(FLAG_DAILY_QUEST_ACTIVE)
+    changefactionstanding(FACTION_STUDENTS, 25, FALSE)
+    setvar(VAR_TEMP_B, 3000)
+    addmoney(VAR_TEMP_B)
+    buffernumberstring(0, VAR_TEMP_B)
+    msgbox("You earned ¥{STR_VAR_1}.")
+    closemessage
+    release
+    end
+}
+
+script CommonNobleRewardScript {
+    msgbox("The Board should be pleased.\nYou are dismissed.")
+    setflag(FLAG_FINISHED_NOBLE_DAILY)
+    clearflag(FLAG_DAILY_QUEST_ACTIVE)
+    changefactionstanding(FACTION_NOBLES, 25, FALSE)
+    setvar(VAR_TEMP_B, 10000)
+    addmoney(VAR_TEMP_B)
+    buffernumberstring(0, VAR_TEMP_B)
+    msgbox("You earned ¥{STR_VAR_1}.")
+    closemessage
+    release
+    end
+}
+
+script CommonPokefansRewardScript {
+    msgbox("Thanks, dear.\nWe really appreciate your work!")
+    setflag(FLAG_FINISHED_POKEFAN_DAILY)
+    clearflag(FLAG_DAILY_QUEST_ACTIVE)
+    changefactionstanding(FACTION_POKEFANS, 25, FALSE)
+    setvar(VAR_TEMP_B, 2500)
+    addmoney(VAR_TEMP_B)
+    buffernumberstring(0, VAR_TEMP_B)
+    msgbox("You earned ¥{STR_VAR_1}.")
+    closemessage
+    release
+    end
+}
+
+script CommonOutcastRewardScript {
+    msgbox("The gods shine upon you\nthis day.\lMany thanks.")
+    setflag(FLAG_FINISHED_OUTCAST_DAILY)
+    clearflag(FLAG_DAILY_QUEST_ACTIVE)
+    changefactionstanding(FACTION_OUTCASTS, 25, FALSE)
+    setvar(VAR_TEMP_B, 2000)
+    addmoney(VAR_TEMP_B)
+    buffernumberstring(0, VAR_TEMP_B)
+    msgbox("You earned ¥{STR_VAR_1}.")
+    closemessage
+    release
+    end
+}
+
+script CommonProfessionalsRewardScript {
+    msgbox("The Board should be pleased.\nYou are dismissed.")
+    setflag(FLAG_FINISHED_PROFESSIONAL_DAILY)
+    clearflag(FLAG_DAILY_QUEST_ACTIVE)
+    changefactionstanding(FACTION_PROFESSIONALS, 25, FALSE)
+    setvar(VAR_TEMP_B, 4000)
+    addmoney(VAR_TEMP_B)
+    buffernumberstring(0, VAR_TEMP_B)
+    msgbox("You earned ¥{STR_VAR_1}.")
+    closemessage
+    release
+    end
+}
+
+script CommonAthletesRewardScript {
+    msgbox("Continue to be the best you\ncan be!")
+    setflag(FLAG_FINISHED_ATHLETE_DAILY)
+    clearflag(FLAG_DAILY_QUEST_ACTIVE)
+    changefactionstanding(FACTION_ATHLETES, 25, FALSE)
+    setvar(VAR_TEMP_B, 1750)
+    addmoney(VAR_TEMP_B)
+    buffernumberstring(0, VAR_TEMP_B)
+    msgbox("You earned ¥{STR_VAR_1}.")
+    closemessage
+    release
+    end
+}
