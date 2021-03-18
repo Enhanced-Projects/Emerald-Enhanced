@@ -46,7 +46,7 @@
 #define VAR_OBJ_GFX_ID_F           0x401F
 
 // general purpose vars
-#define VAR_RYU_SAVE_VIEWER_ENTRYPOINT       0x4020// the value of this variable is searched for by my save file vewer to let it know where saveblock vars start.
+#define VAR_RYU_SAVE_VIEWER_ENTRYPOINT       0x4020// the value of this variable is searched for by my save file viewer to let it know where saveblock vars start.
 #define VAR_REPEL_STEP_COUNT                 0x4021
 #define VAR_ICE_STEP_COUNT                   0x4022
 #define VAR_STARTER_MON                      0x4023 // 0=Treecko, 1=Torchic, 2=Mudkip
