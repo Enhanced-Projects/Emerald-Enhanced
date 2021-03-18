@@ -365,7 +365,7 @@ PlayersHouse_1F_EventScript_SeeYouHoney:: @ 8292A94
 PlayersHouse_1F_EventScript_HealParty:: @ 8292A9E
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
-	incrementgamestat GAME_STAT_RESTED_AT_HOME
+	@incrementgamestat GAME_STAT_RESTED_AT_HOME
 	msgbox PlayersHouse_1F_Text_TakeCareHoney, MSGBOX_DEFAULT
 	release
 	end

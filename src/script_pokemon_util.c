@@ -63,6 +63,7 @@ void HealPlayerParty(void)
         if (CheckAchievement(ACH_FITNESS_GURU) == FALSE)
             TryGiveFitnessGuruAch();
     }
+    IncrementGameStat(GAME_STAT_RESTED_AT_HOME);
 }
 
 u8 ScriptGiveMon(u16 species, u8 level, u16 item, u32 unused1, u32 unused2, u8 unused3)

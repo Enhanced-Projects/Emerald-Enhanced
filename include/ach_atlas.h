@@ -73,11 +73,13 @@ struct AchAtlas // this would be better off as a u8 array lmao
 #define MAXIMUM_AP 100 //this is probably never going to change, but people like constants so it's whatever.
 
 void CB2_OpenAtlas(void);
+void CB2_OpenAPMenu(void);
 
 void GiveAchievement(u32 id);
 void GiveAchievementDebug(u32 id);
 bool32 CheckAchievement(u32 id);
 void TakeAchievement(u32 id);
+u32 CountTakenAchievements(void);
 
 //AP internal
 void SetAPFlag(u32 id);

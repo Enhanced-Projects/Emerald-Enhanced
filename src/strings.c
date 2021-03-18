@@ -1545,6 +1545,7 @@ const u8 gText_MenuPokedex[] = _("Pokédex");
 const u8 gText_MenuPokemon[] = _("Pokémon");
 const u8 gText_MenuBag[] = _("Pack");
 const u8 gText_MenuPokenav[] = _("Pokénav");
+const u8 gText_MenuJournal[] = _("Journal");
 const u8 gText_MenuPlayer[] = _("{PLAYER}");
 const u8 gText_MenuSave[] = _("Save");
 const u8 gText_MenuOption[] = _("Options");
