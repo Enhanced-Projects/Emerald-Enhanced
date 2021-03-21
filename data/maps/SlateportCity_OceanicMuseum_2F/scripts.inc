@@ -316,6 +316,8 @@ OM_SetupSternForDevon::
 OM_ReEnableStern::
 	setvar VAR_TEMP_5, 10
 	goto_if_set FLAG_RYU_DEVON_STERN_EVENT_DONE, OM_FinishedSternEvent
+	compare VAR_RYU_AQUA, 70
+	goto_if_ge ryu_end
 	setvar VAR_RYU_DEVON, 17 @Player is on second floor to speak with Stern.
 	addobject 4
 	end
@@ -326,6 +328,7 @@ OM_FinishedSternEvent::
 	end
 	
 OM_CaptainStern::
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, ryu_end
 	compare VAR_RYU_DEVON, 18
 	goto_if_ge OM_AlreadyDoneScene
 	msgbox OM_ThanksForBringing

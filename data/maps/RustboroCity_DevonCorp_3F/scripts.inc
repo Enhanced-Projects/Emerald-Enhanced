@@ -9,11 +9,11 @@ RustboroCity_DevonCorp_3F_OnFrame: @ 8212464
 
 DC_QuestCheck::
 	lock
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, DC_ENEMY
 	compare VAR_RYU_DEVON, 15
 	goto_if_ge ryu_end
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
 	goto_if_set FLAG_RYU_DEVON_CORPORATE, DC_BeginCorporate
-	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, DC_ENEMY
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
 	checkitem ITEM_DEVON_GOODS, 1
 	compare VAR_RESULT, 1
@@ -43,11 +43,11 @@ DC_ENEMY::
 	
 DC_QuestCheck2::
 	lock
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, DC_ENEMY
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
 	compare VAR_RYU_DEVON, 15
 	goto_if_ge ryu_end
 	goto_if_set FLAG_RYU_DEVON_CORPORATE, DC_BeginCorporate
-	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, DC_ENEMY
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
 	checkitem ITEM_DEVON_GOODS, 1
 	compare VAR_RESULT, 1
