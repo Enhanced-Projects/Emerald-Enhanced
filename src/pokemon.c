@@ -3089,6 +3089,8 @@ void BoxMonToMon(const struct BoxPokemon *src, struct Pokemon *dest)
 inline u8 GetCurrentMaxLevel()
 {
     u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
+    if ((FlagGet(FLAG_RYU_DEV_MODE) == 1) && (FlagGet(FLAG_RYU_IGNORE_CAP) == 1))
+        return 250;
     return BASE_MAX_LEVEL + min(ngPlusCount, MAX_NGPLUS_COUNT) * LEVELS_PER_NGPLUS;
 }
 

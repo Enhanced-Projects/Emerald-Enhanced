@@ -66,7 +66,8 @@ RyuDebug_UtilitiesMenu:
 	case 12, RDB_GetCurrentAndMaxAP
 	case 13, RDB_CheckFactionRelations
 	case 14, RDB_AlchemyInfo
-	case 15, RyuDebug_menu_nodevcheck
+	case 15, RDB_ToggleLevelCap
+	case 16, RyuDebug_menu_nodevcheck
 	goto RyuDebug_cancel
 
 RDB_CheckFactionRelations::
@@ -204,6 +205,19 @@ RyuDebug_EnableDexnav::
 	setflag FLAG_SYS_DEXNAV_GET
 	release
 	end
+
+RDB_ToggleLevelCap::
+	msgbox RDB_LevelCapToggled
+	goto_if_set FLAG_RYU_IGNORE_CAP, RDB_EnableCap
+	setflag FLAG_RYU_IGNORE_CAP
+	goto RyuDebug_UtilitiesMenu
+
+RDB_EnableCap::
+	clearflag FLAG_RYU_IGNORE_CAP
+	goto RyuDebug_UtilitiesMenu
+
+RDB_LevelCapToggled:
+	.string "Level Cap Toggled.$"
 
 RyuDebug_enableWaystone::
 	additem ITEM_WAYSTONE, 1
