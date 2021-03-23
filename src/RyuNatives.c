@@ -1909,3 +1909,18 @@ void RyuSummonOriginalNPCscript(void)
     const u8 *script = GetRamScript(gSpecialVar_LastTalked, gOriginalNPCScript);
     ScriptContext1_SetupScript(script);
 }
+
+void RyuDebugPrintAllMonInfo(void)
+{
+    mgba_printf(LOGINFO, "Species: %d/%d", (GetMonData(&gPlayerParty[0], MON_DATA_SPECIES)), (GetMonData(&gPlayerParty[0], MON_DATA_SPECIES2)));
+    mgba_printf(LOGINFO, "Moves: %d/%d/%d/%d", (GetMonData(&gPlayerParty[0], MON_DATA_MOVE1)), (GetMonData(&gPlayerParty[0], MON_DATA_MOVE2)), (GetMonData(&gPlayerParty[0], MON_DATA_MOVE3)), (GetMonData(&gPlayerParty[0], MON_DATA_MOVE4)));
+    mgba_printf(LOGINFO, "Stats: HP(%d/%d), ATK(%d), DEF(%d), SPATK(%d), SPDEF(%d), SPEED(%d)", (GetMonData(&gPlayerParty[0], MON_DATA_HP)), (GetMonData(&gPlayerParty[0], MON_DATA_MAX_HP)), (GetMonData(&gPlayerParty[0], MON_DATA_ATK)), (GetMonData(&gPlayerParty[0], MON_DATA_DEF)), (GetMonData(&gPlayerParty[0], MON_DATA_SPATK)), (GetMonData(&gPlayerParty[0], MON_DATA_SPDEF)), (GetMonData(&gPlayerParty[0], MON_DATA_SPEED)));
+    mgba_printf(LOGINFO, "Level:(%d), EXP(%d), Personality(%d)", (GetMonData(&gPlayerParty[0], MON_DATA_LEVEL)), (GetMonData(&gPlayerParty[0], MON_DATA_EXP)), (GetMonData(&gPlayerParty[0], MON_DATA_PERSONALITY)));
+    mgba_printf(LOGINFO, "OTID(%d), Nick(%d), Region(%d) ", (GetMonData(&gPlayerParty[0], MON_DATA_OT_ID)), (GetMonData(&gPlayerParty[0], MON_DATA_NICKNAME)), (GetMonData(&gPlayerParty[0], MON_DATA_LANGUAGE)));
+}
+
+void RyuFixCorruptedBoxMons(void)
+{
+    ZeroBoxMonAt(2, 5);
+    ZeroBoxMonAt(2, 6);
+}

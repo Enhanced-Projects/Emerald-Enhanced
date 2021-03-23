@@ -1651,6 +1651,7 @@
 #define FLAG_BOTANY_HAS_HYPER_CUTTER            (SPECIAL_FLAGS_START + 0x5)
 #define FLAG_ONLY_GIVE_ACHIEVEMENT_ONCE         (SPECIAL_FLAGS_START + 0x6)
 #define FLAG_IS_FIGHTING_RYU                    (SPECIAL_FLAGS_START + 0x7)
+#define FLAG_RYU_GLITCH_MSG_SENT                (SPECIAL_FLAGS_START + 0x8)
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 

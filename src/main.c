@@ -24,6 +24,7 @@
 #include "main.h"
 #include "trainer_hill.h"
 #include "event_data.h"
+#include "pokemon_storage_system.h"
 
 static void VBlankIntr(void);
 static void HBlankIntr(void);
@@ -84,6 +85,8 @@ void EnableVCountIntrAtLine150(void);
 
 #define B_START_SELECT (B_BUTTON | START_BUTTON | SELECT_BUTTON)
 
+extern u32 GetBoxMonData();
+
 void AgbMain()
 {
     // Modern compilers are liberal with the stack on entry to this function,
@@ -120,6 +123,11 @@ void AgbMain()
     mgba_open();
     for (;;)
     {
+        if ((GetBoxMonData(&gPokemonStoragePtr->boxes[2][5], MON_DATA_SPECIES) == SPECIES_EGG || (GetBoxMonData(&gPokemonStoragePtr->boxes[4][6], MON_DATA_SPECIES) == SPECIES_EGG)) && FlagGet(FLAG_RYU_GLITCH_MSG_SENT) == FALSE)
+            {
+                FlagSet(FLAG_RYU_GLITCH_MSG_SENT);
+                mgba_printf(LOGFATAL, "Glitch slots modified!\nContact Ryu in Discord!\nNote what pokemon is in Box 3 slot 6 and slot 7!");
+            }
         ReadKeys();
 
         if (gSoftResetDisabled == FALSE

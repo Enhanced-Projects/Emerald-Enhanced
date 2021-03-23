@@ -255,7 +255,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto ryudebug_testpory
+	callnative RyuFixCorruptedBoxMons
+	clearflag FLAG_RYU_GLITCH_MSG_SENT
 	release
 	end
 
@@ -496,7 +497,7 @@ RyuDebug_GiveAllMons::
 	goto RyuDebug_ReturnCall
 	
 RyuDebug_ReturnCall::
-	compare VAR_TEMP_0, 120
+	compare VAR_TEMP_0, 419
 	goto_if_eq RyuDebugGivePokeDone
 	goto RyuDebug_GiveAllMons
 	
@@ -512,49 +513,49 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
-	specialvar VAR_TEMP_6, CalculatePlayerPartyCount
-	compare VAR_TEMP_6, 4
-	goto_if_gt RyuDebugGivePokeDone
-	givemon SPECIES_MEGA_MEWTWO_Y, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
-	setmonmove VAR_TEMP_6, 0, MOVE_PSYSTRIKE
-	setmonmove VAR_TEMP_6, 1, MOVE_DRAINING_KISS
-	setmonmove VAR_TEMP_6, 2, MOVE_AURA_SPHERE
-	setmonmove VAR_TEMP_6, 3, MOVE_PARABOLIC_CHARGE
-	specialvar VAR_TEMP_6, CalculatePlayerPartyCount
-	givemon SPECIES_MEGA_RAYQUAZA, BASE_MAX_LEVEL, ITEM_SCOPE_LENS
-	setmonmove VAR_TEMP_6, 0, MOVE_OBLIVION_WING
-	setmonmove VAR_TEMP_6, 1, MOVE_SPACIAL_REND
-	setmonmove VAR_TEMP_6, 2, MOVE_BEAK_BLAST
-	setmonmove VAR_TEMP_6, 3, MOVE_EARTHQUAKE
-	setvar VAR_TEMP_1, 252
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_3, 0
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 1
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 2
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 3
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 4
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 5
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_2, 1
-	setvar VAR_TEMP_3, 0
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 1
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 2
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 3
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 4
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 5
-	special RyuSetSlotStatEV
-	special RyuSetIVs
-	additem ITEM_WAYSTONE, 1
+	@specialvar VAR_TEMP_6, CalculatePlayerPartyCount
+	@compare VAR_TEMP_6, 5
+	@goto_if_gt ryu_end
+	givemon SPECIES_MEGA_MEWTWO_Y, BASE_MAX_LEVEL, ITEM_EXPERT_BELT @The only things that actually trigger the corrupted box mons are the `givemon` lines. The rest is just pointless without the givemon lines.
+	@setmonmove VAR_TEMP_6, 0, MOVE_PSYSTRIKE
+	@setmonmove VAR_TEMP_6, 1, MOVE_DRAINING_KISS
+	@setmonmove VAR_TEMP_6, 2, MOVE_AURA_SPHERE
+	@setmonmove VAR_TEMP_6, 3, MOVE_PARABOLIC_CHARGE
+	@specialvar VAR_TEMP_6, CalculatePlayerPartyCount
+	@givemon SPECIES_MEGA_RAYQUAZA, BASE_MAX_LEVEL, ITEM_SCOPE_LENS
+	@setmonmove VAR_TEMP_6, 0, MOVE_OBLIVION_WING
+	@setmonmove VAR_TEMP_6, 1, MOVE_SPACIAL_REND
+	@setmonmove VAR_TEMP_6, 2, MOVE_BEAK_BLAST
+	@setmonmove VAR_TEMP_6, 3, MOVE_EARTHQUAKE
+	@setvar VAR_TEMP_1, 252
+	@setvar VAR_TEMP_2, 0
+	@setvar VAR_TEMP_3, 0
+	@special RyuSetSlotStatEV
+	@setvar VAR_TEMP_3, 1
+	@special RyuSetSlotStatEV
+	@setvar VAR_TEMP_3, 2
+	@special RyuSetSlotStatEV
+	@setvar VAR_TEMP_3, 3
+	@special RyuSetSlotStatEV
+	@setvar VAR_TEMP_3, 4
+	@special RyuSetSlotStatEV
+	@setvar VAR_TEMP_3, 5
+	@special RyuSetSlotStatEV
+	@setvar VAR_TEMP_2, 1
+	@setvar VAR_TEMP_3, 0
+	@special RyuSetSlotStatEV
+	@setvar VAR_TEMP_3, 1
+	@special RyuSetSlotStatEV
+	@setvar VAR_TEMP_3, 2
+	@special RyuSetSlotStatEV
+	@setvar VAR_TEMP_3, 3
+	@special RyuSetSlotStatEV
+	@setvar VAR_TEMP_3, 4
+	@special RyuSetSlotStatEV
+	@setvar VAR_TEMP_3, 5
+	@special RyuSetSlotStatEV
+	@special RyuSetIVs
+	@additem ITEM_WAYSTONE, 1
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV
