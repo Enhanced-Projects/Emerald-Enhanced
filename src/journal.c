@@ -751,7 +751,6 @@ static void DrawJournalStatText(void)
         //if(sJournalStats[newStat]->hideOnN1 && sJournalStats[newStat]->statValueFunc() == 0xFFFFFFFF && i != 7) // TODO: last comparison is a hack so that we can roll out update sooner be it with some rough edges 
             //continue; 
         statCount = CountStatArrayLength(sJournalStats[newStat]);
-        mgba_printf(LOGINFO, "statCount %d, i %d", statCount, i);
         if(statCount > 8-i)
             continue;
         stats[length++] = newStat;
@@ -943,7 +942,6 @@ static void Task_ExitJournalTaskIntoNewUI(u8 taskId)
         return;
     if(gTasks[taskId].tCurrentButton != JOURNAL_OPTION_EXIT && sJounralButtons[gTasks[taskId].tCurrentButton].callback2 == NULL)
     {
-        mgba_printf(LOGFATAL, "Line %d, Button task is NULL", __LINE__);
         return; // how did we end up here
     }   
     

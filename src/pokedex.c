@@ -4158,6 +4158,11 @@ s8 GetSetPokedexFlag(u16 nationalDexNo, u8 caseID)
     u32 index, bit, mask;
     s8 retVal = 0;
 
+    if ((nationalDexNo > (NATIONAL_DEX_COUNT - 1) || (nationalDexNo < 1)))
+        return FALSE;
+
+
+
     nationalDexNo--;
     index = nationalDexNo / 8;
     bit = nationalDexNo % 8;
