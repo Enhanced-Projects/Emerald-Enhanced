@@ -66,7 +66,7 @@ void HealPlayerParty(void)
     IncrementGameStat(GAME_STAT_RESTED_AT_HOME);
 }
 
-u8 ScriptGiveMon(u16 species, u8 level, u16 item, u32 unused1, u32 unused2, u8 unused3)
+u8 ScriptGiveMon(u16 species, u8 level, u16 item)
 {
     u16 nationalDexNum;
     int sentToPc;
