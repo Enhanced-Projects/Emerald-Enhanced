@@ -898,7 +898,7 @@
 	.2byte \trainer
 	.endm
 
-	@ sets VAR_RESULT to TRUE if player has up to amount of standing in id faction
+	@ sets VAR_RESULT to TRUE if player has amount standing or more with id faction.
 	.macro checkfactionstanding id:req, amount:req
 	.byte 0x74
 	.byte \id

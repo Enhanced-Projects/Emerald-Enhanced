@@ -8884,26 +8884,26 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Trent3[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Trent4[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_LadyLorwyn[] = {
     {
-    .iv = 30,
+    .iv = 255,
     .lvl = 30,
-    .species = SPECIES_GEODUDE,
+    .species = SPECIES_CELESTEELA,
     },
     {
-    .iv = 30,
+    .iv = 255,
     .lvl = 30,
-    .species = SPECIES_GRAVELER,
+    .species = SPECIES_KARTANA,
     },
     {
-    .iv = 30,
+    .iv = 255,
     .lvl = 30,
-    .species = SPECIES_GRAVELER,
+    .species = SPECIES_AEGISLASH,
     },
     {
-    .iv = 30,
+    .iv = 255,
     .lvl = 30,
-    .species = SPECIES_GRAVELER,
+    .species = SPECIES_ALOLAN_MAROWAK,
     }
 };
 

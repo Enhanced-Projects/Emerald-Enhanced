@@ -27,6 +27,7 @@ RyuNaturalistsDailyQuest_5:
 	goto RyuNaturalistsDailyQuest_4
 
 RyuNaturalistsDailyQuest_6:
+	setvar VAR_TEMP_9, FACTION_NATURALISTS
 	callnative RyuSummonOriginalNPCscript
 	end
 
@@ -106,6 +107,7 @@ RyuStudentsDailyQuest_5:
 	goto RyuStudentsDailyQuest_4
 
 RyuStudentsDailyQuest_6:
+	setvar VAR_TEMP_9, FACTION_STUDENTS
 	callnative RyuSummonOriginalNPCscript
 	end
 
@@ -185,6 +187,7 @@ RyuNoblesDailyQuest_5:
 	goto RyuNoblesDailyQuest_4
 
 RyuNoblesDailyQuest_6:
+	setvar VAR_TEMP_9, FACTION_NOBLES
 	callnative RyuSummonOriginalNPCscript
 	end
 
@@ -264,6 +267,7 @@ RyuPokefansDailyQuest_5:
 	goto RyuPokefansDailyQuest_4
 
 RyuPokefansDailyQuest_6:
+	setvar VAR_TEMP_9, FACTION_POKEFANS
 	callnative RyuSummonOriginalNPCscript
 	end
 
@@ -343,6 +347,7 @@ RyuOutcastsDailyQuest_5:
 	goto RyuOutcastsDailyQuest_4
 
 RyuOutcastsDailyQuest_6:
+	setvar VAR_TEMP_9, FACTION_OUTCASTS
 	callnative RyuSummonOriginalNPCscript
 	end
 
@@ -422,6 +427,7 @@ RyuProfessionalsDailyQuest_5:
 	goto RyuProfessionalsDailyQuest_4
 
 RyuProfessionalsDailyQuest_6:
+	setvar VAR_TEMP_9, FACTION_PROFESSIONALS
 	callnative RyuSummonOriginalNPCscript
 	end
 
@@ -501,6 +507,7 @@ RyuAthletesDailyQuest_5:
 	goto RyuAthletesDailyQuest_4
 
 RyuAthletesDailyQuest_6:
+	setvar VAR_TEMP_9, FACTION_ATHLETES
 	callnative RyuSummonOriginalNPCscript
 	end
 

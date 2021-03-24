@@ -78,6 +78,10 @@ static const u8 sGameOverBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/gam
 static const u8 sGameOverBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/gameover/gameover_map.bin");
 static const u8 sGameOverBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/gameover/gameover_palette.gbapal");
 
+static const u8 sWarpBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_tiles.4bpp");
+static const u8 sWarpBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_map.bin");
+static const u8 sWarpBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_palette.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -268,6 +272,17 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sGameOverBgMap),
         .palette = sGameOverBgPalette,
 		.palIdxCnt = 240
+	},
+	[SCENEBGWARP] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sWarpBgTiles,
+		.tileSize = sizeof(sWarpBgTiles),
+        .map = sWarpBgMap,
+		.mapSize = sizeof(sWarpBgMap),
+        .palette = sWarpBgPalette,
+		.palIdxCnt = 16
 	},
 };
 

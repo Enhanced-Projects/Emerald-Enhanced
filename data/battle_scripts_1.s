@@ -6051,6 +6051,15 @@ BattleScript_AlchemyHealingFactor::
 	datahpupdate BS_ATTACKER
 	end2
 
+BattlesScript_FactionBossModifier::
+	playanimation BS_ATTACKER, B_ANIM_INGRAIN_HEAL, NULL
+	printstring STRINGID_FACTIONBOSSHEAL
+	waitmessage 0x40
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	end2
+
 BattleScript_BossModeStatBoostActivates::
 	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	printstring STRINGID_BOSSRAISEDSTAT

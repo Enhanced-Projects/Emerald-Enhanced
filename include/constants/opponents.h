@@ -639,7 +639,7 @@
 #define TRAINER_MIKE_2                      635
 #define TRAINER_EMPTY_214                     636
 #define TRAINER_EMPTY_215                     637
-#define TRAINER_EMPTY_216                     638
+#define TRAINER_LORWYN                     638
 #define TRAINER_MR_STONE                     639
 #define TRAINER_DEZ_AND_LUKE                640
 #define TRAINER_LEA_AND_JED                 641

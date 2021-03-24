@@ -678,6 +678,7 @@
 #define MAP_ROUTE119_WEATHER_INSTITUTE_1F (0 | (32 << 8))
 #define MAP_ROUTE119_WEATHER_INSTITUTE_2F (1 | (32 << 8))
 #define MAP_ROUTE119_HOUSE                (2 | (32 << 8))
+#define MAP_ROUTE119_LORWYNS_HOUSE        (3 | (32 << 8))
 
 // Map Group 33
 #define MAP_ROUTE124_DIVING_TREASURE_HUNTERS_HOUSE (0 | (33 << 8))

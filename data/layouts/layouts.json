@@ -5340,6 +5340,16 @@
       "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/RustboroCity_PidgeysCoop/border.bin",
       "blockdata_filepath": "data/layouts/RustboroCity_PidgeysCoop/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE119_LORWYNS_HOUSE",
+      "name": "Route119_LorwynsHouse_Layout",
+      "width": 8,
+      "height": 6,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/Route119_LorwynsHouse/border.bin",
+      "blockdata_filepath": "data/layouts/Route119_LorwynsHouse/map.bin"
     }
   ]
 }

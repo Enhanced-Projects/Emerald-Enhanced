@@ -10208,20 +10208,20 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Trent3},
     },
 
-    [TRAINER_EMPTY_216] =
+    [TRAINER_LORWYN] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_HIKER,
-        .trainerFaction = FACTION_NATURALISTS,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
-        .trainerPic = TRAINER_PIC_HIKER,
-        .trainerName = _("Trent"),
+        .trainerClass = TRAINER_CLASS_HEX_MANIAC,
+        .trainerFaction = FACTION_OUTCASTS,
+        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS,
+        .trainerPic = TRAINER_PIC_HEX_MANIAC,
+        .trainerName = _("Lorwyn"),
         .items = {},
-        .battleStyle = BS_SHIFT,
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Trent4),
-        .party = {.NoItemDefaultMoves = sParty_Trent4},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_CHECK_VIABILITY | AI_SCRIPT_HP_AWARE,
+        .partySize = ARRAY_COUNT(sParty_LadyLorwyn),
+        .party = {.NoItemDefaultMoves = sParty_LadyLorwyn},
     },
 
     [TRAINER_MR_STONE] =

@@ -6401,6 +6401,9 @@ u16 GetBattleBGM(void)
         else
             trainerClass = gTrainers[gTrainerBattleOpponent_A].trainerClass;
 
+        if (FlagGet(FLAG_RYU_FACING_FACTION_BOSS) == TRUE)
+            return MUS_BATTLE38;
+
         switch (trainerClass)
         {
             case TRAINER_CLASS_AQUA_LEADER:

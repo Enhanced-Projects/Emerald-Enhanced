@@ -255,6 +255,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	warpteleport MAP_ROUTE119_LORWYNS_HOUSE, 255, 4, 4
 	release
 	end
 

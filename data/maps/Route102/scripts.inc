@@ -33,7 +33,7 @@ Route102_EventScript_Tiana:: @ 81EC1CA
 	msgbox Route102_Text_TianaPostBattle
 	closemessage
 	checkfactionstanding FACTION_STUDENTS, 50
-	compare VAR_RESULT, TRUE
+	compare VAR_RESULT, FALSE
 	goto_if_eq ryu_end
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_end
 	msgbox r102_FollowerTianaQuery, MSGBOX_YESNO

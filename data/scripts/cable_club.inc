@@ -2087,7 +2087,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_MIKE_2
 	cleartrainerflag TRAINER_EMPTY_214
 	cleartrainerflag TRAINER_EMPTY_215
-	cleartrainerflag TRAINER_EMPTY_216
+	cleartrainerflag TRAINER_LORWYN
 	cleartrainerflag TRAINER_MR_STONE
 	cleartrainerflag TRAINER_DEZ_AND_LUKE
 	cleartrainerflag TRAINER_LEA_AND_JED

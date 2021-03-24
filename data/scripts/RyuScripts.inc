@@ -2022,7 +2022,7 @@ RyuScript_CheckFollowerFactionChanges::
 	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LASS
 	goto_if_ne ryu_end
 	checkfactionstanding FACTION_STUDENTS, 80
-	compare VAR_RESULT, TRUE
+	compare VAR_RESULT, FALSE
 	goto_if_eq ryu_end
 	changefactionstanding FACTION_STUDENTS, 1, FALSE
 	release

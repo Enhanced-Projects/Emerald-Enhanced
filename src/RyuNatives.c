@@ -1903,10 +1903,20 @@ int RyuGetPartnerCount(void)//also gives partner based achievements.
 }
 
 extern const u8 *gOriginalNPCScript;
+extern u8 RyuOutcastsSpecialQuestIntro[];
 
 void RyuSummonOriginalNPCscript(void)
 {
-    const u8 *script = GetRamScript(gSpecialVar_LastTalked, gOriginalNPCScript);
+    const u8 *script = NULL;
+    u8 factionId = (VarGet(VAR_TEMP_9));
+    if (factionId == FACTION_OUTCASTS && gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] >= 175)
+    {
+        script = RyuOutcastsSpecialQuestIntro;
+    }
+    else
+    {
+        script = GetRamScript(gSpecialVar_LastTalked, gOriginalNPCScript);
+    }
     ScriptContext1_SetupScript(script);
 }
 
