@@ -621,3 +621,11 @@ gMetatiles_MirageIsland::
 	.align 1
 gMetatileAttributes_MirageIsland::
 	.incbin "data/tilesets/secondary/mirageisland/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_DarkWorld::
+	.incbin "data/tilesets/primary/darkworld/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_DarkWorld::
+	.incbin "data/tilesets/primary/darkworld/metatile_attributes.bin"

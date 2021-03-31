@@ -5332,6 +5332,16 @@
       "blockdata_filepath": "data/layouts/BananaSlakothGarden_South/map.bin"
     },
     {
+      "id": "LAYOUT_SNOWY_SHORE_DARK_WORLD",
+      "name": "SnowyShore_DarkWorld_Layout",
+      "width": 44,
+      "height": 39,
+      "primary_tileset": "gTileset_DarkWorld",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/SnowyShore_DarkWorld/border.bin",
+      "blockdata_filepath": "data/layouts/SnowyShore_DarkWorld/map.bin"
+    },
+    {
       "id": "LAYOUT_RUSTBORO_CITY_PIDGEYS_COOP",
       "name": "RustboroCity_PidgeysCoop_Layout",
       "width": 15,

@@ -1,4 +1,12 @@
 
+SnowyShore_DarkWorld_EventScript_ItemFireStone::
+	finditem ITEM_FIRE_STONE
+	end
+
+SnowyShore_DarkWorld_EventScript_ItemHoundoominite::
+	finditem ITEM_HOUNDOOMINITE
+	end
+
 BananaSlakothGarden_EventScript_ItemRevivalHerb::
 	finditem ITEM_REVIVAL_HERB
 	end
@@ -552,6 +560,10 @@ GraniteCave_B2F_EventScript_ItemRepel:: @ 829116A
 
 GraniteCave_B2F_EventScript_ItemRareCandy:: @ 8291177
 	finditem ITEM_RARE_CANDY
+	end
+
+MtChimney_EventScript_ItemFlameOrb::
+	finditem ITEM_FLAME_ORB
 	end
 
 JaggedPass_EventScript_ItemBurnHeal:: @ 8291184

@@ -1889,3 +1889,23 @@ gTilesetPalettes_MirageIsland::
 	.align 2
 gTilesetTiles_MirageIsland::
 	.incbin "data/tilesets/secondary/mirageisland/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_DarkWorld::
+	.incbin "data/tilesets/primary/darkworld/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/darkworld/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/darkworld/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/darkworld/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/darkworld/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/darkworld/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/darkworld/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/darkworld/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/darkworld/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/darkworld/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/darkworld/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/darkworld/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/darkworld/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_DarkWorld::
+	.incbin "data/tilesets/primary/darkworld/tiles.4bpp.lz"
