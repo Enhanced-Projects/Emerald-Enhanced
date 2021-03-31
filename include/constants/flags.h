@@ -45,7 +45,7 @@
 #define FLAG_RYU_LT_RIVAL                    0x21
 #define FLAG_HIDE_CHAMPIONS_ROOM_STEVEN      0x22
 #define FLAG_RYU_STARTER_CHOSEN              0x23
-#define FLAG_RYU_AQUA_HIDE_MH4_COURTNEY_BOSS         0x24
+#define FLAG_RYU_AQUA_HIDE_MH4_COURTNEY_BOSS 0x24
 #define FLAG_RYU_MH_COURTNEY_SOLOMODE        0x25
 #define FLAG_HIDE_BRENDANS_HOUSE_BRENDAN     0x26
 #define FLAG_RYU_HAS_WAYSTONE                0x27
@@ -207,7 +207,7 @@
 #define FLAG_DECORATION_14                   0xBB
 #define FLAG_RECEIVED_POKENAV                0xBC
 #define FLAG_DELIVERED_STEVEN_LETTER         0xBD
-#define FLAG_DEFEATED_WALLY_MAUVILLE         0xBE // EE-Unused
+#define FLAG_ITEM_MT_CHIMNEY_FLAME_ORB       0xBE
 #define FLAG_DEFEATED_GRUNT_SPACE_CENTER_1F  0xBF
 #define FLAG_RECEIVED_SUN_STONE_MOSSDEEP     0xC0
 #define FLAG_WALLY_SPEECH                    0xC1 // EE-Unused
@@ -1034,8 +1034,8 @@
 #define FLAG_HIDE_LILYCOVE_POKEMON_CENTER_CONTEST_LADY_MON          0x3E1
 #define FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY                       0x3E2
 #define FLAG_HIDE_PETALBURG_CITY_SCOTT                              0x3E3
-#define FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA                          0x3E4 // EE-Unused
-#define FLAG_HIDE_SOOTOPOLIS_CITY_KYOGRE                            0x3E5 // EE-Unused
+#define FLAG_ITEM_SNOWY_SHORE_DARK_WORLD_FIRE_STONE                          0x3E4 // EE-Unused
+#define FLAG_ITEM_SNOWY_SHORE_DARK_WORLD_                            0x3E5 // EE-Unused
 #define FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON                           0x3E6 // EE-Unused
 #define FLAG_UNUSED_0x3E7                                           0x3E7
 
@@ -1266,7 +1266,7 @@
 #define FLAG_RYU_OBTAINED_GALLADITE                                 0x4BD
 #define FLAG_RYU_OBTAINED_DIANCITE                                  0x4BE
 #define FLAG_RYU_OBTAINED_GENGARITE                                 0x4BF
-#define FLAG_RYU_OBTAINED_HOUNDOOMITE                               0x4C0
+#define FLAG_RYU_OBTAINED_HOUNDOOMINITE                             0x4C0
 #define FLAG_RYU_CLEARED_COOL                                       0x4C1
 #define FLAG_RYU_CLEARED_BEAUTY                                     0x4C2
 #define FLAG_RYU_CLEARED_TOUGH                                      0x4C3

@@ -635,6 +635,7 @@
 #define MAP_MT_FREEZE_1F                  (20 | (27 << 8))
 #define MAP_MT_FREEZE_2F                  (21 | (27 << 8))
 #define MAP_MT_FREEZE_3F                  (22 | (27 << 8))
+#define MAP_SNOWY_SHORE_DARK_WORLD        (23 | (27 << 8))
 
 // Map Group 28
 #define MAP_MIRAGE_CAVE             (0 | (28 << 8))

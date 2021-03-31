@@ -918,3 +918,14 @@ gTileset_MirageIsland::
 	.4byte gMetatiles_MirageIsland
 	.4byte gMetatileAttributes_MirageIsland
 	.4byte NULL
+
+	.align 2
+gTileset_DarkWorld::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_DarkWorld
+	.4byte gTilesetPalettes_DarkWorld
+	.4byte gMetatiles_DarkWorld
+	.4byte gMetatileAttributes_DarkWorld
+	.4byte InitTilesetAnim_DarkWorld

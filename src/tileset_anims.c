@@ -26,6 +26,7 @@ static void _InitSecondaryTilesetAnimation(void);
 static void TilesetAnim_General(u16);
 static void TilesetAnim_Snowy(u16);
 static void TilesetAnim_Safari(u16);
+static void TilesetAnim_DarkWorld(u16);
 static void TilesetAnim_Building(u16);
 static void TilesetAnim_Rustboro(u16);
 static void TilesetAnim_Dewford(u16);
@@ -60,6 +61,8 @@ static void QueueAnimTiles_Safari_Water(u16);
 static void QueueAnimTiles_Safari_SandWaterEdge(u16);
 static void QueueAnimTiles_Safari_Waterfall(u16);
 static void QueueAnimTiles_Safari_LandWaterEdge(u16);
+static void QueueAnimTiles_DarkWorld_Flower(u16);
+static void QueueAnimTiles_DarkWorld_Lava(u16);
 static void QueueAnimTiles_Building_TVTurnedOn(u16);
 static void QueueAnimTiles_Rustboro_WindyWater(u16, u8);
 static void QueueAnimTiles_Rustboro_Fountain(u16);
@@ -309,6 +312,34 @@ const u16 *const gTilesetAnims_Safari_LandWaterEdge[] = {
     gTilesetAnims_Safari_LandWaterEdge_Frame1,
     gTilesetAnims_Safari_LandWaterEdge_Frame2,
     gTilesetAnims_Safari_LandWaterEdge_Frame3
+};
+
+const u16 gTilesetAnims_DarkWorld_Flower_Frame1[] = INCBIN_U16("data/tilesets/primary/darkworld/anim/flower/1.4bpp");
+const u16 gTilesetAnims_DarkWorld_Flower_Frame0[] = INCBIN_U16("data/tilesets/primary/darkworld/anim/flower/0.4bpp");
+const u16 gTilesetAnims_DarkWorld_Flower_Frame2[] = INCBIN_U16("data/tilesets/primary/darkworld/anim/flower/2.4bpp");
+const u16 tileset_anims_space_14[16] = {};
+
+const u16 *const gTilesetAnims_DarkWorld_Flower[] = {
+    gTilesetAnims_DarkWorld_Flower_Frame0,
+    gTilesetAnims_DarkWorld_Flower_Frame1,
+    gTilesetAnims_DarkWorld_Flower_Frame0,
+    gTilesetAnims_DarkWorld_Flower_Frame2
+};
+
+const u16 gTilesetAnims_DarkWorld_Lava_Frame0[] = INCBIN_U16("data/tilesets/secondary/cave/anim/lava/0.4bpp");
+const u16 gTilesetAnims_DarkWorld_Lava_Frame1[] = INCBIN_U16("data/tilesets/secondary/cave/anim/lava/1.4bpp");
+const u16 gTilesetAnims_DarkWorld_Lava_Frame2[] = INCBIN_U16("data/tilesets/secondary/cave/anim/lava/2.4bpp");
+const u16 gTilesetAnims_DarkWorld_Lava_Frame3[] = INCBIN_U16("data/tilesets/secondary/cave/anim/lava/3.4bpp");
+const u16 gTilesetAnims_DarkWorld_Lava_Frame4[] = INCBIN_U16("data/tilesets/secondary/cave/anim/lava/4.4bpp");
+const u16 gTilesetAnims_DarkWorld_Lava_Frame5[] = INCBIN_U16("data/tilesets/secondary/cave/anim/lava/5.4bpp");
+const u16 gTilesetAnims_DarkWorld_Lava_Frame6[] = INCBIN_U16("data/tilesets/secondary/cave/anim/lava/6.4bpp");
+const u16 gTilesetAnims_DarkWorld_Lava_Frame7[] = INCBIN_U16("data/tilesets/secondary/cave/anim/lava/7.4bpp");
+
+const u16 *const gTilesetAnims_DarkWorld_Lava[] = {
+    gTilesetAnims_DarkWorld_Lava_Frame0,
+    gTilesetAnims_DarkWorld_Lava_Frame1,
+    gTilesetAnims_DarkWorld_Lava_Frame2,
+    gTilesetAnims_DarkWorld_Lava_Frame3
 };
 
 const u16 gTilesetAnims_Lavaridge_Steam_Frame0[] = INCBIN_U16("data/tilesets/secondary/lavaridge/anim/steam/0.4bpp");
@@ -798,6 +829,13 @@ void InitTilesetAnim_Safari(void)
     sPrimaryTilesetAnimCallback = TilesetAnim_Safari;
 }
 
+void InitTilesetAnim_DarkWorld(void)
+{
+    sPrimaryTilesetAnimCounter = 0;
+    sPrimaryTilesetAnimCounterMax = 256;
+    sPrimaryTilesetAnimCallback = TilesetAnim_DarkWorld;
+}
+
 void InitTilesetAnim_Building(void)
 {
     sPrimaryTilesetAnimCounter = 0;
@@ -845,6 +883,14 @@ static void TilesetAnim_Safari(u16 timer)
         QueueAnimTiles_Safari_Waterfall(timer >> 4);
     if (timer % 16 == 4)
         QueueAnimTiles_Safari_LandWaterEdge(timer >> 4);
+}
+
+static void TilesetAnim_DarkWorld(u16 timer)
+{
+    if (timer % 16 == 0)
+        QueueAnimTiles_DarkWorld_Flower(timer >> 4);
+    if (timer % 16 == 1)
+        QueueAnimTiles_DarkWorld_Lava(timer >> 4);
 }
 
 static void TilesetAnim_Building(u16 timer)
@@ -923,6 +969,18 @@ static void QueueAnimTiles_Safari_Waterfall(u16 timer)
 {
     u16 i = timer % 4;
     AppendTilesetAnimToBuffer(gTilesetAnims_Safari_Waterfall[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(496)), 0xc0);
+}
+
+static void QueueAnimTiles_DarkWorld_Flower(u16 timer)
+{
+    u16 i = timer % 4;
+    AppendTilesetAnimToBuffer(gTilesetAnims_DarkWorld_Flower[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(508)), 0x80);
+}
+
+static void QueueAnimTiles_DarkWorld_Lava(u16 timer)
+{
+    u16 i = timer % 4;
+    AppendTilesetAnimToBuffer(gTilesetAnims_DarkWorld_Lava[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(492)), 0x80);
 }
 
 void InitTilesetAnim_Petalburg(void)

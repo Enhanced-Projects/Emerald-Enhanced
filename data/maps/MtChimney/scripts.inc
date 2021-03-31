@@ -16,13 +16,6 @@ MtChimney_OnTransition: @ 822EDCC
 MtChimney_OnResume: @ 822EDD2
 	setstepcallback STEP_CB_ASH
 	end
-	
-MC_Houndoomite::
-	finditem ITEM_HOUNDOOMINITE, 1
-	setflag FLAG_RYU_OBTAINED_HOUNDOOMITE
-	removeobject 31
-	release
-	end
 
 MtChimney_EventScript_Archie:: @ 822EDD5
 	lock
