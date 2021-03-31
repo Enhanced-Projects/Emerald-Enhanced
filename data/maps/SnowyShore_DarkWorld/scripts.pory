@@ -1,0 +1,56 @@
+raw `
+SnowyShore_DarkWorld_MapScripts::
+	.byte 0
+`
+//end RAW scripts
+
+script SnowyShore_DarkWorld_EventScript_Zigzagoon {
+    lock
+	faceplayer
+	waitse
+	playmoncry(SPECIES_ZIGZAGOON, 0)
+	msgbox(SnowyShore_DarkWorld_Text_Zigzagoon)
+	waitmoncry
+	release
+	end
+}
+
+text SnowyShore_DarkWorld_Text_Zigzagoon {
+	"Zigzagoon: Guguguuu!"
+}
+
+script SnowyShore_DarkWorld_EventScript_Beauty{
+	lock
+	faceplayer
+	msgbox(SnowyShore_DarkWorld_Text_MyGarden)
+	release
+	end
+}
+
+text SnowyShore_DarkWorld_Text_MyGarden {
+    "I'm trying to take care of my garden,\n"
+    "but these rocks keep showing up…"
+}
+
+script SnowyShore_DarkWorld_EventScript_OldWoman {
+	lock
+	faceplayer
+	msgbox(SnowyShore_DarkWorld_Text_LookPeculiar)
+	releaseall
+	end
+}
+
+text SnowyShore_DarkWorld_Text_LookPeculiar {
+	"Thou look peculiar, wearing such\n"
+	"exotic apparel."
+}
+
+script SnowyShore_DarkWorld_EventScript_TownSign {
+	msgbox(SnowyShore_Text_TownSign)
+	end
+}
+
+text SnowyShore_DarkWorld_Text_TownSign {
+	"Basalt Burg\n"
+	"“Treasure the treacherous”"
+}
