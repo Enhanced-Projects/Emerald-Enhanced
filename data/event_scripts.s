@@ -594,9 +594,8 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuRandomGruntChatterScripts.inc"
 	.include "data/scripts/RyuAchievementPowerScripts.inc"
 	.include "data/scripts/slakoth_vending_machine.inc"
-	.include "data/scripts/RyuPoryScripts.inc"
-	.include "data/scripts/RyuProceduralQuestSystemScripts.inc"
-	.include "data/scripts/RyuSpecialFactionQuests.inc"
+	.include "data/scripts/_poryscripts/RyuProceduralQuestSystemScripts.inc"
+	.include "data/scripts/_poryscripts/RyuSpecialFactionQuests.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
