@@ -127,7 +127,6 @@ CableClub_EventScript_ExitLinkRoom:: @ 8276C85
 	call CableClub_EventScript_CloseDirectCornerBarrier
 	special DrawWholeMapView
 	playse SE_TK_KASYA
-	erasebox 0, 0, 29, 19
 	releaseall
 	end
 
@@ -137,7 +136,6 @@ CableClub_EventScript_ExitMinigameRoom:: @ 8276C9D
 	call EventScript_CloseMossdeepGameCornerBarrier
 	special DrawWholeMapView
 	playse SE_TK_KASYA
-	erasebox 0, 0, 29, 19
 	releaseall
 	end
 
@@ -160,7 +158,6 @@ CableClub_EventScript_ExitTradeCenter:: @ 8276CE7
 	call CableClub_EventScript_CloseDirectCornerBarrier
 	special DrawWholeMapView
 	playse SE_TK_KASYA
-	erasebox 0, 0, 29, 19
 	releaseall
 	end
 
@@ -182,7 +179,6 @@ CableClub_EventScript_ExitRecordCorner:: @ 8276D2C
 	call CableClub_EventScript_CloseDirectCornerBarrier
 	special DrawWholeMapView
 	playse SE_TK_KASYA
-	erasebox 0, 0, 29, 19
 	releaseall
 	end
 
@@ -204,7 +200,6 @@ CableClub_EventScript_ExitUnionRoom:: @ 8276D6C
 	call CableClub_EventScript_CloseUnionRoomBarrier
 	special DrawWholeMapView
 	playse SE_TK_KASYA
-	erasebox 0, 0, 29, 19
 	releaseall
 	end
 
@@ -887,7 +882,6 @@ EventScript_ConfirmLeaveTradeRoom:: @ 82774EF
 	msgbox Text_TerminateLinkConfirmation, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq EventScript_TerminateLink
-	erasebox 0, 0, 29, 19
 	releaseall
 	end
 
@@ -2093,7 +2087,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_MIKE_2
 	cleartrainerflag TRAINER_EMPTY_214
 	cleartrainerflag TRAINER_EMPTY_215
-	cleartrainerflag TRAINER_EMPTY_216
+	cleartrainerflag TRAINER_LORWYN
 	cleartrainerflag TRAINER_MR_STONE
 	cleartrainerflag TRAINER_DEZ_AND_LUKE
 	cleartrainerflag TRAINER_LEA_AND_JED

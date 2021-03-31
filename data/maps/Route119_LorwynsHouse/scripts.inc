@@ -1,0 +1,2 @@
+Route119_LorwynsHouse_MapScripts::
+	.byte 0

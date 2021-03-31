@@ -37,6 +37,7 @@
 #include "battle.h" // to get rid of later
 #include "constants/rgb.h"
 #include "item.h"
+#include "ach_atlas.h"
 
 struct EggHatchData
 {
@@ -893,6 +894,10 @@ u8 GetEggCyclesToSubtract(void)
     }
     if (CheckBagHasItem(ITEM_OVAL_CHARM, 1) == TRUE)
         cycles *= 2;
+
+    if (CheckAPFlag(AP_BREEDER) == TRUE)
+        cycles *= 2;
+    
     return cycles;
 }
 

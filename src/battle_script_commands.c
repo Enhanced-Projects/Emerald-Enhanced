@@ -3428,18 +3428,22 @@ static void Cmd_tryfaintmon(void)
             battlerId = gBattlerAttacker;
             if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 20))
             {
+                GiveAchievement(ACH_EXPONENTIAL);
                 BS_ptr = BattleScript_FaintTarget20x;
             }
             else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 10))
             {
+                GiveAchievement(ACH_MULTIPLICATIVE);
                 BS_ptr = BattleScript_FaintTarget10x;
             }
             else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 4)) 
             {
+                GiveAchievement(ACH_ADDITIVE);
                 BS_ptr = BattleScript_FaintTarget4x;
             }
             else if (gBattleMoveDamage > (gBattleMons[gActiveBattler].maxHP * 2)) 
             {
+                GiveAchievement(ACH_NO_KILL_LIKE_OVERKILL);
                 BS_ptr = BattleScript_FaintTarget2x;
             }
             else if (gBattleMoveDamage <= (gBattleMons[gActiveBattler].maxHP)) 
@@ -3752,6 +3756,21 @@ bool8 RyuCheckIfPlayerDisabledTCExp(void)
     return FALSE;
 }
 
+int RyuCalculateAlchemyExpModifier(s32 exp)
+{
+    if (gSaveBlock2Ptr->hasAlchemyEffectActive == FALSE || gSaveBlock2Ptr->alchemyCharges < 1)
+        return exp;
+
+    if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_EXP_BOOST_T1)
+        exp = ((exp * 120) / 100);
+    else if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_EXP_BOOST_T2)
+        exp = ((exp * 150) / 100);
+    else if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_EXP_BOOST_T3)
+        exp = ((exp * 200) / 100);
+    else
+        return exp;
+}
+
 static void Cmd_getexp(void)
 {
     u16 item;
@@ -3797,6 +3816,7 @@ static void Cmd_getexp(void)
             u32 calculatedExp;
             s32 viaSentIn;
 
+
             for (viaSentIn = 0, i = 0; i < PARTY_SIZE; i++)
             {
                 if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE || GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
@@ -3811,16 +3831,12 @@ static void Cmd_getexp(void)
                 else
                     holdEffect = ItemId_GetHoldEffect(item);
             }
-            #if (B_SCALED_EXP >= GEN_5) && (B_SCALED_EXP != GEN_6)
-                calculatedExp = gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 5;
-            #else
-                calculatedExp = gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7;
-            #endif
 
             calculatedExp = (u32)(gBaseStats[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7);
             calculatedExp = (calculatedExp * multiplier / 1000);
 
-            //RyuExpBatteryTemp = (VarGet(VAR_RYU_EXP_BATTERY));
+            calculatedExp = (RyuCalculateAlchemyExpModifier(calculatedExp));
+
             RyuExpBatteryTemp = (((VarGet(VAR_RYU_EXP_BATTERY) + ((((gBattleMons[gBattlerFainted].level) * 5) * multiplier) / 1000))));
             if (RyuExpBatteryTemp > 50000)
             {
@@ -3828,10 +3844,14 @@ static void Cmd_getexp(void)
             }
             VarSet(VAR_RYU_EXP_BATTERY, RyuExpBatteryTemp);
 
-            
-            if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))//changing the order of these should make it so that if exp is off, that overrides exp share
-                calculatedExp = 0;
-            else if (gSaveBlock2Ptr->expShare) // exp share is turned on
+            if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
+            {
+                *exp = 1;
+                calculatedExp = 1;
+                gBattleMoveDamage = 1;
+            }
+
+            if (gSaveBlock2Ptr->expShare) // exp share is turned on
             {
                 *exp = calculatedExp / 2 / viaSentIn;
                 if (*exp == 0)
@@ -3945,6 +3965,7 @@ static void Cmd_getexp(void)
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleMoveDamage);
 
                     PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
+                    MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
                 }
                 gBattleStruct->sentInPokes >>= 1;
                 gBattleScripting.getexpState++;
@@ -6362,7 +6383,7 @@ static void Cmd_getmoneyreward(void)
     if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1 && ((VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL) || (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL)))
         moneyReward = ((moneyReward * 115) / 100);
 
-    //if player has the winnings boost AP active, they get 5% more money
+    //if player has the winnings boost AP active, they get 10% more money
     if (CheckAPFlag(AP_WINNINGS_BOOST) == TRUE)
         moneyReward = ((moneyReward * 110) / 100);
 
@@ -11942,6 +11963,8 @@ static u8 GetCatchingBattler(void)
         return GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
 }
 
+extern void RyuClearAlchemyEffect();
+
 static void Cmd_handleballthrow(void)
 {
     u8 ballMultiplier = 10;
@@ -11964,8 +11987,6 @@ static void Cmd_handleballthrow(void)
         u32 odds, i;
         u8 catchRate = gBaseStats[gBattleMons[gBattlerTarget].species].catchRate;
 
-        
-        #ifdef POKEMON_EXPANSION
         if (IS_ULTRA_BEAST(gBattleMons[gBattlerTarget].species))
         {
             if (gLastUsedItem == ITEM_BEAST_BALL)
@@ -11975,8 +11996,6 @@ static void Cmd_handleballthrow(void)
         }
         else
         {
-        #endif
-
         if (gLastUsedItem > ITEM_SAFARI_BALL)
         {
             switch (gLastUsedItem)
@@ -12101,6 +12120,7 @@ static void Cmd_handleballthrow(void)
 
         }
 
+
         // catchRate is unsigned, which means that it may potentially overflow if sum is applied directly.
         if (catchRate < 21 && ballAddition == -20)
             catchRate = 1;
@@ -12124,6 +12144,30 @@ static void Cmd_handleballthrow(void)
         if (gBattleMons[gBattlerTarget].status1 & (STATUS1_PARALYSIS | STATUS1_FREEZE))
             odds = (odds * 30) / 10;
 
+        if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_MASTER_CAPTURE && gSaveBlock2Ptr->alchemyCharges == 1)
+            {
+                gBattleSpritesDataPtr->animationData->isCriticalCapture = TRUE;
+                gBattleSpritesDataPtr->animationData->criticalCaptureSuccess = TRUE;
+                odds = 255;
+                RyuClearAlchemyEffect();
+            }
+
+        if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_SUPER_CAPTURE && gSaveBlock2Ptr->alchemyCharges == 1 && (Random() % 100 <= 25))
+            {
+                gBattleSpritesDataPtr->animationData->isCriticalCapture = TRUE;
+                gBattleSpritesDataPtr->animationData->criticalCaptureSuccess = TRUE;
+                odds = 255;
+                RyuClearAlchemyEffect();
+            }
+
+        if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_ULTRA_CAPTURE && gSaveBlock2Ptr->alchemyCharges == 1 && (Random() % 100 <= 50))
+            {
+                gBattleSpritesDataPtr->animationData->isCriticalCapture = TRUE;
+                gBattleSpritesDataPtr->animationData->criticalCaptureSuccess = TRUE;
+                odds = 255;
+                RyuClearAlchemyEffect();
+            }
+
         if (gLastUsedItem != ITEM_SAFARI_BALL)
         {
             if (gLastUsedItem == ITEM_MASTER_BALL)
@@ -12136,6 +12180,7 @@ static void Cmd_handleballthrow(void)
                     gBattleResults.catchAttempts[gLastUsedItem - ITEM_ULTRA_BALL]++;
             }
         }
+
 
         if (odds > 254) // mon caught
         {

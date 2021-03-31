@@ -67,6 +67,7 @@
 #include "pokemon.h"
 #include "autoscale_tables.h"
 #include "ach_atlas.h"
+#include "factions.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_SE1;
 extern struct MusicPlayerInfo gMPlayInfo_SE2;
@@ -1803,12 +1804,17 @@ s16 CalculatePlayerPartyStrength(void) {
 
     for (i = 0; i < partyCount; i++) {
         level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
-        if (level > highest)
+        // shift the previous highest down by one
+        if (level > highest) {
+            third = second;
+            second = highest;
             highest = level;
-        else if (level > second)
+        } else if (level > second) {
+            third = second;
             second = level;
-        else if (level > third)
+        } else if (level > third) {
             third = level;
+        }
     }
     average = (highest + second + third) / min(partyCount, 3);
     // in case people bring very weak mons to drag down the average
@@ -1826,7 +1832,10 @@ u32 RyuChooseLevel(u8 badges, bool8 maxScale, u8 scalingType, s16 playerPartyStr
     if (maxScale)
         return maxLevel;
 
-    if (FlagGet(FLAG_RYU_ISNGPLUS) && scalingType != SCALING_TYPE_WILD) { // wild pokemon should always use badge scaling
+    // Wild pokemon should always use badge scaling, unless the AP is enabled,
+    // in which case they always scale to slightly below team level, even before NG+.
+    if ((FlagGet(FLAG_RYU_ISNGPLUS) && scalingType != SCALING_TYPE_WILD)
+        || (CheckIfAutolevelWilds() && scalingType == SCALING_TYPE_WILD)) {
         // Vars are usually u16, but we need a signed number here.
         // Scripts might write negative numbers which wrap to 65535, but the cast to s16 converts that back to -1.
         s16 autolevelModifier = (s16) VarGet(VAR_RYU_AUTOLEVEL_MODIFIER);
@@ -1921,6 +1930,12 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         for (i = 0; i < monsCount; i++)
         {
             u16 level = RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength);
+
+            if ((GetFactionStanding(trainerNum)) <= 20 && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))//If faction standing is low enough, this trainer is stronger. EXCEPT IN FRONTIER.
+                level += 12;
+            else if ((GetFactionStanding(trainerNum)) <= 50  && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))
+                level += 7;
+
             nameHash += trainerNameHash;
             switch (gTrainers[trainerNum].partyFlags)
             {
@@ -5013,6 +5028,14 @@ static void WaitForEvoSceneToFinish(void)
         gBattleMainFunc = TryEvolvePokemon;
 }
 
+bool32 RyuCheckForLegendary(u16 species)
+{
+    if (gBaseStats[species].isLegendary == TRUE)
+        return TRUE;
+    
+    return FALSE;
+}
+
 static void ReturnFromBattleToOverworld(void)
 {
     if (!(gBattleTypeFlags & BATTLE_TYPE_LINK))
@@ -5037,6 +5060,35 @@ static void ReturnFromBattleToOverworld(void)
 
     if (VarGet(VAR_LITTLEROOT_INTRO_STATE) == 10)//player already finished tutorial
         GiveAchievement(ACH_ENHANCED_BATTLE);
+
+    if ((RyuCheckForLegendary(gBattleMons[gBattlerTarget].species) == TRUE) && ((gLastUsedItem == ITEM_POKE_BALL) || (gLastUsedItem == ITEM_BEAST_BALL)) && gBattleOutcome == B_OUTCOME_CAUGHT)
+    {
+        if (FlagGet(FLAG_ONLY_GIVE_ACHIEVEMENT_ONCE) == 0)
+        {
+            GiveAchievement(ACH_NTMO);
+            FlagSet(FLAG_ONLY_GIVE_ACHIEVEMENT_ONCE);
+        }
+    }
+
+    if ((FlagGet(FLAG_IS_FIGHTING_RYU) == TRUE) && (CheckAchievement(ACH_ASCENDED) == FALSE))
+            {
+                u8 i = 0;
+                u8 fainted = 0;
+                for (i = 0; i < CalculatePlayerPartyCount(); i++)
+                {
+                    if (GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
+                       fainted++;
+                }
+
+                if (fainted == 0)
+                {
+                    FlagClear(FLAG_IS_FIGHTING_RYU);
+                    GiveAchievement(ACH_ASCENDED);
+                }
+            }
+
+        if ((VarGet(VAR_RYU_TOTAL_FAINTS) >= 666) && (CheckAchievement(ACH_EVIL_INCARNATE) == FALSE))
+            GiveAchievement(ACH_EVIL_INCARNATE);
 
     m4aSongNumStop(SE_LOW_HEALTH);
     SetMainCallback2(gMain.savedCallback);

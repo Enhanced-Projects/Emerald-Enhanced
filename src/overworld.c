@@ -73,6 +73,7 @@
 #include "pokemon_storage_system.h"
 #include "item.h"
 #include "pokedex.h"
+#include "ach_atlas.h"
 
 #define PLAYER_TRADING_STATE_IDLE 0x80
 #define PLAYER_TRADING_STATE_BUSY 0x81
@@ -383,6 +384,15 @@ static void (*const gMovementStatusHandler[])(struct LinkPlayerObjectEvent *, st
     MovementStatusHandler_TryAdvanceScript,
 };
 
+void SetWarpDestinationToHome(void)
+{
+    if (gSaveBlock2Ptr->playerGender == 0)
+        SetWarpDestination(1, 1, 255, 4, 4);
+    else
+        SetWarpDestination(1, 3, 255, 4, 4);
+    
+}
+
 // code
 void DoWhiteOut(void)
 {
@@ -406,17 +416,21 @@ void DoWhiteOut(void)
         {
             FlagSet(FLAG_SYS_GAME_CLEAR);
             VarSet(VAR_RYU_NGPLUS_COUNT, ((VarGet(VAR_RYU_NGPLUS_COUNT) - 1)));
+            if ((CheckAchievement(ACH_WASTED) == FALSE) && (FlagGet(FLAG_RYU_NUZLOCKEFAILED) == 1))
+                GiveAchievement(ACH_WASTED);
         }
         HandleSavingData(SAVE_OVERWRITE_DIFFERENT_FILE);
         DoSoftReset();
     }
+    if (CheckAchievement(ACH_YOU_DIED) == FALSE)
+        GiveAchievement(ACH_YOU_DIED);
 
     FlagClear(FLAG_RYU_WAYSTONE_DISABLED);
     ScriptContext2_RunNewScript(EventScript_WhiteOut);
     SetMoney(&gSaveBlock1Ptr->money, ((GetMoney(&gSaveBlock1Ptr->money) / 5) * 4));
     HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
-    SetWarpDestinationToLastHealLocation();
+    SetWarpDestinationToHome();//had to force blackout location here because it does screwy things otherwise.
     WarpIntoMap();
 }
 
@@ -1830,6 +1844,7 @@ void CB2_ReturnToFieldLocal(void)
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuKillMon();
+
 } 
 
 void CB2_ReturnToField(void)

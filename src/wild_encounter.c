@@ -318,8 +318,7 @@ u32 RyuChooseWildLevel(void)
         CountBadges(),
         FALSE,
         SCALING_TYPE_WILD,
-        // The value is only used in NG+, so we can skip the calculation in the normal playthrough.
-        FlagGet(FLAG_RYU_ISNGPLUS) ? CalculatePlayerPartyStrength() : 0
+        CalculatePlayerPartyStrength()
     );
 }
 
@@ -501,8 +500,10 @@ static void RyuGenerateBossMon(u16 species, u8 level)
     }
 
 bool8 GenerateWildMonWithBossProbability(u16 species, u8 level, u16 rarity) {
-    if ((Random() % rarity == 0)
-        )// || (FlagGet(FLAG_RYU_DEV_MODE) == 1)) 
+    if (CheckAPFlag(AP_ALPHA_AURA) == TRUE)
+        rarity -= (rarity / 10);
+
+    if ((Random() % rarity == 0))// || (FlagGet(FLAG_RYU_DEV_MODE) == 1)) 
     {
         RyuGenerateBossMon(species, level);
         return TRUE;

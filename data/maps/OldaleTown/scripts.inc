@@ -10,6 +10,7 @@ OT_CheckMagmaEvent::
 OldaleTown_OnTransition: @ 81E8EA8
 	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_OLDALE_TOWN
+	call RyuCheckForWellTravelledAch
 	call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
 	call_if_unset FLAG_RECEIVED_GREAT_BALL_OLDALE, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState

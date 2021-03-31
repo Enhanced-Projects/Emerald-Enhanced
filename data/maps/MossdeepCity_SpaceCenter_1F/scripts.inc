@@ -55,6 +55,8 @@ SPC_FixMagmaMaybe1F::
 	
 SPC_PreventLeaveTillDone::
 	lock
+	compare VAR_RYU_QUESTLINE_ID, 5 @@game over'd
+	goto_if_eq SPC_PreventEntry
 	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 106
 	goto_if_ne ryu_end
 	msgbox SPC_CantLeave
@@ -63,6 +65,16 @@ SPC_PreventLeaveTillDone::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	release
 	end
+
+SPC_CantEnter:
+	.string "You failed the questline, you\nmay not enter.$"
+
+SPC_PreventEntry::
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	msgbox SPC_CantEnter
+	warpsilent MAP_MOSSDEEP_CITY, 255, 64, 15
+	waitstate
 	
 SPC_ItsBeenAwhile:
 	.string "Ah, {PLAYER}, it's been a while.\p"

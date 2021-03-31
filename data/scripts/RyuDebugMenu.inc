@@ -18,7 +18,7 @@ RyuDebugMenuScript::
 	case 2, RyuDebug_quickstart
 	case 3, RyuDebug_pokeedit
 	case 4, RyuDebug_enableWaystone
-	case 5, RyuDebug_Init_GiveAllItems
+	case 5, RyuDebug_GiveItems
 	case 6, RyuDebug_DisableDebug
 	case 7, RyuDebug_ShowBetaMenu
 	case 8, RyuDebug_cancel
@@ -33,7 +33,7 @@ RyuDebug_menu_nodevcheck::
 	case 2, RyuDebug_quickstart
 	case 3, RyuDebug_pokeedit
 	case 4, RyuDebug_enableWaystone
-	case 5, RyuDebug_Init_GiveAllItems
+	case 5, RyuDebug_GiveItems
 	case 6, RyuDebug_DisableDebug
 	case 7, RyuDebug_ShowBetaMenu
 	case 8, RyuDebug_cancel
@@ -64,8 +64,25 @@ RyuDebug_UtilitiesMenu:
 	case 10, RyuDebug_FillTheDex
 	case 11, RDB_GiveOrTakeAllAchievements
 	case 12, RDB_GetCurrentAndMaxAP
-	case 13, RyuDebug_menu_nodevcheck
+	case 13, RDB_CheckFactionRelations
+	case 14, RDB_AlchemyInfo
+	case 15, RDB_ToggleLevelCap
+	case 16, RyuDebug_menu_nodevcheck
 	goto RyuDebug_cancel
+
+RDB_CheckFactionRelations::
+	callnative RyuDebug_ViewFactionRelations
+	msgbox factiondebugmsg
+	closemessage
+	release
+	end
+
+factiondebugmsg:
+	.string "Faction Relations Values:\p"
+	.string "Pokefans: {STR_VAR_1}. Naturalists: {STR_VAR_2}.\n"
+	.string "Athletes: {STR_VAR_3}. Outcasts: {RYU_STR_1}.\p"
+	.string "Professionals: {RYU_STR_2}. Nobles: {RYU_STR_3}.\n"
+	.string "Students: {RYU_STR_4}. Others: N/A.$"
 
 RDB_GetCurrentAndMaxAP::
 	callnative APDebugInfo
@@ -105,7 +122,7 @@ RyuDebug_HealParty::
 	
 RyuDebug_pokeedit::
 	msgbox OpeningPokeEdit
-    goto RyuPokeEditMenu
+	goto RyuPokeEditMenu
 	release
 	end
 
@@ -114,7 +131,7 @@ OpeningPokeEdit:
 
 RyuDebug_money::
 	setvar VAR_TEMP_A, 50000
-    addmoney VAR_TEMP_A
+	addmoney VAR_TEMP_A
 	addmoney VAR_TEMP_A
 	addmoney VAR_TEMP_A
 	addmoney VAR_TEMP_A
@@ -140,7 +157,7 @@ RyuEncEnabled:
 	.string "Dev Repel off$"
 
 RyuDebug_money_text:
-    .string "Given ¥250,000.$"
+	.string "Given ¥250,000.$"
 
 RyuDebug_DisableDebug::
 	clearflag FLAG_RYU_DEV_MODE
@@ -189,24 +206,37 @@ RyuDebug_EnableDexnav::
 	release
 	end
 
+RDB_ToggleLevelCap::
+	msgbox RDB_LevelCapToggled
+	goto_if_set FLAG_RYU_IGNORE_CAP, RDB_EnableCap
+	setflag FLAG_RYU_IGNORE_CAP
+	goto RyuDebug_UtilitiesMenu
+
+RDB_EnableCap::
+	clearflag FLAG_RYU_IGNORE_CAP
+	goto RyuDebug_UtilitiesMenu
+
+RDB_LevelCapToggled:
+	.string "Level Cap Toggled.$"
+
 RyuDebug_enableWaystone::
 	additem ITEM_WAYSTONE, 1
-    setflag FLAG_VISITED_LITTLEROOT_TOWN
-    setflag FLAG_VISITED_OLDALE_TOWN
-    setflag FLAG_VISITED_DEWFORD_TOWN
-    setflag FLAG_VISITED_LAVARIDGE_TOWN
-    setflag FLAG_VISITED_FALLARBOR_TOWN
-    setflag FLAG_VISITED_VERDANTURF_TOWN
-    setflag FLAG_VISITED_PACIFIDLOG_TOWN
-    setflag FLAG_VISITED_PETALBURG_CITY
-    setflag FLAG_VISITED_SLATEPORT_CITY
-    setflag FLAG_VISITED_MAUVILLE_CITY
-    setflag FLAG_VISITED_RUSTBORO_CITY
-    setflag FLAG_VISITED_FORTREE_CITY
-    setflag FLAG_VISITED_LILYCOVE_CITY
-    setflag FLAG_VISITED_MOSSDEEP_CITY
-    setflag FLAG_VISITED_SOOTOPOLIS_CITY
-    setflag FLAG_VISITED_EVER_GRANDE_CITY
+	setflag FLAG_VISITED_LITTLEROOT_TOWN
+	setflag FLAG_VISITED_OLDALE_TOWN
+	setflag FLAG_VISITED_DEWFORD_TOWN
+	setflag FLAG_VISITED_LAVARIDGE_TOWN
+	setflag FLAG_VISITED_FALLARBOR_TOWN
+	setflag FLAG_VISITED_VERDANTURF_TOWN
+	setflag FLAG_VISITED_PACIFIDLOG_TOWN
+	setflag FLAG_VISITED_PETALBURG_CITY
+	setflag FLAG_VISITED_SLATEPORT_CITY
+	setflag FLAG_VISITED_MAUVILLE_CITY
+	setflag FLAG_VISITED_RUSTBORO_CITY
+	setflag FLAG_VISITED_FORTREE_CITY
+	setflag FLAG_VISITED_LILYCOVE_CITY
+	setflag FLAG_VISITED_MOSSDEEP_CITY
+	setflag FLAG_VISITED_SOOTOPOLIS_CITY
+	setflag FLAG_VISITED_EVER_GRANDE_CITY
 	setflag FLAG_LANDMARK_BATTLE_FRONTIER
 	setflag FLAG_LANDMARK_POKEMON_LEAGUE
 	setflag FLAG_RYU_LANDMARK_MH
@@ -225,8 +255,23 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	warpteleport MAP_ROUTE119_LORWYNS_HOUSE, 255, 4, 4
 	release
 	end
+
+RDB_AlchemyInfo::
+	callnative RyuDebug_CheckAlchemyStatus
+	msgbox RDB_AlchemyInfoMsg
+	closemessage
+	release
+	end
+
+RDB_AlchemyInfoMsg:
+	.string "Has Alchemy effect active? {STR_VAR_1}\n"
+	.string "Current effect is {STR_VAR_2},\l"
+	.string "with {STR_VAR_3} charges left.\p"
+	.string "Player's alchemy level is {RYU_STR_1}.\n"
+	.string "Player's Alchemy exp is {RYU_STR_2}.$"
 
 RDB_GiveOrTakeAllAchievements::
 	msgbox RDB_GiveTakeAchMsg, MSGBOX_YESNO
@@ -267,12 +312,12 @@ SaveFileStructMsg:
 	.string "SaveBlock1 size is {STR_VAR_1}/15872 bytes.\nSaveBlock2 size is {STR_VAR_2}/3968 bytes.$"
 
 exampletext:
-    .string "This is standard text.\p"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}This is a partner speaking.\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}This is player speaking\p"
-    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(This is green narration text.\n"
-    .string " There's a space at the beginning of\l"
-    .string " newlines and new pages too.)$"
+	.string "This is standard text.\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED}This is a partner speaking.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}This is player speaking\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(This is green narration text.\n"
+	.string " There's a space at the beginning of\l"
+	.string " newlines and new pages too.)$"
 
 RDB_GiveRandomFrontierMons::
 	compare VAR_TEMP_5, 0
@@ -331,22 +376,61 @@ settimequery:
 RDB_Readout_2:
 	.string "Time was changed to: {STR_VAR_1}:{STR_VAR_2}:{STR_VAR_3}  $"
 
-RyuDebug_Init_GiveAllItems::
+RyuDebug_GiveItems::
+	msgbox RDB_GiveTMsQuery MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuDebug_Init_GiveAllTMs
+	msgbox AlchemyKitQuery MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuDebug_GiveAlchemyKit
+	msgbox ItemsKitQuery MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuDebug_GiveItemsKit
+	msgbox RyuDebug_MoneyMsg MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	call_if_eq RyuDebug_money
+	msgbox KeyItemsKitQuery MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq RyuDebug_GiveKeyItemsKit
+	goto RyuDebug_menu_nodevcheck
+
+RyuDebug_Init_GiveAllTMs::
 	setvar VAR_TEMP_2, 482
-	msgbox RyuDebug_GiveAllItemsBeginMsg MSGBOX_DEFAULT
-	goto RyuDebug_GiveAllItems
+	msgbox RyuDebug_GiveAllTMsBeginMsg MSGBOX_DEFAULT
+	closemessage
+	goto RyuDebug_GiveAllTMs
 	
-RyuDebug_GiveAllItems::
-	additem VAR_TEMP_2, 100
+RyuDebug_GiveAllTMs::
+	additem VAR_TEMP_2, 1
 	addvar VAR_TEMP_2, 1
-	goto RyuDebug_ReturnCallItems
+	goto RyuDebug_ReturnCallTMs
 	
-RyuDebug_ReturnCallItems::
+RyuDebug_ReturnCallTMs::
 	compare VAR_TEMP_2, 546
-	goto_if_eq RyuDebugGiveItemsDone
-	goto RyuDebug_GiveAllItems
+	goto_if_eq RyuDebugGiveTMsDone
+	goto RyuDebug_GiveAllTMs
 	
-RyuDebugGiveItemsDone::
+RyuDebugGiveTMsDone::
+	goto ryu_return
+
+RyuDebug_GiveAlchemyKit::
+	setvar VAR_RYU_PLAYER_ALCHEMY_SKILL, 5
+	setvar VAR_RYU_ALCHEMY_EXP, 5000
+	additem ITEM_FRESH_WATER, 100
+	additem ITEM_TONIC_WATER, 100
+	additem ITEM_MINERAL_WATER, 100
+	additem ITEM_MUSCLE_POWDER, 100
+	additem ITEM_SMART_POWDER, 100
+	additem ITEM_STARDUST, 100
+	additem ITEM_TOUGH_POWDER, 100
+	additem ITEM_RAWST_BERRY, 100
+	additem ITEM_BRIGHT_POWDER, 100
+	additem ITEM_ORAN_BERRY, 100
+	setvar VAR_RYU_ALCHEMY_COPPER, 50000
+	setvar VAR_RYU_ALCHEMY_SILVER, 50000
+	setvar VAR_RYU_ALCHEMY_GOLD, 50000
+
+RyuDebug_GiveItemsKit:
 	additem ITEM_FULL_RESTORE, 100
 	additem ITEM_MAX_ELIXIR, 100
 	additem ITEM_MAX_REVIVE, 100
@@ -356,33 +440,50 @@ RyuDebugGiveItemsDone::
 	additem ITEM_LUXURY_BALL, 100
 	additem ITEM_MASTER_BALL, 100
 	additem ITEM_MAX_REPEL, 100
+	additem ITEM_BIG_PEARL, 100
+	return
+
+RyuDebug_GiveKeyItemsKit::
 	additem ITEM_MEGA_BRACELET, 1
 	additem ITEM_EXP_DRIVE, 1
-	msgbox RyuDebug_GiveAllItemsDoneMsg MSGBOX_DEFAULT
-	msgbox RyuDebug_MoneyMsg MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	call_if_eq RyuDebug_money
-	release
-	end
+	additem ITEM_FORECASTER, 1
+	additem ITEM_IMPRINTER, 1
+	additem ITEM_EXP_SHARE, 1
+	additem ITEM_SOOT_SACK, 1
+	additem ITEM_RECIPE_BOOK, 1
+	additem ITEM_REAGENT_POUCH, 1
+	return
 
 RyuDebug_MoneyMsg:
 	.string "Give Dev Mode money payout?$"
+
+RDB_GiveTMsQuery:
+	.string "Would you like all TMs?$"
 	
-RyuDebug_GiveAllItemsDoneMsg:
+RyuDebug_GiveAllTMsDoneMsg:
 	.string "Finished giving starter kit.$"
 	
-RyuDebug_GiveAllItemsBeginMsg:
+RyuDebug_GiveAllTMsBeginMsg:
 	.string "Giving all tms...$"
+
+AlchemyKitQuery:
+	.string "Do you want Alchemy items?$"
+
+ItemsKitQuery:
+	.string "Do you want adventuring items?$"
+
+KeyItemsKitQuery:	
+	.string "Do you want special Key Items?$"
 
 RyuDebug_givemonsquery:
 	.string "Would you like to be given\nall the Pokémon in the game?$"
 
 RyuDebug_cancel::
-    closemessage
+	closemessage
 	end
 
 RyuDebug_msg:
-    .string "What would you like to activate?$"
+	.string "What would you like to activate?$"
 	
 RyuDebug_Init_GiveAll::
 	setvar VAR_TEMP_0, 1
@@ -395,7 +496,7 @@ RyuDebug_GiveAllMons::
 	goto RyuDebug_ReturnCall
 	
 RyuDebug_ReturnCall::
-	compare VAR_TEMP_0, 120
+	compare VAR_TEMP_0, 419
 	goto_if_eq RyuDebugGivePokeDone
 	goto RyuDebug_GiveAllMons
 	
@@ -411,16 +512,20 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_quickstart::
-	givemon SPECIES_MEGA_MEWTWO_Y, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
+	specialvar VAR_TEMP_6, CalculatePlayerPartyCount
+	compare VAR_TEMP_6, 5
+	goto_if_gt ryu_end
+	givemon SPECIES_MEGA_MEWTWO_Y, BASE_MAX_LEVEL, ITEM_EXPERT_BELT @The only things that actually trigger the corrupted box mons are the `givemon` lines. The rest is just pointless without the givemon lines.
+	setmonmove VAR_TEMP_6, 0, MOVE_PSYSTRIKE
+	setmonmove VAR_TEMP_6, 1, MOVE_DRAINING_KISS
+	setmonmove VAR_TEMP_6, 2, MOVE_AURA_SPHERE
+	setmonmove VAR_TEMP_6, 3, MOVE_PARABOLIC_CHARGE
+	specialvar VAR_TEMP_6, CalculatePlayerPartyCount
 	givemon SPECIES_MEGA_RAYQUAZA, BASE_MAX_LEVEL, ITEM_SCOPE_LENS
-	setmonmove 1, 0, MOVE_OBLIVION_WING
-	setmonmove 1, 1, MOVE_SPACIAL_REND
-	setmonmove 1, 2, MOVE_BEAK_BLAST
-	setmonmove 1, 3, MOVE_EARTHQUAKE
-	setmonmove 0, 0, MOVE_PSYSTRIKE
-	setmonmove 0, 1, MOVE_DRAINING_KISS
-	setmonmove 0, 2, MOVE_AURA_SPHERE
-	setmonmove 0, 3, MOVE_PARABOLIC_CHARGE
+	setmonmove VAR_TEMP_6, 0, MOVE_OBLIVION_WING
+	setmonmove VAR_TEMP_6, 1, MOVE_SPACIAL_REND
+	setmonmove VAR_TEMP_6, 2, MOVE_BEAK_BLAST
+	setmonmove VAR_TEMP_6, 3, MOVE_EARTHQUAKE
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_3, 0
@@ -484,13 +589,12 @@ RyuDebug_SkipTutorial::
 	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setflag FLAG_SYS_NATIONAL_DEX
-	special EnableNationalPokedex
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
 	msgbox LRT_GameStartVariablesInfoMsg MSGBOX_DEFAULT
 	closemessage
 	msgbox RyuDebug_GiveItemQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1
-	goto_if_eq RyuDebug_Init_GiveAllItems
+	call_if_eq RyuDebug_Init_GiveAllTMs
 	release
 	end
 
@@ -498,7 +602,7 @@ LRT_GameStartVariablesInfoMsg:
 	.string "New Game Flags and Variables Set.$"
 
 RyuDebug_GiveItemQuery:
-	.string "Would you like the starter kit\nfor core items?$"
+	.string "Would you like to have all TMs?$"
 
 RyuNewGameQuery:
 	.string "Would you like to activate the new\ngame scripts?$"

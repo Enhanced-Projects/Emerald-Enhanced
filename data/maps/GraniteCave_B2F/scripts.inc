@@ -164,11 +164,13 @@ GC_ME_Everstone1::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox GC_ME_QuiteTheEager
 	closemessage
+	setflag FLAG_RYU_GAME_OVER
 	trainerbattle_single TRAINER_STEVEN_STORY1, GC_ME_IllPutBoth, GC_ME_YoullRegretThis, GC_ME_Event3
 	waitstate
 	end
 	
 GC_ME_Event3::
+	clearflag FLAG_RYU_GAME_OVER
 	applymovement 12, GC_ME_StevenLeaves
 	waitmovement 12
 	removeobject 12

@@ -1100,7 +1100,7 @@ const struct Item gItems[] =
         .description = sCopperOreDesc,
         .pocket = POCKET_COLLECTIBLES,
         .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Powderise,
         .secondaryId = 0,
     },
     
@@ -1112,7 +1112,7 @@ const struct Item gItems[] =
         .description = sSilverOreDesc,
         .pocket = POCKET_COLLECTIBLES,
         .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Powderise,
         .secondaryId = 0,
     },
     
@@ -1124,7 +1124,7 @@ const struct Item gItems[] =
         .description = sGoldOreDesc,
         .pocket = POCKET_COLLECTIBLES,
         .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Powderise,
         .secondaryId = 0,
     },
     
@@ -1766,13 +1766,10 @@ const struct Item gItems[] =
         .holdEffect = HOLD_EFFECT_NONE,
         .holdEffectParam = 0,
         .description = sNuggetDesc,
-        .importance = 2,
-        .unk19 = 0,
+        .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_Teleport,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
         .secondaryId = 0,
     },
 
@@ -5475,17 +5472,16 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_BERRY_POUCH] =
+    [ITEM_REAGENT_POUCH] = 
     {
-        .name = _("Berry Pouch"),
-        .itemId = ITEM_BERRY_POUCH,
+        .name = _("Reagent Pouch"),
+        .itemId = ITEM_REAGENT_POUCH,
         .price = 0,
-        .description = sBerryPouchDesc,
-        .importance = 1,
-        .unk19 = 1,
+        .description = sReagentPouchDesc,
         .pocket = POCKET_KEY_ITEMS,
+        .importance = 1,
         .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_RyuReagentPouch,
         .secondaryId = 0,
     },
 
@@ -5537,15 +5533,16 @@ const struct Item gItems[] =
 
     [ITEM_TEA] =
     {
-        .name = _("Tea"),
+        .name = _("Black Tea"),
         .itemId = ITEM_TEA,
-        .price = 0,
+        .price = 1000,
+        .holdEffectParam = 90,
         .description = sTeaDesc,
-        .importance = 1,
-        .unk19 = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = 4,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .pocket = POCKET_MEDICINE,
+        .type = 1,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
 
@@ -8052,6 +8049,60 @@ const struct Item gItems[] =
         .holdEffectParam = 20,
         .description = sBoxingGloveDesc,
         .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_TONIC_WATER] =
+    {
+        .name = _("Tonic Water"),
+        .itemId = ITEM_TONIC_WATER,
+        .price = 500,
+        .holdEffectParam = 100,
+        .description = sTonicWaterDesc,
+        .pocket = POCKET_MEDICINE,
+        .type = 1,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
+        .secondaryId = 0,
+    },
+
+    [ITEM_MINERAL_WATER] =
+    {
+        .name = _("Mineral Water"),
+        .itemId = ITEM_MINERAL_WATER,
+        .price = 2000,
+        .holdEffectParam = 250,
+        .description = sMineralWaterDesc,
+        .pocket = POCKET_MEDICINE,
+        .type = 1,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
+        .secondaryId = 0,
+    },
+
+    [ITEM_GOLD_NUGGET] =
+    {
+        .name = _("Gold Nugget"),
+        .itemId = ITEM_GOLD_NUGGET,
+        .price = 10000,
+        .description = sGoldNuggetDesc,
+        .pocket = POCKET_COLLECTIBLES,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_GEM_POWDER] =
+    {
+        .name = _("Gem Powder"),
+        .itemId = ITEM_GEM_POWDER,
+        .price = 1000,
+        .description = sGemPowderDesc,
+        .pocket = POCKET_COLLECTIBLES,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,

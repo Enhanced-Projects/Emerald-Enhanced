@@ -4,6 +4,7 @@ Route109_SeashoreHouse_MapScripts:: @ 82693F4
 
 Route109_SeashoreHouse_OnTransition: @ 82693FA
 	setflag FLAG_LANDMARK_SEASHORE_HOUSE
+	call RyuCheckForLNSUAch
 	end
 
 Route109_SeashoreHouse_EventScript_Owner:: @ 82693FE

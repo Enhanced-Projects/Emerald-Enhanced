@@ -45,6 +45,10 @@
 #include "constants/maps.h"
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
+#include "factions.h"
+#include "constants/event_objects.h"
+#include "ach_atlas.h"
+#include "data/achievements.h"
 
 enum
 {
@@ -849,7 +853,7 @@ static void CB2_GiveStarter(void)
 
     *GetVarPointer(VAR_STARTER_MON) = gSpecialVar_Result;
     starterMon = GetStarterPokemon(gSpecialVar_Result);
-    ScriptGiveMon(starterMon, 10, ITEM_NONE, 0, 0, 0);
+    ScriptGiveMon(starterMon, 10, ITEM_NONE);
     ResetTasks();
     PlayBattleBGM();
     SetMainCallback2(CB2_StartFirstBattle);
@@ -1232,9 +1236,11 @@ void BattleSetup_StartTrainerBattle(void)
 
 static void CB2_EndTrainerBattle(void)
 {
+    IncrementGameStat(GAME_STAT_BATTLES_WON);
     VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
     FlagClear(FLAG_RYU_BOSS_SCALE);
     FlagClear(FLAG_RYU_MAX_SCALE);
+    FlagClear(FLAG_RYU_FACING_FACTION_BOSS);
     
     if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
     {
@@ -1255,6 +1261,26 @@ static void CB2_EndTrainerBattle(void)
             SetBattledTrainersFlags();
         }
     }
+
+    if ((FlagGet(FLAG_RYU_HAS_FOLLOWER) == TRUE) && (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_LASS))
+    {
+        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS] < 80)
+            {
+                RyuAdjustFactionValueInternal(FACTION_STUDENTS, 1, FALSE);
+                RyuAdjustOpposingFactionValues(FACTION_STUDENTS, 1, TRUE);
+                FlagClear(FLAG_TEMP_D);
+            }
+        else
+            {
+                GiveAchievement(ACH_MENTOR);
+            }
+    }
+
+    if (gSaveBlock2Ptr->alchemyEffect > 0 && gSaveBlock2Ptr->alchemyEffect < 10 && gSaveBlock2Ptr->alchemyCharges > 0)
+        gSaveBlock2Ptr->alchemyCharges--;
+
+    if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_HEALING_FACTOR && gSaveBlock2Ptr->alchemyCharges > 0)
+        gSaveBlock2Ptr->alchemyCharges--;
 }
 
 void ShowTrainerIntroSpeech(void)

@@ -33,6 +33,7 @@ SC1_LeafHouseSign2:
 
 SlateportCity_EventScript_EnterSlateport:: @ 81DCC8D
 	setflag FLAG_VISITED_SLATEPORT_CITY
+	call RyuCheckForWellTravelledAch
 	return
 
 SlateportCity_OnFrame: @ 81DCD12

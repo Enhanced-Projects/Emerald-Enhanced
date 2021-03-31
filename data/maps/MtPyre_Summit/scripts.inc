@@ -298,10 +298,12 @@ MPS_AfterCourtney::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox MPS_SoYouveComeAgain
 	closemessage
+	setflag FLAG_RYU_GAME_OVER
 	trainerbattle_single TRAINER_MAXIE_MAGMA_HIDEOUT, MPS_Maxie_Intro, MPS_Maxie_Defeat, MPS_AfterMaxie
 	goto MPS_AfterMaxie
 	
 MPS_AfterMaxie::
+	clearflag FLAG_RYU_GAME_OVER
 	setflag FLAG_RYU_HIDE_NPCS_MTPYRE_SUMMIT
 	call MPS_RemoveAquaMagmaObjects
 	setvar VAR_RYU_AQUA, 96 @player defeated Maxie in mt pyre
@@ -411,11 +413,10 @@ MPS_MattToTabitha:
 	delay_16
 	walk_up
 	walk_up
-	walk_left
+	face_left
 	step_end
 	
 MPS_MaxieToPlayer:
-	walk_down
 	walk_down
 	walk_down
 	walk_right

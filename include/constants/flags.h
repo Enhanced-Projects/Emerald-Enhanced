@@ -80,15 +80,15 @@
 #define FLAG_RYU_HAS_SHINY_CHARM             0x44
 #define FLAG_RYU_HAS_MEGA_BRACELET           0x45
 #define FLAG_RYU_DEVON_STERN_EVENT_DONE      0x46
-#define FLAG_UNUSED_0x47                     0x47
+#define FLAG_RYU_GAME_OVER                   0x47 //set when player loses a story fight.
 #define FLAG_RYU_DEVON_CORPORATE             0x48
 #define FLAG_RYU_ULTRA_BEASTS_ESCAPED        0x49
-#define FLAG_UNUSED_0x4A                     0x4A
-#define FLAG_UNUSED_0x4B                     0x4B
-#define FLAG_UNUSED_0x4C                     0x4C
-#define FLAG_UNUSED_0x4D                     0x4D
-#define FLAG_UNUSED_0x4E                     0x4E
-#define FLAG_UNUSED_0x4F                     0x4F
+#define FLAG_RYU_MOLTRES                     0x4A
+#define FLAG_RYU_HIDE_MTPYRE_HEXER           0x4B
+#define FLAG_RYU_HEXER_FACTION_QUEST_ACTIVE  0x4C
+#define FLAG_RYU_PLAYER_RECEIVED_STANDING_FROM_MIMIS_GRAVE    0x4D
+#define FLAG_RYU_OUTCASTS_SPECIAL_STARTED    0x4E
+#define FLAG_RYU_FINISHED_LORWYNS_TEST       0x4F
 
 // Scripts
 #define FLAG_HIDE_RAYQUAZA_SKY_TOWER_SUMMIT  0x50
@@ -106,24 +106,24 @@
 #define FLAG_RECEIVED_BIKE                   0x5A
 #define FLAG_RYU_DT_BRINEY_BATTLE            0x5B // Prevents briney from approaching player in route 105 after he has been defeated.
 #define FLAG_COLLECTED_ALL_SILVER_SYMBOLS    0x5C
-#define FLAG_GOOD_LUCK_SAFARI_ZONE           0x5D // EE-Unused?
+#define FLAG_UNUSED_0x5D                     0x5D
 #define FLAG_RECEIVED_WAILMER_PAIL           0x5E
 #define FLAG_RECEIVED_POKEBLOCK_CASE         0x5F
 #define FLAG_RECEIVED_SECRET_POWER           0x60
 #define FLAG_MET_TEAM_AQUA_HARBOR            0x61
 #define FLAG_TV_EXPLAINED                    0x62
 #define FLAG_MAUVILLE_GYM_BARRIERS_STATE     0x63
-#define FLAG_UNUSED_0x64                     0x64
-#define FLAG_UNUSED_0x65                     0x65
-#define FLAG_UNUSED_0x66                     0x66
-#define FLAG_UNUSED_0x67                     0x67
+#define FLAG_RYU_RECRUITED_TIANA             0x64
+#define FLAG_RYU_HELPED_POKEFAN_PIKACHU      0x65
+#define FLAG_RYU_DID_NOT_HELP_POKEFAN        0x66
+#define FLAG_RYU_REWARDED_FOR_HELPING_POKEFAN    0x67
 
 #define FLAG_UNUSED_0x68                     0x68
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_TM54                   0x6A
 #define FLAG_RECEIVED_TM56                   0x6B
-#define FLAG_WHITEOUT_TO_LAVARIDGE           0x6C // Set after defeating Flannery, so the player cant white out from poison before receiving Go Goggles
+#define FLAG_UNUSED_0x6C                     0x6C
 #define FLAG_RECEIVED_TM55                   0x6D
 #define FLAG_RECEIVED_TM52                   0x6E
 #define FLAG_UNUSED_0x6F                     0x6F
@@ -145,7 +145,7 @@
 #define FLAG_DEFEATED_RIVAL_ROUTE_104        0x7D
 #define FLAG_HIDDEN_CRAGGY_COAST_HEART_SCALE 0x7E
 #define FLAG_MET_PRETTY_PETAL_SHOP_OWNER     0x7F
-#define FLAG_ENABLE_ROXANNE_FIRST_CALL       0x80 // EE-Unused
+#define FLAG_UNUSED_0x80                     0x80
 #define FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN  0x81
 #define FLAG_DEFEATED_RIVAL_ROUTE103         0x82
 #define FLAG_RECEIVED_DOLL_LANETTE           0x83
@@ -733,7 +733,7 @@
 #define FLAG_RYU_PERSISTENT_WEATHER                                 0x2B8
 #define FLAG_RYU_MINNIE_POKEMON_SCHOOL                              0x2B9
 #define FLAG_JAGGED_PASS_TM54                                       0x2BA
-#define FLAG_UNUSED_0x2BB                                           0x2BB // EE-Unused?
+#define FLAG_RYU_PREVENT_ACH_POPUP                                  0x2BB // EE-Unused?
 
 // Event Flags
 #define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
@@ -868,11 +868,11 @@
 #define FLAG_ITEM_CRAGGY_COAST_BIG_PEARL                            0x33B
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE                     0x33C
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE                      0x33D
-#define FLAG_UNUSED_0x33E                                           0x33E
+#define FLAG_RYU_PLAYER_SENT_TO_JP_BY_SHELLY                        0x33E
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS               0x33F
 #define FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER                0x340
 #define FLAG_HIDE_GRANITE_CAVE_STEVEN                               0x341
-#define FLAG_UNUSED_0x342                                           0x342
+#define FLAG_RYU_HIDE_101_TIANA                                     0x342
 #define FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY                       0x343
 #define FLAG_HIDE_BATTLE_FRONTIER_RECEPTION_GATE_SCOTT              0x344
 #define FLAG_HIDE_ROUTE_110_BIRCH                                   0x345
@@ -1413,7 +1413,7 @@
 #define FLAG_SYS_NATIONAL_DEX                       (SYSTEM_FLAGS + 0x36)
 #define FLAG_SYS_CAVE_SHIP                          (SYSTEM_FLAGS + 0x37) // Unused Flag, leftover from R/S debug, presumably used by Emerald's debug too
 #define FLAG_SYS_CAVE_WONDER                        (SYSTEM_FLAGS + 0x38) // Unused Flag, same as above
-#define FLAG_SYS_CAVE_BATTLE                        (SYSTEM_FLAGS + 0x39) // Unused Flag, same as above
+#define FLAG_RYU_IGNORE_CAP                         (SYSTEM_FLAGS + 0x39)
 #define FLAG_SYS_SHOAL_TIDE                         (SYSTEM_FLAGS + 0x3A)
 #define FLAG_SYS_RIBBON_GET                         (SYSTEM_FLAGS + 0x3B)
 
@@ -1599,14 +1599,14 @@
 #define FLAG_HIDDEN_MT_FREEZE_2F_PEARL_5               (DAILY_FLAGS_START + 0x19)
 #define FLAG_HIDDEN_MT_FREEZE_3F_PEARL_1               (DAILY_FLAGS_START + 0x1A)
 #define FLAG_HIDDEN_MT_FREEZE_3F_PEARL_2               (DAILY_FLAGS_START + 0x1B)
-#define FLAG_UNUSED_0x93C                              (DAILY_FLAGS_START + 0x1C) // Unused Flag
-#define FLAG_UNUSED_0x93D                              (DAILY_FLAGS_START + 0x1D) // Unused Flag
-#define FLAG_UNUSED_0x93E                              (DAILY_FLAGS_START + 0x1E) // Unused Flag
-#define FLAG_UNUSED_0x93F                              (DAILY_FLAGS_START + 0x1F) // Unused Flag
-#define FLAG_UNUSED_0x940                              (DAILY_FLAGS_START + 0x20) // Unused Flag
-#define FLAG_UNUSED_0x941                              (DAILY_FLAGS_START + 0x21) // Unused Flag
-#define FLAG_UNUSED_0x942                              (DAILY_FLAGS_START + 0x22) // Unused Flag
-#define FLAG_UNUSED_0x943                              (DAILY_FLAGS_START + 0x23) // Unused Flag
+#define FLAG_FINISHED_NATURALIST_DAILY                    (DAILY_FLAGS_START + 0x1C) // Unused Flag
+#define FLAG_FINISHED_STUDENT_DAILY                       (DAILY_FLAGS_START + 0x1D) // Unused Flag
+#define FLAG_FINISHED_NOBLE_DAILY                         (DAILY_FLAGS_START + 0x1E) // Unused Flag
+#define FLAG_FINISHED_POKEFAN_DAILY                       (DAILY_FLAGS_START + 0x1F) // Unused Flag
+#define FLAG_FINISHED_OUTCAST_DAILY                       (DAILY_FLAGS_START + 0x20) // Unused Flag
+#define FLAG_FINISHED_PROFESSIONAL_DAILY                  (DAILY_FLAGS_START + 0x21) // Unused Flag
+#define FLAG_FINISHED_ATHLETE_DAILY                       (DAILY_FLAGS_START + 0x22) // Unused Flag
+#define FLAG_DAILY_QUEST_ACTIVE                        (DAILY_FLAGS_START + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x944                              (DAILY_FLAGS_START + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x945                              (DAILY_FLAGS_START + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x946                              (DAILY_FLAGS_START + 0x26) // Unused Flag
@@ -1649,29 +1649,52 @@
 #define FLAG_SPECIAL_FLAG_UNUSED_0x4003         (SPECIAL_FLAGS_START + 0x3) // Unused Flag
 #define FLAG_STORING_ITEMS_IN_PYRAMID_BAG       (SPECIAL_FLAGS_START + 0x4)
 #define FLAG_BOTANY_HAS_HYPER_CUTTER            (SPECIAL_FLAGS_START + 0x5)
+#define FLAG_ONLY_GIVE_ACHIEVEMENT_ONCE         (SPECIAL_FLAGS_START + 0x6)
+#define FLAG_IS_FIGHTING_RYU                    (SPECIAL_FLAGS_START + 0x7)
+#define FLAG_RYU_GLITCH_MSG_SENT                (SPECIAL_FLAGS_START + 0x8)
+#define FLAG_RYU_FACING_FACTION_BOSS            (SPECIAL_FLAGS_START + 0x9)
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 
 //Achievement Power related
+
+// AP tiers 
+#define AP_TIER_PLATINUM 0
+#define AP_TIER_GOLD 1
+#define AP_TIER_SILVER 2
+#define AP_TIER_COPPER 3
 
 //PLATINUM AP's (You can only use one at a time)
 #define AP_SPRINT_BOOST 0//lets player move faster
 #define AP_GLOBAL_REPEL 1//lets player have dev repel
 #define AP_TRAINER_REPEL 2//lets player have dev phasing without the noclip
 #define AP_EV_BOOST 3//doubles final EV gain
+#define AP_PLATINUM_COUNT 4
 
-//GOLD AP's (you can use up to 3 of these)
+//GOLD AP's (you can use up to 2 of these)
 #define AP_MOBILE_STAT_CHECKER 4//lets player use a mobile ev/iv checker while active
 #define AP_PDA 5//lets player access a mart remotely
+#define AP_ALPHA_AURA 10 //10% increased boss chance
+#define AP_BIOHAZARD 12 //double pokerus chance
+#define AP_GOLD_COUNT 4
 
-//SILVER AP's (you can use up to 4 of these at a time)
+//SILVER AP's (you can use up to 3 of these at a time)
 #define AP_WINNINGS_BOOST 6 //Gives the player 10% more winnings after battle
+#define AP_STRONGER_WILDS 8 //Wild pokemon use autolevel
+#define AP_BREEDER 11 //Doubles final hatch progress gain per step after other modifiers.
+#define AP_SILVER_COUNT 3
 
 //COPPER AP's (you can use many of these at the same time)
 #define AP_CAPTURE_BOOST 7 //Gives the player 5% boost to capture rate
+#define AP_NATURAL_TALENT 9 //Lets the player open secret bases without the move.
+#define AP_LUCKY_LOOT 13 //Wild pokemon held item chance is collectively increased by 25% of their base value.
+#define AP_COPPER_COUNT 3
+
+// total number of achivement powers available
+#define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 21
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 41
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -1697,26 +1720,26 @@
 #define ACH_ASTRONOMICAL  18
 #define ACH_CORPORATE_SHILL  19
 #define ACH_DEJA_VU  20
-#define ACH_UNUSED_22  21
-#define ACH_UNUSED_23  22
-#define ACH_UNUSED_24  23
-#define ACH_UNUSED_25  24
-#define ACH_UNUSED_26  25
-#define ACH_UNUSED_27  26
-#define ACH_UNUSED_28  27
-#define ACH_UNUSED_29  28
-#define ACH_UNUSED_30  29
-#define ACH_UNUSED_31  30
-#define ACH_UNUSED_32  31
-#define ACH_UNUSED_33  32
-#define ACH_UNUSED_34  33
-#define ACH_UNUSED_35  34
-#define ACH_UNUSED_36  35
-#define ACH_UNUSED_37  36
-#define ACH_UNUSED_38  37
-#define ACH_UNUSED_39  38
-#define ACH_UNUSED_40  39
-#define ACH_UNUSED_41  40
+#define ACH_NTMO  21
+#define ACH_POKEMON_MASTER  22
+#define ACH_MASTER_BREEDER  23
+#define ACH_ASCENDED  24
+#define ACH_EVIL_INCARNATE  25
+#define ACH_1337  26
+#define ACH_YOU_DIED  27
+#define ACH_WASTED  28
+#define ACH_FITNESS_GURU  29
+#define ACH_GREEN_THUMB  30
+#define ACH_HOENN_CHAMPION  31
+#define ACH_LEAVE_NO_STONE_UNTURNED  32
+#define ACH_NO_KILL_LIKE_OVERKILL  33
+#define ACH_ADDITIVE  34
+#define ACH_MULTIPLICATIVE  35
+#define ACH_EXPONENTIAL  36
+#define ACH_WELL_TRAVELLED  37
+#define ACH_MENTOR  38
+#define ACH_UNDERTAKER 39
+#define ACH_FIELD_MEDIC  40
 #define ACH_UNUSED_42  41
 #define ACH_UNUSED_43  42
 #define ACH_UNUSED_44  43
@@ -1932,5 +1955,34 @@
 #define ACH_UNUSED_254 253 
 #define ACH_UNUSED_255 254 
 #define ACH_UNUSED_256 255 
+
+
+//Alchemy related defines
+
+#define ALCHEMY_EFFECT_NONE                0 // gSaveBlock2Ptr->alchemyEffect set to this when there is no effect, or current effect wears out.
+#define ALCHEMY_EFFECT_DAMAGE_BOOST_T1     1 // for five battles, deal 10% more damage
+#define ALCHEMY_EFFECT_DAMAGE_BOOST_T2     2 // for five battles, deal 25% more damage
+#define ALCHEMY_EFFECT_DAMAGE_BOOST_T3     3 // for five battles, deal 50% more damage
+#define ALCHEMY_EFFECT_DEFENSE_BOOST_T1    4 // for five battles, take 10% less damage
+#define ALCHEMY_EFFECT_DEFENSE_BOOST_T2    5 // for five battles, take 25% less damage
+#define ALCHEMY_EFFECT_DEFENSE_BOOST_T3    6 // for five battles, take 50% less damage
+#define ALCHEMY_EFFECT_EXP_BOOST_T1        7 // for ten battles, your experience is increased by 20%
+#define ALCHEMY_EFFECT_EXP_BOOST_T2        8 // for ten battles, your experience is increased by 50%
+#define ALCHEMY_EFFECT_EXP_BOOST_T3        9 // for ten battles, your experience is increased by 100%
+#define ALCHEMY_EFFECT_REPEL_T1            10 // adds 500 to repel step counter
+#define ALCHEMY_EFFECT_REPEL_T2            11 // adds 1000 to repel step counter
+#define ALCHEMY_EFFECT_SUPER_CAPTURE       12 // for one battle, you have a 25% chance of a capture succeeding regardless of ball used.
+#define ALCHEMY_EFFECT_ULTRA_CAPTURE       13 // for one battle, you have a 50% chance of a capture succeeding regardless of ball used.
+#define ALCHEMY_EFFECT_MASTER_CAPTURE      14 // For one battle, you are garunteed to capture regardelss of ball used.
+#define ALCHEMY_EFFECT_HEALING_FACTOR      15 // for five battles, you regain 10% health per turn. 
+#define ALCHEMY_ITEM_RECIPE_STARDUST       16 // creates Stardust from Soft Sand and Gem Powder
+#define ALCHEMY_ITEM_RECIPE_FRESH_WATER    17 // creates Fresh Water from Snowball and Fire Stone
+#define ALCHEMY_ITEM_RECIPE_TONIC_WATER    18 // creates Tonic Water from Charcoal and Fresh Water
+#define ALCHEMY_ITEM_RECIPE_MINERAL_WATER  19 // creates Mineral Water from Soft Sand, Shoal Salt, and Tonic Water
+#define ALCHEMY_ITEM_RECIPE_RARE_CANDY     20 // creates Rare Candy from Lemonade, Mineral Water, and Smart Powder
+#define ALCHEMY_ITEM_RECIPE_GOLD_NUGGET    21 // Creates Gold Nugget from 600 Gold Powder
+#define NUM_ALCHEMY_EFFECTS                22
+
+
 
 #endif // GUARD_CONSTANTS_FLAGS_H

@@ -911,3 +911,175 @@ Route110_Text_KeepAnEyeOutForRival: @ 81F0C33
 	.string "Well, I had better get going.\n"
 	.string "See you again, {PLAYER}!$"
 
+
+@@ Faction related
+
+r110_Pikachu::
+	goto_if_set FLAG_RYU_HELPED_POKEFAN_PIKACHU, r110_PikachuHelped
+	goto_if_set FLAG_RYU_DID_NOT_HELP_POKEFAN, r110_PikachuNotHelped
+	msgbox r110_PikachuLooksSick
+	playmoncry SPECIES_PIKACHU, 3
+	release
+	end
+
+r110_PikachuHelped::
+	msgbox r110_PikachuLooksInGoodHealth
+	playmoncry SPECIES_PIKACHU, 0
+	release
+	end
+
+r110_PikachuNotHelped::
+	msgbox r110_PikachuLooksFine
+	playmoncry SPECIES_PIKACHU, 1
+	release
+	end
+
+r110_PokefanSickPika::
+	goto_if_set FLAG_RYU_HELPED_POKEFAN_PIKACHU, r110_PokefanHelped
+	goto_if_set FLAG_RYU_DID_NOT_HELP_POKEFAN, r110_PokefanNotHelped
+	playse SE_PIN
+	applymovement 31, Common_Movement_ExclamationMark
+	waitmovement 31
+	msgbox r110_SickPikaIntro
+	closemessage
+	delay 30
+	faceplayer
+	msgbox r110_HealingItemQuery, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq r110_SickPikaDeclined
+	setvar VAR_TEMP_2, 0
+	special Bag_ChooseMedicine
+	waitstate
+	goto r110_CheckSelectedItem
+	release
+	end
+
+r110_CheckSelectedItem::
+	bufferitemname 0, VAR_ITEM_ID
+	switch VAR_ITEM_ID
+	case ITEM_ANTIDOTE, r110_SelectedAdequateItem
+	case ITEM_CHERI_BERRY, r110_SelectedAdequateItem
+	case ITEM_FULL_RESTORE, r110_SelectedBestItem
+	case ITEM_FULL_HEAL, r110_SelectedAdequateItem
+	case ITEM_NONE, r110_SelectedNoItem
+	goto r110_SelectedWrongItem
+
+r110_SelectedAdequateItem::
+	removeitem VAR_ITEM_ID, 1
+	msgbox r110_PikachuLooksBetter
+	changefactionstanding FACTION_POKEFANS, 30, FALSE
+	setflag FLAG_RYU_HELPED_POKEFAN_PIKACHU
+	ach give ACH_FIELD_MEDIC
+	release
+	end
+
+r110_SelectedBestItem::
+	removeitem VAR_ITEM_ID, 1
+	msgbox r110_PikaPerkedUp
+	changefactionstanding FACTION_POKEFANS, 50, FALSE
+	setflag FLAG_RYU_HELPED_POKEFAN_PIKACHU
+	ach give ACH_FIELD_MEDIC
+	release
+	end
+
+r110_SelectedNoItem::
+	msgbox r110_PlayerDidntHelpPika
+	changefactionstanding FACTION_POKEFANS 20, TRUE
+	setflag FLAG_RYU_DID_NOT_HELP_POKEFAN
+	release
+	end
+
+r110_SelectedWrongItem::
+	removeitem VAR_ITEM_ID, 1
+	addvar VAR_TEMP_2, 1
+	compare VAR_TEMP_2, 3
+	goto_if_ge r110_PikaItemTriesExceeded
+	msgbox r110_TryAgainQuery, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq r110_SelectedNoItem
+	special Bag_ChooseMedicine
+	waitstate
+	goto r110_CheckSelectedItem
+
+r110_SickPikaDeclined::
+	msgbox r110_PlayerLeftSickPikaAlone
+	changefactionstanding FACTION_POKEFANS 50, TRUE
+	setflag FLAG_RYU_DID_NOT_HELP_POKEFAN
+	closemessage
+	release
+	end
+
+r110_PikaItemTriesExceeded::
+	msgbox r110_NothingSeemsToWork
+	changefactionstanding FACTION_POKEFANS 20, TRUE
+	setflag FLAG_RYU_DID_NOT_HELP_POKEFAN
+	release
+	end
+
+r110_PokefanHelped::
+	msgbox r110_PokefanRemembersPlayer
+	closemessage
+	goto_if_unset FLAG_RYU_REWARDED_FOR_HELPING_POKEFAN, r110_giveGift
+	release
+	end
+
+r110_giveGift::
+	setflag FLAG_RYU_REWARDED_FOR_HELPING_POKEFAN
+	giveitem ITEM_RARE_CANDY, 5
+	closemessage
+	release
+	end
+
+r110_PokefanNotHelped::
+	msgbox r110_LeaveUsAlone
+	closemessage
+	release
+	end
+
+
+r110_PikachuLooksInGoodHealth:
+	.string "The Pikachu appears to be in\ngood health and happy.$"
+
+r110_PikachuLooksFine:
+	.string "It's a Pikachu. It looks happy.$"
+
+r110_PikachuLooksSick:
+	.string "The pikachu looks rather sick.\nIt has dark circles under its\leyes...$"
+
+r110_LeaveUsAlone:
+	.string "Oh... It's you...\nCould you go away, please?$"
+
+r110_PlayerDidntHelpPika:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Sorry... I thought I had something\nthat could help...$"
+
+r110_TryAgainQuery:
+	.string "The {STR_VAR_1} didn't seem to help...\nTry another item?$"
+
+r110_PokefanRemembersPlayer:
+	.string "Oh! It's you!\pPikachu's been doing great, thank\nyou so much for your kindness!\pTake this gift from me!$"
+
+r110_NothingSeemsToWork:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Nothing seems to work...\n Best I leave it alone, don't want to\l make it worse...)$"
+
+r110_PikachuLooksBetter:
+	.string "Oh? OH! My beloved Pikachu looks\nbetter! Thank you so much!$"
+
+r110_PikaPerkedUp:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (The Pikachu perked right up.\n It's back to full health!)\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Oh! Wow! Are you a doctor or\nsomething? Maybe a miracle worker?\pShe made a full recovery\nThank you so much!$"
+
+r110_SickPikaIntro:
+	.string "Ohhh, Pikachu, what do I do,\nhow can I help you?\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(The lady is clearly distressed\n about something.)$"
+
+r110_HealingItemQuery:
+	.string "I think my Pikachu is sick, but I\n"
+	.string "don't know how to help her!\p"
+	.string "Do you have something that can\n"
+	.string "help?\p"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Upon closer inspection, the Pikachu\n"
+	.string " appears to be poisoned.)\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Would you like to use an item\n"
+	.string "on it to help?$"
+
+r110_PlayerLeftSickPikaAlone:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} ({PLAYER} left the trainer and her Pikachu\n alone.)$"

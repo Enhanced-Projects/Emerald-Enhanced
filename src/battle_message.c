@@ -702,6 +702,8 @@ static const u8 sText_HailIsBrewing[] = _("A hail storm is brewing...");
 static const u8 sText_FireFizzledOut[] = _("The Fire-type attack fizzled\nout in the heavy rain!");
 static const u8 sText_WaterEvaporated[] = _("The Water-type attack evaporated\nin the harsh sunlight!");
 static const u8 sText_StatWasNotLowered[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\nwas not lowered!");
+static const u8 sText_AlchemyHealedPlayerMon[] = _("{B_ATK_NAME_WITH_PREFIX} was healed by your\nAlchemy Effect.");
+static const u8 sText_FactionBossHealedMon[] = _("{B_TRAINER1_NAME}'s presence healed their Pokemon.");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1265,8 +1267,9 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_WASHUGGEDBY - 12] = sText_Cling,
     [STRINGID_HAILISBREWING - 12] = sText_HailIsBrewing,
     [STRINGID_FIREFIZZLEDOUT - 12] = sText_FireFizzledOut,
-    [STRINGID_WATEREVAPORATED - 12] = sText_WaterEvaporated
-
+    [STRINGID_WATEREVAPORATED - 12] = sText_WaterEvaporated,
+    [STRINGID_ALCHEMYHEAL - 12] = sText_AlchemyHealedPlayerMon,
+    [STRINGID_FACTIONBOSSHEAL - 12] = sText_FactionBossHealedMon,
 };
 
 const u16 gTerrainStringIds[] =

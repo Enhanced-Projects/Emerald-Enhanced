@@ -148,7 +148,8 @@
     "RustboroCity_Gym",
     "RustboroCity_Mart",
     "RustboroCity_PokemonCenter_1F",
-    "RustboroCity_PokemonCenter_2F"
+    "RustboroCity_PokemonCenter_2F",
+    "RustboroCity_PidgeysCoop"
   ],
   "gMapGroup5": [
     "DewfordTown_Hall",
@@ -708,7 +709,8 @@
   "gMapGroup32": [
     "Route119_WeatherInstitute_1F",
     "Route119_WeatherInstitute_2F",
-    "Route119_House"
+    "Route119_House",
+    "Route119_LorwynsHouse"
   ],
   "gMapGroup33": [
     "Route124_DivingTreasureHuntersHouse",

@@ -593,6 +593,10 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuBotany.inc"
 	.include "data/scripts/RyuRandomGruntChatterScripts.inc"
 	.include "data/scripts/RyuAchievementPowerScripts.inc"
+	.include "data/scripts/slakoth_vending_machine.inc"
+	.include "data/scripts/RyuPoryScripts.inc"
+	.include "data/scripts/RyuProceduralQuestSystemScripts.inc"
+	.include "data/scripts/RyuSpecialFactionQuests.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
@@ -1210,3 +1214,7 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/BananaSlakothGarden_South/scripts.inc"
 
 	.include "data/maps/SnowyShore_DarkWorld/scripts.inc"
+
+	.include "data/maps/RustboroCity_PidgeysCoop/scripts.inc"
+
+	.include "data/maps/Route119_LorwynsHouse/scripts.inc"

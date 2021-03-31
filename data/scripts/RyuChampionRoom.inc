@@ -89,6 +89,7 @@ RCR_OverlordRyuBossFight::
 	closemessage
 	setflag FLAG_RYU_MAX_SCALE
 	setflag FLAG_TEMP_6
+	setflag FLAG_IS_FIGHTING_RYU
 	trainerbattle_no_intro TRAINER_OVERLORD_RYU, RCR_RYU_DefeatText
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST
@@ -113,6 +114,7 @@ RCR_OverlordRyuRematch::
 	setflag FLAG_TEMP_3
 	setflag FLAG_RYU_MAX_SCALE
 	setflag FLAG_TEMP_6
+	setflag FLAG_IS_FIGHTING_RYU
 	trainerbattle_no_intro TRAINER_OVERLORD_RYU_REMATCH, RCR_RYU_DefeatText
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST

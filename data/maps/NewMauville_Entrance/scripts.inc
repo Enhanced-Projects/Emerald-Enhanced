@@ -19,6 +19,7 @@ NewMauville_Entrance_EventScript_CloseDoor:: @ 82372C4
 
 NewMauville_Entrance_OnTransition: @ 82372FB
 	setflag FLAG_LANDMARK_NEW_MAUVILLE
+	call RyuCheckForLNSUAch
 	end
 
 NewMauville_Entrance_EventScript_Door:: @ 82372FF

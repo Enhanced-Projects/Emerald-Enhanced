@@ -490,3 +490,225 @@ MiningRock10::
     call Ryu_MineRock
     release
     end
+
+@alchemy related
+
+Ryu_ReagentPouchScript::
+    msgbox RA_ShowPowderCounts
+    closemessage
+    release
+    end
+
+RA_ShowPowderCounts:
+    .string "Metal Dust Counts:\nCopper: {STR_VAR_1}, Silver: {STR_VAR_2}, Gold: {STR_VAR_3}$"
+
+Ryu_RefineMetalDust::
+    switch VAR_ITEM_ID
+    case ITEM_SILVER_ORE, RyuAlchemy_RefineMetalDustSilver
+    case ITEM_COPPER_ORE, RyuAlchemy_RefineMetalDustCopper
+    case ITEM_GOLD_ORE, RyuAlchemy_RefineMetalDustGold
+    goto ryu_end
+
+RyuAlchemy_RefineMetalDustSilver::
+    checkitem ITEM_SILVER_ORE, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RyuAlchemy_NotEnoughOre
+    msgbox RyuAlchemy_RefineOreQuery, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_ne ryu_end
+    removeitem ITEM_SILVER_ORE, 2
+    addvar VAR_RYU_ALCHEMY_SILVER, 200
+    msgbox RyuAlchemy_OreRefined, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_eq RA_BufferShowPowderCounts    
+    release
+    end
+
+RyuAlchemy_RefineMetalDustGold::
+    checkitem ITEM_GOLD_ORE, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RyuAlchemy_NotEnoughOre
+    msgbox RyuAlchemy_RefineOreQuery, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_ne ryu_end
+    removeitem ITEM_GOLD_ORE, 2
+    addvar VAR_RYU_ALCHEMY_GOLD, 200
+    msgbox RyuAlchemy_OreRefined, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_eq RA_BufferShowPowderCounts
+    release
+    end
+
+RyuAlchemy_RefineMetalDustCopper::
+    checkitem ITEM_COPPER_ORE, 2
+    compare VAR_RESULT, TRUE
+    goto_if_ne RyuAlchemy_NotEnoughOre
+    msgbox RyuAlchemy_RefineOreQuery, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_ne ryu_end
+    removeitem ITEM_COPPER_ORE, 2
+    addvar VAR_RYU_ALCHEMY_COPPER, 200
+    msgbox RyuAlchemy_OreRefined, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_eq RA_BufferShowPowderCounts
+    release
+    end
+
+RA_BufferShowPowderCounts::
+    buffernumberstring 0, VAR_RYU_ALCHEMY_COPPER
+    buffernumberstring 1, VAR_RYU_ALCHEMY_SILVER
+    buffernumberstring 2, VAR_RYU_ALCHEMY_GOLD
+    goto Ryu_ReagentPouchScript
+
+RyuAlchemy_NotEnoughOre::
+    msgbox RA_NotEnoughOreWarning
+    closemessage
+    release
+    end
+
+RA_NotEnoughOreWarning::
+    .string "You don't have enough of the ore\nto refine into dust.$"
+
+RyuAlchemy_OreRefined:
+    .string "The ores have been refined.\pWould you like to view counts?$"
+
+RyuAlchemy_RefineOreQuery:
+    .string "Would you like to turn 2 ores\ninto dust?$"
+
+@actual alchemy check
+
+RyuAlchemy_AttemptCreateEffect::
+    msgbox RA_DoWhichAlchemyRecipe
+    scrollingmultichoice SCROLLINGMULTICHOICE_RYUALCHEMYMENU, 0, 0, 6, 1
+    compare VAR_RESULT, 127
+    goto_if_eq ryu_end
+    addvar VAR_RESULT, 1
+    copyvar VAR_TEMP_A, VAR_RESULT
+    specialvar VAR_RESULT, RyuAlchemy_TryCraftingItem
+    switch VAR_RESULT
+    case 1000, RA_NotEnoughMetalDust
+    case 2000, RA_LevelNotHighEnough
+    case 4100, RA_Ingredient1Missing
+    case 4200, RA_Ingredient2Missing
+    case 4300, RA_Ingredient3Missing
+    compare VAR_RESULT, ALCHEMY_ITEM_RECIPE_STARDUST
+    goto_if_ge RA_CreateItem
+    msgbox AlchemyEffectSuccessful
+    closemessage
+    compare VAR_RESULT, ALCHEMY_EFFECT_REPEL_T1
+    call_if_eq RA_DoNativeRepelSetup
+    compare VAR_RESULT, ALCHEMY_EFFECT_REPEL_T2
+    call_if_eq RA_DoNativeRepelSetup
+    call RyuAlchemy_CheckForLevelup
+    release
+    end
+
+RA_DB_1:
+    .string "Crafting returned {RYU_STR_3}.$"
+
+RA_DoNativeRepelSetup::
+    callnative RyuSetupAlchemicalRepel
+    call RyuRepel_AppliedAlchemicalRepel
+    return
+
+RA_CreateItem::
+    giveitem VAR_RESULT, 1
+    bufferitemname 0, VAR_RESULT
+    msgbox RA_AlchemyItemSuccessful
+    closemessage
+    call RyuAlchemy_CheckForLevelup
+    release
+    end
+
+RA_NotEnoughMetalDust::
+    msgbox RA_DontHaveEnoughDust
+    closemessage
+    goto RyuAlchemy_AttemptCreateEffect
+
+RA_LevelNotHighEnough::
+    msgbox RA_DontHaveEnoughLevels
+    closemessage
+    goto RyuAlchemy_AttemptCreateEffect
+    
+RA_Ingredient1Missing::
+    msgbox RA_DontHaveEnoughIngr1
+    closemessage
+    goto RyuAlchemy_AttemptCreateEffect
+    
+RA_Ingredient2Missing::
+    msgbox RA_DontHaveEnoughIngr2
+    closemessage
+    goto RyuAlchemy_AttemptCreateEffect
+    
+RA_Ingredient3Missing::
+    msgbox RA_DontHaveEnoughIngr3
+    closemessage
+    goto RyuAlchemy_AttemptCreateEffect
+
+RyuAlchemy_CheckForLevelup::
+    switch VAR_RYU_PLAYER_ALCHEMY_SKILL
+    case 5, RA_LevelFive
+    case 4, RA_LevelFour
+    case 3, RA_LevelThree
+    case 2, RA_LevelTwo
+    case 1, RA_LevelOne
+    case 0, RA_LevelZero
+    goto ryu_return
+
+RA_LevelZero::
+    goto ryu_return
+
+RA_LevelOne::
+    compare VAR_RYU_ALCHEMY_EXP, 1024
+    goto_if_ge RA_LevelUp
+    goto ryu_return
+
+RA_LevelTwo::
+    compare VAR_RYU_ALCHEMY_EXP, 2560
+    goto_if_ge RA_LevelUp
+    goto ryu_return
+
+RA_LevelThree::
+    compare VAR_RYU_ALCHEMY_EXP, 3584
+    goto_if_ge RA_LevelUp
+    goto ryu_return
+
+RA_LevelFour::
+    compare VAR_RYU_ALCHEMY_EXP, 4720
+    goto_if_ge RA_LevelUp
+    goto ryu_return
+
+RA_LevelFive::
+    goto ryu_return
+
+RA_LevelUp::
+    msgbox RA_LevelIncreased
+    closemessage
+    return
+
+RA_DoWhichAlchemyRecipe:
+    .string "Craft which effect/item?$"
+
+RA_LevelIncreased:
+    .string "You feel increasingly more in-tune\nwith the ancients.\p {COLOR LIGHT_GREEN}{SHADOW GREEN}(Alchemy Level increased.)$"
+
+RA_DontHaveEnoughDust:
+    .string "You don't have enough metal dust\nfor this recipe.$"
+
+RA_DontHaveEnoughLevels:
+    .string "Your Alchemy level is not high\nenough to create this recipe.$"
+
+RA_DontHaveEnoughIngr1:
+    .string "You're missing some or all of\nIngredient 1.$"
+
+RA_DontHaveEnoughIngr2:
+    .string "You're missing some or all of\nIngredient 2.$"
+
+RA_DontHaveEnoughIngr3:
+    .string "You're missing some or all of\nIngredient 3.$"
+
+AlchemyEffectSuccessful:
+    .string "The effect was successfully created!\n{STR_VAR_1} with {STR_VAR_2} charges left.\lYou gained {STR_VAR_3} Alchemy exp.$"
+
+RA_AlchemyItemSuccessful:
+    .string "The {STR_VAR_1} was created\nsuccessfully!$"

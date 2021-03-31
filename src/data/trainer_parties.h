@@ -8884,26 +8884,26 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Trent3[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Trent4[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_LadyLorwyn[] = {
     {
-    .iv = 30,
+    .iv = 255,
     .lvl = 30,
-    .species = SPECIES_GEODUDE,
+    .species = SPECIES_CELESTEELA,
     },
     {
-    .iv = 30,
+    .iv = 255,
     .lvl = 30,
-    .species = SPECIES_GRAVELER,
+    .species = SPECIES_KARTANA,
     },
     {
-    .iv = 30,
+    .iv = 255,
     .lvl = 30,
-    .species = SPECIES_GRAVELER,
+    .species = SPECIES_AEGISLASH,
     },
     {
-    .iv = 30,
+    .iv = 255,
     .lvl = 30,
-    .species = SPECIES_GRAVELER,
+    .species = SPECIES_ALOLAN_MAROWAK,
     }
 };
 
@@ -13870,6 +13870,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyu[] = {
 	.lvl = 125,
 	.species = SPECIES_SALAZZLE,
 	.heldItem = ITEM_CHOICE_SPECS,
+    .nickname = _("Sana"),
 	.ability = 0,
 	.moves = {MOVE_FLAMETHROWER, MOVE_SHADOW_BALL, MOVE_SLUDGE_BOMB, MOVE_THUNDERBOLT},
 	},
@@ -13878,6 +13879,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyu[] = {
 	.lvl = 125,
 	.species = SPECIES_ABSOL,
 	.heldItem = ITEM_SCOPE_LENS,
+    .nickname = _("Nyteblade"),
 	.ability = 2,
 	.moves = {MOVE_EXTREME_SPEED, MOVE_NIGHT_SLASH, MOVE_SLASH, MOVE_CLOSE_COMBAT},
 	},
@@ -13886,6 +13888,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyu[] = {
 	.lvl = 125,
 	.species = SPECIES_TYRANTRUM,
 	.heldItem = ITEM_ASSAULT_VEST,
+    .nickname = _("Jaws"),
 	.ability = 2,
 	.moves = {MOVE_EARTHQUAKE, MOVE_HEAD_CHARGE, MOVE_DOUBLE_EDGE, MOVE_IRON_HEAD},
 	},
@@ -13894,6 +13897,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyu[] = {
 	.lvl = 125,
 	.species = SPECIES_ARIADOS,
 	.heldItem = ITEM_SCOPE_LENS,
+    .nickname = _("Aria"),
 	.ability = 2,
 	.moves = {MOVE_PIN_MISSILE, MOVE_SHADOW_SNEAK, MOVE_SUCKER_PUNCH, MOVE_POISON_FANG},
 	},
@@ -13902,6 +13906,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyu[] = {
 	.lvl = 125,
 	.species = SPECIES_TOUCANNON,
 	.heldItem = ITEM_LEFTOVERS,
+    .nickname = _("Pecker"),
 	.ability = 1,
 	.moves = {MOVE_BEAK_BLAST, MOVE_BULLET_SEED, MOVE_FLAME_CHARGE, MOVE_SWORDS_DANCE},
 	},
@@ -13910,6 +13915,7 @@ static const struct TrainerMonItemCustomMoves sParty_OverlordRyu[] = {
 	.lvl = 125,
 	.species = SPECIES_MAWILE,
 	.heldItem = ITEM_MAWILITE,
+    .nickname = _("Mawi"),
 	.ability = 0,
 	.moves = {MOVE_PLAY_ROUGH, MOVE_POWER_UP_PUNCH, MOVE_CRUNCH, MOVE_IRON_HEAD},
 	}

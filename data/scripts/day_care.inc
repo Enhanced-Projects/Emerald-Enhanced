@@ -295,11 +295,24 @@ Route117_PokemonDayCare_EventScript_UnusedRetrieveMon:: @ 8291F95
 
 EventScript_EggHatch:: @ 8291FC0
 	lockall
+	readgamestat GAME_STAT_HATCHED_EGGS
+	compare VAR_RESULT, 100
+	call_if_ge RyuTryGiveEggAchievement
 	msgbox Text_EggHatchHuh, MSGBOX_DEFAULT
 	special EggHatch
 	waitstate
 	releaseall
 	end
+
+RyuTryGiveEggAchievement::
+	ach query ACH_MASTER_BREEDER
+	compare VAR_RESULT, TRUE
+	call_if_eq RyuGiveEggAchievement
+	return
+
+RyuGiveEggAchievement::
+	ach give ACH_MASTER_BREEDER
+	return
 
 Route117_Text_SeeWifeIfYoudLikeMeToRaiseMon: @ 8291FCF
 	.string "I'm the DAY-CARE Man.\p"

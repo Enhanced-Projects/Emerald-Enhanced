@@ -349,10 +349,12 @@ OM_FirstFloorDevonEmployee::
 OM_FirstFloorDevonGuard::
 	lockall
 	msgbox OM_DevonGuardBattleIntro
+	setflag FLAG_RYU_GAME_OVER
 	trainerbattle_single TRAINER_DEVON_2, OM_DevonBattleIntroMsg, OM_DevonBattleDefeatMsg, OM_PostBatleScriptDevonGuard
 	waitstate
 
 OM_PostBatleScriptDevonGuard::
+	clearflag FLAG_RYU_GAME_OVER
 	msgbox OM_DevonGuyDefeated
 	closemessage
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN

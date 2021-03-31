@@ -252,6 +252,7 @@ extern const u8 gText_MenuPokedex[];
 extern const u8 gText_MenuPokemon[];
 extern const u8 gText_MenuBag[];
 extern const u8 gText_MenuPokenav[];
+extern const u8 gText_MenuJournal[];
 extern const u8 gText_MenuPlayer[];
 extern const u8 gText_MenuSave[];
 extern const u8 gText_MenuOption[];
@@ -3358,5 +3359,8 @@ extern const u8 gText_RyuHolidayMagearna[];
 extern const u8 gText_RyuHolidayVictini[];
 extern const u8 gText_RyuHolidayMarshadow[];
 extern const u8 gText_RyuHolidayShaymin[];
+
+extern const u8 gText_RyuBotanyLabel[];
+extern const u8 gText_RyuAlchemyLabel[];
 
 #endif // GUARD_STRINGS_H

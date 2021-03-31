@@ -17,7 +17,8 @@ enum
     ACTION_MOVE_UP,
     ACTION_MOVE_DOWN,
     ACTION_DISPLAY_DESC,
-    ACTION_GO_BACK
+    ACTION_GO_BACK,
+    ACTION_OPEN_APMENU
 };
 
 struct AtlasAchPointData
@@ -29,6 +30,24 @@ struct AtlasAchPointData
     const u8 * nameString;
     const u8 * descString;
 };
+
+struct APInfoTier
+{
+    u16 apId;
+    const u8 * name;
+    const u8 * desc;
+    void (*func)(void); // didn't know what to name, used for actions that happen when an AP is activated or deactivated
+};
+
+struct APInfo
+{
+    const struct APInfoTier * apInfo;  
+    u8 tier;
+    u8 tierCount;
+    u16 requiredAP;
+};
+
+extern const struct APInfo gAP_Info[];
 
 struct AchAtlas // this would be better off as a u8 array lmao
 {
@@ -54,11 +73,13 @@ struct AchAtlas // this would be better off as a u8 array lmao
 #define MAXIMUM_AP 100 //this is probably never going to change, but people like constants so it's whatever.
 
 void CB2_OpenAtlas(void);
+void CB2_OpenAPMenu(void);
 
 void GiveAchievement(u32 id);
 void GiveAchievementDebug(u32 id);
 bool32 CheckAchievement(u32 id);
 void TakeAchievement(u32 id);
+u32 CountTakenAchievements(void);
 
 //AP internal
 void SetAPFlag(u32 id);
@@ -67,8 +88,18 @@ void ClearAPFlag(u32 id);
 int GetPlayerAPMax(void);
 int GetCurrentAPUsed(void);
 
+//AP's for external use
+void ToggleAPStrongerWilds();
+void GiveTakePDAItem();
+void GiveTakeStatAssistItem();
+void APTrainerRepelToggle();
+void APSprintBoostToggle();
+void APWinningsBoostToggle();
+void APCaptureBoostToggle();
+void APGlobalRepelToggle();
 
 //AP utility
 bool8 CheckCanIgnoreTrainers();
+bool8 CheckIfAutolevelWilds();
 
 #endif//GUARD_ACH_ATLAS_H

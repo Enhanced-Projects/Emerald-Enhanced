@@ -9,6 +9,7 @@ DFT_OnFrameScripts::
 
 DewfordTown_OnTransition: @ 81E950D
 	setflag FLAG_VISITED_DEWFORD_TOWN
+	call RyuCheckForWellTravelledAch
 	end
 
 DewfordTown_EventScript_Briney:: @ 81E9511

@@ -137,6 +137,7 @@
 #define NUM_FLAG_BYTES (ROUND_BITS_TO_BYTES(FLAGS_COUNT))
 #define NUM_ACH_FLAG_BYTES (ROUND_BITS_TO_BYTES(ACH_FLAGS_COUNT))
 #define NUM_ACH_PWR_BYTES (ROUND_BITS_TO_BYTES(AP_FLAGS_COUNT))
+#define NUM_NPC_FACTIONS 8
 
 struct Coords8
 {
@@ -186,7 +187,7 @@ struct Pokedex
 {
     /*0x00*/ u8 order;
     /*0x01*/ u8 mode;
-    /*0x02*/ u8 nationalMagic; // must equal 0xDA in order to have National mode
+    /*0x02*/ u8 unused; // previously required to show national dex, disabled.
     /*0x03*/ u8 unknown2;
     /*0x04*/ u32 unownPersonality; // set when you first see Unown
     /*0x08*/ u32 spindaPersonality; // set when you first see Spinda
@@ -505,6 +506,25 @@ struct SaveBlock2
     /*0x64C*/ struct BattleFrontier frontier;
               u8 achFlags[NUM_ACH_FLAG_BYTES];
               u8 achievementPowerFlags[NUM_ACH_PWR_BYTES];
+              u8 alchemyEffect; //Which alchemy effect is currently active.
+              u8 alchemyCharges; //how many charges, if any, are left for the currently active alchemy effect.
+              u16 hasAlchemyEffectActive:1; //a block of 16 utility-use flags in save block. This one is used to tell if player has an effect active or not.
+              /*
+              u16 unusedSaveblockFlag1:1
+              u16 unusedSaveblockFlag2:1
+              u16 unusedSaveblockFlag3:1
+              u16 unusedSaveblockFlag4:1
+              u16 unusedSaveblockFlag5:1
+              u16 unusedSaveblockFlag6:1
+              u16 unusedSaveblockFlag7:1
+              u16 unusedSaveblockFlag8:1
+              u16 unusedSaveblockFlag9:1
+              u16 unusedSaveblockFlag10:1
+              u16 unusedSaveblockFlag11:1
+              u16 unusedSaveblockFlag12:1
+              u16 unusedSaveblockFlag13:1
+              u16 unusedSaveblockFlag14:1
+              */
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -1015,6 +1035,7 @@ struct SaveBlock1
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
                u8 dexNavSearchLevels[NUM_SPECIES];
                u8 dexNavChain;
+               u8 gNPCTrainerFactionRelations[NUM_NPC_FACTIONS];
     // sizeof: 0x3???
 };
 

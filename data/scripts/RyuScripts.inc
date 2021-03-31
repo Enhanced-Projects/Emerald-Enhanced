@@ -709,6 +709,10 @@ RyuCantUsePCCHARGING:
 
 
 RyuBallChanger::
+	setvar VAR_TEMP_0, 10000
+	checkmoney VAR_TEMP_0
+	compare VAR_RESULT, 1
+	goto_if_ne BC_NotEnoughMoney
 	msgbox BCIntro
 	multichoicegrid 2, 0, 141, 3, 1
 	switch VAR_RESULT
@@ -727,165 +731,143 @@ RyuBallChanger::
 	end
 
 BCPokeball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_POKE_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 4
 	removeitem ITEM_POKE_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCGreatball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_GREAT_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 3
 	removeitem ITEM_GREAT_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCUltraball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_ULTRA_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 2
 	removeitem ITEM_ULTRA_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCLuxuryball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_LUXURY_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 11
 	removeitem ITEM_LUXURY_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCPremierball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_PREMIER_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 11
 	removeitem ITEM_PREMIER_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCRepeatball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_REPEAT_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 9
 	removeitem ITEM_REPEAT_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCTimerball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_TIMER_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 10
 	removeitem ITEM_TIMER_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCNestball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_NEST_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 8
 	removeitem ITEM_NEST_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCNetball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_NET_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 6
 	removeitem ITEM_NET_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCSafariball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_SAFARI_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 5
 	removeitem ITEM_SAFARI_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
 	end
 
 BCDiveball::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
 	checkitem ITEM_DIVE_BALL, 1
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 7
 	removeitem ITEM_DIVE_BALL, 1
-	takemoney 10000
+	setvar VAR_TEMP_0, 10000
+    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
 	release
@@ -1406,6 +1388,7 @@ RyuTemp_StartMenuConfig:
     .string "{COLOR LIGHT_RED}{SHADOW RED}L+R {COLOR DARK_GREY}{SHADOW LIGHT_GREY}: Enable/Disable Jukebox\l"
     .string "{COLOR LIGHT_RED}{SHADOW RED}R(With Jukebox On){COLOR DARK_GREY}{SHADOW LIGHT_GREY}:Skip to Next Song\l"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Left:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Realign Follower\p"
+	.string "You can hold L while selecting\nyour name in the start menu to open\lthe Achievement Atlas.\p"
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Open Beta Menu?$"
 
 
@@ -1503,6 +1486,9 @@ CLM_NotInPartyMsg:
 
 Ryu_CheckForPartnerReward::
 	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_return
+	specialvar VAR_RESULT, CountBadges
+	compare VAR_RESULT, 7
+	goto_if_lt ryu_return
 	specialvar VAR_RESULT, RyuCheckRelMegaReward
 	compare VAR_RESULT, 0
 	goto_if_eq ryu_return
@@ -1765,6 +1751,7 @@ Ryu_InitializeAquaStage3NR::
 	closemessage
 	pokenavcall Ryu_AquaStage3NotifyMsg
 	closemessage
+	clearflag FLAG_RYU_HIDE_AQUA_MTPYRE_EXT
 	setvar VAR_RYU_AQUA, 82 @player is being called to Mt Pyre
 	setflag FLAG_RYU_AQUA_3_NOTIFY
 	release
@@ -1783,7 +1770,7 @@ Ryu_InitializeAquaStage3R::
 	closemessage
 	pokenavcall Ryu_AquaStage3RomanceNotifyMsg
 	closemessage
-	setvar VAR_JAGGED_PASS_STATE, 1
+	setflag FLAG_RYU_PLAYER_SENT_TO_JP_BY_SHELLY
 	setvar VAR_RYU_AQUA, 93 @player is being called to Jagged Pass by Shelly.
 	setflag FLAG_RYU_AQUA_3_NOTIFY
 	release
@@ -1999,7 +1986,7 @@ RyuPlayerLostTheGameSoloFemale::
 
 @===================================================================================================
 Ryu_ShowStarterInfo::
-	specialvar VAR_RESULT, RyuFillStatsBuffers
+	special RyuFillStatsBuffers
     drawinfobox INFOBOXPOKEMONDATA
 	bufferpartymonnick 1, 0
 	msgbox Ryu_Stats
@@ -2015,22 +2002,31 @@ RyuScript_CheckGivenAchievement::
 	playse SE_EXPMAX
 	msgbox RS_ACH_RECEIVED
 	closemessage
-	setvar VAR_RYU_LAST_ACH, 300
 	callnative RyuCheckForDejavuAch
 	compare VAR_RESULT, TRUE
 	call_if_eq RyuScript_GiveDejaVu
+	setvar VAR_RYU_LAST_ACH, 300
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, RyuScript_CheckFollowerFactionChanges
 	release
 	end
 
 RyuScript_GiveDejaVu::
 	ach give ACH_DEJA_VU
 	msgbox RS_ACH_RECEIVED
-	setvar VAR_RYU_LAST_ACH, 300
-	release
-	end
+	return
 
 RS_ACH_RECEIVED:
 	.string "ACHIEVEMENT GET!!!\n{RYU_STR_4}$"
+
+RyuScript_CheckFollowerFactionChanges::
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LASS
+	goto_if_ne ryu_end
+	checkfactionstanding FACTION_STUDENTS, 80
+	compare VAR_RESULT, FALSE
+	goto_if_eq ryu_end
+	changefactionstanding FACTION_STUDENTS, 1, FALSE
+	release
+	end
 
 @===================================================================================================Holiday 2020
 
@@ -2124,3 +2120,157 @@ RS_HolidayNoSpace::
 
 RS_LucyIntro::
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Greetings, {PLAYER}.\pI have travelled far to\ngive you season's tidings.\pPlease Choose a gift Pokémon\nfrom the list.$"
+
+@@GAME OVER========================================================================================
+
+@This is the global script that's called when someone loses an important fight.
+
+RyuScript_GameOver::
+	goto_if_unset FLAG_RYU_GAME_OVER, ryu_end
+	drawfullscreenimage SCENEBGGAMEOVER
+	destroyfollower
+	msgbox RS_GO_GameOverDesc
+	call RyuGameOver_ResetGeneralFlags
+	call RyuGameOver_HideQuestNPCs
+	call RyuGameOver_ResetMainQuestData
+	closemessage
+	clearfullscreenimage
+	goto ryu_end
+
+RyuGameOver_ResetMainQuestData::
+	setvar VAR_RYU_QUESTLINE_ID, 5
+	setvar VAR_RYU_DEVON, 0
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 0
+	setvar VAR_RYU_MAGMA, 0
+	setvar VAR_RYU_AQUA, 0
+	return
+
+RyuGameOver_ResetGeneralFlags::
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+	setflag FLAG_RYU_HIDE_REL_OBJECTS
+	clearflag FLAG_RYU_MAX_SCALE
+	return
+
+RyuGameOver_HideQuestNPCs::
+	setflag FLAG_HIDE_MAGMA_ARMY
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
+	setflag FLAG_RYU_HIDE_103_MAGMA_MEETING
+	setflag FLAG_RYU_HIDE_111_MAGMA_MEETING
+	setflag FLAG_RYU_HIDE_111_MAGMA_MEETING_TABITHA1
+	setflag FLAG_RYU_HIDE_GC_BLAISE
+	setflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
+	setflag FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS
+	setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE
+	setflag FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT
+	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
+	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+	clearflag FLAG_HIDE_MT_CHIMNEY_TRAINERS
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	setflag FLAG_RYU_HIDE_NPCS_MTPYRE_SUMMIT
+	setflag FLAG_RYU_HIDE_AQUA_MTPYRE_EXT
+	setflag FLAG_RYU_HIDE_MOSSDEEP_MATT
+	setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
+	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
+	clearflag FLAG_HIDE_MT_CHIMNEY_TRAINERS
+	setflag FLAG_HIDE_GRANITE_CAVE_STEVEN
+	setflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
+	setflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
+	return
+
+RS_GO_GameOverDesc::
+	.string "You have failed this quest. You\n"
+	.string "may load an earlier save to\l"
+	.string "retry.\p"
+	.string "Otherwise, you can continue with\n"
+	.string "the current playthrough and\p"
+	.string "still do the pokemon league\n"
+	.string "and become champion, however\l"
+	.string "you cannot continue this quest.$"
+
+RS_PreventEntryNorth::
+	lockall
+	msgbox RS_DeniedEntry
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	release
+	end
+
+RS_DeniedEntry:
+	.string "You failed a questline, you\nmay not enter this quest area.$"
+
+
+
+@@--------------landmark and visited achievements--------------------------------------------------
+
+RyuCheckForWellTravelledAch::
+	ach query ACH_WELL_TRAVELLED @@Don't bother checking these flags if achievement is already owned.
+	compare VAR_RESULT, TRUE
+	goto_if_eq ryu_return
+	goto_if_unset FLAG_VISITED_LITTLEROOT_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_OLDALE_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_DEWFORD_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_LAVARIDGE_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_FALLARBOR_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_VERDANTURF_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_PACIFIDLOG_TOWN, ryu_return
+	goto_if_unset FLAG_VISITED_PETALBURG_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_SLATEPORT_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_MAUVILLE_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_RUSTBORO_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_FORTREE_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_LILYCOVE_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_MOSSDEEP_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_SOOTOPOLIS_CITY, ryu_return
+	goto_if_unset FLAG_VISITED_EVER_GRANDE_CITY, ryu_return
+	ach give ACH_WELL_TRAVELLED
+	return
+
+RyuCheckForLNSUAch::
+	ach query ACH_LEAVE_NO_STONE_UNTURNED @@Don't bother checking these flags if achievement is already owned.
+	compare VAR_RESULT, TRUE
+	goto_if_eq ryu_return
+	goto_if_unset FLAG_LANDMARK_FLOWER_SHOP, ryu_return
+	goto_if_unset FLAG_LANDMARK_ABANDONED_SHIP, ryu_return
+	goto_if_unset FLAG_LANDMARK_SEASHORE_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_NEW_MAUVILLE, ryu_return
+	goto_if_unset FLAG_LANDMARK_OLD_LADY_REST_SHOP, ryu_return
+	goto_if_unset FLAG_LANDMARK_TRICK_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_WINSTRATE_FAMILY, ryu_return
+	goto_if_unset FLAG_LANDMARK_GLASS_WORKSHOP, ryu_return
+	goto_if_unset FLAG_LANDMARK_LANETTES_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_POKEMON_DAYCARE, ryu_return
+	goto_if_unset FLAG_LANDMARK_SEAFLOOR_CAVERN, ryu_return
+	goto_if_unset FLAG_LANDMARK_BATTLE_FRONTIER, ryu_return
+	goto_if_unset FLAG_LANDMARK_FIERY_PATH, ryu_return
+	goto_if_unset FLAG_LANDMARK_POKEMON_LEAGUE, ryu_return
+	goto_if_unset FLAG_LANDMARK_ISLAND_CAVE, ryu_return
+	goto_if_unset FLAG_LANDMARK_DESERT_RUINS, ryu_return
+	goto_if_unset FLAG_LANDMARK_FOSSIL_MANIACS_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_SCORCHED_SLAB, ryu_return
+	goto_if_unset FLAG_LANDMARK_ANCIENT_TOMB, ryu_return
+	goto_if_unset FLAG_LANDMARK_TUNNELERS_REST_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_HUNTERS_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_SEALED_CHAMBER, ryu_return
+	goto_if_unset FLAG_LANDMARK_BERRY_MASTERS_HOUSE, ryu_return
+	goto_if_unset FLAG_LANDMARK_ALTERING_CAVE, ryu_return
+	goto_if_unset FLAG_LANDMARK_DESERT_UNDERPASS, ryu_return
+	goto_if_unset FLAG_LANDMARK_ARTISAN_CAVE, ryu_return
+	goto_if_unset FLAG_LANDMARK_TRAINER_HILL, ryu_return
+	goto_if_unset FLAG_LANDMARK_MIRAGE_TOWER, ryu_return
+	goto_if_unset FLAG_LANDMARK_SNOWY_SHORE, ryu_return
+	ach give ACH_LEAVE_NO_STONE_UNTURNED
+	return	
+
+
+

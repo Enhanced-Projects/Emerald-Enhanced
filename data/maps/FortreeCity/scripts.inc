@@ -10,6 +10,7 @@ FortreeCity_OnFrameScripts::
 
 FortreeCity_OnTransition: @ 81E25AF
 	setflag FLAG_VISITED_FORTREE_CITY
+	call RyuCheckForWellTravelledAch
 	end
 
 FortreeCity_OnResume: @ 81E25B3

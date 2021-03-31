@@ -154,3 +154,4 @@
 	.include "src/dns.o"
     .include "src/dexnav.o"
 	.include "src/ach_atlas.o"
+	.include "src/journal.o"

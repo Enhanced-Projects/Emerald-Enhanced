@@ -54,6 +54,7 @@ EverGrandeCity_SidneysRoom_EventScript_WalkInCloseDoor:: @ 8227F57
 EverGrandeCity_SidneysRoom_EventScript_Sidney:: @ 8227F64
 	lock
 	faceplayer
+	call_if_set FLAG_RYU_HAS_FOLLOWER, EGC_CheckForceDismissFollower
 	goto_if_set FLAG_DEFEATED_ELITE_4_SIDNEY, EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech
 	playbgm MUS_SITENNOU, 0
 	msgbox EverGrandeCity_SidneysRoom_Text_PreBattleSpeech, MSGBOX_DEFAULT
@@ -65,6 +66,20 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney:: @ 8227F64
 	trainerbattle_no_intro TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
+
+EGC_CheckForceDismissFollower::
+	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LASS
+	goto_if_ne ryu_return
+	call EGC_DismissNonCombatFollower
+	return
+
+EGC_DismissNonCombatFollower::
+	msgbox EGC_CantFightHere
+	destroyfollower
+	return
+
+EGC_CantFightHere:
+	.string "I wanted to see the Elite Four\nBut I'm definitely not ready for\lthis!$"
 
 EGC_FollowerSidney::
 	call RyuFollowerAllySelector
@@ -110,7 +125,7 @@ EGC_AltSidney::
 Ryu_CheckForMega::
 	goto_if_set FLAG_RYU_SIDNEY_MEGA EverGrandeCity_SidneysRoom_EventScript_Defeated
 	msgbox SidneyAbsolGiftMsg
-	additem ITEM_ABSOLITE
+	giveitem ITEM_ABSOLITE
 	setflag FLAG_RYU_SIDNEY_MEGA
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 

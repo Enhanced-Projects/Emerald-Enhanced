@@ -24,9 +24,12 @@
 #include "constants/items.h"
 #include "constants/tv.h"
 #include "constants/battle_frontier.h"
+#include "ach_atlas.h"
 
 static void CB2_ReturnFromChooseHalfParty(void);
 static void CB2_ReturnFromChooseBattleFrontierParty(void);
+
+extern void TryGiveFitnessGuruAch();
 
 void HealPlayerParty(void)
 {
@@ -56,10 +59,14 @@ void HealPlayerParty(void)
         arg[2] = 0;
         arg[3] = 0;
         SetMonData(&gPlayerParty[i], MON_DATA_STATUS, arg);
+
+        if (CheckAchievement(ACH_FITNESS_GURU) == FALSE)
+            TryGiveFitnessGuruAch();
     }
+    IncrementGameStat(GAME_STAT_RESTED_AT_HOME);
 }
 
-u8 ScriptGiveMon(u16 species, u8 level, u16 item, u32 unused1, u32 unused2, u8 unused3)
+u8 ScriptGiveMon(u16 species, u8 level, u16 item)
 {
     u16 nationalDexNum;
     int sentToPc;

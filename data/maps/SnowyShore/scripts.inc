@@ -4,11 +4,30 @@ SnowyShore_MapScripts::
 
 SnowyShore_OnTransition:
 	setflag FLAG_LANDMARK_SNOWY_SHORE
+	call RyuCheckForLNSUAch
 	end
 
 SnowyShore_EventScript_TownSign::
 	msgbox SnowyShore_Text_TownSign, MSGBOX_SIGN
 	end
+
+SS_TemporaryPortal::
+	msgbox SS_TemporaryMagic
+	closemessage
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGSUNSET
+	msgbox SS_Warping
+	closemessage
+	delay 20
+	clearfullscreenimage
+	warpteleport MAP_LITTLEROOT_TOWN, 255, 8, 8
+	waitstate
+
+SS_TemporaryMagic:
+	.string "You see a mysterious statue.\nThis must be the one\lthey were talking about...$"
+
+SS_Warping:
+	.string "{PLAYER} Touched the stone...$"
 
 SnowyShore_Text_TownSign:
 	.string "Snowy Shore\n"

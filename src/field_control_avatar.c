@@ -40,9 +40,11 @@
 #include "random.h"
 #include "constants/region_map_sections.h"
 #include "constants/species.h"
+#include "factions.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
+EWRAM_DATA const u8 *gOriginalNPCScript = NULL;
 
 u8 gSelectedObjectEvent;
 
@@ -182,6 +184,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     u8 playerDirection;
     u16 metatileBehavior;
     u16 rand = 0;
+    u16 lastAchievement = VarGet(VAR_RYU_LAST_ACH);
+
 
     gSpecialVar_LastTalked = 0;
     gSelectedObjectEvent = 0;
@@ -199,8 +203,11 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (VarGet(VAR_RYU_LAST_ACH) < 256)
         {
             FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
-            ScriptContext1_SetupScript(RyuScript_CheckGivenAchievement);
-            return TRUE;
+            if (FlagGet(FLAG_RYU_PREVENT_ACH_POPUP) == FALSE)
+            {
+                ScriptContext1_SetupScript(RyuScript_CheckGivenAchievement);
+                return TRUE;
+            }
         }
 
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)
@@ -397,6 +404,9 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
 {
     u8 objectEventId;
     const u8 *script;
+    bool8 isTrainer = FALSE;
+    u8 currentTrainerFaction = 0;
+    u16 currentTrainer = 0;
 
     objectEventId = GetObjectEventIdByXYZ(position->x, position->y, position->height);
     if (objectEventId == OBJECT_EVENTS_COUNT || gObjectEvents[objectEventId].localId == OBJ_EVENT_ID_PLAYER)
@@ -414,12 +424,31 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
     gSpecialVar_LastTalked = gObjectEvents[objectEventId].localId;
     gSpecialVar_Facing = direction;
 
+    if (gObjectEvents[objectEventId].trainerType != 0)
+        isTrainer = TRUE;
+
     if (InTrainerHill() == TRUE)
         script = GetTrainerHillTrainerScript();
     else if (gObjectEvents[objectEventId].localId == OBJ_EVENT_ID_FOLLOWER)
         script = gFollowerScript;
     else
+    {
         script = GetObjectEventScriptPointerByObjectEventId(objectEventId);
+        if (isTrainer == TRUE)
+        {
+            currentTrainer = T1_READ_16(script + 2);
+            if (FlagGet(TRAINER_FLAGS_START + currentTrainer) == TRUE)
+                {
+                    currentTrainerFaction = gTrainers[currentTrainer].trainerFaction;
+                    if (currentTrainerFaction < FACTION_OTHERS)
+                    {
+                        gOriginalNPCScript = script;
+                        script = RyuGetFactionDailyQuestScriptPtr(currentTrainerFaction);
+                    }
+                }
+        }
+            
+    }
 
     script = GetRamScript(gSpecialVar_LastTalked, script);
     return script;

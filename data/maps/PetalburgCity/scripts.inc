@@ -11,6 +11,7 @@ PetalburgCity_MapScripts::
 
 PetalburgCity_OnTransition: @ 81DC2D7
 	setflag FLAG_VISITED_PETALBURG_CITY
+	call RyuCheckForWellTravelledAch
 	compare VAR_PETALBURG_CITY_STATE, 0
 	call_if_eq PetalburgCity_EventScript_MoveBoyToWestEntrance
 	compare VAR_PETALBURG_CITY_STATE, 2

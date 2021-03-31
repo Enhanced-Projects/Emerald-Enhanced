@@ -70,6 +70,18 @@ static const u8 sNurseNightBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/n
 static const u8 sNurseNightBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/night_map.bin");
 static const u8 sNurseNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/nurse/night_palette.gbapal");
 
+static const u8 sPidgeyScreenshotTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/pidgey_scrsht/pidgey_pc.4bpp");
+static const u8 sPidgeyScreenshotMap[] = INCBIN_U8("graphics/cutscene/fscutscene/pidgey_scrsht/pidgey_pc.bin");
+static const u8 sPidgeyScreenshotPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/pidgey_scrsht/pidgey_pc.gbapal");
+
+static const u8 sGameOverBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/gameover/gameover_tiles.8bpp");
+static const u8 sGameOverBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/gameover/gameover_map.bin");
+static const u8 sGameOverBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/gameover/gameover_palette.gbapal");
+
+static const u8 sWarpBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_tiles.4bpp");
+static const u8 sWarpBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_map.bin");
+static const u8 sWarpBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/warp/warp_palette.gbapal");
+
 
 static const struct CutsceneBG gCutsceneBgTable[] =
 {
@@ -238,6 +250,39 @@ static const struct CutsceneBG gCutsceneBgTable[] =
 		.mapSize = sizeof(sNurseNightBgMap),
         .palette = sNurseNightBgPalette,
 		.palIdxCnt = 48
+	},
+	[SCENEBGPIDGEYSCREENSHOT] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sPidgeyScreenshotTiles,
+		.tileSize = sizeof(sPidgeyScreenshotTiles),
+        .map = sPidgeyScreenshotMap,
+		.mapSize = sizeof(sPidgeyScreenshotMap),
+        .palette = sPidgeyScreenshotPalette,
+		.palIdxCnt = 16
+	},
+	[SCENEBGGAMEOVER] = 
+	{
+		.mode = CUTSCENE_8BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sGameOverBgTiles,
+		.tileSize = sizeof(sGameOverBgTiles),
+        .map = sGameOverBgMap,
+		.mapSize = sizeof(sGameOverBgMap),
+        .palette = sGameOverBgPalette,
+		.palIdxCnt = 240
+	},
+	[SCENEBGWARP] = 
+	{
+		.mode = CUTSCENE_4BPP_NO_SCROLL,
+		.scrollMode = CUTSCENE_SCROLL_NONE,
+        .tiles = sWarpBgTiles,
+		.tileSize = sizeof(sWarpBgTiles),
+        .map = sWarpBgMap,
+		.mapSize = sizeof(sWarpBgMap),
+        .palette = sWarpBgPalette,
+		.palIdxCnt = 16
 	},
 };
 

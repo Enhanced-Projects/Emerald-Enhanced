@@ -5,6 +5,7 @@ PacifidlogTown_MapScripts:: @ 81EBAB1
 
 PacifidlogTown_OnTransition: @ 81EBABC
 	setflag FLAG_VISITED_PACIFIDLOG_TOWN
+	call RyuCheckForWellTravelledAch
 	end
 
 PacifidlogTown_OnResume: @ 81EBAC0

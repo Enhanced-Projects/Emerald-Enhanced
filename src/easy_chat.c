@@ -219,7 +219,6 @@ static void sub_811E0EC(s8, s8);
 static void sub_811E1A4(s8, s8);
 static void sub_811E2DC(struct Sprite *);
 static void sub_811E34C(u8, u8);
-static bool8 EasyChatIsNationalPokedexEnabled(void);
 static u16 GetRandomUnlockedEasyChatPokemon(void);
 static void sub_811F2D4(void);
 static void sub_811F46C(void);
@@ -537,8 +536,8 @@ static const u16 sBerryMasterWifePhrases[][2] = {
     [PHRASE_SUPER_HUSTLE - 1]        = {EC_WORD_SUPER, EC_WORD_HUSTLE},
 };
 
-static const u16 sEasyChatTriangleCursorPalette[] = INCBIN_U16("graphics/easy_chat/triangle_cursor.gbapal");
-static const u32 sEasyChatTriangleCursorGfx[] = INCBIN_U32("graphics/easy_chat/triangle_cursor.4bpp");
+const u16 sEasyChatTriangleCursorPalette[] = INCBIN_U16("graphics/easy_chat/triangle_cursor.gbapal");
+const u32 sEasyChatTriangleCursorGfx[] = INCBIN_U32("graphics/easy_chat/triangle_cursor.4bpp");
 static const u32 sEasyChatScrollIndicatorGfx[] = INCBIN_U32("graphics/easy_chat/scroll_indicator.4bpp");
 static const u32 sEasyChatStartSelectButtonsGfx[] = INCBIN_U32("graphics/easy_chat/start_select_buttons.4bpp");
 static const u16 sUnknown_085979C0[] = INCBIN_U16("graphics/misc/interview_frame.gbapal");
@@ -4823,7 +4822,7 @@ static bool8 IsEasyChatGroupUnlocked(u8 groupId)
     case EC_GROUP_MOVE_2:
         return FlagGet(FLAG_SYS_GAME_CLEAR);
     case EC_GROUP_POKEMON_2:
-        return EasyChatIsNationalPokedexEnabled();
+        return TRUE;
     default:
         return TRUE;
     }
@@ -5215,11 +5214,6 @@ u16 GetRandomTaughtHipsterPhrase(void)
     return 0xFFFF;
 }
 
-static bool8 EasyChatIsNationalPokedexEnabled(void)
-{
-    return IsNationalPokedexEnabled();
-}
-
 static u16 GetRandomUnlockedEasyChatPokemon(void)
 {
     u16 i;
@@ -5322,8 +5316,7 @@ static void sub_811F2D4(void)
     if (FlagGet(FLAG_SYS_HIPSTER_MEET))
         sUnknown_0203A120->unk2[sUnknown_0203A120->unk0++] = EC_GROUP_TRENDY_SAYING;
 
-    if (IsNationalPokedexEnabled())
-        sUnknown_0203A120->unk2[sUnknown_0203A120->unk0++] = EC_GROUP_POKEMON_2;
+    sUnknown_0203A120->unk2[sUnknown_0203A120->unk0++] = EC_GROUP_POKEMON_2;
 }
 
 static u8 sub_811F3AC(void)

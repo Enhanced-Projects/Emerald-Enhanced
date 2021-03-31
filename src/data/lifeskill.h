@@ -521,71 +521,399 @@ const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2] = {
     [BR_FIRE_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_FIRE_GEM, 0},
+        {ITEM_FIRE_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_WATER_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_WATER_GEM, 0},
+        {ITEM_WATER_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_THUNDER_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_ELECTRIC_GEM, 0},
+        {ITEM_ELECTRIC_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_LEAF_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_GRASS_GEM, 0},
+        {ITEM_GRASS_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_MOON_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_GHOST_GEM, 0},
+        {ITEM_GHOST_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_SUN_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_PSYCHIC_GEM, 0},
+        {ITEM_PSYCHIC_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_SHINY_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_FAIRY_GEM, 0},
+        {ITEM_FAIRY_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_DUSK_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_DARK_GEM, 0},
+        {ITEM_DARK_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_DAWN_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_NORMAL_GEM, 0},
+        {ITEM_NORMAL_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
     [BR_ICE_STONE] = {
         {ITEM_POWER_HERB, 1},
         {ITEM_SOFT_SAND, 1},
-        {ITEM_ICE_GEM, 0},
+        {ITEM_ICE_GEM, 1},
         {ITEM_NONE, 0},
         {ITEM_NONE, 0}
     },
 };
+
+typedef struct Ingredient {
+  u16 itemId;
+  u8 quantity;
+} Ingredient;
+
+
+typedef struct AlchemyRecipe {
+  u16 expGiven;
+  Ingredient ingredients[3];
+  u16 metal;
+  u16 metalDustAmt;
+  u8 requiredLevel;
+  u8 givenCharges;
+} AlchemyRecipe;
+
+const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
+    [ALCHEMY_EFFECT_NONE] = {
+          .expGiven = 0,
+          .ingredients = {
+          {ITEM_NONE, 0 },
+          {ITEM_NONE, 0 },
+          {ITEM_NONE, 0 },
+        },
+        .metal = 0,
+        .metalDustAmt = 0,
+        .requiredLevel = 1,
+        .givenCharges = 5
+  },
+    [ALCHEMY_EFFECT_DAMAGE_BOOST_T1] = {
+          .expGiven = 5,
+          .ingredients = {
+          {ITEM_MUSCLE_POWDER, 3 },
+          {ITEM_STARDUST, 2 },
+          {ITEM_FRESH_WATER, 1 },
+        },
+        .metal = 0,
+        .metalDustAmt = 500,
+        .requiredLevel = 1,
+        .givenCharges = 5,
+  },
+    [ALCHEMY_EFFECT_DAMAGE_BOOST_T2] = {
+          .expGiven = 10,
+          .ingredients = {
+          {ITEM_MUSCLE_POWDER, 6 },
+          {ITEM_STARDUST, 4 },
+          {ITEM_TONIC_WATER, 1 },
+        },
+        .metal = 2,
+        .metalDustAmt = 500,
+        .requiredLevel = 3,
+        .givenCharges = 5,
+  },
+    [ALCHEMY_EFFECT_DAMAGE_BOOST_T3] = {
+          .expGiven = 15,
+          .ingredients = {
+          {ITEM_MUSCLE_POWDER, 12 },
+          {ITEM_STARDUST, 8 },
+          {ITEM_MINERAL_WATER, 4 },
+        },
+        .metal = 3,
+        .metalDustAmt = 750,
+        .requiredLevel = 5,
+        .givenCharges = 5,
+  },
+    [ALCHEMY_EFFECT_DEFENSE_BOOST_T1] = {
+          .expGiven = 5,
+          .ingredients = {
+          {ITEM_TOUGH_POWDER, 3 },
+          {ITEM_STARDUST, 2 },
+          {ITEM_FRESH_WATER, 1 },
+        },
+        .metal = 0,
+        .metalDustAmt = 500,
+        .requiredLevel = 1,
+        .givenCharges = 5,
+  },
+    [ALCHEMY_EFFECT_DEFENSE_BOOST_T2] = {
+          .expGiven = 10,
+          .ingredients = {
+          {ITEM_TOUGH_POWDER, 6 },
+          {ITEM_STARDUST, 4 },
+          {ITEM_TONIC_WATER, 2 },
+        },
+        .metal = 2,
+        .metalDustAmt = 500,
+        .requiredLevel = 3,
+        .givenCharges = 5,
+  },
+    [ALCHEMY_EFFECT_DEFENSE_BOOST_T3] = {
+          .expGiven = 15,
+          .ingredients = {
+          {ITEM_TOUGH_POWDER, 12 },
+          {ITEM_STARDUST, 8 },
+          {ITEM_MINERAL_WATER, 4 },
+        },
+        .metal = 3,
+        .metalDustAmt = 750,
+        .requiredLevel = 5,
+        .givenCharges = 5,
+  },
+
+    [ALCHEMY_EFFECT_EXP_BOOST_T1] = {
+          .expGiven = 5,
+          .ingredients = {
+            {ITEM_RARE_CANDY, 1},
+            {ITEM_FRESH_WATER, 1},
+            {ITEM_STAR_PIECE, 1},
+        },
+        .metal = 0,
+        .metalDustAmt = 250,
+        .requiredLevel = 2,
+        .givenCharges = 1,
+    },
+    [ALCHEMY_EFFECT_EXP_BOOST_T2] = {
+          .expGiven = 10,
+          .ingredients = {
+            {ITEM_RARE_CANDY, 2},
+            {ITEM_TONIC_WATER, 1},
+            {ITEM_BIG_PEARL, 1},
+        },
+        .metal = 2,
+        .metalDustAmt = 250,
+        .requiredLevel = 2,
+        .givenCharges = 1,
+    },
+    [ALCHEMY_EFFECT_EXP_BOOST_T3] = {
+          .expGiven = 15,
+          .ingredients = {
+            {ITEM_RARE_CANDY, 3},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_GOLD_NUGGET, 1},
+        },
+        .metal = 3,
+        .metalDustAmt = 250,
+        .requiredLevel = 2,
+        .givenCharges = 10,
+    },
+    [ALCHEMY_EFFECT_REPEL_T1] = {
+          .expGiven = 7,
+          .ingredients = {
+          {ITEM_RAWST_BERRY, 2 },
+          {ITEM_STARDUST, 2 },
+          {ITEM_TONIC_WATER, 1 },
+        },
+        .metal = 0,
+        .metalDustAmt = 100,
+        .requiredLevel = 2,
+        .givenCharges = 1,
+  },
+    [ALCHEMY_EFFECT_REPEL_T2] = {
+          .expGiven = 14,
+          .ingredients = {
+          {ITEM_RAWST_BERRY, 4 },
+          {ITEM_STARDUST, 4 },
+          {ITEM_TONIC_WATER, 1 },
+        },
+        .metal = 2,
+        .metalDustAmt = 100,
+        .requiredLevel = 2,
+        .givenCharges = 1,
+  },
+    [ALCHEMY_EFFECT_SUPER_CAPTURE] = {
+          .expGiven = 10,
+          .ingredients = {
+            {ITEM_BRIGHT_POWDER, 1},
+            {ITEM_FRESH_WATER, 1},
+            {ITEM_GREAT_BALL, 1},
+        },
+        .metal = 0,
+        .metalDustAmt = 250,
+        .requiredLevel = 1,
+        .givenCharges = 1,
+    },
+    [ALCHEMY_EFFECT_ULTRA_CAPTURE] = {
+          .expGiven = 20,
+          .ingredients = {
+            {ITEM_LUMINOUS_MOSS, 1},
+            {ITEM_TONIC_WATER, 1},
+            {ITEM_ULTRA_BALL, 1},
+        },
+        .metal = 2,
+        .metalDustAmt = 250,
+        .requiredLevel = 3,
+        .givenCharges = 1,
+    },
+    [ALCHEMY_EFFECT_MASTER_CAPTURE] = {
+          .expGiven = 30,
+          .ingredients = {
+            {ITEM_MENTAL_HERB, 1},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_LUXURY_BALL, 1},
+        },
+        .metal = 3,
+        .metalDustAmt = 250,
+        .requiredLevel = 5,
+        .givenCharges = 1,
+    },
+    [ALCHEMY_EFFECT_HEALING_FACTOR] = {
+          .expGiven = 10,
+          .ingredients = {
+            {ITEM_HEAL_POWDER, 3},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_ORAN_BERRY, 1},
+        },
+        .metal = 0,
+        .metalDustAmt = 200,
+        .requiredLevel = 2,
+        .givenCharges = 5,
+    },
+
+    //Alchemy Item Recipes Below.
+    [ALCHEMY_ITEM_RECIPE_STARDUST] = {
+          .expGiven = 5,
+          .ingredients = {
+            {ITEM_SOFT_SAND, 2},
+            {ITEM_GEM_POWDER, 2},
+            {ITEM_NONE, 0},
+        },
+        .metal = 2,
+        .metalDustAmt = 200,
+        .requiredLevel = 1,
+        .givenCharges = 255,
+    },
+
+    [ALCHEMY_ITEM_RECIPE_FRESH_WATER] = {
+          .expGiven = 10,
+          .ingredients = {
+            {ITEM_SNOWBALL, 2},
+            {ITEM_FIRE_STONE, 1},
+            {ITEM_NONE, 1},
+        },
+        .metal = 2,
+        .metalDustAmt = 100,
+        .requiredLevel = 1,
+        .givenCharges = 255,
+    },
+
+    [ALCHEMY_ITEM_RECIPE_TONIC_WATER] = {
+          .expGiven = 20,
+          .ingredients = {
+            {ITEM_FRESH_WATER, 2},
+            {ITEM_CHARCOAL, 1},
+            {ITEM_NONE, 1},
+        },
+        .metal = 2,
+        .metalDustAmt = 200,
+        .requiredLevel = 1,
+        .givenCharges = 255,
+    },
+
+    [ALCHEMY_ITEM_RECIPE_MINERAL_WATER] = {
+          .expGiven = 40,
+          .ingredients = {
+            {ITEM_TONIC_WATER, 2},
+            {ITEM_SOFT_SAND, 1},
+          {ITEM_SHOAL_SALT, 1},
+        },
+        .metal = 2,
+        .metalDustAmt = 300,
+        .requiredLevel = 1,
+        .givenCharges = 255,
+    },
+
+    [ALCHEMY_ITEM_RECIPE_RARE_CANDY] = {
+          .expGiven = 20,
+          .ingredients = {
+            {ITEM_LEMONADE, 1},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_SMART_POWDER, 1},
+        },
+        .metal = 3,
+        .metalDustAmt = 200,
+        .requiredLevel = 2,
+        .givenCharges = 255,
+    },
+
+    [ALCHEMY_ITEM_RECIPE_GOLD_NUGGET] = {
+          .expGiven = 20,
+          .ingredients = {
+            {ITEM_LEMONADE, 1},
+            {ITEM_MINERAL_WATER, 1},
+            {ITEM_SMART_POWDER, 1},
+        },
+        .metal = 3,
+        .metalDustAmt = 200,
+        .requiredLevel = 2,
+        .givenCharges = 255,
+    },
+};
+
+const u8 sRAEffectNoneDesc[] =         _("No Effect");
+const u8 sRAEffectDamage1[] =          _("T1 Damage Boost");
+const u8 sRAEffectDamage2[] =          _("T2 Damage Boost");
+const u8 sRAEffectDamage3[] =          _("T3 Damage Boost");
+const u8 sRAEffectDefense1[] =         _("T1 Defense Boost");
+const u8 sRAEffectDefense2[] =         _("T2 Defense Boost");
+const u8 sRAEffectDefense3[] =         _("T3 Defense Boost");
+const u8 sRAEffectRepelT1[] =          _("T1 Ultra Repel");
+const u8 sRAEffectRepelT2[] =          _("T2 Ultra Repel");
+const u8 sRAEffectSuperCapture1[] =    _("T1 Capture Boost");
+const u8 sRAEffectSuperCapture2[] =    _("T2 Capture Boost");
+const u8 sRAEffectSuperCapture3[] =    _("T3 Capture Boost");
+const u8 sRAEffectEXPBoost1[] =        _("T1 Exp Boost");
+const u8 sRAEffectEXPBoost2[] =        _("T2 Exp Boost");
+const u8 sRAEffectEXPBoost3[] =        _("T3 Exp Boost");
+const u8 sRAEffectHealingFactor[] =    _("Healing Factor");
+
+const u8 * const gRyuAlchemyEffectItemToStringTable[16] = {
+    sRAEffectNoneDesc,
+    sRAEffectDamage1,
+    sRAEffectDamage2,
+    sRAEffectDamage3,
+    sRAEffectDefense1,
+    sRAEffectDefense2,
+    sRAEffectDefense3,
+    sRAEffectEXPBoost1,
+    sRAEffectEXPBoost2,
+    sRAEffectEXPBoost3,
+    sRAEffectRepelT1,
+    sRAEffectRepelT2,
+    sRAEffectSuperCapture1,
+    sRAEffectSuperCapture2,
+    sRAEffectSuperCapture3,
+    sRAEffectHealingFactor
+};
+
+

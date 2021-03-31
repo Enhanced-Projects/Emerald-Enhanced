@@ -493,7 +493,6 @@ gSpecials:: @ 81DBA64
 	def_special Unused_SetWeatherSunny
 	def_special SetUnlockedPokedexFlags
 	def_special ShouldDoBrailleRegicePuzzle
-	def_special EnableNationalPokedex
 	def_special ScriptMenu_CreateLilycoveSSTidalMultichoice
 	def_special GetLilycoveSSTidalSelection
 	def_special TurnOnTVScreen
@@ -580,3 +579,5 @@ gSpecials:: @ 81DBA64
 	def_special BotanyCheck
 	def_special RyuGetMaxBossChance
 	def_special RyuGetCurrentMapsec
+	def_special Bag_ChooseMedicine
+	def_special RyuAlchemy_TryCraftingItem

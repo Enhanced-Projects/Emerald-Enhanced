@@ -168,6 +168,16 @@ RyuBotany_CheckLevel4Progress::
 
 RyuBotanyRecipeBookScript::
     lock
+    compare VAR_RYU_PLAYER_ALCHEMY_SKILL, 1  @@Alchemy shows up in the recipe book if the player has the skill, otherwise works exactly as it did before alchemy.
+    goto_if_lt RyuBotany_BotanyRecipeCrafting
+    msgbox WhichTypeOfRecipe
+    multichoicegrid 3, 10, MULTI_BOTANY_OR_ALCHEMY, 3, 1
+    switch VAR_RESULT
+    case 0, RyuBotany_BotanyRecipeCrafting
+    case 1, RyuAlchemy_AttemptCreateEffect
+    goto ryu_end
+
+RyuBotany_BotanyRecipeCrafting::
     msgbox RB_WhichChapter
     multichoice 18, 4, MULTI_BOTANY_CHAPTER_SELECT, 0
     switch VAR_RESULT
@@ -250,6 +260,9 @@ RB_NotEnoughSpaceForResult::
     closemessage
     release
     end
+
+WhichTypeOfRecipe:
+    .string "Would you like to do Alchemy\nor Botany?$"
 
 RB_Error:
     .string "{COLOR LIGHT_RED}{SHADOW RED}There was an error crafting this recipe.$"

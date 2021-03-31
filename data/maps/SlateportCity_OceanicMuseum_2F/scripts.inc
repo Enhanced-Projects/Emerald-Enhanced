@@ -306,12 +306,18 @@ OM_CantDoThisQuestBecauseNurse::
 	end
 
 OM_NurseCancel:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You cannot do this quest stage\nbecause you are presently doing\lthe Nurse quest.\pPlease come back when you have\nfinished the Nurse quest.$"
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You cannot do this quest stage\n"
+	.string "because you are presently doing\l"
+	.string "the Nurse quest.\p"
+	.string "Please come back when you have\n"
+	.string "finished the Nurse quest.$"
 
 OM_SetupSternForDevon::
 OM_ReEnableStern::
 	setvar VAR_TEMP_5, 10
 	goto_if_set FLAG_RYU_DEVON_STERN_EVENT_DONE, OM_FinishedSternEvent
+	compare VAR_RYU_AQUA, 70
+	goto_if_ge ryu_end
 	setvar VAR_RYU_DEVON, 17 @Player is on second floor to speak with Stern.
 	addobject 4
 	end
@@ -322,6 +328,7 @@ OM_FinishedSternEvent::
 	end
 	
 OM_CaptainStern::
+	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, ryu_end
 	compare VAR_RYU_DEVON, 18
 	goto_if_ge OM_AlreadyDoneScene
 	msgbox OM_ThanksForBringing
@@ -344,10 +351,12 @@ OM_CaptainStern::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	msgbox OM_ImArchieHandOver
 	closemessage
+	setflag FLAG_RYU_GAME_OVER
 	trainerbattle_single TRAINER_ARCHIE, OM_ArchieIntro, OM_ArchieDefeat, OM_ArchieSceneEnd
 	goto OM_ArchieSceneEnd
 	
 OM_ArchieSceneEnd::
+	clearflag FLAG_RYU_GAME_OVER
 	applymovement 4, Common_Movement_FaceLeft
 	waitmovement 4
 	msgbox OM_IllLetYouGetAway

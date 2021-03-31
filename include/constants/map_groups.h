@@ -118,6 +118,7 @@
 #define MAP_RUSTBORO_CITY_MART                   (16 | (4 << 8))
 #define MAP_RUSTBORO_CITY_POKEMON_CENTER_1F      (17 | (4 << 8))
 #define MAP_RUSTBORO_CITY_POKEMON_CENTER_2F      (18 | (4 << 8))
+#define MAP_RUSTBORO_CITY_PIDGEYS_COOP           (19 | (4 << 8))
 
 // Map Group 5
 #define MAP_DEWFORD_TOWN_HALL              (0 | (5 << 8))
@@ -678,6 +679,7 @@
 #define MAP_ROUTE119_WEATHER_INSTITUTE_1F (0 | (32 << 8))
 #define MAP_ROUTE119_WEATHER_INSTITUTE_2F (1 | (32 << 8))
 #define MAP_ROUTE119_HOUSE                (2 | (32 << 8))
+#define MAP_ROUTE119_LORWYNS_HOUSE        (3 | (32 << 8))
 
 // Map Group 33
 #define MAP_ROUTE124_DIVING_TREASURE_HUNTERS_HOUSE (0 | (33 << 8))

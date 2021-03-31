@@ -4,6 +4,7 @@ Route123_BerryMastersHouse_MapScripts:: @ 826F83B
 
 Route123_BerryMastersHouse_OnTransition: @ 826F841
 	setflag FLAG_LANDMARK_BERRY_MASTERS_HOUSE
+	call RyuCheckForLNSUAch
 	end
 
 Route123_BerryMastersHouse_EventScript_BerryMaster:: @ 826F845

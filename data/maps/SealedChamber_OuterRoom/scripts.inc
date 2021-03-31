@@ -11,6 +11,7 @@ SealedChamber_OuterRoom_OnResume: @ 8239116
 
 SealedChamber_OuterRoom_OnTransition: @ 8239127
 	setflag FLAG_LANDMARK_SEALED_CHAMBER
+	call RyuCheckForLNSUAch
 	end
 
 SealedChamber_OuterRoom_OnLoad: @ 823912B

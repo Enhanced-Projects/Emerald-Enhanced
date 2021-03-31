@@ -17,7 +17,7 @@
 #define GAME_STAT_HATCHED_EGGS              13
 #define GAME_STAT_EVOLVED_POKEMON           14
 #define GAME_STAT_USED_POKECENTER           15
-#define GAME_STAT_RESTED_AT_HOME            16
+#define GAME_STAT_RESTED_AT_HOME            16 // Counts all Heals
 #define GAME_STAT_ENTERED_SAFARI_ZONE       17
 #define GAME_STAT_USED_CUT                  18
 #define GAME_STAT_USED_ROCK_SMASH           19
@@ -55,8 +55,9 @@
 #define GAME_STAT_51                        51
 #define GAME_STAT_USED_SOUND_MOVE           52
 #define GAME_STAT_DEXNAV_SCANNED            53
+#define GAME_STAT_BATTLES_WON               54
 
-#define NUM_USED_GAME_STATS                 54
+#define NUM_USED_GAME_STATS                 55
 #define NUM_GAME_STATS                      64
 
 #endif // GUARD_CONSTANTS_GAME_STAT_H

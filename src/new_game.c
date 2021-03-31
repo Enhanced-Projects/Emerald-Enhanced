@@ -47,6 +47,7 @@
 #include "mevent.h"
 #include "union_room_chat.h"
 #include "constants/map_groups.h"
+#include "factions.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -151,6 +152,8 @@ void ResetMenuAndMonGlobals(void)
     ResetPokeblockScrollPositions();
 }
 
+extern void RyuClearAlchemyEffect();
+
 void NewGameInitData(void)
 {
     u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
@@ -165,12 +168,14 @@ void NewGameInitData(void)
         RtcReset();
         ClearSav1();
         memset(gSaveBlock2Ptr->achFlags, 0, 32);//initialize achievements on raw new game.
+        memset(gSaveBlock2Ptr->achievementPowerFlags, 0, (sizeof(gSaveBlock2Ptr->achievementPowerFlags)));//disable all AP's on raw new game.
     }
     else //hacky, I know but it's the only way I could get it to work :shrug:
     {
         ClearSav1_SkipDex();
     }
     
+    RyuFactions_ResetAllStanding();
     gDifferentSaveFile = 1;
     gSaveBlock2Ptr->encryptionKey = 0;
     ZeroPlayerPartyMons();
@@ -199,6 +204,7 @@ void NewGameInitData(void)
     ClearRoamerData();
     ClearRoamerLocationData();
     gSaveBlock1Ptr->registeredItem = 0;
+    gSaveBlock2Ptr->expShare = 0;
     ClearBag();
     NewGameInitPCItems();
     ClearPokeblocks();
@@ -295,6 +301,7 @@ void NewGameInitData(void)
     FlagClear(FLAG_OPTIONS_INSTANT_TRANSITION);
     FlagSet(FLAG_NOTIFIED_FF_TEXT);
     FlagSet(FLAG_HIDE_ALL_KECLEON_OWS);// can't delete all kecleon overworlds because scripts, so this will do.
+    FlagSet(FLAG_SYS_NATIONAL_DEX);
 
     //vars
     VarSet(VAR_RYU_GCMS_SPECIES, 0);
@@ -318,6 +325,7 @@ void NewGameInitData(void)
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;
+    RyuClearAlchemyEffect();
 }
 
 static void ResetMiniGamesResults(void)

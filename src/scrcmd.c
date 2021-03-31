@@ -54,6 +54,7 @@
 #include "load_save.h"
 #include "battle_setup.h"
 #include "infobox.h"
+#include "ach_atlas.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -1407,12 +1408,6 @@ bool8 ScrCmd_multichoicedefault(struct ScriptContext *ctx)
 
 bool8 ScrCmd_drawbox(struct ScriptContext *ctx)
 {
-    /*u8 left = ScriptReadByte(ctx);
-    u8 top = ScriptReadByte(ctx);
-    u8 right = ScriptReadByte(ctx);
-    u8 bottom = ScriptReadByte(ctx);
-
-    MenuDrawTextWindow(left, top, right, bottom);*/
     return FALSE;
 }
 
@@ -1437,27 +1432,11 @@ bool8 ScrCmd_multichoicegrid(struct ScriptContext *ctx)
 
 bool8 ScrCmd_erasebox(struct ScriptContext *ctx)
 {
-    u8 left = ScriptReadByte(ctx);
-    u8 top = ScriptReadByte(ctx);
-    u8 right = ScriptReadByte(ctx);
-    u8 bottom = ScriptReadByte(ctx);
-
-    // MenuZeroFillWindowRect(left, top, right, bottom);
     return FALSE;
 }
 
 bool8 ScrCmd_drawboxtext(struct ScriptContext *ctx)
 {
-    u8 left = ScriptReadByte(ctx);
-    u8 top = ScriptReadByte(ctx);
-    u8 multichoiceId = ScriptReadByte(ctx);
-    u8 ignoreBPress = ScriptReadByte(ctx);
-
-    /*if (Multichoice(left, top, multichoiceId, ignoreBPress) == TRUE)
-    {
-        ScriptContext1_Stop();
-        return TRUE;
-    }*/
     return FALSE;
 }
 
@@ -1700,7 +1679,7 @@ bool8 ScrCmd_givemon(struct ScriptContext *ctx)
     u32 unkParam2 = ScriptReadWord(ctx);
     u8 unkParam3 = ScriptReadByte(ctx);
 
-    gSpecialVar_Result = ScriptGiveMon(species, level, item, unkParam1, unkParam2, unkParam3);
+    gSpecialVar_Result = ScriptGiveMon(species, level, item);
     return FALSE;
 }
 
@@ -1740,6 +1719,10 @@ bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
             break;
         }
     }
+
+    if ((CheckAPFlag(AP_NATURAL_TALENT) == TRUE) && (moveId == MOVE_SECRET_POWER))
+        gSpecialVar_Result = 0;
+        
     return FALSE;
 }
 
@@ -1759,7 +1742,7 @@ bool8 ScrCmd_removemoney(struct ScriptContext *ctx)
 
 bool8 ScrCmd_checkmoney(struct ScriptContext *ctx)
 {
-    u32 amount = ScriptReadWord(ctx);
+    u16 amount = VarGet(ScriptReadWord(ctx));
     gSpecialVar_Result = IsEnoughMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }

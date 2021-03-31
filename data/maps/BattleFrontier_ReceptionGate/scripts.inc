@@ -5,6 +5,7 @@ BattleFrontier_ReceptionGate_MapScripts:: @ 82661DA
 
 BattleFrontier_ReceptionGate_OnTransition: @ 82661E5
 	setflag FLAG_LANDMARK_BATTLE_FRONTIER
+	call RyuCheckForLNSUAch
 	end
 
 BattleFrontier_ReceptionGate_OnFrame: @ 82661E9

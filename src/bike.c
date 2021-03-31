@@ -881,7 +881,7 @@ static u8 GetBikeCollisionAt(struct ObjectEvent *objectEvent, s16 x, s16 y, u8 d
     if (collision > COLLISION_OBJECT_EVENT)
         return collision;
 
-    if (collision == COLLISION_NONE && IsRunningDisallowedByMetatile(metatitleBehavior))
+    if ((collision == COLLISION_NONE && IsRunningDisallowedByMetatile(metatitleBehavior)) || (IsPlayerFacingSurfableFishableWater() == 1))
         collision = COLLISION_IMPASSABLE;
 
     return collision;
@@ -942,6 +942,9 @@ bool8 IsBikingDisallowedByPlayer(void)
 {
     s16 x, y;
     u8 tileBehavior;
+
+    if (gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_SURFING | PLAYER_AVATAR_FLAG_UNDERWATER))
+        return TRUE;
 
     if (!(gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_SURFING | PLAYER_AVATAR_FLAG_UNDERWATER)))
     {

@@ -67,7 +67,6 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated:: @ 81FE7C1
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
 	msgbox LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis, MSGBOX_DEFAULT
-	setflag FLAG_WHITEOUT_TO_LAVARIDGE
 	setflag FLAG_DEFEATED_LAVARIDGE_GYM
 	setflag FLAG_BADGE04_GET
 	setvar VAR_LAVARIDGE_TOWN_STATE, 1
@@ -99,6 +98,7 @@ LG_Reset::
 	goto_if_set FLAG_RYU_HARDCORE_MODE, RyuScripts_HardcoreGymReward
 	call_if_set FLAG_RYU_NUZLOCKEMODE, RyuHealedGym
 	call_if_unset FLAG_RYU_GYM4HANDOUT, RyuGymItemReward4
+	call Ryu_CheckForPartnerReward
 	release
 	end
 

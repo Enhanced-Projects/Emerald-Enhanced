@@ -2,9 +2,7 @@ LilycoveCity_TrainingCenter_MapScripts::
 	.byte 0
 	
 TC_EvIvCheckerScript::
-    specialvar VAR_RESULT, RyuFillStatsBuffers
-	compare VAR_RESULT, TRUE
-	goto_if_ne RyuDebug_StatsFailed
+    special RyuFillStatsBuffers
 	delay 30
     drawinfobox INFOBOXPOKEMONDATA
 	bufferpartymonnick 1, 0
@@ -19,9 +17,7 @@ TC_EvIvCheckerScript::
 	end
 
 TC_EvIvCheckerNoHealScript::
-    specialvar VAR_RESULT, RyuFillStatsBuffers
-	compare VAR_RESULT, TRUE
-	goto_if_ne RyuDebug_StatsFailed
+    special RyuFillStatsBuffers
 	delay 30
     drawinfobox INFOBOXPOKEMONDATA
 	bufferpartymonnick 1, 0
@@ -116,7 +112,8 @@ TC_Entering::
 	checkitem ITEM_TOWN_MAP, 0
 	compare VAR_RESULT, 1
 	goto_if_eq TC_Discount_entering
-	checkmoney 65000
+	setvar VAR_TEMP_0, 22500
+	checkmoney VAR_TEMP_0
 	compare VAR_RESULT, 0
 	goto_if_eq TC_Exiting_Nomoney
 	msgbox TC_Welcome MSGBOX_DEFAULT
@@ -132,14 +129,15 @@ TC_Entering::
 	
 TC_Discount_entering::
 	msgbox TC_Discount_Welcome MSGBOX_DEFAULT
-	checkmoney 6500
-	compare VAR_RESULT, 0
+	setvar VAR_TEMP_0, 2250
+	checkmoney VAR_TEMP_0
+	compare VAR_RESULT, FALSE
 	goto_if_eq TC_Disc_Broke
 	waitmessage
 	applymovement OBJ_EVENT_ID_PLAYER, TC_WalkIn
 	applymovement OBJ_EVENT_ID_FOLLOWER, TC_WalkIn
 	waitmovement 0
-	takemoney 6500
+	takemoney VAR_TEMP_0
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_TC_ENTERED
 	releaseall
@@ -147,7 +145,7 @@ TC_Discount_entering::
 
 TC_Discount_Welcome:
 	.string "Oh, I see you have a VIP Pass.\n"
-	.string "That reduces the cost to ¥10000.\p"
+	.string "That reduces the cost to ¥2250.\p"
 	.string "Lots of the professor's research is\n"
 	.string "used here!$"
 	
@@ -161,7 +159,7 @@ TC_Disc_Broke::
 
 TC_Leave_Disc_broke:
 	.string "I'm sorry, but even with the guest\n"
-	.string "pass, it still costs ¥10,000 to enter.\p"
+	.string "pass, it still costs ¥2250 to enter.\p"
 	.string "We still have maintenance costs!\n"
 	.string "Please come back later. Thanks!$"
 	
@@ -215,7 +213,7 @@ TC_Exiting_Nomoney::
 TC_Broke:
 	.string "I'm sorry, but you cannot afford\n"
 	.string "to use the training center currently.\p"
-	.string "You need ¥65000 to enter.\p"
+	.string "You need ¥22500 to enter.\p"
 	.string "Perhaps you can find a friend with\n"
 	.string "a membership or VIP pass.\p"
 	.string "Have a nice day!$"
@@ -269,7 +267,7 @@ TC_Exiting_pokeballs::
 TC_Entry_Cost:
 	.string "Hello and welcome to Lilycove\n"
 	.string "Training Center.\p"
-	.string "It will cost ¥65000 to use this service.\p"
+	.string "It will cost ¥22500 to use this service.\p"
 	.string "You're also not permitted to have\n"
     .string "any pokeballs with you. \p"
 	.string "Please deposit any you have\n"
@@ -399,7 +397,8 @@ TC_StatShopGiveImprinter::
 	msgbox BuyImprinter MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne TC_StatShopNoBuyImprinter
-	checkmoney 22500
+	setvar VAR_TEMP_0, 22500
+	checkmoney VAR_TEMP_0
 	compare VAR_RESULT, 0
 	goto_if_eq TC_StatShopCantAffordImprinter
 	setvar VAR_TEMP_B, 22500

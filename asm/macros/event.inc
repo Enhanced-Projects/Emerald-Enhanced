@@ -884,27 +884,25 @@
 	.byte \B
 	.endm
 
-	@ Nopped in Emerald.
-	.macro drawbox
+	@ Apply a change to faction standing. Increasing one always decreases another or others. Negative to determine if adding or subtracting standing. 
+	.macro changefactionstanding factionid:req, amount:req, negative:req
 	.byte 0x72
+	.byte \factionid
+	.byte \amount
+	.byte \negative
 	.endm
 
-	@ Nopped in Emerald, but still consumes parameters.
-	.macro erasebox byte1:req, byte2:req, byte3:req, byte4:req
+	@ Checks faction of trainer, sets VAR_RESULT to faction ID, buffers value of that faction in {STR_VAR_4}
+	.macro checkfaction trainer:req
 	.byte 0x73
-	.byte \byte1
-	.byte \byte2
-	.byte \byte3
-	.byte \byte4
+	.2byte \trainer
 	.endm
 
-	@ Nopped in Emerald, but still consumes parameters.
-	.macro drawboxtext byte1:req, byte2:req, byte3:req, byte4:req
+	@ sets VAR_RESULT to TRUE if player has amount standing or more with id faction.
+	.macro checkfactionstanding id:req, amount:req
 	.byte 0x74
-	.byte \byte1
-	.byte \byte2
-	.byte \byte3
-	.byte \byte4
+	.byte \id
+	.byte \amount
 	.endm
 
 	@ Displays a box containing the front sprite for the specified (species) Pokemon species.

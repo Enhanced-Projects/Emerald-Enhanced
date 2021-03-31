@@ -2112,6 +2112,8 @@ enum
 	ENDTURN_SLOW_START,
     ENDTURN_BOSSMODEHEAL,
     ENDTURN_BOSSMODERAISESTAT,
+    ENDTURN_ALCHEMYHEALEFFECT,
+    ENDTURN_FACTIONBOSSMODIFIER,
 	ENDTURN_BATTLER_COUNT
 };
 
@@ -2641,6 +2643,40 @@ u8 DoBattlerEndTurnEffects(void)
         }
             gBattleStruct->turnEffectsTracker++;
             break;
+        case ENDTURN_ALCHEMYHEALEFFECT:
+        {
+            if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_HEALING_FACTOR)
+                if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_PLAYER)
+                    if(!(BATTLER_MAX_HP(gActiveBattler)))
+                        if(gBattleMons[gActiveBattler].hp != 0)
+                        {
+                            gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 10;
+                            if (gBattleMoveDamage == 0)
+                                gBattleMoveDamage = 1;
+                            gBattleMoveDamage *= -1;
+                            BattleScriptExecute(BattleScript_AlchemyHealingFactor);
+                            effect++;
+                        }
+        gBattleStruct->turnEffectsTracker++;
+        break;
+        }
+        case ENDTURN_FACTIONBOSSMODIFIER:
+        {
+            if (FlagGet(FLAG_RYU_FACING_FACTION_BOSS) == TRUE)
+                if ((GetBattlerSide(gBattlerAttacker)) == B_SIDE_OPPONENT)
+                        if(!(BATTLER_MAX_HP(gActiveBattler)))
+                            if(gBattleMons[gActiveBattler].hp != 0)
+                            {
+                                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 10;
+                                if (gBattleMoveDamage == 0)
+                                    gBattleMoveDamage = 1;
+                                gBattleMoveDamage *= -1;
+                                BattleScriptExecute(BattlesScript_FactionBossModifier);
+                                effect++;
+                            }
+        gBattleStruct->turnEffectsTracker++;
+        break;
+        }
         case ENDTURN_BATTLER_COUNT:  // done
             gBattleStruct->turnEffectsTracker = 0;
             gBattleStruct->turnEffectsBattlerId++;
@@ -7316,6 +7352,48 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     return dmg;
 }
 
+int RyuCalculateAlchemyModifiers(s32 damage)
+{
+    if ((gSaveBlock2Ptr->hasAlchemyEffectActive == FALSE) || ( gSaveBlock2Ptr->alchemyCharges < 1))
+        return damage;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
+        return damage;
+
+    if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
+    {
+        switch (gSaveBlock2Ptr->alchemyEffect)
+        {
+            case ALCHEMY_EFFECT_DAMAGE_BOOST_T1:
+                damage = ((damage * 110) / 100);
+                break;
+            case ALCHEMY_EFFECT_DAMAGE_BOOST_T2:
+                damage = ((damage * 125) / 100);
+                break;
+            case ALCHEMY_EFFECT_DAMAGE_BOOST_T3:
+                damage = ((damage * 150) / 100);
+                break;
+        }
+    }
+    else
+    {
+        switch (gSaveBlock2Ptr->alchemyEffect)
+        {
+            case ALCHEMY_EFFECT_DEFENSE_BOOST_T1:
+                damage = ((damage * 90) / 100);
+                break;
+            case ALCHEMY_EFFECT_DEFENSE_BOOST_T2:
+                damage = ((damage * 75) / 100);
+                break;
+            case ALCHEMY_EFFECT_DEFENSE_BOOST_T3:
+                damage = ((damage * 50) / 100);
+                break;
+        }
+    }
+    return damage;
+
+}
+
 s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32 fixedBasePower, bool32 isCrit, bool32 randomFactor, bool32 updateFlags)
 {
     s32 dmg;
@@ -7394,6 +7472,8 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
                     }
             }
         }
+
+    dmg = (RyuCalculateAlchemyModifiers(dmg));
 
     // Calculate final modifiers.
     dmg = CalcFinalDmg(dmg, move, battlerAtk, battlerDef, moveType, typeEffectivenessModifier, isCrit, updateFlags);

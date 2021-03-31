@@ -1994,10 +1994,10 @@ static const u8 sTMCaseDesc[] = _(
     "that holds TM's and\n"
     "HM's.");
 
-static const u8 sBerryPouchDesc[] = _(
-    "A convenient\n"
-    "container that\n"
-    "holds Berries.");
+static const u8 sReagentPouchDesc[] = _(
+    "A container for\n"
+    "holding alchemy\n"
+    "ingredients.");
 
 static const u8 sTeachyTVDesc[] = _(
     "A high tech\n"
@@ -2015,9 +2015,9 @@ static const u8 sRainbowPassDesc[] = _(
     "Sevii Islands.");
 
 static const u8 sTeaDesc[] = _(
-    "A thirst-quenching\n"
-    "tea prepared by an\n"
-    "old lady.");
+    "A smooth tasting\n"
+    "Earl Grey tea\n"
+    "blend. Delicious.");
 
 static const u8 sMysticTicketDesc[] = _(
     "A ticket required\n"
@@ -2989,3 +2989,23 @@ static const u8 sBoxingGloveDesc[] = _(
     "A boxing glove that\n"
     "boosts the power of\n"
     "punching moves.");
+
+static const u8 sTonicWaterDesc[] = _(
+    "Carbonated water\n"
+    "used for certain\n"
+    "Alcehmy recipes.");
+
+static const u8 sMineralWaterDesc[] = _(
+    "Dense water that is\n"
+    "used for Alchemy\n"
+    "Recipes.");
+
+static const u8 sGoldNuggetDesc[] = _(
+    "A very shiny,\n"
+    "heavy chunk of\n"
+    "pure gold.");
+
+static const u8 sGemPowderDesc [] = _(
+    "Dust made from\n"
+    "various jewels.\n"
+    "Sells well.");

@@ -3061,10 +3061,13 @@ void CalculateMonStats(struct Pokemon *mon)
     {
         if (currentHP == 0 && oldMaxHP == 0)
             currentHP = newMaxHP;
-        else if (currentHP != 0)
+        else if (currentHP != 0){
             // BUG: currentHP is unintentionally able to become <= 0 after the instruction below. This causes the pomeg berry glitch.
             // To fix that set currentHP = 1 if currentHP <= 0.
             currentHP += newMaxHP - oldMaxHP;
+            if (currentHP <= 0)
+                currentHP = 1;
+        }
         else
             return;
     }
@@ -3089,6 +3092,8 @@ void BoxMonToMon(const struct BoxPokemon *src, struct Pokemon *dest)
 inline u8 GetCurrentMaxLevel()
 {
     u8 ngPlusCount = VarGet(VAR_RYU_NGPLUS_COUNT);
+    if ((FlagGet(FLAG_RYU_DEV_MODE) == 1) && (FlagGet(FLAG_RYU_IGNORE_CAP) == 1))
+        return 250;
     return BASE_MAX_LEVEL + min(ngPlusCount, MAX_NGPLUS_COUNT) * LEVELS_PER_NGPLUS;
 }
 
@@ -6001,6 +6006,9 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
         if (holdEffect == HOLD_EFFECT_MACHO_BRACE)
             evIncrease *= 2;
 
+        if (CheckAPFlag(AP_EV_BOOST) == TRUE)
+            evIncrease *= 2;
+
         if (totalEVs + (s16)evIncrease > MAX_TOTAL_EVS)
             evIncrease = ((s16)evIncrease + MAX_TOTAL_EVS) - (totalEVs + evIncrease);
 
@@ -6014,11 +6022,7 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
         evs[i] += evIncrease;
         totalEVs += evIncrease;
 
-        if (CheckAPFlag(AP_EV_BOOST) == TRUE)
-            totalEVs *= 2;
-
         SetMonData(mon, MON_DATA_HP_EV + i, &evs[i]);
-        CalculateMonStats(mon);
     }
 }
 
@@ -6036,7 +6040,8 @@ u16 GetMonEVCount(struct Pokemon *mon)
 void RandomlyGivePartyPokerus(struct Pokemon *party)
 {
     u16 rnd = Random();
-    if (rnd == 0x4000 || rnd == 0x8000 || rnd == 0xC000)
+    int odds = CheckAPFlag(AP_BIOHAZARD) ? 6 : 3; //If biohazard is on, double chance, otherwise, standard chance.
+    if (rnd < odds)
     {
         struct Pokemon *mon;
 
@@ -6337,17 +6342,7 @@ u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)
 
 u16 SpeciesToPokedexNum(u16 species)
 {
-    if (IsNationalPokedexEnabled())
-    {
-        return SpeciesToNationalPokedexNum(species);
-    }
-    else
-    {
-        species = SpeciesToHoennPokedexNum(species);
-        if (species <= HOENN_DEX_COUNT)
-            return species;
-        return 0xFFFF;
-    }
+    return SpeciesToNationalPokedexNum(species);
 }
 
 bool32 IsSpeciesInHoennDex(u16 species)
@@ -6405,6 +6400,9 @@ u16 GetBattleBGM(void)
             trainerClass = TRAINER_CLASS_EXPERT;
         else
             trainerClass = gTrainers[gTrainerBattleOpponent_A].trainerClass;
+
+        if (FlagGet(FLAG_RYU_FACING_FACTION_BOSS) == TRUE)
+            return MUS_BATTLE38;
 
         switch (trainerClass)
         {
@@ -6648,13 +6646,31 @@ static s32 GetWildMonTableIdInAlteringCave(u16 species)
 void SetWildMonHeldItem(void)
 {
     u16 rnd, species, var1, var2, i, count;
+    bool32 isItemBoostedByAbility = FALSE;
+
     if (gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE))
         return;
 
+    if (GetMonAbility(&gPlayerParty[0]) == ABILITY_COMPOUND_EYES || GetMonAbility(&gPlayerParty[0]) == ABILITY_SUPER_LUCK)
+    {
+        isItemBoostedByAbility = TRUE;
+    }
+
     count = (WILD_DOUBLE_BATTLE) ? 2 : 1;
-    if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG, 0)
-        && (GetMonAbility(&gPlayerParty[0]) == ABILITY_COMPOUND_EYES
-            || GetMonAbility(&gPlayerParty[0]) == ABILITY_SUPER_LUCK))
+    if (isItemBoostedByAbility == TRUE)
+    {
+        if (CheckAPFlag(AP_LUCKY_LOOT) == TRUE)
+        {
+            var1 = 15;
+            var2 = 60;
+        }
+        else
+        {
+            var1 = 20;
+            var2 = 80;
+        }
+    }
+    else if ((isItemBoostedByAbility == FALSE) && (CheckAPFlag(AP_LUCKY_LOOT) == TRUE))
     {
         var1 = 20;
         var2 = 80;

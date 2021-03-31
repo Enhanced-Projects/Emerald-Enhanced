@@ -24,6 +24,7 @@
 #include "main.h"
 #include "trainer_hill.h"
 #include "event_data.h"
+#include "pokemon_storage_system.h"
 
 static void VBlankIntr(void);
 static void HBlankIntr(void);
@@ -84,6 +85,8 @@ void EnableVCountIntrAtLine150(void);
 
 #define B_START_SELECT (B_BUTTON | START_BUTTON | SELECT_BUTTON)
 
+extern u32 GetBoxMonData();
+
 void AgbMain()
 {
     // Modern compilers are liberal with the stack on entry to this function,
@@ -117,7 +120,7 @@ void AgbMain()
     gLinkTransferringData = FALSE;
     gUnknown_03000000 = 0xFC0;
 
-    //mgba_open();
+    mgba_open();
     for (;;)
     {
         ReadKeys();

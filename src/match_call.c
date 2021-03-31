@@ -955,16 +955,13 @@ void BufferPokedexRatingForMatchCall(u8 *destStr)
     StringCopy(str, sBirchDexRatingTexts[dexRatingLevel]);
     str = StringExpandPlaceholders(destStr, buffer);
 
-    if (IsNationalPokedexEnabled())
-    {
-        str[0] = CHAR_PROMPT_CLEAR;
-        str++;
-        numSeen = GetNationalPokedexCount(FLAG_GET_SEEN);
-        numCaught = GetNationalPokedexCount(FLAG_GET_CAUGHT);
-        ConvertIntToDecimalStringN(gStringVar1, numSeen, STR_CONV_MODE_LEFT_ALIGN, 3);
-        ConvertIntToDecimalStringN(gStringVar2, numCaught, STR_CONV_MODE_LEFT_ALIGN, 3);
-        StringExpandPlaceholders(str, gBirchDexRatingText_OnANationwideBasis);
-    }
+    str[0] = CHAR_PROMPT_CLEAR;
+    str++;
+    numSeen = GetNationalPokedexCount(FLAG_GET_SEEN);
+    numCaught = GetNationalPokedexCount(FLAG_GET_CAUGHT);
+    ConvertIntToDecimalStringN(gStringVar1, numSeen, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, numCaught, STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringExpandPlaceholders(str, gBirchDexRatingText_OnANationwideBasis);
 
     Free(buffer);
 }

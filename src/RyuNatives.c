@@ -86,7 +86,7 @@
 #include "strings.h"
 #include "ach_atlas.h"
 #include "lifeskill.h"
-
+#include "script_pokemon_util.h"
 #include "data/lifeskill.h"
 
 void ApplyDaycareExperience(struct Pokemon *mon)
@@ -1432,8 +1432,6 @@ bool8 RyuFillStatsBuffers(void)
     ConvertIntToDecimalStringN(gTextBuffer4, (GetMonData(&gPlayerParty[slot], MON_DATA_SPEED_EV, NULL)), STR_CONV_MODE_LEFT_ALIGN, 4);
     StringAppend(gTextBuffer1, gTextBuffer4);
     StringCopy(gRyuStringVar3, gTextBuffer1);
-
-    return TRUE;
 }
 
 void RyuSetUpSaveBlockStuff(void)
@@ -1596,7 +1594,7 @@ int RyuGetCurrentMapsec(void)
     return gMapHeader.regionMapSectionId;
 }
 
-void RyuBufferNumApricornsForMenu(void)//buffers the number of apricorns player has for the dynamic menu @@Kageru feel free to optimize this, if you can. If so, see RyuCountGemOres
+void RyuBufferNumApricornsForMenu(void)
 {
     u8 i;
     u16 total1 = 0;
@@ -1711,4 +1709,219 @@ void RyuCheckForDejavuAch(void)
 void SetSprintBoost(void)
 {
     SetAPFlag(AP_SPRINT_BOOST);
+}
+
+
+int RyuGetTotalCaughtMons(void)
+{
+    return GetNationalPokedexCount(FLAG_GET_CAUGHT);
+}
+
+void TryGiveLeetAch(void)
+{
+    if ((gSaveBlock2Ptr->playTimeHours <= 13) && (gSaveBlock2Ptr->playTimeMinutes <= 37))
+        if (CheckAchievement(ACH_1337) == FALSE)
+            GiveAchievement(ACH_1337);
+}
+
+void TryGiveFitnessGuruAch(void)
+{
+    u8 i, k;
+    u8 maxEvStat = 0;
+
+    for (k = 0; k < CalculatePlayerPartyCount(); k++)
+    {
+        for (i = 0; i < 6; i++)
+        {
+            if (GetMonData(&gPlayerParty[k], MON_DATA_HP_EV + i) == 252)
+                maxEvStat++;
+        }
+    }
+    
+    if ((maxEvStat > 0) && (CheckAchievement(ACH_FITNESS_GURU) == FALSE))
+        GiveAchievement(ACH_FITNESS_GURU);
+}
+
+void RyuDebug_Plant49Berries(void)
+{
+    u8 i;
+    for (i = 0; i < 50; i++)
+        IncrementGameStat(GAME_STAT_PLANTED_BERRIES);
+}
+
+void RyuClearAlchemyEffect(void)
+{
+    gSaveBlock2Ptr->alchemyCharges = 0;
+    gSaveBlock2Ptr->alchemyEffect = 0;
+    gSaveBlock2Ptr->hasAlchemyEffectActive = 0;
+}
+
+void RyuSetupAlchemicalRepel(void) //There's no need to assume there's an alchemy effect active with this.
+{                                  //The idea being, player created an alchemical repel that's more potent. Won't hurt to stack it with other things.
+    if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_REPEL_T1)
+        VarSet(VAR_REPEL_STEP_COUNT, 500);
+    if (gSaveBlock2Ptr->alchemyEffect == ALCHEMY_EFFECT_REPEL_T2)
+        VarSet(VAR_REPEL_STEP_COUNT, 1000);
+    
+    PlaySE(SE_TU_SAA);
+    RyuClearAlchemyEffect();
+}
+
+
+u16 RyuAlchemy_TryCraftingItem(void)
+{
+    u8 recipe = (VarGet(VAR_TEMP_A));
+    u8 levelReq = 0;
+    u8 currentLevel = (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL));
+    u16 currentExp = (VarGet(VAR_RYU_ALCHEMY_EXP));
+    u8 metal = 0;
+    u16 item1 = 0;
+    u16 item2 = 0;
+    u16 item3 = 0;
+    u16 metalAmountRequired = 0;
+    u16 playerMetalAmt = 0;
+
+    //fill vars
+    item1 = sAlchemyRecipes[recipe].ingredients[0].itemId;
+    item2 = sAlchemyRecipes[recipe].ingredients[1].itemId;
+    item3 = sAlchemyRecipes[recipe].ingredients[2].itemId;
+    metal = sAlchemyRecipes[recipe].metal;
+    metalAmountRequired = sAlchemyRecipes[recipe].metalDustAmt;
+
+    if (sAlchemyRecipes[recipe].requiredLevel > currentLevel)
+        return 2000; //Level requirement not met for recipe
+    
+    if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients[0].quantity)) == FALSE)
+        return 4100; //Player doesn't have enough of ingredient 1
+
+    if (CheckBagHasItem(item2, (sAlchemyRecipes[recipe].ingredients[1].quantity)) == FALSE)
+        return 4200; //Player doesn't have enough of ingredient 2
+
+    if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients[2].quantity)) == FALSE)
+        return 4300; //Player doesn't have enough of ingredient 3
+
+    switch (metal)
+    {
+        case 0:
+        {
+            playerMetalAmt = (VarGet(VAR_RYU_ALCHEMY_COPPER));
+            if (playerMetalAmt < metalAmountRequired)
+                return 1000; //Player doesn't have enough metal dust for this recipe
+
+            VarSet(VAR_RYU_ALCHEMY_COPPER, (VarGet(VAR_RYU_ALCHEMY_COPPER) - metalAmountRequired));
+            break;
+        }
+        case 1:
+        {
+            playerMetalAmt = (VarGet(VAR_RYU_ALCHEMY_SILVER));
+            if (playerMetalAmt < metalAmountRequired)
+                    return 1000; //Player doesn't have enough metal dust for this recipe
+
+            VarSet(VAR_RYU_ALCHEMY_SILVER, (VarGet(VAR_RYU_ALCHEMY_SILVER) - metalAmountRequired));
+            break;
+        }
+        case 2:
+        {
+            playerMetalAmt = (VarGet(VAR_RYU_ALCHEMY_GOLD));
+            if (playerMetalAmt < metalAmountRequired)
+                    return 1000; //Player doesn't have enough metal dust for this recipe
+
+            VarSet(VAR_RYU_ALCHEMY_GOLD, (VarGet(VAR_RYU_ALCHEMY_GOLD) - metalAmountRequired));
+            break;
+        }
+    }
+
+    RemoveBagItem(item1, (sAlchemyRecipes[recipe].ingredients[0].quantity));
+    RemoveBagItem(item2, (sAlchemyRecipes[recipe].ingredients[1].quantity));
+    RemoveBagItem(item3, (sAlchemyRecipes[recipe].ingredients[2].quantity));
+
+    if (recipe < ALCHEMY_ITEM_RECIPE_STARDUST) //don't set an effect if the crafting result is an item instead of effect.
+    {
+        gSaveBlock2Ptr->alchemyEffect = recipe;
+        gSaveBlock2Ptr->alchemyCharges = sAlchemyRecipes[recipe].givenCharges;
+        gSaveBlock2Ptr->hasAlchemyEffectActive = TRUE;
+    }
+    StringCopy(gStringVar1, gRyuAlchemyEffectItemToStringTable[(recipe)]);
+    ConvertIntToDecimalStringN(gStringVar2, sAlchemyRecipes[recipe].givenCharges, STR_CONV_MODE_LEFT_ALIGN, 4);
+    currentExp += sAlchemyRecipes[recipe].expGiven;
+    ConvertIntToDecimalStringN(gStringVar3, sAlchemyRecipes[recipe].expGiven, STR_CONV_MODE_LEFT_ALIGN, 3);
+    VarSet(VAR_RYU_ALCHEMY_EXP, currentExp);
+    return recipe;
+}
+
+void RyuDebug_CheckAlchemyStatus(void)
+{
+    ConvertIntToDecimalStringN(gStringVar1, gSaveBlock2Ptr->alchemyEffect, STR_CONV_MODE_LEFT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar2, gSaveBlock2Ptr->hasAlchemyEffectActive, STR_CONV_MODE_LEFT_ALIGN, 1);
+    ConvertIntToDecimalStringN(gStringVar3, gSaveBlock2Ptr->alchemyCharges, STR_CONV_MODE_LEFT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gRyuStringVar1, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
+    ConvertIntToDecimalStringN(gRyuStringVar2, VarGet(VAR_RYU_ALCHEMY_EXP), STR_CONV_MODE_LEFT_ALIGN, 5);
+}
+
+
+int RyuGetPartnerCount(void)//also gives partner based achievements.
+{
+    u16 partners = 0;
+
+    if ((FlagGet(FLAG_RYU_DS_DAWN_PARTNERS) == 1) || (FlagGet(FLAG_RYU_DS_BRENDAN_PARTNERS) == 1))
+    {
+        partners++;
+        GiveAchievement(ACH_CHILDHOOD_FRIEND);
+    }
+
+    if (FlagGet(FLAG_RYU_DS_LANETTE_PARTNERS) == 1)
+    {
+        partners++;
+        GiveAchievement(ACH_NERD_LOVE);
+    }
+
+    if (FlagGet(FLAG_RYU_DS_LEAF_PARTNERS) == 1)
+    {
+        partners++;
+        GiveAchievement(ACH_SILENT_STRONG_TYPE);
+    }
+
+    if (FlagGet(FLAG_RYU_DS_SHELLY_PARTNERS) == 1)
+    {
+        partners++;
+        GiveAchievement(ACH_WET_N_WILD);
+    }
+
+    if (FlagGet(FLAG_RYU_DS_JOY_PARTNERS) == 1)
+    {
+        partners++;
+        GiveAchievement(ACH_FWB);
+    }
+
+    if ((partners == 5) && (FlagGet(FLAG_RYU_FIRST_GAME_CLEAR) == 1))
+    {
+        GiveAchievement(ACH_TRUE_ENDING);
+        VarSet(VAR_RYU_PARTNER_COUNT, partners);
+    }
+
+    return partners;
+}
+
+extern const u8 *gOriginalNPCScript;
+extern u8 RyuOutcastsSpecialQuestIntro[];
+
+void RyuSummonOriginalNPCscript(void)
+{
+    const u8 *script = NULL;
+    u8 factionId = (VarGet(VAR_TEMP_9));
+    if (factionId == FACTION_OUTCASTS && gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] >= 175)
+    {
+        script = RyuOutcastsSpecialQuestIntro;
+    }
+    else
+    {
+        script = GetRamScript(gSpecialVar_LastTalked, gOriginalNPCScript);
+    }
+    ScriptContext1_SetupScript(script);
+}
+
+void RyuFixCorruptedBoxMons(void)
+{
+    ZeroBoxMonAt(2, 5);
+    ZeroBoxMonAt(2, 6);
 }

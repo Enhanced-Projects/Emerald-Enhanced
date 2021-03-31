@@ -107,6 +107,7 @@ static bool8 StartMenuPokedexCallback(void);
 static bool8 StartMenuPokemonCallback(void);
 static bool8 StartMenuBagCallback(void);
 static bool8 StartMenuPokeNavCallback(void);
+static bool8 StartMenuJournalCallback(void);
 static bool8 StartMenuPlayerNameCallback(void);
 static bool8 StartMenuSaveCallback(void);
 static bool8 StartMenuOptionCallback(void);
@@ -173,7 +174,7 @@ static const struct MenuAction sStartMenuItems[] =
     {gText_MenuPokemon, {.u8_void = StartMenuPokemonCallback}},
     {gText_MenuBag, {.u8_void = StartMenuBagCallback}},
     {gText_MenuPokenav, {.u8_void = StartMenuPokeNavCallback}},
-    {gText_MenuPlayer, {.u8_void = StartMenuPlayerNameCallback}},
+    {gText_MenuJournal, {.u8_void = StartMenuJournalCallback}},
     {gText_MenuSave, {.u8_void = StartMenuSaveCallback}},
     {gText_MenuOption, {.u8_void = StartMenuOptionCallback}},
     {gText_MenuExit, {.u8_void = StartMenuExitCallback}},
@@ -544,11 +545,13 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
 
     do
     {
+        /*
         if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void == StartMenuPlayerNameCallback)
         {
             PrintPlayerNameOnWindow(GetStartMenuWindowId(), sStartMenuItems[sCurrentStartMenuActions[index]].text, 8, (index << 4) + 9);
         }
         else
+        */
         {
             StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
             AddTextPrinterParameterized(GetStartMenuWindowId(), 1, gStringVar4, 8, (index << 4) + 9, 0xFF, NULL);
@@ -994,7 +997,19 @@ void RyuDoOneTImeSaveFixes(void)
 {
     if (FlagGet(FLAG_HIDE_ALL_KECLEON_OWS) == 0)
         FlagSet(FLAG_HIDE_ALL_KECLEON_OWS);
+
+    if (FlagGet(FLAG_RYU_GAME_OVER) == FALSE)// makes sure game over works for everyone, including people who keep save.
+        {
+            if (FlagGet(FLAG_RYU_PLAYER_HELPING_DEVON) == TRUE)
+                VarSet(VAR_RYU_QUESTLINE_ID, 0);
+            else if (FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA) == TRUE)
+                VarSet(VAR_RYU_QUESTLINE_ID, 1);
+            else if (FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA) == TRUE)
+                VarSet(VAR_RYU_QUESTLINE_ID, 2);
+        }
 }
+
+extern int RyuGetTotalCaughtMons();
 
 static void CreateStartMenuTask(TaskFunc followupFunc)
 {
@@ -1011,6 +1026,9 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
     VarSet(VAR_RYU_SAVE_VIEWER_ENTRYPOINT, 45454);
     FlagSet(FLAG_SYS_MYSTERY_GIFT_ENABLE);
     RyuDoOneTImeSaveFixes(); //this should let me put in one time use fixes for various quest things
+    if (CheckAchievement(ACH_POKEMON_MASTER) == FALSE)
+        if (RyuGetTotalCaughtMons() >= 386)
+            GiveAchievement(ACH_POKEMON_MASTER);
 }
 
 static bool8 FieldCB_ReturnToFieldStartMenu(void)
@@ -1325,6 +1343,19 @@ static bool8 StartMenuPokeNavCallback(void)
 
     return FALSE;
 }
+void CB2_OpenJournal(void);
+static bool8 StartMenuJournalCallback(void)
+{
+    if (!gPaletteFade.active)
+    {
+        PlayRainStoppingSoundEffect();
+        RemoveExtraStartMenuWindows();
+        CleanupOverworldWindowsAndTilemaps();
+        SetMainCallback2(CB2_OpenJournal);
+    }
+    return FALSE;
+}
+
 
 static bool8 StartMenuPlayerNameCallback(void)
 {

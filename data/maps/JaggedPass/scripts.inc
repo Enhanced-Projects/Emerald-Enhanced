@@ -18,6 +18,7 @@ JaggedPass_EventScript_CheckHasMagmaEmblem:: @ 8230674
 	return
 
 JaggedPass_EventScript_SetReadyToOpenHideout:: @ 8230685
+	goto_if_set FLAG_RYU_GAME_OVER, ryu_end
 	setvar VAR_JAGGED_PASS_STATE, 1
 	return
 
@@ -37,12 +38,19 @@ JaggedPass_OnLoad: @ 823069C
 	end
 
 JaggedPass_EventScript_ConcealHideoutEntrance:: @ 82306A8
+	call_if_set FLAG_RYU_PLAYER_HELPING_AQUA, JP_checkStage
 	setmetatile 16, 17, METATILE_Lavaridge_RockWall, 1
 	setmetatile 16, 18, METATILE_Lavaridge_RockWall, 1
 	end
 
+JP_checkStage::
+	goto_if_set FLAG_RYU_PLAYER_SENT_TO_JP_BY_SHELLY, ryu_end
+	goto_if_set FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
+	return
+
 JaggedPass_EventScript_OpenMagmaHideout:: @ 82306BB
 	lockall
+	goto_if_set FLAG_RYU_PLAYER_SENT_TO_JP_BY_SHELLY, ryu_end
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
 	setvar VAR_0x8006, 8  @ num shakes
