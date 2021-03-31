@@ -1,0 +1,116 @@
+raw `
+Route124_DivingTreasureHuntersHouse_MapScripts:: @ 8270A28
+	map_script ON_TRANSITION, Route124_DivingTreasureHuntersHouse_OnTransition
+	.byte 0
+
+Route124_DivingTreasureHuntersHouse_OnTransition: @ 8270A2E
+	setflag FLAG_LANDMARK_HUNTERS_HOUSE
+	call RyuCheckForLNSUAch
+	end
+
+Route124_DivingTreasureHuntersHouse_EventScript_TreasureHunter:: @ 8270A32
+	lock
+	faceplayer
+	goto_if_set FLAG_MET_DIVING_TREASURE_HUNTER, Route124_DivingTreasureHuntersHouse_EventScript_SkipGreeting
+	msgbox Route124_DivingTreasureHuntersHouse_Text_Greeting, MSGBOX_DEFAULT
+	setflag FLAG_MET_DIVING_TREASURE_HUNTER
+	goto Route124_DivingTreasureHuntersHouse_EventScript_SkipGreeting
+	end
+
+Route124_DivingTreasureHuntersHouse_EventScript_SkipGreeting:: @ 8270A4E
+	msgbox Route124_DivingTreasureHuntersHouse_Text_HaveYouSeenAnyShards, MSGBOX_DEFAULT
+	goto Route124_DivingTreasureHuntersHouse_EventScript_ShardOptionsRYBG
+	end
+	
+Route124_DivingTreasureHuntersHouse_EventScript_ShardTradeBoard:: @ 8270F63
+	msgbox Route124_DivingTreasureHuntersHouse_Text_ShardTradeBoard, MSGBOX_SIGN
+	end
+
+Route124_DivingTreasureHuntersHouse_EventScript_ShardOptionsRYBG:: @ 8270E3D
+	multichoice 0, 0, MULTI_SHARDS_RYBG, 0
+	switch VAR_RESULT
+	case 0, R124_TradeRedShard
+	case 1, R124_TradeYellowShard
+	case 2, R124_TradeBlueShard
+	case 3, R124_TradeGreenShard
+	case 4, R124_DeclineTrade
+	goto R124_DeclineTrade
+	end
+	
+R124_TradeRedShard::
+	checkitem ITEM_RED_SHARD, 2
+	compare VAR_RESULT, 1
+	goto_if_ne R124_NotEnoughOfThisShard
+	removeitem ITEM_RED_SHARD, 2
+	additem ITEM_FIRE_STONE
+	msgbox R124_Success
+	release
+	end
+	
+R124_TradeYellowShard::
+    checkitem ITEM_YELLOW_SHARD, 2
+	compare VAR_RESULT, 1
+	goto_if_ne R124_NotEnoughOfThisShard
+	removeitem ITEM_YELLOW_SHARD, 2
+	additem ITEM_THUNDER_STONE
+	msgbox R124_Success
+	release
+	end
+R124_TradeBlueShard::
+	checkitem ITEM_BLUE_SHARD, 2
+	compare VAR_RESULT, 1
+	goto_if_ne R124_NotEnoughOfThisShard
+	removeitem ITEM_BLUE_SHARD, 2
+	additem ITEM_WATER_STONE
+	msgbox R124_Success
+	release
+	end
+R124_TradeGreenShard::
+	checkitem ITEM_GREEN_SHARD, 2
+	compare VAR_RESULT, 1
+	goto_if_ne R124_NotEnoughOfThisShard
+	removeitem ITEM_GREEN_SHARD, 2
+	additem ITEM_LEAF_STONE
+	msgbox R124_Success
+	release
+	end
+	
+R124_DeclineTrade::
+	msgbox R124_declined
+	release
+	end
+	
+R124_NotEnoughOfThisShard::
+	msgbox R124_NotEnoughMsg
+	release
+	end
+	
+R124_Success:
+	.string "Here you go, friend!\nEnjoy your stone!$"
+
+R124_declined:
+	.string "Aw, bummer. Well, come back\nif you change your mind!$"
+	
+R124_NotEnoughMsg:
+	.string "Bro, I need at least two\nshards of that type,\lotherwise it's not a fair trade!$"
+	
+Route124_DivingTreasureHuntersHouse_Text_HaveYouSeenAnyShards: @ 8270FE5
+	.string "Tell me, have you seen any shards of\n"
+	.string "tools made in ancient times?$"
+	
+Route124_DivingTreasureHuntersHouse_Text_Greeting: @ 8270F6C
+	.string "I'm the diving treasure hunter!\p"
+	.string "I'm the awesome dude who makes\n"
+	.string "deep-sea dives to gather treasures\l"
+	.string "resting at the bottom.$"
+
+Route124_DivingTreasureHuntersHouse_Text_ShardTradeBoard: @ 8271217
+	.string "{CLEAR_TO 0x0a}Wanted item{CLEAR_TO 0x7c}Trade item\n"
+	.string "{CLEAR_TO 0x09}2x Red Shard{CLEAR_TO 0x59}{LEFT_ARROW}{RIGHT_ARROW}{CLEAR_TO 0x7b}FIRE STONE{CLEAR_TO 0xc8}\p"
+	.string "{CLEAR_TO 0x0a}Wanted item{CLEAR_TO 0x7c}Trade item\n"
+	.string "{CLEAR_TO 0x02}2x Yellow Shard{CLEAR_TO 0x59}{LEFT_ARROW}{RIGHT_ARROW}{CLEAR_TO 0x73}THUNDERSTONE{CLEAR_TO 0xc8}\p"
+	.string "{CLEAR_TO 0x0a}Wanted item{CLEAR_TO 0x7c}Trade item\n"
+	.string "{CLEAR_TO 0x09}2x Blue Shard{CLEAR_TO 0x59}{LEFT_ARROW}{RIGHT_ARROW}{CLEAR_TO 0x79}WATER STONE{CLEAR_TO 0xc8}\p"
+	.string "{CLEAR_TO 0x0a}Wanted item{CLEAR_TO 0x7c}Trade item\n"
+	.string "{CLEAR_TO 0x04}2x Green Shard{CLEAR_TO 0x59}{LEFT_ARROW}{RIGHT_ARROW}{CLEAR_TO 0x7b}LEAF STONE$"
+`

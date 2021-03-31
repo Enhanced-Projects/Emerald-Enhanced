@@ -1,2 +1,0 @@
-CaveOfOrigin_B1F_MapScripts:: @ 82357A8
-	.byte 0

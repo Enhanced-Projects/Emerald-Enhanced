@@ -1,0 +1,467 @@
+raw `
+MossdeepCity_MapScripts:: @ 81E4A96
+	map_script ON_TRANSITION, MossdeepCity_OnTransition
+	map_script ON_FRAME, MDC_OnFrameScripts
+	map_script ON_WARP, SFC_OnWarp
+	.byte 0
+
+MossdeepCity_OnTransition: @ 81E4A9C
+	setflag FLAG_VISITED_MOSSDEEP_CITY
+	call RyuCheckForWellTravelledAch
+	end
+
+MDC_OnFrameScripts::
+	map_script_2 VAR_RYU_AQUA, 114, MDC_DoMossDeepScene2
+	map_script_2 VAR_RYU_AQUA, 122, MDC_ScenePart4
+	map_script_2 VAR_RYU_AQUA, 128, MDC_ScenePart6
+	map_script_2 VAR_RYU_AQUA, 150, MDC_FinalScene
+	map_script_2 VAR_RYU_AQUA, 149, MDC_DoFinalShellyScene
+	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
+	.2byte 0
+
+MossdeepCity_EventScript_PokefanF:: @ 81E4AB2
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_TM58, MossdeepCity_EventScript_PokefanFMagmaGone
+	msgbox MossdeepCity_Text_SpaceCenterReceivedLetter, MSGBOX_DEFAULT
+	release
+	end
+
+MossdeepCity_EventScript_PokefanFMagmaGone:: @ 81E4AC7
+	msgbox MossdeepCity_Text_SpaceCenterLaunchingRockets, MSGBOX_DEFAULT
+	release
+	end
+
+MossdeepCity_EventScript_Sailor:: @ 81E4AD1
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_TM58, MossdeepCity_EventScript_SailorMagmaGone
+	msgbox MossdeepCity_Text_MossdeepTargetedByMagma, MSGBOX_DEFAULT
+	release
+	end
+
+MossdeepCity_EventScript_SailorMagmaGone:: @ 81E4AE6
+	msgbox MossdeepCity_Text_FeelReliefOnLand, MSGBOX_DEFAULT
+	release
+	end
+
+MossdeepCity_EventScript_NinjaBoy:: @ 81E4AF0
+	msgbox MossdeepCity_Text_WailmerWatching, MSGBOX_NPC
+	end
+
+MossdeepCity_EventScript_ExpertM:: @ 81E4AF9
+	msgbox MossdeepCity_Text_LifeNeedsSeaToLive, MSGBOX_NPC
+	end
+
+MossdeepCity_EventScript_Girl:: @ 81E4B02
+	msgbox MossdeepCity_Text_NiceIfWorldCoveredByFlowers, MSGBOX_NPC
+	end
+
+MossdeepCity_EventScript_Woman:: @ 81E4B0B
+	msgbox MossdeepCity_Text_SpecialSpaceCenterRock, MSGBOX_NPC
+	end
+
+MossdeepCity_EventScript_WhiteRock:: @ 81E4B14
+	msgbox MossdeepCity_Text_ItsAWhiteRock, MSGBOX_SIGN
+	end
+
+MossdeepCity_EventScript_GymSign:: @ 81E4B1D
+	msgbox MossdeepCity_Text_GymSign, MSGBOX_SIGN
+	end
+
+MossdeepCity_EventScript_CitySign:: @ 81E4B26
+	msgbox MossdeepCity_Text_CitySign, MSGBOX_SIGN
+	end
+
+MossdeepCity_EventScript_SpaceCenterSign:: @ 81E4B2F
+	msgbox MossdeepCity_Text_SpaceCenterSign, MSGBOX_SIGN
+	end
+
+MossdeepCity_EventScript_VisitedMossdeep:: @ 81E4B38
+	setflag FLAG_VISITED_MOSSDEEP_CITY
+	call RyuCheckForWellTravelledAch
+	setvar VAR_TEMP_5, 1
+	end
+
+MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter:: @ 81E4B41
+	end
+
+
+MossdeepCity_EventScript_Man:: @ 81E4C10
+	lock
+	faceplayer
+	msgbox MossdeepCity_Text_SurfExhilarating, MSGBOX_DEFAULT
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+MossdeepCity_EventScript_KingsRockBoy:: @ 81E4C26
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_KINGS_ROCK, MossdeepCity_EventScript_ReceivedKingsRock
+	msgbox MossdeepCity_Text_WantKingsRockStevenGaveMe, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq MossdeepCity_EventScript_DeclineKingsRock
+	msgbox MossdeepCity_Text_YouCanKeepIt, MSGBOX_DEFAULT
+	additem ITEM_KINGS_ROCK
+	compare VAR_RESULT, FALSE
+	goto_if_eq Common_EventScript_ShowBagIsFull
+	setflag FLAG_RECEIVED_KINGS_ROCK
+	release
+	end
+
+MossdeepCity_EventScript_ReceivedKingsRock:: @ 81E4C68
+	msgbox MossdeepCity_Text_StevensHouseOverThere, MSGBOX_DEFAULT
+	release
+	end
+
+MossdeepCity_EventScript_DeclineKingsRock:: @ 81E4C72
+	msgbox MossdeepCity_Text_WhatToDoWithWeirdRock, MSGBOX_DEFAULT
+	release
+	end
+
+MossdeepCity_EventScript_BlackBelt:: @ 81E4C7C
+	msgbox MossdeepCity_Text_SootopolisNewGymLeader, MSGBOX_NPC
+	end
+
+MossdeepCity_Text_WantKingsRockStevenGaveMe: @ 81E4CED
+	.string "I got this from Steven, but I don't\n"
+	.string "know what it's good for.\p"
+	.string "I think it's called King's Rock.\n"
+	.string "Do you want it?$"
+
+MossdeepCity_Text_YouCanKeepIt: @ 81E4D5B
+	.string "Why would you want it?\n"
+	.string "You're weird.\p"
+	.string "You can keep it, but keep it a secret\n"
+	.string "from Steven.$"
+
+MossdeepCity_Text_StevensHouseOverThere: @ 81E4DB3
+	.string "Steven's house is right over there!$"
+
+MossdeepCity_Text_WhatToDoWithWeirdRock: @ 81E4DD7
+	.string "Yeah, you think so, too! What are you\n"
+	.string "supposed to do with some weird rock?$"
+
+MossdeepCity_Text_WailmerWatching: @ 81E4E22
+	.string "Around Mossdeep, you can see wild\n"
+	.string "Wailmer.\p"
+	.string "It's called, uh…\n"
+	.string "What was it now…\p"
+	.string "Wai, Wai, Wai…\p"
+	.string "Wailmer watching!$"
+
+MossdeepCity_Text_SpaceCenterReceivedLetter: @ 81E4E90
+	.string "The island's Space Center has been\n"
+	.string "launching huge rockets.\p"
+	.string "There's been some kind of an uproar\n"
+	.string "over a letter they received recently.$"
+
+MossdeepCity_Text_SpaceCenterLaunchingRockets: @ 81E4F15
+	.string "The island's Space Center has been\n"
+	.string "launching huge rockets.$"
+
+MossdeepCity_Text_MossdeepTargetedByMagma: @ 81E4F50
+	.string "I heard from a Sailor buddy that\n"
+	.string "Team Aqua set up shop in Lilycove.\p"
+	.string "I also heard that someone came along\n"
+	.string "and wiped the floor with them!\p"
+	.string "But Mossdeep here's been targeted\n"
+	.string "by that Team Magma.\p"
+	.string "If you want to know what they're up to,\n"
+	.string "go visit the Space Center.$"
+
+MossdeepCity_Text_FeelReliefOnLand: @ 81E5051
+	.string "I'm a Sailor, so the sea's obviously\n"
+	.string "more important to me.\p"
+	.string "But you know? When I get back on land\n"
+	.string "after a long voyage, I do feel relief!$"
+
+MossdeepCity_Text_NiceIfWorldCoveredByFlowers: @ 81E50D9
+	.string "Wouldn't it be nice?\p"
+	.string "If the whole world was covered in\n"
+	.string "plants and flowers like this island?$"
+
+MossdeepCity_Text_LifeNeedsSeaToLive: @ 81E5135
+	.string "All life needs the sea to live, even\n"
+	.string "though it makes its home on the land.\p"
+	.string "Life, having run its course, becomes\n"
+	.string "soil and returns to the land.\p"
+	.string "And the sea is always connected to\n"
+	.string "the land.\p"
+	.string "Yes, like the very shoreline here.$"
+
+MossdeepCity_Text_SurfExhilarating: @ 81E5213
+	.string "A voyage on a ship is fine.\p"
+	.string "But crossing the sea with Pokémon\n"
+	.string "using Surf…\p"
+	.string "Now that's an exhilarating trip!\n"
+	.string "Wouldn't you agree, youngster?$"
+
+MossdeepCity_Text_SpecialSpaceCenterRock: @ 81E529D
+	.string "This rock has a special meaning to\n"
+	.string "the people at the Space Center.\p"
+	.string "They put it here as their wish for\n"
+	.string "their rockets to fly safely.\p"
+	.string "When you make a wish, what do you use?\n"
+	.string "Do you wish upon a star?\p"
+	.string "I use a wish tag to make it happen.\n"
+	.string "That's what I do.$"
+
+MossdeepCity_Text_ItsAWhiteRock: @ 81E5396
+	.string "It's a white rock.$"
+
+MossdeepCity_Text_GymSign: @ 81E53A9
+	.string "Mossdeep City Pokémon Gym\n"
+	.string "Leaders: Liza & Tate\p"
+	.string "“The mystic combination!”$"
+
+MossdeepCity_Text_CitySign: @ 81E53F2
+	.string "Mossdeep City\n"
+	.string "“Our slogan: Cherish Pokémon!”$"
+
+MossdeepCity_Text_SpaceCenterSign: @ 81E541F
+	.string "Mossdeep Space Center\n"
+	.string "“The closest place to space.”$"
+
+MossdeepCity_Text_SootopolisNewGymLeader: @ 81E5581
+	.string "Ahh… It feels great letting the waves\n"
+	.string "wash over my feet…\p"
+	.string "Speaking of the waves, you know that\n"
+	.string "island city Sootopolis?\p"
+	.string "I think the Gym there had a new\n"
+	.string "Leader come in.\p"
+	.string "People tell me the new Leader once\n"
+	.string "mentored Wallace.$"
+
+@==================================================================================================Aqua
+
+DoMattScene::
+	compare VAR_RYU_AQUA, 112
+	goto_if_eq ryu_end
+	setvar VAR_RYU_AQUA, 112 @Player met with matt in mossdeep
+	lockall
+	faceplayer
+	msgbox MDC_ItsAlmostTime
+	closemessage
+	warpsilent MAP_SEAFLOOR_CAVERN_ROOM9, 255, 17, 44
+	waitstate
+
+MDC_DoMossDeepScene2::
+	applymovement OBJ_EVENT_ID_PLAYER, FarawayIsland_Interior_Movement_MewAppear
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	fadenewbgm MUS_OOAME
+	delay 60
+	setvar VAR_RYU_AQUA, 116
+	setweather WEATHER_RAIN_THUNDERSTORM
+	doweather
+	delay 60
+	playse SE_PIN
+	applymovement 12, Common_Movement_ExclamationMark
+	waitmovement 12
+	pokenavcall MDC_MattReceivesCall
+	waitmessage
+	msgbox MDC_ThisIsntGood
+	warpsilent MAP_STORY_MAP_KYOGRE_CHASE, 255, 65, 10
+	waitstate
+
+MDC_ScenePart4::
+	applymovement OBJ_EVENT_ID_PLAYER, FarawayIsland_Interior_Movement_MewAppear
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setvar VAR_RYU_AQUA, 122 @player watched the 4th part of the aqua cutscene
+	msgbox MDC_BossShelly
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MDC_RedOrbStartsToGlow
+	call SCME_BlueOrbEffect
+	closemessage
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1
+	warpsilent MAP_MAGMA_HIDEOUT_4F, 255, 16, 12
+	waitstate
+
+MDC_ScenePart6::
+	applymovement OBJ_EVENT_ID_PLAYER, FarawayIsland_Interior_Movement_MewAppear
+	waitmovement OBJ_EVENT_ID_PLAYER
+	fadenewbgm MUS_HIDERI
+	delay 60
+	setweather WEATHER_DROUGHT
+	doweather
+	delay 60
+	setvar VAR_RYU_AQUA, 130 @scene returned to player after watching kyogre and groudon
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MDC_TheSun
+	closemessage
+	addobject 13
+	applymovement 13, MDC_MaxieToPlayer @5 up
+	waitmovement 13
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox MDC_BearerOfRed
+	closemessage
+	giveitem ITEM_MASTER_BALL, 1
+	msgbox MDC_KyogreIs
+	clearflag FLAG_RYU_KYOGRE
+	closemessage
+	release
+	end
+
+MDC_FinalScene:
+	lockall
+	addobject 13
+	applymovement 13, MDC_MaxieToPlayer
+	waitmovement 13
+	applymovement 12, Common_Movement_FaceDown
+	waitmovement 12
+	msgbox MDC_SoWeManaged
+	closemessage
+	applymovement 13, Common_Movement_FaceUp
+	waitmovement 13
+	msgbox MDC_FoolsTheLot
+	closemessage
+	delay 20
+	applymovement 13, Common_Movement_FaceDown
+	waitmovement 13
+	msgbox MDC_AlthoughICant
+	closemessage
+	applymovement 13, Common_Movement_FaceUp
+	waitmovement 13
+	msgbox MDC_YouWereHis
+	closemessage
+	applymovement 12, Common_Movement_FaceDown
+	waitmovement 12
+	msgbox MDC_InChargeOfWhat
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject 13
+	delay 40
+	fadescreen FADE_FROM_BLACK
+	addobject 14
+	addobject 15
+	applymovement 14, MDC_DevonGuy2ToMatt
+	applymovement 15, MDC_DevonGuy1ToMatt
+	waitmovement 14
+	msgbox MDC_OverThereSieze
+	closemessage
+	setvar VAR_RYU_AQUA, 160 @Player finished the Non-Romance aqua line. Neutral End (Aqua disbanded)
+	setflag FLAG_RYU_HIDE_AQUA_OFFICE_AQUA
+	setflag FLAG_HIDE_AQUAHQ_SHELLY
+	setflag FLAG_RYU_AQUA_LINE_DONE
+	setflag FLAG_RYU_HIDE_MOSSDEEP_MATT
+	ach give ACH_WATER_LOGGED
+	warpsilent MAP_LILYCOVE_CITY, 255, 48, 9 
+	waitstate
+
+MDC_DoFinalShellyScene::
+	setvar VAR_RYU_AQUA, 153 @rain stopped in mossdeep, return to submarine
+	setweather WEATHER_NONE
+	doweather
+	delay 240
+	playse SE_PIN
+	applymovement 12, Common_Movement_ExclamationMark
+	waitmovement 12
+	delay 30
+	msgbox MDC_ItStopped
+	closemessage
+	pokenavcall MDC_ArchieItsMatt
+	waitmessage
+	warpsilent MAP_AQUA_SUBMARINE, 255, 3, 18
+	waitstate
+
+MDC_ItStopped:
+	.string "It... stopped?$"
+
+MDC_ArchieItsMatt:
+	.string "Archie... Yes, this is Matt...$"
+
+
+MDC_ThisIsntGood:
+	.string "This isn't good...$"
+
+MDC_ItsAlmostTime:
+	.string "It's almost time...$"
+
+MDC_MattReceivesCall:
+	.string "Matt: Yes, boss, it's raining,\nbut hard.\p... ... ... ...\pThat's what I'm trying to\ntell you!\pIt's way more than we expected!$"
+
+MDC_BossShelly:
+	.string "The line went dead! I can't reach\n"
+	.string "them!\p"
+	.string "Boss! Shelly!\p"
+    .string "I don't believe it...they're...!$"
+
+MDC_RedOrbStartsToGlow:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You feel a surge of power from\n your backpack.)$"
+
+MDC_TheSun:
+	.string "The sun...!\n"
+    .string "This is Groudon's...but how?$"
+
+MDC_BearerOfRed:
+	.string "Bearer of the Red Orb.\n"
+    .string "I suggest we take the opportunity\l"
+    .string "and defeat Kyogre.\p"
+    .string "Take this.$"
+
+MDC_KyogreIs:
+	.string "Kyogre must still be somewhere on\p"
+    .string "Route 130.\n"
+    .string "Go now!$"
+
+MDC_SoWeManaged:
+	.string "So, we managed to avoid complete\n"
+    .string "disaster after all...\p"
+    .string "Archie, Shelly...Team Aqua...$"
+
+MDC_FoolsTheLot:
+	.string "Fools, the lot of you.\n"
+    .string "What did you hope to achieve?$"
+
+MDC_AlthoughICant:
+	.string "Although I can't go off and pretend I\n"
+    .string "wasn't doing something similar.$"
+
+MDC_YouWereHis:
+	.string "You were his number 2...in effect,\n"
+    .string "you're in charge now.$"
+
+MDC_InChargeOfWhat:
+	.string "'In charge'...of what, exactly?\n"
+    .string "Team Aqua is no more...\p"
+    .string "... ... ...$"
+
+MDC_OverThereSieze:
+	.string "Over there, seize that Aqua!$"
+
+MDC_MaxieToPlayer:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+MDC_DevonGuy1ToMatt:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+MDC_DevonGuy2ToMatt:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	face_left
+	step_end
+`

@@ -1,0 +1,537 @@
+raw `
+LittlerootTown_DawnsHouse_2F_MapScripts:: @ 81F83E3
+	map_script ON_FRAME, GameIntroSequenceCheck
+	.byte 0
+
+LRT_DawnAfterLilycoveSequence:: @ 81F951D
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
+	compare VAR_LITTLEROOT_INTRO_STATE, 6
+	goto_if_eq LRT_DawnIntroductionScene
+	lock
+	faceplayer
+	goto_if_set FLAG_RYU_DS_DAWN_LOVERS, LRT_NIGHT2
+	goto_if_set FLAG_RYU_DS_DAWN_ACQ, LRT_FZ
+	msgbox LRT_DAWN_SORRYKISSED, MSGBOX_DEFAULT
+	msgbox LRT_DAWN_KISS, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq LRT_WONT_HAPPEN
+    setflag	FLAG_RYU_DS_DAWN_CLOSEFRIENDS
+	msgbox LRT_HAPPY, MSGBOX_DEFAULT
+	goto LRT_NIGHT
+	release
+	end
+
+LRT_WONT_HAPPEN::
+	setflag FLAG_RYU_DAWN_GIFTPOKE_RECEIVED @Makes it impossible to get the sneasel after this event.
+    msgbox LRT_SORRY, MSGBOX_DEFAULT
+	setflag FLAG_RYU_DS_DAWN_ACQ @0x4A3
+	msgbox LRT_BADEND, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER LRT_TURN
+	waitmovement 0
+	release
+	end
+
+LRT_NIGHT::
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGNIGHTDAWN
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
+    msgbox LRT_STAY, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_ne LRT_CANCEL
+	msgbox LRT_ROMPre MSGBOX_DEFAULT
+ 	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	applymovement 2, Common_Movement_HeartEmote
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
+	waitmovement 0
+	applymovement 2 LRT_HEART2
+	applymovement OBJ_EVENT_ID_PLAYER LRT_HEART
+	fadescreen FADE_TO_BLACK
+	delay 20
+	fadeoutbgm 1
+	special HealPlayerParty
+	delay 20
+	setobjectxy 2, 8, 2
+	msgbox LRT_ROM, MSGBOX_DEFAULT
+	fadescreen 0
+	fadeinbgm 1
+	msgbox LRT_DAWN_THANKS, MSGBOX_DEFAULT
+	setflag FLAG_RYU_DS_DAWN_LOVERS
+	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER LRT_HEART3
+	waitmovement 0
+	release
+	end
+
+LRT_NIGHT2::
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGNIGHTDAWN
+    msgbox LRT_STAY2, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_ne LRT_CANCEL
+	msgbox LRT_ROM2Pre MSGBOX_DEFAULT
+	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	delay 10
+	applymovement 2, Common_Movement_HeartEmote
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_HeartEmote
+	waitmovement 0
+	applymovement 2, LRT_HEART2
+	applymovement OBJ_EVENT_ID_PLAYER, LRT_HEART
+	delay 20
+	fadescreen FADE_TO_BLACK
+	fadeoutbgm 1
+	special HealPlayerParty
+	delay 20
+	msgbox LRT_ROM2, MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_RYU_DS_DAWN_PARTNERS
+	setflag FLAG_RYU_DS_HAS_PARTNER
+	ach give ACH_CHILDHOOD_FRIEND
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGNIGHTDAWN
+	fadeinbgm 1
+	msgbox LRT_DAWN_THANKS2 MSGBOX_DEFAULT
+	closemessage
+	clearfullscreenimage
+	setobjectxy 2, 8, 2
+	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
+	fadescreen FADE_FROM_BLACK
+	applymovement OBJ_EVENT_ID_PLAYER LRT_HEART3
+	waitmovement 0
+	release
+	end
+
+LRT_CANCEL::
+	msgbox FollowerDawnQuery, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq FollowerDawnSetup
+    msgbox LRT_DISPT MSGBOX_DEFAULT
+	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	release
+	end
+
+LRT_FZ::
+	call LRT_DH_CheckDawnSneasel
+    msgbox LRT_DS_FZ_DAWN MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+FollowerDawnQuery:
+    .string "I'd really like to get out for a\n"
+    .string "while.\pOoh! did you come to get me?$"
+
+LRT_BADEND:
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You see sadness and disappointment in\n"
+	.string "her eyes as you turn away...)$"
+
+LRT_DAWN_KISS:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Did my kiss bother you? It just\n"
+	.string "felt right at the time...$"
+
+LRT_DISPT:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She looks a little disappointed.)$"
+
+LRT_ROMPre:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Sorry, my bed might be a little small...$"
+	
+LRT_ROM:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {RIVAL}{COLOR LIGHT_GREEN}{SHADOW GREEN} cuddled together\n"
+	.string " and then enjoyed a long night's rest.)$"
+	
+LRT_ROM2Pre:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}It's so nice, snuggling with you,\n"
+	.string "forgetting everything else.\p"
+	.string "It always calms me down, no matter\n"
+	.string "how much stress I have.$"
+
+LRT_ROM2:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and {RIVAL}{COLOR LIGHT_GREEN}{SHADOW GREEN} deviously cuddle\n"
+	.string " together for another night.)$"
+
+LRT_DS_FZ_DAWN:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, hi, {PLAYER}. What are you\n"
+	.string "up to today?$"
+
+LRT_HAPPY:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Oh, {PLAYER}, what am I going\n"
+	.string "to do with you.\p"
+	.string "I'm glad you're not\n"
+	.string "mad at me.$" 
+
+LRT_STAY:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}So, {PLAYER}, did you want to stay the\n"
+	.string "night with me?$"
+
+LRT_STAY2:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Did you come to stay\n"
+    .string "the night with me again?$"
+
+LRT_SORRY:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I'm sorry {PLAYER}, I thought you\n"
+	.string "liked me. It won't happen again.$"
+
+LRT_DAWN_SORRYKISSED:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}!\p"
+	.string "I'm sorry I kissed you.$"
+
+LRT_DAWN_THANKS:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I've never slept so good in my\n"
+	.string "life. Thanks for spending the night\l"
+	.string "with me.$"
+
+LRT_DAWN_THANKS2:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Thanks for staying with me for another\n"
+	.string "night. You might get me addicted...\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She gives a sheepish smile)$"
+
+LRT_HEART:
+	walk_down
+	walk_left
+	walk_down
+	walk_right
+	step_end
+
+LRT_HEART2:
+	walk_down
+	walk_down
+	walk_left
+	step_end
+
+LRT_HEART3:
+	walk_left
+	walk_left
+	face_right
+	delay_16
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	step_end
+
+LRT_TURN:
+    walk_left
+	step_end
+
+EventScript_PlayerPCFemale:: @ 81F9553
+	lockall
+	checkplayergender
+	compare VAR_RESULT, MALE
+	goto_if_eq LittlerootTown_DawnsHouse_2F_EventScript_1F956C
+	compare VAR_RESULT, FEMALE
+	goto_if_eq LittlerootTown_DawnsHouse_2F_EventScript_1F9576
+	end
+
+LRT_PlayerPC:: @ 81F9576
+	setvar VAR_0x8004, 2
+	special DoPCTurnOnEffect
+	playse SE_PC_ON
+	msgbox gUnknown_08272D87, MSGBOX_DEFAULT
+	special BedroomPC
+	waitstate
+	releaseall
+	end
+
+LRT_PlayerPC2:: @ 81F958F
+	setvar VAR_0x8004, 2
+	playse SE_PC_OFF
+	special DoPCTurnOffEffect
+	releaseall
+	end
+	
+	
+LRT_DawnIntroductionScene::
+	lock
+	faceplayer
+	applymovement 2, Common_Movement_QuestionMark
+	waitmovement 0
+	fadescreen FADE_TO_BLACK
+	drawfullscreenimage SCENEBGDAWN
+	msgbox GI_DawnIntro MSGBOX_DEFAULT
+	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	applymovement 2, GI_LeavingForRoute103
+	waitmovement 0
+	playse SE_DOOR
+	removeobject 2
+	setflag FLAG_HIDE_DAWNS_HOUSE_DAWN
+	msgbox GI_DawnMetMsg
+	closemessage
+	setflag FLAG_SYS_NATIONAL_DEX
+	setflag FLAG_RYU_LT_RIVAL
+	setflag FLAG_RYU_LT_RIVAL2
+	setflag FLAG_RIVAL_LEFT_FOR_ROUTE103
+	setvar VAR_OLDALE_RIVAL_STATE, 2
+	setflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+	setvar VAR_LITTLEROOT_INTRO_STATE, 8
+	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
+	release
+	end
+	
+GI_DawnIntro:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh? Who are you, and why\n"
+	.string "are you in my room?\p"
+	.string "Oh, you're {PLAYER}, Norman's son.\p"
+	.string "I meant to say hi to you at some\n"
+	.string "point. I've been looking for a\l"
+	.string "friend to run around with when\l"
+	.string "doing tasks for my dad, Prof\l"
+	.string "Birch.\p"
+	.string "It gets lonely at times.\p"
+    .string "So, did you want me to catch you\l"
+	.string "a Pokémon?\p"
+	.string "I can go grab you one\n"
+	.string "from Route 101.\p"
+	.string "Oh! Shoot! I was supposed to go\n"
+	.string "study Pokémon behaviors at Route 103!!\p"
+	.string "Sorry, {PLAYER}, I have to run!$"
+	
+GI_DawnMetMsg:
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN} (She seems like the outgoing sort.\p Not too shy, either.\n You can see yourself being good\l friends with her.)$"
+	
+GI_LeavingForRoute103:
+	emote_exclamation_mark
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	step_end
+	
+@========================================================Check out dawn's gift pokemon
+
+LRT_DH_CheckDawnSneasel::@see brendan's equivalent for commentary
+	goto_if_unset FLAG_RYU_DAWN_GIFTPOKE_RECEIVED, ryu_return
+	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN, ryu_return
+	msgbox LRT_DH_PullOutGiftMon
+	closemessage
+	specialvar VAR_RESULT, CheckRivalGiftMonStatus 
+	switch VAR_RESULT
+	case 5, LRT_DH_ChampionGiftMon 
+	case 2, LRT_DH_Weavile
+	case 1, LRT_DH_Sneasel
+	case 0, ryu_return 
+	goto ryu_return 
+	
+LRT_DH_ChampionGiftMon::
+	msgbox LRT_DH_ChampionMon
+	closemessage
+	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN, ryu_return
+	giveitem ITEM_SCOPE_LENS
+	setflag FLAG_RYU_DS_DAWN_PARTNERS
+	setflag FLAG_RYU_DS_DAWN_LOVERS
+	setflag FLAG_RYU_DS_DAWN_CLOSEFRIENDS
+	setflag FLAG_RYU_DS_DAWN_FRIENDS
+	ach give ACH_NEW_REGION_WHO_DIS
+	ach give ACH_CHILDHOOD_FRIEND
+	clearflag FLAG_RYU_DS_DAWN_ACQ
+	addvar VAR_RYU_PARTNER_COUNT, 1
+	setflag FLAG_RYU_DS_HAS_PARTNER
+	setflag FLAG_RYU_RIVAL_POKEMON_REWARD_2_GIVEN
+	return
+	
+LRT_DH_Weavile::
+	showmonpic SPECIES_WEAVILE, 10, 3
+	playmoncry SPECIES_WEAVILE, 0
+	waitmoncry
+	msgbox LRT_DH_IsWeavile
+	closemessage
+	hidemonpic
+	goto_if_set FLAG_RYU_RIVAL_POKEMON_REWARD_1_GIVEN, ryu_return
+	giveitem ITEM_BLACK_GLASSES
+	setflag FLAG_RYU_RIVAL_POKEMON_REWARD_1_GIVEN
+	return
+	
+LRT_DH_Sneasel::
+	showmonpic SPECIES_SNEASEL, 10, 3
+	playmoncry SPECIES_SNEASEL, 0
+	waitmoncry
+	msgbox LRT_DH_Unchanged
+	hidemonpic
+	closemessage
+	return
+	
+LRT_DH_PullOutGiftMon:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Hi {PLAYER}! How's Sneasel doing?\nPull it out so I can see!$"
+	
+LRT_DH_ChampionMon:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}I sense that it has really\nmatured. It's even got the\l"
+	.string "Champion Ribbon!\pI couldn't have chose a better\ntrainer for it.\p"
+	.string "Here, take this gift from me!$"
+	
+LRT_DH_IsWeavile:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh wow! It's so cool!\nYou've been training it well!\pHere, a present for you!$"
+	
+LRT_DH_Unchanged:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Well, it looks content.\nWhen will you start training it?$"
+
+	
+@======================================================If player has romanced courtney, she will sabotage relationships with rival=======
+
+LRT_CheckCourtneyForRivalNight::
+	addobject 5
+	playse SE_DOOR
+	call LRT_MoveCourtneyToPlayer
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	delay 20
+	drawfullscreenimage SCENEBGCOURTNEY
+	msgbox LRT_CourtneyNotApprove
+	closemessage
+	clearfullscreenimage
+	fadescreen FADE_FROM_BLACK
+	playse SE_PIN
+	applymovement 2, Common_Movement_ExclamationMark
+	waitmovement 2
+	applymovement 2, Common_Movement_FaceDown
+	waitmovement 2
+	msgbox LRT_RivalSad
+	closemessage
+	call LRT_MoveCourtneyToExit
+	removeobject 5
+	clearflag FLAG_RYU_DS_BRENDAN_PARTNERS
+	clearflag FLAG_RYU_DS_BRENDAN_LOVERS
+	clearflag FLAG_RYU_DS_BRENDAN_CLOSEFRIENDS
+	clearflag FLAG_RYU_DS_BRENDAN_FRIENDS
+	clearflag FLAG_RYU_DS_DAWN_PARTNERS
+	clearflag FLAG_RYU_DS_DAWN_LOVERS
+	clearflag FLAG_RYU_DS_DAWN_CLOSEFRIENDS
+	clearflag FLAG_RYU_DS_DAWN_FRIENDS
+	setflag FLAG_RYU_DS_DAWN_ACQ
+	setflag FLAG_RYU_DS_BRENDAN_ACQ
+	subvar VAR_RYU_PARTNER_COUNT, 1
+	msgbox LRT_CourtneyWait
+	closemessage
+	call LRT_MovePlayerToExit
+	fadescreen FADE_TO_BLACK
+	warpsilent MAP_LITTLEROOT_TOWN, 255, 9, 8
+	waitstate
+	
+LRT_MoveCourtneyToPlayer::
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	goto_if_eq LRT_MoveCourtneyToDawn
+	applymovement 5, LRT_CourtneytoBrendan
+	waitmovement 5
+	return
+	
+LRT_MoveCourtneyToDawn::
+	applymovement 5, LRT_CourtneytoDawn
+	waitmovement 5
+	return
+	
+LRT_MovePlayerToExit::
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	goto_if_eq LRT_MovePlayerDawnToExit
+	applymovement OBJ_EVENT_ID_PLAYER, LRT_PlayerBrendanToExit
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+	
+LRT_MovePlayerDawnToExit::
+	applymovement OBJ_EVENT_ID_PLAYER, LRT_PlayerDawnToExit
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+	
+LRT_MoveCourtneyToExit::
+	checkplayergender
+	compare VAR_RESULT, FEMALE
+	goto_if_eq LRT_MoveCourtneyFromDawnToExit
+	applymovement 5, LRT_CourtneyFromBrendanToExit
+	waitmovement 5
+	return
+	
+LRT_MoveCourtneyFromDawnToExit::
+	applymovement 5, LRT_CourtneyFromDawnToExit
+	waitmovement 5
+	
+LRT_CourtneyNotApprove:
+	.string "{COLOR LIGHT_RED}{SHADOW RED} So. You've been seeing others\nbehind my back.\pI'm not mad, but if I catch you\nagain,\pI may do something drastic.$"
+	
+LRT_RivalSad:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}{RIVAL}: Wait... what does that mean?!$"
+	
+LRT_CourtneyWait:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Courtney, wait! I-$"
+	
+LRT_CourtneytoDawn:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	face_left
+	step_end
+	
+LRT_CourtneytoBrendan:
+    walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	face_right
+	step_end
+	
+LRT_PlayerBrendanToExit:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	step_end
+	
+LRT_PlayerDawnToExit:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	step_end
+	
+LRT_CourtneyFromBrendanToExit:
+	walk_left
+    walk_left
+    walk_up
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+LRT_CourtneyFromDawnToExit:
+    walk_right
+    walk_right
+    walk_up
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	step_end
+`

@@ -1,0 +1,294 @@
+raw `
+Route109_MapScripts:: @ 81EE75F
+	map_script ON_FRAME, R109_CheckMagmaEvent
+	.byte 0
+
+Route109_EventScript_SeashoreHouseGirl:: @ 81EE995
+	msgbox Route109_Text_ChillAtMyPapasSpot, MSGBOX_NPC
+	end
+
+Route109_EventScript_SandCastleBoy:: @ 81EE99E
+	lock
+	faceplayer
+	msgbox Route109_Text_SandCastleTakingLongTime, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+Route109_EventScript_SoftSandGirl:: @ 81EE9B5
+	lock
+	faceplayer
+	special GetPlayerBigGuyGirlString
+	goto_if_set FLAG_RECEIVED_SOFT_SAND, Route109_EventScript_AlreadyReceivedSoftSand
+	msgbox Route109_Text_YouCanHaveThis, MSGBOX_DEFAULT
+	giveitem ITEM_SOFT_SAND
+	compare VAR_RESULT, 0
+	goto_if_eq Common_EventScript_ShowBagIsFull
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	setflag FLAG_RECEIVED_SOFT_SAND
+	release
+	end
+
+Route109_EventScript_AlreadyReceivedSoftSand:: @ 81EE9F2
+	msgbox Route109_Text_WereGoingToMakeBigCastle, MSGBOX_DEFAULT
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+Route109_EventScript_Woman:: @ 81EEA06
+	msgbox Route109_Text_LittleKidsDartAround, MSGBOX_NPC
+	end
+
+Route109_EventScript_OldMan:: @ 81EEA0F
+	msgbox Route109_Text_ZigzagoonPicksUpLitter, MSGBOX_NPC
+	end
+
+Route109_EventScript_Zigzagoon:: @ 81EEA18
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_ZIGZAGOON, 0
+	msgbox Route109_Text_ZigzagoonCry, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+Route109_EventScript_SeashoreHouseSign:: @ 81EEA2B
+	msgbox Route109_Text_SeashoreHouseSign, MSGBOX_SIGN
+	end
+
+Route109_EventScript_TrainerTipsSign:: @ 81EEA34
+	msgbox Route109_Text_TrainerTipsSign, MSGBOX_SIGN
+	end
+
+Route109_EventScript_David:: @ 81EEA3D
+	trainerbattle_single TRAINER_DAVID, Route109_Text_DavidIntro, Route109_Text_DavidDefeated
+	msgbox Route109_Text_DavidPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Alice:: @ 81EEA54
+	trainerbattle_single TRAINER_ALICE, Route109_Text_AliceIntro, Route109_Text_AliceDefeated
+	msgbox Route109_Text_AlicePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Huey:: @ 81EEA6B
+	trainerbattle_single TRAINER_HUEY, Route109_Text_HueyIntro, Route109_Text_HueyDefeated
+	msgbox Route109_Text_HueyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Edmond:: @ 81EEA82
+	trainerbattle_single TRAINER_EDMOND, Route109_Text_EdmondIntro, Route109_Text_EdmondDefeated
+	msgbox Route109_Text_EdmondPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Ricky:: @ 81EEA99
+	trainerbattle_single TRAINER_RICKY_1, Route109_Text_RickyIntro, Route109_Text_RickyDefeated, Route109_EventScript_RickyRegisterMatchCallAfterBattle
+	msgbox Route109_Text_RickyPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route109_EventScript_RickyRegisterMatchCallAfterBattle:: @ 81EEAC5
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route109_Text_RickyRegister, MSGBOX_DEFAULT
+	@nop Trainer_RICKY_1
+	release
+	end
+
+Route109_EventScript_RickyRematch:: @ 81EEAE4
+	trainerbattle_rematch TRAINER_RICKY_1, Route109_Text_RickyRematchIntro, Route109_Text_RickyRematchDefeated
+	msgbox Route109_Text_RickyRematchPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Lola:: @ 81EEAFB
+	trainerbattle_single TRAINER_LOLA_1, Route109_Text_LolaIntro, Route109_Text_LolaDefeated, Route109_EventScript_LolaRegisterMatchCallAfterBattle
+	msgbox Route109_Text_LolaPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route109_EventScript_LolaRegisterMatchCallAfterBattle:: @ 81EEB27
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route109_Text_LolaRegister, MSGBOX_DEFAULT
+	@nop Trainer_LOLA_1
+	release
+	end
+
+Route109_EventScript_LolaRematch:: @ 81EEB46
+	trainerbattle_rematch TRAINER_LOLA_1, Route109_Text_LolaRematchIntro, Route109_Text_LolaRematchDefeated
+	msgbox Route109_Text_LolaRematchPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Austina:: @ 81EEB5D
+	trainerbattle_single TRAINER_AUSTINA, Route109_Text_AustinaIntro, Route109_Text_AustinaDefeated
+	msgbox Route109_Text_AustinaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Gwen:: @ 81EEB74
+	trainerbattle_single TRAINER_GWEN, Route109_Text_GwenIntro, Route109_Text_GwenDefeated
+	msgbox Route109_Text_GwenPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Carter:: @ 81EEB8B
+	trainerbattle_single TRAINER_CARTER, Route109_Text_CarterIntro, Route109_Text_CarterDefeated
+	msgbox Route109_Text_CarterPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Paul:: @ 81EEBA2
+	trainerbattle_double TRAINER_MEL_AND_PAUL, Route109_Text_PaulIntro, Route109_Text_PaulDefeated, Route109_Text_PaulNotEnoughPokemon
+	msgbox Route109_Text_PaulPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Mel:: @ 81EEBBD
+	trainerbattle_double TRAINER_MEL_AND_PAUL, Route109_Text_MelIntro, Route109_Text_MelDefeated, Route109_Text_MelNotEnoughPokemon
+	msgbox Route109_Text_MelPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Chandler:: @ 81EEBD8
+	trainerbattle_single TRAINER_CHANDLER, Route109_Text_ChandlerIntro, Route109_Text_ChandlerDefeated
+	msgbox Route109_Text_ChandlerPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Hailey:: @ 81EEBEF
+	trainerbattle_single TRAINER_HAILEY, Route109_Text_HaileyIntro, Route109_Text_HaileyDefeated
+	msgbox Route109_Text_HaileyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_EventScript_Elijah:: @ 81EEC06
+	trainerbattle_single TRAINER_ELIJAH, Route109_Text_ElijahIntro, Route109_Text_ElijahDefeated
+	msgbox Route109_Text_ElijahPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route109_Text_ChillAtMyPapasSpot: @ 81EEEB4
+	.string "Yo, Trainers!\n"
+	.string "Whether you're hot to trot,\l"
+	.string "or cool cat not,\l"
+	.string "chill at my papa's spot!$"
+
+Route109_Text_LittleKidsDartAround: @ 81EEF08
+	.string "Little kids can dart around so quickly…\p"
+	.string "You don't dare take your eyes off them\n"
+	.string "for an instant. It's very taxing.\p"
+	.string "Mine are with my Pokémon, so they\n"
+	.string "should be okay, but…$"
+
+Route109_Text_SandCastleTakingLongTime: @ 81EEFB0
+	.string "Our sand castle's taking a long time\n"
+	.string "to make.$"
+
+Route109_Text_YouCanHaveThis: @ 81EEFDE
+	.string "You can have this!$"
+
+Route109_Text_WereGoingToMakeBigCastle: @ 81EEFF1
+	.string "We're going to get all the sand from\n"
+	.string "the beach and make a big castle!\p"
+	.string "And then we're going to be a king and\n"
+	.string "queen.\p"
+	.string "We'll let you be a servant.$"
+
+Route109_Text_ZigzagoonPicksUpLitter: @ 81EF080
+	.string "The water around these parts is clean.\p"
+	.string "But, I get my Zigzagoon to pick up\n"
+	.string "litter from the shoreline at times.\p"
+	.string "Dirty water becomes rain and joins our\n"
+	.string "rivers, which we drink from…\p"
+	.string "If we pollute the sea, it all comes\n"
+	.string "back to haunt us eventually.$"
+
+Route109_Text_ZigzagoonCry: @ 81EF173
+	.string "Zigzagoon: Guguu?$"
+
+Route109_Text_SeashoreHouseSign: @ 81EF185
+	.string "Seashore House\p"
+	.string "“May hot battles rage on hot sands!\n"
+	.string "The place for hot Trainers!”$"
+
+Route109_Text_TrainerTipsSign: @ 81EF1D5
+	.string "Trainer Tips\p"
+	.string "Pokémon at the same level may not\n"
+	.string "always have identical stats.\p"
+	.string "Pokémon raised by Trainers are said\n"
+	.string "to grow stronger than wild Pokémon.$"
+	
+	
+@==================================================================================================Magma related
+
+R109_CheckMagmaEvent::
+	map_script_2 VAR_RYU_MAGMA, 260, R109_StartMagmaEvent
+	.2byte 0
+	
+R109_StartMagmaEvent::
+	lock
+	setvar VAR_RYU_MAGMA, 270@player at beach
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox R109_ThatWasA
+	closemessage
+	giveitem ITEM_HYPER_POTION, 40
+	giveitem ITEM_ETHER, 15
+	msgbox R109_PFFTINearly
+	closemessage
+	delay 40
+	msgbox R109_OhYouMust
+	closemessage
+	delay 40
+	applymovement 25, Common_Movement_FaceUp
+	waitmovement 25
+	msgbox R109_WaitThatMeans
+	closemessage
+	applymovement 25 Common_Movement_FaceDown
+	waitmovement 25
+	msgbox R109_OhCrapWere
+	applymovement 25, R109_GruntRuns
+	waitmovement 25
+	setvar VAR_RYU_MAGMA, 275@player finished scene on the beach
+	clearflag FLAG_RYU_RUSTURF_CLEARING_MAGMA
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
+	clearflag FLAG_RYU_BANNED_FROM_OLDALE
+	setflag FLAG_RYU_BANNED_FROM_MARTS
+	removeobject 25
+	release
+	end
+	
+R109_ThatWasA:
+	.string "That was a close one! Thanks for\n"
+    .string "your help. Here, this is yours.$"
+
+R109_PFFTINearly:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Pfft, I nearly got caught myself! If\n"
+    .string "it wasn't for her...\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}'Her'?$"
+	
+R109_OhYouMust:
+	.string "Oh, you must mean Admin Courtney.\n"
+    .string "She's an odd one for sure, but she's\p"
+    .string "very loyal to Maxie. She'd only do\n"
+    .string "something if Maxie tells her to...$"
+
+R109_WaitThatMeans:
+	.string "Wait...that means...$"
+
+R109_OhCrapWere:
+	.string "Oh crap, we're in trouble! We'd\n"
+    .string "better go apologize right away\p"
+    .string "before we end up as Mightyena\n"
+    .string "kibble! The other exit of Rusturf\p"
+    .string "Tunnel, hurry!$"
+	
+R109_GruntRuns:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+`

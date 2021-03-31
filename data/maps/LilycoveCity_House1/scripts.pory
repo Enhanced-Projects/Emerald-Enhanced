@@ -1,0 +1,28 @@
+raw `
+LilycoveCity_House1_MapScripts:: @ 821ECCD
+	.byte 0
+
+LilycoveCity_House1_EventScript_ExpertM:: @ 821ECCE
+	msgbox LilycoveCity_House1_Text_PokemonCloseToPeople, MSGBOX_NPC
+	end
+
+LilycoveCity_House1_EventScript_Kecleon:: @ 821ECD7
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_PIKACHU, 0
+	msgbox LilycoveCity_House1_Text_Pikachu, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+LilycoveCity_House1_Text_PokemonCloseToPeople: @ 821ECEA
+	.string "Pokémon aren't just tools, they\n"
+	.string "are family to some, partners to\p"
+	.string "others, and even more to some\n"
+	.string "people. It warms my heart.$"
+
+LilycoveCity_House1_Text_Pikachu: @ 821ED63
+	.string "Pikachu: Pikapi?$"
+
+`

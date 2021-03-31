@@ -1,0 +1,365 @@
+raw `
+AquaHideout_B2F_MapScripts:: @ 8233DCF
+	.byte 0
+
+AquaHideout_B2F_EventScript_MattNoticePlayer:: @ 8233DE5
+	lockall
+	compare VAR_RYU_AQUA, 125
+	goto_if_eq AH_AquaScene
+	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, AC_DevonTrigger
+	goto_if_set FLAG_RYU_AQUA_BAD_END, ryu_end
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	applymovement OBJ_EVENT_ID_PLAYER, AC_MoveLeft
+	setvar VAR_0x8008, 1  @ Matt object event id
+	playse SE_PIN
+	applymovement VAR_0x8008, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement VAR_0x8008, Common_Movement_FacePlayer
+	waitmovement 0
+	setvar VAR_TEMP_1, 1
+	releaseall
+	end
+
+AC_DevonTrigger:
+	goto_if_set FLAG_RYU_SUB_ROOM_SHELLY, ryu_end
+	addobject 7
+	applymovement 7, AC_ShellyAttacksPlayer
+	waitmovement 7
+	msgbox AC_ShellyAttacks MSGBOX_DEFAULT
+	closemessage
+	cleartrainerflag TRAINER_SHELLY_2
+	trainerbattle_single TRAINER_SHELLY_2, AC_Intro, AC_Defeat, AC_AfterFight
+	
+AC_AfterFight:
+	msgbox AC_ShellyOutro MSGBOX_DEFAULT
+	closemessage
+	applymovement 7, AC_ShellyExiting
+	waitmovement 7
+	playse SE_TK_WARPOUT
+	waitse
+	removeobject 7
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	setflag FLAG_RYU_SUB_ROOM_SHELLY
+	release
+	end
+	
+AC_ShellyAttacksPlayer:
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	emote_exclamation_mark
+	step_end
+	
+AC_MoveLeft:
+	walk_left
+	emote_exclamation_mark
+	step_end
+	
+AC_ShellyExiting:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+	
+AC_ShellyAttacks:
+	.string "Who the hell are you and\n"
+    .string "why are you trespassing in our\l"
+    .string "hideout? Who let you in?\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I'm here to reclaim some\n"
+    .string "stolen property. Heard of a\l"
+    .string "radiation detector? It's owner\p"
+    .string "wants it back, and I'm not leaving\n"
+    .string "without it.$"
+	
+AC_Intro:
+    .string "Shelly: Well, buddy, you stumbled\n"
+    .string "onto the worst possible person.\p"
+    .string "I'm the administrator of this here\n"
+    .string "structure. You will regret your\l"
+    .string "trespassing very soon!$"
+
+AC_Defeat:
+    .string "I don't believe it!\p"
+    .string "Mercenaries are getting pretty\n"
+    .string "handsome these days...$"
+
+AC_ShellyOutro:
+    .string "Shelly: Fine... good luck finding\n"
+    .string "it. I put that thing down a long\l"
+    .string "time ago. I have no clue where it's\l"
+    .string "at now.\p"
+	.string "Pray you don't run into Matt...\p"
+    .string "He will turn your world\n"
+    .string "inside out.$"
+	
+AC_DevonMattTrigger::
+	goto_if_unset FLAG_RYU_PLAYER_HELPING_DEVON, AC_NormalWarp
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	delay 10
+	warpteleport MAP_AQUA_HIDEOUT_B1F, 255, 23, 10
+	release
+	end
+	
+AC_MattTrigger::
+	lockall
+	goto_if_set FLAG_HIDE_CHAMPIONS_ROOM_RIVAL, ryu_end
+	playse SE_PIN
+	applymovement 10, Common_Movement_ExclamationMark
+	waitmovement 10
+	applymovement 10, AC_MattToPlayer
+	waitmovement 10
+	msgbox AC_MattIntercept MSGBOX_DEFAULT
+	closemessage
+	trainerbattle_single TRAINER_MATT, AC_Mattintro, AC_MattDefeat, AC_MatOutro
+	
+AC_MatOutro::
+	msgbox AC_MattDefeated MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, AC_PlayerMove
+	applymovement 10, AC_MattExit
+	waitmovement 10
+	playse SE_TK_WARPOUT
+	waitse
+	removeobject 10
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+	special DrawWholeMapView
+	release
+	end
+	
+AC_MattIntercept:
+    .string "Matt: Ah, so you did show up.\p"
+    .string "Shelly told me there was a stranger\n"
+    .string "here. I guess this is the end of\l"
+    .string "the line, friend.$"
+	
+AC_Mattintro:
+	.string "Prepare to be\n"
+    .string "expelled violently.$"
+	
+AC_MattDefeat:
+	.string "No kidding! You're tough.$"
+	
+AC_MattDefeated:
+    .string "Matt: Shelly was also right about\n"
+    .string "you being one tough customer.\p"
+    .string "Well, It didn't accomplish anything\n"
+    .string "for you, but you win. Maybe one\l"
+    .string "of the other Aqua members can stop\l"
+    .string "you\p"
+	.string "You should leave before Archie\n"
+    .string "gets back. He'll really hurt you.$"
+	
+AC_MattExit:
+	walk_right
+	walk_in_place_down
+	step_end
+
+AC_PlayerMove:
+	walk_down
+	walk_in_place_up
+	step_end
+
+AC_MattToPlayer:
+	walk_down
+	walk_in_place_right
+	step_end
+
+AC_NormalWarp::
+	warpteleport MAP_AQUA_HIDEOUT_B1F, 255, 32, 20
+	release
+	end
+
+AquaHideout_B2F_EventScript_Matt:: @ 8233E09
+	release
+	end
+
+AquaHideout_B2F_EventScript_Grunt4:: @ 8233E8A
+	trainerbattle_single TRAINER_GRUNT_4, AquaHideout_B2F_Text_Grunt4Intro, AquaHideout_B2F_Text_Grunt4Defeat, AquaHideout_B2F_EventScript_Grunt4Defeated
+	compare VAR_RYU_AQUA, 100
+	goto_if_ge AH_RandomGruntSpeak
+	msgbox AquaHideout_B2F_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+AquaHideout_B2F_EventScript_Grunt4Defeated:: @ 8233EA5
+	msgbox AquaHideout_B2F_Text_Grunt4PostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+AquaHideout_B2F_EventScript_Grunt6:: @ 8233EAF
+	trainerbattle_single TRAINER_GRUNT_22, AquaHideout_B2F_Text_Grunt6Intro, AquaHideout_B2F_Text_Grunt6Defeat
+	compare VAR_RYU_AQUA, 100
+	goto_if_ge AH_RandomGruntSpeak
+	msgbox AquaHideout_B2F_Text_Grunt6PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+AquaHideout_B2F_EventScript_Grunt8:: @ 8233EC6
+	trainerbattle_single TRAINER_GRUNT_26, AquaHideout_B2F_Text_Grunt8Intro, AquaHideout_B2F_Text_Grunt8Defeat
+	compare VAR_RYU_AQUA, 100
+	goto_if_ge AH_RandomGruntSpeak
+	msgbox AquaHideout_B2F_Text_Grunt8PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+AquaHideout_B2F_Text_MattIntro: @ 8233EDD
+	.string "Hehehe…\p"
+	.string "Got here already, did you?\n"
+	.string "We underestimated you!\p"
+	.string "But this is it!\p"
+	.string "I'm a cut above the Grunts you've seen\n"
+	.string "so far.\p"
+	.string "I'm not stalling for time.\n"
+	.string "I'm going to pulverize you!$"
+
+AquaHideout_B2F_Text_MattDefeat: @ 8233F8D
+	.string "Hehehe…\n"
+	.string "So, I lost, too…$"
+
+AquaHideout_B2F_Text_OurBossGotThroughHisPreparations: @ 8233FA6
+	.string "Hehehe!\p"
+	.string "While I was toying with you, our Boss\n"
+	.string "got through his preparations!$"
+
+AquaHideout_B2F_Text_MattPostBattle: @ 8233FF2
+	.string "Hehehe!\p"
+	.string "Our Boss has already gone on his way to\n"
+	.string "some cave under the sea!\p"
+	.string "If you're going to give chase, you'd\n"
+	.string "better search the big, wide sea beyond\l"
+	.string "Lilycove.\p"
+	.string "But will you find it then?\n"
+	.string "Hehehe!$"
+
+AquaHideout_B2F_Text_Grunt4Intro: @ 82340B4
+	.string "Wahahah, I grew weary of waiting!\n"
+	.string "You owe me a battle, too!$"
+
+AquaHideout_B2F_Text_Grunt4Defeat: @ 82340F0
+	.string "Tired of waiting…\n"
+	.string "Lost and dazed…$"
+
+AquaHideout_B2F_Text_Grunt4PostBattle: @ 8234112
+	.string "Boss…\n"
+	.string "Is this good enough?$"
+
+AquaHideout_B2F_Text_Grunt6Intro: @ 823412D
+	.string "Warp panels, the Hideout's pride\n"
+	.string "and joy!\p"
+	.string "You're clueless about where you are,\n"
+	.string "aren't you?\p"
+	.string "Fluster and tire out the enemy, then\n"
+	.string "lower the boom! That's our plan!$"
+
+AquaHideout_B2F_Text_Grunt6Defeat: @ 82341CE
+	.string "What's wrong with you?\n"
+	.string "You're not tired at all!$"
+
+AquaHideout_B2F_Text_Grunt6PostBattle: @ 82341FE
+	.string "That reminds me… I can't remember\n"
+	.string "where I put the Master Ball.\p"
+	.string "If I fail to guard it, our Boss will\n"
+	.string "chew me out…$"
+
+AquaHideout_B2F_Text_Grunt8Intro: @ 823426F
+	.string "When I joined Team Aqua, the first\n"
+	.string "thing I had to learn was how these\l"
+	.string "warp panels connected.$"
+
+AquaHideout_B2F_Text_Grunt8Defeat: @ 82342CC
+	.string "I was too occupied thinking about\n"
+	.string "the warp panels…$"
+
+AquaHideout_B2F_Text_Grunt8PostBattle: @ 82342FF
+	.string "I'll have to learn about how I can\n"
+	.string "battle more effectively…$"
+
+
+@==================================================================================================aqua quest
+
+AH_AquaScene::
+	setvar VAR_RYU_AQUA, 127 @Scene from aqua b2f starting
+	getplayerxy VAR_TEMP_8, VAR_TEMP_9
+	compare VAR_TEMP_9, 16
+	call_if_eq AH_MovePlayerDownForScene
+	applymovement OBJ_EVENT_ID_PLAYER, AH_PlayerFromTopWarps
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto AH_ContinueScene
+
+AH_ContinueScene::
+	applymovement  1, Common_Movement_FaceRight
+	waitmovement 1
+	msgbox AH_PlayerPreparations
+	closemessage
+	applymovement 1, Common_Movement_StepLeft
+	waitmovement 1
+	removeobject 1
+	setflag FLAG_RYU_DEVON_HIDE_MATT_SUB
+	applymovement OBJ_EVENT_ID_PLAYER, AH_PlayerToSub
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 4, AH_MoveSubToExit
+	waitmovement 4
+	warpsilent MAP_UNDERWATER_SEAFLOOR_CAVERN, 255, 6, 5
+	waitstate
+
+AH_MovePlayerDownForScene::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+
+
+AH_BottomSubRoomTrigger::
+	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
+	setvar VAR_RYU_AQUA, 127 @Scene from aqua b2f starting
+	applymovement OBJ_EVENT_ID_PLAYER, AH_PlayerFromBottomWarp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto AH_ContinueScene
+
+AH_PlayerPreparations:
+	.string "{PLAYER}! Our preparations are\n"
+    .string "finally complete!\p"
+    .string "Let's go!$"
+
+AH_MoveSubToExit:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+AH_PlayerFromTopWarps:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+AH_PlayerToSub:
+	walk_left
+	walk_left
+	walk_in_place_left
+	set_invisible
+	step_end
+
+AH_PlayerFromBottomWarp:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_left
+	face_left
+	step_end
+`

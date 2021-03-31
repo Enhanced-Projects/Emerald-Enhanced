@@ -1,0 +1,190 @@
+raw `
+LilycoveCity_Harbor_Story_MapScripts::
+	map_script ON_FRAME, LCC_MagmaHarbor_StartEvent
+	.byte 0
+	
+LCC_MagmaHarbor_StartEvent::
+	map_script_2 VAR_RYU_MAGMA, 185, LCC_MagmaHarbor_Blaise
+	.2byte 0
+	
+LCC_MagmaHarbor_Blaise::
+	setvar VAR_RYU_MAGMA, 190@Player entered the magma controlled harbor
+	msgbox LCC_IAlreadyCleared
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, LCC_Harbor_PlayerToBlaise
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 1, Common_Movement_FaceUp
+	waitmovement 1
+	msgbox LCC_GoAheadPlayer
+	closemessage
+	fadescreen FADE_TO_BLACK
+	addobject 2
+	addobject 3
+	fadescreen FADE_FROM_BLACK
+	msgbox LCC_ScoreItsJust
+	closemessage
+	playse SE_PIN
+	applymovement 1, Common_Movement_QuestionMark
+	waitmovement 1
+	applymovement 1, Common_Movement_FaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 3, Common_Movement_FaceDown
+	waitmovement 3
+	msgbox LCC_RollTheCamera
+	closemessage
+	applymovement 1, Common_Movement_StepDown
+	applymovement 3, Common_Movement_FaceUp
+	waitmovement 3
+	playse SE_DOOR
+	waitse
+	addobject 4
+	addobject 5
+	applymovement 4, ShellyInFrontOfGabby
+	applymovement 5, ShellyInFrontOfGabby
+	waitmovement 5
+	msgbox LCC_HoldIt
+	closemessage
+	applymovement 1, Common_Movement_FaceDown
+	msgbox LCC_WellOfCourse
+	closemessage
+	applymovement 4, Common_Movement_FaceUp
+	waitmovement 4
+	msgbox LCC_YoureThatTrainer
+	closemessage
+	applymovement 1, Common_Movement_FaceDown
+	msgbox LCC_YouTalkToo
+	closemessage
+	msgbox LCC_PlayerTakeCareOf
+	closemessage
+	applymovement 4, Common_Movement_StepRight
+	applymovement 5, Common_Movement_StepRight
+	waitmovement 5
+	applymovement 1, Common_Movement_StepDown
+	applymovement 3, Common_Movement_StepRight
+	waitmovement 3
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	removeobject 2
+	removeobject 3
+	removeobject 5
+	trainerbattle_single TRAINER_SHELLY_2, LCC_ItEndsNow, LCC_What, LCC_Harbor_Part2
+	end
+	
+LCC_Harbor_Part2::
+	setvar VAR_RYU_MAGMA, 195@Finished Battle with Shelly
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	msgbox LCC_HowCouldYou
+	closemessage
+	applymovement 4, LCC_ShellyExits
+	waitmovement 4
+	playse SE_DOOR
+	waitse
+	removeobject 4
+	delay 40
+	msgbox LCC_ITookCareOf
+	closemessage
+	applymovement 1, Common_Movement_FaceUp
+	waitmovement 1
+	msgbox LCC_TimeToHead
+	closemessage
+	setvar VAR_RYU_MAGMA, 200@Returning to 111 to rendezous
+	warpsilent MAP_LILYCOVE_CITY, 255, 12, 33
+	waitstate
+	releaseall
+	end
+	
+LCC_IAlreadyCleared:
+	.string "I already cleared the place out so\n"
+    .string "you can do your bit.$"
+
+LCC_GoAheadPlayer:
+	.string "Go ahead, {PLAYER}, it was your idea\n"
+    .string "after all.$"
+
+LCC_ScoreItsJust:
+	.string "Score, it's just as he said!$"
+	
+LCC_RollTheCamera:
+	.string "Roll the camera, Ty!\p"
+    .string "Rolling!\p"
+    .string "This just in, folks! An anonymous tip\n"
+    .string "has led to-\p"
+    .string "We can't be having this. Let's get\n"
+    .string "rid of them.$"
+	
+LCC_HoldIt:
+	.string "Hold it!\p"
+    .string "Do you even realize what you're\n"
+    .string "doing!?$"
+
+LCC_WellOfCourse:
+	.string "Well of course we do, Admin Shelly.\n"
+    .string "Why else would we be doing it?$"
+
+LCC_YoureThatTrainer:
+	.string "You...you're that Trainer one of our\n"
+    .string "mates mentioned. And you've sided\p"
+    .string "with Magma? For what reason!? To do\n"
+    .string "something so callous to-!$"
+
+LCC_YouTalkToo:
+	.string "You talk too much. {PLAYER}, let's\n"
+    .string "wrap this up.$"
+
+LCC_PlayerTakeCareOf:
+	.string "You take care of Aqua,\nI'll get these insects out.$"
+	
+LCC_ItEndsNow:
+	.string "I will put an end to this Now!$"
+	
+LCC_What:
+	.string "I'm not strong enough?\n...$"
+	
+LCC_HowCouldYou:
+	.string "How could you...\p"
+    .string "Blaise: Haven't you heard that\n"
+    .string "revenge is a dish best served\l"
+	.string "cold?$"
+
+LCC_ITookCareOf:
+	.string "I took care of those annoying\nflies.$"
+	
+LCC_TimeToHead:
+	.string "Time to head back, {PLAYER}. Mission\n"
+    .string "complete. We'll rendezvous at the\p"
+    .string "previous location.$"
+
+LCC_Harbor_PlayerToBlaise:
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+	
+ShellyInFrontOfGabby:
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_up
+	step_end
+	
+LCC_ShellyExits:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_in_place_down
+	step_end
+`

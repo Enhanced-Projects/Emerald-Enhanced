@@ -1,0 +1,572 @@
+raw `
+SootopolisCity_MagmaEvent_MapScripts::
+	map_script ON_TRANSITION, SootopolisCity_MagmaEvent_OnTransition
+	map_script ON_FRAME, SCME_StartEvent
+	.byte 0
+	
+	
+SootopolisCity_MagmaEvent_OnTransition::
+	call AbnormalWeather_StartGroudonWeather
+	doweather
+	playbgm MUS_HIDERI, 0
+	clearflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
+	return
+	
+SCME_StartEvent::
+	map_script_2 VAR_RYU_MAGMA, 550, SCME_MainEvent
+	.2byte 0
+	
+SCME_MainEvent::
+	setflag FLAG_HIDE_SCME_KYOGRE
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanToGroudon
+	waitmovement OBJ_EVENT_ID_CAMERA
+	delay 20
+	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanFromGroudonToJuan
+	waitmovement OBJ_EVENT_ID_CAMERA
+	msgbox SCME_WhatInHoenn
+	closemessage
+	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanToMagma
+	waitmovement OBJ_EVENT_ID_CAMERA
+	msgbox SCME_YesGroudon
+	closemessage
+	applymovement 4, Common_Movement_StepRight
+	waitmovement 4
+	msgbox SCME_LeaderMaxie
+	closemessage
+	delay 40
+	msgbox SCME_ForYouTo
+	closemessage
+	clearflag FLAG_HIDE_SCME_KYOGRE
+	addobject 2
+	goto SCME_MainEvent_Part2
+
+SCME_MainEvent_Part2::
+	fadescreen FADE_TO_WHITE
+	setweather WEATHER_RAIN_THUNDERSTORM
+	doweather
+	fadescreen FADE_FROM_WHITE
+	fadenewbgm MUS_OOAME
+	playse SE_PIN
+	applymovement 3, Common_Movement_QuestionMark
+	waitmovement 3
+	msgbox SCME_WhatsThis
+	closemessage
+	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanToGroudonKyogreFromMagma
+	waitmovement OBJ_EVENT_ID_CAMERA
+	playmoncry SPECIES_GROUDON, 3
+	waitmoncry
+	delay 30
+	playmoncry SPECIES_KYOGRE, 3
+	waitmoncry
+	delay 10
+	playmoncry SPECIES_GROUDON, 3
+	waitmoncry
+	delay 10
+	playmoncry SPECIES_KYOGRE, 3
+	waitmoncry
+	delay 10
+	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanToMaxieFromLegends
+	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement OBJ_EVENT_ID_PLAYER, SCME_PlayerToMaxie@3 left, 3 down, face down
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox SCME_IllHandleThis
+	closemessage
+	applymovement 3, Common_Movement_FaceUp
+	waitmovement 3
+	msgbox SCME_PlayerWhatHappened
+	closemessage
+	applymovement 3, Common_Movement_StepUp
+	waitmovement 3
+	giveitem ITEM_MASTER_BALL, 1
+	msgbox SCME_UseThisBall
+	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanToPlayerFromMaxie
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox SCME_NowsMyChance
+	closemessage
+	setvar VAR_RYU_MAGMA, 555
+	setflag FLAG_RYU_WAYSTONE_DISABLED
+	setmetatile 31, 43, 656, 0
+	setmetatile 31, 44, 656, 0
+	setmetatile 31, 45, 656, 0
+	release
+	end
+	
+SC_GroudonFight::
+	compare VAR_RYU_MAGMA, 555
+	goto_if_ne ryu_end
+	specialvar VAR_RESULT, CountBadges
+	multvar VAR_RESULT, 10
+	setwildbattle SPECIES_GROUDON, VAR_RESULT, ITEM_NONE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_CAUGHT
+	call_if_ne SC_Groudon_Defeated
+	compare VAR_RESULT, B_OUTCOME_CAUGHT
+	goto_if_eq SC_HideGroudon
+	goto SC_Groudon_PostEvent
+	
+SC_HideGroudon::
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1
+	setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2
+	goto SC_Groudon_PostEvent
+
+SC_Groudon_Defeated::
+	setflag FLAG_RYU_PLAYER_FAILED_TO_CAPTURE_GROUDON
+	return
+
+SC_Groudon_PostEvent::
+	removeobject 1
+	setflag FLAG_HIDE_SCME_GROUDON
+	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox SCME_ReturnWhereYou
+	closemessage
+	call SCME_BlueOrbEffect
+	setflag FLAG_HIDE_SCME_KYOGRE
+	removeobject 2
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, SCME_PanToMaxie2
+	waitmovement OBJ_EVENT_ID_CAMERA
+	msgbox SCME_PlayerWhy
+	closemessage
+	addobject 16
+	addobject 17
+	addobject 18
+	applymovement 16, SCME_AquaEnters
+	applymovement 17, SCME_AquaEnters
+	applymovement 18, SCME_AquaEnters
+	waitmovement 18
+	msgbox SCME_ItsOver
+	closemessage
+	applymovement 3, Common_Movement_FaceLeft
+	waitmovement 3
+	applymovement OBJ_EVENT_ID_PLAYER, SCME_PlayerFromKyogreToAqua
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_CAMERA, SCME_CamToPlayerAgain
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	release
+	end
+	
+
+SCME_PostEventPart2::
+	call_if_set FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, SCME_CourtneyRomanced
+	msgbox SCME_SiezeHim
+	closemessage
+	applymovement 12, SCME_WallaceAdvance
+	waitmovement 12
+	msgbox SCME_CrobatFly
+	closemessage
+	applymovement 3, Common_Movement_WalkInPlaceFastestDown
+	waitmovement 3
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
+	removeobject 3
+	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
+	waitfieldeffect FLDEFF_NPCFLY_OUT
+	setobjectxy 3, 0, 0
+	applymovement 16, Common_Movement_StepDown
+	waitmovement 16
+	msgbox SCME_SlyFox
+	closemessage
+	msgbox SCME_RestOfMagma
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, SCME_PlayerToSteven@3 left, 2 up, 1 left
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox SCME_LetThemGo
+	closemessage
+	playse SE_PIN
+	applymovement 13, Common_Movement_ExclamationMark
+	waitmovement 13
+	msgbox SCME_SoYouStill
+	closemessage
+	applymovement 16, SCME_ArchieToSteven@down 2, left 3
+	waitmovement 16
+	msgbox SCME_ISayYou
+	closemessage
+	applymovement 13, Common_Movement_FaceLeft
+	waitmovement 13
+	msgbox SCME_FineThenGo
+	applymovement 13, Common_Movement_FaceRight
+	waitmovement 13
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement 16, Common_Movement_FaceDown
+	waitmovement 16
+	goto_if_unset FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, SCME_CourtneyAlone
+	msgbox SCME_CourtneyChasesMaxie
+	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
+	removeobject 4
+	setflag FLAG_RYU_DS_COURTNEY_LOVERS
+	setvar VAR_RYU_MAGMA, 560
+	clearflag FLAG_RYU_HIDE_114_MAXIE
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+	warpsilent MAP_SOOTOPOLIS_CITY, 255, 13, 41
+	waitstate
+	
+SCME_CourtneyAlone::
+	applymovement 4, Common_Movement_StepUp
+	waitmovement 4
+	applymovement 4, Common_Movement_FaceLeft
+	waitmovement 4
+	msgbox SCME_CourtneyPersuesMaxieAlone
+	closemessage
+	applymovement 5, Common_Movement_FaceUp
+	waitmovement 5
+	msgbox SCME_HeyWhoMade
+	closemessage
+	applymovement 4, Common_Movement_StepDown
+	waitmovement 5
+	msgbox SCME_ProblemPresent
+	closemessage
+	msgbox SCME_Nevermind
+	closemessage
+	applymovement 5, Common_Movement_StepDown
+	waitmovement 5
+	applymovement 5, Common_Movement_FaceUp
+	waitmovement 5
+	applymovement 4, Common_Movement_StepLeft
+	waitmovement 4
+	applymovement 4, Common_Movement_FaceUp
+	waitmovement 4
+	msgbox SCME_CourtneyPromotesPlayer
+	closemessage
+	playfanfare MUS_FANFA1
+	msgbox SCME_IsNowAdmin
+	closemessage
+	setvar VAR_RYU_MAGMA, 560
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+	setflag FLAG_RYU_MAXIE_END_EVENT
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	warpsilent MAP_MAGMA_HIDEOUT_1F, 255, 21, 23
+	waitstate
+	
+
+	
+	
+SCME_CourtneyRomanced::
+	applymovement 3, Common_Movement_StepLeft
+	waitmovement 3
+	applymovement 3, Common_Movement_StepLeft
+	waitmovement 3
+	applymovement 3, SCME_MaxiePushesCourtneyOver
+	applymovement 4, SCME_CourtneySlidLeft
+	waitmovement 4
+	msgbox SCME_MaxieSacrificesCourtney
+	closemessage
+	applymovement 3, SCME_MaxieEscapes
+	waitmovement 3
+	return
+	
+	
+SCME_WhatInHoenn:
+	.string "W-What in Hoenn? G-Groudon!\n"
+    .string "My beloved Sootopolis will...!$"
+
+SCME_YesGroudon:
+	.string "Yes, Groudon!\n"
+    .string "Obtain all the power necessary to\p"
+    .string "accomplish our goal!$"
+
+SCME_LeaderMaxie:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Leader Maxie...$"
+	
+SCME_ForYouTo:
+    .string "For you to disturb me at such a time\n"
+    .string "is quite the offense.\p"
+    .string "In light of what's to come, however,\l"
+    .string "it matters not.\p"
+    .string "Nothing shall stop my-!$"
+
+SCME_WhatsThis:
+	.string "What's this...?\n"
+    .string "No, it can't be!$"
+
+SCME_IllHandleThis:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Leader Maxie, I'll handle this!$"
+	
+SCME_PlayerWhatHappened:
+	.string "{PLAYER}! What happened?\n"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Archie had already awakened Kyogre\p"
+    .string "by the time I got through his team,\n"
+    .string "and I've been following it since.\p"
+    .string "All will be right once I capture it!\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Then go, and be quick about it!$"
+
+SCME_UseThisBall:
+	.string "Use this ball, it won't fail!$"
+	
+SCME_NowsMyChance:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Now's my chance...Groudon.$"
+	
+SCME_ReturnWhereYou:
+	.string "Kyogre, return to where you came!$"
+	
+SCME_PlayerWhy:
+	.string "{PLAYER}! Why'd you-!$"
+	
+SCME_ItsOver:
+	.string "It's over for you, Maxie.$"
+	
+SCME_SiezeHim:
+	.string "Wallace: Seize him!$"
+	
+SCME_CrobatFly:
+	.string "Crobat, Fly!$"
+	
+SCME_SlyFox:
+	.string "Sly fox...he got away.$"
+
+SCME_RestOfMagma:
+	.string "He may have, but as for the rest of\n"
+    .string "Team Magma...$"
+	
+SCME_LetThemGo:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Let them go.\p"
+    .string "They were simply following Maxie's\n"
+    .string "orders.\p"
+    .string "I will take responsibility instead.$"
+
+SCME_SoYouStill:
+	.string "So, you still have a conscience.\n"
+    .string "Then you will-$"
+
+SCME_ISayYou:
+	.string "I say you let the young one go.\n"
+    .string "If it wasn't for {PLAYER}, things\p"
+    .string "would've ended much worse.$"
+
+SCME_FineThenGo:
+	.string "Fine...then go and find where Maxie\n"
+    .string "fled to.\p"
+    .string "I'd be more persuaded to overlook\n"
+    .string "Team Magma's atrocities if he were in\l"
+    .string "custody.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Ok, then I-\n"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Negative.$"
+	
+SCME_MaxieSacrificesCourtney:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Maxie pushes Courtney towards the\n"
+    .string " officials and makes his escape)$"
+
+SCME_CourtneyChasesMaxie:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Leader, no...\n"
+    .string "Maxie...is mine.\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I saw how evil he was. I want\n"
+	.string "to personally put him to an end.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Then we do it together.\p"
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}That Crobat seemed to be heading\l"
+    .string "to Route 114.$"
+
+SCME_CourtneyPersuesMaxieAlone:
+	.string "As Team Magma's second...no, Leader,\n"
+    .string "I will take care of Maxie.$"
+	
+SCME_HeyWhoMade:
+	.string "Tabitha: Hey, who made you\n"
+	.string " the Leader!?$"
+	
+SCME_ProblemPresent:
+	.string "Problem present...execute solution.$"
+	
+SCME_Nevermind:
+	.string "N-Nevermind.$"
+	
+SCME_CourtneyPromotesPlayer:
+	.string "{PLAYER}.\p"
+    .string "My previous standing...yours.\n"
+    .string "Accept it.$"
+	
+SCME_IsNowAdmin:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} is now a Team Magma (Admin)!$"
+	
+SCME_MaxieEscapes:
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	step_end
+
+SCME_WallaceAdvance:
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	face_up
+	step_end
+	
+SCME_PlayerToSteven:@3 left, 2 up, 1 left:
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	face_left
+	step_end
+	
+SCME_ArchieToSteven:@down 2, left 3
+	walk_left
+	walk_left
+	step_end
+	
+SCME_MaxiePushesCourtneyOver::
+	delay_8
+	walk_slow_left
+	step_end
+
+SCME_CourtneySlidLeft:
+	slide_left
+	step_end
+
+SCME_PanToMaxie2:
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_fastest_left
+	walk_diag_northwest
+	walk_diag_northwest
+	step_end
+	
+SCME_PlayerFromKyogreToAqua:
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	step_end
+	
+SCME_CamToPlayerAgain:
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	step_end
+	
+SCME_AquaEnters:
+	walk_down
+	walk_down
+	step_end
+
+
+SCME_PanToGroudon:
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_diag_southeast
+	step_end
+	
+SCME_PanFromGroudonToJuan:
+	walk_diag_northeast
+	walk_diag_northeast
+	walk_diag_northeast
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+SCME_PanToMagma:
+	walk_diag_southwest
+	walk_diag_southwest
+	walk_diag_southwest
+	walk_diag_southwest
+	walk_diag_southwest
+	walk_diag_southwest
+	walk_diag_southwest
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+	
+SCME_PanToGroudonKyogreFromMagma:
+	walk_diag_southeast
+	walk_diag_southeast
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	step_end
+	
+SCME_PanToMaxieFromLegends:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_diag_northwest
+	walk_diag_northwest
+	step_end
+	
+SCME_PlayerToMaxie:
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+SCME_PanToPlayerFromMaxie:
+	walk_up
+	walk_up
+	step_end
+
+
+
+
+
+	
+	
+	
+	
+	
+
+`

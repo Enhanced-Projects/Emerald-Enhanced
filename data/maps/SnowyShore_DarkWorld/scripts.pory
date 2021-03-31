@@ -53,4 +53,5 @@ script SnowyShore_DarkWorld_EventScript_TownSign {
 text SnowyShore_DarkWorld_Text_TownSign {
 	"Basalt Burg\n"
 	"“Treasure the treacherous”"
-}
+}raw `
+`

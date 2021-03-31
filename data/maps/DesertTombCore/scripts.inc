@@ -1,8 +1,0 @@
-DesertTombCore_MapScripts::
-	.byte 0
-	
-NM11_Steelixite::
-	finditem ITEM_STEELIXITE
-	setflag FLAG_RYU_DTC_STEELIXITE
-	release
-	end

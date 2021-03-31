@@ -1,0 +1,99 @@
+raw `
+StoryMap_KyogreChase_MapScripts::
+	map_script ON_WARP, SFC_OnWarp
+	map_script ON_FRAME KyogreChase_OnFrameMapScript
+	.byte 0
+
+KyogreChase_OnFrameMapScript:
+	map_script_2 VAR_RYU_AQUA, 116, KyogreChase_TestScene
+	map_script_2 VAR_RYU_AQUA, 119, KyogreChase_TestScene2
+	.2byte 0
+
+KyogreChase_TestScene::
+	setweather WEATHER_RAIN_THUNDERSTORM
+	doweather
+	delay 20
+	setvar VAR_RYU_AQUA, 118@player has watched third part of aqua cutscene
+	special SpawnCameraObject
+	applymovement 1, Common_Movement_FaceLeft
+	waitmovement 1
+	applymovement 1, KyogreChase_ChaseScene
+	applymovement 2, KyogreChase_ChaseScene
+	applymovement OBJ_EVENT_ID_CAMERA, KyogreChase_ChaseScene
+	delay 120
+	msgbox KyogreChase_ChaseSceneMsg
+	closemessage
+	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement 1, DM_TurnToSub
+	waitmovement 1
+	playse SE_W088
+	waitse
+	delay 60
+	removeobject 2
+	setvar VAR_RYU_AQUA, 119
+	warpsilent MAP_STORY_MAP_KYOGRE_CHASE, 255, 26, 7
+	waitstate
+
+KyogreChase_TestScene2::
+	setweather WEATHER_UNDERWATER_BUBBLES
+	doweather
+	delay 30
+	setvar VAR_RYU_AQUA, 122 @Player watched final part of cutscene
+	msgbox KyogreChase_OhNo
+	closemessage
+	applymovement 3, KyogreChase_KyogreToSub
+	waitmovement 3
+	delay 20
+	setmetatile 27, 6, 736, 0
+	setmetatile 27, 7, 240, 0
+	msgbox DM_TS2_TakingOnWater
+	special DrawWholeMapView
+	playse SE_W088
+	special DrawWholeMapView
+	waitse
+	warpsilent MAP_MOSSDEEP_CITY, 255, 46, 8
+	end
+
+DM_TS2_TakingOnWater:
+	.string "Boss! We're taking on wat-$"
+
+KyogreChase_OhNo:
+	.string "Oh, no!$"
+
+KyogreChase_ChaseSceneMsg:
+	.string "Kyogre!\pListen to my commands!$"
+
+KyogreChase_ChaseScene:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+DM_TurnToSub:
+	face_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+KyogreChase_KyogreToSub:
+	walk_right
+	walk_right
+	walk_right
+	step_end
+`

@@ -1,0 +1,482 @@
+raw `
+AncientTomb_MapScripts:: @ 8238FB3
+	map_script ON_RESUME, AncientTomb_OnResume
+	map_script ON_LOAD , AncientTomb_OnLoad
+	map_script ON_TRANSITION, AncientTomb_OnTransition
+	map_script ON_FRAME, AT_SetupLanaEvent2
+	.byte 0
+
+AncientTomb_OnResume: @ 8238FC3
+	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, AncientTomb_EventScript_TryRemoveRegisteel
+	end
+
+AncientTomb_EventScript_TryRemoveRegisteel:: @ 8238FCD
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_CAUGHT
+	goto_if_ne Common_EventScript_NopReturn
+	removeobject VAR_LAST_TALKED
+	return
+
+AncientTomb_OnTransition: @ 8238FE1
+	setflag FLAG_LANDMARK_ANCIENT_TOMB
+	call RyuCheckForLNSUAch
+	call_if_unset FLAG_DEFEATED_REGISTEEL, AncientTomb_EventScript_ShowRegisteel
+	end
+
+AncientTomb_EventScript_ShowRegisteel:: @ 8238FEE
+	clearflag FLAG_HIDE_REGISTEEL
+	return
+
+AncientTomb_OnLoad: @ 8238FF2
+	call_if_unset FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED, AncientTomb_EventScript_HideRegiEntrance
+	end
+
+AncientTomb_EventScript_HideRegiEntrance:: @ 8238FFC
+	setmetatile 7, 19, METATILE_Cave_EntranceCover, 1
+	setmetatile 8, 19, METATILE_Cave_EntranceCover, 1
+	setmetatile 9, 19, METATILE_Cave_EntranceCover, 1
+	setmetatile 7, 20, METATILE_Cave_SealedChamberBraille_Mid, 1
+	setmetatile 8, 20, METATILE_Cave_SealedChamberBraille_Mid, 1
+	setmetatile 9, 20, METATILE_Cave_SealedChamberBraille_Mid, 1
+	return
+
+AncientTomb_EventScript_CaveEntranceMiddle:: @ 8239033
+	lockall
+	goto_if_set FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED, AncientTomb_EventScript_BigHoleInWall
+	braillemessage AncientTomb_Braille_ShineInTheMiddle
+	waitbuttonpress
+	closebraillemessage
+	compare VAR_RYU_DS_LANA_STAGE, 40
+	goto_if_gt ryu_end
+	msgbox DR_PlayerHitWall
+	closemessage
+	setflag FLAG_SYS_REGIROCK_PUZZLE_COMPLETED
+	playse SE_W088
+	waitse
+	delay 25
+	fadeoutbgm 0
+	playse SE_W089
+	special DoSealedChamberShakingEffect1
+	setflag FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED
+	waitse
+	call DR_LeafOpenDoor
+	fadeinbgm 0
+	releaseall
+	end
+
+AncientTomb_EventScript_BigHoleInWall:: @ 8239046
+	msgbox gText_BigHoleInTheWall, MSGBOX_DEFAULT
+	releaseall
+	end
+
+AncientTomb_EventScript_CaveEntranceSide:: @ 8239050
+	lockall
+	braillemessage AncientTomb_Braille_ShineInTheMiddle
+	waitbuttonpress
+	closebraillemessage
+	releaseall
+	end
+
+AncientTomb_EventScript_Registeel:: @ 823905A
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_REGISTEEL, 2
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_REGISTEEL, 40, ITEM_METAL_COAT
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special StartRegiBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_eq AncientTomb_EventScript_DefeatedRegisteel
+	compare VAR_RESULT, B_OUTCOME_RAN
+	goto_if_eq AncientTomb_EventScript_RanFromRegisteel
+	compare VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED
+	goto_if_eq AncientTomb_EventScript_RanFromRegisteel
+	setflag FLAG_DEFEATED_REGISTEEL
+	release
+	end
+
+AncientTomb_EventScript_DefeatedRegisteel:: @ 82390A1
+	setflag FLAG_DEFEATED_REGISTEEL
+	goto Common_EventScript_RemoveStaticPokemon
+	end
+
+AncientTomb_EventScript_RanFromRegisteel:: @ 82390AA
+	setvar VAR_0x8004, SPECIES_REGISTEEL
+	goto Common_EventScript_LegendaryFlewAway
+	end
+	
+@====================================Leaf Events
+
+
+AT_SetupLanaEvent2:
+	map_script_2 VAR_RYU_DS_LANA_STAGE, 82, AT_LanaEvent2
+	.2byte 0
+	
+AT_LanaEvent2::
+	addobject 4
+	addobject 2
+	lock
+	setvar VAR_RYU_DS_LANA_STAGE, 83
+	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
+	applymovement OBJ_EVENT_ID_PLAYER, AT_SV_PlayerEntry
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_PIN
+	waitse
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, AT_SV_Cam1
+    waitmovement OBJ_EVENT_ID_CAMERA
+	msgbox AT_SV_Story2 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story21 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story22 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story23 MSGBOX_DEFAULT
+	applymovement 2, Common_Movement_QuestionMark
+	waitmovement 2
+	msgbox AT_SV_Story3 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story31 MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_RYU_DS_LANA_STAGE, 83
+	goto AT_LanaEvent3
+
+AT_LanaEvent3::
+	setvar VAR_RYU_DS_LANA_STAGE, 84
+	msgbox AT_SV_Story32 MSGBOX_DEFAULT
+	closemessage
+	applymovement 4, AT_SV_Gary1
+	applymovement 2, AT_SV_Lana1
+	applymovement OBJ_EVENT_ID_PLAYER, AT_SV_Player1
+	waitmovement OBJ_EVENT_ID_PLAYER
+	special RemoveCameraObject
+	fadenewbgm MUS_RG_EXEYE
+	msgbox AT_SV_Story4 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story41 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story42 MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox AT_SV_Story5 MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox AT_SV_Story6 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story61 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story62 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story63 MSGBOX_DEFAULT
+	fadenewbgm MUS_DUMMY
+	msgbox AT_SV_Story7 MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_RG_RIVAL1, 0
+	msgbox AT_SV_Story8 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story81 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story82 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story83 MSGBOX_DEFAULT
+	applymovement 2, AT_SV_LeafBesidePlayer
+	waitmovement 2
+	setflag FLAG_TEMP_9
+	msgbox AT_SV_Story9 MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_RYU_DS_LANA_STAGE, 85
+	goto AT_SV_Battle
+	
+AT_SV_Battle::
+	setvar VAR_RYU_DS_LANA_STAGE, 86
+	savebgm MUS_RG_NANADUNGEON
+	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 115
+	special SavePlayerParty
+	trainerbattle 10 TRAINER_RED, 0, NULL, AT_SV_GaryBattleDefeat
+	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
+	setvar VAR_0x8005, 4|2
+	setvar VAR_0x8006, TRAINER_REL_LANA
+	setvar VAR_0x8007, TRAINER_BACK_PIC_LEAF
+	special DoSpecialTrainerBattle
+	waitstate
+	special LoadPlayerParty
+	goto AT_SV_ReturnFromBattle
+	
+AT_SV_ReturnFromBattle::
+	fadenewbgm MUS_RG_NANADUNGEON
+	msgbox AT_SV_Story10 MSGBOX_DEFAULT
+	closemessage
+	playmoncry SPECIES_REGISTEEL, 0
+	waitmoncry
+	applymovement 4, Common_Movement_ExclamationMark
+	waitmovement 4
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement 2, Common_Movement_FaceUp
+	applymovement 4, Common_Movement_FaceUp
+	waitmovement 4
+	fadescreen 1
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+	removeobject 4
+	playse SE_W089
+	waitse
+	fadescreen 0
+	msgbox AT_SV_Story11 MSGBOX_DEFAULT
+	applymovement 2, Common_Movement_FaceLeft
+	waitmovement 2
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	msgbox AT_SV_Story12 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story121
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox AT_SV_Story13 MSGBOX_DEFAULT
+	msgbox AT_SV_Story131 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_Story132 MSGBOX_DEFAULT
+	applymovement 2, Common_Movement_QuestionMark
+	waitmovement 2
+	fadenewbgm MUS_FUNE_KAN
+	msgbox AT_SV_Story14 MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement 2, Common_Movement_HeartEmote
+	waitmovement 2
+	msgbox AT_SV_Story15 MSGBOX_DEFAULT
+	closemessage
+	msgbox AT_SV_FINAL_MSG MSGBOX_DEFAULT
+	closemessage
+	applymovement 2, AT_SV_LeafLeaving
+	waitmovement 2
+	setvar VAR_RYU_DS_LANA_STAGE, 90
+	setflag FLAG_HIDE_AT1_LEAF
+	playse SE_DOOR
+	removeobject 2
+	fadenewbgm MUS_MABOROSI
+	applymovement OBJ_EVENT_ID_PLAYER, AT_SV_Exit
+	waitmovement OBJ_EVENT_ID_PLAYER
+	warp MAP_ROUTE120, 255, 7, 56
+	releaseall
+	end
+	
+AT_SV_Story2:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}You...!$"
+	
+AT_SV_Story21:
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}To think I'd run into you in a\n"
+    .string "place like this...fate is cruel.$"
+	
+AT_SV_Story22:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I could say the same about you\n"
+    .string "too, Gary...$"
+
+AT_SV_Story23:
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Pot callin' the kettle black, huh?\n"
+    .string "Hmph, I suppose that's fair.\p"
+    .string "By the way, I couldn't help but\n"
+    .string "notice...$"
+	
+AT_SV_Story3:
+	.string "You seem to be more...talkative...\n"
+    .string "conversational...than before.$"
+	
+AT_SV_Story31:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}What's it to you? It never\n"
+    .string "mattered to you before.\p"
+    .string "I never mattered...to you...$"
+	
+AT_SV_Story32:
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}You're right, you didn't...and\n"
+    .string "that's when I realized...$"
+	
+AT_SV_Story4:
+	.string "Who the hell are you!?$"
+	
+AT_SV_Story41:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}That's as far as you're gonna\n"
+    .string "go, little man.\p$"
+	
+AT_SV_Story42:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}!? Why're you-$"
+	
+AT_SV_Story5:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Just doing my duty to\n"
+    .string "make sure my partner's stayin'\l"
+    .string "outta trouble.$"
+	
+AT_SV_Story6:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}And you...you're public enemy\n"
+    .string "number one! You've got some nerve\l"
+    .string "coming here after what you did to\l"
+    .string "her.\p$"
+	
+AT_SV_Story61:
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Pfft, you think I came here to-\p"
+    .string "No, I dare not say it, it's\n"
+    .string "unthinkable...\l"
+    .string "And you...with her? I pity you.$"
+	
+AT_SV_Story62:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...\p$"
+	
+AT_SV_Story63:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}No, you're the one who needs pity,\n"
+    .string "but I sure as hell am not gonna\p"
+    .string "give it, because thanks to your\n"
+    .string "childlike behavior, I've come\p"
+    .string "across a person I wouldn't dare\n"
+    .string "let go of.\p"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}{PLAYER}...\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}And besides, what's someone like\n"
+    .string "you doing in Hoenn, anyway?\p"
+    .string "Champions don't usually leave\n"
+    .string "their home region, if you can\l"
+    .string "even be called one...$"
+	
+AT_SV_Story7:
+    .string "... ... ... ...\p"
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Nah...don't tell me...say it\n"
+    .string "ain't so...could it be...you've\l"
+    .string "been stripped of-$"
+	
+AT_SV_Story8:
+    .string "Silence!\p$"
+	
+AT_SV_Story81:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Wow, Gary...and you say I'm the\n"
+    .string "chatterbox?\p"
+    .string "Well, you know what they say...\p"
+    .string "guys who talk big have little pe-$"
+	
+AT_SV_Story82:
+    .string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Enough! I will not be insulted by\n"
+    .string "nobodies! Time to battle!$"
+	
+AT_SV_Story83:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Ante up, fool...I'm gonna enjoy\n"
+    .string "this...$"
+	
+AT_SV_Story9:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}If you're doing that, I've no\n"
+    .string "choice but to go all-in...it'll be\l"
+    .string " my turn to shut him up!$"
+	
+AT_SV_GaryBattleDefeat:
+    .string "This shouldn't be possible!\nI'm the greatest trainer!$"
+
+AT_SV_Story10:
+	.string "... ... ... ...\p"
+    .string "How...!? I'm the best...the\n"
+    .string "greatest trainer in all-!$"
+	
+AT_SV_Story11:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}What the-\n"
+    .string "What happened?$"
+	
+AT_SV_Story111:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Seems like Registeel decided we\n"
+    .string "were making too much noise and\l"
+    .string "came out of hiding.$"
+	
+AT_SV_Story12:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Good thing I had the other Regis\p"
+    .string "calm him down. Gave me the perfect\n"
+    .string "opportunity to catch him too.$"
+	
+AT_SV_Story121:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Woo, that's my girl!$"
+	
+AT_SV_Story13:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Wait, what happened to Gary?$"
+	
+AT_SV_Story131:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}... ... ... ...\n"
+    .string "Let's just say...he wasn't so\p"
+    .string "fortunate. But it doesn't matter.\n"
+    .string "It's finally over.$"
+	
+AT_SV_Story132:
+    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Uh...no it's not.$"
+	
+AT_SV_Story14:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Did you forget the whole reason\nwe were travelling across Hoenn\lin the first place?$"
+
+AT_SV_Story15:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Oh, well...\p{COLOR LIGHT_BLUE}{SHADOW BLUE}Figures...\p... ... ... ...\p{COLOR LIGHT_RED}{SHADOW RED}It's because I started to view it\nless as an assignment and more\llike an adventure...our adventure.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Oof! That tugged at the\nheartstrings a little bit...\p{COLOR LIGHT_RED}{SHADOW RED}Well, just you wait...you'll see\nthat's not the only thing I can\ltug...$"
+
+AT_SV_FINAL_MSG:
+	.string "{COLOR LIGHT_RED}{SHADOW RED}But let's go to the Trickmaster\nnow.\p{COLOR LIGHT_BLUE}{SHADOW BLUE}You're such a tease...$"
+	
+AT_SV_Exit:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+AT_SV_LeafBesidePlayer:
+	walk_right
+	walk_up
+	walk_in_place_up
+	step_end
+
+AT_SV_LeafLeaving:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_in_place_down
+	delay_16
+	walk_in_place_right
+	walk_in_place_up
+	delay_8
+	delay_16
+	walk_in_place_up
+	delay_16
+	walk_in_place_down
+	step_end
+	
+AT_SV_PlayerEntry:
+	walk_up
+	walk_up
+	emote_exclamation_mark
+	step_end
+	
+AT_SV_Cam1:
+	walk_up
+	walk_up
+	step_end
+	
+AT_SV_Gary1:
+	walk_down
+	walk_in_place_down
+	step_end
+	
+AT_SV_Lana1:
+	delay_16
+	delay_8
+	walk_down
+	walk_in_place_up
+	step_end
+	
+AT_SV_Player1:
+	delay_16
+	delay_16
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	walk_fast_left
+	walk_in_place_fast_up
+	step_end
+
+
+`

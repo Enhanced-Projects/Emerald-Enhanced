@@ -1,0 +1,566 @@
+raw `
+Route119_WeatherInstitute_2F_MapScripts:: @ 826FF1E
+	map_script ON_TRANSITION, Route119_WeatherInstitute_2F_OnTransition
+	.byte 0
+
+Route119_WeatherInstitute_2F_OnTransition: @ 826FF24
+	compare VAR_WEATHER_INSTITUTE_STATE, 0
+	call_if_eq Route119_WeatherInstitute_2F_EventScript_SetScientistPosAquaHere
+	compare VAR_WEATHER_INSTITUTE_STATE, 1
+	call_if_eq Route119_WeatherInstitute_2F_EventScript_SetScientistPosAquaGone
+	call_if_set FLAG_SYS_GAME_CLEAR, Route119_WeatherInstitute_2F_EventScript_SetScientistPosGameClear
+	end
+
+Route119_WeatherInstitute_2F_EventScript_SetScientistPosAquaHere:: @ 826FF44
+	setobjectxyperm 5, 1, 6
+	setobjectmovementtype 5, MOVEMENT_TYPE_FACE_RIGHT
+	return
+
+Route119_WeatherInstitute_2F_EventScript_SetScientistPosAquaGone:: @ 826FF50
+	setobjectxyperm 5, 4, 6
+	setobjectmovementtype 5, MOVEMENT_TYPE_FACE_RIGHT
+	return
+
+Route119_WeatherInstitute_2F_EventScript_SetScientistPosGameClear:: @ 826FF5C
+	return
+
+Route119_WeatherInstitute_2F_EventScript_Grunt5:: @ 826FF68
+	trainerbattle_single TRAINER_GRUNT_WEATHER_INST_5, Route119_WeatherInstitute_2F_Text_Grunt5Intro, Route119_WeatherInstitute_2F_Text_Grunt5Defeat
+	msgbox Route119_WeatherInstitute_2F_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_WeatherInstitute_2F_EventScript_Grunt2:: @ 826FF7F
+	trainerbattle_single TRAINER_GRUNT_WEATHER_INST_2, Route119_WeatherInstitute_2F_Text_Grunt2Intro, Route119_WeatherInstitute_2F_Text_Grunt2Defeat
+	msgbox Route119_WeatherInstitute_2F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_WeatherInstitute_2F_EventScript_Grunt3:: @ 826FF96
+	trainerbattle_single TRAINER_GRUNT_WEATHER_INST_3, Route119_WeatherInstitute_2F_Text_Grunt3Intro, Route119_WeatherInstitute_2F_Text_Grunt3Defeat
+	msgbox Route119_WeatherInstitute_2F_Text_Grunt3PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_WeatherInstitute_2F_EventScript_Shelly:: @ 826FFAD
+	trainerbattle_single TRAINER_SHELLY_1, Route119_WeatherInstitute_2F_Text_ShellyIntro, Route119_WeatherInstitute_2F_Text_ShellyDefeat, Route119_WeatherInstitute_2F_EventScript_ShellyDefeated
+	msgbox Route119_WeatherInstitute_2F_Text_ShellyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route119_WeatherInstitute_2F_EventScript_ShellyDefeated:: @ 826FFC8
+	msgbox Route119_WeatherInstitute_2F_Text_ShellyPostBattle, MSGBOX_DEFAULT
+	closemessage
+	addobject 7  @ Aqua grunt
+	applymovement 7, Route119_WeatherInstitute_2F_Movement_GruntApproachShelly
+	applymovement OBJ_EVENT_ID_PLAYER, Route119_WeatherInstitute_2F_Movement_ShovePlayerOutOfWay
+	waitmovement 0
+	msgbox Route119_WeatherInstitute_2F_Text_TeamMagmaJustPassedBy, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement 3, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement 3, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route119_WeatherInstitute_2F_Text_WeHaveToHurryToMtPyre, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_WEATHER_INSTITUTE_STATE, 1
+	clearflag FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
+	fadedefaultbgm
+	fadescreen FADE_TO_BLACK
+	setflag FLAG_HIDE_ROUTE_119_TEAM_AQUA
+	setflag FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M
+	removeobject 1
+	removeobject 2
+	removeobject 3
+	removeobject 8
+	removeobject 7
+	applymovement OBJ_EVENT_ID_PLAYER, Route119_WeatherInstitute_2F_Movement_PlayerReturnToPosition
+	waitmovement 0
+	fadescreen FADE_FROM_BLACK
+	applymovement 5, Route119_WeatherInstitute_2F_Movement_ScientistApproachPlayer
+	waitmovement 0
+	copyobjectxytoperm 5
+	goto Route119_WeatherInstitute_2F_EventScript_ReceiveCastform
+	end
+
+Route119_WeatherInstitute_2F_EventScript_ReceiveCastform:: @ 827004D
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 104
+	goto_if_ge WI_AfterCozmo
+	msgbox Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon, MSGBOX_DEFAULT
+	setvar VAR_TEMP_1, 385
+	givemon SPECIES_CASTFORM, 25, ITEM_MYSTIC_WATER
+	closemessage
+	playmoncry SPECIES_CASTFORM, 0
+	showmonpic SPECIES_CASTFORM, 10, 3
+	waitmoncry
+	hidemonpic
+	playfanfare MUS_FANFA4
+	msgbox WI_ObtainedCastform
+	waitfanfare
+	closemessage
+	special SpawnCameraObject
+	clearflag FLAG_RYU_HIDE_REL_OBJECTS
+	addobject 9
+	playse SE_DOOR
+	applymovement OBJ_EVENT_ID_CAMERA, WI_CameraToCozmoFast
+	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement 9, WI_MoveCozmoIn @10 left, 1 up, face down
+	applymovement OBJ_EVENT_ID_CAMERA, WI_MoveCozmoIn
+	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement OBJ_EVENT_ID_CAMERA, WI_Diag
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	closemessage
+	goto WI_CozmoScene
+	end
+
+WI_CozmoScene::
+	applymovement 5, Common_Movement_FaceUp
+	waitmovement 5
+	msgbox WI_OhCozmo
+	closemessage
+	msgbox WI_BeenAWhile
+	closemessage
+	applymovement 5 Common_Movement_ExclamationMark
+	waitmovement 5
+	msgbox WI_OhYouCameHere
+	closemessage
+	applymovement 5, Common_Movement_FaceRight
+	waitmovement 5
+	msgbox WI_YesWell
+	closemessage
+	applymovement 5, Common_Movement_FaceRight
+	waitmovement 5
+	msgbox WI_wonderfulNews
+	closemessage
+	applymovement 5, Common_Movement_FaceRight
+	applymovement 9, Common_Movement_FaceRight
+	waitmovement 9
+	msgbox WI_SeemsLike
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox WI_GuessSo
+	closemessage
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 103
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	setflag FLAG_RYU_HIDE_REL_OBJECTS
+	release
+	end
+	
+WI_AfterCozmo::
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 104
+	goto_if_ge WI_AfterDesert
+	msgbox WI_GoToDesert
+	release
+	end
+	
+WI_AfterDesert::
+	lock
+	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 105
+	goto_if_ge WI_GoToMossdeep
+	msgbox WI_WelcomeBack
+	closemessage
+	msgbox WI_TriedItsBest
+	playmoncry SPECIES_CASTFORM, 5
+	waitmoncry
+	closemessage
+	msgbox WI_AttemptFailed
+	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 105
+	msgbox WI_YouAndCastform
+	closemessage
+	playmoncry SPECIES_CASTFORM, 0
+	setvar VAR_MOSSDEEP_CITY_STATE, 2
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 1
+	release
+	end
+	
+WI_GoToMossdeep::
+	msgbox WI_GoToMossdeepMsg
+	setvar VAR_MOSSDEEP_CITY_STATE, 2
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 1
+	closemessage
+	release
+	end
+	
+WI_OhCozmo:
+	.string "Oh, Cozmo, what are you doing\nhere?$"
+	
+WI_BeenAWhile:
+	.string "It's been a while! How's\n"
+	.string "your research coming along?\p"
+	.string "It's had its ups and downs, but\n"
+	.string "progress is still going, mainly\l"
+	.string "thanks to this young one.$"
+
+WI_OhYouCameHere:
+	.string "Oh, {PLAYER} You came here with\n"
+	.string "Cozmo! That makes this easy,\l"
+	.string "then. $"
+
+WI_YesWell:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Yes, well, I was interested in\n"
+	.string "working as an understudy.$"
+	
+WI_wonderfulNews:
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Bart: Really? That's wonderful news! I'd\n"
+	.string "be delighted if you joined us. We\p"
+	.string "could use an extra pair of hands\n"
+	.string "around here.\p"
+	.string "Cozmo: By the way Bart, how's\n"
+	.string "progress on your end?\p"
+	.string "Bart: I hate to admit it, but it has\n"
+	.string "slowed to a crawl.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} What're you working on?\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}We've begun initial development on\n"
+	.string "a device dubbed the Forecaster. An\p"
+	.string "artificial attempt to simulate and\n"
+	.string "recreate multiple weather patterns\p"
+	.string "by utilizing Castform's ability as\n"
+	.string "a guide...but as I said, it's not\l"
+	.string "going so well.\p"
+	.string "Cozmo: What seems to be the issue?\p"
+	.string "Bart: Strictly speaking, there are 4\n"
+	.string "weather conditions in Hoenn...of\p"
+	.string "those 4, only 3 can be emulated\n"
+	.string "thru Castform thanks to its\l"
+	.string "associated forms.\p"
+	.string "As far as we know, there isn't one\n"
+	.string "for Sandstorm conditions, although\p"
+	.string "strangely enough, it can learn the\n"
+	.string "move.\p"
+	.string "Cozmo: Quite a conundrum indeed...\n"
+	.string "Perhaps if it visited such a\p"
+	.string "location, we might receive better\n"
+	.string "results.$"
+
+WI_SeemsLike:
+	.string "Seems like your first assignment\n"
+	.string "is already underway.$"
+
+WI_GuessSo:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} Guess so.\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Would you? Thanks, this'll be a\n"
+	.string "huge help. All you have to do is\p"
+	.string "take Castform to the deepest part\n"
+	.string "of the Desert Area. Monitor its\p"
+	.string "response and record any behavioral\n"
+	.string "changes it may display. Who knows,\p"
+	.string "if it turns out a success, it\n"
+	.string "might unveil a version of Castform\l"
+	.string "no one has ever witnessed!\p"
+	.string "What a discovery that would be!$"
+	
+WI_ObtainedCastform:
+	.string "{PLAYER} Received the Castform!$"
+	
+WI_GoToDesert:
+	.string "Bart: You should be headed to the\ndesert on Route 111.$"
+	
+WI_WelcomeBack:
+	.string "Welcome back, {PLAYER}! How'd it\n"
+	.string "go out in the field?$"
+
+WI_TriedItsBest:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Castform tried its' best, however\n"
+	.string "the environment was too harsh for\l"
+	.string "it to undergo a form change.$"
+
+
+WI_AttemptFailed:
+	.string "I see...so the attempt ended in\n"
+	.string "failure. Perhaps it simply needs\p"
+	.string "to get used to the feeling of its'\n"
+	.string "own Sandstorm before being exposed\l"
+	.string "to a natural one.\p"
+	.string "A test of endurance, then? Sounds\n"
+	.string "plausible, however this facility\p"
+	.string "currently lacks the equipment\n"
+	.string "necessary to make such an\p"
+	.string "evaluation. We should ask Mossdeep\l"
+	.string "for help.\p"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}You think they'll take on the task\n"
+	.string "when they're already busy with the\l"
+	.string "their space endeavors?\p"
+	.string "{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I'd say it's worth a shot. I'll\n"
+	.string "give them a call.$"
+
+
+WI_YouAndCastform:
+	.string "In the meantime, {PLAYER},\n"
+	.string "you and Castform should\p"
+	.string "visit the Mossdeep Space Center. I\n"
+	.string "I'm certain they'll be able to\p"
+	.string "help.$"
+
+
+WI_GoToMossdeepMsg:
+	.string "Bart: I've already called Mossdeep.\p"
+	.string "You should head there soon.$"
+	
+WI_MoveCozmoIn:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_in_place_down
+	step_end
+	
+WI_CameraToCozmoFast:
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	walk_fastest_right
+	step_end
+	
+WI_Diag:
+	walk_diag_southeast
+	step_end
+
+
+Route119_WeatherInstitute_2F_EventScript_ReceiveCastformParty:: @ 8270085
+	call Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq Route119_WeatherInstitute_2F_EventScript_ExplainCastform
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	goto Route119_WeatherInstitute_2F_EventScript_ExplainCastform
+	end
+
+Route119_WeatherInstitute_2F_EventScript_ReceiveCastformPC:: @ 82700AD
+	call Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq Route119_WeatherInstitute_2F_EventScript_SendCastformToPC
+	call Common_EventScript_NameReceivedBoxMon
+	goto Route119_WeatherInstitute_2F_EventScript_SendCastformToPC
+	end
+
+Route119_WeatherInstitute_2F_EventScript_SendCastformToPC:: @ 82700D0
+	call Common_EventScript_TransferredToPC
+	goto Route119_WeatherInstitute_2F_EventScript_ExplainCastform
+	end
+
+Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfare:: @ 82700DB
+	playfanfare MUS_FANFA4
+	message Route119_WeatherInstitute_2F_Text_PlayerReceivedCastform
+	waitmessage
+	waitfanfare
+	bufferspeciesname 0, SPECIES_CASTFORM
+	return
+
+Route119_WeatherInstitute_2F_EventScript_ExplainCastform:: @ 82700EA
+	msgbox Route119_WeatherInstitute_2F_Text_PokemonChangesWithWeather, MSGBOX_DEFAULT
+	setflag FLAG_RECEIVED_CASTFORM
+	release
+	end
+
+Route119_WeatherInstitute_2F_EventScript_ScientistMentionWeather:: @ 82700F7
+	goto_if_set FLAG_SYS_GAME_CLEAR, Route119_WeatherInstitute_2F_EventScript_TryStartAbnormalWeather
+	msgbox Route119_WeatherInstitute_2F_Text_ChangingWeatherRidiculous, MSGBOX_DEFAULT
+	release
+	end
+
+Route119_WeatherInstitute_2F_EventScript_TryStartAbnormalWeather:: @ 827010A
+	release
+	end
+
+Route119_WeatherInstitute_2F_EventScript_KyogreWeather:: @ 827014F
+	msgbox Route119_WeatherInstitute_2F_Text_KyogreWeather, MSGBOX_DEFAULT
+	release
+	end
+
+Route119_WeatherInstitute_2F_EventScript_CreateAbnormalWeather:: @ 8270159
+	return
+
+Route119_WeatherInstitute_2F_EventScript_LegendaryDefeated:: @ 8270160
+	addvar VAR_0x8004, 1
+	return
+
+Route119_WeatherInstitute_2F_EventScript_NoAbnormalWeather:: @ 8270166
+	msgbox Route119_WeatherInstitute_2F_Text_NoAbnormalWeather, MSGBOX_DEFAULT
+	release
+	end
+
+Route119_WeatherInstitute_2F_Movement_GruntApproachShelly: @ 8270170
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	step_end
+
+Route119_WeatherInstitute_2F_Movement_ShovePlayerOutOfWay: @ 827017C
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	ride_water_current_up
+	walk_in_place_fastest_down
+	step_end
+
+Route119_WeatherInstitute_2F_Movement_PlayerReturnToPosition: @ 8270184
+	slide_down
+	walk_in_place_fastest_left
+	step_end
+
+Route119_WeatherInstitute_2F_Movement_ScientistApproachPlayer: @ 8270187
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+Route119_WeatherInstitute_2F_EventScript_WeatherScientist:: @ 827018B
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_CASTFORM, Route119_WeatherInstitute_2F_EventScript_ScientistMentionWeather
+	goto Route119_WeatherInstitute_2F_EventScript_ReceiveCastform
+	end
+
+Route119_WeatherInstitute_2F_Text_Grunt2Intro: @ 827019C
+	.string "The Institute created a type of\n"
+	.string "Pokémon that has something to do with\l"
+	.string "the weather. We're here to take them!$"
+
+Route119_WeatherInstitute_2F_Text_Grunt2Defeat: @ 8270208
+	.string "Our plan's being spoiled by a kid?$"
+
+Route119_WeatherInstitute_2F_Text_Grunt2PostBattle: @ 827022B
+	.string "If the Pokémon they made here can\n"
+	.string "control the weather freely, then we of\l"
+	.string "Team Aqua definitely need it!$"
+
+Route119_WeatherInstitute_2F_Text_Grunt3Intro: @ 8270292
+	.string "We're Team Aqua!\n"
+	.string "We appear wherever anything rare is\l"
+	.string "found!$"
+
+Route119_WeatherInstitute_2F_Text_Grunt3Defeat: @ 82702CE
+	.string "You got me!$"
+
+Route119_WeatherInstitute_2F_Text_Grunt3PostBattle: @ 82702DA
+	.string "You don't have any idea what we of\n"
+	.string "Team Aqua are working towards!\l"
+	.string "You stay out of our way!$"
+
+Route119_WeatherInstitute_2F_Text_Grunt5Intro: @ 8270335
+	.string "Don't tell me you're looking for that\n"
+	.string "weather Pokémon, too?\p"
+	.string "That's a no-no!\n"
+	.string "We were here to get it first!$"
+
+Route119_WeatherInstitute_2F_Text_Grunt5Defeat: @ 827039F
+	.string "Oh, will you look at my Pokémon?$"
+
+Route119_WeatherInstitute_2F_Text_Grunt5PostBattle: @ 82703C0
+	.string "Humph, so what?\n"
+	.string "What we want…\p"
+	.string "What we really want isn't here…\n"
+	.string "Ihihihihi…$"
+
+Route119_WeatherInstitute_2F_Text_ShellyIntro: @ 8270409
+	.string "Ahahahaha!\p"
+	.string "You're going to meddle in Team Aqua's\n"
+	.string "affairs?\p"
+	.string "You're either absolutely fearless,\n"
+	.string "simply ignorant, or both!\p"
+	.string "You're so cute, you're disgusting!\n"
+	.string "I'll put you down, kiddy!$"
+
+Route119_WeatherInstitute_2F_Text_ShellyDefeat: @ 82704BD
+	.string "Ahahahaha!\n"
+	.string "You're disgustingly strong!$"
+
+Route119_WeatherInstitute_2F_Text_ShellyPostBattle: @ 82704E4
+	.string "It's bad enough to have Team Magma\n"
+	.string "blunder about, but now there's you!\p"
+	.string "What makes you want to sniff around\n"
+	.string "in our business, anyway?$"
+
+Route119_WeatherInstitute_2F_Text_TeamMagmaJustPassedBy: @ 8270568
+	.string "We have a situation here!\p"
+	.string "A Team Magma mob just passed\n"
+	.string "the Weather Institute.\p"
+	.string "They appear to be headed for\n"
+	.string "Mt. Pyre!$"
+
+Route119_WeatherInstitute_2F_Text_WeHaveToHurryToMtPyre: @ 82705DD
+	.string "What?!\p"
+	.string "We can't waste any more time here!\n"
+	.string "We have to hurry to Mt. Pyre, too!\p"
+	.string "Ahahahaha!\n"
+	.string "Team Magma, just you wait!$"
+
+Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon: @ 8270650
+	.string "Thanks!\n"
+	.string "Thanks to you, we're safe!\p"
+	.string "It might be an odd way of thanking you,\n"
+	.string "but take this Pokémon.$"
+
+@ Unused
+Route119_WeatherInstitute_2F_Text_NoRoomForPokemon: @ 82706B2
+	.string "Hm? You don't seem to have any room\n"
+	.string "for this Pokémon.$"
+
+Route119_WeatherInstitute_2F_Text_PlayerReceivedCastform: @ 82706E8
+	.string "{PLAYER} received CASTFORM!$"
+
+Route119_WeatherInstitute_2F_Text_PokemonChangesWithWeather: @ 82706FE
+	.string "That Pokémon changes shape according\n"
+	.string "to the weather conditions.\p"
+	.string "There're plenty of them in the\n"
+	.string "INSTITUTE--go ahead and take it.$"
+
+Route119_WeatherInstitute_2F_Text_ChangingWeatherRidiculous: @ 827077E
+	.string "I've been researching rain for many\n"
+	.string "years, but it's ridiculous to think that\l"
+	.string "humans can freely change the weather.$"
+
+Route119_WeatherInstitute_2F_Text_GroudonWeather: @ 82707F1
+	.string "I track weather patterns over\n"
+	.string "the Hoenn region.\p"
+	.string "Presently, a drought has been recorded\n"
+	.string "in {STR_VAR_1}.\p"
+	.string "Could that mean, somewhere near\n"
+	.string "{STR_VAR_1}…$"
+
+Route119_WeatherInstitute_2F_Text_KyogreWeather: @ 8270873
+	.string "I track weather patterns over\n"
+	.string "the Hoenn region.\p"
+	.string "Presently, heavy rainfall has been\n"
+	.string "recorded over {STR_VAR_1}.\p"
+	.string "Could that mean, somewhere near\n"
+	.string "{STR_VAR_1}…$"
+
+Route119_WeatherInstitute_2F_Text_NoAbnormalWeather: @ 82708FC
+	.string "Abnormal weather conditions are\n"
+	.string "no longer being reported.\p"
+	.string "The occasional rainfall is a blessing,\n"
+	.string "really.$"
+
+`

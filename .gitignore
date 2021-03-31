@@ -37,3 +37,4 @@ pokeemerald.ss1
 include/constants/battle_frontier_mons.h.old
 pokeemerald.bps
 tools/poryscript
+data/maps/*/scripts.inc

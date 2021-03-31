@@ -1,0 +1,162 @@
+raw `
+FieryPath_MapScripts:: @ 8230F24
+	map_script ON_TRANSITION, FieryPath_OnTransition
+	.byte 0
+
+FieryPath_OnTransition: @ 8230F2A
+	call_if_unset FLAG_LANDMARK_FIERY_PATH, FieryPath_EventScript_MoveScottToFallarbor
+	setflag FLAG_LANDMARK_FIERY_PATH
+	call RyuCheckForLNSUAch
+	end
+
+FieryPath_EventScript_MoveScottToFallarbor:: @ 8230F37
+	setflag FLAG_HIDE_VERDANTURF_TOWN_SCOTT
+	clearflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
+	return
+
+RyuLegendary_Entei::
+	goto_if_set FLAG_RYU_ENTEI, ryu_end
+	goto_if_set FLAG_RYU_ENTEI_RAN, ryu_end
+	msgbox RyuLegendary_IntroEntei
+	setvar VAR_TEMP_5, SPECIES_ENTEI
+	setvar VAR_TEMP_9, ITEM_FLAME_ORB
+	call RyuLegendary_GeneralLegendEncounter
+	switch VAR_RESULT
+	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtEntei @if the mon was caught, set main flag and delete object permanently.
+	setflag FLAG_RYU_ENTEI_RAN @since the outcome wasn't caught, the mon will disappear until player clears champion or title defense again.
+	removeobject 9 @Put the porymap object ID here
+	release
+	end
+
+RyuLegendary_CaughtEntei::
+	setflag FLAG_RYU_ENTEI @once this flag is set, the mon will never come back.
+	removeobject 9 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
+	release
+	end
+
+RyuLegendary_IntroEntei: @put your intro here
+	.string "Something is emerging from the\n"
+    .string "magma!$"
+	
+FP_CourtneyRomance1::
+	compare VAR_RYU_MAGMA, 405
+	goto_if_ne ryu_end
+	goto_if_set FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, ryu_end
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, FP_ToCourtney@1 up 2 right 1 up
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_PIN
+	applymovement 10, Common_Movement_QuestionMark
+	waitmovement 10
+	msgbox FP_LeaderMaxie
+	closemessage
+	applymovement 10, Common_Movement_FaceDown
+	waitmovement 10
+	playse SE_PIN
+	applymovement 10, Common_Movement_ExclamationMark
+	waitmovement 10
+	msgbox FP_You
+	closemessage
+	applymovement 10, Common_Movement_FaceUp
+	waitmovement 10
+	msgbox FP_GoAway
+	closemessage
+	msgbox FP_YouReallyShouldnt
+	closemessage
+	applymovement 10, Common_Movement_FaceDown
+	waitmovement 10
+	msgbox FP_PlayerRomanceCourtney1
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, FP_ToEmbraceCourtney
+	applymovement 10, FP_CourtneyEmbraced
+	waitmovement 10
+	playse SE_PIN
+	applymovement 10, Common_Movement_ExclamationMark
+	waitmovement 10
+	msgbox FP_SeemedToResist
+	closemessage
+	fadescreen FADE_TO_BLACK
+	delay 80
+	fadescreen FADE_FROM_BLACK
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox FP_IfYouTell
+	closemessage
+	msgbox FP_CourtneyStraightens
+	closemessage
+	applymovement 10, FP_CourtneyExits
+	waitmovement 10
+	removeobject 10
+	setflag FLAG_RYU_COURTNEY_FIERY_PATH
+	setflag FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS
+	release
+	end
+	
+	
+FP_LeaderMaxie:
+	.string "Leader Maxie!$"
+	
+FP_You:
+	.string "You…?$"
+	
+FP_GoAway:
+	.string "Go away. I've no desire to speak to\n"
+    .string "you.$"
+	
+FP_YouReallyShouldnt:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} You really shouldn't stay\nin here though...$"
+	
+FP_PlayerRomanceCourtney1:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}I said shut-\p"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} quickly embraces Courtney\n"
+    .string " before she gets a chance to finish.)$"
+
+FP_SeemedToResist:
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Courtney seems to resist at first\n"
+    .string " but gives in after a second\l"
+    .string " and starts sobbing quietly.)$"
+	
+FP_IfYouTell:
+    .string "{COLOR LIGHT_RED}{SHADOW RED}If you tell anyone about this, I\n"
+    .string "will strangle you with my bare\l"
+    .string "hands.\p"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She gives you an intense look\n"
+    .string " that softens a little…)$"
+	
+FP_CourtneyStraightens:
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Courtney straightens up her\n"
+	.string " uniform before glancing at you\l"
+	.string " once more and leaving.)$"
+	
+FP_ToCourtney:@1 up 2 right 1 up
+	walk_up
+	walk_right
+	walk_right
+	walk_up
+	step_end
+	
+FP_ToEmbraceCourtney:
+	walk_slow_up
+	walk_in_place_slow_up
+	step_end
+	
+FP_CourtneyEmbraced:
+	walk_in_place_fastest_down
+	delay_8
+	walk_in_place_fastest_down
+	step_end
+	
+FP_CourtneyExits:
+	walk_left
+	walk_down
+	walk_down
+	walk_left
+	walk_fast_down
+	walk_fast_down
+	walk_fastest_down
+	walk_fastest_down
+	walk_fastest_down
+	step_end
+`
