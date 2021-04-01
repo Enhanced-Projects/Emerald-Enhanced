@@ -152,7 +152,13 @@
     }
   ],
   "warp_events": [
-
+    {
+      "x": 12,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_SNOWY_SHORE_DARK_WORLD_PRIESTESS_HOUSE",
+      "dest_warp_id": 0
+    }
   ],
   "coord_events": [
 

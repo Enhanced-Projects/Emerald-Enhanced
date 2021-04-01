@@ -221,6 +221,10 @@ script(global) RyuPokefansDailyQuest  {
 
 script(global) RyuOutcastsDailyQuest  {
      if (flag(FLAG_FINISHED_OUTCAST_DAILY) == true) { //quest done
+        checkfactionstanding(FACTION_OUTCASTS, 175)
+        if (var(VAR_RESULT) == TRUE) {
+            call(RyuOutcastsSpecialQuestIntro)
+        }
         msgbox("The rituals are going as intended.")
         release
         end

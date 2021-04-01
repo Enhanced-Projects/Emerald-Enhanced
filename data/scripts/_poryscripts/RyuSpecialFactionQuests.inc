@@ -7,6 +7,7 @@ RyuOutcastsSpecialQuestIntro::
 
 
 RyuOutcastsSpecialAlreadyInProgress::
+	goto ryu_return
 	return
 
 
@@ -64,15 +65,17 @@ RA_Lorwyn_NeedsBotany::
 
 RA_Lorwyn_DoTeleport::
 	setflag FLAG_RYU_FINISHED_LORWYNS_TEST
-	msgbox RA_Lorwyn_DoTeleport_Text_0, MSGBOX_YESNO
+	msgbox RA_Lorwyn_DoTeleport_Text_0
+	closemessage
+	msgbox RA_Lorwyn_DoTeleport_Text_1, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	call_if_eq RA_Lorwyn_ExplainVillage
-	msgbox RA_Lorwyn_DoTeleport_Text_1
+	msgbox RA_Lorwyn_DoTeleport_Text_2
 	closemessage
 	drawfullscreenimage SCENEBGWARP
 	delay 60
 	clearfullscreenimage
-	warpteleport MAP_LITTLEROOT_TOWN, 255, 13, 13
+	warpteleport MAP_SNOWY_SHORE_DARK_WORLD, 255, 20, 16
 	waitstate
 	return
 
@@ -114,10 +117,16 @@ RA_Lorwyn_NeedsBotany_Text_0:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}(You should increase your botany skill.)$"
 
 RA_Lorwyn_DoTeleport_Text_0:
-	.string "Would you like to know more about\n"
-	.string "(VillageName)?$"
+	.string "I believe that there is a link between\n"
+	.string "Basalt Burg and Snowy Shore. The sign\l"
+	.string "in the middle of both towns is one and\l"
+	.string "the same.$"
 
 RA_Lorwyn_DoTeleport_Text_1:
+	.string "Would you like to know more about\n"
+	.string "Basalt Burg?$"
+
+RA_Lorwyn_DoTeleport_Text_2:
 	.string "I'm now prepared to send you to the\n"
 	.string "hidden village.$"
 

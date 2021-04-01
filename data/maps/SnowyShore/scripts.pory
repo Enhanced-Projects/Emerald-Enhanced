@@ -8,10 +8,6 @@ SnowyShore_OnTransition:
 	call RyuCheckForLNSUAch
 	end
 
-SnowyShore_EventScript_TownSign::
-	msgbox SnowyShore_Text_TownSign, MSGBOX_SIGN
-	end
-
 SS_TemporaryPortal::
 	msgbox SS_TemporaryMagic
 	closemessage
@@ -29,10 +25,6 @@ SS_TemporaryMagic:
 
 SS_Warping:
 	.string "{PLAYER} Touched the stone...$"
-
-SnowyShore_Text_TownSign:
-	.string "Snowy Shore\n"
-	.string "“Come ashore this winter wonderland”$"
 
 SnowyShore_EventScript_CraggyCoastSign::
 	msgbox SnowyShore_Text_CraggyCoastSign, MSGBOX_SIGN
@@ -183,3 +175,34 @@ SnowyShore_EventScript_Nick::
 	msgbox SnowyShore_Text_NickPostBattle, MSGBOX_AUTOCLOSE
 	end
 `
+
+script SnowyShore_EventScript_TownSign {
+	if (var(VAR_RYU_PLAYER_ALCHEMY_SKILL) > 0) {
+		msgbox(SnowyShoreAlchemySign, MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES){
+			closemessage
+			drawfullscreenimage(SCENEBGWARP)
+			delay(60)
+			clearfullscreenimage
+			warpteleport(MAP_SNOWY_SHORE_DARK_WORLD, 255, 20, 16)
+			waitstate
+		}
+		else {
+			msgbox("{PLAYER} left the sign alone.")
+		}
+	}
+	else {
+		msgbox(SnowyShore_Text_TownSign, MSGBOX_SIGN)
+	}
+	release
+	end
+}
+
+text SnowyShoreAlchemySign {
+	"{COLOR LIGHT_GREEN}{SHADOW GREEN} (The sign is unnaturally warm.)\n{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Would you like to focus on it?"
+}
+
+text SnowyShore_Text_TownSign {
+	"Snowy Shore\n"
+	"“Come ashore this winter wonderland”$"
+}

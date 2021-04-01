@@ -326,9 +326,9 @@ RyuOutcastsDailyQuest_8:
 RyuOutcastsDailyQuest_4:
 	random 2
 	switch VAR_RESULT
-	case 0, RyuOutcastsDailyQuest_15
-	case 1, RyuOutcastsDailyQuest_16
-RyuOutcastsDailyQuest_13:
+	case 0, RyuOutcastsDailyQuest_18
+	case 1, RyuOutcastsDailyQuest_19
+RyuOutcastsDailyQuest_16:
 	setvar VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS
 	setflag FLAG_DAILY_QUEST_ACTIVE
 	closemessage
@@ -336,14 +336,18 @@ RyuOutcastsDailyQuest_13:
 	end
 
 RyuOutcastsDailyQuest_2:
+	checkfactionstanding FACTION_OUTCASTS, 175
+	compare VAR_RESULT, TRUE
+	goto_if_eq RyuOutcastsDailyQuest_14
+RyuOutcastsDailyQuest_13:
 	msgbox RyuOutcastsDailyQuest_Text_0
 	release
 	end
 
 RyuOutcastsDailyQuest_5:
 	switch VAR_RYU_DAILY_QUEST_TYPE
-	case 1, RyuOutcastsDailyQuest_18
-	case 2, RyuOutcastsDailyQuest_19
+	case 1, RyuOutcastsDailyQuest_21
+	case 2, RyuOutcastsDailyQuest_22
 	goto RyuOutcastsDailyQuest_4
 
 RyuOutcastsDailyQuest_6:
@@ -361,36 +365,40 @@ RyuOutcastsDailyQuest_10:
 	goto_if_eq RyuOutcastsDailyQuest_5
 	goto RyuOutcastsDailyQuest_8
 
-RyuOutcastsDailyQuest_15:
+RyuOutcastsDailyQuest_14:
+	call RyuOutcastsSpecialQuestIntro
+	goto RyuOutcastsDailyQuest_13
+
+RyuOutcastsDailyQuest_18:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_ENERGY_POWDER
 	setvar VAR_RYU_DAILY_QUEST_DATA, 5
 	msgbox OutcastsQuest1Desc
-	goto RyuOutcastsDailyQuest_13
+	goto RyuOutcastsDailyQuest_16
 
-RyuOutcastsDailyQuest_16:
+RyuOutcastsDailyQuest_19:
 	setvar VAR_RYU_DAILY_QUEST_TYPE, 1
 	setvar VAR_RYU_DAILY_QUEST_TARGET, ITEM_STARDUST
 	setvar VAR_RYU_DAILY_QUEST_DATA, 5
 	msgbox RyuOutcastsDailyQuest_Text_2
-	goto RyuOutcastsDailyQuest_13
-
-RyuOutcastsDailyQuest_18:
-	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
-	switch VAR_RESULT
-	case TRUE, RyuOutcastsDailyQuest_21
-	case FALSE, RyuOutcastsDailyQuest_22
-	goto RyuOutcastsDailyQuest_4
-
-RyuOutcastsDailyQuest_19:
-	end
+	goto RyuOutcastsDailyQuest_16
 
 RyuOutcastsDailyQuest_21:
+	checkitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
+	switch VAR_RESULT
+	case TRUE, RyuOutcastsDailyQuest_24
+	case FALSE, RyuOutcastsDailyQuest_25
+	goto RyuOutcastsDailyQuest_4
+
+RyuOutcastsDailyQuest_22:
+	end
+
+RyuOutcastsDailyQuest_24:
 	removeitem VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	goto CommonOutcastRewardScript
 	goto RyuOutcastsDailyQuest_4
 
-RyuOutcastsDailyQuest_22:
+RyuOutcastsDailyQuest_25:
 	buffernumberstring 0, VAR_RYU_DAILY_QUEST_DATA
 	bufferitemnameplural 1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA
 	msgbox RyuOutcastsDailyQuest_Text_1

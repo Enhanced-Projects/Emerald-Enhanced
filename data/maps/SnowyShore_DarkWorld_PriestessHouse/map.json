@@ -29,7 +29,20 @@
     }
   ],
   "warp_events": [
-
+    {
+      "x": 4,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_SNOWY_SHORE_DARK_WORLD",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_SNOWY_SHORE_DARK_WORLD",
+      "dest_warp_id": 0
+    }
   ],
   "coord_events": [
 

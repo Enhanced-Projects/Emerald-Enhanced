@@ -1909,15 +1909,7 @@ extern u8 RyuOutcastsSpecialQuestIntro[];
 void RyuSummonOriginalNPCscript(void)
 {
     const u8 *script = NULL;
-    u8 factionId = (VarGet(VAR_TEMP_9));
-    if (factionId == FACTION_OUTCASTS && gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] >= 175)
-    {
-        script = RyuOutcastsSpecialQuestIntro;
-    }
-    else
-    {
-        script = GetRamScript(gSpecialVar_LastTalked, gOriginalNPCScript);
-    }
+    script = GetRamScript(gSpecialVar_LastTalked, gOriginalNPCScript);
     ScriptContext1_SetupScript(script);
 }
 

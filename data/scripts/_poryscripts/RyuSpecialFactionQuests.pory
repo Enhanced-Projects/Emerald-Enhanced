@@ -7,11 +7,10 @@ script RyuOutcastsSpecialQuestIntro {
     msgbox(AlchemyIntroQuestMsg)
     closemessage
     setflag(FLAG_RYU_OUTCASTS_SPECIAL_STARTED)
-
 }
 
 script RyuOutcastsSpecialAlreadyInProgress {
-
+    goto(ryu_return)
 }
 
 text AlchemyIntroQuestMsg {
@@ -91,7 +90,9 @@ script RA_Lorwyn_NeedsBotany {
 
 script RA_Lorwyn_DoTeleport {
     setflag(FLAG_RYU_FINISHED_LORWYNS_TEST)
-    msgbox(format("Would you like to know more about (VillageName)?"), MSGBOX_YESNO)
+    msgbox(format("I believe that there is a link between Basalt Burg and Snowy Shore. The sign in the middle of both towns is one and the same."))
+    closemessage
+    msgbox(format("Would you like to know more about Basalt Burg?"), MSGBOX_YESNO)
     compare(VAR_RESULT, YES)
     call_if_eq(RA_Lorwyn_ExplainVillage)
     msgbox(format("I'm now prepared to send you to the hidden village."))
@@ -99,7 +100,7 @@ script RA_Lorwyn_DoTeleport {
     drawfullscreenimage(SCENEBGWARP)
     delay(60)
     clearfullscreenimage
-    warpteleport(MAP_LITTLEROOT_TOWN, 255, 13, 13)//put the new map name here.
+    warpteleport(MAP_SNOWY_SHORE_DARK_WORLD, 255, 20, 16)//put the new map name here.
     waitstate
 }
 
