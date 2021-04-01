@@ -53,5 +53,40 @@ script SnowyShore_DarkWorld_EventScript_TownSign {
 text SnowyShore_DarkWorld_Text_TownSign {
 	"Basalt Burg\n"
 	"“Treasure the treacherous”"
-}raw `
-`
+}
+
+script SS_DW_PriestessSign {
+	msgbox(Text_WitchLeaderSign, MSGBOX_SIGN)
+	closemessage
+	release
+	end
+}
+
+text Text_WitchLeaderSign {
+	"Home of High Priestess Merril"
+}
+
+script SS_DW_PH_WierdPlant {
+	msgbox(Text_WierdPlant, MSGBOX_SIGN)
+	releaseall
+	end
+}
+
+text Text_WierdPlant {
+	"It's a strange plant you've never\nseen before."
+}
+
+script SS_DW_PriestessMerril{
+	switch(var(VAR_RYU_PLAYER_ALCHEMY_SKILL)){ //poryscript is lacking inline conditionals, i don't want to do gotos all the time -.-
+	case 0:
+		msgbox(format("You have walked into the wrong house, child."))
+		drawfullscreenimage(SCENEBGWARP)
+		msgbox(format( "{COLOR LIGHT_GREEN}{SHADOW GREEN}(You feel a horrible sucking sensation as you are thrust out of the realm."))
+		closemessage
+		clearfullscreenimage
+		warpteleport(MAP_LITTLEROOT_TOWN, 255, 12, 12)
+		waitstate
+	}
+	release
+	end
+}
