@@ -590,22 +590,7 @@ const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2] = {
     },
 };
 
-typedef struct Ingredient {
-  u16 itemId;
-  u8 quantity;
-} Ingredient;
-
-
-typedef struct AlchemyRecipe {
-  u16 expGiven;
-  Ingredient ingredients[3];
-  u16 metal;
-  u16 metalDustAmt;
-  u8 requiredLevel;
-  u8 givenCharges;
-} AlchemyRecipe;
-
-const AlchemyRecipe sAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
+const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
     [ALCHEMY_EFFECT_NONE] = {
           .expGiven = 0,
           .ingredients = {

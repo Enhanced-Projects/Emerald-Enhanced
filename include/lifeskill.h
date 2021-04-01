@@ -42,6 +42,21 @@
 //recipe to item mapping
 // because ryu is incapable of making new constant headers for scripts
 
+typedef struct Ingredient {
+  u16 itemId;
+  u8 quantity;
+} Ingredient;
+
+
+typedef struct AlchemyRecipe {
+  u16 expGiven;
+  Ingredient ingredients[3];
+  u16 metal;
+  u16 metalDustAmt;
+  u8 requiredLevel;
+  u8 givenCharges;
+} AlchemyRecipe;
+
 extern const u16 gGemTier3[];
 extern const u16 gGemTier2[];
 extern const u16 gGemTier1[];
@@ -58,5 +73,6 @@ extern const u16 gBotanyRewardTables[NUM_BOTANY_MAP_CATEGORIES][10];
 extern const u16 gBotanyTreeRewards[];
 extern const u16 sBotanyRecipeToItemId[NUM_RECIPES];
 extern const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2];
+extern const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_EFFECTS];
 
 #endif//GUARD_LIFESKILL_H

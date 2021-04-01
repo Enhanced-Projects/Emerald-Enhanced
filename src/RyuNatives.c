@@ -87,6 +87,7 @@
 #include "ach_atlas.h"
 #include "lifeskill.h"
 #include "script_pokemon_util.h"
+
 #include "data/lifeskill.h"
 
 void ApplyDaycareExperience(struct Pokemon *mon)
@@ -1782,22 +1783,22 @@ u16 RyuAlchemy_TryCraftingItem(void)
     u16 playerMetalAmt = 0;
 
     //fill vars
-    item1 = sAlchemyRecipes[recipe].ingredients[0].itemId;
-    item2 = sAlchemyRecipes[recipe].ingredients[1].itemId;
-    item3 = sAlchemyRecipes[recipe].ingredients[2].itemId;
-    metal = sAlchemyRecipes[recipe].metal;
-    metalAmountRequired = sAlchemyRecipes[recipe].metalDustAmt;
+    item1 = gAlchemyRecipes[recipe].ingredients[0].itemId;
+    item2 = gAlchemyRecipes[recipe].ingredients[1].itemId;
+    item3 = gAlchemyRecipes[recipe].ingredients[2].itemId;
+    metal = gAlchemyRecipes[recipe].metal;
+    metalAmountRequired = gAlchemyRecipes[recipe].metalDustAmt;
 
-    if (sAlchemyRecipes[recipe].requiredLevel > currentLevel)
+    if (gAlchemyRecipes[recipe].requiredLevel > currentLevel)
         return 2000; //Level requirement not met for recipe
     
-    if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients[0].quantity)) == FALSE)
+    if (CheckBagHasItem(item1, (gAlchemyRecipes[recipe].ingredients[0].quantity)) == FALSE)
         return 4100; //Player doesn't have enough of ingredient 1
 
-    if (CheckBagHasItem(item2, (sAlchemyRecipes[recipe].ingredients[1].quantity)) == FALSE)
+    if (CheckBagHasItem(item2, (gAlchemyRecipes[recipe].ingredients[1].quantity)) == FALSE)
         return 4200; //Player doesn't have enough of ingredient 2
 
-    if (CheckBagHasItem(item1, (sAlchemyRecipes[recipe].ingredients[2].quantity)) == FALSE)
+    if (CheckBagHasItem(item1, (gAlchemyRecipes[recipe].ingredients[2].quantity)) == FALSE)
         return 4300; //Player doesn't have enough of ingredient 3
 
     switch (metal)
@@ -1831,20 +1832,20 @@ u16 RyuAlchemy_TryCraftingItem(void)
         }
     }
 
-    RemoveBagItem(item1, (sAlchemyRecipes[recipe].ingredients[0].quantity));
-    RemoveBagItem(item2, (sAlchemyRecipes[recipe].ingredients[1].quantity));
-    RemoveBagItem(item3, (sAlchemyRecipes[recipe].ingredients[2].quantity));
+    RemoveBagItem(item1, (gAlchemyRecipes[recipe].ingredients[0].quantity));
+    RemoveBagItem(item2, (gAlchemyRecipes[recipe].ingredients[1].quantity));
+    RemoveBagItem(item3, (gAlchemyRecipes[recipe].ingredients[2].quantity));
 
     if (recipe < ALCHEMY_ITEM_RECIPE_STARDUST) //don't set an effect if the crafting result is an item instead of effect.
     {
         gSaveBlock2Ptr->alchemyEffect = recipe;
-        gSaveBlock2Ptr->alchemyCharges = sAlchemyRecipes[recipe].givenCharges;
+        gSaveBlock2Ptr->alchemyCharges = gAlchemyRecipes[recipe].givenCharges;
         gSaveBlock2Ptr->hasAlchemyEffectActive = TRUE;
     }
     StringCopy(gStringVar1, gRyuAlchemyEffectItemToStringTable[(recipe)]);
-    ConvertIntToDecimalStringN(gStringVar2, sAlchemyRecipes[recipe].givenCharges, STR_CONV_MODE_LEFT_ALIGN, 4);
-    currentExp += sAlchemyRecipes[recipe].expGiven;
-    ConvertIntToDecimalStringN(gStringVar3, sAlchemyRecipes[recipe].expGiven, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, gAlchemyRecipes[recipe].givenCharges, STR_CONV_MODE_LEFT_ALIGN, 4);
+    currentExp += gAlchemyRecipes[recipe].expGiven;
+    ConvertIntToDecimalStringN(gStringVar3, gAlchemyRecipes[recipe].expGiven, STR_CONV_MODE_LEFT_ALIGN, 3);
     VarSet(VAR_RYU_ALCHEMY_EXP, currentExp);
     return recipe;
 }
