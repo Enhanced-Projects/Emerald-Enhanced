@@ -579,6 +579,7 @@ RyuAlchemy_RefineOreQuery:
 
 RyuAlchemy_AttemptCreateEffect::
     msgbox RA_DoWhichAlchemyRecipe
+    setflag FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS
     scrollingmultichoice SCROLLINGMULTICHOICE_RYUALCHEMYMENU, 0, 0, 6, 1
     compare VAR_RESULT, 127
     goto_if_eq ryu_end
@@ -591,6 +592,7 @@ RyuAlchemy_AttemptCreateEffect::
     case 4100, RA_Ingredient1Missing
     case 4200, RA_Ingredient2Missing
     case 4300, RA_Ingredient3Missing
+    clearflag FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS
     compare VAR_RESULT, ALCHEMY_ITEM_RECIPE_STARDUST
     goto_if_ge RA_CreateItem
     msgbox AlchemyEffectSuccessful

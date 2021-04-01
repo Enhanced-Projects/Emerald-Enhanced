@@ -313,6 +313,7 @@ static const u32 sRedArrowGfx[] = INCBIN_U32("graphics/interface/red_arrow.4bpp.
 
 
 EWRAM_DATA static u8 sPrintRecipeWindowId = 0;
+EWRAM_DATA static u8 sPrintAlchemyMetalWindowId = 0;
 static void RyuShowRecipeInfoWindow(u16);
 
 // code
@@ -422,21 +423,33 @@ s32 ListMenu_ProcessInput(u8 listTaskId)
 
     if (JOY_NEW(A_BUTTON))
     {
-        if(sPrintRecipeWindowId != 0)
+        if(sPrintRecipeWindowId != 0xFF)
         {
             ClearStdWindowAndFrame(sPrintRecipeWindowId, TRUE);
             RemoveWindow(sPrintRecipeWindowId);
-            sPrintRecipeWindowId = 0;
+            sPrintRecipeWindowId = 0xFF;
+        }
+        if(sPrintAlchemyMetalWindowId != 0xFF)
+        {
+            ClearStdWindowAndFrame(sPrintAlchemyMetalWindowId, TRUE);
+            RemoveWindow(sPrintAlchemyMetalWindowId);
+            sPrintAlchemyMetalWindowId = 0xFF;
         }
         return list->template.items[list->scrollOffset + list->selectedRow].id;
     }
     else if (JOY_NEW(B_BUTTON))
     {
-        if(sPrintRecipeWindowId != 0)
+        if(sPrintRecipeWindowId != 0xFF)
         {
             ClearStdWindowAndFrame(sPrintRecipeWindowId, TRUE);
             RemoveWindow(sPrintRecipeWindowId);
-            sPrintRecipeWindowId = 0;
+            sPrintRecipeWindowId = 0xFF;
+        }
+        if(sPrintAlchemyMetalWindowId != 0xFF)
+        {
+            ClearStdWindowAndFrame(sPrintAlchemyMetalWindowId, TRUE);
+            RemoveWindow(sPrintAlchemyMetalWindowId);
+            sPrintAlchemyMetalWindowId = 0xFF;
         }
         return LIST_CANCEL;
     }
@@ -613,6 +626,8 @@ static u8 ListMenuInitInternal(struct ListMenuTemplate *listMenuTemplate, u16 sc
     ListMenuDrawCursor(list);
     ListMenuCallSelectionChangedCallback(list, TRUE);
 
+    sPrintRecipeWindowId = 0xFF;
+    sPrintAlchemyMetalWindowId = 0xFF;
     return listTaskId;
 }
 
@@ -869,14 +884,13 @@ void RyuShowRecipeInfoWindow(u16 selection)
         {
             selection = (selection + NUM_CONSUMABLE_RECIPES + NUM_MEDICINE_RECIPES);
         }
-    if(sPrintRecipeWindowId == 0)
+    if(sPrintRecipeWindowId == 0xFF)
     {
         SetWindowTemplateFields(&template, 0, 16, 5, 12, 8, 15, 1);
         sPrintRecipeWindowId = AddWindow(&template);
+        DrawStdFrameWithCustomTileAndPalette(sPrintRecipeWindowId, TRUE, 0x214, 14);
     }
-    FillWindowPixelBuffer(sPrintRecipeWindowId, 0);
-    CopyWindowToVram(sPrintRecipeWindowId, 1);
-    DrawStdFrameWithCustomTileAndPalette(sPrintRecipeWindowId, TRUE, 0x214, 14);
+    FillWindowPixelBuffer(sPrintRecipeWindowId, 0x11);
     for(i = 0; i < NUM_INGREDIENTS_PER_RECIPE; i++)
     {
         static const u8 sIngredColors[][3] = {
@@ -886,21 +900,105 @@ void RyuShowRecipeInfoWindow(u16 selection)
 
         if(sBotanyRecipes[selection][i][0] != ITEM_NONE)
         {
-            u8 * strp;
-            u8 str[7];
+            u8 * str;
             u32 itemCount = CountTotalItemQuantityInBag(sBotanyRecipes[selection][i][0]);
             u8 const * color = itemCount >= sBotanyRecipes[selection][i][1] ? sIngredColors[1] : sIngredColors[0];
-            str[0] = CHAR_LEFT_PAREN;
-            str[1] = EOS;
-            ConvertIntToDecimalStringN(gStringVar1, sBotanyRecipes[selection][i][1], STR_CONV_MODE_LEADING_ZEROS, 1);
-            strp = StringAppend(str, gStringVar1);
-            strp[0] = CHAR_RIGHT_PAREN;
-            strp[1] = EOS;
-            StringCopy(gStringVar1, ItemId_GetName(sBotanyRecipes[selection][i][0]));
-            StringAppend(gStringVar1, str);
-            AddTextPrinterParameterized3(sPrintRecipeWindowId, 0, 0, i * 12, color, 0, gStringVar1);
+            str = StringCopy(gStringVar1, ItemId_GetName(sBotanyRecipes[selection][i][0]));
+            *str++ = CHAR_LEFT_PAREN;
+            str = ConvertIntToDecimalStringN(str, sBotanyRecipes[selection][i][1], STR_CONV_MODE_LEADING_ZEROS, 1);
+            *str++ = CHAR_RIGHT_PAREN;
+            *str = EOS;
+            AddTextPrinterParameterized3(sPrintRecipeWindowId, 0, 0, i * 12, color, 0xFF, gStringVar1);
+        }
+    }
+    CopyWindowToVram(sPrintRecipeWindowId, 3);
+}
+
+static const u8 sMetalNames[][7] = {
+    _("Copper"),
+    _("Silver"),
+    _("Gold"),
+};
+
+static const u16 sMetalVars[] = {
+    VAR_RYU_ALCHEMY_COPPER,
+    VAR_RYU_ALCHEMY_SILVER,
+    VAR_RYU_ALCHEMY_GOLD,
+};
+void RyuShowAlchemyInfo(u16 selection)
+{
+    struct WindowTemplate template;
+    u32 i = 0;
+
+    if(sPrintAlchemyMetalWindowId == 0xFF)
+    {
+        SetWindowTemplateFields(&template, 0, 18, 1, 11, 5, 15, 1);
+        sPrintAlchemyMetalWindowId = AddWindow(&template);
+        DrawStdFrameWithCustomTileAndPalette(sPrintAlchemyMetalWindowId, FALSE, 0x214, 14);
+    }
+    if(sPrintRecipeWindowId == 0xFF)
+    {
+        SetWindowTemplateFields(&template, 0, 21, 8, 8, 5, 15, 56);
+        sPrintRecipeWindowId = AddWindow(&template);
+        DrawStdFrameWithCustomTileAndPalette(sPrintRecipeWindowId, FALSE, 0x214, 14);
+    }
+    FillWindowPixelBuffer(sPrintAlchemyMetalWindowId, 0x11);
+    FillWindowPixelBuffer(sPrintRecipeWindowId, 0x11);
+    selection++; // selection starts off with ALCHEMY_EFFECT_DAMAGE_BOOST_T1 as 0 but 0 is ALCHEMY_EFFECT_NONE
+    for(i = 0; i < 3; i++)
+    {
+        static const u8 sIngredColors[][3] = {
+            {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_RED, TEXT_COLOR_RED},
+            {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GREEN, TEXT_COLOR_GREEN},
+        };
+
+        if(gAlchemyRecipes[selection].ingredients[i].itemId != ITEM_NONE)
+        {
+            u8 * str;
+            u32 itemCount = CountTotalItemQuantityInBag(gAlchemyRecipes[selection].ingredients[i].itemId);
+            u8 const * color = itemCount >= gAlchemyRecipes[selection].ingredients[i].quantity ? sIngredColors[1] : sIngredColors[0];
+            str = StringCopy(gStringVar1, ItemId_GetName(gAlchemyRecipes[selection].ingredients[i].itemId));
+            *str++ = CHAR_LEFT_PAREN;
+            str = ConvertIntToDecimalStringN(str, gAlchemyRecipes[selection].ingredients[i].quantity, STR_CONV_MODE_LEADING_ZEROS, 2);
+            *str++ = CHAR_RIGHT_PAREN;
+            *str = EOS;
+            AddTextPrinterParameterized3(sPrintAlchemyMetalWindowId, 0, 0, i * 12, color, 0xFF, gStringVar1);
         }  
     }
+    for(i = 0; i < 3; i++)
+    {
+        static const u8 sIngredColors[][3] = {
+            {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_RED, TEXT_COLOR_RED},
+            {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GREEN, TEXT_COLOR_GREEN},
+        };
+
+        if(gAlchemyRecipes[selection].metal == i)
+        {
+            u8 * str;
+            str = StringCopy(gStringVar1, sMetalNames[i]);
+            *str++ = CHAR_LEFT_PAREN;
+            str = ConvertIntToDecimalStringN(str, gAlchemyRecipes[selection].metalDustAmt, STR_CONV_MODE_LEADING_ZEROS, 3);
+            *str++ = CHAR_RIGHT_PAREN;
+            *str = EOS;
+            AddTextPrinterParameterized3(sPrintRecipeWindowId, 0, 0, i * 12, VarGet(sMetalVars[i]) < gAlchemyRecipes[selection].metalDustAmt ? sIngredColors[0] : sIngredColors[1], 0xFF, gStringVar1);
+        } 
+        else
+        {
+            u8 * str;
+            str = StringCopy(gStringVar1, sMetalNames[i]);
+            *str++ = CHAR_LEFT_PAREN;
+            *str++ = CHAR_0;
+            *str++ = CHAR_0;
+            *str++ = CHAR_0;
+            //str = ConvertIntToDecimalStringN(str, gAlchemyRecipes[selection].metalDustAmt, STR_CONV_MODE_LEADING_ZEROS, 3);
+            *str++ = CHAR_RIGHT_PAREN;
+            *str = EOS;
+            AddTextPrinterParameterized3(sPrintRecipeWindowId, 0, 0, i * 12, sIngredColors[1], 0xFF, gStringVar1);
+        }
+        
+    }
+    CopyWindowToVram(sPrintAlchemyMetalWindowId, 3);
+    CopyWindowToVram(sPrintRecipeWindowId, 3);
 }
 
 static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)
@@ -926,9 +1024,13 @@ static bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAn
 
     currentSelection = (list->selectedRow + list->scrollOffset);
 
-    if (FlagGet(FLAG_TEMP_1A) == 1)
+    if (FlagGet(FLAG_RYU_DISPLAY_BOTANY_INGREDIENTS) == 1)
         {
             RyuShowRecipeInfoWindow(currentSelection);
+        }
+    else if (FlagGet(FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS) == 1)
+        {
+            RyuShowAlchemyInfo(currentSelection);
         }
     
     if (updateCursorAndCallCallback)

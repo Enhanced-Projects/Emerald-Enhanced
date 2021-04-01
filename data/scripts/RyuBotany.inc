@@ -168,6 +168,8 @@ RyuBotany_CheckLevel4Progress::
 
 RyuBotanyRecipeBookScript::
     lock
+    clearflag FLAG_RYU_DISPLAY_BOTANY_INGREDIENTS
+    clearflag FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS
     compare VAR_RYU_PLAYER_ALCHEMY_SKILL, 1  @@Alchemy shows up in the recipe book if the player has the skill, otherwise works exactly as it did before alchemy.
     goto_if_lt RyuBotany_BotanyRecipeCrafting
     msgbox WhichTypeOfRecipe
@@ -191,7 +193,7 @@ RB_DB_MSG1:
 
 RB_ShowConsumablesChapter::
     msgbox RB_WhichRecipe
-    setflag FLAG_TEMP_1A
+    setflag FLAG_RYU_DISPLAY_BOTANY_INGREDIENTS
     setvar VAR_TEMP_D, 0
     scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYCONSUMABLECHAPTER, 0, 2, 5, 1
     compare VAR_RESULT, 127
@@ -201,7 +203,7 @@ RB_ShowConsumablesChapter::
 
 RB_ShowMedicinesChapter::
     msgbox RB_WhichRecipe
-    setflag FLAG_TEMP_1A
+    setflag FLAG_RYU_DISPLAY_BOTANY_INGREDIENTS
     setvar VAR_TEMP_D, 1
     scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYMEDICINECHAPTER, 0, 2, 5, 1
     compare VAR_RESULT, 127
@@ -212,7 +214,7 @@ RB_ShowMedicinesChapter::
 
 RB_ShowEvolutionChapter::
     msgbox RB_WhichRecipe
-    setflag FLAG_TEMP_1A
+    setflag FLAG_RYU_DISPLAY_BOTANY_INGREDIENTS
     setvar VAR_TEMP_D, 2
     scrollingmultichoice SCROLLINGMULTICHOICE_BOTANYEVOLUTIONCHAPTER, 0, 2, 5, 1
     compare VAR_RESULT, 127
@@ -223,7 +225,7 @@ RB_ShowEvolutionChapter::
     goto RB_CheckCraftingResult
 
 RB_CheckCraftingResult::
-    clearflag  FLAG_TEMP_1A
+    clearflag  FLAG_RYU_DISPLAY_BOTANY_INGREDIENTS
     buffernumberstring 0, VAR_TEMP_C
     switch VAR_TEMP_C
     case 0, RB_RecipeFailed
