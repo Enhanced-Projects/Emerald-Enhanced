@@ -1918,3 +1918,20 @@ void RyuFixCorruptedBoxMons(void)
     ZeroBoxMonAt(2, 5);
     ZeroBoxMonAt(2, 6);
 }
+
+void RyuBufferSkillLevels(void)
+{
+    u16 alchExp = (VarGet(VAR_RYU_ALCHEMY_EXP));
+    u16 alchLvl = (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL));
+    u16 botExp = (VarGet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP));
+    u16 botLvl = (VarGet(VAR_RYU_PLAYER_BOTANY_SKILL));
+    u16 minExp = (VarGet(VAR_RYU_PLAYER_MINING_EXP));
+    u16 minLvl = (VarGet(VAR_RYU_PLAYER_MINING_SKILL));
+
+    ConvertIntToDecimalStringN(gStringVar1, alchExp, STR_CONV_MODE_LEFT_ALIGN, 5);
+    ConvertIntToDecimalStringN(gStringVar2, alchLvl, STR_CONV_MODE_LEFT_ALIGN, 5);
+    ConvertIntToDecimalStringN(gStringVar3, botExp, STR_CONV_MODE_LEFT_ALIGN, 5);
+    ConvertIntToDecimalStringN(gRyuStringVar1, botLvl, STR_CONV_MODE_LEFT_ALIGN, 5);
+    ConvertIntToDecimalStringN(gRyuStringVar2, minExp, STR_CONV_MODE_LEFT_ALIGN, 5);
+    ConvertIntToDecimalStringN(gRyuStringVar3, minLvl, STR_CONV_MODE_LEFT_ALIGN, 5);
+}

@@ -3,8 +3,7 @@
 @The main script called when using cut on grass
 RyuScript_FieldCut::
     setvar VAR_TEMP_5, 1
-    compare VAR_RESULT, TRUE
-    call_if_eq RyuBotany_DoubleRewardHC
+    call_if_set FLAG_BOTANY_HAS_HYPER_CUTTER, RyuBotany_DoubleRewardHC
     delay 60
     switch VAR_RYU_PLAYER_BOTANY_SKILL
     case 1, RyuBotanyGrass_GiveOneItem
@@ -50,6 +49,8 @@ RyuBotanyGrass_GiveOneItem::
     bufferitemname 0, VAR_TEMP_0
     buffernumberstring 1, VAR_TEMP_5
     msgbox RyuBotany_RewardMessage
+    addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL@Player gains 1 exp per level of botany per botany check.
+    call RyuBotany_CheckLevelUp
     closemessage
     return
 
@@ -94,74 +95,40 @@ RyuBotanyGrass_TryGive3Items::
     release
     end
 
-RyuBotany_LevelOne::
-    additem VAR_TEMP_0, VAR_TEMP_5
-    bufferitemname 0, VAR_TEMP_0
-    msgbox RyuBotany_Obtained1Item
-    closemessage
-    addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL@Player gains 1 exp per level of botany per botany check.
-    call RyuBotany_CheckLevelUp
-    release
-    end
-
-RyuBotany_LevelThree::
-    additem VAR_TEMP_0, VAR_TEMP_5
-    additem VAR_TEMP_1, VAR_TEMP_5
-    additem VAR_TEMP_2, VAR_TEMP_5
-    bufferitemname 0, VAR_TEMP_0
-    bufferitemname 1, VAR_TEMP_1
-    bufferitemname 2, VAR_TEMP_2
-    msgbox RyuBotany_Obtained3Items
-    closemessage
-    addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL@Player gains 1 exp per level of botany per botany check.
-    call RyuBotany_CheckLevelUp
-    release
-    end
-
-RyuBotany_LevelFive::
-    additem VAR_TEMP_0, VAR_TEMP_5
-    bufferitemname 0, VAR_TEMP_0
-    msgbox RyuBotany_Obtained5Items
-    closemessage
-    addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL@Player gains 1 exp per level of botany per botany check.
-    call RyuBotany_CheckLevelUp
-    release
-    end
-
 RyuBotany_CheckLevelUp::
     switch VAR_RYU_PLAYER_BOTANY_SKILL
-    case 0, ryu_end
-    case 1, RyuBotany_CheckLevel1Progress
-    case 2, RyuBotany_CheckLevel2Progress
-    case 3, RyuBotany_CheckLevel3Progress
+    case 0, ryu_return
+    case 5, ryu_return
     case 4, RyuBotany_CheckLevel4Progress
-    case 5, ryu_end
-    goto ryu_end
+    case 3, RyuBotany_CheckLevel1Progress
+    case 2, RyuBotany_CheckLevel2Progress
+    case 1, RyuBotany_CheckLevel3Progress
+    goto ryu_return
 
 RyuBotany_CheckLevel1Progress::
     compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 50
-    goto_if_lt ryu_end
+    goto_if_lt ryu_return
     addvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
     release
     end
 
 RyuBotany_CheckLevel2Progress::
     compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 150
-    goto_if_lt ryu_end
+    goto_if_lt ryu_return
     addvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
     release
     end
 
 RyuBotany_CheckLevel3Progress::
     compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 320
-    goto_if_lt ryu_end
+    goto_if_lt ryu_return
     addvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
     release
     end
 
 RyuBotany_CheckLevel4Progress::
     compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 500
-    goto_if_lt ryu_end
+    goto_if_lt ryu_return
     addvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
     release
     end

@@ -255,9 +255,15 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	warpteleport MAP_ROUTE119_LORWYNS_HOUSE, 255, 4, 4
+	callnative RyuBufferSkillLevels
+	msgbox RDB_LifeSkills
 	release
 	end
+
+RDB_LifeSkills:
+	.string "Alchemy- EXP: {STR_VAR_1} Level: {STR_VAR_2}\n"
+	.string "Botany- EXP: {STR_VAR_3} Level: {RYU_STR_1}\l"
+	.string "Mining- EXP: {RYU_STR_2} Level: {RYU_STR_3}$"
 
 RDB_AlchemyInfo::
 	callnative RyuDebug_CheckAlchemyStatus
