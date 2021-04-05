@@ -46,7 +46,10 @@ bool8 ScrCmd_checkfaction(struct ScriptContext *ctx)
 
 u8 GetFactionStanding(u16 trainerId) //this should return the value of player's standing in trainerId's faction
 {
-    return gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)];
+    if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)] == FACTION_OTHERS)
+        return 100;
+    else
+        return gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)];
 }
 
 void RyuAdjustFactionValueInternal(u8 id, u8 amount, bool8 negative)
