@@ -1946,8 +1946,8 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
                 {
-                    u32 em1 = (Random() % 887) + 1; // should this 902 be the number of species in the game?
-                    u32 pm1 = (Random() % 887) + 1; // same here
+                    u32 em1 = (Random() % NATIONAL_DEX_COUNT) + 1; // should prevent forms and unusual species.
+                    u32 pm1 = (Random() % NATIONAL_DEX_COUNT) + 1; // same.
                     CreateMon(&gEnemyParty[i], em1, 100, 31, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
                     CreateMon(&gPlayerParty[i], pm1, 100, 31, FALSE, 0, OT_ID_PLAYER_ID, 0);
                     break;
