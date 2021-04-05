@@ -5364,10 +5364,10 @@
     {
       "id": "LAYOUT_SNOWY_SHORE_DARK_WORLD_PRIESTESS_HOUSE",
       "name": "SnowyShore_DarkWorld_PriestessHouse_Layout",
-      "width": 8,
-      "height": 6,
+      "width": 12,
+      "height": 9,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_PetalburgGym",
+      "secondary_tileset": "gTileset_BattleArena",
       "border_filepath": "data/layouts/SnowyShore_DarkWorld_PriestessHouse/border.bin",
       "blockdata_filepath": "data/layouts/SnowyShore_DarkWorld_PriestessHouse/map.bin"
     }
