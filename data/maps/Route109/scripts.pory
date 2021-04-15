@@ -219,12 +219,12 @@ Route109_Text_TrainerTipsSign: @ 81EF1D5
 @==================================================================================================Magma related
 
 R109_CheckMagmaEvent::
-	map_script_2 VAR_RYU_MAGMA, 260, R109_StartMagmaEvent
+	map_script_2 VAR_RYU_QUEST_MAGMA, 260, R109_StartMagmaEvent
 	.2byte 0
 	
 R109_StartMagmaEvent::
 	lock
-	setvar VAR_RYU_MAGMA, 270@player at beach
+	setvar VAR_RYU_QUEST_MAGMA, 270@player at beach
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox R109_ThatWasA
@@ -246,7 +246,7 @@ R109_StartMagmaEvent::
 	msgbox R109_OhCrapWere
 	applymovement 25, R109_GruntRuns
 	waitmovement 25
-	setvar VAR_RYU_MAGMA, 275@player finished scene on the beach
+	setvar VAR_RYU_QUEST_MAGMA, 275@player finished scene on the beach
 	clearflag FLAG_RYU_RUSTURF_CLEARING_MAGMA
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN

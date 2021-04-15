@@ -4,7 +4,7 @@ Route114_LanettesHouse_Basement_MapScripts::
 	.byte 0
 	
 Ryu_LNH_RomScene::
-	map_script_2 VAR_RYU_LANETTE_VAR, 105, Ryu_LNH_RomSceneStart
+	map_script_2 VAR_RYU_QUEST_LANETTE, 105, Ryu_LNH_RomSceneStart
 	map_script_2 VAR_TEMP_7, 0, Ryu_LNH_CheckObjectXY
 	.2byte 0
 	
@@ -24,7 +24,7 @@ LNH_SetLanetteXY:
 	
 Ryu_LNH_RomSceneStart::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuCancelFollowerForQuest
-	setvar VAR_RYU_LANETTE_VAR, 0
+	setvar VAR_RYU_QUEST_LANETTE, 0
 	setobjectxy 1, 10, 6
 	applymovement 1, Common_Movement_FaceLeft
 	waitmovement 1

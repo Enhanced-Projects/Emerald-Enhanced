@@ -4,14 +4,14 @@ RustboroCity_DevonCorp_3F_MapScripts:: @ 821242D
 	.byte 0
 
 RustboroCity_DevonCorp_3F_OnFrame: @ 8212464
-	map_script_2 VAR_RYU_DEVON, 50, DC_CorporateInterrogation
+	map_script_2 VAR_RYU_QUEST_DEVON_CORPORATE, 50, DC_CorporateInterrogation
 	.2byte 0
 @==================================================================================================RYU DEVON
 
 DC_QuestCheck::
 	lock
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, DC_ENEMY
-	compare VAR_RYU_DEVON, 15
+	compare VAR_RYU_QUEST_DEVON_CORPORATE, 15
 	goto_if_ge ryu_end
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
 	goto_if_set FLAG_RYU_DEVON_CORPORATE, DC_BeginCorporate
@@ -46,7 +46,7 @@ DC_QuestCheck2::
 	lock
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, DC_ENEMY
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE2
-	compare VAR_RYU_DEVON, 15
+	compare VAR_RYU_QUEST_DEVON_CORPORATE, 15
 	goto_if_ge ryu_end
 	goto_if_set FLAG_RYU_DEVON_CORPORATE, DC_BeginCorporate
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
@@ -93,7 +93,7 @@ DC_NoQuest:
 RustboroCity_DevonCorp_3F_EventScript_MrStone:: @ 821256C
 	lock
 	faceplayer
-	switch VAR_RYU_DEVON
+	switch VAR_RYU_QUEST_DEVON_CORPORATE
 	case 5, RustboroCity_DevonCorp_3F_EventScript_MeetPresident
 	case 18, DC_DeliveredLetterAndGoods
 	case 19, DC_GoToMeteorFalls
@@ -193,7 +193,7 @@ DC_CorporateLine::
 	additem ITEM_TRI_PASS
 	msgbox DC_OfficialEmployee
 	closemessage
-	setvar VAR_RYU_DEVON, 30
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 30
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3
 	warpsilent MAP_RUSTBURO_CITY_DEVON_CORP2F_STORY_MAP, 255, 9, 2
 	release
@@ -322,7 +322,7 @@ DC_FranticPace:
 	step_end
 
 DC_CorporateInterrogation:: @Due to size limitations, all dialogue and movement are in data/scripts/RyuDevonLine.inc
-	setvar VAR_RYU_DEVON, 55
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 55
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
 	playbgm 438, 1
@@ -538,7 +538,7 @@ DC_CorporateInterrogation4::
 	closemessage
 	msgbox DC_TheExpDrive
 	closemessage
-	setvar VAR_RYU_DEVON, 60 @player finished the Devon Corporate line.
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 60 @player finished the Devon Corporate line.
 	setflag FLAG_RYU_DEVON_LINE_FINISHED
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	ach give ACH_CORPORATE_SHILL
@@ -710,9 +710,9 @@ DC_GoToMeteorFalls::
 
 RustboroCity_DevonCorp_3F_EventScript_MeetPresident:: @ 821246E
 	lockall
-	compare VAR_RYU_DEVON, 15
+	compare VAR_RYU_QUEST_DEVON_CORPORATE, 15
 	goto_if_eq DC_IntroDone
-	setvar VAR_RYU_DEVON, 15 @Player met president. Go deliver letter to steven in dewford cave.
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 15 @Player met president. Go deliver letter to steven in dewford cave.
 	msgbox DC_CEOIntro, MSGBOX_DEFAULT
 	additem ITEM_LETTER
 	playfanfare MUS_FANFA4
@@ -804,7 +804,7 @@ DC_DeliveredLetterAndGoods:: @ 8212595
 	msgbox DC_CEO_ExpShareDesc, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	setvar VAR_RYU_DEVON, 19 @Player completed Mr. Stone's tasks. Talk to him again for the next mission.
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 19 @Player completed Mr. Stone's tasks. Talk to him again for the next mission.
 	waitmovement 0
 	release
 	end
@@ -831,7 +831,7 @@ DC_Afterstory:
 	goto_if_unset FLAG_SYS_GAME_CLEAR, DC_NotReadyYet
 	msgbox DC_AfterstoryMsg
 	giveitem ITEM_TRI_PASS
-	setvar VAR_RYU_DEVON, 69
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 69
 	release
 	end
 	

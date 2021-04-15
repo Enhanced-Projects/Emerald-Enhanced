@@ -13,7 +13,7 @@ Route104_OnTransition: @ 81ECC4E
 @==================================================================================================Magma Event
 
 r104_MagmaEvent2::
-	compare VAR_RYU_MAGMA, 105
+	compare VAR_RYU_QUEST_MAGMA, 105
 	goto_if_eq r104_MagmaEvent2Intro
 	msgbox r104_TheresNothing
 	release

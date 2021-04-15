@@ -25,7 +25,7 @@ LRT_ME_FindMaxie::
 	fadescreen FADE_FROM_BLACK
 	applymovement 1, Common_Movement_StepRight
 	waitmovement 1
-	setvar VAR_RYU_MAGMA, 575@player found maxie in lab
+	setvar VAR_RYU_QUEST_MAGMA, 575@player found maxie in lab
 	goto_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_ME_RomanceEvent
 	msgbox LRT_ME_PlayerThanksFor
 	closemessage

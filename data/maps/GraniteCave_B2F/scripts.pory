@@ -73,7 +73,7 @@ GC_ME_BlaiseContd::
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	msgbox GC_ME_BlaiseJoinsYourAdventure
 	closemessage
-	setvar VAR_RYU_MAGMA, 120@Player is looking for second everstone mount
+	setvar VAR_RYU_QUEST_MAGMA, 120@Player is looking for second everstone mount
 	release
 	end
 	
@@ -137,7 +137,7 @@ GC_ME_Everstone1::
 	lock
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_FOLLOWER
-	setvar VAR_RYU_MAGMA, 125 @player found the second everstone mound
+	setvar VAR_RYU_QUEST_MAGMA, 125 @player found the second everstone mound
 	msgbox GC_ME_YupRightOn
 	closemessage
 	addobject 12
@@ -191,7 +191,7 @@ GC_ME_Event3::
 	clearflag FLAG_RYU_HAS_FOLLOWER
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_PLAYER_MAGMA_MEMBER
-	setvar VAR_RYU_MAGMA, 130@Player defeated steven in granite cave
+	setvar VAR_RYU_QUEST_MAGMA, 130@Player defeated steven in granite cave
 	release
 	end
 	

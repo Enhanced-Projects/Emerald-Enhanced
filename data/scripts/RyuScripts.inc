@@ -1685,14 +1685,14 @@ RyuGlobal_CheckMagmaStatus::
 	call_if_ge RyuGlobal_CheckDexnavStatus
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, RyuGlobal_CheckAquaStatus
 	goto_if_unset FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
-	switch VAR_RYU_MAGMA
+	switch VAR_RYU_QUEST_MAGMA
 	case 130, Ryu_InitializeMagmaPart4
 	case 210, Ryu_InitializeMagmaPart6
 	case 350, Ryu_InitializeMagmaPart8
 	goto ryu_end
 
 RyuGlobal_CheckAquaStatus::
-	switch VAR_RYU_AQUA
+	switch VAR_RYU_QUEST_AQUA
 	case 10, Ryu_initializeAquaStage1
 	case 55, Ryu_InitializeAquaStage2
 	case 80, Ryu_InitializeAquaStage3NR
@@ -1715,7 +1715,7 @@ Ryu_initializeAquaStage1::
 	waitmessage
 	msgbox Ryu_AquaStep1OutroMessage
 	closemessage
-	setvar VAR_RYU_AQUA, 25 @received instructions to go to aqua at museum
+	setvar VAR_RYU_QUEST_AQUA, 25 @received instructions to go to aqua at museum
 	setflag FLAG_RYU_AQUA_1_NOTIFY
 	release
 	end
@@ -1733,7 +1733,7 @@ Ryu_InitializeAquaStage2::
 	closemessage
 	pokenavcall Ryu_AquaStage2NotifyMsg
 	closemessage
-	setvar VAR_RYU_AQUA, 60 @player is off to meteor falls
+	setvar VAR_RYU_QUEST_AQUA, 60 @player is off to meteor falls
 	setflag FLAG_RYU_AQUA_2_NOTIFY
 	release
 	end
@@ -1752,7 +1752,7 @@ Ryu_InitializeAquaStage3NR::
 	pokenavcall Ryu_AquaStage3NotifyMsg
 	closemessage
 	clearflag FLAG_RYU_HIDE_AQUA_MTPYRE_EXT
-	setvar VAR_RYU_AQUA, 82 @player is being called to Mt Pyre
+	setvar VAR_RYU_QUEST_AQUA, 82 @player is being called to Mt Pyre
 	setflag FLAG_RYU_AQUA_3_NOTIFY
 	release
 	end
@@ -1771,7 +1771,7 @@ Ryu_InitializeAquaStage3R::
 	pokenavcall Ryu_AquaStage3RomanceNotifyMsg
 	closemessage
 	setflag FLAG_RYU_PLAYER_SENT_TO_JP_BY_SHELLY
-	setvar VAR_RYU_AQUA, 93 @player is being called to Jagged Pass by Shelly.
+	setvar VAR_RYU_QUEST_AQUA, 93 @player is being called to Jagged Pass by Shelly.
 	setflag FLAG_RYU_AQUA_3_NOTIFY
 	release
 	end
@@ -1796,7 +1796,7 @@ Ryu_InitializeAquaStage4R::
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
 	call Ryu_SetAquaHideoutTrainerflags
-	setvar VAR_RYU_AQUA, 125 @Player received the call to go to the aqua hideout.
+	setvar VAR_RYU_QUEST_AQUA, 125 @Player received the call to go to the aqua hideout.
 	release
 	end
 
@@ -1899,7 +1899,7 @@ Ryu_InitializeMagmaPart8::
 	lock
 	msgbox Ryu_Magma8Notice
 	closemessage
-	setvar VAR_RYU_MAGMA, 400
+	setvar VAR_RYU_QUEST_MAGMA, 400
 	setflag FLAG_RYU_MAGMA_8_NOTIFY
 	release
 	end
@@ -2139,10 +2139,10 @@ RyuScript_GameOver::
 
 RyuGameOver_ResetMainQuestData::
 	setvar VAR_RYU_QUESTLINE_ID, 5
-	setvar VAR_RYU_DEVON, 0
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 0
-	setvar VAR_RYU_MAGMA, 0
-	setvar VAR_RYU_AQUA, 0
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 0
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 0
+	setvar VAR_RYU_QUEST_MAGMA, 0
+	setvar VAR_RYU_QUEST_AQUA, 0
 	return
 
 RyuGameOver_ResetGeneralFlags::

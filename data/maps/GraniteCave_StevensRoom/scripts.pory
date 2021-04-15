@@ -8,7 +8,7 @@ GraniteCave_StevensRoom_EventScript_Steven:: @ 822DC7B
 	msgbox GraniteCave_StevensRoom_Text_ImStevenLetterForMe, MSGBOX_DEFAULT
 	setvar VAR_0x8004, ITEM_LETTER
 	call Common_EventScript_PlayerHandedOverTheItem
-	setvar VAR_RYU_DEVON, 16 @Player delivered letter, go to the oceanic museum to meet stern.
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 16 @Player delivered letter, go to the oceanic museum to meet stern.
 	msgbox GraniteCave_StevensRoom_Text_ThankYouTakeThis, MSGBOX_DEFAULT
 	additem ITEM_TM47
 	compare VAR_RESULT, FALSE

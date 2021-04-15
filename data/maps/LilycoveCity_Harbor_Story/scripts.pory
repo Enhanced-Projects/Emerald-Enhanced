@@ -4,11 +4,11 @@ LilycoveCity_Harbor_Story_MapScripts::
 	.byte 0
 	
 LCC_MagmaHarbor_StartEvent::
-	map_script_2 VAR_RYU_MAGMA, 185, LCC_MagmaHarbor_Blaise
+	map_script_2 VAR_RYU_QUEST_MAGMA, 185, LCC_MagmaHarbor_Blaise
 	.2byte 0
 	
 LCC_MagmaHarbor_Blaise::
-	setvar VAR_RYU_MAGMA, 190@Player entered the magma controlled harbor
+	setvar VAR_RYU_QUEST_MAGMA, 190@Player entered the magma controlled harbor
 	msgbox LCC_IAlreadyCleared
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LCC_Harbor_PlayerToBlaise
@@ -75,7 +75,7 @@ LCC_MagmaHarbor_Blaise::
 	end
 	
 LCC_Harbor_Part2::
-	setvar VAR_RYU_MAGMA, 195@Finished Battle with Shelly
+	setvar VAR_RYU_QUEST_MAGMA, 195@Finished Battle with Shelly
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
 	msgbox LCC_HowCouldYou
 	closemessage
@@ -91,7 +91,7 @@ LCC_Harbor_Part2::
 	waitmovement 1
 	msgbox LCC_TimeToHead
 	closemessage
-	setvar VAR_RYU_MAGMA, 200@Returning to 111 to rendezous
+	setvar VAR_RYU_QUEST_MAGMA, 200@Returning to 111 to rendezous
 	warpsilent MAP_LILYCOVE_CITY, 255, 12, 33
 	waitstate
 	releaseall

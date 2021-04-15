@@ -45,7 +45,7 @@ DesertRuins_EventScript_CaveEntranceMiddle:: @ 822D9DB
 	braillemessage DesertRuins_Braille_UseRockSmash
 	waitbuttonpress
 	closebraillemessage
-	compare VAR_RYU_DS_LANA_STAGE, 40
+	compare VAR_RYU_QUEST_LANA, 40
 	goto_if_gt ryu_end
 	msgbox DR_PlayerHitWall
 	closemessage
@@ -118,14 +118,14 @@ DR_SetStage::
 	lock
 	addobject 2
 	clearflag FLAG_HIDE_DR_LANA
-	setvar VAR_RYU_DS_LANA_STAGE, 46
+	setvar VAR_RYU_QUEST_LANA, 46
 	addobject 2
 	goto DR_LeafEvent
 	
 	
 DR_LeafEvent::
 	lock
-	setvar VAR_RYU_DS_LANA_STAGE, 47
+	setvar VAR_RYU_QUEST_LANA, 47
 	delay 25
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, DR_CameraSequence
@@ -155,7 +155,7 @@ DR_LeafEvent::
 	waitmovement 0
 	special RemoveCameraObject
 	setflag FLAG_SYS_REGIROCK_PUZZLE_COMPLETED
-	setvar VAR_RYU_DS_LANA_STAGE, 48
+	setvar VAR_RYU_QUEST_LANA, 48
 	release
 	end
 	
@@ -164,7 +164,7 @@ DR_LeafCheck2::
 	removeobject 2
 	special DrawWholeMapView
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	setvar VAR_RYU_DS_LANA_STAGE, 49
+	setvar VAR_RYU_QUEST_LANA, 49
 	setobjectxy 2, 16, 32
 	clearflag FLAG_HIDE_DR_LANA
 	warp MAP_DESERT_RUINS, 255, 8, 11
@@ -173,7 +173,7 @@ DR_LeafCheck2::
 	
 	
 DR_LeafEvent2::
-	setvar VAR_RYU_DS_LANA_STAGE, 50
+	setvar VAR_RYU_QUEST_LANA, 50
 	setflag FLAG_HIDE_REGIROCK
 	removeobject 1
 	special DrawWholeMapView
@@ -196,7 +196,7 @@ DR_LeafEvent2::
 	removeobject 4
 	setflag FLAG_HIDE_DR_LANA
 	waitse
-	setvar VAR_RYU_DS_LANA_STAGE, 55
+	setvar VAR_RYU_QUEST_LANA, 55
 	setflag FLAG_HIDE_DR_LANA
 	release
 	end

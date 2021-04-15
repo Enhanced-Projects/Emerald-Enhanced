@@ -195,7 +195,7 @@ R114_PlayerFindMaxie::
 	delay 15
 	removeobject 28
 	setflag FLAG_HIDE_114_MAXIE
-	setvar VAR_RYU_MAGMA, 570@Player found maxie in r114
+	setvar VAR_RYU_QUEST_MAGMA, 570@Player found maxie in r114
 	waitfieldeffect FLDEFF_NPCFLY_OUT
 	goto_if_set FLAG_RYU_DS_COURTNEY_LOVERS, R114_AlternateFindMaxie
 	msgbox R114_MaxieNowIndoors

@@ -105,7 +105,7 @@
       "x": 8,
       "y": 21,
       "elevation": 3,
-      "var": "VAR_RYU_DS_LANA_STAGE",
+      "var": "VAR_RYU_QUEST_LANA",
       "var_value": "58",
       "script": "IC_Setup2"
     },
@@ -114,7 +114,7 @@
       "x": 8,
       "y": 10,
       "elevation": 3,
-      "var": "VAR_RYU_DS_LANA_STAGE",
+      "var": "VAR_RYU_QUEST_LANA",
       "var_value": "59",
       "script": "IC_LeafEvent2"
     }

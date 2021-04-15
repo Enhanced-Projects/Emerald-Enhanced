@@ -2499,7 +2499,7 @@ u8 GetSav1Weather(void)
 void SetSav1WeatherFromCurrMapHeader(void)
 {
     u8 oldWeather = gSaveBlock1Ptr->weather;
-    if (VarGet(VAR_RYU_AQUA) == 149)
+    if (VarGet(VAR_RYU_QUEST_AQUA) == 149)
     {
         gSaveBlock1Ptr->weather = TranslateWeatherNum(WEATHER_RAIN_THUNDERSTORM);
     }

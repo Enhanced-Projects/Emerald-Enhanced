@@ -36,7 +36,7 @@ DC_FirstFloorSceneStart::
 	applymovement OBJ_EVENT_ID_PLAYER, DC_ExitFirstFloor
 	waitmovement OBJ_EVENT_ID_PLAYER
 	playse SE_DOOR
-	setvar VAR_RYU_DEVON, 45 @Player needs to go find Ms. Ito north of rustburo.
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 45 @Player needs to go find Ms. Ito north of rustburo.
 	fadescreen 1
 	warpsilent MAP_RUSTBORO_CITY, 255, 12, 15
 	delay 20

@@ -1454,12 +1454,12 @@ void Ryu_ClearAquaSFCTrainerFlags(void)
 
 void RyuBufferQuestVars(void)
 {
-    ConvertIntToDecimalStringN(gStringVar1, (VarGet(VAR_RYU_MAGMA)), STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_DEVON)), STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar3, (VarGet(VAR_RYU_DEVON_SCIENTIST_STAGE)), STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar1, (VarGet(VAR_RYU_DS_LANA_STAGE)), STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar2, (VarGet(VAR_RYU_LANETTE_VAR)), STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar3, (VarGet(VAR_RYU_AQUA)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar1, (VarGet(VAR_RYU_QUEST_MAGMA)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_QUEST_DEVON_CORPORATE)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar3, (VarGet(VAR_RYU_QUEST_DEVON_SCIENTIST)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar1, (VarGet(VAR_RYU_QUEST_LANA)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar2, (VarGet(VAR_RYU_QUEST_LANETTE)), STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gRyuStringVar3, (VarGet(VAR_RYU_QUEST_AQUA)), STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
 

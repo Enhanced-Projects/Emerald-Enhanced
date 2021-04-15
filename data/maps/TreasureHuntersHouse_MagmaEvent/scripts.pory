@@ -19,7 +19,7 @@ THH_ME_NotHere::
 	msgbox THH_ME_HesNotHere
 	closemessage
 	goto_if_unset FLAG_RYU_DS_COURTNEY_LOVERS, THH_ME_NotHereEnd
-	setvar VAR_RYU_MAGMA, 580@Player is on the romance line of the alternate magma quest. Final Stage.
+	setvar VAR_RYU_QUEST_MAGMA, 580@Player is on the romance line of the alternate magma quest. Final Stage.
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox THH_ME_WhatYouGotThere
@@ -29,7 +29,7 @@ THH_ME_NotHere::
 	
 	
 THH_ME_NotHereEnd::
-	setvar VAR_RYU_MAGMA, 597@Player looked for maxie in treasure house, but didn't find him there. End of Magma alternate default line.
+	setvar VAR_RYU_QUEST_MAGMA, 597@Player looked for maxie in treasure house, but didn't find him there. End of Magma alternate default line.
 	ach give ACH_HUNTING_TRIP
 	msgbox THH_ME_ThatsTheEnd
 	closemessage

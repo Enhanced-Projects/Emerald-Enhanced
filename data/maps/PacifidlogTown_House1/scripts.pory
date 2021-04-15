@@ -3,7 +3,7 @@ PacifidlogTown_House1_MapScripts:: @ 820365C
 	.byte 0
 
 PacifidlogTown_House1_EventScript_Man:: @ 820365D
-	compare VAR_RYU_DS_LANA_STAGE, 30
+	compare VAR_RYU_QUEST_LANA, 30
 	call_if_eq PT_Npc
 	msgbox PacifidlogTown_House1_Text_RegiStory, MSGBOX_NPC
 	end
@@ -42,7 +42,7 @@ PT_LanaEvent1::
 	playse SE_DOOR
 	removeobject 3
 	msgbox PT_PlayerMsg MSGBOX_DEFAULT
-	setvar VAR_RYU_DS_LANA_STAGE, 30
+	setvar VAR_RYU_QUEST_LANA, 30
 	setflag FLAG_HIDE_PCF_TOWN_LANA
 	setflag FLAG_SYS_BRAILLE_DIG
 	release

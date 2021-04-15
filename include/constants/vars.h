@@ -160,7 +160,7 @@
 #define VAR_BOARD_BRINEY_BOAT_STATE          0x408E
 #define VAR_DEVON_CORP_3F_STATE              0x408F
 #define VAR_BRINEY_HOUSE_STATE               0x4090
-#define VAR_RYU_DEVON_SCIENTIST_STAGE        0x4091 // Unused Var
+#define VAR_RYU_QUEST_DEVON_SCIENTIST        0x4091 // Unused Var
 #define VAR_LITTLEROOT_INTRO_STATE           0x4092
 #define VAR_MAUVILLE_GYM_STATE               0x4093
 #define VAR_LILYCOVE_MUSEUM_2F_STATE         0x4094
@@ -223,7 +223,7 @@
 #define VAR_CABLE_CLUB_TUTORIAL_STATE        0x40CD
 #define VAR_FRONTIER_BATTLE_MODE             0x40CE
 #define VAR_FRONTIER_FACILITY                0x40CF
-#define VAR_RYU_DEVON         0x40D0 // devon main
+#define VAR_RYU_QUEST_DEVON_CORPORATE         0x40D0 // devon main
 #define VAR_SCOTT_STATE                      0x40D1
 #define VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE   0x40D2
 #define VAR_DEX_UPGRADE_JOHTO_STARTER_STATE  0x40D3
@@ -237,14 +237,14 @@
 #define VAR_RYU_FOLLOWER_ID                  0x40DB
 #define VAR_RYU_SAVED_BGM                    0x40DC
 #define VAR_EVENT_PICHU_SLOT                 0x40DD
-#define VAR_RYU_LANETTE_VAR                  0x40DE
+#define VAR_RYU_QUEST_LANETTE                  0x40DE
 #define VAR_DEXNAV_SPECIES                   0x40DF // Var is written to, but never read
 #define VAR_DEXNAV_STEP_COUNTER              0x40E0 // Var is written to, but never read
 #define VAR_RYU_ALCHEMY_COPPER               0x40E1 // Player's copper dust count
 #define VAR_RYU_ALCHEMY_SILVER               0x40E2 // Player's silver dust count
 #define VAR_RYU_ALCHEMY_GOLD                 0x40E3 // Player's gold dust count
 #define VAR_RYU_ALCHEMY_EXP                  0x40E4 // var is written to, but never read
-#define VAR_RYU_AQUA                         0x40E5 // Aqua quest stages
+#define VAR_RYU_QUEST_AQUA                         0x40E5 // Aqua quest stages
 #define VAR_DAILY_SLOTS                      0x40E6
 #define VAR_DAILY_WILDS                      0x40E7
 #define VAR_DAILY_BLENDER                    0x40E8
@@ -260,7 +260,7 @@
 #define VAR_WALLY_CALL_STEP_COUNTER          0x40F2
 #define VAR_SCOTT_FORTREE_CALL_STEP_COUNTER  0x40F3
 #define VAR_ROXANNE_CALL_STEP_COUNTER        0x40F4
-#define VAR_RYU_DS_NURSE_STAGE               0x40F5
+#define VAR_RYU_QUEST_NURSE               0x40F5
 #define VAR_UNUSED_0x40F6                    0x40F6
 #define VAR_RYU_GCMS_SPECIES                 0x40F7
 #define VAR_RYU_GCMS_VALUE                   0x40F8
@@ -269,8 +269,8 @@
 #define VAR_RYU_NUZLOCKE_WAYSTONE_USES       0x40FB
 #define VAR_RYU_PRICE_MULTIPLIER             0x40FC
 #define VAR_RYU_WEATHER                      0x40FD
-#define VAR_RYU_DS_LANA_STAGE                0x40FE
-#define VAR_RYU_MAGMA                        0x40FF // Magma quest var
+#define VAR_RYU_QUEST_LANA                0x40FE
+#define VAR_RYU_QUEST_MAGMA                        0x40FF // Magma quest var
 
 #define VARS_END                             0x40FF
 #define VARS_COUNT                           (VARS_END - VARS_START + 1)

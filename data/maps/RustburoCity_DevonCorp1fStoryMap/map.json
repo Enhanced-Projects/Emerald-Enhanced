@@ -82,7 +82,7 @@
       "x": 14,
       "y": 3,
       "elevation": 0,
-      "var": "VAR_RYU_DEVON",
+      "var": "VAR_RYU_QUEST_DEVON_CORPORATE",
       "var_value": "40",
       "script": "DC_FirstFloorSceneStart"
     }

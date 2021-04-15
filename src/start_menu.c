@@ -830,11 +830,11 @@ void DrawDevonLogo(void)
     StringCopy(gRyuStringVar1, gText_HighlightTransparent);
     if (FlagGet(FLAG_RYU_DEVON_SCIENTIST) == 0)
         {
-            ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_DEVON)), 0, 3);
+            ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_QUEST_DEVON_CORPORATE)), 0, 3);
         }
     else
         {
-            ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_DEVON_SCIENTIST_STAGE)), 0, 3);
+            ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_QUEST_DEVON_SCIENTIST)), 0, 3);
         }
     StringAppend(gRyuStringVar1, gStringVar2);
     AddTextPrinterParameterized(sPrintNumberWindow2Id, 1, gRyuStringVar1, 0, 0, 0, NULL);
@@ -866,7 +866,7 @@ void DrawAquaLogo(void)
 
     //Show quest stage
     StringCopy(gRyuStringVar1, gText_HighlightTransparent);
-    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_AQUA)), 0, 3);
+    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_QUEST_AQUA)), 0, 3);
     StringAppend(gRyuStringVar1, gStringVar2);
     AddTextPrinterParameterized(sPrintNumberWindow2Id, 1, gRyuStringVar1, 0, 0, 0, NULL);
     
@@ -898,7 +898,7 @@ void DrawMagmaLogo(void)
 
     //Show quest stage
     StringCopy(gRyuStringVar1, gText_HighlightTransparent);
-    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_MAGMA)), 0, 3);
+    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_QUEST_MAGMA)), 0, 3);
     StringAppend(gRyuStringVar1, gStringVar2);
     AddTextPrinterParameterized(sPrintNumberWindow2Id, 1, gRyuStringVar1, 0, 0, 0, NULL);
 

@@ -3,7 +3,7 @@ SealedChamber_InnerRoom_MapScripts:: @ 82391F7
 	.byte 0
 
 SCH_OpenDoors:: @ 82391F8
-	compare VAR_RYU_DS_LANA_STAGE, 35
+	compare VAR_RYU_QUEST_LANA, 35
 	goto_if_eq ryu_end
 	playbgm MUS_DUMMY, 0
 	playse SE_W089
@@ -29,7 +29,7 @@ SCH_OpenDoors:: @ 82391F8
 	delay 40
 	fadedefaultbgm
 	setflag FLAG_REGI_DOORS_OPENED
-	compare VAR_RYU_DS_LANA_STAGE, 41
+	compare VAR_RYU_QUEST_LANA, 41
 	goto_if_ne ryu_end
 	return
 	releaseall
@@ -100,11 +100,11 @@ SealedChamber_InnerRoom_EventScript_BrailleStoryPart6:: @ 8239287
 @==================================================================================================LANA SCRIPTS
 
 SCH_LanaCheck::
-	compare VAR_RYU_DS_LANA_STAGE, 30
+	compare VAR_RYU_QUEST_LANA, 30
 	goto_if_ne ryu_end
 	addobject 1
 	clearflag FLAG_HIDE_SCH_LANA
-	setvar VAR_RYU_DS_LANA_STAGE, 35
+	setvar VAR_RYU_QUEST_LANA, 35
 	release
 	end
 
@@ -124,7 +124,7 @@ SCH_LanaEvent::
 	msgbox SCH_LanaMsg2 MSGBOX_DEFAULT
 	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 115
 	setflag FLAG_RYU_BOSS_SCALE
-	setvar VAR_RYU_DS_LANA_STAGE, 40
+	setvar VAR_RYU_QUEST_LANA, 40
 	cleartrainerflag TRAINER_STORY_LEAF
 	trainerbattle_no_intro TRAINER_STORY_LEAF, SCH_Victory
 	goto SCH_AfterBattle
@@ -139,7 +139,7 @@ SCH_LanaDispt::
 	end
 	
 SCH_AfterBattle::
-	setvar VAR_RYU_DS_LANA_STAGE, 41
+	setvar VAR_RYU_QUEST_LANA, 41
 	applymovement 1, SCH_Fall
 	setflag FLAG_TEMP_B
 	call SCH_OpenDoors
@@ -161,7 +161,7 @@ SCH_AfterBattle::
 	goto_if_set FLAG_DEFEATED_REGIROCK, SCH_AlternateStoryTrigger
 	goto_if_set FLAG_DEFEATED_REGICE, SCH_AlternateStoryTrigger
 	goto_if_set FLAG_DEFEATED_REGISTEEL, SCH_AlternateStoryTrigger
-	setvar VAR_RYU_DS_LANA_STAGE, 45
+	setvar VAR_RYU_QUEST_LANA, 45
 	clearflag FLAG_HIDE_DR_LANA
 	release
 	end
@@ -187,7 +187,7 @@ Ryu_CancelLeafLanetteQuest::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	msgbox SCH_AltAnotherNote
 	setflag FLAG_RYU_DS_LEAF_LINE_CANCELLED
-	setvar VAR_RYU_DS_LANA_STAGE, 666
+	setvar VAR_RYU_QUEST_LANA, 666
 	release
 	end
 

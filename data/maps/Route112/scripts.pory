@@ -156,7 +156,7 @@ R112_BlaiseCheckProgress::
 	end
 	
 R112_Blaise_ClearingFinished::
-	setvar VAR_RYU_MAGMA, 301@Player finished clearing civilians from area surrounding magma hideout
+	setvar VAR_RYU_QUEST_MAGMA, 301@Player finished clearing civilians from area surrounding magma hideout
 	msgbox R112_CoolThenYoure
 	closemessage
 	setflag FLAG_RYU_HIDE_R112_BLAISE

@@ -5,19 +5,19 @@ Route124_MapScripts:: @ 81F656C
 	.byte 0
 	
 Route124_CheckFinalMagmaAltRomEvent::
-	map_script_2 VAR_RYU_MAGMA, 590, Route124_DoFinalMagmaEvent
+	map_script_2 VAR_RYU_QUEST_MAGMA, 590, Route124_DoFinalMagmaEvent
 	.2byte 0
 	
 R124_SetFollowerCourtneyEndEvent_R::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_end
-	compare VAR_RYU_MAGMA, 580
+	compare VAR_RYU_QUEST_MAGMA, 580
 	goto_if_ne ryu_end
 	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
 	end
 	
 R124_SetFollowerCourtneyEndEvent_NR::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, ryu_end
-	compare VAR_RYU_MAGMA, 575
+	compare VAR_RYU_QUEST_MAGMA, 575
 	goto_if_ne ryu_end
 	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
 	end
@@ -29,7 +29,7 @@ Route124_DoFinalMagmaEvent:
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_RYU_MAGMA, 596@@Magma alternate Romance Complete
+	setvar VAR_RYU_QUEST_MAGMA, 596@@Magma alternate Romance Complete
 	ach give ACH_ETERNAL_DAMNATION
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_FOLLOWER
@@ -89,7 +89,7 @@ Route124_OnTransition: @ 81F6572
 	end
 
 R124_CheckWarpMagmaEvent::
-	compare VAR_RYU_MAGMA, 575
+	compare VAR_RYU_QUEST_MAGMA, 575
 	goto_if_ne ryu_end
 	warpsilent MAP_TREASURE_HUNTERS_HOUSE_MAGMA_EVENT, 0, 3, 8
 	waitstate

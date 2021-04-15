@@ -57,7 +57,7 @@ Route130_EventScript_Santiago:: @ 81F73ED
 
 R130_SetupAquaKyogreEvent::
 	setvar VAR_TEMP_6, 20
-	compare VAR_RYU_AQUA, 130
+	compare VAR_RYU_QUEST_AQUA, 130
 	goto_if_ne ryu_end
 	goto_if_set FLAG_RYU_KYOGRE, ryu_end
 	setweather WEATHER_RAIN_THUNDERSTORM
@@ -84,7 +84,7 @@ R130_Kyogre::
 	removeobject 4 
 	pokenavcall R130_Kyogre_ReturnToMossdeep
 	waitmessage
-	setvar VAR_RYU_AQUA, 150 @Player captured Kyogre.
+	setvar VAR_RYU_QUEST_AQUA, 150 @Player captured Kyogre.
 	warpsilent MAP_MOSSDEEP_CITY, 255, 46, 8
 	waitstate
 

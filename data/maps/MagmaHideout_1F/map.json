@@ -168,7 +168,7 @@
       "x": 5,
       "y": 18,
       "elevation": 3,
-      "var": "VAR_RYU_AQUA",
+      "var": "VAR_RYU_QUEST_AQUA",
       "var_value": "93",
       "script": "MH_ShellyArrival"
     },

@@ -407,7 +407,7 @@
       "x": 22,
       "y": 115,
       "elevation": 3,
-      "var": "VAR_RYU_DEVON",
+      "var": "VAR_RYU_QUEST_DEVON_CORPORATE",
       "var_value": "45",
       "script": "r115_StartDevon"
     }

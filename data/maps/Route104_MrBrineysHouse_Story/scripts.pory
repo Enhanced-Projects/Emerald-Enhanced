@@ -5,12 +5,12 @@ Route104_MrBrineysHouse_Story_MapScripts::
 
 
 r104_ME_PlayerEnters::
-	map_script_2 VAR_RYU_MAGMA, 105, R104_ME_EventStart
+	map_script_2 VAR_RYU_QUEST_MAGMA, 105, R104_ME_EventStart
 	.2byte 0
 
 	
 R104_ME_EventStart::
-	setvar VAR_RYU_MAGMA, 110 @player started event in cottage
+	setvar VAR_RYU_QUEST_MAGMA, 110 @player started event in cottage
 	applymovement 8, Common_Movement_FaceUp
 	waitmovement 8
 	msgbox R104_ME_hehehe
@@ -102,7 +102,7 @@ R104_ME_EventStart::
 	applymovement 9, R104_ME_MaxieExits
 	waitmovement 9
 	removeobject 9
-	setvar VAR_RYU_MAGMA, 115 @Player finished cottage event
+	setvar VAR_RYU_QUEST_MAGMA, 115 @Player finished cottage event
 	setflag FLAG_RYU_HIDE_BRINEY_GUARD
 	clearflag FLAG_RYU_HIDE_GC_BLAISE
 	release

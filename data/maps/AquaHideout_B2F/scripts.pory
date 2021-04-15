@@ -4,7 +4,7 @@ AquaHideout_B2F_MapScripts:: @ 8233DCF
 
 AquaHideout_B2F_EventScript_MattNoticePlayer:: @ 8233DE5
 	lockall
-	compare VAR_RYU_AQUA, 125
+	compare VAR_RYU_QUEST_AQUA, 125
 	goto_if_eq AH_AquaScene
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, AC_DevonTrigger
 	goto_if_set FLAG_RYU_AQUA_BAD_END, ryu_end
@@ -186,7 +186,7 @@ AquaHideout_B2F_EventScript_Matt:: @ 8233E09
 
 AquaHideout_B2F_EventScript_Grunt4:: @ 8233E8A
 	trainerbattle_single TRAINER_GRUNT_4, AquaHideout_B2F_Text_Grunt4Intro, AquaHideout_B2F_Text_Grunt4Defeat, AquaHideout_B2F_EventScript_Grunt4Defeated
-	compare VAR_RYU_AQUA, 100
+	compare VAR_RYU_QUEST_AQUA, 100
 	goto_if_ge AH_RandomGruntSpeak
 	msgbox AquaHideout_B2F_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
 	end
@@ -198,14 +198,14 @@ AquaHideout_B2F_EventScript_Grunt4Defeated:: @ 8233EA5
 
 AquaHideout_B2F_EventScript_Grunt6:: @ 8233EAF
 	trainerbattle_single TRAINER_GRUNT_22, AquaHideout_B2F_Text_Grunt6Intro, AquaHideout_B2F_Text_Grunt6Defeat
-	compare VAR_RYU_AQUA, 100
+	compare VAR_RYU_QUEST_AQUA, 100
 	goto_if_ge AH_RandomGruntSpeak
 	msgbox AquaHideout_B2F_Text_Grunt6PostBattle, MSGBOX_AUTOCLOSE
 	end
 
 AquaHideout_B2F_EventScript_Grunt8:: @ 8233EC6
 	trainerbattle_single TRAINER_GRUNT_26, AquaHideout_B2F_Text_Grunt8Intro, AquaHideout_B2F_Text_Grunt8Defeat
-	compare VAR_RYU_AQUA, 100
+	compare VAR_RYU_QUEST_AQUA, 100
 	goto_if_ge AH_RandomGruntSpeak
 	msgbox AquaHideout_B2F_Text_Grunt8PostBattle, MSGBOX_AUTOCLOSE
 	end
@@ -286,7 +286,7 @@ AquaHideout_B2F_Text_Grunt8PostBattle: @ 82342FF
 @==================================================================================================aqua quest
 
 AH_AquaScene::
-	setvar VAR_RYU_AQUA, 127 @Scene from aqua b2f starting
+	setvar VAR_RYU_QUEST_AQUA, 127 @Scene from aqua b2f starting
 	getplayerxy VAR_TEMP_8, VAR_TEMP_9
 	compare VAR_TEMP_9, 16
 	call_if_eq AH_MovePlayerDownForScene
@@ -320,7 +320,7 @@ AH_MovePlayerDownForScene::
 
 AH_BottomSubRoomTrigger::
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, ryu_end
-	setvar VAR_RYU_AQUA, 127 @Scene from aqua b2f starting
+	setvar VAR_RYU_QUEST_AQUA, 127 @Scene from aqua b2f starting
 	applymovement OBJ_EVENT_ID_PLAYER, AH_PlayerFromBottomWarp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	goto AH_ContinueScene

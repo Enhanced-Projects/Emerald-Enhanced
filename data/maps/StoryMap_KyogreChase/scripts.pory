@@ -5,15 +5,15 @@ StoryMap_KyogreChase_MapScripts::
 	.byte 0
 
 KyogreChase_OnFrameMapScript:
-	map_script_2 VAR_RYU_AQUA, 116, KyogreChase_TestScene
-	map_script_2 VAR_RYU_AQUA, 119, KyogreChase_TestScene2
+	map_script_2 VAR_RYU_QUEST_AQUA, 116, KyogreChase_TestScene
+	map_script_2 VAR_RYU_QUEST_AQUA, 119, KyogreChase_TestScene2
 	.2byte 0
 
 KyogreChase_TestScene::
 	setweather WEATHER_RAIN_THUNDERSTORM
 	doweather
 	delay 20
-	setvar VAR_RYU_AQUA, 118@player has watched third part of aqua cutscene
+	setvar VAR_RYU_QUEST_AQUA, 118@player has watched third part of aqua cutscene
 	special SpawnCameraObject
 	applymovement 1, Common_Movement_FaceLeft
 	waitmovement 1
@@ -30,7 +30,7 @@ KyogreChase_TestScene::
 	waitse
 	delay 60
 	removeobject 2
-	setvar VAR_RYU_AQUA, 119
+	setvar VAR_RYU_QUEST_AQUA, 119
 	warpsilent MAP_STORY_MAP_KYOGRE_CHASE, 255, 26, 7
 	waitstate
 
@@ -38,7 +38,7 @@ KyogreChase_TestScene2::
 	setweather WEATHER_UNDERWATER_BUBBLES
 	doweather
 	delay 30
-	setvar VAR_RYU_AQUA, 122 @Player watched final part of cutscene
+	setvar VAR_RYU_QUEST_AQUA, 122 @Player watched final part of cutscene
 	msgbox KyogreChase_OhNo
 	closemessage
 	applymovement 3, KyogreChase_KyogreToSub

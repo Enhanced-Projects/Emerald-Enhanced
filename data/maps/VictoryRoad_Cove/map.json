@@ -11,7 +11,7 @@
             "elevation": 0,
             "script": "NM16_Mewtwo",
             "type": "trigger",
-            "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+            "var": "VAR_RYU_QUEST_DEVON_SCIENTIST",
             "var_value": "107",
             "x": 6,
             "y": 10

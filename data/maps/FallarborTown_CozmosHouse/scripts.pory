@@ -13,7 +13,7 @@ FT_FixCozmo::
 FallarborTown_CozmosHouse_EventScript_ProfCozmo:: @ 8200F13
 	lock
 	faceplayer
-	switch VAR_RYU_DEVON
+	switch VAR_RYU_QUEST_DEVON_CORPORATE
 	case 20, FT_CozmoMission1
 	case 21, FT_OnMission3
 	case 22, FT_Mission4
@@ -22,7 +22,7 @@ FallarborTown_CozmosHouse_EventScript_ProfCozmo:: @ 8200F13
 	goto ryu_end
 
 FT_CozmoMission1::
-	setvar VAR_RYU_DEVON, 21 @Player is tasked with going to Mt. Chimney and retreiving the meteorite.
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 21 @Player is tasked with going to Mt. Chimney and retreiving the meteorite.
 	msgbox FT_CozmoIntro MSGBOX_DEFAULT
 	giveitem ITEM_BIG_PEARL, 1
 	msgbox FT_OnMission3Msg MSGBOX_DEFAULT
@@ -66,7 +66,7 @@ FT_Mission4::
 	removeitem ITEM_METEORITE, 1
 	setvar VAR_TEMP_6, 40000
 	addmoney VAR_TEMP_6
-	setvar VAR_RYU_DEVON, 23 @Player is tasked with going to the aqua hideout and recovering the Radiation Detector.
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 23 @Player is tasked with going to the aqua hideout and recovering the Radiation Detector.
 	msgbox FT_Mission4Intro MSGBOX_DEFAULT
 	setflag FLAG_RYU_DEVON_HIDE_MATT_SUB
 	setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE
@@ -103,8 +103,8 @@ FT_CozmoNextMission::
 	msgbox FT_wait MSGBOX_DEFAULT
 	setflag FLAG_RYU_DEVON_SCIENTIST
 	fadescreen 0
-	setvar VAR_RYU_DEVON, 1000 @Player finished the main devon stuff and chose to be a scientist.
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 101 @Player started the scientist quest
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 1000 @Player finished the main devon stuff and chose to be a scientist.
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 101 @Player started the scientist quest
 	setvar VAR_WEATHER_INSTITUTE_STATE, 0
 	warp MAP_ROUTE119_WEATHER_INSTITUTE_1F, 255, 10, 12
 	release
@@ -116,7 +116,7 @@ FT_OnMission4::
 	end
 	
 FT_ReturnToDevon::
-	setvar VAR_RYU_DEVON, 25 @Player finished all of Cozmo's missions and should return to the President.
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 25 @Player finished all of Cozmo's missions and should return to the President.
 	msgbox FT_DevonMsg MSGBOX_DEFAULT
 	setflag FLAG_RYU_DEVON_CORPORATE
 	closemessage

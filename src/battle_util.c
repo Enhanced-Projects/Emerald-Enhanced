@@ -7427,10 +7427,10 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
       }
 
     //Steven is meant to defeat player in slateport museum
-    if ((VarGet(VAR_RYU_AQUA) == 40) && (FlagGet(FLAG_TEMP_E) == 1) && GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_LEFT)
+    if ((VarGet(VAR_RYU_QUEST_AQUA) == 40) && (FlagGet(FLAG_TEMP_E) == 1) && GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_LEFT)
         dmg /= 10;
 
-    if ((VarGet(VAR_RYU_AQUA) == 40) && (FlagGet(FLAG_TEMP_E) == 1) && GetBattlerPosition(gBattlerAttacker) == B_POSITION_OPPONENT_LEFT)
+    if ((VarGet(VAR_RYU_QUEST_AQUA) == 40) && (FlagGet(FLAG_TEMP_E) == 1) && GetBattlerPosition(gBattlerAttacker) == B_POSITION_OPPONENT_LEFT)
         dmg *= 20;
 
     //Followers may grant different bonuses

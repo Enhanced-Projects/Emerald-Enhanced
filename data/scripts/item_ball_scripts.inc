@@ -713,7 +713,7 @@ MtPyre_Exterior_EventScript_ItemTM48:: @ 829134B
 AquaHideout_B1F_EventScript_ItemMasterBall:: @ 8291358
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, AQH_AltItemBall
 	giveitem ITEM_FAME_CHECKER, 1
-	setvar VAR_RYU_DEVON, 24 @Player obtained the Radiation Detector. Return to Cozmo
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 24 @Player obtained the Radiation Detector. Return to Cozmo
 	setflag FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL
 	closemessage
 	removeobject 5

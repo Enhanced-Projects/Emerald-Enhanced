@@ -5,7 +5,7 @@ OldaleTown_MapScripts:: @ 81E8EA2
 	.byte 0
 	
 OT_CheckMagmaEvent::
-	map_script_2 VAR_RYU_MAGMA, 225, OT_DoMagmaSetup
+	map_script_2 VAR_RYU_QUEST_MAGMA, 225, OT_DoMagmaSetup
 	.2byte 0
 
 OldaleTown_OnTransition: @ 81E8EA8
@@ -414,7 +414,7 @@ OldaleTown_Text_CitySign: @ 81E94DA
 @==================================================================================================Magma Event
 
 OT_DoMagmaSetup::
-	setvar VAR_RYU_MAGMA, 230@Magma heist is under way
+	setvar VAR_RYU_QUEST_MAGMA, 230@Magma heist is under way
 	addobject 5
 	playbgm 358, 0
 	setflag FLAG_RYU_WAYSTONE_DISABLED
@@ -422,7 +422,7 @@ OT_DoMagmaSetup::
 	end
 	
 OT_CheckPlayerMagmaEvent::
-	compare VAR_RYU_MAGMA, 230
+	compare VAR_RYU_QUEST_MAGMA, 230
 	goto_if_eq OT_CantLeaveYet
 	goto ryu_end
 	
@@ -475,7 +475,7 @@ OT_CantEnterEast:
 OT_StartMagmaHeist::
 	lock
 	faceplayer
-	setvar VAR_RYU_MAGMA, 234@player started heist scene
+	setvar VAR_RYU_QUEST_MAGMA, 234@player started heist scene
 	playse SE_PIN
 	applymovement 5, Common_Movement_ExclamationMark
 	waitmovement 5
@@ -486,7 +486,7 @@ OT_StartMagmaHeist::
 	
 OT_ContinueHeist::
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
-	setvar VAR_RYU_MAGMA 240@player defeated shop guard
+	setvar VAR_RYU_QUEST_MAGMA 240@player defeated shop guard
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 5, Common_Movement_StepRight
@@ -561,7 +561,7 @@ OT_ContinueHeist::
 	removeobject 9
 	applymovement OBJ_EVENT_ID_PLAYER, OT_PlayerLeaveOldale
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_RYU_MAGMA, 245@Player left oldale after heist
+	setvar VAR_RYU_QUEST_MAGMA, 245@Player left oldale after heist
 	setflag FLAG_RYU_BANNED_FROM_OLDALE
 	release
 	end

@@ -25,7 +25,7 @@ Route114_LanettesHouse_EventScript_Lanette:: @ 822B2D2
 	end
 
 Ryu_LNH_RomChek::
-	map_script_2 VAR_RYU_LANETTE_VAR, 101, Ryu_LNH_RomQuest 
+	map_script_2 VAR_RYU_QUEST_LANETTE, 101, Ryu_LNH_RomQuest 
 	.2byte 0
 	
 LNH_RelCheck::
@@ -35,7 +35,7 @@ LNH_RelCheck::
 	end
 	
 Ryu_LNH_RomQuest::
-	setvar VAR_RYU_LANETTE_VAR, 0
+	setvar VAR_RYU_QUEST_LANETTE, 0
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	msgbox LNH_RomStart
@@ -94,7 +94,7 @@ LNH_RomanceEvent::
 	goto_if_set FLAG_TEMP_1, ryu_end
 	setflag FLAG_TEMP_1
 	msgbox LNH_youHearASound
-	setvar VAR_RYU_LANETTE_VAR, 104
+	setvar VAR_RYU_QUEST_LANETTE, 104
 	release
 	end
 	
@@ -233,7 +233,7 @@ LNH_Nothing::
 LNH_Staying:
 	msgbox LNH_Rel_Lanette_stayingScene
 	closemessage
-	setvar VAR_RYU_LANETTE_VAR, 105
+	setvar VAR_RYU_QUEST_LANETTE, 105
 	fadescreen 1
 	clearflag FLAG_RYU_HIDE_LANETTE_BASEMENT
 	warpsilent MAP_ROUTE114_LANETTES_HOUSE_BASEMENT, 255, 8, 6

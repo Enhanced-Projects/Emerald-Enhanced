@@ -43,7 +43,7 @@
       "x": 10,
       "y": 18,
       "elevation": 3,
-      "var": "VAR_RYU_DS_LANA_STAGE",
+      "var": "VAR_RYU_QUEST_LANA",
       "var_value": "30",
       "script": "SCH_LanaCheck"
     }

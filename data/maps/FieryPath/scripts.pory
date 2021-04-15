@@ -39,7 +39,7 @@ RyuLegendary_IntroEntei: @put your intro here
     .string "magma!$"
 	
 FP_CourtneyRomance1::
-	compare VAR_RYU_MAGMA, 405
+	compare VAR_RYU_QUEST_MAGMA, 405
 	goto_if_ne ryu_end
 	goto_if_set FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, ryu_end
 	lock

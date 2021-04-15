@@ -13,7 +13,7 @@ SootopolisCity_MagmaEvent_OnTransition::
 	return
 	
 SCME_StartEvent::
-	map_script_2 VAR_RYU_MAGMA, 550, SCME_MainEvent
+	map_script_2 VAR_RYU_QUEST_MAGMA, 550, SCME_MainEvent
 	.2byte 0
 	
 SCME_MainEvent::
@@ -87,7 +87,7 @@ SCME_MainEvent_Part2::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox SCME_NowsMyChance
 	closemessage
-	setvar VAR_RYU_MAGMA, 555
+	setvar VAR_RYU_QUEST_MAGMA, 555
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	setmetatile 31, 43, 656, 0
 	setmetatile 31, 44, 656, 0
@@ -96,7 +96,7 @@ SCME_MainEvent_Part2::
 	end
 	
 SC_GroudonFight::
-	compare VAR_RYU_MAGMA, 555
+	compare VAR_RYU_QUEST_MAGMA, 555
 	goto_if_ne ryu_end
 	specialvar VAR_RESULT, CountBadges
 	multvar VAR_RESULT, 10
@@ -205,7 +205,7 @@ SCME_PostEventPart2::
 	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
 	removeobject 4
 	setflag FLAG_RYU_DS_COURTNEY_LOVERS
-	setvar VAR_RYU_MAGMA, 560
+	setvar VAR_RYU_QUEST_MAGMA, 560
 	clearflag FLAG_RYU_HIDE_114_MAXIE
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
@@ -242,7 +242,7 @@ SCME_CourtneyAlone::
 	playfanfare MUS_FANFA1
 	msgbox SCME_IsNowAdmin
 	closemessage
-	setvar VAR_RYU_MAGMA, 560
+	setvar VAR_RYU_QUEST_MAGMA, 560
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
 	setflag FLAG_RYU_MAXIE_END_EVENT
 	clearflag FLAG_RYU_WAYSTONE_DISABLED

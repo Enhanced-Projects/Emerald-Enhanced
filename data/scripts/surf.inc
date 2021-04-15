@@ -19,12 +19,12 @@ ES_SurfHasFollower::
 	end
 
 ES_TandemSurf::
-	compare VAR_RYU_MAGMA, 570
+	compare VAR_RYU_QUEST_MAGMA, 570
 	call_if_ge ES_TandemSurfCheckMagma
 	return
 
 ES_TandemSurfCheckMagma::
-	compare VAR_RYU_MAGMA, 595
+	compare VAR_RYU_QUEST_MAGMA, 595
 	goto_if_lt ES_CourtneySurfWithPlayer
 	msgbox ES_YouHaveFollowerCantSurf
 	releaseall

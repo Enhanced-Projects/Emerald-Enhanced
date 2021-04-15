@@ -214,7 +214,7 @@
       "x": 15,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_RYU_MAGMA",
+      "var": "VAR_RYU_QUEST_MAGMA",
       "var_value": "120",
       "script": "GC_ME_Everstone1"
     }

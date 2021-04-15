@@ -81,7 +81,7 @@ Route119_WeatherInstitute_2F_EventScript_ShellyDefeated:: @ 826FFC8
 	end
 
 Route119_WeatherInstitute_2F_EventScript_ReceiveCastform:: @ 827004D
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 104
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 104
 	goto_if_ge WI_AfterCozmo
 	msgbox Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon, MSGBOX_DEFAULT
 	setvar VAR_TEMP_1, 385
@@ -139,14 +139,14 @@ WI_CozmoScene::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox WI_GuessSo
 	closemessage
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 103
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 103
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	release
 	end
 	
 WI_AfterCozmo::
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 104
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 104
 	goto_if_ge WI_AfterDesert
 	msgbox WI_GoToDesert
 	release
@@ -154,7 +154,7 @@ WI_AfterCozmo::
 	
 WI_AfterDesert::
 	lock
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 105
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 105
 	goto_if_ge WI_GoToMossdeep
 	msgbox WI_WelcomeBack
 	closemessage
@@ -163,7 +163,7 @@ WI_AfterDesert::
 	waitmoncry
 	closemessage
 	msgbox WI_AttemptFailed
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 105
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 105
 	msgbox WI_YouAndCastform
 	closemessage
 	playmoncry SPECIES_CASTFORM, 0

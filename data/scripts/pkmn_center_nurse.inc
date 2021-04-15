@@ -7,7 +7,7 @@ Common_EventScript_PkmnCenterNurse:: @ 827195A
     compare VAR_RESULT, 50
     call_if_eq RyuCheckIfQualifiesForNurseQuest
     call Ryu_CheckHealPermissions
-    switch VAR_RYU_DS_NURSE_STAGE
+    switch VAR_RYU_QUEST_NURSE
     case 1, PCN_Stage1HealMsg
     case 3, PCN_Stage2HealMsg
     case 5, PCN_Stage3HealMsg
@@ -16,7 +16,7 @@ Common_EventScript_PkmnCenterNurse:: @ 827195A
     goto PCN_Stage1HealMsg
 
 RyuCheckIfQualifiesForNurseQuest::
-    compare VAR_RYU_DS_NURSE_STAGE, 0
+    compare VAR_RYU_QUEST_NURSE, 0
     call_if_eq RyuEnableNurseQuest
     return
 
@@ -64,7 +64,7 @@ PCN_HealMons::
     applymovement VAR_0x800B, Common_Movement_WalkInPlaceFastestDown
     waitmovement 0
     special HealPlayerParty
-	switch VAR_RYU_DS_NURSE_STAGE
+	switch VAR_RYU_QUEST_NURSE
 	case 3, PCN_HealOutroText2
 	case 5, PCN_HealOutroText3
 	case 7, PCN_HealOutroText4

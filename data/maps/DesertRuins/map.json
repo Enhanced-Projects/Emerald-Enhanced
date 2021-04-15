@@ -96,7 +96,7 @@
       "x": 8,
       "y": 28,
       "elevation": 3,
-      "var": "VAR_RYU_DS_LANA_STAGE",
+      "var": "VAR_RYU_QUEST_LANA",
       "var_value": "45",
       "script": "DR_SetStage"
     },
@@ -105,7 +105,7 @@
       "x": 8,
       "y": 21,
       "elevation": 3,
-      "var": "VAR_RYU_DS_LANA_STAGE",
+      "var": "VAR_RYU_QUEST_LANA",
       "var_value": "48",
       "script": "DR_LeafCheck2"
     },
@@ -114,7 +114,7 @@
       "x": 8,
       "y": 10,
       "elevation": 3,
-      "var": "VAR_RYU_DS_LANA_STAGE",
+      "var": "VAR_RYU_QUEST_LANA",
       "var_value": "49",
       "script": "DR_LeafEvent2"
     }

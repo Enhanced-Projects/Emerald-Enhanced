@@ -7,7 +7,7 @@ MtChimney_MapScripts:: @ 822EDC1
 	.byte 0
 	
 MC_OnFrameScript::
-	map_script_2 VAR_RYU_AQUA, 124, MC_DoAquaGroudonScene
+	map_script_2 VAR_RYU_QUEST_AQUA, 124, MC_DoAquaGroudonScene
 	.2byte 0
 
 MtChimney_OnTransition: @ 822EDCC
@@ -139,7 +139,7 @@ MC_PlayerAqua::
 	msgbox MC_YouSeeStarPiece
 	closemessage
 	giveitem ITEM_STAR_PIECE, 1
-	setvar VAR_RYU_AQUA, 81 @Player finished event at Mt. Chimney. Take star piece to jeweler or return to shelly.
+	setvar VAR_RYU_QUEST_AQUA, 81 @Player finished event at Mt. Chimney. Take star piece to jeweler or return to shelly.
 	release
 	end
 
@@ -330,12 +330,12 @@ MtChimney_EventScript_MeteoriteMachine:: @ 822F0E4
 	goto_if_eq ryu_end
 	goto_if_set FLAG_RECEIVED_METEORITE, ryu_end
 	goto_if_unset FLAG_RYU_PLAYER_HELPING_DEVON, MtChimney_EventScript_MachineOn
-	compare VAR_RYU_DEVON, 21
+	compare VAR_RYU_QUEST_DEVON_CORPORATE, 21
 	goto_if_lt MtChimney_EventScript_MachineOn
 	msgbox MtChimney_Text_PlayerRemovedMeteorite, MSGBOX_DEFAULT
 	giveitem ITEM_METEORITE
 	setflag FLAG_RECEIVED_METEORITE
-	setvar VAR_RYU_DEVON, 22 @Player got the meteorite. Return to Cozmo.
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 22 @Player got the meteorite. Return to Cozmo.
 	releaseall
 	end
 
@@ -716,7 +716,7 @@ MtChimney_Text_SawyerPostRematch: @ 8230614
 
 @==================================================================================================
 MC_DoAquaGroudonScene::
-	setvar VAR_RYU_AQUA, 128 @player is watching scene in mtchimney
+	setvar VAR_RYU_QUEST_AQUA, 128 @player is watching scene in mtchimney
 	applymovement 32, Common_Movement_FaceRight
 	waitmovement 32
 	delay 20

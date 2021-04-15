@@ -11,7 +11,7 @@ Ryu_HaremEventCheck::
 	
 LRT_CheckMagmaWarp::
 	setvar VAR_TEMP_7, 0
-	compare VAR_RYU_MAGMA, 570
+	compare VAR_RYU_QUEST_MAGMA, 570
 	goto_if_ne ryu_end
 	warpsilent MAP_LRT_BIRCH_LAB_MAGMA_EVENT, 0, 6, 12
 	waitstate

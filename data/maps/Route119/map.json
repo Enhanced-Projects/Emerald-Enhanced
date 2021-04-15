@@ -811,7 +811,7 @@
       "x": 17,
       "y": 33,
       "elevation": 0,
-      "var": "VAR_RYU_AQUA",
+      "var": "VAR_RYU_QUEST_AQUA",
       "var_value": "117",
       "script": "R119_ShellyAqua"
     },
@@ -820,7 +820,7 @@
       "x": 17,
       "y": 34,
       "elevation": 0,
-      "var": "VAR_RYU_AQUA",
+      "var": "VAR_RYU_QUEST_AQUA",
       "var_value": "117",
       "script": "R119_ShellyAqua"
     }
