@@ -412,6 +412,15 @@
 #define FACTION_ATHLETES 6 //bodybuilders, meatheads, jocks, those whose entire existence is self improvement. Martial artists, fighters, etc.     Opposed: Pokefans(x0.5) Richkids(x0.5)  "Pokemon are best when trained 
 #define FACTION_OTHERS 7 //everything else unclassified like aqua, magma, leaders, etc.                                                                     to their potential, not left to rot and spoil!"
 
-#define EE_GAME_VERSION 7604
+//The questlines that have their own discrete quest stage tracking variable
+#define QUEST_ID_DEVON_SCIENTIST 0
+#define QUEST_ID_DEVON_CORPORATE 1
+#define QUEST_ID_AQUA 2
+#define QUEST_ID_MAGMA 3
+#define QUEST_ID_LANA 4
+#define QUEST_ID_LANETTE 5
+#define QUEST_ID_NURSE 5
+
+#define EE_GAME_VERSION 7610
 
 #endif // GUARD_CONSTANTS_VARS_H
