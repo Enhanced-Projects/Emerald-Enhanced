@@ -550,7 +550,7 @@ NurseTriage:
 	step_end
 
 EGC_PlayerLostMsg:
-	.string " (The last thing you see is the\n nurse rushing to your aid before\l passing out...$"
+	.string " (The last thing you see is the\n nurse rushing to your aid before\l passing out...)$"
 
 
 
