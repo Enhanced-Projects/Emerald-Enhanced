@@ -246,15 +246,12 @@ LCPC_NurseStayNight2Query:
 
 LCPC_NurseStayNight1:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Okay... good. I'm ready!\p"
-    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She's looking rather nervous.\n"
-    .string " better be gentle...)\p"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}My bed's over here...$"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She looks adorable in her\n"
+	.string " night clothes.)$"
 
 LCPC_PlayerNurseSnuggle:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Even though she's older than you,\n"
-    .string " she seems so innocent...\p"
-    .string " She's very soft... and warm... and\n"
-    .string " you can't help but love her...)$"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Joy spend a very \n"
+	.string " comfortable night together.)$"
 
 LCPC_PlayerWakesUp:
 	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(When you wake up, the room is very\n"
@@ -262,9 +259,7 @@ LCPC_PlayerWakesUp:
     .string " computer, doing some work.)$"
 	
 LCPC_NurseStayNight2:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She seems very happy to see you.\n"
-    .string " As if she was looking forward\l"
-    .string " to you visiting her.)\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She seems very happy to see you.)\p"
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}I couldn't resist staying the night\n"
     .string "with you if I tried.\p"
     .string "{COLOR LIGHT_RED}{SHADOW RED}Oh... well I'm happy that you enjoy\n"
@@ -282,11 +277,7 @@ LCPC_PlayerWakesUp2:
 
 LCPC_HiPlayerThanksFor:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Good morning, {PLAYER}. I hope you\n"
-    .string "slept well... I certainly did.\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Yes, I've never felt so comfortable\n"
-    .string "in my life before last night.\p"
-    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She blushes and turns away)\p"
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Thanks... Me too...$"
+    .string "slept well... I certainly did.$"
 
 LCPC_HiPlayerThanksAgain:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Good morning, {PLAYER}!\n"

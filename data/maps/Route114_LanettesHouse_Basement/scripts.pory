@@ -277,25 +277,17 @@ LNH_HelpLanette::
 LNH_StayingNightAfterStory:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Lanette: Unfortunately, I don't\n"
     .string "have any new movies for us to\p"
-    .string "watch, so I guess I will just\n"
-    .string "have to entertain you, myself...\p"
-    .string "{COLOR LIGHT_BLUE}{SHADOW BLUE} I like where this is\n"
-    .string "going. I hope I can keep up...$"
+    .string "watch, so would you like to play\n"
+	.string "some games? I have the newest Smash!$"
 	
 LNH_AS_InBedMsg:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Lanette: I've been studying male\n"
-    .string "anatomy. I think I know exactly\l"
-    .string "which buttons to press and when.\p"
-	.string "... ... ... ...\p"
-    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She does indeed. You feel like\n"
-    .string " you're not going to get very much\l"
-    .string " sleep tonight...)$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Lanette: I've been practicing\n"
+	.string "my Smash game. You don't stand\l"
+	.string "a chance!$"
 	
 LNH_AS_YouWakeUp:
-    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Somehow, you wake up feeling\n"
-    .string " more tired than when you came\l"
-    .string " here last night.)$"
-
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(You wake up tired because you spent\n"
+	.string " the whole night gaming with Lanette.)$"
 
 LNH_JustChecking:
 	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE} No, not really.\p"
@@ -315,14 +307,10 @@ LNH_SheLooksBusy:
     .string " probably leave her to her work.)$"
 
 LNH_StayingNightPartners:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}I doubt we'll get all the way\n"
-    .string "through the movie, though.\p"
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She smiles as she unbuttons\n"
-	.string " her dress)\p"
-    .string " (Lanette changes into her\p"
-    .string " favorite night shirt. You also get\n"
-    .string " the feeling you won't be watching\l"
-    .string " the tv.)$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Would you like to just watch\n"
+	.string "some movies or shows?\p"
+	.string "I'm really worn out.\p"
+	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} gives Lanette a massage.)"
 	
 LNH_LanetteDialog2:
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (It looks like Lanette is having\n"

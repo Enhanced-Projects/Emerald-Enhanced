@@ -189,8 +189,8 @@ LRT_DAWN_THANKS:
 
 LRT_DAWN_THANKS2:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Thanks for staying with me for another\n"
-	.string "night. You might get me addicted...\p"
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(She gives a sheepish smile)$"
+	.string "night. I always sleep better with\l"
+	.string "you by my side."
 
 LRT_HEART:
 	walk_down

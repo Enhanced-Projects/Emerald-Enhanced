@@ -28,7 +28,7 @@ MHAQ_StayingWithCourtney1::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, MHAQ_PlayerToBed
 	waitmovement OBJ_EVENT_ID_PLAYER
-	msgbox MHAQ_NeverGotTheChance
+	msgbox MHAQ_CourtneyMassagesPlayer
 	closemessage
 	fadeoutbgm 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
@@ -64,8 +64,6 @@ MHAQ_StayingWithCourtney2::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	applymovement 1, MHAQ_CourtneyToBed
 	waitmovement 1
-	msgbox MHAQ_PlayerThoughts
-	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, MHAQ_PlayerToBed
 	waitmovement OBJ_EVENT_ID_PLAYER
 	fadescreen FADE_TO_BLACK
@@ -151,15 +149,13 @@ MHAQ_StayTheNight2:
 MHAQ_OhYouCouldnt:
     .string "{COLOR LIGHT_RED}{SHADOW RED}You couldn't resist any longer, \n"
     .string "could you? No matter...$"
-
-MHAQ_PlayerThoughts:
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(There was this one thing you\n wanted to try...\p She'd probably be up for it...)$"
 	
 MHAQ_PlayerAndCourtneyStayedTogether:
-    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}{PLAYER} and Courtney spend another\n"
-    .string " night together, this time with a\l"
-    .string " new thing you wanted to try.\p"
-    .string " She doesn't seem bothered by it...)$"
+    .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}You spend another night with Courtney.\n"
+	.string " She's hugging you with an iron\l"
+	.string "grasp.)\p"
+	.string "{COLOR LIGHT_RED}{SHADOW RED} I'm not letting you sneak away\n"
+	.string "during the night...$"
 
 MHAQ_HowdWeEndUpHere:
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Courtney... how'd we get down here?\p"
@@ -174,10 +170,9 @@ MHAQ_WellComeOnThen:
     .string "you sleep real good tonight, {PLAYER}.\p"
 	.string "I've got some stress to work out...$"
 	
-MHAQ_NeverGotTheChance:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}I never got a chance before...\n"
-    .string "Now I do, and you can do whatever\l"
-    .string "you want to me...$"
+MHAQ_CourtneyMassagesPlayer:
+    .string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Courtney gives you a very aggressive\n"
+    .string " back massage.)$"
 	
 MHAQ_PlayerAndCourtney:
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}({PLAYER} and Courtney enjoy a night\n"
