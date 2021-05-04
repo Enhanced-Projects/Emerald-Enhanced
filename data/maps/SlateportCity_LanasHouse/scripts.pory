@@ -20,7 +20,7 @@ LH_Intro::
 	waitmovement 0
 	msgbox LH_Bro_intro MSGBOX_NPC
 	waitmessage
-	setvar VAR_RYU_QUEST_LANA, 2
+	setvar VAR_RYU_QUEST_LANA, 2 @player met with Lana's brother, go to the right side of the house and speak to her.
 	release
 	end
 	
@@ -41,7 +41,7 @@ LH_Leaf_Home_chat::
 	waitmovement 0
 	msgbox LH_chat2 MSGBOX_DEFAULT
 	msgbox LH_End MSGBOX_SIGN
-	setvar VAR_RYU_QUEST_LANA, 4
+	setvar VAR_RYU_QUEST_LANA, 4 @player met with Lana for the first time. You must be champion to continue this quest. Return when you are champion.
 	applymovement 2, LH_read
 	waitmovement 0
 	release
@@ -84,7 +84,7 @@ LH_EventStart::
 	special DrawWholeMapView
 	msgbox LH_QuestStarted MSGBOX_DEFAULT
 	closemessage
-	setvar VAR_RYU_QUEST_LANA, 10
+	setvar VAR_RYU_QUEST_LANA, 10 @Lana took off to the trick house. Meet her there.
 	release
 	end
 	

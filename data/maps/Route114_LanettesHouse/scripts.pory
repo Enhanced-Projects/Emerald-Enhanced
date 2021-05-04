@@ -498,6 +498,7 @@ LNH_LeafEvent::
 	waitmovement 1
 	msgbox LNH_StoryMsg4 MSGBOX_DEFAULT
 	closemessage
+	setvar VAR_RYU_QUEST_LANA, 525
 	setflag FLAG_RYU_LANA_ALTEVENT3
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	release

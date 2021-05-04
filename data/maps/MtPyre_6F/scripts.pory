@@ -227,6 +227,7 @@ MP_LeafAltStory1::
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	setflag FLAG_RYU_LEAF_MTPYRE
 	setflag FLAG_RYU_HIDE_LCC_DEPT_ROOF_NPC
+	setvar VAR_RYU_QUEST_LANA, 505
 	fadedefaultbgm
 	release
 	end

@@ -176,6 +176,7 @@ SCH_AlternateStoryTrigger::
 	msgbox SCH_AltStory22 MSGBOX_DEFAULT
 	closemessage
 	msgbox SCH_AltStory23 MSGBOX_DEFAULT
+	setvar VAR_RYU_QUEST_LANA, 500
 	fadedefaultbgm
 	release
 	end
