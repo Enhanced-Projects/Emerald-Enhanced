@@ -21,6 +21,7 @@
 #define asm_comment(x) asm volatile("@ -- " x " -- ")
 #define asm_unified(x) asm(".syntax unified\n" x "\n.syntax divided")
 #define NAKED __attribute__((naked))
+#define __VSCODE__
 
 // IDE support
 #if defined (__APPLE__) || defined (__CYGWIN__) || defined (_MSC_VER) || defined(__VSCODE__)
