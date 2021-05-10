@@ -1060,8 +1060,8 @@ static const struct WindowTemplate sQuestWindowTemplate[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static u8 sTextDevon1[] = _("Devon 1");
-static u8 sTextDevon2[] = _("Devon 2");
+static u8 sTextDevon1[] = _("Devon Corporate");
+static u8 sTextDevon2[] = _("Devon Scientist");
 static u8 sTextMagma[] = _("Magma");
 static u8 sTextLana[] = _("Lana");
 static u8 sTextLanette[] = _("Lanette");
