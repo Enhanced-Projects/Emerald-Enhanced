@@ -120,7 +120,7 @@ void AgbMain()
     gLinkTransferringData = FALSE;
     gUnknown_03000000 = 0xFC0;
 
-    mgba_open();
+    //mgba_open();
     for (;;)
     {
         ReadKeys();
@@ -398,19 +398,19 @@ static void SerialIntr(void)
 static void IntrDummy(void)
 {}
 
-//static void WaitForVBlank(void)
-//{
-    //gMain.intrCheck &= ~INTR_FLAG_VBLANK;
-
-    //while (!(gMain.intrCheck & INTR_FLAG_VBLANK))
-    //    ;
-//}
-
 static void WaitForVBlank(void)
 {
     gMain.intrCheck &= ~INTR_FLAG_VBLANK;
-    VBlankIntrWait();
+
+    while (!(gMain.intrCheck & INTR_FLAG_VBLANK))
+        ;
 }
+
+//static void WaitForVBlank(void)
+//{
+//    gMain.intrCheck &= ~INTR_FLAG_VBLANK;
+//    VBlankIntrWait();
+//}
 
 void SetTrainerHillVBlankCounter(u32 *counter)
 {
