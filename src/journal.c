@@ -54,6 +54,10 @@ enum // much window, such complexity
     COUNT_JOURNAL_WINDOWS
 };
 
+static u8 sColors[][3] = {
+    {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY},
+};
+
 static const struct WindowTemplate sJournalWindowTemplate[] =
 {
     [WIN_JOURNAL_STATS] =
@@ -141,7 +145,7 @@ enum
     JOURNAL_OPTION_JOURNAL, // somehow this feels useless
     JOURNAL_OPTION_ACH_ATLAS,
     JOURNAL_OPTION_POWERS,
-    //JOURNAL_OPTION_QUESTS,
+    JOURNAL_OPTION_QUESTS,
     JOURNAL_OPTION_COUNT,
     JOURNAL_OPTION_EXIT,  // should always be after JOURNAL_OPTION_COUNT and at the end
 };
@@ -198,7 +202,7 @@ static const struct JournalEntryButtonData sJounralButtons[JOURNAL_OPTION_COUNT]
         .palette = sPowersJournalIconPalette,
         .callback2 = CB2_OpenAPMenu,
     },
-    /*
+    
     [JOURNAL_OPTION_QUESTS] = {
         .spriteImages = 
         {
@@ -212,9 +216,9 @@ static const struct JournalEntryButtonData sJounralButtons[JOURNAL_OPTION_COUNT]
             },
         },
         .palette = sQuestsJournalIconPalette,
-        //.callback2 = CB2_OpenQuestTracker,
+        .callback2 = CB2_OpenQuestTracker,
     },
-    */
+    
     /*
     [JOURNAL_OPTION_EXIT] = {
         .callback2 = CB2_ReturnToFieldWithOpenMenu,
@@ -722,7 +726,6 @@ static void DrawJournalStatText(void)
     u32 i, j;
     u32 top = 0, left = 0;
     u32 statToDisplay = Random() % ARRAY_COUNT(sJournalStats);
-    u8 color[3] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_GREY};
     u8 * textBuffer;
     u8 stats[8];
     const struct JournalStatData * journalStat;
@@ -768,9 +771,9 @@ static void DrawJournalStatText(void)
         //if(journalStat->hideOnN1 && val == 0xFFFFFFFF)
         //    continue; // failsafe which will get triggered too much
         
-        AddTextPrinterParameterized3(WIN_JOURNAL_STATS, 0, left, top, color, 0, journalStat->statName); // TODO: speed 0xFF
-        ConvertIntToDecimalStringN(gStringVar4, val, STR_CONV_MODE_LEADING_ZEROS, journalStat->numberCount);
-        AddTextPrinterParameterized3(WIN_JOURNAL_STATS, 0, (left+LEFT_MIDDLE-2)-GetStringWidth(0, gStringVar4, 0), top, color, 0, gStringVar4);
+        AddTextPrinterParameterized3(WIN_JOURNAL_STATS, 0, left, top, sColors[0], 0, journalStat->statName); // TODO: speed 0xFF
+        ConvertIntToDecimalStringN(gStringVar4, val, STR_CONV_MODE_LEFT_ALIGN, journalStat->numberCount);
+        AddTextPrinterParameterized3(WIN_JOURNAL_STATS, 0, (left+LEFT_MIDDLE-2)-GetStringWidth(0, gStringVar4, 0), top, sColors[0], 0, gStringVar4);
         top += TOP_SPACING;
         if(i == 3)
         {
@@ -792,7 +795,7 @@ static void DrawJournalStatText(void)
     ConvertIntToDecimalStringN(gStringVar2, (u16)GetTrainerId(gSaveBlock2Ptr->playerTrainerId), STR_CONV_MODE_LEADING_ZEROS, 5);
     ConvertIntToDecimalStringN(gStringVar3, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_LEFT_ALIGN, 8);
     StringExpandPlaceholders(gStringVar4, sText_TrainerNameId);
-    AddTextPrinterParameterized3(WIN_JOURNAL_QUEST_STAGE, 1, 0, 1, color, 0, gStringVar4);
+    AddTextPrinterParameterized3(WIN_JOURNAL_QUEST_STAGE, 1, 0, 1, sColors[0], 0, gStringVar4);
     
 }
 
@@ -844,7 +847,7 @@ static bool8 IntializeJournal(void)
     {
         u32 i;
         struct SpriteTemplate spriteTemplate = sButtonSpriteTemplate;
-        static const u8 buttonXPos[JOURNAL_OPTION_COUNT] = {32, 90, 160}; //! EVIL hardcoding
+        static const u8 buttonXPos[JOURNAL_OPTION_COUNT] = {8, 72, 140, 184}; //! EVIL hardcoding
         for(i = 0; i < JOURNAL_OPTION_COUNT; i++)
         {
             spriteTemplate.images = sJounralButtons[i].spriteImages;
@@ -1001,8 +1004,12 @@ static void ButtonSpriteCB(struct Sprite *sprite)
 
 // Quest stuff
 
-#if 0 // TODO: was removed to get journal screen out early, will finish later
+//#if 0 // TODO: was removed to get journal screen out early, will finish later
+
+#include "data/quest_stages.h"
+
 // these are all u16 because apparently it breaks otherwise... wonder if it's alignment bullshit
+
 static const u16 sQuestTrackerBGMap[] = INCBIN_U16("graphics/quest_tracker/quest_tracker_map.bin");
 static const u16 sQuestTrackerBGTiles[] = INCBIN_U16("graphics/quest_tracker/quest_tracker.4bpp");
 static const u16 sQuestTrackerBGPalette[] = INCBIN_U16("graphics/quest_tracker/quest_tracker.gbapal");
@@ -1014,7 +1021,8 @@ enum
 {
     WIN_QUEST_QUESTS,
     WIN_QUEST_QUEST_DATA,
-    WIN_QUEST_QUEST_STAGE_DESC
+    WIN_QUEST_QUEST_STAGE_DESC,
+    WIN_QUEST_COUNT
 };
 
 static const struct WindowTemplate sQuestWindowTemplate[] =
@@ -1023,8 +1031,8 @@ static const struct WindowTemplate sQuestWindowTemplate[] =
     {
         .bg = 0,
         .tilemapLeft = 1,
-        .tilemapTop = 4,
-        .width = 13,
+        .tilemapTop = 3,
+        .width = 22,
         .height = 9,
         .paletteNum = 15,
         .baseBlock = 1,
@@ -1032,24 +1040,86 @@ static const struct WindowTemplate sQuestWindowTemplate[] =
     [WIN_QUEST_QUEST_DATA] =
     {
         .bg = 0,
-        .tilemapLeft = 16,
-        .tilemapTop = 4,
-        .width = 13,
+        .tilemapLeft = 24,
+        .tilemapTop = 3,
+        .width = 5,
         .height = 9,
         .paletteNum = 15,
-        .baseBlock = 118,
+        .baseBlock = 199,
     },
     [WIN_QUEST_QUEST_STAGE_DESC] =
     {
         .bg = 0,
         .tilemapLeft = 1,
-        .tilemapTop = 15,
+        .tilemapTop = 13,
         .width = 28,
-        .height = 4,
+        .height = 6,
         .paletteNum = 15,
-        .baseBlock = 235,
+        .baseBlock = 244,
     },
     DUMMY_WIN_TEMPLATE
+};
+
+static u8 sTextDevon1[] = _("Devon 1");
+static u8 sTextDevon2[] = _("Devon 2");
+static u8 sTextMagma[] = _("Magma");
+static u8 sTextLana[] = _("Lana");
+static u8 sTextLanette[] = _("Lanette");
+static u8 sTextAqua[] = _("Aqua");
+static u8 sTextNurse[] = _("Nurse");
+
+struct QuestData {
+    u8 * name;
+    u16 var;
+};
+
+
+extern const u16 sEasyChatTriangleCursorPalette[];
+extern const u32 sEasyChatTriangleCursorGfx[];
+
+static const struct SpriteSheet sAPTierSelectTile = {
+    .data = sEasyChatTriangleCursorGfx,
+    .size = TILE_SIZE_4BPP,
+    .tag = 0x7000
+};
+static const struct SpritePalette sAPTierSelectPal = {
+    .data = sEasyChatTriangleCursorPalette,
+    .tag = 0x7000
+};
+
+const static struct OamData sAPTierSelectOam =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(8x8),
+    .x = 0,
+    .size = SPRITE_SIZE(8x8),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 0,
+};
+
+const static struct SpriteTemplate sAPTierSelectSpriteTemplate =
+{
+    .tileTag = 0x7000,
+    .paletteTag = 0x7000,
+    .oam = &sAPTierSelectOam,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+static struct QuestData sQuests[] = {
+    {sTextDevon1, VAR_RYU_QUEST_DEVON_CORPORATE},
+    {sTextDevon2, VAR_RYU_QUEST_DEVON_SCIENTIST},
+    {sTextMagma, VAR_RYU_QUEST_MAGMA},
+    {sTextLana, VAR_RYU_QUEST_LANA},
+    {sTextLanette, VAR_RYU_QUEST_LANETTE},
+    {sTextAqua, VAR_RYU_QUEST_AQUA},
+    {sTextNurse, VAR_RYU_QUEST_NURSE}
 };
 
 void CB2_OpenQuestTracker(void)
@@ -1086,15 +1156,17 @@ void CB2_OpenQuestTracker(void)
     }
 }
 
-static bool8 IntializeQuest(void);
-
+static bool8 IntializeQuest(u8 taskId);
+static void UpdateQuestSelections(u32 offset);
+static const struct QuestStageDesc * FindQuestDescFromStageVar(u32 questStageVar);
+#define tQuestSpriteId data[7]
 static void Task_InitQuestTracker(u8 taskId)
 {
-    if(IntializeQuest())
+    if(IntializeQuest(taskId))
         gTasks[taskId].func = Task_QuestMain;
 }
 
-static bool8 IntializeQuest(void)
+static bool8 IntializeQuest(u8 taskId)
 {
     u32 i;
     switch (gMain.state)
@@ -1115,6 +1187,7 @@ static bool8 IntializeQuest(void)
         LoadPalette(sQuestTrackerBGPalette, 0, 0x20);
         InitWindows(sQuestWindowTemplate);
         InitTextBoxGfxAndPrinters();
+        LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
         DeactivateAllTextPrinters();
         PutWindowTilemap(0);
         CopyWindowToVram(0, 3);
@@ -1128,17 +1201,11 @@ static bool8 IntializeQuest(void)
         break;
     case 2:
     {
-        /*
-        u32 i;
-        struct SpriteTemplate spriteTemplate = sButtonSpriteTemplate;
-        for(i = 0; i < JOURNAL_OPTION_COUNT; i++)
-        {
-            spriteTemplate.images = sJounralButtons[i].spriteImages;
-            sButtonSpriteIds[i] = CreateSprite(&spriteTemplate, 32 + i*64, 42, 0); // temporary
-            gSprites[sButtonSpriteIds[i]].data[0] = !i;
-        }
-        LoadPalette(sJounralButtons[0].palette, 0x100, 0x20);
-        */
+         LoadSpritePalette(&sAPTierSelectPal);
+        LoadSpriteSheet(&sAPTierSelectTile);
+        // repurposed the cursorspriteid field for later use since we delete the cursor sprite anyways
+        gTasks[taskId].tQuestSpriteId = CreateSprite(&sAPTierSelectSpriteTemplate, 12, 32, 0);
+        
         gMain.state++;
         break;
     }
@@ -1172,18 +1239,26 @@ static bool8 IntializeQuest(void)
         ShowBg(2);
         ShowBg(3);
         // TODO: Will get rid of STD frames later i would imagine
-        for(i = 0; i <= 2; i++)
+        for(i = 0; i < WIN_QUEST_COUNT; i++)
         {
             PutWindowTilemap(i);
-            CopyWindowToVram(i, 3);
-            DrawStdWindowFrame(i, TRUE);
+            //DrawStdWindowFrame(i, TRUE);
         }
         gMain.state++;
         break;
-    case 6:
+    case 6: // Print Quests + Stages
+        UpdateQuestSelections(0);
+        gMain.state++;
+        break;
+    case 7:
         if (!gPaletteFade.active)
         {
-            gMain.state = 0;
+            /*const u8 testText[] = _("Aqua");
+            const u8 testText2[] = _("005");
+            AddTextPrinterParameterized3(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 3, color, 0, gAquaQuestStages[0].description);
+            AddTextPrinterParameterized3(WIN_QUEST_QUESTS, 1, 2, 3, color, 0, testText);
+            AddTextPrinterParameterized3(WIN_QUEST_QUEST_DATA, 1, 20 - GetStringWidth(1, testText2, 0)/2, 3, color, 0, testText2);
+            */gMain.state = 0;
             return TRUE;
         }
         break;
@@ -1201,9 +1276,9 @@ static u32 InputToQuestAction(void)
     u32 finalAction = QUEST_ACTION_NONE;
     switch(gMain.newKeys & (DPAD_UP | DPAD_DOWN))
     {
-        case DPAD_LEFT:
+        case DPAD_UP:
             return QUEST_ACTION_UP;
-        case DPAD_RIGHT:
+        case DPAD_DOWN:
             return QUEST_ACTION_DOWN;
     }
     if(gMain.newKeys & A_BUTTON) 
@@ -1211,8 +1286,77 @@ static u32 InputToQuestAction(void)
     return finalAction;
 }
 
+static void UpdateQuestSelections(u32 offset)
+{
+    u32 i;
+    offset = offset + 6 > NELEMS(sQuests) ? NELEMS(sQuests) - 6 : offset;
+    FillWindowPixelBuffer(WIN_QUEST_QUESTS, 0);
+    FillWindowPixelBuffer(WIN_QUEST_QUEST_DATA, 0);
+    for(i = 0; i < 6; i++)
+    {
+        u8 * numStr = gStringVar1;
+        ConvertIntToDecimalStringN(numStr, VarGet(sQuests[offset + i].var), STR_CONV_MODE_LEFT_ALIGN, 4);
+        AddTextPrinterParameterized3(WIN_QUEST_QUESTS, 0, 10, i * 12, sColors[0], 0xFF, sQuests[offset + i].name);
+        AddTextPrinterParameterized3(WIN_QUEST_QUEST_DATA, 0, 20 - GetStringWidth(0, numStr, 0)/2, i * 12, sColors[0], 0xFF, numStr);
+    }
+    CopyWindowToVram(WIN_QUEST_QUESTS, 3);
+    CopyWindowToVram(WIN_QUEST_QUEST_DATA, 3);
+}
+
+#define tOptionOffset data[0]
+#define tSelectPos data[1]
+
+#define SELECTED_QUEST(taskId) (gTasks[taskId].tOptionOffset + gTasks[taskId].tSelectPos)
+
 static void Task_QuestMain(u8 taskId)
 {
-
+    u32 action = InputToQuestAction();
+    switch(action)
+    {
+        default:
+            mgba_printf(LOGINFO, "Quest menu action is invalid");
+        case QUEST_ACTION_NONE:
+            return;
+        case QUEST_ACTION_DOWN:
+            if(++gTasks[taskId].tSelectPos > 5)
+            {
+                gTasks[taskId].tSelectPos = 5;
+                if((++gTasks[taskId].tOptionOffset + 6) > NELEMS(sQuests))
+                {
+                    gTasks[taskId].tSelectPos = 0;
+                    gTasks[taskId].tOptionOffset = 0;
+                }
+                UpdateQuestSelections(gTasks[taskId].tOptionOffset);
+            }
+            PlaySE(SE_SELECT);
+            break;
+        case QUEST_ACTION_UP:
+            if(--gTasks[taskId].tSelectPos < 0)
+            {
+                gTasks[taskId].tSelectPos = 0;
+                if(--gTasks[taskId].tOptionOffset < 0)
+                {
+                    gTasks[taskId].tSelectPos = 5;
+                    gTasks[taskId].tOptionOffset = NELEMS(sQuests) - 6;
+                }
+                UpdateQuestSelections(gTasks[taskId].tOptionOffset);
+            }
+            PlaySE(SE_SELECT);
+            break;
+        case QUEST_ACTION_CHOOSE: 
+        {
+            const struct QuestStageDesc * questDesc = FindQuestDescFromStageVar(sQuests[SELECTED_QUEST(taskId)].var);
+            AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0, questDesc->description);
+            //AddTextPrinterParameterized3(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 3, sColors[0], 0, questDesc->description);
+            break;
+        }
+    }
+    gSprites[gTasks[taskId].tQuestSpriteId].pos1.y = 32 + 12 * gTasks[taskId].tSelectPos;
 }
-#endif
+
+static const struct QuestStageDesc * FindQuestDescFromStageVar(u32 questStageVar)
+{
+    return gAquaQuestStages; // TODO: implement lol
+}
+
+//#endif
