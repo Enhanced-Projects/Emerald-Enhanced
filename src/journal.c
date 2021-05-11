@@ -1117,7 +1117,6 @@ static struct QuestData sQuests[] = {
     {sTextDevon2, VAR_RYU_QUEST_DEVON_SCIENTIST},
     {sTextMagma, VAR_RYU_QUEST_MAGMA},
     {sTextLana, VAR_RYU_QUEST_LANA},
-    {sTextLanette, VAR_RYU_QUEST_LANETTE},
     {sTextAqua, VAR_RYU_QUEST_AQUA},
     {sTextNurse, VAR_RYU_QUEST_NURSE}
 };
