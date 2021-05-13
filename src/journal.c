@@ -1364,23 +1364,24 @@ static void Task_QuestMain(u8 taskId)
 
 static const struct QuestStageDesc * FindQuestDescFromStage(u32 quest)
 {
-    const struct QuestStageDesc * questDesc = sQuests[quest].stageDescs;
-    const struct QuestStageDesc * previousDesc = sQuests[quest].stageDescs;
-    u32 stage = VarGet(sQuests[quest].var);
-    s32 diff, previousdiff;
-    while (questDesc->questStage != 0xFFFF)
+    const struct QuestStageDesc * stageDescs = sQuests[quest].stageDescs;
+    const struct QuestStageDesc * foundDesc = NULL;
+    u32 currentStage = VarGet(sQuests[quest].var);
+    u32 temp = 0;
+    while (stageDescs->questStage != 0xFFFF)
     {
-        diff = questDesc->questStage - stage;
-        if(diff == 0)
-            break;
-        if(diff < 0)
+        if(stageDescs->questStage >= temp && stageDescs->questStage <= currentStage)
         {
-            previousDesc = diff > previousdiff ? questDesc : previousDesc;
-            previousdiff = diff;
+            if(stageDescs->questStage == temp && temp != 0) 
+                mgba_printf(LOGWARN, "Duplicate quest stage entry found, stageDescs->questStage = %d, quest = %d, currentStage = %d", stageDescs->questStage, quest, currentStage);
+            foundDesc = stageDescs;
+            temp = stageDescs->questStage;
+            if(stageDescs->questStage == currentStage)
+                break;
         }
-        questDesc++;
+        stageDescs++;
     }
-    return previousDesc;
+    return foundDesc;
 }
 
 static void Task_CloseQuestTracker(u8 taskId)

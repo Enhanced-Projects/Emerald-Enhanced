@@ -1,4 +1,4 @@
-const u8 sQuestStage0[] = _("HELLO\nWORLD\n3RD LINE\n4TH LINE");
+const u8 sQuestStage0[] = _("Quest line has not yet been started");
 const u8 sAquaQuestStage5Desc[] = _("Player chose Run For It in Rusturf.\nTake goods to the Aqueus Corporation office\nin Lilycove.");
 const u8 sAquaQuestStage10Desc[] = _("Player brought goods to aqua and now needs to get 3 badges to contninue.");
 const u8 sAquaQuestStage25Desc[] = _("Received instructions to go capture and question Stern");
@@ -153,8 +153,10 @@ struct QuestStageDesc
   u16 questStage;
 };
 
+#define QUEST_STAGE_0 {sQuestStage0, 0}
 #define QUEST_STAGE_END {NULL, 0xFFFF}
 const static struct QuestStageDesc gAquaQuestStages[] = {
+  QUEST_STAGE_0,
   {
     .description = sAquaQuestStage5Desc,
     .questStage = 5,
@@ -311,6 +313,7 @@ const static struct QuestStageDesc gAquaQuestStages[] = {
 };
 
 const static struct QuestStageDesc gMagmaQuestStages[] = {
+  QUEST_STAGE_0,
   {
     .description = sMagmaQuestStage100Desc,
     .questStage = 100,
@@ -471,6 +474,7 @@ const static struct QuestStageDesc gMagmaQuestStages[] = {
 };
 
 const static struct QuestStageDesc gDevonCorporateQuestStages[] = {
+  QUEST_STAGE_0,
   {
     .description = sDevonQuestStage5Desc,
     .questStage = 5,
@@ -543,6 +547,7 @@ const static struct QuestStageDesc gDevonCorporateQuestStages[] = {
 };
 
 const static struct QuestStageDesc gDevonScientistQuestStages[] = {
+  QUEST_STAGE_0,
   {
     .description = sDevonQuestStage100Desc,
     .questStage = 100,
@@ -587,6 +592,7 @@ const static struct QuestStageDesc gDevonScientistQuestStages[] = {
 };
 
 const static struct QuestStageDesc gLanaQuestStages[] = {
+  QUEST_STAGE_0,
   {
     .description = sLanaQuestStage666Desc,
     .questStage = 666,
@@ -691,6 +697,7 @@ const static struct QuestStageDesc gLanaQuestStages[] = {
 };
 
 const static struct QuestStageDesc gNurseQuestStages[] = {
+  QUEST_STAGE_0,
   {
     .description = sNurseQuestStage1Desc,
     .questStage = 1,
