@@ -913,10 +913,6 @@ static bool8 IntializeJournal(void)
 #define JOURNAL_ACTION_LEFT (1 << 2)
 #define JOURNAL_ACTION_CHOOSE (1 << 3)
 #define JOURNAL_ACTION_EXIT (1 << 4)
-//#define JOURNAL_ACTION_LEFT (1 << 1)
-//#define JOURNAL_ACTION_LEFT (1 << 1)
-//#define JOURNAL_ACTION_LEFT (1 << 1)
-
 
 static u32 InputToJournalAction(void)
 {
@@ -1069,6 +1065,7 @@ static u8 sTextAqua[] = _("Aqua");
 static u8 sTextNurse[] = _("Nurse");
 
 struct QuestData {
+    const struct QuestStageDesc * stageDescs;
     u8 * name;
     u16 var;
 };
@@ -1113,12 +1110,12 @@ const static struct SpriteTemplate sAPTierSelectSpriteTemplate =
 };
 
 static struct QuestData sQuests[] = {
-    {sTextDevon1, VAR_RYU_QUEST_DEVON_CORPORATE},
-    {sTextDevon2, VAR_RYU_QUEST_DEVON_SCIENTIST},
-    {sTextMagma, VAR_RYU_QUEST_MAGMA},
-    {sTextLana, VAR_RYU_QUEST_LANA},
-    {sTextAqua, VAR_RYU_QUEST_AQUA},
-    {sTextNurse, VAR_RYU_QUEST_NURSE}
+    {gDevonCorporateQuestStages, sTextDevon1, VAR_RYU_QUEST_DEVON_CORPORATE},
+    {gDevonScientistQuestStages, sTextDevon2, VAR_RYU_QUEST_DEVON_SCIENTIST},
+    {gMagmaQuestStages, sTextMagma, VAR_RYU_QUEST_MAGMA},
+    {gLanaQuestStages, sTextLana, VAR_RYU_QUEST_LANA},
+    {gAquaQuestStages, sTextAqua, VAR_RYU_QUEST_AQUA},
+    {gNurseQuestStages, sTextNurse, VAR_RYU_QUEST_NURSE}
 };
 
 void CB2_OpenQuestTracker(void)
@@ -1156,8 +1153,9 @@ void CB2_OpenQuestTracker(void)
 }
 
 static bool8 IntializeQuest(u8 taskId);
+static void Task_CloseQuestTracker(u8 taskId);
 static void UpdateQuestSelections(u32 offset);
-static const struct QuestStageDesc * FindQuestDescFromStageVar(u32 questStageVar);
+static const struct QuestStageDesc * FindQuestDescFromStage(u32 quest);
 #define tQuestSpriteId data[7]
 static void Task_InitQuestTracker(u8 taskId)
 {
@@ -1266,11 +1264,14 @@ static bool8 IntializeQuest(u8 taskId)
 }
 
 #define QUEST_ACTION_NONE 0
+#define QUEST_ACTION_BACK (1 << 0)
 #define QUEST_ACTION_UP (1 << 1)
 #define QUEST_ACTION_DOWN (1 << 2)
 #define QUEST_ACTION_CHOOSE (1 << 3)
 
-static u32 InputToQuestAction(void)
+// This is a pretty bad excuse for a function 
+// since i wanted to do something more useful but failed 
+static u32 InputToQuestAction(void) 
 {
     u32 finalAction = QUEST_ACTION_NONE;
     switch(gMain.newKeys & (DPAD_UP | DPAD_DOWN))
@@ -1282,6 +1283,8 @@ static u32 InputToQuestAction(void)
     }
     if(gMain.newKeys & A_BUTTON) 
         finalAction = QUEST_ACTION_CHOOSE;
+    else if(gMain.newKeys & B_BUTTON)
+        finalAction = QUEST_ACTION_BACK;
     return finalAction;
 }
 
@@ -1344,18 +1347,62 @@ static void Task_QuestMain(u8 taskId)
             break;
         case QUEST_ACTION_CHOOSE: 
         {
-            const struct QuestStageDesc * questDesc = FindQuestDescFromStageVar(sQuests[SELECTED_QUEST(taskId)].var);
-            AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0, questDesc->description);
+            const struct QuestStageDesc * questDesc = FindQuestDescFromStage(SELECTED_QUEST(taskId));
+            FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
+            AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, questDesc->description);
+            CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
             //AddTextPrinterParameterized3(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 3, sColors[0], 0, questDesc->description);
             break;
         }
+        case QUEST_ACTION_BACK:
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+            gTasks[taskId].func = Task_CloseQuestTracker;
+            break;
     }
     gSprites[gTasks[taskId].tQuestSpriteId].pos1.y = 32 + 12 * gTasks[taskId].tSelectPos;
 }
 
-static const struct QuestStageDesc * FindQuestDescFromStageVar(u32 questStageVar)
+static const struct QuestStageDesc * FindQuestDescFromStage(u32 quest)
 {
-    return gAquaQuestStages; // TODO: implement lol
+    const struct QuestStageDesc * questDesc = sQuests[quest].stageDescs;
+    const struct QuestStageDesc * previousDesc = sQuests[quest].stageDescs;
+    u32 stage = VarGet(sQuests[quest].var);
+    s32 diff, previousdiff;
+    while (questDesc->questStage != 0xFFFF)
+    {
+        diff = questDesc->questStage - stage;
+        if(diff == 0)
+            break;
+        if(diff < 0)
+        {
+            previousDesc = diff > previousdiff ? questDesc : previousDesc;
+            previousdiff = diff;
+        }
+        questDesc++;
+    }
+    return previousDesc;
+}
+
+static void Task_CloseQuestTracker(u8 taskId)
+{
+    u32 i;
+    if (!gPaletteFade.active)
+    {
+        FreeAllWindowBuffers();
+        for(i = 0; i < 4; i++)
+        {
+            Free(GetBgTilemapBuffer(i));
+            UnsetBgTilemapBuffer(i);
+        }
+        for(i = 0; i < WIN_QUEST_COUNT; i++)
+        {
+            RemoveWindow(i);
+        }
+        DestroyTask(taskId);
+        SetMainCallback2(CB2_OpenJournal);
+        //SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
+        //m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100);
+    }
 }
 
 //#endif

@@ -674,7 +674,7 @@ static void Task_CloseAtlas(u8 taskId)
         DestroyTask(taskId);
         SetMainCallback2(CB2_OpenJournal);
         //SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
-        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100);
+        //m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100);
     }
 }
 

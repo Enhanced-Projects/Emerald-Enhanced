@@ -153,6 +153,7 @@ struct QuestStageDesc
   u16 questStage;
 };
 
+#define QUEST_STAGE_END {NULL, 0xFFFF}
 const static struct QuestStageDesc gAquaQuestStages[] = {
   {
     .description = sAquaQuestStage5Desc,
@@ -306,6 +307,7 @@ const static struct QuestStageDesc gAquaQuestStages[] = {
     .description = sAquaQuestStage161Desc,
     .questStage = 161,
   },
+  QUEST_STAGE_END
 };
 
 const static struct QuestStageDesc gMagmaQuestStages[] = {
@@ -465,6 +467,7 @@ const static struct QuestStageDesc gMagmaQuestStages[] = {
     .description = sMagmaQuestStage596Desc,
     .questStage = 596,
   },
+  QUEST_STAGE_END
 };
 
 const static struct QuestStageDesc gDevonCorporateQuestStages[] = {
@@ -535,7 +538,8 @@ const static struct QuestStageDesc gDevonCorporateQuestStages[] = {
   {
     .description = sDevonQuestStage69Desc,
     .questStage = 69,
-  }
+  },
+  QUEST_STAGE_END
 };
 
 const static struct QuestStageDesc gDevonScientistQuestStages[] = {
@@ -578,7 +582,8 @@ const static struct QuestStageDesc gDevonScientistQuestStages[] = {
   {
     .description = sDevonQuestStage111Desc,
     .questStage = 111,
-  }
+  },
+  QUEST_STAGE_END
 };
 
 const static struct QuestStageDesc gLanaQuestStages[] = {
@@ -682,6 +687,7 @@ const static struct QuestStageDesc gLanaQuestStages[] = {
     .description = sLanaQuestStage955Desc,
     .questStage = 955,
   },
+  QUEST_STAGE_END
 };
 
 const static struct QuestStageDesc gNurseQuestStages[] = {
@@ -728,5 +734,6 @@ const static struct QuestStageDesc gNurseQuestStages[] = {
   {
     .description = sNurseQuestStage11Desc,
     .questStage = 11,
-  }
+  },
+  QUEST_STAGE_END
 };
