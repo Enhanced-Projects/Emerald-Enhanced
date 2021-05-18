@@ -1268,18 +1268,24 @@ static bool8 IntializeQuest(u8 taskId)
 #define QUEST_ACTION_UP (1 << 1)
 #define QUEST_ACTION_DOWN (1 << 2)
 #define QUEST_ACTION_CHOOSE (1 << 3)
+#define QUEST_ACTION_DBG_DECSTGVAR (1 << 4)
+#define QUEST_ACTION_DBG_INCSTGVAR (1 << 5)
 
 // This is a pretty bad excuse for a function 
 // since i wanted to do something more useful but failed 
 static u32 InputToQuestAction(void) 
 {
     u32 finalAction = QUEST_ACTION_NONE;
-    switch(gMain.newKeys & (DPAD_UP | DPAD_DOWN))
+    switch(gMain.newKeys & (DPAD_UP | DPAD_DOWN | R_BUTTON | L_BUTTON))
     {
         case DPAD_UP:
             return QUEST_ACTION_UP;
         case DPAD_DOWN:
             return QUEST_ACTION_DOWN;
+        case R_BUTTON:
+            return QUEST_ACTION_DBG_INCSTGVAR;
+        case L_BUTTON:
+            return QUEST_ACTION_DBG_DECSTGVAR;
     }
     if(gMain.newKeys & A_BUTTON) 
         finalAction = QUEST_ACTION_CHOOSE;
@@ -1307,6 +1313,7 @@ static void UpdateQuestSelections(u32 offset)
 
 #define tOptionOffset data[0]
 #define tSelectPos data[1]
+#define tDbgQuestStgOffset data[2]
 
 #define SELECTED_QUEST(taskId) (gTasks[taskId].tOptionOffset + gTasks[taskId].tSelectPos)
 
@@ -1328,8 +1335,11 @@ static void Task_QuestMain(u8 taskId)
                     gTasks[taskId].tSelectPos = 0;
                     gTasks[taskId].tOptionOffset = 0;
                 }
-                UpdateQuestSelections(gTasks[taskId].tOptionOffset);
             }
+            UpdateQuestSelections(gTasks[taskId].tOptionOffset);
+            gTasks[taskId].tDbgQuestStgOffset = 0;
+            FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
+            CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
             PlaySE(SE_SELECT);
             break;
         case QUEST_ACTION_UP:
@@ -1341,8 +1351,11 @@ static void Task_QuestMain(u8 taskId)
                     gTasks[taskId].tSelectPos = 5;
                     gTasks[taskId].tOptionOffset = NELEMS(sQuests) - 6;
                 }
-                UpdateQuestSelections(gTasks[taskId].tOptionOffset);
             }
+            UpdateQuestSelections(gTasks[taskId].tOptionOffset);
+            gTasks[taskId].tDbgQuestStgOffset = 0;
+            FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
+            CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
             PlaySE(SE_SELECT);
             break;
         case QUEST_ACTION_CHOOSE: 
@@ -1351,7 +1364,36 @@ static void Task_QuestMain(u8 taskId)
             FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
             AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, questDesc->description);
             CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
+            gTasks[taskId].func = Task_QuestMain;
             //AddTextPrinterParameterized3(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 3, sColors[0], 0, questDesc->description);
+            break;
+        }
+        case QUEST_ACTION_DBG_DECSTGVAR:
+        {
+            u32 stage = SELECTED_QUEST(taskId);
+            const struct QuestStageDesc * questDesc;
+            gTasks[taskId].tDbgQuestStgOffset--;
+            VarSet(sQuests[stage].var, VarGet(sQuests[stage].var) + gTasks[taskId].tDbgQuestStgOffset); // hacky
+            questDesc = FindQuestDescFromStage(stage);
+            UpdateQuestSelections(gTasks[taskId].tOptionOffset); // also very hacky
+            VarSet(sQuests[stage].var, VarGet(sQuests[stage].var) - gTasks[taskId].tDbgQuestStgOffset); // hacky
+            FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
+            AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, questDesc->description);
+            CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
+            break;
+        }
+        case QUEST_ACTION_DBG_INCSTGVAR:
+        {
+            u32 stage = SELECTED_QUEST(taskId);
+            const struct QuestStageDesc * questDesc;
+            gTasks[taskId].tDbgQuestStgOffset++;
+            VarSet(sQuests[stage].var, VarGet(sQuests[stage].var) + gTasks[taskId].tDbgQuestStgOffset); // hacky
+            questDesc = FindQuestDescFromStage(stage);
+            UpdateQuestSelections(gTasks[taskId].tOptionOffset); // also very hacky
+            VarSet(sQuests[stage].var, VarGet(sQuests[stage].var) - gTasks[taskId].tDbgQuestStgOffset); // hacky
+            FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
+            AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, questDesc->description);
+            CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
             break;
         }
         case QUEST_ACTION_BACK:
