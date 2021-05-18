@@ -44,12 +44,14 @@ bool8 ScrCmd_checkfaction(struct ScriptContext *ctx)
     ConvertIntToDecimalStringN(gRyuStringVar4, currentStanding, STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
+u8 GetFactionId(u16 trainerId)
+{
+    return (gTrainers[trainerId].trainerFaction);
+}
+
 u8 GetFactionStanding(u16 trainerId) //this should return the value of player's standing in trainerId's faction
 {
-    if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)] == FACTION_OTHERS)
-        return 100;
-    else
-        return gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)];
+    return gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)];
 }
 
 void RyuAdjustFactionValueInternal(u8 id, u8 amount, bool8 negative)

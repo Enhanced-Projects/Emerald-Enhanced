@@ -1931,10 +1931,13 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         {
             u16 level = RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength);
 
-            if ((GetFactionStanding(trainerNum)) <= 20 && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))//If faction standing is low enough, this trainer is stronger. EXCEPT IN FRONTIER.
-                level += 12;
-            else if ((GetFactionStanding(trainerNum)) <= 50  && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))
-                level += 7;
+            if (!(GetFactionId(trainerNum) == FACTION_OTHERS))
+            {
+                if ((GetFactionStanding(trainerNum)) <= 20 && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))//If faction standing is low enough, this trainer is stronger. EXCEPT IN FRONTIER.
+                    level += 12;
+                else if ((GetFactionStanding(trainerNum)) <= 50  && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))
+                    level += 7;
+            }
 
             nameHash += trainerNameHash;
             switch (gTrainers[trainerNum].partyFlags)

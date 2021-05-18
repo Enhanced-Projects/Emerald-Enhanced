@@ -15,6 +15,7 @@ void RyuAdjustFactionValueInternal(u8 id, u8 amount, bool8 negative);
 void RyuAdjustOpposingFactionValues(u8 id, u8 amount, bool8 negative);
 bool8 ScrCmd_changefactionstanding(struct ScriptContext *ctx);
 bool8 ScrCmd_checkfactionstanding(struct ScriptContext *ctx);
+u8 GetFactionId(u16 trainerId);
 void RyuDebug_ViewFactionRelations(void);
 const u8 *RyuGetFactionDailyQuestScriptPtr(u8 factionId);
 
