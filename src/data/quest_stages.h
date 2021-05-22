@@ -141,6 +141,7 @@ const u8 sLanaQuestStage515Desc[] = _("You tracked Lana down to the Pokemon Day 
 const u8 sLanaQuestStage525Desc[] = _("You found Lana at Lanette's house, once again\ntrying to get rid of her Pokemon.\nShe left a magazine behind for the\nDepartment Store. Go there.");
 const u8 sLanaQuestStage666Desc[] = _("You have done some event which caused Lana\nto return overseas to Kanto. Bad End.");
 const u8 sLanaQuestStage955Desc[] = _("You helped Lana overcome her anxiety and\ndepression, saving her life.\nYou've finished the quest, meet her at her house\nto finalize your relationship.");
+const u8 sLanaQuestStage1000Desc[] = _("You have finished Lana's questline, unlocked\n her as a follower, and received her gifts.\nGood End.");
 
 const u8 sNurseQuestStage1Desc[]  = _("Player hasn't started the Nurse quest yet.");
 const u8 sNurseQuestStage2Desc[]  = _("You started the first Nurse quest.\nTake her to Verdanturf");
@@ -699,6 +700,10 @@ const static struct QuestStageDesc gLanaQuestStages[] = {
   {
     .description = sLanaQuestStage955Desc,
     .questStage = 955,
+  },
+  {
+    .description = sLanaQuestStage1000Desc,
+    .questStage = 1000,
   },
   QUEST_STAGE_END
 };

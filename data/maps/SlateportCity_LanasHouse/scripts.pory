@@ -55,6 +55,7 @@ LH_Afterstory::
 	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
 	setflag FLAG_RECEIVED_MYSTIC_TICKET
 	msgbox LH_GIFT_GIVEN
+	setvar VAR_RYU_QUEST_LANA, 1000
 	release
 	end
 	
@@ -145,6 +146,7 @@ LH_LeafNight:
 	applymovement OBJ_EVENT_ID_PLAYER, LH_RelSceneEnd
 	waitmovement OBJ_EVENT_ID_PLAYER
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LH_CourtneyCaughtPlayer
+	setflag FLAG_RYU_DS_LEAF_PARTNERS
 	release
 	end
 	
