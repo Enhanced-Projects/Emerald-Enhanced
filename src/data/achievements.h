@@ -121,6 +121,9 @@ static const u8 sUndertakerDesc[] = _("You laid an ailing spirit to rest.\nMimi 
 static const u8 sFieldMedicLabel[] = _("Field Medic");
 static const u8 sFieldMedicDesc[] = _("You healed another trainer's Pokemon.\nYou're practically an Army doctor!");
 
+static const u8 sPlotArmorLabel[] = _("Plot Armor");
+static const u8 sPlotArmorDesc[] = _("Even the previous Champion couldn't beat you!\nThe game's storyline is on your side!\n(Won against Steven in the Museum)");
+
 
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
@@ -165,4 +168,5 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_MENTOR] = {39, 33, CATEGORY_QUESTING, ACH_MENTOR, sMentorLabel, sMentorDesc},// Mentored the lass in route 103.
     [ACH_UNDERTAKER] = {41, 33, CATEGORY_QUESTING, ACH_UNDERTAKER, sUndertakerLabel, sUndertakerDesc}, //put the Hexer's beloved Mimi to rest.
     [ACH_FIELD_MEDIC] = {43, 33, CATEGORY_QUESTING, ACH_FIELD_MEDIC, sFieldMedicLabel, sFieldMedicDesc},
+    [ACH_PLOT_ARMOR] = {14, 35, CATEGORY_EXPLORATION, ACH_PLOT_ARMOR, sPlotArmorLabel, sPlotArmorDesc},//managed to defeat steven in the unwinnable fight
 };
