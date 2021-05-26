@@ -255,8 +255,9 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	callnative RyuBufferSkillLevels
-	msgbox RDB_LifeSkills
+	setvar VAR_RYU_QUEST_AQUA, 61
+	setvar VAR_RYU_QUEST_LANA, 56
+	setvar VAR_RYU_QUEST_NURSE, 6
 	release
 	end
 

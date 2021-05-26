@@ -146,117 +146,6 @@ RS_ExpEarningDisabled:
 RS_ExpWillStillBeEarned:
 	.string "Battle Exp will still be earned.$"
 
-
-
-
-@==================================================================================================Beta Menu
-
-RyuDebugBetaMenuScript::
-	setflag FLAG_RYU_BETA_MENU_USED
-	msgbox BetaMenuIntro MSGBOX_DEFAULT
-	closemessage
-	goto RDB_BetaMenuStandalone
-
-RDB_BetaMenuStandalone::
-	multichoicedefault 30, 0, MULTI_BETA_MENU, 7, 0
-	switch VAR_RESULT
-	case 0, RDBM_Option1
-	case 1, RDBM_Option2
-	case 2, RDBM_DisplayQuestVars
-	case 3, RDBM_ResetTemporaryBattleFlags
-	case 4, RDBM_ResetBadges
-	case 5, RDBM_ResetGCMS
-	case 6, RDBM_TeleportHome
-	case 7, RDBM_ExitResetMenu
-	case 127, RDBM_ExitResetMenu
-	release
-	end
-
-BetaMenuIntro:
-	.string "You really shouldn't mess with these\noptions unless you were directed\pto do so. Save file damage can occur.\p"
-	.string "{COLOR LIGHT_RED}{SHADOW TRANSPARENT}YOU HAVE BEEN WARNED!!$"
-
-RDBM_Option1::
-	buffernumberstring 0, VAR_SAVE_FILE_CREATED_ON_VERSION
-	msgbox RDBM_ShowSaveFileOriginalVersion
-	release
-	end
-
-RDBM_Option2::
-	msgbox RDBM_Unimplemented
-	release
-	end
-
-RDBM_DisplayQuestVars::
-	special RyuBufferQuestVars
-	msgbox RDBM_DisplayQuestVarsMsg
-	release
-	end
-
-RDBM_ShowSaveFileOriginalVersion:
-	.string "The save file was created on\nversion number {STR_VAR_1}.$"
-
-RDBM_DisplayQuestVarsMsg:
-	.string "Magma: {STR_VAR_1}, DevonM: {STR_VAR_2}, DevonS: {STR_VAR_3}\n"
-	.string "Lana: {RYU_STR_1}, Lanette: {RYU_STR_2} Aqua: {RYU_STR_3}$"
-
-RDBM_ResetTemporaryBattleFlags::
-	clearflag FLAG_RYU_MAX_SCALE
-	clearflag FLAG_RYU_BOSS_WILD
-	clearflag FLAG_RYU_RANDOMBATTLE
-	msgbox RDBM_ResetTempFlagsMsg
-	release
-	end
-
-RDBM_ResetTempFlagsMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED} (Temporary battle flags have been\n reset)$"
-
-RDBM_Unimplemented:
-	.string "This option does nothing. It's\na placeholder for future options.$"
-
-RDBM_ResetBadges:
-	clearflag FLAG_BADGE01_GET
-	clearflag FLAG_BADGE02_GET
-	clearflag FLAG_BADGE03_GET
-	clearflag FLAG_BADGE04_GET
-	clearflag FLAG_BADGE05_GET
-	clearflag FLAG_BADGE06_GET
-	clearflag FLAG_BADGE07_GET
-	clearflag FLAG_BADGE08_GET
-	msgbox RDBM_BadgesReset
-	release
-	end
-
-RDBM_BadgesReset:
-	.string "All badges have been removed.$"
-
-RDBM_ResetGCMS::
-	lockall
-	setvar VAR_RYU_GCMS_SPECIES, 0
-	setvar VAR_RYU_GCMS_VALUE, 0
-	msgbox RDBM_GCMSReset
-	release
-	end
-
-RDBM_GCMSReset:
-	.string "Gcms has been reset.$"
-
-RDBM_ExitResetMenu::
-	msgbox RDBM_Exiting MSGBOX_DEFAULT
-	release
-	end
-
-RDBM_TeleportHome:
-	call_if_set FLAG_RYU_FRONTIER_MODE, Ryu_FrontierModeCheckLeave
-	msgbox RGBM_TPHOME MSGBOX_DEFAULT
-	closemessage
-	goto RT_Home
-
-RGBM_TPHOME:
-	.string "Teleporting {PLAYER} home...$"
-
-RDBM_Exiting:
-	.string "Exiting menu without change...$"
 @==================================================================================================Relationship scripts
 
 RyuPartnerMultiText:
@@ -1376,7 +1265,7 @@ RyuStartMenuConfigInfoScript::
 	buffernumberstring 0, VAR_LAST_KNOWN_GAME_VERSION
 	msgbox RyuTemp_StartMenuConfig, MSGBOX_YESNO
 	compare VAR_RESULT, 1
-	goto_if_eq RyuDebugBetaMenuScript
+	goto_if_eq StartBetaMenu
 	closemessage
 	release
 	end
@@ -1388,7 +1277,6 @@ RyuTemp_StartMenuConfig:
     .string "{COLOR LIGHT_RED}{SHADOW RED}L+R {COLOR DARK_GREY}{SHADOW LIGHT_GREY}: Enable/Disable Jukebox\l"
     .string "{COLOR LIGHT_RED}{SHADOW RED}R(With Jukebox On){COLOR DARK_GREY}{SHADOW LIGHT_GREY}:Skip to Next Song\l"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Left:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Realign Follower\p"
-	.string "You can hold L while selecting\nyour name in the start menu to open\lthe Achievement Atlas.\p"
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Open Beta Menu?$"
 
 

@@ -1,0 +1,141 @@
+script StartBetaMenu{
+    setflag(FLAG_RYU_BETA_MENU_USED)
+    msgbox(BetaMenuIntro)
+    closemessage
+    goto(RDB_BetaMenuStandalone)
+}
+
+script RDB_BetaMenuStandalone{
+    multichoicedefault(30, 0, MULTI_BETA_MENU, 7, 0)
+    switch(var(VAR_RESULT)){
+        case 0:
+            goto(RDBM_ViewSaveVersion)
+        case 1:
+            goto(RDBM_CheckWaystone)
+        case 2:
+            goto(RDBM_BlankOption)
+        case 3:
+            goto(RDBM_ResetTemporaryBattleFlags)
+        case 4:
+            goto(RDBM_ResetBadges)
+        case 5:
+            goto(RDBM_ResetGCMS)
+        case 6:
+            goto(RDBM_TeleportHome)
+        case 7:
+            goto(RDBM_ExitResetMenu)
+    }
+    goto(RDBM_ExitResetMenu)
+}
+
+script RDBM_ViewSaveVersion{
+    buffernumberstring(0, VAR_SAVE_FILE_CREATED_ON_VERSION)
+	msgbox(RDBM_ShowSaveFileOriginalVersion)
+	release
+	end
+}
+
+script RDBM_BlankOption{
+    msgbox(format("This option doesn't currently do anything."))
+    goto(RDB_BetaMenuStandalone)
+}
+
+script RDBM_CheckWaystone{
+    callnative(RyuCheckIfWaystoneShouldBeDisabled)
+    switch (var(VAR_RESULT)) {
+        case FALSE:
+            clearflag(FLAG_RYU_WAYSTONE_DISABLED)
+            msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}Waystone should be Available.")
+        case TRUE:
+            setflag(FLAG_RYU_WAYSTONE_DISABLED)
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Waystone should be disabled.")
+    }
+	release
+	end
+}
+
+script RDBM_ResetTemporaryBattleFlags{
+    clearflag(FLAG_RYU_MAX_SCALE)
+	clearflag(FLAG_RYU_BOSS_WILD)
+	clearflag(FLAG_RYU_RANDOMBATTLE)
+	msgbox(RDBM_ResetTempFlagsMsg)
+	release
+	end
+}
+
+script RDBM_ResetBadges{
+    clearflag(FLAG_BADGE01_GET)
+	clearflag(FLAG_BADGE02_GET)
+	clearflag(FLAG_BADGE03_GET)
+	clearflag(FLAG_BADGE04_GET)
+	clearflag(FLAG_BADGE05_GET)
+	clearflag(FLAG_BADGE06_GET)
+	clearflag(FLAG_BADGE07_GET)
+	clearflag(FLAG_BADGE08_GET)
+	msgbox(RDBM_BadgesReset)
+	release
+	end
+}
+
+script RDBM_ResetGCMS{
+    lockall
+	setvar(VAR_RYU_GCMS_SPECIES, 0)
+	setvar(VAR_RYU_GCMS_VALUE, 0)
+	msgbox(RDBM_GCMSReset)
+	release
+	end
+}
+
+script RDBM_ExitResetMenu{
+    msgbox(RDBM_Exiting MSGBOX_DEFAULT)
+	release
+	end
+}
+
+script RDBM_TeleportHome{
+    if (flag(FLAG_RYU_FRONTIER_MODE) == true) {
+        goto(Ryu_FrontierModeCheckLeave)
+    }
+	msgbox(RGBM_TPHOME)
+	closemessage
+	goto(RT_Home)
+}
+	
+text BetaMenuIntro{
+    "You really shouldn't mess with these\noptions unless you were directed\pto do so. Save file damage can occur.\p"
+	"{COLOR LIGHT_RED}{SHADOW TRANSPARENT}YOU HAVE BEEN WARNED!!$"
+}
+
+text RDBM_ShowSaveFileOriginalVersion{
+	"The save file was created on\nversion number {STR_VAR_1}.$"
+}
+
+text RDBM_DisplayQuestVarsMsg{
+	"Magma: {STR_VAR_1}, DevonM: {STR_VAR_2}, DevonS: {STR_VAR_3}\n"
+	"Lana: {RYU_STR_1}, Lanette: {RYU_STR_2} Aqua: {RYU_STR_3}\l"
+    "Nurse: {RYU_STR_4}$"
+}
+
+text RDBM_ResetTempFlagsMsg{
+	"{COLOR LIGHT_RED}{SHADOW RED} (Temporary battle flags have been\n reset)$"
+}
+
+text RDBM_Unimplemented{
+	"This option does nothing. It's\na placeholder for future options.$"
+}
+
+text RDBM_BadgesReset{
+	"All badges have been removed.$"
+}
+
+text RDBM_GCMSReset{
+	"Gcms has been reset.$"
+}
+
+text RGBM_TPHOME{
+	"Teleporting {PLAYER} home...$"
+}
+
+text RDBM_Exiting{
+	"Exiting menu without change...$"
+}

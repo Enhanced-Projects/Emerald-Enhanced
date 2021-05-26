@@ -174,7 +174,7 @@ void PasscodeGiveMonWithNature(void)
     u16 species = (VarGet(VAR_TEMP_4));
     u8 nature = (VarGet(VAR_TEMP_C));
     u8 fixedIv = 31;
-    u8 level = 100;
+    u8 level = 10;
 
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
     CalculateMonStats(&gPlayerParty[slot]);
@@ -1452,16 +1452,6 @@ void Ryu_ClearAquaSFCTrainerFlags(void)
     FlagClear(TRAINER_FLAGS_START + TRAINER_MATT);
 }
 
-void RyuBufferQuestVars(void)
-{
-    ConvertIntToDecimalStringN(gStringVar1, (VarGet(VAR_RYU_QUEST_MAGMA)), STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_QUEST_DEVON_CORPORATE)), STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar3, (VarGet(VAR_RYU_QUEST_DEVON_SCIENTIST)), STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar1, (VarGet(VAR_RYU_QUEST_LANA)), STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar2, (VarGet(VAR_RYU_QUEST_LANETTE)), STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gRyuStringVar3, (VarGet(VAR_RYU_QUEST_AQUA)), STR_CONV_MODE_LEFT_ALIGN, 3);
-}
-
 
 bool8 hasChampionRibbon(u8 index) {
     return GetMonData(&gPlayerParty[index], MON_DATA_CHAMPION_RIBBON, NULL);
@@ -1934,4 +1924,47 @@ void RyuBufferSkillLevels(void)
     ConvertIntToDecimalStringN(gRyuStringVar1, botLvl, STR_CONV_MODE_LEFT_ALIGN, 5);
     ConvertIntToDecimalStringN(gRyuStringVar2, minExp, STR_CONV_MODE_LEFT_ALIGN, 5);
     ConvertIntToDecimalStringN(gRyuStringVar3, minLvl, STR_CONV_MODE_LEFT_ALIGN, 5);
+}
+
+void RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the game to decide if waystone should be disabled or not.
+{
+    u16 currentGroup = (gSaveBlock1Ptr->location.mapGroup);
+    u16 currentMap = (gSaveBlock1Ptr->location.mapNum);
+    
+    gSpecialVar_Result = FALSE;
+
+    if(currentGroup == 16) //player is doing the elite four
+        if(currentMap < 12)
+            gSpecialVar_Result = TRUE;
+
+    if (FlagGet(FLAG_RYU_TC_ENTERED) == 1)//player is using training center
+        gSpecialVar_Result = TRUE;
+
+    if (VarGet(VAR_RYU_QUEST_MAGMA) > 119 && VarGet(VAR_RYU_QUEST_MAGMA) < 130) //player is doing blaise's granite cave event
+        gSpecialVar_Result = TRUE;
+
+    if (VarGet(VAR_RYU_QUEST_MAGMA) == 315)// player is working with courtney to clear out aqua in the magma hideout.
+        gSpecialVar_Result = TRUE;
+
+    if (VarGet(VAR_RYU_QUEST_DEVON_SCIENTIST) == 106) //player is doing magma event in space center.
+        gSpecialVar_Result = TRUE;
+
+    if (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_HEX_MANIAC)//player is doing the Outcasts faction quest
+        gSpecialVar_Result = TRUE;
+
+    if (VarGet(VAR_RYU_QUEST_MAGMA) == 230)//player is doing the oldale heist event
+        gSpecialVar_Result = TRUE;
+    
+    if (VarGet(VAR_RYU_QUEST_DEVON_CORPORATE) > 29 && VarGet(VAR_RYU_QUEST_DEVON_CORPORATE) < 61)//player is interrogating devon employees
+        gSpecialVar_Result = TRUE;
+    
+    if (VarGet(VAR_RYU_QUEST_MAGMA) == 555)//player is fighting groudon
+        gSpecialVar_Result = TRUE;
+    
+    if (VarGet(VAR_TRAINER_HILL_IS_ACTIVE) == 1)//player is doing trainer hill
+        gSpecialVar_Result = TRUE;
+
+    if (VarGet(VAR_RYU_QUEST_NURSE) == 2 || VarGet(VAR_RYU_QUEST_NURSE) == 4 || VarGet(VAR_RYU_QUEST_NURSE) == 6)//player is escorting nurse
+        gSpecialVar_Result = TRUE;
+
 }

@@ -139,7 +139,6 @@ DC_Release::
 
 DC_CorporateLine::
 	lock
-	setflag FLAG_RYU_WAYSTONE_DISABLED
 	applymovement 5, DC_FranticPace
 	msgbox DC_WhatToDo MSGBOX_DEFAULT
 	applymovement OBJ_EVENT_ID_PLAYER, DC_ApproachStone
@@ -194,6 +193,7 @@ DC_CorporateLine::
 	msgbox DC_OfficialEmployee
 	closemessage
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 30
+	setflag FLAG_RYU_WAYSTONE_DISABLED
 	clearflag FLAG_RYU_DEVON_CORPORATE_HIDE_MRSTONE3
 	warpsilent MAP_RUSTBURO_CITY_DEVON_CORP2F_STORY_MAP, 255, 9, 2
 	release
