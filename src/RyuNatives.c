@@ -168,13 +168,25 @@ void GivePlayerModdedMon(void)
     CalculateMonStats(&gPlayerParty[slot]);
 }
 
+extern int CountBadges();
+
 void PasscodeGiveMonWithNature(void)
 {
     u8 slot = (VarGet(VAR_TEMP_8));
     u16 species = (VarGet(VAR_TEMP_4));
     u8 nature = (VarGet(VAR_TEMP_C));
     u8 fixedIv = 31;
-    u8 level = 10;
+    u8 level = 100;
+    u8 scaleMode = 0;
+    bool8 maxScale = FALSE;
+
+    if (VarGet(VAR_TEMP_9) == 69)
+    {
+        scaleMode = 2;
+        maxScale = TRUE;
+    }
+    
+    level = RyuChooseLevel(CountBadges(), maxScale, scaleMode, CalculatePlayerPartyStrength());
 
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
     CalculateMonStats(&gPlayerParty[slot]);
