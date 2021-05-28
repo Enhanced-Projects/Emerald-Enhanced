@@ -101,9 +101,9 @@ RyuBotany_CheckLevelUp::
     case 0, ryu_return
     case 5, ryu_return
     case 4, RyuBotany_CheckLevel4Progress
-    case 3, RyuBotany_CheckLevel1Progress
+    case 3, RyuBotany_CheckLevel3Progress
     case 2, RyuBotany_CheckLevel2Progress
-    case 1, RyuBotany_CheckLevel3Progress
+    case 1, RyuBotany_CheckLevel1Progress
     goto ryu_return
 
 RyuBotany_CheckLevel1Progress::
