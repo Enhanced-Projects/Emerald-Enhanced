@@ -1980,3 +1980,10 @@ void RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the gam
         gSpecialVar_Result = TRUE;
 
 }
+
+void RyuMaxFactionStanding(void)
+{
+    u8 i;
+    for(i = 0; i < FACTION_OTHERS; i++)
+        gSaveBlock1Ptr->gNPCTrainerFactionRelations[i] = 200;
+}

@@ -1308,7 +1308,8 @@ static void Task_UpdateAtlasStatus(u8 taskId)
                     }
                     else
                     {
-                        AddTextPrinterParameterized3(WIN_ACH_DESC, 0, 0, 0, sTextColors[0], 0, sDescriptionNotAvailable);
+                        StringExpandPlaceholders(gStringVar4, sAchAtlasData[i].hintString);
+                        AddTextPrinterParameterized3(WIN_ACH_DESC, 0, 0, 0, sTextColors[0], 0, gStringVar4);
                     }
                     
                 }

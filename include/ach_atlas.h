@@ -29,6 +29,7 @@ struct AtlasAchPointData
     u8 flagId;
     const u8 * nameString;
     const u8 * descString;
+    const u8 * hintString;
 };
 
 struct APInfoTier

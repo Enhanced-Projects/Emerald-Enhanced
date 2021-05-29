@@ -1885,6 +1885,12 @@ Ryu_ShowStarterInfo::
 
 RyuScript_CheckGivenAchievement::
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	compare VAR_RYU_LAST_ACH, ACH_THE_UNIVERSALIST
+	goto_if_eq RyuScript_CheckGivenGoldAch
+	compare VAR_RYU_LAST_ACH, ACH_LOREMASTER
+	goto_if_eq RyuScript_CheckGivenGoldAch
+	compare VAR_RYU_LAST_ACH, ACH_TOURIST
+	goto_if_eq RyuScript_CheckGivenGoldAch
 	copyvar VAR_TEMP_C, VAR_RYU_LAST_ACH
 	callnative BufferGivenAchievement
 	playse SE_EXPMAX
@@ -1898,6 +1904,23 @@ RyuScript_CheckGivenAchievement::
 	release
 	end
 
+RyuScript_CheckGivenGoldAch::
+	copyvar VAR_TEMP_C, VAR_RYU_LAST_ACH
+	callnative BufferGivenAchievement
+	playse SE_EXPMAX
+	msgbox RS_GOLD_ACH_RECEIVED
+	closemessage
+	setvar VAR_RYU_LAST_ACH, 300
+	msgbox RS_GoldAchMsg
+	closemessage
+	giveitem ITEM_MASTER_BALL, 1
+	setvar VAR_RYU_LAST_ACH, 300
+	release
+	end
+
+RS_GoldAchMsg:
+	.string "You earned a GOLDEN achievement!\nAs a reward for your dedication\pYou are receiving one Master Ball!$"
+
 RyuScript_GiveDejaVu::
 	ach give ACH_DEJA_VU
 	msgbox RS_ACH_RECEIVED
@@ -1905,6 +1928,9 @@ RyuScript_GiveDejaVu::
 
 RS_ACH_RECEIVED:
 	.string "ACHIEVEMENT GET!!!\n{RYU_STR_4}$"
+
+RS_GOLD_ACH_RECEIVED:
+	.string "{COLOR LIGHT_RED}{SHADOW BLUE}GOLDEN ACHIEVEMENT GET!!!\n{RYU_STR_4}$"
 
 RyuScript_CheckFollowerFactionChanges::
 	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LASS
