@@ -20,6 +20,7 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
+#include "ach_atlas.h"
 
 // iwram
 u32 gMonShrinkDuration;
@@ -2763,6 +2764,8 @@ void AnimTask_GetBattlersFromArg(u8 taskId)
 
 bool32 IsCriticalCapture(void)
 {
+    if (gBattleSpritesDataPtr->animationData->isCriticalCapture == TRUE)
+        GiveAchievement(ACH_CRITCAP);
     return gBattleSpritesDataPtr->animationData->isCriticalCapture;
 }
 

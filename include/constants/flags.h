@@ -1696,7 +1696,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 52
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 53
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -1753,7 +1753,7 @@
 #define ACH_THE_UNIVERSALIST  49 //GOLD Achievment, VERY HARD TO GET.
 #define ACH_LOREMASTER  50 //GOLD Achievement, VERY HARD TO GET.
 #define ACH_TOURIST  51 //GOLD ACHIEVEMENT, VERY HARD TO GET.
-#define ACH_UNUSED_53  52
+#define ACH_CRITCAP  52
 #define ACH_UNUSED_54  53
 #define ACH_UNUSED_55  54
 #define ACH_UNUSED_56  55

@@ -206,6 +206,9 @@ static const u8 sTouristLabel[] = _("Tourist");
 static const u8 sTouristHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}You could fill out a map!");
 static const u8 sTouristDesc[] = _("There is no place you haven't been.\nMaybe you should become a Cartographer?\n(Obtained all Exploration Achievements.)");
 
+static const u8 sCritCapLabel[] = _("Favor of the Goddess");
+static const u8 sCritCapHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Get real lucky with capture.");
+static const u8 sCritCapDesc[] = _("You should go buy a lottery ticket\nbecause the RNGoddess has smiled upon you.\n(Got a critical capture.)");
 
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
@@ -261,4 +264,5 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_THE_UNIVERSALIST] = {12, 43, CATEGORY_EXPLORATION, ACH_THE_UNIVERSALIST, sTheUniversalistLabel, sTheUniversalistDesc, sTheUniversalistHint},// All factions high standing. GOLD ACHIEVEMENT
     [ACH_LOREMASTER] = {43, 31, CATEGORY_QUESTING, ACH_LOREMASTER, sLoremasterLabel, sLoremasterDesc, sLoremasterHint},// All quest complete achievements GOLD ACHIEVEMENT
     [ACH_TOURIST] = {12, 29, CATEGORY_EXPLORATION, ACH_TOURIST, sTouristLabel, sTouristDesc, sTouristHint},// All exploration achievements GOLD ACHIEVEMENT
+    [ACH_CRITCAP] = {30, 33, CATEGORY_BATTLE, ACH_CRITCAP, sCritCapLabel, sCritCapDesc, sCritCapHint},// All exploration achievements GOLD ACHIEVEMENT
 };
