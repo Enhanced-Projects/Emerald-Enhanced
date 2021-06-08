@@ -1876,7 +1876,21 @@ u16 autoevolve(u16 species, u16 level) {
     }
     return species;
 }
+extern void RyuSetPartyFrontierMon(bool32 opponent, u16 id, u8 slot);
 
+void RyuCreateRandomPlayerMon(u8 slot)
+{
+    u16 RandomNumber = (Random() % 833);
+
+    RyuSetPartyFrontierMon(FALSE, RandomNumber, slot);
+}
+
+void RyuCreateRandomEnemyMon(u8 slot)
+{
+    u16 RandomNumber = (Random() % 833);
+
+    RyuSetPartyFrontierMon(TRUE, RandomNumber, slot);
+}
 static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
 {
     u32 nameHash = 0, trainerNameHash = 0;
@@ -1947,10 +1961,9 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
                 {
-                    u32 em1 = (Random() % NUM_SPECIES); // @kageru, can you make this autoevolve too?
-                    u32 pm1 = (Random() % NUM_SPECIES); 
-                    CreateMon(&gEnemyParty[i], em1, TRUE_MAX_LEVEL, 31, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
-                    CreateMon(&gPlayerParty[i], pm1, TRUE_MAX_LEVEL, 31, FALSE, 0, OT_ID_PLAYER_ID, 0);
+                    mgba_printf(LOGINFO, "Working on slot %d", i);
+                    RyuCreateRandomPlayerMon(i);
+                    RyuCreateRandomEnemyMon(i);
                     break;
                 }
 
