@@ -1961,7 +1961,6 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
                 {
-                    mgba_printf(LOGINFO, "Working on slot %d", i);
                     RyuCreateRandomPlayerMon(i);
                     RyuCreateRandomEnemyMon(i);
                     break;
