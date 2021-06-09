@@ -1,3 +1,4 @@
+raw `
 @@Custom Scripts
 
 
@@ -2185,6 +2186,43 @@ RyuCheckForLNSUAch::
 	goto_if_unset FLAG_LANDMARK_SNOWY_SHORE, ryu_return
 	ach give ACH_LEAVE_NO_STONE_UNTURNED
 	return	
+`
 
 
+script RyuScript_GoToLimbo{
+    lockall
+    warpsilent(MAP_LIMBO, 255, 3, 3)
+    waitstate
+}
 
+script RyuScript_EndNuzlockeMode{
+    if(flag(FLAG_RYU_LIMBO)){
+        setvar(VAR_TEMP_B, 100)
+        releaseall
+        end
+    }
+    drawfullscreenimage(SCENEBGGAMEOVER)
+    setvar(VAR_TEMP_B, 100)
+    setflag(FLAG_RYU_LIMBO)
+    lockall
+    setflag(FLAG_RYU_WAYSTONE_DISABLED)
+    msgbox(format("Welcome to Limbo. You have failed your Nuzlocke or Hardcore challenge and have died. You can use this time to reflect on your decisions, or organize your item storage for a New Game +."))
+    closemessage
+    msgbox(format("Please wait while we check some things, this might take a few seconds."))
+    callnative(RyuForceSaveTheGame)
+    closemessage
+    clearfullscreenimage
+    releaseall
+    end
+}
+
+script RS_Limbo_Sign{
+    msgbox(format("Oh, dear. You seem to have died.\pWhat am I?\nOh, don't worry about that, I'm just a spirit of another trainer who died. I'm actually here to guide trainers to the afterlife. Would you like to access your PC?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) ==  YES) {
+        goto(EventScript_PC)
+    }
+    else{
+        msgbox(format("Okay, well I'll be here if you change your mind. If you'd like to start a new life, Now would be a good time!(You must start a new game to keep playing.)"))
+    }
+
+}
