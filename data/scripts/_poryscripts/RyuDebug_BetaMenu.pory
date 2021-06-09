@@ -96,6 +96,11 @@ script RDBM_TeleportHome{
     if (flag(FLAG_RYU_FRONTIER_MODE) == true) {
         goto(Ryu_FrontierModeCheckLeave)
     }
+    if (flag(FLAG_RYU_LIMBO) == true) {
+        msgbox(format("You cannot teleport from Limbo."))
+        release
+        end
+    }
 	msgbox(RGBM_TPHOME)
 	closemessage
 	goto(RT_Home)

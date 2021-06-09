@@ -106,7 +106,7 @@
 #define FLAG_RECEIVED_BIKE                   0x5A
 #define FLAG_RYU_DT_BRINEY_BATTLE            0x5B // Prevents briney from approaching player in route 105 after he has been defeated.
 #define FLAG_COLLECTED_ALL_SILVER_SYMBOLS    0x5C
-#define FLAG_UNUSED_0x5D                     0x5D
+#define FLAG_RYU_LIMBO                       0x5D
 #define FLAG_RECEIVED_WAILMER_PAIL           0x5E
 #define FLAG_RECEIVED_POKEBLOCK_CASE         0x5F
 #define FLAG_RECEIVED_SECRET_POWER           0x60

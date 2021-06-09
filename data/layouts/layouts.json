@@ -5370,6 +5370,16 @@
       "secondary_tileset": "gTileset_BattleArena",
       "border_filepath": "data/layouts/SnowyShore_DarkWorld_PriestessHouse/border.bin",
       "blockdata_filepath": "data/layouts/SnowyShore_DarkWorld_PriestessHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_LIMBO",
+      "name": "Limbo_Layout",
+      "width": 5,
+      "height": 5,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/Limbo/border.bin",
+      "blockdata_filepath": "data/layouts/Limbo/map.bin"
     }
   ]
 }
