@@ -12228,7 +12228,10 @@ static void Cmd_handleballthrow(void)
             if (shakes == maxShakes) // mon caught, copy of the code above
             {
                 if (IsCriticalCapture())
+                {
+                    GiveAchievement(ACH_CRITCAP); //! NOTE TO RYU: is this achievement only a thing for a successful crit capture or just getting one?
                     gBattleSpritesDataPtr->animationData->criticalCaptureSuccess = 1;
+                }
 
                 gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
                 SetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerTarget]], MON_DATA_POKEBALL, &gLastUsedItem);
