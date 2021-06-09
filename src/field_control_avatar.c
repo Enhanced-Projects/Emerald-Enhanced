@@ -54,6 +54,7 @@ extern const u8 SB_CheckMeloettaEncounter[];
 extern const u8 Ryu_BeingWatched[];
 extern const u8 Ryu_MeloettaWatchingMsg[];
 extern const u8 RyuScript_CheckGivenAchievement[];
+extern const u8 RyuScript_GoToLimbo[];
 
 void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -199,6 +200,17 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
+
+    if ((CalculatePlayerPartyCount() == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10))
+    {
+        if (!(FlagGet(FLAG_RYU_LIMBO) == 1))
+        {
+            if ((FlagGet(FLAG_RYU_NUZLOCKEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
+            {
+                ScriptContext1_SetupScript(RyuScript_GoToLimbo);
+            }
+        }
+    }
 
     if (VarGet(VAR_RYU_LAST_ACH) < 256)
         {

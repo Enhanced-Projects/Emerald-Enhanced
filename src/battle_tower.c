@@ -3547,6 +3547,71 @@ void sub_8166188(void)
     }
 }
 
+void RyuSetPartyFrontierMon(bool32 opponent, u16 id, u8 slot)
+{
+    s32 count;
+    s32 evs[NUM_STATS];
+    u8 level = MAX_LEVEL;
+    u8 i, temp;
+    const struct FacilityMon *mon = &gBattleFrontierMons[id];
+
+    temp = mon->evSpread;
+    count = 0;
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        evs[i] = temp & 1;
+        count += temp & 1;
+        temp >>= 1;
+    }
+
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        if (evs[i])
+            evs[i] = MAX_TOTAL_EVS / count;
+    }
+
+    if (opponent == FALSE)
+    {
+        CreateMonWithNature(&gPlayerParty[slot], mon->species, level, mon->ivs, mon->nature);
+
+        SetMonData(&gPlayerParty[slot], MON_DATA_MOVE1, &mon->moves[0]);
+        SetMonData(&gPlayerParty[slot], MON_DATA_MOVE2, &mon->moves[1]);
+        SetMonData(&gPlayerParty[slot], MON_DATA_MOVE3, &mon->moves[2]);
+        SetMonData(&gPlayerParty[slot], MON_DATA_MOVE4, &mon->moves[3]);
+        SetMonData(&gPlayerParty[slot], MON_DATA_HP_EV, &evs[0]);
+        SetMonData(&gPlayerParty[slot], MON_DATA_ATK_EV, &evs[1]);
+        SetMonData(&gPlayerParty[slot], MON_DATA_DEF_EV, &evs[2]);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_EV, &evs[3]);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPATK_EV, &evs[4]);
+        SetMonData(&gPlayerParty[slot], MON_DATA_SPDEF_EV, &evs[5]);
+        SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &mon->ability);
+        SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &mon->heldItem);
+        CalculateMonStats(&gPlayerParty[slot]);
+    }
+    else if (opponent == TRUE)
+    {
+        CreateMonWithNature(&gEnemyParty[slot], mon->species, level, mon->ivs, mon->nature);
+
+        SetMonData(&gEnemyParty[slot], MON_DATA_MOVE1, &mon->moves[0]);
+        SetMonData(&gEnemyParty[slot], MON_DATA_MOVE2, &mon->moves[1]);
+        SetMonData(&gEnemyParty[slot], MON_DATA_MOVE3, &mon->moves[2]);
+        SetMonData(&gEnemyParty[slot], MON_DATA_MOVE4, &mon->moves[3]);
+        SetMonData(&gEnemyParty[slot], MON_DATA_HP_EV, &evs[0]);
+        SetMonData(&gEnemyParty[slot], MON_DATA_ATK_EV, &evs[1]);
+        SetMonData(&gEnemyParty[slot], MON_DATA_DEF_EV, &evs[2]);
+        SetMonData(&gEnemyParty[slot], MON_DATA_SPEED_EV, &evs[3]);
+        SetMonData(&gEnemyParty[slot], MON_DATA_SPATK_EV, &evs[4]);
+        SetMonData(&gEnemyParty[slot], MON_DATA_SPDEF_EV, &evs[5]);
+        SetMonData(&gEnemyParty[slot], MON_DATA_ABILITY_NUM, &mon->ability);
+        SetMonData(&gEnemyParty[slot], MON_DATA_HELD_ITEM, &mon->heldItem);
+        CalculateMonStats(&gEnemyParty[slot]);
+    }
+    else
+    {
+        //something need to be done here???
+    }
+}
+
 void RyuGiveFrontierMon(void)
 {
     s32 count;

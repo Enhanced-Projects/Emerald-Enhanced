@@ -1978,5 +1978,20 @@ void RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the gam
 
     if (VarGet(VAR_RYU_QUEST_NURSE) == 2 || VarGet(VAR_RYU_QUEST_NURSE) == 4 || VarGet(VAR_RYU_QUEST_NURSE) == 6)//player is escorting nurse
         gSpecialVar_Result = TRUE;
+    
+    if (FlagGet(FLAG_RYU_LIMBO) == 1)//Player is in Limbo after failing nuzlocke or hardcore.
+        gSpecialVar_Result = TRUE;
+}
 
+extern u8 TrySavingData(u8 saveType);
+void RyuForceSaveTheGame(void)
+{
+    TrySavingData(0);
+}
+
+void RyuMaxFactionStanding(void)
+{
+    u8 i;
+    for(i = 0; i < FACTION_OTHERS; i++)
+        gSaveBlock1Ptr->gNPCTrainerFactionRelations[i] = 200;
 }

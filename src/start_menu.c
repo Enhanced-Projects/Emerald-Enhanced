@@ -1009,6 +1009,106 @@ void RyuDoOneTImeSaveFixes(void)
         }
 }
 
+bool32 RyuCheckFactionAchievements(void)
+{
+    u8 count = 0;
+
+    if (CheckAchievement(ACH_THE_EXPLORER) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_THE_EMPEROR) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_THE_TRADESMAN) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_THE_MAGICIAN) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_THE_GUARDIAN) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_THE_PROTEGE) == TRUE)
+        count++;
+
+    if (CheckAchievement(ACH_THE_WARRIOR) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_MENTOR) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_FIELD_MEDIC) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_UNDERTAKER) == TRUE)
+        count++;
+
+    if (count >= 10)
+        return TRUE;
+
+    return FALSE;
+}
+
+bool32 RyuCheckForAllQuestAchievements(void)
+{
+    u8 count = 0;
+
+
+    if (CheckAchievement(ACH_DEJA_VU) == TRUE)
+        count++;
+
+    if (CheckAchievement(ACH_FWB) == TRUE)
+        count++;
+
+    if (CheckAchievement(ACH_NERD_LOVE) == TRUE)
+        count++;
+
+    if (CheckAchievement(ACH_SILENT_STRONG_TYPE) == TRUE)
+        count++;
+
+    if (count >= 4)
+        return TRUE;
+    
+    return FALSE;
+}
+
+bool32 RyuCheckForAllExplorationAchievements(void)
+{
+    u8 count = 0;
+
+    if (CheckAchievement(ACH_WELL_TRAVELLED) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_NTMO) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_YOU_DIED) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_LEAVE_NO_STONE_UNTURNED) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_POKEMON_MASTER) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_PLOT_ARMOR) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_GREEN_THUMB) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_1337) == TRUE)
+        count++;
+    
+    if (CheckAchievement(ACH_MASTER_BREEDER) == TRUE)
+        count++;
+    
+    if (count >= 9)
+        return TRUE;
+
+    return FALSE;
+}
+
 extern int RyuGetTotalCaughtMons();
 
 static void CreateStartMenuTask(TaskFunc followupFunc)
@@ -1029,6 +1129,18 @@ static void CreateStartMenuTask(TaskFunc followupFunc)
     if (CheckAchievement(ACH_POKEMON_MASTER) == FALSE)
         if (RyuGetTotalCaughtMons() >= 386)
             GiveAchievement(ACH_POKEMON_MASTER);
+
+    if (CheckAchievement(ACH_THE_UNIVERSALIST) == FALSE)
+        if (RyuCheckFactionAchievements() == TRUE)
+            GiveAchievement(ACH_THE_UNIVERSALIST);
+
+    if (CheckAchievement(ACH_LOREMASTER) == FALSE)
+        if (RyuCheckForAllQuestAchievements() == TRUE)
+            GiveAchievement(ACH_LOREMASTER);
+
+    if (CheckAchievement(ACH_TOURIST) == FALSE)
+        if (RyuCheckForAllExplorationAchievements() == TRUE)
+            GiveAchievement(ACH_TOURIST);
 }
 
 static bool8 FieldCB_ReturnToFieldStartMenu(void)

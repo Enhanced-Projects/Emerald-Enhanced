@@ -128,6 +128,7 @@ RDBM_ExitResetMenu::
 RDBM_TeleportHome::
 	goto_if_set FLAG_RYU_FRONTIER_MODE, RDBM_TeleportHome_2
 RDBM_TeleportHome_1:
+	goto_if_set FLAG_RYU_LIMBO, RDBM_TeleportHome_5
 	msgbox RGBM_TPHOME
 	closemessage
 	goto RT_Home
@@ -136,6 +137,11 @@ RDBM_TeleportHome_1:
 RDBM_TeleportHome_2:
 	goto Ryu_FrontierModeCheckLeave
 	goto RDBM_TeleportHome_1
+
+RDBM_TeleportHome_5:
+	msgbox RDBM_TeleportHome_Text_0
+	release
+	end
 
 
 RDBM_BlankOption_Text_0:
@@ -147,6 +153,9 @@ RDBM_CheckWaystone_Text_0:
 
 RDBM_CheckWaystone_Text_1:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Waystone should be disabled.$"
+
+RDBM_TeleportHome_Text_0:
+	.string "You cannot teleport from Limbo.$"
 
 BetaMenuIntro::
 	.string "You really shouldn't mess with these\noptions unless you were directed\pto do so. Save file damage can occur.\p"

@@ -4,6 +4,7 @@
 #include "script.h"
 #include "string_util.h"
 #include "event_data.h"
+#include "ach_atlas.h"
 
 extern const u8 RyuNaturalistsDailyQuest[];
 extern const u8 RyuStudentsDailyQuest[];
@@ -114,10 +115,24 @@ bool8 ScrCmd_changefactionstanding(struct ScriptContext *ctx)
     return FALSE;
 }
 
+void RyuCheckForFactionAchievements(void)
+{
+    u8 i;
+
+    for(i = 0; i < FACTION_OTHERS; i++)
+    {
+        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[i] > 174)
+            if (CheckAchievement(42 + i) == FALSE)
+                GiveAchievement(42 + i);
+    }
+}
+
 bool8 ScrCmd_checkfactionstanding(struct ScriptContext *ctx)
 {
     u8 factionId = ScriptReadByte(ctx);
     u8 amount = ScriptReadByte(ctx); //no longer doing negatives, script logic doesn't like it.
+
+    RyuCheckForFactionAchievements();
 
     if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] >= amount)//just see if factionid's standing is at or above amount
         gSpecialVar_Result = TRUE;

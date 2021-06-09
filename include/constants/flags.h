@@ -106,7 +106,7 @@
 #define FLAG_RECEIVED_BIKE                   0x5A
 #define FLAG_RYU_DT_BRINEY_BATTLE            0x5B // Prevents briney from approaching player in route 105 after he has been defeated.
 #define FLAG_COLLECTED_ALL_SILVER_SYMBOLS    0x5C
-#define FLAG_UNUSED_0x5D                     0x5D
+#define FLAG_RYU_LIMBO                       0x5D
 #define FLAG_RECEIVED_WAILMER_PAIL           0x5E
 #define FLAG_RECEIVED_POKEBLOCK_CASE         0x5F
 #define FLAG_RECEIVED_SECRET_POWER           0x60
@@ -1696,7 +1696,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 42
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 53
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -1743,17 +1743,17 @@
 #define ACH_UNDERTAKER 39
 #define ACH_FIELD_MEDIC  40
 #define ACH_PLOT_ARMOR  41
-#define ACH_UNUSED_43  42
-#define ACH_UNUSED_44  43
-#define ACH_UNUSED_45  44
-#define ACH_UNUSED_46  45
-#define ACH_UNUSED_47  46
-#define ACH_UNUSED_48  47
-#define ACH_UNUSED_49  48
-#define ACH_UNUSED_50  49
-#define ACH_UNUSED_51  50
-#define ACH_UNUSED_52  51
-#define ACH_UNUSED_53  52
+#define ACH_THE_EXPLORER  42
+#define ACH_THE_PROTEGE  43
+#define ACH_THE_EMPEROR  44
+#define ACH_THE_GUARDIAN  45
+#define ACH_THE_MAGICIAN  46
+#define ACH_THE_TRADESMAN  47
+#define ACH_THE_WARRIOR  48
+#define ACH_THE_UNIVERSALIST  49 //GOLD Achievment, VERY HARD TO GET.
+#define ACH_LOREMASTER  50 //GOLD Achievement, VERY HARD TO GET.
+#define ACH_TOURIST  51 //GOLD ACHIEVEMENT, VERY HARD TO GET.
+#define ACH_CRITCAP  52
 #define ACH_UNUSED_54  53
 #define ACH_UNUSED_55  54
 #define ACH_UNUSED_56  55
