@@ -1207,58 +1207,6 @@ Ryu_PlayerFailedNuzlockeHardcore::
 Ryu_failedNZHC:
 	.string "You have failed Nuzlocke or\nhardcore mode.\pIf you were on New Game Plus,\nyour dex/pcbox/key item progress\lhas been saved.\pPlease reset the game and\nstart a New file.$"
 
-@==================================================================================================Randombattle
-
-Ryu_StartRandomBattle::
-	msgbox StartingRandomBattleMsg
-	cleartrainerflag TRAINER_RANDOM_PARTY
-	trainerbattle_single TRAINER_RANDOM_PARTY, BF_battleintro, BF_battledefeat, BF_RandomBattleCleanup
-	end
-
-StartingRandomBattleMsg:
-	.string "Starting Random Battle...$"
-
-BF_RandomBattleCleanup::
-	msgbox BattleAgain, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq Ryu_StartRandomBattle
-	clearflag FLAG_RYU_RANDOMBATTLE
-	special ForceSoftReset
-	release
-	end
-	
-BF_NoBattle::
-	msgbox BF_NoBattleMsg
-	closemessage
-	release
-	end
-
-BattleAgain:
-	.string "Would you like to battle again?$"
-	
-BF_NoBattleMsg:
-    .string "Very well. Talk with me again if\n"
-    .string "you change your mind!$"
-
-BF_Starting:
-    .string "Hold on... Let me put your party\n"
-    .string "aside...\p"
-    .string "... ... ... ...\n"
-    .string "... ... ... ...\p"
-    .string "There. All set... Here we go!$"
-
-	
-BF_RandomIntro:
-    .string "Selene: Hi! I like to do random\n"
-    .string "battles.\p"
-    .string "Would you like to battle with me?$"
-
-BF_battleintro:
-	.string "I will try my very hardest to win!$"
-	
-BF_battledefeat:
-	.string "Good fight.\nLet's do it again!$"
-
 @==================================================================================================Start Menu Config Info
 
 RyuStartMenuConfigInfoScript::
@@ -2227,6 +2175,57 @@ RS_Limbo_Sign_1:
 	return
 
 
+Ryu_StartRandomBattle::
+	lockall
+	msgbox Ryu_StartRandomBattle_Text_0
+	multichoice 7, 5, MULTI_RANDOM_BATTLE_TYPE, 1
+	switch VAR_RESULT
+	case 0, Ryu_StartRandomBattle_3
+	case 1, Ryu_StartRandomBattle_4
+	case 2, Ryu_StartRandomBattle_5
+	case 3, Ryu_StartRandomBattle_6
+Ryu_StartRandomBattle_1:
+	msgbox StartingRandomBattleMsg
+	cleartrainerflag TRAINER_RANDOM_PARTY
+	trainerbattle_single TRAINER_RANDOM_PARTY, BF_battleintro, BF_battledefeat, BF_RandomBattleCleanup
+	end
+
+Ryu_StartRandomBattle_3:
+	nop
+	goto Ryu_StartRandomBattle_1
+
+Ryu_StartRandomBattle_4:
+	setflag FLAG_RYU_RB_METRONOME
+	goto Ryu_StartRandomBattle_1
+
+Ryu_StartRandomBattle_5:
+	setflag FLAG_RYU_RB_INVERSE
+	goto Ryu_StartRandomBattle_1
+
+Ryu_StartRandomBattle_6:
+	special ForceSoftReset
+	goto Ryu_StartRandomBattle_1
+
+
+BF_RandomBattleCleanup::
+	clearflag FLAG_RYU_RB_INVERSE
+	clearflag FLAG_RYU_RB_METRONOME
+	msgbox BattleAgain, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq Ryu_StartRandomBattle
+	clearflag FLAG_RYU_RANDOMBATTLE
+	special ForceSoftReset
+	release
+	end
+
+
+BF_NoBattle::
+	msgbox BF_NoBattleMsg
+	closemessage
+	release
+	end
+
+
 RyuScript_EndNuzlockeMode_Text_0:
 	.string "Welcome to Limbo. You have failed your\n"
 	.string "Nuzlocke or Hardcore challenge and\l"
@@ -2252,3 +2251,34 @@ RS_Limbo_Sign_Text_1:
 	.string "your mind. If you'd like to start a new\l"
 	.string "life, Now would be a good time!(You must\l"
 	.string "start a new game to keep playing.)$"
+
+Ryu_StartRandomBattle_Text_0:
+	.string "Please select a random battle type.$"
+
+StartingRandomBattleMsg::
+	.string "Starting Random Battle...$"
+
+BattleAgain::
+	.string "Would you like to battle again?$"
+
+BF_NoBattleMsg::
+	.string "Very well. Talk with me again if\n"
+	.string "you change your mind!$"
+
+BF_Starting::
+	.string "Hold on... Let me put your party\n"
+	.string "aside...\p"
+	.string "... ... ... ...\n"
+	.string "... ... ... ...\p"
+	.string "There. All set... Here we go!$"
+
+BF_RandomIntro::
+	.string "Selene Hi! I like to do random\n"
+	.string "battles.\p"
+	.string "Would you like to battle with me?$"
+
+BF_battleintro::
+	.string "I will try my very hardest to win!$"
+
+BF_battledefeat::
+	.string "Good fight.\nLet's do it again!$"

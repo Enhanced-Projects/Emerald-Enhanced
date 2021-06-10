@@ -3364,4 +3364,8 @@ extern const u8 gText_RyuHolidayShaymin[];
 extern const u8 gText_RyuBotanyLabel[];
 extern const u8 gText_RyuAlchemyLabel[];
 
+extern const u8 gText_RyuRandomBattleNormal[];
+extern const u8 gText_RyuRandomBattleMetronome[];
+extern const u8 gText_RyuRandomBattleInverse[];
+
 #endif // GUARD_STRINGS_H

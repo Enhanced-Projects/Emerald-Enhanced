@@ -7649,6 +7649,9 @@ bool8 RyuCheckPlayerIsInBattleArena(void)
     u16 locMap = gSaveBlock1Ptr->location.mapNum;
     if ((locGroup == 26) && (locMap == 30))
         return TRUE;
+
+    if ((FlagGet(FLAG_RYU_RB_INVERSE) == TRUE) && (FlagGet(FLAG_RYU_RANDOMBATTLE) == TRUE))
+        return TRUE;
     
     return FALSE;
 }

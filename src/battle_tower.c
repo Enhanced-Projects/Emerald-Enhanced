@@ -3553,6 +3553,9 @@ void RyuSetPartyFrontierMon(bool32 opponent, u16 id, u8 slot)
     s32 evs[NUM_STATS];
     u8 level = MAX_LEVEL;
     u8 i, temp;
+    u16 metronome = MOVE_METRONOME;
+    u8 fiftypp = 50;
+    u16 item = ITEM_POKE_BALL;
     const struct FacilityMon *mon = &gBattleFrontierMons[id];
 
     temp = mon->evSpread;
@@ -3610,6 +3613,30 @@ void RyuSetPartyFrontierMon(bool32 opponent, u16 id, u8 slot)
     {
         //something need to be done here???
     }
+
+    if ((FlagGet(FLAG_RYU_RB_METRONOME) == TRUE) && (FlagGet(FLAG_RYU_RANDOMBATTLE) == TRUE))
+    {
+        SetMonData(&gEnemyParty[slot], MON_DATA_MOVE1, &metronome);
+        SetMonData(&gEnemyParty[slot], MON_DATA_MOVE2, &metronome);
+        SetMonData(&gEnemyParty[slot], MON_DATA_MOVE3, &metronome);
+        SetMonData(&gEnemyParty[slot], MON_DATA_MOVE4, &metronome);
+        SetMonData(&gPlayerParty[slot], MON_DATA_MOVE1, &metronome);
+        SetMonData(&gPlayerParty[slot], MON_DATA_MOVE2, &metronome);
+        SetMonData(&gPlayerParty[slot], MON_DATA_MOVE3, &metronome);
+        SetMonData(&gPlayerParty[slot], MON_DATA_MOVE4, &metronome);
+        SetMonData(&gPlayerParty[slot], MON_DATA_HELD_ITEM, &item);
+        SetMonData(&gEnemyParty[slot], MON_DATA_HELD_ITEM, &item);
+        SetMonData(&gPlayerParty[slot], MON_DATA_PP1, &fiftypp);
+        SetMonData(&gEnemyParty[slot], MON_DATA_PP1, &fiftypp);
+        SetMonData(&gPlayerParty[slot], MON_DATA_PP2, &fiftypp);
+        SetMonData(&gEnemyParty[slot], MON_DATA_PP2, &fiftypp);
+        SetMonData(&gPlayerParty[slot], MON_DATA_PP3, &fiftypp);
+        SetMonData(&gEnemyParty[slot], MON_DATA_PP3, &fiftypp);
+        SetMonData(&gPlayerParty[slot], MON_DATA_PP4, &fiftypp);
+        SetMonData(&gEnemyParty[slot], MON_DATA_PP4, &fiftypp);
+        
+    }
+    
 }
 
 void RyuGiveFrontierMon(void)

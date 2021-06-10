@@ -1208,58 +1208,6 @@ Ryu_PlayerFailedNuzlockeHardcore::
 Ryu_failedNZHC:
 	.string "You have failed Nuzlocke or\nhardcore mode.\pIf you were on New Game Plus,\nyour dex/pcbox/key item progress\lhas been saved.\pPlease reset the game and\nstart a New file.$"
 
-@==================================================================================================Randombattle
-
-Ryu_StartRandomBattle::
-	msgbox StartingRandomBattleMsg
-	cleartrainerflag TRAINER_RANDOM_PARTY
-	trainerbattle_single TRAINER_RANDOM_PARTY, BF_battleintro, BF_battledefeat, BF_RandomBattleCleanup
-	end
-
-StartingRandomBattleMsg:
-	.string "Starting Random Battle...$"
-
-BF_RandomBattleCleanup::
-	msgbox BattleAgain, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq Ryu_StartRandomBattle
-	clearflag FLAG_RYU_RANDOMBATTLE
-	special ForceSoftReset
-	release
-	end
-	
-BF_NoBattle::
-	msgbox BF_NoBattleMsg
-	closemessage
-	release
-	end
-
-BattleAgain:
-	.string "Would you like to battle again?$"
-	
-BF_NoBattleMsg:
-    .string "Very well. Talk with me again if\n"
-    .string "you change your mind!$"
-
-BF_Starting:
-    .string "Hold on... Let me put your party\n"
-    .string "aside...\p"
-    .string "... ... ... ...\n"
-    .string "... ... ... ...\p"
-    .string "There. All set... Here we go!$"
-
-	
-BF_RandomIntro:
-    .string "Selene: Hi! I like to do random\n"
-    .string "battles.\p"
-    .string "Would you like to battle with me?$"
-
-BF_battleintro:
-	.string "I will try my very hardest to win!$"
-	
-BF_battledefeat:
-	.string "Good fight.\nLet's do it again!$"
-
 @==================================================================================================Start Menu Config Info
 
 RyuStartMenuConfigInfoScript::
@@ -2225,4 +2173,79 @@ script RS_Limbo_Sign{
         msgbox(format("Okay, well I'll be here if you change your mind. If you'd like to start a new life, Now would be a good time!(You must start a new game to keep playing.)"))
     }
 
+}
+
+script Ryu_StartRandomBattle{
+	lockall
+	msgbox(format("Please select a random battle type."))
+	multichoice(7, 5, MULTI_RANDOM_BATTLE_TYPE, 1)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			nop
+		case 1:
+			setflag(FLAG_RYU_RB_METRONOME)
+		case 2:
+			setflag(FLAG_RYU_RB_INVERSE)
+		case 3:
+			special(ForceSoftReset)
+	}
+		msgbox(StartingRandomBattleMsg)
+		cleartrainerflag(TRAINER_RANDOM_PARTY)
+		trainerbattle_single(TRAINER_RANDOM_PARTY, BF_battleintro, BF_battledefeat, BF_RandomBattleCleanup)
+		end
+}
+
+text StartingRandomBattleMsg{
+	"Starting Random Battle...$"
+}
+
+
+script BF_RandomBattleCleanup{
+	clearflag(FLAG_RYU_RB_INVERSE)
+	clearflag(FLAG_RYU_RB_METRONOME)
+	msgbox(BattleAgain, MSGBOX_YESNO)
+	compare(VAR_RESULT, 1)
+	goto_if_eq(Ryu_StartRandomBattle)
+	clearflag(FLAG_RYU_RANDOMBATTLE)
+	special(ForceSoftReset)
+	release
+	end
+}
+	
+script BF_NoBattle{
+	msgbox(BF_NoBattleMsg)
+	closemessage
+	release
+	end
+}
+
+text BattleAgain {
+	"Would you like to battle again?"
+}
+	
+text BF_NoBattleMsg {
+	"Very well. Talk with me again if\n"
+    "you change your mind!"
+}
+
+text BF_Starting {
+	"Hold on... Let me put your party\n"
+    "aside...\p"
+    "... ... ... ...\n"
+    "... ... ... ...\p"
+    "There. All set... Here we go!"
+}
+	
+text BF_RandomIntro {
+	"Selene Hi! I like to do random\n"
+    "battles.\p"
+    "Would you like to battle with me?"
+}
+
+text BF_battleintro {
+	"I will try my very hardest to win!"
+}
+	
+text BF_battledefeat {
+	"Good fight.\nLet's do it again!"
 }

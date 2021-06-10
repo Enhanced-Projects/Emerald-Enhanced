@@ -1579,8 +1579,8 @@
 #define FLAG_DAILY_SNOWY_SHORE_RECEIVED_BERRY          (DAILY_FLAGS_START + 0x5)
 #define FLAG_DAILY_FROSTBITE_FIELD_RECEIVED_FERTILIZER (DAILY_FLAGS_START + 0x6)
 #define FLAG_DAILY_SLAKOTH_BANANA_GARDEN_BANANAS       (DAILY_FLAGS_START + 0x7)
-#define FLAG_UNUSED_0x928                              (DAILY_FLAGS_START + 0x8) // Unused Flag
-#define FLAG_UNUSED_0x929                              (DAILY_FLAGS_START + 0x9) // Unused Flag
+#define FLAG_RYU_RB_METRONOME                          (DAILY_FLAGS_START + 0x8) // Unused Flag
+#define FLAG_RYU_RB_INVERSE                            (DAILY_FLAGS_START + 0x9) // Unused Flag
 #define FLAG_DAILY_PICKED_LOTO_TICKET                  (DAILY_FLAGS_START + 0xA)
 #define FLAG_DAILY_ROUTE_114_RECEIVED_BERRY            (DAILY_FLAGS_START + 0xB)
 #define FLAG_DAILY_ROUTE_111_RECEIVED_BERRY            (DAILY_FLAGS_START + 0xC)

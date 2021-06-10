@@ -170,6 +170,7 @@
 #define MULTI_BOTANY_APRICORN_MENU         159
 #define MULTI_HOLIDAY_2020                 160
 #define MULTI_BOTANY_OR_ALCHEMY            161
+#define MULTI_RANDOM_BATTLE_TYPE           162
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

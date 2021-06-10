@@ -2209,3 +2209,7 @@ const u8 gText_RyuHolidayShaymin[] = _("Shaymin");
 
 const u8 gText_RyuBotanyLabel[] = _("Botany");
 const u8 gText_RyuAlchemyLabel[] = _("Alchemy");
+
+const u8 gText_RyuRandomBattleNormal[] = _("Normal Random");
+const u8 gText_RyuRandomBattleMetronome[] = _("Metronome Random");
+const u8 gText_RyuRandomBattleInverse[] = _("Inverse Random");
