@@ -716,9 +716,6 @@ static void Task_MainMenuCheckSaveFile(u8 taskId)
                     tMenuType++;
                 if (FlagGet(FLAG_SYS_GAME_CLEAR))
                     tMenuType = HAS_NEW_GAME_PLUS;
-                mgba_open();
-                //mgba_printf(LOGINFO, "Game Clear Flag = %d", FlagGet(FLAG_SYS_GAME_CLEAR));
-                //FlagSet(FLAG_SYS_GAME_CLEAR);
                 gTasks[taskId].func = Task_MainMenuCheckBattery;
                 break;
             case SAVE_STATUS_CORRUPT:

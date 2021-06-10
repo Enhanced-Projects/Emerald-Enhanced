@@ -284,16 +284,16 @@ LRT_FM2:
 
 @HAREM EVENT=======================================================================================
 Ryu_HaremEvent::
+	goto_if_set FLAG_RYU_HAREM_EVENT_COMPLETED, ryu_end
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, LRT_Cam1
 	waitmovement OBJ_EVENT_ID_CAMERA
-	goto_if_set FLAG_RYU_HAREM_EVENT_COMPLETED, ryu_end
 	lockall
 	checkplayergender
-	compare VAR_RESULT, FEMALE
+	compare VAR_RESULT, MALE
 	call_if_eq Ryu_HaremEventMale
 	checkplayergender
-	compare VAR_RESULT, MALE
+	compare VAR_RESULT, FEMALE
 	call_if_eq Ryu_HaremEventFemale
 	msgbox LRT_Harem_Outro
 	closemessage
@@ -323,7 +323,7 @@ Ryu_HaremEvent::
 	removeobject 10
 	setvar VAR_RYU_PARTNER_COUNT, 10 @Finished harem event.
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
-	special SpawnCameraObject
+	special RemoveCameraObject
 	release
 	end
 	
@@ -488,7 +488,9 @@ RivalToLab:
 	walk_down
 	step_end
 
-Ryu_HaremEventMale::
+Ryu_HaremEventFemale::
+	removeobject 7
+	setflag FLAG_RYU_HIDE_HAREM_EVENT_DAWN
 	msgbox LRT_HAREM_INTRO
 	closemessage
 	applymovement 9, ShellyToDawn
@@ -528,7 +530,9 @@ Ryu_HaremEventMale::
 	closemessage
 	return
 	
-Ryu_HaremEventFemale::
+Ryu_HaremEventMale::
+	removeobject 10
+	setflag FLAG_RYU_HIDE_HAREM_EVENT_BRENDAN
 	msgbox LRT_HAREM_INTRO
 	closemessage
 	applymovement 6, LanetteToBrendan
