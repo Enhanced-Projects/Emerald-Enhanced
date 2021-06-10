@@ -16,6 +16,10 @@ SPC_CANTLEAVE::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
 	waitmovement OBJ_EVENT_ID_PLAYER
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 106
+	goto_if_ne ryu_end
+	setflag FLAG_RYU_PLAYER_HELPING_DEVON
+	setflag FLAG_RYU_DEVON_SCIENTIST
 	release
 	end
 
