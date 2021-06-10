@@ -1999,6 +1999,6 @@ void RyuMaxFactionStanding(void)
 void SetAlchemyEffect(void)
 {
     gSaveBlock2Ptr->alchemyEffect = ALCHEMY_EFFECT_MASTER_CAPTURE;
-    gSaveBlock2Ptr->alchemyCharges = 5;
+    gSaveBlock2Ptr->alchemyCharges = 1;
     gSaveBlock2Ptr->hasAlchemyEffectActive = TRUE;
 }

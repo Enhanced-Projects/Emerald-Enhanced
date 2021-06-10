@@ -521,10 +521,12 @@ static bool8 IntializeAtlas(void)
             u32 y = sAchAtlasData[i].y;
             u32 index = ((y%32)*32 + ((y/32)*2048) + ((x)%32) + ((x/32)*1024));
             if(CheckAchievement(i))
+            {
                 if(sAchAtlasData[i].category & CATEGORY_FLAG_GOLD)
-                    map[index] = 1 + 0x1000;
-                else
                     map[index] = 3 + 0x1000;
+                else
+                    map[index] = 1 + 0x1000;
+            }
             else
                 map[index] = 2 + 0x1000;
 

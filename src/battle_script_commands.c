@@ -12184,6 +12184,8 @@ static void Cmd_handleballthrow(void)
 
         if (odds > 254) // mon caught
         {
+            if (IsCriticalCapture())
+                GiveAchievement(ACH_CRITCAP);
             BtlController_EmitBallThrowAnim(0, BALL_3_SHAKES_SUCCESS);
             MarkBattlerForControllerExec(gActiveBattler);
             gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
