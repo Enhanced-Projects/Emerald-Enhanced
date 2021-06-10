@@ -2764,8 +2764,6 @@ void AnimTask_GetBattlersFromArg(u8 taskId)
 
 bool32 IsCriticalCapture(void)
 {
-    if (gBattleSpritesDataPtr->animationData->isCriticalCapture == TRUE)
-        GiveAchievement(ACH_CRITCAP);
     return gBattleSpritesDataPtr->animationData->isCriticalCapture;
 }
 
