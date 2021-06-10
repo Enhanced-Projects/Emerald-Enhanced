@@ -1,12 +1,14 @@
 #ifndef GUARD_ACH_ATLAS_H
 #define GUARD_ACH_ATLAS_H
 
+//! Enum is used for a u8 don't add more stuff after CATEGORY_FLAG_GOLD
 enum
 {
-    CATEGORY_EXPLORATION,  //dark_grey/light_grey. also for misc achievements
-    CATEGORY_BATTLE,       //light_red/red
-    CATEGORY_COMPANIONS,   //light_blue/blue
-    CATEGORY_QUESTING      //light_green/green
+    CATEGORY_EXPLORATION,     //dark_grey/light_grey. also for misc achievements
+    CATEGORY_BATTLE,          //light_red/red
+    CATEGORY_COMPANIONS,      //light_blue/blue
+    CATEGORY_QUESTING,        //light_green/green
+    CATEGORY_FLAG_GOLD = 0x80 // used to tell gold achivements apart from normal achivemenets for the icon
 };
 
 enum

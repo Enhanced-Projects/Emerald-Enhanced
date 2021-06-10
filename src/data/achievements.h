@@ -261,8 +261,8 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_THE_MAGICIAN] = {12, 45, CATEGORY_EXPLORATION, ACH_THE_MAGICIAN, sTheMagicianLabel, sTheMagicianDesc, sTheMagicianHint},//High standing with the Outcasts
     [ACH_THE_TRADESMAN] = {14, 45, CATEGORY_EXPLORATION, ACH_THE_TRADESMAN, sTheTradesmanLabel, sTheTradesmanDesc, sTheTradesmanHint},//High standing with the Professionals
     [ACH_THE_WARRIOR] = {14, 47, CATEGORY_EXPLORATION, ACH_THE_WARRIOR, sTheWarriorLabel, sTheWarriorDesc, sTheWarriorHint},//High standing with the Athletes
-    [ACH_THE_UNIVERSALIST] = {12, 43, CATEGORY_EXPLORATION, ACH_THE_UNIVERSALIST, sTheUniversalistLabel, sTheUniversalistDesc, sTheUniversalistHint},// All factions high standing. GOLD ACHIEVEMENT
-    [ACH_LOREMASTER] = {43, 31, CATEGORY_QUESTING, ACH_LOREMASTER, sLoremasterLabel, sLoremasterDesc, sLoremasterHint},// All quest complete achievements GOLD ACHIEVEMENT
-    [ACH_TOURIST] = {12, 29, CATEGORY_EXPLORATION, ACH_TOURIST, sTouristLabel, sTouristDesc, sTouristHint},// All exploration achievements GOLD ACHIEVEMENT
-    [ACH_CRITCAP] = {30, 33, CATEGORY_BATTLE, ACH_CRITCAP, sCritCapLabel, sCritCapDesc, sCritCapHint},// All exploration achievements GOLD ACHIEVEMENT
+    [ACH_THE_UNIVERSALIST] = {12, 43, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_THE_UNIVERSALIST, sTheUniversalistLabel, sTheUniversalistDesc, sTheUniversalistHint},// All factions high standing. GOLD ACHIEVEMENT
+    [ACH_LOREMASTER] = {43, 31, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_LOREMASTER, sLoremasterLabel, sLoremasterDesc, sLoremasterHint},// All quest complete achievements GOLD ACHIEVEMENT
+    [ACH_TOURIST] = {12, 29, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_TOURIST, sTouristLabel, sTouristDesc, sTouristHint},// All exploration achievements GOLD ACHIEVEMENT
+    [ACH_CRITCAP] = {30, 33, CATEGORY_BATTLE, ACH_CRITCAP, sCritCapLabel, sCritCapDesc, sCritCapHint},// Got a crtitical capture
 };
