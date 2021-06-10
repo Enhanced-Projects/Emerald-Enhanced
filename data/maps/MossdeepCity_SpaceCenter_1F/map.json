@@ -174,7 +174,7 @@
       "x": 9,
       "y": 9,
       "elevation": 3,
-      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var": "VAR_RYU_QUEST_DEVON_SCIENTIST",
       "var_value": "106",
       "script": "SPC_PreventLeaveTillDone"
     },
@@ -183,7 +183,7 @@
       "x": 8,
       "y": 8,
       "elevation": 3,
-      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var": "VAR_RYU_QUEST_DEVON_SCIENTIST",
       "var_value": "106",
       "script": "SPC_PreventLeaveTillDone"
     },
@@ -192,7 +192,7 @@
       "x": 7,
       "y": 8,
       "elevation": 3,
-      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var": "VAR_RYU_QUEST_DEVON_SCIENTIST",
       "var_value": "106",
       "script": "SPC_PreventLeaveTillDone"
     },
@@ -201,7 +201,7 @@
       "x": 6,
       "y": 9,
       "elevation": 3,
-      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var": "VAR_RYU_QUEST_DEVON_SCIENTIST",
       "var_value": "106",
       "script": "SPC_PreventLeaveTillDone"
     }

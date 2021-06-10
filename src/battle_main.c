@@ -885,7 +885,6 @@ static void CB2_HandleStartBattle(void)
             gTasks[taskId].data[4] = gBlockRecvBuffer[enemyMultiplayerId][1];
             sub_8185F90(gBlockRecvBuffer[playerMultiplayerId][1]);
             sub_8185F90(gBlockRecvBuffer[enemyMultiplayerId][1]);
-            SetDeoxysStats();
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;
@@ -1464,7 +1463,6 @@ static void CB2_HandleStartMultiBattle(void)
             ResetBlockReceivedFlags();
             sub_8036EB8(4, playerMultiplayerId);
             SetAllPlayersBerryData();
-            SetDeoxysStats();
             var = CreateTask(InitLinkBattleVsScreen, 0);
             gTasks[var].data[1] = 0x10E;
             gTasks[var].data[2] = 0x5A;
@@ -1878,7 +1876,21 @@ u16 autoevolve(u16 species, u16 level) {
     }
     return species;
 }
+extern void RyuSetPartyFrontierMon(bool32 opponent, u16 id, u8 slot);
 
+void RyuCreateRandomPlayerMon(u8 slot)
+{
+    u16 RandomNumber = (Random() % 833);
+
+    RyuSetPartyFrontierMon(FALSE, RandomNumber, slot);
+}
+
+void RyuCreateRandomEnemyMon(u8 slot)
+{
+    u16 RandomNumber = (Random() % 833);
+
+    RyuSetPartyFrontierMon(TRUE, RandomNumber, slot);
+}
 static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
 {
     u32 nameHash = 0, trainerNameHash = 0;
@@ -1931,10 +1943,13 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         {
             u16 level = RyuChooseLevel(badges, maxScale, scalingType, playerPartyStrength);
 
-            if ((GetFactionStanding(trainerNum)) <= 20 && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))//If faction standing is low enough, this trainer is stronger. EXCEPT IN FRONTIER.
-                level += 12;
-            else if ((GetFactionStanding(trainerNum)) <= 50  && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))
-                level += 7;
+            if (!(GetFactionId(trainerNum) == FACTION_OTHERS))
+            {
+                if ((GetFactionStanding(trainerNum)) <= 20 && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))//If faction standing is low enough, this trainer is stronger. EXCEPT IN FRONTIER.
+                    level += 12;
+                else if ((GetFactionStanding(trainerNum)) <= 50  && (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))
+                    level += 7;
+            }
 
             nameHash += trainerNameHash;
             switch (gTrainers[trainerNum].partyFlags)
@@ -1946,10 +1961,8 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
 
                 if (FlagGet(FLAG_RYU_RANDOMBATTLE) == 1)
                 {
-                    u32 em1 = (Random() % NUM_SPECIES); // @kageru, can you make this autoevolve too?
-                    u32 pm1 = (Random() % NUM_SPECIES); 
-                    CreateMon(&gEnemyParty[i], em1, TRUE_MAX_LEVEL, 31, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
-                    CreateMon(&gPlayerParty[i], pm1, TRUE_MAX_LEVEL, 31, FALSE, 0, OT_ID_PLAYER_ID, 0);
+                    RyuCreateRandomPlayerMon(i);
+                    RyuCreateRandomEnemyMon(i);
                     break;
                 }
 
@@ -5061,7 +5074,7 @@ static void ReturnFromBattleToOverworld(void)
     if (VarGet(VAR_LITTLEROOT_INTRO_STATE) == 10)//player already finished tutorial
         GiveAchievement(ACH_ENHANCED_BATTLE);
 
-    if ((RyuCheckForLegendary(gBattleMons[gBattlerTarget].species) == TRUE) && ((gLastUsedItem == ITEM_POKE_BALL) || (gLastUsedItem == ITEM_BEAST_BALL)) && gBattleOutcome == B_OUTCOME_CAUGHT)
+    if ((RyuCheckForLegendary(gBattleMons[gBattlerTarget].species) == TRUE) && (gLastUsedItem == ITEM_BEAST_BALL) && (gBattleOutcome == B_OUTCOME_CAUGHT))
     {
         if (FlagGet(FLAG_ONLY_GIVE_ACHIEVEMENT_ONCE) == 0)
         {
@@ -5087,8 +5100,8 @@ static void ReturnFromBattleToOverworld(void)
                 }
             }
 
-        if ((VarGet(VAR_RYU_TOTAL_FAINTS) >= 666) && (CheckAchievement(ACH_EVIL_INCARNATE) == FALSE))
-            GiveAchievement(ACH_EVIL_INCARNATE);
+    if ((VarGet(VAR_RYU_TOTAL_FAINTS) >= 666) && (CheckAchievement(ACH_EVIL_INCARNATE) == FALSE))
+        GiveAchievement(ACH_EVIL_INCARNATE);
 
     m4aSongNumStop(SE_LOW_HEALTH);
     SetMainCallback2(gMain.savedCallback);

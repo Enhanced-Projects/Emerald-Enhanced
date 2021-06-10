@@ -5,7 +5,7 @@ SeafloorCavern_Entrance_MapScripts:: @ 823446E
 	.byte 0
 
 SFC_OnFrameScript::
-	map_script_2 VAR_RYU_AQUA, 131, SFCEntrance_DoAquaScene
+	map_script_2 VAR_RYU_QUEST_AQUA, 131, SFCEntrance_DoAquaScene
 	.2byte 0
 
 SeafloorCavern_Entrance_OnResume: @ 8234474
@@ -15,7 +15,7 @@ SeafloorCavern_Entrance_OnResume: @ 8234474
 
 SFCEntrance_DoAquaScene::
 	lockall
-	setvar VAR_RYU_AQUA, 133 @Player is watching seafloor cavern entrance scene.
+	setvar VAR_RYU_QUEST_AQUA, 133 @Player is watching seafloor cavern entrance scene.
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	fadenewbgm 386
 	delay 30
@@ -38,7 +38,7 @@ SFCEntrance_DoAquaScene::
 	fadenewbgm 438
 	delay 60
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_RYU_AQUA, 135 @Player is watching second part of seafloor cavern scene.
+	setvar VAR_RYU_QUEST_AQUA, 135 @Player is watching second part of seafloor cavern scene.
 	goto SFC_DoAquaScenePart2
 
 SFC_DoAquaScenePart2::
@@ -64,7 +64,7 @@ SFC_DoAquaScenePart2::
 	closemessage
 	fadenewbgm 470
 	delay 20
-	setvar VAR_RYU_AQUA, 137 @Player is watching third part of seafloor cavern scene
+	setvar VAR_RYU_QUEST_AQUA, 137 @Player is watching third part of seafloor cavern scene
 	goto SFC_DoAquaScenePart3
 
 SFC_DoAquaScenePart3::
@@ -105,7 +105,7 @@ SFC_DoAquaScenePart3::
 	waitmovement 10
 	msgbox SFC_HahaWeDidIt
 	closemessage
-	setvar VAR_RYU_AQUA, 139 @Player is in the sub for the 4th part of the aqua shelly scene
+	setvar VAR_RYU_QUEST_AQUA, 139 @Player is in the sub for the 4th part of the aqua shelly scene
 	warpsilent MAP_AQUA_SUBMARINE, 255, 1, 18
 	waitstate
 

@@ -12,11 +12,11 @@ IslandCave_OnResume: @ 8238E3A
 @==================================================================================================Lana Scripts
 
 IC_CaveCheck::
-	compare VAR_RYU_DS_LANA_STAGE, 40
+	compare VAR_RYU_QUEST_LANA, 40
 	goto_if_lt ryu_end
-	compare VAR_RYU_DS_LANA_STAGE, 55
+	compare VAR_RYU_QUEST_LANA, 55
 	goto_if_eq IC_Setup
-	compare VAR_RYU_DS_LANA_STAGE, 65
+	compare VAR_RYU_QUEST_LANA, 65
 	goto_if_ge ryu_end
 	msgbox r120_notReady MSGBOX_DEFAULT
 	applymovement OBJ_EVENT_ID_PLAYER, IC_Exit
@@ -26,7 +26,7 @@ IC_CaveCheck::
 	
 IC_Setup::
 	clearflag FLAG_HIDE_IC_LANA
-	setvar VAR_RYU_DS_LANA_STAGE, 56
+	setvar VAR_RYU_QUEST_LANA, 56
 	addobject 2
 	release
 	end
@@ -37,13 +37,13 @@ IC_Setup2::
 	setobjectxy 2, 16, 32
 	clearflag FLAG_HIDE_IC_LANA
 	addobject 3
-	setvar VAR_RYU_DS_LANA_STAGE, 59
+	setvar VAR_RYU_QUEST_LANA, 59
 	warp MAP_ISLAND_CAVE, 255, 8, 11
 	release
 	end
 	
 IC_LeafEvent2::
-	setvar VAR_RYU_DS_LANA_STAGE, 60
+	setvar VAR_RYU_QUEST_LANA, 60
 	lock
 	removeobject 1
 	playse SE_BOWA2
@@ -71,12 +71,12 @@ IC_LeafEvent2::
 	setflag FLAG_SYS_BRAILLE_REGICE_COMPLETED
 	setflag FLAG_HIDE_IC_LANA
 	setflag FLAG_DEFEATED_REGICE
-	setvar VAR_RYU_DS_LANA_STAGE, 65
+	setvar VAR_RYU_QUEST_LANA, 65
 	release
 	end
 
 IC_LeafEvent::
-	setvar VAR_RYU_DS_LANA_STAGE, 57
+	setvar VAR_RYU_QUEST_LANA, 57
 	lock
 	faceplayer
 	msgbox IC_LeafMsg1 MSGBOX_DEFAULT
@@ -104,7 +104,7 @@ IC_LeafEvent::
 	setobjectxy 2, 16, 32
 	msgbox IC_LeafMsg2 MSGBOX_DEFAULT
 	closemessage
-	setvar VAR_RYU_DS_LANA_STAGE, 58
+	setvar VAR_RYU_QUEST_LANA, 58
 	release
 	end
 	
@@ -261,7 +261,7 @@ IslandCave_EventScript_CaveEntranceMiddle:: @ 8238EEF
 	goto_if_set FLAG_SYS_BRAILLE_REGICE_COMPLETED, IslandCave_EventScript_BigHoleInWall
 	braillemessage IslandCave_Braille_RunLapAroundWall
 	closebraillemessage
-	compare VAR_RYU_DS_LANA_STAGE, 40
+	compare VAR_RYU_QUEST_LANA, 40
 	goto_if_gt ryu_end
 	msgbox DR_PlayerHitWall
 	closemessage

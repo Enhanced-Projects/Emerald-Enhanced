@@ -179,7 +179,7 @@
       "x": 6,
       "y": 2,
       "elevation": 0,
-      "var": "VAR_RYU_DEVON",
+      "var": "VAR_RYU_QUEST_DEVON_CORPORATE",
       "var_value": "16",
       "script": "OM_checkFollowerForDevonEvent"
     }

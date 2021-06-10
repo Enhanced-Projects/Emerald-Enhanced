@@ -5,13 +5,13 @@ AquaSubmarine_MapScripts::
 	.byte 0
 
 AS_OnFrameScript::
-	map_script_2 VAR_RYU_AQUA, 139, AS_DoMainAquaScene
-	map_script_2 VAR_RYU_AQUA, 143, AS_DoUpperFloorScene
-	map_script_2 VAR_RYU_AQUA, 153, AS_DoFinalSubScene
+	map_script_2 VAR_RYU_QUEST_AQUA, 139, AS_DoMainAquaScene
+	map_script_2 VAR_RYU_QUEST_AQUA, 143, AS_DoUpperFloorScene
+	map_script_2 VAR_RYU_QUEST_AQUA, 153, AS_DoFinalSubScene
 	.2byte 0
 
 AS_OnWarpScript:
-	map_script_2 VAR_RYU_AQUA, 153, AS_MakePlayerInvisible
+	map_script_2 VAR_RYU_QUEST_AQUA, 153, AS_MakePlayerInvisible
 	.2byte 0
 
 AS_MakePlayerInvisible:
@@ -20,7 +20,7 @@ AS_MakePlayerInvisible:
 
 
 AS_DoMainAquaScene::
-	setvar VAR_RYU_AQUA, 141 @Player is at final part of aqua shelly scene
+	setvar VAR_RYU_QUEST_AQUA, 141 @Player is at final part of aqua shelly scene
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox AS_Heheh
@@ -128,7 +128,7 @@ AS_DoMainAquaScenePt2::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepRight
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_RYU_AQUA, 143 @Player is getting ready to exit the submarine
+	setvar VAR_RYU_QUEST_AQUA, 143 @Player is getting ready to exit the submarine
 	warp MAP_AQUA_SUBMARINE, 255, 5, 8 @Top floor
 	waitstate
 	
@@ -167,7 +167,7 @@ AS_DoUpperFloorScene::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, AS_PlayerExitSub
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_RYU_AQUA, 145
+	setvar VAR_RYU_QUEST_AQUA, 145
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	setvar VAR_RYU_QUESTLINE_ID, 1
 	setflag FLAG_RYU_DS_SHELLY_LOVERS
@@ -179,7 +179,7 @@ AS_DoUpperFloorScene::
 	waitstate
 
 AS_DoFinalSubScene::
-	setvar VAR_RYU_AQUA, 155 @Player needs to return to aqua headquarters
+	setvar VAR_RYU_QUEST_AQUA, 155 @Player needs to return to aqua headquarters
 	pokenavcall AS_ArchiesCall
 	waitmessage
 	delay 30

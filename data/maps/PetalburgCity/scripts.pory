@@ -34,7 +34,7 @@ PetalburgCity_EventScript_SetGymDoorsUnlocked:: @ 81DC316
 	return
 
 PetalburgCity_OnFrame: @ 81DC31C
-	map_script_2 VAR_RYU_MAGMA, 245, PC_DoMagmaStuffAfterHeist
+	map_script_2 VAR_RYU_QUEST_MAGMA, 245, PC_DoMagmaStuffAfterHeist
 	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
 	.2byte 0
 
@@ -549,7 +549,7 @@ PetalburgCity_Text_ImLookingForTalentedTrainers: @ 81DCC09
 @==================================================================================================Mamga post-heist
 
 PC_DoMagmaStuffAfterHeist::
-	setvar VAR_RYU_MAGMA, 250
+	setvar VAR_RYU_QUEST_MAGMA, 250
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	release
 	end
@@ -558,12 +558,12 @@ PC_CheckForPlayerInWrongDirection::
 	specialvar VAR_RESULT, GetPlayerFacingDirection
 	compare VAR_RESULT, DIR_WEST
 	goto_if_eq ryu_end
-	compare VAR_RYU_MAGMA, 250
+	compare VAR_RYU_QUEST_MAGMA, 250
 	goto_if_eq PC_YouCantLeaveThisDirection
 	goto ryu_end
 	
 PC_NoTimeToSwim::
-	compare VAR_RYU_MAGMA, 250
+	compare VAR_RYU_QUEST_MAGMA, 250
 	goto_if_ne ryu_end
 	lock
 	msgbox PC_NotTheTime
@@ -582,11 +582,11 @@ PC_YouCantLeaveThisDirection::
 	end
 	
 PC_StopPlayerForDad::
-	compare VAR_RYU_MAGMA, 250
+	compare VAR_RYU_QUEST_MAGMA, 250
 	goto_if_ne ryu_end
 	lock
 	playbgm 350, 0
-	setvar VAR_RYU_MAGMA, 255 @Dad notices player
+	setvar VAR_RYU_QUEST_MAGMA, 255 @Dad notices player
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	addobject 7
 	playse SE_PIN
@@ -609,7 +609,7 @@ PC_StopPlayerForDad::
 	call_if_eq PC_AdjustPlayerBottom
 	msgbox PC_WeWontLet
 	closemessage
-	setvar VAR_RYU_MAGMA, 258@Player is about to fight enforcer
+	setvar VAR_RYU_QUEST_MAGMA, 258@Player is about to fight enforcer
 	trainerbattle_single TRAINER_DEVON_2, PC_DevonIntro, PC_DevonDefeated, PC_ContinueScene
 	end
 	
@@ -683,7 +683,7 @@ PC_ContinueScene::
 	waitmovement 11
 	msgbox PC_Deleting
 	closemessage
-	setvar VAR_RYU_MAGMA, 260@Player got warped to slateport beach by courtney
+	setvar VAR_RYU_QUEST_MAGMA, 260@Player got warped to slateport beach by courtney
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	warpteleport MAP_ROUTE109, 255, 20, 24
 	waitstate

@@ -183,7 +183,7 @@ LCC_Jeweler::
 	end
 
 LCC_JewelerNecklace::
-	compare VAR_RYU_AQUA, 81
+	compare VAR_RYU_QUEST_AQUA, 81
 	goto_if_ne ryu_return
 	checkitem ITEM_STAR_PIECE, 1
 	compare VAR_RESULT, TRUE
@@ -196,7 +196,7 @@ LCC_JewelerNecklace::
 	fadescreen FADE_FROM_BLACK
 	msgbox LCC_ReceivedNecklace
 	closemessage
-	setvar VAR_RYU_AQUA, 85 @Player had necklace made for shelly
+	setvar VAR_RYU_QUEST_AQUA, 85 @Player had necklace made for shelly
 	release
 	end
 

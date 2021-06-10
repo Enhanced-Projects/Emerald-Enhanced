@@ -122,7 +122,7 @@
       "x": 9,
       "y": 11,
       "elevation": 3,
-      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var": "VAR_RYU_QUEST_DEVON_SCIENTIST",
       "var_value": "102",
       "script": "WI_CantLeave"
     },
@@ -131,7 +131,7 @@
       "x": 10,
       "y": 11,
       "elevation": 3,
-      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var": "VAR_RYU_QUEST_DEVON_SCIENTIST",
       "var_value": "102",
       "script": "WI_CantLeave"
     }

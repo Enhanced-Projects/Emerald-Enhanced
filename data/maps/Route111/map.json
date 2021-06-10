@@ -956,7 +956,7 @@
       "x": 32,
       "y": 100,
       "elevation": 3,
-      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var": "VAR_RYU_QUEST_DEVON_SCIENTIST",
       "var_value": "103",
       "script": "r111_ScientistCastformEvent"
     },
@@ -965,7 +965,7 @@
       "x": 31,
       "y": 99,
       "elevation": 3,
-      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var": "VAR_RYU_QUEST_DEVON_SCIENTIST",
       "var_value": "103",
       "script": "r111_ScientistCastformEvent"
     },
@@ -974,7 +974,7 @@
       "x": 30,
       "y": 98,
       "elevation": 3,
-      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var": "VAR_RYU_QUEST_DEVON_SCIENTIST",
       "var_value": "103",
       "script": "r111_ScientistCastformEvent"
     },
@@ -992,7 +992,7 @@
       "x": 33,
       "y": 26,
       "elevation": 0,
-      "var": "VAR_RYU_MAGMA",
+      "var": "VAR_RYU_QUEST_MAGMA",
       "var_value": "130",
       "script": " R111_MagmaMeeting"
     },
@@ -1001,7 +1001,7 @@
       "x": 30,
       "y": 27,
       "elevation": 0,
-      "var": "VAR_RYU_MAGMA",
+      "var": "VAR_RYU_QUEST_MAGMA",
       "var_value": "200",
       "script": "R111_MagmaMeeting2TriggerLeft1"
     },
@@ -1010,7 +1010,7 @@
       "x": 32,
       "y": 27,
       "elevation": 0,
-      "var": "VAR_RYU_MAGMA",
+      "var": "VAR_RYU_QUEST_MAGMA",
       "var_value": "200",
       "script": "R111_MagmaMeeting2TriggerRight1"
     },
@@ -1019,7 +1019,7 @@
       "x": 33,
       "y": 27,
       "elevation": 0,
-      "var": "VAR_RYU_MAGMA",
+      "var": "VAR_RYU_QUEST_MAGMA",
       "var_value": "200",
       "script": "R111_MagmaMeeting2TriggerRight2"
     },

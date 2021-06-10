@@ -128,7 +128,7 @@
       "x": 14,
       "y": 2,
       "elevation": 0,
-      "var": "VAR_RYU_DEVON",
+      "var": "VAR_RYU_QUEST_DEVON_CORPORATE",
       "var_value": "5",
       "script": "DC_ProgressCheck"
     },
@@ -137,7 +137,7 @@
       "x": 2,
       "y": 2,
       "elevation": 0,
-      "var": "VAR_RYU_DEVON",
+      "var": "VAR_RYU_QUEST_DEVON_CORPORATE",
       "var_value": "5",
       "script": "DC_ProgressCheck"
     }

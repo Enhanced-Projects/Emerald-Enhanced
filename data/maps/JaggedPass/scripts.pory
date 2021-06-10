@@ -287,7 +287,7 @@ JaggedPass_Text_AutumnPostBattle: @ 8230EE3
 	
 	@==============================================================================================End of magma hideout events
 JP_CheckFinishedMagmaHideout1::
-	map_script_2 VAR_RYU_MAGMA, 320, JP_MagmaBlaiseEvent
+	map_script_2 VAR_RYU_QUEST_MAGMA, 320, JP_MagmaBlaiseEvent
 	.2byte 0
 	
 JP_MagmaBlaiseEvent::
@@ -340,7 +340,7 @@ JP_MagmaBlaiseEvent::
 	playse SE_KOUKA_M
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
 	clearflag FLAG_HIDE_MAGMA_ARMY
-	setvar VAR_RYU_MAGMA, 325
+	setvar VAR_RYU_QUEST_MAGMA, 325
 	warpsilent MAP_MAGMA_HIDEOUT_2F_1R, 255, 21, 16
 	waitstate
 	

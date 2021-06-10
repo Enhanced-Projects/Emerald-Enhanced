@@ -122,7 +122,7 @@
       "x": 16,
       "y": 4,
       "elevation": 0,
-      "var": "VAR_RYU_DS_NURSE_STAGE",
+      "var": "VAR_RYU_QUEST_NURSE",
       "var_value": "2",
       "script": "VT_FinishNurseQuest1"
     }

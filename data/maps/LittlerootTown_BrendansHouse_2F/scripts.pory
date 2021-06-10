@@ -6,7 +6,7 @@ LittlerootTown_BrendansHouse_2F_MapScripts:: @ 81F83E3
 GameIntroSequenceCheck::
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 4, GameIntroSequencePart1
 	map_script_2 VAR_TEMP_E, 0, LRT_CheckGameOver
-	map_script_2 VAR_RYU_DS_LANA_STAGE, 75, LRT_LeafEvent
+	map_script_2 VAR_RYU_QUEST_LANA, 75, LRT_LeafEvent
 	map_script_2 VAR_RYU_PARTNER_COUNT, 5, LRT_BeginHaremSequence
 	.2byte 0
 	
@@ -267,9 +267,9 @@ LRT_BRENDAN_THANKS:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Brendan: That was great.\pI can't remember the last time\nI slept so good.\pThanks for that.$"
 
 LRT_BRENDAN_THANKS2:
-    .string "{COLOR LIGHT_RED}{SHADOW RED}Thanks for staying with me for another\n"
-	.string "night. You might get me addicted...\p"
-	.string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(He gives a wide, toothy grin.)$"
+    .string "{COLOR LIGHT_RED}{SHADOW RED}Thanks for keeping me company.\n"
+	.string "I always feel better knowing you\l"
+	.string "are here with me.$"
 	
 LRT_BrendanHEART:
 	walk_down
@@ -385,7 +385,7 @@ LRT_BH_Unchanged:
 LRT_LeafEvent::
 	lock
 	clearflag FLAG_RYU_RANDOMBATTLE
-	setvar VAR_RYU_DS_LANA_STAGE, 76
+	setvar VAR_RYU_QUEST_LANA, 76
 	msgbox LRT_Story1 MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
@@ -425,7 +425,7 @@ LRT_LeafEvent::
 	msgbox LRT_Story7 MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_MISHIRO, 0
-	setvar VAR_RYU_DS_LANA_STAGE, 80
+	setvar VAR_RYU_QUEST_LANA, 80
 	setflag FLAG_RYU_HIDE_REL_OBJECTS
 	setflag FLAG_RYU_DS_LEAF_LOVERS
 	clearflag FLAG_HIDE_LANAS_HOUSE_LANA_AND_BRO

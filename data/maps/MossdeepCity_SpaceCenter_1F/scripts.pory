@@ -6,18 +6,18 @@ MossdeepCity_SpaceCenter_1F_MapScripts:: @ 8222F41
 	.byte 0
 
 SPC_OnWarpScripts1:
-	map_script_2 VAR_RYU_DEVON_SCIENTIST_STAGE, 105, SPC_AddSteven
+	map_script_2 VAR_RYU_QUEST_DEVON_SCIENTIST, 105, SPC_AddSteven
 	.2byte 0
 
 
 SPC_AddSteven:
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 1055
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 1055
 	end
 	
 
 SPC_CheckDevonQuest::
-	map_script_2 VAR_RYU_DEVON_SCIENTIST_STAGE, 1055, SPC_StevenApproach
+	map_script_2 VAR_RYU_QUEST_DEVON_SCIENTIST, 1055, SPC_StevenApproach
 	.2byte 0
 
 MossdeepCity_SpaceCenter_1F_OnTransition: @ 8222F4C
@@ -33,7 +33,7 @@ SPC_StevenApproach::
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, ryu_end
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 106
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 106
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
 	applymovement 10, Common_Movement_StepDown
 	waitmovement 10
@@ -58,7 +58,7 @@ SPC_PreventLeaveTillDone::
 	lock
 	compare VAR_RYU_QUESTLINE_ID, 5 @@game over'd
 	goto_if_eq SPC_PreventEntry
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 106
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 106
 	goto_if_ne ryu_end
 	msgbox SPC_CantLeave
 	closemessage

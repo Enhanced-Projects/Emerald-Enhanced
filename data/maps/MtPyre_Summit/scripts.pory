@@ -261,14 +261,14 @@ MP_OldPeopleGiveEonTicket:
 @===================================================================================================Aqua
 
 MPS_Aqua_StartMinibossBattle::
-	switch VAR_RYU_AQUA
+	switch VAR_RYU_QUEST_AQUA
 	case 88, MPS_AquaMiniBossFight1
 	case 92, MPS_AquaMiniBossFight1
 	case 94, MPS_AfterCourtney
 	goto ryu_end
 	
 MPS_AquaMiniBossFight1::
-	setvar VAR_RYU_AQUA, 92
+	setvar VAR_RYU_QUEST_AQUA, 92
 	addobject 14
 	applymovement 14 MPS_MattToPlayer
 	waitmovement 14
@@ -290,7 +290,7 @@ MPS_AquaMiniBossFight1::
 	goto MPS_AfterCourtney
 	
 MPS_AfterCourtney::
-	setvar VAR_RYU_AQUA, 94 @Player defeated Courtney, Maxie coming in
+	setvar VAR_RYU_QUEST_AQUA, 94 @Player defeated Courtney, Maxie coming in
 	msgbox MPS_MaxieSirDefeated
 	closemessage
 	applymovement 15, MPS_MaxieToPlayer
@@ -307,7 +307,7 @@ MPS_AfterMaxie::
 	clearflag FLAG_RYU_GAME_OVER
 	setflag FLAG_RYU_HIDE_NPCS_MTPYRE_SUMMIT
 	call MPS_RemoveAquaMagmaObjects
-	setvar VAR_RYU_AQUA, 96 @player defeated Maxie in mt pyre
+	setvar VAR_RYU_QUEST_AQUA, 96 @player defeated Maxie in mt pyre
 	addobject 16
 	addobject 17
 	applymovement 17, MPS_ArchieToPlayer @delay 16, 7 up
@@ -335,7 +335,7 @@ MPS_AfterMaxie::
 	removeobject 14
 	removeobject 16
 	removeobject 17
-	setvar VAR_RYU_AQUA, 100 @Player finished MtPyre, now headed to slateport harbor
+	setvar VAR_RYU_QUEST_AQUA, 100 @Player finished MtPyre, now headed to slateport harbor
 	fadescreen FADE_FROM_BLACK
 	release
 	end

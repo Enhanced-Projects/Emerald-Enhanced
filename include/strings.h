@@ -3167,6 +3167,7 @@ extern const u8 gText_RyuUserModeEvMenuSpDef[];
 extern const u8 gText_RyuUserModeEvMenuSpe[];
 
 extern const u8 gText_RyuBetaMenuBlank[];
+extern const u8 gText_RyuBetaMenuCheckWaystone[];
 extern const u8 gText_RyuBetaMenuViewQuestVars[];
 extern const u8 gText_RyuBetaMenuResetTempBattleFlags[];
 extern const u8 gText_RyuBetaMenuResetBadges[];
@@ -3362,5 +3363,9 @@ extern const u8 gText_RyuHolidayShaymin[];
 
 extern const u8 gText_RyuBotanyLabel[];
 extern const u8 gText_RyuAlchemyLabel[];
+
+extern const u8 gText_RyuRandomBattleNormal[];
+extern const u8 gText_RyuRandomBattleMetronome[];
+extern const u8 gText_RyuRandomBattleInverse[];
 
 #endif // GUARD_STRINGS_H

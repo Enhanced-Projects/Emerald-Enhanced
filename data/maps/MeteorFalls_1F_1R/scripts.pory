@@ -6,7 +6,7 @@ MF_SetStage::
 	setvar VAR_TEMP_A, 20
 	goto_if_set FLAG_MET_ARCHIE_METEOR_FALLS, ryu_end
 	goto_if_set FLAG_RYU_PLAYER_HELPING_DEVON, MF_SS_Devon
-	compare VAR_RYU_AQUA, 60 @Player should be doing meteor falls now
+	compare VAR_RYU_QUEST_AQUA, 60 @Player should be doing meteor falls now
 	goto_if_eq MF_SetAquaStage
 	release
 	end
@@ -18,7 +18,7 @@ MF_SetAquaStage::
 	
 MF_SS_Devon::
 	lock
-	compare VAR_RYU_DEVON, 19
+	compare VAR_RYU_QUEST_DEVON_CORPORATE, 19
 	goto_if_ne ryu_end
 	goto_if_set FLAG_MET_ARCHIE_METEOR_FALLS, ryu_end
 	clearflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
@@ -32,20 +32,20 @@ MF_Event1start::
 	setvar VAR_TEMP_A, 20
 	setvar VAR_TEMP_B, 20
 	setvar VAR_TEMP_8, 1
-	compare VAR_RYU_AQUA, 60
+	compare VAR_RYU_QUEST_AQUA, 60
 	goto_if_eq MF_StartAqua
 	goto MF_MainEvent
 	
 MF_Event2start::
 	setvar VAR_TEMP_A, 10
 	setvar VAR_TEMP_B, 10
-	compare VAR_RYU_AQUA, 60
+	compare VAR_RYU_QUEST_AQUA, 60
 	goto_if_eq MF_StartAqua
 	setvar VAR_TEMP_8, 2
 	goto MF_MainEvent
 	
 MF_MainEvent::
-	compare VAR_RYU_DEVON, 19
+	compare VAR_RYU_QUEST_DEVON_CORPORATE, 19
 	goto_if_eq MF_DevonEventSouth
 	release
 	end
@@ -157,7 +157,7 @@ MF_PlayerDevonContdSouth::
 	waitmovement 7
 	removeobject 8
 	removeobject 7
-	setvar VAR_RYU_DEVON, 20
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 20
 	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
 	setflag FLAG_MET_ARCHIE_METEOR_FALLS
 	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
@@ -560,7 +560,7 @@ MF_DM1_Cozmo:
 @==================================================================================================Aqua
 
 MF_StartAqua::
-	setvar VAR_RYU_AQUA, 65 @start Meteor Falls Event
+	setvar VAR_RYU_QUEST_AQUA, 65 @start Meteor Falls Event
 	playbgm MUS_MGM0, 0
 	goto MF_AquaSouth
 
@@ -637,13 +637,13 @@ MF_AquaSouthContd::
 	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
 	setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
 	setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
-	setvar VAR_RYU_AQUA, 70 @Player is doing the romance line for aqua. Go to Mt Chihmney.
+	setvar VAR_RYU_QUEST_AQUA, 70 @Player is doing the romance line for aqua. Go to Mt Chihmney.
 	warpsilent MAP_MT_CHIMNEY, 255, 26, 31
 	release
 	end
 	
 MF_PlayerChoseNoRomance::
-	setvar VAR_RYU_AQUA, 72 @Player chose the non-romance aqua line, report back to shelly.
+	setvar VAR_RYU_QUEST_AQUA, 72 @Player chose the non-romance aqua line, report back to shelly.
 	applymovement 7, MF_ArchieLeavesNorthAqua
 	applymovement 8, MF_MattLeavesNorth
 	waitmovement 8

@@ -572,7 +572,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/Route119_WeatherInstitute_2F/scripts.inc"
 	.include "data/maps/Route119_House/scripts.inc"
 	.include "data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc"
-	.include "data/scripts/RyuScripts.inc"
 	.include "data/scripts/RyuIntroScripts.inc"
 	.include "data/scripts/RyuSacrificeSystem.inc"
 	.include "data/scripts/RyuDevonLine.inc"
@@ -596,6 +595,8 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/slakoth_vending_machine.inc"
 	.include "data/scripts/_poryscripts/RyuProceduralQuestSystemScripts.inc"
 	.include "data/scripts/_poryscripts/RyuSpecialFactionQuests.inc"
+	.include "data/scripts/_poryscripts/RyuDebug_BetaMenu.inc"
+	.include "data/scripts/_poryscripts/RyuScripts.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
@@ -845,7 +846,7 @@ gText_UnusedNicknameReceivedPokemon:: @ 8272DB3
 
 gText_PlayerWhitedOut:: @ 8272DE3
 	.string "{PLAYER} is out of usable\n"
-	.string "Pokémon!\p{PLAYER} whited out!$"
+	.string "Pokémon!\p{PLAYER} passed out!$"
 
 gText_RegisteredTrainerinPokeNav:: @ 8272E0F
 	.string "Registered {STR_VAR_1} {STR_VAR_2}\n"
@@ -1219,3 +1220,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/Route119_LorwynsHouse/scripts.inc"
 
 	.include "data/maps/SnowyShore_DarkWorld_PriestessHouse/scripts.inc"
+
+	.include "data/maps/Limbo/scripts.inc"

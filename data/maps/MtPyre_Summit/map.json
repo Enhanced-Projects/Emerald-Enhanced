@@ -265,7 +265,7 @@
       "x": 23,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_RYU_AQUA",
+      "var": "VAR_RYU_QUEST_AQUA",
       "var_value": "88",
       "script": "MPS_Aqua_StartMinibossBattle"
     }

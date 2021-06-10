@@ -5,7 +5,7 @@ MossdeepCity_SpaceCenter_2F_MapScripts:: @ 8223D58
 	.byte 0
 
 SPC_PREVENT2fEXIT::
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 106
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 106
 	goto_if_eq SPC_CANTLEAVE
 	release
 	end
@@ -23,9 +23,9 @@ spc_cantleavemsg:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} You can't leave yet.\pYou have to deal with Magma's\npresence.$"
 
 MossdeepCity_SpaceCenter_2F_OnTransition: @ 8223D63
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 106
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 106
 	call_if_eq MossdeepCity_SpaceCenter_2F_EventScript_MoveStevenMaxieCourtney
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 106
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 106
 	call_if_eq MossdeepCity_SpaceCenter_2F_EventScript_MoveDefeatedGrunts
 	end
 
@@ -363,23 +363,23 @@ SPC_AfterMaxie2::
 	msgbox SPC_APlaceOnlyStrong
 	closemessage
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 107
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 107
 	release
 	end
 	
 SPC_SetSecondScene::
 	lock
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 109
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 109
 	setobjectxyperm 3, 16, 9
 	release
 	end
 	
 SPC_Scientist::
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 107
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 107
 	goto_if_eq SPC_headToVictoryRoad
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 109
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 109
 	goto_if_eq SPC_MewtwoDefeated
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 115
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 115
 	goto_if_eq SPC_Afterstory
 	goto_if_set FLAG_RYU_SCIENTIST_DONE, SPC_Afterstory
 	release
@@ -392,7 +392,7 @@ SPC_headToVictoryRoad::
 	end
 	
 SPC_MewtwoDefeated::
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 110
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 110
 	goto_if_eq SPC_GoCheckSafariZone
 	msgbox SPC_MeetMeAtTable
 	closemessage
@@ -429,7 +429,7 @@ SPC_MewtwoDefeated::
 	applymovement 3, Common_Movement_FaceRight
 	waitmovement 3
 	msgbox SPC_WellOffYou
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 110
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 110
 	setflag FLAG_RYU_SCIENTIST_DONE
 	release
 	end

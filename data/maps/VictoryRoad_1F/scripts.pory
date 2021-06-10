@@ -9,7 +9,7 @@ VR1_CloseMewtwoDoor::
 	
 VR1_CloseDoor::
 	setvar VAR_TEMP_7, 1
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 107
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 107
 	goto_if_eq ryu_end
 	setmetatile  9, 19, 537, 1
 	setmetatile 10, 19, 537, 1

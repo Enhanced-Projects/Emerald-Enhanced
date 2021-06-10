@@ -12,7 +12,7 @@ AS_CheckLana::
 	lock
 	goto_if_unset FLAG_ITEM_ABANDONED_SHIP_HIDDEN_FLOOR_ROOM_4_SCANNER, ryu_end
 	clearflag FLAG_HIDE_ABN_SHIP_LANA
-	setvar VAR_RYU_DS_LANA_STAGE, 21
+	setvar VAR_RYU_QUEST_LANA, 21
 	release
 	end
 	

@@ -347,9 +347,9 @@ dawnhi:
 
 r103_MagmaMeeting3_TopRight::
 	setvar VAR_TEMP_0, 100
-	compare VAR_RYU_MAGMA, 210
+	compare VAR_RYU_QUEST_MAGMA, 210
 	goto_if_lt ryu_end
-	compare VAR_RYU_MAGMA, 225
+	compare VAR_RYU_QUEST_MAGMA, 225
 	goto_if_ge ryu_end
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
@@ -360,10 +360,10 @@ r103_MagmaMeeting3_TopRight::
 
 r103_MagmaMeeting3_Top::
 	setvar VAR_TEMP_0, 100
-	compare VAR_RYU_MAGMA, 210
+	compare VAR_RYU_QUEST_MAGMA, 210
 	goto_if_lt ryu_end
 	setvar VAR_TEMP_0, 100
-	compare VAR_RYU_MAGMA, 225
+	compare VAR_RYU_QUEST_MAGMA, 225
 	goto_if_ge ryu_end
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
@@ -374,10 +374,10 @@ r103_MagmaMeeting3_Top::
 
 r103_MagmaMeeting3_Bottom::
 	setvar VAR_TEMP_0, 100
-	compare VAR_RYU_MAGMA, 210
+	compare VAR_RYU_QUEST_MAGMA, 210
 	goto_if_lt ryu_end
 	setvar VAR_TEMP_0, 100
-	compare VAR_RYU_MAGMA, 225
+	compare VAR_RYU_QUEST_MAGMA, 225
 	goto_if_ge ryu_end
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
@@ -388,9 +388,9 @@ r103_MagmaMeeting3_Bottom::
 
 r103_MagmaMeeting3_BottomRight::
 	setvar VAR_TEMP_0, 100
-	compare VAR_RYU_MAGMA, 210
+	compare VAR_RYU_QUEST_MAGMA, 210
 	goto_if_lt ryu_end
-	compare VAR_RYU_MAGMA, 225
+	compare VAR_RYU_QUEST_MAGMA, 225
 	goto_if_ge ryu_end
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
@@ -400,7 +400,7 @@ r103_MagmaMeeting3_BottomRight::
 	goto R103_MagmaMeeting3Main
 	
 R103_MagmaMeeting3Main::
-	setvar VAR_RYU_MAGMA, 220@Third Meeting prior to heist completed
+	setvar VAR_RYU_QUEST_MAGMA, 220@Third Meeting prior to heist completed
 	applymovement 25, Common_Movement_FaceRight
 	waitmovement 25
 	msgbox R103_YouYoureAgent
@@ -433,7 +433,7 @@ R103_MagmaMeeting3Main::
 	removeobject 24
 	removeobject 25
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_RYU_MAGMA, 225@Heist Initialized
+	setvar VAR_RYU_QUEST_MAGMA, 225@Heist Initialized
 	setflag FLAG_RYU_BANNED_FROM_OLDALE
 	applymovement OBJ_EVENT_ID_PLAYER, OT_MoveIntoPlace
 	waitmovement OBJ_EVENT_ID_PLAYER

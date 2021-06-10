@@ -160,7 +160,7 @@ RT_AquaIntro::
 	msgbox RT_WaitWhereYou
 	closemessage
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_RYU_AQUA, 5 @player started aqua
+	setvar VAR_RYU_QUEST_AQUA, 5 @player started aqua
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
 	changefactionstanding FACTION_STUDENTS, 10, TRUE
 	changefactionstanding FACTION_OUTCASTS, 20, FALSE
@@ -182,7 +182,7 @@ RT_WaitWhereYou:
 	.string "Wait! Where are you going?\pGet back here!$"
 
 RT_ADIntro:
-	setvar VAR_RYU_DEVON, 5 @Player chose devon quest. Player should go to Devon Corp.
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 5 @Player chose devon quest. Player should go to Devon Corp.
 	msgbox RT_IsEverything
 	playse SE_PIN
 	applymovement 4, Common_Movement_ExclamationMark
@@ -216,7 +216,7 @@ RT_MagmaIntro::
 	changefactionstanding FACTION_NOBLES, 20, FALSE
 	changefactionstanding FACTION_NATURALISTS, 20, FALSE
 	ach give ACH_ADVENTURE_TIME
-	setvar VAR_RYU_MAGMA, 100 @@player chose magma
+	setvar VAR_RYU_QUEST_MAGMA, 100 @@player chose magma
 	setvar VAR_RYU_QUESTLINE_ID, 2
 	msgbox RT_AndThats
 	closemessage
@@ -242,7 +242,7 @@ RT_MagmaIntro::
 	waitmovement 4
 	removeobject 4
 	clearflag FLAG_RYU_HIDE_BRINEY_GUARD
-	setvar VAR_RYU_MAGMA, 105 @player completed event in rusturf
+	setvar VAR_RYU_QUEST_MAGMA, 105 @player completed event in rusturf
 	removeitem ITEM_DEVON_GOODS, 1
 	clearflag FLAG_RECOVERED_DEVON_GOODS
 	clearflag FLAG_RYU_WAYSTONE_DISABLED

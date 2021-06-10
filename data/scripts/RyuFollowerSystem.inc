@@ -90,7 +90,7 @@ RyuFollower_NurseJoy::
 	msgbox RF_OkayHereIfYouNeed
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
-	switch VAR_RYU_DS_NURSE_STAGE
+	switch VAR_RYU_QUEST_NURSE
 	case 2, RF_Nurse_Stage1
 	case 4, RF_Nurse_Stage2
 	case 6, RF_Nurse_Stage3
@@ -343,7 +343,7 @@ RF_CheckPlayerQualifiesForNurseQuest::@ This is the script that activates when p
 	special checkbadgecount
 	compare VAR_RESULT, 2
 	goto_if_lt ryu_end
-	switch VAR_RYU_DS_NURSE_STAGE
+	switch VAR_RYU_QUEST_NURSE
 	case 11, ryu_end @@Player cancelled quest, don't check stages.
 	case 10, ryu_end @@Player finished quest. Don't even bother checking other stages.
 	case 0, RF_NurseQuestStage1
@@ -382,7 +382,7 @@ RF_NurseQuestStage1::
 	closemessage
 	delay 10
 	clearfullscreenimage
-	setvar VAR_RYU_DS_NURSE_STAGE, 2
+	setvar VAR_RYU_QUEST_NURSE, 2
 	release
 	end
 
@@ -399,7 +399,7 @@ RF_NurseQuestStage2::
 	closemessage
 	delay 10
 	clearfullscreenimage
-	setvar VAR_RYU_DS_NURSE_STAGE, 4
+	setvar VAR_RYU_QUEST_NURSE, 4
 	release
 	end
 
@@ -416,7 +416,7 @@ RF_NurseQuestStage3::
 	closemessage
 	delay 10
 	clearfullscreenimage
-	setvar VAR_RYU_DS_NURSE_STAGE, 6
+	setvar VAR_RYU_QUEST_NURSE, 6
 	release
 	end
 
@@ -429,7 +429,7 @@ RF_NurseQuestStage4::
 	closemessage
 	delay 10
 	clearfullscreenimage
-	setvar VAR_RYU_DS_NURSE_STAGE, 8
+	setvar VAR_RYU_QUEST_NURSE, 8
 	warpsilent MAP_LILYCOVE_CITY_POKEMON_CENTER_2F, 255, 3, 6
 	waitstate
 
@@ -447,7 +447,7 @@ VT_FinishNurseQuest1::
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	call RF_FollowerLeaveCall
 	clearflag FLAG_RYU_HIDE_JOY
-	setvar VAR_RYU_DS_NURSE_STAGE, 3
+	setvar VAR_RYU_QUEST_NURSE, 3
 	release
 	end
 
@@ -467,13 +467,13 @@ FT_FinishNurseQuest2::
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	call RF_FollowerLeaveCall
 	clearflag FLAG_RYU_HIDE_JOY
-	setvar VAR_RYU_DS_NURSE_STAGE, 5
+	setvar VAR_RYU_QUEST_NURSE, 5
 	release
 	end
 
 
 OT_FinishNurseQuest3::
-	compare VAR_RYU_DS_NURSE_STAGE, 6
+	compare VAR_RYU_QUEST_NURSE, 6
 	goto_if_ne ryu_end
 	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_NURSE
 	goto_if_ne ryu_end
@@ -488,7 +488,7 @@ OT_FinishNurseQuest3::
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	call RF_FollowerLeaveCall
 	clearflag FLAG_RYU_HIDE_JOY
-	setvar VAR_RYU_DS_NURSE_STAGE, 7
+	setvar VAR_RYU_QUEST_NURSE, 7
 	release
 	end
 
@@ -506,13 +506,13 @@ RF_FinishNurseQuest4:: @Will take player to lilycove city as that is Hoenn's cap
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	call RF_FollowerLeaveCall
 	clearflag FLAG_RYU_HIDE_JOY
-	setvar VAR_RYU_DS_NURSE_STAGE, 10 @Player did all the nurse quest stages, no longer need to check.
+	setvar VAR_RYU_QUEST_NURSE, 10 @Player did all the nurse quest stages, no longer need to check.
 	release
 	end
 
 
 RF_PlayerDeclinedNurseQuest1::
-	setvar VAR_RYU_DS_NURSE_STAGE, 11 @@ends the nurse quest. No partner.
+	setvar VAR_RYU_QUEST_NURSE, 11 @@ends the nurse quest. No partner.
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	msgbox RF_NurseQuestCancelledText
 	closemessage

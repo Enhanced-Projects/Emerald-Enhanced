@@ -39,6 +39,7 @@ RyuBotanyTree_GiveOneItem::
     callnative BotanyTreeChop
     giveitem VAR_TEMP_0, 1
     closemessage
+    call RyuBotany_CheckLevelUp
     return
 
 RyuBotanyGrass_GiveOneItem::
@@ -100,9 +101,9 @@ RyuBotany_CheckLevelUp::
     case 0, ryu_return
     case 5, ryu_return
     case 4, RyuBotany_CheckLevel4Progress
-    case 3, RyuBotany_CheckLevel1Progress
+    case 3, RyuBotany_CheckLevel3Progress
     case 2, RyuBotany_CheckLevel2Progress
-    case 1, RyuBotany_CheckLevel3Progress
+    case 1, RyuBotany_CheckLevel1Progress
     goto ryu_return
 
 RyuBotany_CheckLevel1Progress::
@@ -116,22 +117,19 @@ RyuBotany_CheckLevel2Progress::
     compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 150
     goto_if_lt ryu_return
     addvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
-    release
-    end
+    return
 
 RyuBotany_CheckLevel3Progress::
-    compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 320
+    compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 390
     goto_if_lt ryu_return
     addvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
-    release
-    end
+    return
 
 RyuBotany_CheckLevel4Progress::
-    compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 500
+    compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 800
     goto_if_lt ryu_return
     addvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
-    release
-    end
+    return
 
 RyuBotanyRecipeBookScript::
     lock

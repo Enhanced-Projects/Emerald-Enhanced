@@ -2013,6 +2013,7 @@ const u8 gText_RyuRelationshipCourtneyMenuOption[] = _("Courtney");
 const u8 gText_RyuRelationshipNurseMenuOption[] = _("Joy");
 
 const u8 gText_RyuBetaMenuBlank[] = _("Empty");
+const u8 gText_RyuBetaMenuCheckWaystone[] = _("Check Waystone");
 const u8 gText_RyuBetaMenuViewQuestVars[] = _("View Quest Stages");
 const u8 gText_RyuBetaMenuResetTempBattleFlags[] = _("Reset Battle Flags");
 const u8 gText_RyuBetaMenuResetBadges[] = _("Reset Badges");
@@ -2208,3 +2209,7 @@ const u8 gText_RyuHolidayShaymin[] = _("Shaymin");
 
 const u8 gText_RyuBotanyLabel[] = _("Botany");
 const u8 gText_RyuAlchemyLabel[] = _("Alchemy");
+
+const u8 gText_RyuRandomBattleNormal[] = _("Normal Random");
+const u8 gText_RyuRandomBattleMetronome[] = _("Metronome Random");
+const u8 gText_RyuRandomBattleInverse[] = _("Inverse Random");

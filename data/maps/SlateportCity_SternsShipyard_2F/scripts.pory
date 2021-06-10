@@ -24,7 +24,7 @@ SlateportCity_SternsShipyard_2F_Text_FloatsBecauseBuoyancy: @ 82086BA
 @==================================================================================================Aqua
 
 SS_2FDevonPresTrigger::
-	setvar VAR_RYU_AQUA, 113 @player cleared first floor of shipyard out, start president event.
+	setvar VAR_RYU_QUEST_AQUA, 113 @player cleared first floor of shipyard out, start president event.
 	lockall
 	msgbox SS_AndHereIThought
 	closemessage
@@ -46,7 +46,7 @@ SS_2FDevonPresTrigger::
 
 SS_PostStoneBattle::
 	clearflag FLAG_RYU_GAME_OVER
-	setvar VAR_RYU_AQUA, 115 @player defeated Mr Stone
+	setvar VAR_RYU_QUEST_AQUA, 115 @player defeated Mr Stone
 	msgbox SS_FutureDoesntLookBright
 	closemessage
 	setflag FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES

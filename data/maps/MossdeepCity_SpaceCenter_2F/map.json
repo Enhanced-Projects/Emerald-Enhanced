@@ -186,7 +186,7 @@
       "x": 21,
       "y": 3,
       "elevation": 3,
-      "var": "VAR_RYU_DEVON_SCIENTIST_STAGE",
+      "var": "VAR_RYU_QUEST_DEVON_SCIENTIST",
       "var_value": "108",
       "script": "SPC_SetSecondScene"
     },

@@ -38,7 +38,7 @@ SlateportCity_EventScript_EnterSlateport:: @ 81DCC8D
 	return
 
 SlateportCity_OnFrame: @ 81DCD12
-	map_script_2 VAR_RYU_AQUA, 115, SC_AquaShellyCall
+	map_script_2 VAR_RYU_QUEST_AQUA, 115, SC_AquaShellyCall
 	.2byte 0
 	
 SC1_LeafHouseSign::
@@ -1303,7 +1303,7 @@ SlateportCity_Text_TakingBattleTentChallenge: @ 81DF28C
 @==================================================================================================Aqua Events
 
 SC_AquaShellyCall::
-	setvar VAR_RYU_AQUA, 117 @Player received the call from shelly to meet near weather institute
+	setvar VAR_RYU_QUEST_AQUA, 117 @Player received the call from shelly to meet near weather institute
 	pokenavcall SC_ShellyAquaCallMsg
 	waitmessage
 	release

@@ -4,19 +4,19 @@ LilycoveCity_AquaCorporateOffice_MapScripts::
 	.byte 0
 	
 ACO_OnFrameScript::
-	map_script_2 VAR_RYU_AQUA, 45, ACO_ReturnedFromMuseumWhiteout
-	map_script_2 VAR_RYU_AQUA, 162, ACO_Night2Scene
+	map_script_2 VAR_RYU_QUEST_AQUA, 45, ACO_ReturnedFromMuseumWhiteout
+	map_script_2 VAR_RYU_QUEST_AQUA, 162, ACO_Night2Scene
 	.2byte 0
 
 
 ACO_EntranceScriptTrigger::
-	switch VAR_RYU_AQUA
+	switch VAR_RYU_QUEST_AQUA
 	case 5, ACO_StartAquaQuest
 	case 10, ryu_end
 	case 157, ACO_DoAquaOutro
-	compare VAR_RYU_AQUA, 105
+	compare VAR_RYU_QUEST_AQUA, 105
 	goto_if_eq ACO_PlayerShellyReturnFromJaggedPass
-	compare VAR_RYU_AQUA, 55
+	compare VAR_RYU_QUEST_AQUA, 55
 	goto_if_ge ryu_end	
 	goto ACO_BlockEntry
 	
@@ -31,15 +31,15 @@ ACO_PlayerShellyReturnFromJaggedPass:
 	closemessage
 	applymovement OBJ_EVENT_ID_FOLLOWER, ACO_ShellyFromplayerToDesk
 	waitmovement OBJ_EVENT_ID_FOLLOWER
-	setvar VAR_RYU_AQUA, 107 @Player returned to the aqua office from jagged pass. Player should see shelly for rewards.
+	setvar VAR_RYU_QUEST_AQUA, 107 @Player returned to the aqua office from jagged pass. Player should see shelly for rewards.
 	call RF_FollowerLeaveCall
 	release
 	end
 
 ACO_Shelly::
-	compare VAR_RYU_AQUA, 72
+	compare VAR_RYU_QUEST_AQUA, 72
 	goto_if_lt ryu_end
-	switch VAR_RYU_AQUA
+	switch VAR_RYU_QUEST_AQUA
 	case 72, ACO_NonRomanceShelly
 	case 80, ACO_AquaStage3_Waitforcall
 	case 81, ACO_AquaStage3_Waitforcall
@@ -72,13 +72,13 @@ ACO_NonRomanceShelly::
 	closemessage
 	msgbox ACO_AquaStage3_WaitForCallMsg
 	closemessage
-	setvar VAR_RYU_AQUA, 80 @returned from meteor falls. Player needs to get 6 badges to continue.
+	setvar VAR_RYU_QUEST_AQUA, 80 @returned from meteor falls. Player needs to get 6 badges to continue.
 	release
 	end
 
 ACO_ShellyAfterJaggedPassRomanceEvent::
 	setflag FLAG_RYU_DS_SHELLY_CLOSEFRIENDS
-	setvar VAR_RYU_AQUA, 109 @player talked to shelly after returning from jagged pass
+	setvar VAR_RYU_QUEST_AQUA, 109 @player talked to shelly after returning from jagged pass
 	msgbox ACO_ThatWasAClose
 	closemessage
 	applymovement 1, ACO_ShellyWalkAroundDesk 
@@ -108,7 +108,7 @@ ACO_ShellyAfterJaggedPassRomanceEvent::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	msgbox ACO_NowTheresSomething
 	closemessage
-	setvar VAR_RYU_AQUA, 111 @player should head to slateport shipyard to fight the enemies there.
+	setvar VAR_RYU_QUEST_AQUA, 111 @player should head to slateport shipyard to fight the enemies there.
 	clearflag FLAG_RYU_HIDE_SHIPYARD_DEVON_EMPLOYEES
 	warpsilent MAP_LILYCOVE_CITY, 255, 48, 9
 	waitstate
@@ -125,7 +125,7 @@ ACO_PlayerWaitingForCallRomance:
 	end
 
 ACO_PlayerReturnedFromChimneyWithNecklace:: @Romance line is much longer than non-romance line
-	setvar VAR_RYU_AQUA, 87 @Player is giving necklace to Shelly. 
+	setvar VAR_RYU_QUEST_AQUA, 87 @Player is giving necklace to Shelly. 
 	msgbox ACO_SoHowDid
 	closemessage
 	applymovement 1, Common_Movement_FaceLeft
@@ -151,7 +151,7 @@ ACO_PlayerReturnedFromChimneyWithNecklace:: @Romance line is much longer than no
 	msgbox ACO_OhHeresYourPayment2
 	setvar VAR_TEMP_B, 10000
 	addmoney VAR_TEMP_B
-	setvar VAR_RYU_AQUA, 91 @Player is doing romance line, wait for 6 badges.
+	setvar VAR_RYU_QUEST_AQUA, 91 @Player is doing romance line, wait for 6 badges.
 	release
 	end
 	
@@ -200,7 +200,7 @@ ACO_AfterShellyBattle::
 	closemessage
 	applymovement 10 ACO_ShellyExit1 @ up 3, disappear
 	removeobject 10
-	setvar VAR_RYU_AQUA, 10
+	setvar VAR_RYU_QUEST_AQUA, 10
 	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
 	release
 	end
@@ -216,7 +216,7 @@ ACO_BlockEntry::
 	
 ACO_ReturnedFromMuseumWhiteout:
 	special HealPlayerParty
-	setvar VAR_RYU_AQUA, 50 @Player wakes up in shelly's quarters
+	setvar VAR_RYU_QUEST_AQUA, 50 @Player wakes up in shelly's quarters
 	playse SE_DOOR
 	waitse
 	addobject 9
@@ -258,7 +258,7 @@ ACO_ReturnedFromMuseumWhiteout:
 	closemessage
 	msgbox ACO_BetterThanBeing
 	closemessage
-	setvar VAR_RYU_AQUA, 55@Player finished scene in shelly's quarters and needs to get 5 badges.
+	setvar VAR_RYU_QUEST_AQUA, 55@Player finished scene in shelly's quarters and needs to get 5 badges.
 	applymovement 9, ACO_ShellyLeavesRoom1
 	waitmovement 9
 	playse SE_DOOR
@@ -363,7 +363,7 @@ ACO_ShellyNightScene::
 	setflag FLAG_RYU_DS_HAS_PARTNER
 	ach give ACH_WET_N_WILD
 	setflag FLAG_RYU_AQUA_LINE_DONE
-	setvar VAR_RYU_AQUA, 161 @Aqua line finished.
+	setvar VAR_RYU_QUEST_AQUA, 161 @Aqua line finished.
 	special DrawWholeMapView
 	releaseall
 	end
@@ -377,7 +377,7 @@ ACO_ShellyAfterStory::
 	compare VAR_RESULT, NO
 	goto_if_eq ACO_CheckFollowerShelly
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RF_FollowerLeaveCall
-	setvar VAR_RYU_AQUA, 162
+	setvar VAR_RYU_QUEST_AQUA, 162
 	warpsilent MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE, 255, 30, 2 
 	waitstate
 
@@ -391,7 +391,7 @@ ACO_CheckFollowerShelly::
 	goto ryu_end
 
 ACO_Night2Scene::
-	setvar VAR_RYU_AQUA, 161
+	setvar VAR_RYU_QUEST_AQUA, 161
 	addobject 9
 	applymovement 9, ACO_Night_ShellyToCouch
 	waitmovement 9

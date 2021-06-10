@@ -5,7 +5,7 @@ SafariZone_HiddenGrotto_MapScripts::
 
 SZ_HG_MewtwoFight2::
 	lock
-	compare VAR_RYU_DEVON_SCIENTIST_STAGE, 111
+	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 111
 	goto_if_eq SZ_HG_Continue
 	trainerbattle_single TRAINER_STORY_MEWTWO_2, SZ_HG_M2Intro, SZ_HG_M2Defeat, SZ_HG_Continue
 	end
@@ -22,14 +22,14 @@ SZ_HG_Continue::
 	waitfanfare
 	closemessage
 	setflag FLAG_RYU_MEWTWO_OBTAINED
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 115
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 115
 	removeobject 1
 	release
 	end
 	
 SZ_HG_ReturnQuery::
 	msgbox SZ_HG_partyFull
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 111
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 111
 	release
 	end
 	

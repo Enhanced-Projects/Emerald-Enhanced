@@ -64,7 +64,7 @@ MH_Shortcut::
 	end
 	
 MH_ShellyArrival::
-	setvar VAR_RYU_AQUA, 95 @Player met up with shelly in magma hideout 1f
+	setvar VAR_RYU_QUEST_AQUA, 95 @Player met up with shelly in magma hideout 1f
 	lock
 	addobject 7
 	fadenewbgm 441
@@ -89,7 +89,7 @@ MH_ShellyArrival::
 	end
 
 MH_FollowerShellyScript::
-	compare VAR_RYU_AQUA, 105
+	compare VAR_RYU_QUEST_AQUA, 105
 	goto_if_eq MH_FollowerShellyPostBoss
 	msgbox ShellyOfferHeal MSGBOX_YESNO
 	compare VAR_RESULT, 1
@@ -114,7 +114,7 @@ MH_ShellyHeal::
 	end
 
 MH_ExitPrevention::
-	compare VAR_RYU_MAGMA, 315
+	compare VAR_RYU_QUEST_MAGMA, 315
 	goto_if_eq MH_CheckMagmaExit
 	goto_if_set FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS, ryu_end
 	goto_if_set FLAG_RYU_DS_SHELLY_CLOSEFRIENDS, ryu_end
@@ -203,7 +203,7 @@ MH_ShellyPreparing:
 @==================================================================================================Magma Scripts
 
 MH_CheckPlayerIsMagma::
-	compare VAR_RYU_MAGMA, 301
+	compare VAR_RYU_QUEST_MAGMA, 301
 	goto_if_ge MH_RandomGruntSpeak
 	return
 

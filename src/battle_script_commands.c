@@ -6894,7 +6894,7 @@ static void PutMonIconOnLvlUpBox(void)
     u16 species = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPECIES);
     u32 personality = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_PERSONALITY);
 
-    const u8* iconPtr = GetMonIconPtr(species, personality, 1);
+    const u8* iconPtr = GetMonIconPtr(species, personality);
     iconSheet.data = iconPtr;
     iconSheet.size = 0x200;
     iconSheet.tag = MON_ICON_LVLUP_BOX_TAG;
@@ -12184,6 +12184,8 @@ static void Cmd_handleballthrow(void)
 
         if (odds > 254) // mon caught
         {
+            if (IsCriticalCapture())
+                GiveAchievement(ACH_CRITCAP);
             BtlController_EmitBallThrowAnim(0, BALL_3_SHAKES_SUCCESS);
             MarkBattlerForControllerExec(gActiveBattler);
             gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
@@ -12228,7 +12230,10 @@ static void Cmd_handleballthrow(void)
             if (shakes == maxShakes) // mon caught, copy of the code above
             {
                 if (IsCriticalCapture())
+                {
+                    GiveAchievement(ACH_CRITCAP); //! NOTE TO RYU: is this achievement only a thing for a successful crit capture or just getting one?
                     gBattleSpritesDataPtr->animationData->criticalCaptureSuccess = 1;
+                }
 
                 gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
                 SetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerTarget]], MON_DATA_POKEBALL, &gLastUsedItem);

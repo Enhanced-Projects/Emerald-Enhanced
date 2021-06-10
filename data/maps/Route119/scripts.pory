@@ -610,7 +610,7 @@ R119_ShellyAqua::
 	call_if_eq R119_ShellyUp1
 	applymovement 43, R119_ShellyToPlayer
 	waitmovement 43
-	setvar VAR_RYU_AQUA, 121 @Player is meeting shelly on route 119
+	setvar VAR_RYU_QUEST_AQUA, 121 @Player is meeting shelly on route 119
 	msgbox R119_HeyWhatsGoing
 	closemessage
 	applymovement 43, Common_Movement_FaceDown
@@ -647,7 +647,7 @@ R119_ShellyAqua::
 	setflag FLAG_HIDE_MAGMA_ADMIN_OFFICE_MAXIE
 	waitfieldeffect FLDEFF_NPCFLY_OUT
 	setobjectxy 43, 0, 0
-	setvar VAR_RYU_AQUA, 123 @Player met with shelly on route 119, Player should get to 7 badges. 
+	setvar VAR_RYU_QUEST_AQUA, 123 @Player met with shelly on route 119, Player should get to 7 badges. 
 	release
 	end
 	

@@ -20,6 +20,7 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
+#include "ach_atlas.h"
 
 // iwram
 u32 gMonShrinkDuration;

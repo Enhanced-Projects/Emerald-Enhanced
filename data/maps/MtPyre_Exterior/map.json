@@ -219,7 +219,7 @@
       "x": 25,
       "y": 22,
       "elevation": 0,
-      "var": "VAR_RYU_AQUA",
+      "var": "VAR_RYU_QUEST_AQUA",
       "var_value": "82",
       "script": "MPE_AquaEvent"
     }

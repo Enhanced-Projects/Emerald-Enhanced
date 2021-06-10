@@ -255,8 +255,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	callnative RyuBufferSkillLevels
-	msgbox RDB_LifeSkills
+	callnative SetAlchemyEffect
 	release
 	end
 

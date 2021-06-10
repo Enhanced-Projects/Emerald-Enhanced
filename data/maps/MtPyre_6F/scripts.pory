@@ -4,11 +4,11 @@ MtPyre_6F_MapScripts:: @ 8231D3A
 	.byte 0
 
 MP_CheckHexerQuest::
-	map_script_2 VAR_TEMP_0, 0, MP_DoHexerQuestSetup
+	map_script_2 VAR_TEMP_1, 0, MP_DoHexerQuestSetup
 	.2byte 0
 
 MP_DoHexerQuestSetup:
-	setvar VAR_TEMP_0, 10
+	setvar VAR_TEMP_1, 10
 	goto_if_set FLAG_RYU_HEXER_FACTION_QUEST_ACTIVE, MP_HexerStartFactionEvent
 	end
 
@@ -227,6 +227,7 @@ MP_LeafAltStory1::
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	setflag FLAG_RYU_LEAF_MTPYRE
 	setflag FLAG_RYU_HIDE_LCC_DEPT_ROOF_NPC
+	setvar VAR_RYU_QUEST_LANA, 505
 	fadedefaultbgm
 	release
 	end

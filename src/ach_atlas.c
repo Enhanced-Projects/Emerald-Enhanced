@@ -58,6 +58,7 @@ static const u8 sTextColors[][3] = {
     [CATEGORY_QUESTING] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GREEN, TEXT_COLOR_GREEN},
 };
 
+static const u8 sGoldTextColor[3] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_1, TEXT_DYNAMIC_COLOR_2};
 enum
 {
     WIN_ACH_LABEL,
@@ -462,6 +463,7 @@ static void Task_OpenJournalAfterFade(u8 taskId)
 static bool8 IntializeAtlas(void)
 {
     u16 * map;
+    u16 tempColor;
     u32 i, j;
     u32 tileX, tileY;
     switch (gMain.state)
@@ -478,9 +480,9 @@ static bool8 IntializeAtlas(void)
         SetBgTilemapBuffer(1, AllocZeroed(BG_SCREEN_SIZE*4));
         SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
         DmaCopy16(3, sAchievementAtlasStarTilemap, GetBgTilemapBuffer(3), sizeof(sAchievementAtlasStarTilemap));
-        DmaCopy16(3, sAchievementAtlasPointsTile, BG_CHAR_ADDR(0), sizeof(sAchievementAtlasPointsTile));
-        DmaCopy16(3, sAchievementAtlasBorderTiles, BG_CHAR_ADDR(0)+0x20*3, sizeof(sAchievementAtlasBorderTiles));
-        DmaCopy16(3, sAchievementAtlasStarTileset, BG_CHAR_ADDR(0)+0x20*6, sizeof(sAchievementAtlasStarTileset));
+        DmaCopy16(3, sAchievementAtlasPointsTile, BG_CHAR_ADDR(0), sizeof(sAchievementAtlasPointsTile)); // first 13 tiles reserved for this
+        DmaCopy16(3, sAchievementAtlasBorderTiles, BG_CHAR_ADDR(0)+0x20*13, sizeof(sAchievementAtlasBorderTiles)); // 3 TILES for this at the end
+        DmaCopy16(3, sAchievementAtlasStarTileset, BG_CHAR_ADDR(0)+0x20*16, sizeof(sAchievementAtlasStarTileset)); // rest of the tiles in char 1 is for this
         DmaCopy16(3, sAchievementAtlasBorderTilemap, GetBgTilemapBuffer(2), sizeof(sAchievementAtlasBorderTilemap));
         sAchAtlas.tilemapPosX = TILEMAP_START_X;
         sAchAtlas.tilemapPosY = TILEMAP_START_Y;
@@ -490,6 +492,10 @@ static bool8 IntializeAtlas(void)
         InitWindows(sAtlasWindowTemplate);
         InitTextBoxGfxAndPrinters();
         DeactivateAllTextPrinters();
+        tempColor = RGB(25, 20, 2);
+        LoadPalette(&tempColor, 0xF0 + TEXT_DYNAMIC_COLOR_1, 0x2);
+        tempColor = RGB(18, 14, 0);
+        LoadPalette(&tempColor, 0xF0 + TEXT_DYNAMIC_COLOR_2, 0x2);
         PutWindowTilemap(0);
         CopyWindowToVram(0, 3);
         gMain.state = 1;
@@ -505,7 +511,7 @@ static bool8 IntializeAtlas(void)
         sAchAtlas.cursorY = sAchAtlas.tilemapPosY + DISPLAY_HEIGHT/16;
         gMain.state++;
         break;
-    case 2:
+    case 2: // Draw Achivement icons on BG 1
         // this was empty before
         // now it isn't
         map = GetBgTilemapBuffer(1);
@@ -514,7 +520,16 @@ static bool8 IntializeAtlas(void)
             u32 x = sAchAtlasData[i].x;
             u32 y = sAchAtlasData[i].y;
             u32 index = ((y%32)*32 + ((y/32)*2048) + ((x)%32) + ((x/32)*1024));
-            map[index] = CheckAchievement(i) ? (1 + 0x1000) : (2 + 0x1000);
+            if(CheckAchievement(i))
+            {
+                if(sAchAtlasData[i].category & CATEGORY_FLAG_GOLD)
+                    map[index] = 3 + 0x1000;
+                else
+                    map[index] = 1 + 0x1000;
+            }
+            else
+                map[index] = 2 + 0x1000;
+
         }
         gMain.state++;
         break;
@@ -674,7 +689,7 @@ static void Task_CloseAtlas(u8 taskId)
         DestroyTask(taskId);
         SetMainCallback2(CB2_OpenJournal);
         //SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
-        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100);
+        //m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100);
     }
 }
 
@@ -1308,7 +1323,8 @@ static void Task_UpdateAtlasStatus(u8 taskId)
                     }
                     else
                     {
-                        AddTextPrinterParameterized3(WIN_ACH_DESC, 0, 0, 0, sTextColors[0], 0, sDescriptionNotAvailable);
+                        StringExpandPlaceholders(gStringVar4, sAchAtlasData[i].hintString);
+                        AddTextPrinterParameterized3(WIN_ACH_DESC, 0, 0, 0, sTextColors[0], 0, gStringVar4);
                     }
                     
                 }
@@ -1331,6 +1347,7 @@ static void Task_UpdateAtlasStatus(u8 taskId)
     {
         if(sAchAtlasData[i].x == sAchAtlas.cursorX && sAchAtlasData[i].y == sAchAtlas.cursorY)
         {
+            const u8 * color;
             StartSpriteAnim(&gSprites[spriteId], 1);
             ClearStdWindowAndFrameToTransparent(WIN_ACH_LABEL, TRUE);
             ClearStdWindowAndFrameToTransparent(WIN_ACH_DESC, TRUE);
@@ -1348,7 +1365,11 @@ static void Task_UpdateAtlasStatus(u8 taskId)
             SetWindowAttribute(WIN_ACH_LABEL, WINDOW_WIDTH, (stringWidth + 7) / 8); // This was not allowed in GF's own code so i edited the function to be able to do it
             DrawStdWindowFrame(WIN_ACH_LABEL, TRUE);
             sAchAtlas.isOnAchTile = TRUE;
-            AddTextPrinterParameterized3(WIN_ACH_LABEL, 0, 0, 0, sTextColors[sAchAtlasData[i].category], 0, sAchAtlasData[i].nameString);
+            if(sAchAtlasData[i].category & CATEGORY_FLAG_GOLD)
+                color = sGoldTextColor;
+            else
+                color = sTextColors[sAchAtlasData[i].category];
+            AddTextPrinterParameterized3(WIN_ACH_LABEL, 0, 0, 0, color, 0, sAchAtlasData[i].nameString);
             achTileId = i;
             break;
         }

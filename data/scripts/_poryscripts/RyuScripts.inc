@@ -146,117 +146,6 @@ RS_ExpEarningDisabled:
 RS_ExpWillStillBeEarned:
 	.string "Battle Exp will still be earned.$"
 
-
-
-
-@==================================================================================================Beta Menu
-
-RyuDebugBetaMenuScript::
-	setflag FLAG_RYU_BETA_MENU_USED
-	msgbox BetaMenuIntro MSGBOX_DEFAULT
-	closemessage
-	goto RDB_BetaMenuStandalone
-
-RDB_BetaMenuStandalone::
-	multichoicedefault 30, 0, MULTI_BETA_MENU, 7, 0
-	switch VAR_RESULT
-	case 0, RDBM_Option1
-	case 1, RDBM_Option2
-	case 2, RDBM_DisplayQuestVars
-	case 3, RDBM_ResetTemporaryBattleFlags
-	case 4, RDBM_ResetBadges
-	case 5, RDBM_ResetGCMS
-	case 6, RDBM_TeleportHome
-	case 7, RDBM_ExitResetMenu
-	case 127, RDBM_ExitResetMenu
-	release
-	end
-
-BetaMenuIntro:
-	.string "You really shouldn't mess with these\noptions unless you were directed\pto do so. Save file damage can occur.\p"
-	.string "{COLOR LIGHT_RED}{SHADOW TRANSPARENT}YOU HAVE BEEN WARNED!!$"
-
-RDBM_Option1::
-	buffernumberstring 0, VAR_SAVE_FILE_CREATED_ON_VERSION
-	msgbox RDBM_ShowSaveFileOriginalVersion
-	release
-	end
-
-RDBM_Option2::
-	msgbox RDBM_Unimplemented
-	release
-	end
-
-RDBM_DisplayQuestVars::
-	special RyuBufferQuestVars
-	msgbox RDBM_DisplayQuestVarsMsg
-	release
-	end
-
-RDBM_ShowSaveFileOriginalVersion:
-	.string "The save file was created on\nversion number {STR_VAR_1}.$"
-
-RDBM_DisplayQuestVarsMsg:
-	.string "Magma: {STR_VAR_1}, DevonM: {STR_VAR_2}, DevonS: {STR_VAR_3}\n"
-	.string "Lana: {RYU_STR_1}, Lanette: {RYU_STR_2} Aqua: {RYU_STR_3}$"
-
-RDBM_ResetTemporaryBattleFlags::
-	clearflag FLAG_RYU_MAX_SCALE
-	clearflag FLAG_RYU_BOSS_WILD
-	clearflag FLAG_RYU_RANDOMBATTLE
-	msgbox RDBM_ResetTempFlagsMsg
-	release
-	end
-
-RDBM_ResetTempFlagsMsg:
-	.string "{COLOR LIGHT_RED}{SHADOW RED} (Temporary battle flags have been\n reset)$"
-
-RDBM_Unimplemented:
-	.string "This option does nothing. It's\na placeholder for future options.$"
-
-RDBM_ResetBadges:
-	clearflag FLAG_BADGE01_GET
-	clearflag FLAG_BADGE02_GET
-	clearflag FLAG_BADGE03_GET
-	clearflag FLAG_BADGE04_GET
-	clearflag FLAG_BADGE05_GET
-	clearflag FLAG_BADGE06_GET
-	clearflag FLAG_BADGE07_GET
-	clearflag FLAG_BADGE08_GET
-	msgbox RDBM_BadgesReset
-	release
-	end
-
-RDBM_BadgesReset:
-	.string "All badges have been removed.$"
-
-RDBM_ResetGCMS::
-	lockall
-	setvar VAR_RYU_GCMS_SPECIES, 0
-	setvar VAR_RYU_GCMS_VALUE, 0
-	msgbox RDBM_GCMSReset
-	release
-	end
-
-RDBM_GCMSReset:
-	.string "Gcms has been reset.$"
-
-RDBM_ExitResetMenu::
-	msgbox RDBM_Exiting MSGBOX_DEFAULT
-	release
-	end
-
-RDBM_TeleportHome:
-	call_if_set FLAG_RYU_FRONTIER_MODE, Ryu_FrontierModeCheckLeave
-	msgbox RGBM_TPHOME MSGBOX_DEFAULT
-	closemessage
-	goto RT_Home
-
-RGBM_TPHOME:
-	.string "Teleporting {PLAYER} home...$"
-
-RDBM_Exiting:
-	.string "Exiting menu without change...$"
 @==================================================================================================Relationship scripts
 
 RyuPartnerMultiText:
@@ -1318,65 +1207,13 @@ Ryu_PlayerFailedNuzlockeHardcore::
 Ryu_failedNZHC:
 	.string "You have failed Nuzlocke or\nhardcore mode.\pIf you were on New Game Plus,\nyour dex/pcbox/key item progress\lhas been saved.\pPlease reset the game and\nstart a New file.$"
 
-@==================================================================================================Randombattle
-
-Ryu_StartRandomBattle::
-	msgbox StartingRandomBattleMsg
-	cleartrainerflag TRAINER_RANDOM_PARTY
-	trainerbattle_single TRAINER_RANDOM_PARTY, BF_battleintro, BF_battledefeat, BF_RandomBattleCleanup
-	end
-
-StartingRandomBattleMsg:
-	.string "Starting Random Battle...$"
-
-BF_RandomBattleCleanup::
-	msgbox BattleAgain, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq Ryu_StartRandomBattle
-	clearflag FLAG_RYU_RANDOMBATTLE
-	special ForceSoftReset
-	release
-	end
-	
-BF_NoBattle::
-	msgbox BF_NoBattleMsg
-	closemessage
-	release
-	end
-
-BattleAgain:
-	.string "Would you like to battle again?$"
-	
-BF_NoBattleMsg:
-    .string "Very well. Talk with me again if\n"
-    .string "you change your mind!$"
-
-BF_Starting:
-    .string "Hold on... Let me put your party\n"
-    .string "aside...\p"
-    .string "... ... ... ...\n"
-    .string "... ... ... ...\p"
-    .string "There. All set... Here we go!$"
-
-	
-BF_RandomIntro:
-    .string "Selene: Hi! I like to do random\n"
-    .string "battles.\p"
-    .string "Would you like to battle with me?$"
-
-BF_battleintro:
-	.string "I will try my very hardest to win!$"
-	
-BF_battledefeat:
-	.string "Good fight.\nLet's do it again!$"
-
 @==================================================================================================Start Menu Config Info
 
 RyuStartMenuConfigInfoScript::
 	buffernumberstring 0, VAR_LAST_KNOWN_GAME_VERSION
 	msgbox RyuTemp_StartMenuConfig, MSGBOX_YESNO
 	compare VAR_RESULT, 1
-	goto_if_eq RyuDebugBetaMenuScript
+	goto_if_eq StartBetaMenu
 	closemessage
 	release
 	end
@@ -1388,7 +1225,6 @@ RyuTemp_StartMenuConfig:
     .string "{COLOR LIGHT_RED}{SHADOW RED}L+R {COLOR DARK_GREY}{SHADOW LIGHT_GREY}: Enable/Disable Jukebox\l"
     .string "{COLOR LIGHT_RED}{SHADOW RED}R(With Jukebox On){COLOR DARK_GREY}{SHADOW LIGHT_GREY}:Skip to Next Song\l"
 	.string "{COLOR LIGHT_RED}{SHADOW RED}D-Pad Left:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Realign Follower\p"
-	.string "You can hold L while selecting\nyour name in the start menu to open\lthe Achievement Atlas.\p"
     .string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Open Beta Menu?$"
 
 
@@ -1685,14 +1521,14 @@ RyuGlobal_CheckMagmaStatus::
 	call_if_ge RyuGlobal_CheckDexnavStatus
 	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, RyuGlobal_CheckAquaStatus
 	goto_if_unset FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
-	switch VAR_RYU_MAGMA
+	switch VAR_RYU_QUEST_MAGMA
 	case 130, Ryu_InitializeMagmaPart4
 	case 210, Ryu_InitializeMagmaPart6
 	case 350, Ryu_InitializeMagmaPart8
 	goto ryu_end
 
 RyuGlobal_CheckAquaStatus::
-	switch VAR_RYU_AQUA
+	switch VAR_RYU_QUEST_AQUA
 	case 10, Ryu_initializeAquaStage1
 	case 55, Ryu_InitializeAquaStage2
 	case 80, Ryu_InitializeAquaStage3NR
@@ -1715,7 +1551,7 @@ Ryu_initializeAquaStage1::
 	waitmessage
 	msgbox Ryu_AquaStep1OutroMessage
 	closemessage
-	setvar VAR_RYU_AQUA, 25 @received instructions to go to aqua at museum
+	setvar VAR_RYU_QUEST_AQUA, 25 @received instructions to go to aqua at museum
 	setflag FLAG_RYU_AQUA_1_NOTIFY
 	release
 	end
@@ -1733,7 +1569,7 @@ Ryu_InitializeAquaStage2::
 	closemessage
 	pokenavcall Ryu_AquaStage2NotifyMsg
 	closemessage
-	setvar VAR_RYU_AQUA, 60 @player is off to meteor falls
+	setvar VAR_RYU_QUEST_AQUA, 60 @player is off to meteor falls
 	setflag FLAG_RYU_AQUA_2_NOTIFY
 	release
 	end
@@ -1752,7 +1588,7 @@ Ryu_InitializeAquaStage3NR::
 	pokenavcall Ryu_AquaStage3NotifyMsg
 	closemessage
 	clearflag FLAG_RYU_HIDE_AQUA_MTPYRE_EXT
-	setvar VAR_RYU_AQUA, 82 @player is being called to Mt Pyre
+	setvar VAR_RYU_QUEST_AQUA, 82 @player is being called to Mt Pyre
 	setflag FLAG_RYU_AQUA_3_NOTIFY
 	release
 	end
@@ -1771,7 +1607,7 @@ Ryu_InitializeAquaStage3R::
 	pokenavcall Ryu_AquaStage3RomanceNotifyMsg
 	closemessage
 	setflag FLAG_RYU_PLAYER_SENT_TO_JP_BY_SHELLY
-	setvar VAR_RYU_AQUA, 93 @player is being called to Jagged Pass by Shelly.
+	setvar VAR_RYU_QUEST_AQUA, 93 @player is being called to Jagged Pass by Shelly.
 	setflag FLAG_RYU_AQUA_3_NOTIFY
 	release
 	end
@@ -1796,7 +1632,7 @@ Ryu_InitializeAquaStage4R::
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
 	call Ryu_SetAquaHideoutTrainerflags
-	setvar VAR_RYU_AQUA, 125 @Player received the call to go to the aqua hideout.
+	setvar VAR_RYU_QUEST_AQUA, 125 @Player received the call to go to the aqua hideout.
 	release
 	end
 
@@ -1899,7 +1735,7 @@ Ryu_InitializeMagmaPart8::
 	lock
 	msgbox Ryu_Magma8Notice
 	closemessage
-	setvar VAR_RYU_MAGMA, 400
+	setvar VAR_RYU_QUEST_MAGMA, 400
 	setflag FLAG_RYU_MAGMA_8_NOTIFY
 	release
 	end
@@ -1997,6 +1833,12 @@ Ryu_ShowStarterInfo::
 
 RyuScript_CheckGivenAchievement::
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	compare VAR_RYU_LAST_ACH, ACH_THE_UNIVERSALIST
+	goto_if_eq RyuScript_CheckGivenGoldAch
+	compare VAR_RYU_LAST_ACH, ACH_LOREMASTER
+	goto_if_eq RyuScript_CheckGivenGoldAch
+	compare VAR_RYU_LAST_ACH, ACH_TOURIST
+	goto_if_eq RyuScript_CheckGivenGoldAch
 	copyvar VAR_TEMP_C, VAR_RYU_LAST_ACH
 	callnative BufferGivenAchievement
 	playse SE_EXPMAX
@@ -2010,6 +1852,23 @@ RyuScript_CheckGivenAchievement::
 	release
 	end
 
+RyuScript_CheckGivenGoldAch::
+	copyvar VAR_TEMP_C, VAR_RYU_LAST_ACH
+	callnative BufferGivenAchievement
+	playse SE_EXPMAX
+	msgbox RS_GOLD_ACH_RECEIVED
+	closemessage
+	setvar VAR_RYU_LAST_ACH, 300
+	msgbox RS_GoldAchMsg
+	closemessage
+	giveitem ITEM_MASTER_BALL, 1
+	setvar VAR_RYU_LAST_ACH, 300
+	release
+	end
+
+RS_GoldAchMsg:
+	.string "You earned a GOLDEN achievement!\nAs a reward for your dedication\pYou are receiving one Master Ball!$"
+
 RyuScript_GiveDejaVu::
 	ach give ACH_DEJA_VU
 	msgbox RS_ACH_RECEIVED
@@ -2017,6 +1876,9 @@ RyuScript_GiveDejaVu::
 
 RS_ACH_RECEIVED:
 	.string "ACHIEVEMENT GET!!!\n{RYU_STR_4}$"
+
+RS_GOLD_ACH_RECEIVED:
+	.string "{COLOR LIGHT_RED}{SHADOW BLUE}GOLDEN ACHIEVEMENT GET!!!\n{RYU_STR_4}$"
 
 RyuScript_CheckFollowerFactionChanges::
 	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_LASS
@@ -2139,10 +2001,10 @@ RyuScript_GameOver::
 
 RyuGameOver_ResetMainQuestData::
 	setvar VAR_RYU_QUESTLINE_ID, 5
-	setvar VAR_RYU_DEVON, 0
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 0
-	setvar VAR_RYU_MAGMA, 0
-	setvar VAR_RYU_AQUA, 0
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 0
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 0
+	setvar VAR_RYU_QUEST_MAGMA, 0
+	setvar VAR_RYU_QUEST_AQUA, 0
 	return
 
 RyuGameOver_ResetGeneralFlags::
@@ -2270,7 +2132,153 @@ RyuCheckForLNSUAch::
 	goto_if_unset FLAG_LANDMARK_MIRAGE_TOWER, ryu_return
 	goto_if_unset FLAG_LANDMARK_SNOWY_SHORE, ryu_return
 	ach give ACH_LEAVE_NO_STONE_UNTURNED
-	return	
+	return
+
+RyuScript_GoToLimbo::
+	lockall
+	warpsilent MAP_LIMBO, 255, 3, 3
+	waitstate
+	return
 
 
+RyuScript_EndNuzlockeMode::
+	goto_if_set FLAG_RYU_LIMBO, RyuScript_EndNuzlockeMode_2
+	drawfullscreenimage SCENEBGGAMEOVER
+	setvar VAR_TEMP_B, 100
+	setflag FLAG_RYU_LIMBO
+	lockall
+	setflag FLAG_RYU_WAYSTONE_DISABLED
+	msgbox RyuScript_EndNuzlockeMode_Text_0
+	closemessage
+	msgbox RyuScript_EndNuzlockeMode_Text_1
+	callnative RyuForceSaveTheGame
+	closemessage
+	clearfullscreenimage
+	releaseall
+	end
 
+RyuScript_EndNuzlockeMode_2:
+	setvar VAR_TEMP_B, 100
+	releaseall
+	end
+
+
+RS_Limbo_Sign::
+	msgbox RS_Limbo_Sign_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq RS_Limbo_Sign_1
+	msgbox RS_Limbo_Sign_Text_1
+	return
+
+RS_Limbo_Sign_1:
+	goto EventScript_PC
+	return
+
+
+Ryu_StartRandomBattle::
+	lockall
+	msgbox Ryu_StartRandomBattle_Text_0
+	multichoice 7, 5, MULTI_RANDOM_BATTLE_TYPE, 1
+	switch VAR_RESULT
+	case 0, Ryu_StartRandomBattle_3
+	case 1, Ryu_StartRandomBattle_4
+	case 2, Ryu_StartRandomBattle_5
+	case 3, Ryu_StartRandomBattle_6
+Ryu_StartRandomBattle_1:
+	msgbox StartingRandomBattleMsg
+	cleartrainerflag TRAINER_RANDOM_PARTY
+	trainerbattle_single TRAINER_RANDOM_PARTY, BF_battleintro, BF_battledefeat, BF_RandomBattleCleanup
+	end
+
+Ryu_StartRandomBattle_3:
+	nop
+	goto Ryu_StartRandomBattle_1
+
+Ryu_StartRandomBattle_4:
+	setflag FLAG_RYU_RB_METRONOME
+	goto Ryu_StartRandomBattle_1
+
+Ryu_StartRandomBattle_5:
+	setflag FLAG_RYU_RB_INVERSE
+	goto Ryu_StartRandomBattle_1
+
+Ryu_StartRandomBattle_6:
+	special ForceSoftReset
+	goto Ryu_StartRandomBattle_1
+
+
+BF_RandomBattleCleanup::
+	clearflag FLAG_RYU_RB_INVERSE
+	clearflag FLAG_RYU_RB_METRONOME
+	msgbox BattleAgain, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq Ryu_StartRandomBattle
+	clearflag FLAG_RYU_RANDOMBATTLE
+	special ForceSoftReset
+	release
+	end
+
+
+BF_NoBattle::
+	msgbox BF_NoBattleMsg
+	closemessage
+	release
+	end
+
+
+RyuScript_EndNuzlockeMode_Text_0:
+	.string "Welcome to Limbo. You have failed your\n"
+	.string "Nuzlocke or Hardcore challenge and\l"
+	.string "have died. You can use this time to\l"
+	.string "reflect on your decisions, or organize\l"
+	.string "your item storage for a New Game +.$"
+
+RyuScript_EndNuzlockeMode_Text_1:
+	.string "Please wait while we check some things,\n"
+	.string "this might take a few seconds.$"
+
+RS_Limbo_Sign_Text_0:
+	.string "Oh, dear. You seem to have died.\p"
+	.string "What am I?\n"
+	.string "Oh, don't worry about that, I'm just a\l"
+	.string "spirit of another trainer who died. I'm\l"
+	.string "actually here to guide trainers to the\l"
+	.string "afterlife. Would you like to access\l"
+	.string "your PC?$"
+
+RS_Limbo_Sign_Text_1:
+	.string "Okay, well I'll be here if you change\n"
+	.string "your mind. If you'd like to start a new\l"
+	.string "life, Now would be a good time!(You must\l"
+	.string "start a new game to keep playing.)$"
+
+Ryu_StartRandomBattle_Text_0:
+	.string "Please select a random battle type.$"
+
+StartingRandomBattleMsg::
+	.string "Starting Random Battle...$"
+
+BattleAgain::
+	.string "Would you like to battle again?$"
+
+BF_NoBattleMsg::
+	.string "Very well. Talk with me again if\n"
+	.string "you change your mind!$"
+
+BF_Starting::
+	.string "Hold on... Let me put your party\n"
+	.string "aside...\p"
+	.string "... ... ... ...\n"
+	.string "... ... ... ...\p"
+	.string "There. All set... Here we go!$"
+
+BF_RandomIntro::
+	.string "Selene Hi! I like to do random\n"
+	.string "battles.\p"
+	.string "Would you like to battle with me?$"
+
+BF_battleintro::
+	.string "I will try my very hardest to win!$"
+
+BF_battledefeat::
+	.string "Good fight.\nLet's do it again!$"

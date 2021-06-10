@@ -82,11 +82,11 @@ MagmaHideout_2F_1R_Text_Grunt5PostBattle: @ 8239DE2
 @==================================================================================================quest related
 
 MH2_MagmaArmyMeetingCheck::
-	map_script_2 VAR_RYU_MAGMA, 325, MH2_MagmaArmyMeetingScene
+	map_script_2 VAR_RYU_QUEST_MAGMA, 325, MH2_MagmaArmyMeetingScene
 	.2byte 0
 	
 MH2_MagmaArmyMeetingScene::
-	setvar VAR_RYU_MAGMA, 330
+	setvar VAR_RYU_QUEST_MAGMA, 330
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, MH2_Cam1
 	waitmovement OBJ_EVENT_ID_CAMERA
@@ -134,7 +134,7 @@ MH2_MagmaArmyMeetingScene::
 	removeobject 11
 	msgbox MH2_Elipsis
 	closemessage
-	setvar VAR_RYU_MAGMA, 350@Player finished magma and needs to get 7th badge to continue
+	setvar VAR_RYU_QUEST_MAGMA, 350@Player finished magma and needs to get 7th badge to continue
 	setflag FLAG_HIDE_MAGMA_ARMY
 	clearflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
@@ -289,7 +289,7 @@ MH2_Cam4:
 @==================================================================================================Magma heal/shop machine
 
 MH2_Fence::
-	compare VAR_RYU_MAGMA, 320
+	compare VAR_RYU_QUEST_MAGMA, 320
 	goto_if_lt MH2_CantAccessFence
 	setflag FLAG_RYU_SELLING_TO_FENCE
 	setvar VAR_RYU_PRICE_MULTIPLIER, 250
@@ -314,7 +314,7 @@ MH2_CantAccessFence::
 	end
 
 MH2_MagmaMultiUseMachine::
-	compare VAR_RYU_MAGMA, 320
+	compare VAR_RYU_QUEST_MAGMA, 320
 	goto_if_lt MH2_NoAccessToMachine
 	msgbox MH2_WelcomeToMachine
 	closemessage

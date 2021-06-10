@@ -11,11 +11,11 @@ MossdeepCity_OnTransition: @ 81E4A9C
 	end
 
 MDC_OnFrameScripts::
-	map_script_2 VAR_RYU_AQUA, 114, MDC_DoMossDeepScene2
-	map_script_2 VAR_RYU_AQUA, 122, MDC_ScenePart4
-	map_script_2 VAR_RYU_AQUA, 128, MDC_ScenePart6
-	map_script_2 VAR_RYU_AQUA, 150, MDC_FinalScene
-	map_script_2 VAR_RYU_AQUA, 149, MDC_DoFinalShellyScene
+	map_script_2 VAR_RYU_QUEST_AQUA, 114, MDC_DoMossDeepScene2
+	map_script_2 VAR_RYU_QUEST_AQUA, 122, MDC_ScenePart4
+	map_script_2 VAR_RYU_QUEST_AQUA, 128, MDC_ScenePart6
+	map_script_2 VAR_RYU_QUEST_AQUA, 150, MDC_FinalScene
+	map_script_2 VAR_RYU_QUEST_AQUA, 149, MDC_DoFinalShellyScene
 	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
 	.2byte 0
 
@@ -238,9 +238,10 @@ MossdeepCity_Text_SootopolisNewGymLeader: @ 81E5581
 @==================================================================================================Aqua
 
 DoMattScene::
-	compare VAR_RYU_AQUA, 112
-	goto_if_eq ryu_end
-	setvar VAR_RYU_AQUA, 112 @Player met with matt in mossdeep
+	goto_if_unset FLAG_RYU_PLAYER_HELPING_AQUA, ryu_end
+	compare VAR_RYU_QUEST_AQUA, 112
+	goto_if_ge ryu_end
+	setvar VAR_RYU_QUEST_AQUA, 112 @Player met with matt in mossdeep
 	lockall
 	faceplayer
 	msgbox MDC_ItsAlmostTime
@@ -255,7 +256,7 @@ MDC_DoMossDeepScene2::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	fadenewbgm MUS_OOAME
 	delay 60
-	setvar VAR_RYU_AQUA, 116
+	setvar VAR_RYU_QUEST_AQUA, 116
 	setweather WEATHER_RAIN_THUNDERSTORM
 	doweather
 	delay 60
@@ -273,7 +274,7 @@ MDC_ScenePart4::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
-	setvar VAR_RYU_AQUA, 122 @player watched the 4th part of the aqua cutscene
+	setvar VAR_RYU_QUEST_AQUA, 122 @player watched the 4th part of the aqua cutscene
 	msgbox MDC_BossShelly
 	closemessage
 	playse SE_PIN
@@ -295,7 +296,7 @@ MDC_ScenePart6::
 	setweather WEATHER_DROUGHT
 	doweather
 	delay 60
-	setvar VAR_RYU_AQUA, 130 @scene returned to player after watching kyogre and groudon
+	setvar VAR_RYU_QUEST_AQUA, 130 @scene returned to player after watching kyogre and groudon
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox MDC_TheSun
@@ -351,7 +352,7 @@ MDC_FinalScene:
 	waitmovement 14
 	msgbox MDC_OverThereSieze
 	closemessage
-	setvar VAR_RYU_AQUA, 160 @Player finished the Non-Romance aqua line. Neutral End (Aqua disbanded)
+	setvar VAR_RYU_QUEST_AQUA, 160 @Player finished the Non-Romance aqua line. Neutral End (Aqua disbanded)
 	setflag FLAG_RYU_HIDE_AQUA_OFFICE_AQUA
 	setflag FLAG_HIDE_AQUAHQ_SHELLY
 	setflag FLAG_RYU_AQUA_LINE_DONE
@@ -361,7 +362,7 @@ MDC_FinalScene:
 	waitstate
 
 MDC_DoFinalShellyScene::
-	setvar VAR_RYU_AQUA, 153 @rain stopped in mossdeep, return to submarine
+	setvar VAR_RYU_QUEST_AQUA, 153 @rain stopped in mossdeep, return to submarine
 	setweather WEATHER_NONE
 	doweather
 	delay 240

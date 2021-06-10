@@ -975,8 +975,8 @@ static const struct MenuAction MultichoiceList_132[]=
 static const struct MenuAction MultichoiceList_133[]=
 {
     {gText_BetaMenuShowSaveVersion},
+    {gText_RyuBetaMenuCheckWaystone},
     {gText_RyuBetaMenuBlank},
-    {gText_RyuBetaMenuViewQuestVars},
     {gText_RyuBetaMenuResetTempBattleFlags},
     {gText_RyuBetaMenuResetBadges},
     {gText_RyuBetaMenuResetGCMS},
@@ -1275,6 +1275,14 @@ static const struct MenuAction MultiChoiceList_RyuBotanyOrAlchemy[]=
     {gText_Exit},
 };
 
+static const struct MenuAction MultiChoiceList_ChooseRandomBattleType[]=
+{
+    {gText_RyuRandomBattleNormal},
+    {gText_RyuRandomBattleMetronome},
+    {gText_RyuRandomBattleInverse},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1450,6 +1458,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BOTANY_APRICORN_MENU]       = MULTICHOICE(MultiChoiceList_BotanyRefineApricornMenu),
     [MULTI_HOLIDAY_2020]               = MULTICHOICE(MultiChoiceList_Holiday2020),
     [MULTI_BOTANY_OR_ALCHEMY]          = MULTICHOICE(MultiChoiceList_RyuBotanyOrAlchemy),
+    [MULTI_RANDOM_BATTLE_TYPE]         = MULTICHOICE(MultiChoiceList_ChooseRandomBattleType),
 };
 
 const u8 *const gStdStrings[] =

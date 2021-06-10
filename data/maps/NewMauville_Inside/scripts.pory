@@ -157,7 +157,7 @@ NewMauville_Inside_EventScript_RedButton:: @ 8237725
 	msgbox NewMauville_Inside_Text_SteppedOnSwitchGeneratorStopped, MSGBOX_DEFAULT
 	call NewMauville_Inside_EventScript_SetGeneratorOffMetatiles
 	setvar VAR_NEW_MAUVILLE_STATE, 2
-	compare VAR_RYU_DS_LANA_STAGE, 17
+	compare VAR_RYU_QUEST_LANA, 17
 	call_if_eq NM_Leaf_Event
 	releaseall
 	end
@@ -310,10 +310,10 @@ NM_DevUp:
 
 NM_Leaf_Trigger::
 	lock
-	compare VAR_RYU_DS_LANA_STAGE, 15
+	compare VAR_RYU_QUEST_LANA, 15
 	goto_if_ne ryu_end
 	clearflag FLAG_HIDE_NM_LANA
-	setvar VAR_RYU_DS_LANA_STAGE, 17
+	setvar VAR_RYU_QUEST_LANA, 17
 	release
 	end
 
@@ -340,7 +340,7 @@ NM_Leaf_Event::
 	waitmovement 0
 	msgbox NM_ScavengerHuntClue2 MSGBOX_DEFAULT
 	setflag FLAG_HIDE_NM_LANA
-	setvar VAR_RYU_DS_LANA_STAGE, 20
+	setvar VAR_RYU_QUEST_LANA, 20
 	return
 	
 NM_LeafNoGenerator:

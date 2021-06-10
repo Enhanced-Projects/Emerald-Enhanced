@@ -46,7 +46,7 @@ AncientTomb_EventScript_CaveEntranceMiddle:: @ 8239033
 	braillemessage AncientTomb_Braille_ShineInTheMiddle
 	waitbuttonpress
 	closebraillemessage
-	compare VAR_RYU_DS_LANA_STAGE, 40
+	compare VAR_RYU_QUEST_LANA, 40
 	goto_if_gt ryu_end
 	msgbox DR_PlayerHitWall
 	closemessage
@@ -114,14 +114,14 @@ AncientTomb_EventScript_RanFromRegisteel:: @ 82390AA
 
 
 AT_SetupLanaEvent2:
-	map_script_2 VAR_RYU_DS_LANA_STAGE, 82, AT_LanaEvent2
+	map_script_2 VAR_RYU_QUEST_LANA, 82, AT_LanaEvent2
 	.2byte 0
 	
 AT_LanaEvent2::
 	addobject 4
 	addobject 2
 	lock
-	setvar VAR_RYU_DS_LANA_STAGE, 83
+	setvar VAR_RYU_QUEST_LANA, 83
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	applymovement OBJ_EVENT_ID_PLAYER, AT_SV_PlayerEntry
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -143,11 +143,11 @@ AT_LanaEvent2::
 	closemessage
 	msgbox AT_SV_Story31 MSGBOX_DEFAULT
 	closemessage
-	setvar VAR_RYU_DS_LANA_STAGE, 83
+	setvar VAR_RYU_QUEST_LANA, 83
 	goto AT_LanaEvent3
 
 AT_LanaEvent3::
-	setvar VAR_RYU_DS_LANA_STAGE, 84
+	setvar VAR_RYU_QUEST_LANA, 84
 	msgbox AT_SV_Story32 MSGBOX_DEFAULT
 	closemessage
 	applymovement 4, AT_SV_Gary1
@@ -191,11 +191,11 @@ AT_LanaEvent3::
 	setflag FLAG_TEMP_9
 	msgbox AT_SV_Story9 MSGBOX_DEFAULT
 	closemessage
-	setvar VAR_RYU_DS_LANA_STAGE, 85
+	setvar VAR_RYU_QUEST_LANA, 85
 	goto AT_SV_Battle
 	
 AT_SV_Battle::
-	setvar VAR_RYU_DS_LANA_STAGE, 86
+	setvar VAR_RYU_QUEST_LANA, 86
 	savebgm MUS_RG_NANADUNGEON
 	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 115
 	special SavePlayerParty
@@ -255,7 +255,7 @@ AT_SV_ReturnFromBattle::
 	closemessage
 	applymovement 2, AT_SV_LeafLeaving
 	waitmovement 2
-	setvar VAR_RYU_DS_LANA_STAGE, 90
+	setvar VAR_RYU_QUEST_LANA, 90
 	setflag FLAG_HIDE_AT1_LEAF
 	playse SE_DOOR
 	removeobject 2

@@ -22,22 +22,22 @@ Underwater_SeafloorCavern_OnLoad: @ 823435C
 	end
 
 UW_OnFrameScript::
-	map_script_2 VAR_RYU_AQUA, 129, UW_DoAquaScene
+	map_script_2 VAR_RYU_QUEST_AQUA, 129, UW_DoAquaScene
 	.2byte 0
 
 UW_DoAquaScene::
 	delay 30
-	setvar VAR_RYU_AQUA, 131 @Player watched the scene underwater from seafloor cavern
+	setvar VAR_RYU_QUEST_AQUA, 131 @Player watched the scene underwater from seafloor cavern
 	clearflag FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT
 	warpsilent MAP_SEAFLOOR_CAVERN_ENTRANCE, 255, 10, 6
 	waitstate
 
 UW_OnWarpScript::
-	map_script_2 VAR_RYU_AQUA, 127, UW_HidePlayerForScene
+	map_script_2 VAR_RYU_QUEST_AQUA, 127, UW_HidePlayerForScene
 	.2byte 0
 
 UW_HidePlayerForScene::
-	setvar VAR_RYU_AQUA, 129 @@player hidden for underwater scene
+	setvar VAR_RYU_QUEST_AQUA, 129 @@player hidden for underwater scene
 	applymovement OBJ_EVENT_ID_PLAYER, UW_SetInvisible
 	end
 

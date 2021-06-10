@@ -5,11 +5,11 @@ SlateportCity_Harbor_MapScripts:: @ 820C97D
 	.byte 0
 
 SCH_CheckAquaEvent:
-	map_script_2 VAR_RYU_AQUA, 102, SCH_AquaEvent
+	map_script_2 VAR_RYU_QUEST_AQUA, 102, SCH_AquaEvent
 	.2byte 0
 
 SlateportCity_Harbor_OnTransition: @ 820C983
-	compare VAR_RYU_AQUA, 100
+	compare VAR_RYU_QUEST_AQUA, 100
 	goto_if_eq SCH_SetupAquaScene
 	setescapewarp MAP_SLATEPORT_CITY, 255, 28, 13
 	setvar VAR_TEMP_1, 0
@@ -21,7 +21,7 @@ SlateportCity_Harbor_EventScript_ShowSSTidal:: @ 820C9A5
 	return
 
 SCH_SetupAquaScene::
-	setvar VAR_RYU_AQUA, 102
+	setvar VAR_RYU_QUEST_AQUA, 102
 	setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SS_TIDAL
 	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW
 	setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS
@@ -32,7 +32,7 @@ SCH_SetupAquaScene::
 	end
 
 SCH_CantLeaveYet::
-	compare VAR_RYU_AQUA, 102
+	compare VAR_RYU_QUEST_AQUA, 102
 	goto_if_ne ryu_end
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -447,7 +447,7 @@ SCH_AquaEvent::
 	applymovement 6, SCH_SubExits @ right 18, remove
 	waitmovement 6
 	removeobject 6
-	setvar VAR_RYU_AQUA, 108 @player should be headed to Mossdeep to meet with Matt
+	setvar VAR_RYU_QUEST_AQUA, 108 @player should be headed to Mossdeep to meet with Matt
 	clearflag FLAG_RYU_HIDE_MOSSDEEP_MATT
 	release
 	end

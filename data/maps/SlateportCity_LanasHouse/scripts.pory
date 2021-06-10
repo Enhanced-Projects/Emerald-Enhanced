@@ -13,14 +13,14 @@ LH_AltLeafStoryTrigger::
 
 LH_Intro::
 	lock
-	compare VAR_RYU_DS_LANA_STAGE, 2
+	compare VAR_RYU_QUEST_LANA, 2
 	goto_if_ge ryu_end
-	setvar VAR_RYU_DS_LANA_STAGE, 1
+	setvar VAR_RYU_QUEST_LANA, 1
 	applymovement 1, LH_bro_move
 	waitmovement 0
 	msgbox LH_Bro_intro MSGBOX_NPC
 	waitmessage
-	setvar VAR_RYU_DS_LANA_STAGE, 2
+	setvar VAR_RYU_QUEST_LANA, 2 @player met with Lana's brother, go to the right side of the house and speak to her.
 	release
 	end
 	
@@ -31,7 +31,7 @@ LH_bro_move:
 LH_Leaf_Home_chat::
 	lock
 	faceplayer
-	compare VAR_RYU_DS_LANA_STAGE, 4
+	compare VAR_RYU_QUEST_LANA, 4
 	goto_if_eq LH_alreadytalked
 	call_if_set FLAG_RYU_DS_LEAF_PARTNERS, LH_Afterstory
 	goto_if_set FLAG_RYU_DS_LEAF_LINE_CANCELLED, LH_LeafBadEnd
@@ -41,7 +41,7 @@ LH_Leaf_Home_chat::
 	waitmovement 0
 	msgbox LH_chat2 MSGBOX_DEFAULT
 	msgbox LH_End MSGBOX_SIGN
-	setvar VAR_RYU_DS_LANA_STAGE, 4
+	setvar VAR_RYU_QUEST_LANA, 4 @player met with Lana for the first time. You must be champion to continue this quest. Return when you are champion.
 	applymovement 2, LH_read
 	waitmovement 0
 	release
@@ -55,6 +55,7 @@ LH_Afterstory::
 	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
 	setflag FLAG_RECEIVED_MYSTIC_TICKET
 	msgbox LH_GIFT_GIVEN
+	setvar VAR_RYU_QUEST_LANA, 1000
 	release
 	end
 	
@@ -84,7 +85,7 @@ LH_EventStart::
 	special DrawWholeMapView
 	msgbox LH_QuestStarted MSGBOX_DEFAULT
 	closemessage
-	setvar VAR_RYU_DS_LANA_STAGE, 10
+	setvar VAR_RYU_QUEST_LANA, 10 @Lana took off to the trick house. Meet her there.
 	release
 	end
 	
@@ -97,7 +98,7 @@ LH_MagmaMember::
 	msgbox LH_LeafBadEndMsgMagma MSGBOX_DEFAULT
 	applymovement 2, Common_Movement_FaceDown
 	waitmovement 2
-	setvar VAR_RYU_DS_LANA_STAGE, 666
+	setvar VAR_RYU_QUEST_LANA, 666
 	release
 	end
 
@@ -107,7 +108,7 @@ LH_LeafBadEnd::
 	msgbox LH_LeafBadEndMsgAqua MSGBOX_DEFAULT
 	applymovement 2, Common_Movement_FaceDown
 	waitmovement 2
-	setvar VAR_RYU_DS_LANA_STAGE, 666
+	setvar VAR_RYU_QUEST_LANA, 666
 	release
 	end
 	
@@ -145,6 +146,7 @@ LH_LeafNight:
 	applymovement OBJ_EVENT_ID_PLAYER, LH_RelSceneEnd
 	waitmovement OBJ_EVENT_ID_PLAYER
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LH_CourtneyCaughtPlayer
+	setflag FLAG_RYU_DS_LEAF_PARTNERS
 	release
 	end
 	
@@ -168,7 +170,7 @@ LH_CourtneyCaughtPlayer::
 	waitmovement 3
 	removeobject 3
 	setflag FLAG_RYU_DS_LEAF_LINE_CANCELLED
-	setvar VAR_RYU_DS_LANA_STAGE, 666
+	setvar VAR_RYU_QUEST_LANA, 666
 	applymovement OBJ_EVENT_ID_PLAYER, LH_PlayerExitHouse
 	waitmovement OBJ_EVENT_ID_PLAYER
 	warpsilent MAP_SLATEPORT_CITY, 255, 14, 19

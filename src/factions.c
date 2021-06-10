@@ -4,6 +4,7 @@
 #include "script.h"
 #include "string_util.h"
 #include "event_data.h"
+#include "ach_atlas.h"
 
 extern const u8 RyuNaturalistsDailyQuest[];
 extern const u8 RyuStudentsDailyQuest[];
@@ -44,12 +45,14 @@ bool8 ScrCmd_checkfaction(struct ScriptContext *ctx)
     ConvertIntToDecimalStringN(gRyuStringVar4, currentStanding, STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
+u8 GetFactionId(u16 trainerId)
+{
+    return (gTrainers[trainerId].trainerFaction);
+}
+
 u8 GetFactionStanding(u16 trainerId) //this should return the value of player's standing in trainerId's faction
 {
-    if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)] == FACTION_OTHERS)
-        return 100;
-    else
-        return gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)];
+    return gSaveBlock1Ptr->gNPCTrainerFactionRelations[(gTrainers[trainerId].trainerFaction)];
 }
 
 void RyuAdjustFactionValueInternal(u8 id, u8 amount, bool8 negative)
@@ -112,10 +115,24 @@ bool8 ScrCmd_changefactionstanding(struct ScriptContext *ctx)
     return FALSE;
 }
 
+void RyuCheckForFactionAchievements(void)
+{
+    u8 i;
+
+    for(i = 0; i < FACTION_OTHERS; i++)
+    {
+        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[i] > 174)
+            if (CheckAchievement(42 + i) == FALSE)
+                GiveAchievement(42 + i);
+    }
+}
+
 bool8 ScrCmd_checkfactionstanding(struct ScriptContext *ctx)
 {
     u8 factionId = ScriptReadByte(ctx);
     u8 amount = ScriptReadByte(ctx); //no longer doing negatives, script logic doesn't like it.
+
+    RyuCheckForFactionAchievements();
 
     if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[factionId] >= amount)//just see if factionid's standing is at or above amount
         gSpecialVar_Result = TRUE;

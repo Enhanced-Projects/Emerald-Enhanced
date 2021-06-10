@@ -103,7 +103,7 @@ Route111_EventScript_HidePlayerForMirageTower:: @ 81F0E50
 	end
 
 Route111_OnFrame: @ 81F0E56
-	map_script_2 VAR_RYU_MAGMA, 150, R111_ResumeMagmaScene
+	map_script_2 VAR_RYU_QUEST_MAGMA, 150, R111_ResumeMagmaScene
 	.2byte 0
 
 @ Unused
@@ -650,7 +650,7 @@ r111_ScientistCastformEvent::
 	fadescreen 0
 	msgbox r111_IKnewItWouldnt
 	closemessage
-	setvar VAR_RYU_DEVON_SCIENTIST_STAGE, 104
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 104
 	release
 	end
 	
@@ -680,7 +680,7 @@ r111_IKnewItWouldnt:
 @==================================================================================================Magma Events
 
 R111_MagmaMeeting::
-	setvar VAR_RYU_MAGMA, 135@player started route 111 magma meeting
+	setvar VAR_RYU_QUEST_MAGMA, 135@player started route 111 magma meeting
 	applymovement 45, Common_Movement_FaceUp
 	waitmovement 45
 	msgbox R111_SoYouveArrived
@@ -720,12 +720,12 @@ R111_MagmaMeeting::
 	applymovement OBJ_EVENT_ID_CAMERA, R111_cam1
     waitmovement OBJ_EVENT_ID_CAMERA
 	msgbox R111_TheVolcanicAsh
-	setvar VAR_RYU_MAGMA, 140@camera is panning to route 113
+	setvar VAR_RYU_QUEST_MAGMA, 140@camera is panning to route 113
 	closemessage
 	end
 	
 R111_ResumeMagmaScene::
-	setvar VAR_RYU_MAGMA, 155@camera finished and has returned to 111
+	setvar VAR_RYU_QUEST_MAGMA, 155@camera finished and has returned to 111
 	special RemoveCameraObject
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
 	applymovement 46, R111_BlaiseToTabitha
@@ -755,19 +755,19 @@ R111_ResumeMagmaScene::
 	removeobject 45
 	removeobject 47
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_RYU_MAGMA, 160@Blaise is now waiting for player to collect all the ash
+	setvar VAR_RYU_QUEST_MAGMA, 160@Blaise is now waiting for player to collect all the ash
 	releaseall
 	end
 	
 R111_BlaiseWaitingForAsh::
 	lock
 	faceplayer
-	compare VAR_RYU_MAGMA, 160
+	compare VAR_RYU_QUEST_MAGMA, 160
 	goto_if_ne ryu_end
 	compare VAR_ASH_GATHER_COUNT, 8000
 	goto_if_lt R111_Blaise_NotEnough
 	msgbox R111_NiceWork
-	setvar VAR_RYU_MAGMA, 165@player gathered the required ash.
+	setvar VAR_RYU_QUEST_MAGMA, 165@player gathered the required ash.
 	clearflag FLAG_RYU_MAGMA_LILYCOVE
 	setflag FLAG_RYU_ROUTE_111_MAGMA_MEETING_BLAISE
 	applymovement 46, R111_BlaiseExit
@@ -1032,7 +1032,7 @@ R111_MagmaMeeting2Trigger::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0xff
-	setvar VAR_RYU_MAGMA, 205@Player started second meeting with magma
+	setvar VAR_RYU_QUEST_MAGMA, 205@Player started second meeting with magma
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, R111_PanForSecondEvent
 	waitmovement OBJ_EVENT_ID_CAMERA
@@ -1090,7 +1090,7 @@ R111_MagmaMeeting2Trigger::
 	removeobject 48
 	removeobject 49
 	removeobject 50
-	setvar VAR_RYU_MAGMA, 210@second meeting with magma finished
+	setvar VAR_RYU_QUEST_MAGMA, 210@second meeting with magma finished
 	fadescreen FADE_FROM_BLACK
 	setflag FLAG_RYU_PLAYER_BANNED_FROM_LILYCOVE
 	release

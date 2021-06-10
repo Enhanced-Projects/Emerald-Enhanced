@@ -104,23 +104,35 @@
 		"105": "Player returned to the institute. It was recommended to ask the space center for help. Go there.",
 		"106": "Player should clear out the magma goons on the bottom floor. Then go upstairs and deal with Maxie.",
 		"107": "Player cleared out magma and met the mysterious talking pokemon, who challenged them. Go to Victory Road. There's a hidden cave at the top left that should be open during this quest.",
-		"108": "Player faced the mysterious talking pokemon in Victory Road. Return to the Space center and speak with the scientists. Become champion, then head to the northeast area of the Safari Zone. There will be another cave at the top left.",
+		"108": "Player faced the mysterious talking pokemon in Victory Road. You must become champion to continue. Once you are, head to the northeast area of the Safari Zone. There will be another cave at the top left.",
 		"115": "Player finished devon scientist and the mysterious pokemon joined their party.",
 		"111": "Player defeated the mysterious pokemon, but needs to make space in their party and return."
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	},
+    "lana": {
+        "666": "You have done some event which caused Lana to return overseas to Kanto. Bad End.",
+        "2": "player met with Lana's brother, go to the right side of the house and speak to her.",
+        "4": "player met with Lana for the first time. You must be champion to continue this quest. Return when you are champion.",
+        "10": "Lana took off to the trick house. Meet her there.",
+        "11": "Player entered the trick house. Walk forwards to start the event.",
+        "15": "The first part of Lana's quest has started. You need to go to and clear out New Mauville. Lana will be at the end.",
+        "17": "You found Lana. Disable the generator to continue.",
+        "20": "Lana has left New Mauville. Head to the Abandoned Ship and find the scanner to access the Captain's Deck.",
+        "21": "You found the Scanner, Lana will now appear in the Captain's Deck of the ship. meet her there.",
+        "25": "Lana has left the Abandoned Ship and travelled to Pacifidlog Town. Find her in a house near the pokemon center.",
+        "30": "You met Lana at Pacifidlog Town. If you speak to the other guy in here, you will find out Lana traded for a Relicanth. You must get a Wailord to continue.",
+        "35": "Lana will now appear in the Sealed Chamber's inner room. Capture a Wailord and speak to Lana to continue. Be prepared for a hard battle.",
+        "40": "You have defeated Lana in the Sealed Chamber. An earthquake will occur, unlocking the three Regi chambers for Lana.",
+        "45": "The Regi Chambers have been unlocked for Lana. If you have completed any of these, you will get the alternate line. Otherwise, head to the Desert Ruins.",
+        "55": "Lana has captured Regirock and left for the Island Cave. You should follow her there.",
+        "65": "Lana has captured Regice and has left to travel to the Ancient Tomb near Fortree. Meet her there.",
+        "75": "You protected Lana from Registeel's Rage and passed out. You've been teleported home.",
+        "80": "Lana has opened up about her history and why she's the way she is. You must return to the Ancient Tomb a second time. Hard battle incoming.",
+        "90": "You helped lana overcome her past rival. Head back to the Trick Master to let him know what you've learned.",
+        "100": "You have finished Lana's Quest. Speak with her at her house to finalize your relationship.",
+        "500": "You triggered Lana's alternate questline because you had already done one of the Regi Chambers. Head to Mt. Pyre's top floor.",
+        "505": "You found Lana at Mt. Pyre. She seemed really depressed. A Hexer gave you a hit to go to the Pokemon Day care.",
+        "515": "You tracked Lana down to the Pokemon Day Care. The PC searches suggest she's going to Fallarbor. To meed Lanette.",
+        "525": "You found Lana at Lanette's house, once again trying to get rid of her Pokemon. She left a magazine behind for the Department Store. Go there.",
+        "955": "You helped Lana overcome her anxiety and depression, saving her life. You've finished the quest, meet her at her house to finalize your relationship."
+    }
 }

@@ -448,7 +448,7 @@ Route116_Text_TrainerTipsBagHasPockets: @ 81F38D4
 @==================================================================================================Magma
 
 R116_StartMagmaEvent::
-	compare VAR_RYU_MAGMA, 275
+	compare VAR_RYU_QUEST_MAGMA, 275
 	goto_if_ne ryu_end
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
@@ -459,7 +459,7 @@ R116_StartMagmaEvent::
 	
 
 r116_MagmaEvent7::
-	setvar VAR_RYU_MAGMA, 280@player started the scene on the other side of rusturf
+	setvar VAR_RYU_QUEST_MAGMA, 280@player started the scene on the other side of rusturf
 	msgbox R116_LeaderMaxieSir
 	closemessage
 	applymovement 26 R116_Mightyena_Bites
@@ -501,7 +501,7 @@ r116_MagmaEvent7::
 	delay 40
 	msgbox R116_GoYouHave
 	closemessage
-	setvar VAR_RYU_MAGMA, 300 @Player started chimney event
+	setvar VAR_RYU_QUEST_MAGMA, 300 @Player started chimney event
 	setflag FLAG_HIDE_MT_CHIMNEY_TRAINERS
 	setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
 	clearflag FLAG_RYU_HIDE_R112_BLAISE

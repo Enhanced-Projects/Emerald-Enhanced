@@ -405,7 +405,7 @@
       "x": 9,
       "y": 19,
       "elevation": 0,
-      "var": "VAR_RYU_AQUA",
+      "var": "VAR_RYU_QUEST_AQUA",
       "var_value": "95",
       "script": "MH4_Aqua_Bossfight"
     }

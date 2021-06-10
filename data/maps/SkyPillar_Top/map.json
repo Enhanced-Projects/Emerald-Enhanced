@@ -11,7 +11,7 @@
             "elevation": 3,
             "script": "SP_RyuRayEnc",
             "type": "trigger",
-            "var": "VAR_RYU_DEVON",
+            "var": "VAR_RYU_QUEST_DEVON_CORPORATE",
             "var_value": "69",
             "x": 14,
             "y": 9

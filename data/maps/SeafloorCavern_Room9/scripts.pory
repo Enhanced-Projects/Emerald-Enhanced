@@ -5,7 +5,7 @@ SeafloorCavern_Room9_MapScripts:: @ 8234DC8
 	.byte 0
 
 SFC_OnFrame::
-	map_script_2 VAR_RYU_AQUA, 112, SFC_AquaCutScene
+	map_script_2 VAR_RYU_QUEST_AQUA, 112, SFC_AquaCutScene
 	.2byte 0
 
 SFC_OnWarp:
@@ -13,11 +13,11 @@ SFC_OnWarp:
 	.2byte 0
 
 SFC_InvisPlayer:: @this is an annoying hack to make the player invisible for the entire aqua cutscene, except in certain cases where the player shouldn't be.
-	compare VAR_RYU_AQUA, 130
+	compare VAR_RYU_QUEST_AQUA, 130
 	goto_if_eq ryu_end
-	compare VAR_RYU_AQUA, 110
+	compare VAR_RYU_QUEST_AQUA, 110
 	goto_if_lt ryu_end
-	compare VAR_RYU_AQUA, 150
+	compare VAR_RYU_QUEST_AQUA, 150
 	goto_if_gt ryu_end
 	goto SFC_MakePlayerInvis
 
@@ -50,7 +50,7 @@ SFC9_ArchieSceneEnd::
 	compare VAR_RESULT, YES
 	goto_if_eq SFC9_TakeOpportunity
 	goto SFC9_CompleteTheMission
-	setvar VAR_RYU_MAGMA, 450@Player completed the mission, Return to magma HQ.
+	setvar VAR_RYU_QUEST_MAGMA, 450@Player completed the mission, Return to magma HQ.
 	goto_if_unset FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, SFC9_CancelCourtney
 	release
 	end
@@ -85,7 +85,7 @@ SFC9_TakeOpportunity::
 	applymovement 2, Common_Movement_FaceUp
 	waitmovement 2
 	call SFC_DoKyogreAnimation
-	setvar VAR_RYU_MAGMA, 550@player's doing alternate magma line
+	setvar VAR_RYU_QUEST_MAGMA, 550@player's doing alternate magma line
 	warpsilent MAP_SOOTOPOLIS_CITY_MAGMA_EVENT, 255, 20, 37
 	waitstate
 	
@@ -102,7 +102,7 @@ SFC9_CompleteTheMission::
 	waitmovement 2
 	msgbox SFC9_LeaveUsBe
 	closemessage
-	setvar VAR_RYU_MAGMA, 450@Player's doing the main magma line
+	setvar VAR_RYU_QUEST_MAGMA, 450@Player's doing the main magma line
 	clearflag FLAG_RYU_MAXIE_END_EVENT
 	warpsilent MAP_MAGMA_HIDEOUT_4F, 255, 5, 13
 	
@@ -318,7 +318,7 @@ SCME_BlueOrbEffect::
 
 @==================================================================================================Aqua Events
 SFC_AquaCutScene::
-	setvar VAR_RYU_AQUA, 114 @Player watched part 1 of main aqua cutscene
+	setvar VAR_RYU_QUEST_AQUA, 114 @Player watched part 1 of main aqua cutscene
 	addobject 7
 	addobject 2
 	special SpawnCameraObject

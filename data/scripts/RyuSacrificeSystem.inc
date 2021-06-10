@@ -317,6 +317,9 @@ GCMS_GiveModdedMon::
 	end
 
 GCMS_DevModeMonGive::
+	msgbox DevModeMaxScaleQuery, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq GCMSDev_SetVarForMaxScale
 	special PasscodeGiveMonWithNature
 	bufferspeciesname 0, VAR_TEMP_4
 	msgbox GCMS_DMPG_Ability
@@ -326,6 +329,13 @@ GCMS_DevModeMonGive::
 	case 1, DevModeMonAbility2
 	case 2, DevModeMonAbility3
 	goto ryu_return
+
+GCMSDev_SetVarForMaxScale::
+	setvar VAR_TEMP_9, 69
+	return
+
+DevModeMaxScaleQuery:
+	.string "Would you like the mon to be\nat maximum scale level?$"
 
 GCMS_DMPG_Ability:
 	.string "Please choose an Ability.$"

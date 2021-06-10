@@ -6,14 +6,14 @@ LilycoveCity_MapScripts:: @ 81E2B3C
 	.byte 0
 
 LeafScene::
-    map_script_2 VAR_RYU_DS_LANA_STAGE, 1, LeafSceneResume
+    map_script_2 VAR_RYU_QUEST_LANA, 1, LeafSceneResume
 	map_script_2 VAR_TEMP_A, 0, LCC_SetUpMagma
 	@map_script_2 VAR_TEMP_D, 0, RyuResetFollowerPosition
     .2byte 0
 	
 LCC_SetUpMagma::
 	setvar VAR_TEMP_A, 100
-	compare VAR_RYU_MAGMA, 165
+	compare VAR_RYU_QUEST_MAGMA, 165
 	goto_if_ne ryu_end
 	setobjectxy 21, 27, 0
 	setobjectxy 22, 27, 0
@@ -132,7 +132,7 @@ LeafSceneResume::
 	removeobject 23
 	fadedefaultbgm
 	clearflag FLAG_RYU_ON_DATE
-	setvar VAR_RYU_DS_LANA_STAGE, 90
+	setvar VAR_RYU_QUEST_LANA, 955
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
 	setflag FLAG_RYU_LEAF_LCC_EVENT_DONE
 	clearflag FLAG_RYU_HIDE_LCC_DEPT_ROOF_NPC
@@ -1049,7 +1049,7 @@ lcc_brendanOutro2:
 
 
 LCC_MiddleMagmaTrigger::
-	compare VAR_RYU_MAGMA, 165
+	compare VAR_RYU_QUEST_MAGMA, 165
 	goto_if_ne ryu_end
 	lockall
 	playbgm MUS_MGM0, 0
@@ -1081,7 +1081,7 @@ LCC_MiddleMagmaTrigger::
 	waitmovement 24
 	closemessage
 	call LCC_Magma_PoisonWater1
-	setvar VAR_RYU_MAGMA, 170@Player poisoned the first portion of ocean
+	setvar VAR_RYU_QUEST_MAGMA, 170@Player poisoned the first portion of ocean
 	fadenewbgm MUS_AJITO
 	release
 	end
@@ -1089,7 +1089,7 @@ LCC_MiddleMagmaTrigger::
 LCC_TopMagmaGrunt::
 	lock
 	faceplayer
-	compare VAR_RYU_MAGMA, 170
+	compare VAR_RYU_QUEST_MAGMA, 170
 	goto_if_ne LCC_MagmaGruntNotReady
 	msgbox LCC_ReadyWhenYouAre
 	closemessage
@@ -1097,14 +1097,14 @@ LCC_TopMagmaGrunt::
 	applymovement 25, Common_Movement_FaceRight
 	waitmovement 25
 	call LCC_Magma_PoisonWater2
-	setvar VAR_RYU_MAGMA 175@Player poisoned 2 spots
+	setvar VAR_RYU_QUEST_MAGMA 175@Player poisoned 2 spots
 	release
 	end
 	
 LCC_BottomMagmaGrunt::
 	lock
 	faceplayer
-	compare VAR_RYU_MAGMA, 175
+	compare VAR_RYU_QUEST_MAGMA, 175
 	goto_if_ne LCC_MagmaGruntNotReady
 	msgbox LCC_ThisShouldBe
 	closemessage
@@ -1112,7 +1112,7 @@ LCC_BottomMagmaGrunt::
 	applymovement 26, Common_Movement_FaceRight
 	waitmovement 26
 	call LCC_Magma_PoisonWater3
-	setvar VAR_RYU_MAGMA, 180@Player poisoned last spot of ocean
+	setvar VAR_RYU_QUEST_MAGMA, 180@Player poisoned last spot of ocean
 	msgbox LCC_GoFindBlaise
 	closemessage
 	release
@@ -1304,7 +1304,7 @@ LCC_Blaise::
 	waitse
 	removeobject 27
 	setflag FLAG_RYU_MAGMA_LILYCOVE
-	setvar VAR_RYU_MAGMA, 185@player met with Blaise by harbor
+	setvar VAR_RYU_QUEST_MAGMA, 185@player met with Blaise by harbor
 	setflag LCC_MAGMA_HARBOR_REPORTERS
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepUp
 	waitmovement OBJ_EVENT_ID_PLAYER

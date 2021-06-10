@@ -30,7 +30,7 @@ MtPyre_Exterior_EventScript_SunTrigger:: @ 8231FF2
 @+=================================================================================================Aqua
 
 MPE_AquaEvent::
-	setvar VAR_RYU_AQUA, 84 @Event on mtpyre exterior started
+	setvar VAR_RYU_QUEST_AQUA, 84 @Event on mtpyre exterior started
 	lockall
 	msgbox MPE_AlrightCrew
 	closemessage
@@ -49,7 +49,7 @@ MPE_AquaEvent::
 	setflag FLAG_RYU_HIDE_AQUA_MTPYRE_EXT
 	call MPE_RemoveAqua
 	fadescreen FADE_FROM_BLACK
-	setvar VAR_RYU_AQUA, 88 @Player attended meeting at mtpyre exterior, is headed into summit
+	setvar VAR_RYU_QUEST_AQUA, 88 @Player attended meeting at mtpyre exterior, is headed into summit
 	clearflag FLAG_RYU_HIDE_NPCS_MTPYRE_SUMMIT
 	release
 	end

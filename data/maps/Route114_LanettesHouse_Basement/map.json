@@ -50,7 +50,7 @@
       "x": 1,
       "y": 2,
       "elevation": 3,
-      "var": "VAR_RYU_LANETTE_VAR",
+      "var": "VAR_RYU_QUEST_LANETTE",
       "var_value": "104",
       "script": "LNH_BasementScene"
     },
@@ -59,7 +59,7 @@
       "x": 2,
       "y": 2,
       "elevation": 3,
-      "var": "VAR_RYU_LANETTE_VAR",
+      "var": "VAR_RYU_QUEST_LANETTE",
       "var_value": "104",
       "script": "LNH_BasementScene"
     }
