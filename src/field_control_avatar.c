@@ -201,7 +201,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
 
-    if ((CalculatePlayerPartyCount() == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10))
+    if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10))
     {
         if (!(FlagGet(FLAG_RYU_LIMBO) == 1))
         {
