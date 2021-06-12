@@ -618,8 +618,8 @@ static const u8 sFurySwipesDescription[] = _(
     "claws, etc., 2 to 5 times.");
 
 static const u8 sBonemerangDescription[] = _(
-    "Throws a bone boomerang\n"
-    "that strikes twice.");
+    "A bone that can hit Flying\n"
+    "foes and strikes twice.");
 
 static const u8 sRestDescription[] = _(
     "The user sleeps for 2 turns,\n"
