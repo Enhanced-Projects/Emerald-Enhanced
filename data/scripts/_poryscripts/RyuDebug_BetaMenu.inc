@@ -68,23 +68,93 @@ RDBM_BlankOption::
 
 
 RDBM_CheckWaystone::
-	callnative RyuCheckIfWaystoneShouldBeDisabled
+	specialvar VAR_RESULT, RyuCheckIfWaystoneShouldBeDisabled
 	switch VAR_RESULT
-	case FALSE, RDBM_CheckWaystone_3
-	case TRUE, RDBM_CheckWaystone_4
+	case 10, RDBM_CheckWaystone_3
+	case 20, RDBM_CheckWaystone_4
+	case 30, RDBM_CheckWaystone_5
+	case 40, RDBM_CheckWaystone_6
+	case 50, RDBM_CheckWaystone_7
+	case 60, RDBM_CheckWaystone_8
+	case 70, RDBM_CheckWaystone_9
+	case 80, RDBM_CheckWaystone_10
+	case 90, RDBM_CheckWaystone_11
+	case 100, RDBM_CheckWaystone_12
+	case 110, RDBM_CheckWaystone_13
+	case 120, RDBM_CheckWaystone_14
 RDBM_CheckWaystone_1:
+	msgbox WaystoneEnabled
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
+	closemessage
 	release
 	end
 
 RDBM_CheckWaystone_3:
-	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	msgbox RDBM_CheckWaystone_Text_0
+	goto RDBM_WaystoneDisabled
 	goto RDBM_CheckWaystone_1
 
 RDBM_CheckWaystone_4:
-	setflag FLAG_RYU_WAYSTONE_DISABLED
 	msgbox RDBM_CheckWaystone_Text_1
+	goto RDBM_WaystoneDisabled
 	goto RDBM_CheckWaystone_1
+
+RDBM_CheckWaystone_5:
+	msgbox RDBM_CheckWaystone_Text_2
+	goto RDBM_WaystoneDisabled
+	goto RDBM_CheckWaystone_1
+
+RDBM_CheckWaystone_6:
+	msgbox RDBM_CheckWaystone_Text_3
+	goto RDBM_WaystoneDisabled
+	goto RDBM_CheckWaystone_1
+
+RDBM_CheckWaystone_7:
+	msgbox RDBM_CheckWaystone_Text_4
+	goto RDBM_WaystoneDisabled
+	goto RDBM_CheckWaystone_1
+
+RDBM_CheckWaystone_8:
+	msgbox RDBM_CheckWaystone_Text_5
+	goto RDBM_WaystoneDisabled
+	goto RDBM_CheckWaystone_1
+
+RDBM_CheckWaystone_9:
+	msgbox RDBM_CheckWaystone_Text_6
+	goto RDBM_WaystoneDisabled
+	goto RDBM_CheckWaystone_1
+
+RDBM_CheckWaystone_10:
+	msgbox RDBM_CheckWaystone_Text_7
+	goto RDBM_WaystoneDisabled
+	goto RDBM_CheckWaystone_1
+
+RDBM_CheckWaystone_11:
+	msgbox RDBM_CheckWaystone_Text_8
+	goto RDBM_WaystoneDisabled
+	goto RDBM_CheckWaystone_1
+
+RDBM_CheckWaystone_12:
+	msgbox RDBM_CheckWaystone_Text_9
+	goto RDBM_WaystoneDisabled
+	goto RDBM_CheckWaystone_1
+
+RDBM_CheckWaystone_13:
+	msgbox RDBM_CheckWaystone_Text_10
+	goto RDBM_WaystoneDisabled
+	goto RDBM_CheckWaystone_1
+
+RDBM_CheckWaystone_14:
+	msgbox RDBM_CheckWaystone_Text_11
+	goto RDBM_WaystoneDisabled
+	goto RDBM_CheckWaystone_1
+
+
+RDBM_WaystoneDisabled::
+	msgbox WaystoneDisabled
+	closemessage
+	release
+	end
 
 
 RDBM_ResetTemporaryBattleFlags::
@@ -149,13 +219,55 @@ RDBM_BlankOption_Text_0:
 	.string "anything.$"
 
 RDBM_CheckWaystone_Text_0:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Waystone should be Available.$"
+	.string "You have started the elite four. You\n"
+	.string "cannot leave.$"
 
 RDBM_CheckWaystone_Text_1:
-	.string "{COLOR LIGHT_RED}{SHADOW RED}Waystone should be disabled.$"
+	.string "Finish your Training Center session.$"
+
+RDBM_CheckWaystone_Text_2:
+	.string "Finish working with Blaise in Granite\n"
+	.string "Cave$"
+
+RDBM_CheckWaystone_Text_3:
+	.string "Finish clearing Aqua out of the hideout\n"
+	.string "with Courtney.$"
+
+RDBM_CheckWaystone_Text_4:
+	.string "Finish clearing out magma in the Space\n"
+	.string "Center.$"
+
+RDBM_CheckWaystone_Text_5:
+	.string "Finish Escorting the Hexer to the top\n"
+	.string "floor of Mt. Pyre.$"
+
+RDBM_CheckWaystone_Text_6:
+	.string "Finish robbing the Oldale Mart.$"
+
+RDBM_CheckWaystone_Text_7:
+	.string "Finish talking with the Devon Workers.$"
+
+RDBM_CheckWaystone_Text_8:
+	.string "Face off with Groudon.$"
+
+RDBM_CheckWaystone_Text_9:
+	.string "Finish your Trainer Hill challenge.$"
+
+RDBM_CheckWaystone_Text_10:
+	.string "You should be escorting the Nurse.$"
+
+RDBM_CheckWaystone_Text_11:
+	.string "You can't leave limbo, you lost your\n"
+	.string "challenge.$"
 
 RDBM_TeleportHome_Text_0:
 	.string "You cannot teleport from Limbo.$"
+
+WaystoneEnabled::
+	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}Waystone should be Available.$"
+
+WaystoneDisabled::
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Waystone should be disabled.$"
 
 BetaMenuIntro::
 	.string "You really shouldn't mess with these\noptions unless you were directed\pto do so. Save file damage can occur.\p"

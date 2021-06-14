@@ -1938,7 +1938,7 @@ void RyuBufferSkillLevels(void)
     ConvertIntToDecimalStringN(gRyuStringVar3, minLvl, STR_CONV_MODE_LEFT_ALIGN, 5);
 }
 
-void RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the game to decide if waystone should be disabled or not.
+int RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the game to decide if waystone should be disabled or not.
 {
     u16 currentGroup = (gSaveBlock1Ptr->location.mapGroup);
     u16 currentMap = (gSaveBlock1Ptr->location.mapNum);
@@ -1947,40 +1947,42 @@ void RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the gam
 
     if(currentGroup == 16) //player is doing the elite four
         if(currentMap < 12)
-            gSpecialVar_Result = TRUE;
+            return 10;
 
     if (FlagGet(FLAG_RYU_TC_ENTERED) == 1)//player is using training center
-        gSpecialVar_Result = TRUE;
+        return 20;
 
     if (VarGet(VAR_RYU_QUEST_MAGMA) > 119 && VarGet(VAR_RYU_QUEST_MAGMA) < 130) //player is doing blaise's granite cave event
-        gSpecialVar_Result = TRUE;
+        return 30;
 
     if (VarGet(VAR_RYU_QUEST_MAGMA) == 315)// player is working with courtney to clear out aqua in the magma hideout.
-        gSpecialVar_Result = TRUE;
+        return 40;
 
     if (VarGet(VAR_RYU_QUEST_DEVON_SCIENTIST) == 106) //player is doing magma event in space center.
-        gSpecialVar_Result = TRUE;
+        return 50;
 
     if (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_HEX_MANIAC)//player is doing the Outcasts faction quest
-        gSpecialVar_Result = TRUE;
+        return 60;
 
     if (VarGet(VAR_RYU_QUEST_MAGMA) == 230)//player is doing the oldale heist event
-        gSpecialVar_Result = TRUE;
+        return 70;
     
     if (VarGet(VAR_RYU_QUEST_DEVON_CORPORATE) > 29 && VarGet(VAR_RYU_QUEST_DEVON_CORPORATE) < 61)//player is interrogating devon employees
-        gSpecialVar_Result = TRUE;
+        return 80;
     
     if (VarGet(VAR_RYU_QUEST_MAGMA) == 555)//player is fighting groudon
-        gSpecialVar_Result = TRUE;
+        return 90;
     
     if (VarGet(VAR_TRAINER_HILL_IS_ACTIVE) == 1)//player is doing trainer hill
-        gSpecialVar_Result = TRUE;
+        return 100;
 
     if (VarGet(VAR_RYU_QUEST_NURSE) == 2 || VarGet(VAR_RYU_QUEST_NURSE) == 4 || VarGet(VAR_RYU_QUEST_NURSE) == 6)//player is escorting nurse
-        gSpecialVar_Result = TRUE;
+        return 110;
     
     if (FlagGet(FLAG_RYU_LIMBO) == 1)//Player is in Limbo after failing nuzlocke or hardcore.
-        gSpecialVar_Result = TRUE;
+        return 120;
+
+    return 0;
 }
 
 extern u8 TrySavingData(u8 saveType);

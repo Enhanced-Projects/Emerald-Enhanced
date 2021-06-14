@@ -41,17 +41,65 @@ script RDBM_BlankOption{
 }
 
 script RDBM_CheckWaystone{
-    callnative(RyuCheckIfWaystoneShouldBeDisabled)
+    specialvar(VAR_RESULT, RyuCheckIfWaystoneShouldBeDisabled)
     switch (var(VAR_RESULT)) {
-        case FALSE:
-            clearflag(FLAG_RYU_WAYSTONE_DISABLED)
-            msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN}Waystone should be Available.")
-        case TRUE:
-            setflag(FLAG_RYU_WAYSTONE_DISABLED)
-            msgbox("{COLOR LIGHT_RED}{SHADOW RED}Waystone should be disabled.")
+        case 10:
+            msgbox(format("You have started the elite four. You cannot leave."))
+            goto(RDBM_WaystoneDisabled)
+        case 20:
+            msgbox("Finish your Training Center session.")
+            goto(RDBM_WaystoneDisabled)
+        case 30:
+            msgbox(format("Finish working with Blaise in Granite Cave"))
+            goto(RDBM_WaystoneDisabled)
+        case 40:
+            msgbox(format("Finish clearing Aqua out of the hideout with Courtney."))
+            goto(RDBM_WaystoneDisabled)
+        case 50:
+            msgbox(format("Finish clearing out magma in the Space Center."))
+            goto(RDBM_WaystoneDisabled)
+        case 60:
+            msgbox(format("Finish Escorting the Hexer to the top floor of Mt. Pyre."))
+            goto(RDBM_WaystoneDisabled)
+        case 70:
+            msgbox("Finish robbing the Oldale Mart.")
+            goto(RDBM_WaystoneDisabled)
+        case 80:
+            msgbox("Finish talking with the Devon Workers.")
+            goto(RDBM_WaystoneDisabled)
+        case 90:
+            msgbox("Face off with Groudon.")
+            goto(RDBM_WaystoneDisabled)
+        case 100:
+            msgbox("Finish your Trainer Hill challenge.")
+            goto(RDBM_WaystoneDisabled)
+        case 110:
+            msgbox("You should be escorting the Nurse.")
+            goto(RDBM_WaystoneDisabled)
+        case 120:
+            msgbox(format("You can't leave limbo, you lost your challenge."))
+            goto(RDBM_WaystoneDisabled)
     }
+    msgbox(WaystoneEnabled)
+    clearflag(FLAG_RYU_WAYSTONE_DISABLED)
+    closemessage
 	release
 	end
+}
+
+script RDBM_WaystoneDisabled{
+    msgbox(WaystoneDisabled)
+    closemessage
+    release
+    end
+}
+
+text WaystoneEnabled{
+    "{COLOR LIGHT_GREEN}{SHADOW GREEN}Waystone should be Available."
+}
+
+text WaystoneDisabled{
+    "{COLOR LIGHT_RED}{SHADOW RED}Waystone should be disabled."
 }
 
 script RDBM_ResetTemporaryBattleFlags{
