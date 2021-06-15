@@ -49,9 +49,11 @@ MirageCave_TriggerPortal::
 	setmetatile 13, 6, 874, 1
 	setmetatile 14, 6, 875, 1
 	setmetatile 15, 6, 876, 1
-	setmetatile 12, 7, 881, 1
-	setmetatile 13, 7, 882, 1
-	setmetatile 14, 7, 883, 1
+	setmetatile 12, 7, 881, 0
+	setmetatile 13, 7, 882, 0
+	setmetatile 14, 7, 883, 0
+	setmetatile 13, 10, 837, 0
+	setmetatile 13, 11, 845, 1
 	special DrawWholeMapView
 	fadescreen FADE_FROM_BLACK
 	setvar VAR_0x8004, 1  @ vertical pan
@@ -61,7 +63,7 @@ MirageCave_TriggerPortal::
 	special ShakeCamera
 	waitstate
 	setflag FLAG_RYU_ULTRA_BEASTS_ESCAPED
-	@ some text I'll put in myself
+	msgbox MirageCave_Text_UltraBeastsEscaped
 	releaseall
 	end
 
@@ -70,4 +72,22 @@ MirageCave_PlayerMovement::
 	walk_left
 	face_right
 	step_end
+
+MirageCave_Text_UltraBeastsEscaped:
+	.string "A bunch of exotic looking\n"
+	.string "pokemon just ran past you!$"
+
+MirageCave_EventScript_Sign::
+	msgbox MirageCave_Text_Sign, MSGBOX_SIGN
+	end
+
+MirageCave_Text_Sign: @ Poem by Raynolds Moseamedi
+	.string "{COLOR LIGHT_RED}{SHADOW RED}Come along with me\n"
+	.string "And the songs and memories\p"
+	.string "We can sing through our quest\n"
+	.string "Lost souls singing in the trees\p"
+	.string "Come along with me\n"
+	.string "To a cave under the loch\p"
+	.string "Where we can gaze upon the water\n"
+	.string "As an everlasting dream$"
 `

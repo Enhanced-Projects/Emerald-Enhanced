@@ -111,6 +111,21 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 13,
+      "y": 11,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RyuLegendary_Volcanion"
+    },
+    {
+      "type": "sign",
+      "x": 32,
+      "y": 38,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MirageCave_EventScript_Sign"
+    }
   ]
 }

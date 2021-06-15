@@ -17,11 +17,6 @@
       "direction": "up",
       "offset": 0,
       "map": "MAP_ROUTE101"
-    },
-    {
-      "direction": "down",
-      "offset": 0,
-      "map": "MAP_SNOWY_SHORE_DARK_WORLD"
     }
   ],
   "object_events": [
