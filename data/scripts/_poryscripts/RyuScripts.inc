@@ -1131,17 +1131,24 @@ RyuLegendary_SetBaseScale::
 	return
 
 RyuLegendary_GameClearResetLegends::
+	call_if_set FLAG_RYU_ARTICUNO_RAN, RL_ResetArticuno
 	call_if_set FLAG_RYU_ZAPDOS_RAN, RL_ResetZapdos
 	call_if_set FLAG_RYU_MOLTRES_RAN, RL_ResetMoltres
-	call_if_set FLAG_RYU_ARTICUNO_RAN, RL_ResetArticuno
+	call_if_set FLAG_RYU_RAIKOU_RAN, RL_ResetRaikou
 	call_if_set FLAG_RYU_ENTEI_RAN, RL_ResetEntei
 	call_if_set FLAG_RYU_SUICUNE_RAN, RL_ResetSuicune
-	call_if_set FLAG_RYU_RAIKOU_RAN, RL_ResetRaikou
 	call_if_set FLAG_RYU_CELEBI_RAN, RL_ResetCelebi
+	call_if_set FLAG_RYU_KYOGRE_RAN, RL_ResetKyogre
 	call_if_set FLAG_RYU_REGIGIGAS_RAN, RL_ResetRegigigas
 	call_if_set FLAG_RYU_MANAPHY_RAN, RL_ResetManaphy
+	call_if_set FLAG_RYU_HOOPA_RAN, RL_ResetHoopa
+	call_if_set FLAG_RYU_VOLCANION_RAN, RL_ResetVolcanion
 	call_if_set FLAG_RYU_NECROZMA_RAN, RL_ResetNecrozma
-	call_if_set FLAG_RYU_KYOGRE_RAN, RL_ResetKyogre
+		
+RL_ResetArticuno::
+	clearflag FLAG_RYU_ARTICUNO
+	clearflag FLAG_RYU_ARTICUNO_RAN
+	return
 
 RL_ResetZapdos::
 	clearflag FLAG_RYU_ZAPDOS
@@ -1152,10 +1159,10 @@ RL_ResetMoltres::
 	clearflag FLAG_RYU_MOLTRES
 	clearflag FLAG_RYU_MOLTRES_RAN
 	return
-		
-RL_ResetArticuno::
-	clearflag FLAG_RYU_ARTICUNO
-	clearflag FLAG_RYU_ARTICUNO_RAN
+
+RL_ResetRaikou::
+	clearflag FLAG_RYU_RAIKOU
+	clearflag FLAG_RYU_RAIKOU_RAN
 	return
 
 RL_ResetEntei::
@@ -1168,14 +1175,14 @@ RL_ResetSuicune::
 	clearflag FLAG_RYU_SUICUNE_RAN
 	return
 
-RL_ResetRaikou::
-	clearflag FLAG_RYU_RAIKOU
-	clearflag FLAG_RYU_RAIKOU_RAN
-	return
-
 RL_ResetCelebi::
 	clearflag FLAG_RYU_CELEBI
 	clearflag FLAG_RYU_CELEBI_RAN
+	return
+
+RL_ResetKyogre::
+	clearflag FLAG_RYU_KYOGRE
+	clearflag FLAG_RYU_KYOGRE_RAN
 	return
 
 RL_ResetRegigigas::
@@ -1188,14 +1195,19 @@ RL_ResetManaphy::
 	clearflag FLAG_RYU_MANAPHY_RAN
 	return
 
+RL_ResetHoopa::
+	clearflag FLAG_RYU_HOOPA
+	clearflag FLAG_RYU_HOOPA_RAN
+	return
+
+RL_ResetVolcanion::
+	clearflag FLAG_RYU_VOLCANION
+	clearflag FLAG_RYU_VOLCANION_RAN
+	return
+
 RL_ResetNecrozma::
 	clearflag FLAG_RYU_NECROZMA
 	clearflag FLAG_RYU_NECROZMA_RAN
-	return
-
-RL_ResetKyogre::
-	clearflag FLAG_RYU_KYOGRE
-	clearflag FLAG_RYU_KYOGRE_RAN
 	return
 
 @==================================================================================================Failed Nuzlocke/Hardcore
