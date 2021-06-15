@@ -2173,8 +2173,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_BONEMERANG] =
     {
-        .effect = EFFECT_SMACK_DOWN,
-        .power = 100,
+        .effect = EFFECT_DOUBLE_HIT,
+        .power = 50,
         .type = TYPE_GROUND,
         .accuracy = 90,
         .pp = 10,

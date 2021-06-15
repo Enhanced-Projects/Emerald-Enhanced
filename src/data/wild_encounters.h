@@ -521,7 +521,7 @@ const struct WildPokemon gMtFreeze_B1F_LandMons[] =
 	{35, 45, SPECIES_CARBINK},
 	{35, 45, SPECIES_CARBINK},
 	{35, 45, SPECIES_TYPHLOSION},
-	{35, 45, SPECIES_VOLCANION},
+	{35, 45, SPECIES_TYPHLOSION},
 };
 
 const struct WildPokemonInfo gMtFreeze_B1F_LandMonsInfo = {15, gMtFreeze_B1F_LandMons};
@@ -1035,7 +1035,7 @@ const struct WildPokemon gRoute116_LandMons[] =
 	{16, 16, SPECIES_TAILLOW},
 	{17, 17, SPECIES_TEDDIURSA},
 	{18, 18, SPECIES_TAILLOW},
-	{17, 17, SPECIES_PURRLOIN},
+	{17, 17, SPECIES_MIENFOO},
 	{18, 18, SPECIES_MEOWTH},
 	{17, 17, SPECIES_SKITTY},
 	{18, 18, SPECIES_PURRLOIN},
@@ -3424,7 +3424,7 @@ const struct WildPokemon gSafariZone_Northeast_LandMons[] =
 	{33, 33, SPECIES_MUDBRAY},
 	{35, 35, SPECIES_MUDBRAY},
 	{33, 33, SPECIES_PINECO},
-	{46, 46, SPECIES_HOUNDOUR},
+	{46, 46, SPECIES_WHIMSICOTT},
 	{37, 37, SPECIES_MILTANK},
 	{39, 39, SPECIES_HOUNDOUR},
 	{50, 50, SPECIES_MILTANK},

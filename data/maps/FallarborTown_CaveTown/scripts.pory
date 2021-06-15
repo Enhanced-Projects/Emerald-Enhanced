@@ -64,13 +64,13 @@ FallarborTown_CaveTown_Text_DesertUnderpassSign::
 FTCT_DesertUnderpassSignMessage:
 	.string "Desert Underpass$"
 
-FallarborTown_CaveTown_EventScript_MineShaftBlocker::
-	msgbox FTCT_Text_ShouldntGoHere, MSGBOX_NPC
+FallarborTown_CaveTown_EventScript_Miner::
+	msgbox FTCT_Text_TunnelCollapsed, MSGBOX_NPC
 	end
 
-FTCT_Text_ShouldntGoHere:
-	.string "You shouldn't go in here, we're using\n"
-	.string "explosives to excavate minerals.$"
+FTCT_Text_TunnelCollapsed:
+	.string "I was working on this tunnel, but\n"
+	.string "a monster caused it to collapse…$"
 
 FallarborTown_CaveTown_EventScript_DrillScientist::
 	msgbox FTCT_Text_ThisIsOneOf, MSGBOX_NPC

@@ -7,7 +7,7 @@ RyuLegendary_Manaphy::
 	goto_if_set FLAG_RYU_MANAPHY_RAN, ryu_end
 	msgbox RyuLegendary_IntroManaphy
 	setvar VAR_TEMP_5, SPECIES_MANAPHY
-	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
+	setvar VAR_TEMP_9, ITEM_SHELL_BELL
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_CAUGHT, RyuLegendary_CaughtManaphy @if the mon was caught, set main flag and delete object permanently.
