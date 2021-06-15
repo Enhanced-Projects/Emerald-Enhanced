@@ -8,7 +8,7 @@ RyuLegendary_Suicune::
 	goto_if_set FLAG_RYU_SUICUNE_RAN, ryu_end
 	msgbox OverworldLegendary_IntroSuicune
 	setvar VAR_TEMP_5, SPECIES_SUICUNE
-	setvar VAR_TEMP_9, ITEM_MYSTIC_WATER
+	setvar VAR_TEMP_9, ITEM_ICE_GEM
 	call RyuLegendary_GeneralLegendEncounter
 	switch VAR_RESULT
 	case B_OUTCOME_CAUGHT, Route114_CaughtSuicune @if the mon was caught, set main flag and delete object permanently.

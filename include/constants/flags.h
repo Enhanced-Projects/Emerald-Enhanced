@@ -1023,8 +1023,8 @@
 #define FLAG_UNUSED_0x3D6                                           0x3D6
 #define FLAG_RYU_HOOPA                                              0x3D7
 #define FLAG_RYU_HOOPA_RAN                                          0x3D8
-#define FLAG_UNUSED_0x3D9                                           0x3D9
-#define FLAG_UNUSED_0x3DA                                           0x3DA
+#define FLAG_RYU_VOLCANION                                          0x3D9
+#define FLAG_RYU_VOLCANION_RAN                                      0x3DA
 #define FLAG_UNUSED_0x3DB                                           0x3DB
 #define FLAG_UNUSED_0x3DC                                           0x3DC
 #define FLAG_UNUSED_0x3DD                                           0x3DD

@@ -3,7 +3,7 @@
   "name": "FrostyForestUnderwaterCave",
   "layout": "LAYOUT_FROSTY_FOREST_UNDERWATER_CAVE",
   "music": "MUS_RG_OTSUKIMI",
-  "region_map_section": "MAPSEC_FROSTY_FOREST",
+  "region_map_section": "MAPSEC_FROSTY_GROTTO",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",
