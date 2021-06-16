@@ -1758,6 +1758,13 @@
 	.byte \id
 	.endm
 
+	@will add a pokedex seen page arbitrarily. if caught is TRUE, will also give captured flag. 
+	.macro givepokedexflag species:req, caught=FALSE
+	.byte 0xfa
+	.2byte \species
+	.byte \caught
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

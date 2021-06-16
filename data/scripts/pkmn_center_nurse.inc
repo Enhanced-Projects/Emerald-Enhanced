@@ -129,6 +129,7 @@ PkmnCenterNurse_MegaAudinite::
     goto_if_set FLAG_RYU_GOT_AUDINITE, ryu_return
     setflag FLAG_RYU_GOT_AUDINITE
     givemon SPECIES_AUDINO, 50, ITEM_AUDINITE
+    givepokedexflag SPECIES_AUDINO, TRUE
     msgbox PCN_AudiniteExplain
     closemessage
     return

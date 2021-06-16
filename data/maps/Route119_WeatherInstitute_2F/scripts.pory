@@ -86,6 +86,7 @@ Route119_WeatherInstitute_2F_EventScript_ReceiveCastform:: @ 827004D
 	msgbox Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon, MSGBOX_DEFAULT
 	setvar VAR_TEMP_1, 385
 	givemon SPECIES_CASTFORM, 25, ITEM_MYSTIC_WATER
+	givepokedexflag SPECIES_CASTFORM, TRUE
 	closemessage
 	playmoncry SPECIES_CASTFORM, 0
 	showmonpic SPECIES_CASTFORM, 10, 3

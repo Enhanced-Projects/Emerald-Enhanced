@@ -1293,6 +1293,7 @@ CH_GiveDiancie::
 	waitmoncry
 	hidemonpic
 	givemon SPECIES_DIANCIE, 80, ITEM_NONE
+	givepokedexflag SPECIES_DIANCIE, TRUE
 	setflag FLAG_RYU_GIVEN_DIANCIE
 	return
 

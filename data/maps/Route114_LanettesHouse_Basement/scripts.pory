@@ -99,6 +99,7 @@ LNH_AfterStory::
 	goto_if_eq LNH_GiveRotomFullParty
 	closemessage
 	givemon SPECIES_ROTOM, 21, ITEM_NONE
+	givepokedexflag SPECIES_ROTOM, TRUE
 	playfanfare MUS_FANFA4
 	msgbox LNH_ReceivedRotom
 	waitfanfare
@@ -131,6 +132,7 @@ LNH_HowIsRotomMsg:
 LNH_GiveRotomFullParty::
 	msgbox GiveRotomInPc
 	givemon SPECIES_ROTOM, 21, ITEM_NONE
+	givepokedexflag SPECIES_ROTOM, TRUE
 	playfanfare MUS_FANFA4
 	setflag FLAG_RYU_DS_LANETTE_PARTNERS
 	setflag FLAG_RYU_RECIEVED_ROTOM
