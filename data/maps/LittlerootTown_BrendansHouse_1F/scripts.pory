@@ -137,5 +137,41 @@ LRT_ReturnToTable2:
 	walk_in_place_Right
 	step_end
 
+@@=================== Warp Zone ===================@@
+
+WarpZone_EventScript_Slakoth::
+	msgbox WarpZone_Text_WELCOME, MSGBOX_NPC
+	end
+
+WarpZone_Text_WELCOME:
+	.string "WELCOME TO WARP ZONE!$"
+
+WarpZone_EventScript_Sign1::
+	msgbox WarpZone_Text_Sign1, MSGBOX_SIGN
+	end
+
+WarpZone_Text_Sign1:
+	.string "Mirage Cave$"
+
+WarpZone_EventScript_Sign2::
+	msgbox WarpZone_Text_Sign2, MSGBOX_SIGN
+	end
+
+WarpZone_Text_Sign2:
+	.string "Basalt Burg$"
+
+WarpZone_EventScript_Sign3::
+	msgbox WarpZone_Text_Sign3, MSGBOX_SIGN
+	end
+
+WarpZone_Text_Sign3:
+	.string "Safari Zone$"
+
+WarpZone_EventScript_Sign4::
+	msgbox WarpZone_Text_Sign4, MSGBOX_SIGN
+	end
+
+WarpZone_Text_Sign4:
+	.string "$"
 
 `
