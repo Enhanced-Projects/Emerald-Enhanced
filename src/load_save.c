@@ -78,6 +78,10 @@ void ClearSav1(void)
     CpuFill16(0, &gSaveblock1, sizeof(struct SaveBlock1) + sizeof(gSaveblock1_DMA));
 }
 
+//@kageru, this function needs to be rewritten to include `GetSetPokedexFlag(NationalNum, FLAG_SET_SEEN)` and
+//`GetSetPokedexFlag(NationalNum, FLAG_SET_CAUGHT)` for each species the player already has in the dex as caught or seen.
+//If it takes a bit of time, i'm not concerned, this is pretty important. 
+
 void ClearSav1_SkipDex(void)
 {
     u8 dexSeenOld[DEX_FLAGS_NO];
