@@ -591,6 +591,7 @@ RyuDebug_SkipTutorial::
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
 	setflag FLAG_HIDE_ROUTE_103_RIVAL
 	setflag FLAG_SYS_POKEDEX_GET
+	setflag FLAG_SYS_GAME_CLEAR
 	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setflag FLAG_SYS_NATIONAL_DEX
