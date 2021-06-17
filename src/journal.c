@@ -645,7 +645,7 @@ static const struct JournalStatData sJournalStatsKnockOuts[] =
     {
         sText_KOs,
         GetTotalKOs,
-        3,
+        5,
         FALSE
     },
     {
