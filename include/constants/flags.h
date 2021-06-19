@@ -1025,7 +1025,7 @@
 #define FLAG_RYU_HOOPA_RAN                                          0x3D8
 #define FLAG_RYU_VOLCANION                                          0x3D9
 #define FLAG_RYU_VOLCANION_RAN                                      0x3DA
-#define FLAG_UNUSED_0x3DB                                           0x3DB
+#define FLAG_RYU_GIVEN_MEWTWO_MEGAS                                 0x3DB
 #define FLAG_UNUSED_0x3DC                                           0x3DC
 #define FLAG_UNUSED_0x3DD                                           0x3DD
 #define FLAG_UNUSED_0x3DE                                           0x3DE
@@ -1696,7 +1696,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 53
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 54
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -1754,7 +1754,7 @@
 #define ACH_LOREMASTER  50 //GOLD Achievement, VERY HARD TO GET.
 #define ACH_TOURIST  51 //GOLD ACHIEVEMENT, VERY HARD TO GET.
 #define ACH_CRITCAP  52
-#define ACH_UNUSED_54  53
+#define ACH_POKEMON_TRAINER  53//player has 151 mons
 #define ACH_UNUSED_55  54
 #define ACH_UNUSED_56  55
 #define ACH_UNUSED_57  56

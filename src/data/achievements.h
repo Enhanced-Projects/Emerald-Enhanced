@@ -210,6 +210,10 @@ static const u8 sCritCapLabel[] = _("Favor of the Goddess");
 static const u8 sCritCapHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Get real lucky with capture.");
 static const u8 sCritCapDesc[] = _("You should go buy a lottery ticket\nbecause the RNGoddess has smiled upon you.\n(Got a critical capture.)");
 
+static const u8 sPokemonTrainerLabel[] = _("Pokemon Trainer");
+static const u8 sPokemonTrainerHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Get more than gen 1.");
+static const u8 sPokemonTrainerDesc[] = _("You are well on your way to becoming a\nPokemon Master!");
+
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
     [ACH_WHOLE_NEW_WORLD] = {12, 40, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc, sWholeNewWorldAchHint}, //started exploring enhanced hoenn
@@ -234,7 +238,7 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_CORPORATE_SHILL] = {43, 35, CATEGORY_QUESTING, ACH_CORPORATE_SHILL, sCorporateShillLabel, sCorporateShillAchDesc, sCorporateShillHint}, // Devon Corporate ending
     [ACH_DEJA_VU] = {47, 35, CATEGORY_QUESTING, ACH_DEJA_VU, sDejaVuLabel, sDejaVuDesc, sDejaVuHint}, // Completed all main quest endings
     [ACH_NTMO] = {10, 33, CATEGORY_EXPLORATION, ACH_NTMO, sNTMOLabel, sNTMODesc, sNTMOHint}, //capture a legendary with a beast ball
-    [ACH_POKEMON_MASTER] = {10, 35, CATEGORY_EXPLORATION, ACH_POKEMON_MASTER, sPokemonMasterLabel, sPokemonMasterDesc, sPokemonMasterHint}, //Own at least 386 unique pokemon
+    [ACH_POKEMON_MASTER] = {8, 35, CATEGORY_EXPLORATION, ACH_POKEMON_MASTER, sPokemonMasterLabel, sPokemonMasterDesc, sPokemonMasterHint}, //Own at least 386 unique pokemon
     [ACH_MASTER_BREEDER] = {10, 37, CATEGORY_EXPLORATION, ACH_MASTER_BREEDER, sMasterBreederLabel, sMasterBreederDesc, sMasterBreederHint}, //Hatch 100 or more eggs
     [ACH_ASCENDED] = {28, 33, CATEGORY_BATTLE, ACH_ASCENDED, sAscendedLabel, sAscendedDesc, sAscendedHint}, //Hatch 100 or more eggs
     [ACH_EVIL_INCARNATE] = {26, 33, CATEGORY_BATTLE, ACH_EVIL_INCARNATE, sEvilIncarnateLabel, sEvilIncarnateDesc, sEvilIncarnateHint}, //KO 666 pokemon or more
@@ -265,4 +269,5 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_LOREMASTER] = {43, 31, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_LOREMASTER, sLoremasterLabel, sLoremasterDesc, sLoremasterHint},// All quest complete achievements GOLD ACHIEVEMENT
     [ACH_TOURIST] = {12, 29, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_TOURIST, sTouristLabel, sTouristDesc, sTouristHint},// All exploration achievements GOLD ACHIEVEMENT
     [ACH_CRITCAP] = {30, 33, CATEGORY_BATTLE, ACH_CRITCAP, sCritCapLabel, sCritCapDesc, sCritCapHint},// Got a crtitical capture
+    [ACH_POKEMON_TRAINER] = {10, 35, CATEGORY_EXPLORATION, ACH_POKEMON_TRAINER, sPokemonTrainerLabel, sPokemonTrainerDesc, sPokemonTrainerHint},// Captured 151 or more mons/
 };
