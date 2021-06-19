@@ -489,21 +489,54 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Violet[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Rose4[] = {
+static const struct TrainerMonItemCustomMoves sParty_StevenPostgame[] = {
     {
-    .iv = 30,
-    .lvl = 31,
-    .species = SPECIES_MEGANIUM,
+    .iv = 31,
+    .lvl = 100,
+    .species = SPECIES_MEGA_METAGROSS,
+    .heldItem = ITEM_METAL_COAT,
+    .ability = 0,
+    .moves = {MOVE_METEOR_MASH, MOVE_PSYCHO_CUT, MOVE_SHADOW_SNEAK, MOVE_MEGA_KICK},
     },
     {
-    .iv = 30,
-    .lvl = 31,
-    .species = SPECIES_BELLOSSOM,
+    .iv = 31,
+    .lvl = 100,
+    .species = SPECIES_MEGA_AGGRON,
+    .heldItem = ITEM_WEAKNESS_POLICY,
+    .ability = 0,
+    .moves = {MOVE_EE_PROTECT, MOVE_DOUBLE_EDGE, MOVE_DOUBLE_IRON_BASH, MOVE_ROCK_WRECKER},
     },
     {
-    .iv = 30,
-    .lvl = 31,
-    .species = SPECIES_ROSERADE,
+    .iv = 31,
+    .lvl = 100,
+    .species = SPECIES_MEGA_STEELIX,
+    .heldItem = ITEM_SOFT_SAND,
+    .ability = 0,
+    .moves = {MOVE_EARTHQUAKE, MOVE_TAIL_SLAP, MOVE_BODY_SLAM, MOVE_GLARE},
+    },
+    {
+    .iv = 31,
+    .lvl = 100,
+    .species = SPECIES_MEGA_LUCARIO,
+    .heldItem = ITEM_SCOPE_LENS,
+    .ability = 0,
+    .moves = {MOVE_DRAIN_PUNCH, MOVE_BULLET_PUNCH, MOVE_CLOSE_COMBAT, MOVE_GUILLOTINE},
+    },
+    {
+    .iv = 31,
+    .lvl = 100,
+    .species = SPECIES_MEGA_AERODACTYL,
+    .heldItem = ITEM_FLYING_GEM,
+    .ability = 0,
+    .moves = {MOVE_ACROBATICS, MOVE_ROCK_SLIDE, MOVE_BRAVE_BIRD, MOVE_ROOST},
+    },
+    {
+    .iv = 31,
+    .lvl = 100,
+    .species = SPECIES_SKARMORY,
+    .heldItem = ITEM_LEFTOVERS,
+    .ability = 0,
+    .moves = {MOVE_STEEL_WING, MOVE_SPIKES, MOVE_TOXIC, MOVE_ROOST},
     }
 };
 

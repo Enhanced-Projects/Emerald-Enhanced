@@ -1034,10 +1034,10 @@
 #define FLAG_HIDE_LILYCOVE_POKEMON_CENTER_CONTEST_LADY_MON          0x3E1
 #define FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY                       0x3E2
 #define FLAG_HIDE_PETALBURG_CITY_SCOTT                              0x3E3
-#define FLAG_ITEM_SNOWY_SHORE_DARK_WORLD_FIRE_STONE                          0x3E4 // EE-Unused
-#define FLAG_ITEM_SNOWY_SHORE_DARK_WORLD_                            0x3E5 // EE-Unused
+#define FLAG_ITEM_SNOWY_SHORE_DARK_WORLD_FIRE_STONE                 0x3E4 // EE-Unused
+#define FLAG_ITEM_SNOWY_SHORE_DARK_WORLD_                           0x3E5 // EE-Unused
 #define FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON                           0x3E6 // EE-Unused
-#define FLAG_UNUSED_0x3E7                                           0x3E7
+#define FLAG_RYU_DEFEATED_STEVEN_POSTGAME                           0x3E7
 
 // Item Ball Flags
 #define FLAG_ITEM_ROUTE_102_POTION                                  0x3E8

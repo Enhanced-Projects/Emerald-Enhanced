@@ -671,20 +671,20 @@ const struct Trainer gTrainers[] = {
         .party = {.ItemCustomMoves = sParty_Briney},
     },
 
-    [TRAINER_EMPTY_2] =
+    [TRAINER_STEVEN_POSTGAME] =
     {
-        .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_AROMA_LADY,
-        .trainerFaction = FACTION_OUTCASTS,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_AROMA_LADY,
-        .trainerName = _("Rose"),
-        .items = {},
-        .battleStyle = BS_SHIFT,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .trainerClass = TRAINER_CLASS_DEVON_ENFORCER,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
+        .trainerPic = TRAINER_PIC_STEVEN,
+        .trainerName = _("Steven"),
+        .items = {ITEM_FULL_RESTORE, ITEM_X_ATTACK, ITEM_FULL_HEAL, ITEM_NONE},
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Rose4),
-        .party = {.NoItemDefaultMoves = sParty_Rose4},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_CHECK_VIABILITY | AI_SCRIPT_PREFER_STRONGEST_MOVE,
+        .partySize = ARRAY_COUNT(sParty_StevenPostgame),
+        .party = {.ItemCustomMoves = sParty_StevenPostgame},
     },
 
     [TRAINER_EMPTY_3] =
@@ -1343,7 +1343,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Owen},
     },
 
-    [TRAINER_EMPTY_29] =
+    [TRAINER_STEVEN_POSTGAME9] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
@@ -1615,7 +1615,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Julie},
     },
 
-    [TRAINER_EMPTY_28] =
+    [TRAINER_STEVEN_POSTGAME8] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_COOLTRAINER,
@@ -8656,7 +8656,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemCustomMoves = sParty_Mitchell},
     },
 
-    [TRAINER_EMPTY_201] =
+    [TRAINER_STEVEN_POSTGAME01] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
@@ -8672,7 +8672,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Isaac2},
     },
 
-    [TRAINER_EMPTY_202] =
+    [TRAINER_STEVEN_POSTGAME02] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
@@ -8688,7 +8688,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Isaac3},
     },
 
-    [TRAINER_EMPTY_203] =
+    [TRAINER_STEVEN_POSTGAME03] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
@@ -8704,7 +8704,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Isaac4},
     },
 
-    [TRAINER_EMPTY_204] =
+    [TRAINER_STEVEN_POSTGAME04] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
@@ -8816,7 +8816,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Lydia4},
     },
 
-    [TRAINER_EMPTY_200] =
+    [TRAINER_STEVEN_POSTGAME00] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
@@ -8880,7 +8880,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Sebastian},
     },
 
-    [TRAINER_EMPTY_211] =
+    [TRAINER_STEVEN_POSTGAME11] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
@@ -8992,7 +8992,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Sophia},
     },
 
-    [TRAINER_EMPTY_207] =
+    [TRAINER_STEVEN_POSTGAME07] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
@@ -9008,7 +9008,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Catherine2},
     },
 
-    [TRAINER_EMPTY_208] =
+    [TRAINER_STEVEN_POSTGAME08] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
@@ -9024,7 +9024,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Catherine3},
     },
 
-    [TRAINER_EMPTY_209] =
+    [TRAINER_STEVEN_POSTGAME09] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
@@ -9040,7 +9040,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Catherine4},
     },
 
-    [TRAINER_EMPTY_210] =
+    [TRAINER_STEVEN_POSTGAME10] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_RANGER,
@@ -9712,7 +9712,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Vivi},
     },
 
-    [TRAINER_EMPTY_212] =
+    [TRAINER_STEVEN_POSTGAME12] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_LASS,
@@ -10000,7 +10000,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_James4},
     },
 
-    [TRAINER_EMPTY_213] =
+    [TRAINER_STEVEN_POSTGAME13] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
@@ -10176,7 +10176,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Mike2},
     },
 
-    [TRAINER_EMPTY_214] =
+    [TRAINER_STEVEN_POSTGAME14] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_HIKER,
@@ -10192,7 +10192,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Trent2},
     },
 
-    [TRAINER_EMPTY_215] =
+    [TRAINER_STEVEN_POSTGAME15] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_HIKER,
@@ -11008,7 +11008,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_LilaAndRoy1},
     },
 
-    [TRAINER_EMPTY_20] =
+    [TRAINER_STEVEN_POSTGAME0] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_SIS_AND_BRO,
@@ -11024,7 +11024,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_LilaAndRoy2},
     },
 
-    [TRAINER_EMPTY_21] =
+    [TRAINER_STEVEN_POSTGAME1] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_SIS_AND_BRO,
@@ -11040,7 +11040,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_LilaAndRoy3},
     },
 
-    [TRAINER_EMPTY_22] =
+    [TRAINER_STEVEN_POSTGAME2] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_SIS_AND_BRO,
@@ -11056,7 +11056,7 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_LilaAndRoy4},
     },
 
-    [TRAINER_EMPTY_23] =
+    [TRAINER_STEVEN_POSTGAME3] =
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_SIS_AND_BRO,
