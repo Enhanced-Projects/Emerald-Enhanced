@@ -255,7 +255,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto RyuDebug_Init_GiveAll
+	warpsilent MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM, 255, 8, 16
 	release
 	end
 

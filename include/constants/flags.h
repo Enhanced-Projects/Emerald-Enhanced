@@ -118,7 +118,7 @@
 #define FLAG_RYU_DID_NOT_HELP_POKEFAN        0x66
 #define FLAG_RYU_REWARDED_FOR_HELPING_POKEFAN    0x67
 
-#define FLAG_UNUSED_0x68                     0x68
+#define FLAG_RYU_SLOWBRONITE                 0x68
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_TM54                   0x6A
