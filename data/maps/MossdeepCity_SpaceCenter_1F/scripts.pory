@@ -58,6 +58,8 @@ SPC_PreventLeaveTillDone::
 	lock
 	compare VAR_RYU_QUESTLINE_ID, 5 @@game over'd
 	goto_if_eq SPC_PreventEntry
+	compare VAR_RYU_QUESTLINE_ID, 100 @@No line chosen
+	goto_if_eq SPC_PreventEntry
 	compare VAR_RYU_QUEST_DEVON_SCIENTIST, 106
 	goto_if_ne ryu_end
 	msgbox SPC_CantLeave

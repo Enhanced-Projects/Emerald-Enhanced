@@ -328,6 +328,8 @@ MtChimney_EventScript_MeteoriteMachine:: @ 822F0E4
 	lockall
 	compare VAR_RYU_QUESTLINE_ID, 5
 	goto_if_eq ryu_end
+	compare VAR_RYU_QUESTLINE_ID, 100
+	goto_if_eq ryu_end
 	goto_if_set FLAG_RECEIVED_METEORITE, ryu_end
 	goto_if_unset FLAG_RYU_PLAYER_HELPING_DEVON, MtChimney_EventScript_MachineOn
 	compare VAR_RYU_QUEST_DEVON_CORPORATE, 21
