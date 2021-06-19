@@ -123,8 +123,8 @@
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_TM54                   0x6A
 #define FLAG_RECEIVED_TM56                   0x6B
-#define FLAG_UNUSED_0x6C                     0x6C
-#define FLAG_RECEIVED_TM55                   0x6D
+#define FLAG_RYU_LATIOSITE                   0x6C
+#define FLAG_RYU_LATIASITE                   0x6D
 #define FLAG_RECEIVED_TM52                   0x6E
 #define FLAG_UNUSED_0x6F                     0x6F
 #define FLAG_UNUSED_0x70                     0x70

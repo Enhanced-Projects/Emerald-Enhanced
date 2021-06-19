@@ -255,9 +255,26 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	warpsilent MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM, 255, 8, 16
+	msgbox RDBTeleport, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_ne RDB_DoLittlerootLatiCheck
+	warpsilent MAP_SOUTHERN_ISLAND_INTERIOR, 255, 13, 10
 	release
 	end
+
+RDB_DoLittlerootLatiCheck::
+	buffernumberstring 0, VAR_ROAMER_POKEMON
+	buffernumberstring 1, VAR_LITTLEROOT_INTRO_STATE
+	msgbox RDBLRT2
+	closemessage
+	release
+	end
+
+RDBTeleport:
+	.string "Teleport?$"
+
+RDBLRT2:
+	.string "Your roamer is {STR_VAR_1}\nYour Tutorial state is {STR_VAR_2}$"
 
 RDB_LifeSkills:
 	.string "Alchemy- EXP: {STR_VAR_1} Level: {STR_VAR_2}\n"

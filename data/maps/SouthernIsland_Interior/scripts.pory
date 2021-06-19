@@ -16,10 +16,10 @@ SouthernIsland_Interior_EventScript_TryRemoveLati:: @ 8242A5A
 	return
 
 SouthernIsland_Interior_OnTransition: @ 8242A6E
-	compare VAR_ROAMER_POKEMON, 0
-	call_if_eq SouthernIsland_Interior_EventScript_SetUpLatios
-	compare VAR_ROAMER_POKEMON, 0
-	call_if_ne SouthernIsland_Interior_EventScript_SetUpLatias
+	compare VAR_ROAMER_POKEMON, 0 @blue
+	call_if_eq SouthernIsland_Interior_EventScript_SetUpLatias
+	compare VAR_ROAMER_POKEMON, 1 @red
+	call_if_ne SouthernIsland_Interior_EventScript_SetUpLatios
 	call SouthernIsland_Interior_EventScript_SetUpPlayerGfx
 	end
 
@@ -161,3 +161,19 @@ SouthernIsland_Interior_Movement_LatiApproach: @ 8242BDA
 	walk_down
 	step_end
 `
+
+script SI_Latiosite {
+	finditem(ITEM_LATIOSITE)
+	setflag(FLAG_RYU_LATIOSITE)
+	removeobject(4)
+	release
+	end
+}
+
+script SI_Latiasite {
+	finditem(ITEM_LATIASITE)
+	setflag(FLAG_RYU_LATIASITE)
+	removeobject(3)
+	release
+	end
+}
