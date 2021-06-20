@@ -7,6 +7,8 @@ LRT_IntroMsg1:
 
 GameModeSelect:: @ 823BF04
 	lockall
+	call GameModeSelectLati
+	closemessage
 	goto_if_set FLAG_RYU_ISNGPLUS, Ryu_NewGamePlus
 	msgbox Ryu_PleaseSelectDifficulty
 	multichoicedefault 1, 2, MULTI_SELECT_FRESH_NEW_GAME_MODE, 0, 0
@@ -17,6 +19,32 @@ GameModeSelect:: @ 823BF04
 	case 3, IT_FrontierMode
 	goto IT_NormalMode
 	end
+
+GameModeSelectLati::
+	msgbox GMS_WhichColor
+	multichoice 22, 8, MULTI_TV_LATI, 1
+	compare VAR_RESULT, 0
+	call_if_eq RyuIntro_SetLatiGenderMale
+	compare VAR_RESULT, 1
+	call_if_eq RYuIntro_SetLatiGenderFemale
+	return
+
+RyuIntro_SetLatiGenderMale::
+	setvar VAR_ROAMER_POKEMON, 0 @should make it so that the roamer is latios
+	clearflag FLAG_SYS_TV_LATIAS_LATIOS
+	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
+	special InitRoamer
+	return
+
+RYuIntro_SetLatiGenderFemale::
+	setvar VAR_ROAMER_POKEMON, 0 @should make it so that the roamer is latias
+	clearflag FLAG_SYS_TV_LATIAS_LATIOS
+	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
+	special InitRoamer
+	return
+
+GMS_WhichColor:
+	.string "Which color is your favorite?$"
 
 Ryu_PleaseSelectDifficulty::
 	.string "Please choose a mode to play.$"

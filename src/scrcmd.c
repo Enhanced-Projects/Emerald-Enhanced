@@ -55,6 +55,7 @@
 #include "battle_setup.h"
 #include "infobox.h"
 #include "ach_atlas.h"
+#include "pokedex.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -2431,5 +2432,24 @@ bool8 ScrCmd_drawinfobox(struct ScriptContext *ctx)
 bool8 ScrCmd_removeinfobox(struct ScriptContext *ctx)
 {
     RemoveInfoBox();
+    return FALSE;
+}
+
+bool8 ScrCmd_givepokedexflag(struct ScriptContext *ctx)
+{
+    u16 species = (VarGet(ScriptReadHalfword(ctx)));
+    bool8 caught = ScriptReadByte(ctx);
+    u16 nationalDexNum = SpeciesToNationalPokedexNum(species);
+
+    if (caught == FALSE)
+    {
+        GetSetPokedexFlag(nationalDexNum, FLAG_SET_SEEN);
+    }
+    else
+    {
+        GetSetPokedexFlag(nationalDexNum, FLAG_SET_CAUGHT);
+        GetSetPokedexFlag(nationalDexNum, FLAG_SET_SEEN);
+    }
+
     return FALSE;
 }

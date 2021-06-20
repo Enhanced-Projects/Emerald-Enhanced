@@ -80,28 +80,27 @@ void ClearSav1(void)
 
 void ClearSav1_SkipDex(void)
 {
-    u8 dexSeenOld[DEX_FLAGS_NO];
-    u8 dexCaughtOld[DEX_FLAGS_NO];
-    u16 i;
+    // There isn’t enough space on the stack for this, so we heap allocate
+    u8* oldDex = malloc(DEX_FLAGS_NO * 2);
+    int i;
 
     //Copy dex information temporarily
     for (i = 0; i < DEX_FLAGS_NO; i++)
     {
-        dexSeenOld[i] = gSaveblock1.dexSeen[i];
-        dexCaughtOld[i] = gSaveblock1.dexCaught[i];
+        oldDex[i] = gSaveblock1.dexSeen[i];
+        oldDex[i + DEX_FLAGS_NO] = gSaveblock1.dexCaught[i];
     }
 
     //Zero out the entirety of SaveBlock1
     CpuFill16(0, &gSaveblock1, sizeof(struct SaveBlock1) + sizeof(gSaveblock1_DMA));
-    ResetPokedex();
-    ClearPokedexFlags();
 
     //Re-enter all dex information
     for (i = 0; i < DEX_FLAGS_NO; i++)
     {
-        gSaveblock1.dexSeen[i] = dexSeenOld[i];
-        gSaveblock1.dexCaught[i] = dexCaughtOld[i];
+        gSaveblock1.dexSeen[i] = oldDex[i];
+        gSaveblock1.dexCaught[i] = oldDex[i + DEX_FLAGS_NO];
     }
+    free(oldDex);
 }
 
 void SetSaveBlocksPointers(u16 offset)

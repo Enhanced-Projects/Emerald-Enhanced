@@ -10,7 +10,7 @@ Route103_OnTransition: @ 81EC399
 	end
 
 Route103_OnLoad: @ 81EC3A4
-	special checkbadgecount
+	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 4
 	goto_if_ge Route103_EventScript_OpenAlteringCave
 	end

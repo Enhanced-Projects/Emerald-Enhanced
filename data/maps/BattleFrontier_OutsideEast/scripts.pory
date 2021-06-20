@@ -470,6 +470,7 @@ Script_Noland::
 
 AnsweredYesScript::
 	givemon SPECIES_TYPE_NULL, 100, ITEM_EVIOLITE
+	givepokedexflag SPECIES_TYPE_NULL, TRUE
 	setflag FLAG_RYU_TYPENULL
 	removeobject 27
 	msgbox Text_BeCareful

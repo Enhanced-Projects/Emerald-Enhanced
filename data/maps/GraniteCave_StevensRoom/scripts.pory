@@ -1,10 +1,13 @@
 raw `
 GraniteCave_StevensRoom_MapScripts:: @ 822DC7A
+	map_script ON_LOAD, GC_CheckLoadStevenPostgame
 	.byte 0
 
 GraniteCave_StevensRoom_EventScript_Steven:: @ 822DC7B
 	lock
 	faceplayer
+	compare VAR_RYU_QUESTLINE_ID, 2
+	goto_if_ne GC_NotDevon
 	msgbox GraniteCave_StevensRoom_Text_ImStevenLetterForMe, MSGBOX_DEFAULT
 	setvar VAR_0x8004, ITEM_LETTER
 	call Common_EventScript_PlayerHandedOverTheItem
@@ -174,3 +177,75 @@ GC1_RYUMSG_TOUCHED:
 	.string "You hear the sound of stardust falling.$"
 
 `
+
+script GC_CheckLoadStevenPostgame {
+	if ((var(VAR_RYU_QUESTLINE_ID) == 1) || (var(VAR_RYU_QUESTLINE_ID) == 2))
+	{
+		if (!(flag(FLAG_RYU_DEFEATED_STEVEN_POSTGAME))) {
+			clearflag(FLAG_HIDE_GRANITE_CAVE_STEVEN)
+			addobject(1)
+			end
+		}
+	}
+}
+
+script GC_NotDevon {
+	if (flag(FLAG_SYS_GAME_CLEAR)){
+		goto(GC_StevenPostGameBattle)
+	}
+	else {
+		release
+		end
+	}
+}
+
+script GC_StevenPostGameBattle {
+	goto_if_set(FLAG_RYU_DEFEATED_STEVEN_POSTGAME, GC_NoStevenPostBattle)
+	msgbox(GC_StevenPostGameIntro)
+	closemessage
+	setflag(FLAG_RYU_MAX_SCALE)
+	trainerbattle_single(TRAINER_STEVEN_POSTGAME, GC_StevenBattleText, GC_StevenLostText, GC_AfterStevenBattle, MUS_REKKUU_KOURIN)
+	waitstate
+}
+
+script GC_AfterStevenBattle {
+	msgbox(GC_CONGRATSGIFT)
+	closemessage
+	setflag(FLAG_RYU_DEFEATED_STEVEN_POSTGAME)
+	giveitem(ITEM_METAGROSSITE, 1)
+	removeobject(1)
+	setflag(FLAG_HIDE_GRANITE_CAVE_STEVEN)
+	release
+	end
+}
+
+script GC_NoStevenPostBattle {
+	msgbox(GC_StevenHow)
+	removeobject(1)
+	setflag(FLAG_HIDE_GRANITE_CAVE_STEVEN)
+	playse(SE_TK_WARPOUT)
+	waitse
+	closemessage
+	release
+	end
+}
+
+text GC_StevenPostGameIntro {
+	"I see you came back for a rematch.\nDo you really think you can win?"
+}
+
+text GC_StevenBattleText {
+	"Prepare to add to your losing streak!"
+}
+
+text GC_StevenLostText {
+	"I somehow misjudged your skill...\nA mistake I won't make again!"
+}
+
+text GC_CONGRATSGIFT{
+	"I guess congratulations are in order...\nHere take this.\pYou can put it to good use."
+}
+
+text GC_StevenHow{
+	"I don't know why I'm here.\nGuess I'll leave!"
+}

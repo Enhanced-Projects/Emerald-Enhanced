@@ -473,7 +473,7 @@ static const struct WindowTemplate sSummaryTemplate[] =
     },
     [PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_RIGHT] = {
         .bg = 0,
-        .tilemapLeft = 22,
+        .tilemapLeft = 21,
         .tilemapTop = 7,
         .width = 5,
         .height = 6,
@@ -617,16 +617,16 @@ static const struct WindowTemplate sPageSkillsTemplate[] =
         .bg = 0,
         .tilemapLeft = 16,
         .tilemapTop = 9,
-        .width = 6,
+        .width = 5,
         .height = 4,
         .paletteNum = 6,
         .baseBlock = 489,
     },
     [PSS_DATA_WINDOW_SKILLS_STATS_RIGHT] = {
         .bg = 0,
-        .tilemapLeft = 27,
+        .tilemapLeft = 26,
         .tilemapTop = 7,
-        .width = 3,
+        .width = 4,
         .height = 6,
         .paletteNum = 6,
         .baseBlock = 513,
@@ -638,16 +638,16 @@ static const struct WindowTemplate sPageSkillsTemplate[] =
         .width = 9,
         .height = 4,
         .paletteNum = 6,
-        .baseBlock = 531,
+        .baseBlock = 537,
     },
     [PSS_DATA_WINDOW_HP] = {
         .bg = 0,
-        .tilemapLeft = 15,
+        .tilemapLeft = 14,
         .tilemapTop = 7,
         .width = 7,
         .height = 2,
         .paletteNum = 6,
-        .baseBlock = 567,
+        .baseBlock = 573,
     },
 };
 static const struct WindowTemplate sPageMovesTemplate[] = // This is used for both battle and contest moves
@@ -3403,8 +3403,8 @@ static void BufferLeftColumnStats(void)
     DynamicPlaceholderTextUtil_Reset();
     //BufferStat(currentHPString, 0, sMonSummaryScreen->summary.currentHP, 0, 4);
     //BufferStat(maxHPString, 0, sMonSummaryScreen->summary.maxHP, 1, 4);
-    BufferStat(attackString, natureMod[STAT_ATK - 1], sMonSummaryScreen->summary.atk, 2, 7);
-    BufferStat(defenseString, natureMod[STAT_DEF - 1], sMonSummaryScreen->summary.def, 3, 7);
+    BufferStat(attackString, natureMod[STAT_ATK - 1], sMonSummaryScreen->summary.atk, 2, 6);
+    BufferStat(defenseString, natureMod[STAT_DEF - 1], sMonSummaryScreen->summary.def, 3, 6);
     DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsLeftColumnLayout);
 
     Free(currentHPString);
@@ -3418,7 +3418,7 @@ static void PrintLeftColumnStats(void)
     static const u8 sTextNatureNeutral[] = _("{COLOR}{01}");
     u8 * txtPtr;
 
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_STATS_LEFT), gStringVar4, 4, 1, 0, 0);
+    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_STATS_LEFT), gStringVar4, 2, 1, 0, 0);
     txtPtr = StringCopy(gStringVar1, sTextNatureNeutral);
     txtPtr = ConvertIntToDecimalStringN(txtPtr, sMonSummaryScreen->summary.currentHP, STR_CONV_MODE_RIGHT_ALIGN, 4);
     txtPtr[0] = CHAR_SLASH;
@@ -3433,15 +3433,15 @@ static void BufferRightColumnStats(void)
     const s8 *natureMod = gNatureStatTable[sMonSummaryScreen->summary.nature];
 
     DynamicPlaceholderTextUtil_Reset();
-    BufferStat(gStringVar1, natureMod[STAT_SPATK - 1], sMonSummaryScreen->summary.spatk, 0, 3);
-    BufferStat(gStringVar2, natureMod[STAT_SPDEF - 1], sMonSummaryScreen->summary.spdef, 1, 3);
-    BufferStat(gStringVar3, natureMod[STAT_SPEED - 1], sMonSummaryScreen->summary.speed, 2, 3);
+    BufferStat(gStringVar1, natureMod[STAT_SPATK - 1], sMonSummaryScreen->summary.spatk, 0, 4);
+    BufferStat(gStringVar2, natureMod[STAT_SPDEF - 1], sMonSummaryScreen->summary.spdef, 1, 4);
+    BufferStat(gStringVar3, natureMod[STAT_SPEED - 1], sMonSummaryScreen->summary.speed, 2, 4);
     DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsRightColumnLayout);
 }
 
 static void PrintRightColumnStats(void)
 {
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_STATS_RIGHT), gStringVar4, 2, 1, 0, 0);
+    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_STATS_RIGHT), gStringVar4, 4, 1, 0, 0);
 }
 
 static void PrintExpPointsNextLevel(void)

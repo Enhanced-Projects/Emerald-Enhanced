@@ -6218,12 +6218,84 @@ u8 GetBattleMonMoveSlot(struct BattlePokemon *battleMon, u16 move)
     return i;
 }
 
+static const u16 gRyuMegaWeightsTable[][2] = {
+    {SPECIES_MEGA_AMPHAROS, 810},
+    {SPECIES_MEGA_VENUSAUR, 811},
+    {SPECIES_MEGA_CHARIZARD_X, 812},
+    {SPECIES_MEGA_CHARIZARD_Y, 813},
+    {SPECIES_MEGA_MEWTWO_X, 814},
+    {SPECIES_MEGA_MEWTWO_Y, 815},
+    {SPECIES_MEGA_BLAZIKEN, 816},
+    {SPECIES_MEGA_MEDICHAM, 817},
+    {SPECIES_MEGA_HOUNDOOM, 818},
+    {SPECIES_MEGA_AGGRON, 819},
+    {SPECIES_MEGA_BANETTE, 820},
+    {SPECIES_MEGA_TYRANITAR, 821},
+    {SPECIES_MEGA_SCIZOR, 822},
+    {SPECIES_MEGA_PINSIR, 823},
+    {SPECIES_MEGA_AERODACTYL, 824},
+    {SPECIES_MEGA_LUCARIO, 825},
+    {SPECIES_MEGA_ABOMASNOW, 826},
+    {SPECIES_MEGA_BLASTOISE, 827},
+    {SPECIES_MEGA_KANGASKHAN, 828},
+    {SPECIES_MEGA_GYARADOS, 829},
+    {SPECIES_MEGA_ABSOL, 830},
+    {SPECIES_MEGA_ALAKAZAM, 831},
+    {SPECIES_MEGA_HERACROSS, 832},
+    {SPECIES_MEGA_MAWILE, 833},
+    {SPECIES_MEGA_MANECTRIC, 834},
+    {SPECIES_MEGA_GARCHOMP, 835},
+    {SPECIES_MEGA_LATIOS, 836},
+    {SPECIES_MEGA_LATIAS, 837},
+    {SPECIES_MEGA_SWAMPERT, 838},
+    {SPECIES_MEGA_SCEPTILE, 839},
+    {SPECIES_MEGA_SABLEYE, 840},
+    {SPECIES_MEGA_ALTARIA, 841},
+    {SPECIES_MEGA_GALLADE, 842},
+    {SPECIES_MEGA_AUDINO, 843},
+    {SPECIES_MEGA_SHARPEDO, 844},
+    {SPECIES_MEGA_SLOWBRO, 845},
+    {SPECIES_MEGA_STEELIX, 846},
+    {SPECIES_MEGA_PIDGEOT, 847},
+    {SPECIES_MEGA_GLALIE, 848},
+    {SPECIES_MEGA_DIANCIE, 849},
+    {SPECIES_MEGA_METAGROSS, 9429},
+    {SPECIES_MEGA_RAYQUAZA, 851},
+    {SPECIES_MEGA_CAMERUPT, 852},
+    {SPECIES_MEGA_LOPUNNY, 853},
+    {SPECIES_MEGA_SALAMENCE, 854},
+    {SPECIES_MEGA_BEEDRILL, 855},
+    {SPECIES_MEGA_GENGAR, 856},
+    {SPECIES_MEGA_GARDEVOIR, 857}
+};
+
+u32 RyuGetMegaWeight(u16 species)
+{
+    u16 i = 0;
+    for (i = 0; 1 < ARRAY_COUNT(gRyuMegaWeightsTable); i++)
+        {
+            if (species == gRyuMegaWeightsTable[i][0])
+                return gRyuMegaWeightsTable[i][1];
+        }
+    
+    return 1;
+}
+
 u32 GetBattlerWeight(u8 battlerId)
 {
     u32 i;
     u32 weight = GetPokedexHeightWeight(SpeciesToNationalPokedexNum(gBattleMons[battlerId].species), 1);
     u32 ability = GetBattlerAbility(battlerId);
     u32 holdEffect = GetBattlerHoldEffect(battlerId, TRUE);
+
+    if (gBattleMons[battlerId].species >= SPECIES_MEGA_AMPHAROS && gBattleMons[battlerId].species <= SPECIES_MEGA_GARDEVOIR)
+        weight = RyuGetMegaWeight(gBattleMons[battlerId].species);
+
+    /*if ((gBattleMons[battlerId].species) == SPECIES_MEGA_METAGROSS) this is for hardcoding weights in for other cases like special forms.
+        weight = 9429;
+
+    if ((gBattleMons[battlerId].species) == SPECIES_MEGA_METAGROSS)
+        weight = 9429;*/
 
     if (ability == ABILITY_HEAVY_METAL)
         weight *= 2;

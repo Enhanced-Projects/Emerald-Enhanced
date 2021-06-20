@@ -322,6 +322,7 @@ void NewGameInitData(void)
     VarSet(VAR_OPTIONS_HP_BAR_SPEED, 6);
     VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, originalSaveFileVersion);
     VarSet(VAR_RYU_LAST_ACH, 300);
+    VarSet(VAR_RYU_QUESTLINE_ID, 100); //No questline started
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;

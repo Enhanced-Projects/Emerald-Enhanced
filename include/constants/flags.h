@@ -118,13 +118,13 @@
 #define FLAG_RYU_DID_NOT_HELP_POKEFAN        0x66
 #define FLAG_RYU_REWARDED_FOR_HELPING_POKEFAN    0x67
 
-#define FLAG_UNUSED_0x68                     0x68
+#define FLAG_RYU_SLOWBRONITE                 0x68
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_TM54                   0x6A
 #define FLAG_RECEIVED_TM56                   0x6B
-#define FLAG_UNUSED_0x6C                     0x6C
-#define FLAG_RECEIVED_TM55                   0x6D
+#define FLAG_RYU_LATIOSITE                   0x6C
+#define FLAG_RYU_LATIASITE                   0x6D
 #define FLAG_RECEIVED_TM52                   0x6E
 #define FLAG_UNUSED_0x6F                     0x6F
 #define FLAG_UNUSED_0x70                     0x70
@@ -1025,7 +1025,7 @@
 #define FLAG_RYU_HOOPA_RAN                                          0x3D8
 #define FLAG_RYU_VOLCANION                                          0x3D9
 #define FLAG_RYU_VOLCANION_RAN                                      0x3DA
-#define FLAG_UNUSED_0x3DB                                           0x3DB
+#define FLAG_RYU_GIVEN_MEWTWO_MEGAS                                 0x3DB
 #define FLAG_UNUSED_0x3DC                                           0x3DC
 #define FLAG_UNUSED_0x3DD                                           0x3DD
 #define FLAG_UNUSED_0x3DE                                           0x3DE
@@ -1034,10 +1034,10 @@
 #define FLAG_HIDE_LILYCOVE_POKEMON_CENTER_CONTEST_LADY_MON          0x3E1
 #define FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY                       0x3E2
 #define FLAG_HIDE_PETALBURG_CITY_SCOTT                              0x3E3
-#define FLAG_ITEM_SNOWY_SHORE_DARK_WORLD_FIRE_STONE                          0x3E4 // EE-Unused
-#define FLAG_ITEM_SNOWY_SHORE_DARK_WORLD_                            0x3E5 // EE-Unused
+#define FLAG_ITEM_SNOWY_SHORE_DARK_WORLD_FIRE_STONE                 0x3E4 // EE-Unused
+#define FLAG_ITEM_SNOWY_SHORE_DARK_WORLD_                           0x3E5 // EE-Unused
 #define FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON                           0x3E6 // EE-Unused
-#define FLAG_UNUSED_0x3E7                                           0x3E7
+#define FLAG_RYU_DEFEATED_STEVEN_POSTGAME                           0x3E7
 
 // Item Ball Flags
 #define FLAG_ITEM_ROUTE_102_POTION                                  0x3E8
@@ -1696,7 +1696,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 53
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 54
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -1754,7 +1754,7 @@
 #define ACH_LOREMASTER  50 //GOLD Achievement, VERY HARD TO GET.
 #define ACH_TOURIST  51 //GOLD ACHIEVEMENT, VERY HARD TO GET.
 #define ACH_CRITCAP  52
-#define ACH_UNUSED_54  53
+#define ACH_POKEMON_TRAINER  53//player has 151 mons
 #define ACH_UNUSED_55  54
 #define ACH_UNUSED_56  55
 #define ACH_UNUSED_57  56

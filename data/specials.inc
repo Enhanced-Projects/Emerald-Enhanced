@@ -581,3 +581,4 @@ gSpecials:: @ 81DBA64
 	def_special Bag_ChooseMedicine
 	def_special RyuAlchemy_TryCraftingItem
 	def_special RyuCheckIfWaystoneShouldBeDisabled
+	def_special RyuGetTotalCaughtMons

@@ -120,13 +120,6 @@ MtPyre_Summit_EventScript_OldManNewTale:: @ 8232199
 	msgbox MtPyre_Summit_Text_HoennTrioTale, MSGBOX_DEFAULT
 	return
 
-MtPyre_Summit_EventScript_OldLady:: @ 82321A2
-	lock
-	faceplayer
-	msgbox Normal_old_lady
-	release
-	end
-
 Normal_old_lady:
 	.string "Have you met our grandkids?\nThey run the gym in that eastern island.\pIf you see them, tell them to\nvisit us sometime!$"
 
@@ -477,31 +470,23 @@ MPS_RemoveAquaMagmaObjects::
 	removeobject 13
 	removeobject 15
 	return
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 `
+
+script MtPyre_Summit_EventScript_OldLady {
+	lock
+	faceplayer
+	if (flag(FLAG_ENABLE_SHIP_SOUTHERN_ISLAND) == FALSE) {
+		if (flag(FLAG_SYS_GAME_CLEAR) == TRUE) {
+				msgbox(MP_OldPeopleGiveEonTicket)
+				giveitem(ITEM_EON_TICKET)
+				setflag(FLAG_ENABLE_SHIP_SOUTHERN_ISLAND)
+				setvar(VAR_DISTRIBUTE_EON_TICKET, 0)
+				release
+				end
+		}
+	}
+	msgbox(Normal_old_lady)
+	release
+	end
+}

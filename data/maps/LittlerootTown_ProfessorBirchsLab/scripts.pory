@@ -316,6 +316,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GiveCyndaquil:: @ 81FA06C
 	bufferspeciesname 0, SPECIES_CYNDAQUIL
 	setvar VAR_TEMP_1, SPECIES_CYNDAQUIL
 	givemon SPECIES_CYNDAQUIL, 5, ITEM_NONE
+	givepokedexflag SPECIES_CYNDAQUIL, TRUE
 	compare VAR_RESULT, 0
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_SendCyndaquilToParty
 	compare VAR_RESULT, 1
@@ -361,6 +362,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GiveTotodile:: @ 81FA10D
 	bufferspeciesname 0, SPECIES_TOTODILE
 	setvar VAR_TEMP_1, SPECIES_TOTODILE
 	givemon SPECIES_TOTODILE, 5, ITEM_NONE
+	givepokedexflag SPECIES_TOTODILE, TRUE
 	compare VAR_RESULT, 0
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_SendTotodileToParty
 	compare VAR_RESULT, 1
@@ -406,6 +408,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GiveChikorita:: @ 81FA1AE
 	bufferspeciesname 0, SPECIES_CHIKORITA
 	setvar VAR_TEMP_1, SPECIES_CHIKORITA
 	givemon SPECIES_CHIKORITA, 5, ITEM_NONE
+	givepokedexflag SPECIES_CHIKORITA, TRUE
 	compare VAR_RESULT, 0
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_SendChikoritaToParty
 	compare VAR_RESULT, 1
@@ -466,11 +469,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Birch:: @ 81FA25A
 
 LittlerootTown_ProfessorBirchsLab_EventScript_CanHaveAnyOneOfRarePokemon:: @ 81FA28A
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CanHaveAnyOneOfRarePokemon, MSGBOX_DEFAULT
-	release
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting:: @ 81FA294
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2, MSGBOX_DEFAULT
 	release
 	end
 
@@ -1006,3 +1004,21 @@ LittlerootTown_ProfessorBirchsLab_Text_ScottAboardSSTidalCall: @ 81FBD1A
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
 `
+
+script LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting {
+	specialvar(VAR_RESULT, RyuGetTotalCaughtMons)
+	if (var(VAR_RESULT) >= 151){
+		if (flag(FLAG_RYU_GIVEN_MEWTWO_MEGAS) == FALSE){
+			msgbox(format("Hey there, {PLAYER}! It seems like you're well on your way to becoming a pokemon master! Accept these gifts, they should come in handy."))
+			giveitem(ITEM_MEWTWONITE_Y, 1)
+			giveitem(ITEM_MEWTWONITE_X, 1)
+			ach(give, ACH_POKEMON_TRAINER)
+			setflag(FLAG_RYU_GIVEN_MEWTWO_MEGAS)
+			release
+			end
+		}
+	}
+	msgbox(LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2)
+	release
+	end
+}

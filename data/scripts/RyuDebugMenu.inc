@@ -255,9 +255,41 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	callnative SetAlchemyEffect
+	applymovement 1, SantanaFivePaces
+	applymovement OBJ_EVENT_ID_PLAYER, PlayerFivePaces
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox SantanasCircle_Text_ThreeSeconds, MSGBOX_DEFAULT
 	release
 	end
+
+SantanasCircle_Text_ThreeSeconds:
+	.string "Three seconds…$"
+
+	SantanaFivePaces:
+	walk_in_place_slow_right
+	delay_8
+	walk_slow_right
+	step_end
+	
+PlayerFivePaces:
+	walk_in_place_slow_left
+	delay_8
+	walk_slow_left
+	step_end
+
+RDB_DoLittlerootLatiCheck::
+	buffernumberstring 0, VAR_ROAMER_POKEMON
+	buffernumberstring 1, VAR_LITTLEROOT_INTRO_STATE
+	msgbox RDBLRT2
+	closemessage
+	release
+	end
+
+RDBTeleport:
+	.string "Teleport?$"
+
+RDBLRT2:
+	.string "Your roamer is {STR_VAR_1}\nYour Tutorial state is {STR_VAR_2}$"
 
 RDB_LifeSkills:
 	.string "Alchemy- EXP: {STR_VAR_1} Level: {STR_VAR_2}\n"
@@ -501,7 +533,7 @@ RyuDebug_GiveAllMons::
 	goto RyuDebug_ReturnCall
 	
 RyuDebug_ReturnCall::
-	compare VAR_TEMP_0, 419
+	compare VAR_TEMP_0, 152
 	goto_if_eq RyuDebugGivePokeDone
 	goto RyuDebug_GiveAllMons
 	
@@ -591,6 +623,7 @@ RyuDebug_SkipTutorial::
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
 	setflag FLAG_HIDE_ROUTE_103_RIVAL
 	setflag FLAG_SYS_POKEDEX_GET
+	setflag FLAG_SYS_GAME_CLEAR
 	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setflag FLAG_SYS_NATIONAL_DEX

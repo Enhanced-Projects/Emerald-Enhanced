@@ -3,9 +3,9 @@ Common_EventScript_PkmnCenterNurse:: @ 827195A
     incrementgamestat GAME_STAT_USED_POKECENTER
     readgamestat GAME_STAT_USED_POKECENTER
     compare VAR_RESULT, 256
-    call_if_eq PkmnCenterNurse_MegaAudinite
+    call_if_ge PkmnCenterNurse_MegaAudinite
     compare VAR_RESULT, 50
-    call_if_eq RyuCheckIfQualifiesForNurseQuest
+    call_if_ge RyuCheckIfQualifiesForNurseQuest
     call Ryu_CheckHealPermissions
     switch VAR_RYU_QUEST_NURSE
     case 1, PCN_Stage1HealMsg
@@ -129,6 +129,7 @@ PkmnCenterNurse_MegaAudinite::
     goto_if_set FLAG_RYU_GOT_AUDINITE, ryu_return
     setflag FLAG_RYU_GOT_AUDINITE
     givemon SPECIES_AUDINO, 50, ITEM_AUDINITE
+    givepokedexflag SPECIES_AUDINO, TRUE
     msgbox PCN_AudiniteExplain
     closemessage
     return
