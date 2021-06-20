@@ -255,12 +255,27 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	msgbox RDBTeleport, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_ne RDB_DoLittlerootLatiCheck
-	warpsilent MAP_SOUTHERN_ISLAND_INTERIOR, 255, 13, 10
+	applymovement 1, SantanaFivePaces
+	applymovement OBJ_EVENT_ID_PLAYER, PlayerFivePaces
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox SantanasCircle_Text_ThreeSeconds, MSGBOX_DEFAULT
 	release
 	end
+
+SantanasCircle_Text_ThreeSeconds:
+	.string "Three seconds…$"
+
+	SantanaFivePaces:
+	walk_in_place_slow_right
+	delay_8
+	walk_slow_right
+	step_end
+	
+PlayerFivePaces:
+	walk_in_place_slow_left
+	delay_8
+	walk_slow_left
+	step_end
 
 RDB_DoLittlerootLatiCheck::
 	buffernumberstring 0, VAR_ROAMER_POKEMON
