@@ -310,6 +310,7 @@ SECTIONS {
         src/international_string_util.o(.text);
         src/dexnav.o(.text);
         src/custom_interface.o(.text);
+        src/rhh_copyright.o(.text);
     } =0
 
     script_data :
@@ -653,6 +654,7 @@ SECTIONS {
         src/dns.o(.rodata);
         src/dexnav.o(.rodata);
         src/custom_interface.o(.rodata);
+        src/rhh_copyright.o(.rodata);
     } =0
 
     song_data :

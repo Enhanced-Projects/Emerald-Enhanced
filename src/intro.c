@@ -23,6 +23,7 @@
 #include "sound.h"
 #include "util.h"
 #include "title_screen.h"
+#include "rhh_copyright.h"
 #include "constants/rgb.h"
 #include "constants/battle_anim.h"
 
@@ -43,11 +44,11 @@
  *  - Initialize gHeap
  * 
  * MainCB2_Intro
- *  - Spawn Task_IntroLoadPart1Graphics
+ *  - Spawn Task_Scene1_Load
  *  - If any keys are pressed during the intro, advance to
  *    MainCB2_EndIntro (which will then kill all tasks).
  * 
- * Task_IntroLoadPart1Graphics
+ * Task_Scene1_Load
  * Task_IntroFadeIn (frame counter starts at 0 here)
  * Task_IntroWaterDrops
  *  - At frame 128 of this state, spawn Task_IntroWaterDrops_1
@@ -898,7 +899,7 @@ static const struct SpritePalette gIntroRayquazaGlowPalette[] =
 
 // this file's functions
 static void MainCB2_EndIntro(void);
-static void Task_IntroLoadPart1Graphics(u8);
+static void Task_Scene1_Load(u8);
 static u8 CreateWaterDrop(s16, s16, u16, u16, u16, u8);
 static void Task_IntroFadeIn(u8);
 static void intro_reset_and_hide_bgs(void);
@@ -945,6 +946,17 @@ static void sub_816F318(struct Sprite *);
 static void SpriteCB_IntroGraphicsBicycle(struct Sprite *);
 static void SpriteCB_IntroGraphicsFlygon(struct Sprite *);
 static u8 CreatePart1Animations(s16, s16, s16);
+
+static void VBlankCB_PretIntro()
+{
+    LoadOam();
+    ProcessSpriteCopyRequests();
+    TransferPlttBuffer();
+    ScanlineEffect_InitHBlankDmaTransfer();
+    RunTasks();
+    AnimateSprites();
+    BuildOamBuffer();
+}
 
 static void VBlankCB_Intro(void)
 {
@@ -1003,39 +1015,74 @@ static u8 SetUpCopyrightScreen(void)
         CpuFill32(0, (void *)OAM, OAM_SIZE);
         CpuFill16(0, (void *)(PLTT + 2), PLTT_SIZE - 2);
         ResetPaletteFade();
-        LoadCopyrightGraphics(0, 0x3800, 0);
         ScanlineEffect_Stop();
         ResetTasks();
         ResetSpriteData();
         FreeAllSpritePalettes();
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0x10, 0, RGB_WHITEALPHA);
         SetGpuReg(REG_OFFSET_BG0CNT, BGCNT_PRIORITY(0)
                                    | BGCNT_CHARBASE(0)
                                    | BGCNT_SCREENBASE(7)
                                    | BGCNT_16COLOR
                                    | BGCNT_TXT256x256);
         EnableInterrupts(INTR_FLAG_VBLANK);
-        SetVBlankCallback(VBlankCB_Intro);
         REG_DISPCNT = DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_BG0_ON;
+
+        gMain.state++;
+        break;
+
+    case 1:
+        RhhIntro_InitCopyrightBgs();
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0x10, 0, RGB_WHITEALPHA);
+        SetVBlankCallback(VBlankCB_PretIntro);
         SetSerialCallback(SerialCB_CopyrightScreen);
         GameCubeMultiBoot_Init(&gMultibootProgramStruct);
     default:
+        RunTasks();
         UpdatePaletteFade();
         gMain.state++;
         GameCubeMultiBoot_Main(&gMultibootProgramStruct);
         break;
-    case 140:
+
+    case 30:
+        RhhIntro_LoadCopyrightBgGraphics();
+        BeginNormalPaletteFade(0x00000001, 0, 0x10, 0, RGB_BLACK); 
+        UpdatePaletteFade(); 
+        GameCubeMultiBoot_Main(&gMultibootProgramStruct);
+        gMain.state++;
+        break;
+
+    case 31:
+        RhhIntro_LoadCopyrightSpriteGraphics();
+        RhhIntro_CreateCopyRightSprites();
+        UpdatePaletteFade(); 
+        GameCubeMultiBoot_Main(&gMultibootProgramStruct);
+        gMain.state++;
+        break;
+
+    case 45:
+        RhhIntro_ShowRhhCredits();
+        UpdatePaletteFade();
+        GameCubeMultiBoot_Main(&gMultibootProgramStruct);
+        gMain.state++;
+        break;
+
+    case 253:
         GameCubeMultiBoot_Main(&gMultibootProgramStruct);
         if (gMultibootProgramStruct.gcmb_field_2 != 1)
         {
-            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+            BeginNormalPaletteFade(0xFFFFFFFF, 3, 0, 0x10, RGB_BLACK);
             gMain.state++;
         }
         break;
-    case 141:
+    case 254:
         if (UpdatePaletteFade())
             break;
-        CreateTask(Task_IntroLoadPart1Graphics, 0);
+        RhhIntro_DestroyRhhCreditSprites();
+        gMain.state++;
+        break;
+
+    case 255:
+        CreateTask(Task_Scene1_Load, 0);
         SetMainCallback2(MainCB2_Intro);
         if (gMultibootProgramStruct.gcmb_field_2 != 0)
         {
@@ -1081,7 +1128,7 @@ void CB2_InitCopyrightScreenAfterTitleScreen(void)
     SetUpCopyrightScreen();
 }
 
-static void Task_IntroLoadPart1Graphics(u8 taskId)
+static void Task_Scene1_Load(u8 taskId)
 {
     SetVBlankCallback(NULL);
     gIntroCharacterGender = Random() & 1;
