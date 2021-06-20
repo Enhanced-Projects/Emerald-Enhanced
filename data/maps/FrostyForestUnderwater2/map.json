@@ -16,7 +16,7 @@
     {
       "direction": "emerge",
       "offset": 0,
-      "map": "MAP_FROSTY_FOREST_UNDERWATER_CAVE"
+      "map": "MAP_FROSTY_GROTTO"
     }
   ],
   "object_events": [

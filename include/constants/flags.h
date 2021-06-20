@@ -402,8 +402,8 @@
 #define FLAG_RYU_AQUA_3_NOTIFY               0x179 // Third aqua notification given
 #define FLAG_RYU_HIDE_AQUA_MTPYRE_EXT        0x17A // Group of aqua goons on mtpyre
 #define FLAG_RYU_HIDE_NPCS_MTPYRE_SUMMIT     0x17B // Aqua and Magma goons in the mountaintop
-#define FLAG_REMATCH_MIGUEL                  0x17C // EE-Unused
-#define FLAG_REMATCH_TIMOTHY                 0x17D // EE-Unused
+#define FLAG_POIPOLE                         0x17C
+#define FLAG_ITEM_MIRAGE_CAVE_ROCK_INCENSE   0x17D
 #define FLAG_REMATCH_SHELBY                  0x17E // EE-Unused
 #define FLAG_REMATCH_CALVIN                  0x17F // EE-Unused
 #define FLAG_REMATCH_ELLIOT                  0x180 // EE-Unused

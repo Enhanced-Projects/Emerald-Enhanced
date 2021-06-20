@@ -30,14 +30,14 @@
   ],
   "warp_events": [
     {
-      "x": 7,
+      "x": 5,
       "y": 8,
       "elevation": 0,
       "dest_map": "MAP_SNOWY_SHORE_DARK_WORLD",
       "dest_warp_id": 0
     },
     {
-      "x": 8,
+      "x": 6,
       "y": 8,
       "elevation": 0,
       "dest_map": "MAP_SNOWY_SHORE_DARK_WORLD",
