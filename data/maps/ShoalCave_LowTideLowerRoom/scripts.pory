@@ -60,12 +60,3 @@ ShoalCave_LowTideLowerRoom_Text_EverythingStartsWithFocus: @ 823728D
 	.string "Everything starts with focus!$"
 
 `
-
-script SCV_SlowBrownite {
-	lockall
-	finditem(ITEM_SLOWBRONITE)
-	setflag(FLAG_RYU_SLOWBRONITE)
-	removeobject(3)
-	release
-	end
-}
