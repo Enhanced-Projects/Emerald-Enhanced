@@ -2301,7 +2301,7 @@ bool8 ScrCmd_warpsootopolislegend(struct ScriptContext *ctx)
 
 bool8 ScrCmd_createfollower(struct ScriptContext *ctx)
 {
-    u8 graphicsId = ScriptReadByte(ctx);
+    u16 graphicsId = ScriptReadHalfword(ctx);
     const void *script = (const void *)ScriptReadWord(ctx);
     u8 direction = ScriptReadByte(ctx);
     CreateFollowerObjectEvent(graphicsId, script, direction);
