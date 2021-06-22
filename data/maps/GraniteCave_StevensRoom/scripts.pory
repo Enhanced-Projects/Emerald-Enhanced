@@ -6,7 +6,7 @@ GraniteCave_StevensRoom_MapScripts:: @ 822DC7A
 GraniteCave_StevensRoom_EventScript_Steven:: @ 822DC7B
 	lock
 	faceplayer
-	compare VAR_RYU_QUESTLINE_ID, 2
+	compare VAR_RYU_QUESTLINE_ID, 0
 	goto_if_ne GC_NotDevon
 	msgbox GraniteCave_StevensRoom_Text_ImStevenLetterForMe, MSGBOX_DEFAULT
 	setvar VAR_0x8004, ITEM_LETTER

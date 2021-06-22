@@ -621,7 +621,7 @@
 #define MAP_CRAGGY_COAST_UNDERWATER_CAVE           (8 | (27 << 8))
 #define MAP_FROSTY_FOREST_UNDERWATER               (9 | (27 << 8))
 #define MAP_FROSTY_FOREST_UNDERWATER2              (10 | (27 << 8))
-#define MAP_FROSTY_FOREST_UNDERWATER_CAVE          (11 | (27 << 8))
+#define MAP_FROSTY_GROTTO                          (11 | (27 << 8))
 #define MAP_FROSTY_FOREST_HOUSE                    (12 | (27 << 8))
 #define MAP_FROSTBITE_FIELD_HOUSE                  (13 | (27 << 8))
 #define MAP_IGLOO1                                 (14 | (27 << 8))
