@@ -13298,7 +13298,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChallengerRobert[] = {
 	.iv = 255,
 	.lvl = 106,
 	.species = SPECIES_HOUNDOOM,
-	.heldItem = ITEM_HOUNDOOMITE,
+	.heldItem = ITEM_HOUNDOOMINITE,
 	.ability = 0,
 	.moves = {MOVE_FIRE_BLAST, MOVE_DARK_PULSE, MOVE_SOLAR_BEAM, MOVE_SLUDGE_BOMB},
 	},
