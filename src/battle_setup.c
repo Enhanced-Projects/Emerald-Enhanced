@@ -440,6 +440,8 @@ void BattleSetup_StartLegendaryBattle(void)
         CreateBattleStartTask(B_TRANSITION_RAYQUAZA, MUS_VS_RAYQUAZA);
         break;
     case SPECIES_DEOXYS:
+    case SPECIES_HOOPA:
+    case SPECIES_POIPOLE:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEOXYS);
         break;
     case SPECIES_ZAPDOS:
@@ -451,6 +453,8 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_SUICUNE:
     case SPECIES_RAIKOU:
     case SPECIES_ENTEI:
+    case SPECIES_HEATRAN:
+    case SPECIES_VOLCANION:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEN);
         break;
     case SPECIES_SPIRITOMB:

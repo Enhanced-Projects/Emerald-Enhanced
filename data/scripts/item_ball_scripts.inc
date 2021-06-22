@@ -11,6 +11,10 @@ BananaSlakothGarden_EventScript_ItemRevivalHerb::
 	finditem ITEM_REVIVAL_HERB
 	end
 
+MirageCave_EventScript_ItemRockIncense::
+	finditem ITEM_ROCK_INCENSE
+	end
+
 MirageCave_EventScript_ItemRareBone1::
 	finditem ITEM_RARE_BONE
 	end

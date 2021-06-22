@@ -24,4 +24,13 @@ RyuLegendary_CaughtHoopa::
 
 RyuLegendary_IntroHoopa: @put your intro here
 	.string "$"
+
+MirageCave_LakeCave_EventScript_GraveStone::
+	msgbox MirageCave_LakeCave_Text_GraveStone, MSGBOX_SIGN
+	end
+
+MirageCave_LakeCave_Text_GraveStone:
+	.string "It appear to be a gravestone.\n"
+	.string "The text is mostly faded away.$"
+
 `

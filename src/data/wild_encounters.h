@@ -373,7 +373,7 @@ const struct WildPokemon gFrostyForestUnderwater_WaterMons[] =
 
 const struct WildPokemonInfo gFrostyForestUnderwater_WaterMonsInfo = {4, gFrostyForestUnderwater_WaterMons};
 
-const struct WildPokemon gFrostyForestUnderwaterCave_LandMons[] =
+const struct WildPokemon gFrostyGrotto_LandMons[] =
 {
 	{35, 45, SPECIES_ZOROARK},
 	{35, 45, SPECIES_KROKOROK},
@@ -389,9 +389,9 @@ const struct WildPokemon gFrostyForestUnderwaterCave_LandMons[] =
 	{35, 45, SPECIES_ZWEILOUS},
 };
 
-const struct WildPokemonInfo gFrostyForestUnderwaterCave_LandMonsInfo = {15, gFrostyForestUnderwaterCave_LandMons};
+const struct WildPokemonInfo gFrostyGrotto_LandMonsInfo = {15, gFrostyGrotto_LandMons};
 
-const struct WildPokemon gFrostyForestUnderwaterCave_WaterMons[] =
+const struct WildPokemon gFrostyGrotto_WaterMons[] =
 {
 	{35, 45, SPECIES_MAGIKARP},
 	{35, 45, SPECIES_MAGIKARP},
@@ -400,9 +400,9 @@ const struct WildPokemon gFrostyForestUnderwaterCave_WaterMons[] =
 	{35, 45, SPECIES_KINGDRA},
 };
 
-const struct WildPokemonInfo gFrostyForestUnderwaterCave_WaterMonsInfo = {4, gFrostyForestUnderwaterCave_WaterMons};
+const struct WildPokemonInfo gFrostyGrotto_WaterMonsInfo = {4, gFrostyGrotto_WaterMons};
 
-const struct WildPokemon gFrostyForestUnderwaterCave_FishingMons[] =
+const struct WildPokemon gFrostyGrotto_FishingMons[] =
 {
 	{35, 45, SPECIES_MAGIKARP},
 	{35, 45, SPECIES_MAGIKARP},
@@ -416,7 +416,7 @@ const struct WildPokemon gFrostyForestUnderwaterCave_FishingMons[] =
 	{35, 45, SPECIES_CLOYSTER},
 };
 
-const struct WildPokemonInfo gFrostyForestUnderwaterCave_FishingMonsInfo = {30, gFrostyForestUnderwaterCave_FishingMons};
+const struct WildPokemonInfo gFrostyGrotto_FishingMonsInfo = {30, gFrostyGrotto_FishingMons};
 
 const struct WildPokemon gFrostbiteField_LandMons[] =
 {
@@ -650,6 +650,51 @@ const struct WildPokemon gDesertTombCore_LandMons[] = //Route 111 cave B2F
 	{55, 65, SPECIES_TERRAKION},
 };
 const struct WildPokemonInfo gDesertTombCore_LandMonsInfo = {5, gDesertTombCore_LandMons};
+
+const struct WildPokemon gMirageCave_LandMons[] =
+{
+	{55, 65, SPECIES_WYNAUT},
+	{55, 65, SPECIES_AZUMARILL},
+	{55, 65, SPECIES_WHIMSICOTT},
+	{55, 65, SPECIES_CLEFABLE},
+	{55, 64, SPECIES_WOBBUFFET},
+	{55, 65, SPECIES_GARDEVOIR},
+	{55, 65, SPECIES_REUNICLUS},
+	{55, 65, SPECIES_BEHEEYEM},
+	{55, 65, SPECIES_SLOWBRO},
+	{55, 65, SPECIES_SLOWKING},
+	{55, 65, SPECIES_SYLVEON},
+	{55, 65, SPECIES_ESPEON},
+};
+
+const struct WildPokemonInfo gMirageCave_LandMonsInfo = {20, gMirageCave_LandMons};
+
+const struct WildPokemon gMirageCave_WaterMons[] =
+{
+	{35, 45, SPECIES_AZUMARILL},
+	{35, 45, SPECIES_BRIONNE},
+	{35, 45, SPECIES_SLOWBRO},
+	{35, 45, SPECIES_SLOWKING},
+	{35, 45, SPECIES_PRIMARINA},
+};
+
+const struct WildPokemonInfo gMirageCave_WaterMonsInfo = {4, gMirageCave_WaterMons};
+
+const struct WildPokemon gMirageCave_FishingMons[] =
+{
+	{35, 45, SPECIES_LUVDISC},//70% old
+	{35, 45, SPECIES_LUVDISC},//30% old
+	{35, 45, SPECIES_LUVDISC},//60% good
+	{35, 45, SPECIES_LUVDISC},//20% good
+	{35, 45, SPECIES_LUMINEON},//20% good
+	{35, 45, SPECIES_LUMINEON},//40% super
+	{35, 45, SPECIES_GOREBYSS},//40% super
+	{35, 45, SPECIES_GOREBYSS},//15% super
+	{35, 45, SPECIES_RELICANTH},//4% super
+	{35, 45, SPECIES_RELICANTH},//1% super
+};
+
+const struct WildPokemonInfo gMirageCave_FishingMonsInfo = {30, gMirageCave_FishingMons};
 //End custom locations
 
 const struct WildPokemon gRoute101_LandMons[] =
@@ -3971,12 +4016,12 @@ const struct WildPokemonHeader gWildMonHeaders[] =
 		.fishingMonsInfo = NULL,
 	},
 	{
-		.mapGroup = MAP_GROUP(FROSTY_FOREST_UNDERWATER_CAVE),
-		.mapNum = MAP_NUM(FROSTY_FOREST_UNDERWATER_CAVE),
-		.landMonsInfo = &gFrostyForestUnderwaterCave_LandMonsInfo,
-		.waterMonsInfo = &gFrostyForestUnderwaterCave_WaterMonsInfo,
+		.mapGroup = MAP_GROUP(FROSTY_GROTTO),
+		.mapNum = MAP_NUM(FROSTY_GROTTO),
+		.landMonsInfo = &gFrostyGrotto_LandMonsInfo,
+		.waterMonsInfo = &gFrostyGrotto_WaterMonsInfo,
 		.rockSmashMonsInfo = NULL,
-		.fishingMonsInfo = &gFrostyForestUnderwaterCave_FishingMonsInfo,
+		.fishingMonsInfo = &gFrostyGrotto_FishingMonsInfo,
 	},
 	{
 		.mapGroup = MAP_GROUP(FROSTBITE_FIELD),

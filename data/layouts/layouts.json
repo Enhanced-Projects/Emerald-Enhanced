@@ -534,7 +534,7 @@
     {
       "id": "LAYOUT_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
       "name": "LittlerootTown_BrendansHouse_1F_Layout",
-      "width": 11,
+      "width": 30,
       "height": 9,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BrendansDawnsHouse",
@@ -5122,7 +5122,7 @@
       "blockdata_filepath": "data/layouts/SnowyShore_MrFrigusHouse/map.bin"
     },
     {
-      "id": "LAYOUT_FROSTY_FOREST_UNDERWATER_CAVE",
+      "id": "LAYOUT_FROSTY_GROTTO",
       "name": "FrostyForestUnderwaterCave_Layout",
       "width": 60,
       "height": 55,
@@ -5164,7 +5164,7 @@
     {
       "id": "LAYOUT_MIRAGE_CAVE",
       "name": "MirageCave_Layout",
-      "width": 66,
+      "width": 67,
       "height": 55,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_MirageIsland",
