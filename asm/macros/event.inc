@@ -1616,7 +1616,7 @@
 	@creates a follower using OBJ_EVENT_GFX_name, Script of said follower, and which direction they start at. Also copies follower data to SAV so they persist.
 	.macro createfollower graphicsId:req script:req direction:req
 	.byte 0xe3
-	.byte \graphicsId
+	.2byte \graphicsId
 	.4byte \script
 	.byte \direction
 	.endm

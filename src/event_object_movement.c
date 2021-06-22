@@ -1629,7 +1629,7 @@ const struct ObjectEventTemplate gFollowerObjectEventTemplate = {
     .flagId = 0,
 };
 
-u8 CreateFollowerObjectEvent(u8 graphicsId, const u8 *script, int direction)
+u8 CreateFollowerObjectEvent(u16 graphicsId, const u8 *script, int direction)
 {
     int i;
     int x, y;
