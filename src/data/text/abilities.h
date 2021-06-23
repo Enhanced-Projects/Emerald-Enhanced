@@ -227,6 +227,7 @@ static const u8 sFierceKicksDescription[] = _("Boosts kicking moves.");
 static const u8 sArmoredDescription[] = _("Resists Fighting moves.");
 static const u8 sDetonateDescription[] = _("Normal moves become Fire.");
 static const u8 sGlacialDescription[] = _("Moving last boosts power.");
+static const u8 sVampiricDescription[] = _("Biting moves restore HP.");
 
 const u8 gAbilityNames[ABILITIES_COUNT_GEN7][ABILITY_NAME_LENGTH + 1] =
 {
@@ -471,6 +472,7 @@ const u8 gAbilityNames[ABILITIES_COUNT_GEN7][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_ARMORED] = _("Armored"),
     [ABILITY_DETONATE] = _("Detonate"),
     [ABILITY_GLACIAL] = _("Glacial"),
+    [ABILITY_VAMPIRIC] = _("Vampiric"),
 };
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT_GEN7] =
@@ -716,4 +718,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT_GEN7] =
     [ABILITY_ARMORED] = sArmoredDescription,
     [ABILITY_DETONATE] = sDetonateDescription,
     [ABILITY_GLACIAL] = sGlacialDescription,
+    [ABILITY_VAMPIRIC] = sVampiricDescription,
 };

@@ -361,5 +361,6 @@ extern const u8 BattleScript_EmergencyExitWildNoPopUp[];
 extern const u8 BattleScript_CheekPouchActivates[];
 extern const u8 BattleScript_PreventFireAttackInRain[];
 extern const u8 BattleScript_PreventWaterAttackInSun[];
+extern const u8 BattleScript_VampiricHealActivates[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

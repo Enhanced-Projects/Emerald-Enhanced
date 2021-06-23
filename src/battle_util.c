@@ -4708,6 +4708,19 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 effect++;
             }
             break;
+        case ABILITY_VAMPIRIC:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && gBattleMons[gBattlerAttacker].hp != 0
+             && gBattleMoves[gCurrentMove].flags &  FLAG_IS_BITE_MOVE)
+            {
+                gBattleMoveDamage = (gSpecialStatuses[gBattlerTarget].dmg / 2);
+                if (gBattleMoveDamage <= 0)
+                    gBattleMoveDamage = 1;
+                gBattleMoveDamage *= -1;
+                BattleScriptExecute(BattleScript_VampiricHealActivates);
+                effect++;
+            }
+            break;
         }
         break;
     case ABILITYEFFECT_MOVE_END_OTHER: // Abilities that activate on *another* battler's moveend: Dancer, Soul-Heart, Receiver, Symbiosis
