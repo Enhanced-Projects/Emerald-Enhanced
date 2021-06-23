@@ -5123,13 +5123,13 @@
     },
     {
       "id": "LAYOUT_FROSTY_GROTTO",
-      "name": "FrostyForestUnderwaterCave_Layout",
+      "name": "FrostyGrotto_Layout",
       "width": 60,
       "height": 55,
       "primary_tileset": "gTileset_Snowy",
       "secondary_tileset": "gTileset_MeteorFalls",
-      "border_filepath": "data/layouts/FrostyForestUnderwaterCave/border.bin",
-      "blockdata_filepath": "data/layouts/FrostyForestUnderwaterCave/map.bin"
+      "border_filepath": "data/layouts/FrostyGrotto/border.bin",
+      "blockdata_filepath": "data/layouts/FrostyGrotto/map.bin"
     },
     {
       "id": "LAYOUT_FROSTY_FOREST_HOUSE",
