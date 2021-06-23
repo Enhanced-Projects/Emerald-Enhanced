@@ -255,10 +255,8 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	applymovement 1, SantanaFivePaces
-	applymovement OBJ_EVENT_ID_PLAYER, PlayerFivePaces
-	waitmovement OBJ_EVENT_ID_PLAYER
-	msgbox SantanasCircle_Text_ThreeSeconds, MSGBOX_DEFAULT
+	@clearflag FLAG_FINISHED_POKEFAN_DAILY
+	giveegg SPECIES_HITMONTOP
 	release
 	end
 

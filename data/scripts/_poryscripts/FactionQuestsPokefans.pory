@@ -1,0 +1,115 @@
+//Pokefans stuff
+
+
+//Procedural components
+const FETCH_TYPE = 1
+const CAPTURE_TYPE = 2
+const TRAVEL_TYPE = 3
+const HATCH_TYPE = 4
+
+
+script(global) RyuPokefansDailyQuest  {
+     if (flag(FLAG_FINISHED_POKEFAN_DAILY) == TRUE) { //quest done
+        msgbox("We're all happy with what we\nhave at the moment, thanks!")
+        release
+        end
+    }
+
+    checkfactionstanding(FACTION_POKEFANS, 200)
+
+    if (var(VAR_RESULT) == TRUE) {
+        msgbox("I'm so glad to see you are\ndoing well!\pThe other Pokefans all adore you.\nYou have your own fanclub!")
+        release
+        end
+    }
+
+    if (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_POKEFANS) { //currently doing a daily quest for this faction
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+            case FETCH_TYPE:
+                checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                switch(var(VAR_RESULT)) {
+                    case TRUE:
+                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        goto(CommonPokefansRewardScript)
+                        release
+                        end
+                    case FALSE:
+                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        msgbox("Hello, dear, we're still trying\nto get {STR_VAR_1} {STR_VAR_2}.")
+                        release
+                        end
+                }
+            case HATCH_TYPE:
+                checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
+                compare(VAR_RESULT, 6)
+                call_if_lt(RyuSetLessCompareResult)
+                compare(VAR_RESULT, 6)
+                call_if_ge(RyuSetGreaterCompareResult)
+                switch(var(VAR_TEMP_A)) {
+                    case 0:
+                        bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                        msgbox(format("Oh! So it was a {STR_VAR_1}! It's so cute! Please take care of this Pokemon for us!"))
+                        goto(CommonPokefansRewardScript)
+                        release
+                        end
+                    case 1:
+                        msgbox(format("Have you hatched that egg yet? I want to see what it is!"))
+                        release
+                        end
+                }
+                
+        }
+    }
+    elif (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) != FACTION_POKEFANS) {//currently doing a daily for another faction
+        setvar(VAR_TEMP_9, FACTION_POKEFANS)
+        callnative(RyuSummonOriginalNPCscript)
+        end
+    }
+    setflag(FLAG_DAILY_QUEST_ACTIVE)
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_POKEFANS)
+    random(3)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_POKE_DOLL)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
+            msgbox("Hello, dear.\pWe're trying to find some dolls\nto give to our kids.\pPlease find us 5 Poke Dolls.")
+        case 1:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_HEART_SCALE)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
+            msgbox(PokefansQuest2Desc)
+        case 2:
+            random(5)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, HATCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            callnative(RyuSetupEggHatchQuest)
+            giveegg(VAR_RYU_DAILY_QUEST_TARGET)
+            msgbox(PokefansQuest3Desc)
+        
+    }
+    closemessage
+    release
+    end
+}
+
+
+//strings
+
+text PokefansQuest2Desc {
+    "Hi, {PLAYER}!\n"
+    "Is there a small chance you could\l"
+    "find us five Heart Scales?\p"
+    "They're beautiful collector's items\n"
+    "and we want to reward them for\l"
+    "a talent contest!"
+}
+
+text PokefansQuest3Desc {
+    "Hi, {PLAYER}!\n"
+    "We recently received an Egg that was\l"
+    "anonymously dropped off.\p"
+    "Is there any chance you could hatch\n"
+    "it for us?"
+}

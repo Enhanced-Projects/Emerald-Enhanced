@@ -1,0 +1,78 @@
+//professionals quests
+
+//Procedural components
+const FETCH_TYPE = 1
+const CAPTURE_TYPE = 2
+const TRAVEL_TYPE = 3
+const HATCH_TYPE = 4
+
+script(global) RyuProfessionalsDailyQuest  {
+     if (flag(FLAG_FINISHED_PROFESSIONAL_DAILY) == TRUE) { //quest done
+        msgbox("I'm currently working,\nPlease come back later.")
+        release
+        end
+    }
+
+    checkfactionstanding(FACTION_PROFESSIONALS, 200)
+
+    if (var(VAR_RESULT) == TRUE) {
+        msgbox("Heya Union Rep! All things\non this front appear to be\lgoing smoothly!")
+        release
+        end
+    }
+
+    if (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_PROFESSIONALS) { //currently doing a daily quest for this faction
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+            case FETCH_TYPE:
+                checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                switch(var(VAR_RESULT)) {
+                    case TRUE:
+                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        goto(CommonProfessionalsRewardScript)
+                    case FALSE:
+                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        msgbox("Ahh, {PLAYER}!\nHave you brought the {STR_VAR_1} {STR_VAR_2} yet?")
+                        release
+                        end
+                }
+            case CAPTURE_TYPE:
+                end
+        }
+
+    }
+    elif (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) != FACTION_PROFESSIONALS) {//currently doing a daily for another faction
+        setvar(VAR_TEMP_9, FACTION_PROFESSIONALS)
+        callnative(RyuSummonOriginalNPCscript)
+        end
+    }
+
+    random(2)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SODA_POP)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 12)
+            msgbox(ProfessionalsQuestDesc1)
+        case 1:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_HYPER_POTION)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
+            msgbox("I'm too busy to travel to a\nPokemon Center.\pDo you happen to have a couple\nHyper Potions?\pI'll be able to continue my work.")
+    }
+    setflag(FLAG_DAILY_QUEST_ACTIVE)
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
+    closemessage
+    release
+    end
+}
+
+//strings
+text ProfessionalsQuestDesc1 {
+    "We're running low on energy.\p"
+    "Can you bring us some Soda Pops?\p"
+    "We're in a crunch to meet\n"
+    "some deadlines, the caffeine will\l"
+    "help.\p"
+    "Twelve of them should be enough."
+}

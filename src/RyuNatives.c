@@ -87,7 +87,6 @@
 #include "ach_atlas.h"
 #include "lifeskill.h"
 #include "script_pokemon_util.h"
-
 #include "data/lifeskill.h"
 
 void ApplyDaycareExperience(struct Pokemon *mon)
@@ -858,14 +857,21 @@ bool8 ScrCmd_checkspecies(struct ScriptContext *ctx)//this lewd function checks 
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == speciesId)
         {
-
-            FlagSet(FLAG_TEMP_C);
-            VarSet(VAR_TEMP_F, i);
-            return TRUE;
+            if (GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) == FALSE)
+            {
+                FlagSet(FLAG_TEMP_C);
+                VarSet(VAR_TEMP_F, i);
+                return TRUE;
+            }
+            else
+            {
+                VarSet(VAR_TEMP_F, 32768);//is an egg
+                return TRUE;
+            }
         }
     }
     FlagClear(FLAG_TEMP_C);
-    VarSet(VAR_TEMP_F, 65535);
+    VarSet(VAR_TEMP_F, 65535);//does not have
     return TRUE;
 }
 
