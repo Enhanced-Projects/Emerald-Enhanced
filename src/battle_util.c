@@ -4714,6 +4714,12 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
              && gBattleMoves[gCurrentMove].flags &  FLAG_IS_BITE_MOVE)
             {
                 gBattleMoveDamage = (gSpecialStatuses[gBattlerTarget].dmg / 2);
+
+                if (gBattleMons[gBattlerAttacker].item == ITEM_BIG_ROOT)
+                    {
+                        gBattleMoveDamage = ((gBattleMoveDamage * 17) / 10);
+                    }
+
                 if (gBattleMoveDamage <= 0)
                     gBattleMoveDamage = 1;
                 gBattleMoveDamage *= -1;
