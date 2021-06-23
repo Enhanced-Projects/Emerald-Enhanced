@@ -593,10 +593,15 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuRandomGruntChatterScripts.inc"
 	.include "data/scripts/RyuAchievementPowerScripts.inc"
 	.include "data/scripts/slakoth_vending_machine.inc"
-	.include "data/scripts/_poryscripts/RyuProceduralQuestSystemScripts.inc"
-	.include "data/scripts/_poryscripts/RyuSpecialFactionQuests.inc"
 	.include "data/scripts/_poryscripts/RyuDebug_BetaMenu.inc"
 	.include "data/scripts/_poryscripts/RyuScripts.inc"
+	.include "data/scripts/_poryscripts/FactionQuestsNaturalists.inc"
+	.include "data/scripts/_poryscripts/FactionQuestsAthletes.inc"
+	.include "data/scripts/_poryscripts/FactionQuestsProfessionals.inc"
+	.include "data/scripts/_poryscripts/FactionQuestsOutcasts.inc"
+	.include "data/scripts/_poryscripts/FactionQuestsPokefans.inc"
+	.include "data/scripts/_poryscripts/FactionQuestsNobles.inc"
+	.include "data/scripts/_poryscripts/FactionQuestsStudents.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED

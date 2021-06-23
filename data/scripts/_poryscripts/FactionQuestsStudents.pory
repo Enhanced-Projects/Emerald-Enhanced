@@ -1,0 +1,69 @@
+//Quests for Students
+
+
+//Procedural components
+const FETCH_TYPE = 1
+const CAPTURE_TYPE = 2
+const TRAVEL_TYPE = 3
+const HATCH_TYPE = 4
+
+
+script(global) RyuStudentsDailyQuest  {
+     if (flag(FLAG_FINISHED_STUDENT_DAILY) == TRUE) { //quest done
+        msgbox("We don't have any requests\nright now!")
+        release
+        end
+    }
+
+    checkfactionstanding(FACTION_STUDENTS, 200)
+
+    if (var(VAR_RESULT) == TRUE) {
+        msgbox("Hey Boss! How's it going?\nThe Council is pleased with how\lthings are going!")
+        release
+        end
+    }
+
+    if (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_STUDENTS) { //currently doing a daily quest for this faction
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+            case FETCH_TYPE:
+                checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                switch(var(VAR_RESULT)) {
+                    case TRUE:
+                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        goto(CommonStudentRewardScript)
+                    case FALSE:
+                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                        msgbox("The student council still wants \n{STR_VAR_1} {STR_VAR_2}.")
+                        release
+                        end
+                }
+            case CAPTURE_TYPE:
+                end
+            }
+    }
+    elif (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) != FACTION_STUDENTS) {//currently doing a daily for another faction
+        setvar(VAR_TEMP_9, FACTION_STUDENTS)
+        callnative(RyuSummonOriginalNPCscript)
+        end
+    }
+
+    random(2)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_POTION)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
+            msgbox("Sup {PLAYER}!\pThe student council wants some\npotions for new members.\pWe need a total of five.")
+        case 1:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_POKE_BALL)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 10)
+            msgbox("Heya {PLAYER}!\pThe Council wants you to get some\npoke balls for our members.\pWe need a total of ten.")
+    }
+    setflag(FLAG_DAILY_QUEST_ACTIVE)
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_STUDENTS)
+    closemessage
+    release
+    end
+}
