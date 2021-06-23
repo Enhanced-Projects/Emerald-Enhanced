@@ -2918,12 +2918,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_EXPLOUD_1] = { // Exploud-Scarf
         .species = SPECIES_EXPLOUD,
-        .moves = {MOVE_BOOMBURST, MOVE_FOCUS_BLAST, MOVE_FIRE_BLAST, MOVE_SURF},
+        .moves = {MOVE_BOOMBURST, MOVE_FOCUS_BLAST, MOVE_FIRE_BLAST, MOVE_SHADOW_BALL},
         .heldItem = ITEM_CHOICE_SCARF,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
         .ivs = 31,
-        .ability = 2
+        .ability = 1
     },
     [FRONTIER_MON_SHIFTRY_1] = { // Shiftry-ExBelt
         .species = SPECIES_SHIFTRY,
@@ -3971,12 +3971,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_NOIVERN_1] = { // Noivern-LifeOrb
         .species = SPECIES_NOIVERN,
-        .moves = {MOVE_DRACO_METEOR, MOVE_HURRICANE, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST},
+        .moves = {MOVE_BOOMBURST, MOVE_DRACO_METEOR, MOVE_HURRICANE, MOVE_FOCUS_BLAST},
         .heldItem = ITEM_LIFE_ORB,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_HIPPOWDON_1] = { // Hippowdon-Curse
         .species = SPECIES_HIPPOWDON,
@@ -4754,12 +4754,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_EXPLOUD_2] = { // Exploud-Specs
         .species = SPECIES_EXPLOUD,
-        .moves = {MOVE_BOOMBURST, MOVE_FOCUS_BLAST, MOVE_FIRE_BLAST, MOVE_SURF},
+        .moves = {MOVE_BOOMBURST, MOVE_FOCUS_BLAST, MOVE_FIRE_BLAST, MOVE_SHADOW_BALL},
         .heldItem = ITEM_CHOICE_SPECS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
         .ivs = 31,
-        .ability = 2
+        .ability = 1
     },
     [FRONTIER_MON_SHIFTRY_2] = { // Shiftry-Sun
         .species = SPECIES_SHIFTRY,
@@ -5807,12 +5807,12 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_NOIVERN_2] = { // Noivern-Specs
         .species = SPECIES_NOIVERN,
-        .moves = {MOVE_DRACO_METEOR, MOVE_HURRICANE, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST},
+        .moves = {MOVE_BOOMBURST, MOVE_DRACO_METEOR, MOVE_HURRICANE, MOVE_FOCUS_BLAST},
         .heldItem = ITEM_CHOICE_SPECS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
         .nature = NATURE_TIMID,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_HIPPOWDON_2] = { // Hippowdon-Defensive
         .species = SPECIES_HIPPOWDON,
