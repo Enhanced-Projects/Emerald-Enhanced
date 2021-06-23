@@ -1,6 +1,6 @@
 {
   "id": "MAP_FROSTY_GROTTO",
-  "name": "FrostyForestUnderwaterCave",
+  "name": "FrostyGrotto",
   "layout": "LAYOUT_FROSTY_GROTTO",
   "music": "MUS_RG_OTSUKIMI",
   "region_map_section": "MAPSEC_FROSTY_GROTTO",
