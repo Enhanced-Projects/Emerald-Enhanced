@@ -6315,6 +6315,16 @@ BattleScript_PoisonHealActivates::
 	datahpupdate BS_ATTACKER
 	end2
 
+BattleScript_VampiricHealActivates::
+	printstring STRINGID_VAMPIRIC_HEAL
+	waitmessage 0x40
+	recordability BS_ATTACKER
+	statusanimation BS_ATTACKER
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_x100000
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	end2
+
 BattleScript_BurnTurnDmg::
 	printstring STRINGID_PKMNHURTBYBURN
 	waitmessage 0x40
