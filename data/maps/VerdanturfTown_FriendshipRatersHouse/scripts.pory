@@ -14,6 +14,7 @@ VerdanturfTown_FriendshipRatersHouse_EventScript_FriendshipRater:: @ 8203031
 	case 3, VerdanturfTown_FriendshipRatersHouse_EventScript_GettingUsedToYou
 	case 4, VerdanturfTown_FriendshipRatersHouse_EventScript_LikesYouQuiteALot
 	case 5, VerdanturfTown_FriendshipRatersHouse_EventScript_VeryHappy
+	case 5, VerdanturfTown_FriendshipRatersHouse_EventScript_ExtremelyHappy
 	case 6, VerdanturfTown_FriendshipRatersHouse_EventScript_AdoresYou
 	release
 	end
@@ -48,6 +49,11 @@ VerdanturfTown_FriendshipRatersHouse_EventScript_VeryHappy:: @ 82030C6
 	release
 	end
 
+VerdanturfTown_FriendshipRatersHouse_EventScript_ExtremelyHappy::
+	msgbox VerdanturfTown_FriendshipRatersHouse_Text_ExtremelyHappy
+	release
+	end
+
 VerdanturfTown_FriendshipRatersHouse_EventScript_AdoresYou:: @ 82030D0
 	msgbox VerdanturfTown_FriendshipRatersHouse_Text_AdoresYou, MSGBOX_DEFAULT
 	release
@@ -77,6 +83,10 @@ VerdanturfTown_FriendshipRatersHouse_Text_AdoresYou: @ 8203141
 VerdanturfTown_FriendshipRatersHouse_Text_VeryHappy: @ 8203192
 	.string "It seems to be very happy.\n"
 	.string "It obviously likes you a whole lot.$"
+
+VerdanturfTown_FriendshipRatersHouse_Text_ExtremelyHappy:
+	.string "It is extremely happy. It's almost\n"
+	.string "like it might explode with joy!$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_LikesYouQuiteALot: @ 82031D1
 	.string "It likes you quite a lot.\n"

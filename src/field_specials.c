@@ -719,6 +719,10 @@ u8 GetLeadMonFriendshipScore(void)
     struct Pokemon *pokemon = &gPlayerParty[GetLeadMonIndex()];
     if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) == MAX_FRIENDSHIP)
     {
+        return 7;
+    }
+    if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) >= 220)
+    {
         return 6;
     }
     if (GetMonData(pokemon, MON_DATA_FRIENDSHIP) >= 200)
