@@ -38,3 +38,7 @@ include/constants/battle_frontier_mons.h.old
 pokeemerald.bps
 tools/poryscript
 data/maps/*/scripts.inc
+data/scripts/_poryscripts/RyuDebug_BetaMenu.inc
+data/scripts/_poryscripts/RyuProceduralQuestScripts.inc
+data/scripts/_poryscripts/RyuScripts.inc
+data/scripts/_poryscripts/RyuSpecialFactionScripts.inc
