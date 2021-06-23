@@ -8211,9 +8211,9 @@ static const struct TrainerMonItemCustomMoves sParty_MaxieStory[] = {
     .iv = 239,
     .lvl = 85,
     .species = SPECIES_CROBAT,
-    .heldItem = ITEM_CHOICE_BAND,
-	.ability = 2,
-	.moves = {MOVE_FLY, MOVE_POISON_FANG, MOVE_SECRET_POWER, MOVE_U_TURN},
+    .heldItem = ITEM_BIG_ROOT,
+	.ability = 0,
+	.moves = {MOVE_BRAVE_BIRD, MOVE_POISON_FANG, MOVE_FIRE_FANG, MOVE_ICE_FANG},
     },
     {
     .iv = 255,
