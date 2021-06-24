@@ -2128,6 +2128,17 @@ s32 GetDrainedBigRootHp(u32 battler, s32 hp)
     return hp * -1;
 }
 
+// Super Fang when affected by Vampiric, yes it is a mess but works
+s32 GetDrainedVampiricBigRootHp(u32 battler, s32 hp)
+{
+    if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_BIG_ROOT)
+        hp = (hp * 1700) / 1000;
+    if (hp == 0)
+        hp = 1;
+
+    return hp * 1; //here's the difference
+}
+
 #define MAGIC_GAURD_CHECK \
 if (ability == ABILITY_MAGIC_GUARD) \
 {\

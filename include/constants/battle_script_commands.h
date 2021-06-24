@@ -174,7 +174,8 @@
 #define DMG_FULL_ATTACKER_HP       4
 #define DMG_CURR_ATTACKER_HP       5
 #define DMG_BIG_ROOT               6
-#define DMG_1_2_ATTACKER_HP        7
+#define DMG_VAMPIRIC_BIG_ROOT      7
+#define DMG_1_2_ATTACKER_HP        8
 
 // Cmd_jumpifcantswitch
 #define SWITCH_IGNORE_ESCAPE_PREVENTION   0x80
