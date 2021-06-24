@@ -1,6 +1,23 @@
 raw `
 Route114_MapScripts:: @ 81F252F
+	map_script ON_FRAME, R114_checkMaxieLine
 	.byte 0
+
+R114_checkMaxieLine::
+	map_script_2 VAR_TEMP_D, 0, r114_FixMaxie
+	.2byte 0
+
+r114_FixMaxie::
+	setvar VAR_TEMP_D, 10
+	compare VAR_RYU_QUEST_MAGMA, 560
+	goto_if_eq R114_DoMaxieFix
+	end
+
+R114_DoMaxieFix::
+	clearflag FLAG_RYU_HIDE_114_MAXIE
+	addobject 28
+	end
+
 
 Route114_EventScript_Man:: @ 81F2582
 	lock
