@@ -81,6 +81,7 @@ bool8 AreAllMovesUnusable(void);
 u8 GetImprisonedMovesCount(u8 battlerId, u16 move);
 u8 DoFieldEndTurnEffects(void);
 s32 GetDrainedBigRootHp(u32 battler, s32 hp);
+s32 GetDrainedVampiricBigRootHp(u32 battler, s32 hp);
 u8 DoBattlerEndTurnEffects(void);
 bool8 HandleWishPerishSongOnTurnEnd(void);
 bool8 HandleFaintedMonActions(void);
