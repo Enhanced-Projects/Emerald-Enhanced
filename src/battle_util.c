@@ -4724,8 +4724,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
              && gBattleMons[gBattlerAttacker].hp != 0
              && gBattleMoves[gCurrentMove].flags &  FLAG_IS_BITE_MOVE)
             {
-                mgba_printf(LOGINFO, "precalc damage is %d", gBattleMoveDamage);
-                mgba_printf(LOGINFO, "target last damage received is %d", gSpecialStatuses[gBattlerTarget].dmg);
                 gBattleMoveDamage = (gSpecialStatuses[gBattlerTarget].dmg / 2);
 
                 if (gBattleMons[gBattlerAttacker].item == ITEM_BIG_ROOT)
@@ -4736,7 +4734,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 if (gBattleMoveDamage <= 0)
                     gBattleMoveDamage = 1;
                 gBattleMoveDamage *= -1;
-                mgba_printf(LOGINFO, "Calculated heal amount is %d", gBattleMoveDamage);
                 BattleScriptExecute(BattleScript_VampiricHealActivates);
                 effect++;
             }
