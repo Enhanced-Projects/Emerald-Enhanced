@@ -14,13 +14,13 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "up",
-      "offset": -80,
+      "direction": "left",
+      "offset": 0,
       "map": "MAP_ROUTE116"
     },
     {
       "direction": "right",
-      "offset": 0,
+      "offset": 18,
       "map": "MAP_ROUTE117"
     }
   ],
@@ -28,7 +28,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_2",
       "x": 4,
-      "y": 17,
+      "y": 35,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 1,
@@ -41,7 +41,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_TWIN",
       "x": 9,
-      "y": 2,
+      "y": 20,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 1,
@@ -54,7 +54,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",
       "x": 7,
-      "y": 11,
+      "y": 29,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
       "movement_range_x": 0,
@@ -68,49 +68,49 @@
   "warp_events": [
     {
       "x": 4,
-      "y": 1,
+      "y": 19,
       "elevation": 0,
       "dest_map": "MAP_VERDANTURF_TOWN_BATTLE_TENT_LOBBY",
       "dest_warp_id": 0
     },
     {
       "x": 12,
-      "y": 3,
+      "y": 21,
       "elevation": 0,
       "dest_map": "MAP_VERDANTURF_TOWN_MART",
       "dest_warp_id": 0
     },
     {
       "x": 16,
-      "y": 3,
+      "y": 21,
       "elevation": 0,
       "dest_map": "MAP_VERDANTURF_TOWN_POKEMON_CENTER_1F",
       "dest_warp_id": 0
     },
     {
       "x": 10,
-      "y": 14,
+      "y": 32,
       "elevation": 0,
       "dest_map": "MAP_VERDANTURF_TOWN_WANDAS_HOUSE",
       "dest_warp_id": 0
     },
     {
       "x": 8,
-      "y": 1,
+      "y": 19,
       "elevation": 0,
       "dest_map": "MAP_RUSTURF_TUNNEL",
       "dest_warp_id": 1
     },
     {
       "x": 1,
-      "y": 14,
+      "y": 32,
       "elevation": 0,
       "dest_map": "MAP_VERDANTURF_TOWN_FRIENDSHIP_RATERS_HOUSE",
       "dest_warp_id": 0
     },
     {
       "x": 17,
-      "y": 15,
+      "y": 33,
       "elevation": 0,
       "dest_map": "MAP_VERDANTURF_TOWN_HOUSE",
       "dest_warp_id": 0
@@ -120,7 +120,7 @@
     {
       "type": "trigger",
       "x": 16,
-      "y": 4,
+      "y": 22,
       "elevation": 0,
       "var": "VAR_RYU_QUEST_NURSE",
       "var_value": "2",
@@ -131,7 +131,7 @@
     {
       "type": "sign",
       "x": 14,
-      "y": 3,
+      "y": 21,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "Common_EventScript_ShowPokemartSign"
@@ -139,7 +139,7 @@
     {
       "type": "sign",
       "x": 14,
-      "y": 6,
+      "y": 24,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "VerdanturfTown_EventScript_TownSign"
@@ -147,7 +147,7 @@
     {
       "type": "sign",
       "x": 17,
-      "y": 3,
+      "y": 21,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "Common_EventScript_ShowPokemonCenterSign"
@@ -155,7 +155,7 @@
     {
       "type": "sign",
       "x": 7,
-      "y": 14,
+      "y": 32,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "VerdanturfTown_EventScript_WandasHouseSign"
@@ -163,7 +163,7 @@
     {
       "type": "sign",
       "x": 13,
-      "y": 3,
+      "y": 21,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "Common_EventScript_ShowPokemartSign"
@@ -171,7 +171,7 @@
     {
       "type": "sign",
       "x": 18,
-      "y": 3,
+      "y": 21,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "Common_EventScript_ShowPokemonCenterSign"
@@ -179,7 +179,7 @@
     {
       "type": "sign",
       "x": 3,
-      "y": 1,
+      "y": 19,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "VerdanturfTown_EventScript_BattleTentSign"
@@ -187,7 +187,7 @@
     {
       "type": "sign",
       "x": 7,
-      "y": 3,
+      "y": 21,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "VerdanturfTown_EventScript_RusturfTunnelSign"

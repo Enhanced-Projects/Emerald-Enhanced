@@ -25,12 +25,12 @@
     },
     {
       "direction": "right",
-      "offset": 80,
+      "offset": 78,
       "map": "MAP_ROUTE106"
     },
     {
       "direction": "right",
-      "offset": 100,
+      "offset": 98,
       "map": "MAP_DEWFORD_TOWN"
     }
   ],
@@ -142,7 +142,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_MR_BRINEYS_BOAT",
       "x": 12,
-      "y": 108,
+      "y": 106,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -155,7 +155,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
       "x": 12,
-      "y": 109,
+      "y": 107,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -168,7 +168,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
       "x": 17,
-      "y": 85,
+      "y": 83,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
       "movement_range_x": 4,
@@ -181,7 +181,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
       "x": 29,
-      "y": 90,
+      "y": 88,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -194,7 +194,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 29,
-      "y": 94,
+      "y": 92,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -218,7 +218,7 @@
     {
       "type": "trigger",
       "x": 16,
-      "y": 109,
+      "y": 107,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
@@ -227,7 +227,7 @@
     {
       "type": "trigger",
       "x": 18,
-      "y": 109,
+      "y": 107,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
@@ -236,7 +236,7 @@
     {
       "type": "trigger",
       "x": 17,
-      "y": 109,
+      "y": 107,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
@@ -245,7 +245,7 @@
     {
       "type": "trigger",
       "x": 15,
-      "y": 109,
+      "y": 107,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
@@ -254,7 +254,7 @@
     {
       "type": "trigger",
       "x": 13,
-      "y": 109,
+      "y": 107,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
@@ -263,7 +263,7 @@
     {
       "type": "trigger",
       "x": 14,
-      "y": 109,
+      "y": 107,
       "elevation": 0,
       "var": "VAR_TEMP_0",
       "var_value": "0",
@@ -290,7 +290,7 @@
     {
       "type": "secret_base",
       "x": 33,
-      "y": 101,
+      "y": 99,
       "elevation": 0,
       "secret_base_id": "SECRET_BASE_BLUE_CAVE4_1"
     }
