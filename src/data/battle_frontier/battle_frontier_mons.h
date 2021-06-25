@@ -27,14 +27,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_GOLBAT] = { // Golbat-Defensive
+    [FRONTIER_MON_GOLBAT] = { // Golbat-StallBreaker
         .species = SPECIES_GOLBAT,
-        .moves = {MOVE_BRAVE_BIRD, MOVE_TOXIC, MOVE_TAUNT, MOVE_ROOST},
+        .moves = {MOVE_POISON_FANG, MOVE_SUPER_FANG, MOVE_TAUNT, MOVE_ROOST},
         .heldItem = ITEM_EVIOLITE,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_GLOOM] = { // Gloom-Defensive
         .species = SPECIES_GLOOM,
@@ -3456,14 +3456,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_CROBAT_1] = { // Crobat-NP
+    [FRONTIER_MON_CROBAT_1] = { // Crobat-StallBreaker
         .species = SPECIES_CROBAT,
-        .moves = {MOVE_SLUDGE_BOMB, MOVE_HEAT_WAVE, MOVE_GIGA_DRAIN, MOVE_NASTY_PLOT},
-        .heldItem = ITEM_LIFE_ORB,
-        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
-        .nature = NATURE_TIMID,
+        .moves = {MOVE_POISON_FANG, MOVE_SUPER_FANG, MOVE_TAUNT, MOVE_ROOST},
+        .heldItem = ITEM_BLACK_SLUDGE,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
+        .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_SWAMPERT_1] = { // Swampert-AV
         .species = SPECIES_SWAMPERT,
@@ -5292,14 +5292,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_CROBAT_2] = { // Crobat-StallBreaker
+    [FRONTIER_MON_CROBAT_2] = { // Crobat-Offensive
         .species = SPECIES_CROBAT,
-        .moves = {MOVE_BRAVE_BIRD, MOVE_SUPER_FANG, MOVE_TAUNT, MOVE_ROOST},
-        .heldItem = ITEM_BLACK_SLUDGE,
+        .moves = {MOVE_BRAVE_BIRD, MOVE_POISON_FANG, MOVE_FIRE_FANG, MOVE_ICE_FANG},
+        .heldItem = ITEM_BIG_ROOT,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_SWAMPERT_2] = { // Swampert-Band
         .species = SPECIES_SWAMPERT,

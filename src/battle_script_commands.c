@@ -8738,6 +8738,9 @@ static void Cmd_manipulatedamage(void)
     case DMG_BIG_ROOT:
         gBattleMoveDamage = GetDrainedBigRootHp(gBattlerAttacker, gBattleMoveDamage);
         break;
+    case DMG_VAMPIRIC_BIG_ROOT:
+        gBattleMoveDamage = GetDrainedVampiricBigRootHp(gBattlerAttacker, gBattleMoveDamage);
+        break;
     case DMG_1_2_ATTACKER_HP:
         gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 2;
         break;

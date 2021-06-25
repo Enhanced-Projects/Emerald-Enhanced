@@ -2780,7 +2780,22 @@ BattleScript_EffectSuperFang::
 	typecalc
 	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
 	damagetohalftargethp
+	jumpifability BS_ATTACKER, ABILITY_VAMPIRIC, BattleScript_SuperFangVampiric
 	goto BattleScript_HitFromAtkAnimation
+BattleScript_SuperFangVampiric:: @ It works and that's what matters!
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	resultmessage
+	waitmessage 0x40
+	setdrainedhp
+	manipulatedamage DMG_VAMPIRIC_BIG_ROOT
+	goto BattleScript_AbsorbUpdateHp
 
 BattleScript_EffectDragonRage::
 	attackcanceler
