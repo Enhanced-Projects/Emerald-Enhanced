@@ -2249,3 +2249,12 @@ text BF_battleintro {
 text BF_battledefeat {
 	"Good fight.\nLet's do it again!"
 }
+
+script RyuScript_CompleteTravelDailyQuestType {
+	bufferfactionname(0, VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION)
+	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}Hmm. This appears to be the place that the {STR_VAR_1} wanted me to come to. Guess I should return to one of them."))
+	closemessage
+	setvar(VAR_RYU_DAILY_QUEST_DATA, 1)
+	release
+	end
+}

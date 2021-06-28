@@ -251,6 +251,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_trycraftingrecipe         @ 0xf8
 	.4byte ScrCmd_ach                       @ 0xf9
 	.4byte ScrCmd_givepokedexflag           @ 0xfa
+	.4byte ScrCmd_bufferfactionname         @ 0xfb
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop

@@ -1765,6 +1765,14 @@
 	.byte \caught
 	.endm
 
+	@Buffers the given faction(id)'s name(string) into (buffer)
+	.macro bufferfactionname buffer:req, id:req
+	.byte 0xfb
+	.byte \buffer
+	.2byte \id
+	.endm
+
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

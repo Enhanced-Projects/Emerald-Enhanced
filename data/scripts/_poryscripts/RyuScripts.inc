@@ -2226,6 +2226,15 @@ BF_NoBattle::
 	end
 
 
+RyuScript_CompleteTravelDailyQuestType::
+	bufferfactionname 0, VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION
+	msgbox RyuScript_CompleteTravelDailyQuestType_Text_0
+	closemessage
+	setvar VAR_RYU_DAILY_QUEST_DATA, 1
+	release
+	end
+
+
 RyuScript_EndNuzlockeMode_Text_0:
 	.string "Welcome to Limbo. You have failed your\n"
 	.string "Nuzlocke or Hardcore challenge and\l"
@@ -2254,6 +2263,12 @@ RS_Limbo_Sign_Text_1:
 
 Ryu_StartRandomBattle_Text_0:
 	.string "Please select a random battle type.$"
+
+RyuScript_CompleteTravelDailyQuestType_Text_0:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Hmm. This appears to be the place that\n"
+	.string "the {STR_VAR_1} wanted me to come\l"
+	.string "to. Guess I should return to one of\l"
+	.string "them.$"
 
 StartingRandomBattleMsg::
 	.string "Starting Random Battle...$"

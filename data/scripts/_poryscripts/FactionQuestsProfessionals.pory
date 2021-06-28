@@ -38,6 +38,18 @@ script(global) RyuProfessionalsDailyQuest  {
                 }
             case CAPTURE_TYPE:
                 end
+            case TRAVEL_TYPE:
+                compare(VAR_RYU_DAILY_QUEST_DATA, 1)
+                    switch(var(VAR_RESULT)) {
+                        case TRUE:
+                            msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}. . .\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see. Thanks for the effort!"))
+                            goto(CommonProfessionalsRewardScript)
+                        case FALSE:
+                            msgbox(format("Haven't you been to route 110 yet? I need to know what the traffic is gonna be like."))
+                            release
+                            end
+                    }
+
         }
 
     }
@@ -47,7 +59,7 @@ script(global) RyuProfessionalsDailyQuest  {
         end
     }
 
-    random(2)
+    random(3)
     switch(var(VAR_RESULT)) {
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
@@ -59,6 +71,11 @@ script(global) RyuProfessionalsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_HYPER_POTION)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
             msgbox("I'm too busy to travel to a\nPokemon Center.\pDo you happen to have a couple\nHyper Potions?\pI'll be able to continue my work.")
+        case 2:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE110)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            msgbox(format("Can you go see what the population of Cycling Road looks like? I want to travel through there soon, so I want to know how busy it is. Thanks!"))
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)

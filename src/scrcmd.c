@@ -56,6 +56,7 @@
 #include "infobox.h"
 #include "ach_atlas.h"
 #include "pokedex.h"
+#include "factions.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -1546,6 +1547,13 @@ bool8 ScrCmd_bufferspeciesname(struct ScriptContext *ctx)
 
     StringCopy(sScriptStringVars[stringVarIndex], gSpeciesNames[species]);
     return FALSE;
+}
+
+bool8 ScrCmd_bufferfactionname(struct ScriptContext *ctx)
+{
+    u8 bufferIndex = ScriptReadByte(ctx);
+    u16 factionId = VarGet(ScriptReadHalfword(ctx));
+    StringCopy(sScriptStringVars[bufferIndex], gFactionNames[factionId]);
 }
 
 bool8 ScrCmd_bufferleadmonspeciesname(struct ScriptContext *ctx)
