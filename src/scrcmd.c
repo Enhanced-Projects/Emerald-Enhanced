@@ -504,7 +504,7 @@ bool8 ScrCmd_random(struct ScriptContext *ctx)
 {
     u16 max = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = Random() % max;
+    gSpecialVar_Result = (Random() % (max + 1));
     return FALSE;
 }
 
@@ -2459,5 +2459,19 @@ bool8 ScrCmd_givepokedexflag(struct ScriptContext *ctx)
         GetSetPokedexFlag(nationalDexNum, FLAG_SET_SEEN);
     }
 
+    return FALSE;
+}
+extern u8 *GetMapName(u8 *dest, u16 regionMapId, u16 padLength);
+
+bool8 ScrCmd_buffermapname(struct ScriptContext *ctx)
+{
+    u8 bufferIndex = ScriptReadByte(ctx);
+    u16 mapData = VarGet(ScriptReadHalfword(ctx));
+    u16 targetMapNum = (mapData & 0xFF);
+    u16 targetMapGroup = (mapData >> 8) & 0xFF;
+    u16 mapSecId = 0;
+
+    mapSecId = Overworld_GetMapHeaderByGroupAndId(targetMapGroup, targetMapNum)->regionMapSectionId;
+    GetMapName(sScriptStringVars[bufferIndex], mapSecId, 0);
     return FALSE;
 }

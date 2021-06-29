@@ -862,7 +862,7 @@ Ryu_Feelslikebeingwatchedmsg:
 	.string " watching over you...)$"
 
 Ryu_DoMeloettaRoll::
-	random 10
+	random 9
 	compare VAR_RESULT, 1
 	goto_if_eq Ryu_DoMeloettaEncounter
 	release
@@ -910,7 +910,7 @@ Ryu_ItsSingingBeautifully::
 SB_SetupRandomSteppedOnEncounter::
 	compare VAR_REPEL_STEP_COUNT, 0
 	goto_if_ne ryu_end
-	random 5
+	random 4
 	switch VAR_RESULT
 	case 0, SB_Random0
 	case 1, SB_Random1
