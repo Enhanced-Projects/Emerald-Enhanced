@@ -8,6 +8,8 @@ const HATCH_TYPE = 4
 
 
 script(global) RyuNoblesDailyQuest  {
+    lock
+    faceplayer
      if (flag(FLAG_FINISHED_NOBLE_DAILY) == TRUE) { //quest done
         msgbox("There are no outstanding contracts.")
         release
@@ -23,22 +25,48 @@ script(global) RyuNoblesDailyQuest  {
     }
 
     if (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_NOBLES) { //currently doing a daily quest for this faction
-        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) { //Also put the new quest conclusion here. This is where it checks if the quest is complete. If so, sends to the common reward script.
             case FETCH_TYPE:
                 checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                switch(var(VAR_RESULT)) {
-                    case TRUE:
-                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                        goto(CommonNobleRewardScript)
-                    case FALSE:
-                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
-                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                        msgbox("The Board is still looking to\nacquire {STR_VAR_1} {STR_VAR_2}.")
-                        release
-                        end
+                if (var(VAR_RESULT) == TRUE) {
+                    removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                    goto(CommonNobleRewardScript)
+                }
+                else {
+                    buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                    bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                    msgbox("The Board is still looking to\nacquire {STR_VAR_1} {STR_VAR_2}.")
+                    release
+                    end
                 }
             case CAPTURE_TYPE:
                 end
+            case TRAVEL_TYPE:
+                if(var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                    msgbox(format("So that's what they're up to. All right, you are dismissed."))
+                    goto(CommonNobleRewardScript)
+                }
+                else {
+                    buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                    msgbox(format("Why haven't you been to {STR_VAR_1} yet? We already ordered you to go there. Hop to it!"))
+                    release
+                    end
+                }
+            case HATCH_TYPE:
+                checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
+                if (var(VAR_RESULT) < 6) {
+                    bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                    msgbox(format("Oh... It was a {STR_VAR_1}... Well... you can have it."))
+                    goto(CommonNobleRewardScript)
+                    release
+                    end
+                }
+                else
+                {
+                    msgbox(format("Did a noble Pokémon come out of that egg yet?"))
+                    release
+                    end
+                }
         }
 
     }
@@ -48,8 +76,8 @@ script(global) RyuNoblesDailyQuest  {
         end
     }
 
-    random(2)
-    switch(var(VAR_RESULT)) {
+    random(3)//increase this by the number of quests you add. 
+    switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_TEA)
@@ -60,6 +88,20 @@ script(global) RyuNoblesDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_BIG_PEARL)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 8)
             msgbox("The board is trying to expand it's\nportfolio of riches.\pPlease acquire some Big Pearls\nfor us to hold.\pWe need at least eight.")
+        case 2:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_RUSTBORO_CITY_DEVON_CORP_2F)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            msgbox(format("The board needs you to go see what Devon Corp is up to. Head there to the second floor and see what their latest project is. Stocks are on the line here!"))
+        case 3:
+            random(4)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, HATCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            callnative(RyuSetupEggHatchQuest)
+            giveegg(VAR_RYU_DAILY_QUEST_TARGET)
+            msgbox(format("One of our shareholders left us this Egg. Can you hatch it to see if it has any potential?"))
+            closemessage
+            msgbox(FactionsReceivedEggMsg)
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NOBLES)
@@ -67,3 +109,12 @@ script(global) RyuNoblesDailyQuest  {
     release
     end
 }
+
+script CommonNobleRewardScript {
+    msgbox("The Board should be pleased.\nYou are dismissed.")
+    setflag(FLAG_FINISHED_NOBLE_DAILY)
+    changefactionstanding(FACTION_NOBLES, 25, FALSE)
+    setvar(VAR_TEMP_B, 10000)
+    goto(CommonDailyQuestEnd)
+}
+

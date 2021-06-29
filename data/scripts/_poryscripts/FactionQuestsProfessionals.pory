@@ -7,6 +7,8 @@ const TRAVEL_TYPE = 3
 const HATCH_TYPE = 4
 
 script(global) RyuProfessionalsDailyQuest  {
+    lock
+    faceplayer
      if (flag(FLAG_FINISHED_PROFESSIONAL_DAILY) == TRUE) { //quest done
         msgbox("I'm currently working,\nPlease come back later.")
         release
@@ -22,34 +24,47 @@ script(global) RyuProfessionalsDailyQuest  {
     }
 
     if (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_PROFESSIONALS) { //currently doing a daily quest for this faction
-        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) { //Also put the new quest conclusion here. This is where it checks if the quest is complete. If so, sends to the common reward script.
             case FETCH_TYPE:
                 checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                switch(var(VAR_RESULT)) {
-                    case TRUE:
-                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                        goto(CommonProfessionalsRewardScript)
-                    case FALSE:
-                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
-                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                        msgbox("Ahh, {PLAYER}!\nHave you brought the {STR_VAR_1} {STR_VAR_2} yet?")
-                        release
-                        end
+                if (var(VAR_RESULT) == TRUE) {
+                    removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                    goto(CommonProfessionalsRewardScript)
+                }
+                else {
+                    buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                    bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                    msgbox("Ahh, {PLAYER}!\nHave you brought the {STR_VAR_1} {STR_VAR_2} yet?")
+                    release
+                    end
                 }
             case CAPTURE_TYPE:
                 end
             case TRAVEL_TYPE:
-                compare(VAR_RYU_DAILY_QUEST_DATA, 1)
-                    switch(var(VAR_RESULT)) {
-                        case TRUE:
-                            msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}. . .\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see. Thanks for the effort!"))
-                            goto(CommonProfessionalsRewardScript)
-                        case FALSE:
-                            msgbox(format("Haven't you been to route 110 yet? I need to know what the traffic is gonna be like."))
-                            release
-                            end
-                    }
-
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                    msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}. . .\p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}I see. Thanks for the effort!"))
+                    goto(CommonProfessionalsRewardScript)
+                }
+                else {
+                    buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                    msgbox(format("Haven't you been to {STR_VAR_1} yet? I need to know what the traffic is gonna be like."))
+                    release
+                    end
+                }
+            case HATCH_TYPE:
+                checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
+                if (var(VAR_RESULT) < 6) {
+                    bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                    msgbox(format("Oh! It was a {STR_VAR_1}! Well it's not suitable for my work, so you can have it."))
+                    goto(CommonProfessionalsRewardScript)
+                    release
+                    end
+                }
+                else {
+                    msgbox(format("Hurry and hatch that egg, already!"))
+                    release
+                    end
+                }
         }
 
     }
@@ -59,8 +74,8 @@ script(global) RyuProfessionalsDailyQuest  {
         end
     }
 
-    random(3)
-    switch(var(VAR_RESULT)) {
+    random(3)//increase this by the number of quests you add.
+    switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SODA_POP)
@@ -76,12 +91,29 @@ script(global) RyuProfessionalsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE110)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
             msgbox(format("Can you go see what the population of Cycling Road looks like? I want to travel through there soon, so I want to know how busy it is. Thanks!"))
+        case 3:
+            random(4)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, HATCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            callnative(RyuSetupEggHatchQuest)
+            giveegg(VAR_RYU_DAILY_QUEST_TARGET)
+            msgbox(format("I found this egg while working in the field. Can you hatch it so we can see what it is?"))
+            closemessage
+            msgbox(FactionsReceivedEggMsg)
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
     closemessage
     release
     end
+}
+
+script CommonProfessionalsRewardScript {
+    msgbox("The Board should be pleased.\nYou are dismissed.")
+    setflag(FLAG_FINISHED_PROFESSIONAL_DAILY)
+    changefactionstanding(FACTION_PROFESSIONALS, 25, FALSE)
+    setvar(VAR_TEMP_B, 4000)
+    goto(CommonDailyQuestEnd)
 }
 
 //strings
@@ -92,4 +124,8 @@ text ProfessionalsQuestDesc1 {
     "some deadlines, the caffeine will\l"
     "help.\p"
     "Twelve of them should be enough."
+}
+
+text(global) FactionsReceivedEggMsg {
+    "{PLAYER} received an Egg!"
 }

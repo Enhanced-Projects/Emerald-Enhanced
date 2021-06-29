@@ -24,41 +24,49 @@ script(global) RyuPokefansDailyQuest  {
     }
 
     if (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_POKEFANS) { //currently doing a daily quest for this faction
-        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) { //Also put the new quest conclusion here. This is where it checks if the quest is complete. If so, sends to the common reward script.
             case FETCH_TYPE:
                 checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                switch(var(VAR_RESULT)) {
-                    case TRUE:
-                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                if (var(VAR_RESULT) == TRUE) {
+                    removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                    goto(CommonPokefansRewardScript)
+                    release
+                    end
+                }
+                else {
+                    buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                    bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                    msgbox("Hello, dear, we're still trying\nto get {STR_VAR_1} {STR_VAR_2}.")
+                    release
+                    end
+                }
+            case CAPTURE_TYPE:
+                end
+            case TRAVEL_TYPE:
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                        msgbox(format("So there weren't any pokémon playing there. That's so unfortunate. THank you for your time, anyways!"))
                         goto(CommonPokefansRewardScript)
-                        release
-                        end
-                    case FALSE:
-                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
-                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                        msgbox("Hello, dear, we're still trying\nto get {STR_VAR_1} {STR_VAR_2}.")
-                        release
-                        end
+                }
+                else {
+                    buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                    msgbox(format("Aren't you going to {STR_VAR_1} to look for playing pokémon?."))
+                    release
+                    end
                 }
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
-                compare(VAR_RESULT, 6)
-                call_if_lt(RyuSetLessCompareResult)
-                compare(VAR_RESULT, 6)
-                call_if_ge(RyuSetGreaterCompareResult)
-                switch(var(VAR_TEMP_A)) {
-                    case 0:
-                        bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
-                        msgbox(format("Oh! So it was a {STR_VAR_1}! It's so cute! Please take care of this Pokemon for us!"))
-                        goto(CommonPokefansRewardScript)
-                        release
-                        end
-                    case 1:
-                        msgbox(format("Have you hatched that egg yet? I want to see what it is!"))
-                        release
-                        end
+                if (var(VAR_RESULT) < 6) {
+                    bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                    msgbox(format("Oh! So it was a {STR_VAR_1}! It's so cute! Please take care of this Pokemon for us!"))
+                    goto(CommonPokefansRewardScript)
+                    release
+                    end
                 }
-                
+                else {
+                    msgbox(format("Have you hatched that egg yet? I want to see what it is!"))
+                    release
+                    end
+                }
         }
     }
     elif (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) != FACTION_POKEFANS) {//currently doing a daily for another faction
@@ -68,8 +76,8 @@ script(global) RyuPokefansDailyQuest  {
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_POKEFANS)
-    random(3)
-    switch(var(VAR_RESULT)) {
+    random(2)//increase this by the number of quests you add. 
+    switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_POKE_DOLL)
@@ -81,7 +89,7 @@ script(global) RyuPokefansDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
             msgbox(PokefansQuest2Desc)
         case 2:
-            random(5)
+            random(4)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, HATCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
             callnative(RyuSetupEggHatchQuest)
@@ -93,6 +101,15 @@ script(global) RyuPokefansDailyQuest  {
     release
     end
 }
+
+script CommonPokefansRewardScript {
+    msgbox("Thanks, {PLAYER}.\nWe really appreciate your work!")
+    setflag(FLAG_FINISHED_POKEFAN_DAILY)
+    changefactionstanding(FACTION_POKEFANS, 25, FALSE)
+    setvar(VAR_TEMP_B, 2500)
+    goto(CommonDailyQuestEnd)
+}
+
 
 
 //strings

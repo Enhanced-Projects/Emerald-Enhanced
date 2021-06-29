@@ -8,6 +8,8 @@ const HATCH_TYPE = 4
 
 
 script(global) RyuAthletesDailyQuest  {
+    lock
+    faceplayer
      if (flag(FLAG_FINISHED_ATHLETE_DAILY) == TRUE) { //quest done
         msgbox("Want to join me for some\nexercise?")
         release
@@ -26,19 +28,44 @@ script(global) RyuAthletesDailyQuest  {
         switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
             case FETCH_TYPE:
                 checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                switch(var(VAR_RESULT)) {
-                    case TRUE:
-                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                        goto(CommonAthletesRewardScript)
-                    case FALSE:
-                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
-                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                        msgbox("Hey, I'm in a hurry.\pDo you have the {STR_VAR_1} {STR_VAR_2} yet?")
-                        release
-                        end
+                if (var(VAR_RESULT) == TRUE) {
+                    removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                    goto(CommonAthletesRewardScript)
+                }
+                else {
+                    buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                    bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                    msgbox("Hey, I'm in a hurry.\pDo you have the {STR_VAR_1} {STR_VAR_2} yet?")
+                    release
+                    end
                 }
             case CAPTURE_TYPE:
                 end
+            case TRAVEL_TYPE:
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                    msgbox(format("Don't you feel good after all that exercise?"))
+                    goto(CommonAthletesRewardScript)
+                }
+                else {
+                    buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                    msgbox(format("Don't quit on us now! Run to {STR_VAR_1} and FEEL THE BURN!!"))
+                    release
+                    end
+                }
+            case HATCH_TYPE:
+                checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
+                if (var(VAR_RESULT) < 6) {
+                    bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                    msgbox(format("I see, so it was a {STR_VAR_1}! Well, thanks for letting me know, take care of it!"))
+                    goto(CommonAthletesRewardScript)
+                    release
+                    end
+                }
+                else {
+                    msgbox(format("Have you hatched that egg yet?"))
+                    release
+                    end
+                }
         }
 
     }
@@ -48,8 +75,8 @@ script(global) RyuAthletesDailyQuest  {
         end
     }
 
-    random(2)
-    switch(var(VAR_RESULT)) {
+    random(3)//increase this by the number of quests you add. 
+    switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_PROTEIN)
@@ -60,10 +87,32 @@ script(global) RyuAthletesDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_WAVE_MAIL)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 10)
             msgbox("We need to do some imprinting at\nthe Training Center.\pCan you bring us ten imprints?\nThis will save us a lot of time.")
+        case 2:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE111)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            msgbox(format("{PLAYER}, are you up for a challenge? Of course you are! I want you to run to Route 111 and back. Enjoy the exercise!"))
+        case 3:
+            random(4)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, HATCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            callnative(RyuSetupEggHatchQuest)
+            giveegg(VAR_RYU_DAILY_QUEST_TARGET)
+            msgbox(format("I came across this egg during my morning run. I'd like to know what it is, but I don't have time to hatch it myself. Could you do it for me?"))
+            closemessage
+            msgbox(FactionsReceivedEggMsg)
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_ATHLETES)
     closemessage
     release
     end
+}
+
+script CommonAthletesRewardScript {
+    msgbox("Continue to be the best you\ncan be!")
+    setflag(FLAG_FINISHED_ATHLETE_DAILY)
+    changefactionstanding(FACTION_ATHLETES, 25, FALSE)
+    setvar(VAR_TEMP_B, 1750)
+    goto(CommonDailyQuestEnd)
 }
