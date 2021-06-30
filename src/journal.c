@@ -1329,7 +1329,6 @@ static void Task_QuestMain(u8 taskId)
     switch(action)
     {
         default:
-            //mgba_printf(LOGINFO, "Quest menu action is invalid");
         case QUEST_ACTION_NONE:
             return;
         case QUEST_ACTION_DOWN:
@@ -1420,8 +1419,6 @@ static const struct QuestStageDesc * FindQuestDescFromStage(u32 quest)
     {
         if(stageDescs->questStage >= temp && stageDescs->questStage <= currentStage)
         {
-            //if(stageDescs->questStage == temp && temp != 0) 
-                //mgba_printf(LOGWARN, "Duplicate quest stage entry found, stageDescs->questStage = %d, quest = %d, currentStage = %d", stageDescs->questStage, quest, currentStage);
             foundDesc = stageDescs;
             temp = stageDescs->questStage;
             if(stageDescs->questStage == currentStage)
