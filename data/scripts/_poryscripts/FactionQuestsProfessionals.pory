@@ -100,6 +100,11 @@ script(global) RyuProfessionalsDailyQuest  {
             msgbox(format("I found this egg while working in the field. Can you hatch it so we can see what it is?"))
             closemessage
             msgbox(FactionsReceivedEggMsg)
+        case 4:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SMOOTH_ROCK)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 12)
+            msgbox(format("I need some smooth sand to polish and sharpen my tools with, could you bring me one? Thanks."))
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
