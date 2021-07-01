@@ -863,7 +863,7 @@ Ryu_Feelslikebeingwatchedmsg:
 	.string " watching over you...)$"
 
 Ryu_DoMeloettaRoll::
-	random 10
+	random 9
 	compare VAR_RESULT, 1
 	goto_if_eq Ryu_DoMeloettaEncounter
 	release
