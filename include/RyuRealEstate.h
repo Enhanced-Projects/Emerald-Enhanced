@@ -7,4 +7,4 @@
 
 void DoDailyRealEstateTasks(void);
 
-#endif GUARD_RYUREALESTATE_H //Real Estate header
+#endif //Real Estate header
