@@ -130,12 +130,7 @@ OpeningPokeEdit:
 	.string "Opening Poke Edit...$"
 
 RyuDebug_money::
-	setvar VAR_TEMP_A, 50000
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
+	addmoney 250000
 	msgbox RyuDebug_money_text MSGBOX_DEFAULT
 	return
 
@@ -255,8 +250,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	@clearflag FLAG_FINISHED_POKEFAN_DAILY
-	giveegg SPECIES_HITMONTOP
+	addmoney 1000000000
 	release
 	end
 

@@ -67,8 +67,7 @@ ACO_NonRomanceShelly::
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 1
 	msgbox ACO_OhHeresYourPayment
-	setvar VAR_TEMP_9, 10000
-	addmoney VAR_TEMP_9
+	addmoney 10000
 	closemessage
 	msgbox ACO_AquaStage3_WaitForCallMsg
 	closemessage
@@ -149,8 +148,7 @@ ACO_PlayerReturnedFromChimneyWithNecklace:: @Romance line is much longer than no
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 1
 	msgbox ACO_OhHeresYourPayment2
-	setvar VAR_TEMP_B, 10000
-	addmoney VAR_TEMP_B
+	addmoney 10000
 	setvar VAR_RYU_QUEST_AQUA, 91 @Player is doing romance line, wait for 6 badges.
 	release
 	end
@@ -191,8 +189,7 @@ ACO_StartAquaQuest::
 	
 ACO_AfterShellyBattle::
 	msgbox ACO_HavePotential
-	setvar VAR_TEMP_3, 50000
-	addmoney VAR_TEMP_3
+	addmoney 50000
 	call RyuGivePokenav
 	playfanfare MUS_FANFA5
 	waitfanfare

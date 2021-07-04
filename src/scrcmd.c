@@ -1737,7 +1737,7 @@ bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
 
 bool8 ScrCmd_addmoney(struct ScriptContext *ctx)
 {
-    u32 amount = (VarGet(ScriptReadHalfword(ctx)));
+    u32 amount = ScriptReadWord(ctx);
     AddMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }

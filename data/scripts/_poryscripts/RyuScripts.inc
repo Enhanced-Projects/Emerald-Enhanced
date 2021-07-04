@@ -910,7 +910,7 @@ Ryu_ItsSingingBeautifully::
 SB_SetupRandomSteppedOnEncounter::
 	compare VAR_REPEL_STEP_COUNT, 0
 	goto_if_ne ryu_end
-	random 4
+	random 5
 	switch VAR_RESULT
 	case 0, SB_Random0
 	case 1, SB_Random1

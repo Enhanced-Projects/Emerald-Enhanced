@@ -64,8 +64,7 @@ FT_Mission4::
 	faceplayer
 	msgbox FT_MeteorReward1 MSGBOX_DEFAULT
 	removeitem ITEM_METEORITE, 1
-	setvar VAR_TEMP_6, 40000
-	addmoney VAR_TEMP_6
+	addmoney 40000
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 23 @Player is tasked with going to the aqua hideout and recovering the Radiation Detector.
 	msgbox FT_Mission4Intro MSGBOX_DEFAULT
 	setflag FLAG_RYU_DEVON_HIDE_MATT_SUB
@@ -235,8 +234,7 @@ FT_Mission4Intro:
 FT_AlreadyHaveMeteorite::
 	msgbox FT_AlreadyhaveMsg MSGBOX_DEFAULT
 	removeitem ITEM_METEORITE, 1
-	setvar VAR_TEMP_6, 60000
-	addmoney VAR_TEMP_6
+	addmoney 60000
 	msgbox FT_MeteorReward1 MSGBOX_DEFAULT
 	goto FT_Mission4
 

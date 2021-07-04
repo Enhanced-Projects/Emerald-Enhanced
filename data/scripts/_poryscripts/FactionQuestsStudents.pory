@@ -112,6 +112,6 @@ script CommonStudentRewardScript {
     msgbox("The new kids will need all the\nhelp they can get. \pThanks, {PLAYER}!")
     setflag(FLAG_FINISHED_STUDENT_DAILY)
     changefactionstanding(FACTION_STUDENTS, 25, FALSE)
-    setvar(VAR_TEMP_B, 3000)
+    addmoney(3000)
     goto(CommonDailyQuestEnd)
 }

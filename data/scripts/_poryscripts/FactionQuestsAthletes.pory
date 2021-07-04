@@ -113,6 +113,6 @@ script CommonAthletesRewardScript {
     msgbox("Continue to be the best you\ncan be!")
     setflag(FLAG_FINISHED_ATHLETE_DAILY)
     changefactionstanding(FACTION_ATHLETES, 25, FALSE)
-    setvar(VAR_TEMP_B, 1750)
+    addmoney(1750)
     goto(CommonDailyQuestEnd)
 }

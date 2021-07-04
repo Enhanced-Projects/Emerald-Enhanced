@@ -116,12 +116,11 @@ script CommonNaturalistRewardScript {
     msgbox("Thanks for getting the stuff!")
     setflag(FLAG_FINISHED_NATURALIST_DAILY)
     changefactionstanding(FACTION_NATURALISTS, 25, FALSE)
-    setvar(VAR_TEMP_B, 1000)
+    addmoney(5000)
     goto(CommonDailyQuestEnd)
 }
 
 script CommonDailyQuestEnd {
-    addmoney(VAR_TEMP_B)
     clearflag(FLAG_DAILY_QUEST_ACTIVE)
     buffernumberstring(0, VAR_TEMP_B)
     msgbox("You earned ¥{STR_VAR_1}.")

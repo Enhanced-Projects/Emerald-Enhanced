@@ -126,7 +126,7 @@ script CommonOutcastRewardScript {
     msgbox("The gods shine upon you\nthis day.\lMany thanks.")
     setflag(FLAG_FINISHED_OUTCAST_DAILY)
     changefactionstanding(FACTION_OUTCASTS, 25, FALSE)
-    setvar(VAR_TEMP_B, 2000)
+    addmoney(2000)
     goto(CommonDailyQuestEnd)
 }
 

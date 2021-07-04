@@ -106,7 +106,7 @@ script CommonPokefansRewardScript {
     msgbox("Thanks, {PLAYER}.\nWe really appreciate your work!")
     setflag(FLAG_FINISHED_POKEFAN_DAILY)
     changefactionstanding(FACTION_POKEFANS, 25, FALSE)
-    setvar(VAR_TEMP_B, 2500)
+    addmoney(2500)
     goto(CommonDailyQuestEnd)
 }
 

@@ -793,7 +793,7 @@ static void DrawJournalStatText(void)
 
     ConvertIntToDecimalStringN(gStringVar1, CountBadges(), STR_CONV_MODE_LEADING_ZEROS, 1);
     ConvertIntToDecimalStringN(gStringVar2, (u16)GetTrainerId(gSaveBlock2Ptr->playerTrainerId), STR_CONV_MODE_LEADING_ZEROS, 5);
-    ConvertIntToDecimalStringN(gStringVar3, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_LEFT_ALIGN, 8);
+    ConvertIntToDecimalStringN(gStringVar3, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_LEFT_ALIGN, 10);
     StringExpandPlaceholders(gStringVar4, sText_TrainerNameId);
     AddTextPrinterParameterized3(WIN_JOURNAL_QUEST_STAGE, 1, 0, 1, sColors[0], 0, gStringVar4);
     

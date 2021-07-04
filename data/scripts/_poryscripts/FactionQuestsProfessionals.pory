@@ -117,7 +117,7 @@ script CommonProfessionalsRewardScript {
     msgbox("The Board should be pleased.\nYou are dismissed.")
     setflag(FLAG_FINISHED_PROFESSIONAL_DAILY)
     changefactionstanding(FACTION_PROFESSIONALS, 25, FALSE)
-    setvar(VAR_TEMP_B, 4000)
+    addmoney(4000)
     goto(CommonDailyQuestEnd)
 }
 
