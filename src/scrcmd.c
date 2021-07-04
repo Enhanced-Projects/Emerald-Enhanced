@@ -1744,14 +1744,14 @@ bool8 ScrCmd_addmoney(struct ScriptContext *ctx)
 
 bool8 ScrCmd_removemoney(struct ScriptContext *ctx)
 {
-    u32 amount = (VarGet(ScriptReadWord(ctx)));
+    u32 amount = ScriptReadWord(ctx);
     RemoveMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }
 
 bool8 ScrCmd_checkmoney(struct ScriptContext *ctx)
 {
-    u16 amount = VarGet(ScriptReadWord(ctx));
+    u32 amount = ScriptReadWord(ctx);
     gSpecialVar_Result = IsEnoughMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }

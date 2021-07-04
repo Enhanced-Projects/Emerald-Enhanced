@@ -171,7 +171,7 @@ IT_NuzlockeMode::
 	additem ITEM_POTION, 5
 	additem ITEM_SUPER_POTION, 2
 	additem ITEM_ELIXIR, 2
-	takemoney 3000
+	removemoney 3000
 	msgbox IT_NuzlockeOutro MSGBOX_SIGN
 	setflag FLAG_RYU_NUZLOCKEMODE
 	setflag FLAG_HIDE_MAP_NAME_POPUP
@@ -190,7 +190,7 @@ IT_FrontierMode::
 	msgbox IT_FrontierIntro
 	setvar VAR_RYU_EXP_MULTIPLIER, 1
 	setvar VAR_RYU_PRICE_MULTIPLIER 1000
-	takemoney 3000
+	removemoney 3000
 	giveitem ITEM_MEGA_BRACELET
 	msgbox IT_FrontierOutro
 	additem ITEM_SS_TICKET
@@ -212,7 +212,7 @@ IT_HardcoreMode::
 	setvar VAR_RYU_PRICE_MULTIPLIER, 2000
 	setflag FLAG_RYU_HARDCORE_MODE
 	setvar VAR_RYU_NUZLOCKE_WAYSTONE_USES, 1
-	takemoney 2750
+	removemoney 2750
 	msgbox IT_HardcoreOutro
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	checkplayergender

@@ -1094,7 +1094,7 @@
 	.endm
 
 	@ Subtracts value from the player's money. Any number over 16000 must be passed as a variable.
-	.macro takemoney value:req
+	.macro removemoney value:req
 	.byte 0x91
 	.4byte \value
 	.endm

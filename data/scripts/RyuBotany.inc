@@ -279,8 +279,7 @@ RyuBotany_ApricornBallCrafter::  @Add this script to the npc you want to craft b
     call_if_eq RB_BallMenu
     msgbox RB_RefineApricornIntro
     closemessage
-    setvar VAR_TEMP_B, 1000
-    checkmoney VAR_TEMP_B
+    checkmoney 1000
     compare VAR_RESULT, FALSE
     goto_if_eq RB_CantAfford
     callnative RyuBufferNumApricornsForMenu

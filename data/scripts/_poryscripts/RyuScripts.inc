@@ -598,8 +598,7 @@ RyuCantUsePCCHARGING:
 
 
 RyuBallChanger::
-	setvar VAR_TEMP_0, 10000
-	checkmoney VAR_TEMP_0
+	checkmoney 10000
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NotEnoughMoney
 	msgbox BCIntro
@@ -625,10 +624,9 @@ BCPokeball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 4
 	removeitem ITEM_POKE_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -638,10 +636,9 @@ BCGreatball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 3
 	removeitem ITEM_GREAT_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -651,10 +648,9 @@ BCUltraball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 2
 	removeitem ITEM_ULTRA_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -664,10 +660,9 @@ BCLuxuryball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 11
 	removeitem ITEM_LUXURY_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -677,10 +672,9 @@ BCPremierball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 11
 	removeitem ITEM_PREMIER_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -690,10 +684,9 @@ BCRepeatball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 9
 	removeitem ITEM_REPEAT_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -703,10 +696,9 @@ BCTimerball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 10
 	removeitem ITEM_TIMER_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -716,10 +708,9 @@ BCNestball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 8
 	removeitem ITEM_NEST_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -729,10 +720,9 @@ BCNetball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 6
 	removeitem ITEM_NET_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -742,10 +732,9 @@ BCSafariball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 5
 	removeitem ITEM_SAFARI_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -755,12 +744,15 @@ BCDiveball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 7
 	removeitem ITEM_DIVE_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
+
+BCremovemoney::
+	removemoney 10000
+	return
 
 BCIntro:
 	.string "Welcome to the ball changer menu.\pOnce you make your selection,\nyou will be charged ¥10000\land the chosen ball will be consumed.$"

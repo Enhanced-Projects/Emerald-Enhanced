@@ -356,13 +356,12 @@ MHM_BasicHealing::
 	msgbox BasicHealingKit, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_ne ryu_end
-	setvar VAR_TEMP_0, 1500
-	checkmoney VAR_TEMP_0
+	checkmoney 1500
 	compare VAR_RESULT, 1
 	goto_if_ne MHM_CantAfford
 	additem ITEM_POTION, 5
 	additem ITEM_FULL_HEAL, 2
-	takemoney VAR_TEMP_0
+	removemoney 1500
 	msgbox MHM_Success
 	closemessage
 	release
@@ -372,15 +371,14 @@ MHM_BetterHealing::
 	msgbox BetterHealingKit, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_ne ryu_end
-	setvar VAR_TEMP_0, 3500
-	checkmoney VAR_TEMP_0
+	checkmoney 3500
 	compare VAR_RESULT, 1
 	goto_if_ne MHM_CantAfford
 	additem ITEM_SUPER_POTION, 10
 	additem ITEM_FULL_HEAL, 4
 	additem ITEM_ETHER, 2
 	additem ITEM_REVIVAL_HERB, 1
-	takemoney VAR_TEMP_0
+	removemoney 3500
 	msgbox MHM_Success
 	closemessage
 	release
@@ -390,15 +388,14 @@ MHM_PremiumHealing::
 	msgbox PremiumHealingKit, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_ne ryu_end
-	setvar VAR_TEMP_0, 6250
-	checkmoney VAR_TEMP_0
+	checkmoney 6250
 	compare VAR_RESULT, 1
 	goto_if_ne MHM_CantAfford
 	additem ITEM_HYPER_POTION, 10
 	additem ITEM_FULL_HEAL, 2
 	additem ITEM_ELIXIR, 5
 	additem ITEM_REVIVE, 2
-	takemoney VAR_TEMP_0
+	removemoney 6250
 	msgbox MHM_Success
 	closemessage
 	release
@@ -408,15 +405,14 @@ MHM_DeluxeHealing::
 	msgbox DeluxeHealingKit, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_ne ryu_end
-	setvar VAR_TEMP_0, 10000
-	checkmoney VAR_TEMP_0
+	checkmoney 10000
 	compare VAR_RESULT, 1
 	goto_if_ne MHM_CantAfford
 	additem ITEM_FULL_RESTORE, 12
 	additem ITEM_MAX_ELIXIR, 10
 	additem ITEM_MAX_REVIVE, 3
 	msgbox MHM_Success
-	takemoney VAR_TEMP_0
+	removemoney 10000
 	closemessage
 	release
 	end
@@ -425,13 +421,12 @@ MHM_BasicCapture::
 	msgbox BasicCaptureKit, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_ne ryu_end
-	setvar VAR_TEMP_0,500
-	checkmoney VAR_TEMP_0
+	checkmoney 500
 	compare VAR_RESULT, 1
 	goto_if_ne MHM_CantAfford
 	additem ITEM_POKE_BALL, 10
 	additem ITEM_PREMIER_BALL, 2
-	takemoney VAR_TEMP_0
+	removemoney 500
 	msgbox MHM_Success
 	closemessage
 	release
@@ -441,13 +436,12 @@ MHM_AdvancedCapture::
 	msgbox AdvancedCaptureKit, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_ne ryu_end
-	setvar VAR_TEMP_0, 2500
-	checkmoney VAR_TEMP_0
+	checkmoney 2500
 	compare VAR_RESULT, 1
 	goto_if_ne MHM_CantAfford
 	additem ITEM_PREMIER_BALL, 20
 	additem ITEM_ULTRA_BALL, 10
-	takemoney VAR_TEMP_0
+	removemoney 2500
 	msgbox MHM_Success
 	closemessage
 	release
@@ -458,8 +452,7 @@ MHM_PerformanceBoost::
 	msgbox PerformanceBoostKit, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_ne ryu_end
-	setvar VAR_TEMP_0, 25000
-	checkmoney VAR_TEMP_0
+	checkmoney 25000
 	compare VAR_RESULT, 1
 	goto_if_ne MHM_CantAfford
 	additem ITEM_PROTEIN, 2
@@ -468,7 +461,7 @@ MHM_PerformanceBoost::
 	additem ITEM_ZINC, 2
 	additem ITEM_HP_UP, 2
 	additem ITEM_IRON, 2
-	takemoney VAR_TEMP_0
+	removemoney 25000
 	msgbox MHM_Success
 	closemessage
 	release
@@ -478,8 +471,7 @@ MHM_MasterKit::
 	msgbox MasterKit, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_ne ryu_end
-	setvar VAR_TEMP_0, 20000
-	checkmoney VAR_TEMP_0
+	checkmoney 20000
 	compare VAR_RESULT, 1
 	goto_if_ne MHM_CantAfford
 	additem ITEM_FULL_RESTORE, 5
@@ -488,7 +480,7 @@ MHM_MasterKit::
 	additem ITEM_LUXURY_BALL, 10
 	additem ITEM_MAX_REVIVE, 10
 	additem ITEM_HYPER_POTION, 4
-	takemoney VAR_TEMP_0
+	removemoney 20000
 	msgbox MHM_Success
 	closemessage
 	release

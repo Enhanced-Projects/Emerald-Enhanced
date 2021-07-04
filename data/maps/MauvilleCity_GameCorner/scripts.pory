@@ -51,7 +51,7 @@ MauvilleCity_GameCorner_EventScript_Buy50Coins:: @ 820FC33
 	compare VAR_RESULT, FALSE
 	goto_if_eq MauvilleCity_GameCorner_EventScript_NotEnoughMoney
 	addcoins 50
-	takemoney coins_PRICE_50
+	removemoney coins_PRICE_50
 	updatemoneybox 0, 0
 	updatecoinsbox 1, 6
 	playse SE_REGI
@@ -69,7 +69,7 @@ MauvilleCity_GameCorner_EventScript_Buy500Coins:: @ 820FC75
 	compare VAR_RESULT, FALSE
 	goto_if_eq MauvilleCity_GameCorner_EventScript_NotEnoughMoney
 	addcoins 500
-	takemoney coins_PRICE_500
+	removemoney coins_PRICE_500
 	updatemoneybox 0, 0
 	updatecoinsbox 1, 6
 	playse SE_REGI

@@ -51,7 +51,6 @@ SVM_OldGateau::
 
 SVM_BigMalasada::
     call SVMCommon_CheckSpaceAndMoney
-    setvar VAR_TEMP_D, 2000
     setvar VAR_TEMP_C, ITEM_BIG_MALASADA
     bufferitemname 0, ITEM_BIG_MALASADA
     goto SVMCommon_GiveItem
@@ -60,13 +59,13 @@ SVMCommon_CheckSpaceAndMoney::
     checkitemspace VAR_TEMP_C, 3
     compare VAR_RESULT, FALSE
     goto_if_eq SVMCommon_NotEnoughPackSpace
-    checkmoney VAR_TEMP_D
+    checkmoney 2000
     compare VAR_RESULT, FALSE
     goto_if_eq SVMCommon_CantAfford
     return
 
 SVMCommon_GiveItem::
-    takemoney VAR_TEMP_D
+    removemoney 2000
     additem VAR_TEMP_C, 1
     msgbox SVMCommon_SnackDroppedDown
     random 63
