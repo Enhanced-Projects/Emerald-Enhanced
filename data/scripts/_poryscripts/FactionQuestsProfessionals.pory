@@ -74,6 +74,7 @@ script(global) RyuProfessionalsDailyQuest  {
         end
     }
 
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
     random(3)//increase this by the number of quests you add.
     switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
@@ -107,7 +108,6 @@ script(global) RyuProfessionalsDailyQuest  {
             msgbox(format("I need some smooth sand to polish and sharpen my tools with, could you bring me one? Thanks."))
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
-    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
     closemessage
     release
     end

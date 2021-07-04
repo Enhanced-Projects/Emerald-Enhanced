@@ -74,7 +74,8 @@ script(global) RyuAthletesDailyQuest  {
         callnative(RyuSummonOriginalNPCscript)
         end
     }
-
+    
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_ATHLETES)
     random(3)//increase this by the number of quests you add. 
     switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
@@ -103,7 +104,6 @@ script(global) RyuAthletesDailyQuest  {
             msgbox(FactionsReceivedEggMsg)
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
-    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_ATHLETES)
     closemessage
     release
     end
