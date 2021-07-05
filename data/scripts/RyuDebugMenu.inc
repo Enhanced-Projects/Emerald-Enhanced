@@ -250,7 +250,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	addmoney 1000000000
+	removemoney 900000000
 	release
 	end
 

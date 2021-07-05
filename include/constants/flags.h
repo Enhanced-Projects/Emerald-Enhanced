@@ -126,7 +126,7 @@
 #define FLAG_RYU_LATIOSITE                   0x6C
 #define FLAG_RYU_LATIASITE                   0x6D
 #define FLAG_RECEIVED_TM52                   0x6E
-#define FLAG_UNUSED_0x6F                     0x6F
+#define FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT     0x6F
 #define FLAG_UNUSED_0x70                     0x70
 #define FLAG_RYU_IN_MOSSDEEP_GYM             0x71
 #define FLAG_UNUSED_0x72                     0x72
@@ -1624,7 +1624,7 @@
 #define FLAG_FINISHED_PROFESSIONAL_DAILY                  (DAILY_FLAGS_START + 0x21) // Unused Flag
 #define FLAG_FINISHED_ATHLETE_DAILY                       (DAILY_FLAGS_START + 0x22) // Unused Flag
 #define FLAG_DAILY_QUEST_ACTIVE                        (DAILY_FLAGS_START + 0x23) // Unused Flag
-#define FLAG_UNUSED_0x944                              (DAILY_FLAGS_START + 0x24) // Unused Flag
+#define FLAG_RYU_INTREST_ACCRUED                              (DAILY_FLAGS_START + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x945                              (DAILY_FLAGS_START + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x946                              (DAILY_FLAGS_START + 0x26) // Unused Flag
 #define FLAG_UNUSED_0x947                              (DAILY_FLAGS_START + 0x27) // Unused Flag

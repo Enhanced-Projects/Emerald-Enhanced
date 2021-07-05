@@ -86,6 +86,8 @@ static bool8 TryStartStepCountScript(u16);
 static void UpdateHappinessStepCounter(void);
 static bool8 UpdatePoisonStepCounter(void);
 
+extern const u8 RyuScript_PlayerReceivedInterest[];
+
 void FieldClearPlayerInput(struct FieldInput *input)
 {
     input->pressedAButton = FALSE;
@@ -202,6 +204,13 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
 
+    if (FlagGet(FLAG_RYU_INTREST_ACCRUED) == 1)//Interest was given, notify player.
+    {  
+        FlagClear(FLAG_RYU_INTREST_ACCRUED);
+        ScriptContext2_RunNewScript(RyuScript_PlayerReceivedInterest);
+        return TRUE;
+    }
+
     if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10))
     {
         if (!(FlagGet(FLAG_RYU_LIMBO) == 1))
@@ -209,6 +218,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
             if ((FlagGet(FLAG_RYU_NUZLOCKEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
             {
                 ScriptContext1_SetupScript(RyuScript_GoToLimbo);
+                return TRUE;
             }
         }
     }
@@ -238,6 +248,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
                     {
                         FlagClear(FLAG_TEMP_E);
                         ScriptContext1_SetupScript(RyuScript_CompleteTravelDailyQuestType);
+                        return TRUE;
                     }
                 }
         }

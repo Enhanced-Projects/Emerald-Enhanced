@@ -2227,6 +2227,13 @@ RyuScript_CompleteTravelDailyQuestType::
 	end
 
 
+RyuScript_PlayerReceivedInterest::
+	callnative RyuBufferInterestGamestat
+	msgbox RyuScript_PlayerReceivedInterest_Text_0
+	release
+	end
+
+
 RyuScript_EndNuzlockeMode_Text_0:
 	.string "Welcome to Limbo. You have failed your\n"
 	.string "Nuzlocke or Hardcore challenge and\l"
@@ -2261,6 +2268,9 @@ RyuScript_CompleteTravelDailyQuestType_Text_0:
 	.string "the {STR_VAR_1} wanted me to come\l"
 	.string "to. Guess I should return to one of\l"
 	.string "them.$"
+
+RyuScript_PlayerReceivedInterest_Text_0:
+	.string "You earned interest in the amount of\n¥{STR_VAR_1} for this 24-Hour period.\lThank you for choosing Frontier Bank.$"
 
 StartingRandomBattleMsg::
 	.string "Starting Random Battle...$"

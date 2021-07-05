@@ -1283,6 +1283,28 @@ static const struct MenuAction MultiChoiceList_ChooseRandomBattleType[]=
     {gText_Exit},
 };
 
+static const struct MenuAction MultiChoiceList_FrontierBank[]=
+{
+    {gText_RyuFrontierBankDeposit},
+    {gText_RyuFrontierBankWithdraw},
+    {gText_RyuFrontierBankBalance},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultiChoiceList_FrontierBankAmountsMenu[]=
+{
+    {gText_RyuFrontierBankAll},
+    {gText_RyuFrontierBank10k},
+    {gText_RyuFrontierBank50k},
+    {gText_RyuFrontierBank100k},
+    {gText_RyuFrontierBank250k},
+    {gText_RyuFrontierBank500k},
+    {gText_RyuFrontierBank1M},
+    {gText_RyuFrontierBank10M},
+    {gText_RyuFrontierBank100M},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1459,6 +1481,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_HOLIDAY_2020]               = MULTICHOICE(MultiChoiceList_Holiday2020),
     [MULTI_BOTANY_OR_ALCHEMY]          = MULTICHOICE(MultiChoiceList_RyuBotanyOrAlchemy),
     [MULTI_RANDOM_BATTLE_TYPE]         = MULTICHOICE(MultiChoiceList_ChooseRandomBattleType),
+    [MULTI_FRONTIERBANK]               = MULTICHOICE(MultiChoiceList_FrontierBank),
+    [MULTI_FBAMOUNTMENU]               = MULTICHOICE(MultiChoiceList_FrontierBankAmountsMenu),
 };
 
 const u8 *const gStdStrings[] =

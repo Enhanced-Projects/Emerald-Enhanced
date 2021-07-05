@@ -1,0 +1,107 @@
+mapscripts SlateportCity_FrontierBank_MapScripts {}
+
+//Female banker person
+
+script SCFB_Teller{
+    msgbox("Hi! Welcome to Frontier Bank.\nHow can I help you today?")
+    if (!flag(FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT)) {
+        goto(SCFB_MakeAccount)
+    }
+    multichoicedefault(0, 4, MULTI_FRONTIERBANK, 0, 0)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            msgbox(format("So, You would like to\nmake a deposit?"), MSGBOX_YESNO)
+                if (var(VAR_RESULT) == YES) {
+                    msgbox(format("How much would you like to depost?"))
+                    multichoicegrid(5, 2, MULTI_FBAMOUNTMENU, 2, 1)
+                    closemessage
+                    msgbox("Okay, we'll deposit that money for you.\nOne moment please.")
+                    specialvar(VAR_TEMP_2, RyuFBDoDeposit)
+                    switch (var(VAR_TEMP_2)) {
+                    case 0:
+                        msgbox("You do not have enough money on\nyour person to deposit that amount.")
+                        closemessage
+                        goto(SCFB_Teller)
+                    case 1:
+                        msgbox("We've deposited ¥{STR_VAR_1}\n into your account.\pYour account now has a balance\nof ¥{STR_VAR_2}.\l Have a nice day!")
+                        release
+                        end
+                    case 2:
+                        msgbox("We cannot process this transaction,\nour computers cannot calculate values\lof that magnitude. Sorry!")
+                        closemessage
+                        goto(SCFB_Teller)
+                    case 3:
+                        msgbox("This deposit would exceed the\nmaximum amount of money we can\lhold for a single person. Sorry.")
+                        closemessage
+                        goto(SCFB_Teller)
+                    case 5:
+                        msgbox("Okay.")
+                        goto(SCFB_Teller)
+                    }
+                }
+                else {
+                    msgbox(format("Okay."))
+                    goto(SCFB_Teller)
+                }
+        case 1:
+            msgbox(format("So, you would like to make a withdrawal?"), MSGBOX_YESNO)
+                if (var(VAR_RESULT) == YES){
+                    msgbox(format("So, how much would you like to withdraw?"))
+                    multichoicegrid(5, 2, MULTI_FBAMOUNTMENU, 2, 1)
+                    closemessage
+                    msgbox("Okay, we'll withdraw that money\nfor you.\pOne moment please.")
+                    specialvar(VAR_TEMP_2, RyuFBDoWithdraw)
+                    switch (var(VAR_TEMP_2)) {
+                        case 0:
+                            msgbox("You do not have enough money\nin your account to withdraw\lthat amount.")
+                            closemessage
+                            goto(SCFB_Teller)
+                        case 2:
+                        case 1:
+                            msgbox("We've withdrawn ¥{STR_VAR_1}\nfrom your account.\pYour account now has a balance\nof ¥{STR_VAR_2}.\lHave a nice day!")
+                            closemessage
+                            release
+                            end
+                        case 4:
+                        case 3:
+                            msgbox(SpecialWithdrawText)
+                            closemessage
+                            release
+                            end
+                        case 5:
+                            msgbox("Okay.")
+                            goto(SCFB_Teller)
+                    }
+                }
+                else {
+                    msgbox(format("Okay."))
+                    goto(SCFB_Teller)
+                }
+        case 2:
+            special(RyuBufferBankBalance)
+            msgbox("Your account has a balance\nof ¥{STR_VAR_1}.")
+            goto(SCFB_Teller)
+    }
+    release
+    end
+}
+
+text SpecialWithdrawText {
+    "You are trying to withdraw\n"
+    "more money than you can carry.\p"
+    "We are withdrawing ¥{STR_VAR_1}\n"
+    "instead.\p"
+    "Your remaining account balance is\n"
+    "¥{STR_VAR_2}."
+}
+
+script SCFB_MakeAccount {
+    msgbox("Ah! So you would like to\nset up a new account?\pLet me get this set up for you.\pCurrently, our interest rate is 1%\nevery 24 Real-Time hours.\p...\pOkay! All set!")
+    setflag(FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT)
+    goto(SCFB_Teller)
+}
+
+script SCFB_Manager{
+    msgbox("Hello, there!\pI'm the manager of this here\nfine establishment.\pWe offer the best interest rates\naround!\pMake an account today!")
+    end
+}

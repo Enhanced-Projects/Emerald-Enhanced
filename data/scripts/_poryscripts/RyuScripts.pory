@@ -2250,3 +2250,10 @@ script RyuScript_CompleteTravelDailyQuestType {
 	release
 	end
 }
+
+script RyuScript_PlayerReceivedInterest {
+	callnative(RyuBufferInterestGamestat)
+	msgbox("You earned interest in the amount of\n¥{STR_VAR_1} for this 24-Hour period.\lThank you for choosing Frontier Bank.")
+	release
+	end
+}

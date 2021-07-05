@@ -1229,3 +1229,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/Limbo/scripts.inc"
 
 	.include "data/maps/FallarborTown_VolcanionCave/scripts.inc"
+
+	.include "data/maps/SlateportCity_FrontierBank/scripts.inc"
