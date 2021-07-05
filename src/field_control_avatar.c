@@ -204,10 +204,10 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
 
-    if (FlagGet(FLAG_RYU_INTREST_ACCRUED) == 1)//Interest was given, notify player.
+    if (FlagGet(FLAG_RYU_INTEREST_ACCRUED) == 1)//Interest was given, notify player.
     {  
-        FlagClear(FLAG_RYU_INTREST_ACCRUED);
-        ScriptContext2_RunNewScript(RyuScript_PlayerReceivedInterest);
+        FlagClear(FLAG_RYU_INTEREST_ACCRUED);
+        ScriptContext1_SetupScript(RyuScript_PlayerReceivedInterest);
         return TRUE;
     }
 

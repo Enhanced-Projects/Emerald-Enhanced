@@ -44,9 +44,9 @@ static void UpdatePerDay(struct Time *localTime)
     if (*days != localTime->days && *days <= localTime->days)
     {
         daysSince = localTime->days - *days;
-        DoDailyRealEstateTasks();
         ClearDailyQuestData();
         ClearDailyFlags();
+        DoDailyRealEstateTasks();
         UpdateDewfordTrendPerDay(daysSince);
         UpdateTVShowsPerDay(daysSince);
         UpdateWeatherPerDay(daysSince);

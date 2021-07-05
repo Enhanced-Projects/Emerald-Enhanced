@@ -1624,7 +1624,7 @@
 #define FLAG_FINISHED_PROFESSIONAL_DAILY                  (DAILY_FLAGS_START + 0x21) // Unused Flag
 #define FLAG_FINISHED_ATHLETE_DAILY                       (DAILY_FLAGS_START + 0x22) // Unused Flag
 #define FLAG_DAILY_QUEST_ACTIVE                        (DAILY_FLAGS_START + 0x23) // Unused Flag
-#define FLAG_RYU_INTREST_ACCRUED                              (DAILY_FLAGS_START + 0x24) // Unused Flag
+#define FLAG_RYU_INTEREST_ACCRUED                              (DAILY_FLAGS_START + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x945                              (DAILY_FLAGS_START + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x946                              (DAILY_FLAGS_START + 0x26) // Unused Flag
 #define FLAG_UNUSED_0x947                              (DAILY_FLAGS_START + 0x27) // Unused Flag

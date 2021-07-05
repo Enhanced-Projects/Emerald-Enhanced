@@ -15,7 +15,7 @@ void DoDailyRealEstateTasks(void)
         balance /= 100;
         SetGameStat(GAME_STAT_INTEREST_RECEIVED, balance);//saves the last earned interest amount, potentially could be more than 65k, so use 32bit number.
         SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, (balance * 101)); //this should give 1% interest.
-        FlagSet(FLAG_RYU_INTREST_ACCRUED);
+        FlagSet(FLAG_RYU_INTEREST_ACCRUED);
     }
             
 
@@ -96,6 +96,18 @@ int RyuFBDoDeposit(void)
         return 3;//Deposit amount is above maximum allowed, abort.
     }
 
+    //if it got this far, the it passed the above checks. Apply player balance to bank balance.
+    if (Balance == 0)
+    {
+        Amount = ((GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE)) + money);
+        SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, Amount);
+        SetMoney(&gSaveBlock1Ptr->money, 0);
+        ConvertIntToDecimalStringN(gStringVar1, Amount, STR_CONV_MODE_LEFT_ALIGN, 10);
+        ConvertIntToDecimalStringN(gStringVar2, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE), STR_CONV_MODE_LEFT_ALIGN, 10);
+        return 4;//Player deposited entire personal money amount 
+    }
+
+    //otherwise do a normal deposit.
     SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, Balance);
     RemoveMoney(&gSaveBlock1Ptr->money, Amount);
     ConvertIntToDecimalStringN(gStringVar1, Amount, STR_CONV_MODE_LEFT_ALIGN, 10);
@@ -174,6 +186,8 @@ int RyuFBDoWithdraw(void)
         {
             AddMoney(&gSaveBlock1Ptr->money, Amount);
             SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, 0);
+            ConvertIntToDecimalStringN(gStringVar1, Amount, STR_CONV_MODE_LEFT_ALIGN, 10);
+            ConvertIntToDecimalStringN(gStringVar2, (GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE)), STR_CONV_MODE_LEFT_ALIGN, 10);
             return 2;// withdrew entire balance, player money isn't above cap.
         }
     }

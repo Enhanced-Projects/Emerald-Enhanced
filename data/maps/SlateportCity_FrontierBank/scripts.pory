@@ -10,9 +10,9 @@ script SCFB_Teller{
     multichoicedefault(0, 4, MULTI_FRONTIERBANK, 0, 0)
     switch(var(VAR_RESULT)) {
         case 0:
-            msgbox(format("So, You would like to\nmake a deposit?"), MSGBOX_YESNO)
+            msgbox("Do you wish to make a deposit?", MSGBOX_YESNO)
                 if (var(VAR_RESULT) == YES) {
-                    msgbox(format("How much would you like to depost?"))
+                    msgbox(format("How much would you like to deposit?"))
                     multichoicegrid(5, 2, MULTI_FBAMOUNTMENU, 2, 1)
                     closemessage
                     msgbox("Okay, we'll deposit that money for you.\nOne moment please.")
@@ -23,7 +23,8 @@ script SCFB_Teller{
                         closemessage
                         goto(SCFB_Teller)
                     case 1:
-                        msgbox("We've deposited ¥{STR_VAR_1}\n into your account.\pYour account now has a balance\nof ¥{STR_VAR_2}.\l Have a nice day!")
+                    case 4:
+                        msgbox("We've deposited ¥{STR_VAR_1}\n into your account.\pYour account now has a balance\nof ¥{STR_VAR_2}.\lHave a nice day!")
                         release
                         end
                     case 2:
@@ -103,5 +104,7 @@ script SCFB_MakeAccount {
 
 script SCFB_Manager{
     msgbox("Hello, there!\pI'm the manager of this here\nfine establishment.\pWe offer the best interest rates\naround!\pMake an account today!")
+    closemessage
+    release
     end
 }
