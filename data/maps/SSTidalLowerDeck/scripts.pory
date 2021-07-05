@@ -25,7 +25,7 @@ SST_CHDX_Found::
 	end
 	
 SST_ItsEmpty:
-	.string "It's empty."
+	.string "It's empty.$"
 
 SSTidalLowerDeck_Text_PhillipIntro: @ 823C847
 	.string "Arrrgh! I'm fed up and dog-tired of\n"
