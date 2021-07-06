@@ -119,6 +119,26 @@ static const union AnimCmd gAnimCmd_Nurse_1[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd gAnimCmd_Gold_1[] =
+{
+    ANIMCMD_FRAME(1, 20),
+    ANIMCMD_FRAME(2, 6),
+    ANIMCMD_FRAME(3, 6),
+    ANIMCMD_FRAME(4, 24),
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd gAnimCmd_Krystal_1[] =
+{
+    ANIMCMD_FRAME(1, 20),
+    ANIMCMD_FRAME(2, 6),
+    ANIMCMD_FRAME(3, 6),
+    ANIMCMD_FRAME(4, 24),
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd *const sBackAnims_Brendan[] =
 {
     sAnim_GeneralFrame3,
@@ -197,6 +217,18 @@ static const union AnimCmd *const sBackAnims_Nurse[] =
     gAnimCmd_Nurse_1,
 };
 
+static const union AnimCmd *const sBackAnims_Gold[] =
+{
+    sAnim_GeneralFrame0,
+    gAnimCmd_Gold_1,
+};
+
+static const union AnimCmd *const sBackAnims_Krystal[] =
+{
+    sAnim_GeneralFrame0,
+    gAnimCmd_Krystal_1,
+};
+
 const union AnimCmd *const *const gTrainerBackAnimsPtrTable[] =
 {
     [TRAINER_BACK_PIC_BRENDAN] = sBackAnims_Brendan,
@@ -212,4 +244,6 @@ const union AnimCmd *const *const gTrainerBackAnimsPtrTable[] =
     [TRAINER_BACK_PIC_MINNIE] = sBackAnims_Minnie,
     [TRAINER_BACK_PIC_COURTNEY] = sBackAnims_Courtney,
     [TRAINER_BACK_PIC_NURSE] = sBackAnims_Nurse,
+    [TRAINER_BACK_PIC_GOLD] = sBackAnims_Gold,
+    [TRAINER_BACK_PIC_KRYSTAL] = sBackAnims_Krystal,
 };

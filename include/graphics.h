@@ -5579,6 +5579,8 @@ extern const u8 gTrainerBackPic_Minnie[];
 extern const u8 gTrainerBackPic_Courtney[];
 extern const u8 gTrainerBackPic_Nurse[];
 extern const u8 gTrainerBackPic_Shelly[];
+extern const u8 gTrainerBackPic_Gold[];
+extern const u8 gTrainerBackPic_Krystal[];
 
 extern const u32 gTrainerBackPicPal_Brendan[];
 extern const u32 gTrainerBackPicPal_Dawn[];
@@ -5593,6 +5595,8 @@ extern const u32 gTrainerBackPicPal_Lanette[];
 extern const u32 gTrainerBackPicPal_Minnie[];
 extern const u32 gTrainerBackPicPal_Courtney[];
 extern const u32 gTrainerBackPicPal_Nurse[];
+extern const u32 gTrainerBackPicPal_Gold[];
+extern const u32 gTrainerBackPicPal_Krystal[];
 
 extern const u32 gTrainerBackPicPalette_Red[];
 extern const u32 gTrainerBackPicPalette_Leaf[];
