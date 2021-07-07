@@ -145,7 +145,7 @@
 #define VAR_RYU_QUESTLINE_ID                 0x407F // Which main quest the player chose.
 #define VAR_RYU_DAILY_QUEST_TARGET           0x4080 // ID or target value to complete daily quest.
 #define VAR_RYU_DAILY_QUEST_DATA             0x4081 // Multi-Purpose component for daily quests.
-#define VAR_LITTLEROOT_HOUSES_STATE_DAWN     0x4082
+#define VAR_UNUSED_0x4082                    0x4082 
 #define VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION 0x4083 // The faction that assigned the current daily quest.
 #define VAR_BIRCH_LAB_STATE                  0x4084
 #define VAR_PETALBURG_GYM_STATE              0x4085 // used to determine which petalburg doors are open.
@@ -420,6 +420,6 @@
 #define QUEST_ID_LANA 4
 #define QUEST_ID_NURSE 5
 
-#define EE_GAME_VERSION 7702
+#define EE_GAME_VERSION 7800
 
 #endif // GUARD_CONSTANTS_VARS_H

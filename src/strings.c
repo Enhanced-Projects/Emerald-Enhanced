@@ -2213,3 +2213,17 @@ const u8 gText_RyuAlchemyLabel[] = _("Alchemy");
 const u8 gText_RyuRandomBattleNormal[] = _("Normal Random");
 const u8 gText_RyuRandomBattleMetronome[] = _("Metronome Random");
 const u8 gText_RyuRandomBattleInverse[] = _("Inverse Random");
+
+const u8 gText_RyuFrontierBankDeposit[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}Deposit");
+const u8 gText_RyuFrontierBankWithdraw[] = _("{COLOR LIGHT_RED}{SHADOW RED}Withdraw");
+const u8 gText_RyuFrontierBankBalance[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}Balance Query");
+
+const u8 gText_RyuFrontierBankAll[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}All");
+const u8 gText_RyuFrontierBank10k[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥10,000");
+const u8 gText_RyuFrontierBank50k[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥50,000");
+const u8 gText_RyuFrontierBank100k[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥100,000");
+const u8 gText_RyuFrontierBank250k[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥250,000");
+const u8 gText_RyuFrontierBank500k[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥500,000");
+const u8 gText_RyuFrontierBank1M[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥1,000,000");
+const u8 gText_RyuFrontierBank10M[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥10,000,000");
+const u8 gText_RyuFrontierBank100M[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥100,000,000");

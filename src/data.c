@@ -152,6 +152,24 @@ const struct SpriteFrameImage gTrainerBackPicTable_Nurse[] =
     gTrainerBackPic_Nurse + 0x1800, 0x0800,
 };
 
+const struct SpriteFrameImage gTrainerBackPicTable_Gold[] =
+{
+    gTrainerBackPic_Gold, 0x0800,
+    gTrainerBackPic_Gold + 0x0800, 0x0800,
+    gTrainerBackPic_Gold + 0x1000, 0x0800,
+    gTrainerBackPic_Gold + 0x1800, 0x0800,
+    gTrainerBackPic_Gold + 0x2000, 0x0800,
+};
+
+const struct SpriteFrameImage gTrainerBackPicTable_Krystal[] =
+{
+    gTrainerBackPic_Krystal, 0x0800,
+    gTrainerBackPic_Krystal + 0x0800, 0x0800,
+    gTrainerBackPic_Krystal + 0x1000, 0x0800,
+    gTrainerBackPic_Krystal + 0x1800, 0x0800,
+    gTrainerBackPic_Krystal + 0x2000, 0x0800,
+};
+
 static const union AnimCmd sAnim_GeneralFrame0[] =
 {
     ANIMCMD_FRAME(0, 0),

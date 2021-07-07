@@ -793,7 +793,7 @@ static void DrawJournalStatText(void)
 
     ConvertIntToDecimalStringN(gStringVar1, CountBadges(), STR_CONV_MODE_LEADING_ZEROS, 1);
     ConvertIntToDecimalStringN(gStringVar2, (u16)GetTrainerId(gSaveBlock2Ptr->playerTrainerId), STR_CONV_MODE_LEADING_ZEROS, 5);
-    ConvertIntToDecimalStringN(gStringVar3, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_LEFT_ALIGN, 8);
+    ConvertIntToDecimalStringN(gStringVar3, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_LEFT_ALIGN, 10);
     StringExpandPlaceholders(gStringVar4, sText_TrainerNameId);
     AddTextPrinterParameterized3(WIN_JOURNAL_QUEST_STAGE, 1, 0, 1, sColors[0], 0, gStringVar4);
     
@@ -1329,7 +1329,6 @@ static void Task_QuestMain(u8 taskId)
     switch(action)
     {
         default:
-            //mgba_printf(LOGINFO, "Quest menu action is invalid");
         case QUEST_ACTION_NONE:
             return;
         case QUEST_ACTION_DOWN:
@@ -1420,8 +1419,6 @@ static const struct QuestStageDesc * FindQuestDescFromStage(u32 quest)
     {
         if(stageDescs->questStage >= temp && stageDescs->questStage <= currentStage)
         {
-            //if(stageDescs->questStage == temp && temp != 0) 
-                //mgba_printf(LOGWARN, "Duplicate quest stage entry found, stageDescs->questStage = %d, quest = %d, currentStage = %d", stageDescs->questStage, quest, currentStage);
             foundDesc = stageDescs;
             temp = stageDescs->questStage;
             if(stageDescs->questStage == currentStage)

@@ -582,3 +582,6 @@ gSpecials:: @ 81DBA64
 	def_special RyuAlchemy_TryCraftingItem
 	def_special RyuCheckIfWaystoneShouldBeDisabled
 	def_special RyuGetTotalCaughtMons
+	def_special RyuFBDoDeposit
+	def_special RyuFBDoWithdraw
+	def_special RyuBufferBankBalance

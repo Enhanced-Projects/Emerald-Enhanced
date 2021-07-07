@@ -141,6 +141,7 @@
 #define MAP_SLATEPORT_CITY_MART                    (12 | (6 << 8))
 #define MAP_SLATEPORT_CITY_POKEMON_CENTER_1F       (13 | (6 << 8))
 #define MAP_SLATEPORT_CITY_POKEMON_CENTER_2F       (14 | (6 << 8))
+#define MAP_SLATEPORT_CITY_FRONTIER_BANK           (15 | (6 << 8))
 
 // Map Group 7
 #define MAP_MAUVILLE_CITY_BIKE_SHOP         (0 | (7 << 8))

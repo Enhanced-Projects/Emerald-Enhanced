@@ -98,6 +98,7 @@ const u8 sDevonQuestStage35Desc[] = _("Player is meeting devon employees.\nTalk 
 const u8 sDevonQuestStage40Desc[] = _("Player can now leave 2f to go to 1f.\n(Right side staircase.) ");
 const u8 sDevonQuestStage45Desc[] = _("Player needs to go find Ms. Ito\nnorth of Rustburo.");
 const u8 sDevonQuestStage60Desc[] = _("Player completed the DEVON CORPORATE questline.\nReturn after being champion to get\naccess to Rayquaza.");
+const u8 sDevonQUestStage1000Desc[] = _("Player chose to become a Scientist.\nWork with Cozmo from now on.");
 
 //devon scientist
 const u8 sDevonQuestStage100Desc[] = _("Player got Rayquaza after the devon quest\nand has completed all stages.");
@@ -551,13 +552,17 @@ const static struct QuestStageDesc gDevonCorporateQuestStages[] = {
     .description = sDevonQuestStage69Desc,
     .questStage = 69,
   },
+  {
+    .description = sDevonQUestStage1000Desc,
+    .questStage = 1000,
+  },
   QUEST_STAGE_END
 };
 
 const static struct QuestStageDesc gDevonScientistQuestStages[] = {
   QUEST_STAGE_0,
   {
-    .description = sDevonQuestStage100Desc,
+    .description = sDevonQuestStage1000Desc,
     .questStage = 100,
   },
   {

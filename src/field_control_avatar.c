@@ -55,6 +55,7 @@ extern const u8 Ryu_BeingWatched[];
 extern const u8 Ryu_MeloettaWatchingMsg[];
 extern const u8 RyuScript_CheckGivenAchievement[];
 extern const u8 RyuScript_GoToLimbo[];
+extern const u8 RyuScript_CompleteTravelDailyQuestType[];
 
 void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -84,6 +85,8 @@ static bool8 TryStartMiscWalkingScripts(u16);
 static bool8 TryStartStepCountScript(u16);
 static void UpdateHappinessStepCounter(void);
 static bool8 UpdatePoisonStepCounter(void);
+
+extern const u8 RyuScript_PlayerReceivedInterest[];
 
 void FieldClearPlayerInput(struct FieldInput *input)
 {
@@ -197,9 +200,16 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (CheckForTrainersWantingBattle() == TRUE)
         return TRUE;
-
+ 
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
+
+    if (FlagGet(FLAG_RYU_INTEREST_ACCRUED) == 1)//Interest was given, notify player.
+    {  
+        FlagClear(FLAG_RYU_INTEREST_ACCRUED);
+        ScriptContext1_SetupScript(RyuScript_PlayerReceivedInterest);
+        return TRUE;
+    }
 
     if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10))
     {
@@ -208,6 +218,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
             if ((FlagGet(FLAG_RYU_NUZLOCKEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
             {
                 ScriptContext1_SetupScript(RyuScript_GoToLimbo);
+                return TRUE;
             }
         }
     }
@@ -220,6 +231,26 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
                 ScriptContext1_SetupScript(RyuScript_CheckGivenAchievement);
                 return TRUE;
             }
+        }
+
+    if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3) && (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 0))
+        {
+            if (VarGet(VAR_TEMP_E) == 0)
+            {
+                FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
+                FlagSet(FLAG_TEMP_E);
+                VarSet(VAR_TEMP_E, 12);
+            }
+            else if (VarGet(VAR_TEMP_E) == 1)
+                {
+                    u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
+                    if (VarGet(VAR_RYU_DAILY_QUEST_TARGET) == locSum)
+                    {
+                        FlagClear(FLAG_TEMP_E);
+                        ScriptContext1_SetupScript(RyuScript_CompleteTravelDailyQuestType);
+                        return TRUE;
+                    }
+                }
         }
 
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)
@@ -252,6 +283,9 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
                 }
             }
         }
+
+        if (input->tookStep && (FlagGet(FLAG_TEMP_E) == TRUE))
+            VarSet(VAR_TEMP_E, (VarGet(VAR_TEMP_E) - 1));
         
         if (FlagGet(FLAG_TEMP_C) == 0)
             {

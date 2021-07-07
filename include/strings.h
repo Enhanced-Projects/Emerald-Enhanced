@@ -3368,4 +3368,18 @@ extern const u8 gText_RyuRandomBattleNormal[];
 extern const u8 gText_RyuRandomBattleMetronome[];
 extern const u8 gText_RyuRandomBattleInverse[];
 
+extern const u8 gText_RyuFrontierBankDeposit[];
+extern const u8 gText_RyuFrontierBankWithdraw[];
+extern const u8 gText_RyuFrontierBankBalance[];
+
+extern const u8 gText_RyuFrontierBankAll[];
+extern const u8 gText_RyuFrontierBank10k[];
+extern const u8 gText_RyuFrontierBank50k[];
+extern const u8 gText_RyuFrontierBank100k[];
+extern const u8 gText_RyuFrontierBank250k[];
+extern const u8 gText_RyuFrontierBank500k[];
+extern const u8 gText_RyuFrontierBank1M[];
+extern const u8 gText_RyuFrontierBank10M[];
+extern const u8 gText_RyuFrontierBank100M[];
+
 #endif // GUARD_STRINGS_H

@@ -898,7 +898,7 @@ BattleFrontier_BattleDomePreBattleRoom_EventScript_24C90F:: @ 824C90F
 	end
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_24C919:: @ 824C919
-	random 2
+	random 1
 	copyvar VAR_TEMP_D, VAR_RESULT
 	compare VAR_TEMP_D, 0
 	goto_if_eq Common_EventScript_NopReturn

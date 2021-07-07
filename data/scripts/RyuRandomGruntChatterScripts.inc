@@ -1,7 +1,7 @@
 @Magma
 
 MH_RandomGruntSpeak::
-	random 7
+	random 6
 	switch VAR_RESULT
 	case 0, MH_RandomGruntChatter1
 	case 1, MH_RandomGruntChatter2
@@ -71,7 +71,7 @@ MH_GruntChatter7:
 
 @Aqua hideout
 AH_RandomGruntSpeak::
-	random 7
+	random 6
 	switch VAR_RESULT
 	case 0, AH_RandomGruntChatter1
 	case 1, AH_RandomGruntChatter2

@@ -17,4 +17,6 @@ void HideMoneyBox(void);
 void AddMoneyLabelObject(u16 x, u16 y);
 void RemoveMoneyLabelObject(void);
 
+#define MAX_MONEY 1000000000
+
 #endif // GUARD_MONEY_H

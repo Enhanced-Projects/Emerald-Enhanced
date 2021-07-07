@@ -11,6 +11,8 @@
 #include "main.h"
 #include "overworld.h"
 #include "wallclock.h"
+#include "factions.h"
+#include "RyuRealEstate.h"
 
 static void UpdatePerDay(struct Time *localTime);
 static void UpdatePerMinute(struct Time *localTime);
@@ -42,7 +44,9 @@ static void UpdatePerDay(struct Time *localTime)
     if (*days != localTime->days && *days <= localTime->days)
     {
         daysSince = localTime->days - *days;
+        ClearDailyQuestData();
         ClearDailyFlags();
+        DoDailyRealEstateTasks();
         UpdateDewfordTrendPerDay(daysSince);
         UpdateTVShowsPerDay(daysSince);
         UpdateWeatherPerDay(daysSince);

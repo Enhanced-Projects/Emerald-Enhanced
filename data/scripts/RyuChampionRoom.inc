@@ -133,7 +133,7 @@ RCR_ChooseOpponent::
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, RCR_CameraMove
 	waitmovement OBJ_EVENT_ID_CAMERA
-	random 9
+	random 8
 	switch VAR_RESULT
 	case 0, RCR_Opponent1
 	case 1, RCR_Opponent2

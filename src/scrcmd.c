@@ -56,6 +56,7 @@
 #include "infobox.h"
 #include "ach_atlas.h"
 #include "pokedex.h"
+#include "factions.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(void);
@@ -503,7 +504,7 @@ bool8 ScrCmd_random(struct ScriptContext *ctx)
 {
     u16 max = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = Random() % max;
+    gSpecialVar_Result = (Random() % (max + 1));
     return FALSE;
 }
 
@@ -1548,6 +1549,13 @@ bool8 ScrCmd_bufferspeciesname(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_bufferfactionname(struct ScriptContext *ctx)
+{
+    u8 bufferIndex = ScriptReadByte(ctx);
+    u16 factionId = VarGet(ScriptReadHalfword(ctx));
+    StringCopy(sScriptStringVars[bufferIndex], gFactionNames[factionId]);
+}
+
 bool8 ScrCmd_bufferleadmonspeciesname(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
@@ -1729,21 +1737,21 @@ bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
 
 bool8 ScrCmd_addmoney(struct ScriptContext *ctx)
 {
-    u32 amount = (VarGet(ScriptReadHalfword(ctx)));
+    u32 amount = ScriptReadWord(ctx);
     AddMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }
 
 bool8 ScrCmd_removemoney(struct ScriptContext *ctx)
 {
-    u32 amount = (VarGet(ScriptReadWord(ctx)));
+    u32 amount = ScriptReadWord(ctx);
     RemoveMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }
 
 bool8 ScrCmd_checkmoney(struct ScriptContext *ctx)
 {
-    u16 amount = VarGet(ScriptReadWord(ctx));
+    u32 amount = ScriptReadWord(ctx);
     gSpecialVar_Result = IsEnoughMoney(&gSaveBlock1Ptr->money, amount);
     return FALSE;
 }
@@ -2451,5 +2459,19 @@ bool8 ScrCmd_givepokedexflag(struct ScriptContext *ctx)
         GetSetPokedexFlag(nationalDexNum, FLAG_SET_SEEN);
     }
 
+    return FALSE;
+}
+extern u8 *GetMapName(u8 *dest, u16 regionMapId, u16 padLength);
+
+bool8 ScrCmd_buffermapname(struct ScriptContext *ctx)
+{
+    u8 bufferIndex = ScriptReadByte(ctx);
+    u16 mapData = VarGet(ScriptReadHalfword(ctx));
+    u16 targetMapNum = (mapData & 0xFF);
+    u16 targetMapGroup = (mapData >> 8) & 0xFF;
+    u16 mapSecId = 0;
+
+    mapSecId = Overworld_GetMapHeaderByGroupAndId(targetMapGroup, targetMapNum)->regionMapSectionId;
+    GetMapName(sScriptStringVars[bufferIndex], mapSecId, 0);
     return FALSE;
 }

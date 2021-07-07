@@ -113,8 +113,7 @@ TC_Entering::
 	checkitem ITEM_TOWN_MAP, 0
 	compare VAR_RESULT, 1
 	goto_if_eq TC_Discount_entering
-	setvar VAR_TEMP_0, 22500
-	checkmoney VAR_TEMP_0
+	checkmoney 22500
 	compare VAR_RESULT, 0
 	goto_if_eq TC_Exiting_Nomoney
 	msgbox TC_Welcome MSGBOX_DEFAULT
@@ -122,7 +121,7 @@ TC_Entering::
 	applymovement OBJ_EVENT_ID_PLAYER, TC_WalkIn
 	applymovement OBJ_EVENT_ID_FOLLOWER, TC_WalkIn
 	waitmovement 0
-	takemoney VAR_TEMP_0
+	removemoney 22500
 	setflag FLAG_RYU_TC_ENTERED
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	releaseall
@@ -130,15 +129,14 @@ TC_Entering::
 	
 TC_Discount_entering::
 	msgbox TC_Discount_Welcome MSGBOX_DEFAULT
-	setvar VAR_TEMP_0, 2250
-	checkmoney VAR_TEMP_0
+	checkmoney 2250
 	compare VAR_RESULT, FALSE
 	goto_if_eq TC_Disc_Broke
 	waitmessage
 	applymovement OBJ_EVENT_ID_PLAYER, TC_WalkIn
 	applymovement OBJ_EVENT_ID_FOLLOWER, TC_WalkIn
 	waitmovement 0
-	takemoney VAR_TEMP_0
+	removemoney 2250
 	setflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_TC_ENTERED
 	releaseall
@@ -398,12 +396,11 @@ TC_StatShopGiveImprinter::
 	msgbox BuyImprinter MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_ne TC_StatShopNoBuyImprinter
-	setvar VAR_TEMP_0, 22500
-	checkmoney VAR_TEMP_0
+	checkmoney 22500
 	compare VAR_RESULT, 0
 	goto_if_eq TC_StatShopCantAffordImprinter
 	setvar VAR_TEMP_B, 22500
-	takemoney VAR_TEMP_B
+	removemoney 22500
 	additem ITEM_IMPRINTER
 	msgbox TC_BoughtImprinter MSGBOX_DEFAULT
 	waitmessage
@@ -667,11 +664,10 @@ TC_TeachMoveQuery::
 	checkitem ITEM_RETRO_MAIL, 1
 	compare VAR_RESULT, 1
 	call_if_ge TC_VoucherUse
-	setvar VAR_TEMP_5, 50000
-	checkmoney VAR_TEMP_5
+	checkmoney 50000
 	compare VAR_RESULT, 0
 	goto_if_eq TC_MoveCancelledBroke
-	takemoney VAR_TEMP_5
+	removemoney 50000
 	special RyuSetMonMove
 	msgbox TC_PkmnLearnedMove MSGBOX_DEFAULT
 	release

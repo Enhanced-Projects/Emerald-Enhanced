@@ -10,8 +10,6 @@
 #include "strings.h"
 #include "decompress.h"
 
-#define MAX_MONEY 10000000
-
 EWRAM_DATA static u8 sMoneyBoxWindowId = 0;
 EWRAM_DATA static u8 sMoneyLabelSpriteId = 0;
 
@@ -132,7 +130,7 @@ void SubtractMoneyFromVar0x8005(void)
 
 void PrintMoneyAmountInMoneyBox(u8 windowId, int amount, u8 speed)
 {
-    PrintMoneyAmount(windowId, 0x1A, 1, amount, speed);
+    PrintMoneyAmount(windowId, 0x9, 1, amount, speed);
 }
 
 void PrintMoneyAmount(u8 windowId, u8 x, u8 y, int amount, u8 speed)
@@ -140,9 +138,9 @@ void PrintMoneyAmount(u8 windowId, u8 x, u8 y, int amount, u8 speed)
     u8 *txtPtr;
     s32 strLength;
 
-    ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, 8);
+    ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, 10);
 
-    strLength = 6 - StringLength(gStringVar1);
+    strLength = 10 - StringLength(gStringVar1);
     txtPtr = gStringVar4;
 
     while (strLength-- > 0)
@@ -167,13 +165,13 @@ void DrawMoneyBox(int amount, u8 x, u8 y)
 {
     struct WindowTemplate template;
 
-    SetWindowTemplateFields(&template, 0, x + 1, y + 1, 18, 2, 15, 8);
+    SetWindowTemplateFields(&template, 0, x + 1, y + 1, 26, 2, 15, 8);
     sMoneyBoxWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sMoneyBoxWindowId, PIXEL_FILL(0));
     PutWindowTilemap(sMoneyBoxWindowId);
     CopyWindowToVram(sMoneyBoxWindowId, 1);
     PrintMoneyAmountInMoneyBoxWithBorder(sMoneyBoxWindowId, 0x214, 14, amount);
-    AddMoneyLabelObject((8 * x) + 19, (8 * y) + 11);
+    AddMoneyLabelObject((8 * x) + 19, (8 * y) + 4);
 }
 
 void HideMoneyBox(void)

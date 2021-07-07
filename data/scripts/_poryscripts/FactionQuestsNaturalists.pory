@@ -1,27 +1,14 @@
 //This is the scripts file for the procedural generation of mini-quests for factions
 
-
 //Procedural components
 const FETCH_TYPE = 1
 const CAPTURE_TYPE = 2
 const TRAVEL_TYPE = 3
 const HATCH_TYPE = 4
 
-
-//This is used for the hatch quests
-
-script RyuSetLessCompareResult {
-    setvar(VAR_TEMP_A, 0)
-    return
-}
-
-script RyuSetGreaterCompareResult{
-    setvar(VAR_TEMP_A, 1)
-    return
-}
-
-
 script(global) RyuNaturalistsDailyQuest  {
+    lock
+    faceplayer
     if (flag(FLAG_FINISHED_NATURALIST_DAILY) == TRUE) { //quest done
         msgbox("I don't have anything else\nfor you to do right now, sorry!")
         release
@@ -40,36 +27,45 @@ script(global) RyuNaturalistsDailyQuest  {
         switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
             case FETCH_TYPE:
                 checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                switch(var(VAR_RESULT)) {
-                    case TRUE:
-                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                        goto(CommonNaturalistRewardScript)
-                    case FALSE:
-                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
-                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                        msgbox("We still need {STR_VAR_1} {STR_VAR_2}.")
-                        release
-                        end
+                if (var(VAR_RESULT) == TRUE) {
+                    removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                    goto(CommonNaturalistRewardScript)
+                }
+                else {
+                    buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                    bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                    msgbox("We still need {STR_VAR_1} {STR_VAR_2}.")
+                    release
+                    end
                 }
             case CAPTURE_TYPE:
                 end
+            case TRAVEL_TYPE:
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                    msgbox(format("That sounds like a great place to camp, thanks for scouting it out for me!"))
+                    goto(CommonNaturalistRewardScript)
+                }
+                else
+                {
+                    buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                    msgbox(format("Does {STR_VAR_1} have a good place to camp?"))
+                    release
+                    end
+                }
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
-                compare(VAR_RESULT, 6)
-                call_if_lt(RyuSetLessCompareResult)
-                compare(VAR_RESULT, 6)
-                call_if_ge(RyuSetGreaterCompareResult)
-                switch(var(VAR_TEMP_A)) {
-                    case 0:
-                        bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
-                        msgbox(format("I see, it was a little {STR_VAR_1}. Excellent job, {PLAYER}. If you raise it, I'm sure it would be a great adventuring companion."))
-                        goto(CommonNaturalistRewardScript)
-                        release
-                        end
-                    case 1:
-                        msgbox(format("I see you haven't hatched that egg yet. It should be soon!"))
-                        release
-                        end
+                if (var(VAR_RESULT) < 6) {
+                    bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                    msgbox(format("Ah, so it was a {STR_VAR_1}. It would make an excellent camping companion."))
+                    goto(CommonNaturalistRewardScript)
+                    release
+                    end
+                }
+                else
+                {
+                    msgbox(format("Have you hatched that egg I gave you yet?"))
+                    release
+                    end
                 }
         }
 
@@ -80,8 +76,9 @@ script(global) RyuNaturalistsDailyQuest  {
         end
     }
 
-    random(2)
-    switch(var(VAR_RESULT)) {
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS)
+    random(3)//increase this by the number of quests you add. 
+    switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SITRUS_BERRY)
@@ -93,15 +90,21 @@ script(global) RyuNaturalistsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_DATA, 2)
             msgbox("Hi, {PLAYER}!\nCan you get some Pecha Berries\lfor me?\pTwo of them should do.")
         case 2:
-            random(5)
+            random(4)
             setvar(VAR_RYU_DAILY_QUEST_TYPE, HATCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
             callnative(RyuSetupEggHatchQuest)
             giveegg(VAR_RYU_DAILY_QUEST_TARGET)
             msgbox(format("Hey, I found this egg just laying around in the woods. Could you hatch it, so we know what it is? Thanks."))
+            closemessage
+            msgbox(FactionsReceivedEggMsg)
+        case 3:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_ROUTE103)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            msgbox(format("{PLAYER}, can you go check out Route 103? I want to know specifically if there's a good place to camp there or not."))
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
-    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_NATURALISTS)
     closemessage
     release
     end
@@ -113,60 +116,11 @@ script CommonNaturalistRewardScript {
     msgbox("Thanks for getting the stuff!")
     setflag(FLAG_FINISHED_NATURALIST_DAILY)
     changefactionstanding(FACTION_NATURALISTS, 25, FALSE)
-    setvar(VAR_TEMP_B, 1000)
-    goto(CommonDailyQuestEnd)
-}
-
-script CommonStudentRewardScript {
-    msgbox("The new kids will need all the\nhelp they can get. \pThanks, {PLAYER}!")
-    setflag(FLAG_FINISHED_STUDENT_DAILY)
-    changefactionstanding(FACTION_STUDENTS, 25, FALSE)
-    setvar(VAR_TEMP_B, 3000)
-    goto(CommonDailyQuestEnd)
-}
-
-script CommonNobleRewardScript {
-    msgbox("The Board should be pleased.\nYou are dismissed.")
-    setflag(FLAG_FINISHED_NOBLE_DAILY)
-    changefactionstanding(FACTION_NOBLES, 25, FALSE)
-    setvar(VAR_TEMP_B, 10000)
-    goto(CommonDailyQuestEnd)
-}
-
-script CommonPokefansRewardScript {
-    msgbox("Thanks, {PLAYER}.\nWe really appreciate your work!")
-    setflag(FLAG_FINISHED_POKEFAN_DAILY)
-    changefactionstanding(FACTION_POKEFANS, 25, FALSE)
-    setvar(VAR_TEMP_B, 2500)
-    goto(CommonDailyQuestEnd)
-}
-
-script CommonOutcastRewardScript {
-    msgbox("The gods shine upon you\nthis day.\lMany thanks.")
-    setflag(FLAG_FINISHED_OUTCAST_DAILY)
-    changefactionstanding(FACTION_OUTCASTS, 25, FALSE)
-    setvar(VAR_TEMP_B, 2000)
-    goto(CommonDailyQuestEnd)
-}
-
-script CommonProfessionalsRewardScript {
-    msgbox("The Board should be pleased.\nYou are dismissed.")
-    setflag(FLAG_FINISHED_PROFESSIONAL_DAILY)
-    changefactionstanding(FACTION_PROFESSIONALS, 25, FALSE)
-    setvar(VAR_TEMP_B, 4000)
-    goto(CommonDailyQuestEnd)
-}
-
-script CommonAthletesRewardScript {
-    msgbox("Continue to be the best you\ncan be!")
-    setflag(FLAG_FINISHED_ATHLETE_DAILY)
-    changefactionstanding(FACTION_ATHLETES, 25, FALSE)
-    setvar(VAR_TEMP_B, 1750)
+    addmoney(5000)
     goto(CommonDailyQuestEnd)
 }
 
 script CommonDailyQuestEnd {
-    addmoney(VAR_TEMP_B)
     clearflag(FLAG_DAILY_QUEST_ACTIVE)
     buffernumberstring(0, VAR_TEMP_B)
     msgbox("You earned ¥{STR_VAR_1}.")
@@ -175,3 +129,6 @@ script CommonDailyQuestEnd {
     end
 }
 
+text RDBNAT1 {
+    "VAR RESULT is {STR_VAR_1}\n QUEST DATA is {STR_VAR_2}"
+}

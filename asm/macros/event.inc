@@ -1080,10 +1080,11 @@
 	.byte 0x8e
 	.endm
 
-	@ Stores a random integer between 0 and limit in VAR_RESULT.
-	.macro random limit:req
+	@ Puts a random number between and including 0 and max into VAR_RESULT.
+	@ For example: random 3 can return 0, 1, 2, or 3.
+	.macro random max:req
 	.byte 0x8f
-	.2byte \limit
+	.2byte \max
 	.endm
 
 	@ Adds value to the player's money. Any number over 16000 must be passed as a variable.
@@ -1093,7 +1094,7 @@
 	.endm
 
 	@ Subtracts value from the player's money. Any number over 16000 must be passed as a variable.
-	.macro takemoney value:req
+	.macro removemoney value:req
 	.byte 0x91
 	.4byte \value
 	.endm
@@ -1764,6 +1765,21 @@
 	.2byte \species
 	.byte \caught
 	.endm
+
+	@Buffers the given faction(id)'s name(string) into (buffer)
+	.macro bufferfactionname buffer:req, id:req
+	.byte 0xfb
+	.byte \buffer
+	.2byte \id
+	.endm
+
+	@Buffers the given map data(data) into (buffer)
+	.macro buffermapname buffer:req, data:req
+	.byte 0xfc
+	.byte \buffer
+	.2byte \data
+	.endm
+
 
 @ Supplementary
 

@@ -8,6 +8,8 @@ const HATCH_TYPE = 4
 
 
 script(global) RyuOutcastsDailyQuest  {
+    lock
+    faceplayer
      if (flag(FLAG_FINISHED_OUTCAST_DAILY) == TRUE) { //quest done
         checkfactionstanding(FACTION_OUTCASTS, 175)
         if (var(VAR_RESULT) == TRUE) {
@@ -27,22 +29,47 @@ script(global) RyuOutcastsDailyQuest  {
     }
 
     if (flag(FLAG_DAILY_QUEST_ACTIVE) == TRUE && var(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION) == FACTION_OUTCASTS) { //currently doing a daily quest for this faction
-        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) {
+        switch (var(VAR_RYU_DAILY_QUEST_TYPE)) { //Also put the new quest conclusion here. This is where it checks if the quest is complete. If so, sends to the common reward script.
             case FETCH_TYPE:
                 checkitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                switch(var(VAR_RESULT)) {
-                    case TRUE:
-                        removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                        goto(CommonOutcastRewardScript)
-                    case FALSE:
-                        buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
-                        bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
-                        msgbox("Yo... we still need {STR_VAR_1} {STR_VAR_2}.")
-                        release
-                        end
+                if (var(VAR_RESULT) == TRUE) {
+                    removeitem(VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                    goto(CommonOutcastRewardScript)
+                }
+                else {
+                    buffernumberstring(0, VAR_RYU_DAILY_QUEST_DATA)
+                    bufferitemnameplural(1, VAR_RYU_DAILY_QUEST_TARGET, VAR_RYU_DAILY_QUEST_DATA)
+                    msgbox("Yo... we still need {STR_VAR_1} {STR_VAR_2}.")
+                    release
+                    end
                 }
             case CAPTURE_TYPE:
                 end
+            case TRAVEL_TYPE:
+                if (var(VAR_RYU_DAILY_QUEST_DATA) == 1) {
+                    msgbox(format("I see... The leylines are not yet aligned. Thank you for checking."))
+                    goto(CommonOutcastRewardScript)
+                }
+                else {
+                    buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                    msgbox(format("We can't see the leylines from here, We need you to check {STR_VAR_1} and report back."))
+                    release
+                    end
+                }
+            case HATCH_TYPE:
+                checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
+                if (var(VAR_RESULT) < 6) {
+                    bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
+                    msgbox(format("I see. It was a {STR_VAR_1}. It doesn't appear to have any psychic power. You can keep it."))
+                    goto(CommonPokefansRewardScript)
+                    release
+                    end
+                }
+                else {
+                    msgbox(format("We still await the hatching of that potential scion."))
+                    release
+                    end
+                }
         }
 
     }
@@ -52,8 +79,9 @@ script(global) RyuOutcastsDailyQuest  {
         end
     }
 
-    random(2)
-    switch(var(VAR_RESULT)) {
+    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS)
+    random(3)//increase this by the number of quests you add. 
+    switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_ENERGY_POWDER)
@@ -64,8 +92,21 @@ script(global) RyuOutcastsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_STARDUST)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 5)
             msgbox("Heya {PLAYER}.\pWe recently got word that some\nrare pokemon can be attracted\lby anointing stones with stardust.\pPlease bring us five pouches of it.")
+        case 2:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_MT_PYRE_SUMMIT)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            msgbox(format("Please travel to Mt. Pyre's summit and check the leylines. We're waiting for the right ones to perform a ritual."))
+        case 3:
+            random(4)
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, HATCH_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            callnative(RyuSetupEggHatchQuest)
+            giveegg(VAR_RYU_DAILY_QUEST_TARGET)
+            msgbox(format("This egg has an impressive aura. Could you hatch it to see what it turs out to be?"))
+            closemessage
+            msgbox(FactionsReceivedEggMsg)
     }
-    setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OUTCASTS)
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     closemessage
     release
@@ -81,7 +122,13 @@ text OutcastsQuest1Desc {
     "five portions should do."
 }
 
-//strings
+script CommonOutcastRewardScript {
+    msgbox("The gods shine upon you\nthis day.\lMany thanks.")
+    setflag(FLAG_FINISHED_OUTCAST_DAILY)
+    changefactionstanding(FACTION_OUTCASTS, 25, FALSE)
+    addmoney(2000)
+    goto(CommonDailyQuestEnd)
+}
 
 
 

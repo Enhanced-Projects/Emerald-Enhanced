@@ -22,14 +22,14 @@ RyuBotanyGiveTreeRewardItem::
 
 @the script called when cutting trees
 RyuBotany_CheckTreeRewardItem::
-    random 4
+    random 3
     compare VAR_RESULT, 2 @25% chance to get nothing from trees
     goto_if_le RyuBotanyGiveTreeRewardItem
     release
     end
 
 RyuBotany_DoubleRewardHC::
-    random 2
+    random 3
     compare VAR_RESULT, 1
     goto_if_eq ryu_return
     setvar VAR_TEMP_5, 2
@@ -60,7 +60,7 @@ RyuBotany_RewardMessage:
 
 RyuBotanyTree_TryGive2Items::
     call RyuBotanyTree_GiveOneItem
-    random 2
+    random 1
     compare VAR_RESULT, 1 @50% chance to get one bonus roll at rank 3
     call_if_eq RyuBotanyTree_GiveOneItem
     release
@@ -68,10 +68,10 @@ RyuBotanyTree_TryGive2Items::
 
 RyuBotanyTree_TryGive3Items::
     call RyuBotanyGrass_GiveOneItem
-    random 2
+    random 1
     compare VAR_RESULT, 1
     call_if_eq RyuBotanyGrass_GiveOneItem
-    random 4
+    random 3
     compare VAR_RESULT, 1 @25% chance to get a 3rd bonus roll at rank 5.
     call_if_eq RyuBotanyGrass_GiveOneItem
     release
@@ -79,7 +79,7 @@ RyuBotanyTree_TryGive3Items::
 
 RyuBotanyGrass_TryGive2Items::
     call RyuBotanyGrass_GiveOneItem
-    random 2
+    random 1
     compare VAR_RESULT, 1 @50% chance to get one bonus roll at rank 3
     call_if_eq RyuBotanyGrass_GiveOneItem
     release
@@ -87,10 +87,10 @@ RyuBotanyGrass_TryGive2Items::
 
 RyuBotanyGrass_TryGive3Items::
     call RyuBotanyGrass_GiveOneItem
-    random 2
+    random 1
     compare VAR_RESULT, 1
     call_if_eq RyuBotanyGrass_GiveOneItem
-    random 4
+    random 3
     compare VAR_RESULT, 1 @25% chance to get a 3rd bonus roll.
     call_if_eq RyuBotanyGrass_GiveOneItem
     release
@@ -279,8 +279,7 @@ RyuBotany_ApricornBallCrafter::  @Add this script to the npc you want to craft b
     call_if_eq RB_BallMenu
     msgbox RB_RefineApricornIntro
     closemessage
-    setvar VAR_TEMP_B, 1000
-    checkmoney VAR_TEMP_B
+    checkmoney 1000
     compare VAR_RESULT, FALSE
     goto_if_eq RB_CantAfford
     callnative RyuBufferNumApricornsForMenu

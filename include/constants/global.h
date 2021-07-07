@@ -30,6 +30,13 @@
 
 #define GAME_VERSION (VERSION_EMERALD)
 #define GAME_LANGUAGE (LANGUAGE_ENGLISH)
+#define MODIFIER_NONE             0 // official games
+#define MODIFIER_HELIODOR         1 // Heliodor.
+#define MODIFIER_DX               2 // 4-2 is FireRed DX and 5-2 is LeafGreen DX
+#define MODIFIER_CRYSTALDUST      3 // 4-3 is modified CrystalDust
+#define VERSION_CRYSTAL_DUST      3 // 4-3 is modified CrystalDust
+#define MODIFIER_EMERALD_ENHANCED 69// 4?-69? is Emerald Enhanced
+#define VERSION_MODIFIER MODIFIER_EMERALD_ENHANCED
 #define ITEM_EXPANSION 1
 
 // capacities of various saveblock objects 120 bytes free

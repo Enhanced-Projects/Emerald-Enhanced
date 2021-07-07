@@ -6,6 +6,17 @@
 #include "event_data.h"
 #include "ach_atlas.h"
 
+const u8 gFactionNames[8][14] = {
+    [FACTION_NATURALISTS] = _("Naturalists"),
+    [FACTION_STUDENTS] = _("Students"),
+    [FACTION_NOBLES] = _("Nobles"),
+    [FACTION_POKEFANS] = _("Pokéfans"),
+    [FACTION_OUTCASTS] = _("Outcasts"),
+    [FACTION_PROFESSIONALS] = _("Professionals"),
+    [FACTION_ATHLETES] = _("Athletes"),
+    [FACTION_OTHERS] = _("Unaffiliated")
+};
+
 extern const u8 RyuNaturalistsDailyQuest[];
 extern const u8 RyuStudentsDailyQuest[];
 extern const u8 RyuNoblesDailyQuest[];
@@ -163,4 +174,14 @@ const u8 *RyuGetFactionDailyQuestScriptPtr(u8 factionId)
         case FACTION_OTHERS:
             return NULL;
     }
+}
+
+
+void ClearDailyQuestData(void)
+{
+    VarSet(VAR_RYU_DAILY_QUEST_TYPE, 1000);
+    VarSet(VAR_RYU_DAILY_QUEST_TARGET, 1000);
+    VarSet(VAR_RYU_DAILY_QUEST_DATA, 1000);
+    FlagClear(FLAG_DAILY_QUEST_ACTIVE);
+    VarSet(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_OTHERS);
 }

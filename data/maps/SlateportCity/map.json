@@ -420,6 +420,13 @@
       "elevation": 0,
       "dest_map": "MAP_SLATEPORT_CITY_LANAS_HOUSE",
       "dest_warp_id": 0
+    },
+    {
+      "x": 7,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_SLATEPORT_CITY_FRONTIER_BANK",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [

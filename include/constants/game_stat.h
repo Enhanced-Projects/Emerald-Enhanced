@@ -52,12 +52,13 @@
 #define GAME_STAT_RODE_CABLE_CAR            48
 #define GAME_STAT_ENTERED_HOT_SPRINGS       49
 #define GAME_STAT_NUM_UNION_ROOM_BATTLES    50
-#define GAME_STAT_51                        51
+#define GAME_STAT_FRONTIERBANK_BALANCE      51
 #define GAME_STAT_USED_SOUND_MOVE           52
 #define GAME_STAT_DEXNAV_SCANNED            53
 #define GAME_STAT_BATTLES_WON               54
+#define GAME_STAT_INTEREST_RECEIVED         55
 
-#define NUM_USED_GAME_STATS                 55
+#define NUM_USED_GAME_STATS                 56
 #define NUM_GAME_STATS                      64
 
 #endif // GUARD_CONSTANTS_GAME_STAT_H

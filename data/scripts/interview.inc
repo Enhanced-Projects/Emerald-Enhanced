@@ -123,7 +123,7 @@ SlateportCity_PokemonFanClub_EventScript_Reporter:: @ 828C943
 
 SlateportCity_PokemonFanClub_EventScript_AcceptInterview:: @ 828C98C
 	msgbox SlateportCity_PokemonFanClub_Text_HereGoesQuickAnswers, MSGBOX_DEFAULT
-	random 3
+	random 2
 	copyvar VAR_0x800A, VAR_RESULT
 	switch VAR_RESULT
 	case 0, SlateportCity_PokemonFanClub_EventScript_RandomQuestion1

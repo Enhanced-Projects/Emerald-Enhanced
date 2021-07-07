@@ -3218,7 +3218,7 @@ void sub_8024578(struct BerryCrushGame *r4)
 {
     u8 r5 = 0;
 
-    IncrementGameStat(GAME_STAT_51);
+    //IncrementGameStat(GAME_STAT_51);
     r4->unkD = 0;
     r4->unk10 = 0;
     r4->unk12 = 2;

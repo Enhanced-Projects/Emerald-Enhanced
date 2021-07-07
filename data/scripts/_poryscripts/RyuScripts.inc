@@ -598,8 +598,7 @@ RyuCantUsePCCHARGING:
 
 
 RyuBallChanger::
-	setvar VAR_TEMP_0, 10000
-	checkmoney VAR_TEMP_0
+	checkmoney 10000
 	compare VAR_RESULT, 1
 	goto_if_ne BC_NotEnoughMoney
 	msgbox BCIntro
@@ -625,10 +624,9 @@ BCPokeball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 4
 	removeitem ITEM_POKE_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -638,10 +636,9 @@ BCGreatball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 3
 	removeitem ITEM_GREAT_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -651,10 +648,9 @@ BCUltraball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 2
 	removeitem ITEM_ULTRA_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -664,10 +660,9 @@ BCLuxuryball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 11
 	removeitem ITEM_LUXURY_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -677,10 +672,9 @@ BCPremierball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 11
 	removeitem ITEM_PREMIER_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -690,10 +684,9 @@ BCRepeatball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 9
 	removeitem ITEM_REPEAT_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -703,10 +696,9 @@ BCTimerball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 10
 	removeitem ITEM_TIMER_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -716,10 +708,9 @@ BCNestball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 8
 	removeitem ITEM_NEST_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -729,10 +720,9 @@ BCNetball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 6
 	removeitem ITEM_NET_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -742,10 +732,9 @@ BCSafariball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 5
 	removeitem ITEM_SAFARI_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
 
@@ -755,12 +744,15 @@ BCDiveball::
 	goto_if_ne BC_NoBall
 	setvar VAR_TEMP_4, 7
 	removeitem ITEM_DIVE_BALL, 1
-	setvar VAR_TEMP_0, 10000
-    takemoney VAR_TEMP_0
 	special RyuChangeUsedPokeball
 	msgbox BC_Success
+    call BCremovemoney
 	release
 	end
+
+BCremovemoney::
+	removemoney 10000
+	return
 
 BCIntro:
 	.string "Welcome to the ball changer menu.\pOnce you make your selection,\nyou will be charged ¥10000\land the chosen ball will be consumed.$"
@@ -862,7 +854,7 @@ Ryu_Feelslikebeingwatchedmsg:
 	.string " watching over you...)$"
 
 Ryu_DoMeloettaRoll::
-	random 10
+	random 9
 	compare VAR_RESULT, 1
 	goto_if_eq Ryu_DoMeloettaEncounter
 	release
@@ -2226,6 +2218,22 @@ BF_NoBattle::
 	end
 
 
+RyuScript_CompleteTravelDailyQuestType::
+	bufferfactionname 0, VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION
+	msgbox RyuScript_CompleteTravelDailyQuestType_Text_0
+	closemessage
+	setvar VAR_RYU_DAILY_QUEST_DATA, 1
+	release
+	end
+
+
+RyuScript_PlayerReceivedInterest::
+	callnative RyuBufferInterestGamestat
+	msgbox RyuScript_PlayerReceivedInterest_Text_0
+	release
+	end
+
+
 RyuScript_EndNuzlockeMode_Text_0:
 	.string "Welcome to Limbo. You have failed your\n"
 	.string "Nuzlocke or Hardcore challenge and\l"
@@ -2254,6 +2262,15 @@ RS_Limbo_Sign_Text_1:
 
 Ryu_StartRandomBattle_Text_0:
 	.string "Please select a random battle type.$"
+
+RyuScript_CompleteTravelDailyQuestType_Text_0:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Hmm. This appears to be the place that\n"
+	.string "the {STR_VAR_1} wanted me to come\l"
+	.string "to. Guess I should return to one of\l"
+	.string "them.$"
+
+RyuScript_PlayerReceivedInterest_Text_0:
+	.string "You earned interest in the amount of\n¥{STR_VAR_1} for this 24-Hour period.\lThank you for choosing Frontier Bank.$"
 
 StartingRandomBattleMsg::
 	.string "Starting Random Battle...$"

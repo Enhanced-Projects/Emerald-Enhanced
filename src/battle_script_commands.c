@@ -1079,7 +1079,7 @@ static const u16 sRarePickupItems[] =
 
 static const u8 sPickupProbabilities[] =
 {
-    30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 122, 124
+    30, 40, 50, 60, 70, 80, 90, 94, 98
 };
 
 static const u8 sTerrainToType[] =
@@ -11725,8 +11725,8 @@ static void Cmd_pickup(void)
             species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
             heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
             lvlDivBy10 = (GetMonData(&gPlayerParty[i], MON_DATA_LEVEL)-1) / 10; //Moving this here makes it easier to add in abilities like Honey Gather
-            if (lvlDivBy10 > 12)
-                lvlDivBy10 = 12;
+            if (lvlDivBy10 > 9)
+                lvlDivBy10 = 9;
 
             if (GetMonData(&gPlayerParty[i], MON_DATA_ABILITY_NUM))
                 ability = gBaseStats[species].abilities[1];
@@ -11740,7 +11740,7 @@ static void Cmd_pickup(void)
                 && (Random() % 10) == 0)
             {
                 s32 j;
-                s32 rand = Random() % 125;
+                s32 rand = Random() % 100;
 
                 for (j = 0; j < (int)ARRAY_COUNT(sPickupProbabilities); j++)
                 {
@@ -11749,9 +11749,9 @@ static void Cmd_pickup(void)
                         SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &sPickupItems[lvlDivBy10 + j]);
                         break;
                     }
-                    else if (rand == 122 || rand == 124)
+                    else if (rand == 99 || rand == 98)
                     {
-                        SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &sRarePickupItems[lvlDivBy10 + (124 - rand)]);
+                        SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &sRarePickupItems[lvlDivBy10 + (99 - rand)]);
                         break;
                     }
                 }
@@ -11762,7 +11762,7 @@ static void Cmd_pickup(void)
                 && species != SPECIES_EGG
                 && heldItem == ITEM_NONE)
             {
-                if ((lvlDivBy10 + 1 ) * 5 > Random() % 125)
+                if ((lvlDivBy10 + 1) * 5 > Random() % 100)
                 {
                     heldItem = ITEM_HONEY;
                     SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);

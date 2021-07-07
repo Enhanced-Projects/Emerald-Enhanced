@@ -130,12 +130,7 @@ OpeningPokeEdit:
 	.string "Opening Poke Edit...$"
 
 RyuDebug_money::
-	setvar VAR_TEMP_A, 50000
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
-	addmoney VAR_TEMP_A
+	addmoney 250000
 	msgbox RyuDebug_money_text MSGBOX_DEFAULT
 	return
 
@@ -255,25 +250,9 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	@clearflag FLAG_FINISHED_POKEFAN_DAILY
-	giveegg SPECIES_HITMONTOP
+	goto_if_set FLAG_RYU_INTEREST_ACCRUED, RDB_DoLittlerootLatiCheck
 	release
 	end
-
-SantanasCircle_Text_ThreeSeconds:
-	.string "Three seconds…$"
-
-	SantanaFivePaces:
-	walk_in_place_slow_right
-	delay_8
-	walk_slow_right
-	step_end
-	
-PlayerFivePaces:
-	walk_in_place_slow_left
-	delay_8
-	walk_slow_left
-	step_end
 
 RDB_DoLittlerootLatiCheck::
 	buffernumberstring 0, VAR_ROAMER_POKEMON

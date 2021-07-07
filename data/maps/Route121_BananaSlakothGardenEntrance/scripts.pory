@@ -93,7 +93,7 @@ Route121_BananaSlakothGardenEntrance_Text_ItIsThisAmount:
 	.string "It's ¥1500 for a batch of five.$"
 
 Route121_BananaSlakothGardenEntrance_EventScript_AcceptTrade::
-	takemoney 1500
+	removemoney 1500
 	updatemoneybox 0, 0
 	giveitem ITEM_BANANA, 5
 	setflag FLAG_DAILY_SLAKOTH_BANANA_GARDEN_BANANAS

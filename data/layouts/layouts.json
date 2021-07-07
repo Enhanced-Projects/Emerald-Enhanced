@@ -5400,6 +5400,16 @@
       "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
       "border_filepath": "data/layouts/MauvilleCity_Restaurant/border.bin",
       "blockdata_filepath": "data/layouts/MauvilleCity_Restaurant/map.bin"
+    },
+    {
+      "id": "LAYOUT_SLATEPORT_CITY_FRONTIER_BANK",
+      "name": "SlateportCity_FrontierBank_Layout",
+      "width": 12,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattlePalace",
+      "border_filepath": "data/layouts/SlateportCity_FrontierBank/border.bin",
+      "blockdata_filepath": "data/layouts/SlateportCity_FrontierBank/map.bin"
     }
   ]
 }
