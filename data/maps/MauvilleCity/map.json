@@ -183,6 +183,20 @@
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY_RESTAURANT",
       "dest_warp_id": 0
+    },
+    {
+      "x": 20,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_MAUVILLE_CITY_FRONTIER_BANK",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 21,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_MAUVILLE_CITY_FRONTIER_BANK",
+      "dest_warp_id": 1
     }
   ],
   "coord_events": [

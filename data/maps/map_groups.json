@@ -175,13 +175,13 @@
     "SlateportCity_BattleTentBattleRoom",
     "SlateportCity_Mart",
     "SlateportCity_PokemonCenter_1F",
-    "SlateportCity_PokemonCenter_2F",
-    "SlateportCity_FrontierBank"
+    "SlateportCity_PokemonCenter_2F"
   ],
   "gMapGroup7": [
     "MauvilleCity_BikeShop",
     "MauvilleCity_GameCorner",
     "MauvilleCity_Restaurant",
+    "MauvilleCity_FrontierBank",
     "MauvilleCity_House1",
     "MauvilleCity_House2",
     "MauvilleCity_Gym",

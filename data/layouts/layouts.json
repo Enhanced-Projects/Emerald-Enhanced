@@ -5402,14 +5402,14 @@
       "blockdata_filepath": "data/layouts/MauvilleCity_Restaurant/map.bin"
     },
     {
-      "id": "LAYOUT_SLATEPORT_CITY_FRONTIER_BANK",
-      "name": "SlateportCity_FrontierBank_Layout",
+      "id": "LAYOUT_MAUVILLE_CITY_FRONTIER_BANK",
+      "name": "MauvilleCity_FrontierBank_Layout",
       "width": 12,
-      "height": 10,
+      "height": 8,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_BattlePalace",
-      "border_filepath": "data/layouts/SlateportCity_FrontierBank/border.bin",
-      "blockdata_filepath": "data/layouts/SlateportCity_FrontierBank/map.bin"
+      "secondary_tileset": "gTileset_LilycoveMuseum",
+      "border_filepath": "data/layouts/MauvilleCity_FrontierBank/border.bin",
+      "blockdata_filepath": "data/layouts/MauvilleCity_FrontierBank/map.bin"
     }
   ]
 }

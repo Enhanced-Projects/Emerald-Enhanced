@@ -331,8 +331,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",
-      "x": 13,
-      "y": 7,
+      "x": 0,
+      "y": 0,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -340,7 +340,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_SCOTT"
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -419,13 +419,6 @@
       "y": 19,
       "elevation": 0,
       "dest_map": "MAP_SLATEPORT_CITY_LANAS_HOUSE",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 7,
-      "y": 13,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_FRONTIER_BANK",
       "dest_warp_id": 0
     }
   ],
