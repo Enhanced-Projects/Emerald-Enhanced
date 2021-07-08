@@ -1,10 +1,6 @@
 #ifndef GUARD_CONSTANTS_MAP_GROUPS_H
 #define GUARD_CONSTANTS_MAP_GROUPS_H
 
-//
-// DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/map_groups.json
-//
-
 // Map Group 0
 #define MAP_LITTLEROOT_TOWN       (0 | (0 << 8))
 #define MAP_OLDALE_TOWN           (1 | (0 << 8))
@@ -145,17 +141,18 @@
 #define MAP_SLATEPORT_CITY_MART                    (12 | (6 << 8))
 #define MAP_SLATEPORT_CITY_POKEMON_CENTER_1F       (13 | (6 << 8))
 #define MAP_SLATEPORT_CITY_POKEMON_CENTER_2F       (14 | (6 << 8))
-#define MAP_SLATEPORT_CITY_FRONTIER_BANK           (15 | (6 << 8))
 
 // Map Group 7
 #define MAP_MAUVILLE_CITY_BIKE_SHOP         (0 | (7 << 8))
 #define MAP_MAUVILLE_CITY_GAME_CORNER       (1 | (7 << 8))
-#define MAP_MAUVILLE_CITY_HOUSE1            (2 | (7 << 8))
-#define MAP_MAUVILLE_CITY_HOUSE2            (3 | (7 << 8))
-#define MAP_MAUVILLE_CITY_GYM               (4 | (7 << 8))
-#define MAP_MAUVILLE_CITY_MART              (5 | (7 << 8))
-#define MAP_MAUVILLE_CITY_POKEMON_CENTER_1F (6 | (7 << 8))
-#define MAP_MAUVILLE_CITY_POKEMON_CENTER_2F (7 | (7 << 8))
+#define MAP_MAUVILLE_CITY_RESTAURANT        (2 | (7 << 8))
+#define MAP_MAUVILLE_CITY_FRONTIER_BANK     (3 | (7 << 8))
+#define MAP_MAUVILLE_CITY_HOUSE1            (4 | (7 << 8))
+#define MAP_MAUVILLE_CITY_HOUSE2            (5 | (7 << 8))
+#define MAP_MAUVILLE_CITY_GYM               (6 | (7 << 8))
+#define MAP_MAUVILLE_CITY_MART              (7 | (7 << 8))
+#define MAP_MAUVILLE_CITY_POKEMON_CENTER_1F (8 | (7 << 8))
+#define MAP_MAUVILLE_CITY_POKEMON_CENTER_2F (9 | (7 << 8))
 
 // Map Group 8
 #define MAP_VERDANTURF_TOWN_WANDAS_HOUSE            (0 | (8 << 8))

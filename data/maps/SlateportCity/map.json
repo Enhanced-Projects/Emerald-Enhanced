@@ -33,7 +33,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
       "x": 21,
-      "y": 11,
+      "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
@@ -58,8 +58,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_RICH_BOY",
-      "x": 10,
-      "y": 21,
+      "x": 23,
+      "y": 17,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
@@ -332,7 +332,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 0,
-      "y": 2,
+      "y": 0,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -340,7 +340,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "FLAG_HIDE_SLATEPORT_CITY_SCOTT"
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -363,13 +363,6 @@
       "y": 38,
       "elevation": 0,
       "dest_map": "MAP_SLATEPORT_CITY_STERNS_SHIPYARD_1F",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 0,
-      "y": 3,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_BATTLE_TENT_LOBBY",
       "dest_warp_id": 0
     },
     {
@@ -427,25 +420,9 @@
       "elevation": 0,
       "dest_map": "MAP_SLATEPORT_CITY_LANAS_HOUSE",
       "dest_warp_id": 0
-    },
-    {
-      "x": 7,
-      "y": 13,
-      "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_FRONTIER_BANK",
-      "dest_warp_id": 0
     }
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 0,
-      "y": 3,
-      "elevation": 3,
-      "var": "VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE",
-      "var_value": "2",
-      "script": "SlateportCity_EventScript_ScottBattleTentScene"
-    },
     {
       "type": "trigger",
       "x": 14,
@@ -548,14 +525,6 @@
     },
     {
       "type": "sign",
-      "x": 0,
-      "y": 3,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SlateportCity_EventScript_BattleTentSign"
-    },
-    {
-      "type": "sign",
       "x": 23,
       "y": 38,
       "elevation": 0,
@@ -577,6 +546,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SC1_LeafHouseSign"
+    },
+    {
+      "type": "sign",
+      "x": 13,
+      "y": 12,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RealEstate_EventScript_ForSaleSign"
     }
   ]
 }

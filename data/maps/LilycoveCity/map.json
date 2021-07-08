@@ -157,9 +157,9 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 61,
-      "y": 36,
-      "elevation": 5,
+      "x": 59,
+      "y": 35,
+      "elevation": 7,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
@@ -624,6 +624,14 @@
       "elevation": 0,
       "item": "ITEM_POKE_BALL",
       "flag": "FLAG_HIDDEN_ITEM_LILYCOVE_CITY_POKE_BALL"
+    },
+    {
+      "type": "sign",
+      "x": 64,
+      "y": 35,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RealEstate_EventScript_ForSaleSign"
     }
   ]
 }
