@@ -1738,21 +1738,42 @@ bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
 bool8 ScrCmd_addmoney(struct ScriptContext *ctx)
 {
     u32 amount = ScriptReadWord(ctx);
-    AddMoney(&gSaveBlock1Ptr->money, amount);
+    u8 useVar = ScriptReadByte(ctx);
+    u16 amountVar = (VarGet(ScriptReadHalfword(ctx)));
+
+    if (useVar == 1)
+        AddMoney(&gSaveBlock1Ptr->money, amountVar);
+    else
+        AddMoney(&gSaveBlock1Ptr->money, amount);
+
     return FALSE;
 }
 
 bool8 ScrCmd_removemoney(struct ScriptContext *ctx)
 {
     u32 amount = ScriptReadWord(ctx);
-    RemoveMoney(&gSaveBlock1Ptr->money, amount);
+    u8 useVar = ScriptReadByte(ctx);
+    u16 amountVar = (VarGet(ScriptReadHalfword(ctx)));
+
+    if (useVar == 1)
+        RemoveMoney(&gSaveBlock1Ptr->money, amountVar);
+    else
+        RemoveMoney(&gSaveBlock1Ptr->money, amount);
+
     return FALSE;
 }
 
 bool8 ScrCmd_checkmoney(struct ScriptContext *ctx)
 {
     u32 amount = ScriptReadWord(ctx);
-    gSpecialVar_Result = IsEnoughMoney(&gSaveBlock1Ptr->money, amount);
+    u8 useVar = ScriptReadByte(ctx);
+    u16 amountVar = VarGet(ScriptReadHalfword(ctx));
+
+    if (useVar == 1)
+        gSpecialVar_Result = IsEnoughMoney(&gSaveBlock1Ptr->money, amountVar);
+    else
+        gSpecialVar_Result = IsEnoughMoney(&gSaveBlock1Ptr->money, amount);
+
     return FALSE;
 }
 

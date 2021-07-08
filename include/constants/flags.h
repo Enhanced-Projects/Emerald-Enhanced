@@ -127,7 +127,7 @@
 #define FLAG_RYU_LATIASITE                   0x6D
 #define FLAG_RECEIVED_TM52                   0x6E
 #define FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT     0x6F
-#define FLAG_UNUSED_0x70                     0x70
+#define FLAG_RYU_PROPERTY_UNDERGOING_MAINTENANCE     0x70 //Set when a property is being repaired.
 #define FLAG_RYU_IN_MOSSDEEP_GYM             0x71
 #define FLAG_UNUSED_0x72                     0x72
 #define FLAG_RECEIVED_METEORITE              0x73
@@ -291,7 +291,7 @@
 #define FLAG_RYU_HIDE_MOSSDEEP_MATT          0x10F // Hides matt in mossdeep
 #define FLAG_RYU_ENTERING_RENTED_HOME        0x110 //set when player is entering a property they own. Used to show/hide tenants.
 #define FLAG_POKERUS_EXPLAINED               0x111
-#define FLAG_UNUSED_0x112                    0x112
+#define FLAG_RYU_ONE_TIME_SAVE_FIX           0x112//make one time save fix actually one time
 #define FLAG_RECEIVED_QUICK_CLAW             0x113
 #define FLAG_RECEIVED_KINGS_ROCK             0x114
 #define FLAG_RECEIVED_MACHO_BRACE            0x115
@@ -312,7 +312,7 @@
 #define FLAG_MET_RIVAL_LILYCOVE              0x124
 #define FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE 0x125
 #define FLAG_RYU_HIDE_AQUA_OFFICE_AQUA       0x126 // Hides aqua in their office if the player did the no-romance line.
-#define FLAG_UNUSED_0x127                    0x127
+#define FLAG_RYU_PROPERTY_DAMAGED            0x127 // set if the daily upkeep task decides a property is damaged.
 #define FLAG_RYU_AQUA_ALT_LINE               0x128 // Player's doing the Shelly line for aqua.
 #define FLAG_RECEIVED_MIRACLE_SEED           0x129
 #define FLAG_RECEIVED_BELDUM                 0x12A

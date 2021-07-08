@@ -1305,6 +1305,14 @@ static const struct MenuAction MultiChoiceList_FrontierBankAmountsMenu[]=
     {gText_Exit},
 };
 
+static const struct MenuAction MultiChoiceList_RealEstatePropertyOptions[]=
+{
+    {gText_RyuREMoveIn},
+    {gText_RyuRELeaseProperty},
+    {gText_RyuRECheckDetails},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1483,6 +1491,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_RANDOM_BATTLE_TYPE]         = MULTICHOICE(MultiChoiceList_ChooseRandomBattleType),
     [MULTI_FRONTIERBANK]               = MULTICHOICE(MultiChoiceList_FrontierBank),
     [MULTI_FBAMOUNTMENU]               = MULTICHOICE(MultiChoiceList_FrontierBankAmountsMenu),
+    [MULTI_REALESTATE_MENU]            = MULTICHOICE(MultiChoiceList_RealEstatePropertyOptions),
 };
 
 const u8 *const gStdStrings[] =

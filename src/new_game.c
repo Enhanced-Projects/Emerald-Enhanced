@@ -48,6 +48,7 @@
 #include "union_room_chat.h"
 #include "constants/map_groups.h"
 #include "factions.h"
+#include "RyuRealEstate.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -329,6 +330,7 @@ void NewGameInitData(void)
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;
     RyuClearAlchemyEffect();
+    RyuResetRealEstateData();
 }
 
 static void ResetMiniGamesResults(void)

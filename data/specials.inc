@@ -586,3 +586,5 @@ gSpecials:: @ 81DBA64
 	def_special RyuFBDoWithdraw
 	def_special RyuBufferBankBalance
 	def_special CheckIfPlayerOwnsCurrentProperty
+	def_special RyuCheckPropertyStatus
+	def_special CheckIfPlayerIsRealtor

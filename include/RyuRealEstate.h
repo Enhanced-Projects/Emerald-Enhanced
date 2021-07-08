@@ -18,6 +18,14 @@ bool32 CheckOwnedProperty(u32 id);
 void RemoveProperty(u32 id);
 void AddProperty(u32 id);
 void doSpecialHouseWarp(void);
+bool32 CheckRentedProperty(u32 id);
+void VacateProperty(u32 id);
+void LeaseProperty(u32 id);
+void TryDamageproperties(void);
+void RyuBufferRealEstateDetails(void);
+void CollectRent(void);
+void DecrementPropertyRepairTime(void);
+void RyuResetRealEstateData(void);
 
 #define NUM_PROPERTIES 12
 
@@ -34,6 +42,20 @@ void doSpecialHouseWarp(void);
 #define PROPERTY_VERDANTURF  10
 #define PROPERTY_MOSSDEEP    11
 //there are an additional 20 properties
+
+#define NUM_DAMAGE_TYPES 12//out of 14 max
+
+#define DAMAGE_BROKEN_WINDOW         0
+#define DAMAGE_DOORFRAME_BROKEN      1
+#define DAMAGE_MINOR_ELECTRICAL      3
+#define DAMAGE_WATER_MINOR           4
+#define DAMAGE_LIGHTBULB_REPLACE     5
+#define DAMAGE_MINOR_MECHANICAL      6
+#define DAMAGE_FLOOR                 7
+#define DAMAGE_APPLIANCE_REPLACE     8
+#define DAMAGE_ELECTRICAL_MODERATE   9
+#define DAMAGE_WATER_MODERATE        10
+#define DAMAGE_MAJOR                 11
 
 
 #endif //Real Estate header
