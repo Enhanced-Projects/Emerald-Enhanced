@@ -154,13 +154,6 @@ SlateportCity_EventScript_GirlSecretBase:: @ 81DCEAE
 SlateportCity_EventScript_RichBoy:: @ 81DCEB8
 	lock
 	faceplayer
-	compare VAR_SLATEPORT_CITY_STATE, 1
-	call_if_eq SlateportCity_EventScript_RichBoySternInterview
-	msgbox SlateportCity_Text_GoingToCompeteInBattleTent, MSGBOX_DEFAULT
-	release
-	end
-
-SlateportCity_EventScript_RichBoySternInterview:: @ 81DCECF
 	msgbox SlateportCity_Text_SternSaysDiscoveredSomething, MSGBOX_DEFAULT
 	release
 	end

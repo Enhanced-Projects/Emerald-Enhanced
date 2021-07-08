@@ -591,6 +591,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/fertilizer.inc"
 	.include "data/scripts/RyuBotany.inc"
 	.include "data/scripts/RyuRandomGruntChatterScripts.inc"
+	.include "data/scripts/RyuRealEstate.inc"
 	.include "data/scripts/RyuAchievementPowerScripts.inc"
 	.include "data/scripts/slakoth_vending_machine.inc"
 	.include "data/scripts/_poryscripts/RyuDebug_BetaMenu.inc"
@@ -1231,4 +1232,6 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 
 	.include "data/maps/FallarborTown_VolcanionCave/scripts.inc"
 
-	.include "data/maps/SlateportCity_FrontierBank/scripts.inc"
+	.include "data/maps/MauvilleCity_Restaurant/scripts.inc"
+
+	.include "data/maps/MauvilleCity_FrontierBank/scripts.inc"

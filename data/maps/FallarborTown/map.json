@@ -80,13 +80,6 @@
   ],
   "warp_events": [
     {
-      "x": 15,
-      "y": 17,
-      "elevation": 0,
-      "dest_map": "MAP_FALLARBOR_TOWN_MART",
-      "dest_warp_id": 0
-    },
-    {
       "x": 8,
       "y": 5,
       "elevation": 0,
@@ -129,14 +122,6 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 16,
-      "y": 17,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "Common_EventScript_ShowPokemartSign"
-    },
-    {
-      "type": "sign",
       "x": 15,
       "y": 9,
       "elevation": 0,
@@ -169,14 +154,6 @@
     },
     {
       "type": "sign",
-      "x": 17,
-      "y": 17,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "Common_EventScript_ShowPokemartSign"
-    },
-    {
-      "type": "sign",
       "x": 3,
       "y": 9,
       "elevation": 0,
@@ -190,6 +167,14 @@
       "elevation": 3,
       "item": "ITEM_BIG_PEARL",
       "flag": "FLAG_HIDDEN_ITEM_FALLARBOR_TOWN_NUGGET"
+    },
+    {
+      "type": "sign",
+      "x": 17,
+      "y": 18,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RealEstate_EventScript_ForSaleSign"
     }
   ]
 }

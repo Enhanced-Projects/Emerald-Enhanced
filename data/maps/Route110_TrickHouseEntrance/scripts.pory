@@ -278,7 +278,7 @@ TH_LanaEvent1::
 	applymovement OBJ_EVENT_ID_PLAYER, TH_PlayerLeave
 	waitmovement 0
 	playse SE_DOOR
-	warpsilent MAP_ROUTE110, 255, 11, 67
+	warpsilent MAP_ROUTE110, 255, 11, 59
 	release
 	end
 	
@@ -405,7 +405,7 @@ TH_Lana_Event2::
 	setvar VAR_RYU_QUEST_LANA, 95
 	savebgm MUS_RG_SLOWMASARA
 	clearflag FLAG_HIDE_R110_LANA
-	warpsilent MAP_ROUTE110, 255, 11, 67
+	warpsilent MAP_ROUTE110, 255, 11, 59
 	release
 	end
 	

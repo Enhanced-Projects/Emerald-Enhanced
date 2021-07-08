@@ -980,6 +980,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route119_EventScript_DoorIsLocked"
+    },
+    {
+      "type": "sign",
+      "x": 20,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RealEstate_EventScript_ForSaleSign"
     }
   ]
 }

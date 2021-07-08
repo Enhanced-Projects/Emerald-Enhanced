@@ -623,6 +623,14 @@
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "RustboroCity_EventScript_CuttersHouseSign"
+    },
+    {
+      "type": "sign",
+      "x": 35,
+      "y": 46,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RealEstate_EventScript_ForSaleSign"
     }
   ]
 }
