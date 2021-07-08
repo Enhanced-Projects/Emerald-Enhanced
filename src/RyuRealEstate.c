@@ -249,7 +249,7 @@ void LeaseProperty(u32 id)
     
 }
 
-void doSpecialHouseWarp(void)//Used to dynamuically warp to the current house.
+void doSpecialHouseWarp(void)//Used to dynamically warp to the current house.
 {
     u8 id = (VarGet(VAR_TEMP_D));
     u8 mapGroup = gRyuPropertyData[id][2];
