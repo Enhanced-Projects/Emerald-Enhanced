@@ -7,6 +7,7 @@
 #include "money.h"
 #include "script.h"
 
+//DAILY TASKS
 void DoDailyRealEstateTasks(void)
 {
     if (FlagGet(FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT))
@@ -26,6 +27,8 @@ void RyuBufferInterestGamestat(void)
     ConvertIntToDecimalStringN(gStringVar1, GetGameStat(GAME_STAT_INTEREST_RECEIVED), STR_CONV_MODE_LEFT_ALIGN, 10);
 }
 
+
+// FRONTIER BANK
 void RyuBufferBankBalance(void)
 {
     ConvertIntToDecimalStringN(gStringVar1, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE), STR_CONV_MODE_LEFT_ALIGN, 10);
@@ -146,4 +149,115 @@ int RyuFBDoWithdraw(void)
         ConvertIntToDecimalStringN(gStringVar2, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE), STR_CONV_MODE_LEFT_ALIGN, 10); 
         return 1; // normal withdraw
     }
+}
+
+//PROPERTY RELATED
+
+const u16 gRyuPropertyData[NUM_PROPERTIES][5] ={ //property id, property value, property rent, map group(interior), map num(interior), warp num(interior)
+    [PROPERTY_DEWFORD   ] = {36000, 1800, 0, 0, 0},
+    [PROPERTY_FALLARBOR ] = {36000, 1800, 0, 0, 0},
+    [PROPERTY_LILYCOVE  ] = {36000, 1800, 0, 0, 0},
+    [PROPERTY_MAUVILLE  ] = {36000, 1800, 0, 0, 0},
+    [PROPERTY_OLDALE    ] = {36000, 1800, 0, 0, 0},
+    [PROPERTY_ROUTE119  ] = {36000, 1800, 0, 0, 0},
+    [PROPERTY_RUSTBURO  ] = {36000, 1800, 0, 0, 0},
+    [PROPERTY_SLATEPORT ] = {36000, 1800, 0, 0, 0},
+    [PROPERTY_SNOWSHORE ] = {36000, 1800, 0, 0, 0},
+    [PROPERTY_SOOTOPOLIS] = {36000, 1800, 0, 0, 0},
+    [PROPERTY_VERDANTURF] = {36000, 1800, 0, 0, 0},
+    [PROPERTY_MOSSDEEP  ] = {36000, 1800, 0, 0, 0},
+};
+
+
+u16 RyuReturnPropertyValueFromID(u8 id)
+{
+    return gRyuPropertyData[id][0];
+}
+
+u16 RyuReturnPropertyRentFromID(u8 id)
+{
+    return gRyuPropertyData[id][1];
+}
+
+u16 CheckIfPlayerOwnsCurrentProperty(void)
+{
+    u8 id = VarGet(VAR_TEMP_D);
+    bool8 owned = CheckOwnedProperty(id);
+    bool8 rented = CheckRentedProperty(id);
+
+    if (owned == FALSE)
+        return 0;
+
+    if ((owned == TRUE) && (rented == FALSE) && (VarGet(VAR_RYU_PLAYER_HOUSE_ID == id)))
+        return 1; 
+    
+    if ((owned == TRUE) && (rented == FALSE))
+        return 2;
+
+    if ((owned == TRUE) && (rented == TRUE))
+        return 3; //rented out
+    
+    return 4;
+}
+
+bool32 CheckOwnedProperty(u32 id)
+{
+    if(id > PLAYER_PROPERTIES_COUNT)
+        return FALSE;
+
+    return !!((gSaveBlock2Ptr->propertyFlags[id / 8] >> (id % 8)) & 1);
+}
+
+void RemoveProperty(u32 id)
+{
+    if(id > PLAYER_PROPERTIES_COUNT)
+        return;
+        
+    gSaveBlock2Ptr->propertyFlags[id / 8] &= ~(1 << (id % 8));
+}
+
+void AddProperty(u32 id)
+{
+    if(id > PLAYER_PROPERTIES_COUNT)
+        return;
+
+    gSaveBlock2Ptr->propertyFlags[id / 8] |= 1 << (id % 8);
+    
+}
+bool32 CheckRentedProperty(u32 id)
+{
+    if(id > PLAYER_PROPERTIES_COUNT)
+        return FALSE;
+
+    return !!((gSaveBlock2Ptr->propertyRentedFlags[id / 8] >> (id % 8)) & 1);
+}
+
+void VacateProperty(u32 id)
+{
+    if(id > PLAYER_PROPERTIES_COUNT)
+        return;
+        
+    gSaveBlock2Ptr->propertyRentedFlags[id / 8] &= ~(1 << (id % 8));
+}
+
+void LeaseProperty(u32 id)
+{
+    if(id > PLAYER_PROPERTIES_COUNT)
+        return;
+
+    gSaveBlock2Ptr->propertyRentedFlags[id / 8] |= 1 << (id % 8);
+    
+}
+
+void doSpecialHouseWarp(void)//Used to dynamuically warp to the current house.
+{
+    u8 id = (VarGet(VAR_TEMP_D));
+    u8 mapGroup = gRyuPropertyData[id][2];
+    u8 mapNum = gRyuPropertyData[id][3];
+    u8 warpId = gRyuPropertyData[id][4];
+    u16 x = 0;
+    u16 y = 0;
+    SetWarpDestination(mapGroup, mapNum, warpId, x, y);
+    WarpIntoMap();
+    //SetMainCallback2(CB2_LoadMap);
 }

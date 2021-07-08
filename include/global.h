@@ -136,6 +136,7 @@
 #define DEX_FLAGS_NO (ROUND_BITS_TO_BYTES(POKEMON_SLOTS_NUMBER))
 #define NUM_FLAG_BYTES (ROUND_BITS_TO_BYTES(FLAGS_COUNT))
 #define NUM_ACH_FLAG_BYTES (ROUND_BITS_TO_BYTES(ACH_FLAGS_COUNT))
+#define NUM_PROPERTY_BYTES (ROUND_BITS_TO_BYTES(PLAYER_PROPERTIES_COUNT))
 #define NUM_ACH_PWR_BYTES (ROUND_BITS_TO_BYTES(AP_FLAGS_COUNT))
 #define NUM_NPC_FACTIONS 8
 
@@ -525,6 +526,8 @@ struct SaveBlock2
               u16 unusedSaveblockFlag13:1
               u16 unusedSaveblockFlag14:1
               */
+             u8 propertyFlags[NUM_PROPERTY_BYTES];
+             u8 propertyRentedFlags[NUM_PROPERTY_BYTES];
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

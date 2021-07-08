@@ -289,7 +289,7 @@
 #define FLAG_RECEIVED_TM46                   0x10D
 #define FLAG_RYU_PLAYER_AQUA_ADMIN           0x10E
 #define FLAG_RYU_HIDE_MOSSDEEP_MATT          0x10F // Hides matt in mossdeep
-#define FLAG_UNUSED_0x110                    0x110
+#define FLAG_RYU_ENTERING_RENTED_HOME        0x110 //set when player is entering a property they own. Used to show/hide tenants.
 #define FLAG_POKERUS_EXPLAINED               0x111
 #define FLAG_UNUSED_0x112                    0x112
 #define FLAG_RECEIVED_QUICK_CLAW             0x113
@@ -1657,6 +1657,7 @@
 #define FLAGS_COUNT (DAILY_FLAGS_END + 1)
 #define ACH_FLAGS_COUNT 256
 #define AP_FLAGS_COUNT 32
+#define PLAYER_PROPERTIES_COUNT 32
 
 // Special Flags (Stored in EWRAM (gSpecialFlags), not in the SaveBlock)
 #define SPECIAL_FLAGS_START                     0x4000

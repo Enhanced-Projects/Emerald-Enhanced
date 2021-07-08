@@ -1,0 +1,58 @@
+//scripts for real estate
+
+
+//called from each map to see if player owns the current property. 
+//The property ID must be loaded into VAR_TEMP_D prior to calling this.
+script RyuScript_HouseDoorLocks{
+    specialvar(VAR_RESULT, CheckIfPlayerOwnsCurrentProperty)
+    switch (var(VAR_RESULT)) {
+        case 0:// player does not own property
+            msgbox(format("The door is locked."))
+            release
+            end
+        case 1:// Player owns property and set it as their home
+            playse(SE_DOOR)
+            callnative(doSpecialHouseWarp)
+            waitstate
+        case 2:// player owns property but did not set it as their home or set it as rentable.
+            msgbox("Would you like to set this property\nas your home?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == TRUE) {
+                copyvar(VAR_RYU_PLAYER_HOUSE_ID, VAR_TEMP_D)
+                msgbox("You've set this property as\nyour home. You can now warp here\lfrom the waystone.")
+                callnative(doSpecialHouseWarp)
+                waitstate
+            }
+            else {
+                msgbox("Player home location not changed.")
+                callnative(doSpecialHouseWarp)
+                waitstate
+            }
+        case 3:
+            msgbox("You are renting this property\nout to another person.\pWould you like to knock to enter?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == TRUE) {
+                msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} {PLAYER} knocked on the door.")
+                delay(120)
+                random(2)
+                switch (var(VAR_RESULT)) {
+                    case 0:
+                    case 1:
+                        msgbox("The renter must not be home.\nBetter come back later.")
+                        release
+                        end
+                    case 2:
+                        setflag(FLAG_RYU_ENTERING_RENTED_HOME)
+                        msgbox(" ({COLOR LIGHT_GREEN}{COLOR GREEN}The renters let you in...)")
+                        callnative(doSpecialHouseWarp)
+                        waitstate
+                }
+            }
+            release
+            end
+        case 4:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}ERROR NO. 4\pPlease report this on the Discord!")//reached an invalid state for the door
+            release
+            end
+    }
+    release
+    end
+}

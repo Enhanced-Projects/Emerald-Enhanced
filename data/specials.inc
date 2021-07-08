@@ -585,3 +585,4 @@ gSpecials:: @ 81DBA64
 	def_special RyuFBDoDeposit
 	def_special RyuFBDoWithdraw
 	def_special RyuBufferBankBalance
+	def_special CheckIfPlayerOwnsCurrentProperty
