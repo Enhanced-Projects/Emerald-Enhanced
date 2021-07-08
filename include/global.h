@@ -510,8 +510,8 @@ struct SaveBlock2
               u8 alchemyEffect; //Which alchemy effect is currently active.
               u8 alchemyCharges; //how many charges, if any, are left for the currently active alchemy effect.
               u16 hasAlchemyEffectActive:1; //a block of 16 utility-use flags in save block. This one is used to tell if player has an effect active or not.
+              u16 bossMonInGCMS:1;
               /*
-              u16 unusedSaveblockFlag1:1
               u16 unusedSaveblockFlag2:1
               u16 unusedSaveblockFlag3:1
               u16 unusedSaveblockFlag4:1

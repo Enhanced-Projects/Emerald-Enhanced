@@ -150,6 +150,7 @@ void GivePlayerModdedMon(void)
     u16 move2 =  (VarGet(VAR_RYU_GCMS_MOVE2));
     u16 move3 =  (VarGet(VAR_RYU_GCMS_MOVE3));
     u16 move4 =  (VarGet(VAR_RYU_GCMS_MOVE4));
+    bool8 isBoss = (gSaveBlock2Ptr->bossMonInGCMS);
     u8 ability = (VarGet(VAR_RYU_GCMS_ABILITY));
 
     if (fixedIv > 31)
@@ -164,6 +165,8 @@ void GivePlayerModdedMon(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE3, &move3);
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE4, &move4);
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
+    SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &isBoss);
+
     CalculateMonStats(&gPlayerParty[slot]);
 }
 
@@ -245,7 +248,9 @@ int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be 
     u16 move3 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE3);
     u16 move4 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE4);
     u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
+    bool8 bossFlag = (GetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7));
     u8 i;
+
 
     for (; gFrontierBannedSpecies[i] != 0xFFFF; i++)
         {
@@ -265,6 +270,8 @@ int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be 
         VarSet(VAR_RYU_GCMS_MOVE4, move4);
         VarSet(VAR_RYU_GCMS_ABILITY, ability);
         FlagClear(FLAG_TEMP_5);
+        if (bossFlag == TRUE)
+            gSaveBlock2Ptr->bossMonInGCMS == TRUE;
         return 1;
     }
     else if (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL) == (VarGet(VAR_RYU_GCMS_SPECIES)))
