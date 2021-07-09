@@ -286,7 +286,7 @@ LNH_TakeMeToBattleSometime:
 	
 LNH_youHearASound:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (You hear a loud crash coming\n"
-    .string " from somewhere to the east.)$"
+    .string " from downstairs.)$"
 
 LNH_RepairRequest:
     .string "{COLOR LIGHT_RED}{SHADOW RED}I have to go complete a repair\n"
