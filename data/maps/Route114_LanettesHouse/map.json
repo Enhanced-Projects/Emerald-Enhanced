@@ -76,6 +76,15 @@
       "var": "VAR_TEMP_5",
       "var_value": "0",
       "script": "LNH_RelCheck"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "LNH_PreventEnterBasement"
     }
   ],
   "bg_events": [

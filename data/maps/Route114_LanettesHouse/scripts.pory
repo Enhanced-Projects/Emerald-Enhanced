@@ -33,6 +33,17 @@ LNH_RelCheck::
 	clearflag FLAG_RYU_HIDE_LANETTE_BASEMENT
 	release
 	end
+
+LNH_PreventEnterBasement::
+	compare VAR_RYU_QUEST_LANETTE, 104
+	goto_if_ge ryu_end
+	lockall
+	msgbox LNH_Blocked
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	releaseall
+	end
 	
 Ryu_LNH_RomQuest::
 	setvar VAR_RYU_QUEST_LANETTE, 0
@@ -240,6 +251,9 @@ LNH_Staying:
 	closemessage
 	release
 	end
+
+LNH_Blocked:
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}This appears to be a personal\nspace. I probably shouldn't go\ldown there.$"
 	
 LNH_Rel_Lanette_stayingScene:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}I picked up a new movie for us\n"
