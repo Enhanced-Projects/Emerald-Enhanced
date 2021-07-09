@@ -1,7 +1,7 @@
 {
   "id": "MAP_MAUVILLE_CITY_FRONTIER_BANK",
   "name": "MauvilleCity_FrontierBank",
-  "layout": "LAYOUT_MAUVILLE_CITY_FRONTIER_BANK",
+  "layout": "LAYOUT_SLATEPORT_CITY_FRONTIER_BANK",
   "music": "MUS_BIJYUTU",
   "region_map_section": "MAPSEC_MAUVILLE_CITY",
   "requires_flash": false,
