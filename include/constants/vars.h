@@ -420,6 +420,21 @@
 #define QUEST_ID_LANA 4
 #define QUEST_ID_NURSE 5
 
+//Real Estate defines that need to be visible to scripts
+#define PROPERTY_DEWFORD     0
+#define PROPERTY_FALLARBOR   1
+#define PROPERTY_LILYCOVE    2
+#define PROPERTY_MAUVILLE    3
+#define PROPERTY_OLDALE      4
+#define PROPERTY_ROUTE119    5
+#define PROPERTY_RUSTBURO    6
+#define PROPERTY_SLATEPORT   7
+#define PROPERTY_SNOWSHORE   8
+#define PROPERTY_SOOTOPOLIS  9
+#define PROPERTY_VERDANTURF  10
+#define PROPERTY_MOSSDEEP    11
+//there are an additional 20 properties
+
 #define EE_GAME_VERSION 7800
 
 #endif // GUARD_CONSTANTS_VARS_H

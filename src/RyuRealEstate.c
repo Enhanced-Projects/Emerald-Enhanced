@@ -7,6 +7,7 @@
 #include "money.h"
 #include "script.h"
 #include "random.h"
+#include "main.h"
 
 //DAILY TASKS
 void DoDailyRealEstateTasks(void)
@@ -39,7 +40,6 @@ void RyuResetRealEstateData(void)
     gSaveBlock2Ptr->playerIsRealtor = 0;
     VarSet(VAR_RYU_PROPERTY_DAMAGE_TYPE, NUM_DAMAGE_TYPES);
     VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, 0); //0 - 13
-
 }
 
 
@@ -174,19 +174,19 @@ int RyuFBDoWithdraw(void)
 
 //PROPERTY RELATED
 
-const u16 gRyuPropertyData[NUM_PROPERTIES][5] = { //property id, property value, property rent, map group(interior), map num(interior), warp num(interior)
-    [PROPERTY_DEWFORD   ] = {36000, 1800, 0, 0, 0},
-    [PROPERTY_FALLARBOR ] = {36000, 1800, 0, 0, 0},
-    [PROPERTY_LILYCOVE  ] = {36000, 1800, 0, 0, 0},
-    [PROPERTY_MAUVILLE  ] = {36000, 1800, 0, 0, 0},
-    [PROPERTY_OLDALE    ] = {36000, 1800, 0, 0, 0},
-    [PROPERTY_ROUTE119  ] = {36000, 1800, 0, 0, 0},
-    [PROPERTY_RUSTBURO  ] = {36000, 1800, 0, 0, 0},
-    [PROPERTY_SLATEPORT ] = {36000, 1800, 0, 0, 0},
-    [PROPERTY_SNOWSHORE ] = {36000, 1800, 0, 0, 0},
-    [PROPERTY_SOOTOPOLIS] = {36000, 1800, 0, 0, 0},
-    [PROPERTY_VERDANTURF] = {36000, 1800, 0, 0, 0},
-    [PROPERTY_MOSSDEEP  ] = {36000, 1800, 0, 0, 0},
+const u16 gRyuPropertyData[NUM_PROPERTIES][5] = { //property id, property value, property rent, map group(interior), map num(interior), warp num(interior), x, y
+    [PROPERTY_DEWFORD   ] = {36000, 1800, 0, 0, 0, 0, 0},
+    [PROPERTY_FALLARBOR ] = {36000, 1800, 0, 0, 0, 0, 0},
+    [PROPERTY_LILYCOVE  ] = {36000, 1800, 0, 0, 0, 0, 0},
+    [PROPERTY_MAUVILLE  ] = {36000, 1800, 0, 0, 0, 0, 0},
+    [PROPERTY_OLDALE    ] = {36000, 1800, 2, 2, 0, 3, 8},
+    [PROPERTY_ROUTE119  ] = {36000, 1800, 0, 0, 0, 0, 0},
+    [PROPERTY_RUSTBURO  ] = {36000, 1800, 0, 0, 0, 0, 0},
+    [PROPERTY_SLATEPORT ] = {36000, 1800, 0, 0, 0, 0, 0},
+    [PROPERTY_SNOWSHORE ] = {36000, 1800, 0, 0, 0, 0, 0},
+    [PROPERTY_SOOTOPOLIS] = {36000, 1800, 0, 0, 0, 0, 0},
+    [PROPERTY_VERDANTURF] = {36000, 1800, 0, 0, 0, 0, 0},
+    [PROPERTY_MOSSDEEP  ] = {36000, 1800, 0, 0, 0, 0, 0},
 };
 
 const u8 gRyuPropertyNames[NUM_PROPERTIES][22] = { //@TOBY: feel free to rename these
@@ -327,6 +327,12 @@ bool32 CheckRentedProperty(u32 id)
     return !!((gSaveBlock2Ptr->propertyRentedFlags[id / 8] >> (id % 8)) & 1);
 }
 
+void ScriptCheckRentedProperty(void)
+{
+    u8 id = VarGet(VAR_TEMP_D);
+    gSpecialVar_Result = CheckRentedProperty(id);
+}
+
 void VacateProperty(u32 id)
 {
     if(id > PLAYER_PROPERTIES_COUNT)
@@ -419,7 +425,7 @@ bool8 CheckIfPlayerIsRealtor(void)
 
 void SetPlayerRealtorStatus(void)
 {
-    gSaveBlock2Ptr->playerIsRealtor == TRUE;
+    gSaveBlock2Ptr->playerIsRealtor = TRUE;
 }
 
 void DecrementPropertyRepairTime(void)
@@ -448,6 +454,20 @@ void RyuBufferPropertyDamageData(void)
     VarSet(VAR_TEMP_F, gRyuPropertyDamageTable[damageType][0]);
 }
 
+void RyuRE_TakeMoney(void)
+{
+    u8 id = (VarGet(VAR_TEMP_D));
+
+    RemoveMoney(&gSaveBlock1Ptr->money, (gRyuPropertyData[id][0]));
+    AddProperty(id);
+}
+
+void BufferPropertyRent(void)
+{
+    u8 id = VarGet(VAR_TEMP_D);
+    ConvertIntToDecimalStringN(gStringVar1, gRyuPropertyData[id][1], STR_CONV_MODE_LEFT_ALIGN, 5);
+}
+
 void doSpecialHouseWarp(void)//Used to dynamically warp to the current house.
 {
     u8 id = (VarGet(VAR_TEMP_D));
@@ -458,5 +478,5 @@ void doSpecialHouseWarp(void)//Used to dynamically warp to the current house.
     u16 y = 0;
     SetWarpDestination(mapGroup, mapNum, warpId, x, y);
     WarpIntoMap();
-    //SetMainCallback2(CB2_LoadMap);
+    SetMainCallback2(CB2_LoadMap);
 }

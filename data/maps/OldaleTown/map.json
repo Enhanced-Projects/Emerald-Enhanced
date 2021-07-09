@@ -380,7 +380,15 @@
       "y": 7,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "RealEstate_EventScript_ForSaleSign"
+      "script": "OldaleTown_RealEstatePropertySign"
+    },
+    {
+      "type": "sign",
+      "x": 21,
+      "y": 7,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "OldaleTown_RealEstatePropertyDoor"
     }
   ]
 }

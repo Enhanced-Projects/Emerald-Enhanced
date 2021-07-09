@@ -250,7 +250,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	goto_if_set FLAG_RYU_INTEREST_ACCRUED, RDB_DoLittlerootLatiCheck
+	callnative SetPlayerRealtorStatus
 	release
 	end
 

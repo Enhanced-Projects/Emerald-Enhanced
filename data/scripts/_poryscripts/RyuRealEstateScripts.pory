@@ -19,6 +19,7 @@ script RyuScript_HouseDoorLocks{
             if (var(VAR_RESULT) == TRUE) {
                 copyvar(VAR_RYU_PLAYER_HOUSE_ID, VAR_TEMP_D)
                 msgbox("You've set this property as\nyour home. You can now warp here\lfrom the waystone.")
+                closemessage
                 callnative(doSpecialHouseWarp)
                 waitstate
             }
@@ -64,12 +65,12 @@ script RyuRealEstateHouseSign { //Similar to the above function, VAR_TEMP_D must
         case 0: //not owned
             specialvar(VAR_RESULT, CheckIfPlayerIsRealtor)
             if (var(VAR_RESULT) == TRUE) {//player can buy
-                msgbox("This property {COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_2}){COLOR LIGHT_GREY}{SHADOW DARK_GREY}\ncosts ¥{STR_VAR_1}.\pWould you like to buy this property?", MSGBOX_YESNO)
+                msgbox("This property {COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_2}){COLOR DARK_GREY}{SHADOW LIGHT_GREY}\ncosts ¥{STR_VAR_1}.\pWould you like to buy this property?", MSGBOX_YESNO)
                 if (var(VAR_RESULT) == YES) {
                     checkmoney(0, 1, VAR_TEMP_E)
                     if (var(VAR_RESULT) == TRUE) {
-                        removemoney(0, 1, VAR_TEMP_E)
-                        msgbox("You have bought\n{COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_1}){COLOR LIGHT_GREY}{SHADOW DARK_GREY}\pActivate the sign again to decide\nwhat to do with it.")
+                        callnative(RyuRE_TakeMoney)
+                        msgbox("You have bought\n{COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_2}){COLOR DARK_GREY}{SHADOW LIGHT_GREY}\pActivate the sign again to decide\nwhat to do with it.")
                         release
                         end
                     }
@@ -121,7 +122,8 @@ script RyuRealEstateHouseSign { //Similar to the above function, VAR_TEMP_D must
 
                 }
         case 2://owned, rented
-            msgbox("You own this property.\nYou get ¥{STR_VAR_3} in rent\neach real 24-hour period.")
+            callnative(BufferPropertyRent)
+            msgbox("You own this property.\nYou get ¥{STR_VAR_1} in rent\neach real 24-hour period.")
             closemessage
             msgbox("Would you like to revoke the lease?", MSGBOX_YESNO)
             if (var(VAR_RESULT) == YES) {

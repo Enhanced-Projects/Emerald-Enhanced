@@ -50,6 +50,7 @@
 #include "rtc.h"
 #include "ach_atlas.h"
 #include "gba/m4a_internal.h"
+#include "RyuRealEstate.h"
 
 static EWRAM_DATA u8 MenuSpriteId1 = 0;
 static EWRAM_DATA u8 MenuSpriteId2 = 0;
@@ -999,6 +1000,7 @@ void RyuDoOneTImeSaveFixes(void)
     {
         VarSet(VAR_RYU_PLAYER_HOUSE_ID, 0xFFFF);
         FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
+        RyuResetRealEstateData();
     }
 }
 
