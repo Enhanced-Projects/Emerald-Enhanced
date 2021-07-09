@@ -5402,7 +5402,7 @@
       "blockdata_filepath": "data/layouts/MauvilleCity_Restaurant/map.bin"
     },
     {
-      "id": "LAYOUT_MAUVILLE_CITY_FRONTIER_BANK",
+      "id": "LAYOUT_SLATEPORT_CITY_FRONTIER_BANK",
       "name": "MauvilleCity_FrontierBank_Layout",
       "width": 12,
       "height": 8,
@@ -5410,6 +5410,16 @@
       "secondary_tileset": "gTileset_LilycoveMuseum",
       "border_filepath": "data/layouts/MauvilleCity_FrontierBank/border.bin",
       "blockdata_filepath": "data/layouts/MauvilleCity_FrontierBank/map.bin"
+    },
+    {
+      "id": "LAYOUT_OLDALE_TOWN_HOME",
+      "name": "OldaleTown_Home_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/OldaleTown_Home/border.bin",
+      "blockdata_filepath": "data/layouts/OldaleTown_Home/map.bin"
     }
   ]
 }

@@ -291,10 +291,10 @@
       "dest_warp_id": 0
     },
     {
-      "x": 36,
-      "y": 24,
+      "x": 0,
+      "y": 0,
       "elevation": 0,
-      "dest_map": "MAP_MOSSDEEP_CITY_GAME_CORNER_1F",
+      "dest_map": "MAP_MOSSDEEP_CITY",
       "dest_warp_id": 0
     }
   ],
@@ -400,6 +400,14 @@
       "elevation": 7,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MossdeepCity_EventScript_WhiteRock"
+    },
+    {
+      "type": "sign",
+      "x": 34,
+      "y": 24,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RealEstate_EventScript_ForSaleSign"
     }
   ]
 }
