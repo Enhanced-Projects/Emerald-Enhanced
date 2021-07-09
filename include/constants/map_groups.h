@@ -81,9 +81,10 @@
 // Map Group 2
 #define MAP_OLDALE_TOWN_HOUSE1            (0 | (2 << 8))
 #define MAP_OLDALE_TOWN_HOUSE2            (1 | (2 << 8))
-#define MAP_OLDALE_TOWN_MART              (2 | (2 << 8))
-#define MAP_OLDALE_TOWN_POKEMON_CENTER_1F (3 | (2 << 8))
-#define MAP_OLDALE_TOWN_POKEMON_CENTER_2F (4 | (2 << 8))
+#define MAP_OLDALE_TOWN_HOME              (2 | (2 << 8))
+#define MAP_OLDALE_TOWN_MART              (3 | (2 << 8))
+#define MAP_OLDALE_TOWN_POKEMON_CENTER_1F (4 | (2 << 8))
+#define MAP_OLDALE_TOWN_POKEMON_CENTER_2F (5 | (2 << 8))
 
 // Map Group 3
 #define MAP_PETALBURG_CITY_WALLYS_HOUSE      (0 | (3 << 8))

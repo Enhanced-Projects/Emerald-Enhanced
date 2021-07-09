@@ -1234,3 +1234,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/MauvilleCity_Restaurant/scripts.inc"
 
 	.include "data/maps/MauvilleCity_FrontierBank/scripts.inc"
+
+	.include "data/maps/OldaleTown_Home/scripts.inc"
