@@ -173,6 +173,7 @@
 #define MULTI_RANDOM_BATTLE_TYPE           162
 #define MULTI_FRONTIERBANK                 163
 #define MULTI_FBAMOUNTMENU                 164
+#define MULTI_REALESTATE_MENU              165
 
 
 // Lilycove SS Tidal Multichoice Selections

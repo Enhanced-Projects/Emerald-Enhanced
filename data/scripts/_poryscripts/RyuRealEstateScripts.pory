@@ -1,0 +1,168 @@
+//scripts for real estate
+
+
+//called from each map to see if player owns the current property. 
+//The property ID must be loaded into VAR_TEMP_D prior to calling this.
+script RyuScript_HouseDoorLocks{
+    specialvar(VAR_RESULT, CheckIfPlayerOwnsCurrentProperty)
+    switch (var(VAR_RESULT)) {
+        case 0:// player does not own property
+            msgbox(format("The door is locked."))
+            release
+            end
+        case 1:// Player owns property and set it as their home
+            playse(SE_DOOR)
+            callnative(doSpecialHouseWarp)
+            waitstate
+        case 2:// player owns property but did not set it as their home or set it as rentable.
+            msgbox("Would you like to set this property\nas your home?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == TRUE) {
+                copyvar(VAR_RYU_PLAYER_HOUSE_ID, VAR_TEMP_D)
+                msgbox("You've set this property as\nyour home. You can now warp here\lfrom the waystone.")
+                callnative(doSpecialHouseWarp)
+                waitstate
+            }
+            else {
+                msgbox("Player home location not changed.")
+                callnative(doSpecialHouseWarp)
+                waitstate
+            }
+        case 3:
+            msgbox("You are renting this property\nout to another person.\pWould you like to knock to enter?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == TRUE) {
+                msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} {PLAYER} knocked on the door.")
+                delay(120)
+                random(2)
+                switch (var(VAR_RESULT)) {
+                    case 0:
+                    case 1:
+                        msgbox("The renter must not be home.\nBetter come back later.")
+                        release
+                        end
+                    case 2:
+                        setflag(FLAG_RYU_ENTERING_RENTED_HOME)
+                        msgbox(" ({COLOR LIGHT_GREEN}{COLOR GREEN}The renters let you in...)")
+                        callnative(doSpecialHouseWarp)
+                        waitstate
+                }
+            }
+            release
+            end
+        case 4:
+            msgbox("{COLOR LIGHT_RED}{SHADOW RED}ERROR NO. 4\pPlease report this on the Discord!")//reached an invalid state for the door
+            release
+            end
+    }
+    release
+    end
+}
+
+script RyuRealEstateHouseSign { //Similar to the above function, VAR_TEMP_D must be set to the id of the house it is next to.
+    callnative(RyuBufferRealEstateDetails) //puts the name of the property in STR_VAR_2 and the value in STR_VAR_1
+    specialvar(VAR_RESULT, RyuCheckPropertyStatus)//returns a value based on status of the property.
+    switch(var(VAR_RESULT)) {
+        case 0: //not owned
+            specialvar(VAR_RESULT, CheckIfPlayerIsRealtor)
+            if (var(VAR_RESULT) == TRUE) {//player can buy
+                msgbox("This property {COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_2}){COLOR LIGHT_GREY}{SHADOW DARK_GREY}\ncosts ¥{STR_VAR_1}.\pWould you like to buy this property?", MSGBOX_YESNO)
+                if (var(VAR_RESULT) == YES) {
+                    checkmoney(0, 1, VAR_TEMP_E)
+                    if (var(VAR_RESULT) == TRUE) {
+                        removemoney(0, 1, VAR_TEMP_E)
+                        msgbox("You have bought\n{COLOR LIGHT_GREEN}{SHADOW GREEN}({STR_VAR_1}){COLOR LIGHT_GREY}{SHADOW DARK_GREY}\pActivate the sign again to decide\nwhat to do with it.")
+                        release
+                        end
+                    }
+                    else {
+                        msgbox("You cannot afford this property.")
+                        release
+                        end
+                    }
+                }
+            }
+            else {
+                msgbox("This property is for sale.\nSee Frontier Bank for details.")
+                release
+            end
+            }
+        case 1: //owned, not rented.
+            callnative(RyuBufferRealEstateDetails)
+            msgbox("You own {STR_VAR_2}.\nIt is valued at ¥{STR_VAR_1}.\pWhat would you like to do?")
+            multichoice(5, 1, MULTI_REALESTATE_MENU, 1)//move in/lease out/check details/cancel
+                switch(var(VAR_RESULT)) {
+                    case 0: //Move in
+                        msgbox("Set this property as your home?", MSGBOX_YESNO)
+                        if (var(VAR_RESULT) == YES) {
+                            copyvar(VAR_RYU_PLAYER_HOUSE_ID, VAR_TEMP_D)
+                            msgbox("You've set {STR_VAR_2} as\nyour home. You can now warp here\lfrom the waystone.")
+                        }
+                        else {
+                            goto(RyuRealEstateHouseSign)
+                        }
+                    case 1: //Lease Property
+                        msgbox("Would you like to lease this\nproperty for rent?", MSGBOX_YESNO)
+                        if (var(VAR_RESULT) == YES) {
+                            callnative(ScriptLeaseProperty)
+                            msgbox("You have posted this property\nfor rent.\pTenants will now rent this property\nfrom you.")
+                            release
+                            end
+                        }
+                    case 2://check details
+                        callnative(RyuBufferOwnedPropertyDetails)
+                        msgbox("{STR_VAR_2} Details:\pIs currently Rented?: {STR_VAR_3}\nIs {PLAYER}'s home?: {RYU_STR_1}\pIs pending repair?: {RYU_STR_2}")
+                        compare_var_to_var(VAR_RYU_DAMAGED_HOUSE_ID, VAR_TEMP_D)
+                        call_if_eq(AskPlayerToRepairProperty)
+                        closemessage
+                        release
+                        end
+                    case 3:
+                        release
+                        end
+
+                }
+        case 2://owned, rented
+            msgbox("You own this property.\nYou get ¥{STR_VAR_3} in rent\neach real 24-hour period.")
+            closemessage
+            msgbox("Would you like to revoke the lease?", MSGBOX_YESNO)
+            if (var(VAR_RESULT) == YES) {
+                callnative(ScriptVacateProperty)
+                msgbox("This property no longer has tenants.")
+                release
+                end
+            }
+            else {
+                msgbox("{PLAYER} left the lease intact.")
+                release
+                end
+            }
+        case 3://owned, rented, needs repair
+            goto(AskPlayerToRepairProperty)
+
+    }
+}
+
+script AskPlayerToRepairProperty {
+    callnative(RyuBufferPropertyDamageData)//also buffers the cost into VAR_TEMP_F so that the money can be checked and taken.
+    msgbox("{STR_VAR_1} has a {STR_VAR_2}.\pIt will cost ¥{STR_VAR_3} to repair it.\nIt will take {RYU_STR_1} days to finish.\pWould you like to pay to repair\nthis property?", MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES){
+        checkmoney(0, 1, VAR_TEMP_F)
+        if (var(VAR_RESULT) == TRUE) {
+            msgbox("{PLAYER} paid ¥{STR_VAR_2} to repair\n{STR_VAR_1}.")
+            setflag(FLAG_RYU_PROPERTY_UNDERGOING_MAINTENANCE)
+            callnative(DecrementPropertyRepairTime)
+            removemoney(0, 1, VAR_TEMP_F)
+            release
+            end
+        }
+        else {
+            msgbox("You cannot afford to do this repair.")
+            release
+            end
+        }
+    }
+    else {
+        msgbox("You decided not to repair this\nproperty.\pYou cannot sell or collect rent\nuntil it is repaired.")
+        release
+        end
+    }
+}

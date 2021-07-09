@@ -136,6 +136,7 @@
 #define DEX_FLAGS_NO (ROUND_BITS_TO_BYTES(POKEMON_SLOTS_NUMBER))
 #define NUM_FLAG_BYTES (ROUND_BITS_TO_BYTES(FLAGS_COUNT))
 #define NUM_ACH_FLAG_BYTES (ROUND_BITS_TO_BYTES(ACH_FLAGS_COUNT))
+#define NUM_PROPERTY_BYTES (ROUND_BITS_TO_BYTES(PLAYER_PROPERTIES_COUNT))
 #define NUM_ACH_PWR_BYTES (ROUND_BITS_TO_BYTES(AP_FLAGS_COUNT))
 #define NUM_NPC_FACTIONS 8
 
@@ -509,22 +510,19 @@ struct SaveBlock2
               u8 alchemyEffect; //Which alchemy effect is currently active.
               u8 alchemyCharges; //how many charges, if any, are left for the currently active alchemy effect.
               u16 hasAlchemyEffectActive:1; //a block of 16 utility-use flags in save block. This one is used to tell if player has an effect active or not.
+              u16 bossMonInGCMS:1;
+              u16 playerIsRealtor:1;
+              u16 propertyDamageType:4; //0 - 14
+              u16 propertyDamageDays:4; //0 - 14
               /*
-              u16 unusedSaveblockFlag1:1
-              u16 unusedSaveblockFlag2:1
-              u16 unusedSaveblockFlag3:1
-              u16 unusedSaveblockFlag4:1
-              u16 unusedSaveblockFlag5:1
-              u16 unusedSaveblockFlag6:1
-              u16 unusedSaveblockFlag7:1
-              u16 unusedSaveblockFlag8:1
-              u16 unusedSaveblockFlag9:1
               u16 unusedSaveblockFlag10:1
               u16 unusedSaveblockFlag11:1
               u16 unusedSaveblockFlag12:1
               u16 unusedSaveblockFlag13:1
               u16 unusedSaveblockFlag14:1
               */
+             u8 propertyFlags[NUM_PROPERTY_BYTES];
+             u8 propertyRentedFlags[NUM_PROPERTY_BYTES];
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

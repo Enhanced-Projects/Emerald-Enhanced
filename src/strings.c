@@ -2227,3 +2227,7 @@ const u8 gText_RyuFrontierBank500k[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥500
 const u8 gText_RyuFrontierBank1M[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥1,000,000");
 const u8 gText_RyuFrontierBank10M[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥10,000,000");
 const u8 gText_RyuFrontierBank100M[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥100,000,000");
+
+const u8 gText_RyuREMoveIn[] = _("Move In");
+const u8 gText_RyuRELeaseProperty[] = _("Lease Out");
+const u8 gText_RyuRECheckDetails[] = _("Check Details");

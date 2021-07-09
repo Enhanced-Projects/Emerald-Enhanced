@@ -72,8 +72,8 @@
 #define VAR_DEOXYS_ROCK_LEVEL                0x4035
 #define VAR_PC_BOX_TO_SEND_MON               0x4036
 #define VAR_ABNORMAL_WEATHER_LOCATION        0x4037
-#define VAR_UNUSED_0x4038                    0x4038
-#define VAR_UNUSED_0x4039                    0x4039
+#define VAR_RYU_DAMAGED_HOUSE_ID             0x4038 //which property, if any, is damaged.
+#define VAR_RYU_PROPERTY_DAMAGE_TYPE         0x4039 //what sort of damage needs repaired.
 #define VAR_FARAWAY_ISLAND_STEP_COUNTER      0x403A
 #define VAR_REGICE_STEPS_1                   0x403B
 #define VAR_REGICE_STEPS_2                   0x403C
@@ -145,7 +145,7 @@
 #define VAR_RYU_QUESTLINE_ID                 0x407F // Which main quest the player chose.
 #define VAR_RYU_DAILY_QUEST_TARGET           0x4080 // ID or target value to complete daily quest.
 #define VAR_RYU_DAILY_QUEST_DATA             0x4081 // Multi-Purpose component for daily quests.
-#define VAR_UNUSED_0x4082                    0x4082 
+#define VAR_RYU_PROPERTY_DAMAGE_DAYS         0x4082 
 #define VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION 0x4083 // The faction that assigned the current daily quest.
 #define VAR_BIRCH_LAB_STATE                  0x4084
 #define VAR_PETALBURG_GYM_STATE              0x4085 // used to determine which petalburg doors are open.
@@ -154,7 +154,7 @@
 #define VAR_CONTEST_TYPE                     0x4088
 #define VAR_SECRET_BASE_INITIALIZED          0x4089
 #define VAR_CONTEST_PRIZE_PICKUP             0x408A
-#define VAR_UNUSED_0x408B                    0x408B // Unused Var
+#define VAR_RYU_PLAYER_HOUSE_ID              0x408B // which house the player set as their home. Defaults to 0xFFFF for none.
 #define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN  0x408C
 #define VAR_LITTLEROOT_RIVAL_STATE           0x408D
 #define VAR_BOARD_BRINEY_BOAT_STATE          0x408E

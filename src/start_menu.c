@@ -995,18 +995,11 @@ static void StartMenuTask(u8 taskId)
 
 void RyuDoOneTImeSaveFixes(void)
 {
-    if (FlagGet(FLAG_HIDE_ALL_KECLEON_OWS) == 0)
-        FlagSet(FLAG_HIDE_ALL_KECLEON_OWS);
-
-    if (FlagGet(FLAG_RYU_GAME_OVER) == FALSE)// makes sure game over works for everyone, including people who keep save.
-        {
-            if (FlagGet(FLAG_RYU_PLAYER_HELPING_DEVON) == TRUE)
-                VarSet(VAR_RYU_QUESTLINE_ID, 0);
-            else if (FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA) == TRUE)
-                VarSet(VAR_RYU_QUESTLINE_ID, 1);
-            else if (FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA) == TRUE)
-                VarSet(VAR_RYU_QUESTLINE_ID, 2);
-        }
+    if ((VarGet(VAR_RYU_PLAYER_HOUSE_ID) < 0xFFFF) && (VarGet(VAR_LAST_KNOWN_GAME_VERSION) < 7800))//this will set the player's set house to what it should be.
+    {
+        VarSet(VAR_RYU_PLAYER_HOUSE_ID, 0xFFFF);
+        FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
+    }
 }
 
 bool32 RyuCheckFactionAchievements(void)

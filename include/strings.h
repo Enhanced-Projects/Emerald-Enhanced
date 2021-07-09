@@ -3382,4 +3382,8 @@ extern const u8 gText_RyuFrontierBank1M[];
 extern const u8 gText_RyuFrontierBank10M[];
 extern const u8 gText_RyuFrontierBank100M[];
 
+extern const u8 gText_RyuREMoveIn[];
+extern const u8 gText_RyuRELeaseProperty[];
+extern const u8 gText_RyuRECheckDetails[];
+
 #endif // GUARD_STRINGS_H

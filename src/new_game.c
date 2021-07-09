@@ -48,6 +48,7 @@
 #include "union_room_chat.h"
 #include "constants/map_groups.h"
 #include "factions.h"
+#include "RyuRealEstate.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -323,10 +324,13 @@ void NewGameInitData(void)
     VarSet(VAR_SAVE_FILE_CREATED_ON_VERSION, originalSaveFileVersion);
     VarSet(VAR_RYU_LAST_ACH, 300);
     VarSet(VAR_RYU_QUESTLINE_ID, 100); //No questline started
+    VarSet(VAR_RYU_PLAYER_HOUSE_ID, 0xFFFF);//Which house the player has set as their own
+    
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));
     gSaveBlock1Ptr->dexNavChain = 0;
     RyuClearAlchemyEffect();
+    RyuResetRealEstateData();
 }
 
 static void ResetMiniGamesResults(void)

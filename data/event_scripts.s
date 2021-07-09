@@ -603,6 +603,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/_poryscripts/FactionQuestsPokefans.inc"
 	.include "data/scripts/_poryscripts/FactionQuestsNobles.inc"
 	.include "data/scripts/_poryscripts/FactionQuestsStudents.inc"
+	.include "data/scripts/_poryscripts/RyuRealEstateScripts.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED
