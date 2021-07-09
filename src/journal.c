@@ -29,6 +29,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/items.h"
+#include "RyuRealEstate.h"
 
 static const u8 sJournalBGMap[] = INCBIN_U8("graphics/journal/journal_tiles.bin");
 static const u8 sJournalBGTiles[] = INCBIN_U8("graphics/journal/journal_tiles.4bpp");
@@ -373,8 +374,12 @@ const static u8 sText_Achievements[] = _("Achievements");
 
 const static u8 sText_ExpInDrive[] = _("EXP Stored in Drive");
 
-const static u8 sText_Money[] = _("Money:");
+const static u8 sText_Money[] = _("Money");
 const static u8 sText_BadgesEarned[] = _("Badges Earned");
+
+const static u8 sText_PropertiesOwned[] = _("Properties Owned");
+const static u8 sText_NetWorth[] = _("Net Worth");
+const static u8 sText_BankBalance[] = _("Bank Bal"); //had to shorten it because 10 digits
 
 const static u8 sText_TrainerNameId[] = _("Trainer Name   {PLAYER}      Badges Earned   {STR_VAR_1}\nTrainer Id       {STR_VAR_2}       Money   {STR_VAR_3}");
 
@@ -487,6 +492,33 @@ u32 GetAchivements(void)
     return CountTakenAchievements();
 }
 
+u32 GetBankBalance(void)
+{
+    return GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
+}
+
+u64 GetNetWorth(void)
+{
+    u32 balance = (GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE));
+    u32 money = (GetMoney(&gSaveBlock1Ptr->money));
+    u32 totalPropertyValue = 0;
+    u8 id = 0;
+
+
+    for (id=0; id < NUM_PROPERTIES; id++)
+    {
+        if (CheckOwnedProperty(id))
+            totalPropertyValue += gRyuPropertyData[id][0];
+    }
+
+    return (balance + money + totalPropertyValue);
+}
+
+u32 GetPropertiesOwned(void)
+{
+    return VarGet(VAR_RYU_NUM_OWNED_PROPERTIES);
+}
+
 static const struct JournalStatData sJournalStatsGeneral[] =
 {
     {
@@ -535,7 +567,13 @@ static const struct JournalStatData sJournalStatsGeneral[] =
         NULL,
         NULL,
         0, 0,
-    }
+    },
+        /*{ @PIDGEY this needs to handle a u64. Moved it down here for organization reasons.
+        sText_NetWorth,
+        GetNetWorth,
+        10,
+        FALSE,
+    },*/
 };
 
 static const struct JournalStatData sJournalStatsContest[] =
@@ -700,6 +738,27 @@ static const struct JournalStatData sJournalStatsAchievements[] =
     }
 };
 
+static const struct JournalStatData sJournalStatsFinancial[] =
+{
+    {
+        sText_BankBalance,
+        GetBankBalance,
+        10,
+        FALSE
+    },
+    {
+        sText_PropertiesOwned,
+        GetPropertiesOwned,
+        2,
+        FALSE,
+    },
+    {
+        NULL,
+        NULL,
+        0, 0,
+    }
+};
+
 static const struct JournalStatData * sJournalStats[] = 
 {
     sJournalStatsGeneral,
@@ -710,6 +769,7 @@ static const struct JournalStatData * sJournalStats[] =
     sJournalStatsAlchemy,
     sJournalStatsKnockOuts,
     sJournalStatsTitleDefense,
+    sJournalStatsFinancial,
     sJournalStatsAchievements, // TODO: placeholder to have even amount of single line stats
     //sJournalStatsExpDrive,
 };
