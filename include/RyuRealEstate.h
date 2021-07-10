@@ -26,8 +26,9 @@ void RyuBufferRealEstateDetails(void);
 void CollectRent(void);
 void DecrementPropertyRepairTime(void);
 void RyuResetRealEstateData(void);
+void RyuBufferPropertyDamageData(void);
 
-#define NUM_PROPERTIES 12
+extern const u16 gRyuPropertyData[NUM_PROPERTIES][7];
 
 #define PROPERTY_DEWFORD     0
 #define PROPERTY_FALLARBOR   1

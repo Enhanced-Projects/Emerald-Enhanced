@@ -1,1 +1,7 @@
 mapscripts OldaleTown_Home_MapScripts {}
+
+script OldaleHouse_ExitHome {
+    lockall
+    warpsilent(MAP_OLDALE_TOWN, 255, 21, 8)
+    waitstate
+}

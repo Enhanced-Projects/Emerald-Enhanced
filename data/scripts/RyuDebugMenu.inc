@@ -67,8 +67,14 @@ RyuDebug_UtilitiesMenu:
 	case 13, RDB_CheckFactionRelations
 	case 14, RDB_AlchemyInfo
 	case 15, RDB_ToggleLevelCap
-	case 16, RyuDebug_menu_nodevcheck
+	case 16, RDB_EnableRealEstate
+	case 17, RyuDebug_menu_nodevcheck
 	goto RyuDebug_cancel
+
+RDB_EnableRealEstate::
+	callnative SetPlayerRealtorStatus
+	release
+	end
 
 RDB_CheckFactionRelations::
 	callnative RyuDebug_ViewFactionRelations
@@ -250,7 +256,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	callnative SetPlayerRealtorStatus
+	callnative DoDailyRealEstateTasks
 	release
 	end
 

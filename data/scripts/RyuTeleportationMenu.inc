@@ -66,11 +66,6 @@ RTDNMUEMsg:
 MSG_Teleport:
 	.string "Teleport to where?$"
 	
-	
-RT_Home::
-	warpteleport MAP_LITTLEROOT_TOWN, 255, 10, 10
-	waitstate
-	
 RT_Oldale::
 	goto_if_set FLAG_RYU_BANNED_FROM_OLDALE, RT_BannedFromLilycove
 	goto_if_unset FLAG_VISITED_OLDALE_TOWN, RT_NoFlag

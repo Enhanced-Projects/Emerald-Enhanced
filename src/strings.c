@@ -2231,3 +2231,4 @@ const u8 gText_RyuFrontierBank100M[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}¥100
 const u8 gText_RyuREMoveIn[] = _("Move In");
 const u8 gText_RyuRELeaseProperty[] = _("Lease Out");
 const u8 gText_RyuRECheckDetails[] = _("Check Details");
+const u8 gText_RyuRESellProperty[] = _("Sell Property");

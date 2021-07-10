@@ -2017,3 +2017,12 @@ void SetAlchemyEffect(void)
     gSaveBlock2Ptr->alchemyCharges = 1;
     gSaveBlock2Ptr->hasAlchemyEffectActive = TRUE;
 }
+
+u16 RyuCheckMoney(void)
+{
+    u16 toCompare = (VarGet(VAR_TEMP_9));
+    if (IsEnoughMoney(&gSaveBlock1Ptr->money, toCompare))
+        return TRUE;
+    
+    return FALSE;
+}

@@ -57,8 +57,9 @@
 #define GAME_STAT_DEXNAV_SCANNED            53
 #define GAME_STAT_BATTLES_WON               54
 #define GAME_STAT_INTEREST_RECEIVED         55
+#define GAME_STAT_RENT_COLLECTED            56
 
-#define NUM_USED_GAME_STATS                 56
+#define NUM_USED_GAME_STATS                 57
 #define NUM_GAME_STATS                      64
 
 #endif // GUARD_CONSTANTS_GAME_STAT_H

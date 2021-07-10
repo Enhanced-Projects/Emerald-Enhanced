@@ -129,7 +129,7 @@
 #define FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT     0x6F
 #define FLAG_RYU_PROPERTY_UNDERGOING_MAINTENANCE     0x70 //Set when a property is being repaired.
 #define FLAG_RYU_IN_MOSSDEEP_GYM             0x71
-#define FLAG_UNUSED_0x72                     0x72
+#define FLAG_RYU_HAS_HOME_REGISTERED         0x72 //player has registered a real estate property as their home.
 #define FLAG_RECEIVED_METEORITE              0x73
 #define FLAG_ADVENTURE_STARTED               0x74 // RECEIVED Pokédex.
 #define FLAG_DEFEATED_MAGMA_SPACE_CENTER     0x75 // Set when Team Magma is defeated at Mossdeep's Space Center.
@@ -1673,6 +1673,8 @@
 #define FLAG_RYU_FACING_FACTION_BOSS            (SPECIAL_FLAGS_START + 0x9)
 #define FLAG_RYU_DISPLAY_BOTANY_INGREDIENTS     (SPECIAL_FLAGS_START + 0xA)
 #define FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS    (SPECIAL_FLAGS_START + 0xB)
+#define FLAG_RYU_NOTIFY_PROPERTY_DAMAGE         (SPECIAL_FLAGS_START + 0xC)
+#define FLAG_RYU_NOTIFY_RENT                    (SPECIAL_FLAGS_START + 0xD)
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 

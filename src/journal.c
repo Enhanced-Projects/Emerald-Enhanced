@@ -497,7 +497,7 @@ u32 GetBankBalance(void)
     return GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
 }
 
-u64 GetNetWorth(void)
+/*u64 GetNetWorth(void)
 {
     u32 balance = (GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE));
     u32 money = (GetMoney(&gSaveBlock1Ptr->money));
@@ -512,7 +512,7 @@ u64 GetNetWorth(void)
     }
 
     return (balance + money + totalPropertyValue);
-}
+}*/
 
 u32 GetPropertiesOwned(void)
 {

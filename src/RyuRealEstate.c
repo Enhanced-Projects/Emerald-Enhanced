@@ -15,12 +15,15 @@ void DoDailyRealEstateTasks(void)
     if (FlagGet(FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT))
     {
         u32 balance = GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
-        u32 interest = balance / 100; // 1% interest rate
-        if (interest + balance < balance) // happens if balance is close to the integer limit and the interest causes it to overflow and wrap to 0
-            return;
-        SetGameStat(GAME_STAT_INTEREST_RECEIVED, interest); // saves the last earned interest amount, potentially could be more than 65k, so use 32bit number.
-        SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, balance + interest);
-        FlagSet(FLAG_RYU_INTEREST_ACCRUED);
+        if (!(balance <= 999)) //no reason to give interest if balance is under $1000
+        {
+            u32 interest = balance / 100; // 1% interest rate
+            if (interest + balance < balance) // happens if balance is close to the integer limit and the interest causes it to overflow and wrap to 0
+                return;
+            SetGameStat(GAME_STAT_INTEREST_RECEIVED, interest); // saves the last earned interest amount, potentially could be more than 65k, so use 32bit number.
+            SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, balance + interest);
+            FlagSet(FLAG_RYU_INTEREST_ACCRUED);
+        }
     }
 
     if (gSaveBlock2Ptr->playerIsRealtor == TRUE)
@@ -91,10 +94,10 @@ int RyuFBDoDeposit(void)
     //if it got this far, the it passed the above checks. Apply player balance to bank balance.
     if (balance == 0)
     {
-        amount = GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE) + money;
+        ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, 10);
+        amount += GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
         SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, amount);
         SetMoney(&gSaveBlock1Ptr->money, 0);
-        ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, 10);
         ConvertIntToDecimalStringN(gStringVar2, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE), STR_CONV_MODE_LEFT_ALIGN, 10);
         return 4;// Player deposited entire personal money amount 
     }
@@ -165,7 +168,7 @@ int RyuFBDoWithdraw(void)
             ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, 10);
             return 4; // withdraw amount would have normally exceeded player max. Split the difference.
         }
-        SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, balance);
+        SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE) - amount);
         AddMoney(&gSaveBlock1Ptr->money, balance);
         ConvertIntToDecimalStringN(gStringVar2, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE), STR_CONV_MODE_LEFT_ALIGN, 10); 
         return 1; // normal withdraw
@@ -174,7 +177,7 @@ int RyuFBDoWithdraw(void)
 
 //PROPERTY RELATED
 
-const u16 gRyuPropertyData[NUM_PROPERTIES][5] = { //property id, property value, property rent, map group(interior), map num(interior), warp num(interior), x, y
+const u16 gRyuPropertyData[NUM_PROPERTIES][7] = { //property id, property value, property rent, map group(interior), map num(interior), warp num(interior), x, y
     [PROPERTY_DEWFORD   ] = {36000, 1800, 0, 0, 0, 0, 0},
     [PROPERTY_FALLARBOR ] = {36000, 1800, 0, 0, 0, 0, 0},
     [PROPERTY_LILYCOVE  ] = {36000, 1800, 0, 0, 0, 0, 0},
@@ -235,22 +238,25 @@ const u8 gRyuDamageTypeNamesTable[NUM_DAMAGE_TYPES][26] = { //will be buffered w
 void TryDamageproperties(void)
 {
     u8 val = (Random() % 99);
+    u8 id = 0;
     u8 damageType = (Random() % sizeof(gRyuPropertyDamageTable));
     u8 damageDays = gRyuPropertyDamageTable[damageType][0];
+    u32 maxPropertyDamageChance = (70 + VarGet(VAR_RYU_NUM_OWNED_PROPERTIES));
 
     if (val < 60)
         return;
 
-    if ((val > 59) && (val < 70))//damage a random property. (10%)
+    if ((val > 59) && (val < 70))//damage a random property. (10% plus number of owned properties.)
         {
             do {//only damage a property that is owned by the player.
-                gSpecialVar_0x8004 = (Random() % NUM_PROPERTIES);
-            
-             } while((!(CheckOwnedProperty(gSpecialVar_0x8004) == TRUE)));
+                id = (Random() % NUM_PROPERTIES);
+             } while(CheckOwnedProperty(id) == FALSE);
             FlagSet(FLAG_RYU_PROPERTY_DAMAGED);
-            VarSet(VAR_RYU_DAMAGED_HOUSE_ID, gSpecialVar_0x8004);
+            VarSet(VAR_RYU_DAMAGED_HOUSE_ID, id);
             VarSet(VAR_RYU_PROPERTY_DAMAGE_TYPE, damageType);
             VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, gRyuPropertyDamageTable[damageType][1]);
+            FlagSet(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE);
+            VarSet(VAR_TEMP_D, id);
         }
 
     if (val > 70) {}//should i do something else here?
@@ -259,8 +265,10 @@ void TryDamageproperties(void)
 void RyuBufferRealEstateDetails(void)
 {
     u8 id = (VarGet(VAR_TEMP_D));
-    ConvertIntToDecimalStringN(gStringVar1, gRyuPropertyData[id][0], STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringCopy(gStringVar2, gRyuPropertyNames[id]);
+    u16 sellprice = ((gRyuPropertyData[id][0] / 3) * 2);
+    ConvertIntToDecimalStringN(gStringVar1, gRyuPropertyData[id][0], STR_CONV_MODE_LEFT_ALIGN, 5);//value
+    StringCopy(gStringVar2, gRyuPropertyNames[id]);//name of property
+    ConvertIntToDecimalStringN(gStringVar3, sellprice, STR_CONV_MODE_LEFT_ALIGN, 5);//sale price
 }
 
 u16 RyuReturnPropertyValueFromID(u8 id)
@@ -282,7 +290,7 @@ u16 CheckIfPlayerOwnsCurrentProperty(void)
     if (owned == FALSE)
         return 0;
 
-    if ((owned == TRUE) && (rented == FALSE) && (VarGet(VAR_RYU_PLAYER_HOUSE_ID == id)))
+    if ((owned == TRUE) && (rented == FALSE) && ((FlagGet(FLAG_RYU_HAS_HOME_REGISTERED) == TRUE) && (VarGet(VAR_RYU_PLAYER_HOUSE_ID) == id)))
         return 1; 
     
     if ((owned == TRUE) && (rented == FALSE))
@@ -306,8 +314,16 @@ void RemoveProperty(u32 id)
 {
     if(id > PLAYER_PROPERTIES_COUNT)
         return;
-        
+
+    VarSet(VAR_RYU_NUM_OWNED_PROPERTIES, (VarGet(VAR_RYU_NUM_OWNED_PROPERTIES) - 1));
     gSaveBlock2Ptr->propertyFlags[id / 8] &= ~(1 << (id % 8));
+}
+
+void ScriptSellProperty(void)
+{
+    u8 id = VarGet(VAR_TEMP_D);
+    RemoveProperty(id);
+    SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, (GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE) + ((gRyuPropertyData[id][0] / 3) * 2)));
 }
 
 void AddProperty(u32 id)
@@ -315,8 +331,8 @@ void AddProperty(u32 id)
     if(id > PLAYER_PROPERTIES_COUNT)
         return;
 
+    VarSet(VAR_RYU_NUM_OWNED_PROPERTIES, (VarGet(VAR_RYU_NUM_OWNED_PROPERTIES) + 1));
     gSaveBlock2Ptr->propertyFlags[id / 8] |= 1 << (id % 8);
-    
 }
 
 bool32 CheckRentedProperty(u32 id)
@@ -366,13 +382,19 @@ void ScriptLeaseProperty(void)
 
 void CollectRent(void)
 {
-    int rent = 0;
+    u32 rent = 0;
+    u32 balance = (GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE));
     u8 i;
 
     for (i = 0; i < NUM_PROPERTIES; i++){
         if (CheckOwnedProperty(i) && CheckRentedProperty(i))
             rent += gRyuPropertyData[i][1];
     }
+
+    SetGameStat(GAME_STAT_RENT_COLLECTED, rent); 
+    SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, (balance + rent));
+
+    FlagSet(FLAG_RYU_NOTIFY_RENT);
 }
 
 int RyuCheckPropertyStatus(void)
@@ -430,16 +452,17 @@ void SetPlayerRealtorStatus(void)
 
 void DecrementPropertyRepairTime(void)
 {
-    if (VarGet(VAR_RYU_PROPERTY_DAMAGE_DAYS) == 0)
+    u16 days = VarGet(VAR_RYU_PROPERTY_DAMAGE_DAYS);
+    bool8 maintenance = FlagGet(FLAG_RYU_PROPERTY_UNDERGOING_MAINTENANCE);
+
+    if ((days == 0) && (maintenance = TRUE))
     {
         FlagClear(FLAG_RYU_PROPERTY_DAMAGED);
         FlagClear(FLAG_RYU_PROPERTY_UNDERGOING_MAINTENANCE);
         VarSet(VAR_RYU_PROPERTY_DAMAGE_TYPE, NUM_DAMAGE_TYPES);
-        return;
     }
     else
         VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, (VarGet(VAR_RYU_PROPERTY_DAMAGE_DAYS) - 1));
-
 }
 
 void RyuBufferPropertyDamageData(void)
@@ -447,11 +470,10 @@ void RyuBufferPropertyDamageData(void)
     u8 id = (VarGet(VAR_TEMP_D));
     u8 damageType = VarGet(VAR_RYU_PROPERTY_DAMAGE_TYPE);
 
-    StringCopy(gStringVar1, gRyuPropertyNames[id]);
-    StringCopy(gStringVar2, gRyuDamageTypeNamesTable[damageType]);
-    ConvertIntToDecimalStringN(gStringVar3, gRyuPropertyDamageTable[damageType][0], STR_CONV_MODE_LEFT_ALIGN, 5);
-    ConvertIntToDecimalStringN(gRyuStringVar1, VarGet(VAR_RYU_PROPERTY_DAMAGE_DAYS), STR_CONV_MODE_LEFT_ALIGN, 2);
-    VarSet(VAR_TEMP_F, gRyuPropertyDamageTable[damageType][0]);
+    StringCopy(gStringVar2, gRyuPropertyNames[id]);// buffer property name
+    StringCopy(gStringVar1, (gRyuDamageTypeNamesTable[damageType])); //buffer damage type string
+    ConvertIntToDecimalStringN(gStringVar3, (gRyuPropertyDamageTable[damageType][0]), STR_CONV_MODE_LEFT_ALIGN, 5); //buffer property damage cost
+    ConvertIntToDecimalStringN(gRyuStringVar1, VarGet(VAR_RYU_PROPERTY_DAMAGE_DAYS), STR_CONV_MODE_LEFT_ALIGN, 2); //buffer property days required to fix
 }
 
 void RyuRE_TakeMoney(void)
@@ -460,6 +482,23 @@ void RyuRE_TakeMoney(void)
 
     RemoveMoney(&gSaveBlock1Ptr->money, (gRyuPropertyData[id][0]));
     AddProperty(id);
+}
+
+void RyuRE_TakeRepairMoney(void)
+{
+    u8 id = VarGet(VAR_TEMP_D);
+    RemoveMoney(&gSaveBlock1Ptr->money, (gRyuPropertyDamageTable[VarGet(VAR_RYU_PROPERTY_DAMAGE_TYPE)][0]));
+}
+
+void RyuLoadRepairCost(void)
+{
+    VarSet(VAR_TEMP_9, (gRyuPropertyDamageTable[VarGet(VAR_RYU_PROPERTY_DAMAGE_TYPE)][0]));
+}
+
+void RyuLoadPropertyCost(void)
+{
+    u8 id = VarGet(VAR_TEMP_D);
+    VarSet(VAR_TEMP_9, gRyuPropertyData[id][0]);
 }
 
 void BufferPropertyRent(void)
@@ -474,8 +513,8 @@ void doSpecialHouseWarp(void)//Used to dynamically warp to the current house.
     u8 mapGroup = gRyuPropertyData[id][2];
     u8 mapNum = gRyuPropertyData[id][3];
     u8 warpId = gRyuPropertyData[id][4];
-    u16 x = 0;
-    u16 y = 0;
+    u16 x = gRyuPropertyData[id][5];
+    u16 y = gRyuPropertyData[id][6];
     SetWarpDestination(mapGroup, mapNum, warpId, x, y);
     WarpIntoMap();
     SetMainCallback2(CB2_LoadMap);

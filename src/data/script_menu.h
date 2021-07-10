@@ -1310,6 +1310,7 @@ static const struct MenuAction MultiChoiceList_RealEstatePropertyOptions[]=
     {gText_RyuREMoveIn},
     {gText_RyuRELeaseProperty},
     {gText_RyuRECheckDetails},
+    {gText_RyuRESellProperty},
     {gText_Exit},
 };
 

@@ -106,7 +106,7 @@
 #define VAR_SLATEPORT_CITY_STATE             0x4058
 #define VAR_RYU_SPIRITOMB_FAINTS             0x4059 // Tracks up to 107 KO's for spiritomb diversion
 #define VAR_RUSTBORO_CITY_STATE              0x405A
-#define VAR_FORTREE_CITY_STATE               0x405B // Unused Var
+#define VAR_RYU_NUM_OWNED_PROPERTIES         0x405B // how many properties the player owns.
 #define VAR_RYU_LAST_ACH                     0x405C // stores the most recently given achievement if the player didn't have it previously.
 #define VAR_MOSSDEEP_CITY_STATE              0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE            0x405E
@@ -421,6 +421,9 @@
 #define QUEST_ID_NURSE 5
 
 //Real Estate defines that need to be visible to scripts
+
+#define NUM_PROPERTIES 12
+
 #define PROPERTY_DEWFORD     0
 #define PROPERTY_FALLARBOR   1
 #define PROPERTY_LILYCOVE    2

@@ -41,6 +41,7 @@
 #include "constants/region_map_sections.h"
 #include "constants/species.h"
 #include "factions.h"
+#include "RyuRealEstate.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
@@ -56,6 +57,8 @@ extern const u8 Ryu_MeloettaWatchingMsg[];
 extern const u8 RyuScript_CheckGivenAchievement[];
 extern const u8 RyuScript_GoToLimbo[];
 extern const u8 RyuScript_CompleteTravelDailyQuestType[];
+extern const u8 RyuScript_NotifyPropertyDamage[];
+extern const u8 RyuScript_NotifyRent[];
 
 void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -252,6 +255,22 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
                     }
                 }
         }
+
+    if (FlagGet(FLAG_RYU_NOTIFY_RENT) == TRUE)
+    {
+        ConvertIntToDecimalStringN(gStringVar1, GetGameStat(GAME_STAT_RENT_COLLECTED), STR_CONV_MODE_LEFT_ALIGN, 6);
+        FlagClear(FLAG_RYU_NOTIFY_RENT);
+        ScriptContext1_SetupScript(RyuScript_NotifyRent);
+    }
+
+    if (FlagGet(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE) == TRUE)
+    {
+        mgba_printf(LOGINFO, "Property Damaged.");
+        RyuBufferPropertyDamageData();
+        FlagClear(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE);
+        ScriptContext1_SetupScript(RyuScript_NotifyPropertyDamage);
+    }
+    
 
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)
         return TRUE;
