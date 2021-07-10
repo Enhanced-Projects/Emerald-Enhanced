@@ -2,6 +2,7 @@ mapscripts OldaleTown_Home_MapScripts {}
 
 script OldaleHouse_ExitHome {
     lockall
+    clearflag(FLAG_RYU_ENTERING_RENTED_HOME)
     warpsilent(MAP_OLDALE_TOWN, 255, 21, 8)
     waitstate
 }
