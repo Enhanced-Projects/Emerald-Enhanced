@@ -512,15 +512,7 @@ struct SaveBlock2
               u16 hasAlchemyEffectActive:1; //a block of 16 utility-use flags in save block. This one is used to tell if player has an effect active or not.
               u16 bossMonInGCMS:1;
               u16 playerIsRealtor:1;
-              u16 propertyDamageType:4; //0 - 14
-              u16 propertyDamageDays:4; //0 - 14
-              /*
-              u16 unusedSaveblockFlag10:1
-              u16 unusedSaveblockFlag11:1
-              u16 unusedSaveblockFlag12:1
-              u16 unusedSaveblockFlag13:1
-              u16 unusedSaveblockFlag14:1
-              */
+              u16 unusedSB2Flags:12; //remainer of unused sb2 flags
              u8 propertyFlags[NUM_PROPERTY_BYTES];
              u8 propertyRentedFlags[NUM_PROPERTY_BYTES];
 }; // sizeof=0xF2C
