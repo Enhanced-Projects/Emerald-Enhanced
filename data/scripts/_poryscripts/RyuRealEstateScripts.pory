@@ -260,7 +260,7 @@ script RyuScript_NotifyPropertyDamage {
 }
 
 script RyuScript_NotifyRent {
-    msgbox("You have collected rent in the\namount of {STR_VAR_1} from\lyour tenants.")
+    msgbox("You have collected rent in the\namount of ¥{STR_VAR_1} from\lyour tenants.")
     closemessage
     release
     end
