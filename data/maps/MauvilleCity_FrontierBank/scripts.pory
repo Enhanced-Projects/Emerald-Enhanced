@@ -103,6 +103,24 @@ script SCFB_MakeAccount {
 }
 
 script SCFB_Manager{
+    if (flag(FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS) == TRUE){
+        checkmoney(1000000)
+        if (var(VAR_RESULT) == TRUE) {
+            msgbox("Oh, my.\nYou have considerable wealth.\pYou should consider getting into\nthe real estate business.\pWe own many properties throughout\nHoenn.\pI'll put you in our realtor registry\nso that you can manage properties.\pJust remember that the Frontier Bank\nalways gets a cut.")
+            callnative(SetPlayerRealtorStatus)
+            msgbox("You may now buy, sell, rent, or use\nproperties as you like.\pI look forward to a profitable\nrelationship.")
+            clearflag(FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS)
+            setflag(FLAG_RYU_COMPLETED_NOBLES_FINAL_QUEST)
+            release
+            end
+        }
+        else {
+            msgbox("You've done a lot to assist our\njunior board members.\pHowever, despite their\nrecommendation,\lI cannot allow you participate in\pour business unless you have enough\npersonal wealth to buy in.\pIt's not a charity.\nReturn to me when you have become\la millionaire,\land we'll talk.")
+            closemessage
+            release
+            end
+        }
+    }
     msgbox("Hello, there!\pI'm the manager of this here\nfine establishment.\pWe offer the best interest rates\naround!\pMake an account today!")
     closemessage
     release

@@ -24,7 +24,14 @@ script(global) RyuNoblesDailyQuest  {
     checkfactionstanding(FACTION_NOBLES, 175)
 
     if ((var(VAR_RESULT) == TRUE) && (flag(FLAG_RYU_COMPLETED_NOBLES_FINAL_QUEST) == FALSE)) {
+        goto(RyuNoblesFactionFinalQuest)
         msgbox("The Board is pleased with your\nperformance. One day, they may\linclude you in their businesses.")
+        release
+        end
+    }
+
+    if (flag(FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS) == TRUE) {
+        msgbox("You're still working for the\nchairperson.\pI might have some tasks for you\nwhen you have concluded your business\lwith him.")
         release
         end
     }
@@ -181,6 +188,13 @@ script RyuNoblesSpecialRewardScript {
     addmoney(15000)
     setflag(FLAG_RYU_COMPLETED_NOBLES_SPECIAL_QUEST)
     clearflag(NOBLES_SPECIAL_MISSION_IN_PROGRESS)
+    release
+    end
+}
+
+script RyuNoblesFactionFinalQuest {
+    msgbox("The Board chairperson is looking\nto speak to you directly.\pYou should go find him at any\nbranch of Frontier Bank.")
+    setflag(FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS)
     release
     end
 }
