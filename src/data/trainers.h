@@ -8800,20 +8800,20 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Lydia3},
     },
 
-    [TRAINER_EMPTY_199] =
+    [TRAINER_BAD_TENANT] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
-        .trainerFaction = FACTION_POKEFANS,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_POKEMON_BREEDER_F,
-        .trainerName = _("Lydia"),
+        .trainerClass = TRAINER_CLASS_EXPERT,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
+        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .trainerName = _("James"),
         .items = {},
-        .battleStyle = BS_SHIFT,
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Lydia4),
-        .party = {.NoItemDefaultMoves = sParty_Lydia4},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT,
+        .partySize = ARRAY_COUNT(sParty_BadTenant),
+        .party = {.NoItemDefaultMoves = sParty_BadTenant},
     },
 
     [TRAINER_STEVEN_POSTGAME00] =

@@ -42,7 +42,7 @@ void RyuResetRealEstateData(void)
 {
     gSaveBlock2Ptr->playerIsRealtor = 0;
     VarSet(VAR_RYU_PROPERTY_DAMAGE_TYPE, NUM_DAMAGE_TYPES);
-    VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, 0); //0 - 13
+    VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, 0);
 }
 
 

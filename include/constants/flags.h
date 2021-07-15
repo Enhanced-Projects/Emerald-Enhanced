@@ -519,9 +519,9 @@
 #define FLAG_HIDE_MAGMA_ADMIN_OFFICE_BLAISE  0x1E6
 #define FLAG_HIDE_114_MAXIE                  0x1E7
 #define FLAG_RYU_MAGMA_INTENSE_SUN_ENABLED   0x1E8
-#define FLAG_UNUSED_5                        0x1E9 // EE-Unused
-#define FLAG_UNUSED_6                        0x1EA // EE-Unused
-#define FLAG_UNUSED_7                        0x1EB // EE-Unused
+#define FLAG_RYU_COMPLETED_NOBLES_SPECIAL_QUEST                        0x1E9 // EE-Unused
+#define FLAG_RYU_COMPLETED_NOBLES_FINAL_QUEST                        0x1EA // EE-Unused
+#define NOBLES_SPECIAL_MISSION_IN_PROGRESS                        0x1EB // EE-Unused
 #define FLAG_UNUSED_8                        0x1EC // EE-Unused
 #define FLAG_UNUSED_9                        0x1ED // EE-Unused
 #define FLAG_UNUSED_10                       0x1EE // EE-Unused

@@ -10,15 +10,20 @@ const HATCH_TYPE = 4
 script(global) RyuNoblesDailyQuest  {
     lock
     faceplayer
-     if (flag(FLAG_FINISHED_NOBLE_DAILY) == TRUE) { //quest done
+    checkfactionstanding(FACTION_NOBLES, 140)
+    if ((var(VAR_RESULT) == TRUE) && (flag(FLAG_RYU_COMPLETED_NOBLES_SPECIAL_QUEST) == FALSE)) {
+        goto(RyuNoblesFactionSpecialQuest)
+    }
+
+    if (flag(FLAG_FINISHED_NOBLE_DAILY) == TRUE) { //quest done
         msgbox("There are no outstanding contracts.")
         release
         end
     }
 
-    checkfactionstanding(FACTION_NOBLES, 200)
+    checkfactionstanding(FACTION_NOBLES, 175)
 
-    if (var(VAR_RESULT) == TRUE) {
+    if ((var(VAR_RESULT) == TRUE) && (flag(FLAG_RYU_COMPLETED_NOBLES_FINAL_QUEST) == FALSE)) {
         msgbox("The Board is pleased with your\nperformance. One day, they may\linclude you in their businesses.")
         release
         end
@@ -116,5 +121,75 @@ script CommonNobleRewardScript {
     changefactionstanding(FACTION_NOBLES, 25, FALSE)
     setvar(VAR_TEMP_B, 10000)
     goto(CommonDailyQuestEnd)
+}
+
+script RyuNoblesFactionSpecialQuest {
+    if (defeated(TRAINER_BAD_TENANT) == TRUE) {
+        goto(RyuNoblesSpecialRewardScript)
+    }
+    msgbox("The Board is having issues with\ngetting a certain tenant to vacate\la premises.\pCould you go and...\nassist with the eviction?\pThe house in question is in Lilycove.")
+    closemessage
+    msgbox("He's been causing all kinds of\ntrouble for the citizens on the beach\land swimming in the cove.\pWe've received multiple complaints.\pHe has to go.")
+    setflag(NOBLES_SPECIAL_MISSION_IN_PROGRESS)
+    release
+    end
+}
+
+script RyuNoblesSpecialFactionQuestTrigger { //This should go on a flor trigger in front of the door to the lilycove house.
+    if(flag(NOBLES_SPECIAL_MISSION_IN_PROGRESS) == FALSE) {
+        goto(ryu_end)
+    }
+    lock
+    faceplayer
+    playse(SE_PIN)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    msgbox("{COLOR LIGHT_GREEN}{SHADOW GREEN} (You hear someone inside shouting\n something about getting off their\l lawn.)")
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+    playse(SE_DOOR)
+    addobject(69)//whatever the special NPC is for this quest
+    msgbox("I already told you people.\nYou can't evict me, my rent is\ppaid and my maintenance is up to\ndate.\pYou can't just boot me out because\nyou don't like me.")
+    closemessage
+    msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}Actually....\pIt's right here in the lease.\pWe can evict anyone for any reason\nwe want.\pIf you were just a decent human\nbeing rather than shouting expletives\lat beach-goers...\pWe wouldn't be having this problem.")
+    closemessage
+    msgbox("Well, they're noisy.\pI like peace and quiet.\nThey should go swim somewhere else.")
+    closemessage
+    msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}That's not how that works.\pNot only do you not own the ocean\nor the beach, you don't even own\lthis house.\pYou have to go.\nI am here to facilitate that.\pGet a move on.")
+    closemessage
+    msgbox("I will NOT be forced out of this\nhouse by the likes of you.")
+    closemessage
+    cleartrainerflag(TRAINER_BAD_TENANT)
+    trainerbattle_single(TRAINER_BAD_TENANT, TenantBattleStartText, TenantLoseText, NoblesQuestAfterBattleScript)
+    release
+    end
+}
+
+script NoblesQuestAfterBattleScript {
+    msgbox("I see. I'll leave now.\nBut I'm taking this to court.")
+    closemessage
+    msgbox("{COLOR LIGHT_BLUE}{SHADOW BLUE}That's fine.\nWe're within our rights.\lHave a nice day!")
+    closemessage
+    release
+    end
+}
+
+script RyuNoblesSpecialRewardScript {
+    msgbox("I see you were able to get the\nproblematic man to vacate the\lpremeses.\pIt seems like you have a knack for\nreal estate, but it's not for me\lto decide.\pHere's your pay for the job.\nExcellent work, Statesman.")
+    addmoney(15000)
+    setflag(FLAG_RYU_COMPLETED_NOBLES_SPECIAL_QUEST)
+    clearflag(NOBLES_SPECIAL_MISSION_IN_PROGRESS)
+    release
+    end
+}
+
+text TenantBattleStartText {
+    "{COLOR LIGHT_BLUE}{SHADOW BLUE}We'll see about that."
+}
+
+text TenantLoseText {
+    "So they went and hired a real\nthug, after all."
 }
 
