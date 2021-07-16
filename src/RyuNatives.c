@@ -1980,7 +1980,7 @@ int RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the game
     if (VarGet(VAR_RYU_QUEST_MAGMA) == 230)//player is doing the oldale heist event
         return 70;
     
-    if (VarGet(VAR_RYU_QUEST_DEVON_CORPORATE) > 29 && VarGet(VAR_RYU_QUEST_DEVON_CORPORATE) < 61)//player is interrogating devon employees
+    if (VarGet(VAR_RYU_QUEST_DEVON_CORPORATE) > 29 && VarGet(VAR_RYU_QUEST_DEVON_CORPORATE) < 60)//player is interrogating devon employees
         return 80;
     
     if (VarGet(VAR_RYU_QUEST_MAGMA) == 555)//player is fighting groudon
