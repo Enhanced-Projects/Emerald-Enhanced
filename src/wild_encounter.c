@@ -149,34 +149,39 @@ static void FeebasSeedRng(u16 seed)
     sFeebasRngValue = seed;
 }
 
+/**
+ * The constants for ENCOUNTER_CHANCE_SLOT_X are sorted
+ * and checked from lowest to highest,
+ * so when rand < SLOT_1 is reached,
+ * rand is guaranteed to be greater or equal to SLOT_0.
+ */
 u8 ChooseWildMonIndex_Land(void)
 {
     u8 rand = Random() % ENCOUNTER_CHANCE_LAND_MONS_TOTAL;
 
     if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_0)
         return 0;
-    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_1)
+    if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_1)
         return 1;
-    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_2)
+    if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_2)
         return 2;
-    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_3)
+    if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_3)
         return 3;
-    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_4)
+    if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_4)
         return 4;
-    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_5)
+    if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_5)
         return 5;
-    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_6)
+    if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_6)
         return 6;
-    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_7)
+    if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_7)
         return 7;
-    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_8)
+    if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_8)
         return 8;
-    else if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_9)
+    if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_9)
         return 9;
-    else if (rand == ENCOUNTER_CHANCE_LAND_MONS_SLOT_9)
+    if (rand == ENCOUNTER_CHANCE_LAND_MONS_SLOT_9)
         return 10;
-    else
-        return 11;
+    return 11;
 }
 
 u8 ChooseWildMonIndex_WaterRock(void)
@@ -185,14 +190,13 @@ u8 ChooseWildMonIndex_WaterRock(void)
 
     if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_0)
         return 0;
-    else if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_1)
+    if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_1)
         return 1;
-    else if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_2)
+    if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_2)
         return 2;
-    else if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_3)
+    if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_3)
         return 3;
-    else
-        return 4;
+    return 4;
 }
 
 static u8 ChooseWildMonIndex_Fishing(u8 rod)
@@ -210,31 +214,32 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
     {
     case OLD_ROD:
         if (rand < ENCOUNTER_CHANCE_FISHING_MONS_OLD_ROD_SLOT_0)
-            wildMonIndex = 0;
+            return 0;
         else
-            wildMonIndex = 1;
+            return 1;
         break;
     case GOOD_ROD:
         if (rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_2)
-            wildMonIndex = 2;
+            return 2;
         if (rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_3)
-            wildMonIndex = 3;
+            return 3;
         if (rand < ENCOUNTER_CHANCE_FISHING_MONS_GOOD_ROD_SLOT_4)
-            wildMonIndex = 4;
+            return 4;
         break;
     case SUPER_ROD:
         if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_5)
-            wildMonIndex = 5;
+            return 5;
         if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6)
-            wildMonIndex = 6;
+            return 6;
         if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_7)
-            wildMonIndex = 7;
+            return 7;
         if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8)
-            wildMonIndex = 8;
+            return 8;
         if (rand == ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8)
-            wildMonIndex = 9;
+            return 9;
         break;
     }
+    // Should be unreachable
     return wildMonIndex;
 }
 
