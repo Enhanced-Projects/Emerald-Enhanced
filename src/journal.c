@@ -50,8 +50,11 @@ static const u16 sJournalIconPalette[] = INCBIN_U16("graphics/journal/journal_ic
 enum // much window, such complexity 
 {
     WIN_JOURNAL_STATS,
-    WIN_JOURNAL_QUEST_STAGE,
-    WIN_JOURNAL_IMPORTANT_VALUES,
+    //WIN_JOURNAL_QUEST_STAGE,
+    //WIN_JOURNAL_IMPORTANT_VALUES,
+    WIN_JOURNAL_TRAINER_NAME,
+    WIN_JOURNAL_TRAINER_ID,
+    WIN_JOURNAL_TRAINER_MONEY,
     COUNT_JOURNAL_WINDOWS
 };
 
@@ -71,6 +74,7 @@ static const struct WindowTemplate sJournalWindowTemplate[] =
         .paletteNum = 15,
         .baseBlock = 1,
     },
+    /*
     [WIN_JOURNAL_QUEST_STAGE] =
     {
         .bg = 0,
@@ -91,6 +95,37 @@ static const struct WindowTemplate sJournalWindowTemplate[] =
         .paletteNum = 15,
         .baseBlock = 421,
     },
+    */
+   [WIN_JOURNAL_TRAINER_NAME] =
+   {
+        .bg = 0,
+        .tilemapLeft = 7,
+        .tilemapTop = 14,
+        .width = 6,
+        .height = 2,
+        .paletteNum = 15,
+        .baseBlock = 309,
+   },
+   [WIN_JOURNAL_TRAINER_ID] =
+   {
+        .bg = 0,
+        .tilemapLeft = 14,
+        .tilemapTop = 14,
+        .width = 4,
+        .height = 2,
+        .paletteNum = 15,
+        .baseBlock = 321,
+   },
+   [WIN_JOURNAL_TRAINER_MONEY] =
+   {
+        .bg = 0,
+        .tilemapLeft = 18,
+        .tilemapTop = 14,
+        .width = 11,
+        .height = 2,
+        .paletteNum = 15,
+        .baseBlock = 329,
+   },
     DUMMY_WIN_TEMPLATE
 };
 
@@ -334,7 +369,7 @@ void CB2_OpenJournal(void)
         EnableInterrupts(1);
         SetVBlankCallback(VBlankCB_Journal);
         SetMainCallback2(CB2_Journal);
-        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x80);
+        //m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x80);
         break;
     }
 }
@@ -386,118 +421,120 @@ const static u8 sText_TrainerNameId[] = _("Trainer Name   {PLAYER}      Badges E
 struct JournalStatData
 {
     const u8 * statName;
-    u32 (*statValueFunc)(void);
-    u8 numberCount;
-    u8 hideOnN1; // N1 = -1 = 0xFFFFFFFF
+    u8 * (*statValueStrFunc)(u8 * const buffer);
+    u8 numberCount; // UNUSED
+    u8 hideOnN1; // N1 = -1 = 0xFFFFFFFF // UNUSED
 };
 
-u32 GetPlantedBerries(void)
+u8 * GetPlantedBerries(u8 * const buffer)
 {
-    return GetGameStat(GAME_STAT_PLANTED_BERRIES);
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_PLANTED_BERRIES), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u32 GetTotalBattles(void)
+u8 * GetTotalBattles(u8 * const buffer)
 {
-    return GetGameStat(GAME_STAT_TOTAL_BATTLES);
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_TOTAL_BATTLES), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u32 GetPokeCaptures(void)
+u8 * GetPokeCaptures(u8 * const buffer)
 {
-    return GetGameStat(GAME_STAT_POKEMON_CAPTURES);
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_POKEMON_CAPTURES), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u32 GetEggsHatched(void)
+u8 * GetEggsHatched(u8 * const buffer)
 {
-    return GetGameStat(GAME_STAT_HATCHED_EGGS);
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_HATCHED_EGGS), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u32 GetEvolvedPokemonStat(void)
+u8 * GetEvolvedPokemonStat(u8 * const buffer)
 {
-    return GetGameStat(GAME_STAT_EVOLVED_POKEMON);
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_EVOLVED_POKEMON), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u32 GetBattlesWon(void)
+u8 * GetBattlesWon(u8 * const buffer)
 {
-    return GetGameStat(GAME_STAT_BATTLES_WON);
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_BATTLES_WON), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u32 GetRibbonsReceived(void)
+u8 * GetRibbonsReceived(u8 * const buffer)
 {
-    return GetGameStat(GAME_STAT_RECEIVED_RIBBONS);
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_RECEIVED_RIBBONS), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u32 GetPlayerContestsWon(void)
+u8 * GetPlayerContestsWon(u8 * const buffer)
 {
-    return GetGameStat(GAME_STAT_WON_CONTEST);
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_WON_CONTEST), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u32 GetPlayerContestsEntered(void)
+u8 * GetPlayerContestsEntered(u8 * const buffer)
 {
-    return GetGameStat(GAME_STAT_ENTERED_CONTEST);
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_ENTERED_CONTEST), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
 extern int RyuGetPartnerCount();
-u32 GetPartnerCount(void)
+u8 * GetPartnerCount(u8 * const buffer)
 {
-    return RyuGetPartnerCount();
+    return ConvertIntToDecimalStringN(buffer, RyuGetPartnerCount(), STR_CONV_MODE_LEFT_ALIGN, 1);
 }
 
-u32 GetMiningSkill(void)
+u8 * GetMiningSkill(u8 * const buffer)
 {
-    return VarGet(VAR_RYU_PLAYER_MINING_SKILL);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_MINING_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
 }
 
-u32 GetMiningExp(void)
+u8 * GetMiningExp(u8 * const buffer)
 {
-    return VarGet(VAR_RYU_PLAYER_MINING_EXP);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_MINING_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u32 GetBotanySkill(void)
+u8 * GetBotanySkill(u8 * const buffer)
 {
-    return VarGet(VAR_RYU_PLAYER_BOTANY_SKILL);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_BOTANY_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
 }
 
-u32 GetBotanyExp(void)
+u8 * GetBotanyExp(u8 * const buffer)
 {
-    return VarGet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u32 GetAlchemySkill(void)
+u8 * GetAlchemySkill(u8 * const buffer)
 {
-    return VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
 }
 
-u32 GetAlchemyExp(void)
+u8 * GetAlchemyExp(u8 * const buffer)
 {
-    return VarGet(VAR_RYU_ALCHEMY_EXP);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_ALCHEMY_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u32 GetTotalKOs(void)
+u8 * GetTotalKOs(u8 * const buffer)
 {
-    return VarGet(VAR_RYU_TOTAL_FAINTS);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_TOTAL_FAINTS), STR_CONV_MODE_LEFT_ALIGN, 5);
 }
 
-u32 GetTitleDefenseWins(void)
+u8 * GetTitleDefenseWins(u8 * const buffer)
 {
-    return VarGet(VAR_RYU_TITLE_DEFENSE_WINS);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_TITLE_DEFENSE_WINS), STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
-u32 GetDriveExp(void)
+u8 * GetDriveExp(u8 * const buffer)
 {
-    return CheckBagHasItem(ITEM_EXP_DRIVE, 1) ? VarGet(VAR_RYU_EXP_BATTERY) : 0xFFFFFFFF; 
+    if(!CheckBagHasItem(ITEM_EXP_DRIVE, 1))
+        return NULL;
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_EXP_BATTERY), STR_CONV_MODE_LEFT_ALIGN, 5);
 }
 
-u32 GetAchivements(void)
+u8 * GetAchivements(u8 * const buffer)
 {
-    return CountTakenAchievements();
+    return ConvertIntToDecimalStringN(buffer, CountTakenAchievements(), STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
-u32 GetBankBalance(void)
+u8 * GetBankBalance(u8 * const buffer)
 {
-    return GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE), STR_CONV_MODE_LEFT_ALIGN, 10);
 }
 
-/*u64 GetNetWorth(void)
+u8 * GetNetWorth(u8 * const buffer)
 {
     u32 balance = (GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE));
     u32 money = (GetMoney(&gSaveBlock1Ptr->money));
@@ -510,13 +547,12 @@ u32 GetBankBalance(void)
         if (CheckOwnedProperty(id))
             totalPropertyValue += gRyuPropertyData[id][0];
     }
+    return ConvertUIntToDecimalStringN(buffer, balance + money + totalPropertyValue, STR_CONV_MODE_LEFT_ALIGN, 10);
+}
 
-    return (balance + money + totalPropertyValue);
-}*/
-
-u32 GetPropertiesOwned(void)
+u8 * GetPropertiesOwned(u8 * const buffer)
 {
-    return VarGet(VAR_RYU_NUM_OWNED_PROPERTIES);
+    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_NUM_OWNED_PROPERTIES), STR_CONV_MODE_LEFT_ALIGN, 2);
 }
 
 static const struct JournalStatData sJournalStatsGeneral[] =
@@ -568,12 +604,12 @@ static const struct JournalStatData sJournalStatsGeneral[] =
         NULL,
         0, 0,
     },
-        /*{ @PIDGEY this needs to handle a u64. Moved it down here for organization reasons.
+    {
         sText_NetWorth,
         GetNetWorth,
         10,
         FALSE,
-    },*/
+    },
 };
 
 static const struct JournalStatData sJournalStatsContest[] =
@@ -777,7 +813,7 @@ static const struct JournalStatData * sJournalStats[] =
 u32 CountStatArrayLength(const struct JournalStatData * journalData)
 {
     u32 i;
-    for(i = 0; journalData++->statValueFunc; i++);
+    for(i = 0; journalData++->statValueStrFunc; i++);
     return i;
 }
 extern int CountBadges(void);
@@ -823,16 +859,17 @@ static void DrawJournalStatText(void)
     journalStat = sJournalStats[stats[j]];
     for(i = 0; i < 8; i++, journalStat++)
     {
-        u32 val;
-        if(journalStat->statValueFunc == NULL)
+        //u32 val;
+        if(journalStat->statValueStrFunc == NULL)
             journalStat = sJournalStats[stats[++j]];
         
-        val = journalStat->statValueFunc();
         //if(journalStat->hideOnN1 && val == 0xFFFFFFFF)
         //    continue; // failsafe which will get triggered too much
-        
+        if(!journalStat->statValueStrFunc(gStringVar4))
+            continue;
+
         AddTextPrinterParameterized3(WIN_JOURNAL_STATS, 0, left, top, sColors[0], 0, journalStat->statName); // TODO: speed 0xFF
-        ConvertIntToDecimalStringN(gStringVar4, val, STR_CONV_MODE_LEFT_ALIGN, journalStat->numberCount);
+        //ConvertIntToDecimalStringN(gStringVar4, val, STR_CONV_MODE_LEFT_ALIGN, journalStat->numberCount);
         AddTextPrinterParameterized3(WIN_JOURNAL_STATS, 0, (left+LEFT_MIDDLE-2)-GetStringWidth(0, gStringVar4, 0), top, sColors[0], 0, gStringVar4);
         top += TOP_SPACING;
         if(i == 3)
@@ -841,21 +878,27 @@ static void DrawJournalStatText(void)
             left = LEFT_MIDDLE+1;
         }
     }
+    AddTextPrinterParameterized3(WIN_JOURNAL_TRAINER_NAME, 0, 0, 4, sColors[0], 0, gSaveBlock2Ptr->playerName);
+    ConvertIntToDecimalStringN(gStringVar4, (u16)GetTrainerId(gSaveBlock2Ptr->playerTrainerId), STR_CONV_MODE_LEADING_ZEROS, 5);
+    AddTextPrinterParameterized3(WIN_JOURNAL_TRAINER_ID, 0, 4, 4, sColors[0], 0, gStringVar4);
+    textBuffer = StringCopy(gStringVar4, gText_TrainerCardMoney);
+    *textBuffer++ = CHAR_SPACE;
+    *textBuffer++ = CHAR_SPACE;
+    ConvertIntToDecimalStringN(textBuffer, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_RIGHT_ALIGN, 10);
+    AddTextPrinterParameterized3(WIN_JOURNAL_TRAINER_MONEY, 0, 4, 4, sColors[0], 0, gStringVar4);
     
     /*
     AddTextPrinterParameterized3(WIN_JOURNAL_IMPORTANT_VALUES, 0, 2, 1, color, 0, sText_Money); // TODO: speed 0xFF
-    ConvertIntToDecimalStringN(gStringVar4, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_RIGHT_ALIGN, 8);
     AddTextPrinterParameterized3(WIN_JOURNAL_IMPORTANT_VALUES, 0, 90-GetStringWidth(0, gStringVar4, 0), 1, color, 0, gStringVar4); // TODO: speed 0xFF
     ConvertIntToDecimalStringN(gStringVar4, CountBadges(), STR_CONV_MODE_LEFT_ALIGN, 1);
     AddTextPrinterParameterized3(WIN_JOURNAL_IMPORTANT_VALUES, 0, 142, 1, color, 0, gStringVar4); 
     AddTextPrinterParameterized3(WIN_JOURNAL_IMPORTANT_VALUES, 0, 224-GetStringWidth(0, sText_BadgesEarned, 0)-2, 1, color, 0, sText_BadgesEarned);
     */
 
-    ConvertIntToDecimalStringN(gStringVar1, CountBadges(), STR_CONV_MODE_LEADING_ZEROS, 1);
-    ConvertIntToDecimalStringN(gStringVar2, (u16)GetTrainerId(gSaveBlock2Ptr->playerTrainerId), STR_CONV_MODE_LEADING_ZEROS, 5);
-    ConvertIntToDecimalStringN(gStringVar3, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_LEFT_ALIGN, 10);
-    StringExpandPlaceholders(gStringVar4, sText_TrainerNameId);
-    AddTextPrinterParameterized3(WIN_JOURNAL_QUEST_STAGE, 1, 0, 1, sColors[0], 0, gStringVar4);
+    //ConvertIntToDecimalStringN(gStringVar1, CountBadges(), STR_CONV_MODE_LEADING_ZEROS, 1);
+    //ConvertIntToDecimalStringN(gStringVar3, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_LEFT_ALIGN, 10);
+    //StringExpandPlaceholders(gStringVar4, sText_TrainerNameId);
+    //AddTextPrinterParameterized3(WIN, 1, 0, 1, sColors[0], 0, gStringVar4);
     
 }
 
@@ -1010,13 +1053,18 @@ static void Task_ExitJournalTaskIntoNewUI(u8 taskId)
         Free(GetBgTilemapBuffer(i));
         UnsetBgTilemapBuffer(i);
     }
-    RemoveWindow(WIN_JOURNAL_QUEST_STAGE);
+    RemoveWindow(WIN_JOURNAL_TRAINER_ID);
+    RemoveWindow(WIN_JOURNAL_TRAINER_MONEY);
+    RemoveWindow(WIN_JOURNAL_TRAINER_NAME);
     RemoveWindow(WIN_JOURNAL_STATS);
     DmaFill32(3, 0, VRAM, VRAM_SIZE);
     DestroyTask(taskId);
     //gTasks[taskId].func = sJounralButtons[gTasks[taskId].tCurrentButton].callback2; //! SHOULD IDEALLY JUST GO TO PROPER CALLBACKS FOR THE UIs BUT I'M LAZY AND I HAD TO WORK ON EXISTING CODE WHICH GOT EDITED ANYWAYS
     if(gTasks[taskId].tCurrentButton == JOURNAL_OPTION_EXIT) 
+    {
         SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
+        //m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100);
+    }
     else
         SetMainCallback2(sJounralButtons[gTasks[taskId].tCurrentButton].callback2);
 }
@@ -1057,458 +1105,3 @@ static void ButtonSpriteCB(struct Sprite *sprite)
 {
     StartSpriteAnimIfDifferent(sprite, !!sprite->data[0]); // TODO: might need to support different frames
 }
-
-// Quest stuff
-
-//#if 0 // TODO: was removed to get journal screen out early, will finish later
-
-#include "data/quest_stages.h"
-
-// these are all u16 because apparently it breaks otherwise... wonder if it's alignment bullshit
-
-static const u16 sQuestTrackerBGMap[] = INCBIN_U16("graphics/quest_tracker/quest_tracker_map.bin");
-static const u16 sQuestTrackerBGTiles[] = INCBIN_U16("graphics/quest_tracker/quest_tracker.4bpp");
-static const u16 sQuestTrackerBGPalette[] = INCBIN_U16("graphics/quest_tracker/quest_tracker.gbapal");
-
-static void Task_InitQuestTracker(u8 taskId);
-static void Task_QuestMain(u8 taskId);
-
-enum
-{
-    WIN_QUEST_QUESTS,
-    WIN_QUEST_QUEST_DATA,
-    WIN_QUEST_QUEST_STAGE_DESC,
-    WIN_QUEST_COUNT
-};
-
-static const struct WindowTemplate sQuestWindowTemplate[] =
-{
-    [WIN_QUEST_QUESTS] =
-    {
-        .bg = 0,
-        .tilemapLeft = 1,
-        .tilemapTop = 3,
-        .width = 22,
-        .height = 9,
-        .paletteNum = 15,
-        .baseBlock = 1,
-    },
-    [WIN_QUEST_QUEST_DATA] =
-    {
-        .bg = 0,
-        .tilemapLeft = 24,
-        .tilemapTop = 3,
-        .width = 5,
-        .height = 9,
-        .paletteNum = 15,
-        .baseBlock = 199,
-    },
-    [WIN_QUEST_QUEST_STAGE_DESC] =
-    {
-        .bg = 0,
-        .tilemapLeft = 1,
-        .tilemapTop = 13,
-        .width = 28,
-        .height = 6,
-        .paletteNum = 15,
-        .baseBlock = 244,
-    },
-    DUMMY_WIN_TEMPLATE
-};
-
-static u8 sTextDevon1[] = _("Devon Corporate");
-static u8 sTextDevon2[] = _("Devon Scientist");
-static u8 sTextMagma[] = _("Magma");
-static u8 sTextLana[] = _("Lana");
-static u8 sTextLanette[] = _("Lanette");
-static u8 sTextAqua[] = _("Aqua");
-static u8 sTextNurse[] = _("Nurse");
-
-struct QuestData {
-    const struct QuestStageDesc * stageDescs;
-    u8 * name;
-    u16 var;
-};
-
-
-extern const u16 sEasyChatTriangleCursorPalette[];
-extern const u32 sEasyChatTriangleCursorGfx[];
-
-static const struct SpriteSheet sAPTierSelectTile = {
-    .data = sEasyChatTriangleCursorGfx,
-    .size = TILE_SIZE_4BPP,
-    .tag = 0x7000
-};
-static const struct SpritePalette sAPTierSelectPal = {
-    .data = sEasyChatTriangleCursorPalette,
-    .tag = 0x7000
-};
-
-const static struct OamData sAPTierSelectOam =
-{
-    .y = 0,
-    .affineMode = ST_OAM_AFFINE_OFF,
-    .objMode = ST_OAM_OBJ_NORMAL,
-    .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(8x8),
-    .x = 0,
-    .size = SPRITE_SIZE(8x8),
-    .tileNum = 0,
-    .priority = 0,
-    .paletteNum = 0,
-};
-
-const static struct SpriteTemplate sAPTierSelectSpriteTemplate =
-{
-    .tileTag = 0x7000,
-    .paletteTag = 0x7000,
-    .oam = &sAPTierSelectOam,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
-};
-
-static struct QuestData sQuests[] = {
-    {gDevonCorporateQuestStages, sTextDevon1, VAR_RYU_QUEST_DEVON_CORPORATE},
-    {gDevonScientistQuestStages, sTextDevon2, VAR_RYU_QUEST_DEVON_SCIENTIST},
-    {gMagmaQuestStages, sTextMagma, VAR_RYU_QUEST_MAGMA},
-    {gLanaQuestStages, sTextLana, VAR_RYU_QUEST_LANA},
-    {gAquaQuestStages, sTextAqua, VAR_RYU_QUEST_AQUA},
-    {gNurseQuestStages, sTextNurse, VAR_RYU_QUEST_NURSE}
-};
-
-void CB2_OpenQuestTracker(void)
-{
-    switch (gMain.state)
-    {
-    case 0:
-    default:
-        SetVBlankCallback(NULL);
-        DmaFill32(3, 0, (u8 *)VRAM, VRAM_SIZE);
-        DmaClear32(3, OAM, OAM_SIZE);
-        DmaClear16(3, PLTT, PLTT_SIZE);
-        gMain.state = 1;
-        break;
-    case 1:
-        ScanlineEffect_Stop();
-        ResetTasks();
-        ResetSpriteData();
-        ResetPaletteFade();
-        FreeAllSpritePalettes();
-        gReservedSpritePaletteCount = 2;
-        gMain.state++;
-        break;
-    case 2:
-        CreateTask(Task_InitQuestTracker, 0);
-        gMain.state++;
-        break;
-    case 3:
-        EnableInterrupts(1);
-        SetVBlankCallback(VBlankCB_Journal);
-        SetMainCallback2(CB2_Journal);
-        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x80);
-        break;
-    }
-}
-
-static bool8 IntializeQuest(u8 taskId);
-static void Task_CloseQuestTracker(u8 taskId);
-static void UpdateQuestSelections(u32 offset);
-static const struct QuestStageDesc * FindQuestDescFromStage(u32 quest);
-#define tQuestSpriteId data[7]
-static void Task_InitQuestTracker(u8 taskId)
-{
-    if(IntializeQuest(taskId))
-        gTasks[taskId].func = Task_QuestMain;
-}
-
-static bool8 IntializeQuest(u8 taskId)
-{
-    u32 i;
-    switch (gMain.state)
-    {
-    case 0:
-    default:
-        if (gPaletteFade.active)
-            return 0;
-        SetVBlankCallback(NULL);
-        ResetBgsAndClearDma3BusyFlags(0);
-        InitBgsFromTemplates(0, sJournalBGTemplates, ARRAY_COUNT(sJournalBGTemplates));
-        SetBgTilemapBuffer(3, AllocZeroed(BG_SCREEN_SIZE));
-        SetBgTilemapBuffer(2, AllocZeroed(BG_SCREEN_SIZE));
-        SetBgTilemapBuffer(1, AllocZeroed(BG_SCREEN_SIZE));
-        SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
-        DmaCopy16(3, sQuestTrackerBGTiles, BG_CHAR_ADDR(2), sizeof(sQuestTrackerBGTiles));
-        DmaCopy16(3, sQuestTrackerBGMap, GetBgTilemapBuffer(1), sizeof(sQuestTrackerBGMap));
-        LoadPalette(sQuestTrackerBGPalette, 0, 0x20);
-        InitWindows(sQuestWindowTemplate);
-        InitTextBoxGfxAndPrinters();
-        LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
-        DeactivateAllTextPrinters();
-        PutWindowTilemap(0);
-        CopyWindowToVram(0, 3);
-        gMain.state = 1;
-        break;
-    case 1:
-        ResetSpriteData();
-        FreeAllSpritePalettes();
-        gReservedSpritePaletteCount = 2;
-        gMain.state++;
-        break;
-    case 2:
-    {
-         LoadSpritePalette(&sAPTierSelectPal);
-        LoadSpriteSheet(&sAPTierSelectTile);
-        // repurposed the cursorspriteid field for later use since we delete the cursor sprite anyways
-        gTasks[taskId].tQuestSpriteId = CreateSprite(&sAPTierSelectSpriteTemplate, 12, 32, 0);
-        
-        gMain.state++;
-        break;
-    }
-    case 3:
-        CopyBgTilemapBufferToVram(0);
-        CopyBgTilemapBufferToVram(1);
-        CopyBgTilemapBufferToVram(2);
-        CopyBgTilemapBufferToVram(3);
-        gMain.state++;
-        break;
-    case 4:
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0x10, 0, RGB_BLACK);
-        SetVBlankCallback(VBlankCB_Journal);
-        gMain.state++;
-        break;
-    case 5:
-        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
-        SetGpuReg(REG_OFFSET_BG3HOFS, 0);
-        SetGpuReg(REG_OFFSET_BG3VOFS, 0);
-        SetGpuReg(REG_OFFSET_BLDCNT, 0);
-        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
-        SetGpuReg(REG_OFFSET_BLDY, 0);
-        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_OBJ_ON);
-        ShowBg(0);
-        ShowBg(1);
-        ShowBg(2);
-        ShowBg(3);
-        // TODO: Will get rid of STD frames later i would imagine
-        for(i = 0; i < WIN_QUEST_COUNT; i++)
-        {
-            PutWindowTilemap(i);
-            //DrawStdWindowFrame(i, TRUE);
-        }
-        gMain.state++;
-        break;
-    case 6: // Print Quests + Stages
-        UpdateQuestSelections(0);
-        gMain.state++;
-        break;
-    case 7:
-        if (!gPaletteFade.active)
-        {
-            /*const u8 testText[] = _("Aqua");
-            const u8 testText2[] = _("005");
-            AddTextPrinterParameterized3(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 3, color, 0, gAquaQuestStages[0].description);
-            AddTextPrinterParameterized3(WIN_QUEST_QUESTS, 1, 2, 3, color, 0, testText);
-            AddTextPrinterParameterized3(WIN_QUEST_QUEST_DATA, 1, 20 - GetStringWidth(1, testText2, 0)/2, 3, color, 0, testText2);
-            */gMain.state = 0;
-            return TRUE;
-        }
-        break;
-    }
-    return FALSE;
-}
-
-#define QUEST_ACTION_NONE 0
-#define QUEST_ACTION_BACK (1 << 0)
-#define QUEST_ACTION_UP (1 << 1)
-#define QUEST_ACTION_DOWN (1 << 2)
-#define QUEST_ACTION_CHOOSE (1 << 3)
-#define QUEST_ACTION_DBG_DECSTGVAR (1 << 4)
-#define QUEST_ACTION_DBG_INCSTGVAR (1 << 5)
-
-// This is a pretty bad excuse for a function 
-// since i wanted to do something more useful but failed 
-static u32 InputToQuestAction(void) 
-{
-    u32 finalAction = QUEST_ACTION_NONE;
-    switch(gMain.newKeys & (DPAD_UP | DPAD_DOWN | R_BUTTON | L_BUTTON))
-    {
-        case DPAD_UP:
-            return QUEST_ACTION_UP;
-        case DPAD_DOWN:
-            return QUEST_ACTION_DOWN;
-        case R_BUTTON:
-            if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
-                return QUEST_ACTION_DBG_INCSTGVAR;
-            else
-                return QUEST_ACTION_NONE;
-        case L_BUTTON:
-            if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
-                return QUEST_ACTION_DBG_DECSTGVAR;
-            else
-                return QUEST_ACTION_NONE;
-    }
-    if(gMain.newKeys & A_BUTTON) 
-        finalAction = QUEST_ACTION_CHOOSE;
-    else if(gMain.newKeys & B_BUTTON)
-        finalAction = QUEST_ACTION_BACK;
-    return finalAction;
-}
-
-static void UpdateQuestSelections(u32 offset)
-{
-    u32 i;
-    offset = offset + 6 > NELEMS(sQuests) ? NELEMS(sQuests) - 6 : offset;
-    FillWindowPixelBuffer(WIN_QUEST_QUESTS, 0);
-    FillWindowPixelBuffer(WIN_QUEST_QUEST_DATA, 0);
-    for(i = 0; i < 6; i++)
-    {
-        u8 * numStr = gStringVar1;
-        ConvertIntToDecimalStringN(numStr, VarGet(sQuests[offset + i].var), STR_CONV_MODE_LEFT_ALIGN, 4);
-        AddTextPrinterParameterized3(WIN_QUEST_QUESTS, 0, 10, i * 12, sColors[0], 0xFF, sQuests[offset + i].name);
-        AddTextPrinterParameterized3(WIN_QUEST_QUEST_DATA, 0, 20 - GetStringWidth(0, numStr, 0)/2, i * 12, sColors[0], 0xFF, numStr);
-    }
-    CopyWindowToVram(WIN_QUEST_QUESTS, 3);
-    CopyWindowToVram(WIN_QUEST_QUEST_DATA, 3);
-}
-
-#define tOptionOffset data[0]
-#define tSelectPos data[1]
-#define tDbgQuestStgOffset data[2]
-
-#define SELECTED_QUEST(taskId) (gTasks[taskId].tOptionOffset + gTasks[taskId].tSelectPos)
-
-static void Task_QuestMain(u8 taskId)
-{
-    u32 action = InputToQuestAction();
-    switch(action)
-    {
-        default:
-        case QUEST_ACTION_NONE:
-            return;
-        case QUEST_ACTION_DOWN:
-            if(++gTasks[taskId].tSelectPos > 5)
-            {
-                gTasks[taskId].tSelectPos = 5;
-                if((++gTasks[taskId].tOptionOffset + 6) > NELEMS(sQuests))
-                {
-                    gTasks[taskId].tSelectPos = 0;
-                    gTasks[taskId].tOptionOffset = 0;
-                }
-            }
-            UpdateQuestSelections(gTasks[taskId].tOptionOffset);
-            gTasks[taskId].tDbgQuestStgOffset = 0;
-            FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
-            CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
-            PlaySE(SE_SELECT);
-            break;
-        case QUEST_ACTION_UP:
-            if(--gTasks[taskId].tSelectPos < 0)
-            {
-                gTasks[taskId].tSelectPos = 0;
-                if(--gTasks[taskId].tOptionOffset < 0)
-                {
-                    gTasks[taskId].tSelectPos = 5;
-                    gTasks[taskId].tOptionOffset = NELEMS(sQuests) - 6;
-                }
-            }
-            UpdateQuestSelections(gTasks[taskId].tOptionOffset);
-            gTasks[taskId].tDbgQuestStgOffset = 0;
-            FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
-            CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
-            PlaySE(SE_SELECT);
-            break;
-        case QUEST_ACTION_CHOOSE: 
-        {
-            const struct QuestStageDesc * questDesc = FindQuestDescFromStage(SELECTED_QUEST(taskId));
-            FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
-            AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, questDesc->description);
-            CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
-            gTasks[taskId].func = Task_QuestMain;
-            //AddTextPrinterParameterized3(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 3, sColors[0], 0, questDesc->description);
-            break;
-        }
-        case QUEST_ACTION_DBG_DECSTGVAR:
-        {
-            u32 stage = SELECTED_QUEST(taskId);
-            const struct QuestStageDesc * questDesc;
-            gTasks[taskId].tDbgQuestStgOffset--;
-            VarSet(sQuests[stage].var, VarGet(sQuests[stage].var) + gTasks[taskId].tDbgQuestStgOffset); // hacky
-            questDesc = FindQuestDescFromStage(stage);
-            UpdateQuestSelections(gTasks[taskId].tOptionOffset); // also very hacky
-            VarSet(sQuests[stage].var, VarGet(sQuests[stage].var) - gTasks[taskId].tDbgQuestStgOffset); // hacky
-            FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
-            AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, questDesc->description);
-            CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
-            break;
-        }
-        case QUEST_ACTION_DBG_INCSTGVAR:
-        {
-            u32 stage = SELECTED_QUEST(taskId);
-            const struct QuestStageDesc * questDesc;
-            gTasks[taskId].tDbgQuestStgOffset++;
-            VarSet(sQuests[stage].var, VarGet(sQuests[stage].var) + gTasks[taskId].tDbgQuestStgOffset); // hacky
-            questDesc = FindQuestDescFromStage(stage);
-            UpdateQuestSelections(gTasks[taskId].tOptionOffset); // also very hacky
-            VarSet(sQuests[stage].var, VarGet(sQuests[stage].var) - gTasks[taskId].tDbgQuestStgOffset); // hacky
-            FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
-            AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, questDesc->description);
-            CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
-            break;
-        }
-        case QUEST_ACTION_BACK:
-            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
-            gTasks[taskId].func = Task_CloseQuestTracker;
-            break;
-    }
-    gSprites[gTasks[taskId].tQuestSpriteId].pos1.y = 32 + 12 * gTasks[taskId].tSelectPos;
-}
-
-static const struct QuestStageDesc * FindQuestDescFromStage(u32 quest)
-{
-    const struct QuestStageDesc * stageDescs = sQuests[quest].stageDescs;
-    const struct QuestStageDesc * foundDesc = NULL;
-    u32 currentStage = VarGet(sQuests[quest].var);
-    u32 temp = 0;
-    while (stageDescs->questStage != 0xFFFF)
-    {
-        if(stageDescs->questStage >= temp && stageDescs->questStage <= currentStage)
-        {
-            foundDesc = stageDescs;
-            temp = stageDescs->questStage;
-            if(stageDescs->questStage == currentStage)
-                break;
-        }
-        stageDescs++;
-    }
-    return foundDesc;
-}
-
-static void Task_CloseQuestTracker(u8 taskId)
-{
-    u32 i;
-    if (!gPaletteFade.active)
-    {
-        FreeAllWindowBuffers();
-        for(i = 0; i < 4; i++)
-        {
-            Free(GetBgTilemapBuffer(i));
-            UnsetBgTilemapBuffer(i);
-        }
-        for(i = 0; i < WIN_QUEST_COUNT; i++)
-        {
-            RemoveWindow(i);
-        }
-        DestroyTask(taskId);
-        SetMainCallback2(CB2_OpenJournal);
-        //SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
-        //m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100);
-    }
-}
-
-//#endif
