@@ -259,7 +259,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][MAX_FRONTIER_PARTY
                 .nature = NATURE_ADAMANT,
                 .evs = {252, 252, 0, 0, 0, 6},
                 .ability = 1,
-                .moves = {MOVE_BULLET_PUNCH, MOVE_BUG_BITE, MOVE_ROOST, MOVE_SWORDS_DANCE},
+                .moves = {MOVE_BULLET_PUNCH, MOVE_LUNGE, MOVE_ROOST, MOVE_SWORDS_DANCE},
             },
             { // It seems counterintuitive, but Volcarona is great on rain teams
                 .species = SPECIES_VOLCARONA,
@@ -317,7 +317,7 @@ static const struct FrontierBrainMon sFrontierBrainsMons[][2][MAX_FRONTIER_PARTY
                 .nature = NATURE_ADAMANT,
                 .evs = {252, 252, 0, 0, 0, 6},
                 .ability = 1,
-                .moves = {MOVE_BULLET_PUNCH, MOVE_BUG_BITE, MOVE_ROOST, MOVE_SWORDS_DANCE},
+                .moves = {MOVE_BULLET_PUNCH, MOVE_LUNGE, MOVE_ROOST, MOVE_SWORDS_DANCE},
             },
             {
                 .species = SPECIES_EXCADRILL,
