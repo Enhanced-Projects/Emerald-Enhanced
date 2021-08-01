@@ -8323,7 +8323,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .trainerFaction = FACTION_POKEFANS,
+        .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_BRENDAN,
         .trainerName = _("Brendan"),
@@ -8339,7 +8339,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .trainerFaction = FACTION_POKEFANS,
+        .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_BRENDAN,
         .trainerName = _("Brendan"),
@@ -8404,7 +8404,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .trainerFaction = FACTION_POKEFANS,
+        .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_BRENDAN,
         .trainerName = _("Brendan"),
@@ -8468,7 +8468,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .trainerFaction = FACTION_POKEFANS,
+        .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_DAWN,
         .trainerName = _("Dawn"),
@@ -8500,7 +8500,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .trainerFaction = FACTION_POKEFANS,
+        .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_DAWN,
         .trainerName = _("Dawn"),
@@ -8532,7 +8532,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .trainerFaction = FACTION_POKEFANS,
+        .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_DAWN,
         .trainerName = _("Dawn"),
@@ -8800,20 +8800,20 @@ const struct Trainer gTrainers[] = {
         .party = {.NoItemDefaultMoves = sParty_Lydia3},
     },
 
-    [TRAINER_EMPTY_199] =
+    [TRAINER_BAD_TENANT] =
     {
         .partyFlags = 0,
-        .trainerClass = TRAINER_CLASS_PKMN_BREEDER,
-        .trainerFaction = FACTION_POKEFANS,
-        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_POKEMON_BREEDER_F,
-        .trainerName = _("Lydia"),
+        .trainerClass = TRAINER_CLASS_EXPERT,
+        .trainerFaction = FACTION_OTHERS,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
+        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .trainerName = _("James"),
         .items = {},
-        .battleStyle = BS_SHIFT,
+        .battleStyle = BS_SET,
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Lydia4),
-        .party = {.NoItemDefaultMoves = sParty_Lydia4},
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT,
+        .partySize = ARRAY_COUNT(sParty_BadTenant),
+        .party = {.NoItemDefaultMoves = sParty_BadTenant},
     },
 
     [TRAINER_STEVEN_POSTGAME00] =
@@ -9492,7 +9492,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .trainerFaction = FACTION_POKEFANS,
+        .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_BRENDAN,
         .trainerName = _("Brendan"),
@@ -10580,7 +10580,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .trainerFaction = FACTION_POKEFANS,
+        .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_BRENDAN,
         .trainerName = _("Brendan"),
@@ -10628,7 +10628,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .trainerFaction = FACTION_POKEFANS,
+        .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_DAWN,
         .trainerName = _("Dawn"),
@@ -12292,7 +12292,7 @@ const struct Trainer gTrainers[] = {
     {
         .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
-        .trainerFaction = FACTION_POKEFANS,
+        .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_DAWN,
         .trainerName = _("Dawn"),

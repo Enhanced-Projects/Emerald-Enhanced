@@ -432,6 +432,7 @@ const u8 gText_SomeSpaces[] = _("  ");
 void PrintNumberToScreen(s32 num)
 {
     struct WindowTemplate template;
+    int Time = (RyuGetTimeOfDay());
 
     //prepare window
     SetWindowTemplateFields(&template, 0, 1, 1, 13, 6, 15, 8);
@@ -459,31 +460,27 @@ void PrintNumberToScreen(s32 num)
     StringAppend(gStringVar3, gText_ThisIsAPokemon);
     StringAppend(gStringVar3, gText_SomeSpaces);
     //print 'day', 'dusk', 'night' or 'dawn' in reference to evolution
-    if (gLocalTime.hours >= 17 || gLocalTime.hours < 6)
+
+    if (Time == RTC_TIME_NIGHT)
     {
-        if (gLocalTime.hours == 17)
-        {
-            StringAppend(gStringVar3, gText_ColorLightBlueShadowDarkGrey);
-            StringAppend(gStringVar3, gText_Dusk);   
-        }
-        else
-        {
+
             StringAppend(gStringVar3, gText_ColorLightBlueShadowBlue);
             StringAppend(gStringVar3, gText_Night);
-        }
+    }
+    else if (Time == RTC_TIME_EVENING)
+    {
+            StringAppend(gStringVar3, gText_ColorLightBlueShadowDarkGrey);
+            StringAppend(gStringVar3, gText_Dusk);   
+    }
+    else if (Time == RTC_TIME_MORNING)
+    {
+            StringAppend(gStringVar3, gText_ColorLightRedShadowDarkGrey);
+            StringAppend(gStringVar3, gText_RyuDawn);
     }
     else
     {   
-        if (gLocalTime.hours == 6)
-        {
-            StringAppend(gStringVar3, gText_ColorLightRedShadowDarkGrey);
-            StringAppend(gStringVar3, gText_RyuDawn);
-        }        
-        else
-        {
             StringAppend(gStringVar3, gText_ColorLightRedShadowRed);
             StringAppend(gStringVar3, gText_RyuDay);
-        }
     }
     
     //print version number

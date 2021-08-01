@@ -17,7 +17,7 @@ void DoDailyRealEstateTasks(void)
         u32 balance = GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE);
         if (!(balance <= 999)) //no reason to give interest if balance is under $1000
         {
-            u32 interest = balance / 100; // 1% interest rate
+            u32 interest = balance / 200; // 0.5% interest rate
             if (interest + balance < balance) // happens if balance is close to the integer limit and the interest causes it to overflow and wrap to 0
                 return;
             SetGameStat(GAME_STAT_INTEREST_RECEIVED, interest); // saves the last earned interest amount, potentially could be more than 65k, so use 32bit number.
@@ -42,7 +42,7 @@ void RyuResetRealEstateData(void)
 {
     gSaveBlock2Ptr->playerIsRealtor = 0;
     VarSet(VAR_RYU_PROPERTY_DAMAGE_TYPE, NUM_DAMAGE_TYPES);
-    VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, 0); //0 - 13
+    VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, 0);
 }
 
 

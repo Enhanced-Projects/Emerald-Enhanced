@@ -927,7 +927,7 @@ static void DexNavDrawPotentialStars(u8 potential, u8* dst)
     }
 }
 
-/*static void DexNavDrawSight(u8 sightLevel, u8* dst)
+/*static void DexNavDrawSight(u8 sightLevel, u8* dst) //i dont know what this is or does.
 {
     //LoadSpritePalette(&sHeldItemSpritePalette);
     *dst = CreateSprite(&sSightTemplate, 176 + (16 / 2), GetSearchWindowY() + 18, 0);
@@ -1292,7 +1292,8 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonMoveSlot(mon, moves[i], i);
 
-    CalculateMonStats(mon);
+    CalculateMonStats(mon); //All of these things appear to me like they're working in order, really don't get why the mon shown in dexnav dsisplay is not the same mon you get in battle.
+    //the held item, abilities, potential, and bonus IV/lvls are all randomly acting up.
 }
 
 extern int CountBadges();
@@ -1300,10 +1301,10 @@ extern int CountBadges();
 //if it was a hidden encounter, updates the environment it is to be found from the wildheader encounterRate
 static u8 DexNavTryGenerateMonLevel(u16 species, u8 environment)
 {
-    u8 levelBase = RyuChooseLevel(CountBadges(), FALSE, SCALING_TYPE_WILD, CalculatePlayerPartyStrength());
-    u8 levelBonus = gSaveBlock1Ptr->dexNavChain / 5;
+    u8 levelBase = RyuChooseLevel(CountBadges(), FALSE, SCALING_TYPE_WILD, CalculatePlayerPartyStrength()); //this is probably why there are mons showing as available in places that don't have encounter data.
+    u8 levelBonus = gSaveBlock1Ptr->dexNavChain / 5; //dexnav appears to use wild mon levels to determin availability... for whatever reason.
 
-    //if (levelBase == MON_LEVEL_NONEXISTENT)
+    //if (levelBase == MON_LEVEL_NONEXISTENT) Unnecessary since RyuChooseLevel will ALWAYS return a level.
         //return MON_LEVEL_NONEXISTENT;   //species not found in the area
     
     if (Random() % 100 < 4)
@@ -1569,7 +1570,7 @@ static u8 DexNavGeneratePotential(u8 searchLevel)
     return 0;   // No potential
 }
 
-/*static u8 GetEncounterLevelFromMapData(u16 species, u8 environment)
+/*static u8 GetEncounterLevelFromMapData(u16 species, u8 environment) //unecessary because autoscale
 {
     u16 headerId = GetCurrentMapWildMonHeaderId();
     const struct WildPokemonInfo *landMonsInfo = gWildMonHeaders[headerId].landMonsInfo;

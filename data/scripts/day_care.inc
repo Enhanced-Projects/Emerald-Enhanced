@@ -307,7 +307,7 @@ EventScript_EggHatch:: @ 8291FC0
 RyuTryGiveEggAchievement::
 	ach query ACH_MASTER_BREEDER
 	compare VAR_RESULT, TRUE
-	call_if_eq RyuGiveEggAchievement
+	call_if_ne RyuGiveEggAchievement
 	return
 
 RyuGiveEggAchievement::

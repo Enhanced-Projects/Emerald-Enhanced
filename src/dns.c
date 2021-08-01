@@ -35,11 +35,11 @@ enum
 };
 
 /* End hours for each of the timelapses */
-#define MIDNIGHT_END_HOUR   7      //00 - 07
-#define DAWN_END_HOUR       9       //07 - 08
-#define DAY_END_HOUR        17      //08 - 19
-#define SUNSET_END_HOUR     18      //19 - 20
-#define NIGHTFALL_END_HOUR  20      //20 - 21
+#define MIDNIGHT_END_HOUR   6      //00 - 07
+#define DAWN_END_HOUR       10       //07 - 08
+#define DAY_END_HOUR        18      //08 - 19
+#define SUNSET_END_HOUR     20      //19 - 20
+#define NIGHTFALL_END_HOUR  21      //20 - 21
 #define NIGHT_END_HOUR      0       //21 - 00
 
 /* Start and end hour of the lightning system.

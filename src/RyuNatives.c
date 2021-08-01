@@ -1526,16 +1526,16 @@ int RyuGetTimeOfDay(void)
     RtcCalcLocalTime();
     hour = gLocalTime.hours;
 
-    if (hour >= 5 && hour < 10)
+    if (hour >= 6 && hour < 10) //6am to 9:59am
         return RTC_TIME_MORNING;
 
-    if (hour >= 10 && hour < 18)
+    if (hour >= 10 && hour < 18) // 10am to 5:59pm
         return RTC_TIME_DAY;
 
-    if (hour == 18)
+    if (hour >= 18 && hour <= 20) // 6pm to 8:59pm
         return RTC_TIME_EVENING;
 
-    // The rest: either before 5:00 or after 18:59
+    //between 9pm and 5:59am
     return RTC_TIME_NIGHT;
 }
 
@@ -1980,7 +1980,7 @@ int RyuCheckIfWaystoneShouldBeDisabled(void) //checks various things in the game
     if (VarGet(VAR_RYU_QUEST_MAGMA) == 230)//player is doing the oldale heist event
         return 70;
     
-    if (VarGet(VAR_RYU_QUEST_DEVON_CORPORATE) > 29 && VarGet(VAR_RYU_QUEST_DEVON_CORPORATE) < 61)//player is interrogating devon employees
+    if (VarGet(VAR_RYU_QUEST_DEVON_CORPORATE) > 29 && VarGet(VAR_RYU_QUEST_DEVON_CORPORATE) < 60)//player is interrogating devon employees
         return 80;
     
     if (VarGet(VAR_RYU_QUEST_MAGMA) == 555)//player is fighting groudon

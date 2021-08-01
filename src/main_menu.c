@@ -2232,7 +2232,7 @@ static const u8 sText_Devon[] = _("Devon");
 static const u8 sText_Aqua[] = _("Aqua");
 static const u8 sText_Magma[] = _("Magma");
 static const u8 sText_None[] = _("None");
-static const u8 sText_Faction[] = _("Faction: ");
+static const u8 sText_Faction[] = _("Team: ");
 
 static void MainMenu_FormatSavegameFaction(void)
 {

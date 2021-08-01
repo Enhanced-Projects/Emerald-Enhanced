@@ -265,7 +265,6 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (FlagGet(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE) == TRUE)
     {
-        mgba_printf(LOGINFO, "Property Damaged.");
         RyuBufferPropertyDamageData();
         FlagClear(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE);
         ScriptContext1_SetupScript(RyuScript_NotifyPropertyDamage);

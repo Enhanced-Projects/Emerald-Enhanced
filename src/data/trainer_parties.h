@@ -7703,37 +7703,22 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Lydia3[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Lydia4[] = {
+static const struct TrainerMonNoItemDefaultMoves sParty_BadTenant[] = {
     {
-    .iv = 30,
-    .lvl = 28,
+    .iv = 31,
+    .lvl = 25,
     .species = SPECIES_PELIPPER,
     },
     {
-    .iv = 30,
+    .iv = 31,
     .lvl = 28,
     .species = SPECIES_BRELOOM,
     },
     {
-    .iv = 30,
+    .iv = 31,
     .lvl = 28,
     .species = SPECIES_GOGOAT,
     },
-    {
-    .iv = 30,
-    .lvl = 28,
-    .species = SPECIES_ROSELIA,
-    },
-    {
-    .iv = 30,
-    .lvl = 28,
-    .species = SPECIES_DELCATTY,
-    },
-    {
-    .iv = 30,
-    .lvl = 28,
-    .species = SPECIES_VANILLISH,
-    }
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Lydia5[] = {
