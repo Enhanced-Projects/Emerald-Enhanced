@@ -1,6 +1,10 @@
 #ifndef GUARD_CONSTANTS_MAP_GROUPS_H
 #define GUARD_CONSTANTS_MAP_GROUPS_H
 
+//
+// DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/map_groups.json
+//
+
 // Map Group 0
 #define MAP_LITTLEROOT_TOWN       (0 | (0 << 8))
 #define MAP_OLDALE_TOWN           (1 | (0 << 8))
@@ -122,9 +126,10 @@
 #define MAP_DEWFORD_TOWN_HOUSE1            (1 | (5 << 8))
 #define MAP_DEWFORD_TOWN_HOUSE2            (2 | (5 << 8))
 #define MAP_DEWFORD_TOWN_HOUSE3            (3 | (5 << 8))
-#define MAP_DEWFORD_TOWN_GYM               (4 | (5 << 8))
-#define MAP_DEWFORD_TOWN_POKEMON_CENTER_1F (5 | (5 << 8))
-#define MAP_DEWFORD_TOWN_POKEMON_CENTER_2F (6 | (5 << 8))
+#define MAP_DEWFORD_TOWN_HOME              (4 | (5 << 8))
+#define MAP_DEWFORD_TOWN_GYM               (5 | (5 << 8))
+#define MAP_DEWFORD_TOWN_POKEMON_CENTER_1F (6 | (5 << 8))
+#define MAP_DEWFORD_TOWN_POKEMON_CENTER_2F (7 | (5 << 8))
 
 // Map Group 6
 #define MAP_SLATEPORT_CITY_STERNS_SHIPYARD_1F      (0 | (6 << 8))

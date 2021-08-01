@@ -5420,6 +5420,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/OldaleTown_Home/border.bin",
       "blockdata_filepath": "data/layouts/OldaleTown_Home/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_TOWN_HOME",
+      "name": "DewfordTown_Home_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/DewfordTown_Home/border.bin",
+      "blockdata_filepath": "data/layouts/DewfordTown_Home/map.bin"
     }
   ]
 }
