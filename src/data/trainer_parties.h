@@ -7670,36 +7670,54 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Lydia2[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Lydia3[] = {
+static const struct TrainerMonItemCustomMoves sParty_ChallengerDanny[] = {
     {
-    .iv = 20,
-    .lvl = 25,
-    .species = SPECIES_PELIPPER,
+    .iv = 255,
+    .lvl = 109,
+    .species = SPECIES_NIDOQUEEN,
+    .heldItem = ITEM_BLACK_SLUDGE,
+    .ability = 2,
+    .moves = {MOVE_EARTH_POWER, MOVE_TOXIC_SPIKES, MOVE_ICE_BEAM, MOVE_ROAR},
     },
     {
-    .iv = 20,
-    .lvl = 25,
-    .species = SPECIES_BRELOOM,
+    .iv = 255,
+    .lvl = 105,
+    .species = SPECIES_CRUSTLE,
+    .heldItem = ITEM_WHITE_HERB,
+    .ability = 0,
+    .moves = {MOVE_ROCK_SLIDE, MOVE_X_SCISSOR, MOVE_EARTHQUAKE, MOVE_SHELL_SMASH},
     },
     {
-    .iv = 20,
-    .lvl = 25,
-    .species = SPECIES_GOGOAT,
+    .iv = 255,
+    .lvl = 110,
+    .species = SPECIES_URSARING,
+    .heldItem = ITEM_SITRUS_BERRY,
+    .ability = 0,
+    .moves = {MOVE_QUICK_ATTACK, MOVE_DRAIN_PUNCH, MOVE_CRUNCH, MOVE_BELLY_DRUM},
     },
     {
-    .iv = 20,
-    .lvl = 25,
-    .species = SPECIES_ROSELIA,
+    .iv = 255,
+    .lvl = 102,
+    .species = SPECIES_GLISCOR,
+    .heldItem = ITEM_FLYING_GEM,
+    .ability = 2,
+    .moves = {MOVE_ACROBATICS, MOVE_EARTHQUAKE, MOVE_SWORDS_DANCE, MOVE_ROOST},
     },
     {
-    .iv = 20,
-    .lvl = 25,
-    .species = SPECIES_DELCATTY,
+    .iv = 255,
+    .lvl = 105,
+    .species = SPECIES_MACHAMP,
+    .heldItem = ITEM_TOXIC_ORB,
+    .ability = 0,
+    .moves = {MOVE_CLOSE_COMBAT, MOVE_KNOCK_OFF, MOVE_FACADE, MOVE_BULLET_PUNCH},
     },
     {
-    .iv = 20,
-    .lvl = 25,
-    .species = SPECIES_VANILLISH,
+    .iv = 255,
+    .lvl = 106,
+    .species = SPECIES_SCIZOR,
+    .heldItem = ITEM_SCIZORITE,
+    .ability = 0,
+    .moves = {MOVE_BULLET_PUNCH, MOVE_KNOCK_OFF, MOVE_SWORDS_DANCE, MOVE_ROOST},
     }
 };
 

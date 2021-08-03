@@ -550,7 +550,7 @@
 #define TRAINER_HALLE                       546
 #define TRAINER_GARRISON                    547
 #define TRAINER_EMPTY_197                     548
-#define TRAINER_EMPTY_198                     549
+#define TRAINER_CHALLENGER_DANNY                     549
 #define TRAINER_BAD_TENANT                     550
 #define TRAINER_STEVEN_POSTGAME00                     551
 #define TRAINER_JACKSON_1                   552
