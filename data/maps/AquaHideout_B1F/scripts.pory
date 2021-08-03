@@ -122,6 +122,15 @@ AquaHideout_B1F_EventScript_Grunt7:: @ 8233AEC
 	msgbox AquaHideout_B1F_Text_Grunt7PostBattle, MSGBOX_AUTOCLOSE
 	end
 
+AQH_SkipBlock::
+	lockall
+	msgbox AQH_OffLimits
+	releaseall
+	end
+
+AQH_OffLimits:
+	.string "This area is off limits.\nYou may not pass.$"
+
 AquaHideout_B1F_Text_Grunt2Intro: @ 8233B03
 	.string "If you want to know the secret about\n"
 	.string "our Hideout, you have me to beat!$"

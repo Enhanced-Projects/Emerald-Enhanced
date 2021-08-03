@@ -162,6 +162,7 @@ RT_AquaIntro::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	setvar VAR_RYU_QUEST_AQUA, 5 @player started aqua
 	setflag FLAG_RYU_PLAYER_HELPING_AQUA
+	setflag FLAG_RYU_AQUA_HIDEOUT_CLEAR_HALLWAY_FOR_NON_DEVON
 	changefactionstanding FACTION_STUDENTS, 10, TRUE
 	changefactionstanding FACTION_OUTCASTS, 20, FALSE
 	changefactionstanding FACTION_ATHLETES, 20, FALSE
@@ -212,6 +213,7 @@ RT_ADIntro:
 	
 RT_MagmaIntro::
 	setflag FLAG_RYU_PLAYER_HELPING_MAGMA
+	clearflag FLAG_RYU_AQUA_HIDEOUT_CLEAR_HALLWAY_FOR_NON_DEVON @@required to prevent a skip, should be unblocked for aqua and magma.
 	changefactionstanding FACTION_STUDENTS, 10, TRUE
 	changefactionstanding FACTION_NOBLES, 20, FALSE
 	changefactionstanding FACTION_NATURALISTS, 20, FALSE

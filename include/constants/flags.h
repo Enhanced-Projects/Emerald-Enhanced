@@ -145,7 +145,7 @@
 #define FLAG_DEFEATED_RIVAL_ROUTE_104        0x7D
 #define FLAG_HIDDEN_CRAGGY_COAST_HEART_SCALE 0x7E
 #define FLAG_MET_PRETTY_PETAL_SHOP_OWNER     0x7F
-#define FLAG_UNUSED_0x80                     0x80
+#define FLAG_RYU_AQUA_HIDEOUT_CLEAR_HALLWAY_FOR_NON_DEVON 0x80 //necessary for the devon line while player is in aqua hideout.
 #define FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN  0x81
 #define FLAG_DEFEATED_RIVAL_ROUTE103         0x82
 #define FLAG_RECEIVED_DOLL_LANETTE           0x83
