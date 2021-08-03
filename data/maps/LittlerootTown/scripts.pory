@@ -8,7 +8,6 @@ Ryu_HaremEventCheck::
 	map_script_2 VAR_RYU_PARTNER_COUNT, 5, Ryu_HaremEvent
 	.2byte 0
 
-	
 LRT_CheckMagmaWarp::
 	setvar VAR_TEMP_7, 0
 	compare VAR_RYU_QUEST_MAGMA, 570
@@ -278,7 +277,7 @@ LRT_FM2:
 
 @HAREM EVENT=======================================================================================
 Ryu_HaremEvent::
-	goto_if_set FLAG_RYU_HAREM_EVENT_COMPLETED, ryu_end
+	goto_if_set FLAG_RYU_HAREM_EVENT_COMPLETED, ryu_ClearHaremEvent
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, LRT_Cam1
 	waitmovement OBJ_EVENT_ID_CAMERA
@@ -320,6 +319,10 @@ Ryu_HaremEvent::
 	special RemoveCameraObject
 	release
 	end
+
+ryu_ClearHaremEvent::
+	setvar VAR_RYU_PARTNER_COUNT, 10@should tell the harem event to stop trying.
+	goto ryu_end
 	
 LRT_HAREM_END_RIVALMSG:
 	.string "{RIVAL}:{COLOR LIGHT_RED}{SHADOW RED} Don't forget to take one\n"
