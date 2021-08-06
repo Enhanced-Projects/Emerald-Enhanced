@@ -1311,6 +1311,8 @@ static void BuyMenuSubtractMoney(u8 taskId)
     IncrementGameStat(GAME_STAT_SHOPPED);
     RemoveMoney(&gSaveBlock1Ptr->money, gShopDataPtr->totalCost);
     PlaySE(SE_SHOP);
+
+    FillWindowPixelBuffer(0, 0x11);
     PrintMoneyAmountInMoneyBox(0, GetMoney(&gSaveBlock1Ptr->money), 0);
 
     if (gMartInfo.martType == MART_TYPE_NORMAL)

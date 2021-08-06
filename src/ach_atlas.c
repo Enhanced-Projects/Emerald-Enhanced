@@ -424,7 +424,7 @@ void CB2_OpenAtlas(void)
         EnableInterrupts(1);
         SetVBlankCallback(VBlankCB_Atlas);
         SetMainCallback2(CB2_Atlas);
-        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x80);
+        //m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x80);
         break;
     }
 }
@@ -815,7 +815,7 @@ void CB2_OpenAPMenu(void)
         EnableInterrupts(1);
         SetVBlankCallback(VBlankCB_Atlas);
         SetMainCallback2(CB2_Atlas);
-        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x80);
+        //m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x80);
         break;
     }
 }

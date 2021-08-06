@@ -87,8 +87,8 @@ void ClearSav1_SkipDex(void)
     //Copy dex information temporarily
     for (i = 0; i < DEX_FLAGS_NO; i++)
     {
-        oldDex[i] = gSaveblock1.dexSeen[i];
-        oldDex[i + DEX_FLAGS_NO] = gSaveblock1.dexCaught[i];
+        oldDex[i] = gSaveBlock1Ptr->dexSeen[i];
+        oldDex[i + DEX_FLAGS_NO] = gSaveBlock1Ptr->dexCaught[i];
     }
 
     //Zero out the entirety of SaveBlock1
@@ -97,8 +97,8 @@ void ClearSav1_SkipDex(void)
     //Re-enter all dex information
     for (i = 0; i < DEX_FLAGS_NO; i++)
     {
-        gSaveblock1.dexSeen[i] = oldDex[i];
-        gSaveblock1.dexCaught[i] = oldDex[i + DEX_FLAGS_NO];
+        gSaveBlock1Ptr->dexSeen[i] = oldDex[i];
+        gSaveBlock1Ptr->dexCaught[i] = oldDex[i + DEX_FLAGS_NO];
     }
     free(oldDex);
 }
