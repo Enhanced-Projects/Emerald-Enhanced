@@ -73,6 +73,7 @@ RCR_SoloChamp::
 	case 11, RCR_ChallengerGiovanniSolo
 	case 12, RCR_ChallengerSigmaSolo
 	case 13, RCR_ChallengerJuanSolo
+	case 19, RCR_ChallengerDannySolo
 	
 RCR_OverlordRyuBossFight::
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
@@ -133,7 +134,7 @@ RCR_ChooseOpponent::
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, RCR_CameraMove
 	waitmovement OBJ_EVENT_ID_CAMERA
-	random 8
+	random 9
 	switch VAR_RESULT
 	case 0, RCR_Opponent1
 	case 1, RCR_Opponent2
@@ -144,6 +145,7 @@ RCR_ChooseOpponent::
 	case 6, RCR_Opponent7
 	case 7, RCR_Opponent8
 	case 8, RCR_Opponent9
+	case 9, RCR_Opponent10
 	return
 	
 RCR_Opponent1::
@@ -180,6 +182,10 @@ RCR_Opponent8::
 
 RCR_Opponent9::
 	setvar VAR_TEMP_5, 13
+	return
+
+RCR_Opponent10::
+	setvar VAR_TEMP_5, 19
 	return
 
 RCR_Return::
@@ -286,6 +292,7 @@ RCR_SetUpBattle::
 	case 11, RCR_ChallengerGiovanni
 	case 12, RCR_ChallengerSigma
 	case 13, RCR_ChallengerJuan
+	case 19, RCR_ChallengerDanny
 
 RCR_ChooseValidMons::
 	msgbox EGC_NeedToChoose
@@ -410,6 +417,18 @@ RCR_ChallengerJuan::
 	compare VAR_RESULT, B_OUTCOME_LOST
 	goto_if_eq EGC_RYU_PLAYER_LOST
 	goto RCR_FinishChallenge
+
+RCR_ChallengerDanny::
+	msgbox RCR_Danny_Intro
+	closemessage
+	choose_mons
+	compare VAR_RESULT, FALSE
+	call_if_eq RCR_ChooseValidMons
+	multi_2_vs_1 TRAINER_CHALLENGER_DANNY, RCR_Danny_DefeatText, VAR_0x8008, VAR_0x8009
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq EGC_RYU_PLAYER_LOST
+	goto RCR_FinishChallenge
 	
 RCR_ChallengerStevenSolo::
 	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
@@ -482,6 +501,14 @@ RCR_ChallengerJuanSolo::
 	msgbox RCR_Juan_Intro
 	closemessage
 	trainerbattle_no_intro TRAINER_CHALLENGER_JUAN, RCR_Juan_DefeatText
+	goto RCR_FinishChallenge
+
+RCR_ChallengerDannySolo::
+	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
+	waitmovement OBJ_EVENT_ID_CAMERA
+	msgbox RCR_Danny_Intro
+	closemessage
+	trainerbattle_no_intro TRAINER_CHALLENGER_DANNY, RCR_Danny_DefeatText
 	goto RCR_FinishChallenge
 
 RCR_BOSSMODE::
@@ -771,7 +798,23 @@ RCR_Juan_Intro:
 RCR_Juan_DefeatText:
 	.string "Ahahaha, excellent!\n"
 	.string "You truly are a remarkable trainer!$"
-	
+
+RCR_Danny_Intro:
+	.string "Never thought Hoenn would be\n"
+	.string "such a marvelous spot to\p"
+	.string "vacation! The cascading\n"
+	.string "waterfalls on such a high cliff,\p"
+	.string "the flowers flowing in the wind...\p"
+	.string "And such riveting battles along\n"
+	.string "the way!\p"
+	.string "My name is Danny, a gym leader\n"
+	.string "from Orange Islands!\p"
+	.string "Let's have a great battle,\n"
+	.string "shall we?$"
+
+RCR_Danny_DefeatText:
+	.string "As expected of the Champion\nof Hoenn!\lWhat a great battle!$"
+
 @========================================Partner Texts
 RCR_Lana_Intromsg:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Lana: Hi, {PLAYER}! I came to help\n"

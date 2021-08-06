@@ -47,7 +47,7 @@ script(global) RyuProfessionalsDailyQuest  {
                 }
                 else {
                     buffermapname(0, VAR_RYU_DAILY_QUEST_TARGET)
-                    msgbox(format("Haven't you been to {STR_VAR_1} yet? I need to know what the traffic is gonna be like."))
+                    msgbox(format("Haven't you been to {STR_VAR_1} yet? I need to know what's going on there."))
                     release
                     end
                 }
@@ -75,7 +75,7 @@ script(global) RyuProfessionalsDailyQuest  {
     }
 
     setvar(VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION, FACTION_PROFESSIONALS)
-    random(3)//increase this by the number of quests you add.
+    random(4)//increase this by the number of quests you add.
     switch(var(VAR_RESULT)) { //Put new quests here.
         case 0:
             setvar(VAR_RYU_DAILY_QUEST_TYPE, FETCH_TYPE)
@@ -106,6 +106,12 @@ script(global) RyuProfessionalsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_TARGET, ITEM_SMOOTH_ROCK)
             setvar(VAR_RYU_DAILY_QUEST_DATA, 12)
             msgbox(format("I need some smooth sand to polish and sharpen my tools with, could you bring me one? Thanks."))
+        case 5:
+            setvar(VAR_RYU_DAILY_QUEST_TYPE, TRAVEL_TYPE)
+            setvar(VAR_RYU_DAILY_QUEST_TARGET, MAP_CRAGGY_COAST)
+            setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
+            msgbox(format("Hey there! We got word of some water-type Pokémon at Craggy Coast that would be useful transporting items north. Could you check out Craggy Coast and find which Pokémon can be found there?!"))
+
     }
     setflag(FLAG_DAILY_QUEST_ACTIVE)
     closemessage
