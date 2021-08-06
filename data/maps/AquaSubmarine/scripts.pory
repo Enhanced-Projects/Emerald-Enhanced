@@ -203,7 +203,7 @@ AS_Heheh:
 	.string "Heheh...$"
 	
 AS_ArchieThisIsMatt:
-	.string "Archie, this is Matt.\n"
+	.string "Matt, this is Archie.\n"
     .string "How're things up on the surface?\p"
     .string "It's bad...it's very bad!\n"
     .string "Kyogre will destroy everything!$"
