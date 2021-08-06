@@ -91,9 +91,6 @@ LRT_FollowerHeal:
 	.string "{COLOR LIGHT_RED}{SHADOW RED}Minnie: Do you want me to leave?$"
 	
 LRT_BirchLabSignNormal::
-	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_eq LRT_SealedChamber
 	msgbox BirchsLabSign MSGBOX_SIGN
 	release
 	end
