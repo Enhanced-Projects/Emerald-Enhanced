@@ -1,4 +1,6 @@
 const u8 sQuestStage0[] = _("Quest line has not yet been started");
+const u8 sMainQuestNotStartedStg[] = _("Rescue the devon employee in Petalburg Woods\nThen clear the Rustburo Gym and exit to see the\nAqua grunt run to Rusturf Tunnel. Follow him.\nYou will choose which team you join there.");
+
 
 //aqua
 const u8 sAquaQuestStage5Desc[] = _("Player chose Run For It in Rusturf.\nTake goods to the Aqueus Corporation office\nin Lilycove.");
@@ -167,7 +169,10 @@ struct QuestStageDesc
 #define QUEST_STAGE_0 {sQuestStage0, 0}
 #define QUEST_STAGE_END {NULL, 0xFFFF}
 const static struct QuestStageDesc gAquaQuestStages[] = {
-  QUEST_STAGE_0,
+  {
+    .description = sMainQuestNotStartedStg,
+    .questStage = 0,
+  },
   {
     .description = sAquaQuestStage5Desc,
     .questStage = 5,
@@ -324,7 +329,10 @@ const static struct QuestStageDesc gAquaQuestStages[] = {
 };
 
 const static struct QuestStageDesc gMagmaQuestStages[] = {
-  QUEST_STAGE_0,
+  {
+    .description = sMainQuestNotStartedStg,
+    .questStage = 0,
+  },
   {
     .description = sMagmaQuestStage100Desc,
     .questStage = 100,
@@ -485,7 +493,10 @@ const static struct QuestStageDesc gMagmaQuestStages[] = {
 };
 
 const static struct QuestStageDesc gDevonCorporateQuestStages[] = {
-  QUEST_STAGE_0,
+  {
+    .description = sMainQuestNotStartedStg,
+    .questStage = 0,
+  },
   {
     .description = sDevonQuestStage5Desc,
     .questStage = 5,
@@ -562,7 +573,10 @@ const static struct QuestStageDesc gDevonCorporateQuestStages[] = {
 };
 
 const static struct QuestStageDesc gDevonScientistQuestStages[] = {
-  QUEST_STAGE_0,
+  {
+    .description = sMainQuestNotStartedStg,
+    .questStage = 0,
+  },
   {
     .description = sDevonQuestStage1000Desc,
     .questStage = 100,
@@ -607,7 +621,6 @@ const static struct QuestStageDesc gDevonScientistQuestStages[] = {
 };
 
 const static struct QuestStageDesc gLanaQuestStages[] = {
-  //QUEST_STAGE_0,
   {
     .description = sLanaQuestStageZeroDesc,
     .questStage = 0,
@@ -720,7 +733,6 @@ const static struct QuestStageDesc gLanaQuestStages[] = {
 };
 
 const static struct QuestStageDesc gNurseQuestStages[] = {
-  //QUEST_STAGE_0,
   {
     .description = sNurseQuestStageZeroDesc,
     .questStage = 0,

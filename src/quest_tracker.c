@@ -91,7 +91,6 @@ static u8 sTextLana[] = _("Lana");
 static u8 sTextLanette[] = _("Lanette");
 static u8 sTextAqua[] = _("Aqua");
 static u8 sTextNurse[] = _("Nurse");
-static u8 sMainQuestNotStartedStg[] = _("Rescue the devon employee in Petalburg Woods\nThen clear the Rustburo Gym and exit to see the\nAqua grunt run to Rusturf Tunnel. Follow him.\nYou will choose which team you join there.");
 
 struct QuestData {
     const struct QuestStageDesc * stageDescs;
@@ -457,10 +456,7 @@ static void Task_QuestMain(u8 taskId)
         {
             const struct QuestStageDesc * questDesc = FindQuestDescFromStage(SELECTED_QUEST(taskId));
             FillWindowPixelBuffer(WIN_QUEST_QUEST_STAGE_DESC, 0);
-            if (((!FlagGet(FLAG_RYU_PLAYER_HELPING_DEVON)) && (!FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA)) && (!FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA))) && SELECTED_QUEST(taskId) < 4)
-                AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, sMainQuestNotStartedStg);
-            else
-                AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, questDesc->description);
+            AddTextPrinterParameterized4(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 0, 0, -2, sColors[0], 0xFF, questDesc->description);
             CopyWindowToVram(WIN_QUEST_QUEST_STAGE_DESC, 3);
             gTasks[taskId].func = Task_QuestMain;
             //AddTextPrinterParameterized3(WIN_QUEST_QUEST_STAGE_DESC, 0, 2, 3, sColors[0], 0, questDesc->description);
