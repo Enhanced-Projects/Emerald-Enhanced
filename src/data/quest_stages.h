@@ -117,6 +117,7 @@ const u8 sDevonQuestStage1075Desc[] = _("Player has spoken to Mewtwo.\nDefeat it
 const u8 sDevonQuestStage1000Desc[] = _("Player has chosen the path of Science.");
 
 //quiet waifu
+const u8 sLanaQuestStageZeroDesc[] = _("Become champion and find Lana at the\nSlateport PokeCenter, or her house next door\nto start this quest.");
 const u8 sLanaQuestStage2Desc[] = _("player met with Lana's brother, go to the right\nside of the house and speak to her.");
 const u8 sLanaQuestStage4Desc[] = _("player met with Lana for the first time.\nYou must be champion to continue this quest.\nReturn when you are champion.");
 const u8 sLanaQuestStage10Desc[] = _("Lana took off to the trick house.\nMeet her there.");
@@ -144,6 +145,7 @@ const u8 sLanaQuestStage666Desc[] = _("You have done some event which caused Lan
 const u8 sLanaQuestStage955Desc[] = _("You helped Lana overcome her anxiety and\ndepression, saving her life.\nYou've finished the quest, meet her at her house\nto finalize your relationship.");
 const u8 sLanaQuestStage1000Desc[] = _("You have finished Lana's questline, unlocked\n her as a follower, and received her gifts.\nGood End.");
 
+const u8 sNurseQuestStageZeroDesc[] = _("Heal 50 times at a pokemon center to\nget noticed by the Nurse and start her quest.");
 const u8 sNurseQuestStage1Desc[]  = _("Player hasn't started the Nurse quest yet.");
 const u8 sNurseQuestStage2Desc[]  = _("You started the first Nurse quest.\nTake her to Verdanturf");
 const u8 sNurseQuestStage3Desc[]  = _("You escorted the Nurse to Verdanturf.\nShe will approach you when she's ready to\nbe escorted elsewhere.");
@@ -605,7 +607,11 @@ const static struct QuestStageDesc gDevonScientistQuestStages[] = {
 };
 
 const static struct QuestStageDesc gLanaQuestStages[] = {
-  QUEST_STAGE_0,
+  //QUEST_STAGE_0,
+  {
+    .description = sLanaQuestStageZeroDesc,
+    .questStage = 0,
+  },
   {
     .description = sLanaQuestStage666Desc,
     .questStage = 666,
@@ -714,7 +720,11 @@ const static struct QuestStageDesc gLanaQuestStages[] = {
 };
 
 const static struct QuestStageDesc gNurseQuestStages[] = {
-  QUEST_STAGE_0,
+  //QUEST_STAGE_0,
+  {
+    .description = sNurseQuestStageZeroDesc,
+    .questStage = 0,
+  },
   {
     .description = sNurseQuestStage1Desc,
     .questStage = 1,
