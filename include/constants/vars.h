@@ -2,6 +2,7 @@
 #define GUARD_CONSTANTS_VARS_H
 
 #define VARS_START 0x4000
+#define NUM_CONTEST_REWARDS 10
 
 // temporary vars
 // The first 0x10 vars are are temporary--they are cleared every time a map is loaded.
@@ -202,7 +203,7 @@
 #define VAR_RYU_SCRIPT_PTR                   0x40B8
 #define VAR_OPTIONS_EXP_BAR_SPEED            0x40B9
 #define VAR_NEW_MAUVILLE_STATE               0x40BA
-#define VAR_UNUSED_0x40BB                    0x40BB
+#define VAR_RYU_CONTEST_REWARD               0x40BB
 #define VAR_BRAVO_TRAINER_BATTLE_TOWER_ON    0x40BC
 #define VAR_JAGGED_PASS_ASH_WEATHER          0x40BD
 #define VAR_GLASS_WORKSHOP_STATE             0x40BE

@@ -2257,3 +2257,35 @@ script RyuScript_PlayerReceivedInterest {
 	release
 	end
 }
+
+//Contest reward stuff
+
+script ContestHall_EventScript_GiveContestPrizes { 
+	specialvar(VAR_RESULT, HasMonWonThisContestBefore)
+	if (var(VAR_RESULT) == FALSE) {
+		call(ContestHall_EventScript_ReceiveContestRibbon)
+	}
+	call(RyuDoContestReward)
+	lockall
+	msgbox(ContestHall_Text_CongratsPleaseCompeteAgain)
+	releaseall
+	return
+}
+
+script RyuDoContestReward {
+	specialvar(VAR_TEMP_C, RyuGetContestRewards)
+	giveitem(VAR_TEMP_C)
+	if (var(VAR_RESULT) == FALSE) {
+		call(ContestHall_EventScript_NoRoomForReward)
+	}
+	elif (var(VAR_RESULT) == 1000) {
+		call(ryu_return) //the variable is cleared, which means there should be no reward here.
+	}
+	elif (var(VAR_RESULT) == 2000) {
+		call(ContestHall_EventScript_NoRoomForReward)
+	}
+	else {
+		setvar(VAR_RYU_CONTEST_REWARD, 1000)//if rewarded successfully, clear variable.
+		return
+	}
+}

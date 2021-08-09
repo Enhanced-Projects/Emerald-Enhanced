@@ -589,3 +589,4 @@ gSpecials:: @ 81DBA64
 	def_special RyuCheckPropertyStatus
 	def_special CheckIfPlayerIsRealtor
 	def_special RyuCheckMoney
+	def_special RyuGetContestRewards
