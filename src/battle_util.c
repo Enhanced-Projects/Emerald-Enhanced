@@ -7446,24 +7446,6 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     if (dmg == 0)
         dmg = 1;
 
-    //Followers are disproportionately weak compared to the player due to not having
-    //ev's or optimized natures. This will help them live longer.
-    //Companion's pokemon will take half damage.
-    //@KAGERU OR PIDGEY: This function needs to check if the mon in B_POSITION_PLAYER_RIGHT is actually a companion's pokemon
-    //or the player's right side mon will have this benefit as well in NORMAL (non-companion) double battles. 
-    //Also needs a check to not count in Frontier.
-    if (GetBattlerPosition(gBattlerTarget) == B_POSITION_PLAYER_RIGHT)
-        dmg /= 2;
-
-    //Player won't accidentally (or on purpose) be able to significantly damage the companion's pokemon.
-    //@KAGERU OR PIDGEY: This function needs to check if the mon in B_POSITION_PLAYER_RIGHT is actually a companion's pokemon
-    //or the player will be able to use earthquake in normal double battles with impunity.
-    if ((GetBattlerPosition(gBattlerTarget) == B_POSITION_PLAYER_RIGHT) && (GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_LEFT) && (dmg > 75))
-        dmg == 1;
-
-    //If you need to reset something after the battle ends, put it in [src/battle_setup.c L#1283]. That gets called whenever a battle ends.
-    //DELETE THESE COMMENTS AFTER THE MENTIONED THINGS HAVE BEEN ADDRESSED, PLEASE.
-
     return dmg;
 }
 
@@ -7599,6 +7581,20 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
         dmg *= 100 - (Random() % 16);
         dmg /= 100;
     }
+
+    if ((!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)) && (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))
+    {
+        if ((GetBattlerPosition(battlerAtk) == 0) && (GetBattlerPosition(battlerDef) == 2))
+        {
+            if (dmg >= (gBattleMons[battlerDef].hp / 2))
+                dmg = (gBattleMons[battlerDef].hp / 2);
+        }
+        else if ((GetBattlerPosition(battlerDef) == 2) && (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT))
+        {
+            dmg /= 2;
+        }
+    }
+
 
     if (dmg == 0)
         dmg = 1;
