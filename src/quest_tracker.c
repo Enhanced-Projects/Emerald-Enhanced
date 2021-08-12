@@ -37,6 +37,7 @@
 static const u16 sQuestTrackerBGMap[] = INCBIN_U16("graphics/quest_tracker/quest_tracker_map.bin");
 static const u16 sQuestTrackerBGTiles[] = INCBIN_U16("graphics/quest_tracker/quest_tracker.4bpp");
 static const u16 sQuestTrackerBGPalette[] = INCBIN_U16("graphics/quest_tracker/quest_tracker.gbapal");
+const u8 sText_NA[] = _("N/A");
 
 static void Task_InitQuestTracker(u8 taskId);
 static void Task_QuestMain(u8 taskId);
@@ -398,7 +399,10 @@ static void UpdateQuestSelections(u32 offset)
     for(i = 0; i < 6; i++)
     {
         u8 * numStr = gStringVar1;
-        ConvertIntToDecimalStringN(numStr, VarGet(sQuests[offset + i].var), STR_CONV_MODE_LEFT_ALIGN, 4);
+        if (VarGet(sQuests[offset + i].var) > 9999)
+            StringCopy(numStr, sText_NA);
+        else
+            ConvertIntToDecimalStringN(numStr, VarGet(sQuests[offset + i].var), STR_CONV_MODE_LEFT_ALIGN, 4);
         AddTextPrinterParameterized3(WIN_QUEST_QUESTS, 0, 10, i * 12, sColors[0], 0xFF, sQuests[offset + i].name);
         AddTextPrinterParameterized3(WIN_QUEST_QUEST_DATA, 0, 20 - GetStringWidth(0, numStr, 0)/2, i * 12, sColors[0], 0xFF, numStr);
     }

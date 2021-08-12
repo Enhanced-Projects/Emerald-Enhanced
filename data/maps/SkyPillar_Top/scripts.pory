@@ -85,6 +85,7 @@ SkyPillar_Top_EventScript_Rayquaza:: @ 8239722
 	compare VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED
 	goto_if_eq SkyPillar_Top_EventScript_RanFromRayquaza
 	setflag FLAG_DEFEATED_RAYQUAZA
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 75 @Player captured Rayquaza and has completed devon corporate.
 	releaseall
 	end
 

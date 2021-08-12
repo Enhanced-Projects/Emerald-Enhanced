@@ -116,6 +116,7 @@ FT_ReturnToDevon::
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 25 @Player finished all of Cozmo's missions and should return to the President.
 	msgbox FT_DevonMsg MSGBOX_DEFAULT
 	setflag FLAG_RYU_DEVON_CORPORATE
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 2000 @Player chose the Corporate life.
 	closemessage
 	release
 	end

@@ -213,6 +213,9 @@ RT_ADIntro:
 	
 RT_MagmaIntro::
 	setflag FLAG_RYU_PLAYER_HELPING_MAGMA
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 60000
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 60000
+	setvar VAR_RYU_QUEST_AQUA, 60000
 	clearflag FLAG_RYU_AQUA_HIDEOUT_CLEAR_HALLWAY_FOR_NON_DEVON @@required to prevent a skip, should be unblocked for aqua and magma.
 	changefactionstanding FACTION_STUDENTS, 10, TRUE
 	changefactionstanding FACTION_NOBLES, 20, FALSE

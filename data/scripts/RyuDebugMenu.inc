@@ -256,7 +256,9 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	callnative giveContestMon
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 60000
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 60000
+	setvar VAR_RYU_QUEST_MAGMA, 60000
 	release
 	end
 
