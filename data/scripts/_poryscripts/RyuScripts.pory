@@ -1542,6 +1542,7 @@ Ryu_initializeAquaStage1::
 	closemessage
 	pokenavcall Ryu_AquaStage1NotifyMessage
 	waitmessage
+	closemessage
 	msgbox Ryu_AquaStep1OutroMessage
 	closemessage
 	setvar VAR_RYU_QUEST_AQUA, 25 @received instructions to go to aqua at museum
@@ -1561,6 +1562,7 @@ Ryu_InitializeAquaStage2::
 	msgbox Ryu_AquaStage1NotifyIntro
 	closemessage
 	pokenavcall Ryu_AquaStage2NotifyMsg
+	waitmessage
 	closemessage
 	setvar VAR_RYU_QUEST_AQUA, 60 @player is off to meteor falls
 	setflag FLAG_RYU_AQUA_2_NOTIFY
@@ -1579,6 +1581,7 @@ Ryu_InitializeAquaStage3NR::
 	msgbox Ryu_AquaStage1NotifyIntro
 	closemessage
 	pokenavcall Ryu_AquaStage3NotifyMsg
+	waitmessage
 	closemessage
 	clearflag FLAG_RYU_HIDE_AQUA_MTPYRE_EXT
 	setvar VAR_RYU_QUEST_AQUA, 82 @player is being called to Mt Pyre
@@ -1598,6 +1601,7 @@ Ryu_InitializeAquaStage3R::
 	msgbox Ryu_AquaStage1NotifyIntro
 	closemessage
 	pokenavcall Ryu_AquaStage3RomanceNotifyMsg
+	waitmessage
 	closemessage
 	setflag FLAG_RYU_PLAYER_SENT_TO_JP_BY_SHELLY
 	setvar VAR_RYU_QUEST_AQUA, 93 @player is being called to Jagged Pass by Shelly.
@@ -1617,6 +1621,7 @@ Ryu_InitializeAquaStage4R::
 	msgbox Ryu_AquaStage1NotifyIntro
 	closemessage
 	pokenavcall Ryu_AquaStage4RomanceNotifyMsg
+	waitmessage
 	closemessage
 	setflag FLAG_RYU_AQUA_4_NOTIFY
 	clearflag FLAG_RYU_DEVON_HIDE_MATT_SUB
