@@ -1534,6 +1534,7 @@ Ryu_initializeAquaStage1::
 	compare VAR_RESULT, 3
 	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_AQUA_1_NOTIFY, ryu_end
+	removeobject OBJ_EVENT_ID_FOLLOWER
 	lockall
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
@@ -1547,6 +1548,7 @@ Ryu_initializeAquaStage1::
 	closemessage
 	setvar VAR_RYU_QUEST_AQUA, 25 @received instructions to go to aqua at museum
 	setflag FLAG_RYU_AQUA_1_NOTIFY
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, Ryu_Global_ResetFollower
 	release
 	end
 
@@ -1555,6 +1557,7 @@ Ryu_InitializeAquaStage2::
 	compare VAR_RESULT, 5
 	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_AQUA_2_NOTIFY, ryu_end
+	removeobject OBJ_EVENT_ID_FOLLOWER
 	lockall
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
@@ -1566,6 +1569,7 @@ Ryu_InitializeAquaStage2::
 	closemessage
 	setvar VAR_RYU_QUEST_AQUA, 60 @player is off to meteor falls
 	setflag FLAG_RYU_AQUA_2_NOTIFY
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, Ryu_Global_ResetFollower
 	release
 	end
 
@@ -1574,6 +1578,7 @@ Ryu_InitializeAquaStage3NR::
 	compare VAR_RESULT, 6
 	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_AQUA_3_NOTIFY, ryu_end
+	removeobject OBJ_EVENT_ID_FOLLOWER
 	lockall
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
@@ -1586,6 +1591,7 @@ Ryu_InitializeAquaStage3NR::
 	clearflag FLAG_RYU_HIDE_AQUA_MTPYRE_EXT
 	setvar VAR_RYU_QUEST_AQUA, 82 @player is being called to Mt Pyre
 	setflag FLAG_RYU_AQUA_3_NOTIFY
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, Ryu_Global_ResetFollower
 	release
 	end
 
@@ -1594,6 +1600,7 @@ Ryu_InitializeAquaStage3R::
 	compare VAR_RESULT, 6
 	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_AQUA_3_NOTIFY, ryu_end
+	removeobject OBJ_EVENT_ID_FOLLOWER
 	lockall
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
@@ -1606,6 +1613,7 @@ Ryu_InitializeAquaStage3R::
 	setflag FLAG_RYU_PLAYER_SENT_TO_JP_BY_SHELLY
 	setvar VAR_RYU_QUEST_AQUA, 93 @player is being called to Jagged Pass by Shelly.
 	setflag FLAG_RYU_AQUA_3_NOTIFY
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, Ryu_Global_ResetFollower
 	release
 	end
 
@@ -1614,6 +1622,7 @@ Ryu_InitializeAquaStage4R::
 	compare VAR_RESULT, 7
 	goto_if_lt ryu_end
 	goto_if_set FLAG_RYU_AQUA_4_NOTIFY, ryu_end
+	removeobject OBJ_EVENT_ID_FOLLOWER
 	lockall
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
@@ -1631,7 +1640,13 @@ Ryu_InitializeAquaStage4R::
 	clearflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
 	call Ryu_SetAquaHideoutTrainerflags
 	setvar VAR_RYU_QUEST_AQUA, 125 @Player received the call to go to the aqua hideout.
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, Ryu_Global_ResetFollower
 	release
+	end
+
+Ryu_Global_ResetFollower:
+	callnative RyuAddFollower
+	releaseall
 	end
 
 Ryu_AquaStage4RomanceNotifyMsg:

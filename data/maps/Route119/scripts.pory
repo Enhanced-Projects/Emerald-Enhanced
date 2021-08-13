@@ -351,7 +351,7 @@ r119_RivalInteractionFemale:: @ 81F450B
 	end
 
 r119_RivalBattleFemale:: @ Female Rival Battle #4
-	trainerbattle_single TRAINER_DAWN_4, R119_DawnIntroMsg, r119_femaleRivalDefeated
+	trainerbattle_single TRAINER_DAWN_4, R119_DawnIntroMsg, r119_femaleRivalDefeated, r119_femaleRivalOutro
 	goto r119_femaleRivalOutro
 	end
 
