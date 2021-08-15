@@ -256,9 +256,9 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	changefactionstanding FACTION_NATURALISTS, 100, FALSE
-	changefactionstanding FACTION_STUDENTS, 85, FALSE
-	changefactionstanding FACTION_POKEFANS, 40, FALSE
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 60000
+	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 60000
+	setvar VAR_RYU_QUEST_MAGMA, 60000
 	release
 	end
 

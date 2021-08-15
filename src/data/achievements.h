@@ -143,16 +143,16 @@ static const u8 sOverkill10xHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {
 static const u8 sOverkill10xDesc[] = _("You really smashed a target for\nmore than ten times their health!\nYikes!");
 
 static const u8 sOverkill20xLabel[] = _("Exponential Overkill");
-static const u8 sOverkill20xHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}2x Decimation?!");
-static const u8 sOverkill20xDesc[] = _("You atomized a target for more than\nTWENTY TIMES their health! Hot damn!");
+static const u8 sOverkill20xHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Multiple Additive?!");
+static const u8 sOverkill20xDesc[] = _("You atomized a target for more than\nTWENTY TIMES their health! RIP!");
 
 static const u8 sWellTravelledLabel[] = _("Well Travelled");
 static const u8 sWellTravelledHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Urban undertaker.");
 static const u8 sWellTravelledDesc[] = _("You've visited every single city\nin the game!\nTime to set up trade routes!");
 
 static const u8 sMentorLabel[] = _("Mentor");
-static const u8 sMentorHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Mentor = teacher.");
-static const u8 sMentorDesc[] = _("You finished mentoring a girl from\nthe School Kids faction.\nWell done, teach!");
+static const u8 sMentorHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Become a teacher.");
+static const u8 sMentorDesc[] = _("You finished mentoring a girl from\nthe Students faction.\nWell done, teach!");
 
 static const u8 sUndertakerLabel[] = _("Undertaker");
 static const u8 sUndertakerHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}RIP ghosts.");
@@ -195,7 +195,7 @@ static const u8 sTheWarriorHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {C
 static const u8 sTheWarriorDesc[] = _("Your unbridled power is impressive, but\nhow does your intelligence stack?\n(175+ standing with the Athletes.)");
 
 static const u8 sTheUniversalistLabel[] = _("The Universalist");
-static const u8 sTheUniversalistHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Story path taker.");
+static const u8 sTheUniversalistHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Way of the seven paths.");
 static const u8 sTheUniversalistDesc[] = _("You know of the plights of all walks\nof life. You are wise.\n(Obtained all faction based achievements.)");
 
 static const u8 sLoremasterLabel[] = _("Lore Master");

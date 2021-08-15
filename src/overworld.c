@@ -969,7 +969,7 @@ void RyuAddFollower(void)
 
 void ResetInitialPlayerAvatarState(void)
 {
-    sInitialPlayerAvatarState.direction = DIR_SOUTH;
+    sInitialPlayerAvatarState.direction = DIR_NORTH;
     sInitialPlayerAvatarState.transitionFlags = PLAYER_AVATAR_FLAG_ON_FOOT;
     if (FlagGet(FLAG_RYU_HAS_FOLLOWER) == 1)
         RyuAddFollower();

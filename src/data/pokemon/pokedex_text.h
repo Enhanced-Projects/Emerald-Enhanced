@@ -1210,6 +1210,11 @@ const u8 gUnownPokedexText[] = _(
     "it is a mystery as to which came first,\n"
     "the ancient writings or the various Unown.");
 
+const u8 gUnownSchooledPokedexText[] = _(
+    "Many Unown have schooled together to\n"
+    "form a much more powerful cluster."
+    );
+
 const u8 gWobbuffetPokedexText[] = _(
     "Usually docile, a Wobbuffet strikes back\n"
     "ferociously if its black tail is attacked.\n"
@@ -4678,6 +4683,9 @@ const u8 gMimikyuPokedexText[] = _(
     "appearance beneath an old rag so it can\n"
     "get closer to people and other Pokémon.\n"
     "Its actual appearance is unknown.");
+
+const u8 gMimikyuUndPokedexText[] = _(
+    "The undisguised version of Mimikyu.");
 
 const u8 gBruxishPokedexText[] = _(
     "It stuns its prey with its psychic powers\n"

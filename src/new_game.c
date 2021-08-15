@@ -325,6 +325,7 @@ void NewGameInitData(void)
     VarSet(VAR_RYU_LAST_ACH, 300);
     VarSet(VAR_RYU_QUESTLINE_ID, 100); //No questline started
     VarSet(VAR_RYU_PLAYER_HOUSE_ID, 0xFFFF);//Which house the player has set as their own
+    VarSet(VAR_RYU_CONTEST_REWARD, 1000); //'clear' ryu contest reward id.
     
 
     memset(gSaveBlock1Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock1Ptr->dexNavSearchLevels));

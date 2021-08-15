@@ -991,15 +991,7 @@ static void StartMenuTask(u8 taskId)
         SwitchTaskToFollowupFunc(taskId);
 }
 
-void RyuDoOneTImeSaveFixes(void)
-{
-    if ((VarGet(VAR_RYU_PLAYER_HOUSE_ID) < 0xFFFF) && (VarGet(VAR_LAST_KNOWN_GAME_VERSION) < 7800))//this will set the player's set house to what it should be.
-    {
-        VarSet(VAR_RYU_PLAYER_HOUSE_ID, 0xFFFF);
-        FlagSet(FLAG_RYU_ONE_TIME_SAVE_FIX);
-        RyuResetRealEstateData();
-    }
-}
+void RyuDoOneTImeSaveFixes(void) {}
 
 bool32 RyuCheckFactionAchievements(void)
 {

@@ -2016,7 +2016,7 @@ CableClub_TrainerResetter_ResetTrainers::
 	cleartrainerflag TRAINER_HALLE
 	cleartrainerflag TRAINER_GARRISON
 	cleartrainerflag TRAINER_EMPTY_197
-	cleartrainerflag TRAINER_EMPTY_198
+	cleartrainerflag TRAINER_CHALLENGER_DANNY
 	cleartrainerflag TRAINER_BAD_TENANT
 	cleartrainerflag TRAINER_STEVEN_POSTGAME00
 	cleartrainerflag TRAINER_JACKSON_1

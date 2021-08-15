@@ -589,7 +589,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuFollowerSystem.inc"
 	.include "data/scripts/frontiermode.inc"
 	.include "data/scripts/fertilizer.inc"
-	.include "data/scripts/RyuBotany.inc"
 	.include "data/scripts/RyuRandomGruntChatterScripts.inc"
 	.include "data/scripts/RyuRealEstate.inc"
 	.include "data/scripts/RyuAchievementPowerScripts.inc"
@@ -604,6 +603,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/_poryscripts/FactionQuestsNobles.inc"
 	.include "data/scripts/_poryscripts/FactionQuestsStudents.inc"
 	.include "data/scripts/_poryscripts/RyuRealEstateScripts.inc"
+	.include "data/scripts/_poryscripts/RyuBotany.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED

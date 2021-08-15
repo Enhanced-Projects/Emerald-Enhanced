@@ -2077,6 +2077,7 @@ static void Cmd_datahpupdate(void)
             PrepareStringBattle(STRINGID_MIMIKYUDISGUISEBLOCKED, gBattlerTarget);
             BattleScriptPush(gBattlescriptCurrInstr + 2);
             gBattlescriptCurrInstr = BattleScript_TargetFormChange;
+            gBattleMoveDamage = 0;
         }
         else
         {

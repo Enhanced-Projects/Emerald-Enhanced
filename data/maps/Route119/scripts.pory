@@ -347,12 +347,11 @@ r119_RivalSouthSteps:
 r119_RivalInteractionFemale:: @ 81F450B
 	fadescreen FADE_TO_BLACK
 	drawfullscreenimage SCENEBGDAWN
-	msgbox R119_DawnIntroMsg, MSGBOX_DEFAULT
     goto r119_RivalBattleFemale
 	end
 
 r119_RivalBattleFemale:: @ Female Rival Battle #4
-	trainerbattle_no_intro TRAINER_DAWN_4, r119_femaleRivalDefeated
+	trainerbattle_single TRAINER_DAWN_4, R119_DawnIntroMsg, r119_femaleRivalDefeated, r119_femaleRivalOutro
 	goto r119_femaleRivalOutro
 	end
 

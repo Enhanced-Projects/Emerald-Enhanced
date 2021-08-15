@@ -123,9 +123,32 @@ LilycoveCity_LilycoveMuseum_2F_EventScript_GiveGlassOrnament:: @ 82198EA
 	compare VAR_RESULT, FALSE
 	goto_if_eq LilycoveCity_LilycoveMuseum_2F_EventScript_NoRoomForGlassOrnament
 	setflag FLAG_RECEIVED_GLASS_ORNAMENT
+	msgbox LM_Alsotakethis
 	closemessage
+	call CH_GiveDiancie
 	releaseall
 	end
+
+LM_Alsotakethis:
+	.string "We also have another gift for\nyou...$"
+
+CH_GiveDiancie::
+	goto_if_set FLAG_RYU_GIVEN_DIANCIE, ryu_return
+	msgbox CH_WhyReceivedDiancie
+	showmonpic SPECIES_DIANCIE, 10, 3
+	playmoncry SPECIES_DIANCIE, 0
+	waitmoncry
+	hidemonpic
+	givemon SPECIES_DIANCIE, 80, ITEM_NONE
+	givepokedexflag SPECIES_DIANCIE, TRUE
+	setflag FLAG_RYU_GIVEN_DIANCIE
+	return
+
+CH_WhyReceivedDiancie::
+	.string "As recognition of your mastery\n"
+	.string "of contests, we confer upon you\p"
+	.string "this Pokémon. Please take good\n"
+	.string "care of it!$"
 
 LilycoveCity_LilycoveMuseum_2F_EventScript_NoRoomForGlassOrnament:: @ 8219911
 	call Common_EventScript_NoRoomForDecor

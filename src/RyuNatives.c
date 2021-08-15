@@ -2026,3 +2026,31 @@ u16 RyuCheckMoney(void)
     
     return FALSE;
 }
+
+void giveContestMon(void)
+{
+    u8 slot = CalculatePlayerPartyCount();
+    u8 stat = 255;
+    u16 moves[4] = {
+        MOVE_CALM_MIND,
+        MOVE_PSYCHO_BOOST,
+        MOVE_DESTINY_BOND,
+        MOVE_FUTURE_SIGHT
+    };
+    
+    CreateMonWithNature(&gPlayerParty[slot], SPECIES_MEGA_RAYQUAZA, 100, 31, NATURE_ADAMANT);
+    SetMonData(&gPlayerParty[slot], MON_DATA_SMART, &stat);
+    SetMonData(&gPlayerParty[slot], MON_DATA_TOUGH, &stat);
+    SetMonData(&gPlayerParty[slot], MON_DATA_COOL, &stat);
+    SetMonData(&gPlayerParty[slot], MON_DATA_SMART, &stat);
+    SetMonData(&gPlayerParty[slot], MON_DATA_CUTE, &stat);
+    SetMonData(&gPlayerParty[slot], MON_DATA_BEAUTY, &stat);
+
+    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE1, &moves[0]);
+    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE2, &moves[1]);
+    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE3, &moves[2]);
+    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE4, &moves[3]);
+    SetMonData(&gPlayerParty[slot], MON_DATA_SHEEN, &stat);
+    CalculateMonStats(&gPlayerParty[slot]);
+
+}

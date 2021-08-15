@@ -1268,12 +1268,12 @@ static void CB2_EndTrainerBattle(void)
 
     if ((FlagGet(FLAG_RYU_HAS_FOLLOWER) == TRUE) && (VarGet(VAR_RYU_FOLLOWER_ID) == OBJ_EVENT_GFX_LASS))
     {
-        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS] < 80)
-            {
-                RyuAdjustFactionValueInternal(FACTION_STUDENTS, 1, FALSE);
-                RyuAdjustOpposingFactionValues(FACTION_STUDENTS, 1, TRUE);
-                FlagClear(FLAG_TEMP_D);
-            }
+        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[FACTION_STUDENTS] < 140)//this is intended to make it so that the lass following 
+            {                                                                   //you gains 1 faction standing every battle until player
+                RyuAdjustFactionValueInternal(FACTION_STUDENTS, 1, FALSE);      //reached 80 standing gained from thhe mentorship, but i forgot
+                RyuAdjustOpposingFactionValues(FACTION_STUDENTS, 1, TRUE);      //to address this when i changed how standing works.  
+                FlagClear(FLAG_TEMP_D);                                         //prior to this commit, this quest will instantly clear, unless the
+            }                                                                   //player had negative (below 100) standing.
         else
             {
                 GiveAchievement(ACH_MENTOR);

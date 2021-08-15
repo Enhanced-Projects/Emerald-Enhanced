@@ -9696,6 +9696,30 @@ const struct PokedexEntry gPokedexEntries[] =
 		.trainerOffset = 0,
 	},
 
+	[NATIONAL_DEX_UNOWN_SCHOOL] =
+	{
+		.categoryName = _("Cluster"),
+		.height = 15,
+		.weight = 7,
+		.description = gUnownSchooledPokedexText,
+		.pokemonScale = 356,
+		.pokemonOffset = 17,
+		.trainerScale = 256,
+		.trainerOffset = 0,
+	},
+
+	[NATIONAL_DEX_MIMIKYU_BUSTED] =
+	{
+		.categoryName = _("Undisguised"),
+		.height = 2,
+		.weight = 7,
+		.description = gMimikyuUndPokedexText,
+		.pokemonScale = 356,
+		.pokemonOffset = 17,
+		.trainerScale = 256,
+		.trainerOffset = 0,
+	},
+
 	/*[NATIONAL_DEX_MELTAN] =
 	{
 		.categoryName = _("Hex Nut"),

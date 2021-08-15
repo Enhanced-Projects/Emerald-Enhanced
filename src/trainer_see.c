@@ -266,7 +266,7 @@ static u8 CheckTrainer(u8 objectEventId)
 
     currentTrainerFaction = gTrainers[T1_READ_16(scriptPtr + 2)].trainerFaction;
     for (k = 0; k < NUM_NPC_FACTIONS; k++)
-        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[currentTrainerFaction] > 100)
+        if (gSaveBlock1Ptr->gNPCTrainerFactionRelations[currentTrainerFaction] > 150)
             return 0;
 
 

@@ -1,13 +1,13 @@
-@Scripts for the botany skill
-
-@The main script called when using cut on grass
+raw `
 RyuScript_FieldCut::
     setvar VAR_TEMP_5, 1
     call_if_set FLAG_BOTANY_HAS_HYPER_CUTTER, RyuBotany_DoubleRewardHC
     delay 60
     switch VAR_RYU_PLAYER_BOTANY_SKILL
     case 1, RyuBotanyGrass_GiveOneItem
+    case 2, RyuBotanyGrass_GiveOneItem
     case 3, RyuBotanyGrass_TryGive2Items
+    case 4, RyuBotanyGrass_TryGive2Items
     case 5, RyuBotanyGrass_TryGive3Items
     goto ryu_end
     end
@@ -15,7 +15,9 @@ RyuScript_FieldCut::
 RyuBotanyGiveTreeRewardItem::
     switch VAR_RYU_PLAYER_BOTANY_SKILL
     case 1, RyuBotanyTree_GiveOneItem
+    case 2, RyuBotanyTree_GiveOneItem
     case 3, RyuBotanyTree_TryGive2Items
+    case 4, RyuBotanyTree_TryGive2Items
     case 5, RyuBotanyTree_TryGive3Items
     goto ryu_end
 
@@ -95,41 +97,6 @@ RyuBotanyGrass_TryGive3Items::
     call_if_eq RyuBotanyGrass_GiveOneItem
     release
     end
-
-RyuBotany_CheckLevelUp::
-    switch VAR_RYU_PLAYER_BOTANY_SKILL
-    case 0, ryu_return
-    case 5, ryu_return
-    case 4, RyuBotany_CheckLevel4Progress
-    case 3, RyuBotany_CheckLevel3Progress
-    case 2, RyuBotany_CheckLevel2Progress
-    case 1, RyuBotany_CheckLevel1Progress
-    goto ryu_return
-
-RyuBotany_CheckLevel1Progress::
-    compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 50
-    goto_if_lt ryu_return
-    addvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
-    release
-    end
-
-RyuBotany_CheckLevel2Progress::
-    compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 150
-    goto_if_lt ryu_return
-    addvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
-    return
-
-RyuBotany_CheckLevel3Progress::
-    compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 390
-    goto_if_lt ryu_return
-    addvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
-    return
-
-RyuBotany_CheckLevel4Progress::
-    compare VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 800
-    goto_if_lt ryu_return
-    addvar VAR_RYU_PLAYER_BOTANY_SKILL, 1
-    return
 
 RyuBotanyRecipeBookScript::
     lock
@@ -411,5 +378,60 @@ RB_ComeAgain:
 
 RB_SeeApricornMenuQuery:
     .string "Would you like to see the\nlist of balls that can be made?$"
+`
 
+//Botany levelling
 
+script RyuBotany_CheckLevelUp {
+    switch(var(VAR_RYU_PLAYER_BOTANY_SKILL)) {
+        case 0:
+            return //player doesn't have the skill.
+        case 5:
+            return//player is already max skill.
+        case 4:
+            if (var(VAR_RYU_PLAYER_BOTANY_SKILL_EXP) >= 800) {
+                addvar(VAR_RYU_PLAYER_BOTANY_SKILL, 1)
+                buffernumberstring(0, VAR_RYU_PLAYER_BOTANY_SKILL)
+                msgbox(RyuBotany_SkillLeveledUp)
+                return
+            }
+            else{
+                return
+            }
+        case 3:
+            if (var(VAR_RYU_PLAYER_BOTANY_SKILL_EXP) >= 390){
+                addvar(VAR_RYU_PLAYER_BOTANY_SKILL, 1)
+                buffernumberstring(0, VAR_RYU_PLAYER_BOTANY_SKILL)
+                msgbox(RyuBotany_SkillLeveledUp)
+                return
+            }
+            else {
+                return
+            }
+        case 2:
+            if (var(VAR_RYU_PLAYER_BOTANY_SKILL_EXP) >= 150){
+                addvar(VAR_RYU_PLAYER_BOTANY_SKILL, 1)
+                buffernumberstring(0, VAR_RYU_PLAYER_BOTANY_SKILL)
+                msgbox(RyuBotany_SkillLeveledUp)
+                return
+            }
+            else {
+                return
+            }
+        case 1:
+            if (var(VAR_RYU_PLAYER_BOTANY_SKILL_EXP) >= 50){
+                addvar(VAR_RYU_PLAYER_BOTANY_SKILL, 1)
+                buffernumberstring(0, VAR_RYU_PLAYER_BOTANY_SKILL)
+                msgbox(RyuBotany_SkillLeveledUp)
+                return
+            }
+            else {
+                return
+            }
+    }
+    return
+}
+
+text RyuBotany_SkillLeveledUp {
+    "You have increased your Botany skill.\nYour Botany skill is now lv.{STR_VAR_1}."
+}   

@@ -7582,6 +7582,20 @@ s32 CalculateMoveDamage(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, s32
         dmg /= 100;
     }
 
+    if ((!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)) && (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))
+    {
+        if ((GetBattlerPosition(battlerAtk) == 0) && (GetBattlerPosition(battlerDef) == 2))
+        {
+            if (dmg >= (gBattleMons[battlerDef].hp / 2))
+                dmg = (gBattleMons[battlerDef].hp / 2);
+        }
+        else if ((GetBattlerPosition(battlerDef) == 2) && (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT))
+        {
+            dmg /= 2;
+        }
+    }
+
+
     if (dmg == 0)
         dmg = 1;
 

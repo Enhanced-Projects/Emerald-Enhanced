@@ -190,7 +190,7 @@ LRT_DAWN_THANKS:
 LRT_DAWN_THANKS2:
     .string "{COLOR LIGHT_RED}{SHADOW RED}Thanks for staying with me for another\n"
 	.string "night. I always sleep better with\l"
-	.string "you by my side."
+	.string "you by my side.$"
 
 LRT_HEART:
 	walk_down
@@ -461,6 +461,7 @@ LRT_MoveCourtneyToExit::
 LRT_MoveCourtneyFromDawnToExit::
 	applymovement 5, LRT_CourtneyFromDawnToExit
 	waitmovement 5
+	return
 	
 LRT_CourtneyNotApprove:
 	.string "{COLOR LIGHT_RED}{SHADOW RED} So. You've been seeing others\nbehind my back.\pI'm not mad, but if I catch you\nagain,\pI may do something drastic.$"

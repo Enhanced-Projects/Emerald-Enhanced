@@ -1,4 +1,6 @@
 const u8 sQuestStage0[] = _("Quest line has not yet been started");
+const u8 sMainQuestNotStartedStg[] = _("Rescue the devon employee in Petalburg Woods\nThen clear the Rustburo Gym and exit to see the\nAqua grunt run to Rusturf Tunnel. Follow him.\nYou will choose which team you join there.");
+
 
 //aqua
 const u8 sAquaQuestStage5Desc[] = _("Player chose Run For It in Rusturf.\nTake goods to the Aqueus Corporation office\nin Lilycove.");
@@ -97,11 +99,12 @@ const u8 sDevonQuestStage25Desc[] = _("Player finished all of Cozmo's missions\n
 const u8 sDevonQuestStage35Desc[] = _("Player is meeting devon employees.\nTalk to all of them to continue.");
 const u8 sDevonQuestStage40Desc[] = _("Player can now leave 2f to go to 1f.\n(Right side staircase.) ");
 const u8 sDevonQuestStage45Desc[] = _("Player needs to go find Ms. Ito\nnorth of Rustburo.");
-const u8 sDevonQuestStage60Desc[] = _("Player completed the DEVON CORPORATE questline.\nReturn after being champion to get\naccess to Rayquaza.");
-const u8 sDevonQUestStage1000Desc[] = _("Player chose to become a Scientist.\nWork with Cozmo from now on.");
+const u8 sDevonQuestStage60Desc[] = _("Player completed the interrogation questline.\nWhen you are Champion, speak with Mr Stone\nagain to gain access to Sky Pillar.");
+const u8 sDevonQuestStage69Desc[] = _("Player is now allowed into Sky Pillar\nto capture Rayquaza.");
+const u8 sDevonQuestStage75Desc[] = _("You have completed the DEVON CORPORATE\nquestline and encountered Rayquaza.");
+const u8 sDevonQuestStage1000Desc[] = _("Player chose to become a Scientist.\nWork with Cozmo from now on.");
 
 //devon scientist
-const u8 sDevonQuestStage100Desc[] = _("Player got Rayquaza after the devon quest\nand has completed all stages.");
 const u8 sDevonQuestStage102Desc[] = _("Player was just transported to the\nWeather Institute.\nClear out the enemy team and defeat\nshelly above.");
 const u8 sDevonQuestStage103Desc[] = _("Player should be heading to the bottom of\nthe Desert to work with Castform.");
 const u8 sDevonQuestStage104Desc[] = _("Player finished working with Castform\nin the desert.\nReturn to the weather institute.");
@@ -109,14 +112,15 @@ const u8 sDevonQuestStage105Desc[] = _("Player returned to the institute.\nIt wa
 const u8 sDevonQuestStage106Desc[] = _("Player should clear out the magma goons on\nthe bottom floor.\nThen go upstairs and deal with Maxie.");
 const u8 sDevonQuestStage107Desc[] = _("Player cleared out magma and met the\nmysterious talking pokemon.\nGo to the hidden cave at the top left\nof the first floor of Victory Road.");
 const u8 sDevonQuestStage108Desc[] = _("You must become champion to continue.\nOnce you are, head to the northeast area\nof the Safari Zone.\nThere will be another cave at the top left.");
-const u8 sDevonQuestStage115Desc[] = _("Player finished devon scientist and the\nmysterious pokemon joined their party.");
+const u8 sDevonQuestStage115Desc[] = _("Player finished the DEVON SCIENTIST QUESTLINE\n and the mysterious pokemon joined\ntheir party.");
 const u8 sDevonQuestStage111Desc[] = _("Player defeated the mysterious pokemon, but\nneeds to make space in their party and return.");
-const u8 sDevonQuestStage69Desc[] = _("Player is now allowed into Sky Pillar\nto capture Rayquaza.");
 const u8 sDevonQuestStage1055Desc[] = _("Player has entered the Space Center.\nSpeak to Steven.");
 const u8 sDevonQuestStage1075Desc[] = _("Player has spoken to Mewtwo.\nDefeat it for it to join you.");
-const u8 sDevonQuestStage1000Desc[] = _("Player has chosen the path of Science.");
+const u8 sDevonQuestStage2000Desc[] = _("Player chose the Corporate life.\nAll further missions will be from Devon Corp.");
+const u8 sQuestStageDeferredDesc[] = _("You have deferred this questline.");
 
 //quiet waifu
+const u8 sLanaQuestStageZeroDesc[] = _("Become champion and find Lana at the\nSlateport PokeCenter, or her house next door\nto start this quest.");
 const u8 sLanaQuestStage2Desc[] = _("player met with Lana's brother, go to the right\nside of the house and speak to her.");
 const u8 sLanaQuestStage4Desc[] = _("player met with Lana for the first time.\nYou must be champion to continue this quest.\nReturn when you are champion.");
 const u8 sLanaQuestStage10Desc[] = _("Lana took off to the trick house.\nMeet her there.");
@@ -144,6 +148,7 @@ const u8 sLanaQuestStage666Desc[] = _("You have done some event which caused Lan
 const u8 sLanaQuestStage955Desc[] = _("You helped Lana overcome her anxiety and\ndepression, saving her life.\nYou've finished the quest, meet her at her house\nto finalize your relationship.");
 const u8 sLanaQuestStage1000Desc[] = _("You have finished Lana's questline, unlocked\n her as a follower, and received her gifts.\nGood End.");
 
+const u8 sNurseQuestStageZeroDesc[] = _("Heal 50 times at a pokemon center to\nget noticed by the Nurse and start her quest.");
 const u8 sNurseQuestStage1Desc[]  = _("Player hasn't started the Nurse quest yet.");
 const u8 sNurseQuestStage2Desc[]  = _("You started the first Nurse quest.\nTake her to Verdanturf");
 const u8 sNurseQuestStage3Desc[]  = _("You escorted the Nurse to Verdanturf.\nShe will approach you when she's ready to\nbe escorted elsewhere.");
@@ -165,7 +170,10 @@ struct QuestStageDesc
 #define QUEST_STAGE_0 {sQuestStage0, 0}
 #define QUEST_STAGE_END {NULL, 0xFFFF}
 const static struct QuestStageDesc gAquaQuestStages[] = {
-  QUEST_STAGE_0,
+  {
+    .description = sMainQuestNotStartedStg,
+    .questStage = 0,
+  },
   {
     .description = sAquaQuestStage5Desc,
     .questStage = 5,
@@ -318,11 +326,18 @@ const static struct QuestStageDesc gAquaQuestStages[] = {
     .description = sAquaQuestStage161Desc,
     .questStage = 161,
   },
+  {
+    .description = sQuestStageDeferredDesc,
+    .questStage = 60000,
+  },
   QUEST_STAGE_END
 };
 
 const static struct QuestStageDesc gMagmaQuestStages[] = {
-  QUEST_STAGE_0,
+  {
+    .description = sMainQuestNotStartedStg,
+    .questStage = 0,
+  },
   {
     .description = sMagmaQuestStage100Desc,
     .questStage = 100,
@@ -479,11 +494,18 @@ const static struct QuestStageDesc gMagmaQuestStages[] = {
     .description = sMagmaQuestStage596Desc,
     .questStage = 596,
   },
+  {
+    .description = sQuestStageDeferredDesc,
+    .questStage = 60000,
+  },
   QUEST_STAGE_END
 };
 
 const static struct QuestStageDesc gDevonCorporateQuestStages[] = {
-  QUEST_STAGE_0,
+  {
+    .description = sMainQuestNotStartedStg,
+    .questStage = 0,
+  },
   {
     .description = sDevonQuestStage5Desc,
     .questStage = 5,
@@ -553,14 +575,21 @@ const static struct QuestStageDesc gDevonCorporateQuestStages[] = {
     .questStage = 69,
   },
   {
-    .description = sDevonQUestStage1000Desc,
+    .description = sDevonQuestStage1000Desc,
     .questStage = 1000,
+  },
+  {
+    .description = sQuestStageDeferredDesc,
+    .questStage = 60000,
   },
   QUEST_STAGE_END
 };
 
 const static struct QuestStageDesc gDevonScientistQuestStages[] = {
-  QUEST_STAGE_0,
+  {
+    .description = sMainQuestNotStartedStg,
+    .questStage = 0,
+  },
   {
     .description = sDevonQuestStage1000Desc,
     .questStage = 100,
@@ -601,11 +630,22 @@ const static struct QuestStageDesc gDevonScientistQuestStages[] = {
     .description = sDevonQuestStage111Desc,
     .questStage = 111,
   },
+  {
+    .description = sDevonQuestStage2000Desc,
+    .questStage = 2000,
+  },
+  {
+    .description = sQuestStageDeferredDesc,
+    .questStage = 60000,
+  },
   QUEST_STAGE_END
 };
 
 const static struct QuestStageDesc gLanaQuestStages[] = {
-  QUEST_STAGE_0,
+  {
+    .description = sLanaQuestStageZeroDesc,
+    .questStage = 0,
+  },
   {
     .description = sLanaQuestStage666Desc,
     .questStage = 666,
@@ -714,7 +754,10 @@ const static struct QuestStageDesc gLanaQuestStages[] = {
 };
 
 const static struct QuestStageDesc gNurseQuestStages[] = {
-  QUEST_STAGE_0,
+  {
+    .description = sNurseQuestStageZeroDesc,
+    .questStage = 0,
+  },
   {
     .description = sNurseQuestStage1Desc,
     .questStage = 1,

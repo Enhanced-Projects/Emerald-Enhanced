@@ -51,6 +51,10 @@ SFC9_ArchieSceneEnd::
 	goto_if_eq SFC9_TakeOpportunity
 	goto SFC9_CompleteTheMission
 	setvar VAR_RYU_QUEST_MAGMA, 450@Player completed the mission, Return to magma HQ.
+	fadescreen FADE_TO_BLACK
+	setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE
+	delay 50
+	fadescreen FADE_FROM_BLACK
 	goto_if_unset FLAG_RYU_DS_COURTNEY_CLOSEFRIENDS, SFC9_CancelCourtney
 	release
 	end

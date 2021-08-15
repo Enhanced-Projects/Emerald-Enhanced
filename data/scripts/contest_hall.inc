@@ -39,11 +39,11 @@ LilycoveCity_ContestLobby_EventScript_GivePokeblockCase:: @ 8279CF3
 LilycoveCity_ContestLobby_EventScript_PickUpPrize:: @ 8279D13
 	msgbox LilycoveCity_ContestLobby_Text_PokemonWonWeHavePrize, MSGBOX_DEFAULT
 	switch VAR_CONTEST_PRIZE_PICKUP
-	case 4, LilycoveCity_ContestLobby_EventScript_GiveLuxuryBallAtCounter
+	case 4, LilycoveCity_ContestLobby_EventScript_GiveRewardItemAtCounter
 	end
 
-LilycoveCity_ContestLobby_EventScript_GiveLuxuryBallAtCounter:: @ 8279D2C
-	giveitem ITEM_LUXURY_BALL
+LilycoveCity_ContestLobby_EventScript_GiveRewardItemAtCounter:: @ 8279D2C
+	call RyuDoContestReward
 	compare VAR_RESULT, FALSE
 	goto_if_eq LilycoveCity_ContestLobby_EventScript_NoRoomForLuxuryBallAtCounter
 	setvar VAR_CONTEST_PRIZE_PICKUP, 0
@@ -1156,20 +1156,6 @@ ContestHall_EventScript_GivePrizeIfWinner:: @ 827AC5E
 	releaseall
 	return
 
-ContestHall_EventScript_GiveContestPrizes:: @ 827AC77
-	specialvar VAR_RESULT, HasMonWonThisContestBefore
-	compare VAR_RESULT, FALSE
-	goto_if_eq ContestHall_EventScript_ReceiveContestRibbon
-	specialvar VAR_RESULT RyuCheckContestMastery
-	compare VAR_RESULT, TRUE
-	call_if_eq CH_GiveDiancie
-	compare VAR_CONTEST_RANK, CONTEST_RANK_MASTER
-	goto_if_eq ContestHall_EventScript_GiveLuxuryBall
-	lockall
-	msgbox ContestHall_Text_CongratsPleaseCompeteAgain, MSGBOX_DEFAULT
-	releaseall
-	return
-
 CH_CheckForMegaGift::
 	switch VAR_CONTEST_CATEGORY
 	case COOL, CH_CoolMegaReward
@@ -1243,27 +1229,12 @@ CH_CuteMegaRewardMSG::
 	.string "Here, take this Diancite for\l"
 	.string "blessing us with it's appearance!$"
 
-ContestHall_EventScript_NoRoomForLuxuryBall:: @ 827ACA8
+ContestHall_EventScript_NoRoomForReward:: @ 827ACA8
 	lockall
 	call Common_EventScript_BagIsFull
 	msgbox ContestHall_Text_PickUpPrizeAtCounterLater, MSGBOX_DEFAULT
 	releaseall
 	setvar VAR_CONTEST_PRIZE_PICKUP, 4
-	return
-
-ContestHall_EventScript_GiveLuxuryBall:: @ 827ACBD
-	switch VAR_CONTEST_CATEGORY
-	case COOL, SetMasterRankClearedCool
-	case BEAUTY, SetMasterRankClearedBeauty
-	case TOUGH, SetMasterRankClearedTough
-	case SMART, SetMasterRankClearedSmart
-	case CUTE, SetMasterRankClearedCute
-	giveitem ITEM_LUXURY_BALL
-	compare VAR_RESULT, FALSE
-	goto_if_eq ContestHall_EventScript_NoRoomForLuxuryBall
-	lockall
-	msgbox ContestHall_Text_CongratsPleaseCompeteAgain, MSGBOX_DEFAULT
-	releaseall
 	return
 
 SetMasterRankClearedCool::
@@ -1285,23 +1256,6 @@ SetMasterRankClearedSmart::
 SetMasterRankClearedCute::
 	setflag FLAG_RYU_CLEARED_CUTE
 	return
-
-CH_GiveDiancie::
-	msgbox CH_WhyReceivedDiancie
-	showmonpic SPECIES_DIANCIE, 10, 3
-	playmoncry SPECIES_DIANCIE, 0
-	waitmoncry
-	hidemonpic
-	givemon SPECIES_DIANCIE, 80, ITEM_NONE
-	givepokedexflag SPECIES_DIANCIE, TRUE
-	setflag FLAG_RYU_GIVEN_DIANCIE
-	return
-
-CH_WhyReceivedDiancie::
-	.string "As recognition of your mastery\n"
-	.string "of contests, we confer upon you\p"
-	.string "this Pokémon. Please take good\n"
-	.string "care of it!$"
 
 ContestHall_EventScript_ReceiveContestRibbon:: @ 827ACDF
 	closemessage

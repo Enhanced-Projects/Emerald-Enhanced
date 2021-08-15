@@ -25,6 +25,7 @@ LilycoveCity_ContestLobby_EventScript_ShowBlendMaster:: @ 821A23C
 	return
 
 LilycoveCity_ContestLobby_OnFrame: @ 821A243
+	map_script_2 VAR_TEMP_0, 0, LCCH_SetRNGRewardValue
 	map_script_2 VAR_LILYCOVE_CONTEST_LOBBY_STATE, 1, LilycoveCity_ContestLobby_EventScript_TryDoContestArtist
 	map_script_2 VAR_LILYCOVE_CONTEST_LOBBY_STATE, 2, LilycoveCity_ContestLobby_EventScript_TryDoLinkContestArtist
 	.2byte 0
@@ -1121,3 +1122,9 @@ LilycoveCity_ContestLobby_Text_MadePokeblocksWithFamily: @ 821B3FC
 	.string "{POKEBLOCK}S if you have more people.$"
 
 `
+script LCCH_SetRNGRewardValue {
+	random(NUM_CONTEST_REWARDS)
+	copyvar(VAR_RYU_CONTEST_REWARD, VAR_RESULT)
+	setvar(VAR_TEMP_0, 100)
+	end
+}
