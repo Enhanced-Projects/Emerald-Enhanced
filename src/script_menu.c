@@ -764,7 +764,6 @@ int ScriptMenu_AdjustLeftCoordFromWidth(int left, int width)
 
     return adjustedLeft;
 }
-static const u8 sText_DebugUtilityItem1[] = _("Utility 1");
 static const u8 sText_DebugUtilityItem2[] = _("Phasing");
 static const u8 sText_DebugUtilityItem3[] = _("Dev Repel");
 static const u8 sText_DebugUtilityItem4[] = _("View Temp Vars");
@@ -883,24 +882,23 @@ static const struct ListMenuItem sBotanyEvolutionSet[] =
 
 static const struct ListMenuItem sDebugUtilitySet[] =
 {
-    {sText_DebugUtilityItem1, 0},
-    {sText_DebugUtilityItem2, 1},
-    {sText_DebugUtilityItem3, 2},
-    {sText_DebugUtilityItem4, 3},
-    {sText_DebugUtilityItem5, 4},
-    {sText_DebugUtilityItem6, 5},
-    {sText_DebugUtilityItem7, 6},
-    {sText_DebugUtilityItem8, 7},
-    {sText_DebugUtilityItem9, 8},
-    {sText_DebugUtilityItem10, 9},
-    {sText_DebugUtilityItem11, 10},
-    {sText_DebugUtilityItem12, 11},
-    {sText_DebugUtilityItem13, 12},
-    {sText_DebugUtilityItem14, 13},
-    {sText_DebugUtilityItem15, 14},
-    {sText_DebugUtilityItem16, 15},
-    {sText_DebugUtilityItem17, 16},
-    {sText_DebugUtilityItem18, 17}
+    {sText_DebugUtilityItem2, 0},
+    {sText_DebugUtilityItem3, 1},
+    {sText_DebugUtilityItem4, 2},
+    {sText_DebugUtilityItem5, 3},
+    {sText_DebugUtilityItem6, 4},
+    {sText_DebugUtilityItem7, 5},
+    {sText_DebugUtilityItem8, 6},
+    {sText_DebugUtilityItem9, 7},
+    {sText_DebugUtilityItem10, 8},
+    {sText_DebugUtilityItem11, 9},
+    {sText_DebugUtilityItem12, 10},
+    {sText_DebugUtilityItem13, 11},
+    {sText_DebugUtilityItem14, 12},
+    {sText_DebugUtilityItem15, 13},
+    {sText_DebugUtilityItem16, 14},
+    {sText_DebugUtilityItem17, 15},
+    {sText_DebugUtilityItem18, 16}
 };
 
 static const struct ListMenuItem sAlchemyMenu[] =

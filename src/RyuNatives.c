@@ -2054,3 +2054,39 @@ void giveContestMon(void)
     CalculateMonStats(&gPlayerParty[slot]);
 
 }
+
+
+void RyuGiveDevMon(void)
+{
+    u8 nature = VarGet(VAR_TEMP_A);
+    u16 species = VarGet(VAR_TEMP_B);
+    u8 ability = VarGet(VAR_TEMP_C);
+    u8 gender = VarGet(VAR_TEMP_D);
+    u16 move1 = VarGet(VAR_TEMP_1);
+    u16 move2 = VarGet(VAR_TEMP_2);
+    u16 move3 = VarGet(VAR_TEMP_3);
+    u16 move4 = VarGet(VAR_TEMP_4);
+    u8 slot = (CalculatePlayerPartyCount());
+    u16 i = 0;
+    u8 ev = 255;
+    u8 iv = 31;
+    u8 lv = BASE_MAX_LEVEL;
+    u8 what = 0;
+    u8 ribbon = TRUE;
+
+
+    CreateMonWithGenderNatureLetter(&gPlayerParty[slot], species, lv, iv, gender, nature, what); 
+    for (i = 0; i < 6; i++)
+        SetMonData(&gPlayerParty[slot], (MON_DATA_HP_EV + i), &ev); // set ev's loop
+
+    SetMonData(&gPlayerParty[slot], MON_DATA_PP_BONUSES, &ev); //sets all pp to max bonus
+
+    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE1, &move1);
+    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE2, &move2);
+    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE3, &move3);
+    SetMonData(&gPlayerParty[slot], MON_DATA_MOVE4, &move4);
+
+    SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
+
+    SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &ribbon); //make it a boss because why not
+}

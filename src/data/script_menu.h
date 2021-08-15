@@ -779,11 +779,11 @@ static const struct MenuAction MultichoiceList_114[] =
 static const struct MenuAction MultichoiceList_RyuDebugMulti[] =
 {
     {gText_Utilities},
+    {sText_DebugUtilityItem1},
     {gText_PasscodeMenu},
     {gText_QuickStart},
     {gText_PokeEdit},
     {gText_TownFlags},
-    {gText_ItemsKit},
     {gText_DisableDevMode},
     {gText_ShowBetaMenu},
     {gText_DebugCancel},
