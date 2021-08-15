@@ -16,7 +16,7 @@ RyuDebugMenuScript::
 	case 0, RyuDebug_UtilitiesMenu
 	case 1, RyuDebug_Utility1
 	case 2, RyuDebug_PasscodeMenu
-	case 3, RyuDebug_quickstart
+	case 3, RyuDebug_DevMonQuickStart
 	case 4, RyuDebug_pokeedit
 	case 5, RyuDebug_enableWaystone
 	case 6, RyuDebug_DisableDebug
@@ -31,7 +31,7 @@ RyuDebug_menu_nodevcheck::
 	case 0, RyuDebug_UtilitiesMenu
 	case 1, RyuDebug_Utility1
 	case 2, RyuDebug_PasscodeMenu
-	case 3, RyuDebug_quickstart
+	case 3, RyuDebug_DevMonQuickStart
 	case 4, RyuDebug_pokeedit
 	case 5, RyuDebug_enableWaystone
 	case 6, RyuDebug_DisableDebug
@@ -255,9 +255,6 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 60000
-	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 60000
-	setvar VAR_RYU_QUEST_MAGMA, 60000
 	release
 	end
 
@@ -532,49 +529,39 @@ RyuDebug_GiveAllDoneMsg:
 RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
-RyuDebug_quickstart::
-	specialvar VAR_TEMP_6, CalculatePlayerPartyCount
-	compare VAR_TEMP_6, 5
-	goto_if_gt ryu_end
-	givemon SPECIES_MEGA_GARDEVOIR, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
-	setmonmove VAR_TEMP_6, 0, MOVE_PSYCHIC
-	setmonmove VAR_TEMP_6, 1, MOVE_MOONBLAST
-	setmonmove VAR_TEMP_6, 2, MOVE_AURA_SPHERE
-	setmonmove VAR_TEMP_6, 3, MOVE_THUNDERBOLT
-	specialvar VAR_TEMP_6, CalculatePlayerPartyCount
-	givemon SPECIES_MUDSDALE, BASE_MAX_LEVEL, ITEM_ROCKY_HELMET
-	setmonmove VAR_TEMP_6, 0, MOVE_HIGH_HORSEPOWER
-	setmonmove VAR_TEMP_6, 1, MOVE_SUPERPOWER
-	setmonmove VAR_TEMP_6, 2, MOVE_DOUBLE_EDGE
-	setmonmove VAR_TEMP_6, 3, MOVE_CRABHAMMER
-	setvar VAR_TEMP_1, 252
-	setvar VAR_TEMP_2, 0
-	setvar VAR_TEMP_3, 0
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 1
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 2
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 3
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 4
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 5
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_2, 1
-	setvar VAR_TEMP_3, 0
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 1
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 2
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 3
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 4
-	special RyuSetSlotStatEV
-	setvar VAR_TEMP_3, 5
-	special RyuSetSlotStatEV
-	special RyuSetIVs
+RyuDebug_DevMonQuickStart::
+	@@First dev mon
+	setvar VAR_TEMP_A, NATURE_MODEST          @@This is the new DevMonQuickStart.
+	setvar VAR_TEMP_B, SPECIES_MEGA_GARDEVOIR @@They will now always have max IV, max EV, and these select chosen items.
+	setvar VAR_TEMP_C, 0
+	setvar VAR_TEMP_D, MON_FEMALE @@This is gender selection. Should be MON_FEMALE, MON_MALE, or MON_GENDERLESS though for genderless mons, i dont think this matters.
+	setvar VAR_TEMP_E, ITEM_EXPERT_BELT
+	setvar VAR_TEMP_1, MOVE_PSYCHIC
+	setvar VAR_TEMP_2, MOVE_MOONBLAST
+	setvar VAR_TEMP_3, MOVE_AURA_SPHERE
+	setvar VAR_TEMP_4, MOVE_CHARGE_BEAM
+	callnative RyuGiveDevMon
+	@@
+	@@
+	@@(this is to make it easy to tell between which mon you are editing)
+	@@
+	@@Second dev mon
+	setvar VAR_TEMP_A, NATURE_ADAMANT
+	setvar VAR_TEMP_B, SPECIES_MUDSDALE
+	setvar VAR_TEMP_C, 1
+	setvar VAR_TEMP_D, MON_FEMALE
+	setvar VAR_TEMP_E, ITEM_ROCKY_HELMET
+	setvar VAR_TEMP_1, MOVE_HIGH_HORSEPOWER
+	setvar VAR_TEMP_2, MOVE_SUPERPOWER
+	setvar VAR_TEMP_3, MOVE_DOUBLE_EDGE
+	setvar VAR_TEMP_4, MOVE_CRABHAMMER
+	callnative RyuGiveDevMon
+	@@ finished, go to next stage.
+	special HealPlayerParty
+	goto RyuDebug_QuickItemFlagStart
+
+
+RyuDebug_QuickItemFlagStart::
 	additem ITEM_WAYSTONE, 1
 	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKENAV_GET
@@ -624,7 +611,7 @@ LRT_GameStartVariablesInfoMsg:
 	.string "New Game Flags and Variables Set.$"
 
 RyuDebug_GiveItemQuery:
-	.string "Would you like many items?$"
+	.string "Show item options?$"
 
 RyuNewGameQuery:
 	.string "Would you like to activate the new\ngame scripts?$"
