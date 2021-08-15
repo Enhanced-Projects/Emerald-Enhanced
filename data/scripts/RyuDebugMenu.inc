@@ -256,7 +256,9 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	addmoney 1000000000
+	changefactionstanding FACTION_NATURALISTS, 100, FALSE
+	changefactionstanding FACTION_STUDENTS, 85, FALSE
+	changefactionstanding FACTION_POKEFANS, 40, FALSE
 	release
 	end
 

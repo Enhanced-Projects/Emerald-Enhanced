@@ -191,6 +191,7 @@ void Task_OpenAPMenu(u8); // should probably change the AP menu to not be stupid
 void Task_InitAPMenu(u8 taskId);
 
 void CB2_OpenQuestTracker(void);
+void CB2_OpenFactionUI(void);
 
 static const struct JournalEntryButtonData sJounralButtons[JOURNAL_OPTION_COUNT] =
 {
@@ -207,6 +208,7 @@ static const struct JournalEntryButtonData sJounralButtons[JOURNAL_OPTION_COUNT]
             },
         },
         .palette = sJournalIconPalette,
+        .callback2 = CB2_OpenFactionUI
     },
     [JOURNAL_OPTION_ACH_ATLAS] = {
         .spriteImages = 

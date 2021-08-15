@@ -155,3 +155,4 @@
     .include "src/dexnav.o"
 	.include "src/ach_atlas.o"
 	.include "src/journal.o"
+	.include "src/pidgey_ui_sys.o"
