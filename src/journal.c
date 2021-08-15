@@ -47,6 +47,9 @@ static const u16 sQuestsJournalIconPalette[] = INCBIN_U16("graphics/journal/ques
 static const u8 sJournalIconTiles[] = INCBIN_U8("graphics/journal/journal_icon.4bpp");
 static const u16 sJournalIconPalette[] = INCBIN_U16("graphics/journal/journal_icon.gbapal");
 
+static const u8 sFactionsIconTiles[] = INCBIN_U8("graphics/journal/factions_icon.4bpp");
+static const u16 sFactionsIconPalette[] = INCBIN_U16("graphics/journal/factions_icon.gbapal");
+
 enum // much window, such complexity 
 {
     WIN_JOURNAL_STATS,
@@ -178,7 +181,7 @@ struct JournalEntryButtonData
 
 enum
 {
-    JOURNAL_OPTION_JOURNAL, // somehow this feels useless
+    JOURNAL_OPTION_FACTIONS, // somehow this feels useless
     JOURNAL_OPTION_ACH_ATLAS,
     JOURNAL_OPTION_POWERS,
     JOURNAL_OPTION_QUESTS,
@@ -195,19 +198,19 @@ void CB2_OpenFactionUI(void);
 
 static const struct JournalEntryButtonData sJounralButtons[JOURNAL_OPTION_COUNT] =
 {
-    [JOURNAL_OPTION_JOURNAL] = {
+    [JOURNAL_OPTION_FACTIONS] = {
         .spriteImages = 
         {
             {
-                .data = sJournalIconTiles,
+                .data = sFactionsIconTiles,
                 .size = TILE_SIZE_4BPP*64,
             },
             {
-                .data = sJournalIconTiles+TILE_SIZE_4BPP*64,
+                .data = sFactionsIconTiles+TILE_SIZE_4BPP*64,
                 .size = TILE_SIZE_4BPP*64,
             },
         },
-        .palette = sJournalIconPalette,
+        .palette = sFactionsIconPalette,
         .callback2 = CB2_OpenFactionUI
     },
     [JOURNAL_OPTION_ACH_ATLAS] = {
@@ -952,7 +955,7 @@ static bool8 IntializeJournal(void)
     {
         u32 i;
         struct SpriteTemplate spriteTemplate = sButtonSpriteTemplate;
-        static const u8 buttonXPos[JOURNAL_OPTION_COUNT] = {8, 72, 140, 184}; //! EVIL hardcoding
+        static const u8 buttonXPos[JOURNAL_OPTION_COUNT] = {8, 74, 140, 188}; //! EVIL hardcoding
         for(i = 0; i < JOURNAL_OPTION_COUNT; i++)
         {
             spriteTemplate.images = sJounralButtons[i].spriteImages;
