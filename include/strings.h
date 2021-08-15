@@ -3387,4 +3387,6 @@ extern const u8 gText_RyuRELeaseProperty[];
 extern const u8 gText_RyuRECheckDetails[];
 extern const u8 gText_RyuRESellProperty[];
 
+extern const u8 sText_DebugUtilityItem1[];
+
 #endif // GUARD_STRINGS_H

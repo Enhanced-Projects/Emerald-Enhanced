@@ -14,11 +14,11 @@ RyuDebugMenuScript::
 	multichoicedefault 0, 0, MULTI_DEV_MENU_MAIN, 8, 0
 	switch VAR_RESULT
 	case 0, RyuDebug_UtilitiesMenu
-	case 1, RyuDebug_PasscodeMenu
-	case 2, RyuDebug_quickstart
-	case 3, RyuDebug_pokeedit
-	case 4, RyuDebug_enableWaystone
-	case 5, RyuDebug_GiveItems
+	case 1, RyuDebug_Utility1
+	case 2, RyuDebug_PasscodeMenu
+	case 3, RyuDebug_quickstart
+	case 4, RyuDebug_pokeedit
+	case 5, RyuDebug_enableWaystone
 	case 6, RyuDebug_DisableDebug
 	case 7, RyuDebug_ShowBetaMenu
 	case 8, RyuDebug_cancel
@@ -29,11 +29,11 @@ RyuDebug_menu_nodevcheck::
 	multichoicedefault 0, 0, MULTI_DEV_MENU_MAIN, 8, 0
 	switch VAR_RESULT
 	case 0, RyuDebug_UtilitiesMenu
-	case 1, RyuDebug_PasscodeMenu
-	case 2, RyuDebug_quickstart
-	case 3, RyuDebug_pokeedit
-	case 4, RyuDebug_enableWaystone
-	case 5, RyuDebug_GiveItems
+	case 1, RyuDebug_Utility1
+	case 2, RyuDebug_PasscodeMenu
+	case 3, RyuDebug_quickstart
+	case 4, RyuDebug_pokeedit
+	case 5, RyuDebug_enableWaystone
 	case 6, RyuDebug_DisableDebug
 	case 7, RyuDebug_ShowBetaMenu
 	case 8, RyuDebug_cancel
@@ -51,24 +51,23 @@ RDB_OpeningBetaMenu:
 RyuDebug_UtilitiesMenu:
 	scrollingmultichoice SCROLLINGMULTICHOICE_DEBUGUTILITIES, 0, 0, 9, 1
 	switch VAR_RESULT
-	case 0, RyuDebug_Utility1
-	case 1, RyuDebug_Phasing
-	case 2, RyuDebug_Encounters
-	case 3, RyuDebug_ViewTempVars
-	case 4, RyuDebug_setTime
-	case 5, RyuDebug_BattleSim
-	case 6, RyuSetExpMultMenu
-	case 7, RyuDebug_giveAllBadges
-	case 8, RyuDebug_HealParty
-	case 9, RyuDebug_SaveFileDebug
-	case 10, RyuDebug_FillTheDex
-	case 11, RDB_GiveOrTakeAllAchievements
-	case 12, RDB_GetCurrentAndMaxAP
-	case 13, RDB_CheckFactionRelations
-	case 14, RDB_AlchemyInfo
-	case 15, RDB_ToggleLevelCap
-	case 16, RDB_EnableRealEstate
-	case 17, RyuDebug_menu_nodevcheck
+	case 0, RyuDebug_Phasing
+	case 1, RyuDebug_Encounters
+	case 2, RyuDebug_ViewTempVars
+	case 3, RyuDebug_setTime
+	case 4, RyuDebug_BattleSim
+	case 5, RyuSetExpMultMenu
+	case 6, RyuDebug_giveAllBadges
+	case 7, RyuDebug_HealParty
+	case 8, RyuDebug_SaveFileDebug
+	case 9, RyuDebug_FillTheDex
+	case 10, RDB_GiveOrTakeAllAchievements
+	case 11, RDB_GetCurrentAndMaxAP
+	case 12, RDB_CheckFactionRelations
+	case 13, RDB_AlchemyInfo
+	case 14, RDB_ToggleLevelCap
+	case 15, RDB_EnableRealEstate
+	case 16, RyuDebug_menu_nodevcheck
 	goto RyuDebug_cancel
 
 RDB_EnableRealEstate::
@@ -537,17 +536,17 @@ RyuDebug_quickstart::
 	specialvar VAR_TEMP_6, CalculatePlayerPartyCount
 	compare VAR_TEMP_6, 5
 	goto_if_gt ryu_end
-	givemon SPECIES_MEGA_MEWTWO_Y, BASE_MAX_LEVEL, ITEM_EXPERT_BELT @The only things that actually trigger the corrupted box mons are the `givemon` lines. The rest is just pointless without the givemon lines.
-	setmonmove VAR_TEMP_6, 0, MOVE_PSYSTRIKE
-	setmonmove VAR_TEMP_6, 1, MOVE_DRAINING_KISS
+	givemon SPECIES_MEGA_GARDEVOIR, BASE_MAX_LEVEL, ITEM_EXPERT_BELT
+	setmonmove VAR_TEMP_6, 0, MOVE_PSYCHIC
+	setmonmove VAR_TEMP_6, 1, MOVE_MOONBLAST
 	setmonmove VAR_TEMP_6, 2, MOVE_AURA_SPHERE
-	setmonmove VAR_TEMP_6, 3, MOVE_PARABOLIC_CHARGE
+	setmonmove VAR_TEMP_6, 3, MOVE_THUNDERBOLT
 	specialvar VAR_TEMP_6, CalculatePlayerPartyCount
-	givemon SPECIES_VIGOROTH, BASE_MAX_LEVEL, ITEM_EVIOLITE
-	setmonmove VAR_TEMP_6, 0, MOVE_CRUSH_GRIP
-	setmonmove VAR_TEMP_6, 1, MOVE_SACRED_SWORD
-	setmonmove VAR_TEMP_6, 2, MOVE_SPECTRAL_THIEF
-	setmonmove VAR_TEMP_6, 3, MOVE_BONEMERANG
+	givemon SPECIES_MUDSDALE, BASE_MAX_LEVEL, ITEM_ROCKY_HELMET
+	setmonmove VAR_TEMP_6, 0, MOVE_HIGH_HORSEPOWER
+	setmonmove VAR_TEMP_6, 1, MOVE_SUPERPOWER
+	setmonmove VAR_TEMP_6, 2, MOVE_DOUBLE_EDGE
+	setmonmove VAR_TEMP_6, 3, MOVE_CRABHAMMER
 	setvar VAR_TEMP_1, 252
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_3, 0
@@ -617,7 +616,7 @@ RyuDebug_SkipTutorial::
 	closemessage
 	msgbox RyuDebug_GiveItemQuery MSGBOX_YESNO
 	compare VAR_RESULT, 1
-	call_if_eq RyuDebug_Init_GiveAllTMs
+	call_if_eq RyuDebug_GiveItems
 	release
 	end
 
@@ -625,7 +624,7 @@ LRT_GameStartVariablesInfoMsg:
 	.string "New Game Flags and Variables Set.$"
 
 RyuDebug_GiveItemQuery:
-	.string "Would you like to have all TMs?$"
+	.string "Would you like many items?$"
 
 RyuNewGameQuery:
 	.string "Would you like to activate the new\ngame scripts?$"
