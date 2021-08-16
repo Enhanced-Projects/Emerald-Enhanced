@@ -15,28 +15,29 @@ script SCFB_Teller{
                     msgbox(format("How much would you like to deposit?"))
                     multichoicegrid(5, 2, MULTI_FBAMOUNTMENU, 2, 1)
                     closemessage
-                    msgbox("Okay, we'll deposit that money for you.\nOne moment please.")
                     specialvar(VAR_TEMP_2, RyuFBDoDeposit)
                     switch (var(VAR_TEMP_2)) {
                     case 0:
+                        msgbox("One moment please...")
+                        delay(20)
+                        closemessage
                         msgbox("You do not have enough money on\nyour person to deposit that amount.")
                         closemessage
                         goto(SCFB_Teller)
                     case 1:
-                    case 4:
+                        msgbox(OkayWeDeposit)
+                        closemessage
+                        delay(20)
                         msgbox("We've deposited ¥{STR_VAR_1}\n into your account.\pYour account now has a balance\nof ¥{STR_VAR_2}.\lHave a nice day!")
                         release
                         end
                     case 2:
-                        msgbox("We cannot process this transaction,\nour computers cannot calculate values\lof that magnitude. Sorry!")
-                        closemessage
+                        msgbox("One moment please...")
+                        delay(20)
+                        msgbox(format("That deposit would put you past the limit of ¥2,000,000,000 per account. We cannot process this transaction. Sorry."))
                         goto(SCFB_Teller)
                     case 3:
-                        msgbox("This deposit would exceed the\nmaximum amount of money we can\lhold for a single person. Sorry.")
-                        closemessage
-                        goto(SCFB_Teller)
-                    case 5:
-                        msgbox("Okay.")
+                        msgbox("Okay.") 
                         goto(SCFB_Teller)
                     }
                 }
@@ -50,26 +51,28 @@ script SCFB_Teller{
                     msgbox(format("So, how much would you like to withdraw?"))
                     multichoicegrid(5, 2, MULTI_FBAMOUNTMENU, 2, 1)
                     closemessage
-                    msgbox("Okay, we'll withdraw that money\nfor you.\pOne moment please.")
+                    msgbox("One moment please...")
                     specialvar(VAR_TEMP_2, RyuFBDoWithdraw)
                     switch (var(VAR_TEMP_2)) {
                         case 0:
                             msgbox("You do not have enough money\nin your account to withdraw\lthat amount.")
                             closemessage
                             goto(SCFB_Teller)
-                        case 2:
                         case 1:
                             msgbox("We've withdrawn ¥{STR_VAR_1}\nfrom your account.\pYour account now has a balance\nof ¥{STR_VAR_2}.\lHave a nice day!")
                             closemessage
                             release
                             end
-                        case 4:
-                        case 3:
-                            msgbox(SpecialWithdrawText)
+                        case 2:
+                            msgbox(format("The withdrawal amount would exceed the amount of money a single person can carry. We can't process this withdrawal. Sorry."))
                             closemessage
                             release
                             end
-                        case 5:
+                        case 3:
+                            msgbox(SpecialWithdrawText)
+                            release
+                            end
+                        case 4:
                             msgbox("Okay.")
                             goto(SCFB_Teller)
                     }
@@ -85,6 +88,12 @@ script SCFB_Teller{
     }
     release
     end
+}
+
+text OkayWeDeposit {
+    "Okay, we'll deposit that money\n"
+    "for you.\p"
+    "One moment please."
 }
 
 text SpecialWithdrawText {
