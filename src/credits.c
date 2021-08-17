@@ -237,7 +237,7 @@ static const u8 gCreditsText_Donorsp16[] = _("FBGunner    JustinD1234");
 static const u8 gCreditsText_Donorsp17[] = _("xBard    3ryce");
 static const u8 gCreditsText_Donorsp18[] = _("Dr Squish    unodostres");
 static const u8 gCreditsText_Donorsp19[] = _("Metaright    Dr");
-static const u8 gCreditsText_Donorsp20[] = _("Dominaeus");
+static const u8 gCreditsText_Donorsp20[] = _("Dominaeus    Cthyla");
 static const u8 gCreditsText_DevelopmentBy[] = _("Primary Developers:");
 
 static const u8 gCreditsText_StoryboardingBy[] = _("Storyboarding by:");
