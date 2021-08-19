@@ -1913,6 +1913,7 @@ int RyuGetPartnerCount(void)//also gives partner based achievements.
     {
         GiveAchievement(ACH_TRUE_ENDING);
         VarSet(VAR_RYU_PARTNER_COUNT, partners);
+        VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
     }
 
     return partners;

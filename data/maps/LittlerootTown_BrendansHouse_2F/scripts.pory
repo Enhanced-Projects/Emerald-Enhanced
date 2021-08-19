@@ -155,6 +155,7 @@ LRT_BrendanNIGHT::
 	drawfullscreenimage SCENEBGBRENDANNIGHT
 	msgbox LRT_BRENDAN_THANKS, MSGBOX_DEFAULT
 	setflag FLAG_RYU_DS_BRENDAN_LOVERS
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	closemessage
 	clearfullscreenimage
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
@@ -193,6 +194,7 @@ LRT_BrendanNight2::
 	fadeinbgm 1	
 	drawfullscreenimage SCENEBGBRENDAN
 	msgbox LRT_BRENDAN_THANKS2 MSGBOX_DEFAULT
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	closemessage
 	clearfullscreenimage
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight

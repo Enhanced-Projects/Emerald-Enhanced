@@ -17,7 +17,8 @@ RyuLegendary_Suicune::
 	release
 	end
 
-	Route114_CaughtSuicune::
+Route114_CaughtSuicune::
+	addvar VAR_RYU_LEGENDARIES_CAUGHT, 1
 	setflag FLAG_RYU_SUICUNE @once this flag is set, the mon will never come back.
 	removeobject 1 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release

@@ -35,6 +35,7 @@ MHAQ_StayingWithCourtney1::
 	applymovement 1, Common_Movement_StepLeft
 	fadescreen FADE_TO_BLACK
 	msgbox MHAQ_PlayerAndCourtney
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	setobjectxy 1, 13, 1
 	closemessage
 	delay 60
@@ -69,6 +70,7 @@ MHAQ_StayingWithCourtney2::
 	fadescreen FADE_TO_BLACK
 	fadeoutbgm 0
 	msgbox MHAQ_PlayerAndCourtneyStayedTogether
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	closemessage
 	delay 30
 	applymovement 1, MHAQ_CourtneyToOtherSide

@@ -8,6 +8,7 @@
 #include "script.h"
 #include "random.h"
 #include "main.h"
+#include "ach_atlas.h"
 
 //DAILY TASKS
 void DoDailyRealEstateTasks(void)
@@ -23,6 +24,7 @@ void DoDailyRealEstateTasks(void)
             SetGameStat(GAME_STAT_INTEREST_RECEIVED, interest); // saves the last earned interest amount, potentially could be more than 65k, so use 32bit number.
             SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, balance + interest);
             FlagSet(FLAG_RYU_INTEREST_ACCRUED);
+            
         }
     }
 
@@ -318,6 +320,8 @@ bool8 CheckIfPlayerIsRealtor(void)
 void SetPlayerRealtorStatus(void)
 {
     gSaveBlock2Ptr->playerIsRealtor = TRUE;
+    GiveAchievement(ACH_REALTOR);
+    VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
 }
 
 void DecrementPropertyRepairTime(void)

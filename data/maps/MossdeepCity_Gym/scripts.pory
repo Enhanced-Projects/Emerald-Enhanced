@@ -7,6 +7,7 @@ MossdeepCity_Gym_EventScript_TateAndLiza:: @ 8220898
 	faceplayer
 	setflag FLAG_RYU_IN_MOSSDEEP_GYM
 	setflag FLAG_RYU_BOSS_SCALE
+	addvar VAR_RYU_GYM_LEADERS_FOUGHT, 1
 	special checkbadgecount
 	switch VAR_RESULT
 	case 0, SABRINA1
@@ -97,6 +98,7 @@ MG_NoRelGymBattle::
 MG_FollowerMatch::
 	msgbox MossdeepCity_Gym_Text_TateAndLizaPreBattle
 	closemessage
+	addvar VAR_RYU_FOLLOWER_BATTLES, 1
 	call RyuFollowerAllySelector
 	choose_mons
 	compare VAR_RESULT, FALSE

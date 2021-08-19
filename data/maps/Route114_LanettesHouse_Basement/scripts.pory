@@ -43,6 +43,7 @@ Ryu_LNH_RomSceneStart::
 	waitmovement 1
 	delay 50
 	msgbox LNH_OnceAgainCoffee
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	closemessage
 	fadescreen 0
 	delay 10
@@ -83,6 +84,7 @@ LNH_AfterStory::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox LNH_AS_YouWakeUp
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	closemessage
 	fadedefaultbgm
 	applymovement OBJ_EVENT_ID_PLAYER, LNH_ExitBed

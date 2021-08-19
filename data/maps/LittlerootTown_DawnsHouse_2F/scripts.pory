@@ -57,6 +57,7 @@ LRT_NIGHT::
 	fadescreen 0
 	fadeinbgm 1
 	msgbox LRT_DAWN_THANKS, MSGBOX_DEFAULT
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	setflag FLAG_RYU_DS_DAWN_LOVERS
 	call_if_set FLAG_RYU_DS_COURTNEY_LOVERS, LRT_CheckCourtneyForRivalNight
 	closemessage
@@ -96,6 +97,7 @@ LRT_NIGHT2::
 	drawfullscreenimage SCENEBGNIGHTDAWN
 	fadeinbgm 1
 	msgbox LRT_DAWN_THANKS2 MSGBOX_DEFAULT
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	closemessage
 	clearfullscreenimage
 	setobjectxy 2, 8, 2

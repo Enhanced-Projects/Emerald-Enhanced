@@ -36,6 +36,7 @@ MHC_MaxieFinalEvent::
 	waitmovement 1
 	msgbox THC_FoundYou
 	closemessage
+	addvar VAR_RYU_FOLLOWER_BATTLES, 1
 	multi_fixed_2_vs_1 TRAINER_STORY_MAXIE, MHC_MaxieDefeated, TRAINER_REL_COURTNEY_2, TRAINER_BACK_PIC_COURTNEY
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_LOST

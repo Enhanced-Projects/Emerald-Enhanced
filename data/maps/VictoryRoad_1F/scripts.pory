@@ -121,7 +121,8 @@ RyuLegendary_Moltres::
 	release
 	end
 
-	RyuLegendary_CaughtMoltres::
+RyuLegendary_CaughtMoltres::
+	addvar VAR_RYU_LEGENDARIES_CAUGHT, 1
 	setflag FLAG_RYU_MOLTRES @once this flag is set, the mon will never come back.
 	removeobject 8 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release

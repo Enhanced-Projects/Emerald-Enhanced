@@ -1277,6 +1277,7 @@ static void CB2_EndTrainerBattle(void)
         else
             {
                 GiveAchievement(ACH_MENTOR);
+                VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
             }
     }
 

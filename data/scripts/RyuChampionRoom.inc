@@ -23,6 +23,7 @@ RyuChampionThrone::
 RCR_FollowerIntroSetup::
 	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_HeartEmote
 	waitmovement OBJ_EVENT_ID_FOLLOWER
+	addvar VAR_RYU_FOLLOWER_ELITE_MATCHES, 1
 	switch VAR_RYU_FOLLOWER_ID
 	case OBJ_EVENT_GFX_TWIN, RCR_FollowerMinnieIntro
 	case OBJ_EVENT_GFX_AQUA_MEMBER_F, RCR_FollowerShellyIntro
@@ -275,13 +276,14 @@ RCR_Joy::
 	goto RCR_SetUpBattle
 
 	
-RCR_SetUpBattle::
+RCR_SetUpBattle:: @@For partners/followers
 	playse SE_DOOR
 	addobject VAR_TEMP_5
 	applymovement VAR_TEMP_5, RCR_ChallengerApproach
 	applymovement OBJ_EVENT_ID_CAMERA, RCR_ReturnToPlayer
 	waitmovement OBJ_EVENT_ID_CAMERA
 	waitmovement VAR_TEMP_5
+	addvar VAR_RYU_FOLLOWER_BATTLES, 1
 	switch VAR_TEMP_5
 	case 1, RCR_ChallengerSteven
 	case 2, RCR_ChallengerNorman

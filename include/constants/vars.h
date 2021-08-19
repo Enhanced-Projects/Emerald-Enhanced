@@ -56,7 +56,7 @@
 #define VAR_SECRET_BASE_MAP                  0x4026
 #define VAR_RYU_AUTOSCALE_MIN_LEVEL          0x4027
 #define VAR_RYU_NGPLUS_COUNT                 0x4028
-#define VAR_CYCLING_ROAD_RECORD_TIME_H       0x4029 // unused now
+#define VAR_RYU_FOLLOWER_ELITE_MATCHES       0x4029 // Number of times e4 was challenged with a follower
 #define VAR_HAPPINESS_STEP_COUNTER           0x402A
 #define VAR_POISON_STEP_COUNTER              0x402B
 #define VAR_RESET_RTC_ENABLE                 0x402C
@@ -114,7 +114,7 @@
 #define VAR_RYU_PARTNER_COUNT                0x405F // Used to track how many partners the player has
 #define VAR_ROUTE101_STATE                   0x4060
 #define VAR_SAVE_FILE_CREATED_ON_VERSION     0x4061 // Unused Var
-#define VAR_ROUTE103_STATE                   0x4062 // Unused Var
+#define VAR_RYU_TIMES_STAYED_WITH_COMPANION  0x4062 // Unused Var
 #define VAR_ROUTE104_STATE                   0x4063
 #define VAR_RYU_GCMS_MOVE1                   0x4064 //GCMS
 #define VAR_RYU_GCMS_MOVE2                   0x4065 // GCMS
@@ -132,11 +132,11 @@
 #define VAR_ROUTE118_STATE                   0x4071
 #define VAR_ROUTE119_STATE                   0x4072
 #define VAR_RYU_PLAYER_BOTANY_SKILL_EXP      0x4073
-#define VAR_ROUTE121_STATE                   0x4074
-#define VAR_ROUTE122_STATE                   0x4075 // Unused Var
+#define VAR_RYU_PROPERTIES_REPAIRED                   0x4074 //How many times the player paid to repair an owned property
+#define VAR_RYU_LEGENDARIES_CAUGHT           0x4075 // Number of legendaries caught.
 #define VAR_ROUTE123_STATE                   0x4076 // Unused Var
 #define VAR_RYU_AUTOLEVEL_MODIFIER           0x4077 // level modifier for autolevel
-#define VAR_ROUTE125_STATE                   0x4078 // Unused Var
+#define VAR_RYU_QUESTS_FINISHED                   0x4078 // Unused Var
 #define VAR_ROUTE126_STATE                   0x4079 // Unused Var
 #define VAR_ROUTE127_STATE                   0x407A // Unused Var
 #define VAR_ROUTE128_STATE                   0x407B
@@ -262,10 +262,10 @@
 #define VAR_SCOTT_FORTREE_CALL_STEP_COUNTER  0x40F3
 #define VAR_ROXANNE_CALL_STEP_COUNTER        0x40F4
 #define VAR_RYU_QUEST_NURSE               0x40F5
-#define VAR_UNUSED_0x40F6                    0x40F6
+#define VAR_RYU_GYM_LEADERS_FOUGHT           0x40F6 //times player fought a gym leader
 #define VAR_RYU_GCMS_SPECIES                 0x40F7
 #define VAR_RYU_GCMS_VALUE                   0x40F8
-#define VAR_UNUSED_0x40F9                    0x40F9//now unused, previously bank APR, bank was removed in 5.0.
+#define VAR_RYU_FOLLOWER_BATTLES             0x40F9//battles fought with partners
 #define VAR_RYU_EXP_BATTERY                  0x40FA
 #define VAR_RYU_NUZLOCKE_WAYSTONE_USES       0x40FB
 #define VAR_RYU_PRICE_MULTIPLIER             0x40FC

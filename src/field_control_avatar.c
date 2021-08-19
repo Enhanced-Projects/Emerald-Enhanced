@@ -275,6 +275,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         return TRUE;
     if (input->tookStep)
     {
+        if (FlagGet(FLAG_RYU_HAS_FOLLOWER))
+            IncrementGameStat(GAME_STAT_STEPS_FOLLOWER);
         IncrementGameStat(GAME_STAT_STEPS);
         IncrementBirthIslandRockStepCount();
         if (TryStartStepBasedScript(&position, metatileBehavior, playerDirection) == TRUE)

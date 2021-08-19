@@ -214,6 +214,10 @@ static const u8 sPokemonTrainerLabel[] = _("Pokemon Trainer");
 static const u8 sPokemonTrainerHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Get more than gen 1.");
 static const u8 sPokemonTrainerDesc[] = _("You are well on your way to becoming a\nPokemon Master!");
 
+static const u8 sRealtorLabel[] = _("Realtor");
+static const u8 sRealtorHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Become a Mogul.");
+static const u8 sRealtorDesc[] = _("You finally unlocked the power of MONEY!\n(Became a Realtor)");
+
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
     [ACH_WHOLE_NEW_WORLD] = {12, 40, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc, sWholeNewWorldAchHint}, //started exploring enhanced hoenn
@@ -270,4 +274,5 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_TOURIST] = {12, 29, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_TOURIST, sTouristLabel, sTouristDesc, sTouristHint},// All exploration achievements GOLD ACHIEVEMENT
     [ACH_CRITCAP] = {30, 33, CATEGORY_BATTLE, ACH_CRITCAP, sCritCapLabel, sCritCapDesc, sCritCapHint},// Got a crtitical capture
     [ACH_POKEMON_TRAINER] = {10, 35, CATEGORY_EXPLORATION, ACH_POKEMON_TRAINER, sPokemonTrainerLabel, sPokemonTrainerDesc, sPokemonTrainerHint},// Captured 151 or more mons/
+    [ACH_REALTOR] = {45, 33, CATEGORY_QUESTING, ACH_REALTOR, sRealtorLabel, sRealtorDesc, sRealtorHint},// Captured 151 or more mons/
 };

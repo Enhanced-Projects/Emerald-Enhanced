@@ -140,6 +140,7 @@ LH_LeafNight:
 	fadedefaultbgm
 	fadescreen 0
 	msgbox LH_LeafNightSceneMsg2 MSGBOX_DEFAULT
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	closemessage
 	applymovement 2, Common_Movement_HeartEmote
 	waitmovement 2

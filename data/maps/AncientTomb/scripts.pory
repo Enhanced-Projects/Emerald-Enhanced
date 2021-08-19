@@ -198,6 +198,7 @@ AT_SV_Battle::
 	setvar VAR_RYU_QUEST_LANA, 86
 	savebgm MUS_RG_NANADUNGEON
 	setvar VAR_RYU_AUTOSCALE_MIN_LEVEL, 115
+	addvar VAR_RYU_FOLLOWER_BATTLES, 1
 	special SavePlayerParty
 	trainerbattle 10 TRAINER_RED, 0, NULL, AT_SV_GaryBattleDefeat
 	setvar VAR_0x8004, SPECIAL_BATTLE_MULTI
