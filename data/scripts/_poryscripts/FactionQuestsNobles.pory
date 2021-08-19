@@ -187,6 +187,7 @@ script RyuNoblesSpecialRewardScript {
     msgbox("I see you were able to get the\nproblematic man to vacate the\lpremeses.\pIt seems like you have a knack for\nreal estate, but it's not for me\lto decide.\pHere's your pay for the job.\nExcellent work, Statesman.")
     addmoney(15000)
     setflag(FLAG_RYU_COMPLETED_NOBLES_SPECIAL_QUEST)
+    addvar(VAR_RYU_QUESTS_FINISHED, 1)
     clearflag(NOBLES_SPECIAL_MISSION_IN_PROGRESS)
     release
     end

@@ -120,6 +120,7 @@ script SCFB_Manager{
             msgbox("You may now buy, sell, rent, or use\nproperties as you like.\pI look forward to a profitable\nrelationship.")
             clearflag(FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS)
             setflag(FLAG_RYU_COMPLETED_NOBLES_FINAL_QUEST)
+            FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS
             release
             end
         }
