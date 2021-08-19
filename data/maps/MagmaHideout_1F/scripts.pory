@@ -56,10 +56,6 @@ MagmaHideout_1F_Text_Grunt2PostBattle: @ 8239ACD
 
 @==================================================================================================Aqua scripts
 MH_Shortcut::
-	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_ne ryu_end
-	warpsilent MAP_MAGMA_HIDEOUT_4F, 0, 46, 7
 	release
 	end
 	

@@ -295,10 +295,6 @@ NM_SpecCheck::
 	end
 
 NM_DevShortcut::
-	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_ne ryu_end
-	warpsilent MAP_NEW_MAUVILLE_INSIDE, 255, 21, 4
 	release
 	end
 

@@ -580,9 +580,7 @@ RyuDebug_QuickItemFlagStart::
 	end
 
 RyuDebug_SkipTutorial::
-	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_ne ryu_end
+	goto_if_unset FLAG_RYU_DEV_MODE, ryu_end
 	setvar VAR_LITTLEROOT_INTRO_STATE, 10
 	setflag FLAG_RYU_MET_RIVAL_LITTLEROOT
 	setflag FLAG_SYS_B_DASH
