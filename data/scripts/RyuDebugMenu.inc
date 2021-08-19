@@ -5,7 +5,7 @@ RyuDevSwitch::
 	goto_if_ne ryu_end
 	setflag FLAG_RYU_DEV_MODE
 	setflag FLAG_RYU_CHEATS_USED
-	clearflag FLAG_HIDE_103_TEST_TRAINER
+	@clearflag FLAG_HIDE_103_TEST_TRAINER
 	msgbox RyuNowDeveloper MSGBOX_SIGN
 	end
 	
