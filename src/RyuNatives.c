@@ -321,7 +321,7 @@ void RyuBrendanGiftPoke(void)
 
 void RyuDevCheck(void)
 {
-    if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
+    if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)) && (JOY_HELD(B_BUTTON)))
         gSpecialVar_Result = 69;
 }
 
