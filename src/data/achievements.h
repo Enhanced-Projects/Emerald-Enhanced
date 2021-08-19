@@ -200,7 +200,7 @@ static const u8 sTheUniversalistDesc[] = _("You know of the plights of all walks
 
 static const u8 sLoremasterLabel[] = _("Lore Master");
 static const u8 sLoremasterHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Quest completer.");
-static const u8 sLoremasterDesc[] = _("You have been everywhere. Done everything.\nAnd yet, you still want more!\n(Obtained all Quest Completion Achievements.)");
+static const u8 sLoremasterDesc[] = _("You have been everywhere. Done everything.\nAnd yet, you still want more!\n(Obtained all Quest Completion Achievements)");
 
 static const u8 sTouristLabel[] = _("Tourist");
 static const u8 sTouristHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}You could fill out a map!");
@@ -217,6 +217,18 @@ static const u8 sPokemonTrainerDesc[] = _("You are well on your way to becoming 
 static const u8 sRealtorLabel[] = _("Realtor");
 static const u8 sRealtorHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Become a Mogul.");
 static const u8 sRealtorDesc[] = _("You finally unlocked the power of MONEY!\n(Became a Realtor)");
+
+static const u8 sMillionaireLabel[] = _("Millionaire");
+static const u8 sMillionaireHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Become a Millionaire.");
+static const u8 sMillionaireDesc[] = _("You've exceeded expectations!\n(Achieve a Net Worth of 1 million or more.)");
+
+static const u8 sBillionaireLabel[] = _("Money Bags");
+static const u8 sBillionaireHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Get filty rich.");
+static const u8 sBillionaireDesc[] = _("You practically print your own money!\n(Net worth of 100 million or more.)");
+
+static const u8 sSlumLordLabel[] = _("Slum Lord");
+static const u8 sSlumLordHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Buy all properties.");
+static const u8 sSlumLordDesc[] = _("You own every rental property in Hoenn!\nAre you a good landlord?\n(Own all rental properties.)");
 
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
@@ -274,5 +286,8 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_TOURIST] = {12, 29, CATEGORY_EXPLORATION | CATEGORY_FLAG_GOLD, ACH_TOURIST, sTouristLabel, sTouristDesc, sTouristHint},// All exploration achievements GOLD ACHIEVEMENT
     [ACH_CRITCAP] = {30, 33, CATEGORY_BATTLE, ACH_CRITCAP, sCritCapLabel, sCritCapDesc, sCritCapHint},// Got a crtitical capture
     [ACH_POKEMON_TRAINER] = {10, 35, CATEGORY_EXPLORATION, ACH_POKEMON_TRAINER, sPokemonTrainerLabel, sPokemonTrainerDesc, sPokemonTrainerHint},// Captured 151 or more mons/
-    [ACH_REALTOR] = {45, 33, CATEGORY_QUESTING, ACH_REALTOR, sRealtorLabel, sRealtorDesc, sRealtorHint},// Captured 151 or more mons/
+    [ACH_REALTOR] = {45, 33, CATEGORY_QUESTING, ACH_REALTOR, sRealtorLabel, sRealtorDesc, sRealtorHint},// Unlock Real Estate
+    [ACH_MILLIONAIRE] = {8, 45, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_MILLIONAIRE, sMillionaireLabel, sMillionaireDesc, sMillionaireHint},// 1 mirion dorars
+    [ACH_MONEYBAGS] = {16, 45, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_MILLIONAIRE, sBillionaireLabel, sBillionaireDesc, sBillionaireHint},// 1 birion dorars
+    [ACH_SLUM_LORD] = {16, 35, CATEGORY_QUESTING, ACH_SLUM_LORD, sSlumLordLabel, sSlumLordDesc, sSlumLordHint},// Own all NUM_PROPERTIES properties
 };

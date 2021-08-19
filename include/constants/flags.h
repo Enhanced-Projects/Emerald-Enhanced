@@ -1716,7 +1716,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 55
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 58
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -1776,9 +1776,9 @@
 #define ACH_CRITCAP  52
 #define ACH_POKEMON_TRAINER  53//player has 151 mons
 #define ACH_REALTOR  54 //Finished the Nobles primary quest
-#define ACH_MILLIONAIRE  55
-#define ACH_BILLIONAIRE  56
-#define ACH_UNUSED_58  57
+#define ACH_MILLIONAIRE  55 //1m+ net worth
+#define ACH_MONEYBAGS  56 //100m+ net worth
+#define ACH_SLUM_LORD  57 ///own all properties
 #define ACH_UNUSED_59  58
 #define ACH_UNUSED_60  59
 #define ACH_UNUSED_61  60

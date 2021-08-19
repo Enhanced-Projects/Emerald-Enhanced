@@ -547,12 +547,22 @@ u8 * GetNetWorth(u8 * const buffer)
         if (CheckOwnedProperty(id))
             totalPropertyValue += gRyuPropertyData[id][0];
     }
+    if (totalPropertyValue + balance + money >= 1000000)
+        GiveAchievement(ACH_MILLIONAIRE);
+
+    if (totalPropertyValue + balance + money >= 1000000000)
+        GiveAchievement(ACH_MONEYBAGS);
+
     return ConvertUIntToDecimalStringN(buffer, balance + money + totalPropertyValue, STR_CONV_MODE_LEFT_ALIGN, 10);
 }
 
 u8 * GetPropertiesOwned(u8 * const buffer)
 {
-    return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_NUM_OWNED_PROPERTIES), STR_CONV_MODE_LEFT_ALIGN, 2);
+    u8 propertiesOwned = (VarGet(VAR_RYU_NUM_OWNED_PROPERTIES));
+
+    if (propertiesOwned == NUM_PROPERTIES)
+        GiveAchievement(ACH_SLUM_LORD);
+    return ConvertIntToDecimalStringN(buffer, propertiesOwned, STR_CONV_MODE_LEFT_ALIGN, 2);
 }
 
 static const struct JournalStatData sJournalStatsGeneral[] =
