@@ -359,6 +359,8 @@ ACO_ShellyNightScene::
 	setflag FLAG_RYU_DS_SHELLY_PARTNERS
 	setflag FLAG_RYU_DS_HAS_PARTNER
 	ach give ACH_WET_N_WILD
+	special HealPlayerParty
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	setflag FLAG_RYU_AQUA_LINE_DONE
 	setvar VAR_RYU_QUEST_AQUA, 161 @Aqua line finished.
 	special DrawWholeMapView
@@ -368,6 +370,7 @@ ACO_ShellyNightScene::
 ACO_ShellyAfterStory::
 	lockall
 	ach give ACH_EYE_OF_STORM
+	addvar VAR_RYU_QUESTS_FINISHED, 1
 	msgbox ACO_ShellyAfterstoryIntro
 	closemessage
 	msgbox ACO_ShellyStayTheNightQuery, MSGBOX_YESNO
@@ -413,6 +416,8 @@ ACO_Night2Scene::
 	applymovement OBJ_EVENT_ID_CAMERA, ACO_CameraPan2
 	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
+	special HealPlayerParty
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	fadescreenspeed 0, 10
 	playbgm MUS_HIGHTOWN, 0
 	release

@@ -41,6 +41,7 @@ RyuBotanyTree_GiveOneItem::
     callnative BotanyTreeChop
     giveitem VAR_TEMP_0, 1
     closemessage
+    addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL@Player gains 1 exp per level of botany per botany check.
     call RyuBotany_CheckLevelUp
     return
 
@@ -52,7 +53,7 @@ RyuBotanyGrass_GiveOneItem::
     bufferitemname 0, VAR_TEMP_0
     buffernumberstring 1, VAR_TEMP_5
     msgbox RyuBotany_RewardMessage
-    addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL@Player gains 1 exp per level of botany per botany check.
+    addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL
     call RyuBotany_CheckLevelUp
     closemessage
     return

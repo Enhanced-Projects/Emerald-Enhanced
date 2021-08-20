@@ -47,7 +47,6 @@ Route121_EventScript_AquaGruntsMoveOut:: @ 81F5E18
 	removeobject 12
 	removeobject 13
 	removeobject 14
-	setvar VAR_ROUTE121_STATE, 1
 	releaseall
 	end
 

@@ -6,6 +6,7 @@ RustboroCity_Gym_EventScript_Roxanne:: @ 8212F31
 	lock
 	faceplayer
 	setflag FLAG_RYU_BOSS_SCALE
+	addvar VAR_RYU_GYM_LEADERS_FOUGHT, 1
 	special checkbadgecount
     switch VAR_RESULT
 	case 0, ROXANNE1
@@ -96,6 +97,7 @@ RG_NoRelGymBattle::
 RG_FollowerMatch::
 	msgbox RustboroCity_Gym_Text_RoxannePreBattle
 	closemessage
+	addvar VAR_RYU_FOLLOWER_BATTLES, 1
 	call RyuFollowerAllySelector
 	choose_mons
 	compare VAR_RESULT, FALSE

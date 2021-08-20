@@ -295,10 +295,6 @@ NM_SpecCheck::
 	end
 
 NM_DevShortcut::
-	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_ne ryu_end
-	warpsilent MAP_NEW_MAUVILLE_INSIDE, 255, 21, 4
 	release
 	end
 
@@ -398,7 +394,8 @@ RyuLegendary_Zapdos::
 	release
 	end
 
-	RyuLegendary_CaughtZapdos::
+RyuLegendary_CaughtZapdos::
+	addvar VAR_RYU_LEGENDARIES_CAUGHT, 1
 	setflag FLAG_RYU_ZAPDOS @once this flag is set, the mon will never come back.
 	removeobject 9 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release

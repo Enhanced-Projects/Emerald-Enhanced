@@ -47,6 +47,7 @@ R128U_Kyogre::
 	end
 
 RyuLegendary_CaughtKyogre128::
+	addvar VAR_RYU_LEGENDARIES_CAUGHT, 1
 	setflag FLAG_RYU_KYOGRE
 	removeobject 1
 	setvar VAR_RYU_QUEST_AQUA, 149@Player got Kyogre.

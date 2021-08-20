@@ -15,10 +15,8 @@ RyuBufferPartyMonNames::
 
 RyuExpBattery::
 	lock
-	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_eq RyuExpBatteryDevMode
-	goto RyuExpBatteryContd
+	goto_if_unset FLAG_RYU_DEV_MODE, RyuExpBatteryContd
+	goto RyuExpBatteryDevMode
 	
 RyuExpBatteryContd::
 	buffernumberstring 0, VAR_RYU_EXP_BATTERY

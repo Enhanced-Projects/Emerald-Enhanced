@@ -87,6 +87,7 @@ SootopolisCity_Gym_1F_EventScript_Juan:: @ 8224F44
 	lock
 	faceplayer
 	setflag FLAG_RYU_BOSS_SCALE
+	addvar VAR_RYU_GYM_LEADERS_FOUGHT, 1
 	special checkbadgecount
     switch VAR_RESULT
     case 0, Juan1
@@ -176,6 +177,7 @@ SG_NoRelGymBattle::
 SG_FollowerMatch::
 	msgbox SootopolisCity_Gym_1F_Text_JuanPreBattle
 	closemessage
+	addvar VAR_RYU_FOLLOWER_BATTLES, 1
 	call RyuFollowerAllySelector
 	choose_mons
 	compare VAR_RESULT, FALSE

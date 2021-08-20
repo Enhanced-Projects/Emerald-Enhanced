@@ -971,6 +971,7 @@ r110_SelectedAdequateItem::
 	changefactionstanding FACTION_POKEFANS, 30, FALSE
 	setflag FLAG_RYU_HELPED_POKEFAN_PIKACHU
 	ach give ACH_FIELD_MEDIC
+	addvar VAR_RYU_QUESTS_FINISHED, 1
 	release
 	end
 
@@ -980,6 +981,7 @@ r110_SelectedBestItem::
 	changefactionstanding FACTION_POKEFANS, 50, FALSE
 	setflag FLAG_RYU_HELPED_POKEFAN_PIKACHU
 	ach give ACH_FIELD_MEDIC
+	addvar VAR_RYU_QUESTS_FINISHED, 1
 	release
 	end
 

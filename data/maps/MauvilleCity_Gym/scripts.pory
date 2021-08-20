@@ -78,6 +78,7 @@ MauvilleCity_Gym_EventScript_Wattson:: @ 820DEEB
 	lock
 	faceplayer
 	setflag FLAG_RYU_BOSS_SCALE
+	addvar VAR_RYU_GYM_LEADERS_FOUGHT, 1
 	special checkbadgecount
     switch VAR_RESULT
 	case 0, WATTSON1
@@ -166,6 +167,7 @@ MVG_NoRelGymBattle::
 MVG_FollowerMatch::
 	msgbox MauvilleCity_Gym_Text_WattsonPreBattle
 	closemessage
+	addvar VAR_RYU_FOLLOWER_BATTLES, 1
 	call RyuFollowerAllySelector
 	choose_mons
 	compare VAR_RESULT, FALSE

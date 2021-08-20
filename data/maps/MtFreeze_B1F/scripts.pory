@@ -21,6 +21,7 @@ MtFreeze_B1F_Heatran::
 	end
 
 FP_HeatranCaught::
+	addvar VAR_RYU_LEGENDARIES_CAUGHT, 1
 	setflag FLAG_RYU_HEATRAN
 	removeobject 2 @Put the porymap object ID here
 	release

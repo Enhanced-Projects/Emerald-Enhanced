@@ -604,13 +604,6 @@
       "elevation": 0,
       "dest_map": "MAP_ROUTE119_HOUSE",
       "dest_warp_id": 0
-    },
-    {
-      "x": 11,
-      "y": 3,
-      "elevation": 0,
-      "dest_map": "MAP_ROUTE119_LORWYNS_HOUSE",
-      "dest_warp_id": 0
     }
   ],
   "coord_events": [
@@ -988,6 +981,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "RealEstate_EventScript_ForSaleSign"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RyuAlchemy_LorwynsDoor"
     }
   ]
 }

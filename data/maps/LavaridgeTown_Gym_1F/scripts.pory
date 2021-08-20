@@ -50,6 +50,7 @@ LavaridgeTown_Gym_1F_EventScript_EndCheckHideTrainers:: @ 81FE78B
 LavaridgeTown_Gym_1F_EventScript_Flannery:: @ 81FE78C
 	lock
 	setflag FLAG_RYU_BOSS_SCALE
+	addvar VAR_RYU_GYM_LEADERS_FOUGHT, 1
 	special checkbadgecount
     switch VAR_RESULT
 	case 0, FLANNERY1
@@ -160,6 +161,7 @@ LG_NoRelGymBattle::
 LG_FollowerMatch::
 	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPreBattle
 	closemessage
+	addvar VAR_RYU_FOLLOWER_BATTLES, 1
 	call RyuFollowerAllySelector
 	choose_mons
 	compare VAR_RESULT, FALSE

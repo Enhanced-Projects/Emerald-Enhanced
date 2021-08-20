@@ -120,6 +120,7 @@ LCPC_NurseNight::
 	clearfullscreenimage
 	fadescreen FADE_FROM_BLACK
 	msgbox LCPC_NurseStayNight1
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	closemessage
 	applymovement 5, LCPC_NurseToBed
 	waitmovement 5
@@ -137,6 +138,7 @@ LCPC_NurseNight2::
 	clearfullscreenimage
 	goto_if_ne LCPC_NurseFollowerQuery
 	msgbox LCPC_NurseStayNight2
+	addvar VAR_RYU_TIMES_STAYED_WITH_COMPANION, 1
 	closemessage
 	applymovement 5, LCPC_NurseToBed
 	waitmovement 5
@@ -180,6 +182,7 @@ LCPC_ContinueNightScene1::
 	setflag FLAG_TEMP_9
 	setflag FLAG_RYU_DS_JOY_PARTNERS
 	ach give ACH_FWB
+	addvar VAR_RYU_QUESTS_FINISHED, 1
 	addvar VAR_RYU_PARTNER_COUNT, 1
 	release
 	end

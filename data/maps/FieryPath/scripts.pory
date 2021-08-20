@@ -29,6 +29,7 @@ RyuLegendary_Entei::
 	end
 
 RyuLegendary_CaughtEntei::
+	addvar VAR_RYU_LEGENDARIES_CAUGHT, 1
 	setflag FLAG_RYU_ENTEI @once this flag is set, the mon will never come back.
 	removeobject 9 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release

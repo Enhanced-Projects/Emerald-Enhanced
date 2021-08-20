@@ -3,10 +3,6 @@ FallarborTown_CozmosHouse_MapScripts:: @ 8200F12
 	.byte 0
 
 FT_FixCozmo::
-	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_ne ryu_end
-	clearflag FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO
 	release
 	end
 

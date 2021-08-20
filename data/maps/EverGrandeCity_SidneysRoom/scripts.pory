@@ -18,9 +18,7 @@ EverGrandeCity_SidneysRoom_OnLoad: @ 8227F1D
 	end
 	
 EGC_SkipE4::
-	special RyuDevCheck
-	compare VAR_RESULT, 69
-	goto_if_ne ryu_end
+	goto_if_unset FLAG_RYU_DEV_MODE, ryu_end
 	warpsilent MAP_EVER_GRANDE_CITY_HALL4, 255, 5, 4
 	release
 	end

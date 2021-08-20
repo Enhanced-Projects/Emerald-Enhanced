@@ -542,6 +542,7 @@ DC_CorporateInterrogation4::
 	setflag FLAG_RYU_DEVON_LINE_FINISHED
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	ach give ACH_CORPORATE_SHILL
+	addvar VAR_RYU_QUESTS_FINISHED, 1
 	releaseall
 	end
 	

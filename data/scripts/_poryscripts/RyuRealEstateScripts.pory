@@ -209,6 +209,7 @@ script AskPlayerToRepairProperty {
             callnative(RyuBufferPropertyDamageData)
             msgbox("{PLAYER} paid ¥{STR_VAR_3} to repair\n{STR_VAR_2}.")
             setflag(FLAG_RYU_PROPERTY_UNDERGOING_MAINTENANCE)
+            addvar(VAR_RYU_PROPERTIES_REPAIRED, 1)
             callnative(DecrementPropertyRepairTime)
             callnative(RyuRE_TakeRepairMoney)
             release

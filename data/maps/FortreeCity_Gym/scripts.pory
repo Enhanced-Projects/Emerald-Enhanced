@@ -7,6 +7,7 @@ FortreeCity_Gym_EventScript_Winona:: @ 82165C8
     lock
     faceplayer
 	setflag FLAG_RYU_BOSS_SCALE
+	addvar VAR_RYU_GYM_LEADERS_FOUGHT, 1
     special checkbadgecount
     switch VAR_RESULT
 	case 0, WINONA1
@@ -115,6 +116,7 @@ FG_NoRelGymBattle::
 FG_FollowerMatch::
 	msgbox FortreeCity_Gym_Text_WinonaDefeat
 	closemessage
+	addvar VAR_RYU_FOLLOWER_BATTLES, 1
 	call RyuFollowerAllySelector
 	choose_mons
 	compare VAR_RESULT, FALSE

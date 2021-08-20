@@ -79,7 +79,8 @@ R130_Kyogre::
 	release
 	end
 
-	RyuLegendary_CaughtKyogreRoute130::
+RyuLegendary_CaughtKyogreRoute130::
+	addvar VAR_RYU_LEGENDARIES_CAUGHT, 1
 	setflag FLAG_RYU_KYOGRE
 	removeobject 4 
 	pokenavcall R130_Kyogre_ReturnToMossdeep

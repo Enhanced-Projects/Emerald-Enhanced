@@ -6,6 +6,7 @@ DewfordTown_Gym_EventScript_Brawly:: @ 81FC7C2
 	lock
 	faceplayer
 	setflag FLAG_RYU_BOSS_SCALE
+	addvar VAR_RYU_GYM_LEADERS_FOUGHT, 1
 	special checkbadgecount
 	switch VAR_RESULT
 	case 0, brawly1
@@ -95,6 +96,7 @@ DFG_NoRelGymBattle::
 DFG_FollowerMatch::
 	msgbox DewfordTown_Gym_Text_BrawlyPreBattle
 	closemessage
+	addvar VAR_RYU_FOLLOWER_BATTLES, 1
 	call RyuFollowerAllySelector
 	choose_mons
 	compare VAR_RESULT, FALSE

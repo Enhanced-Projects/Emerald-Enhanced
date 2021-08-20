@@ -62,7 +62,8 @@ RyuLegendary_Articuno::
 	release
 	end
 
-	RyuLegendary_CaughtArticuno::
+RyuLegendary_CaughtArticuno::
+	addvar VAR_RYU_LEGENDARIES_CAUGHT, 1
 	setflag FLAG_RYU_ARTICUNO @once this flag is set, the mon will never come back.
 	removeobject 3 @Put the porymap object ID here, this will be permanent since the main flag for legendary is set.
 	release

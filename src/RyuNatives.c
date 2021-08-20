@@ -321,7 +321,7 @@ void RyuBrendanGiftPoke(void)
 
 void RyuDevCheck(void)
 {
-    if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
+    if ((JOY_HELD(L_BUTTON)) && (JOY_HELD(R_BUTTON)) && (JOY_HELD(B_BUTTON)))
         gSpecialVar_Result = 69;
 }
 
@@ -1913,6 +1913,7 @@ int RyuGetPartnerCount(void)//also gives partner based achievements.
     {
         GiveAchievement(ACH_TRUE_ENDING);
         VarSet(VAR_RYU_PARTNER_COUNT, partners);
+        VarSet(VAR_RYU_QUESTS_FINISHED, (VarGet(VAR_RYU_QUESTS_FINISHED) + 1));
     }
 
     return partners;

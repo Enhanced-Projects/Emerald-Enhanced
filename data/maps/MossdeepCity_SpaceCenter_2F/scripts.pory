@@ -450,6 +450,7 @@ SPC_Afterstory:
 	msgbox SPC_LineCompleted
 	setflag FLAG_RYU_DEVON_LINE_FINISHED
 	ach give ACH_ASTRONOMICAL
+	addvar VAR_RYU_QUESTS_FINISHED, 1
 	release
 	end
 	
