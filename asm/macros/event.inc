@@ -1087,35 +1087,22 @@
 	.2byte \max
 	.endm
 
-	@ Adds value to the player's money.
-	@ Specify Var = 1 to use the value of a variable instead of a direct number.
-	@ pointer must be specified as a SaveBlock var, and a value must be loaded into it. (setvar prior)
-	.macro addmoney value:req, var=0, pointer=0x0
+	@ Adds value to the player's money. Takes a 32bit number.
+	.macro addmoney value:req
 	.byte 0x90
 	.4byte \value
-	.byte \var
-	.2byte \pointer
 	.endm
 
-	@ Subtracts value from the player's money. 
-	@ Specify Var = 1 to use the value of a variable instead of a direct number.
-	@ pointer must be specified as a SaveBlock var, and a value must be loaded into it. (setvar prior)
-	.macro removemoney value:req, var=0, pointer=0x0
+	@ Subtracts value from the player's money. Takes a 32bit number.
+	.macro removemoney value:req
 	.byte 0x91
 	.4byte \value
-	.byte \var
-	.2byte \pointer
 	.endm
 
-	@ If check is 0x00, this command will check if the player has money >= value; VAR_RESULT is set to TRUE if the player 
-	@ has enough money, or FALSE if they do not.
-	@ Specify Var = 1 to use the value of a variable instead of a direct number.
-	@ pointer must be specified as a SaveBlock var, and a value must be loaded into it. (setvar prior)
-	.macro checkmoney value:req, var=0, pointer=0x0
+	@ If check is 0x00, this command will check if the player has money >= value. Takes a 32bit number.
+	.macro checkmoney value:req
 	.byte 0x92
 	.4byte \value
-	.byte \var
-	.2byte \pointer
 	.endm
 
 	@ Spawns a secondary box showing how much money the player has.
