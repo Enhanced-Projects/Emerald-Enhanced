@@ -84,7 +84,7 @@ RT_Rustboro::
 	
 RT_Verdanturf::
     goto_if_unset FLAG_VISITED_VERDANTURF_TOWN, RT_NoFlag
-	warpteleport MAP_VERDANTURF_TOWN, 255, 13, 6
+	warpteleport MAP_VERDANTURF_TOWN, 255, 13, 25
 	waitstate
 	
 RT_Slateport::
