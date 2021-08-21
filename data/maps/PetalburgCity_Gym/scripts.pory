@@ -56,6 +56,9 @@ PBG_PlayerNotReadyText:
     .string "Come back when you are stronger!$"
 
 PG_Reset::
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	setvar VAR_PETALBURG_GYM_STATE, 10
 	setvar VAR_TEMP_8, 5
 	special checkbadgecount
