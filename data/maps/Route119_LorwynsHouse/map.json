@@ -29,23 +29,27 @@
     }
   ],
   "warp_events": [
+
+  ],
+  "coord_events": [
     {
+      "type": "trigger",
       "x": 3,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE119",
-      "dest_warp_id": 2
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RyuAlchemy_LorwynsHouseExitTrigger"
     },
     {
+      "type": "trigger",
       "x": 4,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE119",
-      "dest_warp_id": 2
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RyuAlchemy_LorwynsHouseExitTrigger"
     }
-  ],
-  "coord_events": [
-
   ],
   "bg_events": [
 

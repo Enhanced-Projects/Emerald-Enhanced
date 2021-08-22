@@ -258,13 +258,6 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-    additem ITEM_BLUE_APRICORN, 10
-    additem ITEM_WHITE_APRICORN, 10
-    additem ITEM_YELLOW_APRICORN, 10
-    additem ITEM_BLACK_APRICORN, 10
-    additem ITEM_RED_APRICORN, 10
-    additem ITEM_GREEN_APRICORN, 10
-    additem ITEM_PINK_APRICORN, 10
 	release
 	end
 

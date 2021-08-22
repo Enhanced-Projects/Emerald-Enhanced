@@ -2,3 +2,8 @@ raw `
 Route119_LorwynsHouse_MapScripts::
 	.byte 0
 `
+script RyuAlchemy_LorwynsHouseExitTrigger {
+	lock
+	warpsilent(MAP_ROUTE119, 255, 11, 4)
+	waitstate
+}
