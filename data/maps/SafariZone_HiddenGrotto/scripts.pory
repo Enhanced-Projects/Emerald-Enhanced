@@ -19,6 +19,7 @@ SZ_HG_Continue::
 	goto_if_ne SZ_HG_ReturnQuery
 	playfanfare MUS_FANFA5
 	msgbox SZ_HG_MewTwoJoinedParty
+	givepokedexflag SPECIES_MEWTWO, TRUE
 	waitfanfare
 	closemessage
 	setflag FLAG_RYU_MEWTWO_OBTAINED
