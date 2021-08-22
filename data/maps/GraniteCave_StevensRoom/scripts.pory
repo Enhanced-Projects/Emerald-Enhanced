@@ -16,10 +16,6 @@ GraniteCave_StevensRoom_EventScript_Steven:: @ 822DC7B
 	additem ITEM_TM47
 	compare VAR_RESULT, FALSE
 	call_if_eq GraniteCave_StevensRoom_EventScript_BagFull
-	playfanfare MUS_ME_TORE_EYE
-	msgbox GraniteCave_StevensRoom_Text_RegisteredSteven, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
 	delay 30
 	msgbox GraniteCave_StevensRoom_Text_IveGotToHurryAlong, MSGBOX_DEFAULT
 	closemessage

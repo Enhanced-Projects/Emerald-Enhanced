@@ -2071,7 +2071,7 @@ void RyuGiveDevMon(void)
     u16 i = 0;
     u8 ev = 255;
     u8 iv = 31;
-    u8 lv = BASE_MAX_LEVEL;
+    u8 lv = TRUE_MAX_LEVEL;
     u8 what = 0;
     u8 ribbon = TRUE;
 

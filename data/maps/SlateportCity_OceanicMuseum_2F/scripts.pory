@@ -291,9 +291,8 @@ OM_SternExit:
 OM_SetupSternForDevon::
 OM_ReEnableStern::
 	setvar VAR_TEMP_5, 10
+	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 17
 	goto_if_set FLAG_RYU_DEVON_STERN_EVENT_DONE, OM_FinishedSternEvent
-	compare VAR_RYU_QUEST_AQUA, 70
-	goto_if_ge ryu_end
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 17 @Player is on second floor to speak with Stern.
 	addobject 4
 	end
@@ -335,6 +334,7 @@ OM_ArchieSceneEnd::
 	waitmovement 4
 	msgbox OM_IllLetYouGetAway
 	closemessage
+	removeobject 6
 	playse SE_KAIDAN
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	msgbox OM_ThanksForProtecting
