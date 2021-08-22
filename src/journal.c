@@ -30,6 +30,7 @@
 #include "constants/songs.h"
 #include "constants/items.h"
 #include "RyuRealEstate.h"
+#include "pokedex.h"
 
 static const u8 sJournalBGMap[] = INCBIN_U8("graphics/journal/journal_tiles.bin");
 static const u8 sJournalBGTiles[] = INCBIN_U8("graphics/journal/journal_tiles.4bpp");
@@ -58,6 +59,7 @@ enum // much window, such complexity
     WIN_JOURNAL_TRAINER_NAME,
     WIN_JOURNAL_TRAINER_ID,
     WIN_JOURNAL_TRAINER_MONEY,
+    WIN_JOURNAL_PAGE_NAME,
     COUNT_JOURNAL_WINDOWS
 };
 
@@ -128,6 +130,16 @@ static const struct WindowTemplate sJournalWindowTemplate[] =
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 329,
+   },
+   [WIN_JOURNAL_PAGE_NAME] =
+   {
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 4,
+        .width = 28,
+        .height = 2,
+        .paletteNum = 15,
+        .baseBlock = 351,
    },
     DUMMY_WIN_TEMPLATE
 };
@@ -382,54 +394,46 @@ void CB2_OpenJournal(void)
 #define TOP_SPACING 17
 #define LEFT_MIDDLE 112
 
-//Game stats
-const static u8 sText_BerriesPlanted[] = _("Berries Planted");
-const static u8 sText_TotalBattles[] = _("Total Battles");
-const static u8 sText_PkmnCaptures[] = _("Pokemon Captures");
-const static u8 sText_EggsHatched[] = _("Eggs Hatched");
-const static u8 sText_PkmnEvolved[] = _("Pokemon Evolved");
-const static u8 sText_BattlesWon[] = _("Battles Won");
-const static u8 sText_RibbonsReceived[] = _("Ribbons Received");
-
-const static u8 sText_ContestsWon[] = _("Contests Won");
-const static u8 sText_ContestsEntered[] = _("Contests Entered");
-
-//SaveBlock Vars
-const static u8 sText_NumPartners[] = _("Num. Partners");
-
-const static u8 sText_MiningSkill[] = _("Mining Skill");
-const static u8 sText_MiningExp[] = _("Mining Exp");
-
-const static u8 sText_BotanySkill[] = _("Botany Skill");
-const static u8 sText_BotanySkillExp[] = _("Botany Skill Exp"); // Botany Skill Exp? Botany Exp? idk
-
-const static u8 sText_AlchemySkill[] = _("Alchemy Skill");
-const static u8 sText_AlchemyExp[] = _("Alchemy Exp");
-
-const static u8 sText_KOs[] = _("KOs");
-
-const static u8 sText_TitleDefenseWins[] = _("Title Defense Wins");
-
-const static u8 sText_Achievements[] = _("Achievements");
-
-const static u8 sText_ExpInDrive[] = _("EXP Stored in Drive");
-
-const static u8 sText_Money[] = _("Money");
-const static u8 sText_BadgesEarned[] = _("Badges Earned");
-
-const static u8 sText_PropertiesOwned[] = _("Properties Owned");
-const static u8 sText_NetWorth[] = _("Net Worth");
-const static u8 sText_BankBalance[] = _("Bank Bal"); //had to shorten it because 10 digits
-
-const static u8 sText_TrainerNameId[] = _("Trainer Name   {PLAYER}      Badges Earned   {STR_VAR_1}\nTrainer Id       {STR_VAR_2}       Money   {STR_VAR_3}");
+enum
+{
+    JOURNALSTAT_GAME_STAT,
+    JOURNALSTAT_VARIABLE,
+    JOURNALSTAT_CUSTOM,
+};
 
 struct JournalStatData
 {
     const u8 * statName;
-    u8 * (*statValueStrFunc)(u8 * const buffer);
-    u8 numberCount; // UNUSED
-    u8 hideOnN1; // N1 = -1 = 0xFFFFFFFF // UNUSED
+    u8 * (*statValueStrFunc)(u8 * buffer);
+    u16 statId;
+    u8 numberCount;
+    u8 flags;
 };
+
+#define JOURNAL_STAT(name, numStrFunc, statId, numberCount, flags) \
+    {   \
+        (u8[])_(name),   \
+        numStrFunc,   \
+        statId,   \
+        numberCount,   \
+        flags,   \
+    }   \
+
+#define JOURNAL_STAT_END JOURNAL_STAT("", NULL, 0xFFFF, 0, 0)
+u8 * BufferStatNumberString(const struct JournalStatData * stat, u8 * buffer)
+{
+    u32 statType = stat->flags & 0xF;
+    switch(statType)
+    {
+        case JOURNALSTAT_GAME_STAT:
+            return ConvertIntToDecimalStringN(buffer, GetGameStat(stat->statId), STR_CONV_MODE_LEFT_ALIGN, stat->numberCount);
+        case JOURNALSTAT_VARIABLE:
+            return ConvertIntToDecimalStringN(buffer, VarGet(stat->statId), STR_CONV_MODE_LEFT_ALIGN, stat->numberCount);
+        case JOURNALSTAT_CUSTOM:
+            return stat->statValueStrFunc ? stat->statValueStrFunc(buffer) : NULL;
+    }
+    return NULL;
+}
 
 u8 * GetPlantedBerries(u8 * const buffer)
 {
@@ -441,105 +445,105 @@ u8 * GetTotalBattles(u8 * const buffer)
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_TOTAL_BATTLES), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u8 * GetPokeCaptures(u8 * const buffer)
+u8 * GetPokeCaptures(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_POKEMON_CAPTURES), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u8 * GetEggsHatched(u8 * const buffer)
+u8 * GetEggsHatched(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_HATCHED_EGGS), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u8 * GetEvolvedPokemonStat(u8 * const buffer)
+u8 * GetEvolvedPokemonStat(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_EVOLVED_POKEMON), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u8 * GetBattlesWon(u8 * const buffer)
+u8 * GetBattlesWon(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_BATTLES_WON), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u8 * GetRibbonsReceived(u8 * const buffer)
+u8 * GetRibbonsReceived(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_RECEIVED_RIBBONS), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u8 * GetPlayerContestsWon(u8 * const buffer)
+u8 * GetPlayerContestsWon(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_WON_CONTEST), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u8 * GetPlayerContestsEntered(u8 * const buffer)
+u8 * GetPlayerContestsEntered(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_ENTERED_CONTEST), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
 extern int RyuGetPartnerCount();
-u8 * GetPartnerCount(u8 * const buffer)
+u8 * GetPartnerCount(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, RyuGetPartnerCount(), STR_CONV_MODE_LEFT_ALIGN, 1);
 }
 
-u8 * GetMiningSkill(u8 * const buffer)
+u8 * GetMiningSkill(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_MINING_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
 }
 
-u8 * GetMiningExp(u8 * const buffer)
+u8 * GetMiningExp(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_MINING_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u8 * GetBotanySkill(u8 * const buffer)
+u8 * GetBotanySkill(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_BOTANY_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
 }
 
-u8 * GetBotanyExp(u8 * const buffer)
+u8 * GetBotanyExp(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_BOTANY_SKILL_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u8 * GetAlchemySkill(u8 * const buffer)
+u8 * GetAlchemySkill(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL), STR_CONV_MODE_LEFT_ALIGN, 1);
 }
 
-u8 * GetAlchemyExp(u8 * const buffer)
+u8 * GetAlchemyExp(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_ALCHEMY_EXP), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
-u8 * GetTotalKOs(u8 * const buffer)
+u8 * GetTotalKOs(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_TOTAL_FAINTS), STR_CONV_MODE_LEFT_ALIGN, 5);
 }
 
-u8 * GetTitleDefenseWins(u8 * const buffer)
+u8 * GetTitleDefenseWins(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_TITLE_DEFENSE_WINS), STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
-u8 * GetDriveExp(u8 * const buffer)
+u8 * GetDriveExp(u8 * buffer)
 {
     if(!CheckBagHasItem(ITEM_EXP_DRIVE, 1))
         return NULL;
     return ConvertIntToDecimalStringN(buffer, VarGet(VAR_RYU_EXP_BATTERY), STR_CONV_MODE_LEFT_ALIGN, 5);
 }
 
-u8 * GetAchivements(u8 * const buffer)
+u8 * GetAchivements(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, CountTakenAchievements(), STR_CONV_MODE_LEFT_ALIGN, 3);
 }
 
-u8 * GetBankBalance(u8 * const buffer)
+u8 * GetBankBalance(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE), STR_CONV_MODE_LEFT_ALIGN, 10);
 }
 
-u8 * GetNetWorth(u8 * const buffer)
+u8 * GetNetWorth(u8 * buffer)
 {
     u32 balance = (GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE));
     u32 money = (GetMoney(&gSaveBlock1Ptr->money));
@@ -561,7 +565,7 @@ u8 * GetNetWorth(u8 * const buffer)
     return ConvertUIntToDecimalStringN(buffer, balance + money + totalPropertyValue, STR_CONV_MODE_LEFT_ALIGN, 10);
 }
 
-u8 * GetPropertiesOwned(u8 * const buffer)
+u8 * GetPropertiesOwned(u8 * buffer)
 {
     u8 propertiesOwned = (VarGet(VAR_RYU_NUM_OWNED_PROPERTIES));
 
@@ -570,329 +574,159 @@ u8 * GetPropertiesOwned(u8 * const buffer)
     return ConvertIntToDecimalStringN(buffer, propertiesOwned, STR_CONV_MODE_LEFT_ALIGN, 2);
 }
 
-static const struct JournalStatData sJournalStatsGeneral[] =
+u8 * BufferPokedexSeenCountStr(u8 * buffer)
 {
-    {
-        sText_BerriesPlanted,
-        GetPlantedBerries,
-        4,
-        FALSE,
-    },
-    {
-        sText_TotalBattles,
-        GetTotalBattles,
-        4,
-        FALSE,
-    },
-    {
-        sText_PkmnCaptures,
-        GetPokeCaptures,
-        4,
-        FALSE,
-    },
-    {
-        sText_EggsHatched,
-        GetEggsHatched,
-        4,
-        FALSE,
-    },
-    {
-        sText_PkmnEvolved,
-        GetEvolvedPokemonStat,
-        4,
-        FALSE,
-    },
-    {
-        sText_BattlesWon,
-        GetBattlesWon,
-        4,
-        FALSE,
-    },
-    {
-        sText_RibbonsReceived,
-        GetRibbonsReceived,
-        4,
-        FALSE,
-    },
-    {
-        NULL,
-        NULL,
-        0, 0,
-    },
-    {
-        sText_NetWorth,
-        GetNetWorth,
-        10,
-        FALSE,
-    },
+    u32 val = GetNationalPokedexCount(FLAG_GET_SEEN);
+    return ConvertIntToDecimalStringN(buffer, val, STR_CONV_MODE_LEFT_ALIGN, 10);
+}
+
+u8 * BufferPokedexCaughtCountStr(u8 * buffer)
+{
+    u32 val = GetNationalPokedexCount(FLAG_GET_CAUGHT);
+    return ConvertIntToDecimalStringN(buffer, val, STR_CONV_MODE_LEFT_ALIGN, 10);
+
+}
+
+static const struct JournalStatData sJournalGeneralStatsPage[] =
+{
+    JOURNAL_STAT("Prestige Level", NULL, VAR_RYU_NGPLUS_COUNT, 3, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Achievements", GetAchivements, 0, 3, JOURNALSTAT_CUSTOM),
+    JOURNAL_STAT("Dex Seen", BufferPokedexSeenCountStr, 0, 3, JOURNALSTAT_CUSTOM),
+    JOURNAL_STAT("Dex Caught", BufferPokedexCaughtCountStr, 0, 3, JOURNALSTAT_CUSTOM),
+    JOURNAL_STAT("Legendaries Caught", NULL, VAR_RYU_LEGENDARIES_CAUGHT, 2, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Defeated", NULL, GAME_STAT_BATTLES_WON, 5, JOURNALSTAT_GAME_STAT), // !: PLACEHOLDER
+    JOURNAL_STAT_END
 };
 
-static const struct JournalStatData sJournalStatsContest[] =
+static const struct JournalStatData sJournalLifeSkillsPage[] =
 {
-    {
-        sText_ContestsWon,
-        GetPlayerContestsWon,
-        4,
-        FALSE,
-    },
-    {
-        sText_ContestsEntered,
-        GetPlayerContestsEntered,
-        4,
-        FALSE,
-    },
-    {
-        NULL,
-        NULL,
-        0, 0,
-    }
+    JOURNAL_STAT("Botany Lv", NULL, VAR_RYU_PLAYER_BOTANY_SKILL, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Botany Xp", NULL, VAR_RYU_PLAYER_BOTANY_SKILL_EXP, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Mining Lv", NULL, VAR_RYU_PLAYER_MINING_EXP, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Mining Xp", NULL, VAR_RYU_PLAYER_MINING_SKILL, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Alchemy Lv", NULL, VAR_RYU_PLAYER_ALCHEMY_SKILL, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Alchemy Xp", NULL, VAR_RYU_ALCHEMY_EXP, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT_END
 };
 
-static const struct JournalStatData sJournalStatsPartner[] =
+static const struct JournalStatData sJournalBattleStatsPage[] =
 {
-    {
-        sText_NumPartners,
-        GetPartnerCount,
-        1,
-        FALSE
-    },
-    {
-        NULL,
-        NULL,
-        0, 0,
-    }
+    JOURNAL_STAT("Total Battles", NULL, GAME_STAT_TOTAL_BATTLES, 6, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Total Captures", NULL, GAME_STAT_POKEMON_CAPTURES, 6, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Battles Won", NULL, GAME_STAT_BATTLES_WON, 6, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Knockouts", NULL, VAR_RYU_TOTAL_FAINTS, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("EXP Drive", NULL, VAR_RYU_EXP_BATTERY, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Title Defense Wins", NULL, VAR_RYU_TITLE_DEFENSE_WINS, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Gym Leaders Fought", NULL, VAR_RYU_GYM_LEADERS_FOUGHT, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Brains Fought", NULL, 0xFFFF, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT_END
 };
 
-static const struct JournalStatData sJournalStatsMining[] =
+static const struct JournalStatData sJournalTrainingStatsPage[] =
 {
-    {
-        sText_MiningSkill,
-        GetMiningSkill,
-        1,
-        FALSE
-    },
-    {
-        sText_MiningExp,
-        GetMiningExp,
-        4,
-        FALSE
-    },
-    {
-        NULL,
-        NULL,
-        0, 0,
-    }
+    JOURNAL_STAT("Contests Entered", NULL, GAME_STAT_ENTERED_CONTEST, 5, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Contests Won", NULL, GAME_STAT_WON_CONTEST, 5, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Pokemon Evolved", NULL, GAME_STAT_EVOLVED_POKEMON, 5, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Eggs Hatched", NULL, GAME_STAT_HATCHED_EGGS, 5, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Ribbons Received", NULL, GAME_STAT_RECEIVED_RIBBONS, 5, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Total Captures", NULL, GAME_STAT_POKEMON_CAPTURES, 5, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Pokeblocks Made", NULL, GAME_STAT_TOTAL_BATTLES, 5, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Pokeblocks Used", NULL, 0xFFFF, 5, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT_END
 };
 
-
-static const struct JournalStatData sJournalStatsBotany[] =
+static const struct JournalStatData sJournalFinancialStatsPage[] =
 {
-    {
-        sText_BotanySkill,
-        GetBotanySkill,
-        1,
-        FALSE
-    },
-    {
-        sText_BotanySkillExp,
-        GetBotanyExp,
-        4,
-        FALSE
-    },
-    {
-        NULL,
-        NULL,
-        0, 0,
-    }
+    JOURNAL_STAT("Bank Balance", NULL, GAME_STAT_FRONTIERBANK_BALANCE, 10, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Properties Owned", NULL, VAR_RYU_NUM_OWNED_PROPERTIES, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Net Worth", GetNetWorth, 0, 5, JOURNALSTAT_CUSTOM),
+    JOURNAL_STAT("Days of Interest gained", NULL, 0xFFFF, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Property Repairs", NULL, VAR_RYU_PROPERTIES_REPAIRED, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Shipments Delivered", NULL, 0xFFFF, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT_END
 };
 
-
-static const struct JournalStatData sJournalStatsAlchemy[] =
+static const struct JournalStatData sJournalSocialStatsPage[] =
 {
-    {
-        sText_AlchemySkill,
-        GetAlchemySkill,
-        1,
-        FALSE
-    },
-    {
-        sText_AlchemyExp,
-        GetAlchemyExp,
-        4,
-        FALSE
-    },
-    {
-        NULL,
-        NULL,
-        0, 0,
-    }
+    JOURNAL_STAT("Num Companions", GetPartnerCount, 0, 2, JOURNALSTAT_CUSTOM),
+    JOURNAL_STAT("Times Stayed Over", NULL, VAR_RYU_TIMES_STAYED_WITH_COMPANION, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Num Companion Battles", NULL, VAR_RYU_FOLLOWER_BATTLES, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Companion Elite 4 matches", NULL, VAR_RYU_FOLLOWER_ELITE_MATCHES, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Quests Done", NULL, VAR_RYU_QUESTS_FINISHED, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Steps With Followers", NULL, GAME_STAT_STEPS_FOLLOWER, 5, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT_END
 };
 
-
-static const struct JournalStatData sJournalStatsKnockOuts[] =
+static const struct JournalStatData * sJournalStatPages[] = 
 {
-    {
-        sText_KOs,
-        GetTotalKOs,
-        5,
-        FALSE
-    },
-    {
-        NULL,
-        NULL,
-        0, 0,
-    }
+    sJournalGeneralStatsPage,
+    sJournalLifeSkillsPage,
+    sJournalBattleStatsPage,
+    sJournalTrainingStatsPage,
+    sJournalFinancialStatsPage,
+    sJournalSocialStatsPage
 };
 
-static const struct JournalStatData sJournalStatsTitleDefense[] =
+static const u8 * sJournalPageNames[]=
 {
-    {
-        sText_TitleDefenseWins,
-        GetTitleDefenseWins,
-        3,
-        FALSE
-    },
-    {
-        NULL,
-        NULL,
-        0, 0,
-    }
+    (u8[])_("General Stats"),
+    (u8[])_("Life Skills"),
+    (u8[])_("Battle Stats"),
+    (u8[])_("Training Stats"),
+    (u8[])_("Financial Stats"),
+    (u8[])_("Social Stats"),
 };
-
-static const struct JournalStatData sJournalStatsExpDrive[] = // TODO: caused problems in the past had to replace it
-{
-    {
-        sText_ExpInDrive,
-        GetDriveExp,
-        5,
-        TRUE
-    },
-    {
-        NULL,
-        NULL,
-        0, 0,
-    }
-};
-
-static const struct JournalStatData sJournalStatsAchievements[] =
-{
-    {
-        sText_Achievements,
-        GetAchivements,
-        3,
-        FALSE
-    },
-    {
-        NULL,
-        NULL,
-        0, 0,
-    }
-};
-
-static const struct JournalStatData sJournalStatsFinancial[] =
-{
-    {
-        sText_BankBalance,
-        GetBankBalance,
-        10,
-        FALSE
-    },
-    {
-        sText_PropertiesOwned,
-        GetPropertiesOwned,
-        2,
-        FALSE,
-    },
-    {
-        NULL,
-        NULL,
-        0, 0,
-    }
-};
-
-static const struct JournalStatData * sJournalStats[] = 
-{
-    sJournalStatsGeneral,
-    sJournalStatsContest,
-    sJournalStatsPartner,
-    sJournalStatsMining,
-    sJournalStatsBotany,
-    sJournalStatsAlchemy,
-    sJournalStatsKnockOuts,
-    sJournalStatsTitleDefense,
-    sJournalStatsFinancial,
-    sJournalStatsAchievements, // TODO: placeholder to have even amount of single line stats
-    //sJournalStatsExpDrive,
-};
-
+/*
 u32 CountStatArrayLength(const struct JournalStatData * journalData)
 {
     u32 i;
     for(i = 0; journalData++->statValueStrFunc; i++);
     return i;
 }
-extern int CountBadges(void);
-static void DrawJournalStatText(void)
-{
-    u32 i, j;
-    u32 top = 0, left = 0;
-    u32 statToDisplay = Random() % ARRAY_COUNT(sJournalStats);
-    u8 * textBuffer;
-    u8 stats[8];
-    const struct JournalStatData * journalStat;
-    u32 length = 0;
+*/
 
-    for(i = 0; i < 8 && length < 8;) // this shit can break at any moment
+extern int CountBadges(void);
+static void DrawJournalStatPage(u32 pageNum)
+{
+    const struct JournalStatData * journalStat = sJournalStatPages[pageNum];
+    u32 i;
+
+    u32 top = 0, left = 1;
+    for(i = 0; i < 8 && journalStat->statId != 0xFFFF; i++)
     {
-        u32 flag;
-        u32 statCount;
-        u32 newStat = Random() % ARRAY_COUNT(sJournalStats);
-        do
+        if(!BufferStatNumberString(journalStat, gStringVar4))
+            continue;
+        if(i != 0)
         {
-            for(j = 0; j < length; j++)
+            if(i & 1) left += LEFT_MIDDLE+1;
+            else 
             {
-                if(newStat == stats[j]) 
-                {
-                    newStat = Random() % ARRAY_COUNT(sJournalStats);
-                    flag = TRUE;
-                    break;
-                }
-                flag = FALSE;
+                left = 1;
+                top += TOP_SPACING;
             }
         }
-        while(flag);
-        // TODO: this is not gonna be fine
-        //if(sJournalStats[newStat]->hideOnN1 && sJournalStats[newStat]->statValueFunc() == 0xFFFFFFFF && i != 7) // TODO: last comparison is a hack so that we can roll out update sooner be it with some rough edges 
-            //continue; 
-        statCount = CountStatArrayLength(sJournalStats[newStat]);
-        if(statCount > 8-i)
-            continue;
-        stats[length++] = newStat;
-        i += statCount;
+        AddTextPrinterParameterized3(WIN_JOURNAL_STATS, 0, left, top, sColors[0], 0xFF, journalStat->statName); // TODO: speed 0xFF
+        AddTextPrinterParameterized3(WIN_JOURNAL_STATS, 0, (left+LEFT_MIDDLE-3)-GetStringWidth(0, gStringVar4, 0), top, sColors[0], 0xFF, gStringVar4);
+        journalStat++;
     }
-    j = 0;
-    journalStat = sJournalStats[stats[j]];
-    for(i = 0; i < 8; i++, journalStat++)
-    {
-        //u32 val;
-        if(journalStat->statValueStrFunc == NULL)
-            journalStat = sJournalStats[stats[++j]];
-        
-        //if(journalStat->hideOnN1 && val == 0xFFFFFFFF)
-        //    continue; // failsafe which will get triggered too much
-        if(!journalStat->statValueStrFunc(gStringVar4))
-            continue;
+    CopyWindowToVram(WIN_JOURNAL_STATS, 2);
+    left = 1;
+    top = 1;
+    AddTextPrinterParameterized3(WIN_JOURNAL_PAGE_NAME, 0, left, top, sColors[0], 0xFF, (u8[])_("{LEFT_ARROW} {L_BUTTON}"));
+    left = 224;
+    left -= GetStringWidth(0, (u8[])_("{R_BUTTON} {RIGHT_ARROW}"), 0);
+    AddTextPrinterParameterized3(WIN_JOURNAL_PAGE_NAME, 0, left, top, sColors[0], 0xFF, (u8[])_("{R_BUTTON} {RIGHT_ARROW}"));
+    left = 112 - GetStringWidth(0, sJournalPageNames[pageNum], 0) / 2;
+    AddTextPrinterParameterized3(WIN_JOURNAL_PAGE_NAME, 0, left, top, sColors[0], 0xFF, sJournalPageNames[pageNum]);
+    CopyWindowToVram(WIN_JOURNAL_PAGE_NAME, 2);
+}
 
-        AddTextPrinterParameterized3(WIN_JOURNAL_STATS, 0, left, top, sColors[0], 0, journalStat->statName); // TODO: speed 0xFF
-        //ConvertIntToDecimalStringN(gStringVar4, val, STR_CONV_MODE_LEFT_ALIGN, journalStat->numberCount);
-        AddTextPrinterParameterized3(WIN_JOURNAL_STATS, 0, (left+LEFT_MIDDLE-2)-GetStringWidth(0, gStringVar4, 0), top, sColors[0], 0, gStringVar4);
-        top += TOP_SPACING;
-        if(i == 3)
-        {
-            top = 0;
-            left = LEFT_MIDDLE+1;
-        }
-    }
+static void DrawJournalStatText(void)
+{
+    u8 * textBuffer;
+    u32 length = 0;
+
+    DrawJournalStatPage(0);
     AddTextPrinterParameterized3(WIN_JOURNAL_TRAINER_NAME, 0, 0, 4, sColors[0], 0, gSaveBlock2Ptr->playerName);
     ConvertIntToDecimalStringN(gStringVar4, (u16)GetTrainerId(gSaveBlock2Ptr->playerTrainerId), STR_CONV_MODE_LEADING_ZEROS, 5);
     AddTextPrinterParameterized3(WIN_JOURNAL_TRAINER_ID, 0, 4, 4, sColors[0], 0, gStringVar4);
@@ -901,20 +735,6 @@ static void DrawJournalStatText(void)
     *textBuffer++ = CHAR_SPACE;
     ConvertIntToDecimalStringN(textBuffer, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_RIGHT_ALIGN, 10);
     AddTextPrinterParameterized3(WIN_JOURNAL_TRAINER_MONEY, 0, 4, 4, sColors[0], 0, gStringVar4);
-    
-    /*
-    AddTextPrinterParameterized3(WIN_JOURNAL_IMPORTANT_VALUES, 0, 2, 1, color, 0, sText_Money); // TODO: speed 0xFF
-    AddTextPrinterParameterized3(WIN_JOURNAL_IMPORTANT_VALUES, 0, 90-GetStringWidth(0, gStringVar4, 0), 1, color, 0, gStringVar4); // TODO: speed 0xFF
-    ConvertIntToDecimalStringN(gStringVar4, CountBadges(), STR_CONV_MODE_LEFT_ALIGN, 1);
-    AddTextPrinterParameterized3(WIN_JOURNAL_IMPORTANT_VALUES, 0, 142, 1, color, 0, gStringVar4); 
-    AddTextPrinterParameterized3(WIN_JOURNAL_IMPORTANT_VALUES, 0, 224-GetStringWidth(0, sText_BadgesEarned, 0)-2, 1, color, 0, sText_BadgesEarned);
-    */
-
-    //ConvertIntToDecimalStringN(gStringVar1, CountBadges(), STR_CONV_MODE_LEADING_ZEROS, 1);
-    //ConvertIntToDecimalStringN(gStringVar3, GetMoney(&gSaveBlock1Ptr->money), STR_CONV_MODE_LEFT_ALIGN, 10);
-    //StringExpandPlaceholders(gStringVar4, sText_TrainerNameId);
-    //AddTextPrinterParameterized3(WIN, 1, 0, 1, sColors[0], 0, gStringVar4);
-    
 }
 
 static void Task_InitJournal(u8 taskId)
@@ -949,6 +769,7 @@ static bool8 IntializeJournal(void)
         LoadPalette(sJournalBGPalette, 0, 0x20);
         InitWindows(sJournalWindowTemplate);
         InitTextBoxGfxAndPrinters();
+        LoadPalette(gMessageBox_Pal, 0xC0, 0x20);
         LoadPalette(gRyuDarkTheme_Pal, 0xF0, 0x20);
         DeactivateAllTextPrinters();
         PutWindowTilemap(0);
@@ -1005,7 +826,6 @@ static bool8 IntializeJournal(void)
         ShowBg(1);
         ShowBg(2);
         ShowBg(3);
-        // TODO: Will get rid of STD frames later i would imagine
         for(i = 0; i < COUNT_JOURNAL_WINDOWS; i++)
         {
             PutWindowTilemap(i);
@@ -1025,22 +845,30 @@ static bool8 IntializeJournal(void)
     }
     return FALSE;
 }
-
-#define JOURNAL_ACTION_NONE 0
-#define JOURNAL_ACTION_RIGHT (1 << 1)
-#define JOURNAL_ACTION_LEFT (1 << 2)
-#define JOURNAL_ACTION_CHOOSE (1 << 3)
-#define JOURNAL_ACTION_EXIT (1 << 4)
+enum
+{
+    JOURNAL_ACTION_NONE,
+    JOURNAL_ACTION_PAGE_RIGHT,
+    JOURNAL_ACTION_PAGE_LEFT,
+    JOURNAL_ACTION_RIGHT,
+    JOURNAL_ACTION_LEFT,
+    JOURNAL_ACTION_CHOOSE,
+    JOURNAL_ACTION_EXIT,
+};
 
 static u32 InputToJournalAction(void)
 {
     u32 finalAction = JOURNAL_ACTION_NONE;
-    switch(gMain.newAndRepeatedKeys & (DPAD_LEFT | DPAD_RIGHT))
+    switch(gMain.newAndRepeatedKeys & (DPAD_LEFT | DPAD_RIGHT | R_BUTTON | L_BUTTON))
     {
-        case DPAD_LEFT:
-            return JOURNAL_ACTION_LEFT;
         case DPAD_RIGHT:
             return JOURNAL_ACTION_RIGHT;
+        case DPAD_LEFT:
+            return JOURNAL_ACTION_LEFT;
+        case R_BUTTON:
+            return JOURNAL_ACTION_PAGE_RIGHT;
+        case L_BUTTON:
+            return JOURNAL_ACTION_PAGE_LEFT;
     }
     if(gMain.newKeys & A_BUTTON)
         finalAction = JOURNAL_ACTION_CHOOSE;
@@ -1050,6 +878,7 @@ static u32 InputToJournalAction(void)
 }
 
 #define tCurrentButton data[0]
+#define tCurrentPage data[1]
 
 static void Task_ExitJournalTaskIntoNewUI(u8 taskId)
 {
@@ -1092,16 +921,30 @@ static void Task_JournalMain(u8 taskId)
         case JOURNAL_ACTION_LEFT:
         case JOURNAL_ACTION_RIGHT:
             gSprites[gTasks[taskId].tCurrentButton].data[0] = 0;
-            if(action & JOURNAL_ACTION_RIGHT)
+            if(action == JOURNAL_ACTION_RIGHT)
                 gTasks[taskId].tCurrentButton++;
             else
                 gTasks[taskId].tCurrentButton--;
-            // TODO: add bound check
             if(gTasks[taskId].tCurrentButton < 0) // task data is signed
                 gTasks[taskId].tCurrentButton = JOURNAL_OPTION_COUNT-1;
             if(gTasks[taskId].tCurrentButton >= JOURNAL_OPTION_COUNT)
                 gTasks[taskId].tCurrentButton = 0;
             gSprites[gTasks[taskId].tCurrentButton].data[0] = 1;
+            break;
+        case JOURNAL_ACTION_PAGE_RIGHT:
+        case JOURNAL_ACTION_PAGE_LEFT:
+            if(action == JOURNAL_ACTION_PAGE_RIGHT)
+                gTasks[taskId].tCurrentPage++;
+            else
+                gTasks[taskId].tCurrentPage--;
+
+            if(gTasks[taskId].tCurrentPage < 0) // task data is signed
+                gTasks[taskId].tCurrentPage = ARRAY_COUNT(sJournalStatPages)-1;
+            if(gTasks[taskId].tCurrentPage >= ARRAY_COUNT(sJournalStatPages))
+                gTasks[taskId].tCurrentPage = 0;
+            FillWindowPixelBuffer(WIN_JOURNAL_STATS, PIXEL_FILL(0));
+            FillWindowPixelBuffer(WIN_JOURNAL_PAGE_NAME, PIXEL_FILL(0));
+            DrawJournalStatPage(gTasks[taskId].tCurrentPage);
             break;
         case JOURNAL_ACTION_CHOOSE:
             if(sJounralButtons[gTasks[taskId].tCurrentButton].callback2 == NULL)
