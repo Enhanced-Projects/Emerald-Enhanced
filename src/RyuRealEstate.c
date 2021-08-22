@@ -23,6 +23,7 @@ void DoDailyRealEstateTasks(void)
                 return;
             SetGameStat(GAME_STAT_INTEREST_RECEIVED, interest); // saves the last earned interest amount, potentially could be more than 65k, so use 32bit number.
             SetGameStat(GAME_STAT_FRONTIERBANK_BALANCE, balance + interest);
+            VarSet(VAR_RYU_DAYS_INTEREST_GAINED, (VarGet(VAR_RYU_DAYS_INTEREST_GAINED) + 1));
             FlagSet(FLAG_RYU_INTEREST_ACCRUED);
             
         }

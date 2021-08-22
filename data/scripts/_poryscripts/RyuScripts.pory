@@ -19,11 +19,12 @@ RyuExpBattery::
 	goto RyuExpBatteryDevMode
 	
 RyuExpBatteryContd::
-	buffernumberstring 0, VAR_RYU_EXP_BATTERY
+	setvar VAR_TEMP_2, EXP_DRIVE_MODE_BUFFER
+	callnative RyuExpDriveOperation
 	msgbox RyuExpBatteryStored MSGBOX_DEFAULT
 	closemessage
 	msgbox RyuExpBatteryUseOnPokemon MSGBOX_YESNO
-	compare VAR_RESULT, 1
+	compare VAR_RESULT, YES
 	goto_if_ne RS_CancelPartySlot
 	call RyuBufferPartyMonNames
 	goto RS_SelectSlot
@@ -33,9 +34,10 @@ RyuExpBatteryDevModeMsg::
 
 RyuExpBatteryDevMode::
 	msgbox RyuExpBatteryDevModeMsg MSGBOX_YESNO
-	compare VAR_RESULT, 0
+	compare VAR_RESULT, NO
 	goto_if_eq RyuExpBatteryContd
-	setvar VAR_RYU_EXP_BATTERY, 65000
+	setvar VAR_TEMP_2, EXP_DRIVE_MODE_SET_DEV_AMOUNT
+	callnative RyuExpDriveOperation
 	goto RyuExpBatteryContd
 
 RS_SelectSlot::
@@ -52,9 +54,9 @@ RS_SelectSlot::
 	end
 
 RS_DoExpBatteryDrain::
-	special RyuGiveExpUnloadBattery
-	bufferpartymonnick 1, VAR_TEMP_F
-	setvar VAR_RYU_EXP_BATTERY, 1
+	setvar VAR_TEMP_2, EXP_DRIVE_MODE_USE_ON_MON
+	callnative RyuExpDriveOperation
+	bufferpartymonnick 2, VAR_TEMP_F
 	msgbox RyuExpBatterySuccess MSGBOX_DEFAULT
 	release
 	end
@@ -1817,6 +1819,7 @@ Ryu_PlayerLostTheGame::
 	end
 
 RyuPlayerLostTheGameSolo::
+	incrementgamestat GAME_STAT_BATTLES_LOST
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_ne RyuPlayerLostTheGameSoloFemale

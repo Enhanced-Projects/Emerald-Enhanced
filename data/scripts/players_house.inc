@@ -102,7 +102,6 @@ PlayersHouse_2F_EventScript_MomComesUpstairsFemale:: @ 829280F
 	return
 
 PlayersHouse_2F_EventScript_CheckWallClock:: @ 829283F
-	incrementgamestat GAME_STAT_CHECKED_CLOCK
 	fadescreen FADE_TO_BLACK
 	special Special_ViewWallClock
 	waitstate

@@ -124,19 +124,6 @@ void ApplyDaycareExperience(struct Pokemon *mon)
     CalculateMonStats(mon);
 }
 
-void RyuGiveExpUnloadBattery(void)
-{
-    s32 ExpBatteryVar = (VarGet(VAR_RYU_EXP_BATTERY));
-    u8 MonSlotData = (VarGet(VAR_TEMP_F));
-    s32 MonCurrExp = GetMonData(&gPlayerParty[VarGet(VAR_TEMP_F)], MON_DATA_EXP);
-
-    ConvertIntToDecimalStringN(gStringVar1, ExpBatteryVar, STR_CONV_MODE_LEFT_ALIGN, 5);
-    ExpBatteryVar = MonCurrExp + ExpBatteryVar;
-    SetMonData(&gPlayerParty[MonSlotData], MON_DATA_EXP, &ExpBatteryVar);
-    ApplyDaycareExperience(&gPlayerParty[MonSlotData]);
-    CalculateMonStats(&gPlayerParty[MonSlotData]);
-}
-
 void GivePlayerModdedMon(void)
 {
     u16 species = (VarGet(VAR_RYU_GCMS_SPECIES));
@@ -2095,4 +2082,64 @@ void RyuGiveDevMon(void)
 bool32 ScrCmd_unusedscrcmd(struct ScriptContext *ctx)
 {
     return FALSE;
+}
+
+void RyuExpDriveInternalOperation(u8 mode, u32 value)
+{
+    u32 current = GetGameStat(GAME_STAT_EXP_DRIVE);
+
+    if (mode == EXP_DRIVE_MODE_ADD)
+    {
+        if ((current + value) >= EXP_DRIVE_MAX)
+            SetGameStat(GAME_STAT_EXP_DRIVE, EXP_DRIVE_MAX);
+        else
+            SetGameStat(GAME_STAT_EXP_DRIVE, (current + value));
+    }
+    else
+    {
+        if (value > current)
+            SetGameStat(GAME_STAT_EXP_DRIVE, 0);
+        else
+            SetGameStat(GAME_STAT_EXP_DRIVE, (current - value));
+    }
+
+}
+
+void RyuExpDriveOperation(void)
+{
+    u16 mode = (VarGet(VAR_TEMP_2));
+    u16 scriptChangeAmount = (VarGet(VAR_TEMP_3));
+    u32 tempValue = 0;
+
+    if (mode == EXP_DRIVE_MODE_RESET)
+        SetGameStat(GAME_STAT_EXP_DRIVE, 0);
+
+    if ((mode == EXP_DRIVE_MODE_ADD) || (mode == EXP_DRIVE_MODE_SUBTRACT))
+        RyuExpDriveInternalOperation(mode, scriptChangeAmount);
+
+    if (mode == EXP_DRIVE_MODE_BUFFER)
+        ConvertIntToDecimalStringN(gStringVar1, GetGameStat(GAME_STAT_EXP_DRIVE), STR_CONV_MODE_LEFT_ALIGN, 8);
+    
+    if (mode == EXP_DRIVE_MODE_USE_ON_MON)
+        {
+            u8 MonSlotData = (VarGet(VAR_TEMP_F));
+            s32 MonCurrExp = GetMonData(&gPlayerParty[VarGet(VAR_TEMP_F)], MON_DATA_EXP);
+            u32 newMonExp = (MonCurrExp + (GetGameStat(GAME_STAT_EXP_DRIVE)));
+
+            SetMonData(&gPlayerParty[MonSlotData], MON_DATA_EXP, &newMonExp);
+            ApplyDaycareExperience(&gPlayerParty[MonSlotData]);
+            CalculateMonStats(&gPlayerParty[MonSlotData]);
+            ConvertIntToDecimalStringN(gStringVar1, GetGameStat(GAME_STAT_EXP_DRIVE), STR_CONV_MODE_LEFT_ALIGN, 8);
+            SetGameStat(GAME_STAT_EXP_DRIVE, 0);
+
+            GetMonData(&gPlayerParty[MonSlotData], MON_DATA_NICKNAME, gStringVar2);
+            StringGetEnd10(gStringVar2);
+
+        }
+
+    if (mode == EXP_DRIVE_MODE_SET_DEV_AMOUNT)
+    {
+        SetGameStat(GAME_STAT_EXP_DRIVE, EXP_DRIVE_MAX);
+    }
+
 }

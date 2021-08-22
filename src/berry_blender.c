@@ -2648,10 +2648,7 @@ static void CB2_EndBlenderGame(void)
     case 6:
         if (PrintBlendingResults())
         {
-            if (gInGameOpponentsNo == 0)
-                IncrementGameStat(GAME_STAT_POKEBLOCKS_WITH_FRIENDS);
-            else
-                IncrementGameStat(GAME_STAT_POKEBLOCKS);
+            IncrementGameStat(GAME_STAT_POKEBLOCKS);
 
             sBerryBlender->gameEndState++;
         }

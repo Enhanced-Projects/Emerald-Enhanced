@@ -1675,6 +1675,7 @@
 #define FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS    (SPECIAL_FLAGS_START + 0xB)
 #define FLAG_RYU_NOTIFY_PROPERTY_DAMAGE         (SPECIAL_FLAGS_START + 0xC)
 #define FLAG_RYU_NOTIFY_RENT                    (SPECIAL_FLAGS_START + 0xD)
+#define FLAG_RYU_USED_COMPANION_E4              (SPECIAL_FLAGS_START + 0xE) //Used a companion for championship match
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 

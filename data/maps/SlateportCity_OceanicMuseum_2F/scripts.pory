@@ -190,6 +190,8 @@ OM_PlayerLostTheFight::
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_WON
 	call_if_eq OM_PlayerStillWonSomehow
+	compare VAR_RESULT, B_OUTCOME_LOST
+	call_if_eq OM_AddLossToGameStat
 	fadescreen FADE_TO_BLACK
 	playbgm MUS_DUMMY
 	msgbox OM_PlayerWhitedOut
@@ -198,6 +200,10 @@ OM_PlayerLostTheFight::
 	clearflag FLAG_TEMP_E
 	warpsilent MAP_LILYCOVE_CITY_AQUA_CORPORATE_OFFICE, 255, 30, 2
 	waitstate
+
+OM_AddLossToGameStat::
+	incrementgamestat GAME_STAT_BATTLES_LOST
+	return
 
 OM_PlayerStillWonSomehow::
 	ach give ACH_PLOT_ARMOR

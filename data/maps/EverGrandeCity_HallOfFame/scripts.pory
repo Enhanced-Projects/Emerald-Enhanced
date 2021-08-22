@@ -18,6 +18,7 @@ EverGrandeCity_HallOfFame_OnFrame: @ 8229846
 
 EverGrandeCity_HallOfFame_EventScript_EnterHallOfFame:: @ 8229850
 	call RyuResetFollowerPositionAR
+	call_if_set FLAG_RYU_USED_COMPANION_E4, EGC_IncrementFollowerE4Challenges
 	lockall
 	goto_if_set FLAG_SYS_GAME_CLEAR, AltHallofFame
 	applymovement 1, EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame1
@@ -58,6 +59,10 @@ EverGrandeCity_HallOfFame_EventScript_EnterHallOfFame:: @ 8229850
 	compare VAR_RESULT, FEMALE
 	goto_if_eq EverGrandeCity_HallOfFame_EventScript_GameClearFemale
 	end
+
+EGC_IncrementFollowerE4Challenges::
+	addvar VAR_RYU_FOLLOWER_ELITE_MATCHES, 1
+	return
 
 AltHallofFame::
 	applymovement 1, EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame1

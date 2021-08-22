@@ -185,7 +185,7 @@
 #define VAR_TRICK_HOUSE_FOUND_TRICK_MASTER   0x40A6
 #define VAR_TRICK_HOUSE_ENTRANCE_STATE       0x40A7
 #define VAR_RYU_TITLE_DEFENSE_WINS           0x40A8
-#define VAR_CYCLING_CHALLENGE_STATE          0x40A9 // unused now
+#define VAR_RYU_DAYS_INTEREST_GAINED         0x40A9 // How many days the player earned interest.
 #define VAR_SLATEPORT_MUSEUM_1F_STATE        0x40AA
 #define VAR_TRICK_HOUSE_PUZZLE_1_STATE       0x40AB
 #define VAR_TRICK_HOUSE_PUZZLE_2_STATE       0x40AC
@@ -266,7 +266,7 @@
 #define VAR_RYU_GCMS_SPECIES                 0x40F7
 #define VAR_RYU_GCMS_VALUE                   0x40F8
 #define VAR_RYU_FOLLOWER_BATTLES             0x40F9//battles fought with partners
-#define VAR_RYU_EXP_BATTERY                  0x40FA
+#define VAR_UNUSED_0x40FA                    0x40FA//previously exp drive, now unused.
 #define VAR_RYU_NUZLOCKE_WAYSTONE_USES       0x40FB
 #define VAR_RYU_PRICE_MULTIPLIER             0x40FC
 #define VAR_RYU_WEATHER                      0x40FD
@@ -303,6 +303,15 @@
 #define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of gTrainerBattleOpponent_A
 
 #define SPECIAL_VARS_END              0x8015
+
+#define EXP_DRIVE_MAX 15000000 //exp drive new max is 15 million
+
+#define EXP_DRIVE_MODE_RESET 0
+#define EXP_DRIVE_MODE_ADD 1
+#define EXP_DRIVE_MODE_SUBTRACT 2
+#define EXP_DRIVE_MODE_BUFFER 3
+#define EXP_DRIVE_MODE_USE_ON_MON 4
+#define EXP_DRIVE_MODE_SET_DEV_AMOUNT 5
 
 //Contest type defines for code usage
 #define COOL 0

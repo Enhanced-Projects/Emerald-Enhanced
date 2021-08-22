@@ -1102,7 +1102,7 @@ static const struct Story sStorytellerStories[] = {
         MauvilleCity_PokemonCenter_1F_Text_TVWatchedStory
     },
     {
-        GAME_STAT_CHECKED_CLOCK, 1, 
+        GAME_STAT_POKEBLOCKS_FED, 1, 
         MauvilleCity_PokemonCenter_1F_Text_CheckedClockTitle, 
         MauvilleCity_PokemonCenter_1F_Text_CheckedClockAction, 
         MauvilleCity_PokemonCenter_1F_Text_CheckedClockStory

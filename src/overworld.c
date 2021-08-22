@@ -455,6 +455,7 @@ void DoPartnerWhiteOut(void)
     ScriptContext2_RunNewScript(EventScript_WhiteOut);
     SetMoney(&gSaveBlock1Ptr->money, ((GetMoney(&gSaveBlock1Ptr->money) / 5) * 4));
     HealPlayerParty();
+    IncrementGameStat(GAME_STAT_BATTLES_LOST);
     Overworld_ResetStateAfterWhiteOut();
     if (&gSaveBlock2Ptr->playerGender == 0)
         RyuWarp();

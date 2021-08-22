@@ -531,7 +531,8 @@ DC_CorporateInterrogation4::
 	msgbox DC_ToThinkThe
 	closemessage
 	additem ITEM_EXP_DRIVE
-	setvar VAR_RYU_EXP_BATTERY, 1
+	setvar VAR_TEMP_2, EXP_DRIVE_MODE_RESET
+	callnative RyuExpDriveOperation
 	closemessage
 	additem ITEM_OLD_SEA_MAP
 	setflag FLAG_ENABLE_SHIP_FARAWAY_ISLAND

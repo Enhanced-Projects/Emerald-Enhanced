@@ -3772,6 +3772,8 @@ int RyuCalculateAlchemyExpModifier(s32 exp)
         return exp;
 }
 
+extern void RyuExpDriveInternalOperation(u8 mode, u32 value);
+
 static void Cmd_getexp(void)
 {
     u16 item;
@@ -3838,12 +3840,8 @@ static void Cmd_getexp(void)
 
             calculatedExp = (RyuCalculateAlchemyExpModifier(calculatedExp));
 
-            RyuExpBatteryTemp = (((VarGet(VAR_RYU_EXP_BATTERY) + ((((gBattleMons[gBattlerFainted].level) * 5) * multiplier) / 1000))));
-            if (RyuExpBatteryTemp > 50000)
-            {
-                RyuExpBatteryTemp = 50000;
-            }
-            VarSet(VAR_RYU_EXP_BATTERY, RyuExpBatteryTemp);
+            RyuExpBatteryTemp = (((GetGameStat(GAME_STAT_EXP_DRIVE) + ((((gBattleMons[gBattlerFainted].level) * 5) * multiplier) / 1000))));
+            RyuExpDriveInternalOperation(EXP_DRIVE_MODE_ADD, RyuExpBatteryTemp);
 
             if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
             {

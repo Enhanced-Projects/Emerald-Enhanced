@@ -33,6 +33,7 @@
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
+#include "game_stat.h"
 
 #define POKEBLOCK_MAX_FEEL 99
 #define FIELD_E75_COUNT 7
@@ -1199,6 +1200,7 @@ static void HandleErasePokeblock(u8 taskId)
         u16 *lastPage, *lastPos;
 
         TryClearPokeblock(gSpecialVar_ItemId);
+        incrementgamestat(GAME_STAT_POKEBLOCKS_FED);
         PlaySE(SE_SELECT);
 
         lastPage = &sSavedPokeblockData.lastItemPage;

@@ -32,10 +32,10 @@
 #define GAME_STAT_SLOT_JACKPOTS             28
 #define GAME_STAT_CONSECUTIVE_ROULETTE_WINS 29
 #define GAME_STAT_ENTERED_BATTLE_TOWER      30
-#define GAME_STAT_UNKNOWN_31                31
+#define GAME_STAT_BATTLES_LOST              31
 #define GAME_STAT_BATTLE_TOWER_BEST_STREAK  32
 #define GAME_STAT_POKEBLOCKS                33
-#define GAME_STAT_POKEBLOCKS_WITH_FRIENDS   34
+#define GAME_STAT_EXP_DRIVE                 34
 #define GAME_STAT_WON_LINK_CONTEST          35
 #define GAME_STAT_ENTERED_CONTEST           36
 #define GAME_STAT_WON_CONTEST               37
@@ -46,7 +46,7 @@
 #define GAME_STAT_RECEIVED_RIBBONS          42
 #define GAME_STAT_JUMPED_DOWN_LEDGES        43
 #define GAME_STAT_WATCHED_TV                44
-#define GAME_STAT_CHECKED_CLOCK             45
+#define GAME_STAT_POKEBLOCKS_FED            45
 #define GAME_STAT_WON_POKEMON_LOTTERY       46
 #define GAME_STAT_USED_DAYCARE              47
 #define GAME_STAT_RODE_CABLE_CAR            48
