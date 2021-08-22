@@ -7,7 +7,7 @@ voicegroup004:: @ 8676658
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0  @ 8676688
 	voice_directsound_no_resample 64, 54, DirectSoundWaveData_sc88pro_orchestra_cymbal_crash, 255, 235, 0, 231  @ 8676694
 	voice_directsound_no_resample 64, 54, DirectSoundWaveData_sc88pro_orchestra_cymbal_crash, 8, 0, 255, 216  @ 86766A0
-	voice_directsound_no_resample 64, 94, DirectSoundWaveData_unused_heart_of_asia_indian_drum, 255, 0, 255, 0  @ 86766AC
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0  @ 8676688
 	voice_directsound_no_resample 64, 34, DirectSoundWaveData_sc88pro_mute_high_conga, 255, 0, 255, 0  @ 86766B8
 	voice_directsound_no_resample 64, 34, DirectSoundWaveData_sc88pro_open_low_conga, 255, 0, 255, 0  @ 86766C4
 	voice_directsound_no_resample 64, 90, DirectSoundWaveData_sc88pro_open_low_conga, 255, 0, 255, 0  @ 86766D0
@@ -61,7 +61,7 @@ voicegroup004:: @ 8676658
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0  @ 8676910
 	voice_directsound 58, 54, DirectSoundWaveData_sc88pro_orchestra_cymbal_crash, 255, 235, 0, 231  @ 867691C
 	voice_directsound 62, 54, DirectSoundWaveData_sc88pro_orchestra_cymbal_crash, 8, 0, 255, 216  @ 8676928
-	voice_directsound 64, 94, DirectSoundWaveData_unused_heart_of_asia_indian_drum, 255, 0, 255, 0  @ 8676934
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0  @ 8676688
 	voice_directsound 64, 34, DirectSoundWaveData_sc88pro_mute_high_conga, 255, 0, 255, 0  @ 8676940
 	voice_directsound 64, 34, DirectSoundWaveData_sc88pro_open_low_conga, 255, 0, 255, 0  @ 867694C
 	voice_directsound 64, 90, DirectSoundWaveData_sc88pro_open_low_conga, 255, 0, 255, 0  @ 8676958

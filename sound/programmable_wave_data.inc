@@ -46,18 +46,6 @@ ProgrammableWaveData_86B4910:: @ 86B4910
 ProgrammableWaveData_86B4920:: @ 86B4920
 	.incbin "sound/programmable_wave_samples/86B4920.pcm"
 
-ProgrammableWaveData_Unused_86B4930:: @ 86B4930
-	.incbin "sound/programmable_wave_samples/unused_86B4930.pcm"
-
-ProgrammableWaveData_Unused_86B4940:: @ 86B4940
-	.incbin "sound/programmable_wave_samples/unused_86B4940.pcm"
-
-ProgrammableWaveData_Unused_86B4950:: @ 86B4950
-	.incbin "sound/programmable_wave_samples/unused_86B4950.pcm"
-
-ProgrammableWaveData_Unused_86B4960:: @ 86B4960
-	.incbin "sound/programmable_wave_samples/unused_86B4960.pcm"
-
 ProgrammableWaveData_86B4970:: @ 86B4970
 	.incbin "sound/programmable_wave_samples/86B4970.pcm"
 

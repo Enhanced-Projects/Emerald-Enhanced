@@ -61,7 +61,7 @@ voicegroup190:: @ 86B429C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0  @ 86B4554
 	voice_directsound_no_resample 64, 54, DirectSoundWaveData_sc88pro_orchestra_cymbal_crash, 255, 235, 0, 231  @ 86B4560
 	voice_directsound_no_resample 64, 54, DirectSoundWaveData_sc88pro_orchestra_cymbal_crash, 8, 0, 255, 216  @ 86B456C
-	voice_directsound_no_resample 64, 94, DirectSoundWaveData_unused_heart_of_asia_indian_drum, 255, 0, 255, 0  @ 86B4578
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0  @ 8676688
 	voice_directsound_no_resample 64, 34, DirectSoundWaveData_sc88pro_mute_high_conga, 255, 0, 255, 0  @ 86B4584
 	voice_directsound_no_resample 64, 34, DirectSoundWaveData_sc88pro_open_low_conga, 255, 0, 255, 0  @ 86B4590
 	voice_directsound_no_resample 64, 90, DirectSoundWaveData_sc88pro_open_low_conga, 255, 0, 255, 0  @ 86B459C

@@ -2091,3 +2091,8 @@ void RyuGiveDevMon(void)
 
     SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &ribbon); //make it a boss because why not
 }
+
+bool32 ScrCmd_unusedscrcmd(struct ScriptContext *ctx)
+{
+    return FALSE;
+}

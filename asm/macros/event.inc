@@ -1632,10 +1632,9 @@
 	specialvar VAR_RESULT, GetPlayerFacingDirection
 	.endm
 
-	@ draws the specified headshot
-	.macro drawheadshot head:req
+	@ unused script command, previously headshot
+	.macro unusedscrcmd
 	.byte 0xe5
-	.byte \head
 	.endm
 
 	@draws the user specified sprite. If mode is 1, Then supply a facility class id. (FACILITY_CLASS_RICH_GIRL)

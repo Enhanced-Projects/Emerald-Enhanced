@@ -16,10 +16,6 @@ static const u8 sDawnCutsceneBgNightTiles[] = INCBIN_U8("graphics/cutscene/fscut
 static const u8 sDawnCutsceneBgNightMap[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/night_map.bin");
 static const u8 sDawnCutsceneBgNightPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/dawn/night_tiles.gbapal");
 
-static const u8 sSunsetBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/sunset/sunset_tiles.4bpp");
-static const u8 sSunsetBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/sunset/sunset_map.bin");
-static const u8 sSunsetBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/sunset/sunset_palette.gbapal");
-
 static const u8 sMinnieBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/minnie/minnie_tiles.8bpp");
 static const u8 sMinnieBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/minnie/minnie_map.bin");
 static const u8 sMinnieBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/minnie/minnie_palette.gbapal");
@@ -28,31 +24,13 @@ static const u8 sMeloettaBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/mel
 static const u8 sMeloettaBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/meloetta/meloetta_map.bin");
 static const u8 sMeloettaBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/meloetta/meloetta_palette.gbapal");
 
-static const u8 sShellyBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_tiles.8bpp");
-static const u8 sShellyBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_map.bin");
-static const u8 sShellyBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/shelly/shelly_palette.gbapal");
-
-static const u8 sMawileBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile.8bpp");
-static const u8 sMawileBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile_tiles.bin");
-static const u8 sMawileBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/mawile/mawile.gbapal");
-
-
 static const u8 sBrendanBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_tiles.8bpp");
 static const u8 sBrendanBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_map.bin");
 static const u8 sBrendanBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_palette.gbapal");
 
-
 static const u8 sBrendanNightBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_tiles.8bpp");
 static const u8 sBrendanNightBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_map.bin");
 static const u8 sBrendanNightBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/brendan/brendan_night_palette.gbapal");
-
-static const u8 sLeafBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/leaf/leaf_tiles.8bpp");
-static const u8 sLeafBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/leaf/leaf_map.bin");
-static const u8 sLeafBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/leaf/leaf_palette.gbapal");
-
-static const u8 sMiningMapBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/maps/mining_map_tiles.4bpp");
-static const u8 sMiningMapBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/maps/mining_map.bin");
-static const u8 sMiningMapBgPalette[] = INCBIN_U8("graphics/cutscene/fscutscene/maps/mining_map_palette.gbapal");
 
 static const u8 sCourtneyBgTiles[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_tiles.8bpp");
 static const u8 sCourtneyBgMap[] = INCBIN_U8("graphics/cutscene/fscutscene/courtney/courtney_map.bin");
@@ -107,17 +85,6 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .palette = sDawnCutsceneBgNightPalette,
 		.palIdxCnt = 240
     },
-	[SCENEBGSUNSET] = 
-    {
-		.mode = CUTSCENE_4BPP_NO_SCROLL,
-		.scrollMode = CUTSCENE_SCROLL_NONE,
-        .tiles = sSunsetBgTiles,
-		.tileSize = sizeof(sSunsetBgTiles),
-        .map = sSunsetBgMap,
-		.mapSize = sizeof(sSunsetBgMap),
-        .palette = sSunsetBgPalette,
-		.palIdxCnt = 16
-    },
 	[SCENEBGMINNIE] = 
     {
 		.mode = CUTSCENE_8BPP_NO_SCROLL,
@@ -140,29 +107,6 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .palette = sMeloettaBgPalette,
 		.palIdxCnt = 16
     },
-	[SCENEBGSHELLY] = 
-    {
-		.mode = CUTSCENE_8BPP_NO_SCROLL,
-		.scrollMode = CUTSCENE_SCROLL_NONE,
-        .tiles = sShellyBgTiles,
-		.tileSize = sizeof(sShellyBgTiles),
-        .map = sShellyBgMap,
-		.mapSize = sizeof(sShellyBgMap),
-        .palette = sShellyBgPalette,
-		.palIdxCnt = 240
-    },
-	[SCENEBGMAWILE] = 
-    {
-		.mode = CUTSCENE_8BPP_NO_SCROLL,
-		.scrollMode = CUTSCENE_SCROLL_NONE,
-        .tiles = sMawileBgTiles,
-		.tileSize = sizeof(sMawileBgTiles),
-        .map = sMawileBgMap,
-		.mapSize = sizeof(sMawileBgMap),
-        .palette = sMawileBgPalette,
-		.palIdxCnt = 240
-    },
-	
 	[SCENEBGBRENDAN] = 
     {
 		.mode = CUTSCENE_8BPP_NO_SCROLL,
@@ -183,28 +127,6 @@ static const struct CutsceneBG gCutsceneBgTable[] =
         .map = sBrendanNightBgMap,
 		.mapSize = sizeof(sBrendanNightBgMap),
         .palette = sBrendanNightBgPalette,
-		.palIdxCnt = 240
-	},
-	[SCENEBGMININGMAP] = 
-    {
-		.mode = CUTSCENE_4BPP_NO_SCROLL,
-		.scrollMode = CUTSCENE_SCROLL_NONE,
-        .tiles = sMiningMapBgTiles,
-		.tileSize = sizeof(sMiningMapBgTiles),
-        .map = sMiningMapBgMap,
-		.mapSize = sizeof(sMiningMapBgMap),
-        .palette = sMiningMapBgPalette,
-		.palIdxCnt = 16
-	},
-	[SCENEBGLEAFNORMAL] = 
-    {
-		.mode = CUTSCENE_8BPP_NO_SCROLL,
-		.scrollMode = CUTSCENE_SCROLL_NONE,
-        .tiles = sLeafBgTiles,
-		.tileSize = sizeof(sLeafBgTiles),
-        .map = sLeafBgMap,
-		.mapSize = sizeof(sLeafBgMap),
-        .palette = sLeafBgPalette,
 		.palIdxCnt = 240
 	},
 	[SCENEBGCOURTNEY] = 
