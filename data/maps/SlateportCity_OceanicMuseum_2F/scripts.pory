@@ -6,7 +6,7 @@ SlateportCity_OceanicMuseum_2F_MapScripts:: @ 820BAFF
 OM_OnFrameScript::
 	map_script_2 VAR_RYU_QUEST_AQUA, 30, OM_AquaEvent2
 	map_script_2 VAR_TEMP_5, 0, OM_ReEnableStern
-	map_script_2 VAR_RYU_QUEST_DEVON_CORPORATE, 165, OM_SetupSternForDevon
+	map_script_2 VAR_RYU_QUEST_DEVON_CORPORATE, 16, OM_SetupSternForDevon
 	.2byte 0
 
 SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample1:: @ 820BD0A
@@ -288,38 +288,6 @@ OM_SternExit:
 	
 @==================================================================================================Devon Events
 
-OM_checkFollowerForDevonEvent::
-	lockall
-	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 165
-	goto_if_unset FLAG_RYU_HAS_FOLLOWER, ryu_end
-	compare VAR_RYU_FOLLOWER_ID, OBJ_EVENT_GFX_NURSE
-	goto_if_eq OMDevonCheckForNurse
-	call RyuForceCancelFollowerForQuest
-	releaseall
-	end
-
-OMDevonCheckForNurse::
-	compare VAR_RYU_QUEST_NURSE, 10
-	goto_if_ne OM_CantDoThisQuestBecauseNurse
-	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 165
-	releaseall
-	end
-
-OM_CantDoThisQuestBecauseNurse::
-	msgbox OM_NurseCancel
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_StepDown
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_StepDown
-	waitmovement OBJ_EVENT_ID_FOLLOWER
-	release
-	end
-
-OM_NurseCancel:
-	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN}You cannot do this quest stage\n"
-	.string "because you are presently doing\l"
-	.string "the Nurse quest.\p"
-	.string "Please come back when you have\n"
-	.string "finished the Nurse quest.$"
-
 OM_SetupSternForDevon::
 OM_ReEnableStern::
 	setvar VAR_TEMP_5, 10
@@ -344,9 +312,7 @@ OM_CaptainStern::
 	fadescreen FADE_TO_BLACK
 	msgbox OM_WhatHappenedToTheLights
 	closemessage
-	createfollower OBJ_EVENT_GFX_ARCHIE, NULL, DIR_WEST
-	applymovement OBJ_EVENT_ID_FOLLOWER, OM_ArchieToEntrance
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	addobject 6
 	fadescreen FADE_FROM_BLACK
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
@@ -354,8 +320,8 @@ OM_CaptainStern::
 	waitmovement 4
 	msgbox OM_WhatAreYouDoing
 	closemessage
-	applymovement OBJ_EVENT_ID_FOLLOWER, OM_ArchieToPlayer
-	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement 6, OM_ArchieToPlayer
+	waitmovement 6
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	msgbox OM_ImArchieHandOver
 	closemessage
@@ -369,10 +335,7 @@ OM_ArchieSceneEnd::
 	waitmovement 4
 	msgbox OM_IllLetYouGetAway
 	closemessage
-	applymovement OBJ_EVENT_ID_FOLLOWER, OM_ArchieToEntrance
-	waitmovement OBJ_EVENT_ID_FOLLOWER
 	playse SE_KAIDAN
-	destroyfollower
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	msgbox OM_ThanksForProtecting
 	removeitem ITEM_DEVON_GOODS, 1
@@ -413,23 +376,6 @@ OM_IllLetYouGetAway:
 
 OM_ThanksForProtecting:
 	.string "Oh, wow, am I fortunate.\nThank you so much for protecting\lme!$"
-
-
-OM_ArchieToEntrance:
-	walk_fastest_left
-	walk_fastest_left
-	walk_fastest_left
-	walk_fastest_left
-	walk_fastest_left
-	walk_fastest_left
-	walk_fastest_left
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	face_down
-	step_end
 
 OM_ArchieToPlayer:
 	walk_down

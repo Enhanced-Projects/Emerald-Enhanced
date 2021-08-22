@@ -138,14 +138,14 @@
       "y": 8,
       "elevation": 0,
       "dest_map": "MAP_SLATEPORT_CITY",
-      "dest_warp_id": 5
+      "dest_warp_id": 4
     },
     {
       "x": 10,
       "y": 8,
       "elevation": 0,
       "dest_map": "MAP_SLATEPORT_CITY",
-      "dest_warp_id": 7
+      "dest_warp_id": 6
     },
     {
       "x": 6,
@@ -173,15 +173,6 @@
       "var": "VAR_SLATEPORT_MUSEUM_1F_STATE",
       "var_value": "0",
       "script": "SlateportCity_OceanicMuseum_1F_EventScript_PayEntranceFeeRight"
-    },
-    {
-      "type": "trigger",
-      "x": 6,
-      "y": 2,
-      "elevation": 0,
-      "var": "VAR_RYU_QUEST_DEVON_CORPORATE",
-      "var_value": "16",
-      "script": "OM_checkFollowerForDevonEvent"
     }
   ],
   "bg_events": [
