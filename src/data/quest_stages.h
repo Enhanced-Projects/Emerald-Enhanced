@@ -118,6 +118,7 @@ const u8 sDevonQuestStage1055Desc[] = _("Player has entered the Space Center.\nS
 const u8 sDevonQuestStage1075Desc[] = _("Player has spoken to Mewtwo.\nDefeat it for it to join you.");
 const u8 sDevonQuestStage2000Desc[] = _("Player chose the Corporate life.\nAll further missions will be from Devon Corp.");
 const u8 sQuestStageDeferredDesc[] = _("You have deferred this questline.");
+const u8 sCanDoQuestLaterMsg[] = _("You will be able to switch to the Devon Scientist\nquest at a later time.");
 
 //quiet waifu
 const u8 sLanaQuestStageZeroDesc[] = _("Become champion and find Lana at the\nSlateport PokeCenter, or her house next door\nto start this quest.");
@@ -589,6 +590,10 @@ const static struct QuestStageDesc gDevonScientistQuestStages[] = {
   {
     .description = sMainQuestNotStartedStg,
     .questStage = 0,
+  },
+  {
+    .description = sCanDoQuestLaterMsg,
+    .questStage = 1
   },
   {
     .description = sDevonQuestStage1000Desc,

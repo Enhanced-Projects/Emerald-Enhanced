@@ -2071,7 +2071,7 @@ void RyuGiveDevMon(void)
     u16 i = 0;
     u8 ev = 255;
     u8 iv = 31;
-    u8 lv = BASE_MAX_LEVEL;
+    u8 lv = TRUE_MAX_LEVEL;
     u8 what = 0;
     u8 ribbon = TRUE;
 
@@ -2090,4 +2090,9 @@ void RyuGiveDevMon(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
 
     SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &ribbon); //make it a boss because why not
+}
+
+bool32 ScrCmd_unusedscrcmd(struct ScriptContext *ctx)
+{
+    return FALSE;
 }

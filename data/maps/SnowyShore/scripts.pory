@@ -12,7 +12,7 @@ SS_TemporaryPortal::
 	msgbox SS_TemporaryMagic
 	closemessage
 	fadescreen FADE_TO_BLACK
-	drawfullscreenimage SCENEBGSUNSET
+	drawfullscreenimage SCENEBGWARP
 	msgbox SS_Warping
 	closemessage
 	delay 20

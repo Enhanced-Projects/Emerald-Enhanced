@@ -65,7 +65,7 @@ voicegroup128:: @ 869D6F4
 	voice_square_1_alt 60, 0, 0, 2, 4, 6, 0, 0  @ 869D9DC
 	voice_directsound 60, 0, DirectSoundWaveData_8740818, 255, 255, 255, 127  @ 869D9E8
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_accordion, 255, 0, 255, 165  @ 869D9F4
-	voice_directsound 60, 0, DirectSoundWaveData_unused_sc55_tom, 255, 0, 255, 165  @ 869DA00
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0  @ 8676688
 	voice_noise_alt 60, 0, 0, 5, 7, 15, 1  @ 869DA0C
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_square_wave, 128, 242, 0, 165  @ 869DA18
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_string_ensemble_72, 255, 0, 255, 165  @ 869DA24

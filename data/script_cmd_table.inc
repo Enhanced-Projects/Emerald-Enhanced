@@ -229,7 +229,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_bufferitemnameplural      @ 0xe2	
 	.4byte ScrCmd_createfollower            @ 0xe3
 	.4byte ScrCmd_destroyfollower           @ 0xe4
-	.4byte ScrCmd_drawheadshot              @ 0xe5
+	.4byte ScrCmd_unusedscrcmd              @ 0xe5
 	.4byte ScrCmd_drawcustompic             @ 0xe6
 	.4byte ScrCmd_addmonhappiness           @ 0xe7
 	.4byte ScrCmd_scriptdebug               @ 0xe8

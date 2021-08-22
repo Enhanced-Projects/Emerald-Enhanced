@@ -1,4 +1,8 @@
 @@MAIN DEBUG MENU==================================================================================
+.set PRIMARY_ABILITY, 0
+.set SECONDARY_ABILITY, 1
+.set HIDDEN_ABILITY, 2
+
 RyuDevSwitch::
 	special RyuDevCheck
 	compare VAR_RESULT, 69
@@ -533,30 +537,30 @@ RyuDebug_GiveAllBeginMsg:
 	.string "The process will begin when you\nclose this message.\lIt will take 30 seconds to a minute\lto complete, and the game may appear\lto be frozen.\pIf music is still playing,\nit is not frozen. Enjoy!$"
 
 RyuDebug_DevMonQuickStart::
-	@@First dev mon
-	setvar VAR_TEMP_A, NATURE_MODEST          @@This is the new DevMonQuickStart.
-	setvar VAR_TEMP_B, SPECIES_MEGA_GARDEVOIR @@They will now always have max IV, max EV, and these select chosen items.
-	setvar VAR_TEMP_C, 0
-	setvar VAR_TEMP_D, MON_FEMALE @@This is gender selection. Should be MON_FEMALE, MON_MALE, or MON_GENDERLESS though for genderless mons, i dont think this matters.
+	setflag FLAG_RYU_IGNORE_CAP @@why not just max lv
+	setvar VAR_TEMP_A, NATURE_MODEST     
+	setvar VAR_TEMP_B, SPECIES_PRIMARINA
+	setvar VAR_TEMP_C, HIDDEN_ABILITY
+	setvar VAR_TEMP_D, MON_FEMALE @@This is gender selection. Should be MON_FEMALE, MON_MALE, or MON_GENDERLESS.
 	setvar VAR_TEMP_E, ITEM_EXPERT_BELT
 	setvar VAR_TEMP_1, MOVE_PSYCHIC
 	setvar VAR_TEMP_2, MOVE_MOONBLAST
-	setvar VAR_TEMP_3, MOVE_AURA_SPHERE
-	setvar VAR_TEMP_4, MOVE_CHARGE_BEAM
+	setvar VAR_TEMP_3, MOVE_SPARKLING_ARIA
+	setvar VAR_TEMP_4, MOVE_THUNDERBOLT
 	callnative RyuGiveDevMon
 	@@
 	@@
 	@@(this is to make it easy to tell between which mon you are editing)
 	@@
-	@@Second dev mon
+	@@
 	setvar VAR_TEMP_A, NATURE_ADAMANT
-	setvar VAR_TEMP_B, SPECIES_MUDSDALE
-	setvar VAR_TEMP_C, 1
+	setvar VAR_TEMP_B, SPECIES_PHEROMOSA
+	setvar VAR_TEMP_C, PRIMARY_ABILITY
 	setvar VAR_TEMP_D, MON_FEMALE
-	setvar VAR_TEMP_E, ITEM_ROCKY_HELMET
+	setvar VAR_TEMP_E, ITEM_EXPERT_BELT
 	setvar VAR_TEMP_1, MOVE_HIGH_HORSEPOWER
-	setvar VAR_TEMP_2, MOVE_SUPERPOWER
-	setvar VAR_TEMP_3, MOVE_DOUBLE_EDGE
+	setvar VAR_TEMP_2, MOVE_TRIPLE_KICK
+	setvar VAR_TEMP_3, MOVE_POISON_JAB
 	setvar VAR_TEMP_4, MOVE_CRABHAMMER
 	callnative RyuGiveDevMon
 	@@ finished, go to next stage.

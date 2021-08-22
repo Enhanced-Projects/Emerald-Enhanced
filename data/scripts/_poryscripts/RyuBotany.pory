@@ -54,6 +54,8 @@ RyuBotanyGrass_GiveOneItem::
     buffernumberstring 1, VAR_TEMP_5
     msgbox RyuBotany_RewardMessage
     addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL
+    addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL
+    addvars VAR_RYU_PLAYER_BOTANY_SKILL_EXP, VAR_RYU_PLAYER_BOTANY_SKILL
     call RyuBotany_CheckLevelUp
     closemessage
     return
@@ -242,14 +244,11 @@ RyuBotany_Obtained5Items:
 @Apricorn ball maker
 
 RyuBotany_ApricornBallCrafter::  @Add this script to the npc you want to craft balls out of apricorns
-    msgbox RB_SeeApricornMenuQuery, MSGBOX_YESNO
-    compare VAR_RESULT, YES
-    call_if_eq RB_BallMenu
-    msgbox RB_RefineApricornIntro
-    closemessage
+    call_if_unset FLAG_TEMP_3, RB_ApricornTutorialMsgs
     checkmoney 1000
     compare VAR_RESULT, FALSE
     goto_if_eq RB_CantAfford
+    msgbox RB_RefineWhichApricorns
     callnative RyuBufferNumApricornsForMenu
     multichoicedefault 0, 0, MULTI_BOTANY_APRICORN_MENU, 7, 0
     switch VAR_RESULT
@@ -262,9 +261,22 @@ RyuBotany_ApricornBallCrafter::  @Add this script to the npc you want to craft b
     case 6, RB_RefineBlackApcn
     goto RB_CancelRefineApcn
 
+RB_RefineWhichApricorns:
+    .string "Which apricorn type would you\nlike to refine?$"
+
+RB_ApricornTutorialMsgs::
+    msgbox RB_SeeApricornMenuQuery, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    call_if_eq RB_BallMenu
+    msgbox RB_RefineApricornIntro
+    setflag FLAG_TEMP_3
+    closemessage
+    return
+
 RB_BallMenu::
     drawinfobox INFOBOXAPCNBALLMENU
     msgbox RB_PressBToReturn
+    setflag FLAG_TEMP_3
     closemessage
     removeinfobox
     return
@@ -333,6 +345,7 @@ RB_RefineBlackApcn::
     goto RB_FinishRefining
 
 RB_FinishRefining::
+    removemoney 1000
     msgbox RB_ThanksForRefining
     closemessage
     release
