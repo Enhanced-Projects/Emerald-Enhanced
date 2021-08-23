@@ -505,7 +505,7 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
             currentTrainer = T1_READ_16(script + 2);
             if (FlagGet(TRAINER_FLAGS_START + currentTrainer) == TRUE)
                 {
-                    if ((gSaveBlock1Ptr->location.mapGroup == 0) && (gSaveBlock1Ptr->location.mapNum == 23) && currentTrainer == TRAINER_TIANA)
+                    if (currentTrainer == TRAINER_TIANA)
                     {
                         return script;
                     }

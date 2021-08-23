@@ -198,6 +198,7 @@ r102_tm8::
 r102_InitialTianaMsg::
 	msgbox r102_FollowerTianaFirstMsg
 	closemessage
+	clearflag FLAG_TEMP_D
 	call r102_DismissTianaQuery
 	release
 	end
