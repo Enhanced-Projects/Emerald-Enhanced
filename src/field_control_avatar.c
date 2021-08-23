@@ -505,11 +505,18 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
             currentTrainer = T1_READ_16(script + 2);
             if (FlagGet(TRAINER_FLAGS_START + currentTrainer) == TRUE)
                 {
-                    currentTrainerFaction = gTrainers[currentTrainer].trainerFaction;
-                    if (currentTrainerFaction < FACTION_OTHERS)
+                    if ((gSaveBlock1Ptr->location.mapGroup == 0) && (gSaveBlock1Ptr->location.mapNum == 23) && currentTrainer == TRAINER_TIANA)
                     {
-                        gOriginalNPCScript = script;
-                        script = RyuGetFactionDailyQuestScriptPtr(currentTrainerFaction);
+                        return script;
+                    }
+                    else
+                    {
+                        currentTrainerFaction = gTrainers[currentTrainer].trainerFaction;
+                        if (currentTrainerFaction < FACTION_OTHERS)
+                            {
+                                gOriginalNPCScript = script;
+                                script = RyuGetFactionDailyQuestScriptPtr(currentTrainerFaction);
+                            }
                     }
                 }
         }
