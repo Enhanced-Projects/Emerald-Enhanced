@@ -38,3 +38,30 @@ EverGrandeCity_Text_CitySign: @ 81E7D89
 	.string "and Pokémon.”$"
 
 `
+script EGCO_EntranceSlide {
+	lockall
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+	turnobject(OBJ_EVENT_ID_FOLLOWER, DIR_SOUTH)
+	msgbox(EGCO_SlidDownSlide)
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, EGCO_SlideDown)
+	applymovement(OBJ_EVENT_ID_FOLLOWER, EGCO_FollowerSlideDown)
+	waitmovement(OBJ_EVENT_ID_FOLLOWER)
+	releaseall
+	end
+}
+
+text EGCO_SlidDownSlide {
+	"{PLAYER} slides down the chute..."
+}
+
+movement EGCO_FollowerSlideDown {
+	walk_down
+	slide_down * 4
+	step_end
+}
+
+movement EGCO_SlideDown {
+	slide_down * 5
+	step_end
+}

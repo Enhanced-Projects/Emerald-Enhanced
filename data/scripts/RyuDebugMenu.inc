@@ -74,8 +74,111 @@ RyuDebug_UtilitiesMenu:
 	case 13, RDB_AlchemyInfo
 	case 14, RDB_ToggleLevelCap
 	case 15, RDB_EnableRealEstate
-	case 16, RyuDebug_menu_nodevcheck
-	goto RyuDebug_cancel
+	case 16, RDB_SpawnFollowerMultiMenu
+	case 17, RyuDebug_menu_nodevcheck
+	goto RyuDebug_menu_nodevcheck
+
+RDB_SpawnFollowerMultiMenu::
+	msgbox RDB_SpawnWhichFollower
+	scrollingmultichoice SMC_RYUFOLLOWERDEBUGSUBMENU, 0, 0, 6, 1
+	switch VAR_RESULT
+	case 0, RDB_SpawnMinnie
+	case 1, RDB_SpawnShelly
+	case 2, RDB_SpawnLanette
+	case 3, RDB_SpawnDawn
+	case 4, RDB_SpawnBrendan
+	case 5, RDB_SpawnLeaf
+	case 6, RDB_SpawnCourtney
+	case 7, RDB_SpawnJoy
+	case 8, RDB_NONCOMBATFOLLOWER
+	case 9, RDB_SpawnBlaise
+	case 10, RDB_SpawnTiana
+	case 11, RDB_SpawnHexer
+	case 12, RDB_RETURNTOMAIN
+	goto RDB_RETURNTOMAIN
+
+RDB_SpawnWhichFollower:
+	.string "Spawn which follower?$"
+
+RDB_SpawnMinnie::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_TWIN, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+
+RDB_SpawnShelly::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_AQUA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+
+RDB_SpawnLanette::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_WOMAN_2, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+	
+RDB_SpawnDawn::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+	
+RDB_SpawnBrendan::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+	
+RDB_SpawnLeaf::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_LEAF, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+	
+RDB_SpawnCourtney::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_F, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+	
+RDB_SpawnJoy::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_NURSE, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+
+RDB_SpawnBlaise::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_MAGMA_MEMBER_M, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+
+RDB_SpawnTiana::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_LASS, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+
+RDB_SpawnHexer::
+	call RyuForceCancelFollowerForQuest
+	createfollower OBJ_EVENT_GFX_HEX_MANIAC, RyuFollowerSelectNPCScript, DIR_SOUTH
+	goto RDB_ExplainSpawnFollower
+	end
+
+RDB_NONCOMBATFOLLOWER::
+	goto RDB_SpawnFollowerMultiMenu
+
+RDB_ExplainSpawnFollower::
+	msgbox RDB_ExplainSpawnMsg
+	closemessage
+	goto RyuDebug_UtilitiesMenu
+
+RDB_ExplainSpawnMsg:
+	.string "You have spawned in a follower.\nNote that this skips all quest\pchecks and just directly applies\ntheir base script.\lBugs may appear when talked to.$"
+	
+RDB_RETURNTOMAIN::
+	goto RyuDebug_UtilitiesMenu
 
 RDB_EnableRealEstate::
 	callnative SetPlayerRealtorStatus

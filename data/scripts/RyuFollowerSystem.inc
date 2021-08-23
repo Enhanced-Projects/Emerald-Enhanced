@@ -221,6 +221,12 @@ RF_FollowerLeaveCall::
 	case OBJ_EVENT_GFX_AQUA_MEMBER_F, Ryu_RestoreShelly
 	case OBJ_EVENT_GFX_NURSE, Ryu_RestoreNurse
 	case OBJ_EVENT_GFX_LASS, Ryu_RestoreTiana
+	case OBJ_EVENT_GFX_HEX_MANIAC, Ryu_DestroyWithoutPrejudice
+	case OBJ_EVENT_GFX_MAGMA_MEMBER_M, ryu_end
+	return
+
+Ryu_DestroyWithoutPrejudice::
+	destroyfollower
 	return
 	
 RF_FollowerLeave::

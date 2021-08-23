@@ -1590,7 +1590,10 @@ static void OpponentHandleChooseMove(void)
                 if (CanMegaEvolve(gActiveBattler)) // If opponent can mega evolve, do it.
                     BtlController_EmitTwoReturnValues(1, 10, (chosenMoveId) | (RET_MEGA_EVOLUTION) | (gBattlerTarget << 8));
                 else
-                    BtlController_EmitTwoReturnValues(1, 10, (chosenMoveId) | (gBattlerTarget << 8));
+                    if (CanMegaEvolve(gActiveBattler))
+                        BtlController_EmitTwoReturnValues(1, 10, (chosenMoveId) | (RET_MEGA_EVOLUTION) | (gBattlerTarget << 8));
+                    else
+                        BtlController_EmitTwoReturnValues(1, 10, (chosenMoveId) | (gBattlerTarget << 8));
                 break;
             }
             OpponentBufferExecCompleted();

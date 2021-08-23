@@ -764,23 +764,24 @@ int ScriptMenu_AdjustLeftCoordFromWidth(int left, int width)
 
     return adjustedLeft;
 }
-static const u8 sText_DebugUtilityItem2[] = _("Phasing");
-static const u8 sText_DebugUtilityItem3[] = _("Dev Repel");
-static const u8 sText_DebugUtilityItem4[] = _("View Temp Vars");
-static const u8 sText_DebugUtilityItem5[] = _("Set Time");
-static const u8 sText_DebugUtilityItem6[] = _("Battle Sim");
-static const u8 sText_DebugUtilityItem7[] = _("Set Exp Mult");
-static const u8 sText_DebugUtilityItem8[] = _("All Badges");
-static const u8 sText_DebugUtilityItem9[] = _("Heal Party");
-static const u8 sText_DebugUtilityItem10[] = _("Saveblock Size");
-static const u8 sText_DebugUtilityItem11[] = _("Complete Dex");
-static const u8 sText_DebugUtilityItem12[] = _("Give/Take Achievements");
-static const u8 sText_DebugUtilityItem13[] = _("Check AP Usage");
-static const u8 sText_DebugUtilityItem14[] = _("Faction relations");
-static const u8 sText_DebugUtilityItem15[] = _("Alchemy Info");
-static const u8 sText_DebugUtilityItem16[] = _("Toggle Level Cap");
-static const u8 sText_DebugUtilityItem17[] = _("Enable Real Estate");
-static const u8 sText_DebugUtilityItem18[] = _("Exit");
+static const u8 sText_DebugUtilityItem0[] = _("Phasing");
+static const u8 sText_DebugUtilityItem1[] = _("Dev Repel");
+static const u8 sText_DebugUtilityItem2[] = _("View Temp Vars");
+static const u8 sText_DebugUtilityItem3[] = _("Set Time");
+static const u8 sText_DebugUtilityItem4[] = _("Battle Sim");
+static const u8 sText_DebugUtilityItem5[] = _("Set Exp Mult");
+static const u8 sText_DebugUtilityItem6[] = _("All Badges");
+static const u8 sText_DebugUtilityItem7[] = _("Heal Party");
+static const u8 sText_DebugUtilityItem8[] = _("Saveblock Size");
+static const u8 sText_DebugUtilityItem9[] = _("Complete Dex");
+static const u8 sText_DebugUtilityItem10[] = _("Give/Take Achievements");
+static const u8 sText_DebugUtilityItem11[] = _("Check AP Usage");
+static const u8 sText_DebugUtilityItem12[] = _("Faction relations");
+static const u8 sText_DebugUtilityItem13[] = _("Alchemy Info");
+static const u8 sText_DebugUtilityItem14[] = _("Toggle Level Cap");
+static const u8 sText_DebugUtilityItem15[] = _("Enable Real Estate");
+static const u8 sText_DebugUtilityItem16[] = _("Spawn a Follower");
+static const u8 sText_DebugUtilityItem17[] = _("Exit");
 
 // strings to display as items.
 static const u8 sText_BotanyConsumableItem1[] = _("Muscle Powder");
@@ -838,6 +839,20 @@ static const u8 sRAItemMineralWater[] = _("Make Mineral Water");
 static const u8 sRAItemRareCandy[] = _("Make Rare Candy");
 static const u8 sRAItemGoldNugget[] = _("Make Gold Nugget");
 
+static const u8 sFollowerMinnie[] = _("Spawn Minnie");
+static const u8 sFollowerShelly[] = _("Spawn Shelly");
+static const u8 sFollowerLanette[] = _("Spawn Lanette");
+static const u8 sFollowerDawn[] = _("Spawn Dawn");
+static const u8 sFollowerBrendan[] = _("Spawn Brendan");
+static const u8 sFollowerLeaf[] = _("Spawn Leaf");
+static const u8 sFollowerCourtney[] = _("Spawn Courtney");
+static const u8 sFollowerJoy[] = _("Spawn Joy");
+static const u8 sFollowerNonCombat[] = _("{COLOR LIGHT_RED}{SHADOW RED}{DOWN_ARROW} NON COMBAT {DOWN_ARROW}");
+static const u8 sFollowerBlaise[] = _("Spawn Blaise");
+static const u8 sFollowerTiana[] = _("Spawn Tiana");
+static const u8 sFollowerHexer[] = _("Spawn Hexer");
+static const u8 sReturnPrevious[] = _("Return");
+
 static const struct ListMenuItem sBotanyConsumablesSet[] =
 {
     {sText_BotanyConsumableItem1, 0},
@@ -882,23 +897,24 @@ static const struct ListMenuItem sBotanyEvolutionSet[] =
 
 static const struct ListMenuItem sDebugUtilitySet[] =
 {
-    {sText_DebugUtilityItem2, 0},
-    {sText_DebugUtilityItem3, 1},
-    {sText_DebugUtilityItem4, 2},
-    {sText_DebugUtilityItem5, 3},
-    {sText_DebugUtilityItem6, 4},
-    {sText_DebugUtilityItem7, 5},
-    {sText_DebugUtilityItem8, 6},
-    {sText_DebugUtilityItem9, 7},
-    {sText_DebugUtilityItem10, 8},
-    {sText_DebugUtilityItem11, 9},
-    {sText_DebugUtilityItem12, 10},
-    {sText_DebugUtilityItem13, 11},
-    {sText_DebugUtilityItem14, 12},
-    {sText_DebugUtilityItem15, 13},
-    {sText_DebugUtilityItem16, 14},
-    {sText_DebugUtilityItem17, 15},
-    {sText_DebugUtilityItem18, 16}
+    {sText_DebugUtilityItem0, 0},
+    {sText_DebugUtilityItem1, 1},
+    {sText_DebugUtilityItem2, 2},
+    {sText_DebugUtilityItem3, 3},
+    {sText_DebugUtilityItem4, 4},
+    {sText_DebugUtilityItem5, 5},
+    {sText_DebugUtilityItem6, 6},
+    {sText_DebugUtilityItem7, 7},
+    {sText_DebugUtilityItem8, 8},
+    {sText_DebugUtilityItem9, 9},
+    {sText_DebugUtilityItem10, 10},
+    {sText_DebugUtilityItem11, 11},
+    {sText_DebugUtilityItem12, 12},
+    {sText_DebugUtilityItem13, 13},
+    {sText_DebugUtilityItem14, 14},
+    {sText_DebugUtilityItem15, 15},
+    {sText_DebugUtilityItem16, 16},
+    {sText_DebugUtilityItem17, 17},
 };
 
 static const struct ListMenuItem sAlchemyMenu[] =
@@ -926,6 +942,23 @@ static const struct ListMenuItem sAlchemyMenu[] =
     {sRAItemGoldNugget, 20},
 };
 
+static const struct ListMenuItem sRyuFollowerDebugSet[] =
+{
+    {sFollowerMinnie, 0},
+    {sFollowerShelly, 1},
+    {sFollowerLanette, 2},
+    {sFollowerDawn, 3},
+    {sFollowerBrendan, 4},
+    {sFollowerLeaf, 5},
+    {sFollowerCourtney, 6},
+    {sFollowerJoy, 7},
+    {sFollowerNonCombat, 8},
+    {sFollowerBlaise, 9},
+    {sFollowerTiana, 10},
+    {sFollowerHexer, 11},
+    {sReturnPrevious, 12},
+};
+
 
 struct
 {
@@ -938,6 +971,7 @@ struct
     {sBotanyMedicineSet, ARRAY_COUNT(sBotanyMedicineSet)},
     {sBotanyEvolutionSet, ARRAY_COUNT(sBotanyEvolutionSet)},
     {sAlchemyMenu, ARRAY_COUNT(sAlchemyMenu)},
+    {sRyuFollowerDebugSet, ARRAY_COUNT(sRyuFollowerDebugSet)},
 };
 
 static void Task_ScrollingMultichoiceInput(u8 taskId);

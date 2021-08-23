@@ -124,9 +124,58 @@ AquaHideout_B1F_EventScript_Grunt7:: @ 8233AEC
 
 AQH_SkipBlock::
 	lockall
+	compare VAR_RYU_QUEST_DEVON_CORPORATE, 24
+	goto_if_eq AQH_MovePlayerThroughBlock
 	msgbox AQH_OffLimits
 	releaseall
 	end
+
+AQH_MovePlayerThroughBlock::
+	msgbox AQH_Text_Lucky
+	closemessage
+	applymovement VAR_LAST_TALKED, AQH_Movement_MoveBlockers
+	waitmovement VAR_LAST_TALKED
+	applymovement OBJ_EVENT_ID_PLAYER, AQH_Movement_AllowPlayerThrough
+	delay 10
+	applymovement OBJ_EVENT_ID_FOLLOWER, AQH_Movement_AllowFollowerThrough
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	applymovement VAR_LAST_TALKED, AQH_Movement_ReturnBlocker
+	waitmovement VAR_LAST_TALKED
+	releaseall
+	end
+
+AQH_Movement_MoveBlockers:
+	walk_right
+	walk_down
+	face_up
+	step_end
+
+AQH_Movement_ReturnBlocker:
+	walk_up
+	walk_left
+	face_right
+	step_end
+
+AQH_Movement_AllowFollowerThrough:
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	face_right
+	step_end
+
+AQH_Movement_AllowPlayerThrough:
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	face_right
+	step_end
+
+AQH_Text_Lucky:
+	.string "You're lucky Archie isn't\naround right now.\pHe'd stop you dead in your\ntracks.$"
 
 AQH_OffLimits:
 	.string "This area is off limits.\nYou may not pass.$"
