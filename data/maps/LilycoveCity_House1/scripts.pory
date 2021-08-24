@@ -6,7 +6,7 @@ LilycoveCity_House1_EventScript_ExpertM:: @ 821ECCE
 	msgbox LilycoveCity_House1_Text_PokemonCloseToPeople, MSGBOX_NPC
 	end
 
-LilycoveCity_House1_EventScript_Kecleon:: @ 821ECD7
+LCC_House1_Pikachu:: @ 821ECD7
 	lock
 	faceplayer
 	waitse

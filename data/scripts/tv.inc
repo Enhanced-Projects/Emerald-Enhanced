@@ -5,8 +5,6 @@ EventScript_TV:: @ 827EE0B
 	specialvar VAR_RESULT, CheckForBigMovieOrEmergencyNewsOnTV
 	compare VAR_RESULT, 2
 	goto_if_eq EventScript_PlayersHouseMovie
-	compare VAR_RESULT, 1
-	goto_if_eq EventScript_PlayersHouseLatiNewsFlash
 	goto_if_unset FLAG_SYS_TV_START, EventScript_MomDadMightLikeThis1
 	goto_if_set FLAG_SYS_TV_WATCH, EventScript_MomDadMightLikeThis1
 	specialvar VAR_RESULT, IsTVShowInSearchOfTrainersAiring
@@ -37,18 +35,6 @@ EventScript_MomDadMightLikeThis1:: @ 827EE8A
 
 EventScript_PlayersHouseMovie:: @ 827EE9A
 	msgbox PlayersHouse_1F_Text_TheresAMovieOnTV, MSGBOX_DEFAULT
-	releaseall
-	end
-
-@ special InitRoamer is a junk call. Its input var (VAR_0x8004) hasn't been set, and
-@ It's called again when Mom actually asks for the color, overwriting
-@ whatever it does here.
-EventScript_PlayersHouseLatiNewsFlash:: @ 827EEA4
-	msgbox PlayersHouse_1F_Text_LatiEmergencyNewsFlash, MSGBOX_DEFAULT
-	special InitRoamer
-	clearflag FLAG_SYS_TV_LATIAS_LATIOS
-	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
-	special TurnOffTVScreen
 	releaseall
 	end
 

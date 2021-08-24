@@ -575,7 +575,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/RyuIntroScripts.inc"
 	.include "data/scripts/RyuSacrificeSystem.inc"
 	.include "data/scripts/RyuDevonLine.inc"
-	.include "data/scripts/JunkScripts.inc"
 	.include "data/scripts/RyuChampionRoom.inc"
 	.include "data/scripts/RyuTeleportationMenu.inc"
 	.include "data/scripts/RyuPasscodeMenu.inc"
@@ -779,9 +778,6 @@ Common_EventScript_FerryDepartIsland:: @ 8272250
 	call Common_EventScript_FerryDepart
 	return
 
-	.include "data/scripts/cave_of_origin.inc"
-	.include "data/scripts/kecleon.inc"
-
 Common_EventScript_NameReceivedPartyMon:: @ 82723DD
 	fadescreen FADE_TO_BLACK
 	special ChangePokemonNickname
@@ -936,8 +932,6 @@ EventScript_SelectWithoutRegisteredItem:: @ 82736B3
 	msgbox gText_SelectWithoutRegisteredItem, MSGBOX_SIGN
 	end
 
-	.include "data/scripts/field_poison.inc"
-
 Common_EventScript_NopReturn:: @ 827374E
 	return
 
@@ -1001,7 +995,6 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/scripts/item_ball_scripts.inc"
 	.include "data/scripts/mystery_event_club.inc"
 	.include "data/scripts/day_care.inc"
-	.include "data/scripts/flash.inc"
 	.include "data/scripts/players_house.inc"
 	.include "data/scripts/berry_blender.inc"
 	.include "data/text/mauville_man.inc"

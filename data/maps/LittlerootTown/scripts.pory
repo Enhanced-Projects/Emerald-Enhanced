@@ -630,18 +630,21 @@ ShellyToBrendan:
 	face_down
 	step_end
 
+LittlerootTown_EventScript_TownSign::
+	msgbox LittlerootTown_Text_TownSign, MSGBOX_SIGN
+	end
 
-	
+LittlerootTown_Text_TownSign: @ 81E8D32
+	.string "Littleroot Town\n"
+	.string "“A town that can't be shaded any hue.”$"
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+PlayersHouse_2F_EventScript_GameCube:: @ 81F865F
+	msgbox PlayersHouse_2F_Text_ItsAGameCube, MSGBOX_SIGN
+	end
+
+PlayersHouse_2F_Text_ItsAGameCube: @ 81F884F
+	.string "It's a Nintendo GameCube.\p"
+	.string "A Game Boy Advance is connected to\n"
+	.string "serve as the Controller.$"
 	
 `

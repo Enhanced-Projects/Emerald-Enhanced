@@ -409,7 +409,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route120_EventScript_InvisibleBridgeKecleon",
+      "script": "NULL",
       "flag": "FLAG_HIDE_ALL_KECLEON_OWS"
     },
     {
@@ -422,7 +422,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route120_EventScript_Steven",
+      "script": "NULL",
       "flag": "FLAG_HIDE_ROUTE_120_STEVEN"
     },
     {
@@ -500,7 +500,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route120_EventScript_Kecleon1",
+      "script": "NULL",
       "flag": "FLAG_HIDE_ALL_KECLEON_OWS"
     },
     {
@@ -513,7 +513,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route120_EventScript_Kecleon2",
+      "script": "NULL",
       "flag": "FLAG_HIDE_ALL_KECLEON_OWS"
     },
     {
@@ -526,7 +526,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route120_EventScript_Kecleon3",
+      "script": "NULL",
       "flag": "FLAG_HIDE_ALL_KECLEON_OWS"
     },
     {
@@ -539,7 +539,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route120_EventScript_Kecleon5",
+      "script": "NULL",
       "flag": "FLAG_HIDE_ALL_KECLEON_OWS"
     },
     {
@@ -552,7 +552,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route120_EventScript_Kecleon4",
+      "script": "NULL",
       "flag": "FLAG_HIDE_ALL_KECLEON_OWS"
     },
     {

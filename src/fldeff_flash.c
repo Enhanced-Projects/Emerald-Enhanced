@@ -102,12 +102,7 @@ static void FieldCallback_Flash(void)
     gTasks[taskId].data[9] = (uintptr_t)FldEff_UseFlash;
 }
 
-static void FldEff_UseFlash(void)
-{
-    PlaySE(SE_M_REFLECT);
-    FlagSet(FLAG_SYS_USE_FLASH);
-    ScriptContext1_SetupScript(EventScript_UseFlash);
-}
+static void FldEff_UseFlash(void){}
 
 static void CB2_ChangeMapMain(void)
 {

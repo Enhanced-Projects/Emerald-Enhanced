@@ -2123,7 +2123,7 @@ void RyuExpDriveOperation(void)
     if (mode == EXP_DRIVE_MODE_USE_ON_MON)
         {
             u8 MonSlotData = (VarGet(VAR_TEMP_F));
-            s32 MonCurrExp = GetMonData(&gPlayerParty[VarGet(VAR_TEMP_F)], MON_DATA_EXP);
+            s32 MonCurrExp = GetMonData(&gPlayerParty[MonSlotData], MON_DATA_EXP);
             u32 newMonExp = (MonCurrExp + (GetGameStat(GAME_STAT_EXP_DRIVE)));
 
             SetMonData(&gPlayerParty[MonSlotData], MON_DATA_EXP, &newMonExp);

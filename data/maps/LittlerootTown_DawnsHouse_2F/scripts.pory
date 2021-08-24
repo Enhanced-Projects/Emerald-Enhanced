@@ -224,24 +224,18 @@ LRT_TURN:
     walk_left
 	step_end
 
-EventScript_PlayerPCFemale:: @ 81F9553
-	lockall
-	checkplayergender
-	compare VAR_RESULT, MALE
-	goto_if_eq LittlerootTown_DawnsHouse_2F_EventScript_1F956C
-	compare VAR_RESULT, FEMALE
-	goto_if_eq LittlerootTown_DawnsHouse_2F_EventScript_1F9576
-	end
-
 LRT_PlayerPC:: @ 81F9576
 	setvar VAR_0x8004, 2
 	special DoPCTurnOnEffect
 	playse SE_PC_ON
-	msgbox gUnknown_08272D87, MSGBOX_DEFAULT
+	msgbox TurnedOnPc, MSGBOX_DEFAULT
 	special BedroomPC
 	waitstate
 	releaseall
 	end
+
+TurnedOnPc:
+	.string "{PLAYER} turned on the PC."
 
 LRT_PlayerPC2:: @ 81F958F
 	setvar VAR_0x8004, 2

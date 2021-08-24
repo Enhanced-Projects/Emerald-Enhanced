@@ -2147,6 +2147,7 @@ RyuCheckForLNSUAch::
 	goto_if_unset FLAG_LANDMARK_SNOWY_SHORE, ryu_return
 	ach give ACH_LEAVE_NO_STONE_UNTURNED
 	return	
+
 `
 
 
@@ -2309,4 +2310,18 @@ script RyuDoContestReward {
 		setvar(VAR_RYU_CONTEST_REWARD, 1000)//if rewarded successfully, clear variable.
 		return
 	}
+}
+
+script RyuScript_TurnOffPlayerPc {
+	msgbox(format("{PLAYER} turned off the PC."))
+	releaseall
+	end
+}
+
+text Common_Text_LookCloserAtMap {
+	"{PLAYER} took a closer look at\nthe Hoenn map.$"
+}
+
+text PlayersHouse_1F_Text_TheresAMovieOnTV {
+	"There's an Action movie on TV."
 }
