@@ -12107,8 +12107,7 @@ static void Cmd_handleballthrow(void)
                     ballMultiplier = 70;
                 break;
             case ITEM_DUSK_BALL:
-                RtcCalcLocalTime();
-                if ((gLocalTime.hours >= 20 && gLocalTime.hours <= 3) || gMapHeader.cave || gMapHeader.mapType == MAP_TYPE_UNDERGROUND)
+                if (RyuGetTimeOfDay() == RTC_TIME_NIGHT || gMapHeader.cave || gMapHeader.mapType == MAP_TYPE_UNDERGROUND)
                     ballMultiplier = 60;
                 break;
             case ITEM_DREAM_BALL:
