@@ -31,6 +31,8 @@
 #include "constants/metatile_behaviors.h"
 #include "ach_atlas.h"
 
+//@PIDGEY|KAGERU I don't know how to merge this, so leaving unmerged.
+
 extern const u8 EventScript_RepelWoreOff[];
 extern int CountBadges();
 
@@ -42,7 +44,11 @@ static void FeebasSeedRng(u16 seed);
 static bool8 IsWildLevelAllowedByRepel(u8 level);
 static void ApplyFluteEncounterRateMod(u32 *encRate);
 static void ApplyCleanseTagEncounterRateMod(u32 *encRate);
+<<<<<<< HEAD
 static bool8 TryGetAbilityInfluencedWildMonIndexFromTable(const struct WildPokemon *wildMon, u8 *monIndex, u8 encounterType);
+=======
+static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, u8 type, u16 ability, u8 *monIndex);
+>>>>>>> rhmaster/master
 static bool8 IsAbilityAllowingEncounter(u8 level);
 
 // EWRAM vars
@@ -119,7 +125,7 @@ static bool8 CheckFeebas(void)
         if (Random() % 100 > 49) // 50% chance of encountering Feebas
             return FALSE;
 
-        FeebasSeedRng(gSaveBlock1Ptr->easyChatPairs[0].unk2);
+        FeebasSeedRng(gSaveBlock1Ptr->dewfordTrends[0].rand);
         for (i = 0; i != NUM_FEEBAS_SPOTS;)
         {
             feebasSpots[i] = FeebasRandom() % 447;
@@ -179,7 +185,11 @@ u8 ChooseWildMonIndex_Land(void)
         return 8;
     if (rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_9)
         return 9;
+<<<<<<< HEAD
     if (rand == ENCOUNTER_CHANCE_LAND_MONS_SLOT_9)
+=======
+    else if (rand >= ENCOUNTER_CHANCE_LAND_MONS_SLOT_9 && rand < ENCOUNTER_CHANCE_LAND_MONS_SLOT_10)
+>>>>>>> rhmaster/master
         return 10;
     return 11;
 }
@@ -228,6 +238,7 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
         break;
     case SUPER_ROD:
         if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_5)
+<<<<<<< HEAD
             return 5;
         if (rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6)
             return 6;
@@ -237,13 +248,66 @@ static u8 ChooseWildMonIndex_Fishing(u8 rod)
             return 8;
         if (rand == ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8)
             return 9;
+=======
+            wildMonIndex = 5;
+        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_5 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6)
+            wildMonIndex = 6;
+        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_6 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_7)
+            wildMonIndex = 7;
+        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_7 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8)
+            wildMonIndex = 8;
+        if (rand >= ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_8 && rand < ENCOUNTER_CHANCE_FISHING_MONS_SUPER_ROD_SLOT_9)
+            wildMonIndex = 9;
+>>>>>>> rhmaster/master
         break;
     }
     // Should be unreachable
     return wildMonIndex;
 }
 
+<<<<<<< HEAD
 u16 GetCurrentMapWildMonHeaderId(void)
+=======
+static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon)
+{
+    u8 min;
+    u8 max;
+    u8 range;
+    u8 rand;
+
+    // Make sure minimum level is less than maximum level
+    if (wildPokemon->maxLevel >= wildPokemon->minLevel)
+    {
+        min = wildPokemon->minLevel;
+        max = wildPokemon->maxLevel;
+    }
+    else
+    {
+        min = wildPokemon->maxLevel;
+        max = wildPokemon->minLevel;
+    }
+    range = max - min + 1;
+    rand = Random() % range;
+
+    // check ability for max level mon
+    if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
+    {
+        u16 ability = GetMonAbility(&gPlayerParty[0]);
+        if (ability == ABILITY_HUSTLE || ability == ABILITY_VITAL_SPIRIT || ability == ABILITY_PRESSURE)
+        {
+            if (Random() % 2 == 0)
+                return max;
+
+            if (rand != 0)
+                rand--;
+        }
+    }
+
+    return min + rand;
+}
+
+static u16 GetCurrentMapWildMonHeaderId(void)
+>>>>>>> rhmaster/master
 {
     u16 i;
 
@@ -489,7 +553,7 @@ static void RyuGenerateBossMon(u16 species, u8 level)
         SetMonData(&gEnemyParty[0], MON_DATA_SPDEF_IV, &iv);
         SetMonData(&gEnemyParty[0], MON_DATA_SPEED_IV, &iv);
         SetMonData(&gEnemyParty[0], MON_DATA_LEVEL, &level);
-        SetMonData(&gEnemyParty[0], MON_DATA_GIFT_RIBBON_7, val);
+        SetMonData(&gEnemyParty[0], MON_DATA_WORLD_RIBBON, val);
         SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &ability);
         // If the pokemon has no hidden ability, set it to a random ability
         if (GetMonAbility(&gEnemyParty[0]) == ABILITY_NONE)
@@ -737,6 +801,10 @@ bool8 StandardWildEncounter(u16 currMetaTileBehavior, u16 previousMetaTileBehavi
             {
                 if (TryGenerateWildMon(gWildMonHeaders[headerId].waterMonsInfo, WILD_AREA_WATER, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
                 {
+<<<<<<< HEAD
+=======
+                    gIsSurfingEncounter = TRUE;
+>>>>>>> rhmaster/master
                     if (TryDoDoubleWildBattle())
                     {
                         struct Pokemon mon1 = gEnemyParty[0];
@@ -981,7 +1049,7 @@ static bool8 IsWildLevelAllowedByRepel(u8 wildLevel)
 
 static bool8 IsAbilityAllowingEncounter(u8 level)
 {
-    u8 ability;
+    u16 ability;
 
     if (GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
         return TRUE;
@@ -1023,6 +1091,7 @@ static bool8 TryGetRandomWildMonIndexByType(const struct WildPokemon *wildMon, u
     return TRUE;
 }
 
+<<<<<<< HEAD
 static const u8 sWildCount[] =
 {
     LAND_WILD_COUNT,
@@ -1033,6 +1102,9 @@ static const u8 sWildCount[] =
 
 // Returns true if monIndex has been mutated.
 static bool8 TryGetAbilityInfluencedWildMonIndexFromTable(const struct WildPokemon *wildMon, u8 *monIndex, u8 encounterType)
+=======
+static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, u8 type, u16 ability, u8 *monIndex)
+>>>>>>> rhmaster/master
 {
     u32 ability = GetMonAbility(&gPlayerParty[0]);
     u8 attractedType = sTypeAttractionTable[ability][0][encounterType];

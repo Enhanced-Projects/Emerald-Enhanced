@@ -645,7 +645,7 @@ gBattleAnims_Moves::
 	.4byte 0
 	.4byte Move_SHORE_UP
 	.4byte Move_FIRST_IMPRESSION
-	.4byte Move_BANEFUL_BUNKER
+	.4byte MOVE_EE_PROTECT
 	.4byte Move_SPIRIT_SHACKLE
 	.4byte Move_DARKEST_LARIAT
 	.4byte Move_SPARKLING_ARIA
@@ -15276,7 +15276,7 @@ Move_DEFENSE_CURL:
 	waitforvisualfinish
 	end
 
-Move_BANEFUL_BUNKER:
+MOVE_EE_PROTECT:
 Move_PROTECT:
 	loadspritegfx ANIM_TAG_PROTECT
 	monbg ANIM_ATK_PARTNER

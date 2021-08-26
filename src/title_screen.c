@@ -63,7 +63,9 @@ static const u32 sTitleScreenCloudsGfx[] = INCBIN_U32("graphics/title_screen/clo
 
 
 
-const u16 gIntroWaterDropAlphaBlend[] =
+// Used to blend "Emerald Version" as it passes over over the Pokémon banner.
+// Also used by the intro to blend the Game Freak name/logo in and out as they appear and disappear
+const u16 gTitleScreenAlphaBlend[64] =
 {
     BLDALPHA_BLEND(16, 0),
     BLDALPHA_BLEND(16, 1),
@@ -102,7 +104,7 @@ const u16 gIntroWaterDropAlphaBlend[] =
 
 static const struct OamData sVersionBannerLeftOamData =
 {
-    .y = 160,
+    .y = DISPLAY_HEIGHT,
     .affineMode = ST_OAM_AFFINE_OFF,
     .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = 0,
@@ -119,7 +121,7 @@ static const struct OamData sVersionBannerLeftOamData =
 
 static const struct OamData sVersionBannerRightOamData =
 {
-    .y = 160,
+    .y = DISPLAY_HEIGHT,
     .affineMode = ST_OAM_AFFINE_OFF,
     .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = 0,
@@ -190,7 +192,7 @@ static const struct CompressedSpriteSheet sSpriteSheet_EmeraldVersion[] =
 
 static const struct OamData sOamData_CopyrightBanner =
 {
-    .y = 160,
+    .y = DISPLAY_HEIGHT,
     .affineMode = ST_OAM_AFFINE_OFF,
     .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = 0,
@@ -302,7 +304,7 @@ static const struct SpritePalette sSpritePalette_PressStart[] =
 
 static const struct OamData sPokemonLogoShineOamData =
 {
-    .y = 160,
+    .y = DISPLAY_HEIGHT,
     .affineMode = ST_OAM_AFFINE_OFF,
     .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = 0,
@@ -355,15 +357,15 @@ static void SpriteCB_VersionBannerLeft(struct Sprite *sprite)
     if (gTasks[sprite->data[1]].data[1] != 0)
     {
         sprite->oam.objMode = ST_OAM_OBJ_NORMAL;
-        sprite->pos1.y = VERSION_BANNER_Y_GOAL;
+        sprite->y = VERSION_BANNER_Y_GOAL;
     }
     else
     {
-        if (sprite->pos1.y != VERSION_BANNER_Y_GOAL)
-            sprite->pos1.y++;
+        if (sprite->y != VERSION_BANNER_Y_GOAL)
+            sprite->y++;
         if (sprite->data[0] != 0)
             sprite->data[0]--;
-        SetGpuReg(REG_OFFSET_BLDALPHA, gIntroWaterDropAlphaBlend[sprite->data[0]]);
+        SetGpuReg(REG_OFFSET_BLDALPHA, gTitleScreenAlphaBlend[sprite->data[0]]);
     }
 }
 
@@ -372,12 +374,12 @@ static void SpriteCB_VersionBannerRight(struct Sprite *sprite)
     if (gTasks[sprite->data[1]].data[1] != 0)
     {
         sprite->oam.objMode = ST_OAM_OBJ_NORMAL;
-        sprite->pos1.y = VERSION_BANNER_Y_GOAL;
+        sprite->y = VERSION_BANNER_Y_GOAL;
     }
     else
     {
-        if (sprite->pos1.y != VERSION_BANNER_Y_GOAL)
-            sprite->pos1.y++;
+        if (sprite->y != VERSION_BANNER_Y_GOAL)
+            sprite->y++;
     }
 }
 
@@ -387,7 +389,7 @@ static void SpriteCB_PressStartCopyrightBanner(struct Sprite *sprite)
     {
         sprite->data[1]++;
         // Alternate between hidden and shown every 16th frame
-        if (sprite->data[1] & 0x10)
+        if (sprite->data[1] & 16)
             sprite->invisible = FALSE;
         else
             sprite->invisible = TRUE;
@@ -427,13 +429,13 @@ static void CreateCopyrightBanner(s16 x, s16 y)
 
 static void SpriteCB_PokemonLogoShine(struct Sprite *sprite)
 {
-    if (sprite->pos1.x < 272)
+    if (sprite->x < DISPLAY_WIDTH + 32)
     {
         if (sprite->data[0]) // Flash background
         {
             u16 backgroundColor;
 
-            if (sprite->pos1.x < DISPLAY_WIDTH / 2)
+            if (sprite->x < DISPLAY_WIDTH / 2)
             {
                 // Brighten background color
                 if (sprite->data[1] < 31)
@@ -451,15 +453,15 @@ static void SpriteCB_PokemonLogoShine(struct Sprite *sprite)
             }
 
             backgroundColor = _RGB(sprite->data[1], sprite->data[1], sprite->data[1]);
-            if (sprite->pos1.x == DISPLAY_WIDTH / 2 + 12
-                || sprite->pos1.x == DISPLAY_WIDTH / 2 + 16
-                || sprite->pos1.x == DISPLAY_WIDTH / 2 + 20
-                || sprite->pos1.x == DISPLAY_WIDTH / 2 + 24)
+            if (sprite->x == DISPLAY_WIDTH / 2 + 12
+                || sprite->x == DISPLAY_WIDTH / 2 + 16
+                || sprite->x == DISPLAY_WIDTH / 2 + 20
+                || sprite->x == DISPLAY_WIDTH / 2 + 24)
                 gPlttBufferFaded[0] = RGB(24, 31, 12);
             else
                 gPlttBufferFaded[0] = backgroundColor;
         }
-        sprite->pos1.x += 4;
+        sprite->x += 4;
     }
     else
     {
@@ -470,8 +472,8 @@ static void SpriteCB_PokemonLogoShine(struct Sprite *sprite)
 
 static void SpriteCB_PokemonLogoShine2(struct Sprite *sprite)
 {
-    if (sprite->pos1.x < 272)
-        sprite->pos1.x += 8;
+    if (sprite->x < DISPLAY_WIDTH + 32)
+        sprite->x += 8;
     else
         DestroySprite(sprite);
 }
@@ -599,7 +601,7 @@ void CB2_InitTitleScreen(void)
         break;
     }
     case 3:
-        BeginNormalPaletteFade(0xFFFFFFFF, 1, 0x10, 0, RGB_WHITEALPHA);
+        BeginNormalPaletteFade(PALETTES_ALL, 1, 0x10, 0, RGB_WHITEALPHA);
         SetVBlankCallback(VBlankCB);
         gMain.state = 4;
         break;
@@ -613,8 +615,8 @@ void CB2_InitTitleScreen(void)
         SetGpuReg(REG_OFFSET_WIN0V, 0);
         SetGpuReg(REG_OFFSET_WIN1H, 0);
         SetGpuReg(REG_OFFSET_WIN1V, 0);
-        SetGpuReg(REG_OFFSET_WININ, 0x1F1F);
-        SetGpuReg(REG_OFFSET_WINOUT, 0x3F1F);
+        SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_BG_ALL | WININ_WIN0_OBJ | WININ_WIN1_BG_ALL | WININ_WIN1_OBJ);
+        SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG_ALL | WINOUT_WIN01_OBJ | WINOUT_WINOBJ_ALL);
         SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG2 | BLDCNT_EFFECT_LIGHTEN);
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BLDY, 0xC);
@@ -750,7 +752,7 @@ static void Task_TitleScreenPhase3(u8 taskId)
     if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(START_BUTTON)))
     {
         FadeOutBGM(4);
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_WHITEALPHA);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_WHITEALPHA);
         SetMainCallback2(CB2_GoToMainMenu);
     }
     else if (JOY_HELD(CLEAR_SAVE_BUTTON_COMBO) == CLEAR_SAVE_BUTTON_COMBO)
@@ -761,7 +763,7 @@ static void Task_TitleScreenPhase3(u8 taskId)
       && CanResetRTC() == TRUE)
     {
         FadeOutBGM(4);
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
         SetMainCallback2(CB2_GoToResetRtcScreen);
     }
     else

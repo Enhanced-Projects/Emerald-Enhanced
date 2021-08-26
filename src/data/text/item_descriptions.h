@@ -198,17 +198,17 @@ static const u8 sMaxReviveDesc[] = _(
 static const u8 sFreshWaterDesc[] = _(
     "A mineral water\n"
     "that restores HP\n"
-    "by 50 points.");
+    "by 30 points.");
 
 static const u8 sSodaPopDesc[] = _(
     "A fizzy soda drink\n"
     "that restores HP\n"
-    "by 60 points.");
+    "by 50 points.");
 
 static const u8 sLemonadeDesc[] = _(
     "A very sweet drink\n"
     "that restores HP\n"
-    "by 80 points.");
+    "by 70 points.");
 
 static const u8 sMoomooMilkDesc[] = _(
     "A nutritious milk\n"
@@ -218,12 +218,12 @@ static const u8 sMoomooMilkDesc[] = _(
 static const u8 sEnergyPowderDesc[] = _(
     "A bitter powder\n"
     "that restores HP\n"
-    "by 50 points.");
+    "by 60 points.");
 
 static const u8 sEnergyRootDesc[] = _(
     "A bitter root\n"
     "that restores HP\n"
-    "by 200 points.");
+    "by 120 points.");
 
 static const u8 sHealPowderDesc[] = _(
     "A bitter powder\n"
@@ -1035,12 +1035,12 @@ static const u8 sRowapBerryDesc[] = _(
 static const u8 sKeeBerryDesc[] = _(
     "If hit by a physical\n"
     "move, it raises the\n"
-    "DEFENSE a bit.");
+    "Defense a bit.");
 
 static const u8 sMarangaBerryDesc[] = _(
     "If hit by a special\n"
     "move, it raises the\n"
-    "SP. DEF. a bit.");
+    "Sp. Def. a bit.");
 
 // Hold items
 static const u8 sBrightPowderDesc[] = _(
@@ -2841,37 +2841,37 @@ static const u8 sHoneyDesc[] = _(
     "attracts wild\n"
     "Pokémon when used.");
 
-static const u8 sHealthWingDesc[] = _(
+static const u8 sHealthFeatherDesc[] = _(
     "An item that raises\n"
     "HP EV's of a\n"
     "Pokémon by 1.");
 
-static const u8 sMuscleWingDesc[] = _(
+static const u8 sMuscleFeatherDesc[] = _(
     "An item that raises\n"
     "Attack EV's of a\n"
     "Pokémon by 1.");
 
-static const u8 sResistWingDesc[] = _(
+static const u8 sResistFeatherDesc[] = _(
     "An item that raises\n"
     "Defense EV's of a\n"
     "Pokémon by 1.");
 
-static const u8 sGeniusWingDesc[] = _(
+static const u8 sGeniusFeatherDesc[] = _(
     "An item that raises\n"
     "Sp. Atk EV's of a\n"
     "Pokémon by 1.");
 
-static const u8 sCleverWingDesc[] = _(
+static const u8 sCleverFeatherDesc[] = _(
     "An item that raises\n"
     "Sp. Def EV's of a\n"
     "Pokémon by 1.");
 
-static const u8 sSwiftWingDesc[] = _(
+static const u8 sSwiftFeatherDesc[] = _(
     "An item that raises\n"
     "Speed EV's of a\n"
     "Pokémon by 1.");
 
-static const u8 sPrettyWingDesc[] = _(
+static const u8 sPrettyFeatherDesc[] = _(
     "A beautiful yet\n"
     "plain feather that\n"
     "does nothing.");
@@ -3009,3 +3009,182 @@ static const u8 sGemPowderDesc [] = _(
     "Dust made from\n"
     "various jewels.\n"
     "Sells well.");
+static const u8 sZRingDesc[] = _(
+    "A strange ring\n"
+    "that enables\n"
+    "Z-Move usage.");
+
+static const u8 sNormaliumZDesc[] = _(
+    "Upgrade Normal-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sFightiniumZDesc[] = _(
+    "Upgrade Fighting-\n"
+    "type moves into\n"
+    "Z-Moves.");
+    
+static const u8 sFlyiniumZDesc[] = _(
+    "Upgrade Flying-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sPoisoniumZDesc[] = _(
+    "Upgrade Poison-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sGroundiumZDesc[] = _(
+    "Upgrade Ground-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sRockiumZDesc[] = _(
+    "Upgrade Rock-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sBuginiumZDesc[] = _(
+    "Upgrade Bug-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sGhostiumZDesc[] = _(
+    "Upgrade Ghost-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sSteeliumZDesc[] = _(
+    "Upgrade Steel-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sFiriumZDesc[] = _(
+    "Upgrade Fire-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sWateriumZDesc[] = _(
+    "Upgrade Water-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sGrassiumZDesc[] = _(
+    "Upgrade Grass-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sElectriumZDesc[] = _(
+    "Upgrade Electric-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sPsychiumZDesc[] = _(
+    "Upgrade Psychic-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sIciumZDesc[] = _(
+    "Upgrade Ice-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sDragoniumZDesc[] = _(
+    "Upgrade Dragon-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sDarkiniumZDesc[] = _(
+    "Upgrade Dark-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sFairiumZDesc[] = _(
+    "Upgrade Fairy-\n"
+    "type moves into\n"
+    "Z-Moves.");
+
+static const u8 sAloraichiumZDesc[] = _(
+    "Upgrade Alolan\n"
+    "Raichu's Thunder-\n"
+    "bolt into a Z-Move.");
+
+static const u8 sDecidiumZDesc[] = _(
+    "Upgrade Decidu-\n"
+    "eye's Spirit Sha-\n"
+    "ckle into a Z-Move.");
+
+static const u8 sEeviumZDesc[] = _(
+    "Upgrade Eevee's\n"
+    "Last Resort\n"
+    "into a Z-Move.");
+
+static const u8 sInciniumZDesc[] = _(
+    "Upgrade Incine-\n"
+    "roar's Darkest La-\n"
+    "riat into a Z-Move.");
+
+static const u8 sKommoniumZDesc[] = _(
+    "Upgrade Kommo-o's\n"
+    "Clanging Scales\n"
+    "into a Z-Move.");
+
+static const u8 sLunaliumZDesc[] = _(
+    "Upgrade Lunala's\n"
+    "Moongeist Beam\n"
+    "into a Z-Move.");
+
+static const u8 sLycaniumZDesc[] = _(
+    "Upgrade Lycanroc's\n"
+    "Stone Edge\n"
+    "into a Z-Move.");
+
+static const u8 sMarshadiumZDesc[] = _(
+    "Upgrade Marsha-\n"
+    "dow's Spectral Thi-\n"
+    "ef into a Z-Move.");
+
+static const u8 sMewniumZDesc[] = _(
+    "Upgrade Mew's\n"
+    "Psychic into\n"
+    "a Z-Move.");
+
+static const u8 sMimikiumZDesc[] = _(
+    "Upgrade Mimikyu's\n"
+    "Play Rough\n"
+    "into a Z-Move.");
+
+static const u8 sPikaniumZDesc[] = _(
+    "Upgrade Pikachu's\n"
+    "Volt Tackle\n"
+    "into a Z-Move.");
+
+static const u8 sPikashuniumZDesc[] = _(
+    "Upgrade Pikachu w/\n"
+    "a cap's Thunderbolt\n"
+    "into a Z-Move.");
+
+static const u8 sPrimariumZDesc[] = _(
+    "Upgrade Primarina's\n"
+    "Sparkling Aria\n"
+    "into a Z-Move.");
+
+static const u8 sSnorliumZDesc[] = _(
+    "Upgrade Snorlax's\n"
+    "Giga Impact\n"
+    "into a Z-Move.");
+
+static const u8 sSolganiumZDesc[] = _(
+    "Upgrade Solgaleo's\n"
+    "Sunsteel Strike\n"
+    "into a Z-Move.");
+
+static const u8 sTapuniumZDesc[] = _(
+    "Upgrade the tapu's\n"
+    "Nature's Madness\n"
+    "into a Z-Move.");
+
+static const u8 sUltranecroziumZDesc[] = _(
+    "A crystal to turn\n"
+    "fused Necrozma\n"
+    "into a new form.");

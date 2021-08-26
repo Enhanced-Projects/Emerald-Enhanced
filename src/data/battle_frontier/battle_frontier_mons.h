@@ -1,3 +1,5 @@
+//@PIDGEY|KAGERU I have no idea why everything here is now undefined. Please look into!
+//@TOBY When they fix this file please make sure everything is right.
 const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
 {
     [FRONTIER_MON_IVYSAUR] = { // Ivysaur-Sun

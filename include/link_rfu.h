@@ -66,13 +66,13 @@ struct __attribute__((packed, aligned(2))) GFtgtGname
     // u8 gender:1;
     // u8 unk_4:3
     // u8 active:1
-    u16 species:10;
-    u16 type:6;
+    u16 species;
     u8 activity:7;
     u8 started:1;
     u8 playerGender:1;
     u8 level:7;
-    u8 versionModifier;
+    u8 type:6;
+    u8 padding:2;
 }; // size: RFU_GNAME_SIZE
 
 struct RfuBlockSend
@@ -262,7 +262,7 @@ bool8 LinkRfu_GetNameIfSerial7F7D(struct GFtgtGname *buff1, u8 *buff2, u8 idx);
 s32 sub_800E87C(u8 idx);
 void CreateTask_RfuIdle(void);
 void DestroyTask_RfuIdle(void);
-void sub_8011AC8(void);
+void ClearRecvCommands(void);
 void LinkRfu_FatalError(void);
 bool32 sub_8011A9C(void);
 void sub_80104B0(void);

@@ -1,5 +1,7 @@
 #include "global.h"
 #include "strings.h"
+#include "battle_pyramid_bag.h"
+#include "item_menu.h"
 
 ALIGNED(4)
 const u8 gText_ExpandedPlaceholder_Empty[] = _("");
@@ -252,28 +254,28 @@ const u8 gText_ThePokemonList[] = _("the Pokémon list");
 const u8 gText_TheShop[] = _("the shop");
 const u8 gText_ThePC[] = _("the PC");
 
-const u8 *const gReturnToXStringsTable[] =
+const u8 *const gBagMenu_ReturnToStrings[] =
 {
-    gText_TheField,
-    gText_TheBattle,
-    gText_ThePokemonList,
-    gText_TheShop,
-    gText_TheField,
-    gText_TheField,
-    gText_ThePC,
-    gText_TheField,
-    gText_TheField,
-    gText_TheField,
-    gText_TheBattle,
-    gText_ThePC
+    [ITEMMENULOCATION_FIELD]               = gText_TheField,
+    [ITEMMENULOCATION_BATTLE]              = gText_TheBattle,
+    [ITEMMENULOCATION_PARTY]               = gText_ThePokemonList,
+    [ITEMMENULOCATION_SHOP]                = gText_TheShop,
+    [ITEMMENULOCATION_BERRY_TREE]          = gText_TheField,
+    [ITEMMENULOCATION_BERRY_BLENDER_CRUSH] = gText_TheField,
+    [ITEMMENULOCATION_ITEMPC]              = gText_ThePC,
+    [ITEMMENULOCATION_FAVOR_LADY]          = gText_TheField,
+    [ITEMMENULOCATION_QUIZ_LADY]           = gText_TheField,
+    [ITEMMENULOCATION_APPRENTICE]          = gText_TheField,
+    [ITEMMENULOCATION_WALLY]               = gText_TheBattle,
+    [ITEMMENULOCATION_PCBOX]               = gText_ThePC
 };
 
-const u8 *const gReturnToXStringsTable2[] =
+const u8 *const gPyramidBagMenu_ReturnToStrings[] =
 {
-    gText_TheField,
-    gText_TheBattle,
-    gText_ThePokemonList,
-    gText_TheField
+    [PYRAMIDBAG_LOC_FIELD]       = gText_TheField,
+    [PYRAMIDBAG_LOC_BATTLE]      = gText_TheBattle,
+    [PYRAMIDBAG_LOC_PARTY]       = gText_ThePokemonList,
+    [PYRAMIDBAG_LOC_CHOOSE_TOSS] = gText_TheField
 };
 
 const u8 gText_ReturnToVar1[] = _("Return to\n{STR_VAR_1}.");
@@ -287,17 +289,17 @@ const u8 gText_MedicinesPocketString[] = _("Medicine");
 
 const u8 *const gPocketNamesStringsTable[] =
 {
-    gText_ItemsPocket,
-    gText_MedicinesPocket,
-    gText_CollectiblesPocket,
-    gText_PokeBallsPocket,
-    gText_TMHMPocket,
-    gText_BerriesPocket,
-    gText_KeyItemsPocket
+    [ITEMS_POCKET] = gText_ItemsPocket,
+    [MEDICINE_POCKET] = gText_ItemsPocket,
+    [COLLECTIBLES_POCKET] = gText_ItemsPocket,
+    [BALLS_POCKET] = gText_PokeBallsPocket,
+    [TMHM_POCKET]  = gText_TMHMPocket,
+    [BERRIES_POCKET] = gText_BerriesPocket,
+    [KEYITEMS_POCKET] = gText_KeyItemsPocket
 };
 
-const u8 gText_NumberVar1Clear7Var2[] = _("{NO}{STR_VAR_1}{CLEAR 0x07}{STR_VAR_2}");
-const u8 gText_ClearTo11Var1Clear5Var2[] = _("{CLEAR_TO 0x11}{STR_VAR_1}{CLEAR 0x05}{STR_VAR_2}");
+const u8 gText_NumberItem_TMBerry[] = _("{NO}{STR_VAR_1}{CLEAR 0x07}{STR_VAR_2}");
+const u8 gText_NumberItem_HM[] = _("{CLEAR_TO 0x11}{STR_VAR_1}{CLEAR 0x05}{STR_VAR_2}");
 const u8 gText_SizeSlash[] = _("Size /");
 const u8 gText_FirmSlash[] = _("Firm /");
 const u8 gText_Var1DotVar2[] = _("{STR_VAR_1}.{STR_VAR_2}”");
@@ -1010,8 +1012,8 @@ const u8 gText_TrainerCloseBy[] = _("That TRAINER is close by.\nTalk to the TRAI
 const u8 gText_InParty[] = _("In Party");
 const u8 gText_Number2[] = _("No. ");
 const u8 gText_Ribbons[] = _("RIBBONS"); // Unused
-const u8 gText_PokemonMaleLv[] = _("{DYNAMIC 0}{COLOR_HIGHLIGHT_SHADOW LIGHT_RED WHITE GREEN}♂{COLOR_HIGHLIGHT_SHADOW DARK_GREY WHITE LIGHT_GREY}/{LV}{DYNAMIC 1}"); // Unused
-const u8 gText_PokemonFemaleLv[] = _("{DYNAMIC 0}{COLOR_HIGHLIGHT_SHADOW LIGHT_GREEN WHITE BLUE}♀{COLOR_HIGHLIGHT_SHADOW DARK_GREY WHITE LIGHT_GREY}/{LV}{DYNAMIC 1}"); // Unused
+const u8 gText_PokemonMaleLv[] = _("{DYNAMIC 0}{COLOR_HIGHLIGHT_SHADOW LIGHT_RED WHITE GREEN}♂{COLOR_HIGHLIGHT_SHADOW DARK_GRAY WHITE LIGHT_GRAY}/{LV}{DYNAMIC 1}"); // Unused
+const u8 gText_PokemonFemaleLv[] = _("{DYNAMIC 0}{COLOR_HIGHLIGHT_SHADOW LIGHT_GREEN WHITE BLUE}♀{COLOR_HIGHLIGHT_SHADOW DARK_GRAY WHITE LIGHT_GRAY}/{LV}{DYNAMIC 1}"); // Unused
 const u8 gText_PokemonNoGenderLv[] = _("{DYNAMIC 0}/{LV}{DYNAMIC 1}"); // Unused
 const u8 gText_Unknown[] = _("UNKNOWN");
 const u8 gText_Call[] = _("CALL");
@@ -1019,8 +1021,8 @@ const u8 gText_Check[] = _("Check");
 const u8 gText_Cancel6[] = _("Cancel");
 const u8 gText_NumberF700[] = _("No. {DYNAMIC 0}");
 const u8 gText_RibbonsF700[] = _("RIBBONS {DYNAMIC 0}");
-const u8 gText_PokemonMaleLv2[] = _("{DYNAMIC 0}{COLOR_HIGHLIGHT_SHADOW LIGHT_RED WHITE GREEN}♂{COLOR_HIGHLIGHT_SHADOW DARK_GREY WHITE LIGHT_GREY}/{LV}{DYNAMIC 1}{DYNAMIC 2}"); // Unused
-const u8 gText_PokemonFemaleLv2[] = _("{DYNAMIC 0}{COLOR_HIGHLIGHT_SHADOW LIGHT_GREEN WHITE BLUE}♀{COLOR_HIGHLIGHT_SHADOW DARK_GREY WHITE LIGHT_GREY}/{LV}{DYNAMIC 1}{DYNAMIC 2}"); // Unused
+const u8 gText_PokemonMaleLv2[] = _("{DYNAMIC 0}{COLOR_HIGHLIGHT_SHADOW LIGHT_RED WHITE GREEN}♂{COLOR_HIGHLIGHT_SHADOW DARK_GRAY WHITE LIGHT_GRAY}/{LV}{DYNAMIC 1}{DYNAMIC 2}"); // Unused
+const u8 gText_PokemonFemaleLv2[] = _("{DYNAMIC 0}{COLOR_HIGHLIGHT_SHADOW LIGHT_GREEN WHITE BLUE}♀{COLOR_HIGHLIGHT_SHADOW DARK_GRAY WHITE LIGHT_GRAY}/{LV}{DYNAMIC 1}{DYNAMIC 2}"); // Unused
 const u8 gText_PokemonNoGenderLv2[] = _("{DYNAMIC 0}/{LV}{DYNAMIC 1}{DYNAMIC 2}"); // Unused
 const u8 gText_CombineFourWordsOrPhrases[] = _("Combine four words or phrases");
 const u8 gText_AndMakeYourProfile[] = _("and make your profile.");
@@ -1257,7 +1259,7 @@ ALIGNED(4) const u8 gText_Facility[] = _("{STR_VAR_1}");
 
 const u8 gText_Give[] = _("Give");
 const u8 gText_NoNeed[] = _("No need");
-const u8 gText_ColorLightShadowDarkGrey[] = _("{COLOR LIGHT_GREY}{SHADOW DARK_GREY}");
+const u8 gText_ColorLightShadowDarkGray[] = _("{COLOR LIGHT_GRAY}{SHADOW DARK_GRAY}");
 const u8 gText_ColorBlue[] = _("{COLOR BLUE}");
 const u8 gText_ColorTransparent[] = _("{HIGHLIGHT TRANSPARENT}{COLOR TRANSPARENT}");
 const u8 gText_CDot[] = _("C.");
@@ -1270,7 +1272,7 @@ const u8 gText_CommunicationStandby[] = _("Communication standby…");
 const u8 gText_ColorDarkGrey[] = _("{COLOR DARK_GREY}");
 const u8 gText_ColorShadowRedLightRed[] = _("{COLOR DYNAMIC_COLOR5}");//for battle only
 const u8 gText_ColorDynamic6WhiteDynamic5[] = _("{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR6 WHITE DYNAMIC_COLOR5}"); // Unused
-const u8 gText_HighlightDarkGrey[] = _("{HIGHLIGHT DARK_GREY}");
+const u8 gText_HighlightDarkGray[] = _("{HIGHLIGHT DARK_GRAY}");
 const u8 gText_EmptySpace2[] = _(" "); // Unused
 const u8 gText_DynColor2Male[] = _("{COLOR DYNAMIC_COLOR2}♂");
 const u8 gText_DynColor1Female[] = _("{COLOR DYNAMIC_COLOR1}♀");
@@ -1324,7 +1326,7 @@ const u8 gText_MatchCallDawn_Intro1[] = _("My Pokémon and I help");
 const u8 gText_MatchCallDawn_Intro2[] = _("my father's research.");
 const u8 gText_HatchedFromEgg[] = _("{STR_VAR_1} hatched from the EGG!");
 const u8 gText_NicknameHatchPrompt[] = _("Would you like to nickname the newly\nhatched {STR_VAR_1}?");
-ALIGNED(4) const u8 gText_ReadyToBerryCrush[] = _("Are you ready to BERRY-CRUSH?\nPlease pick a BERRY for use.\p");
+ALIGNED(4) const u8 gText_ReadyPickBerry[] = _("Are you ready to BERRY-CRUSH?\nPlease pick a BERRY for use.\p");
 ALIGNED(4) const u8 gText_WaitForAllChooseBerry[] = _("Please wait while each member\nchooses a BERRY.");
 ALIGNED(4) const u8 gText_EndedWithXUnitsPowder[] = _("{PAUSE_MUSIC}{PLAY_BGM MUS_LEVEL_UP}You ended up with {STR_VAR_1} units of\nsilky-smooth BERRY POWDER.{RESUME_MUSIC}\pYour total amount of BERRY POWDER\nis {STR_VAR_2}.\p");
 ALIGNED(4) const u8 gText_RecordingGameResults[] = _("Recording your game results in the\nsave file.\lPlease wait.");

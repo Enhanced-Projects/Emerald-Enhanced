@@ -5,7 +5,6 @@
 #include "string_util.h"
 #include "task.h"
 #include "text.h"
-#include "match_call.h"
 #include "field_message_box.h"
 
 static const struct WindowTemplate sSceneBgTextBox_WindowTemplate[] =
@@ -71,7 +70,7 @@ static void CreateTask_DrawFieldMessage(void)
 static void DestroyTask_DrawFieldMessage(void)
 {
     u8 taskId = FindTaskIdByFunc(Task_DrawFieldMessage);
-    if (taskId != 0xFF)
+    if (taskId != TASK_NONE)
         DestroyTask(taskId);
 }
 

@@ -34,12 +34,62 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 
+// Each match call message has variables that can be populated randomly or
+// dependent on the trainer. The below are IDs for how to populate the vars
+// in a given message.
+// Each message may have up to 3 vars in it
+enum {
+    STR_TRAINER_NAME,
+    STR_MAP_NAME,
+    STR_SPECIES_IN_ROUTE,
+    STR_SPECIES_IN_PARTY,
+    STR_FACILITY_NAME,
+    STR_FRONTIER_STREAK,
+    STR_NONE = -1,
+};
+#define STRS_NORMAL_MSG      {STR_TRAINER_NAME, STR_NONE,             STR_NONE}
+#define STRS_WILD_BATTLE     {STR_TRAINER_NAME, STR_SPECIES_IN_ROUTE, STR_NONE}
+#define STRS_BATTLE_NEGATIVE {STR_TRAINER_NAME, STR_NONE,             STR_NONE}
+#define STRS_BATTLE_POSITIVE {STR_TRAINER_NAME, STR_SPECIES_IN_PARTY, STR_NONE}
+#define STRS_BATTLE_REQUEST  {STR_TRAINER_NAME, STR_MAP_NAME,         STR_NONE}
+#define STRS_FRONTIER        {STR_TRAINER_NAME, STR_FACILITY_NAME,    STR_FRONTIER_STREAK}
+
+#define NUM_STRVARS_IN_MSG 3
+
+// Topic IDs for sMatchCallGeneralTopics
+enum {
+    GEN_TOPIC_PERSONAL = 1,
+    GEN_TOPIC_STREAK,
+    GEN_TOPIC_STREAK_RECORD,
+    GEN_TOPIC_B_DOME,
+    GEN_TOPIC_B_PIKE,
+    GEN_TOPIC_B_PYRAMID,
+};
+
+// Topic IDs for sMatchCallBattleTopics
+enum {
+    B_TOPIC_WILD = 1,
+    B_TOPIC_NEGATIVE,
+    B_TOPIC_POSITIVE,
+};
+
+// Each trainer has a text id for 1 of each of the 3 battle topics
+// The msgId is the index into the respective topic's message table
+// For all but 2 trainers this index is the same for each topic
+#define BATTLE_TEXT_IDS(msgId) {TEXT_ID(B_TOPIC_WILD, (msgId)), TEXT_ID(B_TOPIC_NEGATIVE, (msgId)), TEXT_ID(B_TOPIC_POSITIVE, (msgId))}
+
+// Topic IDs for sMatchCallBattleRequestTopics
+enum {
+    REQ_TOPIC_SAME_ROUTE = 1,
+    REQ_TOPIC_DIFF_ROUTE,
+};
+
 struct MatchCallState
 {
     u32 minutes;
     u16 trainerId;
     u8 stepCounter;
-    u8 triggeredFromScript;
+    bool8 triggeredFromScript;
 };
 
 struct MatchCallTrainerTextInfo
@@ -56,7 +106,7 @@ struct MatchCallTrainerTextInfo
 struct MatchCallText
 {
     const u8 *text;
-    s8 stringVarFuncIds[3];
+    s8 stringVarFuncIds[NUM_STRVARS_IN_MSG];
 };
 
 struct MultiTrainerMatchCallText
@@ -71,8 +121,8 @@ struct BattleFrontierStreakInfo
     u16 streak;
 };
 
-EWRAM_DATA struct MatchCallState gMatchCallState = {0};
-EWRAM_DATA struct BattleFrontierStreakInfo gBattleFrontierStreakInfo = {0};
+static EWRAM_DATA struct MatchCallState sMatchCallState = {0};
+static EWRAM_DATA struct BattleFrontierStreakInfo sBattleFrontierStreakInfo = {0};
 
 static u32 GetCurrentTotalMinutes(struct Time *);
 static u32 GetNumRegisteredNPCs(void);
@@ -80,27 +130,27 @@ static u32 GetActiveMatchCallTrainerId(u32);
 static int GetTrainerMatchCallId(int);
 static void StartMatchCall(void);
 static void ExecuteMatchCall(u8);
-static void DrawMatchCallTextBoxBorder(u32, u32, u32);
-static void sub_8196694(u8);
+static void DrawMatchCallTextBoxBorder_Internal(u32, u32, u32);
+static void Task_SpinPokenavIcon(u8);
 static void InitMatchCallTextPrinter(int, const u8 *);
-static bool32 ExecuteMatchCallTextPrinter(int);
+static bool32 RunMatchCallTextPrinter(int);
 static const struct MatchCallText *GetSameRouteMatchCallText(int, u8 *);
 static const struct MatchCallText *GetDifferentRouteMatchCallText(int, u8 *);
 static const struct MatchCallText *GetBattleMatchCallText(int, u8 *);
 static const struct MatchCallText *GetGeneralMatchCallText(int, u8 *);
-static bool32 sub_8196D74(int);
+static bool32 ShouldTrainerRequestBattle(int);
 static void BuildMatchCallString(int, const struct MatchCallText *, u8 *);
 static u16 GetFrontierStreakInfo(u16, u32 *);
 static void PopulateMatchCallStringVars(int, const s8 *);
 static void PopulateMatchCallStringVar(int, int, u8 *);
-static bool32 LoadMatchCallWindowGfx(u8);
-static bool32 MoveMatchCallWindowToVram(u8);
-static bool32 PrintMatchCallIntroEllipsis(u8);
-static bool32 sub_81962B0(u8);
-static bool32 sub_81962D8(u8);
-static bool32 sub_8196330(u8);
-static bool32 sub_8196390(u8);
-static bool32 sub_81963F0(u8);
+static bool32 MatchCall_LoadGfx(u8);
+static bool32 MatchCall_DrawWindow(u8);
+static bool32 MatchCall_ReadyIntro(u8);
+static bool32 MatchCall_SlideWindowIn(u8);
+static bool32 MatchCall_PrintIntro(u8);
+static bool32 MatchCall_PrintMessage(u8);
+static bool32 MatchCall_SlideWindowOut(u8);
+static bool32 MatchCall_EndCall(u8);
 static void PopulateTrainerName(int, u8 *);
 static void PopulateMapName(int, u8 *);
 static void PopulateSpeciesFromTrainerLocation(int, u8 *);
@@ -136,7 +186,7 @@ extern const u8 gBirchDexRatingText_OnANationwideBasis[];
 
 static u32 GetCurrentTotalMinutes(struct Time *time)
 {
-    return time->days * 1440 + time->hours * 60 + time->minutes;
+    return time->days * 24 * 60 + time->hours * 60 + time->minutes;
 }
 
 bool32 TryStartMatchCall(void)
@@ -146,7 +196,7 @@ bool32 TryStartMatchCall(void)
 
 void StartMatchCallFromScript(const u8 *message)
 {
-    gMatchCallState.triggeredFromScript = 1;
+    sMatchCallState.triggeredFromScript = TRUE;
     StartMatchCall();
 }
 
@@ -157,11 +207,11 @@ bool32 IsMatchCallTaskActive(void)
 
 static void StartMatchCall(void)
 {
-    if (!gMatchCallState.triggeredFromScript)
+    if (!sMatchCallState.triggeredFromScript)
     {
         ScriptContext2_Enable();
         FreezeObjectEvents();
-        sub_808B864();
+        PlayerFreeze();
         sub_808BCF4();
     }
 
@@ -169,33 +219,37 @@ static void StartMatchCall(void)
     CreateTask(ExecuteMatchCall, 1);
 }
 
-static const u16 sUnknown_0860EA4C[] = INCBIN_U16("graphics/unknown/unknown_60EA4C.gbapal");
-static const u8 sUnknown_0860EA6C[] = INCBIN_U8("graphics/interface/menu_border.4bpp");
-static const u16 sPokeNavIconPalette[] = INCBIN_U16("graphics/pokenav/icon.gbapal");
-static const u32 sPokeNavIconGfx[] = INCBIN_U32("graphics/pokenav/icon.4bpp.lz");
+static const u16 sMatchCallWindow_Pal[] = INCBIN_U16("graphics/pokenav/match_call_window.gbapal");
+static const u8 sMatchCallWindow_Gfx[] = INCBIN_U8("graphics/pokenav/match_call_window.4bpp");
+static const u16 sPokenavIcon_Pal[] = INCBIN_U16("graphics/pokenav/icon.gbapal");
+static const u32 sPokenavIcon_Gfx[] = INCBIN_U32("graphics/pokenav/icon.4bpp.lz");
 
 static const u8 sText_PokenavCallEllipsis[] = _("………………\p");
 
+#define tState      data[0]
+#define tWindowId   data[2]
+#define tIconTaskId data[5]
+
 static bool32 (*const sMatchCallTaskFuncs[])(u8) =
 {
-    LoadMatchCallWindowGfx,
-    MoveMatchCallWindowToVram,
-    PrintMatchCallIntroEllipsis,
-    sub_81962B0,
-    sub_81962D8,
-    sub_8196330,
-    sub_8196390,
-    sub_81963F0,
+    MatchCall_LoadGfx,
+    MatchCall_DrawWindow,
+    MatchCall_ReadyIntro,
+    MatchCall_SlideWindowIn,
+    MatchCall_PrintIntro,
+    MatchCall_PrintMessage,
+    MatchCall_SlideWindowOut,
+    MatchCall_EndCall,
 };
 
 static void ExecuteMatchCall(u8 taskId)
 {
-    s16 *taskData = gTasks[taskId].data;
-    if (sMatchCallTaskFuncs[taskData[0]](taskId))
+    s16 *data = gTasks[taskId].data;
+    if (sMatchCallTaskFuncs[tState](taskId))
     {
-        taskData[0]++;
-        taskData[1] = 0;
-        if ((u16)taskData[0] > 7)
+        tState++;
+        data[1] = 0; // Never read
+        if ((u16)tState > 7)
             DestroyTask(taskId);
     }
 }
@@ -211,65 +265,69 @@ static const struct WindowTemplate sMatchCallTextWindow =
     .baseBlock = 0x200
 };
 
-static bool32 LoadMatchCallWindowGfx(u8 taskId)
+#define TILE_MC_WINDOW    0x270
+#define TILE_POKENAV_ICON 0x279
+
+static bool32 MatchCall_LoadGfx(u8 taskId)
 {
-    s16 *taskData = gTasks[taskId].data;
-    taskData[2] = AddWindow(&sMatchCallTextWindow);
-    if (taskData[2] == 0xFF)
+    s16 *data = gTasks[taskId].data;
+    tWindowId = AddWindow(&sMatchCallTextWindow);
+    if (tWindowId == WINDOW_NONE)
     {
         DestroyTask(taskId);
         return FALSE;
     }
 
-    if (LoadBgTiles(0, sUnknown_0860EA6C, sizeof(sUnknown_0860EA6C), 0x270) == 0xFFFF)
+    if (LoadBgTiles(0, sMatchCallWindow_Gfx, sizeof(sMatchCallWindow_Gfx), TILE_MC_WINDOW) == 0xFFFF)
     {
-        RemoveWindow(taskData[2]);
+        RemoveWindow(tWindowId);
         DestroyTask(taskId);
         return FALSE;
     }
 
-    if (!DecompressAndCopyTileDataToVram(0, sPokeNavIconGfx, 0, 0x279, 0))
+    if (!DecompressAndCopyTileDataToVram(0, sPokenavIcon_Gfx, 0, TILE_POKENAV_ICON, 0))
     {
-        RemoveWindow(taskData[2]);
+        RemoveWindow(tWindowId);
         DestroyTask(taskId);
         return FALSE;
     }
 
-    FillWindowPixelBuffer(taskData[2], PIXEL_FILL(8));
-    LoadPalette(sUnknown_0860EA4C, 0xE0, 0x20);
-    LoadPalette(sPokeNavIconPalette, 0xF0, 0x20);
+    FillWindowPixelBuffer(tWindowId, PIXEL_FILL(8));
+    LoadPalette(sMatchCallWindow_Pal, 0xE0, sizeof(sMatchCallWindow_Pal));
+    LoadPalette(sPokenavIcon_Pal, 0xF0, sizeof(sPokenavIcon_Pal));
     ChangeBgY(0, -0x2000, 0);
     return TRUE;
 }
 
-static bool32 MoveMatchCallWindowToVram(u8 taskId)
+static bool32 MatchCall_DrawWindow(u8 taskId)
 {
-    s16 *taskData = gTasks[taskId].data;
+    s16 *data = gTasks[taskId].data;
     if (FreeTempTileDataBuffersIfPossible())
         return FALSE;
 
-    PutWindowTilemap(taskData[2]);
-    DrawMatchCallTextBoxBorder(taskData[2], 0x270, 14);
-    WriteSequenceToBgTilemapBuffer(0, 0xF279, 1, 15, 4, 4, 17, 1);
-    taskData[5] = CreateTask(sub_8196694, 10);
-    CopyWindowToVram(taskData[2], 2);
+    PutWindowTilemap(tWindowId);
+    DrawMatchCallTextBoxBorder_Internal(tWindowId, TILE_MC_WINDOW, 14);
+    WriteSequenceToBgTilemapBuffer(0, (0xF << 12) | TILE_POKENAV_ICON, 1, 15, 4, 4, 17, 1);
+    tIconTaskId = CreateTask(Task_SpinPokenavIcon, 10);
+    CopyWindowToVram(tWindowId, 2);
     CopyBgTilemapBufferToVram(0);
     return TRUE;
 }
 
-static bool32 PrintMatchCallIntroEllipsis(u8 taskId)
+static bool32 MatchCall_ReadyIntro(u8 taskId)
 {
-    s16 *taskData = gTasks[taskId].data;
+    s16 *data = gTasks[taskId].data;
     if (!IsDma3ManagerBusyWithBgCopy())
     {
-        InitMatchCallTextPrinter(taskData[2], sText_PokenavCallEllipsis);
+        // Note that "..." is not printed yet, just readied
+        InitMatchCallTextPrinter(tWindowId, sText_PokenavCallEllipsis);
         return TRUE;
     }
 
     return FALSE;
 }
 
-static bool32 sub_81962B0(u8 taskId)
+static bool32 MatchCall_SlideWindowIn(u8 taskId)
 {
     if (ChangeBgY(0, 0x600, 1) >= 0)
     {
@@ -280,29 +338,30 @@ static bool32 sub_81962B0(u8 taskId)
     return FALSE;
 }
 
-static bool32 sub_81962D8(u8 taskId)
+static bool32 MatchCall_PrintIntro(u8 taskId)
 {
-    s16 *taskData = gTasks[taskId].data;
-    if (!ExecuteMatchCallTextPrinter(taskData[2]))
+    s16 *data = gTasks[taskId].data;
+    if (!RunMatchCallTextPrinter(tWindowId))
     {
-        FillWindowPixelBuffer(taskData[2], PIXEL_FILL(8));
-        if (!gMatchCallState.triggeredFromScript)
-            SelectMatchCallMessage(gMatchCallState.trainerId, gStringVar4);
-
-        InitMatchCallTextPrinter(taskData[2], gStringVar4);
+        FillWindowPixelBuffer(tWindowId, PIXEL_FILL(8));
+        
+        // Ready the message
+        if (!sMatchCallState.triggeredFromScript)
+            SelectMatchCallMessage(sMatchCallState.trainerId, gStringVar4);
+        InitMatchCallTextPrinter(tWindowId, gStringVar4);
         return TRUE;
     }
 
     return FALSE;
 }
 
-static bool32 sub_8196330(u8 taskId)
+static bool32 MatchCall_PrintMessage(u8 taskId)
 {
-    s16 *taskData = gTasks[taskId].data;
-    if (!ExecuteMatchCallTextPrinter(taskData[2]) && !IsSEPlaying() && JOY_NEW(A_BUTTON | B_BUTTON))
+    s16 *data = gTasks[taskId].data;
+    if (!RunMatchCallTextPrinter(tWindowId) && !IsSEPlaying() && JOY_NEW(A_BUTTON | B_BUTTON))
     {
-        FillWindowPixelBuffer(taskData[2], PIXEL_FILL(8));
-        CopyWindowToVram(taskData[2], 2);
+        FillWindowPixelBuffer(tWindowId, PIXEL_FILL(8));
+        CopyWindowToVram(tWindowId, 2);
         PlaySE(SE_POKENAV_HANG_UP);
         return TRUE;
     }
@@ -310,14 +369,14 @@ static bool32 sub_8196330(u8 taskId)
     return FALSE;
 }
 
-static bool32 sub_8196390(u8 taskId)
+static bool32 MatchCall_SlideWindowOut(u8 taskId)
 {
-    s16 *taskData = gTasks[taskId].data;
+    s16 *data = gTasks[taskId].data;
     if (ChangeBgY(0, 0x600, 2) <= -0x2000)
     {
         FillBgTilemapBufferRect_Palette0(0, 0, 0, 14, 30, 6);
-        DestroyTask(taskData[5]);
-        RemoveWindow(taskData[2]);
+        DestroyTask(tIconTaskId);
+        RemoveWindow(tWindowId);
         CopyBgTilemapBufferToVram(0);
         return TRUE;
     }
@@ -325,13 +384,13 @@ static bool32 sub_8196390(u8 taskId)
     return FALSE;
 }
 
-static bool32 sub_81963F0(u8 taskId)
+static bool32 MatchCall_EndCall(u8 taskId)
 {
     u8 playerObjectId;
     if (!IsDma3ManagerBusyWithBgCopy() && !IsSEPlaying())
     {
         ChangeBgY(0, 0, 0);
-        if (!gMatchCallState.triggeredFromScript)
+        if (!sMatchCallState.triggeredFromScript)
         {
             LoadMessageBoxAndBorderGfx();
             playerObjectId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
@@ -347,7 +406,7 @@ static bool32 sub_81963F0(u8 taskId)
     return FALSE;
 }
 
-static void DrawMatchCallTextBoxBorder(u32 windowId, u32 tileOffset, u32 paletteId)
+static void DrawMatchCallTextBoxBorder_Internal(u32 windowId, u32 tileOffset, u32 paletteId)
 {
     int bg, x, y, width, height;
     int tileNum;
@@ -382,36 +441,40 @@ static void InitMatchCallTextPrinter(int windowId, const u8 *str)
     printerTemplate.letterSpacing = 0;
     printerTemplate.lineSpacing = 0;
     printerTemplate.unk = 0;
-    printerTemplate.fgColor = 10;
-    printerTemplate.bgColor = 8;
-    printerTemplate.shadowColor = 14;
-    gTextFlags.useAlternateDownArrow = 0;
+    printerTemplate.fgColor = TEXT_DYNAMIC_COLOR_1;
+    printerTemplate.bgColor = TEXT_COLOR_BLUE;
+    printerTemplate.shadowColor = TEXT_DYNAMIC_COLOR_5;
+    gTextFlags.useAlternateDownArrow = FALSE;
 
     AddTextPrinter(&printerTemplate, GetPlayerTextSpeedDelay(), NULL);
 }
 
-static bool32 ExecuteMatchCallTextPrinter(int windowId)
+static bool32 RunMatchCallTextPrinter(int windowId)
 {
     if (JOY_HELD(A_BUTTON))
-        gTextFlags.canABSpeedUpPrint = 1;
+        gTextFlags.canABSpeedUpPrint = TRUE;
     else
-        gTextFlags.canABSpeedUpPrint = 0;
+        gTextFlags.canABSpeedUpPrint = FALSE;
 
     RunTextPrinters();
     return IsTextPrinterActive(windowId);
 }
 
-static void sub_8196694(u8 taskId)
-{
-    s16 *taskData = gTasks[taskId].data;
-    if (++taskData[0] > 8)
-    {
-        taskData[0] = 0;
-        if (++taskData[1] > 7)
-            taskData[1] = 0;
+#define tTimer     data[0]
+#define tSpinStage data[1]
+#define tTileNum   data[2]
 
-        taskData[2] = (taskData[1] * 16) + 0x279;
-        WriteSequenceToBgTilemapBuffer(0, taskData[2] | ~0xFFF, 1, 15, 4, 4, 17, 1);
+static void Task_SpinPokenavIcon(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    if (++tTimer > 8)
+    {
+        tTimer = 0;
+        if (++tSpinStage > 7)
+            tSpinStage = 0;
+
+        tTileNum = (tSpinStage * 16) + TILE_POKENAV_ICON;
+        WriteSequenceToBgTilemapBuffer(0, tTileNum | ~0xFFF, 1, 15, 4, 4, 17, 1);
         CopyBgTilemapBufferToVram(0);
     }
 }
@@ -431,10 +494,12 @@ bool32 SelectMatchCallMessage(int trainerId, u8 *str)
     }
     else if (Random() % 3)
     {
+        // Message talking about a battle the NPC had
         matchCallText = GetBattleMatchCallText(matchCallId, str);
     }
     else
     {
+        // Message talking about something else
         matchCallText = GetGeneralMatchCallText(matchCallId, str);
     }
 
@@ -494,7 +559,6 @@ static const struct MatchCallText *GetGeneralMatchCallText(int matchCallId, u8 *
     int count;
     u32 topic, id;
     u16 rand;
-    u16 var3;
 
     rand = Random();
     if (!(rand & 1))
@@ -510,8 +574,8 @@ static const struct MatchCallText *GetGeneralMatchCallText(int matchCallId, u8 *
             count = Random() % count;
             for (i = 0; i < NUM_FRONTIER_FACILITIES; i++)
             {
-                gBattleFrontierStreakInfo.streak = GetFrontierStreakInfo(i, &topic);
-                if (gBattleFrontierStreakInfo.streak < 2)
+                sBattleFrontierStreakInfo.streak = GetFrontierStreakInfo(i, &topic);
+                if (sBattleFrontierStreakInfo.streak < 2)
                     continue;
 
                 if (!count)
@@ -520,7 +584,7 @@ static const struct MatchCallText *GetGeneralMatchCallText(int matchCallId, u8 *
                 count--;
             }
 
-            gBattleFrontierStreakInfo.facilityId = i;
+            sBattleFrontierStreakInfo.facilityId = i;
             id = sMatchCallTrainers[matchCallId].battleFrontierRecordStreakTextIndex - 1;
             return &sMatchCallGeneralTopics[topic][id];
         }
@@ -542,7 +606,7 @@ static u8 *const sMatchCallTextStringVars[] = { gStringVar1, gStringVar2, gStrin
 static void PopulateMatchCallStringVars(int matchCallId, const s8 *stringVarFuncIds)
 {
     int i;
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < NUM_STRVARS_IN_MSG; i++)
     {
         if (stringVarFuncIds[i] >= 0)
             PopulateMatchCallStringVar(matchCallId, stringVarFuncIds[i], sMatchCallTextStringVars[i]);
@@ -551,12 +615,12 @@ static void PopulateMatchCallStringVars(int matchCallId, const s8 *stringVarFunc
 
 static void (*const sPopulateMatchCallStringVarFuncs[])(int, u8 *) =
 {
-    PopulateTrainerName,
-    PopulateMapName,
-    PopulateSpeciesFromTrainerLocation,
-    PopulateSpeciesFromTrainerParty,
-    PopulateBattleFrontierFacilityName,
-    PopulateBattleFrontierStreak,
+    [STR_TRAINER_NAME]     = PopulateTrainerName,
+    [STR_MAP_NAME]         = PopulateMapName,
+    [STR_SPECIES_IN_ROUTE] = PopulateSpeciesFromTrainerLocation,
+    [STR_SPECIES_IN_PARTY] = PopulateSpeciesFromTrainerParty,
+    [STR_FACILITY_NAME]    = PopulateBattleFrontierFacilityName,
+    [STR_FRONTIER_STREAK]  = PopulateBattleFrontierStreak,
 };
 
 static void PopulateMatchCallStringVar(int matchCallId, int funcId, u8 *destStr)
@@ -578,7 +642,7 @@ static void PopulateTrainerName(int matchCallId, u8 *destStr)
 {
     u32 i;
     u16 trainerId = sMatchCallTrainers[matchCallId].trainerId;
-    for (i = 0; i < 6; i++)
+    for (i = 0; i < ARRAY_COUNT(sMultiTrainerMatchCallTexts); i++)
     {
         if (sMultiTrainerMatchCallTexts[i].trainerId == trainerId)
         {
@@ -720,20 +784,20 @@ static const u8 *const sBattleFrontierFacilityNames[] =
 
 static void PopulateBattleFrontierFacilityName(int matchCallId, u8 *destStr)
 {
-    StringCopy(destStr, sBattleFrontierFacilityNames[gBattleFrontierStreakInfo.facilityId]);
+    StringCopy(destStr, sBattleFrontierFacilityNames[sBattleFrontierStreakInfo.facilityId]);
 }
 
 static void PopulateBattleFrontierStreak(int matchCallId, u8 *destStr)
 {
     int i = 0;
-    int streak = gBattleFrontierStreakInfo.streak;
+    int streak = sBattleFrontierStreakInfo.streak;
     while (streak != 0)
     {
         streak /= 10;
         i++;
     }
     
-    ConvertIntToDecimalStringN(destStr, gBattleFrontierStreakInfo.streak, STR_CONV_MODE_LEFT_ALIGN, i);
+    ConvertIntToDecimalStringN(destStr, sBattleFrontierStreakInfo.streak, STR_CONV_MODE_LEFT_ALIGN, i);
 }
 
 static const u16 sBadgeFlags[NUM_BADGES] =
@@ -761,7 +825,8 @@ static int GetNumOwnedBadges(void)
     return i;
 }
 
-static bool32 sub_8196D74(int matchCallId)
+// Whether or not a trainer calling the player from a different route should request a battle
+static bool32 ShouldTrainerRequestBattle(int matchCallId)
 {
     return FALSE;
 }
@@ -783,16 +848,20 @@ static u16 GetFrontierStreakInfo(u16 facilityId, u32 *topicTextId)
                     streak = gSaveBlock2Ptr->frontier.domeRecordWinStreaks[i][j];
             }
         }
-        *topicTextId = 3;
+        *topicTextId = GEN_TOPIC_B_DOME - 1;
         break;
+    #ifdef BUGFIX
+    case FRONTIER_FACILITY_PIKE:
+    #else
     case FRONTIER_FACILITY_FACTORY:
+    #endif
         for (i = 0; i < 2; i++)
         {
             // BUG: should be looking at Battle Factory records.
             if (streak < gSaveBlock2Ptr->frontier.pikeRecordStreaks[i])
                 streak = gSaveBlock2Ptr->frontier.pikeRecordStreaks[i];
         }
-        *topicTextId = 4;
+        *topicTextId = GEN_TOPIC_B_PIKE - 1;
         break;
     case FRONTIER_FACILITY_TOWER:
         for (i = 0; i < 4; i++)
@@ -803,7 +872,7 @@ static u16 GetFrontierStreakInfo(u16 facilityId, u32 *topicTextId)
                     streak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[i][j];
             }
         }
-        *topicTextId = 2;
+        *topicTextId = GEN_TOPIC_STREAK_RECORD - 1;
         break;
     case FRONTIER_FACILITY_PALACE:
         for (i = 0; i < 2; i++)
@@ -814,9 +883,13 @@ static u16 GetFrontierStreakInfo(u16 facilityId, u32 *topicTextId)
                     streak = gSaveBlock2Ptr->frontier.palaceRecordWinStreaks[i][j];
             }
         }
-        *topicTextId = 2;
+        *topicTextId = GEN_TOPIC_STREAK_RECORD - 1;
         break;
+    #ifdef BUGFIX
+    case FRONTIER_FACILITY_FACTORY:
+    #else
     case FRONTIER_FACILITY_PIKE:
+    #endif
         for (i = 0; i < 2; i++)
         {
             for (j = 0; j < 2; j++)
@@ -826,7 +899,7 @@ static u16 GetFrontierStreakInfo(u16 facilityId, u32 *topicTextId)
                     streak = gSaveBlock2Ptr->frontier.factoryRecordWinStreaks[i][j];
             }
         }
-        *topicTextId = 2;
+        *topicTextId = GEN_TOPIC_STREAK_RECORD - 1;
         break;
     case FRONTIER_FACILITY_ARENA:
         for (i = 0; i < 2; i++)
@@ -834,7 +907,7 @@ static u16 GetFrontierStreakInfo(u16 facilityId, u32 *topicTextId)
             if (streak < gSaveBlock2Ptr->frontier.arenaRecordStreaks[i])
                 streak = gSaveBlock2Ptr->frontier.arenaRecordStreaks[i];
         }
-        *topicTextId = 2;
+        *topicTextId = GEN_TOPIC_STREAK_RECORD - 1;
         break;
     case FRONTIER_FACILITY_PYRAMID:
         for (i = 0; i < 2; i++)
@@ -842,7 +915,7 @@ static u16 GetFrontierStreakInfo(u16 facilityId, u32 *topicTextId)
             if (streak < gSaveBlock2Ptr->frontier.pyramidRecordStreaks[i])
                 streak = gSaveBlock2Ptr->frontier.pyramidRecordStreaks[i];
         }
-        *topicTextId = 5;
+        *topicTextId = GEN_TOPIC_B_PYRAMID - 1;
         break;
     }
 
@@ -934,7 +1007,7 @@ void BufferPokedexRatingForMatchCall(u8 *destStr)
     u8 *str;
     u8 dexRatingLevel;
 
-    u8 *buffer = Alloc(0x3E8);
+    u8 *buffer = Alloc(sizeof(gStringVar4));
     if (!buffer)
     {
         destStr[0] = EOS;
@@ -947,33 +1020,33 @@ void BufferPokedexRatingForMatchCall(u8 *destStr)
     ConvertIntToDecimalStringN(gStringVar2, numCaught, STR_CONV_MODE_LEFT_ALIGN, 3);
     dexRatingLevel = GetPokedexRatingLevel(numCaught);
     str = StringCopy(buffer, gBirchDexRatingText_AreYouCurious);
-    str[0] = CHAR_PROMPT_CLEAR;
-    str++;
+    *(str++) = CHAR_PROMPT_CLEAR;
     str = StringCopy(str, gBirchDexRatingText_SoYouveSeenAndCaught);
-    str[0] = CHAR_PROMPT_CLEAR;
-    str++;
+    *(str++) = CHAR_PROMPT_CLEAR;
     StringCopy(str, sBirchDexRatingTexts[dexRatingLevel]);
     str = StringExpandPlaceholders(destStr, buffer);
 
-    str[0] = CHAR_PROMPT_CLEAR;
-    str++;
-    numSeen = GetNationalPokedexCount(FLAG_GET_SEEN);
-    numCaught = GetNationalPokedexCount(FLAG_GET_CAUGHT);
-    ConvertIntToDecimalStringN(gStringVar1, numSeen, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, numCaught, STR_CONV_MODE_LEFT_ALIGN, 3);
-    StringExpandPlaceholders(str, gBirchDexRatingText_OnANationwideBasis);
+    if (IsNationalPokedexEnabled())
+    {
+        *(str++) = CHAR_PROMPT_CLEAR;
+        numSeen = GetNationalPokedexCount(FLAG_GET_SEEN);
+        numCaught = GetNationalPokedexCount(FLAG_GET_CAUGHT);
+        ConvertIntToDecimalStringN(gStringVar1, numSeen, STR_CONV_MODE_LEFT_ALIGN, 3);
+        ConvertIntToDecimalStringN(gStringVar2, numCaught, STR_CONV_MODE_LEFT_ALIGN, 3);
+        StringExpandPlaceholders(str, gBirchDexRatingText_OnANationwideBasis);
+    }
 
     Free(buffer);
 }
 
-void sub_8197184(u32 windowId, u32 destOffset, u32 paletteId)
+void LoadMatchCallWindowGfx(u32 windowId, u32 destOffset, u32 paletteId)
 {
     u8 bg = GetWindowAttribute(windowId, WINDOW_BG);
-    LoadBgTiles(bg, sUnknown_0860EA6C, 0x100, destOffset);
-    LoadPalette(sUnknown_0860EA4C, paletteId << 4, 0x20);
+    LoadBgTiles(bg, sMatchCallWindow_Gfx, 0x100, destOffset);
+    LoadPalette(sMatchCallWindow_Pal, paletteId << 4, sizeof(sMatchCallWindow_Pal));
 }
 
-void sub_81971C4(u32 windowId, u32 tileOffset, u32 paletteId)
+void DrawMatchCallTextBoxBorder(u32 windowId, u32 tileOffset, u32 paletteId)
 {
-    DrawMatchCallTextBoxBorder(windowId, tileOffset, paletteId);
+    DrawMatchCallTextBoxBorder_Internal(windowId, tileOffset, paletteId);
 }

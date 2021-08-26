@@ -33,6 +33,9 @@ const u16 gTutorMoves[] =
     [TUTOR_MOVE_CUT] = MOVE_CUT,
 };
 
+//@TOBY I deleted all mons from this list after zeraora. 
+//The upstream ones used the old emerald tutor moves. If you want to add more mons to this, they can be added manually.
+
 #define TUTOR_LEARNSET(moves) ((u32)(moves))
 #define TUTOR(move) ((u64)1 << (TUTOR_##move))
 
@@ -228,7 +231,7 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_CUT)),
 
-    [SPECIES_ALOLAN_SANDSHREW] = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)
+    [SPECIES_SANDSHREW_ALOLAN] = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)
 											| TUTOR(MOVE_DOUBLE_EDGE)
 											| TUTOR(MOVE_SEISMIC_TOSS)
 											| TUTOR(MOVE_METRONOME)
@@ -245,7 +248,7 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_CUT)),
 
-    [SPECIES_ALOLAN_SANDSLASH] = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)
+    [SPECIES_SANDSLASH_ALOLAN] = TUTOR_LEARNSET(TUTOR(MOVE_BODY_SLAM)
 											| TUTOR(MOVE_DOUBLE_EDGE)
 											| TUTOR(MOVE_SEISMIC_TOSS)
 											| TUTOR(MOVE_METRONOME)
@@ -356,7 +359,7 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_FOUL_PLAY)
 											| TUTOR(MOVE_ENDURE)),
 
-    [SPECIES_ALOLAN_VULPIX] = TUTOR_LEARNSET(TUTOR(MOVE_PAIN_SPLIT)
+    [SPECIES_VULPIX_ALOLAN] = TUTOR_LEARNSET(TUTOR(MOVE_PAIN_SPLIT)
 											| TUTOR(MOVE_BODY_SLAM)
 											| TUTOR(MOVE_DOUBLE_EDGE)
 											| TUTOR(MOVE_METRONOME)
@@ -374,7 +377,7 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_HEAT_WAVE)
 											| TUTOR(MOVE_ENDURE)),
 
-    [SPECIES_ALOLAN_NINETALES] = TUTOR_LEARNSET(TUTOR(MOVE_PAIN_SPLIT)
+    [SPECIES_NINETALES_ALOLAN] = TUTOR_LEARNSET(TUTOR(MOVE_PAIN_SPLIT)
 											| TUTOR(MOVE_BODY_SLAM)
 											| TUTOR(MOVE_DOUBLE_EDGE)
 											| TUTOR(MOVE_METRONOME)
@@ -3934,7 +3937,7 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_HELPING_HAND)
 											| TUTOR(MOVE_ENDURE)),
 
-    [SPECIES_MIMEJR]        = TUTOR_LEARNSET(TUTOR(MOVE_RECYCLE)
+    [SPECIES_MIME_JR]        = TUTOR_LEARNSET(TUTOR(MOVE_RECYCLE)
 											| TUTOR(MOVE_MAGIC_COAT)
 											| TUTOR(MOVE_TRICK)
 											| TUTOR(MOVE_METRONOME)
@@ -4686,7 +4689,7 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_ENDURE)
 											| TUTOR(MOVE_FIRE_PUNCH)),
 
-    [SPECIES_DARMANITAN_ZEN]    = TUTOR_LEARNSET(TUTOR(MOVE_METRONOME)
+    [SPECIES_DARMANITAN_ZEN_MODE]    = TUTOR_LEARNSET(TUTOR(MOVE_METRONOME)
 											| TUTOR(MOVE_ZEN_HEADBUTT)
 											| TUTOR(MOVE_HEAT_WAVE)
 											| TUTOR(MOVE_ENDURE)
@@ -6208,59 +6211,4 @@ static const u32 sTutorLearnsets[] =
 											| TUTOR(MOVE_THUNDER_PUNCH)
 											| TUTOR(MOVE_FIRE_PUNCH)
 											| TUTOR(MOVE_CUT)),
-
-    [SPECIES_BURMY_SANDY]   = TUTOR_LEARNSET(0),
-
-    [SPECIES_BURMY_TRASH]   = TUTOR_LEARNSET(0),
-
-    [SPECIES_WORMADAM_SANDY]= TUTOR_LEARNSET(0),
-
-    [SPECIES_WORMADAM_TRASH]= TUTOR_LEARNSET(0),
-
-    [SPECIES_ROTOM_HEAT]    = TUTOR_LEARNSET(TUTOR(MOVE_PAIN_SPLIT)
-											| TUTOR(MOVE_TRICK)
-											| TUTOR(MOVE_METRONOME)
-											| TUTOR(MOVE_FOUL_PLAY)
-											| TUTOR(MOVE_ENDURE)
-											| TUTOR(MOVE_HYPER_VOICE)
-											| TUTOR(MOVE_SIGNAL_BEAM)),
-
-    [SPECIES_ROTOM_WASH]    = TUTOR_LEARNSET(TUTOR(MOVE_PAIN_SPLIT)
-											| TUTOR(MOVE_TRICK)
-											| TUTOR(MOVE_METRONOME)
-											| TUTOR(MOVE_FOUL_PLAY)
-											| TUTOR(MOVE_ENDURE)
-											| TUTOR(MOVE_HYPER_VOICE)
-											| TUTOR(MOVE_SIGNAL_BEAM)),
-
-    [SPECIES_ROTOM_FROST]   = TUTOR_LEARNSET(TUTOR(MOVE_PAIN_SPLIT)
-											| TUTOR(MOVE_TRICK)
-											| TUTOR(MOVE_METRONOME)
-											| TUTOR(MOVE_FOUL_PLAY)
-											| TUTOR(MOVE_ENDURE)
-											| TUTOR(MOVE_HYPER_VOICE)
-											| TUTOR(MOVE_SIGNAL_BEAM)),
-
-    [SPECIES_ROTOM_FAN]     = TUTOR_LEARNSET(TUTOR(MOVE_PAIN_SPLIT)
-											| TUTOR(MOVE_TRICK)
-											| TUTOR(MOVE_METRONOME)
-											| TUTOR(MOVE_FOUL_PLAY)
-											| TUTOR(MOVE_ENDURE)
-											| TUTOR(MOVE_HYPER_VOICE)
-											| TUTOR(MOVE_SIGNAL_BEAM)),
-
-    [SPECIES_ROTOM_MOW]     = TUTOR_LEARNSET(TUTOR(MOVE_PAIN_SPLIT)
-											| TUTOR(MOVE_TRICK)
-											| TUTOR(MOVE_METRONOME)
-											| TUTOR(MOVE_FOUL_PLAY)
-											| TUTOR(MOVE_ENDURE)
-											| TUTOR(MOVE_HYPER_VOICE)
-											| TUTOR(MOVE_SIGNAL_BEAM)),
-
-    [SPECIES_KYUREM_BLACK]  = TUTOR_LEARNSET(0),
-
-    [SPECIES_KYUREM_WHITE]  = TUTOR_LEARNSET(0),
-
-    [SPECIES_MEOWSTIC_F]    = TUTOR_LEARNSET(0),
-
 };

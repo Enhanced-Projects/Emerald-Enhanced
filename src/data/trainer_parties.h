@@ -465,7 +465,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Felix[] = {
     .lvl = 43,
     .species = SPECIES_MEDICHAM,
     .ability = 0,
-    .moves = {MOVE_PSYCHIC, MOVE_HI_JUMP_KICK, MOVE_NONE, MOVE_NONE},
+    .moves = {MOVE_PSYCHIC, MOVE_HIGH_JUMP_KICK, MOVE_NONE, MOVE_NONE},
     },
     {
     .iv = 0,
@@ -940,7 +940,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Braxton[] = {
     .lvl = 28,
     .species = SPECIES_VIBRAVA,
     .ability = 0,
-    .moves = {MOVE_DRAGON_PULSE, MOVE_DIG, MOVE_FAINT_ATTACK, MOVE_SAND_TOMB},
+    .moves = {MOVE_DRAGON_PULSE, MOVE_DIG, MOVE_FEINT_ATTACK, MOVE_SAND_TOMB},
     },
     {
     .iv = 100,
@@ -1223,7 +1223,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Wendy[] = {
     .lvl = 29,
     .species = SPECIES_MAWILE,
     .ability = 0,
-    .moves = {MOVE_ICE_FANG, MOVE_FAINT_ATTACK, MOVE_FAKE_TEARS, MOVE_BITE},
+    .moves = {MOVE_ICE_FANG, MOVE_FEINT_ATTACK, MOVE_FAKE_TEARS, MOVE_BITE},
     },
     {
     .iv = 100,
@@ -1766,7 +1766,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Jessica3[] = {
     .lvl = 41,
     .species = SPECIES_TSAREENA,
     .ability = 0,
-    .moves = {MOVE_LEECH_SEED, MOVE_SCREECH, MOVE_SEED_BOMB, MOVE_HI_JUMP_KICK},
+    .moves = {MOVE_LEECH_SEED, MOVE_SCREECH, MOVE_SEED_BOMB, MOVE_HIGH_JUMP_KICK},
     }
 };
 
@@ -1783,7 +1783,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Jessica4[] = {
     .lvl = 41,
     .species = SPECIES_TSAREENA,
     .ability = 0,
-    .moves = {MOVE_LEECH_SEED, MOVE_SCREECH, MOVE_SEED_BOMB, MOVE_HI_JUMP_KICK},
+    .moves = {MOVE_LEECH_SEED, MOVE_SCREECH, MOVE_SEED_BOMB, MOVE_HIGH_JUMP_KICK},
     }
 };
 
@@ -1800,7 +1800,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Jessica5[] = {
     .lvl = 44,
     .species = SPECIES_TSAREENA,
     .ability = 0,
-    .moves = {MOVE_LEECH_SEED, MOVE_SCREECH, MOVE_SEED_BOMB, MOVE_HI_JUMP_KICK},
+    .moves = {MOVE_LEECH_SEED, MOVE_SCREECH, MOVE_SEED_BOMB, MOVE_HIGH_JUMP_KICK},
     }
 };
 
@@ -3577,7 +3577,7 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly1[] = {
 	.species = SPECIES_MEDITITE,
 	.heldItem = ITEM_FOCUS_SASH,
 	.ability = 0,
-	.moves = {MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_ICE_PUNCH, MOVE_FAKE_OUT},
+	.moves = {MOVE_HIGH_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_ICE_PUNCH, MOVE_FAKE_OUT},
 	},
 	{
 	.iv = 255,
@@ -3601,7 +3601,7 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly1[] = {
 	.species = SPECIES_HAWLUCHA,
 	.heldItem = ITEM_FLYING_GEM,
 	.ability = 1,
-	.moves = {MOVE_ACROBATICS, MOVE_HI_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_NONE},
+	.moves = {MOVE_ACROBATICS, MOVE_HIGH_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_NONE},
 	}
 };
 
@@ -3733,7 +3733,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona1[] = {
 	.species = SPECIES_HAWLUCHA,
 	.heldItem = ITEM_FLYING_GEM,
 	.ability = 1,
-	.moves = {MOVE_ACROBATICS, MOVE_HI_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_DEFOG},
+	.moves = {MOVE_ACROBATICS, MOVE_HIGH_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_DEFOG},
 	},
 	{
 	.iv = 255,
@@ -3992,7 +3992,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_KateAndJoy[] = {
     .lvl = 32,
     .species = SPECIES_SLAKING,
     .ability = 0,
-    .moves = {MOVE_FOCUS_PUNCH, MOVE_YAWN, MOVE_SLACK_OFF, MOVE_FAINT_ATTACK},
+    .moves = {MOVE_FOCUS_PUNCH, MOVE_YAWN, MOVE_SLACK_OFF, MOVE_FEINT_ATTACK},
     }
 };
 
@@ -4112,7 +4112,7 @@ static const struct TrainerMonItemCustomMoves sParty_Colton[] = {
     .species = SPECIES_SKITTY,
     .heldItem = ITEM_ORAN_BERRY,
     .ability = 0,
-    .moves = {MOVE_ASSIST, MOVE_CHARM, MOVE_FAINT_ATTACK, MOVE_HEAL_BELL},
+    .moves = {MOVE_ASSIST, MOVE_CHARM, MOVE_FEINT_ATTACK, MOVE_HEAL_BELL},
     },
     {
     .iv = 0,
@@ -4120,7 +4120,7 @@ static const struct TrainerMonItemCustomMoves sParty_Colton[] = {
     .species = SPECIES_SKITTY,
     .heldItem = ITEM_ORAN_BERRY,
     .ability = 0,
-    .moves = {MOVE_ASSIST, MOVE_CHARM, MOVE_FAINT_ATTACK, MOVE_HEAL_BELL},
+    .moves = {MOVE_ASSIST, MOVE_CHARM, MOVE_FEINT_ATTACK, MOVE_HEAL_BELL},
     },
     {
     .iv = 0,
@@ -4128,7 +4128,7 @@ static const struct TrainerMonItemCustomMoves sParty_Colton[] = {
     .species = SPECIES_SKITTY,
     .heldItem = ITEM_ORAN_BERRY,
     .ability = 0,
-    .moves = {MOVE_ASSIST, MOVE_CHARM, MOVE_FAINT_ATTACK, MOVE_HEAL_BELL},
+    .moves = {MOVE_ASSIST, MOVE_CHARM, MOVE_FEINT_ATTACK, MOVE_HEAL_BELL},
     },
     {
     .iv = 0,
@@ -4136,7 +4136,7 @@ static const struct TrainerMonItemCustomMoves sParty_Colton[] = {
     .species = SPECIES_SKITTY,
     .heldItem = ITEM_ORAN_BERRY,
     .ability = 0,
-    .moves = {MOVE_ASSIST, MOVE_CHARM, MOVE_FAINT_ATTACK, MOVE_HEAL_BELL},
+    .moves = {MOVE_ASSIST, MOVE_CHARM, MOVE_FEINT_ATTACK, MOVE_HEAL_BELL},
     },
     {
     .iv = 0,
@@ -4144,7 +4144,7 @@ static const struct TrainerMonItemCustomMoves sParty_Colton[] = {
     .species = SPECIES_SKITTY,
     .heldItem = ITEM_ORAN_BERRY,
     .ability = 0,
-    .moves = {MOVE_ASSIST, MOVE_CHARM, MOVE_FAINT_ATTACK, MOVE_HEAL_BELL},
+    .moves = {MOVE_ASSIST, MOVE_CHARM, MOVE_FEINT_ATTACK, MOVE_HEAL_BELL},
     },
     {
     .iv = 0,
@@ -4152,7 +4152,7 @@ static const struct TrainerMonItemCustomMoves sParty_Colton[] = {
     .species = SPECIES_DELCATTY,
     .heldItem = ITEM_ORAN_BERRY,
     .ability = 0,
-    .moves = {MOVE_ASSIST, MOVE_CHARM, MOVE_FAINT_ATTACK, MOVE_HEAL_BELL},
+    .moves = {MOVE_ASSIST, MOVE_CHARM, MOVE_FEINT_ATTACK, MOVE_HEAL_BELL},
     }
 };
 
@@ -4360,7 +4360,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Vicky[] = {
     .lvl = 18,
     .species = SPECIES_MEDITITE,
     .ability = 0,
-    .moves = {MOVE_HI_JUMP_KICK, MOVE_MEDITATE, MOVE_CONFUSION, MOVE_BULLET_PUNCH},
+    .moves = {MOVE_HIGH_JUMP_KICK, MOVE_MEDITATE, MOVE_CONFUSION, MOVE_BULLET_PUNCH},
     }
 };
 
@@ -7046,7 +7046,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_WallyVR1[] = {
     .lvl = 43,
     .species = SPECIES_DELCATTY,
     .ability = 0,
-    .moves = {MOVE_SING, MOVE_ASSIST, MOVE_CHARM, MOVE_FAINT_ATTACK},
+    .moves = {MOVE_SING, MOVE_ASSIST, MOVE_CHARM, MOVE_FEINT_ATTACK},
     },
     {
     .iv = 150,
@@ -9083,7 +9083,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Gerald[] = {
     .lvl = 23,
     .species = SPECIES_KECLEON,
     .ability = 0,
-    .moves = {MOVE_FLAMETHROWER, MOVE_FURY_SWIPES, MOVE_FAINT_ATTACK, MOVE_BIND},
+    .moves = {MOVE_FLAMETHROWER, MOVE_FURY_SWIPES, MOVE_FEINT_ATTACK, MOVE_BIND},
     }
 };
 
@@ -9217,7 +9217,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_WallyVR2[] = {
     .lvl = 46,
     .species = SPECIES_DELCATTY,
     .ability = 0,
-    .moves = {MOVE_SING, MOVE_ASSIST, MOVE_CHARM, MOVE_FAINT_ATTACK},
+    .moves = {MOVE_SING, MOVE_ASSIST, MOVE_CHARM, MOVE_FEINT_ATTACK},
     },
     {
     .iv = 150,
@@ -9255,7 +9255,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_WallyVR3[] = {
     .lvl = 49,
     .species = SPECIES_DELCATTY,
     .ability = 0,
-    .moves = {MOVE_SING, MOVE_ASSIST, MOVE_CHARM, MOVE_FAINT_ATTACK},
+    .moves = {MOVE_SING, MOVE_ASSIST, MOVE_CHARM, MOVE_FEINT_ATTACK},
     },
     {
     .iv = 150,
@@ -9293,7 +9293,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_WallyVR4[] = {
     .lvl = 52,
     .species = SPECIES_DELCATTY,
     .ability = 0,
-    .moves = {MOVE_SING, MOVE_ASSIST, MOVE_CHARM, MOVE_FAINT_ATTACK},
+    .moves = {MOVE_SING, MOVE_ASSIST, MOVE_CHARM, MOVE_FEINT_ATTACK},
     },
     {
     .iv = 150,
@@ -9331,7 +9331,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_WallyVR5[] = {
     .lvl = 55,
     .species = SPECIES_DELCATTY,
     .ability = 0,
-    .moves = {MOVE_SING, MOVE_ASSIST, MOVE_CHARM, MOVE_FAINT_ATTACK},
+    .moves = {MOVE_SING, MOVE_ASSIST, MOVE_CHARM, MOVE_FEINT_ATTACK},
     },
     {
     .iv = 150,
@@ -11498,7 +11498,7 @@ static const struct TrainerMonItemCustomMoves sParty_Shanti[] = {
     .species = SPECIES_MIENSHAO,
     .heldItem = ITEM_FOCUS_SASH,
     .ability = 2,
-    .moves = {MOVE_FAKE_OUT, MOVE_HI_JUMP_KICK, MOVE_KNOCK_OFF, MOVE_POISON_JAB},
+    .moves = {MOVE_FAKE_OUT, MOVE_HIGH_JUMP_KICK, MOVE_KNOCK_OFF, MOVE_POISON_JAB},
     },
     {
     .iv = 255,
@@ -11506,12 +11506,12 @@ static const struct TrainerMonItemCustomMoves sParty_Shanti[] = {
     .species = SPECIES_MEDICHAM,
     .heldItem = ITEM_MEDICHAMITE,
     .ability = 2,
-    .moves = {MOVE_FAKE_OUT, MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_MEDITATE},
+    .moves = {MOVE_FAKE_OUT, MOVE_HIGH_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_MEDITATE},
     },
     {
     .iv = 255,
     .lvl = 52,
-    .species = SPECIES_DARMANITAN_ZEN,
+    .species = SPECIES_DARMANITAN_ZEN_MODE,
     .heldItem = ITEM_WEAKNESS_POLICY,
     .ability = 0,
     .moves = {MOVE_PSYCHIC, MOVE_GRAVEL_STORM, MOVE_FOCUS_BLAST, MOVE_TRICK_ROOM},
@@ -11541,7 +11541,7 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly2[] = {
 	.species = SPECIES_HAWLUCHA,
 	.heldItem = ITEM_FLYING_GEM,
 	.ability = 1,
-	.moves = {MOVE_ACROBATICS, MOVE_HI_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_NONE},
+	.moves = {MOVE_ACROBATICS, MOVE_HIGH_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_NONE},
 	},
 	{
 	.iv = 255,
@@ -11592,7 +11592,7 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly3[] = {
 	.species = SPECIES_HAWLUCHA,
 	.heldItem = ITEM_FLYING_GEM,
 	.ability = 1,
-	.moves = {MOVE_ACROBATICS, MOVE_HI_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_NONE},
+	.moves = {MOVE_ACROBATICS, MOVE_HIGH_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_NONE},
 	},
 	{
 	.iv = 255,
@@ -11635,7 +11635,7 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly4[] = {
 	.species = SPECIES_MEDICHAM,
 	.heldItem = ITEM_MEDICHAMITE,
 	.ability = 2,
-	.moves = {MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_FAKE_OUT, MOVE_ICE_PUNCH},
+	.moves = {MOVE_HIGH_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_FAKE_OUT, MOVE_ICE_PUNCH},
 	},
 	{
 	.iv = 255,
@@ -11643,7 +11643,7 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly4[] = {
 	.species = SPECIES_HAWLUCHA,
 	.heldItem = ITEM_FLYING_GEM,
 	.ability = 1,
-	.moves = {MOVE_ACROBATICS, MOVE_HI_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_NONE},
+	.moves = {MOVE_ACROBATICS, MOVE_HIGH_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_NONE},
 	},
 	{
 	.iv = 255,
@@ -11667,7 +11667,7 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly4[] = {
 	.species = SPECIES_BLAZIKEN,
 	.heldItem = ITEM_FOCUS_SASH,
 	.ability = 2,
-	.moves = {MOVE_HI_JUMP_KICK, MOVE_BLAZE_KICK, MOVE_KNOCK_OFF, MOVE_SWORDS_DANCE},
+	.moves = {MOVE_HIGH_JUMP_KICK, MOVE_BLAZE_KICK, MOVE_KNOCK_OFF, MOVE_SWORDS_DANCE},
 	}
 };
 
@@ -12352,7 +12352,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona3[] = {
 	.species = SPECIES_HAWLUCHA,
 	.heldItem = ITEM_FLYING_GEM,
 	.ability = 1,
-	.moves = {MOVE_ACROBATICS, MOVE_HI_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_DEFOG},
+	.moves = {MOVE_ACROBATICS, MOVE_HIGH_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_DEFOG},
 	},
 	{
 	.iv = 255,
@@ -12403,7 +12403,7 @@ static const struct TrainerMonItemCustomMoves sParty_Winona4[] = {
 	.species = SPECIES_HAWLUCHA,
 	.heldItem = ITEM_FLYING_GEM,
 	.ability = 1,
-	.moves = {MOVE_ACROBATICS, MOVE_HI_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_DEFOG},
+	.moves = {MOVE_ACROBATICS, MOVE_HIGH_JUMP_KICK, MOVE_SWORDS_DANCE, MOVE_DEFOG},
 	},
 	{
 	.iv = 255,
@@ -12462,7 +12462,7 @@ static const struct TrainerMonItemCustomMoves sParty_TateAndLiza2[] = {
 	{
 	.iv = 255,
 	.lvl = 87,
-	.species = SPECIES_DARMANITAN_ZEN,
+	.species = SPECIES_DARMANITAN_ZEN_MODE,
 	.heldItem = ITEM_WEAKNESS_POLICY,
 	.ability = 0,
 	.moves = {MOVE_GRAVEL_STORM, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST, MOVE_TRICK_ROOM},
@@ -12489,7 +12489,7 @@ static const struct TrainerMonItemCustomMoves sParty_TateAndLiza2[] = {
 	.species = SPECIES_MEDICHAM,
 	.heldItem = ITEM_FOCUS_SASH,
 	.ability = 0,
-	.moves = {MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_FAKE_OUT, MOVE_ICE_PUNCH},
+	.moves = {MOVE_HIGH_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_FAKE_OUT, MOVE_ICE_PUNCH},
 	},
 	{
 	.iv = 255,
@@ -12513,7 +12513,7 @@ static const struct TrainerMonItemCustomMoves sParty_TateAndLiza3[] = {
 	{
 	.iv = 255,
 	.lvl = 87,
-	.species = SPECIES_DARMANITAN_ZEN,
+	.species = SPECIES_DARMANITAN_ZEN_MODE,
 	.heldItem = ITEM_WEAKNESS_POLICY,
 	.ability = 0,
 	.moves = {MOVE_GRAVEL_STORM, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST, MOVE_TRICK_ROOM},
@@ -12540,7 +12540,7 @@ static const struct TrainerMonItemCustomMoves sParty_TateAndLiza3[] = {
 	.species = SPECIES_MEDICHAM,
 	.heldItem = ITEM_FOCUS_SASH,
 	.ability = 0,
-	.moves = {MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_FAKE_OUT, MOVE_ICE_PUNCH},
+	.moves = {MOVE_HIGH_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_FAKE_OUT, MOVE_ICE_PUNCH},
 	},
 	{
 	.iv = 255,
@@ -12564,7 +12564,7 @@ static const struct TrainerMonItemCustomMoves sParty_TateAndLiza4[] = {
 	{
 	.iv = 255,
 	.lvl = 87,
-	.species = SPECIES_DARMANITAN_ZEN,
+	.species = SPECIES_DARMANITAN_ZEN_MODE,
 	.heldItem = ITEM_WEAKNESS_POLICY,
 	.ability = 0,
 	.moves = {MOVE_GRAVEL_STORM, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST, MOVE_TRICK_ROOM},
@@ -12591,7 +12591,7 @@ static const struct TrainerMonItemCustomMoves sParty_TateAndLiza4[] = {
 	.species = SPECIES_MEDICHAM,
 	.heldItem = ITEM_FOCUS_SASH,
 	.ability = 0,
-	.moves = {MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_FAKE_OUT, MOVE_ICE_PUNCH},
+	.moves = {MOVE_HIGH_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_FAKE_OUT, MOVE_ICE_PUNCH},
 	},
 	{
 	.iv = 255,
@@ -12615,7 +12615,7 @@ static const struct TrainerMonItemCustomMoves sParty_TateAndLizaSingle[] = {
 	{
 	.iv = 255,
 	.lvl = 87,
-	.species = SPECIES_DARMANITAN_ZEN,
+	.species = SPECIES_DARMANITAN_ZEN_MODE,
 	.heldItem = ITEM_WEAKNESS_POLICY,
 	.ability = 0,
 	.moves = {MOVE_GRAVEL_STORM, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST, MOVE_TRICK_ROOM},
@@ -12642,7 +12642,7 @@ static const struct TrainerMonItemCustomMoves sParty_TateAndLizaSingle[] = {
 	.species = SPECIES_MEDICHAM,
 	.heldItem = ITEM_FOCUS_SASH,
 	.ability = 0,
-	.moves = {MOVE_HI_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_FAKE_OUT, MOVE_ICE_PUNCH},
+	.moves = {MOVE_HIGH_JUMP_KICK, MOVE_ZEN_HEADBUTT, MOVE_FAKE_OUT, MOVE_ICE_PUNCH},
 	},
 	{
 	.iv = 255,

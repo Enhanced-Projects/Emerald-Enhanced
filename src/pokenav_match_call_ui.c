@@ -705,7 +705,7 @@ void sub_81C8C64(struct PokenavListMenuWindow *listWindow, u32 a1)
 
 void sub_81C8CB4(struct MatchCallWindowState *state, struct PokenavSub17Substruct *list)
 {
-    u8 colors[3] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GREY, TEXT_COLOR_LIGHT_RED};
+    u8 colors[3] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_LIGHT_RED};
 
     list->unk34(state->unk10 + state->unkC * state->windowTopIndex, list->unkTextBuffer);
     list->unk38(list->listWindow.windowId, state->windowTopIndex, list->listWindow.unkA);
@@ -887,7 +887,7 @@ void ToggleMatchCallArrows(struct PokenavSub17Substruct *list, bool32 shouldHide
 void SpriteCB_MatchCallRightArrow(struct Sprite *sprite)
 {
     struct PokenavSub17 *structPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_LIST);
-    sprite->pos2.y = structPtr->unk888.selectedIndexOffset << 4;
+    sprite->y2 = structPtr->unk888.selectedIndexOffset << 4;
 }
 
 void SpriteCB_MatchCallDownArrow(struct Sprite *sprite)
@@ -904,7 +904,7 @@ void SpriteCB_MatchCallDownArrow(struct Sprite *sprite)
         sprite->data[0] = 0;
         offset = (sprite->data[1] + 1) & 7;
         sprite->data[1] = offset;
-        sprite->pos2.y = offset;
+        sprite->y2 = offset;
     }
 }
 
@@ -922,7 +922,7 @@ void SpriteCB_MatchCallUpArrow(struct Sprite *sprite)
         sprite->data[0] = 0;
         offset = (sprite->data[1] + 1) & 7;
         sprite->data[1] = offset;
-        sprite->pos2.y = -1 * offset;
+        sprite->y2 = -1 * offset;
     }
 }
 
@@ -984,7 +984,7 @@ bool32 CopyPokenavListMenuTemplate(struct PokenavSub17Substruct *dest, const str
     window.baseBlock = a3 + 2;
 
     dest->listWindow.windowId = AddWindow(&window);
-    if (dest->listWindow.windowId == 0xFF)
+    if (dest->listWindow.windowId == WINDOW_NONE)
         return FALSE;
 
     dest->listWindow.unkA = 0;

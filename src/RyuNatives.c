@@ -152,7 +152,7 @@ void GivePlayerModdedMon(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE3, &move3);
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE4, &move4);
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
-    SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &isBoss);
+    SetMonData(&gPlayerParty[slot], MON_DATA_WORLD_RIBBON, &isBoss);
 
     CalculateMonStats(&gPlayerParty[slot]);
 }
@@ -235,7 +235,7 @@ int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be 
     u16 move3 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE3);
     u16 move4 = GetMonData(&gPlayerParty[slot], MON_DATA_MOVE4);
     u8 ability = GetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM);
-    bool8 bossFlag = (GetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7));
+    bool8 bossFlag = (GetMonData(&gPlayerParty[slot], MON_DATA_WORLD_RIBBON));
     u8 i;
 
 
@@ -1670,7 +1670,7 @@ void RyuHolidayGiftMonSetData(void)
     SetMonData(&gPlayerParty[slot], MON_DATA_SPEED_IV, &iv);
     SetMonData(&gPlayerParty[slot], MON_DATA_HP_IV, &iv);
 
-    SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &ribbon);
+    SetMonData(&gPlayerParty[slot], MON_DATA_WORLD_RIBBON, &ribbon);
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
 
 }
@@ -2076,7 +2076,7 @@ void RyuGiveDevMon(void)
 
     SetMonData(&gPlayerParty[slot], MON_DATA_ABILITY_NUM, &ability);
 
-    SetMonData(&gPlayerParty[slot], MON_DATA_GIFT_RIBBON_7, &ribbon); //make it a boss because why not
+    SetMonData(&gPlayerParty[slot], MON_DATA_WORLD_RIBBON, &ribbon); //make it a boss because why not
 }
 
 bool32 ScrCmd_unusedscrcmd(struct ScriptContext *ctx)
