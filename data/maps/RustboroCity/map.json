@@ -328,8 +328,8 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 23,
-      "y": 20,
+      "x": 18,
+      "y": 23,
       "elevation": 3,
       "var": "VAR_PETALBURG_WOODS_STATE",
       "var_value": "1",
@@ -337,8 +337,8 @@
     },
     {
       "type": "trigger",
-      "x": 23,
-      "y": 21,
+      "x": 20,
+      "y": 23,
       "elevation": 3,
       "var": "VAR_PETALBURG_WOODS_STATE",
       "var_value": "1",
@@ -346,8 +346,8 @@
     },
     {
       "type": "trigger",
-      "x": 23,
-      "y": 22,
+      "x": 21,
+      "y": 23,
       "elevation": 3,
       "var": "VAR_PETALBURG_WOODS_STATE",
       "var_value": "1",

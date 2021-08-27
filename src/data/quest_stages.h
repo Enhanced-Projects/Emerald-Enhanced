@@ -1,5 +1,5 @@
 const u8 sQuestStage0[] = _("Quest line has not yet been started");
-const u8 sMainQuestNotStartedStg[] = _("Rescue the devon employee in Petalburg Woods\nThen clear the Rustburo Gym and exit to see the\nAqua grunt run to Rusturf Tunnel. Follow him.\nYou will choose which team you join there.");
+const u8 sMainQuestNotStartedStg[] = _("Rescue the devon employee in Petalburg Woods\nthen walk North through Rustburo.\nFollow the Aqua grunt to Rusturf Tunnel.\nYou will choose which team you join there.");
 
 
 //aqua

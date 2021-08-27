@@ -1131,16 +1131,14 @@ RustboroCity_Text_YouCanHave2On2Battle: @ 81E249D
 	.string "Don't you think it'd be cool if you\n"
 	.string "could beat two Trainers by yourself?$"
 	
-@==================================================================================================RyuAqua line
+@==================================================================================================EE Intro
 
 RC_Aqua_Thief_Check::
-    lock
-	goto_if_set FLAG_DEFEATED_RUSTBORO_GYM, RC_Aqua_Thief_Spawn
+	goto_if_unset FLAG_RYU_AQUA_THIEF_SEEN, RC_Aqua_Thief_Spawn
 	release
 	end
 
 RC_Aqua_Thief_Spawn::
-	goto_if_set FLAG_RYU_AQUA_THIEF_SEEN, ryu_end
     lock
 	addobject 10
 	applymovement 10, RC_Thief_Running
