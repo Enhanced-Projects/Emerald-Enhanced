@@ -1924,7 +1924,7 @@ const u8 gText_RyuMaxIvMenuOption[] = _("Max Out IV's");
 const u8 gText_RyuAccessMoveRelearner[] = _("Move Relearner...");
 const u8 gText_RyuSetFriendshipMenuOption[] = _("Set Friendliness");
 const u8 gText_RyuExitPokeEditMenuOption[] = _("Exit");
-const u8 sText_DebugUtilityItem1[] = _("Utility 1");
+const u8 sText_DebugMainUtilityItem1[] = _("Utility 1");
 
 const u8 gText_DevMonGiveAbility1[] = _("Ability 1");
 const u8 gText_DevMonGiveAbility2[] = _("Ability 2");

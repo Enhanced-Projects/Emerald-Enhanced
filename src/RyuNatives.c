@@ -2143,3 +2143,10 @@ void RyuExpDriveOperation(void)
     }
 
 }
+
+void RyuCheckDataSize(void)//used to check the size of whatever struct i want to check, only need to change the 'data =' part
+{
+    u32 data = sizeof(struct FacilityMon);
+    data *= 999;
+    ConvertIntToDecimalStringN(gStringVar1, data, STR_CONV_MODE_LEFT_ALIGN, 10);
+}
