@@ -1382,3 +1382,13 @@ LCC_AquaGruntRunsAway:
 
 
 `
+
+script LilycoveCity_RealEstatePropertyDoor {
+	setvar(VAR_TEMP_D, PROPERTY_LILYCOVE)
+	goto(RyuScript_HouseDoorLocks)
+}
+
+script LilycoveCity_RealEstatePropertySign {
+	setvar(VAR_TEMP_D, PROPERTY_LILYCOVE)
+	goto(RyuRealEstateHouseSign)
+}

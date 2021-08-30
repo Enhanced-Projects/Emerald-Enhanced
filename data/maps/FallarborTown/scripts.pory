@@ -95,3 +95,13 @@ FallarborTown_Text_MoveTutorSign: @ 81EB534
 	.string "“New moves taught to Pokémon.”$"
 
 `
+
+script FallarborTown_RealEstatePropertyDoor {
+	setvar(VAR_TEMP_D, PROPERTY_FALLARBOR)
+	goto(RyuScript_HouseDoorLocks)
+}
+
+script FallarborTown_RealEstatePropertySign {
+	setvar(VAR_TEMP_D, PROPERTY_FALLARBOR)
+	goto(RyuRealEstateHouseSign)
+}

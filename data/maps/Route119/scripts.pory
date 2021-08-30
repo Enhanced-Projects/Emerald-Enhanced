@@ -719,3 +719,13 @@ R119_ShellyUp1:
 	waitmovement 43
 	return
 `
+
+script Route119_RealEstatePropertyDoor {
+	setvar(VAR_TEMP_D, PROPERTY_ROUTE119)
+	goto(RyuScript_HouseDoorLocks)
+}
+
+script Route119_RealEstatePropertySign {
+	setvar(VAR_TEMP_D, PROPERTY_ROUTE119)
+	goto(RyuRealEstateHouseSign)
+}

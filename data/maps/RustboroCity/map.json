@@ -630,7 +630,15 @@
       "y": 46,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "RealEstate_EventScript_ForSaleSign"
+      "script": "RustboroCity_RealEstatePropertySign"
+    },
+    {
+      "type": "sign",
+      "x": 32,
+      "y": 46,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RustboroCity_RealEstatePropertyDoor"
     }
   ]
 }

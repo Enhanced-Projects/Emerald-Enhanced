@@ -1309,3 +1309,13 @@ SC_ShellyAquaCallMsg:
     .string "next to the Weather Institute.\p"
     .string "Please hurry!$"
 `
+
+script SlateportCity_RealEstatePropertyDoor {
+	setvar(VAR_TEMP_D, PROPERTY_SLATEPORT)
+	goto(RyuScript_HouseDoorLocks)
+}
+
+script SlateportCity_RealEstatePropertySign {
+	setvar(VAR_TEMP_D, PROPERTY_SLATEPORT)
+	goto(RyuRealEstateHouseSign)
+}

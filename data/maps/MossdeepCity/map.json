@@ -407,7 +407,15 @@
       "y": 24,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "RealEstate_EventScript_ForSaleSign"
+      "script": "MossdeepTown_RealEstatePropertySign"
+    },
+    {
+      "type": "sign",
+      "x": 36,
+      "y": 24,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MossdeepTown_RealEstatePropertyDoor"
     }
   ]
 }

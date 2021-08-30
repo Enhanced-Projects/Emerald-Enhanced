@@ -466,3 +466,13 @@ MDC_DevonGuy2ToMatt:
 	face_left
 	step_end
 `
+
+script MossdeepTown_RealEstatePropertyDoor {
+	setvar(VAR_TEMP_D, PROPERTY_MOSSDEEP)
+	goto(RyuScript_HouseDoorLocks)
+}
+
+script MossdeepTown_RealEstatePropertySign {
+	setvar(VAR_TEMP_D, PROPERTY_MOSSDEEP)
+	goto(RyuRealEstateHouseSign)
+}

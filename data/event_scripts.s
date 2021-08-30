@@ -1239,3 +1239,23 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/maps/OldaleTown_Home/scripts.inc"
 
 	.include "data/maps/DewfordTown_Home/scripts.inc"
+
+	.include "data/maps/FallarborTown_Home/scripts.inc"
+
+	.include "data/maps/LilycoveCity_Home/scripts.inc"
+
+	.include "data/maps/MauvilleCity_Home/scripts.inc"
+
+	.include "data/maps/Route119_Home/scripts.inc"
+
+	.include "data/maps/RustboroCity_Home/scripts.inc"
+
+	.include "data/maps/SlateportCity_Home/scripts.inc"
+
+	.include "data/maps/SnowyShore_Home/scripts.inc"
+
+	.include "data/maps/SootopolisCity_Home/scripts.inc"
+
+	.include "data/maps/VerdanturfTown_Home/scripts.inc"
+
+	.include "data/maps/MossdeepCity_Home/scripts.inc"

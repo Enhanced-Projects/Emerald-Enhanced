@@ -190,9 +190,9 @@ MauvilleCity_Text_GameCornerSign: @ 81E053C
 	.string "Mauville Game Corner$"
 
 MauvilleCity_Text_RestaurantSign:
-	.string "“Food so good you will think\n"
-	.string "we kidnapped your grandma!”\l"
-	.string "The Little Cozy$"
+	.string "We are currently moving in!\p"
+	.string "Please check back in the\n"
+	.string "next update.$"
 
 MauvilleCity_Text_ExplainTV: @ 81E056A
 	.string "Hi, do you check out TV at all?\p"
@@ -291,3 +291,13 @@ MC_LI_Intro:
     .string " {COLOR LIGHT_GREEN}{SHADOW GREEN}(Lanette flushes brightly and\n"
     .string " stops talking)$"
 `
+
+script MauvilleCity_RealEstatePropertyDoor {
+	setvar(VAR_TEMP_D, PROPERTY_MAUVILLE)
+	goto(RyuScript_HouseDoorLocks)
+}
+
+script MauvilleCity_RealEstatePropertySign {
+	setvar(VAR_TEMP_D, PROPERTY_MAUVILLE)
+	goto(RyuRealEstateHouseSign)
+}

@@ -1,0 +1,8 @@
+mapscripts FallarborTown_Home_MapScripts {}
+
+script FallarborHouse_ExitHome {
+    lockall
+    clearflag(FLAG_RYU_ENTERING_RENTED_HOME)
+    warpsilent(MAP_FALLARBOR_TOWN, 255, 15, 18)
+    waitstate
+}

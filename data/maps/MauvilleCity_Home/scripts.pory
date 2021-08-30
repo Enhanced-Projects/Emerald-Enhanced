@@ -1,0 +1,8 @@
+mapscripts MauvilleCity_Home_MapScripts {}
+
+script MauvilleHouse_ExitHome {
+    lockall
+    clearflag(FLAG_RYU_ENTERING_RENTED_HOME)
+    warpsilent(MAP_MAUVILLE_TOWN, 255, 11, 24)
+    waitstate
+}

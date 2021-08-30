@@ -1,0 +1,8 @@
+mapscripts LilycoveCity_Home_MapScripts {}
+
+script LilycoveHouse_ExitHome {
+    lockall
+    clearflag(FLAG_RYU_ENTERING_RENTED_HOME)
+    warpsilent(MAP_LILYCOVE_TOWN, 255, 61, 36)
+    waitstate
+}

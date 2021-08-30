@@ -238,3 +238,13 @@ SootopolisCity_Text_DazzledByMentor: @ 81E7CBC
 	.string "dazzled by my mentor's breathtakingly\l"
 	.string "elegant battle style.$"
 `
+
+script SootopolisCity_RealEstatePropertyDoor {
+	setvar(VAR_TEMP_D, PROPERTY_SOOTOPOLIS)
+	goto(RyuScript_HouseDoorLocks)
+}
+
+script SootopolisCity_RealEstatePropertySign {
+	setvar(VAR_TEMP_D, PROPERTY_SOOTOPOLIS)
+	goto(RyuRealEstateHouseSign)
+}

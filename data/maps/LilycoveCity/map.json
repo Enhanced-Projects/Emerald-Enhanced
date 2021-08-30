@@ -631,7 +631,15 @@
       "y": 35,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "RealEstate_EventScript_ForSaleSign"
+      "script": "LilycoveCity_RealEstatePropertySign"
+    },
+    {
+      "type": "sign",
+      "x": 61,
+      "y": 35,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LilycoveCity_RealEstatePropertyDoor"
     }
   ]
 }

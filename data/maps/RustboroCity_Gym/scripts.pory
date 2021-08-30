@@ -367,26 +367,22 @@ RG_PreBattleText:
 
 	
 RG_PartnerEnter:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_right
-	walk_right
-	walk_up
 	walk_up
 	walk_in_place_up
 	step_end
 
 RG_PartnerExit:
 	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
 	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 RustboroCity_Gym_EventScript_RoxanneDefeated:: @ 8212F66
