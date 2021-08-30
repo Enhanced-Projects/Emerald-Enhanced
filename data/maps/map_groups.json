@@ -134,7 +134,6 @@
     "RustboroCity_DevonCorp_1F",
     "RustboroCity_DevonCorp_2F",
     "RustboroCity_DevonCorp_3F",
-    "RustboroCity_PidgeysCoop",
     "RustboroCity_PokemonSchool",
     "RustboroCity_CuttersHouse",
     "RustburoCity_DevonCorp1fStoryMap",
@@ -147,21 +146,22 @@
     "RustboroCity_House1",
     "RustboroCity_House2",
     "RustboroCity_House3",
-    "RustboroCity_Home",
     "RustboroCity_Gym",
     "RustboroCity_Mart",
     "RustboroCity_PokemonCenter_1F",
-    "RustboroCity_PokemonCenter_2F"
+    "RustboroCity_PokemonCenter_2F",
+    "RustboroCity_PidgeysCoop",
+    "RustboroCity_Home"
   ],
   "gMapGroup5": [
     "DewfordTown_Hall",
     "DewfordTown_House1",
     "DewfordTown_House2",
     "DewfordTown_House3",
-    "DewfordTown_Home",
     "DewfordTown_Gym",
     "DewfordTown_PokemonCenter_1F",
-    "DewfordTown_PokemonCenter_2F"
+    "DewfordTown_PokemonCenter_2F",
+    "DewfordTown_Home"
   ],
   "gMapGroup6": [
     "SlateportCity_SternsShipyard_1F",
@@ -173,13 +173,13 @@
     "SlateportCity_Harbor",
     "SlateportCity_LanasHouse",
     "SlateportCity_House",
-    "SlateportCity_Home",
     "SlateportCity_BattleTentLobby",
     "SlateportCity_BattleTentCorridor",
     "SlateportCity_BattleTentBattleRoom",
     "SlateportCity_Mart",
     "SlateportCity_PokemonCenter_1F",
-    "SlateportCity_PokemonCenter_2F"
+    "SlateportCity_PokemonCenter_2F",
+    "SlateportCity_Home"
   ],
   "gMapGroup7": [
     "MauvilleCity_BikeShop",
@@ -188,34 +188,27 @@
     "MauvilleCity_FrontierBank",
     "MauvilleCity_House1",
     "MauvilleCity_House2",
-    "MauvilleCity_Home",
     "MauvilleCity_Gym",
     "MauvilleCity_Mart",
     "MauvilleCity_PokemonCenter_1F",
-    "MauvilleCity_PokemonCenter_2F"
+    "MauvilleCity_PokemonCenter_2F",
+    "MauvilleCity_Home"
   ],
   "gMapGroup8": [
     "VerdanturfTown_WandasHouse",
     "VerdanturfTown_FriendshipRatersHouse",
     "VerdanturfTown_House",
-    "VerdanturfTown_Home",
     "VerdanturfTown_BattleTentLobby",
     "VerdanturfTown_BattleTentCorridor",
     "VerdanturfTown_BattleTentBattleRoom",
     "VerdanturfTown_Mart",
     "VerdanturfTown_PokemonCenter_1F",
-    "VerdanturfTown_PokemonCenter_2F"
+    "VerdanturfTown_PokemonCenter_2F",
+    "VerdanturfTown_Home"
   ],
   "gMapGroup9": [
     "FallarborTown_CozmosHouse",
     "FallarborTown_MoveRelearnersHouse",
-    "FallarborTown_BattleTentLobby",
-    "FallarborTown_BattleTentCorridor",
-    "FallarborTown_BattleTentBattleRoom",
-    "FallarborTown_Home",
-    "FallarborTown_Mart",
-    "FallarborTown_PokemonCenter_1F",
-    "FallarborTown_PokemonCenter_2F",
     "FallarborTown_CaveTown",
     "FallarborTown_VolcanionCave",
     "FallarborTown_Lab",
@@ -223,7 +216,14 @@
     "FallarborTown_ShardRefiner",
     "FallarborTown_FossilMani",
     "FallarborTown_MiningMasterHouse",
-    "FallarborTown_CaveMart"
+    "FallarborTown_CaveMart",
+    "FallarborTown_BattleTentLobby",
+    "FallarborTown_BattleTentCorridor",
+    "FallarborTown_BattleTentBattleRoom",
+    "FallarborTown_Mart",
+    "FallarborTown_PokemonCenter_1F",
+    "FallarborTown_PokemonCenter_2F",
+    "FallarborTown_Home"
   ],
   "gMapGroup10": [
     "LavaridgeTown_HerbShop",
@@ -263,7 +263,6 @@
     "LilycoveCity_House2",
     "LilycoveCity_House3",
     "LilycoveCity_House4",
-    "LilycoveCity_Home",
     "LilycoveCity_DepartmentStore_1F",
     "LilycoveCity_DepartmentStore_2F",
     "LilycoveCity_DepartmentStore_3F",
@@ -273,7 +272,8 @@
     "LilycoveCity_DepartmentStoreElevator",
     "LilycoveCity_UnusedMart",
     "LilycoveCity_PokemonCenter_1F",
-    "LilycoveCity_PokemonCenter_2F"
+    "LilycoveCity_PokemonCenter_2F",
+    "LilycoveCity_Home"
   ],
   "gMapGroup13": [
     "MossdeepCity_StevensHouse",
@@ -285,12 +285,12 @@
     "MossdeepCity_House2",
     "MossdeepCity_House3",
     "MossdeepCity_House4",
-    "MossdeepCity_Home",
     "MossdeepCity_Gym",
     "MossdeepCity_Mart",
     "MossdeepCity_PokemonCenter_1F",
     "MossdeepCity_PokemonCenter_2F",
-    "StoryMap_KyogreChase"
+    "StoryMap_KyogreChase",
+    "MossdeepCity_Home"
   ],
   "gMapGroup14": [
     "SootopolisCity_MagmaEvent",
@@ -304,12 +304,12 @@
     "SootopolisCity_House5",
     "SootopolisCity_House6",
     "SootopolisCity_House7",
-    "SootopolisCity_Home",
     "SootopolisCity_Gym_1F",
     "SootopolisCity_Gym_B1F",
     "SootopolisCity_Mart",
     "SootopolisCity_PokemonCenter_1F",
-    "SootopolisCity_PokemonCenter_2F"
+    "SootopolisCity_PokemonCenter_2F",
+    "SootopolisCity_Home"
   ],
   "gMapGroup15": [
     "PacifidlogTown_House1",
@@ -661,7 +661,6 @@
     "SnowyShore_House1",
     "SnowyShore_House2",
     "SnowyShore_House3",
-    "SnowyShore_Home",
     "SnowyShore_Mart",
     "SnowyShore_MrFrigusHouse",
     "CraggyCoastUnderwater",
@@ -682,7 +681,8 @@
     "MtFreeze_2F",
     "MtFreeze_3F",
     "SnowyShore_DarkWorld",
-    "SnowyShore_DarkWorld_PriestessHouse"
+    "SnowyShore_DarkWorld_PriestessHouse",
+    "SnowyShore_Home"
   ],
   "gMapGroup28": [
     "MirageCave",
@@ -724,8 +724,8 @@
   "gMapGroup32": [
     "Route119_WeatherInstitute_1F",
     "Route119_WeatherInstitute_2F",
-    "Route119_LorwynsHouse",
     "Route119_House",
+    "Route119_LorwynsHouse",
     "Route119_Home"
   ],
   "gMapGroup33": [

@@ -2,6 +2,6 @@ mapscripts MossdeepCity_Home_MapScripts {}
 
 script MossdeepHouse_ExitHome {
     lock
-    warpsilent(MAP_MOSSDEEP_CITY, 255, 28, 10)
+    warpsilent(MAP_MOSSDEEP_CITY, 255, 36, 25)
     waitstate
 }

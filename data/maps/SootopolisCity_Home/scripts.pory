@@ -1,1 +1,7 @@
 mapscripts SootopolisCity_Home_MapScripts {}
+
+script SootopolisCity_ExitHome {
+    lock
+    warpsilent(MAP_SOOTOPOLIS_CITY, 255, 28, 5)
+    waitstate
+}

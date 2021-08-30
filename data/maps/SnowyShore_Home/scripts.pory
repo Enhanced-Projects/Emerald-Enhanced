@@ -2,6 +2,6 @@ mapscripts SnowyShore_Home_MapScripts {}
 
 script SnowyShoreHouse_ExitHome {
     lock
-    warpsilent(MAP_SNOWY_SHORE, 255, 24, 12)
+    warpsilent(MAP_SNOWY_SHORE, 255, 23, 7)
     waitstate
 }

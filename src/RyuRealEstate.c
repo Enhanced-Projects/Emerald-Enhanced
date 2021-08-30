@@ -51,18 +51,18 @@ void RyuResetRealEstateData(void)
 //PROPERTY RELATED
 
 const u16 gRyuPropertyData[NUM_PROPERTIES][7] = { //property id, property value, property rent, map group(interior), map num(interior), warp num(interior), x, y
-    [PROPERTY_DEWFORD   ] = {31000, 1550, 0, 0, 0, 0, 0},
-    [PROPERTY_FALLARBOR ] = {19000,  950, 0, 0, 0, 0, 0},
-    [PROPERTY_LILYCOVE  ] = {38000, 1900, 0, 0, 0, 0, 0},
-    [PROPERTY_MAUVILLE  ] = {42000, 2100, 0, 0, 0, 0, 0},
-    [PROPERTY_OLDALE    ] = {18000,  900, 2, 2, 0, 3, 8},
-    [PROPERTY_ROUTE119  ] = {22000, 1100, 0, 0, 0, 0, 0},
-    [PROPERTY_RUSTBURO  ] = {20000, 1000, 0, 0, 0, 0, 0},
-    [PROPERTY_SLATEPORT ] = {34000, 1700, 0, 0, 0, 0, 0},
-    [PROPERTY_SNOWYSHORE] = {32000, 1600, 0, 0, 0, 0, 0},
-    [PROPERTY_SOOTOPOLIS] = {33000, 1650, 0, 0, 0, 0, 0},
-    [PROPERTY_VERDANTURF] = {24000, 1200, 0, 0, 0, 0, 0},
-    [PROPERTY_MOSSDEEP  ] = {30000, 1500, 0, 0, 0, 0, 0},
+    [PROPERTY_DEWFORD   ] = {31000, 1550, 5, 7, 255, 3, 8},
+    [PROPERTY_FALLARBOR ] = {19000,  950, 9, 16, 255, 3, 8},
+    [PROPERTY_LILYCOVE  ] = {38000, 1900, 12, 26, 255, 3, 8},
+    [PROPERTY_MAUVILLE  ] = {42000, 2100, 7, 10, 255, 3, 8},
+    [PROPERTY_OLDALE    ] = {18000,  900, 2, 2, 255, 3, 8},
+    [PROPERTY_ROUTE119  ] = {22000, 1100, 32, 4, 255, 3, 5},
+    [PROPERTY_RUSTBURO  ] = {20000, 1000, 4, 20, 255, 4, 8},
+    [PROPERTY_SLATEPORT ] = {34000, 1700, 6, 15, 255, 7, 8},
+    [PROPERTY_SNOWYSHORE] = {32000, 1600, 27, 25, 155, 2, 7},
+    [PROPERTY_SOOTOPOLIS] = {33000, 1650, 14, 16, 255, 3, 6},
+    [PROPERTY_VERDANTURF] = {24000, 1200, 8, 9, 255, 5, 8},
+    [PROPERTY_MOSSDEEP  ] = {30000, 1500, 13, 14, 255, 3, 8},
 };
 
 const u8 gRyuPropertyNames[NUM_PROPERTIES][22] = {
