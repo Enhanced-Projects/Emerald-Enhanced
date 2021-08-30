@@ -67,7 +67,7 @@
       "y": 2,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Route119_WeatherInstitute_1F_EventScript_Bed"
+      "script": "Common_EventScript_Bed"
     },
     {
       "type": "sign",
@@ -75,7 +75,7 @@
       "y": 2,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Route119_WeatherInstitute_1F_EventScript_Bed"
+      "script": "Common_EventScript_Bed"
     },
     {
       "type": "sign",
@@ -83,7 +83,7 @@
       "y": 3,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Route119_WeatherInstitute_1F_EventScript_Bed"
+      "script": "Common_EventScript_Bed"
     },
     {
       "type": "sign",
@@ -91,7 +91,7 @@
       "y": 3,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Route119_WeatherInstitute_1F_EventScript_Bed"
+      "script": "Common_EventScript_Bed"
     }
   ]
 }

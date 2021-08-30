@@ -177,7 +177,15 @@
       "y": 7,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "RealEstate_EventScript_ForSaleSign"
+      "script": "DewfordTown_RealEstatePropertySign"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 6,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DewfordTown_RealEstatePropertyDoor"
     }
   ]
 }

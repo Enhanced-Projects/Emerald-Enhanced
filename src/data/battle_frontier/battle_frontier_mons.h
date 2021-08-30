@@ -3751,7 +3751,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_ADAMANT,
         .ivs = 31,
-        .ability = 1
+        .ability = 2
     },
     [FRONTIER_MON_HONCHKROW_1] = { // Honchkrow-SuperLuck
         .species = SPECIES_HONCHKROW,
@@ -4988,7 +4988,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_SCIZOR_2] = { // Scizor-Band
         .species = SPECIES_SCIZOR,
-        .moves = {MOVE_BULLET_PUNCH, MOVE_BUG_BITE, MOVE_KNOCK_OFF, MOVE_SUPERPOWER},
+        .moves = {MOVE_BULLET_PUNCH, MOVE_LUNGE, MOVE_KNOCK_OFF, MOVE_SUPERPOWER},
         .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,
@@ -5560,7 +5560,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
         .ivs = 31,
-        .ability = 1
+        .ability = 2
     },
     [FRONTIER_MON_HONCHKROW_2] = { // Honchkrow-Scarf
         .species = SPECIES_HONCHKROW,
@@ -8813,7 +8813,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_SCIZOR_EGGTACTICAL] = {
         .species = SPECIES_SCIZOR,
-        .moves = {MOVE_BULLET_PUNCH, MOVE_BUG_BITE, MOVE_ROOST, MOVE_SWORDS_DANCE},
+        .moves = {MOVE_BULLET_PUNCH, MOVE_LUNGE, MOVE_ROOST, MOVE_SWORDS_DANCE},
         .heldItem = ITEM_SCIZORITE,
         .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_ADAMANT,

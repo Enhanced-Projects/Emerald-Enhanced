@@ -1,0 +1,7 @@
+mapscripts SlateportCity_Home_MapScripts {}
+
+script SlateportHouse_ExitHome {
+    lock
+    warpsilent(MAP_SLATEPORT_CITY, 255, 11, 13)
+    waitstate
+}

@@ -1,0 +1,7 @@
+mapscripts Route119_Home_MapScripts {}
+
+script Route119_ExitHome {
+    lock
+    warpsilent(MAP_ROUTE119, 255, 19, 4)
+    waitstate
+}

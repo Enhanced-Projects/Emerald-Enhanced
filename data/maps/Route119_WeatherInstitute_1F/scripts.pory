@@ -91,7 +91,7 @@ Route119_WeatherInstitute_1F_EventScript_InstituteWorker2:: @ 826FB0F
 	msgbox Route119_WeatherInstitute_1F_Text_WhatWereAquasUpTo, MSGBOX_NPC
 	end
 
-Route119_WeatherInstitute_1F_EventScript_Bed:: @ 826FB18
+Common_EventScript_Bed:: @ 826FB18
 	lockall
 	goto_if_set FLAG_RYU_HARDCORE_MODE, ryu_end
 	goto_if_set FLAG_RYU_NUZLOCKEMODE, ryu_end

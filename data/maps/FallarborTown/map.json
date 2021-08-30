@@ -174,7 +174,15 @@
       "y": 18,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "RealEstate_EventScript_ForSaleSign"
+      "script": "FallarborTown_RealEstatePropertySign"
+    },
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 17,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "FallarborTown_RealEstatePropertyDoor"
     }
   ]
 }

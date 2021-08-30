@@ -126,3 +126,13 @@ VerdanturfTown_Text_RusturfTunnelSign: @ 81EBA59
 	.string "canceled.”$"
 
 `
+
+script VerdanturfTown_RealEstatePropertyDoor {
+	setvar(VAR_TEMP_D, PROPERTY_VERDANTURF)
+	goto(RyuScript_HouseDoorLocks)
+}
+
+script VerdanturfTown_RealEstatePropertySign {
+	setvar(VAR_TEMP_D, PROPERTY_VERDANTURF)
+	goto(RyuRealEstateHouseSign)
+}

@@ -218,7 +218,15 @@
       "y": 4,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "RealEstate_EventScript_ForSaleSign"
+      "script": "SootopolisCity_RealEstatePropertySign"
+    },
+    {
+      "type": "sign",
+      "x": 28,
+      "y": 4,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SootopolisCity_RealEstatePropertyDoor"
     }
   ]
 }

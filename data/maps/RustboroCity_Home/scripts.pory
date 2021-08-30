@@ -1,0 +1,7 @@
+mapscripts RustboroCity_Home_MapScripts {}
+
+script RustboroHouse_ExitHome {
+    lock
+    warpsilent(MAP_RUSTBORO_CITY, 255, 32, 47)
+    waitstate
+}

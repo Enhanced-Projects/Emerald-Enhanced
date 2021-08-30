@@ -3439,7 +3439,7 @@ static const struct TrainerMonItemCustomMoves sParty_Glacia[] = {
 	.lvl = 89,
 	.species = SPECIES_MAMOSWINE,
 	.heldItem = ITEM_LIFE_ORB,
-	.ability = 1,
+	.ability = 2,
 	.moves = {MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_STONE_EDGE, MOVE_KNOCK_OFF},
 	},
 	{
@@ -4675,7 +4675,7 @@ static const struct TrainerMonItemCustomMoves sParty_Wallace[] = {
 	.species = SPECIES_SCIZOR,
 	.heldItem = ITEM_LEFTOVERS,
 	.ability = 1,
-	.moves = {MOVE_BULLET_PUNCH, MOVE_QUICK_ATTACK, MOVE_SWORDS_DANCE, MOVE_ROOST},
+	.moves = {MOVE_BULLET_PUNCH, MOVE_LUNGE, MOVE_SWORDS_DANCE, MOVE_ROOST},
 	},
 	{
 	.iv = 255,
@@ -14073,7 +14073,7 @@ static const struct TrainerMonItemCustomMoves sParty_GlaciaRematch[] = {
 	.lvl = 103,
 	.species = SPECIES_MAMOSWINE,
 	.heldItem = ITEM_LIFE_ORB,
-	.ability = 1,
+	.ability = 2,
 	.moves = {MOVE_EARTHQUAKE, MOVE_ICE_SHARD, MOVE_ICICLE_CRASH, MOVE_SUPERPOWER},
 	},
 	{

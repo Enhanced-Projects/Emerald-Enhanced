@@ -1,0 +1,8 @@
+mapscripts DewfordTown_Home_MapScripts {}
+
+script DewfordHouse_ExitHome {
+    lockall
+    clearflag(FLAG_RYU_ENTERING_RENTED_HOME)
+    warpsilent(MAP_DEWFORD_TOWN, 255, 11, 7)
+    waitstate
+}

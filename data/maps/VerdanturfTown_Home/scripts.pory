@@ -1,0 +1,7 @@
+mapscripts VerdanturfTown_Home_MapScripts {}
+
+script VerdanturfHouse_ExitHome {
+    lock
+    warpsilent(MAP_VERDANTURF_TOWN,255, 5, 27)
+    waitstate
+}

@@ -1280,3 +1280,13 @@ DC_WithSomeGuy:
 	.string "long ago.\p"
 	.string " {COLOR LIGHT_BLUE}{SHADOW BLUE}(Nah, it couldn't be...)$"
 `
+
+script RustboroCity_RealEstatePropertyDoor {
+	setvar(VAR_TEMP_D, PROPERTY_RUSTBURO)
+	goto(RyuScript_HouseDoorLocks)
+}
+
+script RustboroCity_RealEstatePropertySign {
+	setvar(VAR_TEMP_D, PROPERTY_RUSTBURO)
+	goto(RyuRealEstateHouseSign)
+}
