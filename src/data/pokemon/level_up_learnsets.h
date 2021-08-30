@@ -11021,7 +11021,6 @@ static const struct LevelUpMove sWailordLevelUpLearnset[] = {
 
 static const struct LevelUpMove sSkittyLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_FAKE_OUT),
-    LEVEL_UP_MOVE( 1, MOVE_GROWL),
     LEVEL_UP_MOVE( 1, MOVE_TAIL_WHIP),
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
     LEVEL_UP_MOVE( 1, MOVE_CLING),
@@ -12924,7 +12923,7 @@ static const struct LevelUpMove sWynautLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sDuskullLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_LEER),
+    LEVEL_UP_MOVE( 1, MOVE_SMOG),
     LEVEL_UP_MOVE( 1, MOVE_NIGHT_SHADE),
     LEVEL_UP_MOVE( 6, MOVE_DISABLE),
     LEVEL_UP_MOVE( 9, MOVE_ASTONISH),
@@ -20909,14 +20908,14 @@ static const struct LevelUpMove sBasculinLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sSandileLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_LEER),
+    LEVEL_UP_MOVE( 1, MOVE_MUD_SLAP),
     LEVEL_UP_MOVE( 1, MOVE_RAGE),
     LEVEL_UP_MOVE( 4, MOVE_BITE),
     LEVEL_UP_MOVE( 7, MOVE_SAND_ATTACK),
     LEVEL_UP_MOVE(10, MOVE_TORMENT),
     LEVEL_UP_MOVE(13, MOVE_SAND_TOMB),
     LEVEL_UP_MOVE(16, MOVE_ASSURANCE),
-    LEVEL_UP_MOVE(19, MOVE_MUD_SLAP),
+    LEVEL_UP_MOVE(19, MOVE_MAGNITUDE),
     LEVEL_UP_MOVE(22, MOVE_EMBARGO),
     LEVEL_UP_MOVE(25, MOVE_SWAGGER),
     LEVEL_UP_MOVE(28, MOVE_CRUNCH),
@@ -20939,7 +20938,7 @@ static const struct LevelUpMove sKrokorokLevelUpLearnset[] = {
     LEVEL_UP_MOVE(10, MOVE_TORMENT),
     LEVEL_UP_MOVE(13, MOVE_SAND_TOMB),
     LEVEL_UP_MOVE(16, MOVE_ASSURANCE),
-    LEVEL_UP_MOVE(19, MOVE_MUD_SLAP),
+    LEVEL_UP_MOVE(19, MOVE_MAGNITUDE),
     LEVEL_UP_MOVE(22, MOVE_EMBARGO),
     LEVEL_UP_MOVE(25, MOVE_SWAGGER),
     LEVEL_UP_MOVE(28, MOVE_CRUNCH),

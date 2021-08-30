@@ -4335,7 +4335,7 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_ARIADOS] =
     {
-        .baseHP        = 70,
+        .baseHP        = 95,
         .baseAttack    = 110,
         .baseDefense   = 60,
         .baseSpeed     = 40,
@@ -7731,12 +7731,12 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_SKITTY] =
     {
-        .baseHP        = 58,
+        .baseHP        = 65,
         .baseAttack    = 10,
-        .baseDefense   = 45,
-        .baseSpeed     = 75,
-        .baseSpAttack  = 72,
-        .baseSpDefense = 41,
+        .baseDefense   = 50,
+        .baseSpeed     = 80,
+        .baseSpAttack  = 85,
+        .baseSpDefense = 50,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_FAIRY,
         .catchRate = 255,
@@ -7756,11 +7756,11 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_DELCATTY] =
     {
-        .baseHP        = 82,
+        .baseHP        = 90,
         .baseAttack    = 33,
         .baseDefense   = 70,
-        .baseSpeed     = 100,
-        .baseSpAttack  = 109,
+        .baseSpeed     = 94,
+        .baseSpAttack  = 112,
         .baseSpDefense = 62,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_FAIRY,
@@ -9163,8 +9163,8 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_DUSKULL] =
     {
-        .baseHP        = 20,
-        .baseAttack    = 40,
+        .baseHP        = 30,
+        .baseAttack    = 50,
         .baseDefense   = 90,
         .baseSpeed     = 25,
         .baseSpAttack  = 30,
@@ -14457,10 +14457,10 @@ const struct BaseStats gBaseStats[] =
     {
         .baseHP        = 50,
         .baseAttack    = 72,
-        .baseDefense   = 35,
+        .baseDefense   = 44,
         .baseSpeed     = 65,
         .baseSpAttack  = 35,
-        .baseSpDefense = 35,
+        .baseSpDefense = 44,
         .type1 = TYPE_GROUND,
         .type2 = TYPE_DARK,
         .catchRate = 180,
@@ -15768,10 +15768,10 @@ const struct BaseStats gBaseStats[] =
     {
         .baseHP        = 35,
         .baseAttack    = 55,
-        .baseDefense   = 45,
+        .baseDefense   = 50,
         .baseSpeed     = 60,
-        .baseSpAttack  = 45,
-        .baseSpDefense = 50,
+        .baseSpAttack  = 60,
+        .baseSpDefense = 55,
         .type1 = TYPE_ELECTRIC,
         .type2 = TYPE_WATER,
         .catchRate = 190,
