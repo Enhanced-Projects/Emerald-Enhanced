@@ -781,7 +781,8 @@ static const u8 sText_DebugUtilityItem13[] = _("Alchemy Info");
 static const u8 sText_DebugUtilityItem14[] = _("Toggle Level Cap");
 static const u8 sText_DebugUtilityItem15[] = _("Enable Real Estate");
 static const u8 sText_DebugUtilityItem16[] = _("Spawn a Follower");
-static const u8 sText_DebugUtilityItem17[] = _("Exit");
+static const u8 sText_DebugUtilityItem17[] = _("Test DNS");
+static const u8 sText_DebugUtilityItem18[] = _("Exit");
 
 // strings to display as items.
 static const u8 sText_BotanyConsumableItem1[] = _("Muscle Powder");
@@ -915,6 +916,7 @@ static const struct ListMenuItem sDebugUtilitySet[] =
     {sText_DebugUtilityItem15, 15},
     {sText_DebugUtilityItem16, 16},
     {sText_DebugUtilityItem17, 17},
+    {sText_DebugUtilityItem18, 18},
 };
 
 static const struct ListMenuItem sAlchemyMenu[] =

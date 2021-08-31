@@ -2150,3 +2150,11 @@ void RyuCheckDataSize(void)//used to check the size of whatever struct i want to
     data *= 999;
     ConvertIntToDecimalStringN(gStringVar1, data, STR_CONV_MODE_LEFT_ALIGN, 10);
 }
+
+void RyuDoSlidingTimeScaleDNSFade(void)
+{
+    u16 hours = (VarGet(VAR_TEMP_1));
+    u16 minutes = (VarGet(VAR_TEMP_2));
+
+    RtcInitLocalTimeOffset(hours, minutes);
+}

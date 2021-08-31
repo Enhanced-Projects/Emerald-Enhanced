@@ -75,7 +75,8 @@ RyuDebug_UtilitiesMenu:
 	case 14, RDB_ToggleLevelCap
 	case 15, RDB_EnableRealEstate
 	case 16, RDB_SpawnFollowerMultiMenu
-	case 17, RyuDebug_menu_nodevcheck
+	case 17, RyuDebug_InitTimeSlide
+	case 18, RyuDebug_menu_nodevcheck
 	goto RyuDebug_menu_nodevcheck
 
 RDB_SpawnFollowerMultiMenu::
@@ -365,7 +366,6 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	addmoney 1000000
 	release
 	end
 
