@@ -17,6 +17,7 @@ SVM_ChooseSnack::
 	case 2, SVM_MoomooMilk
 	case 3, SVM_OldGateau
 	case 4, SVM_BigMalasada
+	case 5, SVM_BlackTea
     hidemoneybox
 	goto SVM_ExitVendingMachine
 	end
@@ -53,6 +54,12 @@ SVM_BigMalasada::
     call SVMCommon_CheckSpaceAndMoney
     setvar VAR_TEMP_C, ITEM_BIG_MALASADA
     bufferitemname 0, ITEM_BIG_MALASADA
+    goto SVMCommon_GiveItem
+
+SVM_BlackTea::
+    call SVMCommon_CheckSpaceAndMoney
+    setvar VAR_TEMP_C, ITEM_TEA
+    bufferitemname 0, ITEM_TEA
     goto SVMCommon_GiveItem
 
 SVMCommon_CheckSpaceAndMoney::
