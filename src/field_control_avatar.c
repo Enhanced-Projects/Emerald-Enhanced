@@ -258,6 +258,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (FlagGet(FLAG_RYU_NOTIFY_RENT) == TRUE)
     {
+        FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
         ConvertIntToDecimalStringN(gStringVar1, GetGameStat(GAME_STAT_RENT_COLLECTED), STR_CONV_MODE_LEFT_ALIGN, 6);
         FlagClear(FLAG_RYU_NOTIFY_RENT);
         ScriptContext1_SetupScript(RyuScript_NotifyRent);
@@ -265,6 +266,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (FlagGet(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE) == TRUE)
     {
+        FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
         RyuBufferPropertyDamageData();
         FlagClear(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE);
         ScriptContext1_SetupScript(RyuScript_NotifyPropertyDamage);

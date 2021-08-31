@@ -44,19 +44,19 @@ extern const u16 gRyuPropertyData[NUM_PROPERTIES][7];
 #define PROPERTY_MOSSDEEP    11
 //there are an additional 20 properties
 
-#define NUM_DAMAGE_TYPES 12//out of 14 max
+#define NUM_DAMAGE_TYPES 11//out of 14 max
 
 #define DAMAGE_BROKEN_WINDOW         0
 #define DAMAGE_DOORFRAME_BROKEN      1
-#define DAMAGE_MINOR_ELECTRICAL      3
-#define DAMAGE_WATER_MINOR           4
-#define DAMAGE_LIGHTBULB_REPLACE     5
-#define DAMAGE_MINOR_MECHANICAL      6
-#define DAMAGE_FLOOR                 7
-#define DAMAGE_APPLIANCE_REPLACE     8
-#define DAMAGE_ELECTRICAL_MODERATE   9
-#define DAMAGE_WATER_MODERATE        10
-#define DAMAGE_MAJOR                 11
+#define DAMAGE_MINOR_ELECTRICAL      2
+#define DAMAGE_WATER_MINOR           3
+#define DAMAGE_LIGHTBULB_REPLACE     4
+#define DAMAGE_MINOR_MECHANICAL      5
+#define DAMAGE_FLOOR                 6
+#define DAMAGE_APPLIANCE_REPLACE     7
+#define DAMAGE_ELECTRICAL_MODERATE   8
+#define DAMAGE_WATER_MODERATE        9
+#define DAMAGE_MAJOR                 10
 
 
 #endif //Real Estate header

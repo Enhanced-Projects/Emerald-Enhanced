@@ -252,10 +252,10 @@ script RT_Home{
 //property was damaged
 
 script RyuScript_NotifyPropertyDamage {
-    copyvar(VAR_TEMP_D, VAR_RYU_DAMAGED_HOUSE_ID)
     callnative(RyuBufferPropertyDamageData)
     msgbox(RyuText_PropertyDamaged)
     closemessage
+    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
     release
     end
 }
@@ -263,6 +263,7 @@ script RyuScript_NotifyPropertyDamage {
 script RyuScript_NotifyRent {
     msgbox("You have collected rent in the\namount of ¥{STR_VAR_1} from\lyour tenants.")
     closemessage
+    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
     release
     end
 }

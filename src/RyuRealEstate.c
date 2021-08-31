@@ -112,14 +112,14 @@ void TryDamageproperties(void)
 {
     u8 val = (Random() % 99);
     u8 id = 0;
-    u8 damageType = (Random() % sizeof(gRyuPropertyDamageTable));
+    u8 damageType = (Random() % NUM_DAMAGE_TYPES);
     u8 damageDays = gRyuPropertyDamageTable[damageType][0];
     u32 maxPropertyDamageChance = (70 + VarGet(VAR_RYU_NUM_OWNED_PROPERTIES));
 
     if (val < 60)
         return;
 
-    if ((val > 59) && (val < 70))//damage a random property. (10% plus number of owned properties.)
+    if ((val > 59) && (val <= maxPropertyDamageChance))//damage a random property. (10% plus number of owned properties.)
         {
             do {//only damage a property that is owned by the player.
                 id = (Random() % NUM_PROPERTIES);
@@ -130,9 +130,10 @@ void TryDamageproperties(void)
             VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, gRyuPropertyDamageTable[damageType][1]);
             FlagSet(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE);
             VarSet(VAR_TEMP_D, id);
+            FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
         }
-
-    if (val > 70) {}//should i do something else here?
+    else
+        return;
 }
 
 void RyuBufferRealEstateDetails(void)
@@ -342,8 +343,9 @@ void DecrementPropertyRepairTime(void)
 
 void RyuBufferPropertyDamageData(void)
 {
-    u8 id = (VarGet(VAR_TEMP_D));
+    u8 id = (VarGet(VAR_RYU_DAMAGED_HOUSE_ID));
     u8 damageType = VarGet(VAR_RYU_PROPERTY_DAMAGE_TYPE);
+    mgba_printf(LOGINFO, "Property num %d, damage type %d", id, damageType);
 
     StringCopy(gStringVar2, gRyuPropertyNames[id]);// buffer property name
     StringCopy(gStringVar1, (gRyuDamageTypeNamesTable[damageType])); //buffer damage type string
