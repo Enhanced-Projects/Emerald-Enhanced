@@ -50,12 +50,18 @@ EverGrandeCity_DrakesRoom_EventScript_Drake:: @ 82286F3
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltDrake
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerDrake
 	trainerbattle_no_intro TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
 
 EGC_AltDrake::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerDrakeRematch
 	trainerbattle_no_intro TRAINER_DRAKE_REMATCH, EverGrandeCity_DrakesRoom_Text_Defeat
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_STEVEN
 	goto Ryu_DrakeMegaReward
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated

@@ -49,6 +49,9 @@ EverGrandeCity_PhoebesRoom_EventScript_Phoebe:: @ 82281CB
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltPhoebe
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerPhoebe
 	trainerbattle_no_intro TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 	end
 
@@ -97,6 +100,9 @@ EGC_PR_ChooseValidMons::
 EGC_AltPhoebe::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerPhoebeRematch
 	trainerbattle_no_intro TRAINER_PHOEBE_REMATCH, EverGrandeCity_PhoebesRoom_Text_Defeat
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto RyuPhoebeMegaReward
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 	end

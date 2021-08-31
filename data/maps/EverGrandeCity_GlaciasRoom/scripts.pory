@@ -49,12 +49,18 @@ EverGrandeCity_GlaciasRoom_EventScript_Glacia:: @ 8228469
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltGlacia
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerGlacia	
 	trainerbattle_no_intro TRAINER_GLACIA, EverGrandeCity_GlaciasRoom_Text_Defeat
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
 	end
 
 EGC_AltGlacia::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerGlaciaRematch
 	trainerbattle_no_intro TRAINER_GLACIA_REMATCH, EverGrandeCity_GlaciasRoom_Text_Defeat
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto RyuGlaciaMegaReward
 	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
 	end

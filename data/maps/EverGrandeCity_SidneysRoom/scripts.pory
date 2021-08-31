@@ -63,6 +63,9 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney:: @ 8227F64
 	goto_if_set FLAG_SYS_GAME_CLEAR, EGC_AltSidney
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidney
 	trainerbattle_no_intro TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 
@@ -118,6 +121,9 @@ EGC_FollowerSidneyRematch::
 EGC_AltSidney::
 	goto_if_set FLAG_RYU_HAS_FOLLOWER, EGC_FollowerSidneyRematch
 	trainerbattle_no_intro TRAINER_SIDNEY_REMATCH, EverGrandeCity_SidneysRoom_Text_Defeat
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_LOST
+	goto_if_eq Ryu_PlayerLostTheGame
 	goto Ryu_CheckForMega
 	end
 
