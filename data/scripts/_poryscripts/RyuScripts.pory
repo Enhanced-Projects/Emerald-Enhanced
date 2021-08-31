@@ -2351,7 +2351,7 @@ script(global) RyuDoTImeSlide {
 	buffernumberstring(0, VAR_TEMP_1)
 	buffernumberstring(1, VAR_TEMP_2)
 	//msgbox("{STR_VAR_1}:{STR_VAR_2}") //optionally show time at each interval
-	callnative(RyuDoSlidingTimeScaleDNSFade)
+	callnative(RyuForceUpdateTime)
 	goto(RyuDebug_LoopTimeSlide)
 }
 
