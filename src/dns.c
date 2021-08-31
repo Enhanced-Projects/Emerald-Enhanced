@@ -431,13 +431,13 @@ static u16 GetDNSFilter()
                 return gMidnightFilters[7];
 
         case TIME_DAWN:
-            return gDawnFilters[minutes >> 1];
+            return gDawnFilters[((hour - MIDNIGHT_END_HOUR) * 60 + minutes) >> 3];
 
         case TIME_DAY:
             return gDayFilter;
 
         case TIME_SUNSET: 
-            return gSunsetFilters[minutes >> 1];
+            return gSunsetFilters[((hour - DAY_END_HOUR) * 60 + minutes) >> 2];
 
         case TIME_NIGHTFALL:
             return gNightfallFilters[minutes >> 1];

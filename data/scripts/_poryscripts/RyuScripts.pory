@@ -2332,14 +2332,14 @@ text PlayersHouse_1F_Text_TheresAMovieOnTV {
 //There are 1440 minutes in a day.
 
 script(global) RyuDebug_InitTimeSlide {//ngl, this may be the lewdest script i have ever made.
-	setvar(VAR_TEMP_3, 360) //number of steps to loop in minutes.
-	setvar(VAR_TEMP_1, 5) //hour to start at
+	setvar(VAR_TEMP_3, 1440) //number of steps to loop in minutes.
+	setvar(VAR_TEMP_1, 12) //hour to start at
 	setvar(VAR_TEMP_2, 0) //minute to start at
 	goto(RyuDoTImeSlide)
 }
 
 script(global) RyuDoTImeSlide {
-	delay(5)//delay in frames (game runs at 60frames per second) between each step
+	delay(5)//delay in frames (game runs at 60frames per second) between each step. Not recommended to use this AND msgbox below.
 	addvar(VAR_TEMP_2, 1)//how much to advance the minute value per step
 	if (var(VAR_TEMP_2) == 60) {//if reached new hour, rollover
 		setvar(VAR_TEMP_2, 0)
@@ -2348,14 +2348,12 @@ script(global) RyuDoTImeSlide {
 			setvar(VAR_TEMP_1, 0)
 		}
 	}
-	buffernumberstring(0, VAR_TEMP_1)
-	buffernumberstring(1, VAR_TEMP_2)
-	//msgbox("{STR_VAR_1}:{STR_VAR_2}") //optionally show time at each interval
+	//buffernumberstring(0, VAR_TEMP_1)//       \
+	//buffernumberstring(1, VAR_TEMP_2)//        } Optionally show the time at each interval. Requires a button press each time.
+	//msgbox("{STR_VAR_1}:{STR_VAR_2}")//       /   Not recommended to use this AND delay above.
 	callnative(RyuForceUpdateTime)
 	goto(RyuDebug_LoopTimeSlide)
 }
-
-//NOTE: if you don't have the msgbox commented out, you will need to press a button each time you want to advance a stage.
 
 script(global) RyuDebug_LoopTimeSlide {
 		subvar(VAR_TEMP_3, 1)
