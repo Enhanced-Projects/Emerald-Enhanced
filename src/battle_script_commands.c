@@ -3840,7 +3840,7 @@ static void Cmd_getexp(void)
 
             calculatedExp = (RyuCalculateAlchemyExpModifier(calculatedExp));
 
-            RyuExpBatteryTemp = (((GetGameStat(GAME_STAT_EXP_DRIVE) + ((((gBattleMons[gBattlerFainted].level) * 5) * multiplier) / 1000))));
+            RyuExpBatteryTemp = ((calculatedExp * 5) / 100);
             RyuExpDriveInternalOperation(EXP_DRIVE_MODE_ADD, RyuExpBatteryTemp);
 
             if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
