@@ -2772,10 +2772,10 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_LANTURN_1] = { // Lanturn-AV
+    [FRONTIER_MON_LANTURN_1] = { // Lanturn-Specs
         .species = SPECIES_LANTURN,
         .moves = {MOVE_SCALD, MOVE_DISCHARGE, MOVE_DAZZLING_GLEAM, MOVE_SIGNAL_BEAM},
-        .heldItem = ITEM_ASSAULT_VEST,
+        .heldItem = ITEM_CHOICE_SPECS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
         .ivs = 31,
@@ -4608,14 +4608,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_LANTURN_2] = { // Lanturn-Specs
+    [FRONTIER_MON_LANTURN_2] = { // Lanturn-AV
         .species = SPECIES_LANTURN,
         .moves = {MOVE_SCALD, MOVE_DISCHARGE, MOVE_ICE_BEAM, MOVE_VOLT_SWITCH},
-        .heldItem = ITEM_CHOICE_SPECS,
+        .heldItem = ITEM_ASSAULT_VEST,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,
         .ivs = 31,
-        .ability = 0
+        .ability = 2
     },
     [FRONTIER_MON_BRELOOM_2] = { // Breloom-Technician
         .species = SPECIES_BRELOOM,
