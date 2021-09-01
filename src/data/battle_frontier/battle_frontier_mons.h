@@ -1260,14 +1260,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_BLISSEY_1] = { // Blissey-SereneGrace
+    [FRONTIER_MON_BLISSEY_1] = { // Blissey-BoltBeam
         .species = SPECIES_BLISSEY,
         .moves = {MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_CALM_MIND, MOVE_SOFT_BOILED},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_DEFENSE,
         .nature = NATURE_BOLD,
         .ivs = 31,
-        .ability = 1
+        .ability = 0
     },
     [FRONTIER_MON_SEAKING_1] = { // Seaking-RestTalk
         .species = SPECIES_SEAKING,
@@ -1332,14 +1332,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_GIRAFARIG_1] = { // Girafarig-CM
+    [FRONTIER_MON_GIRAFARIG_1] = { // Girafarig-Band
         .species = SPECIES_GIRAFARIG,
-        .moves = {MOVE_PSYCHIC, MOVE_CALM_MIND, MOVE_SUBSTITUTE, MOVE_BATON_PASS},
-        .heldItem = ITEM_SALAC_BERRY,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_HP,
-        .nature = NATURE_TIMID,
-        .ivs = 31,
-        .ability = 2
+        .moves = {MOVE_DOUBLE_EDGE, MOVE_PSYCHIC_FANGS, MOVE_JUMP_KICK, MOVE_U_TURN},
+        .heldItem = ITEM_CHOICE_BAND,
+        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
+        .nature = NATURE_JOLLY,
+        .ivs = 31
+        .ability = 1
     },
     [FRONTIER_MON_HITMONTOP_1] = { // Hitmontop-TechniTopMachPunch
         .species = SPECIES_HITMONTOP,
@@ -2142,14 +2142,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 1
     },
-    [FRONTIER_MON_BLISSEY_2] = { // Blissey-NaturalCure
+    [FRONTIER_MON_BLISSEY_2] = { // Blissey-SereneGrace
         .species = SPECIES_BLISSEY,
-        .moves = {MOVE_ICE_BEAM, MOVE_THUNDERBOLT, MOVE_CALM_MIND, MOVE_SOFT_BOILED},
+        .moves = {MOVE_TRI_ATTACK, MOVE_SHADOW_BALL, MOVE_CALM_MIND, MOVE_SOFT_BOILED},
         .heldItem = ITEM_LEFTOVERS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_DEFENSE,
         .nature = NATURE_BOLD,
         .ivs = 31,
-        .ability = 0
+        .ability = 1
     },
     [FRONTIER_MON_SEAKING_2] = { // Seaking-AV
         .species = SPECIES_SEAKING,
@@ -2214,14 +2214,14 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_GIRAFARIG_2] = { // Girafarig-Band
+    [FRONTIER_MON_GIRAFARIG_2] = { // Girafarig-NP
         .species = SPECIES_GIRAFARIG,
-        .moves = {MOVE_RETURN, MOVE_PSYCHIC_FANGS, MOVE_EARTHQUAKE, MOVE_SUCKER_PUNCH},
-        .heldItem = ITEM_CHOICE_BAND,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .moves = {MOVE_TRI_ATTACK, MOVE_EXTRASENSORY, MOVE_FOCUS_BLAST, MOVE_NASTY_PLOT},
+        .heldItem = ITEM_SITRUS_BERRY,
+        .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_SPEED,
+        .nature = NATURE_TIMID,
         .ivs = 31,
-        .ability = 2
+        .ability = 0
     },
     [FRONTIER_MON_HITMONTOP_2] = { // Hitmontop-TechniTopFakeOut
         .species = SPECIES_HITMONTOP,

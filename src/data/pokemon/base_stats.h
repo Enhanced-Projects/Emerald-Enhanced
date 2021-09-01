@@ -5220,11 +5220,11 @@ const struct BaseStats gBaseStats[] =
 
     [SPECIES_GIRAFARIG] =
     {
-        .baseHP        = 70,
-        .baseAttack    = 80,
+        .baseHP        = 95,
+        .baseAttack    = 110,
         .baseDefense   = 65,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 90,
+        .baseSpeed     = 105,
+        .baseSpAttack  = 120,
         .baseSpDefense = 65,
         .type1 = TYPE_NORMAL,
         .type2 = TYPE_PSYCHIC,
@@ -5237,7 +5237,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_INNER_FOCUS, ABILITY_EARLY_BIRD},
+        .abilities = {ABILITY_SERENE_GRACE, ABILITY_SCRAPPY},
         .abilityHidden = ABILITY_SAP_SIPPER,
         .noFlip = FALSE,
         .bodyColor = BODY_COLOR_YELLOW,
