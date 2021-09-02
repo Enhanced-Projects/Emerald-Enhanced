@@ -9,7 +9,7 @@ SlakothVendingMachine::
 	end
 
 SVM_ChooseSnack::
-	multichoice 16, 0, MULTI_SLAKOTH_VENDING_MACHINE, 0
+	multichoicegrid 0, 4, MULTI_SLAKOTH_VENDING_MACHINE, 2, 0
 	copyvar VAR_TEMP_1, VAR_RESULT
 	switch VAR_TEMP_1
 	case 0, SVM_SweetHeart
@@ -18,61 +18,70 @@ SVM_ChooseSnack::
 	case 3, SVM_OldGateau
 	case 4, SVM_BigMalasada
 	case 5, SVM_BlackTea
+	case 6, SVM_LavaCookie
     hidemoneybox
 	goto SVM_ExitVendingMachine
 	end
 
 SVM_SweetHeart::
     call SVMCommon_CheckSpaceAndMoney
-    setvar VAR_TEMP_D, 4000
+    removemoney 4000
     setvar VAR_TEMP_C, ITEM_SWEET_HEART
     bufferitemname 0, ITEM_SWEET_HEART
     goto SVMCommon_GiveItem
 
 SVM_BerryJuice::  @@I reduced the space this takes by quite a bit.
     call SVMCommon_CheckSpaceAndMoney
-    setvar VAR_TEMP_D, 1000
+    removemoney 1000
     setvar VAR_TEMP_C, ITEM_BERRY_JUICE
     bufferitemname 0, ITEM_BERRY_JUICE  @@I find it less buggy to just buffer the actual items than a variable containing them.
     goto SVMCommon_GiveItem
 
 SVM_MoomooMilk::
     call SVMCommon_CheckSpaceAndMoney
-    setvar VAR_TEMP_D, 750
+    removemoney 750
     setvar VAR_TEMP_C, ITEM_MOOMOO_MILK
     bufferitemname 0, ITEM_MOOMOO_MILK 
     goto SVMCommon_GiveItem
 
 SVM_OldGateau::
     call SVMCommon_CheckSpaceAndMoney
-    setvar VAR_TEMP_D, 4000
+    removemoney 4000
     setvar VAR_TEMP_C, ITEM_OLD_GATEAU
     bufferitemname 0, ITEM_OLD_GATEAU
     goto SVMCommon_GiveItem
 
 SVM_BigMalasada::
     call SVMCommon_CheckSpaceAndMoney
+    removemoney 2000
     setvar VAR_TEMP_C, ITEM_BIG_MALASADA
     bufferitemname 0, ITEM_BIG_MALASADA
     goto SVMCommon_GiveItem
 
 SVM_BlackTea::
     call SVMCommon_CheckSpaceAndMoney
+    removemoney 2000
     setvar VAR_TEMP_C, ITEM_TEA
     bufferitemname 0, ITEM_TEA
+    goto SVMCommon_GiveItem
+
+SVM_LavaCookie::
+    call SVMCommon_CheckSpaceAndMoney
+    removemoney 500
+    setvar VAR_TEMP_C, ITEM_LAVA_COOKIE
+    bufferitemname 0, ITEM_LAVA_COOKIE
     goto SVMCommon_GiveItem
 
 SVMCommon_CheckSpaceAndMoney::
     checkitemspace VAR_TEMP_C, 3
     compare VAR_RESULT, FALSE
     goto_if_eq SVMCommon_NotEnoughPackSpace
-    checkmoney 2000
+    checkmoney 4000
     compare VAR_RESULT, FALSE
     goto_if_eq SVMCommon_CantAfford
     return
 
 SVMCommon_GiveItem::
-    removemoney 2000
     additem VAR_TEMP_C, 1
     msgbox SVMCommon_SnackDroppedDown
     random 63
@@ -123,7 +132,7 @@ SVMCommon_SnackDroppedDown:
     .string "{STR_VAR_1} dropped down!$"
 
 SVM_ExitedMsg::
-    .string "{PLAYER} walked away from the machine.$"
+    .string "Finished with the vending machine.$"
 
 SVM_WhichSnackWouldYouLike:
 	.string "It's a Vending Machine.\n"
