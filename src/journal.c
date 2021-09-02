@@ -29,6 +29,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/items.h"
+#include "constants/battle_frontier.h"
 #include "RyuRealEstate.h"
 #include "pokedex.h"
 
@@ -51,6 +52,9 @@ static const u16 sJournalIconPalette[] = INCBIN_U16("graphics/journal/journal_ic
 static const u8 sFactionsIconTiles[] = INCBIN_U8("graphics/journal/factions_icon.4bpp");
 static const u16 sFactionsIconPalette[] = INCBIN_U16("graphics/journal/factions_icon.gbapal");
 
+static const u8 sGymFrontierIconTiles[] = INCBIN_U8("graphics/journal/frontier_gym_badge_tiles.4bpp");
+static const u16 sGymFrontierIconPalette[] = INCBIN_U16("graphics/journal/frontier_gym_badge_tiles.gbapal");
+
 enum // much window, such complexity 
 {
     WIN_JOURNAL_STATS,
@@ -61,6 +65,22 @@ enum // much window, such complexity
     WIN_JOURNAL_TRAINER_MONEY,
     WIN_JOURNAL_PAGE_NAME,
     COUNT_JOURNAL_WINDOWS
+};
+
+static const struct SpriteFrameImage sGymFrontierIconImages[] =
+{
+    {
+        .data = sGymFrontierIconTiles+TILE_SIZE_4BPP,
+        .size = TILE_SIZE_4BPP,
+    },
+    {
+        .data = sGymFrontierIconTiles+TILE_SIZE_4BPP*2,
+        .size = TILE_SIZE_4BPP,
+    },
+    {
+        .data = sGymFrontierIconTiles+TILE_SIZE_4BPP*3,
+        .size = TILE_SIZE_4BPP,
+    },
 };
 
 static u8 sColors[][3] = {
@@ -293,6 +313,20 @@ const struct OamData sJournalIconsOam =
     .paletteNum = 0,
 };
 
+const struct OamData s8x8IconsOam =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(8x8),
+    .x = 0,
+    .size = SPRITE_SIZE(8x8),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 1,
+};
+
 static const union AnimCmd sButtonNormalAnimation[] = {
     ANIMCMD_FRAME(0, 1),
     ANIMCMD_END
@@ -309,6 +343,28 @@ static const union AnimCmd *const sButtonAnims[] =
     sButtonGlowAnimation
 };
 
+static const union AnimCmd sIconGymAnimation[] = {
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sIconFrontierSilverAnimation[] = {
+    ANIMCMD_FRAME(1, 1),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sIconFrontierGoldAnimation[] = {
+    ANIMCMD_FRAME(2, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sIconAnims[] =
+{
+    sIconGymAnimation,
+    sIconFrontierSilverAnimation,
+    sIconFrontierGoldAnimation
+};
+
 static void ButtonSpriteCB(struct Sprite *sprite);
 
 static const struct SpriteTemplate sButtonSpriteTemplate =
@@ -320,6 +376,17 @@ static const struct SpriteTemplate sButtonSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = ButtonSpriteCB,
+};
+
+static const struct SpriteTemplate s8x8IconSpriteTemplate =
+{
+    .tileTag = 0xFFFF,
+    .paletteTag = 0xFFFF,
+    .oam = &s8x8IconsOam,
+    .anims = sIconAnims,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
 };
 
 EWRAM_DATA static u8 sButtonSpriteIds[JOURNAL_OPTION_COUNT] = {0}; // TODO: fix array size
@@ -783,12 +850,41 @@ static bool8 IntializeJournal(void)
         for(i = 0; i < JOURNAL_OPTION_COUNT; i++)
         {
             spriteTemplate.images = sJounralButtons[i].spriteImages;
-            sButtonSpriteIds[i] = CreateSprite(&spriteTemplate, 32 + buttonXPos[i], 42, 0); // temporary
+            sButtonSpriteIds[i] = CreateSprite(&spriteTemplate, 32 + buttonXPos[i], 42, 0);
             gSprites[sButtonSpriteIds[i]].data[0] = !i;
         }
         LoadPalette(sJounralButtons[0].palette, 0x100, 0x20);
+        spriteTemplate = s8x8IconSpriteTemplate;
+        spriteTemplate.images = sGymFrontierIconImages;
+        for (i = 0; i < NUM_BADGES; i++)
+        {
+            if (FlagGet(FLAG_BADGE01_GET + i))
+            {
+                u32 spriteId;
+                spriteId = CreateSprite(&spriteTemplate, 23 + (i&3)*9, 138 + i/4 * 9, 0);
+                StartSpriteAnimIfDifferent(&gSprites[spriteId], 0);
+            }
+        }
+        for (i = 0; i < NUM_FRONTIER_FACILITIES; i++)
+        {
+            u32 badgeType = 0;
+            
+            if (FlagGet(FLAG_SYS_TOWER_SILVER + 2 * i))
+                badgeType = 1;
+            if (FlagGet(FLAG_SYS_TOWER_GOLD + 2 * i))
+                badgeType = 2;
+            
+            if(badgeType)
+            {
+                u32 spriteId;
+                spriteId = CreateSprite(&spriteTemplate, 190 + (i&3)*9 + (i/4)*5, 138 + i/4 * 9, 0);
+                StartSpriteAnimIfDifferent(&gSprites[spriteId], badgeType);
+            }
+        }
+        LoadPalette(sGymFrontierIconPalette, 0x110, 0x20);
         gMain.state++;
         break;
+        
     }
     case 3:
         CopyBgTilemapBufferToVram(0);
