@@ -237,6 +237,7 @@ static void CB2_SaveAfterLinkBattle(void);
 static void ShowSaveInfoWindow(void);
 static void RemoveSaveInfoWindow(void);
 static void HideStartMenuWindow(void);
+void RemoveInfoBoxWindow(void);
 
 void SetDexPokemonPokenavFlags(void) // unused
 {
@@ -419,6 +420,7 @@ static void RemoveExtraStartMenuWindows(void)
         ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
+    RemoveInfoBoxWindow();
 }
 
 EWRAM_DATA static u8 sPrintNumberWindowId = 1;
@@ -429,7 +431,7 @@ const u8 gText_RyuBotanySkillPrefix[] = _("{COLOR LIGHT_GREEN}{SHADOW GREEN}  B:
 const u8 gText_RyuAlchemySkillPrefix[] = _("{COLOR LIGHT_RED}{SHADOW RED} A:{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");
 const u8 gText_SomeSpaces[] = _("  ");
 
-void PrintNumberToScreen(s32 num)
+void AddInfoBoxWindow(void)
 {
     struct WindowTemplate template;
     int Time = (RyuGetTimeOfDay());
@@ -439,8 +441,13 @@ void PrintNumberToScreen(s32 num)
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
-    CopyWindowToVram(sPrintNumberWindowId, 1);
     DrawStdFrameWithCustomTileAndPalette(sPrintNumberWindowId, FALSE, 0x214, 14);
+    sPrintNumberWindow2Id = 0xFF;
+}
+
+void PrintNumberToScreen(s32 num)
+{
+    int Time = (RyuGetTimeOfDay());
 
     //song readout
     StringCopy(gStringVar1, gText_HighlightTransparent);
@@ -490,9 +497,9 @@ void PrintNumberToScreen(s32 num)
 
 
     //print all text
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 0, 0, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 62, 0, 0, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 0, 12, 0, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 0, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 62, 0, 0xFF, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 0, 12, 0xFF, NULL);
 
     //print skill levels
     StringCopy(gStringVar1, gText_RyuLifeSkills);
@@ -505,21 +512,24 @@ void PrintNumberToScreen(s32 num)
     StringAppend(gStringVar1, gText_RyuAlchemySkillPrefix);
     ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL)), STR_CONV_MODE_LEFT_ALIGN, 1);
     StringAppend(gStringVar1, gStringVar2);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 24, 0, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 24, 0xFF, NULL);
 }
 
-void RemovePrintedNumber(void)
+void RemoveInfoBoxWindow(void)
 {
     ClearStdWindowAndFrameToTransparent(sPrintNumberWindowId, FALSE);
-    CopyWindowToVram(sPrintNumberWindowId, 2);
     RemoveWindow(sPrintNumberWindowId);
-    ClearStdWindowAndFrameToTransparent(sPrintNumberWindow2Id, FALSE);
-    CopyWindowToVram(sPrintNumberWindow2Id, 2);
-    RemoveWindow(sPrintNumberWindow2Id);
+    if(sPrintNumberWindow2Id != 0xFF)
+    {
+        ClearStdWindowAndFrameToTransparent(sPrintNumberWindow2Id, FALSE);
+        RemoveWindow(sPrintNumberWindow2Id);
+    }
+/*
     if (FlagGet(FLAG_NOTIFIED_FF_TEXT) == 0)
         ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
     else
         ScriptContext1_SetupScript(ryu_end);//For some reason, this fixes the start menu info window border from sticking around, i call it a win.
+*/
 }                                           //EDIT: Now the border gets cut off for no reason. lmao. 
 
 void PrintSongNumber(u16 song)
@@ -935,14 +945,12 @@ static bool32 InitStartMenuStep(void)
     case 5:
         sStartMenuCursorPos = Menu_InitCursor(GetStartMenuWindowId(), 1, 0, 9, 16, sNumStartMenuActions, sStartMenuCursorPos);
         CopyWindowToVram(GetStartMenuWindowId(), TRUE);
-		if (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1)
-		{
+		AddInfoBoxWindow();
+        if (FlagGet(FLAG_RYU_JUKEBOX_ENABLED) == 1)
 			PrintSongNumber(VarGet(VAR_RYU_JUKEBOX));
-		}
 		else
-		{
 			PrintSongNumber(GetCurrentMapMusic());
-		}
+        CopyWindowToVram(sPrintNumberWindowId, 3);
 
         if (FlagGet(FLAG_RYU_PLAYER_HELPING_DEVON) == 1)
         {
@@ -1173,8 +1181,9 @@ void PlayNextTrack(void)
     u16 song = (VarGet(VAR_RYU_JUKEBOX));
     PlaySE(SE_PIN);
     PlayBGM(song);
-    //RemovePrintedNumber(); had to do it for song changing.
-    PrintSongNumber(song);
+    FillWindowPixelBuffer(sPrintNumberWindowId, PIXEL_FILL(1));
+    PrintNumberToScreen(song);
+    CopyWindowToVram(sPrintNumberWindowId, 2);
 }
 
 extern u8 RyuFollowerSelectNPCScript[];
@@ -1224,7 +1233,6 @@ static bool8 HandleStartMenuInput(void)
     {
         if (FlagGet(FLAG_RYU_DEV_MODE) == 1)
         {
-            RemovePrintedNumber();
             RemoveExtraStartMenuWindows();
             if (!(MenuSpriteId1 == 0))
             {
@@ -1234,14 +1242,12 @@ static bool8 HandleStartMenuInput(void)
 
             HideStartMenu();
             HideFieldMessageBox();
-            RemovePrintedNumber();
             ScriptContext2_Enable();
             ScriptContext1_SetupScript(RyuDebugMenuScript);
             return TRUE;
         }
         else
         {
-            RemovePrintedNumber();
             RemoveExtraStartMenuWindows();
             if (!(MenuSpriteId1 == 0))
             {
@@ -1251,7 +1257,6 @@ static bool8 HandleStartMenuInput(void)
 
             HideStartMenu();
             HideFieldMessageBox();
-            RemovePrintedNumber();
             ScriptContext2_Enable();
             ScriptContext1_SetupScript(RyuStartMenuConfigInfoScript);
             return TRUE;
@@ -1308,7 +1313,6 @@ static bool8 HandleStartMenuInput(void)
     {
         RemoveExtraStartMenuWindows();
         HideStartMenu();
-        RemovePrintedNumber();
         if (!(MenuSpriteId1 == 0))
         {
             DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
@@ -1335,7 +1339,7 @@ static bool8 HandleStartMenuInput(void)
 
                     VarSet(VAR_RYU_JUKEBOX, song);
                     PlayBGM(song);
-                    PrintSongNumber(song);
+                    PlayNextTrack();
                     break;
                 case 1:
                     FlagClear(FLAG_RYU_JUKEBOX_ENABLED);
@@ -1502,9 +1506,12 @@ static bool8 StartMenuExitCallback(void)
 {
     RemoveExtraStartMenuWindows();
     HideStartMenu(); // Hide start menu
-    RemoveExtraStartMenuWindows();
+    //RemoveExtraStartMenuWindows();
     HideFieldMessageBox();
-    RemovePrintedNumber();
+    if (FlagGet(FLAG_NOTIFIED_FF_TEXT) == 0)
+        ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
+    //else
+        //ScriptContext1_SetupScript(ryu_end);
     return TRUE;
 }
 
@@ -2169,7 +2176,6 @@ static void HideStartMenuWindow(void)
 {
     ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
     RemoveStartMenuWindow();
-    RemovePrintedNumber();
     if (!(MenuSpriteId1 == 0))
         {
             DestroySpriteAndFreeResources(&gSprites[MenuSpriteId1]);
