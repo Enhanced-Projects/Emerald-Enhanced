@@ -217,6 +217,8 @@ static const struct MenuAction MultichoiceList_SlakothVendingMachine[] =
     {gText_MoomooMilkAndPrice},
     {gText_OldGateauAndPrice},
     {gText_BigMalasadaAndPrice},
+    {gText_BlackTeaAndPrice},
+    {gText_LavaCookieAndPrice},
     {gText_Exit},
 };
 

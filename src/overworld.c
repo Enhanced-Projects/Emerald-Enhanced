@@ -467,7 +467,6 @@ void Overworld_ResetStateAfterFly(void)
     ResetInitialPlayerAvatarState();
     FlagClear(FLAG_SYS_CRUISE_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
-    FlagClear(FLAG_SYS_USE_FLASH);
 }
 
 void Overworld_ResetStateAfterTeleport(void)
@@ -475,7 +474,6 @@ void Overworld_ResetStateAfterTeleport(void)
     ResetInitialPlayerAvatarState();
     FlagClear(FLAG_SYS_CRUISE_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
-    FlagClear(FLAG_SYS_USE_FLASH);
 }
 
 void Overworld_ResetStateAfterDigEscRope(void)
@@ -483,7 +481,6 @@ void Overworld_ResetStateAfterDigEscRope(void)
     ResetInitialPlayerAvatarState();
     FlagClear(FLAG_SYS_CRUISE_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
-    FlagClear(FLAG_SYS_USE_FLASH);
 }
 
 static void Overworld_ResetStateAfterWhiteOut(void)
@@ -491,7 +488,6 @@ static void Overworld_ResetStateAfterWhiteOut(void)
     ResetInitialPlayerAvatarState();
     FlagClear(FLAG_SYS_CRUISE_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
-    FlagClear(FLAG_SYS_USE_FLASH);
 }
 
 static void sub_8084788(void)
@@ -1060,26 +1056,13 @@ bool32 Overworld_IsBikingAllowed(void)
         return TRUE;
 }
 
-void SetDefaultFlashLevel(void)
-{
-    if (!gMapHeader.cave)
-        gSaveBlock1Ptr->flashLevel = 0;
-    else if (FlagGet(FLAG_SYS_USE_FLASH))
-        gSaveBlock1Ptr->flashLevel = 1;
-    else
-        gSaveBlock1Ptr->flashLevel = gMaxFlashLevel - 1;
-}
+void SetDefaultFlashLevel(void){}
 
-void Overworld_SetFlashLevel(s32 flashLevel)
-{
-    if (flashLevel < 0 || flashLevel > gMaxFlashLevel)
-        flashLevel = 0;
-    gSaveBlock1Ptr->flashLevel = flashLevel;
-}
+void Overworld_SetFlashLevel(s32 flashLevel){}
 
 u8 Overworld_GetFlashLevel(void)
 {
-    return gSaveBlock1Ptr->flashLevel;
+    return 0;
 }
 
 void SetCurrentMapLayout(u16 mapLayoutId)

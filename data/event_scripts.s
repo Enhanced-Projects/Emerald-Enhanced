@@ -619,26 +619,6 @@ EverGrandeCity_HallOfFame_EventScript_ResetEliteFour:: @ 82718CC
 	setvar VAR_ELITE_4_STATE, 0
 	return
 
-Common_EventScript_UpdateBrineyLocation:: @ 82718DE
-	goto_if_unset FLAG_RECEIVED_POKENAV, Common_EventScript_NopReturn
-	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, Common_EventScript_NopReturn
-	goto_if_unset FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT, EventScript_SetBrineyLocation_House
-	goto_if_unset FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN, EventScript_SetBrineyLocation_Dewford
-	goto_if_unset FLAG_HIDE_ROUTE_109_MR_BRINEY, EventScript_SetBrineyLocation_Route109
-	return
-
-EventScript_SetBrineyLocation_House:: @ 827190C
-	setvar VAR_BRINEY_LOCATION, 1
-	return
-
-EventScript_SetBrineyLocation_Dewford:: @ 8271912
-	setvar VAR_BRINEY_LOCATION, 2
-	return
-
-EventScript_SetBrineyLocation_Route109:: @ 8271918
-	setvar VAR_BRINEY_LOCATION, 3
-	return
-
 	.include "data/scripts/pkmn_center_nurse.inc"
 	.include "data/scripts/obtain_item.inc"
 	.include "data/scripts/record_mix.inc"
@@ -667,11 +647,6 @@ Common_EventScript_BufferTrendyPhrase:: @ 8271E8B
 	dotimebasedevents
 	setvar VAR_0x8004, 0
 	special BufferTrendyPhraseString
-	return
-
-EventScript_BackupMrBrineyLocation:: @ 8271E95
-	copyvar VAR_0x8008, VAR_BRINEY_LOCATION
-	setvar VAR_BRINEY_LOCATION, 0
 	return
 
 	.include "data/scripts/surf.inc"

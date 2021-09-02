@@ -158,15 +158,15 @@
 #define VAR_RYU_PLAYER_HOUSE_ID              0x408B // which house the player set as their home. Defaults to 0xFFFF for none.
 #define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN  0x408C
 #define VAR_LITTLEROOT_RIVAL_STATE           0x408D
-#define VAR_BOARD_BRINEY_BOAT_STATE          0x408E
+#define VAR_UNUSED_0x408E                    0x408E
 #define VAR_DEVON_CORP_3F_STATE              0x408F
-#define VAR_BRINEY_HOUSE_STATE               0x4090
+#define VAR_UNUSED_0x4090                    0x4090
 #define VAR_RYU_QUEST_DEVON_SCIENTIST        0x4091 // Unused Var
 #define VAR_LITTLEROOT_INTRO_STATE           0x4092
 #define VAR_MAUVILLE_GYM_STATE               0x4093
 #define VAR_LILYCOVE_MUSEUM_2F_STATE         0x4094
 #define VAR_LILYCOVE_FAN_CLUB_STATE          0x4095
-#define VAR_BRINEY_LOCATION                  0x4096
+#define VAR_UNUSED_0x4096                   0x4096
 #define VAR_INIT_SECRET_BASE                 0x4097
 #define VAR_PETALBURG_WOODS_STATE            0x4098
 #define VAR_LILYCOVE_CONTEST_LOBBY_STATE     0x4099
@@ -217,18 +217,18 @@
 #define VAR_STEVENS_HOUSE_STATE              0x40C6
 #define VAR_OLDALE_RIVAL_STATE               0x40C7
 #define VAR_JAGGED_PASS_STATE                0x40C8
-#define VAR_SCOTT_PETALBURG_ENCOUNTER        0x40C9
+#define VAR_UNUSED_0x40C9                    0x40C9
 #define VAR_SKY_PILLAR_STATE                 0x40CA
 #define VAR_MIRAGE_TOWER_STATE               0x40CB
 #define VAR_FOSSIL_MANIAC_STATE              0x40CC
 #define VAR_CABLE_CLUB_TUTORIAL_STATE        0x40CD
 #define VAR_FRONTIER_BATTLE_MODE             0x40CE
 #define VAR_FRONTIER_FACILITY                0x40CF
-#define VAR_RYU_QUEST_DEVON_CORPORATE         0x40D0 // devon main
-#define VAR_SCOTT_STATE                      0x40D1
+#define VAR_RYU_QUEST_DEVON_CORPORATE        0x40D0 // devon main
+#define VAR_UNUSED_0x40D1                    0x40D1
 #define VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE   0x40D2
 #define VAR_DEX_UPGRADE_JOHTO_STARTER_STATE  0x40D3
-#define VAR_SS_TIDAL_SCOTT_STATE             0x40D4 // Always equal to FLAG_MET_SCOTT_ON_SS_TIDAL
+#define VAR_UNUSED_0x40D4                    0x40D4
 #define VAR_ROAMER_POKEMON                   0x40D5 // 0 = Latias, 1 = Latios
 #define VAR_TRAINER_HILL_IS_ACTIVE           0x40D6
 #define VAR_SKY_PILLAR_RAQUAZA_CRY_DONE      0x40D7
@@ -259,9 +259,9 @@
 #define VAR_SECRET_BASE_IS_NOT_LOCAL         0x40F0 // Set to TRUE while in another player's secret base.
 #define VAR_DAILY_BP                         0x40F1
 #define VAR_WALLY_CALL_STEP_COUNTER          0x40F2
-#define VAR_SCOTT_FORTREE_CALL_STEP_COUNTER  0x40F3
+#define VAR_UNUSED_0x40F3                    0x40F3
 #define VAR_ROXANNE_CALL_STEP_COUNTER        0x40F4
-#define VAR_RYU_QUEST_NURSE               0x40F5
+#define VAR_RYU_QUEST_NURSE                  0x40F5
 #define VAR_RYU_GYM_LEADERS_FOUGHT           0x40F6 //times player fought a gym leader
 #define VAR_RYU_GCMS_SPECIES                 0x40F7
 #define VAR_RYU_GCMS_VALUE                   0x40F8
@@ -270,8 +270,8 @@
 #define VAR_RYU_NUZLOCKE_WAYSTONE_USES       0x40FB
 #define VAR_RYU_PRICE_MULTIPLIER             0x40FC
 #define VAR_RYU_WEATHER                      0x40FD
-#define VAR_RYU_QUEST_LANA                0x40FE
-#define VAR_RYU_QUEST_MAGMA                        0x40FF // Magma quest var
+#define VAR_RYU_QUEST_LANA                   0x40FE
+#define VAR_RYU_QUEST_MAGMA                  0x40FF // Magma quest var
 
 #define VARS_END                             0x40FF
 #define VARS_COUNT                           (VARS_END - VARS_START + 1)
