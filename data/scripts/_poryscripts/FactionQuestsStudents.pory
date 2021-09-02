@@ -113,5 +113,6 @@ script CommonStudentRewardScript {
     setflag(FLAG_FINISHED_STUDENT_DAILY)
     changefactionstanding(FACTION_STUDENTS, 25, FALSE)
     addmoney(3000)
+    buffernumberstring(0, 3000)
     goto(CommonDailyQuestEnd)
 }
