@@ -66,7 +66,7 @@ script(global) RyuNoblesDailyQuest  {
                 }
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
-                if (var(VAR_RESULT) < 6) {
+                if (var(VAR_TEMP_F) < 6) {
                     bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
                     msgbox(format("Oh... It was a {STR_VAR_1}... Well... you can have it."))
                     goto(CommonNobleRewardScript)
@@ -126,7 +126,8 @@ script CommonNobleRewardScript {
     msgbox("The Board should be pleased.\nYou are dismissed.")
     setflag(FLAG_FINISHED_NOBLE_DAILY)
     changefactionstanding(FACTION_NOBLES, 25, FALSE)
-    setvar(VAR_TEMP_B, 10000)
+    buffernumberstring(0, 10000)
+    addmoney(10000)
     goto(CommonDailyQuestEnd)
 }
 

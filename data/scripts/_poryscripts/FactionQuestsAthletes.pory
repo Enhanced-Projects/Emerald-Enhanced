@@ -54,7 +54,7 @@ script(global) RyuAthletesDailyQuest  {
                 }
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
-                if (var(VAR_RESULT) < 6) {
+                if (var(VAR_TEMP_F) < 6) {
                     bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
                     msgbox(format("I see, so it was a {STR_VAR_1}! Well, thanks for letting me know, take care of it!"))
                     goto(CommonAthletesRewardScript)
@@ -114,5 +114,6 @@ script CommonAthletesRewardScript {
     setflag(FLAG_FINISHED_ATHLETE_DAILY)
     changefactionstanding(FACTION_ATHLETES, 25, FALSE)
     addmoney(1750)
+    buffernumberstring(0, 1750)
     goto(CommonDailyQuestEnd)
 }

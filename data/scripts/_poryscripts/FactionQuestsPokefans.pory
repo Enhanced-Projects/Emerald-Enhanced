@@ -55,7 +55,7 @@ script(global) RyuPokefansDailyQuest  {
                 }
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
-                if (var(VAR_RESULT) < 6) {
+                if (var(VAR_TEMP_F) < 6) {
                     bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
                     msgbox(format("Oh! So it was a {STR_VAR_1}! It's so cute! Please take care of this Pokemon for us!"))
                     goto(CommonPokefansRewardScript)
@@ -107,6 +107,7 @@ script CommonPokefansRewardScript {
     setflag(FLAG_FINISHED_POKEFAN_DAILY)
     changefactionstanding(FACTION_POKEFANS, 25, FALSE)
     addmoney(2500)
+    buffernumberstring(0, 2500)
     goto(CommonDailyQuestEnd)
 }
 

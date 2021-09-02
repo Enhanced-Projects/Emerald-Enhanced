@@ -54,7 +54,7 @@ script(global) RyuNaturalistsDailyQuest  {
                 }
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
-                if (var(VAR_RESULT) < 6) {
+                if (var(VAR_TEMP_F) < 6) {
                     bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
                     msgbox(format("Ah, so it was a {STR_VAR_1}. It would make an excellent camping companion."))
                     goto(CommonNaturalistRewardScript)
@@ -116,13 +116,13 @@ script CommonNaturalistRewardScript {
     msgbox("Thanks for getting the stuff!")
     setflag(FLAG_FINISHED_NATURALIST_DAILY)
     changefactionstanding(FACTION_NATURALISTS, 25, FALSE)
+    buffernumberstring(0, 5000)
     addmoney(5000)
     goto(CommonDailyQuestEnd)
 }
 
 script CommonDailyQuestEnd {
     clearflag(FLAG_DAILY_QUEST_ACTIVE)
-    buffernumberstring(0, VAR_TEMP_B)
     msgbox("You earned ¥{STR_VAR_1}.")
     closemessage
     release

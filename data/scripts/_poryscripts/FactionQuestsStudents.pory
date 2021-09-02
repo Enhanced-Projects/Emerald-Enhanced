@@ -54,7 +54,7 @@ script(global) RyuStudentsDailyQuest  {
                 }
             case HATCH_TYPE:
                 checkspecies(VAR_RYU_DAILY_QUEST_TARGET)
-                if (var(VAR_RESULT) < 6) {
+                if (var(VAR_TEMP_F) < 6) {
                     bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
                     msgbox(format("Aha! it was a {STR_VAR_1}! How cute. Please take care of it!"))
                     goto(CommonStudentRewardScript)
