@@ -435,7 +435,7 @@ void PrintNumberToScreen(s32 num)
     int Time = (RyuGetTimeOfDay());
 
     //prepare window
-    SetWindowTemplateFields(&template, 0, 1, 1, 13, 6, 15, 8);
+    SetWindowTemplateFields(&template, 0, 1, 1, 13, 5, 15, 8);
     sPrintNumberWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sPrintNumberWindowId, 0);
     PutWindowTilemap(sPrintNumberWindowId);
@@ -492,17 +492,7 @@ void PrintNumberToScreen(s32 num)
     //print all text
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 0, 0, NULL);
     AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar2, 62, 0, 0, NULL);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 0, 10, 0, NULL);
-    //print KO's
-    StringCopy(gStringVar1, gText_RyuKills);
-    ConvertIntToDecimalStringN(gStringVar2, VarGet(VAR_RYU_TOTAL_FAINTS), STR_CONV_MODE_LEFT_ALIGN, 5);
-    StringAppend(gStringVar1, gStringVar2);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 22, 0, NULL);
-
-    StringCopy(gStringVar1, gText_RyuBadges);
-    ConvertIntToDecimalStringN(gStringVar2, (CountBadges()), STR_CONV_MODE_LEFT_ALIGN, 1);
-    StringAppend(gStringVar1, gStringVar2);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 61, 22, 0, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar3, 0, 12, 0, NULL);
 
     //print skill levels
     StringCopy(gStringVar1, gText_RyuLifeSkills);
@@ -515,7 +505,7 @@ void PrintNumberToScreen(s32 num)
     StringAppend(gStringVar1, gText_RyuAlchemySkillPrefix);
     ConvertIntToDecimalStringN(gStringVar2, (VarGet(VAR_RYU_PLAYER_ALCHEMY_SKILL)), STR_CONV_MODE_LEFT_ALIGN, 1);
     StringAppend(gStringVar1, gStringVar2);
-    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 34, 0, NULL);
+    AddTextPrinterParameterized(sPrintNumberWindowId, 0, gStringVar1, 0, 24, 0, NULL);
 }
 
 void RemovePrintedNumber(void)
@@ -529,8 +519,8 @@ void RemovePrintedNumber(void)
     if (FlagGet(FLAG_NOTIFIED_FF_TEXT) == 0)
         ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
     else
-        ScriptContext1_SetupScript(ryu_end);//For some reason, this fixes the start meny info window border from sticking around, i call it a win.
-}
+        ScriptContext1_SetupScript(ryu_end);//For some reason, this fixes the start menu info window border from sticking around, i call it a win.
+}                                           //EDIT: Now the border gets cut off for no reason. lmao. 
 
 void PrintSongNumber(u16 song)
 {
