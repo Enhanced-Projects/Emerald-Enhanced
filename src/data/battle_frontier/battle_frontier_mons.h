@@ -1338,7 +1338,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .heldItem = ITEM_CHOICE_BAND,
         .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
         .nature = NATURE_JOLLY,
-        .ivs = 31
+        .ivs = 31,
         .ability = 1
     },
     [FRONTIER_MON_HITMONTOP_1] = { // Hitmontop-TechniTopMachPunch
