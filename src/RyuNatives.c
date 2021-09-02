@@ -129,22 +129,20 @@ void GivePlayerModdedMon(void)
     u16 species = (VarGet(VAR_RYU_GCMS_SPECIES));
     u8 nature = (VarGet(VAR_TEMP_C));
     u8 fixedIv = (VarGet(VAR_RYU_GCMS_VALUE));
-    u8 level = 5;
-    bool8 isEgg = TRUE;
+    u8 level = 1;
     u8 slot = (VarGet(VAR_TEMP_8));
     u8 ball = ITEM_LUXURY_BALL;
     u16 move1 =  (VarGet(VAR_RYU_GCMS_MOVE1));
     u16 move2 =  (VarGet(VAR_RYU_GCMS_MOVE2));
     u16 move3 =  (VarGet(VAR_RYU_GCMS_MOVE3));
     u16 move4 =  (VarGet(VAR_RYU_GCMS_MOVE4));
-    bool8 isBoss = (gSaveBlock2Ptr->bossMonInGCMS);
+    bool8 isBoss = (FlagGet(FLAG_RYU_BOSS_IN_GCMS));
     u8 ability = (VarGet(VAR_RYU_GCMS_ABILITY));
 
     if (fixedIv > 31)
         fixedIv = 31;
 
     CreateMonWithNature(&gPlayerParty[slot], species, level, fixedIv, nature);
-    SetMonData(&gPlayerParty[slot], MON_DATA_IS_EGG, &isEgg);
     SetMonData(&gPlayerParty[slot], MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
     SetMonData(&gPlayerParty[slot], MON_DATA_POKEBALL, &ball);
     SetMonData(&gPlayerParty[slot], MON_DATA_MOVE1, &move1);
@@ -258,7 +256,7 @@ int RyuSacrificeMon(void)//eats the selected mon and saves certain values to be 
         VarSet(VAR_RYU_GCMS_ABILITY, ability);
         FlagClear(FLAG_TEMP_5);
         if (bossFlag == TRUE)
-            gSaveBlock2Ptr->bossMonInGCMS == TRUE;
+            FlagSet(FLAG_RYU_BOSS_IN_GCMS);
         return 1;
     }
     else if (GetMonData(&gPlayerParty[slot], MON_DATA_SPECIES2, NULL) == (VarGet(VAR_RYU_GCMS_SPECIES)))

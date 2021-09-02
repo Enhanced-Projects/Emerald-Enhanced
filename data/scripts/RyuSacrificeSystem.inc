@@ -540,7 +540,7 @@ GCMS_ChooseNatureMsg:
 	.string "Please choose a temperament...$"
 	
 GCMS_Successful:
-    .string "Success! A {COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1} {COLOR DARK_GREY}{SHADOW LIGHT_GREY}egg has\n"
+    .string "Success! A {COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1} {COLOR DARK_GREY}{SHADOW LIGHT_GREY}has\n"
     .string "been made!$"
 	
 GCMS_PickSlot:

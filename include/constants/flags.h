@@ -165,7 +165,7 @@
 #define FLAG_CAUGHT_LUGIA                    0x91
 #define FLAG_CAUGHT_HO_OH                    0x92
 #define FLAG_ITEM_EVERGRANDE_CITY_PP_UP      0x93
-#define FLAG_UNUSED_0x94                     0x94
+#define FLAG_RYU_BOSS_IN_GCMS                0x94
 #define FLAG_UNUSED_0x95                     0x95
 #define FLAG_DEWFORD_NPC_TRADE_COMPLETED     0x96
 #define FLAG_RECEIVED_CASTFORM               0x97
