@@ -345,14 +345,6 @@ LilycoveCity_EventScript_MoveDeletersHouseSign:: @ 81E2D74
 
 LilycoveCity_EventScript_WailmerTrainerGrunt:: @ 81E2D7D
 	lockall
-	goto_if_set FLAG_MET_WAILMER_TRAINER, LilycoveCity_EventScript_MetWailmerTrainer
-	msgbox LilycoveCity_Text_WailmerLeapOutOfWater, MSGBOX_DEFAULT
-	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox LilycoveCity_Text_GetLostMessingUpTraining, MSGBOX_DEFAULT
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
-	setflag FLAG_MET_WAILMER_TRAINER
 	releaseall
 	end
 

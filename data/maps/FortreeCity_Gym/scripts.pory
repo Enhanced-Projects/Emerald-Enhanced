@@ -36,7 +36,6 @@ FortreeCity_Gym_EventScript_WinonaDefeated:: @ 82165FD
 	waitfanfare
 	closemessage
 	delay 30
-	setvar VAR_SCOTT_FORTREE_CALL_STEP_COUNTER, 0
 	release
 	end
 

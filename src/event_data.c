@@ -98,13 +98,13 @@ void ClearMysteryEventFlags(void)
     FlagClear(FLAG_RYU_COMPLETED_NOBLES_FINAL_QUEST);
     FlagClear(NOBLES_SPECIAL_MISSION_IN_PROGRESS);
     FlagClear(FLAG_RYU_NOBLES_FINAL_QUEST_IN_PROGRESS);
-    FlagClear(FLAG_UNUSED_9);
-    FlagClear(FLAG_UNUSED_10);
-    FlagClear(FLAG_UNUSED_11);
-    FlagClear(FLAG_UNUSED_12);
-    FlagClear(FLAG_UNUSED_13);
-    FlagClear(FLAG_UNUSED_14);
-    FlagClear(FLAG_UNUSED_15);
+    FlagClear(FLAG_UNUSED_0x1ED);
+    FlagClear(FLAG_UNUSED_0x1EE);
+    FlagClear(FLAG_UNUSED_0x1EF);
+    FlagClear(FLAG_UNUSED_0x1F0);
+    FlagClear(FLAG_UNUSED_0x1F1);
+    FlagClear(FLAG_UNUSED_0x1F2);
+    FlagClear(FLAG_UNUSED_0x1F3);
 }
 
 void ClearMysteryEventVars(void)

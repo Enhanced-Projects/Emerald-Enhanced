@@ -484,7 +484,6 @@ SootopolisCity_Gym_1F_EventScript_JuanDefeated:: @ 8224F82
 	msgbox SootopolisCity_Gym_1F_Text_ExplainRainBadgeTakeThis, MSGBOX_DEFAULT
 	setflag FLAG_DEFEATED_SOOTOPOLIS_GYM
 	setflag FLAG_BADGE08_GET
-	setflag FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
 	call SootopolisCity_Gym_1F_EventScript_GiveWaterPulse
 	closemessage
 	delay 30
