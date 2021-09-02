@@ -526,6 +526,10 @@ MossdeepCity_EventScript_ItemNetBall:: @ 82910F5
 	finditem ITEM_NET_BALL
 	end
 
+EvergrandeCity_EventScript_ItemPPUp::
+	finditem ITEM_PP_UP
+	end
+
 PetalburgWoods_EventScript_ItemXAttack:: @ 8291102
 	finditem ITEM_X_ATTACK
 	end
