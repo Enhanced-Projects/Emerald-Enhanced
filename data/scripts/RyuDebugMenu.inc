@@ -366,13 +366,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
-	setflag FLAG_SYS_TOWER_SILVER
-	setflag FLAG_SYS_DOME_GOLD
-	setflag FLAG_SYS_PALACE_SILVER
-	//setflag FLAG_SYS_ARENA_GOLD
-	setflag FLAG_SYS_FACTORY_SILVER
-	setflag FLAG_SYS_PIKE_GOLD
-	setflag FLAG_SYS_PYRAMID_SILVER
+	changefactionstanding FACTION_NOBLES, 100, FALSE
 	release
 	end
 
