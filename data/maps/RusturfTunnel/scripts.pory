@@ -185,6 +185,7 @@ RT_WaitWhereYou:
 RT_ADIntro:
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 5 @Player chose devon quest. Player should go to Devon Corp.
 	setvar VAR_RYU_QUEST_DEVON_SCIENTIST, 1 @Tell quest tracker to display scientist specific message.
+	setvar VAR_RYU_QUESTLINE_ID, 0
 	msgbox RT_IsEverything
 	playse SE_PIN
 	applymovement 4, Common_Movement_ExclamationMark
