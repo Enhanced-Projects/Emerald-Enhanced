@@ -366,6 +366,7 @@ RDB_TempVarsViewMsg:
 	.string "{STR_VAR_1}$"
 
 RyuDebug_Utility1::
+	setvar VAR_ASH_GATHER_COUNT, 8000
 	changefactionstanding FACTION_NOBLES, 100, FALSE
 	release
 	end

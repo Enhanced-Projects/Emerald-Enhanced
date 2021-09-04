@@ -510,7 +510,7 @@
       "x": 58,
       "y": 36,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_TEMP_3",
       "var_value": "0",
       "script": "LCC_ShellyFollowerInteraction"
     },
