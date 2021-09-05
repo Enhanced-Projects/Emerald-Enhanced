@@ -569,6 +569,8 @@ static void CB2_EndWildBattle(void)
     }
     else
     {
+        if (!(gBattleOutcome == B_OUTCOME_RAN))
+        {
         for (i = 0; i < PARTY_SIZE; i++)
         {   
             u8 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
@@ -583,6 +585,7 @@ static void CB2_EndWildBattle(void)
                 {
                     RyuDoPickupLootRoll(level, i);
                 }
+        }
         }
         SetMainCallback2(CB2_ReturnToField);
         gFieldCallback = sub_80AF6F0;
