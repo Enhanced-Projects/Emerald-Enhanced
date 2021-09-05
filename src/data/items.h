@@ -1910,10 +1910,10 @@ const struct Item gItems[] =
         .secondaryId = 4,
     },
 
-    [ITEM_WAVE_MAIL] =
+    [ITEM_IMPRINT] =
     {
         .name = _("Gene Imprint"),
-        .itemId = ITEM_WAVE_MAIL,
+        .itemId = ITEM_IMPRINT,
         .price = 1000,
         .description = sWaveMailDesc,
         .pocket = POCKET_ITEMS,

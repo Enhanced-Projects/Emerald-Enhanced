@@ -799,7 +799,7 @@ Route110_TrickHousePuzzle2_EventScript_ItemHarborMail:: @ 829141B
 	end
 
 Route110_TrickHousePuzzle2_EventScript_ItemWaveMail:: @ 8291428
-	finditem ITEM_WAVE_MAIL
+	finditem ITEM_IMPRINT
 	end
 
 Route110_TrickHousePuzzle3_EventScript_ItemShadowMail:: @ 8291435

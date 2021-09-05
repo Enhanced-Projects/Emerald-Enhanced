@@ -272,12 +272,12 @@ RyuUserModeEVMenu::
 	goto_if_eq ryu_end
 	setvar VAR_TEMP_1, 0
 	copyvar VAR_TEMP_2, VAR_RESULT
-	checkitem ITEM_WAVE_MAIL, 1
+	checkitem ITEM_IMPRINT, 1
 	compare VAR_RESULT, 1
 	goto_if_ne RyuUserEvNoImprint
 	special RyuSetSlotStatEV
 	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_WAVE_MAIL, 1
+	removeitem ITEM_IMPRINT, 1
 	msgbox RyuEvSuccessMsg MSGBOX_DEFAULT
 	release
 	end
@@ -2365,6 +2365,16 @@ script(global) RyuDebug_LoopTimeSlide {
 
 script(global) RyuDebug_FinishTimeSlide {
 	msgbox("Loop has finished")
+	release
+	end
+}
+
+//new pickup
+
+script RyuScript_NotifyPickedUpItem {
+	delay(20)
+	msgbox(format("Your {STR_VAR_1} scavenged {STR_VAR_3}{STR_VAR_2} after the battle!"))
+	clearflag(FLAG_RYU_NOTIFY_PICKUP_ITEM)
 	release
 	end
 }
