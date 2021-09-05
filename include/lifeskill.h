@@ -42,6 +42,8 @@
 //recipe to item mapping
 // because ryu is incapable of making new constant headers for scripts
 
+#define NUM_PICKUP_TABLE_ENTRIES 18 //yup, i prefer to use known working ones than risk making new ones. Feel free to relocate @pidgey @kageru.
+
 typedef struct Ingredient {
   u16 itemId;
   u8 quantity;
@@ -60,6 +62,10 @@ typedef struct AlchemyRecipe {
 extern const u16 gGemTier3[];
 extern const u16 gGemTier2[];
 extern const u16 gGemTier1[];
+extern const u16 gRyuLowPickupTable[];
+extern const u16 gRyuMedPickupTable[];
+extern const u16 gRyuHighPickupTable[];
+extern const u16 gRyuMaxPickupTable[];
 extern const u16 gFossilTable[];
 extern const u16 gShardOreTable[];
 extern const u16 gInsideMiningTier1[];

@@ -11732,11 +11732,11 @@ static void Cmd_pickup(void)
             else
                 ability = gBaseStats[species].abilities[0];
 
-            if (ability == ABILITY_PICKUP
+            /*if (ability == ABILITY_PICKUP //This is replaced with my new pickup thing that actually rewards for levels higher than 100.
                 && species != 0
                 && species != SPECIES_EGG
                 && heldItem == ITEM_NONE
-                && (Random() % 10) == 0)
+                && (Random() % 10) == 0
             {
                 s32 j;
                 s32 rand = Random() % 100;
@@ -11754,9 +11754,9 @@ static void Cmd_pickup(void)
                         break;
                     }
                 }
-            }
+            }*/
             #if (defined ITEM_HONEY)
-            else if (ability == ABILITY_HONEY_GATHER
+            if (ability == ABILITY_HONEY_GATHER
                 && species != 0
                 && species != SPECIES_EGG
                 && heldItem == ITEM_NONE)

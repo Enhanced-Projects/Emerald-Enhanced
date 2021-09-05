@@ -58,7 +58,8 @@ extern const u8 RyuScript_CheckGivenAchievement[];
 extern const u8 RyuScript_GoToLimbo[];
 extern const u8 RyuScript_CompleteTravelDailyQuestType[];
 extern const u8 RyuScript_NotifyPropertyDamage[];
-extern const u8 RyuScript_NotifyRent[];
+extern const u8 RyuScript_NotifyRent[]; 
+extern const u8 RyuScript_NotifyPickedUpItem[]; 
 
 void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -271,6 +272,9 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         FlagClear(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE);
         ScriptContext1_SetupScript(RyuScript_NotifyPropertyDamage);
     }
+
+    if (FlagGet(FLAG_RYU_NOTIFY_PICKUP_ITEM) == TRUE)
+        ScriptContext1_SetupScript(RyuScript_NotifyPickedUpItem);
     
 
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)

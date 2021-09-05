@@ -1828,7 +1828,6 @@ void CB2_ReturnToFieldLocal(void)
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuKillMon();
-
 } 
 
 void CB2_ReturnToField(void)

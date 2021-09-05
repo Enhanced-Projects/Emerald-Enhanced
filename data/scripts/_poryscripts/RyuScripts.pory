@@ -2372,7 +2372,7 @@ script(global) RyuDebug_FinishTimeSlide {
 //new pickup
 
 script RyuScript_NotifyPickedUpItem {
-	delay(20)
+	callnative(RyuNotifyPickupItemBufferValues)
 	msgbox(format("Your {STR_VAR_1} scavenged {STR_VAR_3}{STR_VAR_2} after the battle!"))
 	clearflag(FLAG_RYU_NOTIFY_PICKUP_ITEM)
 	release

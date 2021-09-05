@@ -76,9 +76,9 @@
 #define VAR_RYU_DAMAGED_HOUSE_ID             0x4038 //which property, if any, is damaged.
 #define VAR_RYU_PROPERTY_DAMAGE_TYPE         0x4039 //what sort of damage needs repaired.
 #define VAR_FARAWAY_ISLAND_STEP_COUNTER      0x403A
-#define VAR_REGICE_STEPS_1                   0x403B
-#define VAR_REGICE_STEPS_2                   0x403C
-#define VAR_REGICE_STEPS_3                   0x403D
+#define VAR_RYU_LAST_PICKUP_RARITY           0x403B//
+#define VAR_RYU_LAST_PICKUP_ITEM             0x403C//Used for the new pickup ability @PIDGEY TODO: Revert these to VAR_UNUSED_X and find another way to buffer this information
+#define VAR_RYU_LAST_PICKUP_SLOT             0x403D//from in battle to out of battle. Temp vars won't work, and i can't garuntee the text buffers will be free.
 #define VAR_ALTERING_CAVE_WILD_SET           0x403E
 #define VAR_DISTRIBUTE_EON_TICKET            0x403F // This var is read and written, but is always zero. The only way to obtain the Eon Ticket in Emerald is via Record Mixing
 #define VAR_DAYS                             0x4040

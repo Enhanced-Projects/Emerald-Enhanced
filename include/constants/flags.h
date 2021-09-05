@@ -174,7 +174,7 @@
 #define FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED  0x9A
 #define FLAG_FORTREE_NPC_TRADE_COMPLETED     0x9B
 #define FLAG_BATTLE_FRONTIER_TRADE_DONE      0x9C
-#define FLAG_UNUSED_0x9D                     0x9D
+#define FLAG_RYU_NOTIFY_PICKUP_ITEM          0x9D  //tell global script to notify player of picked up item.
 #define FLAG_UNUSED_0x9E                     0x9E
 #define FLAG_INTERACTED_WITH_DEVON_EMPLOYEE_GOODS_STOLEN 0x9F
 #define FLAG_COOL_PAINTING_MADE              0xA0

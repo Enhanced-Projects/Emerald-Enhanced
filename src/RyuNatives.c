@@ -2156,3 +2156,31 @@ void RyuForceUpdateTime(void)
 
     RtcInitLocalTimeOffset(hours, minutes);
 }
+
+static const u8 gRyuString_CommonItem[] = _("a Common ");
+static const u8 gRyuString_UncommonItem[] = _("an {COLOR LIGHT_BLUE}Uncommon{COLOR DARK_GREY} ");
+static const u8 gRyuString_RareItem[] = _("a {COLOR LIGHT_RED}Rare{COLOR DARK_GREY} ");
+static const u8 gRyuString_SuperRareItem[] = _("a {COLOR LIGHT_GREEN}Very Rare{COLOR DARK_GREY} ");
+
+void RyuNotifyPickupItemBufferValues (void)
+{
+    CopyItemName(VarGet(VAR_RYU_LAST_PICKUP_ITEM), gStringVar2);
+    GetMonData(&gPlayerParty[VarGet(VAR_RYU_LAST_PICKUP_SLOT)], MON_DATA_NICKNAME, gStringVar1);
+    StringGetEnd10(gStringVar1);
+    switch (VarGet(VAR_RYU_LAST_PICKUP_RARITY))
+    {
+        case 0:
+            StringCopy(gStringVar4, gRyuString_CommonItem);
+            break;
+        case 1:
+            StringCopy(gStringVar4, gRyuString_UncommonItem);
+            break;
+        case 2:
+            StringCopy(gStringVar4, gRyuString_RareItem);
+            break;
+        case 3:
+            StringCopy(gStringVar4, gRyuString_SuperRareItem);
+            break;
+    }
+    StringExpandPlaceholders(gStringVar3, gStringVar4);
+}
