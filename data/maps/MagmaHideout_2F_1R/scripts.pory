@@ -441,7 +441,7 @@ MHM_AdvancedCapture::
 	goto_if_ne MHM_CantAfford
 	additem ITEM_PREMIER_BALL, 20
 	additem ITEM_ULTRA_BALL, 10
-	removemoney 2500
+	removemoney 3500
 	msgbox MHM_Success
 	closemessage
 	release
