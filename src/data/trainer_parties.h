@@ -9379,12 +9379,13 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Brendan5[] = {
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_RelCourtney1[] = {//Brendan14
+static const struct TrainerMonItemCustomMoves sParty_RelCourtney1[] = {//Brendan14
     {
     .iv = 255,
     .lvl = 78,
     .species = SPECIES_MIGHTYENA,
     .ability = 0,
+    .heldItem = ITEM_BLACK_GLASSES,
     .moves = {MOVE_CRUNCH, MOVE_THUNDER_FANG, MOVE_FISSURE, MOVE_PLAY_ROUGH},
     },
     {
@@ -9393,12 +9394,14 @@ static const struct TrainerMonNoItemCustomMoves sParty_RelCourtney1[] = {//Brend
     .ability = 0,
     .moves = {MOVE_FLAMETHROWER, MOVE_PSYCHIC, MOVE_THUNDERBOLT, MOVE_HYPER_BEAM},
     .species = SPECIES_DELPHOX,
+    .heldItem = ITEM_LIFE_ORB,
     },
     {
     .iv = 255,
     .lvl = 73,
     .species = SPECIES_VOLCARONA,
     .ability = 0,
+    .heldItem = ITEM_CHARCOAL,
     .moves = {MOVE_QUIVER_DANCE, MOVE_ENERGY_BALL, MOVE_SIGNAL_BEAM, MOVE_SHADOW_BALL},
     }
 };
@@ -13448,7 +13451,7 @@ static const struct TrainerMonItemCustomMoves sParty_RelLana[] = {
 	.iv = 247,
 	.lvl = 112,
 	.species = SPECIES_VENUSAUR,
-	.heldItem = ITEM_VENUSAURITE,
+	.heldItem = ITEM_MIRACLE_SEED,
 	.ability = 2,
 	.moves = {MOVE_SLUDGE_BOMB, MOVE_GIGA_DRAIN, MOVE_HIDDEN_POWER, MOVE_LEECH_SEED},
 	},
@@ -13499,7 +13502,7 @@ static const struct TrainerMonItemCustomMoves sParty_RelBrendan[] = {//bookmark
 	.iv = 255,
 	.lvl = 101,
 	.species = SPECIES_LUCARIO,
-	.heldItem = ITEM_LUCARIONITE,
+	.heldItem = ITEM_BLACK_BELT,
 	.ability = 0,
 	.moves = {MOVE_CLOSE_COMBAT, MOVE_METEOR_MASH, MOVE_BULLET_PUNCH, MOVE_SWORDS_DANCE},
 	},
@@ -13526,7 +13529,7 @@ static const struct TrainerMonItemCustomMoves sParty_RelDawn[] = {
 	.iv = 255,
 	.lvl = 106,
 	.species = SPECIES_ALTARIA,
-	.heldItem = ITEM_ALTARIANITE,
+	.heldItem = ITEM_PRETTY_WING,
 	.ability = 2,
 	.moves = {MOVE_HYPER_VOICE, MOVE_FLAMETHROWER, MOVE_TAILWIND, MOVE_ROOST},
 	},
@@ -13553,7 +13556,7 @@ static const struct TrainerMonItemCustomMoves sParty_RelShelly[] = {
 	.iv = 255,
 	.lvl = 106,
 	.species = SPECIES_SHARPEDO,
-	.heldItem = ITEM_SHARPEDONITE,
+	.heldItem = ITEM_LIFE_ORB,
 	.ability = 2,
 	.moves = {MOVE_AQUA_JET, MOVE_CRUNCH, MOVE_ICE_FANG, MOVE_WATERFALL},
 	},
@@ -13579,7 +13582,7 @@ static const struct TrainerMonItemCustomMoves sParty_RelLanette[] = {
 	{
 	.iv = 250,
 	.lvl = 109,
-	.heldItem = ITEM_METAGROSSITE,
+	.heldItem = ITEM_METAL_COAT,
 	.species = SPECIES_METAGROSS,
 	.ability = 0,
 	.moves = {MOVE_HEAVY_SLAM, MOVE_BULLET_PUNCH, MOVE_THUNDER_PUNCH, MOVE_EARTHQUAKE},
@@ -13878,7 +13881,7 @@ static const struct TrainerMonItemCustomMoves sParty_RelNurseJoy[] = {
     .iv = 255,
     .lvl = 101,
     .species = SPECIES_AUDINO,
-    .heldItem = ITEM_AUDINITE,
+    .heldItem = ITEM_LEFTOVERS,
 	.ability = 2,
 	.moves = {MOVE_HYPER_VOICE, MOVE_DAZZLING_GLEAM, MOVE_HEAL_PULSE, MOVE_FLAMETHROWER},
     },
