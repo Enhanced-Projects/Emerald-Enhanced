@@ -106,7 +106,7 @@ text SpecialWithdrawText {
 }
 
 script SCFB_MakeAccount {
-    msgbox("Ah! So you would like to\nset up a new account?\pLet me get this set up for you.\pCurrently, our interest rate is 1%\nevery 24 Real-Time hours.\p...\pOkay! All set!")
+    msgbox("Ah! So you would like to\nset up a new account?\pLet me get this set up for you.\pCurrently, our interest rate is 0.5%\nevery 24 Real-Time hours.\p...\pOkay! All set!")
     setflag(FLAG_RYU_PLAYER_HAS_BANK_ACCOUNT)
     goto(SCFB_Teller)
 }
