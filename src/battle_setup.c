@@ -577,7 +577,9 @@ static void CB2_EndWildBattle(void)
             u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
             u16 heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
 
-            if (((gBaseStats[species].abilities[1] == ABILITY_PICKUP) || (gBaseStats[species].abilities[0] == ABILITY_PICKUP))
+            if (((gBaseStats[species].abilities[1] == ABILITY_PICKUP) 
+                || (gBaseStats[species].abilities[0] == ABILITY_PICKUP)
+                || (gBaseStats[species].abilityHidden == ABILITY_PICKUP))//forgot to consider the possibility that pickup can be a hidden ability.
                 && species != 0
                 && species != SPECIES_EGG
                 && heldItem == ITEM_NONE
