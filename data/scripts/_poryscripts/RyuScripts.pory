@@ -2265,6 +2265,7 @@ text BF_battledefeat {
 }
 
 script RyuScript_CompleteTravelDailyQuestType {
+	clearflag(FLAG_TEMP_E)
 	bufferfactionname(0, VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION)
 	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}Hmm. This appears to be the place that the {STR_VAR_1} wanted me to come to. Guess I should return to one of them."))
 	closemessage
@@ -2274,6 +2275,7 @@ script RyuScript_CompleteTravelDailyQuestType {
 }
 
 script RyuScript_PlayerReceivedInterest {
+	clearflag(FLAG_RYU_INTEREST_ACCRUED)
 	callnative(RyuBufferInterestGamestat)
 	msgbox("You earned interest in the amount of\n¥{STR_VAR_1} for this 24-Hour period.\lThank you for choosing Frontier Bank.")
 	release

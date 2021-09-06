@@ -186,6 +186,60 @@ bool8 RyuCheckPlayerisInMtPyreAndHasPikachu(void)
     return FALSE;
 }
 
+void RyuDoNotifyTasks(void)
+{
+
+    if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10)) //check blackout for nuzlocke/hardcore
+    {
+        if (!(FlagGet(FLAG_RYU_LIMBO) == 1))
+        {
+            if ((FlagGet(FLAG_RYU_NUZLOCKEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
+                ScriptContext1_SetupScript(RyuScript_GoToLimbo);
+        }
+    }
+    
+    if (FlagGet(FLAG_RYU_NOTIFY_PICKUP_ITEM) == TRUE) //notify picked up item(s).
+        ScriptContext1_SetupScript(RyuScript_NotifyPickedUpItem);
+
+    if (FlagGet(FLAG_RYU_INTEREST_ACCRUED) == 1)//Interest was given, notify player.
+        ScriptContext1_SetupScript(RyuScript_PlayerReceivedInterest);
+
+    if (VarGet(VAR_RYU_LAST_ACH) < 256) //Global achievement notification
+        if (FlagGet(FLAG_RYU_PREVENT_ACH_POPUP) == FALSE)
+            ScriptContext1_SetupScript(RyuScript_CheckGivenAchievement);
+
+    if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) //check travel daily and notify when completed @PIDGEY: this lags when it happens, needs to be sped up.
+        && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3) 
+        && (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 0))
+        {
+            if (VarGet(VAR_TEMP_E) == 0)
+            {
+                FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
+                FlagSet(FLAG_TEMP_E);
+                VarSet(VAR_TEMP_E, 12);
+            }
+            else if (VarGet(VAR_TEMP_E) == 1)
+                {
+                    u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
+                    if (VarGet(VAR_RYU_DAILY_QUEST_TARGET) == locSum)
+                        ScriptContext1_SetupScript(RyuScript_CompleteTravelDailyQuestType);
+                }
+        }
+
+    if (FlagGet(FLAG_RYU_NOTIFY_RENT) == TRUE) //Notify player of rent earned
+    {
+        ConvertIntToDecimalStringN(gStringVar1, GetGameStat(GAME_STAT_RENT_COLLECTED), STR_CONV_MODE_LEFT_ALIGN, 6);
+        ScriptContext1_SetupScript(RyuScript_NotifyRent);
+    }
+
+    if (FlagGet(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE) == TRUE) //notify player that a property was damaged
+    {
+        RyuBufferPropertyDamageData();
+        ScriptContext1_SetupScript(RyuScript_NotifyPropertyDamage);
+    }
+
+}
+
 int ProcessPlayerFieldInput(struct FieldInput *input)
 {
     struct MapPosition position;
@@ -207,75 +261,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
  
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
-
-    if (FlagGet(FLAG_RYU_INTEREST_ACCRUED) == 1)//Interest was given, notify player.
-    {  
-        FlagClear(FLAG_RYU_INTEREST_ACCRUED);
-        ScriptContext1_SetupScript(RyuScript_PlayerReceivedInterest);
-        return TRUE;
-    }
-
-    if ((gPlayerPartyCount == 0) && (VarGet(VAR_LITTLEROOT_INTRO_STATE) >= 10))
-    {
-        if (!(FlagGet(FLAG_RYU_LIMBO) == 1))
-        {
-            if ((FlagGet(FLAG_RYU_NUZLOCKEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
-            {
-                ScriptContext1_SetupScript(RyuScript_GoToLimbo);
-                return TRUE;
-            }
-        }
-    }
-
-    if (VarGet(VAR_RYU_LAST_ACH) < 256)
-        {
-            FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
-            if (FlagGet(FLAG_RYU_PREVENT_ACH_POPUP) == FALSE)
-            {
-                ScriptContext1_SetupScript(RyuScript_CheckGivenAchievement);
-                return TRUE;
-            }
-        }
-
-    if ((FlagGet(FLAG_DAILY_QUEST_ACTIVE) == TRUE) && (VarGet(VAR_RYU_DAILY_QUEST_TYPE) == 3) && (VarGet(VAR_RYU_DAILY_QUEST_DATA) == 0))
-        {
-            if (VarGet(VAR_TEMP_E) == 0)
-            {
-                FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
-                FlagSet(FLAG_TEMP_E);
-                VarSet(VAR_TEMP_E, 12);
-            }
-            else if (VarGet(VAR_TEMP_E) == 1)
-                {
-                    u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
-                    if (VarGet(VAR_RYU_DAILY_QUEST_TARGET) == locSum)
-                    {
-                        FlagClear(FLAG_TEMP_E);
-                        ScriptContext1_SetupScript(RyuScript_CompleteTravelDailyQuestType);
-                        return TRUE;
-                    }
-                }
-        }
-
-    if (FlagGet(FLAG_RYU_NOTIFY_RENT) == TRUE)
-    {
-        FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
-        ConvertIntToDecimalStringN(gStringVar1, GetGameStat(GAME_STAT_RENT_COLLECTED), STR_CONV_MODE_LEFT_ALIGN, 6);
-        FlagClear(FLAG_RYU_NOTIFY_RENT);
-        ScriptContext1_SetupScript(RyuScript_NotifyRent);
-    }
-
-    if (FlagGet(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE) == TRUE)
-    {
-        FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
-        RyuBufferPropertyDamageData();
-        FlagClear(FLAG_RYU_NOTIFY_PROPERTY_DAMAGE);
-        ScriptContext1_SetupScript(RyuScript_NotifyPropertyDamage);
-    }
-
-    if (FlagGet(FLAG_RYU_NOTIFY_PICKUP_ITEM) == TRUE)
-        ScriptContext1_SetupScript(RyuScript_NotifyPickedUpItem);
     
+    RyuDoNotifyTasks();
 
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)
         return TRUE;
