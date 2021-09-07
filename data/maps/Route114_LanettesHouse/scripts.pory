@@ -25,7 +25,7 @@ Route114_LanettesHouse_EventScript_Lanette:: @ 822B2D2
 	end
 
 Ryu_LNH_RomChek::
-	map_script_2 VAR_RYU_QUEST_LANETTE, 101, Ryu_LNH_RomQuest 
+	map_script_2 VAR_TEMP_3, 0, Ryu_LNH_RomQuest 
 	.2byte 0
 	
 LNH_RelCheck::
@@ -35,8 +35,8 @@ LNH_RelCheck::
 	end
 
 LNH_PreventEnterBasement::
-	compare VAR_RYU_QUEST_LANETTE, 104
-	goto_if_ge ryu_end
+	goto_if_set FLAG_TEMP_6, ryu_end
+	goto_if_set FLAG_RYU_DS_LANETTE_LOVERS, ryu_end
 	lockall
 	msgbox LNH_Blocked
 	closemessage
@@ -46,7 +46,9 @@ LNH_PreventEnterBasement::
 	end
 	
 Ryu_LNH_RomQuest::
-	setvar VAR_RYU_QUEST_LANETTE, 0
+	setvar VAR_TEMP_3, 100
+	goto_if_set FLAG_RYU_LANETTE_EVENT_0, ryu_end
+	goto_if_set FLAG_RYU_LANETTE_INTRO, LNH_CheckHasMons
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	msgbox LNH_RomStart
@@ -59,9 +61,15 @@ Ryu_LNH_RomQuest::
 	msgbox LNH_mynameis
 	closemessage
 	msgbox LNH_myjobis
+	goto LNH_CheckHasMons
+
+LNH_CheckHasMons::
 	specialvar VAR_RESULT, RyuNumberOfFullBoxes
 	compare VAR_RESULT, 4
 	goto_if_ge LNH_PlayerHasCollection
+	goto LNH_NotEnoughMons
+
+LNH_NotEnoughMons::
 	msgbox LNH_StillLookingMsg
 	setflag FLAG_RYU_LANETTE_INTRO
 	release
@@ -102,10 +110,9 @@ LNH_PlayerHasCollection::
 LNH_RomanceEvent::
 	lock
 	goto_if_set FLAG_RYU_DS_LANETTE_PARTNERS, ryu_end
-	goto_if_set FLAG_TEMP_1, ryu_end
-	setflag FLAG_TEMP_1
+	goto_if_set FLAG_TEMP_6, ryu_end
+	setflag FLAG_TEMP_6
 	msgbox LNH_youHearASound
-	setvar VAR_RYU_QUEST_LANETTE, 104
 	release
 	end
 	
@@ -245,7 +252,6 @@ LNH_Nothing::
 LNH_Staying:
 	msgbox LNH_Rel_Lanette_stayingScene
 	closemessage
-	setvar VAR_RYU_QUEST_LANETTE, 105
 	fadescreen 1
 	clearflag FLAG_RYU_HIDE_LANETTE_BASEMENT
 	warpsilent MAP_ROUTE114_LANETTES_HOUSE_BASEMENT, 255, 8, 6
