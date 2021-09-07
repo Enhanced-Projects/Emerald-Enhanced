@@ -1,6 +1,8 @@
 #include "global.h"
 #include "metatile_behavior.h"
 #include "constants/metatile_behaviors.h"
+#include "constants/metatile_labels.h"
+#include "fieldmap.h"
 
 #define TILE_FLAG_ENCOUNTER_TILE 1
 #define TILE_FLAG_SURFABLE 2
@@ -1499,6 +1501,32 @@ bool8 MetatileBehavior_IsSnowyGrass(u8 metatileBehavior)
 bool8 MetatileBehavior_IsNormalTallGrass(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_TALL_GRASS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileStyle_IsNormalNoEncounterGrass(void)//super hacky, doesn't always work. But it helps.
+{
+    u32 temp = MapGridGetMetatileIdAt(gSaveBlock1Ptr->location.x, gSaveBlock1Ptr->location.y);
+    if (temp == 468)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileStyle_IsDirtPath(void) //seems to only work on horizontal paths? (see: route 104 vs 115) returns 360-something which is out of the tileset range.
+{
+    u32 temp = MapGridGetMetatileIdAt(gSaveBlock1Ptr->location.x, gSaveBlock1Ptr->location.y);
+    if ((temp >= 0x118) && (temp <= 0x12F))                    
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsSeeThroughBridge(u8 metatileBehavior)//works as intended (See: route 104 twins)
+{
+    if (metatileBehavior == MB_REFLECTION_UNDER_BRIDGE)
         return TRUE;
     else
         return FALSE;

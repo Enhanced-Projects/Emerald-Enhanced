@@ -622,6 +622,8 @@ u8 BattleSetup_GetTerrainId(void)
     PlayerGetDestCoords(&x, &y);
     tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
 
+    if (MetatileBehavior_IsSeeThroughBridge(tileBehavior))
+        return BATTLE_TERRAIN_POND;
     if (MetatileBehavior_IsNormalTallGrass(tileBehavior))
         return BATTLE_TERRAIN_GRASS;
     if (MetatileBehavior_IsLongGrass(tileBehavior))
@@ -630,6 +632,10 @@ u8 BattleSetup_GetTerrainId(void)
         return BATTLE_TERRAIN_SAND;
     if (MetatileBehavior_IsMtFreezeOrPolarPillar(tileBehavior))
         return BATTLE_TERRAIN_MTFREEZE;
+    if (MetatileStyle_IsNormalNoEncounterGrass() == TRUE)
+        return BATTLE_TERRAIN_GRASS;
+    if (MetatileStyle_IsDirtPath() == TRUE)
+        return BATTLE_TERRAIN_SAND;
 
     switch (gMapHeader.mapType)
     {
