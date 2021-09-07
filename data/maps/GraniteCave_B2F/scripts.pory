@@ -193,6 +193,7 @@ GC_ME_Event3::
 	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	setflag FLAG_RYU_PLAYER_MAGMA_MEMBER
 	setvar VAR_RYU_QUEST_MAGMA, 130@Player defeated steven in granite cave
+	setflag FLAG_TEMP_F
 	release
 	end
 	

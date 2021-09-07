@@ -1497,8 +1497,7 @@ FFTextMsg::
 	.string "It is recommended that you use\n"
 	.string "fast instead.$"
 
-RyuGlobal_CheckDexnavStatus::
-	goto_if_set FLAG_SYS_DEXNAV_GET, ryu_return
+RyuGlobal_EnableNormalDexnav::
 	pokenavcall Ryu_DexnavGive
 	waitmessage
 	setflag FLAG_SYS_DEXNAV_GET
@@ -1508,12 +1507,6 @@ Ryu_DexnavGive:
 	.string "Congratulations, {PLAYER}!\pYou have been randomly selected\nto receive the free DexNav upgrade\lfor your Pokenav.\pWe hope you will enjoy this new\nbeta feature!$"
 
 RyuGlobal_CheckMagmaStatus::
-	setvar VAR_TEMP_A, 100
-	specialvar VAR_RESULT, CountBadges
-	compare VAR_RESULT, 6
-	call_if_ge RyuGlobal_CheckDexnavStatus
-	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, RyuGlobal_CheckAquaStatus
-	goto_if_unset FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
 	switch VAR_RYU_QUEST_MAGMA
 	case 130, Ryu_InitializeMagmaPart4
 	case 210, Ryu_InitializeMagmaPart6

@@ -58,8 +58,12 @@ extern const u8 RyuScript_CheckGivenAchievement[];
 extern const u8 RyuScript_GoToLimbo[];
 extern const u8 RyuScript_CompleteTravelDailyQuestType[];
 extern const u8 RyuScript_NotifyPropertyDamage[];
+extern const u8 RyuScript_PlayerReceivedInterest[];
 extern const u8 RyuScript_NotifyRent[]; 
 extern const u8 RyuScript_NotifyPickedUpItem[]; 
+extern const u8 RyuGlobal_EnableNormalDexnav[];
+extern const u8 RyuGlobal_CheckMagmaStatus[];
+extern const u8 RyuGlobal_CheckAquaStatus[];
 
 void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -89,8 +93,8 @@ static bool8 TryStartMiscWalkingScripts(u16);
 static bool8 TryStartStepCountScript(u16);
 static void UpdateHappinessStepCounter(void);
 static bool8 UpdatePoisonStepCounter(void);
+extern void Task_MapNamePopUpWindow(u8 taskId);
 
-extern const u8 RyuScript_PlayerReceivedInterest[];
 
 void FieldClearPlayerInput(struct FieldInput *input)
 {
@@ -186,6 +190,8 @@ bool8 RyuCheckPlayerisInMtPyreAndHasPikachu(void)
     return FALSE;
 }
 
+extern int CountBadges(void);
+
 void RyuDoNotifyTasks(void)
 {
 
@@ -238,6 +244,26 @@ void RyuDoNotifyTasks(void)
         ScriptContext1_SetupScript(RyuScript_NotifyPropertyDamage);
     }
 
+    if (!(FlagGet(FLAG_SYS_DEXNAV_GET)) && (!(FlagGet(FLAG_TEMP_F)))) //notify and give Dexnav
+        if (CountBadges() >= 6)
+            ScriptContext1_SetupScript(RyuGlobal_EnableNormalDexnav);
+
+    if ((FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA)) //Mission notifications from Magma
+        && (VarGet(VAR_RYU_QUEST_MAGMA) > 129) 
+        && (VarGet(VAR_RYU_QUEST_MAGMA) < 351)
+        && (!(FlagGet(FLAG_TEMP_F))))//prevents the notification from showing up as soon as the player is assigned the task.
+    {
+        ScriptContext1_SetupScript(RyuGlobal_CheckMagmaStatus);
+    }
+
+    if ((FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA)) //Mission notifications from Aqua
+        && (VarGet(VAR_RYU_QUEST_AQUA) > 9) 
+        && (VarGet(VAR_RYU_QUEST_AQUA) < 124)
+        && (!(FlagGet(FLAG_TEMP_F))))
+    {
+        ScriptContext1_SetupScript(RyuGlobal_CheckAquaStatus);
+    }
+
 }
 
 int ProcessPlayerFieldInput(struct FieldInput *input)
@@ -261,8 +287,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
  
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
-    
-    RyuDoNotifyTasks();
+    if (!(FuncIsActiveTask(Task_MapNamePopUpWindow)))
+        RyuDoNotifyTasks();
 
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)
         return TRUE;

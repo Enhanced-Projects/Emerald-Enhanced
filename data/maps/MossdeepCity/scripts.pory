@@ -16,7 +16,6 @@ MDC_OnFrameScripts::
 	map_script_2 VAR_RYU_QUEST_AQUA, 128, MDC_ScenePart6
 	map_script_2 VAR_RYU_QUEST_AQUA, 150, MDC_FinalScene
 	map_script_2 VAR_RYU_QUEST_AQUA, 149, MDC_DoFinalShellyScene
-	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
 	.2byte 0
 
 MossdeepCity_EventScript_PokefanF:: @ 81E4AB2

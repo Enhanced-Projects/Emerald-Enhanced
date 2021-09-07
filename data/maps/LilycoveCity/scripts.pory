@@ -8,7 +8,6 @@ LilycoveCity_MapScripts:: @ 81E2B3C
 LeafScene::
     map_script_2 VAR_RYU_QUEST_LANA, 1, LeafSceneResume
 	map_script_2 VAR_TEMP_A, 0, LCC_SetUpMagma
-	@map_script_2 VAR_TEMP_D, 0, RyuResetFollowerPosition
     .2byte 0
 	
 LCC_SetUpMagma::
@@ -91,8 +90,8 @@ LCC_ShellyWhenIWasLittle:
 @==================================================================================================Leaf Scene
 
 LeafSceneResume::
+	goto_if_unset FLAG_RYU_ON_DATE ryu_end
 	call RyuResetFollowerPositionAR
-    goto_if_unset FLAG_RYU_ON_DATE ryu_end
 	call_if_set FLAG_RYU_HAS_FOLLOWER, RyuForceCancelFollowerForQuest
 	fadenewbgm MUS_THANKFOR
 	msgbox LCL_Story1 MSGBOX_DEFAULT

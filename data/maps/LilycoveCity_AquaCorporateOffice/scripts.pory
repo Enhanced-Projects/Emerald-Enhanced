@@ -72,6 +72,7 @@ ACO_NonRomanceShelly::
 	msgbox ACO_AquaStage3_WaitForCallMsg
 	closemessage
 	setvar VAR_RYU_QUEST_AQUA, 80 @returned from meteor falls. Player needs to get 6 badges to continue.
+	setflag FLAG_TEMP_F
 	release
 	end
 
@@ -150,6 +151,7 @@ ACO_PlayerReturnedFromChimneyWithNecklace:: @Romance line is much longer than no
 	msgbox ACO_OhHeresYourPayment2
 	addmoney 10000
 	setvar VAR_RYU_QUEST_AQUA, 91 @Player is doing romance line, wait for 6 badges.
+	setflag FLAG_TEMP_F
 	release
 	end
 	
@@ -199,6 +201,7 @@ ACO_AfterShellyBattle::
 	removeobject 10
 	setvar VAR_RYU_QUEST_AQUA, 10
 	setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+	setflag FLAG_TEMP_F//Prevent the call from shelly happening as soon as scene finishes, if player already has 3 badges.
 	release
 	end
 
@@ -256,6 +259,7 @@ ACO_ReturnedFromMuseumWhiteout:
 	msgbox ACO_BetterThanBeing
 	closemessage
 	setvar VAR_RYU_QUEST_AQUA, 55@Player finished scene in shelly's quarters and needs to get 5 badges.
+	setflag FLAG_TEMP_F
 	applymovement 9, ACO_ShellyLeavesRoom1
 	waitmovement 9
 	playse SE_DOOR

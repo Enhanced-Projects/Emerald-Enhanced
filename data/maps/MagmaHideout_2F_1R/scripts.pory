@@ -152,6 +152,7 @@ MH2_MagmaArmyMeetingScene::
 	applymovement 17, MH2_HelperGruntExits
 	waitmovement 17
 	removeobject 17
+	setflag FLAG_TEMP_F
 	release
 	end
 	
