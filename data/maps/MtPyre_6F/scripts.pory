@@ -44,6 +44,7 @@ MP_HexerStartFactionEvent::
 	clearflag FLAG_RYU_HEXER_FACTION_QUEST_ACTIVE
 	msgbox MP_FQ_FactionStandingChanged
 	ach give ACH_UNDERTAKER
+	clearflag FLAG_RYU_WAYSTONE_DISABLED
 	addvar VAR_RYU_QUESTS_FINISHED, 1
 	closemessage
 	release
