@@ -199,6 +199,7 @@ SSTidalCorridor_EventScript_TrainerNotDefeated:: @ 823C218
 	return
 
 SSTidalCorridor_EventScript_ScottScene:: @ 823C219
+	setvar VAR_TEMP_C, 100
 	goto_if_set FLAG_MET_SCOTT_ON_SS_TIDAL, ryu_end
 	lockall
 	applymovement 5, SSTidalCorridor_Movement_ScottApproachPlayer
