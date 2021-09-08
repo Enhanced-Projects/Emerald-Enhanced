@@ -2164,6 +2164,7 @@ script RyuScript_EndNuzlockeMode{
     msgbox(format("Welcome to Limbo. You have failed your Nuzlocke or Hardcore challenge and have died. You can use this time to reflect on your decisions, or organize your item storage for a New Game +."))
     closemessage
     msgbox(format("Please wait while we check some things, this might take a few seconds."))
+	setflag(FLAG_SYS_GAME_CLEAR)
     callnative(RyuForceSaveTheGame)
     closemessage
     clearfullscreenimage
