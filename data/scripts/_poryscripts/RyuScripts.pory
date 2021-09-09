@@ -2196,12 +2196,19 @@ script RyuScript_EndNuzlockeMode{
 }
 
 script RS_Limbo_Sign{
+	ach(query, ACH_WASTED)
+		if (var(VAR_RESULT) == FALSE) {
+			ach(give, ACH_WASTED)
+		}
     msgbox(format("Oh, dear. You seem to have died.\pWhat am I?\nOh, don't worry about that, I'm just a spirit of another trainer who died. I'm actually here to guide trainers to the afterlife. Would you like to access your PC?"), MSGBOX_YESNO)
     if (var(VAR_RESULT) ==  YES) {
         goto(EventScript_PC)
     }
     else{
-        msgbox(format("Okay, well I'll be here if you change your mind. If you'd like to start a new life, Now would be a good time!(You must start a new game to keep playing.)"))
+        msgbox(format("Okay, well I'll be here if you change your mind. If you'd like to start a new life, Now would be a good time!\p(You must start a new game to keep playing.)"))
+		closemessage
+		release
+		end
     }
 
 }
