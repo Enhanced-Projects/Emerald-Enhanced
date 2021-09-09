@@ -460,10 +460,9 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ReceivedJohtoStarter:: @ 81FA24F
 LittlerootTown_ProfessorBirchsLab_EventScript_Birch:: @ 81FA25A
 	lock
 	faceplayer
-	compare VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 5
-	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_CanHaveAnyOneOfRarePokemon
-	compare VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2
-	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting
+	ach query, ACH_POKEMON_TRAINER
+	compare VAR_RESULT, TRUE
+	call_if_ne LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_TryRatePokedexOrRegister
 	end
 
@@ -1018,7 +1017,5 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting {
 			end
 		}
 	}
-	msgbox(LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2)
-	release
-	end
+	return
 }
