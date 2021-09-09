@@ -409,7 +409,7 @@
 #define FLAG_RYU_PAUSE_UB_ENCOUNTER          0x180 //prevent another ub encounter until map reset
 #define FLAG_RYU_CAUGHT_KELDEO               0x181 
 #define FLAG_ITEM_MIRAGE_CAVE_GOLD_ORE       0x182
-#define FLAG_ITEM_MIRAGE_EVIOLITE            0x183
+#define FLAG_ITEM_MIRAGE_CAVE_EVIOLITE       0x183
 #define FLAG_UNUSED_0x184                    0x184
 #define FLAG_UNUSED_0x185                    0x185
 #define FLAG_UNUSED_0x186                    0x186
