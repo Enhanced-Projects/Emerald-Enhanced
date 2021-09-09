@@ -783,21 +783,21 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
         .ivs = 31,
         .ability = 2
     },
-    [FRONTIER_MON_ARIADOS_1] = { // Ariados-Sucker
+    [FRONTIER_MON_ARIADOS_1] = { // Ariados-Offensive
         .species = SPECIES_ARIADOS,
         .moves = {MOVE_STICKY_WEB, MOVE_TOXIC_SPIKES, MOVE_MEGAHORN, MOVE_SUCKER_PUNCH},
-        .heldItem = ITEM_FOCUS_SASH,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .heldItem = ITEM_SITRUS_BERRY,
+        .evSpread = F_EV_SPREAD_ATTACK | F_EV_SPREAD_HP,
+        .nature = NATURE_ADAMANT,
         .ivs = 31,
         .ability = 0
     },
-    [FRONTIER_MON_ARIADOS_2] = { // Ariados-ToxicThread
+    [FRONTIER_MON_ARIADOS_2] = { // Ariados-Bulky
         .species = SPECIES_ARIADOS,
-        .moves = {MOVE_STICKY_WEB, MOVE_TOXIC_SPIKES, MOVE_MEGAHORN, MOVE_TOXIC_THREAD},
-        .heldItem = ITEM_FOCUS_SASH,
-        .evSpread = F_EV_SPREAD_SPEED | F_EV_SPREAD_ATTACK,
-        .nature = NATURE_JOLLY,
+        .moves = {MOVE_STICKY_WEB, MOVE_TOXIC_SPIKES, MOVE_TOXIC_THREAD, MOVE_MEGAHORN},
+        .heldItem = ITEM_SITRUS_BERRY,
+        .evSpread = F_EV_SPREAD_DEFENSE | F_EV_SPREAD_HP,
+        .nature = NATURE_BOLD,
         .ivs = 31,
         .ability = 0
     },
@@ -2774,7 +2774,7 @@ const struct FacilityMon gBattleFrontierMons[NUM_FRONTIER_MONS] =
     },
     [FRONTIER_MON_LANTURN_1] = { // Lanturn-Specs
         .species = SPECIES_LANTURN,
-        .moves = {MOVE_SCALD, MOVE_DISCHARGE, MOVE_DAZZLING_GLEAM, MOVE_SIGNAL_BEAM},
+        .moves = {MOVE_HYDRO_PUMP, MOVE_VOLT_SWITCH, MOVE_DAZZLING_GLEAM, MOVE_SIGNAL_BEAM},
         .heldItem = ITEM_CHOICE_SPECS,
         .evSpread = F_EV_SPREAD_SP_ATTACK | F_EV_SPREAD_HP,
         .nature = NATURE_MODEST,

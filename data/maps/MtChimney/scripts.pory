@@ -57,10 +57,10 @@ ArchieOrdersMsg:
 	.string "Get IT Done!$"
 	
 MC_ArchieIntroMsg:
-	.string "Archie: {PLAYER}! I'm glad you're here...\n"
-	.string "Maxie is over there with that machine, \p"
+	.string "Archie: {PLAYER}! I'm glad you're here...\p"
+	.string "Maxie is over there with that machine,\n"
 	.string "trying to erupt the volcano.\p"
-	.string "we Must stop him! Do whatever it takes!$"
+	.string "We must stop him! Do whatever it takes!$"
 
 MtChimney_EventScript_ArchieGoStopTeamMagma:: @ 822EDF9
 	msgbox MtChimney_Text_ArchieGoStopTeamMagma, MSGBOX_DEFAULT
