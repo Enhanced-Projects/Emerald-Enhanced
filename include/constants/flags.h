@@ -388,14 +388,14 @@
 #define FLAG_ITEM_MIRAGE_CAVE_RARE_BONE_2    0x16B
 #define FLAG_ITEM_MIRAGE_CAVE_HELIX_FOSSIL   0x16C
 #define FLAG_ITEM_MIRAGE_CAVE_ROSE_INCENSE   0x16D
-#define FLAG_RYU_NIHILEGO_CAUGHT                0x16E
-#define FLAG_RYU_BUZZWOLE_CAUGHT                0x16F
-#define FLAG_RYU_PHEROMOSA_CAUGHT               0x170
-#define FLAG_RYU_XURKITREE_CAUGHT               0x171
-#define FLAG_RYU_CELESTEELA_CAUGHT              0x172
-#define FLAG_RYU_KARTANA_CAUGHT                 0x173
-#define FLAG_RYU_GUZZLORD_CAUGHT                0x174
-#define FLAG_RYU_STAKATAKA_CAUGHT               0x175
+#define FLAG_RYU_NIHILEGO_CAUGHT             0x16E
+#define FLAG_RYU_BUZZWOLE_CAUGHT             0x16F
+#define FLAG_RYU_PHEROMOSA_CAUGHT            0x170
+#define FLAG_RYU_XURKITREE_CAUGHT            0x171
+#define FLAG_RYU_CELESTEELA_CAUGHT           0x172
+#define FLAG_RYU_KARTANA_CAUGHT              0x173
+#define FLAG_RYU_GUZZLORD_CAUGHT             0x174
+#define FLAG_RYU_STAKATAKA_CAUGHT            0x175
 #define FLAG_RYU_AQUA_LINE_DONE              0x176 // finished aqua. Checked for battle music scenarios.
 #define FLAG_RYU_AQUA_1_NOTIFY               0x177 // First aqua notification given
 #define FLAG_RYU_AQUA_2_NOTIFY               0x178 // Second aqua notification given

@@ -19131,6 +19131,7 @@ const u32 gTMHMLearnsets[][2] =
 											| TMHM(TM39_ROCK_TOMB)
 											| TMHM(TM20_SAFEGUARD)
 											| TMHM(TM37_SANDSTORM)
+											| TMHM(TM30_SHADOW_BALL)
 											| TMHM(TM48_SKILL_SWAP)
 											| TMHM(TM51_STEALTH_ROCK)
 											| TMHM(TM60_SUPERPOWER)
