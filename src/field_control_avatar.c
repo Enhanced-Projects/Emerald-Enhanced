@@ -72,6 +72,7 @@ extern const u8 RyuScript_EncounterNihilego[];
 extern const u8 RyuScript_EncounterGuzzlord[];
 extern const u8 RyuScript_EncounterStakataka[];
 extern const u8 RyuScript_EncounterCelesteela[];
+extern const u8 RyuScript_EncounterKeldeo[];
 
 
 void GetPlayerPosition(struct MapPosition *);
@@ -280,7 +281,7 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
     struct MapPosition position;
     u8 playerDirection;
     u16 metatileBehavior;
-    u16 rand = 0;
+    u16 rand = (Random() % 99);
     u16 locSum = (gSaveBlock1Ptr->location.mapGroup << 8) + (gSaveBlock1Ptr->location.mapNum);
     u16 UBRotation = (VarGet(VAR_RYU_UB_EVENT_TIMER));//which UB group the player currently can encounter
 
@@ -343,7 +344,6 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
     //I wanted to also make it play the cries of the relevant UB once in a while in the correct area, but i'm not sure how without vastly
     //complicating this furtner.
 
-    rand = (Random() % 99);
     if ((FlagGet(FLAG_RYU_ULTRA_BEASTS_ESCAPED) == TRUE) && (FlagGet(FLAG_RYU_CAUGHT_ALL_UBS) == FALSE) && (rand < 5))//5% chance to find the UB here.
     {
 
@@ -354,8 +354,6 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
                 locSum == MAP_GRANITE_CAVE_B2F)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                if (rand == 0) //1% chance of boss
-                    FlagSet(FLAG_RYU_BOSS_WILD);
                 ScriptContext1_SetupScript(RyuScript_EncounterBuzzwole);
             }
         }
@@ -365,8 +363,6 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
             if (locSum == MAP_ROUTE119)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                if (rand == 0)
-                    FlagSet(FLAG_RYU_BOSS_WILD);
                 ScriptContext1_SetupScript(RyuScript_EncounterPheromosa);
             }
         }
@@ -376,8 +372,6 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
             if (gSaveBlock1Ptr->location.mapNum == MAP_ROUTE120)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                if (rand == 0)
-                    FlagSet(FLAG_RYU_BOSS_WILD);
                 ScriptContext1_SetupScript(RyuScript_EncounterKartana);
             }
         }
@@ -387,8 +381,6 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
             if (locSum == MAP_NEW_MAUVILLE_INSIDE)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                if (rand == 0)
-                    FlagSet(FLAG_RYU_BOSS_WILD);
                 ScriptContext1_SetupScript(RyuScript_EncounterXurkitree);
             }
         }
@@ -405,8 +397,6 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
                 locSum == MAP_METEOR_FALLS_3F)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                if (rand == 0)
-                    FlagSet(FLAG_RYU_BOSS_WILD);
                 ScriptContext1_SetupScript(RyuScript_EncounterNihilego);
             }
         }
@@ -416,8 +406,6 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
             if (locSum == MAP_FROSTY_GROTTO)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                if (rand == 0)
-                    FlagSet(FLAG_RYU_BOSS_WILD);
                 ScriptContext1_SetupScript(RyuScript_EncounterGuzzlord);
             }
         }
@@ -431,8 +419,6 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
                 locSum == MAP_MT_PYRE_6F)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                if (rand == 0)
-                    FlagSet(FLAG_RYU_BOSS_WILD);
                 ScriptContext1_SetupScript(RyuScript_EncounterStakataka);
             }
         }
@@ -442,13 +428,23 @@ void RyuDoSpecialEncounterChecks(struct FieldInput *input)
             if (locSum == MAP_ROUTE66)
             {
                 FlagSet(FLAG_RYU_ENCOUNTERED_UB);
-                if (rand == 0)
-                    FlagSet(FLAG_RYU_BOSS_WILD);
                 ScriptContext1_SetupScript(RyuScript_EncounterCelesteela);
             }
         }
     
 
+    }
+
+    if ((VarGet(VAR_TEMP_D) == 400) &&
+         FlagGet(FLAG_SYS_GAME_CLEAR) &&
+         FlagGet(FLAG_RYU_CAUGHT_KELDEO) == FALSE &&
+         gSaveBlock1Ptr->location.mapGroup == (MAP_GROUP(PETALBURG_WOODS)) &&
+         gSaveBlock1Ptr->location.mapNum == MAP_NUM(PETALBURG_WOODS) &&
+         (Random() % 100 < 5) &&
+         (FlagGet(FLAG_RYU_PAUSE_UB_ENCOUNTER) == FALSE))
+    {
+        FlagSet(FLAG_RYU_PAUSE_UB_ENCOUNTER);
+        ScriptContext1_SetupScript(RyuScript_EncounterKeldeo);
     }
 }
 

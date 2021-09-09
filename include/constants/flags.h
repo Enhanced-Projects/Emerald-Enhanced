@@ -210,9 +210,9 @@
 #define FLAG_ITEM_MT_CHIMNEY_FLAME_ORB       0xBE
 #define FLAG_DEFEATED_GRUNT_SPACE_CENTER_1F  0xBF
 #define FLAG_RECEIVED_SUN_STONE_MOSSDEEP     0xC0
-#define FLAG_UNUSED_0xC1                     0xC1
+#define FLAG_RYU_BOSS_WILD                   0xC1
 #define FLAG_RYU_MAGMA_ALT_LINE              0xC2 // used by start menu to determine which magma icon to draw. C for Main, T for Alt.
-#define FLAG_UNUSED_0xC3                     0xC3 //
+#define FLAG_RYU_VIEWED_MIRAGE_ISLAND_NEWS_BULLETIN    0xC3 //
 #define FLAG_UNUSED_0xC4                     0xC4 //
 #define FLAG_UNUSED_0xC5                     0xC5 //
 #define FLAG_UNUSED_0xC6                     0xC6 //
@@ -407,9 +407,9 @@
 #define FLAG_RYU_CAUGHT_ALL_UBS              0x17E
 #define FLAG_RYU_ENCOUNTERED_UB              0x17F //currently fighting an UltraBeast
 #define FLAG_RYU_PAUSE_UB_ENCOUNTER          0x180 //prevent another ub encounter until map reset
-#define FLAG_ITEM_MIRAGE_CAVE_GOLD_ORE       0x181
-#define FLAG_ITEM_MIRAGE_EVIOLITE            0x182
-#define FLAG_UNUSED_0x183                    0x183
+#define FLAG_RYU_CAUGHT_KELDEO               0x181 
+#define FLAG_ITEM_MIRAGE_CAVE_GOLD_ORE       0x182
+#define FLAG_ITEM_MIRAGE_EVIOLITE            0x183
 #define FLAG_UNUSED_0x184                    0x184
 #define FLAG_UNUSED_0x185                    0x185
 #define FLAG_UNUSED_0x186                    0x186
@@ -1402,7 +1402,7 @@
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
-#define FLAG_RYU_BOSS_WILD                          (SYSTEM_FLAGS + 0x21) 
+#define FLAG_SYS_UNUSED_0x21                        (SYSTEM_FLAGS + 0x21) 
 #define FLAG_RYU_SHELLY_MEGA_REWARD                 (SYSTEM_FLAGS + 0x22) 
 #define FLAG_RYU_DAWN_MEGA_REWARD                   (SYSTEM_FLAGS + 0x23) 
 #define FLAG_RYU_BRENDAN_MEGA_REWARD                (SYSTEM_FLAGS + 0x24) 

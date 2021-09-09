@@ -1103,21 +1103,21 @@ JuanMega:
 
 RyuLegendary_GeneralLegendEncounter::
 	playmoncry VAR_TEMP_5, 0
+	waitmoncry
 	specialvar VAR_TEMP_7, CountBadges
 	multvar VAR_TEMP_7, 12
 	compare VAR_TEMP_7, 110
 	call_if_gt RyuLegendary_SetMaxScale
 	compare VAR_TEMP_7, 20
 	call_if_le RyuLegendary_SetBaseScale
-	random 99
-	compare VAR_RESULT, 0
-	call_if_eq RyuLegendary_SetBossFlag
 	setwildbattle VAR_TEMP_5, VAR_TEMP_7, VAR_TEMP_9
+	call RyuCheckSetupBoss
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_RYU_BOSS_WILD
 	return
 	end
+
 
 RyuLegendary_SetBossFlag::
 	setflag FLAG_RYU_BOSS_WILD
@@ -2157,6 +2157,15 @@ RyuCheckForLNSUAch::
 
 `
 
+script RyuCheckSetupBoss {
+	random(99)
+	if (var(VAR_RESULT) == 0){
+		call(RyuLegendary_SetBossFlag)
+		return
+	}
+	return
+}
+
 
 script RyuScript_GoToLimbo{
     lockall
@@ -2388,6 +2397,14 @@ script RyuScript_NotifyPickedUpItem {
 	release
 	end
 }
+//Mirage Island TV program
+
+script RyuScript_NotifyMirageIsland {
+	setflag(FLAG_RYU_VIEWED_MIRAGE_ISLAND_NEWS_BULLETIN)
+	msgbox(format("BREAKING NEWS!\nLocal swimmers are reporting having seen a massive island appear on Route 130. No one is sure what made it appear, geologists are investigating. We now return you to your previous program."))
+	//DO THINGS HERE FOR MIRAGE ISLAND ENABLING
+	return
+}
 
 //UB related
 
@@ -2587,4 +2604,23 @@ script RyuCheckIfAllBeastsCaught {
 	goto_if_unset(FLAG_RYU_STAKATAKA_CAUGHT, ryu_return)
 	setflag(FLAG_RYU_CAUGHT_ALL_UBS)
 	ach(give, ACH_ULTRA_BEASTLY)
+	return
+}
+
+script RyuScript_EncounterKeldeo {
+	if (flag(FLAG_RYU_BOSS_WILD)) {
+		msgbox("Boss flag is set in encounterscript.")
+		closemessage
+	}
+	msgbox("You hear trotting from the sky...", MSGBOX_ONELINE)
+	setvar(VAR_TEMP_5, SPECIES_KELDEO)
+	call(RyuLegendary_GeneralLegendEncounter)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		setflag(FLAG_RYU_CAUGHT_KELDEO)
+		clearflag(FLAG_RYU_BOSS_WILD)
+	}
+	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
+	release
+	end
 }
