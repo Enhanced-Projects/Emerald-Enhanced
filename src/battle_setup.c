@@ -425,8 +425,23 @@ void BattleSetup_StartLegendaryBattle(void)
     ScriptContext2_Enable();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_LEGENDARY;
+
+    if (FlagGet(FLAG_RYU_BOSS_WILD) == TRUE);
+    {
+        u8 i = 0;
+        u8 iv = 31;
+        bool8 tru = TRUE;
+        FlagClear(FLAG_RYU_BOSS_WILD);
+        SetMonData(&gEnemyParty[0], MON_DATA_GIFT_RIBBON_7, &tru);
+        for (i = 0; i < 6; i++)
+            SetMonData(&gEnemyParty[0], (39 + i), &iv);
+    }
+        
     if (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES) == SPECIES_SPIRITOMB)
         SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &ability);
+
+    if (IS_ULTRA_BEAST(GetMonData(&gEnemyParty[0], MON_DATA_SPECIES)))
+        CreateBattleStartTask(B_TRANSITION_BLACKHOLE1, MUS_VS_MEW);
 
     switch (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES, NULL))
     {

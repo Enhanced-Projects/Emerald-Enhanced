@@ -230,6 +230,10 @@ static const u8 sSlumLordLabel[] = _("Slum Lord");
 static const u8 sSlumLordHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Buy all properties.");
 static const u8 sSlumLordDesc[] = _("You own every rental property in Hoenn!\nAre you a good landlord?\n(Own all rental properties.)");
 
+static const u8 sUltraBeastlyLabel[] = _("Ultra Beastly");
+static const u8 sUltraBeastlyHint[] = _("{COLOR LIGHT_RED}{SHADOW RED} Locked.  {COLOR DARK_GREY}{SHADOW LIGHT_GREY}Catch all Roaming UB's.");
+static const u8 sUltraBeastlyDesc[] = _("You are a BEAST!\n(Captured all roaming Ultra Beasts.)");
+
 static const struct AtlasAchPointData sAchAtlasData[] =
 {
     [ACH_WHOLE_NEW_WORLD] = {12, 40, CATEGORY_EXPLORATION, ACH_WHOLE_NEW_WORLD, sWholeNewWorldAchLabel, sWholeNewWorldAchDesc, sWholeNewWorldAchHint}, //started exploring enhanced hoenn
@@ -290,4 +294,5 @@ static const struct AtlasAchPointData sAchAtlasData[] =
     [ACH_MILLIONAIRE] = {8, 45, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_MILLIONAIRE, sMillionaireLabel, sMillionaireDesc, sMillionaireHint},// 1 mirion dorars
     [ACH_MONEYBAGS] = {16, 45, CATEGORY_QUESTING | CATEGORY_FLAG_GOLD, ACH_MILLIONAIRE, sBillionaireLabel, sBillionaireDesc, sBillionaireHint},// 1 birion dorars
     [ACH_SLUM_LORD] = {16, 35, CATEGORY_QUESTING, ACH_SLUM_LORD, sSlumLordLabel, sSlumLordDesc, sSlumLordHint},// Own all NUM_PROPERTIES properties
+    [ACH_ULTRA_BEASTLY] = {28, 31, CATEGORY_BATTLE | CATEGORY_FLAG_GOLD, ACH_ULTRA_BEASTLY, sUltraBeastlyLabel, sUltraBeastlyDesc, sUltraBeastlyHint}, //Capture all roaming Ultra Beasts
 };

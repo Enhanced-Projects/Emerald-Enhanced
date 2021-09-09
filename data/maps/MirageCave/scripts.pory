@@ -23,14 +23,6 @@ MirageCave_TriggerPortal::
 	delay 60
 	playmoncry SPECIES_XURKITREE, 0
 	delay 60
-	setflag FLAG_NIGILEGO_ESCAPED
-	setflag FLAG_BUZZWOLE_ESCAPED
-	setflag FLAG_PHEROMOSA_ESCAPED
-	setflag FLAG_XURKITREE_ESCAPED
-	setflag FLAG_CELESTEELA_ESCAPED
-	setflag FLAG_KARTANA_ESCAPED
-	setflag FLAG_GUZZLORD_ESCAPED
-	setflag FLAG_STAKATAKA_ESCAPED
 	setflag FLAG_POIPOLE
 	setmetatile 12, 3, 849, 1
 	setmetatile 13, 3, 850, 1

@@ -10594,7 +10594,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_REL_COURTNEY_1] =
     {
-        .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
         .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
