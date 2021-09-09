@@ -4,20 +4,32 @@ TrainerHill_Roof_MapScripts:: @ 8268FA7
 	map_script ON_FRAME, TrainerHill_OnFrame
 	.byte 0
 
-TrainerHill_Roof_EventScript_Owner:: @ 8268FB2
-	goto_if_set FLAG_HILL_REWARD_RECIEVED, ryu_end
+`
+const QUANTITY = 1
+
+script TrainerHill_Roof_EventScript_Owner {
+	goto_if_set(FLAG_HILL_REWARD_RECIEVED, ryu_end)
 	trainerhill_settrainerflags
 	lock
-	setflag FLAG_HILL_REWARD_RECIEVED
+	setflag(FLAG_HILL_REWARD_RECIEVED)
+	setvar(VAR_TEMP_3, QUANTITY)
 	faceplayer
-	specialvar VAR_RESULT, RyuGetTrainerHillReward
-	playfanfare MUS_FANFA1
-	giveitem VAR_RESULT
-	msgbox TrainerHill_Roof_Text_HaveTheMostMarvelousGift, MSGBOX_DEFAULT
+	specialvar(VAR_TEMP_4, RyuGetTrainerHillReward)
+	if (var(VAR_TEMP_4) == ITEM_BEAST_BALL) {//should give between 2 and 5 beast balls.
+		random(3)
+		copyvar(VAR_TEMP_3, VAR_RESULT)
+		addvar(VAR_TEMP_3, 2)
+	}
+	playfanfare(MUS_FANFA1)
+	additem(VAR_TEMP_4, VAR_TEMP_3)
+	bufferitemname(0, VAR_TEMP_4)
+	buffernumberstring(1, VAR_TEMP_3)
+	msgbox("You received {STR_VAR_2} {STR_VAR_1}(s)!")
+	msgbox(TrainerHill_Roof_Text_HaveTheMostMarvelousGift)
 	waitfanfare
 	waitmessage
-	msgbox TrainerHill_Roof_Text_ArriveZippierNextTime, MSGBOX_DEFAULT
+	msgbox(TrainerHill_Roof_Text_ArriveZippierNextTime)
 	release
 	end
+}
 
-`
