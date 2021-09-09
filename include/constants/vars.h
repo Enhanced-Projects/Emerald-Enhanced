@@ -304,6 +304,8 @@
 
 #define SPECIAL_VARS_END              0x8015
 
+#define TRAINER_HILL_REWARDS_PER_TABLE 20
+
 #define EXP_DRIVE_MAX 15000000 //exp drive new max is 15 million
 
 #define EXP_DRIVE_MODE_RESET 0
