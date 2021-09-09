@@ -407,8 +407,8 @@
 #define FLAG_RYU_CAUGHT_ALL_UBS              0x17E
 #define FLAG_RYU_ENCOUNTERED_UB              0x17F //currently fighting an UltraBeast
 #define FLAG_RYU_PAUSE_UB_ENCOUNTER          0x180 //prevent another ub encounter until map reset
-#define FLAG_UNUSED_0x181                    0x181
-#define FLAG_UNUSED_0x182                    0x182
+#define FLAG_ITEM_MIRAGE_CAVE_GOLD_ORE       0x181
+#define FLAG_ITEM_MIRAGE_EVIOLITE            0x182
 #define FLAG_UNUSED_0x183                    0x183
 #define FLAG_UNUSED_0x184                    0x184
 #define FLAG_UNUSED_0x185                    0x185
