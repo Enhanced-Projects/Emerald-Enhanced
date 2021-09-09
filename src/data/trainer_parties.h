@@ -9391,9 +9391,9 @@ static const struct TrainerMonItemCustomMoves sParty_RelCourtney1[] = {//Brendan
     {
     .iv = 255,
     .lvl = 75,
+    .species = SPECIES_DELPHOX,
     .ability = 0,
     .moves = {MOVE_FLAMETHROWER, MOVE_PSYCHIC, MOVE_THUNDERBOLT, MOVE_HYPER_BEAM},
-    .species = SPECIES_DELPHOX,
     .heldItem = ITEM_LIFE_ORB,
     },
     {

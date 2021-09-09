@@ -1,6 +1,17 @@
 raw `
 PetalburgWoods_MapScripts:: @ 822DFD6
+	map_script ON_FRAME, PBW_OnFrameScript
 	.byte 0
+
+	PBW_OnFrameScript::
+	map_script_2 VAR_TEMP_D, 0, RyuCheckFighterDogs
+	.2byte 0
+
+RyuCheckFighterDogs::
+	setvar VAR_TEMP_D, 100
+	goto_if_unset FLAG_SYS_GAME_CLEAR, ryu_end
+	callnative RyuCheckHasFighterDogs
+	end
 
 PetalburgWoods_EventScript_DevonResearcherLeft:: @ 822DFD7
 	lockall

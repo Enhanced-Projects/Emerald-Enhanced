@@ -9660,7 +9660,7 @@ const struct PokedexEntry gPokedexEntries[] =
 		.trainerOffset = 0,
 	},
 
-	/*[NATIONAL_DEX_STAKATAKA] =
+	[NATIONAL_DEX_STAKATAKA] =
 	{
 		.categoryName = _("Rampart"),
 		.height = 55,
@@ -9670,7 +9670,7 @@ const struct PokedexEntry gPokedexEntries[] =
 		.pokemonOffset = 17,
 		.trainerScale = 256,
 		.trainerOffset = 0,
-	},*/
+	},
 
 	/*[NATIONAL_DEX_BLACEPHALON] =
 	{

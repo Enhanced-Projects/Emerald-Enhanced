@@ -35,6 +35,13 @@ void DoTimeBasedEvents(void)
     }
 }
 
+void RotateDailyUBGroup(void)
+{
+    VarSet(VAR_RYU_UB_EVENT_TIMER, (VarGet(VAR_RYU_UB_EVENT_TIMER) + 1));
+        if (VarGet(VAR_RYU_UB_EVENT_TIMER) == 5)
+            VarSet(VAR_RYU_UB_EVENT_TIMER, 0);
+}
+
 
 static void UpdatePerDay(struct Time *localTime)
 {
@@ -47,6 +54,7 @@ static void UpdatePerDay(struct Time *localTime)
         ClearDailyQuestData();
         ClearDailyFlags();
         DoDailyRealEstateTasks();
+        RotateDailyUBGroup();
         UpdateDewfordTrendPerDay(daysSince);
         UpdateTVShowsPerDay(daysSince);
         UpdateWeatherPerDay(daysSince);

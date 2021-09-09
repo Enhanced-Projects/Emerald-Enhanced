@@ -198,7 +198,7 @@
 #define VAR_WEATHER_INSTITUTE_STATE          0x40B3
 #define VAR_SS_TIDAL_STATE                   0x40B4
 #define VAR_TRICK_HOUSE_ENTER_FROM_CORRIDOR  0x40B5
-#define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     0x40B6 // Leftover from RS, never set
+#define VAR_RYU_UB_EVENT_TIMER               0x40B6 // Which UB rotation is currently active. Changes daily.
 #define VAR_SLATEPORT_FAN_CLUB_STATE         0x40B7
 #define VAR_RYU_SCRIPT_PTR                   0x40B8
 #define VAR_OPTIONS_EXP_BAR_SPEED            0x40B9
@@ -303,6 +303,8 @@
 #define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of gTrainerBattleOpponent_A
 
 #define SPECIAL_VARS_END              0x8015
+
+#define TRAINER_HILL_REWARDS_PER_TABLE 20
 
 #define EXP_DRIVE_MAX 15000000 //exp drive new max is 15 million
 
@@ -444,6 +446,6 @@
 #define PROPERTY_MOSSDEEP    11
 //there are an additional 20 properties
 
-#define EE_GAME_VERSION 7807
+#define EE_GAME_VERSION 7900
 
 #endif // GUARD_CONSTANTS_VARS_H
