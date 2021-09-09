@@ -2397,6 +2397,14 @@ script RyuScript_NotifyPickedUpItem {
 	release
 	end
 }
+//Mirage Island TV program
+
+script RyuScript_NotifyMirageIsland {
+	setflag(FLAG_RYU_VIEWED_MIRAGE_ISLAND_NEWS_BULLETIN)
+	msgbox(format("BREAKING NEWS!\nLocal swimmers are reporting having seen a massive island appear on Route 130. No one is sure what made it appear, geologists are investigating. We now return you to your previous program."))
+	//DO THINGS HERE FOR MIRAGE ISLAND ENABLING
+	return
+}
 
 //UB related
 

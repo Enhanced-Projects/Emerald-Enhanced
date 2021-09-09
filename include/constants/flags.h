@@ -212,7 +212,7 @@
 #define FLAG_RECEIVED_SUN_STONE_MOSSDEEP     0xC0
 #define FLAG_RYU_BOSS_WILD                   0xC1
 #define FLAG_RYU_MAGMA_ALT_LINE              0xC2 // used by start menu to determine which magma icon to draw. C for Main, T for Alt.
-#define FLAG_UNUSED_0xC3                     0xC3 //
+#define FLAG_RYU_VIEWED_MIRAGE_ISLAND_NEWS_BULLETIN    0xC3 //
 #define FLAG_UNUSED_0xC4                     0xC4 //
 #define FLAG_UNUSED_0xC5                     0xC5 //
 #define FLAG_UNUSED_0xC6                     0xC6 //

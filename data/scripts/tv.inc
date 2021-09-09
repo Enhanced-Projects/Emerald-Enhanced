@@ -1,6 +1,7 @@
 EventScript_TV:: @ 827EE0B
 	lockall
 	call_if_unset FLAG_RYU_CAUGHT_ALL_UBS, checkUBnotification
+	call_if_set FLAG_SYS_GAME_CLEAR, CheckMINotification
 	incrementgamestat GAME_STAT_WATCHED_TV
 	special ResetTVShowState
 	specialvar VAR_RESULT, CheckForBigMovieOrEmergencyNewsOnTV
@@ -16,6 +17,10 @@ EventScript_TV:: @ 827EE0B
 
 checkUBnotification::
 	call_if_set FLAG_RYU_ULTRA_BEASTS_ESCAPED, RyuScript_NotifyUltraBeasts
+	return
+
+CheckMINotification::
+	call_if_unset FLAG_RYU_VIEWED_MIRAGE_ISLAND_NEWS_BULLETIN, RyuScript_NotifyMirageIsland
 	return
 
 EventScript_TryDoTVShow:: @ 827EE54
