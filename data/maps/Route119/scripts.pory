@@ -647,6 +647,7 @@ R119_ShellyAqua::
 	waitfieldeffect FLDEFF_NPCFLY_OUT
 	setobjectxy 43, 0, 0
 	setvar VAR_RYU_QUEST_AQUA, 123 @Player met with shelly on route 119, Player should get to 7 badges. 
+	setflag FLAG_TEMP_F
 	release
 	end
 	

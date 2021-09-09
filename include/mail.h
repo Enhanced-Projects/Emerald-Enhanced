@@ -6,7 +6,7 @@
                               || itemId == ITEM_GLITTER_MAIL        \
                               || itemId == ITEM_MECH_MAIL           \
                               || itemId == ITEM_WOOD_MAIL           \
-                              || itemId == ITEM_WAVE_MAIL           \
+                              || itemId == ITEM_IMPRINT           \
                               || itemId == ITEM_BEAD_MAIL           \
                               || itemId == ITEM_SHADOW_MAIL         \
                               || itemId == ITEM_TROPIC_MAIL         \

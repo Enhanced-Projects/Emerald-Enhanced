@@ -172,7 +172,7 @@ const u8 gText_GCMSLine2[] = _("This system allows you to perfect");
 const u8 gText_GCMSLine3[] = _("your IV's.");
 const u8 gText_GCMSLine4[] = _("When you consign the first Pokemon,");
 const u8 gText_GCMSLine5[] = _("its species, moves, and ability is");
-const u8 gText_GCMSLine6[] = _("preserved.");
+const u8 gText_GCMSLine6[] = _("preserved. Boss status too.");
 
 const u8 gText_GCMS2Line1[] = _("Once you have selected the initial");
 const u8 gText_GCMS2Line2[] = _("mon for research, you then must");
@@ -183,10 +183,10 @@ const u8 gText_GCMS2Line6[] = _("");
 
 const u8 gText_GCMS3Line1[] = _("Once you have reached the GCV value");
 const u8 gText_GCMS3Line2[] = _("you want, you can then choose to");
-const u8 gText_GCMS3Line3[] = _("create the egg. When you do so, you");
+const u8 gText_GCMS3Line3[] = _("create the mon. When you do so, you");
 const u8 gText_GCMS3Line4[] = _("will be asked to select a nature.");
 const u8 gText_GCMS3Line5[] = _("Once you have done so, you will");
-const u8 gText_GCMS3Line6[] = _("receive the egg.");
+const u8 gText_GCMS3Line6[] = _("receive the mon.");
 
 const u8 gText_RyuBallMenu1[] = _("I make balls from Apricorns.");
 const u8 gText_RyuBallMenu2[] = _("Red: Level Ball, Blue: Lure Ball");

@@ -298,10 +298,7 @@ IslandCave_EventScript_CloseBrailleMsg:: @ 8238F41
 	releaseall
 	end
 
-IslandCave_EventScript_ClearSteps:: @ 8238F45
-	setvar VAR_REGICE_STEPS_1, 0
-	setvar VAR_REGICE_STEPS_2, 0
-	setvar VAR_REGICE_STEPS_3, 0
+IslandCave_EventScript_ClearSteps:: @ 8238F45//unused anyway
 	clearflag FLAG_TEMP_3
 	return
 

@@ -431,7 +431,7 @@ TC_BoughtImprinter:
 	
 	@.align 2
 TC_Imprint_Mart:
-	.2byte ITEM_WAVE_MAIL
+	.2byte ITEM_IMPRINT
 	.2byte ITEM_NONE
 	
 TC_Imprint_Txt:

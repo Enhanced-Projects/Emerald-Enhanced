@@ -297,8 +297,7 @@ OM_SternExit:
 OM_SetupSternForDevon::
 OM_ReEnableStern::
 	setvar VAR_TEMP_5, 10
-	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 17
-	goto_if_set FLAG_RYU_DEVON_STERN_EVENT_DONE, OM_FinishedSternEvent
+	goto_if_set FLAG_RYU_DEVON_STERN_EVENT_DONE, ryu_end
 	setvar VAR_RYU_QUEST_DEVON_CORPORATE, 17 @Player is on second floor to speak with Stern.
 	addobject 4
 	end

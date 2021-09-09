@@ -1,5 +1,6 @@
 EventScript_TV:: @ 827EE0B
 	lockall
+	call_if_unset FLAG_RYU_CAUGHT_ALL_UBS, checkUBnotification
 	incrementgamestat GAME_STAT_WATCHED_TV
 	special ResetTVShowState
 	specialvar VAR_RESULT, CheckForBigMovieOrEmergencyNewsOnTV
@@ -12,6 +13,10 @@ EventScript_TV:: @ 827EE0B
 	goto_if_eq EventScript_DoInSearchOfTrainers
 	goto EventScript_TryDoPokeNews
 	end
+
+checkUBnotification::
+	call_if_set FLAG_RYU_ULTRA_BEASTS_ESCAPED, RyuScript_NotifyUltraBeasts
+	return
 
 EventScript_TryDoTVShow:: @ 827EE54
 	specialvar VAR_0x8004, GetRandomActiveShowIdx

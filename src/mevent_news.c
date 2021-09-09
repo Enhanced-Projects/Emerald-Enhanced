@@ -36,13 +36,12 @@ void sub_801DBC0(void)
     r5->unk_0_0 = 0;
     r5->unk_0_2 = 0;
     r5->unk_0_5 = 0;
-    r5->unk_1 = 0;
-    VarSet(VAR_0x402E, 0);
+    r5->unk_1 = 0; //mystery event is also unused.
 }
 
 void sub_801DBDC(void)
 {
-    u16 *r4 = GetVarPointer(VAR_0x402E);
+    u16 *r4 = 0;
     struct MysteryEventStruct *r2 = sub_801B044();
     struct MysteryEventStruct r0 = *r2;
 

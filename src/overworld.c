@@ -1778,6 +1778,7 @@ static void CB2_LoadMap2(void)
     SetMainCallback1(CB1_Overworld);
     SetMainCallback2(CB2_Overworld);
     ResetDexNavSearch();
+    FlagClear(FLAG_RYU_PAUSE_UB_ENCOUNTER);
 }
 
 void CB2_ReturnToFieldContestHall(void)
@@ -1828,7 +1829,6 @@ void CB2_ReturnToFieldLocal(void)
 
     if (FlagGet(FLAG_RYU_HARDCORE_MODE) == 1)
         RyuKillMon();
-
 } 
 
 void CB2_ReturnToField(void)

@@ -76,9 +76,9 @@
 #define VAR_RYU_DAMAGED_HOUSE_ID             0x4038 //which property, if any, is damaged.
 #define VAR_RYU_PROPERTY_DAMAGE_TYPE         0x4039 //what sort of damage needs repaired.
 #define VAR_FARAWAY_ISLAND_STEP_COUNTER      0x403A
-#define VAR_REGICE_STEPS_1                   0x403B
-#define VAR_REGICE_STEPS_2                   0x403C
-#define VAR_REGICE_STEPS_3                   0x403D
+#define VAR_RYU_LAST_PICKUP_RARITY           0x403B//
+#define VAR_RYU_LAST_PICKUP_ITEM             0x403C//Used for the new pickup ability @PIDGEY TODO: Revert these to VAR_UNUSED_X and find another way to buffer this information
+#define VAR_RYU_LAST_PICKUP_SLOT             0x403D//from in battle to out of battle. Temp vars won't work, and i can't garuntee the text buffers will be free.
 #define VAR_ALTERING_CAVE_WILD_SET           0x403E
 #define VAR_DISTRIBUTE_EON_TICKET            0x403F // This var is read and written, but is always zero. The only way to obtain the Eon Ticket in Emerald is via Record Mixing
 #define VAR_DAYS                             0x4040
@@ -198,7 +198,7 @@
 #define VAR_WEATHER_INSTITUTE_STATE          0x40B3
 #define VAR_SS_TIDAL_STATE                   0x40B4
 #define VAR_TRICK_HOUSE_ENTER_FROM_CORRIDOR  0x40B5
-#define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     0x40B6 // Leftover from RS, never set
+#define VAR_RYU_UB_EVENT_TIMER               0x40B6 // Which UB rotation is currently active. Changes daily.
 #define VAR_SLATEPORT_FAN_CLUB_STATE         0x40B7
 #define VAR_RYU_SCRIPT_PTR                   0x40B8
 #define VAR_OPTIONS_EXP_BAR_SPEED            0x40B9
@@ -303,6 +303,8 @@
 #define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of gTrainerBattleOpponent_A
 
 #define SPECIAL_VARS_END              0x8015
+
+#define TRAINER_HILL_REWARDS_PER_TABLE 20
 
 #define EXP_DRIVE_MAX 15000000 //exp drive new max is 15 million
 
@@ -444,6 +446,6 @@
 #define PROPERTY_MOSSDEEP    11
 //there are an additional 20 properties
 
-#define EE_GAME_VERSION 7802
+#define EE_GAME_VERSION 7807
 
 #endif // GUARD_CONSTANTS_VARS_H

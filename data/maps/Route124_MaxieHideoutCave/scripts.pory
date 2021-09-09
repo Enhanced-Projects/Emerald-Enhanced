@@ -9,6 +9,7 @@ Route124_MaxieHideoutCave_CheckDisableMaxie::
 	
 MHC_ShowMaxie::
 	setvar VAR_TEMP_2, 100
+	goto_if_unset FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
 	compare VAR_RYU_QUEST_MAGMA, 580
 	goto_if_lt ryu_end
 	compare VAR_RYU_QUEST_MAGMA, 590
@@ -20,6 +21,7 @@ MHC_ShowMaxie::
 
 MHC_MaxieFinalEvent::
 	setvar VAR_TEMP_0, 100
+	goto_if_unset FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
 	compare VAR_RYU_QUEST_MAGMA, 580
 	goto_if_lt ryu_end
 	compare VAR_RYU_QUEST_MAGMA, 590

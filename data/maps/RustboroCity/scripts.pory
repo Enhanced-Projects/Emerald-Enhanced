@@ -45,7 +45,6 @@ RustboroCity_EventScript_HideMapNamePopup:: @ 81E0707
 	return
 
 RustboroCity_OnFrame: @ 81E070B
-	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
 	.2byte 0
 
 RustboroCity_EventScript_ScientistAddMatchCall:: @ 81E0715

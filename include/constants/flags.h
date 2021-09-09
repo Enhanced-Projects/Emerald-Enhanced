@@ -165,7 +165,7 @@
 #define FLAG_CAUGHT_LUGIA                    0x91
 #define FLAG_CAUGHT_HO_OH                    0x92
 #define FLAG_ITEM_EVERGRANDE_CITY_PP_UP      0x93
-#define FLAG_UNUSED_0x94                     0x94
+#define FLAG_RYU_BOSS_IN_GCMS                0x94
 #define FLAG_UNUSED_0x95                     0x95
 #define FLAG_DEWFORD_NPC_TRADE_COMPLETED     0x96
 #define FLAG_RECEIVED_CASTFORM               0x97
@@ -174,7 +174,7 @@
 #define FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED  0x9A
 #define FLAG_FORTREE_NPC_TRADE_COMPLETED     0x9B
 #define FLAG_BATTLE_FRONTIER_TRADE_DONE      0x9C
-#define FLAG_UNUSED_0x9D                     0x9D
+#define FLAG_RYU_NOTIFY_PICKUP_ITEM          0x9D  //tell global script to notify player of picked up item.
 #define FLAG_UNUSED_0x9E                     0x9E
 #define FLAG_INTERACTED_WITH_DEVON_EMPLOYEE_GOODS_STOLEN 0x9F
 #define FLAG_COOL_PAINTING_MADE              0xA0
@@ -388,14 +388,14 @@
 #define FLAG_ITEM_MIRAGE_CAVE_RARE_BONE_2    0x16B
 #define FLAG_ITEM_MIRAGE_CAVE_HELIX_FOSSIL   0x16C
 #define FLAG_ITEM_MIRAGE_CAVE_ROSE_INCENSE   0x16D
-#define FLAG_NIGILEGO_ESCAPED                0x16E
-#define FLAG_BUZZWOLE_ESCAPED                0x16F
-#define FLAG_PHEROMOSA_ESCAPED               0x170
-#define FLAG_XURKITREE_ESCAPED               0x171
-#define FLAG_CELESTEELA_ESCAPED              0x172
-#define FLAG_KARTANA_ESCAPED                 0x173
-#define FLAG_GUZZLORD_ESCAPED                0x174
-#define FLAG_STAKATAKA_ESCAPED               0x175
+#define FLAG_RYU_NIHILEGO_CAUGHT                0x16E
+#define FLAG_RYU_BUZZWOLE_CAUGHT                0x16F
+#define FLAG_RYU_PHEROMOSA_CAUGHT               0x170
+#define FLAG_RYU_XURKITREE_CAUGHT               0x171
+#define FLAG_RYU_CELESTEELA_CAUGHT              0x172
+#define FLAG_RYU_KARTANA_CAUGHT                 0x173
+#define FLAG_RYU_GUZZLORD_CAUGHT                0x174
+#define FLAG_RYU_STAKATAKA_CAUGHT               0x175
 #define FLAG_RYU_AQUA_LINE_DONE              0x176 // finished aqua. Checked for battle music scenarios.
 #define FLAG_RYU_AQUA_1_NOTIFY               0x177 // First aqua notification given
 #define FLAG_RYU_AQUA_2_NOTIFY               0x178 // Second aqua notification given
@@ -404,9 +404,9 @@
 #define FLAG_RYU_HIDE_NPCS_MTPYRE_SUMMIT     0x17B // Aqua and Magma goons in the mountaintop
 #define FLAG_POIPOLE                         0x17C
 #define FLAG_ITEM_MIRAGE_CAVE_ROCK_INCENSE   0x17D
-#define FLAG_UNUSED_0x17E                    0x17E
-#define FLAG_UNUSED_0x17F                    0x17F
-#define FLAG_UNUSED_0x180                    0x180
+#define FLAG_RYU_CAUGHT_ALL_UBS              0x17E
+#define FLAG_RYU_ENCOUNTERED_UB              0x17F //currently fighting an UltraBeast
+#define FLAG_RYU_PAUSE_UB_ENCOUNTER          0x180 //prevent another ub encounter until map reset
 #define FLAG_UNUSED_0x181                    0x181
 #define FLAG_UNUSED_0x182                    0x182
 #define FLAG_UNUSED_0x183                    0x183
@@ -1716,7 +1716,7 @@
 #define TOTAL_AP_COUNT 14
 
 //the total number of achievements that can be owned, this is what will be used for the ap percentage check.
-#define TOTAL_OBTAINABLE_ACHIEVEMENTS 58
+#define TOTAL_OBTAINABLE_ACHIEVEMENTS 59
 
 //Achievement related. Achievements are stored in Save Block 2, 256 total.
 #define ACH_FLAGS_START 0x0
@@ -1779,7 +1779,7 @@
 #define ACH_MILLIONAIRE  55 //1m+ net worth
 #define ACH_MONEYBAGS  56 //100m+ net worth
 #define ACH_SLUM_LORD  57 ///own all properties
-#define ACH_UNUSED_59  58
+#define ACH_ULTRA_BEASTLY  58 //capture all ubs
 #define ACH_UNUSED_60  59
 #define ACH_UNUSED_61  60
 #define ACH_UNUSED_62  61

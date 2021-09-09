@@ -6,7 +6,6 @@ SootopolisCity_MapScripts:: @ 81E565C
 	.byte 0
 
 SC_OnFrameMapScripts::
-	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
 	.2byte 0
 
 SootopolisCity_OnResume: @ 81E590B

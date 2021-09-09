@@ -272,12 +272,12 @@ RyuUserModeEVMenu::
 	goto_if_eq ryu_end
 	setvar VAR_TEMP_1, 0
 	copyvar VAR_TEMP_2, VAR_RESULT
-	checkitem ITEM_WAVE_MAIL, 1
+	checkitem ITEM_IMPRINT, 1
 	compare VAR_RESULT, 1
 	goto_if_ne RyuUserEvNoImprint
 	special RyuSetSlotStatEV
 	addmonhappiness VAR_TEMP_2, 25
-	removeitem ITEM_WAVE_MAIL, 1
+	removeitem ITEM_IMPRINT, 1
 	msgbox RyuEvSuccessMsg MSGBOX_DEFAULT
 	release
 	end
@@ -1109,11 +1109,19 @@ RyuLegendary_GeneralLegendEncounter::
 	call_if_gt RyuLegendary_SetMaxScale
 	compare VAR_TEMP_7, 20
 	call_if_le RyuLegendary_SetBaseScale
+	random 99
+	compare VAR_RESULT, 0
+	call_if_eq RyuLegendary_SetBossFlag
 	setwildbattle VAR_TEMP_5, VAR_TEMP_7, VAR_TEMP_9
 	special BattleSetup_StartLegendaryBattle
 	waitstate
+	clearflag FLAG_RYU_BOSS_WILD
 	return
 	end
+
+RyuLegendary_SetBossFlag::
+	setflag FLAG_RYU_BOSS_WILD
+	return
 	
 RyuLegendary_SetMaxScale::
 	setvar VAR_TEMP_7, 110
@@ -1497,8 +1505,7 @@ FFTextMsg::
 	.string "It is recommended that you use\n"
 	.string "fast instead.$"
 
-RyuGlobal_CheckDexnavStatus::
-	goto_if_set FLAG_SYS_DEXNAV_GET, ryu_return
+RyuGlobal_EnableNormalDexnav::
 	pokenavcall Ryu_DexnavGive
 	waitmessage
 	setflag FLAG_SYS_DEXNAV_GET
@@ -1508,12 +1515,6 @@ Ryu_DexnavGive:
 	.string "Congratulations, {PLAYER}!\pYou have been randomly selected\nto receive the free DexNav upgrade\lfor your Pokenav.\pWe hope you will enjoy this new\nbeta feature!$"
 
 RyuGlobal_CheckMagmaStatus::
-	setvar VAR_TEMP_A, 100
-	specialvar VAR_RESULT, CountBadges
-	compare VAR_RESULT, 6
-	call_if_ge RyuGlobal_CheckDexnavStatus
-	goto_if_set FLAG_RYU_PLAYER_HELPING_AQUA, RyuGlobal_CheckAquaStatus
-	goto_if_unset FLAG_RYU_PLAYER_HELPING_MAGMA, ryu_end
 	switch VAR_RYU_QUEST_MAGMA
 	case 130, Ryu_InitializeMagmaPart4
 	case 210, Ryu_InitializeMagmaPart6
@@ -1853,6 +1854,12 @@ RyuScript_CheckGivenAchievement::
 	goto_if_eq RyuScript_CheckGivenGoldAch
 	compare VAR_RYU_LAST_ACH, ACH_TOURIST
 	goto_if_eq RyuScript_CheckGivenGoldAch
+	compare VAR_RYU_LAST_ACH, ACH_MILLIONAIRE
+	goto_if_eq RyuScript_CheckGivenGoldAch
+	compare VAR_RYU_LAST_ACH, ACH_MONEYBAGS
+	goto_if_eq RyuScript_CheckGivenGoldAch
+	compare VAR_RYU_LAST_ACH, ACH_ULTRA_BEASTLY
+	goto_if_eq RyuScript_CheckGivenGoldAch
 	copyvar VAR_TEMP_C, VAR_RYU_LAST_ACH
 	callnative BufferGivenAchievement
 	playse SE_EXPMAX
@@ -2171,6 +2178,7 @@ script RyuScript_EndNuzlockeMode{
     msgbox(format("Welcome to Limbo. You have failed your Nuzlocke or Hardcore challenge and have died. You can use this time to reflect on your decisions, or organize your item storage for a New Game +."))
     closemessage
     msgbox(format("Please wait while we check some things, this might take a few seconds."))
+	setflag(FLAG_SYS_GAME_CLEAR)
     callnative(RyuForceSaveTheGame)
     closemessage
     clearfullscreenimage
@@ -2265,6 +2273,7 @@ text BF_battledefeat {
 }
 
 script RyuScript_CompleteTravelDailyQuestType {
+	clearflag(FLAG_TEMP_E)
 	bufferfactionname(0, VAR_RYU_DAILY_QUEST_ASSIGNEE_FACTION)
 	msgbox(format("{COLOR LIGHT_BLUE}{SHADOW BLUE}Hmm. This appears to be the place that the {STR_VAR_1} wanted me to come to. Guess I should return to one of them."))
 	closemessage
@@ -2274,6 +2283,7 @@ script RyuScript_CompleteTravelDailyQuestType {
 }
 
 script RyuScript_PlayerReceivedInterest {
+	clearflag(FLAG_RYU_INTEREST_ACCRUED)
 	callnative(RyuBufferInterestGamestat)
 	msgbox("You earned interest in the amount of\n¥{STR_VAR_1} for this 24-Hour period.\lThank you for choosing Frontier Bank.")
 	release
@@ -2367,4 +2377,214 @@ script(global) RyuDebug_FinishTimeSlide {
 	msgbox("Loop has finished")
 	release
 	end
+}
+
+//new pickup
+
+script RyuScript_NotifyPickedUpItem {
+	callnative(RyuNotifyPickupItemBufferValues)
+	msgbox(format("Your {STR_VAR_1} scavenged {STR_VAR_3}{STR_VAR_2} after the battle!"))
+	clearflag(FLAG_RYU_NOTIFY_PICKUP_ITEM)
+	release
+	end
+}
+
+//UB related
+
+script RyuScript_NotifyUltraBeasts {
+	if (flag(FLAG_RYU_CAUGHT_ALL_UBS) == TRUE){
+		goto(ryu_return)
+	}
+	switch (var(VAR_RYU_UB_EVENT_TIMER)){
+		case 0://buzzwole/pheromosa
+			if (flag(FLAG_RYU_BUZZWOLE_CAUGHT) == FALSE) {
+				msgbox(format("There have been reports of unusual noises coming from Granite Cave."))
+				closemessage
+				goto(ryu_return)
+			}
+			if (flag(FLAG_RYU_PHEROMOSA_CAUGHT) == FALSE){
+				msgbox(format("There've been sightings of a never before seen bug-type Pokémon harassing residents near Route 119."))
+				closemessage
+				goto(ryu_return)
+			}
+			msgbox(format("The odd reports from Granite Cave and Route 119 have been investigated by the Champion, {PLAYER}, and were discovered to be never before seen species of Pokémon! And now back to your previous program."))
+			goto(ryu_return)
+		case 1://kartana/xurkitree
+			if (flag(FLAG_RYU_KARTANA_CAUGHT) == FALSE) {
+				msgbox(format("Some observers say they saw an incredibly fast paper airplane flying around route 120."))
+				closemessage
+				goto(ryu_return)
+			}
+			if (flag(FLAG_RYU_XURKITREE_CAUGHT) == FALSE) {
+				msgbox(format("There've been many strange electrical outages and rolling blackouts affecting areas around Mauville City. Experts believe there's issues in the underground city."))
+				closemessage
+				goto(ryu_return)
+			}
+			msgbox(format("We have heard word that the Champion, {PLAYER} investigated the mysterious reports near route 120 and Mauville. The issues have since been resolved. Now back to your original programming."))
+			closemessage
+			goto(ryu_return)
+		case 2://nihilego/guzzlord
+			if (flag(FLAG_RYU_NIHILEGO_CAUGHT) == FALSE) {
+				msgbox(format("A strange phenomenon affecting women around Meteor Falls has been reported. Experts are stumped as to why women are becoming distant and appear to be zoned out. Stay tuned for more information!"))
+				closemessage
+				goto(ryu_return)
+			}
+			if (flag(FLAG_RYU_GUZZLORD_CAUGHT) == false) {
+				msgbox(format("Residents around Frosty Grotto have been reporting hearing terrifying screams at night. Residents are asked to remain indoors and do not investigate. The authorities are looking into it."))
+				closemessage
+				goto(ryu_return)
+			}
+			msgbox(format("Our present Champion {PLAYER} investigated Meteor Falls and the Frosty Grotto, and seems to have dealt with the odd happenings. We now return you to your previous program."))
+			closemessage
+			goto(ryu_return)
+		case 3://stakataka/celesteela
+			if (flag(FLAG_RYU_STAKATAKA_CAUGHT) == FALSE) {
+				msgbox(format("The locals that watch over Mt. Pyre have been discoving odd dark-colored bricks made of materials not previously known to us scattered around the inside of the tower."))
+				closemessage
+				goto(ryu_return)
+			}
+			if (flag(FLAG_RYU_CELESTEELA_CAUGHT) == FALSE) {
+				msgbox(format("A large meteor impact was observed to have happened near Route 66. Scientists are working on investigating the mysterous meteorite."))
+				closemessage
+				goto(ryu_return)
+			}
+			msgbox(format("{PLAYER}, our Champion, investigated the meteor impact as well as the strange objects in Mt. Pyre, and has since cleared up all reports. We now return to your original programming."))
+	}
+}
+
+//UB Encounters
+
+script RyuScript_EncounterBuzzwole {
+	msgbox("A mysterious Bug Pokémon attacks!", MSGBOX_ONELINE)
+	setvar(VAR_TEMP_5, SPECIES_BUZZWOLE)
+	call(RyuLegendary_GeneralLegendEncounter)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		setflag(FLAG_RYU_BUZZWOLE_CAUGHT)
+		call(RyuCheckIfAllBeastsCaught)
+	}
+	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
+	clearflag(FLAG_RYU_ENCOUNTERED_UB)
+	release
+	end
+}
+
+script RyuScript_EncounterPheromosa {
+	msgbox("A feminine Bug Pokémon attacks!", MSGBOX_ONELINE)
+	setvar(VAR_TEMP_5, SPECIES_PHEROMOSA)
+	call(RyuLegendary_GeneralLegendEncounter)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		setflag(FLAG_RYU_PHEROMOSA_CAUGHT)
+		call(RyuCheckIfAllBeastsCaught)
+	}
+	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
+	clearflag(FLAG_RYU_ENCOUNTERED_UB)
+	release
+	end
+}
+
+script RyuScript_EncounterKartana {
+	msgbox("Some animated origami attacks!", MSGBOX_ONELINE)
+	setvar(VAR_TEMP_5, SPECIES_KARTANA)
+	call(RyuLegendary_GeneralLegendEncounter)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		setflag(FLAG_RYU_KARTANA_CAUGHT)
+		call(RyuCheckIfAllBeastsCaught)
+	}
+	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
+	clearflag(FLAG_RYU_ENCOUNTERED_UB)
+	release
+	end
+}
+
+script RyuScript_EncounterXurkitree {
+	msgbox("Some living power lines attack!", MSGBOX_ONELINE)
+	setvar(VAR_TEMP_5, SPECIES_XURKITREE)
+	call(RyuLegendary_GeneralLegendEncounter)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		setflag(FLAG_RYU_XURKITREE_CAUGHT)
+		call(RyuCheckIfAllBeastsCaught)
+	}
+	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
+	clearflag(FLAG_RYU_ENCOUNTERED_UB)
+	release
+	end
+}
+
+script RyuScript_EncounterNihilego {
+	msgbox("An odd wig-shaped jellyfish attacks!", MSGBOX_ONELINE)
+	setvar(VAR_TEMP_5, SPECIES_NIHILEGO)
+	call(RyuLegendary_GeneralLegendEncounter)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		setflag(FLAG_RYU_NIHILEGO_CAUGHT)
+		call(RyuCheckIfAllBeastsCaught)
+	}
+	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
+	clearflag(FLAG_RYU_ENCOUNTERED_UB)
+	release
+	end
+}
+
+script RyuScript_EncounterGuzzlord {
+	msgbox("A Pokémon with a gaping maw attacks!", MSGBOX_ONELINE)
+	setvar(VAR_TEMP_5, SPECIES_GUZZLORD)
+	call(RyuLegendary_GeneralLegendEncounter)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		setflag(FLAG_RYU_GUZZLORD_CAUGHT)
+		call(RyuCheckIfAllBeastsCaught)
+	}
+	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
+	clearflag(FLAG_RYU_ENCOUNTERED_UB)
+	release
+	end
+}
+
+script RyuScript_EncounterStakataka {
+	msgbox("A giant living box attacks!", MSGBOX_ONELINE)
+	setvar(VAR_TEMP_5, SPECIES_STAKATAKA)
+	call(RyuLegendary_GeneralLegendEncounter)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		setflag(FLAG_RYU_STAKATAKA_CAUGHT)
+		call(RyuCheckIfAllBeastsCaught)
+	}
+	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
+	clearflag(FLAG_RYU_ENCOUNTERED_UB)
+	release
+	end
+}
+
+script RyuScript_EncounterCelesteela {
+	msgbox("A magical statue attacks!", MSGBOX_ONELINE)
+	setvar(VAR_TEMP_5, SPECIES_CELESTEELA)
+	call(RyuLegendary_GeneralLegendEncounter)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		setflag(FLAG_RYU_CELESTEELA_CAUGHT)
+		call(RyuCheckIfAllBeastsCaught)
+		clearflag(FLAG_RYU_BOSS_WILD)
+	}
+	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
+	clearflag(FLAG_RYU_ENCOUNTERED_UB)
+	release
+	end
+}
+
+script RyuCheckIfAllBeastsCaught {
+	goto_if_set(FLAG_RYU_CAUGHT_ALL_UBS, ryu_return)
+	goto_if_unset(FLAG_RYU_NIHILEGO_CAUGHT, ryu_return)
+	goto_if_unset(FLAG_RYU_BUZZWOLE_CAUGHT, ryu_return)
+	goto_if_unset(FLAG_RYU_PHEROMOSA_CAUGHT, ryu_return)
+	goto_if_unset(FLAG_RYU_XURKITREE_CAUGHT, ryu_return)
+	goto_if_unset(FLAG_RYU_CELESTEELA_CAUGHT, ryu_return)
+	goto_if_unset(FLAG_RYU_KARTANA_CAUGHT, ryu_return)
+	goto_if_unset(FLAG_RYU_GUZZLORD_CAUGHT, ryu_return)
+	goto_if_unset(FLAG_RYU_STAKATAKA_CAUGHT, ryu_return)
+	setflag(FLAG_RYU_CAUGHT_ALL_UBS)
+	ach(give, ACH_ULTRA_BEASTLY)
 }

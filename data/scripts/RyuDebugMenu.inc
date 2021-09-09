@@ -70,7 +70,7 @@ RyuDebug_UtilitiesMenu:
 	case 9, RyuDebug_FillTheDex
 	case 10, RDB_GiveOrTakeAllAchievements
 	case 11, RDB_GetCurrentAndMaxAP
-	case 12, RDB_CheckFactionRelations
+	case 12, RyuDebug_EnableDexnav
 	case 13, RDB_AlchemyInfo
 	case 14, RDB_ToggleLevelCap
 	case 15, RDB_EnableRealEstate
@@ -185,20 +185,6 @@ RDB_EnableRealEstate::
 	callnative SetPlayerRealtorStatus
 	release
 	end
-
-RDB_CheckFactionRelations::
-	callnative RyuDebug_ViewFactionRelations
-	msgbox factiondebugmsg
-	closemessage
-	release
-	end
-
-factiondebugmsg:
-	.string "Faction Relations Values:\p"
-	.string "Pokefans: {STR_VAR_1}. Naturalists: {STR_VAR_2}.\n"
-	.string "Athletes: {STR_VAR_3}. Outcasts: {RYU_STR_1}.\p"
-	.string "Professionals: {RYU_STR_2}. Nobles: {RYU_STR_3}.\n"
-	.string "Students: {RYU_STR_4}. Others: N/A.$"
 
 RDB_GetCurrentAndMaxAP::
 	callnative APDebugInfo

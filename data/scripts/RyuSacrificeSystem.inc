@@ -540,7 +540,7 @@ GCMS_ChooseNatureMsg:
 	.string "Please choose a temperament...$"
 	
 GCMS_Successful:
-    .string "Success! A {COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1} {COLOR DARK_GREY}{SHADOW LIGHT_GREY}egg has\n"
+    .string "Success! A {COLOR LIGHT_BLUE}{SHADOW BLUE}{STR_VAR_1} {COLOR DARK_GREY}{SHADOW LIGHT_GREY}has\n"
     .string "been made!$"
 	
 GCMS_PickSlot:
@@ -585,8 +585,8 @@ GCMS_Tutorial2:
     .string "When you've reached the gene\n"
     .string "viability value you want, for ex-\l"
     .string "ample... 31, you may then have\p"
-    .string "the system create an egg for you\n"
-    .string "to pick up and then raise as per\l"
+    .string "the system create a new pokemon.\n"
+    .string "Pick this mon up to raise as per\l"
     .string "normal.\p"
 	.string "This then resets your stored\n"
 	.string "genetic code value, and species.$"

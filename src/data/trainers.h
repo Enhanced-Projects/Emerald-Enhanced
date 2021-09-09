@@ -10594,7 +10594,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_REL_COURTNEY_1] =
     {
-        .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
         .trainerFaction = FACTION_OTHERS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
@@ -10605,7 +10605,7 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
         .partySize = ARRAY_COUNT(sParty_RelCourtney1),
-        .party = {.NoItemCustomMoves = sParty_RelCourtney1},
+        .party = {.ItemCustomMoves = sParty_RelCourtney1},
     },
 
     [TRAINER_DEVON_ENFORCER_1] =

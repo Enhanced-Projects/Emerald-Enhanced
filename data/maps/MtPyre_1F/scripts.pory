@@ -67,14 +67,15 @@ MP_CantLeave:
 MP_FactionQuestHexer::
 	compare VAR_RYU_QUEST_AQUA, 80
 	goto_if_ge MP_FQ_NotAvailable
-	checkfactionstanding FACTION_OUTCASTS, 50
+	checkfactionstanding FACTION_OUTCASTS, 80
 	compare VAR_RESULT, FALSE
 	goto_if_eq MP_FQ_NotAvailable
+	goto_if_set FLAG_RYU_HAS_FOLLOWER, MP_FQ_NotAvailable
 	lock
 	faceplayer
 	msgbox MP_FQ_HexerIntroQuery, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_set FLAG_RYU_HAS_FOLLOWER, MP_FQ_NotAvailable
+	goto_if_eq MP_FQ_CancelledQuest
 	msgbox MP_FQ_HexerExplain
 	playmoncry SPECIES_MIMIKYU, 1
 	closemessage

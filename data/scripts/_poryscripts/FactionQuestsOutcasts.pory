@@ -61,7 +61,7 @@ script(global) RyuOutcastsDailyQuest  {
                 if (var(VAR_TEMP_F) < 6) {
                     bufferspeciesname(0, VAR_RYU_DAILY_QUEST_TARGET)
                     msgbox(format("I see. It was a {STR_VAR_1}. It doesn't appear to have any psychic power. You can keep it."))
-                    goto(CommonPokefansRewardScript)
+                    goto(CommonOutcastRewardScript)
                     release
                     end
                 }
@@ -103,7 +103,7 @@ script(global) RyuOutcastsDailyQuest  {
             setvar(VAR_RYU_DAILY_QUEST_DATA, 0)
             callnative(RyuSetupEggHatchQuest)
             giveegg(VAR_RYU_DAILY_QUEST_TARGET)
-            msgbox(format("This egg has an impressive aura. Could you hatch it to see what it turs out to be?"))
+            msgbox(format("This egg has an impressive aura. Could you hatch it to see what it turns out to be?"))
             closemessage
             msgbox(FactionsReceivedEggMsg)
     }

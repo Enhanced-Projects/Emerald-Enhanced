@@ -413,7 +413,7 @@ static void TrainerHillStartChallenge(void)
     gSaveBlock2Ptr->frontier.trainerFlags = 0;
     gBattleOutcome = 0;
     gSaveBlock1Ptr->trainerHill.receivedPrize = 0;
-    VarSet(VAR_RYU_TH_RNG_VALUE, Random() % 20);
+    VarSet(VAR_RYU_TH_RNG_VALUE, Random() % TRAINER_HILL_REWARDS_PER_TABLE);
 }
 
 static void GetOwnerState(void)
@@ -1058,10 +1058,11 @@ static u16 GetPrizeItemId(void)
 }
 
 //New trainer hill reward tables. There's no hard limit to these tables,
-//but each table MUST be the same length, and you must adjust the random
-//count in TrainerHillStartChallenge above.  
+//but each table MUST be the same length, and you must adjust the define
+//in include/constants/vars.h.  
 
-const u16 sTrainerHillLegendRewards[] = {//legends reward table
+const u16 sTrainerHillLegendRewards[TRAINER_HILL_REWARDS_PER_TABLE] = {//legends reward table
+    ITEM_SACRED_ASH,
     ITEM_SACRED_ASH,
     ITEM_SACRED_ASH,
     ITEM_SACRED_ASH,
@@ -1083,7 +1084,7 @@ const u16 sTrainerHillLegendRewards[] = {//legends reward table
     ITEM_ENIGMA_BERRY,
 };
 
-const u16 sTrainerHillMythicRewards[] = {//mythics reward table
+const u16 sTrainerHillMythicRewards[TRAINER_HILL_REWARDS_PER_TABLE] = {//mythics reward table
     ITEM_LEVEL_BALL,
     ITEM_LEVEL_BALL,
     ITEM_LURE_BALL,
@@ -1106,7 +1107,7 @@ const u16 sTrainerHillMythicRewards[] = {//mythics reward table
     ITEM_LUCKY_EGG,
 };
 
-const u16 sTrainerHillBeastRewards[] = {//beast reward table
+const u16 sTrainerHillBeastRewards[TRAINER_HILL_REWARDS_PER_TABLE] = {//beast reward table
     ITEM_BEAST_BALL,
     ITEM_BEAST_BALL,
     ITEM_BEAST_BALL,
@@ -1129,7 +1130,7 @@ const u16 sTrainerHillBeastRewards[] = {//beast reward table
     ITEM_PP_MAX,
 };
 
-const u16 sTrainerHillMixedRewards[] = {//mixed reward table
+const u16 sTrainerHillMixedRewards[TRAINER_HILL_REWARDS_PER_TABLE] = {//mixed reward table
     ITEM_BLUE_FLUTE,
     ITEM_BLUE_FLUTE,
     ITEM_YELLOW_FLUTE,
@@ -1143,6 +1144,7 @@ const u16 sTrainerHillMixedRewards[] = {//mixed reward table
     ITEM_LUCKY_EGG,
     ITEM_LUCKY_EGG,
     ITEM_LUCKY_EGG,
+    ITEM_PP_MAX,
     ITEM_PP_MAX,
     ITEM_PP_MAX,
     ITEM_PP_MAX,

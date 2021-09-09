@@ -6,7 +6,6 @@ FortreeCity_MapScripts:: @ 81E25A4
 	.byte 0
 
 FortreeCity_OnFrameScripts::
-	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
 	.2byte 0 
 
 FortreeCity_OnTransition: @ 81E25AF

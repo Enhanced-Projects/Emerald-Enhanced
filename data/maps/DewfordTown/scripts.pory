@@ -5,7 +5,6 @@ DewfordTown_MapScripts:: @ 81E9507
 	.byte 0
 
 DFT_OnFrameScripts::
-	map_script_2 VAR_TEMP_A, 0, RyuGlobal_CheckMissionCallStatus
 	.2byte 0
 
 DewfordTown_OnTransition: @ 81E950D
