@@ -185,6 +185,7 @@
 #define MON_DATA_SPDEF2            88
 
 #define MIN_LEVEL 1
+#define VANILLA_MAX_LEVEL 100
 #define MAX_LEVEL GetCurrentMaxLevel()
 #define BASE_MAX_LEVEL 125
 // up to 5 for a max of level 250

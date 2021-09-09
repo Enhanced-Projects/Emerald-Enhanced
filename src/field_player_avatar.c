@@ -656,8 +656,16 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
             }
             else
             {
-                PlayerGoSpeed2(direction);
-                gPlayerAvatar.creeping = FALSE;
+                if (FlagGet(FLAG_RYU_AUTORUN) == TRUE)
+                {
+                    PlayerGoSpeed2(direction);
+                    return;
+                }
+                else
+                {
+                    PlayerGoSpeed1(direction);
+                    return;
+                }
             }
         }
         return;
@@ -673,17 +681,39 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         }
         else
         {
-            PlayerRun(direction);
-            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
-            return;
+            if (FlagGet(FLAG_RYU_AUTORUN) == TRUE)
+            {
+                PlayerRun(direction);
+                gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+                return;
+            }
+            else
+            {
+                PlayerGoSpeed1(direction);
+                return;
+            }
+            
+        }
+    }
+    else if ((FlagGet(FLAG_SYS_DEXNAV_SEARCH)) && (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER))
+    {
+        if (heldKeys & A_BUTTON)
+        {
+            PlayerGoSpeed1(direction);
+            gPlayerAvatar.creeping = TRUE;
+        }
+        else
+        {
+            gPlayerAvatar.creeping = FALSE;
+            PlayerGoSpeed2(direction);
         }
     }
     else if (FlagGet(FLAG_SYS_DEXNAV_SEARCH))
     {
         if (heldKeys & B_BUTTON)
         {
-            gPlayerAvatar.creeping = TRUE;
             PlayerGoSpeed1(direction);
+            gPlayerAvatar.creeping = TRUE;
         }
         else
         {
@@ -693,7 +723,17 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
     }
     else
     {
-        PlayerGoSpeed1(direction);
+         if (FlagGet(FLAG_RYU_AUTORUN) == FALSE)
+            {
+                PlayerRun(direction);
+                gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+                return;
+            }
+            else
+            {
+                PlayerGoSpeed1(direction);
+                return;
+            }
     }
 }
 

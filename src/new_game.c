@@ -103,6 +103,8 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsThemeNumber = OPTIONS_THEME_DARK;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
+    FlagClear(FLAG_RYU_VANILLA_CAP);
+    FlagSet(FLAG_RYU_AUTORUN);
 }
 
 void ClearAllContestWinnerPics(void)

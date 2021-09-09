@@ -166,7 +166,7 @@
 #define FLAG_CAUGHT_HO_OH                    0x92
 #define FLAG_ITEM_EVERGRANDE_CITY_PP_UP      0x93
 #define FLAG_RYU_BOSS_IN_GCMS                0x94
-#define FLAG_UNUSED_0x95                     0x95
+#define FLAG_RYU_VANILLA_CAP                 0x95
 #define FLAG_DEWFORD_NPC_TRADE_COMPLETED     0x96
 #define FLAG_RECEIVED_CASTFORM               0x97
 #define FLAG_RECEIVED_SUPER_ROD              0x98
@@ -175,7 +175,7 @@
 #define FLAG_FORTREE_NPC_TRADE_COMPLETED     0x9B
 #define FLAG_BATTLE_FRONTIER_TRADE_DONE      0x9C
 #define FLAG_RYU_NOTIFY_PICKUP_ITEM          0x9D  //tell global script to notify player of picked up item.
-#define FLAG_UNUSED_0x9E                     0x9E
+#define FLAG_RYU_AUTORUN              0x9E
 #define FLAG_INTERACTED_WITH_DEVON_EMPLOYEE_GOODS_STOLEN 0x9F
 #define FLAG_COOL_PAINTING_MADE              0xA0
 #define FLAG_BEAUTY_PAINTING_MADE            0xA1
