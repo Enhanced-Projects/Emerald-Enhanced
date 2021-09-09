@@ -1523,7 +1523,6 @@ void CB1_Overworld(void)
 
 static void OverworldBasic(void)
 {
-    DnsApplyFilters();
     ScriptContext2_RunScript();
     RunTasks();
     AnimateSprites();
@@ -1533,6 +1532,7 @@ static void OverworldBasic(void)
     UpdatePaletteFade();
     UpdateTilesetAnimations();
     DoScheduledBgTilemapCopiesToVram();
+    DnsApplyFilters();
 }
 
 // This CB2 is used when starting
