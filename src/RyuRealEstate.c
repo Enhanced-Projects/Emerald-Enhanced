@@ -345,7 +345,6 @@ void RyuBufferPropertyDamageData(void)
 {
     u8 id = (VarGet(VAR_RYU_DAMAGED_HOUSE_ID));
     u8 damageType = VarGet(VAR_RYU_PROPERTY_DAMAGE_TYPE);
-    mgba_printf(LOGINFO, "Property num %d, damage type %d", id, damageType);
 
     StringCopy(gStringVar2, gRyuPropertyNames[id]);// buffer property name
     StringCopy(gStringVar1, (gRyuDamageTypeNamesTable[damageType])); //buffer damage type string

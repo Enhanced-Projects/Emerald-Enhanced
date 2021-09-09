@@ -426,7 +426,7 @@ void BattleSetup_StartLegendaryBattle(void)
     gMain.savedCallback = CB2_EndScriptedWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_LEGENDARY;
 
-    if (FlagGet(FLAG_RYU_BOSS_WILD) == TRUE);
+    if (FlagGet(FLAG_RYU_BOSS_WILD) == TRUE)
     {
         u8 i = 0;
         u8 iv = 31;
@@ -474,6 +474,7 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_ENTEI:
     case SPECIES_HEATRAN:
     case SPECIES_VOLCANION:
+    case SPECIES_KELDEO:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEN);
         break;
     case SPECIES_SPIRITOMB:
