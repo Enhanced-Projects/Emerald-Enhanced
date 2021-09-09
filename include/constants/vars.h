@@ -2,7 +2,7 @@
 #define GUARD_CONSTANTS_VARS_H
 
 #define VARS_START 0x4000
-#define NUM_CONTEST_REWARDS 10
+#define NUM_CONTEST_REWARDS 17
 
 // temporary vars
 // The first 0x10 vars are are temporary--they are cleared every time a map is loaded.

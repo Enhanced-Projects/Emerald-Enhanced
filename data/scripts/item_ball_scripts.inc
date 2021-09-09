@@ -39,6 +39,14 @@ MirageCave_EventScript_ItemRoseIncense::
 	finditem ITEM_ROSE_INCENSE
 	end
 
+MirageCave_EventScript_ItemGoldOre::
+	finditem ITEM_GOLD_ORE
+	end
+
+MirageCave_EventScript_ItemEviolite::
+	finditem ITEM_EVIOLITE
+	end
+
 CraggyCoast_EventScript_ItemDiveBall::
 	finditem ITEM_DIVE_BALL
 	end
