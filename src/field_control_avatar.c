@@ -259,16 +259,20 @@ void RyuDoNotifyTasks(void)
             ScriptContext1_SetupScript(RyuGlobal_EnableNormalDexnav);
 
     if ((FlagGet(FLAG_RYU_PLAYER_HELPING_MAGMA)) //Mission notifications from Magma
-        && (VarGet(VAR_RYU_QUEST_MAGMA) > 129) 
-        && (VarGet(VAR_RYU_QUEST_MAGMA) < 351)
+        && ((VarGet(VAR_RYU_QUEST_MAGMA) > 130) 
+        || (VarGet(VAR_RYU_QUEST_MAGMA) < 210)
+        || (VarGet(VAR_RYU_QUEST_MAGMA) < 350))
         && (!(FlagGet(FLAG_TEMP_F))))//prevents the notification from showing up as soon as the player is assigned the task.
     {
         ScriptContext1_SetupScript(RyuGlobal_CheckMagmaStatus);
     }
 
     if ((FlagGet(FLAG_RYU_PLAYER_HELPING_AQUA)) //Mission notifications from Aqua
-        && (VarGet(VAR_RYU_QUEST_AQUA) > 9) 
-        && (VarGet(VAR_RYU_QUEST_AQUA) < 124)
+        && ((VarGet(VAR_RYU_QUEST_AQUA) == 10) 
+        || (VarGet(VAR_RYU_QUEST_AQUA) == 55) 
+        || (VarGet(VAR_RYU_QUEST_AQUA) == 80) 
+        || (VarGet(VAR_RYU_QUEST_AQUA) == 91) 
+        || (VarGet(VAR_RYU_QUEST_AQUA) == 123))
         && (!(FlagGet(FLAG_TEMP_F))))
     {
         ScriptContext1_SetupScript(RyuGlobal_CheckAquaStatus);

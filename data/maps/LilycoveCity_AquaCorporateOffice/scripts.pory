@@ -6,6 +6,7 @@ LilycoveCity_AquaCorporateOffice_MapScripts::
 ACO_OnFrameScript::
 	map_script_2 VAR_RYU_QUEST_AQUA, 45, ACO_ReturnedFromMuseumWhiteout
 	map_script_2 VAR_RYU_QUEST_AQUA, 162, ACO_Night2Scene
+	map_script_2 VAR_TEMP_C, 0, ACO_PreventInstantNotification
 	.2byte 0
 
 
@@ -19,6 +20,21 @@ ACO_EntranceScriptTrigger::
 	compare VAR_RYU_QUEST_AQUA, 55
 	goto_if_ge ryu_end	
 	goto ACO_BlockEntry
+
+ACO_PreventInstantNotification::
+	setvar VAR_TEMP_C, 100
+	compare VAR_RYU_QUEST_AQUA, 55
+	goto_if_eq ACO_SetPreventNotify
+	compare VAR_RYU_QUEST_AQUA, 80
+	goto_if_eq ACO_SetPreventNotify
+	compare VAR_RYU_QUEST_AQUA, 91
+	goto_if_eq ACO_SetPreventNotify
+	end
+
+ACO_SetPreventNotify::
+	setflag FLAG_TEMP_F
+	end
+
 	
 ACO_PlayerShellyReturnFromJaggedPass:
 	lockall
