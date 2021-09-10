@@ -104,7 +104,7 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
     FlagClear(FLAG_RYU_VANILLA_CAP);
-    FlagSet(FLAG_RYU_AUTORUN);
+    FlagClear(FLAG_RYU_AUTORUN);
 }
 
 void ClearAllContestWinnerPics(void)
