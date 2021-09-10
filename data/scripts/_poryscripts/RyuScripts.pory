@@ -1531,6 +1531,7 @@ RyuGlobal_CheckAquaStatus::
 	goto ryu_end
 
 Ryu_initializeAquaStage1::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 3
 	goto_if_lt ryu_end
@@ -1554,6 +1555,7 @@ Ryu_initializeAquaStage1::
 	end
 
 Ryu_InitializeAquaStage2::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 5
 	goto_if_lt ryu_end
@@ -1575,6 +1577,7 @@ Ryu_InitializeAquaStage2::
 	end
 
 Ryu_InitializeAquaStage3NR::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 6
 	goto_if_lt ryu_end
@@ -1597,6 +1600,7 @@ Ryu_InitializeAquaStage3NR::
 	end
 
 Ryu_InitializeAquaStage3R::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 6
 	goto_if_lt ryu_end
@@ -1619,6 +1623,7 @@ Ryu_InitializeAquaStage3R::
 	end
 
 Ryu_InitializeAquaStage4R::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 7
 	goto_if_lt ryu_end
@@ -1697,6 +1702,7 @@ Ryu_AquaStep1OutroMessage:
     .string "{COLOR LIGHT_BLUE}{SHADOW BLUE}Time to get to work.$"
 
 Ryu_InitializeMagmaPart4::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 3
 	goto_if_lt ryu_end
@@ -1720,6 +1726,7 @@ Ryu_InitializeMagmaPart4::
 	end
 
 Ryu_InitializeMagmaPart6::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 6
 	goto_if_lt ryu_end
@@ -1742,6 +1749,7 @@ Ryu_InitializeMagmaPart6::
 
 
 Ryu_InitializeMagmaPart8::
+	setflag FLAG_TEMP_F
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 7
 	goto_if_lt ryu_end
