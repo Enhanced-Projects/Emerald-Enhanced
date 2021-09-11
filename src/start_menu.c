@@ -59,7 +59,7 @@ extern u8 RyuDebugMenuScript[];
 extern u8 RyuStartMenuConfigInfoScript[];
 extern const u8 gText_RyuVersion[];
 extern const u8 Ryu_FFTextSpeedWarning[];
-extern const u8 ryu_end[];
+extern const u8 RyuScript_Lv100FailMsg[];
 
 // Menu actions
 enum
@@ -525,7 +525,7 @@ void RemoveInfoBoxWindow(void)
         RemoveWindow(sPrintNumberWindow2Id);
     }
 /*
-    if (FlagGet(FLAG_NOTIFIED_FF_TEXT) == 0)
+    if (FlagGet(FLAG_SELECTED_FF_TEXT_OPTION) == 0)
         ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
     else
         ScriptContext1_SetupScript(ryu_end);//For some reason, this fixes the start menu info window border from sticking around, i call it a win.
@@ -1505,13 +1505,8 @@ static bool8 StartMenuOptionCallback(void)
 static bool8 StartMenuExitCallback(void)
 {
     RemoveExtraStartMenuWindows();
-    HideStartMenu(); // Hide start menu
-    //RemoveExtraStartMenuWindows();
+    HideStartMenu();
     HideFieldMessageBox();
-    if (FlagGet(FLAG_NOTIFIED_FF_TEXT) == 0)
-        ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
-    //else
-        //ScriptContext1_SetupScript(ryu_end);
     return TRUE;
 }
 

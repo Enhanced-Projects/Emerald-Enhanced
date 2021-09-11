@@ -1296,54 +1296,39 @@ int Ryu_GiveRevivedFossilEgg(void)//gives the player a revived fossil mon with 3
 int RyuCheckRelMegaReward(void)
 {
     u16 partnerId = (VarGet(VAR_RYU_FOLLOWER_ID));
+    u8 val = 0;
 
     switch (partnerId)
     {
         case OBJ_EVENT_GFX_AQUA_MEMBER_F:
         {
             if (FlagGet(FLAG_RYU_SHELLY_MEGA_REWARD) == 0)
-                {
-                    FlagSet(FLAG_RYU_SHELLY_MEGA_REWARD);
-                    return ITEM_SHARPEDONITE;
-                }
+                val += 1;
         }
         case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
         {
             if (FlagGet(FLAG_RYU_DAWN_MEGA_REWARD) == 0)
-                {
-                    FlagSet(FLAG_RYU_DAWN_MEGA_REWARD);
-                    return ITEM_ALTARIANITE;
-                }
+                val += 1;
         }
         case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
         {
             if (FlagGet(FLAG_RYU_BRENDAN_MEGA_REWARD) == 0)
-                {
-                    FlagSet(FLAG_RYU_BRENDAN_MEGA_REWARD);
-                    return ITEM_LUCARIONITE;
-                }
+                val += 1;
         }
         case OBJ_EVENT_GFX_LEAF:
             {
                 if (FlagGet(FLAG_RYU_LEAF_MEGA_REWARD) == 0)
-                {
-                    FlagSet(FLAG_RYU_LEAF_MEGA_REWARD);
-                    return ITEM_VENUSAURITE;
-                }
+                val += 1;
             }
         case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
         {
             if (FlagGet(FLAG_RYU_COURTNEY_MEGA_REWARD) == 0)
-            {
-                FlagSet(FLAG_RYU_COURTNEY_MEGA_REWARD);
-                return ITEM_CAMERUPTITE;
-            }
+            val += 1;
         }
         default:
-        {
-            return 0;
-        }
+            val = 0;
     }
+    return val;
 };
 
 extern const u8 gText_ColorLightRedShadowRed[];
@@ -2188,7 +2173,6 @@ void RyuNotifyPickupItemBufferValues (void)
 void RyuCheckHasFighterDogs(void)
 {
     u8 k;
-    bool32 rnd = FALSE;
 
     for (k = 0; k < CalculatePlayerPartyCount(); k++)
     {
@@ -2205,6 +2189,15 @@ void RyuCheckHasFighterDogs(void)
         if (GetMonData(&gPlayerParty[k], MON_DATA_SPECIES2) == SPECIES_COBALION)
             VarSet(VAR_TEMP_D, (VarGet(VAR_TEMP_D) + 100));
     }
+}
 
-
+bool32 RyuCheckFor100Lv(void) //player can only switch to 100 cap if party is at or below.
+{
+    u8 k;
+    for (k = 0; k < 6; k++)
+    {
+        if (GetMonData(&gPlayerParty[k], MON_DATA_LEVEL) > VANILLA_MAX_LEVEL)
+            return FALSE;
+    }
+    return TRUE;
 }

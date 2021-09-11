@@ -213,7 +213,7 @@
 #define FLAG_RYU_BOSS_WILD                   0xC1
 #define FLAG_RYU_MAGMA_ALT_LINE              0xC2 // used by start menu to determine which magma icon to draw. C for Main, T for Alt.
 #define FLAG_RYU_VIEWED_MIRAGE_ISLAND_NEWS_BULLETIN    0xC3 //
-#define FLAG_UNUSED_0xC4                     0xC4 //
+#define FLAG_RYU_NOTIFY_LV100_SWITCH                     0xC4 //
 #define FLAG_UNUSED_0xC5                     0xC5 //
 #define FLAG_UNUSED_0xC6                     0xC6 //
 #define FLAG_RUSTURF_TUNNEL_OPENED           0xC7
@@ -270,7 +270,7 @@
 #define FLAG_RECEIVED_WATMEL_BERRY           0xFA
 #define FLAG_RECEIVED_DURIN_BERRY            0xFB
 #define FLAG_RECEIVED_BELUE_BERRY            0xFC
-#define FLAG_UNUSED_0xFD                     0xFD
+#define FLAG_RYU_FAILED_100_CAP_SWITCH       0xFD//set if options menu fails to switch the level cap.
 #define FLAG_RECEIVED_CHARCOAL               0xFE
 #define FLAG_LATIOS_OR_LATIAS_ROAMING        0xFF
 #define FLAG_RECEIVED_REPEAT_BALL            0x100
@@ -352,7 +352,7 @@
 #define FLAG_RYU_AQUA_BAD_END           0x14C
 #define FLAG_RYU_DS_SHELLY_SCENE             0x14D
 
-#define FLAG_NOTIFIED_FF_TEXT                0x14E //player was warned that instant text speed can cause skipped dialogues.
+#define FLAG_SELECTED_FF_TEXT_OPTION                0x14E //player was warned that instant text speed can cause skipped dialogues.
 #define FLAG_HIDE_AQUAHQ_SHELLY              0x14F // hides shelly in the aqua hq when she becomes a follower.
 #define FLAG_FRIGUS_QUEST_ACCEPTED           0x150
 #define FLAG_RECEIVED_POWDER_JAR             0x151

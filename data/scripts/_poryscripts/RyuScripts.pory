@@ -1493,7 +1493,7 @@ RyuGlobal_CheckMissionCallStatus::
 
 Ryu_FFTextSpeedWarning::
 	msgbox FFTextMsg
-	setflag FLAG_NOTIFIED_FF_TEXT
+	clearflag FLAG_SELECTED_FF_TEXT_OPTION
 	release
 	end	
 
@@ -2636,6 +2636,22 @@ script RyuScript_EncounterKeldeo {
 		clearflag(FLAG_RYU_BOSS_WILD)
 	}
 	setflag(FLAG_RYU_PAUSE_UB_ENCOUNTER)
+	release
+	end
+}
+
+script RyuScript_Lv100FailMsg {
+	msgbox(format("You attempted to switch to the lv100 vanilla cap, but your party is not at or below level 100. Get only lv100 mons in your party to use this option."))
+	clearflag(FLAG_RYU_FAILED_100_CAP_SWITCH)
+	closemessage
+	release
+	end
+}
+
+script RyuScrupt_Lv100SwitchMsg {
+	msgbox(format("You have enabled the lv100 vanilla cap. If you have pokemon in your pc that are higher than level 100, \p{COLOR LIGHT_RED}{SHADOW RED}They will be adjusted down to 100. \p{COLOR DARK_GREY}{SHADOW LIGHT_GREY}Keep this in mind when using the vanilla cap.\pIf this is not what you want, disable the cap before withdrawing mons from the PC."))
+	clearflag(FLAG_RYU_NOTIFY_LV100_SWITCH)
+	closemessage
 	release
 	end
 }

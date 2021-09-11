@@ -441,13 +441,16 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     }
 }
 
+extern bool32 RyuCheckFor100Lv(void);
+
 static void Task_OptionMenuSave(u8 taskId)
 {
     gSaveBlock2Ptr->optionsTextSpeed = sOptions->sel[MENUITEM_TEXTSPEED];
     if (sOptions->sel[MENUITEM_TEXTSPEED] == 3)
-        FlagClear(FLAG_NOTIFIED_FF_TEXT);
+        FlagSet(FLAG_SELECTED_FF_TEXT_OPTION);
     else
-        FlagSet(FLAG_NOTIFIED_FF_TEXT);
+        FlagClear(FLAG_SELECTED_FF_TEXT_OPTION);
+
     gSaveBlock2Ptr->optionsBattleSceneOff = sOptions->sel[MENUITEM_BATTLESCENE];
     gSaveBlock2Ptr->optionsThemeNumber = sOptions->sel[MENUITEM_THEME];
     VarSet(VAR_RYU_THEME_NUMBER, sOptions->sel[MENUITEM_THEME]);
@@ -471,11 +474,23 @@ static void Task_OptionMenuSave(u8 taskId)
         FlagClear(FLAG_RYU_AUTORUN);
 
     if (sOptions->sel[MENUITEM_VANILLACAP])
-        FlagSet(FLAG_RYU_VANILLA_CAP);
+    {
+        bool32 check = RyuCheckFor100Lv();
+        if (check == TRUE)
+        {
+            FlagSet(FLAG_RYU_VANILLA_CAP);
+            FlagSet(FLAG_RYU_NOTIFY_LV100_SWITCH);
+        }
+        else
+        {
+            FlagSet(FLAG_RYU_FAILED_100_CAP_SWITCH);
+        }
+    }
     else
-        FlagClear(FLAG_RYU_VANILLA_CAP);
-    
-
+        {
+            FlagClear(FLAG_RYU_VANILLA_CAP);
+        }
+        
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
 }

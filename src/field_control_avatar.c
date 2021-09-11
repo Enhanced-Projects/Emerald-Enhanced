@@ -73,7 +73,9 @@ extern const u8 RyuScript_EncounterGuzzlord[];
 extern const u8 RyuScript_EncounterStakataka[];
 extern const u8 RyuScript_EncounterCelesteela[];
 extern const u8 RyuScript_EncounterKeldeo[];
-
+extern const u8 Ryu_FFTextSpeedWarning[];
+extern const u8 RyuScript_Lv100FailMsg[];
+extern const u8 RyuScrupt_Lv100SwitchMsg[];
 
 void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -213,6 +215,15 @@ void RyuDoNotifyTasks(void)
                 ScriptContext1_SetupScript(RyuScript_GoToLimbo);
         }
     }
+
+    if (FlagGet(FLAG_SELECTED_FF_TEXT_OPTION) == TRUE) //warn player about instant text
+        ScriptContext1_SetupScript(Ryu_FFTextSpeedWarning);
+
+    if (FlagGet(FLAG_RYU_FAILED_100_CAP_SWITCH) == TRUE)//Player attempted to switch to 100cap and failed.
+        ScriptContext1_SetupScript(RyuScript_Lv100FailMsg);
+
+    if (FlagGet(FLAG_RYU_NOTIFY_LV100_SWITCH) == TRUE)//Player switched to 100cap, warn about side effects.
+        ScriptContext1_SetupScript(RyuScrupt_Lv100SwitchMsg);
     
     if (FlagGet(FLAG_RYU_NOTIFY_PICKUP_ITEM) == TRUE) //notify picked up item(s).
         ScriptContext1_SetupScript(RyuScript_NotifyPickedUpItem);

@@ -302,7 +302,6 @@ void NewGameInitData(void)
     FlagClear(FLAG_RYU_TEMPTP);
     FlagClear(FLAG_RYU_HAS_FOLLOWER);
     FlagClear(FLAG_OPTIONS_INSTANT_TRANSITION);
-    FlagSet(FLAG_NOTIFIED_FF_TEXT);
     FlagSet(FLAG_HIDE_ALL_KECLEON_OWS);// can't delete all kecleon overworlds because scripts, so this will do.
     FlagSet(FLAG_SYS_NATIONAL_DEX);
 
