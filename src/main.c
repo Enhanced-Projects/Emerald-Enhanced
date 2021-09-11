@@ -398,25 +398,39 @@ static void SerialIntr(void)
 static void IntrDummy(void)
 {}
 
+//@PIDGEY Try these different vblanks and tell me if one seems better than the other,
+//the ruby one seems fastest to me in overworld movement.
+
+#define B_USE_RUBY_VBLANK
+//#define B_USE_VANILLA_VBLANK
+//#define B_USE_SHANTY_VBLANK
+
+
+#ifdef B_USE_RUBY_VBLANK
 static void WaitForVBlank(void)//Ruby's vblank
 {
     gMain.intrCheck &= ~INTR_FLAG_VBLANK;
     asm("swi 0x5");
 }
+#endif
 
-/*static void WaitForVBlank(void)// vanilla vblank
+#ifdef B_USE_VANILLA_VBLANK
+static void WaitForVBlank(void)// vanilla vblank
 {
     gMain.intrCheck &= ~INTR_FLAG_VBLANK;
 
     while (!(gMain.intrCheck & INTR_FLAG_VBLANK))
         ;
-}*/
+}
+#endif
 
-//static void WaitForVBlank(void) one way to optimize
-//{
-//    gMain.intrCheck &= ~INTR_FLAG_VBLANK;
-//    VBlankIntrWait();
-//}
+#ifdef B_USE_SHANTY_VBLANK
+static void WaitForVBlank(void) //shanty's vblank
+{
+    gMain.intrCheck &= ~INTR_FLAG_VBLANK;
+    VBlankIntrWait();
+}
+#endif
 
 void SetTrainerHillVBlankCounter(u32 *counter)
 {
