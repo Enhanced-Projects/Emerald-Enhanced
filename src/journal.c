@@ -527,6 +527,11 @@ u8 * GetEvolvedPokemonStat(u8 * buffer)
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_EVOLVED_POKEMON), STR_CONV_MODE_LEFT_ALIGN, 4);
 }
 
+u8 * GetTimesHealedStat(u8 * buffer)
+{
+    return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_USED_POKECENTER), STR_CONV_MODE_LEFT_ALIGN, 4);
+}
+
 u8 * GetBattlesWon(u8 * buffer)
 {
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_BATTLES_WON), STR_CONV_MODE_LEFT_ALIGN, 4);
@@ -655,6 +660,7 @@ static const struct JournalStatData sJournalGeneralStatsPage[] =
     JOURNAL_STAT("Dex Caught", BufferPokedexCaughtCountStr, 0, 3, JOURNALSTAT_CUSTOM),
     JOURNAL_STAT("Legendaries Caught", NULL, VAR_RYU_LEGENDARIES_CAUGHT, 2, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Steps Taken Alone", NULL, GAME_STAT_STEPS, 6, JOURNALSTAT_GAME_STAT),
+    JOURNAL_STAT("Healed Party", NULL, GAME_STAT_USED_POKECENTER, 4, JOURNALSTAT_GAME_STAT),
     JOURNAL_STAT_END
 };
 

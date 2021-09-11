@@ -133,6 +133,7 @@ LCPC_NurseNight::
 	
 LCPC_NurseNight2::
 	goto_if_set FLAG_TEMP_8, LCPC_NurseAfterNight2
+	drawfullscreenimage SCENEBGNURSENIGHT
 	msgbox LCPC_NurseStayNight2Query, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	clearfullscreenimage
