@@ -398,15 +398,21 @@ static void SerialIntr(void)
 static void IntrDummy(void)
 {}
 
-static void WaitForVBlank(void)
+static void WaitForVBlank(void)//Ruby's vblank
+{
+    gMain.intrCheck &= ~INTR_FLAG_VBLANK;
+    asm("swi 0x5");
+}
+
+/*static void WaitForVBlank(void)// vanilla vblank
 {
     gMain.intrCheck &= ~INTR_FLAG_VBLANK;
 
     while (!(gMain.intrCheck & INTR_FLAG_VBLANK))
         ;
-}
+}*/
 
-//static void WaitForVBlank(void)
+//static void WaitForVBlank(void) one way to optimize
 //{
 //    gMain.intrCheck &= ~INTR_FLAG_VBLANK;
 //    VBlankIntrWait();
