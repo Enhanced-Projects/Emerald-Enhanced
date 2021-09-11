@@ -1029,6 +1029,7 @@ r110_PokefanHelped::
 r110_giveGift::
 	setflag FLAG_RYU_REWARDED_FOR_HELPING_POKEFAN
 	giveitem ITEM_RARE_CANDY, 5
+	msgbox r110_TakeThisGift
 	closemessage
 	release
 	end
@@ -1059,7 +1060,10 @@ r110_TryAgainQuery:
 	.string "The {STR_VAR_1} didn't seem to help...\nTry another item?$"
 
 r110_PokefanRemembersPlayer:
-	.string "Oh! It's you!\pPikachu's been doing great, thank\nyou so much for your kindness!\pTake this gift from me!$"
+	.string "Oh! It's you!\pPikachu's been doing great, thank\nyou so much for your kindness!$"
+
+r110_TakeThisGift:
+	.string "Take this gift from me!"
 
 r110_NothingSeemsToWork:
 	.string "{COLOR LIGHT_GREEN}{SHADOW GREEN} (Nothing seems to work...\n Best I leave it alone, don't want to\l make it worse...)$"
