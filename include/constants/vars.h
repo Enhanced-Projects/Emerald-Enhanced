@@ -107,7 +107,7 @@
 #define VAR_SLATEPORT_CITY_STATE             0x4058
 #define VAR_RYU_SPIRITOMB_FAINTS             0x4059 // Tracks up to 107 KO's for spiritomb diversion
 #define VAR_RUSTBORO_CITY_STATE              0x405A
-#define VAR_RYU_NUM_OWNED_PROPERTIES         0x405B // how many properties the player owns.
+#define VAR_UNUSED_0x405B                    0x405B
 #define VAR_RYU_LAST_ACH                     0x405C // stores the most recently given achievement if the player didn't have it previously.
 #define VAR_MOSSDEEP_CITY_STATE              0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE            0x405E
@@ -446,6 +446,6 @@
 #define PROPERTY_MOSSDEEP    11
 //there are an additional 20 properties
 
-#define EE_GAME_VERSION 7901
+#define EE_GAME_VERSION 7902
 
 #endif // GUARD_CONSTANTS_VARS_H

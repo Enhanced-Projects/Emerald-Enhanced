@@ -608,6 +608,12 @@ u8 * GetBankBalance(u8 * buffer)
     return ConvertIntToDecimalStringN(buffer, GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE), STR_CONV_MODE_LEFT_ALIGN, 10);
 }
 
+extern int RyuGetNumberOwnedProperties(void);
+u8 * GetOwnedProperties(u8 * buffer)
+{
+    return ConvertIntToDecimalStringN(buffer, RyuGetNumberOwnedProperties(), STR_CONV_MODE_LEFT_ALIGN, 2);
+}
+
 u8 * GetNetWorth(u8 * buffer)
 {
     u32 balance = (GetGameStat(GAME_STAT_FRONTIERBANK_BALANCE));
@@ -632,10 +638,7 @@ u8 * GetNetWorth(u8 * buffer)
 
 u8 * GetPropertiesOwned(u8 * buffer)
 {
-    u8 propertiesOwned = (VarGet(VAR_RYU_NUM_OWNED_PROPERTIES));
-
-    if (propertiesOwned == NUM_PROPERTIES)
-        GiveAchievement(ACH_SLUM_LORD);
+    u8 propertiesOwned = (RyuGetNumberOwnedProperties());
     return ConvertIntToDecimalStringN(buffer, propertiesOwned, STR_CONV_MODE_LEFT_ALIGN, 2);
 }
 
@@ -704,7 +707,7 @@ static const struct JournalStatData sJournalTrainingStatsPage[] =
 static const struct JournalStatData sJournalFinancialStatsPage[] =
 {
     JOURNAL_STAT("Bank Balance", NULL, GAME_STAT_FRONTIERBANK_BALANCE, 10, JOURNALSTAT_GAME_STAT),
-    JOURNAL_STAT("Properties Owned", NULL, VAR_RYU_NUM_OWNED_PROPERTIES, 5, JOURNALSTAT_VARIABLE),
+    JOURNAL_STAT("Properties Owned",  GetOwnedProperties, 0, 2, JOURNALSTAT_CUSTOM),
     JOURNAL_STAT("Net Worth", GetNetWorth, 0, 10, JOURNALSTAT_CUSTOM), //why was this 5 digits? it can be up to 10!
     JOURNAL_STAT("Days Interest gained", NULL, VAR_RYU_DAYS_INTEREST_GAINED, 5, JOURNALSTAT_VARIABLE),
     JOURNAL_STAT("Property Repairs", NULL, VAR_RYU_PROPERTIES_REPAIRED, 5, JOURNALSTAT_VARIABLE),

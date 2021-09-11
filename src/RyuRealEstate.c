@@ -43,9 +43,12 @@ void DoDailyRealEstateTasks(void)
 
 void RyuResetRealEstateData(void)
 {
+    u8 i;
     gSaveBlock2Ptr->playerIsRealtor = 0;
     VarSet(VAR_RYU_PROPERTY_DAMAGE_TYPE, NUM_DAMAGE_TYPES);
     VarSet(VAR_RYU_PROPERTY_DAMAGE_DAYS, 0);
+    for (i = 0; i < NUM_PROPERTIES; i++)
+        RemoveProperty(i);
 }
 
 //PROPERTY RELATED
@@ -114,7 +117,7 @@ void TryDamageproperties(void)
     u8 id = 0;
     u8 damageType = (Random() % NUM_DAMAGE_TYPES);
     u8 damageDays = gRyuPropertyDamageTable[damageType][0];
-    u32 maxPropertyDamageChance = (70 + VarGet(VAR_RYU_NUM_OWNED_PROPERTIES));
+    u32 maxPropertyDamageChance = (70 + (RyuGetNumberOwnedProperties()));
 
     if (val < 60)
         return;
@@ -189,7 +192,6 @@ void RemoveProperty(u32 id)
     if(id > PLAYER_PROPERTIES_COUNT)
         return;
 
-    VarSet(VAR_RYU_NUM_OWNED_PROPERTIES, (VarGet(VAR_RYU_NUM_OWNED_PROPERTIES) - 1));
     gSaveBlock2Ptr->propertyFlags[id / 8] &= ~(1 << (id % 8));
 }
 
@@ -205,7 +207,6 @@ void AddProperty(u32 id)
     if(id > PLAYER_PROPERTIES_COUNT)
         return;
 
-    VarSet(VAR_RYU_NUM_OWNED_PROPERTIES, (VarGet(VAR_RYU_NUM_OWNED_PROPERTIES) + 1));
     gSaveBlock2Ptr->propertyFlags[id / 8] |= 1 << (id % 8);
 }
 
@@ -288,6 +289,19 @@ int RyuCheckPropertyStatus(void)
     
     if ((playerOwned == TRUE) && (playerLeased == TRUE))
         return 2;
+}
+
+int RyuGetNumberOwnedProperties(void)
+{
+    u8 i;
+    u8 count = 0;
+    for (i = 0; i < NUM_PROPERTIES; i++)
+        if (CheckOwnedProperty(i) == TRUE)
+            count++;
+
+    if ((count == NUM_PROPERTIES) && (CheckAchievement(ACH_SLUM_LORD) == FALSE))
+        GiveAchievement(ACH_SLUM_LORD);
+    return count;
 }
 
 void RyuBufferOwnedPropertyDetails(void)
