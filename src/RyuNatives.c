@@ -2201,3 +2201,14 @@ bool32 RyuCheckFor100Lv(void) //player can only switch to 100 cap if party is at
     }
     return TRUE;
 }
+
+void set0iv(void)
+{
+    SetMonData(&gPlayerParty[0], MON_DATA_HP_IV, 0);
+    SetMonData(&gPlayerParty[0], MON_DATA_ATK_IV, 0);
+    SetMonData(&gPlayerParty[0], MON_DATA_DEF_IV, 0);
+    SetMonData(&gPlayerParty[0], MON_DATA_SPATK_IV, 0);
+    SetMonData(&gPlayerParty[0], MON_DATA_SPDEF_IV, 0);
+    SetMonData(&gPlayerParty[0], MON_DATA_SPEED_IV, 0);
+    CalculateMonStats(&gPlayerParty[0]);
+}
