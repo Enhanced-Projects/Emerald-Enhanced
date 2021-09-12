@@ -603,6 +603,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/_poryscripts/FactionQuestsStudents.inc"
 	.include "data/scripts/_poryscripts/RyuRealEstateScripts.inc"
 	.include "data/scripts/_poryscripts/RyuBotany.inc"
+	.include "data/scripts/_poryscripts/RyuBallChanger.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	clearflag FLAG_RYU_TC_ENTERED

@@ -7,23 +7,6 @@ LilycoveCity_DepartmentStore_5F_EventScript_BlockRoofStairs:: @ 821FF9A
 	turnobject 7, DIR_NORTH
 	end
 
-LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarLeft:: @ 821FFA6
-	lock
-	faceplayer
-	msgbox BallChangerQuery MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq RyuBallChanger
-	goto_if_set FLAG_RYU_NUZLOCKEMODE, RyuMartsDisabledNuzlocke
-	message LCC_BALL_STORE_MSG
-	waitmessage
-	pokemart LCC_BallItemMart
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-	release
-	end
-
-BallChangerQuery:
-	.string "Would you like to change the ball\nyour lead pokemon is stored in?$"
-
 	.align 2
 LCC_EvoItemMart: @ 821FFC0
 	.2byte ITEM_LEAF_STONE
@@ -255,3 +238,26 @@ LCC_EVO_STORE_MSG:
 	.string "Evolution needs can be found here!$"
 
 `
+
+script LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarLeft {
+	lock
+	faceplayer
+	msgbox("Which service would you like to use?")
+	multichoice(0, 8, MULTI_BALL_CHANGER_INTROMENU, 1)
+	if (var(VAR_RESULT) == 0){
+		goto(RyuScript_BallChanger)
+	}
+	else {
+		goto_if_set(FLAG_RYU_NUZLOCKEMODE, RyuMartsDisabledNuzlocke)
+		message(LCC_BALL_STORE_MSG)
+		waitmessage
+		pokemart(LCC_BallItemMart)
+		msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
+		release
+		end
+	}
+}
+
+text BallChangerQuery{
+	"Would you like to change the ball\nyour lead pokemon is stored in?"
+}

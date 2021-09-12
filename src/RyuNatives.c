@@ -590,8 +590,9 @@ void RyuCheckTempVars(void)//buffers the values of all temporary map vars to a s
 
 void RyuChangeUsedPokeball(void)
 {
-    u8 newBall = (VarGet(VAR_TEMP_4));
-    SetMonData(&gPlayerParty[0], MON_DATA_POKEBALL, &newBall);
+    u32 newBall = VarGet(VAR_ITEM_ID);
+    u32 slot = VarGet(VAR_TEMP_C);
+    SetMonData(&gPlayerParty[slot], MON_DATA_POKEBALL, &newBall);
 }
 
 void SwapPlayerGender(void)//only used by debug menu sometimes to check graphics.
@@ -2209,4 +2210,14 @@ void RyuLegendaryDoBossRoll(void)
         FlagSet(FLAG_RYU_BOSS_WILD);
     else
         FlagClear(FLAG_RYU_BOSS_WILD);
+}
+
+bool32 CheckIfSelectedSlotIsValid(void)
+{
+    u8 selection = VarGet(VAR_RESULT);
+    u8 partySize = CalculatePlayerPartyCount();
+    if (selection > (partySize - 1))
+        return FALSE;
+
+    return TRUE;
 }

@@ -598,6 +598,16 @@ void Bag_ChooseMedicine(void)
     SetMainCallback2(CB2_ChooseMedicine);
 }
 
+void CB2_ChooseBall(void)
+{
+    GoToBagMenu(ITEMMENULOCATION_QUIZ_LADY, BALLS_POCKET, CB2_ReturnToFieldContinueScript);
+}
+
+void Bag_ChooseBall(void)
+{
+    SetMainCallback2(CB2_ChooseBall);
+}
+
 void GoToBagMenu(u8 location, u8 pocket, void ( *postExitMenuMainCallback2)())
 {
     gBagMenu = AllocZeroed(sizeof(struct BagMenuStruct));

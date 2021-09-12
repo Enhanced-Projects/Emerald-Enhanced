@@ -2235,3 +2235,7 @@ const u8 gText_RyuREMoveIn[] = _("Move In");
 const u8 gText_RyuRELeaseProperty[] = _("Lease Out");
 const u8 gText_RyuRECheckDetails[] = _("Check Details");
 const u8 gText_RyuRESellProperty[] = _("Sell Property");
+
+const u8 gText_RyuBallChangerLabel[] = _("Ball Changer");
+const u8 gText_RyuBallMarketLabel[] = _("Ball Market");
+

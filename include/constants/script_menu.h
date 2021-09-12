@@ -174,6 +174,7 @@
 #define MULTI_FRONTIERBANK                 163
 #define MULTI_FBAMOUNTMENU                 164
 #define MULTI_REALESTATE_MENU              165
+#define MULTI_BALL_CHANGER_INTROMENU       166
 
 
 // Lilycove SS Tidal Multichoice Selections

@@ -3389,6 +3389,10 @@ extern const u8 gText_RyuRELeaseProperty[];
 extern const u8 gText_RyuRECheckDetails[];
 extern const u8 gText_RyuRESellProperty[];
 
+extern const u8 gText_RyuBallChangerLabel[];
+extern const u8 gText_RyuBallMarketLabel[];
+
+
 extern const u8 sText_DebugMainUtilityItem1[];
 
 #endif // GUARD_STRINGS_H
