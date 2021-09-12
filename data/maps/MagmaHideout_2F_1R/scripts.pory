@@ -481,7 +481,7 @@ MHM_MasterKit::
 	additem ITEM_LUXURY_BALL, 10
 	additem ITEM_MAX_REVIVE, 10
 	additem ITEM_HYPER_POTION, 4
-	removemoney 20000
+	removemoney 28000
 	msgbox MHM_Success
 	closemessage
 	release
