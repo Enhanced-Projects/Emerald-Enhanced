@@ -754,9 +754,10 @@ retutor:
 RyuSetEvDebugMenu::
 	msgbox RyuEv_ChooseSlot
 	call RyuBufferPartyMonNames
-	multichoicedefault 1, 1, MULTI_SELECT_PARTY_SLOT, 0, 0
-	compare VAR_RESULT, 6
-	goto_if_eq RyuPokeEditMenu
+	multichoice 1, 1, MULTI_SELECT_PARTY_SLOT, 0
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq RyuSetEvDebugMenu
 	copyvar VAR_TEMP_2, VAR_RESULT
 	msgbox RyuEvIntro MSGBOX_SIGN
 	multichoicegrid 1, 0, 116, 4, 0

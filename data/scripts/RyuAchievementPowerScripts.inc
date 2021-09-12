@@ -15,7 +15,10 @@ RyuRCTS:
 RyuAP_StatAssist::
     setflag FLAG_TEMP_F
     call RyuBufferPartyMonNames
-    multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 0, 1
+    multichoice 1, 1, MULTI_SELECT_PARTY_SLOT, 0
+    specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq ryu_end
 	special RyuFillStatsBuffers
 	delay 30
     drawinfobox INFOBOXPOKEMONDATA

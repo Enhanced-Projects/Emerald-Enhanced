@@ -823,8 +823,7 @@ static const struct MenuAction MultichoiceList_118[] =//party slot selection men
     {gText_RyuBufferedString3},
     {gText_RyuBufferedString4},
     {gText_RyuBufferedString5},
-    {gText_RyuBufferedString6},
-    {gText_PartySlotCancel},
+    {gText_RyuBufferedString6}
 };
 
 static const struct MenuAction MultichoiceList_119[] =
@@ -1277,6 +1276,12 @@ static const struct MenuAction MultiChoiceList_RyuBotanyOrAlchemy[]=
     {gText_Exit},
 };
 
+static const struct MenuAction MultiChoiceList_BallChangerOrMarket[]=
+{
+    {gText_RyuBallChangerLabel},
+    {gText_RyuBallMarketLabel}
+};
+
 static const struct MenuAction MultiChoiceList_ChooseRandomBattleType[]=
 {
     {gText_RyuRandomBattleNormal},
@@ -1495,6 +1500,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FRONTIERBANK]               = MULTICHOICE(MultiChoiceList_FrontierBank),
     [MULTI_FBAMOUNTMENU]               = MULTICHOICE(MultiChoiceList_FrontierBankAmountsMenu),
     [MULTI_REALESTATE_MENU]            = MULTICHOICE(MultiChoiceList_RealEstatePropertyOptions),
+    [MULTI_BALL_CHANGER_INTROMENU]     = MULTICHOICE(MultiChoiceList_BallChangerOrMarket),
 };
 
 const u8 *const gStdStrings[] =

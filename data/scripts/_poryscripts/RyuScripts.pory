@@ -41,7 +41,10 @@ RyuExpBatteryDevMode::
 	goto RyuExpBatteryContd
 
 RS_SelectSlot::
-	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 0, 0
+	multichoice 1, 1, MULTI_SELECT_PARTY_SLOT, 0
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq RS_CancelPartySlot
 	switch VAR_RESULT
 	case 0, RS_Slot1Selected
 	case 1, RS_Slot2Selected
@@ -49,7 +52,7 @@ RS_SelectSlot::
 	case 3, RS_Slot4Selected
 	case 4, RS_Slot5Selected
 	case 5, RS_Slot6Selected
-	case 127, RS_CancelPartySlot
+	goto RS_CancelPartySlot
 	releaseall
 	end
 
@@ -267,9 +270,10 @@ RyuUserModeEVMenu::
 	goto_if_ge ryu_end
 	copyvar VAR_TEMP_3, VAR_RESULT
 	call RyuBufferPartyMonNames
-	multichoicedefault 1, 1, MULTI_SELECT_PARTY_SLOT, 0, 0
-	compare VAR_RESULT, 6
-	goto_if_eq ryu_end
+	multichoice 1, 1, MULTI_SELECT_PARTY_SLOT, 0
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq RyuUserModeEVMenu
 	setvar VAR_TEMP_1, 0
 	copyvar VAR_TEMP_2, VAR_RESULT
 	checkitem ITEM_IMPRINT, 1
@@ -593,225 +597,6 @@ Ryu_CantUsePcCharging::
 
 RyuCantUsePCCHARGING:
 	.string "The Wireless PC needs to recharge.\nPlease try again later.$"
-	
-
-@=================================================Ball changer
-
-
-RyuBallChanger::
-	checkmoney 10000
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NotEnoughMoney
-	msgbox BCIntro
-	multichoicegrid 2, 0, 141, 3, 1
-	switch VAR_RESULT
-	case 0, BCPokeball
-	case 1, BCGreatball
-	case 2, BCUltraball
-	case 3, BCLuxuryball
-	case 4, BCPremierball
-	case 5, BCRepeatball
-	case 6, BCTimerball
-	case 7, BCNestball
-	case 8, BCNetball
-	case 9, BCSafariball
-	case 10, BCDiveball
-	case 11, BCCancel
-	end
-
-BCPokeball::
-	checkitem ITEM_POKE_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 4
-	removeitem ITEM_POKE_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCGreatball::
-	checkitem ITEM_GREAT_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 3
-	removeitem ITEM_GREAT_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCUltraball::
-	checkitem ITEM_ULTRA_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 2
-	removeitem ITEM_ULTRA_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCLuxuryball::
-	checkitem ITEM_LUXURY_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 11
-	removeitem ITEM_LUXURY_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCPremierball::
-	checkitem ITEM_PREMIER_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 11
-	removeitem ITEM_PREMIER_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCRepeatball::
-	checkitem ITEM_REPEAT_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 9
-	removeitem ITEM_REPEAT_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCTimerball::
-	checkitem ITEM_TIMER_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 10
-	removeitem ITEM_TIMER_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCNestball::
-	checkitem ITEM_NEST_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 8
-	removeitem ITEM_NEST_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCNetball::
-	checkitem ITEM_NET_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 6
-	removeitem ITEM_NET_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCSafariball::
-	checkitem ITEM_SAFARI_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 5
-	removeitem ITEM_SAFARI_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCDiveball::
-	checkitem ITEM_DIVE_BALL, 1
-	compare VAR_RESULT, 1
-	goto_if_ne BC_NoBall
-	setvar VAR_TEMP_4, 7
-	removeitem ITEM_DIVE_BALL, 1
-	special RyuChangeUsedPokeball
-	msgbox BC_Success
-    call BCremovemoney
-	release
-	end
-
-BCremovemoney::
-	removemoney 10000
-	return
-
-BCIntro:
-	.string "Welcome to the ball changer menu.\pOnce you make your selection,\nyou will be charged ¥10000\land the chosen ball will be consumed.$"
-
-BCCancel::
-	msgbox BC_Cancelled
-	closemessage
-	release
-	end
-
-BC_NoBall::
-	msgbox BC_NeedBall
-	release
-	end
-
-BC_NotEnoughMoney:
-	msgbox BC_NeedMoney
-	release
-	end
-
-BC_Cancelled:
-	.string "Okay. We can try again later.$"
-
-BC_Success:
-	.string "Success!\nThe ball has been changed.\pYou were charged ¥10000, and\nthe ball you changed to was consumed.$"
-
-BC_NeedBall:
-	.string "Sorry, but you must have at least\none of the ball you want to change to.$"
-
-BC_NeedMoney:
-	.string "Sorry, but you do not have enough\nmoney to do this.\pIt costs ¥10000.$"
-
-@==================================================================================================Theme changer
-
-Ryu_SwitchTheme::
-	compare VAR_RYU_THEME_NUMBER, 0
-	goto_if_eq Ryu_SwitchToDarkTheme
-	compare VAR_RYU_THEME_NUMBER, 1
-	goto_if_eq Ryu_SwitchToDefaultTheme
-	end
-
-Ryu_SwitchToDarkTheme::
-	setvar VAR_RYU_THEME_NUMBER, 1
-	msgbox RyuNowUsingDarkTheme
-	release
-	end
-
-Ryu_SwitchToDefaultTheme::
-	setvar VAR_RYU_THEME_NUMBER, 0
-	msgbox RyuNowUsingDefaultTheme
-	release
-	end
-
-RyuNowUsingDarkTheme:
-	.string "You're now using the dark theme.$"
-
-RyuNowUsingDefaultTheme:
-	.string "Switched to default theme.$"
 
 @========================================================================Random "Stepped On" encounter
 
@@ -822,8 +607,6 @@ SB_CheckMeloettaEncounter::
 	case 255, Ryu_DoMeloettaRoll
     case 200, Ryu_MeloettaWatchingMsg
 	case 100, Ryu_BeingWatched
-	compare VAR_RESULT, 255
-	goto_if_ge Ryu_DoMeloettaRoll
 	release
 	end
 
@@ -1391,7 +1174,10 @@ CourtneyMegaReward:
 
 Ryu_AbilityCapsule::
 	call RyuBufferPartyMonNames
-	multichoicedefault 0, 0, MULTI_SELECT_PARTY_SLOT, 0, 6
+	multichoice 1, 1, MULTI_SELECT_PARTY_SLOT, 0
+	specialvar VAR_TEMP_A, CheckIfSelectedSlotIsValid
+	compare VAR_TEMP_A, FALSE
+	goto_if_eq Ryu_AbilityCapsule
 	switch VAR_RESULT
 	case 0, RyuAC_Slot1
 	case 1, RyuAC_Slot2
@@ -1399,7 +1185,7 @@ Ryu_AbilityCapsule::
 	case 3, RyuAC_Slot4
 	case 4, RyuAC_Slot5
 	case 5, RyuAC_Slot6
-	case 6, RyuAC_Cancel
+	goto RyuAC_Cancel
 
 RyuAC_Slot1::
 	setvar VAR_TEMP_8, 0
