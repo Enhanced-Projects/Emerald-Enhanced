@@ -2166,11 +2166,7 @@ RyuCheckForLNSUAch::
 `
 
 script RyuCheckSetupBoss {
-	random(99)
-	if (var(VAR_RESULT) == 0){
-		call(RyuLegendary_SetBossFlag)
-		return
-	}
+	callnative(RyuLegendaryDoBossRoll)
 	return
 }
 
