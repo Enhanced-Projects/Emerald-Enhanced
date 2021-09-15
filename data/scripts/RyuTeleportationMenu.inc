@@ -1,5 +1,6 @@
 RyuTeleport::
 	lockall
+	lock
 	checkitem ITEM_WAYSTONE, 1
 	compare VAR_RESULT, FALSE
 	goto_if_eq RT_NoWaystone
