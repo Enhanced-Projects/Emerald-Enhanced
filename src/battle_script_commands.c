@@ -1782,6 +1782,14 @@ static void Cmd_critcalc(void)
         gIsCriticalHit = TRUE;
     else if (Random() % sCriticalHitChance[critChance] == 0)
         gIsCriticalHit = TRUE;
+    else if ((Random() % sCriticalHitChance[critChance] == 0) &&//At max affection, player mons have a doubled critical chance. In this case, another roll.
+            (gBattleMons[gBattlerAttacker].friendship == 255) &&
+            (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER) &&
+            (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))
+            {
+                PrepareStringBattle(STRINGID_RYUAFFECTIONCRIT, gBattlerAttacker);
+                gBattleCommunication[MSG_DISPLAY] = 1;
+            }
     else
         gIsCriticalHit = FALSE;
 
@@ -2173,7 +2181,7 @@ static void Cmd_critmessage(void)
 {
     if (gBattleControllerExecFlags == 0)
     {
-        if (gIsCriticalHit == TRUE && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+        if (gIsCriticalHit && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
         {
             if (gBattleMoveDamage > gHpDealt)
             {
@@ -3842,6 +3850,9 @@ static void Cmd_getexp(void)
 
             RyuExpBatteryTemp = ((calculatedExp * 5) / 100);
             RyuExpDriveInternalOperation(EXP_DRIVE_MODE_ADD, RyuExpBatteryTemp);
+
+            if (gBattleMons[gBattlerAttacker].friendship > 50)// If mon has affection boost, gain 20% more exp
+                calculatedExp = ((calculatedExp * 120) /100);
 
             if ((FlagGet(FLAG_RYU_EXP_DRIVE_DISABLE_EARNING) == 1) || (RyuCheckIfPlayerDisabledTCExp() == TRUE))
             {

@@ -705,6 +705,7 @@ static const u8 sText_StatWasNotLowered[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUF
 static const u8 sText_AlchemyHealedPlayerMon[] = _("{B_ATK_NAME_WITH_PREFIX} was healed by your\nAlchemy Effect.");
 static const u8 sText_FactionBossHealedMon[] = _("{B_TRAINER1_NAME}'s presence healed their Pokemon.");
 static const u8 sText_VampiricHealAbsorbed[] = _("{B_ATK_NAME_WITH_PREFIX}'s Vampiric caused it to heal\nsome HP!");
+static const u8 sText_RyuAffectionCritMsg[] = _("{B_ATK_NAME_WITH_PREFIX} landed a critical hit,\nwishing to be praised!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1272,6 +1273,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ALCHEMYHEAL - 12] = sText_AlchemyHealedPlayerMon,
     [STRINGID_FACTIONBOSSHEAL - 12] = sText_FactionBossHealedMon,
     [STRINGID_VAMPIRIC_HEAL - 12] = sText_VampiricHealAbsorbed,
+    [STRINGID_RYUAFFECTIONCRIT - 12] = sText_RyuAffectionCritMsg,
 };
 
 const u16 gTerrainStringIds[] =
