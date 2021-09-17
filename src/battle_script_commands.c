@@ -1789,7 +1789,7 @@ static void Cmd_critcalc(void)
             {
                 if (((GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_RIGHT) && (!(gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))) || (GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_RIGHT))
                 {
-                    gBattleMons[gBattlerAttacker].friendship -= 5
+                    gBattleMons[gBattlerAttacker].friendship -= 5;
                     gIsCriticalHit = 2;
                 }
             }
@@ -8839,8 +8839,7 @@ bool8 UproarWakeUpCheck(u8 battlerId)
 bool8 AffectionWakeUpCheck(u8 battlerId)
 {
     u8 random = Random() % 99;
-    
-    mgba_printf(LOGINFO, "Happiness is currently %d, random is %d", gBattleMons[battlerId].friendship, random);
+
     if ((GetBattlerSide(battlerId) == B_SIDE_OPPONENT) ||
         ((GetBattlerPosition(battlerId) == B_POSITION_PLAYER_RIGHT) && ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) == TRUE)) ||
         (gBattleMons[battlerId].friendship < 240) ||
@@ -8850,6 +8849,20 @@ bool8 AffectionWakeUpCheck(u8 battlerId)
     gBattleMons[battlerId].friendship -= 5;
     gUnusedBattleGlobal = 69;
 
+    return TRUE;
+}
+
+bool8 RyuConfusionHealCheck(u8 battlerId)
+{
+    u8 random = Random() % 99;
+    
+    if ((GetBattlerSide(battlerId) == B_SIDE_OPPONENT) ||
+        ((GetBattlerPosition(battlerId) == B_POSITION_PLAYER_RIGHT) && ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) == TRUE)) ||
+        (gBattleMons[battlerId].friendship < 240) ||
+        (random > 24))
+            return FALSE;
+
+    gBattleMons[battlerId].friendship -= 5;
     return TRUE;
 }
 

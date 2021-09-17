@@ -707,6 +707,7 @@ static const u8 sText_FactionBossHealedMon[] = _("{B_TRAINER1_NAME}'s presence h
 static const u8 sText_VampiricHealAbsorbed[] = _("{B_ATK_NAME_WITH_PREFIX}'s Vampiric caused it to heal\nsome HP!");
 static const u8 sText_RyuAffectionCritMsg[] = _("{B_ATK_NAME_WITH_PREFIX} landed a critical hit,\nwishing to be praised!");
 static const u8 sText_RyuAffectionWokeupMsg[] = _("{B_ATK_NAME_WITH_PREFIX} snapped to attention,\nhoping you wouldn't worry!");
+static const u8 sText_RyuAffectionConfuseHealedMsg[] = _("{B_ATK_NAME_WITH_PREFIX} cleared its mind\nby thinking about you!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1276,6 +1277,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_VAMPIRIC_HEAL - 12] = sText_VampiricHealAbsorbed,
     [STRINGID_RYUAFFECTIONCRIT - 12] = sText_RyuAffectionCritMsg,
     [STRINGID_RYUAFFECTIONWOKEUP - 12] = sText_RyuAffectionWokeupMsg,
+    [STRINGID_RYUAFFECTIONCONFUSEHEALED - 12] = sText_RyuAffectionConfuseHealedMsg,
 };
 
 const u16 gTerrainStringIds[] =

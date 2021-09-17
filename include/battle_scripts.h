@@ -364,5 +364,6 @@ extern const u8 BattleScript_PreventWaterAttackInSun[];
 extern const u8 BattleScript_VampiricHealActivates[];
 extern const u8 BattleScript_RyuAffectionCrit[];
 extern const u8 BattleScript_RyuAffectionGeneralAnim[];
+extern const u8 BattleScript_RyuAffectionHealedConfuse[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

@@ -2938,6 +2938,7 @@ enum
     CANCELLER_END2,
 };
 extern bool8 AffectionWakeUpCheck(u8 battlerId);
+extern bool8 RyuConfusionHealCheck(u8 battlerId);
 u8 AtkCanceller_UnableToUseMove(void)
 {
     u8 effect = 0;
@@ -3129,7 +3130,13 @@ u8 AtkCanceller_UnableToUseMove(void)
             if (gBattleMons[gBattlerAttacker].status2 & STATUS2_CONFUSION)
             {
                 gBattleMons[gBattlerAttacker].status2 -= STATUS2_CONFUSION_TURN(1);
-                if (gBattleMons[gBattlerAttacker].status2 & STATUS2_CONFUSION)
+                if (RyuConfusionHealCheck(gBattlerAttacker))
+                    {
+                        gBattleMons[gBattlerAttacker].status2 &= ~STATUS2_CONFUSION;
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_RyuAffectionHealedConfuse;
+                    }
+                else if (gBattleMons[gBattlerAttacker].status2 & STATUS2_CONFUSION)
                 {
                     if (Random() % ((B_CONFUSION_SELF_DMG_CHANCE >= GEN_7) ? 3 : 2) == 0) // confusion dmg
                     {

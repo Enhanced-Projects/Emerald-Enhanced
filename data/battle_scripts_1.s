@@ -7815,3 +7815,9 @@ BattleScript_PreventWaterAttackInSun::
 BattleScript_RyuAffectionGeneralAnim::
 	playanimation BS_ATTACKER, B_ANIM_RYU_AFFECTION_ANIM, NULL
 	return
+
+
+BattleScript_RyuAffectionHealedConfuse::
+	printstring STRINGID_RYUAFFECTIONCONFUSEHEALED
+	playanimation BS_ATTACKER, B_ANIM_RYU_AFFECTION_ANIM, NULL
+	return
