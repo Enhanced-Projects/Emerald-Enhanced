@@ -708,6 +708,8 @@ static const u8 sText_VampiricHealAbsorbed[] = _("{B_ATK_NAME_WITH_PREFIX}'s Vam
 static const u8 sText_RyuAffectionCritMsg[] = _("{B_ATK_NAME_WITH_PREFIX} landed a critical hit,\nwishing to be praised!");
 static const u8 sText_RyuAffectionWokeupMsg[] = _("{B_ATK_NAME_WITH_PREFIX} snapped to attention,\nhoping you wouldn't worry!");
 static const u8 sText_RyuAffectionConfuseHealedMsg[] = _("{B_ATK_NAME_WITH_PREFIX} cleared its mind\nby thinking about you!");
+static const u8 sText_RyuAffectionDefrosted[] = _("{B_ATK_NAME_WITH_PREFIX}'s fiery passion for\nyou defrosted it!");
+static const u8 sText_RyuAffectionUnparalyzed[] = _("{B_ATK_NAME_WITH_PREFIX} shook off its paralysis\nto make you happy!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1278,6 +1280,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_RYUAFFECTIONCRIT - 12] = sText_RyuAffectionCritMsg,
     [STRINGID_RYUAFFECTIONWOKEUP - 12] = sText_RyuAffectionWokeupMsg,
     [STRINGID_RYUAFFECTIONCONFUSEHEALED - 12] = sText_RyuAffectionConfuseHealedMsg,
+    [STRINGID_RYUAFFECTIONUNFROZE - 12] = sText_RyuAffectionDefrosted,
+    [STRINGID_RYUAFFECTIONCUREDPARALYZE - 12] = sText_RyuAffectionUnparalyzed,
 };
 
 const u16 gTerrainStringIds[] =
@@ -1485,7 +1489,7 @@ const u16 gGotFrozenStringIds[] =
 
 const u16 gGotDefrostedStringIds[] =
 {
-    STRINGID_PKMNWASDEFROSTED2, STRINGID_PKMNWASDEFROSTEDBY
+    STRINGID_PKMNWASDEFROSTED2, STRINGID_PKMNWASDEFROSTEDBY, STRINGID_RYUAFFECTIONUNFROZE,
 };
 
 const u16 gKOFailedStringIds[] =

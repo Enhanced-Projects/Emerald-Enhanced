@@ -8836,36 +8836,24 @@ bool8 UproarWakeUpCheck(u8 battlerId)
         return TRUE;
 }
 
-bool8 AffectionWakeUpCheck(u8 battlerId)
+
+bool8 RyuAffectionStatusHealCheck(u8 battlerId)
 {
     u8 random = Random() % 99;
-
+    
     if ((GetBattlerSide(battlerId) == B_SIDE_OPPONENT) ||
         ((GetBattlerPosition(battlerId) == B_POSITION_PLAYER_RIGHT) && ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) == TRUE)) ||
         (gBattleMons[battlerId].friendship < 240) ||
         (random > 24))
             return FALSE;
-    
+
     gBattleMons[battlerId].friendship -= 5;
     gUnusedBattleGlobal = 69;
-
+    gActiveBattler = gBattlerAttacker;
+    BtlController_EmitSetMonData(0, REQUEST_FRIENDSHIP_BATTLE, 0, 1, &gBattleMons[gBattlerAttacker].friendship);
+    MarkBattlerForControllerExec(gBattlerAttacker);
     return TRUE;
 }
-
-bool8 RyuConfusionHealCheck(u8 battlerId)
-{
-    u8 random = Random() % 99;
-    
-    if ((GetBattlerSide(battlerId) == B_SIDE_OPPONENT) ||
-        ((GetBattlerPosition(battlerId) == B_POSITION_PLAYER_RIGHT) && ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) == TRUE)) ||
-        (gBattleMons[battlerId].friendship < 240) ||
-        (random > 24))
-            return FALSE;
-
-    gBattleMons[battlerId].friendship -= 5;
-    return TRUE;
-}
-
 
 static void Cmd_jumpifcantmakeasleep(void)
 {

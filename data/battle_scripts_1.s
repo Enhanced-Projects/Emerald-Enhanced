@@ -6290,6 +6290,14 @@ BattleScript_AftermathDmg::
 	tryfaintmon BS_ATTACKER, FALSE, NULL
 	return
 
+BattleScript_RyuAffectionHealedParalyze::
+	printstring STRINGID_RYUAFFECTIONCUREDPARALYZE
+	waitmessage 0x40
+	setbyte gUnusedBattleGlobal, 0
+	call BattleScript_RyuAffectionGeneralAnim
+	updatestatusicon BS_ATTACKER
+	end2
+
 BattleScript_MoveUsedIsAsleep::
 	printstring STRINGID_PKMNFASTASLEEP
 	waitmessage 0x40
@@ -6299,7 +6307,7 @@ BattleScript_MoveUsedIsAsleep::
 BattleScript_MoveUsedWokeUp::
 	bicword gHitMarker, HITMARKER_x10
 	printfromtable gWokeUpStringIds
-	jumpifbyte CMP_NOT_EQUAL gUnusedBattleGlobal, 69, BattleScript_ContinueHitFromAtkAnim
+	jumpifbyte CMP_NOT_EQUAL gUnusedBattleGlobal, 69, BattleScript_MoveUsedWokeUpContinued
 	call BattleScript_RyuAffectionGeneralAnim
 	setbyte gUnusedBattleGlobal, 0
 BattleScript_MoveUsedWokeUpContinued::
@@ -6365,6 +6373,11 @@ BattleScript_MoveUsedIsFrozen::
 
 BattleScript_MoveUsedUnfroze::
 	printfromtable gGotDefrostedStringIds
+	waitmessage 0x40
+	jumpifbyte CMP_NOT_EQUAL gUnusedBattleGlobal, 69, BattleScript_MoveUsedUnfrozeContinued
+	call BattleScript_RyuAffectionGeneralAnim
+	setbyte gUnusedBattleGlobal, 0
+BattleScript_MoveUsedUnfrozeContinued:
 	waitmessage 0x40
 	updatestatusicon BS_ATTACKER
 	return

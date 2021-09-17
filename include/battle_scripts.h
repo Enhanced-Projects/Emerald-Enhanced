@@ -365,5 +365,6 @@ extern const u8 BattleScript_VampiricHealActivates[];
 extern const u8 BattleScript_RyuAffectionCrit[];
 extern const u8 BattleScript_RyuAffectionGeneralAnim[];
 extern const u8 BattleScript_RyuAffectionHealedConfuse[];
+extern const u8 BattleScript_RyuAffectionHealedParalyze[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

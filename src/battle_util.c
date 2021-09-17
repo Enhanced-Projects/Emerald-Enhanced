@@ -2230,8 +2230,12 @@ u8 DoBattlerEndTurnEffects(void)
             if ((gBattleMons[gActiveBattler].status1 & STATUS1_POISON)
                 && gBattleMons[gActiveBattler].hp != 0)
             {
+                if (RyuAffectionStatusHealCheck(gBattlerAttacker))
+                {
+                    gBattleMons[gBattlerAttacker].status1 &= ~STATUS1_POISON;
+                    gUnusedBattleGlobal = 59;
+                }
                 MAGIC_GAURD_CHECK;
-
                 if (ability == ABILITY_POISON_HEAL)
                 {
                     if (!BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK))
@@ -2937,8 +2941,8 @@ enum
     CANCELLER_PSYCHIC_TERRAIN,
     CANCELLER_END2,
 };
-extern bool8 AffectionWakeUpCheck(u8 battlerId);
-extern bool8 RyuConfusionHealCheck(u8 battlerId);
+
+extern bool8 RyuAffectionStatusHealCheck(u8 battlerId);
 u8 AtkCanceller_UnableToUseMove(void)
 {
     u8 effect = 0;
@@ -2964,7 +2968,7 @@ u8 AtkCanceller_UnableToUseMove(void)
                     gBattlescriptCurrInstr = BattleScript_MoveUsedWokeUp;
                     effect = 2;
                 }
-                else if (AffectionWakeUpCheck(gBattlerAttacker))
+                else if (RyuAffectionStatusHealCheck(gBattlerAttacker))
                 {
                     gBattleMons[gBattlerAttacker].status1 &= ~(STATUS1_SLEEP);
                     gBattleMons[gBattlerAttacker].status2 &= ~(STATUS2_NIGHTMARE);
@@ -3008,7 +3012,14 @@ u8 AtkCanceller_UnableToUseMove(void)
         case CANCELLER_FROZEN: // check being frozen
             if (gBattleMons[gBattlerAttacker].status1 & STATUS1_FREEZE)
             {
-                if (Random() % 5)
+                if (RyuAffectionStatusHealCheck(gBattlerAttacker))
+                {
+                    gBattleMons[gBattlerAttacker].status1 &= ~(STATUS1_FREEZE);
+                    BattleScriptPushCursor();
+                    gBattleCommunication[MULTISTRING_CHOOSER] = 2;
+                    gBattlescriptCurrInstr = BattleScript_MoveUsedUnfroze;
+                }
+                else if (Random() % 5)
                 {
                     if (gBattleMoves[gCurrentMove].effect != EFFECT_THAW_HIT) // unfreezing via a move effect happens in case 13
                     {
@@ -3130,7 +3141,7 @@ u8 AtkCanceller_UnableToUseMove(void)
             if (gBattleMons[gBattlerAttacker].status2 & STATUS2_CONFUSION)
             {
                 gBattleMons[gBattlerAttacker].status2 -= STATUS2_CONFUSION_TURN(1);
-                if (RyuConfusionHealCheck(gBattlerAttacker))
+                if (RyuAffectionStatusHealCheck(gBattlerAttacker))
                     {
                         gBattleMons[gBattlerAttacker].status2 &= ~STATUS2_CONFUSION;
                         BattleScriptPushCursor();
@@ -3163,7 +3174,14 @@ u8 AtkCanceller_UnableToUseMove(void)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_PARALYSED: // paralysis
-            if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_PARALYSIS) && (Random() % 4) == 0)
+            if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_PARALYSIS) && (RyuAffectionStatusHealCheck(gBattlerAttacker)))
+            {
+                gBattleMons[gBattlerAttacker].status1 &= ~STATUS1_PARALYSIS;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_RyuAffectionHealedParalyze;
+                effect = 2;
+            }
+            else if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_PARALYSIS) && (Random() % 4) == 0)
             {
                 gProtectStructs[gBattlerAttacker].prlzImmobility = 1;
                 // This is removed in Emerald for some reason
