@@ -706,6 +706,7 @@ static const u8 sText_AlchemyHealedPlayerMon[] = _("{B_ATK_NAME_WITH_PREFIX} was
 static const u8 sText_FactionBossHealedMon[] = _("{B_TRAINER1_NAME}'s presence healed their Pokemon.");
 static const u8 sText_VampiricHealAbsorbed[] = _("{B_ATK_NAME_WITH_PREFIX}'s Vampiric caused it to heal\nsome HP!");
 static const u8 sText_RyuAffectionCritMsg[] = _("{B_ATK_NAME_WITH_PREFIX} landed a critical hit,\nwishing to be praised!");
+static const u8 sText_RyuAffectionWokeupMsg[] = _("{B_ATK_NAME_WITH_PREFIX} snapped to attention,\nhoping you wouldn't worry!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1274,6 +1275,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_FACTIONBOSSHEAL - 12] = sText_FactionBossHealedMon,
     [STRINGID_VAMPIRIC_HEAL - 12] = sText_VampiricHealAbsorbed,
     [STRINGID_RYUAFFECTIONCRIT - 12] = sText_RyuAffectionCritMsg,
+    [STRINGID_RYUAFFECTIONWOKEUP - 12] = sText_RyuAffectionWokeupMsg,
 };
 
 const u16 gTerrainStringIds[] =
@@ -1381,7 +1383,7 @@ const u16 gStockpileUsedStringIds[] =
 
 const u16 gWokeUpStringIds[] =
 {
-    STRINGID_PKMNWOKEUP, STRINGID_PKMNWOKEUPINUPROAR
+    STRINGID_PKMNWOKEUP, STRINGID_PKMNWOKEUPINUPROAR, STRINGID_RYUAFFECTIONWOKEUP,
 };
 
 const u16 gSwallowFailStringIds[] =

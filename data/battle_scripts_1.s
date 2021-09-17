@@ -6299,6 +6299,10 @@ BattleScript_MoveUsedIsAsleep::
 BattleScript_MoveUsedWokeUp::
 	bicword gHitMarker, HITMARKER_x10
 	printfromtable gWokeUpStringIds
+	jumpifbyte CMP_NOT_EQUAL gUnusedBattleGlobal, 69, BattleScript_ContinueHitFromAtkAnim
+	call BattleScript_RyuAffectionGeneralAnim
+	setbyte gUnusedBattleGlobal, 0
+BattleScript_MoveUsedWokeUpContinued::
 	waitmessage 0x40
 	updatestatusicon BS_ATTACKER
 	return
@@ -7807,3 +7811,7 @@ BattleScript_PreventWaterAttackInSun::
 	printstring STRINGID_WATEREVAPORATED
 	waitmessage 0x40
 	goto BattleScript_MoveEnd
+
+BattleScript_RyuAffectionGeneralAnim::
+	playanimation BS_ATTACKER, B_ANIM_RYU_AFFECTION_ANIM, NULL
+	return

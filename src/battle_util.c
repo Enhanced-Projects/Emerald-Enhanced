@@ -2937,7 +2937,7 @@ enum
     CANCELLER_PSYCHIC_TERRAIN,
     CANCELLER_END2,
 };
-
+extern bool8 AffectionWakeUpCheck(u8 battlerId);
 u8 AtkCanceller_UnableToUseMove(void)
 {
     u8 effect = 0;
@@ -2960,6 +2960,15 @@ u8 AtkCanceller_UnableToUseMove(void)
                     gBattleMons[gBattlerAttacker].status2 &= ~(STATUS2_NIGHTMARE);
                     BattleScriptPushCursor();
                     gBattleCommunication[MULTISTRING_CHOOSER] = 1;
+                    gBattlescriptCurrInstr = BattleScript_MoveUsedWokeUp;
+                    effect = 2;
+                }
+                else if (AffectionWakeUpCheck(gBattlerAttacker))
+                {
+                    gBattleMons[gBattlerAttacker].status1 &= ~(STATUS1_SLEEP);
+                    gBattleMons[gBattlerAttacker].status2 &= ~(STATUS2_NIGHTMARE);
+                    BattleScriptPushCursor();
+                    gBattleCommunication[MULTISTRING_CHOOSER] = 2;
                     gBattlescriptCurrInstr = BattleScript_MoveUsedWokeUp;
                     effect = 2;
                 }

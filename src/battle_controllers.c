@@ -73,7 +73,6 @@ void SetUpBattleVarsAndBirchZigzagoon(void)
     }
 
     gUnknown_02022FF4 = 0;
-    gUnknown_0202428C = 0;
 }
 
 void sub_8032768(void)

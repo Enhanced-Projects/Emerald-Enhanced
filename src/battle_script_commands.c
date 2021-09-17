@@ -1787,24 +1787,11 @@ static void Cmd_critcalc(void)
             (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER) &&
             (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))
             {
-                u8 currentFriendship = 0;
-                u8 slot = 0;
-                if (GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_LEFT)
+                if (((GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_RIGHT) && (!(gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))) || (GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_RIGHT))
                 {
-                    currentFriendship = (GetMonData(&gPlayerParty[0], MON_DATA_FRIENDSHIP));
-                    slot = 1;
+                    gBattleMons[gBattlerAttacker].friendship -= 5
+                    gIsCriticalHit = 2;
                 }
-                else if ((GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_RIGHT) && (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) == FALSE)
-                {
-                    slot = 2;
-                    currentFriendship = (GetMonData(&gPlayerParty[1], MON_DATA_FRIENDSHIP));
-                }
-                    
-
-                currentFriendship -= 5;
-                gBattleMons[gBattlerAttacker].friendship = currentFriendship;
-                SetMonData(&gPlayerParty[(slot - 1)], MON_DATA_FRIENDSHIP, &currentFriendship);
-                gIsCriticalHit = 2;
             }
     else
         gIsCriticalHit = FALSE;
@@ -8848,6 +8835,24 @@ bool8 UproarWakeUpCheck(u8 battlerId)
     else
         return TRUE;
 }
+
+bool8 AffectionWakeUpCheck(u8 battlerId)
+{
+    u8 random = Random() % 99;
+    
+    mgba_printf(LOGINFO, "Happiness is currently %d, random is %d", gBattleMons[battlerId].friendship, random);
+    if ((GetBattlerSide(battlerId) == B_SIDE_OPPONENT) ||
+        ((GetBattlerPosition(battlerId) == B_POSITION_PLAYER_RIGHT) && ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) == TRUE)) ||
+        (gBattleMons[battlerId].friendship < 240) ||
+        (random > 24))
+            return FALSE;
+    
+    gBattleMons[battlerId].friendship -= 5;
+    gUnusedBattleGlobal = 69;
+
+    return TRUE;
+}
+
 
 static void Cmd_jumpifcantmakeasleep(void)
 {
