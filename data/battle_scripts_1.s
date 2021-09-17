@@ -2071,7 +2071,10 @@ BattleScript_HitFromAtkAnimation::
 	hitanimation BS_TARGET
 	waitstate
 	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
+	datahpupdate BS_TARGET 
+	jumpifbyte CMP_NOT_EQUAL gIsCriticalHit, 2, BattleScript_ContinueHitFromAtkAnim
+	call BattleScript_RyuAffectionCrit
+BattleScript_ContinueHitFromAtkAnim::
 	critmessage
 	waitmessage 0x40
 	resultmessage
@@ -6339,6 +6342,11 @@ BattleScript_VampiricHealActivates::
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
 	end2
+
+BattleScript_RyuAffectionCrit::
+	printstring STRINGID_RYUAFFECTIONCRIT
+	playanimation BS_ATTACKER, B_ANIM_RYU_AFFECTION_ANIM, NULL
+    return
 
 BattleScript_BurnTurnDmg::
 	printstring STRINGID_PKMNHURTBYBURN

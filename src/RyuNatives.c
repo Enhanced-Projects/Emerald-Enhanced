@@ -897,7 +897,7 @@ bool8 ScrCmd_drawcustompic(struct ScriptContext *ctx)//this function draws eithe
     }
 }
 
-bool8 ScrCmd_addmonhappiness(struct ScriptContext *ctx)
+bool8 ScrCmd_addmonhappiness(struct ScriptContext *ctx) //can no longer set happiness above 200. Affection must be earned the hard way
 {
     u16 index = VarGet(ScriptReadHalfword(ctx));
     u16 value = VarGet(ScriptReadByte(ctx));
@@ -905,8 +905,8 @@ bool8 ScrCmd_addmonhappiness(struct ScriptContext *ctx)
 
     value = value + current;
 
-    if (value > 255)
-        value = 255;
+    if (value > 200)
+        value = 200;
 
     SetMonData(&gPlayerParty[index], MON_DATA_FRIENDSHIP, &value);
     return FALSE;

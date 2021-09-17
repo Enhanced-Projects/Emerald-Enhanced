@@ -1782,13 +1782,29 @@ static void Cmd_critcalc(void)
         gIsCriticalHit = TRUE;
     else if (Random() % sCriticalHitChance[critChance] == 0)
         gIsCriticalHit = TRUE;
-    else if ((Random() % sCriticalHitChance[critChance] == 0) &&//At max affection, player mons have a doubled critical chance. In this case, another roll.
+    else if ((Random() % sCriticalHitChance[critChance] == 0) && //roll another crit check if mon is max happiness
             (gBattleMons[gBattlerAttacker].friendship == 255) &&
             (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER) &&
             (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)))
             {
-                PrepareStringBattle(STRINGID_RYUAFFECTIONCRIT, gBattlerAttacker);
-                gBattleCommunication[MSG_DISPLAY] = 1;
+                u8 currentFriendship = 0;
+                u8 slot = 0;
+                if (GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_LEFT)
+                {
+                    currentFriendship = (GetMonData(&gPlayerParty[0], MON_DATA_FRIENDSHIP));
+                    slot = 1;
+                }
+                else if ((GetBattlerPosition(gBattlerAttacker) == B_POSITION_PLAYER_RIGHT) && (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) == FALSE)
+                {
+                    slot = 2;
+                    currentFriendship = (GetMonData(&gPlayerParty[1], MON_DATA_FRIENDSHIP));
+                }
+                    
+
+                currentFriendship -= 5;
+                gBattleMons[gBattlerAttacker].friendship = currentFriendship;
+                SetMonData(&gPlayerParty[(slot - 1)], MON_DATA_FRIENDSHIP, &currentFriendship);
+                gIsCriticalHit = 2;
             }
     else
         gIsCriticalHit = FALSE;

@@ -784,6 +784,7 @@ gBattleAnims_General::
 	.4byte General_IllusionOff
 	.4byte General_FormChange
 	.4byte General_SlideOffScreen
+	.4byte General_RyuAffectionBoostHeartAnim
 
 	.align 2
 gBattleAnims_Special::
@@ -24329,6 +24330,15 @@ General_SlideOffScreen:
 	waitforvisualfinish
 	createvisualtask AnimTask_SetInvisible, 1, ANIM_TARGET, TRUE
 	waitforvisualfinish
+	end
+
+General_RyuAffectionBoostHeartAnim:
+	delay 5
+	loadspritegfx ANIM_TAG_RED_HEART
+	playsewithpan SE_M_CHARM, SOUND_PAN_ATTACKER
+	createsprite gRedHeartProjectileSpriteTemplate, ANIM_ATTACKER, 3, 20, -8
+	waitforvisualfinish
+	delay 5
 	end
 
 General_MegaEvolution:
