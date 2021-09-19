@@ -575,7 +575,7 @@ void RyuDoPickupLootRoll(u8 level, u8 slot)
 
 static void CB2_EndWildBattle(void)
 {
-    u8 i;
+    u32 i;
     CpuFill16(0, (void*)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
 
@@ -587,23 +587,25 @@ static void CB2_EndWildBattle(void)
     {
         if (!(gBattleOutcome == B_OUTCOME_RAN))
         {
-        for (i = 0; i < PARTY_SIZE; i++)
-        {   
-            u8 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
-            u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
-            u16 heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
+            for (i = 0; i < PARTY_SIZE; i++)
+            {   
+                u8 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+                u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
+                u16 heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
+                u32 rnd = (Random() % 99);
 
-            if (((gBaseStats[species].abilities[1] == ABILITY_PICKUP) 
-                || (gBaseStats[species].abilities[0] == ABILITY_PICKUP)
-                || (gBaseStats[species].abilityHidden == ABILITY_PICKUP))//forgot to consider the possibility that pickup can be a hidden ability.
-                && species != 0
-                && species != SPECIES_EGG
-                && heldItem == ITEM_NONE
-                && (Random() % 99) >= 92)//7% chance to loot
-                {
-                    RyuDoPickupLootRoll(level, i);
-                }
-        }
+                if (((gBaseStats[species].abilities[1] == ABILITY_PICKUP) 
+                    || (gBaseStats[species].abilities[0] == ABILITY_PICKUP)
+                    || (gBaseStats[species].abilityHidden == ABILITY_PICKUP))//forgot to consider the possibility that pickup can be a hidden ability.
+                    && species != 0
+                    && species != SPECIES_EGG
+                    && heldItem == ITEM_NONE
+                    && (rnd >= 92))//7% chance to loot
+                    {
+                        
+                        RyuDoPickupLootRoll(level, i);
+                    }
+            }
         }
         SetMainCallback2(CB2_ReturnToField);
         gFieldCallback = sub_80AF6F0;
@@ -1321,7 +1323,7 @@ static void CB2_EndTrainerBattle(void)
     u16 species = 0;
     u16 heldItem = 0;
     u16 ability = 0;
-    u8 i = 0;
+    u32 i = 0;
     
     IncrementGameStat(GAME_STAT_BATTLES_WON);
     VarSet(VAR_RYU_AUTOSCALE_MIN_LEVEL, 2);
@@ -1375,12 +1377,13 @@ static void CB2_EndTrainerBattle(void)
             u8 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
             species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
             heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
+            u32 rnd = (Random() % 99);
 
             if (((gBaseStats[species].abilities[1] == ABILITY_PICKUP) || (gBaseStats[species].abilities[0] == ABILITY_PICKUP))
                 && species != 0
                 && species != SPECIES_EGG
                 && heldItem == ITEM_NONE
-                && (Random() % 99) > 84)//15% chance to loot
+                && (rnd > 84))//15% chance to loot
                 {
                     RyuDoPickupLootRoll(level, i);
                 }
