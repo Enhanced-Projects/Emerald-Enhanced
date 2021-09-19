@@ -630,7 +630,7 @@ u8 * GetNetWorth(u8 * buffer)
     if (totalPropertyValue + balance + money >= 1000000)
         GiveAchievement(ACH_MILLIONAIRE);
 
-    if (totalPropertyValue + balance + money >= 1000000000)
+    if (totalPropertyValue + balance + money >= 100000000)
         GiveAchievement(ACH_MONEYBAGS);
 
     return ConvertUIntToDecimalStringN(buffer, balance + money + totalPropertyValue, STR_CONV_MODE_LEFT_ALIGN, 10);

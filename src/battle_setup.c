@@ -1375,15 +1375,15 @@ static void CB2_EndTrainerBattle(void)
     for (i = 0; i < PARTY_SIZE; i++)
         {   
             u8 level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+            u32 rnd = (Random() % 99);
             species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
             heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
-            u32 rnd = (Random() % 99);
 
-            if (((gBaseStats[species].abilities[1] == ABILITY_PICKUP) || (gBaseStats[species].abilities[0] == ABILITY_PICKUP))
+            if (((gBaseStats[species].abilities[1] == ABILITY_PICKUP) || (gBaseStats[species].abilities[0] == ABILITY_PICKUP) || gBaseStats[species].abilityHidden == ABILITY_PICKUP)
                 && species != 0
                 && species != SPECIES_EGG
                 && heldItem == ITEM_NONE
-                && (rnd > 84))//15% chance to loot
+                && rnd > 84)//15% chance to loot
                 {
                     RyuDoPickupLootRoll(level, i);
                 }
