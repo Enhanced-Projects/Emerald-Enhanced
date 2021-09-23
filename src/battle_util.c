@@ -6553,10 +6553,14 @@ static u16 CalcMoveBasePower(u16 move, u8 battlerAtk, u8 battlerDef)
         basePower = sFlailHpScaleToPowerTable[i + 1];
         break;
     case EFFECT_RETURN:
-        basePower = 10 * (gBattleMons[battlerAtk].friendship) / 25;
+        basePower = 10 * (gBattleMons[battlerAtk].friendship) / 20;
+        if (basePower > 101)
+            basePower = 100;
         break;
     case EFFECT_FRUSTRATION:
-        basePower = 10 * (255 - gBattleMons[battlerAtk].friendship) / 25;
+        basePower = 10 * (255 - gBattleMons[battlerAtk].friendship) / 20;
+        if (basePower > 101)
+            basePower = 100;
         break;
     case EFFECT_FURY_CUTTER:
         for (i = 1; i < gDisableStructs[battlerAtk].furyCutterCounter; i++)

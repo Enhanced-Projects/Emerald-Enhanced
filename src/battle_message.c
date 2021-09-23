@@ -710,6 +710,8 @@ static const u8 sText_RyuAffectionWokeupMsg[] = _("{B_ATK_NAME_WITH_PREFIX} snap
 static const u8 sText_RyuAffectionConfuseHealedMsg[] = _("{B_ATK_NAME_WITH_PREFIX} cleared its mind\nby thinking about you!");
 static const u8 sText_RyuAffectionDefrosted[] = _("{B_ATK_NAME_WITH_PREFIX}'s fiery passion for\nyou defrosted it!");
 static const u8 sText_RyuAffectionUnparalyzed[] = _("{B_ATK_NAME_WITH_PREFIX} shook off its paralysis\nto make you happy!");
+static const u8 sText_RyuAffectionEndured[] = _("{B_DEF_NAME_WITH_PREFIX} hung on because it wanted\nto please you!");
+static const u8 sText_RyuAffectionEvaded[] = _("{B_DEF_NAME_WITH_PREFIX} evaded the attack\nlike a boss!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1282,6 +1284,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_RYUAFFECTIONCONFUSEHEALED - 12] = sText_RyuAffectionConfuseHealedMsg,
     [STRINGID_RYUAFFECTIONUNFROZE - 12] = sText_RyuAffectionDefrosted,
     [STRINGID_RYUAFFECTIONCUREDPARALYZE - 12] = sText_RyuAffectionUnparalyzed,
+    [STRINGID_RYUAFFECTIONENDURED - 12] = sText_RyuAffectionEndured,
+    [STRINGID_RYUAFFECTIONEVADED - 12] = sText_RyuAffectionEvaded,
 };
 
 const u16 gTerrainStringIds[] =
@@ -1320,7 +1324,7 @@ const u16 gMissStringIds[] =
 {
     STRINGID_ATTACKMISSED, STRINGID_PKMNPROTECTEDITSELF,
     STRINGID_PKMNAVOIDEDATTACK, STRINGID_AVOIDEDDAMAGE,
-    STRINGID_PKMNMAKESGROUNDMISS
+    STRINGID_PKMNMAKESGROUNDMISS, STRINGID_RYUAFFECTIONEVADED
 };
 
 const u16 gNoEscapeStringIds[] =

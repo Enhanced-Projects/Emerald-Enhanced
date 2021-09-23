@@ -6183,10 +6183,18 @@ BattleScript_EnduredMsg::
 	return
 
 BattleScript_SturdiedMsg::
+	jumpifbyte CMP_EQUAL, gUnusedBattleGlobal, 102, BattleScript_RyuAffectionEndured
 	copybyte gBattlerAbility, gBattlerTarget
 	pause 0x10
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_ENDUREDSTURDY
+	waitmessage 0x40
+	return
+
+BattleScript_RyuAffectionEndured::
+	setbyte gUnusedBattleGlobal, 0
+	printstring STRINGID_RYUAFFECTIONENDURED
+	call BattleScript_RyuAffectionGeneralAnim2
 	waitmessage 0x40
 	return
 
@@ -7829,6 +7837,9 @@ BattleScript_RyuAffectionGeneralAnim::
 	playanimation BS_ATTACKER, B_ANIM_RYU_AFFECTION_ANIM, NULL
 	return
 
+BattleScript_RyuAffectionGeneralAnim2::
+	playanimation BS_TARGET, B_ANIM_RYU_AFFECTION_ANIM, NULL
+	return
 
 BattleScript_RyuAffectionHealedConfuse::
 	printstring STRINGID_RYUAFFECTIONCONFUSEHEALED

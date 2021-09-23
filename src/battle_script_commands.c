@@ -1175,8 +1175,28 @@ static const u8 sBattlePalaceNatureToFlavorTextId[NUM_NATURES] =
     [NATURE_QUIRKY]  = 3,
 };
 
+bool32 RyuCheckAffectionEvasion(void)
+{
+    if (gBattleMons[gBattlerTarget].friendship > 245 &&
+        (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)) &&
+        GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER &&
+        (Random() % 99) < 15)
+        {
+            gActiveBattler = gBattlerTarget;
+            gBattleMons[gBattlerTarget].friendship -= 5;
+            BtlController_EmitSetMonData(0, REQUEST_FRIENDSHIP_BATTLE, 0, 1, &gBattleMons[gBattlerTarget].friendship);
+            MarkBattlerForControllerExec(gBattlerTarget);
+            gUnusedBattleGlobal = 101;
+            return TRUE;
+        }
+
+    return FALSE;
+}
+
 bool32 IsBattlerProtected(u8 battlerId, u16 move)
 {
+    if (RyuCheckAffectionEvasion())
+        return TRUE;
     if (!(gBattleMoves[move].flags & FLAG_PROTECT_AFFECTED))
         return FALSE;
     else if (gBattleMoves[move].effect == MOVE_EFFECT_FEINT)
@@ -1820,6 +1840,23 @@ static void Cmd_typecalc(void)
     gBattlescriptCurrInstr++;
 }
 
+bool32 RyuCheckAffectionFocusEffect(void)
+{
+    if ((Random() % 99) < 15 &&
+        (gBattleMons[gBattlerTarget].friendship >= 245) &&
+         GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER &&
+         (!(gBattleTypeFlags & BATTLE_TYPE_FRONTIER)) &&
+         gBattleMons[gBattlerTarget].hp > 2)
+        {
+            gBattleMons[gBattlerTarget].friendship -= 5;
+            gActiveBattler = gBattlerTarget;
+            BtlController_EmitSetMonData(0, REQUEST_FRIENDSHIP_BATTLE, 0, 1, &gBattleMons[gBattlerTarget].friendship);
+            MarkBattlerForControllerExec(gBattlerTarget);
+            return TRUE;
+        }
+    return FALSE;
+}
+
 static void Cmd_adjustdamage(void)
 {
     u8 holdEffect, param;
@@ -1836,7 +1873,12 @@ static void Cmd_adjustdamage(void)
 
     gPotentialItemEffectBattler = gBattlerTarget;
 
-    if (holdEffect == HOLD_EFFECT_FOCUS_BAND && (Random() % 100) < param)
+    if (RyuCheckAffectionFocusEffect())
+    {
+        gSpecialStatuses[gBattlerTarget].sturdied = 1;
+        gUnusedBattleGlobal = 102;
+    }
+    else if (holdEffect == HOLD_EFFECT_FOCUS_BAND && (Random() % 100) < param)
     {
         RecordItemEffectBattle(gBattlerTarget, holdEffect);
         gSpecialStatuses[gBattlerTarget].focusBanded = 1;
@@ -2260,7 +2302,15 @@ static void Cmd_resultmessage(void)
     {
         if (gBattleCommunication[6] > 2) // Wonder Guard or Levitate - show the ability pop-up
             CreateAbilityPopUp(gBattlerTarget, gBattleMons[gBattlerTarget].ability, (gBattleTypeFlags & BATTLE_TYPE_DOUBLE) != 0);
-        stringId = gMissStringIds[gBattleCommunication[6]];
+        if (gUnusedBattleGlobal == 101)//if the Affection Evasion check succeeded, display the affection miss message instead.
+        {
+            gUnusedBattleGlobal = 0;
+            stringId = gMissStringIds[5];
+        }
+        else
+        {
+            stringId = gMissStringIds[gBattleCommunication[6]];
+        }
         gBattleCommunication[MSG_DISPLAY] = 1;
     }
     else
