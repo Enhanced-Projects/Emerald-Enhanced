@@ -1293,44 +1293,6 @@ int Ryu_GiveRevivedFossilEgg(void)//gives the player a revived fossil mon with 3
     return 1;
 }  
 
-int RyuCheckRelMegaReward(void)
-{
-    u16 partnerId = (VarGet(VAR_RYU_FOLLOWER_ID));
-    u8 val = 0;
-
-    switch (partnerId)
-    {
-        case OBJ_EVENT_GFX_AQUA_MEMBER_F:
-        {
-            if (FlagGet(FLAG_RYU_SHELLY_MEGA_REWARD) == 0)
-                val += 1;
-        }
-        case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL:
-        {
-            if (FlagGet(FLAG_RYU_DAWN_MEGA_REWARD) == 0)
-                val += 1;
-        }
-        case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
-        {
-            if (FlagGet(FLAG_RYU_BRENDAN_MEGA_REWARD) == 0)
-                val += 1;
-        }
-        case OBJ_EVENT_GFX_LEAF:
-            {
-                if (FlagGet(FLAG_RYU_LEAF_MEGA_REWARD) == 0)
-                val += 1;
-            }
-        case OBJ_EVENT_GFX_MAGMA_MEMBER_F:
-        {
-            if (FlagGet(FLAG_RYU_COURTNEY_MEGA_REWARD) == 0)
-            val += 1;
-        }
-        default:
-            val = 0;
-    }
-    return val;
-};
-
 extern const u8 gText_ColorLightRedShadowRed[];
 extern const u8 gText_ColorLightBlueShadowBlue[];
 const u8 gText_ColorDarkGreyShadowLightGrey[] = _("{COLOR DARK_GREY}{SHADOW LIGHT_GREY}");

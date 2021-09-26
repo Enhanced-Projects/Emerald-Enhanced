@@ -1109,9 +1109,6 @@ Ryu_CheckForPartnerReward::
 	specialvar VAR_RESULT, CountBadges
 	compare VAR_RESULT, 7
 	goto_if_lt ryu_return
-	specialvar VAR_RESULT, RyuCheckRelMegaReward
-	compare VAR_RESULT, 0
-	goto_if_eq ryu_return
 	switch VAR_RYU_FOLLOWER_ID
 	case OBJ_EVENT_GFX_AQUA_MEMBER_F, Ryu_GiveShellyMegaAndReturn
 	case OBJ_EVENT_GFX_RIVAL_DAWN_NORMAL, Ryu_GiveDawnMegaAndReturn
