@@ -222,25 +222,6 @@ bool8 sub_81D1C44(u8 count)
     return TRUE;
 }
 
-u8 sub_81D1C84(u8 a0)
-{
-    if (sUnknown_0203CF48[a0] == 0xFF)
-    {
-        if (a0 == 2)
-        {
-            struct WindowTemplate template = sUnknown_086253E8[2];
-            template.width = GetMaxWidthInMenuTable(&gMailboxMailOptions[0], 4);
-            sUnknown_0203CF48[2] = AddWindow(&template);
-        }
-        else
-        {
-            sUnknown_0203CF48[a0] = AddWindow(&sUnknown_086253E8[a0]);
-        }
-        SetStandardWindowBorderStyle(sUnknown_0203CF48[a0], 0);
-    }
-    return sUnknown_0203CF48[a0];
-}
-
 void sub_81D1D04(u8 a0)
 {
     ClearStdWindowAndFrameToTransparent(sUnknown_0203CF48[a0], 0);
@@ -262,7 +243,7 @@ static void sub_81D1D44(u8 windowId, s32 itemId, u8 y)
     if (itemId == LIST_CANCEL)
         return;
 
-    StringCopy(buffer, gSaveBlock1Ptr->mail[6 + itemId].playerName);
+    ConvertIntToDecimalStringN(buffer, 69, 0, 2);
     sub_81DB52C(buffer);
     length = StringLength(buffer);
     if (length <= 5)

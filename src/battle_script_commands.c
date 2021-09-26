@@ -33,7 +33,6 @@
 #include "string_util.h"
 #include "pokemon_icon.h"
 #include "m4a.h"
-#include "mail.h"
 #include "event_data.h"
 #include "pokemon_storage_system.h"
 #include "task.h"
@@ -3126,7 +3125,6 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     }
                     else if (gBattleMons[gBattlerAttacker].item != 0
                         || gBattleMons[gBattlerTarget].item == ITEM_ENIGMA_BERRY
-                        || IS_ITEM_MAIL(gBattleMons[gBattlerTarget].item)
                         || gBattleMons[gBattlerTarget].item == 0)
                     {
                         gBattlescriptCurrInstr++;

@@ -77,7 +77,6 @@
 	.include "src/easy_chat.o"
 	.include "src/mon_markings.o"
 	.include "src/mauville_old_man.o"
-	.include "src/mail.o"
 	.include "src/menu_helpers.o"
 	.include "src/region_map.o"
 	.include "src/decoration.o"

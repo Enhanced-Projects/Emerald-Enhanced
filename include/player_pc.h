@@ -43,15 +43,6 @@ enum
     ITEMPC_MENU_EXIT
 };
 
-// mailbox mail options
-enum
-{
-    MAILBOX_READ,
-    MAILBOX_MOVE_TO_BAG,
-    MAILBOX_GIVE,
-    MAILBOX_CANCEL,
-};
-
 // special item description handlers
 enum
 {
@@ -81,12 +72,8 @@ struct PlayerPCItemPageStruct
 // Exported RAM declarations
 extern struct PlayerPCItemPageStruct playerPCItemPageInfo;
 
-// Exported ROM declarations
-extern const struct MenuAction gMailboxMailOptions[];
 
 void ReshowPlayerPC(u8 taskId);
-void sub_816B31C(void);
-void Mailbox_ReturnToMailListAfterDeposit(void);
 void NewGameInitPCItems(void);
 
 

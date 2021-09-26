@@ -15,7 +15,6 @@
 #include "item.h"
 #include "item_icon.h"
 #include "item_menu.h"
-#include "mail.h"
 #include "main.h"
 #include "menu.h"
 #include "mon_markings.h"
@@ -2432,10 +2431,7 @@ static void Cb_MainPSS(u8 taskId)
         case 6:
             if (sPSSData->boxOption == BOX_OPTION_MOVE_MONS)
             {
-                if (IsMonBeingMoved() && ItemIsMail(sPSSData->cursorMonItem))
-                    sPSSData->state = 5;
-                else
-                    SetPSSCallback(Cb_HidePartyPokemon);
+                SetPSSCallback(Cb_HidePartyPokemon);
             }
             else if (sPSSData->boxOption == BOX_OPTION_MOVE_ITEMS)
             {
@@ -2490,15 +2486,8 @@ static void Cb_MainPSS(u8 taskId)
         case 11:
             if (!CanMovePartyMon())
             {
-                if (ItemIsMail(sPSSData->cursorMonItem))
-                {
-                    sPSSData->state = 5;
-                }
-                else
-                {
                     PlaySE(SE_SELECT);
                     SetPSSCallback(Cb_DepositMenu);
-                }
             }
             else
             {
@@ -2780,10 +2769,6 @@ static void Cb_OnSelectedMon(u8 taskId)
             {
                 sPSSData->state = 3;
             }
-            else if (ItemIsMail(sPSSData->cursorMonItem))
-            {
-                sPSSData->state = 4;
-            }
             else
             {
                 PlaySE(SE_SELECT);
@@ -2795,14 +2780,6 @@ static void Cb_OnSelectedMon(u8 taskId)
             if (CanMovePartyMon())
             {
                 sPSSData->state = 3;
-            }
-            //else if (sPSSData->cursorMonIsEgg)
-            //{
-            //    sPSSData->state = 5; // Cannot release an Egg.
-            //}
-            else if (ItemIsMail(sPSSData->cursorMonItem))
-            {
-                sPSSData->state = 4;
             }
             else
             {
@@ -3201,15 +3178,8 @@ static void Cb_removeitemForMoving(u8 taskId)
     switch (sPSSData->state)
     {
     case 0:
-        if (!ItemIsMail(sPSSData->cursorMonItem))
-        {
-            ClearBottomWindow();
-            sPSSData->state++;
-        }
-        else
-        {
-            SetPSSCallback(Cb_PrintCantStoreMail);
-        }
+        ClearBottomWindow();
+        sPSSData->state++;
         break;
     case 1:
         sub_80CFE54(2);
@@ -3323,15 +3293,8 @@ static void Cb_SwitchSelectedItem(u8 taskId)
     switch (sPSSData->state)
     {
     case 0:
-        if (!ItemIsMail(sPSSData->cursorMonItem))
-        {
             ClearBottomWindow();
             sPSSData->state++;
-        }
-        else
-        {
-            SetPSSCallback(Cb_PrintCantStoreMail);
-        }
         break;
     case 1:
         sub_80CFE54(2);
@@ -7616,12 +7579,8 @@ static bool8 sub_80CFB44(void)
         }
         else
         {
-            if (!ItemIsMail(sPSSData->cursorMonItem))
-            {
-                SetMenuText(12);
-                SetMenuText(16);
-            }
-            SetMenuText(17);
+            SetMenuText(12);
+            SetMenuText(16);
         }
     }
     else
@@ -7635,9 +7594,6 @@ static bool8 sub_80CFB44(void)
         }
         else
         {
-            if (ItemIsMail(sPSSData->cursorMonItem) == TRUE)
-                return FALSE;
-
             SetMenuText(15);
         }
     }

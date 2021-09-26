@@ -1,6 +1,5 @@
 #include "global.h"
 #include "graphics.h"
-#include "mail.h"
 #include "palette.h"
 #include "pokemon_icon.h"
 #include "sprite.h"
@@ -2076,18 +2075,10 @@ u16 sub_80D2E84(u16 species)
 {
     u16 value;
 
-    if (MailSpeciesToSpecies(species, &value) == SPECIES_UNOWN)
-    {
-        value += SPECIES_UNOWN_A;
-        return value;
-    }
-    else
-    {
         if (species > NUM_SPECIES)
             species = 0;
 
         return GetIconSpecies(species, 0);
-    }
 }
 
 const u8 *GetMonIconPtr(u16 species, u32 personality)

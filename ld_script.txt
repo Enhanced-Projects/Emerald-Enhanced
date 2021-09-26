@@ -137,7 +137,6 @@ SECTIONS {
         src/pokemon_icon.o(.text);
         src/script_movement.o(.text);
         src/fldeff_cut.o(.text);
-        src/mail_data.o(.text);
         src/map_name_popup.o(.text);
         src/item_menu_icons.o(.text);
         src/battle_anim_mon_movement.o(.text);
@@ -187,7 +186,6 @@ SECTIONS {
         src/easy_chat.o(.text);
         src/mon_markings.o(.text);
         src/mauville_old_man.o(.text);
-        src/mail.o(.text);
         src/menu_helpers.o(.text);
         src/dewford_trend.o(.text);
         src/heal_location.o(.text);
@@ -544,7 +542,6 @@ SECTIONS {
         src/easy_chat.o(.rodata);
         src/mon_markings.o(.rodata);
         src/mauville_old_man.o(.rodata);
-        src/mail.o(.rodata);
         src/menu_helpers.o(.rodata);
         src/heal_location.o(.rodata);
         src/region_map.o(.rodata);

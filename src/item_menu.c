@@ -24,7 +24,6 @@
 #include "lilycove_lady.h"
 #include "list_menu.h"
 #include "link.h"
-#include "mail.h"
 #include "main.h"
 #include "malloc.h"
 #include "map_name_popup.h"
@@ -562,7 +561,7 @@ void CB2_GoToSellMenu(void)
 
 void CB2_GoToItemDepositMenu(void)
 {
-    GoToBagMenu(ITEMMENULOCATION_ITEMPC, POCKETS_COUNT, sub_816B31C);
+    GoToBagMenu(ITEMMENULOCATION_ITEMPC, POCKETS_COUNT, CB2_ReturnToField);
 }
 
 void ApprenticeOpenBagMenu(void)
@@ -1587,8 +1586,6 @@ void OpenContextMenu(u8 unused)
                         gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
                         gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
                         memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_ItemsPocket, sizeof(sContextMenuItems_ItemsPocket));
-                        if (ItemIsMail(gSpecialVar_ItemId) == TRUE)
-                            gBagMenu->contextMenuItemsBuffer[0] = ITEMMENUACTION_CHECK;
                         break;
                     case MEDICINE_POCKET:
                         gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
@@ -2003,9 +2000,7 @@ void Task_ItemContext_FieldGive(u8 taskId)
 
 void Task_ItemContext_ItemPC_2(u8 taskId)
 {
-    if (ItemIsMail(gSpecialVar_ItemId) == TRUE)
-        DisplayItemMessage(taskId, 1, gText_CantWriteMail, sub_81AD350);
-    else if (gBagPositionStruct.pocket != KEYITEMS_POCKET && !ItemId_GetImportance(gSpecialVar_ItemId))
+    if (gBagPositionStruct.pocket != KEYITEMS_POCKET && !ItemId_GetImportance(gSpecialVar_ItemId))
         gTasks[taskId].func = Task_FadeAndCloseBagMenu;
     else
         BagMenu_PrintItemCantBeHeld(taskId);

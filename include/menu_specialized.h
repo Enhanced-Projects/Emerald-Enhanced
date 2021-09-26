@@ -36,7 +36,6 @@ struct ConditionGraph
 };
 
 bool8 sub_81D1C44(u8 count);
-u8 sub_81D1C84(u8 a0);
 u8 sub_81D1DC0(struct PlayerPCItemPageStruct *page);
 void sub_81D1E90(struct PlayerPCItemPageStruct *page);
 void sub_81D1EC0(void);

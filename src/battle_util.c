@@ -29,7 +29,6 @@
 #include "malloc.h"
 #include "berry.h"
 #include "pokedex.h"
-#include "mail.h"
 #include "field_weather.h"
 #include "constants/abilities.h"
 #include "constants/battle_anim.h"
@@ -7998,9 +7997,7 @@ bool32 CanBattlerGetOrLoseItem(u8 battlerId, u16 itemId)
 {
     u16 species = gBattleMons[battlerId].species;
 
-    if (IS_ITEM_MAIL(itemId))
-        return FALSE;
-    else if (itemId == ITEM_ENIGMA_BERRY)
+    if (itemId == ITEM_ENIGMA_BERRY)
         return FALSE;
     else if (species == SPECIES_KYOGRE && itemId == ITEM_BLUE_ORB)
         return FALSE;

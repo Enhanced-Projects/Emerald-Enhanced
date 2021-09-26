@@ -23,7 +23,6 @@
 #include "coins.h"
 #include "text.h"
 #include "overworld.h"
-#include "mail.h"
 #include "battle_records.h"
 #include "item.h"
 #include "pokedex.h"
@@ -179,7 +178,6 @@ void NewGameInitData(void)
     ZeroPlayerPartyMons();
     ZeroEnemyPartyMons();
     ClearFrontierRecord();
-    ClearMailData();
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
     gSaveBlock2Ptr->gcnLinkFlags = 0;
     InitPlayerTrainerId();

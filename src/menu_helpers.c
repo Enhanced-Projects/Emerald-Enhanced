@@ -11,7 +11,6 @@
 #include "link.h"
 #include "string_util.h"
 #include "sound.h"
-#include "mail.h"
 #include "overworld.h"
 #include "decompress.h"
 #include "constants/songs.h"
@@ -292,8 +291,6 @@ bool8 sub_8122148(u16 itemId)
 bool8 itemid_80BF6D8_mail_related(u16 itemId)
 {
     if (IsUpdateLinkStateCBActive() != TRUE && InUnionRoom() != TRUE)
-        return TRUE;
-    else if (ItemIsMail(itemId) != TRUE)
         return TRUE;
     else
         return FALSE;

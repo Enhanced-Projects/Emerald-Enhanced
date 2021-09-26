@@ -1858,7 +1858,7 @@ const struct Item gItems[] =
         .description = sOrangeMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
@@ -1870,7 +1870,7 @@ const struct Item gItems[] =
         .description = sHarborMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 1,
     },
 
@@ -1882,7 +1882,7 @@ const struct Item gItems[] =
         .description = sGlitterMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 2,
     },
 
@@ -1894,7 +1894,7 @@ const struct Item gItems[] =
         .description = sMechMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 3,
     },
 
@@ -1906,7 +1906,7 @@ const struct Item gItems[] =
         .description = sWoodMailDesc,
         .pocket = POCKET_ITEMS,
         .type = 0,
-        .fieldUseFunc = ItemUseOutOfBattle_Mail,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 4,
     },
 

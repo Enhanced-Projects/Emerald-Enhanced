@@ -1256,7 +1256,6 @@ void ShowEasyChatScreen(void)
         words = gSaveBlock1Ptr->easyChatBattleLost;
         break;
     case EASY_CHAT_TYPE_MAIL:
-        words = gSaveBlock1Ptr->mail[gSpecialVar_0x8005].words;
         break;
     case EASY_CHAT_TYPE_BARD_SONG:
         bard = &gSaveBlock1Ptr->oldMan.bard;
@@ -5254,12 +5253,6 @@ void InitEasyChatPhrases(void)
     
     for (i = 0; i < 6; i++)
         gSaveBlock1Ptr->easyChatBattleLost[i] = sUnknown_0859E64C[i];
-    
-    for (i = 0; i < MAIL_COUNT; i++)
-    {
-        for (j = 0; j < MAIL_WORDS_COUNT; j++)
-            gSaveBlock1Ptr->mail[i].words[j] = 0xFFFF;
-    }
 
 #ifndef UBFIX
     // BUG: This is supposed to clear 64 bits, but this loop is clearing 64 bytes.
