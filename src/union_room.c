@@ -5,7 +5,6 @@
 #include "cable_club.h"
 #include "data.h"
 #include "decompress.h"
-#include "dodrio_berry_picking.h"
 #include "dynamic_placeholder_text_util.h"
 #include "easy_chat.h"
 #include "event_data.h"
@@ -25,7 +24,6 @@
 #include "overworld.h"
 #include "palette.h"
 #include "party_menu.h"
-#include "pokemon_jump.h"
 #include "random.h"
 #include "save_location.h"
 #include "script.h"
@@ -1687,14 +1685,10 @@ static void Task_StartActivity(u8 taskId)
         SetMainCallback2(CB2_ShowCard);
         break;
     case ACTIVITY_POKEMON_JUMP:
-        WarpForWirelessMinigame(USING_MINIGAME, 5, 1);
-        StartPokemonJump(GetCursorSelectionMonId(), CB2_LoadMap);
         break;
     case ACTIVITY_BERRY_CRUSH:
         break;
     case ACTIVITY_BERRY_PICK:
-        WarpForWirelessMinigame(USING_MINIGAME, 5, 1);
-        StartDodrioBerryPicking(GetCursorSelectionMonId(), CB2_LoadMap);
         break;
     }
 

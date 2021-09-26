@@ -196,30 +196,6 @@ struct Pokedex
     /*0x10*/ u8 filler[0x68]; // Previously Dex Flags, feel free to remove.
 };
 
-struct PokemonJumpResults
-{
-    u16 jumpsInRow;
-    u16 field2;
-    u16 excellentsInRow;
-    u16 field6;
-    u32 field8;
-    u32 bestJumpScore;
-};
-
-struct BerryPickingResults
-{
-    u32 bestScore;
-    u16 berriesPicked;
-    u16 berriesPickedInRow;
-    u8 field_8;
-    u8 field_9;
-    u8 field_A;
-    u8 field_B;
-    u8 field_C;
-    u8 field_D;
-    u8 field_E;
-    u8 field_F;
-};
 
 // two arrays for lvl50 and open level
 struct PyramidBag
@@ -428,8 +404,6 @@ struct SaveBlock2
     /*0xA0*/ struct Time lastBerryTreeUpdate;
     /*0xA8*/ u32 gcnLinkFlags; // Read by Pokemon Colosseum/XD
     /*0xAC*/ u32 encryptionKey;
-    /*0x1FC*/ struct PokemonJumpResults pokeJump;
-    /*0x20C*/ struct BerryPickingResults berryPick;
     /*0x21C*/ struct RankingHall1P hallRecords1P[HALL_FACILITIES_COUNT][2][3]; // From record mixing.
     /*0x57C*/ struct RankingHall2P hallRecords2P[2][3]; // From record mixing.
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
@@ -444,7 +418,7 @@ struct SaveBlock2
               u16 unusedSB2Flags:12; //remainer of unused sb2 flags
              u8 propertyFlags[NUM_PROPERTY_BYTES];
              u8 propertyRentedFlags[NUM_PROPERTY_BYTES];
-}; // sizeof=0xF2C
+};
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
 
@@ -890,7 +864,6 @@ struct SaveBlock1
               u16 test2;
               u16 test3;
               u16 test4;
-    /*0x988*/ u8 filler1[0x2C]; // Previously Dex Flags, feel free to remove.
     /*0x9BC*/ u16 berryBlenderRecords[3];
     /*0x9C2*/ u8 field_9C2[6];
     /*0x9C8*/ u16 trainerRematchStepCounter;
@@ -940,7 +913,6 @@ struct SaveBlock1
     /*0x31A8*/ u8 giftRibbons[52];
     /*0x31DC*/ struct Roamer roamer;
     /*0x31F8*/ struct EnigmaBerry enigmaBerry;
-    /*0x322C*/ struct MEventBuffers unk_322C;
     /*0x3???*/ u8 dexSeen[DEX_FLAGS_NO];
     /*0x3???*/ u8 dexCaught[DEX_FLAGS_NO];
     /*0x3???*/ u32 trainerHillTimes[4];

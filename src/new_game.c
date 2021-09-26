@@ -37,7 +37,6 @@
 #include "contest.h"
 #include "item_menu.h"
 #include "pokemon_storage_system.h"
-#include "pokemon_jump.h"
 #include "decoration_inventory.h"
 #include "secret_base.h"
 #include "player_pc.h"
@@ -52,7 +51,6 @@ extern const u8 EventScript_ResetAllMapFlags[];
 // this file's functions
 static void ClearFrontierRecord(void);
 static void WarpToTruck(void);
-static void ResetMiniGamesResults(void);
 
 // EWRAM vars
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
@@ -216,7 +214,6 @@ void NewGameInitData(void)
     ResetLotteryCorner();
     WarpToTruck();
     ScriptContext2_RunNewScript(EventScript_ResetAllMapFlags);
-    ResetMiniGamesResults();
     InitUnionRoomChatRegisteredTexts();
     InitLilycoveLady();
     ClearRankingHallRecords();
@@ -330,8 +327,3 @@ void NewGameInitData(void)
     RyuResetRealEstateData();
 }
 
-static void ResetMiniGamesResults(void)
-{
-    ResetPokeJumpResults();
-    CpuFill16(0, &gSaveBlock2Ptr->berryPick, sizeof(struct BerryPickingResults));
-}

@@ -1385,41 +1385,9 @@ MossdeepCity_GameCorner_1F_EventScript_OldMan2:: @ 8277C91
 	end
 
 MossdeepCity_GameCorner_1F_EventScript_PlayPokemonJump:: @ 8277CE9
-	setvar VAR_0x8005, 0
-	special IsPokemonJumpSpeciesInParty
-	compare VAR_RESULT, FALSE
-	goto_if_eq MossdeepCity_GameCorner_1F_EventScript_DontHaveRequiredMon
-	msgbox MossdeepCity_GameCorner_1F_Text_EnterWhichPokemon, MSGBOX_DEFAULT
-	fadescreen FADE_TO_BLACK
-	setvar VAR_0x8005, 0
-	special ChooseMonForWirelessMinigame
-	waitstate
-	compare VAR_0x8004, PARTY_SIZE
-	goto_if_ge MossdeepCity_GameCorner_1F_EventScript_AbortMinigame
-	call Common_EventScript_SaveGame
-	compare VAR_RESULT, 0
-	goto_if_eq MossdeepCity_GameCorner_1F_EventScript_AbortMinigame
-	setvar VAR_0x8004, LINK_GROUP_POKEMON_JUMP
-	goto MossdeepCity_GameCorner_1F_EventScript_ChooseLinkLeader
 	end
 
 MossdeepCity_GameCorner_1F_EventScript_PlayDodrioBerryPicking:: @ 8277D35
-	setvar VAR_0x8005, 1
-	special IsDodrioInParty
-	compare VAR_RESULT, FALSE
-	goto_if_eq MossdeepCity_GameCorner_1F_EventScript_DontHaveRequiredMon
-	msgbox MossdeepCity_GameCorner_1F_Text_EnterWhichPokemon, MSGBOX_DEFAULT
-	fadescreen FADE_TO_BLACK
-	setvar VAR_0x8005, 1
-	special ChooseMonForWirelessMinigame
-	waitstate
-	compare VAR_0x8004, PARTY_SIZE
-	goto_if_ge MossdeepCity_GameCorner_1F_EventScript_AbortMinigame
-	call Common_EventScript_SaveGame
-	compare VAR_RESULT, 0
-	goto_if_eq MossdeepCity_GameCorner_1F_EventScript_AbortMinigame
-	setvar VAR_0x8004, LINK_GROUP_BERRY_PICKING
-	goto MossdeepCity_GameCorner_1F_EventScript_ChooseLinkLeader
 	end
 
 MossdeepCity_GameCorner_1F_EventScript_ChooseLinkLeader:: @ 8277D81
@@ -1501,17 +1469,8 @@ MossdeepCity_GameCorner_1F_EventScript_ExplainDodrioBerryPickingRequirements:: @
 	return
 
 MossdeepCity_GameCorner_1F_EventScript_PokemonJumpRecords:: @ 8277E96
-	lockall
-	special ShowPokemonJumpRecords
-	waitstate
-	releaseall
-	end
 
 MossdeepCity_GameCorner_1F_EventScript_DodrioBerryPickingRecords:: @ 8277E9D
-	lockall
-	special ShowDodrioBerryPickingRecords
-	waitstate
-	releaseall
 	end
 
 CableClub_TrainerResetter::
