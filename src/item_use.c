@@ -5,7 +5,6 @@
 #include "battle_pyramid.h"
 #include "battle_pyramid_bag.h"
 #include "berry.h"
-#include "berry_powder.h"
 #include "bike.h"
 #include "coins.h"
 #include "data.h"
@@ -706,7 +705,7 @@ void ItemUseOutOfBattle_CoinCase(u8 taskId)
 
 void ItemUseOutOfBattle_PowderJar(u8 taskId)
 {
-    ConvertIntToDecimalStringN(gStringVar1, GetBerryPowder(), STR_CONV_MODE_LEFT_ALIGN, 5);
+    ConvertIntToDecimalStringN(gStringVar1, 1, STR_CONV_MODE_LEFT_ALIGN, 1);
     StringExpandPlaceholders(gStringVar4, gText_PowderQty);
 
     if (!gTasks[taskId].tUsingRegisteredKeyItem)

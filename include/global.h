@@ -228,14 +228,6 @@ struct PyramidBag
     u8 quantity[2][PYRAMID_BAG_ITEMS_COUNT];
 };
 
-struct BerryCrush
-{
-    u16 berryCrushResults[4];
-    u32 berryPowderAmount;
-    u32 unk;
-};
-
-
 struct BattleTowerPokemon
 {
     u16 species;
@@ -432,12 +424,10 @@ struct SaveBlock2
              u16 expShare:1;
              u16 forceSetBattleType:1; // should battles always be Set.
     /*0x18*/ struct Pokedex pokedex;
-    /*0x90*/ u8 filler_90[0x8];
     /*0x98*/ struct Time localTimeOffset;
     /*0xA0*/ struct Time lastBerryTreeUpdate;
     /*0xA8*/ u32 gcnLinkFlags; // Read by Pokemon Colosseum/XD
     /*0xAC*/ u32 encryptionKey;
-    /*0x1EC*/ struct BerryCrush berryCrush;
     /*0x1FC*/ struct PokemonJumpResults pokeJump;
     /*0x20C*/ struct BerryPickingResults berryPick;
     /*0x21C*/ struct RankingHall1P hallRecords1P[HALL_FACILITIES_COUNT][2][3]; // From record mixing.

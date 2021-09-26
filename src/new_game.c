@@ -42,7 +42,6 @@
 #include "secret_base.h"
 #include "player_pc.h"
 #include "field_specials.h"
-#include "berry_powder.h"
 #include "union_room_chat.h"
 #include "constants/map_groups.h"
 #include "factions.h"
@@ -333,8 +332,6 @@ void NewGameInitData(void)
 
 static void ResetMiniGamesResults(void)
 {
-    CpuFill16(0, &gSaveBlock2Ptr->berryCrush, sizeof(struct BerryCrush));
-    SetBerryPowder(&gSaveBlock2Ptr->berryCrush.berryPowderAmount, 0);
     ResetPokeJumpResults();
     CpuFill16(0, &gSaveBlock2Ptr->berryPick, sizeof(struct BerryPickingResults));
 }

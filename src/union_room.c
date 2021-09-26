@@ -1,7 +1,6 @@
 #include "global.h"
 #include "malloc.h"
 #include "battle.h"
-#include "berry_crush.h"
 #include "bg.h"
 #include "cable_club.h"
 #include "data.h"
@@ -1692,8 +1691,6 @@ static void Task_StartActivity(u8 taskId)
         StartPokemonJump(GetCursorSelectionMonId(), CB2_LoadMap);
         break;
     case ACTIVITY_BERRY_CRUSH:
-        WarpForWirelessMinigame(USING_BERRY_CRUSH, 9, 1);
-        StartBerryCrush(CB2_LoadMap);
         break;
     case ACTIVITY_BERRY_PICK:
         WarpForWirelessMinigame(USING_MINIGAME, 5, 1);
