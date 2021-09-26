@@ -496,6 +496,12 @@ MH2_NoAccessToMachine::
 	msgbox MHM_AccessDenied
 	release
 	end
+
+MHM_CantAfford::
+	msgbox MHM_CantAffordMsg
+	closemessage
+	release
+	end
 	
 MH2_FenceIntro:
 	.string "Hey! Sell your illicit goods\nhere to get clean money!$"
@@ -563,7 +569,7 @@ MHM_Success:
 	.string "The purchase was successful.\n"
 	.string "Exiting...$"
 	
-MHM_CantAfford:
+MHM_CantAffordMsg:
 	.string "The user does not have enough\n"
 	.string "currency to purchase the chosen\l"
 	.string "kit. Exiting...$"
