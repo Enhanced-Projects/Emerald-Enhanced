@@ -31,10 +31,6 @@ EventScript_TrainerHillTimer:: @ 82C8393
 	end
 
 TrainerHill_1F_EventScript_DummyWarpToEntranceCounter:: @ 82C83A6
-	setvar VAR_TEMP_2, 1
-	trainerhill_getusingereader
-	compare VAR_RESULT, TRUE  @ VAR_RESULT always FALSE here
-	goto_if_eq TrainerHill_1F_EventScript_WarpSilentToEntranceCounter
 	end
 
 @ Never reached

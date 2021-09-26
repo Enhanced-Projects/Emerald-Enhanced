@@ -1,7 +1,6 @@
 #include "global.h"
 #include "script.h"
 #include "event_data.h"
-#include "mevent.h"
 #include "util.h"
 #include "constants/map_scripts.h"
 
@@ -405,8 +404,6 @@ bool32 ValidateSavedRamScript(void)
 u8 *GetSavedRamScriptIfValid(void)
 {
     struct RamScriptData *scriptData = &gSaveBlock1Ptr->ramScript.data;
-    if (!ValidateReceivedWonderCard())
-        return NULL;
     if (scriptData->magic != RAM_SCRIPT_MAGIC)
         return NULL;
     if (scriptData->mapGroup != 0xFF)

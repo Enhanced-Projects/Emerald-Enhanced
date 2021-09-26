@@ -44,7 +44,6 @@
 #include "player_pc.h"
 #include "field_specials.h"
 #include "berry_powder.h"
-#include "mevent.h"
 #include "union_room_chat.h"
 #include "constants/map_groups.h"
 #include "factions.h"
@@ -224,7 +223,6 @@ void NewGameInitData(void)
     InitLilycoveLady();
     ResetAllApprenticeData();
     ClearRankingHallRecords();
-    sub_801AFD8();
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
     ResetContestLinkResults();

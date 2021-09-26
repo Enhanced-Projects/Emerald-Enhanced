@@ -690,13 +690,6 @@ u8 HandleSavingData(u8 saveType)
         for(i = SECTOR_ID_SAVEBLOCK2; i <= SECTOR_ID_SAVEBLOCK1_END; i++)
             sav12_xor_get(i, gRamSaveSectionLocations);
         break;
-    // Support for Ereader was removed in Emerald.
-    /*
-    case EREADER_SAVE: // used in mossdeep "game corner" before/after battling old man e-reader trainer
-        SaveSerializedGame();
-        SaveWriteToFlash(0, gRamSaveSectionLocations);
-        break;
-    */
     case SAVE_OVERWRITE_DIFFERENT_FILE:
         for (i = SECTOR_ID_HOF_1; i < SECTORS_COUNT; i++)
             EraseFlashSector(i); // erase HOF.

@@ -14,7 +14,6 @@
 #include "tv.h"
 #include "battle_tower.h"
 #include "window.h"
-#include "mystery_event_script.h"
 #include "secret_base.h"
 #include "mauville_old_man.h"
 #include "sound.h"
@@ -198,9 +197,6 @@ static void PrepareUnknownExchangePacket(struct PlayerRecordsRS *dest)
     memcpy(dest->easyChatPairs, sEasyChatPairsSave, sizeof(dest->easyChatPairs));
     sub_80E89F8(&dest->dayCareMail);
     EmeraldBattleTowerRecordToRuby(sBattleTowerSave, &dest->battleTowerRecord);
-
-    if (GetMultiplayerId() == 0)
-        dest->giftItem = GetRecordMixingGift();
 }
 
 static void PrepareExchangePacketForRubySapphire(struct PlayerRecordsRS *dest)
@@ -217,9 +213,6 @@ static void PrepareExchangePacketForRubySapphire(struct PlayerRecordsRS *dest)
     SanitizeDayCareMailForRuby(&dest->dayCareMail);
     EmeraldBattleTowerRecordToRuby(sBattleTowerSave, &dest->battleTowerRecord);
     SanitizeRubyBattleTowerRecord(&dest->battleTowerRecord);
-
-    if (GetMultiplayerId() == 0)
-        dest->giftItem = GetRecordMixingGift();
 }
 
 static void PrepareExchangePacket(void)
@@ -246,9 +239,6 @@ static void PrepareExchangePacket(void)
         sub_80E89F8(&sSentRecord->emerald.dayCareMail);
         memcpy(&sSentRecord->emerald.battleTowerRecord, sBattleTowerSave, sizeof(sSentRecord->emerald.battleTowerRecord));
         SanitizeEmeraldBattleTowerRecord(&sSentRecord->emerald.battleTowerRecord);
-
-        if (GetMultiplayerId() == 0)
-            sSentRecord->emerald.giftItem = GetRecordMixingGift();
 
         GetSavedApprentices(sSentRecord->emerald.apprentices, sApprenticesSave);
         GetPlayerHallRecords(&sSentRecord->emerald.hallRecords);

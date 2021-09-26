@@ -83,7 +83,5 @@ void FillHillTrainerParty(void);
 void FillHillTrainersParties(void);
 u8 GetTrainerEncounterMusicIdInTrainerHill(u16 trainerId);
 u8 GetNumFloorsInTrainerHillChallenge(void);
-void TryLoadTrainerHillEReaderPalette(void);
-bool32 OnTrainerHillEReaderChallengeFloor(void);
 
 #endif // GUARD_TRAINER_HILL_H
