@@ -1316,7 +1316,7 @@ void ShowEasyChatScreen(void)
         words = &gSaveBlock1Ptr->lilycoveLady.quiz.correctAnswer;
         break;
     case EASY_CHAT_TYPE_APPRENTICE:
-        words = gSaveBlock2Ptr->apprentices[0].speechWon;
+        words = 0;
         break;
     default:
         return;

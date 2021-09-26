@@ -8,7 +8,6 @@
 	.include "asm/macros/field_effect_script.inc"
 	.include "asm/macros/trainer_hill.inc"
 	.include "asm/macros/battle_tent.inc"
-	.include "asm/macros/battle_frontier/apprentice.inc"
 	.include "asm/macros/battle_frontier/battle_arena.inc"
 	.include "asm/macros/battle_frontier/battle_dome.inc"
 	.include "asm/macros/battle_frontier/battle_factory.inc"

@@ -27,7 +27,6 @@
 #include "battle_records.h"
 #include "item.h"
 #include "pokedex.h"
-#include "apprentice.h"
 #include "frontier_util.h"
 #include "constants/maps.h"
 #include "constants/flags.h"
@@ -221,7 +220,6 @@ void NewGameInitData(void)
     ResetMiniGamesResults();
     InitUnionRoomChatRegisteredTexts();
     InitLilycoveLady();
-    ResetAllApprenticeData();
     ClearRankingHallRecords();
     WipeTrainerNameRecords();
     ResetTrainerHillResults();

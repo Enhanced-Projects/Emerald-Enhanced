@@ -48,7 +48,6 @@
 #include "text_window.h"
 #include "menu_helpers.h"
 #include "window.h"
-#include "apprentice.h"
 #include "battle_pike.h"
 #include "constants/rgb.h"
 
@@ -2347,7 +2346,6 @@ void unknown_ItemMenu_Show(u8 taskId)
 
 void CB2_ApprenticeExitBagMenu(void)
 {
-    gFieldCallback = Apprentice_EnableBothScriptContexts;
     SetMainCallback2(CB2_ReturnToField);
 }
 

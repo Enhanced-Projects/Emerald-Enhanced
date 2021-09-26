@@ -272,7 +272,6 @@ SECTIONS {
         src/match_call.o(.text);
         src/menu.o(.text);
         src/battle_factory_screen.o(.text);
-        src/apprentice.o(.text);
         src/frontier_util.o(.text);
         src/battle_arena.o(.text);
         src/battle_factory.o(.text);
@@ -619,7 +618,6 @@ SECTIONS {
         src/match_call.o(.rodata);
         src/menu.o(.rodata);
         src/battle_factory_screen.o(.rodata);
-        src/apprentice.o(.rodata);
         src/frontier_util.o(.rodata);
         src/battle_arena.o(.rodata);
         src/battle_factory.o(.rodata);
