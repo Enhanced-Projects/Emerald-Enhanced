@@ -158,7 +158,7 @@
 #define MON_DATA_SPEED             61
 #define MON_DATA_SPATK             62
 #define MON_DATA_SPDEF             63
-#define MON_DATA_MAIL              64
+#define MON_DATA_UNUSED            64
 #define MON_DATA_SPECIES2          65
 #define MON_DATA_IVS               66
 #define MON_DATA_CHAMPION_RIBBON   67

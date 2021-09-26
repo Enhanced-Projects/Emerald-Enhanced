@@ -1349,13 +1349,14 @@
 #define FLAG_DEFEATED_ELITE_4_GLACIA                                0x4FD
 #define FLAG_DEFEATED_ELITE_4_DRAKE                                 0x4FE
 
-#define FLAG_DO_NOT_USE                                             0x4FF // Bugged flag, randomly sets itself for no reason. DOn't use/
+#define FLAG_DO_NOT_USE                                             0x4FF // Bugged flag, randomly sets itself for no reason. Don't use/
 
+//flags 0x500 through 5FF exist and are unused. 256 total unused.
 // Trainer Flags
 // Trainer flags occupy 0x500 - 0x85F, the last 9 of which are unused
 // See constants/opponents.h. The values there + FLAG_TRAINER_FLAG_START are the flag IDs
 
-#define TRAINER_FLAGS_START                                         0x500
+#define TRAINER_FLAGS_START                                         0x5FF
 #define TRAINER_FLAGS_END                                           (TRAINER_FLAGS_START + MAX_TRAINERS_COUNT - 1) // 0x85F
 
 // System Flags

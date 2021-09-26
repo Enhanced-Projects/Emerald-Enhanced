@@ -273,7 +273,8 @@
 #define VAR_RYU_QUEST_LANA                   0x40FE
 #define VAR_RYU_QUEST_MAGMA                  0x40FF // Magma quest var
 
-#define VARS_END                             0x40FF
+//vars 4100 thru 417f are unused; total of 128.
+#define VARS_END                             0x417F
 #define VARS_COUNT                           (VARS_END - VARS_START + 1)
 
 #define SPECIAL_VARS_START            0x8000
