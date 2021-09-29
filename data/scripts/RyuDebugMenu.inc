@@ -232,7 +232,7 @@ OpeningPokeEdit:
 	.string "Opening Poke Edit...$"
 
 RyuDebug_money::
-	addmoney 250000
+	addmoney 1234567890
 	msgbox RyuDebug_money_text MSGBOX_DEFAULT
 	return
 
@@ -541,9 +541,15 @@ RyuDebug_GiveAlchemyKit::
 	additem ITEM_RAWST_BERRY, 100
 	additem ITEM_BRIGHT_POWDER, 100
 	additem ITEM_ORAN_BERRY, 100
-	setvar VAR_RYU_ALCHEMY_COPPER, 50000
-	setvar VAR_RYU_ALCHEMY_SILVER, 50000
-	setvar VAR_RYU_ALCHEMY_GOLD, 50000
+	additem ITEM_CHARCOAL 100
+	additem ITEM_FIRE_STONE 100
+	additem ITEM_SOFT_SAND 100
+	additem ITEM_SNOWBALL 100
+	additem ITEM_GEM_POWDER 100
+	setvar VAR_RYU_ALCHEMY_COPPER, 65500
+	setvar VAR_RYU_ALCHEMY_SILVER, 65500
+	setvar VAR_RYU_ALCHEMY_GOLD, 65500
+	return
 
 RyuDebug_GiveItemsKit:
 	additem ITEM_FULL_RESTORE, 100
