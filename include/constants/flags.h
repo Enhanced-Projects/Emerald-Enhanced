@@ -2004,7 +2004,9 @@
 #define ALCHEMY_ITEM_RECIPE_MINERAL_WATER  19 // creates Mineral Water from Soft Sand, Shoal Salt, and Tonic Water
 #define ALCHEMY_ITEM_RECIPE_RARE_CANDY     20 // creates Rare Candy from Lemonade, Mineral Water, and Smart Powder
 #define ALCHEMY_ITEM_RECIPE_GOLD_NUGGET    21 // Creates Gold Nugget from 600 Gold Powder
-#define NUM_ALCHEMY_EFFECTS                22
+#define NUM_ALCHEMY_RECIPES                22//total craftable alchemy recipes
+#define NUM_ALCHEMY_EFFECTS                14//number of effects to offset the resulting item ID by.
+#define NUM_ALCHEMY_ITEM_RECIPES           6 //number of items that can be crafted by alchemy
 
 
 

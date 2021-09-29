@@ -582,10 +582,11 @@ RyuAlchemy_AttemptCreateEffect::
     setflag FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS
     scrollingmultichoice SCROLLINGMULTICHOICE_RYUALCHEMYMENU, 0, 0, 6, 1
     compare VAR_RESULT, 127
-    goto_if_eq ryu_end
+    goto_if_eq RA_Cancel
     addvar VAR_RESULT, 1
     copyvar VAR_TEMP_A, VAR_RESULT
     specialvar VAR_RESULT, RyuAlchemy_TryCraftingItem
+    copyvar VAR_TEMP_B, VAR_RESULT
     switch VAR_RESULT
     case 1000, RA_NotEnoughMetalDust
     case 2000, RA_LevelNotHighEnough
@@ -597,6 +598,7 @@ RyuAlchemy_AttemptCreateEffect::
     goto_if_ge RA_CreateItem
     msgbox AlchemyEffectSuccessful
     closemessage
+    clearflag FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS
     compare VAR_RESULT, ALCHEMY_EFFECT_REPEL_T1
     call_if_eq RA_DoNativeRepelSetup
     compare VAR_RESULT, ALCHEMY_EFFECT_REPEL_T2
@@ -604,6 +606,10 @@ RyuAlchemy_AttemptCreateEffect::
     call RyuAlchemy_CheckForLevelup
     release
     end
+
+RA_Cancel::
+    clearflag FLAG_RYU_DISPLAY_ALCHEMY_INGREDIENTS
+    goto ryu_end
 
 RA_DB_1:
     .string "Crafting returned {RYU_STR_3}.$"
@@ -614,8 +620,8 @@ RA_DoNativeRepelSetup::
     return
 
 RA_CreateItem::
-    giveitem VAR_RESULT, 1
-    bufferitemname 0, VAR_RESULT
+    additem VAR_TEMP_B, 1
+    bufferitemname 0, VAR_TEMP_B
     msgbox RA_AlchemyItemSuccessful
     closemessage
     call RyuAlchemy_CheckForLevelup

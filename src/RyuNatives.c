@@ -1715,6 +1715,20 @@ void RyuSetupAlchemicalRepel(void) //There's no need to assume there's an alchem
     RyuClearAlchemyEffect();
 }
 
+const u16 gRyuAlchemyItems[] = {
+    ITEM_STARDUST,
+    ITEM_FRESH_WATER,
+    ITEM_TONIC_WATER,
+    ITEM_MINERAL_WATER,
+    ITEM_RARE_CANDY,
+    ITEM_GOLD_NUGGET,
+};
+
+u32 RyuGetAlchemyItemId(u32 recipeId)
+{
+    return gRyuAlchemyItems[recipeId - NUM_ALCHEMY_EFFECTS];
+}
+
 
 u16 RyuAlchemy_TryCraftingItem(void)
 {
@@ -1745,7 +1759,7 @@ u16 RyuAlchemy_TryCraftingItem(void)
     if (CheckBagHasItem(item2, (gAlchemyRecipes[recipe].ingredients[1].quantity)) == FALSE)
         return 4200; //Player doesn't have enough of ingredient 2
 
-    if (CheckBagHasItem(item1, (gAlchemyRecipes[recipe].ingredients[2].quantity)) == FALSE)
+    if (CheckBagHasItem(item3, (gAlchemyRecipes[recipe].ingredients[2].quantity)) == FALSE)
         return 4300; //Player doesn't have enough of ingredient 3
 
     switch (metal)
@@ -1794,7 +1808,10 @@ u16 RyuAlchemy_TryCraftingItem(void)
     currentExp += gAlchemyRecipes[recipe].expGiven;
     ConvertIntToDecimalStringN(gStringVar3, gAlchemyRecipes[recipe].expGiven, STR_CONV_MODE_LEFT_ALIGN, 3);
     VarSet(VAR_RYU_ALCHEMY_EXP, currentExp);
-    return recipe;
+    if (recipe > ALCHEMY_EFFECT_HEALING_FACTOR)
+        return RyuGetAlchemyItemId(recipe - 2);
+    else
+        return recipe;
 }
 
 void RyuDebug_CheckAlchemyStatus(void)

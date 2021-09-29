@@ -674,7 +674,7 @@ const u16 sBotanyRecipes[NUM_RECIPES][NUM_INGREDIENTS_PER_RECIPE][2] = {
     },
 };
 
-const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_EFFECTS] = {
+const AlchemyRecipe gAlchemyRecipes[NUM_ALCHEMY_RECIPES] = {
     [ALCHEMY_EFFECT_NONE] = {
           .expGiven = 0,
           .ingredients = {
