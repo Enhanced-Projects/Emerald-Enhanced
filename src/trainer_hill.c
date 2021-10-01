@@ -488,12 +488,6 @@ static void TrainerHillGetChallengeStatus(void)
         gSaveBlock1Ptr->trainerHill.hasLost = FALSE;
         gSpecialVar_Result = TRAINER_HILL_PLAYER_STATUS_LOST;
     }
-    else if (gSaveBlock1Ptr->trainerHill.maybeECardScanDuringChallenge)
-    {
-        // Unreachable code. Something relating to eCards?
-        gSaveBlock1Ptr->trainerHill.maybeECardScanDuringChallenge = 0;
-        gSpecialVar_Result = TRAINER_HILL_PLAYER_STATUS_ECARD_SCANNED;
-    }
     else
     {
         // Continue playing.

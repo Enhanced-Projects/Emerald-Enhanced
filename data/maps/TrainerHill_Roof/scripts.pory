@@ -14,6 +14,7 @@ script TrainerHill_Roof_EventScript_Owner {
 	setflag(FLAG_HILL_REWARD_RECIEVED)
 	setvar(VAR_TEMP_3, QUANTITY)
 	faceplayer
+	msgbox(TrainerHill_Roof_Text_HaveTheMostMarvelousGift)
 	specialvar(VAR_TEMP_4, RyuGetTrainerHillReward)
 	if (var(VAR_TEMP_4) == ITEM_BEAST_BALL) {//should give between 2 and 5 beast balls.
 		random(3)
@@ -25,9 +26,7 @@ script TrainerHill_Roof_EventScript_Owner {
 	bufferitemname(0, VAR_TEMP_4)
 	buffernumberstring(1, VAR_TEMP_3)
 	msgbox("You received {STR_VAR_2} {STR_VAR_1}(s)!")
-	msgbox(TrainerHill_Roof_Text_HaveTheMostMarvelousGift)
 	waitfanfare
-	waitmessage
 	msgbox(TrainerHill_Roof_Text_ArriveZippierNextTime)
 	release
 	end
