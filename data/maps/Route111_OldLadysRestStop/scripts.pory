@@ -5,7 +5,6 @@ Route111_OldLadysRestStop_MapScripts:: @ 822A916
 
 Route111_OldLadysRestStop_OnTransition: @ 822A91C
 	setflag FLAG_LANDMARK_OLD_LADY_REST_SHOP
-	call RyuCheckForLNSUAch
 	end
 
 Route111_OldLadysRestStop_EventScript_OldLady:: @ 822A920

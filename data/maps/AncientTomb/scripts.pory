@@ -19,7 +19,6 @@ AncientTomb_EventScript_TryRemoveRegisteel:: @ 8238FCD
 
 AncientTomb_OnTransition: @ 8238FE1
 	setflag FLAG_LANDMARK_ANCIENT_TOMB
-	call RyuCheckForLNSUAch
 	call_if_unset FLAG_DEFEATED_REGISTEEL, AncientTomb_EventScript_ShowRegisteel
 	end
 

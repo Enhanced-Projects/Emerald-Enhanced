@@ -5,7 +5,6 @@ SouthernIsland_Exterior_MapScripts:: @ 82429C8
 
 SouthernIsland_Exterior_OnTransition: @ 82429CE
 	setflag FLAG_LANDMARK_SOUTHERN_ISLAND
-	call RyuCheckForLNSUAch
 	end
 
 SouthernIsland_Exterior_EventScript_Sailor:: @ 82429D2

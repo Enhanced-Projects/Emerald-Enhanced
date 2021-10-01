@@ -5,6 +5,5 @@ DesertUnderpass_MapScripts:: @ 823AF37
 
 DesertUnderpass_OnTransition: @ 823AF3D
 	setflag FLAG_LANDMARK_DESERT_UNDERPASS
-	call RyuCheckForLNSUAch
 	end
 `

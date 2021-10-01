@@ -42,6 +42,7 @@
 #include "constants/species.h"
 #include "factions.h"
 #include "RyuRealEstate.h"
+#include "ach_atlas.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
@@ -76,6 +77,7 @@ extern const u8 RyuScript_EncounterKeldeo[];
 extern const u8 Ryu_FFTextSpeedWarning[];
 extern const u8 RyuScript_Lv100FailMsg[];
 extern const u8 RyuScrupt_Lv100SwitchMsg[];
+extern const u8 RyuCheckForLNSUAch[];
 
 void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
@@ -214,6 +216,12 @@ void RyuDoNotifyTasks(void)
             if ((FlagGet(FLAG_RYU_NUZLOCKEMODE) == TRUE) || (FlagGet(FLAG_RYU_HARDCORE_MODE) == TRUE))
                 ScriptContext1_SetupScript(RyuScript_GoToLimbo);
         }
+    }
+
+    if ((CheckAchievement(ACH_LEAVE_NO_STONE_UNTURNED) == FALSE) && (VarGet(VAR_TEMP_E) == 0))
+    {
+        VarSet(VAR_TEMP_E, 100);
+        ScriptContext1_SetupScript(RyuCheckForLNSUAch);
     }
 
     if (FlagGet(FLAG_SELECTED_FF_TEXT_OPTION) == TRUE) //warn player about instant text

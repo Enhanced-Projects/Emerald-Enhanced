@@ -14,7 +14,6 @@ Route113_GlassWorkshop_MapScripts:: @ 826ED03
 
 Route113_GlassWorkshop_OnTransition: @ 826ED09
 	setflag FLAG_LANDMARK_GLASS_WORKSHOP
-	call RyuCheckForLNSUAch
 	compare VAR_GLASS_WORKSHOP_STATE, 1
 	call_if_eq Route113_GlassWorkshop_EventScript_ReenterWorkshopAfterSootSack
 	end

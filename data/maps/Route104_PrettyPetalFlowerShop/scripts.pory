@@ -5,7 +5,6 @@ Route104_PrettyPetalFlowerShop_MapScripts:: @ 822A34C
 
 Route104_PrettyPetalFlowerShop_OnTransition: @ 822A352
 	setflag FLAG_LANDMARK_FLOWER_SHOP
-	call RyuCheckForLNSUAch
 	goto_if_unset FLAG_MET_PRETTY_PETAL_SHOP_OWNER, Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner
 	goto_if_unset FLAG_BADGE03_GET, Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner
 	setflag FLAG_TEMP_1
